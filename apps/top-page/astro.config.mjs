@@ -17,7 +17,6 @@ export default defineConfig({
     resolve: {
       alias: {
         '@docs/ui': path.resolve(__dirname, '../../packages/ui/src'),
-        '@docs/search': path.resolve(__dirname, '../../packages/search/src'),
         '@docs/theme': path.resolve(__dirname, '../../packages/theme/src'),
         '@docs/i18n': path.resolve(__dirname, '../../packages/i18n/src'),
       },
