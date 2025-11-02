@@ -29,47 +29,24 @@ export interface ContentFile {
  * apps/ディレクトリ内のドキュメントプロジェクトを検出
  */
 export async function scanAppsDirectory(): Promise<string[]> {
-  const appsDir = path.resolve(process.cwd(), '..', '..');
+  const repoRoot = path.resolve(process.cwd(), '..', '..');
+  const appsDir = path.join(repoRoot, 'apps');
   const projects: string[] = [];
   
   try {
     const entries = await fs.readdir(appsDir, { withFileTypes: true });
     
     for (const entry of entries) {
-      if (!entry.isDirectory() || entry.name === 'top-page' || entry.name === 'project-template') {
+      if (!entry.isDirectory() || entry.name === 'project-template') {
         continue;
       }
       
-      // 中身がappsディレクトリの場合、その中のプロジェクトをチェック
-      if (entry.name === 'apps') {
-        const appsSubDir = path.join(appsDir, entry.name);
-        try {
-          const appEntries = await fs.readdir(appsSubDir, { withFileTypes: true });
-          for (const appEntry of appEntries) {
-            if (!appEntry.isDirectory() || appEntry.name === 'top-page' || appEntry.name === 'project-template') {
-              continue;
-            }
-            
-            const contentPath = path.join(appsSubDir, appEntry.name, 'src', 'content', 'docs');
-            try {
-              await fs.access(contentPath);
-              projects.push(appEntry.name);
-            } catch {
-              // ドキュメントディレクトリがない場合はスキップ
-            }
-          }
-        } catch (error) {
-          console.warn(`appsディレクトリのスキャンに失敗: ${error}`);
-        }
-      } else {
-        // 通常のディレクトリとして処理
-        const contentPath = path.join(appsDir, entry.name, 'src', 'content', 'docs');
-        try {
-          await fs.access(contentPath);
-          projects.push(entry.name);
-        } catch {
-          // ドキュメントディレクトリがない場合はスキップ
-        }
+      const contentPath = path.join(appsDir, entry.name, 'src', 'content', 'docs');
+      try {
+        await fs.access(contentPath);
+        projects.push(entry.name);
+      } catch {
+        // ドキュメントディレクトリがない場合はスキップ
       }
     }
   } catch (error) {
@@ -83,8 +60,8 @@ export async function scanAppsDirectory(): Promise<string[]> {
  * 指定されたプロジェクトの情報を自動検出
  */
 export async function detectProject(projectId: string): Promise<DetectedProject> {
-  const appsDir = path.resolve(process.cwd(), '..', '..');
-  const projectPath = path.join(appsDir, 'apps', projectId);
+  const repoRoot = path.resolve(process.cwd(), '..', '..');
+  const projectPath = path.join(repoRoot, 'apps', projectId);
   
   // 基本情報をJSON設定ファイルから取得
   const docsConfig = await loadDocsConfigFromJSON(projectPath);

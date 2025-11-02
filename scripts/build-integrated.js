@@ -39,54 +39,68 @@ const rootDir = path.resolve(__dirname, '..');
 const distDir = path.join(rootDir, 'dist');
 
 /**
- * appsディレクトリからアプリケーションリストを動的に生成
+ * ビルド対象リストを動的に生成
+ * apps/* はドキュメントサイト、sites/* はポータルサイトとして扱う
  */
-async function generateAppsList() {
+async function generateBuildTargets() {
+  const targets = [];
   const appsDir = path.join(rootDir, 'apps');
-  const apps = [];
-  
+  const sitesDir = path.join(rootDir, 'sites');
+
   try {
-    const entries = await fs.readdirSync(appsDir, { withFileTypes: true });
-    const appDirs = entries.filter(entry => entry.isDirectory());
-    
-    for (const dir of appDirs) {
+    const appEntries = fs.readdirSync(appsDir, { withFileTypes: true }).filter(entry => entry.isDirectory());
+
+    for (const dir of appEntries) {
       const appName = dir.name;
-      const appPath = path.join(appsDir, appName);
-      const srcDir = path.join(appPath, 'dist');
-      
-      // project-templateはテンプレートなのでビルド対象から除外
+
       if (appName === 'project-template') {
         console.log(`⏩ ${appName}はテンプレートプロジェクトのためスキップします`);
         continue;
       }
-      
-      if (appName === 'top-page') {
-        // トップページはルートに配置
-        apps.push({
-          name: appName,
-          srcDir,
-          destDir: distDir,
-          pathPrefix: ''
-        });
-      } else {
-        // ドキュメントプロジェクトは/docs/{project-name}/に配置
-        apps.push({
-          name: appName,
-          srcDir,
-          destDir: path.join(distDir, 'docs', appName),
-          pathPrefix: `/docs/${appName}`
-        });
-      }
+
+      const appPath = path.join(appsDir, appName);
+      targets.push({
+        name: appName,
+        packageName: `apps-${appName}`,
+        type: 'docs',
+        srcDir: path.join(appPath, 'dist'),
+        destDir: path.join(distDir, 'docs', appName),
+        pathPrefix: `/docs/${appName}`,
+        sidebarSrcDir: path.join(appPath, 'public', 'sidebar')
+      });
     }
   } catch (error) {
-    console.error('アプリケーションリストの生成中にエラーが発生しました:', error);
+    console.error('apps/ディレクトリのスキャン中にエラーが発生しました:', error);
   }
-  
-  return apps;
+
+  if (fs.existsSync(sitesDir)) {
+    try {
+      const siteEntries = fs.readdirSync(sitesDir, { withFileTypes: true }).filter(entry => entry.isDirectory());
+
+      for (const dir of siteEntries) {
+        const siteName = dir.name;
+        const sitePath = path.join(sitesDir, siteName);
+        const isLanding = siteName === 'landing';
+
+        targets.push({
+          name: siteName,
+          packageName: `sites-${siteName}`,
+          type: 'site',
+          srcDir: path.join(sitePath, 'dist'),
+          destDir: isLanding ? distDir : path.join(distDir, siteName),
+          pathPrefix: isLanding ? '' : `/${siteName}`
+        });
+      }
+    } catch (error) {
+      console.error('sites/ディレクトリのスキャン中にエラーが発生しました:', error);
+    }
+  }
+
+  return targets;
 }
 
-// アプリケーションのリスト（動的生成）
-let apps = [];
+// ビルド対象リスト
+let buildTargets = [];
 
 /**
  * HTMLファイル内のベースパスを修正する関数
@@ -199,8 +213,8 @@ async function main() {
   }
 
   // アプリケーションリストを動的生成
-  apps = await generateAppsList();
-  console.log('検出されたアプリケーション:', apps.map(app => app.name).join(', '));
+  buildTargets = await generateBuildTargets();
+  console.log('検出されたビルド対象:', buildTargets.map(target => `${target.type}:${target.name}`).join(', '));
 
   let distBackupPath = null;
 
@@ -247,58 +261,58 @@ async function main() {
   
 
   // 各アプリケーションをビルド
-  for (const app of apps) {
+  for (const target of buildTargets) {
     if (isDryRun) {
-      logger.dryRun(`pnpm --filter=apps-${app.name} build を実行します（dry-runのため未実行）`);
+      logger.dryRun(`pnpm --filter=${target.packageName} build を実行します（dry-runのため未実行）`);
       continue;
     }
 
-    console.log(`${app.name}をビルドしています...`);
+    console.log(`${target.name}をビルドしています...`);
     try {
-      execSync(`pnpm --filter=apps-${app.name} build`, { stdio: 'inherit' });
+      execSync(`pnpm --filter=${target.packageName} build`, { stdio: 'inherit' });
     } catch (error) {
-      console.error(`${app.name}のビルドに失敗しました:`, error);
+      console.error(`${target.name}のビルドに失敗しました:`, error);
       process.exit(1);
     }
   }
 
   // 各アプリケーションのビルド出力をdistディレクトリにコピー
-  for (const app of apps) {
+  for (const target of buildTargets) {
     if (isDryRun) {
-      const relativeDest = path.relative(rootDir, app.destDir);
-      logger.dryRun(`${app.name}のビルド出力を ${relativeDest || 'dist'} にコピーします（dry-runのため未実施）`);
-      if (app.name !== 'top-page') {
-        logger.dryRun(`${app.name}のサイドバーJSONをコピーします（dry-runのため未実施）`);
+      const relativeDest = path.relative(rootDir, target.destDir);
+      logger.dryRun(`${target.name}のビルド出力を ${relativeDest || 'dist'} にコピーします（dry-runのため未実施）`);
+      if (target.type === 'docs') {
+        logger.dryRun(`${target.name}のサイドバーJSONをコピーします（dry-runのため未実施）`);
       }
-      if (app.pathPrefix) {
-        logger.dryRun(`${app.name}のベースパスを ${app.pathPrefix} に再書き換えます（dry-runのため未実施）`);
+      if (target.pathPrefix) {
+        logger.dryRun(`${target.name}のベースパスを ${target.pathPrefix} に再書き換えます（dry-runのため未実施）`);
       }
       continue;
     }
 
-    console.log(`${app.name}のビルド出力をコピーしています...`);
+    console.log(`${target.name}のビルド出力をコピーしています...`);
     
-    if (!fs.existsSync(app.srcDir)) {
-      console.error(`${app.srcDir}が存在しません。`);
+    if (!fs.existsSync(target.srcDir)) {
+      console.error(`${target.srcDir}が存在しません。`);
       continue;
     }
 
     // ディレクトリをコピー
-    copyDirRecursive(app.srcDir, app.destDir);
+    copyDirRecursive(target.srcDir, target.destDir);
 
     // サイドバーJSONファイルをコピー（ドキュメントプロジェクトの場合）
-    if (app.name !== 'top-page') {
-      const sidebarSrcDir = path.join(rootDir, 'apps', app.name, 'public', 'sidebar');
-      const sidebarDestDir = path.join(app.destDir, 'sidebar');
+    if (target.type === 'docs' && target.sidebarSrcDir) {
+      const sidebarSrcDir = target.sidebarSrcDir;
+      const sidebarDestDir = path.join(target.destDir, 'sidebar');
       
       if (fs.existsSync(sidebarSrcDir)) {
-        console.log(`${app.name}のサイドバーJSONファイルをコピーしています...`);
+        console.log(`${target.name}のサイドバーJSONファイルをコピーしています...`);
         if (!fs.existsSync(sidebarDestDir)) {
           fs.mkdirSync(sidebarDestDir, { recursive: true });
         }
         copyDirRecursive(sidebarSrcDir, sidebarDestDir);
         
-        const additionalDestDir = path.join(app.destDir, 'pages', 'public', 'sidebar');
+        const additionalDestDir = path.join(target.destDir, 'pages', 'public', 'sidebar');
         if (!fs.existsSync(additionalDestDir)) {
           fs.mkdirSync(additionalDestDir, { recursive: true });
           console.log(`追加のサイドバーディレクトリを作成しました: ${additionalDestDir}`);
@@ -312,10 +326,10 @@ async function main() {
     
 
     // ベースパスの修正が必要な場合
-    if (app.pathPrefix) {
-      console.log(`${app.name}のベースパスを修正しています...`);
+    if (target.pathPrefix) {
+      console.log(`${target.name}のベースパスを修正しています...`);
       let oldBasePath = '/libx'; 
-      let newBasePath = '/libx' + app.pathPrefix; 
+      let newBasePath = '/libx' + target.pathPrefix; 
       
       if (isLocalBuild) {
         console.log(`ローカル開発環境用にベースパスを削除します...`);
@@ -323,7 +337,7 @@ async function main() {
         newBasePath = '';
       }
       
-      updateBasePathsRecursive(app.destDir, oldBasePath, newBasePath);
+      updateBasePathsRecursive(target.destDir, oldBasePath, newBasePath);
     }
   }
 

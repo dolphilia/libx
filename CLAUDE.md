@@ -21,7 +21,7 @@ pnpm dev
 
 # 特定のプロジェクトを起動
 pnpm --filter=sample-docs dev
-pnpm --filter=top-page dev
+pnpm --filter=sites-landing dev
 
 # すべてのプロジェクトをビルド（本番環境）
 pnpm build
@@ -140,8 +140,9 @@ node scripts/create-document.js sample-docs ja v2 --interactive
 
 - **`apps/`** - 個別のAstroドキュメントプロジェクト
   - `project-template/` - 新しいプロジェクトを作成するためのテンプレート
-  - `top-page/` - ランディングページ（ルート `/` にデプロイ）
   - `sample-docs/`, `test-verification/`など - ドキュメントプロジェクト
+- **`sites/`** - ポータル/ランディングサイト
+  - `landing/` - ランディングページ（ルート `/` にデプロイ）
 - **`packages/`** - 共有ワークスペースパッケージ
   - `@docs/ui` - 共通UIコンポーネント
   - `@docs/theme` - 共有テーマとスタイリング
@@ -185,9 +186,9 @@ apps/{project}/src/content/docs/
 - `apps/{project}/astro.config.mjs` - ベースパス付きのAstro設定
 - `apps/{project}/src/config/project.config.json` - プロジェクトメタデータ、バージョン、言語、ライセンス
 
-**トップページの設定：**
+**ランディングページの設定：**
 
-- `apps/top-page/src/config/projects.config.json` - プロジェクトの装飾（アイコン、タグ）
+- `sites/landing/src/config/projects.config.json` - プロジェクトの装飾（アイコン、タグ）
 
 ### ビルドシステム
 
@@ -201,7 +202,7 @@ apps/{project}/src/content/docs/
 
 ```text
 dist/
-  ├── index.html           # top-page（ルート）
+  ├── index.html           # landing（ルート）
   ├── assets/              # 共有アセット
   └── docs/
       ├── sample-docs/     # /docs/{project}/配下の各プロジェクト

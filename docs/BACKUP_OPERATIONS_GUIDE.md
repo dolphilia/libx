@@ -100,7 +100,7 @@ git commit -m "変更内容の説明"
 │       └── apps/sample-docs/src/config/project.config.json
 └── language-addition-2025-11-02T14-20-10-456Z/  # 言語追加時のバックアップ
     ├── apps/sample-docs/src/config/project.config.json
-    └── apps/top-page/src/config/projects.config.json
+    └── sites/landing/src/config/projects.config.json
 ```
 
 ### バックアップのシナリオ別分類
@@ -261,8 +261,8 @@ du -sh .backups/*/* | sort -h
       apps/sample-docs/src/config/project.config.json
 
    # projects.config.json の復元
-   cp .backups/language-addition-2025-11-02T14-20-10-456Z/apps/top-page/src/config/projects.config.json \
-      apps/top-page/src/config/projects.config.json
+   cp .backups/language-addition-2025-11-02T14-20-10-456Z/sites/landing/src/config/projects.config.json \
+      sites/landing/src/config/projects.config.json
    ```
 
 4. **作成されたディレクトリを手動削除：**
@@ -561,8 +561,8 @@ find .backups/language-addition-2025-11-02T14-20-10-456Z -type f
 cp .backups/language-addition-2025-11-02T14-20-10-456Z/apps/sample-docs/src/config/project.config.json \
    apps/sample-docs/src/config/project.config.json
 
-cp .backups/language-addition-2025-11-02T14-20-10-456Z/apps/top-page/src/config/projects.config.json \
-   apps/top-page/src/config/projects.config.json
+cp .backups/language-addition-2025-11-02T14-20-10-456Z/sites/landing/src/config/projects.config.json \
+   sites/landing/src/config/projects.config.json
 
 # 4. スクリプトが作成した不完全なディレクトリを削除
 # （エラーメッセージから作成されたパスを確認）

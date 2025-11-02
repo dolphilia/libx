@@ -335,33 +335,33 @@ function updateProjectConfig(projectDir, config) {
 }
 
 /**
- * top-pageのprojects.config.jsonを更新する
+ * landingサイトのprojects.config.jsonを更新する
  */
-function updateTopPageConfig(config, options = {}) {
+function updateLandingConfig(config, options = {}) {
   const { dryRun = false } = options;
-  const topPageConfigPath = path.join(rootDir, 'apps', 'top-page', 'src', 'config', 'projects.config.json');
-  const topPageConfig = JSON.parse(fs.readFileSync(topPageConfigPath, 'utf-8'));
+  const landingConfigPath = path.join(rootDir, 'sites', 'landing', 'src', 'config', 'projects.config.json');
+  const landingConfig = JSON.parse(fs.readFileSync(landingConfigPath, 'utf-8'));
   
   // プロジェクトデコレーションを追加
-  topPageConfig.projectDecorations[config.projectName] = {
+  landingConfig.projectDecorations[config.projectName] = {
     icon: config.icon,
     tags: config.tags,
     isNew: true
   };
 
   if (dryRun) {
-    logger.dryRun(`top-page projects.config.json を更新します（dry-runのためファイルは変更しません）: ${topPageConfigPath}`);
+    logger.dryRun(`landing projects.config.json を更新します（dry-runのためファイルは変更しません）: ${landingConfigPath}`);
     return;
   }
   
-  createBackup(topPageConfigPath, {
+  createBackup(landingConfigPath, {
     rootDir,
     scenario: 'create-project',
     logger
   });
   
-  fs.writeFileSync(topPageConfigPath, JSON.stringify(topPageConfig, null, 2));
-  console.log('  ✅ top-page projects.config.json更新完了');
+  fs.writeFileSync(landingConfigPath, JSON.stringify(landingConfig, null, 2));
+  console.log('  ✅ landing projects.config.json更新完了');
 }
 
 /**
@@ -372,14 +372,14 @@ function updateAllConfigFiles(projectDir, config, options = {}) {
   console.log('  設定ファイルを更新しています...');
 
   if (dryRun) {
-    logger.dryRun('package.json / astro.config.mjs / project.config.json / top-page 設定を更新する予定です（dry-runのため未実施）。');
+    logger.dryRun('package.json / astro.config.mjs / project.config.json / landing 設定を更新する予定です（dry-runのため未実施）。');
     return;
   }
   
   updatePackageJson(projectDir, config.projectName);
   updateAstroConfig(projectDir, config.projectName);
   updateProjectConfig(projectDir, config);
-  updateTopPageConfig(config, options);
+  updateLandingConfig(config, options);
   
   console.log('  🎉 すべての設定ファイルの更新完了！');
 }

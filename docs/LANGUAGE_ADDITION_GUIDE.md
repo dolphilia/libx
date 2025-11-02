@@ -111,7 +111,7 @@ node scripts/add-language.js sample-docs zh-Hans "简体中文" "简体中文文
 |-----------|------|--------|
 | `--template-lang=<code>` | コピー元言語を指定 | `--template-lang=ja` |
 | `--skip-test` | ビルドテストをスキップ | `--skip-test` |
-| `--skip-top-page` | トップページ設定更新をスキップ | `--skip-top-page` |
+| `--skip-top-page` | ランディングページ設定更新をスキップ | `--skip-top-page` |
 | `--auto-template` | 対話なしでテンプレート生成 | `--auto-template` |
 
 ### 実行結果の例
@@ -380,13 +380,13 @@ description: "새로운 언어로 작성된 설명"
 
 番号プレフィックスはサイドバーの順序を決定します。
 
-## ステップ5: トップページ（top-page）への言語サポート追加
+## ステップ5: ランディングページ（landing）への言語サポート追加
 
-**重要**: 新しい言語を追加する際は、個別プロジェクトだけでなく、システム全体で整合性を保つためにトップページ（top-page）でもサポートする必要があります。
+**重要**: 新しい言語を追加する際は、個別プロジェクトだけでなく、システム全体で整合性を保つためにランディングページ（landing）でもサポートする必要があります。
 
-### 5.1 top-page設定ファイルの更新
+### 5.1 landing設定ファイルの更新
 
-`apps/top-page/src/config/projects.config.json`を編集し、以下を追加します：
+`sites/landing/src/config/projects.config.json`を編集し、以下を追加します：
 
 ```json
 {
@@ -417,9 +417,9 @@ description: "새로운 언어로 작성된 설명"
 }
 ```
 
-### 5.2 なぜtop-pageの更新が必要か
+### 5.2 なぜlandingの更新が必要か
 
-個別プロジェクトで新しい言語を追加した際、ドキュメントページのヘッダーにある「Libx」リンクは`/${lang}`（例：`/ko`）を指します。しかし、top-pageで該当言語がサポートされていない場合、404エラーが発生します。
+個別プロジェクトで新しい言語を追加した際、ドキュメントページのヘッダーにある「Libx」リンクは`/${lang}`（例：`/ko`）を指します。しかし、landingで該当言語がサポートされていない場合、404エラーが発生します。
 
 **問題のあるリンクの例**:
 - 韓国語ドキュメントページ → 「Libx」クリック → `/ko` → 404エラー
@@ -494,9 +494,9 @@ pnpm dev
 
 #### 問題4: ヘッダーの「Libx」リンクが404エラーになる
 
-**原因**: top-pageで新しい言語がサポートされていない
+**原因**: landingで新しい言語がサポートされていない
 
-**解決方法**: `apps/top-page/src/config/projects.config.json`の`supportedLangs`に新しい言語を追加し、対応する翻訳コンテンツを追加する
+**解決方法**: `sites/landing/src/config/projects.config.json`の`supportedLangs`に新しい言語を追加し、対応する翻訳コンテンツを追加する
 
 #### 問題5: ページが見つからない（404）
 
@@ -548,8 +548,8 @@ pnpm dev
 - [ ] `project.config.json`の`supportedLangs`に言語コード追加
 - [ ] `project.config.json`の`languageNames`セクションに言語表示名追加
 - [ ] `project.config.json`の`translations`セクションに言語設定追加
-- [ ] **重要**: `apps/top-page/src/config/projects.config.json`の`supportedLangs`に言語コード追加
-- [ ] **重要**: top-pageの翻訳コンテンツ追加（`siteDescription`、`heroTitle`、`heroDescription`）
+- [ ] **重要**: `sites/landing/src/config/projects.config.json`の`supportedLangs`に言語コード追加
+- [ ] **重要**: landingの翻訳コンテンツ追加（`siteDescription`、`heroTitle`、`heroDescription`）
 
 ### ディレクトリ構造
 - [ ] 新しい構造でディレクトリ作成（`src/content/docs/[version]/[lang]/`）

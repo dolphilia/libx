@@ -57,7 +57,7 @@ libx-dev/
    
    # 特定のプロジェクトのみ起動
    pnpm --filter=project-template dev
-   pnpm --filter=top-page dev
+   pnpm --filter=sites-landing dev
    ```
 
 ### ローカルサーバーでの確認
@@ -225,11 +225,11 @@ pnpm build:deploy
 
 ## 自動プロジェクト検出機能
 
-`apps/top-page`では自動プロジェクト検出機能を使用しており、`apps/`ディレクトリ内のプロジェクトを自動的に検出してトップページに表示します。
+`sites/landing` では自動プロジェクト検出機能を使用しており、`apps/` ディレクトリ内のプロジェクトを自動的に検出してトップページに表示します。
 
 ### プロジェクト装飾設定
 
-`apps/top-page/src/config/projects.config.json`でプロジェクトのアイコンやタグなどの装飾情報を設定できます：
+`sites/landing/src/config/projects.config.json` でプロジェクトのアイコンやタグなどの装飾情報を設定できます：
 
 ```json
 {
@@ -264,8 +264,8 @@ pnpm create:project project-name "Project Name" "プロジェクト名"
 apps/[project-name]/src/config/
 └── project.config.json   # プロジェクト統合設定（JSON形式、メタデータ、バージョン、カテゴリ翻訳）
 
-apps/top-page/src/config/
-└── projects.config.json  # トップページのプロジェクト一覧設定（JSON形式）
+sites/landing/src/config/
+└── projects.config.json  # ランディングページのプロジェクト一覧設定（JSON形式）
 ```
 
 ### 新しいバージョンの追加

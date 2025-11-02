@@ -8,7 +8,7 @@
  * 
  * 使用方法:
  * node scripts/build-selective.js --projects=sample-docs,test-verification
- * node scripts/build-selective.js --projects=top-page
+ * node scripts/build-selective.js --projects=landing
  * node scripts/build-selective.js --projects=project-template
  * 
  * オプション:
@@ -56,24 +56,61 @@ function parseProjectsFromArgs(args) {
 }
 
 /**
- * appsディレクトリから利用可能なプロジェクト一覧を取得
+ * ビルド対象を列挙（apps/* は docs、sites/* は portals）
  */
-async function getAvailableProjects() {
+function collectBuildTargets() {
   const appsDir = path.join(rootDir, 'apps');
-  const projects = [];
-  
+  const sitesDir = path.join(rootDir, 'sites');
+  const targets = new Map();
+
   try {
-    const entries = fs.readdirSync(appsDir, { withFileTypes: true });
-    const appDirs = entries.filter(entry => entry.isDirectory());
-    
-    for (const dir of appDirs) {
-      projects.push(dir.name);
+    const entries = fs.readdirSync(appsDir, { withFileTypes: true }).filter(entry => entry.isDirectory());
+
+    for (const dir of entries) {
+      const appName = dir.name;
+      if (appName === 'project-template') {
+        continue;
+      }
+
+      const appPath = path.join(appsDir, appName);
+      targets.set(appName, {
+        name: appName,
+        type: 'docs',
+        packageName: `apps-${appName}`,
+        srcDir: path.join(appPath, 'dist'),
+        destDir: path.join(distDir, 'docs', appName),
+        pathPrefix: `/docs/${appName}`,
+        sidebarSrcDir: path.join(appPath, 'public', 'sidebar')
+      });
     }
   } catch (error) {
     console.error('プロジェクト検出中にエラーが発生しました:', error);
   }
-  
-  return projects;
+
+  if (fs.existsSync(sitesDir)) {
+    try {
+      const siteEntries = fs.readdirSync(sitesDir, { withFileTypes: true }).filter(entry => entry.isDirectory());
+
+      for (const dir of siteEntries) {
+        const siteName = dir.name;
+        const sitePath = path.join(sitesDir, siteName);
+        const isLanding = siteName === 'landing';
+
+        targets.set(siteName, {
+          name: siteName,
+          type: 'site',
+          packageName: `sites-${siteName}`,
+          srcDir: path.join(sitePath, 'dist'),
+          destDir: isLanding ? distDir : path.join(distDir, siteName),
+          pathPrefix: isLanding ? '' : `/${siteName}`
+        });
+      }
+    } catch (error) {
+      console.error('サイト検出中にエラーが発生しました:', error);
+    }
+  }
+
+  return targets;
 }
 
 /**
@@ -88,32 +125,6 @@ async function validateProjects(requestedProjects, availableProjects) {
     console.error('\n利用可能なプロジェクト:');
     availableProjects.forEach(p => console.error(`  - ${p}`));
     process.exit(1);
-  }
-}
-
-/**
- * プロジェクト設定を生成
- */
-function generateProjectConfig(projectName) {
-  const appPath = path.join(rootDir, 'apps', projectName);
-  const srcDir = path.join(appPath, 'dist');
-  
-  if (projectName === 'top-page') {
-    // トップページはルートに配置
-    return {
-      name: projectName,
-      srcDir,
-      destDir: distDir,
-      pathPrefix: ''
-    };
-  } else {
-    // ドキュメントプロジェクトは/docs/{project-name}/に配置
-    return {
-      name: projectName,
-      srcDir,
-      destDir: path.join(distDir, 'docs', projectName),
-      pathPrefix: `/docs/${projectName}`
-    };
   }
 }
 
@@ -221,8 +232,8 @@ async function main() {
   console.log('指定されたプロジェクト:', requestedProjects.join(', '));
 
   // 利用可能なプロジェクトを取得して検証
-  const availableProjects = await getAvailableProjects();
-  await validateProjects(requestedProjects, availableProjects);
+  const availableTargets = collectBuildTargets();
+  await validateProjects(requestedProjects, Array.from(availableTargets.keys()));
 
   // distディレクトリが存在しない場合は作成
   if (!fs.existsSync(distDir)) {
@@ -231,13 +242,19 @@ async function main() {
   }
 
   // プロジェクト設定を生成
-  const projectConfigs = requestedProjects.map(generateProjectConfig);
+  const projectConfigs = requestedProjects.map(name => {
+    const config = availableTargets.get(name);
+    if (!config) {
+      throw new Error(`内部エラー: ${name} の設定が取得できませんでした`);
+    }
+    return config;
+  });
 
   // 各プロジェクトを個別にビルド
   for (const config of projectConfigs) {
     console.log(`${config.name} をビルドしています...`);
     try {
-      execSync(`pnpm --filter=apps-${config.name} build`, { stdio: 'inherit' });
+      execSync(`pnpm --filter=${config.packageName} build`, { stdio: 'inherit' });
     } catch (error) {
       console.error(`${config.name} のビルドに失敗しました:`, error);
       process.exit(1);
@@ -263,8 +280,8 @@ async function main() {
     copyDirRecursive(config.srcDir, config.destDir);
 
     // サイドバーJSONファイルをコピー（ドキュメントプロジェクトの場合）
-    if (config.name !== 'top-page') {
-      const sidebarSrcDir = path.join(rootDir, 'apps', config.name, 'public', 'sidebar');
+    if (config.type === 'docs' && config.sidebarSrcDir) {
+      const sidebarSrcDir = config.sidebarSrcDir;
       const sidebarDestDir = path.join(config.destDir, 'sidebar');
       
       if (fs.existsSync(sidebarSrcDir)) {

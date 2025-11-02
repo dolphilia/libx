@@ -80,8 +80,8 @@ async function generateAutoProjects(decorations: Record<string, ProjectDecoratio
       
       // 日本語は存在する場合のみ
       try {
-        const appsDir = path.resolve(process.cwd(), '..', '..');
-        const jaContentPath = path.join(appsDir, 'apps', id, 'src', 'content', 'docs', 'v1', 'ja');
+        const repoRoot = path.resolve(process.cwd(), '..', '..');
+        const jaContentPath = path.join(repoRoot, 'apps', id, 'src', 'content', 'docs', 'v1', 'ja');
         await fs.access(jaContentPath);
         basicFallbackUrl['ja'] = `/docs/${id}/v1/ja/01-guide/01-getting-started`;
       } catch {
@@ -135,7 +135,7 @@ export async function getTopPageConfig(): Promise<TopPageConfig> {
     
     return _configCache;
   } catch (error) {
-    console.error('Failed to load top-page config:', error);
+    console.error('Failed to load landing config:', error);
     
     // フォールバック設定
     return getFailsafeConfig();

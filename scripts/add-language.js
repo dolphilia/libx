@@ -181,7 +181,7 @@ function showUsage(exitCode = 1) {
   logger.detail('--template-lang=<code>: コピー元にする既存言語（既定: en）');
   logger.detail('--auto-template: 対話なしでテンプレート生成を行います');
   logger.detail('--skip-test: ビルドテストを実行しません');
-  logger.detail('--skip-top-page: トップページ設定の更新を省略します');
+  logger.detail('--skip-top-page: ランディングページ設定の更新を省略します');
   logger.detail('--interactive: 必要な値を対話的に入力します');
   logger.blank();
   logger.info('サポート言語');
@@ -388,35 +388,35 @@ function updateProjectConfig(projectName, languageCode, displayName, description
 }
 
 /**
- * トップページ設定ファイルを更新する
+ * ランディングページ設定ファイルを更新する
  */
-function updateTopPageConfig(languageCode, displayName, skipTopPage = false, backupManager) {
-  if (skipTopPage) {
-    console.log('  ⏩ トップページ設定の更新をスキップしました');
+function updateLandingConfig(languageCode, displayName, skipLanding = false, backupManager) {
+  if (skipLanding) {
+    console.log('  ⏩ ランディングページ設定の更新をスキップしました');
     return true;
   }
   
-  console.log('  トップページ設定ファイルを更新しています...');
+  console.log('  ランディングページ設定ファイルを更新しています...');
   
   try {
-    const topPageConfigPath = path.join(rootDir, 'apps', 'top-page', 'src', 'config', 'projects.config.json');
+    const landingConfigPath = path.join(rootDir, 'sites', 'landing', 'src', 'config', 'projects.config.json');
     
     // バックアップを作成
-    backupManager.backupFile(topPageConfigPath);
+    backupManager.backupFile(landingConfigPath);
     
-    const topPageConfig = JSON.parse(fs.readFileSync(topPageConfigPath, 'utf-8'));
+    const landingConfig = JSON.parse(fs.readFileSync(landingConfigPath, 'utf-8'));
     
     // supportedLangsに言語を追加
-    if (!topPageConfig.siteConfig.supportedLangs.includes(languageCode)) {
-      topPageConfig.siteConfig.supportedLangs.push(languageCode);
-      console.log(`  ✅ トップページのsupportedLangsに "${languageCode}" を追加`);
+    if (!landingConfig.siteConfig.supportedLangs.includes(languageCode)) {
+      landingConfig.siteConfig.supportedLangs.push(languageCode);
+      console.log(`  ✅ ランディングページのsupportedLangsに "${languageCode}" を追加`);
     }
     
     // 各翻訳コンテンツを更新（基本的な内容で）
     const contentSections = ['siteDescription', 'heroTitle', 'heroDescription'];
     
     for (const section of contentSections) {
-      if (topPageConfig.content[section] && !topPageConfig.content[section][languageCode]) {
+      if (landingConfig.content[section] && !landingConfig.content[section][languageCode]) {
         // 既存の翻訳から適切なデフォルト値を設定
         const defaultValues = {
           siteDescription: `Astroで構築されたドキュメントサイト`,
@@ -424,18 +424,18 @@ function updateTopPageConfig(languageCode, displayName, skipTopPage = false, bac
           heroDescription: '必要なすべてのドキュメントを一箇所で見つけることができます'
         };
         
-        topPageConfig.content[section][languageCode] = defaultValues[section] || '';
+        landingConfig.content[section][languageCode] = defaultValues[section] || '';
         console.log(`  ✅ ${section}の翻訳を追加: "${defaultValues[section]}"`);
       }
     }
     
     // 設定を保存
-    fs.writeFileSync(topPageConfigPath, JSON.stringify(topPageConfig, null, 2));
-    console.log('  ✅ トップページ設定ファイルの更新完了');
+    fs.writeFileSync(landingConfigPath, JSON.stringify(landingConfig, null, 2));
+    console.log('  ✅ ランディングページ設定ファイルの更新完了');
     
     return true;
   } catch (error) {
-    console.error('  ❌ トップページ設定ファイルの更新に失敗しました');
+    console.error('  ❌ ランディングページ設定ファイルの更新に失敗しました');
     console.error(`  エラー: ${error.message}`);
     throw error;
   }
@@ -709,7 +709,7 @@ async function main() {
     
     // 4. トップページ設定の更新
     showProgress(currentStep++, 8, 'トップページ設定を更新しています...');
-    updateTopPageConfig(config.languageCode, config.displayName, config.skipTopPage, backupManager);
+    updateLandingConfig(config.languageCode, config.displayName, config.skipTopPage, backupManager);
     console.log('✅ トップページ設定更新完了');
     console.log('');
     
@@ -756,7 +756,7 @@ async function main() {
         console.log('⚠️  ロールバック部分的成功');
         console.log('\n🔧 手動確認が必要なファイル:');
         console.log(`  - apps/${config.projectName}/src/config/project.config.json`);
-        console.log('  - apps/top-page/src/config/projects.config.json');
+        console.log('  - sites/landing/src/config/projects.config.json');
         console.log(`  - apps/${config.projectName}/src/content/docs/*/\${config.languageCode}/`);
         
         const backupDir = backupManager.saveBackupFiles();
@@ -770,7 +770,7 @@ async function main() {
       console.log('\n🚨 緊急事態: 手動でシステムを復旧してください');
       console.log('影響を受けた可能性のあるファイル:');
       console.log(`  - apps/${config.projectName}/src/config/project.config.json`);
-      console.log('  - apps/top-page/src/config/projects.config.json');
+      console.log('  - sites/landing/src/config/projects.config.json');
       console.log(`  - apps/${config.projectName}/src/content/docs/*/\${config.languageCode}/`);
       
       // バックアップファイルを保存して復旧の手がかりを提供

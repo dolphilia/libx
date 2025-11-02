@@ -111,8 +111,8 @@ graph TB
 システムは`apps/`ディレクトリを自動スキャンし：
 
 - **含まれるプロジェクト**: `sample-docs`, `test-verification` などの本番ドキュメント。選択的ビルド（`build:selective` / `build:sidebar-selective`）では `project-template` を指定してテンプレートの動作確認も可能です。
-- **除外されるプロジェクト**: `top-page`（sidebar系スクリプトでは除外）
-- **特別扱い**: `top-page`はルート（`/`）に配置、他は`/docs/{project-name}/`に配置。`project-template` は統合ビルドでは除外されますが、テンプレート検証用途で個別ビルドできます。
+- **除外されるプロジェクト**: `project-template`（sidebar系スクリプトでは除外）
+- **特別扱い**: `sites/landing` はルート（`/`）に配置、他は`/docs/{project-name}/`に配置。`project-template` は統合ビルドでは除外されますが、テンプレート検証用途で個別ビルドできます。
 
 ## 🔧 詳細ビルドプロセス
 
@@ -181,7 +181,7 @@ pnpm build:local
 **ディレクトリ構造**:
 ```
 dist/
-├── index.html              # top-page（ルート）
+├── index.html              # landing（ルート）
 ├── assets/                 # 共通アセット
 ├── docs/
 │   ├── sample-docs/        # sample-docsプロジェクト
@@ -222,7 +222,7 @@ pnpm build:selective --projects=sample-docs
 pnpm build:selective --projects=sample-docs,test-verification
 
 # ローカル開発用（ベースパスなし）
-pnpm build:selective:local --projects=top-page
+pnpm build:selective:local --projects=landing
 ```
 
 ### 3. ベースパス処理

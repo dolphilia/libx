@@ -141,7 +141,7 @@ $ node scripts/create-project.js my-docs "My Documentation" "私のドキュメ�
   ✅ package.json更新完了
   ✅ astro.config.mjs更新完了
   ✅ project.config.json更新完了
-  ✅ top-page projects.config.json更新完了
+  ✅ landing projects.config.json更新完了
 ✅ 設定ファイル更新完了
 
 [5/7] 依存関係をインストールしています...
@@ -327,9 +327,9 @@ export default defineConfig({
 }
 ```
 
-### 5. トップページの設定更新
+### 5. ランディングページの設定更新
 
-`apps/top-page/src/config/projects.config.json` に新しいプロジェクトのデコレーション情報を追加します。
+`sites/landing/src/config/projects.config.json` に新しいプロジェクトのデコレーション情報を追加します。
 
 ```json
 {
@@ -412,7 +412,7 @@ pnpm build
 
 2. **統合ビルドシステム**
    - `scripts/build-integrated.js` は `apps/` ディレクトリから自動でプロジェクトを検出
-   - 追加の設定変更は不要（top-page以外のプロジェクトは自動で `/docs/プロジェクト名/` にマッピング）
+   - 追加の設定変更は不要（landing サイト以外のプロジェクトは自動で `/docs/プロジェクト名/` にマッピング）
 
 3. **依存関係**
    - 新しいプロジェクトでは必ず `pnpm install` を実行

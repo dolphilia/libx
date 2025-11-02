@@ -31,7 +31,7 @@ const rootDir = path.resolve(__dirname, '..');
 // 基本設定
 const config = {
   appsDir: path.join(rootDir, 'apps'),
-  excludedProjects: ['top-page'], // 除外するプロジェクト名
+  excludedProjects: ['project-template'], // テンプレートは除外
 };
 
 /**

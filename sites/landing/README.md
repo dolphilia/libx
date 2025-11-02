@@ -1,10 +1,10 @@
-# Top Page
+# Landing
 
-このプロジェクトは、モノレポ内の全ドキュメントプロジェクトのランディングページ（トップページ）を提供するAstroアプリケーションです。
+このプロジェクトは、モノレポ内の全ドキュメントプロジェクトのランディングページを提供するAstroアプリケーションです。
 
 ## 概要
 
-top-pageは、複数のドキュメントサイトを管理するモノレポのフロントエンドとして機能します。ユーザーが利用可能なすべてのドキュメントプロジェクトを一覧表示し、多言語対応でアクセスしやすい形で提供します。
+landingは、複数のドキュメントサイトを管理するモノレポのフロントエンドとして機能します。ユーザーが利用可能なすべてのドキュメントプロジェクトを一覧表示し、多言語対応でアクセスしやすい形で提供します。
 
 ### 主要機能
 
@@ -17,7 +17,7 @@ top-pageは、複数のドキュメントサイトを管理するモノレポの
 ## プロジェクト構造
 
 ```text
-apps/top-page/
+sites/landing/
 ├── README.md                    # このファイル
 ├── package.json                 # 依存関係定義
 ├── astro.config.mjs             # Astro設定（多言語対応含む）
@@ -61,14 +61,14 @@ apps/top-page/
 モノレポ全体のビルドシステムから実行する場合：
 
 ```bash
-# トップページを含む全アプリをビルド
+# ランディングページを含む全アプリをビルド
 pnpm build
 
 # ローカル開発用ビルド
 pnpm build:local
 
-# トップページのみを個別ビルド
-pnpm --filter=top-page build
+# ランディングページのみを個別ビルド
+pnpm --filter=sites-landing build
 ```
 
 ## 設定管理
@@ -130,7 +130,7 @@ pnpm --filter=top-page build
 pnpm build:deploy
 
 # 個別デプロイ
-pnpm --filter=top-page build
+pnpm --filter=sites-landing build
 pnpm deploy:pages
 ```
 
