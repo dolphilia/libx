@@ -54,8 +54,20 @@ async function main() {
       await fs.mkdir(project.outputDir, { recursive: true });
       
       // 言語とバージョンの組み合わせごとにサイドバーを生成
-      for (const lang of project.languages) {
-        for (const version of project.versions) {
+      for (const version of project.versions) {
+        const languagesForVersion = project.languagesByVersion[version] || [];
+        if (languagesForVersion.length === 0) {
+          console.warn(`  ${version} で対応言語が検出できなかったため、サイドバー生成をスキップします。`);
+          continue;
+        }
+
+        const expectedLanguages = project.expectedLanguages ?? project.languages;
+        const missingLanguages = expectedLanguages.filter(lang => !languagesForVersion.includes(lang));
+        if (missingLanguages.length > 0) {
+          console.warn(`  ${version} では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ${missingLanguages.join(', ')}`);
+        }
+
+        for (const lang of languagesForVersion) {
           console.log(`  ${lang}/${version} のサイドバーを生成中...`);
           
           try {
@@ -119,12 +131,19 @@ async function detectProjects() {
         continue;
       }
       
-      // 各バージョンディレクトリ内の言語を検出
-      const languages = await detectLanguages(contentPath, versions[0]);
-      
-      if (languages.length === 0) {
-        console.log(`${projectName} に言語ディレクトリが見つかりませんでした。スキップします。`);
+      // バージョンごとに言語を検出
+      const { validVersions, languagesByVersion, allDetectedLanguages } = await detectLanguagesByVersion(projectName, contentPath);
+      if (validVersions.length === 0) {
+        console.log(`${projectName} に言語ディレクトリが見つからなかったため、スキップします。`);
         continue;
+      }
+
+      const expectedLanguages = await getSupportedLanguages(projectPath);
+      if (expectedLanguages && expectedLanguages.length > 0) {
+        const projectLevelMissing = expectedLanguages.filter(lang => !allDetectedLanguages.includes(lang));
+        if (projectLevelMissing.length > 0) {
+          console.warn(`  ${projectName} で以下の言語がいずれのバージョンでも検出できませんでした: ${projectLevelMissing.join(', ')}`);
+        }
       }
       
       // 出力ディレクトリを設定
@@ -136,13 +155,18 @@ async function detectProjects() {
         path: projectPath,
         contentPath,
         outputDir,
-        languages,
-        versions
+        languages: allDetectedLanguages,
+        versions: validVersions,
+        languagesByVersion,
+        expectedLanguages
       });
       
       console.log(`プロジェクト ${projectName} を検出しました:`);
-      console.log(`  言語: ${languages.join(', ')}`);
-      console.log(`  バージョン: ${versions.join(', ')}`);
+      console.log(`  言語: ${allDetectedLanguages.join(', ')}`);
+      console.log(`  バージョン: ${validVersions.join(', ')}`);
+      if (expectedLanguages && expectedLanguages.length > 0) {
+        console.log(`  設定上の対応言語: ${expectedLanguages.join(', ')}`);
+      }
     }
   } catch (error) {
     console.error('プロジェクト検出中にエラーが発生しました:', error);
@@ -180,6 +204,49 @@ async function detectLanguages(contentPath, version) {
     console.error('言語ディレクトリの検出中にエラーが発生しました:', error);
     return [];
   }
+}
+
+/**
+ * バージョンごとに言語ディレクトリを検出し、マッピングを返す
+ */
+async function detectLanguagesByVersion(projectName, contentPath) {
+  const languagesByVersion = {};
+  const versions = await detectVersions(contentPath);
+  for (const version of versions) {
+    const languages = await detectLanguages(contentPath, version);
+    if (languages.length === 0) {
+      console.warn(`  ${projectName} のバージョン ${version} で対応言語が検出できませんでした。`);
+      continue;
+    }
+    languagesByVersion[version] = languages.sort();
+  }
+
+  const validVersions = Object.keys(languagesByVersion);
+  const allDetectedLanguages = Array.from(
+    new Set(validVersions.flatMap(version => languagesByVersion[version]))
+  ).sort();
+
+  return { validVersions, languagesByVersion, allDetectedLanguages };
+}
+
+/**
+ * プロジェクト設定から対応言語を読み取る
+ */
+async function getSupportedLanguages(projectPath) {
+  const configJsonPath = path.join(projectPath, 'src', 'config', 'project.config.json');
+  try {
+    const raw = await fs.readFile(configJsonPath, 'utf-8');
+    const parsed = JSON.parse(raw);
+    const langs = parsed?.basic?.supportedLangs;
+    if (Array.isArray(langs) && langs.length > 0) {
+      return langs;
+    }
+  } catch (error) {
+    if (error.code !== 'ENOENT') {
+      console.warn(`  プロジェクト設定の読み込みに失敗しました (${configJsonPath}): ${error.message}`);
+    }
+  }
+  return null;
 }
 
 /**

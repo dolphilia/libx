@@ -48,6 +48,7 @@
    - 進捗: ✅ 完了。`scripts/document-utils.js:267` にカテゴリ同期ユーティリティを追加し、`scripts/create-document.js:269` から呼び出すことで新規カテゴリ生成時に各言語の翻訳を自動補完。未翻訳言語には `[要翻訳]` プレフィックス付きのプレースホルダーを挿入し、追記が必要な箇所を可視化できるようにした。
 4. **サイドバー生成ロジックの改善**  
    バージョンごとに対応言語を再検出し、足りない言語は警告を出してスキップするなどフェイルセーフを実装する（scripts/build-sidebar.js:123）。
+   - 進捗: ✅ 完了。`scripts/build-sidebar.js:57` にバージョン単位での言語検出と不足言語の警告処理を追加し、`scripts/build-sidebar-selective.js:450` も同様に更新。`project.config.json` の `supportedLangs` を参照して不足言語を通知しつつ、既存言語のみを安全に出力するようにした。
 5. **バックアップ運用ガイドの整備**  
    `.backups/` ディレクトリの用途・削除タイミング・復元手順を作者向けドキュメントに追記し、ストレージ管理を標準化する（scripts/add-language.js:126、docs/DOCUMENT_ADDITION_GUIDE.md:3）。
 6. **レビュープロセスの可視化**  
