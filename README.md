@@ -12,7 +12,7 @@
 
 ## プロジェクト構造
 
-```
+```text
 libx-dev/
 ├── packages/         # 共有パッケージ
 │   ├── ui/           # 共通UIコンポーネント
@@ -35,17 +35,20 @@ libx-dev/
 ### セットアップ手順
 
 1. リポジトリのクローン：
+
    ```bash
    git clone https://github.com/libx-dev/libx-dev.git
    cd libx-dev
    ```
 
 2. 依存関係のインストール：
+
    ```bash
    pnpm install
    ```
 
 3. 開発サーバーの起動：
+
    ```bash
    # すべてのプロジェクトを起動
    pnpm dev
@@ -95,7 +98,8 @@ pnpm create:project my-project "My Documentation" "私のドキュメント" \
 pnpm create:project quick-project "Quick Project" "クイックプロジェクト" --skip-test
 ```
 
-このスクリプトは以下の処理を自動で実行します：
+このスクリプトは以下の処理を自動で実行します:
+
 - テンプレートプロジェクト（project-template）のコピー
 - 全設定ファイルの自動更新（package.json、astro.config.mjs、project.config.json等）
 - 依存関係の自動インストール
@@ -114,6 +118,7 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
 | `--skip-test` | 動作テストをスキップ | false |
 
 #### 利用可能なアイコン
+
 `file-text`, `book`, `code`, `settings`, `database`, `globe`, `layers`, `package` など
 
 ### 手動でのプロジェクト作成
@@ -121,11 +126,13 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
 自動スクリプトを使わない場合の手動作成方法：
 
 1. 新しいAstroプロジェクトを作成：
+
    ```bash
    pnpm create astro apps/new-project --template minimal
    ```
 
 2. 共有パッケージの依存関係を追加：
+
    ```bash
    pnpm --filter=new-project add @docs/ui @docs/theme @docs/i18n @docs/versioning
    ```
