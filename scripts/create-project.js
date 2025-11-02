@@ -204,7 +204,7 @@ const EXCLUDE_PATTERNS = [
 /**
  * ファイル/ディレクトリが除外対象かどうかを判定する
  */
-function shouldExclude(name, isFile = false) {
+function shouldExclude(name, _isFile = false) {
   return EXCLUDE_PATTERNS.some(pattern => {
     if (pattern.includes('*')) {
       // ワイルドカード処理

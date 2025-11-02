@@ -333,9 +333,6 @@ async function generateSidebarForVersion(project, lang, version) {
  */
 async function getProjectCategoryTranslations(project) {
   try {
-    const configPath = path.join(project.path, 'src', 'config', 'project.config.ts');
-    const configContent = await fs.readFile(configPath, 'utf-8');
-    
     // 最小限の翻訳設定（よく使われるものだけ）
     const translations = {
       en: {

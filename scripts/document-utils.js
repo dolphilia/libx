@@ -184,7 +184,7 @@ export function getCategoryDisplayName(config, lang, category) {
 /**
  * ドキュメントファイルのテンプレートを生成
  */
-export function generateDocumentTemplate(title, description, category) {
+export function generateDocumentTemplate(title, description, _category) {
   const template = `---
 title: "${title}"
 description: "${description || `${title}について説明します`}"

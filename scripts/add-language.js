@@ -18,13 +18,11 @@
 
 import fs from 'fs';
 import path from 'path';
-import readline from 'readline';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import {
   loadProjectConfig,
-  saveProjectConfig,
-  analyzeProjectStructure
+  saveProjectConfig
 } from './document-utils.js';
 import * as logger from './logger.js';
 
@@ -510,7 +508,7 @@ function createDirectoryStructure(projectName, languageCode, templateLang = 'en'
 /**
  * テンプレートファイルを生成する
  */
-function generateTemplateFiles(projectName, languageCode, templateLang = 'en', autoTemplate = false, backupManager) {
+function generateTemplateFiles(projectName, languageCode, templateLang = 'en', _autoTemplate = false, backupManager) {
   console.log('  テンプレートファイルを生成しています...');
   
   try {
