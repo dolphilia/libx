@@ -1,0 +1,211 @@
+---
+import type { LocaleKey } from '@docs/i18n/locales';
+import { translate } from '@docs/i18n/utils';
+import Dropdown from './Dropdown/Dropdown.astro';
+import DropdownItem from './Dropdown/DropdownItem.astro';
+import Icon from './icons/Icon.astro';
+import { getProjectConfig } from '@docs/project-config';
+
+interface Props {
+  currentLang: string;
+  supportedLangs?: string[];
+  className?: string;
+}
+
+const projectConfig = await getProjectConfig();
+
+const {
+  currentLang,
+  supportedLangs = projectConfig.basic.supportedLangs,
+  className = '',
+} = Astro.props;
+
+const resolvedSupportedLangs =
+  supportedLangs?.length ? supportedLangs : [currentLang];
+
+const currentPathname = Astro.url.pathname;
+const normalizedPathname = currentPathname.endsWith('/')
+  ? currentPathname
+  : `${currentPathname}/`;
+
+const baseUrl = projectConfig.basic.baseUrl?.replace(/\/$/, '') ?? '';
+
+let pathWithoutBase = normalizedPathname;
+if (baseUrl && normalizedPathname.startsWith(`${baseUrl}/`)) {
+  pathWithoutBase = normalizedPathname.substring(baseUrl.length);
+} else if (normalizedPathname === `${baseUrl}/`) {
+  pathWithoutBase = '/';
+}
+
+const pathSegments = pathWithoutBase
+  .split('/')
+  .filter((segment) => segment.length > 0);
+
+let versionFromPath: string | undefined;
+let langFromPath: string | undefined;
+let slugParts: string[] = [];
+
+if (pathSegments.length > 0 && /^v\d+([\.-]\d+)*$/.test(pathSegments[0])) {
+  versionFromPath = pathSegments.shift();
+}
+
+const langsForRegex = resolvedSupportedLangs.join('|');
+const langRegex = langsForRegex ? new RegExp(`^(${langsForRegex})$`) : null;
+
+if (langRegex && pathSegments.length > 0 && langRegex.test(pathSegments[0])) {
+  langFromPath = pathSegments.shift();
+}
+
+slugParts = pathSegments;
+
+let slugFromPath = slugParts.join('/');
+if (slugFromPath && !slugFromPath.endsWith('/')) {
+  slugFromPath += '/';
+} else if (
+  !slugFromPath &&
+  slugParts.length === 0 &&
+  (langFromPath || versionFromPath)
+  // 例: /base/v1/en/ や /base/en/
+) {
+  slugFromPath = '';
+}
+
+interface LangPathInfo {
+  lang: string;
+  name: string;
+  path: string;
+  isCurrent: boolean;
+}
+
+const langPaths: LangPathInfo[] = resolvedSupportedLangs.map((langCode) => {
+  const targetLang = langCode as LocaleKey;
+  const pathChunks = [baseUrl];
+
+  if (versionFromPath) {
+    pathChunks.push(versionFromPath);
+  }
+
+  pathChunks.push(targetLang);
+
+  if (slugFromPath && slugFromPath !== '/') {
+    const cleanSlug = slugFromPath.endsWith('/')
+      ? slugFromPath.slice(0, -1)
+      : slugFromPath;
+    if (cleanSlug) {
+      pathChunks.push(cleanSlug);
+    }
+  }
+
+  let newPath = pathChunks
+    .filter((chunk) => typeof chunk === 'string' && chunk.length > 0)
+    .join('/');
+
+  if (!baseUrl && newPath && !newPath.startsWith('/')) {
+    newPath = `/${newPath}`;
+  }
+
+  newPath = newPath.replace(/\/\/+/g, '/');
+
+  if (newPath !== '/' && !newPath.endsWith('/')) {
+    newPath += '/';
+  }
+
+  return {
+    lang: langCode,
+    name: projectConfig.languageNames?.[langCode] ?? langCode,
+    path: newPath || '/',
+    isCurrent: langCode === currentLang,
+  };
+});
+---
+
+<div class="language-selector-container">
+  <Dropdown
+    label={projectConfig.languageNames?.[currentLang] ?? currentLang}
+    align="right"
+    width="14rem"
+    class={`language-dropdown ${className}`}
+  >
+    <div class="language-dropdown-header" slot="before-items">
+      <Icon name="languages" class="language-icon" />
+      <span>言語を選択</span>
+    </div>
+
+    {langPaths.map((pathInfo) => (
+      <DropdownItem
+        label={pathInfo.name}
+        href={pathInfo.path}
+        isActive={pathInfo.isCurrent}
+      >
+        {pathInfo.isCurrent && (
+          <span slot="after-label" class="language-current-badge">
+            {translate('docs.current', currentLang as LocaleKey)}
+          </span>
+        )}
+      </DropdownItem>
+    ))}
+  </Dropdown>
+</div>
+
+<style>
+  .language-selector-container {
+    display: inline-block;
+  }
+
+  .language-dropdown {
+    position: relative;
+  }
+
+  .language-dropdown-header {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-5, #6b7280);
+    border-bottom: 1px solid var(--sl-color-gray-2, #e5e7eb);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .language-icon {
+    font-size: 1rem;
+    color: var(--sl-color-gray-4, #9ca3af);
+  }
+
+  .language-current-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1;
+    background-color: var(--sl-color-blue-2, #dbeafe);
+    color: var(--sl-color-blue-9, #1e40af);
+  }
+
+  :global(.dark) .language-dropdown-header,
+  :global(.dark) .language-dropdown-footer {
+    border-color: var(--sl-color-gray-7, #374151);
+  }
+
+  :global(.dark) .language-current-badge {
+    background-color: rgba(30, 64, 175, 0.2);
+    color: var(--sl-color-blue-3, #93c5fd);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-0.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .language-dropdown :global(.dropdown-content) {
+    animation: fadeIn 0.2s ease-out;
+  }
+</style>
