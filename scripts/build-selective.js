@@ -9,6 +9,7 @@
  * 使用方法:
  * node scripts/build-selective.js --projects=sample-docs,test-verification
  * node scripts/build-selective.js --projects=top-page
+ * node scripts/build-selective.js --projects=project-template
  * 
  * オプション:
  * --projects: ビルド対象プロジェクトをカンマ区切りで指定
@@ -66,11 +67,7 @@ async function getAvailableProjects() {
     const appDirs = entries.filter(entry => entry.isDirectory());
     
     for (const dir of appDirs) {
-      const appName = dir.name;
-      // project-template は除外
-      if (appName !== 'project-template') {
-        projects.push(appName);
-      }
+      projects.push(dir.name);
     }
   } catch (error) {
     console.error('プロジェクト検出中にエラーが発生しました:', error);

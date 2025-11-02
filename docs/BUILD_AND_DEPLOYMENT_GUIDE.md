@@ -30,11 +30,17 @@ pnpm build:selective --projects=sample-docs
 # 複数のプロジェクトをビルド
 pnpm build:selective --projects=sample-docs,test-verification
 
+# テンプレートプロジェクトを単体ビルド
+pnpm build:selective --projects=project-template
+
 # ローカル開発用選択的ビルド
 pnpm build:selective:local --projects=sample-docs
 
 # 選択的サイドバー生成
 pnpm build:sidebar-selective --projects=sample-docs
+
+# テンプレートのサイドバーのみ更新
+pnpm build:sidebar-selective --projects=project-template
 ```
 
 ### ローカル開発用ビルド
@@ -104,9 +110,9 @@ graph TB
 
 システムは`apps/`ディレクトリを自動スキャンし：
 
-- **含まれるプロジェクト**: `sample-docs`, `test-verification`等のドキュメントプロジェクト
-- **除外されるプロジェクト**: `project-template`（テンプレート）, `top-page`（サイドバー生成では除外）
-- **特別扱い**: `top-page`はルート（`/`）に配置、他は`/docs/{project-name}/`に配置
+- **含まれるプロジェクト**: `sample-docs`, `test-verification` などの本番ドキュメント。選択的ビルド（`build:selective` / `build:sidebar-selective`）では `project-template` を指定してテンプレートの動作確認も可能です。
+- **除外されるプロジェクト**: `top-page`（sidebar系スクリプトでは除外）
+- **特別扱い**: `top-page`はルート（`/`）に配置、他は`/docs/{project-name}/`に配置。`project-template` は統合ビルドでは除外されますが、テンプレート検証用途で個別ビルドできます。
 
 ## 🔧 詳細ビルドプロセス
 

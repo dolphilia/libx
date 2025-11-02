@@ -4,7 +4,8 @@ import MainLayout from '../../../layouts/MainLayout.astro';
 import { Card } from '@docs/ui/components';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { translate } from '@docs/i18n/utils';
-import { getLegacyProjectConfig, initializeConfig } from '../../../lib/config';
+import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
+import { buildDocumentPath } from '@docs/content-utils';
 
 // 型定義
 type DocEntry = CollectionEntry<'docs'>;
@@ -133,8 +134,8 @@ const categoryNames: Record<string, string> = {
           <div class="doc-grid">
             {categories[category].map((doc: DocEntry) => {
               // スラグからパスを構築 (例: v2/ja/01-guide/01-getting-started → /01-guide/01-getting-started)
-              const docPath = doc.slug.split('/').slice(2).join('/');
-              const href = `${baseUrl}/${version}/${lang}/${docPath}`;
+              const relativeSegments = doc.slug.split('/').slice(2);
+              const href = `${baseUrl}${buildDocumentPath(version, lang, relativeSegments)}`;
               
               return (
                 <Card

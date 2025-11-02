@@ -282,7 +282,10 @@ export default defineConfig({
     mdx({
       remarkPlugins: [
         // リンク変換プラグインのbaseUrlも更新
-        [remarkLinkTransformer, { baseUrl: '/docs/新しいプロジェクト名' }]
+        [remarkLinkTransformer, {
+          baseUrl: '/docs/新しいプロジェクト名',
+          pathPattern: 'version-first' // ルーティングが "言語/バージョン" の場合は 'locale-first'
+        }]
       ],
       // その他の設定
     }),
@@ -356,7 +359,24 @@ rm -rf node_modules
 pnpm install
 ```
 
-### 7. 動作確認
+### 7. 共有パッケージの活用
+
+コピーしたテンプレートには以下の共有パッケージが組み込まれており、個別に `src/lib` や `src/utils` を維持する必要はありません。
+
+- **`@docs/project-config`**: `getProjectConfig` / `getLegacyProjectConfig` で `project.config.json` を読み込み、キャッシュします。SSRでは `initializeConfig()` を呼んだ後に同期API（`getLegacyConfig` など）が利用できます。
+- **`@docs/content-utils`**: サイドバー生成、ページネーション、バージョンリンク解決などの処理を提供します。`pathPattern` オプションで `version-first`（既定）か `locale-first` を選択してください。
+
+```ts
+import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
+import { getSidebarAsync } from '@docs/content-utils';
+
+await initializeConfig();
+const projectConfig = await getLegacyProjectConfig();
+
+const sidebar = await getSidebarAsync('en', 'v1', projectConfig.baseUrl);
+```
+
+### 8. 動作確認
 
 #### 開発サーバーのテスト
 

@@ -4,10 +4,10 @@ import DocLayout from '../../../layouts/DocLayout.astro';
 import type { GetStaticPathsResult } from 'astro';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { TableOfContents, Pagination } from '@docs/ui/components';
-import { getLegacyProjectConfig, initializeConfig } from '../../../lib/config';
+import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
 import { mergePagination, type PageLink } from '@docs/versioning/utils';
 
-import { generateFileBasedPagination, checkFileExists } from '../../../utils/content-utils';
+import { generateFileBasedPagination, checkFileExists } from '@docs/content-utils';
 
 // 設定を初期化
 await initializeConfig();
@@ -74,9 +74,6 @@ const lang = (langParam || 'en') as LocaleKey;
 
 // デバッグログ
 console.log(`[Page Render] Processing URL params - version: ${version}, lang: ${lang}, entry.slug: ${entry.slug}`);
-
-// GitHub Pagesのベースパス
-const baseUrl = '';
 
 // 目次の生成
 const tableOfContents: TOCItem[] = headings.filter((heading: Heading) => heading.depth <= 3).map((heading: Heading) => ({

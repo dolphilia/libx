@@ -1,7 +1,6 @@
 ---
-import { getLegacyProjectConfig, initializeConfig } from '../../lib/config';
+import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
 import type { LocaleKey } from '@docs/i18n/locales';
-import { generateRedirectUrl } from '../../utils/dynamic-navigation';
 
 export async function getStaticPaths() {
   // getStaticPaths内で設定を初期化
@@ -22,7 +21,7 @@ const projectConfig = await getLegacyProjectConfig();
 const baseUrl = projectConfig.baseUrl;
 
 // デフォルト言語でリダイレクト
-const defaultLang = projectConfig.defaultLocale || 'en';
+const defaultLang = projectConfig.defaultLang as LocaleKey;
 const redirectUrl = `${baseUrl}/${version}/${defaultLang}/`;
 
 // リダイレクトを実行

@@ -16,6 +16,47 @@ export interface ContentFile {
 
 export interface ContentOptions {
   projectDir?: string;
+  pathPattern?: 'version-first' | 'locale-first';
+}
+
+type PathPattern = NonNullable<ContentOptions['pathPattern']>;
+const DEFAULT_PATH_PATTERN: PathPattern = 'version-first';
+
+function getPathPattern(options?: ContentOptions): PathPattern {
+  return options?.pathPattern ?? DEFAULT_PATH_PATTERN;
+}
+
+function cleanSegment(segment: string): string {
+  return segment.replace(/^\/+|\/+$/g, '');
+}
+
+export function buildDocumentPath(
+  version: string,
+  lang: LocaleKey,
+  relativePath: string | string[] | undefined,
+  options?: ContentOptions
+): string {
+  const pattern = getPathPattern(options);
+  const relativeSegments = Array.isArray(relativePath)
+    ? relativePath
+    : (relativePath ? relativePath.split('/') : []);
+
+  const cleanedSegments = relativeSegments
+    .map(seg => cleanSegment(seg))
+    .filter(seg => seg.length > 0);
+
+  const baseSegments =
+    pattern === 'locale-first'
+      ? [lang, version]
+      : [version, lang];
+
+  const allSegments = [...baseSegments, ...cleanedSegments];
+
+  if (allSegments.length === 0) {
+    return '/';
+  }
+
+  return '/' + allSegments.map(cleanSegment).join('/');
 }
 
 /**
@@ -61,6 +102,7 @@ export async function getAvailableContent(options?: ContentOptions): Promise<Con
 
       if (pathParts.length >= 4) {
         const [version, lang, section, fileName] = pathParts;
+        const restParts = pathParts.slice(2);
 
         // ファイル名から拡張子を除去（番号プレフィックスは保持）
         const fileSlug = fileName.replace('.mdx', '');
@@ -73,7 +115,12 @@ export async function getAvailableContent(options?: ContentOptions): Promise<Con
           version,
           section,
           fullPath: path.join('src', 'content', 'docs', filePath),
-          url: `/${version}/${lang}/${section}/${fileSlug}`
+          url: buildDocumentPath(
+            version,
+            lang as LocaleKey,
+            [...restParts.slice(0, -1), fileSlug],
+            options
+          )
         };
 
         contentFiles.push(contentFile);
@@ -413,7 +460,8 @@ export async function findCorrespondingFile(
 
   if (targetFiles.length === 0) {
     // ターゲットバージョンにファイルがない場合はバージョンのルートページへ
-    return `${baseUrl}/${targetVersion}/${currentLang}/`;
+    const basePath = buildDocumentPath(targetVersion, currentLang, undefined, options);
+    return `${baseUrl}${basePath}/`;
   }
 
   // currentSlugを解析

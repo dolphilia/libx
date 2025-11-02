@@ -9,6 +9,7 @@
  * 使用方法:
  * node scripts/build-sidebar-selective.js --projects=sample-docs,test-verification
  * node scripts/build-sidebar-selective.js --projects=sample-docs
+ * node scripts/build-sidebar-selective.js --projects=project-template
  * 
  * オプション:
  * --projects: サイドバー生成対象プロジェクトをカンマ区切りで指定
@@ -30,7 +31,7 @@ const rootDir = path.resolve(__dirname, '..');
 // 基本設定
 const config = {
   appsDir: path.join(rootDir, 'apps'),
-  excludedProjects: ['top-page', 'project-template'], // 除外するプロジェクト名
+  excludedProjects: ['top-page'], // 除外するプロジェクト名
 };
 
 /**

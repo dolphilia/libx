@@ -4,7 +4,8 @@ import MainLayout from '../../../layouts/MainLayout.astro';
 import { Card } from '@docs/ui/components';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { translate } from '@docs/i18n/utils';
-import { getLegacyProjectConfig, initializeConfig } from '../../../lib/config';
+import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
+import { buildDocumentPath } from '@docs/content-utils';
 
 // 型定義
 type DocEntry = CollectionEntry<'docs'>;
@@ -90,7 +91,11 @@ const categoryNames: Record<string, string> = {
             {categories[category].map((doc: DocEntry) => (
               <Card
                 title={doc.data.title}
-                href={`${baseUrl}/${version}/${lang}/${doc.slug.split('/').slice(2).join('/')}`}
+                href={`${baseUrl}${buildDocumentPath(
+                  version,
+                  lang,
+                  doc.slug.split('/').slice(2)
+                )}`}
               >
                 <p class="doc-description">{doc.data.description}</p>
               </Card>

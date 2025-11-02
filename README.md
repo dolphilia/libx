@@ -18,7 +18,9 @@ libx-dev/
 │   ├── ui/           # 共通UIコンポーネント
 │   ├── theme/        # 共通テーマ
 │   ├── i18n/         # 国際化ユーティリティ
-│   └── versioning/   # バージョン管理機能
+│   ├── versioning/   # バージョン管理機能
+│   ├── project-config/ # プロジェクト設定ローダー & キャッシュ
+│   └── content-utils/  # コンテンツ探索・サイドバー・ナビゲーション共通処理
 ├── apps/             # 各ドキュメントプロジェクト
 ├── config/           # 共通設定
 └── scripts/          # ユーティリティスクリプト
@@ -134,7 +136,13 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
 2. 共有パッケージの依存関係を追加：
 
    ```bash
-   pnpm --filter=new-project add @docs/ui @docs/theme @docs/i18n @docs/versioning
+   pnpm --filter=new-project add \
+     @docs/ui \
+     @docs/theme \
+     @docs/i18n \
+     @docs/versioning \
+     @docs/project-config \
+     @docs/content-utils
    ```
 
 3. プロジェクト設定の調整：
@@ -144,6 +152,31 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
    - バージョン管理の設定
 
 手動作成の詳細手順は`docs/NEW_PROJECT_CREATION_GUIDE.md`を参照してください。
+
+## 共有ユーティリティの利用ガイド
+
+新しく追加された共有パッケージを利用することで、アプリ固有の `src/lib` や `src/utils` を保持せずに共通ロジックを再利用できます。
+
+- `@docs/project-config`
+  - `getProjectConfig` / `getLegacyProjectConfig` がプロジェクト設定を読み込み、アプリ内でキャッシュします。
+  - `projectDir` を渡すと別ディレクトリの設定も読み込めます（スクリプト実行時向け）。
+  - `initializeConfig` を呼び出すと同期版API（`getLegacyConfig` など）も利用可能です。
+
+- `@docs/content-utils`
+  - サイドバー生成やページネーションで使用するファイル走査・URL生成処理を集約しています。
+  - `pathPattern` オプションでルーティング方式（`'version-first'` / `'locale-first'`）を切り替えられます。`project-template` や `test-verification` は既定値、`sample-docs` のようなロケール先頭ルートでは `pathPattern: 'locale-first'` を指定します。
+
+```ts
+import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
+import { getSidebarAsync } from '@docs/content-utils';
+
+await initializeConfig();
+const projectConfig = await getLegacyProjectConfig();
+
+const sidebar = await getSidebarAsync('ja', 'v2', projectConfig.baseUrl, {
+  pathPattern: 'locale-first'
+});
+```
 
 ## ビルドとデプロイ
 

@@ -4,10 +4,10 @@ import DocLayout from '../../../layouts/DocLayout.astro';
 import type { GetStaticPathsResult } from 'astro';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { TableOfContents, Pagination } from '@docs/ui/components';
-import { getLegacyProjectConfig, initializeConfig } from '../../../lib/config';
+import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
 import { mergePagination, type PageLink } from '@docs/versioning/utils';
 
-import { generateFileBasedPagination, checkFileExists } from '../../../utils/content-utils';
+import { generateFileBasedPagination, checkFileExists } from '@docs/content-utils';
 
 // 設定を初期化
 await initializeConfig();
@@ -74,14 +74,14 @@ try {
   const currentFile = slugParts[3]; // "01-getting-started"
   const currentSlug = currentFile.replace(/^\d+-/, ''); // "getting-started"
   
-  // ファイル構造ベースのページネーションを生成
-  autoPagination = await generateFileBasedPagination(
-    lang,
-    version,
-    currentSection,
-    currentSlug,
-    projectConfig.baseUrl
-  );
+// ファイル構造ベースのページネーションを生成
+autoPagination = await generateFileBasedPagination(
+  lang,
+  version,
+  currentSection,
+  currentSlug,
+  projectConfig.baseUrl
+);
   
   console.log(`[File-Based Pagination] Generated for ${lang}/${version}/${currentSection}/${currentSlug}:`, autoPagination);
 } catch (error) {

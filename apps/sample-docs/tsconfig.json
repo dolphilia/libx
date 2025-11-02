@@ -1,7 +1,18 @@
 {
   "extends": "../../config/tsconfig/astro.json",
   "compilerOptions": {
-    // プロジェクト固有の compilerOptions があればここに追加
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@docs/ui/*": ["../../packages/ui/src/*"],
+      "@docs/i18n/*": ["../../packages/i18n/src/*"],
+      "@docs/theme/*": ["../../packages/theme/src/*"],
+      "@docs/versioning/*": ["../../packages/versioning/src/*"],
+      "@docs/project-config": ["../../packages/project-config/src/index.ts"],
+      "@docs/project-config/*": ["../../packages/project-config/src/*"],
+      "@docs/content-utils": ["../../packages/content-utils/src/index.ts"],
+      "@docs/content-utils/*": ["../../packages/content-utils/src/*"]
+    }
   },
   "files": [
     ".astro/types.d.ts"

@@ -3,7 +3,7 @@
  */
 import type { LocaleKey } from '@docs/i18n/locales';
 import { resolveProjectDir, getCategoryTranslationsAsync } from '@docs/project-config';
-import type { ContentOptions } from './content-utils';
+import { buildDocumentPath, type ContentOptions } from './content-utils';
 
 export type SidebarItem = {
   title: string;
@@ -86,7 +86,7 @@ async function getFallbackSidebar(
       items: [
         {
           title: await translateCategory('getting_started', lang, options),
-          href: `${baseUrl}/${version}/${lang}/guide/01-getting-started`
+          href: `${baseUrl}${buildDocumentPath(version, lang, ['guide', '01-getting-started'], options)}`
         }
       ]
     }
@@ -202,7 +202,7 @@ export async function getAutoSidebar(
 
         return {
           title: doc.data.title,
-          href: `${baseUrl}/${version}/${lang}/${finalPath}`
+          href: `${baseUrl}${buildDocumentPath(version, lang, finalPath, options)}`
         };
       })
     };
