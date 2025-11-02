@@ -12,6 +12,7 @@ import { createBackup } from './safety-utils.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
+const PLACEHOLDER_PREFIX = '[要翻訳] ';
 
 /**
  * プロジェクトの設定を読み込む
@@ -258,6 +259,104 @@ export function createDocumentFile(projectName, lang, version, categoryDir, file
   fs.writeFileSync(docPath, content);
   
   return docPath;
+}
+
+/**
+ * project.config.json のカテゴリ翻訳を同期
+ */
+export function syncCategoryTranslations(projectName, {
+  lang,
+  categorySlug,
+  displayName,
+  dryRun = false
+} = {}) {
+  if (!categorySlug) {
+    throw new Error('categorySlug が指定されていません。');
+  }
+
+  const config = loadProjectConfig(projectName);
+  const supportedLangs = config?.basic?.supportedLangs ?? [];
+  const defaultLang = config?.basic?.defaultLang ?? lang;
+
+  if (!config.translations) {
+    config.translations = {};
+  }
+
+  const updates = [];
+  const normalizedDisplayName = (displayName ?? '').trim();
+  const fallbackLabel = normalizedDisplayName || categorySlug;
+
+  for (const supportedLang of supportedLangs) {
+    if (!config.translations[supportedLang]) {
+      config.translations[supportedLang] = {
+        displayName: '',
+        displayDescription: '',
+        categories: {}
+      };
+    }
+
+    if (!config.translations[supportedLang].categories) {
+      config.translations[supportedLang].categories = {};
+    }
+
+    const currentValue = config.translations[supportedLang].categories[categorySlug];
+    const isPlaceholderValue = typeof currentValue === 'string' && currentValue.startsWith(PLACEHOLDER_PREFIX);
+    let nextValue;
+
+    if (supportedLang === lang) {
+      const preferredLabel = normalizedDisplayName || currentValue || categorySlug;
+      if (!currentValue || currentValue.trim() === '' || currentValue === categorySlug || currentValue === PLACEHOLDER_PREFIX + categorySlug || isPlaceholderValue) {
+        nextValue = preferredLabel;
+      }
+    } else if (!currentValue || currentValue.trim() === '' || currentValue === categorySlug || currentValue === PLACEHOLDER_PREFIX + categorySlug || isPlaceholderValue) {
+      const defaultValue =
+        config.translations[defaultLang]?.categories?.[categorySlug] ??
+        config.translations[lang]?.categories?.[categorySlug] ??
+        normalizedDisplayName;
+      let resolvedValue;
+
+      if (defaultValue) {
+        resolvedValue = supportedLang === defaultLang
+          ? defaultValue
+          : `${PLACEHOLDER_PREFIX}${defaultValue}`;
+      } else if (supportedLang === defaultLang) {
+        resolvedValue = fallbackLabel;
+      } else {
+        resolvedValue = `${PLACEHOLDER_PREFIX}${fallbackLabel}`;
+      }
+
+      nextValue = resolvedValue;
+    }
+
+    if (typeof nextValue === 'string' && nextValue !== currentValue) {
+      config.translations[supportedLang].categories[categorySlug] = nextValue;
+      updates.push({
+        lang: supportedLang,
+        previous: currentValue,
+        value: nextValue,
+        placeholder: typeof nextValue === 'string' && nextValue.startsWith(PLACEHOLDER_PREFIX)
+      });
+    }
+  }
+
+  if (updates.length === 0) {
+    return {
+      updated: false,
+      updates,
+      categorySlug
+    };
+  }
+
+  saveProjectConfig(projectName, config, {
+    dryRun,
+    backupScenario: `category-sync-${projectName}`
+  });
+
+  return {
+    updated: true,
+    updates,
+    categorySlug
+  };
 }
 
 /**

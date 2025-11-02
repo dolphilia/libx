@@ -41,9 +41,11 @@
    生成・同期系スクリプトに `--dry-run` / `--confirm` を実装し、削除前バックアップとロールバック導線を提供する（scripts/create-project.js:226、scripts/build-integrated.js:198）。  
    - 進捗: ✅ 完了。`scripts/safety-utils.js:1` を新設し、`scripts/create-project.js:22`・`scripts/build-integrated.js:25`・`scripts/document-utils.js:43` へ導入して dry-run／確認フローとバックアップ作成を実装済み。
 2. **カテゴリ構造の正規化**  
-   `supportedLangs` 全言語でカテゴリキーが一致するよう検証スクリプトを追加し、既存差分を是正する（apps/sample-docs/src/config/project.config.json:18）。
+   `supportedLangs` 全言語でカテゴリキーが一致するよう検証スクリプトを追加し、既存差分を是正する（apps/sample-docs/src/config/project.config.json:18）。  
+   - 進捗: ✅ 完了。`scripts/validate-category-structure.js:1` を追加し、apps 配下の `project.config.json` を横断チェックする仕組みとともに `apps/sample-docs/src/config/project.config.json:29` の余分なカテゴリキーを解消済み。
 3. **設定ファイルの自動同期**  
-   ドキュメント作成・コピー時に `project.config.json` のカテゴリ翻訳を更新する仕組みを CLI に組み込み、スラッグ露出を防止する（scripts/create-document.js:69、apps/test-verification/src/config/project.config.json:18）。
+   ドキュメント作成・コピー時に `project.config.json` のカテゴリ翻訳を更新する仕組みを CLI に組み込み、スラッグ露出を防止する（scripts/create-document.js:69、apps/test-verification/src/config/project.config.json:18）。  
+   - 進捗: ✅ 完了。`scripts/document-utils.js:267` にカテゴリ同期ユーティリティを追加し、`scripts/create-document.js:269` から呼び出すことで新規カテゴリ生成時に各言語の翻訳を自動補完。未翻訳言語には `[要翻訳]` プレフィックス付きのプレースホルダーを挿入し、追記が必要な箇所を可視化できるようにした。
 4. **サイドバー生成ロジックの改善**  
    バージョンごとに対応言語を再検出し、足りない言語は警告を出してスキップするなどフェイルセーフを実装する（scripts/build-sidebar.js:123）。
 5. **バックアップ運用ガイドの整備**  

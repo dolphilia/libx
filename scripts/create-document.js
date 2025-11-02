@@ -16,7 +16,8 @@ import {
   generateDocumentTemplate,
   validateDocumentPath,
   createDocumentFile,
-  displayProjectStructure
+  displayProjectStructure,
+  syncCategoryTranslations
 } from './document-utils.js';
 
 logger.useUnifiedConsole();
@@ -66,7 +67,7 @@ function parseArguments() {
   return { projectName, lang, version, category, title, isInteractive: false };
 }
 
-async function runInteractiveMode(projectName, lang, version) {
+async function runInteractiveMode(projectName, lang, version, preloadedConfig) {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -80,13 +81,15 @@ async function runInteractiveMode(projectName, lang, version) {
     logger.detail(`言語: ${lang}`, { bullet: '' });
     logger.detail(`バージョン: ${version}`, { bullet: '' });
 
-    const config = loadProjectConfig(projectName);
+    const config = preloadedConfig ?? loadProjectConfig(projectName);
     const categories = analyzeProjectStructure(projectName, lang, version);
 
     displayProjectStructure(categories, lang, config);
 
-    let categoryName;
     let categoryDir;
+    let categorySlug;
+    let categoryDisplayName;
+    let isNewCategory = false;
     let fileName;
 
     if (Object.keys(categories).length > 0) {
@@ -106,31 +109,38 @@ async function runInteractiveMode(projectName, lang, version) {
         const selectedIndex = parseInt(categoryIndex, 10) - 1;
 
         if (selectedIndex >= 0 && selectedIndex < categoryList.length) {
-          categoryName = categoryList[selectedIndex];
-          categoryDir = categories[categoryName].fullDir;
+          categorySlug = categoryList[selectedIndex];
+          categoryDir = categories[categorySlug].fullDir;
+          categoryDisplayName = getCategoryDisplayName(config, lang, categorySlug);
         } else {
           logger.error('1 から指定された番号の範囲で入力してください。');
           process.exit(1);
         }
       } else if (categoryChoice === '2') {
-        categoryName = await ask('新しいカテゴリ名を入力してください: ');
+        const categoryInput = await ask('新しいカテゴリ名を入力してください: ');
         const categoryNumber = getNextCategoryNumber(categories);
-        categoryDir = `${categoryNumber}-${normalizeFileName(categoryName)}`;
+        categorySlug = normalizeFileName(categoryInput);
+        categoryDir = `${categoryNumber}-${categorySlug}`;
+        categoryDisplayName = categoryInput.trim() || categorySlug;
+        isNewCategory = true;
       } else {
         logger.error('1 または 2 を入力してください。');
         process.exit(1);
       }
     } else {
       logger.step('最初のカテゴリを作成します');
-      categoryName = await ask('カテゴリ名を入力してください: ');
-      categoryDir = `01-${normalizeFileName(categoryName)}`;
+      const categoryInput = await ask('カテゴリ名を入力してください: ');
+      categorySlug = normalizeFileName(categoryInput);
+      categoryDir = `01-${categorySlug}`;
+      categoryDisplayName = categoryInput.trim() || categorySlug;
+      isNewCategory = true;
     }
 
     const title = await ask('ドキュメントのタイトルを入力してください: ');
     const description = await ask('ドキュメントの説明（任意）: ');
 
-    if (categories[categoryName]) {
-      const nextNumber = categories[categoryName].nextNumber;
+    if (categories[categorySlug]) {
+      const nextNumber = categories[categorySlug].nextNumber;
       fileName = `${nextNumber}-${normalizeFileName(title)}`;
     } else {
       fileName = `01-${normalizeFileName(title)}`;
@@ -147,7 +157,15 @@ async function runInteractiveMode(projectName, lang, version) {
       process.exit(0);
     }
 
-    return { categoryName, categoryDir, fileName, title, description };
+    return {
+      categorySlug,
+      categoryDir,
+      categoryDisplayName,
+      isNewCategory,
+      fileName,
+      title,
+      description
+    };
   } finally {
     rl.close();
   }
@@ -171,20 +189,32 @@ async function main() {
       process.exit(1);
     }
 
+    const projectConfig = loadProjectConfig(args.projectName);
+
     logger.heading('ドキュメント作成ツール');
     logger.info(`プロジェクト: ${args.projectName}`);
     logger.detail(`言語: ${args.lang}`, { bullet: '' });
     logger.detail(`バージョン: ${args.version}`, { bullet: '' });
 
-    let categoryName;
+    let categorySlug;
     let categoryDir;
+    let categoryDisplayName;
+    let isNewCategory = false;
     let fileName;
     let title;
     let description = '';
 
     if (args.isInteractive) {
-      const result = await runInteractiveMode(args.projectName, args.lang, args.version);
-      ({ categoryName, categoryDir, fileName, title, description } = result);
+      const result = await runInteractiveMode(args.projectName, args.lang, args.version, projectConfig);
+      ({
+        categorySlug,
+        categoryDir,
+        categoryDisplayName,
+        isNewCategory,
+        fileName,
+        title,
+        description
+      } = result);
     } else {
       if (!args.category || !args.title) {
         logger.error('非対話モードでは category と title を指定してください。');
@@ -192,22 +222,32 @@ async function main() {
       }
 
       const categories = analyzeProjectStructure(args.projectName, args.lang, args.version);
-      categoryName = args.category;
       title = args.title;
+      const rawCategoryInput = args.category;
+      const normalizedCategory = normalizeFileName(rawCategoryInput);
+      const existingCategory = categories[rawCategoryInput] || categories[normalizedCategory];
 
-      if (categories[categoryName]) {
-        categoryDir = categories[categoryName].fullDir;
-        const nextNumber = categories[categoryName].nextNumber;
+      if (existingCategory) {
+        categorySlug = categories[rawCategoryInput] ? rawCategoryInput : normalizedCategory;
+        categoryDir = existingCategory.fullDir;
+        const nextNumber = existingCategory.nextNumber;
         fileName = `${nextNumber}-${normalizeFileName(title)}`;
+        categoryDisplayName = getCategoryDisplayName(projectConfig, args.lang, categorySlug);
       } else {
         const categoryNumber = getNextCategoryNumber(categories);
-        categoryDir = `${categoryNumber}-${normalizeFileName(categoryName)}`;
+        categorySlug = normalizedCategory;
+        categoryDir = `${categoryNumber}-${categorySlug}`;
         fileName = `01-${normalizeFileName(title)}`;
+        categoryDisplayName = rawCategoryInput;
+        isNewCategory = true;
       }
     }
 
+    const resolvedCategorySlug = categorySlug || categoryDir.replace(/^[0-9]+-/, '');
+    const resolvedCategoryDisplayName = (categoryDisplayName ?? '').trim() || resolvedCategorySlug;
+
     logger.step('ドキュメントファイルを作成しています');
-    const content = generateDocumentTemplate(title, description, categoryName);
+    const content = generateDocumentTemplate(title, description, resolvedCategorySlug);
     const docPath = createDocumentFile(
       args.projectName,
       args.lang,
@@ -222,6 +262,26 @@ async function main() {
     logger.success('ドキュメントファイルを作成しました。');
     logger.detail(`作成ファイル: ${docPath}`, { bullet: '' });
     logger.detail(`想定URL: ${url}`, { bullet: '' });
+    if (isNewCategory) {
+      logger.info(`新しいカテゴリ "${resolvedCategorySlug}" を作成しました。`);
+    }
+
+    logger.step('project.config.json を同期しています');
+    const syncResult = syncCategoryTranslations(args.projectName, {
+      lang: args.lang,
+      categorySlug: resolvedCategorySlug,
+      displayName: resolvedCategoryDisplayName
+    });
+
+    if (syncResult.updated) {
+      logger.success('カテゴリ翻訳を更新しました。');
+      syncResult.updates.forEach(({ lang: updateLang, value, placeholder }) => {
+        const note = placeholder ? '（翻訳の追記が必要です）' : '';
+        logger.detail(`${updateLang}: ${value}${note}`, { bullet: '' });
+      });
+    } else {
+      logger.info('カテゴリ翻訳に変更はありませんでした。');
+    }
 
     logger.step('次の進め方');
     logger.list([
