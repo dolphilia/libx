@@ -184,6 +184,13 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 - バックアップファイルは `.backups/language-addition-<timestamp>/` に保存されます
 - エラー発生時の復旧や、手動での調整が必要な場合に利用できます
 
+**詳細なバックアップ運用情報**については、[バックアップ運用ガイド](BACKUP_OPERATIONS_GUIDE.md)を参照してください。以下の情報が含まれています：
+
+- バックアップディレクトリの構造と保持期間
+- 手動復元の詳細な手順
+- バックアップのクリーンアップ方法
+- トラブルシューティング
+
 ### トラブルシューティング
 
 #### よくあるエラー
