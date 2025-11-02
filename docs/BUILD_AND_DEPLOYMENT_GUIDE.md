@@ -18,7 +18,6 @@ pnpm build:deploy-selective --projects=sample-docs && pnpm deploy:pages
 # または段階的に実行
 pnpm build:sidebar    # サイドバー生成
 pnpm build           # 統合ビルド
-pnpm copy:docs       # 出力コピー
 pnpm deploy:pages    # Cloudflare Pagesにデプロイ
 ```
 
@@ -89,10 +88,8 @@ graph TB
     A --> C[build-integrated.js]
     B --> D[public/sidebar/]
     C --> E[dist/]
-    E --> F[copy-to-docs.js]
-    F --> G[../libx/]
-    E --> H[wrangler pages deploy]
-    H --> I[Cloudflare Pages]
+    E --> F[wrangler pages deploy]
+    F --> G[Cloudflare Pages]
 ```
 
 ### 主要コンポーネント
@@ -101,8 +98,7 @@ graph TB
 2. **`build-integrated.js`** - 各アプリをビルドして統合
 3. **`build-selective.js`** - 🆕 指定されたプロジェクトのみをビルドして統合
 4. **`build-sidebar-selective.js`** - 🆕 指定されたプロジェクトのみのサイドバー生成
-5. **`copy-to-docs.js`** - ビルド出力を外部ディレクトリにコピー
-6. **`wrangler`** - Cloudflare Pagesへのデプロイ
+5. **`wrangler`** - Cloudflare Pagesへのデプロイ
 
 ### プロジェクト検出と処理
 
@@ -234,15 +230,6 @@ pnpm build:selective:local --projects=top-page
 - HTMLファイル内のアセットパスを環境に応じて書き換え
 - リダイレクト先URLの修正
 - canonical URLの環境別設定
-
-### 4. 出力コピー（`copy-to-docs.js`）
-
-```bash
-pnpm copy:docs
-```
-
-**目的**: `dist/`の内容を`../libx/`ディレクトリにコピー
-**用途**: 外部ドキュメントリポジトリとの連携
 
 ## 🚀 デプロイメント詳細
 
@@ -750,18 +737,6 @@ rm -rf dist/ apps/*/dist/
 - 除外プロジェクトの追加（build-sidebar.jsと同じ設定）
 - エラー時の詳細ログ出力
 
-### copy-to-docs.js
-
-**単純な機能**:
-- `dist/` → `../libx/` のファイルコピー
-- 既存ファイルの上書き
-- エラーハンドリング
-
-**使用場面**:
-- 外部リポジトリとの連携
-- バックアップ用途
-- CI/CD でのファイル転送
-
 ## 📖 関連ドキュメント
 
 - [新しいプロジェクト作成ガイド](./NEW_PROJECT_CREATION_GUIDE.md) - 新規プロジェクトの作成方法
@@ -773,7 +748,7 @@ rm -rf dist/ apps/*/dist/
 ## 🔄 更新履歴
 
 - **2025年8月**: 初回作成、統合ビルドシステム対応版
-- ビルドスクリプト: `build-integrated.js`, `build-sidebar.js`, `copy-to-docs.js`
+- ビルドスクリプト: `build-integrated.js`, `build-sidebar.js`
 - デプロイ: Cloudflare Pages + Wrangler CLI
 - プロジェクト名: `libx`
 
