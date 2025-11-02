@@ -21,11 +21,14 @@ import path from 'path';
 import readline from 'readline';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-import { 
-  loadProjectConfig, 
-  saveProjectConfig, 
-  analyzeProjectStructure 
+import {
+  loadProjectConfig,
+  saveProjectConfig,
+  analyzeProjectStructure
 } from './document-utils.js';
+import * as logger from './logger.js';
+
+logger.useUnifiedConsole();
 
 // ESモジュールで__dirnameを取得
 const __filename = fileURLToPath(import.meta.url);
@@ -164,6 +167,37 @@ const SUPPORTED_LANGUAGES = {
   'vi': 'Tiếng Việt'
 };
 
+function showUsage(exitCode = 1) {
+  logger.heading('言語追加スクリプトの使い方');
+  logger.info('node scripts/add-language.js <project-name> <language-code> [display-name] [description] [options]');
+  logger.blank();
+  logger.info('必須引数');
+  logger.detail('project-name: プロジェクト名（例: sample-docs, test-verification）');
+  logger.detail('language-code: 追加する言語コード（例: ko, zh-Hans, de）');
+  logger.blank();
+  logger.info('任意引数');
+  logger.detail('display-name: 言語表示名（未指定の場合は自動設定）');
+  logger.detail('description: 言語説明文（未指定の場合は自動生成）');
+  logger.blank();
+  logger.info('主なオプション');
+  logger.detail('--template-lang=<code>: コピー元にする既存言語（既定: en）');
+  logger.detail('--auto-template: 対話なしでテンプレート生成を行います');
+  logger.detail('--skip-test: ビルドテストを実行しません');
+  logger.detail('--skip-top-page: トップページ設定の更新を省略します');
+  logger.detail('--interactive: 必要な値を対話的に入力します');
+  logger.blank();
+  logger.info('サポート言語');
+  Object.entries(SUPPORTED_LANGUAGES).forEach(([code, name]) => {
+    logger.detail(`${code.padEnd(8)} ${name}`, { bullet: '' });
+  });
+  logger.blank();
+  logger.info('使用例');
+  logger.detail('node scripts/add-language.js sample-docs ko');
+  logger.detail('node scripts/add-language.js test-verification zh-Hans "简体中文" "简体中文文档"');
+  logger.detail('node scripts/add-language.js api-docs de --template-lang=en --auto-template');
+  process.exit(exitCode);
+}
+
 /**
  * コマンドライン引数を解析する
  */
@@ -171,31 +205,8 @@ function parseArguments() {
   const args = process.argv.slice(2);
   
   if (args.length < 2) {
-    console.error('使用法: node scripts/add-language.js <project-name> <language-code> [display-name] [description] [options]');
-    console.error('');
-    console.error('引数:');
-    console.error('  project-name     プロジェクト名（例: sample-docs, test-verification）');
-    console.error('  language-code    言語コード（例: ko, zh-Hans, de）');
-    console.error('  display-name     言語表示名（省略時は自動設定）');
-    console.error('  description      言語説明文（省略時は自動生成）');
-    console.error('');
-    console.error('オプション:');
-    console.error('  --template-lang=<code>  コピー元言語（デフォルト: en）');
-    console.error('  --auto-template         対話なしでテンプレート生成');
-    console.error('  --skip-test             ビルドテストをスキップ');
-    console.error('  --skip-top-page         トップページ設定更新をスキップ');
-    console.error('  --interactive           対話モードで実行');
-    console.error('');
-    console.error('サポート言語:');
-    Object.entries(SUPPORTED_LANGUAGES).forEach(([code, name]) => {
-      console.error(`  ${code.padEnd(8)} ${name}`);
-    });
-    console.error('');
-    console.error('例:');
-    console.error('  node scripts/add-language.js sample-docs ko');
-    console.error('  node scripts/add-language.js test-verification zh-Hans "简体中文" "简体中文文档"');
-    console.error('  node scripts/add-language.js api-docs de --template-lang=en --auto-template');
-    process.exit(1);
+    logger.error('必須引数が不足しています。');
+    showUsage(1);
   }
 
   // オプション引数とポジショナル引数を分離
@@ -217,7 +228,7 @@ function parseArguments() {
   }
 
   if (positionalArgs.length < 2) {
-    console.error('❌ プロジェクト名と言語コードは必須です');
+    logger.error('プロジェクト名と言語コードは必須です。');
     process.exit(1);
   }
 

@@ -20,6 +20,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { copyDirRecursive } from './utils.js';
+import * as logger from './logger.js';
+
+logger.useUnifiedConsole();
 
 // ESモジュールで__dirnameを取得
 const __filename = fileURLToPath(import.meta.url);

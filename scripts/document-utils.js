@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import * as logger from './logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -85,7 +86,7 @@ export function analyzeProjectStructure(projectName, lang, version) {
       };
     }
   } catch (error) {
-    console.warn(`プロジェクト構造の解析中にエラーが発生しました: ${error.message}`);
+    logger.warn(`プロジェクト構造の解析中にエラーが発生しました: ${error.message}`);
   }
 
   return categories;

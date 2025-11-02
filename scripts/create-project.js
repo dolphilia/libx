@@ -18,6 +18,32 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
+import * as logger from './logger.js';
+
+logger.useUnifiedConsole();
+
+function showUsage(exitCode = 1) {
+  logger.heading('プロジェクト作成スクリプトの使い方');
+  logger.info('node scripts/create-project.js <project-name> <display-name-en> <display-name-ja> [options]');
+  logger.blank();
+  logger.info('必須引数');
+  logger.detail('project-name: プロジェクトディレクトリ名（英数字・ハイフンのみ）');
+  logger.detail('display-name-en: 英語表示名');
+  logger.detail('display-name-ja: 日本語表示名');
+  logger.blank();
+  logger.info('主なオプション');
+  logger.detail('--description-en=<text>: 英語説明文（既定: display-name-en を元に自動生成）');
+  logger.detail('--description-ja=<text>: 日本語説明文（既定: display-name-ja を元に自動生成）');
+  logger.detail('--icon=<name>: アイコン名（既定: file-text）');
+  logger.detail('--tags=<tag1,tag2>: カンマ区切りタグ（既定: documentation）');
+  logger.detail('--template=<name>: コピー元テンプレート（既定: project-template）');
+  logger.detail('--skip-test: 動作確認テストをスキップします');
+  logger.blank();
+  logger.info('使用例');
+  logger.detail('node scripts/create-project.js my-docs "My Documentation" "私のドキュメント"');
+  logger.detail('node scripts/create-project.js api-docs "API Docs" "API文書" --icon=code --tags=api,reference');
+  process.exit(exitCode);
+}
 
 // ESモジュールで__dirnameを取得
 const __filename = fileURLToPath(import.meta.url);
@@ -30,26 +56,13 @@ const rootDir = path.resolve(__dirname, '..');
 function parseArguments() {
   const args = process.argv.slice(2);
   
+  if (args.includes('--help')) {
+    showUsage(0);
+  }
+
   if (args.length < 3) {
-    console.error('使用法: node scripts/create-project.js <project-name> <display-name-en> <display-name-ja> [options]');
-    console.error('');
-    console.error('引数:');
-    console.error('  project-name      プロジェクトディレクトリ名（英数字・ハイフンのみ）');
-    console.error('  display-name-en   英語表示名');
-    console.error('  display-name-ja   日本語表示名');
-    console.error('');
-    console.error('オプション:');
-    console.error('  --description-en=<text>  英語説明文');
-    console.error('  --description-ja=<text>  日本語説明文');
-    console.error('  --icon=<name>            アイコン名（デフォルト: file-text）');
-    console.error('  --tags=<tag1,tag2>       カンマ区切りタグ（デフォルト: documentation）');
-    console.error('  --template=<name>        テンプレートプロジェクト（デフォルト: project-template）');
-    console.error('  --skip-test              動作確認テストをスキップ');
-    console.error('');
-    console.error('例:');
-    console.error('  node scripts/create-project.js my-docs "My Documentation" "私のドキュメント"');
-    console.error('  node scripts/create-project.js api-docs "API Docs" "API文書" --icon=code --tags=api,reference');
-    process.exit(1);
+    logger.error('必須引数が不足しています。');
+    showUsage(1);
   }
 
   const [projectName, displayNameEn, displayNameJa] = args.slice(0, 3);

@@ -19,6 +19,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { copyDirRecursive } from './utils.js';
+import * as logger from './logger.js';
+
+logger.useUnifiedConsole();
 
 // コマンドライン引数を解析
 const args = process.argv.slice(2);

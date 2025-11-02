@@ -12,45 +12,50 @@ import {
   loadProjectConfig,
   saveProjectConfig
 } from './document-utils.js';
+import * as logger from './logger.js';
+
+logger.useUnifiedConsole();
+
+function showUsage(exitCode = 0) {
+  logger.heading('バージョン追加スクリプトの使い方');
+  logger.info('node scripts/create-version.js <project-name> <version> [options]');
+  logger.blank();
+  logger.info('必須引数');
+  logger.detail('project-name: プロジェクト名');
+  logger.detail('version: 追加するバージョン（例: v3, v2.1）');
+  logger.blank();
+  logger.info('主なオプション');
+  logger.detail('--interactive: 対話形式で追加内容を決定します');
+  logger.detail('--no-copy: 既存バージョンのコンテンツをコピーしません');
+  logger.detail('--help: このヘルプを表示します');
+  logger.blank();
+  logger.info('主な処理内容');
+  logger.detail('project.config.json の versions 配列を更新します');
+  logger.detail('既存バージョンからコンテンツをコピーする設定が可能です');
+  logger.detail('各言語分のディレクトリを自動生成します');
+  logger.blank();
+  logger.info('使用例');
+  logger.detail('node scripts/create-version.js sample-docs v3');
+  logger.detail('node scripts/create-version.js sample-docs v2.1 --no-copy');
+  process.exit(exitCode);
+}
 
 // コマンドライン引数の解析
 function parseArguments() {
   const args = process.argv.slice(2);
-  
+
+  if (args.includes('--help')) {
+    showUsage(0);
+  }
+
   if (args.length < 2) {
-    console.error('使用法: node scripts/create-version.js <project-name> <version> [options]');
-    console.error('');
-    console.error('引数:');
-    console.error('  project-name    プロジェクト名');
-    console.error('  version        新しいバージョン (例: v3, v2.1)');
-    console.error('');
-    console.error('オプション:');
-    console.error('  --interactive  インタラクティブモードで実行');
-    console.error('  --no-copy      前バージョンからコンテンツをコピーしない');
-    console.error('  --help         このヘルプを表示');
-    console.error('');
-    console.error('例:');
-    console.error('  node scripts/create-version.js sample-docs v3');
-    console.error('  node scripts/create-version.js sample-docs v2.1 --no-copy');
-    process.exit(1);
+    logger.error('プロジェクト名とバージョンを指定してください。');
+    showUsage(1);
   }
 
   const [projectName, version, ...rest] = args;
   const isInteractive = rest.includes('--interactive');
   const noCopy = rest.includes('--no-copy');
-  const isHelp = rest.includes('--help');
-  
-  if (isHelp) {
-    console.log('バージョン作成ツール - 詳細ヘルプ');
-    console.log('=====================================');
-    console.log('');
-    console.log('このツールは新しいドキュメントバージョンを作成します。');
-    console.log('- project.config.jsonのversions配列を自動更新');
-    console.log('- 前バージョンからのコンテンツコピー（オプション）');  
-    console.log('- 全言語対応のディレクトリ構造作成');
-    console.log('');
-    process.exit(0);
-  }
 
   return { projectName, version, isInteractive, noCopy };
 }
