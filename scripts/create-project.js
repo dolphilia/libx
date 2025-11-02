@@ -19,6 +19,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import * as logger from './logger.js';
+import { confirmAction, createBackup } from './safety-utils.js';
 
 logger.useUnifiedConsole();
 
@@ -38,6 +39,8 @@ function showUsage(exitCode = 1) {
   logger.detail('--tags=<tag1,tag2>: カンマ区切りタグ（既定: documentation）');
   logger.detail('--template=<name>: コピー元テンプレート（既定: project-template）');
   logger.detail('--skip-test: 動作確認テストをスキップします');
+  logger.detail('--dry-run: 実際のファイル操作を行わず手順のみ確認します');
+  logger.detail('--confirm: インタラクティブな確認をスキップします');
   logger.blank();
   logger.info('使用例');
   logger.detail('node scripts/create-project.js my-docs "My Documentation" "私のドキュメント"');
@@ -91,7 +94,9 @@ function parseArguments() {
     icon: options.icon || 'file-text',
     tags: options.tags ? options.tags.split(',').map(tag => tag.trim()) : ['documentation'],
     template: options.template || 'project-template',
-    skipTest: options['skip-test'] || false
+    skipTest: Boolean(options['skip-test']),
+    dryRun: Boolean(options['dry-run']),
+    autoConfirm: Boolean(options.confirm)
   };
 }
 
@@ -213,12 +218,17 @@ function shouldExclude(name, isFile = false) {
 /**
  * テンプレートプロジェクトを新しいディレクトリにコピーする
  */
-function copyTemplateProject(templateName, projectName) {
+function copyTemplateProject(templateName, projectName, { dryRun = false } = {}) {
   const templateDir = path.join(rootDir, 'apps', templateName);
   const targetDir = path.join(rootDir, 'apps', projectName);
   
   console.log(`  コピー元: ${templateDir}`);
   console.log(`  コピー先: ${targetDir}`);
+
+  if (dryRun) {
+    console.log('  [dry-run] テンプレートコピーは実施されません。');
+    return targetDir;
+  }
   
   // カスタムコピー関数（除外パターンに対応）
   function copyDirRecursiveWithExclusion(src, dest) {
@@ -327,7 +337,8 @@ function updateProjectConfig(projectDir, config) {
 /**
  * top-pageのprojects.config.jsonを更新する
  */
-function updateTopPageConfig(config) {
+function updateTopPageConfig(config, options = {}) {
+  const { dryRun = false } = options;
   const topPageConfigPath = path.join(rootDir, 'apps', 'top-page', 'src', 'config', 'projects.config.json');
   const topPageConfig = JSON.parse(fs.readFileSync(topPageConfigPath, 'utf-8'));
   
@@ -337,6 +348,17 @@ function updateTopPageConfig(config) {
     tags: config.tags,
     isNew: true
   };
+
+  if (dryRun) {
+    logger.dryRun(`top-page projects.config.json を更新します（dry-runのためファイルは変更しません）: ${topPageConfigPath}`);
+    return;
+  }
+  
+  createBackup(topPageConfigPath, {
+    rootDir,
+    scenario: 'create-project',
+    logger
+  });
   
   fs.writeFileSync(topPageConfigPath, JSON.stringify(topPageConfig, null, 2));
   console.log('  ✅ top-page projects.config.json更新完了');
@@ -345,13 +367,19 @@ function updateTopPageConfig(config) {
 /**
  * すべての設定ファイルを更新する
  */
-function updateAllConfigFiles(projectDir, config) {
+function updateAllConfigFiles(projectDir, config, options = {}) {
+  const { dryRun = false } = options;
   console.log('  設定ファイルを更新しています...');
+
+  if (dryRun) {
+    logger.dryRun('package.json / astro.config.mjs / project.config.json / top-page 設定を更新する予定です（dry-runのため未実施）。');
+    return;
+  }
   
   updatePackageJson(projectDir, config.projectName);
   updateAstroConfig(projectDir, config.projectName);
   updateProjectConfig(projectDir, config);
-  updateTopPageConfig(config);
+  updateTopPageConfig(config, options);
   
   console.log('  🎉 すべての設定ファイルの更新完了！');
 }
@@ -359,8 +387,14 @@ function updateAllConfigFiles(projectDir, config) {
 /**
  * 依存関係をインストールする
  */
-function installDependencies(projectDir) {
+function installDependencies(projectDir, { dryRun = false } = {}) {
   console.log('  依存関係をインストールしています...');
+
+  if (dryRun) {
+    const projectName = path.basename(projectDir);
+    logger.dryRun(`pnpm install をスキップしました（dry-run）: apps/${projectName}`);
+    return true;
+  }
   
   try {
     // プロジェクトディレクトリに移動して pnpm install を実行
@@ -382,7 +416,12 @@ function installDependencies(projectDir) {
 /**
  * プロジェクトの動作テストを実行する
  */
-async function runProjectTests(projectName, skipTest = false) {
+async function runProjectTests(projectName, { skipTest = false, dryRun = false } = {}) {
+  if (dryRun) {
+    logger.dryRun('dry-runモードのためテストは実行されません。');
+    return { success: true, message: 'dry-run: テスト未実行' };
+  }
+
   if (skipTest) {
     console.log('  ⏩ テストをスキップしました');
     return { success: true, message: 'テストスキップ' };
@@ -411,7 +450,8 @@ async function runProjectTests(projectName, skipTest = false) {
 /**
  * 成功レポートを表示する
  */
-function showSuccessReport(config, projectDir, testResult) {
+function showSuccessReport(config, projectDir, testResult, options = {}) {
+  const { dryRun = false } = options;
   console.log('\n🎉 新しいドキュメントプロジェクトの作成が完了しました！\n');
   
   console.log('📋 作成されたプロジェクト情報:');
@@ -447,6 +487,11 @@ function showSuccessReport(config, projectDir, testResult) {
   if (!testResult.success) {
     console.log('⚠️  警告: テストが失敗しました。上記のエラーを確認して問題を解決してください。');
   }
+
+  if (dryRun) {
+    console.log('\nℹ️ dry-run設定のため、ファイルや設定の変更は行われていません。');
+    console.log('   実際にプロジェクトを作成するには --dry-run を外して再実行してください。');
+  }
 }
 
 /**
@@ -464,6 +509,10 @@ async function main() {
   console.log(`日本語表示名: ${config.displayNameJa}`);
   console.log(`テンプレート: ${config.template}`);
   console.log('');
+
+  if (config.dryRun) {
+    logger.dryRun('dry-runモードで実行します。ファイルシステムへの変更は行いません。');
+  }
   
   // 2. バリデーション
   showProgress(2, 7, 'プロジェクト設定を検証しています...');
@@ -482,25 +531,46 @@ async function main() {
   
   console.log('✅ バリデーション完了');
   console.log('');
+
+  let confirmed = true;
+  try {
+    confirmed = await confirmAction({
+      message: config.dryRun
+        ? `プロジェクト "${config.projectName}" の作成手順をdry-runで確認します`
+        : `プロジェクト "${config.projectName}" を作成します`,
+      autoConfirm: config.autoConfirm,
+      dryRun: config.dryRun,
+      logger
+    });
+  } catch (error) {
+    logger.error(error.message);
+    process.exit(1);
+  }
+
+  if (!confirmed) {
+    process.exit(0);
+  }
   
   // 3. テンプレートプロジェクトのコピー
   showProgress(3, 7, 'テンプレートプロジェクトをコピーしています...');
   
-  const targetDir = copyTemplateProject(config.template, config.projectName);
+  const targetDir = copyTemplateProject(config.template, config.projectName, {
+    dryRun: config.dryRun
+  });
   console.log('✅ プロジェクトコピー完了');
   console.log('');
   
   // 4. 設定ファイルの更新
   showProgress(4, 7, '設定ファイルを更新しています...');
   
-  updateAllConfigFiles(targetDir, config);
+  updateAllConfigFiles(targetDir, config, { dryRun: config.dryRun });
   console.log('✅ 設定ファイル更新完了');
   console.log('');
   
   // 5. 依存関係のインストール
   showProgress(5, 7, '依存関係をインストールしています...');
   
-  const installSuccess = installDependencies(targetDir);
+  const installSuccess = installDependencies(targetDir, { dryRun: config.dryRun });
   if (!installSuccess) {
     console.error('❌ 依存関係のインストールに失敗しました。手動でインストールしてください。');
     console.error(`   cd apps/${config.projectName} && pnpm install`);
@@ -513,14 +583,17 @@ async function main() {
   // 6. 動作テスト
   showProgress(6, 7, '動作テストを実行しています...');
   
-  const testResult = await runProjectTests(config.projectName, config.skipTest);
+  const testResult = await runProjectTests(config.projectName, {
+    skipTest: config.skipTest,
+    dryRun: config.dryRun
+  });
   console.log('✅ テスト実行完了');
   console.log('');
   
   // 7. 完了レポート
   showProgress(7, 7, '完了レポートを生成しています...');
   
-  showSuccessReport(config, targetDir, testResult);
+  showSuccessReport(config, targetDir, testResult, { dryRun: config.dryRun });
   
   // 成功時は終了コード0、テスト失敗時は終了コード1
   process.exit(testResult.success ? 0 : 1);

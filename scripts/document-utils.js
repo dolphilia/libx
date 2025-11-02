@@ -7,6 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import * as logger from './logger.js';
+import { createBackup } from './safety-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,12 +40,30 @@ export function loadProjectConfig(projectName) {
 /**
  * プロジェクト設定を保存する
  */
-export function saveProjectConfig(projectName, config) {
+export function saveProjectConfig(projectName, config, options = {}) {
   const projectPath = path.join(rootDir, 'apps', projectName);
   const configPath = path.join(projectPath, 'src', 'config', 'project.config.json');
+  const {
+    dryRun = false,
+    backupScenario = `project-config-${projectName}`
+  } = options;
   
   try {
     const configContent = JSON.stringify(config, null, 2);
+
+    if (dryRun) {
+      logger.dryRun(`project.config.json への書き込みをdry-runのためスキップしました: ${configPath}`);
+      return true;
+    }
+
+    if (fs.existsSync(configPath)) {
+      createBackup(configPath, {
+        rootDir,
+        scenario: backupScenario,
+        logger
+      });
+    }
+
     fs.writeFileSync(configPath, configContent);
     return true;
   } catch (error) {

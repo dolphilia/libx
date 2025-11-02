@@ -12,6 +12,8 @@
  * 
  * オプション:
  * --local: ローカル開発環境用のビルドを行います。GitHub Pagesのベースパスを削除します。
+ * --dry-run: 削除やビルドを行わず、予定されている操作のみを表示します。
+ * --confirm: インタラクティブな確認をスキップします。
  */
 
 import fs from 'fs';
@@ -20,12 +22,15 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { copyDirRecursive } from './utils.js';
 import * as logger from './logger.js';
+import { confirmAction, createBackup } from './safety-utils.js';
 
 logger.useUnifiedConsole();
 
 // コマンドライン引数を解析
 const args = process.argv.slice(2);
 const isLocalBuild = args.includes('--local');
+const isDryRun = args.includes('--dry-run');
+const autoConfirm = args.includes('--confirm');
 
 // ESモジュールで__dirnameを取得
 const __filename = fileURLToPath(import.meta.url);
@@ -189,24 +194,65 @@ async function main() {
     console.log('ローカル開発環境用のビルドを行います...');
   }
 
+  if (isDryRun) {
+    logger.dryRun('dry-runモードで実行します。ファイルシステムへの変更は行われません。');
+  }
+
   // アプリケーションリストを動的生成
   apps = await generateAppsList();
   console.log('検出されたアプリケーション:', apps.map(app => app.name).join(', '));
 
+  let distBackupPath = null;
+
+  let confirmed = true;
+  try {
+    confirmed = await confirmAction({
+      message: isDryRun
+        ? '統合ビルド手順をdry-runで確認します'
+        : '既存のdistをバックアップして統合ビルドを実行します',
+      autoConfirm,
+      dryRun: isDryRun,
+      logger
+    });
+  } catch (error) {
+    logger.error(error.message);
+    process.exit(1);
+  }
+
+  if (!confirmed) {
+    process.exit(0);
+  }
 
   // 既存のdistディレクトリを削除
   if (fs.existsSync(distDir)) {
-    console.log('既存のdistディレクトリを削除します...');
-    fs.rmSync(distDir, { recursive: true, force: true });
+    if (isDryRun) {
+      logger.dryRun(`既存のdistディレクトリを削除する予定です（dry-runのため未実施）: ${distDir}`);
+    } else {
+      console.log('既存のdistディレクトリをバックアップして削除します...');
+      distBackupPath = createBackup(distDir, {
+        rootDir,
+        scenario: 'build-integrated',
+        logger
+      });
+      fs.rmSync(distDir, { recursive: true, force: true });
+    }
   }
 
   // distディレクトリを作成
-  fs.mkdirSync(distDir, { recursive: true });
+  if (isDryRun) {
+    logger.dryRun(`統合出力ディレクトリを作成します（dry-runのため未作成）: ${distDir}`);
+  } else {
+    fs.mkdirSync(distDir, { recursive: true });
+  }
   
-
 
   // 各アプリケーションをビルド
   for (const app of apps) {
+    if (isDryRun) {
+      logger.dryRun(`pnpm --filter=apps-${app.name} build を実行します（dry-runのため未実行）`);
+      continue;
+    }
+
     console.log(`${app.name}をビルドしています...`);
     try {
       execSync(`pnpm --filter=apps-${app.name} build`, { stdio: 'inherit' });
@@ -218,6 +264,18 @@ async function main() {
 
   // 各アプリケーションのビルド出力をdistディレクトリにコピー
   for (const app of apps) {
+    if (isDryRun) {
+      const relativeDest = path.relative(rootDir, app.destDir);
+      logger.dryRun(`${app.name}のビルド出力を ${relativeDest || 'dist'} にコピーします（dry-runのため未実施）`);
+      if (app.name !== 'top-page') {
+        logger.dryRun(`${app.name}のサイドバーJSONをコピーします（dry-runのため未実施）`);
+      }
+      if (app.pathPrefix) {
+        logger.dryRun(`${app.name}のベースパスを ${app.pathPrefix} に再書き換えます（dry-runのため未実施）`);
+      }
+      continue;
+    }
+
     console.log(`${app.name}のビルド出力をコピーしています...`);
     
     if (!fs.existsSync(app.srcDir)) {
@@ -271,6 +329,16 @@ async function main() {
 
 
   console.log('統合ビルドが完了しました。');
+
+  if (!isDryRun && distBackupPath) {
+    const distRelative = path.relative(rootDir, distDir) || 'dist';
+    const backupRelative = path.relative(rootDir, distBackupPath);
+    logger.info(`ロールバック手順: rm -rf ${distRelative} && cp -R ${backupRelative} ${distRelative}`);
+  }
+
+  if (isDryRun) {
+    logger.dryRun('dry-runが完了しました。dist ディレクトリは変更されていません。');
+  }
 }
 
 main().catch(error => {
