@@ -20,11 +20,6 @@ interface Heading {
   text: string;
 }
 
-// 目次項目の型定義
-interface TOCItem extends Heading {
-  indent: number;
-}
-
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   // パフォーマンス計測開始
   console.time('getStaticPaths execution time');
@@ -74,16 +69,6 @@ const lang = (langParam || 'en') as LocaleKey;
 
 // デバッグログ
 console.log(`[Page Render] Processing URL params - version: ${version}, lang: ${lang}, entry.slug: ${entry.slug}`);
-
-// GitHub Pagesのベースパス
-const baseUrl = '';
-
-// 目次の生成
-const tableOfContents: TOCItem[] = headings.filter((heading: Heading) => heading.depth <= 3).map((heading: Heading) => ({
-  ...heading,
-  slug: heading.slug,
-  indent: (heading.depth - 1) * 16 // インデントのサイズを計算
-}));
 
 // ファイルベースのページネーション生成
 let autoPagination = {};

@@ -14,6 +14,12 @@ importers:
       ajv-formats:
         specifier: ^3.0.1
         version: 3.0.1(ajv@8.17.1)
+      glob:
+        specifier: ^11.0.2
+        version: 11.0.2
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.0.0
@@ -36,12 +42,6 @@ importers:
       eslint-plugin-astro:
         specifier: ^0.29.0
         version: 0.29.1(eslint@8.57.1)
-      glob:
-        specifier: ^11.0.2
-        version: 11.0.2
-      gray-matter:
-        specifier: ^4.0.3
-        version: 4.0.3
       prettier:
         specifier: ^3.0.0
         version: 3.5.3
@@ -151,42 +151,6 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
 
-  apps/top-page:
-    dependencies:
-      '@docs/i18n':
-        specifier: workspace:*
-        version: link:../../packages/i18n
-      '@docs/theme':
-        specifier: workspace:*
-        version: link:../../packages/theme
-      '@docs/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      astro:
-        specifier: ^5.7.12
-        version: 5.7.12(@types/node@18.19.100)(jiti@1.21.7)(rollup@4.40.2)(typescript@5.8.3)(yaml@2.7.1)
-      glob:
-        specifier: ^11.0.0
-        version: 11.0.2
-
-  sites/landing:
-    dependencies:
-      '@docs/i18n':
-        specifier: workspace:*
-        version: link:../../packages/i18n
-      '@docs/theme':
-        specifier: workspace:*
-        version: link:../../packages/theme
-      '@docs/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      astro:
-        specifier: ^5.7.12
-        version: 5.7.12(@types/node@18.19.100)(jiti@1.21.7)(rollup@4.40.2)(typescript@5.8.3)(yaml@2.7.1)
-      glob:
-        specifier: ^11.0.0
-        version: 11.0.2
-
   packages/content-utils:
     dependencies:
       '@docs/project-config':
@@ -278,6 +242,24 @@ importers:
       typescript:
         specifier: ^5.0.0
         version: 5.8.3
+
+  sites/landing:
+    dependencies:
+      '@docs/i18n':
+        specifier: workspace:*
+        version: link:../../packages/i18n
+      '@docs/theme':
+        specifier: workspace:*
+        version: link:../../packages/theme
+      '@docs/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      astro:
+        specifier: ^5.7.12
+        version: 5.7.12(@types/node@18.19.100)(jiti@1.21.7)(rollup@4.40.2)(typescript@5.8.3)(yaml@2.7.1)
+      glob:
+        specifier: ^11.0.0
+        version: 11.0.2
 
 packages:
 

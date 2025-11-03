@@ -45,6 +45,14 @@ export async function confirmAction({ message, autoConfirm = false, dryRun = fal
   }
 
   if (!process.stdin.isTTY) {
+    const ciEnv = process.env.CI;
+    const isCI = typeof ciEnv === 'string'
+      ? ciEnv.toLowerCase() !== 'false' && ciEnv !== '0'
+      : Boolean(ciEnv);
+    if (isCI) {
+      emit(logger, 'info', `${message} (CI環境のため自動承認)`);
+      return true;
+    }
     const instructions = `${message} を実行するには --confirm または --dry-run オプションを指定してください。`;
     emit(logger, 'warn', instructions);
     throw new Error('TTYが利用できないため、操作を確認できませんでした。');

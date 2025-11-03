@@ -7,7 +7,7 @@ const CACHE_PATTERNS = [
 ];
 
 // インストール時の処理
-self.addEventListener('install', (event) => {
+self.addEventListener('install', (_event) => {
   console.log('Service Worker: インストール完了');
   self.skipWaiting();
 });
