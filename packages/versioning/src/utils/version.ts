@@ -42,7 +42,7 @@ export function sortVersions(versions: Version[]): Version[] {
  */
 export function extractVersionFromPath(path: string): string | null {
   // パスからバージョン部分を抽出（例: /v1/ja/guide -> v1）
-  const match = path.match(/\/([^\/]+)\/([^\/]+)/);
+  const match = path.match(/\/([^/]+)\/([^/]+)/);
   if (match && match[1] && match[1].startsWith('v')) {
     return match[1];
   }
@@ -54,7 +54,7 @@ export function extractVersionFromPath(path: string): string | null {
  */
 export function changePathVersion(path: string, newVersion: string): string {
   // パス内のバージョン部分を置換（例: /v1/ja/guide -> /v2/ja/guide）
-  return path.replace(/\/([^\/]+)\/([^\/]+)\//, `/${newVersion}/$2/`);
+  return path.replace(/\/([^/]+)\/([^/]+)\//, `/${newVersion}/$2/`);
 }
 
 /**
@@ -110,7 +110,7 @@ export function getVersionedDocumentPath(
  */
 export function normalizeSlugForVersioning(slug: string): string {
   // スラッグの各セグメントから番号プレフィックス（例: "01-"）を削除
-  return slug.replace(/\/(\d+-)([^\/]+)/g, '/$2');
+  return slug.replace(/\/(\d+-)([^/]+)/g, '/$2');
 }
 
 /**

@@ -11,8 +11,7 @@ const { class: className, syncKey, ...attrs } = Astro.props;
 const panelHtml = await Astro.slots.render('default');
 const { html, panels } = processPanels(panelHtml);
 
-// 同期タブの状態を復元するためのスクリプトを含めるかどうかを判断
-const isSynced = syncKey !== undefined;
+// タブスクリプトが一度だけ読み込まれるようにシンボルを使用
 const didRenderTabsScriptSymbol = Symbol.for('docs:did-render-tabs-script');
 // @ts-expect-error - シンボルを使用して状態を追跡
 const shouldRenderTabsScript = Astro.locals[didRenderTabsScriptSymbol] !== true;

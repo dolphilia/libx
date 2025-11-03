@@ -7,7 +7,7 @@ const CACHE_PATTERNS = [
 ];
 
 // インストール時の処理
-self.addEventListener('install', (event) => {
+self.addEventListener('install', () => {
   console.log('Service Worker: インストール完了');
   self.skipWaiting();
 });
@@ -61,9 +61,9 @@ self.addEventListener('fetch', (event) => {
           // キャッシュにもない場合は、ネットワークのレスポンス (エラーレスポンスなど) をそのまま返す
           return networkResponse;
         });
-      }).catch((error) => {
+      }).catch(() => {
         // fetchが完全に失敗した場合 (オフラインなど)
-        console.log('Service Worker: ネットワーク接続エラー、キャッシュを確認:', event.request.url, error);
+        console.log('Service Worker: ネットワーク接続エラー、キャッシュを確認:', event.request.url);
         return caches.match(event.request).then((cachedResponse) => {
           if (cachedResponse) {
             console.log('Service Worker: キャッシュからサイドバーを返却 (オフラインフォールバック):', event.request.url);

@@ -45,11 +45,15 @@ declare global {
                 const idx = parseInt(this.dataset.index || '');
                 const details = this.closest('details');
                 if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
-              } catch {}
+              } catch {
+                // 段階的な拡張機能のため、エラーは静かに無視
+              }
             }
           }
         );
-      } catch {}
+      } catch {
+        // 段階的な拡張機能のため、エラーは静かに無視
+      }
     })();
   </script>
 
@@ -90,7 +94,9 @@ declare global {
       const rawStoredState = sessionStorage.getItem(storageKey);
       const storedState = JSON.parse(rawStoredState || '{}');
       if (Array.isArray(storedState.open) && storedState.hash === hash) open = storedState.open;
-    } catch {}
+    } catch {
+      // 段階的な拡張機能のため、エラーは静かに無視
+    }
     return {
       hash,
       open,
@@ -102,7 +108,9 @@ declare global {
   const storeState = (state: SidebarState): void => {
     try {
       sessionStorage.setItem(storageKey, JSON.stringify(state));
-    } catch {}
+    } catch {
+      // 段階的な拡張機能のため、エラーは静かに無視
+    }
   };
 
   /** `open`状態を変更せずにサイドバーの状態を更新 */

@@ -42,16 +42,6 @@ function flattenSidebarItems(sidebarItems: SidebarItem[]): Array<{ title: string
 }
 
 /**
- * ファイル名から順序番号を抽出します
- * @param filename ファイル名（例: "01-getting-started"）
- * @returns 順序番号（例: 1）、見つからない場合は999
- */
-function extractOrderFromFilename(filename: string): number {
-  const match = filename.match(/^(\d+)-/);
-  return match ? parseInt(match[1], 10) : 999;
-}
-
-/**
  * URLから正規化されたパスを取得します
  * @param url 正規化対象のURL
  * @returns 正規化されたパス
@@ -107,8 +97,8 @@ export function generatePagination(
     const currentPath = normalizeUrl(normalizedCurrentSlug);
     
     // ファイル名の番号接頭辞を考慮した比較
-    const itemPathNormalized = itemPath.replace(/\/\d+-([^\/]+)$/, '/$1');
-    const currentPathNormalized = currentPath.replace(/\/\d+-([^\/]+)$/, '/$1');
+    const itemPathNormalized = itemPath.replace(/\/\d+-([^/]+)$/, '/$1');
+    const currentPathNormalized = currentPath.replace(/\/\d+-([^/]+)$/, '/$1');
     
     if (itemPath === currentPath || itemPathNormalized === currentPathNormalized) {
       currentIndex = i;

@@ -13,13 +13,6 @@ import { generateFileBasedPagination, checkFileExists } from '@docs/content-util
 await initializeConfig();
 const projectConfig = await getLegacyProjectConfig();
 
-// 見出しの型定義
-interface Heading {
-  depth: number;
-  slug: string;
-  text: string;
-}
-
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   // パフォーマンス計測開始
   console.time('getStaticPaths execution time');
@@ -53,10 +46,14 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   
   // パフォーマンス計測終了
   console.timeEnd('getStaticPaths execution time');
+
+  // nullを除外
+  const filteredResult = result.filter((item): item is NonNullable<typeof item> => item !== null);
+
   // ドキュメント数をログ出力
-  console.log(`Generated ${result.length} static paths`);
-  
-  return result;
+  console.log(`Generated ${filteredResult.length} static paths`);
+
+  return filteredResult;
 }
 
 const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };

@@ -17,8 +17,8 @@ const {
   versions,
   oldVersionId,
   newVersionId,
-  oldContent,
-  newContent,
+  oldContent: oldContentProp,
+  newContent: newContentProp,
   title = 'バージョン間の差分',
   className = ''
 } = Astro.props;
@@ -28,7 +28,7 @@ const oldVersion = versions.find(v => v.id === oldVersionId);
 const newVersion = versions.find(v => v.id === newVersionId);
 
 // 差分を計算
-const diffResults = diffLines(oldContent, newContent, { context: 3 });
+const diffResults = diffLines(oldContentProp, newContentProp, { context: 3 });
 const diffHtml = createHtmlDiff(diffResults);
 
 // 変更の統計情報
@@ -500,17 +500,7 @@ const unchangedLines = diffResults.filter(r => r.type === 'unchanged').length;
   const toggleContext = document.getElementById('toggle-context') as HTMLInputElement;
   const toggleWhitespace = document.getElementById('toggle-whitespace') as HTMLInputElement;
   const diffContent = document.getElementById('diff-content');
-  
-  // 元のコンテンツを保存
-  let oldContent = '';
-  let newContent = '';
-  
-  if (diffContent) {
-    // 初期コンテンツを保存
-    oldContent = document.getElementById('old-content')?.textContent || '';
-    newContent = document.getElementById('new-content')?.textContent || '';
-  }
-  
+
   // コンテキスト表示の切り替え
   if (toggleContext) {
     toggleContext.addEventListener('change', () => {

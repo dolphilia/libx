@@ -37,13 +37,8 @@ function shouldBeOpen(section: SidebarItem): boolean {
   return section.items.some(item => isCurrentPage(item) || (item.items && shouldBeOpen(item)));
 }
 
-// サイドバー内のすべてのアイテムをフラット化するヘルパー関数
-function flattenSidebar(items: SidebarItem[]): SidebarItem[] {
-  return items.flatMap(item => [item, ...(item.items ? flattenSidebar(item.items) : [])]);
-}
-
 // サイドバーのハッシュを生成するヘルパー関数
-function getSidebarHash(items: SidebarItem[]): string {
+function getSidebarHash(_items: SidebarItem[]): string {
   return hash || 'sidebar-' + Math.random().toString(36).substring(2, 9);
 }
 

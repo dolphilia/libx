@@ -12,12 +12,11 @@ import type {
   SiteConfigJSON,
   ContentConfigJSON
 } from './projects-schema';
-import { 
-  convertProjectsConfigJSONToRuntime, 
-  validateProjectsConfig 
+import {
+  convertProjectsConfigJSONToRuntime,
+  validateProjectsConfig
 } from './projects-schema';
-import { scanAppsDirectory, detectProject, type DetectedProject } from '../utils/project-auto-detector';
-import type { LocaleKey } from '@docs/i18n/locales';
+import { scanAppsDirectory, detectProject } from '../utils/project-auto-detector';
 
 // 設定キャッシュ
 let _configCache: TopPageConfig | null = null;

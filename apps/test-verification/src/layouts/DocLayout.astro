@@ -1,4 +1,5 @@
 ---
+/* eslint-disable @typescript-eslint/no-unused-vars -- Astro define:vars false positive */
 import MainLayout from './MainLayout.astro';
 import { Sidebar, TableOfContents } from '@docs/ui/components';
 import { translate } from '@docs/i18n/utils';
@@ -116,6 +117,7 @@ const hasToc = true;
 
 <script is:inline define:vars={{ lang, version, baseUrl }}>
   // サイドバーのプリフェッチ
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function prefetchSidebar(lang, version) {
     // バージョンが有効な形式（v1, v2など）かチェック
     if (!version || !version.match(/^v\d+$/)) {

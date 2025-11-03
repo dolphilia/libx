@@ -1,5 +1,5 @@
 ---
-import { translatePath, translate } from '@docs/i18n/utils';
+import { translate } from '@docs/i18n/utils';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { Dropdown, DropdownItem, Icon } from '@docs/ui/components';
 import { getTopPageConfig } from '../lib/projects';
@@ -39,25 +39,6 @@ const {
   supportedLangs = topPageConfig.supportedLangs, 
   className = ''
 } = Astro.props;
-
-// 現在のパス情報を取得
-const currentPathname = Astro.url.pathname;
-
-// パスを正規化（末尾にスラッシュを付ける）
-const normalizedPathname = currentPathname.endsWith('/') ? currentPathname : `${currentPathname}/`;
-
-// ベースURLを除いたパス部分を取得
-const pathWithoutBase = normalizedPathname.startsWith(BASE_URL)
-  ? normalizedPathname.substring(BASE_URL.length)
-  : normalizedPathname;
-
-// 言語コードを抽出
-const pathSegments = pathWithoutBase.split('/').filter(segment => segment !== '');
-let langFromPath: string | undefined = undefined;
-
-if (pathSegments.length > 0 && supportedLangs.includes(pathSegments[0])) {
-  langFromPath = pathSegments.shift();
-}
 
 // 各言語のパス情報を生成
 interface LangPathInfo {

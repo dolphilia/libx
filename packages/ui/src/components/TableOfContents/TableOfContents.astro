@@ -62,7 +62,7 @@ const TOC_TITLE = 'docs.onThisPage';
   <starlight-toc data-min-h={minLevel} data-max-h={maxLevel} class:list={{ "starlight-toc--mobile": isMobile }}>
     <div class="starlight-toc-wrapper">
       <nav aria-labelledby="starlight-toc-heading">
-        <h3 id="starlight-toc-heading" class="starlight-toc-heading">{translate(TOC_TITLE, lang)}</h2>
+        <h3 id="starlight-toc-heading" class="starlight-toc-heading">{translate(TOC_TITLE, lang)}</h3>
         <div class="starlight-toc-list">
           <TableOfContentsList toc={filteredHeadings} isMobile={isMobile} />
         </div>
@@ -98,12 +98,6 @@ class StarlightTOC extends HTMLElement {
     
     // スクロール時に現在の見出しを更新
     const updateActiveHeading = () => {
-      // 現在のスクロール位置
-      const scrollY = window.scrollY;
-      
-      // ビューポートの高さ
-      const viewportHeight = window.innerHeight;
-      
       // ヘッダーの高さを考慮したオフセット
       const topOffset = 100;
       
