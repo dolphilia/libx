@@ -151,7 +151,7 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
    - 多言語対応の設定
    - バージョン管理の設定
 
-手動作成の詳細手順は`docs/NEW_PROJECT_CREATION_GUIDE.md`を参照してください。
+手動作成の詳細手順は`docs/guides/NEW_PROJECT_CREATION_GUIDE.md`を参照してください。
 
 ## 共有ユーティリティの利用ガイド
 
@@ -321,7 +321,7 @@ node scripts/add-language.js sample-docs ko --template-lang=ja --skip-test
 
 **サポート言語**: en, ja, zh-Hans, zh-Hant, es, pt-BR, ko, de, fr, ru, ar, id, tr, hi, vi
 
-詳細な手順と手動方法については`docs/LANGUAGE_ADDITION_GUIDE.md`を参照してください。
+詳細な手順と手動方法については`docs/guides/LANGUAGE_ADDITION_GUIDE.md`を参照してください。
 
 ### 新しいドキュメントの追加
 

@@ -700,7 +700,7 @@ ls -la .backups/
 - [CLAUDE.md](../CLAUDE.md) - プロジェクト全体のガイド
 - [BUILD_AND_DEPLOYMENT_GUIDE.md](BUILD_AND_DEPLOYMENT_GUIDE.md) - ビルドとデプロイの詳細
 - [LANGUAGE_ADDITION_GUIDE.md](LANGUAGE_ADDITION_GUIDE.md) - 言語追加の手順
-- [PROJECT_PRINCIPLES.md](PROJECT_PRINCIPLES.md) - プロジェクトの設計原則
+- [PROJECT_PRINCIPLES.md](../notes/PROJECT_PRINCIPLES.md) - プロジェクトの設計原則
 
 ### バックアップに関連するスクリプト
 

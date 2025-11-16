@@ -320,18 +320,18 @@ ls -la apps/sample-docs/public/sidebar/
 5. **プロジェクトが検出されない**: プロジェクト内に`src/content/docs`ディレクトリが存在することを確認
 6. **カテゴリの順序が間違っている**: ディレクトリ名の番号を確認（01-guide, 02-referenceなど）
 7. **ビルド時間が長すぎる**: インクリメンタル変更には選択的ビルド（`build:selective --projects=...`）を使用
-8. **バックアップディレクトリが肥大化**: `.backups/`ディレクトリの定期的なクリーンアップが必要（詳細は[バックアップ運用ガイド](docs/BACKUP_OPERATIONS_GUIDE.md)を参照）
-9. **設定ファイルが破損**: `.backups/`から復元可能（[復元手順](docs/BACKUP_OPERATIONS_GUIDE.md#復元手順)を参照）
+8. **バックアップディレクトリが肥大化**: `.backups/`ディレクトリの定期的なクリーンアップが必要（詳細は[バックアップ運用ガイド](docs/guides/BACKUP_OPERATIONS_GUIDE.md)を参照）
+9. **設定ファイルが破損**: `.backups/`から復元可能（[復元手順](docs/guides/BACKUP_OPERATIONS_GUIDE.md#復元手順)を参照）
 
 ## ドキュメント参照
 
 詳細なガイドについては`docs/`を参照してください：
 
-- `PROJECT_PRINCIPLES.md` - 開発原則と哲学
-- `BUILD_AND_DEPLOYMENT_GUIDE.md` - 包括的なビルド/デプロイドキュメント
-- `BACKUP_OPERATIONS_GUIDE.md` - バックアップと復元の運用ガイド
-- `NEW_PROJECT_CREATION_GUIDE.md` - 手動プロジェクト作成手順
-- `VERSION_ADDITION_GUIDE.md` - バージョン管理の詳細
-- `LANGUAGE_ADDITION_GUIDE.md` - 言語サポートの実装
-- `DOCUMENT_ADDITION_GUIDE.md` - ドキュメント作成ガイドライン
-- `LICENSE_GUIDELINES.md` - 翻訳のライセンスコンプライアンス
+- `docs/notes/PROJECT_PRINCIPLES.md` - 開発原則と哲学
+- `docs/guides/BUILD_AND_DEPLOYMENT_GUIDE.md` - 包括的なビルド/デプロイドキュメント
+- `docs/guides/BACKUP_OPERATIONS_GUIDE.md` - バックアップと復元の運用ガイド
+- `docs/guides/NEW_PROJECT_CREATION_GUIDE.md` - 手動プロジェクト作成手順
+- `docs/guides/VERSION_ADDITION_GUIDE.md` - バージョン管理の詳細
+- `docs/guides/LANGUAGE_ADDITION_GUIDE.md` - 言語サポートの実装
+- `docs/guides/DOCUMENT_ADDITION_GUIDE.md` - ドキュメント作成ガイドライン
+- `docs/spec/LICENSE_GUIDELINES.md` - 翻訳のライセンスコンプライアンス
