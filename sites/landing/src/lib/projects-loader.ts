@@ -9,13 +9,13 @@ import type {
   TopPageConfig, 
   Project, 
   ProjectDecoration,
-  SiteConfigJSON,
-  ContentConfigJSON
+  SiteConfigJSON
 } from './projects-schema';
 import {
   convertProjectsConfigJSONToRuntime,
   validateProjectsConfig
 } from './projects-schema';
+import { locales, defaultLocale, type LocaleKey } from '@docs/i18n/locales';
 import { scanAppsDirectory, detectProject } from '../utils/project-auto-detector';
 
 // 設定キャッシュ
@@ -120,16 +120,20 @@ export async function getTopPageConfig(): Promise<TopPageConfig> {
   try {
     // JSON設定を読み込み
     const configJSON = await loadProjectsConfigFromJSON();
-    const { siteConfig, content, projectDecorations } = convertProjectsConfigJSONToRuntime(configJSON);
+    const { siteConfig, projectDecorations } = convertProjectsConfigJSONToRuntime(configJSON);
     
     // 自動プロジェクト生成
     const projects = await generateAutoProjects(projectDecorations);
     
     // 統合設定を構築
+    const landingContent = buildLandingContent(siteConfig.supportedLangs);
+
     _configCache = {
       projects,
       ...siteConfig,
-      ...content
+      siteDescription: landingContent.siteDescription,
+      heroTitle: landingContent.heroTitle,
+      heroDescription: landingContent.heroDescription
     };
     
     return _configCache;
@@ -145,26 +149,62 @@ export async function getTopPageConfig(): Promise<TopPageConfig> {
  * エラー時のフォールバック設定
  */
 function getFailsafeConfig(): TopPageConfig {
+  const fallbackLangs: LocaleKey[] = ['en', 'ja'];
+  const landingContent = buildLandingContent(fallbackLangs);
+
   return {
     projects: [],
     baseUrl: '',
-    supportedLangs: ['en', 'ja'],
+    supportedLangs: fallbackLangs,
     defaultLang: 'en',
     repository: 'https://github.com/libx-dev/libx-dev',
     siteName: 'Libx',
-    siteDescription: {
-      en: 'Documentation site built with Astro',
-      ja: 'Astroで構築されたドキュメントサイト'
-    },
-    heroTitle: {
-      en: 'Documentation Hub',
-      ja: 'ドキュメントハブ'
-    },
-    heroDescription: {
-      en: 'Find all the documentation you need in one place',
-      ja: '必要なすべてのドキュメントを一箇所で見つけることができます'
-    }
+    siteDescription: landingContent.siteDescription,
+    heroTitle: landingContent.heroTitle,
+    heroDescription: landingContent.heroDescription
   };
+}
+
+type LandingContentKey = 'siteDescription' | 'heroTitle' | 'heroDescription';
+
+interface LandingContentMap {
+  siteDescription: Record<LocaleKey, string>;
+  heroTitle: Record<LocaleKey, string>;
+  heroDescription: Record<LocaleKey, string>;
+}
+
+const landingKeys: LandingContentKey[] = ['siteDescription', 'heroTitle', 'heroDescription'];
+
+function buildLandingContent(supportedLangs: LocaleKey[]): LandingContentMap {
+  const result: LandingContentMap = {
+    siteDescription: {},
+    heroTitle: {},
+    heroDescription: {}
+  };
+
+  for (const lang of supportedLangs) {
+    for (const key of landingKeys) {
+      result[key][lang] = resolveLandingTranslation(key, lang);
+    }
+  }
+
+  return result;
+}
+
+function resolveLandingTranslation(key: LandingContentKey, lang: LocaleKey): string {
+  const localeData = locales[lang] as Record<string, any> | undefined;
+  const landingSection = localeData?.landing as Record<LandingContentKey, string> | undefined;
+  const fallbackLanding = (locales[defaultLocale] as Record<string, any>)?.landing as Record<LandingContentKey, string> | undefined;
+
+  if (landingSection && typeof landingSection[key] === 'string') {
+    return landingSection[key];
+  }
+
+  if (fallbackLanding && typeof fallbackLanding[key] === 'string') {
+    return fallbackLanding[key];
+  }
+
+  return '';
 }
 
 /**
@@ -179,7 +219,6 @@ export function clearConfigCache(): void {
  */
 export async function loadStaticConfig(): Promise<{
   siteConfig: SiteConfigJSON;
-  content: ContentConfigJSON;
   projectDecorations: Record<string, ProjectDecoration>;
 }> {
   const configJSON = await loadProjectsConfigFromJSON();

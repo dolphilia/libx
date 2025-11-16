@@ -7,7 +7,6 @@ import type { IconName } from '@docs/ui/components';
 // JSON構造の型定義
 export interface ProjectsConfigJSON {
   siteConfig: SiteConfigJSON;
-  content: ContentConfigJSON;
   projectDecorations: Record<string, ProjectDecorationJSON>;
 }
 
@@ -17,12 +16,6 @@ export interface SiteConfigJSON {
   defaultLang: LocaleKey;
   repository: string;
   siteName: string;
-}
-
-export interface ContentConfigJSON {
-  siteDescription: Record<LocaleKey, string>;
-  heroTitle: Record<LocaleKey, string>;
-  heroDescription: Record<LocaleKey, string>;
 }
 
 export interface ProjectDecorationJSON {
@@ -72,12 +65,10 @@ export interface ProjectDecoration {
  */
 export function convertProjectsConfigJSONToRuntime(configJSON: ProjectsConfigJSON): {
   siteConfig: SiteConfigJSON;
-  content: ContentConfigJSON;
   projectDecorations: Record<string, ProjectDecoration>;
 } {
   return {
     siteConfig: configJSON.siteConfig,
-    content: configJSON.content,
     projectDecorations: configJSON.projectDecorations
   };
 }
@@ -87,7 +78,7 @@ export function convertProjectsConfigJSONToRuntime(configJSON: ProjectsConfigJSO
  */
 export function validateProjectsConfig(config: ProjectsConfigJSON): boolean {
   // 必須フィールドの存在確認
-  if (!config.siteConfig || !config.content || !config.projectDecorations) {
+  if (!config.siteConfig || !config.projectDecorations) {
     return false;
   }
 
@@ -99,19 +90,6 @@ export function validateProjectsConfig(config: ProjectsConfigJSON): boolean {
       typeof repository !== 'string' ||
       typeof siteName !== 'string') {
     return false;
-  }
-
-  // コンテンツ設定の検証
-  const { siteDescription, heroTitle, heroDescription } = config.content;
-  if (!siteDescription || !heroTitle || !heroDescription) {
-    return false;
-  }
-
-  // 各言語でのコンテンツ存在確認
-  for (const lang of supportedLangs) {
-    if (!siteDescription[lang] || !heroTitle[lang] || !heroDescription[lang]) {
-      return false;
-    }
   }
 
   return true;

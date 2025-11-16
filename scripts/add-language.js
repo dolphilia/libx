@@ -390,7 +390,7 @@ function updateProjectConfig(projectName, languageCode, displayName, description
 /**
  * ランディングページ設定ファイルを更新する
  */
-function updateLandingConfig(languageCode, displayName, skipLanding = false, backupManager) {
+function updateLandingConfig(languageCode, displayName, skipLanding = false, backupManager, templateLang = 'en') {
   if (skipLanding) {
     console.log('  ⏩ ランディングページ設定の更新をスキップしました');
     return true;
@@ -407,37 +407,69 @@ function updateLandingConfig(languageCode, displayName, skipLanding = false, bac
     const landingConfig = JSON.parse(fs.readFileSync(landingConfigPath, 'utf-8'));
     
     // supportedLangsに言語を追加
+    let landingConfigUpdated = false;
     if (!landingConfig.siteConfig.supportedLangs.includes(languageCode)) {
       landingConfig.siteConfig.supportedLangs.push(languageCode);
+      landingConfigUpdated = true;
       console.log(`  ✅ ランディングページのsupportedLangsに "${languageCode}" を追加`);
+    } else {
+      console.log(`  ℹ️  "${languageCode}" はすでに supportedLangs に含まれています`);
     }
-    
-    // 各翻訳コンテンツを更新（基本的な内容で）
-    const contentSections = ['siteDescription', 'heroTitle', 'heroDescription'];
-    
-    for (const section of contentSections) {
-      if (landingConfig.content[section] && !landingConfig.content[section][languageCode]) {
-        // 既存の翻訳から適切なデフォルト値を設定
-        const defaultValues = {
-          siteDescription: `Astroで構築されたドキュメントサイト`,
-          heroTitle: 'ドキュメントハブ',
-          heroDescription: '必要なすべてのドキュメントを一箇所で見つけることができます'
-        };
-        
-        landingConfig.content[section][languageCode] = defaultValues[section] || '';
-        console.log(`  ✅ ${section}の翻訳を追加: "${defaultValues[section]}"`);
-      }
+
+    if (landingConfigUpdated) {
+      fs.writeFileSync(landingConfigPath, JSON.stringify(landingConfig, null, 2) + '\n');
+      console.log('  ✅ ランディングページ設定ファイルの更新完了');
+    } else {
+      console.log('  ℹ️  ランディングページ設定ファイルに変更はありません');
     }
-    
-    // 設定を保存
-    fs.writeFileSync(landingConfigPath, JSON.stringify(landingConfig, null, 2));
-    console.log('  ✅ ランディングページ設定ファイルの更新完了');
+
+    updateLandingTranslations(languageCode, templateLang, backupManager);
     
     return true;
   } catch (error) {
     console.error('  ❌ ランディングページ設定ファイルの更新に失敗しました');
     console.error(`  エラー: ${error.message}`);
     throw error;
+  }
+}
+
+/**
+ * landing用翻訳を i18n ローカルファイルに追加する
+ */
+function updateLandingTranslations(languageCode, templateLang, backupManager) {
+  const localesDir = path.join(rootDir, 'packages', 'i18n', 'src', 'locales');
+  const targetPath = path.join(localesDir, `${languageCode}.json`);
+  const templatePath = path.join(localesDir, `${templateLang}.json`);
+
+  if (!fs.existsSync(targetPath)) {
+    console.warn(`  ⚠️  ${targetPath} が存在しません。手動で landing 翻訳を追加してください`);
+    return;
+  }
+
+  const localeContent = JSON.parse(fs.readFileSync(targetPath, 'utf-8'));
+  const templateContent = fs.existsSync(templatePath) ? JSON.parse(fs.readFileSync(templatePath, 'utf-8')) : {};
+  const templateLanding = templateContent.landing || {};
+
+  if (!localeContent.landing || typeof localeContent.landing !== 'object') {
+    localeContent.landing = {};
+  }
+
+  const landingKeys = ['siteDescription', 'heroTitle', 'heroDescription'];
+  let modified = false;
+
+  for (const key of landingKeys) {
+    if (!localeContent.landing[key] || typeof localeContent.landing[key] !== 'string' || !localeContent.landing[key].trim()) {
+      localeContent.landing[key] = templateLanding[key] || '';
+      modified = true;
+    }
+  }
+
+  if (modified) {
+    backupManager.backupFile(targetPath);
+    fs.writeFileSync(targetPath, JSON.stringify(localeContent, null, 2) + '\n');
+    console.log(`  ✅ ${path.relative(rootDir, targetPath)} の landing 翻訳を更新`);
+  } else {
+    console.log(`  ℹ️  ${path.relative(rootDir, targetPath)} には既に landing 翻訳があります`);
   }
 }
 
@@ -709,7 +741,7 @@ async function main() {
     
     // 4. トップページ設定の更新
     showProgress(currentStep++, 8, 'トップページ設定を更新しています...');
-    updateLandingConfig(config.languageCode, config.displayName, config.skipTopPage, backupManager);
+    updateLandingConfig(config.languageCode, config.displayName, config.skipTopPage, backupManager, config.templateLang);
     console.log('✅ トップページ設定更新完了');
     console.log('');
     
@@ -757,6 +789,7 @@ async function main() {
         console.log('\n🔧 手動確認が必要なファイル:');
         console.log(`  - apps/${config.projectName}/src/config/project.config.json`);
         console.log('  - sites/landing/src/config/projects.config.json');
+        console.log(`  - packages/i18n/src/locales/${config.languageCode}.json`);
         console.log(`  - apps/${config.projectName}/src/content/docs/*/\${config.languageCode}/`);
         
         const backupDir = backupManager.saveBackupFiles();
@@ -771,6 +804,7 @@ async function main() {
       console.log('影響を受けた可能性のあるファイル:');
       console.log(`  - apps/${config.projectName}/src/config/project.config.json`);
       console.log('  - sites/landing/src/config/projects.config.json');
+      console.log(`  - packages/i18n/src/locales/${config.languageCode}.json`);
       console.log(`  - apps/${config.projectName}/src/content/docs/*/\${config.languageCode}/`);
       
       // バックアップファイルを保存して復旧の手がかりを提供

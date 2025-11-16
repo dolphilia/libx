@@ -86,11 +86,6 @@ pnpm --filter=sites-landing build
     "repository": "https://github.com/libx-dev/libx-dev",
     "siteName": "Libx"
   },
-  "content": {
-    "siteDescription": { /* 多言語対応サイト説明 */ },
-    "heroTitle": { /* 多言語対応ヒーロータイトル */ },
-    "heroDescription": { /* 多言語対応ヒーロー説明 */ }
-  },
   "projectDecorations": {
     "project-name": {
       "icon": "file-text",
@@ -100,6 +95,8 @@ pnpm --filter=sites-landing build
   }
 }
 ```
+
+`siteDescription`、`heroTitle`、`heroDescription`の翻訳は `packages/i18n/src/locales/<lang>.json` の `landing` セクションで管理されるため、ここでは定義しません。
 
 ### 新しいプロジェクトの追加
 
@@ -111,7 +108,7 @@ pnpm --filter=sites-landing build
 
 1. `src/config/projects.config.json`の`supportedLangs`配列に言語コードを追加
 2. `astro.config.mjs`の`locales`配列に同じ言語コードを追加
-3. `content`セクションの各多言語オブジェクトに新しい言語の翻訳を追加
+3. `packages/i18n/src/locales/<lang>.json`の`landing`セクションに`siteDescription`・`heroTitle`・`heroDescription`の翻訳を追加
 
 ## デプロイ
 

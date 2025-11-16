@@ -384,38 +384,21 @@ description: "새로운 언어로 작성된 설명"
 
 **重要**: 新しい言語を追加する際は、個別プロジェクトだけでなく、システム全体で整合性を保つためにランディングページ（landing）でもサポートする必要があります。
 
-### 5.1 landing設定ファイルの更新
+### 5.1 landing設定ファイルと翻訳ファイルの更新
 
-`sites/landing/src/config/projects.config.json`を編集し、以下を追加します：
+`projects.config.json`では新しい言語を`supportedLangs`に追加するだけで、翻訳データは`packages/i18n/src/locales/<language>.json`の`landing`オブジェクトで管理します。たとえば韓国語なら、以下のように`landing`セクションを追加してください：
 
 ```json
 {
-  "siteConfig": {
-    "supportedLangs": [
-      "en",
-      "ja",
-      "ko"  // 新しい言語を追加
-    ]
-  },
-  "content": {
-    "siteDescription": {
-      "en": "Documentation site built with Astro",
-      "ja": "Astroで構築されたドキュメントサイト",
-      "ko": "Astro로 구축된 문서 사이트"  // 韓国語の説明を追加
-    },
-    "heroTitle": {
-      "en": "Documentation Hub",
-      "ja": "ドキュメントハブ",
-      "ko": "문서 허브"  // 韓国語のタイトルを追加
-    },
-    "heroDescription": {
-      "en": "Find all the documentation you need in one place",
-      "ja": "必要なすべてのドキュメントを一箇所で見つけることができます",
-      "ko": "필요한 모든 문서를 한 곳에서 찾을 수 있습니다"  // 韓国語の説明を追加
-    }
+  "landing": {
+    "siteDescription": "Astro로 구축된 문서 사이트",
+    "heroTitle": "문서 허브",
+    "heroDescription": "필요한 문서를 한 곳에서 찾을 수 있습니다"
   }
 }
 ```
+
+既存の言語を参考にしつつ、`siteDescription`・`heroTitle`・`heroDescription`の3つの翻訳を追加することで、ランディングページのヒーローセクションとメタの説明文がその言語で表示されます。`supportedLangs`の変更を忘れないよう、`sites/landing/src/config/projects.config.json`にも言語コードを含めたエントリを保持してください。
 
 ### 5.2 なぜlandingの更新が必要か
 
@@ -494,9 +477,9 @@ pnpm dev
 
 #### 問題4: ヘッダーの「Libx」リンクが404エラーになる
 
-**原因**: landingで新しい言語がサポートされていない
+**原因**: landingで新しい言語がサポートされておらず、ヒーローテキストが不足している
 
-**解決方法**: `sites/landing/src/config/projects.config.json`の`supportedLangs`に新しい言語を追加し、対応する翻訳コンテンツを追加する
+**解決方法**: `sites/landing/src/config/projects.config.json`の`supportedLangs`に言語コードを追加し、`packages/i18n/src/locales/<lang>.json`の`landing`セクションに翻訳コンテンツを追加する
 
 #### 問題5: ページが見つからない（404）
 
@@ -549,7 +532,7 @@ pnpm dev
 - [ ] `project.config.json`の`languageNames`セクションに言語表示名追加
 - [ ] `project.config.json`の`translations`セクションに言語設定追加
 - [ ] **重要**: `sites/landing/src/config/projects.config.json`の`supportedLangs`に言語コード追加
-- [ ] **重要**: landingの翻訳コンテンツ追加（`siteDescription`、`heroTitle`、`heroDescription`）
+- [ ] **重要**: `packages/i18n/src/locales/<lang>.json`の`landing`セクションに`siteDescription`、`heroTitle`、`heroDescription`を追加
 
 ### ディレクトリ構造
 - [ ] 新しい構造でディレクトリ作成（`src/content/docs/[version]/[lang]/`）
