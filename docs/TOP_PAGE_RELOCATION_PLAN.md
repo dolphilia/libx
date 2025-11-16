@@ -1,49 +1,37 @@
-# トップページ分離計画（sites/landing への移行）
+# トップページ分離の記録と現状（sites/landingがルート）
 
-## 目的
-- `apps/` 配下をドキュメント専用にして命名の一貫性を高める。
-- トップページを独立したサイト群（`sites/`）として扱い、将来的な追加ポータルの拡張余地を確保する。
-- 特例処理に依存しているスクリプト類を整理し、保守コストを削減する。
+## ステータス概要
+- `apps/` はドキュメントプロジェクト専用、`sites/landing` がトップページ（ルート `/`）を担う構成が適用済みです。
+- `apps/top-page` は存在せず、`sites/landing` はパッケージ `sites-landing` としてビルド・デプロイされています。
+- この文書は移行時の対応内容と検証ポイントをまとめ、今後の保守担当に現状把握の起点を提供するための記録です。
 
-## 対応方針
-1. 既存の `apps/top-page` を `sites/landing` に移設し、パッケージ名を `sites-landing` に変更。
-2. `pnpm-workspace.yaml` に `sites/*` を追加し、`apps/` をドキュメント群、`sites/` をポータル群として明示。
-3. トップページ関連スクリプト・ドキュメント内のパスを新ディレクトリ構造に合わせて更新。
-4. `apps/` スキャン処理からトップページの除外条件を削除し、`sites/` 配下を別ルートとして扱う。
+## 現在のアーキテクチャ・設定
+### ワークスペース
+- `pnpm-workspace.yaml` に `sites/*` を含め、`apps/*`（ドキュメント）と `sites/*`（ポータル）を並列に管理しています。
 
-## 作業ステップ
-1. **ディレクトリ再配置**
-   - `sites/landing` ディレクトリを作成し、`apps/top-page` の内容を移動。
-   - `package.json` の `name` を `sites-landing` に変更し、新パスを基準にビルドが通るか確認。
-   - `.gitignore` などでパスに依存する項目がないか確認。
-2. **ワークスペース設定更新**
-   - `pnpm-workspace.yaml` へ `sites/*` を追加。
-   - 既存のフィルタ利用箇所（例: `pnpm --filter=top-page`）を `pnpm --filter=sites-landing` に更新。
-3. **自動検出系ユーティリティの改修**
-   - `sites/landing/src/utils/project-auto-detector.ts`（旧 `apps/top-page/...`）で `scanAppsDirectory` の `top-page` 特例を削除。
-   - 必要に応じてルート解決ロジックを調整し、`sites/` 配下からでも `apps/` を正しく参照できることを検証。
-4. **統合ビルド系スクリプトの改修**
-   - `scripts/build-integrated.js` で `sites/landing` を個別に読み込み、`apps/` からはドキュメントのみを処理するよう更新。
-   - `scripts/build-selective.js`／`scripts/build-sidebar.js`／`scripts/build-sidebar-selective.js` の除外リストを整理し、`sites` 系を別処理に分岐。
-   - `destDir`／`pathPrefix` の決定処理から `top-page` 条件分岐を削除し、`sites` 専用ハンドリングへ移行。
-5. **自動化スクリプトの改修**
-   - `scripts/create-project.js` のトップページ設定更新パスを `sites/landing/src/config/projects.config.json` へ変更。
-   - `scripts/add-language.js` のトップページ設定更新処理も同様に更新。
-6. **ドキュメント更新**
-   - `README.md`、`docs/*GUIDE.md`、`CLAUDE.md` などで `apps/top-page` と記載されている箇所を `sites/landing` に更新。
-   - `pnpm --filter` 例やファイル構造図を新構成に合わせて更新。
-   - `apps/top-page/README.md` を新パスに合わせて `sites/landing/README.md` として更新。
-7. **検証**
-   - `pnpm install`（必要な場合）後、`pnpm --filter=sites-landing build` と `pnpm build` を実行し、統合ビルドが新構成で成功することを確認。
-   - サイドバー生成スクリプトと新規プロジェクト作成スクリプトを試験し、トップページ設定が正しく更新されるかを確認。
+### ビルド処理
+1. `scripts/build-integrated.js` は `apps/*` から各ドキュメントを `dist/docs/{project}` に集約し、`sites/landing` 出力を `dist/` のルート（`pathPrefix: ''`）として組み込んでいます。`project-template` はスキップされます。
+2. `scripts/build-selective.js` も `apps/` と `sites/` の両方をスキャンし、`landing` を対象に入れた場合は `dist/index.html` を再生成します。`sites/landing` 以外のサイトは `dist/{site}` に配置されます。
+3. サイドバー生成（`scripts/build-sidebar.js` / `build-sidebar-selective.js`）は `apps/*` のコンテンツのみを処理し、`sites/landing` 側を含めないため、トップページ側の構造が破綻する心配はありません。
 
-## リスクとフォローアップ
-- **スクリプトのパスハードコーディング**: 参照漏れでビルドが失敗する可能性があるため、関連スクリプトの Jest ないし手動実行で検証する。
-- **CI/CD 設定**: Cloudflare Pages 等のデプロイ設定で `apps/top-page` を前提としている場合、デプロイパイプラインの更新が必要。
-- **ドキュメントの整合性**: ガイドライン更新漏れがあるとコントリビューターが古いパスを参照する恐れがあるため、レビュー時にチェックリストを作成。
+### 自動化スクリプトとランディング設定
+- `scripts/create-project.js` / `scripts/add-language.js` は新しいプロジェクトや言語登録時に `sites/landing/src/config/projects.config.json` を更新し、トップページ側の表示情報（アイコン・タグ・`supportedLangs`）と整合性を保ちます。
+- `sites/landing/src/utils/project-auto-detector.ts` が `apps/` ディレクトリをスキャンして `project.config.json` から表示名・説明・URL・フォールバックURLを生成し、トップページのカード一覧を動的に構築します。
+- `sites/landing/src/config/projects.config.json` がトップページのカスタマイズポイントです。手動で `icon`/`tags`/`isNew` や `supportedLangs` を追加したら、`pnpm --filter=sites-landing dev` や `pnpm build` で反映確認してください。
 
-## 完了条件
-- `apps/` 配下からトップページが完全に除去され、`sites/landing` へ移行済み。
-- 自動検出および統合ビルドスクリプトで特例なしにドキュメントとポータルが区別できる。
-- 新規プロジェクト追加・言語追加の自動化スクリプトが新パスで正常に動作する。
-- 主要ドキュメントが新構成を案内している。
+### デプロイと `dist` 構造
+- ビルド後、`dist/index.html` は `sites/landing` の出力、`dist/docs/{project}` はそれぞれのドキュメント出力です。ランディングページを Cloudflare Pages で公開する際はこの `dist` を `wrangler pages deploy dist --project-name libx` でアップロードします。
+- `sites/landing` をトップページとすることで、`apps/` と `sites/` を明確に切り分け、小規模なトップページ更新がドキュメントのビルドプロセスを乱さないようになっています。
+
+## 維持・検証チェックリスト
+1. `pnpm --filter=sites-landing dev` でトップページが `http://localhost:4321/` に表示されるか確認する。
+2. `pnpm build` 後に `dist/index.html`（landing）と `dist/docs/{project}` が揃っていることを確認し、`dist/docs` 以下に予期せぬファイルが混ざっていないか点検する。
+3. `pnpm build:selective --projects=landing` を使い、トップページのみ再ビルドした際に `dist/index.html` が更新され、他の `dist/docs` 配下に影響が出ないことを確認する。
+4. `scripts/create-project.js` / `scripts/add-language.js` により `sites/landing/src/config/projects.config.json` を手動・自動で更新したら、デプロイ前にファイル内容と `pnpm --filter=sites-landing dev` の表示を合わせて確認する。
+5. トップページの自動検出は `sites/landing/src/utils/project-auto-detector.ts` の `scanAppsDirectory()` により `apps/` を走査しているため、新規 `apps/{project}` を追加したら `project.config.json` の `basic.baseUrl` などを整えた上で `pnpm build:sidebar` → `pnpm build` を実行し、landing 側が新規カードを拾えているか確認する。
+6. `wrangler pages deploy dist --project-name libx` を実行する前に `dist` を `ls dist` などで確認し、ランディング（`index.html`）とドキュメント（`docs/` 以下）が期待通りの構成になっているかチェックする。
+
+## 今後の対応指針
+- 新しいポータルを追加する際は `sites/{site}` に配置し、ビルドスクリプト内 `destDir`/`pathPrefix` のロジックをコピーして該当サイトを扱うように調整してください。
+- `sites/landing` 側のコードが `apps/top-page` のようなハードコーディングに戻らないよう、`apps/` を解決するユーティリティや `project-auto-detector` の再利用を心がけること。
+- ドキュメントや README にトップページへの参照を追加する場合は必ず `sites/landing` を記載し、`apps/` 側から統合的なトップページ説明を削除・移行しておいてください。
