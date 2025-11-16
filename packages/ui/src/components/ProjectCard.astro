@@ -1,37 +1,55 @@
 ---
-import { Icon } from '@docs/ui/components';
-import type { Project } from '../lib/projects';
-import { generateProjectUrl } from '../utils/project-url-generator';
-import { translate } from '@docs/i18n/utils';
 import type { LocaleKey } from '@docs/i18n/locales';
+import { translate } from '@docs/i18n/utils';
+import Icon from './icons/Icon.astro';
+import type { IconName } from './icons/Icons';
 
-interface Props {
-  project: Project;
-  lang: LocaleKey;
-  baseUrl?: string; // 下位互換性のため残す
+interface ProjectShape {
+  id: string;
+  name: Partial<Record<LocaleKey, string>>;
+  description: Partial<Record<LocaleKey, string>>;
+  icon?: IconName;
+  tags?: string[];
+  isNew?: boolean;
+  isUpdated?: boolean;
+  path?: string;
 }
 
-const { project, lang } = Astro.props;
+interface Props {
+  project: ProjectShape;
+  lang: LocaleKey;
+  projectUrl?: string;
+}
+
+const { project, lang, projectUrl } = Astro.props;
 const { name, description, icon, tags, isNew, isUpdated } = project;
-
-// 設定ファイルベースでプロジェクトURLを生成
-const projectPath = await generateProjectUrl(project, lang);
+const displayName = name?.[lang] ?? name?.['en'] ?? project.id;
+const displayDescription =
+  description?.[lang] ?? description?.['en'] ?? `Documentation for ${project.id}`;
+const targetUrl = projectUrl ?? project.path ?? '#';
 ---
-
-<a href={projectPath} class="project-card">
+<a href={targetUrl} class="project-card" aria-label={displayName}>
   <div class="project-card-content">
     <div class="project-card-header">
       {icon && <Icon name={icon} class="project-card-icon" />}
-      <h3 class="project-card-title">{name[lang] || name['en'] || project.id}</h3>
-      {isNew && <span class="project-card-badge project-card-badge-new">{translate('common.new', lang)}</span>}
-      {isUpdated && <span class="project-card-badge project-card-badge-updated">{translate('common.updated', lang)}</span>}
+      <h3 class="project-card-title">{displayName}</h3>
+      {isNew && (
+        <span class="project-card-badge project-card-badge-new">
+          {translate('common.new', lang)}
+        </span>
+      )}
+      {isUpdated && (
+        <span class="project-card-badge project-card-badge-updated">
+          {translate('common.updated', lang)}
+        </span>
+      )}
     </div>
-    
-    <p class="project-card-description">{description[lang] || description['en'] || `Documentation for ${project.id}`}</p>
-    
+
+    <p class="project-card-description">{displayDescription}</p>
+
     {tags && tags.length > 0 && (
       <div class="project-card-tags">
-        {tags.map(tag => (
+        {tags.map((tag) => (
           <span class="project-card-tag">{tag}</span>
         ))}
       </div>
@@ -132,7 +150,6 @@ const projectPath = await generateProjectUrl(project, lang);
     line-height: 1;
   }
 
-  /* ダークモード対応 */
   :global(.dark) .project-card {
     background-color: var(--color-bg-secondary, #1b1c1f);
     border-color: var(--color-border-default, #3d4147);

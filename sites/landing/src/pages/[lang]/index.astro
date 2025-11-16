@@ -1,9 +1,10 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
+import { ProjectCard } from '@docs/ui/components';
 import { getTopPageConfig } from '../../lib/projects';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { translate } from '@docs/i18n/utils';
+import { generateProjectUrl } from '../../utils/project-url-generator';
 
 // 静的パスを生成する関数
 export async function getStaticPaths() {
@@ -22,11 +23,23 @@ const topPageConfig = await getTopPageConfig();
 const { projects, heroTitle, heroDescription, siteName, siteDescription } = topPageConfig;
 console.log(`Displaying ${projects.length} projects from config for lang: ${currentLang}`);
 
+const projectsWithUrls = await Promise.all(
+  projects.map(async (project) => ({
+    project,
+    projectUrl: await generateProjectUrl(project, currentLang)
+  }))
+);
+
 // ページタイトルを設定（サイト名を使用）
 const pageTitle = siteName;
 ---
 
-<MainLayout title={pageTitle} lang={currentLang}>
+<MainLayout
+  title={pageTitle}
+  lang={currentLang}
+  supportedLangs={topPageConfig.supportedLangs}
+  baseUrl={topPageConfig.baseUrl}
+>
   <!-- メタデータを設定 -->
   <meta name="description" content={siteDescription[currentLang]} slot="head" />
   <!-- ヒーローセクション -->
@@ -43,10 +56,11 @@ const pageTitle = siteName;
       
       <!-- プロジェクトグリッド -->
       <div class="project-grid">
-        {projects.map(project => (
+        {projectsWithUrls.map(({ project, projectUrl }) => (
           <ProjectCard 
             project={project} 
             lang={currentLang} 
+            projectUrl={projectUrl}
           />
         ))}
       </div>

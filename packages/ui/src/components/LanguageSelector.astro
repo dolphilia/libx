@@ -6,122 +6,191 @@ import DropdownItem from './Dropdown/DropdownItem.astro';
 import Icon from './icons/Icon.astro';
 import { getProjectConfig } from '@docs/project-config';
 
-interface Props {
-  currentLang: string;
-  supportedLangs?: string[];
-  className?: string;
-}
-
-const projectConfig = await getProjectConfig();
-
-const {
-  currentLang,
-  supportedLangs = projectConfig.basic.supportedLangs,
-  className = '',
-} = Astro.props;
-
-const resolvedSupportedLangs =
-  supportedLangs?.length ? supportedLangs : [currentLang];
-
-const currentPathname = Astro.url.pathname;
-const normalizedPathname = currentPathname.endsWith('/')
-  ? currentPathname
-  : `${currentPathname}/`;
-
-const baseUrl = projectConfig.basic.baseUrl?.replace(/\/$/, '') ?? '';
-
-let pathWithoutBase = normalizedPathname;
-if (baseUrl && normalizedPathname.startsWith(`${baseUrl}/`)) {
-  pathWithoutBase = normalizedPathname.substring(baseUrl.length);
-} else if (normalizedPathname === `${baseUrl}/`) {
-  pathWithoutBase = '/';
-}
-
-const pathSegments = pathWithoutBase
-  .split('/')
-  .filter((segment) => segment.length > 0);
-
-let versionFromPath: string | undefined;
-let langFromPath: string | undefined;
-let slugParts: string[] = [];
-
-if (pathSegments.length > 0 && /^v\d+([.-]\d+)*$/.test(pathSegments[0])) {
-  versionFromPath = pathSegments.shift();
-}
-
-const langsForRegex = resolvedSupportedLangs.join('|');
-const langRegex = langsForRegex ? new RegExp(`^(${langsForRegex})$`) : null;
-
-if (langRegex && pathSegments.length > 0 && langRegex.test(pathSegments[0])) {
-  langFromPath = pathSegments.shift();
-}
-
-slugParts = pathSegments;
-
-let slugFromPath = slugParts.join('/');
-if (slugFromPath && !slugFromPath.endsWith('/')) {
-  slugFromPath += '/';
-} else if (
-  !slugFromPath &&
-  slugParts.length === 0 &&
-  (langFromPath || versionFromPath)
-  // 例: /base/v1/en/ や /base/en/
-) {
-  slugFromPath = '';
-}
-
-interface LangPathInfo {
+type LangPathInfo = {
   lang: string;
   name: string;
   path: string;
   isCurrent: boolean;
+};
+
+type FooterLink = {
+  href: string;
+  label: string;
+  icon?: string;
+};
+
+interface Props {
+  currentLang: string;
+  supportedLangs?: string[];
+  className?: string;
+  languageNames?: Record<string, string>;
+  baseUrl?: string;
+  langPaths?: LangPathInfo[];
+  footerLink?: FooterLink;
 }
 
-const langPaths: LangPathInfo[] = resolvedSupportedLangs.map((langCode) => {
-  const targetLang = langCode as LocaleKey;
-  const pathChunks = [baseUrl];
+let projectConfig;
+try {
+  projectConfig = await getProjectConfig();
+} catch {
+  projectConfig = undefined;
+}
 
-  if (versionFromPath) {
-    pathChunks.push(versionFromPath);
+const {
+  currentLang,
+  supportedLangs,
+  className = '',
+  languageNames,
+  baseUrl,
+  langPaths,
+  footerLink,
+} = Astro.props;
+
+const combinedLanguageNames = {
+  ...(projectConfig?.languageNames ?? {}),
+  ...(languageNames ?? {}),
+};
+
+const resolvedSupportedLangs =
+  supportedLangs?.length > 0
+    ? supportedLangs
+    : projectConfig?.basic.supportedLangs ?? [currentLang];
+
+const normalizedBaseUrl =
+  typeof baseUrl === 'string'
+    ? baseUrl.replace(/\/$/, '')
+    : projectConfig?.basic.baseUrl?.replace(/\/$/, '') ?? '';
+
+const fallbackLangPaths = resolvedSupportedLangs.map((langCode) =>
+  createFallbackPath(langCode)
+);
+
+const resolvedLangPaths =
+  langPaths && langPaths.length
+    ? langPaths
+    : projectConfig
+    ? computeLangPathsFromProjectConfig()
+    : fallbackLangPaths;
+
+const validLangPaths = resolvedLangPaths.length ? resolvedLangPaths : fallbackLangPaths;
+const dropdownLabel = combinedLanguageNames[currentLang] ?? currentLang;
+
+function createFallbackPath(langCode: string): LangPathInfo {
+  let path = normalizedBaseUrl
+    ? `${normalizedBaseUrl}/${langCode}`
+    : `/${langCode}`;
+
+  if (!path.startsWith('/')) {
+    path = `/${path}`;
   }
 
-  pathChunks.push(targetLang);
+  path = path.replace(/\/\/+/g, '/');
 
-  if (slugFromPath && slugFromPath !== '/') {
-    const cleanSlug = slugFromPath.endsWith('/')
-      ? slugFromPath.slice(0, -1)
-      : slugFromPath;
-    if (cleanSlug) {
-      pathChunks.push(cleanSlug);
-    }
-  }
-
-  let newPath = pathChunks
-    .filter((chunk) => typeof chunk === 'string' && chunk.length > 0)
-    .join('/');
-
-  if (!baseUrl && newPath && !newPath.startsWith('/')) {
-    newPath = `/${newPath}`;
-  }
-
-  newPath = newPath.replace(/\/\/+/g, '/');
-
-  if (newPath !== '/' && !newPath.endsWith('/')) {
-    newPath += '/';
+  if (!path.endsWith('/')) {
+    path += '/';
   }
 
   return {
     lang: langCode,
-    name: projectConfig.languageNames?.[langCode] ?? langCode,
-    path: newPath || '/',
+    name: combinedLanguageNames[langCode] ?? langCode,
+    path,
     isCurrent: langCode === currentLang,
   };
-});
----
+}
 
+function computeLangPathsFromProjectConfig(): LangPathInfo[] {
+  if (!projectConfig) {
+    return [];
+  }
+
+  const currentPathname = Astro.url.pathname;
+  const normalizedPathname = currentPathname.endsWith('/')
+    ? currentPathname
+    : `${currentPathname}/`;
+
+  const baseUrlFromConfig = projectConfig.basic.baseUrl
+    ? projectConfig.basic.baseUrl.replace(/\/$/, '')
+    : '';
+
+  let pathWithoutBase = normalizedPathname;
+  if (baseUrlFromConfig && normalizedPathname.startsWith(`${baseUrlFromConfig}/`)) {
+    pathWithoutBase = normalizedPathname.substring(baseUrlFromConfig.length);
+  } else if (normalizedPathname === `${baseUrlFromConfig}/`) {
+    pathWithoutBase = '/';
+  }
+
+  const pathSegments = pathWithoutBase
+    .split('/')
+    .filter((segment) => segment.length > 0);
+
+  let versionFromPath: string | undefined;
+  let langFromPath: string | undefined;
+  let slugParts: string[] = [];
+
+  if (pathSegments.length > 0 && /^v\d+([.-]\d+)*$/.test(pathSegments[0])) {
+    versionFromPath = pathSegments.shift();
+  }
+
+  const langsForRegex = resolvedSupportedLangs.join('|');
+  const langRegex = langsForRegex ? new RegExp(`^(${langsForRegex})$`) : null;
+
+  if (langRegex && pathSegments.length > 0 && langRegex.test(pathSegments[0])) {
+    langFromPath = pathSegments.shift();
+  }
+
+  slugParts = pathSegments;
+
+  let slugFromPath = slugParts.join('/');
+  if (slugFromPath && !slugFromPath.endsWith('/')) {
+    slugFromPath += '/';
+  } else if (!slugFromPath && slugParts.length === 0 && (langFromPath || versionFromPath)) {
+    slugFromPath = '';
+  }
+
+  return resolvedSupportedLangs.map((langCode) => {
+    const pathChunks = [baseUrlFromConfig];
+
+    if (versionFromPath) {
+      pathChunks.push(versionFromPath);
+    }
+
+    pathChunks.push(langCode);
+
+    if (slugFromPath && slugFromPath !== '/') {
+      const cleanSlug = slugFromPath.endsWith('/')
+        ? slugFromPath.slice(0, -1)
+        : slugFromPath;
+      if (cleanSlug) {
+        pathChunks.push(cleanSlug);
+      }
+    }
+
+    let newPath = pathChunks
+      .filter((chunk) => typeof chunk === 'string' && chunk.length > 0)
+      .join('/');
+
+    if (!baseUrlFromConfig && newPath && !newPath.startsWith('/')) {
+      newPath = `/${newPath}`;
+    }
+
+    newPath = newPath.replace(/\/\/+/g, '/');
+
+    if (newPath !== '/' && !newPath.endsWith('/')) {
+      newPath += '/';
+    }
+
+    return {
+      lang: langCode,
+      name: combinedLanguageNames[langCode] ?? langCode,
+      path: newPath || '/',
+      isCurrent: langCode === currentLang,
+    };
+  });
+}
+---
 <div class="language-selector-container">
   <Dropdown
-    label={projectConfig.languageNames?.[currentLang] ?? currentLang}
+    label={dropdownLabel}
     align="right"
     width="14rem"
     class={`language-dropdown ${className}`}
@@ -131,7 +200,7 @@ const langPaths: LangPathInfo[] = resolvedSupportedLangs.map((langCode) => {
       <span>言語を選択</span>
     </div>
 
-    {langPaths.map((pathInfo) => (
+    {validLangPaths.map((pathInfo) => (
       <DropdownItem
         label={pathInfo.name}
         href={pathInfo.path}
@@ -144,6 +213,20 @@ const langPaths: LangPathInfo[] = resolvedSupportedLangs.map((langCode) => {
         )}
       </DropdownItem>
     ))}
+
+    {footerLink && (
+      <div class="language-dropdown-footer" slot="after-items">
+        <a
+          href={footerLink.href}
+          class="language-footer-link"
+          target="_blank"
+          rel="noopener"
+        >
+          <Icon name={footerLink.icon ?? 'external-link'} class="language-footer-icon" />
+          {footerLink.label}
+        </a>
+      </div>
+    )}
   </Dropdown>
 </div>
 
@@ -165,6 +248,31 @@ const langPaths: LangPathInfo[] = resolvedSupportedLangs.map((langCode) => {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  .language-dropdown-footer {
+    padding: 0.5rem 1rem;
+    border-top: 1px solid var(--sl-color-gray-2, #e5e7eb);
+  }
+
+  .language-footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--sl-color-primary, #2563eb);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .language-footer-link:hover {
+    color: var(--sl-color-primary-dark, #1d4ed8);
+    text-decoration: underline;
+  }
+
+  .language-footer-icon {
+    font-size: 1rem;
+    color: currentColor;
   }
 
   .language-icon {

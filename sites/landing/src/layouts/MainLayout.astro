@@ -1,35 +1,93 @@
 ---
-/**
- * MainLayout - トップページの基本レイアウトコンポーネント
- */
-import { Footer, ThemeToggle } from '@docs/ui/components';
-import LanguageSelector from '../components/LanguageSelector.astro';
+import { Footer, ThemeToggle, LanguageSelector } from '@docs/ui/components';
 import type { LocaleKey } from '@docs/i18n/locales';
 import '../styles/global.css';
 
-// 定数定義
-const BASE_URL = '';
+const LANGUAGE_DISPLAY_NAMES: Record<string, string> = {
+  en: 'English',
+  ja: '日本語',
+  'zh-Hans': '简体中文',
+  'zh-Hant': '繁體中文',
+  es: 'Español',
+  'pt-BR': 'Português (Brasil)',
+  ko: '한국어',
+  de: 'Deutsch',
+  fr: 'Français',
+  ru: 'Русский',
+  ar: 'العربية',
+  id: 'Bahasa Indonesia',
+  tr: 'Türkçe',
+  hi: 'हिन्दी',
+  vi: 'Tiếng Việt'
+};
 
-// インターフェース定義
 interface Props {
   /** ページタイトル */
   title: string;
   /** 言語コード */
   lang: LocaleKey;
+  supportedLangs: LocaleKey[];
+  baseUrl: string;
 }
 
-// プロパティの取得
 const {
   title,
   lang,
+  supportedLangs,
+  baseUrl,
 } = Astro.props;
+
+const normalizedSupportedLangs =
+  supportedLangs && supportedLangs.length > 0 ? supportedLangs : [lang];
+
+const normalizedBaseUrl = baseUrl ? baseUrl.replace(/\/$/, '') : '';
+
+const buildLanguagePath = (langCode: string) => {
+  let path = normalizedBaseUrl ? `${normalizedBaseUrl}/${langCode}` : `/${langCode}`;
+
+  if (!path.startsWith('/')) {
+    path = `/${path}`;
+  }
+
+  path = path.replace(/\/\/+/g, '/');
+
+  if (!path.endsWith('/')) {
+    path += '/';
+  }
+
+  return path;
+};
+
+const assetBasePath = normalizedBaseUrl
+  ? normalizedBaseUrl.startsWith('/')
+    ? normalizedBaseUrl
+    : `/${normalizedBaseUrl}`
+  : '';
+
+const faviconPath = assetBasePath ? `${assetBasePath}/favicon.svg` : '/favicon.svg';
+
+const languagePaths = normalizedSupportedLangs.map((langCode) => ({
+  lang: langCode,
+  name: LANGUAGE_DISPLAY_NAMES[langCode] ?? langCode,
+  path: buildLanguagePath(langCode),
+  isCurrent: langCode === lang,
+}));
+
+const translationFooterLink = {
+  href: 'https://github.com/libx-dev/libx-dev/tree/main/packages/i18n',
+  label: '翻訳に貢献する',
+  icon: 'external-link',
+};
+
+const currentLangPath =
+  languagePaths.find((entry) => entry.isCurrent)?.path ?? buildLanguagePath(lang);
 ---
 
 <!DOCTYPE html>
 <html lang={lang} data-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href={`${BASE_URL}/favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={faviconPath} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- ダークモードフラッシュ防止スクリプト -->
@@ -64,12 +122,16 @@ const {
           <div class="header-content">
 
             <div class="title-wrapper">
-              <a href={`${BASE_URL}/${lang}`} class="site-title">Libx</a>
+              <a href={currentLangPath} class="site-title">Libx</a>
             </div>
 
             <div class="print:hidden right-group">
               <div class="language-selector-container" aria-label="言語選択">
-                <LanguageSelector currentLang={lang} />
+                <LanguageSelector
+                  currentLang={lang}
+                  langPaths={languagePaths}
+                  footerLink={translationFooterLink}
+                />
               </div>
               <div class="theme-toggle-container">
                 <ThemeToggle />
