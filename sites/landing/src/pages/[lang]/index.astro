@@ -1,10 +1,9 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
 import { ProjectCard } from '@docs/ui/components';
-import { getTopPageConfig } from '../../lib/projects';
+import { getTopPageConfig, generateProjectUrl } from '@docs/landing';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { translate } from '@docs/i18n/utils';
-import { generateProjectUrl } from '../../utils/project-url-generator';
 
 // 静的パスを生成する関数
 export async function getStaticPaths() {

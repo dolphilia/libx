@@ -30,19 +30,15 @@ sites/landing/
     │   └── projects.config.json # プロジェクト一覧とサイト設定
     ├── layouts/
     │   └── MainLayout.astro     # メインレイアウト
-    ├── lib/
-    │   ├── projects.ts          # プロジェクト情報管理
-    │   ├── projects-loader.ts   # プロジェクトデータ読み込み
-    │   └── projects-schema.ts   # データスキーマ定義
     ├── pages/
     │   ├── index.astro          # ルートページ（リダイレクト処理）
     │   └── [lang]/
     │       └── index.astro      # 言語別トップページ
     ├── styles/
     │   └── global.css           # グローバルスタイル
-    └── utils/
-        ├── project-auto-detector.ts    # プロジェクト自動検出
-        └── project-url-generator.ts    # URL生成ユーティリティ
+
+プロジェクト自動検出や URL 生成などのロジックは `packages/landing/src` に移設され、
+`@docs/landing` パッケージ経由で `src/pages` から利用されています。
 ```
 
 ## 開発コマンド

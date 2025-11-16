@@ -84,11 +84,13 @@ export function validateProjectsConfig(config: ProjectsConfigJSON): boolean {
 
   // サイト設定の検証
   const { baseUrl, supportedLangs, defaultLang, repository, siteName } = config.siteConfig;
-  if (typeof baseUrl !== 'string' || 
-      !Array.isArray(supportedLangs) || 
-      typeof defaultLang !== 'string' ||
-      typeof repository !== 'string' ||
-      typeof siteName !== 'string') {
+  if (
+    typeof baseUrl !== 'string' ||
+    !Array.isArray(supportedLangs) ||
+    typeof defaultLang !== 'string' ||
+    typeof repository !== 'string' ||
+    typeof siteName !== 'string'
+  ) {
     return false;
   }
 

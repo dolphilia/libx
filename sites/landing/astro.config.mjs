@@ -19,6 +19,7 @@ export default defineConfig({
         '@docs/ui': path.resolve(__dirname, '../../packages/ui/src'),
         '@docs/theme': path.resolve(__dirname, '../../packages/theme/src'),
         '@docs/i18n': path.resolve(__dirname, '../../packages/i18n/src'),
+        '@docs/landing': path.resolve(__dirname, '../../packages/landing/src')
       },
     },
     build: {
