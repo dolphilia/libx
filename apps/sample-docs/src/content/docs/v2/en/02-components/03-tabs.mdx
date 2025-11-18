@@ -1,13 +1,13 @@
 ---
 title: "Tab Component"
-description: "Learn how to use the Tabs component to organize content in your documentation"
+description: "Learn how to use the Tabs component to organize content within documentation"
 ---
 
 import { Tabs, TabItem } from '@docs/ui';
 
-# Tabs Component Example
+# Tab Component Examples
 
-This page demonstrates the usage of the Tabs component in documentation.
+This page demonstrates how to use the Tabs component inside documentation.
 
 ## Basic Usage
 
@@ -39,74 +39,423 @@ This page demonstrates the usage of the Tabs component in documentation.
     ```
   </TabItem>
   <TabItem label="JavaScript">
-    ```js
+    ```javascript
     document.addEventListener('DOMContentLoaded', () => {
-      console.log('Hello, world!');
+      const heading = document.querySelector('h1');
+      heading.addEventListener('click', () => {
+        alert('Heading clicked!');
+      });
     });
     ```
   </TabItem>
 </Tabs>
 
-## Synchronized Tabs
+## Package Manager Instructions
 
-These tabs are synchronized across the page using the `syncKey` prop.
+Great for showing steps across different tools:
 
-<Tabs syncKey="languages">
-  <TabItem label="JavaScript">
-    ```js
-    // JavaScript example
-    function greet(name) {
-      return `Hello, ${name}!`;
-    }
+<Tabs>
+  <TabItem label="npm">
+    ```bash
+    # Install packages
+    npm install @our-package/core
     
-    console.log(greet('World'));
+    # Add development dependency
+    npm install --save-dev @our-package/dev-tools
+    
+    # Run scripts
+    npm run dev
     ```
   </TabItem>
-  <TabItem label="TypeScript">
-    ```ts
-    // TypeScript example
-    function greet(name: string): string {
-      return `Hello, ${name}!`;
+  <TabItem label="yarn">
+    ```bash
+    # Install packages
+    yarn add @our-package/core
+    
+    # Add development dependency
+    yarn add --dev @our-package/dev-tools
+    
+    # Run scripts
+    yarn dev
+    ```
+  </TabItem>
+  <TabItem label="pnpm">
+    ```bash
+    # Install packages
+    pnpm add @our-package/core
+    
+    # Add development dependency
+    pnpm add -D @our-package/dev-tools
+    
+    # Run scripts
+    pnpm dev
+    ```
+  </TabItem>
+</Tabs>
+
+## Configuration Examples
+
+Compare environments or frameworks:
+
+<Tabs>
+  <TabItem label="Development">
+    ```javascript
+    // development.config.js
+    export default {
+      debug: true,
+      apiUrl: 'http://localhost:3000/api',
+      database: {
+        host: 'localhost',
+        port: 5432,
+        name: 'myapp_dev'
+      },
+      logging: {
+        level: 'debug',
+        console: true
+      }
+    };
+    ```
+  </TabItem>
+  <TabItem label="Production">
+    ```javascript
+    // production.config.js
+    export default {
+      debug: false,
+      apiUrl: 'https://api.myapp.com',
+      database: {
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        name: process.env.DB_NAME
+      },
+      logging: {
+        level: 'error',
+        console: false,
+        file: '/var/log/myapp.log'
+      }
+    };
+    ```
+  </TabItem>
+  <TabItem label="Test">
+    ```javascript
+    // test.config.js
+    export default {
+      debug: true,
+      apiUrl: 'http://localhost:3001/api',
+      database: {
+        host: 'localhost',
+        port: 5433,
+        name: 'myapp_test'
+      },
+      logging: {
+        level: 'warn',
+        console: true
+      }
+    };
+    ```
+  </TabItem>
+</Tabs>
+
+## Language-Specific Examples
+
+Show implementations by language:
+
+<Tabs>
+  <TabItem label="JavaScript">
+    ```javascript
+    class User {
+      constructor(name, email) {
+        this.name = name;
+        this.email = email;
+      }
+      
+      greet() {
+        return `Hello, ${this.name}!`;
+      }
+      
+      getProfile() {
+        return {
+          name: this.name,
+          email: this.email
+        };
+      }
     }
     
-    console.log(greet('World'));
+    const user = new User('Taro Tanaka', 'tanaka@example.com');
+    console.log(user.greet());
     ```
   </TabItem>
   <TabItem label="Python">
     ```python
-    # Python example
-    def greet(name):
-        return f"Hello, {name}!"
+    class User:
+        def __init__(self, name, email):
+            self.name = name
+            self.email = email
+        
+        def greet(self):
+            return f"Hello, {self.name}!"
+        
+        def get_profile(self):
+            return {
+                'name': self.name,
+                'email': self.email
+            }
     
-    print(greet("World"))
+    user = User('Taro Tanaka', 'tanaka@example.com')
+    print(user.greet())
+    ```
+  </TabItem>
+  <TabItem label="TypeScript">
+    ```typescript
+    interface IUser {
+      name: string;
+      email: string;
+      greet(): string;
+      getProfile(): UserProfile;
+    }
+    
+    interface UserProfile {
+      name: string;
+      email: string;
+    }
+    
+    class User implements IUser {
+      constructor(
+        public name: string,
+        public email: string
+      ) {}
+      
+      greet(): string {
+        return `Hello, ${this.name}!`;
+      }
+      
+      getProfile(): UserProfile {
+        return {
+          name: this.name,
+          email: this.email
+        };
+      }
+    }
+    
+    const user = new User('Taro Tanaka', 'tanaka@example.com');
+    console.log(user.greet());
     ```
   </TabItem>
 </Tabs>
 
-Another set of tabs with the same `syncKey` will stay in sync with the above tabs:
+## Platform-Specific Steps
 
-<Tabs syncKey="languages">
-  <TabItem label="JavaScript">
-    JavaScript is a scripting language that enables dynamic content on web pages.
-  </TabItem>
-  <TabItem label="TypeScript">
-    TypeScript is a strongly typed programming language that builds on JavaScript.
-  </TabItem>
-  <TabItem label="Python">
-    Python is a high-level, general-purpose programming language.
-  </TabItem>
-</Tabs>
-
-## With Icons
+Provide OS-specific instructions:
 
 <Tabs>
-  <TabItem label="Info" icon='<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>'>
-    This tab has an information icon.
+  <TabItem label="Windows">
+    ```powershell
+    # Verify Node.js installation
+    node --version
+    npm --version
+    
+    # Project setup
+    mkdir my-project
+    cd my-project
+    npm init -y
+    
+    # Install dependencies
+    npm install express
+    
+    # Start the app
+    npm start
+    ```
   </TabItem>
-  <TabItem label="Settings" icon='<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>'>
-    This tab has a settings icon.
+  <TabItem label="macOS">
+    ```bash
+    # Install Node.js with Homebrew
+    brew install node
+    
+    # Check versions
+    node --version
+    npm --version
+    
+    # Project setup
+    mkdir my-project
+    cd my-project
+    npm init -y
+    
+    # Install dependencies
+    npm install express
+    
+    # Start the app
+    npm start
+    ```
   </TabItem>
-  <TabItem label="Alert" icon='<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>'>
-    This tab has an alert icon.
+  <TabItem label="Linux">
+    ```bash
+    # Install Node.js (Ubuntu/Debian)
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    
+    # Check versions
+    node --version
+    npm --version
+    
+    # Project setup
+    mkdir my-project
+    cd my-project
+    npm init -y
+    
+    # Install dependencies
+    npm install express
+    
+    # Start the app
+    npm start
+    ```
   </TabItem>
 </Tabs>
+
+## API Response Formats
+
+Display responses in multiple formats:
+
+<Tabs>
+  <TabItem label="JSON">
+    ```json
+    {
+      "status": "success",
+      "data": {
+        "id": 1,
+        "name": "Taro Tanaka",
+        "email": "tanaka@example.com",
+        "profile": {
+          "age": 30,
+          "department": "Engineering",
+          "position": "Developer"
+        },
+        "preferences": {
+          "language": "ja",
+          "theme": "dark",
+          "notifications": true
+        }
+      },
+      "meta": {
+        "timestamp": "2025-01-27T16:00:00Z",
+        "version": "1.0"
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem label="XML">
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <response>
+      <status>success</status>
+      <data>
+        <id>1</id>
+        <name>Taro Tanaka</name>
+        <email>tanaka@example.com</email>
+        <profile>
+          <age>30</age>
+          <department>Engineering</department>
+          <position>Developer</position>
+        </profile>
+        <preferences>
+          <language>ja</language>
+          <theme>dark</theme>
+          <notifications>true</notifications>
+        </preferences>
+      </data>
+      <meta>
+        <timestamp>2025-01-27T16:00:00Z</timestamp>
+        <version>1.0</version>
+      </meta>
+    </response>
+    ```
+  </TabItem>
+  <TabItem label="YAML">
+    ```yaml
+    status: success
+    data:
+      id: 1
+      name: Taro Tanaka
+      email: tanaka@example.com
+      profile:
+        age: 30
+        department: Engineering
+        position: Developer
+      preferences:
+        language: ja
+        theme: dark
+        notifications: true
+    meta:
+      timestamp: "2025-01-27T16:00:00Z"
+      version: "1.0"
+    ```
+  </TabItem>
+</Tabs>
+
+## Technical Details
+
+### Props
+
+#### Tabs
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | ReactNode | — | TabItem components (required) |
+| `defaultValue` | string | First tab | Tab selected by default |
+| `className` | string | — | Additional CSS classes |
+
+#### TabItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | string | — | Tab label (required) |
+| `value` | string | `label` | Tab identifier |
+| `children` | ReactNode | — | Content rendered for the tab |
+
+### Using Tabs in MDX
+
+```markdown
+---
+title: "My Document"
+---
+
+import { Tabs, TabItem } from '@docs/ui';
+
+# Code Samples
+
+<Tabs>
+  <TabItem label="JavaScript">
+    {/* JavaScript sample */}
+    console.log('Hello, World!');
+  </TabItem>
+  <TabItem label="Python">
+    {/* Python sample */}
+    print('Hello, World!')
+  </TabItem>
+</Tabs>
+```
+
+## Best Practices
+
+### Organizing Tabs
+
+- **Logical grouping**: Keep related content together
+- **Consistent labels**: Use clear, predictable names
+- **Reasonable count**: Limit to roughly five to seven tabs
+
+### Accessibility
+
+- **Keyboard navigation**: Support arrow keys and Tab navigation
+- **Screen readers**: Provide proper ARIA roles and labels
+- **Focus management**: Ensure visible focus indicators
+
+### Performance
+
+- **Lazy loading**: Load heavy content when needed
+- **Content size**: Keep tab contents concise
+
+## Next Steps
+
+After mastering Tabs:
+
+- **[Sidebar Generation](/v2/en/02-components/04-sidebar-generation)**: Learn how navigation JSON is produced
+- **[Customization](/v2/en/03-advanced/01-customization)**: Tailor component styles
+- **[Automation](/v2/en/03-advanced/02-automation)**: Use scripts to keep tab content in sync

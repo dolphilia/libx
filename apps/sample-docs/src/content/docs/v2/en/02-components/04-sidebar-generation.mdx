@@ -1,102 +1,287 @@
 ---
-title: "Sidebar Auto-Generation"
+title: "Sidebar Auto-generation"
 description: "Learn how the automatic sidebar generation feature works"
 ---
 
-# Sidebar Auto-Generation
+# Sidebar Auto-generation
 
-This guide explains how to use the sidebar auto-generation feature to automatically create sidebar navigation based on your content structure.
+This guide explains how the sidebar navigation is generated automatically based on the content structure.
 
 ## Overview
 
-The sidebar auto-generation feature allows you to:
+Sidebar auto-generation enables you to:
 
-1. Automatically generate sidebar navigation based on your content files
-2. Define categories and their order using frontmatter
-3. Control the order of items within categories
-4. Customize sidebar display without manually updating configuration files
-
-## Enabling Auto-Generation
-
-To enable sidebar auto-generation, set the `useAutoSidebar` option to `true` in your `docs.config.ts` file:
-
-```typescript
-// apps/sample-docs/src/config/docs.config.ts
-const docsConfig = {
-  // ... other options
-  
-  // Enable auto sidebar generation
-  useAutoSidebar: true,
-  
-  // ... other options
-};
-```
-
-## Frontmatter Configuration
-
-To control how your content appears in the sidebar, use these frontmatter properties:
-
-```yaml
----
-title: "Your Document Title"
-description: "Document description"
-category: "guide"  # Category name (optional, defaults to path-based category)
-categoryOrder: 1   # Order of the category in the sidebar (optional)
-order: 2           # Order within the category (optional)
----
-```
-
-### Properties
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `title` | string | The title of the document (required) |
-| `category` | string | The category name for grouping in the sidebar (optional) |
-| `categoryOrder` | number | The order of the category in the sidebar (lower numbers appear first) |
-| `order` | number | The order of the document within its category (lower numbers appear first) |
+1. Generate sidebar navigation from content files automatically  
+2. Use directories and file names to define categories and ordering  
+3. Customize sidebar output without editing configuration files manually  
+4. Maintain consistent navigation across languages and versions
 
 ## How It Works
 
-The sidebar generation process follows these steps:
+### File-based Generation
 
-1. Collects all content files for the current language and version
-2. Groups them by category (from frontmatter or file path)
-3. Sorts categories based on `categoryOrder`
-4. Sorts documents within each category based on `order`
-5. Generates the sidebar structure with proper titles and links
+The sidebar follows these rules:
 
-## Path-Based Categories
+```
+apps/sample-docs/src/content/docs/[version]/[lang]/
+├── 01-guide/
+│   ├── 01-getting-started.mdx
+│   ├── 02-creating-documents.mdx
+│   └── 03-editing-documents.mdx
+├── 02-components/
+│   ├── 01-overview.mdx
+│   ├── 02-icons.mdx
+│   └── 03-tabs.mdx
+└── 03-advanced/
+    ├── 01-customization.mdx
+    └── 02-automation.mdx
+```
 
-If you don't specify a `category` in the frontmatter, the system will use the path-based category. For example:
+### Naming Rules
 
-- A file at `src/content/docs/en/v1/guide/getting-started.mdx` will be categorized as "guide"
-- A file at `src/content/docs/en/v1/api/reference.mdx` will be categorized as "api"
+#### Directories
 
-## Category Titles
+- **Numeric prefixes**: `01-guide`, `02-components`  
+  control category order
+- **Kebab-case names**: `advanced-topics`, `getting-started`  
+  keep slugs readable
 
-Category titles are determined in the following order:
+#### Files
 
-1. Translation key matching `docs.{category}` (e.g., `docs.guide` → "Guide")
-2. If no translation is found, the category name is capitalized (e.g., "guide" → "Guide")
+- **Numeric prefixes**: `01-basics.mdx`, `02-installation.mdx`  
+  control document order
+- **Descriptive names**: `creating-documents.mdx`, `sidebar-generation.mdx`
 
-## Example
+## Generated Structure
 
-Here's a complete example of a document frontmatter:
+### Category Titles
+
+Directory names map to categories automatically:
+
+| Directory | Category Title |
+|-----------|----------------|
+| `01-guide` | Guide |
+| `02-components` | Components |
+| `03-advanced` | Advanced |
+| `04-reference` | Reference |
+
+### Document Titles
+
+Document titles come from the `title` field in frontmatter:
 
 ```yaml
 ---
-title: "Getting Started"
-description: "Learn how to get started with our platform"
-category: "guide"
-categoryOrder: 1
-order: 1
-pubDate: 2025-01-01
-updatedDate: 2025-01-01
-author: "Docs Team"
-next:
-  text: "Installation"
-  link: "/en/v1/guide/installation"
+title: "Creating Documents"
+description: "Learn how to create new documentation files"
 ---
 ```
 
-This will place the document in the "Guide" category (which will be ordered first in the sidebar), and it will be the first item within that category.
+### URLs
+
+URLs are derived from the file path:
+
+```
+File: apps/sample-docs/src/content/docs/v2/en/01-guide/02-creating-documents.mdx
+URL:  /docs/sample-docs/en/v2/01-guide/02-creating-documents
+```
+
+## Sample Output
+
+### English Sidebar
+
+```json
+[
+  {
+    "title": "Guide",
+    "items": [
+      { "title": "Getting Started", "href": "/docs/sample-docs/en/v2/01-guide/01-getting-started" },
+      { "title": "Creating Documents", "href": "/docs/sample-docs/en/v2/01-guide/02-creating-documents" },
+      { "title": "Editing Documents", "href": "/docs/sample-docs/en/v2/01-guide/03-editing-documents" }
+    ]
+  },
+  {
+    "title": "Components",
+    "items": [
+      { "title": "Overview", "href": "/docs/sample-docs/en/v2/02-components/01-overview" },
+      { "title": "Icon Component", "href": "/docs/sample-docs/en/v2/02-components/02-icons" }
+    ]
+  }
+]
+```
+
+### Japanese Sidebar
+
+```json
+[
+  {
+    "title": "ガイド",
+    "items": [
+      { "title": "ドキュメント作成の基本", "href": "/docs/sample-docs/v2/ja/01-guide/01-getting-started" },
+      { "title": "ドキュメントの作成", "href": "/docs/sample-docs/v2/ja/01-guide/02-creating-documents" },
+      { "title": "ドキュメントの編集", "href": "/docs/sample-docs/v2/ja/01-guide/03-editing-documents" }
+    ]
+  },
+  {
+    "title": "コンポーネント",
+    "items": [
+      { "title": "コンポーネント概要", "href": "/docs/sample-docs/v2/ja/02-components/01-overview" },
+      { "title": "アイコンコンポーネント", "href": "/docs/sample-docs/v2/ja/02-components/02-icons" }
+    ]
+  }
+]
+```
+
+## Generation Process
+
+### 1. File Scan
+
+Run the sidebar builder during development or build:
+
+```bash
+pnpm build:sidebar
+```
+
+### 2. Structure Analysis
+
+- Parse directory structure
+- Read numeric prefixes for ordering
+- Extract titles from frontmatter
+
+### 3. JSON Output
+
+A JSON file is generated per language and version:
+
+```
+apps/sample-docs/public/sidebar/
+├── sidebar-en-v1.json
+├── sidebar-en-v2.json
+├── sidebar-ja-v1.json
+└── sidebar-ja-v2.json
+```
+
+### 4. Distribution
+
+Files are copied to the production output:
+
+```
+dist/docs/sample-docs/pages/public/sidebar/
+```
+
+## Customization
+
+### Category Translations
+
+Configure translations in `scripts/build-sidebar.js`:
+
+```javascript
+const categoryTranslations = {
+  guide: { en: 'Guide', ja: 'ガイド' },
+  components: { en: 'Components', ja: 'コンポーネント' },
+  advanced: { en: 'Advanced', ja: '高度' },
+  reference: { en: 'Reference', ja: 'リファレンス' }
+};
+```
+
+### Adjusting Order
+
+Rename directories or files to update ordering:
+
+```bash
+# Change order
+mv 02-components 03-components
+mv 03-advanced 02-advanced
+
+# Regenerate sidebar
+pnpm build:sidebar
+```
+
+### Excluding Files
+
+Skip files via patterns:
+
+```javascript
+const excludePatterns = [
+  /draft-/,
+  /\.draft\.mdx$/,
+  /private/
+];
+```
+
+## Troubleshooting
+
+### Sidebar Missing
+
+**Cause**: Sidebar JSON not generated  
+**Fix**:
+
+```bash
+pnpm build:sidebar
+pnpm build
+```
+
+### Incorrect Order
+
+**Cause**: Numeric prefixes out of sync  
+**Fix**:
+
+```bash
+ls -la apps/sample-docs/src/content/docs/v2/en/01-guide/
+mv 03-file.mdx 02-file.mdx
+```
+
+### Broken Links
+
+**Cause**: Paths generated incorrectly  
+**Fix**:
+
+```bash
+cat apps/sample-docs/public/sidebar/sidebar-en-v2.json
+cat apps/sample-docs/astro.config.mjs
+```
+
+## Advanced Techniques
+
+### Dynamic Sidebar
+
+Fetch sidebar data at runtime:
+
+```javascript
+async function updateSidebar() {
+  const response = await fetch('/sidebar/sidebar-en-v2.json');
+  const sidebarData = await response.json();
+  // Update UI
+}
+```
+
+### Persisting State
+
+Store sidebar preferences:
+
+```javascript
+localStorage.setItem('sidebar-expanded', JSON.stringify({
+  guide: true,
+  components: false
+}));
+```
+
+## Best Practices
+
+### Organize Files
+
+- Keep naming consistent
+- Order content according to learning paths
+- Group related topics within the same category
+
+### Maintain Regularly
+
+- Review structures periodically
+- Verify sidebar links after major edits
+- Observe usability feedback from readers
+
+## Next Steps
+
+After understanding sidebar automation:
+
+- **[Organizing Content](/v2/en/01-guide/04-organizing-content)**: Design an effective structure
+- **[Automation](/v2/en/03-advanced/02-automation)**: Automate build workflows
+- **[Customization](/v2/en/03-advanced/01-customization)**: Adjust sidebar styling and behavior

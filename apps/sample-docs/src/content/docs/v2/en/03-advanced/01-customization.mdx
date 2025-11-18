@@ -1,30 +1,27 @@
 ---
 title: "Customization"
-description: "Learn how to customize the documentation system for your specific needs"
+description: "Learn how to tailor the documentation system to your specific needs"
 ---
 
 # Customization
 
-Learn how to customize and extend the documentation system to fit your specific requirements, from basic styling to advanced configuration.
+Learn how to customize and extend the documentation system—from basic styling tweaks to advanced configuration updates.
 
 ## Theme Customization
 
 ### CSS Custom Properties
 
-The documentation system uses CSS custom properties for theming. Override these in your custom CSS:
+Override theme variables with custom CSS:
 
 ```css
-/* Custom theme colors */
 :root {
   --color-primary: #your-brand-color;
   --color-secondary: #your-secondary-color;
   --color-accent: #your-accent-color;
   
-  /* Typography */
   --font-family-sans: 'Your Font', system-ui, sans-serif;
   --font-family-mono: 'Your Mono Font', 'Fira Code', monospace;
   
-  /* Spacing */
   --space-unit: 0.25rem;
   --space-xs: calc(var(--space-unit) * 1);
   --space-sm: calc(var(--space-unit) * 2);
@@ -41,368 +38,187 @@ Customize dark mode appearance:
 ```css
 [data-theme="dark"] {
   --color-background: #1a1a1a;
-  --color-text: #e1e1e1;
-  --color-border: #333333;
-  --color-sidebar-bg: #242424;
+  --color-surface: #2d2d2d;
+  --color-text: #ffffff;
+  --color-text-muted: #a0a0a0;
+  --color-border: #404040;
+  
+  --color-primary: #66b3ff;
+  --color-accent: #ff6b6b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1a1a1a;
+    --color-text: #ffffff;
+  }
 }
 ```
 
-### Component Styling
+### Custom Fonts
 
-Override component styles with specific selectors:
+Integrate web fonts:
 
 ```css
-/* Custom sidebar styling */
-.sidebar {
-  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
-  border-right: 2px solid var(--color-primary);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+  --font-family-mono: 'Fira Code', monospace;
+  
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+}
+```
+
+## Layout Customization
+
+### Adjust Page Width
+
+```css
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-/* Custom button styling */
-.btn-primary {
+.prose {
+  max-width: 70ch;
+}
+
+.wide-content {
+  max-width: 100%;
+  margin: 0 -2rem;
+}
+```
+
+### Sidebar Styling
+
+```css
+.sidebar {
+  width: 280px;
+  min-width: 280px;
+}
+
+.sidebar-item {
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-item:hover {
+  background-color: var(--color-surface);
+}
+
+.sidebar-item.active {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+```
+
+### Header Customization
+
+```css
+.header {
+  height: 70px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+```
+
+## Component Customization
+
+### Buttons
+
+```css
+.custom-button {
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
   border: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Custom code block styling */
-.astro-code {
+.custom-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+```
+
+### Icons
+
+```css
+.icon-xs { font-size: 0.75rem; }
+.icon-sm { font-size: 1rem; }
+.icon-md { font-size: 1.25rem; }
+.icon-lg { font-size: 1.5rem; }
+.icon-xl { font-size: 2rem; }
+
+.icon-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+```
+
+### Cards
+
+```css
+.custom-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 ```
 
 ## Configuration Customization
 
-### Project Configuration
-
-Extend `project.config.ts` with custom settings:
-
-```typescript
-const projectConfig = {
-  // Standard settings
-  name: 'Your Project Name',
-  description: 'Your project description',
-  baseUrl: '/docs/your-project',
-  
-  // Custom features
-  features: {
-    search: true,
-    analytics: true,
-    feedback: true,
-    editOnGitHub: true
-  },
-  
-  // Custom navigation
-  customNav: [
-    { label: 'API', href: 'https://api.yourproject.com' },
-    { label: 'GitHub', href: 'https://github.com/your/repo' },
-    { label: 'Discord', href: 'https://discord.gg/your-server' }
-  ],
-  
-  // SEO configuration
-  seo: {
-    siteName: 'Your Project Docs',
-    twitterHandle: '@yourhandle',
-    ogImage: '/images/og-image.png'
-  }
-};
-```
-
 ### Astro Configuration
 
-Customize the Astro configuration for advanced needs:
-
 ```javascript
-// astro.config.mjs
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   integrations: [mdx()],
-  
-  // Custom routing
-  routing: {
-    prefixDefaultLocale: false
+  base: '/your-custom-path/',
+  site: 'https://your-domain.com',
+  outDir: './custom-dist',
+  publicDir: './custom-public',
+  server: {
+    port: 4000,
+    host: true
   },
-  
-  // Build optimization
-  build: {
-    inlineStylesheets: 'auto'
-  },
-  
-  // Custom markdown configuration
-  markdown: {
-    shikiConfig: {
-      theme: 'github-dark',
-      langs: ['javascript', 'typescript', 'bash', 'yaml']
-    }
-  }
-});
-```
-
-## Custom Components
-
-### Creating Custom Components
-
-Create project-specific components:
-
-```typescript
-// src/components/CustomAlert.astro
----
-interface Props {
-  type: 'info' | 'warning' | 'error' | 'success';
-  title?: string;
-  icon?: string;
-}
-
-const { type, title, icon } = Astro.props;
----
-
-<div class={`custom-alert custom-alert--${type}`}>
-  {icon && <span class="custom-alert__icon">{icon}</span>}
-  {title && <h4 class="custom-alert__title">{title}</h4>}
-  <div class="custom-alert__content">
-    <slot />
-  </div>
-</div>
-
-<style>
-.custom-alert {
-  padding: 1rem;
-  border-radius: 8px;
-  border-left: 4px solid;
-  margin: 1rem 0;
-}
-
-.custom-alert--info {
-  background: #e3f2fd;
-  border-color: #2196f3;
-  color: #0d47a1;
-}
-
-.custom-alert--warning {
-  background: #fff3e0;
-  border-color: #ff9800;
-  color: #e65100;
-}
-
-.custom-alert--error {
-  background: #ffebee;
-  border-color: #f44336;
-  color: #c62828;
-}
-
-.custom-alert--success {
-  background: #e8f5e8;
-  border-color: #4caf50;
-  color: #2e7d32;
-}
-</style>
-```
-
-### Using Custom Components
-
-Import and use in your documentation:
-
-```mdx
----
-title: "My Document"
----
-
-import CustomAlert from '../../components/CustomAlert.astro';
-
-# My Document
-
-<CustomAlert type="info" title="Important Note" icon="ℹ️">
-  This is custom alert component with enhanced styling.
-</CustomAlert>
-```
-
-## Layout Customization
-
-### Custom Page Layouts
-
-Create specialized layouts for different content types:
-
-```astro
----
-// src/layouts/APILayout.astro
-import BaseLayout from './BaseLayout.astro';
-
-interface Props {
-  title: string;
-  description?: string;
-  apiVersion?: string;
-}
-
-const { title, description, apiVersion } = Astro.props;
----
-
-<BaseLayout title={title} description={description}>
-  <div class="api-layout">
-    <header class="api-header">
-      <h1>{title}</h1>
-      {apiVersion && <span class="api-version">v{apiVersion}</span>}
-      {description && <p class="api-description">{description}</p>}
-    </header>
-    
-    <nav class="api-nav">
-      <!-- API-specific navigation -->
-    </nav>
-    
-    <main class="api-content">
-      <slot />
-    </main>
-    
-    <aside class="api-sidebar">
-      <!-- API reference sidebar -->
-    </aside>
-  </div>
-</BaseLayout>
-```
-
-### Custom Homepage
-
-Create a custom landing page:
-
-```astro
----
-// src/pages/index.astro
-import MainLayout from '../layouts/MainLayout.astro';
-import { Button, Card, Icon } from '@docs/ui';
----
-
-<MainLayout title="Welcome to Your Documentation">
-  <section class="hero">
-    <h1>Your Project Documentation</h1>
-    <p>Everything you need to get started and master our platform.</p>
-    <div class="hero-actions">
-      <Button href="/en/v2/guide/getting-started" size="large">
-        Get Started
-      </Button>
-      <Button href="/en/v2/components/overview" variant="outline" size="large">
-        Browse Components
-      </Button>
-    </div>
-  </section>
-  
-  <section class="features">
-    <div class="feature-grid">
-      <Card title="Quick Start" icon="rocket">
-        Get up and running in minutes with our step-by-step guide.
-      </Card>
-      <Card title="Components" icon="puzzle">
-        Rich UI components to enhance your documentation.
-      </Card>
-      <Card title="Customizable" icon="paint-brush">
-        Fully customizable to match your brand and needs.
-      </Card>
-    </div>
-  </section>
-</MainLayout>
-```
-
-## Advanced Features
-
-### Search Integration
-
-Add custom search functionality:
-
-```typescript
-// src/utils/search.ts
-export interface SearchResult {
-  title: string;
-  url: string;
-  excerpt: string;
-  category: string;
-}
-
-export async function searchDocuments(query: string): Promise<SearchResult[]> {
-  // Implementation depends on your search backend
-  // Could be Algolia, Elasticsearch, or local search
-  
-  const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
-  return response.json();
-}
-```
-
-### Analytics Integration
-
-Track documentation usage:
-
-```typescript
-// src/utils/analytics.ts
-export function trackPageView(url: string, title: string) {
-  // Google Analytics
-  if (typeof gtag !== 'undefined') {
-    gtag('config', 'GA_MEASUREMENT_ID', {
-      page_title: title,
-      page_location: url
-    });
-  }
-  
-  // Custom analytics
-  fetch('/api/analytics/pageview', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ url, title, timestamp: Date.now() })
-  });
-}
-```
-
-### Custom Build Process
-
-Extend the build process with custom scripts:
-
-```javascript
-// scripts/custom-build.js
-import { execSync } from 'child_process';
-import fs from 'fs';
-import path from 'path';
-
-// Generate custom metadata
-function generateMetadata() {
-  const metadata = {
-    buildTime: new Date().toISOString(),
-    version: process.env.npm_package_version,
-    commit: execSync('git rev-parse HEAD').toString().trim()
-  };
-  
-  fs.writeFileSync(
-    path.join('dist', 'metadata.json'),
-    JSON.stringify(metadata, null, 2)
-  );
-}
-
-// Custom post-build optimizations
-function optimizeAssets() {
-  // Compress images, optimize CSS, etc.
-  execSync('imagemin dist/images/** --out-dir=dist/images-optimized');
-}
-
-// Run custom build steps
-generateMetadata();
-optimizeAssets();
-```
-
-## Performance Optimization
-
-### Bundle Optimization
-
-Optimize JavaScript bundles:
-
-```javascript
-// astro.config.mjs
-export default defineConfig({
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor': ['react', 'react-dom'],
-          'ui': ['@docs/ui'],
-          'utils': ['@docs/utils']
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "src/styles/variables.scss";`
         }
       }
     }
@@ -410,41 +226,273 @@ export default defineConfig({
 });
 ```
 
-### Image Optimization
+### Project Configuration
 
-Optimize images automatically:
+Project-level settings live in `apps/<project-name>/src/config/project.config.json`. Load them with helpers such as `getLegacyProjectConfig` from `@docs/project-config`.
+
+```json
+{
+  "basic": {
+    "baseUrl": "/docs/sample-docs",
+    "supportedLangs": ["en", "ja"],
+    "defaultLang": "en"
+  },
+  "translations": {
+    "ja": {
+      "displayName": "サンプルドキュメント",
+      "displayDescription": "多言語・多バージョン対応を実演する包括的なサンプルドキュメントです。",
+      "categories": {
+        "guide": "ガイド",
+        "components": "コンポーネント",
+        "advanced": "高度な設定",
+        "reference": "リファレンス"
+      }
+    }
+  },
+  "versioning": {
+    "versions": [
+      { "id": "v1", "name": "Version 1.0", "isLatest": false },
+      { "id": "v2", "name": "Version 2.0", "isLatest": true }
+    ]
+  }
+}
+```
+
+`basic.baseUrl` affects the published URL, and `translations.categories` feeds into the generated sidebar. Backups are saved to `.backups/project-config-*/`; run `node scripts/validate-category-structure.js` after edits to confirm multi-language consistency.
+
+## Content Customization
+
+### Custom MDX Components
+
+```jsx
+// src/components/CustomCallout.astro
+---
+export interface Props {
+  type?: 'info' | 'warning' | 'error' | 'success';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+---
+
+<div class={`custom-callout custom-callout--${type}`}>
+  {title && <div class="custom-callout__title">{title}</div>}
+  <div class="custom-callout__content">
+    <slot />
+  </div>
+</div>
+
+<style>
+.custom-callout {
+  border-left: 4px solid var(--color-primary);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  background: var(--color-surface);
+}
+
+.custom-callout--warning {
+  border-left-color: var(--color-warning);
+  background: rgba(255, 193, 7, 0.1);
+}
+
+.custom-callout--error {
+  border-left-color: var(--color-danger);
+  background: rgba(220, 53, 69, 0.1);
+}
+
+.custom-callout--success {
+  border-left-color: var(--color-success);
+  background: rgba(40, 167, 69, 0.1);
+}
+
+.custom-callout__title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+</style>
+```
+
+### Custom Layouts
 
 ```astro
 ---
-// src/components/OptimizedImage.astro
-import { Image } from '@astrojs/image/components';
+// src/layouts/CustomLayout.astro
+import BaseLayout from './BaseLayout.astro';
 
-interface Props {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  loading?: 'lazy' | 'eager';
+export interface Props {
+  title: string;
+  description?: string;
+  showSidebar?: boolean;
 }
 
-const { src, alt, width = 800, height, loading = 'lazy' } = Astro.props;
+const { title, description, showSidebar = true } = Astro.props;
 ---
 
-<Image
-  src={src}
-  alt={alt}
-  width={width}
-  height={height}
-  loading={loading}
-  format="webp"
-  quality={80}
-/>
+<BaseLayout title={title} description={description}>
+  <div class="custom-layout">
+    {showSidebar && (
+      <aside class="custom-sidebar">
+        <!-- Custom sidebar content -->
+      </aside>
+    )}
+    
+    <main class="custom-main">
+      <header class="custom-header">
+        <h1>{title}</h1>
+        {description && <p class="description">{description}</p>}
+      </header>
+      
+      <div class="custom-content">
+        <slot />
+      </div>
+    </main>
+  </div>
+</BaseLayout>
 ```
+
+## Advanced Customization
+
+### Plugin System
+
+```javascript
+// plugins/custom-plugin.js
+export function customPlugin(options = {}) {
+  return {
+    name: 'custom-plugin',
+    hooks: {
+      'astro:config:setup': ({ addRenderer, config, updateConfig }) => {
+        // Custom setup
+      },
+      'astro:build:start': ({ buildConfig }) => {
+        // Before build
+      },
+      'astro:build:done': ({ dir, routes }) => {
+        // After build
+      }
+    }
+  };
+}
+```
+
+### Internationalization
+
+```typescript
+// src/i18n/languages.ts
+export const languages = {
+  en: { code: 'en', name: 'English' },
+  ja: { code: 'ja', name: '日本語' },
+  ko: { code: 'ko', name: '한국어' },
+  zh: { code: 'zh', name: '中文' }
+};
+```
+
+### Performance Optimization
+
+```javascript
+// astro.config.mjs
+export default defineConfig({
+  image: {
+    service: squooshImageService(),
+  },
+  build: {
+    split: true
+  },
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport'
+  },
+  compressHTML: true,
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+            ui: ['@docs/ui']
+          }
+        }
+      }
+    }
+  }
+});
+```
+
+## Deployment Customization
+
+### Environment Variables
+
+```bash
+# .env.local
+PUBLIC_SITE_URL=https://your-domain.com
+PUBLIC_GA_ID=G-XXXXXXXXXX
+PUBLIC_SEARCH_API_KEY=your-search-key
+
+DATABASE_URL=your-database-url
+API_SECRET=your-api-secret
+```
+
+### Build Scripts
+
+```json
+{
+  "scripts": {
+    "build": "astro build",
+    "build:staging": "ENVIRONMENT=staging astro build",
+    "build:production": "ENVIRONMENT=production astro build",
+    "preview": "astro preview",
+    "deploy": "npm run build:production && your-deploy-command"
+  }
+}
+```
+
+## Troubleshooting
+
+### Styles Not Applying
+
+```css
+.docs-content .custom-component {
+  /* styles */
+}
+
+.urgent-style {
+  color: red !important;
+}
+```
+
+### Build Errors
+
+```bash
+rm -rf node_modules/.astro
+rm -rf dist
+pnpm install
+pnpm build
+```
+
+## Best Practices
+
+### Maintainability
+
+- Prefer CSS variables over hard-coded values
+- Build reusable components
+- Keep configuration centralized
+
+### Performance
+
+- Load only necessary assets
+- Optimize images and media
+- Apply sensible caching
+
+### Accessibility
+
+- Maintain adequate color contrast
+- Support full keyboard navigation
+- Provide meaningful ARIA labels and structure
 
 ## Next Steps
 
-Ready to implement advanced features?
+Once you understand customization:
 
-- **[Automation](/en/v2/advanced/automation)**: Learn about automation and scripting
-- **[Deployment](/en/v2/advanced/deployment)**: Advanced deployment strategies
-- **[Reference](/en/v2/reference/frontmatter)**: Detailed configuration reference
+- **[Automation](/v2/en/03-advanced/02-automation)**: Automate builds and deployments
+- **[Deployment](/v2/en/03-advanced/03-deployment)**: Plan production releases
+- **[Reference](/v2/en/04-reference/01-frontmatter)**: Review detailed metadata options

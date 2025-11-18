@@ -5,22 +5,22 @@ description: "Learn how to create new documentation files with proper structure 
 
 # Creating Documents
 
-This guide walks you through the process of creating new documentation files, from understanding the file structure to writing effective content.
+This guide walks through the process of creating new documentation files, from understanding the file structure to writing effective content.
 
 ## File Structure and Naming
 
 ### Directory Organization
 
-Documents are organized in a hierarchical structure:
+Each project stores documentation in a hierarchical structure:
 
 ```
-src/content/docs/[lang]/[version]/[category]/[document].mdx
+apps/<project-name>/src/content/docs/[version]/[lang]/[category]/[document].mdx
 ```
 
-Example paths:
-- `src/content/docs/en/v2/guide/creating-documents.mdx`
-- `src/content/docs/ja/v2/components/icons.mdx`
-- `src/content/docs/en/v2/advanced/customization.mdx`
+Examples from sample-docs:
+
+- `apps/sample-docs/src/content/docs/v2/en/01-guide/02-creating-documents.mdx`
+- `apps/sample-docs/src/content/docs/v2/en/02-components/02-icons.mdx`
 
 ### Naming Conventions
 
@@ -30,23 +30,23 @@ Example paths:
 
 ## Using the Creation Script
 
-The easiest way to create new documents is using the built-in script:
+The easiest way to create new documents is to run the script from the monorepo root:
 
 ```bash
-node scripts/create-document.js [project-name] [lang] [version] [slug]
+node scripts/create-document.js <project-name> <lang> <version> [category] [title]
 ```
 
 ### Examples
 
 ```bash
 # Create an English guide document
-node scripts/create-document.js sample-docs en v2 guide/installation
+node scripts/create-document.js sample-docs en v2 guide "Getting Started"
 
 # Create a Japanese component example
-node scripts/create-document.js sample-docs ja v2 components/buttons
+node scripts/create-document.js sample-docs ja v2 components "Sidebar Generation"
 
 # Create an advanced configuration guide
-node scripts/create-document.js sample-docs en v2 advanced/custom-themes
+node scripts/create-document.js sample-docs en v2 advanced "Custom Themes"
 ```
 
 ### What the Script Does
@@ -60,14 +60,14 @@ The creation script automatically:
 
 ## Manual Document Creation
 
-If you prefer to create documents manually, follow these steps:
+If you need to create a document manually, follow these steps (the script is recommended because it provides backups and consistent naming).
 
 ### 1. Create the File
 
 Create a new `.mdx` file in the appropriate directory:
 
 ```bash
-touch src/content/docs/en/v2/guide/my-new-guide.mdx
+touch apps/sample-docs/src/content/docs/v2/en/01-guide/06-my-new-guide.mdx
 ```
 
 ### 2. Add Frontmatter
@@ -81,7 +81,7 @@ description: "Description of what this guide covers"
 ---
 ```
 
-This system uses an automatic approach for organization and navigation, so only title and description are required.
+This system uses automatic organization and navigation, so only the title and description are required.
 
 ### 3. Write Content
 
@@ -108,7 +108,7 @@ More detailed content...
 | Field | Type | Description |
 |-------|------|-------------|
 | `title` | string | Document title (appears in navigation and page header) |
-| `description` | string | Brief description for SEO and previews (50-160 characters recommended) |
+| `description` | string | Brief description for SEO and previews (50–160 characters recommended) |
 
 ### Automatic Features
 
@@ -124,9 +124,9 @@ This documentation system automatically handles:
 ### Writing Style
 
 - **Be conversational**: Write as if explaining to a colleague
-- **Use active voice**: "Create a file" not "A file should be created"
+- **Use active voice**: “Create a file,” not “A file should be created”
 - **Be specific**: Include exact commands, file names, and paths
-- **Add context**: Explain why something is important
+- **Add context**: Explain why something matters
 
 ### Structure Best Practices
 
@@ -165,7 +165,7 @@ Before finalizing, verify:
 
 - [ ] **Frontmatter is valid**: No syntax errors in YAML
 - [ ] **Links work**: All internal and external links are functional
-- [ ] **Code runs**: Any code examples actually work
+- [ ] **Code runs**: Code examples actually work
 - [ ] **Navigation flows**: Previous/next links create logical progression
 - [ ] **Formatting**: Headers, lists, and emphasis render correctly
 
@@ -202,6 +202,7 @@ Run the installation command:
 Check that installation was successful:
 
     npm list @our-package/core
+
 ```
 
 ### Reference Documentation
@@ -229,12 +230,13 @@ Creates a new application instance.
 
 **Example:**
     const app = createApp({ debug: true });
+
 ```
 
 ## Next Steps
 
 Now that you know how to create documents, learn about:
 
-- **[Editing Documents](/en/v2/guide/editing-documents)**: Best practices for editing and updating content
-- **[Content Organization](/en/v2/guide/organizing-content)**: How to structure and categorize your documentation
-- **[Using Components](/en/v2/components/overview)**: Enhance your docs with interactive elements
+- **[Editing Documents](/v2/en/01-guide/03-editing-documents)**: Best practices for editing and updating content
+- **[Content Organization](/v2/en/01-guide/04-organizing-content)**: How to structure and categorize your documentation
+- **[Using Components](/v2/en/02-components/01-overview)**: Explore component examples such as Icon, Tabs, and Sidebar

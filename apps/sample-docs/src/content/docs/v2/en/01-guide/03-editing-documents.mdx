@@ -5,7 +5,7 @@ description: "Master the editing process and best practices for maintaining docu
 
 # Editing Documents
 
-Learn how to effectively edit and maintain your documentation to keep it accurate, useful, and up-to-date.
+Learn how to edit and maintain documentation so it stays accurate, useful, and current.
 
 ## Editing Workflow
 
@@ -15,21 +15,22 @@ Before making changes:
 
 - **Identify the goal**: What needs to be updated or improved?
 - **Check current state**: Read through the existing content
-- **Plan changes**: Outline what you'll modify, add, or remove
+- **Plan changes**: Outline what needs to be modified, added, or removed
 - **Consider impact**: How will changes affect related documents?
 
 ### 2. Make Incremental Changes
 
 - **Start small**: Make one logical change at a time
 - **Test frequently**: Verify changes work as expected
-- **Preview locally**: Use the development server to see changes
+- **Preview locally**: Run `pnpm --filter=sample-docs dev` to confirm formatting
+- **Regenerate navigation**: Run `pnpm build:sidebar` after renaming files or categories
 - **Check links**: Ensure all references remain valid
 
 ### 3. Review and Finalize
 
 - **Proofread**: Check for typos, grammar, and clarity
 - **Validate structure**: Ensure logical flow and organization
-- **Update metadata**: Modify `updatedDate` and other frontmatter
+- **Adjust metadata**: Update frontmatter where needed
 - **Test thoroughly**: Verify all examples and instructions work
 
 ## Common Editing Tasks
@@ -94,50 +95,26 @@ The sidebar will automatically update when you add new files.
 
 <!-- After -->
 The sidebar will automatically update when you add new files. 
-Learn more about [sidebar auto-generation](/en/v2/components/sidebar-generation).
+See [sidebar auto-generation](/v2/en/02-components/04-sidebar-generation) for details.
 ```
 
 ## Frontmatter Updates
 
-### Updating Dates
-
-Always update the `updatedDate` when making changes:
+This documentation system keeps frontmatter minimal because automation handles the rest:
 
 ```yaml
 ---
 title: "Document Title"
-# ... other fields
-updatedDate: 2025-01-27  # Update to current date
+description: "Brief description of what this document covers"
 ---
 ```
 
-### Modifying Navigation
+These pieces are handled automatically:
 
-Update previous/next links when document order changes:
-
-```yaml
----
-# ... other fields
-prev:
-  text: "New Previous Document"
-  link: "/en/v2/guide/new-previous"
-next:
-  text: "New Next Document"
-  link: "/en/v2/guide/new-next"
----
-```
-
-### Changing Categories
-
-When moving documents between categories:
-
-```yaml
----
-# ... other fields
-category: "advanced"      # Changed from "guide"
-categoryOrder: 3          # Update order as needed
----
-```
+- **Navigation**: Previous/next links from the file structure
+- **Ordering**: Numerical prefixes such as `01-` and `02-`
+- **Categorization**: Directory names like `01-guide` or `02-components`
+- **Dates**: Publication metadata inferred from Git history
 
 ## Content Improvement Strategies
 
@@ -164,15 +141,15 @@ Configure the app by passing an options object to `createApp()`:
 Include images, diagrams, or components to clarify concepts:
 
 ```markdown
-{/* Before: Text only */}
+<!-- Before: Text only -->
 The sidebar shows all available documents organized by category.
 
-{/* After: With visual aid */}
+<!-- After: With visual aid -->
 The sidebar shows all available documents organized by category:
 
 ![Sidebar example](/images/sidebar-screenshot.png)
 
-For interactive navigation, see the [Navigation component](/en/v2/components/navigation).
+For interactive navigation, see [sidebar auto-generation](/v2/en/02-components/04-sidebar-generation) and the [tabs component](/v2/en/02-components/03-tabs).
 ```
 
 ### Provide Context
@@ -302,6 +279,6 @@ For team documentation:
 
 Now that you understand editing best practices:
 
-- **[Organize Content](/en/v2/guide/organizing-content)**: Learn how to structure documentation effectively
-- **[Use Components](/en/v2/components/overview)**: Discover available UI components for enhanced documentation
-- **[Advanced Topics](/en/v2/advanced/customization)**: Explore customization and automation options
+- **[Organize Content](/v2/en/01-guide/04-organizing-content)**: Learn how to structure documentation effectively
+- **[Use Components](/v2/en/02-components/01-overview)**: Discover available UI components for enhanced documentation
+- **[Advanced Topics](/v2/en/03-advanced/01-customization)**: Explore customization and automation options

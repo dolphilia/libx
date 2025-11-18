@@ -1,97 +1,67 @@
 ---
 title: "Documentation Versioning Overview"
-description: "Learn about versioning documentation and how to organize content across different versions"
+description: "Learn how documentation versioning works and how content is organized across versions"
 ---
 
 # Documentation Versioning Overview
 
-Welcome to the sample documentation project! This guide explains the concept of documentation versioning and how you can organize content across different versions like v1 and v2.
+Welcome to the sample documentation project! This page explains the versioning structure used inside the libx monorepo and shows how versions like v1 and v2 coexist.
 
-## What is Documentation Versioning?
+## Versioning in libx
 
-Documentation versioning allows you to maintain multiple versions of your documentation simultaneously. This is particularly useful when:
+Each application stores documentation under `apps/<project-name>/src/content/docs/<version>/<lang>/`. The UI is generated from `project.config.json`, which describes versions and languages.
 
-- You have different versions of your software or API
-- You need to support users on older versions while developing new features
-- You want to gradually migrate users from one version to another
-- You need to maintain backward compatibility documentation
-
-## Why Separate v1 and v2?
-
-In this project, we demonstrate versioning by organizing content into separate directories:
+Sample structure for `sample-docs`:
 
 ```
-docs/
-├── en/
-│   ├── v1/           # Version 1 documentation
-│   │   └── guide/
-│   └── v2/           # Version 2 documentation
-│       ├── guide/
-│       ├── components/
-│       ├── advanced/
-│       └── reference/
-└── ja/               # Japanese translations
-    ├── v1/
-    └── v2/
+apps/sample-docs/
+├── src/
+│   ├── config/project.config.json   # Centralized version/language definitions
+│   └── content/docs/
+│       ├── v1/
+│       │   └── ja/01-guide/...
+│       └── v2/
+│           ├── ja/
+│           └── en/
+└── public/sidebar/                  # Auto-generated sidebar JSON
 ```
 
-### Version 1 (Current Page)
-- **Purpose**: Provides a simple introduction to the versioning concept
-- **Content**: Basic overview and orientation
-- **Audience**: Users getting familiar with the documentation structure
+The `versioning.versions` section in `project.config.json` controls IDs, names, release dates, and which version is marked as latest. Running `node scripts/create-version.js sample-docs v3` generates every language/category structure automatically when you need a new version.
 
-### Version 2 (Main Documentation)
-- **Purpose**: Comprehensive documentation with detailed guides and examples
-- **Content**: Complete documentation creation and editing guides
-- **Audience**: Users ready to create and manage documentation
+## Why Keep v1 and v2?
 
-## Benefits of This Approach
+- **Visible migration plans**: Maintain v1 while building v2 so users can migrate gradually.
+- **Stable URLs**: `/docs/sample-docs/en/v1/...` and `/docs/sample-docs/en/v2/...` stay distinct, which helps both readers and search engines.
+- **Translation control**: Track translation progress per version, leverage rollback features in `scripts/add-language.js`, and restore content from `.backups/`.
 
-1. **Clear Separation**: Each version has its own dedicated space
-2. **Independent Evolution**: Versions can evolve independently
-3. **User Choice**: Users can choose the version that fits their needs
-4. **Migration Path**: Clear progression from basic to advanced content
+### Version 1 (this page)
 
-## Directory Structure Benefits
+- **Goal**: Provide a quick overview of the versioning model  
+- **Contents**: Directory layout, config files, core commands  
+- **Audience**: Anyone new to the libx documentation layout
 
-By organizing content in version-specific directories, you get:
+### Version 2 (main docs)
 
-- **Organized URLs**: Clean paths like `/en/v1/guide/` and `/en/v2/guide/`
-- **Independent Navigation**: Each version can have its own sidebar structure
-- **Flexible Content**: Different versions can have completely different content organization
-- **Easy Maintenance**: Changes to one version don't affect others
+- **Goal**: Deliver end-to-end guidance on creating, editing, and automating docs  
+- **Contents**: Guides, components, advanced topics, references  
+- **Audience**: Editors actively working on `sample-docs`
 
-## Multi-language Support
+## Languages and Sidebar
 
-This versioning approach works seamlessly with multi-language support:
+`sample-docs` uses locale-first URLs (`/docs/sample-docs/<lang>/<version>/...`). Passing `pathPattern: 'locale-first'` to `getSidebarAsync` from `@docs/content-utils` generates per-language, per-version sidebar JSON (for example `apps/sample-docs/public/sidebar/sidebar-en-v2.json`).
 
-- Each language (`en`, `ja`) has its own version directories
-- Content can be translated independently for each version
-- URL structure remains clean and predictable
-- Users can switch languages while staying in the same version
+## Operating the Versioning System
+
+1. **Parallel updates without structural drift**: Copy the v1 category structure to v2, then extend v2 as needed.
+2. **Edit configs safely**: Prefer scripts such as `scripts/create-version.js` or `scripts/add-language.js` so changes are backed up automatically.
+3. **Regenerate navigation**: Run `pnpm build:sidebar` after adding versions or categories, then confirm behavior with `pnpm dev --filter=sample-docs`.
 
 ## Next Steps
 
-Ready to explore comprehensive documentation creation? Check out **Version 2** which contains:
+The latest v2 guides cover the hands-on workflows:
 
-- **Complete Documentation Guides**: Learn how to create, edit, and organize documentation
-- **Component Examples**: Discover available UI components like icons, tabs, and more
-- **Advanced Topics**: Explore customization, automation, and deployment
-- **Reference Materials**: Find detailed information about configuration and syntax
+- **[Documentation Fundamentals](/v2/en/01-guide/01-getting-started)** – Review core principles shared across apps
+- **[Creating Documents](/v2/en/01-guide/02-creating-documents)** – Learn the creation script workflow
+- **[Version Management](/v2/en/01-guide/05-version-management)** – Understand how `project.config.json` and automation work together
 
-[**Explore v2 Documentation →**](/en/v2/guide/getting-started)
-
-## Technical Implementation
-
-This versioning system is built using:
-
-- **Directory-based routing**: Astro's file-based routing system
-- **Dynamic sidebar generation**: Automatically generates navigation based on content structure
-- **Frontmatter configuration**: Uses metadata to control ordering and categorization
-- **Multi-language support**: Built-in internationalization features
-
-The version information is configured in `project.config.ts`, where you can:
-- Define available versions
-- Set the latest version
-- Configure version-specific metadata
-- Manage version display names and dates
+Continue to the next page to see these practices in action.

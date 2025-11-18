@@ -1,18 +1,18 @@
 ---
 title: "Frontmatter Reference"
-description: "Complete reference for all frontmatter properties and their usage"
+description: "Complete reference for all frontmatter properties and how to use them"
 ---
 
 # Frontmatter Reference
 
-Complete reference for frontmatter properties available in documentation files. This documentation system uses a minimalist approach focusing on essential metadata only.
+This documentation system takes a minimalist approach: focus on required metadata and let automation handle the rest.
 
 ## Required Properties
 
 ### title
 - **Type:** `string`
-- **Description:** The title of the document, displayed in navigation and page headers
-- **Usage:** Should be descriptive and unique within the documentation
+- **Description:** Document title used in navigation and page headers
+- **Usage:** Keep it descriptive and unique
 
 ```yaml
 title: "Getting Started Guide"
@@ -20,87 +20,170 @@ title: "Getting Started Guide"
 
 ### description
 - **Type:** `string`
-- **Description:** Brief description used for SEO meta tags and content previews
-- **Usage:** Should be 50-160 characters for optimal SEO
+- **Description:** Short summary for SEO and previews
+- **Usage:** Target 50–160 characters
 
 ```yaml
-description: "Learn how to get started with our documentation system"
+description: "Learn how to work with the documentation system."
 ```
 
 ## Automatic Features
 
-This documentation system automatically handles many aspects that traditionally require manual frontmatter configuration:
+Several metadata fields are derived automatically:
 
-### Navigation
-- **Previous/Next links**: Automatically generated based on file structure and numbering
-- **Category organization**: Derived from directory structure
-- **Ordering**: Based on file naming convention (01-, 02-, etc.)
-
-### Metadata
-- **Publication dates**: Managed through Git history
-- **Author information**: Tracked via Git commits
-- **Update dates**: Automatically updated based on file modifications
+- **Navigation:** Previous/next links and categories from the directory structure
+- **Ordering:** Numeric prefixes in file names (`01-`, `02-`, etc.)
+- **Dates and authors:** Pulled from Git history
+- **Sidebar entries:** Built from folder and file names
 
 ## File Organization
 
 ### Directory Structure
-Content organization is handled through the file system structure:
 
 ```
-src/content/docs/[lang]/[version]/[category]/[document].mdx
+apps/<project-name>/src/content/docs/[version]/[lang]/[category]/[document].mdx
 ```
 
-- **Categories** are automatically detected from directory names
-- **Ordering** is controlled by numerical prefixes (01-, 02-, etc.)
-- **Navigation** is generated based on file structure
+- Categories are detected from folder names  
+- Ordering comes from numeric prefixes  
+- Navigation follows file hierarchy
 
-### Naming Convention
-
-Use numbered prefixes to control document order:
+### Naming Pattern
 
 ```
-01-getting-started.mdx    # First document
-02-installation.mdx       # Second document
-03-configuration.mdx      # Third document
+01-getting-started.mdx
+02-installation.mdx
+03-configuration.mdx
 ```
 
-### Categories
+### Standard Categories
 
-Standard categories used in this system:
+- `01-guide/` – tutorials and onboarding
+- `02-components/` – UI component documentation
+- `03-advanced/` – advanced topics
+- `04-reference/` – detailed reference materials
 
-- `01-guide/` - Step-by-step tutorials and getting started content
-- `02-components/` - UI component documentation and examples  
-- `03-advanced/` - Advanced topics and customization
-- `04-reference/` - API references and detailed specifications
+## Example
 
-## Example Usage
-
-Here's the recommended minimal frontmatter for most documents:
+Recommended frontmatter for most documents:
 
 ```yaml
 ---
 title: "Your Document Title"
-description: "A brief description of what this document covers"
+description: "Short explanation of what this document covers"
 ---
 ```
 
-This simple approach provides all the essential metadata while relying on the system's automatic features for organization and navigation.
-
 ## Best Practices
 
-### Title Guidelines
-- Use descriptive, keyword-rich titles
-- Keep titles concise but informative
-- Ensure titles are unique within each section
+### Titles
 
-### Description Guidelines  
-- Keep descriptions between 50-160 characters for optimal SEO
-- Write clear, actionable descriptions
-- Focus on what the user will learn or accomplish
+- Be descriptive and keyword-rich
+- Keep them concise
+- Ensure uniqueness within a section
+
+### Descriptions
+
+- Aim for 50–160 characters
+- Highlight outcomes (“Learn how to…”)
+- Reflect what users will accomplish
 
 ### File Organization
-- Use numbered prefixes to control ordering (01-, 02-, etc.)
-- Group related content in appropriate directories
-- Follow consistent naming conventions across all documents
 
-This minimalist approach reduces maintenance overhead while ensuring all essential information is captured efficiently.
+- Use numeric prefixes for order
+- Group related content in the same folder
+- Stick to consistent naming conventions
+
+## Additional Considerations
+
+### Multi-language Support
+
+Keep the same structure and frontmatter across languages:
+
+```yaml
+# Japanese version
+---
+title: "コンポーネント概要"
+description: "利用可能なUIコンポーネントの完全ガイド"
+---
+
+# English version
+---
+title: "Component Overview"
+description: "Complete guide to available UI components"
+---
+```
+
+### Versioning
+
+Use the same structure per version:
+
+```yaml
+---
+title: "Basic Usage"
+description: "Learn the fundamentals"
+---
+```
+
+### Special Cases
+
+Some pages may need extra context—use the same minimal fields:
+
+```yaml
+---
+title: "Project Landing"
+description: "Overview of the project's core features"
+---
+```
+
+## Comparing Approaches
+
+### Legacy (not used)
+
+```yaml
+---
+title: "Document"
+description: "Description"
+order: 3
+category: "guide"
+categoryOrder: 1
+prev:
+  text: "Previous"
+  link: "/prev-page"
+next:
+  text: "Next"
+  link: "/next-page"
+author: "Author"
+pubDate: 2024-01-01
+updatedDate: 2024-01-15
+sidebar: true
+toc: true
+---
+```
+
+### Modern Minimal (recommended)
+
+```yaml
+---
+title: "Document"
+description: "Description"
+---
+```
+
+The system now infers the rest:
+
+- `order` and `category` come from the filesystem
+- `prev` and `next` links are calculated automatically
+- Author and date information come from Git history
+- Sidebar and TOC behavior follows global settings
+
+## Migration Guide
+
+When moving from complex frontmatter to the simplified format:
+
+1. Keep only `title` and `description`
+2. Use directory structure and prefixes to control order/category
+3. Remove `order`, `category`, `author`, and date fields
+4. Test navigation to confirm everything renders correctly
+
+This approach reduces maintenance overhead while preserving essential metadata.

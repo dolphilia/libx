@@ -5,16 +5,16 @@ description: "Learn how to structure and categorize documentation for maximum us
 
 # Organizing Content
 
-Effective content organization is crucial for creating documentation that users can navigate intuitively and find information quickly.
+Effective organization helps readers navigate intuitively and find the information they need quickly.
 
 ## Content Hierarchy
 
 ### Directory Structure
 
-Organize content using a clear hierarchy:
+Keep a clear hierarchy for every project:
 
 ```
-src/content/docs/[lang]/[version]/
+apps/sample-docs/src/content/docs/[version]/[lang]/
 ├── 01-guide/           # Getting started and tutorials
 │   ├── 01-getting-started.mdx
 │   ├── 02-creating-documents.mdx
@@ -27,319 +27,230 @@ src/content/docs/[lang]/[version]/
 │   ├── 01-customization.mdx
 │   └── 02-automation.mdx
 └── 04-reference/       # Reference materials
-    ├── 01-frontmatter.mdx
-    └── 02-configuration.mdx
+    └── 01-frontmatter.mdx
 ```
 
-### Numbering Convention
+### Numbering Conventions
 
-Use numbered prefixes to control order:
+Use numeric prefixes to enforce order:
 
 - **Categories**: `01-guide/`, `02-components/`, `03-advanced/`
-- **Documents**: `01-getting-started.mdx`, `02-installation.mdx`
+- **Documents**: `01-getting-started.mdx`, `02-creating-documents.mdx`
 
-This ensures consistent ordering regardless of file system behavior.
+This keeps the sequence consistent regardless of file-system sorting.
 
 ## Category Design
 
 ### Purpose-Based Categories
 
-Organize by user intent and workflow:
+Align sections with user intent:
 
 | Category | Purpose | Content Type |
 |----------|---------|--------------|
-| **Guide** | Learning and tutorials | Step-by-step instructions, getting started |
-| **Components** | UI elements and examples | Component documentation, interactive demos |
-| **Advanced** | Expert-level topics | Customization, optimization, integrations |
-| **Reference** | Quick lookup | API docs, configuration options, glossary |
+| **Guide** | Learning and onboarding | Tutorials and step-by-step guides |
+| **Components** | Discover available tools | UI elements and code examples |
+| **Advanced** | Deep understanding | Customization and automation topics |
+| **Reference** | Quick lookup | API details and configuration options |
 
-### User Journey Mapping
+### Progressive Learning Path
 
-Structure content to match common user journeys:
+Structure content around the user journey:
 
 ```
-User Journey: New User → Basic User → Power User
-     ↓              ↓              ↓
-   Guide      →  Components  →  Advanced
+1. Guide — foundational concepts and first steps
+   ↓
+2. Practical — day-to-day tasks and workflows
+   ↓
+3. Advanced — customization and optimization
+   ↓
+4. Reference — detailed lookup information
 ```
 
-## Sidebar Configuration
+## Document Structure
 
-### Automatic Generation
+### Information Hierarchy
 
-The system automatically generates sidebars based on:
-
-1. **Directory structure**: Categories from folder names
-2. **Frontmatter**: Custom categories and ordering
-3. **Category translations**: Localized category names
-
-### Frontmatter Control
-
-Control sidebar appearance with frontmatter:
-
-```yaml
----
-title: "Document Title"
-category: "guide"           # Override default category
-categoryOrder: 1            # Category position in sidebar
-order: 2                   # Document position within category
----
-```
-
-### Category Translations
-
-Define category names in `project.config.ts`:
-
-```typescript
-categoryTranslations: {
-  en: {
-    guide: 'Guide',
-    components: 'Components',
-    advanced: 'Advanced',
-    reference: 'Reference'
-  },
-  ja: {
-    guide: 'ガイド',
-    components: 'コンポーネント',
-    advanced: '高度な設定',
-    reference: 'リファレンス'
-  }
-}
-```
-
-## Content Types and Patterns
-
-### Tutorial Content
-
-**Structure:** Problem → Solution → Practice
+Use a predictable flow inside each page:
 
 ```markdown
+# Title
+Overview and what readers will learn
+
+## Key Concepts
+Foundational understanding
+
+## Basic Usage
+Practical example
+
+## Advanced Usage
+More complex scenarios
+
+## Best Practices
+Recommendations
+
+## Next Steps
+Links to related content
+```
+
+### Heading Levels
+
+- **H1 (`#`)**: Page title only  
+- **H2 (`##`)**: Main sections  
+- **H3 (`###`)**: Subsections  
+- **H4+**: Use only when truly necessary
+
+## Cross-References
+
+### Strategic Linking
+
+Connect related content deliberately:
+
+```markdown
+<!-- Concept to implementation -->
+Once you understand the basics, try the [hands-on example](/v2/en/01-guide/02-creating-documents).
+
+<!-- Deep dives -->
+For additional details, see the [frontmatter reference](/v2/en/04-reference/01-frontmatter).
+
+<!-- Guided progression -->
+Next, continue with [advanced customization](/v2/en/03-advanced/01-customization).
+```
+
+### Link Patterns
+
+Use descriptive text for every link:
+
+```markdown
+<!-- Preferred -->
+[Creating Documents](/v2/en/01-guide/02-creating-documents)
+[Component Overview](/v2/en/02-components/01-overview)
+
+<!-- Avoid -->
+[Click here](/v2/en/01-guide/02-creating-documents)
+[More info](/v2/en/02-components/01-overview)
+```
+
+## Navigation Design
+
+### Automatic Navigation
+
+Let automation handle the basics:
+
+- **Sidebar**: Generated from the directory structure
+- **Previous/Next links**: Derived from file naming
+- **Breadcrumbs**: Calculated from the hierarchy
+
+### Custom Navigation
+
+Add explicit links when necessary:
+
+```markdown
+## Related Topics
+
+Pair this section with:
+
+- [Basic Setup](/v2/en/01-guide/01-getting-started)
+- [Using Components](/v2/en/02-components/01-overview)
+- [Deployment Guide](/v2/en/03-advanced/03-deployment)
+```
+
+## Content Guidelines
+
+### Maintain Consistency
+
+- **Terminology**: Use the same term for the same concept
+- **Formatting**: Apply shared patterns for code, lists, and emphasis
+- **Tone**: Maintain a consistent voice
+- **Structure**: Mirror layouts for similar topics
+
+### Avoid Duplication
+
+- Let one document own each concept and link to it elsewhere
+- Provide short summaries instead of repeating entire sections
+- When duplication is unavoidable, highlight the authoritative source
+
+## Strategies by Content Type
+
+### Tutorials
+
+Provide a guided learning experience:
+
+```markdown
+---
+title: "Creating Your First Document"
+description: "A complete guide to building a document from scratch"
+---
+
 # Creating Your First Document
 
-## What You'll Build
+In this tutorial you'll create a complete document from start to finish.
 
-By the end of this tutorial, you'll have created a complete documentation page with navigation and components.
+## What You'll Learn
+
+After finishing you'll be able to:
+- Create new document files
+- Add the proper frontmatter
+- Write effective content
 
 ## Prerequisites
 
-- Basic understanding of Markdown
-- Text editor or IDE
+- Basic Markdown knowledge
+- Project development environment set up
 
 ## Step 1: Create the File
-
-First, create a new file in the correct location...
-
-## Step 2: Add Frontmatter
-
-Next, add the required metadata...
-
-## What You've Learned
-
-You now know how to create documentation files with proper structure and metadata.
-
-## Next Steps
-
-- Try adding components to your document
-- Explore different content categories
+[Detailed instructions...]
 ```
 
-### Reference Content
+### Reference Material
 
-**Structure:** Overview → Details → Examples
+Structure references for quick lookups:
 
 ```markdown
-# Frontmatter Reference
+---
+title: "Configuration Options"
+description: "Complete reference of all available configuration options"
+---
 
-## Overview
+# Configuration Options
 
-Frontmatter is YAML metadata that controls document behavior and appearance.
-
-## Required Fields
+## Basic Settings
 
 ### title
-- **Type:** string
-- **Description:** Document title displayed in navigation and page header
-- **Example:** `title: "Getting Started"`
+- **Type**: string
+- **Required**: Yes
+- **Description**: Document title
+- **Example**: `"My Guide"`
 
 ### description
-- **Type:** string  
-- **Description:** Brief description for SEO and previews
-- **Example:** `description: "Learn the basics of documentation"`
-
-## Optional Fields
-
-[Detailed field descriptions...]
-
-## Examples
-
-### Basic Document
-```yaml
----
-title: "My Document"
-description: "Document description"
----
+- **Type**: string
+- **Required**: Yes
+- **Description**: Brief explanation of the document
+- **Example**: `"This guide explains basic usage."`
 ```
 
-### Advanced Configuration
-```yaml
----
-title: "Advanced Guide"
-description: "Advanced configuration options"
-category: "advanced"
-order: 1
----
-```
-```
+## Quality Assurance
 
-### How-To Content
+### Organization Checklist
 
-**Structure:** Goal → Steps → Validation
-
-```markdown
-# How to Add Navigation Links
-
-## Goal
-
-Add previous and next navigation links to create a logical reading flow.
-
-## Steps
-
-### 1. Identify Adjacent Documents
-
-Determine which documents should come before and after in the reading sequence.
-
-### 2. Add Frontmatter Links
-
-Update the frontmatter with navigation links:
-
-```yaml
-prev:
-  text: "Previous Document"
-  link: "/en/v2/guide/previous"
-next:
-  text: "Next Document"  
-  link: "/en/v2/guide/next"
-```
-
-### 3. Test Navigation
-
-Preview your changes and verify the navigation links work correctly.
-
-## Verification
-
-Your document should now show:
-- Previous link in the bottom-left
-- Next link in the bottom-right
-- Breadcrumb navigation at the top
-```
-
-## Information Architecture
-
-### Progressive Disclosure
-
-Layer information from general to specific:
-
-1. **Overview**: High-level concepts and benefits
-2. **Getting Started**: Basic implementation
-3. **Detailed Guides**: Comprehensive coverage
-4. **Advanced Topics**: Expert-level content
-5. **Reference**: Quick lookup information
-
-### Cross-Referencing
-
-Create connections between related content:
-
-```markdown
-<!-- In a guide document -->
-For more details about component properties, see the 
-[Components Reference](/en/v2/reference/components).
-
-<!-- In a component document -->
-This component is commonly used in tutorials. See 
-[Creating Interactive Docs](/en/v2/guide/interactive-content).
-
-<!-- In advanced topics -->
-Before proceeding, ensure you understand the basics covered in 
-[Getting Started](/en/v2/guide/getting-started).
-```
-
-## Navigation Patterns
-
-### Linear Navigation
-
-For tutorial sequences, use clear previous/next links:
-
-```yaml
-# Document 1
-next:
-  text: "Installation"
-  link: "/en/v2/guide/installation"
-
-# Document 2  
-prev:
-  text: "Getting Started"
-  link: "/en/v2/guide/getting-started"
-next:
-  text: "Configuration"
-  link: "/en/v2/guide/configuration"
-```
-
-### Hub-and-Spoke Navigation
-
-For reference sections, link back to overview pages:
-
-```markdown
-# Component Details
-
-[← Back to Components Overview](/en/v2/components/overview)
-
-## Icon Component
-
-Detailed information about the Icon component...
-
-### Related Components
-
-- [Button Component](/en/v2/components/button)
-- [Navigation Component](/en/v2/components/navigation)
-```
-
-## Content Maintenance
+- [ ] **Logical placement**: Content lives in the right category
+- [ ] **Consistent naming**: Matches existing patterns
+- [ ] **Clear ordering**: Fits the reading flow
+- [ ] **No duplication**: Avoids repeating other docs
+- [ ] **Updated links**: Connects to related guides
 
 ### Regular Review
 
-Establish a review schedule:
+Revisit the structure on a cadence:
 
-- **Monthly**: Check for broken links and outdated information
-- **Quarterly**: Review content organization and user feedback
-- **Annually**: Major structural reorganization if needed
-
-### Analytics and Feedback
-
-Track content usage:
-
-- **Most visited pages**: Ensure they're well-organized and current
-- **High exit pages**: May need better navigation or content
-- **Search terms**: Identify content gaps or organization issues
-
-### Continuous Improvement
-
-- **Gather user feedback**: What's confusing or hard to find?
-- **Monitor support questions**: Common questions indicate content gaps
-- **Test with new users**: Fresh perspective on organization effectiveness
-
-## Best Practices Summary
-
-1. **Start with user goals**: Organize around what users want to accomplish
-2. **Use consistent patterns**: Apply the same structure across similar content
-3. **Provide multiple paths**: Support different learning styles and needs
-4. **Test navigation**: Ensure users can find information intuitively
-5. **Keep it simple**: Avoid over-categorization or complex hierarchies
-6. **Plan for growth**: Structure should accommodate new content easily
+1. **Analyze usage**: Which paths are most popular?
+2. **Find gaps**: Where are connections missing?
+3. **Consider reorganization**: Would a new category help?
+4. **Collect feedback**: Incorporate suggestions from readers
 
 ## Next Steps
 
-Now that you understand content organization:
+After mastering content organization:
 
-- **[Version Management](/en/v2/guide/version-management)**: Learn how to handle multiple documentation versions
-- **[Component Overview](/en/v2/components/overview)**: Explore available UI components
-- **[Advanced Customization](/en/v2/advanced/customization)**: Customize the documentation system for your needs
+- **[Version Management](/v2/en/01-guide/05-version-management)**: Keep multiple versions in sync
+- **[Component Overview](/v2/en/02-components/01-overview)**: Use UI components to enhance docs
+- **[Automation](/v2/en/03-advanced/02-automation)**: Explore scripts that keep structures consistent

@@ -7,7 +7,7 @@ import { Icon, Button, Card } from '@docs/ui';
 
 # Component Overview
 
-This documentation system includes a comprehensive set of UI components designed to enhance your documentation with interactive elements, visual aids, and improved user experience.
+This documentation system ships with a broad set of UI components built to enhance content with interactive elements, visual cues, and better user experience.
 
 ## Available Components
 
@@ -16,9 +16,9 @@ This documentation system includes a comprehensive set of UI components designed
 | Component | Purpose | Example Use Case |
 |-----------|---------|------------------|
 | **Icon** | Display scalable vector icons | Status indicators, navigation, emphasis |
-| **Button** | Interactive buttons and links | Call-to-action, navigation, downloads |
+| **Button** | Interactive buttons and links | Calls to action, navigation, downloads |
 | **Card** | Content containers | Feature highlights, summaries, links |
-| **Alert** | Important notices | Warnings, tips, information callouts |
+| **Alert** | Important notices | Warnings, tips, informational callouts |
 
 ### Navigation Components
 
@@ -33,10 +33,10 @@ This documentation system includes a comprehensive set of UI components designed
 
 | Component | Purpose | Example Use Case |
 |-----------|---------|------------------|
-| **Grid** | Responsive layouts | Image galleries, feature grids |
-| **TwoColumn** | Side-by-side content | Comparisons, before/after examples |
-| **Sidebar** | Contextual information | Related links, quick references |
-| **Hero** | Prominent headers | Landing pages, major section starts |
+| **Grid** | Responsive layout | Feature grids, media galleries |
+| **TwoColumn** | Parallel content | Comparisons, before/after examples |
+| **Sidebar** | Contextual info | Related links, quick reference |
+| **Hero** | Prominent headers | Landing pages, section intros |
 
 ## Quick Examples
 
@@ -60,23 +60,23 @@ This documentation system includes a comprehensive set of UI components designed
 ### Interactive Elements
 
 <div style="display: flex; gap: 1rem; margin: 1rem 0;">
-  <Button href="/en/v2/guide/getting-started">Get Started</Button>
-  <Button variant="outline" href="/en/v2/components/icons">View Icons</Button>
+  <Button href="/v2/en/01-guide/01-getting-started">Get Started</Button>
+  <Button variant="outline" href="/v2/en/02-components/02-icons">View Icons</Button>
 </div>
 
 ### Content Cards
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 1rem 0;">
-  <Card title="Getting Started" href="/en/v2/guide/getting-started">
-    Learn the basics of creating and managing documentation with our step-by-step guide.
+  <Card title="Getting Started" href="/v2/en/01-guide/01-getting-started">
+    Learn the basics of creating and managing documentation with step-by-step guidance.
   </Card>
   
-  <Card title="Components" href="/en/v2/components/icons">
-    Explore the available UI components to enhance your documentation with interactive elements.
+  <Card title="Components" href="/v2/en/02-components/02-icons">
+    Explore UI components that enrich docs with interactive elements.
   </Card>
   
-  <Card title="Advanced Topics" href="/en/v2/advanced/customization">
-    Discover advanced customization options and automation techniques for power users.
+  <Card title="Advanced Topics" href="/v2/en/03-advanced/01-customization">
+    Discover advanced customization options and automation techniques.
   </Card>
 </div>
 
@@ -105,91 +105,69 @@ import { Icon, Alert } from '@docs/ui';
 
 <Alert type="info">
   <Icon name="info" />
-  This is an information callout using components.
+  This is an informational callout powered by components.
 </Alert>
 
-Regular markdown content continues here...
+Regular Markdown content continues here...
 ```
 
 ### Component Props
 
-Most components accept standard props:
+Most components share standard props:
 
 - **className**: CSS classes for styling
-- **style**: Inline styles object
-- **children**: Content to render inside the component
-- **Component-specific props**: Documented in individual component pages
+- **style**: Inline style object
+- **children**: Content rendered inside the component
+- **Component-specific props**: Documented on each component page
 
 ## Design Principles
 
 ### Consistency
 
-All components follow consistent design patterns:
-
 - **Color scheme**: Uses CSS custom properties for theming
-- **Typography**: Matches documentation typography scale
-- **Spacing**: Follows consistent spacing units
-- **Accessibility**: WCAG 2.1 AA compliant
+- **Typography**: Matches the documentation scale
+- **Spacing**: Adheres to shared spacing units
+- **Accessibility**: Meets WCAG 2.1 AA guidelines
 
 ### Flexibility
 
-Components are designed to be flexible:
-
-- **Customizable**: Accept style and className props
-- **Responsive**: Work well on all screen sizes
-- **Composable**: Can be combined to create complex layouts
-- **Themeable**: Support both light and dark themes
+- **Customizable**: Accepts `style` and `className`
+- **Responsive**: Works across screen sizes
+- **Composable**: Combine to create richer layouts
+- **Theme-ready**: Supports light and dark themes
 
 ### Performance
 
-Components are optimized for performance:
-
-- **Tree-shakeable**: Only import what you use
-- **Lightweight**: Minimal bundle impact
-- **Server-side rendering**: Full SSR support
-- **Fast loading**: Optimized for quick page loads
+- **Tree-shakeable**: Import only what you need
+- **Lightweight**: Minimal bundle overhead
+- **SSR friendly**: Works with Astro server rendering
+- **Fast-loading**: Optimized for quick paints
 
 ## Component Categories
 
 ### Content Enhancement
 
-Make your content more engaging:
+Use components to make docs more engaging:
 
-- **[Icons](/en/v2/components/icons)**: Add visual indicators and emphasis
-- **[Buttons](/en/v2/components/buttons)**: Create interactive call-to-action elements
-- **[Alerts](/en/v2/components/alerts)**: Highlight important information
-
-### Organization
-
-Structure your content effectively:
-
-- **[Tabs](/en/v2/components/tabs)**: Organize related content in tabs
-- **[Cards](/en/v2/components/cards)**: Group related information
-- **[Grids](/en/v2/components/grids)**: Create responsive layouts
-
-### Navigation
-
-Help users navigate your content:
-
-- **[Table of Contents](/en/v2/components/toc)**: In-page navigation
-- **[Breadcrumbs](/en/v2/components/breadcrumbs)**: Show current location
-- **[Pagination](/en/v2/components/pagination)**: Sequential navigation
+- **[Icons](/v2/en/02-components/02-icons)**: Add visual indicators and emphasis
+- **[Tabs](/v2/en/02-components/03-tabs)**: Group related content under tabs
+- **[Sidebar Generation](/v2/en/02-components/04-sidebar-generation)**: Provide navigation that scales with large docs
 
 ## Accessibility Features
 
-All components include accessibility features:
+Every component ships with built-in accessibility:
 
-- **Keyboard navigation**: Full keyboard support
-- **Screen reader support**: Proper ARIA labels and roles
-- **Focus management**: Logical focus order
-- **Color contrast**: Meets WCAG contrast requirements
-- **Reduced motion**: Respects user motion preferences
+- **Keyboard navigation** support
+- **Screen reader friendly** labels/roles
+- **Focus management** that follows logical order
+- **Color contrast** that satisfies WCAG
+- **Reduced motion** honoring user preferences
 
 ## Customization
 
 ### CSS Custom Properties
 
-Components use CSS custom properties for theming:
+Tune themes via CSS variables:
 
 ```css
 :root {
@@ -203,7 +181,7 @@ Components use CSS custom properties for theming:
 
 ### Style Overrides
 
-Override component styles with CSS classes:
+Override styles with class names:
 
 ```css
 .custom-button {
@@ -219,15 +197,14 @@ Override component styles with CSS classes:
 
 ## Getting Started with Components
 
-1. **[Explore Icons](/en/v2/components/icons)**: Start with the most commonly used component
-2. **[Try Tabs](/en/v2/components/tabs)**: Learn how to organize content effectively
-3. **[Create Layouts](/en/v2/components/grids)**: Build responsive page layouts
-4. **[Add Navigation](/en/v2/components/toc)**: Improve content discoverability
+1. **[Explore Icons](/v2/en/02-components/02-icons)**: Start with the most commonly used component
+2. **[Try Tabs](/v2/en/02-components/03-tabs)**: Learn how to organize content effectively
+3. **[Sidebar Auto-generation](/v2/en/02-components/04-sidebar-generation)**: Understand how navigation JSON is produced
 
 ## Next Steps
 
-Ready to enhance your documentation with components?
+Ready to enhance documentation with components?
 
-- **[Icon Component](/en/v2/components/icons)**: Learn about the versatile icon system
-- **[Tab Component](/en/v2/components/tabs)**: Organize content with tabbed interfaces
-- **[Sidebar Generation](/en/v2/components/sidebar-generation)**: Understand automatic navigation
+- **[Icon Component](/v2/en/02-components/02-icons)**: Learn about the flexible icon system
+- **[Tab Component](/v2/en/02-components/03-tabs)**: Organize content with tabbed layouts
+- **[Sidebar Generation](/v2/en/02-components/04-sidebar-generation)**: Customize automatically generated navigation
