@@ -1,0 +1,111 @@
+---
+title: "MDX執筆ガイド"
+description: "libxベースのドキュメントでMDXを書くための包括的な手引き（通常のMDXとの違いも含む）"
+---
+
+# MDX執筆ガイド
+
+MDXはMarkdownとJSX/TSXコンポーネントを組み合わせられるため、インタラクティブなドキュメントに最適です。このガイドでは標準的なMDXの記法に加え、`apps/sample-docs/` 内で必要になるlibx固有の追加事項を整理します。
+
+## MDXの基本
+
+1. **フロントマター** — ファイル先頭にYAMLでメタデータを記述します。libxでは最低限 `title`（必要に応じて `description`）が求められます。  
+2. **Markdown要素** — 見出し、リスト、テーブル、コードフェンス、引用はMarkdownと同じです。  
+3. **JSXブロック** — コンポーネントをインポートし、`<Component />` の形で挿入できます。エクスポートした値はJSX内から参照可能です。  
+4. **ショートコード的な再利用** — 通常のimportで共通スニペットを呼び出し、複数箇所で使い回せます。
+
+```mdx
+---
+title: "データパイプライン"
+description: "APIとドキュメントを接続する手順"
+tags:
+  - data
+draft: false
+---
+
+import { Alert, Tabs, Tab } from '@docs/ui';
+
+# データパイプライン
+
+<Alert type="tip">フロントマターはナビゲーションとメタタグに利用されます。</Alert>
+
+```bash
+pnpm --filter=sample-docs dev
+```
+
+<Tabs>
+  <Tab title="CLI">新しいバージョンは scripts/create-version.js で作成できます。</Tab>
+  <Tab title="UI">構造を変更したらサイドバーを再生成してください。</Tab>
+</Tabs>
+
+```
+
+
+## 通常のMDXとの違い（libx固有）
+
+| 項目 | 通常のMDX | libxでの扱い |
+| --- | --- | --- |
+| ビルド設定 | `@astrojs/mdx` の標準設定のみ | Astro設定でShikiハイライト（`github-dark`）と `remark-link-transformer` を有効化し、相対リンクに `/docs/sample-docs/v*/<lang>/` を自動付与します（`apps/sample-docs/astro.config.mjs`, `scripts/plugins/remark-link-transformer.js`）。 |
+| インポート | ファイルごとの相対パス | Viteエイリアスで `@docs/ui`, `@docs/theme`, `@docs/versioning`, `@docs/i18n` などを利用できます。リポジトリ内の共有パッケージはこれらの別名経由で呼び出してください。 |
+| フロントマター | 自由形式 | `apps/sample-docs/src/content/config.ts` のスキーマで検証されます。`tags`, `draft`, `prev/next` などは任意ですが、使用する場合は定義どおりの型に合わせる必要があります。 |
+| ルーティング | URLを手動管理 | ディレクトリ構造が `/v2/<lang>/<category>/<slug>` を決めます。`en` と `ja` で同じフォルダ・ファイル名を維持してください。 |
+| リンク | 記述した文字列がそのまま使われる | `remark-link-transformer` が相対リンクを現在のバージョン・言語付きURLへ書き換えます。`(01-frontmatter)` のような相対指定を推奨します。 |
+| コンポーネント | 任意に用意 | `packages/ui` のコンポーネントを `@docs/ui` から利用すると、テーマやi18nが統一されます。必要な場合だけクライアントハイドレーションを指定してください。 |
+
+### どこで差が出やすいか
+
+- **カスタムメタデータ** — 新しいキーを追加したい場合は先にスキーマを更新しないとビルドエラーになります。  
+- **外部埋め込み** — `<iframe>` など生HTMLも使えますが、スタイルを揃えたい場合はAstro/MDXコンポーネント化しましょう。  
+- **コードブロック** — シンタックスハイライトは全体設定で賄われるため、各ページで個別に設定する必要はありません。
+
+## ファイル配置ルール
+
+```
+apps/sample-docs/src/content/docs/v2/&lt;lang&gt;/&lt;category&gt;/&lt;番号&gt;-&lt;slug&gt;.mdx
+```
+
+- `01-`, `02-` などの番号がサイドバー順を決めます。  
+- フォルダがカテゴリ（例: `04-reference`）になります。  
+- 言語ごとに同じ番号とスラッグを維持し、ナビゲーションの差異を防ぎます。
+
+## 執筆ワークフロー
+
+1. **言語ごとにファイルを作成** — `en` と `ja` の同名ファイルを必ず揃えます。  
+2. **フロントマターを入力** — タイトル/説明を翻訳し、必要なメタデータを追加。  
+3. **まずMarkdownを書く** — その後で `@docs/ui` などのコンポーネントを挿入し、強調やインタラクションを加えます。  
+4. **リンクは相対指定** — `[フロントマターリファレンス](01-frontmatter)` のように書けば自動で完全URLになります。  
+5. **ローカルで確認** — `pnpm --filter=sample-docs dev` でプレビューし、フォルダ構成を変えたら `pnpm build:sidebar` を実行してナビゲーションJSONを更新します。
+
+## libx向けMDXのパターン
+
+### コールアウトとインタラクション
+
+```mdx
+import { Alert, CodeWindow } from '@docs/ui';
+
+<Alert type="note">
+Markdownで本文を書き、必要な箇所だけコンポーネントで補強できます。
+</Alert>
+
+<CodeWindow filename="astro.config.mjs">
+{`import mdx from '@astrojs/mdx';`}
+</CodeWindow>
+```
+
+### リンク運用のベストプラクティス
+
+- 相対リンクを使うと `remark-link-transformer` が `/docs/sample-docs/v2/ja/01-guide/02-creating-documents` のように変換します。  
+- 特定バージョンへのリンクが必要な場合は `/v2/ja/...` を明示してもベースパスが付与されます。  
+- 外部リンクは `https://` などのスキームを含めれば変換対象外です。
+
+### 多言語ドキュメントの注意
+
+- コードスニペットは基本的に共通化し、必要な箇所だけコメントや文字列を翻訳します。  
+- 見出しや本文は完全に翻訳し、TabsやAlertのラベルも言語ごとに用意すると読みやすさが保てます。  
+- 新しい例や図を追加する場合は両言語へ同時に反映する運用にしましょう。
+
+## 参考資料
+
+- [フロントマターリファレンス](01-frontmatter) — 詳細なスキーマ説明  
+- `apps/sample-docs/astro.config.mjs` — MDX統合設定の全体像  
+- `scripts/plugins/remark-link-transformer.js` — URL変換ロジックの実装

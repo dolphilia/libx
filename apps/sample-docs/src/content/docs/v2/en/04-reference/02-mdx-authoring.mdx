@@ -1,0 +1,110 @@
+---
+title: "MDX Authoring Guide"
+description: "Comprehensive guidance for writing MDX in libx-based docs, including vanilla MDX behavior and libx-specific conventions"
+---
+
+# MDX Authoring Guide
+
+MDX lets you mix Markdown with JSX/TSX components, which makes it ideal for creating interactive documentation. This guide covers standard MDX syntax plus the libx-specific additions you need when working inside `apps/sample-docs/`.
+
+## Standard MDX Essentials
+
+1. **Frontmatter** — Start files with YAML metadata. The minimum libx expects is `title` and (optionally) `description`.  
+2. **Markdown primitives** — Headings, lists, tables, code fences, and blockquotes behave exactly like Markdown.  
+3. **JSX blocks** — Import components and render them inline with `<Component />` syntax. Exported variables are available to JSX as in React/Preact.  
+4. **Shortcode-style components** — Define and reuse snippets across the document with normal imports.
+
+```mdx
+---
+title: "Data Pipelines"
+description: "Walkthrough for connecting APIs to docs"
+tags:
+  - data
+draft: false
+---
+
+import { Alert, Tabs, Tab } from '@docs/ui';
+
+# Data Pipelines
+
+<Alert type="tip">Frontmatter drives navigation and meta tags.</Alert>
+
+```bash
+pnpm --filter=sample-docs dev
+```
+
+<Tabs>
+  <Tab title="CLI">Use scripts/create-version.js for new versions.</Tab>
+  <Tab title="UI">Rebuild the sidebar after reorganizing content.</Tab>
+</Tabs>
+
+```
+
+## How libx MDX Differs From Vanilla MDX
+
+| Area | Vanilla MDX | libx conventions |
+| --- | --- | --- |
+| Build pipeline | Only `@astrojs/mdx` defaults | Astro config adds Shiki highlighting (`github-dark`) and the custom `remark-link-transformer` so that relative links automatically gain `/docs/sample-docs/v*/<lang>/` prefixes (`apps/sample-docs/astro.config.mjs`, `scripts/plugins/remark-link-transformer.js`). |
+| Imports | Relative paths per file | Vite aliases expose shared packages: `@docs/ui`, `@docs/theme`, `@docs/versioning`, `@docs/i18n`. Use these instead of deep relative paths. |
+| Frontmatter schema | Free-form | Validated by `apps/sample-docs/src/content/config.ts`. Extra fields (e.g., `tags`, `draft`, `prev/next`) are optional but must match the schema when present. |
+| Routing | You manage URLs manually | Directory structure defines `/v2/<lang>/<category>/<slug>`. Keep mirror folders between `en` and `ja` to ensure consistent links. |
+| Links | Whatever you type | Prefer relative links like `(01-frontmatter)` so the transformer injects version, locale, and base path automatically. Absolute `/` paths are rewritten as well, but relative links keep content portable. |
+| Components | Anything available globally | Use Astro/MDX-compatible components from `packages/ui` so they share design tokens and i18n behavior. Components render on the server by default; hydrate only when necessary. |
+
+### When You Must Diverge
+
+- **Custom metadata** — Stick to the schema keys; if you need new metadata, update the collection schema first to avoid build errors.  
+- **External embeds** — Use Astro components or raw HTML. MDX supports `<iframe>` blocks, but wrap them in a component if you need consistent styling.  
+- **Dynamic code blocks** — Syntax highlighting is handled globally, so there is no need to import rehype plugins locally.
+
+## Recommended File Layout
+
+```
+apps/sample-docs/src/content/docs/v2/&lt;lang&gt;/&lt;category&gt;/&lt;num&gt;-&lt;slug&gt;.mdx
+```
+
+- Use `01-`, `02-`, etc., to determine ordering.  
+- Categories act as sidebar sections (e.g., `04-reference`).  
+- Keep the same numbering across locales to reduce navigation drift.
+
+## Authoring Workflow
+
+1. **Create both language files** with identical filenames under `en` and `ja`.  
+2. **Add frontmatter** with the translated `title`/`description`.  
+3. **Write Markdown first**, then layer components from `@docs/ui` for callouts, tabs, math, etc.  
+4. **Link other docs relatively** (e.g., `[Frontmatter Reference](01-frontmatter)`).  
+5. **Preview locally** using `pnpm --filter=sample-docs dev`. Run `pnpm build:sidebar` if you add or rename directories so that navigation JSON stays in sync.
+
+## Patterns for libx MDX
+
+### Callouts and Inline Interactions
+
+```mdx
+import { Alert, CodeWindow } from '@docs/ui';
+
+<Alert type="note">
+MDX gives you Markdown for most prose, but components make it interactive.
+</Alert>
+
+<CodeWindow filename="astro.config.mjs">
+{`import mdx from '@astrojs/mdx';`}
+</CodeWindow>
+```
+
+### Linking Best Practices
+
+- Relative links → `remark-link-transformer` rewrites `./02-creating-documents` into `/docs/sample-docs/v2/en/01-guide/02-creating-documents`.  
+- Versioned links → Write `/v2/en/...` only when cross-linking specific versions; the transformer will still prepend the base path.  
+- External links → Include protocol; they are left untouched.
+
+### Internationalization Tips
+
+- Keep shared code snippets identical unless localization matters.  
+- Translate headings, descriptions, and paragraphs, but reuse component props when possible.  
+- Where examples show UI text, duplicate tabs or alerts so each language sees localized labels.
+
+## Further Reading
+
+- [Frontmatter Reference](01-frontmatter) — Detailed schema information.  
+- `apps/sample-docs/astro.config.mjs` — Shows the MDX integration details.  
+- `scripts/plugins/remark-link-transformer.js` — Explains how URLs are rewritten at build time.
