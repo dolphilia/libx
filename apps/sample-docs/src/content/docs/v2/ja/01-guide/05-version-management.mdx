@@ -32,39 +32,43 @@ description: "複数のドキュメントバージョンを効果的に処理す
 
 ### バージョン定義
 
-`project.config.ts`でバージョンを定義：
+`apps/<project-name>/src/config/project.config.json` の `versioning.versions` で ID・表示名・リリース日・最新フラグを管理します。sample-docs の例：
 
-```typescript
-versions: [
-  { 
-    id: 'v1', 
-    name: 'バージョン 1.0', 
-    date: new Date('2024-01-01'), 
-    isLatest: false 
-  },
-  { 
-    id: 'v2', 
-    name: 'バージョン 2.0', 
-    date: new Date('2025-01-01'), 
-    isLatest: true 
+```json
+{
+  "versioning": {
+    "versions": [
+      {
+        "id": "v1",
+        "name": "Version 1.0",
+        "date": "2024-01-01T00:00:00.000Z",
+        "isLatest": false
+      },
+      {
+        "id": "v2",
+        "name": "Version 2.0",
+        "date": "2025-01-01T00:00:00.000Z",
+        "isLatest": true
+      }
+    ]
   }
-]
+}
 ```
+
+直接編集する代わりに `node scripts/create-version.js sample-docs v3 --interactive` を使うと、バックアップ生成・表示名入力・コピー元の選択が自動化され、`project.config.json` の差分も整形済みで出力されます。
 
 ### ディレクトリ構造
 
-各バージョンは独自のディレクトリを持ちます：
+各バージョンは `apps/<project-name>/src/content/docs/<version>/<lang>/` 配下に独自のカテゴリを持ちます：
 
 ```
-src/content/docs/ja/
-├── v1/              # バージョン1.0のコンテンツ
-│   ├── guide/
-│   └── reference/
-└── v2/              # バージョン2.0のコンテンツ
-    ├── guide/
-    ├── components/
-    ├── advanced/
-    └── reference/
+apps/sample-docs/src/content/docs/
+├── v1/ja/01-guide/...
+└── v2/ja/
+    ├── 01-guide/
+    ├── 02-components/
+    ├── 03-advanced/
+    └── 04-reference/
 ```
 
 ## バージョン間の移行
@@ -107,12 +111,12 @@ description: "バージョン1.0から2.0への移行に必要な変更点"
 ### 1. ファイル構造の更新
 
 古い構造：
-    docs/guide/basics.md
-    docs/components/buttons.md
+    apps/sample-docs/src/content/docs/v1/ja/guide/basics.md
+    apps/sample-docs/src/content/docs/v1/ja/components/sidebar.mdx
 
 新しい構造：
-    docs/01-guide/01-basics.mdx
-    docs/02-components/01-buttons.mdx
+    apps/sample-docs/src/content/docs/v2/ja/01-guide/01-basics.mdx
+    apps/sample-docs/src/content/docs/v2/ja/02-components/04-sidebar-generation.mdx
 
 ### 2. フロントマターの簡素化
 
@@ -139,8 +143,8 @@ description: "バージョン1.0から2.0への移行に必要な変更点"
 
 ユーザーがバージョン間を簡単に移動できるようにする：
 
-- **バージョンセレクター**：ヘッダーまたはサイドバーに配置
-- **一貫したURL構造**：`/ja/v1/guide/`、`/ja/v2/guide/`
+- **バージョンセレクター**：共通ヘッダーに実装済み（`project.config.json` の `isLatest` を参照）
+- **一貫したURL構造**：`/docs/sample-docs/ja/v1/guide/...` と `/docs/sample-docs/ja/v2/guide/...`
 - **クロスバージョンリンク**：関連する他のバージョンのコンテンツへのリンク
 
 ### 自動リダイレクト
@@ -150,7 +154,7 @@ description: "バージョン1.0から2.0への移行に必要な変更点"
 ```javascript
 // 非推奨バージョンから最新バージョンへのリダイレクト例
 if (version === 'v0' && !user.preferences.showDeprecated) {
-  redirect(`/ja/v2${currentPath}`);
+  redirect(`/docs/sample-docs/ja/v2${currentPath}`);
 }
 ```
 
@@ -177,27 +181,25 @@ if (version === 'v0' && !user.preferences.showDeprecated) {
 
 ### バージョン作成スクリプト
 
-新しいバージョンの作成を自動化：
+- `node scripts/create-version.js sample-docs v3`  
+  `project.config.json` を更新し、既存バージョンをコピーして `apps/sample-docs/src/content/docs/v3/<lang>/` をまとめて生成します。
+- `--interactive` を付けると表示名・コピー元・最新フラグをインタラクティブに決定できます。
+- `--no-copy` を付けると空のディレクトリのみ作成し、新規構成を 0 から組み立てられます。
 
-```bash
-# 新しいバージョンの作成
-pnpm create:version sample-docs v3
+### 言語追加スクリプト
 
-# 前のバージョンからのコンテンツコピー
-pnpm copy:version sample-docs v2 v3
-```
+- `node scripts/add-language.js sample-docs de --template-lang=ja`  
+  言語ディレクトリ生成、カテゴリー翻訳、`sites/landing/src/config/projects.config.json` の更新、`.backups/` へのバックアップ、オプションでのビルドテスト実行をすべて自動化します。
 
-### 一括更新
+### ドキュメント作成スクリプト
 
-複数のバージョンにわたる変更：
+- `node scripts/create-document.js sample-docs ja v2 --interactive`  
+  カテゴリ選択やタイトル入力、フロントマター生成を CLI で完結できます。カテゴリ構造を変えた際は `scripts/validate-category-structure.js` で翻訳キーのズレも検証可能です。
 
-```bash
-# すべてのバージョンでテンプレートを更新
-pnpm update:template --all-versions
+### サイドバー更新
 
-# 特定のファイルを複数バージョンで更新
-pnpm update:cross-version README.md
-```
+- `pnpm build:sidebar`  
+  すべてのアプリケーションを走査して `apps/<project>/public/sidebar/sidebar-<lang>-<version>.json` を生成します。`--projects=sample-docs` を付けた `pnpm build:sidebar-selective` を使うとピンポイントで再生成できます。
 
 ## ベストプラクティス
 

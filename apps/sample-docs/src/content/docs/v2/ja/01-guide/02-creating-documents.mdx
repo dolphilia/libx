@@ -11,16 +11,15 @@ description: "適切な構造とメタデータを持つ新しいドキュメン
 
 ### ディレクトリ構成
 
-ドキュメントは階層構造で整理されています：
+ドキュメントは各プロジェクト配下で階層構造になっています：
 
 ```
-src/content/docs/[lang]/[version]/[category]/[document].mdx
+apps/<project-name>/src/content/docs/[version]/[lang]/[category]/[document].mdx
 ```
 
-パスの例：
-- `src/content/docs/en/v2/guide/creating-documents.mdx`
-- `src/content/docs/ja/v2/components/icons.mdx`
-- `src/content/docs/en/v2/advanced/customization.mdx`
+sample-docs の例：
+- `apps/sample-docs/src/content/docs/v2/ja/01-guide/02-creating-documents.mdx`
+- `apps/sample-docs/src/content/docs/v2/ja/02-components/02-icons.mdx`
 
 ### 命名規則
 
@@ -30,23 +29,23 @@ src/content/docs/[lang]/[version]/[category]/[document].mdx
 
 ## 作成スクリプトの使用
 
-新しいドキュメントを作成する最も簡単な方法は、組み込みスクリプトを使用することです：
+新しいドキュメントを作成する最も簡単な方法は、モノレポ直下でスクリプトを実行することです：
 
 ```bash
-node scripts/create-document.js [project-name] [lang] [version] [slug]
+node scripts/create-document.js <project-name> <lang> <version> [category] [title]
 ```
 
 ### 例
 
 ```bash
 # 英語版ガイドドキュメントを作成
-node scripts/create-document.js sample-docs en v2 guide/installation
+node scripts/create-document.js sample-docs en v2 guide "Getting Started"
 
 # 日本語版コンポーネント例を作成
-node scripts/create-document.js sample-docs ja v2 components/buttons
+node scripts/create-document.js sample-docs ja v2 components "Sidebar Generation"
 
 # 上級設定ガイドを作成
-node scripts/create-document.js sample-docs en v2 advanced/custom-themes
+node scripts/create-document.js sample-docs en v2 advanced "Custom Themes"
 ```
 
 ### スクリプトの動作
@@ -60,14 +59,14 @@ node scripts/create-document.js sample-docs en v2 advanced/custom-themes
 
 ## 手動でのドキュメント作成
 
-手動でドキュメントを作成したい場合は、以下の手順に従ってください：
+手動でドキュメントを作成したい場合は、以下の手順に従ってください（バックアップや自動採番が行われないため、基本的にはスクリプト利用を推奨します）。
 
 ### 1. ファイルの作成
 
 適切なディレクトリに新しい`.mdx`ファイルを作成：
 
 ```bash
-touch src/content/docs/ja/v2/guide/my-new-guide.mdx
+touch apps/sample-docs/src/content/docs/v2/ja/01-guide/06-my-new-guide.mdx
 ```
 
 ### 2. フロントマターの追加
@@ -237,4 +236,4 @@ description: "コアライブラリの完全なAPIドキュメント"
 
 - **[ドキュメントの編集](/ja/v2/guide/editing-documents)**：コンテンツの編集と更新のベストプラクティス
 - **[コンテンツの整理](/ja/v2/guide/organizing-content)**：ドキュメントの構造化と分類方法
-- **[コンポーネントの使用](/ja/v2/components/overview)**：インタラクティブな要素でドキュメントを強化
+- **[コンポーネントの使用](/ja/v2/components/overview)**：Icon/Tabs/Sidebar などのコンポーネント例を確認

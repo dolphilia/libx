@@ -259,40 +259,37 @@ export default defineConfig({
 
 ### プロジェクト設定
 
-`src/config/docs.config.ts`でドキュメント固有の設定：
+プロジェクト固有の設定は `apps/<project-name>/src/config/project.config.json` にまとまっています。JSON 形式なので、コードから読み込む場合は `@docs/project-config` の `getLegacyProjectConfig` などを利用します。
 
-```typescript
-export const docsConfig = {
-  // サイト情報
-  title: 'あなたのドキュメント',
-  description: 'プロジェクトの包括的なドキュメント',
-  
-  // ナビゲーション設定
-  navigation: {
-    showBreadcrumbs: true,
-    showPagination: true,
-    showTableOfContents: true
+```json
+{
+  "basic": {
+    "baseUrl": "/docs/sample-docs",
+    "supportedLangs": ["en", "ja"],
+    "defaultLang": "en"
   },
-  
-  // 機能設定
-  features: {
-    search: true,
-    darkMode: true,
-    languageSwitcher: true,
-    versionSwitcher: true
+  "translations": {
+    "ja": {
+      "displayName": "サンプルドキュメント",
+      "displayDescription": "多言語・多バージョン対応を実演する包括的なサンプルドキュメントです。",
+      "categories": {
+        "guide": "ガイド",
+        "components": "コンポーネント",
+        "advanced": "高度な設定",
+        "reference": "リファレンス"
+      }
+    }
   },
-  
-  // URL設定
-  baseUrl: '/docs/your-project',
-  
-  // ソーシャルリンク
-  social: {
-    github: 'https://github.com/your-org/your-repo',
-    twitter: 'https://twitter.com/your-handle',
-    discord: 'https://discord.gg/your-server'
+  "versioning": {
+    "versions": [
+      { "id": "v1", "name": "Version 1.0", "isLatest": false },
+      { "id": "v2", "name": "Version 2.0", "isLatest": true }
+    ]
   }
-};
+}
 ```
+
+`basic.baseUrl` は実際の公開 URL (`/docs/sample-docs`) を左右し、`translations.categories` を編集すると自動生成されるサイドバーにも反映されます。値を直接書き換える際は `.backups/project-config-*/` に自動保存されたバックアップを確認しつつ、`node scripts/validate-category-structure.js` で多言語の整合性を検証してください。
 
 ## コンテンツのカスタマイズ
 

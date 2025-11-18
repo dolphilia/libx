@@ -23,7 +23,7 @@ description: "自動サイドバー生成機能の動作方法を学ぶ"
 サイドバーは以下の規則に従って自動生成されます：
 
 ```
-src/content/docs/[lang]/[version]/
+apps/sample-docs/src/content/docs/[version]/[lang]/
 ├── 01-guide/           # カテゴリ「ガイド」
 │   ├── 01-getting-started.mdx    # 順序: 1
 │   ├── 02-creating-documents.mdx # 順序: 2
@@ -76,7 +76,7 @@ description: "新しいドキュメントファイルの作成方法"
 URLは自動的にファイル構造から生成されます：
 
 ```
-ファイル: src/content/docs/ja/v2/01-guide/02-creating-documents.mdx
+ファイル: apps/sample-docs/src/content/docs/v2/ja/01-guide/02-creating-documents.mdx
 URL: /docs/sample-docs/ja/v2/01-guide/02-creating-documents
 ```
 
@@ -178,7 +178,7 @@ pnpm build:sidebar
 言語とバージョンごとに個別のJSONファイルを生成：
 
 ```
-public/sidebar/
+apps/sample-docs/public/sidebar/
 ├── sidebar-en-v1.json
 ├── sidebar-en-v2.json
 ├── sidebar-ja-v1.json
@@ -270,7 +270,7 @@ pnpm build
 **解決策**:
 ```bash
 # ファイル名を確認
-ls -la src/content/docs/ja/v2/01-guide/
+ls -la apps/sample-docs/src/content/docs/v2/ja/01-guide/
 
 # 必要に応じて名前を変更
 mv 03-file.mdx 02-file.mdx
@@ -283,7 +283,7 @@ mv 03-file.mdx 02-file.mdx
 **解決策**:
 ```bash
 # 生成されたJSONを確認
-cat public/sidebar/sidebar-ja-v2.json
+cat apps/sample-docs/public/sidebar/sidebar-ja-v2.json
 
 # ベースパス設定を確認
 cat apps/sample-docs/astro.config.mjs

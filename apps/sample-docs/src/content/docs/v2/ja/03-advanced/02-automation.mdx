@@ -14,14 +14,14 @@ description: "効率的なドキュメント管理のための自動化とスク
 適切な構造で新しいドキュメントを自動作成：
 
 ```bash
-# 新しいガイドドキュメントを作成
-node scripts/create-document.js sample-docs ja v2 guide/new-feature
+# 日本語ガイドドキュメントを作成
+node scripts/create-document.js sample-docs ja v2 guide "New Feature Overview"
 
 # コンポーネント例を作成
-node scripts/create-document.js sample-docs ja v2 components/new-component
+node scripts/create-document.js sample-docs ja v2 components "Sidebar Migration"
 
 # 高度なトピックを作成
-node scripts/create-document.js sample-docs ja v2 advanced/optimization
+node scripts/create-document.js sample-docs ja v2 advanced "Automation Recipes"
 ```
 
 スクリプトは自動的に：
@@ -35,14 +35,14 @@ node scripts/create-document.js sample-docs ja v2 advanced/optimization
 新しいドキュメントバージョンを作成：
 
 ```bash
-# 新しいバージョンを作成
+# 新しいバージョンを作成（前バージョンから自動コピー）
 node scripts/create-version.js sample-docs v3
 
-# 既存バージョンからコンテンツをコピー
-node scripts/copy-version.js sample-docs v2 v3
+# インタラクティブに表示名やコピー方法を選ぶ
+node scripts/create-version.js sample-docs v3 --interactive
 
-# バージョン設定を更新
-node scripts/update-version-config.js sample-docs v3 --latest
+# 空のディレクトリだけ用意して自分で構成を作る
+node scripts/create-version.js sample-docs v3 --no-copy
 ```
 
 ### サイドバー生成
@@ -50,139 +50,69 @@ node scripts/update-version-config.js sample-docs v3 --latest
 サイドバーナビゲーションを自動生成：
 
 ```bash
-# すべての言語とバージョンのサイドバーを生成
+# すべてのアプリを対象にサイドバーを生成
 pnpm build:sidebar
 
-# 特定の言語のみ
-node scripts/build-sidebar.js --lang=ja
-
-# 特定のバージョンのみ
-node scripts/build-sidebar.js --version=v2
+# sample-docs だけを対象に生成
+pnpm build:sidebar-selective --projects=sample-docs
 ```
 
-### 一括更新
+### カテゴリ検証
 
-複数のファイルを一括で更新：
+多言語のカテゴリキーが一致しているかを検証：
 
 ```bash
-# すべてのフロントマターを更新
-node scripts/update-frontmatter.js --remove-fields="author,pubDate,updatedDate"
-
-# テンプレートを更新
-node scripts/update-templates.js --component=Alert --version=2.0
-
-# リンクを一括更新
-node scripts/update-links.js --from="/old-path" --to="/new-path"
+# apps/ 配下の project.config.json を一括検証
+node scripts/validate-category-structure.js
 ```
 
 ## CI/CDパイプライン
 
 ### GitHub Actions
 
-`.github/workflows/docs.yml`でドキュメントの自動ビルドとデプロイ：
+libx では `.github/workflows/cloudflare-pages-deploy.yml` が品質チェックと Cloudflare Pages へのデプロイを一括管理しています。主要フローは次のとおりです。
 
 ```yaml
-name: Documentation Build and Deploy
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
 jobs:
-  build:
+  quality-check:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 9 }
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'pnpm'
-          
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          
-      - name: Install dependencies
-        run: pnpm install
-        
-      - name: Lint code
-        run: pnpm lint
-        
-      - name: Build sidebar
-        run: pnpm build:sidebar
-        
-      - name: Build documentation
-        run: pnpm build
-        
-      - name: Run tests
-        run: pnpm test
-        
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+        continue-on-error: true
+      - run: pnpm prettier --check .
+        continue-on-error: true
+
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
+    needs: quality-check
     if: github.ref == 'refs/heads/main'
-    
     steps:
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 9 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build:sidebar
+      - run: pnpm build
+      - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: docs-project
-          directory: dist
+          command: pages deploy dist --project-name libx
 ```
 
 ### 自動品質チェック
 
-品質保証のための自動チェック：
-
-```yaml
-# .github/workflows/quality.yml
-name: Quality Checks
-
-on:
-  pull_request:
-    branches: [main]
-
-jobs:
-  quality:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'pnpm'
-          
-      - name: Install dependencies
-        run: pnpm install
-        
-      - name: Check link validity
-        run: node scripts/check-links.js
-        
-      - name: Validate frontmatter
-        run: node scripts/validate-frontmatter.js
-        
-      - name: Check image optimization
-        run: node scripts/check-images.js
-        
-      - name: Spell check
-        run: pnpm spell-check
-        
-      - name: Accessibility check
-        run: pnpm a11y-check
-```
+現在は `quality-check` ジョブ内で Lint と Prettier のチェックのみを行い、失敗しても PR 全体を止めないよう `continue-on-error: true` で実行しています。リンク検証やアクセシビリティチェックを追加したい場合は、同じワークフローに `node scripts/check-links.js` などを追記して段階的に強化すると安全です。
 
 ## カスタム自動化スクリプト
 
@@ -308,7 +238,7 @@ class ContentValidator {
 }
 
 // 使用例
-const validator = new ContentValidator('src/content/docs');
+const validator = new ContentValidator('apps/sample-docs/src/content/docs');
 const errors = await validator.validateAll();
 
 if (errors.length > 0) {
