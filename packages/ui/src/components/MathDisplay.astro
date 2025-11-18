@@ -1,0 +1,55 @@
+---
+import katex, { type KatexOptions } from 'katex';
+import 'katex/dist/katex.min.css';
+
+interface Props {
+  /** KaTeX 互換の数式文字列 */
+  expression: string;
+  /** true の場合はブロック表示（display mode） */
+  block?: boolean;
+  /** KaTeX のオプションを上書き */
+  options?: KatexOptions;
+  /** 追加クラス */
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  expression,
+  block = false,
+  options = {},
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const katexOptions: KatexOptions = {
+  throwOnError: false,
+  displayMode: block,
+  ...options
+};
+
+const rendered = katex.renderToString(expression, katexOptions);
+---
+
+<div class:list={['math-display', block ? 'math-display-block' : 'math-display-inline', className]} {...rest}>
+  <Fragment set:html={rendered} />
+</div>
+
+<style is:global>
+  .math-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .math-display-block {
+    display: block;
+    margin-block: 1rem;
+    overflow-x: auto;
+    padding-block: 0.5rem;
+  }
+
+  .math-display-block .katex-display {
+    margin: 0;
+  }
+</style>

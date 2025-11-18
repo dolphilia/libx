@@ -31,6 +31,7 @@ export { default as CardGrid } from './CardGrid.astro';
 export { Tabs, TabItem } from './Tabs';
 export { Icon, Icons, type IconName } from './icons';
 export { Dropdown, DropdownItem } from './Dropdown';
+export { default as MathDisplay } from './MathDisplay.astro';
 
 // ライセンス関連コンポーネント
 export { default as LicenseAttribution } from './LicenseAttribution.astro';

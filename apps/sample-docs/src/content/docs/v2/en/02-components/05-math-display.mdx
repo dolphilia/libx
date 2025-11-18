@@ -1,0 +1,77 @@
+---
+title: "MathDisplay Component"
+description: "Render inline or block equations with the KaTeX-powered MathDisplay component"
+---
+
+import { MathDisplay } from '@docs/ui';
+
+# MathDisplay Component
+
+The MathDisplay component in `@docs/ui` converts KaTeX expressions to HTML during server rendering, so no extra client-side scripts are required. You can mix mathematical notation with narrative text just like in academic papers.
+
+## Inline Usage
+
+Leave `block` as `false` (default) to embed short expressions in a paragraph.
+
+```astro
+<MathDisplay expression="\alpha + \beta = \gamma" />
+```
+
+Inline example inside text: When <MathDisplay expression="\alpha + \beta" /> exceeds a given threshold, the system switches modes.
+
+## Block Display
+
+Use `block` for standalone derivations. It adds spacing and horizontal scrolling support to keep long equations readable.
+
+```astro
+<MathDisplay
+  block
+  expression="\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}"
+/>
+```
+
+Rendered block:
+
+<MathDisplay
+  block
+  expression="\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}"
+/>
+
+## Passing KaTeX Options
+
+Forward any `KatexOptions` via the `options` prop to enable macros, strict error handling, and more. The example below defines reusable macros for number sets and vectors.
+
+```astro
+const macros = {
+  "\\R": "\\mathbb{R}",
+  "\\vect": "\\mathbf{#1}"
+};
+
+<MathDisplay
+  block
+  expression="f: \\R^n \to \\R, \\; \\vect{x} \\mapsto \\sum_{i=1}^n x_i^2"
+  options={{ macros }}
+/>
+```
+
+<MathDisplay
+  block
+  expression="f: \\R^n \to \\R, \\; \\vect{x} \\mapsto \\sum_{i=1}^n x_i^2"
+  options={{ macros: { "\\R": "\\mathbb{R}", "\\vect": "\\mathbf{#1}" } }}
+/>
+
+## Combining with Markdown
+
+Because these pages use MDX, you can document the equation as raw text and immediately display the rendered result underneath.
+
+````mdx
+Definition:
+
+```
+S = \sum_{k=1}^{n} a_k^2
+```
+
+<MathDisplay block expression="S = \sum_{k=1}^{n} a_k^2" />
+````
+
+MathDisplay lets you keep precise mathematical notation without resorting to screenshots or custom scripts.

@@ -1,0 +1,79 @@
+---
+title: "数式表示コンポーネント"
+description: "KaTeX ベースの MathDisplay コンポーネントでインライン・ブロック数式を描画する方法"
+---
+
+import { MathDisplay } from '@docs/ui';
+
+# MathDisplay コンポーネント
+
+`@docs/ui` に追加した MathDisplay コンポーネントは KaTeX を用いてサーバーサイドで数式を HTML に変換します。追加のスクリプトなしで、高品質な数式をインライン/ブロック表示できます。
+
+## インライン表示
+
+通常の文章の中で数式を差し込みたい場合は、`block` を `false`（既定値）にしたまま `expression` を渡します。
+
+```astro
+<MathDisplay expression="\alpha + \beta = \gamma" />
+```
+
+文章内の表示例：
+
+ここで <MathDisplay expression="\alpha + \beta" /> が一定値を超えると、挙動が変わります。
+
+## ブロック表示
+
+導出過程などを強調したい場合は `block` プロップを `true` にします。周囲に余白と横スクロールが付き、長い式でも崩れにくくなります。
+
+```astro
+<MathDisplay
+  block
+  expression="\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}"
+/>
+```
+
+実際のレンダリング：
+
+<MathDisplay
+  block
+  expression="\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}"
+/>
+
+## KaTeX オプションの活用
+
+`options` プロップに KaTeX の `KatexOptions` を渡すことで、マクロやエラー処理などを細かく制御できます。以下はマクロを定義して可読性を高める例です。
+
+```astro
+const macros = {
+  "\\R": "\\mathbb{R}",
+  "\\vect": "\\mathbf{#1}"
+};
+
+<MathDisplay
+  block
+  expression="f: \\R^n \to \\R, \\; \\vect{x} \\mapsto \\sum_{i=1}^n x_i^2"
+  options={{ macros }}
+/>
+```
+
+<MathDisplay
+  block
+  expression="f: \\R^n \to \\R, \\; \\vect{x} \\mapsto \\sum_{i=1}^n x_i^2"
+  options={{ macros: { "\\R": "\\mathbb{R}", "\\vect": "\\mathbf{#1}" } }}
+/>
+
+## Markdown との組み合わせ
+
+MDX では Markdown とコンポーネントを自由に混在させられます。コードブロックで構文を共有しておき、直後に MathDisplay を描画すると、読者が式とテキストの双方を確認しやすくなります。
+
+````mdx
+式の定義：
+
+```
+S = \sum_{k=1}^{n} a_k^2
+```
+
+<MathDisplay block expression="S = \sum_{k=1}^{n} a_k^2" />
+````
+
+このように MathDisplay を利用すれば、Starlight ベースのドキュメントでも論文相当の表記を維持できます。
