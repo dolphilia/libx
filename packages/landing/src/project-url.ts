@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
+import { stripJsonComments } from '@docs/project-config';
 import type { Project } from './projects-schema';
 
 /**
@@ -44,18 +45,20 @@ async function getProjectSupportedLanguages(project: Project): Promise<LocaleKey
   }
 
   try {
-    const projectConfigPath = path.resolve(
+    const baseConfigDir = path.resolve(
       process.cwd(),
       '..',
       '..',
       'apps',
       project.contentPath,
       'src',
-      'config',
-      'project.config.json'
+      'config'
     );
+    const jsoncPath = path.join(baseConfigDir, 'project.config.jsonc');
+    const jsonPath = path.join(baseConfigDir, 'project.config.json');
+    const projectConfigPath = await fileExists(jsoncPath) ? jsoncPath : jsonPath;
     const configContent = await fs.readFile(projectConfigPath, 'utf-8');
-    const config = JSON.parse(configContent);
+    const config = JSON.parse(stripJsonComments(configContent));
 
     if (config.basic?.supportedLangs) {
       return config.basic.supportedLangs as LocaleKey[];
@@ -99,6 +102,15 @@ async function getProjectSupportedLanguages(project: Project): Promise<LocaleKey
   }
 
   return ['en'];
+}
+
+async function fileExists(filePath: string): Promise<boolean> {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 async function generateDynamicUrl(contentPath: string, lang: LocaleKey, basePath: string): Promise<string | null> {

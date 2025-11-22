@@ -9,14 +9,14 @@ Welcome to the sample documentation project! This page explains the versioning s
 
 ## Versioning in libx
 
-Each application stores documentation under `apps/<project-name>/src/content/docs/<version>/<lang>/`. The UI is generated from `project.config.json`, which describes versions and languages.
+Each application stores documentation under `apps/<project-name>/src/content/docs/<version>/<lang>/`. The UI is generated from `project.config.jsonc`, which describes versions and languages.
 
 Sample structure for `sample-docs`:
 
 ```
 apps/sample-docs/
 ├── src/
-│   ├── config/project.config.json   # Centralized version/language definitions
+│   ├── config/project.config.jsonc   # Centralized version/language definitions
 │   └── content/docs/
 │       ├── v1/
 │       │   └── ja/01-guide/...
@@ -26,7 +26,7 @@ apps/sample-docs/
 └── public/sidebar/                  # Auto-generated sidebar JSON
 ```
 
-The `versioning.versions` section in `project.config.json` controls IDs, names, release dates, and which version is marked as latest. Running `node scripts/create-version.js sample-docs v3` generates every language/category structure automatically when you need a new version.
+The `versioning.versions` section in `project.config.jsonc` controls IDs, names, release dates, and which version is marked as latest. Running `node scripts/create-version.js sample-docs v3` generates every language/category structure automatically when you need a new version.
 
 ## Why Keep v1 and v2?
 
@@ -62,6 +62,6 @@ The latest v2 guides cover the hands-on workflows:
 
 - **[Documentation Fundamentals](/v2/en/01-guide/01-getting-started)** – Review core principles shared across apps
 - **[Creating Documents](/v2/en/01-guide/02-creating-documents)** – Learn the creation script workflow
-- **[Version Management](/v2/en/01-guide/05-version-management)** – Understand how `project.config.json` and automation work together
+- **[Version Management](/v2/en/01-guide/05-version-management)** – Understand how `project.config.jsonc` and automation work together
 
 Continue to the next page to see these practices in action.

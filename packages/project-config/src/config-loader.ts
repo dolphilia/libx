@@ -12,6 +12,7 @@ import {
   convertProjectConfigJSONToRuntime
 } from './config-schema';
 import { resolveDefaultLang } from './global-defaults';
+import { stripJsonComments } from './jsonc';
 
 /**
  * プロジェクトルートの解決
@@ -21,19 +22,19 @@ export function resolveProjectDir(projectDir?: string): string {
 }
 
 /**
- * JSONファイルからプロジェクト設定を読み込む
+ * JSON/JSONCファイルからプロジェクト設定を読み込む
  */
 export async function loadProjectConfigFromJSON(configPath: string): Promise<ProjectConfig> {
   try {
     const configContent = await fs.readFile(configPath, 'utf-8');
-    const configJSON = JSON.parse(configContent);
+    const parsed = JSON.parse(stripJsonComments(configContent));
 
-    if (!validateProjectConfigJSON(configJSON)) {
+    if (!validateProjectConfigJSON(parsed)) {
       throw new Error(`Invalid project configuration format in ${configPath}`);
     }
 
-    const runtimeConfig = convertProjectConfigJSONToRuntime(configJSON);
-    const defaultLang = await resolveDefaultLang(configJSON.basic.defaultLang);
+    const runtimeConfig = convertProjectConfigJSONToRuntime(parsed);
+    const defaultLang = await resolveDefaultLang(parsed.basic.defaultLang);
 
     return {
       ...runtimeConfig,
@@ -53,7 +54,16 @@ export async function loadProjectConfigFromJSON(configPath: string): Promise<Pro
 export async function loadProjectConfig(projectDir?: string): Promise<ProjectConfig> {
   const resolvedDir = resolveProjectDir(projectDir);
   const configDir = path.join(resolvedDir, 'src', 'config');
-  const configPath = path.join(configDir, 'project.config.json');
+  const jsoncPath = path.join(configDir, 'project.config.jsonc');
+  const jsonPath = path.join(configDir, 'project.config.json');
+  let configPath = jsonPath;
+
+  try {
+    await fs.access(jsoncPath);
+    configPath = jsoncPath;
+  } catch {
+    // fallback to .json
+  }
 
   return await loadProjectConfigFromJSON(configPath);
 }

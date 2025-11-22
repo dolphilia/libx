@@ -9,8 +9,8 @@
  * 
  * このスクリプトは以下の処理を自動化します:
  * 1. 言語バリデーション（サポート済み言語の確認）
- * 2. プロジェクト設定の更新（project.config.json）
- * 3. トップページ設定の更新（projects.config.json）
+ * 2. プロジェクト設定の更新（project.config.jsonc）
+ * 3. トップページ設定の更新（projects.config.jsonc）
  * 4. ディレクトリ構造の自動作成
  * 5. テンプレートファイルの自動生成
  * 6. ビルドテストの自動実行
@@ -25,6 +25,7 @@ import {
   saveProjectConfig
 } from './document-utils.js';
 import * as logger from './logger.js';
+import { readJsoncFile, formatLandingConfigJsonc } from './jsonc-utils.js';
 
 logger.useUnifiedConsole();
 
@@ -32,7 +33,29 @@ logger.useUnifiedConsole();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
+const CONFIG_FILE_JSONC = 'project.config.jsonc';
+const CONFIG_FILE_JSON = 'project.config.json';
+const LANDING_CONFIG_FILE = 'projects.config.jsonc';
+const LANDING_CONFIG_FALLBACK = 'projects.config.json';
+function resolveProjectConfigPath(projectPath) {
+  const configDir = path.join(projectPath, 'src', 'config');
+  const jsoncPath = path.join(configDir, CONFIG_FILE_JSONC);
+  const jsonPath = path.join(configDir, CONFIG_FILE_JSON);
+  if (fs.existsSync(jsoncPath)) {
+    return jsoncPath;
+  }
+  return jsonPath;
+}
 
+function resolveLandingConfigPath() {
+  const configDir = path.join(rootDir, 'sites', 'landing', 'src', 'config');
+  const jsoncPath = path.join(configDir, LANDING_CONFIG_FILE);
+  const jsonPath = path.join(configDir, LANDING_CONFIG_FALLBACK);
+  if (fs.existsSync(jsoncPath)) {
+    return jsoncPath;
+  }
+  return jsonPath;
+}
 /**
  * バックアップとロールバック管理クラス
  */
@@ -276,7 +299,7 @@ function validateProject(projectName) {
   }
   
   // プロジェクト設定ファイルの存在確認
-  const configPath = path.join(projectPath, 'src', 'config', 'project.config.json');
+  const configPath = resolveProjectConfigPath(projectPath);
   if (!fs.existsSync(configPath)) {
     errors.push(`プロジェクト設定ファイルが見つかりません: ${configPath}`);
   }
@@ -333,7 +356,7 @@ function updateProjectConfig(projectName, languageCode, displayName, description
   
   try {
     const projectPath = path.join(rootDir, 'apps', projectName);
-    const configPath = path.join(projectPath, 'src', 'config', 'project.config.json');
+    const configPath = resolveProjectConfigPath(projectPath);
     
     // バックアップを作成
     backupManager.backupFile(configPath);
@@ -393,12 +416,12 @@ function updateLandingConfig(languageCode, displayName, skipLanding = false, bac
   console.log('  ランディングページ設定ファイルを更新しています...');
   
   try {
-    const landingConfigPath = path.join(rootDir, 'sites', 'landing', 'src', 'config', 'projects.config.json');
+    const landingConfigPath = resolveLandingConfigPath();
     
     // バックアップを作成
     backupManager.backupFile(landingConfigPath);
     
-    const landingConfig = JSON.parse(fs.readFileSync(landingConfigPath, 'utf-8'));
+    const landingConfig = readJsoncFile(landingConfigPath);
     
     // supportedLangsに言語を追加
     let landingConfigUpdated = false;
@@ -411,7 +434,9 @@ function updateLandingConfig(languageCode, displayName, skipLanding = false, bac
     }
 
     if (landingConfigUpdated) {
-      fs.writeFileSync(landingConfigPath, JSON.stringify(landingConfig, null, 2) + '\n');
+      let serialized = JSON.stringify(landingConfig, null, 2);
+      serialized = formatLandingConfigJsonc(serialized) + '\n';
+      fs.writeFileSync(landingConfigPath, serialized);
       console.log('  ✅ ランディングページ設定ファイルの更新完了');
     } else {
       console.log('  ℹ️  ランディングページ設定ファイルに変更はありません');
@@ -781,8 +806,8 @@ async function main() {
       } else {
         console.log('⚠️  ロールバック部分的成功');
         console.log('\n🔧 手動確認が必要なファイル:');
-        console.log(`  - apps/${config.projectName}/src/config/project.config.json`);
-        console.log('  - sites/landing/src/config/projects.config.json');
+        console.log(`  - apps/${config.projectName}/src/config/${CONFIG_FILE_JSONC}`);
+        console.log(`  - sites/landing/src/config/${LANDING_CONFIG_FILE}`);
         console.log(`  - packages/i18n/src/locales/${config.languageCode}.json`);
         console.log(`  - apps/${config.projectName}/src/content/docs/*/\${config.languageCode}/`);
         
@@ -796,8 +821,8 @@ async function main() {
       console.error('\n❌ ロールバック処理中にもエラーが発生しました:', rollbackError.message);
       console.log('\n🚨 緊急事態: 手動でシステムを復旧してください');
       console.log('影響を受けた可能性のあるファイル:');
-      console.log(`  - apps/${config.projectName}/src/config/project.config.json`);
-      console.log('  - sites/landing/src/config/projects.config.json');
+      console.log(`  - apps/${config.projectName}/src/config/${CONFIG_FILE_JSONC}`);
+      console.log(`  - sites/landing/src/config/${LANDING_CONFIG_FILE}`);
       console.log(`  - packages/i18n/src/locales/${config.languageCode}.json`);
       console.log(`  - apps/${config.projectName}/src/content/docs/*/\${config.languageCode}/`);
       

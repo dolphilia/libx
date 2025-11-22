@@ -9,12 +9,24 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import * as logger from './logger.js';
+import { readJsoncFile } from './jsonc-utils.js';
 
 logger.useUnifiedConsole();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
+const CONFIG_FILE_JSONC = 'project.config.jsonc';
+const CONFIG_FILE_JSON = 'project.config.json';
+
+function resolveConfigPath(projectDir) {
+  const jsoncPath = path.join(projectDir, 'src', 'config', CONFIG_FILE_JSONC);
+  const jsonPath = path.join(projectDir, 'src', 'config', CONFIG_FILE_JSON);
+  if (fs.existsSync(jsoncPath)) {
+    return jsoncPath;
+  }
+  return jsonPath;
+}
 
 function getProjectConfigPaths() {
   const appsDir = path.join(rootDir, 'apps');
@@ -28,15 +40,14 @@ function getProjectConfigPaths() {
     .filter(entry => entry.isDirectory())
     .map(entry => ({
       projectName: entry.name,
-      configPath: path.join(appsDir, entry.name, 'src', 'config', 'project.config.json')
+      configPath: resolveConfigPath(path.join(appsDir, entry.name))
     }))
     .filter(({ configPath }) => fs.existsSync(configPath));
 }
 
 function loadConfig(configPath) {
   try {
-    const content = fs.readFileSync(configPath, 'utf-8');
-    return JSON.parse(content);
+    return readJsoncFile(configPath);
   } catch (error) {
     throw new Error(`設定ファイルの読み込みに失敗しました: ${configPath}\n${error.message}`);
   }
@@ -145,7 +156,7 @@ function run() {
 
   const projectConfigs = getProjectConfigPaths();
   if (projectConfigs.length === 0) {
-    logger.warn('検証対象の project.config.json が見つかりませんでした。');
+    logger.warn('検証対象の project.config.jsonc が見つかりませんでした。');
     process.exit(0);
   }
 

@@ -27,7 +27,7 @@ sites/landing/
     │   ├── ProjectCard.astro    # プロジェクトカード表示
     │   └── LanguageSelector.astro # 言語切り替えセレクター
     ├── config/
-    │   └── projects.config.json # プロジェクト一覧とサイト設定
+    │   └── projects.config.jsonc # プロジェクト一覧とサイト設定
     ├── layouts/
     │   └── MainLayout.astro     # メインレイアウト
     ├── pages/
@@ -69,7 +69,7 @@ pnpm --filter=sites-landing build
 
 ## 設定管理
 
-### projects.config.json
+### projects.config.jsonc
 
 プロジェクト一覧とサイト設定を管理するメイン設定ファイル：
 
@@ -99,12 +99,12 @@ pnpm --filter=sites-landing build
 ### 新しいプロジェクトの追加
 
 1. **プロジェクト作成**: `scripts/create-project.js`でプロジェクトを作成
-2. **自動登録**: 作成スクリプトが自動的に`projects.config.json`を更新
+2. **自動登録**: 作成スクリプトが自動的に`projects.config.jsonc`を更新
 3. **手動調整**: 必要に応じてアイコン、タグ、説明文をカスタマイズ
 
 ### 言語の追加・修正
 
-1. `src/config/projects.config.json`の`supportedLangs`配列に言語コードを追加
+1. `src/config/projects.config.jsonc`の`supportedLangs`配列に言語コードを追加
 2. `astro.config.mjs`の`locales`配列に同じ言語コードを追加
 3. `packages/i18n/src/locales/<lang>.json`の`landing`セクションに`siteDescription`・`heroTitle`・`heroDescription`の翻訳を追加
 
@@ -151,11 +151,11 @@ pnpm deploy:pages
 ### よくある問題
 
 1. **プロジェクトが表示されない**
-   - `projects.config.json`に正しく登録されているか確認
+   - `projects.config.jsonc`に正しく登録されているか確認
    - プロジェクトのビルドが成功しているか確認
 
 2. **言語切り替えが機能しない**
-   - `astro.config.mjs`と`projects.config.json`の言語設定が一致しているか確認
+   - `astro.config.mjs`と`projects.config.jsonc`の言語設定が一致しているか確認
    - 対象言語のページが生成されているか確認
 
 3. **ビルドエラー**
@@ -165,5 +165,5 @@ pnpm deploy:pages
 ### 開発時のヒント
 
 - **ローカル開発**: `pnpm dev`で開発サーバーを起動し、`http://localhost:4321/en/`でアクセス
-- **設定変更**: `projects.config.json`を編集後、開発サーバーを再起動
+- **設定変更**: `projects.config.jsonc`を編集後、開発サーバーを再起動
 - **新機能テスト**: 複数の言語での動作確認を推奨

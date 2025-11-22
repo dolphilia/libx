@@ -9,12 +9,12 @@ description: "ドキュメントのバージョニングと、異なるバージ
 
 ## libx でのバージョニング
 
-libx では、各アプリケーションごとに `apps/<project-name>/src/content/docs/<version>/<lang>/` という物理構造を持たせ、`project.config.json` に記述したバージョン情報を元に UI を組み立てます。`sample-docs` プロジェクトの構造は次のとおりです。
+libx では、各アプリケーションごとに `apps/<project-name>/src/content/docs/<version>/<lang>/` という物理構造を持たせ、`project.config.jsonc` に記述したバージョン情報を元に UI を組み立てます。`sample-docs` プロジェクトの構造は次のとおりです。
 
 ```
 apps/sample-docs/
 ├── src/
-│   ├── config/project.config.json   # バージョン・言語定義を集約
+│   ├── config/project.config.jsonc   # バージョン・言語定義を集約
 │   └── content/docs/
 │       ├── v1/
 │       │   └── ja/01-guide/...
@@ -24,7 +24,7 @@ apps/sample-docs/
 └── public/sidebar/                  # 自動生成されたサイドバーJSON
 ```
 
-`project.config.json` の `versioning.versions` で ID、表示名、リリース日、最新フラグを管理することで、ヘッダーのバージョンセレクターや URL の自動切替が機能します。新バージョンを追加するときは `node scripts/create-version.js sample-docs v3` を実行すると、すべての言語/カテゴリが一括で生成されます。
+`project.config.jsonc` の `versioning.versions` で ID、表示名、リリース日、最新フラグを管理することで、ヘッダーのバージョンセレクターや URL の自動切替が機能します。新バージョンを追加するときは `node scripts/create-version.js sample-docs v3` を実行すると、すべての言語/カテゴリが一括で生成されます。
 
 ## v1 と v2 を分ける理由
 
@@ -49,7 +49,7 @@ sample-docs はロケール優先（`/docs/sample-docs/<lang>/<version>/...`）�
 ## バージョニングの運用ポイント
 
 1. **構造を変えずに並行更新**: v1 のカテゴリ構造をそのまま v2 にコピーし、v2 で新規セクションを育てる。
-2. **設定ファイルは JSON**: `project.config.json` を直接編集するよりも `scripts/create-version.js` や `scripts/add-language.js` を使い、バックアップ付きで安全に更新する。
+2. **設定ファイルは JSON**: `project.config.jsonc` を直接編集するよりも `scripts/create-version.js` や `scripts/add-language.js` を使い、バックアップ付きで安全に更新する。
 3. **サイドバーの再生成**: バージョンを増やしたりカテゴリを追加したら `pnpm build:sidebar` で JSON を再生成し、`pnpm dev --filter=sample-docs` で挙動を確認する。
 
 ## 次のステップ
@@ -58,6 +58,6 @@ sample-docs はロケール優先（`/docs/sample-docs/<lang>/<version>/...`）�
 
 - **[ドキュメント作成の基本](/ja/v2/guide/getting-started)** で libx の共通方針を確認
 - **[ドキュメントの作成](/ja/v2/guide/creating-documents)** で `scripts/create-document.js` の使い方を学習
-- **[バージョン管理](/ja/v2/guide/version-management)** で `project.config.json` と自動化スクリプトの関係を把握
+- **[バージョン管理](/ja/v2/guide/version-management)** で `project.config.jsonc` と自動化スクリプトの関係を把握
 
 次のページへ進み、実際のプロジェクトでの手順を確認しましょう。

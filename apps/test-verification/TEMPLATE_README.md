@@ -28,7 +28,7 @@ project-template/
 └── src/
     ├── components/           # プロジェクト固有コンポーネント
     ├── config/
-    │   └── project.config.json  # プロジェクト設定
+    │   └── project.config.jsonc # プロジェクト設定
     ├── content/
     │   └── docs/
     │       ├── en/v1/01-guide/
@@ -60,7 +60,7 @@ node scripts/create-project.js api-docs "API Documentation" "API文書" \
 1. **テンプレートコンテンツの削除**: `src/content/docs/`内のサンプルコンテンツを削除
 2. **設定のカスタマイズ**: プロジェクト名、表示名、説明文などを調整
 3. **実際のコンテンツ作成**: プロジェクト固有のドキュメントを作成
-4. **カテゴリの調整**: 必要に応じて`project.config.json`のカテゴリを追加・変更
+4. **カテゴリの調整**: 必要に応じて`project.config.jsonc`のカテゴリを追加・変更
 
 ## バージョン追加
 

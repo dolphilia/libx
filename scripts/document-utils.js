@@ -9,11 +9,14 @@ import { fileURLToPath } from 'url';
 import * as logger from './logger.js';
 import { resolveDefaultLang as resolveRepoDefaultLang } from './global-defaults.js';
 import { createBackup } from './safety-utils.js';
+import { stripJsonComments, formatProjectConfigJsonc } from './jsonc-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const PLACEHOLDER_PREFIX = '[要翻訳] ';
+const CONFIG_FILE_JSONC = 'project.config.jsonc';
+const CONFIG_FILE_JSON = 'project.config.json';
 
 /**
  * プロジェクトの設定を読み込む
@@ -25,15 +28,20 @@ export function loadProjectConfig(projectName) {
     throw new Error(`プロジェクト "${projectName}" が見つかりません`);
   }
 
-  const configPath = path.join(projectPath, 'src', 'config', 'project.config.json');
+  const configDir = path.join(projectPath, 'src', 'config');
+  const configPathJsonc = path.join(configDir, CONFIG_FILE_JSONC);
+  const configPathJson = path.join(configDir, CONFIG_FILE_JSON);
+  let configPath = configPathJson;
   
-  if (!fs.existsSync(configPath)) {
+  if (fs.existsSync(configPathJsonc)) {
+    configPath = configPathJsonc;
+  } else if (!fs.existsSync(configPathJson)) {
     throw new Error(`設定ファイル "${configPath}" が見つかりません`);
   }
 
   try {
     const configContent = fs.readFileSync(configPath, 'utf-8');
-    const config = JSON.parse(configContent);
+    const config = JSON.parse(stripJsonComments(configContent));
 
     if (!config.basic) {
       config.basic = {
@@ -56,17 +64,18 @@ export function loadProjectConfig(projectName) {
  */
 export function saveProjectConfig(projectName, config, options = {}) {
   const projectPath = path.join(rootDir, 'apps', projectName);
-  const configPath = path.join(projectPath, 'src', 'config', 'project.config.json');
+  const configPath = path.join(projectPath, 'src', 'config', CONFIG_FILE_JSONC);
   const {
     dryRun = false,
     backupScenario = `project-config-${projectName}`
   } = options;
   
   try {
-    const configContent = JSON.stringify(config, null, 2);
+    let configContent = JSON.stringify(config, null, 2);
+    configContent = formatProjectConfigJsonc(configContent);
 
     if (dryRun) {
-      logger.dryRun(`project.config.json への書き込みをdry-runのためスキップしました: ${configPath}`);
+      logger.dryRun(`${CONFIG_FILE_JSONC} への書き込みをdry-runのためスキップしました: ${configPath}`);
       return true;
     }
 
@@ -275,7 +284,7 @@ export function createDocumentFile(projectName, lang, version, categoryDir, file
 }
 
 /**
- * project.config.json のカテゴリ翻訳を同期
+ * project.config.jsonc のカテゴリ翻訳を同期
  */
 export function syncCategoryTranslations(projectName, {
   lang,

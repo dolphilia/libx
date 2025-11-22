@@ -105,7 +105,7 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
 このスクリプトは以下の処理を自動で実行します:
 
 - テンプレートプロジェクト（project-template）のコピー
-- 全設定ファイルの自動更新（package.json、astro.config.mjs、project.config.json等）
+- 全設定ファイルの自動更新（package.json、astro.config.mjs、project.config.jsonc等）
 - 依存関係の自動インストール
 - 動作確認テスト
 - トップページへのプロジェクト追加
@@ -231,7 +231,7 @@ pnpm build:deploy
 
 ### プロジェクト装飾設定
 
-`sites/landing/src/config/projects.config.json` でプロジェクトのアイコンやタグなどの装飾情報を設定できます：
+`sites/landing/src/config/projects.config.jsonc` でプロジェクトのアイコンやタグなどの装飾情報を設定できます：
 
 ```json
 {
@@ -264,10 +264,10 @@ pnpm create:project project-name "Project Name" "プロジェクト名"
 
 ```text
 apps/[project-name]/src/config/
-└── project.config.json   # プロジェクト統合設定（JSON形式、メタデータ、バージョン、カテゴリ翻訳）
+└── project.config.jsonc   # プロジェクト統合設定（JSON形式、メタデータ、バージョン、カテゴリ翻訳）
 
 sites/landing/src/config/
-└── projects.config.json  # ランディングページのプロジェクト一覧設定（JSON形式）
+└── projects.config.jsonc  # ランディングページのプロジェクト一覧設定（JSON形式）
 ```
 
 ### 新しいバージョンの追加
@@ -290,7 +290,7 @@ node scripts/create-version.js sample-docs v3 --no-copy
 
 このコマンド（改良版）は以下の処理を自動で行います：
 
-- `project.config.json`のバージョン設定更新
+- `project.config.jsonc`のバージョン設定更新
 - 全言語に対応したディレクトリ構造作成
 - 前バージョンからのコンテンツコピー（オプション）
 - バージョン管理の自動更新
@@ -315,7 +315,7 @@ node scripts/add-language.js sample-docs ko --template-lang=ja --skip-test
 
 自動化スクリプトは以下の処理を自動で行います：
 
-- 設定ファイルの更新（`project.config.json`、`projects.config.json`）
+- 設定ファイルの更新（`project.config.jsonc`、`projects.config.jsonc`）
 - 言語用ディレクトリ構造の作成
 - テンプレートファイルの生成（翻訳マーカー付き）
 - ビルドテストの自動実行

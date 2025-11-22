@@ -32,7 +32,7 @@ Typical stages for each version:
 
 ### Version Definitions
 
-Manage IDs, display names, release dates, and `isLatest` in `apps/<project-name>/src/config/project.config.json`. Example from sample-docs:
+Manage IDs, display names, release dates, and `isLatest` in `apps/<project-name>/src/config/project.config.jsonc`. Example from sample-docs:
 
 ```json
 {
@@ -182,14 +182,14 @@ For older releases:
 ### Version Creation
 
 - `node scripts/create-version.js sample-docs v3`  
-  Updates `project.config.json`, copies the previous version into `apps/sample-docs/src/content/docs/v3/<lang>/`, and keeps structures aligned.
+  Updates `project.config.jsonc`, copies the previous version into `apps/sample-docs/src/content/docs/v3/<lang>/`, and keeps structures aligned.
 - `--interactive` lets you pick display names, source versions, and the latest flag.
 - `--no-copy` creates empty directories so you can build a new structure from scratch.
 
 ### Language Addition
 
 - `node scripts/add-language.js sample-docs de --template-lang=ja`  
-  Generates language folders, updates category translations, touches `sites/landing/src/config/projects.config.json`, stores backups in `.backups/`, and can optionally run build verification.
+  Generates language folders, updates category translations, touches `sites/landing/src/config/projects.config.jsonc`, stores backups in `.backups/`, and can optionally run build verification.
 
 ### Document Creation
 

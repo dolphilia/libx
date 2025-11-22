@@ -30,7 +30,7 @@ function showUsage(exitCode = 0) {
   logger.detail('--help: このヘルプを表示します');
   logger.blank();
   logger.info('主な処理内容');
-  logger.detail('project.config.json の versions 配列を更新します');
+  logger.detail('project.config.jsonc の versions 配列を更新します');
   logger.detail('既存バージョンからコンテンツをコピーする設定が可能です');
   logger.detail('各言語分のディレクトリを自動生成します');
   logger.blank();
@@ -239,7 +239,7 @@ async function main() {
 
     // 設定ファイルを保存
     saveProjectConfig(args.projectName, config);
-    console.log('✅ project.config.json を更新しました');
+    console.log('✅ project.config.jsonc を更新しました');
 
     // 前バージョンからコンテンツをコピー
     const previousVersion = config.versioning.versions

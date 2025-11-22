@@ -53,7 +53,7 @@ git commit -m "変更内容の説明"
 #### 2. 自動バックアップ（`.backups/` ディレクトリ）
 
 **カバー範囲：**
-- プロジェクト設定ファイル（`project.config.json`, `projects.config.json`）
+- プロジェクト設定ファイル（`project.config.jsonc`, `projects.config.jsonc`）
 - ビルド成果物（`dist/` ディレクトリ全体）
 - カテゴリ構造の変更前の状態
 - 言語追加時に変更されるすべてのファイル
@@ -94,13 +94,13 @@ git commit -m "変更内容の説明"
 │       └── dist/
 ├── project-config-sample-docs/            # プロジェクト設定ファイルのバックアップ
 │   └── 2025-11-02T11-26-23-407Z/
-│       └── apps/sample-docs/src/config/project.config.json
+│       └── apps/sample-docs/src/config/project.config.jsonc
 ├── category-sync-sample-docs/             # カテゴリ同期時のバックアップ
 │   └── 2025-11-02T12-15-30-123Z/
-│       └── apps/sample-docs/src/config/project.config.json
+│       └── apps/sample-docs/src/config/project.config.jsonc
 └── language-addition-2025-11-02T14-20-10-456Z/  # 言語追加時のバックアップ
-    ├── apps/sample-docs/src/config/project.config.json
-    └── sites/landing/src/config/projects.config.json
+    ├── apps/sample-docs/src/config/project.config.jsonc
+    └── sites/landing/src/config/projects.config.jsonc
 ```
 
 ### バックアップのシナリオ別分類
@@ -108,8 +108,8 @@ git commit -m "変更内容の説明"
 | シナリオ名 | 作成タイミング | 含まれる内容 | 想定サイズ |
 |-----------|--------------|-------------|----------|
 | `build-integrated` | ビルド実行時（`dist/` 削除前） | `dist/` ディレクトリ全体 | 数MB〜数十MB |
-| `project-config-{project}` | プロジェクト設定更新前 | `project.config.json` | 数KB |
-| `category-sync-{project}` | カテゴリ同期実行時 | `project.config.json` | 数KB |
+| `project-config-{project}` | プロジェクト設定更新前 | `project.config.jsonc` | 数KB |
+| `category-sync-{project}` | カテゴリ同期実行時 | `project.config.jsonc` | 数KB |
 | `language-addition-{timestamp}` | 言語追加実行時 | 変更されたすべての設定ファイル | 数KB〜数十KB |
 
 ### 保持期間とクリーンアップ
@@ -168,7 +168,7 @@ du -sh .backups/*/* | sort -h
 
 ### ケース1: 設定ファイルの復元
 
-プロジェクト設定ファイル（`project.config.json`）が破損した、または意図しない変更が加わった場合：
+プロジェクト設定ファイル（`project.config.jsonc`）が破損した、または意図しない変更が加わった場合：
 
 **手順：**
 
@@ -180,19 +180,19 @@ du -sh .backups/*/* | sort -h
 
 2. **バックアップの内容を確認：**
    ```bash
-   cat .backups/project-config-sample-docs/2025-11-02T11-26-23-407Z/apps/sample-docs/src/config/project.config.json
+   cat .backups/project-config-sample-docs/2025-11-02T11-26-23-407Z/apps/sample-docs/src/config/project.config.jsonc
    ```
 
 3. **復元を実行：**
    ```bash
-   cp .backups/project-config-sample-docs/2025-11-02T11-26-23-407Z/apps/sample-docs/src/config/project.config.json \
-      apps/sample-docs/src/config/project.config.json
+   cp .backups/project-config-sample-docs/2025-11-02T11-26-23-407Z/apps/sample-docs/src/config/project.config.jsonc \
+      apps/sample-docs/src/config/project.config.jsonc
    ```
 
 4. **復元後の確認：**
    ```bash
    # 設定ファイルの内容を確認
-   cat apps/sample-docs/src/config/project.config.json
+   cat apps/sample-docs/src/config/project.config.jsonc
 
    # ビルドが成功するか確認
    cd apps/sample-docs
@@ -256,13 +256,13 @@ du -sh .backups/*/* | sort -h
 
 3. **各ファイルを復元：**
    ```bash
-   # project.config.json の復元
-   cp .backups/language-addition-2025-11-02T14-20-10-456Z/apps/sample-docs/src/config/project.config.json \
-      apps/sample-docs/src/config/project.config.json
+   # project.config.jsonc の復元
+   cp .backups/language-addition-2025-11-02T14-20-10-456Z/apps/sample-docs/src/config/project.config.jsonc \
+      apps/sample-docs/src/config/project.config.jsonc
 
-   # projects.config.json の復元
-   cp .backups/language-addition-2025-11-02T14-20-10-456Z/sites/landing/src/config/projects.config.json \
-      sites/landing/src/config/projects.config.json
+   # projects.config.jsonc の復元
+   cp .backups/language-addition-2025-11-02T14-20-10-456Z/sites/landing/src/config/projects.config.jsonc \
+      sites/landing/src/config/projects.config.jsonc
    ```
 
 4. **作成されたディレクトリを手動削除：**
@@ -274,7 +274,7 @@ du -sh .backups/*/* | sort -h
 5. **復元後の確認：**
    ```bash
    # 設定ファイルの内容を確認
-   cat apps/sample-docs/src/config/project.config.json
+   cat apps/sample-docs/src/config/project.config.jsonc
 
    # サイドバー生成が成功するか確認
    pnpm build:sidebar
@@ -296,10 +296,10 @@ git reset --hard HEAD~1
 **特定のファイルのみ以前の状態に戻す：**
 ```bash
 # 特定のファイルを1つ前のコミットの状態に戻す
-git checkout HEAD~1 -- apps/sample-docs/src/config/project.config.json
+git checkout HEAD~1 -- apps/sample-docs/src/config/project.config.jsonc
 
 # 変更をコミット
-git add apps/sample-docs/src/config/project.config.json
+git add apps/sample-docs/src/config/project.config.jsonc
 git commit -m "設定ファイルを以前の状態に戻す"
 ```
 
@@ -558,11 +558,11 @@ ls -lt .backups/ | grep language-addition
 find .backups/language-addition-2025-11-02T14-20-10-456Z -type f
 
 # 3. 各ファイルを手動で復元
-cp .backups/language-addition-2025-11-02T14-20-10-456Z/apps/sample-docs/src/config/project.config.json \
-   apps/sample-docs/src/config/project.config.json
+cp .backups/language-addition-2025-11-02T14-20-10-456Z/apps/sample-docs/src/config/project.config.jsonc \
+   apps/sample-docs/src/config/project.config.jsonc
 
-cp .backups/language-addition-2025-11-02T14-20-10-456Z/sites/landing/src/config/projects.config.json \
-   sites/landing/src/config/projects.config.json
+cp .backups/language-addition-2025-11-02T14-20-10-456Z/sites/landing/src/config/projects.config.jsonc \
+   sites/landing/src/config/projects.config.jsonc
 
 # 4. スクリプトが作成した不完全なディレクトリを削除
 # （エラーメッセージから作成されたパスを確認）
@@ -599,7 +599,7 @@ git log --oneline --since="2025-11-01" --until="2025-11-03"
 # 通常は最新のバックアップが最適
 
 # 5. バックアップの内容を確認してから復元
-cat .backups/project-config-sample-docs/2025-11-02T11-26-23-407Z/apps/sample-docs/src/config/project.config.json
+cat .backups/project-config-sample-docs/2025-11-02T11-26-23-407Z/apps/sample-docs/src/config/project.config.jsonc
 ```
 
 ### Q4: ビルドが失敗するが、原因がわからない
@@ -621,12 +621,12 @@ cd apps/sample-docs
 pnpm build
 
 # 3. 設定ファイルが壊れていないか確認
-cat src/config/project.config.json | jq .
+cat src/config/project.config.jsonc | jq .
 # jqがエラーを出す場合、JSONが壊れている
 
 # 4. 設定ファイルが壊れていた場合、バックアップから復元
-cp ../../.backups/project-config-sample-docs/[最新のタイムスタンプ]/apps/sample-docs/src/config/project.config.json \
-   src/config/project.config.json
+cp ../../.backups/project-config-sample-docs/[最新のタイムスタンプ]/apps/sample-docs/src/config/project.config.jsonc \
+   src/config/project.config.jsonc
 
 # 5. 再度ビルドを試す
 pnpm build

@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { locales, defaultLocale } from '@docs/i18n/locales';
-import { resolveDefaultLang } from '@docs/project-config';
+import { resolveDefaultLang, stripJsonComments } from '@docs/project-config';
 import type {
   ProjectsConfigJSON,
   SiteConfigJSON,
@@ -19,12 +19,11 @@ import { scanAppsDirectory, detectProject } from './project-detector';
 let _configCache: TopPageConfig | null = null;
 
 async function loadProjectsConfigFromJSON(configPath?: string): Promise<ProjectsConfigJSON> {
-  const defaultPath = path.resolve(process.cwd(), 'src', 'config', 'projects.config.json');
-  const filePath = configPath || defaultPath;
+  const filePath = configPath || (await resolveProjectsConfigPath());
 
   try {
     const configContent = await fs.readFile(filePath, 'utf-8');
-    const configJSON = JSON.parse(configContent) as ProjectsConfigJSON;
+    const configJSON = JSON.parse(stripJsonComments(configContent)) as ProjectsConfigJSON;
 
     if (!validateProjectsConfig(configJSON)) {
       throw new Error('Invalid projects configuration');
@@ -192,4 +191,16 @@ function getFailsafeConfig(): TopPageConfig {
     heroTitle: landingContent.heroTitle,
     heroDescription: landingContent.heroDescription
   };
+}
+
+async function resolveProjectsConfigPath(): Promise<string> {
+  const configDir = path.resolve(process.cwd(), 'src', 'config');
+  const jsoncPath = path.join(configDir, 'projects.config.jsonc');
+  const jsonPath = path.join(configDir, 'projects.config.json');
+  try {
+    await fs.access(jsoncPath);
+    return jsoncPath;
+  } catch {
+    return jsonPath;
+  }
 }

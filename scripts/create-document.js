@@ -266,7 +266,7 @@ async function main() {
       logger.info(`新しいカテゴリ "${resolvedCategorySlug}" を作成しました。`);
     }
 
-    logger.step('project.config.json を同期しています');
+    logger.step('project.config.jsonc を同期しています');
     const syncResult = syncCategoryTranslations(args.projectName, {
       lang: args.lang,
       categorySlug: resolvedCategorySlug,

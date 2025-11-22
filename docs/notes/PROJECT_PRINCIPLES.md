@@ -34,7 +34,7 @@
 ## コンテンツ管理原則（ファイルベース）
 
 - ディレクトリ構造で「バージョン」「言語」「カテゴリ」を表現し、`NN-` 連番で順序を決定する。
-- 必須 Frontmatter は最小限にし、足りない情報は既定値（`project.config.json` など）で補う。
+- 必須 Frontmatter は最小限にし、足りない情報は既定値（`project.config.jsonc` など）で補う。
 - サイドバーやルーティングは自動生成を基本とし、手作業変更時はスクリプトで整合性を検証する。
 - バージョン追加・言語追加・ドキュメント作成は `scripts/` のユーティリティを用い、設定の同期を自動化する。
 
@@ -66,7 +66,7 @@
 ## 命名と構造チェックリスト（運用用）
 
 - [ ] ルート構成は `apps/<project>/src/content/docs/<version>/<lang>/` を守る。
-- [ ] `<version>` は `v1` などの形式で `project.config.json` と一致する。
+- [ ] `<version>` は `v1` などの形式で `project.config.jsonc` と一致する。
 - [ ] `<lang>` は ISO コード（例: `en`, `ja`, `zh-Hans`）で `supportedLangs` と一致する。
 - [ ] カテゴリは `NN-slug`（例: `01-guide`）でゼロ埋め連番、全言語で同一構造。
 - [ ] ドキュメントは `NN-slug.mdx`（例: `02-setup-and-structure.mdx`）で連番・重複なし。

@@ -111,7 +111,7 @@ node scripts/create-version.js api-docs v2 --no-copy
    - 既存バージョンとの重複チェック
 
 2. **設定ファイル更新**
-   - `project.config.json`のversioning.versions配列を更新
+   - `project.config.jsonc`のversioning.versions配列を更新
    - 既存バージョンのisLatestフラグをfalseに設定
    - 新バージョンを最新として追加
 
@@ -178,7 +178,7 @@ node scripts/create-version.js sample-docs v3
 
 まず、対象プロジェクトの設定ファイルを更新します。
 
-#### `apps/[project-name]/src/config/project.config.json`の編集
+#### `apps/[project-name]/src/config/project.config.jsonc`の編集
 
 ```json
 {
@@ -360,7 +360,7 @@ pnpm --filter=sample-docs dev
 完了したら、以下の項目を確認してください：
 
 
-- [ ] `project.config.json`の更新
+- [ ] `project.config.jsonc`の更新
 - [ ] 既存バージョンの`isLatest`フラグを`false`に変更
 - [ ] 新バージョンの追加と`isLatest: true`設定
 - [ ] 全サポート言語のディレクトリ作成
@@ -482,7 +482,7 @@ done
 **問題**: バージョン切り替えが表示されない
 
 **解決方法**:
-1. `project.config.json`のversions配列を確認
+1. `project.config.jsonc`のversions配列を確認
 2. `isLatest`フラグの設定を確認
 3. ブラウザキャッシュをクリア
 

@@ -18,6 +18,7 @@ import { fileURLToPath } from 'url';
 import { glob } from 'glob';
 import { saveCompressedJson, parseMarkdownFile } from './utils.js';
 import * as logger from './logger.js';
+import { readJsoncFileAsync } from './jsonc-utils.js';
 
 logger.useUnifiedConsole();
 
@@ -233,10 +234,12 @@ async function detectLanguagesByVersion(projectName, contentPath) {
  * プロジェクト設定から対応言語を読み取る
  */
 async function getSupportedLanguages(projectPath) {
-  const configJsonPath = path.join(projectPath, 'src', 'config', 'project.config.json');
+  const configDir = path.join(projectPath, 'src', 'config');
+  const configJsoncPath = path.join(configDir, 'project.config.jsonc');
+  const configJsonPath = path.join(configDir, 'project.config.json');
+  const targetPath = await fileExists(configJsoncPath) ? configJsoncPath : configJsonPath;
   try {
-    const raw = await fs.readFile(configJsonPath, 'utf-8');
-    const parsed = JSON.parse(raw);
+    const parsed = await readJsoncFileAsync(targetPath);
     const langs = parsed?.basic?.supportedLangs;
     if (Array.isArray(langs) && langs.length > 0) {
       return langs;
@@ -247,6 +250,15 @@ async function getSupportedLanguages(projectPath) {
     }
   }
   return null;
+}
+
+async function fileExists(filePath) {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 /**

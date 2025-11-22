@@ -172,7 +172,7 @@ apps/{project}/src/content/docs/
 
 **命名規則（自動化に重要）：**
 
-- バージョン: `v1`, `v2`など（`project.config.json`と一致する必要があります）
+- バージョン: `v1`, `v2`など（`project.config.jsonc`と一致する必要があります）
 - 言語: ISOコード（`en`, `ja`, `zh-Hans`）
 - カテゴリ: `NN-slug`形式（例：`01-guide`, `02-components`）
 - ドキュメント: `NN-slug.mdx`形式（例：`01-getting-started.mdx`）
@@ -184,11 +184,11 @@ apps/{project}/src/content/docs/
 **プロジェクトごとの設定：**
 
 - `apps/{project}/astro.config.mjs` - ベースパス付きのAstro設定
-- `apps/{project}/src/config/project.config.json` - プロジェクトメタデータ、バージョン、言語、ライセンス
+- `apps/{project}/src/config/project.config.jsonc` - プロジェクトメタデータ、バージョン、言語、ライセンス
 
 **ランディングページの設定：**
 
-- `sites/landing/src/config/projects.config.json` - プロジェクトの装飾（アイコン、タグ）
+- `sites/landing/src/config/projects.config.jsonc` - プロジェクトの装飾（アイコン、タグ）
 
 ### ビルドシステム
 

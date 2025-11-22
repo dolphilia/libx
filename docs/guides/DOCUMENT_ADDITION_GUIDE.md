@@ -358,7 +358,7 @@ draft: false                          # 下書き状態（true=非表示）
 
 新しいカテゴリを作成した場合、プロジェクト設定ファイルに翻訳を追加する必要があります。
 
-#### `apps/[project-name]/src/config/project.config.json`の編集
+#### `apps/[project-name]/src/config/project.config.jsonc`の編集
 
 ```json
 {

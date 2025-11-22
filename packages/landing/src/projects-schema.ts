@@ -1,5 +1,5 @@
 /**
- * projects.config.json用のTypeScript型定義とスキーマ
+ * projects.config.jsonc 用のTypeScript型定義とスキーマ
  */
 import type { LocaleKey } from '@docs/i18n/locales';
 import type { IconName } from '@docs/ui/components';

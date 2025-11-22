@@ -205,9 +205,9 @@ libx-devプロジェクトは、主にOSSのドキュメントを翻訳し、技
 
 ### i18nベース自動ライセンス表示システム（現在の方式）
 
-libx-devプロジェクトでは、ライセンス情報を`project.config.json`で管理し、`packages/i18n`の多言語テンプレートシステムを使用して自動的に適切なライセンス表示を生成します。
+libx-devプロジェクトでは、ライセンス情報を`project.config.jsonc`で管理し、`packages/i18n`の多言語テンプレートシステムを使用して自動的に適切なライセンス表示を生成します。
 
-#### project.config.jsonでの設定（簡素化版）
+#### project.config.jsoncでの設定（簡素化版）
 
 ```json
 {
@@ -413,7 +413,7 @@ hideAttribution: true  # この文書のみ帰属表示を無効化
 apps/[project]/
 ├── src/
 │   ├── config/
-│   │   └── project.config.json   # ライセンス情報を含む
+│   │   └── project.config.jsonc   # ライセンス情報を含む
 │   └── content/
 │       └── docs/
 │           └── [version]/

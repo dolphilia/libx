@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
+import { stripJsonComments } from '@docs/project-config';
 
 export interface DetectedProject {
   id: string;
@@ -96,11 +97,11 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
 }
 
 async function loadDocsConfigFromJSON(projectPath: string) {
-  const configPath = path.join(projectPath, 'src', 'config', 'project.config.json');
+  const configPath = await resolveDocsConfigPath(projectPath);
 
   try {
     const configContent = await fs.readFile(configPath, 'utf-8');
-    const config = JSON.parse(configContent);
+    const config = JSON.parse(stripJsonComments(configContent));
 
     if (config.versioning?.versions) {
       config.versioning.versions = config.versioning.versions.map((version: any) => ({
@@ -112,6 +113,18 @@ async function loadDocsConfigFromJSON(projectPath: string) {
     return config;
   } catch (error) {
     throw new Error(`JSONプロジェクト設定ファイルの読み込みに失敗: ${configPath} - ${error}`);
+  }
+}
+
+async function resolveDocsConfigPath(projectPath: string): Promise<string> {
+  const configDir = path.join(projectPath, 'src', 'config');
+  const jsoncPath = path.join(configDir, 'project.config.jsonc');
+  const jsonPath = path.join(configDir, 'project.config.json');
+  try {
+    await fs.access(jsoncPath);
+    return jsoncPath;
+  } catch {
+    return jsonPath;
   }
 }
 

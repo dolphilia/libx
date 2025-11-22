@@ -20,6 +20,7 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import * as logger from './logger.js';
 import { confirmAction, createBackup } from './safety-utils.js';
+import { readJsoncFile, formatProjectConfigJsonc, formatLandingConfigJsonc } from './jsonc-utils.js';
 
 logger.useUnifiedConsole();
 
@@ -52,6 +53,19 @@ function showUsage(exitCode = 1) {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
+const PROJECT_CONFIG_FILE = 'project.config.jsonc';
+const PROJECT_CONFIG_FALLBACK = 'project.config.json';
+const LANDING_CONFIG_FILE = 'projects.config.jsonc';
+const LANDING_CONFIG_FALLBACK = 'projects.config.json';
+
+function resolveConfigPath(baseDir, fileName, fallbackName) {
+  const primary = path.join(baseDir, fileName);
+  const fallback = path.join(baseDir, fallbackName);
+  if (fs.existsSync(primary)) {
+    return primary;
+  }
+  return fallback;
+}
 
 /**
  * コマンドライン引数を解析する
@@ -162,7 +176,7 @@ function validateTemplate(templateName) {
   const requiredFiles = [
     'package.json',
     'astro.config.mjs',
-    'src/config/project.config.json'
+    `src/config/${PROJECT_CONFIG_FILE}`
   ];
 
   const missingFiles = requiredFiles.filter(file =>
@@ -318,11 +332,12 @@ export default defineDocsConfig({
 }
 
 /**
- * project.config.jsonを更新する
+ * project.config.jsoncを更新する
  */
 function updateProjectConfig(projectDir, config) {
-  const projectConfigPath = path.join(projectDir, 'src', 'config', 'project.config.json');
-  const projectConfig = JSON.parse(fs.readFileSync(projectConfigPath, 'utf-8'));
+  const configDir = path.join(projectDir, 'src', 'config');
+  const projectConfigPath = resolveConfigPath(configDir, PROJECT_CONFIG_FILE, PROJECT_CONFIG_FALLBACK);
+  const projectConfig = readJsoncFile(projectConfigPath);
 
   // 基本設定の更新
   projectConfig.basic.baseUrl = `/docs/${config.projectName}`;
@@ -334,12 +349,14 @@ function updateProjectConfig(projectDir, config) {
   projectConfig.translations.ja.displayName = config.displayNameJa;
   projectConfig.translations.ja.displayDescription = config.descriptionJa;
 
-  fs.writeFileSync(projectConfigPath, JSON.stringify(projectConfig, null, 2));
-  console.log('  ✅ project.config.json更新完了');
+  let serialized = JSON.stringify(projectConfig, null, 2);
+  serialized = formatProjectConfigJsonc(serialized);
+  fs.writeFileSync(projectConfigPath, serialized);
+  console.log(`  ✅ ${path.basename(projectConfigPath)}更新完了`);
 }
 
 /**
- * landingサイトのprojects.config.jsonを更新する
+ * landingサイトのprojects.config.jsoncを更新する
  * 注: 自動検出機能があるため、カスタムアイコンやタグがある場合のみ更新する
  */
 function updateLandingConfig(config, options = {}) {
@@ -349,8 +366,9 @@ function updateLandingConfig(config, options = {}) {
   }
 
   const { dryRun = false } = options;
-  const landingConfigPath = path.join(rootDir, 'sites', 'landing', 'src', 'config', 'projects.config.json');
-  const landingConfig = JSON.parse(fs.readFileSync(landingConfigPath, 'utf-8'));
+  const landingConfigDir = path.join(rootDir, 'sites', 'landing', 'src', 'config');
+  const landingConfigPath = resolveConfigPath(landingConfigDir, LANDING_CONFIG_FILE, LANDING_CONFIG_FALLBACK);
+  const landingConfig = readJsoncFile(landingConfigPath);
 
   // プロジェクトデコレーションを追加
   landingConfig.projectDecorations[config.projectName] = {
@@ -360,7 +378,7 @@ function updateLandingConfig(config, options = {}) {
   };
 
   if (dryRun) {
-    logger.dryRun(`landing projects.config.json を更新します（dry-runのためファイルは変更しません）: ${landingConfigPath}`);
+    logger.dryRun(`landing ${path.basename(landingConfigPath)} を更新します（dry-runのためファイルは変更しません）: ${landingConfigPath}`);
     return;
   }
 
@@ -370,8 +388,10 @@ function updateLandingConfig(config, options = {}) {
     logger
   });
 
-  fs.writeFileSync(landingConfigPath, JSON.stringify(landingConfig, null, 2));
-  console.log('  ✅ landing projects.config.json更新完了（カスタム設定あり）');
+  let landingSerialized = JSON.stringify(landingConfig, null, 2);
+  landingSerialized = formatLandingConfigJsonc(landingSerialized);
+  fs.writeFileSync(landingConfigPath, landingSerialized);
+  console.log(`  ✅ landing ${path.basename(landingConfigPath)}更新完了（カスタム設定あり）`);
 }
 
 /**
@@ -382,7 +402,7 @@ function updateAllConfigFiles(projectDir, config, options = {}) {
   console.log('  設定ファイルを更新しています...');
 
   if (dryRun) {
-    logger.dryRun('package.json / astro.config.mjs / project.config.json / landing 設定を更新する予定です（dry-runのため未実施）。');
+    logger.dryRun('package.json / astro.config.mjs / project.config.jsonc / landing 設定を更新する予定です（dry-runのため未実施）。');
     return;
   }
 

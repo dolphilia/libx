@@ -130,14 +130,14 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 ✅ バリデーション完了
 
 [3/8] プロジェクト設定を更新しています...
-  📋 バックアップ: project.config.json
+  📋 バックアップ: project.config.jsonc
   ✅ supportedLangsに "de" を追加
   ✅ 言語表示名を設定: de = "Deutsch"
   ✅ 翻訳設定を追加
 ✅ プロジェクト設定更新完了
 
 [4/8] トップページ設定を更新しています...
-  📋 バックアップ: projects.config.json
+  📋 バックアップ: projects.config.jsonc
 ✅ トップページ設定更新完了
 
 [5/8] ディレクトリ構造を作成しています...
@@ -173,8 +173,8 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 🔄 自動ロールバックを開始します...
   ✅ ディレクトリ削除: /v2/de
   ✅ ディレクトリ削除: /v1/de  
-  ✅ ファイル復元: project.config.json
-  ✅ ファイル復元: projects.config.json
+  ✅ ファイル復元: project.config.jsonc
+  ✅ ファイル復元: projects.config.jsonc
 ✅ ロールバック完了 - システムは元の状態に復元されました
 ```
 
@@ -225,7 +225,7 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 
 ### 1.1 基本言語設定
 
-`apps/[project-name]/src/config/project.config.json`を編集し、新しい言語を追加します。
+`apps/[project-name]/src/config/project.config.jsonc`を編集し、新しい言語を追加します。
 
 ```json
 {
@@ -296,7 +296,7 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 }
 ```
 
-プロジェクト固有の表記を使いたい場合のみ、`apps/[project-name]/src/config/project.config.json`の`languageNames`セクションで上書きします：
+プロジェクト固有の表記を使いたい場合のみ、`apps/[project-name]/src/config/project.config.jsonc`の`languageNames`セクションで上書きします：
 
 ```json
 {
@@ -314,7 +314,7 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 
 > ℹ️ プロジェクトで固有の表記を付ける場合でも、`basic.defaultLang` を省略すると `config/global-defaults.json` → `"en"` の順でフォールバックします。
 
-**重要な変更点**: `LanguageSelector.astro` は `packages/i18n/src/language-names.json` のデフォルトと `project.config.json`、さらにコンポーネント引数の順でマージします。これにより、共通の名前付けを中央管理しつつプロジェクトごとの上書きも可能になりました。
+**重要な変更点**: `LanguageSelector.astro` は `packages/i18n/src/language-names.json` のデフォルトと `project.config.jsonc`、さらにコンポーネント引数の順でマージします。これにより、共通の名前付けを中央管理しつつプロジェクトごとの上書きも可能になりました。
 
 **注意**: 以前のバージョンでは国旗表示機能がありましたが、現在は言語と特定国家の関連付けの問題を避けるため、国旗表示は撤廃されています。言語名のみで言語選択を行います。
 
@@ -396,7 +396,7 @@ description: "새로운 언어로 작성된 설명"
 
 ### 5.1 landing設定ファイルと翻訳ファイルの更新
 
-`projects.config.json`では新しい言語を`supportedLangs`に追加するだけで、翻訳データは`packages/i18n/src/locales/<language>.json`の`landing`オブジェクトで管理します。たとえば韓国語なら、以下のように`landing`セクションを追加してください：
+`projects.config.jsonc`では新しい言語を`supportedLangs`に追加するだけで、翻訳データは`packages/i18n/src/locales/<language>.json`の`landing`オブジェクトで管理します。たとえば韓国語なら、以下のように`landing`セクションを追加してください：
 
 ```json
 {
@@ -408,7 +408,7 @@ description: "새로운 언어로 작성된 설명"
 }
 ```
 
-既存の言語を参考にしつつ、`siteDescription`・`heroTitle`・`heroDescription`の3つの翻訳を追加することで、ランディングページのヒーローセクションとメタの説明文がその言語で表示されます。`supportedLangs`の変更を忘れないよう、`sites/landing/src/config/projects.config.json`にも言語コードを含めたエントリを保持してください。
+既存の言語を参考にしつつ、`siteDescription`・`heroTitle`・`heroDescription`の3つの翻訳を追加することで、ランディングページのヒーローセクションとメタの説明文がその言語で表示されます。`supportedLangs`の変更を忘れないよう、`sites/landing/src/config/projects.config.jsonc`にも言語コードを含めたエントリを保持してください。
 
 ### 5.2 なぜlandingの更新が必要か
 
@@ -473,9 +473,9 @@ pnpm dev
 
 #### 問題2: 言語切り替えが動作しない
 
-**原因**: `packages/i18n/src/language-names.json` や `project.config.json` に表示名が登録されておらず、LanguageSelector のマージ結果が空になっている
+**原因**: `packages/i18n/src/language-names.json` や `project.config.jsonc` に表示名が登録されておらず、LanguageSelector のマージ結果が空になっている
 
-**解決方法**: まず `packages/i18n/src/language-names.json` に対象言語が含まれているか確認し、必要に応じて追加する。プロジェクトごとに異なる名称を使いたい場合は `project.config.json` の `languageNames` セクションで上書きする
+**解決方法**: まず `packages/i18n/src/language-names.json` に対象言語が含まれているか確認し、必要に応じて追加する。プロジェクトごとに異なる名称を使いたい場合は `project.config.jsonc` の `languageNames` セクションで上書きする
 
 #### 問題3: サイドバーが表示されない
 
@@ -489,7 +489,7 @@ pnpm dev
 
 **原因**: landingで新しい言語がサポートされておらず、ヒーローテキストが不足している
 
-**解決方法**: `sites/landing/src/config/projects.config.json`の`supportedLangs`に言語コードを追加し、`packages/i18n/src/locales/<lang>.json`の`landing`セクションに翻訳コンテンツを追加する
+**解決方法**: `sites/landing/src/config/projects.config.jsonc`の`supportedLangs`に言語コードを追加し、`packages/i18n/src/locales/<lang>.json`の`landing`セクションに翻訳コンテンツを追加する
 
 #### 問題5: ページが見つからない（404）
 
@@ -538,10 +538,10 @@ pnpm dev
 新しい言語を追加する際は、以下のチェックリストを使用してください：
 
 ### 設定ファイル
-- [ ] `project.config.json`の`supportedLangs`に言語コード追加
-- [ ] `packages/i18n/src/language-names.json` を更新し、必要に応じて `project.config.json` の `languageNames` で上書き
-- [ ] `project.config.json`の`translations`セクションに言語設定追加
-- [ ] **重要**: `sites/landing/src/config/projects.config.json`の`supportedLangs`に言語コード追加
+- [ ] `project.config.jsonc`の`supportedLangs`に言語コード追加
+- [ ] `packages/i18n/src/language-names.json` を更新し、必要に応じて `project.config.jsonc` の `languageNames` で上書き
+- [ ] `project.config.jsonc`の`translations`セクションに言語設定追加
+- [ ] **重要**: `sites/landing/src/config/projects.config.jsonc`の`supportedLangs`に言語コード追加
 - [ ] **重要**: `packages/i18n/src/locales/<lang>.json`の`landing`セクションに`siteDescription`、`heroTitle`、`heroDescription`を追加
 
 ### ディレクトリ構造

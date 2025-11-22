@@ -142,8 +142,8 @@ $ node scripts/create-project.js my-docs "My Documentation" "私のドキュメ�
 [4/7] 設定ファイルを更新しています...
   ✅ package.json更新完了
   ✅ astro.config.mjs更新完了
-  ✅ project.config.json更新完了
-  ✅ landing projects.config.json更新完了
+  ✅ project.config.jsonc更新完了
+  ✅ landing projects.config.jsonc更新完了
 ✅ 設定ファイル更新完了
 
 [5/7] 依存関係をインストールしています...
@@ -214,7 +214,7 @@ apps/my-docs/
 ├── astro.config.mjs               # ベースパスが自動設定
 ├── src/
 │   ├── config/
-│   │   └── project.config.json   # プロジェクト設定が自動設定
+│   │   └── project.config.jsonc   # プロジェクト設定が自動設定
 │   ├── content/
 │   │   └── docs/                 # ドキュメントファイル
 │   └── pages/                    # Astroページファイル
@@ -298,7 +298,7 @@ export default defineConfig({
 
 ### 4. プロジェクト設定ファイルの更新
 
-`apps/新しいプロジェクト名/src/config/project.config.json` を編集します。
+`apps/新しいプロジェクト名/src/config/project.config.jsonc` を編集します。
 
 ```json
 {
@@ -333,7 +333,7 @@ export default defineConfig({
 
 ### 5. ランディングページの設定更新
 
-`sites/landing/src/config/projects.config.json` に新しいプロジェクトのデコレーション情報を追加します。
+`sites/landing/src/config/projects.config.jsonc` に新しいプロジェクトのデコレーション情報を追加します。
 
 ```json
 {
@@ -367,7 +367,7 @@ pnpm install
 
 コピーしたテンプレートには以下の共有パッケージが組み込まれており、個別に `src/lib` や `src/utils` を維持する必要はありません。
 
-- **`@docs/project-config`**: `getProjectConfig` / `getLegacyProjectConfig` で `project.config.json` を読み込み、キャッシュします。SSRでは `initializeConfig()` を呼んだ後に同期API（`getLegacyConfig` など）が利用できます。
+- **`@docs/project-config`**: `getProjectConfig` / `getLegacyProjectConfig` で `project.config.jsonc` を読み込み、キャッシュします。SSRでは `initializeConfig()` を呼んだ後に同期API（`getLegacyConfig` など）が利用できます。
 - **`@docs/content-utils`**: サイドバー生成、ページネーション、バージョンリンク解決などの処理を提供します。`pathPattern` オプションで `version-first`（既定）か `locale-first` を選択してください。
 
 ```ts
@@ -443,13 +443,13 @@ pnpm build
 #### ビルドエラーが発生する場合
 
 1. 設定ファイルの構文チェック（JSON形式）
-2. baseUrlの一貫性確認（astro.config.mjs と project.config.json）
+2. baseUrlの一貫性確認（astro.config.mjs と project.config.jsonc）
 3. プロジェクト名の一貫性確認
 
 #### リンク変換が正しく動作しない場合
 
 1. `astro.config.mjs` の `remarkLinkTransformer` の `baseUrl` を確認
-2. `project.config.json` の `baseUrl` との一致を確認
+2. `project.config.jsonc` の `baseUrl` との一致を確認
 
 ## 検証済みの設定値
 
@@ -458,7 +458,7 @@ pnpm build
 - **test-project**
   - package.json: `"name": "apps-test-project"`
   - astro.config.mjs: `base: '/docs/test-project'`
-  - project.config.json: `"baseUrl": "/docs/test-project"`
+  - project.config.jsonc: `"baseUrl": "/docs/test-project"`
   - 開発サーバー: `http://localhost:4321/docs/test-project`
   - ビルド: 成功
   - 統合ビルド: 成功

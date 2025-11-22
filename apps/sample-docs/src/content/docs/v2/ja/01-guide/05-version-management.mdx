@@ -32,7 +32,7 @@ description: "複数のドキュメントバージョンを効果的に処理す
 
 ### バージョン定義
 
-`apps/<project-name>/src/config/project.config.json` の `versioning.versions` で ID・表示名・リリース日・最新フラグを管理します。sample-docs の例：
+`apps/<project-name>/src/config/project.config.jsonc` の `versioning.versions` で ID・表示名・リリース日・最新フラグを管理します。sample-docs の例：
 
 ```json
 {
@@ -55,7 +55,7 @@ description: "複数のドキュメントバージョンを効果的に処理す
 }
 ```
 
-直接編集する代わりに `node scripts/create-version.js sample-docs v3 --interactive` を使うと、バックアップ生成・表示名入力・コピー元の選択が自動化され、`project.config.json` の差分も整形済みで出力されます。
+直接編集する代わりに `node scripts/create-version.js sample-docs v3 --interactive` を使うと、バックアップ生成・表示名入力・コピー元の選択が自動化され、`project.config.jsonc` の差分も整形済みで出力されます。
 
 ### ディレクトリ構造
 
@@ -143,7 +143,7 @@ description: "バージョン1.0から2.0への移行に必要な変更点"
 
 ユーザーがバージョン間を簡単に移動できるようにする：
 
-- **バージョンセレクター**：共通ヘッダーに実装済み（`project.config.json` の `isLatest` を参照）
+- **バージョンセレクター**：共通ヘッダーに実装済み（`project.config.jsonc` の `isLatest` を参照）
 - **一貫したURL構造**：`/docs/sample-docs/ja/v1/01-guide/...` と `/docs/sample-docs/v2/ja/01-guide/...`
 - **クロスバージョンリンク**：関連する他のバージョンのコンテンツへのリンク
 
@@ -182,14 +182,14 @@ if (version === 'v0' && !user.preferences.showDeprecated) {
 ### バージョン作成スクリプト
 
 - `node scripts/create-version.js sample-docs v3`  
-  `project.config.json` を更新し、既存バージョンをコピーして `apps/sample-docs/src/content/docs/v3/<lang>/` をまとめて生成します。
+  `project.config.jsonc` を更新し、既存バージョンをコピーして `apps/sample-docs/src/content/docs/v3/<lang>/` をまとめて生成します。
 - `--interactive` を付けると表示名・コピー元・最新フラグをインタラクティブに決定できます。
 - `--no-copy` を付けると空のディレクトリのみ作成し、新規構成を 0 から組み立てられます。
 
 ### 言語追加スクリプト
 
 - `node scripts/add-language.js sample-docs de --template-lang=ja`  
-  言語ディレクトリ生成、カテゴリー翻訳、`sites/landing/src/config/projects.config.json` の更新、`.backups/` へのバックアップ、オプションでのビルドテスト実行をすべて自動化します。
+  言語ディレクトリ生成、カテゴリー翻訳、`sites/landing/src/config/projects.config.jsonc` の更新、`.backups/` へのバックアップ、オプションでのビルドテスト実行をすべて自動化します。
 
 ### ドキュメント作成スクリプト
 

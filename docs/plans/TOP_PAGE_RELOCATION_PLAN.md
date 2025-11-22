@@ -15,9 +15,9 @@
 3. サイドバー生成（`scripts/build-sidebar.js` / `build-sidebar-selective.js`）は `apps/*` のコンテンツのみを処理し、`sites/landing` 側を含めないため、トップページ側の構造が破綻する心配はありません。
 
 ### 自動化スクリプトとランディング設定
-- `scripts/create-project.js` / `scripts/add-language.js` は新しいプロジェクトや言語登録時に `sites/landing/src/config/projects.config.json` を更新し、トップページ側の表示情報（アイコン・タグ・`supportedLangs`）と整合性を保ちます。
-- `packages/landing/src/project-detector.ts` が `apps/` ディレクトリをスキャンして `project.config.json` から表示名・説明・URL・フォールバックURLを生成し、トップページのカード一覧を動的に構築します。
-- `sites/landing/src/config/projects.config.json` がトップページのカスタマイズポイントです。手動で `icon`/`tags`/`isNew` や `supportedLangs` を追加したら、`pnpm --filter=sites-landing dev` や `pnpm build` で反映確認してください。
+- `scripts/create-project.js` / `scripts/add-language.js` は新しいプロジェクトや言語登録時に `sites/landing/src/config/projects.config.jsonc` を更新し、トップページ側の表示情報（アイコン・タグ・`supportedLangs`）と整合性を保ちます。
+- `packages/landing/src/project-detector.ts` が `apps/` ディレクトリをスキャンして `project.config.jsonc` から表示名・説明・URL・フォールバックURLを生成し、トップページのカード一覧を動的に構築します。
+- `sites/landing/src/config/projects.config.jsonc` がトップページのカスタマイズポイントです。手動で `icon`/`tags`/`isNew` や `supportedLangs` を追加したら、`pnpm --filter=sites-landing dev` や `pnpm build` で反映確認してください。
 
 ### デプロイと `dist` 構造
 - ビルド後、`dist/index.html` は `sites/landing` の出力、`dist/docs/{project}` はそれぞれのドキュメント出力です。ランディングページを Cloudflare Pages で公開する際はこの `dist` を `wrangler pages deploy dist --project-name libx` でアップロードします。
@@ -27,8 +27,8 @@
 1. `pnpm --filter=sites-landing dev` でトップページが `http://localhost:4321/` に表示されるか確認する。
 2. `pnpm build` 後に `dist/index.html`（landing）と `dist/docs/{project}` が揃っていることを確認し、`dist/docs` 以下に予期せぬファイルが混ざっていないか点検する。
 3. `pnpm build:selective --projects=landing` を使い、トップページのみ再ビルドした際に `dist/index.html` が更新され、他の `dist/docs` 配下に影響が出ないことを確認する。
-4. `scripts/create-project.js` / `scripts/add-language.js` により `sites/landing/src/config/projects.config.json` を手動・自動で更新したら、デプロイ前にファイル内容と `pnpm --filter=sites-landing dev` の表示を合わせて確認する。
-5. トップページの自動検出は `packages/landing/src/project-detector.ts` の `scanAppsDirectory()` により `apps/` を走査しているため、新規 `apps/{project}` を追加したら `project.config.json` の `basic.baseUrl` などを整えた上で `pnpm build:sidebar` → `pnpm build` を実行し、landing 側が新規カードを拾えているか確認する。
+4. `scripts/create-project.js` / `scripts/add-language.js` により `sites/landing/src/config/projects.config.jsonc` を手動・自動で更新したら、デプロイ前にファイル内容と `pnpm --filter=sites-landing dev` の表示を合わせて確認する。
+5. トップページの自動検出は `packages/landing/src/project-detector.ts` の `scanAppsDirectory()` により `apps/` を走査しているため、新規 `apps/{project}` を追加したら `project.config.jsonc` の `basic.baseUrl` などを整えた上で `pnpm build:sidebar` → `pnpm build` を実行し、landing 側が新規カードを拾えているか確認する。
 6. `wrangler pages deploy dist --project-name libx` を実行する前に `dist` を `ls dist` などで確認し、ランディング（`index.html`）とドキュメント（`docs/` 以下）が期待通りの構成になっているかチェックする。
 
 ## 今後の対応指針
