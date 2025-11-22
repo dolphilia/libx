@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { locales, defaultLocale } from '@docs/i18n/locales';
+import { resolveDefaultLang } from '@docs/project-config';
 import type {
   ProjectsConfigJSON,
   SiteConfigJSON,
@@ -98,12 +99,17 @@ export async function getTopPageConfig(): Promise<TopPageConfig> {
   try {
     const configJSON = await loadProjectsConfigFromJSON();
     const { siteConfig, projectDecorations } = convertProjectsConfigJSONToRuntime(configJSON);
+    const defaultLang = await resolveDefaultLang(siteConfig.defaultLang);
+    const normalizedSiteConfig = {
+      ...siteConfig,
+      defaultLang
+    };
     const projects = await generateAutoProjects(projectDecorations);
-    const landingContent = buildLandingContent(siteConfig.supportedLangs);
+    const landingContent = buildLandingContent(normalizedSiteConfig.supportedLangs);
 
     _configCache = {
       projects,
-      ...siteConfig,
+      ...normalizedSiteConfig,
       siteDescription: landingContent.siteDescription,
       heroTitle: landingContent.heroTitle,
       heroDescription: landingContent.heroDescription

@@ -7,6 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import * as logger from './logger.js';
+import { resolveDefaultLang as resolveRepoDefaultLang } from './global-defaults.js';
 import { createBackup } from './safety-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +33,19 @@ export function loadProjectConfig(projectName) {
 
   try {
     const configContent = fs.readFileSync(configPath, 'utf-8');
-    return JSON.parse(configContent);
+    const config = JSON.parse(configContent);
+
+    if (!config.basic) {
+      config.basic = {
+        baseUrl: '',
+        supportedLangs: [],
+        defaultLang: resolveRepoDefaultLang()
+      };
+    } else {
+      config.basic.defaultLang = resolveRepoDefaultLang(config.basic.defaultLang);
+    }
+
+    return config;
   } catch (error) {
     throw new Error(`設定ファイルの読み込みに失敗しました: ${error.message}`);
   }

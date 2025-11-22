@@ -94,6 +94,8 @@ pnpm --filter=sites-landing build
 
 `siteDescription`、`heroTitle`、`heroDescription`の翻訳は `packages/i18n/src/locales/<lang>.json` の `landing` セクションで管理されるため、ここでは定義しません。
 
+> ℹ️ `siteConfig.defaultLang` を省略すると `config/global-defaults.json` の `defaultLang` が使用され、そこにも値が無ければ `"en"` にフォールバックします。
+
 ### 新しいプロジェクトの追加
 
 1. **プロジェクト作成**: `scripts/create-project.js`でプロジェクトを作成

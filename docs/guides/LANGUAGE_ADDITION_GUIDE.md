@@ -241,6 +241,8 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 }
 ```
 
+> ℹ️ `basic.defaultLang` を省略した場合は、リポジトリルートの `config/global-defaults.json` にある `defaultLang` が使用されます。そこにも値が無ければ自動的に `"en"` が適用されます。
+
 ### 1.2 言語別翻訳情報の追加
 
 同じファイルの`translations`セクションに新しい言語の設定を追加します：
@@ -309,6 +311,8 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
   }
 }
 ```
+
+> ℹ️ プロジェクトで固有の表記を付ける場合でも、`basic.defaultLang` を省略すると `config/global-defaults.json` → `"en"` の順でフォールバックします。
 
 **重要な変更点**: `LanguageSelector.astro` は `packages/i18n/src/language-names.json` のデフォルトと `project.config.json`、さらにコンポーネント引数の順でマージします。これにより、共通の名前付けを中央管理しつつプロジェクトごとの上書きも可能になりました。
 

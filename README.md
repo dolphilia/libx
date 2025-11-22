@@ -26,6 +26,8 @@ libx-dev/
 └── scripts/          # ユーティリティスクリプト
 ```
 
+`config/global-defaults.json` では、`defaultLang` などリポジトリ全体で共有したいフォールバック値を管理します。各アプリやランディングページで `basic.defaultLang` を省略した場合はこのファイルの `defaultLang`（未設定なら `"en"`）が自動的に適用されます。
+
 ## 開発環境のセットアップ
 
 ### 前提条件

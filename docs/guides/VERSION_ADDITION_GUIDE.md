@@ -221,6 +221,8 @@ node scripts/create-version.js sample-docs v3
 
 `languageNames` は `packages/i18n/src/language-names.json` にある共通デフォルトをプロジェクト側で上書きしたい場合のみ設定します。デフォルトのままで問題なければ、このセクションは省略しても構いません。
 
+`basic.defaultLang` を記述しない場合は `config/global-defaults.json` の `defaultLang`（未設定なら `"en"`）が自動的に適用されます。
+
 #### 設定更新のポイント
 
 1. **既存バージョンの更新**: すべての既存バージョンの`isLatest`を`false`に変更

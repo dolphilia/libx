@@ -11,6 +11,7 @@ import {
   validateProjectConfigJSON,
   convertProjectConfigJSONToRuntime
 } from './config-schema';
+import { resolveDefaultLang } from './global-defaults';
 
 /**
  * プロジェクトルートの解決
@@ -31,7 +32,16 @@ export async function loadProjectConfigFromJSON(configPath: string): Promise<Pro
       throw new Error(`Invalid project configuration format in ${configPath}`);
     }
 
-    return convertProjectConfigJSONToRuntime(configJSON);
+    const runtimeConfig = convertProjectConfigJSONToRuntime(configJSON);
+    const defaultLang = await resolveDefaultLang(configJSON.basic.defaultLang);
+
+    return {
+      ...runtimeConfig,
+      basic: {
+        ...runtimeConfig.basic,
+        defaultLang
+      }
+    };
   } catch (error) {
     throw new Error(`Failed to load project configuration from ${configPath}: ${error}`);
   }

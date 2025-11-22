@@ -27,6 +27,8 @@ node scripts/create-project.js my-docs "My Documentation" "私のドキュメン
 node scripts/create-project.js api-docs "API Documentation" "API文書" --icon=code --tags=api,reference
 ```
 
+> ℹ️ `basic.defaultLang` を省略すると、`config/global-defaults.json` の `defaultLang` を参照し、そこにも値が無い場合は `"en"` が適用されます。
+
 **結果**: プロジェクトコピー、設定ファイル更新、依存関係インストール、ビルドテストがすべて自動実行されます。
 
 詳細は「[自動化スクリプト使用方法](#自動化スクリプト使用方法)」セクションを参照してください。
@@ -326,6 +328,8 @@ export default defineConfig({
   }
 }
 ```
+
+> ℹ️ `basic.defaultLang` を省略すると、`config/global-defaults.json` の `defaultLang` を参照し、そこにも値が無い場合は `"en"` が適用されます。
 
 ### 5. ランディングページの設定更新
 

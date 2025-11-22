@@ -13,7 +13,7 @@ export interface ProjectsConfigJSON {
 export interface SiteConfigJSON {
   baseUrl: string;
   supportedLangs: LocaleKey[];
-  defaultLang: LocaleKey;
+  defaultLang?: LocaleKey;
   repository: string;
   siteName: string;
 }
@@ -87,7 +87,7 @@ export function validateProjectsConfig(config: ProjectsConfigJSON): boolean {
   if (
     typeof baseUrl !== 'string' ||
     !Array.isArray(supportedLangs) ||
-    typeof defaultLang !== 'string' ||
+    (defaultLang !== undefined && typeof defaultLang !== 'string') ||
     typeof repository !== 'string' ||
     typeof siteName !== 'string'
   ) {

@@ -45,7 +45,7 @@ export interface ProjectConfigJSON {
   basic: {
     baseUrl: string;
     supportedLangs: LocaleKey[];
-    defaultLang: LocaleKey;
+    defaultLang?: LocaleKey;
   };
   languageNames?: Record<string, string>;
   translations: Record<LocaleKey, ProjectTranslations>;
@@ -95,7 +95,7 @@ export function validateProjectConfigJSON(config: any): config is ProjectConfigJ
     config.basic &&
     typeof config.basic.baseUrl === 'string' &&
     Array.isArray(config.basic.supportedLangs) &&
-    typeof config.basic.defaultLang === 'string' &&
+    (config.basic.defaultLang === undefined || typeof config.basic.defaultLang === 'string') &&
     // translations section
     config.translations &&
     typeof config.translations === 'object' &&
@@ -121,6 +121,10 @@ export function convertVersionJSONToRuntime(versionJSON: VersionConfigJSON): Ver
 export function convertProjectConfigJSONToRuntime(configJSON: ProjectConfigJSON): ProjectConfig {
   return {
     ...configJSON,
+    basic: {
+      ...configJSON.basic,
+      defaultLang: (configJSON.basic.defaultLang ?? 'en') as LocaleKey
+    },
     versioning: {
       versions: configJSON.versioning.versions.map(convertVersionJSONToRuntime)
     }
