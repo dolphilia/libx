@@ -1,6 +1,7 @@
 ---
 import type { LocaleKey } from '@docs/i18n/locales';
 import { translate } from '@docs/i18n/utils';
+import { defaultLanguageNames } from '@docs/i18n/language-names';
 import Dropdown from './Dropdown/Dropdown.astro';
 import DropdownItem from './Dropdown/DropdownItem.astro';
 import Icon from './icons/Icon.astro';
@@ -47,6 +48,7 @@ const {
 } = Astro.props;
 
 const combinedLanguageNames = {
+  ...defaultLanguageNames,
   ...(projectConfig?.languageNames ?? {}),
   ...(languageNames ?? {}),
 };

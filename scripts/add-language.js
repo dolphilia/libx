@@ -145,25 +145,19 @@ class BackupManager {
 }
 
 /**
- * サポート済み言語のマップ（i18nパッケージから取得）
+ * サポート済み言語のマップ（i18nパッケージの共通データを読み込み）
  */
-const SUPPORTED_LANGUAGES = {
-  'en': 'English',
-  'ja': '日本語',
-  'zh-Hans': '简体中文',
-  'zh-Hant': '繁體中文',
-  'es': 'Español',
-  'pt-BR': 'Português (Brasil)',
-  'ko': '한국어',
-  'de': 'Deutsch',
-  'fr': 'Français',
-  'ru': 'Русский',
-  'ar': 'العربية',
-  'id': 'Bahasa Indonesia',
-  'tr': 'Türkçe',
-  'hi': 'हिन्दी',
-  'vi': 'Tiếng Việt'
-};
+const languageNamesPath = path.join(rootDir, 'packages', 'i18n', 'src', 'language-names.json');
+let SUPPORTED_LANGUAGES = {};
+
+try {
+  const languageNamesRaw = fs.readFileSync(languageNamesPath, 'utf-8');
+  SUPPORTED_LANGUAGES = JSON.parse(languageNamesRaw);
+} catch (error) {
+  logger.error(`i18n の言語表示名データを読み込めませんでした: ${languageNamesPath}`);
+  logger.detail(error.message);
+  process.exit(1);
+}
 
 function showUsage(exitCode = 1) {
   logger.heading('言語追加スクリプトの使い方');

@@ -281,30 +281,36 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 
 ## ステップ2: 言語表示名の設定
 
-### 2.1 プロジェクト設定での言語名追加
+### 2.1 言語表示名のデフォルトと上書き
 
-`apps/[project-name]/src/config/project.config.json`を編集し、`languageNames`セクションに新しい言語の表示名を追加します：
+`packages/i18n/src/language-names.json`で共有の言語表示名を管理しています。まずこのファイルに対象言語が含まれているか確認し、未登録であればここに追記してください：
+
+```json
+{
+  "en": "English",
+  "ja": "日本語",
+  "ko": "한국어",
+  "...": "..."
+}
+```
+
+プロジェクト固有の表記を使いたい場合のみ、`apps/[project-name]/src/config/project.config.json`の`languageNames`セクションで上書きします：
 
 ```json
 {
   "basic": {
     "baseUrl": "/docs/your-project",
-    "supportedLangs": [
-      "en",
-      "ja",
-      "ko"
-    ],
+    "supportedLangs": ["en", "ja", "ko"],
     "defaultLang": "en"
   },
   "languageNames": {
-    "en": "English",
-    "ja": "日本語",
+    "ja": "日本語（β）",
     "ko": "한국어"
   }
 }
 ```
 
-**重要な変更点**: 以前は`LanguageSelector.astro`ファイル内で`LANG_NAMES`定数をハードコードしていましたが、現在は設定ファイル（`project.config.json`）で管理するように統合されました。これにより、言語表示名の保守性が大幅に向上しています。
+**重要な変更点**: `LanguageSelector.astro` は `packages/i18n/src/language-names.json` のデフォルトと `project.config.json`、さらにコンポーネント引数の順でマージします。これにより、共通の名前付けを中央管理しつつプロジェクトごとの上書きも可能になりました。
 
 **注意**: 以前のバージョンでは国旗表示機能がありましたが、現在は言語と特定国家の関連付けの問題を避けるため、国旗表示は撤廃されています。言語名のみで言語選択を行います。
 
@@ -463,9 +469,9 @@ pnpm dev
 
 #### 問題2: 言語切り替えが動作しない
 
-**原因**: `project.config.json`に言語表示名が追加されていない
+**原因**: `packages/i18n/src/language-names.json` や `project.config.json` に表示名が登録されておらず、LanguageSelector のマージ結果が空になっている
 
-**解決方法**: `project.config.json`の`languageNames`セクションに新しい言語を追加する
+**解決方法**: まず `packages/i18n/src/language-names.json` に対象言語が含まれているか確認し、必要に応じて追加する。プロジェクトごとに異なる名称を使いたい場合は `project.config.json` の `languageNames` セクションで上書きする
 
 #### 問題3: サイドバーが表示されない
 
@@ -529,7 +535,7 @@ pnpm dev
 
 ### 設定ファイル
 - [ ] `project.config.json`の`supportedLangs`に言語コード追加
-- [ ] `project.config.json`の`languageNames`セクションに言語表示名追加
+- [ ] `packages/i18n/src/language-names.json` を更新し、必要に応じて `project.config.json` の `languageNames` で上書き
 - [ ] `project.config.json`の`translations`セクションに言語設定追加
 - [ ] **重要**: `sites/landing/src/config/projects.config.json`の`supportedLangs`に言語コード追加
 - [ ] **重要**: `packages/i18n/src/locales/<lang>.json`の`landing`セクションに`siteDescription`、`heroTitle`、`heroDescription`を追加
