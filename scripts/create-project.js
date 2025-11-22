@@ -58,7 +58,7 @@ const rootDir = path.resolve(__dirname, '..');
  */
 function parseArguments() {
   const args = process.argv.slice(2);
-  
+
   if (args.includes('--help')) {
     showUsage(0);
   }
@@ -105,32 +105,32 @@ function parseArguments() {
  */
 function validateProjectName(projectName) {
   const errors = [];
-  
+
   // 文字種チェック（英数字とハイフンのみ）
   if (!/^[a-zA-Z0-9-]+$/.test(projectName)) {
     errors.push('プロジェクト名は英数字とハイフン(-)のみ使用できます');
   }
-  
+
   // 長さチェック
   if (projectName.length < 2) {
     errors.push('プロジェクト名は2文字以上である必要があります');
   }
-  
+
   if (projectName.length > 50) {
     errors.push('プロジェクト名は50文字以下である必要があります');
   }
-  
+
   // 先頭・末尾ハイフンチェック
   if (projectName.startsWith('-') || projectName.endsWith('-')) {
     errors.push('プロジェクト名の先頭や末尾にハイフンは使用できません');
   }
-  
+
   // 予約語チェック
   const reservedNames = ['node_modules', 'dist', 'build', 'test', 'src', 'public'];
   if (reservedNames.includes(projectName)) {
     errors.push(`"${projectName}" は予約語のため使用できません`);
   }
-  
+
   return errors;
 }
 
@@ -140,11 +140,11 @@ function validateProjectName(projectName) {
 function checkProjectDuplication(projectName) {
   const appsDir = path.join(rootDir, 'apps');
   const projectDir = path.join(appsDir, projectName);
-  
+
   if (fs.existsSync(projectDir)) {
     return [`プロジェクト "${projectName}" は既に存在します: ${projectDir}`];
   }
-  
+
   return [];
 }
 
@@ -153,26 +153,26 @@ function checkProjectDuplication(projectName) {
  */
 function validateTemplate(templateName) {
   const templateDir = path.join(rootDir, 'apps', templateName);
-  
+
   if (!fs.existsSync(templateDir)) {
     return [`テンプレートプロジェクト "${templateName}" が見つかりません: ${templateDir}`];
   }
-  
+
   // 必須ファイルの存在確認
   const requiredFiles = [
     'package.json',
     'astro.config.mjs',
     'src/config/project.config.json'
   ];
-  
-  const missingFiles = requiredFiles.filter(file => 
+
+  const missingFiles = requiredFiles.filter(file =>
     !fs.existsSync(path.join(templateDir, file))
   );
-  
+
   if (missingFiles.length > 0) {
     return [`テンプレートプロジェクトに必須ファイルが不足しています: ${missingFiles.join(', ')}`];
   }
-  
+
   return [];
 }
 
@@ -221,7 +221,7 @@ function shouldExclude(name, _isFile = false) {
 function copyTemplateProject(templateName, projectName, { dryRun = false } = {}) {
   const templateDir = path.join(rootDir, 'apps', templateName);
   const targetDir = path.join(rootDir, 'apps', projectName);
-  
+
   console.log(`  コピー元: ${templateDir}`);
   console.log(`  コピー先: ${targetDir}`);
 
@@ -229,7 +229,7 @@ function copyTemplateProject(templateName, projectName, { dryRun = false } = {})
     console.log('  [dry-run] テンプレートコピーは実施されません。');
     return targetDir;
   }
-  
+
   // カスタムコピー関数（除外パターンに対応）
   function copyDirRecursiveWithExclusion(src, dest) {
     // ディレクトリが存在しない場合は作成
@@ -264,16 +264,16 @@ function copyTemplateProject(templateName, projectName, { dryRun = false } = {})
         copiedCount++;
       }
     }
-    
+
     return { copied: copiedCount, skipped: skippedCount };
   }
-  
+
   const result = copyDirRecursiveWithExclusion(templateDir, targetDir);
   console.log(`  ✅ コピー完了: ${result.copied}個のファイル/ディレクトリ`);
   if (result.skipped > 0) {
     console.log(`  ⏩ スキップ: ${result.skipped}個のファイル/ディレクトリ`);
   }
-  
+
   return targetDir;
 }
 
@@ -283,9 +283,9 @@ function copyTemplateProject(templateName, projectName, { dryRun = false } = {})
 function updatePackageJson(projectDir, projectName) {
   const packageJsonPath = path.join(projectDir, 'package.json');
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
-  
+
   packageJson.name = `apps-${projectName}`;
-  
+
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
   console.log('  ✅ package.json更新完了');
 }
@@ -295,20 +295,24 @@ function updatePackageJson(projectDir, projectName) {
  */
 function updateAstroConfig(projectDir, projectName) {
   const astroConfigPath = path.join(projectDir, 'astro.config.mjs');
-  let content = fs.readFileSync(astroConfigPath, 'utf-8');
-  
-  // ベースパスを置換
-  content = content.replace(
-    /base:\s*['"`][^'"`]*['"`]/g,
-    `base: '/docs/${projectName}'`
-  );
-  
-  // remarkLinkTransformerのbaseUrlを置換
-  content = content.replace(
-    /\[remarkLinkTransformer,\s*\{\s*baseUrl:\s*['"`][^'"`]*['"`]\s*\}\]/g,
-    `[remarkLinkTransformer, { baseUrl: '/docs/${projectName}' }]`
-  );
-  
+
+  // 新しい設定形式で書き換え
+  const content = `// @ts-check
+import { defineDocsConfig } from '@docs/config';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// https://astro.build/config
+export default defineDocsConfig({
+  site: 'https://libx.dev',
+  base: '/docs/${projectName}',
+  rootDir: __dirname,
+});
+`;
+
   fs.writeFileSync(astroConfigPath, content);
   console.log('  ✅ astro.config.mjs更新完了');
 }
@@ -319,29 +323,35 @@ function updateAstroConfig(projectDir, projectName) {
 function updateProjectConfig(projectDir, config) {
   const projectConfigPath = path.join(projectDir, 'src', 'config', 'project.config.json');
   const projectConfig = JSON.parse(fs.readFileSync(projectConfigPath, 'utf-8'));
-  
+
   // 基本設定の更新
   projectConfig.basic.baseUrl = `/docs/${config.projectName}`;
-  
+
   // 翻訳情報の更新
   projectConfig.translations.en.displayName = config.displayNameEn;
   projectConfig.translations.en.displayDescription = config.descriptionEn;
-  
+
   projectConfig.translations.ja.displayName = config.displayNameJa;
   projectConfig.translations.ja.displayDescription = config.descriptionJa;
-  
+
   fs.writeFileSync(projectConfigPath, JSON.stringify(projectConfig, null, 2));
   console.log('  ✅ project.config.json更新完了');
 }
 
 /**
  * landingサイトのprojects.config.jsonを更新する
+ * 注: 自動検出機能があるため、カスタムアイコンやタグがある場合のみ更新する
  */
 function updateLandingConfig(config, options = {}) {
+  // デフォルト値の場合は更新しない（自動検出に任せる）
+  if (config.icon === 'file-text' && config.tags.length === 1 && config.tags[0] === 'documentation') {
+    return;
+  }
+
   const { dryRun = false } = options;
   const landingConfigPath = path.join(rootDir, 'sites', 'landing', 'src', 'config', 'projects.config.json');
   const landingConfig = JSON.parse(fs.readFileSync(landingConfigPath, 'utf-8'));
-  
+
   // プロジェクトデコレーションを追加
   landingConfig.projectDecorations[config.projectName] = {
     icon: config.icon,
@@ -353,15 +363,15 @@ function updateLandingConfig(config, options = {}) {
     logger.dryRun(`landing projects.config.json を更新します（dry-runのためファイルは変更しません）: ${landingConfigPath}`);
     return;
   }
-  
+
   createBackup(landingConfigPath, {
     rootDir,
     scenario: 'create-project',
     logger
   });
-  
+
   fs.writeFileSync(landingConfigPath, JSON.stringify(landingConfig, null, 2));
-  console.log('  ✅ landing projects.config.json更新完了');
+  console.log('  ✅ landing projects.config.json更新完了（カスタム設定あり）');
 }
 
 /**
@@ -375,12 +385,12 @@ function updateAllConfigFiles(projectDir, config, options = {}) {
     logger.dryRun('package.json / astro.config.mjs / project.config.json / landing 設定を更新する予定です（dry-runのため未実施）。');
     return;
   }
-  
+
   updatePackageJson(projectDir, config.projectName);
   updateAstroConfig(projectDir, config.projectName);
   updateProjectConfig(projectDir, config);
   updateLandingConfig(config, options);
-  
+
   console.log('  🎉 すべての設定ファイルの更新完了！');
 }
 
@@ -395,15 +405,15 @@ function installDependencies(projectDir, { dryRun = false } = {}) {
     logger.dryRun(`pnpm install をスキップしました（dry-run）: apps/${projectName}`);
     return true;
   }
-  
+
   try {
     // プロジェクトディレクトリに移動して pnpm install を実行
-    execSync('pnpm install', { 
+    execSync('pnpm install', {
       cwd: projectDir,
       stdio: ['inherit', 'pipe', 'pipe'],
       timeout: 120000 // 2分タイムアウト
     });
-    
+
     console.log('  ✅ 依存関係のインストール完了');
     return true;
   } catch (error) {
@@ -428,7 +438,7 @@ async function runProjectTests(projectName, { skipTest = false, dryRun = false }
   }
 
   console.log('  プロジェクトの動作テストを実行しています...');
-  
+
   // ビルドテスト
   console.log('    📦 ビルドテストを実行中...');
   try {
@@ -438,7 +448,7 @@ async function runProjectTests(projectName, { skipTest = false, dryRun = false }
       cwd: rootDir
     });
     console.log('    ✅ ビルドテスト成功');
-    
+
     return { success: true, message: 'すべてのテストが成功しました' };
   } catch (error) {
     console.error('    ❌ ビルドテストに失敗しました');
@@ -453,7 +463,7 @@ async function runProjectTests(projectName, { skipTest = false, dryRun = false }
 function showSuccessReport(config, projectDir, testResult, options = {}) {
   const { dryRun = false } = options;
   console.log('\n🎉 新しいドキュメントプロジェクトの作成が完了しました！\n');
-  
+
   console.log('📋 作成されたプロジェクト情報:');
   console.log(`  プロジェクト名: ${config.projectName}`);
   console.log(`  プロジェクトパス: ${projectDir}`);
@@ -464,11 +474,11 @@ function showSuccessReport(config, projectDir, testResult, options = {}) {
   console.log(`  アイコン: ${config.icon}`);
   console.log(`  タグ: ${config.tags.join(', ')}`);
   console.log('');
-  
+
   console.log('🧪 テスト結果:');
   console.log(`  ${testResult.success ? '✅' : '❌'} ${testResult.message}`);
   console.log('');
-  
+
   console.log('🚀 次のステップ:');
   console.log('  1. 開発サーバーを起動:');
   console.log(`     pnpm --filter=apps-${config.projectName} dev`);
@@ -483,7 +493,7 @@ function showSuccessReport(config, projectDir, testResult, options = {}) {
   console.log('  4. ドキュメントファイルの編集:');
   console.log(`     apps/${config.projectName}/src/content/docs/`);
   console.log('');
-  
+
   if (!testResult.success) {
     console.log('⚠️  警告: テストが失敗しました。上記のエラーを確認して問題を解決してください。');
   }
@@ -499,11 +509,11 @@ function showSuccessReport(config, projectDir, testResult, options = {}) {
  */
 async function main() {
   console.log('🚀 新しいドキュメントプロジェクト作成スクリプト\n');
-  
+
   // 1. 引数解析
   showProgress(1, 7, '引数を解析しています...');
   const config = parseArguments();
-  
+
   console.log(`プロジェクト名: ${config.projectName}`);
   console.log(`英語表示名: ${config.displayNameEn}`);
   console.log(`日本語表示名: ${config.displayNameJa}`);
@@ -513,22 +523,22 @@ async function main() {
   if (config.dryRun) {
     logger.dryRun('dry-runモードで実行します。ファイルシステムへの変更は行いません。');
   }
-  
+
   // 2. バリデーション
   showProgress(2, 7, 'プロジェクト設定を検証しています...');
-  
+
   const validationErrors = [
     ...validateProjectName(config.projectName),
     ...checkProjectDuplication(config.projectName),
     ...validateTemplate(config.template)
   ];
-  
+
   if (validationErrors.length > 0) {
     console.error('❌ エラーが発生しました:');
     validationErrors.forEach(error => console.error(`  - ${error}`));
     process.exit(1);
   }
-  
+
   console.log('✅ バリデーション完了');
   console.log('');
 
@@ -550,51 +560,51 @@ async function main() {
   if (!confirmed) {
     process.exit(0);
   }
-  
+
   // 3. テンプレートプロジェクトのコピー
   showProgress(3, 7, 'テンプレートプロジェクトをコピーしています...');
-  
+
   const targetDir = copyTemplateProject(config.template, config.projectName, {
     dryRun: config.dryRun
   });
   console.log('✅ プロジェクトコピー完了');
   console.log('');
-  
+
   // 4. 設定ファイルの更新
   showProgress(4, 7, '設定ファイルを更新しています...');
-  
+
   updateAllConfigFiles(targetDir, config, { dryRun: config.dryRun });
   console.log('✅ 設定ファイル更新完了');
   console.log('');
-  
+
   // 5. 依存関係のインストール
   showProgress(5, 7, '依存関係をインストールしています...');
-  
+
   const installSuccess = installDependencies(targetDir, { dryRun: config.dryRun });
   if (!installSuccess) {
     console.error('❌ 依存関係のインストールに失敗しました。手動でインストールしてください。');
     console.error(`   cd apps/${config.projectName} && pnpm install`);
     process.exit(1);
   }
-  
+
   console.log('✅ 依存関係インストール完了');
   console.log('');
-  
+
   // 6. 動作テスト
   showProgress(6, 7, '動作テストを実行しています...');
-  
+
   const testResult = await runProjectTests(config.projectName, {
     skipTest: config.skipTest,
     dryRun: config.dryRun
   });
   console.log('✅ テスト実行完了');
   console.log('');
-  
+
   // 7. 完了レポート
   showProgress(7, 7, '完了レポートを生成しています...');
-  
+
   showSuccessReport(config, targetDir, testResult, { dryRun: config.dryRun });
-  
+
   // 成功時は終了コード0、テスト失敗時は終了コード1
   process.exit(testResult.success ? 0 : 1);
 }
