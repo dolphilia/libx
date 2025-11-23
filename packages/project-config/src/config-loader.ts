@@ -45,20 +45,20 @@ export async function loadProjectConfigFromJSON(configPath: string, options: Loa
     }
 
     const runtimeConfig = convertProjectConfigJSONToRuntime(parsed);
-    const preferredDefaultLang = (parsed.language?.default ?? parsed.basic.defaultLang) as LocaleKey | undefined;
+    const preferredDefaultLang = (parsed.language?.default ?? parsed.basic?.defaultLang) as LocaleKey | undefined;
     const defaultLang = await resolveDefaultLang(preferredDefaultLang);
     const supportedLangs = await resolveSupportedLangs(
-      (parsed.language?.supported ?? parsed.basic.supportedLangs) as LocaleKey[] | undefined
+      (parsed.language?.supported ?? parsed.basic?.supportedLangs) as LocaleKey[] | undefined
     );
     const displayNames = await resolveLanguageDisplayNames(
       (parsed.language?.displayNames ?? parsed.languageNames) as Record<LocaleKey, string> | undefined
     );
     const configDir = path.dirname(configPath);
     const inferredProjectDir = options.projectDir ?? path.resolve(configDir, '..', '..');
-    const baseUrlPrefix = await resolveBaseUrlPrefix(parsed.basic.baseUrlPrefix);
-    const projectSlug = await resolveProjectSlug(parsed.basic.projectSlug, inferredProjectDir);
+    const baseUrlPrefix = await resolveBaseUrlPrefix(parsed.basic?.baseUrlPrefix);
+    const projectSlug = await resolveProjectSlug(parsed.basic?.projectSlug, inferredProjectDir);
     const baseUrl = await resolveBaseUrl({
-      baseUrl: parsed.basic.baseUrl,
+      baseUrl: parsed.basic?.baseUrl,
       baseUrlPrefix,
       projectSlug,
       projectDir: inferredProjectDir

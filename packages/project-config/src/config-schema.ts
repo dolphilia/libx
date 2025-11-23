@@ -54,7 +54,7 @@ export interface ProjectLanguageConfig {
 }
 
 export interface ProjectConfigJSON {
-  basic: {
+  basic?: {
     baseUrl?: string;
     baseUrlPrefix?: string;
     projectSlug?: string;
@@ -107,16 +107,17 @@ export function validateProjectConfigJSON(config: any): config is ProjectConfigJ
     config &&
     typeof config === 'object' &&
     // basic section
-    config.basic &&
-    (config.basic.baseUrl === undefined || typeof config.basic.baseUrl === 'string') &&
-    (config.basic.baseUrlPrefix === undefined || typeof config.basic.baseUrlPrefix === 'string') &&
-    (config.basic.projectSlug === undefined || typeof config.basic.projectSlug === 'string') &&
+    (config.basic === undefined ||
+      (typeof config.basic === 'object' &&
+        (config.basic.baseUrl === undefined || typeof config.basic.baseUrl === 'string') &&
+        (config.basic.baseUrlPrefix === undefined || typeof config.basic.baseUrlPrefix === 'string') &&
+        (config.basic.projectSlug === undefined || typeof config.basic.projectSlug === 'string') &&
+        (config.basic.supportedLangs === undefined || Array.isArray(config.basic.supportedLangs)) &&
+        (config.basic.defaultLang === undefined || typeof config.basic.defaultLang === 'string'))) &&
     (config.language === undefined ||
       (typeof config.language === 'object' &&
         (config.language.supported === undefined || Array.isArray(config.language.supported)) &&
         (config.language.default === undefined || typeof config.language.default === 'string'))) &&
-    (config.basic.supportedLangs === undefined || Array.isArray(config.basic.supportedLangs)) &&
-    (config.basic.defaultLang === undefined || typeof config.basic.defaultLang === 'string') &&
     // translations section
     config.translations &&
     typeof config.translations === 'object' &&
@@ -140,17 +141,18 @@ export function convertVersionJSONToRuntime(versionJSON: VersionConfigJSON): Ver
  * JSONスキーマから実行時設定に変換
  */
 export function convertProjectConfigJSONToRuntime(configJSON: ProjectConfigJSON): ProjectConfig {
-  const legacySupported = configJSON.language?.supported ?? configJSON.basic.supportedLangs ?? [];
-  const legacyDefault = configJSON.language?.default ?? configJSON.basic.defaultLang ?? 'en';
+  const legacySupported = configJSON.language?.supported ?? configJSON.basic?.supportedLangs ?? [];
+  const legacyDefault = configJSON.language?.default ?? configJSON.basic?.defaultLang ?? 'en';
   const legacyNames = configJSON.language?.displayNames ?? configJSON.languageNames ?? {};
+  const basicConfig = configJSON.basic ?? {};
 
   return {
     ...configJSON,
     basic: {
-      ...configJSON.basic,
-      baseUrl: (configJSON.basic.baseUrl ?? '') as string,
-      baseUrlPrefix: (configJSON.basic.baseUrlPrefix ?? '') as string,
-      projectSlug: (configJSON.basic.projectSlug ?? '') as string
+      ...basicConfig,
+      baseUrl: (basicConfig.baseUrl ?? '') as string,
+      baseUrlPrefix: (basicConfig.baseUrlPrefix ?? '') as string,
+      projectSlug: (basicConfig.projectSlug ?? '') as string
     },
     language: {
       supported: legacySupported as LocaleKey[],
