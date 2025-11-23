@@ -12,13 +12,14 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const defaultsPath = path.join(rootDir, 'config', 'global-defaults.json');
 const FALLBACK_DEFAULT_LANG = 'en';
+const FALLBACK_BASE_URL_PREFIX = '/docs';
 
-let cachedDefaultLang = null;
+let cachedDefaults = null;
 let loadAttempted = false;
 
-function readRepositoryDefaultLang() {
-  if (cachedDefaultLang) {
-    return cachedDefaultLang;
+function readRepositoryDefaults() {
+  if (cachedDefaults) {
+    return cachedDefaults;
   }
 
   if (loadAttempted) {
@@ -29,11 +30,8 @@ function readRepositoryDefaultLang() {
 
   try {
     const content = fs.readFileSync(defaultsPath, 'utf-8');
-    const parsed = JSON.parse(content);
-    if (typeof parsed?.defaultLang === 'string') {
-      cachedDefaultLang = parsed.defaultLang;
-      return cachedDefaultLang;
-    }
+    cachedDefaults = JSON.parse(content);
+    return cachedDefaults;
   } catch (error) {
     console.warn(`⚠️  リポジトリ共通設定の読み込みに失敗しました: ${error.message}`);
   }
@@ -41,8 +39,53 @@ function readRepositoryDefaultLang() {
   return null;
 }
 
+function getDefaults() {
+  return readRepositoryDefaults() || {};
+}
+
+function normalizeBasePath(value) {
+  if (typeof value !== 'string') {
+    return '/';
+  }
+
+  let normalized = value.trim();
+  if (!normalized) {
+    return '/';
+  }
+
+  if (!normalized.startsWith('/')) {
+    normalized = '/' + normalized;
+  }
+
+  normalized = normalized.replace(/\/{2,}/g, '/');
+
+  if (normalized.length > 1 && normalized.endsWith('/')) {
+    normalized = normalized.slice(0, -1);
+  }
+
+  return normalized || '/';
+}
+
+function normalizeSlug(value) {
+  if (typeof value !== 'string') {
+    return '';
+  }
+
+  let normalized = value.trim();
+  if (!normalized) {
+    return '';
+  }
+
+  normalized = normalized.replace(/^\//, '').replace(/\/$/, '');
+  normalized = normalized.replace(/\s+/g, '-');
+  return normalized;
+}
+
 export function getRepositoryDefaultLang() {
-  return readRepositoryDefaultLang() || FALLBACK_DEFAULT_LANG;
+  const defaults = getDefaults();
+  return typeof defaults.defaultLang === 'string' && defaults.defaultLang.length > 0
+    ? defaults.defaultLang
+    : FALLBACK_DEFAULT_LANG;
 }
 
 export function resolveDefaultLang(preferredLang) {
@@ -51,4 +94,50 @@ export function resolveDefaultLang(preferredLang) {
   }
 
   return getRepositoryDefaultLang();
+}
+
+export function resolveBaseUrlPrefix(baseUrlPrefix) {
+  const defaults = getDefaults();
+  if (typeof baseUrlPrefix === 'string' && baseUrlPrefix.trim().length > 0) {
+    return normalizeBasePath(baseUrlPrefix);
+  }
+
+  if (typeof defaults.baseUrlPrefix === 'string' && defaults.baseUrlPrefix.trim().length > 0) {
+    return normalizeBasePath(defaults.baseUrlPrefix);
+  }
+  return FALLBACK_BASE_URL_PREFIX;
+}
+
+export function resolveProjectSlug(projectSlug, projectName) {
+  const normalized = normalizeSlug(projectSlug);
+  if (normalized) {
+    return normalized;
+  }
+
+  if (typeof projectName === 'string') {
+    return normalizeSlug(projectName);
+  }
+
+  return '';
+}
+
+export function resolveBaseUrl(options = {}) {
+  const { baseUrl, baseUrlPrefix, projectSlug, projectName } = options;
+
+  if (typeof baseUrl === 'string' && baseUrl.trim().length > 0) {
+    return normalizeBasePath(baseUrl);
+  }
+
+  const prefix = normalizeBasePath(resolveBaseUrlPrefix(baseUrlPrefix));
+  const slug = resolveProjectSlug(projectSlug, projectName);
+
+  if (!slug) {
+    return prefix || '/';
+  }
+
+  const combined = `${prefix}/${slug}`.replace(/\/{2,}/g, '/');
+  if (combined.length > 1 && combined.endsWith('/')) {
+    return combined.slice(0, -1);
+  }
+  return combined || '/';
 }

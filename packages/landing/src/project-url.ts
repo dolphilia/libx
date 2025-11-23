@@ -60,6 +60,9 @@ async function getProjectSupportedLanguages(project: Project): Promise<LocaleKey
     const configContent = await fs.readFile(projectConfigPath, 'utf-8');
     const config = JSON.parse(stripJsonComments(configContent));
 
+    if (config.language?.supported) {
+      return config.language.supported as LocaleKey[];
+    }
     if (config.basic?.supportedLangs) {
       return config.basic.supportedLangs as LocaleKey[];
     }

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
-import { stripJsonComments } from '@docs/project-config';
+import { stripJsonComments, resolveBaseUrl } from '@docs/project-config';
 
 export interface DetectedProject {
   id: string;
@@ -59,30 +59,44 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
   const projectPath = path.join(repoRoot, 'apps', projectId);
 
   const docsConfig = await loadDocsConfigFromJSON(projectPath);
+  const supportedLangs = docsConfig.language?.supported ?? docsConfig.basic?.supportedLangs ?? [];
+  const defaultLang = docsConfig.language?.default ?? docsConfig.basic?.defaultLang ?? 'en';
+  const displayNames = docsConfig.language?.displayNames ?? docsConfig.languageNames ?? {};
+  docsConfig.language = {
+    supported: supportedLangs,
+    default: defaultLang,
+    displayNames
+  };
+  const baseUrl = await resolveBaseUrl({
+    baseUrl: docsConfig.basic?.baseUrl,
+    baseUrlPrefix: docsConfig.basic?.baseUrlPrefix,
+    projectSlug: docsConfig.basic?.projectSlug,
+    projectDir: projectPath
+  });
   const latestVersion = getLatestVersion(docsConfig.versioning.versions);
   const contentFiles = await scanProjectContent(projectPath);
 
   const fallbackUrls: Record<string, string> = {};
   const actualSupportedLangs: LocaleKey[] = [];
 
-  for (const lang of docsConfig.basic.supportedLangs) {
+  for (const lang of docsConfig.language.supported) {
     const firstFile = findFirstContentFile(contentFiles, lang, latestVersion);
     if (firstFile) {
-      fallbackUrls[lang] = `${docsConfig.basic.baseUrl}/${latestVersion}/${lang}/${firstFile}`;
+      fallbackUrls[lang] = `${baseUrl}/${latestVersion}/${lang}/${firstFile}`;
       actualSupportedLangs.push(lang);
     }
   }
 
   const englishFile = findFirstContentFile(contentFiles, 'en', latestVersion);
   if (englishFile && !fallbackUrls['en']) {
-    fallbackUrls['en'] = `${docsConfig.basic.baseUrl}/${latestVersion}/en/${englishFile}`;
+    fallbackUrls['en'] = `${baseUrl}/${latestVersion}/en/${englishFile}`;
     if (!actualSupportedLangs.includes('en')) {
       actualSupportedLangs.push('en');
     }
   }
 
   if (Object.keys(fallbackUrls).length === 0) {
-    fallbackUrls['en'] = `${docsConfig.basic.baseUrl}/${latestVersion}/en/01-guide/01-getting-started`;
+    fallbackUrls['en'] = `${baseUrl}/${latestVersion}/en/01-guide/01-getting-started`;
     actualSupportedLangs.push('en');
   }
 
@@ -90,8 +104,8 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
     id: projectId,
     name: extractDisplayNames(docsConfig),
     description: extractDisplayDescriptions(docsConfig),
-    basePath: docsConfig.basic.baseUrl,
-    supportedLangs: actualSupportedLangs.length > 0 ? actualSupportedLangs : docsConfig.basic.supportedLangs,
+    basePath: baseUrl,
+    supportedLangs: actualSupportedLangs.length > 0 ? actualSupportedLangs : docsConfig.language.supported,
     fallbackUrls
   };
 }

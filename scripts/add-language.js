@@ -314,7 +314,7 @@ function checkLanguageDuplication(projectName, languageCode) {
   try {
     const config = loadProjectConfig(projectName);
     
-    if (config.basic?.supportedLangs?.includes(languageCode)) {
+    if (config.language?.supported?.includes(languageCode)) {
       return [`言語 "${languageCode}" は既にプロジェクト "${projectName}" でサポートされています`];
     }
     
@@ -331,7 +331,7 @@ function validateTemplateLang(projectName, templateLang) {
   try {
     const config = loadProjectConfig(projectName);
     
-    if (!config.basic?.supportedLangs?.includes(templateLang)) {
+    if (!config.language?.supported?.includes(templateLang)) {
       return [`テンプレート言語 "${templateLang}" はプロジェクト "${projectName}" でサポートされていません`];
     }
     
@@ -364,16 +364,16 @@ function updateProjectConfig(projectName, languageCode, displayName, description
     const config = loadProjectConfig(projectName);
     
     // supportedLangsに言語を追加
-    if (!config.basic.supportedLangs.includes(languageCode)) {
-      config.basic.supportedLangs.push(languageCode);
-      console.log(`  ✅ supportedLangsに "${languageCode}" を追加`);
+    if (!config.language.supported.includes(languageCode)) {
+      config.language.supported.push(languageCode);
+      console.log(`  ✅ supported 言語に "${languageCode}" を追加`);
     }
     
-    // languageNamesを更新
-    if (!config.languageNames) {
-      config.languageNames = {};
+    // 言語表示名を更新
+    if (!config.language.displayNames) {
+      config.language.displayNames = {};
     }
-    config.languageNames[languageCode] = displayName;
+    config.language.displayNames[languageCode] = displayName;
     console.log(`  ✅ 言語表示名を設定: ${languageCode} = "${displayName}"`);
     
     // translationsを更新
@@ -382,11 +382,11 @@ function updateProjectConfig(projectName, languageCode, displayName, description
     }
     
     // 既存の翻訳設定から構造をコピー
-    const existingLang = config.basic.supportedLangs.find(lang => lang !== languageCode && config.translations[lang]);
+    const existingLang = config.language.supported.find(lang => lang !== languageCode && config.translations[lang]);
     const template = existingLang ? config.translations[existingLang] : {};
     
     config.translations[languageCode] = {
-      displayName: config.translations[config.basic.defaultLang]?.displayName || projectName,
+      displayName: config.translations[config.language.default]?.displayName || projectName,
       displayDescription: description || `${displayName}のドキュメントです`,
       categories: template.categories || { guide: 'ガイド' }
     };

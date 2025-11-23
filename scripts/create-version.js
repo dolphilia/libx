@@ -164,7 +164,7 @@ async function runInteractiveMode(projectName, version, config) {
     console.log(`バージョンID: ${version}`);
     console.log(`バージョン名: ${versionName}`);
     console.log(`前バージョンコピー: ${copyFromPrevious ? 'はい' : 'いいえ'}`);
-    console.log(`対象言語: ${config.basic.supportedLangs.join(', ')}`);
+    console.log(`対象言語: ${config.language.supported.join(', ')}`);
     
     const confirm = await ask('\n作成しますか？ (Y/n): ');
     
@@ -251,7 +251,7 @@ async function main() {
         args.projectName, 
         args.version, 
         previousVersion.id, 
-        config.basic.supportedLangs,
+        config.language.supported,
         false
       );
     } else {
@@ -259,7 +259,7 @@ async function main() {
       console.log('📁 空のディレクトリ構造を作成しています...');
       const projectPath = path.join(process.cwd(), 'apps', args.projectName);
       
-      for (const lang of config.basic.supportedLangs) {
+      for (const lang of config.language.supported) {
         const contentDir = path.join(projectPath, 'src', 'content', 'docs', args.version, lang);
         fs.mkdirSync(contentDir, { recursive: true });
         console.log(`  ✅ ${args.version}/${lang}/`);
@@ -271,7 +271,7 @@ async function main() {
     console.log(`  ID: ${args.version}`);
     console.log(`  名前: ${versionName}`);
     console.log(`  最新: はい`);
-    console.log(`  対象言語: ${config.basic.supportedLangs.join(', ')}`);
+    console.log(`  対象言語: ${config.language.supported.join(', ')}`);
 
     // 次のステップの案内
     console.log('\n📋 次のステップ:');

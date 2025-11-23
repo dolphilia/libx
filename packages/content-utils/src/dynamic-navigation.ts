@@ -76,7 +76,7 @@ function parseSlugParts(slug: string, supportedLangs: LocaleKey[]): {
 export async function getLatestVersion(lang: LocaleKey, options?: NavigationOptions): Promise<string> {
   const docs = await getCollection('docs');
   const config = await getLegacyProjectConfig(options?.projectDir);
-  const supportedLangs = config.basic.supportedLangs;
+  const supportedLangs = config.language.supported;
 
   const langDocs = docs.filter(entry => {
     const { lang: entryLang } = parseSlugParts(entry.slug, supportedLangs);
@@ -110,7 +110,7 @@ export async function getFirstPage(
 ): Promise<string | null> {
   const docs = await getCollection('docs');
   const config = await getLegacyProjectConfig(options?.projectDir);
-  const supportedLangs = config.basic.supportedLangs;
+  const supportedLangs = config.language.supported;
 
   const versionDocs = docs.filter(entry => {
     const { lang: entryLang, version: entryVersion } = parseSlugParts(entry.slug, supportedLangs);

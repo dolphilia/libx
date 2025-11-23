@@ -64,7 +64,7 @@ export async function readJsoncFileAsync(filePath) {
 
 const PROJECT_CONFIG_SECTIONS = [
   { key: '"basic": {', comment: '// 基本設定' },
-  { key: '"languageNames": {', comment: '// プロジェクト固有の言語表示名（必要に応じて上書き）' },
+  { key: '"language": {', comment: '// 言語設定（対応言語・デフォルト・表示名）' },
   { key: '"translations": {', comment: '// 各言語の表示情報とカテゴリ名' },
   { key: '"versioning": {', comment: '// バージョン管理' },
   { key: '"licensing": {', comment: '// ライセンス情報' }

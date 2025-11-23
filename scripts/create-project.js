@@ -339,9 +339,6 @@ function updateProjectConfig(projectDir, config) {
   const projectConfigPath = resolveConfigPath(configDir, PROJECT_CONFIG_FILE, PROJECT_CONFIG_FALLBACK);
   const projectConfig = readJsoncFile(projectConfigPath);
 
-  // 基本設定の更新
-  projectConfig.basic.baseUrl = `/docs/${config.projectName}`;
-
   // 翻訳情報の更新
   projectConfig.translations.en.displayName = config.displayNameEn;
   projectConfig.translations.en.displayDescription = config.descriptionEn;

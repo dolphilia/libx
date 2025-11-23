@@ -11,7 +11,7 @@ import {
   validateProjectConfigJSON,
   convertProjectConfigJSONToRuntime
 } from './config-schema';
-import { resolveDefaultLang } from './global-defaults';
+import { resolveDefaultLang, resolveBaseUrl, resolveBaseUrlPrefix, resolveProjectSlug } from './global-defaults';
 import { stripJsonComments } from './jsonc';
 
 /**
@@ -24,7 +24,11 @@ export function resolveProjectDir(projectDir?: string): string {
 /**
  * JSON/JSONCファイルからプロジェクト設定を読み込む
  */
-export async function loadProjectConfigFromJSON(configPath: string): Promise<ProjectConfig> {
+interface LoadProjectConfigOptions {
+  projectDir?: string;
+}
+
+export async function loadProjectConfigFromJSON(configPath: string, options: LoadProjectConfigOptions = {}): Promise<ProjectConfig> {
   try {
     const configContent = await fs.readFile(configPath, 'utf-8');
     const parsed = JSON.parse(stripJsonComments(configContent));
@@ -34,13 +38,29 @@ export async function loadProjectConfigFromJSON(configPath: string): Promise<Pro
     }
 
     const runtimeConfig = convertProjectConfigJSONToRuntime(parsed);
-    const defaultLang = await resolveDefaultLang(parsed.basic.defaultLang);
+    const defaultLang = await resolveDefaultLang(runtimeConfig.language.default);
+    const configDir = path.dirname(configPath);
+    const inferredProjectDir = options.projectDir ?? path.resolve(configDir, '..', '..');
+    const baseUrlPrefix = await resolveBaseUrlPrefix(parsed.basic.baseUrlPrefix);
+    const projectSlug = await resolveProjectSlug(parsed.basic.projectSlug, inferredProjectDir);
+    const baseUrl = await resolveBaseUrl({
+      baseUrl: parsed.basic.baseUrl,
+      baseUrlPrefix,
+      projectSlug,
+      projectDir: inferredProjectDir
+    });
 
     return {
       ...runtimeConfig,
       basic: {
         ...runtimeConfig.basic,
-        defaultLang
+        baseUrlPrefix,
+        projectSlug,
+        baseUrl
+      },
+      language: {
+        ...runtimeConfig.language,
+        default: defaultLang
       }
     };
   } catch (error) {
@@ -65,7 +85,7 @@ export async function loadProjectConfig(projectDir?: string): Promise<ProjectCon
     // fallback to .json
   }
 
-  return await loadProjectConfigFromJSON(configPath);
+  return await loadProjectConfigFromJSON(configPath, { projectDir: resolvedDir });
 }
 
 /**
@@ -87,7 +107,7 @@ export function getDisplayDescription(config: ProjectConfig | LegacyProjectConfi
  */
 export function getCategoryTranslations(config: ProjectConfig | LegacyProjectConfig): Record<LocaleKey, Record<string, string>> {
   const result: Record<LocaleKey, Record<string, string>> = {} as Record<LocaleKey, Record<string, string>>;
-  for (const lang of config.basic.supportedLangs) {
+  for (const lang of config.language.supported) {
     result[lang] = config.translations[lang]?.categories || config.translations.en.categories || {};
   }
   return result;
@@ -101,17 +121,24 @@ export function createLegacyConfig(config: ProjectConfig): LegacyProjectConfig {
   const displayName: Record<LocaleKey, string> = {} as Record<LocaleKey, string>;
   const displayDescription: Record<LocaleKey, string> = {} as Record<LocaleKey, string>;
 
-  for (const lang of config.basic.supportedLangs) {
+  for (const lang of config.language.supported) {
     displayName[lang] = config.translations[lang]?.displayName || config.translations.en.displayName;
     displayDescription[lang] = config.translations[lang]?.displayDescription || config.translations.en.displayDescription;
   }
 
+  const basicWithLegacy = {
+    ...config.basic,
+    supportedLangs: config.language.supported,
+    defaultLang: config.language.default
+  };
+
   return {
     ...config,
+    basic: basicWithLegacy,
     // フラット構造でのアクセス
     baseUrl: config.basic.baseUrl,
-    supportedLangs: config.basic.supportedLangs,
-    defaultLang: config.basic.defaultLang,
+    supportedLangs: config.language.supported,
+    defaultLang: config.language.default,
     versions: config.versioning.versions,
     displayName,
     displayDescription,
@@ -127,12 +154,21 @@ export async function migrateFromTypeScriptConfig(tsConfigPath: string, jsonConf
   const tsConfig = await import(tsConfigPath);
   const config = tsConfig.default || tsConfig;
 
+  const legacySupported = config.language?.supported ?? config.basic?.supportedLangs ?? config.supportedLangs;
+  const legacyDefault = config.language?.default ?? config.basic?.defaultLang ?? config.defaultLang;
+  const legacyDisplayNames = config.language?.displayNames ?? config.languageNames;
+
   // JSON形式に変換
   const jsonConfig: ProjectConfigJSON = {
     basic: {
       baseUrl: config.basic?.baseUrl || config.baseUrl,
-      supportedLangs: config.basic?.supportedLangs || config.supportedLangs,
-      defaultLang: config.basic?.defaultLang || config.defaultLang
+      baseUrlPrefix: config.basic?.baseUrlPrefix || config.baseUrlPrefix,
+      projectSlug: config.basic?.projectSlug || config.projectSlug
+    },
+    language: {
+      supported: legacySupported,
+      default: legacyDefault,
+      displayNames: legacyDisplayNames
     },
     translations: config.translations,
     versioning: {

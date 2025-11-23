@@ -49,14 +49,14 @@ const {
 
 const combinedLanguageNames = {
   ...defaultLanguageNames,
-  ...(projectConfig?.languageNames ?? {}),
+  ...(projectConfig?.language?.displayNames ?? {}),
   ...(languageNames ?? {}),
 };
 
 const resolvedSupportedLangs =
   supportedLangs?.length > 0
     ? supportedLangs
-    : projectConfig?.basic.supportedLangs ?? [currentLang];
+    : projectConfig?.language?.supported ?? [currentLang];
 
 const normalizedBaseUrl =
   typeof baseUrl === 'string'

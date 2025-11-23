@@ -7,7 +7,12 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import * as logger from './logger.js';
-import { resolveDefaultLang as resolveRepoDefaultLang } from './global-defaults.js';
+import {
+  resolveDefaultLang as resolveRepoDefaultLang,
+  resolveBaseUrl as resolveRepoBaseUrl,
+  resolveBaseUrlPrefix as resolveRepoBaseUrlPrefix,
+  resolveProjectSlug as resolveRepoProjectSlug
+} from './global-defaults.js';
 import { createBackup } from './safety-utils.js';
 import { stripJsonComments, formatProjectConfigJsonc } from './jsonc-utils.js';
 
@@ -44,14 +49,37 @@ export function loadProjectConfig(projectName) {
     const config = JSON.parse(stripJsonComments(configContent));
 
     if (!config.basic) {
-      config.basic = {
-        baseUrl: '',
-        supportedLangs: [],
-        defaultLang: resolveRepoDefaultLang()
-      };
-    } else {
-      config.basic.defaultLang = resolveRepoDefaultLang(config.basic.defaultLang);
+      config.basic = {};
     }
+    if (!config.language) {
+      config.language = {};
+    }
+
+    const resolvedPrefix = resolveRepoBaseUrlPrefix(config.basic.baseUrlPrefix);
+    const resolvedSlug = resolveRepoProjectSlug(config.basic.projectSlug, projectName);
+    const resolvedSupported = Array.isArray(config.language.supported)
+      ? config.language.supported
+      : Array.isArray(config.basic.supportedLangs)
+        ? config.basic.supportedLangs
+        : [];
+    const resolvedDefaultLang = resolveRepoDefaultLang(config.language.default || config.basic.defaultLang);
+    const resolvedDisplayNames = config.language.displayNames || config.languageNames || {};
+
+    config.basic.baseUrlPrefix = resolvedPrefix;
+    config.basic.projectSlug = resolvedSlug;
+    config.basic.baseUrl = resolveRepoBaseUrl({
+      baseUrl: config.basic.baseUrl,
+      baseUrlPrefix: resolvedPrefix,
+      projectSlug: resolvedSlug,
+      projectName
+    });
+
+    config.language.supported = resolvedSupported;
+    config.language.default = resolvedDefaultLang;
+    config.language.displayNames = resolvedDisplayNames;
+    delete config.basic.supportedLangs;
+    delete config.basic.defaultLang;
+    delete config.languageNames;
 
     return config;
   } catch (error) {
@@ -71,7 +99,18 @@ export function saveProjectConfig(projectName, config, options = {}) {
   } = options;
   
   try {
-    let configContent = JSON.stringify(config, null, 2);
+    const configToSave = JSON.parse(JSON.stringify(config));
+    if (configToSave.basic) {
+      delete configToSave.basic.baseUrl;
+      if (!configToSave.basic.baseUrlPrefix) {
+        delete configToSave.basic.baseUrlPrefix;
+      }
+      if (!configToSave.basic.projectSlug) {
+        delete configToSave.basic.projectSlug;
+      }
+    }
+
+    let configContent = JSON.stringify(configToSave, null, 2);
     configContent = formatProjectConfigJsonc(configContent);
 
     if (dryRun) {
@@ -297,8 +336,8 @@ export function syncCategoryTranslations(projectName, {
   }
 
   const config = loadProjectConfig(projectName);
-  const supportedLangs = config?.basic?.supportedLangs ?? [];
-  const defaultLang = config?.basic?.defaultLang ?? lang;
+  const supportedLangs = config?.language?.supported ?? [];
+  const defaultLang = config?.language?.default ?? lang;
 
   if (!config.translations) {
     config.translations = {};

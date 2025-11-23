@@ -19,6 +19,7 @@ import { glob } from 'glob';
 import { saveCompressedJson, parseMarkdownFile } from './utils.js';
 import * as logger from './logger.js';
 import { readJsoncFileAsync } from './jsonc-utils.js';
+import { resolveBaseUrl as resolveRepoBaseUrl } from './global-defaults.js';
 
 logger.useUnifiedConsole();
 
@@ -240,7 +241,7 @@ async function getSupportedLanguages(projectPath) {
   const targetPath = await fileExists(configJsoncPath) ? configJsoncPath : configJsonPath;
   try {
     const parsed = await readJsoncFileAsync(targetPath);
-    const langs = parsed?.basic?.supportedLangs;
+    const langs = parsed?.language?.supported || parsed?.basic?.supportedLangs;
     if (Array.isArray(langs) && langs.length > 0) {
       return langs;
     }
@@ -439,58 +440,31 @@ function translateCategory(category, lang, translations) {
  * プロジェクト固有のベースURLを取得する
  */
 async function getProjectBaseUrl(project) {
-  // プロジェクト名に基づく動的なベースURL生成
-  let projectSpecificBase = `/docs/${project.name}`;
-  
-  const configPath = path.join(project.path, 'astro.config.mjs');
-  let astroBase = '';
+  const configDir = path.join(project.path, 'src', 'config');
+  const configJsoncPath = path.join(configDir, 'project.config.jsonc');
+  const configJsonPath = path.join(configDir, 'project.config.json');
+  const targetPath = await fileExists(configJsoncPath) ? configJsoncPath : configJsonPath;
 
+  let configuredBaseUrl = '';
+  let configuredPrefix = '';
+  let configuredSlug = '';
   try {
-    const configFileContent = await fs.readFile(configPath, 'utf-8');
-    // export default defineConfig({ base: '/foo' }) や export default { base: "/bar" } や base: '.' に対応
-    const baseMatch = configFileContent.match(/base\s*:\s*['"]((?:\/[^\\s'"]*|\.)*)['"]/);
-    if (baseMatch && baseMatch[1]) {
-      astroBase = baseMatch[1];
-      if (astroBase === '.') { // '.' はルートを示すので空文字列に
-        astroBase = '';
-      }
-      // astroBase が空でなく、かつ '/' で始まらない場合は '/' を追加
-      if (astroBase && !astroBase.startsWith('/')) {
-        astroBase = '/' + astroBase;
-      }
-      // astroBase が '/' より長く、かつ末尾が '/' の場合は削除 (例: /foo/ -> /foo)
-      if (astroBase.length > 1 && astroBase.endsWith('/')) {
-        astroBase = astroBase.slice(0, -1);
-      }
-      if (astroBase) {
-        console.log(`  プロジェクト ${project.name} の astro.config.mjs から base='${astroBase}' を読み込みました。`);
-      }
-    }
+    const parsed = await readJsoncFileAsync(targetPath);
+    configuredBaseUrl = parsed?.basic?.baseUrl || '';
+    configuredPrefix = parsed?.basic?.baseUrlPrefix || '';
+    configuredSlug = parsed?.basic?.projectSlug || '';
   } catch (error) {
-    if (error.code === 'ENOENT') {
-      // astro.config.mjs が存在しないのは通常ケースなので、警告ログは出さない
-      // console.log(`  astro.config.mjs が見つかりませんでした: ${project.name} (${configPath})`);
-    } else {
-      console.warn(`  プロジェクト ${project.name} の astro.config.mjs の読み込み/解析中にエラー: ${error.message}`);
+    if (error.code !== 'ENOENT') {
+      console.warn(`  プロジェクト ${project.name} の設定読み込み中にエラー: ${error.message}`);
     }
   }
 
-  let finalBaseUrl = projectSpecificBase;
-  if (astroBase && astroBase !== '/') { // astroBase が有効で、かつ単なる '/' でない場合
-    // projectSpecificBase の末尾スラッシュを削除
-    if (finalBaseUrl.endsWith('/')) {
-      finalBaseUrl = finalBaseUrl.slice(0, -1);
-    }
-    // astroBase は先頭スラッシュが保証されているか、空文字列
-    finalBaseUrl = finalBaseUrl + astroBase;
-  }
-  
-  // 最終的なURLの末尾スラッシュを削除（ただしルート '/' の場合はそのまま）
-  if (finalBaseUrl.endsWith('/') && finalBaseUrl !== '/') {
-     finalBaseUrl = finalBaseUrl.slice(0, -1);
-  }
-
-  return finalBaseUrl;
+  return resolveRepoBaseUrl({
+    baseUrl: configuredBaseUrl,
+    baseUrlPrefix: configuredPrefix,
+    projectSlug: configuredSlug,
+    projectName: project.name
+  });
 }
 
 /**

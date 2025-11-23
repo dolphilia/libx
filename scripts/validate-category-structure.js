@@ -76,7 +76,7 @@ function inspectProject({ projectName, configPath }) {
   logger.step(`プロジェクト "${projectName}" のカテゴリ構造を検証します`);
 
   const config = loadConfig(configPath);
-  const supportedLangs = config?.basic?.supportedLangs ?? [];
+  const supportedLangs = config?.language?.supported ?? [];
   const translations = config?.translations ?? {};
 
   if (supportedLangs.length === 0) {

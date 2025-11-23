@@ -1,6 +1,6 @@
 /**
  * デフォルトの言語表示名マップ
- * プロジェクト設定内の languageNames で上書き可能
+ * プロジェクト設定内の language.displayNames で上書き可能
  */
 import type { LocaleKey } from './locales';
 import rawLanguageNames from './language-names.json';
