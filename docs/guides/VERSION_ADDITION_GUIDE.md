@@ -182,14 +182,16 @@ node scripts/create-version.js sample-docs v3
 
 ```json
 {
-  "basic": {
-    "baseUrl": "/docs/sample-docs",
-    "supportedLangs": ["en", "ja"],
-    "defaultLang": "en"
+  "paths": {
+    "baseUrl": "/docs/sample-docs"
   },
-  "languageNames": {
-    "en": "English",
-    "ja": "日本語"
+  "language": {
+    "supported": ["en", "ja"],
+    "default": "en",
+    "displayNames": {
+      "en": "English",
+      "ja": "日本語"
+    }
   },
   "translations": {
     // ... 言語別設定
@@ -221,7 +223,7 @@ node scripts/create-version.js sample-docs v3
 
 `languageNames` は `packages/i18n/src/language-names.json` にある共通デフォルトをプロジェクト側で上書きしたい場合のみ設定します。デフォルトのままで問題なければ、このセクションは省略しても構いません。
 
-`basic.defaultLang` を記述しない場合は `config/global-defaults.json` の `defaultLang`（未設定なら `"en"`）が自動的に適用されます。
+`language.default` を記述しない場合は `config/global-defaults.json` の `defaultLang`（未設定なら `"en"`）が自動的に適用されます。
 
 #### 設定更新のポイント
 

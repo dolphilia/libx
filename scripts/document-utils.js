@@ -50,29 +50,32 @@ export function loadProjectConfig(projectName) {
     const configContent = fs.readFileSync(configPath, 'utf-8');
     const config = JSON.parse(stripJsonComments(configContent));
 
-    if (!config.basic) {
-      config.basic = {};
+    if (!config.paths && config.basic) {
+      config.paths = config.basic;
+    }
+    if (!config.paths) {
+      config.paths = {};
     }
     if (!config.language) {
       config.language = {};
     }
 
-    const resolvedPrefix = resolveRepoBaseUrlPrefix(config.basic.baseUrlPrefix);
-    const resolvedSlug = resolveRepoProjectSlug(config.basic.projectSlug, projectName);
+    const resolvedPrefix = resolveRepoBaseUrlPrefix(config.paths.baseUrlPrefix);
+    const resolvedSlug = resolveRepoProjectSlug(config.paths.projectSlug, projectName);
     const preferredSupported = Array.isArray(config.language.supported)
       ? config.language.supported
-      : Array.isArray(config.basic.supportedLangs)
+      : Array.isArray(config.basic?.supportedLangs)
         ? config.basic.supportedLangs
         : undefined;
     const resolvedSupported = resolveRepoSupportedLangs(preferredSupported);
-    const resolvedDefaultLang = resolveRepoDefaultLang(config.language.default || config.basic.defaultLang);
+    const resolvedDefaultLang = resolveRepoDefaultLang(config.language.default || config.basic?.defaultLang);
     const preferredDisplayNames = config.language.displayNames ?? config.languageNames;
     const resolvedDisplayNames = resolveRepoLanguageDisplayNames(preferredDisplayNames);
 
-    config.basic.baseUrlPrefix = resolvedPrefix;
-    config.basic.projectSlug = resolvedSlug;
-    config.basic.baseUrl = resolveRepoBaseUrl({
-      baseUrl: config.basic.baseUrl,
+    config.paths.baseUrlPrefix = resolvedPrefix;
+    config.paths.projectSlug = resolvedSlug;
+    config.paths.baseUrl = resolveRepoBaseUrl({
+      baseUrl: config.paths.baseUrl,
       baseUrlPrefix: resolvedPrefix,
       projectSlug: resolvedSlug,
       projectName
@@ -81,8 +84,7 @@ export function loadProjectConfig(projectName) {
     config.language.supported = resolvedSupported;
     config.language.default = resolvedDefaultLang;
     config.language.displayNames = resolvedDisplayNames;
-    delete config.basic.supportedLangs;
-    delete config.basic.defaultLang;
+    delete config.basic;
     delete config.languageNames;
 
     return config;
@@ -104,13 +106,13 @@ export function saveProjectConfig(projectName, config, options = {}) {
   
   try {
     const configToSave = JSON.parse(JSON.stringify(config));
-    if (configToSave.basic) {
-      delete configToSave.basic.baseUrl;
-      if (!configToSave.basic.baseUrlPrefix) {
-        delete configToSave.basic.baseUrlPrefix;
+    if (configToSave.paths) {
+      delete configToSave.paths.baseUrl;
+      if (!configToSave.paths.baseUrlPrefix) {
+        delete configToSave.paths.baseUrlPrefix;
       }
-      if (!configToSave.basic.projectSlug) {
-        delete configToSave.basic.projectSlug;
+      if (!configToSave.paths.projectSlug) {
+        delete configToSave.paths.projectSlug;
       }
     }
 

@@ -229,19 +229,21 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 
 ```json
 {
-  "basic": {
-    "baseUrl": "/docs/your-project",
-    "supportedLangs": [
+  "paths": {
+    "baseUrl": "/docs/your-project"
+  },
+  "language": {
+    "supported": [
       "en",
       "ja",
       "ko"  // 新しい言語を追加
     ],
-    "defaultLang": "en"
+    "default": "en"
   }
 }
 ```
 
-> ℹ️ `basic.defaultLang` を省略した場合は、リポジトリルートの `config/global-defaults.json` にある `defaultLang` が使用されます。そこにも値が無ければ自動的に `"en"` が適用されます。
+> ℹ️ `language.default` を省略した場合は、リポジトリルートの `config/global-defaults.json` にある `defaultLang` が使用されます。そこにも値が無ければ自動的に `"en"` が適用されます。
 
 ### 1.2 言語別翻訳情報の追加
 
@@ -300,19 +302,21 @@ $ node scripts/add-language.js sample-docs de "Deutsch" "Deutsche Dokumentation"
 
 ```json
 {
-  "basic": {
-    "baseUrl": "/docs/your-project",
-    "supportedLangs": ["en", "ja", "ko"],
-    "defaultLang": "en"
+  "paths": {
+    "baseUrl": "/docs/your-project"
   },
-  "languageNames": {
-    "ja": "日本語（β）",
-    "ko": "한국어"
+  "language": {
+    "supported": ["en", "ja", "ko"],
+    "default": "en",
+    "displayNames": {
+      "ja": "日本語（β）",
+      "ko": "한국어"
+    }
   }
 }
 ```
 
-> ℹ️ プロジェクトで固有の表記を付ける場合でも、`basic.defaultLang` を省略すると `config/global-defaults.json` → `"en"` の順でフォールバックします。
+> ℹ️ プロジェクトで固有の表記を付ける場合でも、`language.default` を省略すると `config/global-defaults.json` → `"en"` の順でフォールバックします。
 
 **重要な変更点**: `LanguageSelector.astro` は `packages/i18n/src/language-names.json` のデフォルトと `project.config.jsonc`、さらにコンポーネント引数の順でマージします。これにより、共通の名前付けを中央管理しつつプロジェクトごとの上書きも可能になりました。
 

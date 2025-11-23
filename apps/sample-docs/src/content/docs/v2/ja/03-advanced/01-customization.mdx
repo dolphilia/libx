@@ -263,10 +263,12 @@ export default defineConfig({
 
 ```json
 {
-  "basic": {
-    "baseUrl": "/docs/sample-docs",
-    "supportedLangs": ["en", "ja"],
-    "defaultLang": "en"
+  "paths": {
+    "baseUrl": "/docs/sample-docs"
+  },
+  "language": {
+    "supported": ["en", "ja"],
+    "default": "en"
   },
   "translations": {
     "ja": {
@@ -289,7 +291,7 @@ export default defineConfig({
 }
 ```
 
-`basic.baseUrl` は実際の公開 URL (`/docs/sample-docs`) を左右し、`translations.categories` を編集すると自動生成されるサイドバーにも反映されます。値を直接書き換える際は `.backups/project-config-*/` に自動保存されたバックアップを確認しつつ、`node scripts/validate-category-structure.js` で多言語の整合性を検証してください。
+`paths.baseUrl` は実際の公開 URL (`/docs/sample-docs`) を左右し、`translations.categories` を編集すると自動生成されるサイドバーにも反映されます。値を直接書き換える際は `.backups/project-config-*/` に自動保存されたバックアップを確認しつつ、`node scripts/validate-category-structure.js` で多言語の整合性を検証してください。
 
 ## コンテンツのカスタマイズ
 

@@ -77,10 +77,11 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
     default: defaultLang,
     displayNames
   };
+  const pathSettings = docsConfig.paths ?? docsConfig.basic ?? {};
   const baseUrl = await resolveBaseUrl({
-    baseUrl: docsConfig.basic?.baseUrl,
-    baseUrlPrefix: docsConfig.basic?.baseUrlPrefix,
-    projectSlug: docsConfig.basic?.projectSlug,
+    baseUrl: pathSettings?.baseUrl,
+    baseUrlPrefix: pathSettings?.baseUrlPrefix,
+    projectSlug: pathSettings?.projectSlug,
     projectDir: projectPath
   });
   const latestVersion = getLatestVersion(docsConfig.versioning.versions);

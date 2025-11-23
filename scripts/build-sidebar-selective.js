@@ -396,9 +396,10 @@ async function getProjectBaseUrl(project) {
   let configuredSlug = '';
   try {
     const parsed = await readJsoncFileAsync(targetPath);
-    configuredBaseUrl = parsed?.basic?.baseUrl || '';
-    configuredPrefix = parsed?.basic?.baseUrlPrefix || '';
-    configuredSlug = parsed?.basic?.projectSlug || '';
+    const pathConfig = parsed?.paths ?? parsed?.basic ?? {};
+    configuredBaseUrl = pathConfig.baseUrl || '';
+    configuredPrefix = pathConfig.baseUrlPrefix || '';
+    configuredSlug = pathConfig.projectSlug || '';
   } catch (error) {
     if (error.code !== 'ENOENT') {
       console.warn(`  プロジェクト ${project.name} の設定読み込み中にエラー: ${error.message}`);

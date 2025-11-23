@@ -232,10 +232,12 @@ Project-level settings live in `apps/<project-name>/src/config/project.config.js
 
 ```json
 {
-  "basic": {
-    "baseUrl": "/docs/sample-docs",
-    "supportedLangs": ["en", "ja"],
-    "defaultLang": "en"
+  "paths": {
+    "baseUrl": "/docs/sample-docs"
+  },
+  "language": {
+    "supported": ["en", "ja"],
+    "default": "en"
   },
   "translations": {
     "ja": {
@@ -258,7 +260,7 @@ Project-level settings live in `apps/<project-name>/src/config/project.config.js
 }
 ```
 
-`basic.baseUrl` affects the published URL, and `translations.categories` feeds into the generated sidebar. Backups are saved to `.backups/project-config-*/`; run `node scripts/validate-category-structure.js` after edits to confirm multi-language consistency.
+`paths.baseUrl` affects the published URL, and `translations.categories` feeds into the generated sidebar. Backups are saved to `.backups/project-config-*/`; run `node scripts/validate-category-structure.js` after edits to confirm multi-language consistency.
 
 ## Content Customization
 

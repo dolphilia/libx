@@ -53,14 +53,20 @@ export interface ProjectLanguageConfig {
   displayNames: Record<LocaleKey, string>;
 }
 
+export interface ProjectPathsConfigJSON {
+  baseUrl?: string;
+  baseUrlPrefix?: string;
+  projectSlug?: string;
+}
+
+export interface LegacyBasicConfigJSON extends ProjectPathsConfigJSON {
+  supportedLangs?: LocaleKey[]; // legacy support
+  defaultLang?: LocaleKey; // legacy support
+}
+
 export interface ProjectConfigJSON {
-  basic?: {
-    baseUrl?: string;
-    baseUrlPrefix?: string;
-    projectSlug?: string;
-    supportedLangs?: LocaleKey[]; // legacy support
-    defaultLang?: LocaleKey; // legacy support
-  };
+  paths?: ProjectPathsConfigJSON;
+  basic?: LegacyBasicConfigJSON; // legacy support
   language?: ProjectLanguageConfigJSON;
   languageNames?: Record<string, string>; // legacy support
   translations: Record<LocaleKey, ProjectTranslations>;
@@ -72,12 +78,14 @@ export interface ProjectConfigJSON {
 /**
  * 実行時に使用されるプロジェクト設定構造
  */
+export interface ProjectPathsConfig {
+  baseUrl: string;
+  baseUrlPrefix: string;
+  projectSlug: string;
+}
+
 export interface ProjectConfig {
-  basic: {
-    baseUrl: string;
-    baseUrlPrefix: string;
-    projectSlug: string;
-  };
+  paths: ProjectPathsConfig;
   language: ProjectLanguageConfig;
   translations: Record<LocaleKey, ProjectTranslations>;
   versioning: {
@@ -90,6 +98,10 @@ export interface ProjectConfig {
  */
 export interface LegacyProjectConfig extends ProjectConfig {
   // 後方互換性のため、フラット構造でもアクセス可能
+  basic: ProjectPathsConfig & {
+    supportedLangs: LocaleKey[];
+    defaultLang: LocaleKey;
+  };
   baseUrl: string;
   supportedLangs: LocaleKey[];
   defaultLang: LocaleKey;
@@ -106,7 +118,12 @@ export function validateProjectConfigJSON(config: any): config is ProjectConfigJ
   return (
     config &&
     typeof config === 'object' &&
-    // basic section
+    // paths/basic section
+    (config.paths === undefined ||
+      (typeof config.paths === 'object' &&
+        (config.paths.baseUrl === undefined || typeof config.paths.baseUrl === 'string') &&
+        (config.paths.baseUrlPrefix === undefined || typeof config.paths.baseUrlPrefix === 'string') &&
+        (config.paths.projectSlug === undefined || typeof config.paths.projectSlug === 'string'))) &&
     (config.basic === undefined ||
       (typeof config.basic === 'object' &&
         (config.basic.baseUrl === undefined || typeof config.basic.baseUrl === 'string') &&
@@ -144,15 +161,15 @@ export function convertProjectConfigJSONToRuntime(configJSON: ProjectConfigJSON)
   const legacySupported = configJSON.language?.supported ?? configJSON.basic?.supportedLangs ?? [];
   const legacyDefault = configJSON.language?.default ?? configJSON.basic?.defaultLang ?? 'en';
   const legacyNames = configJSON.language?.displayNames ?? configJSON.languageNames ?? {};
-  const basicConfig = configJSON.basic ?? {};
+  const pathConfig = configJSON.paths ?? configJSON.basic ?? {};
 
   return {
     ...configJSON,
-    basic: {
-      ...basicConfig,
-      baseUrl: (basicConfig.baseUrl ?? '') as string,
-      baseUrlPrefix: (basicConfig.baseUrlPrefix ?? '') as string,
-      projectSlug: (basicConfig.projectSlug ?? '') as string
+    paths: {
+      ...pathConfig,
+      baseUrl: (pathConfig.baseUrl ?? '') as string,
+      baseUrlPrefix: (pathConfig.baseUrlPrefix ?? '') as string,
+      projectSlug: (pathConfig.projectSlug ?? '') as string
     },
     language: {
       supported: legacySupported as LocaleKey[],

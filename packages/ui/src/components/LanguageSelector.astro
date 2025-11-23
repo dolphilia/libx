@@ -61,7 +61,7 @@ const resolvedSupportedLangs =
 const normalizedBaseUrl =
   typeof baseUrl === 'string'
     ? baseUrl.replace(/\/$/, '')
-    : projectConfig?.basic.baseUrl?.replace(/\/$/, '') ?? '';
+    : projectConfig?.paths.baseUrl?.replace(/\/$/, '') ?? '';
 
 const fallbackLangPaths = resolvedSupportedLangs.map((langCode) =>
   createFallbackPath(langCode)
@@ -110,8 +110,8 @@ function computeLangPathsFromProjectConfig(): LangPathInfo[] {
     ? currentPathname
     : `${currentPathname}/`;
 
-  const baseUrlFromConfig = projectConfig.basic.baseUrl
-    ? projectConfig.basic.baseUrl.replace(/\/$/, '')
+  const baseUrlFromConfig = projectConfig.paths.baseUrl
+    ? projectConfig.paths.baseUrl.replace(/\/$/, '')
     : '';
 
   let pathWithoutBase = normalizedPathname;

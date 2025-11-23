@@ -28,7 +28,7 @@
 2. `pnpm build` 後に `dist/index.html`（landing）と `dist/docs/{project}` が揃っていることを確認し、`dist/docs` 以下に予期せぬファイルが混ざっていないか点検する。
 3. `pnpm build:selective --projects=landing` を使い、トップページのみ再ビルドした際に `dist/index.html` が更新され、他の `dist/docs` 配下に影響が出ないことを確認する。
 4. `scripts/create-project.js` / `scripts/add-language.js` により `sites/landing/src/config/projects.config.jsonc` を手動・自動で更新したら、デプロイ前にファイル内容と `pnpm --filter=sites-landing dev` の表示を合わせて確認する。
-5. トップページの自動検出は `packages/landing/src/project-detector.ts` の `scanAppsDirectory()` により `apps/` を走査しているため、新規 `apps/{project}` を追加したら `project.config.jsonc` の `basic.baseUrl` などを整えた上で `pnpm build:sidebar` → `pnpm build` を実行し、landing 側が新規カードを拾えているか確認する。
+5. トップページの自動検出は `packages/landing/src/project-detector.ts` の `scanAppsDirectory()` により `apps/` を走査しているため、新規 `apps/{project}` を追加したら `project.config.jsonc` の `paths.baseUrl` などを整えた上で `pnpm build:sidebar` → `pnpm build` を実行し、landing 側が新規カードを拾えているか確認する。
 6. `wrangler pages deploy dist --project-name libx` を実行する前に `dist` を `ls dist` などで確認し、ランディング（`index.html`）とドキュメント（`docs/` 以下）が期待通りの構成になっているかチェックする。
 
 ## 今後の対応指針
