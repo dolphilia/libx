@@ -10,6 +10,7 @@ import * as logger from './logger.js';
 import {
   resolveDefaultLang as resolveRepoDefaultLang,
   resolveSupportedLangs as resolveRepoSupportedLangs,
+  resolveLanguageDisplayNames as resolveRepoLanguageDisplayNames,
   resolveBaseUrl as resolveRepoBaseUrl,
   resolveBaseUrlPrefix as resolveRepoBaseUrlPrefix,
   resolveProjectSlug as resolveRepoProjectSlug
@@ -65,7 +66,8 @@ export function loadProjectConfig(projectName) {
         : undefined;
     const resolvedSupported = resolveRepoSupportedLangs(preferredSupported);
     const resolvedDefaultLang = resolveRepoDefaultLang(config.language.default || config.basic.defaultLang);
-    const resolvedDisplayNames = config.language.displayNames || config.languageNames || {};
+    const preferredDisplayNames = config.language.displayNames ?? config.languageNames;
+    const resolvedDisplayNames = resolveRepoLanguageDisplayNames(preferredDisplayNames);
 
     config.basic.baseUrlPrefix = resolvedPrefix;
     config.basic.projectSlug = resolvedSlug;

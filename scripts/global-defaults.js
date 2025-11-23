@@ -14,6 +14,7 @@ const defaultsPath = path.join(rootDir, 'config', 'global-defaults.json');
 const FALLBACK_DEFAULT_LANG = 'en';
 const FALLBACK_BASE_URL_PREFIX = '/docs';
 const FALLBACK_SUPPORTED_LANGS = ['en'];
+const FALLBACK_LANGUAGE_DISPLAY_NAMES = {};
 
 let cachedDefaults = null;
 let loadAttempted = false;
@@ -84,9 +85,13 @@ function normalizeSlug(value) {
 
 export function getRepositoryDefaultLang() {
   const defaults = getDefaults();
-  return typeof defaults.defaultLang === 'string' && defaults.defaultLang.length > 0
-    ? defaults.defaultLang
-    : FALLBACK_DEFAULT_LANG;
+  if (typeof defaults.defaultLang === 'string' && defaults.defaultLang.length > 0) {
+    return defaults.defaultLang;
+  }
+  if (defaults.language && typeof defaults.language.default === 'string' && defaults.language.default.length > 0) {
+    return defaults.language.default;
+  }
+  return FALLBACK_DEFAULT_LANG;
 }
 
 export function getRepositorySupportedLangs() {
@@ -116,6 +121,27 @@ export function resolveSupportedLangs(preferredLangs) {
   }
 
   return [...FALLBACK_SUPPORTED_LANGS];
+}
+
+export function getRepositoryLanguageDisplayNames() {
+  const defaults = getDefaults();
+  if (defaults.language && defaults.language.displayNames) {
+    return { ...defaults.language.displayNames };
+  }
+  return null;
+}
+
+export function resolveLanguageDisplayNames(preferredDisplayNames) {
+  if (preferredDisplayNames) {
+    return preferredDisplayNames;
+  }
+
+  const repoDefaults = getRepositoryLanguageDisplayNames();
+  if (repoDefaults) {
+    return repoDefaults;
+  }
+
+  return { ...FALLBACK_LANGUAGE_DISPLAY_NAMES };
 }
 
 export function resolveBaseUrlPrefix(baseUrlPrefix) {

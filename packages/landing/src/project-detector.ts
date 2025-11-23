@@ -1,7 +1,13 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
-import { stripJsonComments, resolveBaseUrl, resolveSupportedLangs } from '@docs/project-config';
+import {
+  stripJsonComments,
+  resolveBaseUrl,
+  resolveSupportedLangs,
+  resolveLanguageDisplayNames,
+  resolveDefaultLang
+} from '@docs/project-config';
 
 export interface DetectedProject {
   id: string;
@@ -61,8 +67,11 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
   const docsConfig = await loadDocsConfigFromJSON(projectPath);
   const preferredSupported = docsConfig.language?.supported ?? docsConfig.basic?.supportedLangs;
   const supportedLangs = await resolveSupportedLangs(preferredSupported);
-  const defaultLang = docsConfig.language?.default ?? docsConfig.basic?.defaultLang ?? 'en';
-  const displayNames = docsConfig.language?.displayNames ?? docsConfig.languageNames ?? {};
+  const preferredDefault = (docsConfig.language?.default ?? docsConfig.basic?.defaultLang) as LocaleKey | undefined;
+  const defaultLang = await resolveDefaultLang(preferredDefault);
+  const displayNames = await resolveLanguageDisplayNames(
+    (docsConfig.language?.displayNames ?? docsConfig.languageNames) as Record<LocaleKey, string> | undefined
+  );
   docsConfig.language = {
     supported: supportedLangs,
     default: defaultLang,

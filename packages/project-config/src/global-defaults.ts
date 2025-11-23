@@ -7,6 +7,8 @@ interface GlobalDefaults {
   baseUrlPrefix?: string;
   language?: {
     supported?: LocaleKey[];
+    default?: LocaleKey;
+    displayNames?: Partial<Record<LocaleKey, string>>;
   };
 }
 
@@ -63,7 +65,7 @@ function normalizeSlug(value?: string): string {
 }
 
 export async function getRepositoryDefaultLang(): Promise<LocaleKey | undefined> {
-  return defaults.defaultLang;
+  return defaults.defaultLang ?? defaults.language?.default;
 }
 
 export async function getRepositorySupportedLangs(): Promise<LocaleKey[] | undefined> {
@@ -73,12 +75,27 @@ export async function getRepositorySupportedLangs(): Promise<LocaleKey[] | undef
   return undefined;
 }
 
+export async function getRepositoryLanguageDisplayNames(): Promise<Record<LocaleKey, string> | undefined> {
+  if (defaults.language?.displayNames) {
+    return { ...(defaults.language.displayNames as Record<LocaleKey, string>) };
+  }
+  return undefined;
+}
+
 export async function resolveDefaultLang(preferred?: LocaleKey): Promise<LocaleKey> {
   if (preferred) {
     return preferred;
   }
 
-  return (defaults.defaultLang ?? DEFAULT_LANG) as LocaleKey;
+  if (defaults.defaultLang) {
+    return defaults.defaultLang as LocaleKey;
+  }
+
+  if (defaults.language?.default) {
+    return defaults.language.default as LocaleKey;
+  }
+
+  return DEFAULT_LANG;
 }
 
 export async function resolveSupportedLangs(preferred?: LocaleKey[]): Promise<LocaleKey[]> {
@@ -92,6 +109,19 @@ export async function resolveSupportedLangs(preferred?: LocaleKey[]): Promise<Lo
   }
 
   return [...DEFAULT_SUPPORTED_LANGS];
+}
+
+export async function resolveLanguageDisplayNames(preferred?: Record<LocaleKey, string>): Promise<Record<LocaleKey, string>> {
+  if (preferred) {
+    return preferred;
+  }
+
+  const repoDefaults = await getRepositoryLanguageDisplayNames();
+  if (repoDefaults) {
+    return repoDefaults;
+  }
+
+  return {} as Record<LocaleKey, string>;
 }
 
 export async function resolveBaseUrlPrefix(provided?: string): Promise<string> {
