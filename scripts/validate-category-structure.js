@@ -10,6 +10,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import * as logger from './logger.js';
 import { readJsoncFile } from './jsonc-utils.js';
+import { resolveSupportedLangs as resolveRepoSupportedLangs } from './global-defaults.js';
 
 logger.useUnifiedConsole();
 
@@ -76,7 +77,12 @@ function inspectProject({ projectName, configPath }) {
   logger.step(`プロジェクト "${projectName}" のカテゴリ構造を検証します`);
 
   const config = loadConfig(configPath);
-  const supportedLangs = config?.language?.supported ?? [];
+  const preferredSupported = Array.isArray(config?.language?.supported)
+    ? config.language.supported
+    : Array.isArray(config?.basic?.supportedLangs)
+      ? config.basic.supportedLangs
+      : undefined;
+  const supportedLangs = resolveRepoSupportedLangs(preferredSupported);
   const translations = config?.translations ?? {};
 
   if (supportedLangs.length === 0) {

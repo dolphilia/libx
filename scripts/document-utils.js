@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 import * as logger from './logger.js';
 import {
   resolveDefaultLang as resolveRepoDefaultLang,
+  resolveSupportedLangs as resolveRepoSupportedLangs,
   resolveBaseUrl as resolveRepoBaseUrl,
   resolveBaseUrlPrefix as resolveRepoBaseUrlPrefix,
   resolveProjectSlug as resolveRepoProjectSlug
@@ -57,11 +58,12 @@ export function loadProjectConfig(projectName) {
 
     const resolvedPrefix = resolveRepoBaseUrlPrefix(config.basic.baseUrlPrefix);
     const resolvedSlug = resolveRepoProjectSlug(config.basic.projectSlug, projectName);
-    const resolvedSupported = Array.isArray(config.language.supported)
+    const preferredSupported = Array.isArray(config.language.supported)
       ? config.language.supported
       : Array.isArray(config.basic.supportedLangs)
         ? config.basic.supportedLangs
-        : [];
+        : undefined;
+    const resolvedSupported = resolveRepoSupportedLangs(preferredSupported);
     const resolvedDefaultLang = resolveRepoDefaultLang(config.language.default || config.basic.defaultLang);
     const resolvedDisplayNames = config.language.displayNames || config.languageNames || {};
 

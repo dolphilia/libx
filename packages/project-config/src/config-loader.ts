@@ -11,7 +11,13 @@ import {
   validateProjectConfigJSON,
   convertProjectConfigJSONToRuntime
 } from './config-schema';
-import { resolveDefaultLang, resolveBaseUrl, resolveBaseUrlPrefix, resolveProjectSlug } from './global-defaults';
+import {
+  resolveDefaultLang,
+  resolveSupportedLangs,
+  resolveBaseUrl,
+  resolveBaseUrlPrefix,
+  resolveProjectSlug
+} from './global-defaults';
 import { stripJsonComments } from './jsonc';
 
 /**
@@ -39,6 +45,9 @@ export async function loadProjectConfigFromJSON(configPath: string, options: Loa
 
     const runtimeConfig = convertProjectConfigJSONToRuntime(parsed);
     const defaultLang = await resolveDefaultLang(runtimeConfig.language.default);
+    const supportedLangs = await resolveSupportedLangs(
+      (parsed.language?.supported ?? parsed.basic.supportedLangs) as LocaleKey[] | undefined
+    );
     const configDir = path.dirname(configPath);
     const inferredProjectDir = options.projectDir ?? path.resolve(configDir, '..', '..');
     const baseUrlPrefix = await resolveBaseUrlPrefix(parsed.basic.baseUrlPrefix);
@@ -60,6 +69,7 @@ export async function loadProjectConfigFromJSON(configPath: string, options: Loa
       },
       language: {
         ...runtimeConfig.language,
+        supported: supportedLangs,
         default: defaultLang
       }
     };

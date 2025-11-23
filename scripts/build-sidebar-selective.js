@@ -22,7 +22,10 @@ import { glob } from 'glob';
 import { saveCompressedJson, parseMarkdownFile } from './utils.js';
 import * as logger from './logger.js';
 import { readJsoncFileAsync } from './jsonc-utils.js';
-import { resolveBaseUrl as resolveRepoBaseUrl } from './global-defaults.js';
+import {
+  resolveBaseUrl as resolveRepoBaseUrl,
+  resolveSupportedLangs as resolveRepoSupportedLangs
+} from './global-defaults.js';
 
 logger.useUnifiedConsole();
 
@@ -215,9 +218,7 @@ async function getSupportedLanguages(projectPath) {
   try {
     const parsed = await readJsoncFileAsync(targetPath);
     const langs = parsed?.language?.supported || parsed?.basic?.supportedLangs;
-    if (Array.isArray(langs) && langs.length > 0) {
-      return langs;
-    }
+    return resolveRepoSupportedLangs(Array.isArray(langs) ? langs : undefined);
   } catch (error) {
     if (error.code !== 'ENOENT') {
       console.warn(`  プロジェクト設定の読み込みに失敗しました (${configJsonPath}): ${error.message}`);

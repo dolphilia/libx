@@ -13,6 +13,7 @@ const rootDir = path.resolve(__dirname, '..');
 const defaultsPath = path.join(rootDir, 'config', 'global-defaults.json');
 const FALLBACK_DEFAULT_LANG = 'en';
 const FALLBACK_BASE_URL_PREFIX = '/docs';
+const FALLBACK_SUPPORTED_LANGS = ['en'];
 
 let cachedDefaults = null;
 let loadAttempted = false;
@@ -88,12 +89,33 @@ export function getRepositoryDefaultLang() {
     : FALLBACK_DEFAULT_LANG;
 }
 
+export function getRepositorySupportedLangs() {
+  const defaults = getDefaults();
+  if (defaults.language && Array.isArray(defaults.language.supported)) {
+    return [...defaults.language.supported];
+  }
+  return null;
+}
+
 export function resolveDefaultLang(preferredLang) {
   if (typeof preferredLang === 'string' && preferredLang.length > 0) {
     return preferredLang;
   }
 
   return getRepositoryDefaultLang();
+}
+
+export function resolveSupportedLangs(preferredLangs) {
+  if (Array.isArray(preferredLangs)) {
+    return preferredLangs;
+  }
+
+  const repoSupported = getRepositorySupportedLangs();
+  if (repoSupported) {
+    return repoSupported;
+  }
+
+  return [...FALLBACK_SUPPORTED_LANGS];
 }
 
 export function resolveBaseUrlPrefix(baseUrlPrefix) {

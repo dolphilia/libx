@@ -5,10 +5,14 @@ import repositoryDefaults from '../../../config/global-defaults.json';
 interface GlobalDefaults {
   defaultLang?: LocaleKey;
   baseUrlPrefix?: string;
+  language?: {
+    supported?: LocaleKey[];
+  };
 }
 
 const DEFAULT_LANG: LocaleKey = 'en';
 const DEFAULT_BASE_URL_PREFIX = '/docs';
+const DEFAULT_SUPPORTED_LANGS: LocaleKey[] = ['en'];
 const defaults = repositoryDefaults as GlobalDefaults;
 
 function normalizeBasePath(value?: string): string {
@@ -62,12 +66,32 @@ export async function getRepositoryDefaultLang(): Promise<LocaleKey | undefined>
   return defaults.defaultLang;
 }
 
+export async function getRepositorySupportedLangs(): Promise<LocaleKey[] | undefined> {
+  if (defaults.language && Array.isArray(defaults.language.supported)) {
+    return [...defaults.language.supported] as LocaleKey[];
+  }
+  return undefined;
+}
+
 export async function resolveDefaultLang(preferred?: LocaleKey): Promise<LocaleKey> {
   if (preferred) {
     return preferred;
   }
 
   return (defaults.defaultLang ?? DEFAULT_LANG) as LocaleKey;
+}
+
+export async function resolveSupportedLangs(preferred?: LocaleKey[]): Promise<LocaleKey[]> {
+  if (preferred !== undefined) {
+    return preferred;
+  }
+
+  const repoDefault = await getRepositorySupportedLangs();
+  if (repoDefault !== undefined) {
+    return repoDefault;
+  }
+
+  return [...DEFAULT_SUPPORTED_LANGS];
 }
 
 export async function resolveBaseUrlPrefix(provided?: string): Promise<string> {

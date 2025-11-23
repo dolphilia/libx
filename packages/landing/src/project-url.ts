@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
-import { stripJsonComments } from '@docs/project-config';
+import { stripJsonComments, resolveSupportedLangs } from '@docs/project-config';
 import type { Project } from './projects-schema';
 
 /**
@@ -60,12 +60,8 @@ async function getProjectSupportedLanguages(project: Project): Promise<LocaleKey
     const configContent = await fs.readFile(projectConfigPath, 'utf-8');
     const config = JSON.parse(stripJsonComments(configContent));
 
-    if (config.language?.supported) {
-      return config.language.supported as LocaleKey[];
-    }
-    if (config.basic?.supportedLangs) {
-      return config.basic.supportedLangs as LocaleKey[];
-    }
+    const preferredSupported = config.language?.supported ?? config.basic?.supportedLangs;
+    return await resolveSupportedLangs(preferredSupported as LocaleKey[] | undefined);
   } catch {
     try {
       const contentDir = path.resolve(
