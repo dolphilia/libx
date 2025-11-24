@@ -2,44 +2,44 @@
 import { defineCollection, z } from 'astro:content';
 
 // ドキュメントコレクションのスキーマ定義
+// - title: タイトル（必須）
+// - description: 説明（オプション）
+// - category: カテゴリ（オプション、指定しない場合はパスから自動取得）
+// - categoryOrder: カテゴリの順序（オプション）
+// - pubDate: 公開日（オプション）
+// - updatedDate: 更新日（オプション）
+// - author: 著者（オプション）
+// - image: 画像（オプション）
+// - tags: タグ（オプション）
+// - draft: ドラフトフラグ（オプション、デフォルトはfalse）
+// - order: 順序（オプション）
+// - prev: 前のページへのリンク（オプション）
+// - next: 次のページへのリンク（オプション）
+// - licenseSource: ライセンス情報（オプション、指定しない場合はプロジェクトデフォルト使用）
+// - customAttribution: カスタム帰属表示（オプション）
+// - hideAttribution: 帰属表示を無効化（オプション）
 const docsSchema = z.object({
-  // タイトル（必須）
   title: z.string(),
-  // 説明（オプション）
   description: z.string().optional(),
-  // カテゴリ（オプション、指定しない場合はパスから自動取得）
   category: z.string().optional(),
-  // カテゴリの順序（オプション）
   categoryOrder: z.number().optional(),
-  // 公開日（オプション）
   pubDate: z.date().optional(),
-  // 更新日（オプション）
   updatedDate: z.date().optional(),
-  // 著者（オプション）
   author: z.string().optional(),
-  // 画像（オプション）
   image: z.string().optional(),
-  // タグ（オプション）
   tags: z.array(z.string()).optional(),
-  // ドラフトフラグ（オプション、デフォルトはfalse）
   draft: z.boolean().optional().default(false),
-  // 順序（オプション）
   order: z.number().optional(),
-  // 前のページへのリンク（オプション）
   prev: z.object({
     text: z.string(),
     link: z.string()
   }).optional(),
-  // 次のページへのリンク（オプション）
   next: z.object({
     text: z.string(),
     link: z.string()
   }).optional(),
-  // ライセンス情報（オプション、指定しない場合はプロジェクトデフォルト使用）
   licenseSource: z.string().optional(),
-  // カスタム帰属表示（オプション）
   customAttribution: z.string().optional(),
-  // 帰属表示を無効化（オプション）
   hideAttribution: z.boolean().optional().default(false),
 });
 
