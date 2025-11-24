@@ -1,44 +1,50 @@
 {
-  // (option) 公開パス設定
+  // (省略可)
+  // - paths: ドキュメント公開パス設定
+  //   - baseUrlPrefix: ドキュメントが公開されるベースURLの接頭辞
+  //   - projectSlug: プロジェクト固有のスラッグ
   "paths": {
-    // baseUrlPrefix と projectSlug を設定すると /docs/<project-name> を細かく制御できます（省略可）
-    // "baseUrlPrefix": "/docs",
-    // "projectSlug": "project-template"
+    "baseUrlPrefix": "/docs",
+    "projectSlug": "project-template"
   },
-  // (option) 言語設定
+
+  // (省略可)
+  // - language: 言語設定
+  //   - default: デフォルト言語
+  //   - supported: サポートされる言語の配列
+  //   - displayNames: 各言語の表示名マッピング
   "language": {
-    // （オプション） サポート言語
-    // ["en", "ja"] など
-    "supported": [
-      "en",
-      "ja"
-    ],
-    // デフォルト言語 （オプション） : "en", "ja" など
     "default": "en",
-    // 言語セレクターの表示名（オプション）: "en": "English", "ja": "日本語" など
-    "displayNames": {
-      "en": "English",
-      "ja": "日本語"
-    }
+    "supported": ["en", "ja"],
+    "displayNames": {"en": "English", "ja": "日本語"}
   },
-  // プロジェクト翻訳情報（表示名・説明・カテゴリ）
+
+  // （必須）
+  // - translations: プロジェクト翻訳情報
+  //   - <言語コード>: 各言語ごとの翻訳情報
+  //     - displayName: プロジェクトの表示名
+  //     - displayDescription: プロジェクトの説明
+  //     - categories: ドキュメントカテゴリの翻訳マッピング
   "translations": {
     "en": {
       "displayName": "Project Template",
       "displayDescription": "Template for creating new documentation projects",
-      "categories": {
-        "guide": "Guide"
-      }
+      "categories": {"guide": "Guide"}
     },
     "ja": {
       "displayName": "プロジェクトテンプレート",
       "displayDescription": "新しいドキュメントプロジェクト作成用のテンプレート",
-      "categories": {
-        "guide": "ガイド"
-      }
+      "categories": {"guide": "ガイド"}
     }
   },
-  // バージョン管理
+
+  // （必須）
+  // - versioning: バージョン管理
+  //   - versions: バージョン情報の配列
+  //     - id: バージョンID
+  //     - name: バージョン表示名
+  //     - date: リリース日（ISO 8601形式）
+  //     - isLatest: 最新バージョンかどうかのフラグ
   "versioning": {
     "versions": [
       {
@@ -49,8 +55,23 @@
       }
     ]
   },
-  // ライセンス情報
+  
+  // （必須）
+  // - licensing: ライセンス情報
+  //   - defaultSource: デフォルトソースID
+  //   - showAttribution: 署名を表示するかどうかのフラグ
+  //   - sourceLanguage: ソース言語の言語コード
+  //   - sources: ライセンス情報のソース配列
+  //     - id: ソースID
+  //     - name: ソース名
+  //     - author: ソースの作者
+  //     - license: ライセンス名
+  //     - licenseUrl: ライセンスURL
+  //     - sourceUrl: ソースURL
   "licensing": {
+    "defaultSource": "project-template-default",
+    "showAttribution": true,
+    "sourceLanguage": "en",
     "sources": [
       {
         "id": "project-template-default",
@@ -60,9 +81,6 @@
         "licenseUrl": "https://opensource.org/licenses/MIT",
         "sourceUrl": "https://github.com/libx-dev/libx-dev"
       }
-    ],
-    "defaultSource": "project-template-default",
-    "showAttribution": true,
-    "sourceLanguage": "en"
+    ]
   }
 }
