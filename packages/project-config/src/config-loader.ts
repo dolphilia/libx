@@ -17,7 +17,8 @@ import {
   resolveLanguageDisplayNames,
   resolveBaseUrl,
   resolveBaseUrlPrefix,
-  resolveProjectSlug
+  resolveProjectSlug,
+  resolveSiteUrl
 } from './global-defaults';
 import { stripJsonComments } from './jsonc';
 
@@ -64,6 +65,7 @@ export async function loadProjectConfigFromJSON(configPath: string, options: Loa
       projectSlug,
       projectDir: inferredProjectDir
     });
+    const siteUrl = await resolveSiteUrl(pathSettings.siteUrl ?? runtimeConfig.paths.siteUrl);
 
     return {
       ...runtimeConfig,
@@ -71,7 +73,8 @@ export async function loadProjectConfigFromJSON(configPath: string, options: Loa
         ...runtimeConfig.paths,
         baseUrlPrefix,
         projectSlug,
-        baseUrl
+        baseUrl,
+        siteUrl
       },
       language: {
         ...runtimeConfig.language,
@@ -181,7 +184,8 @@ export async function migrateFromTypeScriptConfig(tsConfigPath: string, jsonConf
     paths: {
       baseUrl: tsPaths.baseUrl || config.baseUrl,
       baseUrlPrefix: tsPaths.baseUrlPrefix || config.baseUrlPrefix,
-      projectSlug: tsPaths.projectSlug || config.projectSlug
+      projectSlug: tsPaths.projectSlug || config.projectSlug,
+      siteUrl: tsPaths.siteUrl || config.siteUrl
     },
     language: {
       supported: legacySupported,

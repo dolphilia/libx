@@ -5,6 +5,7 @@ import repositoryDefaults from '../../../config/global-defaults.json';
 interface GlobalDefaults {
   defaultLang?: LocaleKey;
   baseUrlPrefix?: string;
+  siteUrl?: string;
   language?: {
     supported?: LocaleKey[];
     default?: LocaleKey;
@@ -14,6 +15,7 @@ interface GlobalDefaults {
 
 const DEFAULT_LANG: LocaleKey = 'en';
 const DEFAULT_BASE_URL_PREFIX = '/docs';
+const DEFAULT_SITE_URL = 'https://libx.dev';
 const DEFAULT_SUPPORTED_LANGS: LocaleKey[] = ['en'];
 const defaults = repositoryDefaults as GlobalDefaults;
 
@@ -62,6 +64,20 @@ function normalizeSlug(value?: string): string {
   normalized = normalized.replace(/^\//, '').replace(/\/$/, '');
   normalized = normalized.replace(/\s+/g, '-');
   return normalized;
+}
+
+function normalizeSiteUrl(value?: string): string | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return undefined;
+  }
+
+  const sanitized = trimmed.replace(/\/+$/, '');
+  return sanitized || undefined;
 }
 
 export async function getRepositoryDefaultLang(): Promise<LocaleKey | undefined> {
@@ -162,4 +178,22 @@ export async function resolveBaseUrl(options: ResolveBaseUrlOptions = {}): Promi
 
   const combined = `${prefix}/${slug}`.replace(/\/{2,}/g, '/');
   return combined.length > 1 && combined.endsWith('/') ? combined.slice(0, -1) : combined || '/';
+}
+
+export async function getRepositorySiteUrl(): Promise<string | undefined> {
+  return normalizeSiteUrl(defaults.siteUrl);
+}
+
+export async function resolveSiteUrl(provided?: string): Promise<string> {
+  const normalizedProvided = normalizeSiteUrl(provided);
+  if (normalizedProvided) {
+    return normalizedProvided;
+  }
+
+  const repo = await getRepositorySiteUrl();
+  if (repo) {
+    return repo;
+  }
+
+  return DEFAULT_SITE_URL;
 }

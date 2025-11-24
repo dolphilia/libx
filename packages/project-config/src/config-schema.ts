@@ -57,6 +57,7 @@ export interface ProjectPathsConfigJSON {
   baseUrl?: string;
   baseUrlPrefix?: string;
   projectSlug?: string;
+  siteUrl?: string;
 }
 
 export interface LegacyBasicConfigJSON extends ProjectPathsConfigJSON {
@@ -82,6 +83,7 @@ export interface ProjectPathsConfig {
   baseUrl: string;
   baseUrlPrefix: string;
   projectSlug: string;
+  siteUrl?: string;
 }
 
 export interface ProjectConfig {
@@ -123,12 +125,14 @@ export function validateProjectConfigJSON(config: any): config is ProjectConfigJ
       (typeof config.paths === 'object' &&
         (config.paths.baseUrl === undefined || typeof config.paths.baseUrl === 'string') &&
         (config.paths.baseUrlPrefix === undefined || typeof config.paths.baseUrlPrefix === 'string') &&
-        (config.paths.projectSlug === undefined || typeof config.paths.projectSlug === 'string'))) &&
+        (config.paths.projectSlug === undefined || typeof config.paths.projectSlug === 'string') &&
+        (config.paths.siteUrl === undefined || typeof config.paths.siteUrl === 'string'))) &&
     (config.basic === undefined ||
       (typeof config.basic === 'object' &&
         (config.basic.baseUrl === undefined || typeof config.basic.baseUrl === 'string') &&
         (config.basic.baseUrlPrefix === undefined || typeof config.basic.baseUrlPrefix === 'string') &&
         (config.basic.projectSlug === undefined || typeof config.basic.projectSlug === 'string') &&
+        (config.basic.siteUrl === undefined || typeof config.basic.siteUrl === 'string') &&
         (config.basic.supportedLangs === undefined || Array.isArray(config.basic.supportedLangs)) &&
         (config.basic.defaultLang === undefined || typeof config.basic.defaultLang === 'string'))) &&
     (config.language === undefined ||
@@ -169,7 +173,8 @@ export function convertProjectConfigJSONToRuntime(configJSON: ProjectConfigJSON)
       ...pathConfig,
       baseUrl: (pathConfig.baseUrl ?? '') as string,
       baseUrlPrefix: (pathConfig.baseUrlPrefix ?? '') as string,
-      projectSlug: (pathConfig.projectSlug ?? '') as string
+      projectSlug: (pathConfig.projectSlug ?? '') as string,
+      siteUrl: pathConfig.siteUrl as string | undefined
     },
     language: {
       supported: legacySupported as LocaleKey[],
