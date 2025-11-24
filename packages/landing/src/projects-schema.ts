@@ -11,11 +11,11 @@ export interface ProjectsConfigJSON {
 }
 
 export interface SiteConfigJSON {
-  baseUrl: string;
-  supportedLangs: LocaleKey[];
+  baseUrl?: string;
+  supportedLangs?: LocaleKey[];
   defaultLang?: LocaleKey;
-  repository: string;
-  siteName: string;
+  repository?: string;
+  siteName?: string;
 }
 
 export interface ProjectDecorationJSON {
@@ -85,11 +85,11 @@ export function validateProjectsConfig(config: ProjectsConfigJSON): boolean {
   // サイト設定の検証
   const { baseUrl, supportedLangs, defaultLang, repository, siteName } = config.siteConfig;
   if (
-    typeof baseUrl !== 'string' ||
-    !Array.isArray(supportedLangs) ||
+    (baseUrl !== undefined && typeof baseUrl !== 'string') ||
+    (supportedLangs !== undefined && !Array.isArray(supportedLangs)) ||
     (defaultLang !== undefined && typeof defaultLang !== 'string') ||
-    typeof repository !== 'string' ||
-    typeof siteName !== 'string'
+    (repository !== undefined && typeof repository !== 'string') ||
+    (siteName !== undefined && typeof siteName !== 'string')
   ) {
     return false;
   }

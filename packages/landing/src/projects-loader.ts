@@ -17,6 +17,16 @@ import {
 import { scanAppsDirectory, detectProject } from './project-detector';
 
 let _configCache: TopPageConfig | null = null;
+let _landingDefaultsCache: LandingDefaults | null = null;
+
+interface LandingDefaults {
+  baseUrl: string;
+  supportedLangs: LocaleKey[];
+  defaultLang: LocaleKey;
+}
+
+const FALLBACK_SUPPORTED_LANGS: LocaleKey[] = ['en', 'ja'];
+const FALLBACK_DEFAULT_LANG: LocaleKey = 'en';
 
 async function loadProjectsConfigFromJSON(configPath?: string): Promise<ProjectsConfigJSON> {
   const filePath = configPath || (await resolveProjectsConfigPath());
@@ -98,11 +108,7 @@ export async function getTopPageConfig(): Promise<TopPageConfig> {
   try {
     const configJSON = await loadProjectsConfigFromJSON();
     const { siteConfig, projectDecorations } = convertProjectsConfigJSONToRuntime(configJSON);
-    const defaultLang = await resolveDefaultLang(siteConfig.defaultLang);
-    const normalizedSiteConfig = {
-      ...siteConfig,
-      defaultLang
-    };
+    const normalizedSiteConfig = await buildSiteConfigWithDefaults(siteConfig);
     const projects = await generateAutoProjects(projectDecorations);
     const landingContent = buildLandingContent(normalizedSiteConfig.supportedLangs);
 
@@ -203,4 +209,47 @@ async function resolveProjectsConfigPath(): Promise<string> {
   } catch {
     return jsonPath;
   }
+}
+
+async function loadLandingDefaults(): Promise<LandingDefaults> {
+  if (_landingDefaultsCache) {
+    return _landingDefaultsCache;
+  }
+
+  const configDir = path.resolve(process.cwd(), 'src', 'config');
+  const jsoncPath = path.join(configDir, 'site.config.jsonc');
+  let parsed: any = {};
+
+  try {
+    const content = await fs.readFile(jsoncPath, 'utf-8');
+    parsed = JSON.parse(stripJsonComments(content));
+  } catch {
+    // fallback to defaults below
+  }
+
+  const i18n = parsed?.i18n ?? {};
+  const baseUrl = typeof parsed?.base === 'string' ? parsed.base : '';
+  const supportedLangs = Array.isArray(i18n.locales) && i18n.locales.length > 0 ? (i18n.locales as LocaleKey[]) : FALLBACK_SUPPORTED_LANGS;
+  const defaultLang = (i18n.defaultLocale as LocaleKey | undefined) ?? FALLBACK_DEFAULT_LANG;
+
+  _landingDefaultsCache = {
+    baseUrl,
+    supportedLangs,
+    defaultLang
+  };
+
+  return _landingDefaultsCache;
+}
+
+async function buildSiteConfigWithDefaults(siteConfig: SiteConfigJSON) {
+  const landingDefaults = await loadLandingDefaults();
+  const defaultLang = await resolveDefaultLang(siteConfig.defaultLang ?? landingDefaults.defaultLang);
+
+  return {
+    baseUrl: siteConfig.baseUrl ?? landingDefaults.baseUrl,
+    supportedLangs: (siteConfig.supportedLangs ?? landingDefaults.supportedLangs) as LocaleKey[],
+    defaultLang,
+    repository: siteConfig.repository ?? 'https://github.com/libx-dev/libx-dev',
+    siteName: siteConfig.siteName ?? 'Libx'
+  };
 }
