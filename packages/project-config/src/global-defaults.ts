@@ -1,6 +1,6 @@
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
-import repositoryDefaults from '../../../config/global-defaults.json';
+import fs from 'node:fs/promises';
 
 interface GlobalDefaults {
   defaultLang?: LocaleKey;
@@ -17,7 +17,23 @@ const DEFAULT_LANG: LocaleKey = 'en';
 const DEFAULT_BASE_URL_PREFIX = '/docs';
 const DEFAULT_SITE_URL = 'https://libx.dev';
 const DEFAULT_SUPPORTED_LANGS: LocaleKey[] = ['en'];
-const defaults = repositoryDefaults as GlobalDefaults;
+let defaults: GlobalDefaults | null = null;
+const CONFIG_URL = new URL('../../../config/global-defaults.jsonc', import.meta.url);
+
+async function loadDefaults(): Promise<GlobalDefaults> {
+  if (defaults) {
+    return defaults;
+  }
+
+  try {
+    const content = await fs.readFile(CONFIG_URL, 'utf-8');
+    defaults = JSON.parse(stripJsonComments(content)) as GlobalDefaults;
+  } catch {
+    defaults = {};
+  }
+
+  return defaults;
+}
 
 function normalizeBasePath(value?: string): string {
   if (!value) {
@@ -81,19 +97,22 @@ function normalizeSiteUrl(value?: string): string | undefined {
 }
 
 export async function getRepositoryDefaultLang(): Promise<LocaleKey | undefined> {
-  return defaults.defaultLang ?? defaults.language?.default;
+  const defs = await loadDefaults();
+  return defs.defaultLang ?? defs.language?.default;
 }
 
 export async function getRepositorySupportedLangs(): Promise<LocaleKey[] | undefined> {
-  if (defaults.language && Array.isArray(defaults.language.supported)) {
-    return [...defaults.language.supported] as LocaleKey[];
+  const defs = await loadDefaults();
+  if (defs.language && Array.isArray(defs.language.supported)) {
+    return [...defs.language.supported] as LocaleKey[];
   }
   return undefined;
 }
 
 export async function getRepositoryLanguageDisplayNames(): Promise<Record<LocaleKey, string> | undefined> {
-  if (defaults.language?.displayNames) {
-    return { ...(defaults.language.displayNames as Record<LocaleKey, string>) };
+  const defs = await loadDefaults();
+  if (defs.language?.displayNames) {
+    return { ...(defs.language.displayNames as Record<LocaleKey, string>) };
   }
   return undefined;
 }
@@ -103,12 +122,13 @@ export async function resolveDefaultLang(preferred?: LocaleKey): Promise<LocaleK
     return preferred;
   }
 
-  if (defaults.defaultLang) {
-    return defaults.defaultLang as LocaleKey;
+  const defs = await loadDefaults();
+  if (defs.defaultLang) {
+    return defs.defaultLang as LocaleKey;
   }
 
-  if (defaults.language?.default) {
-    return defaults.language.default as LocaleKey;
+  if (defs.language?.default) {
+    return defs.language.default as LocaleKey;
   }
 
   return DEFAULT_LANG;
@@ -145,7 +165,8 @@ export async function resolveBaseUrlPrefix(provided?: string): Promise<string> {
     return normalizeBasePath(provided);
   }
 
-  return normalizeBasePath(defaults.baseUrlPrefix ?? DEFAULT_BASE_URL_PREFIX);
+  const defs = await loadDefaults();
+  return normalizeBasePath(defs.baseUrlPrefix ?? DEFAULT_BASE_URL_PREFIX);
 }
 
 export async function resolveProjectSlug(projectSlug?: string, projectDir?: string): Promise<string> {
