@@ -1,135 +1,123 @@
 # Project Template
 
-このディレクトリは新しいドキュメントプロジェクトを作成するためのテンプレートです。
+このディレクトリは `pnpm create:project` / `node scripts/create-project.js` で新規ドキュメントサイトを発行する際にコピーされるテンプレートです。`apps/project-template/package.json` が参照している `@docs/config`, `@docs/ui`, `@docs/project-config` などの共有パッケージを利用し、i18n 対応済みの Astro プロジェクトを最小構成で提供します。
 
-## 概要
+## 主な特徴
 
-`scripts/create-project.js`を使用して新しいドキュメントプロジェクトを作成する際に、このテンプレートがコピーされて新しいプロジェクトの基盤となります。
-
-### テンプレートの特徴
-
-- **最小限の構成**: 新しいプロジェクトに必要最小限の要素のみ
-- **多言語対応**: 英語（`en`）と日本語（`ja`）のサンプル
-- **シンプルなバージョン管理**: v1のみの初期構成
-- **クリーンな設定**: プロジェクト固有でない汎用設定
-- 共通UIコンポーネント統合
-- レスポンシブデザイン
-- 検索機能（Pagefind）
-- ダークモード対応
+- `src/content/docs/v1/<lang>/<category>/<file>.mdx` という **version-first** なディレクトリ構造を採用し、複数言語・複数バージョンに即対応（`apps/project-template/src/content/docs/v1`）。
+- Astro ルーティング（`src/pages/index.astro` と `src/pages/[version]/[lang]/*`）は共有ユーティリティを使ってサイドバー生成・ページネーション・TOC を自動化（`apps/project-template/src/pages/[version]/[lang]/[...slug].astro`）。
+- `src/config/project.config.jsonc` に言語・バージョン・ライセンスを JSONC で定義し、`@docs/project-config` から自動読み込み（`apps/project-template/src/config/project.config.jsonc`）。
+- 共有 UI とテーマ（`@docs/ui`, `@docs/theme`）を利用するため、`src/components` や `src/utils` を個別に持たずに一貫したデザインを適用（`apps/project-template/package.json`）。
+- `public/sidebar/` 以下にサイドバー JSON（圧縮版含む）を配置し、`scripts/build-sidebar*.js` で再生成できる構成を定義済み（`apps/project-template/public/sidebar`）。
 
 ## ディレクトリ構造
 
 ```text
 project-template/
-├── README.md                # プロジェクト用README（このファイル）
-├── package.json             # 依存関係定義
-├── astro.config.mjs         # Astro設定
-├── tsconfig.json            # TypeScript設定
+├── astro.config.mjs         # プロジェクト固有の baseUrl / siteUrl を自動適用
+├── package.json             # 共有パッケージの依存関係・npm scripts
+├── tsconfig.json            # 共通 TS 設定
 ├── public/
-│   ├── favicon.svg          # ファビコン
-│   └── sw.js                # Service Worker
+│   ├── favicon.svg
+│   ├── sw.js
+│   └── sidebar/             # サイドバーデータ（build-sidebar系で再生成）
 └── src/
-    ├── components/          # プロジェクト固有コンポーネント
     ├── config/
-    │   └── project.config.json  # プロジェクト設定
+    │   └── project.config.jsonc
     ├── content/
     │   └── docs/
-    │       ├── en/v1/01-guide/
-    │       │   └── 01-getting-started.mdx
-    │       └── ja/v1/01-guide/
-    │           └── 01-getting-started.mdx
-    ├── layouts/             # レイアウトコンポーネント
-    ├── pages/               # ページルーティング
-    ├── styles/              # スタイルファイル
-    └── utils/               # ユーティリティ関数
+    │       └── v1/
+    │           ├── en/01-guide/01-getting-started.mdx
+    │           └── ja/01-guide/01-getting-started.mdx
+    ├── layouts/             # MainLayout / DocLayout
+    ├── pages/
+    │   ├── index.astro
+    │   └── [version]/[lang]/(...)
+    └── styles/global.css
 ```
 
-## 新しいプロジェクト作成方法
+## プロジェクトの作成方法
 
-### 自動プロジェクト作成（推奨）
-
-```bash
-# 基本的な使用方法
-node scripts/create-project.js my-project "My Project" "私のプロジェクト"
-
-# オプション付きで作成
-node scripts/create-project.js api-docs "API Documentation" "API文書" \
-  --description-en="Complete API reference and guides" \
-  --description-ja="完全なAPIリファレンスとガイド" \
-  --icon=code \
-  --tags=api,reference,development
-```
-
-### 対話式作成
+### 推奨: 自動スクリプト
 
 ```bash
-# 対話式でプロジェクト作成
+# 対話式（推奨）
 pnpm create:project
+
+# 直接指定
+node scripts/create-project.js my-docs "My Documentation" "私のドキュメント"
+
+# 詳細オプション（説明・アイコン・タグ・テンプレートなど）
+node scripts/create-project.js api-docs "API Documentation" "API文書" \
+  --description-en="Comprehensive API documentation" \
+  --description-ja="包括的なAPI文書" \
+  --icon=code \
+  --tags=api,reference \
+  --template=project-template \
+  --skip-test
 ```
 
-## 作成後の流れ
+- スクリプトは `apps/project-template` をコピーし、`package.json` / `astro.config.mjs` / `src/config/project.config.jsonc` を更新し、必要に応じて `sites/landing/src/config/projects.config.jsonc` へカスタム装飾を追記します（`scripts/create-project.js`）。
+- コピー後に `pnpm install` とビルドテストを自動実行し、`apps/<project>` ディレクトリの初期動作を検証します。
 
-新しいプロジェクトを作成した後は以下の手順で進めます：
+### 手動コピー（参考）
 
-1. **テンプレートコンテンツの削除**: `src/content/docs/`内のサンプルコンテンツを削除
-2. **設定のカスタマイズ**: プロジェクト名、表示名、説明文などを調整
-3. **実際のコンテンツ作成**: プロジェクト固有のドキュメントを作成
-4. **カテゴリの調整**: 必要に応じて`project.config.json`のカテゴリを追加・変更
+自動スクリプトが使えない場合のみ、`cp -R apps/project-template apps/<project>` で複製し、上記3つの設定ファイルとランディング設定を手動で調整してください。
 
-## 開発コマンド
+## 作成直後に行うこと
 
-作成されたプロジェクトではすべてのコマンドをプロジェクトルートから実行します：
+1. **テンプレートコンテンツの削除**: `apps/<project>/src/content/docs/v1/{en,ja}/01-guide/01-getting-started.mdx` を削除または置き換える。
+2. **`project.config.jsonc` の更新**: `paths.projectSlug`, `paths.siteUrl`, `language.supported`, `translations.*.categories`, `versioning.versions`, `licensing.sources` をプロジェクトに合わせて調整する（`apps/project-template/src/config/project.config.jsonc` を参考）。
+3. **ランディング設定の確認**: カスタムアイコンやタグを利用する場合は `sites/landing/src/config/projects.config.jsonc` の `projectDecorations` を見直し、`isNew` フラグの更新タイミングを決める。
+4. **スタイル/レイアウトの微調整**: `src/styles/global.css` や `src/layouts/*.astro` でテーマ固有の調整を行う。
+5. **動作確認**: `pnpm --filter=apps-<project> dev` でローカルテスト、`pnpm build:selective --projects=<project>` で選択ビルドを行う。
 
-| コマンド | 説明 |
-| :--- | :--- |
-| `pnpm install` | 依存関係をインストール |
-| `pnpm dev` | 開発サーバーを起動（localhost:4321） |
-| `pnpm build` | プロダクション用にビルド |
-| `pnpm preview` | ビルド結果をローカルプレビュー |
+## ドキュメントとバージョンの追加
 
-## カスタマイズ
-
-作成されたプロジェクトで編集すべき主要なファイル：
-
-1. **プロジェクト設定**: `src/config/project.config.json`
-2. **コンテンツ**: `src/content/docs/`
-3. **スタイル**: `src/styles/`
-4. **コンポーネント**: `src/components/`
-
-## バージョン追加
-
-新しいバージョンが必要になった場合：
+### ドキュメント追加
 
 ```bash
-# 新しいバージョンを追加（前バージョンからコンテンツをコピー）
-node scripts/create-version.js my-project v2
+# 非対話
+node scripts/create-document.js my-docs ja v1 guide "新しいページタイトル"
 
-# 空の新バージョンを作成
-node scripts/create-version.js my-project v2 --no-copy
-
-# インタラクティブモードで作成
-node scripts/create-version.js my-project v2 --interactive
+# 推奨: 対話モード
+node scripts/create-document.js my-docs en v1 --interactive
 ```
 
-## ドキュメント追加
+`scripts/create-document.js` はカテゴリ構造を解析し、番号付きディレクトリやファイル名の整合性、翻訳カテゴリの同期 (`syncCategoryTranslations`) まで自動化します（`scripts/create-document.js`）。
 
-個別のドキュメントファイルを追加する場合：
+### バージョン追加
 
 ```bash
-# 基本的な使用方法
-node scripts/create-document.js my-project ja v1 guide "新しいページタイトル"
+# 既存内容をコピーして追加
+node scripts/create-version.js my-docs v2
 
-# インタラクティブモードで追加（推奨）
-node scripts/create-document.js my-project ja v1 --interactive
+# 空のディレクトリで追加
+node scripts/create-version.js my-docs v2 --no-copy
 
-# 英語版も同様に
-node scripts/create-document.js my-project en v1 --interactive
+# 対話モード
+node scripts/create-version.js my-docs v2 --interactive
 ```
 
-インタラクティブモードでは既存のカテゴリ構造を確認しながら適切な場所にファイルを作成できるため推奨です。
+`scripts/create-version.js` は `project.config.jsonc` の `versioning.versions` を更新し、言語別ディレクトリを自動生成し、必要なら既存バージョンからコンテンツをコピーします。
+
+## 開発・ビルドコマンド
+
+| コマンド | 用途 |
+| --- | --- |
+| `pnpm install` | プロジェクト配下で依存関係をインストール |
+| `pnpm --filter=apps-<project> dev` / `pnpm dev` | 開発サーバー（`http://localhost:4321/docs/<project>`） |
+| `pnpm --filter=apps-<project> build` | プロジェクト単体ビルド |
+| `pnpm build:selective --projects=<project>` | サイト統合環境で対象プロジェクトのみビルド（`scripts/build-selective.js`） |
+| `pnpm preview` | ビルド結果をローカルで確認 |
+
+## サイドバー/検索データの再生成
+
+- すべてのプロジェクトを再生成: `pnpm build:sidebar`（`scripts/build-sidebar.js` が `public/sidebar/` に JSON / gz を出力）。
+- 対象プロジェクトのみ: `node scripts/build-sidebar-selective.js --projects=my-docs`。テンプレート自身は除外されますが、動作確認目的で指定することも可能です（`scripts/build-sidebar-selective.js`）。
 
 ## 注意事項
 
-- このディレクトリを直接編集しない（テンプレートが変更される）
-- 新しいプロジェクト作成後は、作成されたプロジェクトディレクトリで作業する
-- テンプレートの改善が必要な場合は、このディレクトリを更新してから新しいプロジェクトを作成する
+- **テンプレートとしての一貫性を保つ**: このディレクトリを直接編集する際は、新規プロジェクトにそのまま反映される点に留意し、変更後は `pnpm create:project` で検証してください。
+- **実プロジェクト作業はコピー先で行う**: テンプレートを直接改変して運用しないようにしてください。
+- **共有パッケージを優先利用**: `@docs/*` で提供される UI / i18n / versioning を利用することで、全プロジェクトの UX を揃えられます。
