@@ -28,6 +28,7 @@ interface Props {
   baseUrl?: string;
   langPaths?: LangPathInfo[];
   footerLink?: FooterLink;
+  dir?: 'ltr' | 'rtl';
 }
 
 let projectConfig;
@@ -45,6 +46,7 @@ const {
   baseUrl,
   langPaths,
   footerLink,
+  dir = 'ltr',
 } = Astro.props;
 
 const combinedLanguageNames = {
@@ -190,12 +192,13 @@ function computeLangPathsFromProjectConfig(): LangPathInfo[] {
   });
 }
 ---
-<div class="language-selector-container">
+<div class="language-selector-container" dir={dir}>
   <Dropdown
     label={dropdownLabel}
-    align="right"
+    align={dir === 'rtl' ? 'left' : 'right'}
     width="14rem"
     class={`language-dropdown ${className}`}
+    dir={dir}
   >
     <div class="language-dropdown-header" slot="before-items">
       <Icon name="languages" class="language-icon" />

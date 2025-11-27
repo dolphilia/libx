@@ -22,9 +22,10 @@ interface Props {
   title?: string;
   class?: string;
   hash?: string;
+  dir?: 'ltr' | 'rtl';
 }
 
-const { items, title, class: className = '', hash = 'sidebar-hash' } = Astro.props;
+const { items, title, class: className = '', hash = 'sidebar-hash', dir = 'ltr' } = Astro.props;
 
 // 現在のページかどうかを判定するヘルパー関数
 function isCurrentPage(item: SidebarItem): boolean {
@@ -51,6 +52,7 @@ const sidebarHash = getSidebarHash(items);
   aria-label={title || 'サイドナビゲーション'}
   id="sidebar"
   style="position: relative;"
+  dir={dir}
 >
   <SidebarResizer />
   {title && (
@@ -176,7 +178,8 @@ const sidebarHash = getSidebarHash(items);
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 0 0.5rem 0 0;
+    padding-inline-end: 0.5rem;
+    padding-inline-start: 0;
     scrollbar-width: thin;
     scrollbar-color: var(--sl-color-gray-5) transparent;
     transition: width 0.2s ease-in-out;
@@ -293,10 +296,10 @@ const sidebarHash = getSidebarHash(items);
     transform: rotate(180deg);
   }
   [dir='rtl'] .caret-wrapper.rotated {
-    transform: rotate(270deg);
+    transform: rotate(90deg);
   }
   [dir='rtl'] summary[data-open="true"] .caret-wrapper {
-    transform: rotate(270deg);
+    transform: rotate(90deg);
   }
 
   a {
@@ -326,9 +329,6 @@ const sidebarHash = getSidebarHash(items);
   .active:hover,
   .active:focus {
     font-weight: 600;
-    /* color: var(--sl-color-text-invert, #ffffff); */
-    /* background-color: var(--sl-color-gray-7, rgba(255, 255, 255, 0.05)); */
-    /* box-shadow: 0 0 0 1px var(--sl-color-accent-high, #3b82f6); */
     position: relative;
     transition: all 0.2s ease-in-out;
   }
@@ -345,18 +345,36 @@ const sidebarHash = getSidebarHash(items);
   .active::before {
     content: '';
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     top: 0;
     bottom: 0;
     width: 4px;
-    /* background-color: var(--sl-color-accent-high, #3b82f6); */
     border-radius: 0 2px 2px 0;
     animation: slideIn 0.2s ease-out;
+  }
+  
+  [dir='rtl'] [aria-current='page']::before,
+  [dir='rtl'] .active::before {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    border-radius: 2px 0 0 2px;
+    animation: slideInRtl 0.2s ease-out;
   }
   
   @keyframes slideIn {
     from {
       transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRtl {
+    from {
+      transform: translateX(100%);
       opacity: 0;
     }
     to {
@@ -405,8 +423,7 @@ const sidebarHash = getSidebarHash(items);
   @media (max-width: 48em) {
     .sidebar.mobile-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100vw;
       height: 100vh;
       z-index: 1000;
@@ -420,13 +437,22 @@ const sidebarHash = getSidebarHash(items);
       width: min(320px, 80vw);
       height: 100%;
       background-color: var(--sl-color-bg-sidebar);
-      border-right: 1px solid var(--sl-color-hairline);
+      border-inline-end: 1px solid var(--sl-color-hairline);
       padding: 1rem;
       overflow-y: auto;
     }
 
     .sidebar.mobile-visible {
       transform: translateX(0);
+    }
+
+    [dir='rtl'] .sidebar.mobile-overlay {
+      transform: translateX(100%);
+    }
+
+    [dir='rtl'] .sidebar.mobile-overlay .sidebar-content {
+      border-inline-end: none;
+      border-inline-start: 1px solid var(--sl-color-hairline);
     }
   }
 

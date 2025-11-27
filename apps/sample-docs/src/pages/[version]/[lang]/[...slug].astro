@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import DocLayout from '../../../layouts/DocLayout.astro';
 import type { GetStaticPathsResult } from 'astro';
+import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { TableOfContents, Pagination } from '@docs/ui/components';
 import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
@@ -60,6 +61,7 @@ const { Content, headings } = await entry.render();
 const { version: versionParam, lang: langParam } = Astro.params;
 const version = String(versionParam || 'v1');
 const lang = (langParam || 'en') as LocaleKey;
+const dir = getLocaleDirection(lang);
 
 // デバッグログ
 console.log(`[Page Render] Processing URL params - version: ${version}, lang: ${lang}, entry.slug: ${entry.slug}`);
@@ -129,6 +131,7 @@ const finalPagination = mergePagination(manualPrev, manualNext, autoPagination);
       prev={finalPagination.prev}
       next={finalPagination.next}
       lang={lang}
+      dir={dir}
     />
   </div>
   
@@ -139,6 +142,7 @@ const finalPagination = mergePagination(manualPrev, manualNext, autoPagination);
     minLevel={2}
     maxLevel={2}
     lang={lang}
+    dir={dir}
     slot="toc"
   />
 </DocLayout>

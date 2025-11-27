@@ -5,6 +5,7 @@
 export const Icons = {
   // シェブロンアイコン（サイドバーの折りたたみ用）
   'chevron-right': '<path d="m9 18 6-6-6-6"/>',
+  'chevron-left': '<path d="m15 18-6-6 6-6"/>',
   // メニューバーアイコン
   'menu': '<path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/>',
   // 情報アイコン

@@ -146,7 +146,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
 
 .article-content ul,
 .article-content ol {
-  padding-left: 1.5rem;
+  padding-inline-start: 1.5rem;
   line-height: var(--sl-line-height);
 }
 
@@ -195,6 +195,20 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
   font-size: var(--sl-text-code);
 }
 
+.article-content pre,
+.sl-markdown-content pre {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: bidi-override;
+}
+
+.article-content pre code,
+.sl-markdown-content pre code {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: bidi-override;
+}
+
 .article-content a {
   color: var(--sl-color-text-accent);
   text-decoration: none;
@@ -215,7 +229,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
 }
 
 .article-content blockquote {
-  border-left: 4px solid var(--sl-color-accent);
+  border-inline-start: 4px solid var(--sl-color-accent);
   padding: 1rem 1.5rem;
   margin: 1.5rem 0;
   background-color: var(--sl-color-gray-6);
@@ -230,7 +244,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
   font-size: 3rem;
   color: var(--sl-color-accent);
   position: absolute;
-  left: 0.5rem;
+  inset-inline-start: 0.5rem;
   top: -0.5rem;
   line-height: 1;
   opacity: 0.3;
@@ -304,7 +318,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
   top: var(--sl-nav-height);
   height: calc(100vh - var(--sl-nav-height));
   overflow-y: auto;
-  padding-right: 1rem;
+  padding-inline-end: 1rem;
 }
 
 /* フッター */
@@ -341,7 +355,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
 }
 
 .article-content th {
-  text-align: left;
+  text-align: start;
   letter-spacing: 0.05em;
 }
 
@@ -364,7 +378,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
   color: var(--sl-color-gray-4);
   text-decoration: none;
   opacity: 0;
-  margin-left: 0.5rem;
+  margin-inline-start: 0.5rem;
   transition: opacity 0.2s ease;
 }
 
@@ -392,7 +406,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
   }
   
   .article-content blockquote {
-    border-left: 4px solid #000;
+    border-inline-start: 4px solid #000;
     background: #f5f5f5;
   }
 }
@@ -455,7 +469,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
   
   .article-content ul,
   .article-content ol {
-    padding-left: 1rem;
+    padding-inline-start: 1rem;
   }
   
   .article-content blockquote {
@@ -523,7 +537,7 @@ body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textar
   }
   
   .article-content blockquote {
-    border-left-width: 6px;
+    border-inline-start-width: 6px;
   }
   
   .article-content code {

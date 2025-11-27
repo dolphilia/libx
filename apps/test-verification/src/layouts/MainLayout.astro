@@ -5,6 +5,7 @@
  */
 import { Footer, LanguageSelector, ThemeToggle } from '@docs/ui/components';
 import { VersionSelector } from '@docs/versioning/components';
+import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 import '../styles/global.css';
 import { getProjectConfig, getDisplayNameAsync } from '@docs/project-config';
@@ -48,9 +49,11 @@ const {
 // プロジェクト設定を読み込み
 const projectConfig = await getProjectConfig();
 const displayName = await getDisplayNameAsync(lang);
+const dir = getLocaleDirection(lang);
+const breadcrumbIcon = dir === 'rtl' ? 'chevron-left' : 'chevron-right';
 
 // HTML属性の設定
-const htmlDataAttributes: Record<string, string> = { 'data-theme': 'dark' };
+const htmlDataAttributes: Record<string, string> = { 'data-theme': 'dark', 'data-dir': dir };
 if (hasToc) htmlDataAttributes['data-has-toc'] = '';
 if (hasSidebar) htmlDataAttributes['data-has-sidebar'] = '';
 
@@ -63,7 +66,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
 ---
 
 <!DOCTYPE html>
-<html lang={lang} {...htmlDataAttributes}>
+<html lang={lang} dir={dir} {...htmlDataAttributes}>
   <head>
     <meta charset="utf-8" />
 <link rel="icon" type="image/svg+xml" href={`${projectConfig.paths.baseUrl}/favicon.svg`} />
@@ -102,7 +105,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
       }
     </script>
   </head>
-  <body>
+  <body dir={dir}>
     <div class="page">
       <header class="header">
         <div class="header-container">
@@ -111,7 +114,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
               {showBreadcrumb ? (
                 <div class="breadcrumb-title">
                   <a href={`/${lang}`} class="site-title">Libx</a>
-                  <svg class="breadcrumb-separator" viewBox="0 0 24 24" set:html={Icons['chevron-right']} />
+                  <svg class="breadcrumb-separator" viewBox="0 0 24 24" set:html={Icons[breadcrumbIcon]} />
                   <a href={docTopLink} class="doc-title">{displayName}</a>
                 </div>
               ) : (
@@ -124,13 +127,14 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
                   <VersionSelector
                     currentVersion={version}
                     versions={projectConfig.versioning.versions}
-  basePath={projectConfig.paths.baseUrl}
+                    basePath={projectConfig.paths.baseUrl}
                     currentSlug={currentSlugForSelector}
+                    dir={dir}
                   />
                 </div>
               )}
               <div class="language-selector-container" aria-label="言語選択">
-                <LanguageSelector currentLang={lang} />
+                <LanguageSelector currentLang={lang} dir={dir} />
               </div>
               <ThemeToggle />
             </div>
@@ -150,6 +154,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
         lang={lang}
         showLicenseAttribution={true}
         projectConfig={projectConfig}
+        dir={dir}
       />
     </div>
   </body>

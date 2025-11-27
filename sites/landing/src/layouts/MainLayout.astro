@@ -1,5 +1,6 @@
 ---
 import { Footer, ThemeToggle, LanguageSelector } from '@docs/ui/components';
+import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 import '../styles/global.css';
 
@@ -36,6 +37,7 @@ const {
   supportedLangs,
   baseUrl,
 } = Astro.props;
+const dir = getLocaleDirection(lang);
 
 const normalizedSupportedLangs =
   supportedLangs && supportedLangs.length > 0 ? supportedLangs : [lang];
@@ -81,10 +83,15 @@ const translationFooterLink = {
 
 const currentLangPath =
   languagePaths.find((entry) => entry.isCurrent)?.path ?? buildLanguagePath(lang);
+
+const htmlAttributes = {
+  'data-theme': 'dark',
+  'data-dir': dir
+};
 ---
 
 <!DOCTYPE html>
-<html lang={lang} data-theme="dark">
+<html lang={lang} dir={dir} {...htmlAttributes}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={faviconPath} />
@@ -115,7 +122,7 @@ const currentLangPath =
     <!-- 追加のheadコンテンツ用スロット -->
     <slot name="head" />
   </head>
-  <body>
+  <body dir={dir}>
     <div class="page">
       <header class="header">
         <div class="header-container">
@@ -131,6 +138,7 @@ const currentLangPath =
                   currentLang={lang}
                   langPaths={languagePaths}
                   footerLink={translationFooterLink}
+                  dir={dir}
                 />
               </div>
               <div class="theme-toggle-container">
@@ -152,6 +160,7 @@ const currentLangPath =
         showContribute={true}
         contributeUrl="https://github.com/libx-dev/libx-dev"
         lang={lang}
+        dir={dir}
       />
     </div>
   </body>

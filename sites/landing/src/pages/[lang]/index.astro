@@ -2,6 +2,7 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import { ProjectCard } from '@docs/ui/components';
 import { getTopPageConfig, generateProjectUrl } from '@docs/landing';
+import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { translate } from '@docs/i18n/utils';
 
@@ -21,6 +22,7 @@ const currentLang = lang as LocaleKey;
 const topPageConfig = await getTopPageConfig();
 const { projects, heroTitle, heroDescription, siteName, siteDescription } = topPageConfig;
 console.log(`Displaying ${projects.length} projects from config for lang: ${currentLang}`);
+const dir = getLocaleDirection(currentLang);
 
 const projectsWithUrls = await Promise.all(
   projects.map(async (project) => ({
@@ -42,13 +44,13 @@ const pageTitle = siteName;
   <!-- メタデータを設定 -->
   <meta name="description" content={siteDescription[currentLang]} slot="head" />
   <!-- ヒーローセクション -->
-  <section class="hero-section">
+  <section class="hero-section" dir={dir}>
     <h1 class="hero-title">{heroTitle[currentLang]}</h1>
     <p class="hero-description">{heroDescription[currentLang]}</p>
   </section>
   
   <!-- プロジェクトセクション -->
-  <section class="section">
+  <section class="section" dir={dir}>
     <div class="container">
       <h2 class="section-title">{translate('projects.title', currentLang)}</h2>
       <p class="section-description">{translate('projects.description', currentLang)}</p>

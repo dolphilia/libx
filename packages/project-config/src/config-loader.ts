@@ -3,6 +3,7 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 import {
   type ProjectConfigJSON,
@@ -27,6 +28,13 @@ import { stripJsonComments } from './jsonc';
  */
 export function resolveProjectDir(projectDir?: string): string {
   return projectDir ? path.resolve(projectDir) : process.cwd();
+}
+
+/**
+ * 言語コードから文字方向を解決
+ */
+export function resolveLocaleDirection(lang?: LocaleKey | string): 'ltr' | 'rtl' {
+  return getLocaleDirection(lang);
 }
 
 /**

@@ -10,6 +10,7 @@ interface Props {
   className?: string;
   showVersionHistory?: boolean;
   showVersionAlert?: boolean; // バージョン警告を表示するかどうか
+  dir?: 'ltr' | 'rtl';
 }
 
 const {
@@ -19,7 +20,8 @@ const {
   currentSlug = '', // 追加
   className = '',
   showVersionHistory = false,
-  showVersionAlert = false // デフォルトで非表示
+  showVersionAlert = false, // デフォルトで非表示
+  dir = 'ltr'
 } = Astro.props;
 
 // 現在のバージョンオブジェクトを取得
@@ -103,12 +105,13 @@ function getDiffPath(): string {
 }
 ---
 
-<div class:list={['version-selector', className]}>
+<div class:list={['version-selector', className]} dir={dir}>
   <Dropdown 
     label={currentVersionObj.name}
-    align="right"
+    align={dir === 'rtl' ? 'left' : 'right'}
     width="14rem"
     class="version-dropdown"
+    dir={dir}
   >
     <div class="version-dropdown-header" slot="before-items">
       <Icon name="file-text" class="version-icon" />
@@ -376,11 +379,11 @@ function getDiffPath(): string {
 
   .version-history-name {
     font-weight: 500;
-    margin-right: 0.5rem;
+    margin-inline-end: 0.5rem;
   }
 
   .version-history-date {
-    margin-left: auto;
+    margin-inline-start: auto;
     font-size: 0.75rem;
     color: var(--sl-color-gray-5, #6b7280);
   }

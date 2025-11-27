@@ -18,6 +18,8 @@ import tr from './tr.json';
 import hi from './hi.json';
 import vi from './vi.json';
 
+export type TextDirection = 'ltr' | 'rtl';
+
 export const locales = {
   en,
   ja,
@@ -41,19 +43,42 @@ export type SupportedLocales = Record<LocaleKey, Record<string, string>>;
 
 export const defaultLocale: LocaleKey = 'en';
 export const supportedLocales: LocaleKey[] = [
-  'en', 
-  'ja', 
-  'zh-Hans', 
-  'zh-Hant', 
-  'es', 
-  'pt-BR', 
-  'ko', 
-  'de', 
-  'fr', 
-  'ru', 
-  'ar', 
-  'id', 
-  'tr', 
-  'hi', 
+  'en',
+  'ja',
+  'zh-Hans',
+  'zh-Hant',
+  'es',
+  'pt-BR',
+  'ko',
+  'de',
+  'fr',
+  'ru',
+  'ar',
+  'id',
+  'tr',
+  'hi',
   'vi'
 ];
+
+/**
+ * RTL（右から左）方向のロケールリスト
+ */
+export const rtlLocales: LocaleKey[] = ['ar'];
+
+/**
+ * 指定した言語コードが RTL かどうかを判定
+ */
+export function isRtlLocale(lang?: string | LocaleKey): boolean {
+  if (!lang) {
+    return false;
+  }
+
+  return rtlLocales.includes(lang as LocaleKey);
+}
+
+/**
+ * 指定した言語コードの文字方向を取得
+ */
+export function getLocaleDirection(lang?: string | LocaleKey): TextDirection {
+  return isRtlLocale(lang) ? 'rtl' : 'ltr';
+}

@@ -82,9 +82,12 @@ const nextText = translate('pagination.next', lang);
     gap: 1rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    /* 前のページのみの場合でもレイアウトを維持 */
     grid-template-areas: "prev next";
   }
+
+.pagination-links[dir='rtl'] {
+  grid-template-areas: "next prev";
+}
 
   a {
     display: flex;
@@ -103,6 +106,7 @@ const nextText = translate('pagination.next', lang);
   
   a[rel='prev'] {
     justify-content: flex-start;
+    text-align: start;
     grid-area: prev;
     justify-self: start;
   }
@@ -114,6 +118,18 @@ const nextText = translate('pagination.next', lang);
     grid-area: next;
     justify-self: end;
   }
+
+.pagination-links[dir='rtl'] a[rel='prev'] {
+  justify-content: flex-end;
+  text-align: end;
+  flex-direction: row-reverse;
+}
+
+.pagination-links[dir='rtl'] a[rel='next'] {
+  justify-content: flex-start;
+  text-align: start;
+  flex-direction: row;
+}
   
   /* 片方のリンクのみの場合の調整 */
   .pagination-links:has(a[rel='prev']:only-child) a[rel='prev'] {
@@ -125,6 +141,14 @@ const nextText = translate('pagination.next', lang);
     grid-area: next;
     justify-self: end;
   }
+
+.pagination-links[dir='rtl']:has(a[rel='prev']:only-child) a[rel='prev'] {
+  justify-self: end;
+}
+
+.pagination-links[dir='rtl']:has(a[rel='next']:only-child) a[rel='next'] {
+  justify-self: start;
+}
   
   a:hover {
     border-color: var(--sl-color-gray-2);

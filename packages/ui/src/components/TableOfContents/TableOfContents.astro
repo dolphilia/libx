@@ -39,6 +39,11 @@ interface Props {
    * @default false
    */
   isMobile?: boolean;
+  /**
+   * 文字方向
+   * @default 'ltr'
+   */
+  dir?: 'ltr' | 'rtl';
 }
 
 const {
@@ -46,7 +51,8 @@ const {
   minLevel = 2,
   maxLevel = 3,
   lang = 'en' as LocaleKey,
-  isMobile = false
+  isMobile = false,
+  dir = 'ltr'
 } = Astro.props;
 
 // 指定されたレベル範囲内の見出しのみをフィルタリング
@@ -59,7 +65,7 @@ const TOC_TITLE = 'docs.onThisPage';
 ---
 
 {filteredHeadings.length > 0 && (
-  <starlight-toc data-min-h={minLevel} data-max-h={maxLevel} class:list={{ "starlight-toc--mobile": isMobile }}>
+  <starlight-toc data-min-h={minLevel} data-max-h={maxLevel} class:list={{ "starlight-toc--mobile": isMobile }} dir={dir}>
     <div class="starlight-toc-wrapper">
       <nav aria-labelledby="starlight-toc-heading">
         <h3 id="starlight-toc-heading" class="starlight-toc-heading">{translate(TOC_TITLE, lang)}</h3>

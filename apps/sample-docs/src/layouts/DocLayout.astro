@@ -2,6 +2,7 @@
 import MainLayout from './MainLayout.astro';
 import { Sidebar, TableOfContents } from '@docs/ui/components';
 import { translate } from '@docs/i18n/utils';
+import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 
 // 設定ファイルのインポート
@@ -33,6 +34,7 @@ interface Props {
 
 const { title, lang: langProp, version } = Astro.props;
 const lang = langProp as LocaleKey;
+const dir = getLocaleDirection(lang);
 
 // ベースパスの取得
 const baseUrl = projectConfig.baseUrl;
@@ -82,31 +84,32 @@ const hasToc = true;
 ---
 
 <MainLayout title={title} lang={lang} version={version} hasSidebar={true} hasToc={hasToc} showVersionSelector={true} showBreadcrumb={true}>
-  <div class="doc-layout-container">
-    <aside class="sidebar-column print:hidden">
+  <div class="doc-layout-container" dir={dir}>
+    <aside class="sidebar-column print:hidden" dir={dir}>
       <div class="sidebar-content">
         <Sidebar 
           items={markedSidebarItems} 
           title={translate(TRANSLATION_KEYS.DOCUMENTATION, lang)} 
+          dir={dir}
         />
       </div>
     </aside>
     
-    <div class="main-column">
+    <div class="main-column" dir={dir}>
       <div class="content-panel">
-        <article class="sl-markdown-content">
+        <article class="sl-markdown-content" dir={dir}>
           <slot />
         </article>
       </div>
     </div>
     
     {hasToc && (
-      <aside class="toc-column print:hidden">
+      <aside class="toc-column print:hidden" dir={dir}>
         <div class="toc-content">
           {Astro.slots.has('toc') ? (
             <slot name="toc" />
           ) : (
-            <TableOfContents headings={[]} minLevel={2} maxLevel={2} lang={lang} />
+            <TableOfContents headings={[]} minLevel={2} maxLevel={2} lang={lang} dir={dir} />
           )}
         </div>
       </aside>

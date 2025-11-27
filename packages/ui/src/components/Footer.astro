@@ -32,6 +32,7 @@ interface Props {
   licenseSource?: string;
   customAttribution?: string;
   hideAttribution?: boolean;
+  dir?: 'ltr' | 'rtl';
 }
 
 const { 
@@ -50,11 +51,12 @@ const {
   showLicenseAttribution = false,
   licenseSource,
   customAttribution,
-  hideAttribution = false
+  hideAttribution = false,
+  dir = 'ltr'
 } = Astro.props;
 ---
 
-<footer class:list={['footer', className, { 'footer-sticky': sticky }]}>
+<footer class:list={['footer', className, { 'footer-sticky': sticky }]} dir={dir}>
   <div class="footer-container">
     <div class="footer-content">
       {showPagination && <Pagination prev={prevPage} next={nextPage} />}
