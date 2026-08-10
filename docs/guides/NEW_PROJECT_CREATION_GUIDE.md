@@ -27,7 +27,7 @@ node scripts/create-project.js my-docs "My Documentation" "私のドキュメン
 node scripts/create-project.js api-docs "API Documentation" "API文書" --icon=code --tags=api,reference
 ```
 
-> ℹ️ `language.default` を省略すると、`config/global-defaults.json` の `defaultLang` を参照し、そこにも値が無い場合は `"en"` が適用されます。
+> ℹ️ 既定言語はプロジェクト設定の `language.default` で指定します。リポジトリ共通の既定値も `config/global-defaults.jsonc` の `language.default` に統一されています。
 
 **結果**: プロジェクトコピー、設定ファイル更新、依存関係インストール、ビルドテストがすべて自動実行されます。
 
@@ -331,7 +331,7 @@ export default defineConfig({
 }
 ```
 
-> ℹ️ `language.default` を省略すると、`config/global-defaults.json` の `defaultLang` を参照し、そこにも値が無い場合は `"en"` が適用されます。
+> ℹ️ 既定言語はプロジェクト設定の `language.default` で指定します。リポジトリ共通の既定値も `config/global-defaults.jsonc` の `language.default` に統一されています。
 
 ### 5. ランディングページの設定更新
 
@@ -369,17 +369,16 @@ pnpm install
 
 コピーしたテンプレートには以下の共有パッケージが組み込まれており、個別に `src/lib` や `src/utils` を維持する必要はありません。
 
-- **`@docs/project-config`**: `getProjectConfig` / `getLegacyProjectConfig` で `project.config.jsonc` を読み込み、キャッシュします。SSRでは `initializeConfig()` を呼んだ後に同期API（`getLegacyConfig` など）が利用できます。
+- **`@docs/project-config`**: 非同期の `getProjectConfig` で `project.config.jsonc` を読み込み、キャッシュします。
 - **`@docs/content-utils`**: サイドバー生成、ページネーション、バージョンリンク解決などの処理を提供します。`pathPattern` オプションで `version-first`（既定）か `locale-first` を選択してください。
 
 ```ts
-import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
+import { getProjectConfig } from '@docs/project-config';
 import { getSidebarAsync } from '@docs/content-utils';
 
-await initializeConfig();
-const projectConfig = await getLegacyProjectConfig();
+const projectConfig = await getProjectConfig();
 
-const sidebar = await getSidebarAsync('en', 'v1', projectConfig.baseUrl);
+const sidebar = await getSidebarAsync('en', 'v1', projectConfig.paths.baseUrl);
 ```
 
 ### 8. 動作確認

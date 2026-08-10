@@ -58,31 +58,27 @@ const combinedLanguageNames = {
 const resolvedSupportedLangs =
   supportedLangs?.length > 0
     ? supportedLangs
-    : projectConfig?.language?.supported ?? [currentLang];
+    : (projectConfig?.language?.supported ?? [currentLang]);
 
 const normalizedBaseUrl =
   typeof baseUrl === 'string'
     ? baseUrl.replace(/\/$/, '')
-    : projectConfig?.paths.baseUrl?.replace(/\/$/, '') ?? '';
+    : (projectConfig?.paths.baseUrl?.replace(/\/$/, '') ?? '');
 
-const fallbackLangPaths = resolvedSupportedLangs.map((langCode) =>
-  createFallbackPath(langCode)
-);
+const fallbackLangPaths = resolvedSupportedLangs.map((langCode) => createFallbackPath(langCode));
 
 const resolvedLangPaths =
   langPaths && langPaths.length
     ? langPaths
     : projectConfig
-    ? computeLangPathsFromProjectConfig()
-    : fallbackLangPaths;
+      ? computeLangPathsFromProjectConfig()
+      : fallbackLangPaths;
 
 const validLangPaths = resolvedLangPaths.length ? resolvedLangPaths : fallbackLangPaths;
 const dropdownLabel = combinedLanguageNames[currentLang] ?? currentLang;
 
 function createFallbackPath(langCode: string): LangPathInfo {
-  let path = normalizedBaseUrl
-    ? `${normalizedBaseUrl}/${langCode}`
-    : `/${langCode}`;
+  let path = normalizedBaseUrl ? `${normalizedBaseUrl}/${langCode}` : `/${langCode}`;
 
   if (!path.startsWith('/')) {
     path = `/${path}`;
@@ -123,9 +119,7 @@ function computeLangPathsFromProjectConfig(): LangPathInfo[] {
     pathWithoutBase = '/';
   }
 
-  const pathSegments = pathWithoutBase
-    .split('/')
-    .filter((segment) => segment.length > 0);
+  const pathSegments = pathWithoutBase.split('/').filter((segment) => segment.length > 0);
 
   let versionFromPath: string | undefined;
   let langFromPath: string | undefined;
@@ -161,9 +155,7 @@ function computeLangPathsFromProjectConfig(): LangPathInfo[] {
     pathChunks.push(langCode);
 
     if (slugFromPath && slugFromPath !== '/') {
-      const cleanSlug = slugFromPath.endsWith('/')
-        ? slugFromPath.slice(0, -1)
-        : slugFromPath;
+      const cleanSlug = slugFromPath.endsWith('/') ? slugFromPath.slice(0, -1) : slugFromPath;
       if (cleanSlug) {
         pathChunks.push(cleanSlug);
       }
@@ -192,6 +184,7 @@ function computeLangPathsFromProjectConfig(): LangPathInfo[] {
   });
 }
 ---
+
 <div class="language-selector-container" dir={dir}>
   <Dropdown
     label={dropdownLabel}
@@ -202,36 +195,31 @@ function computeLangPathsFromProjectConfig(): LangPathInfo[] {
   >
     <div class="language-dropdown-header" slot="before-items">
       <Icon name="languages" class="language-icon" />
-      <span>言語を選択</span>
+      <span>{translate('docs.language', currentLang as LocaleKey)}</span>
     </div>
 
-    {validLangPaths.map((pathInfo) => (
-      <DropdownItem
-        label={pathInfo.name}
-        href={pathInfo.path}
-        isActive={pathInfo.isCurrent}
-      >
-        {pathInfo.isCurrent && (
-          <span slot="after-label" class="language-current-badge">
-            {translate('docs.current', currentLang as LocaleKey)}
-          </span>
-        )}
-      </DropdownItem>
-    ))}
+    {
+      validLangPaths.map((pathInfo) => (
+        <DropdownItem label={pathInfo.name} href={pathInfo.path} isActive={pathInfo.isCurrent}>
+          {pathInfo.isCurrent && (
+            <span slot="after-label" class="language-current-badge">
+              {translate('docs.current', currentLang as LocaleKey)}
+            </span>
+          )}
+        </DropdownItem>
+      ))
+    }
 
-    {footerLink && (
-      <div class="language-dropdown-footer" slot="after-items">
-        <a
-          href={footerLink.href}
-          class="language-footer-link"
-          target="_blank"
-          rel="noopener"
-        >
-          <Icon name={footerLink.icon ?? 'external-link'} class="language-footer-icon" />
-          {footerLink.label}
-        </a>
-      </div>
-    )}
+    {
+      footerLink && (
+        <div class="language-dropdown-footer" slot="after-items">
+          <a href={footerLink.href} class="language-footer-link" target="_blank" rel="noopener">
+            <Icon name={footerLink.icon ?? 'external-link'} class="language-footer-icon" />
+            {footerLink.label}
+          </a>
+        </div>
+      )
+    }
   </Dropdown>
 </div>
 

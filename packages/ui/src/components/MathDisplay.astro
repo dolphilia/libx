@@ -14,24 +14,21 @@ interface Props {
   [key: string]: unknown;
 }
 
-const {
-  expression,
-  block = false,
-  options = {},
-  class: className = '',
-  ...rest
-} = Astro.props;
+const { expression, block = false, options = {}, class: className = '', ...rest } = Astro.props;
 
 const katexOptions: KatexOptions = {
   throwOnError: false,
   displayMode: block,
-  ...options
+  ...options,
 };
 
 const rendered = katex.renderToString(expression, katexOptions);
 ---
 
-<div class:list={['math-display', block ? 'math-display-block' : 'math-display-inline', className]} {...rest}>
+<div
+  class:list={['math-display', block ? 'math-display-block' : 'math-display-inline', className]}
+  {...rest}
+>
   <Fragment set:html={rendered} />
 </div>
 

@@ -19,7 +19,7 @@
 src/
 ├── components/          # プロジェクト固有のコンポーネント
 ├── config/             # プロジェクト設定ファイル
-│   ├── project.config.json
+│   ├── project.config.jsonc
 │   └── ...
 ├── content/            # ドキュメントコンテンツ
 │   └── docs/
@@ -43,7 +43,7 @@ src/
 
 ## カスタマイズ
 
-1. **プロジェクト設定**: `src/config/project.config.json`
+1. **プロジェクト設定**: `src/config/project.config.jsonc`
 2. **コンテンツ**: `src/content/docs/`
 3. **スタイル**: `src/styles/`
 4. **コンポーネント**: `src/components/`

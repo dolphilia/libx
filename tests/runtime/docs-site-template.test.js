@@ -10,7 +10,7 @@ import {
   updateAstroConfig,
   updatePackageJson,
   updateProjectConfig,
-  validateTemplate
+  validateTemplate,
 } from '../../scripts/create-project.js';
 
 const testDir = path.dirname(fileURLToPath(import.meta.url));
@@ -23,7 +23,7 @@ const requiredPaths = [
   'src/config/project.config.jsonc',
   'src/content/docs/v1/en/01-guide/01-getting-started.mdx',
   'src/pages/index.astro',
-  'src/pages/[version]/[lang]/[...slug].astro'
+  'src/pages/[version]/[lang]/[...slug].astro',
 ];
 
 test('canonical documentation template has the required structure', () => {
@@ -51,7 +51,7 @@ test('canonical template can be copied and configured as an application', async 
     displayNameEn: 'Generated Docs',
     displayNameJa: '生成ドキュメント',
     descriptionEn: 'Generated documentation',
-    descriptionJa: '生成されたドキュメント'
+    descriptionJa: '生成されたドキュメント',
   });
 
   const packageJson = JSON.parse(fs.readFileSync(path.join(generatedDir, 'package.json'), 'utf8'));

@@ -70,10 +70,17 @@
     padding: 0.25rem;
     margin: -0.25rem;
     min-width: 0;
+    min-height: 44px;
   }
 
   .site-title,
   .doc-title {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 44px;
+    min-height: 44px;
+    padding-inline: 0.5rem;
     font-size: var(--sl-text-lg);
     font-weight: 600;
     color: var(--sl-color-white);
@@ -98,7 +105,14 @@
     opacity: 0.6;
   }
 
-  :is(.dark, [data-theme="dark"]) .breadcrumb-separator {
+  @media (max-width: 49.999em) {
+    .breadcrumb-separator,
+    .doc-title {
+      display: none;
+    }
+  }
+
+  :is(.dark, [data-theme='dark']) .breadcrumb-separator {
     stroke: #ffffff;
     opacity: 0.8;
   }

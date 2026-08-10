@@ -9,17 +9,27 @@
 - `LANGUAGE_ADDITION_GUIDE.md` – 新しい言語を追加するための手順
 - `NEW_PROJECT_CREATION_GUIDE.md` – 新規ドキュメントプロジェクトの作成方法
 - `VERSION_ADDITION_GUIDE.md` – バージョンを追加するプロセス
+- `PERFORMANCE_MEASUREMENT_GUIDE.md` – 読者性能・管理者性能の測定条件と予算運用
 
 ## ノート (`docs/notes`)
 - `LIBX_CONCEPT_AND_DIRECTION_RESEARCH.md` – libx のコンセプト・方針・方向性に関する調査と推論
+- `PROJECT_PRINCIPLES_COMPLIANCE_AUDIT.md` – 正式原則を基準にしたリポジトリ全体の準拠状況と改善点の再調査
+- `PROJECT_PRINCIPLES_COMPLIANCE_IMPLEMENTATION_LOG.md` – 正式原則準拠改善計画の実施内容と検証結果
+- `PERFORMANCE_BASELINE_2026-08-11.md` – 正式原則準拠改善後の性能基準値
 
 ## ADR (`docs/adr`)
 - `README.md` – ADRの対象、命名、ステータス、承認手順
 - `0000-template.md` – 新しいADRを作成するためのテンプレート
 - `0001-adopt-project-principles.md` – libxの正式原則を採用した決定記録
 - `0002-separate-documentation-template.md` – 正規テンプレートを配信アプリから分離した決定記録
+- `0003-canonical-project-configuration.md` – プロジェクト設定と既定値の正本
+- `0004-generated-artifact-policy.md` – サイドバーとService Workerの生成物方針
+- `0005-package-boundaries-and-performance-budgets.md` – 公開境界、Astro依存、性能予算
 
 ## 計画 (`docs/plans`)
+- `CODE_QUALITY_IMPROVEMENT_PLAN.md` – コード品質改善の実施計画と受け入れ基準
+- `PROJECT_PRINCIPLES_COMPLIANCE_IMPROVEMENT_PLAN.md` – 正式原則準拠監査で確認した課題の優先度付き改善計画
+- `RTL_SUPPORT_PLAN.md` – ドキュメントサイトとランディングのRTL対応計画
 - `TOP_PAGE_RELOCATION_PLAN.md` – トップページ移設に向けた計画案
 
 ## 仕様 (`docs/spec`)

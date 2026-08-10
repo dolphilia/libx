@@ -54,14 +54,11 @@ async function getProjectSupportedLanguages(project: Project): Promise<LocaleKey
       'src',
       'config'
     );
-    const jsoncPath = path.join(baseConfigDir, 'project.config.jsonc');
-    const jsonPath = path.join(baseConfigDir, 'project.config.json');
-    const projectConfigPath = await fileExists(jsoncPath) ? jsoncPath : jsonPath;
+    const projectConfigPath = path.join(baseConfigDir, 'project.config.jsonc');
     const configContent = await fs.readFile(projectConfigPath, 'utf-8');
     const config = JSON.parse(stripJsonComments(configContent));
 
-    const preferredSupported = config.language?.supported ?? config.basic?.supportedLangs;
-    return await resolveSupportedLangs(preferredSupported as LocaleKey[] | undefined);
+    return await resolveSupportedLangs(config.language?.supported as LocaleKey[] | undefined);
   } catch {
     try {
       const contentDir = path.resolve(
@@ -103,16 +100,11 @@ async function getProjectSupportedLanguages(project: Project): Promise<LocaleKey
   return ['en'];
 }
 
-async function fileExists(filePath: string): Promise<boolean> {
-  try {
-    await fs.access(filePath);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function generateDynamicUrl(contentPath: string, lang: LocaleKey, basePath: string): Promise<string | null> {
+async function generateDynamicUrl(
+  contentPath: string,
+  lang: LocaleKey,
+  basePath: string
+): Promise<string | null> {
   const isProd = typeof window !== 'undefined' || process.env.NODE_ENV === 'production';
 
   if (isProd) {
@@ -131,7 +123,10 @@ async function generateDynamicUrl(contentPath: string, lang: LocaleKey, basePath
   return `${basePath}/v2/${lang}/01-guide/01-getting-started`;
 }
 
-async function findFirstAvailablePage(contentPath: string, lang: LocaleKey): Promise<string | null> {
+async function findFirstAvailablePage(
+  contentPath: string,
+  lang: LocaleKey
+): Promise<string | null> {
   try {
     const contentDir = path.resolve(
       process.cwd(),
@@ -146,7 +141,7 @@ async function findFirstAvailablePage(contentPath: string, lang: LocaleKey): Pro
 
     const versions = await fs.readdir(contentDir, { withFileTypes: true });
     const sortedVersions = versions
-      .filter(v => v.isDirectory())
+      .filter((v) => v.isDirectory())
       .sort((a, b) => {
         if (a.name === 'v2' && b.name === 'v1') return -1;
         if (a.name === 'v1' && b.name === 'v2') return 1;
@@ -159,13 +154,13 @@ async function findFirstAvailablePage(contentPath: string, lang: LocaleKey): Pro
         await fs.access(langDir);
         const categories = await fs.readdir(langDir, { withFileTypes: true });
         const sortedCategories = categories
-          .filter(c => c.isDirectory())
+          .filter((c) => c.isDirectory())
           .sort((a, b) => a.name.localeCompare(b.name));
 
         for (const category of sortedCategories) {
           const categoryPath = path.join(langDir, category.name);
           const files = await fs.readdir(categoryPath);
-          const mdxFiles = files.filter(f => f.endsWith('.mdx')).sort();
+          const mdxFiles = files.filter((f) => f.endsWith('.mdx')).sort();
 
           if (mdxFiles.length > 0) {
             const fileName = mdxFiles[0].replace('.mdx', '');

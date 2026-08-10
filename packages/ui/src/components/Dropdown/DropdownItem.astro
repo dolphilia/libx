@@ -4,74 +4,62 @@ interface Props {
    * 項目のラベル
    */
   label: string;
-  
+
   /**
    * 項目のリンク先URL（省略可能）
    */
   href?: string;
-  
+
   /**
    * 現在選択されている項目かどうか
    */
   isActive?: boolean;
-  
+
   /**
    * 追加のCSSクラス
    */
   class?: string;
-  
+
   /**
    * その他の属性
    */
   [key: string]: unknown;
 }
 
-const {
-  label,
-  href,
-  isActive = false,
-  class: className = '',
-  ...attrs
-} = Astro.props;
+const { label, href, isActive = false, class: className = '', ...attrs } = Astro.props;
 ---
 
-{href ? (
-  <a 
-    href={href} 
-    class:list={[
-      'dropdown-item',
-      isActive && 'dropdown-item-active',
-      className
-    ]}
-    role="menuitem"
-    tabindex="-1"
-    aria-current={isActive ? 'page' : undefined}
-    {...attrs}
-  >
-    <slot name="before-label" />
-    <span class="dropdown-item-label">{label}</span>
-    <slot name="after-label" />
-    <slot />
-  </a>
-) : (
-  <button 
-    type="button"
-    class:list={[
-      'dropdown-item',
-      isActive && 'dropdown-item-active',
-      className
-    ]}
-    role="menuitem"
-    tabindex="-1"
-    aria-current={isActive ? 'true' : undefined}
-    {...attrs}
-  >
-    <slot name="before-label" />
-    <span class="dropdown-item-label">{label}</span>
-    <slot name="after-label" />
-    <slot />
-  </button>
-)}
+{
+  href ? (
+    <a
+      href={href}
+      class:list={['dropdown-item', isActive && 'dropdown-item-active', className]}
+      role="menuitem"
+      tabindex="-1"
+      aria-current={isActive ? 'page' : undefined}
+      {...attrs}
+    >
+      <slot name="before-label" />
+      <span class="dropdown-item-label">{label}</span>
+      <slot name="after-label" />
+      <slot />
+    </a>
+  ) : (
+    <button
+      type="button"
+      class:list={['dropdown-item', isActive && 'dropdown-item-active', className]}
+      role="menuitem"
+      tabindex="-1"
+      aria-current={isActive ? 'true' : undefined}
+      {...attrs}
+    >
+      <slot name="before-label" />
+      <span class="dropdown-item-label">{label}</span>
+      <slot name="after-label" />
+      <slot />
+    </button>
+  )
+}
 
 <style>
   .dropdown-item {
@@ -85,7 +73,9 @@ const {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
   }
 
   .dropdown-item:hover {

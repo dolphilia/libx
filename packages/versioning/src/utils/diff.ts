@@ -1,6 +1,6 @@
 /**
  * 差分表示ユーティリティ
- * 
+ *
  * このモジュールは、ドキュメントのバージョン間の差分を表示するための
  * ユーティリティ関数を提供します。
  */
@@ -30,34 +30,34 @@ export function diffLines(
   options: DiffOptions = {}
 ): DiffResult[] {
   const { ignoreWhitespace = false, context = 3 } = options;
-  
+
   // diffライブラリを使用して差分を計算
   const changes = diffLib.diffLines(oldText, newText, {
-    ignoreWhitespace
+    ignoreWhitespace,
   });
-  
+
   // 行番号を追跡
   let oldLineNumber = 1;
   let newLineNumber = 1;
-  
+
   // 差分結果を変換
   const results: DiffResult[] = [];
-  
-  changes.forEach(change => {
+
+  changes.forEach((change) => {
     const lines = change.value.split('\n');
     // 最後の空行を削除（改行コードの扱いによる）
     if (lines[lines.length - 1] === '') {
       lines.pop();
     }
-    
-    lines.forEach(line => {
+
+    lines.forEach((line) => {
       const lineNumber: NonNullable<DiffResult['lineNumber']> = {};
       const result: DiffResult = {
         type: change.added ? 'added' : change.removed ? 'removed' : 'unchanged',
         value: line,
-        lineNumber
+        lineNumber,
       };
-      
+
       if (change.added) {
         lineNumber.new = newLineNumber++;
       } else if (change.removed) {
@@ -66,16 +66,16 @@ export function diffLines(
         lineNumber.old = oldLineNumber++;
         lineNumber.new = newLineNumber++;
       }
-      
+
       results.push(result);
     });
   });
-  
+
   // コンテキスト行数の制限を適用
   if (context !== undefined && context >= 0) {
     return limitDiffContext(results, context);
   }
-  
+
   return results;
 }
 
@@ -86,15 +86,15 @@ function limitDiffContext(results: DiffResult[], context: number): DiffResult[] 
   if (context === Infinity) {
     return results;
   }
-  
+
   const limitedResults: DiffResult[] = [];
   let inChangePart = false;
   let unchangedCount = 0;
-  
+
   // 変更部分の前後に指定された行数のコンテキストを残す
   for (let i = 0; i < results.length; i++) {
     const result = results[i];
-    
+
     if (result.type !== 'unchanged') {
       // 変更行の場合
       if (!inChangePart && i > 0) {
@@ -104,7 +104,7 @@ function limitDiffContext(results: DiffResult[], context: number): DiffResult[] 
           limitedResults.push(results[j]);
         }
       }
-      
+
       limitedResults.push(result);
       inChangePart = true;
       unchangedCount = 0;
@@ -122,7 +122,7 @@ function limitDiffContext(results: DiffResult[], context: number): DiffResult[] 
       }
     }
   }
-  
+
   return limitedResults;
 }
 
@@ -135,17 +135,17 @@ export function diffWords(
   options: DiffOptions = {}
 ): DiffResult[] {
   const { ignoreWhitespace = false } = options;
-  
+
   // diffライブラリを使用して単語単位の差分を計算
   const changes = diffLib.diffWords(oldText, newText, {
-    ignoreWhitespace
+    ignoreWhitespace,
   });
-  
+
   // 差分結果を変換
-  return changes.map(change => {
+  return changes.map((change) => {
     const result: DiffResult = {
       type: change.added ? 'added' : change.removed ? 'removed' : 'unchanged',
-      value: change.value
+      value: change.value,
     };
 
     return result;
@@ -157,11 +157,11 @@ export function diffWords(
  */
 export function createHtmlDiff(diffResults: DiffResult[]): string {
   let html = '';
-  
-  diffResults.forEach(result => {
+
+  diffResults.forEach((result) => {
     let className = '';
     let linePrefix = '';
-    
+
     switch (result.type) {
       case 'added':
         className = 'diff-added';
@@ -176,7 +176,7 @@ export function createHtmlDiff(diffResults: DiffResult[]): string {
         linePrefix = ' ';
         break;
     }
-    
+
     // 行番号の表示
     let lineNumberHtml = '';
     if (result.lineNumber) {
@@ -184,10 +184,10 @@ export function createHtmlDiff(diffResults: DiffResult[]): string {
       const newLineNum = result.lineNumber.new || '';
       lineNumberHtml = `<span class="diff-line-number">${oldLineNum}</span><span class="diff-line-number">${newLineNum}</span>`;
     }
-    
+
     html += `<div class="diff-line ${className}">${lineNumberHtml}<span class="diff-prefix">${linePrefix}</span><span class="diff-content">${escapeHtml(result.value)}</span></div>`;
   });
-  
+
   return html;
 }
 

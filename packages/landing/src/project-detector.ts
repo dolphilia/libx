@@ -1,9 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
-import {
-  loadProjectConfig
-} from '@docs/project-config';
+import { loadProjectConfig } from '@docs/project-config';
 import type { ProjectConfig, VersionConfig } from '@docs/project-config';
 
 export interface DetectedProject {
@@ -95,8 +93,9 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
     name: extractDisplayNames(docsConfig),
     description: extractDisplayDescriptions(docsConfig),
     basePath: baseUrl,
-    supportedLangs: actualSupportedLangs.length > 0 ? actualSupportedLangs : docsConfig.language.supported,
-    fallbackUrls
+    supportedLangs:
+      actualSupportedLangs.length > 0 ? actualSupportedLangs : docsConfig.language.supported,
+    fallbackUrls,
   };
 }
 
@@ -143,15 +142,15 @@ function getLatestVersion(versions: VersionConfig[]): string {
     return 'v1';
   }
 
-  const latestVersion = versions.find(v => v.isLatest);
+  const latestVersion = versions.find((v) => v.isLatest);
   if (latestVersion) {
     return latestVersion.id;
   }
 
-  const v2 = versions.find(v => v.id === 'v2');
+  const v2 = versions.find((v) => v.id === 'v2');
   if (v2) return 'v2';
 
-  const v1 = versions.find(v => v.id === 'v1');
+  const v1 = versions.find((v) => v.id === 'v1');
   if (v1) return 'v1';
 
   return versions[0]?.id || 'v1';
@@ -176,7 +175,7 @@ async function scanProjectContent(projectPath: string): Promise<ContentFile[]> {
           version,
           section,
           fileName: fileSlug,
-          url: `${section}/${fileSlug}`
+          url: `${section}/${fileSlug}`,
         });
       }
     }
@@ -213,14 +212,14 @@ async function scanDirectory(dirPath: string, basePath = ''): Promise<string[]> 
 
 function findFirstContentFile(files: ContentFile[], lang: string, version: string): string | null {
   const filtered = files
-    .filter(f => f.lang === lang && f.version === version)
+    .filter((f) => f.lang === lang && f.version === version)
     .sort((a, b) => {
       const sectionPriority: Record<string, number> = {
         guide: 0,
         api: 1,
         examples: 2,
         reference: 3,
-        faq: 4
+        faq: 4,
       };
       const aPriority = sectionPriority[a.section] || 99;
       const bPriority = sectionPriority[b.section] || 99;

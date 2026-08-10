@@ -5,14 +5,14 @@
 // 各モジュールをエクスポート
 export * from './colors';
 export * from './typography';
-export { 
+export {
   spacing,
   containers,
   breakpoints,
   zIndices,
   borderRadius,
   shadows,
-  spacingVariables
+  spacingVariables,
 } from './spacing';
 export * from './css';
 

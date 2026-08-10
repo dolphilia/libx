@@ -26,14 +26,14 @@ libx-dev/
 └── scripts/          # ユーティリティスクリプト
 ```
 
-`config/global-defaults.json` では、`defaultLang` などリポジトリ全体で共有したいフォールバック値を管理します。各アプリやランディングページで `language.default` を省略した場合はこのファイルの `defaultLang`（未設定なら `"en"`）が自動的に適用されます。
+`config/global-defaults.jsonc` では、`language.default` などリポジトリ全体で共有したいフォールバック値を管理します。個別設定の既定言語も同じ `language.default` に統一されています。
 
 ## 開発環境のセットアップ
 
 ### 前提条件
 
-- Node.js 18以上
-- pnpm 8以上
+- Node.js 20以上
+- pnpm 10.10.0以上（リポジトリでは `packageManager` の宣言を使用）
 - Git
 
 ### セットアップ手順
@@ -160,23 +160,21 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
 新しく追加された共有パッケージを利用することで、アプリ固有の `src/lib` や `src/utils` を保持せずに共通ロジックを再利用できます。
 
 - `@docs/project-config`
-  - `getProjectConfig` / `getLegacyProjectConfig` がプロジェクト設定を読み込み、アプリ内でキャッシュします。
+  - `getProjectConfig` がプロジェクト設定を読み込み、アプリ内でキャッシュします。
   - `projectDir` を渡すと別ディレクトリの設定も読み込めます（スクリプト実行時向け）。
-  - `initializeConfig` を呼び出すと同期版API（`getLegacyConfig` など）も利用可能です。
 
 - `@docs/content-utils`
   - サイドバー生成やページネーションで使用するファイル走査・URL生成処理を集約しています。
-  - `pathPattern` オプションでルーティング方式（`'version-first'` / `'locale-first'`）を切り替えられます。`docs-site` テンプレートや `test-verification` は既定値、`sample-docs` のようなロケール先頭ルートでは `pathPattern: 'locale-first'` を指定します。
+  - `pathPattern` オプションでルーティング方式（`'version-first'` / `'locale-first'`）を切り替えられます。現在の `docs-site` テンプレート、`sample-docs`、`test-verification` はすべて既定の `version-first` を使用します。
 
 ```ts
-import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
+import { getProjectConfig } from '@docs/project-config';
 import { getSidebarAsync } from '@docs/content-utils';
 
-await initializeConfig();
-const projectConfig = await getLegacyProjectConfig();
+const projectConfig = await getProjectConfig();
 
-const sidebar = await getSidebarAsync('ja', 'v2', projectConfig.baseUrl, {
-  pathPattern: 'locale-first'
+const sidebar = await getSidebarAsync('ja', 'v2', projectConfig.paths.baseUrl, {
+  pathPattern: 'version-first'
 });
 ```
 

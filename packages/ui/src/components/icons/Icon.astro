@@ -11,39 +11,33 @@ interface Props {
    * アイコン名
    */
   name: IconName;
-  
+
   /**
    * アイコンのサイズ（em、rem、pxなどの単位で指定可能）
    * @default "1em"
    */
   size?: string;
-  
+
   /**
    * アイコンの色
    * @default "currentColor"
    */
   color?: string;
-  
+
   /**
    * アイコンのラベル（アクセシビリティ用）
    * 指定すると、スクリーンリーダーでラベルが読み上げられます
    * 指定しない場合、アイコンは装飾的なものとして扱われます
    */
   label?: string;
-  
+
   /**
    * 追加のCSSクラス
    */
   class?: string;
 }
 
-const { 
-  name, 
-  size = '1em', 
-  color,
-  label,
-  class: className = '',
-} = Astro.props;
+const { name, size = '1em', color, label, class: className = '' } = Astro.props;
 
 // ラベルが指定されている場合はaria-labelを設定、そうでない場合はaria-hiddenを設定
 const a11yAttrs = label ? ({ 'aria-label': label } as const) : ({ 'aria-hidden': 'true' } as const);

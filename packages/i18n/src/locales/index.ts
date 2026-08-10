@@ -2,24 +2,21 @@
  * 翻訳ファイル
  */
 
-import en from './en.json';
-import ja from './ja.json';
-import zhHans from './zh-Hans.json';
-import zhHant from './zh-Hant.json';
-import es from './es.json';
-import ptBR from './pt-BR.json';
-import ko from './ko.json';
-import de from './de.json';
-import fr from './fr.json';
-import ru from './ru.json';
-import ar from './ar.json';
-import id from './id.json';
-import tr from './tr.json';
-import hi from './hi.json';
-import vi from './vi.json';
-import type { LocaleKey } from '../locale-types';
-export type { LocaleKey } from '../locale-types';
-
+import en from './en.json' with { type: 'json' };
+import ja from './ja.json' with { type: 'json' };
+import zhHans from './zh-Hans.json' with { type: 'json' };
+import zhHant from './zh-Hant.json' with { type: 'json' };
+import es from './es.json' with { type: 'json' };
+import ptBR from './pt-BR.json' with { type: 'json' };
+import ko from './ko.json' with { type: 'json' };
+import de from './de.json' with { type: 'json' };
+import fr from './fr.json' with { type: 'json' };
+import ru from './ru.json' with { type: 'json' };
+import ar from './ar.json' with { type: 'json' };
+import id from './id.json' with { type: 'json' };
+import tr from './tr.json' with { type: 'json' };
+import hi from './hi.json' with { type: 'json' };
+import vi from './vi.json' with { type: 'json' };
 export type TextDirection = 'ltr' | 'rtl';
 
 export const locales = {
@@ -37,29 +34,15 @@ export const locales = {
   id,
   tr,
   hi,
-  vi
-};
+  vi,
+} as const;
+
+export type LocaleKey = keyof typeof locales;
 
 export type SupportedLocales = Record<LocaleKey, Record<string, string>>;
 
 export const defaultLocale: LocaleKey = 'en';
-export const supportedLocales: LocaleKey[] = [
-  'en',
-  'ja',
-  'zh-Hans',
-  'zh-Hant',
-  'es',
-  'pt-BR',
-  'ko',
-  'de',
-  'fr',
-  'ru',
-  'ar',
-  'id',
-  'tr',
-  'hi',
-  'vi'
-];
+export const supportedLocales = Object.keys(locales) as LocaleKey[];
 
 /**
  * RTL（右から左）方向のロケールリスト

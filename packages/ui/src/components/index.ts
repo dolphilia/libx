@@ -23,6 +23,7 @@ export { default as ContentNotice } from './ContentNotice.astro';
 export { default as Hero } from './Hero.astro';
 export { default as ThemeToggle } from './ThemeToggle.astro';
 export { default as LanguageSelector } from './LanguageSelector.astro';
+export { default as DocsHeaderFrame } from './DocsHeaderFrame.astro';
 export { default as TwoColumnContent } from './TwoColumnContent.astro';
 
 // 今回追加したStarlightスタイルのコンポーネント

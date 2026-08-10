@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Lint と Format チェック
+  # ローカルと同じ必須品質ゲート
   quality-check:
     runs-on: ubuntu-latest
     steps:
@@ -17,8 +17,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,13 +27,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm lint
-        continue-on-error: true
+      - name: Quality gate
+        run: pnpm check
 
-      - name: Format check
-        run: pnpm prettier --check .
-        continue-on-error: true
+      - name: Verify tracked generated artifacts are current
+        run: git diff --exit-code -- 'apps/*/public/sidebar/**' 'apps/*/public/sw.js' 'templates/*/public/sidebar/**' 'templates/*/public/sw.js'
 
   # Cloudflare Pagesにデプロイ（mainブランチのみ）
   deploy:
@@ -48,8 +44,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

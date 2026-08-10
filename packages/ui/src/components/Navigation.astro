@@ -6,6 +6,8 @@
 import Icon from './icons/Icon.astro';
 import type { IconName } from './icons/Icons';
 import { ThemeToggle } from './index';
+import type { LocaleKey } from '@docs/i18n/locales';
+import { translate } from '@docs/i18n/utils';
 
 interface NavItem {
   /** 表示タイトル */
@@ -43,18 +45,20 @@ interface Props {
   changeOnScroll?: boolean;
   /** 追加のCSSクラス */
   class?: string;
+  lang?: LocaleKey;
 }
 
 // プロパティの分割代入
-const { 
-  items, 
+const {
+  items,
   siteTitle = 'Libx',
   logoUrl,
   socialLinks = [],
   showThemeToggle = true,
   sticky = true,
   changeOnScroll = true,
-  class: className = '' 
+  class: className = '',
+  lang = 'en',
 } = Astro.props;
 
 // 現在のページかどうかを判定するヘルパー関数
@@ -63,7 +67,13 @@ function isCurrentPage(item: NavItem): boolean {
 }
 ---
 
-<header class:list={['header', className, { 'header-sticky': sticky, 'header-with-scroll': changeOnScroll }]}>
+<header
+  class:list={[
+    'header',
+    className,
+    { 'header-sticky': sticky, 'header-with-scroll': changeOnScroll },
+  ]}
+>
   <div class="header-container">
     <div class="header-content">
       <div class="site-title-wrapper">
@@ -72,43 +82,46 @@ function isCurrentPage(item: NavItem): boolean {
           <span>{siteTitle}</span>
         </a>
       </div>
-      
-      <nav class="navigation" aria-label="メインナビゲーション">
+
+      <nav class="navigation" aria-label={translate('accessibility.mainNavigation', lang)}>
         <div class="nav-items">
-          {items.map(item => (
-            <a 
-              href={item.href} 
-              class:list={['nav-item', { active: isCurrentPage(item) }]}
-              aria-current={isCurrentPage(item) ? 'page' : undefined}
-            >
-              {item.icon && <Icon name={item.icon} />}
-              <span>{item.title}</span>
-            </a>
-          ))}
+          {
+            items.map((item) => (
+              <a
+                href={item.href}
+                class:list={['nav-item', { active: isCurrentPage(item) }]}
+                aria-current={isCurrentPage(item) ? 'page' : undefined}
+              >
+                {item.icon && <Icon name={item.icon} />}
+                <span>{item.title}</span>
+              </a>
+            ))
+          }
         </div>
       </nav>
-      
+
       <div class="header-actions">
-        
         <div class="header-right">
-          {socialLinks.length > 0 && (
-            <div class="social-links">
-              {socialLinks.map(({ label, href, icon }) => (
-                <a href={href} rel="me" class="social-link" aria-label={label} title={label}>
-                  <Icon name={icon} />
-                </a>
-              ))}
-            </div>
-          )}
-          
-          {showThemeToggle && <ThemeToggle />}
+          {
+            socialLinks.length > 0 && (
+              <div class="social-links">
+                {socialLinks.map(({ label, href, icon }) => (
+                  <a href={href} rel="me" class="social-link" aria-label={label} title={label}>
+                    <Icon name={icon} />
+                  </a>
+                ))}
+              </div>
+            )
+          }
+
+          {showThemeToggle && <ThemeToggle lang={lang} />}
         </div>
-        
+
         <docs-menu-button>
-          <button 
-            type="button" 
+          <button
+            type="button"
             aria-expanded="false"
-            aria-label="モバイルメニューを切り替え"
+            aria-label={translate('accessibility.toggleMenu', lang)}
             aria-controls="mobile-menu"
             class="menu-toggle-button"
           >
@@ -124,32 +137,35 @@ function isCurrentPage(item: NavItem): boolean {
 <!-- モバイルメニュー -->
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-content">
-    
     <ul class="mobile-nav-items">
-      {items.map(item => (
-        <li>
-          <a 
-            href={item.href} 
-            class:list={['mobile-nav-item', { active: isCurrentPage(item) }]}
-            aria-current={isCurrentPage(item) ? 'page' : undefined}
-          >
-            {item.icon && <Icon name={item.icon} />}
-            <span>{item.title}</span>
-          </a>
-        </li>
-      ))}
+      {
+        items.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={['mobile-nav-item', { active: isCurrentPage(item) }]}
+              aria-current={isCurrentPage(item) ? 'page' : undefined}
+            >
+              {item.icon && <Icon name={item.icon} />}
+              <span>{item.title}</span>
+            </a>
+          </li>
+        ))
+      }
     </ul>
-    
-    {socialLinks.length > 0 && (
-      <div class="mobile-social-links">
-        {socialLinks.map(({ label, href, icon }) => (
-          <a href={href} rel="me" class="mobile-social-link" aria-label={label} title={label}>
-            <Icon name={icon} />
-            <span>{label}</span>
-          </a>
-        ))}
-      </div>
-    )}
+
+    {
+      socialLinks.length > 0 && (
+        <div class="mobile-social-links">
+          {socialLinks.map(({ label, href, icon }) => (
+            <a href={href} rel="me" class="mobile-social-link" aria-label={label} title={label}>
+              <Icon name={icon} />
+              <span>{label}</span>
+            </a>
+          ))}
+        </div>
+      )
+    }
   </div>
 </div>
 
@@ -169,7 +185,9 @@ function isCurrentPage(item: NavItem): boolean {
   }
 
   .header-with-scroll {
-    transition: background-color 0.2s, box-shadow 0.2s;
+    transition:
+      background-color 0.2s,
+      box-shadow 0.2s;
   }
 
   .header-with-scroll.scrolled {
@@ -233,7 +251,9 @@ function isCurrentPage(item: NavItem): boolean {
     font-weight: 500;
     text-decoration: none;
     border-radius: 0.25rem;
-    transition: color 0.2s ease, background-color 0.2s ease;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
   }
 
   .nav-item:hover,
@@ -252,8 +272,7 @@ function isCurrentPage(item: NavItem): boolean {
     content: '';
     position: absolute;
     bottom: -0.25rem;
-    left: 0.5rem;
-    right: 0.5rem;
+    inset-inline: 0.5rem;
     height: 2px;
     background-color: var(--sl-color-text-accent);
     border-radius: 1px;
@@ -264,7 +283,6 @@ function isCurrentPage(item: NavItem): boolean {
     align-items: center;
     gap: 0.5rem;
   }
-
 
   .header-right {
     display: none;
@@ -309,7 +327,8 @@ function isCurrentPage(item: NavItem): boolean {
     background-color: var(--sl-color-gray-5);
   }
 
-  .open-icon, .close-icon {
+  .open-icon,
+  .close-icon {
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -326,8 +345,7 @@ function isCurrentPage(item: NavItem): boolean {
   .mobile-menu {
     position: fixed;
     top: var(--sl-nav-height);
-    left: 0;
-    right: 0;
+    inset-inline: 0;
     bottom: 0;
     background-color: var(--sl-color-bg-nav);
     z-index: var(--sl-z-index-menu);
@@ -335,7 +353,10 @@ function isCurrentPage(item: NavItem): boolean {
     transform: translateY(-100%);
     visibility: hidden;
     opacity: 0;
-    transition: transform 0.3s ease, visibility 0.3s, opacity 0.3s;
+    transition:
+      transform 0.3s ease,
+      visibility 0.3s,
+      opacity 0.3s;
   }
 
   .mobile-menu.visible {
@@ -350,7 +371,6 @@ function isCurrentPage(item: NavItem): boolean {
     flex-direction: column;
     gap: 1.5rem;
   }
-
 
   .mobile-nav-items {
     list-style: none;
@@ -371,7 +391,9 @@ function isCurrentPage(item: NavItem): boolean {
     font-weight: 500;
     text-decoration: none;
     border-radius: 0.25rem;
-    transition: color 0.2s ease, background-color 0.2s ease;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
   }
 
   .mobile-nav-item:hover,
@@ -416,7 +438,6 @@ function isCurrentPage(item: NavItem): boolean {
       display: block;
     }
 
-
     .header-right {
       display: flex;
       align-items: center;
@@ -458,7 +479,7 @@ function isCurrentPage(item: NavItem): boolean {
 
     setExpanded(expanded: boolean) {
       this.button.setAttribute('aria-expanded', String(expanded));
-      
+
       if (this.mobileMenu) {
         if (expanded) {
           this.mobileMenu.classList.add('visible');

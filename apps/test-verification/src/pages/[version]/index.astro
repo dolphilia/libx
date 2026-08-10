@@ -1,14 +1,13 @@
 ---
-import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
+import { getProjectConfig } from '@docs/project-config';
 import type { LocaleKey } from '@docs/i18n/locales';
 
 export async function getStaticPaths() {
   // getStaticPaths内で設定を初期化
-  await initializeConfig();
-  const projectConfig = await getLegacyProjectConfig();
-  
-  return projectConfig.versions.map(v => ({
-    params: { version: v.id }
+  const projectConfig = await getProjectConfig();
+
+  return projectConfig.versioning.versions.map((v) => ({
+    params: { version: v.id },
   }));
 }
 
@@ -16,12 +15,11 @@ const { version: versionParam } = Astro.params;
 const version = versionParam || 'v1';
 
 // 設定を再度初期化（プロパティセクション）
-await initializeConfig();
-const projectConfig = await getLegacyProjectConfig();
-const baseUrl = projectConfig.baseUrl;
+const projectConfig = await getProjectConfig();
+const baseUrl = projectConfig.paths.baseUrl;
 
 // デフォルト言語でリダイレクト
-const defaultLang = projectConfig.defaultLang as LocaleKey;
+const defaultLang = projectConfig.language.default as LocaleKey;
 const redirectUrl = `${baseUrl}/${version}/${defaultLang}/`;
 
 // リダイレクトを実行

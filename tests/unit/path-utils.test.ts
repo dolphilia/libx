@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   buildDocumentPath,
-  selectLatestVersionId
+  selectLatestVersionId,
 } from '../../packages/content-utils/src/path-utils.js';
 
 test('buildDocumentPath builds version-first paths by default', () => {
@@ -14,13 +14,7 @@ test('buildDocumentPath builds version-first paths by default', () => {
 
 test('selectLatestVersionId prefers available content, then the configured latest version', () => {
   assert.equal(selectLatestVersionId(['v1', 'v3', 'v2']), 'v3');
-  assert.equal(
-    selectLatestVersionId([], [
-      { id: 'v1' },
-      { id: 'v2', isLatest: true }
-    ]),
-    'v2'
-  );
+  assert.equal(selectLatestVersionId([], [{ id: 'v1' }, { id: 'v2', isLatest: true }]), 'v2');
 });
 
 test('buildDocumentPath supports locale-first paths and normalizes slashes', () => {

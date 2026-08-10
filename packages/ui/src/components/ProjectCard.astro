@@ -28,32 +28,39 @@ const displayDescription =
   description?.[lang] ?? description?.['en'] ?? `Documentation for ${project.id}`;
 const targetUrl = projectUrl ?? project.path ?? '#';
 ---
+
 <a href={targetUrl} class="project-card" aria-label={displayName}>
   <div class="project-card-content">
     <div class="project-card-header">
       {icon && <Icon name={icon} class="project-card-icon" />}
       <h3 class="project-card-title">{displayName}</h3>
-      {isNew && (
-        <span class="project-card-badge project-card-badge-new">
-          {translate('common.new', lang)}
-        </span>
-      )}
-      {isUpdated && (
-        <span class="project-card-badge project-card-badge-updated">
-          {translate('common.updated', lang)}
-        </span>
-      )}
+      {
+        isNew && (
+          <span class="project-card-badge project-card-badge-new">
+            {translate('common.new', lang)}
+          </span>
+        )
+      }
+      {
+        isUpdated && (
+          <span class="project-card-badge project-card-badge-updated">
+            {translate('common.updated', lang)}
+          </span>
+        )
+      }
     </div>
 
     <p class="project-card-description">{displayDescription}</p>
 
-    {tags && tags.length > 0 && (
-      <div class="project-card-tags">
-        {tags.map((tag) => (
-          <span class="project-card-tag">{tag}</span>
-        ))}
-      </div>
-    )}
+    {
+      tags && tags.length > 0 && (
+        <div class="project-card-tags">
+          {tags.map((tag) => (
+            <span class="project-card-tag">{tag}</span>
+          ))}
+        </div>
+      )
+    }
   </div>
 </a>
 
@@ -93,7 +100,7 @@ const targetUrl = projectUrl ?? project.path ?? '#';
   .project-card-icon {
     font-size: 1.25rem;
     color: var(--sl-color-primary, #2563eb);
-    margin-right: 0.5rem;
+    margin-inline-end: 0.5rem;
   }
 
   .project-card-title {

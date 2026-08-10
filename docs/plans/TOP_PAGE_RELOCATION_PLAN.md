@@ -15,9 +15,9 @@
 3. サイドバー生成（`scripts/build-sidebar.js` / `build-sidebar-selective.js`）は `apps/*` のコンテンツのみを処理し、`sites/landing` 側を含めないため、トップページ側の構造が破綻する心配はありません。
 
 ### 自動化スクリプトとランディング設定
-- `scripts/create-project.js` / `scripts/add-language.js` は新しいプロジェクトや言語登録時に `sites/landing/src/config/projects.config.jsonc` を更新し、トップページ側の表示情報（アイコン・タグ・`supportedLangs`）と整合性を保ちます。
+- `scripts/create-project.js` は新しいプロジェクト登録時に `sites/landing/src/config/projects.config.jsonc` の装飾情報（アイコン・タグ）を更新します。言語は `config/global-defaults.jsonc` と共有 i18n 辞書で管理します。
 - `packages/landing/src/project-detector.ts` が `apps/` ディレクトリをスキャンして `project.config.jsonc` から表示名・説明・URL・フォールバックURLを生成し、トップページのカード一覧を動的に構築します。
-- `sites/landing/src/config/projects.config.jsonc` がトップページのカスタマイズポイントです。手動で `icon`/`tags`/`isNew` や `supportedLangs` を追加したら、`pnpm --filter=sites-landing dev` や `pnpm build` で反映確認してください。
+- `sites/landing/src/config/projects.config.jsonc` がトップページ固有の装飾のカスタマイズポイントです。手動で `icon`/`tags`/`isNew` を変更したら、`pnpm --filter=sites-landing dev` や `pnpm build` で反映確認してください。
 
 ### デプロイと `dist` 構造
 - ビルド後、`dist/index.html` は `sites/landing` の出力、`dist/docs/{project}` はそれぞれのドキュメント出力です。ランディングページを Cloudflare Pages で公開する際はこの `dist` を `wrangler pages deploy dist --project-name libx` でアップロードします。

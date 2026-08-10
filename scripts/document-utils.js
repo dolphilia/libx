@@ -13,36 +13,48 @@ import {
   resolveLanguageDisplayNames as resolveRepoLanguageDisplayNames,
   resolveBaseUrl as resolveRepoBaseUrl,
   resolveBaseUrlPrefix as resolveRepoBaseUrlPrefix,
-  resolveProjectSlug as resolveRepoProjectSlug
+  resolveProjectSlug as resolveRepoProjectSlug,
 } from './global-defaults.js';
 import { createBackup } from './safety-utils.js';
 import { stripJsonComments, formatProjectConfigJsonc } from './jsonc-utils.js';
+import { validateSupportedLocale } from './locale-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const PLACEHOLDER_PREFIX = '[要翻訳] ';
 const CONFIG_FILE_JSONC = 'project.config.jsonc';
-const CONFIG_FILE_JSON = 'project.config.json';
+
+export function resolveProjectConfigFile(projectName) {
+  const configDir = path.join(rootDir, 'apps', projectName, 'src', 'config');
+  return path.join(configDir, CONFIG_FILE_JSONC);
+}
+
+export function serializeProjectConfig(config) {
+  const configToSave = JSON.parse(JSON.stringify(config));
+  if (configToSave.paths) {
+    delete configToSave.paths.baseUrl;
+    if (!configToSave.paths.baseUrlPrefix) delete configToSave.paths.baseUrlPrefix;
+    if (!configToSave.paths.projectSlug) delete configToSave.paths.projectSlug;
+  }
+
+  return formatProjectConfigJsonc(JSON.stringify(configToSave, null, 2));
+}
 
 /**
  * プロジェクトの設定を読み込む
  */
 export function loadProjectConfig(projectName) {
   const projectPath = path.join(rootDir, 'apps', projectName);
-  
+
   if (!fs.existsSync(projectPath)) {
     throw new Error(`プロジェクト "${projectName}" が見つかりません`);
   }
 
   const configDir = path.join(projectPath, 'src', 'config');
-  const configPathJsonc = path.join(configDir, CONFIG_FILE_JSONC);
-  const configPathJson = path.join(configDir, CONFIG_FILE_JSON);
-  let configPath = configPathJson;
-  
-  if (fs.existsSync(configPathJsonc)) {
-    configPath = configPathJsonc;
-  } else if (!fs.existsSync(configPathJson)) {
+  const configPath = path.join(configDir, CONFIG_FILE_JSONC);
+
+  if (!fs.existsSync(configPath)) {
     throw new Error(`設定ファイル "${configPath}" が見つかりません`);
   }
 
@@ -50,9 +62,6 @@ export function loadProjectConfig(projectName) {
     const configContent = fs.readFileSync(configPath, 'utf-8');
     const config = JSON.parse(stripJsonComments(configContent));
 
-    if (!config.paths && config.basic) {
-      config.paths = config.basic;
-    }
     if (!config.paths) {
       config.paths = {};
     }
@@ -64,13 +73,10 @@ export function loadProjectConfig(projectName) {
     const resolvedSlug = resolveRepoProjectSlug(config.paths.projectSlug, projectName);
     const preferredSupported = Array.isArray(config.language.supported)
       ? config.language.supported
-      : Array.isArray(config.basic?.supportedLangs)
-        ? config.basic.supportedLangs
-        : undefined;
+      : undefined;
     const resolvedSupported = resolveRepoSupportedLangs(preferredSupported);
-    const resolvedDefaultLang = resolveRepoDefaultLang(config.language.default || config.basic?.defaultLang);
-    const preferredDisplayNames = config.language.displayNames ?? config.languageNames;
-    const resolvedDisplayNames = resolveRepoLanguageDisplayNames(preferredDisplayNames);
+    const resolvedDefaultLang = resolveRepoDefaultLang(config.language.default);
+    const resolvedDisplayNames = resolveRepoLanguageDisplayNames(config.language.displayNames);
 
     config.paths.baseUrlPrefix = resolvedPrefix;
     config.paths.projectSlug = resolvedSlug;
@@ -78,15 +84,12 @@ export function loadProjectConfig(projectName) {
       baseUrl: config.paths.baseUrl,
       baseUrlPrefix: resolvedPrefix,
       projectSlug: resolvedSlug,
-      projectName
+      projectName,
     });
 
     config.language.supported = resolvedSupported;
     config.language.default = resolvedDefaultLang;
     config.language.displayNames = resolvedDisplayNames;
-    delete config.basic;
-    delete config.languageNames;
-
     return config;
   } catch (error) {
     throw new Error(`設定ファイルの読み込みに失敗しました: ${error.message}`);
@@ -97,30 +100,16 @@ export function loadProjectConfig(projectName) {
  * プロジェクト設定を保存する
  */
 export function saveProjectConfig(projectName, config, options = {}) {
-  const projectPath = path.join(rootDir, 'apps', projectName);
-  const configPath = path.join(projectPath, 'src', 'config', CONFIG_FILE_JSONC);
-  const {
-    dryRun = false,
-    backupScenario = `project-config-${projectName}`
-  } = options;
-  
-  try {
-    const configToSave = JSON.parse(JSON.stringify(config));
-    if (configToSave.paths) {
-      delete configToSave.paths.baseUrl;
-      if (!configToSave.paths.baseUrlPrefix) {
-        delete configToSave.paths.baseUrlPrefix;
-      }
-      if (!configToSave.paths.projectSlug) {
-        delete configToSave.paths.projectSlug;
-      }
-    }
+  const configPath = resolveProjectConfigFile(projectName);
+  const { dryRun = false, backupScenario = `project-config-${projectName}` } = options;
 
-    let configContent = JSON.stringify(configToSave, null, 2);
-    configContent = formatProjectConfigJsonc(configContent);
+  try {
+    const configContent = serializeProjectConfig(config);
 
     if (dryRun) {
-      logger.dryRun(`${CONFIG_FILE_JSONC} への書き込みをdry-runのためスキップしました: ${configPath}`);
+      logger.dryRun(
+        `${CONFIG_FILE_JSONC} への書き込みをdry-runのためスキップしました: ${configPath}`
+      );
       return true;
     }
 
@@ -128,7 +117,7 @@ export function saveProjectConfig(projectName, config, options = {}) {
       createBackup(configPath, {
         rootDir,
         scenario: backupScenario,
-        logger
+        logger,
       });
     }
 
@@ -145,31 +134,33 @@ export function saveProjectConfig(projectName, config, options = {}) {
 export function analyzeProjectStructure(projectName, lang, version) {
   const projectPath = path.join(rootDir, 'apps', projectName);
   const docsPath = path.join(projectPath, 'src', 'content', 'docs', version, lang);
-  
+
   const categories = {};
-  
+
   if (!fs.existsSync(docsPath)) {
     return categories;
   }
 
   try {
-    const categoryDirs = fs.readdirSync(docsPath, { withFileTypes: true })
-      .filter(dirent => dirent.isDirectory())
-      .map(dirent => dirent.name);
+    const categoryDirs = fs
+      .readdirSync(docsPath, { withFileTypes: true })
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
 
     for (const categoryDir of categoryDirs) {
       const categoryPath = path.join(docsPath, categoryDir);
-      const files = fs.readdirSync(categoryPath)
-        .filter(file => file.endsWith('.mdx'))
+      const files = fs
+        .readdirSync(categoryPath)
+        .filter((file) => file.endsWith('.mdx'))
         .sort();
-      
+
       // 番号付きプレフィックスを除去してカテゴリ名を取得
       const categoryName = categoryDir.replace(/^\d+-/, '');
-      
+
       categories[categoryName] = {
         fullDir: categoryDir,
         files: files,
-        nextNumber: getNextFileNumber(files)
+        nextNumber: getNextFileNumber(files),
       };
     }
   } catch (error) {
@@ -184,7 +175,7 @@ export function analyzeProjectStructure(projectName, lang, version) {
  */
 function getNextFileNumber(files) {
   let maxNumber = 0;
-  
+
   for (const file of files) {
     const match = file.match(/^(\d+)-/);
     if (match) {
@@ -194,7 +185,7 @@ function getNextFileNumber(files) {
       }
     }
   }
-  
+
   return String(maxNumber + 1).padStart(2, '0');
 }
 
@@ -203,7 +194,7 @@ function getNextFileNumber(files) {
  */
 export function getNextCategoryNumber(categories) {
   let maxNumber = 0;
-  
+
   for (const category of Object.values(categories)) {
     const match = category.fullDir.match(/^(\d+)-/);
     if (match) {
@@ -213,7 +204,7 @@ export function getNextCategoryNumber(categories) {
       }
     }
   }
-  
+
   return String(maxNumber + 1).padStart(2, '0');
 }
 
@@ -228,12 +219,12 @@ export function normalizeFileName(title) {
     .replace(/[^a-z0-9-]/g, '') // 英数字とハイフンのみ残す
     .replace(/-+/g, '-') // 連続ハイフンを単一に
     .replace(/^-|-$/g, ''); // 先頭末尾のハイフンを除去
-  
+
   // 空になった場合はデフォルト値を使用
   if (!normalized) {
     normalized = 'new-document';
   }
-  
+
   return normalized;
 }
 
@@ -287,17 +278,15 @@ description: "${description || `${title}について説明します`}"
  */
 export function validateDocumentPath(projectName, lang, version, category, fileName) {
   const errors = [];
-  
+
   // プロジェクト名チェック
   const projectPath = path.join(rootDir, 'apps', projectName);
   if (!fs.existsSync(projectPath)) {
     errors.push(`プロジェクト "${projectName}" が存在しません`);
   }
 
-  // 言語チェック
-  if (!/^[a-z]{2}$/.test(lang)) {
-    errors.push('言語コードは2文字の小文字である必要があります (例: en, ja)');
-  }
+  // libxの言語レジストリとBCP 47形式を共通検証する
+  errors.push(...validateSupportedLocale(lang));
 
   // バージョンチェック
   if (!/^v\d+(\.\d+)*$/.test(version)) {
@@ -316,32 +305,57 @@ export function validateDocumentPath(projectName, lang, version, category, fileN
  * ドキュメントファイルを作成
  */
 export function createDocumentFile(projectName, lang, version, categoryDir, fileName, content) {
-  const projectPath = path.join(rootDir, 'apps', projectName);
-  const docPath = path.join(projectPath, 'src', 'content', 'docs', version, lang, categoryDir, `${fileName}.mdx`);
-  
+  const docPath = resolveDocumentFilePath(projectName, lang, version, categoryDir, fileName);
+
   // ディレクトリを作成
   fs.mkdirSync(path.dirname(docPath), { recursive: true });
-  
+
   // ファイルを作成
   fs.writeFileSync(docPath, content);
-  
+
   return docPath;
+}
+
+export function resolveDocumentFilePath(projectName, lang, version, categoryDir, fileName) {
+  return path.join(
+    rootDir,
+    'apps',
+    projectName,
+    'src',
+    'content',
+    'docs',
+    version,
+    lang,
+    categoryDir,
+    `${fileName}.mdx`
+  );
 }
 
 /**
  * project.config.jsonc のカテゴリ翻訳を同期
  */
-export function syncCategoryTranslations(projectName, {
-  lang,
-  categorySlug,
-  displayName,
-  dryRun = false
-} = {}) {
+export function syncCategoryTranslations(
+  projectName,
+  { lang, categorySlug, displayName, dryRun = false } = {}
+) {
+  const config = loadProjectConfig(projectName);
+  const result = planCategoryTranslations(config, { lang, categorySlug, displayName });
+
+  if (result.updated) {
+    saveProjectConfig(projectName, config, {
+      dryRun,
+      backupScenario: `category-sync-${projectName}`,
+    });
+  }
+
+  return result;
+}
+
+export function planCategoryTranslations(config, { lang, categorySlug, displayName } = {}) {
   if (!categorySlug) {
     throw new Error('categorySlug が指定されていません。');
   }
 
-  const config = loadProjectConfig(projectName);
   const supportedLangs = config?.language?.supported ?? [];
   const defaultLang = config?.language?.default ?? lang;
 
@@ -358,7 +372,7 @@ export function syncCategoryTranslations(projectName, {
       config.translations[supportedLang] = {
         displayName: '',
         displayDescription: '',
-        categories: {}
+        categories: {},
       };
     }
 
@@ -367,15 +381,28 @@ export function syncCategoryTranslations(projectName, {
     }
 
     const currentValue = config.translations[supportedLang].categories[categorySlug];
-    const isPlaceholderValue = typeof currentValue === 'string' && currentValue.startsWith(PLACEHOLDER_PREFIX);
+    const isPlaceholderValue =
+      typeof currentValue === 'string' && currentValue.startsWith(PLACEHOLDER_PREFIX);
     let nextValue;
 
     if (supportedLang === lang) {
       const preferredLabel = normalizedDisplayName || currentValue || categorySlug;
-      if (!currentValue || currentValue.trim() === '' || currentValue === categorySlug || currentValue === PLACEHOLDER_PREFIX + categorySlug || isPlaceholderValue) {
+      if (
+        !currentValue ||
+        currentValue.trim() === '' ||
+        currentValue === categorySlug ||
+        currentValue === PLACEHOLDER_PREFIX + categorySlug ||
+        isPlaceholderValue
+      ) {
         nextValue = preferredLabel;
       }
-    } else if (!currentValue || currentValue.trim() === '' || currentValue === categorySlug || currentValue === PLACEHOLDER_PREFIX + categorySlug || isPlaceholderValue) {
+    } else if (
+      !currentValue ||
+      currentValue.trim() === '' ||
+      currentValue === categorySlug ||
+      currentValue === PLACEHOLDER_PREFIX + categorySlug ||
+      isPlaceholderValue
+    ) {
       const defaultValue =
         config.translations[defaultLang]?.categories?.[categorySlug] ??
         config.translations[lang]?.categories?.[categorySlug] ??
@@ -383,9 +410,8 @@ export function syncCategoryTranslations(projectName, {
       let resolvedValue;
 
       if (defaultValue) {
-        resolvedValue = supportedLang === defaultLang
-          ? defaultValue
-          : `${PLACEHOLDER_PREFIX}${defaultValue}`;
+        resolvedValue =
+          supportedLang === defaultLang ? defaultValue : `${PLACEHOLDER_PREFIX}${defaultValue}`;
       } else if (supportedLang === defaultLang) {
         resolvedValue = fallbackLabel;
       } else {
@@ -401,7 +427,7 @@ export function syncCategoryTranslations(projectName, {
         lang: supportedLang,
         previous: currentValue,
         value: nextValue,
-        placeholder: typeof nextValue === 'string' && nextValue.startsWith(PLACEHOLDER_PREFIX)
+        placeholder: typeof nextValue === 'string' && nextValue.startsWith(PLACEHOLDER_PREFIX),
       });
     }
   }
@@ -410,19 +436,14 @@ export function syncCategoryTranslations(projectName, {
     return {
       updated: false,
       updates,
-      categorySlug
+      categorySlug,
     };
   }
-
-  saveProjectConfig(projectName, config, {
-    dryRun,
-    backupScenario: `category-sync-${projectName}`
-  });
 
   return {
     updated: true,
     updates,
-    categorySlug
+    categorySlug,
   };
 }
 
@@ -432,18 +453,18 @@ export function syncCategoryTranslations(projectName, {
 export function displayProjectStructure(categories, lang, config) {
   console.log('\n📁 現在のプロジェクト構造:');
   console.log('==========================================');
-  
+
   if (Object.keys(categories).length === 0) {
     console.log('  まだドキュメントが作成されていません');
     return;
   }
-  
+
   for (const [categoryName, categoryInfo] of Object.entries(categories)) {
     const displayName = getCategoryDisplayName(config, lang, categoryName);
     console.log(`\n  ${categoryInfo.fullDir}/ (${displayName})`);
-    
+
     if (categoryInfo.files.length > 0) {
-      categoryInfo.files.forEach(file => {
+      categoryInfo.files.forEach((file) => {
         console.log(`    📄 ${file}`);
       });
     } else {

@@ -1,25 +1,31 @@
 {
-    "name": "@docs/config",
-    "version": "0.1.0",
-    "private": true,
-    "type": "module",
-    "types": "./src/index.ts",
-    "exports": {
-        ".": "./src/index.ts"
-    },
-    "scripts": {
-        "lint": "eslint .",
-        "format": "prettier --write .",
-        "build": "tsc"
-    },
-    "dependencies": {
-        "@astrojs/mdx": "^4.2.6",
-        "astro": "^5.7.12",
-        "shiki": "^3.4.0",
-        "unist-util-visit": "^5.0.0"
-    },
-    "devDependencies": {
-        "@types/node": "^20.0.0",
-        "typescript": "^5.0.0"
-    }
+  "name": "@docs/config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.2.6",
+    "@docs/i18n": "workspace:*",
+    "@docs/landing": "workspace:*",
+    "@docs/project-config": "workspace:*",
+    "@docs/theme": "workspace:*",
+    "@docs/ui": "workspace:*",
+    "@docs/versioning": "workspace:*",
+    "astro": "^5.7.12",
+    "shiki": "^3.4.0",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
 }

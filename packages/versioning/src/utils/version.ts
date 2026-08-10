@@ -1,6 +1,6 @@
 /**
  * バージョン管理ユーティリティ
- * 
+ *
  * このモジュールは、ドキュメントのバージョン管理に関連するユーティリティ関数を提供します。
  */
 
@@ -25,7 +25,7 @@ export function compareVersions(a: Version, b: Version): number {
   // 最新バージョンは常に先頭
   if (a.isLatest) return -1;
   if (b.isLatest) return 1;
-  
+
   // 日付の新しい順
   return b.date.getTime() - a.date.getTime();
 }
@@ -60,35 +60,26 @@ export function changePathVersion(path: string, newVersion: string): string {
 /**
  * 最新バージョンのパスを取得します
  */
-export function getLatestVersionPath(
-  path: string,
-  versions: Version[]
-): string | null {
-  const latestVersion = versions.find(v => v.isLatest);
+export function getLatestVersionPath(path: string, versions: Version[]): string | null {
+  const latestVersion = versions.find((v) => v.isLatest);
   if (!latestVersion) {
     return null;
   }
-  
+
   return changePathVersion(path, latestVersion.id);
 }
 
 /**
  * 指定されたバージョンが存在するかチェックします
  */
-export function versionExists(
-  versionId: string,
-  versions: Version[]
-): boolean {
-  return versions.some(v => v.id === versionId);
+export function versionExists(versionId: string, versions: Version[]): boolean {
+  return versions.some((v) => v.id === versionId);
 }
 
 /**
  * 指定されたバージョンのドキュメントが存在するかチェックします
  */
-export function versionedDocumentExists(
-  versionId: string,
-  document: VersionedDocument
-): boolean {
+export function versionedDocumentExists(versionId: string, document: VersionedDocument): boolean {
   return versionId in document.versions;
 }
 
@@ -126,12 +117,12 @@ export function calculateVersionedUrl(
   if (!currentVersion) {
     return null;
   }
-  
+
   // ターゲットバージョンのドキュメントが存在するか確認
   if (!versionedDocumentExists(targetVersion, document)) {
     return null;
   }
-  
+
   // パスのバージョン部分を置換
   return changePathVersion(currentPath, targetVersion);
 }
@@ -148,15 +139,15 @@ export function calculateSafeVersionedUrl(
 ): string {
   // 番号プレフィックスを正規化
   const normalizedSlug = normalizeSlugForVersioning(currentSlug);
-  
+
   // ターゲットバージョンが存在するかチェック
   const targetVersionExists = versionExists(targetVersion, versions);
   if (!targetVersionExists) {
     // バージョンが存在しない場合は最新バージョンへフォールバック
-    const latestVersion = versions.find(v => v.isLatest) || versions[0];
+    const latestVersion = versions.find((v) => v.isLatest) || versions[0];
     return `${basePath}/${latestVersion.id}/`;
   }
-  
+
   // 理想的には、ここでターゲットバージョンに実際にページが存在するかチェックすべきですが、
   // 静的サイト生成時にはこの情報にアクセスできないため、正規化されたスラッグを使用
   return `${basePath}/${targetVersion}/${normalizedSlug}`;

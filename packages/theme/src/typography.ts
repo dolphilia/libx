@@ -19,14 +19,7 @@ export const fontFamilies = {
     '"Segoe UI Symbol"',
     '"Noto Color Emoji"',
   ].join(','),
-  serif: [
-    'ui-serif',
-    'Georgia',
-    'Cambria',
-    '"Times New Roman"',
-    'Times',
-    'serif',
-  ].join(','),
+  serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'].join(','),
   mono: [
     'ui-monospace',
     'SFMono-Regular',

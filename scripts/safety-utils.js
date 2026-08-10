@@ -20,7 +20,7 @@ function askQuestion(prompt) {
   return new Promise((resolve) => {
     const rl = readline.createInterface({
       input: process.stdin,
-      output: process.stdout
+      output: process.stdout,
     });
 
     rl.question(prompt, (answer) => {
@@ -36,7 +36,7 @@ export function formatTimestamp() {
 
 export async function confirmAction({ message, autoConfirm = false, dryRun = false, logger } = {}) {
   if (dryRun) {
-    emit(logger, 'dryRun', `${message} (dry-runで確認不要)`); 
+    emit(logger, 'dryRun', `${message} (dry-runで確認不要)`);
     return true;
   }
 
@@ -46,9 +46,8 @@ export async function confirmAction({ message, autoConfirm = false, dryRun = fal
 
   if (!process.stdin.isTTY) {
     const ciEnv = process.env.CI;
-    const isCI = typeof ciEnv === 'string'
-      ? ciEnv.toLowerCase() !== 'false' && ciEnv !== '0'
-      : Boolean(ciEnv);
+    const isCI =
+      typeof ciEnv === 'string' ? ciEnv.toLowerCase() !== 'false' && ciEnv !== '0' : Boolean(ciEnv);
     if (isCI) {
       emit(logger, 'info', `${message} (CI環境のため自動承認)`);
       return true;

@@ -2,6 +2,11 @@
   "name": "libx",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=10.10.0"
+  },
   "scripts": {
     "dev": "pnpm --filter=./apps/* dev",
     "build": "node scripts/build-integrated.js",
@@ -17,8 +22,11 @@
     "test:runtime": "node --test tests/runtime/*.test.js",
     "test:smoke": "node --test tests/smoke/*.test.js",
     "test": "pnpm test:unit && pnpm test:runtime",
-    "check": "pnpm sync:service-workers && pnpm build:sidebar && pnpm lint && pnpm typecheck && pnpm test && pnpm build:template && pnpm build:separate && pnpm test:smoke",
+    "check:links": "node scripts/check-markdown-links.js",
+    "check:integrity": "node scripts/validate-repository-integrity.js",
+    "check": "pnpm sync:service-workers && pnpm build:sidebar && pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm check:links && pnpm check:integrity && pnpm build:template && pnpm build:separate && pnpm test:smoke",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "sync:service-workers": "node scripts/sync-service-workers.js",
     "build:sidebar": "node scripts/build-sidebar.js",
     "build:sidebar-selective": "node scripts/build-sidebar-selective.js",
@@ -26,17 +34,26 @@
     "build:deploy-selective": "node scripts/build-sidebar-selective.js && node scripts/build-selective.js",
     "create:project": "node scripts/create-project.js",
     "deploy": "pnpm build && pnpm deploy:pages",
-    "deploy:pages": "wrangler pages deploy dist --project-name libx"
+    "deploy:pages": "wrangler pages deploy dist --project-name libx",
+    "perf:comparison": "astro build --root benchmarks/starlight",
+    "perf:reader": "node scripts/build-integrated.js --confirm && pnpm perf:comparison && node scripts/performance/measure-reader.js",
+    "perf:management": "node scripts/performance/measure-management.js",
+    "perf": "pnpm perf:reader && pnpm perf:management && node scripts/performance/create-quality-report.js"
   },
   "devDependencies": {
+    "@astrojs/starlight": "0.34.8",
     "@types/node": "^20.19.25",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "astro": "5.7.12",
     "astro-eslint-parser": "^0.16.0",
+    "chrome-launcher": "^1.2.1",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-astro": "^0.29.0",
+    "lighthouse": "12.8.2",
     "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.0.0",
     "wrangler": "^3.0.0"
   },

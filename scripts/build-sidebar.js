@@ -2,10 +2,10 @@
 
 /**
  * サイドバー生成スクリプト
- * 
+ *
  * このスクリプトは、ドキュメントコンテンツからサイドバーを生成し、
  * 静的JSONファイルとして出力します。
- * 
+ *
  * 拡張機能:
  * - 複数のプロジェクトに対応（apps/ディレクトリ内の全プロジェクト）
  * - 言語とバージョンを動的に検出
@@ -21,7 +21,7 @@ import * as logger from './logger.js';
 import { readJsoncFileAsync } from './jsonc-utils.js';
 import {
   resolveBaseUrl as resolveRepoBaseUrl,
-  resolveSupportedLangs as resolveRepoSupportedLangs
+  resolveSupportedLangs as resolveRepoSupportedLangs,
 } from './global-defaults.js';
 
 logger.useUnifiedConsole();
@@ -41,43 +41,49 @@ const config = {
 async function main() {
   try {
     console.log('サイドバーの生成を開始します...');
-    
+
     // appsディレクトリ内のプロジェクトを検出
     const projects = await detectProjects();
-    
+
     if (projects.length === 0) {
       console.warn('ドキュメントプロジェクトが見つかりませんでした。');
       return;
     }
-    
+
     // 各プロジェクトに対して処理を実行
     for (const project of projects) {
       console.log(`プロジェクト ${project.name} の処理を開始します...`);
-      
+
       // 出力ディレクトリの作成
       await fs.mkdir(project.outputDir, { recursive: true });
-      
+
       // 言語とバージョンの組み合わせごとにサイドバーを生成
       for (const version of project.versions) {
         const languagesForVersion = project.languagesByVersion[version] || [];
         if (languagesForVersion.length === 0) {
-          console.warn(`  ${version} で対応言語が検出できなかったため、サイドバー生成をスキップします。`);
+          console.warn(
+            `  ${version} で対応言語が検出できなかったため、サイドバー生成をスキップします。`
+          );
           continue;
         }
 
         const expectedLanguages = project.expectedLanguages ?? project.languages;
-        const missingLanguages = expectedLanguages.filter(lang => !languagesForVersion.includes(lang));
+        const missingLanguages = expectedLanguages.filter(
+          (lang) => !languagesForVersion.includes(lang)
+        );
         if (missingLanguages.length > 0) {
-          console.log(`  ${version} では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ${missingLanguages.join(', ')}`);
+          console.log(
+            `  ${version} では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ${missingLanguages.join(', ')}`
+          );
         }
 
         for (const lang of languagesForVersion) {
           console.log(`  ${lang}/${version} のサイドバーを生成中...`);
-          
+
           try {
             // サイドバーを生成
             const sidebar = await generateSidebarForVersion(project, lang, version);
-            
+
             // サイドバーをJSONとして保存（圧縮版も含む）
             const outputPath = path.join(project.outputDir, `sidebar-${lang}-${version}.json`);
             await saveCompressedJson(outputPath, sidebar);
@@ -87,7 +93,7 @@ async function main() {
         }
       }
     }
-    
+
     console.log('サイドバーの生成が完了しました');
   } catch (error) {
     console.error('エラーが発生しました:', error);
@@ -100,17 +106,17 @@ async function main() {
  */
 async function detectProjects() {
   const projects = [];
-  
+
   try {
     // appsディレクトリ内のディレクトリを取得
     const entries = await fs.readdir(config.appsDir, { withFileTypes: true });
-    const projectDirs = entries.filter(entry => entry.isDirectory());
-    
+    const projectDirs = entries.filter((entry) => entry.isDirectory());
+
     for (const dir of projectDirs) {
       const projectName = dir.name;
-      
+
       const projectPath = path.join(config.appsDir, projectName);
-      
+
       // src/content/docs ディレクトリが存在するかチェック
       const contentPath = path.join(projectPath, 'src', 'content', 'docs');
       try {
@@ -120,17 +126,20 @@ async function detectProjects() {
         console.log(`${projectName} にはドキュメントディレクトリがありません。スキップします。`);
         continue;
       }
-      
+
       // バージョンディレクトリを検出
       const versions = await detectVersions(contentPath);
-      
+
       if (versions.length === 0) {
-        console.log(`${projectName} にバージョンディレクトリが見つかりませんでした。スキップします。`);
+        console.log(
+          `${projectName} にバージョンディレクトリが見つかりませんでした。スキップします。`
+        );
         continue;
       }
-      
+
       // バージョンごとに言語を検出
-      const { validVersions, languagesByVersion, allDetectedLanguages } = await detectLanguagesByVersion(projectName, contentPath);
+      const { validVersions, languagesByVersion, allDetectedLanguages } =
+        await detectLanguagesByVersion(projectName, contentPath);
       if (validVersions.length === 0) {
         console.log(`${projectName} に言語ディレクトリが見つからなかったため、スキップします。`);
         continue;
@@ -138,15 +147,19 @@ async function detectProjects() {
 
       const expectedLanguages = await getSupportedLanguages(projectPath);
       if (expectedLanguages && expectedLanguages.length > 0) {
-        const projectLevelMissing = expectedLanguages.filter(lang => !allDetectedLanguages.includes(lang));
+        const projectLevelMissing = expectedLanguages.filter(
+          (lang) => !allDetectedLanguages.includes(lang)
+        );
         if (projectLevelMissing.length > 0) {
-          console.warn(`  ${projectName} で以下の言語がいずれのバージョンでも検出できませんでした: ${projectLevelMissing.join(', ')}`);
+          console.warn(
+            `  ${projectName} で以下の言語がいずれのバージョンでも検出できませんでした: ${projectLevelMissing.join(', ')}`
+          );
         }
       }
-      
+
       // 出力ディレクトリを設定
       const outputDir = path.join(projectPath, 'public', 'sidebar');
-      
+
       // プロジェクト情報を追加
       projects.push({
         name: projectName,
@@ -156,9 +169,9 @@ async function detectProjects() {
         languages: allDetectedLanguages,
         versions: validVersions,
         languagesByVersion,
-        expectedLanguages
+        expectedLanguages,
       });
-      
+
       console.log(`プロジェクト ${projectName} を検出しました:`);
       console.log(`  言語: ${allDetectedLanguages.join(', ')}`);
       console.log(`  バージョン: ${validVersions.join(', ')}`);
@@ -169,7 +182,7 @@ async function detectProjects() {
   } catch (error) {
     console.error('プロジェクト検出中にエラーが発生しました:', error);
   }
-  
+
   return projects;
 }
 
@@ -179,9 +192,7 @@ async function detectProjects() {
 async function detectVersions(contentPath) {
   try {
     const entries = await fs.readdir(contentPath, { withFileTypes: true });
-    return entries
-      .filter(entry => entry.isDirectory())
-      .map(entry => entry.name);
+    return entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
   } catch (error) {
     console.error('バージョンディレクトリの検出中にエラーが発生しました:', error);
     return [];
@@ -195,9 +206,7 @@ async function detectLanguages(contentPath, version) {
   try {
     const versionPath = path.join(contentPath, version);
     const entries = await fs.readdir(versionPath, { withFileTypes: true });
-    return entries
-      .filter(entry => entry.isDirectory())
-      .map(entry => entry.name);
+    return entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
   } catch (error) {
     console.error('言語ディレクトリの検出中にエラーが発生しました:', error);
     return [];
@@ -221,7 +230,7 @@ async function detectLanguagesByVersion(projectName, contentPath) {
 
   const validVersions = Object.keys(languagesByVersion);
   const allDetectedLanguages = Array.from(
-    new Set(validVersions.flatMap(version => languagesByVersion[version]))
+    new Set(validVersions.flatMap((version) => languagesByVersion[version]))
   ).sort();
 
   return { validVersions, languagesByVersion, allDetectedLanguages };
@@ -232,28 +241,17 @@ async function detectLanguagesByVersion(projectName, contentPath) {
  */
 async function getSupportedLanguages(projectPath) {
   const configDir = path.join(projectPath, 'src', 'config');
-  const configJsoncPath = path.join(configDir, 'project.config.jsonc');
-  const configJsonPath = path.join(configDir, 'project.config.json');
-  const targetPath = await fileExists(configJsoncPath) ? configJsoncPath : configJsonPath;
+  const configPath = path.join(configDir, 'project.config.jsonc');
   try {
-    const parsed = await readJsoncFileAsync(targetPath);
-    const langs = parsed?.language?.supported || parsed?.basic?.supportedLangs;
+    const parsed = await readJsoncFileAsync(configPath);
+    const langs = parsed?.language?.supported;
     return resolveRepoSupportedLangs(Array.isArray(langs) ? langs : undefined);
   } catch (error) {
     if (error.code !== 'ENOENT') {
-      console.warn(`  プロジェクト設定の読み込みに失敗しました (${configJsonPath}): ${error.message}`);
+      console.warn(`  プロジェクト設定の読み込みに失敗しました (${configPath}): ${error.message}`);
     }
   }
   return null;
-}
-
-async function fileExists(filePath) {
-  try {
-    await fs.access(filePath);
-    return true;
-  } catch {
-    return false;
-  }
 }
 
 /**
@@ -274,87 +272,86 @@ async function generateSidebarForVersion(project, lang, version) {
   const categoryTranslations = await getProjectCategoryTranslations(project);
   // ドキュメントファイルを検索
   const pattern = `${version}/${lang}/**/*.{md,mdx}`;
-  
+
   const files = await glob(pattern, { cwd: project.contentPath });
-  
+
   // ドキュメント情報を収集
   const docs = [];
-  
+
   for (const file of files) {
     try {
       const filePath = path.join(project.contentPath, file);
       const { frontmatter: data } = await parseMarkdownFile(filePath);
-      
+
       // スラグを生成（ファイルパスから拡張子を除去）
       const slug = file.replace(/\.[^.]+$/, '');
-      
+
       docs.push({
         slug,
-        data
+        data,
       });
     } catch (error) {
       console.warn(`ファイルの処理中にエラーが発生しました: ${file}`, error);
     }
   }
-  
+
   // カテゴリごとにドキュメントを整理
   const categories = {};
-  
-  
-  docs.forEach(doc => {
+
+  docs.forEach((doc) => {
     // パスからカテゴリを取得
     const parts = doc.slug.split('/');
     const pathCategory = parts.length >= 3 ? parts[2] : 'uncategorized';
-    
+
     // ディレクトリ名から純粋なカテゴリ名を抽出（数字プレフィックスを除去）
     const cleanCategory = pathCategory.replace(/^\d+-/, '');
     const category = doc.data.category || cleanCategory;
-    
+
     // ディレクトリ名から順序を取得
     const categoryDirName = parts[2] || 'uncategorized';
     const order = extractOrderFromDirectoryName(categoryDirName);
-    
+
     if (!categories[category]) {
       categories[category] = {
         docs: [],
         order: order,
-        title: undefined // 後で設定
+        title: undefined, // 後で設定
       };
     }
-    
+
     // カテゴリの順序を更新（複数のドキュメントで同じカテゴリが使用されている場合、最小の順序を使用）
     if (order < categories[category].order) {
       categories[category].order = order;
     }
-    
+
     categories[category].docs.push(doc);
   });
-  
+
   // カテゴリごとにドキュメントを順序で並べ替え
-  Object.keys(categories).forEach(category => {
+  Object.keys(categories).forEach((category) => {
     categories[category].docs.sort((a, b) => {
       const orderA = a.data.order || 999;
       const orderB = b.data.order || 999;
       return orderA - orderB;
     });
   });
-  
+
   // カテゴリを順序で並べ替え
   const sortedCategories = Object.entries(categories).sort((a, b) => {
     return a[1].order - b[1].order;
   });
-  
+
   // プロジェクト固有のベースURLを取得
   const baseUrl = await getProjectBaseUrl(project);
-  
+
   // サイドバー項目の生成
   return sortedCategories.map(([category, { docs }]) => {
     // カテゴリ名を翻訳（プロジェクト設定から取得）
     const title = translateCategory(category, lang, categoryTranslations);
-    
+
     return {
       title,
-      items: docs.map(doc => {
+      items: docs.map((doc) => {
         const slugParts = doc.slug.split('/').slice(2);
         let fullPath;
         if (baseUrl === '/') {
@@ -364,9 +361,9 @@ async function generateSidebarForVersion(project, lang, version) {
         }
         return {
           title: doc.data.title,
-          href: fullPath
+          href: fullPath,
         };
-      })
+      }),
     };
   });
 }
@@ -381,15 +378,17 @@ async function getProjectCategoryTranslations(project) {
     return Object.fromEntries(
       Object.entries(projectConfig.translations ?? {}).map(([lang, translation]) => [
         lang,
-        translation.categories ?? {}
+        translation.categories ?? {},
       ])
     );
   } catch (error) {
     if (error.code !== 'ENOENT') {
-      console.warn(`  プロジェクト ${project.name} の翻訳設定の読み込み中にエラー: ${error.message}`);
+      console.warn(
+        `  プロジェクト ${project.name} の翻訳設定の読み込み中にエラー: ${error.message}`
+      );
     }
   }
-  
+
   return null;
 }
 
@@ -400,12 +399,12 @@ function translateCategory(category, lang, translations) {
   if (translations && translations[lang] && translations[lang][category]) {
     return translations[lang][category];
   }
-  
+
   // フォールバック: 英語の翻訳があればそれを使用
   if (translations && translations['en'] && translations['en'][category]) {
     return translations['en'][category];
   }
-  
+
   // 最終フォールバック: カテゴリ名の先頭を大文字にして返す（既存のロジック）
   return category.charAt(0).toUpperCase() + category.slice(1);
 }
@@ -415,16 +414,14 @@ function translateCategory(category, lang, translations) {
  */
 async function getProjectBaseUrl(project) {
   const configDir = path.join(project.path, 'src', 'config');
-  const configJsoncPath = path.join(configDir, 'project.config.jsonc');
-  const configJsonPath = path.join(configDir, 'project.config.json');
-  const targetPath = await fileExists(configJsoncPath) ? configJsoncPath : configJsonPath;
+  const configPath = path.join(configDir, 'project.config.jsonc');
 
   let configuredBaseUrl = '';
   let configuredPrefix = '';
   let configuredSlug = '';
   try {
-    const parsed = await readJsoncFileAsync(targetPath);
-    const pathConfig = parsed?.paths ?? parsed?.basic ?? {};
+    const parsed = await readJsoncFileAsync(configPath);
+    const pathConfig = parsed?.paths ?? {};
     configuredBaseUrl = pathConfig.baseUrl || '';
     configuredPrefix = pathConfig.baseUrlPrefix || '';
     configuredSlug = pathConfig.projectSlug || '';
@@ -438,7 +435,7 @@ async function getProjectBaseUrl(project) {
     baseUrl: configuredBaseUrl,
     baseUrlPrefix: configuredPrefix,
     projectSlug: configuredSlug,
-    projectName: project.name
+    projectName: project.name,
   });
 }
 

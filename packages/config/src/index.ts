@@ -2,73 +2,20 @@ import fs from 'node:fs/promises';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import path from 'path';
+import { stripJsonComments } from '@docs/project-config/jsonc';
 // JavaScript製の既存プラグインをESMとして読み込む。
 // @ts-expect-error このリポジトリ内のJavaScriptモジュールには宣言ファイルがない。
 import { remarkLinkTransformer } from '../../../scripts/plugins/remark-link-transformer.js';
-
-function stripJsonComments(text: string): string {
-  let result = '';
-  let inString = false;
-  let inLineComment = false;
-  let inBlockComment = false;
-  let prevChar = '';
-
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    const nextChar = i + 1 < text.length ? text[i + 1] : '';
-
-    if (inLineComment) {
-      if (char === '\n' || char === '\r') {
-        inLineComment = false;
-        result += char;
-      }
-      continue;
-    }
-
-    if (inBlockComment) {
-      if (char === '*' && nextChar === '/') {
-        inBlockComment = false;
-        i++;
-      }
-      continue;
-    }
-
-    if (!inString && char === '/' && nextChar === '/') {
-      inLineComment = true;
-      i++;
-      continue;
-    }
-
-    if (!inString && char === '/' && nextChar === '*') {
-      inBlockComment = true;
-      i++;
-      continue;
-    }
-
-    result += char;
-
-    if (char === '"' && prevChar !== '\\') {
-      inString = !inString;
-    }
-
-    prevChar = char === '\\' && prevChar === '\\' ? '' : char;
-  }
-
-  return result;
-}
+// @ts-expect-error このリポジトリ内のJavaScriptモジュールには宣言ファイルがない。
+import { rehypeTaskListA11y } from '../../../scripts/plugins/rehype-task-list-a11y.js';
 
 export interface DocsConfigOptions {
   site?: string;
   base?: string;
-  rootDir?: string;
 }
 
 export function defineDocsConfig(options: DocsConfigOptions = {}) {
-  const {
-    site = 'https://libx.dev',
-    base = '/',
-    rootDir = process.cwd(),
-  } = options;
+  const { site = 'https://libx.dev', base = '/' } = options;
 
   return defineConfig({
     site,
@@ -77,25 +24,15 @@ export function defineDocsConfig(options: DocsConfigOptions = {}) {
       mdx({
         syntaxHighlight: 'shiki',
         shikiConfig: {
-          theme: 'github-dark',
+          theme: 'github-dark-high-contrast',
           langs: [],
-          wrap: true
+          wrap: true,
         },
-        remarkPlugins: [
-          [remarkLinkTransformer, { baseUrl: base }]
-        ],
-        rehypePlugins: []
-      })
+        remarkPlugins: [[remarkLinkTransformer, { baseUrl: base }]],
+        rehypePlugins: [rehypeTaskListA11y],
+      }),
     ],
     vite: {
-      resolve: {
-        alias: {
-          '@docs/ui': path.resolve(rootDir, '../../packages/ui/src'),
-          '@docs/versioning': path.resolve(rootDir, '../../packages/versioning/src'),
-          '@docs/theme': path.resolve(rootDir, '../../packages/theme/src'),
-          '@docs/i18n': path.resolve(rootDir, '../../packages/i18n/src'),
-        },
-      },
       build: {
         assetsInlineLimit: 0,
         cssCodeSplit: false,
@@ -104,8 +41,8 @@ export function defineDocsConfig(options: DocsConfigOptions = {}) {
             assetFileNames: 'assets/[name].[hash].[ext]',
             chunkFileNames: 'assets/[name].[hash].js',
             entryFileNames: 'assets/[name].[hash].js',
-          }
-        }
+          },
+        },
       },
     },
     // ドキュメントサイトは /{version}/{lang}/ を独自に生成するため、
@@ -144,7 +81,6 @@ export interface LandingSiteConfig {
 export interface LandingConfigOptions {
   site?: string;
   base?: string;
-  rootDir?: string;
   i18n?: LandingI18nConfig;
 }
 
@@ -166,7 +102,7 @@ const DEFAULT_LANDING_LOCALES = [
   'id',
   'tr',
   'hi',
-  'vi'
+  'vi',
 ];
 
 function resolveLandingI18n(i18n?: LandingI18nConfig): LandingSiteConfig['i18n'] {
@@ -174,18 +110,13 @@ function resolveLandingI18n(i18n?: LandingI18nConfig): LandingSiteConfig['i18n']
     defaultLocale: i18n?.defaultLocale ?? DEFAULT_LANDING_DEFAULT_LOCALE,
     locales: i18n?.locales ?? DEFAULT_LANDING_LOCALES,
     routing: {
-      prefixDefaultLocale: i18n?.routing?.prefixDefaultLocale ?? true
-    }
+      prefixDefaultLocale: i18n?.routing?.prefixDefaultLocale ?? true,
+    },
   };
 }
 
 export function defineLandingConfig(options: LandingConfigOptions = {}) {
-  const {
-    site = DEFAULT_LANDING_SITE,
-    base = DEFAULT_LANDING_BASE,
-    rootDir = process.cwd(),
-    i18n
-  } = options;
+  const { site = DEFAULT_LANDING_SITE, base = DEFAULT_LANDING_BASE, i18n } = options;
   const resolvedI18n = resolveLandingI18n(i18n);
 
   return defineConfig({
@@ -193,14 +124,6 @@ export function defineLandingConfig(options: LandingConfigOptions = {}) {
     base,
     integrations: [],
     vite: {
-      resolve: {
-        alias: {
-          '@docs/ui': path.resolve(rootDir, '../../packages/ui/src'),
-          '@docs/theme': path.resolve(rootDir, '../../packages/theme/src'),
-          '@docs/i18n': path.resolve(rootDir, '../../packages/i18n/src'),
-          '@docs/landing': path.resolve(rootDir, '../../packages/landing/src')
-        }
-      },
       build: {
         assetsInlineLimit: 0,
         cssCodeSplit: false,
@@ -208,12 +131,12 @@ export function defineLandingConfig(options: LandingConfigOptions = {}) {
           output: {
             assetFileNames: 'assets/[name].[hash].[ext]',
             chunkFileNames: 'assets/[name].[hash].js',
-            entryFileNames: 'assets/[name].[hash].js'
-          }
-        }
-      }
+            entryFileNames: 'assets/[name].[hash].js',
+          },
+        },
+      },
     },
-    i18n: resolvedI18n
+    i18n: resolvedI18n,
   });
 }
 
@@ -232,9 +155,9 @@ export async function loadLandingSiteConfig(projectDir?: string): Promise<Landin
         defaultLocale: i18n.defaultLocale ?? DEFAULT_LANDING_DEFAULT_LOCALE,
         locales: i18n.locales ?? DEFAULT_LANDING_LOCALES,
         routing: {
-          prefixDefaultLocale: i18n.routing?.prefixDefaultLocale ?? true
-        }
-      }
+          prefixDefaultLocale: i18n.routing?.prefixDefaultLocale ?? true,
+        },
+      },
     };
   } catch (error) {
     throw new Error(`Failed to load landing site config from ${configPath}: ${error}`);

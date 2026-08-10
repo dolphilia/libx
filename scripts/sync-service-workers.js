@@ -9,7 +9,7 @@ async function discoverTargets() {
   const targets = [];
   const groups = [
     { kind: 'project', baseDir: path.join(rootDir, 'apps') },
-    { kind: 'template', baseDir: path.join(rootDir, 'templates') }
+    { kind: 'template', baseDir: path.join(rootDir, 'templates') },
   ];
 
   for (const group of groups) {
@@ -22,7 +22,7 @@ async function discoverTargets() {
         targets.push({
           kind: group.kind,
           name: entry.name,
-          destination: path.join(publicDir, 'sw.js')
+          destination: path.join(publicDir, 'sw.js'),
         });
       } catch {
         // public/ を持たないワークスペースはService Worker同期の対象外。
@@ -54,9 +54,7 @@ async function getRequestedTargets() {
     const expected = targets
       .filter((candidate) => candidate.kind === kind)
       .map((candidate) => candidate.name);
-    throw new Error(
-      `Unknown ${kind} "${name}". Expected one of: ${expected.join(', ')}`
-    );
+    throw new Error(`Unknown ${kind} "${name}". Expected one of: ${expected.join(', ')}`);
   }
 
   return [target];

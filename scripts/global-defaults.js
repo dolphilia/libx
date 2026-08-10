@@ -6,15 +6,19 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { readJsoncFile } from './jsonc-utils.js';
+import {
+  normalizeSlug,
+  resolveBaseUrlPrefixValue,
+  resolveBaseUrlValue,
+  resolveDefaultLangValue,
+  resolveDisplayNamesValue,
+  resolveSupportedLangsValue,
+} from '../packages/project-config/default-resolvers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const defaultsPath = path.join(rootDir, 'config', 'global-defaults.jsonc');
-const FALLBACK_DEFAULT_LANG = 'en';
-const FALLBACK_BASE_URL_PREFIX = '/docs';
-const FALLBACK_SUPPORTED_LANGS = ['en'];
-const FALLBACK_LANGUAGE_DISPLAY_NAMES = {};
 
 let cachedDefaults = null;
 let loadAttempted = false;
@@ -44,53 +48,8 @@ function getDefaults() {
   return readRepositoryDefaults() || {};
 }
 
-function normalizeBasePath(value) {
-  if (typeof value !== 'string') {
-    return '/';
-  }
-
-  let normalized = value.trim();
-  if (!normalized) {
-    return '/';
-  }
-
-  if (!normalized.startsWith('/')) {
-    normalized = '/' + normalized;
-  }
-
-  normalized = normalized.replace(/\/{2,}/g, '/');
-
-  if (normalized.length > 1 && normalized.endsWith('/')) {
-    normalized = normalized.slice(0, -1);
-  }
-
-  return normalized || '/';
-}
-
-function normalizeSlug(value) {
-  if (typeof value !== 'string') {
-    return '';
-  }
-
-  let normalized = value.trim();
-  if (!normalized) {
-    return '';
-  }
-
-  normalized = normalized.replace(/^\//, '').replace(/\/$/, '');
-  normalized = normalized.replace(/\s+/g, '-');
-  return normalized;
-}
-
 export function getRepositoryDefaultLang() {
-  const defaults = getDefaults();
-  if (typeof defaults.defaultLang === 'string' && defaults.defaultLang.length > 0) {
-    return defaults.defaultLang;
-  }
-  if (defaults.language && typeof defaults.language.default === 'string' && defaults.language.default.length > 0) {
-    return defaults.language.default;
-  }
-  return FALLBACK_DEFAULT_LANG;
+  return resolveDefaultLangValue(getDefaults());
 }
 
 export function getRepositorySupportedLangs() {
@@ -102,24 +61,11 @@ export function getRepositorySupportedLangs() {
 }
 
 export function resolveDefaultLang(preferredLang) {
-  if (typeof preferredLang === 'string' && preferredLang.length > 0) {
-    return preferredLang;
-  }
-
-  return getRepositoryDefaultLang();
+  return resolveDefaultLangValue(getDefaults(), preferredLang);
 }
 
 export function resolveSupportedLangs(preferredLangs) {
-  if (Array.isArray(preferredLangs)) {
-    return preferredLangs;
-  }
-
-  const repoSupported = getRepositorySupportedLangs();
-  if (repoSupported) {
-    return repoSupported;
-  }
-
-  return [...FALLBACK_SUPPORTED_LANGS];
+  return resolveSupportedLangsValue(getDefaults(), preferredLangs);
 }
 
 export function getRepositoryLanguageDisplayNames() {
@@ -131,28 +77,11 @@ export function getRepositoryLanguageDisplayNames() {
 }
 
 export function resolveLanguageDisplayNames(preferredDisplayNames) {
-  if (preferredDisplayNames) {
-    return preferredDisplayNames;
-  }
-
-  const repoDefaults = getRepositoryLanguageDisplayNames();
-  if (repoDefaults) {
-    return repoDefaults;
-  }
-
-  return { ...FALLBACK_LANGUAGE_DISPLAY_NAMES };
+  return resolveDisplayNamesValue(getDefaults(), preferredDisplayNames);
 }
 
 export function resolveBaseUrlPrefix(baseUrlPrefix) {
-  const defaults = getDefaults();
-  if (typeof baseUrlPrefix === 'string' && baseUrlPrefix.trim().length > 0) {
-    return normalizeBasePath(baseUrlPrefix);
-  }
-
-  if (typeof defaults.baseUrlPrefix === 'string' && defaults.baseUrlPrefix.trim().length > 0) {
-    return normalizeBasePath(defaults.baseUrlPrefix);
-  }
-  return FALLBACK_BASE_URL_PREFIX;
+  return resolveBaseUrlPrefixValue(getDefaults(), baseUrlPrefix);
 }
 
 export function resolveProjectSlug(projectSlug, projectName) {
@@ -169,22 +98,5 @@ export function resolveProjectSlug(projectSlug, projectName) {
 }
 
 export function resolveBaseUrl(options = {}) {
-  const { baseUrl, baseUrlPrefix, projectSlug, projectName } = options;
-
-  if (typeof baseUrl === 'string' && baseUrl.trim().length > 0) {
-    return normalizeBasePath(baseUrl);
-  }
-
-  const prefix = normalizeBasePath(resolveBaseUrlPrefix(baseUrlPrefix));
-  const slug = resolveProjectSlug(projectSlug, projectName);
-
-  if (!slug) {
-    return prefix || '/';
-  }
-
-  const combined = `${prefix}/${slug}`.replace(/\/{2,}/g, '/');
-  if (combined.length > 1 && combined.endsWith('/')) {
-    return combined.slice(0, -1);
-  }
-  return combined || '/';
+  return resolveBaseUrlValue(getDefaults(), options);
 }

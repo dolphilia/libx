@@ -18,10 +18,10 @@ description: "إرشادات لتنسيق صفحات التوثيق العربي
 تحافظ الطبقة الجديدة من CSS على اتجاه يسار-إلى-يمين داخل كتل الأكواد حتى لو كانت الصفحة باللغة العربية. لذا يمكن إضافة مثال:
 
 ```ts
-import { initializeConfig } from '@docs/project-config';
+import { getProjectConfig } from '@docs/project-config';
 
-await initializeConfig();
-console.log('تم تحميل الإعدادات بنجاح');
+const projectConfig = await getProjectConfig();
+console.log(projectConfig.metadata.name);
 ```
 
 لاحظ أن النص المحيط سيبقى RTL بينما تبقى الأكواد بمحاذاة يسار لسهولة القراءة.

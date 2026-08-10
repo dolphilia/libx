@@ -12,5 +12,4 @@ export default defineLandingConfig({
   site: siteConfig.site,
   base: siteConfig.base,
   i18n: siteConfig.i18n,
-  rootDir: __dirname,
 });

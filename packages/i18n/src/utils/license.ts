@@ -6,41 +6,41 @@ import type { LocaleKey } from '../locales';
  */
 const LICENSE_TEMPLATE_MAP: Record<string, string> = {
   // Permissive licenses → minimal template
-  'MIT': 'minimal',
+  MIT: 'minimal',
   'MIT License': 'minimal',
   'Apache License 2.0': 'minimal',
   'Apache-2.0': 'minimal',
   'BSD License': 'minimal',
   'BSD-2-Clause': 'minimal',
   'BSD-3-Clause': 'minimal',
-  'ISC': 'minimal',
-  'Unlicense': 'minimal',
-  'Zlib': 'zlib',
+  ISC: 'minimal',
+  Unlicense: 'minimal',
+  Zlib: 'zlib',
   'zlib License': 'zlib',
   'zlib/libpng License': 'zlib',
-  
+
   // Mozilla Public License → mpl template
   'MPL-2.0': 'mpl',
   'Mozilla Public License 2.0': 'mpl',
   'Mozilla Public License v2.0': 'mpl',
   'MPL 2.0': 'mpl',
-  
+
   // Eclipse Public License → epl template
   'EPL-2.0': 'epl',
   'Eclipse Public License 2.0': 'epl',
   'Eclipse Public License v2.0': 'epl',
   'EPL 2.0': 'epl',
-  
+
   // Boost Software License → minimal template (permissive)
   'BSL-1.0': 'minimal',
   'Boost Software License 1.0': 'minimal',
   'Boost Software License': 'minimal',
-  
+
   // LaTeX Project Public License → lppl template
-  'LPPL': 'lppl',
+  LPPL: 'lppl',
   'LaTeX Project Public License': 'lppl',
   'LPPL-1.3c': 'lppl',
-  
+
   // Creative Commons → specific templates
   'CC BY': 'cc-by',
   'CC BY 4.0': 'cc-by',
@@ -50,7 +50,7 @@ const LICENSE_TEMPLATE_MAP: Record<string, string> = {
   'Creative Commons Attribution-ShareAlike': 'cc-by-sa',
   'CC BY-NC': 'cc-by',
   'CC BY-NC-SA': 'cc-by-sa',
-  
+
   // Copyleft licenses → copyleft template
   'GPL v2': 'copyleft',
   'GPL-2.0': 'copyleft',
@@ -61,24 +61,24 @@ const LICENSE_TEMPLATE_MAP: Record<string, string> = {
   'LGPL-2.1': 'copyleft',
   'LGPL-3.0': 'copyleft',
   'AGPL-3.0': 'copyleft',
-  'GFDL': 'copyleft',
+  GFDL: 'copyleft',
   'GNU Free Documentation License': 'copyleft',
-  
+
   // Public Domain → public-domain template
-  'CC0': 'public-domain',
+  CC0: 'public-domain',
   'CC0 1.0': 'public-domain',
   'Public Domain': 'public-domain',
-  'WTFPL': 'public-domain',
+  WTFPL: 'public-domain',
 
   // Original formatted → original-formatted template
   'original-formatted': 'original-formatted',
   'Original Formatted': 'original-formatted',
-  'ORIGINAL_FORMATTED': 'original-formatted'
+  ORIGINAL_FORMATTED: 'original-formatted',
 };
 
 /**
  * ライセンス名から適切なテンプレートキーを判定する
- * 
+ *
  * @param license ライセンス名
  * @returns テンプレートキー
  */
@@ -87,75 +87,81 @@ export function getLicenseTemplateKey(license: string): string {
   if (LICENSE_TEMPLATE_MAP[license]) {
     return LICENSE_TEMPLATE_MAP[license];
   }
-  
+
   // 部分一致による判定
   const normalizedLicense = license.toLowerCase().trim();
-  
+
   // MIT系の判定
   if (normalizedLicense.includes('mit')) {
     return 'minimal';
   }
-  
+
   // Apache系の判定
   if (normalizedLicense.includes('apache')) {
     return 'minimal';
   }
-  
+
   // BSD系の判定
   if (normalizedLicense.includes('bsd')) {
     return 'minimal';
   }
-  
+
   // Zlib系の判定
   if (normalizedLicense.includes('zlib') || normalizedLicense.includes('libpng')) {
     return 'zlib';
   }
-  
+
   // Mozilla Public License系の判定
   if (normalizedLicense.includes('mpl') || normalizedLicense.includes('mozilla public')) {
     return 'mpl';
   }
-  
+
   // Eclipse Public License系の判定
   if (normalizedLicense.includes('epl') || normalizedLicense.includes('eclipse public')) {
     return 'epl';
   }
-  
+
   // Boost Software License系の判定
   if (normalizedLicense.includes('boost')) {
     return 'minimal';
   }
-  
+
   // LaTeX Project Public License系の判定
   if (normalizedLicense.includes('lppl') || normalizedLicense.includes('latex project')) {
     return 'lppl';
   }
-  
+
   // Creative Commons系の判定
   if (normalizedLicense.includes('cc by-sa') || normalizedLicense.includes('sharealike')) {
     return 'cc-by-sa';
   }
-  if (normalizedLicense.includes('cc by') || normalizedLicense.includes('creative commons attribution')) {
+  if (
+    normalizedLicense.includes('cc by') ||
+    normalizedLicense.includes('creative commons attribution')
+  ) {
     return 'cc-by';
   }
-  
+
   // GPL系の判定
   if (normalizedLicense.includes('gpl') || normalizedLicense.includes('gnu general')) {
     return 'copyleft';
   }
-  
+
   // GFDL系の判定
   if (normalizedLicense.includes('gfdl') || normalizedLicense.includes('free documentation')) {
     return 'copyleft';
   }
-  
+
   // CC0/Public Domain系の判定
   if (normalizedLicense.includes('cc0') || normalizedLicense.includes('public domain')) {
     return 'public-domain';
   }
 
   // Original Formatted系の判定
-  if (normalizedLicense.includes('original-formatted') || normalizedLicense.includes('original formatted')) {
+  if (
+    normalizedLicense.includes('original-formatted') ||
+    normalizedLicense.includes('original formatted')
+  ) {
     return 'original-formatted';
   }
 
@@ -197,7 +203,10 @@ export function getLicenseTemplateKeyWithLanguage(
 
   // 2. ライセンス名に "original-formatted" が含まれている場合
   const normalizedLicense = licenseInfo.license.toLowerCase().trim();
-  if (normalizedLicense.includes('original-formatted') || normalizedLicense.includes('original formatted')) {
+  if (
+    normalizedLicense.includes('original-formatted') ||
+    normalizedLicense.includes('original formatted')
+  ) {
     return 'original-formatted';
   }
 
@@ -247,9 +256,14 @@ export function getLicenseTemplate(
   },
   forceOriginalFormatted?: boolean
 ): string {
-  const templateKey = getLicenseTemplateKeyWithLanguage(licenseInfo, lang, projectConfig, forceOriginalFormatted);
+  const templateKey = getLicenseTemplateKeyWithLanguage(
+    licenseInfo,
+    lang,
+    projectConfig,
+    forceOriginalFormatted
+  );
   const i18nKey = `license.templates.${templateKey}`;
-  
+
   // テンプレート用のパラメータを準備
   const params = {
     title: licenseInfo.title || licenseInfo.name,
@@ -257,16 +271,16 @@ export function getLicenseTemplate(
     license: licenseInfo.license,
     licenseUrl: licenseInfo.licenseUrl || '',
     sourceUrl: licenseInfo.sourceUrl || '',
-    name: licenseInfo.name
+    name: licenseInfo.name,
   };
-  
+
   // i18nシステムを使用してテンプレートを取得・変数置換
   return t(i18nKey, lang, params);
 }
 
 /**
  * ライセンスの種類を判定する（追加情報用）
- * 
+ *
  * @param license ライセンス名
  * @returns ライセンスカテゴリ情報
  */
@@ -276,51 +290,68 @@ export function getLicenseCategory(license: string): {
   requiresShareAlike: boolean;
 } {
   const normalizedLicense = license.toLowerCase().trim();
-  
+
   // Creative Commons系
   if (normalizedLicense.includes('cc by') || normalizedLicense.includes('creative commons')) {
-    const requiresShareAlike = normalizedLicense.includes('sa') || normalizedLicense.includes('sharealike');
+    const requiresShareAlike =
+      normalizedLicense.includes('sa') || normalizedLicense.includes('sharealike');
     return {
       category: 'creative-commons',
       requiresAttribution: true,
-      requiresShareAlike
+      requiresShareAlike,
     };
   }
-  
+
   // Copyleft系
-  if (normalizedLicense.includes('gpl') || normalizedLicense.includes('gfdl') || normalizedLicense.includes('agpl') || 
-      normalizedLicense.includes('mpl') || normalizedLicense.includes('epl') || normalizedLicense.includes('lppl')) {
+  if (
+    normalizedLicense.includes('gpl') ||
+    normalizedLicense.includes('gfdl') ||
+    normalizedLicense.includes('agpl') ||
+    normalizedLicense.includes('mpl') ||
+    normalizedLicense.includes('epl') ||
+    normalizedLicense.includes('lppl')
+  ) {
     const isWeakCopyleft = normalizedLicense.includes('mpl') || normalizedLicense.includes('epl');
     return {
       category: 'copyleft',
       requiresAttribution: true,
-      requiresShareAlike: !isWeakCopyleft // MPL/EPLは弱いコピーレフト
+      requiresShareAlike: !isWeakCopyleft, // MPL/EPLは弱いコピーレフト
     };
   }
-  
+
   // Public Domain系
-  if (normalizedLicense.includes('cc0') || normalizedLicense.includes('public domain') || normalizedLicense.includes('wtfpl')) {
+  if (
+    normalizedLicense.includes('cc0') ||
+    normalizedLicense.includes('public domain') ||
+    normalizedLicense.includes('wtfpl')
+  ) {
     return {
       category: 'public-domain',
       requiresAttribution: false,
-      requiresShareAlike: false
+      requiresShareAlike: false,
     };
   }
-  
+
   // Permissive系
-  if (normalizedLicense.includes('mit') || normalizedLicense.includes('apache') || normalizedLicense.includes('bsd') || 
-      normalizedLicense.includes('zlib') || normalizedLicense.includes('boost') || normalizedLicense.includes('isc')) {
+  if (
+    normalizedLicense.includes('mit') ||
+    normalizedLicense.includes('apache') ||
+    normalizedLicense.includes('bsd') ||
+    normalizedLicense.includes('zlib') ||
+    normalizedLicense.includes('boost') ||
+    normalizedLicense.includes('isc')
+  ) {
     return {
       category: 'permissive',
       requiresAttribution: true,
-      requiresShareAlike: false
+      requiresShareAlike: false,
     };
   }
-  
+
   // 不明
   return {
     category: 'unknown',
     requiresAttribution: true,
-    requiresShareAlike: false
+    requiresShareAlike: false,
   };
 }

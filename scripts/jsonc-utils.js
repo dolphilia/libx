@@ -1,56 +1,7 @@
 import fs from 'fs';
 import fsp from 'fs/promises';
-
-export function stripJsonComments(text) {
-  let result = '';
-  let inString = false;
-  let inLineComment = false;
-  let inBlockComment = false;
-  let prevChar = '';
-
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    const nextChar = i + 1 < text.length ? text[i + 1] : '';
-
-    if (inLineComment) {
-      if (char === '\n' || char === '\r') {
-        inLineComment = false;
-        result += char;
-      }
-      continue;
-    }
-
-    if (inBlockComment) {
-      if (char === '*' && nextChar === '/') {
-        inBlockComment = false;
-        i++;
-      }
-      continue;
-    }
-
-    if (!inString && char === '/' && nextChar === '/') {
-      inLineComment = true;
-      i++;
-      continue;
-    }
-
-    if (!inString && char === '/' && nextChar === '*') {
-      inBlockComment = true;
-      i++;
-      continue;
-    }
-
-    result += char;
-
-    if (char === '"' && prevChar !== '\\') {
-      inString = !inString;
-    }
-
-    prevChar = char === '\\' && prevChar === '\\' ? '' : char;
-  }
-
-  return result;
-}
+export { stripJsonComments } from '../packages/project-config/src/jsonc-runtime.js';
+import { stripJsonComments } from '../packages/project-config/src/jsonc-runtime.js';
 
 export function readJsoncFile(filePath) {
   const raw = fs.readFileSync(filePath, 'utf-8');
@@ -67,12 +18,12 @@ const PROJECT_CONFIG_SECTIONS = [
   { key: '"language": {', comment: '// 言語設定（対応言語・デフォルト・表示名）' },
   { key: '"translations": {', comment: '// 各言語の表示情報とカテゴリ名' },
   { key: '"versioning": {', comment: '// バージョン管理' },
-  { key: '"licensing": {', comment: '// ライセンス情報' }
+  { key: '"licensing": {', comment: '// ライセンス情報' },
 ];
 
 const LANDING_CONFIG_SECTIONS = [
   { key: '"siteConfig": {', comment: '// ランディングページ全体の設定' },
-  { key: '"projectDecorations": {', comment: '// プロジェクトカードの装飾情報' }
+  { key: '"projectDecorations": {', comment: '// プロジェクトカードの装飾情報' },
 ];
 
 export function formatProjectConfigJsonc(text) {

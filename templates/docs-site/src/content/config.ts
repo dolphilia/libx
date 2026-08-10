@@ -30,14 +30,18 @@ const docsSchema = z.object({
   tags: z.array(z.string()).optional(),
   draft: z.boolean().optional().default(false),
   order: z.number().optional(),
-  prev: z.object({
-    text: z.string(),
-    link: z.string()
-  }).optional(),
-  next: z.object({
-    text: z.string(),
-    link: z.string()
-  }).optional(),
+  prev: z
+    .object({
+      text: z.string(),
+      link: z.string(),
+    })
+    .optional(),
+  next: z
+    .object({
+      text: z.string(),
+      link: z.string(),
+    })
+    .optional(),
   licenseSource: z.string().optional(),
   customAttribution: z.string().optional(),
   hideAttribution: z.boolean().optional().default(false),
@@ -46,7 +50,7 @@ const docsSchema = z.object({
 // コレクションの定義
 export const collections = {
   // docsコレクション
-  'docs': defineCollection({
-    schema: docsSchema
+  docs: defineCollection({
+    schema: docsSchema,
   }),
 };

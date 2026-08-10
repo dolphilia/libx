@@ -1,6 +1,17 @@
 ---
 interface Props {
-  variant?: 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error' | 'ghost' | 'link' | 'outline' | 'minimal';
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'accent'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'error'
+    | 'ghost'
+    | 'link'
+    | 'outline'
+    | 'minimal';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   class?: string;
   icon?: string;
@@ -22,35 +33,32 @@ const {
 // リンクスタイルの場合は一部のスタイルを適用しない
 const isLink = variant === 'link' || variant === 'minimal';
 
-const classes = [
-  'btn',
-  `btn-${variant}`,
-  !isLink && `btn-${size}`,
-  additionalClass,
-];
+const classes = ['btn', `btn-${variant}`, !isLink && `btn-${size}`, additionalClass];
 ---
 
-{href ? (
-  <a class:list={classes} href={href} {...rest}>
-    {icon && iconPlacement === 'start' && (
-      <span class="icon icon-start" aria-hidden="true" set:html={icon} />
-    )}
-    <slot />
-    {icon && iconPlacement === 'end' && (
-      <span class="icon icon-end" aria-hidden="true" set:html={icon} />
-    )}
-  </a>
-) : (
-  <button class:list={classes} {...rest}>
-    {icon && iconPlacement === 'start' && (
-      <span class="icon icon-start" aria-hidden="true" set:html={icon} />
-    )}
-    <slot />
-    {icon && iconPlacement === 'end' && (
-      <span class="icon icon-end" aria-hidden="true" set:html={icon} />
-    )}
-  </button>
-)}
+{
+  href ? (
+    <a class:list={classes} href={href} {...rest}>
+      {icon && iconPlacement === 'start' && (
+        <span class="icon icon-start" aria-hidden="true" set:html={icon} />
+      )}
+      <slot />
+      {icon && iconPlacement === 'end' && (
+        <span class="icon icon-end" aria-hidden="true" set:html={icon} />
+      )}
+    </a>
+  ) : (
+    <button class:list={classes} {...rest}>
+      {icon && iconPlacement === 'start' && (
+        <span class="icon icon-start" aria-hidden="true" set:html={icon} />
+      )}
+      <slot />
+      {icon && iconPlacement === 'end' && (
+        <span class="icon icon-end" aria-hidden="true" set:html={icon} />
+      )}
+    </button>
+  )
+}
 
 <style>
   .btn {
@@ -64,11 +72,12 @@ const classes = [
     cursor: pointer;
     outline-offset: 0.25rem;
     border: 1px solid transparent;
-    transition: color 0.2s ease-in-out, 
-                background-color 0.2s ease-in-out, 
-                border-color 0.2s ease-in-out, 
-                box-shadow 0.2s ease-in-out,
-                transform 0.1s ease-in-out;
+    transition:
+      color 0.2s ease-in-out,
+      background-color 0.2s ease-in-out,
+      border-color 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out,
+      transform 0.1s ease-in-out;
   }
 
   .btn:focus-visible {
@@ -234,11 +243,11 @@ const classes = [
   }
 
   .icon-start {
-    margin-right: 0.25em;
+    margin-inline-end: 0.25em;
   }
 
   .icon-end {
-    margin-left: 0.25em;
+    margin-inline-start: 0.25em;
   }
 
   /* ダークモード対応 */

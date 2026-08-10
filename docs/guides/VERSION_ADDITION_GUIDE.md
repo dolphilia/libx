@@ -221,9 +221,9 @@ node scripts/create-version.js sample-docs v3
 }
 ```
 
-`languageNames` は `packages/i18n/src/language-names.json` にある共通デフォルトをプロジェクト側で上書きしたい場合のみ設定します。デフォルトのままで問題なければ、このセクションは省略しても構いません。
+言語表示名は `packages/i18n/src/language-names.json` の共通既定値を使い、プロジェクト固有の上書きは `language.displayNames` に記述します。
 
-`language.default` を記述しない場合は `config/global-defaults.json` の `defaultLang`（未設定なら `"en"`）が自動的に適用されます。
+既定言語はプロジェクト設定の `language.default` で指定します。リポジトリ共通の既定値も `config/global-defaults.jsonc` の `language.default` に統一されています。
 
 #### 設定更新のポイント
 
@@ -495,13 +495,13 @@ done
 **解決方法**:
 1. 該当言語のディレクトリが存在するか確認
 2. MDXファイルが正しい場所に配置されているか確認
-3. `supportedLangs`設定を確認
+3. `language.supported` 設定を確認
 
 ## 📖 関連ドキュメント
 
 - [新しいプロジェクト作成ガイド](./NEW_PROJECT_CREATION_GUIDE.md) - 新規プロジェクトの作成方法
 - [言語追加ガイド](./LANGUAGE_ADDITION_GUIDE.md) - 新しい言語の追加方法
-- [プロジェクト設定リファレンス](../README.md#設定ファイル) - 設定ファイルの詳細
+- [プロジェクト設定リファレンス](../../README.md#設定ファイル) - 設定ファイルの詳細
 
 ## 🔄 更新履歴
 

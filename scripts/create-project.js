@@ -2,11 +2,11 @@
 
 /**
  * 新しいドキュメントプロジェクトを自動作成するスクリプト
- * 
+ *
  * 使用例:
  * node scripts/create-project.js my-project "My Documentation" "私のドキュメント"
  * node scripts/create-project.js api-docs "API Documentation" "API文書" --icon=code --tags=api,reference
- * 
+ *
  * このスクリプトは以下の処理を自動化します:
  * 1. ドキュメントサイトテンプレート（templates/docs-site）のコピー
  * 2. 各種設定ファイルの自動更新
@@ -20,13 +20,19 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import * as logger from './logger.js';
 import { confirmAction, createBackup } from './safety-utils.js';
-import { readJsoncFile, formatProjectConfigJsonc, formatLandingConfigJsonc } from './jsonc-utils.js';
+import {
+  readJsoncFile,
+  formatProjectConfigJsonc,
+  formatLandingConfigJsonc,
+} from './jsonc-utils.js';
 
 logger.useUnifiedConsole();
 
 function showUsage(exitCode = 1) {
   logger.heading('プロジェクト作成スクリプトの使い方');
-  logger.info('node scripts/create-project.js <project-name> <display-name-en> <display-name-ja> [options]');
+  logger.info(
+    'node scripts/create-project.js <project-name> <display-name-en> <display-name-ja> [options]'
+  );
   logger.blank();
   logger.info('必須引数');
   logger.detail('project-name: プロジェクトディレクトリ名（英数字・ハイフンのみ）');
@@ -45,7 +51,9 @@ function showUsage(exitCode = 1) {
   logger.blank();
   logger.info('使用例');
   logger.detail('node scripts/create-project.js my-docs "My Documentation" "私のドキュメント"');
-  logger.detail('node scripts/create-project.js api-docs "API Docs" "API文書" --icon=code --tags=api,reference');
+  logger.detail(
+    'node scripts/create-project.js api-docs "API Docs" "API文書" --icon=code --tags=api,reference'
+  );
   process.exit(exitCode);
 }
 
@@ -55,17 +63,10 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const templatesDir = path.join(rootDir, 'templates');
 const PROJECT_CONFIG_FILE = 'project.config.jsonc';
-const PROJECT_CONFIG_FALLBACK = 'project.config.json';
 const LANDING_CONFIG_FILE = 'projects.config.jsonc';
-const LANDING_CONFIG_FALLBACK = 'projects.config.json';
 
-function resolveConfigPath(baseDir, fileName, fallbackName) {
-  const primary = path.join(baseDir, fileName);
-  const fallback = path.join(baseDir, fallbackName);
-  if (fs.existsSync(primary)) {
-    return primary;
-  }
-  return fallback;
+function resolveConfigPath(baseDir, fileName) {
+  return path.join(baseDir, fileName);
 }
 
 /**
@@ -107,11 +108,11 @@ function parseArguments() {
     descriptionEn: options['description-en'] || `Documentation for ${displayNameEn}`,
     descriptionJa: options['description-ja'] || `${displayNameJa}のドキュメントです`,
     icon: options.icon || 'file-text',
-    tags: options.tags ? options.tags.split(',').map(tag => tag.trim()) : ['documentation'],
+    tags: options.tags ? options.tags.split(',').map((tag) => tag.trim()) : ['documentation'],
     template: options.template || 'docs-site',
     skipTest: Boolean(options['skip-test']),
     dryRun: Boolean(options['dry-run']),
-    autoConfirm: Boolean(options.confirm)
+    autoConfirm: Boolean(options.confirm),
   };
 }
 
@@ -174,15 +175,9 @@ export function validateTemplate(templateName) {
   }
 
   // 必須ファイルの存在確認
-  const requiredFiles = [
-    'package.json',
-    'astro.config.mjs',
-    `src/config/${PROJECT_CONFIG_FILE}`
-  ];
+  const requiredFiles = ['package.json', 'astro.config.mjs', `src/config/${PROJECT_CONFIG_FILE}`];
 
-  const missingFiles = requiredFiles.filter(file =>
-    !fs.existsSync(path.join(templateDir, file))
-  );
+  const missingFiles = requiredFiles.filter((file) => !fs.existsSync(path.join(templateDir, file)));
 
   if (missingFiles.length > 0) {
     return [`テンプレートプロジェクトに必須ファイルが不足しています: ${missingFiles.join(', ')}`];
@@ -214,14 +209,14 @@ const EXCLUDE_PATTERNS = [
   '*.log',
   '.cache',
   '.temp',
-  '.tmp'
+  '.tmp',
 ];
 
 /**
  * ファイル/ディレクトリが除外対象かどうかを判定する
  */
 function shouldExclude(name, _isFile = false) {
-  return EXCLUDE_PATTERNS.some(pattern => {
+  return EXCLUDE_PATTERNS.some((pattern) => {
     if (pattern.includes('*')) {
       // ワイルドカード処理
       const regex = new RegExp(pattern.replace(/\*/g, '.*'));
@@ -341,7 +336,7 @@ export default defineDocsConfig({
  */
 export function updateProjectConfig(projectDir, config) {
   const configDir = path.join(projectDir, 'src', 'config');
-  const projectConfigPath = resolveConfigPath(configDir, PROJECT_CONFIG_FILE, PROJECT_CONFIG_FALLBACK);
+  const projectConfigPath = resolveConfigPath(configDir, PROJECT_CONFIG_FILE);
   const projectConfig = readJsoncFile(projectConfigPath);
 
   projectConfig.paths ??= {};
@@ -366,31 +361,37 @@ export function updateProjectConfig(projectDir, config) {
  */
 function updateLandingConfig(config, options = {}) {
   // デフォルト値の場合は更新しない（自動検出に任せる）
-  if (config.icon === 'file-text' && config.tags.length === 1 && config.tags[0] === 'documentation') {
+  if (
+    config.icon === 'file-text' &&
+    config.tags.length === 1 &&
+    config.tags[0] === 'documentation'
+  ) {
     return;
   }
 
   const { dryRun = false } = options;
   const landingConfigDir = path.join(rootDir, 'sites', 'landing', 'src', 'config');
-  const landingConfigPath = resolveConfigPath(landingConfigDir, LANDING_CONFIG_FILE, LANDING_CONFIG_FALLBACK);
+  const landingConfigPath = resolveConfigPath(landingConfigDir, LANDING_CONFIG_FILE);
   const landingConfig = readJsoncFile(landingConfigPath);
 
   // プロジェクトデコレーションを追加
   landingConfig.projectDecorations[config.projectName] = {
     icon: config.icon,
     tags: config.tags,
-    isNew: true
+    isNew: true,
   };
 
   if (dryRun) {
-    logger.dryRun(`landing ${path.basename(landingConfigPath)} を更新します（dry-runのためファイルは変更しません）: ${landingConfigPath}`);
+    logger.dryRun(
+      `landing ${path.basename(landingConfigPath)} を更新します（dry-runのためファイルは変更しません）: ${landingConfigPath}`
+    );
     return;
   }
 
   createBackup(landingConfigPath, {
     rootDir,
     scenario: 'create-project',
-    logger
+    logger,
   });
 
   let landingSerialized = JSON.stringify(landingConfig, null, 2);
@@ -407,7 +408,9 @@ function updateAllConfigFiles(projectDir, config, options = {}) {
   console.log('  設定ファイルを更新しています...');
 
   if (dryRun) {
-    logger.dryRun('package.json / astro.config.mjs / project.config.jsonc / landing 設定を更新する予定です（dry-runのため未実施）。');
+    logger.dryRun(
+      'package.json / astro.config.mjs / project.config.jsonc / landing 設定を更新する予定です（dry-runのため未実施）。'
+    );
     return;
   }
 
@@ -436,7 +439,7 @@ function installDependencies(projectDir, { dryRun = false } = {}) {
     execSync('pnpm install', {
       cwd: projectDir,
       stdio: ['inherit', 'pipe', 'pipe'],
-      timeout: 120000 // 2分タイムアウト
+      timeout: 120000, // 2分タイムアウト
     });
 
     console.log('  ✅ 依存関係のインストール完了');
@@ -470,7 +473,7 @@ async function runProjectTests(projectName, { skipTest = false, dryRun = false }
     execSync(`pnpm --filter=apps-${projectName} build`, {
       stdio: ['inherit', 'pipe', 'pipe'],
       timeout: 120000, // 2分タイムアウト
-      cwd: rootDir
+      cwd: rootDir,
     });
     console.log('    ✅ ビルドテスト成功');
 
@@ -555,12 +558,12 @@ async function main() {
   const validationErrors = [
     ...validateProjectName(config.projectName),
     ...checkProjectDuplication(config.projectName),
-    ...validateTemplate(config.template)
+    ...validateTemplate(config.template),
   ];
 
   if (validationErrors.length > 0) {
     console.error('❌ エラーが発生しました:');
-    validationErrors.forEach(error => console.error(`  - ${error}`));
+    validationErrors.forEach((error) => console.error(`  - ${error}`));
     process.exit(1);
   }
 
@@ -575,7 +578,7 @@ async function main() {
         : `プロジェクト "${config.projectName}" を作成します`,
       autoConfirm: config.autoConfirm,
       dryRun: config.dryRun,
-      logger
+      logger,
     });
   } catch (error) {
     logger.error(error.message);
@@ -590,7 +593,7 @@ async function main() {
   showProgress(3, 7, 'テンプレートプロジェクトをコピーしています...');
 
   const targetDir = copyTemplateProject(config.template, config.projectName, {
-    dryRun: config.dryRun
+    dryRun: config.dryRun,
   });
   console.log('✅ プロジェクトコピー完了');
   console.log('');
@@ -620,7 +623,7 @@ async function main() {
 
   const testResult = await runProjectTests(config.projectName, {
     skipTest: config.skipTest,
-    dryRun: config.dryRun
+    dryRun: config.dryRun,
   });
   console.log('✅ テスト実行完了');
   console.log('');
@@ -636,7 +639,7 @@ async function main() {
 
 // エラーハンドリング付きでメイン処理を実行
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
-  main().catch(error => {
+  main().catch((error) => {
     console.error('\n❌ 予期しないエラーが発生しました:', error.message);
     console.error('スタックトレース:', error.stack);
     process.exit(1);

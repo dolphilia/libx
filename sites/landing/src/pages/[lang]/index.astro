@@ -9,8 +9,8 @@ import { translate } from '@docs/i18n/utils';
 // 静的パスを生成する関数
 export async function getStaticPaths() {
   const config = await getTopPageConfig();
-  return config.supportedLangs.map(lang => ({
-    params: { lang }
+  return config.supportedLangs.map((lang) => ({
+    params: { lang },
   }));
 }
 
@@ -26,7 +26,7 @@ const dir = getLocaleDirection(currentLang);
 const projectsWithUrls = await Promise.all(
   projects.map(async (project) => ({
     project,
-    projectUrl: await generateProjectUrl(project, currentLang)
+    projectUrl: await generateProjectUrl(project, currentLang),
   }))
 );
 
@@ -47,26 +47,23 @@ const pageTitle = siteName;
     <h1 class="hero-title">{heroTitle[currentLang]}</h1>
     <p class="hero-description">{heroDescription[currentLang]}</p>
   </section>
-  
+
   <!-- プロジェクトセクション -->
   <section class="section" dir={dir}>
     <div class="container">
       <h2 class="section-title">{translate('projects.title', currentLang)}</h2>
       <p class="section-description">{translate('projects.description', currentLang)}</p>
-      
+
       <!-- プロジェクトグリッド -->
       <div class="project-grid">
-        {projectsWithUrls.map(({ project, projectUrl }) => (
-          <ProjectCard 
-            project={project} 
-            lang={currentLang} 
-            projectUrl={projectUrl}
-          />
-        ))}
+        {
+          projectsWithUrls.map(({ project, projectUrl }) => (
+            <ProjectCard project={project} lang={currentLang} projectUrl={projectUrl} />
+          ))
+        }
       </div>
     </div>
   </section>
-  
 </MainLayout>
 
 <style>
@@ -77,5 +74,4 @@ const pageTitle = siteName;
     margin: 0 auto 2rem;
     max-width: var(--sl-content-width);
   }
-  
 </style>

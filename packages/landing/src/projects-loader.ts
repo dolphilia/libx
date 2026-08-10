@@ -8,12 +8,9 @@ import type {
   SiteConfigJSON,
   Project,
   ProjectDecoration,
-  TopPageConfig
+  TopPageConfig,
 } from './projects-schema';
-import {
-  convertProjectsConfigJSONToRuntime,
-  validateProjectsConfig
-} from './projects-schema';
+import { convertProjectsConfigJSONToRuntime, validateProjectsConfig } from './projects-schema';
 import { scanAppsDirectory, detectProject } from './project-detector';
 
 let _configCache: TopPageConfig | null = null;
@@ -45,7 +42,9 @@ async function loadProjectsConfigFromJSON(configPath?: string): Promise<Projects
   }
 }
 
-async function generateAutoProjects(decorations: Record<string, ProjectDecoration>): Promise<Project[]> {
+async function generateAutoProjects(
+  decorations: Record<string, ProjectDecoration>
+): Promise<Project[]> {
   const projectIds = await scanAppsDirectory();
   const projects: Project[] = [];
 
@@ -61,10 +60,13 @@ async function generateAutoProjects(decorations: Record<string, ProjectDecoratio
         path: detected.basePath,
         contentPath: detected.id,
         fallbackUrl: detected.fallbackUrls,
-        ...decoration
+        ...decoration,
       });
     } catch (error) {
-      console.warn(`プロジェクト ${id} の自動検出に失敗しました:`, error instanceof Error ? error.message : error);
+      console.warn(
+        `プロジェクト ${id} の自動検出に失敗しました:`,
+        error instanceof Error ? error.message : error
+      );
       const decoration = decorations[id] || {};
       const basicFallbackUrl: Record<string, string> = {};
 
@@ -83,16 +85,16 @@ async function generateAutoProjects(decorations: Record<string, ProjectDecoratio
         id,
         name: {
           en: id.charAt(0).toUpperCase() + id.slice(1).replace('-', ' '),
-          ja: id.charAt(0).toUpperCase() + id.slice(1).replace('-', ' ')
+          ja: id.charAt(0).toUpperCase() + id.slice(1).replace('-', ' '),
         },
         description: {
           en: `Documentation for ${id}`,
-          ja: `${id}のドキュメント`
+          ja: `${id}のドキュメント`,
         },
         path: `/docs/${id}`,
         contentPath: id,
         fallbackUrl: basicFallbackUrl,
-        ...decoration
+        ...decoration,
       });
     }
   }
@@ -117,7 +119,7 @@ export async function getTopPageConfig(): Promise<TopPageConfig> {
       ...normalizedSiteConfig,
       siteDescription: landingContent.siteDescription,
       heroTitle: landingContent.heroTitle,
-      heroDescription: landingContent.heroDescription
+      heroDescription: landingContent.heroDescription,
     };
 
     return _configCache;
@@ -165,7 +167,7 @@ function buildLandingContent(supportedLangs: LocaleKey[]): LandingContentMap {
   const result: LandingContentMap = {
     siteDescription: {},
     heroTitle: {},
-    heroDescription: {}
+    heroDescription: {},
   };
 
   for (const lang of supportedLangs) {
@@ -206,7 +208,7 @@ function getFailsafeConfig(): TopPageConfig {
     siteName: 'Libx',
     siteDescription: landingContent.siteDescription,
     heroTitle: landingContent.heroTitle,
-    heroDescription: landingContent.heroDescription
+    heroDescription: landingContent.heroDescription,
   };
 }
 
@@ -240,13 +242,16 @@ async function loadLandingDefaults(): Promise<LandingDefaults> {
 
   const i18n = parsed.i18n ?? {};
   const baseUrl = typeof parsed.base === 'string' ? parsed.base : '';
-  const supportedLangs = Array.isArray(i18n.locales) && i18n.locales.length > 0 ? (i18n.locales as LocaleKey[]) : FALLBACK_SUPPORTED_LANGS;
+  const supportedLangs =
+    Array.isArray(i18n.locales) && i18n.locales.length > 0
+      ? (i18n.locales as LocaleKey[])
+      : FALLBACK_SUPPORTED_LANGS;
   const defaultLang = (i18n.defaultLocale as LocaleKey | undefined) ?? FALLBACK_DEFAULT_LANG;
 
   _landingDefaultsCache = {
     baseUrl,
     supportedLangs,
-    defaultLang
+    defaultLang,
   };
 
   return _landingDefaultsCache;
@@ -254,13 +259,15 @@ async function loadLandingDefaults(): Promise<LandingDefaults> {
 
 async function buildSiteConfigWithDefaults(siteConfig: SiteConfigJSON) {
   const landingDefaults = await loadLandingDefaults();
-  const defaultLang = await resolveDefaultLang(siteConfig.defaultLang ?? landingDefaults.defaultLang);
+  const defaultLang = await resolveDefaultLang(
+    siteConfig.defaultLang ?? landingDefaults.defaultLang
+  );
 
   return {
     baseUrl: siteConfig.baseUrl ?? landingDefaults.baseUrl,
     supportedLangs: (siteConfig.supportedLangs ?? landingDefaults.supportedLangs) as LocaleKey[],
     defaultLang,
     repository: siteConfig.repository ?? 'https://github.com/libx-dev/libx-dev',
-    siteName: siteConfig.siteName ?? 'Libx'
+    siteName: siteConfig.siteName ?? 'Libx',
   };
 }

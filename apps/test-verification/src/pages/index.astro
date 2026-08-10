@@ -1,17 +1,16 @@
 ---
 // シンプルなリダイレクト
 // i18nパッケージの言語検出を使用して、ブラウザの言語設定に基づいてリダイレクト
-import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
+import { getProjectConfig } from '@docs/project-config';
 import { generateRedirectUrl } from '@docs/content-utils';
 
 // 設定を初期化
-await initializeConfig();
-const projectConfig = await getLegacyProjectConfig();
+const projectConfig = await getProjectConfig();
 
 // サーバーサイドでは言語検出できないため、デフォルト言語を使用
-const defaultLang = projectConfig.defaultLang;
+const defaultLang = projectConfig.language.default;
 // GitHub Pagesのベースパス
-const baseUrl = projectConfig.baseUrl;
+const baseUrl = projectConfig.paths.baseUrl;
 
 // 実在する最新バージョンの最初のページへリダイレクト
 const redirectUrl = await generateRedirectUrl(defaultLang, baseUrl);

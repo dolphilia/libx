@@ -697,7 +697,7 @@ ls -la .backups/
 
 ### 関連ドキュメント
 
-- [CLAUDE.md](../CLAUDE.md) - プロジェクト全体のガイド
+- [CLAUDE.md](../../CLAUDE.md) - プロジェクト全体のガイド
 - [BUILD_AND_DEPLOYMENT_GUIDE.md](BUILD_AND_DEPLOYMENT_GUIDE.md) - ビルドとデプロイの詳細
 - [LANGUAGE_ADDITION_GUIDE.md](LANGUAGE_ADDITION_GUIDE.md) - 言語追加の手順
 - [PROJECT_PRINCIPLES.md](../spec/PROJECT_PRINCIPLES.md) - プロジェクトの設計原則

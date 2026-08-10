@@ -5,11 +5,11 @@
  */
 import type { LocaleKey } from '@docs/i18n/locales';
 import { getLicenseTemplate, translate } from '@docs/i18n/utils';
-import type { LegacyProjectConfig, LicenseSource } from '@docs/project-config';
+import type { ProjectConfig, LicenseSource } from '@docs/project-config';
 
 interface Props {
   // プロジェクト設定（project.config.jsonc）
-  projectConfig: LegacyProjectConfig;
+  projectConfig: ProjectConfig;
   // 現在の言語
   lang?: LocaleKey;
   // カスタムソースID（オプション）
@@ -31,7 +31,7 @@ const {
   customAttribution,
   hideAttribution = false,
   forceOriginalFormatted = false,
-  class: className = ''
+  class: className = '',
 } = Astro.props;
 
 // ライセンス設定を取得
@@ -65,9 +65,9 @@ if (customAttribution) {
       author: source.author,
       license: source.license,
       licenseUrl: source.licenseUrl,
-      sourceUrl: source.sourceUrl
+      sourceUrl: source.sourceUrl,
     };
-    
+
     attributionText = getLicenseTemplate(licenseInfo, lang, projectConfig, forceOriginalFormatted);
   } catch (error) {
     // フォールバック：シンプルな表示
@@ -77,28 +77,28 @@ if (customAttribution) {
 }
 ---
 
-{licensing.showAttribution && (
-  <div class:list={['license-attribution', className]}>
-    <div class="attribution-content">
-      <p class="attribution-text">{attributionText}</p>
-      <div class="attribution-links">
-        {source.sourceUrl && (
-          <a href={source.sourceUrl} class="attribution-link" target="_blank" rel="noopener">
-            {translate('license.links.original', lang)}
-          </a>
-        )}
-        {source.sourceUrl && source.licenseUrl && (
-          <span class="link-separator"> / </span>
-        )}
-        {source.licenseUrl && (
-          <a href={source.licenseUrl} class="attribution-link" target="_blank" rel="noopener">
-            {source.license} {translate('license.links.license', lang)}
-          </a>
-        )}
+{
+  licensing.showAttribution && (
+    <div class:list={['license-attribution', className]}>
+      <div class="attribution-content">
+        <p class="attribution-text">{attributionText}</p>
+        <div class="attribution-links">
+          {source.sourceUrl && (
+            <a href={source.sourceUrl} class="attribution-link" target="_blank" rel="noopener">
+              {translate('license.links.original', lang)}
+            </a>
+          )}
+          {source.sourceUrl && source.licenseUrl && <span class="link-separator"> / </span>}
+          {source.licenseUrl && (
+            <a href={source.licenseUrl} class="attribution-link" target="_blank" rel="noopener">
+              {source.license} {translate('license.links.license', lang)}
+            </a>
+          )}
+        </div>
       </div>
     </div>
-  </div>
-)}
+  )
+}
 
 <style>
   .license-attribution {

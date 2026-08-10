@@ -69,7 +69,7 @@ export function convertProjectsConfigJSONToRuntime(configJSON: ProjectsConfigJSO
 } {
   return {
     siteConfig: configJSON.siteConfig,
-    projectDecorations: configJSON.projectDecorations
+    projectDecorations: configJSON.projectDecorations,
   };
 }
 

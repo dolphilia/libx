@@ -1,0 +1,48 @@
+---
+title: Heavy reader-performance fixture
+description: A stable long-form page containing code, an image, lists, and tables.
+category: performance
+order: 1
+---
+
+This page is deliberately richer than the normal documentation page. It provides a stable target for measuring the cost of long-form content without introducing remote resources.
+
+![Geometric libx performance fixture](/docs/sample-docs/performance-fixture.svg)
+
+## Representative code
+
+```ts
+type Site = {
+  id: string;
+  languages: string[];
+  versions: string[];
+};
+
+export function selectSite(sites: Site[], id: string): Site {
+  const site = sites.find((candidate) => candidate.id === id);
+  if (!site) throw new Error(`Unknown site: ${id}`);
+  return site;
+}
+```
+
+## Representative checklist
+
+- [x] Static output
+- [x] Site-level selective build
+- [ ] Production measurement
+
+## Representative table
+
+| Concern | Contract | Measurement |
+| --- | --- | --- |
+| Reader speed | Fast first display | LCP and transfer size |
+| Stability | No visible movement | CLS |
+| Management | Bounded site builds | Duration and peak RSS |
+
+## Long-form content
+
+Documentation systems should preserve quick navigation even when a repository contains many sites, versions, languages, and pages. libx therefore treats a site as the public build boundary and keeps page delivery static. The benchmark repeats realistic prose and structured content so that changes to highlighting, layout, typography, or client-side behavior remain observable.
+
+Administrators should be able to understand planned changes before files are written. Management commands expose dry-run behavior, validate references, prepare changes in temporary locations, and commit only after validation. Reader performance and administrator performance are recorded separately because improving one does not automatically improve the other.
+
+Language coverage is allowed to be incomplete, but missing combinations must not create broken links, hidden fallbacks, or failed requests. The generated interface derives available versions from real content and keeps accessible names in the displayed language. These guarantees are checked on both left-to-right and right-to-left pages.

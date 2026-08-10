@@ -1,7 +1,7 @@
 /**
  * プロジェクト設定JSONスキーマとTypeScript型定義
  */
-import type { LocaleKey } from '@docs/i18n/locale-types';
+import type { LocaleKey } from '@docs/i18n/locales';
 
 /**
  * JSONファイル内で使用されるバージョン情報の型
@@ -43,24 +43,24 @@ export interface LicenseSource {
   name: string;
   author: string;
   license: string;
-  licenseUrl?: string;
-  sourceUrl?: string;
+  licenseUrl: string;
+  sourceUrl: string;
 }
 
 export interface LicensingConfig {
   sources: LicenseSource[];
   defaultSource: string;
   showAttribution: boolean;
-  sourceLanguage?: LocaleKey;
+  sourceLanguage: LocaleKey;
 }
 
 /**
  * JSONファイル内のプロジェクト設定構造
  */
 export interface ProjectLanguageConfigJSON {
-  supported?: LocaleKey[];
-  default?: LocaleKey;
-  displayNames?: Record<string, string>;
+  supported: LocaleKey[];
+  default: LocaleKey;
+  displayNames: Record<string, string>;
 }
 
 export interface ProjectLanguageConfig {
@@ -76,21 +76,14 @@ export interface ProjectPathsConfigJSON {
   siteUrl?: string;
 }
 
-export interface LegacyBasicConfigJSON extends ProjectPathsConfigJSON {
-  supportedLangs?: LocaleKey[]; // legacy support
-  defaultLang?: LocaleKey; // legacy support
-}
-
 export interface ProjectConfigJSON {
-  paths?: ProjectPathsConfigJSON;
-  basic?: LegacyBasicConfigJSON; // legacy support
-  language?: ProjectLanguageConfigJSON;
-  languageNames?: Record<string, string>; // legacy support
+  paths: ProjectPathsConfigJSON;
+  language: ProjectLanguageConfigJSON;
   translations: Record<LocaleKey, ProjectTranslations>;
   versioning: {
     versions: VersionConfigJSON[];
   };
-  licensing?: LicensingConfig;
+  licensing: LicensingConfig;
 }
 
 /**
@@ -110,25 +103,7 @@ export interface ProjectConfig {
   versioning: {
     versions: VersionConfig[];
   };
-  licensing?: LicensingConfig;
-}
-
-/**
- * 後方互換性のためのレガシー設定形式
- */
-export interface LegacyProjectConfig extends ProjectConfig {
-  // 後方互換性のため、フラット構造でもアクセス可能
-  basic: ProjectPathsConfig & {
-    supportedLangs: LocaleKey[];
-    defaultLang: LocaleKey;
-  };
-  baseUrl: string;
-  supportedLangs: LocaleKey[];
-  defaultLang: LocaleKey;
-  versions: VersionConfig[];
-  displayName: Record<LocaleKey, string>;
-  displayDescription: Record<LocaleKey, string>;
-  categoryTranslations: Record<LocaleKey, Record<string, string>>;
+  licensing: LicensingConfig;
 }
 
 /**
@@ -142,30 +117,15 @@ export function getProjectConfigValidationErrors(config: unknown): string[] {
   if (!isRecord(config)) return ['root must be a JSON object'];
 
   const paths = config.paths;
-  if (paths !== undefined && !isPathsConfig(paths)) {
-    return ['paths must contain only string URL/path fields'];
-  }
-
-  const basic = config.basic;
-  if (basic !== undefined && !isLegacyBasicConfig(basic)) {
-    return ['basic contains invalid legacy path or language fields'];
-  }
+  if (!isPathsConfig(paths)) return ['paths must contain only string URL/path fields'];
 
   const language = config.language;
-  if (language !== undefined && !isLanguageConfig(language)) {
+  if (!isLanguageConfig(language)) {
     return ['language.supported/default/displayNames has an invalid shape'];
   }
 
-  const supported = isRecord(language)
-    ? language.supported
-    : isRecord(basic)
-      ? basic.supportedLangs
-      : undefined;
-  const defaultLang = isRecord(language)
-    ? language.default
-    : isRecord(basic)
-      ? basic.defaultLang
-      : undefined;
+  const supported = language.supported;
+  const defaultLang = language.default;
 
   if (
     Array.isArray(supported) &&
@@ -173,6 +133,14 @@ export function getProjectConfigValidationErrors(config: unknown): string[] {
     !supported.includes(defaultLang)
   ) {
     return ['language.default must be included in language.supported'];
+  }
+
+  if (Array.isArray(supported) && isRecord(language)) {
+    for (const locale of supported) {
+      if (!isRecord(language.displayNames) || !isNonEmptyString(language.displayNames[locale])) {
+        return [`language.displayNames.${locale} is required`];
+      }
+    }
   }
 
   if (!isTranslationsConfig(config.translations)) {
@@ -184,6 +152,12 @@ export function getProjectConfigValidationErrors(config: unknown): string[] {
   ) {
     return [`translations.${defaultLang} is required for the default language`];
   }
+  if (Array.isArray(supported)) {
+    const missingTranslation = supported.find(
+      (locale) => !Object.prototype.hasOwnProperty.call(config.translations, locale)
+    );
+    if (missingTranslation) return [`translations.${missingTranslation} is required`];
+  }
 
   if (!isRecord(config.versioning) || !Array.isArray(config.versioning.versions)) {
     return ['versioning.versions must be an array'];
@@ -191,9 +165,21 @@ export function getProjectConfigValidationErrors(config: unknown): string[] {
   if (!config.versioning.versions.every(isVersionConfig)) {
     return ['each versioning.versions item requires a valid id, name, and ISO date'];
   }
+  const versionIds = config.versioning.versions.map((version) => version.id);
+  if (new Set(versionIds).size !== versionIds.length) {
+    return ['versioning.versions IDs must be unique'];
+  }
+  if (config.versioning.versions.filter((version) => version.isLatest === true).length !== 1) {
+    return ['exactly one versioning.versions item must have isLatest=true'];
+  }
 
-  if (config.licensing !== undefined && !isLicensingConfig(config.licensing)) {
-    return ['licensing must contain valid sources and a matching defaultSource'];
+  if (!isLicensingConfig(config.licensing)) {
+    return [
+      'licensing must contain complete sources, sourceLanguage, and a matching defaultSource',
+    ];
+  }
+  if (Array.isArray(supported) && !supported.includes(config.licensing.sourceLanguage)) {
+    return ['licensing.sourceLanguage must be included in language.supported'];
   }
 
   return [];
@@ -205,6 +191,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function isOptionalString(value: unknown): boolean {
   return value === undefined || typeof value === 'string';
+}
+
+function isNonEmptyString(value: unknown): value is string {
+  return typeof value === 'string' && value.trim().length > 0;
 }
 
 function isStringArray(value: unknown): value is string[] {
@@ -225,21 +215,12 @@ function isPathsConfig(value: unknown): boolean {
   );
 }
 
-function isLegacyBasicConfig(value: unknown): boolean {
-  return (
-    isPathsConfig(value) &&
-    isRecord(value) &&
-    (value.supportedLangs === undefined || isStringArray(value.supportedLangs)) &&
-    isOptionalString(value.defaultLang)
-  );
-}
-
-function isLanguageConfig(value: unknown): boolean {
+function isLanguageConfig(value: unknown): value is ProjectLanguageConfigJSON {
   return (
     isRecord(value) &&
-    (value.supported === undefined || isStringArray(value.supported)) &&
-    isOptionalString(value.default) &&
-    (value.displayNames === undefined || isStringRecord(value.displayNames))
+    isStringArray(value.supported) &&
+    isNonEmptyString(value.default) &&
+    isStringRecord(value.displayNames)
   );
 }
 
@@ -278,22 +259,20 @@ function isLicensingConfig(value: unknown): value is LicensingConfig {
   const validSources = value.sources.every(
     (source) =>
       isRecord(source) &&
-      typeof source.id === 'string' &&
-      typeof source.name === 'string' &&
-      typeof source.author === 'string' &&
-      typeof source.license === 'string' &&
-      isOptionalString(source.licenseUrl) &&
-      isOptionalString(source.sourceUrl)
+      isNonEmptyString(source.id) &&
+      isNonEmptyString(source.name) &&
+      isNonEmptyString(source.author) &&
+      isNonEmptyString(source.license) &&
+      isNonEmptyString(source.licenseUrl) &&
+      isNonEmptyString(source.sourceUrl)
   );
 
   return (
     validSources &&
-    typeof value.defaultSource === 'string' &&
-    value.sources.some(
-      (source) => isRecord(source) && source.id === value.defaultSource
-    ) &&
+    isNonEmptyString(value.defaultSource) &&
+    value.sources.some((source) => isRecord(source) && source.id === value.defaultSource) &&
     typeof value.showAttribution === 'boolean' &&
-    isOptionalString(value.sourceLanguage)
+    isNonEmptyString(value.sourceLanguage)
   );
 }
 
@@ -303,7 +282,7 @@ function isLicensingConfig(value: unknown): value is LicensingConfig {
 export function convertVersionJSONToRuntime(versionJSON: VersionConfigJSON): VersionConfig {
   return {
     ...versionJSON,
-    date: new Date(versionJSON.date)
+    date: new Date(versionJSON.date),
   };
 }
 
@@ -311,10 +290,7 @@ export function convertVersionJSONToRuntime(versionJSON: VersionConfigJSON): Ver
  * JSONスキーマから実行時設定に変換
  */
 export function convertProjectConfigJSONToRuntime(configJSON: ProjectConfigJSON): ProjectConfig {
-  const legacySupported = configJSON.language?.supported ?? configJSON.basic?.supportedLangs ?? [];
-  const legacyDefault = configJSON.language?.default ?? configJSON.basic?.defaultLang ?? 'en';
-  const legacyNames = configJSON.language?.displayNames ?? configJSON.languageNames ?? {};
-  const pathConfig = configJSON.paths ?? configJSON.basic ?? {};
+  const pathConfig = configJSON.paths;
 
   return {
     ...configJSON,
@@ -323,15 +299,15 @@ export function convertProjectConfigJSONToRuntime(configJSON: ProjectConfigJSON)
       baseUrl: (pathConfig.baseUrl ?? '') as string,
       baseUrlPrefix: (pathConfig.baseUrlPrefix ?? '') as string,
       projectSlug: (pathConfig.projectSlug ?? '') as string,
-      siteUrl: pathConfig.siteUrl as string | undefined
+      siteUrl: pathConfig.siteUrl as string | undefined,
     },
     language: {
-      supported: legacySupported as LocaleKey[],
-      default: legacyDefault as LocaleKey,
-      displayNames: legacyNames as Record<LocaleKey, string>
+      supported: configJSON.language.supported,
+      default: configJSON.language.default,
+      displayNames: configJSON.language.displayNames as Record<LocaleKey, string>,
     },
     versioning: {
-      versions: configJSON.versioning.versions.map(convertVersionJSONToRuntime)
-    }
+      versions: configJSON.versioning.versions.map(convertVersionJSONToRuntime),
+    },
   };
 }

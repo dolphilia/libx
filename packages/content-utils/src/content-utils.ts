@@ -90,7 +90,7 @@ export async function getAvailableContent(options?: ContentOptions): Promise<Con
             lang as LocaleKey,
             [...restParts.slice(0, -1), fileSlug],
             options
-          )
+          ),
         };
 
         contentFiles.push(contentFile);
@@ -115,11 +115,12 @@ export async function findContent(
 ): Promise<ContentFile | undefined> {
   const allContent = await getAvailableContent(options);
 
-  return allContent.find(content =>
-    content.lang === lang &&
-    content.version === version &&
-    content.section === section &&
-    (slug ? content.slug === slug : true)
+  return allContent.find(
+    (content) =>
+      content.lang === lang &&
+      content.version === version &&
+      content.section === section &&
+      (slug ? content.slug === slug : true)
   );
 }
 
@@ -134,10 +135,11 @@ export async function findAllContent(
 ): Promise<ContentFile[]> {
   const allContent = await getAvailableContent(options);
 
-  return allContent.filter(content =>
-    content.lang === lang &&
-    content.version === version &&
-    (section ? content.section === section : true)
+  return allContent.filter(
+    (content) =>
+      content.lang === lang &&
+      content.version === version &&
+      (section ? content.section === section : true)
   );
 }
 
@@ -151,12 +153,14 @@ function findDocEntry(
   section: string,
   slug: string
 ): CollectionEntry<'docs'> | undefined {
-  return docs.find(doc => {
+  return docs.find((doc) => {
     const slugParts = doc.slug.split('/');
-    return slugParts[0] === version &&
+    return (
+      slugParts[0] === version &&
       slugParts[1] === lang &&
       slugParts[2] === section &&
-      slugParts[3]?.replace(/^\d+-/, '') === slug;
+      slugParts[3]?.replace(/^\d+-/, '') === slug
+    );
   });
 }
 
@@ -178,19 +182,19 @@ export async function getDefaultCardLinks(
     { slug: 'sidebar-auto-generation', title: 'docs.sidebar_generation' },
     { slug: 'icons-example', title: 'docs.icons_example' },
     { slug: 'extended-icons-example', title: 'docs.extended_icons_example' },
-    { slug: 'tabs-example', title: 'docs.tabs_example' }
+    { slug: 'tabs-example', title: 'docs.tabs_example' },
   ];
 
   const cardLinks: Array<{ title: string; href: string; slug: string }> = [];
 
   // 存在するファイルのみを含める
   for (const card of defaultCards) {
-    const content = guideContent.find(c => c.slug === card.slug);
+    const content = guideContent.find((c) => c.slug === card.slug);
     if (content) {
       cardLinks.push({
         title: card.title,
         href: `${baseUrl}${content.url}`,
-        slug: card.slug
+        slug: card.slug,
       });
     }
   }
@@ -224,11 +228,12 @@ export async function getVersionedUrl(
 
   // ターゲットバージョンで対応するページを探す
   // 1. 同じ表示用スラッグを持つファイルを探す
-  const exactMatch = allContent.find(content =>
-    content.lang === currentLang &&
-    content.version === targetVersion &&
-    content.section === section &&
-    content.slug === displaySlug
+  const exactMatch = allContent.find(
+    (content) =>
+      content.lang === currentLang &&
+      content.version === targetVersion &&
+      content.section === section &&
+      content.slug === displaySlug
   );
 
   if (exactMatch) {
@@ -237,10 +242,11 @@ export async function getVersionedUrl(
 
   // 2. 同じセクションで最初のファイルを探す（フォールバック）
   const sectionContent = allContent
-    .filter(content =>
-      content.lang === currentLang &&
-      content.version === targetVersion &&
-      content.section === section
+    .filter(
+      (content) =>
+        content.lang === currentLang &&
+        content.version === targetVersion &&
+        content.section === section
     )
     .sort((a, b) => {
       // ファイル名の番号プレフィックスでソート
@@ -255,10 +261,7 @@ export async function getVersionedUrl(
 
   // 3. 最後の手段として、ターゲットバージョンの最初の利用可能なページを探す
   const anyContent = allContent
-    .filter(content =>
-      content.lang === currentLang &&
-      content.version === targetVersion
-    )
+    .filter((content) => content.lang === currentLang && content.version === targetVersion)
     .sort((a, b) => {
       // セクション優先度とファイル番号でソート
       const sectionPriority: Record<string, number> = { guide: 0, api: 1, examples: 2 };
@@ -297,10 +300,9 @@ export async function generateFileBasedPagination(
 
   // 同じ言語、バージョン、セクションのコンテンツを取得
   const sectionContent = allContent
-    .filter(content =>
-      content.lang === lang &&
-      content.version === version &&
-      content.section === section
+    .filter(
+      (content) =>
+        content.lang === lang && content.version === version && content.section === section
     )
     .sort((a, b) => {
       // ファイル名の番号プレフィックスでソート
@@ -310,33 +312,36 @@ export async function generateFileBasedPagination(
     });
 
   // 現在のページのインデックスを見つける
-  const currentIndex = sectionContent.findIndex(content => content.slug === currentSlug);
+  const currentIndex = sectionContent.findIndex((content) => content.slug === currentSlug);
 
   if (currentIndex === -1) {
     return {};
   }
 
-  const result: { prev?: { title: string; url: string }; next?: { title: string; url: string } } = {};
+  const result: { prev?: { title: string; url: string }; next?: { title: string; url: string } } =
+    {};
 
   // 前のページ
   if (currentIndex > 0) {
     const prevContent = sectionContent[currentIndex - 1];
-    const prevTitle = await getDocumentTitle(lang, version, section, prevContent.slug, options) ||
-      prevContent.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const prevTitle =
+      (await getDocumentTitle(lang, version, section, prevContent.slug, options)) ||
+      prevContent.slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
     result.prev = {
       title: prevTitle,
-      url: `${baseUrl}${prevContent.url}`
+      url: `${baseUrl}${prevContent.url}`,
     };
   }
 
   // 次のページ
   if (currentIndex < sectionContent.length - 1) {
     const nextContent = sectionContent[currentIndex + 1];
-    const nextTitle = await getDocumentTitle(lang, version, section, nextContent.slug, options) ||
-      nextContent.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const nextTitle =
+      (await getDocumentTitle(lang, version, section, nextContent.slug, options)) ||
+      nextContent.slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
     result.next = {
       title: nextTitle,
-      url: `${baseUrl}${nextContent.url}`
+      url: `${baseUrl}${nextContent.url}`,
     };
   }
 
@@ -346,9 +351,12 @@ export async function generateFileBasedPagination(
 /**
  * 指定されたパスのファイルが実際に存在するかチェック
  */
-export async function checkFileExists(targetPath: string, options?: ContentOptions): Promise<boolean> {
+export async function checkFileExists(
+  targetPath: string,
+  options?: ContentOptions
+): Promise<boolean> {
   const allContent = await getAvailableContent(options);
-  return allContent.some(content => targetPath.endsWith(content.url));
+  return allContent.some((content) => targetPath.endsWith(content.url));
 }
 
 /**
@@ -383,7 +391,7 @@ export async function getVersionFileStructure(
   const versionStructure: Record<string, ContentFile[]> = {};
 
   // 言語別にフィルタして、バージョンごとにグループ化
-  const langContent = allContent.filter(content => content.lang === lang);
+  const langContent = allContent.filter((content) => content.lang === lang);
 
   for (const content of langContent) {
     if (!versionStructure[content.version]) {
@@ -441,21 +449,21 @@ export async function findCorrespondingFile(
   const displaySlug = fileName ? fileName.replace(/^\d+-/, '') : ''; // "getting-started"
 
   // 1. 完全一致：同じセクション・同じスラッグ
-  const exactMatch = targetFiles.find(file =>
-    file.section === section && file.slug === displaySlug
+  const exactMatch = targetFiles.find(
+    (file) => file.section === section && file.slug === displaySlug
   );
   if (exactMatch) {
     return `${baseUrl}${exactMatch.url}`;
   }
 
   // 2. セクション一致：同じセクション内の最初のファイル
-  const sectionMatch = targetFiles.find(file => file.section === section);
+  const sectionMatch = targetFiles.find((file) => file.section === section);
   if (sectionMatch) {
     return `${baseUrl}${sectionMatch.url}`;
   }
 
   // 3. スラッグ一致：異なるセクションでも同じスラッグ
-  const slugMatch = targetFiles.find(file => file.slug === displaySlug);
+  const slugMatch = targetFiles.find((file) => file.slug === displaySlug);
   if (slugMatch) {
     return `${baseUrl}${slugMatch.url}`;
   }

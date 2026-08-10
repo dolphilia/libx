@@ -2,30 +2,26 @@
 
 /**
  * ドキュメントプロジェクトに新しい言語を自動追加するスクリプト
- * 
+ *
  * 使用例:
  * node scripts/add-language.js sample-docs ko
  * node scripts/add-language.js test-verification zh-Hans "简体中文" "简体中文文档" --template-lang=en --auto-template
- * 
+ *
  * このスクリプトは以下の処理を自動化します:
  * 1. 言語バリデーション（サポート済み言語の確認）
  * 2. プロジェクト設定の更新（project.config.jsonc）
- * 3. トップページ設定の更新（projects.config.jsonc）
- * 4. ディレクトリ構造の自動作成
- * 5. テンプレートファイルの自動生成
- * 6. ビルドテストの自動実行
+ * 3. ディレクトリ構造の自動作成
+ * 4. テンプレートファイルの自動生成
+ * 5. ビルドテストの自動実行
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-import {
-  loadProjectConfig,
-  saveProjectConfig
-} from './document-utils.js';
+import { loadProjectConfig, saveProjectConfig } from './document-utils.js';
 import * as logger from './logger.js';
-import { readJsoncFile, formatLandingConfigJsonc } from './jsonc-utils.js';
+import { languageNames, validateSupportedLocale } from './locale-utils.js';
 
 logger.useUnifiedConsole();
 
@@ -34,28 +30,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const CONFIG_FILE_JSONC = 'project.config.jsonc';
-const CONFIG_FILE_JSON = 'project.config.json';
-const LANDING_CONFIG_FILE = 'projects.config.jsonc';
-const LANDING_CONFIG_FALLBACK = 'projects.config.json';
 function resolveProjectConfigPath(projectPath) {
   const configDir = path.join(projectPath, 'src', 'config');
-  const jsoncPath = path.join(configDir, CONFIG_FILE_JSONC);
-  const jsonPath = path.join(configDir, CONFIG_FILE_JSON);
-  if (fs.existsSync(jsoncPath)) {
-    return jsoncPath;
-  }
-  return jsonPath;
+  return path.join(configDir, CONFIG_FILE_JSONC);
 }
 
-function resolveLandingConfigPath() {
-  const configDir = path.join(rootDir, 'sites', 'landing', 'src', 'config');
-  const jsoncPath = path.join(configDir, LANDING_CONFIG_FILE);
-  const jsonPath = path.join(configDir, LANDING_CONFIG_FALLBACK);
-  if (fs.existsSync(jsoncPath)) {
-    return jsoncPath;
-  }
-  return jsonPath;
-}
 /**
  * バックアップとロールバック管理クラス
  */
@@ -73,7 +52,7 @@ class BackupManager {
     if (!fs.existsSync(filePath)) {
       return null;
     }
-    
+
     try {
       const content = fs.readFileSync(filePath, 'utf-8');
       this.backups.set(filePath, content);
@@ -98,9 +77,9 @@ class BackupManager {
    */
   async rollback() {
     console.log('\n🔄 ロールバックを実行しています...');
-    
+
     let rollbackSuccess = true;
-    
+
     // 作成したファイル・ディレクトリを削除
     for (const createdPath of this.createdPaths.reverse()) {
       try {
@@ -119,7 +98,7 @@ class BackupManager {
         rollbackSuccess = false;
       }
     }
-    
+
     // バックアップからファイルを復元
     for (const [filePath, content] of this.backups) {
       try {
@@ -130,13 +109,13 @@ class BackupManager {
         rollbackSuccess = false;
       }
     }
-    
+
     if (rollbackSuccess) {
       console.log('✅ ロールバック完了');
     } else {
       console.log('⚠️  ロールバック部分的成功 - 手動確認が必要です');
     }
-    
+
     return rollbackSuccess;
   }
 
@@ -145,19 +124,19 @@ class BackupManager {
    */
   saveBackupFiles() {
     const backupDir = path.join(rootDir, '.backups', `language-addition-${this.timestamp}`);
-    
+
     try {
       fs.mkdirSync(backupDir, { recursive: true });
-      
+
       for (const [filePath, content] of this.backups) {
         const relativePath = path.relative(rootDir, filePath);
         const backupPath = path.join(backupDir, relativePath);
         const backupDirPath = path.dirname(backupPath);
-        
+
         fs.mkdirSync(backupDirPath, { recursive: true });
         fs.writeFileSync(backupPath, content);
       }
-      
+
       console.log(`📁 バックアップファイル保存: ${backupDir}`);
       return backupDir;
     } catch (error) {
@@ -167,24 +146,13 @@ class BackupManager {
   }
 }
 
-/**
- * サポート済み言語のマップ（i18nパッケージの共通データを読み込み）
- */
-const languageNamesPath = path.join(rootDir, 'packages', 'i18n', 'src', 'language-names.json');
-let SUPPORTED_LANGUAGES = {};
-
-try {
-  const languageNamesRaw = fs.readFileSync(languageNamesPath, 'utf-8');
-  SUPPORTED_LANGUAGES = JSON.parse(languageNamesRaw);
-} catch (error) {
-  logger.error(`i18n の言語表示名データを読み込めませんでした: ${languageNamesPath}`);
-  logger.detail(error.message);
-  process.exit(1);
-}
+const SUPPORTED_LANGUAGES = languageNames;
 
 function showUsage(exitCode = 1) {
   logger.heading('言語追加スクリプトの使い方');
-  logger.info('node scripts/add-language.js <project-name> <language-code> [display-name] [description] [options]');
+  logger.info(
+    'node scripts/add-language.js <project-name> <language-code> [display-name] [description] [options]'
+  );
   logger.blank();
   logger.info('必須引数');
   logger.detail('project-name: プロジェクト名（例: sample-docs, test-verification）');
@@ -197,8 +165,9 @@ function showUsage(exitCode = 1) {
   logger.info('主なオプション');
   logger.detail('--template-lang=<code>: コピー元にする既存言語（既定: en）');
   logger.detail('--auto-template: 対話なしでテンプレート生成を行います');
+  logger.detail('--dry-run: 変更予定を表示し、ファイルを書き換えません');
   logger.detail('--skip-test: ビルドテストを実行しません');
-  logger.detail('--skip-top-page: ランディングページ設定の更新を省略します');
+  logger.detail('--skip-top-page: 互換用。現在は常にlanding設定を変更しません');
   logger.detail('--interactive: 必要な値を対話的に入力します');
   logger.blank();
   logger.info('サポート言語');
@@ -218,7 +187,7 @@ function showUsage(exitCode = 1) {
  */
 function parseArguments() {
   const args = process.argv.slice(2);
-  
+
   if (args.length < 2) {
     logger.error('必須引数が不足しています。');
     showUsage(1);
@@ -256,9 +225,9 @@ function parseArguments() {
     description: description || '',
     templateLang: options['template-lang'] || 'en',
     autoTemplate: options['auto-template'] || false,
+    dryRun: options['dry-run'] || false,
     skipTest: options['skip-test'] || false,
-    skipTopPage: options['skip-top-page'] || false,
-    interactive: options.interactive || false
+    interactive: options.interactive || false,
   };
 }
 
@@ -266,19 +235,10 @@ function parseArguments() {
  * 言語コードのバリデーション
  */
 function validateLanguageCode(languageCode) {
-  const errors = [];
-  
   if (!languageCode) {
-    errors.push('言語コードが指定されていません');
-    return errors;
+    return ['言語コードが指定されていません'];
   }
-  
-  if (!SUPPORTED_LANGUAGES[languageCode]) {
-    errors.push(`言語コード "${languageCode}" はサポートされていません`);
-    errors.push(`サポート済み言語: ${Object.keys(SUPPORTED_LANGUAGES).join(', ')}`);
-  }
-  
-  return errors;
+  return validateSupportedLocale(languageCode);
 }
 
 /**
@@ -286,24 +246,24 @@ function validateLanguageCode(languageCode) {
  */
 function validateProject(projectName) {
   const errors = [];
-  
+
   if (!projectName) {
     errors.push('プロジェクト名が指定されていません');
     return errors;
   }
-  
+
   const projectPath = path.join(rootDir, 'apps', projectName);
   if (!fs.existsSync(projectPath)) {
     errors.push(`プロジェクト "${projectName}" が見つかりません: ${projectPath}`);
     return errors;
   }
-  
+
   // プロジェクト設定ファイルの存在確認
   const configPath = resolveProjectConfigPath(projectPath);
   if (!fs.existsSync(configPath)) {
     errors.push(`プロジェクト設定ファイルが見つかりません: ${configPath}`);
   }
-  
+
   return errors;
 }
 
@@ -313,11 +273,11 @@ function validateProject(projectName) {
 function checkLanguageDuplication(projectName, languageCode) {
   try {
     const config = loadProjectConfig(projectName);
-    
+
     if (config.language?.supported?.includes(languageCode)) {
       return [`言語 "${languageCode}" は既にプロジェクト "${projectName}" でサポートされています`];
     }
-    
+
     return [];
   } catch (error) {
     return [`プロジェクト設定の確認中にエラーが発生しました: ${error.message}`];
@@ -330,11 +290,13 @@ function checkLanguageDuplication(projectName, languageCode) {
 function validateTemplateLang(projectName, templateLang) {
   try {
     const config = loadProjectConfig(projectName);
-    
+
     if (!config.language?.supported?.includes(templateLang)) {
-      return [`テンプレート言語 "${templateLang}" はプロジェクト "${projectName}" でサポートされていません`];
+      return [
+        `テンプレート言語 "${templateLang}" はプロジェクト "${projectName}" でサポートされていません`,
+      ];
     }
-    
+
     return [];
   } catch (error) {
     return [`テンプレート言語の確認中にエラーが発生しました: ${error.message}`];
@@ -351,51 +313,64 @@ function showProgress(step, total, message) {
 /**
  * プロジェクト設定ファイルを更新する
  */
-function updateProjectConfig(projectName, languageCode, displayName, description, backupManager) {
+function updateProjectConfig(
+  projectName,
+  languageCode,
+  displayName,
+  description,
+  backupManager,
+  dryRun = false
+) {
   console.log('  プロジェクト設定ファイルを更新しています...');
-  
+
   try {
     const projectPath = path.join(rootDir, 'apps', projectName);
     const configPath = resolveProjectConfigPath(projectPath);
-    
+
     // バックアップを作成
-    backupManager.backupFile(configPath);
-    
+    if (!dryRun) backupManager.backupFile(configPath);
+
     const config = loadProjectConfig(projectName);
-    
+
     // supportedLangsに言語を追加
     if (!config.language.supported.includes(languageCode)) {
       config.language.supported.push(languageCode);
       console.log(`  ✅ supported 言語に "${languageCode}" を追加`);
     }
-    
+
     // 言語表示名を更新
     if (!config.language.displayNames) {
       config.language.displayNames = {};
     }
     config.language.displayNames[languageCode] = displayName;
     console.log(`  ✅ 言語表示名を設定: ${languageCode} = "${displayName}"`);
-    
+
     // translationsを更新
     if (!config.translations) {
       config.translations = {};
     }
-    
+
     // 既存の翻訳設定から構造をコピー
-    const existingLang = config.language.supported.find(lang => lang !== languageCode && config.translations[lang]);
+    const existingLang = config.language.supported.find(
+      (lang) => lang !== languageCode && config.translations[lang]
+    );
     const template = existingLang ? config.translations[existingLang] : {};
-    
+
     config.translations[languageCode] = {
       displayName: config.translations[config.language.default]?.displayName || projectName,
       displayDescription: description || `${displayName}のドキュメントです`,
-      categories: template.categories || { guide: 'ガイド' }
+      categories: template.categories || { guide: 'ガイド' },
     };
     console.log(`  ✅ 翻訳設定を追加`);
-    
+
     // 設定を保存
-    saveProjectConfig(projectName, config);
-    console.log('  ✅ プロジェクト設定ファイルの更新完了');
-    
+    saveProjectConfig(projectName, config, { dryRun });
+    console.log(
+      dryRun
+        ? '  🔍 project.config.jsonc を更新する予定です（dry-run）'
+        : '  ✅ プロジェクト設定ファイルの更新完了'
+    );
+
     return true;
   } catch (error) {
     console.error('  ❌ プロジェクト設定ファイルの更新に失敗しました');
@@ -405,150 +380,74 @@ function updateProjectConfig(projectName, languageCode, displayName, description
 }
 
 /**
- * ランディングページ設定ファイルを更新する
- */
-function updateLandingConfig(languageCode, displayName, skipLanding = false, backupManager, templateLang = 'en') {
-  if (skipLanding) {
-    console.log('  ⏩ ランディングページ設定の更新をスキップしました');
-    return true;
-  }
-  
-  console.log('  ランディングページ設定ファイルを更新しています...');
-  
-  try {
-    const landingConfigPath = resolveLandingConfigPath();
-    
-    // バックアップを作成
-    backupManager.backupFile(landingConfigPath);
-    
-    const landingConfig = readJsoncFile(landingConfigPath);
-    
-    // supportedLangsに言語を追加
-    let landingConfigUpdated = false;
-    if (!landingConfig.siteConfig.supportedLangs.includes(languageCode)) {
-      landingConfig.siteConfig.supportedLangs.push(languageCode);
-      landingConfigUpdated = true;
-      console.log(`  ✅ ランディングページのsupportedLangsに "${languageCode}" を追加`);
-    } else {
-      console.log(`  ℹ️  "${languageCode}" はすでに supportedLangs に含まれています`);
-    }
-
-    if (landingConfigUpdated) {
-      let serialized = JSON.stringify(landingConfig, null, 2);
-      serialized = formatLandingConfigJsonc(serialized) + '\n';
-      fs.writeFileSync(landingConfigPath, serialized);
-      console.log('  ✅ ランディングページ設定ファイルの更新完了');
-    } else {
-      console.log('  ℹ️  ランディングページ設定ファイルに変更はありません');
-    }
-
-    updateLandingTranslations(languageCode, templateLang, backupManager);
-    
-    return true;
-  } catch (error) {
-    console.error('  ❌ ランディングページ設定ファイルの更新に失敗しました');
-    console.error(`  エラー: ${error.message}`);
-    throw error;
-  }
-}
-
-/**
- * landing用翻訳を i18n ローカルファイルに追加する
- */
-function updateLandingTranslations(languageCode, templateLang, backupManager) {
-  const localesDir = path.join(rootDir, 'packages', 'i18n', 'src', 'locales');
-  const targetPath = path.join(localesDir, `${languageCode}.json`);
-  const templatePath = path.join(localesDir, `${templateLang}.json`);
-
-  if (!fs.existsSync(targetPath)) {
-    console.warn(`  ⚠️  ${targetPath} が存在しません。手動で landing 翻訳を追加してください`);
-    return;
-  }
-
-  const localeContent = JSON.parse(fs.readFileSync(targetPath, 'utf-8'));
-  const templateContent = fs.existsSync(templatePath) ? JSON.parse(fs.readFileSync(templatePath, 'utf-8')) : {};
-  const templateLanding = templateContent.landing || {};
-
-  if (!localeContent.landing || typeof localeContent.landing !== 'object') {
-    localeContent.landing = {};
-  }
-
-  const landingKeys = ['siteDescription', 'heroTitle', 'heroDescription'];
-  let modified = false;
-
-  for (const key of landingKeys) {
-    if (!localeContent.landing[key] || typeof localeContent.landing[key] !== 'string' || !localeContent.landing[key].trim()) {
-      localeContent.landing[key] = templateLanding[key] || '';
-      modified = true;
-    }
-  }
-
-  if (modified) {
-    backupManager.backupFile(targetPath);
-    fs.writeFileSync(targetPath, JSON.stringify(localeContent, null, 2) + '\n');
-    console.log(`  ✅ ${path.relative(rootDir, targetPath)} の landing 翻訳を更新`);
-  } else {
-    console.log(`  ℹ️  ${path.relative(rootDir, targetPath)} には既に landing 翻訳があります`);
-  }
-}
-
-/**
  * 言語用ディレクトリ構造を作成する
  */
-function createDirectoryStructure(projectName, languageCode, templateLang = 'en', backupManager) {
+function createDirectoryStructure(
+  projectName,
+  languageCode,
+  templateLang = 'en',
+  backupManager,
+  dryRun = false
+) {
   console.log('  言語用ディレクトリ構造を作成しています...');
-  
+
   try {
     const config = loadProjectConfig(projectName);
     const projectPath = path.join(rootDir, 'apps', projectName);
     const docsPath = path.join(projectPath, 'src', 'content', 'docs');
-    
+
     let createdDirs = 0;
     let skippedDirs = 0;
-    
+
     // 各バージョンに対してディレクトリを作成
     if (config.versioning?.versions) {
       for (const version of config.versioning.versions) {
         const versionPath = path.join(docsPath, version.id);
         const langPath = path.join(versionPath, languageCode);
         const templatePath = path.join(versionPath, templateLang);
-        
+
         // 言語ディレクトリが既に存在するかチェック
         if (fs.existsSync(langPath)) {
           console.log(`    スキップ: ${version.id}/${languageCode} (既に存在)`);
           skippedDirs++;
           continue;
         }
-        
+
         // テンプレート言語ディレクトリが存在するかチェック
         if (!fs.existsSync(templatePath)) {
           console.log(`    警告: テンプレート ${version.id}/${templateLang} が見つかりません`);
           continue;
         }
-        
+
         // 言語ディレクトリを作成
-        fs.mkdirSync(langPath, { recursive: true });
-        backupManager.recordCreatedPath(langPath);
-        
+        if (!dryRun) {
+          fs.mkdirSync(langPath, { recursive: true });
+          backupManager.recordCreatedPath(langPath);
+        }
+
         // テンプレート言語のカテゴリディレクトリをコピー
-        const templateCategories = fs.readdirSync(templatePath, { withFileTypes: true })
-          .filter(dirent => dirent.isDirectory())
-          .map(dirent => dirent.name);
-        
+        const templateCategories = fs
+          .readdirSync(templatePath, { withFileTypes: true })
+          .filter((dirent) => dirent.isDirectory())
+          .map((dirent) => dirent.name);
+
         for (const category of templateCategories) {
           const categoryPath = path.join(langPath, category);
-          fs.mkdirSync(categoryPath, { recursive: true });
-          backupManager.recordCreatedPath(categoryPath);
+          if (!dryRun) {
+            fs.mkdirSync(categoryPath, { recursive: true });
+            backupManager.recordCreatedPath(categoryPath);
+          }
         }
-        
-        console.log(`    ✅ 作成: ${version.id}/${languageCode} (${templateCategories.length}カテゴリ)`);
+
+        console.log(
+          `    ${dryRun ? '🔍 作成予定' : '✅ 作成'}: ${version.id}/${languageCode} (${templateCategories.length}カテゴリ)`
+        );
         createdDirs++;
       }
     }
-    
+
     console.log(`  ✅ ディレクトリ構造作成完了: ${createdDirs}個作成、${skippedDirs}個スキップ`);
     return { created: createdDirs, skipped: skippedDirs };
-    
   } catch (error) {
     console.error('  ❌ ディレクトリ構造の作成に失敗しました');
     console.error(`  エラー: ${error.message}`);
@@ -559,76 +458,90 @@ function createDirectoryStructure(projectName, languageCode, templateLang = 'en'
 /**
  * テンプレートファイルを生成する
  */
-function generateTemplateFiles(projectName, languageCode, templateLang = 'en', _autoTemplate = false, backupManager) {
+function generateTemplateFiles(
+  projectName,
+  languageCode,
+  templateLang = 'en',
+  _autoTemplate = false,
+  backupManager,
+  dryRun = false
+) {
   console.log('  テンプレートファイルを生成しています...');
-  
+
   try {
     const config = loadProjectConfig(projectName);
     const projectPath = path.join(rootDir, 'apps', projectName);
     const docsPath = path.join(projectPath, 'src', 'content', 'docs');
-    
+
     let generatedFiles = 0;
     let skippedFiles = 0;
-    
+
     // 各バージョンに対してファイルを生成
     if (config.versioning?.versions) {
       for (const version of config.versioning.versions) {
         const langPath = path.join(docsPath, version.id, languageCode);
         const templatePath = path.join(docsPath, version.id, templateLang);
-        
-        if (!fs.existsSync(langPath) || !fs.existsSync(templatePath)) {
+
+        if ((!dryRun && !fs.existsSync(langPath)) || !fs.existsSync(templatePath)) {
           continue;
         }
-        
+
         // テンプレート言語のファイル構造を取得
-        const categories = fs.readdirSync(templatePath, { withFileTypes: true })
-          .filter(dirent => dirent.isDirectory())
-          .map(dirent => dirent.name);
-        
+        const categories = fs
+          .readdirSync(templatePath, { withFileTypes: true })
+          .filter((dirent) => dirent.isDirectory())
+          .map((dirent) => dirent.name);
+
         for (const category of categories) {
           const templateCategoryPath = path.join(templatePath, category);
           const langCategoryPath = path.join(langPath, category);
-          
-          if (!fs.existsSync(langCategoryPath)) {
+
+          if (!dryRun && !fs.existsSync(langCategoryPath)) {
             continue;
           }
-          
+
           // カテゴリ内のMDXファイルを取得
-          const templateFiles = fs.readdirSync(templateCategoryPath)
-            .filter(file => file.endsWith('.mdx'))
+          const templateFiles = fs
+            .readdirSync(templateCategoryPath)
+            .filter((file) => file.endsWith('.mdx'))
             .sort();
-          
+
           for (const templateFile of templateFiles) {
             const templateFilePath = path.join(templateCategoryPath, templateFile);
             const langFilePath = path.join(langCategoryPath, templateFile);
-            
+
             // 既にファイルが存在する場合はスキップ
             if (fs.existsSync(langFilePath)) {
               skippedFiles++;
               continue;
             }
-            
+
             // テンプレートファイルの内容を読み取り
             const templateContent = fs.readFileSync(templateFilePath, 'utf-8');
-            
+
             // 基本的なテンプレート化（翻訳が必要な部分にマーカーを付ける）
             const processedContent = templateContent
               .replace(/^title:\s*"([^"]*)"$/gm, `title: "[要翻訳] $1"`)
               .replace(/^description:\s*"([^"]*)"$/gm, `description: "[要翻訳] $1"`)
               .replace(/^(#.*?)$/gm, `[要翻訳] $1`);
-            
+
             // 新しい言語のファイルとして保存
-            fs.writeFileSync(langFilePath, processedContent);
-            backupManager.recordCreatedPath(langFilePath);
+            if (!dryRun) {
+              fs.writeFileSync(langFilePath, processedContent);
+              backupManager.recordCreatedPath(langFilePath);
+            } else {
+              console.log(`    🔍 作成予定: ${path.relative(rootDir, langFilePath)}`);
+            }
             generatedFiles++;
           }
         }
       }
     }
-    
-    console.log(`  ✅ テンプレートファイル生成完了: ${generatedFiles}個生成、${skippedFiles}個スキップ`);
+
+    console.log(
+      `  ✅ テンプレートファイル生成完了: ${generatedFiles}個生成、${skippedFiles}個スキップ`
+    );
     return { generated: generatedFiles, skipped: skippedFiles };
-    
   } catch (error) {
     console.error('  ❌ テンプレートファイルの生成に失敗しました');
     console.error(`  エラー: ${error.message}`);
@@ -646,19 +559,18 @@ async function runBuildTest(projectName, skipTest = false) {
   }
 
   console.log('  ビルドテストを実行しています...');
-  
+
   try {
     console.log('    📦 プロジェクト個別ビルドテストを実行中...');
-    
+
     execSync(`pnpm --filter=apps-${projectName} build`, {
       stdio: ['inherit', 'pipe', 'pipe'],
       timeout: 120000, // 2分タイムアウト
-      cwd: rootDir
+      cwd: rootDir,
     });
-    
+
     console.log('    ✅ ビルドテスト成功');
     return { success: true, message: 'ビルドテストが成功しました' };
-    
   } catch (error) {
     console.error('    ❌ ビルドテストに失敗しました');
     console.error(`    エラー: ${error.message}`);
@@ -670,28 +582,36 @@ async function runBuildTest(projectName, skipTest = false) {
  * 成功レポートを表示する
  */
 function showSuccessReport(config, results) {
-  console.log('\n🎉 新しい言語の追加が完了しました！\n');
-  
+  console.log(
+    config.dryRun
+      ? '\n🔍 dry-runが完了しました。ファイルは変更されていません。\n'
+      : '\n🎉 新しい言語の追加が完了しました！\n'
+  );
+
   console.log('📋 追加された言語情報:');
   console.log(`  プロジェクト: ${config.projectName}`);
   console.log(`  言語コード: ${config.languageCode}`);
   console.log(`  言語表示名: ${config.displayName}`);
   console.log(`  テンプレート言語: ${config.templateLang}`);
   console.log('');
-  
+
   console.log('📂 作成結果:');
   if (results.directory) {
-    console.log(`  ディレクトリ: ${results.directory.created}個作成、${results.directory.skipped}個スキップ`);
+    console.log(
+      `  ディレクトリ: ${results.directory.created}個作成、${results.directory.skipped}個スキップ`
+    );
   }
   if (results.files) {
-    console.log(`  テンプレートファイル: ${results.files.generated}個生成、${results.files.skipped}個スキップ`);
+    console.log(
+      `  テンプレートファイル: ${results.files.generated}個生成、${results.files.skipped}個スキップ`
+    );
   }
   console.log('');
-  
+
   console.log('🧪 テスト結果:');
   console.log(`  ${results.test.success ? '✅' : '❌'} ${results.test.message}`);
   console.log('');
-  
+
   console.log('🚀 次のステップ:');
   console.log('  1. 開発サーバーを起動:');
   console.log(`     pnpm --filter=apps-${config.projectName} dev`);
@@ -705,9 +625,11 @@ function showSuccessReport(config, results) {
   console.log('');
   console.log('  4. 統合ビルドでテスト:');
   console.log('     pnpm build');
-  
+
   if (!results.test.success) {
-    console.log('\n⚠️  警告: ビルドテストが失敗しました。上記のエラーを確認して問題を解決してください。');
+    console.log(
+      '\n⚠️  警告: ビルドテストが失敗しました。上記のエラーを確認して問題を解決してください。'
+    );
   }
 }
 
@@ -716,126 +638,142 @@ function showSuccessReport(config, results) {
  */
 async function main() {
   console.log('🌐 ドキュメントプロジェクト言語追加スクリプト\n');
-  
+
   // バックアップマネージャーを初期化
   const backupManager = new BackupManager();
-  
+
   // 1. 引数解析
-  showProgress(1, 8, '引数を解析しています...');
+  showProgress(1, 7, '引数を解析しています...');
   const config = parseArguments();
-  
+
   console.log(`プロジェクト: ${config.projectName}`);
   console.log(`追加する言語: ${config.languageCode} (${config.displayName})`);
   console.log(`テンプレート言語: ${config.templateLang}`);
+  if (config.dryRun) console.log('実行モード: dry-run（変更なし）');
   console.log('');
-  
+
   // 2. バリデーション
-  showProgress(2, 8, '入力内容を検証しています...');
-  
+  showProgress(2, 7, '入力内容を検証しています...');
+
   const validationErrors = [
     ...validateLanguageCode(config.languageCode),
     ...validateProject(config.projectName),
     ...checkLanguageDuplication(config.projectName, config.languageCode),
-    ...validateTemplateLang(config.projectName, config.templateLang)
+    ...validateTemplateLang(config.projectName, config.templateLang),
   ];
-  
+
   if (validationErrors.length > 0) {
     console.error('❌ エラーが発生しました:');
-    validationErrors.forEach(error => console.error(`  - ${error}`));
+    validationErrors.forEach((error) => console.error(`  - ${error}`));
     process.exit(1);
   }
-  
+
   console.log('✅ バリデーション完了');
   console.log('');
-  
+
   const results = {};
   let currentStep = 3;
-  
+
   try {
     // 3. プロジェクト設定ファイルの更新
-    showProgress(currentStep++, 8, 'プロジェクト設定を更新しています...');
-    updateProjectConfig(config.projectName, config.languageCode, config.displayName, config.description, backupManager);
+    showProgress(currentStep++, 7, 'プロジェクト設定を更新しています...');
+    updateProjectConfig(
+      config.projectName,
+      config.languageCode,
+      config.displayName,
+      config.description,
+      backupManager,
+      config.dryRun
+    );
     console.log('✅ プロジェクト設定更新完了');
     console.log('');
-    
-    // 4. トップページ設定の更新
-    showProgress(currentStep++, 8, 'トップページ設定を更新しています...');
-    updateLandingConfig(config.languageCode, config.displayName, config.skipTopPage, backupManager, config.templateLang);
-    console.log('✅ トップページ設定更新完了');
+
+    // プロジェクトのコンテンツ言語とlanding UI自体の言語は別の正本で管理する。
+    console.log('ℹ️  landingのUI言語設定は変更しません。');
     console.log('');
-    
-    // 5. ディレクトリ構造の作成
-    showProgress(currentStep++, 8, 'ディレクトリ構造を作成しています...');
-    results.directory = createDirectoryStructure(config.projectName, config.languageCode, config.templateLang, backupManager);
+
+    // 4. ディレクトリ構造の作成
+    showProgress(currentStep++, 7, 'ディレクトリ構造を作成しています...');
+    results.directory = createDirectoryStructure(
+      config.projectName,
+      config.languageCode,
+      config.templateLang,
+      backupManager,
+      config.dryRun
+    );
     console.log('✅ ディレクトリ構造作成完了');
     console.log('');
-    
-    // 6. テンプレートファイルの生成
-    showProgress(currentStep++, 8, 'テンプレートファイルを生成しています...');
-    results.files = generateTemplateFiles(config.projectName, config.languageCode, config.templateLang, config.autoTemplate, backupManager);
+
+    // 5. テンプレートファイルの生成
+    showProgress(currentStep++, 7, 'テンプレートファイルを生成しています...');
+    results.files = generateTemplateFiles(
+      config.projectName,
+      config.languageCode,
+      config.templateLang,
+      config.autoTemplate,
+      backupManager,
+      config.dryRun
+    );
     console.log('✅ テンプレートファイル生成完了');
     console.log('');
-    
-    // 7. ビルドテストの実行
-    showProgress(currentStep++, 8, 'ビルドテストを実行しています...');
-    results.test = await runBuildTest(config.projectName, config.skipTest);
+
+    // 6. ビルドテストの実行
+    showProgress(currentStep++, 7, 'ビルドテストを実行しています...');
+    results.test = await runBuildTest(config.projectName, config.skipTest || config.dryRun);
     console.log('✅ テスト実行完了');
     console.log('');
-    
-    // 8. 完了レポート
-    showProgress(currentStep++, 8, '完了レポートを生成しています...');
+
+    if (!results.test.success) {
+      throw new Error(`ビルド検証に失敗したため変更を取り消します: ${results.test.message}`);
+    }
+
+    // 7. 完了レポート
+    showProgress(currentStep++, 7, '完了レポートを生成しています...');
     showSuccessReport(config, results);
-    
+
     // バックアップファイルを保存（デバッグ用）
-    backupManager.saveBackupFiles();
-    
-    // 成功時は終了コード0、テスト失敗時は終了コード1
-    process.exit(results.test.success ? 0 : 1);
-    
+    if (!config.dryRun) backupManager.saveBackupFiles();
+
+    process.exit(0);
   } catch (error) {
     console.error('\n❌ 言語追加処理中にエラーが発生しました:', error.message);
     console.error('詳細:', error.stack);
-    
+
     // 自動ロールバックを実行
     console.log('\n🔄 自動ロールバックを開始します...');
     try {
       const rollbackSuccess = await backupManager.rollback();
-      
+
       if (rollbackSuccess) {
         console.log('✅ ロールバック完了 - システムは元の状態に復元されました');
       } else {
         console.log('⚠️  ロールバック部分的成功');
         console.log('\n🔧 手動確認が必要なファイル:');
         console.log(`  - apps/${config.projectName}/src/config/${CONFIG_FILE_JSONC}`);
-        console.log(`  - sites/landing/src/config/${LANDING_CONFIG_FILE}`);
-        console.log(`  - packages/i18n/src/locales/${config.languageCode}.json`);
         console.log(`  - apps/${config.projectName}/src/content/docs/*/\${config.languageCode}/`);
-        
+
         const backupDir = backupManager.saveBackupFiles();
         if (backupDir) {
           console.log(`\n📁 バックアップファイルは以下に保存されました: ${backupDir}`);
         }
       }
-      
     } catch (rollbackError) {
       console.error('\n❌ ロールバック処理中にもエラーが発生しました:', rollbackError.message);
       console.log('\n🚨 緊急事態: 手動でシステムを復旧してください');
       console.log('影響を受けた可能性のあるファイル:');
       console.log(`  - apps/${config.projectName}/src/config/${CONFIG_FILE_JSONC}`);
-      console.log(`  - sites/landing/src/config/${LANDING_CONFIG_FILE}`);
-      console.log(`  - packages/i18n/src/locales/${config.languageCode}.json`);
       console.log(`  - apps/${config.projectName}/src/content/docs/*/\${config.languageCode}/`);
-      
+
       // バックアップファイルを保存して復旧の手がかりを提供
       backupManager.saveBackupFiles();
     }
-    
+
     process.exit(1);
   }
 }
 
 // エラーハンドリング付きでメイン処理を実行
-main().catch(error => {
+main().catch((error) => {
   console.error('\n❌ 予期しないエラーが発生しました:', error.message);
   console.error('スタックトレース:', error.stack);
   process.exit(1);

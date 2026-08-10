@@ -6,6 +6,9 @@
  */
 
 import readline from 'readline';
+import fs from 'node:fs';
+import path from 'node:path';
+import { randomUUID } from 'node:crypto';
 import * as logger from './logger.js';
 import {
   loadProjectConfig,
@@ -15,16 +18,21 @@ import {
   getCategoryDisplayName,
   generateDocumentTemplate,
   validateDocumentPath,
-  createDocumentFile,
   displayProjectStructure,
-  syncCategoryTranslations
+  planCategoryTranslations,
+  resolveDocumentFilePath,
+  resolveProjectConfigFile,
+  serializeProjectConfig,
 } from './document-utils.js';
+import { commitPreparedPathsAtomically } from './atomic-paths.js';
 
 logger.useUnifiedConsole();
 
 function showUsage(exitCode = 0) {
   logger.heading('ドキュメント作成ツールの使い方');
-  logger.info('node scripts/create-document.js <project-name> <lang> <version> [category] [title] [options]');
+  logger.info(
+    'node scripts/create-document.js <project-name> <lang> <version> [category] [title] [options]'
+  );
   logger.blank();
   logger.info('主な引数');
   logger.detail('project-name: プロジェクト名（例: sample-docs）');
@@ -35,6 +43,7 @@ function showUsage(exitCode = 0) {
   logger.blank();
   logger.info('オプション');
   logger.detail('--interactive: 対話モードで実行します。');
+  logger.detail('--dry-run: 変更予定を表示し、ファイルを書き換えません。');
   logger.detail('--help: このヘルプを表示します。');
   logger.blank();
   logger.info('使用例');
@@ -56,21 +65,22 @@ function parseArguments() {
   }
 
   const [projectName, lang, version, ...rest] = rawArgs;
-  const optionFlags = rest.filter(arg => arg.startsWith('--'));
-  const values = rest.filter(arg => !arg.startsWith('--'));
+  const optionFlags = rest.filter((arg) => arg.startsWith('--'));
+  const values = rest.filter((arg) => !arg.startsWith('--'));
+  const dryRun = optionFlags.includes('--dry-run');
 
   if (optionFlags.includes('--interactive')) {
-    return { projectName, lang, version, isInteractive: true };
+    return { projectName, lang, version, isInteractive: true, dryRun };
   }
 
   const [category, title] = values;
-  return { projectName, lang, version, category, title, isInteractive: false };
+  return { projectName, lang, version, category, title, isInteractive: false, dryRun };
 }
 
 async function runInteractiveMode(projectName, lang, version, preloadedConfig) {
   const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
   });
 
   const ask = (question) => new Promise((resolve) => rl.question(question, resolve));
@@ -164,7 +174,7 @@ async function runInteractiveMode(projectName, lang, version, preloadedConfig) {
       isNewCategory,
       fileName,
       title,
-      description
+      description,
     };
   } finally {
     rl.close();
@@ -185,11 +195,21 @@ async function main() {
 
     if (validationErrors.length > 0) {
       logger.error('入力内容を確認してください。');
-      validationErrors.forEach(message => logger.detail(message));
+      validationErrors.forEach((message) => logger.detail(message));
       process.exit(1);
     }
 
     const projectConfig = loadProjectConfig(args.projectName);
+    if (!projectConfig.language.supported.includes(args.lang)) {
+      throw new Error(
+        `言語 "${args.lang}" はプロジェクトの対応言語ではありません: ${projectConfig.language.supported.join(', ')}`
+      );
+    }
+    if (
+      !projectConfig.versioning.versions.some((versionEntry) => versionEntry.id === args.version)
+    ) {
+      throw new Error(`バージョン "${args.version}" はプロジェクト設定に存在しません`);
+    }
 
     logger.heading('ドキュメント作成ツール');
     logger.info(`プロジェクト: ${args.projectName}`);
@@ -205,7 +225,12 @@ async function main() {
     let description = '';
 
     if (args.isInteractive) {
-      const result = await runInteractiveMode(args.projectName, args.lang, args.version, projectConfig);
+      const result = await runInteractiveMode(
+        args.projectName,
+        args.lang,
+        args.version,
+        projectConfig
+      );
       ({
         categorySlug,
         categoryDir,
@@ -213,7 +238,7 @@ async function main() {
         isNewCategory,
         fileName,
         title,
-        description
+        description,
       } = result);
     } else {
       if (!args.category || !args.title) {
@@ -246,32 +271,65 @@ async function main() {
     const resolvedCategorySlug = categorySlug || categoryDir.replace(/^[0-9]+-/, '');
     const resolvedCategoryDisplayName = (categoryDisplayName ?? '').trim() || resolvedCategorySlug;
 
-    logger.step('ドキュメントファイルを作成しています');
     const content = generateDocumentTemplate(title, description, resolvedCategorySlug);
-    const docPath = createDocumentFile(
+    const docPath = resolveDocumentFilePath(
       args.projectName,
       args.lang,
       args.version,
       categoryDir,
-      fileName,
-      content
+      fileName
     );
+    if (fs.existsSync(docPath)) throw new Error(`作成先ファイルが既に存在します: ${docPath}`);
 
-    const url = `/${args.lang}/${args.version}/${categoryDir.replace(/^[0-9]+-/, '')}/${fileName.replace(/^[0-9]+-/, '')}`;
-
-    logger.success('ドキュメントファイルを作成しました。');
-    logger.detail(`作成ファイル: ${docPath}`, { bullet: '' });
-    logger.detail(`想定URL: ${url}`, { bullet: '' });
-    if (isNewCategory) {
-      logger.info(`新しいカテゴリ "${resolvedCategorySlug}" を作成しました。`);
-    }
-
-    logger.step('project.config.jsonc を同期しています');
-    const syncResult = syncCategoryTranslations(args.projectName, {
+    const url = `/${args.version}/${args.lang}/${categoryDir}/${fileName}`;
+    const nextConfig = JSON.parse(JSON.stringify(projectConfig));
+    const syncResult = planCategoryTranslations(nextConfig, {
       lang: args.lang,
       categorySlug: resolvedCategorySlug,
-      displayName: resolvedCategoryDisplayName
+      displayName: resolvedCategoryDisplayName,
     });
+
+    logger.step('変更予定');
+    logger.detail(`作成ファイル: ${docPath}`, { bullet: '' });
+    logger.detail(`想定URL: ${url}`, { bullet: '' });
+    logger.detail(`設定更新: ${syncResult.updated ? 'カテゴリ翻訳を同期' : '変更なし'}`, {
+      bullet: '',
+    });
+    if (isNewCategory) {
+      logger.info(`新しいカテゴリ "${resolvedCategorySlug}" を作成します。`);
+    }
+
+    if (args.dryRun) {
+      logger.success('dry-runが完了しました。ファイルは変更されていません。');
+      return;
+    }
+
+    const projectRoot = path.join(process.cwd(), 'apps', args.projectName);
+    const preparedDocPath = path.join(
+      projectRoot,
+      `.document-prepared-${process.pid}-${randomUUID()}`
+    );
+    const configPath = resolveProjectConfigFile(args.projectName);
+    const preparedConfigPath = path.join(
+      path.dirname(configPath),
+      `.${path.basename(configPath)}-prepared-${process.pid}-${randomUUID()}`
+    );
+
+    try {
+      fs.writeFileSync(preparedDocPath, content);
+      const changes = [{ preparedPath: preparedDocPath, targetPath: docPath }];
+      if (syncResult.updated) {
+        fs.writeFileSync(preparedConfigPath, serializeProjectConfig(nextConfig));
+        changes.push({ preparedPath: preparedConfigPath, targetPath: configPath });
+      }
+      commitPreparedPathsAtomically(changes);
+    } catch (error) {
+      fs.rmSync(preparedDocPath, { force: true });
+      fs.rmSync(preparedConfigPath, { force: true });
+      throw error;
+    }
+
+    logger.success('ドキュメントファイルと設定を一括で更新しました。');
 
     if (syncResult.updated) {
       logger.success('カテゴリ翻訳を更新しました。');
@@ -287,7 +345,7 @@ async function main() {
     logger.list([
       '作成されたファイルを編集し、本文を追加してください。',
       '開発サーバーで確認: pnpm dev',
-      '必要であれば他言語版のファイルも追加してください。'
+      '必要であれば他言語版のファイルも追加してください。',
     ]);
   } catch (error) {
     logger.error('処理中にエラーが発生しました。', error);

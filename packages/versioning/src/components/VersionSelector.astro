@@ -1,6 +1,8 @@
 ---
 import { Dropdown, DropdownItem, Icon } from '@docs/ui/components';
 import type { Version } from '../utils/version';
+import type { LocaleKey } from '@docs/i18n/locales';
+import { translate } from '@docs/i18n/utils';
 
 interface Props {
   versions: Version[];
@@ -11,6 +13,7 @@ interface Props {
   showVersionHistory?: boolean;
   showVersionAlert?: boolean; // バージョン警告を表示するかどうか
   dir?: 'ltr' | 'rtl';
+  lang?: LocaleKey;
 }
 
 const {
@@ -21,21 +24,22 @@ const {
   className = '',
   showVersionHistory = false,
   showVersionAlert = false, // デフォルトで非表示
-  dir = 'ltr'
+  dir = 'ltr',
+  lang = 'en',
 } = Astro.props;
 
 // 現在のバージョンオブジェクトを取得
-const currentVersionObj = versions.find(v => v.id === currentVersion) || versions[0];
+const currentVersionObj = versions.find((v) => v.id === currentVersion) || versions[0];
 
 // 最新バージョンを取得
-const latestVersion = versions.find(v => v.isLatest) || versions[0];
+const latestVersion = versions.find((v) => v.isLatest) || versions[0];
 
 // バージョンリストを日付順にソート
 const sortedVersions = [...versions].sort((a, b) => {
   // 最新バージョンは常に先頭
   if (a.isLatest === true && b.isLatest !== true) return -1;
   if (b.isLatest === true && a.isLatest !== true) return 1;
-  
+
   // date プロパティの存在を確認
   const dateA = a.date ? a.date.getTime() : 0;
   const dateB = b.date ? b.date.getTime() : 0;
@@ -45,23 +49,25 @@ const sortedVersions = [...versions].sort((a, b) => {
 });
 
 // バージョンタグの取得
-function getVersionTag(version: Version): { text: string; type: 'latest' | 'stable' | 'beta' | 'alpha' | 'dev' } | null {
+function getVersionTag(
+  version: Version
+): { text: string; type: 'latest' | 'stable' | 'beta' | 'alpha' | 'dev' } | null {
   if (version.isLatest) {
-    return { text: '最新', type: 'latest' };
+    return { text: translate('docs.latest', lang), type: 'latest' };
   }
-  
+
   if (version.tag) {
     if (version.tag.includes('beta')) {
-      return { text: 'ベータ', type: 'beta' };
+      return { text: 'beta', type: 'beta' };
     } else if (version.tag.includes('alpha')) {
-      return { text: 'アルファ', type: 'alpha' };
+      return { text: 'alpha', type: 'alpha' };
     } else if (version.tag.includes('dev')) {
-      return { text: '開発版', type: 'dev' };
+      return { text: 'dev', type: 'dev' };
     } else if (version.tag.includes('stable')) {
-      return { text: '安定版', type: 'stable' };
+      return { text: 'stable', type: 'stable' };
     }
   }
-  
+
   return null;
 }
 
@@ -70,12 +76,12 @@ function getVersionPath(versionId: string): string {
   if (currentSlug) {
     // 新しいURL構造: /basePath/version/lang/slug
     const targetPath = `${basePath}/${versionId}/${currentSlug}`;
-    
+
     // クライアントサイドでファイル存在確認を行うために、
     // データ属性を使用して情報を渡す
     return targetPath;
   }
-  
+
   // currentSlugがない場合は、バージョンのルートページへ
   let path = `${basePath}/${versionId}`;
   if (!path.endsWith('/')) {
@@ -93,20 +99,20 @@ function getDiffPath(): string {
     // currentVersion が basePath に含まれない場合、単純に末尾に追加
     // これは理想的ではないが、一旦のフォールバック
   }
-  
+
   // 番号プレフィックスを正規化してからパスに追加
   let slugPart = '';
   if (currentSlug) {
     const normalizedSlug = currentSlug.replace(/\/(\d+-)([^/]+)/g, '/$2');
     slugPart = `/${normalizedSlug}`;
   }
-  
+
   return `${diffBasePath}/version-diff${slugPart}`;
 }
 ---
 
 <div class:list={['version-selector', className]} dir={dir}>
-  <Dropdown 
+  <Dropdown
     label={currentVersionObj.name}
     align={dir === 'rtl' ? 'left' : 'right'}
     width="14rem"
@@ -115,85 +121,104 @@ function getDiffPath(): string {
   >
     <div class="version-dropdown-header" slot="before-items">
       <Icon name="file-text" class="version-icon" />
-      <span>バージョンを選択</span>
+      <span>{translate('docs.versions', lang)}</span>
     </div>
-    
-    {sortedVersions.map(version => {
-      const tag = getVersionTag(version);
-      return (
-        <DropdownItem 
-          label={version.name}
-          href={getVersionPath(version.id)}
-          isActive={version.id === currentVersion}
-          data-version-link="true"
-        >
-          {tag && (
-            <span slot="after-label" class={`version-badge version-badge-${tag.type}`}>
-              {tag.text}
-            </span>
-          )}
-          <div class="version-meta">
-            <div class="version-date">
-              {version.date && typeof version.date.toLocaleDateString === 'function' 
-                ? version.date.toLocaleDateString('ja-JP', { year: 'numeric', month: 'short', day: 'numeric' }) 
-                : 'N/A'}
-            </div>
-            {version.description && (
-              <div class="version-description">{version.description}</div>
+
+    {
+      sortedVersions.map((version) => {
+        const tag = getVersionTag(version);
+        return (
+          <DropdownItem
+            label={version.name}
+            href={getVersionPath(version.id)}
+            isActive={version.id === currentVersion}
+            data-version-link="true"
+          >
+            {tag && (
+              <span slot="after-label" class={`version-badge version-badge-${tag.type}`}>
+                {tag.text}
+              </span>
             )}
-          </div>
-        </DropdownItem>
-      );
-    })}
-    
+            <div class="version-meta">
+              <div class="version-date">
+                {version.date && typeof version.date.toLocaleDateString === 'function'
+                  ? version.date.toLocaleDateString(lang, {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })
+                  : 'N/A'}
+              </div>
+              {version.description && <div class="version-description">{version.description}</div>}
+            </div>
+          </DropdownItem>
+        );
+      })
+    }
+
     <div class="version-dropdown-footer" slot="after-items">
       <a href={getDiffPath()} class="version-footer-link">
         <Icon name="code" class="version-footer-icon" />
-        バージョン間の差分を表示
+        {translate('docs.showDiff', lang)}
       </a>
     </div>
   </Dropdown>
-  
+
   <div class="version-info">
-    {showVersionAlert && currentVersion !== latestVersion.id && (
-      <div class="version-alert">
-        <Icon name="triangle-alert" class="version-alert-icon" />
-        <span>
-          これは最新バージョンではありません。
-          <a href={getVersionPath(latestVersion.id)} class="version-alert-link">
-            最新バージョン（{latestVersion.name}）を表示
-          </a>
-        </span>
-      </div>
-    )}
-    
-    {showVersionHistory && (
-      <div class="version-history">
-        <h3 class="version-history-title">バージョン履歴</h3>
-        <ul class="version-history-list">
-          {sortedVersions.slice(0, 3).map(version => (
-            <li class="version-history-item">
-              <a href={getVersionPath(version.id)} class:list={['version-history-link', { 'is-current': version.id === currentVersion }]}>
-                <span class="version-history-name">{version.name}</span>
-                {getVersionTag(version) && (
-                  <span class={`version-badge version-badge-${getVersionTag(version)?.type}`}>
-                    {getVersionTag(version)?.text}
+    {
+      showVersionAlert && currentVersion !== latestVersion.id && (
+        <div class="version-alert">
+          <Icon name="triangle-alert" class="version-alert-icon" />
+          <span>
+            <a href={getVersionPath(latestVersion.id)} class="version-alert-link">
+              {translate('docs.showLatest', lang)} ({latestVersion.name})
+            </a>
+          </span>
+        </div>
+      )
+    }
+
+    {
+      showVersionHistory && (
+        <div class="version-history">
+          <h3 class="version-history-title">{translate('docs.versions', lang)}</h3>
+          <ul class="version-history-list">
+            {sortedVersions.slice(0, 3).map((version) => (
+              <li class="version-history-item">
+                <a
+                  href={getVersionPath(version.id)}
+                  class:list={[
+                    'version-history-link',
+                    { 'is-current': version.id === currentVersion },
+                  ]}
+                >
+                  <span class="version-history-name">{version.name}</span>
+                  {getVersionTag(version) && (
+                    <span class={`version-badge version-badge-${getVersionTag(version)?.type}`}>
+                      {getVersionTag(version)?.text}
+                    </span>
+                  )}
+                  <span class="version-history-date">
+                    {version.date && typeof version.date.toLocaleDateString === 'function'
+                      ? version.date.toLocaleDateString(lang, {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })
+                      : 'N/A'}
                   </span>
-                )}
-                <span class="version-history-date">
-                  {version.date && typeof version.date.toLocaleDateString === 'function' 
-                    ? version.date.toLocaleDateString('ja-JP', { year: 'numeric', month: 'short', day: 'numeric' }) 
-                    : 'N/A'}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-        {versions.length > 3 && (
-          <a href="#" class="version-history-more">すべてのバージョンを表示</a>
-        )}
-      </div>
-    )}
+                </a>
+              </li>
+            ))}
+          </ul>
+          {versions.length > 3 && (
+            <a href="#" class="version-history-more">
+              {translate('docs.versions', lang)}
+            </a>
+          )}
+        </div>
+      )
+    }
   </div>
 </div>
 
@@ -494,8 +519,14 @@ function getDiffPath(): string {
 
   /* アニメーション */
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-0.25rem); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(-0.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .version-dropdown :global(.dropdown-content) {
@@ -503,68 +534,81 @@ function getDiffPath(): string {
   }
 </style>
 
-<script>
+<script
+  define:vars={{
+    versionsLabel: translate('docs.versions', lang),
+    collapseLabel: translate('common.close', lang),
+  }}
+>
   // バージョン履歴の「すべてのバージョンを表示」リンクの処理
   document.addEventListener('DOMContentLoaded', () => {
     const moreLinks = document.querySelectorAll('.version-history-more');
-    moreLinks.forEach(link => {
+    moreLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const historyList = link.closest('.version-history')?.querySelector('.version-history-list');
+        const historyList = link
+          .closest('.version-history')
+          ?.querySelector('.version-history-list');
         const historyItems = historyList?.querySelectorAll('.version-history-item');
-        
+
         if (historyItems) {
-          historyItems.forEach(item => {
+          historyItems.forEach((item) => {
             if (item.classList.contains('hidden')) {
               item.classList.remove('hidden');
             }
           });
-          
+
           // 「すべて表示」リンクを「折りたたむ」に変更
-          link.textContent = '折りたたむ';
+          link.textContent = collapseLabel;
           link.classList.add('is-expanded');
-          
+
           // クリック時の動作を切り替え
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (link.classList.contains('is-expanded')) {
-              // 3つ目以降を非表示
-              Array.from(historyItems).slice(3).forEach(item => {
-                item.classList.add('hidden');
-              });
-              link.textContent = 'すべてのバージョンを表示';
-              link.classList.remove('is-expanded');
-            } else {
-              // すべて表示
-              historyItems.forEach(item => {
-                item.classList.remove('hidden');
-              });
-              link.textContent = '折りたたむ';
-              link.classList.add('is-expanded');
-            }
-          }, { once: true });
+          link.addEventListener(
+            'click',
+            (e) => {
+              e.preventDefault();
+              if (link.classList.contains('is-expanded')) {
+                // 3つ目以降を非表示
+                Array.from(historyItems)
+                  .slice(3)
+                  .forEach((item) => {
+                    item.classList.add('hidden');
+                  });
+                link.textContent = versionsLabel;
+                link.classList.remove('is-expanded');
+              } else {
+                // すべて表示
+                historyItems.forEach((item) => {
+                  item.classList.remove('hidden');
+                });
+                link.textContent = collapseLabel;
+                link.classList.add('is-expanded');
+              }
+            },
+            { once: true }
+          );
         }
       });
     });
-    
+
     // バージョンセレクターリンクの動的フォールバック処理
     setupVersionSelectorFallback();
   });
-  
+
   // バージョンセレクターリンクの動的フォールバック処理
   function setupVersionSelectorFallback() {
     const versionLinks = document.querySelectorAll('.version-dropdown [data-version-link]');
-    
+
     versionLinks.forEach((link) => {
       const originalHref = link.getAttribute('href');
       if (!originalHref) return;
-      
+
       link.addEventListener('click', async (e) => {
         e.preventDefault();
-        
+
         // リンク先が存在するかチェック
         const isValid = await checkLinkValidity(originalHref);
-        
+
         if (isValid) {
           // 有効なリンクならそのまま遷移
           window.location.href = originalHref;
@@ -576,7 +620,7 @@ function getDiffPath(): string {
       });
     });
   }
-  
+
   // リンク先の有効性をチェック
   async function checkLinkValidity(url) {
     try {
@@ -586,33 +630,33 @@ function getDiffPath(): string {
       return false;
     }
   }
-  
+
   // フォールバック先URLを計算
   async function calculateFallbackUrl(originalUrl) {
     // URLを解析
     const urlParts = originalUrl.split('/');
-    const baseIndex = urlParts.findIndex(part => part === 'docs');
-    
+    const baseIndex = urlParts.findIndex((part) => part === 'docs');
+
     if (baseIndex === -1) return originalUrl;
-    
+
     // パス構造: /docs/sample-docs/lang/version/section/file
     const basePath = urlParts.slice(0, baseIndex + 3).join('/'); // /docs/sample-docs/lang
     const version = urlParts[baseIndex + 3]; // version
     const section = urlParts[baseIndex + 4]; // section (guide など)
-    
+
     // フォールバック戦略
     const fallbackCandidates = [
       // 1. 同じセクションの最初のファイル（getting-started系）
       basePath + '/' + version + '/' + section + '/01-getting-started',
       basePath + '/' + version + '/' + section + '/getting-started',
-      // 2. デフォルトセクション（guide）の最初のファイル  
+      // 2. デフォルトセクション（guide）の最初のファイル
       basePath + '/' + version + '/guide/01-getting-started',
       basePath + '/' + version + '/guide/getting-started',
       // 3. バージョンのルートページ
       basePath + '/' + version + '/',
-      basePath + '/' + version
+      basePath + '/' + version,
     ];
-    
+
     // 各候補を順次チェック
     for (const candidate of fallbackCandidates) {
       const isValid = await checkLinkValidity(candidate);
@@ -620,7 +664,7 @@ function getDiffPath(): string {
         return candidate;
       }
     }
-    
+
     // すべて失敗した場合は元のURLを返す
     return originalUrl;
   }

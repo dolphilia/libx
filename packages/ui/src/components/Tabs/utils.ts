@@ -21,24 +21,25 @@ const getIDs = () => {
 export function processPanels(html: string): { panels: Panel[]; html: string } {
   // パネルデータを収集
   const panels: Panel[] = [];
-  
+
   // 正規表現を使用してタブアイテムを検出
   // 属性の順序に依存しないように正規表現を改善
-  const regex = /<docs-tab-item[^>]*?data-label="([^"]*)"[^>]*?(?:data-icon="([^"]*)")?[^>]*?>([\s\S]*?)<\/docs-tab-item>/g;
-  
+  const regex =
+    /<docs-tab-item[^>]*?data-label="([^"]*)"[^>]*?(?:data-icon="([^"]*)")?[^>]*?>([\s\S]*?)<\/docs-tab-item>/g;
+
   // アイコン属性を個別に抽出するための正規表現
   const iconRegex = /data-icon="([^"]*)"/;
   let match;
   let isFirst = true;
   let processedHtml = html;
-  
+
   // すべてのタブアイテムを処理
   while ((match = regex.exec(html)) !== null) {
     const fullMatch = match[0];
     const label = match[1];
     let icon = match[2] || undefined;
     const content = match[3];
-    
+
     // アイコン属性が正規表現で取得できなかった場合、個別に抽出を試みる
     if (!icon) {
       const iconMatch = fullMatch.match(iconRegex);
@@ -46,32 +47,32 @@ export function processPanels(html: string): { panels: Panel[]; html: string } {
         icon = iconMatch[1];
       }
     }
-    
+
     // ユニークなIDを生成
     const ids = getIDs();
-    
+
     // パネルデータを追加
     const panel: Panel = {
       ...ids,
       label,
     };
-    
+
     if (icon) {
       panel.icon = icon;
     }
-    
+
     panels.push(panel);
-    
+
     // タブアイテムをdivに変換
     const hiddenAttr = isFirst ? '' : 'hidden';
     const replacement = `<div id="${ids.panelId}" aria-labelledby="${ids.tabId}" role="tabpanel" ${hiddenAttr}>${content}</div>`;
-    
+
     // HTMLを更新
     processedHtml = processedHtml.replace(fullMatch, replacement);
-    
+
     isFirst = false;
   }
-  
+
   return {
     panels,
     html: processedHtml,

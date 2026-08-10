@@ -4,6 +4,8 @@ import SidebarPersister from './SidebarPersister.astro';
 import SidebarRestorePoint from './SidebarRestorePoint.astro';
 import SidebarResizer from './SidebarResizer.astro';
 import Icon from './icons/Icon.astro';
+import type { LocaleKey } from '@docs/i18n/locales';
+import { translate } from '@docs/i18n/utils';
 
 interface SidebarItem {
   title: string;
@@ -23,9 +25,17 @@ interface Props {
   class?: string;
   hash?: string;
   dir?: 'ltr' | 'rtl';
+  lang?: LocaleKey;
 }
 
-const { items, title, class: className = '', hash = 'sidebar-hash', dir = 'ltr' } = Astro.props;
+const {
+  items,
+  title,
+  class: className = '',
+  hash = 'sidebar-hash',
+  dir = 'ltr',
+  lang = 'en',
+} = Astro.props;
 
 // 現在のページかどうかを判定するヘルパー関数
 function isCurrentPage(item: SidebarItem): boolean {
@@ -35,7 +45,7 @@ function isCurrentPage(item: SidebarItem): boolean {
 // サイドバー内のアイテムが開いているかどうかを判定するヘルパー関数
 function shouldBeOpen(section: SidebarItem): boolean {
   if (!section.items) return false;
-  return section.items.some(item => isCurrentPage(item) || (item.items && shouldBeOpen(item)));
+  return section.items.some((item) => isCurrentPage(item) || (item.items && shouldBeOpen(item)));
 }
 
 // サイドバーのハッシュを生成するヘルパー関数
@@ -46,124 +56,158 @@ function getSidebarHash(_items: SidebarItem[]): string {
 const sidebarHash = getSidebarHash(items);
 ---
 
-<aside 
+<aside
   class:list={['sidebar', className]}
   role="complementary"
-  aria-label={title || 'サイドナビゲーション'}
+  aria-label={title || translate('docs.documentation', lang)}
   id="sidebar"
   style="position: relative;"
   dir={dir}
 >
-  <SidebarResizer />
-  {title && (
-    <h3 class="sidebar-title" id="sidebar-title">
-      {title}
-    </h3>
-  )}
-  
+  <SidebarResizer lang={lang} dir={dir} />
+  {
+    title && (
+      <h3 class="sidebar-title" id="sidebar-title">
+        {title}
+      </h3>
+    )
+  }
+
   <nav aria-labelledby="sidebar-title">
     <SidebarPersister hash={sidebarHash}>
       <ul class="top-level">
-        {items.map((section) => (
-          <li>
-            {section.href ? (
-              <a 
-                href={section.href}
-                aria-current={isCurrentPage(section) ? 'page' : undefined}
-                class:list={["large", { active: isCurrentPage(section) }]}
-              >
-                <span>{section.title}</span>
-                {section.badge && (
-                  <span class:list={["badge", section.badge.variant || 'default', section.badge.class]}>
-                    {section.badge.text}
-                  </span>
-                )}
-              </a>
-            ) : (
-              <details open={shouldBeOpen(section)}>
-                <SidebarRestorePoint />
-                <summary>
-                  <div class="group-label">
-                    <span class="large">{section.title}</span>
-                    {section.badge && (
-                      <span class:list={["badge", section.badge.variant || 'default', section.badge.class]}>
-                        {section.badge.text}
-                      </span>
-                    )}
-                  </div>
-                  <span class="caret-container">
-                    <span class="caret-wrapper">
-                      <Icon name="chevron-right" size="1.25rem" />
+        {
+          items.map((section) => (
+            <li>
+              {section.href ? (
+                <a
+                  href={section.href}
+                  aria-current={isCurrentPage(section) ? 'page' : undefined}
+                  class:list={['large', { active: isCurrentPage(section) }]}
+                >
+                  <span>{section.title}</span>
+                  {section.badge && (
+                    <span
+                      class:list={[
+                        'badge',
+                        section.badge.variant || 'default',
+                        section.badge.class,
+                      ]}
+                    >
+                      {section.badge.text}
                     </span>
-                  </span>
-                </summary>
-                
-                {section.items && (
-                  <ul>
-                    {section.items.map((item) => (
-                      <li>
-                        {item.href ? (
-                          <a 
-                            href={item.href}
-                            aria-current={isCurrentPage(item) ? 'page' : undefined}
-                            class:list={[{ active: isCurrentPage(item) }]}
-                          >
-                            <span>{item.title}</span>
-                            {item.badge && (
-                              <span class:list={["badge", item.badge.variant || 'default', item.badge.class]}>
-                                {item.badge.text}
-                              </span>
-                            )}
-                          </a>
-                        ) : (
-                          <details open={shouldBeOpen(item)}>
-                            <SidebarRestorePoint />
-                            <summary>
-                              <div class="group-label">
-                                <span>{item.title}</span>
-                                {item.badge && (
-                                  <span class:list={["badge", item.badge.variant || 'default', item.badge.class]}>
-                                    {item.badge.text}
-                                  </span>
-                                )}
-                              </div>
-                              <span class="caret-container">
-                                <span class="caret-wrapper">
-                                  <Icon name="chevron-right" size="1rem" />
+                  )}
+                </a>
+              ) : (
+                <details open={shouldBeOpen(section)}>
+                  <SidebarRestorePoint />
+                  <summary>
+                    <div class="group-label">
+                      <span class="large">{section.title}</span>
+                      {section.badge && (
+                        <span
+                          class:list={[
+                            'badge',
+                            section.badge.variant || 'default',
+                            section.badge.class,
+                          ]}
+                        >
+                          {section.badge.text}
+                        </span>
+                      )}
+                    </div>
+                    <span class="caret-container">
+                      <span class="caret-wrapper">
+                        <Icon name="chevron-right" size="1.25rem" />
+                      </span>
+                    </span>
+                  </summary>
+
+                  {section.items && (
+                    <ul>
+                      {section.items.map((item) => (
+                        <li>
+                          {item.href ? (
+                            <a
+                              href={item.href}
+                              aria-current={isCurrentPage(item) ? 'page' : undefined}
+                              class:list={[{ active: isCurrentPage(item) }]}
+                            >
+                              <span>{item.title}</span>
+                              {item.badge && (
+                                <span
+                                  class:list={[
+                                    'badge',
+                                    item.badge.variant || 'default',
+                                    item.badge.class,
+                                  ]}
+                                >
+                                  {item.badge.text}
                                 </span>
-                              </span>
-                            </summary>
-                            
-                            {item.items && (
-                              <ul>
-                                {item.items.map((subItem) => (
-                                  <li>
-                                    <a 
-                                      href={subItem.href}
-                                      aria-current={isCurrentPage(subItem) ? 'page' : undefined}
-                                      class:list={[{ active: isCurrentPage(subItem) }]}
+                              )}
+                            </a>
+                          ) : (
+                            <details open={shouldBeOpen(item)}>
+                              <SidebarRestorePoint />
+                              <summary>
+                                <div class="group-label">
+                                  <span>{item.title}</span>
+                                  {item.badge && (
+                                    <span
+                                      class:list={[
+                                        'badge',
+                                        item.badge.variant || 'default',
+                                        item.badge.class,
+                                      ]}
                                     >
-                                      <span>{subItem.title}</span>
-                                      {subItem.badge && (
-                                        <span class:list={["badge", subItem.badge.variant || 'default', subItem.badge.class]}>
-                                          {subItem.badge.text}
-                                        </span>
-                                      )}
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </details>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </details>
-            )}
-          </li>
-        ))}
+                                      {item.badge.text}
+                                    </span>
+                                  )}
+                                </div>
+                                <span class="caret-container">
+                                  <span class="caret-wrapper">
+                                    <Icon name="chevron-right" size="1rem" />
+                                  </span>
+                                </span>
+                              </summary>
+
+                              {item.items && (
+                                <ul>
+                                  {item.items.map((subItem) => (
+                                    <li>
+                                      <a
+                                        href={subItem.href}
+                                        aria-current={isCurrentPage(subItem) ? 'page' : undefined}
+                                        class:list={[{ active: isCurrentPage(subItem) }]}
+                                      >
+                                        <span>{subItem.title}</span>
+                                        {subItem.badge && (
+                                          <span
+                                            class:list={[
+                                              'badge',
+                                              subItem.badge.variant || 'default',
+                                              subItem.badge.class,
+                                            ]}
+                                          >
+                                            {subItem.badge.text}
+                                          </span>
+                                        )}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </details>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </details>
+              )}
+            </li>
+          ))
+        }
       </ul>
     </SidebarPersister>
   </nav>
@@ -185,14 +229,14 @@ const sidebarHash = getSidebarHash(items);
     transition: width 0.2s ease-in-out;
     box-sizing: border-box;
   }
-  
+
   /* 折りたたみ状態のスタイル */
   .sidebar.sidebar-collapsed {
     width: 50px;
     max-width: 50px;
     overflow-x: hidden;
   }
-  
+
   .sidebar.sidebar-collapsed .sidebar-title,
   .sidebar.sidebar-collapsed nav {
     opacity: 0;
@@ -214,7 +258,7 @@ const sidebarHash = getSidebarHash(items);
     font-weight: 800;
     font-size: var(--sl-text-lg);
     color: var(--sl-color-white);
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 
   ul {
@@ -252,7 +296,7 @@ const sidebarHash = getSidebarHash(items);
     cursor: pointer;
     user-select: none;
     border-radius: 0.25rem;
-    margin-bottom: 1.0rem;
+    margin-bottom: 1rem;
   }
   summary::marker,
   summary::-webkit-details-marker {
@@ -262,8 +306,7 @@ const sidebarHash = getSidebarHash(items);
   summary:hover {
     background-color: var(--sl-color-gray-7, rgba(255, 255, 255, 0.05));
   }
-  
-  
+
   .caret-container {
     display: flex;
     align-items: center;
@@ -287,7 +330,7 @@ const sidebarHash = getSidebarHash(items);
   }
 
   /* data-open属性に基づく回転制御 */
-  summary[data-open="true"] .caret-wrapper {
+  summary[data-open='true'] .caret-wrapper {
     transform: rotate(90deg);
   }
 
@@ -298,7 +341,7 @@ const sidebarHash = getSidebarHash(items);
   [dir='rtl'] .caret-wrapper.rotated {
     transform: rotate(90deg);
   }
-  [dir='rtl'] summary[data-open="true"] .caret-wrapper {
+  [dir='rtl'] summary[data-open='true'] .caret-wrapper {
     transform: rotate(90deg);
   }
 
@@ -309,7 +352,9 @@ const sidebarHash = getSidebarHash(items);
     color: var(--sl-color-gray-2);
     padding: 0.3em var(--sl-sidebar-item-padding-inline);
     line-height: 1.4;
-    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    transition:
+      background-color 0.15s ease-in-out,
+      color 0.15s ease-in-out;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
@@ -340,7 +385,7 @@ const sidebarHash = getSidebarHash(items);
   html:not(.dark) .active {
     background-color: rgba(0, 0, 0, 0.1);
   }
-  
+
   [aria-current='page']::before,
   .active::before {
     content: '';
@@ -352,7 +397,7 @@ const sidebarHash = getSidebarHash(items);
     border-radius: 0 2px 2px 0;
     animation: slideIn 0.2s ease-out;
   }
-  
+
   [dir='rtl'] [aria-current='page']::before,
   [dir='rtl'] .active::before {
     inset-inline-start: auto;
@@ -360,7 +405,7 @@ const sidebarHash = getSidebarHash(items);
     border-radius: 2px 0 0 2px;
     animation: slideInRtl 0.2s ease-out;
   }
-  
+
   @keyframes slideIn {
     from {
       transform: translateX(-100%);
@@ -526,11 +571,11 @@ const sidebarHash = getSidebarHash(items);
 
     // details要素の開閉を監視してsummaryに属性を付与
     const detailsElements = document.querySelectorAll<HTMLDetailsElement>('.sidebar details');
-    
+
     // 初期状態を即座に設定（アニメーションなし）
-    detailsElements.forEach(details => {
+    detailsElements.forEach((details) => {
       const summary = details.querySelector('summary');
-      
+
       if (summary) {
         // 初期状態を設定
         summary.setAttribute('data-open', details.open.toString());

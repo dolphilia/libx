@@ -18,15 +18,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const CONFIG_FILE_JSONC = 'project.config.jsonc';
-const CONFIG_FILE_JSON = 'project.config.json';
 
 function resolveConfigPath(projectDir) {
-  const jsoncPath = path.join(projectDir, 'src', 'config', CONFIG_FILE_JSONC);
-  const jsonPath = path.join(projectDir, 'src', 'config', CONFIG_FILE_JSON);
-  if (fs.existsSync(jsoncPath)) {
-    return jsoncPath;
-  }
-  return jsonPath;
+  return path.join(projectDir, 'src', 'config', CONFIG_FILE_JSONC);
 }
 
 function getProjectConfigPaths() {
@@ -38,10 +32,10 @@ function getProjectConfigPaths() {
 
   const entries = fs.readdirSync(appsDir, { withFileTypes: true });
   return entries
-    .filter(entry => entry.isDirectory())
-    .map(entry => ({
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => ({
       projectName: entry.name,
-      configPath: resolveConfigPath(path.join(appsDir, entry.name))
+      configPath: resolveConfigPath(path.join(appsDir, entry.name)),
     }))
     .filter(({ configPath }) => fs.existsSync(configPath));
 }
@@ -79,9 +73,7 @@ function inspectProject({ projectName, configPath }) {
   const config = loadConfig(configPath);
   const preferredSupported = Array.isArray(config?.language?.supported)
     ? config.language.supported
-    : Array.isArray(config?.basic?.supportedLangs)
-      ? config.basic.supportedLangs
-      : undefined;
+    : undefined;
   const supportedLangs = resolveRepoSupportedLangs(preferredSupported);
   const translations = config?.translations ?? {};
 
@@ -99,7 +91,7 @@ function inspectProject({ projectName, configPath }) {
     if (!translation) {
       issues.push({
         lang,
-        type: 'missingTranslation'
+        type: 'missingTranslation',
       });
       continue;
     }
@@ -120,7 +112,7 @@ function inspectProject({ projectName, configPath }) {
         lang,
         type: 'categoryMismatch',
         missing,
-        extra
+        extra,
       });
     }
   }
@@ -167,7 +159,7 @@ function run() {
   }
 
   const results = projectConfigs.map(inspectProject);
-  const failures = results.filter(result => result.hasIssue);
+  const failures = results.filter((result) => result.hasIssue);
 
   if (failures.length === 0) {
     logger.blank();

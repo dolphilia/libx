@@ -4,7 +4,7 @@
 
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { LocaleKey } from '@docs/i18n/locales';
-import { getLegacyProjectConfig } from '@docs/project-config';
+import { getProjectConfig } from '@docs/project-config';
 import type { ContentOptions } from './content-utils';
 import { selectLatestVersionId } from './path-utils';
 
@@ -19,7 +19,10 @@ export interface NavigationOptions extends ContentOptions {
 
 const VERSION_PATTERN = /^v\d+$/i;
 
-function parseSlugParts(slug: string, supportedLangs: LocaleKey[]): {
+function parseSlugParts(
+  slug: string,
+  supportedLangs: LocaleKey[]
+): {
   version?: string;
   lang?: LocaleKey;
   rest: string[];
@@ -38,7 +41,7 @@ function parseSlugParts(slug: string, supportedLangs: LocaleKey[]): {
     return {
       version: first,
       lang: langCandidate,
-      rest: parts.slice(2)
+      rest: parts.slice(2),
     };
   }
 
@@ -47,7 +50,7 @@ function parseSlugParts(slug: string, supportedLangs: LocaleKey[]): {
     return {
       version: second,
       lang: langCandidate,
-      rest: parts.slice(2)
+      rest: parts.slice(2),
     };
   }
 
@@ -56,7 +59,7 @@ function parseSlugParts(slug: string, supportedLangs: LocaleKey[]): {
     return {
       version: VERSION_PATTERN.test(second) ? second : undefined,
       lang: first as LocaleKey,
-      rest: parts.slice(2)
+      rest: parts.slice(2),
     };
   }
 
@@ -64,7 +67,7 @@ function parseSlugParts(slug: string, supportedLangs: LocaleKey[]): {
     return {
       version: first,
       lang: second as LocaleKey,
-      rest: parts.slice(2)
+      rest: parts.slice(2),
     };
   }
 
@@ -74,12 +77,15 @@ function parseSlugParts(slug: string, supportedLangs: LocaleKey[]): {
 /**
  * 利用可能なバージョンを取得し、最新のものを特定
  */
-export async function getLatestVersion(lang: LocaleKey, options?: NavigationOptions): Promise<string> {
+export async function getLatestVersion(
+  lang: LocaleKey,
+  options?: NavigationOptions
+): Promise<string> {
   const docs = (await getCollection('docs')) as CollectionEntry<'docs'>[];
-  const config = await getLegacyProjectConfig(options?.projectDir);
+  const config = await getProjectConfig(options?.projectDir);
   const supportedLangs = config.language.supported;
 
-  const langDocs = docs.filter(entry => {
+  const langDocs = docs.filter((entry) => {
     const { lang: entryLang } = parseSlugParts(entry.slug, supportedLangs);
     return entryLang === lang;
   });
@@ -87,7 +93,7 @@ export async function getLatestVersion(lang: LocaleKey, options?: NavigationOpti
   const versions: string[] = Array.from(
     new Set<string>(
       langDocs
-        .map(entry => parseSlugParts(entry.slug, supportedLangs).version)
+        .map((entry) => parseSlugParts(entry.slug, supportedLangs).version)
         .filter(
           (version): version is string =>
             typeof version === 'string' && VERSION_PATTERN.test(version)
@@ -107,10 +113,10 @@ export async function getFirstPage(
   options?: NavigationOptions
 ): Promise<string | null> {
   const docs = (await getCollection('docs')) as CollectionEntry<'docs'>[];
-  const config = await getLegacyProjectConfig(options?.projectDir);
+  const config = await getProjectConfig(options?.projectDir);
   const supportedLangs = config.language.supported;
 
-  const versionDocs = docs.filter(entry => {
+  const versionDocs = docs.filter((entry) => {
     const { lang: entryLang, version: entryVersion } = parseSlugParts(entry.slug, supportedLangs);
     return entryLang === lang && entryVersion === version;
   });

@@ -4,30 +4,29 @@ import MainLayout from '../../../layouts/MainLayout.astro';
 import { Card } from '@docs/ui/components';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { translate } from '@docs/i18n/utils';
-import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';
+import { getProjectConfig } from '@docs/project-config';
 
 // 型定義
 type DocEntry = CollectionEntry<'docs'>;
 
 export async function getStaticPaths() {
   // getStaticPaths内で設定を初期化
-  await initializeConfig();
-  const projectConfig = await getLegacyProjectConfig();
-  
-  const allVersions = projectConfig.versions.map(v => v.id);
-  const allLangs = projectConfig.supportedLangs;
-  
+  const projectConfig = await getProjectConfig();
+
+  const allVersions = projectConfig.versioning.versions.map((v) => v.id);
+  const allLangs = projectConfig.language.supported;
+
   const paths = [];
-  
+
   for (const version of allVersions) {
     for (const lang of allLangs) {
       paths.push({
         params: { version, lang },
-        props: { lang, version }
+        props: { lang, version },
       });
     }
   }
-  
+
   return paths;
 }
 
@@ -36,11 +35,10 @@ const lang = (langParam || 'en') as LocaleKey;
 const version = versionParam || 'v1';
 
 // 設定を再度初期化（プロパティセクション）
-await initializeConfig();
-const projectConfig = await getLegacyProjectConfig();
+const projectConfig = await getProjectConfig();
 
 // GitHub Pagesのベースパス
-const baseUrl = projectConfig.baseUrl;
+const baseUrl = projectConfig.paths.baseUrl;
 
 // 指定された言語とバージョンのドキュメントを取得
 const docs = await getCollection('docs', (entry: DocEntry) => {
@@ -62,7 +60,7 @@ const categories = docs.reduce((acc: Record<string, DocEntry[]>, doc: DocEntry) 
 }, {});
 
 // カテゴリごとにドキュメントを順序で並べ替え
-Object.keys(categories).forEach(category => {
+Object.keys(categories).forEach((category) => {
   categories[category].sort((a: DocEntry, b: DocEntry) => {
     const orderA = a.data.order || 999;
     const orderB = b.data.order || 999;
@@ -72,39 +70,47 @@ Object.keys(categories).forEach(category => {
 
 // カテゴリの表示名マッピング
 const categoryNames: Record<string, string> = {
-  'guide': translate('docs.guide', lang),
-  'api': translate('navigation.api', lang),
-  'examples': translate('docs.examples', lang)
+  guide: translate('docs.guide', lang),
+  api: translate('navigation.api', lang),
+  examples: translate('docs.examples', lang),
 };
 ---
 
-<MainLayout title={`${translate('docs.documentation', lang)} (${version})`} lang={lang} version={version}>
+<MainLayout
+  title={`${translate('docs.documentation', lang)} (${version})`}
+  lang={lang}
+  version={version}
+>
   <div class="container">
     <h1 class="page-title">{translate('docs.documentation', lang)} - {version}</h1>
-    
+
     <div class="category-list">
-      {Object.keys(categories).map(category => (
-        <div class="category-item">
-          <h2 class="category-title">{categoryNames[category] || category}</h2>
-          <div class="doc-grid">
-            {categories[category].map((doc: DocEntry) => (
-              <Card
-                title={doc.data.title}
-                href={`${baseUrl}/${version}/${lang}/${doc.slug.split('/').slice(2).join('/')}`}
-              >
-                <p class="doc-description">{doc.data.description}</p>
-              </Card>
-            ))}
+      {
+        Object.keys(categories).map((category) => (
+          <div class="category-item">
+            <h2 class="category-title">{categoryNames[category] || category}</h2>
+            <div class="doc-grid">
+              {categories[category].map((doc: DocEntry) => (
+                <Card
+                  title={doc.data.title}
+                  href={`${baseUrl}/${version}/${lang}/${doc.slug.split('/').slice(2).join('/')}`}
+                >
+                  <p class="doc-description">{doc.data.description}</p>
+                </Card>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
-    
-    {Object.keys(categories).length === 0 && (
-      <div class="empty-state">
-        <p>{translate('docs.no_documents', lang)}</p>
-      </div>
-    )}
+
+    {
+      Object.keys(categories).length === 0 && (
+        <div class="empty-state">
+          <p>{translate('docs.no_documents', lang)}</p>
+        </div>
+      )
+    }
   </div>
 </MainLayout>
 

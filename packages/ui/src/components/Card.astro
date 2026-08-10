@@ -8,21 +8,9 @@ interface Props {
   [key: string]: unknown;
 }
 
-const { 
-  title, 
-  class: className = '', 
-  variant = 'default', 
-  href, 
-  icon,
-  ...rest 
-} = Astro.props;
+const { title, class: className = '', variant = 'default', href, icon, ...rest } = Astro.props;
 
-const classes = [
-  'card',
-  `card-${variant}`,
-  href && 'card-interactive',
-  className
-];
+const classes = ['card', `card-${variant}`, href && 'card-interactive', className];
 
 const Tag = href ? 'a' : 'div';
 const linkProps = href ? { href } : {};
@@ -30,31 +18,47 @@ const linkProps = href ? { href } : {};
 
 <Tag class:list={classes} {...linkProps} {...rest}>
   <div class="card-body">
-    {title && (
-      <div class="card-header">
-        {icon && <span class="card-icon" set:html={icon} />}
-        <h2 class="card-title">{title}</h2>
-      </div>
-    )}
+    {
+      title && (
+        <div class="card-header">
+          {icon && <span class="card-icon" set:html={icon} />}
+          <h2 class="card-title">{title}</h2>
+        </div>
+      )
+    }
     <div class="card-content">
       <slot />
     </div>
-    {Astro.slots.has('footer') && (
-      <div class="card-footer">
-        <slot name="footer" />
-      </div>
-    )}
+    {
+      Astro.slots.has('footer') && (
+        <div class="card-footer">
+          <slot name="footer" />
+        </div>
+      )
+    }
   </div>
-  {href && variant === 'link' && (
-    <div class="card-cta">
-      <span class="card-cta-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
-      </span>
-    </div>
-  )}
+  {
+    href && variant === 'link' && (
+      <div class="card-cta">
+        <span class="card-cta-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </span>
+      </div>
+    )
+  }
 </Tag>
 
 <style>
@@ -64,7 +68,10 @@ const linkProps = href ? { href } : {};
     background-color: var(--color-bg-secondary); /* Updated */
     border: 1px solid var(--color-border-default); /* Updated */
     box-shadow: var(--shadow-sm); /* Updated */
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
     position: relative;
   }
 
@@ -93,7 +100,7 @@ const linkProps = href ? { href } : {};
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    padding-right: 1rem;
+    padding-inline-end: 1rem;
   }
 
   .card-body {

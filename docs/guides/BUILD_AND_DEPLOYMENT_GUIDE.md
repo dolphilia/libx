@@ -67,8 +67,8 @@ pnpm dev
 
 ## 📋 前提条件
 
-- Node.js 18以上
-- pnpm 8以上
+- Node.js 20以上
+- pnpm 10.10.0以上
 - Wrangler CLI（Cloudflareデプロイ用）
 - 正しいプロジェクト構造
 
@@ -523,7 +523,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
@@ -752,7 +752,6 @@ rm -rf dist/ apps/*/dist/
 - [バージョン追加ガイド](./VERSION_ADDITION_GUIDE.md) - 新しいバージョンの追加方法  
 - [言語追加ガイド](./LANGUAGE_ADDITION_GUIDE.md) - 新しい言語の追加方法
 - [ドキュメント追加ガイド](./DOCUMENT_ADDITION_GUIDE.md) - 新しいドキュメントの追加方法
-- [トラブルシューティングガイド](./TROUBLESHOOTING_GUIDE.md) - 問題解決の総合ガイド
 
 ## 🔄 更新履歴
 

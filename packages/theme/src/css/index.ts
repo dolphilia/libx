@@ -36,7 +36,7 @@ export const initTheme = (respectUserPreference = true) => {
   if (respectUserPreference) {
     const prefersDarkMode = detectPrefersDarkMode();
     applyTheme(prefersDarkMode);
-    
+
     // 設定変更を監視
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       applyTheme(e.matches);

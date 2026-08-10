@@ -6,13 +6,13 @@ interface Props {
    * 目次の項目
    */
   toc: TocItem[];
-  
+
   /**
    * 階層の深さ
    * @default 0
    */
   depth?: number;
-  
+
   /**
    * モバイル表示かどうか
    * @default false
@@ -23,7 +23,7 @@ interface Props {
 const { toc, depth = 0, isMobile = false } = Astro.props;
 ---
 
-<ul class:list={["starlight-toc__list", { "starlight-toc__list--mobile": isMobile }]}>
+<ul class:list={['starlight-toc__list', { 'starlight-toc__list--mobile': isMobile }]}>
   {
     toc.map((heading) => (
       <li class="starlight-toc__item">
@@ -44,11 +44,11 @@ const { toc, depth = 0, isMobile = false } = Astro.props;
     list-style: none;
     margin: 0;
   }
-  
+
   .starlight-toc__item {
     margin: 0;
   }
-  
+
   .starlight-toc__link {
     /* --pad-inline: 0.5rem;
     --pad-block: 0.25rem; */
@@ -61,31 +61,33 @@ const { toc, depth = 0, isMobile = false } = Astro.props;
     color: var(--sl-color-gray-2);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
-  
+
   .starlight-toc__link:hover {
     color: var(--sl-color-white);
     background-color: var(--sl-color-gray-7, rgba(128, 128, 128, 0.1));
   }
-  
+
   .starlight-toc__link:focus-visible {
     outline: 2px solid var(--sl-color-accent);
     outline-offset: var(--sl-outline-offset-inside);
   }
-  
+
   .starlight-toc__link.active,
   .starlight-toc__link[aria-current='true'] {
     color: var(--sl-color-text-accent);
     background-color: var(--sl-color-gray-6, rgba(128, 128, 128, 0.05));
     font-weight: 500;
   }
-  
+
   /* モバイル表示用スタイル */
   .starlight-toc__list--mobile {
     width: 100%;
   }
-  
+
   .starlight-toc__list--mobile .starlight-toc__link {
     --pad-inline: 1rem;
     --pad-block: 0.5rem;
@@ -99,11 +101,13 @@ const { toc, depth = 0, isMobile = false } = Astro.props;
     text-decoration: none;
     outline-offset: var(--sl-outline-offset-inside);
   }
-  
-  .starlight-toc__list--mobile:first-child > .starlight-toc__item:first-child > .starlight-toc__link {
+
+  .starlight-toc__list--mobile:first-child
+    > .starlight-toc__item:first-child
+    > .starlight-toc__link {
     border-top: 0;
   }
-  
+
   .starlight-toc__list--mobile .starlight-toc__link.active,
   .starlight-toc__list--mobile .starlight-toc__link[aria-current='true'],
   .starlight-toc__list--mobile .starlight-toc__link[aria-current='true']:hover,
@@ -111,7 +115,7 @@ const { toc, depth = 0, isMobile = false } = Astro.props;
     color: var(--sl-color-white);
     background-color: unset;
   }
-  
+
   .starlight-toc__list--mobile .starlight-toc__link.active::after,
   .starlight-toc__list--mobile .starlight-toc__link[aria-current='true']::after {
     content: '';

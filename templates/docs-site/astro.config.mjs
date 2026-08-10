@@ -13,5 +13,4 @@ const fallbackSite = 'https://libx.dev';
 export default defineDocsConfig({
   site: projectConfig.paths.siteUrl ?? fallbackSite,
   base: projectConfig.paths.baseUrl,
-  rootDir: __dirname,
 });

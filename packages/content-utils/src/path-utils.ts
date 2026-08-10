@@ -41,8 +41,7 @@ export function buildDocumentPath(
   const cleanedSegments = relativeSegments
     .map(cleanSegment)
     .filter((segment) => segment.length > 0);
-  const baseSegments =
-    pathPattern === 'locale-first' ? [lang, version] : [version, lang];
+  const baseSegments = pathPattern === 'locale-first' ? [lang, version] : [version, lang];
 
   return `/${[...baseSegments, ...cleanedSegments].map(cleanSegment).join('/')}`;
 }

@@ -6,12 +6,7 @@ interface Props {
   [key: string]: unknown;
 }
 
-const {
-  label,
-  icon,
-  class: className = '',
-  ...attrs
-} = Astro.props;
+const { label, icon, class: className = '', ...attrs } = Astro.props;
 ---
 
 <docs-tab-item data-label={label} data-icon={icon} class:list={['tab-item', className]} {...attrs}>

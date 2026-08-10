@@ -8,10 +8,13 @@
 import fs from 'fs';
 import path from 'path';
 import readline from 'readline';
+import { randomUUID } from 'node:crypto';
 import {
   loadProjectConfig,
-  saveProjectConfig
+  resolveProjectConfigFile,
+  serializeProjectConfig,
 } from './document-utils.js';
+import { commitPreparedPathsAtomically } from './atomic-paths.js';
 import * as logger from './logger.js';
 
 logger.useUnifiedConsole();
@@ -27,6 +30,7 @@ function showUsage(exitCode = 0) {
   logger.info('主なオプション');
   logger.detail('--interactive: 対話形式で追加内容を決定します');
   logger.detail('--no-copy: 既存バージョンのコンテンツをコピーしません');
+  logger.detail('--dry-run: 変更予定を表示し、ファイルを書き換えません');
   logger.detail('--help: このヘルプを表示します');
   logger.blank();
   logger.info('主な処理内容');
@@ -56,70 +60,58 @@ function parseArguments() {
   const [projectName, version, ...rest] = args;
   const isInteractive = rest.includes('--interactive');
   const noCopy = rest.includes('--no-copy');
+  const dryRun = rest.includes('--dry-run');
 
-  return { projectName, version, isInteractive, noCopy };
+  return { projectName, version, isInteractive, noCopy, dryRun };
 }
 
 // バージョン形式をバリデーション
 function validateVersion(version) {
   const errors = [];
-  
+
   if (!/^v\d+(\.\d+)*$/.test(version)) {
     errors.push('バージョンはv1, v2.0, v2.1のような形式である必要があります');
   }
-  
+
   return errors;
 }
 
-// 前バージョンからコンテンツをコピー
-async function copyFromPreviousVersion(projectName, newVersion, previousVersion, supportedLangs, noCopy) {
-  if (noCopy) {
-    console.log('⏩ 前バージョンからのコピーをスキップしました');
-    return;
+function prepareVersionContent({
+  projectName,
+  newVersion,
+  previousVersion,
+  supportedLangs,
+  copyFromPrevious,
+}) {
+  const docsPath = path.join(process.cwd(), 'apps', projectName, 'src', 'content', 'docs');
+  const targetPath = path.join(docsPath, newVersion);
+  if (fs.existsSync(targetPath)) {
+    throw new Error(`コンテンツディレクトリが既に存在します: ${targetPath}`);
   }
 
-  console.log(`📋 ${previousVersion} から ${newVersion} にコンテンツをコピーしています...`);
-  
-  const projectPath = path.join(process.cwd(), 'apps', projectName);
-  
-  for (const lang of supportedLangs) {
-    const prevContentDir = path.join(projectPath, 'src', 'content', 'docs', previousVersion, lang);
-    const newContentDir = path.join(projectPath, 'src', 'content', 'docs', newVersion, lang);
-    
-    if (fs.existsSync(prevContentDir)) {
-      try {
-        // ディレクトリを作成
-        fs.mkdirSync(newContentDir, { recursive: true });
-        
-        // ファイルを再帰的にコピー
-        await copyDirectoryRecursive(prevContentDir, newContentDir);
+  const preparedPath = fs.mkdtempSync(path.join(docsPath, `.${newVersion}-prepared-`));
+  try {
+    for (const lang of supportedLangs) {
+      const preparedLanguagePath = path.join(preparedPath, lang);
+      const previousLanguagePath = previousVersion
+        ? path.join(docsPath, previousVersion, lang)
+        : null;
+
+      if (copyFromPrevious && previousLanguagePath && fs.existsSync(previousLanguagePath)) {
+        fs.cpSync(previousLanguagePath, preparedLanguagePath, { recursive: true });
         console.log(`  ✅ ${lang}: ${previousVersion} → ${newVersion}`);
-      } catch (error) {
-        console.warn(`  ⚠️  ${lang}: コピー中にエラーが発生しました - ${error.message}`);
+      } else {
+        fs.mkdirSync(preparedLanguagePath, { recursive: true });
+        const reason = copyFromPrevious
+          ? `${previousVersion} が存在しないため空で作成`
+          : '空で作成';
+        console.log(`  ℹ️  ${lang}: ${reason}`);
       }
-    } else {
-      console.log(`  ⚠️  ${lang}: ${previousVersion} が存在しません`);
-      // 空のディレクトリを作成
-      fs.mkdirSync(newContentDir, { recursive: true });
     }
-  }
-}
-
-// ディレクトリを再帰的にコピー
-async function copyDirectoryRecursive(src, dest) {
-  const entries = fs.readdirSync(src, { withFileTypes: true });
-  
-  fs.mkdirSync(dest, { recursive: true });
-  
-  for (const entry of entries) {
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-    
-    if (entry.isDirectory()) {
-      await copyDirectoryRecursive(srcPath, destPath);
-    } else {
-      fs.copyFileSync(srcPath, destPath);
-    }
+    return { preparedPath, targetPath };
+  } catch (error) {
+    fs.rmSync(preparedPath, { recursive: true, force: true });
+    throw error;
   }
 }
 
@@ -127,7 +119,7 @@ async function copyDirectoryRecursive(src, dest) {
 async function runInteractiveMode(projectName, version, config) {
   const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
   });
 
   const ask = (question) => new Promise((resolve) => rl.question(question, resolve));
@@ -145,16 +137,17 @@ async function runInteractiveMode(projectName, version, config) {
 
     // バージョン名の入力
     const defaultName = `Version ${version.replace('v', '')}`;
-    const versionName = await ask(`\nバージョンの表示名を入力してください (${defaultName}): `) || defaultName;
+    const versionName =
+      (await ask(`\nバージョンの表示名を入力してください (${defaultName}): `)) || defaultName;
 
     // 前バージョンからのコピー確認
-    const latestVersion = config.versioning.versions.find(v => v.isLatest);
+    const latestVersion = config.versioning.versions.find((v) => v.isLatest);
     let copyFromPrevious = false;
-    
+
     if (latestVersion) {
       console.log(`\n📋 前バージョンからのコピー:`);
       console.log(`前バージョン: ${latestVersion.id} (${latestVersion.name})`);
-      
+
       const copyChoice = await ask('前バージョンからドキュメントをコピーしますか？ (Y/n): ');
       copyFromPrevious = copyChoice.toLowerCase() !== 'n' && copyChoice.toLowerCase() !== 'no';
     }
@@ -165,16 +158,15 @@ async function runInteractiveMode(projectName, version, config) {
     console.log(`バージョン名: ${versionName}`);
     console.log(`前バージョンコピー: ${copyFromPrevious ? 'はい' : 'いいえ'}`);
     console.log(`対象言語: ${config.language.supported.join(', ')}`);
-    
+
     const confirm = await ask('\n作成しますか？ (Y/n): ');
-    
+
     if (confirm.toLowerCase() === 'n' || confirm.toLowerCase() === 'no') {
       console.log('キャンセルされました');
       process.exit(0);
     }
-    
+
     return { versionName, copyFromPrevious };
-    
   } finally {
     rl.close();
   }
@@ -184,7 +176,7 @@ async function runInteractiveMode(projectName, version, config) {
 async function main() {
   try {
     const args = parseArguments();
-    
+
     console.log(`\n🚀 バージョン作成ツール`);
     console.log(`プロジェクト: ${args.projectName}`);
     console.log(`新バージョン: ${args.version}`);
@@ -193,7 +185,7 @@ async function main() {
     const validationErrors = validateVersion(args.version);
     if (validationErrors.length > 0) {
       console.error('❌ バリデーションエラー:');
-      validationErrors.forEach(error => console.error(`  - ${error}`));
+      validationErrors.forEach((error) => console.error(`  - ${error}`));
       process.exit(1);
     }
 
@@ -202,7 +194,7 @@ async function main() {
     const config = loadProjectConfig(args.projectName);
 
     // 既存バージョンとの重複チェック
-    const existingVersions = config.versioning.versions.map(v => v.id);
+    const existingVersions = config.versioning.versions.map((v) => v.id);
     if (existingVersions.includes(args.version)) {
       console.error(`❌ バージョン "${args.version}" は既に存在します`);
       console.log('既存のバージョン:', existingVersions.join(', '));
@@ -221,9 +213,26 @@ async function main() {
       copyFromPrevious = !args.noCopy;
     }
 
+    const previousVersion = config.versioning.versions
+      .filter((version) => version.id !== args.version)
+      .sort((left, right) => new Date(right.date) - new Date(left.date))[0];
+
+    console.log('\n📄 変更予定:');
+    console.log(`  project.config.jsonc: ${args.version} を最新バージョンとして追加`);
+    console.log(`  コンテンツ: src/content/docs/${args.version}/`);
+    console.log(`  対象言語: ${config.language.supported.join(', ')}`);
+    console.log(
+      `  コピー元: ${copyFromPrevious && previousVersion ? previousVersion.id : 'なし（空で作成）'}`
+    );
+
+    if (args.dryRun) {
+      console.log('\n🔍 dry-runが完了しました。ファイルは変更されていません。');
+      return;
+    }
+
     // 既存のバージョンをすべて非最新に設定
-    console.log('\n📝 バージョン設定を更新しています...');
-    config.versioning.versions.forEach(version => {
+    console.log('\n📝 バージョン設定とコンテンツを準備しています...');
+    config.versioning.versions.forEach((version) => {
       version.isLatest = false;
     });
 
@@ -232,39 +241,41 @@ async function main() {
       id: args.version,
       name: versionName,
       date: new Date().toISOString(),
-      isLatest: true
+      isLatest: true,
     };
 
     config.versioning.versions.push(newVersionEntry);
 
-    // 設定ファイルを保存
-    saveProjectConfig(args.projectName, config);
-    console.log('✅ project.config.jsonc を更新しました');
+    const configPath = resolveProjectConfigFile(args.projectName);
+    const preparedConfigPath = path.join(
+      path.dirname(configPath),
+      `.${path.basename(configPath)}-prepared-${process.pid}-${randomUUID()}`
+    );
+    let preparedVersion;
 
-    // 前バージョンからコンテンツをコピー
-    const previousVersion = config.versioning.versions
-      .filter(v => v.id !== args.version)
-      .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+    try {
+      preparedVersion = prepareVersionContent({
+        projectName: args.projectName,
+        newVersion: args.version,
+        previousVersion: previousVersion?.id,
+        supportedLangs: config.language.supported,
+        copyFromPrevious,
+      });
+      fs.writeFileSync(preparedConfigPath, serializeProjectConfig(config));
 
-    if (previousVersion && copyFromPrevious) {
-      await copyFromPreviousVersion(
-        args.projectName, 
-        args.version, 
-        previousVersion.id, 
-        config.language.supported,
-        false
-      );
-    } else {
-      // 空のディレクトリ構造を作成
-      console.log('📁 空のディレクトリ構造を作成しています...');
-      const projectPath = path.join(process.cwd(), 'apps', args.projectName);
-      
-      for (const lang of config.language.supported) {
-        const contentDir = path.join(projectPath, 'src', 'content', 'docs', args.version, lang);
-        fs.mkdirSync(contentDir, { recursive: true });
-        console.log(`  ✅ ${args.version}/${lang}/`);
+      commitPreparedPathsAtomically([
+        preparedVersion,
+        { preparedPath: preparedConfigPath, targetPath: configPath },
+      ]);
+    } catch (error) {
+      if (preparedVersion?.preparedPath) {
+        fs.rmSync(preparedVersion.preparedPath, { recursive: true, force: true });
       }
+      fs.rmSync(preparedConfigPath, { force: true });
+      throw error;
     }
+
+    console.log('✅ project.config.jsonc とコンテンツを一括で更新しました');
 
     console.log('\n✅ バージョンが作成されました!');
     console.log(`📋 バージョン詳細:`);
@@ -279,7 +290,6 @@ async function main() {
     console.log('2. 開発サーバーで確認: pnpm dev');
     console.log('3. 必要に応じてcreate-document.jsでドキュメントを追加');
     console.log(`4. URL例: /ja/${args.version}/ または /en/${args.version}/`);
-
   } catch (error) {
     console.error('❌ エラーが発生しました:', error.message);
     process.exit(1);

@@ -28,16 +28,16 @@ export interface SidebarItem {
  */
 function flattenSidebarItems(sidebarItems: SidebarItem[]): Array<{ title: string; href: string }> {
   const flatItems: Array<{ title: string; href: string }> = [];
-  
+
   for (const section of sidebarItems) {
     for (const item of section.items) {
       flatItems.push({
         title: item.title,
-        href: item.href
+        href: item.href,
       });
     }
   }
-  
+
   return flatItems;
 }
 
@@ -86,53 +86,56 @@ export function generatePagination(
 ): PaginationInfo {
   // サイドバー項目をフラット化
   const flatItems = flattenSidebarItems(sidebarItems);
-  
+
   // 現在のページのスラッグを正規化
   const normalizedCurrentSlug = normalizeCurrentSlug(currentSlug, baseUrl);
-  
+
   // 現在のページのインデックスを見つける
   let currentIndex = -1;
   for (let i = 0; i < flatItems.length; i++) {
     const itemPath = normalizeUrl(flatItems[i].href);
     const currentPath = normalizeUrl(normalizedCurrentSlug);
-    
+
     // ファイル名の番号接頭辞を考慮した比較
     const itemPathNormalized = itemPath.replace(/\/\d+-([^/]+)$/, '/$1');
     const currentPathNormalized = currentPath.replace(/\/\d+-([^/]+)$/, '/$1');
-    
+
     if (itemPath === currentPath || itemPathNormalized === currentPathNormalized) {
       currentIndex = i;
       break;
     }
   }
-  
+
   // 現在のページが見つからない場合は空のページネーション情報を返す
   if (currentIndex === -1) {
     console.warn(`[generatePagination] Current page not found in sidebar: ${currentSlug}`);
-    console.warn(`[generatePagination] Available pages:`, flatItems.map(item => normalizeUrl(item.href)));
+    console.warn(
+      `[generatePagination] Available pages:`,
+      flatItems.map((item) => normalizeUrl(item.href))
+    );
     return {};
   }
-  
+
   const result: PaginationInfo = {};
-  
+
   // 前のページがある場合
   if (currentIndex > 0) {
     const prevItem = flatItems[currentIndex - 1];
     result.prev = {
       title: prevItem.title,
-      url: prevItem.href
+      url: prevItem.href,
     };
   }
-  
+
   // 次のページがある場合
   if (currentIndex < flatItems.length - 1) {
     const nextItem = flatItems[currentIndex + 1];
     result.next = {
       title: nextItem.title,
-      url: nextItem.href
+      url: nextItem.href,
     };
   }
-  
+
   return result;
 }
 
@@ -151,7 +154,7 @@ export function mergePagination(
 ): PaginationInfo {
   return {
     prev: manualPrev || autoPagination.prev,
-    next: manualNext || autoPagination.next
+    next: manualNext || autoPagination.next,
   };
 }
 

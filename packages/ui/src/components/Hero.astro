@@ -18,30 +18,41 @@ const { title, tagline, image, actions = [] } = Astro.props;
 ---
 
 <div class="hero">
-  {image && (
-    <div class="hero-image">
-      <img src={image.src} alt={image.alt} width="400" height="400" loading="eager" decoding="async" />
-    </div>
-  )}
+  {
+    image && (
+      <div class="hero-image">
+        <img
+          src={image.src}
+          alt={image.alt}
+          width="400"
+          height="400"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+    )
+  }
   <div class="hero-content">
     <div class="hero-text">
       <h1 id="page-title" set:html={title} />
       {tagline && <div class="hero-tagline" set:html={tagline} />}
     </div>
-    {actions.length > 0 && (
-      <div class="hero-actions">
-        {actions.map(({ text, link, variant = 'primary', icon }) => (
-          <a href={link} class={`hero-action hero-action-${variant}`}>
-            <span>{text}</span>
-            {icon && (
-              <span class="hero-action-icon" aria-hidden="true">
-                <span class="icon">{icon}</span>
-              </span>
-            )}
-          </a>
-        ))}
-      </div>
-    )}
+    {
+      actions.length > 0 && (
+        <div class="hero-actions">
+          {actions.map(({ text, link, variant = 'primary', icon }) => (
+            <a href={link} class={`hero-action hero-action-${variant}`}>
+              <span>{text}</span>
+              {icon && (
+                <span class="hero-action-icon" aria-hidden="true">
+                  <span class="icon">{icon}</span>
+                </span>
+              )}
+            </a>
+          ))}
+        </div>
+      )
+    }
   </div>
 </div>
 

@@ -6,7 +6,7 @@
 const baseConsole = {
   log: console.log.bind(console),
   warn: console.warn.bind(console),
-  error: console.error.bind(console)
+  error: console.error.bind(console),
 };
 
 const LABELS = {
@@ -15,7 +15,7 @@ const LABELS = {
   warn: '注意',
   error: 'エラー',
   step: '作業',
-  dryRun: '試行'
+  dryRun: '試行',
 };
 
 function stringify(value) {
@@ -120,9 +120,9 @@ const EMOJI_LEVEL_MAP = {
   '📊': 'info',
   '🔧': 'step',
   '🔍': 'info',
-  'ℹ️': 'info',
+  ℹ️: 'info',
   '🌐': 'info',
-  '▶': 'info'
+  '▶': 'info',
 };
 
 const EMOJI_KEYS = Object.keys(EMOJI_LEVEL_MAP).sort((a, b) => b.length - a.length);
@@ -165,7 +165,7 @@ function normalizeLine(line, defaultLevel) {
     level,
     text: working,
     isDetail,
-    leadingSpaces
+    leadingSpaces,
   };
 }
 
@@ -249,5 +249,5 @@ export default {
   detail,
   list,
   hint,
-  useUnifiedConsole
+  useUnifiedConsole,
 };

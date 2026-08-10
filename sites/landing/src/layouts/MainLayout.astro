@@ -1,5 +1,5 @@
 ---
-import { Footer, ThemeToggle, LanguageSelector } from '@docs/ui/components';
+import { DocsHeaderFrame, Footer, ThemeToggle, LanguageSelector } from '@docs/ui/components';
 import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 import '../styles/global.css';
@@ -19,7 +19,7 @@ const LANGUAGE_DISPLAY_NAMES: Record<string, string> = {
   id: 'Bahasa Indonesia',
   tr: 'Türkçe',
   hi: 'हिन्दी',
-  vi: 'Tiếng Việt'
+  vi: 'Tiếng Việt',
 };
 
 interface Props {
@@ -31,12 +31,7 @@ interface Props {
   baseUrl: string;
 }
 
-const {
-  title,
-  lang,
-  supportedLangs,
-  baseUrl,
-} = Astro.props;
+const { title, lang, supportedLangs, baseUrl } = Astro.props;
 const dir = getLocaleDirection(lang);
 
 const normalizedSupportedLangs =
@@ -86,36 +81,36 @@ const currentLangPath =
 
 const htmlAttributes = {
   'data-theme': 'dark',
-  'data-dir': dir
+  'data-dir': dir,
 };
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang} dir={dir} {...htmlAttributes}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={faviconPath} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- ダークモードフラッシュ防止スクリプト -->
     <script is:inline>
-      (function() {
+      (function () {
         const STORAGE_KEY = 'theme-preference';
-        
+
         function getThemePreference() {
           if (typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY)) {
             return localStorage.getItem(STORAGE_KEY);
           }
           return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
-        
+
         const theme = getThemePreference();
         if (theme === 'dark') {
           document.documentElement.classList.add('dark');
         }
       })();
     </script>
-    
+
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Documentation site built with Astro" />
     <title>{title} | Libx</title>
@@ -124,39 +119,30 @@ const htmlAttributes = {
   </head>
   <body dir={dir}>
     <div class="page">
-      <header class="header">
-        <div class="header-container">
-          <div class="header-content">
-
-            <div class="title-wrapper">
-              <a href={currentLangPath} class="site-title">Libx</a>
-            </div>
-
-            <div class="print:hidden right-group">
-              <div class="language-selector-container" aria-label="言語選択">
-                <LanguageSelector
-                  currentLang={lang}
-                  langPaths={languagePaths}
-                  footerLink={translationFooterLink}
-                  dir={dir}
-                />
-              </div>
-              <div class="theme-toggle-container">
-                <ThemeToggle />
-              </div>
-            </div>
-            
+      <DocsHeaderFrame dir={dir}>
+        <a slot="title" href={currentLangPath} class="site-title">Libx</a>
+        <Fragment slot="actions">
+          <div class="language-selector-container">
+            <LanguageSelector
+              currentLang={lang}
+              langPaths={languagePaths}
+              footerLink={translationFooterLink}
+              dir={dir}
+            />
           </div>
-        </div>
-      </header>
-      
+          <div class="theme-toggle-container">
+            <ThemeToggle lang={lang} />
+          </div>
+        </Fragment>
+      </DocsHeaderFrame>
+
       <div class="main-frame">
         <main id="main-content">
           <slot />
         </main>
       </div>
-      
-      <Footer 
+
+      <Footer
         showContribute={true}
         contributeUrl="https://github.com/libx-dev/libx-dev"
         lang={lang}

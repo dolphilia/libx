@@ -2,7 +2,7 @@
 
 文書ステータス: 正式  
 作成日: 2026-08-11  
-参照資料: [libx コンセプト・方針・方向性 調査メモ](./LIBX_CONCEPT_AND_DIRECTION_RESEARCH.md)
+参照資料: [libx コンセプト・方針・方向性 調査メモ](../notes/LIBX_CONCEPT_AND_DIRECTION_RESEARCH.md)
 
 ## 1. この文書の目的
 

@@ -26,15 +26,19 @@ const docsSchema = z.object({
   // 順序（オプション）
   order: z.number().optional(),
   // 前のページへのリンク（オプション）
-  prev: z.object({
-    text: z.string(),
-    link: z.string()
-  }).optional(),
+  prev: z
+    .object({
+      text: z.string(),
+      link: z.string(),
+    })
+    .optional(),
   // 次のページへのリンク（オプション）
-  next: z.object({
-    text: z.string(),
-    link: z.string()
-  }).optional(),
+  next: z
+    .object({
+      text: z.string(),
+      link: z.string(),
+    })
+    .optional(),
   // ライセンス情報（オプション、指定しない場合はプロジェクトデフォルト使用）
   licenseSource: z.string().optional(),
   // カスタム帰属表示（オプション）
@@ -46,7 +50,7 @@ const docsSchema = z.object({
 // コレクションの定義
 export const collections = {
   // docsコレクション
-  'docs': defineCollection({
-    schema: docsSchema
+  docs: defineCollection({
+    schema: docsSchema,
   }),
 };

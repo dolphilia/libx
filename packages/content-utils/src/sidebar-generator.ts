@@ -87,10 +87,10 @@ async function getFallbackSidebar(
       items: [
         {
           title: await translateCategory('getting_started', lang, options),
-          href: `${baseUrl}${buildDocumentPath(version, lang, ['01-guide', '01-getting-started'], options)}`
-        }
-      ]
-    }
+          href: `${baseUrl}${buildDocumentPath(version, lang, ['01-guide', '01-getting-started'], options)}`,
+        },
+      ],
+    },
   ];
 }
 
@@ -132,13 +132,16 @@ export async function getAutoSidebar(
   })) as CollectionEntry<'docs'>[];
 
   // カテゴリごとにドキュメントを整理
-  const categories: Record<string, {
-    docs: CollectionEntry<'docs'>[];
-    order: number;
-    title?: string;
-  }> = {};
+  const categories: Record<
+    string,
+    {
+      docs: CollectionEntry<'docs'>[];
+      order: number;
+      title?: string;
+    }
+  > = {};
 
-  docs.forEach(doc => {
+  docs.forEach((doc) => {
     // パスからカテゴリを取得
     const parts = doc.slug.split('/');
     const pathCategory = parts.length >= 3 ? parts[2] : 'uncategorized';
@@ -155,7 +158,7 @@ export async function getAutoSidebar(
       categories[category] = {
         docs: [],
         order,
-        title: undefined
+        title: undefined,
       };
     }
 
@@ -168,7 +171,7 @@ export async function getAutoSidebar(
   });
 
   // カテゴリごとにドキュメントをファイル名の番号順で並べ替え
-  Object.keys(categories).forEach(category => {
+  Object.keys(categories).forEach((category) => {
     categories[category].docs.sort((a, b) => {
       // ファイル名から順序を抽出
       const filenameA = a.slug.split('/').pop() || '';
@@ -187,27 +190,29 @@ export async function getAutoSidebar(
   });
 
   // サイドバー項目の生成
-  return Promise.all(sortedCategories.map(async ([category, { docs }]) => {
-    // カテゴリ名を翻訳
-    const title = await translateCategory(category, lang, options);
+  return Promise.all(
+    sortedCategories.map(async ([category, { docs }]) => {
+      // カテゴリ名を翻訳
+      const title = await translateCategory(category, lang, options);
 
-    return {
-      title,
-      items: docs.map(doc => {
-        // 実際のファイルパスからURLを構築
-        const filePathParts = doc.id.split('/');
-        const fileName = filePathParts[filePathParts.length - 1].replace(/\.mdx?$/, ''); // .mdx拡張子を削除
-        const pathWithoutFile = filePathParts.slice(2, -1); // 言語、バージョンを除き、ファイル名も除く
+      return {
+        title,
+        items: docs.map((doc) => {
+          // 実際のファイルパスからURLを構築
+          const filePathParts = doc.id.split('/');
+          const fileName = filePathParts[filePathParts.length - 1].replace(/\.mdx?$/, ''); // .mdx拡張子を削除
+          const pathWithoutFile = filePathParts.slice(2, -1); // 言語、バージョンを除き、ファイル名も除く
 
-        const finalPath = [...pathWithoutFile, fileName].join('/');
+          const finalPath = [...pathWithoutFile, fileName].join('/');
 
-        return {
-          title: doc.data.title,
-          href: `${baseUrl}${buildDocumentPath(version, lang, finalPath, options)}`
-        };
-      })
-    };
-  }));
+          return {
+            title: doc.data.title,
+            href: `${baseUrl}${buildDocumentPath(version, lang, finalPath, options)}`,
+          };
+        }),
+      };
+    })
+  );
 }
 
 /**
@@ -238,7 +243,7 @@ export async function getSidebarAsync(
     // キャッシュに保存
     projectCache.set(cacheKey, {
       data,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
 
     return data;
@@ -249,7 +254,7 @@ export async function getSidebarAsync(
     // フォールバックサイドバーもキャッシュに保存
     projectCache.set(cacheKey, {
       data: fallbackSidebar,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
 
     return fallbackSidebar;

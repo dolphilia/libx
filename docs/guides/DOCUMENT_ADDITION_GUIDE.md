@@ -697,7 +697,7 @@ import { Tabs, TabItem, Card } from '@docs/ui';
 - [新しいプロジェクト作成ガイド](./NEW_PROJECT_CREATION_GUIDE.md) - 新規プロジェクトの作成方法
 - [バージョン追加ガイド](./VERSION_ADDITION_GUIDE.md) - 新しいバージョンの追加方法  
 - [言語追加ガイド](./LANGUAGE_ADDITION_GUIDE.md) - 新しい言語の追加方法
-- [プロジェクト設定リファレンス](../README.md#設定ファイル) - 設定ファイルの詳細
+- [プロジェクト設定リファレンス](../../README.md#設定ファイル) - 設定ファイルの詳細
 
 ## 🔄 更新履歴
 

@@ -8,17 +8,18 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     Promise.all([
-      caches.keys().then((cacheNames) =>
-        Promise.all(
-          cacheNames
-            .filter(
-              (cacheName) =>
-                cacheName.startsWith('sidebar-cache-') && cacheName !== CACHE_NAME
-            )
-            .map((cacheName) => caches.delete(cacheName))
-        )
-      ),
-      self.clients.claim()
+      caches
+        .keys()
+        .then((cacheNames) =>
+          Promise.all(
+            cacheNames
+              .filter(
+                (cacheName) => cacheName.startsWith('sidebar-cache-') && cacheName !== CACHE_NAME
+              )
+              .map((cacheName) => caches.delete(cacheName))
+          )
+        ),
+      self.clients.claim(),
     ])
   );
 });
@@ -53,13 +54,10 @@ async function fetchSidebar(request) {
       return cachedResponse;
     }
 
-    return new Response(
-      JSON.stringify({ error: 'Sidebar data is unavailable while offline.' }),
-      {
-        status: 503,
-        statusText: 'Service Unavailable',
-        headers: { 'Content-Type': 'application/json; charset=utf-8' }
-      }
-    );
+    return new Response(JSON.stringify({ error: 'Sidebar data is unavailable while offline.' }), {
+      status: 503,
+      statusText: 'Service Unavailable',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    });
   }
 }

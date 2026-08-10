@@ -13,12 +13,48 @@ if (!id) {
 ---
 
 <div class={`heading-wrapper level-h${level}`}>
-  {level === 1 && <h1 id={id} class={className}><slot /></h1>}
-  {level === 2 && <h2 id={id} class={className}><slot /></h2>}
-  {level === 3 && <h3 id={id} class={className}><slot /></h3>}
-  {level === 4 && <h4 id={id} class={className}><slot /></h4>}
-  {level === 5 && <h5 id={id} class={className}><slot /></h5>}
-  {level === 6 && <h6 id={id} class={className}><slot /></h6>}
+  {
+    level === 1 && (
+      <h1 id={id} class={className}>
+        <slot />
+      </h1>
+    )
+  }
+  {
+    level === 2 && (
+      <h2 id={id} class={className}>
+        <slot />
+      </h2>
+    )
+  }
+  {
+    level === 3 && (
+      <h3 id={id} class={className}>
+        <slot />
+      </h3>
+    )
+  }
+  {
+    level === 4 && (
+      <h4 id={id} class={className}>
+        <slot />
+      </h4>
+    )
+  }
+  {
+    level === 5 && (
+      <h5 id={id} class={className}>
+        <slot />
+      </h5>
+    )
+  }
+  {
+    level === 6 && (
+      <h6 id={id} class={className}>
+        <slot />
+      </h6>
+    )
+  }
   <a class="anchor-link" href={`#${id}`}>
     <span aria-hidden="true" class="anchor-icon">
       <svg width="16" height="16" viewBox="0 0 24 24">
@@ -81,15 +117,19 @@ if (!id) {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
+    inset-inline-start: 0;
     transform: translateX(-100%);
-    padding-right: 4px;
+    padding-inline-end: 4px;
     display: flex;
     align-items: center;
     opacity: 0;
     text-decoration: none;
     color: var(--color-text-light, #64748b);
     transition: opacity 0.2s ease;
+  }
+
+  :global([dir='rtl']) .anchor-link {
+    transform: translateX(100%);
   }
 
   .heading-wrapper:hover .anchor-link,
@@ -119,7 +159,7 @@ if (!id) {
     .anchor-link {
       transform: none;
       position: relative;
-      margin-left: 0.5rem;
+      margin-inline-start: 0.5rem;
     }
   }
 </style>
