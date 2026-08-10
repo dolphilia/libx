@@ -4,6 +4,7 @@
  * 改善: スティッキーヘッダー、モバイルメニューのアニメーション、アクティブ状態の視覚的強調
  */
 import Icon from './icons/Icon.astro';
+import type { IconName } from './icons/Icons';
 import { ThemeToggle } from './index';
 
 interface NavItem {
@@ -16,13 +17,13 @@ interface NavItem {
   /** 現在のページかどうか */
   isCurrent?: boolean;
   /** アイコン名（オプション） */
-  icon?: string;
+  icon?: IconName;
 }
 
 interface SocialLink {
   label: string;
   href: string;
-  icon: string;
+  icon: IconName;
 }
 
 interface Props {
@@ -80,7 +81,7 @@ function isCurrentPage(item: NavItem): boolean {
               class:list={['nav-item', { active: isCurrentPage(item) }]}
               aria-current={isCurrentPage(item) ? 'page' : undefined}
             >
-              {item.icon && <Icon name={item.icon as any} />}
+              {item.icon && <Icon name={item.icon} />}
               <span>{item.title}</span>
             </a>
           ))}
@@ -94,7 +95,7 @@ function isCurrentPage(item: NavItem): boolean {
             <div class="social-links">
               {socialLinks.map(({ label, href, icon }) => (
                 <a href={href} rel="me" class="social-link" aria-label={label} title={label}>
-                  <Icon name={icon as any} />
+                  <Icon name={icon} />
                 </a>
               ))}
             </div>
@@ -132,7 +133,7 @@ function isCurrentPage(item: NavItem): boolean {
             class:list={['mobile-nav-item', { active: isCurrentPage(item) }]}
             aria-current={isCurrentPage(item) ? 'page' : undefined}
           >
-            {item.icon && <Icon name={item.icon as any} />}
+            {item.icon && <Icon name={item.icon} />}
             <span>{item.title}</span>
           </a>
         </li>
@@ -143,7 +144,7 @@ function isCurrentPage(item: NavItem): boolean {
       <div class="mobile-social-links">
         {socialLinks.map(({ label, href, icon }) => (
           <a href={href} rel="me" class="mobile-social-link" aria-label={label} title={label}>
-            <Icon name={icon as any} />
+            <Icon name={icon} />
             <span>{label}</span>
           </a>
         ))}

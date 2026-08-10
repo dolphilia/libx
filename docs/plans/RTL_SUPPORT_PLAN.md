@@ -22,10 +22,10 @@
 3. `packages/project-config/src/config-loader.ts` に `resolveLocaleDirection(lang)` を追加し、設定から `lang` を扱う箇所で利用できるようにする。
 
 ### 2. レイアウトでの `dir` 伝播
-1. `apps/project-template/src/layouts/MainLayout.astro`
+1. `templates/docs-site/src/layouts/MainLayout.astro`
    - `const dir = getLocaleDirection(lang);`
    - `<html lang={lang} dir={dir} data-dir={dir}>` とし、`LanguageSelector`/`ThemeToggle`/`Footer` へ `dir` を渡せるよう Props に追加。
-2. `apps/project-template/src/layouts/DocLayout.astro`
+2. `templates/docs-site/src/layouts/DocLayout.astro`
    - `dir` を計算して `Sidebar`, `TableOfContents`, `Pagination` (slot) に渡す。
    - `<article>` / `.content-panel` にも `dir` 属性を設定。
 3. `sites/landing/src/layouts/MainLayout.astro`
@@ -62,10 +62,10 @@
 6. その他左右を使っているコンポーネント（`Alert`, `Banner`, `Button`, `AnchorHeading`, `ProjectCard`, `TableOfContents`）も同様に論理プロパティ化し、`dir` プロップを必要に応じ追加。
 
 ### 5. テストページと検証
-1. `apps/project-template/src/content/docs/v1/ar/01-guide` に既存英語ページをコピーし、`title`/`description` を簡易翻訳して `dir='rtl'` のレンダリング確認用データを用意。
-2. `pnpm --filter=apps-project-template dev` で `http://localhost:4321/docs/project-template/v1/ar/...` を確認。
+1. `templates/docs-site/src/content/docs/v1/ar/01-guide` に既存英語ページをコピーし、`title`/`description` を簡易翻訳して `dir='rtl'` のレンダリング確認用データを用意。
+2. `pnpm --filter=template-docs-site dev` で `http://localhost:4321/docs/docs-site/v1/ar/...` を確認。
 3. ランディングは `pnpm --filter=sites-landing dev` で `http://localhost:4321/ar/` を確認。
-4. `pnpm build:selective --projects=project-template` および `pnpm --filter=sites-landing build` を実行し、ビルド時に `dir` による差分がないか確認。
+4. `pnpm build:template` および `pnpm --filter=sites-landing build` を実行し、ビルド時に `dir` による差分がないか確認。
 5. 手動チェックリスト
    - サイドバー展開/折りたたみ時のアイコン回転方向
    - ページネーションの Prev/Next が視覚・機能ともに逆転している
@@ -85,7 +85,6 @@
 
 ## 成果物
 - 共通パッケージの RTL 対応コード
-- `apps/project-template` での検証用アラビア語ページ
+- `templates/docs-site` での検証用アラビア語ページ
 - `docs` 配下の更新（本計画書＋手順メモ）
 - 検証ログ（テスト結果を `docs/notes` へ記録予定）
-

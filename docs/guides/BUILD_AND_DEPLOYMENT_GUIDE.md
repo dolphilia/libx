@@ -30,8 +30,8 @@ pnpm build:selective --projects=sample-docs
 # 複数のプロジェクトをビルド
 pnpm build:selective --projects=sample-docs,test-verification
 
-# テンプレートプロジェクトを単体ビルド
-pnpm build:selective --projects=project-template
+# 標準テンプレートを検証ビルド
+pnpm build:template
 
 # ローカル開発用選択的ビルド
 pnpm build:selective:local --projects=sample-docs
@@ -40,7 +40,7 @@ pnpm build:selective:local --projects=sample-docs
 pnpm build:sidebar-selective --projects=sample-docs
 
 # テンプレートのサイドバーのみ更新
-pnpm build:sidebar-selective --projects=project-template
+pnpm build:sidebar-selective --templates=docs-site
 ```
 
 ### ローカル開発用ビルド
@@ -62,6 +62,7 @@ pnpm dev
 | `pnpm deploy` | ビルド → デプロイの統合実行 | 直接デプロイ時 |
 | `pnpm build:local` | ローカル用ビルド | 開発・テスト時 |
 | `pnpm build:selective --projects=sample-docs` | 選択的ビルド | 特定プロジェクトのみ |
+| `pnpm build:template` | 標準テンプレートの検証ビルド | テンプレート変更時 |
 | `pnpm build:sidebar` | サイドバー生成のみ | サイドバー更新時 |
 
 ## 📋 前提条件
@@ -110,9 +111,9 @@ graph TB
 
 システムは`apps/`ディレクトリを自動スキャンし：
 
-- **含まれるプロジェクト**: `sample-docs`, `test-verification` などの本番ドキュメント。選択的ビルド（`build:selective` / `build:sidebar-selective`）では `project-template` を指定してテンプレートの動作確認も可能です。
-- **除外されるプロジェクト**: `project-template`（sidebar系スクリプトでは除外）
-- **特別扱い**: `sites/landing` はルート（`/`）に配置、他は`/docs/{project-name}/`に配置。`project-template` は統合ビルドでは除外されますが、テンプレート検証用途で個別ビルドできます。
+- **配信対象**: `apps/` にある `sample-docs`, `test-verification` などのドキュメントサイト。
+- **テンプレート**: `templates/docs-site` は通常ビルドと統合配信の対象外で、`pnpm build:template` から独立して検証します。
+- **特別扱い**: `sites/landing` はルート（`/`）に配置し、`apps/` のサイトは `/docs/{project-name}/` に配置します。
 
 ## 🔧 詳細ビルドプロセス
 
@@ -494,11 +495,10 @@ if (app.name === 'special-project') {
 }
 ```
 
-#### 除外プロジェクトの追加
+#### 配信しないサイトの扱い
 
 ```javascript
-// build-integrated.jsで新しい除外ルールを追加
-const excludedProjects = ['project-template', 'experimental-project'];
+配信対象でない再利用用サイトは `apps/` に置かず、責務に応じて `templates/` などへ分離します。名前による除外リストは追加しません。
 ```
 
 ### CI/CD統合

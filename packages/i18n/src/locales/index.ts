@@ -17,6 +17,8 @@ import id from './id.json';
 import tr from './tr.json';
 import hi from './hi.json';
 import vi from './vi.json';
+import type { LocaleKey } from '../locale-types';
+export type { LocaleKey } from '../locale-types';
 
 export type TextDirection = 'ltr' | 'rtl';
 
@@ -38,7 +40,6 @@ export const locales = {
   vi
 };
 
-export type LocaleKey = keyof typeof locales;
 export type SupportedLocales = Record<LocaleKey, Record<string, string>>;
 
 export const defaultLocale: LocaleKey = 'en';

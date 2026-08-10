@@ -11,8 +11,6 @@ import { buildDocumentPath } from '@docs/content-utils';
 type DocEntry = CollectionEntry<'docs'>;
 
 export async function getStaticPaths() {
-  console.log('[Index getStaticPaths] Starting...');
-  
   // getStaticPaths内で設定を初期化
   await initializeConfig();
   const projectConfig = await getLegacyProjectConfig();
@@ -39,26 +37,20 @@ export async function getStaticPaths() {
     for (const version of allVersions) {
       const key = `${version}:${lang}`;
       if (availableCombinations.has(key)) {
-        console.log(`[Index getStaticPaths] Adding path: version=${version}, lang=${lang}`);
         paths.push({
           params: { version, lang },
           props: { version, lang }
         });
-      } else {
-        console.log(`[Index getStaticPaths] Skipping unavailable combination: version=${version}, lang=${lang}`);
       }
     }
   }
   
-  console.log(`[Index getStaticPaths] Generated ${paths.length} index paths`);
   return paths;
 }
 
 const { version: versionParam, lang: langParam } = Astro.props;
 const version = versionParam || 'v1';
 const lang = (langParam || 'en') as LocaleKey;
-
-console.log(`[Index Render] Processing version=${version}, lang=${lang}`);
 
 // 設定を再度初期化（プロパティセクション）
 await initializeConfig();
@@ -69,14 +61,8 @@ const baseUrl = projectConfig.baseUrl;
 
 // 指定されたバージョンと言語のドキュメントを取得
 const docs = await getCollection('docs', (entry: DocEntry) => {
-  const isMatch = entry.slug.startsWith(`${version}/${lang}/`);
-  if (isMatch) {
-    console.log(`[Index Render] Found matching doc: ${entry.slug}`);
-  }
-  return isMatch;
+  return entry.slug.startsWith(`${version}/${lang}/`);
 });
-
-console.log(`[Index Render] Found ${docs.length} documents for ${version}/${lang}`);
 
 // カテゴリごとにドキュメントを整理
 const categories = docs.reduce((acc: Record<string, DocEntry[]>, doc: DocEntry) => {
@@ -90,7 +76,6 @@ const categories = docs.reduce((acc: Record<string, DocEntry[]>, doc: DocEntry) 
       acc[categoryName] = [];
     }
     acc[categoryName].push(doc);
-    console.log(`[Index Render] Added ${doc.slug} to category ${categoryName}`);
   }
   return acc;
 }, {});

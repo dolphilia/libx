@@ -33,7 +33,6 @@ const rootDir = path.resolve(__dirname, '..');
 // 基本設定
 const config = {
   appsDir: path.join(rootDir, 'apps'),
-  excludedProjects: ['project-template'], // テンプレートは除外
 };
 
 /**
@@ -69,7 +68,7 @@ async function main() {
         const expectedLanguages = project.expectedLanguages ?? project.languages;
         const missingLanguages = expectedLanguages.filter(lang => !languagesForVersion.includes(lang));
         if (missingLanguages.length > 0) {
-          console.warn(`  ${version} では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ${missingLanguages.join(', ')}`);
+          console.log(`  ${version} では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ${missingLanguages.join(', ')}`);
         }
 
         for (const lang of languagesForVersion) {
@@ -109,12 +108,6 @@ async function detectProjects() {
     
     for (const dir of projectDirs) {
       const projectName = dir.name;
-      
-      // 除外プロジェクトをスキップ
-      if (config.excludedProjects.includes(projectName)) {
-        console.log(`プロジェクト ${projectName} は除外対象です。スキップします。`);
-        continue;
-      }
       
       const projectPath = path.join(config.appsDir, projectName);
       
@@ -365,9 +358,9 @@ async function generateSidebarForVersion(project, lang, version) {
         const slugParts = doc.slug.split('/').slice(2);
         let fullPath;
         if (baseUrl === '/') {
-          fullPath = `/${lang}/${version}/${slugParts.join('/')}`;
+          fullPath = `/${version}/${lang}/${slugParts.join('/')}`;
         } else {
-          fullPath = `${baseUrl}/${lang}/${version}/${slugParts.join('/')}`;
+          fullPath = `${baseUrl}/${version}/${lang}/${slugParts.join('/')}`;
         }
         return {
           title: doc.data.title,
@@ -383,38 +376,18 @@ async function generateSidebarForVersion(project, lang, version) {
  */
 async function getProjectCategoryTranslations(project) {
   try {
-    const configPath = path.join(project.path, 'src', 'config', 'project.config.ts');
-    const configContent = await fs.readFile(configPath, 'utf-8');
-    
-    // プロジェクト設定ファイルの翻訳設定読み込みを試行（新構造対応）
-    // 新しい translations 構造と古い categoryTranslations 構造の両方をサポート
-    let categoryTranslationsMatch = configContent.match(/categoryTranslations\s*:\s*\{([\s\S]*?)\n\s*\}/);
-    
-    // 新しい translations 構造からも抽出を試行
-    if (!categoryTranslationsMatch) {
-      const translationsMatch = configContent.match(/translations\s*:\s*\{([\s\S]*?)\n\s*\}/);
-      if (translationsMatch) {
-        // translations 構造から categories を抽出
-        categoryTranslationsMatch = extractCategoriesFromTranslations(translationsMatch[1]);
-      }
-    }
-    
-    if (categoryTranslationsMatch) {
-      // 最小限の翻訳設定（よく使われるものだけ）
-      const translations = {
-        en: {
-          guide: 'Guide',
-          reference: 'Reference'
-        },
-        ja: {
-          guide: 'ガイド',
-          reference: 'リファレンス'
-        }
-      };
-      return translations;
-    }
+    const configPath = path.join(project.path, 'src', 'config', 'project.config.jsonc');
+    const projectConfig = await readJsoncFileAsync(configPath);
+    return Object.fromEntries(
+      Object.entries(projectConfig.translations ?? {}).map(([lang, translation]) => [
+        lang,
+        translation.categories ?? {}
+      ])
+    );
   } catch (error) {
-    console.warn(`  プロジェクト ${project.name} の翻訳設定の読み込み中にエラー: ${error.message}`);
+    if (error.code !== 'ENOENT') {
+      console.warn(`  プロジェクト ${project.name} の翻訳設定の読み込み中にエラー: ${error.message}`);
+    }
   }
   
   return null;
@@ -467,42 +440,6 @@ async function getProjectBaseUrl(project) {
     projectSlug: configuredSlug,
     projectName: project.name
   });
-}
-
-/**
- * 新しい translations 構造から categories 部分を抽出
- */
-function extractCategoriesFromTranslations(translationsContent) {
-  try {
-    // 各言語のセクションを抽出
-    const langSections = {};
-    const langRegex = /(\w+):\s*\{([\s\S]*?)\n\s*\}/g;
-    let langMatch;
-    
-    while ((langMatch = langRegex.exec(translationsContent)) !== null) {
-      const lang = langMatch[1];
-      const langContent = langMatch[2];
-      
-      // categories オブジェクトを抽出
-      const categoriesMatch = langContent.match(/categories:\s*\{([\s\S]*?)\n\s*\}/);
-      if (categoriesMatch) {
-        langSections[lang] = categoriesMatch[1];
-      }
-    }
-    
-    // categoryTranslations と同じ形式に変換
-    if (Object.keys(langSections).length > 0) {
-      let result = '';
-      for (const [lang, content] of Object.entries(langSections)) {
-        result += `    ${lang}: {\n${content}\n    },\n`;
-      }
-      return [result]; // match オブジェクトと同じ形式で返す
-    }
-  } catch (error) {
-    console.warn('translations 構造からの categories 抽出に失敗:', error);
-  }
-  
-  return null;
 }
 
 // スクリプトの実行

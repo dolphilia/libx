@@ -8,7 +8,7 @@
  * node scripts/create-project.js api-docs "API Documentation" "API文書" --icon=code --tags=api,reference
  * 
  * このスクリプトは以下の処理を自動化します:
- * 1. テンプレートプロジェクト（project-template）のコピー
+ * 1. ドキュメントサイトテンプレート（templates/docs-site）のコピー
  * 2. 各種設定ファイルの自動更新
  * 3. 依存関係のインストール
  * 4. 動作確認テスト
@@ -38,7 +38,7 @@ function showUsage(exitCode = 1) {
   logger.detail('--description-ja=<text>: 日本語説明文（既定: display-name-ja を元に自動生成）');
   logger.detail('--icon=<name>: アイコン名（既定: file-text）');
   logger.detail('--tags=<tag1,tag2>: カンマ区切りタグ（既定: documentation）');
-  logger.detail('--template=<name>: コピー元テンプレート（既定: project-template）');
+  logger.detail('--template=<name>: コピー元テンプレート（既定: docs-site）');
   logger.detail('--skip-test: 動作確認テストをスキップします');
   logger.detail('--dry-run: 実際のファイル操作を行わず手順のみ確認します');
   logger.detail('--confirm: インタラクティブな確認をスキップします');
@@ -53,6 +53,7 @@ function showUsage(exitCode = 1) {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
+const templatesDir = path.join(rootDir, 'templates');
 const PROJECT_CONFIG_FILE = 'project.config.jsonc';
 const PROJECT_CONFIG_FALLBACK = 'project.config.json';
 const LANDING_CONFIG_FILE = 'projects.config.jsonc';
@@ -107,7 +108,7 @@ function parseArguments() {
     descriptionJa: options['description-ja'] || `${displayNameJa}のドキュメントです`,
     icon: options.icon || 'file-text',
     tags: options.tags ? options.tags.split(',').map(tag => tag.trim()) : ['documentation'],
-    template: options.template || 'project-template',
+    template: options.template || 'docs-site',
     skipTest: Boolean(options['skip-test']),
     dryRun: Boolean(options['dry-run']),
     autoConfirm: Boolean(options.confirm)
@@ -165,8 +166,8 @@ function checkProjectDuplication(projectName) {
 /**
  * テンプレートプロジェクトの存在確認
  */
-function validateTemplate(templateName) {
-  const templateDir = path.join(rootDir, 'apps', templateName);
+export function validateTemplate(templateName) {
+  const templateDir = path.join(templatesDir, templateName);
 
   if (!fs.existsSync(templateDir)) {
     return [`テンプレートプロジェクト "${templateName}" が見つかりません: ${templateDir}`];
@@ -203,6 +204,7 @@ function showProgress(step, total, message) {
 const EXCLUDE_PATTERNS = [
   'node_modules',
   'dist',
+  '.astro',
   '.env',
   '.env.local',
   '.env.development',
@@ -232,8 +234,43 @@ function shouldExclude(name, _isFile = false) {
 /**
  * テンプレートプロジェクトを新しいディレクトリにコピーする
  */
+export function copyTemplateDirectory(templateDir, targetDir) {
+  function copyDirRecursiveWithExclusion(src, dest) {
+    if (!fs.existsSync(dest)) {
+      fs.mkdirSync(dest, { recursive: true });
+    }
+
+    const entries = fs.readdirSync(src, { withFileTypes: true });
+    let copiedCount = 0;
+    let skippedCount = 0;
+
+    for (const entry of entries) {
+      const srcPath = path.join(src, entry.name);
+      const destPath = path.join(dest, entry.name);
+
+      if (shouldExclude(entry.name, entry.isFile())) {
+        skippedCount++;
+        continue;
+      }
+
+      if (entry.isDirectory()) {
+        const subResult = copyDirRecursiveWithExclusion(srcPath, destPath);
+        copiedCount += subResult.copied;
+        skippedCount += subResult.skipped;
+      } else {
+        fs.copyFileSync(srcPath, destPath);
+        copiedCount++;
+      }
+    }
+
+    return { copied: copiedCount, skipped: skippedCount };
+  }
+
+  return copyDirRecursiveWithExclusion(templateDir, targetDir);
+}
+
 function copyTemplateProject(templateName, projectName, { dryRun = false } = {}) {
-  const templateDir = path.join(rootDir, 'apps', templateName);
+  const templateDir = path.join(templatesDir, templateName);
   const targetDir = path.join(rootDir, 'apps', projectName);
 
   console.log(`  コピー元: ${templateDir}`);
@@ -244,45 +281,7 @@ function copyTemplateProject(templateName, projectName, { dryRun = false } = {})
     return targetDir;
   }
 
-  // カスタムコピー関数（除外パターンに対応）
-  function copyDirRecursiveWithExclusion(src, dest) {
-    // ディレクトリが存在しない場合は作成
-    if (!fs.existsSync(dest)) {
-      fs.mkdirSync(dest, { recursive: true });
-    }
-
-    // ディレクトリ内のファイルとサブディレクトリを取得
-    const entries = fs.readdirSync(src, { withFileTypes: true });
-    let copiedCount = 0;
-    let skippedCount = 0;
-
-    for (const entry of entries) {
-      const srcPath = path.join(src, entry.name);
-      const destPath = path.join(dest, entry.name);
-
-      // 除外判定
-      if (shouldExclude(entry.name, entry.isFile())) {
-        console.log(`    スキップ: ${entry.name}`);
-        skippedCount++;
-        continue;
-      }
-
-      if (entry.isDirectory()) {
-        // サブディレクトリの場合は再帰的にコピー
-        const subResult = copyDirRecursiveWithExclusion(srcPath, destPath);
-        copiedCount += subResult.copied;
-        skippedCount += subResult.skipped;
-      } else {
-        // ファイルの場合はコピー
-        fs.copyFileSync(srcPath, destPath);
-        copiedCount++;
-      }
-    }
-
-    return { copied: copiedCount, skipped: skippedCount };
-  }
-
-  const result = copyDirRecursiveWithExclusion(templateDir, targetDir);
+  const result = copyTemplateDirectory(templateDir, targetDir);
   console.log(`  ✅ コピー完了: ${result.copied}個のファイル/ディレクトリ`);
   if (result.skipped > 0) {
     console.log(`  ⏩ スキップ: ${result.skipped}個のファイル/ディレクトリ`);
@@ -294,11 +293,14 @@ function copyTemplateProject(templateName, projectName, { dryRun = false } = {})
 /**
  * package.jsonを更新する
  */
-function updatePackageJson(projectDir, projectName) {
+export function updatePackageJson(projectDir, projectName) {
   const packageJsonPath = path.join(projectDir, 'package.json');
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
   packageJson.name = `apps-${projectName}`;
+  packageJson.private = true;
+  packageJson.description = `Documentation site for ${projectName}`;
+  packageJson.scripts.prebuild = `node ../../scripts/build-sidebar-selective.js --projects=${projectName} && node ../../scripts/sync-service-workers.js --project=${projectName}`;
 
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
   console.log('  ✅ package.json更新完了');
@@ -307,22 +309,25 @@ function updatePackageJson(projectDir, projectName) {
 /**
  * astro.config.mjsを更新する
  */
-function updateAstroConfig(projectDir, projectName) {
+export function updateAstroConfig(projectDir) {
   const astroConfigPath = path.join(projectDir, 'astro.config.mjs');
 
   // 新しい設定形式で書き換え
   const content = `// @ts-check
 import { defineDocsConfig } from '@docs/config';
+import { loadProjectConfig } from '@docs/project-config';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const projectConfig = await loadProjectConfig(__dirname);
+const fallbackSite = 'https://libx.dev';
 
 // https://astro.build/config
 export default defineDocsConfig({
-  site: 'https://libx.dev',
-  base: '/docs/${projectName}',
+  site: projectConfig.paths.siteUrl ?? fallbackSite,
+  base: projectConfig.paths.baseUrl,
   rootDir: __dirname,
 });
 `;
@@ -334,10 +339,13 @@ export default defineDocsConfig({
 /**
  * project.config.jsoncを更新する
  */
-function updateProjectConfig(projectDir, config) {
+export function updateProjectConfig(projectDir, config) {
   const configDir = path.join(projectDir, 'src', 'config');
   const projectConfigPath = resolveConfigPath(configDir, PROJECT_CONFIG_FILE, PROJECT_CONFIG_FALLBACK);
   const projectConfig = readJsoncFile(projectConfigPath);
+
+  projectConfig.paths ??= {};
+  projectConfig.paths.projectSlug = config.projectName;
 
   // 翻訳情報の更新
   projectConfig.translations.en.displayName = config.displayNameEn;
@@ -404,7 +412,7 @@ function updateAllConfigFiles(projectDir, config, options = {}) {
   }
 
   updatePackageJson(projectDir, config.projectName);
-  updateAstroConfig(projectDir, config.projectName);
+  updateAstroConfig(projectDir);
   updateProjectConfig(projectDir, config);
   updateLandingConfig(config, options);
 
@@ -627,8 +635,10 @@ async function main() {
 }
 
 // エラーハンドリング付きでメイン処理を実行
-main().catch(error => {
-  console.error('\n❌ 予期しないエラーが発生しました:', error.message);
-  console.error('スタックトレース:', error.stack);
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  main().catch(error => {
+    console.error('\n❌ 予期しないエラーが発生しました:', error.message);
+    console.error('スタックトレース:', error.stack);
+    process.exit(1);
+  });
+}

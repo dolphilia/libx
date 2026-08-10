@@ -1,7 +1,7 @@
 /**
  * プロジェクト設定JSONスキーマとTypeScript型定義
  */
-import type { LocaleKey } from '@docs/i18n/locales';
+import type { LocaleKey } from '@docs/i18n/locale-types';
 
 /**
  * JSONファイル内で使用されるバージョン情報の型
@@ -36,6 +36,22 @@ export interface ProjectTranslations {
   displayName: string;
   displayDescription: string;
   categories: Record<string, string>;
+}
+
+export interface LicenseSource {
+  id: string;
+  name: string;
+  author: string;
+  license: string;
+  licenseUrl?: string;
+  sourceUrl?: string;
+}
+
+export interface LicensingConfig {
+  sources: LicenseSource[];
+  defaultSource: string;
+  showAttribution: boolean;
+  sourceLanguage?: LocaleKey;
 }
 
 /**
@@ -74,6 +90,7 @@ export interface ProjectConfigJSON {
   versioning: {
     versions: VersionConfigJSON[];
   };
+  licensing?: LicensingConfig;
 }
 
 /**
@@ -93,6 +110,7 @@ export interface ProjectConfig {
   versioning: {
     versions: VersionConfig[];
   };
+  licensing?: LicensingConfig;
 }
 
 /**
@@ -116,35 +134,166 @@ export interface LegacyProjectConfig extends ProjectConfig {
 /**
  * JSON設定ファイルのバリデーション
  */
-export function validateProjectConfigJSON(config: any): config is ProjectConfigJSON {
+export function validateProjectConfigJSON(config: unknown): config is ProjectConfigJSON {
+  return getProjectConfigValidationErrors(config).length === 0;
+}
+
+export function getProjectConfigValidationErrors(config: unknown): string[] {
+  if (!isRecord(config)) return ['root must be a JSON object'];
+
+  const paths = config.paths;
+  if (paths !== undefined && !isPathsConfig(paths)) {
+    return ['paths must contain only string URL/path fields'];
+  }
+
+  const basic = config.basic;
+  if (basic !== undefined && !isLegacyBasicConfig(basic)) {
+    return ['basic contains invalid legacy path or language fields'];
+  }
+
+  const language = config.language;
+  if (language !== undefined && !isLanguageConfig(language)) {
+    return ['language.supported/default/displayNames has an invalid shape'];
+  }
+
+  const supported = isRecord(language)
+    ? language.supported
+    : isRecord(basic)
+      ? basic.supportedLangs
+      : undefined;
+  const defaultLang = isRecord(language)
+    ? language.default
+    : isRecord(basic)
+      ? basic.defaultLang
+      : undefined;
+
+  if (
+    Array.isArray(supported) &&
+    typeof defaultLang === 'string' &&
+    !supported.includes(defaultLang)
+  ) {
+    return ['language.default must be included in language.supported'];
+  }
+
+  if (!isTranslationsConfig(config.translations)) {
+    return ['translations must define displayName, displayDescription, and categories'];
+  }
+  if (
+    typeof defaultLang === 'string' &&
+    !Object.prototype.hasOwnProperty.call(config.translations, defaultLang)
+  ) {
+    return [`translations.${defaultLang} is required for the default language`];
+  }
+
+  if (!isRecord(config.versioning) || !Array.isArray(config.versioning.versions)) {
+    return ['versioning.versions must be an array'];
+  }
+  if (!config.versioning.versions.every(isVersionConfig)) {
+    return ['each versioning.versions item requires a valid id, name, and ISO date'];
+  }
+
+  if (config.licensing !== undefined && !isLicensingConfig(config.licensing)) {
+    return ['licensing must contain valid sources and a matching defaultSource'];
+  }
+
+  return [];
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function isOptionalString(value: unknown): boolean {
+  return value === undefined || typeof value === 'string';
+}
+
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item) => typeof item === 'string' && item.length > 0);
+}
+
+function isStringRecord(value: unknown): boolean {
+  return isRecord(value) && Object.values(value).every((item) => typeof item === 'string');
+}
+
+function isPathsConfig(value: unknown): boolean {
   return (
-    config &&
-    typeof config === 'object' &&
-    // paths/basic section
-    (config.paths === undefined ||
-      (typeof config.paths === 'object' &&
-        (config.paths.baseUrl === undefined || typeof config.paths.baseUrl === 'string') &&
-        (config.paths.baseUrlPrefix === undefined || typeof config.paths.baseUrlPrefix === 'string') &&
-        (config.paths.projectSlug === undefined || typeof config.paths.projectSlug === 'string') &&
-        (config.paths.siteUrl === undefined || typeof config.paths.siteUrl === 'string'))) &&
-    (config.basic === undefined ||
-      (typeof config.basic === 'object' &&
-        (config.basic.baseUrl === undefined || typeof config.basic.baseUrl === 'string') &&
-        (config.basic.baseUrlPrefix === undefined || typeof config.basic.baseUrlPrefix === 'string') &&
-        (config.basic.projectSlug === undefined || typeof config.basic.projectSlug === 'string') &&
-        (config.basic.siteUrl === undefined || typeof config.basic.siteUrl === 'string') &&
-        (config.basic.supportedLangs === undefined || Array.isArray(config.basic.supportedLangs)) &&
-        (config.basic.defaultLang === undefined || typeof config.basic.defaultLang === 'string'))) &&
-    (config.language === undefined ||
-      (typeof config.language === 'object' &&
-        (config.language.supported === undefined || Array.isArray(config.language.supported)) &&
-        (config.language.default === undefined || typeof config.language.default === 'string'))) &&
-    // translations section
-    config.translations &&
-    typeof config.translations === 'object' &&
-    // versioning section
-    config.versioning &&
-    Array.isArray(config.versioning.versions)
+    isRecord(value) &&
+    isOptionalString(value.baseUrl) &&
+    isOptionalString(value.baseUrlPrefix) &&
+    isOptionalString(value.projectSlug) &&
+    isOptionalString(value.siteUrl)
+  );
+}
+
+function isLegacyBasicConfig(value: unknown): boolean {
+  return (
+    isPathsConfig(value) &&
+    isRecord(value) &&
+    (value.supportedLangs === undefined || isStringArray(value.supportedLangs)) &&
+    isOptionalString(value.defaultLang)
+  );
+}
+
+function isLanguageConfig(value: unknown): boolean {
+  return (
+    isRecord(value) &&
+    (value.supported === undefined || isStringArray(value.supported)) &&
+    isOptionalString(value.default) &&
+    (value.displayNames === undefined || isStringRecord(value.displayNames))
+  );
+}
+
+function isTranslationsConfig(value: unknown): value is Record<string, ProjectTranslations> {
+  return (
+    isRecord(value) &&
+    Object.keys(value).length > 0 &&
+    Object.values(value).every(
+      (translation) =>
+        isRecord(translation) &&
+        typeof translation.displayName === 'string' &&
+        typeof translation.displayDescription === 'string' &&
+        isStringRecord(translation.categories)
+    )
+  );
+}
+
+function isVersionConfig(value: unknown): value is VersionConfigJSON {
+  return (
+    isRecord(value) &&
+    typeof value.id === 'string' &&
+    value.id.length > 0 &&
+    typeof value.name === 'string' &&
+    value.name.length > 0 &&
+    typeof value.date === 'string' &&
+    !Number.isNaN(Date.parse(value.date)) &&
+    (value.isLatest === undefined || typeof value.isLatest === 'boolean') &&
+    isOptionalString(value.tag) &&
+    isOptionalString(value.description)
+  );
+}
+
+function isLicensingConfig(value: unknown): value is LicensingConfig {
+  if (!isRecord(value) || !Array.isArray(value.sources)) return false;
+
+  const validSources = value.sources.every(
+    (source) =>
+      isRecord(source) &&
+      typeof source.id === 'string' &&
+      typeof source.name === 'string' &&
+      typeof source.author === 'string' &&
+      typeof source.license === 'string' &&
+      isOptionalString(source.licenseUrl) &&
+      isOptionalString(source.sourceUrl)
+  );
+
+  return (
+    validSources &&
+    typeof value.defaultSource === 'string' &&
+    value.sources.some(
+      (source) => isRecord(source) && source.id === value.defaultSource
+    ) &&
+    typeof value.showAttribution === 'boolean' &&
+    isOptionalString(value.sourceLanguage)
   );
 }
 

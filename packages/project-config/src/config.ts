@@ -112,7 +112,7 @@ export const getLegacyConfig = (projectDir?: string): LegacyProjectConfig => {
 const configProxy = new Proxy({} as LegacyProjectConfig, {
   get(_target, prop) {
     const config = getSyncConfig();
-    return (config as any)[prop];
+    return Reflect.get(config, prop);
   }
 });
 

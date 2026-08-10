@@ -1,5 +1,4 @@
 ---
-/* eslint-disable @typescript-eslint/no-unused-vars -- Astro define:vars false positive */
 import MainLayout from './MainLayout.astro';
 import { Sidebar, TableOfContents } from '@docs/ui/components';
 import { translate } from '@docs/i18n/utils';
@@ -39,6 +38,7 @@ const dir = getLocaleDirection(lang);
 
 // ベースパスの取得
 const baseUrl = projectConfig.baseUrl;
+const availableVersions = projectConfig.versions.map((item) => item.id);
 
 // 現在のパスを取得
 const currentPath = Astro.url.pathname;
@@ -118,7 +118,7 @@ const hasToc = true;
   </div>
 </MainLayout>
 
-<script is:inline define:vars={{ lang, version, baseUrl }}>
+<script is:inline define:vars={{ baseUrl, availableVersions }}>
   // サイドバーのプリフェッチ
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function prefetchSidebar(lang, version) {
@@ -150,9 +150,9 @@ const hasToc = true;
     // パスを分割
     const segments = pathWithoutBase.split('/').filter(segment => segment);
     
-    // 言語の次のセグメントがバージョン
-    if (segments.length >= 2) {
-      const potentialVersion = segments[1];
+    // version-first ルートの先頭セグメントがバージョン
+    if (segments.length >= 1) {
+      const potentialVersion = segments[0];
       // バージョン形式をチェック (v1, v2, etc.)
       if (potentialVersion.match(/^v\d+$/)) {
         return potentialVersion;
@@ -169,8 +169,7 @@ const hasToc = true;
   prefetchSidebar(currentLang, currentVersion);
   
   // 関連するバージョンのサイドバーもプリフェッチ
-  const versions = ['v1', 'v2'];
-  versions.forEach(version => {
+  availableVersions.forEach(version => {
     if (version !== currentVersion) {
       prefetchSidebar(currentLang, version);
     }

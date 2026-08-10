@@ -2,10 +2,9 @@ import fs from 'node:fs/promises';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import path from 'path';
-import { createRequire } from 'module';
-// scripts/plugins にある既存プラグインを参照
-const require = createRequire(import.meta.url);
-const { remarkLinkTransformer } = require('../../../scripts/plugins/remark-link-transformer.js');
+// JavaScript製の既存プラグインをESMとして読み込む。
+// @ts-expect-error このリポジトリ内のJavaScriptモジュールには宣言ファイルがない。
+import { remarkLinkTransformer } from '../../../scripts/plugins/remark-link-transformer.js';
 
 function stripJsonComments(text: string): string {
   let result = '';
@@ -109,13 +108,8 @@ export function defineDocsConfig(options: DocsConfigOptions = {}) {
         }
       },
     },
-    i18n: {
-      defaultLocale: 'en',
-      locales: ['en', 'ja'],
-      routing: {
-        prefixDefaultLocale: true
-      }
-    }
+    // ドキュメントサイトは /{version}/{lang}/ を独自に生成するため、
+    // Astro標準の /{lang}/ 自動リダイレクトは使用しない。
   });
 }
 

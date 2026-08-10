@@ -3,14 +3,14 @@
 /**
  * リポジトリ共通のデフォルト設定を読み込むユーティリティ
  */
-import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { readJsoncFile } from './jsonc-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
-const defaultsPath = path.join(rootDir, 'config', 'global-defaults.json');
+const defaultsPath = path.join(rootDir, 'config', 'global-defaults.jsonc');
 const FALLBACK_DEFAULT_LANG = 'en';
 const FALLBACK_BASE_URL_PREFIX = '/docs';
 const FALLBACK_SUPPORTED_LANGS = ['en'];
@@ -31,8 +31,7 @@ function readRepositoryDefaults() {
   loadAttempted = true;
 
   try {
-    const content = fs.readFileSync(defaultsPath, 'utf-8');
-    cachedDefaults = JSON.parse(content);
+    cachedDefaults = readJsoncFile(defaultsPath);
     return cachedDefaults;
   } catch (error) {
     console.warn(`⚠️  リポジトリ共通設定の読み込みに失敗しました: ${error.message}`);

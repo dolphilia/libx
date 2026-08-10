@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig/base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "../.tmp/tests",
+    "rootDir": "..",
+    "types": ["node"],
+    "noEmit": false,
+    "declaration": false,
+    "sourceMap": false,
+    "resolveJsonModule": true,
+    "baseUrl": "..",
+    "paths": {
+      "@docs/i18n/*": ["packages/i18n/src/*"]
+    }
+  },
+  "include": [
+    "../tests/unit/**/*.test.ts",
+    "../packages/content-utils/src/path-utils.ts",
+    "../packages/project-config/src/config-schema.ts",
+    "../packages/project-config/src/jsonc.ts"
+  ]
+}

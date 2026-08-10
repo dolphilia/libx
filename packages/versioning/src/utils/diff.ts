@@ -51,21 +51,20 @@ export function diffLines(
     }
     
     lines.forEach(line => {
+      const lineNumber: NonNullable<DiffResult['lineNumber']> = {};
       const result: DiffResult = {
+        type: change.added ? 'added' : change.removed ? 'removed' : 'unchanged',
         value: line,
-        lineNumber: {}
+        lineNumber
       };
       
       if (change.added) {
-        result.type = 'added';
-        result.lineNumber.new = newLineNumber++;
+        lineNumber.new = newLineNumber++;
       } else if (change.removed) {
-        result.type = 'removed';
-        result.lineNumber.old = oldLineNumber++;
+        lineNumber.old = oldLineNumber++;
       } else {
-        result.type = 'unchanged';
-        result.lineNumber.old = oldLineNumber++;
-        result.lineNumber.new = newLineNumber++;
+        lineNumber.old = oldLineNumber++;
+        lineNumber.new = newLineNumber++;
       }
       
       results.push(result);
@@ -145,17 +144,10 @@ export function diffWords(
   // 差分結果を変換
   return changes.map(change => {
     const result: DiffResult = {
+      type: change.added ? 'added' : change.removed ? 'removed' : 'unchanged',
       value: change.value
     };
-    
-    if (change.added) {
-      result.type = 'added';
-    } else if (change.removed) {
-      result.type = 'removed';
-    } else {
-      result.type = 'unchanged';
-    }
-    
+
     return result;
   });
 }

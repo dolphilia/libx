@@ -1,0 +1,16 @@
+export type LocaleKey =
+  | 'en'
+  | 'ja'
+  | 'zh-Hans'
+  | 'zh-Hant'
+  | 'es'
+  | 'pt-BR'
+  | 'ko'
+  | 'de'
+  | 'fr'
+  | 'ru'
+  | 'ar'
+  | 'id'
+  | 'tr'
+  | 'hi'
+  | 'vi';

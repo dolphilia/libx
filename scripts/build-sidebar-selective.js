@@ -9,10 +9,11 @@
  * 使用方法:
  * node scripts/build-sidebar-selective.js --projects=sample-docs,test-verification
  * node scripts/build-sidebar-selective.js --projects=sample-docs
- * node scripts/build-sidebar-selective.js --projects=project-template
+ * node scripts/build-sidebar-selective.js --templates=docs-site
  * 
  * オプション:
  * --projects: サイドバー生成対象プロジェクトをカンマ区切りで指定
+ * --templates: サイドバー生成対象テンプレートをカンマ区切りで指定
  */
 
 import fs from 'fs/promises';
@@ -36,47 +37,49 @@ const rootDir = path.resolve(__dirname, '..');
 // 基本設定
 const config = {
   appsDir: path.join(rootDir, 'apps'),
-  excludedProjects: ['project-template'], // テンプレートは除外
+  templatesDir: path.join(rootDir, 'templates')
 };
 
 /**
  * コマンドライン引数からプロジェクト一覧を解析
  */
-function parseProjectsFromArgs(args) {
+function parseTargetsFromArgs(args) {
   const projectsArg = args.find(arg => arg.startsWith('--projects='));
-  if (!projectsArg) {
-    console.error('エラー: --projects パラメータが指定されていません。');
+  const templatesArg = args.find(arg => arg.startsWith('--templates='));
+  if ((!projectsArg && !templatesArg) || (projectsArg && templatesArg)) {
+    console.error('エラー: --projects または --templates のどちらか一方を指定してください。');
     console.error('使用方法: node build-sidebar-selective.js --projects=project1,project2');
+    console.error('          node build-sidebar-selective.js --templates=docs-site');
     process.exit(1);
   }
 
-  const projectsStr = projectsArg.split('=')[1];
-  if (!projectsStr) {
-    console.error('エラー: --projects パラメータに値が指定されていません。');
+  const argument = projectsArg ?? templatesArg;
+  const targetsValue = argument.split('=')[1];
+  if (!targetsValue) {
+    console.error('エラー: 対象名が指定されていません。');
     process.exit(1);
   }
 
-  return projectsStr.split(',').map(p => p.trim()).filter(p => p);
+  return {
+    names: targetsValue.split(',').map(value => value.trim()).filter(Boolean),
+    baseDir: projectsArg ? config.appsDir : config.templatesDir,
+    label: projectsArg ? 'プロジェクト' : 'テンプレート'
+  };
 }
 
 /**
  * appsディレクトリから利用可能なプロジェクト一覧を取得
  */
-async function getAvailableProjects() {
+async function getAvailableProjects(baseDir) {
   const projects = [];
   
   try {
-    const entries = await fs.readdir(config.appsDir, { withFileTypes: true });
+    const entries = await fs.readdir(baseDir, { withFileTypes: true });
     const appDirs = entries.filter(entry => entry.isDirectory());
     
     for (const dir of appDirs) {
       const appName = dir.name;
-      // 除外プロジェクトをスキップ
-      if (config.excludedProjects.includes(appName)) {
-        continue;
-      }
-      
-      const projectPath = path.join(config.appsDir, appName);
+      const projectPath = path.join(baseDir, appName);
       const contentPath = path.join(projectPath, 'src', 'content', 'docs');
       
       try {
@@ -97,13 +100,13 @@ async function getAvailableProjects() {
 /**
  * 指定されたプロジェクトの存在を検証
  */
-async function validateProjects(requestedProjects, availableProjects) {
+async function validateProjects(requestedProjects, availableProjects, label) {
   const invalidProjects = requestedProjects.filter(p => !availableProjects.includes(p));
   
   if (invalidProjects.length > 0) {
-    console.error('エラー: 以下のプロジェクトが見つからないか、ドキュメントサイトではありません:');
+    console.error(`エラー: 以下の${label}が見つからないか、ドキュメントサイトではありません:`);
     invalidProjects.forEach(p => console.error(`  - ${p}`));
-    console.error('\n利用可能なドキュメントプロジェクト:');
+    console.error(`\n利用可能なドキュメント${label}:`);
     availableProjects.forEach(p => console.error(`  - ${p}`));
     process.exit(1);
   }
@@ -112,8 +115,8 @@ async function validateProjects(requestedProjects, availableProjects) {
 /**
  * 指定されたプロジェクトのプロジェクト情報を取得
  */
-async function getProjectInfo(projectName) {
-  const projectPath = path.join(config.appsDir, projectName);
+async function getProjectInfo(projectName, baseDir) {
+  const projectPath = path.join(baseDir, projectName);
   const contentPath = path.join(projectPath, 'src', 'content', 'docs');
   
   // バージョンディレクトリを検出
@@ -330,9 +333,9 @@ async function generateSidebarForVersion(project, lang, version) {
         const slugParts = doc.slug.split('/').slice(2);
         let fullPath;
         if (baseUrl === '/') {
-          fullPath = `/${lang}/${version}/${slugParts.join('/')}`;
+          fullPath = `/${version}/${lang}/${slugParts.join('/')}`;
         } else {
-          fullPath = `${baseUrl}/${lang}/${version}/${slugParts.join('/')}`;
+          fullPath = `${baseUrl}/${version}/${lang}/${slugParts.join('/')}`;
         }
         return {
           title: doc.data.title,
@@ -348,20 +351,18 @@ async function generateSidebarForVersion(project, lang, version) {
  */
 async function getProjectCategoryTranslations(project) {
   try {
-    // 最小限の翻訳設定（よく使われるものだけ）
-    const translations = {
-      en: {
-        guide: 'Guide',
-        reference: 'Reference'
-      },
-      ja: {
-        guide: 'ガイド',
-        reference: 'リファレンス'
-      }
-    };
-    return translations;
+    const configPath = path.join(project.path, 'src', 'config', 'project.config.jsonc');
+    const projectConfig = await readJsoncFileAsync(configPath);
+    return Object.fromEntries(
+      Object.entries(projectConfig.translations ?? {}).map(([lang, translation]) => [
+        lang,
+        translation.categories ?? {}
+      ])
+    );
   } catch (error) {
-    console.warn(`  プロジェクト ${project.name} の翻訳設定の読み込み中にエラー: ${error.message}`);
+    if (error.code !== 'ENOENT') {
+      console.warn(`  プロジェクト ${project.name} の翻訳設定の読み込み中にエラー: ${error.message}`);
+    }
   }
   
   return null;
@@ -423,20 +424,20 @@ async function main() {
     
     // コマンドライン引数から対象プロジェクトを取得
     const args = process.argv.slice(2);
-    const requestedProjects = parseProjectsFromArgs(args);
-    console.log('指定されたプロジェクト:', requestedProjects.join(', '));
+    const request = parseTargetsFromArgs(args);
+    console.log(`指定された${request.label}:`, request.names.join(', '));
 
     // 利用可能なプロジェクトを取得して検証
-    const availableProjects = await getAvailableProjects();
-    await validateProjects(requestedProjects, availableProjects);
+    const availableProjects = await getAvailableProjects(request.baseDir);
+    await validateProjects(request.names, availableProjects, request.label);
     
     // 各プロジェクトの処理
-    for (const projectName of requestedProjects) {
-      console.log(`プロジェクト ${projectName} の処理を開始します...`);
+    for (const projectName of request.names) {
+      console.log(`${request.label} ${projectName} の処理を開始します...`);
       
-      const project = await getProjectInfo(projectName);
+      const project = await getProjectInfo(projectName, request.baseDir);
       if (!project) {
-        console.warn(`プロジェクト ${projectName} をスキップします`);
+        console.warn(`${request.label} ${projectName} をスキップします`);
         continue;
       }
       
@@ -454,7 +455,7 @@ async function main() {
         const expectedLanguages = project.expectedLanguages ?? project.languages;
         const missingLanguages = expectedLanguages.filter(lang => !languagesForVersion.includes(lang));
         if (missingLanguages.length > 0) {
-          console.warn(`  ${version} では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ${missingLanguages.join(', ')}`);
+          console.log(`  ${version} では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ${missingLanguages.join(', ')}`);
         }
 
         for (const lang of languagesForVersion) {
@@ -475,7 +476,7 @@ async function main() {
     }
     
     console.log('選択的サイドバー生成が完了しました');
-    console.log(`処理したプロジェクト: ${requestedProjects.join(', ')}`);
+    console.log(`処理した${request.label}: ${request.names.join(', ')}`);
   } catch (error) {
     console.error('エラーが発生しました:', error);
     process.exit(1);

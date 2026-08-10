@@ -9,7 +9,9 @@ import {
   type ProjectConfigJSON,
   type ProjectConfig,
   type LegacyProjectConfig,
+  type VersionConfigJSON,
   validateProjectConfigJSON,
+  getProjectConfigValidationErrors,
   convertProjectConfigJSONToRuntime
 } from './config-schema';
 import {
@@ -50,7 +52,8 @@ export async function loadProjectConfigFromJSON(configPath: string, options: Loa
     const parsed = JSON.parse(stripJsonComments(configContent));
 
     if (!validateProjectConfigJSON(parsed)) {
-      throw new Error(`Invalid project configuration format in ${configPath}`);
+      const details = getProjectConfigValidationErrors(parsed).join('; ');
+      throw new Error(`Invalid project configuration format in ${configPath}: ${details}`);
     }
 
     const runtimeConfig = convertProjectConfigJSONToRuntime(parsed);
@@ -120,14 +123,14 @@ export async function loadProjectConfig(projectDir?: string): Promise<ProjectCon
  * 言語別の表示名を取得
  */
 export function getDisplayName(config: ProjectConfig | LegacyProjectConfig, lang: LocaleKey): string {
-  return config.translations[lang]?.displayName || config.translations.en.displayName;
+  return getFallbackTranslation(config, lang).displayName;
 }
 
 /**
  * 言語別の表示説明を取得
  */
 export function getDisplayDescription(config: ProjectConfig | LegacyProjectConfig, lang: LocaleKey): string {
-  return config.translations[lang]?.displayDescription || config.translations.en.displayDescription;
+  return getFallbackTranslation(config, lang).displayDescription;
 }
 
 /**
@@ -136,9 +139,26 @@ export function getDisplayDescription(config: ProjectConfig | LegacyProjectConfi
 export function getCategoryTranslations(config: ProjectConfig | LegacyProjectConfig): Record<LocaleKey, Record<string, string>> {
   const result: Record<LocaleKey, Record<string, string>> = {} as Record<LocaleKey, Record<string, string>>;
   for (const lang of config.language.supported) {
-    result[lang] = config.translations[lang]?.categories || config.translations.en.categories || {};
+    result[lang] = getFallbackTranslation(config, lang).categories;
   }
   return result;
+}
+
+function getFallbackTranslation(
+  config: ProjectConfig | LegacyProjectConfig,
+  lang: LocaleKey
+) {
+  const translation =
+    config.translations[lang] ??
+    config.translations[config.language.default] ??
+    config.translations.en ??
+    Object.values(config.translations)[0];
+
+  if (!translation) {
+    throw new Error('Project configuration must define at least one translation.');
+  }
+
+  return translation;
 }
 
 /**
@@ -150,8 +170,8 @@ export function createLegacyConfig(config: ProjectConfig): LegacyProjectConfig {
   const displayDescription: Record<LocaleKey, string> = {} as Record<LocaleKey, string>;
 
   for (const lang of config.language.supported) {
-    displayName[lang] = config.translations[lang]?.displayName || config.translations.en.displayName;
-    displayDescription[lang] = config.translations[lang]?.displayDescription || config.translations.en.displayDescription;
+    displayName[lang] = getFallbackTranslation(config, lang).displayName;
+    displayDescription[lang] = getFallbackTranslation(config, lang).displayDescription;
   }
 
   const pathsWithLegacy = {
@@ -179,8 +199,8 @@ export function createLegacyConfig(config: ProjectConfig): LegacyProjectConfig {
  */
 export async function migrateFromTypeScriptConfig(tsConfigPath: string, jsonConfigPath: string): Promise<void> {
   // 既存のTypeScript設定ファイルから読み込み（importを使用）
-  const tsConfig = await import(tsConfigPath);
-  const config = tsConfig.default || tsConfig;
+  const importedConfig = await import(/* @vite-ignore */ tsConfigPath);
+  const config = (importedConfig.default || importedConfig) as MigratableProjectConfig;
 
   const legacySupported = config.language?.supported ?? config.basic?.supportedLangs ?? config.supportedLangs;
   const legacyDefault = config.language?.default ?? config.basic?.defaultLang ?? config.defaultLang;
@@ -202,16 +222,35 @@ export async function migrateFromTypeScriptConfig(tsConfigPath: string, jsonConf
     },
     translations: config.translations,
     versioning: {
-      versions: config.versioning?.versions?.map((v: any) => ({
-        ...v,
-        date: v.date instanceof Date ? v.date.toISOString() : v.date
-      })) || config.versions?.map((v: any) => ({
-        ...v,
-        date: v.date instanceof Date ? v.date.toISOString() : v.date
-      })) || []
+      versions: (config.versioning?.versions ?? config.versions ?? []).map(serializeVersion)
     }
   };
 
   // JSONファイルに書き出し
   await fs.writeFile(jsonConfigPath, JSON.stringify(jsonConfig, null, 2), 'utf-8');
+}
+
+type MigratableVersion = Omit<VersionConfigJSON, 'date'> & { date: Date | string };
+
+interface MigratableProjectConfig {
+  paths?: ProjectConfigJSON['paths'];
+  basic?: ProjectConfigJSON['basic'];
+  language?: ProjectConfigJSON['language'];
+  languageNames?: ProjectConfigJSON['languageNames'];
+  baseUrl?: string;
+  baseUrlPrefix?: string;
+  projectSlug?: string;
+  siteUrl?: string;
+  supportedLangs?: LocaleKey[];
+  defaultLang?: LocaleKey;
+  translations: ProjectConfigJSON['translations'];
+  versioning?: { versions?: MigratableVersion[] };
+  versions?: MigratableVersion[];
+}
+
+function serializeVersion(version: MigratableVersion): VersionConfigJSON {
+  return {
+    ...version,
+    date: version.date instanceof Date ? version.date.toISOString() : version.date
+  };
 }

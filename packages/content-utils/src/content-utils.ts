@@ -3,6 +3,7 @@ import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { resolveProjectDir } from '@docs/project-config';
+import { buildDocumentPath as buildPath } from './path-utils';
 
 export interface ContentFile {
   slug: string;
@@ -19,44 +20,13 @@ export interface ContentOptions {
   pathPattern?: 'version-first' | 'locale-first';
 }
 
-type PathPattern = NonNullable<ContentOptions['pathPattern']>;
-const DEFAULT_PATH_PATTERN: PathPattern = 'version-first';
-
-function getPathPattern(options?: ContentOptions): PathPattern {
-  return options?.pathPattern ?? DEFAULT_PATH_PATTERN;
-}
-
-function cleanSegment(segment: string): string {
-  return segment.replace(/^\/+|\/+$/g, '');
-}
-
 export function buildDocumentPath(
   version: string,
   lang: LocaleKey,
   relativePath: string | string[] | undefined,
   options?: ContentOptions
 ): string {
-  const pattern = getPathPattern(options);
-  const relativeSegments = Array.isArray(relativePath)
-    ? relativePath
-    : (relativePath ? relativePath.split('/') : []);
-
-  const cleanedSegments = relativeSegments
-    .map(seg => cleanSegment(seg))
-    .filter(seg => seg.length > 0);
-
-  const baseSegments =
-    pattern === 'locale-first'
-      ? [lang, version]
-      : [version, lang];
-
-  const allSegments = [...baseSegments, ...cleanedSegments];
-
-  if (allSegments.length === 0) {
-    return '/';
-  }
-
-  return '/' + allSegments.map(cleanSegment).join('/');
+  return buildPath(version, lang, relativePath, options?.pathPattern);
 }
 
 /**

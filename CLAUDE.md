@@ -139,8 +139,9 @@ node scripts/create-document.js sample-docs ja v2 --interactive
 ### モノレポ構造
 
 - **`apps/`** - 個別のAstroドキュメントプロジェクト
-  - `project-template/` - 新しいプロジェクトを作成するためのテンプレート
   - `sample-docs/`, `test-verification/`など - ドキュメントプロジェクト
+- **`templates/`** - 配布物ではない正規テンプレート
+  - `docs-site/` - 新しいドキュメントサイトを作成するための標準テンプレート
 - **`sites/`** - ポータル/ランディングサイト
   - `landing/` - ランディングページ（ルート `/` にデプロイ）
 - **`packages/`** - 共有ワークスペースパッケージ
@@ -327,7 +328,7 @@ ls -la apps/sample-docs/public/sidebar/
 
 詳細なガイドについては`docs/`を参照してください：
 
-- `docs/notes/PROJECT_PRINCIPLES.md` - 開発原則と哲学
+- `docs/spec/PROJECT_PRINCIPLES.md` - コンセプト・方針・方向性・開発原則
 - `docs/guides/BUILD_AND_DEPLOYMENT_GUIDE.md` - 包括的なビルド/デプロイドキュメント
 - `docs/guides/BACKUP_OPERATIONS_GUIDE.md` - バックアップと復元の運用ガイド
 - `docs/guides/NEW_PROJECT_CREATION_GUIDE.md` - 手動プロジェクト作成手順

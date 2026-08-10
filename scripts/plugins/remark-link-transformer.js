@@ -31,8 +31,12 @@ function composeDocumentPath(pattern, version, lang, relativePath) {
 export function remarkLinkTransformer(options = {}) {
   const {
     baseUrl = '/docs/sample-docs',
-    pathPattern = 'version-first'
+    pathPattern = 'version-first',
+    verbose = process.env.LIBX_VERBOSE === '1'
   } = options;
+  const debug = (...args) => {
+    if (verbose) console.log(...args);
+  };
 
   const normalizedBase = baseUrl.replace(/\/+$/, '');
   const versionFirstPattern = /^\/v[0-9.]+\/[a-z-]+(\/|$)/;
@@ -75,7 +79,7 @@ export function remarkLinkTransformer(options = {}) {
           targetPath = targetFile;
         } else {
           // サブディレクトリの場合、同じディレクトリ内のファイルを指す
-          targetPath = `${currentDir}/${targetFile}`;
+          targetPath = path.posix.normalize(path.posix.join(currentDir, targetFile));
         }
         
         // 最終的なURLを構築（パターンに応じた順序）
@@ -85,7 +89,7 @@ export function remarkLinkTransformer(options = {}) {
           node.url = `/${node.url}`;
         }
         
-        console.log(`[Link Transform] 相対リンク変換: ${url} → ${node.url}`);
+        debug(`[Link Transform] 相対リンク変換: ${url} → ${node.url}`);
         return;
       }
       
@@ -93,7 +97,7 @@ export function remarkLinkTransformer(options = {}) {
       if (versionFirstPattern.test(url)) {
         if (normalizedBase && !url.startsWith(normalizedBase)) {
           node.url = `${normalizedBase}${url}`;
-          console.log(`[Link Transform] プロジェクト内絶対パス変換: ${url} → ${node.url}`);
+          debug(`[Link Transform] プロジェクト内絶対パス変換: ${url} → ${node.url}`);
         } else if (!normalizedBase) {
           node.url = url;
         }
@@ -113,7 +117,7 @@ export function remarkLinkTransformer(options = {}) {
           } else if (!normalizedBase) {
             node.url = url;
           }
-          console.log(`[Link Transform] ロケール先頭パス保持: ${url} → ${node.url}`);
+          debug(`[Link Transform] ロケール先頭パス保持: ${url} → ${node.url}`);
           return;
         }
 
@@ -123,7 +127,7 @@ export function remarkLinkTransformer(options = {}) {
         if (!node.url.startsWith('/')) {
           node.url = `/${node.url}`;
         }
-        console.log(`[Link Transform] ロケール先頭パス変換: ${url} → ${node.url}`);
+        debug(`[Link Transform] ロケール先頭パス変換: ${url} → ${node.url}`);
         return;
       }
       
@@ -136,7 +140,7 @@ export function remarkLinkTransformer(options = {}) {
         if (!node.url.startsWith('/')) {
           node.url = `/${node.url}`;
         }
-        console.log(`[Link Transform] 言語・バージョン補完: ${url} → ${node.url}`);
+        debug(`[Link Transform] 言語・バージョン補完: ${url} → ${node.url}`);
         return;
       }
     });

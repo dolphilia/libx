@@ -16,9 +16,6 @@ const projectConfig = await getLegacyProjectConfig();
 
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  // パフォーマンス計測開始
-  console.time('getStaticPaths execution time');
-  
   // ドキュメントコレクションを取得
   const docs = await getCollection('docs');
   
@@ -38,18 +35,11 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     const slugParts = pathParts.slice(2); // ["01-guide", "01-getting-started"]
     const slug = slugParts.join('/'); // "01-guide/01-getting-started"
     
-    console.log(`[getStaticPaths] Processing: ${entry.slug} → version: ${version}, lang: ${lang}, slug: ${slug}`);
-    
     return {
       params: { version, lang, slug },
       props: { entry }
     };
   }).filter(Boolean); // nullを除去
-  
-  // パフォーマンス計測終了
-  console.timeEnd('getStaticPaths execution time');
-  // ドキュメント数をログ出力
-  console.log(`Generated ${result.length} static paths`);
   
   return result as GetStaticPathsResult;
 }
@@ -62,10 +52,6 @@ const { version: versionParam, lang: langParam } = Astro.params;
 const version = String(versionParam || 'v1');
 const lang = (langParam || 'en') as LocaleKey;
 const dir = getLocaleDirection(lang);
-
-// デバッグログ
-console.log(`[Page Render] Processing URL params - version: ${version}, lang: ${lang}, entry.slug: ${entry.slug}`);
-
 
 // ファイルベースのページネーション生成
 let autoPagination = {};
@@ -85,7 +71,6 @@ autoPagination = await generateFileBasedPagination(
   projectConfig.baseUrl
 );
   
-  console.log(`[File-Based Pagination] Generated for ${lang}/${version}/${currentSection}/${currentSlug}:`, autoPagination);
 } catch (error) {
   console.error('[File-Based Pagination] Error generating pagination:', error);
 }

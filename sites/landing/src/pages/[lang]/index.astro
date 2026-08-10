@@ -21,7 +21,6 @@ const currentLang = lang as LocaleKey;
 // 設定ファイルからプロジェクト一覧を取得
 const topPageConfig = await getTopPageConfig();
 const { projects, heroTitle, heroDescription, siteName, siteDescription } = topPageConfig;
-console.log(`Displaying ${projects.length} projects from config for lang: ${currentLang}`);
 const dir = getLocaleDirection(currentLang);
 
 const projectsWithUrls = await Promise.all(

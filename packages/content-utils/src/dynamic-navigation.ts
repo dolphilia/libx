@@ -2,10 +2,11 @@
  * ファイルベースで動的に最新バージョンと最初のページを特定するユーティリティ
  */
 
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { getLegacyProjectConfig } from '@docs/project-config';
 import type { ContentOptions } from './content-utils';
+import { selectLatestVersionId } from './path-utils';
 
 export interface NavigationOptions extends ContentOptions {
   /**
@@ -74,7 +75,7 @@ function parseSlugParts(slug: string, supportedLangs: LocaleKey[]): {
  * 利用可能なバージョンを取得し、最新のものを特定
  */
 export async function getLatestVersion(lang: LocaleKey, options?: NavigationOptions): Promise<string> {
-  const docs = await getCollection('docs');
+  const docs = (await getCollection('docs')) as CollectionEntry<'docs'>[];
   const config = await getLegacyProjectConfig(options?.projectDir);
   const supportedLangs = config.language.supported;
 
@@ -83,21 +84,18 @@ export async function getLatestVersion(lang: LocaleKey, options?: NavigationOpti
     return entryLang === lang;
   });
 
-  const versions = Array.from(
-    new Set(
+  const versions: string[] = Array.from(
+    new Set<string>(
       langDocs
         .map(entry => parseSlugParts(entry.slug, supportedLangs).version)
-        .filter((version): version is string => Boolean(version) && VERSION_PATTERN.test(version))
+        .filter(
+          (version): version is string =>
+            typeof version === 'string' && VERSION_PATTERN.test(version)
+        )
     )
   );
 
-  versions.sort((a, b) => {
-    const numA = parseInt(a.replace('v', ''), 10);
-    const numB = parseInt(b.replace('v', ''), 10);
-    return numB - numA; // 降順
-  });
-
-  return versions[0] || config.versioning.versions[0]?.id || 'v1';
+  return selectLatestVersionId(versions, config.versioning.versions);
 }
 
 /**
@@ -108,7 +106,7 @@ export async function getFirstPage(
   version: string,
   options?: NavigationOptions
 ): Promise<string | null> {
-  const docs = await getCollection('docs');
+  const docs = (await getCollection('docs')) as CollectionEntry<'docs'>[];
   const config = await getLegacyProjectConfig(options?.projectDir);
   const supportedLangs = config.language.supported;
 

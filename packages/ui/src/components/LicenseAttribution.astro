@@ -5,10 +5,11 @@
  */
 import type { LocaleKey } from '@docs/i18n/locales';
 import { getLicenseTemplate, translate } from '@docs/i18n/utils';
+import type { LegacyProjectConfig, LicenseSource } from '@docs/project-config';
 
 interface Props {
   // プロジェクト設定（project.config.jsonc）
-  projectConfig: any;
+  projectConfig: LegacyProjectConfig;
   // 現在の言語
   lang?: LocaleKey;
   // カスタムソースID（オプション）
@@ -42,7 +43,7 @@ if (!licensing || hideAttribution) {
 
 // 使用するソースを決定
 const sourceId = licenseSource || licensing.defaultSource;
-const source = licensing.sources?.find((s: any) => s.id === sourceId);
+const source = licensing.sources.find((item: LicenseSource) => item.id === sourceId);
 
 if (!source) {
   // ソースが見つからない場合は何も表示しない

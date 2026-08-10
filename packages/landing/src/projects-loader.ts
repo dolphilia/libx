@@ -142,9 +142,21 @@ export async function loadStaticConfig(): Promise<{
 type LandingContentKey = 'siteDescription' | 'heroTitle' | 'heroDescription';
 
 interface LandingContentMap {
-  siteDescription: Record<LocaleKey, string>;
-  heroTitle: Record<LocaleKey, string>;
-  heroDescription: Record<LocaleKey, string>;
+  siteDescription: Partial<Record<LocaleKey, string>>;
+  heroTitle: Partial<Record<LocaleKey, string>>;
+  heroDescription: Partial<Record<LocaleKey, string>>;
+}
+
+interface LocaleWithLanding {
+  landing?: Partial<Record<LandingContentKey, string>>;
+}
+
+interface LandingSiteConfigFile {
+  base?: string;
+  i18n?: {
+    locales?: LocaleKey[];
+    defaultLocale?: LocaleKey;
+  };
 }
 
 const landingKeys: LandingContentKey[] = ['siteDescription', 'heroTitle', 'heroDescription'];
@@ -166,10 +178,9 @@ function buildLandingContent(supportedLangs: LocaleKey[]): LandingContentMap {
 }
 
 function resolveLandingTranslation(key: LandingContentKey, lang: LocaleKey): string {
-  const localeData = locales[lang] as Record<string, any> | undefined;
-  const landingSection = localeData?.landing as Record<LandingContentKey, string> | undefined;
-  const fallbackLanding =
-    (locales[defaultLocale] as Record<string, any>)?.landing as Record<LandingContentKey, string> | undefined;
+  const localeData = locales[lang] as LocaleWithLanding | undefined;
+  const landingSection = localeData?.landing;
+  const fallbackLanding = (locales[defaultLocale] as LocaleWithLanding).landing;
 
   if (landingSection && typeof landingSection[key] === 'string') {
     return landingSection[key];
@@ -218,17 +229,17 @@ async function loadLandingDefaults(): Promise<LandingDefaults> {
 
   const configDir = path.resolve(process.cwd(), 'src', 'config');
   const jsoncPath = path.join(configDir, 'site.config.jsonc');
-  let parsed: any = {};
+  let parsed: LandingSiteConfigFile = {};
 
   try {
     const content = await fs.readFile(jsoncPath, 'utf-8');
-    parsed = JSON.parse(stripJsonComments(content));
+    parsed = JSON.parse(stripJsonComments(content)) as LandingSiteConfigFile;
   } catch {
     // fallback to defaults below
   }
 
-  const i18n = parsed?.i18n ?? {};
-  const baseUrl = typeof parsed?.base === 'string' ? parsed.base : '';
+  const i18n = parsed.i18n ?? {};
+  const baseUrl = typeof parsed.base === 'string' ? parsed.base : '';
   const supportedLangs = Array.isArray(i18n.locales) && i18n.locales.length > 0 ? (i18n.locales as LocaleKey[]) : FALLBACK_SUPPORTED_LANGS;
   const defaultLang = (i18n.defaultLocale as LocaleKey | undefined) ?? FALLBACK_DEFAULT_LANG;
 

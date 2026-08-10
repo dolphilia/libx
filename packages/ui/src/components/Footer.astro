@@ -7,12 +7,14 @@ import Icon from './icons/Icon.astro';
 import { Pagination, LicenseAttribution } from './index';
 import { translate } from '@docs/i18n/utils';
 import type { LocaleKey } from '@docs/i18n/locales';
+import type { LegacyProjectConfig } from '@docs/project-config';
+import type { IconName } from './icons/Icons';
 
 
 interface SocialLink {
   label: string;
   href: string;
-  icon: string;
+  icon: IconName;
 }
 
 interface Props {
@@ -27,7 +29,7 @@ interface Props {
   contributeUrl?: string;
   lang?: LocaleKey;
   // ライセンス表示関連
-  projectConfig?: any;
+  projectConfig?: LegacyProjectConfig;
   showLicenseAttribution?: boolean;
   licenseSource?: string;
   customAttribution?: string;
@@ -85,7 +87,7 @@ const {
           <div class="social-links">
             {socialLinks.map(({ label, href, icon }) => (
               <a href={href} rel="me" class="social-link" aria-label={label} title={label}>
-                <Icon name={icon as any} />
+                <Icon name={icon} />
               </a>
             ))}
           </div>

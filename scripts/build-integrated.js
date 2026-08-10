@@ -53,11 +53,6 @@ async function generateBuildTargets() {
     for (const dir of appEntries) {
       const appName = dir.name;
 
-      if (appName === 'project-template') {
-        console.log(`⏩ ${appName}はテンプレートプロジェクトのためスキップします`);
-        continue;
-      }
-
       const appPath = path.join(appsDir, appName);
       targets.push({
         name: appName,

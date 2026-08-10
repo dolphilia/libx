@@ -1,0 +1,26 @@
+{
+  "name": "template-docs-site",
+  "private": true,
+  "description": "Canonical template used to create libx documentation sites",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "prebuild": "node ../../scripts/build-sidebar-selective.js --templates=docs-site && node ../../scripts/sync-service-workers.js --template=docs-site",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@docs/config": "workspace:*",
+    "@docs/content-utils": "workspace:*",
+    "@docs/i18n": "workspace:*",
+    "@docs/project-config": "workspace:*",
+    "@docs/theme": "workspace:*",
+    "@docs/ui": "workspace:*",
+    "@docs/versioning": "workspace:*",
+    "astro": "^5.7.12",
+    "shiki": "^3.4.0",
+    "unist-util-visit": "^5.0.0"
+  }
+}

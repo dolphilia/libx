@@ -58,7 +58,7 @@ libx-dev/
    pnpm dev
    
    # 特定のプロジェクトのみ起動
-   pnpm --filter=project-template dev
+   pnpm --filter=template-docs-site dev
    pnpm --filter=sites-landing dev
    ```
 
@@ -104,7 +104,7 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
 
 このスクリプトは以下の処理を自動で実行します:
 
-- テンプレートプロジェクト（project-template）のコピー
+- 標準テンプレート（`templates/docs-site`）のコピー
 - 全設定ファイルの自動更新（package.json、astro.config.mjs、project.config.jsonc等）
 - 依存関係の自動インストール
 - 動作確認テスト
@@ -118,7 +118,7 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
 | `--description-ja` | 日本語説明文 | "[表示名]のドキュメントです" |
 | `--icon` | アイコン名 | "file-text" |
 | `--tags` | カンマ区切りタグ | "documentation" |
-| `--template` | テンプレートプロジェクト | "project-template" |
+| `--template` | テンプレート名 | "docs-site" |
 | `--skip-test` | 動作テストをスキップ | false |
 
 #### 利用可能なアイコン
@@ -166,7 +166,7 @@ pnpm create:project quick-project "Quick Project" "クイックプロジェク�
 
 - `@docs/content-utils`
   - サイドバー生成やページネーションで使用するファイル走査・URL生成処理を集約しています。
-  - `pathPattern` オプションでルーティング方式（`'version-first'` / `'locale-first'`）を切り替えられます。`project-template` や `test-verification` は既定値、`sample-docs` のようなロケール先頭ルートでは `pathPattern: 'locale-first'` を指定します。
+  - `pathPattern` オプションでルーティング方式（`'version-first'` / `'locale-first'`）を切り替えられます。`docs-site` テンプレートや `test-verification` は既定値、`sample-docs` のようなロケール先頭ルートでは `pathPattern: 'locale-first'` を指定します。
 
 ```ts
 import { getLegacyProjectConfig, initializeConfig } from '@docs/project-config';

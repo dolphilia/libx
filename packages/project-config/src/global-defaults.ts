@@ -1,6 +1,7 @@
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
 import fs from 'node:fs/promises';
+import { stripJsonComments } from './jsonc';
 
 interface GlobalDefaults {
   defaultLang?: LocaleKey;
@@ -202,7 +203,8 @@ export async function resolveBaseUrl(options: ResolveBaseUrlOptions = {}): Promi
 }
 
 export async function getRepositorySiteUrl(): Promise<string | undefined> {
-  return normalizeSiteUrl(defaults.siteUrl);
+  const defs = await loadDefaults();
+  return normalizeSiteUrl(defs.siteUrl);
 }
 
 export async function resolveSiteUrl(provided?: string): Promise<string> {

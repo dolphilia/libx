@@ -17,7 +17,7 @@ export function t(
   const segments = key.split('.');
   
   // 翻訳データを取得
-  let translation: any = locales[lang];
+  let translation: unknown = locales[lang];
   
   // 指定された言語の翻訳データが存在しない場合はデフォルト言語を使用
   if (!translation) {
@@ -27,7 +27,7 @@ export function t(
   // キーに対応する翻訳テキストを取得
   for (const segment of segments) {
     if (translation && typeof translation === 'object' && segment in translation) {
-      translation = translation[segment];
+      translation = (translation as Record<string, unknown>)[segment];
     } else {
       // 翻訳が見つからない場合はデフォルト言語で試行
       if (lang !== defaultLocale) {

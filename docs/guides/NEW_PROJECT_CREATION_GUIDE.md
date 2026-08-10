@@ -93,7 +93,7 @@ node scripts/create-project.js my-project "My Project" "私のプロジェクト
   --description-ja="詳細なプロジェクト文書" \
   --icon=book \
   --tags=project,guide,tutorial \
-  --template=project-template \
+  --template=docs-site \
   --skip-test
 ```
 
@@ -105,7 +105,7 @@ node scripts/create-project.js my-project "My Project" "私のプロジェクト
 | `--description-ja` | 日本語説明文 | 自動生成 | `--description-ja="API文書"` |
 | `--icon` | アイコン名 | `file-text` | `--icon=code` |
 | `--tags` | タグ（カンマ区切り） | `documentation` | `--tags=api,guide` |
-| `--template` | テンプレートプロジェクト | `project-template` | `--template=custom-template` |
+| `--template` | `templates/` 内のテンプレート名 | `docs-site` | `--template=custom-template` |
 | `--skip-test` | テストをスキップ | false | `--skip-test` |
 
 ### 利用可能なアイコン
@@ -128,13 +128,13 @@ $ node scripts/create-project.js my-docs "My Documentation" "私のドキュメ�
 プロジェクト名: my-docs
 英語表示名: My Documentation
 日本語表示名: 私のドキュメント
-テンプレート: project-template
+テンプレート: docs-site
 
 [2/7] プロジェクト設定を検証しています...
 ✅ バリデーション完了
 
 [3/7] テンプレートプロジェクトをコピーしています...
-  コピー元: apps/project-template
+  コピー元: templates/docs-site
   コピー先: apps/my-docs
   ✅ コピー完了: 45個のファイル/ディレクトリ
 ✅ プロジェクトコピー完了
@@ -241,9 +241,9 @@ apps/my-docs/
 
 **エラー3: テンプレートファイルが見つからない**
 ```bash
-❌ テンプレートプロジェクト "project-template" が見つかりません
+❌ テンプレートプロジェクト "docs-site" が見つかりません
 ```
-→ `apps/project-template` ディレクトリが存在することを確認してください。
+→ `templates/docs-site` ディレクトリが存在することを確認してください。
 
 ## 🔧 従来の手動方法（参考用）
 
@@ -254,8 +254,8 @@ apps/my-docs/
 既存のプロジェクトをコピーして新しいプロジェクトを作成します。
 
 ```bash
-# apps/project-template を新しいプロジェクト名でコピー
-cp -r apps/project-template apps/新しいプロジェクト名
+# templates/docs-site を新しいプロジェクト名でコピー
+cp -r templates/docs-site apps/新しいプロジェクト名
 ```
 
 ### 2. package.json の更新
@@ -341,8 +341,8 @@ export default defineConfig({
 {
   // 既存の設定...
   "projectDecorations": {
-    "project-template": {
-      // 既存のproject-template設定
+    "sample-docs": {
+      // 既存のsample-docs設定
     },
     "新しいプロジェクト名": {
       "icon": "適切なアイコン名",

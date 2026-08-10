@@ -2,7 +2,7 @@
  * projects.config.jsonc 用のTypeScript型定義とスキーマ
  */
 import type { LocaleKey } from '@docs/i18n/locales';
-import type { IconName } from '@docs/ui/components';
+import type { IconName } from '@docs/ui/icons';
 
 // JSON構造の型定義
 export interface ProjectsConfigJSON {
@@ -47,9 +47,9 @@ export interface TopPageConfig {
   defaultLang: LocaleKey;
   repository: string;
   siteName: string;
-  siteDescription: Record<LocaleKey, string>;
-  heroTitle: Record<LocaleKey, string>;
-  heroDescription: Record<LocaleKey, string>;
+  siteDescription: Partial<Record<LocaleKey, string>>;
+  heroTitle: Partial<Record<LocaleKey, string>>;
+  heroDescription: Partial<Record<LocaleKey, string>>;
 }
 
 // プロジェクト装飾設定（旧projectDecorationsと互換）

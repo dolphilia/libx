@@ -10,7 +10,7 @@
 - `pnpm-workspace.yaml` に `sites/*` を含め、`apps/*`（ドキュメント）と `sites/*`（ポータル）を並列に管理しています。
 
 ### ビルド処理
-1. `scripts/build-integrated.js` は `apps/*` から各ドキュメントを `dist/docs/{project}` に集約し、`sites/landing` 出力を `dist/` のルート（`pathPrefix: ''`）として組み込んでいます。`project-template` はスキップされます。
+1. `scripts/build-integrated.js` は `apps/*` から各ドキュメントを `dist/docs/{project}` に集約し、`sites/landing` 出力を `dist/` のルート（`pathPrefix: ''`）として組み込んでいます。正規テンプレートは `templates/docs-site` に分離されているため走査対象になりません。
 2. `scripts/build-selective.js` も `apps/` と `sites/` の両方をスキャンし、`landing` を対象に入れた場合は `dist/index.html` を再生成します。`sites/landing` 以外のサイトは `dist/{site}` に配置されます。
 3. サイドバー生成（`scripts/build-sidebar.js` / `build-sidebar-selective.js`）は `apps/*` のコンテンツのみを処理し、`sites/landing` 側を含めないため、トップページ側の構造が破綻する心配はありません。
 

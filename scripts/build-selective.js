@@ -9,7 +9,6 @@
  * 使用方法:
  * node scripts/build-selective.js --projects=sample-docs,test-verification
  * node scripts/build-selective.js --projects=landing
- * node scripts/build-selective.js --projects=project-template
  * 
  * オプション:
  * --projects: ビルド対象プロジェクトをカンマ区切りで指定
@@ -68,10 +67,6 @@ function collectBuildTargets() {
 
     for (const dir of entries) {
       const appName = dir.name;
-      if (appName === 'project-template') {
-        continue;
-      }
-
       const appPath = path.join(appsDir, appName);
       targets.set(appName, {
         name: appName,

@@ -2,6 +2,7 @@
  * サイドバー自動生成ユーティリティ
  */
 import type { LocaleKey } from '@docs/i18n/locales';
+import type { CollectionEntry } from 'astro:content';
 import { resolveProjectDir, getCategoryTranslationsAsync } from '@docs/project-config';
 import { buildDocumentPath, type ContentOptions } from './content-utils';
 
@@ -86,7 +87,7 @@ async function getFallbackSidebar(
       items: [
         {
           title: await translateCategory('getting_started', lang, options),
-          href: `${baseUrl}${buildDocumentPath(version, lang, ['guide', '01-getting-started'], options)}`
+          href: `${baseUrl}${buildDocumentPath(version, lang, ['01-guide', '01-getting-started'], options)}`
         }
       ]
     }
@@ -126,13 +127,13 @@ export async function getAutoSidebar(
   // Astroのコンテンツコレクションを使用するため、動的インポートを使用
   const { getCollection } = await import('astro:content');
 
-  const docs = await getCollection('docs', entry => {
+  const docs = (await getCollection('docs', (entry: CollectionEntry<'docs'>) => {
     return entry.slug.startsWith(`${version}/${lang}/`);
-  });
+  })) as CollectionEntry<'docs'>[];
 
   // カテゴリごとにドキュメントを整理
   const categories: Record<string, {
-    docs: any[];
+    docs: CollectionEntry<'docs'>[];
     order: number;
     title?: string;
   }> = {};

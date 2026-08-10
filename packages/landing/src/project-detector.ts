@@ -2,12 +2,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
 import {
-  stripJsonComments,
-  resolveBaseUrl,
-  resolveSupportedLangs,
-  resolveLanguageDisplayNames,
-  resolveDefaultLang
+  loadProjectConfig
 } from '@docs/project-config';
+import type { ProjectConfig, VersionConfig } from '@docs/project-config';
 
 export interface DetectedProject {
   id: string;
@@ -38,7 +35,7 @@ export async function scanAppsDirectory(): Promise<string[]> {
     const entries = await fs.readdir(appsDir, { withFileTypes: true });
 
     for (const entry of entries) {
-      if (!entry.isDirectory() || entry.name === 'project-template') {
+      if (!entry.isDirectory()) {
         continue;
       }
 
@@ -64,26 +61,8 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
   const repoRoot = path.resolve(process.cwd(), '..', '..');
   const projectPath = path.join(repoRoot, 'apps', projectId);
 
-  const docsConfig = await loadDocsConfigFromJSON(projectPath);
-  const preferredSupported = docsConfig.language?.supported ?? docsConfig.basic?.supportedLangs;
-  const supportedLangs = await resolveSupportedLangs(preferredSupported);
-  const preferredDefault = (docsConfig.language?.default ?? docsConfig.basic?.defaultLang) as LocaleKey | undefined;
-  const defaultLang = await resolveDefaultLang(preferredDefault);
-  const displayNames = await resolveLanguageDisplayNames(
-    (docsConfig.language?.displayNames ?? docsConfig.languageNames) as Record<LocaleKey, string> | undefined
-  );
-  docsConfig.language = {
-    supported: supportedLangs,
-    default: defaultLang,
-    displayNames
-  };
-  const pathSettings = docsConfig.paths ?? docsConfig.basic ?? {};
-  const baseUrl = await resolveBaseUrl({
-    baseUrl: pathSettings?.baseUrl,
-    baseUrlPrefix: pathSettings?.baseUrlPrefix,
-    projectSlug: pathSettings?.projectSlug,
-    projectDir: projectPath
-  });
+  const docsConfig = await loadProjectConfig(projectPath);
+  const baseUrl = docsConfig.paths.baseUrl;
   const latestVersion = getLatestVersion(docsConfig.versioning.versions);
   const contentFiles = await scanProjectContent(projectPath);
 
@@ -121,45 +100,13 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
   };
 }
 
-async function loadDocsConfigFromJSON(projectPath: string) {
-  const configPath = await resolveDocsConfigPath(projectPath);
-
-  try {
-    const configContent = await fs.readFile(configPath, 'utf-8');
-    const config = JSON.parse(stripJsonComments(configContent));
-
-    if (config.versioning?.versions) {
-      config.versioning.versions = config.versioning.versions.map((version: any) => ({
-        ...version,
-        date: new Date(version.date)
-      }));
-    }
-
-    return config;
-  } catch (error) {
-    throw new Error(`JSONプロジェクト設定ファイルの読み込みに失敗: ${configPath} - ${error}`);
-  }
-}
-
-async function resolveDocsConfigPath(projectPath: string): Promise<string> {
-  const configDir = path.join(projectPath, 'src', 'config');
-  const jsoncPath = path.join(configDir, 'project.config.jsonc');
-  const jsonPath = path.join(configDir, 'project.config.json');
-  try {
-    await fs.access(jsoncPath);
-    return jsoncPath;
-  } catch {
-    return jsonPath;
-  }
-}
-
-function extractDisplayNames(config: any): Record<LocaleKey, string> {
+function extractDisplayNames(config: ProjectConfig): Record<LocaleKey, string> {
   const result: Record<LocaleKey, string> = {} as Record<LocaleKey, string>;
 
   if (config.translations) {
     for (const [lang, translation] of Object.entries(config.translations)) {
-      if (translation && typeof translation === 'object' && (translation as any).displayName) {
-        result[lang as LocaleKey] = (translation as any).displayName;
+      if (translation.displayName) {
+        result[lang as LocaleKey] = translation.displayName;
       }
     }
   }
@@ -172,13 +119,13 @@ function extractDisplayNames(config: any): Record<LocaleKey, string> {
   return result;
 }
 
-function extractDisplayDescriptions(config: any): Record<LocaleKey, string> {
+function extractDisplayDescriptions(config: ProjectConfig): Record<LocaleKey, string> {
   const result: Record<LocaleKey, string> = {} as Record<LocaleKey, string>;
 
   if (config.translations) {
     for (const [lang, translation] of Object.entries(config.translations)) {
-      if (translation && typeof translation === 'object' && (translation as any).displayDescription) {
-        result[lang as LocaleKey] = (translation as any).displayDescription;
+      if (translation.displayDescription) {
+        result[lang as LocaleKey] = translation.displayDescription;
       }
     }
   }
@@ -191,7 +138,7 @@ function extractDisplayDescriptions(config: any): Record<LocaleKey, string> {
   return result;
 }
 
-function getLatestVersion(versions: any[]): string {
+function getLatestVersion(versions: VersionConfig[]): string {
   if (!versions || versions.length === 0) {
     return 'v1';
   }
