@@ -1,0 +1,27 @@
+{
+  "name": "apps-lua",
+  "private": true,
+  "description": "Documentation site for lua",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "prebuild": "node ../../scripts/build-sidebar-selective.js --projects=lua && node ../../scripts/build-search-index.js --project=lua && node ../../scripts/sync-service-workers.js --project=lua",
+    "dev": "astro dev",
+    "build": "astro build",
+    "check:content": "node ../../scripts/importers/import-lua-5.5.1.mjs --check && node ../../scripts/importers/normalize-lua-translation-format.mjs --check && node ../../scripts/validate-translated-content.mjs --project=lua --version=v5-5-1 --target=ja --identifier-prefixes=lua_,luaL_,LUA_",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@docs/config": "workspace:*",
+    "@docs/content-utils": "workspace:*",
+    "@docs/i18n": "workspace:*",
+    "@docs/project-config": "workspace:*",
+    "@docs/theme": "workspace:*",
+    "@docs/ui": "workspace:*",
+    "@docs/versioning": "workspace:*",
+    "astro": "^5.7.12",
+    "shiki": "^3.4.0",
+    "unist-util-visit": "^5.0.0"
+  }
+}

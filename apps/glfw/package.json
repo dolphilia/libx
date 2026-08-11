@@ -5,7 +5,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "prebuild": "node ../../scripts/build-sidebar-selective.js --projects=glfw && node ../../scripts/sync-service-workers.js --project=glfw",
+    "prebuild": "node ../../scripts/build-sidebar-selective.js --projects=glfw && node ../../scripts/build-search-index.js --project=glfw && node ../../scripts/sync-service-workers.js --project=glfw",
     "dev": "astro dev",
     "build": "astro build",
     "check:content": "node ../../scripts/importers/import-glfw-3.5.1.mjs --check && node ../../scripts/validate-translated-content.mjs --project=glfw --version=v3-5-1 --target=ja --identifier-prefixes=GLFW,glfw,Vk,VK_",

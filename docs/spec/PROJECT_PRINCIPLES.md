@@ -101,14 +101,14 @@ libxの長期的な判断基準を、次の一文に集約する。
 サイト、バージョン、言語、カテゴリ、表示順は、標準ディレクトリ構造と命名規則から推論する。
 
 ```text
-apps/<project>/src/content/docs/<version>/<lang>/<NN-category>/<NN-page>.mdx
+apps/<project>/src/content/docs/<version>/<lang>/<NN-category>/<NN-page>.md
 ```
 
 明示設定は、ファイル構造から推論できない意味だけに使用する。推論できる情報を設定へ重複記載しない。
 
 ### 6.3 必須事項は少なく、高度な機能は段階的に開く
 
-通常の管理者はMDX、最小限のFrontmatter、標準スクリプトだけで作業を完了できるようにする。特殊な要件に対しては拡張点を提供するが、標準経路を複雑にしない。
+通常の管理者はMarkdown、最小限のFrontmatter、標準スクリプトだけで作業を完了できるようにする。UIコンポーネントや式が必要な文書ではMDXを選択できるようにするが、標準経路を複雑にしない。
 
 ### 6.4 自動化は管理者の判断を奪わず、反復作業を引き受ける
 
@@ -224,7 +224,9 @@ apps/<project>/src/content/docs/<version>/<lang>/<NN-category>/<NN-page>.mdx
 
 ## 9. コンテンツ管理原則
 
-- MDXを標準の執筆形式とする。
+- CommonMark／GFMに基づくMarkdownを標準の執筆形式とする。
+- MDXはUIコンポーネントや式が必要な手書き文書の拡張形式とし、表示上の都合だけで外部定本をMDXへ変換しない。
+- 文書発見、検査、ナビゲーション、検索、言語・版切替はMarkdownとMDXを同等に扱う。
 - 必須Frontmatterは文書固有情報に限定する。
 - カテゴリと文書はゼロ埋め連番で順序を表す。
 - URLスラッグは言語が変わっても安定させる。

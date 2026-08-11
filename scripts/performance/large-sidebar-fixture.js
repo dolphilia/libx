@@ -11,8 +11,9 @@ await fs.mkdir(docsDir, { recursive: true });
 await Promise.all(
   Array.from({ length: count }, async (_, index) => {
     const order = String(index + 1).padStart(4, '0');
+    const extension = index % 2 === 0 ? 'md' : 'mdx';
     await fs.writeFile(
-      path.join(docsDir, `${order}-page.mdx`),
+      path.join(docsDir, `${order}-page.${extension}`),
       `---\ntitle: Page ${order}\norder: ${index + 1}\n---\n\nFixture content.\n`
     );
   })
@@ -22,7 +23,7 @@ const files = await fs.readdir(docsDir);
 const items = await Promise.all(
   files.map(async (file) => {
     const parsed = matter(await fs.readFile(path.join(docsDir, file), 'utf8'));
-    return { title: parsed.data.title, href: `/v1/en/guide/${file.replace(/\.mdx$/, '')}` };
+    return { title: parsed.data.title, href: `/v1/en/guide/${file.replace(/\.mdx?$/, '')}` };
   })
 );
 items.sort((a, b) => a.href.localeCompare(b.href));

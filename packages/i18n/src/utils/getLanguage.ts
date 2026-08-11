@@ -1,4 +1,4 @@
-import { defaultLocale, supportedLocales, type LocaleKey } from '../locales';
+import { defaultLocale, supportedLocales, type LocaleKey } from '../locales/index.js';
 
 /**
  * ブラウザの言語設定から最適な言語を検出する

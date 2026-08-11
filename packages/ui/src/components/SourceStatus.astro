@@ -1,0 +1,99 @@
+---
+import type { LocaleKey } from '@docs/i18n/locales';
+import { translate } from '@docs/i18n/utils';
+import type { LicenseSource, ProjectConfig } from '@docs/project-config';
+
+interface Props {
+  projectConfig: ProjectConfig;
+  lang: LocaleKey;
+  version: string;
+  licenseSource?: string;
+  hideAttribution?: boolean;
+}
+
+const { projectConfig, lang, version, licenseSource, hideAttribution = false } = Astro.props;
+const licensing = projectConfig.licensing;
+const sourceId = licenseSource ?? licensing.defaultSource;
+const source = licensing.sources.find((item: LicenseSource) => item.id === sourceId);
+const versionName =
+  projectConfig.versioning.versions.find((item) => item.id === version)?.name ?? version;
+const isCanonical = lang === licensing.sourceLanguage;
+---
+
+{
+  source && licensing.showAttribution && !hideAttribution && (
+    <aside class="source-status" aria-labelledby="source-status-title">
+      <h2 id="source-status-title">{translate('sourceStatus.title', lang)}</h2>
+      <dl>
+        <div>
+          <dt>{translate('sourceStatus.source', lang)}</dt>
+          <dd>{source.name}</dd>
+        </div>
+        <div>
+          <dt>{translate('sourceStatus.version', lang)}</dt>
+          <dd>{versionName}</dd>
+        </div>
+        <div>
+          <dt>{translate('sourceStatus.status', lang)}</dt>
+          <dd>
+            {translate(isCanonical ? 'sourceStatus.canonical' : 'sourceStatus.translation', lang)}
+          </dd>
+        </div>
+      </dl>
+      <a href={source.sourceUrl} target="_blank" rel="noopener">
+        {translate('sourceStatus.original', lang)}
+      </a>
+    </aside>
+  )
+}
+
+<style>
+  .source-status {
+    margin-block: 0 1.5rem;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-inline-start: 0.25rem solid var(--sl-color-accent);
+    border-radius: 0.375rem;
+    background: var(--sl-color-bg-sidebar);
+    font-size: var(--sl-text-sm);
+  }
+
+  .source-status h2 {
+    margin: 0 0 0.625rem;
+    font-size: var(--sl-text-base);
+  }
+
+  .source-status dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 0 0 0.625rem;
+  }
+
+  .source-status dl > div {
+    display: flex;
+    gap: 0.375rem;
+  }
+
+  .source-status dt {
+    color: var(--sl-color-gray-2);
+  }
+
+  .source-status dt::after {
+    content: ':';
+  }
+
+  .source-status dd {
+    margin: 0;
+  }
+
+  .source-status a {
+    color: var(--sl-color-text-accent);
+  }
+
+  @media print {
+    .source-status a::after {
+      content: ' (' attr(href) ')';
+    }
+  }
+</style>

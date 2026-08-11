@@ -4,10 +4,11 @@ import mdx from '@astrojs/mdx';
 import path from 'path';
 import { stripJsonComments } from '@docs/project-config/jsonc';
 // JavaScript製の既存プラグインをESMとして読み込む。
-// @ts-expect-error このリポジトリ内のJavaScriptモジュールには宣言ファイルがない。
 import { remarkLinkTransformer } from '../../../scripts/plugins/remark-link-transformer.js';
-// @ts-expect-error このリポジトリ内のJavaScriptモジュールには宣言ファイルがない。
+import { remarkCallouts } from '../../../scripts/plugins/remark-callouts.js';
 import { rehypeTaskListA11y } from '../../../scripts/plugins/rehype-task-list-a11y.js';
+import { rehypeDocumentEnhancements } from '../../../scripts/plugins/rehype-document-enhancements.js';
+import { keepKatexWoff2Only } from '../../../scripts/plugins/katex-woff2-only.js';
 
 export interface DocsConfigOptions {
   site?: string;
@@ -28,11 +29,24 @@ export function defineDocsConfig(options: DocsConfigOptions = {}) {
           langs: [],
           wrap: true,
         },
-        remarkPlugins: [[remarkLinkTransformer, { baseUrl: base }]],
-        rehypePlugins: [rehypeTaskListA11y],
+        remarkPlugins: [[remarkLinkTransformer, { baseUrl: base }], remarkCallouts],
+        rehypePlugins: [rehypeTaskListA11y, rehypeDocumentEnhancements],
       }),
     ],
+    markdown: {
+      remarkPlugins: [[remarkLinkTransformer, { baseUrl: base }], remarkCallouts],
+      rehypePlugins: [rehypeTaskListA11y, rehypeDocumentEnhancements],
+    },
     vite: {
+      plugins: [
+        {
+          name: 'docs-katex-woff2-only',
+          enforce: 'pre',
+          transform(code, id) {
+            return /katex[\\/]dist[\\/]katex\.min\.css/.test(id) ? keepKatexWoff2Only(code) : null;
+          },
+        },
+      ],
       build: {
         assetsInlineLimit: 0,
         cssCodeSplit: false,

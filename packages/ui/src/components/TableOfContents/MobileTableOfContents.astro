@@ -1,0 +1,64 @@
+---
+import type { LocaleKey } from '@docs/i18n/locales';
+import { translate } from '@docs/i18n/utils';
+import TableOfContents, { type TocItem } from './TableOfContents.astro';
+
+interface Props {
+  headings: TocItem[];
+  minLevel?: number;
+  maxLevel?: number;
+  lang?: LocaleKey;
+  dir?: 'ltr' | 'rtl';
+}
+
+const { headings, minLevel = 2, maxLevel = 3, lang = 'en', dir = 'ltr' } = Astro.props;
+---
+
+<details class="mobile-toc" dir={dir}>
+  <summary>{translate('docs.onThisPage', lang)}</summary>
+  <TableOfContents
+    headings={headings}
+    minLevel={minLevel}
+    maxLevel={maxLevel}
+    lang={lang}
+    dir={dir}
+    isMobile={true}
+  />
+</details>
+
+<style>
+  .mobile-toc {
+    margin-block-end: 1rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.5rem;
+    background: var(--sl-color-bg-sidebar);
+  }
+
+  .mobile-toc summary {
+    cursor: pointer;
+    padding: 0.875rem 1rem;
+    font-weight: 700;
+  }
+
+  .mobile-toc[open] summary {
+    border-block-end: 1px solid var(--sl-color-hairline);
+  }
+
+  .mobile-toc :global(.starlight-toc-wrapper) {
+    padding: 0.5rem 1rem 1rem;
+  }
+
+  .mobile-toc :global(.starlight-toc-heading) {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  @media (min-width: 75em) {
+    .mobile-toc {
+      display: none;
+    }
+  }
+</style>

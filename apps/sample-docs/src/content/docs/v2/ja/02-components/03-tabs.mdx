@@ -405,17 +405,18 @@ import { Tabs, TabItem } from '@docs/ui';
 
 | プロパティ | 型 | デフォルト | 説明 |
 |-----------|---|---------|-----|
-| `children` | ReactNode | - | TabItemコンポーネント（必須） |
-| `defaultValue` | string | 最初のタブ | デフォルトで選択されるタブ |
-| `className` | string | - | 追加のCSSクラス |
+| default slot | Astro slot | - | TabItemコンポーネント（必須） |
+| `syncKey` | string | - | 同じキーを持つタブの選択状態を同期 |
+| `class` | string | - | 追加のCSSクラス |
 
 #### TabItemコンポーネント
 
 | プロパティ | 型 | デフォルト | 説明 |
 |-----------|---|---------|-----|
 | `label` | string | - | タブのラベル（必須） |
-| `value` | string | label | タブの識別子 |
-| `children` | ReactNode | - | タブの内容 |
+| `icon` | string | - | 任意のアイコンマークアップ |
+| `class` | string | - | 追加のCSSクラス |
+| default slot | Astro slot | - | タブの内容 |
 
 ### MDXでの使用
 

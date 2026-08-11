@@ -26,15 +26,14 @@ This documentation system ships with a broad set of UI components built to enhan
 |-----------|---------|------------------|
 | **Tabs** | Organize content in tabs | Code examples, multi-option instructions |
 | **TableOfContents** | Page navigation | Long documents, reference pages |
-| **Breadcrumbs** | Path navigation | Deep content hierarchies |
 | **Pagination** | Sequential navigation | Multi-page guides, tutorials |
 
 ### Layout Components
 
 | Component | Purpose | Example Use Case |
 |-----------|---------|------------------|
-| **Grid** | Responsive layout | Feature grids, media galleries |
-| **TwoColumn** | Parallel content | Comparisons, before/after examples |
+| **CardGrid** | Responsive card layout | Feature grids and link collections |
+| **TwoColumnContent** | Parallel content | Comparisons, before/after examples |
 | **Sidebar** | Contextual info | Related links, quick reference |
 | **Hero** | Prominent headers | Landing pages, section intros |
 
@@ -103,7 +102,7 @@ import { Icon, Alert } from '@docs/ui';
 
 # My Document
 
-<Alert type="info">
+<Alert variant="info">
   <Icon name="info" />
   This is an informational callout powered by components.
 </Alert>
@@ -115,9 +114,9 @@ Regular Markdown content continues here...
 
 Most components share standard props:
 
-- **className**: CSS classes for styling
+- **class**: CSS classes for styling
 - **style**: Inline style object
-- **children**: Content rendered inside the component
+- **default slot**: Content rendered inside the component
 - **Component-specific props**: Documented on each component page
 
 ## Design Principles
@@ -127,11 +126,11 @@ Most components share standard props:
 - **Color scheme**: Uses CSS custom properties for theming
 - **Typography**: Matches the documentation scale
 - **Spacing**: Adheres to shared spacing units
-- **Accessibility**: Meets WCAG 2.1 AA guidelines
+- **Accessibility**: Uses semantic HTML and is verified by the repository accessibility checks
 
 ### Flexibility
 
-- **Customizable**: Accepts `style` and `className`
+- **Customizable**: Accepts `style` and `class`
 - **Responsive**: Works across screen sizes
 - **Composable**: Combine to create richer layouts
 - **Theme-ready**: Supports light and dark themes
@@ -192,7 +191,7 @@ Override styles with class names:
 ```
 
 ```jsx
-<Button className="custom-button">Custom Styled Button</Button>
+<Button class="custom-button">Custom Styled Button</Button>
 ```
 
 ## Getting Started with Components

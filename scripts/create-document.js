@@ -44,6 +44,7 @@ function showUsage(exitCode = 0) {
   logger.info('オプション');
   logger.detail('--interactive: 対話モードで実行します。');
   logger.detail('--dry-run: 変更予定を表示し、ファイルを書き換えません。');
+  logger.detail('--format=md|mdx: 文書形式を指定します（既定: md）。');
   logger.detail('--help: このヘルプを表示します。');
   logger.blank();
   logger.info('使用例');
@@ -68,16 +69,21 @@ function parseArguments() {
   const optionFlags = rest.filter((arg) => arg.startsWith('--'));
   const values = rest.filter((arg) => !arg.startsWith('--'));
   const dryRun = optionFlags.includes('--dry-run');
+  const format = optionFlags.find((arg) => arg.startsWith('--format='))?.slice(9) ?? 'md';
+  if (!['md', 'mdx'].includes(format)) {
+    logger.error(`文書形式はmdまたはmdxを指定してください: ${format}`);
+    showUsage(1);
+  }
 
   if (optionFlags.includes('--interactive')) {
-    return { projectName, lang, version, isInteractive: true, dryRun };
+    return { projectName, lang, version, isInteractive: true, dryRun, format };
   }
 
   const [category, title] = values;
-  return { projectName, lang, version, category, title, isInteractive: false, dryRun };
+  return { projectName, lang, version, category, title, isInteractive: false, dryRun, format };
 }
 
-async function runInteractiveMode(projectName, lang, version, preloadedConfig) {
+async function runInteractiveMode(projectName, lang, version, format, preloadedConfig) {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -157,7 +163,7 @@ async function runInteractiveMode(projectName, lang, version, preloadedConfig) {
     }
 
     logger.info('作成予定のファイルパス');
-    logger.detail(`${categoryDir}/${fileName}.mdx`, { bullet: '' });
+    logger.detail(`${categoryDir}/${fileName}.${format}`, { bullet: '' });
 
     const confirm = await ask('この内容で作成しますか？ (y/N): ');
     const normalized = confirm.trim().toLowerCase();
@@ -229,6 +235,7 @@ async function main() {
         args.projectName,
         args.lang,
         args.version,
+        args.format,
         projectConfig
       );
       ({
@@ -277,7 +284,8 @@ async function main() {
       args.lang,
       args.version,
       categoryDir,
-      fileName
+      fileName,
+      args.format
     );
     if (fs.existsSync(docPath)) throw new Error(`作成先ファイルが既に存在します: ${docPath}`);
 

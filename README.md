@@ -343,5 +343,5 @@ node scripts/create-document.js sample-docs ja v2 --interactive
 - 既存プロジェクト構造の自動解析
 - カテゴリとファイル番号の自動採番
 - 適切なディレクトリ構造での配置
-- MDXテンプレートファイルの自動生成
+- Markdownテンプレートファイルの自動生成（MDXは明示指定）
 - インタラクティブなカテゴリ選択機能

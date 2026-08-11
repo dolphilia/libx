@@ -1,6 +1,6 @@
 ---
 import MainLayout from './MainLayout.astro';
-import { Sidebar, TableOfContents } from '@docs/ui/components';
+import { Sidebar, SourceStatus, TableOfContents } from '@docs/ui/components';
 import { translate } from '@docs/i18n/utils';
 import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
@@ -27,11 +27,23 @@ interface SidebarItem {
 
 interface Props {
   title: string;
+  description?: string;
+  licenseSource?: string;
+  hideAttribution?: boolean;
+  hasToc?: boolean;
   lang: LocaleKey;
   version: string;
 }
 
-const { title, lang: langProp, version } = Astro.props;
+const {
+  title,
+  description,
+  licenseSource,
+  hideAttribution,
+  hasToc = false,
+  lang: langProp,
+  version,
+} = Astro.props;
 const lang = langProp as LocaleKey;
 const dir = getLocaleDirection(lang);
 
@@ -76,13 +88,11 @@ const TRANSLATION_KEYS = {
   SEARCH_PLACEHOLDER: 'search.placeholder',
   DOCUMENTATION: 'docs.documentation',
 } as const;
-
-// 目次があるかどうか（実際のプロジェクトでは動的に判断する）
-const hasToc = true;
 ---
 
 <MainLayout
   title={title}
+  description={description}
   lang={lang}
   version={version}
   hasSidebar={true}
@@ -103,8 +113,16 @@ const hasToc = true;
     </aside>
 
     <div class="main-column" dir={dir}>
+      {hasToc && Astro.slots.has('mobile-toc') && <slot name="mobile-toc" />}
       <div class="content-panel">
         <article class="sl-markdown-content" dir={dir}>
+          <SourceStatus
+            projectConfig={projectConfig}
+            lang={lang}
+            version={version}
+            licenseSource={licenseSource}
+            hideAttribution={hideAttribution}
+          />
           <slot />
         </article>
       </div>
@@ -130,7 +148,7 @@ const hasToc = true;
   // サイドバーのプリフェッチ
   function prefetchSidebar(lang, version) {
     // バージョンが有効な形式（v1, v2など）かチェック
-    if (!version || !version.match(/^v\d+$/)) {
+    if (!version || !version.match(/^v\d+(?:-\d+)*$/)) {
       version = 'v1'; // デフォルトバージョンを設定
     }
 
@@ -161,7 +179,7 @@ const hasToc = true;
     if (segments.length >= 1) {
       const potentialVersion = segments[0];
       // バージョン形式をチェック (v1, v2, etc.)
-      if (potentialVersion.match(/^v\d+$/)) {
+      if (potentialVersion.match(/^v\d+(?:-\d+)*$/)) {
         return potentialVersion;
       }
     }

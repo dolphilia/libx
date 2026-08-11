@@ -3,7 +3,13 @@
  * MainLayout - ドキュメントサイトの基本レイアウトコンポーネント
  * Starlightスタイルに基づいたレイアウト
  */
-import { DocsHeaderFrame, Footer, LanguageSelector, ThemeToggle } from '@docs/ui/components';
+import {
+  DocsHeaderFrame,
+  Footer,
+  LanguageSelector,
+  Search,
+  ThemeToggle,
+} from '@docs/ui/components';
 import { VersionSelector } from '@docs/versioning/components';
 import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
@@ -23,6 +29,8 @@ import { getCollection } from 'astro:content';
 interface Props {
   /** ページタイトル */
   title: string;
+  /** ページ固有の説明 */
+  description?: string;
   /** 言語コード */
   lang: LocaleKey;
   /** ドキュメントバージョン */
@@ -35,17 +43,21 @@ interface Props {
   showVersionSelector?: boolean;
   /** パンくずリストを表示するか */
   showBreadcrumb?: boolean;
+  /** ページ種別（OG種別と検索エンジン向け指示に使用） */
+  pageType?: 'document' | 'index' | 'not-found';
 }
 
 // プロパティの取得
 const {
   title,
+  description,
   lang,
   version = 'v1',
   hasSidebar = false,
   hasToc = false,
   showVersionSelector = true,
   showBreadcrumb = false,
+  pageType = 'document',
 } = Astro.props;
 
 // プロジェクト設定を読み込み
@@ -56,9 +68,13 @@ const breadcrumbIcon = dir === 'rtl' ? 'chevron-left' : 'chevron-right';
 const docs = await getCollection('docs');
 
 // HTML属性の設定
-const htmlDataAttributes: Record<string, string> = { 'data-theme': 'dark', 'data-dir': dir };
+const htmlDataAttributes: Record<string, string> = { 'data-theme': 'dark' };
 if (hasToc) htmlDataAttributes['data-has-toc'] = '';
 if (hasSidebar) htmlDataAttributes['data-has-sidebar'] = '';
+const htmlAttributes = {
+  ...htmlDataAttributes,
+  'data-dir': dir,
+};
 
 const numBaseSegments = projectConfig.paths.baseUrl.split('/').filter((p) => p.length > 0).length;
 const slugSliceIndex = 1 + numBaseSegments + 1 + 1; // 1 (leading empty) + base segments + version segment + lang segment
@@ -81,13 +97,24 @@ const availableLanguagePaths = buildAvailableLanguagePaths({
   currentLanguage: lang,
   relativeSlug,
 });
+const pageDescription =
+  description ??
+  projectConfig.translations[lang]?.displayDescription ??
+  projectConfig.translations[projectConfig.language.default]?.displayDescription ??
+  displayName;
+const pageTitle = title === displayName ? displayName : `${title} | ${displayName}`;
+const siteUrl = projectConfig.paths.siteUrl ?? Astro.url.origin;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const defaultLanguagePath = availableLanguagePaths.find(
+  (item) => item.lang === projectConfig.language.default
+);
 
 // ドキュメントトップへの動的リンクを生成
 const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
 ---
 
 <!doctype html>
-<html lang={lang} dir={dir} {...htmlDataAttributes}>
+<html lang={lang} dir={dir} {...htmlAttributes}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={`${projectConfig.paths.baseUrl}/favicon.svg`} />
@@ -113,8 +140,28 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
     </script>
 
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Documentation site built with Astro" />
-    <title>{title} | Docs</title>
+    <meta name="description" content={pageDescription} />
+    {pageType === 'not-found' && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    {
+      availableLanguagePaths.map((item) => (
+        <link rel="alternate" hreflang={item.lang} href={new URL(item.path, siteUrl).toString()} />
+      ))
+    }
+    {
+      defaultLanguagePath && (
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={new URL(defaultLanguagePath.path, siteUrl).toString()}
+        />
+      )
+    }
+    <meta property="og:type" content={pageType === 'document' ? 'article' : 'website'} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <title>{pageTitle}</title>
     <script>
       // Service Workerの登録
       if ('serviceWorker' in navigator) {
@@ -126,7 +173,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
       }
     </script>
   </head>
-  <body dir={dir}>
+  <body>
     <div class="page">
       <DocsHeaderFrame dir={dir}>
         <Fragment slot="title">
@@ -153,6 +200,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
           }
         </Fragment>
         <Fragment slot="actions">
+          <Search baseUrl={projectConfig.paths.baseUrl} version={version} lang={lang} />
           {
             showVersionSelector && version && (
               <div class="version-selector-container">
@@ -182,7 +230,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
 
       <Footer
         showContribute={true}
-        contributeUrl="https://github.com/libx-dev/libx-dev"
+        contributeUrl="https://github.com/dolphilia/libx"
         lang={lang}
         showLicenseAttribution={true}
         projectConfig={projectConfig}

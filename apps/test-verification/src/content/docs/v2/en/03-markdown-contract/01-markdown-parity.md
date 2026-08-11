@@ -1,0 +1,42 @@
+---
+title: "Markdown parity fixture"
+description: "Exercises the portable Markdown contract"
+licenseSource: "test-verification-original"
+---
+
+# Markdown parity fixture
+
+This paragraph contains **strong text**, *emphasis*, `inline code`, and an [external link](https://example.com/).
+
+## Lists
+
+- First item
+- Second item
+
+## Table
+
+| Name | Value |
+| --- | --- |
+| format | Markdown |
+
+## Quotation
+
+> A block quote represents quoted material.
+
+## Callout
+
+> [!WARNING] Warning
+> This remains readable as a quotation without the libx renderer.
+
+## Definition list
+
+<dl>
+  <dt>Canonical document</dt>
+  <dd>The source-language document used as the translation reference.</dd>
+</dl>
+
+## Code
+
+```js
+const format = 'markdown';
+```

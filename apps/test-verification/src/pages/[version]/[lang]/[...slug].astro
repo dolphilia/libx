@@ -4,7 +4,7 @@ import DocLayout from '../../../layouts/DocLayout.astro';
 import type { GetStaticPathsResult } from 'astro';
 import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
-import { TableOfContents, Pagination } from '@docs/ui/components';
+import { MobileTableOfContents, TableOfContents, Pagination } from '@docs/ui/components';
 import { getProjectConfig } from '@docs/project-config';
 import { mergePagination, type PageLink } from '@docs/versioning/utils';
 
@@ -106,9 +106,32 @@ if (entry.data.next) {
 
 // 手動設定と自動生成を統合（手動設定を優先）
 const finalPagination = mergePagination(manualPrev, manualNext, autoPagination);
+const tocMinLevel = entry.data.toc?.minLevel ?? 2;
+const tocMaxLevel = entry.data.toc?.maxLevel ?? 3;
+const tocItems = headings
+  .filter((heading) => heading.depth >= tocMinLevel && heading.depth <= tocMaxLevel)
+  .slice(0, entry.data.toc?.maxItems)
+  .map((heading) => ({ ...heading, children: [] }));
+const hasToc = tocItems.length > 0;
 ---
 
-<DocLayout title={entry.data.title} lang={lang} version={version}>
+<DocLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  licenseSource={entry.data.licenseSource}
+  hideAttribution={entry.data.hideAttribution}
+  hasToc={hasToc}
+  lang={lang}
+  version={version}
+>
+  <MobileTableOfContents
+    headings={tocItems}
+    minLevel={tocMinLevel}
+    maxLevel={tocMaxLevel}
+    lang={lang}
+    dir={dir}
+    slot="mobile-toc"
+  />
   <Content />
 
   {/* ページナビゲーション */}
@@ -118,9 +141,9 @@ const finalPagination = mergePagination(manualPrev, manualNext, autoPagination);
 
   {/* 目次は DocLayout のスロットに渡す */}
   <TableOfContents
-    headings={headings.map((h) => ({ depth: h.depth, text: h.text, slug: h.slug, children: [] }))}
-    minLevel={2}
-    maxLevel={2}
+    headings={tocItems}
+    minLevel={tocMinLevel}
+    maxLevel={tocMaxLevel}
     lang={lang}
     dir={dir}
     slot="toc"

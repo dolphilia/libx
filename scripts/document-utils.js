@@ -151,7 +151,7 @@ export function analyzeProjectStructure(projectName, lang, version) {
       const categoryPath = path.join(docsPath, categoryDir);
       const files = fs
         .readdirSync(categoryPath)
-        .filter((file) => file.endsWith('.mdx'))
+        .filter((file) => /\.mdx?$/.test(file))
         .sort();
 
       // 番号付きプレフィックスを除去してカテゴリ名を取得
@@ -304,8 +304,23 @@ export function validateDocumentPath(projectName, lang, version, category, fileN
 /**
  * ドキュメントファイルを作成
  */
-export function createDocumentFile(projectName, lang, version, categoryDir, fileName, content) {
-  const docPath = resolveDocumentFilePath(projectName, lang, version, categoryDir, fileName);
+export function createDocumentFile(
+  projectName,
+  lang,
+  version,
+  categoryDir,
+  fileName,
+  content,
+  format = 'md'
+) {
+  const docPath = resolveDocumentFilePath(
+    projectName,
+    lang,
+    version,
+    categoryDir,
+    fileName,
+    format
+  );
 
   // ディレクトリを作成
   fs.mkdirSync(path.dirname(docPath), { recursive: true });
@@ -316,7 +331,15 @@ export function createDocumentFile(projectName, lang, version, categoryDir, file
   return docPath;
 }
 
-export function resolveDocumentFilePath(projectName, lang, version, categoryDir, fileName) {
+export function resolveDocumentFilePath(
+  projectName,
+  lang,
+  version,
+  categoryDir,
+  fileName,
+  format = 'md'
+) {
+  if (!['md', 'mdx'].includes(format)) throw new Error(`未対応の文書形式です: ${format}`);
   return path.join(
     rootDir,
     'apps',
@@ -327,7 +350,7 @@ export function resolveDocumentFilePath(projectName, lang, version, categoryDir,
     version,
     lang,
     categoryDir,
-    `${fileName}.mdx`
+    `${fileName}.${format}`
   );
 }
 

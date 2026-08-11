@@ -1,26 +1,31 @@
 ---
+import { getLocaleFromPathname, translate } from '@docs/i18n/utils';
+import type { LocaleKey } from '@docs/i18n/locales';
+
 interface Props {
   type?: 'draft' | 'deprecated' | 'wip' | 'translation';
+  lang?: LocaleKey;
 }
 
-const { type = 'draft' } = Astro.props;
+const { type = 'draft', lang: explicitLang } = Astro.props;
+const lang = explicitLang ?? getLocaleFromPathname(Astro.url.pathname);
 
 // タイプに応じたラベルとアイコンを設定
 const typeConfig = {
   draft: {
-    label: '下書き',
+    label: translate('contentStatus.draft', lang),
     color: 'orange',
   },
   deprecated: {
-    label: '非推奨',
+    label: translate('contentStatus.deprecated', lang),
     color: 'red',
   },
   wip: {
-    label: '作業中',
+    label: translate('contentStatus.wip', lang),
     color: 'blue',
   },
   translation: {
-    label: '翻訳中',
+    label: translate('contentStatus.translation', lang),
     color: 'purple',
   },
 };

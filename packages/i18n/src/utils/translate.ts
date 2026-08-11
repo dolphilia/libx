@@ -1,4 +1,4 @@
-import { locales, defaultLocale, type LocaleKey } from '../locales';
+import { locales, defaultLocale, type LocaleKey } from '../locales/index.js';
 
 /**
  * 翻訳キーに対応する翻訳テキストを取得する

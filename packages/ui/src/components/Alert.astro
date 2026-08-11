@@ -1,30 +1,35 @@
 ---
+import { getLocaleFromPathname, translate } from '@docs/i18n/utils';
+import type { LocaleKey } from '@docs/i18n/locales';
+
 interface Props {
   title?: string;
   variant?: 'info' | 'success' | 'warning' | 'error';
+  lang?: LocaleKey;
   class?: string;
   [key: string]: unknown;
 }
 
-const { title, variant = 'info', class: className = '', ...rest } = Astro.props;
+const { title, variant = 'info', lang: explicitLang, class: className = '', ...rest } = Astro.props;
+const lang = explicitLang ?? getLocaleFromPathname(Astro.url.pathname);
 
 // バリアントに応じたアイコンとラベルのマッピング
 const variantConfig = {
   info: {
     icon: 'information',
-    label: '情報',
+    label: translate('common.info', lang),
   },
   success: {
     icon: 'approve-check-circle',
-    label: '成功',
+    label: translate('common.success', lang),
   },
   warning: {
     icon: 'warning',
-    label: '警告',
+    label: translate('common.warning', lang),
   },
   error: {
     icon: 'error',
-    label: 'エラー',
+    label: translate('common.error', lang),
   },
 };
 

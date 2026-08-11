@@ -1,5 +1,5 @@
-import { defaultLocale, type LocaleKey } from '../locales';
-import { getLanguageFromPath } from './getLanguage';
+import { defaultLocale, type LocaleKey } from '../locales/index.js';
+import { getLanguageFromPath } from './getLanguage.js';
 
 /**
  * 言語コードを含むパスを生成する

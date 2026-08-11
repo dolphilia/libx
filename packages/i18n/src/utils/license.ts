@@ -1,5 +1,5 @@
-import { t } from './translate';
-import type { LocaleKey } from '../locales';
+import { t } from './translate.js';
+import type { LocaleKey } from '../locales/index.js';
 
 /**
  * ライセンス名からテンプレートキーへのマッピング

@@ -36,6 +36,19 @@ test('canonical documentation template has the required structure', () => {
   const packageJson = JSON.parse(fs.readFileSync(path.join(templateDir, 'package.json'), 'utf8'));
   assert.equal(packageJson.name, 'template-docs-site');
   assert.equal(packageJson.private, true);
+
+  const docLayout = fs.readFileSync(
+    path.join(templateDir, 'src', 'layouts', 'DocLayout.astro'),
+    'utf8'
+  );
+  assert.match(docLayout, /\^v\\d\+\(\?:-\\d\+\)\*\$/);
+
+  const contentUtils = fs.readFileSync(
+    path.join(repoRoot, 'packages', 'content-utils', 'src', 'content-utils.ts'),
+    'utf8'
+  );
+  assert.match(contentUtils, /\\\.mdx\?\$/);
+  assert.doesNotMatch(contentUtils, /endsWith\(['"]\.mdx['"]\)/);
 });
 
 test('canonical template can be copied and configured as an application', async (t) => {

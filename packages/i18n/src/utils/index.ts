@@ -2,10 +2,11 @@
  * i18n ユーティリティ関数
  */
 
-import { getCurrentLanguage as getLanguage } from './getLanguage';
-import { switchLanguage as translatePath } from './translatePath';
-import { t as translate } from './translate';
-import { getLicenseTemplate, getLicenseTemplateKey, getLicenseCategory } from './license';
+import { getCurrentLanguage as getLanguage } from './getLanguage.js';
+import { switchLanguage as translatePath } from './translatePath.js';
+import { t as translate } from './translate.js';
+import { getLicenseTemplate, getLicenseTemplateKey, getLicenseCategory } from './license.js';
+import { getLocaleFromPathname } from './localeFromPathname.js';
 
 export {
   getLanguage,
@@ -14,4 +15,5 @@ export {
   getLicenseTemplate,
   getLicenseTemplateKey,
   getLicenseCategory,
+  getLocaleFromPathname,
 };

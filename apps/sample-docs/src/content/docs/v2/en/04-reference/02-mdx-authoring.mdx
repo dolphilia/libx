@@ -23,19 +23,19 @@ tags:
 draft: false
 ---
 
-import { Alert, Tabs, Tab } from '@docs/ui';
+import { Alert, Tabs, TabItem } from '@docs/ui';
 
 # Data Pipelines
 
-<Alert type="tip">Frontmatter drives navigation and meta tags.</Alert>
+<Alert variant="success">Frontmatter drives navigation and meta tags.</Alert>
 
 ```bash
 pnpm --filter=sample-docs dev
 ```
 
 <Tabs>
-  <Tab title="CLI">Use scripts/create-version.js for new versions.</Tab>
-  <Tab title="UI">Rebuild the sidebar after reorganizing content.</Tab>
+  <TabItem label="CLI">Use scripts/create-version.js for new versions.</TabItem>
+  <TabItem label="UI">Rebuild the sidebar after reorganizing content.</TabItem>
 </Tabs>
 
 ````
@@ -79,17 +79,17 @@ apps/sample-docs/src/content/docs/v2/&lt;lang&gt;/&lt;category&gt;/&lt;num&gt;-&
 
 ### Callouts and Inline Interactions
 
-```mdx
-import { Alert, CodeWindow } from '@docs/ui';
+````mdx
+import { Alert } from '@docs/ui';
 
-<Alert type="note">
+<Alert variant="info">
 MDX gives you Markdown for most prose, but components make it interactive.
 </Alert>
 
-<CodeWindow filename="astro.config.mjs">
-{`import mdx from '@astrojs/mdx';`}
-</CodeWindow>
+```js title="astro.config.mjs"
+import mdx from '@astrojs/mdx';
 ```
+````
 
 ### Linking Best Practices
 

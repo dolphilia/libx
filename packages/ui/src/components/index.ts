@@ -13,6 +13,7 @@ export { default as Alert } from './Alert.astro';
 // Starlightスタイルの新コンポーネント
 export { default as ContentPanel } from './ContentPanel.astro';
 export { default as TableOfContents } from './TableOfContents/TableOfContents.astro';
+export { default as MobileTableOfContents } from './TableOfContents/MobileTableOfContents.astro';
 export { default as TableOfContentsList } from './TableOfContents/TableOfContentsList.astro';
 export { default as Pagination } from './Pagination.astro';
 
@@ -32,7 +33,8 @@ export { default as CardGrid } from './CardGrid.astro';
 export { Tabs, TabItem } from './Tabs';
 export { Icon, Icons, type IconName } from './icons';
 export { Dropdown, DropdownItem } from './Dropdown';
-export { default as MathDisplay } from './MathDisplay.astro';
 
 // ライセンス関連コンポーネント
 export { default as LicenseAttribution } from './LicenseAttribution.astro';
+export { default as SourceStatus } from './SourceStatus.astro';
+export { default as Search } from './Search.astro';

@@ -30,7 +30,7 @@ export function buildDocumentPath(
 }
 
 /**
- * ディレクトリ構造を再帰的にスキャンしてMDXファイルを探す
+ * ディレクトリ構造を再帰的にスキャンしてMarkdownファイルを探す
  */
 async function scanDirectory(dirPath: string, basePath = ''): Promise<string[]> {
   const files: string[] = [];
@@ -45,7 +45,7 @@ async function scanDirectory(dirPath: string, basePath = ''): Promise<string[]> 
       if (entry.isDirectory()) {
         const subFiles = await scanDirectory(fullPath, relativePath);
         files.push(...subFiles);
-      } else if (entry.isFile() && entry.name.endsWith('.mdx')) {
+      } else if (entry.isFile() && /\.mdx?$/.test(entry.name)) {
         files.push(relativePath);
       }
     }
@@ -65,9 +65,9 @@ export async function getAvailableContent(options?: ContentOptions): Promise<Con
   const contentFiles: ContentFile[] = [];
 
   try {
-    const mdxFiles = await scanDirectory(contentDir);
+    const markdownFiles = await scanDirectory(contentDir);
 
-    for (const filePath of mdxFiles) {
+    for (const filePath of markdownFiles) {
       const pathParts = filePath.split(path.sep);
 
       if (pathParts.length >= 4) {
@@ -75,7 +75,7 @@ export async function getAvailableContent(options?: ContentOptions): Promise<Con
         const restParts = pathParts.slice(2);
 
         // ファイル名から拡張子を除去（番号プレフィックスは保持）
-        const fileSlug = fileName.replace('.mdx', '');
+        const fileSlug = fileName.replace(/\.mdx?$/, '');
         // 表示用のslugは番号プレフィックスを削除
         const displaySlug = fileSlug.replace(/^\d+-/, '');
 

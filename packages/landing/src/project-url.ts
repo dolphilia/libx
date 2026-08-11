@@ -160,10 +160,10 @@ async function findFirstAvailablePage(
         for (const category of sortedCategories) {
           const categoryPath = path.join(langDir, category.name);
           const files = await fs.readdir(categoryPath);
-          const mdxFiles = files.filter((f) => f.endsWith('.mdx')).sort();
+          const markdownFiles = files.filter((file) => /\.mdx?$/.test(file)).sort();
 
-          if (mdxFiles.length > 0) {
-            const fileName = mdxFiles[0].replace('.mdx', '');
+          if (markdownFiles.length > 0) {
+            const fileName = markdownFiles[0].replace(/\.mdx?$/, '');
             return `${version.name}/${lang}/${category.name}/${fileName}`;
           }
         }

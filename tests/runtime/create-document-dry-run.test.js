@@ -47,7 +47,28 @@ test('create-documentのdry-runは文書と設定を変更しない', () => {
   assert.match(result.stdout, /変更予定/);
   assert.match(result.stdout, /dry-run/);
   assert.match(result.stdout, /\/v2\/ar\//);
+  assert.match(result.stdout, /\.md\b/);
   assert.equal(hashDirectory(projectSource), before);
+});
+
+test('create-documentはMDXを明示指定した場合だけmdxを作成予定にする', () => {
+  const result = spawnSync(
+    process.execPath,
+    [
+      'scripts/create-document.js',
+      'sample-docs',
+      'en',
+      'v2',
+      'guide',
+      'MDX Fixture',
+      '--format=mdx',
+      '--dry-run',
+    ],
+    { cwd: repositoryRoot, encoding: 'utf8' }
+  );
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(result.stdout, /\.mdx\b/);
 });
 
 test('create-documentはプロジェクト未対応のロケールを明示的に拒否する', () => {

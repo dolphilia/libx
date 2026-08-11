@@ -1,11 +1,16 @@
 ---
+import { getLocaleFromPathname, translate } from '@docs/i18n/utils';
+import type { LocaleKey } from '@docs/i18n/locales';
+
 interface Props {
   level: 1 | 2 | 3 | 4 | 5 | 6;
   id: string;
   class?: string;
+  lang?: LocaleKey;
 }
 
-const { level, id, class: className } = Astro.props;
+const { level, id, class: className, lang: explicitLang } = Astro.props;
+const lang = explicitLang ?? getLocaleFromPathname(Astro.url.pathname);
 
 if (!id) {
   throw new Error('Missing `id` attribute passed to `<AnchorHeading>` component');
@@ -64,7 +69,7 @@ if (!id) {
         ></path>
       </svg>
     </span>
-    <span class="sr-only">このセクションへのリンク</span>
+    <span class="sr-only">{translate('accessibility.sectionLink', lang)}</span>
   </a>
 </div>
 

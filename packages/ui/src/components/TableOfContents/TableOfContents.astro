@@ -62,6 +62,7 @@ const filteredHeadings = headings.filter(
 
 // 翻訳キー
 const TOC_TITLE = 'docs.onThisPage';
+const headingId = isMobile ? 'starlight-toc-heading-mobile' : 'starlight-toc-heading';
 ---
 
 {
@@ -73,8 +74,8 @@ const TOC_TITLE = 'docs.onThisPage';
       dir={dir}
     >
       <div class="starlight-toc-wrapper">
-        <nav aria-labelledby="starlight-toc-heading">
-          <h3 id="starlight-toc-heading" class="starlight-toc-heading">
+        <nav aria-labelledby={headingId}>
+          <h3 id={headingId} class="starlight-toc-heading">
             {translate(TOC_TITLE, lang)}
           </h3>
           <div class="starlight-toc-list">
@@ -88,12 +89,11 @@ const TOC_TITLE = 'docs.onThisPage';
 
 <script>
   class StarlightTOC extends HTMLElement {
-    constructor() {
-      super();
+    activeHeading: HTMLAnchorElement | null = null;
+    observer: IntersectionObserver | null = null;
+    visibleHeadings: Map<Element, IntersectionObserverEntry> = new Map();
 
-      // 現在アクティブな見出しを追跡
-      let activeHeading: HTMLAnchorElement | null = null;
-
+    connectedCallback() {
       // 見出し要素を取得
       const minLevel = parseInt(this.dataset.minH || '2');
       const maxLevel = parseInt(this.dataset.maxH || '3');
@@ -109,66 +109,43 @@ const TOC_TITLE = 'docs.onThisPage';
       // 目次内のリンクを取得
       const links = Array.from(this.querySelectorAll('a')) as HTMLAnchorElement[];
 
-      // スクロール時に現在の見出しを更新
-      const updateActiveHeading = () => {
-        // ヘッダーの高さを考慮したオフセット
-        const topOffset = 100;
-
-        // 現在表示されている見出しを探す
-        let currentHeading: HTMLHeadingElement | undefined;
-
-        // 画面内に表示されている見出しを探す
-        // 最後に画面上部を通過した見出しを選択
-        for (const heading of headings) {
-          const { top } = heading.getBoundingClientRect();
-          if (top < topOffset) {
-            currentHeading = heading;
-          } else {
-            break;
-          }
-        }
-
-        // 対応するリンクを見つける
-        if (currentHeading) {
-          const id = currentHeading.id;
-          const newActiveHeading =
-            links.find((link) => link.getAttribute('href') === `#${id}`) || null;
-
-          // アクティブな見出しが変わった場合のみ更新
-          if (newActiveHeading !== activeHeading) {
-            // 以前のアクティブな見出しからaria-currentを削除
-            if (activeHeading) {
-              activeHeading.removeAttribute('aria-current');
-              activeHeading.classList.remove('active');
-            }
-
-            // 新しいアクティブな見出しにaria-currentを設定
-            if (newActiveHeading) {
-              newActiveHeading.setAttribute('aria-current', 'true');
-              newActiveHeading.classList.add('active');
-            }
-
-            activeHeading = newActiveHeading;
-          }
-        }
+      const activate = (heading: HTMLHeadingElement | undefined) => {
+        const next = heading
+          ? links.find((link) => link.getAttribute('href') === `#${heading.id}`) || null
+          : null;
+        if (next === this.activeHeading) return;
+        this.activeHeading?.removeAttribute('aria-current');
+        this.activeHeading?.classList.remove('active');
+        next?.setAttribute('aria-current', 'true');
+        next?.classList.add('active');
+        this.activeHeading = next;
       };
 
-      // スクロールイベントリスナーを登録
-      window.addEventListener('scroll', updateActiveHeading, { passive: true });
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) this.visibleHeadings.set(entry.target, entry);
+          const visible = headings.find(
+            (heading) => this.visibleHeadings.get(heading)?.isIntersecting
+          );
+          if (visible) activate(visible);
+        },
+        { rootMargin: '-80px 0px -70% 0px', threshold: [0, 1] }
+      );
+      headings.forEach((heading) => this.observer?.observe(heading));
+      activate(headings[0]);
+    }
 
-      // ウィンドウサイズ変更時にも更新
-      window.addEventListener('resize', updateActiveHeading, { passive: true });
-
-      // ページ読み込み完了時に実行
-      window.addEventListener('load', updateActiveHeading);
-
-      // 初期化時に一度実行
-      setTimeout(updateActiveHeading, 100);
+    disconnectedCallback() {
+      this.observer?.disconnect();
+      this.observer = null;
+      this.visibleHeadings.clear();
     }
   }
 
   // カスタム要素を登録
-  customElements.define('starlight-toc', StarlightTOC);
+  if (!customElements.get('starlight-toc')) {
+    customElements.define('starlight-toc', StarlightTOC);
+  }
 </script>
 
 <style>

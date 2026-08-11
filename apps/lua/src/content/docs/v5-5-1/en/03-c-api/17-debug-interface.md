@@ -1,0 +1,280 @@
+---
+title: "The debug interface"
+description: "Activation records, hooks and debug API functions"
+licenseSource: "lua-5.5.1"
+---
+
+# 4.7 – <a id="4.7"></a>The Debug Interface
+
+Lua has no built-in debugging facilities. Instead, it offers a special interface by means of functions and *hooks*. This interface allows the construction of different kinds of debuggers, profilers, and other tools that need "inside information" from the interpreter.
+
+---
+
+## <a id="lua_Debug"></a>`lua_Debug`
+
+```c
+typedef struct lua_Debug {
+  int event;
+  const char *name;           /* (n) */
+  const char *namewhat;       /* (n) */
+  const char *what;           /* (S) */
+  const char *source;         /* (S) */
+  size_t srclen;              /* (S) */
+  int currentline;            /* (l) */
+  int linedefined;            /* (S) */
+  int lastlinedefined;        /* (S) */
+  unsigned char nups;         /* (u) number of upvalues */
+  unsigned char nparams;      /* (u) number of parameters */
+  char isvararg;              /* (u) */
+  unsigned char extraargs;    /* (t) number of extra arguments */
+  char istailcall;            /* (t) */
+  int ftransfer;              /* (r) index of first value transferred */
+  int ntransfer;              /* (r) number of transferred values */
+  char short_src[LUA_IDSIZE]; /* (S) */
+  /* private part */
+  other fields
+} lua_Debug;
+```
+
+A structure used to carry different pieces of information about a function or an activation record. [`lua_getstack`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getstack) fills only the private part of this structure, for later use. To fill the other fields of [`lua_Debug`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_Debug) with useful information, you must call [`lua_getinfo`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getinfo) with an appropriate parameter. (Specifically, to get a field, you must add the letter between parentheses in the field's comment to the parameter `what` of [`lua_getinfo`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getinfo).)
+
+The fields of [`lua_Debug`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_Debug) have the following meaning:
+
+- **`source`**: the source of the chunk that created the function. If `source` starts with a '`@`', it means that the function was defined in a file where the file name follows the '`@`'. If `source` starts with a '`=`', the remainder of its contents describes the source in a user-dependent manner. Otherwise, the function was defined in a string where `source` is that string.
+- **`srclen`**: the length of the string `source`.
+- **`short_src`**: a "printable" version of `source`, to be used in error messages.
+- **`linedefined`**: the line number where the definition of the function starts.
+- **`lastlinedefined`**: the line number where the definition of the function ends.
+- **`what`**: the string `"Lua"` if the function is a Lua function, `"C"` if it is a C function, `"main"` if it is the main part of a chunk.
+- **`currentline`**: the current line where the given function is executing. When no line information is available, `currentline` is set to -1.
+- **`name`**: a reasonable name for the given function. Because functions in Lua are first-class values, they do not have a fixed name: some functions can be the value of multiple global variables, while others can be stored only in a table field. The `lua_getinfo` function checks how the function was called to find a suitable name. If it cannot find a name, then `name` is set to `NULL`.
+- **`namewhat`**: explains the `name` field. The value of `namewhat` can be `"global"`, `"local"`, `"upvalue"`, `"field"`, `""` (the empty string), plus some other options, according to how the function was called. (Lua uses the empty string when no other option seems to apply.)
+- **`istailcall`**: true if this function invocation was called by a tail call. In this case, the caller of this level is not in the stack.
+- **`extraargs`**: The number of extra arguments added by the call to functions called through `__call` metamethods. (Each `__call` metavalue adds a single extra argument, the object being called, but there may be a chain of `__call` metavalues.)
+- **`nups`**: the number of upvalues of the function.
+- **`nparams`**: the number of parameters of the function (always 0 for C functions).
+- **`isvararg`**: true if the function is a variadic function (always true for C functions).
+- **`ftransfer`**: the index in the stack of the first value being "transferred", that is, parameters in a call or return values in a return. (The other values are in consecutive indices.) Using this index, you can access and modify these values through [`lua_getlocal`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getlocal) and [`lua_setlocal`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_setlocal). This field is only meaningful during a call hook, denoting the first parameter, or a return hook, denoting the first value being returned. (For call hooks, this value is always 1.)
+- **`ntransfer`**: The number of values being transferred (see previous item). (For calls of Lua functions, this value is always equal to `nparams`.)
+
+---
+
+## <a id="lua_gethook"></a>`lua_gethook`
+
+[-0, +0, –]
+
+```c
+lua_Hook lua_gethook (lua_State *L);
+```
+
+Returns the current hook function.
+
+---
+
+## <a id="lua_gethookcount"></a>`lua_gethookcount`
+
+[-0, +0, –]
+
+```c
+int lua_gethookcount (lua_State *L);
+```
+
+Returns the current hook count.
+
+---
+
+## <a id="lua_gethookmask"></a>`lua_gethookmask`
+
+[-0, +0, –]
+
+```c
+int lua_gethookmask (lua_State *L);
+```
+
+Returns the current hook mask.
+
+---
+
+## <a id="lua_getinfo"></a>`lua_getinfo`
+
+[-(0|1), +(0|1|2), *m*]
+
+```c
+int lua_getinfo (lua_State *L, const char *what, lua_Debug *ar);
+```
+
+Gets information about a specific function or function invocation.
+
+To get information about a function invocation, the parameter `ar` must be a valid activation record that was filled by a previous call to [`lua_getstack`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getstack) or given as argument to a hook (see [`lua_Hook`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_Hook)).
+
+To get information about a function, you push it onto the stack and start the `what` string with the character '`>`'. (In that case, `lua_getinfo` pops the function from the top of the stack.) For instance, to know in which line a function `f` was defined, you can write the following code:
+
+```c
+     lua_Debug ar;
+     lua_getglobal(L, "f");  /* get global 'f' */
+     lua_getinfo(L, ">S", &ar);
+     printf("%d\n", ar.linedefined);
+```
+
+Each character in the string `what` selects some fields of the structure `ar` to be filled or a value to be pushed on the stack. (These characters are also documented in the declaration of the structure [`lua_Debug`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_Debug), between parentheses in the comments following each field.)
+
+- **'`f`'**: pushes onto the stack the function that is running at the given level;
+- **'`l`'**: fills in the field `currentline`;
+- **'`n`'**: fills in the fields `name` and `namewhat`;
+- **'`r`'**: fills in the fields `ftransfer` and `ntransfer`;
+- **'`S`'**: fills in the fields `source`, `srclen`, `short_src`, `linedefined`, `lastlinedefined`, and `what`;
+- **'`t`'**: fills in the fields `istailcall` and `extraargs`;
+- **'`u`'**: fills in the fields `nups`, `nparams`, and `isvararg`;
+- **'`L`'**: pushes onto the stack a table whose indices are the lines on the function with some associated code, that is, the lines where you can put a break point. (Lines with no code include empty lines and comments.) If this option is given together with option '`f`', its table is pushed after the function. This is the only option that can raise a memory error.
+
+This function returns 0 to signal an invalid option in `what`; even then the valid options are handled correctly.
+
+---
+
+## <a id="lua_getlocal"></a>`lua_getlocal`
+
+[-0, +(0|1), –]
+
+```c
+const char *lua_getlocal (lua_State *L, const lua_Debug *ar, int n);
+```
+
+Gets information about a local variable or a temporary value of a given activation record or a given function.
+
+In the first case, the parameter `ar` must be a valid activation record that was filled by a previous call to [`lua_getstack`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getstack) or given as argument to a hook (see [`lua_Hook`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_Hook)). The index `n` selects which local variable to inspect; see [`debug.getlocal`](/docs/lua/v5-5-1/en/05-standard-library/12-debug-library/#pdf-debug.getlocal) for details about variable indices and names.
+
+[`lua_getlocal`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getlocal) pushes the variable's value onto the stack and returns its name.
+
+In the second case, `ar` must be `NULL` and the function to be inspected must be on the top of the stack. In this case, only parameters of Lua functions are visible (as there is no information about what variables are active) and no values are pushed onto the stack.
+
+Returns `NULL` (and pushes nothing) when the index is greater than the number of active local variables.
+
+---
+
+## <a id="lua_getstack"></a>`lua_getstack`
+
+[-0, +0, –]
+
+```c
+int lua_getstack (lua_State *L, int level, lua_Debug *ar);
+```
+
+Gets information about the interpreter runtime stack.
+
+This function fills parts of a [`lua_Debug`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_Debug) structure with an identification of the *activation record* of the function executing at a given level. Level 0 is the current running function, whereas level *n+1* is the function that has called level *n* (except for tail calls, which do not count in the stack). When called with a level greater than the stack depth, [`lua_getstack`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getstack) returns 0; otherwise it returns 1.
+
+---
+
+## <a id="lua_getupvalue"></a>`lua_getupvalue`
+
+[-0, +(0|1), –]
+
+```c
+const char *lua_getupvalue (lua_State *L, int funcindex, int n);
+```
+
+Gets information about the `n`-th upvalue of the closure at index `funcindex`. It pushes the upvalue's value onto the stack and returns its name. Returns `NULL` (and pushes nothing) when the index `n` is greater than the number of upvalues.
+
+See [`debug.getupvalue`](/docs/lua/v5-5-1/en/05-standard-library/12-debug-library/#pdf-debug.getupvalue) for more information about upvalues.
+
+---
+
+## <a id="lua_Hook"></a>`lua_Hook`
+
+```c
+typedef void (*lua_Hook) (lua_State *L, lua_Debug *ar);
+```
+
+Type for debugging hook functions.
+
+Whenever a hook is called, its `ar` argument has its field `event` set to the specific event that triggered the hook. Lua identifies these events with the following constants: <a id="pdf-LUA_HOOKCALL"></a>`LUA_HOOKCALL`, <a id="pdf-LUA_HOOKRET"></a>`LUA_HOOKRET`, <a id="pdf-LUA_HOOKTAILCALL"></a>`LUA_HOOKTAILCALL`, <a id="pdf-LUA_HOOKLINE"></a>`LUA_HOOKLINE`, and <a id="pdf-LUA_HOOKCOUNT"></a>`LUA_HOOKCOUNT`. Moreover, for line events, the field `currentline` is also set. To get the value of any other field in `ar`, the hook must call [`lua_getinfo`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getinfo).
+
+For call events, `event` can be `LUA_HOOKCALL`, the normal value, or `LUA_HOOKTAILCALL`, for a tail call; in this case, there will be no corresponding return event.
+
+While Lua is running a hook, it disables other calls to hooks. Therefore, if a hook calls back Lua to execute a function or a chunk, this execution occurs without any calls to hooks.
+
+Hook functions cannot have continuations, that is, they cannot call [`lua_yieldk`](/docs/lua/v5-5-1/en/03-c-api/16-functions-and-types-u-y/#lua_yieldk), [`lua_pcallk`](/docs/lua/v5-5-1/en/03-c-api/11-functions-and-types-n-pcall/#lua_pcallk), or [`lua_callk`](/docs/lua/v5-5-1/en/03-c-api/07-functions-and-types-a-c/#lua_callk) with a non-null `k`.
+
+Hook functions can yield under the following conditions: Only count and line events can yield; to yield, a hook function must finish its execution calling [`lua_yield`](/docs/lua/v5-5-1/en/03-c-api/16-functions-and-types-u-y/#lua_yield) with `nresults` equal to zero (that is, with no values).
+
+---
+
+## <a id="lua_sethook"></a>`lua_sethook`
+
+[-0, +0, –]
+
+```c
+void lua_sethook (lua_State *L, lua_Hook f, int mask, int count);
+```
+
+Sets the debugging hook function.
+
+Argument `f` is the hook function. `mask` specifies on which events the hook will be called: it is formed by a bitwise OR of the constants <a id="pdf-LUA_MASKCALL"></a>`LUA_MASKCALL`, <a id="pdf-LUA_MASKRET"></a>`LUA_MASKRET`, <a id="pdf-LUA_MASKLINE"></a>`LUA_MASKLINE`, and <a id="pdf-LUA_MASKCOUNT"></a>`LUA_MASKCOUNT`. The `count` argument is only meaningful when the mask includes `LUA_MASKCOUNT`. For each event, the hook is called as explained below:
+
+- **The call hook**: is called when the interpreter calls a function. The hook is called just after Lua enters the new function.
+- **The return hook**: is called when the interpreter returns from a function. The hook is called just before Lua leaves the function.
+- **The line hook**: is called when the interpreter is about to start the execution of a new line of code, or when it jumps back in the code (even to the same line). This event only happens while Lua is executing a Lua function.
+- **The count hook**: is called after the interpreter executes every `count` instructions. This event only happens while Lua is executing a Lua function.
+
+Hooks are disabled by setting `mask` to zero.
+
+---
+
+## <a id="lua_setlocal"></a>`lua_setlocal`
+
+[-(0|1), +0, –]
+
+```c
+const char *lua_setlocal (lua_State *L, const lua_Debug *ar, int n);
+```
+
+Sets the value of a local variable of a given activation record. It assigns the value on the top of the stack to the variable and returns its name. It also pops the value from the stack.
+
+Returns `NULL` (and pops nothing) when the index is greater than the number of active local variables.
+
+Parameters `ar` and `n` are as in the function [`lua_getlocal`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getlocal), except that `ar` cannot be `NULL`, as `lua_setlocal` only operates on activation records.
+
+---
+
+## <a id="lua_setupvalue"></a>`lua_setupvalue`
+
+[-(0|1), +0, –]
+
+```c
+const char *lua_setupvalue (lua_State *L, int funcindex, int n);
+```
+
+Sets the value of a closure's upvalue. It assigns the value on the top of the stack to the upvalue and returns its name. It also pops the value from the stack.
+
+Returns `NULL` (and pops nothing) when the index `n` is greater than the number of upvalues.
+
+Parameters `funcindex` and `n` are as in the function [`lua_getupvalue`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getupvalue).
+
+---
+
+## <a id="lua_upvalueid"></a>`lua_upvalueid`
+
+[-0, +0, –]
+
+```c
+void *lua_upvalueid (lua_State *L, int funcindex, int n);
+```
+
+Returns a unique identifier for the upvalue numbered `n` from the closure at index `funcindex`.
+
+These unique identifiers allow a program to check whether different closures share upvalues. Lua closures that share an upvalue (that is, that access a same external local variable) will return identical ids for those upvalue indices.
+
+Parameters `funcindex` and `n` are as in the function [`lua_getupvalue`](/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_getupvalue), but `n` cannot be greater than the number of upvalues.
+
+---
+
+## <a id="lua_upvaluejoin"></a>`lua_upvaluejoin`
+
+[-0, +0, –]
+
+```c
+void lua_upvaluejoin (lua_State *L, int funcindex1, int n1,
+                                    int funcindex2, int n2);
+```
+
+Make the `n1`-th upvalue of the Lua closure at index `funcindex1` refer to the `n2`-th upvalue of the Lua closure at index `funcindex2`.

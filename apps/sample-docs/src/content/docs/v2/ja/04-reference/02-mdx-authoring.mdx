@@ -23,19 +23,19 @@ tags:
 draft: false
 ---
 
-import { Alert, Tabs, Tab } from '@docs/ui';
+import { Alert, Tabs, TabItem } from '@docs/ui';
 
 # データパイプライン
 
-<Alert type="tip">フロントマターはナビゲーションとメタタグに利用されます。</Alert>
+<Alert variant="success">フロントマターはナビゲーションとメタタグに利用されます。</Alert>
 
 ```bash
 pnpm --filter=sample-docs dev
 ```
 
 <Tabs>
-  <Tab title="CLI">新しいバージョンは scripts/create-version.js で作成できます。</Tab>
-  <Tab title="UI">構造を変更したらサイドバーを再生成してください。</Tab>
+  <TabItem label="CLI">新しいバージョンは scripts/create-version.js で作成できます。</TabItem>
+  <TabItem label="UI">構造を変更したらサイドバーを再生成してください。</TabItem>
 </Tabs>
 
 ````
@@ -80,17 +80,17 @@ apps/sample-docs/src/content/docs/v2/&lt;lang&gt;/&lt;category&gt;/&lt;番号&gt
 
 ### コールアウトとインタラクション
 
-```mdx
-import { Alert, CodeWindow } from '@docs/ui';
+````mdx
+import { Alert } from '@docs/ui';
 
-<Alert type="note">
+<Alert variant="info">
 Markdownで本文を書き、必要な箇所だけコンポーネントで補強できます。
 </Alert>
 
-<CodeWindow filename="astro.config.mjs">
-{`import mdx from '@astrojs/mdx';`}
-</CodeWindow>
+```js title="astro.config.mjs"
+import mdx from '@astrojs/mdx';
 ```
+````
 
 ### リンク運用のベストプラクティス
 

@@ -500,10 +500,10 @@ function generateTemplateFiles(
             continue;
           }
 
-          // カテゴリ内のMDXファイルを取得
+          // カテゴリ内のMarkdown／MDXファイルを取得
           const templateFiles = fs
             .readdirSync(templateCategoryPath)
-            .filter((file) => file.endsWith('.mdx'))
+            .filter((file) => /\.mdx?$/.test(file))
             .sort();
 
           for (const templateFile of templateFiles) {
