@@ -148,7 +148,13 @@ pnpm check:integrity
 git diff --check
 ```
 
-プロジェクト固有の英日構造・内部リンク検査も実行する。翻訳途中の言語に対象版がない場合、版セレクターへ空配列を渡して失敗させず、表示すべき版がなければ非表示にする。
+各サイトは必要に応じて読み取り専用の`check:content`を定義し、ルートの`pnpm check:content`から実行する。プロジェクト固有の定本再生成差分、翻訳構造、内部リンク、未処理命令、ライセンス参照をここへ接続する。
+
+### 翻訳欠落時の表示
+
+翻訳途中はページ欠落を許容するが、定本本文を別言語のページとして黙って表示しない。言語セレクターと版セレクターには、現在と同じ相対ページが実在する候補だけを表示する。欠落言語のサイドバー、前後移動、入口ページも生成せず、不存在URLは404とする。
+
+翻訳0件、部分翻訳、全件翻訳のいずれでもサイトをビルドできなければならない。翻訳途中の言語に対象版がない場合はセレクターへ空配列を渡して失敗させず、表示すべき版がなければ非表示にする。
 
 ### ブラウザ確認
 
@@ -169,6 +175,8 @@ git diff --check
 - `docs/notes/document-import/glfw/MANUAL_TRANSLATION_PLAN.md`
 - `docs/notes/document-import/glfw/TRANSLATION_GUIDE.md`
 - `docs/notes/document-import/glfw/TRANSLATION_MODEL_EVALUATION.md`
+- `docs/notes/document-import/glfw/RETROSPECTIVE.md`
+- `docs/notes/document-import/glfw/LIBX_IMPLEMENTATION_IMPROVEMENTS.md`
 - `scripts/importers/import-glfw-3.5.1.mjs`
 - `scripts/importers/report-glfw-translation-review-hotspots.mjs`
 - `scripts/importers/sync-glfw-translation-urls.mjs`

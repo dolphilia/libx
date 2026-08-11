@@ -78,6 +78,32 @@ test('project config validation rejects malformed languages and dates', () => {
   );
 });
 
+test('project config validation rejects IDs that Astro would normalize or collide', () => {
+  const dottedVersion = {
+    ...validConfig,
+    versioning: {
+      versions: [
+        {
+          ...validConfig.versioning.versions[0],
+          id: 'v3.5.1',
+        },
+      ],
+    },
+  };
+  assert.equal(validateProjectConfigJSON(dottedVersion), false);
+  assert.match(getProjectConfigValidationErrors(dottedVersion)[0], /v3-5-1/);
+
+  const collidingVersion = {
+    ...validConfig,
+    translations: {
+      ...validConfig.translations,
+      en: { ...validConfig.translations.en, categories: { v1: 'Collision' } },
+    },
+  };
+  assert.equal(validateProjectConfigJSON(collidingVersion), false);
+  assert.match(getProjectConfigValidationErrors(collidingVersion)[0], /collide/);
+});
+
 test('stripJsonComments preserves comment-like content inside strings', () => {
   const parsed = JSON.parse(
     stripJsonComments('{ // comment\n "url": "https://example.com/a//b" /* block */ }')

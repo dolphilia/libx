@@ -4,15 +4,58 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  assertSafeImportTarget,
+  comparePathDescriptions,
+  describePath,
+  hashFile,
+  prepareImportForCheck,
+  prepareImportOutput,
+} from './safe-import-output.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '../..');
 // Astro normalizes dots out of content IDs, so the libx version ID must not
 // contain dots. The upstream display version remains GLFW 3.5.1.
 const version = 'v3-5-1';
-const sourceRoot = path.join(rootDir, '.tmp/document-import/glfw/01-source/repository/glfw-3.5.1');
-const outputRoot = path.join(rootDir, 'apps/glfw/src/content/docs', version, 'en');
+const defaultSourceRoot = path.join(
+  rootDir,
+  '.tmp/document-import/glfw/01-source/repository/glfw-3.5.1'
+);
+const allowedOutputRoot = path.join(rootDir, 'apps/glfw/src/content/docs');
+const defaultOutputRoot = path.join(allowedOutputRoot, version, 'en');
+const defaultAssetOutput = path.join(rootDir, 'apps/glfw/public/assets/glfw-3.5.1/spaces.svg');
+const reportPath = path.join(rootDir, '.tmp/document-import/glfw/05-reports/import-manifest.json');
+
+function optionValue(args, name, fallback) {
+  const equals = args.find((argument) => argument.startsWith(`${name}=`));
+  if (equals) return equals.slice(name.length + 1);
+  const index = args.indexOf(name);
+  return index >= 0 && args[index + 1] && !args[index + 1].startsWith('--')
+    ? args[index + 1]
+    : fallback;
+}
+
+const cliArguments = process.argv.slice(2);
+const sourceRoot = path.resolve(optionValue(cliArguments, '--source', defaultSourceRoot));
+const outputRoot = assertSafeImportTarget(
+  optionValue(cliArguments, '--output', defaultOutputRoot),
+  allowedOutputRoot,
+  'en'
+);
+const checkOnly = cliArguments.includes('--check');
+const dryRun = cliArguments.includes('--dry-run');
 const siteBase = `/docs/glfw/${version}/en`;
+
+if (dryRun) {
+  if (!fs.existsSync(sourceRoot)) throw new Error(`取得元が存在しません: ${sourceRoot}`);
+  console.log('GLFWインポート dry-run');
+  console.log(`取得元: ${sourceRoot}`);
+  console.log(`定本出力先: ${outputRoot}`);
+  console.log(`画像出力先: ${defaultAssetOutput}`);
+  console.log('ファイルは変更していません');
+  process.exit(0);
+}
 
 const guides = [
   [
@@ -250,7 +293,10 @@ function expandSnippet(sourceFile, snippetName) {
   }
 
   const language = path.extname(sourceFile).slice(1) || 'text';
-  return `\`\`\`${language}\n${lines.slice(start + 1, end).join('\n').trimEnd()}\n\`\`\``;
+  return `\`\`\`${language}\n${lines
+    .slice(start + 1, end)
+    .join('\n')
+    .trimEnd()}\n\`\`\``;
 }
 
 function normalizeGuide(source) {
@@ -264,11 +310,11 @@ function normalizeGuide(source) {
   text = text.replace(/@ref\s+([A-Za-z0-9_]+)/g, (_, ref) => `[${ref}](${targetForRef(ref)})`);
   text = text.replace(/@b\s+([A-Za-z0-9_]+)/g, '`$1`');
   text = text.replace(/\]\(modules\.html\)/g, `](${siteBase}/)`);
+  text = text.replace(/src="spaces\.svg"/g, 'src="/docs/glfw/assets/glfw-3.5.1/spaces.svg"');
   text = text.replace(/^@note\s+/gm, '> **Note:** ');
   text = text.replace(/^@warning\s+/gm, '> **Warning:** ');
-  text = text.replace(
-    /^@snippet\s+(\S+)\s+(\S+)\s*$/gm,
-    (_, sourceFile, snippetName) => expandSnippet(sourceFile, snippetName)
+  text = text.replace(/^@snippet\s+(\S+)\s+(\S+)\s*$/gm, (_, sourceFile, snippetName) =>
+    expandSnippet(sourceFile, snippetName)
   );
   return text.trimEnd() + '\n';
 }
@@ -294,35 +340,105 @@ function normalizeReferenceHtml(source, sourceFile) {
   return markdown.trimEnd() + '\n';
 }
 
-// The site template contains demonstration content under v1. It must never be
-// published as GLFW documentation.
-fs.rmSync(path.join(rootDir, 'apps/glfw/src/content/docs/v1'), { recursive: true, force: true });
-fs.rmSync(outputRoot, { recursive: true, force: true });
-
-for (const [sourceFile, outputFile, title, description] of guides) {
-  const source = fs.readFileSync(path.join(sourceRoot, 'docs', sourceFile), 'utf8');
-  const output =
-    frontmatter(title, description) + adaptationNotice('page') + normalizeGuide(source);
-  const target = path.join(outputRoot, outputFile);
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(target, output);
+function markdownFiles(directory) {
+  if (!fs.existsSync(directory)) return [];
+  return fs
+    .readdirSync(directory, { withFileTypes: true })
+    .flatMap((entry) => {
+      const entryPath = path.join(directory, entry.name);
+      return entry.isDirectory()
+        ? markdownFiles(entryPath)
+        : entry.isFile() && entry.name.endsWith('.md')
+          ? [entryPath]
+          : [];
+    })
+    .sort();
 }
 
-for (const [sourceFile, outputFile, title] of references) {
-  const source = fs.readFileSync(path.join(sourceRoot, 'docs/html', sourceFile), 'utf8');
-  const output =
-    frontmatter(title, `GLFW 3.5.1 ${title}`) +
-    adaptationNotice('reference page') +
-    normalizeReferenceHtml(source, sourceFile);
-  const target = path.join(outputRoot, '04-reference', outputFile);
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(target, output);
+function generateDocumentation(destination) {
+  for (const [sourceFile, outputFile, title, description] of guides) {
+    const source = fs.readFileSync(path.join(sourceRoot, 'docs', sourceFile), 'utf8');
+    const output =
+      frontmatter(title, description) + adaptationNotice('page') + normalizeGuide(source);
+    const target = path.join(destination, outputFile);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, output);
+  }
+
+  for (const [sourceFile, outputFile, title] of references) {
+    const source = fs.readFileSync(path.join(sourceRoot, 'docs/html', sourceFile), 'utf8');
+    const output =
+      frontmatter(title, `GLFW 3.5.1 ${title}`) +
+      adaptationNotice('reference page') +
+      normalizeReferenceHtml(source, sourceFile);
+    const target = path.join(destination, '04-reference', outputFile);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, output);
+  }
 }
 
-const copiedImage = path.join(rootDir, 'apps/glfw/public/assets/glfw-3.5.1/spaces.svg');
-fs.mkdirSync(path.dirname(copiedImage), { recursive: true });
-fs.copyFileSync(path.join(sourceRoot, 'docs/spaces.svg'), copiedImage);
+function validateGeneratedDocumentation(destination) {
+  const files = markdownFiles(destination);
+  const expectedCount = guides.length + references.length;
+  if (files.length !== expectedCount) {
+    throw new Error(`生成ページ数が一致しません: ${files.length}/${expectedCount}`);
+  }
+  for (const filePath of files) {
+    const source = fs.readFileSync(filePath, 'utf8');
+    if (/^@(?:ref|snippet|anchor|note|warning|b)\b/m.test(source)) {
+      throw new Error(`未処理のDoxygen命令があります: ${path.relative(destination, filePath)}`);
+    }
+    if (/\]\((?!https?:|mailto:|#|\/)[^)]+\.html(?:#[^)]+)?\)/.test(source)) {
+      throw new Error(`未変換の相対HTMLリンクがあります: ${path.relative(destination, filePath)}`);
+    }
+    if (!source.includes('licenseSource: "glfw-3.5.1"')) {
+      throw new Error(`ライセンス参照がありません: ${path.relative(destination, filePath)}`);
+    }
+  }
+}
 
-console.log(
-  `Generated ${guides.length} guides and ${references.length} reference pages in ${outputRoot}`
-);
+const sourceImage = path.join(sourceRoot, 'docs/spaces.svg');
+if (!fs.existsSync(sourceImage)) throw new Error(`画像が存在しません: ${sourceImage}`);
+
+if (checkOnly) {
+  const result = prepareImportForCheck({
+    targetPath: outputRoot,
+    generate: generateDocumentation,
+    validate: validateGeneratedDocumentation,
+  });
+  const imageMatches =
+    fs.existsSync(defaultAssetOutput) && hashFile(sourceImage) === hashFile(defaultAssetOutput);
+  console.log(`定本ファイル: ${result.after.length}件`);
+  console.log(`定本差分: ${result.matches ? 'なし' : 'あり'}`);
+  console.log(`画像差分: ${imageMatches ? 'なし' : 'あり'}`);
+  if (!result.matches || !imageMatches) process.exitCode = 1;
+} else {
+  const result = prepareImportOutput({
+    targetPath: outputRoot,
+    generate: generateDocumentation,
+    validate: validateGeneratedDocumentation,
+  });
+  fs.mkdirSync(path.dirname(defaultAssetOutput), { recursive: true });
+  fs.copyFileSync(sourceImage, defaultAssetOutput);
+
+  const manifest = {
+    generatedAt: new Date().toISOString(),
+    source: sourceRoot,
+    output: outputRoot,
+    before: result.before,
+    after: result.after,
+    asset: {
+      path: path.relative(rootDir, defaultAssetOutput),
+      sha256: hashFile(defaultAssetOutput),
+    },
+  };
+  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
+  fs.writeFileSync(reportPath, `${JSON.stringify(manifest, null, 2)}\n`);
+
+  if (!comparePathDescriptions(result.after, describePath(outputRoot))) {
+    throw new Error('確定後の定本ハッシュが準備済み出力と一致しません');
+  }
+  console.log(`Generated ${guides.length} guides and ${references.length} reference pages`);
+  console.log(`Output: ${outputRoot}`);
+  console.log(`Manifest: ${reportPath}`);
+}

@@ -10,7 +10,11 @@ import type { LocaleKey } from '@docs/i18n/locales';
 import '../styles/global.css';
 import { getProjectConfig, getDisplayNameAsync } from '@docs/project-config';
 import { Icons } from '@docs/ui/components/icons/Icons';
-import { generateRedirectUrl } from '@docs/content-utils';
+import {
+  buildAvailableLanguagePaths,
+  collectAvailableVersionIds,
+  generateRedirectUrl,
+} from '@docs/content-utils';
 import { getCollection } from 'astro:content';
 
 // 定数定義
@@ -50,12 +54,6 @@ const displayName = await getDisplayNameAsync(lang);
 const dir = getLocaleDirection(lang);
 const breadcrumbIcon = dir === 'rtl' ? 'chevron-left' : 'chevron-right';
 const docs = await getCollection('docs');
-const availableVersionIds = new Set(
-  docs.filter((entry) => entry.slug.split('/')[1] === lang).map((entry) => entry.slug.split('/')[0])
-);
-const availableVersions = projectConfig.versioning.versions.filter((item) =>
-  availableVersionIds.has(item.id)
-);
 
 // HTML属性の設定
 const htmlDataAttributes: Record<string, string> = { 'data-theme': 'dark' };
@@ -69,6 +67,24 @@ const htmlAttributes = {
 const numBaseSegments = projectConfig.paths.baseUrl.split('/').filter((p) => p.length > 0).length;
 const slugSliceIndex = 1 + numBaseSegments + 1 + 1; // 1 (leading empty) + base segments + version segment + lang segment
 const currentSlugForSelector = `${lang}/${Astro.url.pathname.split('/').slice(slugSliceIndex).join('/').replace(/\/$/, '')}`; // lang/slug 形式
+const relativeSlug = Astro.url.pathname.split('/').slice(slugSliceIndex).filter(Boolean).join('/');
+const availableVersionIds = collectAvailableVersionIds({
+  documentSlugs: docs.map((entry) => entry.slug),
+  language: lang,
+  relativeSlug,
+});
+const availableVersions = projectConfig.versioning.versions.filter((item) =>
+  availableVersionIds.has(item.id)
+);
+const availableLanguagePaths = buildAvailableLanguagePaths({
+  documentSlugs: docs.map((entry) => entry.slug),
+  supportedLanguages: projectConfig.language.supported,
+  displayNames: projectConfig.language.displayNames,
+  baseUrl: projectConfig.paths.baseUrl,
+  version,
+  currentLanguage: lang,
+  relativeSlug,
+});
 
 // ドキュメントトップへの動的リンクを生成
 const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
@@ -156,7 +172,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
             )
           }
           <div class="language-selector-container">
-            <LanguageSelector currentLang={lang} dir={dir} />
+            <LanguageSelector currentLang={lang} langPaths={availableLanguagePaths} dir={dir} />
           </div>
           <ThemeToggle lang={lang} />
         </Fragment>

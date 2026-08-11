@@ -17,7 +17,7 @@ export interface NavigationOptions extends ContentOptions {
   pathPattern?: 'version-first' | 'locale-first';
 }
 
-const VERSION_PATTERN = /^v\d+$/i;
+const VERSION_PATTERN = /^v\d+(?:-\d+)*$/i;
 
 function parseSlugParts(
   slug: string,

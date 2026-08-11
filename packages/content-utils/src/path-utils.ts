@@ -5,6 +5,71 @@ export interface VersionCandidate {
   isLatest?: boolean;
 }
 
+export interface AvailableLanguagePath {
+  lang: string;
+  name: string;
+  path: string;
+  isCurrent: boolean;
+}
+
+/** 現在の言語で、同じ相対スラッグが実在する版IDだけを返す。 */
+export function collectAvailableVersionIds({
+  documentSlugs,
+  language,
+  relativeSlug,
+}: {
+  documentSlugs: string[];
+  language: string;
+  relativeSlug: string;
+}): Set<string> {
+  const normalizedSlug = relativeSlug.replace(/^\/+|\/+$/g, '');
+  return new Set(
+    documentSlugs.flatMap((documentSlug) => {
+      const [version, documentLanguage, ...slugParts] = documentSlug.split('/');
+      if (!version || documentLanguage !== language) return [];
+      if (normalizedSlug && slugParts.join('/') !== normalizedSlug) return [];
+      return [version];
+    })
+  );
+}
+
+export function buildAvailableLanguagePaths({
+  documentSlugs,
+  supportedLanguages,
+  displayNames,
+  baseUrl,
+  version,
+  currentLanguage,
+  relativeSlug,
+}: {
+  documentSlugs: string[];
+  supportedLanguages: string[];
+  displayNames: Record<string, string>;
+  baseUrl: string;
+  version: string;
+  currentLanguage: string;
+  relativeSlug: string;
+}): AvailableLanguagePath[] {
+  const normalizedBase = baseUrl.replace(/\/$/, '');
+  const normalizedSlug = relativeSlug.replace(/^\/+|\/+$/g, '');
+  return supportedLanguages.flatMap((language) => {
+    const prefix = `${version}/${language}/`;
+    const hasContent = normalizedSlug
+      ? documentSlugs.includes(`${prefix}${normalizedSlug}`)
+      : documentSlugs.some((slug) => slug.startsWith(prefix));
+    if (!hasContent) return [];
+    const suffix = normalizedSlug ? `/${normalizedSlug}` : '';
+    return [
+      {
+        lang: language,
+        name: displayNames[language] ?? language,
+        path: `${normalizedBase}/${version}/${language}${suffix}/`,
+        isCurrent: language === currentLanguage,
+      },
+    ];
+  });
+}
+
 export function selectLatestVersionId(
   availableVersionIds: string[],
   configuredVersions: VersionCandidate[] = []

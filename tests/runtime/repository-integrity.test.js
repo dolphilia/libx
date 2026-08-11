@@ -36,3 +36,38 @@ test('invalid version and licensing references are rejected', () => {
 
   assert.ok(errors.length >= 9);
 });
+
+test('unsafe version IDs and configured-directory mismatches are rejected', () => {
+  const errors = validateProjectConfigData(
+    {
+      paths: { projectSlug: 'demo' },
+      language: { supported: ['en'], default: 'en', displayNames: { en: 'English' } },
+      translations: {
+        en: { displayName: 'Demo', displayDescription: '', categories: { guide: 'Guide' } },
+      },
+      versioning: { versions: [{ id: 'v3.5.1', isLatest: true }] },
+      licensing: {
+        sources: [
+          {
+            id: 'source',
+            name: 'Source',
+            author: 'Author',
+            license: 'MIT',
+            licenseUrl: 'https://example.com/license',
+            sourceUrl: 'https://example.com/source',
+          },
+        ],
+        defaultSource: 'source',
+        sourceLanguage: 'en',
+      },
+    },
+    {
+      appId: 'demo',
+      contentCoordinates: [{ version: 'v3-5-1', locale: 'en' }],
+      licenseReferences: [],
+    }
+  );
+
+  assert.ok(errors.some((error) => error.includes('v3-5-1')));
+  assert.ok(errors.some((error) => error.includes('unknown version')));
+});

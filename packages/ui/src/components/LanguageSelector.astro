@@ -125,7 +125,7 @@ function computeLangPathsFromProjectConfig(): LangPathInfo[] {
   let langFromPath: string | undefined;
   let slugParts: string[] = [];
 
-  if (pathSegments.length > 0 && /^v\d+([.-]\d+)*$/.test(pathSegments[0])) {
+  if (pathSegments.length > 0 && /^v\d+(?:-\d+)*$/.test(pathSegments[0])) {
     versionFromPath = pathSegments.shift();
   }
 

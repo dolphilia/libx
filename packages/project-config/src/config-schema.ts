@@ -2,6 +2,7 @@
  * プロジェクト設定JSONスキーマとTypeScript型定義
  */
 import type { LocaleKey } from '@docs/i18n/locales';
+import { getContentSegmentError } from './content-id.js';
 
 /**
  * JSONファイル内で使用されるバージョン情報の型
@@ -118,6 +119,10 @@ export function getProjectConfigValidationErrors(config: unknown): string[] {
 
   const paths = config.paths;
   if (!isPathsConfig(paths)) return ['paths must contain only string URL/path fields'];
+  if (isRecord(paths) && typeof paths.projectSlug === 'string' && paths.projectSlug) {
+    const projectSlugError = getContentSegmentError(paths.projectSlug, 'paths.projectSlug');
+    if (projectSlugError) return [projectSlugError];
+  }
 
   const language = config.language;
   if (!isLanguageConfig(language)) {
@@ -166,11 +171,28 @@ export function getProjectConfigValidationErrors(config: unknown): string[] {
     return ['each versioning.versions item requires a valid id, name, and ISO date'];
   }
   const versionIds = config.versioning.versions.map((version) => version.id);
+  const unsafeVersion = versionIds.find((id) => getContentSegmentError(id));
+  if (unsafeVersion) {
+    return [getContentSegmentError(unsafeVersion, `versioning.versions ID "${unsafeVersion}"`)!];
+  }
   if (new Set(versionIds).size !== versionIds.length) {
     return ['versioning.versions IDs must be unique'];
   }
   if (config.versioning.versions.filter((version) => version.isLatest === true).length !== 1) {
     return ['exactly one versioning.versions item must have isLatest=true'];
+  }
+  const categoryIds = new Set(
+    Object.values(config.translations).flatMap((translation) => Object.keys(translation.categories))
+  );
+  const unsafeCategory = [...categoryIds].find((id) => getContentSegmentError(id));
+  if (unsafeCategory) {
+    return [getContentSegmentError(unsafeCategory, `category ID "${unsafeCategory}"`)!];
+  }
+  const collidingVersion = versionIds.find(
+    (id) => supported.includes(id as LocaleKey) || categoryIds.has(id)
+  );
+  if (collidingVersion) {
+    return [`version ID must not collide with a locale or category ID: ${collidingVersion}`];
   }
 
   if (!isLicensingConfig(config.licensing)) {

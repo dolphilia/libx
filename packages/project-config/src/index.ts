@@ -9,5 +9,6 @@ export {
   getCategoryTranslations as getCategoryTranslationsFromConfig,
 } from './config-loader';
 export * from './config-schema';
+export * from './content-id.js';
 export * from './global-defaults';
 export * from './jsonc';

@@ -25,6 +25,7 @@ import {
   formatProjectConfigJsonc,
   formatLandingConfigJsonc,
 } from './jsonc-utils.js';
+import { getContentSegmentError } from '../packages/project-config/src/content-id.js';
 
 logger.useUnifiedConsole();
 
@@ -122,10 +123,8 @@ function parseArguments() {
 function validateProjectName(projectName) {
   const errors = [];
 
-  // 文字種チェック（英数字とハイフンのみ）
-  if (!/^[a-zA-Z0-9-]+$/.test(projectName)) {
-    errors.push('プロジェクト名は英数字とハイフン(-)のみ使用できます');
-  }
+  const segmentError = getContentSegmentError(projectName, 'プロジェクト名');
+  if (segmentError) errors.push(segmentError);
 
   // 長さチェック
   if (projectName.length < 2) {

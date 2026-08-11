@@ -15,6 +15,7 @@ import {
   serializeProjectConfig,
 } from './document-utils.js';
 import { commitPreparedPathsAtomically } from './atomic-paths.js';
+import { getContentSegmentError } from '../packages/project-config/src/content-id.js';
 import * as logger from './logger.js';
 
 logger.useUnifiedConsole();
@@ -25,7 +26,7 @@ function showUsage(exitCode = 0) {
   logger.blank();
   logger.info('必須引数');
   logger.detail('project-name: プロジェクト名');
-  logger.detail('version: 追加するバージョン（例: v3, v2.1）');
+  logger.detail('version: 追加するバージョンID（例: v3, v2-1）');
   logger.blank();
   logger.info('主なオプション');
   logger.detail('--interactive: 対話形式で追加内容を決定します');
@@ -40,7 +41,7 @@ function showUsage(exitCode = 0) {
   logger.blank();
   logger.info('使用例');
   logger.detail('node scripts/create-version.js sample-docs v3');
-  logger.detail('node scripts/create-version.js sample-docs v2.1 --no-copy');
+  logger.detail('node scripts/create-version.js sample-docs v2-1 --no-copy');
   process.exit(exitCode);
 }
 
@@ -68,9 +69,10 @@ function parseArguments() {
 // バージョン形式をバリデーション
 function validateVersion(version) {
   const errors = [];
-
-  if (!/^v\d+(\.\d+)*$/.test(version)) {
-    errors.push('バージョンはv1, v2.0, v2.1のような形式である必要があります');
+  const segmentError = getContentSegmentError(version, 'バージョンID');
+  if (segmentError) errors.push(segmentError);
+  if (!/^v\d+(?:-\d+)*$/.test(version)) {
+    errors.push('バージョンIDはv1, v2-0, v3-5-1のような形式である必要があります');
   }
 
   return errors;

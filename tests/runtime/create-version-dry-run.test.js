@@ -42,3 +42,14 @@ test('create-versionのdry-runは設定とコンテンツを変更しない', ()
   assert.equal(hashDirectory(projectSource), before);
   assert.equal(fs.existsSync(targetVersion), false);
 });
+
+test('create-versionはAstroが正規化する小数点付きIDを事前に拒否する', () => {
+  const result = spawnSync(
+    process.execPath,
+    ['scripts/create-version.js', 'test-verification', 'v3.5.1', '--dry-run'],
+    { cwd: repositoryRoot, encoding: 'utf8' }
+  );
+
+  assert.notEqual(result.status, 0);
+  assert.match(`${result.stdout}\n${result.stderr}`, /v3-5-1/);
+});

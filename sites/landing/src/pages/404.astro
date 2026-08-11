@@ -1,0 +1,77 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getTopPageConfig } from '@docs/landing';
+import { defaultLanguageNames } from '@docs/i18n/language-names';
+
+const config = await getTopPageConfig();
+---
+
+<MainLayout
+  title="Page not found / ページが見つかりません"
+  lang="en"
+  supportedLangs={config.supportedLangs}
+  baseUrl={config.baseUrl}
+>
+  <main class="not-found" aria-labelledby="not-found-title">
+    <p class="status" aria-hidden="true">404</p>
+    <h1 id="not-found-title">Page not found / ページが見つかりません</h1>
+    <p>
+      The requested page does not exist. Select a language to return to the libx documentation
+      index.
+    </p>
+    <p>指定されたページは存在しません。言語を選択してlibxの文書一覧へ戻ってください。</p>
+    <nav aria-label="Documentation languages / 文書の言語">
+      <ul>
+        {
+          config.supportedLangs.map((language) => (
+            <li>
+              <a href={`${config.baseUrl}/${language}/`} lang={language}>
+                {defaultLanguageNames[language] ?? language}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </main>
+</MainLayout>
+
+<style>
+  .not-found {
+    margin: 0 auto;
+    max-width: 48rem;
+    padding: 4rem 1.5rem;
+  }
+
+  .status {
+    color: var(--sl-color-gray-4);
+    font-size: clamp(4rem, 16vw, 8rem);
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  ul {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    list-style: none;
+    padding: 0;
+  }
+
+  a {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    display: block;
+    padding: 0.75rem 1rem;
+  }
+
+  a:focus-visible {
+    outline: 3px solid var(--sl-color-blue-5);
+    outline-offset: 3px;
+  }
+</style>

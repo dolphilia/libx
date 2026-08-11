@@ -4,7 +4,7 @@ GLFW公式ドキュメントを取得し、英語定本と日本語翻訳をlibx
 
 ## 現在の状態
 
-- 状態: 英語定本と個別ビルド完了、日本語36/36ページを原文照合済み
+- 状態: 英語定本と日本語36/36ページを原文照合済み、Cloudflare Pages Productionへ公開済み
 - プロジェクトID: `glfw`
 - 翻訳元: 英語（`en`）
 - 最初の翻訳先: 日本語（`ja`）
@@ -23,6 +23,8 @@ GLFW公式ドキュメントを取得し、英語定本と日本語翻訳をlibx
 - [TRANSLATION_GUIDE.md](./TRANSLATION_GUIDE.md): 用語と表記規則
 - [MANUAL_TRANSLATION_PLAN.md](./MANUAL_TRANSLATION_PLAN.md): ページ単位の翻訳順序、完了条件、進捗表
 - [TRANSLATION_MODEL_EVALUATION.md](./TRANSLATION_MODEL_EVALUATION.md): ローカル翻訳モデルの比較と自動化判断
+- [RETROSPECTIVE.md](./RETROSPECTIVE.md): 取得から翻訳完了までの総括と得られた知見
+- [LIBX_IMPLEMENTATION_IMPROVEMENTS.md](./LIBX_IMPLEMENTATION_IMPROVEMENTS.md): パイロットを根拠とするlibx実装改善案
 
 ## 一時作業領域
 

@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
 import { readJsoncFileAsync } from './jsonc-utils.js';
+import { getContentSegmentError } from '../packages/project-config/src/content-id.js';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -18,10 +19,17 @@ export function validateProjectConfigData(
   const supported = config.language?.supported ?? [];
   const versions = config.versioning?.versions ?? [];
   const versionIds = versions.map((item) => item.id);
+  const categoryIds = new Set(
+    Object.values(config.translations ?? {}).flatMap((translation) =>
+      Object.keys(translation.categories ?? {})
+    )
+  );
 
   if (config.paths?.projectSlug !== appId) {
     errors.push(`paths.projectSlug must match app directory: ${appId}`);
   }
+  const slugError = getContentSegmentError(config.paths?.projectSlug, 'paths.projectSlug');
+  if (slugError) errors.push(slugError);
   if (!supported.includes(config.language?.default)) {
     errors.push('language.default must be included in language.supported');
   }
@@ -35,6 +43,17 @@ export function validateProjectConfigData(
   }
   if (new Set(versionIds).size !== versionIds.length) {
     errors.push('version IDs must be unique');
+  }
+  for (const versionId of versionIds) {
+    const versionError = getContentSegmentError(versionId, `version ID "${versionId}"`);
+    if (versionError) errors.push(versionError);
+    if (supported.includes(versionId) || categoryIds.has(versionId)) {
+      errors.push(`version ID collides with a locale or category ID: ${versionId}`);
+    }
+  }
+  for (const categoryId of categoryIds) {
+    const categoryError = getContentSegmentError(categoryId, `category ID "${categoryId}"`);
+    if (categoryError) errors.push(categoryError);
   }
   if (versions.filter((item) => item.isLatest === true).length !== 1) {
     errors.push('exactly one version must have isLatest=true');
