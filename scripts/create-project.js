@@ -428,16 +428,21 @@ function updateAllConfigFiles(projectDir, config, options = {}) {
 function installDependencies(projectDir, { dryRun = false } = {}) {
   console.log('  依存関係をインストールしています...');
 
+  const projectName = path.basename(projectDir);
+  const packageName = `apps-${projectName}`;
+
   if (dryRun) {
-    const projectName = path.basename(projectDir);
-    logger.dryRun(`pnpm install をスキップしました（dry-run）: apps/${projectName}`);
+    logger.dryRun(
+      `pnpm install --filter=${packageName} をリポジトリルートで実行する予定です（dry-run）`
+    );
     return true;
   }
 
   try {
-    // プロジェクトディレクトリに移動して pnpm install を実行
-    execSync('pnpm install', {
-      cwd: projectDir,
+    // 新規アプリをpnpmワークスペースとロックファイルへ確実に登録するため、
+    // アプリ内ではなくリポジトリルートから対象を絞って実行する。
+    execSync(`pnpm install --filter=${packageName}`, {
+      cwd: rootDir,
       stdio: ['inherit', 'pipe', 'pipe'],
       timeout: 120000, // 2分タイムアウト
     });

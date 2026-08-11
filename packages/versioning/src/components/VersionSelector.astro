@@ -28,6 +28,13 @@ const {
   lang = 'en',
 } = Astro.props;
 
+// A language may intentionally have no content for the current version while
+// translation is in progress. In that case there is no meaningful selector to
+// render, but the page itself must remain buildable.
+if (versions.length === 0) {
+  return;
+}
+
 // 現在のバージョンオブジェクトを取得
 const currentVersionObj = versions.find((v) => v.id === currentVersion) || versions[0];
 

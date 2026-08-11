@@ -1,0 +1,1019 @@
+---
+title: "Input guide"
+description: "Keyboard, mouse, joystick and gamepad input"
+licenseSource: "glfw-3.5.1"
+---
+
+> This page is an altered Markdown adaptation of the [official GLFW 3.5.1 documentation](https://www.glfw.org/docs/3.5.1/). Formatting, navigation and links were changed for libx; technical content comes from the GLFW 3.5.1 source distribution.
+
+<a id="input_guide"></a>
+
+# Input guide
+This guide introduces the input related functions of GLFW.  For details on
+a specific function in this category, see the [input](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/).  There are also guides
+for the other areas of GLFW.
+
+ - [intro_guide](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [window_guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
+ - [context_guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
+ - [vulkan_guide](/docs/glfw/v3-5-1/en/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [monitor_guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
+
+GLFW provides many kinds of input.  While some can only be polled, like time, or
+only received via callbacks, like scrolling, many provide both callbacks and
+polling.  Callbacks are more work to use than polling but is less CPU intensive
+and guarantees that you do not miss state changes.
+
+All input callbacks receive a window handle.  By using the
+[window user pointer](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_userptr), you can access non-global structures
+or objects from your callbacks.
+
+To get a better feel for how the various events callbacks behave, run the
+`events` test program.  It registers every callback supported by GLFW and prints
+out all arguments provided for every event, along with time and sequence
+information.
+
+
+<a id="events"></a>
+
+## Event processing
+GLFW needs to poll the window system for events both to provide input to the
+application and to prove to the window system that the application hasn't locked
+up.  Event processing is normally done each frame after
+[buffer swapping](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#buffer_swap).  Even when you have no windows, event
+polling needs to be done in order to receive monitor and joystick connection
+events.
+
+There are three functions for processing pending events.  [glfwPollEvents](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga37bd57223967b4211d60ca1a0bf3c832),
+processes only those events that have already been received and then returns
+immediately.
+
+```c
+glfwPollEvents();
+```
+
+This is the best choice when rendering continuously, like most games do.
+
+If you only need to update the contents of the window when you receive new
+input, [glfwWaitEvents](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga554e37d781f0a997656c26b2c56c835e) is a better choice.
+
+```c
+glfwWaitEvents();
+```
+
+It puts the thread to sleep until at least one event has been received and then
+processes all received events.  This saves a great deal of CPU cycles and is
+useful for, for example, editing tools.
+
+If you want to wait for events but have UI elements or other tasks that need
+periodic updates, [glfwWaitEventsTimeout](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga605a178db92f1a7f1a925563ef3ea2cf) lets you specify a timeout.
+
+```c
+glfwWaitEventsTimeout(0.7);
+```
+
+It puts the thread to sleep until at least one event has been received, or until
+the specified number of seconds have elapsed.  It then processes any received
+events.
+
+If the main thread is sleeping in [glfwWaitEvents](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga554e37d781f0a997656c26b2c56c835e), you can wake it from
+another thread by posting an empty event to the event queue with [glfwPostEmptyEvent](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#gab5997a25187e9fd5c6f2ecbbc8dfd7e9).
+
+```c
+glfwPostEmptyEvent();
+```
+
+Do not assume that callbacks will _only_ be called in response to the above
+functions.  While it is necessary to process events in one or more of the ways
+above, window systems that require GLFW to register callbacks of its own can
+pass events to GLFW in response to many window system function calls.  GLFW will
+pass those events on to the application callbacks before returning.
+
+For example, on Windows the system function that [glfwSetWindowSize](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga371911f12c74c504dd8d47d832d095cb) is
+implemented with will send window size events directly to the event callback
+that every window has and that GLFW implements for its windows.  If you have set
+a [window size callback](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_size) GLFW will call it in turn with the
+new size before everything returns back out of the [glfwSetWindowSize](/docs/glfw/v3-5-1/en/04-reference/03-window-reference/#ga371911f12c74c504dd8d47d832d095cb) call.
+
+
+<a id="input_keyboard"></a>
+
+## Keyboard input
+GLFW divides keyboard input into two categories; key events and character
+events.  Key events relate to actual physical keyboard keys, whereas character
+events relate to the text that is generated by pressing some of them.
+
+Keys and characters do not map 1:1.  A single key press may produce several
+characters, and a single character may require several keys to produce.  This
+may not be the case on your machine, but your users are likely not all using the
+same keyboard layout, input method or even operating system as you.
+
+
+<a id="input_key"></a>
+
+### Key input
+If you wish to be notified when a physical key is pressed or released or when it
+repeats, set a key callback.
+
+```c
+glfwSetKeyCallback(window, key_callback);
+```
+
+The callback function receives the [keyboard key](/docs/glfw/v3-5-1/en/04-reference/09-keyboard-key-tokens/), platform-specific
+scancode, key action and [modifier bits](/docs/glfw/v3-5-1/en/04-reference/10-modifier-key-flags/).
+
+```c
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_E && action == GLFW_PRESS)
+        activate_airship();
+}
+```
+
+The action is one of `GLFW_PRESS`, `GLFW_REPEAT` or `GLFW_RELEASE`.  Events with
+`GLFW_PRESS` and `GLFW_RELEASE` actions are emitted for every key press.  Most
+keys will also emit events with `GLFW_REPEAT` actions while a key is held down.
+
+Note that many keyboards have a limit on how many keys being simultaneous held
+down that they can detect.  This limit is called
+[key rollover](https://en.wikipedia.org/wiki/Key_rollover).
+
+Key events with `GLFW_REPEAT` actions are intended for text input.  They are
+emitted at the rate set in the user's keyboard settings.  At most one key is
+repeated even if several keys are held down.  `GLFW_REPEAT` actions should not
+be relied on to know which keys are being held down or to drive animation.
+Instead you should either save the state of relevant keys based on `GLFW_PRESS`
+and `GLFW_RELEASE` actions, or call [glfwGetKey](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gadd341da06bc8d418b4dc3a3518af9ad2), which provides basic cached
+key state.
+
+The key will be one of the existing [key tokens](/docs/glfw/v3-5-1/en/04-reference/09-keyboard-key-tokens/), or
+`GLFW_KEY_UNKNOWN` if GLFW lacks a token for it, for example _E-mail_ and _Play_
+keys.
+
+The scancode is unique for every key, regardless of whether it has a key token.
+Scancodes are platform-specific but consistent over time, so keys will have
+different scancodes depending on the platform but they are safe to save to disk.
+You can query the scancode for any [key token](/docs/glfw/v3-5-1/en/04-reference/09-keyboard-key-tokens/) supported on the
+current platform with [glfwGetKeyScancode](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga67ddd1b7dcbbaff03e4a76c0ea67103a).
+
+```c
+const int scancode = glfwGetKeyScancode(GLFW_KEY_X);
+set_key_mapping(scancode, swap_weapons);
+```
+
+The last reported state for every physical key with a [key token](/docs/glfw/v3-5-1/en/04-reference/09-keyboard-key-tokens/) is
+also saved in per-window state arrays that can be polled with [glfwGetKey](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gadd341da06bc8d418b4dc3a3518af9ad2).
+
+```c
+int state = glfwGetKey(window, GLFW_KEY_E);
+if (state == GLFW_PRESS)
+{
+    activate_airship();
+}
+```
+
+The returned state is one of `GLFW_PRESS` or `GLFW_RELEASE`.
+
+This function only returns cached key event state.  It does not poll the
+system for the current state of the physical key.  It also does not provide any
+key repeat information.
+
+<a id="GLFW_STICKY_KEYS"></a>
+Whenever you poll state, you risk missing the state change you are looking for.
+If a pressed key is released again before you poll its state, you will have
+missed the key press.  The recommended solution for this is to use a
+key callback, but there is also the `GLFW_STICKY_KEYS` input mode.
+
+```c
+glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
+```
+
+When sticky keys mode is enabled, the pollable state of a key will remain
+`GLFW_PRESS` until the state of that key is polled with [glfwGetKey](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gadd341da06bc8d418b4dc3a3518af9ad2).  Once
+it has been polled, if a key release event had been processed in the meantime,
+the state will reset to `GLFW_RELEASE`, otherwise it will remain `GLFW_PRESS`.
+
+<a id="GLFW_LOCK_KEY_MODS"></a>
+If you wish to know what the state of the Caps Lock and Num Lock keys was when
+input events were generated, set the `GLFW_LOCK_KEY_MODS` input mode.
+
+```c
+glfwSetInputMode(window, GLFW_LOCK_KEY_MODS, GLFW_TRUE);
+```
+
+When this input mode is enabled, any callback that receives
+[modifier bits](/docs/glfw/v3-5-1/en/04-reference/10-modifier-key-flags/) will have the [GLFW_MOD_CAPS_LOCK](/docs/glfw/v3-5-1/en/04-reference/10-modifier-key-flags/#gaefeef8fcf825a6e43e241b337897200f) bit set if Caps
+Lock was on when the event occurred and the [GLFW_MOD_NUM_LOCK](/docs/glfw/v3-5-1/en/04-reference/10-modifier-key-flags/#ga64e020b8a42af8376e944baf61feecbe) bit set if
+Num Lock was on.
+
+The `GLFW_KEY_LAST` constant holds the highest value of any
+[key token](/docs/glfw/v3-5-1/en/04-reference/09-keyboard-key-tokens/).
+
+
+<a id="input_char"></a>
+
+### Text input
+GLFW supports text input in the form of a stream of
+[Unicode code points](https://en.wikipedia.org/wiki/Unicode), as produced by the
+operating system text input system.  Unlike key input, text input is affected by
+keyboard layouts and modifier keys and supports composing characters using
+[dead keys](https://en.wikipedia.org/wiki/Dead_key).  Once received, you can
+encode the code points into UTF-8 or any other encoding you prefer.
+
+Because an `unsigned int` is 32 bits long on all platforms supported by GLFW,
+you can treat the code point argument as native endian UTF-32.
+
+If you wish to offer regular text input, set a character callback.
+
+```c
+glfwSetCharCallback(window, character_callback);
+```
+
+The callback function receives Unicode code points for key events that would
+have led to regular text input and generally behaves as a standard text field on
+that platform.
+
+```c
+void character_callback(GLFWwindow* window, unsigned int codepoint)
+{
+}
+```
+
+
+<a id="input_key_name"></a>
+
+### Key names
+If you wish to refer to keys by name, you can query the keyboard layout
+dependent name of printable keys with [glfwGetKeyName](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaeaed62e69c3bd62b7ff8f7b19913ce4f).
+
+```c
+const char* key_name = glfwGetKeyName(GLFW_KEY_W, 0);
+show_tutorial_hint("Press %s to move forward", key_name);
+```
+
+This function can handle both [keys and scancodes](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_key).  If the
+specified key is `GLFW_KEY_UNKNOWN` then the scancode is used, otherwise it is
+ignored.  This matches the behavior of the key callback, meaning the callback
+arguments can always be passed unmodified to this function.
+
+
+<a id="input_mouse"></a>
+
+## Mouse input
+Mouse input comes in many forms, including mouse motion, button presses and
+scrolling offsets.  The cursor appearance can also be changed, either to
+a custom image or a standard cursor shape from the system theme.
+
+
+<a id="cursor_pos"></a>
+
+### Cursor position
+If you wish to be notified when the cursor moves over the window, set a cursor
+position callback.
+
+```c
+glfwSetCursorPosCallback(window, cursor_position_callback);
+```
+
+The callback functions receives the cursor position, measured in screen
+coordinates but relative to the top-left corner of the window content area.  On
+platforms that provide it, the full sub-pixel cursor position is passed on.
+
+```c
+static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+{
+}
+```
+
+The cursor position is also saved per-window and can be polled with [glfwGetCursorPos](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga01d37b6c40133676b9cea60ca1d7c0cc).
+
+```c
+double xpos, ypos;
+glfwGetCursorPos(window, &xpos, &ypos);
+```
+
+
+<a id="cursor_mode"></a>
+
+### Cursor mode
+<a id="GLFW_CURSOR"></a>
+The `GLFW_CURSOR` input mode provides several cursor modes for special forms of
+mouse motion input.  By default, the cursor mode is `GLFW_CURSOR_NORMAL`,
+meaning the regular arrow cursor (or another cursor set with [glfwSetCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gad3b4f38c8d5dae036bc8fa959e18343e))
+is used and cursor motion is not limited.
+
+If you wish to implement mouse motion based camera controls or other input
+schemes that require unlimited mouse movement, set the cursor mode to
+`GLFW_CURSOR_DISABLED`.
+
+```c
+glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+```
+
+This will hide the cursor and lock it to the specified window.  GLFW will then
+take care of all the details of cursor re-centering and offset calculation and
+providing the application with a virtual cursor position.  This virtual position
+is provided normally via both the cursor position callback and through polling.
+
+> **Note:** You should not implement your own version of this functionality using
+other features of GLFW.  It is not supported and will not work as robustly as
+`GLFW_CURSOR_DISABLED`.
+
+If you only wish the cursor to become hidden when it is over a window but still
+want it to behave normally, set the cursor mode to `GLFW_CURSOR_HIDDEN`.
+
+```c
+glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+```
+
+This mode puts no limit on the motion of the cursor.
+
+If you wish the cursor to be visible but confined to the content area of the
+window, set the cursor mode to `GLFW_CURSOR_CAPTURED`.
+
+```c
+glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_CAPTURED);
+```
+
+The cursor will behave normally inside the content area but will not be able to
+leave unless the window loses focus.
+
+To exit out of either of these special modes, restore the `GLFW_CURSOR_NORMAL`
+cursor mode.
+
+```c
+glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+```
+
+If the cursor was disabled, this will move it back to its last visible position.
+
+
+<a id="GLFW_RAW_MOUSE_MOTION"></a>
+<a id="raw_mouse_motion"></a>
+
+### Raw mouse motion
+When the cursor is disabled, raw (unscaled and unaccelerated) mouse motion can
+be enabled if available.
+
+Raw mouse motion is closer to the actual motion of the mouse across a surface.
+It is not affected by the scaling and acceleration applied to the motion of the
+desktop cursor.  That processing is suitable for a cursor while raw motion is
+better for controlling for example a 3D camera.  Because of this, raw mouse
+motion is only provided when the cursor is disabled.
+
+Call [glfwRawMouseMotionSupported](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gae4ee0dbd0d256183e1ea4026d897e1c2) to check if the current machine provides
+raw motion and set the `GLFW_RAW_MOUSE_MOTION` input mode to enable it.  It is
+disabled by default.
+
+```c
+if (glfwRawMouseMotionSupported())
+    glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+```
+
+If supported, raw mouse motion can be enabled or disabled per-window and at any
+time but it will only be provided when the cursor is disabled.
+
+
+<a id="cursor_object"></a>
+
+### Cursor objects
+GLFW supports creating both custom and system theme cursor images, encapsulated
+as [GLFWcursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga89261ae18c75e863aaf2656ecdd238f4) objects.  They are created with [glfwCreateCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga556f604f73af156c0db0e97c081373c3) or [glfwCreateStandardCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaf2fb2eb2c9dd842d1cef8a34e3c6403e) and destroyed with [glfwDestroyCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga81b952cd1764274d0db7fb3c5a79ba6a), or [glfwTerminate](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#gaaae48c0a18607ea4a4ba951d939f0901), if any remain.
+
+
+<a id="cursor_custom"></a>
+
+#### Custom cursor creation
+A custom cursor is created with [glfwCreateCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga556f604f73af156c0db0e97c081373c3), which returns a handle to
+the created cursor object.  For example, this creates a 16x16 white square
+cursor with the hot-spot in the upper-left corner:
+
+```c
+unsigned char pixels[16 * 16 * 4];
+memset(pixels, 0xff, sizeof(pixels));
+
+GLFWimage image;
+image.width = 16;
+image.height = 16;
+image.pixels = pixels;
+
+GLFWcursor* cursor = glfwCreateCursor(&image, 0, 0);
+```
+
+If cursor creation fails, `NULL` will be returned, so it is necessary to check
+the return value.
+
+The image data is 32-bit, little-endian, non-premultiplied RGBA, i.e. eight bits
+per channel with the red channel first.  The pixels are arranged canonically as
+sequential rows, starting from the top-left corner.
+
+
+<a id="cursor_standard"></a>
+
+#### Standard cursor creation
+A cursor with a [standard shape](/docs/glfw/v3-5-1/en/04-reference/16-standard-cursor-shapes/) from the current system cursor
+theme can be created with [glfwCreateStandardCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaf2fb2eb2c9dd842d1cef8a34e3c6403e).
+
+```c
+GLFWcursor* url_cursor = glfwCreateStandardCursor(GLFW_POINTING_HAND_CURSOR);
+```
+
+These cursor objects behave in the exact same way as those created with [glfwCreateCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga556f604f73af156c0db0e97c081373c3) except that the system cursor theme provides the actual image.
+
+A few of these shapes are not available everywhere.  If a shape is unavailable,
+`NULL` is returned.  See [glfwCreateStandardCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaf2fb2eb2c9dd842d1cef8a34e3c6403e) for details.
+
+
+<a id="cursor_destruction"></a>
+
+#### Cursor destruction
+When a cursor is no longer needed, destroy it with [glfwDestroyCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga81b952cd1764274d0db7fb3c5a79ba6a).
+
+```c
+glfwDestroyCursor(cursor);
+```
+
+Cursor destruction always succeeds.  If the cursor is current for any window,
+that window will revert to the default cursor.  This does not affect the cursor
+mode.  All remaining cursors are destroyed when [glfwTerminate](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#gaaae48c0a18607ea4a4ba951d939f0901) is called.
+
+
+<a id="cursor_set"></a>
+
+#### Cursor setting
+A cursor can be set as current for a window with [glfwSetCursor](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gad3b4f38c8d5dae036bc8fa959e18343e).
+
+```c
+glfwSetCursor(window, cursor);
+```
+
+Once set, the cursor image will be used as long as the system cursor is over the
+content area of the window and the [cursor mode](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#cursor_mode) is set
+to `GLFW_CURSOR_NORMAL`.
+
+A single cursor may be set for any number of windows.
+
+To revert to the default cursor, set the cursor of that window to `NULL`.
+
+```c
+glfwSetCursor(window, NULL);
+```
+
+When a cursor is destroyed, any window that has it set will revert to the
+default cursor.  This does not affect the cursor mode.
+
+
+<a id="cursor_enter"></a>
+
+### Cursor enter/leave events
+If you wish to be notified when the cursor enters or leaves the content area of
+a window, set a cursor enter/leave callback.
+
+```c
+glfwSetCursorEnterCallback(window, cursor_enter_callback);
+```
+
+The callback function receives the new classification of the cursor.
+
+```c
+void cursor_enter_callback(GLFWwindow* window, int entered)
+{
+    if (entered)
+    {
+        // The cursor entered the content area of the window
+    }
+    else
+    {
+        // The cursor left the content area of the window
+    }
+}
+```
+
+You can query whether the cursor is currently inside the content area of the
+window with the [GLFW_HOVERED](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#GLFW_HOVERED_attrib) window attribute.
+
+```c
+if (glfwGetWindowAttrib(window, GLFW_HOVERED))
+{
+    highlight_interface();
+}
+```
+
+
+<a id="input_mouse_button"></a>
+
+### Mouse button input
+If you wish to be notified when a mouse button is pressed or released, set
+a mouse button callback.
+
+```c
+glfwSetMouseButtonCallback(window, mouse_button_callback);
+```
+
+<a id="GLFW_UNLIMITED_MOUSE_BUTTONS"></a>
+To handle all mouse buttons in the callback, instead of only ones with associated
+[button tokens](/docs/glfw/v3-5-1/en/04-reference/11-mouse-buttons/), set the [GLFW_UNLIMITED_MOUSE_BUTTONS](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_UNLIMITED_MOUSE_BUTTONS)
+input mode.
+
+```c
+glfwSetInputMode(window, GLFW_UNLIMITED_MOUSE_BUTTONS, GLFW_TRUE);
+```
+
+When this input mode is enabled, GLFW doesn't limit the reported mouse buttons
+to only those that have an associated button token, for compatibility with
+earlier versions of GLFW, which never reported any buttons over
+[GLFW_MOUSE_BUTTON_LAST](/docs/glfw/v3-5-1/en/04-reference/11-mouse-buttons/#gab1fd86a4518a9141ec7bcde2e15a2fdf), on which users could have relied on.
+
+The callback function receives the [mouse button](/docs/glfw/v3-5-1/en/04-reference/11-mouse-buttons/), button action
+and [modifier bits](/docs/glfw/v3-5-1/en/04-reference/10-modifier-key-flags/).
+
+```c
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+        popup_menu();
+}
+```
+
+The mouse button is an integer that can be one of the
+[mouse button tokens](/docs/glfw/v3-5-1/en/04-reference/11-mouse-buttons/) or, if the
+[GLFW_UNLIMITED_MOUSE_BUTTONS](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_UNLIMITED_MOUSE_BUTTONS) input mode is set, any other positive value.
+
+The action is one of `GLFW_PRESS` or `GLFW_RELEASE`.
+
+The last reported state for every [mouse button token](/docs/glfw/v3-5-1/en/04-reference/11-mouse-buttons/) is also
+saved in per-window state arrays that can be polled with [glfwGetMouseButton](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gac1473feacb5996c01a7a5a33b5066704). This is not effected by the [GLFW_UNLIMITED_MOUSE_BUTTONS](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#GLFW_UNLIMITED_MOUSE_BUTTONS)
+input mode.
+
+```c
+int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+if (state == GLFW_PRESS)
+{
+    upgrade_cow();
+}
+```
+
+The returned state is one of `GLFW_PRESS` or `GLFW_RELEASE`.
+
+This function only returns cached mouse button event state.  It does not poll
+the system for the current state of the mouse button.
+
+<a id="GLFW_STICKY_MOUSE_BUTTONS"></a>
+Whenever you poll state, you risk missing the state change you are looking for.
+If a pressed mouse button is released again before you poll its state, you will have
+missed the button press.  The recommended solution for this is to use a
+mouse button callback, but there is also the `GLFW_STICKY_MOUSE_BUTTONS`
+input mode.
+
+```c
+glfwSetInputMode(window, GLFW_STICKY_MOUSE_BUTTONS, GLFW_TRUE);
+```
+
+When sticky mouse buttons mode is enabled, the pollable state of a mouse button
+will remain `GLFW_PRESS` until the state of that button is polled with [glfwGetMouseButton](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gac1473feacb5996c01a7a5a33b5066704).  Once it has been polled, if a mouse button release event
+had been processed in the meantime, the state will reset to `GLFW_RELEASE`,
+otherwise it will remain `GLFW_PRESS`.
+
+The `GLFW_MOUSE_BUTTON_LAST` constant holds the highest value of any
+[mouse button token](/docs/glfw/v3-5-1/en/04-reference/11-mouse-buttons/).
+
+
+<a id="scrolling"></a>
+
+### Scroll input
+If you wish to be notified when the user scrolls, whether with a mouse wheel or
+touchpad gesture, set a scroll callback.
+
+```c
+glfwSetScrollCallback(window, scroll_callback);
+```
+
+The callback function receives two-dimensional scroll offsets.
+
+```c
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+}
+```
+
+A normal mouse wheel, being vertical, provides offsets along the Y-axis.
+
+
+<a id="joystick"></a>
+
+## Joystick input
+The joystick functions expose connected joysticks and controllers, with both
+referred to as joysticks.  It supports up to sixteen joysticks, ranging from
+`GLFW_JOYSTICK_1`, `GLFW_JOYSTICK_2` up to and including `GLFW_JOYSTICK_16` or
+`GLFW_JOYSTICK_LAST`.  You can test whether a [joystick](/docs/glfw/v3-5-1/en/04-reference/12-joysticks/) is
+present with [glfwJoystickPresent](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaed0966cee139d815317f9ffcba64c9f1).
+
+```c
+int present = glfwJoystickPresent(GLFW_JOYSTICK_1);
+```
+
+Each joystick has zero or more axes, zero or more buttons, zero or more hats,
+a human-readable name, a user pointer and an SDL compatible GUID.
+
+Detected joysticks are added to the beginning of the array.  Once a joystick is
+detected, it keeps its assigned ID until it is disconnected or the library is
+terminated, so as joysticks are connected and disconnected, there may appear
+gaps in the IDs.
+
+Joystick axis, button and hat state is updated when polled and does not require
+a window to be created or events to be processed.  However, if you want joystick
+connection and disconnection events reliably delivered to the
+[joystick callback](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#joystick_event) then you must
+[process events](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#events).
+
+To see all the properties of all connected joysticks in real-time, run the
+`joysticks` test program.
+
+
+<a id="joystick_axis"></a>
+
+### Joystick axis states
+The positions of all axes of a joystick are returned by [glfwGetJoystickAxes](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaeb1c0191d3140a233a682987c61eb408).  See the reference documentation for the lifetime of the
+returned array.
+
+```c
+int count;
+const float* axes = glfwGetJoystickAxes(GLFW_JOYSTICK_5, &count);
+```
+
+Each element in the returned array is a value between -1.0 and 1.0.
+
+
+<a id="joystick_button"></a>
+
+### Joystick button states
+The states of all buttons of a joystick are returned by [glfwGetJoystickButtons](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga5ffe34739d3dc97efe432ed2d81d9938).  See the reference documentation for the lifetime of the
+returned array.
+
+```c
+int count;
+const unsigned char* buttons = glfwGetJoystickButtons(GLFW_JOYSTICK_3, &count);
+```
+
+Each element in the returned array is either `GLFW_PRESS` or `GLFW_RELEASE`.
+
+For backward compatibility with earlier versions that did not have [glfwGetJoystickHats](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga06e660841b3e79c54da4f54a932c5a2c), the button array by default also includes all hats.  See
+the reference documentation for [glfwGetJoystickButtons](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga5ffe34739d3dc97efe432ed2d81d9938) for details.
+
+
+<a id="joystick_hat"></a>
+
+### Joystick hat states
+The states of all hats are returned by [glfwGetJoystickHats](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga06e660841b3e79c54da4f54a932c5a2c).  See the
+reference documentation for the lifetime of the returned array.
+
+```c
+int count;
+const unsigned char* hats = glfwGetJoystickHats(GLFW_JOYSTICK_7, &count);
+```
+
+Each element in the returned array is one of the following:
+
+Name                  | Value
+----                  | -----
+`GLFW_HAT_CENTERED`   | 0
+`GLFW_HAT_UP`         | 1
+`GLFW_HAT_RIGHT`      | 2
+`GLFW_HAT_DOWN`       | 4
+`GLFW_HAT_LEFT`       | 8
+`GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` \| `GLFW_HAT_UP`
+`GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` \| `GLFW_HAT_DOWN`
+`GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` \| `GLFW_HAT_UP`
+`GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` \| `GLFW_HAT_DOWN`
+
+The diagonal directions are bitwise combinations of the primary (up, right, down
+and left) directions and you can test for these individually by ANDing it with
+the corresponding direction.
+
+```c
+if (hats[2] & GLFW_HAT_RIGHT)
+{
+    // State of hat 2 could be right-up, right or right-down
+}
+```
+
+For backward compatibility with earlier versions that did not have [glfwGetJoystickHats](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga06e660841b3e79c54da4f54a932c5a2c), all hats are by default also included in the button array.
+See the reference documentation for [glfwGetJoystickButtons](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga5ffe34739d3dc97efe432ed2d81d9938) for details.
+
+
+<a id="joystick_name"></a>
+
+### Joystick name
+The human-readable, UTF-8 encoded name of a joystick is returned by [glfwGetJoystickName](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gac6a8e769e18e0bcfa9097793fc2c3978).  See the reference documentation for the lifetime of the
+returned string.
+
+```c
+const char* name = glfwGetJoystickName(GLFW_JOYSTICK_4);
+```
+
+Joystick names are not guaranteed to be unique.  Two joysticks of the same model
+and make may have the same name.  Only the [joystick ID](/docs/glfw/v3-5-1/en/04-reference/12-joysticks/) is
+guaranteed to be unique, and only until that joystick is disconnected.
+
+
+<a id="joystick_userptr"></a>
+
+### Joystick user pointer
+Each joystick has a user pointer that can be set with [glfwSetJoystickUserPointer](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga6b2f72d64d636b48a727b437cbb7489e) and queried with [glfwGetJoystickUserPointer](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga18cefd7265d1fa04f3fd38a6746db5f3).
+This can be used for any purpose you need and will not be modified by GLFW.  The
+value will be kept until the joystick is disconnected or until the library is
+terminated.
+
+The initial value of the pointer is `NULL`.
+
+
+<a id="joystick_event"></a>
+
+### Joystick configuration changes
+If you wish to be notified when a joystick is connected or disconnected, set
+a joystick callback.
+
+```c
+glfwSetJoystickCallback(joystick_callback);
+```
+
+The callback function receives the ID of the joystick that has been connected
+and disconnected and the event that occurred.
+
+```c
+void joystick_callback(int jid, int event)
+{
+    if (event == GLFW_CONNECTED)
+    {
+        // The joystick was connected
+    }
+    else if (event == GLFW_DISCONNECTED)
+    {
+        // The joystick was disconnected
+    }
+}
+```
+
+For joystick connection and disconnection events to be delivered on all
+platforms, you need to call one of the [event processing](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#events)
+functions.  Joystick disconnection may also be detected and the callback
+called by joystick functions.  The function will then return whatever it
+returns for a disconnected joystick.
+
+Only [glfwGetJoystickName](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gac6a8e769e18e0bcfa9097793fc2c3978) and [glfwGetJoystickUserPointer](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga18cefd7265d1fa04f3fd38a6746db5f3) will return
+useful values for a disconnected joystick and only before the monitor callback
+returns.
+
+
+<a id="gamepad"></a>
+
+### Gamepad input
+The joystick functions provide unlabeled axes, buttons and hats, with no
+indication of where they are located on the device.  Their order may also vary
+between platforms even with the same device.
+
+To solve this problem the SDL community crowdsourced the
+[SDL_GameControllerDB][] project, a database of mappings from many different
+devices to an Xbox-like gamepad.
+
+[SDL_GameControllerDB]: https://github.com/gabomdq/SDL_GameControllerDB
+
+GLFW supports this mapping format and contains a copy of the mappings
+available at the time of release.  See [gamepad_mapping](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#gamepad_mapping) for how to update
+this at runtime.  Mappings will be assigned to joysticks automatically any time
+a joystick is connected or the mappings are updated.
+
+You can check whether a joystick is both present and has a gamepad mapping with
+[glfwJoystickIsGamepad](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gad0f676860f329d80f7e47e9f06a96f00).
+
+```c
+if (glfwJoystickIsGamepad(GLFW_JOYSTICK_2))
+{
+    // Use as gamepad
+}
+```
+
+If you are only interested in gamepad input you can use this function instead of
+[glfwJoystickPresent](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaed0966cee139d815317f9ffcba64c9f1).
+
+You can query the human-readable name provided by the gamepad mapping with [glfwGetGamepadName](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga8aea73a1a25cc6c0486a617019f56728).  This may or may not be the same as the
+[joystick name](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#joystick_name).
+
+```c
+const char* name = glfwGetGamepadName(GLFW_JOYSTICK_7);
+```
+
+To retrieve the gamepad state of a joystick, call [glfwGetGamepadState](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gadccddea8bce6113fa459de379ddaf051).
+
+```c
+GLFWgamepadstate state;
+
+if (glfwGetGamepadState(GLFW_JOYSTICK_3, &state))
+{
+    if (state.buttons[GLFW_GAMEPAD_BUTTON_A])
+    {
+        input_jump();
+    }
+
+    input_speed(state.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER]);
+}
+```
+
+The [GLFWgamepadstate](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga61acfb1f28f751438dd221225c5e725d) struct has two arrays; one for button states and one
+for axis states.  The values for each button and axis are the same as for the
+[glfwGetJoystickButtons](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga5ffe34739d3dc97efe432ed2d81d9938) and [glfwGetJoystickAxes](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaeb1c0191d3140a233a682987c61eb408) functions, i.e.
+`GLFW_PRESS` or `GLFW_RELEASE` for buttons and -1.0 to 1.0 inclusive for axes.
+
+The sizes of the arrays and the positions within each array are fixed.
+
+The [button indices](/docs/glfw/v3-5-1/en/04-reference/14-gamepad-buttons/) are `GLFW_GAMEPAD_BUTTON_A`,
+`GLFW_GAMEPAD_BUTTON_B`, `GLFW_GAMEPAD_BUTTON_X`, `GLFW_GAMEPAD_BUTTON_Y`,
+`GLFW_GAMEPAD_BUTTON_LEFT_BUMPER`, `GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER`,
+`GLFW_GAMEPAD_BUTTON_BACK`, `GLFW_GAMEPAD_BUTTON_START`,
+`GLFW_GAMEPAD_BUTTON_GUIDE`, `GLFW_GAMEPAD_BUTTON_LEFT_THUMB`,
+`GLFW_GAMEPAD_BUTTON_RIGHT_THUMB`, `GLFW_GAMEPAD_BUTTON_DPAD_UP`,
+`GLFW_GAMEPAD_BUTTON_DPAD_RIGHT`, `GLFW_GAMEPAD_BUTTON_DPAD_DOWN` and
+`GLFW_GAMEPAD_BUTTON_DPAD_LEFT`.
+
+For those who prefer, there are also the `GLFW_GAMEPAD_BUTTON_CROSS`,
+`GLFW_GAMEPAD_BUTTON_CIRCLE`, `GLFW_GAMEPAD_BUTTON_SQUARE` and
+`GLFW_GAMEPAD_BUTTON_TRIANGLE` aliases for the A, B, X and Y button indices.
+
+The [axis indices](/docs/glfw/v3-5-1/en/04-reference/15-gamepad-axes/) are `GLFW_GAMEPAD_AXIS_LEFT_X`,
+`GLFW_GAMEPAD_AXIS_LEFT_Y`, `GLFW_GAMEPAD_AXIS_RIGHT_X`,
+`GLFW_GAMEPAD_AXIS_RIGHT_Y`, `GLFW_GAMEPAD_AXIS_LEFT_TRIGGER` and
+`GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER`.
+
+The `GLFW_GAMEPAD_BUTTON_LAST` and `GLFW_GAMEPAD_AXIS_LAST` constants equal
+the largest available index for each array.
+
+
+<a id="gamepad_mapping"></a>
+
+### Gamepad mappings
+GLFW contains a copy of the mappings available in [SDL_GameControllerDB][] at
+the time of release.  Newer ones can be added at runtime with [glfwUpdateGamepadMappings](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaed5104612f2fa8e66aa6e846652ad00f).
+
+```c
+const char* mappings = load_file_contents("game/data/gamecontrollerdb.txt");
+
+glfwUpdateGamepadMappings(mappings);
+```
+
+This function supports everything from single lines up to and including the
+unmodified contents of the whole `gamecontrollerdb.txt` file.
+
+If you are compiling GLFW from source with CMake you can update the built-in mappings by
+building the _update_mappings_ target.  This runs the `GenerateMappings.cmake` CMake
+script, which downloads `gamecontrollerdb.txt` and regenerates the `mappings.h` header
+file.
+
+Below is a description of the mapping format.  Please keep in mind that __this
+description is not authoritative__.  The format is defined by the SDL and
+SDL_GameControllerDB projects and their documentation and code takes precedence.
+
+Each mapping is a single line of comma-separated values describing the GUID,
+name and layout of the gamepad.  Lines that do not begin with a hexadecimal
+digit are ignored.
+
+The first value is always the gamepad GUID, a 32 character long hexadecimal
+string that typically identifies its make, model, revision and the type of
+connection to the computer.  When this information is not available, the GUID is
+generated using the gamepad name.  GLFW uses the SDL 2.0.5+ GUID format but can
+convert from the older formats.
+
+The second value is always the human-readable name of the gamepad.
+
+All subsequent values are in the form `<field>:<value>` and describe the layout
+of the mapping.  These fields may not all be present and may occur in any order.
+
+The button fields are `a`, `b`, `x`, `y`, `back`, `start`, `guide`, `dpup`,
+`dpright`, `dpdown`, `dpleft`, `leftshoulder`, `rightshoulder`, `leftstick` and
+`rightstick`.
+
+The axis fields are `leftx`, `lefty`, `rightx`, `righty`, `lefttrigger` and
+`righttrigger`.
+
+The value of an axis or button field can be a joystick button, a joystick axis,
+a hat bitmask or empty.  Joystick buttons are specified as `bN`, for example
+`b2` for the third button.  Joystick axes are specified as `aN`, for example
+`a7` for the eighth button.  Joystick hat bit masks are specified as `hN.N`, for
+example `h0.8` for left on the first hat.  More than one bit may be set in the
+mask.
+
+Before an axis there may be a `+` or `-` range modifier, for example `+a3` for
+the positive half of the fourth axis.  This restricts input to only the positive
+or negative halves of the joystick axis.  After an axis or half-axis there may
+be the `~` inversion modifier, for example `a2~` or `-a7~`.  This negates the
+values of the gamepad axis.
+
+The hat bit mask match the [hat states](/docs/glfw/v3-5-1/en/04-reference/13-joystick-hat-states/) in the joystick
+functions.
+
+There is also the special `platform` field that specifies which platform the
+mapping is valid for.  Possible values are `Windows`, `Mac OS X` and `Linux`.
+
+Below is an example of what a gamepad mapping might look like.  It is the
+one built into GLFW for Xbox controllers accessed via the XInput API on Windows.
+This example has been broken into several lines to fit on the page, but real
+gamepad mappings must be a single line.
+
+```
+78696e70757401000000000000000000,XInput Gamepad (GLFW),platform:Windows,a:b0,
+b:b1,x:b2,y:b3,leftshoulder:b4,rightshoulder:b5,back:b6,start:b7,leftstick:b8,
+rightstick:b9,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:a4,
+righttrigger:a5,dpup:h0.1,dpright:h0.2,dpdown:h0.4,dpleft:h0.8,
+```
+
+> **Note:** GLFW does not yet support the output range and modifiers `+` and `-` that
+were recently added to SDL.  The input modifiers `+`, `-` and `~` are supported
+and described above.
+
+
+<a id="time"></a>
+
+## Time input
+GLFW provides high-resolution time input, in seconds, with [glfwGetTime](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaa6cf4e7a77158a3b8fd00328b1720a4a).
+
+```c
+double seconds = glfwGetTime();
+```
+
+It returns the number of seconds since the library was initialized with [glfwInit](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga317aac130a235ab08c6db0834907d85e).  The platform-specific time sources used typically have micro- or
+nanosecond resolution.
+
+You can modify the base time with [glfwSetTime](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaf59589ef6e8b8c8b5ad184b25afd4dc0).
+
+```c
+glfwSetTime(4.0);
+```
+
+This sets the time to the specified time, in seconds, and it continues to count
+from there.
+
+You can also access the raw timer used to implement the functions above,
+with [glfwGetTimerValue](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga09b2bd37d328e0b9456c7ec575cc26aa).
+
+```c
+uint64_t value = glfwGetTimerValue();
+```
+
+This value is in 1&nbsp;/&nbsp;frequency seconds.  The frequency of the raw
+timer varies depending on the operating system and hardware.  You can query the
+frequency, in Hz, with [glfwGetTimerFrequency](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga3289ee876572f6e91f06df3a24824443).
+
+```c
+uint64_t frequency = glfwGetTimerFrequency();
+```
+
+
+<a id="clipboard"></a>
+
+## Clipboard input and output
+If the system clipboard contains a UTF-8 encoded string or if it can be
+converted to one, you can retrieve it with [glfwGetClipboardString](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga71a5b20808ea92193d65c21b82580355).  See the
+reference documentation for the lifetime of the returned string.
+
+```c
+const char* text = glfwGetClipboardString(NULL);
+if (text)
+{
+    insert_text(text);
+}
+```
+
+If the clipboard is empty or if its contents could not be converted, `NULL` is
+returned.
+
+The contents of the system clipboard can be set to a UTF-8 encoded string with
+[glfwSetClipboardString](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaba1f022c5eb07dfac421df34cdcd31dd).
+
+```c
+glfwSetClipboardString(NULL, "A string with words in it");
+```
+
+
+<a id="path_drop"></a>
+
+## Path drop input
+If you wish to receive the paths of files and/or directories dropped on
+a window, set a file drop callback.
+
+```c
+glfwSetDropCallback(window, drop_callback);
+```
+
+The callback function receives an array of paths encoded as UTF-8.
+
+```c
+void drop_callback(GLFWwindow* window, int count, const char** paths)
+{
+    int i;
+    for (i = 0;  i < count;  i++)
+        handle_dropped_file(paths[i]);
+}
+```
+
+The path array and its strings are only valid until the file drop callback
+returns, as they may have been generated specifically for that event.  You need
+to make a deep copy of the array if you want to keep the paths.

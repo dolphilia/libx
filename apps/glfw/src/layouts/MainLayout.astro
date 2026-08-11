@@ -1,0 +1,181 @@
+---
+/**
+ * MainLayout - ドキュメントサイトの基本レイアウトコンポーネント
+ * Starlightスタイルに基づいたレイアウト
+ */
+import { DocsHeaderFrame, Footer, LanguageSelector, ThemeToggle } from '@docs/ui/components';
+import { VersionSelector } from '@docs/versioning/components';
+import { getLocaleDirection } from '@docs/i18n/locales';
+import type { LocaleKey } from '@docs/i18n/locales';
+import '../styles/global.css';
+import { getProjectConfig, getDisplayNameAsync } from '@docs/project-config';
+import { Icons } from '@docs/ui/components/icons/Icons';
+import { generateRedirectUrl } from '@docs/content-utils';
+import { getCollection } from 'astro:content';
+
+// 定数定義
+
+// インターフェース定義
+interface Props {
+  /** ページタイトル */
+  title: string;
+  /** 言語コード */
+  lang: LocaleKey;
+  /** ドキュメントバージョン */
+  version?: string;
+  /** サイドバーを表示するか */
+  hasSidebar?: boolean;
+  /** 目次を表示するか */
+  hasToc?: boolean;
+  /** バージョンセレクターを表示するか */
+  showVersionSelector?: boolean;
+  /** パンくずリストを表示するか */
+  showBreadcrumb?: boolean;
+}
+
+// プロパティの取得
+const {
+  title,
+  lang,
+  version = 'v1',
+  hasSidebar = false,
+  hasToc = false,
+  showVersionSelector = true,
+  showBreadcrumb = false,
+} = Astro.props;
+
+// プロジェクト設定を読み込み
+const projectConfig = await getProjectConfig();
+const displayName = await getDisplayNameAsync(lang);
+const dir = getLocaleDirection(lang);
+const breadcrumbIcon = dir === 'rtl' ? 'chevron-left' : 'chevron-right';
+const docs = await getCollection('docs');
+const availableVersionIds = new Set(
+  docs.filter((entry) => entry.slug.split('/')[1] === lang).map((entry) => entry.slug.split('/')[0])
+);
+const availableVersions = projectConfig.versioning.versions.filter((item) =>
+  availableVersionIds.has(item.id)
+);
+
+// HTML属性の設定
+const htmlDataAttributes: Record<string, string> = { 'data-theme': 'dark' };
+if (hasToc) htmlDataAttributes['data-has-toc'] = '';
+if (hasSidebar) htmlDataAttributes['data-has-sidebar'] = '';
+const htmlAttributes = {
+  ...htmlDataAttributes,
+  'data-dir': dir,
+};
+
+const numBaseSegments = projectConfig.paths.baseUrl.split('/').filter((p) => p.length > 0).length;
+const slugSliceIndex = 1 + numBaseSegments + 1 + 1; // 1 (leading empty) + base segments + version segment + lang segment
+const currentSlugForSelector = `${lang}/${Astro.url.pathname.split('/').slice(slugSliceIndex).join('/').replace(/\/$/, '')}`; // lang/slug 形式
+
+// ドキュメントトップへの動的リンクを生成
+const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
+---
+
+<!doctype html>
+<html lang={lang} dir={dir} {...htmlAttributes}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${projectConfig.paths.baseUrl}/favicon.svg`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ダークモードフラッシュ防止スクリプト -->
+    <script is:inline>
+      (function () {
+        const STORAGE_KEY = 'theme-preference';
+
+        function getThemePreference() {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY)) {
+            return localStorage.getItem(STORAGE_KEY);
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        const theme = getThemePreference();
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Documentation site built with Astro" />
+    <title>{title} | Docs</title>
+    <script>
+      // Service Workerの登録
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // サイトのベースURLに応じてsw.jsのパスを解決
+          const swPath = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/sw.js`;
+          navigator.serviceWorker.register(swPath);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <DocsHeaderFrame dir={dir}>
+        <Fragment slot="title">
+          {
+            showBreadcrumb ? (
+              <div class="breadcrumb-title">
+                <a href={`/${lang}`} class="site-title">
+                  Libx
+                </a>
+                <svg
+                  class="breadcrumb-separator"
+                  viewBox="0 0 24 24"
+                  set:html={Icons[breadcrumbIcon]}
+                />
+                <a href={docTopLink} class="doc-title">
+                  {displayName}
+                </a>
+              </div>
+            ) : (
+              <a href={`/${lang}`} class="site-title">
+                {displayName}
+              </a>
+            )
+          }
+        </Fragment>
+        <Fragment slot="actions">
+          {
+            showVersionSelector && version && (
+              <div class="version-selector-container">
+                <VersionSelector
+                  currentVersion={version}
+                  versions={availableVersions}
+                  basePath={projectConfig.paths.baseUrl}
+                  currentSlug={currentSlugForSelector}
+                  lang={lang}
+                  dir={dir}
+                />
+              </div>
+            )
+          }
+          <div class="language-selector-container">
+            <LanguageSelector currentLang={lang} dir={dir} />
+          </div>
+          <ThemeToggle lang={lang} />
+        </Fragment>
+      </DocsHeaderFrame>
+
+      <div class="main-frame">
+        <main id="main-content">
+          <slot />
+        </main>
+      </div>
+
+      <Footer
+        showContribute={true}
+        contributeUrl="https://github.com/libx-dev/libx-dev"
+        lang={lang}
+        showLicenseAttribution={true}
+        projectConfig={projectConfig}
+        dir={dir}
+      />
+    </div>
+  </body>
+</html>
