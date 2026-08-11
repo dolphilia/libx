@@ -24,6 +24,7 @@
     "test": "pnpm test:unit && pnpm test:runtime",
     "check:links": "node scripts/check-markdown-links.js",
     "check:integrity": "node scripts/validate-repository-integrity.js",
+    "check:deployment-assets": "node scripts/check-deployment-assets.js dist",
     "check": "pnpm sync:service-workers && pnpm build:sidebar && pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm check:links && pnpm check:integrity && pnpm build:template && pnpm build:separate && pnpm test:smoke",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -33,7 +34,7 @@
     "build:deploy": "node scripts/build-sidebar.js && node scripts/build-integrated.js",
     "build:deploy-selective": "node scripts/build-sidebar-selective.js && node scripts/build-selective.js",
     "create:project": "node scripts/create-project.js",
-    "deploy": "pnpm build && pnpm deploy:pages",
+    "deploy": "pnpm build -- --confirm && pnpm check:deployment-assets && pnpm deploy:pages",
     "deploy:pages": "wrangler pages deploy dist --project-name libx",
     "perf:comparison": "astro build --root benchmarks/starlight",
     "perf:reader": "node scripts/build-integrated.js --confirm && pnpm perf:comparison && node scripts/performance/measure-reader.js",
@@ -55,7 +56,7 @@
     "prettier": "^3.0.0",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.0.0",
-    "wrangler": "^3.0.0"
+    "wrangler": "4.60.0"
   },
   "dependencies": {
     "ajv": "^8.17.1",

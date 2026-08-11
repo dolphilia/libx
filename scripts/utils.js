@@ -1,32 +1,15 @@
 import fsPromises from 'fs/promises';
 import fs from 'fs';
 import path from 'path';
-import zlib from 'zlib';
-import { promisify } from 'util';
 import matter from 'gray-matter';
 
-const gzip = promisify(zlib.gzip);
-
 /**
- * JSONファイルを圧縮して保存
+ * JSONファイルを保存
  */
-export async function saveCompressedJson(filePath, data) {
+export async function saveJson(filePath, data) {
   try {
-    // 通常のJSONファイルを保存
     await fsPromises.writeFile(filePath, JSON.stringify(data, null, 2));
-    console.log(`  通常のJSONファイルを保存しました: ${filePath}`);
-
-    // 圧縮版のJSONファイルを保存
-    const compressedData = await gzip(JSON.stringify(data));
-    const compressedPath = `${filePath}.gz`;
-    await fsPromises.writeFile(compressedPath, compressedData);
-    console.log(`  圧縮版のJSONファイルを保存しました: ${compressedPath}`);
-
-    // 圧縮率を計算
-    const originalSize = JSON.stringify(data).length;
-    const compressedSize = compressedData.length;
-    const compressionRatio = (((originalSize - compressedSize) / originalSize) * 100).toFixed(2);
-    console.log(`  圧縮率: ${compressionRatio}% (${originalSize} → ${compressedSize} bytes)`);
+    console.log(`  JSONファイルを保存しました: ${filePath}`);
   } catch (error) {
     console.error(`  JSONファイルの保存中にエラーが発生しました:`, error);
     // エラーを再スローして呼び出し元で処理できるようにする

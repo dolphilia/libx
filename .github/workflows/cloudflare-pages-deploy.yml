@@ -58,7 +58,10 @@ jobs:
         run: pnpm build:sidebar
 
       - name: Build project
-        run: pnpm build
+        run: pnpm build -- --confirm
+
+      - name: Check deployment asset budget
+        run: pnpm check:deployment-assets
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

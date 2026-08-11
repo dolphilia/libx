@@ -128,16 +128,16 @@ pnpm build:sidebar
 2. 各プロジェクトの言語・バージョンを動的分析
 3. MDXファイルのフロントマター解析
 4. カテゴリ別・順序別でサイドバーJSONを生成
-5. 通常版と圧縮版（.gz）の両方を出力
+5. 配信環境で圧縮可能な通常JSONを出力
 
 **出力場所**:
 ```
 apps/{project}/public/sidebar/
 ├── sidebar-en-v2.json
-├── sidebar-en-v2.json.gz
-├── sidebar-ja-v2.json
-└── sidebar-ja-v2.json.gz
+└── sidebar-ja-v2.json
 ```
+
+Cloudflare Pagesは可能な場合にGzipまたはBrotliで配信するため、`.json.gz`は別ファイルとして生成しません。
 
 ### 1b. 選択的サイドバー生成（`build-sidebar-selective.js`）🆕
 

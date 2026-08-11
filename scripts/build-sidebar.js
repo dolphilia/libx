@@ -9,14 +9,14 @@
  * 拡張機能:
  * - 複数のプロジェクトに対応（apps/ディレクトリ内の全プロジェクト）
  * - 言語とバージョンを動的に検出
- * - JSONファイルの圧縮
+ * - 配信環境で圧縮可能なJSONファイルの生成
  */
 
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { glob } from 'glob';
-import { saveCompressedJson, parseMarkdownFile } from './utils.js';
+import { saveJson, parseMarkdownFile } from './utils.js';
 import * as logger from './logger.js';
 import { readJsoncFileAsync } from './jsonc-utils.js';
 import {
@@ -84,9 +84,9 @@ async function main() {
             // サイドバーを生成
             const sidebar = await generateSidebarForVersion(project, lang, version);
 
-            // サイドバーをJSONとして保存（圧縮版も含む）
+            // サイドバーをJSONとして保存
             const outputPath = path.join(project.outputDir, `sidebar-${lang}-${version}.json`);
-            await saveCompressedJson(outputPath, sidebar);
+            await saveJson(outputPath, sidebar);
           } catch (error) {
             console.error(`  ${lang}/${version} のサイドバー生成中にエラーが発生しました:`, error);
           }

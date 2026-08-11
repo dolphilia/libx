@@ -5,11 +5,13 @@
 - 提案者: リポジトリ管理者
 - 承認者: リポジトリ管理者
 - 置換対象: なし
-- 置換元: なし
+- 置換元: [ADR-0006](./0006-deployment-asset-budget-and-edge-compression.md)（gzip生成物に関する決定のみ）
 
 ## 背景
 
 サイドバーJSON、gzip、Service WorkerはGit追跡される一方、実アプリ単体ビルドではサイドバーが再生成されず、古い成果物を配信できた。
+
+後続のADR-0006により、gzip版の生成・追跡は廃止された。通常JSONとService Workerを追跡し、全ビルド入口で再生成する決定は引き続き有効である。
 
 ## 決定
 

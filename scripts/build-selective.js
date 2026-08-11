@@ -233,11 +233,6 @@ async function main() {
             console.log(`${config.name} のサイドバーJSONファイルをコピーしています...`);
             fs.mkdirSync(sidebarDestDir, { recursive: true });
             copyDirRecursive(sidebarSrcDir, sidebarDestDir);
-
-            const additionalDestDir = path.join(stagedDestination, 'pages', 'public', 'sidebar');
-            fs.mkdirSync(additionalDestDir, { recursive: true });
-            copyDirRecursive(sidebarSrcDir, additionalDestDir);
-            console.log('追加の場所にもサイドバーJSONファイルをコピーしました');
           } else {
             console.warn(`サイドバーディレクトリが見つかりません: ${sidebarSrcDir}`);
           }

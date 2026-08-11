@@ -20,7 +20,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { glob } from 'glob';
-import { saveCompressedJson, parseMarkdownFile } from './utils.js';
+import { saveJson, parseMarkdownFile } from './utils.js';
 import * as logger from './logger.js';
 import { readJsoncFileAsync } from './jsonc-utils.js';
 import {
@@ -466,7 +466,7 @@ async function main() {
 
           const sidebar = await generateSidebarForVersion(project, lang, version);
           const outputPath = path.join(preparedOutputDir, `sidebar-${lang}-${version}.json`);
-          await saveCompressedJson(outputPath, sidebar);
+          await saveJson(outputPath, sidebar);
         }
       }
 

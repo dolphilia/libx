@@ -260,14 +260,6 @@ async function main() {
           fs.mkdirSync(sidebarDestDir, { recursive: true });
         }
         copyDirRecursive(sidebarSrcDir, sidebarDestDir);
-
-        const additionalDestDir = path.join(target.destDir, 'pages', 'public', 'sidebar');
-        if (!fs.existsSync(additionalDestDir)) {
-          fs.mkdirSync(additionalDestDir, { recursive: true });
-          console.log(`追加のサイドバーディレクトリを作成しました: ${additionalDestDir}`);
-        }
-        copyDirRecursive(sidebarSrcDir, additionalDestDir);
-        console.log(`追加の場所にもサイドバーJSONファイルをコピーしました: ${additionalDestDir}`);
       } else {
         console.warn(`サイドバーディレクトリが見つかりません: ${sidebarSrcDir}`);
       }

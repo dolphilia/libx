@@ -16,6 +16,7 @@
 - `PROJECT_PRINCIPLES_COMPLIANCE_AUDIT.md` – 正式原則を基準にしたリポジトリ全体の準拠状況と改善点の再調査
 - `PROJECT_PRINCIPLES_COMPLIANCE_IMPLEMENTATION_LOG.md` – 正式原則準拠改善計画の実施内容と検証結果
 - `PERFORMANCE_BASELINE_2026-08-11.md` – 正式原則準拠改善後の性能基準値
+- `DEPLOYMENT_FILE_COUNT_SCALING_RESEARCH.md` – デプロイ先のファイル数制限、Pages／Workers／R2と将来の分割方針の調査
 
 ## ADR (`docs/adr`)
 - `README.md` – ADRの対象、命名、ステータス、承認手順
@@ -25,12 +26,14 @@
 - `0003-canonical-project-configuration.md` – プロジェクト設定と既定値の正本
 - `0004-generated-artifact-policy.md` – サイドバーとService Workerの生成物方針
 - `0005-package-boundaries-and-performance-budgets.md` – 公開境界、Astro依存、性能予算
+- `0006-deployment-asset-budget-and-edge-compression.md` – デプロイ成果物予算と配信基盤による圧縮
 
 ## 計画 (`docs/plans`)
 - `CODE_QUALITY_IMPROVEMENT_PLAN.md` – コード品質改善の実施計画と受け入れ基準
 - `PROJECT_PRINCIPLES_COMPLIANCE_IMPROVEMENT_PLAN.md` – 正式原則準拠監査で確認した課題の優先度付き改善計画
 - `RTL_SUPPORT_PLAN.md` – ドキュメントサイトとランディングのRTL対応計画
 - `TOP_PAGE_RELOCATION_PLAN.md` – トップページ移設に向けた計画案
+- `DEPLOYMENT_FILE_COUNT_SCALING_PLAN.md` – ファイル数監視、不要成果物削減、将来のサイト分割計画
 
 ## 仕様 (`docs/spec`)
 - `PROJECT_PRINCIPLES.md` – libx のコンセプト・方針・方向性・開発原則
