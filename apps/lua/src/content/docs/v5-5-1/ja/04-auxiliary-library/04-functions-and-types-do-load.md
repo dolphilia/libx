@@ -1,7 +1,6 @@
 ---
 title: "補助関数と型：dofile–loadstring"
 description: "実行、結果、読み込みに関する補助APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 補助関数と型：dofile–loadstring

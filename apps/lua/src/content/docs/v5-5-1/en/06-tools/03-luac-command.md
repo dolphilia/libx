@@ -1,7 +1,6 @@
 ---
 title: "luac command"
 description: "Command-line reference for the Lua compiler"
-licenseSource: "lua-5.5.1"
 ---
 
 # luac command

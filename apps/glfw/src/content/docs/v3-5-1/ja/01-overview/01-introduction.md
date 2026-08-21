@@ -1,10 +1,7 @@
 ---
 title: "はじめに"
 description: "公式ドキュメントの入口"
-licenseSource: "glfw-3.5.1"
 ---
-
-> このページは、[GLFW 3.5.1公式ドキュメント](https://www.glfw.org/docs/3.5.1/)をMarkdown形式へ変更して移植したものです。libx向けに書式、ナビゲーション、リンクを変更していますが、技術的な内容はGLFW 3.5.1のソース配布物に基づいています。
 
 <a id="mainpage"></a>
 

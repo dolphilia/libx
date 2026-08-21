@@ -23,6 +23,10 @@ import {
   resolveBaseUrl as resolveRepoBaseUrl,
   resolveSupportedLangs as resolveRepoSupportedLangs,
 } from './global-defaults.js';
+import {
+  getCategoryId,
+  resolveCategoryLabel,
+} from '../packages/content-utils/src/category-navigation.js';
 
 logger.useUnifiedConsole();
 
@@ -116,6 +120,22 @@ async function detectProjects() {
       const projectName = dir.name;
 
       const projectPath = path.join(config.appsDir, projectName);
+
+      const generatedAwesomeRoutes = path.join(
+        projectPath,
+        'src',
+        'generated',
+        'awesome-routes.json'
+      );
+      if (
+        await fs
+          .access(generatedAwesomeRoutes)
+          .then(() => true)
+          .catch(() => false)
+      ) {
+        console.log(`${projectName} は専用ルート目録からサイドバーを生成するためスキップします。`);
+        continue;
+      }
 
       // src/content/docs ディレクトリが存在するかチェック
       const contentPath = path.join(projectPath, 'src', 'content', 'docs');
@@ -264,6 +284,11 @@ function extractOrderFromDirectoryName(dirname) {
   return match ? parseInt(match[1], 10) : 999;
 }
 
+function extractOrderFromFilename(filename) {
+  const match = filename.match(/^(\d+)-/);
+  return match ? parseInt(match[1], 10) : 999;
+}
+
 /**
  * 指定された言語とバージョンのサイドバーを生成する
  */
@@ -304,8 +329,7 @@ async function generateSidebarForVersion(project, lang, version) {
     const pathCategory = parts.length >= 3 ? parts[2] : 'uncategorized';
 
     // ディレクトリ名から純粋なカテゴリ名を抽出（数字プレフィックスを除去）
-    const cleanCategory = pathCategory.replace(/^\d+-/, '');
-    const category = doc.data.category || cleanCategory;
+    const category = getCategoryId(pathCategory);
 
     // ディレクトリ名から順序を取得
     const categoryDirName = parts[2] || 'uncategorized';
@@ -330,8 +354,10 @@ async function generateSidebarForVersion(project, lang, version) {
   // カテゴリごとにドキュメントを順序で並べ替え
   Object.keys(categories).forEach((category) => {
     categories[category].docs.sort((a, b) => {
-      const orderA = a.data.order || 999;
-      const orderB = b.data.order || 999;
+      const filenameA = a.slug.split('/').pop() || '';
+      const filenameB = b.slug.split('/').pop() || '';
+      const orderA = a.data.order ?? extractOrderFromFilename(filenameA);
+      const orderB = b.data.order ?? extractOrderFromFilename(filenameB);
       return orderA - orderB;
     });
   });
@@ -347,7 +373,12 @@ async function generateSidebarForVersion(project, lang, version) {
   // サイドバー項目の生成
   return sortedCategories.map(([category, { docs }]) => {
     // カテゴリ名を翻訳（プロジェクト設定から取得）
-    const title = translateCategory(category, lang, categoryTranslations);
+    const title = resolveCategoryLabel({
+      categoryId: category,
+      lang,
+      defaultLang: categoryTranslations.defaultLang,
+      translations: categoryTranslations.translations,
+    });
 
     return {
       title,
@@ -375,12 +406,15 @@ async function getProjectCategoryTranslations(project) {
   try {
     const configPath = path.join(project.path, 'src', 'config', 'project.config.jsonc');
     const projectConfig = await readJsoncFileAsync(configPath);
-    return Object.fromEntries(
-      Object.entries(projectConfig.translations ?? {}).map(([lang, translation]) => [
-        lang,
-        translation.categories ?? {},
-      ])
-    );
+    return {
+      defaultLang: projectConfig.language?.default ?? 'en',
+      translations: Object.fromEntries(
+        Object.entries(projectConfig.translations ?? {}).map(([lang, translation]) => [
+          lang,
+          translation.categories ?? {},
+        ])
+      ),
+    };
   } catch (error) {
     if (error.code !== 'ENOENT') {
       console.warn(
@@ -389,24 +423,7 @@ async function getProjectCategoryTranslations(project) {
     }
   }
 
-  return null;
-}
-
-/**
- * カテゴリ名を翻訳する
- */
-function translateCategory(category, lang, translations) {
-  if (translations && translations[lang] && translations[lang][category]) {
-    return translations[lang][category];
-  }
-
-  // フォールバック: 英語の翻訳があればそれを使用
-  if (translations && translations['en'] && translations['en'][category]) {
-    return translations['en'][category];
-  }
-
-  // 最終フォールバック: カテゴリ名の先頭を大文字にして返す（既存のロジック）
-  return category.charAt(0).toUpperCase() + category.slice(1);
+  return { defaultLang: 'en', translations: {} };
 }
 
 /**

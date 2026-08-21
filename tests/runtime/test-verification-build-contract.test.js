@@ -45,7 +45,8 @@ test('built Markdown and MDX share metadata and semantic HTML contracts', () => 
     assert.match(html, /class="docs-callout docs-callout--warning"/);
     assert.match(html, /class="docs-callout__title"><strong>Warning<\/strong>/);
     assert.match(html, /<dt>Canonical document<\/dt>/);
-    assert.match(html, /<aside class="source-status"/);
+    assert.equal((html.match(/<aside class="document-provenance"/g) ?? []).length, 1);
+    assert.ok(html.indexOf('class="pagination-links"') < html.indexOf('document-provenance'));
     assert.match(html, /This paragraph contains/);
     assert.match(html, /class="docs-code-frame"/);
     assert.match(html, /class="docs-table-scroll"/);
@@ -60,6 +61,7 @@ test('built Markdown and MDX share metadata and semantic HTML contracts', () => 
   assert.match(notFound, /<meta name="robots" content="noindex, nofollow">/);
   assert.match(notFound, /<meta property="og:type" content="website">/);
   assert.match(notFound, /<h1 id="not-found-title"[^>]*>Page not found<\/h1>/);
+  assert.doesNotMatch(notFound, /document-provenance/);
 
   const builtFiles = readdirSync('apps/test-verification/dist', { recursive: true }).map(String);
   assert.equal(builtFiles.filter((file) => /KaTeX|katex/i.test(file)).length, 0);

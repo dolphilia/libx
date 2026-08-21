@@ -1,7 +1,6 @@
 ---
 title: "Handling yields in C"
 description: "Continuation functions and yielding C calls"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.5 – <a id="4.5"></a>Handling Yields in C

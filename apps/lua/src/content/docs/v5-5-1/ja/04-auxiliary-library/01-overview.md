@@ -1,7 +1,6 @@
 ---
 title: "補助ライブラリの概要"
 description: "Lua補助ライブラリの規約と機能"
-licenseSource: "lua-5.5.1"
 ---
 
 # 5 – <a id="5"></a>補助ライブラリ

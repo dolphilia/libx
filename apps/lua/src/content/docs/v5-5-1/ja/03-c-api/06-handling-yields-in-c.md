@@ -1,7 +1,6 @@
 ---
 title: "Cでのyield処理"
 description: "継続関数とyieldするC呼び出し"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.5 – <a id="4.5"></a>Cでのyield処理

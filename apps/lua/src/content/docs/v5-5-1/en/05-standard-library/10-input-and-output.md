@@ -1,7 +1,6 @@
 ---
 title: "Input and output facilities"
 description: "File handles and I/O library reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.9 – <a id="6.9"></a>Input and Output Facilities

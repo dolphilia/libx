@@ -1,7 +1,6 @@
 ---
 title: "Auxiliary functions and types: ref–where"
 description: "Reference, registration, stream and diagnostic auxiliary API reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # Auxiliary functions and types: ref–where

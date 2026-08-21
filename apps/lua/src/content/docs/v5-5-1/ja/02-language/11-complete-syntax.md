@@ -1,7 +1,6 @@
 ---
 title: "Luaの完全な構文"
 description: "Lua 5.5の完全な文法"
-licenseSource: "lua-5.5.1"
 ---
 
 # 9 – <a id="9"></a>Luaの完全な構文

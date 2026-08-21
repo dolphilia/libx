@@ -1,7 +1,6 @@
 ---
 title: "Scopes, variables and environments"
 description: "Lexical scope, variables and environments"
-licenseSource: "lua-5.5.1"
 ---
 
 # 2.2 – <a id="2.2"></a>Scopes, Variables, and Environments

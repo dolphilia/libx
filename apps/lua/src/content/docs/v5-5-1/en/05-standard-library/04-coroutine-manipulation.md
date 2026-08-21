@@ -1,7 +1,6 @@
 ---
 title: "Coroutine manipulation"
 description: "Coroutine library reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.3 – <a id="6.3"></a>Coroutine Manipulation

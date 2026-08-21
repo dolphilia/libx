@@ -1,7 +1,6 @@
 ---
 title: "Coroutines"
 description: "Lua coroutine execution and yielding"
-licenseSource: "lua-5.5.1"
 ---
 
 # 2.6 – <a id="2.6"></a>Coroutines

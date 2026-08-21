@@ -1,7 +1,6 @@
 ---
 title: "Loading libraries in C code"
 description: "Open functions and selective standard-library loading"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.1 – <a id="6.1"></a>Loading the Libraries in C code

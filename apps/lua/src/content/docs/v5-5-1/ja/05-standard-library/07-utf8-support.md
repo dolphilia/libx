@@ -1,7 +1,6 @@
 ---
 title: "UTF-8サポート"
 description: "UTF-8ライブラリのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.6 – <a id="6.6"></a>UTF-8サポート

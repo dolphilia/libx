@@ -1,7 +1,6 @@
 ---
 title: "コルーチン"
 description: "Luaコルーチンの実行とyield"
-licenseSource: "lua-5.5.1"
 ---
 
 # 2.6 – <a id="2.6"></a>コルーチン

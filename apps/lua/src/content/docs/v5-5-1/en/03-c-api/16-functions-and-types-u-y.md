@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: Unsigned–yieldk"
 description: "Alphabetical C API reference from lua_Unsigned through lua_yieldk"
-licenseSource: "lua-5.5.1"
 ---
 
 # C API functions and types: Unsigned–yieldk

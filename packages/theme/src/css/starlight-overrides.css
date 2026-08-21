@@ -78,6 +78,20 @@
     margin-top: 4rem !important;
   }
 
+  /*
+   * 互換アンカーなどの高さを持たない要素が文書タイトルより前にあっても、
+   * 最初のh1は左右のナビゲーションと同じ上端から始める。
+   * 上の汎用見出し規則より後に置き、同じ優先度で確実に上書きする。
+   */
+  :where(.article-content, .sl-markdown-content) > h1:first-of-type {
+    margin-top: 0 !important;
+  }
+
+  /* Markdown変換で空段落になった互換アンカーは、位置だけを保持して余白を作らない。 */
+  :where(.article-content, .sl-markdown-content) > p:has(> a[id]:only-child:empty) {
+    margin-block: 0 !important;
+  }
+
   /* サイドバーと目次の見出しはマージンをリセット */
   .sidebar-content h1,
   .sidebar-content h2,
@@ -233,14 +247,14 @@
   :where(.article-content, .sl-markdown-content) a {
     color: var(--sl-color-text-accent);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s ease;
-    position: relative;
+    transition: color 0.2s ease;
   }
 
   :where(.article-content, .sl-markdown-content) a:hover {
     color: var(--sl-color-white);
-    border-bottom-color: var(--sl-color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
   }
 
   :where(.article-content, .sl-markdown-content) a:focus {

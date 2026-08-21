@@ -2,6 +2,19 @@
 
 このガイドでは、既存のドキュメントプロジェクトに新しいMarkdown／MDX文書を追加する方法を詳しく説明します。通常は移植しやすい`.md`を使い、UIコンポーネントや式が必要な場合だけ`.mdx`を選びます。
 
+## カテゴリIDと表示名
+
+カテゴリの並び順はディレクトリの番号接頭辞、安定したカテゴリIDは番号を除いた名前で管理します。たとえば`02-getting-started/`のカテゴリIDは`getting-started`です。サイドバーに表示する言語別の名前は、対象サイトの`src/config/project.config.jsonc`に次のように記述します。
+
+```jsonc
+"translations": {
+  "en": { "categories": { "getting-started": "Getting started" } },
+  "ja": { "categories": { "getting-started": "はじめに" } }
+}
+```
+
+カテゴリキーに`02-`のような番号を含めないでください。対象言語の表示名がない場合はプロジェクトの既定言語へフォールバックします。文書ごとのFrontmatterでカテゴリを上書きせず、ディレクトリを唯一の構造情報として扱います。
+
 ## 🚀 推奨方法：自動化スクリプトを使用したドキュメント追加
 
 **既存の自動化スクリプト `scripts/create-document.js` が利用可能です。このスクリプトを使用することで、ドキュメント追加作業を大幅に効率化できます。**
@@ -419,7 +432,7 @@ libx以外のMarkdown処理系では通常の引用として本文が残りま�
 </dl>
 ```
 
-出典と翻訳状態は本文へ手書きせず、`licenseSource`とプロジェクト設定から生成される表示を使います。詳しい判断理由は[ADR-0007](../adr/0007-portable-semantic-markdown.md)を参照してください。
+出典、翻訳状態、ライセンス帰属は本文へ手書きせず、文書最下部に自動生成される表示を使います。通常はプロジェクト設定の`defaultSource`が使われるため、Frontmatterへ`licenseSource`を記述する必要はありません。既定と異なる出典を使うページだけ`licenseSource`を指定します。詳しい判断理由は[ADR-0007](../adr/0007-portable-semantic-markdown.md)を参照してください。
 
 ## 🎨 MDXの高度な機能
 

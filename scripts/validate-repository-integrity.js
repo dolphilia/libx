@@ -95,7 +95,15 @@ export function validateProjectConfigData(
 }
 
 async function readContentMetadata(appDir) {
-  const contentRoot = path.join(appDir, 'src/content/docs');
+  const standardContentRoot = path.join(appDir, 'src/content/docs');
+  const awesomeContentRoot = path.join(appDir, 'src/awesome-content');
+  const contentRoot = await fs
+    .access(standardContentRoot)
+    .then(() => standardContentRoot)
+    .catch(async () => {
+      await fs.access(awesomeContentRoot);
+      return awesomeContentRoot;
+    });
   const coordinates = [];
   const references = [];
   const versions = await fs.readdir(contentRoot, { withFileTypes: true });

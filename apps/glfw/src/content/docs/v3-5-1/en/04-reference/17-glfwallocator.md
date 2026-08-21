@@ -1,10 +1,7 @@
 ---
 title: "GLFWallocator structure"
 description: "GLFW 3.5.1 GLFWallocator structure"
-licenseSource: "glfw-3.5.1"
 ---
-
-> This reference page is an altered Markdown adaptation of the [official GLFW 3.5.1 documentation](https://www.glfw.org/docs/3.5.1/). Formatting, navigation and links were changed for libx; technical content comes from the GLFW 3.5.1 source distribution.
 
 Custom heap memory allocator. [More...](/docs/glfw/v3-5-1/en/04-reference/17-glfwallocator/#details)
 

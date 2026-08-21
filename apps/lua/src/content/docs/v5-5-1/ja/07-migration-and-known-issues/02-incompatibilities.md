@@ -1,7 +1,6 @@
 ---
 title: "Lua 5.4との非互換性"
 description: "以前のバージョンとの言語、ライブラリ、APIの非互換性"
-licenseSource: "lua-5.5.1"
 ---
 
 # 8 – <a id="8"></a>以前のバージョンとの非互換性

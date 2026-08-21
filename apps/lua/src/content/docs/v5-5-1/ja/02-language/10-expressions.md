@@ -1,7 +1,6 @@
 ---
 title: "式"
 description: "演算子、コンストラクター、呼び出し、関数定義"
-licenseSource: "lua-5.5.1"
 ---
 
 # 3.4 – <a id="3.4"></a>式

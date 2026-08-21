@@ -1,7 +1,6 @@
 ---
 title: "コルーチン操作"
 description: "コルーチンライブラリのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.3 – <a id="6.3"></a>コルーチン操作

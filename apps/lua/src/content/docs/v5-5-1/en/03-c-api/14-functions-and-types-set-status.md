@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: setallocf–stringtonumber"
 description: "Alphabetical C API reference for setters and status operations"
-licenseSource: "lua-5.5.1"
 ---
 
 # C API functions and types: setallocf–stringtonumber

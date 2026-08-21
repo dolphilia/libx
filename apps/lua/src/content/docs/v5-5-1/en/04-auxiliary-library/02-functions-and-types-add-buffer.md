@@ -1,7 +1,6 @@
 ---
 title: "Auxiliary functions and types: addchar–buffsub"
 description: "Buffer-oriented auxiliary API reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 5.1 – <a id="5.1"></a>Functions and Types

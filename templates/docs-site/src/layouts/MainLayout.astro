@@ -3,13 +3,7 @@
  * MainLayout - ドキュメントサイトの基本レイアウトコンポーネント
  * Starlightスタイルに基づいたレイアウト
  */
-import {
-  DocsHeaderFrame,
-  Footer,
-  LanguageSelector,
-  Search,
-  ThemeToggle,
-} from '@docs/ui/components';
+import { DocsHeaderFrame, LanguageSelector, Search, ThemeToggle } from '@docs/ui/components';
 import { VersionSelector } from '@docs/versioning/components';
 import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
@@ -227,15 +221,6 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
           <slot />
         </main>
       </div>
-
-      <Footer
-        showContribute={true}
-        contributeUrl="https://github.com/dolphilia/libx"
-        lang={lang}
-        showLicenseAttribution={true}
-        projectConfig={projectConfig}
-        dir={dir}
-      />
     </div>
   </body>
 </html>

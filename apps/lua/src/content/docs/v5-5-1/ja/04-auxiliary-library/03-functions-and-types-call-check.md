@@ -1,7 +1,6 @@
 ---
 title: "補助関数と型：callmeta–checkversion"
 description: "引数検査とメタテーブル補助APIのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 補助関数と型：callmeta–checkversion

@@ -1,7 +1,6 @@
 ---
 title: "Auxiliary functions and types: dofile–loadstring"
 description: "Execution, result and loading auxiliary API reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # Auxiliary functions and types: dofile–loadstring

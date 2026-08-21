@@ -1,7 +1,6 @@
 ---
 title: "Registry"
 description: "The Lua registry and reserved keys"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.3 – <a id="4.3"></a>Registry

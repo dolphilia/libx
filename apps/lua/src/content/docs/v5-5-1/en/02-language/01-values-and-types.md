@@ -1,7 +1,6 @@
 ---
 title: "Basic concepts: values and types"
 description: "Basic concepts, values and Lua types"
-licenseSource: "lua-5.5.1"
 ---
 
 # 2 – <a id="2"></a>Basic Concepts

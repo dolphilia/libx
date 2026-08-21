@@ -1,10 +1,7 @@
 ---
 title: "GLFWvidmode 構造体"
 description: "GLFW 3.5.1 GLFWvidmode 構造体"
-licenseSource: "glfw-3.5.1"
 ---
-
-> このリファレンスページは、[GLFW 3.5.1 公式ドキュメント](https://www.glfw.org/docs/3.5.1/)を Markdown 向けに改変したものです。書式、ナビゲーション、リンクは libx 用に変更していますが、技術的内容は GLFW 3.5.1 ソース配布物に基づいています。
 
 ビデオモード型。[詳細...](/docs/glfw/v3-5-1/ja/04-reference/21-glfwvidmode/#details)
 

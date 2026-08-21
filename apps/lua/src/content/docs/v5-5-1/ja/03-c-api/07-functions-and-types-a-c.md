@@ -1,7 +1,6 @@
 ---
 title: "C APIの関数と型：absindex–compare"
 description: "lua_absindexからlua_compareまでのアルファベット順C APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.6 – <a id="4.6"></a>関数と型

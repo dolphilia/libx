@@ -1,7 +1,6 @@
 ---
 title: "luacコマンド"
 description: "Luaコンパイラーのコマンドラインリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # luacコマンド

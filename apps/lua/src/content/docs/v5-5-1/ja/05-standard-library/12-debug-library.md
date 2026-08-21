@@ -1,7 +1,6 @@
 ---
 title: "デバッグライブラリ"
 description: "Luaデバッグライブラリのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.11 – <a id="6.11"></a>デバッグライブラリ

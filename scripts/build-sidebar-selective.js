@@ -27,6 +27,10 @@ import {
   resolveBaseUrl as resolveRepoBaseUrl,
   resolveSupportedLangs as resolveRepoSupportedLangs,
 } from './global-defaults.js';
+import {
+  getCategoryId,
+  resolveCategoryLabel,
+} from '../packages/content-utils/src/category-navigation.js';
 
 logger.useUnifiedConsole();
 
@@ -83,6 +87,18 @@ async function getAvailableProjects(baseDir) {
     for (const dir of appDirs) {
       const appName = dir.name;
       const projectPath = path.join(baseDir, appName);
+      const generatedAwesomeRoutes = path.join(
+        projectPath,
+        'src',
+        'generated',
+        'awesome-routes.json'
+      );
+      try {
+        await fs.access(generatedAwesomeRoutes);
+        continue;
+      } catch {
+        // 専用生成プロジェクトでなければ通常のcontent/docsを検査する。
+      }
       const contentPath = path.join(projectPath, 'src', 'content', 'docs');
 
       try {
@@ -240,6 +256,11 @@ function extractOrderFromDirectoryName(dirname) {
   return match ? parseInt(match[1], 10) : 999;
 }
 
+function extractOrderFromFilename(filename) {
+  const match = filename.match(/^(\d+)-/);
+  return match ? parseInt(match[1], 10) : 999;
+}
+
 /**
  * 指定された言語とバージョンのサイドバーを生成する
  */
@@ -278,8 +299,7 @@ async function generateSidebarForVersion(project, lang, version) {
     const parts = doc.slug.split('/');
     const pathCategory = parts.length >= 3 ? parts[2] : 'uncategorized';
 
-    const cleanCategory = pathCategory.replace(/^\d+-/, '');
-    const category = doc.data.category || cleanCategory;
+    const category = getCategoryId(pathCategory);
 
     const categoryDirName = parts[2] || 'uncategorized';
     const order = extractOrderFromDirectoryName(categoryDirName);
@@ -302,8 +322,10 @@ async function generateSidebarForVersion(project, lang, version) {
   // カテゴリごとにドキュメントを順序で並べ替え
   Object.keys(categories).forEach((category) => {
     categories[category].docs.sort((a, b) => {
-      const orderA = a.data.order || 999;
-      const orderB = b.data.order || 999;
+      const filenameA = a.slug.split('/').pop() || '';
+      const filenameB = b.slug.split('/').pop() || '';
+      const orderA = a.data.order ?? extractOrderFromFilename(filenameA);
+      const orderB = b.data.order ?? extractOrderFromFilename(filenameB);
       return orderA - orderB;
     });
   });
@@ -318,7 +340,12 @@ async function generateSidebarForVersion(project, lang, version) {
 
   // サイドバー項目の生成
   return sortedCategories.map(([category, { docs }]) => {
-    const title = translateCategory(category, lang, categoryTranslations);
+    const title = resolveCategoryLabel({
+      categoryId: category,
+      lang,
+      defaultLang: categoryTranslations.defaultLang,
+      translations: categoryTranslations.translations,
+    });
 
     return {
       title,
@@ -346,12 +373,15 @@ async function getProjectCategoryTranslations(project) {
   try {
     const configPath = path.join(project.path, 'src', 'config', 'project.config.jsonc');
     const projectConfig = await readJsoncFileAsync(configPath);
-    return Object.fromEntries(
-      Object.entries(projectConfig.translations ?? {}).map(([lang, translation]) => [
-        lang,
-        translation.categories ?? {},
-      ])
-    );
+    return {
+      defaultLang: projectConfig.language?.default ?? 'en',
+      translations: Object.fromEntries(
+        Object.entries(projectConfig.translations ?? {}).map(([lang, translation]) => [
+          lang,
+          translation.categories ?? {},
+        ])
+      ),
+    };
   } catch (error) {
     if (error.code !== 'ENOENT') {
       console.warn(
@@ -360,22 +390,7 @@ async function getProjectCategoryTranslations(project) {
     }
   }
 
-  return null;
-}
-
-/**
- * カテゴリ名を翻訳する
- */
-function translateCategory(category, lang, translations) {
-  if (translations && translations[lang] && translations[lang][category]) {
-    return translations[lang][category];
-  }
-
-  if (translations && translations['en'] && translations['en'][category]) {
-    return translations['en'][category];
-  }
-
-  return category.charAt(0).toUpperCase() + category.slice(1);
+  return { defaultLang: 'en', translations: {} };
 }
 
 /**

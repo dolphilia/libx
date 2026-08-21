@@ -1,7 +1,6 @@
 ---
 title: "入出力機能"
 description: "ファイルハンドルとI/Oライブラリのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.9 – <a id="6.9"></a>入出力機能

@@ -1,7 +1,6 @@
 ---
 title: "Expressions"
 description: "Operators, constructors, calls and function definitions"
-licenseSource: "lua-5.5.1"
 ---
 
 # 3.4 – <a id="3.4"></a>Expressions

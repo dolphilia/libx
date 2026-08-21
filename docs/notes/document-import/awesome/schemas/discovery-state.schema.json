@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "snapshotVersion",
+    "status",
+    "queue",
+    "visited",
+    "edges",
+    "failures",
+    "checkpoints"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "snapshotVersion": { "type": "string" },
+    "status": { "enum": ["not-started", "in-progress", "paused-for-review", "completed"] },
+    "queue": { "type": "array" },
+    "visited": { "type": "array" },
+    "edges": { "type": "array" },
+    "failures": { "type": "array" },
+    "checkpoints": { "type": "array" },
+    "retryableFailures": { "type": "array" }
+  },
+  "additionalProperties": false
+}

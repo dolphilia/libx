@@ -1,10 +1,7 @@
 ---
 title: "GLFW 2 から 3 への移行"
 description: "GLFW 2 ユーザー向け移行ガイド"
-licenseSource: "glfw-3.5.1"
 ---
-
-> このページは、[GLFW 3.5.1 公式ドキュメント](https://www.glfw.org/docs/3.5.1/)を Markdown 向けに改変したものです。書式、ナビゲーション、リンクは libx 用に変更していますが、技術的内容は GLFW 3.5.1 ソース配布物に基づいています。
 
 <a id="moving_guide"></a>
 

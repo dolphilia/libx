@@ -1,7 +1,6 @@
 ---
 title: "Auxiliary functions and types: callmeta–checkversion"
 description: "Argument checking and metatable auxiliary API reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # Auxiliary functions and types: callmeta–checkversion

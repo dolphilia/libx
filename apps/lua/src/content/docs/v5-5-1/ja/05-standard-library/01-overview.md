@@ -1,7 +1,6 @@
 ---
 title: "標準ライブラリの概要"
 description: "Lua標準ライブラリと読み込み規約"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6 – <a id="6"></a>標準ライブラリ

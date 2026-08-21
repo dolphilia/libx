@@ -1,0 +1,170 @@
+---
+import type { LocaleKey } from '@docs/i18n/locales';
+import { getLicenseTemplate, translate } from '@docs/i18n/utils';
+import type { LicenseSource, ProjectConfig } from '@docs/project-config';
+
+interface Props {
+  projectConfig: ProjectConfig;
+  lang: LocaleKey;
+  version: string;
+  licenseSource?: string;
+}
+
+const { projectConfig, lang, version, licenseSource } = Astro.props;
+const licensing = projectConfig.licensing;
+const sourceId = licenseSource ?? licensing.defaultSource;
+const source = licensing.sources.find((item: LicenseSource) => item.id === sourceId);
+
+if (!source) {
+  throw new Error(`Document provenance source not found: ${sourceId}`);
+}
+
+const versionName =
+  projectConfig.versioning.versions.find((item) => item.id === version)?.name ?? version;
+const isCanonical = lang === licensing.sourceLanguage;
+const attributionText = getLicenseTemplate(
+  {
+    name: source.name,
+    title: source.name,
+    author: source.author,
+    license: source.license,
+    licenseUrl: source.licenseUrl,
+    sourceUrl: source.sourceUrl,
+  },
+  lang,
+  projectConfig
+);
+---
+
+{
+  licensing.showAttribution && (
+    <aside class="document-provenance" aria-labelledby="document-provenance-title">
+      <div class="provenance-header">
+        <h2 id="document-provenance-title">{translate('sourceStatus.title', lang)}</h2>
+        <span class="provenance-status">
+          {translate(isCanonical ? 'sourceStatus.canonical' : 'sourceStatus.translation', lang)}
+        </span>
+      </div>
+
+      <p class="attribution-text">{attributionText}</p>
+
+      <dl class="provenance-metadata">
+        <div>
+          <dt>{translate('sourceStatus.source', lang)}</dt>
+          <dd>{source.name}</dd>
+        </div>
+        <div>
+          <dt>{translate('sourceStatus.version', lang)}</dt>
+          <dd>{versionName}</dd>
+        </div>
+        <div>
+          <dt>{translate('license.links.license', lang)}</dt>
+          <dd>{source.license}</dd>
+        </div>
+      </dl>
+
+      <div class="provenance-links">
+        <a href={source.sourceUrl} target="_blank" rel="noopener">
+          {translate('sourceStatus.original', lang)}
+        </a>
+        <a href={source.licenseUrl} target="_blank" rel="noopener">
+          {source.license} {translate('license.links.license', lang)}
+        </a>
+      </div>
+    </aside>
+  )
+}
+
+<style>
+  .document-provenance {
+    margin-block-start: 3rem;
+    padding-block-start: 1.25rem;
+    border-block-start: 1px solid var(--sl-color-hairline);
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+  }
+
+  .provenance-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-block-end: 0.75rem;
+  }
+
+  .provenance-header h2 {
+    margin: 0;
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-base);
+  }
+
+  .provenance-status {
+    flex-shrink: 0;
+    padding: 0.125rem 0.5rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 999px;
+    color: var(--sl-color-gray-1);
+    font-size: var(--sl-text-xs);
+  }
+
+  .attribution-text {
+    margin: 0 0 1rem;
+    color: var(--sl-color-gray-1);
+    line-height: 1.5;
+  }
+
+  .provenance-metadata {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem 1.5rem;
+    margin: 0 0 1rem;
+  }
+
+  .provenance-metadata > div {
+    min-width: 0;
+  }
+
+  .provenance-metadata dt {
+    margin-block-end: 0.125rem;
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-xs);
+  }
+
+  .provenance-metadata dd {
+    margin: 0;
+    color: var(--sl-color-gray-1);
+    overflow-wrap: anywhere;
+  }
+
+  .provenance-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+
+  .provenance-links a {
+    color: var(--sl-color-text-accent);
+    font-size: var(--sl-text-xs);
+  }
+
+  .provenance-links a:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 40rem) {
+    .provenance-header {
+      align-items: flex-start;
+    }
+
+    .provenance-metadata {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media print {
+    .provenance-links a::after {
+      content: ' (' attr(href) ')';
+    }
+  }
+</style>

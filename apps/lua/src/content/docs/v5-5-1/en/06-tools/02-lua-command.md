@@ -1,7 +1,6 @@
 ---
 title: "lua command"
 description: "Command-line reference for the standalone Lua interpreter"
-licenseSource: "lua-5.5.1"
 ---
 
 # lua command

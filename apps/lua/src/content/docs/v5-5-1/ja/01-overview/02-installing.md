@@ -1,7 +1,6 @@
 ---
 title: "Luaのインストール"
 description: "Lua 5.5のビルド、インストール、カスタマイズ"
-licenseSource: "lua-5.5.1"
 ---
 
 # <a id="install"></a>Luaのインストール

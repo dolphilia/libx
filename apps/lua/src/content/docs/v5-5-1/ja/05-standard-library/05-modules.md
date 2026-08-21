@@ -1,7 +1,6 @@
 ---
 title: "モジュール"
 description: "パッケージとモジュール読み込みのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.4 – <a id="6.4"></a>モジュール

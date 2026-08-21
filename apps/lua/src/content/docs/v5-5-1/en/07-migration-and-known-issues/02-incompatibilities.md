@@ -1,7 +1,6 @@
 ---
 title: "Incompatibilities with Lua 5.4"
 description: "Language, library and API incompatibilities with the previous version"
-licenseSource: "lua-5.5.1"
 ---
 
 # 8 – <a id="8"></a>Incompatibilities with the Previous Version

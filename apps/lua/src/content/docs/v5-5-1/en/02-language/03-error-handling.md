@@ -1,7 +1,6 @@
 ---
 title: "Error handling"
 description: "Lua error handling and protected execution"
-licenseSource: "lua-5.5.1"
 ---
 
 # 2.3 – <a id="2.3"></a>Error Handling

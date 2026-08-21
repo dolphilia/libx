@@ -1,7 +1,6 @@
 ---
 title: "Lua 5.5について"
 description: "概要、ソース構成、対応プラットフォーム"
-licenseSource: "lua-5.5.1"
 ---
 
 # Lua 5.5へようこそ

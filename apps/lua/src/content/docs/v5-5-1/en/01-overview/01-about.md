@@ -1,7 +1,6 @@
 ---
 title: "About Lua 5.5"
 description: "Overview, source layout and supported platforms"
-licenseSource: "lua-5.5.1"
 ---
 
 # Welcome to Lua 5.5

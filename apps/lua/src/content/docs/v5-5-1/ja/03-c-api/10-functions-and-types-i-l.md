@@ -1,7 +1,6 @@
 ---
 title: "C APIの関数と型：insert–load"
 description: "lua_insertからlua_loadまでのアルファベット順C APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # C APIの関数と型：insert–load

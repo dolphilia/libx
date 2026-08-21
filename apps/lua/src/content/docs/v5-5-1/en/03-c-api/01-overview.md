@@ -1,7 +1,6 @@
 ---
 title: "C API overview"
 description: "C API conventions, status codes and stack effects"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4 – <a id="4"></a>The Application Program Interface

@@ -1,10 +1,7 @@
 ---
 title: "バージョン 3.5 リリースノート"
 description: "GLFW 3.5 で導入された変更"
-licenseSource: "glfw-3.5.1"
 ---
-
-> このページは、[GLFW 3.5.1 公式ドキュメント](https://www.glfw.org/docs/3.5.1/)を Markdown 向けに改変したものです。書式、ナビゲーション、リンクは libx 用に変更していますが、技術的内容は GLFW 3.5.1 ソース配布物に基づいています。
 
 <a id="news"></a>
 

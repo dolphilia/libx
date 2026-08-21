@@ -1,7 +1,6 @@
 ---
 title: "The stack"
 description: "Lua C API stack organization and valid indices"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.1 – <a id="4.1"></a>The Stack

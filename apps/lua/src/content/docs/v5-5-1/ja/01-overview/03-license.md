@@ -1,7 +1,6 @@
 ---
 title: "Luaライセンス"
 description: "Lua 5.5.1のMITライセンスと帰属要件"
-licenseSource: "lua-5.5.1"
 ---
 
 # <a id="license"></a>ライセンス

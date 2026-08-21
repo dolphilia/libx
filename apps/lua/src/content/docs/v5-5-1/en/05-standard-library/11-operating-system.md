@@ -1,7 +1,6 @@
 ---
 title: "Operating system facilities"
 description: "Operating-system library reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.10 – <a id="6.10"></a>Operating System Facilities

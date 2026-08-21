@@ -1,7 +1,6 @@
 ---
 title: "C APIの関数と型：Unsigned–yieldk"
 description: "lua_Unsignedからlua_yieldkまでのアルファベット順C APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # C APIの関数と型：Unsigned–yieldk

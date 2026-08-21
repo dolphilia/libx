@@ -1,7 +1,6 @@
 ---
 title: "基本概念：値と型"
 description: "基本概念、値、Luaの型"
-licenseSource: "lua-5.5.1"
 ---
 
 # 2 – <a id="2"></a>基本概念

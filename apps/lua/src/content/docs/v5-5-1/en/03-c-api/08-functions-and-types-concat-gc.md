@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: concat–gc"
 description: "Alphabetical C API reference from lua_concat through lua_gc"
-licenseSource: "lua-5.5.1"
 ---
 
 # C API functions and types: concat–gc

@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: absindex–compare"
 description: "Alphabetical C API reference from lua_absindex through lua_compare"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.6 – <a id="4.6"></a>Functions and Types

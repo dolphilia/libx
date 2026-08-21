@@ -1,7 +1,6 @@
 ---
 title: "Lua license"
 description: "MIT license and attribution requirements for Lua 5.5.1"
-licenseSource: "lua-5.5.1"
 ---
 
 # <a id="license"></a>License

@@ -1,7 +1,6 @@
 ---
 title: "Standard libraries overview"
 description: "Lua standard libraries and loading conventions"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6 – <a id="6"></a>The Standard Libraries

@@ -1,7 +1,6 @@
 ---
 title: "補助関数と型：addchar–buffsub"
 description: "バッファー指向の補助APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 5.1 – <a id="5.1"></a>関数と型

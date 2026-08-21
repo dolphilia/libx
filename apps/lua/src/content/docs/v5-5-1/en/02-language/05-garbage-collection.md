@@ -1,7 +1,6 @@
 ---
 title: "Garbage collection"
 description: "Incremental and generational garbage collection"
-licenseSource: "lua-5.5.1"
 ---
 
 # 2.5 – <a id="2.5"></a>Garbage Collection

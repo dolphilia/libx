@@ -16,3 +16,7 @@ test('shared content schema rejects inverted table-of-contents levels', () => {
     /toc.minLevel must be less than or equal to toc.maxLevel/
   );
 });
+
+test('shared content schema rejects category overrides because directories own navigation', () => {
+  assert.throws(() => docsSchema.parse({ title: 'Page', category: 'guide' }), /Unrecognized key/);
+});

@@ -1,7 +1,6 @@
 ---
 title: "Cでのエラー処理"
 description: "C APIのエラー、ロングジャンプ、回復"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.4 – <a id="4.4"></a>Cでのエラー処理

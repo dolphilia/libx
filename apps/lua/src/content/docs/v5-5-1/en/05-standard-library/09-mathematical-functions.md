@@ -1,7 +1,6 @@
 ---
 title: "Mathematical functions"
 description: "Mathematics library reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.8 – <a id="6.8"></a>Mathematical Functions

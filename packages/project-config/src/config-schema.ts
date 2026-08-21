@@ -188,6 +188,12 @@ export function getProjectConfigValidationErrors(config: unknown): string[] {
   if (unsafeCategory) {
     return [getContentSegmentError(unsafeCategory, `category ID "${unsafeCategory}"`)!];
   }
+  const orderedCategory = [...categoryIds].find((id) => /^\d+-/.test(id));
+  if (orderedCategory) {
+    return [
+      `category ID must omit the numeric directory order prefix: ${orderedCategory} -> ${orderedCategory.replace(/^\d+-/, '')}`,
+    ];
+  }
   const collidingVersion = versionIds.find(
     (id) => supported.includes(id as LocaleKey) || categoryIds.has(id)
   );

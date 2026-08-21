@@ -104,6 +104,19 @@ test('project config validation rejects IDs that Astro would normalize or collid
   assert.match(getProjectConfigValidationErrors(collidingVersion)[0], /collide/);
 });
 
+test('project config validation rejects category IDs with directory order prefixes', () => {
+  const orderedCategory = {
+    ...validConfig,
+    translations: {
+      en: { ...validConfig.translations.en, categories: { '01-guide': 'Guide' } },
+      ja: { ...validConfig.translations.ja, categories: { '01-guide': 'ガイド' } },
+    },
+  };
+
+  assert.equal(validateProjectConfigJSON(orderedCategory), false);
+  assert.match(getProjectConfigValidationErrors(orderedCategory)[0], /omit the numeric/);
+});
+
 test('stripJsonComments preserves comment-like content inside strings', () => {
   const parsed = JSON.parse(
     stripJsonComments('{ // comment\n "url": "https://example.com/a//b" /* block */ }')

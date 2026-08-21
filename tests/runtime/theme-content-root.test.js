@@ -26,6 +26,23 @@ test('共通テーマは正式な本文ルートsl-markdown-contentを対象に�
   assert.match(theme, /:where\(\.article-content, \.sl-markdown-content\) blockquote/);
 });
 
+test('本文リンクのホバー下線はborderと重ねず一本だけ表示する', () => {
+  const theme = fs.readFileSync(themePath, 'utf8');
+  const linkRule = theme.match(
+    /:where\(\.article-content, \.sl-markdown-content\) a\s*\{([^}]*)\}/s
+  )?.[1];
+  const hoverRule = theme.match(
+    /:where\(\.article-content, \.sl-markdown-content\) a:hover\s*\{([^}]*)\}/s
+  )?.[1];
+
+  assert.ok(linkRule);
+  assert.ok(hoverRule);
+  assert.doesNotMatch(linkRule, /border-bottom/);
+  assert.doesNotMatch(hoverRule, /border-bottom/);
+  assert.match(hoverRule, /text-decoration:\s*underline/);
+  assert.match(hoverRule, /text-decoration-thickness:\s*1px/);
+});
+
 test('全配信レイアウトとテンプレートが正式な本文ルートを使用する', () => {
   for (const relativePath of layoutPaths) {
     const source = fs.readFileSync(path.join(rootDir, relativePath), 'utf8');

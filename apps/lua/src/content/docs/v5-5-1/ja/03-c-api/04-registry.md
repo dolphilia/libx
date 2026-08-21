@@ -1,7 +1,6 @@
 ---
 title: "レジストリ"
 description: "Luaレジストリと予約済みキー"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.3 – <a id="4.3"></a>レジストリ

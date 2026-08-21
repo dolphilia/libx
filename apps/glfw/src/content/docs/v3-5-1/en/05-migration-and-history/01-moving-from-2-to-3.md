@@ -1,10 +1,7 @@
 ---
 title: "Moving from GLFW 2 to 3"
 description: "Migration guide for GLFW 2 users"
-licenseSource: "glfw-3.5.1"
 ---
-
-> This page is an altered Markdown adaptation of the [official GLFW 3.5.1 documentation](https://www.glfw.org/docs/3.5.1/). Formatting, navigation and links were changed for libx; technical content comes from the GLFW 3.5.1 source distribution.
 
 <a id="moving_guide"></a>
 

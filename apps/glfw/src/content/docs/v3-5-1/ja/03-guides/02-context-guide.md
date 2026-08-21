@@ -1,10 +1,7 @@
 ---
 title: "コンテキストガイド"
 description: "OpenGLとOpenGL ESのコンテキスト管理"
-licenseSource: "glfw-3.5.1"
 ---
-
-> このページは、[GLFW 3.5.1 公式ドキュメント](https://www.glfw.org/docs/3.5.1/)を改変して Markdown 化したものです。libx 向けに書式、ナビゲーション、リンクを変更していますが、技術的な内容は GLFW 3.5.1 のソース配布物に基づいています。
 
 <a id="context_guide"></a>
 

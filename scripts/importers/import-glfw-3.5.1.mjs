@@ -227,11 +227,7 @@ function decodeEntities(value) {
 }
 
 function frontmatter(title, description) {
-  return `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(description)}\nlicenseSource: "glfw-3.5.1"\n---\n\n`;
-}
-
-function adaptationNotice(kind) {
-  return `> This ${kind} is an altered Markdown adaptation of the [official GLFW 3.5.1 documentation](https://www.glfw.org/docs/3.5.1/). Formatting, navigation and links were changed for libx; technical content comes from the GLFW 3.5.1 source distribution.\n\n`;
+  return `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(description)}\n---\n\n`;
 }
 
 function targetForRef(ref) {
@@ -358,8 +354,7 @@ function markdownFiles(directory) {
 function generateDocumentation(destination) {
   for (const [sourceFile, outputFile, title, description] of guides) {
     const source = fs.readFileSync(path.join(sourceRoot, 'docs', sourceFile), 'utf8');
-    const output =
-      frontmatter(title, description) + adaptationNotice('page') + normalizeGuide(source);
+    const output = frontmatter(title, description) + normalizeGuide(source);
     const target = path.join(destination, outputFile);
     fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.writeFileSync(target, output);
@@ -368,9 +363,7 @@ function generateDocumentation(destination) {
   for (const [sourceFile, outputFile, title] of references) {
     const source = fs.readFileSync(path.join(sourceRoot, 'docs/html', sourceFile), 'utf8');
     const output =
-      frontmatter(title, `GLFW 3.5.1 ${title}`) +
-      adaptationNotice('reference page') +
-      normalizeReferenceHtml(source, sourceFile);
+      frontmatter(title, `GLFW 3.5.1 ${title}`) + normalizeReferenceHtml(source, sourceFile);
     const target = path.join(destination, '04-reference', outputFile);
     fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.writeFileSync(target, output);
@@ -390,9 +383,6 @@ function validateGeneratedDocumentation(destination) {
     }
     if (/\]\((?!https?:|mailto:|#|\/)[^)]+\.html(?:#[^)]+)?\)/.test(source)) {
       throw new Error(`未変換の相対HTMLリンクがあります: ${path.relative(destination, filePath)}`);
-    }
-    if (!source.includes('licenseSource: "glfw-3.5.1"')) {
-      throw new Error(`ライセンス参照がありません: ${path.relative(destination, filePath)}`);
     }
   }
 }

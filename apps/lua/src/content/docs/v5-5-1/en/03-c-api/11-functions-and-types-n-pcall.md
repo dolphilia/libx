@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: newstate–pcallk"
 description: "Alphabetical C API reference from lua_newstate through lua_pcallk"
-licenseSource: "lua-5.5.1"
 ---
 
 # C API functions and types: newstate–pcallk

@@ -1,7 +1,6 @@
 ---
 title: "C APIの関数と型：getallocf–getiuservalue"
 description: "get操作に関するアルファベット順C APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # C APIの関数と型：getallocf–getiuservalue

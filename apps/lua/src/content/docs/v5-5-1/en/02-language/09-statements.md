@@ -1,7 +1,6 @@
 ---
 title: "Statements"
 description: "Lua statements and control structures"
-licenseSource: "lua-5.5.1"
 ---
 
 # 3.3 – <a id="3.3"></a>Statements

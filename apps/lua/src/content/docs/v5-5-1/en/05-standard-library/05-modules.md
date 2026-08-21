@@ -1,7 +1,6 @@
 ---
 title: "Modules"
 description: "Package and module loading reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.4 – <a id="6.4"></a>Modules

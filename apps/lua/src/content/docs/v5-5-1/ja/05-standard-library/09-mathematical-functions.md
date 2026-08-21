@@ -1,7 +1,6 @@
 ---
 title: "数学関数"
 description: "数学ライブラリのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.8 – <a id="6.8"></a>数学関数

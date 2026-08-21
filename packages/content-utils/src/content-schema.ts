@@ -5,7 +5,6 @@ export const docsSchema = z
   .object({
     title: z.string(),
     description: z.string().optional(),
-    category: z.string().optional(),
     categoryOrder: z.number().optional(),
     pubDate: z.date().optional(),
     updatedDate: z.date().optional(),
@@ -17,8 +16,6 @@ export const docsSchema = z
     prev: z.object({ text: z.string(), link: z.string() }).optional(),
     next: z.object({ text: z.string(), link: z.string() }).optional(),
     licenseSource: z.string().optional(),
-    customAttribution: z.string().optional(),
-    hideAttribution: z.boolean().optional().default(false),
     toc: z
       .object({
         minLevel: z.number().int().min(2).max(6).optional(),

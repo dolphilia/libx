@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: rawequal–rotate"
 description: "Alphabetical C API reference for raw access through rotation"
-licenseSource: "lua-5.5.1"
 ---
 
 # C API functions and types: rawequal–rotate

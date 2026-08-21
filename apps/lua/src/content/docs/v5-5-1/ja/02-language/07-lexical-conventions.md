@@ -1,7 +1,6 @@
 ---
 title: "言語：字句規則"
 description: "トークン、リテラル、識別子、字句規則"
-licenseSource: "lua-5.5.1"
 ---
 
 # 3 – <a id="3"></a>言語

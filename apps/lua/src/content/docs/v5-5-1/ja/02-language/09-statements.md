@@ -1,7 +1,6 @@
 ---
 title: "文"
 description: "Luaの文と制御構造"
-licenseSource: "lua-5.5.1"
 ---
 
 # 3.3 – <a id="3.3"></a>文

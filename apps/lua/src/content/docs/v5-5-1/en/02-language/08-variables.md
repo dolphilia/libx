@@ -1,7 +1,6 @@
 ---
 title: "Variables"
 description: "Lua variable forms and indexing semantics"
-licenseSource: "lua-5.5.1"
 ---
 
 # 3.2 – <a id="3.2"></a>Variables

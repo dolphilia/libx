@@ -1,7 +1,6 @@
 ---
 title: "Luaスタンドアロン"
 description: "スタンドアロンLuaインタープリターの動作とコマンドラインオプション"
-licenseSource: "lua-5.5.1"
 ---
 
 # 7 – <a id="7"></a>Luaスタンドアロン

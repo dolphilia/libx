@@ -3,3 +3,5 @@ export { buildAvailableLanguagePaths, collectAvailableVersionIds } from './path-
 export type { AvailableLanguagePath, PathPattern } from './path-utils';
 export * from './dynamic-navigation';
 export * from './sidebar-generator';
+export * from './category-navigation.js';
+export * from './table-of-contents';

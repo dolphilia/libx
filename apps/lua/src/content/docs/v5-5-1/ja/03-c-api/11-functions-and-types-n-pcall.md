@@ -1,7 +1,6 @@
 ---
 title: "C APIの関数と型：newstate–pcallk"
 description: "lua_newstateからlua_pcallkまでのアルファベット順C APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # C APIの関数と型：newstate–pcallk

@@ -1,7 +1,6 @@
 ---
 title: "Changes since Lua 5.4"
 description: "Main changes introduced in Lua 5.5"
-licenseSource: "lua-5.5.1"
 ---
 
 # <a id="changes"></a>Changes since Lua 5.4

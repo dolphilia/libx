@@ -1,7 +1,6 @@
 ---
 title: "Complete syntax of Lua"
 description: "Complete Lua 5.5 grammar"
-licenseSource: "lua-5.5.1"
 ---
 
 # 9 – <a id="9"></a>The Complete Syntax of Lua

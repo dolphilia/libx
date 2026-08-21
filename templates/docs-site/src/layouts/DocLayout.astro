@@ -1,6 +1,6 @@
 ---
 import MainLayout from './MainLayout.astro';
-import { Sidebar, SourceStatus, TableOfContents } from '@docs/ui/components';
+import { DocumentProvenance, Sidebar, TableOfContents } from '@docs/ui/components';
 import { translate } from '@docs/i18n/utils';
 import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
@@ -29,21 +29,12 @@ interface Props {
   title: string;
   description?: string;
   licenseSource?: string;
-  hideAttribution?: boolean;
   hasToc?: boolean;
   lang: LocaleKey;
   version: string;
 }
 
-const {
-  title,
-  description,
-  licenseSource,
-  hideAttribution,
-  hasToc = false,
-  lang: langProp,
-  version,
-} = Astro.props;
+const { title, description, licenseSource, hasToc = false, lang: langProp, version } = Astro.props;
 const lang = langProp as LocaleKey;
 const dir = getLocaleDirection(lang);
 
@@ -116,14 +107,13 @@ const TRANSLATION_KEYS = {
       {hasToc && Astro.slots.has('mobile-toc') && <slot name="mobile-toc" />}
       <div class="content-panel">
         <article class="sl-markdown-content" dir={dir}>
-          <SourceStatus
+          <slot />
+          <DocumentProvenance
             projectConfig={projectConfig}
             lang={lang}
             version={version}
             licenseSource={licenseSource}
-            hideAttribution={hideAttribution}
           />
-          <slot />
         </article>
       </div>
     </div>

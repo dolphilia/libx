@@ -1,7 +1,6 @@
 ---
 title: "エラー処理"
 description: "Luaのエラー処理と保護実行"
-licenseSource: "lua-5.5.1"
 ---
 
 # 2.3 – <a id="2.3"></a>エラー処理

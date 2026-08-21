@@ -1,7 +1,6 @@
 ---
 title: "The debug interface"
 description: "Activation records, hooks and debug API functions"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.7 – <a id="4.7"></a>The Debug Interface

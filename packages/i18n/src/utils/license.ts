@@ -175,7 +175,6 @@ export function getLicenseTemplateKey(license: string): string {
  * @param licenseInfo ライセンス情報オブジェクト
  * @param lang 現在の言語
  * @param projectConfig プロジェクト設定（オプション）
- * @param forceOriginalFormatted 強制的に original-formatted テンプレートを使用するかどうか
  * @returns テンプレートキー
  */
 export function getLicenseTemplateKeyWithLanguage(
@@ -191,17 +190,10 @@ export function getLicenseTemplateKeyWithLanguage(
   projectConfig?: {
     licensing?: {
       sourceLanguage?: string;
-      languageOverrides?: Record<string, { defaultSource?: string; templateOverride?: string }>;
     };
-  },
-  forceOriginalFormatted?: boolean
-): string {
-  // 1. フロントマターでの強制指定
-  if (forceOriginalFormatted) {
-    return 'original-formatted';
   }
-
-  // 2. ライセンス名に "original-formatted" が含まれている場合
+): string {
+  // 1. ライセンス名に "original-formatted" が含まれている場合
   const normalizedLicense = licenseInfo.license.toLowerCase().trim();
   if (
     normalizedLicense.includes('original-formatted') ||
@@ -210,14 +202,9 @@ export function getLicenseTemplateKeyWithLanguage(
     return 'original-formatted';
   }
 
-  // 3. プロジェクト設定による言語ベースの判定
+  // 2. プロジェクト設定による言語ベースの判定
   if (projectConfig?.licensing) {
-    const { sourceLanguage, languageOverrides } = projectConfig.licensing;
-
-    // 言語別の個別設定があるかチェック
-    if (languageOverrides && languageOverrides[lang] && languageOverrides[lang].templateOverride) {
-      return languageOverrides[lang].templateOverride!;
-    }
+    const { sourceLanguage } = projectConfig.licensing;
 
     // sourceLanguage で指定された言語の場合は original-formatted を使用
     if (sourceLanguage && lang === sourceLanguage) {
@@ -225,7 +212,7 @@ export function getLicenseTemplateKeyWithLanguage(
     }
   }
 
-  // 4. 通常のライセンス判定にフォールバック
+  // 3. 通常のライセンス判定にフォールバック
   return getLicenseTemplateKey(licenseInfo.license);
 }
 
@@ -235,7 +222,6 @@ export function getLicenseTemplateKeyWithLanguage(
  * @param licenseInfo ライセンス情報オブジェクト
  * @param lang 言語コード
  * @param projectConfig プロジェクト設定（オプション）
- * @param forceOriginalFormatted 強制的に original-formatted テンプレートを使用するかどうか
  * @returns フォーマットされたライセンステキスト
  */
 export function getLicenseTemplate(
@@ -251,17 +237,10 @@ export function getLicenseTemplate(
   projectConfig?: {
     licensing?: {
       sourceLanguage?: string;
-      languageOverrides?: Record<string, { defaultSource?: string; templateOverride?: string }>;
     };
-  },
-  forceOriginalFormatted?: boolean
+  }
 ): string {
-  const templateKey = getLicenseTemplateKeyWithLanguage(
-    licenseInfo,
-    lang,
-    projectConfig,
-    forceOriginalFormatted
-  );
+  const templateKey = getLicenseTemplateKeyWithLanguage(licenseInfo, lang, projectConfig);
   const i18nKey = `license.templates.${templateKey}`;
 
   // テンプレート用のパラメータを準備

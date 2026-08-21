@@ -1,7 +1,6 @@
 ---
 title: "はじめに"
 description: "Lua言語の目的、設計、適用範囲"
-licenseSource: "lua-5.5.1"
 ---
 
 # 1 – <a id="1"></a>はじめに

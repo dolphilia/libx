@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: insert–load"
 description: "Alphabetical C API reference from lua_insert through lua_load"
-licenseSource: "lua-5.5.1"
 ---
 
 # C API functions and types: insert–load

@@ -1,7 +1,6 @@
 ---
 title: "Installing Lua"
 description: "Build, install and customize Lua 5.5"
-licenseSource: "lua-5.5.1"
 ---
 
 # <a id="install"></a>Installing Lua

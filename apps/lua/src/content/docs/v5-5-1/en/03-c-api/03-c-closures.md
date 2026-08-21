@@ -1,7 +1,6 @@
 ---
 title: "C closures"
 description: "C functions, upvalues and C closures"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.2 – <a id="4.2"></a>C Closures

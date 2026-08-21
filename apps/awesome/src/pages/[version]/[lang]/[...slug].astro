@@ -1,0 +1,136 @@
+---
+import DocLayout from '../../../layouts/DocLayout.astro';
+import type { GetStaticPathsResult } from 'astro';
+import { getLocaleDirection } from '@docs/i18n/locales';
+import type { LocaleKey } from '@docs/i18n/locales';
+import { MobileTableOfContents, TableOfContents, Pagination } from '@docs/ui/components';
+import { getProjectConfig } from '@docs/project-config';
+import { buildTableOfContents, countTableOfContentsItems } from '@docs/content-utils';
+import type { DocsFrontmatter } from '@docs/content-utils/content-schema';
+import routeManifest from '../../../generated/awesome-routes.json';
+
+interface RouteEntry {
+  sourceId: string;
+  version: string;
+  lang: string;
+  slug: string;
+  moduleKey: string;
+  title: string;
+  description: string;
+  licenseSource: string;
+  order: number;
+}
+
+interface MarkdownModule {
+  Content: unknown;
+  frontmatter: DocsFrontmatter;
+  getHeadings: () => Promise<Array<{ depth: number; slug: string; text: string }>>;
+}
+
+const routes = routeManifest.entries as RouteEntry[];
+const contentModules = import.meta.glob('/src/awesome-content/**/*.md');
+const translatedRoutes = routes.flatMap((route) => {
+  const moduleKey = route.moduleKey.replace('/en/', '/ja/');
+  return contentModules[moduleKey] ? [{ ...route, lang: 'ja', moduleKey }] : [];
+});
+const staticRoutes = [...routes, ...translatedRoutes];
+
+export function getStaticPaths(): GetStaticPathsResult {
+  const modules = import.meta.glob('/src/awesome-content/**/*.md');
+  const baseRoutes = routeManifest.entries as RouteEntry[];
+  const paths = baseRoutes.flatMap((route) => {
+    const translatedModuleKey = route.moduleKey.replace('/en/', '/ja/');
+    const translatedRoute = modules[translatedModuleKey]
+      ? [{ ...route, lang: 'ja', moduleKey: translatedModuleKey }]
+      : [];
+    return [route, ...translatedRoute];
+  });
+  return paths.map((route) => ({
+    params: { version: route.version, lang: route.lang, slug: route.slug },
+    props: { route },
+  }));
+}
+
+const { route } = Astro.props as { route: RouteEntry };
+const loadContent = contentModules[route.moduleKey];
+if (!loadContent) throw new Error(`Awesome本文モジュールが見つかりません: ${route.moduleKey}`);
+const pageModule = (await loadContent()) as MarkdownModule;
+const Content = pageModule.Content;
+const frontmatter = pageModule.frontmatter;
+const headings = await pageModule.getHeadings();
+const projectConfig = await getProjectConfig();
+const lang = route.lang as LocaleKey;
+const version = route.version;
+const dir = getLocaleDirection(lang);
+const sameLanguageRoutes = staticRoutes.filter(
+  (entry) => entry.version === version && entry.lang === lang
+);
+const sameLanguageIndex = sameLanguageRoutes.findIndex((entry) => entry.slug === route.slug);
+const previous = sameLanguageIndex > 0 ? sameLanguageRoutes[sameLanguageIndex - 1] : undefined;
+const next =
+  sameLanguageIndex >= 0 && sameLanguageIndex < sameLanguageRoutes.length - 1
+    ? sameLanguageRoutes[sameLanguageIndex + 1]
+    : undefined;
+const toPageLink = (entry: RouteEntry | undefined) =>
+  entry
+    ? {
+        title: entry.title,
+        url: `${projectConfig.paths.baseUrl}/${entry.version}/${entry.lang}/${entry.slug}`,
+      }
+    : undefined;
+const tocMinLevel = frontmatter.toc?.minLevel ?? 2;
+const tocMaxLevel = frontmatter.toc?.maxLevel ?? 3;
+const tocItems = buildTableOfContents(headings, {
+  minLevel: tocMinLevel,
+  maxLevel: tocMaxLevel,
+  maxItems: frontmatter.toc?.maxItems,
+});
+const hasToc = countTableOfContentsItems(tocItems) > 0;
+---
+
+<DocLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  licenseSource={frontmatter.licenseSource}
+  hasToc={hasToc}
+  lang={lang}
+  version={version}
+>
+  <MobileTableOfContents
+    headings={tocItems}
+    minLevel={tocMinLevel}
+    maxLevel={tocMaxLevel}
+    lang={lang}
+    dir={dir}
+    slot="mobile-toc"
+  />
+  <Content />
+
+  <div class="navigation-container">
+    <Pagination prev={toPageLink(previous)} next={toPageLink(next)} lang={lang} dir={dir} />
+  </div>
+
+  <TableOfContents
+    headings={tocItems}
+    minLevel={tocMinLevel}
+    maxLevel={tocMaxLevel}
+    lang={lang}
+    dir={dir}
+    slot="toc"
+  />
+</DocLayout>
+
+<style>
+  .navigation-container {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+  }
+
+  @media (max-width: 768px) {
+    .navigation-container {
+      margin-top: 2rem;
+      padding-top: 1rem;
+    }
+  }
+</style>

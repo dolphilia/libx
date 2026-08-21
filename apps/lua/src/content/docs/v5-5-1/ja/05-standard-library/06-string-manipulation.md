@@ -1,7 +1,6 @@
 ---
 title: "文字列操作"
 description: "文字列ライブラリとパターンのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.5 – <a id="6.5"></a>文字列操作

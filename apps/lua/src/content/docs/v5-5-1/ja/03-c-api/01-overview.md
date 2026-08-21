@@ -1,7 +1,6 @@
 ---
 title: "C APIの概要"
 description: "C APIの規約、ステータスコード、スタック効果"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4 – <a id="4"></a>アプリケーションプログラムインターフェース

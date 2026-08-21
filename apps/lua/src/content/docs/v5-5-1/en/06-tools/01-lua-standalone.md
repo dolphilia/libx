@@ -1,7 +1,6 @@
 ---
 title: "Lua standalone"
 description: "Standalone Lua interpreter behavior and command-line options"
-licenseSource: "lua-5.5.1"
 ---
 
 # 7 – <a id="7"></a>Lua Standalone

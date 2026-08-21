@@ -1,7 +1,6 @@
 ---
 title: "Cクロージャー"
 description: "C関数、上位値、Cクロージャー"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.2 – <a id="4.2"></a>Cクロージャー

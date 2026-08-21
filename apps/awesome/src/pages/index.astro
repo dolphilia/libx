@@ -1,0 +1,21 @@
+---
+// シンプルなリダイレクト
+import { getProjectConfig } from '@docs/project-config';
+
+// 設定を初期化
+const projectConfig = await getProjectConfig();
+
+// サーバーサイドでは言語検出できないため、デフォルト言語を使用
+const defaultLang = projectConfig.language.default;
+// GitHub Pagesのベースパス
+const baseUrl = projectConfig.paths.baseUrl;
+const latestVersion =
+  projectConfig.versioning.versions.find((version) => version.isLatest)?.id ??
+  projectConfig.versioning.versions[0]?.id ??
+  'v1';
+
+const redirectUrl = `${baseUrl}/${latestVersion}/${defaultLang}/`;
+
+// サーバーサイドでリダイレクト
+return Astro.redirect(redirectUrl);
+---

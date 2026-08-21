@@ -1,7 +1,6 @@
 ---
 title: "Introduction"
 description: "Purpose, design and scope of the Lua language"
-licenseSource: "lua-5.5.1"
 ---
 
 # 1 – <a id="1"></a>Introduction

@@ -1,7 +1,6 @@
 ---
 title: "Auxiliary library overview"
 description: "Conventions and facilities in the Lua auxiliary library"
-licenseSource: "lua-5.5.1"
 ---
 
 # 5 – <a id="5"></a>The Auxiliary Library

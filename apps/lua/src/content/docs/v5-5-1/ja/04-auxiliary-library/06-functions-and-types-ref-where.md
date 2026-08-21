@@ -1,7 +1,6 @@
 ---
 title: "補助関数と型：ref–where"
 description: "参照、登録、ストリーム、診断に関する補助APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 補助関数と型：ref–where

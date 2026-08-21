@@ -1,7 +1,6 @@
 ---
 title: "luaコマンド"
 description: "スタンドアロンLuaインタープリターのコマンドラインリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # luaコマンド

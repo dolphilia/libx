@@ -1,7 +1,6 @@
 ---
 title: "Auxiliary functions and types: makeseed–pushresultsize"
 description: "State, option and result auxiliary API reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # Auxiliary functions and types: makeseed–pushresultsize

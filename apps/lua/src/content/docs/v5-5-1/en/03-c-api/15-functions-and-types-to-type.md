@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: toboolean–typename"
 description: "Alphabetical C API reference for conversions and type inspection"
-licenseSource: "lua-5.5.1"
 ---
 
 # C API functions and types: toboolean–typename

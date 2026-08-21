@@ -1,7 +1,6 @@
 ---
 title: "Error handling in C"
 description: "C API errors, long jumps and recovery"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.4 – <a id="4.4"></a>Error Handling in C

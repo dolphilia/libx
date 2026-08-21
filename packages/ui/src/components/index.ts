@@ -7,7 +7,6 @@ export { default as Sidebar } from './Sidebar.astro';
 export { default as SidebarPersister } from './SidebarPersister.astro';
 export { default as SidebarRestorePoint } from './SidebarRestorePoint.astro';
 export { default as SidebarResizer } from './SidebarResizer.astro';
-export { default as Footer } from './Footer.astro';
 export { default as Alert } from './Alert.astro';
 
 // Starlightスタイルの新コンポーネント
@@ -34,7 +33,6 @@ export { Tabs, TabItem } from './Tabs';
 export { Icon, Icons, type IconName } from './icons';
 export { Dropdown, DropdownItem } from './Dropdown';
 
-// ライセンス関連コンポーネント
-export { default as LicenseAttribution } from './LicenseAttribution.astro';
-export { default as SourceStatus } from './SourceStatus.astro';
+// 文書の出典・翻訳状態・ライセンス帰属
+export { default as DocumentProvenance } from './DocumentProvenance.astro';
 export { default as Search } from './Search.astro';

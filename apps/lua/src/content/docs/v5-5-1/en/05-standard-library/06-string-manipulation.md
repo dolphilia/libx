@@ -1,7 +1,6 @@
 ---
 title: "String manipulation"
 description: "String library and pattern reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.5 – <a id="6.5"></a>String Manipulation

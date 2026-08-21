@@ -394,16 +394,14 @@ libx-devプロジェクトでは、ライセンス情報を`project.config.jsonc
 2. **部分一致**: ライセンス名の部分文字列による判定
 3. **デフォルト**: 不明な場合は`minimal`テンプレートを使用
 
-#### 個別文書でのオーバーライド（オプション）
+#### 個別文書での出典オーバーライド（オプション）
 
-特別なケースのみ、MDXフロントマターで設定をオーバーライド可能：
+特別なケースのみ、MarkdownまたはMDXのFrontmatterで既定と異なる出典を指定できます。帰属表示をページ単位で隠したり、自由記述で置き換えたりすることはできません。
 
 ```markdown
 ---
 title: "文書タイトル"
 licenseSource: "other-source-id"  # 別のソースを使用
-customAttribution: "カスタム帰属表示"  # 固有の帰属表示
-hideAttribution: true  # この文書のみ帰属表示を無効化
 ---
 ```
 
@@ -452,18 +450,12 @@ libx-devプロジェクトでは以下の高度な自動化機能を提供しま
 #### 使用方法
 
 ```astro
-<!-- フッターでの自動表示（推奨） -->
-<Footer 
-  showLicenseAttribution={true}
+<!-- DocLayoutが文書本文とページネーションの後へ自動表示 -->
+<DocumentProvenance
   projectConfig={projectConfig}
-  lang={currentLang}
-/>
-
-<!-- 個別ページでの表示 -->
-<LicenseAttribution 
-  projectConfig={projectConfig}
-  lang={currentLang}
-  licenseSource="specific-source"
+  lang={lang}
+  version={version}
+  licenseSource={entry.data.licenseSource}
 />
 ```
 

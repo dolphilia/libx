@@ -1,7 +1,6 @@
 ---
 title: "Metatables and metamethods"
 description: "Metatables, metamethods and event semantics"
-licenseSource: "lua-5.5.1"
 ---
 
 # 2.4 – <a id="2.4"></a>Metatables and Metamethods

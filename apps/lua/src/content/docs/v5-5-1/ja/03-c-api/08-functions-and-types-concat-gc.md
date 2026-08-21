@@ -1,7 +1,6 @@
 ---
 title: "C APIの関数と型：concat–gc"
 description: "lua_concatからlua_gcまでのアルファベット順C APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # C APIの関数と型：concat–gc

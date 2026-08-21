@@ -1,7 +1,6 @@
 ---
 title: "変数"
 description: "Luaの変数形式とインデックスの意味論"
-licenseSource: "lua-5.5.1"
 ---
 
 # 3.2 – <a id="3.2"></a>変数

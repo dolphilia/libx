@@ -1,7 +1,6 @@
 ---
 title: "スタック"
 description: "Lua C APIのスタック構成と有効なインデックス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 4.1 – <a id="4.1"></a>スタック

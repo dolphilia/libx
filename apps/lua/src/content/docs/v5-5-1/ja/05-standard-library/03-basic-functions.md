@@ -1,7 +1,6 @@
 ---
 title: "基本関数"
 description: "Lua基本ライブラリのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.2 – <a id="6.2"></a>基本関数

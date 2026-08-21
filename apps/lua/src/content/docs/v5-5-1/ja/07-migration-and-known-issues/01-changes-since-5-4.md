@@ -1,7 +1,6 @@
 ---
 title: "Lua 5.4からの変更"
 description: "Lua 5.5で導入された主な変更"
-licenseSource: "lua-5.5.1"
 ---
 
 # <a id="changes"></a>Lua 5.4からの変更

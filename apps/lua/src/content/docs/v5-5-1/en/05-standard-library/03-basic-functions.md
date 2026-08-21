@@ -1,7 +1,6 @@
 ---
 title: "Basic functions"
 description: "Lua basic library reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.2 – <a id="6.2"></a>Basic Functions

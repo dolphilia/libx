@@ -38,143 +38,77 @@ interface Props {
 }
 
 const { prev, next, dir = 'ltr', lang = 'en' } = Astro.props;
-const isRtl = dir === 'rtl';
 
 const prevText = translate('pagination.previous', lang);
 const nextText = translate('pagination.next', lang);
+const prevArrowPath =
+  'M13.3 17.3L9.7 13.7c-.4-.4-.4-1 0-1.4l3.6-3.6c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4L11.4 13l3.3 3.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3z';
+const nextArrowPath =
+  'M10.7 17.3c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4L12.6 13 9.3 9.7c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l3.6 3.6c.4.4.4 1 0 1.4l-3.6 3.6z';
 ---
 
 <div class="pagination-links" dir={dir}>
   {
-    isRtl ? (
-      <>
-        {next && (
-          <a href={next.url} rel="next">
-            <svg
-              class="arrow"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <path
-                fill="currentColor"
-                d={
-                  isRtl
-                    ? 'M13.3 17.3L9.7 13.7c-.4-.4-.4-1 0-1.4l3.6-3.6c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4L11.4 13l3.3 3.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3z'
-                    : 'M10.7 17.3c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4L12.6 13 9.3 9.7c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l3.6 3.6c.4.4.4 1 0 1.4l-3.6 3.6z'
-                }
-              />
-            </svg>
-            <span>
-              {nextText}
-              <br />
-              <span class="link-title">{next.title}</span>
-            </span>
-          </a>
-        )}
-        {prev && (
-          <a href={prev.url} rel="prev">
-            <svg
-              class="arrow"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <path
-                fill="currentColor"
-                d={
-                  isRtl
-                    ? 'M10.7 17.3c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4L12.6 13 9.3 9.7c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l3.6 3.6c.4.4.4 1 0 1.4l-3.6 3.6z'
-                    : 'M13.3 17.3L9.7 13.7c-.4-.4-.4-1 0-1.4l3.6-3.6c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4L11.4 13l3.3 3.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3z'
-                }
-              />
-            </svg>
-            <span>
-              {prevText}
-              <br />
-              <span class="link-title">{prev.title}</span>
-            </span>
-          </a>
-        )}
-      </>
-    ) : (
-      <>
-        {prev && (
-          <a href={prev.url} rel="prev">
-            <svg
-              class="arrow"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <path
-                fill="currentColor"
-                d={
-                  isRtl
-                    ? 'M10.7 17.3c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4L12.6 13 9.3 9.7c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l3.6 3.6c.4.4.4 1 0 1.4l-3.6 3.6z'
-                    : 'M13.3 17.3L9.7 13.7c-.4-.4-.4-1 0-1.4l3.6-3.6c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4L11.4 13l3.3 3.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3z'
-                }
-              />
-            </svg>
-            <span>
-              {prevText}
-              <br />
-              <span class="link-title">{prev.title}</span>
-            </span>
-          </a>
-        )}
-        {next && (
-          <a href={next.url} rel="next">
-            <svg
-              class="arrow"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <path
-                fill="currentColor"
-                d={
-                  isRtl
-                    ? 'M13.3 17.3L9.7 13.7c-.4-.4-.4-1 0-1.4l3.6-3.6c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4L11.4 13l3.3 3.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3z'
-                    : 'M10.7 17.3c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4L12.6 13 9.3 9.7c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l3.6 3.6c.4.4.4 1 0 1.4l-3.6 3.6z'
-                }
-              />
-            </svg>
-            <span>
-              {nextText}
-              <br />
-              <span class="link-title">{next.title}</span>
-            </span>
-          </a>
-        )}
-      </>
+    prev && (
+      <a href={prev.url} rel="prev">
+        <svg
+          class="arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          aria-hidden="true"
+        >
+          <path fill="currentColor" d={prevArrowPath} />
+        </svg>
+        <span class="link-copy">
+          {prevText}
+          <br />
+          <span class="link-title">{prev.title}</span>
+        </span>
+      </a>
+    )
+  }
+  {
+    next && (
+      <a href={next.url} rel="next">
+        <span class="link-copy">
+          {nextText}
+          <br />
+          <span class="link-title">{next.title}</span>
+        </span>
+        <svg
+          class="arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          aria-hidden="true"
+        >
+          <path fill="currentColor" d={nextArrowPath} />
+        </svg>
+      </a>
     )
   }
 </div>
 
 <style>
   .pagination-links {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
-    justify-content: space-between;
+    width: 100%;
     margin-top: 2rem;
     margin-bottom: 1rem;
-  }
-
-  .pagination-links[dir='rtl'] {
-    flex-direction: row-reverse;
   }
 
   a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    max-width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
     border: 1px solid var(--sl-color-gray-5);
     border-radius: 0.5rem;
     padding: 1rem;
@@ -185,36 +119,27 @@ const nextText = translate('pagination.next', lang);
     transition:
       border-color 0.2s ease,
       color 0.2s ease;
-    flex: 1 1 45%;
-    min-width: min(320px, 100%);
   }
 
   a[rel='prev'] {
+    grid-column: 1;
     justify-content: flex-start;
-    text-align: start;
+    text-align: left;
   }
 
   a[rel='next'] {
+    grid-column: 2;
     justify-content: flex-end;
-    text-align: end;
-    flex-direction: row-reverse;
-  }
-
-  .pagination-links[dir='rtl'] a[rel='prev'] {
-    justify-content: flex-end;
-    text-align: end;
-    flex-direction: row-reverse;
-  }
-
-  .pagination-links[dir='rtl'] a[rel='next'] {
-    justify-content: flex-start;
-    text-align: start;
-    flex-direction: row;
+    text-align: right;
   }
 
   a:hover {
     border-color: var(--sl-color-gray-2);
     color: var(--sl-color-white);
+  }
+
+  .link-copy {
+    min-width: 0;
   }
 
   .link-title {
@@ -227,5 +152,16 @@ const nextText = translate('pagination.next', lang);
     flex-shrink: 0;
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  @media (max-width: 40rem) {
+    .pagination-links {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    a[rel='prev'],
+    a[rel='next'] {
+      grid-column: 1;
+    }
   }
 </style>

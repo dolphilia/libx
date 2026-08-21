@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 import * as logger from './logger.js';
 import { readJsoncFile } from './jsonc-utils.js';
 import { resolveSupportedLangs as resolveRepoSupportedLangs } from './global-defaults.js';
+import { getCategoryId } from '../packages/content-utils/src/category-navigation.js';
 
 logger.useUnifiedConsole();
 
@@ -48,23 +49,28 @@ function loadConfig(configPath) {
   }
 }
 
-function diffCategories(baseKeys, targetKeys) {
-  const missing = [];
-  const extra = [];
+function collectContentCategoryIds(projectName) {
+  const projectDir = path.join(rootDir, 'apps', projectName);
+  const awesomeContentDir = path.join(projectDir, 'src', 'awesome-content');
+  const docsDir = fs.existsSync(awesomeContentDir)
+    ? awesomeContentDir
+    : path.join(projectDir, 'src', 'content', 'docs');
+  const categoryIds = new Set();
+  if (!fs.existsSync(docsDir)) return categoryIds;
 
-  for (const key of baseKeys) {
-    if (!targetKeys.includes(key)) {
-      missing.push(key);
+  for (const version of fs.readdirSync(docsDir, { withFileTypes: true })) {
+    if (!version.isDirectory()) continue;
+    const versionDir = path.join(docsDir, version.name);
+    for (const lang of fs.readdirSync(versionDir, { withFileTypes: true })) {
+      if (!lang.isDirectory()) continue;
+      const langDir = path.join(versionDir, lang.name);
+      for (const category of fs.readdirSync(langDir, { withFileTypes: true })) {
+        if (category.isDirectory()) categoryIds.add(getCategoryId(category.name));
+      }
     }
   }
 
-  for (const key of targetKeys) {
-    if (!baseKeys.includes(key)) {
-      extra.push(key);
-    }
-  }
-
-  return { missing, extra };
+  return categoryIds;
 }
 
 function inspectProject({ projectName, configPath }) {
@@ -82,71 +88,49 @@ function inspectProject({ projectName, configPath }) {
     return { projectName, hasIssue: true };
   }
 
-  let baseLang = null;
-  let baseKeys = [];
-  const issues = [];
+  const defaultLang = config?.language?.default;
+  const contentCategoryIds = [...collectContentCategoryIds(projectName)].sort();
+  const defaultKeys = Object.keys(translations?.[defaultLang]?.categories ?? {}).sort();
+  const invalidKeys = [
+    ...new Set(
+      Object.values(translations).flatMap((translation) =>
+        Object.keys(translation.categories ?? {})
+      )
+    ),
+  ].filter((key) => /^\d+-/.test(key));
+  const missingDefault = contentCategoryIds.filter((key) => !defaultKeys.includes(key));
+
+  if (invalidKeys.length > 0) {
+    logger.error(`番号接頭辞を含むカテゴリIDがあります: ${invalidKeys.join(', ')}`);
+  }
+  if (missingDefault.length > 0) {
+    logger.error(
+      `既定言語 "${defaultLang}" に表示名がないカテゴリがあります: ${missingDefault.join(', ')}`
+    );
+  }
 
   for (const lang of supportedLangs) {
-    const translation = translations[lang];
-    if (!translation) {
-      issues.push({
-        lang,
-        type: 'missingTranslation',
-      });
-      continue;
-    }
-
-    const categories = translation.categories || {};
-    const keys = Object.keys(categories).sort();
-
-    if (!baseLang) {
-      baseLang = lang;
-      baseKeys = keys;
-      continue;
-    }
-
-    const { missing, extra } = diffCategories(baseKeys, keys);
-
-    if (missing.length > 0 || extra.length > 0) {
-      issues.push({
-        lang,
-        type: 'categoryMismatch',
-        missing,
-        extra,
-      });
+    if (lang === defaultLang) continue;
+    const keys = Object.keys(translations?.[lang]?.categories ?? {});
+    const missing = contentCategoryIds.filter((key) => !keys.includes(key));
+    if (missing.length > 0) {
+      logger.warn(`言語 "${lang}" は既定言語へフォールバックします: ${missing.join(', ')}`);
     }
   }
 
-  if (!baseLang) {
-    logger.warn('カテゴリ情報を持つ言語が存在しません。スキップします。');
-    return { projectName, hasIssue: true };
+  const configuredKeys = new Set(
+    Object.values(translations).flatMap((translation) => Object.keys(translation.categories ?? {}))
+  );
+  const unused = [...configuredKeys].filter((key) => !contentCategoryIds.includes(key)).sort();
+  if (unused.length > 0) {
+    logger.warn(`現在の文書構造で未使用のカテゴリIDがあります: ${unused.join(', ')}`);
   }
 
-  if (issues.length === 0) {
-    logger.success(`カテゴリキーは全言語で一致しています（基準言語: ${baseLang}）`);
-    return { projectName, hasIssue: false };
+  const hasIssue = invalidKeys.length > 0 || missingDefault.length > 0;
+  if (!hasIssue) {
+    logger.success(`カテゴリIDと既定言語 "${defaultLang}" の表示名が文書構造と一致しています。`);
   }
-
-  logger.error('カテゴリ構造に不整合が見つかりました。');
-  for (const issue of issues) {
-    if (issue.type === 'missingTranslation') {
-      logger.warn(`supportedLangs に含まれる "${issue.lang}" の翻訳情報がありません。`);
-      continue;
-    }
-
-    logger.warn(`言語 "${issue.lang}" のカテゴリキーが一致していません。`);
-
-    if (issue.missing.length > 0) {
-      logger.detail(`不足しているキー: ${issue.missing.join(', ')}`, { indent: 4, bullet: '-' });
-    }
-
-    if (issue.extra.length > 0) {
-      logger.detail(`余分なキー: ${issue.extra.join(', ')}`, { indent: 4, bullet: '-' });
-    }
-  }
-
-  logger.info(`基準言語 "${baseLang}" のキー: ${baseKeys.join(', ')}`);
-  return { projectName, hasIssue: true };
+  return { projectName, hasIssue };
 }
 
 function run() {

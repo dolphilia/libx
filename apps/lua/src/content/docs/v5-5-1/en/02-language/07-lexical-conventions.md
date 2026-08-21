@@ -1,7 +1,6 @@
 ---
 title: "The language: lexical conventions"
 description: "Tokens, literals, identifiers and lexical rules"
-licenseSource: "lua-5.5.1"
 ---
 
 # 3 – <a id="3"></a>The Language

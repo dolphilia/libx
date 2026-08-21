@@ -42,6 +42,7 @@
 - `DEPLOYMENT_FILE_COUNT_SCALING_PLAN.md` – ファイル数監視、不要成果物削減、将来のサイト分割計画
 - `UPSTREAM_DOCUMENT_IMPORT_TRANSLATION_PILOT_PLAN.md` – GLFWを起点とする外部公式文書の取得・整形・定本化・翻訳パイロット計画
 - `LUA_DOCUMENT_IMPORT_TRANSLATION_PILOT_PLAN.md` – Lua 5.5公式文書を対象とする二例目の取得・定本化・翻訳パイロット計画
+- `AWESOME_LIST_IMPORT_TRANSLATION_PILOT_PLAN.md` – Awesomeリスト群を対象とする三例目の複数リポジトリ・スナップショット型パイロット計画
 - `LIBX_USABILITY_AND_MARKDOWN_IMPROVEMENT_PLAN.md` – Luaパイロット後の使いやすさ、閲覧性、Markdown／MDX改善の実装計画
 
 ## 仕様 (`docs/spec`)

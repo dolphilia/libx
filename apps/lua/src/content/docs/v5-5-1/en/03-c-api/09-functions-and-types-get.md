@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: getallocf–getiuservalue"
 description: "Alphabetical C API reference for get operations"
-licenseSource: "lua-5.5.1"
 ---
 
 # C API functions and types: getallocf–getiuservalue

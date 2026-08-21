@@ -1,7 +1,6 @@
 ---
 title: "The debug library"
 description: "Lua debug library reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.11 – <a id="6.11"></a>The Debug Library

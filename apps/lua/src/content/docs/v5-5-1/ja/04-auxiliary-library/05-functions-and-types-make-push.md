@@ -1,7 +1,6 @@
 ---
 title: "補助関数と型：makeseed–pushresultsize"
 description: "ステート、オプション、結果に関する補助APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 補助関数と型：makeseed–pushresultsize

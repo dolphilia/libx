@@ -1,7 +1,6 @@
 ---
 title: "C APIの関数と型：pop–pushvfstring"
 description: "スタックへのpush操作に関するアルファベット順C APIリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # C APIの関数と型：pop–pushvfstring

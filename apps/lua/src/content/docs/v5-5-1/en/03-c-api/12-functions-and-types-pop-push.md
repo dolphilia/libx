@@ -1,7 +1,6 @@
 ---
 title: "C API functions and types: pop–pushvfstring"
 description: "Alphabetical C API reference for stack push operations"
-licenseSource: "lua-5.5.1"
 ---
 
 # C API functions and types: pop–pushvfstring

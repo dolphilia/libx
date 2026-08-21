@@ -78,9 +78,6 @@ if (missing.length && !allowMissing) errors.push(`未翻訳ファイル: ${missi
 for (const relativePath of japaneseFiles.filter((file) => englishFiles.includes(file))) {
   const english = fs.readFileSync(path.join(englishRoot, relativePath), 'utf8');
   const japanese = fs.readFileSync(path.join(japaneseRoot, relativePath), 'utf8');
-  if (!japanese.includes('licenseSource: "glfw-3.5.1"')) {
-    errors.push(`${relativePath}: licenseSourceがありません`);
-  }
   if (/ZXQ|¤/.test(japanese)) errors.push(`${relativePath}: 翻訳保護トークンが残っています`);
   compare('コードブロック', codeBlocks(english), codeBlocks(japanese), relativePath, errors);
   compare('インラインコード', inlineCode(english), inlineCode(japanese), relativePath, errors);

@@ -162,12 +162,6 @@ function buildAnchorMap(pageSlices) {
   return result;
 }
 
-function externalSourceUrl(source, fragment = '') {
-  if (source === 'official-bugs.html') return `https://www.lua.org/bugs.html${fragment}`;
-  if (source === 'readme.html') return `https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz`;
-  return `https://www.lua.org/manual/5.5/manual.html${fragment}`;
-}
-
 function rewriteHref(href, page, anchorMap) {
   if (/^(?:https?:|mailto:)/i.test(href)) return href;
   const normalized = href.replace(/^\.\//, '');
@@ -472,7 +466,6 @@ function frontmatter(page) {
     '---',
     `title: ${quoteYaml(page.title)}`,
     `description: ${quoteYaml(page.description)}`,
-    'licenseSource: "lua-5.5.1"',
     '---',
   ].join('\n');
 }
@@ -499,8 +492,6 @@ function validateGenerated(outputRoot, pageSlices, anchorMap) {
   for (const page of LUA_PAGE_MAP) {
     const filePath = path.join(outputRoot, page.output);
     const content = fs.readFileSync(filePath, 'utf8');
-    if (!content.includes('licenseSource: "lua-5.5.1"'))
-      errors.push(`${page.output}: licenseSource欠落`);
     for (const match of content.matchAll(/<a id="([^"]+)"><\/a>/g)) {
       if (anchors.has(match[1])) errors.push(`${page.output}: 重複アンカー ${match[1]}`);
       anchors.set(match[1], page.output);

@@ -1,7 +1,6 @@
 ---
 title: "Table manipulation"
 description: "Table library reference"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.7 – <a id="6.7"></a>Table Manipulation

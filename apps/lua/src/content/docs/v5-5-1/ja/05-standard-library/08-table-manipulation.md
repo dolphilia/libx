@@ -1,7 +1,6 @@
 ---
 title: "テーブル操作"
 description: "テーブルライブラリのリファレンス"
-licenseSource: "lua-5.5.1"
 ---
 
 # 6.7 – <a id="6.7"></a>テーブル操作

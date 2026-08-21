@@ -1,7 +1,6 @@
 ---
 title: "Markdown parity fixture"
 description: "Exercises the portable Markdown contract"
-licenseSource: "test-verification-original"
 ---
 
 # Markdown parity fixture

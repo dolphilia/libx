@@ -3,8 +3,9 @@
  */
 import type { LocaleKey } from '@docs/i18n/locales';
 import type { CollectionEntry } from 'astro:content';
-import { resolveProjectDir, getCategoryTranslationsAsync } from '@docs/project-config';
+import { resolveProjectDir, getProjectConfig } from '@docs/project-config';
 import { buildDocumentPath, type ContentOptions } from './content-utils';
+import { getCategoryId, resolveCategoryLabel } from './category-navigation.js';
 
 export type SidebarItem = {
   title: string;
@@ -53,23 +54,24 @@ function isCacheValid(entry: SidebarCacheEntry, ttl: number): boolean {
  * カテゴリ名を翻訳します
  */
 async function translateCategory(
-  category: string,
+  categoryId: string,
   lang: LocaleKey,
   options?: SidebarOptions
 ): Promise<string> {
-  const translations = await getCategoryTranslationsAsync(options?.projectDir);
+  const config = await getProjectConfig(options?.projectDir);
+  const translations = Object.fromEntries(
+    Object.entries(config.translations).map(([locale, translation]) => [
+      locale,
+      translation.categories,
+    ])
+  );
 
-  if (translations?.[lang]?.[category]) {
-    return translations[lang][category];
-  }
-
-  // フォールバック: 英語の翻訳があればそれを使用
-  if (translations?.en?.[category]) {
-    return translations.en[category];
-  }
-
-  // 最終フォールバック: カテゴリ名の先頭を大文字にして返す
-  return category.charAt(0).toUpperCase() + category.slice(1);
+  return resolveCategoryLabel({
+    categoryId,
+    lang,
+    defaultLang: config.language.default,
+    translations,
+  });
 }
 
 /**
@@ -147,8 +149,7 @@ export async function getAutoSidebar(
     const pathCategory = parts.length >= 3 ? parts[2] : 'uncategorized';
 
     // ディレクトリ名から純粋なカテゴリ名を抽出（数字プレフィックスを除去）
-    const cleanCategory = pathCategory.replace(/^\d+-/, '');
-    const category = doc.data.category || cleanCategory;
+    const category = getCategoryId(pathCategory);
 
     // ディレクトリ名から順序を取得
     const categoryDirName = parts[2] || 'uncategorized';
