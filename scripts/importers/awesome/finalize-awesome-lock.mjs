@@ -39,8 +39,14 @@ const report = {
   snapshotVersion: lock.snapshot.version,
   generatedAt: new Date().toISOString(),
   lockSha256: lockHash,
-  discovery: { visited: discovery.visited.length, edges: discovery.edges.length, queue: discovery.queue.length },
-  sources: Object.fromEntries(Object.entries(byStatus).map(([status, sources]) => [status, sources.length])),
+  discovery: {
+    visited: discovery.visited.length,
+    edges: discovery.edges.length,
+    queue: discovery.queue.length,
+  },
+  sources: Object.fromEntries(
+    Object.entries(byStatus).map(([status, sources]) => [status, sources.length])
+  ),
   includedWithLicenseEvidence: byStatus.included.length,
   pendingLicenseReview: 0,
 };
@@ -57,9 +63,13 @@ if (process.argv.includes('--check')) {
 }
 
 writeJsonAtomic(reportPath, report);
-const manifest = fs.readFileSync(manifestPath, 'utf8').replace(
-  /\| ロックファイル SHA-256 \| `[^`]+` \|/,
-  `| ロックファイル SHA-256 | \`${lockHash}\` |`
-);
+const manifest = fs
+  .readFileSync(manifestPath, 'utf8')
+  .replace(
+    /\| ロックファイル SHA-256 \| `[^`]+` \|/,
+    `| ロックファイル SHA-256 | \`${lockHash}\` |`
+  );
 fs.writeFileSync(manifestPath, manifest);
-console.log(`Finalized Awesome lock (${byStatus.included.length} included, ${byStatus['metadata-only']?.length ?? 0} metadata-only)`);
+console.log(
+  `Finalized Awesome lock (${byStatus.included.length} included, ${byStatus['metadata-only']?.length ?? 0} metadata-only)`
+);

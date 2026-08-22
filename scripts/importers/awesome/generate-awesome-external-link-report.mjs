@@ -17,11 +17,14 @@ function linksFor(source) {
   const file = sourceFiles.find((entry) => {
     if (!entry.isFile() || !entry.name.endsWith('.md')) return false;
     const candidate = path.join(entry.parentPath ?? entry.path, entry.name);
-    return fs.readFileSync(candidate, 'utf8').includes(`licenseSource: ${JSON.stringify(source.sourceId)}`);
+    return fs
+      .readFileSync(candidate, 'utf8')
+      .includes(`licenseSource: ${JSON.stringify(source.sourceId)}`);
   });
   if (!file) throw new Error(`公開本文がありません: ${source.sourceId}`);
   const content = fs.readFileSync(path.join(file.parentPath ?? file.path, file.name), 'utf8');
-  for (const match of content.matchAll(linkPattern)) matches.push(match[1].replace(/[.,;:]+$/u, ''));
+  for (const match of content.matchAll(linkPattern))
+    matches.push(match[1].replace(/[.,;:]+$/u, ''));
   return { count: matches.length, hash: sha256([...new Set(matches)].sort().join('\n')) };
 }
 
@@ -49,7 +52,8 @@ const report = {
   generatedAt: new Date().toISOString(),
   policy: {
     outgoingLinks: '固定済み本文に記録された取得時点URLを追跡し、ライブ到達性は検査しない。',
-    redirects: '固定コミットのRaw取得はリダイレクトを追従せず、取得処理で検出したものだけを記録する。',
+    redirects:
+      '固定コミットのRaw取得はリダイレクトを追従せず、取得処理で検出したものだけを記録する。',
   },
   pages,
   summary: {
@@ -70,8 +74,12 @@ if (process.argv.includes('--check')) {
     console.error('EXTERNAL_LINK_REPORT.jsonが現在の英語定本と一致しません');
     process.exit(1);
   }
-  console.log(`Awesome external-link report check: OK (${pages.length} pages, ${report.summary.externalLinks} links)`);
+  console.log(
+    `Awesome external-link report check: OK (${pages.length} pages, ${report.summary.externalLinks} links)`
+  );
 } else {
   writeJsonAtomic(reportPath, report);
-  console.log(`Generated Awesome external-link report (${pages.length} pages, ${report.summary.externalLinks} links)`);
+  console.log(
+    `Generated Awesome external-link report (${pages.length} pages, ${report.summary.externalLinks} links)`
+  );
 }

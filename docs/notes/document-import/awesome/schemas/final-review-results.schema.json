@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schemaVersion", "snapshotVersion", "reviews"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "snapshotVersion": { "const": "v2026-08-20" },
+    "aggregateReview": {
+      "type": "object",
+      "required": [
+        "scope",
+        "itemCount",
+        "evidenceHash",
+        "decision",
+        "reviewer",
+        "reviewedAt",
+        "notes"
+      ],
+      "properties": {
+        "scope": { "const": "all-review-items" },
+        "itemCount": { "const": 416 },
+        "evidenceHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "decision": { "const": "approved" },
+        "reviewer": { "type": "string", "minLength": 1 },
+        "reviewedAt": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "evidenceHash", "decision", "reviewer", "reviewedAt", "notes"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "evidenceHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "decision": { "enum": ["approved", "changes-requested"] },
+          "reviewer": { "type": "string", "minLength": 1 },
+          "reviewedAt": { "type": "string", "format": "date-time" },
+          "notes": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

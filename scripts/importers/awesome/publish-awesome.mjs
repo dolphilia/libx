@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { readJsoncFile } from '../../jsonc-utils.js';
 import { prepareImportForCheck, prepareImportOutput } from '../safe-import-output.js';
 import { notesDir, readJson, rootDir, writeJsonAtomic } from './common.mjs';
 
@@ -10,18 +11,33 @@ const projectRoot = path.join(rootDir, 'apps', 'awesome');
 const normalizedRoot = path.join(rootDir, '.tmp/document-import/awesome/03-normalized');
 const contentRoot = path.join(projectRoot, 'src/awesome-content');
 const englishContentRoot = path.join(contentRoot, version, 'en');
+const japaneseContentRoot = path.join(contentRoot, version, 'ja');
 const routesPath = path.join(projectRoot, 'src/generated/awesome-routes.json');
+const localizedRoutesPath = path.join(projectRoot, 'src/generated/awesome-localized-routes.json');
+const previewStatusPath = path.join(projectRoot, 'src/generated/awesome-preview-status.json');
 const sidebarRoot = path.join(projectRoot, 'public/sidebar');
 const searchRoot = path.join(projectRoot, 'public/search', version);
 const partitionsPath = path.join(notesDir, 'CONTENT_PARTITIONS.json');
 const migrationsPath = path.join(notesDir, 'URL_MIGRATIONS.json');
 const check = process.argv.includes('--check');
 
+const projectConfig = readJsoncFile(path.join(projectRoot, 'src/config/project.config.jsonc'));
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
+const discoveryState = readJson(path.join(notesDir, 'DISCOVERY_STATE.json'));
+const exclusions = readJson(path.join(notesDir, 'EXCLUSIONS.json'));
+const finalReviewQueue = readJson(path.join(notesDir, 'FINAL_REVIEW_QUEUE.json'));
 const contentMap = readJson(path.join(notesDir, 'CONTENT_MAP.json'));
 const shardPlan = readJson(path.join(notesDir, 'SITE_SHARDS.json'));
 const included = lock.sources.filter((source) => source.status === 'included');
 const mapBySource = new Map(contentMap.entries.map((entry) => [entry.sourceId, entry]));
+const discoveredByRepository = new Map(
+  discoveryState.visited.map((source) => [source.repository, source])
+);
+const approvedReviewItems = finalReviewQueue.items.filter(
+  (item) => item.status === 'approved'
+).length;
+const allHumanReviewed =
+  finalReviewQueue.items.length > 0 && approvedReviewItems === finalReviewQueue.items.length;
 
 function categoryId(value) {
   return value
@@ -44,6 +60,13 @@ function sourceCategory(sourceId) {
   const category = mapBySource.get(sourceId)?.categories?.[0];
   if (!category) throw new Error(`カテゴリがありません: ${sourceId}`);
   return category;
+}
+
+function navigationTitle(source) {
+  if (source.sourceId === 'sindresorhus-awesome-readme') return 'Awesome';
+  const label = discoveredByRepository.get(source.repository)?.occurrences?.[0]?.label?.trim();
+  if (!label) throw new Error(`ナビゲーション表示名がありません: ${source.repository}`);
+  return label;
 }
 
 function categoryOrder() {
@@ -92,6 +115,7 @@ function buildModel() {
         slug: `${categorySlug}/${id}`,
         moduleKey: `/src/awesome-content/${version}/en/${categorySlug}/${id}.md`,
         title: String(parsed.data.title),
+        navigationTitle: navigationTitle(source),
         description: String(parsed.data.description ?? ''),
         licenseSource: String(parsed.data.licenseSource),
         markdown,
@@ -114,11 +138,7 @@ const model = buildModel();
 
 function generateContent(target) {
   for (const entry of model.entries) {
-    const targetPath = path.join(
-      target,
-      entry.categoryId,
-      `${entry.pageId}.md`
-    );
+    const targetPath = path.join(target, entry.categoryId, `${entry.pageId}.md`);
     fs.mkdirSync(path.dirname(targetPath), { recursive: true });
     fs.writeFileSync(targetPath, entry.markdown);
   }
@@ -141,13 +161,15 @@ const routes = {
 };
 
 function sidebarFor(lang) {
+  const localizedEntries = entriesFor(lang);
+  const categoryNames = projectConfig.translations[lang]?.categories ?? {};
   return routes.categories
     .map((category) => ({
-      title: category.name,
-      items: routes.entries
+      title: categoryNames[category.id] ?? category.name,
+      items: localizedEntries
         .filter((entry) => entry.lang === lang && entry.categoryId === category.id)
         .map((entry) => ({
-          title: entry.title,
+          title: entry.navigationTitle,
           href: `/docs/awesome/${version}/${lang}/${entry.slug}`,
         })),
     }))
@@ -155,11 +177,12 @@ function sidebarFor(lang) {
 }
 
 function searchIndexFor(lang) {
+  const localizedEntries = entriesFor(lang);
   return {
     schemaVersion: 1,
     version,
     lang,
-    entries: routes.entries
+    entries: localizedEntries
       .filter((entry) => entry.lang === lang)
       .map((entry) => ({
         title: entry.title,
@@ -172,6 +195,29 @@ function searchIndexFor(lang) {
         text: `${entry.title} ${entry.description} ${entry.repository} ${entry.category}`,
       })),
   };
+}
+
+function entriesFor(lang) {
+  if (lang === 'en') return routes.entries;
+  if (lang !== 'ja' || !fs.existsSync(japaneseContentRoot)) return [];
+  return routes.entries.flatMap((entry) => {
+    const pathname = path.join(japaneseContentRoot, `${entry.slug}.md`);
+    if (!fs.existsSync(pathname)) return [];
+    const parsed = matter(fs.readFileSync(pathname, 'utf8'));
+    const description = String(parsed.data.description ?? '');
+    return [
+      {
+        ...entry,
+        lang,
+        moduleKey: entry.moduleKey.replace('/en/', `/${lang}/`),
+        title: String(parsed.data.title),
+        description: allHumanReviewed
+          ? description.replaceAll('人手レビュー前', '人手レビュー済み')
+          : description,
+        licenseSource: String(parsed.data.licenseSource),
+      },
+    ];
+  });
 }
 
 function stableJson(value) {
@@ -215,6 +261,26 @@ const migrations = {
     to: `/docs/awesome/${version}/en/${entry.slug}`,
   })),
 };
+const pendingReviewItems = finalReviewQueue.items.filter(
+  (item) => item.status !== 'approved'
+).length;
+const previewStatus = {
+  schemaVersion: 1,
+  snapshotId: lock.snapshot.version,
+  knownSources: lock.sources.length,
+  englishCanonicalPages: model.entries.length,
+  japaneseMachineValidatedPages: entriesFor('ja').length,
+  excludedFragments: exclusions.exclusions.length,
+  metadataOnlySources: lock.sources.filter((source) => source.status === 'metadata-only').length,
+  humanReviewedItems: approvedReviewItems,
+  totalReviewItems: finalReviewQueue.items.length,
+  contentReviewStatus: pendingReviewItems === 0 ? 'human-reviewed' : 'human-review-pending',
+};
+const localizedRoutes = {
+  schemaVersion: 1,
+  snapshotVersion: version,
+  entries: [...entriesFor('en'), ...entriesFor('ja')],
+};
 
 if (check) {
   const result = prepareImportForCheck({
@@ -224,8 +290,14 @@ if (check) {
   });
   if (!result.matches) throw new Error('単一awesomeアプリの本文が正規化済み入力と一致しません');
   assertJson(routesPath, routes);
+  assertJson(localizedRoutesPath, localizedRoutes);
+  assertJson(previewStatusPath, previewStatus);
   assertJson(path.join(sidebarRoot, `sidebar-en-${version}.json`), sidebarFor('en'));
   assertJson(path.join(searchRoot, 'en.json'), searchIndexFor('en'));
+  if (entriesFor('ja').length) {
+    assertJson(path.join(sidebarRoot, `sidebar-ja-${version}.json`), sidebarFor('ja'));
+    assertJson(path.join(searchRoot, 'ja.json'), searchIndexFor('ja'));
+  }
   assertJson(partitionsPath, partitions);
   assertJson(migrationsPath, migrations);
   console.log(`Awesome single-app publish check: OK (${model.entries.length} pages)`);
@@ -239,11 +311,20 @@ if (check) {
   fs.mkdirSync(sidebarRoot, { recursive: true });
   fs.mkdirSync(searchRoot, { recursive: true });
   fs.writeFileSync(routesPath, stableJson(routes));
+  fs.writeFileSync(localizedRoutesPath, stableJson(localizedRoutes));
+  fs.writeFileSync(previewStatusPath, stableJson(previewStatus));
   fs.writeFileSync(
     path.join(sidebarRoot, `sidebar-en-${version}.json`),
     stableJson(sidebarFor('en'))
   );
   fs.writeFileSync(path.join(searchRoot, 'en.json'), stableJson(searchIndexFor('en')));
+  if (entriesFor('ja').length) {
+    fs.writeFileSync(
+      path.join(sidebarRoot, `sidebar-ja-${version}.json`),
+      stableJson(sidebarFor('ja'))
+    );
+    fs.writeFileSync(path.join(searchRoot, 'ja.json'), stableJson(searchIndexFor('ja')));
+  }
   writeJsonAtomic(partitionsPath, partitions);
   writeJsonAtomic(migrationsPath, migrations);
   console.log(`Published ${model.entries.length} canonical pages to the single awesome app`);

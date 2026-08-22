@@ -43,6 +43,16 @@ test('本文リンクのホバー下線はborderと重ねず一本だけ表示�
   assert.match(hoverRule, /text-decoration-thickness:\s*1px/);
 });
 
+test('本文中の長いURLは狭い画面で折り返す', () => {
+  const theme = fs.readFileSync(themePath, 'utf8');
+  const linkRule = theme.match(
+    /:where\(\.article-content, \.sl-markdown-content\) a\s*\{([^}]*)\}/s
+  )?.[1];
+
+  assert.ok(linkRule);
+  assert.match(linkRule, /overflow-wrap:\s*anywhere/);
+});
+
 test('全配信レイアウトとテンプレートが正式な本文ルートを使用する', () => {
   for (const relativePath of layoutPaths) {
     const source = fs.readFileSync(path.join(rootDir, relativePath), 'utf8');

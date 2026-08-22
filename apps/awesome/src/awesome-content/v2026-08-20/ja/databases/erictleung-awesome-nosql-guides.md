@@ -1,6 +1,6 @@
 ---
 title: "erictleung/awesome-nosql-guides"
-description: "erictleung/awesome-nosql-guides の翻訳初稿（未検査）"
+description: "erictleung/awesome-nosql-guides の日本語訳（人手レビュー前）"
 licenseSource: "github-erictleung-awesome-nosql-guides-readme-md"
 ---
 

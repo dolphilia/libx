@@ -1,6 +1,6 @@
 ---
 title: "friedger/awesome-stacks-chain"
-description: "friedger/awesome-stacks-chain の日本語訳（作業中）"
+description: "friedger/awesome-stacks-chain の日本語訳（人手レビュー前）"
 licenseSource: "github-friedger-awesome-stacks-chain-readme-md"
 ---
 

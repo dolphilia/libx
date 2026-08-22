@@ -11,7 +11,7 @@ import '../styles/global.css';
 import { getProjectConfig, getDisplayNameAsync } from '@docs/project-config';
 import { Icons } from '@docs/ui/components/icons/Icons';
 import { buildAvailableLanguagePaths, collectAvailableVersionIds } from '@docs/content-utils';
-import routeManifest from '../generated/awesome-routes.json';
+import localizedRouteManifest from '../generated/awesome-localized-routes.json';
 
 // 定数定義
 
@@ -55,7 +55,7 @@ const projectConfig = await getProjectConfig();
 const displayName = await getDisplayNameAsync(lang);
 const dir = getLocaleDirection(lang);
 const breadcrumbIcon = dir === 'rtl' ? 'chevron-left' : 'chevron-right';
-const documentSlugs = routeManifest.entries.map(
+const documentSlugs = localizedRouteManifest.entries.map(
   (entry) => `${entry.version}/${entry.lang}/${entry.slug}`
 );
 

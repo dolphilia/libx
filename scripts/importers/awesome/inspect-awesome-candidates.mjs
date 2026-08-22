@@ -23,9 +23,12 @@ const inventoryPath = optionValue(
   path.join(tempDir, '02-inventory/direct-candidates.json')
 );
 const inspectionKind = optionValue(args, '--kind', 'direct-inspection');
-const discoveryDepth = Number(optionValue(args, '--discovery-depth', inspectionKind === 'recursive-inspection' ? '1' : '1'));
+const discoveryDepth = Number(
+  optionValue(args, '--discovery-depth', inspectionKind === 'recursive-inspection' ? '1' : '1')
+);
 if (!Number.isInteger(limit) || limit < 1 || limit > 25) throw new Error('--limit は1から25です');
-if (!Number.isInteger(discoveryDepth) || discoveryDepth < 1) throw new Error('--discovery-depth は1以上の整数です');
+if (!Number.isInteger(discoveryDepth) || discoveryDepth < 1)
+  throw new Error('--discovery-depth は1以上の整数です');
 if (!['direct-inspection', 'recursive-inspection'].includes(inspectionKind))
   throw new Error('--kind は direct-inspection または recursive-inspection です');
 const inventory = readJson(inventoryPath);
@@ -165,17 +168,24 @@ for (let offset = 0; offset < batch.length; offset += 5) {
     transientFailures.push(...(result.transientFailures ?? []));
   }
 }
-const batchNumber =
-  state.checkpoints.filter((item) => item.kind === inspectionKind).length + 1;
+const batchNumber = state.checkpoints.filter((item) => item.kind === inspectionKind).length + 1;
 const reportPath = path.join(
   tempDir,
   '05-reports',
   `${inspectionKind}-${String(batchNumber).padStart(3, '0')}.json`
 );
-writeJsonAtomic(reportPath, { schemaVersion: 1, batchNumber, inspected, failures, transientFailures });
+writeJsonAtomic(reportPath, {
+  schemaVersion: 1,
+  batchNumber,
+  inspected,
+  failures,
+  transientFailures,
+});
 state.visited.push(...inspected);
 state.failures.push(...failures);
-state.retryableFailures.push(...transientFailures.map((failure) => ({ ...failure, retryableAt: isoNow() })));
+state.retryableFailures.push(
+  ...transientFailures.map((failure) => ({ ...failure, retryableAt: isoNow() }))
+);
 state.queue = state.queue.filter(
   (item) =>
     !inspected.some((entry) => entry.repository === item.repository) &&

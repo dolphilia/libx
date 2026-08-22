@@ -11,6 +11,7 @@ const files = [
   ['LICENSE_DECISIONS.json', 'license-decisions.schema.json'],
   ['EXCLUSIONS.json', 'exclusions.schema.json'],
   ['BATCH_STATUS.json', 'batch-status.schema.json'],
+  ['FINAL_REVIEW_RESULTS.json', 'final-review-results.schema.json'],
 ];
 const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);

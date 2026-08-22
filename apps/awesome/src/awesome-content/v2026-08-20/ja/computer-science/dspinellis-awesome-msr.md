@@ -1,6 +1,6 @@
 ---
 title: "dspinellis/awesome-msr"
-description: "dspinellis/awesome-msr の翻訳初稿（未検査）"
+description: "dspinellis/awesome-msr の日本語訳（人手レビュー前）"
 licenseSource: "github-dspinellis-awesome-msr-readme-md"
 ---
 

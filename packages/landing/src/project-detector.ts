@@ -37,12 +37,9 @@ export async function scanAppsDirectory(): Promise<string[]> {
         continue;
       }
 
-      const contentPath = path.join(appsDir, entry.name, 'src', 'content', 'docs');
-      try {
-        await fs.access(contentPath);
+      const projectPath = path.join(appsDir, entry.name);
+      if (await findProjectContentRoot(projectPath)) {
         projects.push(entry.name);
-      } catch {
-        // ドキュメントディレクトリがない場合はスキップ
       }
     }
   } catch (error) {
@@ -62,20 +59,24 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
   const docsConfig = await loadProjectConfig(projectPath);
   const baseUrl = docsConfig.paths.baseUrl;
   const latestVersion = getLatestVersion(docsConfig.versioning.versions);
-  const contentFiles = await scanProjectContent(projectPath);
+  const contentRoot = await findProjectContentRoot(projectPath);
+  const contentFiles = await scanProjectContent(projectPath, contentRoot);
+  const preferredSection = contentRoot?.endsWith(`${path.sep}awesome-content`)
+    ? 'overview'
+    : undefined;
 
   const fallbackUrls: Record<string, string> = {};
   const actualSupportedLangs: LocaleKey[] = [];
 
   for (const lang of docsConfig.language.supported) {
-    const firstFile = findFirstContentFile(contentFiles, lang, latestVersion);
+    const firstFile = findFirstContentFile(contentFiles, lang, latestVersion, preferredSection);
     if (firstFile) {
       fallbackUrls[lang] = `${baseUrl}/${latestVersion}/${lang}/${firstFile}`;
       actualSupportedLangs.push(lang);
     }
   }
 
-  const englishFile = findFirstContentFile(contentFiles, 'en', latestVersion);
+  const englishFile = findFirstContentFile(contentFiles, 'en', latestVersion, preferredSection);
   if (englishFile && !fallbackUrls['en']) {
     fallbackUrls['en'] = `${baseUrl}/${latestVersion}/en/${englishFile}`;
     if (!actualSupportedLangs.includes('en')) {
@@ -156,9 +157,16 @@ function getLatestVersion(versions: VersionConfig[]): string {
   return versions[0]?.id || 'v1';
 }
 
-async function scanProjectContent(projectPath: string): Promise<ContentFile[]> {
-  const contentDir = path.join(projectPath, 'src', 'content', 'docs');
+async function scanProjectContent(
+  projectPath: string,
+  resolvedContentRoot?: string | null
+): Promise<ContentFile[]> {
   const files: ContentFile[] = [];
+  const contentDir = resolvedContentRoot ?? (await findProjectContentRoot(projectPath));
+
+  if (!contentDir) {
+    return files;
+  }
 
   try {
     const mdxFiles = await scanDirectory(contentDir);
@@ -186,6 +194,24 @@ async function scanProjectContent(projectPath: string): Promise<ContentFile[]> {
   return files;
 }
 
+async function findProjectContentRoot(projectPath: string): Promise<string | null> {
+  const candidates = [
+    path.join(projectPath, 'src', 'content', 'docs'),
+    path.join(projectPath, 'src', 'awesome-content'),
+  ];
+
+  for (const candidate of candidates) {
+    try {
+      await fs.access(candidate);
+      return candidate;
+    } catch {
+      // 次の対応コンテンツルートを確認する
+    }
+  }
+
+  return null;
+}
+
 async function scanDirectory(dirPath: string, basePath = ''): Promise<string[]> {
   const files: string[] = [];
 
@@ -210,10 +236,21 @@ async function scanDirectory(dirPath: string, basePath = ''): Promise<string[]> 
   return files;
 }
 
-function findFirstContentFile(files: ContentFile[], lang: string, version: string): string | null {
+function findFirstContentFile(
+  files: ContentFile[],
+  lang: string,
+  version: string,
+  preferredSection?: string
+): string | null {
   const filtered = files
     .filter((f) => f.lang === lang && f.version === version)
     .sort((a, b) => {
+      if (preferredSection) {
+        const aPreferred = a.section === preferredSection;
+        const bPreferred = b.section === preferredSection;
+        if (aPreferred !== bPreferred) return aPreferred ? -1 : 1;
+      }
+
       const sectionPriority: Record<string, number> = {
         guide: 0,
         api: 1,

@@ -31,10 +31,17 @@ const report = {
     byProject: pageCounts,
   },
   fetchedBatches: (batches.fetchBatches ?? batches.batches ?? []).length,
-  fetchedSources: (batches.fetchBatches ?? batches.batches ?? []).reduce((total, batch) => total + batch.sourceIds.length, 0),
+  fetchedSources: (batches.fetchBatches ?? batches.batches ?? []).reduce(
+    (total, batch) => total + batch.sourceIds.length,
+    0
+  ),
   translationBatches: (batches.batches ?? []).length,
   translationValidatedPages: (batches.batches ?? []).reduce(
-    (total, batch) => total + Object.values(batch.pages ?? {}).filter((page) => page['translation-validated'] === 'completed').length,
+    (total, batch) =>
+      total +
+      Object.values(batch.pages ?? {}).filter(
+        (page) => page['translation-validated'] === 'completed'
+      ).length,
     0
   ),
 };

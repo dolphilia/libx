@@ -1,6 +1,6 @@
 ---
 title: "christian-bromann/awesome-selenium"
-description: "christian-bromann/awesome-selenium の日本語訳（作業中）"
+description: "christian-bromann/awesome-selenium の日本語訳（人手レビュー前）"
 licenseSource: "github-christian-bromann-awesome-selenium-readme-md"
 ---
 

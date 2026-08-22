@@ -1,6 +1,6 @@
 ---
 title: "sdassow/awesome-veganism"
-description: "sdassow/awesome-veganism の翻訳初稿（未検査）"
+description: "sdassow/awesome-veganism の日本語訳（人手レビュー前）"
 licenseSource: "github-sdassow-awesome-veganism-readme-md"
 ---
 

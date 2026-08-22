@@ -6,7 +6,17 @@ import { rootDir } from './common.mjs';
 
 const version = 'v2026-08-20';
 const requireComplete = process.argv.includes('--require-complete');
+const contentRootOptionIndex = process.argv.indexOf('--content-root');
+const contentRoot =
+  contentRootOptionIndex === -1
+    ? path.join(rootDir, 'apps/awesome/src/awesome-content', version)
+    : path.resolve(process.argv[contentRootOptionIndex + 1] ?? '');
 const errors = [];
+
+if (contentRootOptionIndex !== -1 && !process.argv[contentRootOptionIndex + 1]) {
+  console.error('- awesome: --content-root にはディレクトリを指定してください');
+  process.exit(1);
+}
 
 function files(root) {
   if (!fs.existsSync(root)) return [];
@@ -20,7 +30,9 @@ function extract(content) {
   const parsed = matter(content);
   return {
     licenseSource: parsed.data.licenseSource ?? null,
-    headingLevels: [...parsed.content.matchAll(/^(#{1,6})\s+.+$/gm)].map((match) => match[1].length),
+    headingLevels: [...parsed.content.matchAll(/^(#{1,6})\s+.+$/gm)].map(
+      (match) => match[1].length
+    ),
     urls: [...parsed.content.matchAll(/https?:\/\/[^\s)>]+/g)].map((match) =>
       match[0].replace(/[.,;:]$/, '')
     ),
@@ -28,7 +40,9 @@ function extract(content) {
       (match) => ({
         indent: match[1].length,
         marker: /^\d+\.$/.test(match[2]) ? 'ordered' : 'unordered',
-        urls: [...match[3].matchAll(/https?:\/\/[^\s)>]+/g)].map((url) => url[0].replace(/[.,;:]$/, '')),
+        urls: [...match[3].matchAll(/https?:\/\/[^\s)>]+/g)].map((url) =>
+          url[0].replace(/[.,;:]$/, '')
+        ),
       })
     ),
     codeTokens: [...parsed.content.matchAll(/`([^`\n]+)`/g)].map((match) => match[1]),
@@ -37,7 +51,6 @@ function extract(content) {
 let englishPageCount = 0;
 let japanesePageCount = 0;
 {
-  const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
   const englishRoot = path.join(contentRoot, 'en');
   const japaneseRoot = path.join(contentRoot, 'ja');
   const englishFiles = new Set(files(englishRoot));
@@ -49,8 +62,14 @@ let japanesePageCount = 0;
       errors.push(`awesome: 日本語ページに対応する英語ページがありません: ${file}`);
       continue;
     }
-    const en = extract(fs.readFileSync(path.join(englishRoot, file), 'utf8'));
-    const ja = extract(fs.readFileSync(path.join(japaneseRoot, file), 'utf8'));
+    const englishMarkdown = fs.readFileSync(path.join(englishRoot, file), 'utf8');
+    const japaneseMarkdown = fs.readFileSync(path.join(japaneseRoot, file), 'utf8');
+    const en = extract(englishMarkdown);
+    const ja = extract(japaneseMarkdown);
+    if (/[⟦⟧]|MARKDOWN_/.test(japaneseMarkdown))
+      errors.push(`awesome: Markdown保護記号が日本語ページに残っています: ${file}`);
+    if (/:[ぁ-んァ-ヶ一-龠]+[：:]/.test(japaneseMarkdown))
+      errors.push(`awesome: 翻訳されたショートコードが日本語ページに残っています: ${file}`);
     if (en.licenseSource !== ja.licenseSource)
       errors.push(`awesome: licenseSource が不一致です: ${file}`);
     if (JSON.stringify(en.headingLevels) !== JSON.stringify(ja.headingLevels))
@@ -64,8 +83,7 @@ let japanesePageCount = 0;
   }
   if (requireComplete) {
     for (const file of [...englishFiles].sort()) {
-      if (!japaneseFiles.includes(file))
-        errors.push(`awesome: 日本語ページが未翻訳です: ${file}`);
+      if (!japaneseFiles.includes(file)) errors.push(`awesome: 日本語ページが未翻訳です: ${file}`);
     }
   }
 }

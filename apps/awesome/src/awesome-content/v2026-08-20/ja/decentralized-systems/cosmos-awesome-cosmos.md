@@ -161,7 +161,7 @@ Inter-Blockchain Communication (IBC) の転送アクティビティを表示し�
 Cosmos SDK モジュールの正確な一覧を見つける最適な場所はプロジェクトリポジトリです。
 
 * 本番品質のモジュール一覧は、[List of Modules](https://docs.cosmos.network/main/modules/)を参照してください。
-* よく知られたサードパーティモジュールの一覧は、[Cosmod.xyz](https://cosmod.xyz)を参照してください。
+* よく知られたサードパーティモジュールの一覧は、[Cosmod.xyz](https://cosmod.xyz)
 
 ## 監視
 * [PANIC Monitoring and Alerting For Blockchains](https://github.com/SimplyVC/panic) - Cosmos SDK、Substrate、Chainlink ベースノード向けのオープンソース監視・アラートソリューション。

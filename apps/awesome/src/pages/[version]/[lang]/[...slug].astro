@@ -8,6 +8,7 @@ import { getProjectConfig } from '@docs/project-config';
 import { buildTableOfContents, countTableOfContentsItems } from '@docs/content-utils';
 import type { DocsFrontmatter } from '@docs/content-utils/content-schema';
 import routeManifest from '../../../generated/awesome-routes.json';
+import localizedRouteManifest from '../../../generated/awesome-localized-routes.json';
 
 interface RouteEntry {
   sourceId: string;
@@ -57,6 +58,11 @@ if (!loadContent) throw new Error(`Awesome本文モジュールが見つかり�
 const pageModule = (await loadContent()) as MarkdownModule;
 const Content = pageModule.Content;
 const frontmatter = pageModule.frontmatter;
+const localizedRoute = localizedRouteManifest.entries.find(
+  (entry) =>
+    entry.version === route.version && entry.lang === route.lang && entry.slug === route.slug
+);
+const publicDescription = localizedRoute?.description ?? frontmatter.description;
 const headings = await pageModule.getHeadings();
 const projectConfig = await getProjectConfig();
 const lang = route.lang as LocaleKey;
@@ -90,7 +96,7 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
 
 <DocLayout
   title={frontmatter.title}
-  description={frontmatter.description}
+  description={publicDescription}
   licenseSource={frontmatter.licenseSource}
   hasToc={hasToc}
   lang={lang}

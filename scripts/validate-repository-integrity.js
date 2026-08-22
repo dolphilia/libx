@@ -107,10 +107,14 @@ async function readContentMetadata(appDir) {
   const coordinates = [];
   const references = [];
   const versions = await fs.readdir(contentRoot, { withFileTypes: true });
-  for (const versionEntry of versions.filter((entry) => entry.isDirectory())) {
+  for (const versionEntry of versions.filter(
+    (entry) => entry.isDirectory() && !entry.name.startsWith('.')
+  )) {
     const versionDir = path.join(contentRoot, versionEntry.name);
     const locales = await fs.readdir(versionDir, { withFileTypes: true });
-    for (const localeEntry of locales.filter((entry) => entry.isDirectory())) {
+    for (const localeEntry of locales.filter(
+      (entry) => entry.isDirectory() && !entry.name.startsWith('.')
+    )) {
       coordinates.push({ version: versionEntry.name, locale: localeEntry.name });
       const files = await fs.readdir(path.join(versionDir, localeEntry.name), {
         recursive: true,

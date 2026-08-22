@@ -53,12 +53,12 @@ licenseSource: "github-dstdev-awesome-hpc-readme-md"
 ## ワークロードマネージャー
 - [Slurm](https://slurm.schedmd.com/documentation.html) - 無料でオープンソースのジョブスケジューラー（[ソースコード](https://github.com/SchedMD/slurm)）`OSS`。
 - [LSF](https://www.ibm.com/products/hpc-workload-management) - IBMが開発したジョブスケジューラーおよびワークロード管理ソフトウェア。`Proprietary`
-- [Moab](https://adaptivecomputing.com/moab-hpc-suite/) - ワークロード管理・ジョブスケジューラー。`other`
-- [Torque](https://en.wikipedia.org/wiki/TORQUE) - ワークロード管理・ジョブスケジューラー。`other`
-- [OpenLava](https://en.wikipedia.org/wiki/OpenLava) - ワークロード管理・ジョブスケジューラー。`other`
+- [Moab](https://adaptivecomputing.com/moab-hpc-suite/) - モアブは仕事負荷管理およびジョブスケジューラ `other`.
+- [Torque](https://en.wikipedia.org/wiki/TORQUE) - トーチは仕事負荷管理およびジョブスケジューラ `other`.
+- [OpenLava](https://en.wikipedia.org/wiki/OpenLava) - オープンラヴァは仕事負荷管理およびジョブスケジューラ `other`.
 - [UGE/SGE](https://en.wikipedia.org/wiki/Univa_Grid_Engine) - HPC向けワークロード管理エンジンであるUniva Grid Engine。`Proprietary`
 - [Volcano](https://volcano.sh/) - Kubernetes上に構築したバッチシステム。`Apache-2.0`
-- [Maui](https://www.mhpcc.hpc.mil/) - ワークロード管理・ジョブスケジューラー。`other`
+- [Maui](https://www.mhpcc.hpc.mil/) - マウイは仕事負荷管理およびジョブスケジューラ `other`.
 - [Kube Batch](https://github.com/kubernetes-sigs/kube-batch) - AI/ML、BigData、HPCなどの高性能ワークロード向けKubernetesバッチスケジューラー。`Apache-2.0`
 - [OpenPBS](https://www.openpbs.org/) - 高性能計算（HPC）環境のジョブスケジューリングとワークロード管理を最適化するOpenPBS®ソフトウェア（[ソースコード](https://github.com/openpbs/openpbs)）`other`。
 

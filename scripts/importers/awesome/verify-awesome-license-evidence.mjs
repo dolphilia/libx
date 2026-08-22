@@ -1,13 +1,6 @@
 #!/usr/bin/env node
 import path from 'node:path';
-import {
-  githubRaw,
-  isoNow,
-  notesDir,
-  readJson,
-  sha256,
-  writeJsonAtomic,
-} from './common.mjs';
+import { githubRaw, isoNow, notesDir, readJson, sha256, writeJsonAtomic } from './common.mjs';
 
 const lockPath = path.join(notesDir, 'SOURCES.lock.json');
 const decisionsPath = path.join(notesDir, 'LICENSE_DECISIONS.json');
@@ -58,7 +51,8 @@ for (const source of targets) {
     source.status = 'metadata-only';
     if (decision) {
       decision.status = 'metadata-only';
-      decision.rationale = '固定コミットで再現可能なライセンス本文を確認できないため、本文を複製せずmetadata-onlyとして原文リンクだけを保持する。';
+      decision.rationale =
+        '固定コミットで再現可能なライセンス本文を確認できないため、本文を複製せずmetadata-onlyとして原文リンクだけを保持する。';
       decision.decidedAt = isoNow();
     }
     demoted.push(source.sourceId);

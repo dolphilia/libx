@@ -1,6 +1,6 @@
 ---
 title: "domenicosolazzo/awesome-okr"
-description: "domenicosolazzo/awesome-okr の日本語訳（作業中）"
+description: "domenicosolazzo/awesome-okr の日本語訳（人手レビュー前）"
 licenseSource: "github-domenicosolazzo-awesome-okr-readme-md"
 ---
 

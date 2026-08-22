@@ -8,6 +8,7 @@ import type { LocaleKey } from '@docs/i18n/locales';
 // 設定ファイルのインポート
 import { getProjectConfig } from '@docs/project-config';
 import routeManifest from '../generated/awesome-routes.json';
+import localizedRouteManifest from '../generated/awesome-localized-routes.json';
 
 // 設定を初期化
 const projectConfig = await getProjectConfig();
@@ -43,18 +44,22 @@ const baseUrl = projectConfig.paths.baseUrl;
 
 // 現在のパスを取得
 const currentPath = Astro.url.pathname;
+const normalizedCurrentPath = currentPath.replace(/\/+$/, '');
+
+function isCurrentPath(href: string): boolean {
+  const normalizedHref = href.replace(/\/+$/, '');
+  return normalizedHref === normalizedCurrentPath || normalizedCurrentPath.endsWith(normalizedHref);
+}
 
 const categoryNames = projectConfig.translations[lang]?.categories ?? {};
+const localizedRouteEntries = localizedRouteManifest.entries.filter((entry) => entry.lang === lang);
 const sidebarItems = routeManifest.categories
   .map((category) => ({
     title: categoryNames[category.id] ?? category.name,
-    items: routeManifest.entries
-      .filter(
-        (entry) =>
-          entry.version === version && entry.lang === lang && entry.categoryId === category.id
-      )
+    items: localizedRouteEntries
+      .filter((entry) => entry.version === version && entry.categoryId === category.id)
       .map((entry) => ({
-        title: entry.title,
+        title: entry.navigationTitle,
         href: `${baseUrl}/${entry.version}/${entry.lang}/${entry.slug}`,
       })),
   }))
@@ -64,14 +69,14 @@ const sidebarItems = routeManifest.categories
 function markCurrentPage(items: SidebarItem[]): SidebarItem[] {
   return items.map((section) => {
     // セクション自体のhrefがあり、現在のパスと一致する場合
-    if (section.href && (section.href === currentPath || currentPath.endsWith(section.href))) {
+    if (section.href && isCurrentPath(section.href)) {
       return { ...section, isCurrent: true };
     }
 
     // 子項目がある場合は再帰的に処理
     if (section.items && section.items.length > 0) {
       const updatedItems = section.items.map((item) => {
-        if (item.href && (item.href === currentPath || currentPath.endsWith(item.href))) {
+        if (item.href && isCurrentPath(item.href)) {
           return { ...item, isCurrent: true };
         }
         return item;

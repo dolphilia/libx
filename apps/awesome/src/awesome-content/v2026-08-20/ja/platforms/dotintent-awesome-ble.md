@@ -130,14 +130,14 @@ _BLEに関するセキュリティ関連リソース。_
 
 _Arduinoハードウェアに特化したリソースのリスト。_
 
-- [Arduino](https://store.arduino.cc/) - 公式ウェブサイト
+- [Arduino](https://store.arduino.cc/) - 公式サイト
 - [ArduinoBLE](https://github.com/arduino-libraries/ArduinoBLE) - Arduino向けArduinoBLEライブラリ
 
 ## ESP
 
 _EspressIfハードウェアに特化したリソースのリスト。_
 
-- [EspressIf](https://www.espressif.com/) - 公式ウェブサイト
+- [EspressIf](https://www.espressif.com/) - 公式サイト
 - [ESP-IDF](https://github.com/espressif/esp-idf) - Espressif IoT Development Framework
 - [ESP-32-C3 + Rust + BLE](https://dev.to/theembeddedrustacean/series/26733) - ESP32 BluetoothとRustの連載記事
 
@@ -145,13 +145,13 @@ _EspressIfハードウェアに特化したリソースのリスト。_
 
 _Arduinoハードウェアに特化したリソースのリスト。_
 
-- [Nordic Semiconductor](https://www.nordicsemi.com/) - 公式ウェブサイト
+- [Nordic Semiconductor](https://www.nordicsemi.com/) - 公式サイト
 
 ## RaspberryPi
 
 _RaspberryPiハードウェアに特化したリソースのリスト。_
 
-- [Raspberry Pi](https://www.raspberrypi.org/) - 公式ウェブサイト
+- [Raspberry Pi](https://www.raspberrypi.org/) - 公式サイト
 
 ## 記事と事例
 

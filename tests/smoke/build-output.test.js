@@ -110,6 +110,154 @@ test('integrated output provides an accessible multilingual 404 page', async () 
   assert.doesNotMatch(html, /rel="canonical"[^>]+href="https:\/\/libx\.dev\/"/i);
 });
 
+test('landing pages link Awesome directly to the localized overview', async () => {
+  const japaneseHtml = await fs.readFile(path.join(repoRoot, 'dist/ja/index.html'), 'utf8');
+  const englishHtml = await fs.readFile(path.join(repoRoot, 'dist/en/index.html'), 'utf8');
+
+  assert.match(japaneseHtml, />Awesomeリスト<\/h3>/);
+  assert.match(
+    japaneseHtml,
+    /href="\/docs\/awesome\/v2026-08-20\/ja\/overview\/sindresorhus-awesome"/
+  );
+  assert.match(japaneseHtml, /出典と版を固定したAwesomeリストのスナップショット/);
+  assert.match(englishHtml, />Awesome Lists<\/h3>/);
+  assert.match(
+    englishHtml,
+    /href="\/docs\/awesome\/v2026-08-20\/en\/overview\/sindresorhus-awesome"/
+  );
+});
+
+test('Awesome Japanese pages include localized sidebar navigation and search data', async () => {
+  const html = await fs.readFile(
+    path.join(
+      repoRoot,
+      'dist/docs/awesome/v2026-08-20/ja/databases/benallfree-awesome-pocketbase/index.html'
+    ),
+    'utf8'
+  );
+  assert.match(
+    html,
+    /href="\/docs\/awesome\/v2026-08-20\/ja\/databases\/d3viant0ne-awesome-rethinkdb"/
+  );
+  assert.match(
+    html,
+    /href="\/docs\/awesome\/v2026-08-20\/ja\/databases\/benallfree-awesome-pocketbase"[^>]*aria-current="page"/
+  );
+
+  const searchIndex = JSON.parse(
+    await fs.readFile(path.join(repoRoot, 'dist/docs/awesome/search/v2026-08-20/ja.json'), 'utf8')
+  );
+  assert.equal(searchIndex.lang, 'ja');
+  assert.equal(searchIndex.entries.length, 365);
+  assert.ok(searchIndex.entries.some((entry) => entry.url.includes('/ja/databases/')));
+});
+
+test('Awesome overview links included lists to the matching localized pages', async () => {
+  for (const lang of ['ja', 'en']) {
+    const html = await fs.readFile(
+      path.join(
+        repoRoot,
+        `apps/awesome/dist/v2026-08-20/${lang}/overview/sindresorhus-awesome/index.html`
+      ),
+      'utf8'
+    );
+
+    assert.match(
+      html,
+      new RegExp(`href="/docs/awesome/v2026-08-20/${lang}/platforms/sindresorhus-awesome-nodejs/"`)
+    );
+    assert.doesNotMatch(html, /href="https:\/\/github\.com\/sindresorhus\/awesome-nodejs#readme"/);
+    assert.match(html, /href="https:\/\/github\.com\/0pandadev\/awesome-windows#readme"/);
+  }
+});
+
+test('Awesome overview exposes its matching language and snapshot selectors', async () => {
+  const japaneseHtml = await fs.readFile(
+    path.join(
+      repoRoot,
+      'apps/awesome/dist/v2026-08-20/ja/overview/sindresorhus-awesome/index.html'
+    ),
+    'utf8'
+  );
+  const englishHtml = await fs.readFile(
+    path.join(
+      repoRoot,
+      'apps/awesome/dist/v2026-08-20/en/overview/sindresorhus-awesome/index.html'
+    ),
+    'utf8'
+  );
+
+  assert.match(
+    englishHtml,
+    /href="\/docs\/awesome\/v2026-08-20\/ja\/overview\/sindresorhus-awesome\/"/
+  );
+  assert.match(
+    japaneseHtml,
+    /href="\/docs\/awesome\/v2026-08-20\/en\/overview\/sindresorhus-awesome\/"/
+  );
+  assert.match(japaneseHtml, />Snapshot 2026-08-20<\/span>/);
+  assert.match(japaneseHtml, /data-version-link="true"/);
+});
+
+test('Awesome overview starts with a localized title and summary without sponsor promotion', async () => {
+  const pages = [
+    {
+      lang: 'en',
+      heading: 'Awesome Lists',
+      summary:
+        'A curated directory of Awesome lists spanning technology, science, business, culture, and more.',
+    },
+    {
+      lang: 'ja',
+      heading: 'Awesomeリスト',
+      summary:
+        '技術、科学、ビジネス、文化など、幅広い分野のAwesomeリストを集めたディレクトリです。',
+    },
+  ];
+
+  for (const page of pages) {
+    const html = await fs.readFile(
+      path.join(
+        repoRoot,
+        `apps/awesome/dist/v2026-08-20/${page.lang}/overview/sindresorhus-awesome/index.html`
+      ),
+      'utf8'
+    );
+    assert.match(html, new RegExp(`<h1[^>]*>${page.heading}</h1>`));
+    assert.match(html, new RegExp(`<p>${page.summary}`));
+    assert.doesNotMatch(
+      html,
+      /github\.com\/sponsors|Special thanks to|Supercharge|Software Patreons/
+    );
+    if (page.lang === 'ja') {
+      assert.doesNotMatch(html, /分野の厳選リストまたは関連資料です。/);
+      assert.match(html, /Chrome の V8 JavaScript エンジン上に構築された/);
+    }
+  }
+});
+
+test('Awesome sidebar uses curated list names and localized Japanese categories', async () => {
+  const japaneseHtml = await fs.readFile(
+    path.join(
+      repoRoot,
+      'apps/awesome/dist/v2026-08-20/ja/platforms/agucova-awesome-esp/index.html'
+    ),
+    'utf8'
+  );
+
+  assert.match(japaneseHtml, />プラットフォーム<\/span>/);
+  assert.match(
+    japaneseHtml,
+    /href="\/docs\/awesome\/v2026-08-20\/ja\/platforms\/agucova-awesome-esp"[^>]*>\s*<span[^>]*>ESP<\/span>/
+  );
+  assert.match(
+    japaneseHtml,
+    /href="\/docs\/awesome\/v2026-08-20\/ja\/platforms\/balintkissdev-awesome-dos"[^>]*>\s*<span[^>]*>DOS<\/span>/
+  );
+  assert.doesNotMatch(japaneseHtml, /<span[^>]*>agucova\/awesome-esp<\/span>/);
+  assert.doesNotMatch(japaneseHtml, /<span[^>]*>balintkissdev\/awesome-dos<\/span>/);
+});
+
 async function collectHtmlFiles(directory) {
   const result = [];
   for (const entry of await fs.readdir(directory, { withFileTypes: true })) {

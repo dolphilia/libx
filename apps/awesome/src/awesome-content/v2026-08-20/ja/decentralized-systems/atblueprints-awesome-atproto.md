@@ -1,6 +1,6 @@
 ---
 title: "atblueprints/awesome-atproto"
-description: "atblueprints/awesome-atproto の翻訳初稿（未検査）"
+description: "atblueprints/awesome-atproto の日本語訳（人手レビュー前）"
 licenseSource: "github-atblueprints-awesome-atproto-readme-md"
 ---
 

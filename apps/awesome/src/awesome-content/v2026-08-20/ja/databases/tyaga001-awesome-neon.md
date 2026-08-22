@@ -1,6 +1,6 @@
 ---
 title: "tyaga001/awesome-neon"
-description: "tyaga001/awesome-neon の翻訳初稿（未検査）"
+description: "tyaga001/awesome-neon の日本語訳（人手レビュー前）"
 licenseSource: "github-tyaga001-awesome-neon-readme-md"
 ---
 

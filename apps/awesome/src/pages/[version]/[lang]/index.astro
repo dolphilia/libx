@@ -5,6 +5,8 @@ import type { LocaleKey } from '@docs/i18n/locales';
 import { translate } from '@docs/i18n/utils';
 import { getProjectConfig } from '@docs/project-config';
 import routeManifest from '../../../generated/awesome-routes.json';
+import localizedRouteManifest from '../../../generated/awesome-localized-routes.json';
+import previewStatus from '../../../generated/awesome-preview-status.json';
 
 interface DocEntry {
   title: string;
@@ -45,7 +47,7 @@ const projectConfig = await getProjectConfig();
 // GitHub Pagesのベースパス
 const baseUrl = projectConfig.paths.baseUrl;
 
-const docs = routeManifest.entries.filter(
+const docs = localizedRouteManifest.entries.filter(
   (entry) => entry.version === version && entry.lang === lang
 ) as DocEntry[];
 
@@ -82,6 +84,65 @@ const sortedCategoryIds = Object.keys(categories).sort(
 >
   <div class="container">
     <h1 class="page-title">{translate('docs.documentation', lang)} - {version}</h1>
+
+    <section class="preview-status" aria-labelledby="preview-status-title">
+      <h2 id="preview-status-title">
+        {lang === 'ja' ? 'スナップショット' : 'Snapshot'}
+      </h2>
+      <dl>
+        <div>
+          <dt>{lang === 'ja' ? 'スナップショットID' : 'Snapshot ID'}</dt><dd>
+            {previewStatus.snapshotId}
+          </dd>
+        </div>
+        <div>
+          <dt>{lang === 'ja' ? '発見対象' : 'Known sources'}</dt><dd>
+            {previewStatus.knownSources}
+          </dd>
+        </div>
+        <div>
+          <dt>{lang === 'ja' ? '英語定本' : 'English canonical pages'}</dt><dd>
+            {previewStatus.englishCanonicalPages}
+          </dd>
+        </div>
+        <div>
+          <dt>
+            {lang === 'ja' ? '日本語生成・機械検査済み' : 'Japanese machine-validated pages'}
+          </dt><dd>{previewStatus.japaneseMachineValidatedPages}</dd>
+        </div>
+        <div>
+          <dt>{lang === 'ja' ? '除外断片' : 'Excluded fragments'}</dt><dd>
+            {previewStatus.excludedFragments}
+          </dd>
+        </div>
+        <div>
+          <dt>{lang === 'ja' ? 'メタデータのみ' : 'Metadata-only sources'}</dt><dd>
+            {previewStatus.metadataOnlySources}
+          </dd>
+        </div>
+        <div>
+          <dt>{lang === 'ja' ? '人手レビュー済み' : 'Human-reviewed items'}</dt><dd>
+            {previewStatus.humanReviewedItems}/{previewStatus.totalReviewItems}
+          </dd>
+        </div>
+      </dl>
+      <p
+        class:list={[
+          'review-notice',
+          { 'review-complete': previewStatus.contentReviewStatus === 'human-reviewed' },
+        ]}
+      >
+        {
+          previewStatus.contentReviewStatus === 'human-reviewed'
+            ? lang === 'ja'
+              ? '内容の人手レビューは完了しています。'
+              : 'Human content review is complete.'
+            : lang === 'ja'
+              ? '内容の人手レビューは未完了です。'
+              : 'Human content review is pending.'
+        }
+      </p>
+    </section>
 
     <div class="category-list">
       {
@@ -120,6 +181,50 @@ const sortedCategoryIds = Object.keys(categories).sort(
     font-size: 1.875rem;
     font-weight: 700;
     margin-bottom: 2rem;
+  }
+
+  .preview-status {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem;
+  }
+
+  .preview-status h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  .preview-status dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 0.75rem;
+    margin: 0;
+  }
+
+  .preview-status dl div {
+    min-width: 0;
+  }
+
+  .preview-status dt {
+    color: var(--sl-color-gray-2);
+    font-size: 0.875rem;
+  }
+
+  .preview-status dd {
+    margin: 0.125rem 0 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .review-notice {
+    margin: 0.875rem 0 0;
+    color: var(--sl-color-orange-high);
+  }
+
+  .review-notice.review-complete {
+    color: var(--sl-color-green-high);
   }
 
   .category-list {

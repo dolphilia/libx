@@ -5,7 +5,8 @@ import { notesDir, rootDir, sha256, writeJsonAtomic } from './common.mjs';
 
 const version = 'v2026-08-20';
 const root = path.join(rootDir, 'apps/awesome/src/awesome-content', version, 'en');
-const files = fs.readdirSync(root, { recursive: true, withFileTypes: true })
+const files = fs
+  .readdirSync(root, { recursive: true, withFileTypes: true })
   .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
   .map((entry) => path.join(entry.parentPath ?? entry.path, entry.name));
 const frequencies = new Map();
@@ -35,7 +36,10 @@ const output = {
     { source: 'Overview', target: '概要' },
     { source: 'Awesome Lists', target: 'Awesomeリスト' },
   ],
-  rules: '本ファイルは翻訳語を自動決定しない。protectedTermsはURL、コード、製品名、リポジトリ名、ライセンス名として原文を保持する。',
+  rules:
+    '本ファイルは翻訳語を自動決定しない。protectedTermsはURL、コード、製品名、リポジトリ名、ライセンス名として原文を保持する。',
 };
 writeJsonAtomic(path.join(notesDir, 'TRANSLATION_TERMS.json'), output);
-console.log(`Generated Awesome translation terms (${files.length} pages, ${protectedTerms.length} protected terms)`);
+console.log(
+  `Generated Awesome translation terms (${files.length} pages, ${protectedTerms.length} protected terms)`
+);

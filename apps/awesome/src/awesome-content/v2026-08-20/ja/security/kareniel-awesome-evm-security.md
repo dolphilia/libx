@@ -1,6 +1,6 @@
 ---
 title: "kareniel/awesome-evm-security"
-description: "kareniel/awesome-evm-security の翻訳初稿（未検査）"
+description: "kareniel/awesome-evm-security の日本語訳（人手レビュー前）"
 licenseSource: "github-kareniel-awesome-evm-security-readme-md"
 ---
 

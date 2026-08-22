@@ -100,12 +100,12 @@ PowerToys Run は Windows 向けのクイックランチャーです。オープ
 
 ## 記事
 
-- [Creating custom PowerToys Run plugins](https://conductofcode.io/post/creating-custom-powertoys-run-plugins/) - PowerToys Run 向けコミュニティプラグインの作成方法に関するステップバイステップガイド。
-- [How I developed the JohnnyDecimal plugin](https://blog.seguri.dev/posts/powertoys-run-johnnydecimal/) - JohnnyDecimal コミュニティプラグインの開発方法に関するステップバイステップガイド。
+- [Creating custom PowerToys Run plugins](https://conductofcode.io/post/creating-custom-powertoys-run-plugins/) - PowerToys Run向けのA step by step guide on how to create community plugins。
+- [How I developed the JohnnyDecimal plugin](https://blog.seguri.dev/posts/powertoys-run-johnnydecimal/) - ジョンニデシマルコミュニティプラグインが開発された過程についての、段階的なガイド。
 
 ## 貢献
 
 貢献を歓迎します！
 
-1. 最初に [community plugin checklist](https://github.com/hlaueriksson/awesome-powertoys-run-plugins/blob/d8108fdfad591844cc30dd56bcbe0a47d023148f/checklist.md) をお読みください
-2. 次に [contribution guidelines](https://github.com/hlaueriksson/awesome-powertoys-run-plugins/blob/d8108fdfad591844cc30dd56bcbe0a47d023148f/contributing.md) をお読みください
+1. 最初に [community plugin checklist](https://github.com/hlaueriksson/awesome-powertoys-run-plugins/blob/d8108fdfad591844cc30dd56bcbe0a47d023148f/checklist.md)
+2. 次に [contribution guidelines](https://github.com/hlaueriksson/awesome-powertoys-run-plugins/blob/d8108fdfad591844cc30dd56bcbe0a47d023148f/contributing.md)

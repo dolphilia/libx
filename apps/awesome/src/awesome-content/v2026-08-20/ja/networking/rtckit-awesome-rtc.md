@@ -1,6 +1,6 @@
 ---
 title: "rtckit/awesome-rtc"
-description: "rtckit/awesome-rtc の翻訳初稿（未検査）"
+description: "rtckit/awesome-rtc の日本語訳（人手レビュー前）"
 licenseSource: "github-rtckit-awesome-rtc-readme-md"
 ---
 

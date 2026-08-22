@@ -457,10 +457,10 @@ https://wzrd.in/standalone/<package-name>[@<version>]
 
 ## ドキュメント
 
-- [Official](https://docs.npmjs.com) - 公式ドキュメント。
-- [Troubleshooting](https://github.com/npm/npm/wiki/Troubleshooting) - トラブルシューティング。
-- [Semantic versioning](https://docs.npmjs.com/getting-started/semantic-versioning) - セマンティックバージョニング。
-- [Fixing npm permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions) - npm権限の修正。
+- [Official](https://docs.npmjs.com)
+- [Troubleshooting](https://github.com/npm/npm/wiki/Troubleshooting)
+- [Semantic versioning](https://docs.npmjs.com/getting-started/semantic-versioning)
+- [Fixing npm permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
 - [package.json](https://docs.npmjs.com/files/package.json)
 - [npm run script](https://docs.npmjs.com/cli/run-script)
 - [Stats API](https://github.com/npm/download-counts)

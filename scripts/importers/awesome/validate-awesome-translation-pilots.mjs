@@ -11,10 +11,13 @@ for (const entry of log.pages) {
     errors.push(`試訳ファイルがありません: ${entry.sourceId}`);
     continue;
   }
-  const source = fs.readdirSync(englishRoot, { recursive: true, withFileTypes: true })
+  const source = fs
+    .readdirSync(englishRoot, { recursive: true, withFileTypes: true })
     .filter((item) => item.isFile() && item.name.endsWith('.md'))
     .map((item) => path.join(item.parentPath ?? item.path, item.name))
-    .find((file) => fs.readFileSync(file, 'utf8').includes(`licenseSource: ${JSON.stringify(entry.sourceId)}`));
+    .find((file) =>
+      fs.readFileSync(file, 'utf8').includes(`licenseSource: ${JSON.stringify(entry.sourceId)}`)
+    );
   if (!source) {
     errors.push(`英語定本がありません: ${entry.sourceId}`);
     continue;
@@ -23,9 +26,14 @@ for (const entry of log.pages) {
   const draft = fs.readFileSync(path.join(rootDir, entry.draftPath), 'utf8');
   for (const match of draft.matchAll(/https?:\/\/[^\s)>]+/g)) {
     const url = match[0].replace(/[.,;:]$/, '');
-    if (!sourceText.includes(url)) errors.push(`試訳に原文にないURLがあります: ${entry.sourceId}: ${url}`);
+    if (!sourceText.includes(url))
+      errors.push(`試訳に原文にないURLがあります: ${entry.sourceId}: ${url}`);
   }
-  if (entry.status !== 'draft-unreviewed' || entry.japaneseReview !== 'pending' || entry.technicalReview !== 'pending')
+  if (
+    entry.status !== 'draft-unreviewed' ||
+    entry.japaneseReview !== 'pending' ||
+    entry.technicalReview !== 'pending'
+  )
     errors.push(`試訳レビュー状態が計画と一致しません: ${entry.sourceId}`);
 }
 if (errors.length) {

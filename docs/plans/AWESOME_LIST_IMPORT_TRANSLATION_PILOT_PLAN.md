@@ -6,7 +6,7 @@
 - 初回版ID: `v2026-08-20`
 - 定本言語: 英語
 - 最初の翻訳先: 日本語
-- ステータス: フェーズ0〜6完了、フェーズ7着手中。固定ライセンス本文を確認できた365ページを単一`apps/awesome`へ統合し、旧6分割アプリは削除済み。人手による内容レビューは最終フェーズ10へ延期
+- ステータス: 初回公開フェーズは完了。公開後監査で日本語92文書の項目説明に定型化を確認したため、`AWESOME_JA_TEMPLATE_DESCRIPTION_REMEDIATION_PLAN.md`に基づく品質修正を開始する
 - 根拠: `docs/spec/PROJECT_PRINCIPLES.md`、`docs/guides/UPSTREAM_DOCUMENT_IMPORT_AND_TRANSLATION_GUIDE.md`
 
 ## 0. 計画レビューの結論

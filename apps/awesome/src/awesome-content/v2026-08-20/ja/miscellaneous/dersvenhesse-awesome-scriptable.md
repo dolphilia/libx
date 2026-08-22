@@ -1,6 +1,6 @@
 ---
 title: "dersvenhesse/awesome-scriptable"
-description: "dersvenhesse/awesome-scriptable の日本語訳（作業中）"
+description: "dersvenhesse/awesome-scriptable の日本語訳（人手レビュー前）"
 licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
 ---
 

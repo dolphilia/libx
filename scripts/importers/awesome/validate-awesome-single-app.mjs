@@ -31,10 +31,14 @@ const markdownFiles = fs
   .readdirSync(contentRoot, { recursive: true, withFileTypes: true })
   .filter((entry) => entry.isFile() && entry.name.endsWith('.md'));
 const englishFiles = markdownFiles.filter((entry) =>
-  path.relative(contentRoot, path.join(entry.parentPath ?? entry.path, entry.name)).includes(`${path.sep}en${path.sep}`)
+  path
+    .relative(contentRoot, path.join(entry.parentPath ?? entry.path, entry.name))
+    .includes(`${path.sep}en${path.sep}`)
 );
 const translatedFiles = markdownFiles.filter((entry) =>
-  path.relative(contentRoot, path.join(entry.parentPath ?? entry.path, entry.name)).includes(`${path.sep}ja${path.sep}`)
+  path
+    .relative(contentRoot, path.join(entry.parentPath ?? entry.path, entry.name))
+    .includes(`${path.sep}ja${path.sep}`)
 );
 if (englishFiles.length !== routes.entries.length) {
   throw new Error(
@@ -56,7 +60,10 @@ for (const entry of routes.entries) {
 for (const entry of translatedFiles) {
   const translatedPath = path.join(entry.parentPath ?? entry.path, entry.name);
   const relativePath = path.relative(contentRoot, translatedPath);
-  const englishPath = path.join(contentRoot, relativePath.replace(`${path.sep}ja${path.sep}`, `${path.sep}en${path.sep}`));
+  const englishPath = path.join(
+    contentRoot,
+    relativePath.replace(`${path.sep}ja${path.sep}`, `${path.sep}en${path.sep}`)
+  );
   if (!fs.existsSync(englishPath)) throw new Error(`翻訳の英語本文がありません: ${relativePath}`);
   const translation = matter(fs.readFileSync(translatedPath, 'utf8')).data;
   const english = matter(fs.readFileSync(englishPath, 'utf8')).data;
@@ -86,7 +93,10 @@ if (process.argv.includes('--assets')) {
     if (!fs.existsSync(htmlPath)) throw new Error(`生成ページがありません: ${entry.slug}`);
   }
   for (const entry of translatedFiles) {
-    const relativePath = path.relative(contentRoot, path.join(entry.parentPath ?? entry.path, entry.name));
+    const relativePath = path.relative(
+      contentRoot,
+      path.join(entry.parentPath ?? entry.path, entry.name)
+    );
     const segments = relativePath.split(path.sep);
     const [version, lang, ...slugParts] = segments;
     const slug = path.join(...slugParts).replace(/\.md$/, '');

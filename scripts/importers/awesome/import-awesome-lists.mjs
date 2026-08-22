@@ -45,7 +45,14 @@ for (const source of included) {
     const contentsOffset = original.indexOf('## Contents');
     if (contentsOffset < 0) throw new Error('起点READMEにContents見出しがありません');
     const removed = original.slice(0, contentsOffset);
-    canonical = original.slice(contentsOffset);
+    canonical =
+      '# Awesome Lists\n\n' +
+      'A curated directory of Awesome lists spanning technology, science, business, culture, and more. This snapshot organizes the collection by topic and links included lists to their corresponding pages on libx.\n\n' +
+      original.slice(contentsOffset);
+    canonical = canonical.replace(
+      /^- \[Software Patreons\]\(https:\/\/github\.com\/uraimo\/awesome-software-patreons#readme\).*\n/m,
+      ''
+    );
     exclusion = {
       sourceId: source.sourceId,
       commitSha: source.commitSha,
@@ -74,7 +81,8 @@ for (const source of included) {
   );
   if (/^#{1,6}\s+Check out my projects\s*$/im.test(original)) {
     exclusions.exclusions = exclusions.exclusions.filter(
-      (entry) => entry.sourceId !== source.sourceId || entry.headingOrRange !== 'Check out my projects'
+      (entry) =>
+        entry.sourceId !== source.sourceId || entry.headingOrRange !== 'Check out my projects'
     );
     exclusions.exclusions.push({
       sourceId: source.sourceId,

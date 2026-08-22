@@ -90,8 +90,8 @@ _SAP Commerceに関する技術記事。_
 
 _SAP Commerceに関する最近のニュース。_
 
-- [Discover 14 Leading SAP Hybris Experts](https://echoglobal.tech/technologies/hybris/) - 主要なSAP Hybris専門家14人を紹介。
-- [openSAP courses Migration](https://learning.sap.com/opensap-course-migration) - openSAPコースの移行情報。
+- [Discover 14 Leading SAP Hybris Experts](https://echoglobal.tech/technologies/hybris/)
+- [openSAP courses Migration](https://learning.sap.com/opensap-course-migration)
 
 ### ブログ
 

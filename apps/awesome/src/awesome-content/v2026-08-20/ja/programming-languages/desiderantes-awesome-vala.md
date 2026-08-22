@@ -1,6 +1,6 @@
 ---
 title: "desiderantes/awesome-vala"
-description: "desiderantes/awesome-vala の翻訳初稿（未検査）"
+description: "desiderantes/awesome-vala の日本語訳（人手レビュー前）"
 licenseSource: "github-desiderantes-awesome-vala-readme-md"
 ---
 
