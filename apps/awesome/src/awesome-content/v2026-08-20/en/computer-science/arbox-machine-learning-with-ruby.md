@@ -4,7 +4,7 @@ description: "Canonical snapshot of arbox/machine-learning-with-ruby"
 licenseSource: "github-arbox-machine-learning-with-ruby-readme-md"
 ---
 
-<img title="Awesome Machine Learning with Ruby" alt="Awesome Machine Learning with Ruby" src="header.png" align="center">
+<img title="Awesome Machine Learning with Ruby" alt="Awesome Machine Learning with Ruby" src="https://raw.githubusercontent.com/arbox/machine-learning-with-ruby/c8c2503b579653487516920a8b955591fbc3336f/header.png" align="center">
 
 [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome#readme) [![Support Me](https://img.shields.io/badge/%F0%9F%92%97-Support%20Me-blue.svg?style=flat-square)](https://www.patreon.com/arbox)
 
@@ -12,7 +12,7 @@ licenseSource: "github-arbox-machine-learning-with-ruby-readme-md"
  [RubyDataScience](https://github.com/arbox/data-science-with-ruby) |
  [RubyInterop](https://github.com/arbox/ruby-interoperability)]
 
-# Awesome Machine Learning with Ruby [<img src="ruby.jpg" align="left" width="30px" height="30px" />][ruby]
+# Awesome Machine Learning with Ruby [<img src="https://raw.githubusercontent.com/arbox/machine-learning-with-ruby/c8c2503b579653487516920a8b955591fbc3336f/ruby.jpg" align="left" width="30px" height="30px" />][ruby]
 
 > Curated List of Ruby Machine Learning Links and Resources
 
@@ -137,7 +137,7 @@ programming languages with appropriate bindings for Ruby.
   using [PMML](http://dmg.org/pmml/v4-3/GeneralStructure.html) and an alternative backend using [GSL][gsl].
 - [ruby-openai](https://github.com/alexrudall/ruby-openai) - OpenAI API wrapper
 - [Instruct](https://github.com/instruct-rb/instruct) - Inspired by Guidance; weave code, prompts and completions together to instruct LLMs to do what you want.
-  
+
 ### Neural networks
 
 - [neural-net-ruby](https://github.com/gbuesing/neural-net-ruby) -

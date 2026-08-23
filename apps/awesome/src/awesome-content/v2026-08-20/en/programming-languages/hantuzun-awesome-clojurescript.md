@@ -181,8 +181,8 @@ licenseSource: "github-hantuzun-awesome-clojurescript-readme-md"
 ### [React.js](https://facebook.github.io/react/) Interface
 - [Brutha](https://github.com/weavejester/brutha) – A simple and functional ClojureScript interface to React.
 - [cljsx](https://github.com/peterhudec/cljsx) – [JSX](https://reactjs.org/docs/introducing-jsx.html) for Clojure and ClojureScript, also works with [Inferno](https://infernojs.org), [Nerv](https://nerv.aotu.io/), [Preact](https://preactjs.com/), [Snabbdome](https://github.com/snabbdom/snabbdom) and others.
-- [Helix](https://github.com/lilactown/helix) – A simple, easy to use library for React development in ClojureScript with very few semantics on top of React. 
-- [hx](https://github.com/Lokeh/hx) – Another simple, easy to use library for React development in ClojureScript. 
+- [Helix](https://github.com/lilactown/helix) – A simple, easy to use library for React development in ClojureScript with very few semantics on top of React.
+- [hx](https://github.com/Lokeh/hx) – Another simple, easy to use library for React development in ClojureScript.
 - [Om](https://github.com/omcljs/om) – A powerful interface to React, makes use of its object oriented structures.
 - [Quiescent](https://github.com/levand/quiescent) – It favors functional style, fully stateless.
 - [re-com](https://github.com/Day8/re-com) – A ClojureScript library of reusable components for Reagent.
@@ -211,7 +211,7 @@ licenseSource: "github-hantuzun-awesome-clojurescript-readme-md"
 - [mount](https://github.com/tolitius/mount) – A beautifl idiomatic state management library.
 - [plato](https://github.com/eneroth/plato) – Incrementally persists atom state to Local Storage in ClojureScript.
 - [storage-atom](https://github.com/alandipert/storage-atom) – ClojureScript atoms backed by HTML5 web storage.
-- [Tuck](https://github.com/tatut/tuck) – A micro framework for building Reagent apps that have a clean separation of view code and event processing code. 
+- [Tuck](https://github.com/tatut/tuck) – A micro framework for building Reagent apps that have a clean separation of view code and event processing code.
 - [Waltz](https://github.com/ibdknox/waltz) – A ClojureScript library that helps manage state in client-side applications using non-deterministic finite state machines.
 
 

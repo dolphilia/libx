@@ -16,7 +16,7 @@ licenseSource: "github-JoseDeFreitas-awesome-youtubers-readme-md"
 	<br />
 	<div>
 		<a href="https://github.com/JoseDeFreitas/awesome-youtubers">
-			<img width="428" src="logo.svg" alt="Awesome YouTubers logo">
+			<img width="428" src="https://raw.githubusercontent.com/JoseDeFreitas/awesome-youtubers/6fa838b487c9b657daa6f31845ab74e7ee287a59/logo.svg" alt="Awesome YouTubers logo">
 		</a>
 	</div>
 </div>
@@ -1497,7 +1497,7 @@ Featured playlists: `Data Structures and Algorithms`, `Coding Interview Question
 
 [**Back To Back SWE**](https://www.youtube.com/c/BackToBackSWE) \
 Content about: Leetcode, Software Engineering Interview \
-Featured playlists: `Tree, Binary Trees & Binary Search Tree`, `Sorting, Searching & Heaps`, `Dynamic Programming, Recursion & Backtracking`, `Graphs, Greedy Algorithms & Other`. 
+Featured playlists: `Tree, Binary Trees & Binary Search Tree`, `Sorting, Searching & Heaps`, `Dynamic Programming, Recursion & Backtracking`, `Graphs, Greedy Algorithms & Other`.
 <br />
 
 [<img align="left" height="94px" width="94px" alt="Channel's avatar" src="https://yt3.ggpht.com/ytc/AMLnZu8aa8BR8qGCyjKSHpnt5qCFReOEZ_xTtK3hqknPgA=s176-c-k-c0x00ffffff-no-rj"/>](https://www.youtube.com/c/Errichto)
@@ -1753,5 +1753,5 @@ Featured playlists: `Freelancing tips`, `LinkFree Videos`, `Git must know comman
 	<summary>Credits</summary>
 	<sub>Note that <strong>this is not</strong> a promotional list of any kind.</sub>
 	<sub>The list style is heavily inspired by <a href="https://github.com/mhxion/awesome-discord-communities">awesome-discord-communities</a>, created by <a href="https://github.com/mhxion">mhxion</a>.
-	The <a href="/logo.svg">awesome-youtubers logo</a> is inspired by the <a href="https://github.com/sindresorhus/awesome/blob/main/media/logo.svg">awesome logo</a> and the <a href="https://github.com/sindresorhus/awesome-nodejs/blob/main/media/logo.svg">awesome-nodejs logo</a>. The two play icons were created following the play button of the <a href="https://lh3.googleusercontent.com/z6Sl4j9zQ88oUKNy0G3PAMiVwy8DzQLh_ygyvBXv0zVNUZ_wQPN_n7EAR2By3dhoUpX7kTpaHjRPni1MHwKpaBJbpNqdEsHZsH4q">YouTube logo</a>. It's just a representation, I'm not using the YouTube logo itself.</sub>
+	The <a href="https://github.com/JoseDeFreitas/awesome-youtubers/blob/6fa838b487c9b657daa6f31845ab74e7ee287a59/logo.svg">awesome-youtubers logo</a> is inspired by the <a href="https://github.com/sindresorhus/awesome/blob/main/media/logo.svg">awesome logo</a> and the <a href="https://github.com/sindresorhus/awesome-nodejs/blob/main/media/logo.svg">awesome-nodejs logo</a>. The two play icons were created following the play button of the <a href="https://lh3.googleusercontent.com/z6Sl4j9zQ88oUKNy0G3PAMiVwy8DzQLh_ygyvBXv0zVNUZ_wQPN_n7EAR2By3dhoUpX7kTpaHjRPni1MHwKpaBJbpNqdEsHZsH4q">YouTube logo</a>. It's just a representation, I'm not using the YouTube logo itself.</sub>
 </details>

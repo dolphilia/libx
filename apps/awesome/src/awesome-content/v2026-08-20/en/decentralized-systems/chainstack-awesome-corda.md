@@ -6,7 +6,7 @@ licenseSource: "github-chainstack-awesome-corda-readme-md"
 
 
 <div align="center">
-  <a href="https://www.corda.net/"><img width="250px" src="./project_logo.png">
+  <a href="https://www.corda.net/"><img width="250px" src="https://raw.githubusercontent.com/chainstack/awesome-corda/7fad26c618a1676dc40d3409bdf682d7e18f3828/project_logo.png">
   </a><br />
   <a href="https://www.corda.net/">Corda</a> is an open source blockchain project, designed for business from the start.
   <br />Corda allows you to build interoperable blockchain networks that transact in strict privacy. Corda's smart contract technology allows businesses to transact directly, with value.
@@ -53,7 +53,7 @@ Pull requests are welcome!
 - [Corbeans](https://manosbatsis.github.io/corbeans) - Corda integration for Spring Boot.
 - [Cordage](https://github.com/LayerXcom/cordage) - Provide modules that make the interoperability possible between Corda and other blockchains without further trusted third party.
 - [Cordalo](https://github.com/cordalo-ch) - Provide Corda frameworks to speed up your development in the decentralized space.
-- [Corda Lean State](https://manosbatsis.github.io/corda-lean-state) - Generate Corda Contract and Persistent states from a simplified interface. 
+- [Corda Lean State](https://manosbatsis.github.io/corda-lean-state) - Generate Corda Contract and Persistent states from a simplified interface.
 - [Cordentity](https://github.com/hyperledger-labs/cordentity) - Integrate [Hyperledger Indy](https://www.hyperledger.org/projects/hyperledger-indy) capabilities into Corda.
 - [DAML for Corda](https://github.com/chainstack/awesome-corda) - DAML smart contracts for Corda.
 - [DemoBench](https://www.corda.net/demobench/) - A standalone desktop app to configure and launch local Corda nodes.
@@ -68,7 +68,7 @@ Pull requests are welcome!
 - [VS Code Corda extension](https://github.com/corda/vscode-corda) - VS Code tools for developing CorDapps on the Corda platform.
 - [Web3j integration for Corda](http://corda.web3j.io/) - A lightweight client library for working with CorDapps.
 - [XTS Fountain](https://cordite.foundation/) - Mint XTS tokens and send them to a token account on a Corda node.
-- [Splunk App for Corda](https://github.com/splunkdlt/splunk-app-for-corda) - Splunk official integration app for Corda monitoring. 
+- [Splunk App for Corda](https://github.com/splunkdlt/splunk-app-for-corda) - Splunk official integration app for Corda monitoring.
 
 ## Tutorials
 

@@ -178,7 +178,7 @@ Modern autopilot software require STM32 based boards with F4/F7 chip generation 
 * [Paparazzi UAV](https://github.com/paparazzi/paparazzi) - ?.
 * [LibrePilot](https://github.com/librepilot/LibrePilot) - Stall since 2018.
 * [madflight](https://github.com/qqqlab/madflight) - For Arduino based target boards, different sensors supported, 2024
-* [The Cube Autopilot](https://github.com/proficnc/The-Cube) - FC hardware like the Pixhawk 2, 
+* [The Cube Autopilot](https://github.com/proficnc/The-Cube) - FC hardware like the Pixhawk 2,
 * [Risc V Powering a 3D Printed Drone](https://www.youtube.com/watch?v=TJCeLOiP7lU) - RISCV cpu experiments on DIY quadcopter.
 
 ## RC Transmitters & Handcontroller 🎮
@@ -300,7 +300,7 @@ Sensor values and control information are shared via common serial protocols whi
 * [UAVLogViewer](https://github.com/ardupilot/uavlogviewer) - Web application for Ardupilot logs.
 * [OSD-subtitles](https://github.com/kristjanbjarni/osd-subtitles) - Render Blackbox logs to OSD as subtitle for synconous plaback with video file.
 * [Dashware](http://www.dashware.net/dashware-download/) - Closed Source OSD rendering for blackbox logs.
-* [PID-Analyzer](https://github.com/Plasmatree/PID-Analyzer) - Read blackbox and tune PID control variables. 
+* [PID-Analyzer](https://github.com/Plasmatree/PID-Analyzer) - Read blackbox and tune PID control variables.
 * [openXsensor](https://github.com/openXsensor/openXsensor) - Convert and alter telemetry protocols.
 * [OpenLog](https://github.com/sparkfun/OpenLog) - With [blackbox](https://github.com/thenickdude/blackbox/) firmware for blackbox data recorder (today usually part of main FC).
 

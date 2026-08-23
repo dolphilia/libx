@@ -7,7 +7,7 @@ licenseSource: "github-agucova-awesome-esp-readme-md"
 # Awesome ESP [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://github.com/agucova/awesome-esp/blob/d6f4c9ba5fc4cddb54103aadd5dc88ef4c3f39dc/code-of-conduct.md)
 A curated list of awesome ESP8266/32 projects and code.
 
-<a href="http://espressif.com/en/products/hardware/esp8266ex/overview"><img src="img/esp8266.jpg" alt="ESP8266" align="left" style="margin-right: 25px" height=150></a>
+<a href="http://espressif.com/en/products/hardware/esp8266ex/overview"><img src="https://raw.githubusercontent.com/agucova/awesome-esp/d6f4c9ba5fc4cddb54103aadd5dc88ef4c3f39dc/img/esp8266.jpg" alt="ESP8266" align="left" style="margin-right: 25px" height=150></a>
 <a href="http://espressif.com/en/products/hardware/esp32/overview"><img src="https://pbs.twimg.com/profile_images/863510403120222208/rjVOiTe3.jpg" alt="ESP32" align="left" style="margin-right: 25px" height=150></a>
 > Both the [ESP8266](http://espressif.com/en/products/hardware/esp8266ex/overview) and the [ESP32](http://espressif.com/en/products/hardware/esp32/overview) are low-cost Wi-Fi microchips with full TCP/IP stack and microcontroller capabilities produced by the Shanghai-based manufacturer Espressif Systems.
 > <br/>

@@ -240,7 +240,7 @@ Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
 [Offline Reading List](https://chrisruppel.com/blog/service-worker-offline-content-list/)
 (Chris Ruppel - Oct 5, 2016)
 
-[Almost any web page can work offline](https://github.com/homam/service-workers-example) 
+[Almost any web page can work offline](https://github.com/homam/service-workers-example)
 (Homam Hosseini - Sep 24, 2016)
 
 [Enabling Offline First Experiences on the Web with Service Workers](https://medium.com/offline-camp/enabling-offline-first-experiences-on-the-web-with-service-workers-e4bc8c773dae#.c6ui0i9cs)
@@ -944,7 +944,7 @@ See the [Mozilla MakeDrive Wiki page](https://wiki.mozilla.org/Webmaker/MakeDriv
 ## Showcase
 [Minutes.io](https://minutes.io): Awesome offline first minute taking app built with [Hoodie](http://hood.ie/).
 
-[2048](https://gabrielecirulli.github.io/2048/): The original 2048 is a great game to pin to your homescreen. 
+[2048](https://gabrielecirulli.github.io/2048/): The original 2048 is a great game to pin to your homescreen.
 
 [hospitalrun.io](http://hospitalrun.io/): Open source software for developing world hospitals.
 

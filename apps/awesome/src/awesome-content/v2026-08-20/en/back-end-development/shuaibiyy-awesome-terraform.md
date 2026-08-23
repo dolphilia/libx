@@ -4,7 +4,7 @@ description: "Canonical snapshot of shuaibiyy/awesome-terraform"
 licenseSource: "github-shuaibiyy-awesome-terraform-readme-md"
 ---
 
-# Awesome Terraform [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) 
+# Awesome Terraform [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 [![Link Checker](https://github.com/shuaibiyy/awesome-tf/actions/workflows/link-checker.yml/badge.svg)](https://github.com/shuaibiyy/awesome-tf/actions/workflows/link-checker.yml)
 [![Misspell Check](https://github.com/shuaibiyy/awesome-tf/actions/workflows/misspell.yml/badge.svg)](https://github.com/shuaibiyy/awesome-tf/actions/workflows/misspell.yml)
@@ -16,7 +16,7 @@ licenseSource: "github-shuaibiyy-awesome-terraform-readme-md"
 
 Terraform enables you to safely and predictably create, change, and improve production infrastructure. It is an open source tool that codifies APIs into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.
 
-## Contents 
+## Contents
 
 - [Legend](#legend)
 - [Official Resources](#official-resources)
@@ -74,7 +74,7 @@ Terraform enables you to safely and predictably create, change, and improve prod
 - [Terraform Bug Tracker](https://github.com/hashicorp/terraform/issues)
 - [Terraform Cheatsheet](https://vivid-badger-c30.notion.site/Terraform-Cheatsheet-352d7b505fb980618d5de73aa086d1d4)
 - [Terraform Community Modules](https://github.com/terraform-community-modules)
-- [Terraform Twitter Community](https://twitter.com/i/communities/1501688565884928007) 
+- [Terraform Twitter Community](https://twitter.com/i/communities/1501688565884928007)
 - [Terraform Discuss](https://discuss.hashicorp.com/c/terraform-core/27)
 - [Terraform Provider/Module Registry](https://registry.terraform.io/)
 - [Terraform PDF Doc](https://github.com/dohsimpson/terraform-doc-pdf) :skull:
@@ -259,7 +259,7 @@ For more Community Modules not listed here please see the [Terraform Module Regi
 - [philips-labs/terraform-registry](https://github.com/philips-labs/terraform-registry) - Terraform registry to serve arbitrary Terraform provider releases hosted on Github
 - [tapir](https://github.com/PacoVK/tapir) - Private Terraform Registry.
 - [terraform-simple-registry](https://github.com/apparentlymart/terraform-simple-registry) - Simple implementation of the Terraform registry protocols.
-- [terramantle.dev](https://terramantle.dev) - A registry that focuses on module & state insights, tackling dependency management 
+- [terramantle.dev](https://terramantle.dev) - A registry that focuses on module & state insights, tackling dependency management
 - [Terrareg](https://github.com/matthewjohn/terrareg) - Terraform module registry.
 - [terustry](https://github.com/veepee-oss/terustry) - Open Source terraform provider registry acting as a proxy for gitlab or github releases.
 - [terralist](https://github.com/terralist/terralist) - Terraform Private Registry for modules and providers manageable from a REST API.

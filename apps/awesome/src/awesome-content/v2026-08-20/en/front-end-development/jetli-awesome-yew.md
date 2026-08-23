@@ -6,7 +6,7 @@ licenseSource: "github-jetli-awesome-yew-readme-md"
 
 # Awesome Yew [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="logo.svg" align="right" width="100" title="Awesome Yew">](https://github.com/yewstack/yew)
+[<img src="https://raw.githubusercontent.com/jetli/awesome-yew/33d03a7b3eaf0b8feed3066fbd5c82d4caca06e4/logo.svg" align="right" width="100" title="Awesome Yew">](https://github.com/yewstack/yew)
 
 > A curated list of awesome things related to Yew.
 

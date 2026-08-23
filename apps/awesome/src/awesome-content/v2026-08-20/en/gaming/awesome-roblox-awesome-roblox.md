@@ -5,7 +5,7 @@ licenseSource: "github-awesome-roblox-awesome-roblox-readme-md"
 ---
 
 <h1 align="center">
-  <img src="media/logo.png" alt="Awesome Roblox">
+  <img src="https://raw.githubusercontent.com/awesome-roblox/awesome-roblox/37530bce381e82a40ad6f04b0b866a1755bb2970/media/logo.png" alt="Awesome Roblox">
 
   [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 </h1>

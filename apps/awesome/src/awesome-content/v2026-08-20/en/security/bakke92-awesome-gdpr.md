@@ -6,7 +6,7 @@ licenseSource: "github-bakke92-awesome-gdpr-readme-md"
 
 # Awesome GDPR [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 
-[<img src="GDPR.png" align="right" width="300">](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679)
+[<img src="https://raw.githubusercontent.com/bakke92/awesome-gdpr/7106a6aca1654f77c898b1878dd85e45b84fb460/GDPR.png" align="right" width="300">](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679)
 
 The General Data Protection Regulation (GDPR) is a regulation on data protection and privacy for all individuals within the European Union and the European Economic Area. The regulation has increased the focus on privacy in companies and strengthened the data subjects influence.
 
@@ -30,13 +30,13 @@ The General Data Protection Regulation (GDPR) is a regulation on data protection
 * [GDPR-info](https://gdpr-info.eu/) - GDPR linked to relevant articles and section in the preamble (Non-official site).
 * [GDPR-expert](https://www.gdpr-expert.com/home.html?mid=5) - Compare the Regulation, Directive and National legislation. Linked to relevant section in preamble (Non-official site).
 * [GDPRhub -> GDPR Articles](https://gdprhub.eu/index.php?title=Category:GDPR_Articles) - GDPR articles included commentary.
-  
+
 ## Guidelines
 * [Guidelines](https://edpb.europa.eu/our-work-tools/general-guidance/gdpr-guidelines-recommendations-best-practices_en) & [Opinions](https://edpb.europa.eu/our-work-tools/consistency-findings/opinions_en) from the European Data Protection Board (EDPB).
 * [ICO: Guide to GDPR](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/)
 * [Handbook on European data protection law ](https://publications.europa.eu/en/publication-detail/-/publication/5b0cfa83-63f3-11e8-ab9c-01aa75ed71a1) - Handbook issued by EU.
 * [Factsheets](https://edps.europa.eu/data-protection/our-work/our-work-by-type/factsheets_en) - Factsheets from EU Data Protection Supervisor.
-  
+
 ## Rights of the data subject (art. 12 - 23)
 * [Open source privacy notice template (Juro)](https://github.com/juro-privacy/free-privacy-notice)
 
@@ -71,7 +71,7 @@ The General Data Protection Regulation (GDPR) is a regulation on data protection
 
 ## Tools
 * [Website Evidence Collector (WEC)](https://www.edps.europa.eu/edps-inspection-software_en) - EDPS Inspection Software.
-* [Data protection around the world](https://www.cnil.fr/en/data-protection-around-the-world) - (CNIL) Map of the level of data protection in each country. 
+* [Data protection around the world](https://www.cnil.fr/en/data-protection-around-the-world) - (CNIL) Map of the level of data protection in each country.
 * [Data Protection Laws of the world](https://www.dlapiperdataprotection.com/) - (DLA Piper) Compare data protection laws around the world.
 * [Comparison of Consent Management Platforms](https://github.com/JermainKroot/best-consent-management-platforms) - Hands-on comparison of 9 platforms.
 
@@ -80,7 +80,7 @@ The General Data Protection Regulation (GDPR) is a regulation on data protection
 * [European Data Protection Supervisor](https://edps.europa.eu/) - EDPS.
 * [European Union Agency for Network and Information Security (ENISA)](https://www.enisa.europa.eu/topics/data-protection) - ENISA.
 * [List of Data Protection Authorities](https://pdpecho.com/the-list/)
-  
+
 ## Organisations / Projects
 * [Electronic Frontier Foundation](https://www.eff.org/) - Nonprofit defending digital privacy, free speech, and innovation.
 * [International Association of Privacy Professionals](https://iapp.org/) - A resource for privacy professionals.
@@ -99,7 +99,7 @@ The General Data Protection Regulation (GDPR) is a regulation on data protection
 * [Freedom To Tinker](https://freedom-to-tinker.com/) - Blog from Princeton's CITP, a research center that studies digital technologies in public life.
 * [pdpEcho](https://pdpecho.com/) - All about personal data protection and privacy, by Gabriela Zanfir-Fortuna.
 * [GDPRhub](https://gdprhub.eu/) - Free and open wiki that allows anyone to find and share GDPR insights across Europe.
-    
+
 ## Related
 * [Privacy Respecting](https://github.com/nikitavoloboev/privacy-respecting)
 * [Awesome: Security](https://github.com/sindresorhus/awesome#security)

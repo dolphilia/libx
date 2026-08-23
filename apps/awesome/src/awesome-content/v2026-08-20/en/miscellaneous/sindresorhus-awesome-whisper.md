@@ -8,7 +8,7 @@ licenseSource: "github-sindresorhus-awesome-whisper-readme-md"
 	<br>
 	<br>
 	<div>
-		<img src="media/logo.png" alt="Awesome Whisper">
+		<img src="https://raw.githubusercontent.com/sindresorhus/awesome-whisper/9fb0f085de291ab3c89034783ab652d33cf70daf/media/logo.png" alt="Awesome Whisper">
 		<br>
 	</div>
 	<br>

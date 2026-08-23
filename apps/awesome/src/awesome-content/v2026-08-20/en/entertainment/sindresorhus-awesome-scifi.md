@@ -100,7 +100,7 @@ Books:
   <summary>Description</summary>
 
   > Barsoom is planet Mars from American Edgar Rice Burroughs. First serialized as Under the Moons of Mars in 1912, published as A Princess of Mars in 1917. Dying Mars was based on outdated scientific ideas of canals. The savage, frontier world has honor, noble sacrifice and constant struggle, where martial prowess is paramount and races fight over dwindling resources.
-  
+
 </details>
 
 #### [Bobiverse Series](https://www.goodreads.com/book/show/32109569-we-are-legion-we-are-bob) (2016) _by [Dennis E. Taylor](https://www.goodreads.com/author/show/12130438.Dennis_E_Taylor)_ [4.35]
@@ -358,7 +358,7 @@ Books:
 
 ##### [The Three Body Problem](https://www.goodreads.com/book/show/20518872-the-three-body-problem) (2014) [4.0]
 
-This book is not just filled to the brim with interesting and novel ideas about technology and civilization, it also offers some really great insights into China and its recent history. 
+This book is not just filled to the brim with interesting and novel ideas about technology and civilization, it also offers some really great insights into China and its recent history.
 
 <details>
   <summary>Description</summary>
@@ -848,7 +848,7 @@ This is a fun read; Weir manages to write an evocative techno-thriller without h
   > _Apollo 13_ meets _Cast Away_ in this grippingly detailed, brilliantly ingenious man-vs-nature survival thriller, set on the surface of Mars. Six days ago, astronaut Mark Watney became one of the first men to walk on the surface of Mars. Now, he’s sure he’ll be the first man to die there.
   >
   > It started with the dust storm that holed his suit and nearly killed him, and that forced his crew to leave him behind, sure he was already dead. Now he’s stranded millions of miles from the nearest human being, with no way to even signal Earth that he’s alive—and even if he could get word out, his food would be gone years before a rescue mission could arrive. Chances are, though, he won’t have time to starve to death. The damaged machinery, unforgiving environment, or plain-old “human error” are much more likely to get him first.
-  
+
   > But Mark isn’t ready to give up yet. Drawing on his ingenuity, his engineering skills—and a relentless, dogged refusal to quit—he steadfastly confronts one seemingly insurmountable obstacle after the next. But will his resourcefulness be enough to overcome the impossible odds against him?
 </details>
 
@@ -1017,7 +1017,7 @@ A charming, fast-paced space adventure following the Stone family as they journe
 
 <details>
 	<summary>Description</summary>
-	
+
   > It doesn’t seem likely for twins to have the same middle name. Even so, it’s clear that Castor and Pollux Stone both have "Trouble" written in that spot on their birth certificates. Of course, anyone who’s met their grandmother Hazel would know that they came by it honestly…
   > Join the Stone twins as they connive, cajole, and bamboozle their way across the Solar System in the company of the most high-spirited and hilarious family in all of science fiction. This light-hearted tale has some of Heinlein’s sassiest dialogue (not to mention the famous Flat Cats incident!). Oddly enough, it’s also a true example of real family values–for when you’re a Stone, your family is your highest priority.
 </details>
@@ -1338,7 +1338,7 @@ This has a particularly arid and inspired view of humanity after a nuclear holoc
   > Winner of the 1961 Hugo Award for Best Novel and widely considered one of the most accomplished, powerful, and enduring classics of modern speculative fiction, Walter M. Miller, Jr.’s _A Canticle for Leibowitz_ is a true landmark of twentieth-century literature—a chilling and still provocative look at a post-apocalyptic future.
   >
   > In a nightmarish ruined world slowly awakening to the light after sleeping in darkness, the infant rediscoveries of science are secretly nourished by cloistered monks dedicated to the study and preservation of the relics and writings of the blessed Saint Isaac Leibowitz. From here the story spans centuries of ignorance, violence, and barbarism, viewing through a sharp, satirical eye the relentless progression of a human race damned by its inherent humanness to recelebrate its grand foibles and repeat its grievous mistakes. Seriously funny, stunning, and tragic, eternally fresh, imaginative, and altogether remarkable, _A Canticle for Leibowitz_ retains its ability to enthrall and amaze. It is now, as it always has been, a masterpiece.
-  
+
 </details>
 
 #### [Borne](https://www.goodreads.com/book/show/31451186-borne) (2017) _by [Jeff VanderMeer](https://en.wikipedia.org/wiki/Jeff_VanderMeer)_ [4.0]
@@ -1533,18 +1533,18 @@ So, you’re able to share in Ender’s cleverness, too. That’s what makes thi
   > Is Ender the general Earth needs? But Ender is not the only result of the genetic experiments. The war with the Buggers has been raging for a hundred years, and the quest for the perfect general has been underway for almost as long. Ender’s two older siblings are every bit as unusual as he is, but in very different ways. Between the three of them lie the abilities to remake a world. If, that is, the world survives.
 </details>
 
-#### [Expeditionary Force](https://www.goodreads.com/series/185650-expeditionary-force) (2016-) _by [Craig Alanson](https://en.wikipedia.org/wiki/Craig_Alanson)_ [4.38] 
+#### [Expeditionary Force](https://www.goodreads.com/series/185650-expeditionary-force) (2016-) _by [Craig Alanson](https://en.wikipedia.org/wiki/Craig_Alanson)_ [4.38]
 
 The Expeditionary Force is a sprawling science-fiction saga that blends military sci-fi, space opera, and irreverent humor into a fast-paced, character-driven adventure. Centered on U.S. Army Sergeant Joe Bishop and his unlikely partnership with an all-powerful, arrogant artificial intelligence nicknamed Skippy the Magnificent, the series takes readers from a sudden alien invasion of Earth into the depths of interstellar politics and warfare. While it is corny at times, and there's definitely some deus ex machina going on, the 19 Books, short novel _Trouble on Paradise_, the Audio Only _Homefront_ and the two books in the _Mavericks_ Series create an absolutely gripping story for which I drop everything to listen to the next installment when it releases. The Audio book series spoken by R.C. Bray is just masterfully done as well. [@Anuril](https://github.com/Anuril)
 
 <details>
   <summary>Description</summary>
 
-  > At the outset in Columbus Day, humanity is blindsided when the Ruhar, a fur-covered alien species, devastate Earth in a strike that pushes civilization back toward pre-industrial levels. In the chaos, Bishop is swept up into the fledgling United Nations Expeditionary Force, a human contingent drafted into an intergalactic conflict between the Ruhar and the reptilian Kristang. Against all odds—and armed with little more than grit, military training, and moments of baffling luck—Bishop and a small band of soldiers ally with the Kristang, discovering that humans are hopelessly outclassed in firepower and technology. [Source](https://www.terranceacrow.com/posts/expeditionary-force-book-review/) 
+  > At the outset in Columbus Day, humanity is blindsided when the Ruhar, a fur-covered alien species, devastate Earth in a strike that pushes civilization back toward pre-industrial levels. In the chaos, Bishop is swept up into the fledgling United Nations Expeditionary Force, a human contingent drafted into an intergalactic conflict between the Ruhar and the reptilian Kristang. Against all odds—and armed with little more than grit, military training, and moments of baffling luck—Bishop and a small band of soldiers ally with the Kristang, discovering that humans are hopelessly outclassed in firepower and technology. [Source](https://www.terranceacrow.com/posts/expeditionary-force-book-review/)
 
 </details>
 
-Books: 
+Books:
 - Columbus Day
 - SpecOps
 - Paradise
@@ -1656,7 +1656,7 @@ _Novels which draw from sci-fi, thrillers, spying, action and wars. Include lots
   <summary>Description</summary>
 
   > Already an underground sensation, a high-tech thriller for the wireless age that explores the unthinkable consequences of a computer program running without human control—a daemon—designed to dismantle society and bring about a new world order.
-  
+
   > Technology controls almost everything in our modern-day world, from remote entry on our cars to access to our homes, from the flight controls of our airplanes to the movements of the entire world economy. Thousands of autonomous computer programs, or daemons, make our networked world possible, running constantly in the background of our lives, trafficking e-mail, transferring money, and monitoring power grids. For the most part, daemons are benign, but the same can’t always be said for the people who design them.
   >
   > Matthew Sobol was a legendary computer game designer—the architect behind half-a-dozen popular online games. His premature death depressed both gamers and his company’s stock price. But Sobol’s fans aren’t the only ones to note his passing. When his obituary is posted online, a previously dormant daemon activates, initiating a chain of events intended to unravel the fabric of our hyper-efficient, interconnected world. With Sobol’s secrets buried along with him, and as new layers of his daemon are unleashed at every turn, it’s up to an unlikely alliance to decipher his intricate plans and wrest the world from the grasp of a nameless, faceless enemy—or learn to live in a society in which we are no longer in control…
@@ -1978,7 +1978,7 @@ Hard-as-nails science fiction, but wonderfully fresh and imaginative (especially
   <summary>Description</summary>
 
   > _Axiomatic_ is a collection of Greg Egan’s short stories that appeared in various science fiction magazines (mostly _Interzone_ and _Asimov’s_) between 1989 and 1992. Like most of Egan’s work, the stories focus on science and ideas, sometimes at the expense of the writing. But although Egan may lack a certain stylistic flair, he more than makes up for it with his wonderful visions of the future. Some of the more interesting stories include _Into Darkness_, the tale of a rescue worker whose territory is a runaway wormhole, and the title story _Axiomatic_, which is about a man looking to find meaning in the senseless death of his wife.
-  
+
   > Contents: _The Infinite Assassin_ (1991), _The Hundred Light-Year Diary_ (1992), _Eugene_ (1990), _The Caress_ (1990), _Blood Sisters_ (1991), _Axiomatic_ (1990), _The Safe-Deposit Box_ (1990), _Seeing_ (1995), _A Kidnapping_ (1995), _Learning to Be Me_ (1990), _The Moat_ (1991), _The Walk_ (1992), _The Cutie_ (1989), _Into Darkness_ (1992), _Appropriate Love_ (1991), _The Moral Virologist_ (1990), _Closer_ (1992), _Unstable Orbits in the Space of Lies_ (1992)
 </details>
 
@@ -2016,7 +2016,7 @@ You will never think about ants the same way again. - [@uraimo](https://github.c
   <summary>Description</summary>
 
   > This is a collection of short stories from the master of space opera. Peter F. Hamilton takes us on a journey from a murder mystery in an alternative Oxford in the 1800s to a story featuring Paula Mayo, deputy director of the Intersolar Commonwealth’s Serious Crimes Directorate.
-  
+
   > Contents: _Watching Trees Grow_ (2000), _Footvote_ (2004), _If at First…_ (2007), _The Forever Kitten_ (2005), _Blessed by an Angel_ (2007), _The Demon Trap_ (2008), _Manhattan in Reverse_ (2011)
 </details>
 
@@ -2028,7 +2028,7 @@ I can't praise this book enough. _The Nine Billion Names of God_ is brilliantly 
   <summary>Description</summary>
 
   > _Of Time and Stars_ is a collection of short stories by science fiction writer Arthur C. Clarke. The stories all originally appeared in a number of different publications including the periodicals _Dude_, _The Evening Standard_, _Lilliput_, _The Magazine of Fantasy & Science Fiction_, _Future_, _New Worlds_, _Startling Stories_, _Astounding_, _Fantasy_, _King’s College Review_, _Satellite_, _Amazing Stories_, _London Evening News_, _Infinity Science Fiction_ and _Ten Story Fantasy_ as well as the anthologies _Star Science Fiction Stories No.1_ edited by Frederik Pohl and _Time to Come_ edited by August Derleth.
-  
+
   > Contents: _The Nine Billion Names of God_ (1953), _An Ape About the House_ (1962), _Green Fingers_ (1956), _Trouble with the Natives_ (1951), _Into the Comet_ (1960), _No Morning After_ (1954), _‘If I Forget Thee, Oh Earth…’_ (1951), _Who’s There?_ (1958), _All the Time in the World_ (1952), _Hide and Seek_ (1949), _Robin Hood, F.R.S._ (1956), _The Fires Within_ (1949), _The Forgotten Enemy_ (1953), _The Reluctant Orchid_ (1956), _Encounter at Dawn_ (1953), _Security Check_ (1957), _Feathered Friend_ (1957), _The Sentinel_ (1951)
 </details>
 
@@ -2040,7 +2040,7 @@ The all-too-near-future novella _Unauthorized Bread_ embodies what cyberpunk sho
   <summary>Description</summary>
 
   > Radicalized explores such issues as digital rights management, police brutality, radicalization in internet communities, and doomsday preppers. Doctorow has stated that the collection was inspired by "dealing with the stress and anxiety of being alive in the Trump era," and that the stories are not meant to be predictive, but rather allegorical.
-  
+
   > Contents: _Unauthorized Bread_ (2019), _Model Minority_ (2019), _Radicalized_ (2019), _The Masque of the Red Death_ (2019)
 </details>
 
@@ -2054,7 +2054,7 @@ What amazes me most about Ted Chiang’s stories is their _richness_—the level
   > Ted Chiang’s first published story, “_Tower of Babylon_,” won the Nebula Award in 1990. Subsequent stories have won the Asimov’s SF Magazine reader poll, a second Nebula Award, the Theodore Sturgeon Memorial Award, and the Sidewise Award for alternate history. He won the John W. Campbell Award for Best New Writer in 1992. Story for story, he is the most honored young writer in modern SF.
   >
   > What if men built a tower from Earth to Heaven—and broke through to Heaven’s other side? What if we discovered that the fundamentals of mathematics were arbitrary and inconsistent? What if there were a science of naming things that calls life into being from inanimate matter? What if exposure to an alien language forever changed our perception of time? What if all the beliefs of fundamentalist Christianity were literally true, and the sight of sinners being swallowed into fiery pits were a routine event on city streets? These are the kinds of outrageous questions posed by the stories of Ted Chiang. Stories of your life… and others.
-  
+
   > Contents: _Tower of Babylon_ (1990), _Understand_ (1991), _Division by Zero_ (1991), _Story of Your Life_ (1998), _Seventy-Two Letters_ (2000), _The Evolution of Human Science_ (2000), _Hell Is the Absence of God_ (2001), _Liking What You See: A Documentary_ (2002)
 </details>
 
@@ -2074,7 +2074,7 @@ I think of these stories often; The Death of Dr. Island won a Nebula and offers 
   <summary>Description</summary>
 
   > A superb collection of science fiction and fantasy stories, _The Island of Doctor Death and Other Stories and Other Stories_ is a book that transcends all genre definitions. The stories within are mined with depth charges, explosions of meaning and illumination that will keep you thinking and feeling long after you have finished reading.
-  
+
   > Contents: _The Island of Doctor Death and Other Stories_ (1970), _Alien Stones_ (1972), _La Befana_ (1973), _The Hero as Werwolf_ (1975), _Three Fingers_ (1976), _The Death of Dr. Island_ (1973), _Feather Tigers_ (1973), _Hour of Trust_ (1973), _Tracking Song_ (1975), _The Toy Theater_ (1971), _The Doctor of Death Island_ (1978), _Cues_ (1974), _The Eyeflash Miracles_ (1976), _Seven American Nights_ (1978)
 </details>
 
@@ -2289,7 +2289,7 @@ This is based on the Dune book by Herbert, listed above. This version is legenda
   <summary>Description</summary>
 
   > A Duke’s son leads desert warriors against the galactic emperor and his father’s evil nemesis when they assassinate his father and free their desert world from the emperor’s rule.
-  
+
 </details>
 
 #### [Edge of Tomorrow](https://www.imdb.com/title/tt1631867/) (2014) [7.9]
@@ -2579,7 +2579,7 @@ Categories: `ai`
 <details>
   <summary>Description</summary>
 
-  > When a machine that allows therapists to enter their patients’ dreams is stolen, all hell breaks loose. Only a young female therapist can stop it: Paprika. 
+  > When a machine that allows therapists to enter their patients’ dreams is stolen, all hell breaks loose. Only a young female therapist can stop it: Paprika.
 </details>
 
 #### [Possible Worlds](https://www.imdb.com/title/tt0222293/) (2000) [6.9]
@@ -2727,9 +2727,9 @@ A great watch for those who like complex movies that you probably have to watch 
 
 <details>
   <summary>Description</summary>
-	
+
   > Armed with only the word "Tenet," and fighting for the survival of the entire world, CIA operative, The Protagonist, journeys through a twilight world of international espionage on a global mission that unfolds beyond real time.
-</details>	
+</details>
 
 #### [The City of Lost Children](https://www.imdb.com/title/tt0112682/) (1995) [7.7]
 
@@ -3377,7 +3377,7 @@ Y: The Last Man is graphic novel series unlike any other I have read. The "last 
 
 Some books are also exceptional as audiobooks. Some are not. Here is a space for the former.
 
-#### [The Martian](https://www.audible.com/pd/The-Martian-Audiobook/B082BHJMFF) _by Andy Weir_, narrated by _R.C. Bray_ 
+#### [The Martian](https://www.audible.com/pd/The-Martian-Audiobook/B082BHJMFF) _by Andy Weir_, narrated by _R.C. Bray_
 
 I loved this audiobook. I am not sure if this narrator's edition is still publicly available, however. - [@RichardLitt](https://github.com/RichardLitt)
 

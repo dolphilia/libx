@@ -6,7 +6,7 @@ licenseSource: "github-vlang-awesome-v-readme-md"
 
 
 
-<p align="center"><img src="media/awesome-v-logo.svg" width="400"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/vlang/awesome-v/2ad8967fc38d71e06c30f082b3c0b3f9a6b07181/media/awesome-v-logo.svg" width="400"/></p>
 
 # Awesome V [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Discord](https://img.shields.io/discord/1527933660764831825?label=Discord&logo=discord&logoColor=white)](https://discord.gg/vlang)
 
@@ -162,7 +162,7 @@ SDL2 and SDL3 based applications importing `vlang/sdl`.
 
 ### Interpreters/Compilers
 
-- [Aixt](https://github.com/fermarsan/aixt) - Programming framework for microcontrollers based on a V-based language and written in V. 
+- [Aixt](https://github.com/fermarsan/aixt) - Programming framework for microcontrollers based on a V-based language and written in V.
 - [cotowali](https://github.com/cotowali/cotowali) - A statically typed scripting language that transpiles into POSIX sh.
 - [monkey_v](https://github.com/Delta456/monkey_v) - Implementation of [Thorsten Ball's Monkey Language](https://interpreterbook.com/) in V.
 - [papyrus-compiler](https://github.com/russo-2025/papyrus-compiler) - Open-source compiler for Bethesda's Papyrus scripting language (Skyrim SE/AE).

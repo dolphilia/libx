@@ -5,7 +5,7 @@ licenseSource: "github-Siddharth11-Colorful-readme-md"
 ---
 
 <p align="center">
-	<img src="color-palette.gif" alt="header image">
+	<img src="https://raw.githubusercontent.com/Siddharth11/Colorful/3af5997a081170eae9f745c2203a41f9fef316d1/color-palette.gif" alt="header image">
 </p>
 
 # Colorful [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)

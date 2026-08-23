@@ -73,7 +73,7 @@ licenseSource: "github-cerberauth-awesome-openid-connect-readme-md"
 - [PingFederate](https://www.pingidentity.com/en/platform/capabilities/authentication-authority/pingfederate.html) - Federation server that provides secure single sign-on, API security and provisioning for enterprise customers, partners, and employees.
 - [Pocket ID](https://github.com/pocket-id/pocket-id) - A simple OpenID Connect Provider that allows users to authenticate with their passkeys.
 - [SiteMinder](https://www.broadcom.com/products/identity/siteminder) - An IAM provided by Broadcom with OpenID Connect Provider support.
-- [SSOJet](https://ssojet.com) - A OpenID Connect based solution that seamlessly integrates enterprise SSO into your B2B SaaS. 
+- [SSOJet](https://ssojet.com) - A OpenID Connect based solution that seamlessly integrates enterprise SSO into your B2B SaaS.
 - [Scalekit](https://docs.scalekit.com/authenticate/sso/add-modular-sso/) - OpenID Connect provider for B2B applications, acting as the application's OpenID Provider (OP) for hosted enterprise SSO.
 - [Transmit Security](https://developer.transmitsecurity.com/guides/user/auth_oidc/) - A CIAM solution that supports an OpenID Connect-based integration.
 - [WSO2 Identity Server](https://wso2.com/identity-server/) - Identity Server which provides modern identity and access management capabilities that can be easily built into organization's customer experience (CX) applications.

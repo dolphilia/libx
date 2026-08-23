@@ -12,7 +12,7 @@ Electronic Engineering (EE) is the practice of understanding, designing and buil
 
 Experimenting with and building electronic circuits is also a popular hobby and many professional resources are often equally applicable to hobbyists and vice versa.
 
-This list is for websites, services, software, tools and more: everything that you think is awesome in the world of Electronic Engineering. If you have anything to add please follow the instructions in [contributing.md](https://github.com/kitspace/awesome-electronics/blob/fbecbedf01155d04f64ff686c4881bd1960d8467/contributing.md). 
+This list is for websites, services, software, tools and more: everything that you think is awesome in the world of Electronic Engineering. If you have anything to add please follow the instructions in [contributing.md](https://github.com/kitspace/awesome-electronics/blob/fbecbedf01155d04f64ff686c4881bd1960d8467/contributing.md).
 
 ## Contents
 
@@ -58,8 +58,8 @@ This list is for websites, services, software, tools and more: everything that y
 - [Udemy courses related to Electronics](https://www.udemy.com/topic/electronics/) - Top paid courses available on Udemy.
 - [Coursera courses related to Electronics](https://www.coursera.org/courses?query=electronics) - Includes some free courses that provide e-certificates on completion.
 
-### Theory 
-- [Electronics textbook](https://upload.wikimedia.org/wikipedia/commons/e/ee/Electronics.pdf) - Text covers design and function of electronic circuits and components, DC analysis, and AC analysis. 
+### Theory
+- [Electronics textbook](https://upload.wikimedia.org/wikipedia/commons/e/ee/Electronics.pdf) - Text covers design and function of electronic circuits and components, DC analysis, and AC analysis.
 - [Student Handbook](http://cbseacademic.nic.in/web_material/Curriculum/Vocational/2018/Basic_Electronics_XI.pdf) - Language used in this book easily understandable covers evolution, fundamentals, diode, rectifiers, transistors and its applications, SCR, DIAC and TRIAC.
 - [Electronics circuits and systems](http://aems.edu.sd/wp-content/uploads/2019/02/Electronics-Circuits-and-Systems-Fourth-Edition-PDFDrive.com-.pdf) - Quality free e-book covering all topics under circuits and systems, highly recommended for conceptual understanding.
 - [Lessons In Electric Circuits](https://www.ibiblio.org/kuphaldt/electricCircuits/) - Free high quality textbooks and worksheets with emphasis on theory, simulation, and the socratic method.
@@ -188,7 +188,7 @@ This list is for websites, services, software, tools and more: everything that y
 - [PartsBox](https://partsbox.io) - Web service to manage your part inventory with a nice user interface and Octopart integration.
 - [Part-DB](https://github.com/Part-DB/Part-DB) - Another open source web service for managing part inventory with a permission system and a good barcode generator.
 - [InvenTree](https://inventree.org) - Open source web service for managing part inventory with parametric search, extensive API and plugin system
-- 
+-
 ## Miscellaneous Software Projects
 - [SnapEDA](https://www.snapeda.com) - Parts library with free symbols & footprints. (Compatible with Eagle, KiCad, Altium, OrCad, Allegro, etc.)
 - [Language PCB](https://github.com/Alhadis/language-pcb) - Syntax highlighting for various PCB formats.
@@ -273,5 +273,3 @@ This list is for websites, services, software, tools and more: everything that y
  - [Complete Digital Electronics Course](https://youtube.com/playlist?list=PLww54WQ2wa5obq6IbRbIiql8oHaTUp3T_&si=I4mqjy3JUZ8xmElT) - دورة الالكترونيات الرقمية
  - [professional Electronics Design](https://youtube.com/playlist?list=PLww54WQ2wa5oKEhE_D3UVbKWwml8o8_Fu&si=BF213_MSJwSiyvIV) - دورة التصميم الالكتروني المحترف كاملة
  - [professional PCB Design](https://www.youtube.com/playlist?list=PLww54WQ2wa5pBm96kQTkqAyMXn9F4Q0i9) - دورة تصميم اللوحات المطبوعة (PCB)
-
-

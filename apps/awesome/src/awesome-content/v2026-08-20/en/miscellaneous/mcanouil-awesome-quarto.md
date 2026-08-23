@@ -10,7 +10,7 @@ licenseSource: "github-mcanouil-awesome-quarto-readme-md"
 
 
 
-# <a href="https://quarto.org" target="_blank" rel="noopener noreferrer"><img src="media/media.png" alt-text="Awesome list logo with the Quarto logo with text, which is a pair of sunglasses with below the text 'awesome' and then the Quarto logo in blue and grey blue as per Quarto's logo." width="75%"/></a></br>[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# <a href="https://quarto.org" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/mcanouil/awesome-quarto/8c6e0c56c35915e88de13eed0f73ac7e681b3f88/media/media.png" alt-text="Awesome list logo with the Quarto logo with text, which is a pair of sunglasses with below the text 'awesome' and then the Quarto logo in blue and grey blue as per Quarto's logo." width="75%"/></a></br>[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 The most up to date curated list of [Quarto®](https://quarto.org) docs, talks, tools, examples & articles the internet has to offer.
 

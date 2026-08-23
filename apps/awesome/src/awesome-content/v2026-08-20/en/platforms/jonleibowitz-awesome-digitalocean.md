@@ -10,7 +10,7 @@ licenseSource: "github-jonleibowitz-awesome-digitalocean-readme-md"
 
 > A curated list of awesome [DigitalOcean](https://www.digitalocean.com) guides, blogs, and other resources.
 
-DigitalOcean's tagline is it is a simple and robust cloud computing platform, designed for developers. With DigitalOcean you can easily spin up cloud compute and storage resources either indivdually or with a team. 
+DigitalOcean's tagline is it is a simple and robust cloud computing platform, designed for developers. With DigitalOcean you can easily spin up cloud compute and storage resources either indivdually or with a team.
 
 Contributions welcome. Add links through pull requests or create an issue to start a discussion.
 
@@ -36,7 +36,7 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 - [Projects](https://www.digitalocean.com/community/projects)
 - [Meetups](https://www.meetup.com/pro/digitalocean/)
 - [DigitalOcean Lovers](https://www.linkedin.com/groups/8876623/) - A LinkedIn group for users and lovers of DigitalOcean.
-- 
+-
 
 ## Configuration management
 

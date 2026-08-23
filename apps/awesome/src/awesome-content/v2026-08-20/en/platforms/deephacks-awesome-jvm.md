@@ -23,7 +23,7 @@ A curated list of awesome JVM low level, performance and non-framework related s
     - [Runtimes](#runtimes)
     - [Virtual Machines](#virtual-machines)
 - [Resources](#resources)
-    - [Communities](#communities)    
+    - [Communities](#communities)
     - [Documentation](#documentation)
     - [Media](#media)
     - [People](#people)
@@ -36,7 +36,7 @@ A curated list of awesome JVM low level, performance and non-framework related s
 
 * [asmtools](https://wiki.openjdk.java.net/display/CodeTools/asmtools) - Used to develop tools for the production of Java .class files.
 * [Byte Buddy](http://bytebuddy.net) - Code generation library creating Java classes at runtime without the help of a compiler.
-* [Jitescript](https://github.com/qmx/jitescript) - Bytecode generation library similar to BiteScript. 
+* [Jitescript](https://github.com/qmx/jitescript) - Bytecode generation library similar to BiteScript.
 
 ## Garbage collectors
 
@@ -134,7 +134,7 @@ A curated list of awesome JVM low level, performance and non-framework related s
 * [lwjgl3](https://github.com/LWJGL/lwjgl3) - Java library that enables cross-platform access to popular native APIs useful in the development of graphics (OpenGL), audio (OpenAL) and parallel computing (OpenCL) applications.
 * [MapDB](http://www.mapdb.org) - Collections backed by off-heap or on-disk storage.
 * [mph-table](https://github.com/indeedeng/mph-table) - Minimal Perfect Hash Tables are an immutable key/value store with efficient space utilization and fast reads.
-* [mug](https://google.github.io/mug/) - A small, zero-dep functional util library originating from Google. 
+* [mug](https://google.github.io/mug/) - A small, zero-dep functional util library originating from Google.
 * [netty-buffers](http://netty.io/wiki/using-as-a-generic-library.html#wiki-h2-1) - Memory buffer pool implementation similar to jemalloc.
 * [ObjectLayout](http://objectlayout.org) - A layout-optimized Java data structure package.
 * [ohc](https://github.com/snazy/ohc) - Java large off heap cache developed for Apache Cassandra 3.0.
@@ -197,7 +197,7 @@ A curated list of awesome JVM low level, performance and non-framework related s
 
 ## Native
 
-*Interconnecting JVM and native code* 
+*Interconnecting JVM and native code*
 
 * [hawtjni](https://github.com/fusesource/hawtjni) - A JNI code generator based on the JNI generator used in Eclipse SWT.
 * [Java Grinder](https://github.com/mikeakohn/java_grinder) - Compile Java bytecode to microcontroller assembly.
@@ -268,7 +268,7 @@ A curated list of awesome JVM low level, performance and non-framework related s
 * [async-profiler](https://github.com/jvm-profiling-tools/async-profiler) - Sampling CPU profiler for Java featuring AsyncGetCallTrace + perf_events.
 * [BTrace](https://github.com/jbachorik/btrace) - a safe, dynamic tracing tool for the Java platform.
 * [Byteman](http://byteman.jboss.org/) - tracing, monitoring and testing tool for Java
-* [bytestacks](https://github.com/cl4es/bytestacks) - Turn JVM bytecode execution into flame graphs. 
+* [bytestacks](https://github.com/cl4es/bytestacks) - Turn JVM bytecode execution into flame graphs.
 * [Chronon](http://chrononsystems.com) - Record your entire java program. Replay on any machine.
 * [GCeasy](http://gceasy.io/) - Machine learning guided Garbage collection log analysis tool. Auto-detect problems in the JVM GC logs and recommend solutions to it.
 * [GCViewer](https://github.com/chewiebug/GCViewer) - GCViewer is a tool that visualizes verbose GC output.
@@ -333,7 +333,7 @@ A curated list of awesome JVM low level, performance and non-framework related s
 * [HotSpot](http://openjdk.java.net/groups/hotspot/) - HotSpot virtual machine maintained and distributed by Oracle Corporation.
 * [IBM J9](http://www.ibm.com/developerworks/java/jdk/) - JVM developed by IBM.
 * [Eclipse OpenJ9](https://github.com/eclipse/openj9) - Eclipse OpenJ9.
-* [J2ObjC](https://github.com/google/j2objc) - Translator from Java source to Objective-C code. Keeps shared code between iOS native apps and Android native apps. 
+* [J2ObjC](https://github.com/google/j2objc) - Translator from Java source to Objective-C code. Keeps shared code between iOS native apps and Android native apps.
 * [jvm.go](https://github.com/zxh0/jvm.go) - A JVM written in Go.
 * [ParparVM](https://github.com/codenameone/CodenameOne/tree/master/vm) - An Open Source Java bytecode to C translator for iOS native development. Designed as a part of the [Codename One](https://www.codenameone.com/) WORA for mobile project.
 * [MobiDevelop's RoboVM Fork](https://github.com/MobiVM/robovm) - Ahead of time compiler for JVM bytecode targeting iOS, Mac OSX and Linux.
@@ -375,7 +375,7 @@ Machine Specification Java SE 8 Edition.
 * [hotspot-gc-dev](http://mail.openjdk.java.net/mailman/listinfo/hotspot-gc-dev) - Technical discussion about the development of the HotSpot garbage collectors.
 * [mechanical-sympathy](https://groups.google.com/forum/#!forum/mechanical-sympathy) - Discussing how to code sympathetically to and measure the underlying stack/platform so good performance can be extracted.
 * [Performance Java User's Group](https://plus.google.com/u/0/communities/107178245817384004088/) - For expert Java *developers* who want to push their systems to the next level
-* [Virtual Machine Meetup 2017](http://vmmeetup.github.io/2017/) - Venue for discussing the latest research and developments in the area of managed language execution. 
+* [Virtual Machine Meetup 2017](http://vmmeetup.github.io/2017/) - Venue for discussing the latest research and developments in the area of managed language execution.
 
 ## Media
 
@@ -458,7 +458,7 @@ Machine Specification Java SE 8 Edition.
 * [Stephen Colebourne](https://twitter.com/jodastephen) - Java Champion. Occasional blogger and speaker. Best known for Joda projects and JSR-310.
 * [Todd L. Montgomery](https://twitter.com/toddlmontgomery) - Ex-CTO, Ex-NASA researcher, network geek, messaging middleware designer.
 * [Stéphane Maldini](https://twitter.com/smaldini) - Project Reactor Lead @Pivotal.
-* [Stuart Marks](https://twitter.com/stuartmarks) - Doctor Deprecator. Java/JDK/OpenJDK developer 
+* [Stuart Marks](https://twitter.com/stuartmarks) - Doctor Deprecator. Java/JDK/OpenJDK developer
 * [Vladimir Ivanov](https://twitter.com/iwan0www) - hacking HotSpot JVM @ Oracle.
 * [Viktor Klang](https://twitter.com/viktorklang) - Deputy CTO at Typesafe Inc.
 

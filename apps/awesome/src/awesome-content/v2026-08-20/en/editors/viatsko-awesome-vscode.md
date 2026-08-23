@@ -1160,7 +1160,7 @@ If you're feeling brave, there are at least two custom UIs for VS Code:
 Cyberpunk 2077 inspired theme
 
 <a href="https://vscodethemes.com/e/Endormi.2077-theme">
-  <img src="./themes/screenshots/endormi.2077-theme.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/endormi.2077-theme.png" width="600" />
 </a>
 
 ### [An Old Hope Theme by Dustin Sanders](https://vscodethemes.com/e/dustinsanders.an-old-hope-theme-vscode)
@@ -1168,7 +1168,7 @@ Cyberpunk 2077 inspired theme
 VSCode theme inspired by a galaxy far far away...
 
 <a href="https://vscodethemes.com/e/dustinsanders.an-old-hope-theme-vscode">
-  <img src="./themes/screenshots/dustinsanders.an-old-hope-theme-vscode.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/dustinsanders.an-old-hope-theme-vscode.png" width="600" />
 </a>
 
 ### [Ariake Dark by wart](https://vscodethemes.com/e/wart.ariake-dark)
@@ -1176,7 +1176,7 @@ VSCode theme inspired by a galaxy far far away...
 Dark VSCode theme inspired by Japanese traditional colors and the poetry composed 1000 years ago.
 
 <a href="https://vscodethemes.com/e/wart.ariake-dark">
-  <img src="./themes/screenshots/wart.ariake-dark.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/wart.ariake-dark.png" width="600" />
 </a>
 
 ### [Atom One Dark Theme by Mahmoud Ali](https://vscodethemes.com/e/akamud.vscode-theme-onedark)
@@ -1184,7 +1184,7 @@ Dark VSCode theme inspired by Japanese traditional colors and the poetry compose
 One Dark Theme based on Atom.
 
 <a href="https://vscodethemes.com/e/akamud.vscode-theme-onedark">
-  <img src="./themes/screenshots/akamud.vscode-theme-onedark.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/akamud.vscode-theme-onedark.png" width="600" />
 </a>
 
 ### [Atomize by emroussel](https://vscodethemes.com/e/emroussel.atomize-atom-one-dark-theme)
@@ -1192,7 +1192,7 @@ One Dark Theme based on Atom.
 A detailed and accurate Atom One Dark Theme.
 
 <a href="https://vscodethemes.com/e/emroussel.atomize-atom-one-dark-theme">
-  <img src="./themes/screenshots/atomize.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/atomize.png" width="600" />
 </a>
 
 ### [Ayu by teabyii](https://vscodethemes.com/e/teabyii.ayu)
@@ -1200,7 +1200,7 @@ A detailed and accurate Atom One Dark Theme.
 A simple theme with bright colors and comes in three versions — dark, light and mirage for all day long comfortable work.
 
 <a href="https://vscodethemes.com/e/teabyii.ayu">
-  <img src="./themes/screenshots/teabyii.ayu.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/teabyii.ayu.png" width="600" />
 </a>
 
 ### [Borealis Theme by Alexander Eckert](https://vscodethemes.com/e/eckertalex.borealis)
@@ -1208,7 +1208,7 @@ A simple theme with bright colors and comes in three versions — dark, light an
 VS Code theme inspired by the calm colors of the aurora borealis in Alaska.
 
 <a href="https://vscodethemes.com/e/eckertalex.borealis">
-  <img src="./themes/screenshots/eckertalex.borealis.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/eckertalex.borealis.png" width="600" />
 </a>
 
 ### [Captain Sweetheart by ultradracula](https://vscodethemes.com/e/ultradracula.captain-sweetheart)
@@ -1216,7 +1216,7 @@ VS Code theme inspired by the calm colors of the aurora borealis in Alaska.
 Tuff but sweet theme.
 
 <a href="https://vscodethemes.com/e/ultradracula.captain-sweetheart">
-  <img src="./themes/screenshots/ultradracula.captain-sweetheart.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/ultradracula.captain-sweetheart.png" width="600" />
 </a>
 
 ### [City Lights by Yummygum](https://vscodethemes.com/e/Yummygum.city-lights-theme)
@@ -1224,7 +1224,7 @@ Tuff but sweet theme.
 🏙 Yummygum's Official City Lights suite
 
 <a href="http://citylights.xyz">
-  <img src="./themes/screenshots/city-lights-yummygum.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/city-lights-yummygum.png" width="600" />
 </a>
 
 ### [Cobalt2 Theme Official by Wes Bos](https://vscodethemes.com/e/wesbos.theme-cobalt2)
@@ -1232,7 +1232,7 @@ Tuff but sweet theme.
 🔥 Official theme by Wes Bos.
 
 <a href="https://vscodethemes.com/e/wesbos.theme-cobalt2">
-  <img src="./themes/screenshots/wesbos.theme-cobalt2.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/wesbos.theme-cobalt2.png" width="600" />
 </a>
 
 ### [Dracula Official by Dracula Theme](https://vscodethemes.com/e/dracula-theme.theme-dracula)
@@ -1240,7 +1240,7 @@ Tuff but sweet theme.
 Official Dracula Theme. A dark theme for many editors, shells, and more.
 
 <a href="https://vscodethemes.com/e/dracula-theme.theme-dracula">
-  <img src="./themes/screenshots/dracula-theme.theme-dracula.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/dracula-theme.theme-dracula.png" width="600" />
 </a>
 
 ### [Edge by Bogdan Lazar](https://vscodethemes.com/e/bogdanlazar.edge)
@@ -1248,7 +1248,7 @@ Official Dracula Theme. A dark theme for many editors, shells, and more.
 A simple theme with bright colors in three variants — Night Sky, Serene and Ocean for all day long comfortable work.
 
 <a href="https://vscodethemes.com/e/bogdanlazar.edge">
-  <img src="./themes/screenshots/bogdanlazar.edge-theme.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/bogdanlazar.edge-theme.png" width="600" />
 </a>
 
 ### [Eva Theme by fisheva](https://vscodethemes.com/e/fisheva.eva-theme)
@@ -1256,7 +1256,7 @@ A simple theme with bright colors in three variants — Night Sky, Serene and Oc
 A colorful and semantic coloring code theme.
 
 <a href="https://vscodethemes.com/e/fisheva.eva-theme">
-  <img src="./themes/screenshots/fisheva.eva-theme.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/fisheva.eva-theme.png" width="600" />
 </a>
 
 ### [Fairy Floss by nopjmp and sailorhg](https://vscodethemes.com/e/nopjmp.fairyfloss)
@@ -1264,7 +1264,7 @@ A colorful and semantic coloring code theme.
 A fun, purple-based pastel/candy/daydream fairyfloss theme made by sailorhg.
 
 <a href="https://vscodethemes.com/e/nopjmp.fairyfloss">
-  <img src="./themes/screenshots/nopjmp.fairyfloss.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/nopjmp.fairyfloss.png" width="600" />
 </a>
 
 ### [GitHub Theme by Thomas Pink](https://vscodethemes.com/e/thomaspink.theme-github)
@@ -1272,7 +1272,7 @@ A fun, purple-based pastel/candy/daydream fairyfloss theme made by sailorhg.
 GitHub Theme for Visual Studio Code.
 
 <a href="https://vscodethemes.com/e/thomaspink.theme-github">
-  <img src="./themes/screenshots/thomaspink.theme-github.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/thomaspink.theme-github.png" width="600" />
 </a>
 
 ### [Jellybeans Theme by Dimitar Nonov](https://vscodethemes.com/e/DimitarNonov.jellybeans-theme)
@@ -1280,7 +1280,7 @@ GitHub Theme for Visual Studio Code.
 Jellybeans Theme for Visual Studio Code.
 
 <a href="https://vscodethemes.com/e/DimitarNonov.jellybeans-theme">
-  <img src="./themes/screenshots/jellybeans-theme.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/jellybeans-theme.png" width="600" />
 </a>
 
 ### [Material Palenight Theme by whizkydee](https://vscodethemes.com/e/whizkydee.material-palenight-theme)
@@ -1288,7 +1288,7 @@ Jellybeans Theme for Visual Studio Code.
 An elegant and juicy material-like theme for Visual Studio Code.
 
 <a href="https://vscodethemes.com/e/whizkydee.material-palenight-theme">
-  <img src="./themes/screenshots/whizkydee.material-palenight-theme.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/whizkydee.material-palenight-theme.png" width="600" />
 </a>
 
 ### [Material Theme by Mattia Astorino](https://vscodethemes.com/e/Equinusocio.vsc-material-theme)
@@ -1296,7 +1296,7 @@ An elegant and juicy material-like theme for Visual Studio Code.
 The most epic theme now for Visual Studio Code.
 
 <a href="https://vscodethemes.com/e/Equinusocio.vsc-material-theme">
-  <img src="./themes/screenshots/Equinusocio.vsc-material-theme.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/Equinusocio.vsc-material-theme.png" width="600" />
 </a>
 
 ### [Mno by u29dc](https://vscodethemes.com/e/u29dc.mno)
@@ -1304,7 +1304,7 @@ The most epic theme now for Visual Studio Code.
 Minimal monochrome theme.
 
 <a href="https://vscodethemes.com/e/u29dc.mno">
-  <img src="./themes/screenshots/u29dc.mno.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/u29dc.mno.png" width="600" />
 </a>
 
 ### [Omni by Rocketseat](https://vscodethemes.com/e/rocketseat.theme-omni)
@@ -1328,7 +1328,7 @@ A popular free Monokai theme for Visual Studio Code, blending Monokai with Atom'
 Beautiful functionality for professional developers, from the author of the original Monokai color scheme.
 
 <a href="https://vscodethemes.com/e/monokai.theme-monokai-pro-vscode">
-  <img src="./themes/screenshots/1079cc76.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/1079cc76.png" width="600" />
 </a>
 
 ### [Night Owl by Sarah Drasner](https://vscodethemes.com/e/sdras.night-owl)
@@ -1336,7 +1336,7 @@ Beautiful functionality for professional developers, from the author of the orig
 A VS Code theme for the night owls out there. Works well in the daytime, too, but this theme is fine-tuned for those of us who like to code late into the night. Color choices have taken into consideration what is accessible to people with color blindness and in low-light circumstances. Decisions were also based on meaningful contrast for reading comprehension and for optimal razzle dazzle. ✨
 
 <a href="https://marketplace.visualstudio.com/items?itemName=sdras.night-owl">
-  <img src="./themes/screenshots/night-owl.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/night-owl.png" width="600" />
 </a>
 
 ### [Plastic by Will Stone](https://vscodethemes.com/e/will-stone.plastic)
@@ -1344,7 +1344,7 @@ A VS Code theme for the night owls out there. Works well in the daytime, too, bu
 A simple theme.
 
 <a href="https://vscodethemes.com/e/will-stone.plastic">
-  <img src="./themes/screenshots/will-stone.plastic.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/will-stone.plastic.png" width="600" />
 </a>
 
 ### [Nord by arcticicestudio](https://vscodethemes.com/e/arcticicestudio.nord-visual-studio-code)
@@ -1352,7 +1352,7 @@ A simple theme.
 An arctic, north-bluish clean and elegant Visual Studio Code theme.
 
 <a href="https://vscodethemes.com/e/arcticicestudio.nord-visual-studio-code">
-  <img src="./themes/screenshots/arcticicestudio.nord-visual-studio-code.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/arcticicestudio.nord-visual-studio-code.png" width="600" />
 </a>
 
 ### [Rainglow by Dayle Rees](https://vscodethemes.com/e/daylerees.rainglow)
@@ -1368,7 +1368,7 @@ Collection of 320+ beautiful syntax and UI themes.
 A relaxed theme to take a more relaxed view of things.
 
 <a href="https://vscodethemes.com/e/mischah.relaxed-theme">
-  <img src="./themes/screenshots/relaxed-theme.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/relaxed-theme.png" width="600" />
 </a>
 
 ### [Shades of Purple by Ahmad Awais](https://vscodethemes.com/e/ahmadawais.shades-of-purple)
@@ -1376,7 +1376,7 @@ A relaxed theme to take a more relaxed view of things.
 ⚡ A professional theme with hand-picked & bold shades of purple 💜 to go along with your VS Code. A custom VS Code theme with style.
 
 <a href="https://vscodethemes.com/e/ahmadawais.shades-of-purple">
-  <img src="./themes/screenshots/ahmadawais.shades-of-purple.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/ahmadawais.shades-of-purple.png" width="600" />
 </a>
 
 ### [Slime Theme by smlombardi](https://vscodethemes.com/e/smlombardi.slime)
@@ -1384,7 +1384,7 @@ A relaxed theme to take a more relaxed view of things.
 A dark syntax/workbench theme for Visual Studio Code - optimized for SCSS, HTML, JS, TS, Markdown, and PHP files.
 
 <a href="https://vscodethemes.com/e/smlombardi.slime">
-  <img src="./themes/screenshots/slime.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/slime.png" width="600" />
 </a>
 
 ### [Niketa Theme by Dejan Toteff](https://vscodethemes.com/e/selfrefactor.niketa-theme)
@@ -1392,7 +1392,7 @@ A dark syntax/workbench theme for Visual Studio Code - optimized for SCSS, HTML,
  Collection of 18 light themes separated in 4 groups by background's brightness.
 
  <a href="https://vscodethemes.com/e/mischah.relaxed-theme">
-  <img src="./themes/screenshots/niketa-theme.png" width="600" />
+  <img src="https://raw.githubusercontent.com/viatsko/awesome-vscode/9c3bf848287d3967a744e7c057ea49ec9e89b396/themes/screenshots/niketa-theme.png" width="600" />
 </a>
 
 # People to Follow

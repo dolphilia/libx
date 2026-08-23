@@ -6,7 +6,7 @@ licenseSource: "github-sindresorhus-awesome-electron-readme-md"
 
 # Awesome Electron [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="electron-logo.svg" align="right" width="100">](https://electronjs.org)
+[<img src="https://raw.githubusercontent.com/sindresorhus/awesome-electron/8a8126103752fe4e47cc0aa36711286e58ba7864/electron-logo.svg" align="right" width="100">](https://electronjs.org)
 
 > Useful resources for creating apps with [Electron](https://electronjs.org)
 

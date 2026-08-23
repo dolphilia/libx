@@ -7,7 +7,7 @@ licenseSource: "github-hlaueriksson-awesome-powertoys-run-plugins-readme-md"
 # Awesome PowerToys Run Plugins [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 
-[<img src="powertoys-logo.png" align="right" width="100">](https://learn.microsoft.com/en-us/windows/powertoys/run)
+[<img src="https://raw.githubusercontent.com/hlaueriksson/awesome-powertoys-run-plugins/d8108fdfad591844cc30dd56bcbe0a47d023148f/powertoys-logo.png" align="right" width="100">](https://learn.microsoft.com/en-us/windows/powertoys/run)
 
 > A curated list of [PowerToys Run](https://learn.microsoft.com/en-us/windows/powertoys/run) community plugins and resources
 
@@ -109,5 +109,3 @@ Contributions welcome!
 
 1. First read the [community plugin checklist](https://github.com/hlaueriksson/awesome-powertoys-run-plugins/blob/d8108fdfad591844cc30dd56bcbe0a47d023148f/checklist.md)
 2. Then read the [contribution guidelines](https://github.com/hlaueriksson/awesome-powertoys-run-plugins/blob/d8108fdfad591844cc30dd56bcbe0a47d023148f/contributing.md)
-
-

@@ -4,15 +4,15 @@ description: "Canonical snapshot of hyperupcall/awesome-mastodon"
 licenseSource: "github-hyperupcall-awesome-mastodon-readme-md"
 ---
 
-# Awesome Mastodon [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) 
+# Awesome Mastodon [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="./assets/mastodon-logo.svg" align="right" width="150">](https://joinmastodon.org/)
+[<img src="https://raw.githubusercontent.com/hyperupcall/awesome-mastodon/7dc88f137fcb7bbbcd890be9f692bcc7438bf88e/assets/mastodon-logo.svg" align="right" width="150">](https://joinmastodon.org/)
 
 Mastodon is the world's largest free, open-source, decentralized microblogging network.
 
 This list is a collection of the best Mastodon resources.
 
-## Contents  
+## Contents
 
 - [Official](#official)
 - [Instances](#instances)

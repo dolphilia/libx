@@ -6,7 +6,7 @@ licenseSource: "github-msub2-awesome-webxr-readme-md"
 
 # Awesome WebXR [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="webxr-logo.svg" align="right" width="100">](https://immersiveweb.dev/)
+[<img src="https://raw.githubusercontent.com/msub2/awesome-webxr/5677706e14086d1332b16c91586cdd42a7c1187a/webxr-logo.svg" align="right" width="100">](https://immersiveweb.dev/)
 
 > A curated list of WebXR links and resources.
 
@@ -144,15 +144,15 @@ licenseSource: "github-msub2-awesome-webxr-readme-md"
 
 - [Needle](https://needle.tools/) - An engine and exporter for Blender and Unity.
   - [Official Documentation](https://engine.needle.tools/docs/)
- 
+
 - [Onirix Studio](https://www.onirix.com/) - A no-code editor for creating Web AR experiences in the browser. It emulates features of the WebXR if target device / browser is not compatible.
 
 - [PlayCanvas](https://playcanvas.com/) - A browser-based WebGL engine with support for WebXR content, mobile browsers, collaborative editing, and more.
   - [Official Documentation](https://developer.playcanvas.com/en/)
 
 - [Rogue Engine](https://rogueengine.io/) - An HTML5 Game Engine based on Three.js and TypeScript.
-  - [Official Documentation](https://rogueengine.io/docs/manual/getting-started/installation/) 
-  
+  - [Official Documentation](https://rogueengine.io/docs/manual/getting-started/installation/)
+
 - [Unity](https://unity.com/) - A highly popular game engine with community packages that enable content to be exported for WebXR.
   - [WebXR Export](https://github.com/De-Panther/unity-webxr-export) - Exporter by [De-Panther](https://github.com/De-Panther/)
   - [SimpleWebXR](https://github.com/Rufus31415/Simple-WebXR-Unity) - Exporter by [Rufus31415](https://github.com/Rufus31415)
@@ -192,7 +192,7 @@ licenseSource: "github-msub2-awesome-webxr-readme-md"
 - [Verge3D](https://www.soft8soft.com/verge3d/) - A toolkit that allows 3D artists to export their scenes and create immersive web experiences with ease.
   - [Official Documentation](https://www.soft8soft.com/support-documentation/)
 - [XR Fragments](https://xrfragment.org) - A tiny specification for controlling any 3D model using URLs, based on existing metadata. Promoting hyperlinked WebXR storytelling using all 3D editors and viewers. [[repo]](https://codeberg.org/coderofsalvation/xrfragment)
- 
+
 ## Learning Resources
 
 *Courses and tutorials for creating WebXR content.*

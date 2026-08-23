@@ -6,7 +6,7 @@ licenseSource: "github-sindresorhus-awesome-nodejs-readme-md"
 
 <div align="center">
 	<div>
-		<img width="500" src="media/logo.svg" alt="Awesome Node.js">
+		<img width="500" src="https://raw.githubusercontent.com/sindresorhus/awesome-nodejs/cf153d49f0d2b281bdc512b08f62ef0fb177a6dc/media/logo.svg" alt="Awesome Node.js">
 		<br>
 	</div>
 	<br>

@@ -60,7 +60,7 @@ In the psychology subfield of oneirology, a [lucid dream](https://en.wikipedia.o
 
 ## YouTube Channels
 
-- [Lucid Dream Portal](https://www.youtube.com/channel/UCJaUAmw7TCFXBwAULWZwslA) - Easy to follow tutorials and expert advice from one of the world's leading lucid dreaming teachers. 
+- [Lucid Dream Portal](https://www.youtube.com/channel/UCJaUAmw7TCFXBwAULWZwslA) - Easy to follow tutorials and expert advice from one of the world's leading lucid dreaming teachers.
 - [TIGER123](https://www.youtube.com/@TIGERTIGER123TIGER) - Dives into techniques for inducing lucid dreams, exploring dream symbolism, and enhancing dream control, with a mix of tutorials, personal experiences, and insights from the latest dream research.
 - [Tipharot](https://www.youtube.com/channel/UCcwEgS97oUAcBR1rgKj4E0A) - All about lucid dreaming and similar subjects.
 - [Skyfall Blind Dreamer](https://www.youtube.com/channel/UCjPuiCWSbszlo_men2bPMpA) - Interacts with creators in the field of lucid dreaming and provides quality information to get people on the right path to a solid and sustainable lucidity practice.
@@ -95,8 +95,8 @@ In the psychology subfield of oneirology, a [lucid dream](https://en.wikipedia.o
 ### iOS
 
 - [Lucid-Dash](https://apps.apple.com/us/app/lucid-dash/id1614385345) - Dream journal, AI image generation, lucid dreaming courses, reality checks.
-- [DreamWell](https://apps.apple.com/us/app/dreamwell-lucid-dreaming/id1560429014) - Dream journal, notifications, and lucid dreaming and mindfulness courses. 
-- [Mind Awake](https://apps.apple.com/us/app/mind-awake/id1374074148) - The guided course in this app offers a dynamic, mindful approach to lucid dreaming. 
+- [DreamWell](https://apps.apple.com/us/app/dreamwell-lucid-dreaming/id1560429014) - Dream journal, notifications, and lucid dreaming and mindfulness courses.
+- [Mind Awake](https://apps.apple.com/us/app/mind-awake/id1374074148) - The guided course in this app offers a dynamic, mindful approach to lucid dreaming.
 - [Shape](https://apps.apple.com/us/app/shape-lucid-dreaming/id1577026266) - Learn to lucid dream in 30 days with the ultimate lucid dreaming coach.
 - [Lucidity](https://apps.apple.com/us/app/lucidity-lucid-dreaming/id1121048340) - Learn to Lucid Dream + Journal.
 
@@ -119,10 +119,10 @@ In the psychology subfield of oneirology, a [lucid dream](https://en.wikipedia.o
 - [Lucid Dreaming: A Concise Guide to Awakening in Your Dreams and in Your Life by Stephen LaBerge](https://www.amazon.com/Lucid-Dreaming-Concise-Awakening-Dreams/dp/159179675X) - Distilled from his more than 20 years of pioneering research at Stanford University and the Lucidity Institute, including many new and updated techniques and discoveries.
 - [Lucid Dreaming: Gateway to the Inner Self by Robert Waggoner](https://www.amazon.com/Lucid-Dreaming-Gateway-Inner-Self/dp/193049114X) - Proposes 5 stages of lucid dreaming and guides readers through them, offering advice for those who have never experienced the lucid dream state and suggestions for how experienced lucid dreamers can advance to a new level.
 - [Are You Dreaming?: Exploring Lucid Dreams: A Comprehensive Guide by Daniel Love](https://www.amazon.com/Are-You-Dreaming-Exploring-Comprehensive/dp/0957497709) - In this comprehensive and modern guide to lucid dreaming, you will be guided on a unique journey through the fascinating exploration of your mind. Just about everything you could possibly need to know about lucid dreaming.
-- [A Field Guide to Lucid Dreaming: Mastering the Art of Oneironautics by Dylan Tuccillo](https://www.amazon.com/Field-Guide-Lucid-Dreaming-Oneironautics/dp/0761177396/) - This lively dream guide shows step-by-step how to become lucid, and then what to do once awake in the dream world.  
+- [A Field Guide to Lucid Dreaming: Mastering the Art of Oneironautics by Dylan Tuccillo](https://www.amazon.com/Field-Guide-Lucid-Dreaming-Oneironautics/dp/0761177396/) - This lively dream guide shows step-by-step how to become lucid, and then what to do once awake in the dream world.
 - [Learn to Lucid Dream: Powerful Techniques for Awakening Creativity and Consciousness by Kristen LaMarca](https://www.amazon.com/Learn-Lucid-Dream-Techniques-Consciousness/dp/1641523824) - This methodical introduction teaches you both the science and spirituality of dreaming. You will practice developing dream awareness and apply the discoveries you make while sleeping towards improving your waking hours.
 - [Far Journeys by Robert A. Monroe](https://www.amazon.com/Far-Journeys-Trilogy-Robert-Monroe/dp/0385231822) - Parapsychological odyssey that reflects a decade of research into the psychic realm beyond the known dimensions of physical reality.
-- [The Tibetan Yogas of Dream and Sleep by Tenzin Wangyal Rinpoche](https://www.amazon.com/Tibetan-Yogas-Dream-Sleep/dp/1559391014/) - The ultimate goal of Tibetan dream yoga is the recognition of the nature of mind or enlightenment itself. The practice of dream yoga is a powerful tool of awakening, used for hundreds of years by the great masters of the Tibetan traditions. 
+- [The Tibetan Yogas of Dream and Sleep by Tenzin Wangyal Rinpoche](https://www.amazon.com/Tibetan-Yogas-Dream-Sleep/dp/1559391014/) - The ultimate goal of Tibetan dream yoga is the recognition of the nature of mind or enlightenment itself. The practice of dream yoga is a powerful tool of awakening, used for hundreds of years by the great masters of the Tibetan traditions.
 - [Dream Yoga and the Practice of Natural Light by Chogyal Namkhai Norbu](https://www.amazon.com/Dream-Yoga-Practice-Natural-Light/dp/1559391618) - Instructions for developing clarity within the sleep and dream states. Goes beyond the practices of lucid dreaming by presenting methods for guiding dream states that are part of a broader system for enhancing self-awareness.
 
 ## Movies
@@ -136,7 +136,7 @@ In the psychology subfield of oneirology, a [lucid dream](https://en.wikipedia.o
 
 ## Mindfulness Exercises
 
-- [UC San Diego Center for Mindfulness](https://cih.ucsd.edu/mindfulness/guided-audio-video) - Guided exercises on mental noting, awareness of breath, and body scan. 
+- [UC San Diego Center for Mindfulness](https://cih.ucsd.edu/mindfulness/guided-audio-video) - Guided exercises on mental noting, awareness of breath, and body scan.
 - [UCLA Mindful Awareness Research Center](https://www.uclahealth.org/marc/mindful-meditations) - Guided exercises on breath, sound, and body awareness.
 - [The Free Mindfulness Project](https://www.freemindfulness.org/download) - Guided exercises on breath, sound, body awareness and self guided exercises.
 - [AudioDharma](https://www.audiodharma.org/series/1/talk/1835/) - Guided exercises on giving attention and appreciating awareness of the moment.
@@ -148,7 +148,7 @@ In the psychology subfield of oneirology, a [lucid dream](https://en.wikipedia.o
 
 ## Reality Checks
 
-Reality checks are tests that are performed to check if you are dreaming. 
+Reality checks are tests that are performed to check if you are dreaming.
 
 - Finger Through Hand - Push your index finger through the palm of the other hand.
 - How Did I Get Here - Recall the steps that got you to your current location.

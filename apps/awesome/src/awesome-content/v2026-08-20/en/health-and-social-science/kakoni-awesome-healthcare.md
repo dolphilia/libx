@@ -108,7 +108,7 @@ Curated list of awesome open source healthcare software, libraries, tools and re
 
 ### Dental
   * [Open Dental](https://www.opendental.com) - Dental Practice Management Software.
-  * [OpenMolar](https://openmolar.com/) - Dental Practice Management Software. 
+  * [OpenMolar](https://openmolar.com/) - Dental Practice Management Software.
 
 ### Laboratory
   * [OpenELIS](https://openelis-global.org) - Laboratory Information System for Global Health.
@@ -136,7 +136,7 @@ Curated list of awesome open source healthcare software, libraries, tools and re
   * [Swift-SMART](https://github.com/smart-on-fhir/Swift-SMART) - Swift SMART on FHIR framework for iOS and OS X.
 
 ### Libraries
-  * [Android FHIR SDK](https://github.com/google/android-fhir) - The Android FHIR SDK 
+  * [Android FHIR SDK](https://github.com/google/android-fhir) - The Android FHIR SDK
   * [Archie](https://github.com/openehr/archie) - OpenEHR Library written in Java.
   * [Asymmetrik FHIR API Server](https://github.com/bluehalo/node-fhir-server-core) - A secure REST implementation for the HL7 FHIR Specification.
   * [Datamol](https://github.com/datamol-io/datamol) - Molecular Manipulation Made Easy. A light Python wrapper build on top of RDKit.
@@ -182,7 +182,7 @@ Curated list of awesome open source healthcare software, libraries, tools and re
   * [HealthLocker](https://github.com/healthlocker/healthlocker) - Elixir-based personal health record.
 
 ### Telemedicine
-   * [Healthcare worker at home](https://hcw-at-home.com) - ​ Open Source Telehealth software 
+   * [Healthcare worker at home](https://hcw-at-home.com) - ​ Open Source Telehealth software
 
 ### Research
   * [i2b2](https://www.i2b2.org) - Research data warehouse.
@@ -218,10 +218,10 @@ Curated list of awesome open source healthcare software, libraries, tools and re
   * [Cedar](https://github.com/mitre/cedar) - Open source tool for testing the strength of Electronic Clinical Quality Measure.
   * [cTAKES](https://ctakes.apache.org/) - Natural Language Processing System for extraction of information from Electronic Medical Record clinical free-text.
   * [EDS_NLP](https://github.com/aphp/edsnlp) - provides a set of spaCy components to extract information from clinical notes written in French
-  * [eds-scikit](https://github.com/aphp/eds-scikit) - a tool to assist data scientists working on the AP-HP's Clinical Data Warehouse. It is specifically targeted for OMOP-standardized data. 
+  * [eds-scikit](https://github.com/aphp/eds-scikit) - a tool to assist data scientists working on the AP-HP's Clinical Data Warehouse. It is specifically targeted for OMOP-standardized data.
   * [IHRIS](https://www.ihris.org/toolkit-new/) - Health Information System for management of human resources for health.
   * [OpenSAFELY](https://www.opensafely.org) - Secure analytics platform for Electronic Health Records in the NHS.
-  * [Snow Owl](https://github.com/b2ihealthcare/snow-owl) - Highly scalable, open source terminology server with revision-control capabilities and collaborative authoring platform features. 
+  * [Snow Owl](https://github.com/b2ihealthcare/snow-owl) - Highly scalable, open source terminology server with revision-control capabilities and collaborative authoring platform features.
   * [Synthea Patient Generator](https://github.com/synthetichealth/synthea) - Synthetic patient generator that models the medical history of synthetic patients.
 
 ### Datasets
@@ -233,7 +233,7 @@ Curated list of awesome open source healthcare software, libraries, tools and re
 
 ### EMPI
   * [MEDIC Client Registry RI](https://github.com/MohawkMEDIC/client-registry) - The Mohawk College MARC-HI/MEDIC Client Registry EMPI Implementation.
-  
+
 ### Machine learning
   * [Healthcare.ai](https://healthcare.ai) - Python and R tools for healthcare machine learning.
   * [MedicalGPT](https://github.com/shibing624/MedicalGPT/blob/main/README_EN.md) - Training Your Own Medical GPT Model with ChatGPT Training Pipeline.

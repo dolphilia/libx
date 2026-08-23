@@ -109,7 +109,7 @@ licenseSource: "github-satta-awesome-suricata-readme-md"
 - [Stamus Lateral Movement Detection Rules](https://www.stamus-networks.com/blog/new-open-ruleset-for-detecting-lateral-movement-with-suricata) - Suricata ruleset to detect lateral movement.
 - [QuadrantSec Suricata Rules](https://github.com/quadrantsec/suricata-rules) - Set of Suricata rules published by QuadrantSec.
 - [Cluster25/detection](https://github.com/Cluster25/detection) - Cluster25's detection rules.
-- Networkforensic.dk (NF) rules sets: 
+- Networkforensic.dk (NF) rules sets:
   - [NF IDS rules](https://networkforensic.dk/SNORT/NF-local.zip)
   - [NF SCADA IDS Rules](https://networkforensic.dk/SNORT/NF-SCADA.zip)
   - [NF Scanners IDS Rules](https://networkforensic.dk/SNORT/NF-Scanners.zip)

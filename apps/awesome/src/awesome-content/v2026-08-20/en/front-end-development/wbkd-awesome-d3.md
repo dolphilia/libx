@@ -154,11 +154,11 @@ You can also explore the list with our interactive [D3 Discovery](https://d3-dis
 - [mermaid](https://github.com/knsv/mermaid) - Generation of diagrams and flowcharts from text in a markdown style
 - [netvis](https://github.com/dborzov/netvis) - Visualize network communication for arbitrary protocols
 - [treeviz](https://github.com/PierreCapo/treeviz) - Create customizable trees from json data
-- [twitter-sentiment-visualisation](https://github.com/Lissy93/twitter-sentiment-visualisation) - A series of D3.js charts showing realtime sentiment of Twitter data  
+- [twitter-sentiment-visualisation](https://github.com/Lissy93/twitter-sentiment-visualisation) - A series of D3.js charts showing realtime sentiment of Twitter data
 
 ## Server side
 - [d3-node](https://github.com/d3-node/d3-node) - Static chart and map generation
-- [Kyrix](https://github.com/tracyhenry/Kyrix) - Interactive pan/zoom Visualizations with automatic server-side scaling support. 
+- [Kyrix](https://github.com/tracyhenry/Kyrix) - Interactive pan/zoom Visualizations with automatic server-side scaling support.
 
 ## Bl.ocks.org Profiles
 

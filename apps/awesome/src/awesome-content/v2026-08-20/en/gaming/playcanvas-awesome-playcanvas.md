@@ -6,7 +6,7 @@ licenseSource: "github-playcanvas-awesome-playcanvas-readme-md"
 
 # Awesome PlayCanvas [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> <img src="playcanvas-logo.png" align="right" width="100">
+> <img src="https://raw.githubusercontent.com/playcanvas/awesome-playcanvas/220fcca8c054fca032ff5ff26cd8c820770609aa/playcanvas-logo.png" align="right" width="100">
 >
 > PlayCanvas is an open source platform for building interactive web content. It's written in JavaScript, HTML5, CSS3 and WebGL.
 >

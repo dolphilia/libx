@@ -15,7 +15,7 @@ High Performance Computing tools and resources for engineers and administrators.
 ## Contents
 <details>
   <summary><b>(click to expand)</b></summary>
-  
+
 - [Provisioning](#provisioning)
 - [Workload Managers](#workload-managers)
 - [Pipelines](#pipelines)
@@ -108,7 +108,7 @@ High Performance Computing tools and resources for engineers and administrators.
 - [Coldfront](https://coldfront.readthedocs.io/en/latest/) - ColdFront is an open source resource allocation system designed to provide a central portal for administration, reporting, and measuring scientific impact of HPC resources ([Source Code](https://github.com/ubccr/coldfront)) `GPL-3`.
 - [Pavilion2](https://pavilion2.readthedocs.io/) - Pavilion is a Python 3 (3.6+) based framework for running and analyzing tests targeting HPC systems ([Source Code](https://github.com/hpc/pavilion2)) `other`.
 - [Reframe](https://reframe-hpc.readthedocs.io/en/stable/) - A powerful Python framework for writing and running portable regression tests and benchmarks for HPC systems. ([Source Code](https://github.com/reframe-hpc/reframe)) `BSD-3`.
-- [OLCF Test Harness](https://olcf.github.io/olcf-test-harness/) - The OLCF Test Harness (OTH) helps automate the testing of applications, tools, and other system software ([Source Code](https://github.com/olcf/olcf-test-harness)) `other`. 
+- [OLCF Test Harness](https://olcf.github.io/olcf-test-harness/) - The OLCF Test Harness (OTH) helps automate the testing of applications, tools, and other system software ([Source Code](https://github.com/olcf/olcf-test-harness)) `other`.
 - [GoSlmailer](https://github.com/CLIP-HPC/goslmailer) - Goslmailer is a drop-in notification delivery solution for slurm that can do slack, mattermost, teams, and more.
 
 ## Performance
@@ -159,7 +159,7 @@ High Performance Computing tools and resources for engineers and administrators.
 
 ## Monitoring
 ### Prometheus Based
-- [Slurm Exporter](https://github.com/treydock/prometheus-slurm-exporter) - Prometheus exporter for performance metrics from Slurm `GPL-3.0`. 
+- [Slurm Exporter](https://github.com/treydock/prometheus-slurm-exporter) - Prometheus exporter for performance metrics from Slurm `GPL-3.0`.
 - [Slurm Exporter](https://github.com/ubccr/slurm-exporter) - Slurm Exporter for Prometheus using Rest API `GPL-3.0`.
 - [Infiniband Exporter](https://github.com/treydock/infiniband_exporter) - The InfiniBand exporter collects counters from InfiniBand switches and HCAs `Apache-2.0`.
 - [Cgroup Exporter](https://github.com/treydock/cgroup_exporter) - Produces metrics from cgroups `Apache-2.0`.
@@ -172,14 +172,14 @@ High Performance Computing tools and resources for engineers and administrators.
 - [Journal of Super Computing](https://www.springer.com/journal/11227) - An International Journal of High-Performance Computer Design, Analysis, and Use.
 
 ## Podcasts
-- [This week in HPC](https://www.intersect360.com/media/podcasts/) - Each week, Intersect360 Research CEO Addison Snell and HPCwire editor Tiffany Trader dissect the week's top HPC stories. 
+- [This week in HPC](https://www.intersect360.com/media/podcasts/) - Each week, Intersect360 Research CEO Addison Snell and HPCwire editor Tiffany Trader dissect the week's top HPC stories.
 - [Exascaler Project](https://www.exascaleproject.org/podcast/) - ECP's Let's Talk Exascale podcast goes behind the scenes to chat with some of the people who are bringing a capable and sustainable exascale computing ecosystem to fruition.
 - [@HPCpodcast](https://insidehpc.com/category/resources/hpc-podcast/) - Join Shahin Khan and Doug Black as they discuss Supercomputing technologies and the applications, markets, and policies that shape them.
 
 
 ## Blogs
 - [HPCWire](https://www.hpcwire.com/) - Since 1987 covering the fastest computers in the world and the people who run them.
-- [InsideHPC](https://insidehpc.com/) - insideHPC is a global publication recognized for its comprehensive and insightful coverage of the HPC-AI community, linking vendors, end-users and HPC strategists. 
+- [InsideHPC](https://insidehpc.com/) - insideHPC is a global publication recognized for its comprehensive and insightful coverage of the HPC-AI community, linking vendors, end-users and HPC strategists.
 - [The Next Platform](https://www.nextplatform.com/category/hpc/) - Offers in-depth coverage of high-end computing at large enterprises, supercomputing centers, hyperscale data centers, and public clouds.
 - [The Register HPC](http://www.theregister.co.uk/data_centre/hpc/) - The Register is a leading and trusted global online enterprise technology news publication, reaching roughly 40 million readers worldwide.
 - [HPC at Dell](http://hpcatdell.com) - High-Performance Computing knowledge base articles from Dell.

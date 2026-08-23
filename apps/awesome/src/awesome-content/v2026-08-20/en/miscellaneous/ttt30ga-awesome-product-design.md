@@ -6,7 +6,7 @@ licenseSource: "github-ttt30ga-awesome-product-design-readme-md"
 
 <div align="center" style="margin: 12px">
   <a href="https://en.wikipedia.org/wiki/Digital_product_design">
-    <img src="./images/apd-icon.png" width="140">
+    <img src="https://raw.githubusercontent.com/ttt30ga/awesome-product-design/cbe26439af5c6331ac24ac32b842d597361b2796/images/apd-icon.png" width="140">
   </a>
 </div>
 
@@ -132,7 +132,7 @@ Feel free to [add something interesting](https://github.com/ttt30ga/awesome-prod
 #### Tools
 - [Pattern Lab](https://patternlab.io/) - Create atomic design systems with Pattern Lab.
 - [Huge](https://hugeinc.github.io/styleguide/index.html) - Tool to make creating and maintaining styleguides easy.
-- [Figma Bootstrap 5 UI Kit](https://themeselection.com/products/free-figma-bootstrap-ui-kit/) - UI Kit comprising 300+ organized Bootstrap 5 components built with atomic design system & auto layout. 
+- [Figma Bootstrap 5 UI Kit](https://themeselection.com/products/free-figma-bootstrap-ui-kit/) - UI Kit comprising 300+ organized Bootstrap 5 components built with atomic design system & auto layout.
 - [Sketch Bootstrap 5 UI Kit](https://themeselection.com/products/free-sketch-bootstrap-ui-kit/) - UI Kit comprising 300+ organized Bootstrap 5 components built with atomic design system & smart layout.
 
 ## Visual

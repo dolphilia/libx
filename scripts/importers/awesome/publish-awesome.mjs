@@ -28,7 +28,32 @@ const exclusions = readJson(path.join(notesDir, 'EXCLUSIONS.json'));
 const finalReviewQueue = readJson(path.join(notesDir, 'FINAL_REVIEW_QUEUE.json'));
 const contentMap = readJson(path.join(notesDir, 'CONTENT_MAP.json'));
 const shardPlan = readJson(path.join(notesDir, 'SITE_SHARDS.json'));
+const missingReview = readJson(path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json'));
 const included = lock.sources.filter((source) => source.status === 'included');
+const sourceByRepository = new Map(
+  lock.sources.map((source) => [source.repository.toLowerCase(), source])
+);
+const discoveredByLowerRepository = new Map(
+  discoveryState.visited.map((source) => [source.repository.toLowerCase(), source])
+);
+const metadataSources = missingReview.results
+  .filter((entry) => entry.decision === 'metadata-only')
+  .map((entry) => {
+    const source = sourceByRepository.get(entry.repository);
+    const discovered = discoveredByLowerRepository.get(entry.repository);
+    const repository = source?.repository ?? discovered?.repository ?? entry.repository;
+    return {
+      sourceId:
+        source?.sourceId ??
+        `metadata-${repository.replace('/', '-').replace(/[^A-Za-z0-9._-]/g, '-')}`,
+      repository,
+      status: 'metadata-only',
+    };
+  });
+const pageSources = [...included, ...metadataSources];
+const missingReviewByRepository = new Map(
+  missingReview.results.map((entry) => [entry.repository, entry])
+);
 const mapBySource = new Map(contentMap.entries.map((entry) => [entry.sourceId, entry]));
 const discoveredByRepository = new Map(
   discoveryState.visited.map((source) => [source.repository, source])
@@ -57,6 +82,11 @@ function pageId(source) {
 
 function sourceCategory(sourceId) {
   if (sourceId === 'sindresorhus-awesome-readme') return 'Overview';
+  const pageSource = pageSources.find((source) => source.sourceId === sourceId);
+  const missingCategory = pageSource
+    ? missingReviewByRepository.get(pageSource.repository.toLowerCase())?.category
+    : null;
+  if (missingCategory) return missingCategory;
   const category = mapBySource.get(sourceId)?.categories?.[0];
   if (!category) throw new Error(`カテゴリがありません: ${sourceId}`);
   return category;
@@ -74,7 +104,7 @@ function categoryOrder() {
     path.join(normalizedRoot, 'sindresorhus-awesome-readme.md'),
     'utf8'
   );
-  const available = new Set(included.map((source) => sourceCategory(source.sourceId)));
+  const available = new Set(pageSources.map((source) => sourceCategory(source.sourceId)));
   const headings = [...rootSource.matchAll(/^##\s+(.+)$/gm)]
     .map((match) => match[1].trim())
     .filter((heading) => available.has(heading));
@@ -91,7 +121,7 @@ function buildModel() {
   }
   const categories = categoryOrder();
   const categoryIndex = new Map(categories.map((category, index) => [category, index]));
-  const entries = included
+  const entries = pageSources
     .map((source) => {
       const category = sourceCategory(source.sourceId);
       const categorySlug = categoryId(category);
@@ -101,7 +131,9 @@ function buildModel() {
         throw new Error(`正規化済み本文がありません: ${source.sourceId}`);
       const markdown = fs.readFileSync(inputPath, 'utf8');
       const parsed = matter(markdown);
-      if (parsed.data.licenseSource !== source.sourceId) {
+      const expectedLicenseSource =
+        source.status === 'metadata-only' ? 'sindresorhus-awesome-readme' : source.sourceId;
+      if (parsed.data.licenseSource !== expectedLicenseSource) {
         throw new Error(`licenseSourceが一致しません: ${source.sourceId}`);
       }
       return {
@@ -238,7 +270,7 @@ function oldUrlFor(sourceId) {
     const oldPage = `${String(index + 1).padStart(2, '0')}-${source.repository.replace('/', '-')}`;
     return `/docs/${shard.project}/${version}/en/01-overview/${oldPage}`;
   }
-  throw new Error(`旧分割URLが見つかりません: ${sourceId}`);
+  return null;
 }
 
 const partitions = {
@@ -255,11 +287,18 @@ const partitions = {
 const migrations = {
   schemaVersion: 1,
   snapshotVersion: version,
-  entries: routes.entries.map((entry) => ({
-    sourceId: entry.sourceId,
-    from: oldUrlFor(entry.sourceId),
-    to: `/docs/awesome/${version}/en/${entry.slug}`,
-  })),
+  entries: routes.entries.flatMap((entry) => {
+    const from = oldUrlFor(entry.sourceId);
+    return from
+      ? [
+          {
+            sourceId: entry.sourceId,
+            from,
+            to: `/docs/awesome/${version}/en/${entry.slug}`,
+          },
+        ]
+      : [];
+  }),
 };
 const pendingReviewItems = finalReviewQueue.items.filter(
   (item) => item.status !== 'approved'

@@ -103,7 +103,7 @@ This [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindreso
 
 ## Basics
 
-<img align="right" width="50%" src="./assets/cloud-software-stack-billing.jpg"/>
+<img align="right" width="50%" src="https://raw.githubusercontent.com/kdeldycke/awesome-billing/ec5eba3b4f3ccbf7e292b76338df781f3d2ff24a/assets/cloud-software-stack-billing.jpg"/>
 
 In a Stanford class providing an [overview of cloud computing](https://web.stanford.edu/class/cs349d/docs/L01_overview.pdf), the software architecture of the platform is described as in the right diagram →
 

@@ -33,7 +33,7 @@ Credit scoring is the term used to describe formal statistical methods used for 
 
 - [Machine Learning in Financial Crisis Prediction: A Survey](https://ieeexplore.ieee.org/document/6069610) - Reviews 130 journal papers from the period between 1995 and 2010, focusing on the development of state-of-the-art machine-learning techniques for bankruptcy prediction and credit score modeling. Also presents their current achievements and limitations.
 
-- [Fintech and big tech credit: a new database](https://www.bis.org/publ/work887.pdf) - This Working Paper by the Bank of International Settlements, while not as focused on credit risk, maps the conditions for and niches occupied by alternative credit, be it provided by fintechs or big tech companies. 
+- [Fintech and big tech credit: a new database](https://www.bis.org/publ/work887.pdf) - This Working Paper by the Bank of International Settlements, while not as focused on credit risk, maps the conditions for and niches occupied by alternative credit, be it provided by fintechs or big tech companies.
 
 ## Credit Scoring
 

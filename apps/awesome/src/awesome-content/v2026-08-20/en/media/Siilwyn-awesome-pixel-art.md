@@ -24,7 +24,7 @@ Awesome Pixel Art is a repository specifically dedicated to creating and learnin
 - [Community](#community)
   - [Artists](#artists)
   - [Hubs](#hubs)
-- [Tools](#tools) 
+- [Tools](#tools)
   - [Editors](#editors)
   - [Miscellaneous](#miscellaneous)
 

@@ -10,7 +10,7 @@ licenseSource: "github-Code-and-Sorts-awesome-copilot-agents-readme-md"
 
 
 <div align="center">
-  <img src="./.refs/imgs/awesome-github-copilot.svg" alt="Awesome Copilot Agents" height="300">
+  <img src="https://raw.githubusercontent.com/Code-and-Sorts/awesome-copilot-agents/a26d912e4a42122e1f99cda61445fe5226aae541/.refs/imgs/awesome-github-copilot.svg" alt="Awesome Copilot Agents" height="300">
 </div>
 
 <h4 align="center">✨ A curated list of awesome GitHub instructions, prompt, skills, MCPs and custom agent markdown files for enhancing your GitHub Copilot AI experience.</h4>
@@ -26,7 +26,7 @@ licenseSource: "github-Code-and-Sorts-awesome-copilot-agents-readme-md"
 <hr>
 
 <p align="center">
- <a href="CONTRIBUTING.md">📖 Contribution Guide</a>
+ <a href="https://github.com/Code-and-Sorts/awesome-copilot-agents/blob/a26d912e4a42122e1f99cda61445fe5226aae541/CONTRIBUTING.md">📖 Contribution Guide</a>
 </p>
 <br>
 

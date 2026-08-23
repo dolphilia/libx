@@ -375,7 +375,7 @@ Food: Vending Machine + Cafés and Diners + Convenience stores
 
 #### Café Citoyen
 
-Community-owned (see their website for details of their organisation) and encouraging of event hosting and other activities. Café with great food and many speciality beers. 
+Community-owned (see their website for details of their organisation) and encouraging of event hosting and other activities. Café with great food and many speciality beers.
 
 Webpage: https://cafecitoyen.org/
 
@@ -1055,13 +1055,13 @@ Wifi | Power | Address | Open Hours
 #### Origin. Speciality Coffee
 
 > Coffeshop with a Zen vibe. Quite nice place to work at if you have to focus.
-> 
+>
 > ⛔ Phone Calls and Conference Calls are not allowed.
 
 
 Wifi | Power | Climatization | Address | Open Hours
 ---- | ----- | ------------- | ------- | ----------
-✔ | ⛔ | ✔ | [Carrer de Manso, 17, L'Eixample, 08015 Barcelona]() | Tue-Sun 09:00 - 06:00 pm 
+✔ | ⛔ | ✔ | [Carrer de Manso, 17, L'Eixample, 08015 Barcelona]() | Tue-Sun 09:00 - 06:00 pm
 
 ![Speedtest result](https://www.speedtest.net/result/18052522866.png)
 
@@ -1522,4 +1522,3 @@ open | ✔ | ✔ | [171 S Jackson St, Seattle, WA 98104](https://goo.gl/maps/SBz
 Wifi | Power | Coffee | Address | Open Hours
 ---- | ----- | ------ | ------- | ----------
 ask | ✔ | ✔ | [425 15th Ave E, Seattle, WA 98112](https://goo.gl/maps/2RFTNQaXynm) | Mon-Sun 8:00-22:00
-

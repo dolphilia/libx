@@ -6,9 +6,9 @@ licenseSource: "github-tobiasvl-awesome-chip-8-readme-md"
 
 # Awesome CHIP-8 [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 
-[<img src="c8.png" align="right" width="100">](https://chip-8.github.io)
+[<img src="https://raw.githubusercontent.com/tobiasvl/awesome-chip-8/62cec4b6bee270b5de4745d3c107d4138875b212/c8.png" align="right" width="100">](https://chip-8.github.io)
 
-> Virtual computer game machine from the 70s 
+> Virtual computer game machine from the 70s
 
 A curated list of awesome CHIP-8 resources, tools, documentation, related projects and open source ROMs.
 

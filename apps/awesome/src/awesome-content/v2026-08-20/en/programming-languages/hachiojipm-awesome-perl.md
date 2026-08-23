@@ -573,7 +573,7 @@ We also recommend these lists.
 * [WWW::Mechanize](https://metacpan.org/pod/WWW::Mechanize)
 * [WWW::Mechanize::PhantomJS](https://metacpan.org/pod/WWW::Mechanize::PhantomJS) - automate the PhantomJS browser
 * [WWW::Scripter](https://metacpan.org/pod/distribution/WWW-Scripter/lib/WWW/Scripter.pod) - For scripting web sites that have scripts
-* [WWW::Selenium](https://metacpan.org/pod/WWW::Selenium) 
+* [WWW::Selenium](https://metacpan.org/pod/WWW::Selenium)
 
 
 ## Network Security
@@ -589,7 +589,7 @@ We also recommend these lists.
 * [Net::Analysis](https://metacpan.org/pod/Net::Analysis) - Perl library for analysing network traffic
 * [Net::Silk](https://metacpan.org/pod/Net::Silk) - Perl's Interface to the SiLK network flow library
 * [Net::Inspect](https://metacpan.org/pod/Net::Inspect) - Perl library for inspection of data on various network layers
-* [Net::Tshark](https://metacpan.org/pod/Net::Tshark) - Perl interface for Tshark network capture utility 
+* [Net::Tshark](https://metacpan.org/pod/Net::Tshark) - Perl interface for Tshark network capture utility
 * [Net::Sharktools](https://metacpan.org/pod/Net::Sharktools) - Wireshark's packet inspection capabilities in Perl
 * [File::PCAP](https://metacpan.org/pod/File::PCAP) - Read, Write and manipulate  PCAP file format through Perl
 * [Net::P0f](https://metacpan.org/pod/Net::P0f) - Perl interface to p0f utility, usefull for finger-printing os
@@ -623,7 +623,7 @@ We also recommend these lists.
 * [Disassemble::X86](https://metacpan.org/pod/Disassemble::X86) - Another library for disassembe X86 instructions
 * [X86::Udis86](https://metacpan.org/pod/X86::Udis86) - Interface for the C Udis disassembler
 * [Asm::X86](https://metacpan.org/pod/Asm::X86) - List of instructions and registers of x86-compatible processors, validating and converting instructions and memory references
-* [ELF::Writer](https://metacpan.org/pod/ELF::Writer) - write and read executable ELF files 
+* [ELF::Writer](https://metacpan.org/pod/ELF::Writer) - write and read executable ELF files
 
 
 # Other Awesome Lists

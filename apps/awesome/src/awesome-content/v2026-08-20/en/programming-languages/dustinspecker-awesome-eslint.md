@@ -210,7 +210,7 @@ If you want to contribute, please read the [contribution guidelines](https://git
 - [eslint-plugin-error-cause](https://github.com/Amnish04/eslint-plugin-error-cause) - A plugin to preserve original error context when re-throwing exceptions.
 - [eslint-plugin-hexagonal-architecture](https://github.com/CodelyTV/eslint-plugin-hexagonal-architecture) - A plugin that helps you to enforce hexagonal architecture best practices.
 - [eslint-plugin-hex-under](https://github.com/2nd-Labs/eslint-plugin-hex-under) - A plugin to prove that a hexadecimal number is less than a specified value.
-- [eslint-plugin-signature-design](https://github.com/Vladyslav-Soldatenko/eslint-plugin-signature-design) - Forbids functions with too many parameters of the same type, encouraging object-based signatures and preventing primitive obsession. 
+- [eslint-plugin-signature-design](https://github.com/Vladyslav-Soldatenko/eslint-plugin-signature-design) - Forbids functions with too many parameters of the same type, encouraging object-based signatures and preventing primitive obsession.
 - [eslint-plugin-write-good-comments](https://github.com/kantord/eslint-plugin-write-good-comments) - Enforce good writing style in comments.
 - [eslint-plugin-exception-handling](https://github.com/Akronae/eslint-plugin-exception-handling) - Lints unhandled functions that might throw errors.
 - [fp](https://github.com/jfmengels/eslint-plugin-fp) - ESLint rules for functional programming.
@@ -277,7 +277,7 @@ If you want to contribute, please read the [contribution guidelines](https://git
   - [with unused expressions](https://github.com/ihordiachenko/eslint-plugin-chai-friendly)
   - [permitted keywords](https://github.com/gavinaiken/eslint-plugin-chai-expect-keywords)
   - [with chai-as-promised plugin](https://github.com/fintechstudios/eslint-plugin-chai-as-promised)
-  
+
   - [globals](https://github.com/t-huth/eslint-plugin-chai-assert-bdd)
 - [Cucumber](https://github.com/darrinholst/eslint-plugin-cucumber) - Linting rules for Cucumber.
 - [Cypress](https://github.com/cypress-io/eslint-plugin-cypress) - Linting rules for Cypress.

@@ -39,7 +39,7 @@ Contributions are welcome! Check out the contribution guidelines for adding item
 - [Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.goodreads.com/book/show/179133.Domain_Driven_Design) - Strategic patterns to understand complex domains and how to model them based on the impact on the business competitive advantage.
 - [Implementing Domain-Driven Design](https://www.goodreads.com/book/show/15756865-implementing-domain-driven-design) - An implementation approach to DDD from strategic patterns to tactical patterns with code examples.
 - [Domain-Driven Design Distilled](https://www.goodreads.com/book/show/28602719-domain-driven-design-distilled) - An accessible book to learn the main concepts of Domain-Driven Design.
-- [Wardley Maps](https://medium.com/wardleymaps/on-being-lost-2ef5f05eb1ec) - A deep explanation of the origin of Wardley Maps up to the full understanding of how to do strategy which it is adaptive to the environment. 
+- [Wardley Maps](https://medium.com/wardleymaps/on-being-lost-2ef5f05eb1ec) - A deep explanation of the origin of Wardley Maps up to the full understanding of how to do strategy which it is adaptive to the environment.
 - [Architecture Modernization. Socio-technical alignment of software, strategy, and structure](https://www.manning.com/books/architecture-modernization) - Concrete tools, techniques, and processes to align software architecture with your business domains, organizational design, team topologies, and corporate strategy.
 - [Effective Platform Engineering](https://www.manning.com/books/effective-platform-engineering) - A book about designing, building, deploying, and scaling a custom Internal Development Platforms (IDP).
 
@@ -48,7 +48,7 @@ Contributions are welcome! Check out the contribution guidelines for adding item
 - [Designing an Engineering Strategy Post Series](https://learnings.aleixmorgadas.dev/p/designing-an-engineering-strategy) - How to build an engineering strategy from 0.
 - [Engineering strategy](https://lethain.com/engineering-strategy/) - What's an engineering strategy.
 - [Defining a Tech Strategy](https://sarahtaraporewalla.com/agile/design/architecture/Defining-a-Tech-Strategy) - A high-level guideline on defining a tech strategy.
-- [Tech Strategy: You Need it, But What is it?](https://medium.com/nick-tune-tech-strategy-blog/tech-strategy-you-need-it-but-what-is-it-af292421e422) - In-depth reflection of what is a tech strategy. 
+- [Tech Strategy: You Need it, But What is it?](https://medium.com/nick-tune-tech-strategy-blog/tech-strategy-you-need-it-but-what-is-it-af292421e422) - In-depth reflection of what is a tech strategy.
 - [🗺🧭 Using Wardley Mapping to understand why Google made G. Appointments to compete in the Calendly market](https://learnings.aleixmorgadas.dev/p/-using-wardley-mapping-to-understand) - Using wardley mapping to understand google appointments.
 - [What is a Strategy? Why do you need one in Tech?](https://www.linkedin.com/pulse/what-strategy-why-do-you-need-one-tech-rui-felgueiras) - Introduction to what is a strategy for tech.
 - [Delivering on an Architecture Strategy](https://blog.thepete.net/blog/2019/12/09/delivering-on-an-architecture-strategy/) - Describes strategic architectural initiatives, a framework which allowing product peeps and techies to make progress on big technical improvements via aligned autonomy.
@@ -116,7 +116,7 @@ Contributions are welcome! Check out the contribution guidelines for adding item
 ## Communities
 
 - [Engineering Strategy on Discord](https://discord.gg/mebRYrNamF) - Discord community focused on Engineering Strategy.
-- [FastFlowConf](https://www.fastflowconf.com) with [recorded session on Youtube](https://www.youtube.com/@fastflowconf) - FastFlowConf focuses on the approach and methodologies described in Team Topologies 
+- [FastFlowConf](https://www.fastflowconf.com) with [recorded session on Youtube](https://www.youtube.com/@fastflowconf) - FastFlowConf focuses on the approach and methodologies described in Team Topologies
 
 ## Podcasts
 

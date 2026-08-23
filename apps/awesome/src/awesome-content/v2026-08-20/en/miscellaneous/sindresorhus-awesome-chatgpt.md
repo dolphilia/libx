@@ -10,7 +10,7 @@ licenseSource: "github-sindresorhus-awesome-chatgpt-readme-md"
 	<div>
 		<picture>
 			<source media="(prefers-color-scheme: dark)" srcset="media/logo-dark.svg">
-			<img alt="Awesome ChatGPT" width="500px" src="media/logo.svg">
+			<img alt="Awesome ChatGPT" width="500px" src="https://raw.githubusercontent.com/sindresorhus/awesome-chatgpt/fdf528f64b40c8f4f510f0eb22831a2696e87da7/media/logo.svg">
 		</picture>
 		<br>
 	</div>

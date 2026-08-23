@@ -8,7 +8,7 @@ licenseSource: "github-Esri-awesome-arcgis-developer-readme-md"
 # Awesome ArcGIS Developers [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 
-<img src="esri-logo.png" align="right" width="100">
+<img src="https://raw.githubusercontent.com/Esri/awesome-arcgis-developer/c215f75ae07307e26e0b41bda96c92e924e48561/esri-logo.png" align="right" width="100">
 
 > An awesome set of resources to help you [develop with ArcGIS Products](https://www.esri.com/en-us/arcgis/products/develop-with-arcgis/overview).
 
@@ -161,7 +161,7 @@ ArcGIS products give you access to APIs, location services, and tools to develop
 
 ## Data integration tools
 
-- [ArcGIS Data Interoperability Extension](https://esri-es.github.io/awesome-arcgis/arcgis/products/extensions/data-interoperability/) - Desktop tool to transform +400 data formats. 
+- [ArcGIS Data Interoperability Extension](https://esri-es.github.io/awesome-arcgis/arcgis/products/extensions/data-interoperability/) - Desktop tool to transform +400 data formats.
 - [FME Server](https://www.safe.com/integrate/) - ETL allowing to easily transform almost any dataset into an ArcGIS compatible format and vice-versa. Support for 500+ formats and technologies.
 - [Koop](https://koopjs.github.io) - JavaScript toolkit for connecting spatial APIs. Transform geospatial data on the fly and serve as GeoJSON, vector tiles, feature services, and more.
 - [Make.com](https://www.make.com/en/integrations/survey123) - iPaaS to automate repetitive tasks involved in using Survey123 and make your work easier.
@@ -184,13 +184,13 @@ ArcGIS products give you access to APIs, location services, and tools to develop
 - Best practices, books, videos, and training:
 	- [Cartography and Making Stunning Maps](https://www.youtube.com/watch?v=AGf_DjZZwXc) - Short video showing some examples of what can be achieved using different blend modes effects.
 	- [How to style using ArcGIS Online](https://www.youtube.com/watch?v=6vy-kVkIcRg&list=PLPjPOZQjCWEn6ezKrwN11L8NWhZ2JdpYd) - Playlist with a collection of short videos showcasing some ArcGIS styling capabilities.
-	- [Photoshop-style Graphics Effects for Your Layers and Data](https://www.youtube.com/watch?v=crmWm80hwKI) - Video explaining how to use blend modes as well as layer and feature effects to create unique and stunning web maps using the ArcGIS API for JavaScript 4.x. 
+	- [Photoshop-style Graphics Effects for Your Layers and Data](https://www.youtube.com/watch?v=crmWm80hwKI) - Video explaining how to use blend modes as well as layer and feature effects to create unique and stunning web maps using the ArcGIS API for JavaScript 4.x.
 	- [MapUIPatterns](https://www.mapuipatterns.com/) - Best practices & design principles. UI Patterns describe solutions to observed and recurring design problems.
 - Developer tools:
 	- [Calcite Design System](https://developers.arcgis.com/calcite-design-system/) - Collection of mapping icons, web components, and good practices.
   - [Calcite Intellisense Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=K-Dev.calcite-intellisense) - Injects HTML IntelliSense (completion, hover, documentation) for Esri Calcite Design System web components, using Esri's official custom-data JSON.
 	- [Calcite Snippets Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=K-Dev.calcite-snippets) - A collection of handy code snippets for the Calcite Design System components, designed to boost your productivity when building web applications with Calcite in Visual Studio Code.
-	
+
 	- [geojson2svg](https://github.com/w8r/geojson2svg) - Render GeoJSON into SVG using an inline or external stylesheet.
 - GUIs:
 	- [ArcGIS Vector Tile Style Editor](https://developers.arcgis.com/documentation/mapping-apis-and-services/tools/vector-tile-style-editor/) - Style vector tile basemap layers for applications.
@@ -234,7 +234,7 @@ ArcGIS products give you access to APIs, location services, and tools to develop
 - [Geo Data Viewer](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.geo-data-viewer) - VSCode extension for Geo Data Analytics. Support to generate and view maps.
 - [geojson.io](https://github.com/mapbox/geojson.io) - Web application to visualize, generate, and edit geospatial vector data. Supports GeoJSON, TopoJSON, CSV, KML, WKT, and Shapefile.
 - [gpxstudio](https://github.com/gpxstudio/gpxstudio.github.io) - Online and open source GPX file editor.
-- [Mapshaper](https://github.com/mbloch/mapshaper) - Web application to simplify shapes, edit attribute data, clip, erase, dissolve, filter, etc. Supported file formats: Shapefile, GeoJSON, TopoJSON, and CSV files. 
+- [Mapshaper](https://github.com/mbloch/mapshaper) - Web application to simplify shapes, edit attribute data, clip, erase, dissolve, filter, etc. Supported file formats: Shapefile, GeoJSON, TopoJSON, and CSV files.
 - [Smart Mapping](https://www.esri.com/en-us/smart-mapping) - It is built into the Map and Scene viewer, but some APIs like JavaScript and Python also provide utilities to help build data exploration tools.
 - [VSCode Map Preview](https://marketplace.visualstudio.com/items?itemName=jumpinjackie.vscode-map-preview) - Extension for visually previewing geospatial file content (GeoJSON, KML, etc) on a map.
 
@@ -306,7 +306,7 @@ You can [file an issue](https://github.com/ArcGIS/awesome-arcgis-developer/issue
 Esri welcomes contributions from anyone and everyone. You can [issue a pull request](https://github.com/ArcGIS/awesome-arcgis-developer/pulls) to propose an update, but before doing it, please:
 
 - Check the [contributing guidelines for this repo](https://github.com/Esri/awesome-arcgis-developer/blob/c215f75ae07307e26e0b41bda96c92e924e48561/CONTRIBUTING.md).
-- Take a look at [previously logged issues](https://github.com/ArcGIS/awesome-arcgis-developer/issues). 
+- Take a look at [previously logged issues](https://github.com/ArcGIS/awesome-arcgis-developer/issues).
 
 For more information, please see Esri's [guidelines for contributing](https://github.com/esri/contributing).
 

@@ -6,7 +6,7 @@ licenseSource: "github-sdras-awesome-actions-readme-md"
 
 <p align="center">
   <br>
-    <img src="awesome-actions.png" width="150"/>
+    <img src="https://raw.githubusercontent.com/sdras/awesome-actions/0edccf33480b95bf7547b90187c31e9ab2cb070d/awesome-actions.png" width="150"/>
   <br>
 </p>
 

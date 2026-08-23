@@ -116,7 +116,7 @@ licenseSource: "github-mjhea0-awesome-fastapi-readme-md"
 - [Pydantic-SQLAlchemy](https://github.com/tiangolo/pydantic-sqlalchemy) - Convert SQLAlchemy models to [Pydantic](https://pydantic.dev/docs/) models.
 - [FastAPI-CamelCase](https://nf1s.github.io/fastapi-camelcase/) - CamelCase JSON support for FastAPI utilizing [Pydantic](https://pydantic.dev/docs/).
   - [CamelCase Models with FastAPI and Pydantic](https://medium.com/analytics-vidhya/camel-case-models-with-fast-api-and-pydantic-5a8acb6c0eee) - Accompanying blog post from the author of the extension.
- 
+
 ### Dependency Injection
 
 - [modern-di](https://github.com/modern-python/modern-di) - Dependency injection framework with IoC container and scopes, with a [FastAPI integration](https://github.com/modern-python/modern-di-fastapi).
@@ -345,4 +345,4 @@ Compute:
 
 Please support this open source project by checking out our sponsors:
 
-<a href="https://testdriven.io/courses/tdd-fastapi/?ref=awesome-fastapi" target="_blank" title="Learn to build high-quality web apps with best practices"><img src="images/testdriven.svg"></a>
+<a href="https://testdriven.io/courses/tdd-fastapi/?ref=awesome-fastapi" target="_blank" title="Learn to build high-quality web apps with best practices"><img src="https://raw.githubusercontent.com/mjhea0/awesome-fastapi/9a4d2f01ab0c298e55a276618596dbbab0c2a33b/images/testdriven.svg"></a>

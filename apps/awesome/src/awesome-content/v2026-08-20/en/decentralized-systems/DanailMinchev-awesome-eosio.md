@@ -6,7 +6,7 @@ licenseSource: "github-DanailMinchev-awesome-eosio-readme-md"
 
 # Awesome EOSIO [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="eos-logo.png" alt="EOSIO" align="right" width="100">](https://eos.io/)
+[<img src="https://raw.githubusercontent.com/DanailMinchev/awesome-eosio/2daa91a1752f78a6addc63c3eccbff997cec96da/eos-logo.png" alt="EOSIO" align="right" width="100">](https://eos.io/)
 
 > A curated list of awesome **EOSIO** resources for users and developers.
 
@@ -170,7 +170,7 @@ All about development on EOSIO platform.
 - [The EOSIO Testnet](https://testnet.eos.io/) - Block.one's official EOSIO Testnet. Test on fully-featured EOSIO stable releases.
 - [Jungle Testnet](https://jungletestnet.io/) - The Jungle TestNet was initiated by and has served as sandbox for many development teams and EOS Block Producers since the birth of EOSIO.
 - [CryptoKylin Testnet](https://www.cryptokylin.io/) - CryptoKylin Testnet is a developer-friendly testnet maintained by a group of EOS Mainnet Block Producers.
-- [Wax Testnet](https://wax-testnet.eosio.online/) - Wax's official Testnet. 
+- [Wax Testnet](https://wax-testnet.eosio.online/) - Wax's official Testnet.
   - [Account Creation and Faucet](https://waxsweden.org/testnet/) - Wax Sweden's testnet page.
 
 ### Libraries and Frameworks

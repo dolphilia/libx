@@ -6,7 +6,7 @@ licenseSource: "github-osmlab-awesome-openstreetmap-readme-md"
 
 # Awesome OpenStreetMap [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="osm-logo.svg" align="right" width="100">](https://www.openstreetmap.org/about)
+[<img src="https://raw.githubusercontent.com/osmlab/awesome-openstreetmap/983363a724c5fe1335587d1e120565e7f835c030/osm-logo.svg" align="right" width="100">](https://www.openstreetmap.org/about)
 
 > A curated list of awesome [OpenStreetMap](https://www.openstreetmap.org)-projects.
 
@@ -14,7 +14,7 @@ OpenStreetMap is an open map being used by millions of devices and users every d
 
 This list contains projects using OpenStreetMap data for creative purposes, as well as projects dedicated to improving OpenStreetMap.
 
-We also have a list of <a href="UNMAINTAINED.md">unmaintained projects</a>. If you are a developer, consider adopting one!
+We also have a list of <a href="https://github.com/osmlab/awesome-openstreetmap/blob/983363a724c5fe1335587d1e120565e7f835c030/UNMAINTAINED.md">unmaintained projects</a>. If you are a developer, consider adopting one!
 
 ## Contents
 
@@ -92,7 +92,7 @@ We also have a list of <a href="UNMAINTAINED.md">unmaintained projects</a>. If y
 * [OpenMapTiles](https://openmaptiles.org/) - Set of tools for self-hosted vector maps and map services with labels in more than 50 languages. ([Source Code](https://github.com/openmaptiles) / [Wiki](https://wiki.openstreetmap.org/wiki/OpenMapTiles))
 * [OSMNames](http://osmnames.org/) - Geocoding tool ranking places according to the corresponding Wikipedia page popularity. ([Source Code](https://github.com/osmnames/osmnames) / [Wiki](https://wiki.openstreetmap.org/wiki/OSMNames))
 * [overpass-turbo](http://overpass-turbo.eu) - Web based data mining tool for OpenStreetMap using Overpass API. ([Source Code](https://github.com/tyrasd/overpass-turbo) / [Wiki](https://wiki.openstreetmap.org/wiki/Overpass_turbo))
-* [hdyc](http://hdyc.neis-one.org) - Statistics viewer for contributions of any OSM user. ([Wiki](https://wiki.openstreetmap.org/wiki/How_did_you_contribute%3F)) 
+* [hdyc](http://hdyc.neis-one.org) - Statistics viewer for contributions of any OSM user. ([Wiki](https://wiki.openstreetmap.org/wiki/How_did_you_contribute%3F))
 * [Osmose](https://osmose.openstreetmap.fr) - QA-tool for fixing problems detected in OpenStreetMap data. ([Source Code](https://github.com/osm-fr?q=osmose) / [Wiki](https://wiki.openstreetmap.org/wiki/Osmose))
 * [opening_hours evaluation tool](https://openingh.openstreetmap.de/evaluation_tool/) - Tool for evaluating `opening_hours` tags. ([Source Code](https://github.com/opening-hours/opening_hours.js))
 * [taginfo](https://taginfo.openstreetmap.org/) - Website displaying information on tags and their usage. ([Source Code](https://github.com/taginfo/taginfo/) / [Wiki](https://wiki.openstreetmap.org/wiki/Taginfo))
@@ -167,7 +167,7 @@ This section is a great place to start if you want to get into improving OpenStr
 * [Show me the way](https://osmlab.github.io/show-me-the-way/) - Live map showing latest changes on aerial imagery. ([Source Code](https://github.com/osmlab/show-me-the-way/) / [Wiki](https://wiki.openstreetmap.org/wiki/Show_Me_The_Way))
 * [OSM In Realtime](https://osm-in-realtime.jwestman.net/) - Visualization of the changes made to OpenStreetMap as they happen. ([Source Code](https://gitlab.com/jwestman/osm-in-realtime) / [Wiki](https://wiki.openstreetmap.org/wiki/OSM-in-realtime))
 * [osm-livechanges](http://live.openstreetmap.fr/) - Near-real-time display of edits in the OpenStreetMap database. ([Source Code](https://github.com/cstenac/osm-livechanges))
-* [indoor=](https://indoorequal.org) - Map for viewing indoor data from OpenStreetMap. ([Wiki](https://wiki.openstreetmap.org/wiki/Indoor%3D)) 
+* [indoor=](https://indoorequal.org) - Map for viewing indoor data from OpenStreetMap. ([Wiki](https://wiki.openstreetmap.org/wiki/Indoor%3D))
 * [F4map Demo](https://demo.f4map.com/) - 3D rendering demo of OpenStreetMap data. ([Wiki](https://wiki.openstreetmap.org/wiki/F4_Map))
 * [FacilMap](https://facilmap.org/) - Map with easy possibility to filter for POI types. ([Source Code](https://github.com/FacilMap/facilmap) / [Wiki](https://wiki.openstreetmap.org/wiki/FacilMap))
 * [Straßenraumkarte Neukölln](https://supaplexosm.github.io/strassenraumkarte-neukoelln/?map=micromap) - High-detail micromap of the district "Neukölln" of Berlin, Germany. ([Wiki](https://wiki.openstreetmap.org/wiki/Micromapping#Stra.C3.9Fenraumkarte_Neuk.C3.B6lln))
@@ -323,4 +323,4 @@ OpenStreetMap and the OpenStreetMap Logo are a trademark of the OpenStreetMap Fo
 
 The OpenStreetMap Logo by Ken Vermette is used under the Creative Commons Attribution-ShareAlike 3.0 License.
 
-[^selfhosted-only]: This project does not provide a hosted instance and has to be self-deployed. Refer to the project's website for instructions.
+[^selfhosted-only]: https://github.com/osmlab/awesome-openstreetmap/blob/983363a724c5fe1335587d1e120565e7f835c030/This project does not provide a hosted instance and has to be self-deployed. Refer to the project's website for instructions.

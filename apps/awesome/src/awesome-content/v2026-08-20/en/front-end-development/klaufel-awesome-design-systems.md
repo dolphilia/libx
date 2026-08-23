@@ -10,7 +10,7 @@ licenseSource: "github-klaufel-awesome-design-systems-readme-md"
 
 <p align="center">
   <a href="https://github.com/klaufel/awesome-design-systems#readme">
-    <img src="media/awesome-design-systems-cover.svg" alt="Awesome Design Systems"/>
+    <img src="https://raw.githubusercontent.com/klaufel/awesome-design-systems/26429688e487b930a08c2a1d0a93576e2bd0eb8c/media/awesome-design-systems-cover.svg" alt="Awesome Design Systems"/>
   </a>
 </p>
 
@@ -131,7 +131,7 @@ See more design tokens info [here](https://github.com/sturobson/Awesome-Design-T
 
 ## Coding tools
 
-- [Backlight](https://backlight.dev/) — With collaboration between developers and designers at heart, Backlight is a very complete coding platform where teams build, document, publish, scale and maintain Design Systems. 
+- [Backlight](https://backlight.dev/) — With collaboration between developers and designers at heart, Backlight is a very complete coding platform where teams build, document, publish, scale and maintain Design Systems.
 
 ## Pattern library
 
@@ -142,7 +142,7 @@ See more design tokens info [here](https://github.com/sturobson/Awesome-Design-T
 
 ### Develop isolated components
 
-- [Backlight](https://backlight.dev/) - Collaborative platform to build Design Systems on the code side. Empower your front-end with an all-in-one solution to manage components. Quick start, speed-up collaboration. 
+- [Backlight](https://backlight.dev/) - Collaborative platform to build Design Systems on the code side. Empower your front-end with an all-in-one solution to manage components. Quick start, speed-up collaboration.
 - [Pattern Lab](https://patternlab.io/) - Pattern Lab helps you and your team build thoughtful, pattern-driven user interfaces using atomic design principles.
 - [React Styleguidist](https://react-styleguidist.js.org/) - Isolated React component development environment with a living style guide.
 - [Storybook](https://storybook.js.org/) - Build bulletproof UI components faster. Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular. It makes building stunning UIs organized and efficient.

@@ -6,7 +6,7 @@ licenseSource: "github-Mo-way-awesome-aoip-readme-md"
 
 # Awesome Audio Over IP [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="./resources/aes67-logo.png" alt="AES67 Logo" align="centre">](https://wikipedia.org/wiki/AES67)
+[<img src="https://raw.githubusercontent.com/Mo-way/awesome-aoip/f370f91ded5a7f833c09ca2139ded63142269c4b/resources/aes67-logo.png" alt="AES67 Logo" align="centre">](https://wikipedia.org/wiki/AES67)
 
 > A curated list of awesome [Audio over IP](https://www.avid.com/resource-center/audio-over-ip-avb-and-dante-what-todays-music-producer-should-know) and AES67 tools and resources.
 

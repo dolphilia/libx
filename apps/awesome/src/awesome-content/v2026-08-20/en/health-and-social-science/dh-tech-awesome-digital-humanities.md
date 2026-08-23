@@ -6,7 +6,7 @@ licenseSource: "github-dh-tech-awesome-digital-humanities-readme-md"
 
 # Awesome Digital Humanities [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="android-chrome-512x512.png" align="right" width="100">](https://github.com/dh-tech/awesome-digital-humanities/)
+[<img src="https://raw.githubusercontent.com/dh-tech/awesome-digital-humanities/4f5ed493f19503ea8f2bd31d746a25928f51d806/android-chrome-512x512.png" align="right" width="100">](https://github.com/dh-tech/awesome-digital-humanities/)
 
 > Software for humanities scholars using quantitative or computational methods.
 

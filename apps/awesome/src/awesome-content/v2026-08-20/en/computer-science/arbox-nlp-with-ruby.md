@@ -4,7 +4,7 @@ description: "Canonical snapshot of arbox/nlp-with-ruby"
 licenseSource: "github-arbox-nlp-with-ruby-readme-md"
 ---
 
-<img src="header.png" align="center">
+<img src="https://raw.githubusercontent.com/arbox/nlp-with-ruby/44db8a3e4c74c2a6fdcc6bef6bd14ed021b7bd24/header.png" align="center">
 
 [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome#readme) [![Support Me](https://img.shields.io/badge/%F0%9F%92%97-Support%20Me-blue.svg?style=flat-square)](https://www.patreon.com/arbox)
 
@@ -13,7 +13,7 @@ licenseSource: "github-arbox-nlp-with-ruby-readme-md"
  [RubyInterop](https://github.com/arbox/ruby-interoperability)]
 
 
-# Awesome NLP with Ruby [<img src="ruby.jpg" align="left" width="30px" height="30px" />][ruby]
+# Awesome NLP with Ruby [<img src="https://raw.githubusercontent.com/arbox/nlp-with-ruby/44db8a3e4c74c2a6fdcc6bef6bd14ed021b7bd24/ruby.jpg" align="left" width="30px" height="30px" />][ruby]
 
 > Useful resources for text processing in Ruby
 

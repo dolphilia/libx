@@ -8,7 +8,7 @@ licenseSource: "github-craftcms-awesome-readme-md"
 
 Official list of [awesome](https://github.com/topics/awesome) Craft CMS resources, article, and other and shiny things.
 
-> **Note**  
+> **Note**
 > Something missing? [Edit this page](https://github.com/craftcms/awesome/edit/main/README.md)!
 
 **[Craft CMS](https://craftcms.com) is a flexible, extensible content management system for building bespoke digital experiences.**

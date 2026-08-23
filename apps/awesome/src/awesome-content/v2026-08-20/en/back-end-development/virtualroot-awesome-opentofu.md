@@ -4,13 +4,13 @@ description: "Canonical snapshot of virtualroot/awesome-opentofu"
 licenseSource: "github-virtualroot-awesome-opentofu-readme-md"
 ---
 
-# Awesome OpenTofu [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) 
+# Awesome OpenTofu [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 > A curated and collaborative list of awesome OpenTofu resources and tools.
 
 [OpenTofu](https://opentofu.org/) allows you to declaratively manage your infrastructure. It's an open-source, community-driven alternative to Terraform.
 
-## Contents 
+## Contents
 
 - [Official](#official)
 - [Community](#community)

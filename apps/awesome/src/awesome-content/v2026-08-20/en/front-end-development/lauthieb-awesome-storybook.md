@@ -6,7 +6,7 @@ licenseSource: "github-lauthieb-awesome-storybook-readme-md"
 
 # Awesome Storybook [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="storybook-logo.svg" align="right" width="80">](https://storybook.js.org)
+[<img src="https://raw.githubusercontent.com/lauthieb/awesome-storybook/4426659a18d744f3bf54fda2da38d2b7c6cae52e/storybook-logo.svg" align="right" width="80">](https://storybook.js.org)
 
 > A curated list of awesome resources about Storybook's ecosystem :art:
 

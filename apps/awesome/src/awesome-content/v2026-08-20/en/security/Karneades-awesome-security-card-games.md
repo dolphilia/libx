@@ -25,7 +25,7 @@ Security card games help train your skills and enable discussions for various ar
 
 ## Cryptography
 
-- [Crypto Go](https://www.cryptogogame.com/EN) - An educational card game designed to teach up to date 
+- [Crypto Go](https://www.cryptogogame.com/EN) - An educational card game designed to teach up to date
   symmetric cryptography. Crypto Go deck consists of cards representing modern cryptographic tools.
 
 ## Data Privacy

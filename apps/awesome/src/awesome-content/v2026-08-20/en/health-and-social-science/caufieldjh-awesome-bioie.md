@@ -13,7 +13,7 @@ licenseSource: "github-caufieldjh-awesome-bioie-readme-md"
 	<br>
 	How to extract information from unstructured biomedical data and text.
 	<br>
-	
+
 </div>
 
 What is BioIE? It includes any effort to extract structured information from _unstructured_ (or, at least inconsistently structured) biological, clinical, or other biomedical data. The data source is often some collection of text documents written in technical language. If the resulting information is verifiable and consistent across sources, we may then consider it _knowledge_. Extracting information and producing knowledge from bio data requires adaptations upon methods developed for other types of unstructured data.
@@ -62,7 +62,7 @@ _Please read the [contribution guidelines](https://github.com/caufieldjh/awesome
 ### Pre-LLM Overviews
 * [Biomedical Informatics on the Cloud: A Treasure Hunt for Advancing Cardiovascular Medicine](https://www.ahajournals.org/doi/full/10.1161/CIRCRESAHA.117.310967) - An overview of how BioIE and bioinformatics workflows can be applied to questions in cardiovascular health and medicine research.
 * [Clinical information extraction applications: A literature review](https://www.sciencedirect.com/science/article/pii/S1532046417302563) - A review of clinical IE papers published as of September 2016. From Mayo Clinic group (see below).
-* [Literature Based Discovery: Models, methods, and trends](https://www.sciencedirect.com/science/article/pii/S1532046417301909) - A review of Literature Based Discovery (LBD), or the philosophy that meaningful connections may be found between seemingly unrelated scientific literature. 
+* [Literature Based Discovery: Models, methods, and trends](https://www.sciencedirect.com/science/article/pii/S1532046417301909) - A review of Literature Based Discovery (LBD), or the philosophy that meaningful connections may be found between seemingly unrelated scientific literature.
   * For some historical context on LBD, see papers by University of Chicago's Don Swanson and Neil Smalheiser, including [_Undiscovered Public Knowledge_](https://www.jstor.org/stable/4307965) (paywalled) and [_Rediscovering Don Swanson: the Past, Present and Future of Literature-Based Discovery_](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5771422/).
 * [Mining Electronic Health Records (EHRs): A Survey](https://arxiv.org/abs/1702.03222) - A review of the methods and philosophy behind mining electronic health records, including using them for adverse event detection. See Table 2 for a list of relevant papers as of mid-2017.
 * [Capturing the Patient's Perspective: a Review of Advances in Natural Language Processing of Health-Related Text](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6250990/) - A 2017 review of natural language processing methods applied to information extraction in health records and social media text. An important note from this review: "One of the main challenges in the field is the availability of data that can be shared and which can be used by the community to push the development of methods based on comparable and reproducible studies".
@@ -78,7 +78,7 @@ _Please read the [contribution guidelines](https://github.com/caufieldjh/awesome
 * Groups at U.S. National Institutes of Health (NIH) / National Library of Medicine (NLM):
   * [Demner-Fushman group at NLM](https://www.lhncbc.nlm.nih.gov/personnel/dina-demner-fushman)
   * [BioNLP group at NCBI](https://www.ncbi.nlm.nih.gov/research/bionlp/) - Develops improvements to biomedical literature search and curation (e.g., through PubMed), led by Dr. Zhiyong Lu.
-* [JensenLab](https://jensenlab.org/) - Based at the Novo Nordisk Foundation Center for Protein Research at the University of Copenhagen, Denmark. 
+* [JensenLab](https://jensenlab.org/) - Based at the Novo Nordisk Foundation Center for Protein Research at the University of Copenhagen, Denmark.
 * [National Centre for Text Mining (NaCTeM)](http://www.nactem.ac.uk/) - Based at the University of Manchester and led by Prof. Sophia Ananiadou, NaCTeM is concerned with text mining in general but has a particular focus on biomedical applications.
 * [Mayo Clinic's clinical natural language processing program](https://www.mayo.edu/research/departments-divisions/department-health-sciences-research/medical-informatics/projects) - Several groups at Mayo Clinic have made major contributions to BioIE (for example, the Apache cTAKES platform) over the past 20 years.
 * [Monarch Initiative](https://monarchinitiative.org/) - A joint effort between groups at Oregon State University, Oregon Health & Science University, Lawrence Berkeley National Lab, The Jackson Laboratory, and several others, seeking to "integrate biological information using semantics, and present it in a novel way, leveraging phenotypes to bridge the knowledge gap".
@@ -123,7 +123,7 @@ For preprints, try [arXiv](https://arxiv.org), especially the subjects Computati
 Some events in BioIE are organized around formal tasks and challenges in which groups develop their own computational solutions, given a dataset.
 
 * [BioASQ](http://bioasq.org/) - Challenges on biomedical semantic indexing and question answering. Challenges and workshops held annually since 2013.
-* [BioCreAtIvE workshop](https://biocreative.bioinformatics.udel.edu/) - These workshops have been organized since 2004, with  BioCreative VI happening February 2017 and the [BioCreative/OHNLP Challenge](https://sites.google.com/view/ohnlp2018/home) held in 2018. See [Datasets](#datasets) below. 
+* [BioCreAtIvE workshop](https://biocreative.bioinformatics.udel.edu/) - These workshops have been organized since 2004, with  BioCreative VI happening February 2017 and the [BioCreative/OHNLP Challenge](https://sites.google.com/view/ohnlp2018/home) held in 2018. See [Datasets](#datasets) below.
 * [SemEval workshop](http://alt.qcri.org/semeval2020/) - Tasks and evaluations in computational semantic analysis. Tasks vary by year but frequently cover scientific and/or biomedical language, e.g. the [SemEval-2019 Task 12 on Toponym Resolution in Scientific Papers](https://competitions.codalab.org/competitions/19948).
 * [eHealth-KD](https://knowledge-learning.github.io/ehealthkd-2019/) - Challenges for encouraging "development of software technologies to automatically extract a large variety of knowledge from eHealth documents written in the Spanish Language". Previously held as part of [TASS](http://www.sepln.org/workshops/tass/), an annual workshop for semantic analysis in Spanish.
 * [EHR DREAM Challenge](https://www.synapse.org/#!Synapse:syn18405991/wiki/589657) - Held along with several other [more bioinformatics-focused challenges](http://dreamchallenges.org/), this challenge opened in October 2019 and focuses on using electronic health record data to predict patient mortality. Uses a synthetic data set rather than real EHR contents.
@@ -141,7 +141,7 @@ _TBD - watch this space!_
 ### Pre-LLM Guides, Lectures, and Courses
 
 * [Getting Started in Text Mining](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0040020) - A brief introduction to bio-text mining from Cohen and Hunter. More than ten years old but still quite relevant. See also an [earlier paper by the same authors](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1702322/).
-* [Biomedical Literature Mining](https://link.springer.com/book/10.1007/978-1-4939-0709-0) - A (non-free) volume of Methods in Molecular Biology from 2014. Chapters covers introductory principles in text mining, applications in the biological sciences, and potential for use in clinical or medical safety scenarios. 
+* [Biomedical Literature Mining](https://link.springer.com/book/10.1007/978-1-4939-0709-0) - A (non-free) volume of Methods in Molecular Biology from 2014. Chapters covers introductory principles in text mining, applications in the biological sciences, and potential for use in clinical or medical safety scenarios.
 * [Coursera - Foundations of mining non-structured medical data](https://www.coursera.org/learn/mining-medical-data) - About three hours worth of video lectures on working with medical data of various types and structures, including text and image data. Appears fairly high-level and intended for beginners.
 * [JensenLab text mining exercises](https://jensenlab.org/training/textmining/)
 * [VIB text mining and curation training](https://www.bits.vib.be/training-list/111-bits/training/previous-trainings/183-text-mining) - This training workshop happenened in 2013 but the slides are still online.
@@ -152,7 +152,7 @@ _TBD - watch this space!_
 
 * [Biopython](https://biopython.org/) - [paper](http://dx.doi.org/10.1093/bioinformatics/btp163) - [code](https://github.com/biopython/biopython) - Python tools primarily intended for bioinformatics and computational molecular biology purposes, but also a convenient way to obtain data, including documents/abstracts from PubMed (see Chapter 9 of the documentation).
 * [Bio-SCoRes](https://github.com/kilicogluh/Bio-SCoRes) - [paper](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0148538) - A framework for biomedical coreference resolution.
-* [medaCy](https://github.com/NLPatVCU/medaCy) - A system for building predictive medical natural language processing models. Built on the [spaCy](https://spacy.io/) framework. 
+* [medaCy](https://github.com/NLPatVCU/medaCy) - A system for building predictive medical natural language processing models. Built on the [spaCy](https://spacy.io/) framework.
 * [ScispaCy](https://github.com/allenai/SciSpaCy) - [paper](https://arxiv.org/abs/1902.07669) - A version of the [spaCy](https://spacy.io/) framework for scientific and biomedical documents.
 * [rentrez](https://github.com/ropensci/rentrez) - R utilities for accessing NCBI resources, including PubMed.
 * [Med7](https://medium.com/@kormilitzin/med7-clinical-information-extraction-system-in-python-and-spacy-5e6f68ab1c68) - [paper](https://arxiv.org/abs/2003.01271) - [code](https://github.com/kormilitzin/med7) - a Python package and model (for use with spaCy) for doing NER with medication-related concepts.
@@ -165,7 +165,7 @@ _TBD - watch this space!_
 
 ## Tools, Platforms, and Services
 
-* [cTAKES](https://ctakes.apache.org/) - [paper](https://academic.oup.com/jamia/article/17/5/507/830823) - [code](https://github.com/apache/ctakes) - A system for processing the text in electronic medical records. Widely used and open source. 
+* [cTAKES](https://ctakes.apache.org/) - [paper](https://academic.oup.com/jamia/article/17/5/507/830823) - [code](https://github.com/apache/ctakes) - A system for processing the text in electronic medical records. Widely used and open source.
 * [CLAMP](https://clamp.uth.edu/) - [paper](https://academic.oup.com/jamia/article/25/3/331/4657212) - A natural language processing toolkit intended for use with the text in clinical reports. Check out their [live demo](https://clamp.uth.edu/clampdemo.php) first to see what it does. Usable at no cost for academic research.
 * [DeepPhe](https://github.com/DeepPhe/DeepPhe-Release) - A system for processing documents describing cancer presentations. Based on cTAKES (see above).
 * [DNorm](https://www.ncbi.nlm.nih.gov/research/bionlp/Tools/dnorm/) - [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3810844/) - A method for disease normalization, i.e., linking mentions of disease names and acronyms to unique concept identifiers. Downloadable version includes the NCBI Disease Corpus and BC5CDR (see Annotated Text Data below).

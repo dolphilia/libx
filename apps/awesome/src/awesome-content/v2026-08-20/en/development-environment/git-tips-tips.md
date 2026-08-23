@@ -411,12 +411,12 @@ git checkout --orphan <branch_name>
 
 ### Find guilty with binary search
 ```sh
-git bisect start                    # Search start 
-git bisect bad                      # Set point to bad commit 
-git bisect good v2.6.13-rc2         # Set point to good commit|tag 
-git bisect bad                      # Say current state is bad 
-git bisect good                     # Say current state is good 
-git bisect reset                    # Finish search 
+git bisect start                    # Search start
+git bisect bad                      # Set point to bad commit
+git bisect good v2.6.13-rc2         # Set point to good commit|tag
+git bisect bad                      # Say current state is bad
+git bisect good                     # Say current state is good
+git bisect reset                    # Finish search
 
 ```
 
@@ -962,7 +962,7 @@ git diff --word-diff=color
 
 ## Merging and Rebasing
 
-### Rebases 'feature' to 'master' and merges it in to master 
+### Rebases 'feature' to 'master' and merges it in to master
 ```sh
 git rebase master feature && git checkout master && git merge -
 ```
@@ -1143,7 +1143,7 @@ curl -L http://git.io/vfhol > ~/.git-completion.bash && echo '[ -f ~/.git-comple
 
 ### Git Aliases
 ```sh
-git config --global alias.<handle> <command> 
+git config --global alias.<handle> <command>
 git config --global alias.st status
 ```
 

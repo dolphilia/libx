@@ -81,14 +81,14 @@ quantum cryptography protocols against entanglement attacks (2011)](https://doi.
 ### Other protocols
 
 - [Practical position-based quantum cryptography (2015)](https://doi.org/10.1103/PhysRevA.92.052304) - Provides a protocol based on interleaved unitaries, conjecturing security. The protocol was broken efficiently later.
-- [Quantum position verification in bounded-attack-frequency model (2016)](https://doi.org/10.1007/s11433-016-0234-0) - Considers BB84 QPV with non-simultaneous arrival times of input information at the prover (the basis being encoded in which side arrived first). Discusses the general port-based attack in this setting. 
+- [Quantum position verification in bounded-attack-frequency model (2016)](https://doi.org/10.1007/s11433-016-0234-0) - Considers BB84 QPV with non-simultaneous arrival times of input information at the prover (the basis being encoded in which side arrived first). Discusses the general port-based attack in this setting.
 - [Practically secure quantum position verification (2021)](https://doi.org/10.1088/1367-2630/ac0755) - Gives an overview over the existing protocols at the time and mixes elements of them to obtain different variations of those protocols.
 - [Towards practical and error-robust quantum position verification (2021)](https://arxiv.org/abs/2106.12911) - Defines a new protocol based on the SWAP test and studies it theoretically and practically.
 - [Making existing quantum position verification protocols secure against arbitrary transmission loss (2023)](https://arxiv.org/abs/2312.12614) - Introduces an extra commitment step into QPV and shows that for a class of protocols this makes the transmission loss irrelevant for security.
 
 ## Universal Attacks on QPV
 
-- [Position-based quantum cryptography: Impossibility and constructions (2011)](https://doi.org/10.1137/130913687) - Rigorously defines QPV and provides an general attack on all such QPV protocols using a doubly exponential amount of pre-shared EPR pairs in the number of input qubits. 
+- [Position-based quantum cryptography: Impossibility and constructions (2011)](https://doi.org/10.1137/130913687) - Rigorously defines QPV and provides an general attack on all such QPV protocols using a doubly exponential amount of pre-shared EPR pairs in the number of input qubits.
 - [Simplified instantaneous non-local quantum computation with applications to position-based cryptography (2011)](https://doi.org/10.1088/1367-2630/13/9/093036) - Provides a general attack on QPV based on port-based teleportation, using an exponential amount of pre-shared EPR pairs in the number of input qubits. Also provides a QPV protocol with a provably linear lower bound.
 - [Instantaneous non-local computation of low T-depth quantum circuits (2016)](https://doi.org/10.4230/LIPIcs.TQC.2016.9) - Provides a general attack on QPV using an exponential amount of pre-shared EPR pairs in the number of T-gates or T-depth based on the circuit decomposition of the task unitary into Clifford+T gates.
 - [Non-local computation of quantum circuits with small light cones (2022)](https://arxiv.org/abs/2203.10106) - Provides a general attack on QPV based on the geometric structure of a circuit decomposition of the task unitary. Is more efficient for certain classes of unitaries than previous general attacks.
@@ -111,9 +111,9 @@ quantum cryptography protocols against entanglement attacks (2011)](https://doi.
 ## Quantum Position-based Authentication
 
 - [Position-based quantum cryptography: Impossibility and constructions (2011)](https://doi.org/10.1137/130913687) - Provides a generic, but inefficient, construction to go from QPV to QPA to PB-QKD.
-- [Quantum position verification in the random oracle model (2014)](https://doi.org/10.1007/978-3-662-44381-1_1) - Provides more efficient extensions to QPA and PB-QKD in the random oracle model for $f$-BB84 QPV. 
+- [Quantum position verification in the random oracle model (2014)](https://doi.org/10.1007/978-3-662-44381-1_1) - Provides more efficient extensions to QPA and PB-QKD in the random oracle model for $f$-BB84 QPV.
 - [Quantum Secure Key Exchange with Position-based Credentials (2025)](https://arxiv.org/abs/2506.03549) - Improved analysis of how to use QPV to provide the authentication within QKD.
- 
+
 ## Towards Understanding NLQC
 
 - [Quantum tasks in Minkowski space (2012)](https://doi.org/10.1088/0264-9381/29/22/224013) - Considers more general quantum tasks than QPV.

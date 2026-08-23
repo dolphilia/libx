@@ -8,7 +8,7 @@ licenseSource: "github-hallvaaw-awesome-biological-image-analysis-readme-md"
 
 <p align="center">
   <br>
-    <img width="300" src="awesome-biological-image-analysis.svg" alt="Awesome Biological Image Analysis">
+    <img width="300" src="https://raw.githubusercontent.com/hallvaaw/awesome-biological-image-analysis/c1a3c6ddef25c1906e61a6496d7fcf7c89e115ca/awesome-biological-image-analysis.svg" alt="Awesome Biological Image Analysis">
  <br>
  <br>
 </p>

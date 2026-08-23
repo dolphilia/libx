@@ -10,7 +10,7 @@ licenseSource: "github-atblueprints-awesome-atproto-readme-md"
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 </div>
 
-# Awesome ATProto 
+# Awesome ATProto
 
 > [AT Protocol](https://atproto.com/) is a federated protocol for building social applications on an open, decentralized network
 
@@ -106,7 +106,7 @@ Find below each platform's lexicons:
 * [Skymdb](https://github.com/safwanyp/skymdb/tree/main/domain/lexicons)
 * [Smoke Signal](https://github.com/SmokeSignal-Events/lexicon)
 * [Sparta Social](https://github.com/dblock/sparta-social/tree/main/lexicons)
-* [Whitewind](https://github.com/whtwnd/whitewind-blog/tree/main/lexicons/com/whtwnd/blog) 
+* [Whitewind](https://github.com/whtwnd/whitewind-blog/tree/main/lexicons/com/whtwnd/blog)
 
 ## Contributing
 

@@ -20,7 +20,7 @@ licenseSource: "github-NPACore-awesome-neuroimaging-readme-md"
   - [DSI](#dsi)
   - [Structural](#structural)
 - [Raw Data](#raw-data)
-- [Provenance and Automation](#provenance-and-automation) 
+- [Provenance and Automation](#provenance-and-automation)
 - [Imaging Tools](#imaging-tools)
   - [Skullstripping](#skullstripping)
   - [Warping](#warping)
@@ -59,7 +59,7 @@ licenseSource: "github-NPACore-awesome-neuroimaging-readme-md"
 - 💲[QMENTA](https://qmenta.com) - The all in one imaging platform for your clinical trial.
 
 #### Motion
-- [FIRMM](https://firmm.readthedocs.io) - Real-time motion monitoring for fMRI, diffusion, and navigated T1/T2 image acquisition. 
+- [FIRMM](https://firmm.readthedocs.io) - Real-time motion monitoring for fMRI, diffusion, and navigated T1/T2 image acquisition.
 - [`Dimon`](https://afni.nimh.nih.gov/pub/dist/doc/program_help/Dimon.html) - Monitor real-time acquisition of DICOM image files with AFNI.
 
 
@@ -125,7 +125,7 @@ Dealing with DICOM and k-space images
 
 - [make](https://www.frontiersin.org/articles/10.3389/fninf.2016.00002/full) - follow script recipes defined in `Makefile`.
 - [datalad](https://github.com/datalad/datalad) - Keep code, data, containers under control with git and git-annex. Esp `datalad run --input=... --output=...`.
-- [`3dNotes`](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNotes.html) - A program to add, delete and show notes for AFNI datasets. 
+- [`3dNotes`](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNotes.html) - A program to add, delete and show notes for AFNI datasets.
 
 - [`niinote`](https://github.com/lncd/lncdtools/blob/master/niinote) - Add AFNI nifti XML history to header to run and record any command. Part of [lncdtools](https://github.com/lncd/lncdtools/).
 
@@ -224,7 +224,7 @@ Tools for doing math on matrix values
 
 - [openneuro](https://openneuro.org/) - A free and open platform for validating and sharing BIDS-compliant MRI, PET, MEG, EEG, and iEEG data.
 - [NDA](https://nda.nih.gov/) - National Institute of Mental Health Data Archive (NDA) makes available human subjects data collected from hundreds of research projects across many scientific domains.
-- [NITRC](https://www.nitrc.org/) - NeuroImaging Tools & Resources Collaboratory library of neuroinformatics software and data. 
+- [NITRC](https://www.nitrc.org/) - NeuroImaging Tools & Resources Collaboratory library of neuroinformatics software and data.
 
 #### Big datasets
 

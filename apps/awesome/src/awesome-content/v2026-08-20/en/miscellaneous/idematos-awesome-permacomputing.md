@@ -5,9 +5,9 @@ licenseSource: "github-idematos-awesome-permacomputing-readme-md"
 ---
 
 # Awesome Permacomputing [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-<a href="https://permacomputing.net/"><img src="media/logo.png" alt="Permacomputing Logo" align="right"></a>
+<a href="https://permacomputing.net/"><img src="https://raw.githubusercontent.com/idematos/awesome-permacomputing/0d07960ec2bb8536f9bf14a75b07345e2f20e3f0/media/logo.png" alt="Permacomputing Logo" align="right"></a>
 A curation of resources, projects, and communities related to permacomputing.
-> [Permacomputing](https://permacomputing.net/permacomputing/) is both a concept and a community of practice oriented around issues of resilience and regenerativity in computer and network technology inspired by permaculture. 
+> [Permacomputing](https://permacomputing.net/permacomputing/) is both a concept and a community of practice oriented around issues of resilience and regenerativity in computer and network technology inspired by permaculture.
 
 ## Contents
 
@@ -24,7 +24,7 @@ A curation of resources, projects, and communities related to permacomputing.
 - [Communities](#communities)
   - [Collectives](#collectives)
   - [Forums](#forums)
-    
+
 ## Resources
 
 ### Websites
@@ -111,7 +111,7 @@ A curation of resources, projects, and communities related to permacomputing.
 - [Tiny Core Linux](http://tinycorelinux.net/) - Small, highly modular system with community build extensions.
 - [Alpine Linux](https://alpinelinux.org/) - Secure, lightweight Linux distribution.
 - [Plan 9](https://9p.io/plan9/) - Compact and uniform operating system built as a successor to Unix.
-  
+
 ##### Code Editors
 
 - [Vim](https://www.vim.org/) - Highly efficient, customisable, and lightweight text editor.
@@ -119,7 +119,7 @@ A curation of resources, projects, and communities related to permacomputing.
 - [Geany](https://www.geany.org/) - Small, lightweight IDE suitable for basic coding needs.
 - [Nano](https://www.nano-editor.org/) - A lightweight, terminal-based text editor for Unix-like systems.
 - [Left](https://wiki.xxiivv.com/site/left) - Graphical text editor for the Uxn virtual machine. 18kb.
-   
+
 ##### Tools
 
 - [Suckless](https://suckless.org/) - A collection of ultra-minimalist tools focused on simplicity, clarity and frugality.
@@ -155,8 +155,8 @@ A curation of resources, projects, and communities related to permacomputing.
 
 - [DuckDuckGo Lite](https://lite.duckduckgo.com/lite) - A minimal version of the DuckDuckGo search engine.
 - [Mojeek](https://www.mojeek.com/) - Independent, privacy-focused search engine.
-  
-##### Social 
+
+##### Social
 
 - [Scuttlebutt](https://scuttlebutt.nz/) - A decentralised, low-bandwidth social network that works offline and is powered by a peer-to-peer gossip protocol.
 - [Lemmy](https://join-lemmy.org/) - A federated, open-source social platform for creating and joining communities.
@@ -208,7 +208,7 @@ A curation of resources, projects, and communities related to permacomputing.
 - [Sustainable Web Manifesto](https://www.sustainablewebmanifesto.com/) - Advocates for sustainable design principles in the web industry.
 - [The Green Web Foundation](https://www.thegreenwebfoundation.org/) - An independent non-profit that tracks how much of the internet is powered by green energy.
 - [Varia](https://varia.zone/en/) - Rotterdam-based community focusing on collective approaches to sustainable technology.
-  
+
 ##### Art
 
 - [Small File Media Festival](https://smallfile.ca/) - A film festival in Canada, focused on short films with file sizes less than five megabytes.

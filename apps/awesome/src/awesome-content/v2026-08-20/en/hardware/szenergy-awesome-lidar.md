@@ -6,7 +6,7 @@ licenseSource: "github-szenergy-awesome-lidar-readme-md"
 
 # Awesome LIDAR [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 
-<img src="img/lidar02.svg" align="right" width="200" alt="LIDAR" />
+<img src="https://raw.githubusercontent.com/szenergy/awesome-lidar/35b8c40694f878a1710d3a1fecee7cbd73917301/img/lidar02.svg" align="right" width="200" alt="LIDAR" />
 
 > A curated list of awesome LIDAR sensors and its applications.
 
@@ -15,7 +15,7 @@ licenseSource: "github-szenergy-awesome-lidar-readme-md"
 Contributions are welcome! Please [check out](https://github.com/szenergy/awesome-lidar/blob/35b8c40694f878a1710d3a1fecee7cbd73917301/contributing.md) our guidelines.
 
 > **TIP:**
-> An optional view: [szenergy.github.io/awesome-lidar](https://szenergy.github.io/awesome-lidar/) 
+> An optional view: [szenergy.github.io/awesome-lidar](https://szenergy.github.io/awesome-lidar/)
 >
 > Source code: [github.com/szenergy/awesome-lidar](https://github.com/szenergy/awesome-lidar)
 
@@ -116,7 +116,7 @@ Contributions are welcome! Please [check out](https://github.com/szenergy/awesom
 - [Audi A2D2 Dataset](https://www.a2d2.audi) - The dataset features 2D semantic segmentation, 3D point clouds, 3D bounding boxes, and vehicle bus data.
   - [Paper ![](https://img.shields.io/badge/paper-blue?style=flat-square&logo=semanticscholar)](https://www.a2d2.audi/content/dam/a2d2/dataset/a2d2-audi-autonomous-driving-dataset.pdf)
 - [Waymo Open Dataset](https://waymo.com/open/) - The dataset contains independently-generated labels for lidar and camera data, not simply projections.
-- [Oxford RobotCar](https://robotcar-dataset.robots.ox.ac.uk/) - The Oxford RobotCar Dataset contains over 100 repetitions of a consistent route through Oxford, UK, captured over a period of over a year. 
+- [Oxford RobotCar](https://robotcar-dataset.robots.ox.ac.uk/) - The Oxford RobotCar Dataset contains over 100 repetitions of a consistent route through Oxford, UK, captured over a period of over a year.
   - [YouTube channel ![](https://img.shields.io/badge/youtube-red?style=flat-square&logo=youtube)](https://www.youtube.com/c/ORIOxfordRoboticsInstitute)
   - [Paper ![](https://img.shields.io/badge/paper-blue?style=flat-square&logo=semanticscholar)](https://robotcar-dataset.robots.ox.ac.uk/images/RCD_RTK.pdf)
 - [EU Long-term Dataset](https://epan-utbm.github.io/utbm_robocar_dataset/) - This dataset was collected with our robocar (in human driving mode of course), equipped up to eleven heterogeneous sensors, in the downtown (for long-term data) and a suburb (for roundabout data) of Montbéliard in France. The vehicle speed was limited to 50 km/h following the French traffic rules.
@@ -141,13 +141,13 @@ Contributions are welcome! Please [check out](https://github.com/szenergy/awesom
 - [Argoverse ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://www.argoverse.org/) ![](https://img.shields.io/github/stars/argoai/argoverse-api?color=yellow&style=flat-square&logo=github) - A dataset designed to support autonomous vehicle perception tasks including 3D tracking and motion forecasting collected in Pittsburgh, Pennsylvania and Miami, Florida, USA.
   - [Paper ![](https://img.shields.io/badge/paper-blue?style=flat-square&logo=semanticscholar)](https://openaccess.thecvf.com/content_CVPR_2019/papers/Chang_Argoverse_3D_Tracking_and_Forecasting_With_Rich_Maps_CVPR_2019_paper.pdf)
   - [YouTube video ![](https://img.shields.io/badge/youtube-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=DM8jWfi69zM)
-- [Boreas Dataset](https://www.boreas.utias.utoronto.ca/) - The Boreas dataset was collected by driving a repeated route over the course of 1 year resulting in stark seasonal variations. In total, Boreas contains over 350km of driving data including several sequences with adverse weather conditions such as rain and heavy snow. The Boreas data-taking platform features a unique high-quality sensor suite with a 128-channel Velodyne Alpha Prime lidar, a 360-degree Navtech radar, and accurate ground truth poses obtained from an Applanix POSLV GPS/IMU. 
+- [Boreas Dataset](https://www.boreas.utias.utoronto.ca/) - The Boreas dataset was collected by driving a repeated route over the course of 1 year resulting in stark seasonal variations. In total, Boreas contains over 350km of driving data including several sequences with adverse weather conditions such as rain and heavy snow. The Boreas data-taking platform features a unique high-quality sensor suite with a 128-channel Velodyne Alpha Prime lidar, a 360-degree Navtech radar, and accurate ground truth poses obtained from an Applanix POSLV GPS/IMU.
   - [Paper 📰](https://arxiv.org/abs/2203.10168)
   - [GitHub repository ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/utiasASRL/pyboreas) ![](https://img.shields.io/github/stars/utiasASRL/pyboreas?color=yellow&style=flat-square&logo=github)
 
 ## Libraries
 
-- [Point Cloud Library (PCL)](http://www.pointclouds.org/) - Popular highly parallel programming library, with numerous industrial and research use-cases. 
+- [Point Cloud Library (PCL)](http://www.pointclouds.org/) - Popular highly parallel programming library, with numerous industrial and research use-cases.
   - [GitHub repository ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/PointCloudLibrary/pcl) ![](https://img.shields.io/github/stars/PointCloudLibrary/pcl?color=yellow&style=flat-square&logo=github) ![](https://img.shields.io/badge/ROS-2-34aec5?style=flat-square&logo=ros)
 - [Open3D library](http://www.open3d.org/docs/release/) - Open3D library contanins 3D data processing and visualization algorithms. It is open-source and supports both C++ and Python.
   - [GitHub repository ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/intel-isl/Open3D) ![](https://img.shields.io/github/stars/intel-isl/Open3D?color=yellow&style=flat-square&logo=github)
@@ -225,7 +225,7 @@ Contributions are welcome! Please [check out](https://github.com/szenergy/awesom
   - [YouTube video ![](https://img.shields.io/badge/youtube-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=YYs4lJ9t-Xo)
 - [LineFit Graph ![](https://img.shields.io/badge/paper-blue?style=flat-square&logo=semanticscholar)](https://ieeexplore.ieee.org/abstract/document/5548059)- Line fitting-based fast ground segmentation for horizontal 3D LiDAR data
   - [GitHub repository ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/lorenwel/linefit_ground_segmentation) ![](https://img.shields.io/github/stars/lorenwel/linefit_ground_segmentation?color=yellow&style=flat-square&logo=github)
-- [Patchwork ![](https://img.shields.io/badge/paper-blue?style=flat-square&logo=semanticscholar)](https://arxiv.org/pdf/2108.05560.pdf)- Region-wise plane fitting-based robust and fast ground segmentation for 3D LiDAR data 
+- [Patchwork ![](https://img.shields.io/badge/paper-blue?style=flat-square&logo=semanticscholar)](https://arxiv.org/pdf/2108.05560.pdf)- Region-wise plane fitting-based robust and fast ground segmentation for 3D LiDAR data
   - [GitHub repository ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/LimHyungTae/patchwork) ![](https://img.shields.io/github/stars/LimHyungTae/patchwork?color=yellow&style=flat-square&logo=github)
   - [YouTube video ![](https://img.shields.io/badge/youtube-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=rclqeDi4gow)
 - [Patchwork++ ![](https://img.shields.io/badge/paper-blue?style=flat-square&logo=semanticscholar)](https://arxiv.org/pdf/2207.11919.pdf)- Improved version of Patchwork. Patchwork++ provides pybinding as well for deep learning users
@@ -238,7 +238,7 @@ Contributions are welcome! Please [check out](https://github.com/szenergy/awesom
 
 ### Simultaneous localization and mapping SLAM and LIDAR-based odometry and or mapping LOAM
 - [LOAM J. Zhang and S. Singh ![](https://img.shields.io/badge/youtube-red?style=flat-square&logo=youtube)](https://youtu.be/8ezyhTAEyHs) - LOAM: Lidar Odometry and Mapping in Real-time.
-- [LeGO-LOAM ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) ![](https://img.shields.io/github/stars/RobustFieldAutonomyLab/LeGO-LOAM?color=yellow&style=flat-square&logo=github) - A lightweight and ground optimized lidar odometry and mapping (LeGO-LOAM) system for ROS compatible UGVs. 
+- [LeGO-LOAM ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) ![](https://img.shields.io/github/stars/RobustFieldAutonomyLab/LeGO-LOAM?color=yellow&style=flat-square&logo=github) - A lightweight and ground optimized lidar odometry and mapping (LeGO-LOAM) system for ROS compatible UGVs.
   - [YouTube video ![](https://img.shields.io/badge/youtube-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=7uCxLUs9fwQ)
   - ROS 2 verison on different repo: [GitHub repository ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/eperdices/LeGO-LOAM-SR) ![](https://img.shields.io/github/stars/eperdices/LeGO-LOAM-SR?color=yellow&style=flat-square&logo=github) ![](https://img.shields.io/badge/ROS-2-34aec5?style=flat-square&logo=ros)
 - [Cartographer ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/cartographer-project/cartographer) ![](https://img.shields.io/github/stars/cartographer-project/cartographer?color=yellow&style=flat-square&logo=github) - Cartographer is ROS compatible system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations. ![](https://img.shields.io/badge/ROS-2-34aec5?style=flat-square&logo=ros)
@@ -314,7 +314,7 @@ Real-Time LIDAR-Based Urban Road and Sidewalk Detection for Autonomous Vehicles
   - [YouTube video ![](https://img.shields.io/badge/youtube-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=FH7aBWDmSNA)
 
 ## Related awesome
-- [Awesome point cloud analysis ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/Yochengliu/awesome-point-cloud-analysis#readme) ![](https://img.shields.io/github/stars/Yochengliu/awesome-point-cloud-analysis?color=yellow&style=flat-square&logo=github) 
+- [Awesome point cloud analysis ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/Yochengliu/awesome-point-cloud-analysis#readme) ![](https://img.shields.io/github/stars/Yochengliu/awesome-point-cloud-analysis?color=yellow&style=flat-square&logo=github)
 - [Awesome robotics ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/Kiloreux/awesome-robotics#readme) ![](https://img.shields.io/github/stars/Kiloreux/awesome-robotics?color=yellow&style=flat-square&logo=github)
 - [Awesome robotics libraries ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/jslee02/awesome-robotics-libraries#readme) ![](https://img.shields.io/github/stars/jslee02/awesome-robotics-libraries?color=yellow&style=flat-square&logo=github)
 - [Awesome ROS 2 ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/fkromer/awesome-ros2#readme) ![](https://img.shields.io/github/stars/fkromer/awesome-ros2?color=yellow&style=flat-square&logo=github) ![](https://img.shields.io/badge/ROS-2-34aec5?style=flat-square&logo=ros)
@@ -358,5 +358,5 @@ Real-Time LIDAR-Based Urban Road and Sidewalk Detection for Autonomous Vehicles
   - [GitHub repository ![](https://img.shields.io/badge/github-black?style=flat-square&logo=github)](https://github.com/Geekgineer/CloudPeek) ![](https://img.shields.io/github/stars/Geekgineer/CloudPeek?color=yellow&style=flat-square&logo=github)
 - [Which SLAM Algorithm Should I Choose?](https://www.slambotics.org/blog/which-slam-to-choose) Slambotics -  Choosing the Right SLAM Algorithm
 
-<img src="img/lidar02.svg" alt="LIDAR" />
+<img src="https://raw.githubusercontent.com/szenergy/awesome-lidar/35b8c40694f878a1710d3a1fecee7cbd73917301/img/lidar02.svg" alt="LIDAR" />
 <img src="https://raw.githubusercontent.com/szenergy/awesome-lidar/refs/heads/main/img/cc0.svg" align="center" width="400" alt="CC0" />

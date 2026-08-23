@@ -197,4 +197,3 @@ Contributions are welcome. Please read the [contributing guideline](https://gith
 - [Astrobin](https://www.astrobin.com) - Social image hosting dedicated to astrophotography.
 - [Cloudy Nights](https://www.cloudynights.com) - Arguably the largest community forums.
 - [Stargazers Lounge](https://stargazerslounge.com) - Small but active UK community forums.
-

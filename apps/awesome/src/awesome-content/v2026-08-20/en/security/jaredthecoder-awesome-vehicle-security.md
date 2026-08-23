@@ -107,7 +107,7 @@ These lists are related to a specific protocol that you will find in the world o
 - [Car Hacking Scene in the PH: How Far We've Come](https://www.youtube.com/watch?v=JaF-_KYQ46A) - Car Hacking Village PH presents their first attempt on the main tracks for ROOTCON. This is a rundown of CHVPH's past security research to current research - from hacking infotainment systems to CAN Bus protocols and a summary of cars available in the Philippines which are susceptible to car thefts.
 - [Analysis of an In-vehicular network: From CAN bus to infotainment](https://www.youtube.com/watch?v=4d-uhs2VLCQ) - This talk will feature Div0 CSQ’s 3 test benches as they explore more features on Connected vehicles. This was presented in ROOTCON 17 Car Hacking Village.
 - [An overview of Automotive Defensive Engineering](https://www.youtube.com/watch?v=MfTNv9SXd-o) - This talk is for car hackers to learn about modern defense measures being added to ECUs and Vehicle Architectures. This was presented in ROOTCON 17 Car Hacking Village.
-- [Hacking Back Your Car](https://www.youtube.com/watch?v=akMok3Hb-pE) - Kamel Ghali's talk on ROOTCON 17 about how an attacker's perspective on hacking a car and origins of such attacks, how they've been used in different countries over the years, and explore the technical details of what makes such an attack possible. 
+- [Hacking Back Your Car](https://www.youtube.com/watch?v=akMok3Hb-pE) - Kamel Ghali's talk on ROOTCON 17 about how an attacker's perspective on hacking a car and origins of such attacks, how they've been used in different countries over the years, and explore the technical details of what makes such an attack possible.
 - [TR23: V2GEvil: Ghost in the wires](https://www.youtube.com/watch?v=JVWFfSmIlRY) - This research is dedicated to enhancing the cybersecurity of electric vehicles, with a specific focus on identifying vulnerabilities in the Electric Vehicle Communication Controller (EVCC), and an introduction to the tool V2GEvil. Accessible through the On-Board Charging (OBC) port, makes this attack vector really important for the security of future vehicles.
 - [DEF CON CHV - V2GEvil: Ghost in the wires](https://www.youtube.com/watch?v=Ui2etjRyrUE) - Shortened and summarized version of the talk V2GEvil: Ghost in the wires, from the DEF CON 32 Car Hacking Village, by Pavel Khunt and Thomas Sermpinis.
 - [The hack, the crash and two smoking barrels. (And all the times I (almost) killed an engineer.)](https://www.youtube.com/watch?v=MDndWJxfP-U) - Thomas Sermpinis goes through the process of responsibly disclosing findings affecting the Blind Spot Detection Sensor of a current MY vehicle from one of the biggest OEMs in the world, leading to accusations that he was collaborating with hostile nations by the OEM. A story about how automotive manufacturers are treating the security industry, where are we heading, and how to be better, on the stage of DEF CON 32.
@@ -215,7 +215,7 @@ These lists are related to a specific protocol that you will find in the world o
     - [Twitter](https://twitter.com/CarHackVillage)
 - Ian Tabor / mintynet: Car Hacker, Car Hacking Village staff
     - [Twitter](https://twitter.com/mintynet)
-    - [Website](https://www.mintynet.com/)    
+    - [Website](https://www.mintynet.com/)
 - Daniel Öster: Dala's EV Repair, electric vehicle CAN hacking/upgrading
     - [Youtube](https://www.youtube.com/channel/UCc3g-KhOBoicgOrB4KkMeew)
     - [Website](https://dalasevrepair.fi/)
@@ -276,7 +276,7 @@ Overview of hardware, both open source and proprietary, that you can use when co
 - [Macchina M2](https://www.macchina.cc/m2-introduction) - Macchina 2.0 is a complete overhaul of our 1.X generation of Macchina. The goals are still the same: Create an easy-to-use, fully-open, and super-compatible automotive interface.
 - [PandwaRF](https://pandwarf.com/) - PandwaRF is a pocket-sized, portable RF analysis tool operating the sub-1 GHz range. It allows the capture, analysis and re-transmission of RF via an Android device or a Linux PC. Capture any data in ASK/OOK/MSK/2-FSK/GFSK modulation from the 300-928 MHz band.
 - [CAN MITM Bridge by MUXSCAN](https://www.tindie.com/products/muxsan/can-mitm-bridge-3-port-rev-25/) - a tool to MITM CAN messages, allowing easy interaction with your car.
-- [PiCCANTE](https://github.com/Alia5/PiCCANTE) - Open-source CAN hacking tool based on Raspberry Pi Pico [2] (W) - Up to 3x CAN interfaces, includes ELM327 emulator. 
+- [PiCCANTE](https://github.com/Alia5/PiCCANTE) - Open-source CAN hacking tool based on Raspberry Pi Pico [2] (W) - Up to 3x CAN interfaces, includes ELM327 emulator.
 - [AutoPi](https://github.com/autopi-io/autopi-core) - Open-source core software for the AutoPi dongle, a Raspberry Pi-based OBD-II device for vehicle telematics, CAN bus data collection, and automotive IoT applications.
 
 # Software

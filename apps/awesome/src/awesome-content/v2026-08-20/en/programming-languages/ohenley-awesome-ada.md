@@ -22,7 +22,7 @@ licenseSource: "github-ohenley-awesome-ada-readme-md"
 
 <br/><br/>
 
-A curated list of awesome resources related to the Ada and SPARK programming language.      
+A curated list of awesome resources related to the Ada and SPARK programming language.
 
 ## Contents
 <details>
@@ -161,19 +161,19 @@ A curated list of awesome resources related to the Ada and SPARK programming lan
 - [ada-95-tutorial](https://perso.telecom-paristech.fr/pautet/Ada95/a95list.htm) - A book going from beginner to advanced concepts in Ada 95, complete with source files.
 
 ### Books
-<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97810095/64779/cover/9781009564779.jpg">[Programming in Ada 2022](https://www.cambridge.org/core/books/programming-in-ada-2022/144FA52E3F0C1F260CBF9DECD10A68C9) - Comprehensive.  
-<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97810091/81341/cover/9781009181341.jpg">[Programming in Ada 2012 with a Preview of Ada 2022 (2nd ed.)](https://www.cambridge.org/core/books/programming-in-ada-2012-with-a-preview-of-ada-2022/AD30275F35CCECB97EAB80ABC32B019C#) - Comprehensive.  
-<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97811074/24814/cover/9781107424814.jpg">[Programming in Ada 2012](https://www.cambridge.org/core/books/programming-in-ada-2012/55B998B4E908A017E4D74A87364FF224#) - Comprehensive.  
-<img height="50px" width="36px" hspace="10px" src="https://images-na.ssl-images-amazon.com/images/I/41v2Gsi5zWL._SX348_BO1,204,203,200_.jpg">[Beginning Ada Programming: From Novice to Professional](https://www.amazon.com/Beginning-Ada-Programming-Novice-Professional/dp/1484254279) - Introduction.  
-<img height="50px" width="36px" hspace="10px" src="https://images-na.ssl-images-amazon.com/images/I/41SQC2F542L._SX347_BO1,204,203,200_.jpg">[Ada 95: The Craft of Object-Oriented Programming](https://www.amazon.com/Ada-95-Craft-Object-Oriented-Programming/dp/0132303507) - General, intermediate.  
-<img height="50px" width="36px" hspace="10px" src="https://images-na.ssl-images-amazon.com/images/I/51CLo5yzNsL._SX422_BO1,204,203,200_.jpg"> [Ada Plus Data Structures: An Object Oriented Approach](https://www.amazon.com/Ada-Plus-Data-Structures-Oriented/dp/0763737941) - Data Structures.  
-<img height="50px" width="36px" hspace="10px" src="https://media.springernature.com/w306/springer-static/cover-hires/book/978-1-84882-314-3"> [Ada for Software Engineers](https://link.springer.com/book/10.1007/978-1-84882-314-3) - Idioms, Architecture.  
-<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97805218/66972/cover/9780521866972.jpg">[Concurrent and Real-Time Programming in Ada](https://www.cambridge.org/core/books/concurrent-and-realtime-programming-in-ada/9DA4389E52005382D4CC1FC5D812DA71) - Concurrency, Containers, Scheduling.  
-<img height="50px" width="36px" hspace="10px" src="https://media.springernature.com/w306/springer-static/cover-hires/book/978-1-4612-1854-8">[Data Structures and Algorithms: An Object-Oriented Approach Using Ada 95](https://link.springer.com/book/10.1007/978-1-4612-1854-8) - Data structures, Algorithms.  
-<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97805211/97168/cover/9780521197168.jpg">[Building Parallel, Embedded, and Real-Time Applications with Ada](https://www.cambridge.org/core/books/building-parallel-embedded-and-real-time-applications-with-ada/9FC78A90F1B6A2228D69E32CE610A66C) - Concurrency, Distributed.  
-<img height="50px" width="36px" hspace="10px" src="https://images-na.ssl-images-amazon.com/images/I/41HIwJp0ktL._SX336_BO1,204,203,200_.jpg">[Analysable Real-Time Systems: Programmed in Ada](https://www.amazon.com/Analysable-Real-Time-Systems-Programmed-Ada/dp/1530265509/ref=sr_1_2?ie=UTF8&qid=1544540272&sr=8-2&keywords=ada+programming+language) - Scheduling.  
-<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97811076/56840/cover/9781107656840.jpg">[Building High Integrity Applications with SPARK](https://www.cambridge.org/core/books/building-high-integrity-applications-with-spark/F213D9867D2E271F5FF3EDA765D48E95) - Formal verification.  
-<img height="50px" width="36px" hspace="10px" src="https://assets.lulu.com/cover_thumbs/1/e/1erpwvkr-front-shortedge-384.jpg">[Ada and SPARK on ARM Cortex-M](https://www.lulu.com/shop/maciej-sobczak/ada-and-spark-on-arm-cortex-m/paperback/product-22614818.html) - Embedded.  
+<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97810095/64779/cover/9781009564779.jpg">[Programming in Ada 2022](https://www.cambridge.org/core/books/programming-in-ada-2022/144FA52E3F0C1F260CBF9DECD10A68C9) - Comprehensive.
+<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97810091/81341/cover/9781009181341.jpg">[Programming in Ada 2012 with a Preview of Ada 2022 (2nd ed.)](https://www.cambridge.org/core/books/programming-in-ada-2012-with-a-preview-of-ada-2022/AD30275F35CCECB97EAB80ABC32B019C#) - Comprehensive.
+<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97811074/24814/cover/9781107424814.jpg">[Programming in Ada 2012](https://www.cambridge.org/core/books/programming-in-ada-2012/55B998B4E908A017E4D74A87364FF224#) - Comprehensive.
+<img height="50px" width="36px" hspace="10px" src="https://images-na.ssl-images-amazon.com/images/I/41v2Gsi5zWL._SX348_BO1,204,203,200_.jpg">[Beginning Ada Programming: From Novice to Professional](https://www.amazon.com/Beginning-Ada-Programming-Novice-Professional/dp/1484254279) - Introduction.
+<img height="50px" width="36px" hspace="10px" src="https://images-na.ssl-images-amazon.com/images/I/41SQC2F542L._SX347_BO1,204,203,200_.jpg">[Ada 95: The Craft of Object-Oriented Programming](https://www.amazon.com/Ada-95-Craft-Object-Oriented-Programming/dp/0132303507) - General, intermediate.
+<img height="50px" width="36px" hspace="10px" src="https://images-na.ssl-images-amazon.com/images/I/51CLo5yzNsL._SX422_BO1,204,203,200_.jpg"> [Ada Plus Data Structures: An Object Oriented Approach](https://www.amazon.com/Ada-Plus-Data-Structures-Oriented/dp/0763737941) - Data Structures.
+<img height="50px" width="36px" hspace="10px" src="https://media.springernature.com/w306/springer-static/cover-hires/book/978-1-84882-314-3"> [Ada for Software Engineers](https://link.springer.com/book/10.1007/978-1-84882-314-3) - Idioms, Architecture.
+<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97805218/66972/cover/9780521866972.jpg">[Concurrent and Real-Time Programming in Ada](https://www.cambridge.org/core/books/concurrent-and-realtime-programming-in-ada/9DA4389E52005382D4CC1FC5D812DA71) - Concurrency, Containers, Scheduling.
+<img height="50px" width="36px" hspace="10px" src="https://media.springernature.com/w306/springer-static/cover-hires/book/978-1-4612-1854-8">[Data Structures and Algorithms: An Object-Oriented Approach Using Ada 95](https://link.springer.com/book/10.1007/978-1-4612-1854-8) - Data structures, Algorithms.
+<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97805211/97168/cover/9780521197168.jpg">[Building Parallel, Embedded, and Real-Time Applications with Ada](https://www.cambridge.org/core/books/building-parallel-embedded-and-real-time-applications-with-ada/9FC78A90F1B6A2228D69E32CE610A66C) - Concurrency, Distributed.
+<img height="50px" width="36px" hspace="10px" src="https://images-na.ssl-images-amazon.com/images/I/41HIwJp0ktL._SX336_BO1,204,203,200_.jpg">[Analysable Real-Time Systems: Programmed in Ada](https://www.amazon.com/Analysable-Real-Time-Systems-Programmed-Ada/dp/1530265509/ref=sr_1_2?ie=UTF8&qid=1544540272&sr=8-2&keywords=ada+programming+language) - Scheduling.
+<img height="50px" width="36px" hspace="10px" src="https://assets.cambridge.org/97811076/56840/cover/9781107656840.jpg">[Building High Integrity Applications with SPARK](https://www.cambridge.org/core/books/building-high-integrity-applications-with-spark/F213D9867D2E271F5FF3EDA765D48E95) - Formal verification.
+<img height="50px" width="36px" hspace="10px" src="https://assets.lulu.com/cover_thumbs/1/e/1erpwvkr-front-shortedge-384.jpg">[Ada and SPARK on ARM Cortex-M](https://www.lulu.com/shop/maciej-sobczak/ada-and-spark-on-arm-cortex-m/paperback/product-22614818.html) - Embedded.
 
 ### Specialties
 - [gems](https://ada-lang.io/docs/learn/lang/gems) - Ada Gem Archive.
@@ -325,7 +325,7 @@ A curated list of awesome resources related to the Ada and SPARK programming lan
 - [ada-gate](https://github.com/fastrgv/AdaGate) - AdaGate is a first-person 3D sokoban puzzle game within a Stargate / Portal fantasy setting for Windows, OS-X and Linux.
 - [rufas-cube](https://github.com/fastrgv/RufasCube) - RufasCube is a puzzle game for Windows, OS-X and GNU Linux (it looks like a rubic cube but it's a slider, not a twister).
 - [ada-venture](https://github.com/fastrgv/AdaVenture) - AdaVenture is a kid-friendly retro point&click game with mazes, dragons, bats & snakes.
-- [retro-arcade](https://github.com/fastrgv/RetroArcade) - Space Invaders, Pacman, & Frogger games that run in a terminal on Windows, OS-X & Linux. 
+- [retro-arcade](https://github.com/fastrgv/RetroArcade) - Space Invaders, Pacman, & Frogger games that run in a terminal on Windows, OS-X & Linux.
 - [world-cup-sokerban](https://github.com/fastrgv/WorldCupSokerban) - This is a soccer-themed, 3D sokoban puzzle game that runs on Windows, Mac OS-X and GNU Linux.
 - [pasta](http://pasta.phyrama.com/) - A game of the "match-3" genre, implemented in [gnoga].
 - [buttons](https://github.com/andreacervetti/buttons) - A simple [gtkada] Button Mania game.
@@ -472,7 +472,7 @@ language.  It is loosely modelled after JUnit and some ideas from AUnit.
 - [si](https://github.com/CKWG/SI_Units-Checked-and-Unchecked) - Checked and unchecked SI units.
 - [units-of-measurement](http://www.dmitry-kazakov.de/ada/units.htm) - Library to manage units of measurement with dimension checking.
 - [si-units](https://github.com/HeisenbugLtd/si_units) - Utility library to pretty print physical values in proper metric units.
- 
+
 ### Algorithms, Containers and Protocols
 - [ada-language-server](https://github.com/AdaCore/ada_language_server) - Adacore server implemention of the the Microsoft Language Protocol for Ada and SPARK.
 - [ada-lsp](https://github.com/reznikmm/ada-lsp) - Language Server Protocol for Ada.
@@ -743,7 +743,7 @@ language.  It is loosely modelled after JUnit and some ideas from AUnit.
 ### Multimedia
 - [ada-3ds](https://github.com/AdaDoom3/Ada3DS) - A simple 3DS Max model renderer.
 - [canta](https://sourceforge.net/projects/canta/) - A tool to help to sing in tune.
-- [blackvideo-mini-player](https://github.com/BlackBlazent/blackvideo-mini-player) - A stand-alone lightweight auxiliary video player support for [``BlackVideo``](https://github.com/BlackBlazent/BlackVideo). 
+- [blackvideo-mini-player](https://github.com/BlackBlazent/blackvideo-mini-player) - A stand-alone lightweight auxiliary video player support for [``BlackVideo``](https://github.com/BlackBlazent/BlackVideo).
 
 ### Automation
 - [acnc](https://github.com/Fabien-Chouteau/ACNC) - A G-code parser and CNC controller (in Ada).

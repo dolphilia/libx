@@ -5,7 +5,7 @@ licenseSource: "github-bolshchikov-js-must-watch-readme-md"
 ---
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-> This is a list of must-watch videos devoted to JavaScript 
+> This is a list of must-watch videos devoted to JavaScript
 
 ## 2020
 1. [David Neal: **JavaScript: Past, Present and Future**](https://youtu.be/n-N67Q0O52U) [47:26]
@@ -39,11 +39,11 @@ licenseSource: "github-bolshchikov-js-must-watch-readme-md"
 1. [Anjana Vakil: **Learning Functional Programming with JavaScript**](https://www.youtube.com/watch?v=e-5obm1G_FY) [29:56]
 1. [Kyle Simpson: **Advanced Async and Concurrency Patterns in JavaScript**](https://www.youtube.com/watch?v=Qg1SvpIau6U) [39:42]
 
-## 2015 
-1. Dr. Axel Rauschmayer: **Using ECMAScript 6 today** 
+## 2015
+1. Dr. Axel Rauschmayer: **Using ECMAScript 6 today**
 	* [Part 1](https://www.youtube.com/watch?v=Fg3bEZIcnUw) [40:44]
 	* [Part 2](https://www.youtube.com/watch?v=Vhhq1WpzsnM) [53:04]
-1. [Brendan Eich: **ECMAScript Harmony: Rise of the Compilers**](https://www.youtube.com/watch?v=PlmsweSNhTw) [19:17] 
+1. [Brendan Eich: **ECMAScript Harmony: Rise of the Compilers**](https://www.youtube.com/watch?v=PlmsweSNhTw) [19:17]
 1. [Andreas Gal: **Dirty Performance Secrets of HTML5**](https://www.youtube.com/watch?v=t8x40JXUeWA) [14:15]
 1. [Andre Staltz: **What if the user was a function?**](https://www.youtube.com/watch?v=1zj7M1LnJV4) [32:19]
 1. [Gilmore Davidson: **Time zone of your life**](https://www.youtube.com/watch?v=2BdFg5JT9lg) [23:40]
@@ -65,8 +65,8 @@ licenseSource: "github-bolshchikov-js-must-watch-readme-md"
 1. [Gary Bernhardt: **The Birth & Death of Javascript**](https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript) [29:22]
 1. [Addy Osmani: **Memory Management Masterclass**](https://www.youtube.com/watch?v=LaxbdIyBkL0) [55:06]
 1. [Reginald Braithwaite: **Invent the future, don't recreate the past**](http://youtu.be/uYcAjr2J_rU) [39:16]
-1. [Kyle Simpson: **Syncing Async**](https://www.youtube.com/watch?v=-wYw0bZZ38Y) [42:25] 
-1. [Ariya Hidayat: **JavaScript and the Browser: Under the Hood**](https://www.youtube.com/watch?v=dibzLw4wPms) [29:13] 
+1. [Kyle Simpson: **Syncing Async**](https://www.youtube.com/watch?v=-wYw0bZZ38Y) [42:25]
+1. [Ariya Hidayat: **JavaScript and the Browser: Under the Hood**](https://www.youtube.com/watch?v=dibzLw4wPms) [29:13]
 1. [Jafar Husain: **Version 7: The Evolution of JavaScript**](https://www.youtube.com/watch?v=DqMFX91ToLw) [1:11:53]
 1. [David Nolen: **Immutability: Putting The Dream Machine To Work**](https://www.youtube.com/watch?v=SiFwRtCnxv4) [22:05]
 1. [Pete Hunt: **OSCON 2014: How Instagram.com Works**](https://www.youtube.com/watch?v=VkTCL6Nqm6Y) [40:18]

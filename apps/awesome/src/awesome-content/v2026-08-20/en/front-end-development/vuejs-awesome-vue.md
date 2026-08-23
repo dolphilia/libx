@@ -6,7 +6,7 @@ licenseSource: "github-vuejs-awesome-vue-readme-md"
 
 Resource from plugin:github:github at repo://vuejs/awesome-vue/sha/14fa265df1bd0a3d78fca341a9739a42bf6cd95d/contents/README.md] <p align="center">
   <br>
-  <img width="400" src="./assets/logo.svg" alt="logo of vue-awesome repository">
+  <img width="400" src="https://raw.githubusercontent.com/vuejs/awesome-vue/4314013579667818093d3af094b68ed50479d9e1/assets/logo.svg" alt="logo of vue-awesome repository">
   <br>
   <br>
 </p>
@@ -975,7 +975,7 @@ _Tables / data grids_
 - [GridSheet](https://github.com/walkframe/gridsheet) - Highly customizable spreadsheet engine with formula support, multi-sheet references, and a Vue3 wrapper built on a Preact core.
 - [@witqq/spreadsheet](https://github.com/witqq/spreadsheet) - A canvas-based spreadsheet engine with zero dependencies, rendering 100K+ rows at 60fps with sorting, filtering, formulas, and collaboration.
 - [Jordium Gantt Vue3](https://github.com/nelson820125/jordium-gantt-vue3) - Vue3 Gantt chart component with Resource View, task dependencies, and project scheduling capabilities.
-- [gp-grid](https://www.gp-grid.io) - TypeScript Vue3 data grid featuring slot-based virtual scrolling, no features paywalls, and zero runtime dependencies. 
+- [gp-grid](https://www.gp-grid.io) - TypeScript Vue3 data grid featuring slot-based virtual scrolling, no features paywalls, and zero runtime dependencies.
 - [TinyPivot](https://tiny-pivot.com) - Lightweight Vue 3 data grid with pivot tables, charts, CSV/Excel export, and an optional AI data analyst.
 
 #### Notification
@@ -1694,7 +1694,7 @@ _Render Vue application to HTML on the server and to the DOM in the browser_
 
 - [vue-genesis](https://github.com/fmfe/genesis) - 🔥Micro front end, micro service and lightweight solution based on Vue SSR🔥
 
-  
+
 
   <br/>
   <br/>

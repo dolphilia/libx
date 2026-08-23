@@ -6,14 +6,14 @@ licenseSource: "github-zolagonano-awesome-zeronet-readme-md"
 
 <p align="center">
   <br>
-  <a href="https://zeronet.io"><img width="100" src="./assets/logo.png" alt="ZeroNet's logo"></a>
+  <a href="https://zeronet.io"><img width="100" src="https://raw.githubusercontent.com/zolagonano/awesome-zeronet/4406789e98ac751bab8d304fc5fa6d4557ef32cb/assets/logo.png" alt="ZeroNet's logo"></a>
   <br>
 </p>
 
 
 # Awesome ZeroNet [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> An Awesome & curated list of [ZeroNet](https://en.wikipedia.org/wiki/ZeroNet) implementations, plugins, tools, and zites. 
+> An Awesome & curated list of [ZeroNet](https://en.wikipedia.org/wiki/ZeroNet) implementations, plugins, tools, and zites.
 
 ZeroNet is a decentralized web-like network of peer-to-peer users.
 
@@ -81,7 +81,7 @@ ZeroNet is a decentralized web-like network of peer-to-peer users.
 | ThunderWave | A beautiful chat for ZeroNet | `1CWkZv7fQAKxTVjZVrLZ8VHcrN6YGGcdky` | N/A |
 
 ### Forums
- 
+
 | Name | Description | Address | Domain Name |
 | :--- | :--- | :---: | :--- |
 | The All-Night Bookstore and Cafe | A Friendly Local Forum | `13gLfTixjjktySEGHBMnmrQu4qMJpoRuXw` | N/A |

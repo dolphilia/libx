@@ -5,8 +5,8 @@ licenseSource: "github-idematos-awesome-webassembly-readme-md"
 ---
 
 # Awesome WebAssembly [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-<a href="https://webassembly.org/"><img src="media/wasm-logo.png" alt="Wasm Logo" align="right" style="height: 120px; width: 120px"></a>
-A curation of WebAssembly resources, projects, and communities. 
+<a href="https://webassembly.org/"><img src="https://raw.githubusercontent.com/idematos/awesome-webassembly/565a4eea7cb0c44f75dde1ba2cd3ed4f1780e480/media/wasm-logo.png" alt="Wasm Logo" align="right" style="height: 120px; width: 120px"></a>
+A curation of WebAssembly resources, projects, and communities.
 > [WebAssembly](https://webassembly.org/) (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine. Wasm is designed as a portable compilation target for programming languages, enabling deployment on the web for client and server applications.
 
 ## Contents

@@ -145,3 +145,22 @@ Critical以外を含む全対象パス、URL、比較数、定型化項目数、
 - `pnpm --filter=apps-awesome build`が成功する。
 - 回帰テストと`git diff --check`が合格する。
 - 修正件数、対象文書、残課題、公開判断を作業記録へ追記している。
+
+## 9. 概要ページのサイト内リンク追跡（2026-08-23）
+
+英語版・日本語版の`overview/sindresorhus-awesome`を再調査した。`Related`節と概要ページ自身への再帰リンクを除く「他のAwesomeリスト」は両言語とも669件で、リポジトリの掲載順も一致する。
+
+| 判定 | 件数 | 割合 |
+| --- | ---: | ---: |
+| 対応する英日ページがあり、公開時にlibx内リンクへ変換される | 362 | 54.11% |
+| 対応ページが未収録で、GitHubリンクのまま残る | 307 | 45.89% |
+| 合計 | 669 | 100% |
+
+公開中の英日概要ページはいずれもHTTP 200を返し、収録済み項目には`remarkAwesomeInternalLinks`による内部URL変換が適用されている。内部化対象362件の英日公開URL、計724 URLも全件HTTP 200を返した。一方、307件は変換漏れではなく、`awesome-routes.json`に対応リポジトリがなく、英日コンテンツページそのものがまだ用意されていない。収録済み362件は全件について英日双方のMarkdownファイルが存在し、ルートだけがある不完全な項目は0件だった。
+
+分野別では、未収録数が多い順に`Miscellaneous` 61件、`Programming Languages` 45件、`Front-End Development` 36件、`Platforms` 25件、`Computer Science` 19件、`Back-End Development` 17件である。今後は未収録307リポジトリをインポート・翻訳した後、既存の変換処理により内部リンク化する。GitHub URLだけを先に内部URLへ置換すると404を作るため行わない。
+
+後続作業では307件すべての英語ページを収録した。251件は再調査したライセンス証拠に基づく全文ページ、56件は本文を複製しない案内ページである。日本語化は未実施のため、内部リンク変換を言語別ページの実在確認へ変更し、日本語概要から未翻訳ページへの404リンクを作らない。詳細は`docs/plans/AWESOME_OVERVIEW_MISSING_COLLECTION_PLAN.md`を参照する。
+
+- 機械可読な全件記録: `docs/notes/document-import/awesome/AWESOME_OVERVIEW_INTERNAL_LINK_AUDIT.json`
+- 再検査: `pnpm awesome:audit-overview-links -- --output docs/notes/document-import/awesome/AWESOME_OVERVIEW_INTERNAL_LINK_AUDIT.json`

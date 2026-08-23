@@ -126,7 +126,7 @@ These work on specific platform(s) and enable the games to do something that wou
 
 Custom timers, timelines, and task scheduling.
 
-- [DoLater](https://github.com/JujuAdams/DoLater) - Deferred code execution improving on the native call_later() function. 
+- [DoLater](https://github.com/JujuAdams/DoLater) - Deferred code execution improving on the native call_later() function.
 - [Stopwatch](https://github.com/Lojemiru/Stopwatch) - GameMaker alarm replacement.
 - [wTimer](https://mors-games.itch.io/wtimer) - Robust alternative for alarms.
 - [FrogAlarm](https://github.com/colmeye/FrogAlarms) - Another easy alternative to GameMaker alarms.

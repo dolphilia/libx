@@ -7,7 +7,7 @@ licenseSource: "github-flame-engine-awesome-flame-readme-md"
 <div align="center">
 	<div>
     <a href="https://flame-engine.org/">
-		<img width="300" src="media/logo.png" alt="Awesome Flame">
+		<img width="300" src="https://raw.githubusercontent.com/flame-engine/awesome-flame/e0bb68acd89b369f9efb1b969d629373c560393a/media/logo.png" alt="Awesome Flame">
     </a>
 	</div>
   <p style="margin-top:30px;" align="center">
@@ -45,7 +45,7 @@ licenseSource: "github-flame-engine-awesome-flame-readme-md"
 ## Articles & Tutorials
 
 ### Tutorial by [imaNNeo](https://www.youtube.com/@imaNNeO) - [Color Switch Game tutorial](https://www.youtube.com/playlist?list=PL1-_rCwRcnbNknvJ4fbnsn46_ww8V4CVh) - (2023-10-06)
-- [0. Overview and Introduction of Flutter / Flame game tutorials 🔍](https://youtu.be/ubyoQGPnmmw?si=pt8t0Oi_7WYn0VGm) 
+- [0. Overview and Introduction of Flutter / Flame game tutorials 🔍](https://youtu.be/ubyoQGPnmmw?si=pt8t0Oi_7WYn0VGm)
 - [1. Flame Component System (FCM) & Event handling 🎊](https://youtu.be/eiZDbUBesqE)
 - [2. Camera and World components 🎥](https://youtu.be/nyUayMgZqDg)
 - [3. Sprite & Custom Components 🖼️](https://youtu.be/Xb5ySgetpmU)
@@ -189,7 +189,7 @@ licenseSource: "github-flame-engine-awesome-flame-readme-md"
 - Toilet Racer - [Android](https://play.google.com/store/apps/details?id=dr.achim.toilet_racer) - Turn your bathroom into a magical sanctuary and become the toilet ninja! By [Philipp Mudra](https://github.com/PMudra), [Tim Wiechmann](https://github.com/drachim-dev)
 
 
-- Wormo - [Android](https://play.google.com/store/apps/details?id=com.tbuonomo.wormo), [iOS](https://apps.apple.com/us/app/wormo-the-game/id1530797595) - Meet Wormo the gooey worm in this wonderful casual game! Think you can put wormo in the nest? Think again, it requires an extraordinary technique. 
+- Wormo - [Android](https://play.google.com/store/apps/details?id=com.tbuonomo.wormo), [iOS](https://apps.apple.com/us/app/wormo-the-game/id1530797595) - Meet Wormo the gooey worm in this wonderful casual game! Think you can put wormo in the nest? Think again, it requires an extraordinary technique.
 By Tommy Buonomo ([Frenchie Games](https://frenchiegames.app/#/))
 
 
@@ -232,7 +232,7 @@ By Tommy Buonomo ([Frenchie Games](https://frenchiegames.app/#/))
 #### Music
 
 
-- Relo Music Instrument - [Android](https://play.google.com/store/apps/details?id=ch.astrate.relo), [iOS](https://apps.apple.com/us/app/relo-music-instrument/id1547638708) - First ever RELATIVE music instrument, which is especially suitable for mobile devices and improvisation. 
+- Relo Music Instrument - [Android](https://play.google.com/store/apps/details?id=ch.astrate.relo), [iOS](https://apps.apple.com/us/app/relo-music-instrument/id1547638708) - First ever RELATIVE music instrument, which is especially suitable for mobile devices and improvisation.
 
 #### Online Multiplayer
 

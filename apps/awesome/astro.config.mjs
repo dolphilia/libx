@@ -1,7 +1,7 @@
 // @ts-check
 import { defineDocsConfig } from '@docs/config';
 import { loadProjectConfig } from '@docs/project-config';
-import routeManifest from './src/generated/awesome-routes.json' with { type: 'json' };
+import localizedRouteManifest from './src/generated/awesome-localized-routes.json' with { type: 'json' };
 import { remarkAwesomeInternalLinks } from '../../scripts/plugins/remark-awesome-internal-links.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -20,7 +20,7 @@ const config = defineDocsConfig({
 
 config.markdown?.remarkPlugins?.push([
   remarkAwesomeInternalLinks,
-  { baseUrl: projectConfig.paths.baseUrl, routes: routeManifest.entries },
+  { baseUrl: projectConfig.paths.baseUrl, routes: localizedRouteManifest.entries },
 ]);
 
 export default config;

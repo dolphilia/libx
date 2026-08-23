@@ -6,7 +6,7 @@ licenseSource: "github-ucg8j-awesome-dash-readme-md"
 
 # Awesome Dash [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
 
-[<img src="logo.webp" align="right" width="250">](https://plot.ly/products/dash/)
+[<img src="https://raw.githubusercontent.com/ucg8j/awesome-dash/506ef0c006bbd56d94c0d275c7311426049eb211/logo.webp" align="right" width="250">](https://plot.ly/products/dash/)
 
 A curated list of awesome Dash (plotly) resources
 
@@ -59,7 +59,7 @@ A curated list of awesome Dash (plotly) resources
 - [Dash Mosaic](https://github.com/ploomber/mosaic-python#dash-mosaic) - Display [Mosaic](https://github.com/uwdata/mosaic) plots
 - [Dash Tabler Icons](https://github.com/ploomber/dash-tabler-icons) - Beautiful icons for your Dash apps
 - [Dash React Syntax Highlighter](https://github.com/ploomber/dash-react-syntax-highlighter) - Display code snippets with a copy button
-- [Dash Canvas Components](https://dash.plotly.com/canvas) - Module for image annotation and image processing using 
+- [Dash Canvas Components](https://dash.plotly.com/canvas) - Module for image annotation and image processing using
 Dash.
 - [Awesome React Components](https://github.com/brillout/awesome-react-components) - Catalog of React.js components potentially interesting to be wrapped into Dash components.
 - [Awesome React](https://github.com/enaqx/awesome-react) - Helpful resources for developing React.js components.

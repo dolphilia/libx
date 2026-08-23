@@ -6,7 +6,7 @@ licenseSource: "github-koolamusic-awesome-imba-readme-md"
 
 <p align="center">
 	<a href="http://imba.io" align="center" target="_blank">
-		<img width="400" src="./logo/imba-awesome-logo.min.svg">
+		<img width="400" src="https://raw.githubusercontent.com/koolamusic/awesome-imba/21b9372a44255dc5cb4b9aa4cec53ed521dc83b4/logo/imba-awesome-logo.min.svg">
 	</a>
 </p>
 
@@ -51,7 +51,7 @@ Imba is a programming language inspired by Ruby and Python and compiles to perfo
 - [Hello World Imba](https://github.com/imba/hello-world-imba) - Official Imba "Hello World" example. Also you can use it as GitHub template.
 - [Imba Router](https://github.com/somebee/imba-router) - Experimental router for Imba.
 - [UXA](https://github.com/somebee/uxa) - Experimental framework for Imba.
-- [Parcel Plugin Imba](https://github.com/imba/parcel-plugin-imba) - [Parcel Bundler](https://parceljs.org/) plugin to enable 
+- [Parcel Plugin Imba](https://github.com/imba/parcel-plugin-imba) - [Parcel Bundler](https://parceljs.org/) plugin to enable
 processing of Imba files.
 - [Material Imba](https://github.com/nathanjohnson320/material-imba) - Material Design components written in Imba.
 - [Imba Inertia Adapter](https://github.com/haikyuu/imba-inertia-adapter) - Imba [Inertia](https://inertiajs.com) adapter.

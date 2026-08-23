@@ -5,9 +5,25 @@ import { notesDir, readJson, sha256, tempDir } from './common.mjs';
 
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const exclusions = readJson(path.join(notesDir, 'EXCLUSIONS.json'));
+const missingReview = readJson(path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json'));
 const normalizedDir = path.join(tempDir, '03-normalized');
 const errors = [];
 const included = lock.sources.filter((source) => source.status === 'included');
+const sourceByRepository = new Map(
+  lock.sources.map((source) => [source.repository.toLowerCase(), source])
+);
+const metadataOnly = missingReview.results
+  .filter((entry) => entry.decision === 'metadata-only')
+  .map((entry) => {
+    const source = sourceByRepository.get(entry.repository.toLowerCase());
+    return {
+      ...entry,
+      sourceId:
+        source?.sourceId ??
+        `metadata-${entry.repository.replace('/', '-').replace(/[^A-Za-z0-9._-]/g, '-')}`,
+    };
+  });
+const metadataOnlyIds = new Set(metadataOnly.map((entry) => entry.sourceId));
 for (const source of included) {
   const output = path.join(normalizedDir, `${source.sourceId}.md`);
   if (!fs.existsSync(output)) {
@@ -25,7 +41,20 @@ for (const source of included) {
   if (/\]\((?:javascript|data|file):/i.test(content))
     errors.push(`canonical output contains prohibited URL scheme: ${source.sourceId}`);
 }
-for (const source of lock.sources.filter((entry) => entry.status !== 'included')) {
+for (const entry of metadataOnly) {
+  const output = path.join(normalizedDir, `${entry.sourceId}.md`);
+  if (!fs.existsSync(output)) {
+    errors.push(`metadata-only entry is missing canonical output: ${entry.sourceId}`);
+    continue;
+  }
+  const content = fs.readFileSync(output, 'utf8');
+  if (!content.includes('licenseSource: "sindresorhus-awesome-readme"')) {
+    errors.push(`metadata-only output has incorrect licenseSource: ${entry.sourceId}`);
+  }
+}
+for (const source of lock.sources.filter(
+  (entry) => entry.status !== 'included' && !metadataOnlyIds.has(entry.sourceId)
+)) {
   if (fs.existsSync(path.join(normalizedDir, `${source.sourceId}.md`))) {
     errors.push(`non-included source leaked into canonical output: ${source.sourceId}`);
   }
@@ -50,5 +79,7 @@ if (errors.length) {
   console.error(errors.map((error) => `- ${error}`).join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Awesome canonical validation: OK (${included.length} outputs)`);
+  console.log(
+    `Awesome canonical validation: OK (${included.length} full outputs, ${metadataOnly.length} metadata-only outputs)`
+  );
 }

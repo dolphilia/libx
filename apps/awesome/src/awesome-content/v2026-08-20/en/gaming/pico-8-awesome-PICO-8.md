@@ -56,10 +56,10 @@ licenseSource: "github-pico-8-awesome-PICO-8-readme-md"
 
 ### DemoScene
 
-- [Pico-8 demos on Demozoo](https://demozoo.org/platforms/81/) 
-- [Pico-8 demos on Pouet](https://www.pouet.net/prodlist.php?platform%5B%5D=PICO-8) 
-- [Article with demoscene effects code](https://medium.com/swlh/creativity-through-limitation-pico-8-fantasy-console-175294e13332) 
-- [Pico-8 demos on Youtube](https://www.youtube.com/results?search_query=pico+8+demoscene) 
+- [Pico-8 demos on Demozoo](https://demozoo.org/platforms/81/)
+- [Pico-8 demos on Pouet](https://www.pouet.net/prodlist.php?platform%5B%5D=PICO-8)
+- [Article with demoscene effects code](https://medium.com/swlh/creativity-through-limitation-pico-8-fantasy-console-175294e13332)
+- [Pico-8 demos on Youtube](https://www.youtube.com/results?search_query=pico+8+demoscene)
 
 
 ### Resources
@@ -123,7 +123,7 @@ licenseSource: "github-pico-8-awesome-PICO-8-readme-md"
 - [p8-canvas](https://codeberg.org/wellspring-labs/p8-canvas) - A high performance infinite canvas/texture library.
 - [pico8-physics](https://github.com/jamesedge/pico8-physics) - Pico8 implementation of Box2d with 8 demos.
 - [SCUMM-8](https://github.com/Liquidream/scumm-8) - De-make of the SCUMM engine for making point-and-click classic adventures.
-  
+
 ### Assets
 - [midilib](https://www.lexaloffle.com/bbs/?cat=7#tag=midilib) - Custom SFX instruments
 

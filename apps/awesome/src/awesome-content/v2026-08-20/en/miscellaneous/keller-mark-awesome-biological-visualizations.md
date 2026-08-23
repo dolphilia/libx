@@ -75,7 +75,7 @@ Web-based biology-related visualization tools are often scattered across the int
 - [COSMIC-3D](https://cancer.sanger.ac.uk/cosmic3d/protein/EGFR) - A platform for understanding cancer mutations in the context of 3D protein structure.
 - [EzMol](http://www.sbg.bio.ic.ac.uk/~ezmol/) - Visualisation and image production of protein and nucleic acid structures.
 - [Genomics 2 Proteins portal](https://g2p.broadinstitute.org/) - A platform for connecting genomic data to protein sequence and protein structure.
-- [LiteMol](https://webchemdev.ncbr.muni.cz/LiteMol/) - Visualization of large-scale 
+- [LiteMol](https://webchemdev.ncbr.muni.cz/LiteMol/) - Visualization of large-scale
 macromolecular structure data.
 - [pdb2print](https://pdb2print.org) - Convert a PDB structure into a 3D-printable 3MF file, with one object per chain, magnet pockets and custom display stands.
 

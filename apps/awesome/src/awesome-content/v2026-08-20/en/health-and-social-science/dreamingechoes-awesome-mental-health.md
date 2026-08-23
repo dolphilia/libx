@@ -5,7 +5,7 @@ licenseSource: "github-dreamingechoes-awesome-mental-health-readme-md"
 ---
 
 
-<p align="center"><img src="./media/logo.png"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/dreamingechoes/awesome-mental-health/ea3f653ade8ab55f1a597e2a08387db57ae43c21/media/logo.png"></p>
 
 <p align="center">
   <a href="https://github.com/sindresorhus/awesome"><img alt="awesome" src="https://awesome.re/badge.svg"/></a>

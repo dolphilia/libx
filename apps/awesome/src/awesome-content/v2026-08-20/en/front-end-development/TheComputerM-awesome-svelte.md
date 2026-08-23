@@ -6,7 +6,7 @@ licenseSource: "github-TheComputerM-awesome-svelte-readme-md"
 
 <p align="center">
   <br>
-  <img width="200" src="./awesome-svelte.svg" alt="awesome-svelte logo">
+  <img width="200" src="https://raw.githubusercontent.com/TheComputerM/awesome-svelte/6d68f78e16b0c29ba13b27df662b023911cd6b9d/awesome-svelte.svg" alt="awesome-svelte logo">
   <br>
   <br>
 </p>

@@ -12,15 +12,15 @@ licenseSource: "github-joewdavies-awesome-frontend-gis-readme-md"
 
  Geographic Information Systems (GIS) for web browsers. <br>
  For managing, analyzing, editing, and visualizing geographic data.
-  
+
 <div>
     <a href='https://github.com/eurostat/gridviz' target='_blank'>
-        <img src='./images/awesome-fronted-gis-banner.png'>
+        <img src='https://raw.githubusercontent.com/joewdavies/awesome-frontend-gis/bfa5b37155d812af7e65115248ac30f97fd869b1/images/awesome-fronted-gis-banner.png'>
     </a>
 </div>
 
  *A compilation of geospatial-related web frameworks, tools, demos, applications, data sources and more.*
- 
+
 </div>
 
 
@@ -46,9 +46,9 @@ licenseSource: "github-joewdavies-awesome-frontend-gis-readme-md"
 - [📚 Further reading](#-further-reading)
 - [🤝 Contributing](#-contributing)
 
-## 👨‍💻 JavaScript Libraries 
+## 👨‍💻 JavaScript Libraries
 
-### Mapping 
+### Mapping
 Libraries for creating web maps:
 
 - [antvis L7](https://github.com/antvis/L7) - Large-scale WebGL-powered Geospatial Data Visualization. ![GitHub stars](https://img.shields.io/github/stars/antvis/L7?style=social)
@@ -79,7 +79,7 @@ Libraries for creating web maps:
 - [Wrld.js](https://github.com/wrld3d/wrld.js/) - Animated 3D city maps based on Leaflet. ![GitHub stars](https://img.shields.io/github/stars/wrld3d/wrld.js?style=social)
 
 
-### Data Processing 
+### Data Processing
 Libraries that help you analyse and process geospatial data:
 - [Arc.js](https://github.com/springmeyer/arc.js) - Calculate great circles routes as lines in GeoJSON or WKT format. ![GitHub stars](https://img.shields.io/github/stars/springmeyer/arc.js?style=social)
 - [awesome-GeoJSON](https://github.com/tmcw/awesome-geojson) - Catalogue of GeoJSON tools. ![GitHub stars](https://img.shields.io/github/stars/tmcw/awesome-geojson?style=social)
@@ -130,10 +130,10 @@ Resources for frontend earth observation and remote sensing:
 - [Spectral](https://github.com/awesome-spectral-indices/awesome-spectral-indices) - Awesome Spectral Indices for the Google Earth Engine JavaScript API. ![GitHub stars](https://img.shields.io/github/stars/awesome-spectral-indices/awesome-spectral-indices?style=social)
 
 
-## 💾 Data sources 
+## 💾 Data sources
 A collection of geospatial open data sources:
 
-### Downloads 
+### Downloads
 Data available for download:
 
 - [ArcGIS Hub](https://hub.arcgis.com/) - Over 380,000 open datasets.
@@ -163,7 +163,7 @@ Data available for download:
 - [WorldPop](https://www.worldpop.org/) - Open access spatial demographic datasets.
 
 
-### Web APIs 
+### Web APIs
 Restful APIs for consuming geospatial data on the fly:
 
 - [Address API](https://gisco-services.ec.europa.eu/addressapi/docs/) - Pan-European address data with geocoding and reverse-geocoding.
@@ -198,7 +198,7 @@ Restful APIs for consuming geospatial data on the fly:
 - [what3words](https://developer.what3words.com/public-api) - Converts 3-word addresses to coordinates.
 - [PostalCodes](https://postalcodes.info/api) - Global postal code search, country exports, and address validation data.
 
-### Collections 
+### Collections
 Compilations and repositories of open geospatial datasets:
 - [awesome-public-datasets](https://github.com/awesomedata/awesome-public-datasets) - An awesome repository full of open datasets from an abundance of different categories.  ![GitHub stars](https://img.shields.io/github/stars/awesomedata/awesome-public-datasets?style=social)
 - [Free GIS data](https://freegisdata.rtwilson.com/) - Links to over 500 sites providing freely available geographic datasets.
@@ -206,7 +206,7 @@ Compilations and repositories of open geospatial datasets:
 - [WRI](https://datasets.wri.org/) - World Resources Institute.
 - [David Rumsey map collection](https://www.davidrumsey.com/) - Historical map archives.
 
-## 📒 Notebooks 
+## 📒 Notebooks
 Some JavaScript notebooks to help you code:
 
 ### Beginner
@@ -225,7 +225,7 @@ Some JavaScript notebooks to help you code:
 - [Bivariate Choropleth with Continuous Color Scales](https://observablehq.com/@stephanietuerk/bivariate-choropleth-with-continuous-color-scales) - Stephanie Tuerk.
 - [Visualizing Eurostat grid data using Three.js & D3](https://observablehq.com/@joewdavies/visualizing-eurostat-grid-data-using-three-js-d3) - Joe Davies.
 
-### Advanced 
+### Advanced
 
 - [Try to impeach this? Challenge accepted!](https://observablehq.com/@karimdouieb/try-to-impeach-this-challenge-accepted) - Karim Douieb.
 - [Bars and pubs in Paris](https://observablehq.com/@neocartocnrs/bars-pubs-in-paris) - Nicolas Lambert.
@@ -238,7 +238,7 @@ Some JavaScript notebooks to help you code:
 - [Visualizing earthquakes with Three.js](https://observablehq.com/@joewdavies/visualizing-earthquakes-with-three-js) - Joe Davies.
 - [GeoArrow and GeoParquet in deck.gl](https://observablehq.com/@kylebarron/geoarrow-and-geoparquet-in-deck-gl) - Kyle Barron.
 
-## :world_map: Web maps 
+## :world_map: Web maps
 A compilation of interesting web maps:
 
 - [Map of notable people](https://tjukanovt.github.io/notable-people) - Topi Tjukanov.
@@ -259,7 +259,7 @@ A compilation of interesting web maps:
 - [FilmMap](https://thefilmmap.com/) - Where films and television were actually shot: 15,272 filming locations across 161 countries, each one traced to a Wikidata statement.
 - [Forest Fires Map](https://forest-fires-map.vercel.app/) - Interactive web map of forest fires.
 
-## 🌐 Web apps 
+## 🌐 Web apps
 Plug-and-play geospatial web apps:
 
 - [city roads](https://anvaka.github.io/city-roads/) - Render every single road in any city at once. ![GitHub stars](https://img.shields.io/github/stars/anvaka/city-roads?style=social)
@@ -287,7 +287,7 @@ Plug-and-play geospatial web apps:
 - [gpx studio](https://github.com/gpxstudio/gpxstudio.github.io) - Online tool for GPX editing.
 
 
-## 🎨 Colour advice 
+## 🎨 Colour advice
 Colour usage is very important in data visualisation and cartography. Here are some tools to help you choose the best colours for your maps:
 
 - [CartoColor](https://github.com/CartoDB/CartoColor) - A set of custom color palettes built on top of standards for color use on maps. ![GitHub stars](https://img.shields.io/github/stars/CartoDB/CartoColor?style=social)
@@ -319,7 +319,7 @@ Videos of web mapping presentations and tutorials:
 - [A Workbook for Interactive Cartography and Visualization on the Open Web](https://github.com/uwcartlab/webmapping) - Robert Roth, Carl Sack, Gareth Baldrica-Franklin, Yuying Chen, Rich Donohue, Lily Houtman, Tim Prestby, Robin Tolochko, Nick Underwood. ![GitHub stars](https://img.shields.io/github/stars/uwcartlab/webmapping?style=social)
 - [Thematic Mapping: 101 Inspiring Ways to Visualise Empirical Data](https://www.esri.com/en-us/esri-press/browse/thematic-mapping) - Kenneth Field.
 - [Color use guidelines for mapping and visualization](https://colorbrewer2.org/learnmore/schemes_full.html#qualitative) - Cynthia A. Brewer.
-- [Geospatial Network Visualization](https://geonetworks.github.io/) - A collection of visualization techniques for geospatial network data. 
+- [Geospatial Network Visualization](https://geonetworks.github.io/) - A collection of visualization techniques for geospatial network data.
 
 
 ## 🤝 Contributing

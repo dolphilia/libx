@@ -9,7 +9,7 @@ licenseSource: "github-innocenzi-awesome-inertiajs-readme-md"
 <p align="center">
   <br />
   <a href="https://inertiajs.com/">
-    <img width="100" src="./assets/logo.svg" alt="logo of awesome-inertiajs repository">
+    <img width="100" src="https://raw.githubusercontent.com/innocenzi/awesome-inertiajs/533c44887881c6242b4a8b40c009a86af9f61674/assets/logo.svg" alt="logo of awesome-inertiajs repository">
   </a>
   <br />
   <br />
@@ -84,5 +84,5 @@ licenseSource: "github-innocenzi-awesome-inertiajs-readme-md"
   ·
   <br />
   <br />
-  <sub>Contributions welcome! Read the <a href=".github/CONTRIBUTING.md">contribution guidelines</a> first.</sub>
+  <sub>Contributions welcome! Read the <a href="https://github.com/innocenzi/awesome-inertiajs/blob/533c44887881c6242b4a8b40c009a86af9f61674/.github/CONTRIBUTING.md">contribution guidelines</a> first.</sub>
 </p>

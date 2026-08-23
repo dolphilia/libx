@@ -9,10 +9,10 @@ licenseSource: "github-vsouza-awesome-ios-readme-md"
     <br>
     <p align="center">
         <img alt="awesome" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" />
-        <a href="https://ko-fi.com/M4M3WPRD"><img width="110" alt="Buy  Me a Coffee" src="buy_me_a_coffee.png" /></a>
+        <a href="https://ko-fi.com/M4M3WPRD"><img width="110" alt="Buy  Me a Coffee" src="https://raw.githubusercontent.com/vsouza/awesome-ios/0c8131c4cbf5c8b6d5c54c23e2ee0fbbbe2b8394/buy_me_a_coffee.png" /></a>
     </p>
     <a href="http://github.com/Doloffer-g/guide">
-        <img src="sponsor_banner.png" alt="Sponsor">
+        <img src="https://raw.githubusercontent.com/vsouza/awesome-ios/0c8131c4cbf5c8b6d5c54c23e2ee0fbbbe2b8394/sponsor_banner.png" alt="Sponsor">
     </a>
 </div>
 
@@ -181,7 +181,7 @@ Check out our premium resources for further learning:
 - [Premium Guide](http://github.com/Doloffer-g/guide)
 
 <a href="http://github.com/Doloffer-g/guide">
-        <img src="sponsor_banner_2.png" alt="Sponsor">
+        <img src="https://raw.githubusercontent.com/vsouza/awesome-ios/0c8131c4cbf5c8b6d5c54c23e2ee0fbbbe2b8394/sponsor_banner_2.png" alt="Sponsor">
     </a>
 
 ## Analytics
@@ -930,7 +930,7 @@ Check out our premium resources for further learning:
 - [Diagnostics](https://github.com/WeTransfer/Diagnostics) - Allow users to easily share Diagnostics with your support team to improve the flow of fixing bugs.
 - [Gedatsu](https://github.com/bannzai/gedatsu) - Provide readable format about AutoLayout error console log.
 - [Log](https://github.com/delba/Log) - A logging tool with built-in themes, formatters, and a nice API to define your owns.
-- [LogDog](https://log.dog) - LogDog is a remote debugging/logging sdk (iOS and Android) with a web ui. Captures all logs and requests in real-time and allows to intercept them. 
+- [LogDog](https://log.dog) - LogDog is a remote debugging/logging sdk (iOS and Android) with a web ui. Captures all logs and requests in real-time and allows to intercept them.
 - [LxDBAnything](https://github.com/DeveloperLx/LxDBAnything) - Automate box any value! Print log without any format control symbol! Change debug habit thoroughly!
 - [NSLogger](https://github.com/fpillet/NSLogger) - a high performance logging utility which displays traces emitted by client applications running on macOS, iOS and Android.
 - [Pulse](https://github.com/kean/Pulse) - Pulse is a powerful logging system for Apple Platforms. Native. Built with SwiftUI.
@@ -1922,11 +1922,11 @@ Most of these are paid services, some have free tiers.
 - [Pages](https://github.com/hyperoslo/Pages) - UIPageViewController made simple.
 - [Pulley](https://github.com/52inc/Pulley) - A library to imitate the iOS 10 Maps UI.
 - [RKNotificationHub](https://github.com/cwRichardKim/RKNotificationHub) - Make any UIView a full fledged notification center.
-- [SCTrelloNavigation](https://github.com/SergioChan/SCTrelloNavigation) - An iOS native implementation of a Trello Animated Navigation. 
+- [SCTrelloNavigation](https://github.com/SergioChan/SCTrelloNavigation) - An iOS native implementation of a Trello Animated Navigation.
 - [SegmentedProgressBar](https://github.com/D-32/SegmentedProgressBar) - Snapchat / Instagram Stories style animated indicator.
 - [ShadowView](https://github.com/PierrePerrin/ShadowView) - Make shadows management easy on UIView.
-- [Splitflap](https://github.com/yannickl/Splitflap) - A simple split-flap display for your Swift applications. 
-- [STAControls](https://github.com/Stunner/STAControls ) – Handy UIControl subclasses. (Think Three20/NimbusKit of UIControls.) Written in Objective-C. 
+- [Splitflap](https://github.com/yannickl/Splitflap) - A simple split-flap display for your Swift applications.
+- [STAControls](https://github.com/Stunner/STAControls ) – Handy UIControl subclasses. (Think Three20/NimbusKit of UIControls.) Written in Objective-C.
 
 **[back to top](#contributing-and-collaborating)**
 

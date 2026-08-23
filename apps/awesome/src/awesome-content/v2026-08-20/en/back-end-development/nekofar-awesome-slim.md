@@ -7,7 +7,7 @@ licenseSource: "github-nekofar-awesome-slim-readme-md"
 # Awesome Slim [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 
-[<img src="assets/slim-logo.png" align="right" width="260" alt="Slim Framework">](https://www.slimframework.com)
+[<img src="https://raw.githubusercontent.com/nekofar/awesome-slim/7f89a118c886049ed179a28443e3f133f32b970d/assets/slim-logo.png" align="right" width="260" alt="Slim Framework">](https://www.slimframework.com)
 
 
 > A curated list of awesome [Slim](https://www.slimframework.com) framework packages and resources.

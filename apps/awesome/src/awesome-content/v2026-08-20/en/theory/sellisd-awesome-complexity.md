@@ -100,7 +100,7 @@ A curated list of resources related to complex systems, the scientific field stu
 - [Repast](https://repast.github.io/) - Agent-based modeling and simulation platforms, models coded in C++ and Java.
 - [MASON](https://cs.gmu.edu/~eclab/projects/mason/) - Multiagent simulation library core in Java.
 - [HASH](https://hash.ai/) - Graph and agent simulation platform.
-- [Hybrid Automata Library](https://github.com/MathOnco/HAL) - Java library for hybrid modeling combining agent-based and partial-differential equation components. 
+- [Hybrid Automata Library](https://github.com/MathOnco/HAL) - Java library for hybrid modeling combining agent-based and partial-differential equation components.
 
 ### Proprietary
 
@@ -125,7 +125,7 @@ A curated list of resources related to complex systems, the scientific field stu
 - [Mitchell, S. D. (2013). Unsimple truths: science, complexity, and policy. Chicago: Univ. of Chicago Press.](https://worldcat.org/en/title/855547314) - The book introduces the perspective of  integrative puralism as a way of understanding and studying the world.
 - [Maturana, H. R., & Varela, F. J. (2008). The tree of knowledge: the biological roots of human understanding. Boston: Shambhala.](https://worldcat.org/en/title/316152876) - The book is an exposition of the non-representational vew of knowledge.
 - [Mandelbrot, B. (2006). The fractal geometry of nature. New York: W.H. Freeman and Company.](https://worldcat.org/en/title/1286107107) - Beautiful introduction to the world of fractals.
-- [Kauffman, S. (2014). At Home in the Universe The Search for the Laws of Self-Organization and Complexity. Cary: Oxford University Press, USA.](https://worldcat.org/en/title/36889961) - The book introduces in an accessible way the influence of concepts such as self-organization and the edge of chaos. 
+- [Kauffman, S. (2014). At Home in the Universe The Search for the Laws of Self-Organization and Complexity. Cary: Oxford University Press, USA.](https://worldcat.org/en/title/36889961) - The book introduces in an accessible way the influence of concepts such as self-organization and the edge of chaos.
 - [Gros, C. (2015). Complex and adaptive dynamical systems: a primer. Cham: Springer.](https://worldcat.org/en/title/906708597) - Technical and accessible introduction to a number of important concepts in complex systems science.
 - [Downey, A. (2012). Think complexity. Needham, Massachusetts: Green Tea Press.](https://worldcat.org/en/title/1043913738) - A hands-on approach exploring complex systems models with Python.
 - [Boccara, N. (2014). Modeling complex systems. Springer-Verlag New York.](https://worldcat.org/en/title/934989650) - An overview of important mathematical models of complex systems.

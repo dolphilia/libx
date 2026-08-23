@@ -13,7 +13,16 @@ const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const dryRun = process.argv.includes('--dry-run');
 const licenseUrls = {
   'CC0-1.0': 'https://creativecommons.org/publicdomain/zero/1.0/',
+  'CC-BY-3.0': 'https://creativecommons.org/licenses/by/3.0/',
+  'CC-BY-4.0': 'https://creativecommons.org/licenses/by/4.0/',
+  'CC-BY-SA-3.0': 'https://creativecommons.org/licenses/by-sa/3.0/',
+  'CC-BY-SA-4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
   MIT: 'https://opensource.org/licenses/MIT',
+  'Apache-2.0': 'https://www.apache.org/licenses/LICENSE-2.0',
+  'BSD-2-Clause': 'https://opensource.org/licenses/BSD-2-Clause',
+  'BSD-3-Clause': 'https://opensource.org/licenses/BSD-3-Clause',
+  ISC: 'https://opensource.org/licenses/ISC',
+  Unlicense: 'https://unlicense.org/',
 };
 const sources = lock.sources
   .filter((source) => source.status === 'included')
@@ -39,10 +48,12 @@ const partitions = readJson(path.join(notesDir, 'CONTENT_PARTITIONS.json'));
 config.translations.en.categories = Object.fromEntries(
   partitions.categories.map((category) => [category.id, category.name])
 );
+const existingJapaneseCategories = config.translations.ja.categories ?? {};
 config.translations.ja.categories = Object.fromEntries(
   partitions.categories.map((category) => [
     category.id,
-    category.name === 'Overview' ? '概要' : category.name,
+    existingJapaneseCategories[category.id] ??
+      (category.name === 'Overview' ? '概要' : category.name),
   ])
 );
 config.versioning.versions = [

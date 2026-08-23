@@ -183,7 +183,7 @@ A collaborative list of great resources about RESTful API architecture, developm
 * [Python Eve](https://python-eve.org/) - Eve is an open source Python REST API framework designed for human beings. It allows to effortlessly build and deploy highly customizable, fully featured RESTful Web Services.
 * [Ramses](https://ramses.readthedocs.org/en/stable/) - Makes RAML files executable by generating production-ready APIs from them at runtime.
 * [Flask-Potion](https://github.com/biosustain/potion) - Flask-Potion is a powerful Flask extension for building RESTful JSON APIs. It also provides several Clients for easier access to the API.
-* [apistar](https://github.com/encode/apistar) - A smart Web API framework, designed for Python 3. 
+* [apistar](https://github.com/encode/apistar) - A smart Web API framework, designed for Python 3.
 * [Falcon](https://github.com/falconry/falcon) - Falcon is a bare-metal Python web API framework for building high-performance microservices, app backends, and higher-level frameworks.
 * [FastAPI](https://github.com/tiangolo/fastapi) - FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints. With automatic API documentation using Swagger UI and ReDoc, based on OpenAPI and JSON Schema.
 * [Zato](https://github.com/zatosource/zato/) - Platform for building server-side integrations, automations and API backends in Python.
@@ -315,7 +315,7 @@ A collaborative list of great resources about RESTful API architecture, developm
 * [react-admin](https://github.com/marmelab/react-admin) - Add a ReactJS admin GUI to any RESTful API.
 * [ng-admin](https://github.com/marmelab/ng-admin) - Add an AngularJS admin GUI to any RESTful API.
 * [swagger-codegen](https://github.com/swagger-api/swagger-codegen) - Auto generation of client libraries or server stubs given an OpenAPI specification (formerly known as the Swagger Specification).
-* [Linx](https://linx.software) - Low-code API platform. Build, debug and host REST APIs 
+* [Linx](https://linx.software) - Low-code API platform. Build, debug and host REST APIs
 
 
 ## License

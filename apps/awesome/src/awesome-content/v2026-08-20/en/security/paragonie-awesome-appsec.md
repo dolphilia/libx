@@ -325,7 +325,7 @@ The second part of a three part book series providing broad and in-depth coverag
 
 ### [Offensive Computer Security (CIS 4930) FSU](https://www.cs.fsu.edu/~redwood/OffensiveComputerSecurity/)
 
-A vulnerability research and exploit development class by Owen Redwood of Florida State University. 
+A vulnerability research and exploit development class by Owen Redwood of Florida State University.
 
 **Be sure to check out the [lectures](https://www.cs.fsu.edu/~redwood/OffensiveComputerSecurity/lectures.html)!**
 

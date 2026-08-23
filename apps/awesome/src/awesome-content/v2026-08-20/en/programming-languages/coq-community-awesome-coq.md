@@ -6,7 +6,7 @@ licenseSource: "github-coq-community-awesome-coq-readme-md"
 
 # Awesome Coq [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="coq-logo.svg" align="right" width="100" alt="coq-community logo" title="Awesome Coq is a coq-community project">](https://github.com/coq-community/manifesto)
+[<img src="https://raw.githubusercontent.com/coq-community/awesome-coq/6520b5770bf5babc93f1dec730df3b6d34df0733/coq-logo.svg" align="right" width="100" alt="coq-community logo" title="Awesome Coq is a coq-community project">](https://github.com/coq-community/manifesto)
 
 > A curated list of awesome Coq libraries, plugins, tools, and resources.
 

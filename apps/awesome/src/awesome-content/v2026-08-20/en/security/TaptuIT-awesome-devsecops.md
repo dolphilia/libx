@@ -69,7 +69,7 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 
 ### Newsletters
 
-- [Shift Security Left](https://shift-security-left.curated.co/) - _Cossack Labs_ - A free biweekly newsletter for security-aware developers covering application security, secure architecture, DevSecOps, cryptography, incidents, etc. that can be useful for builders and (to a lesser extent) for breakers. 
+- [Shift Security Left](https://shift-security-left.curated.co/) - _Cossack Labs_ - A free biweekly newsletter for security-aware developers covering application security, secure architecture, DevSecOps, cryptography, incidents, etc. that can be useful for builders and (to a lesser extent) for breakers.
 
 ### Podcasts
 
@@ -111,7 +111,7 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 - [SecureFlag](https://www.secureflag.com/platform.html) - _OWASP_ - Hands-on secure coding training for Developers and Build/Release Engineers.
 - [Security Training for Engineers](https://sudo.pagerduty.com/for_engineers/) - _Pager Duty_ - A presentation created and open-sourced by PagerDuty to provide security training to software engineers.
 - [Security Training for Everyone](https://sudo.pagerduty.com/for_everyone/) - _Pager Duty_ - A presentation created and open-sourced by PagerDuty to provide security training employees.
-- [Semgrep Academy](https://academy.semgrep.dev/) - _Semgrep_ - Free, on-demand courses covering topics including API security, secure coding and application security.  
+- [Semgrep Academy](https://academy.semgrep.dev/) - _Semgrep_ - Free, on-demand courses covering topics including API security, secure coding and application security.
 - [Web Security Academy](https://portswigger.net/web-security) - _PortSwigger_ - A set of materials and labs to learn and exploit common web vulnerabilities.
 - [WeHackPuple](https://wehackpurple.com/) - _WeHackPurple_ - Online courses that teach application security theory and hands-on technical lessons.
 
@@ -186,7 +186,7 @@ Infrastructure as Code allows applications to be deployed reliably to a consiste
 - [Kubectrl Kubesec](https://github.com/controlplaneio/kubectl-kubesec) - _ControlPlane_ - Plugin for kubesec.io to perform security risk analysis for Kubernetes resources.
 
 #### Ansible
-- [Ansible-Lint](https://github.com/ansible-community/ansible-lint) - _Ansible Community_ - Checks playbooks for practices and behaviour that could potentially be improved. As a community backed project ansible-lint supports only the last two major versions of Ansible. 
+- [Ansible-Lint](https://github.com/ansible-community/ansible-lint) - _Ansible Community_ - Checks playbooks for practices and behaviour that could potentially be improved. As a community backed project ansible-lint supports only the last two major versions of Ansible.
 
 ### Intentionally Vulnerable Applications
 
@@ -261,7 +261,7 @@ Static Analysis Security Testing (SAST) tools scan software for vulnerabilities 
 - [LGTM](https://lgtm.com/) - _Semmle_ - Scan and monitor code for security vulnerabilities using custom or built-in CodeQL queries.
 - [RIPS](https://www.ripstech.com/) - _RIPS Technologies_ - Automated static analysis for PHP, Java and Node.js projects.
 - [SemGrep](https://semgrep.dev/) - _r2c_ - Semgrep is a fast, open-source, static analysis tool that finds bugs and enforces code standards at editor, commit, and CI time.
-- [SonarLint](https://www.sonarlint.org/) - _SonarSource_ - An IDE plugin that highlights potential security security issues, code quality issues and bugs. 
+- [SonarLint](https://www.sonarlint.org/) - _SonarSource_ - An IDE plugin that highlights potential security security issues, code quality issues and bugs.
 - [SonarQube](https://www.sonarqube.org/) - _SonarSource_ - Scan code for security and quality issues with support for a wide variety of languages.
 
 

@@ -1,0 +1,13 @@
+---
+title: "svaksha/Julia.jl"
+description: "Metadata-only entry for svaksha/Julia.jl"
+licenseSource: "sindresorhus-awesome-readme"
+---
+
+# Julia
+
+This Awesome list is referenced by the Programming Languages section of the pinned sindresorhus/awesome snapshot.
+
+The upstream list content is not reproduced on libx because a reusable license could not be confirmed for this snapshot, the fixed README could not be retrieved, or its license requires support that is not yet available here.
+
+- [Open the original repository](https://github.com/svaksha/Julia.jl/blob/c3985aeb1eb78fcde4648887dc5f6c7960503aa1/README.md)

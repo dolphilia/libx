@@ -7,7 +7,7 @@ licenseSource: "github-stevinz-awesome-game-engine-dev-readme-md"
 
 
 <div align="center">
-    <a href="https://github.com/stevinz/awesome-game-engine-dev"><img width="1100" src="aged-title.png" alt="Awesome Game Engine Dev Logo"/></a>
+    <a href="https://github.com/stevinz/awesome-game-engine-dev"><img width="1100" src="https://raw.githubusercontent.com/stevinz/awesome-game-engine-dev/f7f76faaf7f78ab3c5f24cbe10e7b9a83a205a4b/aged-title.png" alt="Awesome Game Engine Dev Logo"/></a>
 </div>
 
 # Awesome Game Engine Development [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome#readme)

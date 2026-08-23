@@ -29,7 +29,7 @@ A curated list of anything remotely related to linguistics, sorted in alphabetic
 *Libraries, frameworks and applications useful for developing applications.*
 
 ### Platforms and toolkits
-* [CLARIN-D web tools](https://www.clarin-d.net/en/analysing) - Tools for Analysing Research Data 
+* [CLARIN-D web tools](https://www.clarin-d.net/en/analysing) - Tools for Analysing Research Data
 * [CorpusExplorer](https://notes.jan-oliver-ruediger.de/software/corpusexplorer-overview/) - Software for corpus linguists and text/data mining enthusiasts. The CorpusExplorer combines over 50 interactive visualizations under a user-friendly interface.
 * [Haxe-linguistics](https://github.com/sexybiggetje/haxe-linguistics) - Early linguistical analysis and natural language processing library for Haxe.
 * [Natural](https://github.com/NaturalNode/natural) - General natural language tools for Node.js.

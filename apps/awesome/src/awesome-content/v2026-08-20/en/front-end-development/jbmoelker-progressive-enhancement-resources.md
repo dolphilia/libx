@@ -29,7 +29,7 @@ A comprehensive collection of resources on Progressive Enhancement. From concept
 * [Understanding Progressive Enhancement](http://alistapart.com/article/understandingprogressiveenhancement) - Apply technologies in an intelligent way, layer-upon-layer, to craft an amazing experience.
 * [Designing with Progressive Enhancement](https://www.filamentgroup.com/dwpe/) - *The book* (400+ pages) on Progressive Enhancement.
 * [Adaptive Web Design](http://adaptivewebdesign.info/2nd-edition/) - Book on Progressive Enhancement from content to design and interaction.
-* [Detecting (HTML5) features](http://diveinto.html5doctor.com/detect.html) - Intro to different feature detection techniques with examples and demos. 
+* [Detecting (HTML5) features](http://diveinto.html5doctor.com/detect.html) - Intro to different feature detection techniques with examples and demos.
 * [Progressive Web Apps](https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/) - Enhancing web sites into native-like apps (progressive, not hybrid).
 
 
@@ -74,7 +74,7 @@ Different environments (platforms, browsers, versions) have different capabiliti
 * [Accessibility Support](https://a11ysupport.io/) - Compare accessibility support of HTML elements and ARIA roles across browsers & assistive technologies.
 * [State of Web Type](https://github.com/bramstein/stateofwebtype) - Support tables for type and typographic features on the web.
 * [Font Family Reunion](http://fontfamily.io/) - Compatibility tables for default local (system) fonts.
-* [HTML5 Accessibility](http://html5accessibility.com/) - Compare feature support of HTML5 tags, input types and properties across major browsers. 
+* [HTML5 Accessibility](http://html5accessibility.com/) - Compare feature support of HTML5 tags, input types and properties across major browsers.
 * [WAI-ARIA Screen reader compatibility](https://www.powermapper.com/tests/screen-readers/aria/) - ARIA roles and attributes support for different screen reader and browser combinations.
 * [What web can do today](https://whatwebcando.today/) - Lists and checks modern web APIs like access to device system, sensors and actuators.
 * [HTML5 Worker test](https://nolanlawson.github.io/html5workertest/) - Compare which APIs are supported in Web Workers and Service Workers across browsers.
@@ -157,7 +157,7 @@ Asynchronously fetch and transition between static pages using ajax and `history
 ## Related Articles
 
 * [Make the web work for everyone](https://hacks.mozilla.org/2016/07/make-the-web-work-for-everyone/) - Plea to developers to consider browser differences and build a resilient web.
-* [How many people are missing out on JavaScript enhancement?](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/) - Research on why in 1.1% of page visits JavaScript isn't loaded. 
+* [How many people are missing out on JavaScript enhancement?](https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/) - Research on why in 1.1% of page visits JavaScript isn't loaded.
 
 ---
 

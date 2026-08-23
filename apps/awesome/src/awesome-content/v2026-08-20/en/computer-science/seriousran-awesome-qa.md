@@ -4,7 +4,7 @@ description: "Canonical snapshot of seriousran/awesome-qa"
 licenseSource: "github-seriousran-awesome-qa-readme-md"
 ---
 
-# Awesome Question Answering [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) 
+# Awesome Question Answering [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
 
 _A curated list of the __[Question Answering (QA)](https://en.wikipedia.org/wiki/Question_answering)__ subject which is a computer science discipline within the fields of information retrieval and natural language processing (NLP) toward using machine learning and deep learning_
 
@@ -95,7 +95,7 @@ Question Entailment and Question Answering](https://www.aclweb.org/anthology/W19
   - [ELI5: Long Form Question Answering](https://arxiv.org/abs/1907.09190), Angela Fan, et al., ACL 2019, Jul 2019
   - [CODAH: An Adversarially-Authored Question Answering Dataset for
 Common Sense](https://www.aclweb.org/anthology/W19-2008.pdf), Michael Chen, et al., RepEval 2019, Jun 2019.
-  
+
 ## About QA
 ### Types of QA
 - Single-turn QA: answer without considering any context
@@ -131,7 +131,7 @@ Lanugage Analysis
 - Amazon Echo | Alexa (2015), Google Home | Google Assistant (2016), INVOKE | MS Cortana (2017), HomePod (2017)
 
 ## Systems
-- [IBM Watson](https://www.ibm.com/watson/) - Has state-of-the-arts performance. 
+- [IBM Watson](https://www.ibm.com/watson/) - Has state-of-the-arts performance.
 - [Facebook DrQA](https://research.fb.com/downloads/drqa/) - Applied to the SQuAD1.0 dataset. The SQuAD2.0 dataset has released. but DrQA is not tested yet.
 - [MIT media lab's Knowledge graph](http://conceptnet.io/) - Is a freely-available semantic network, designed to help computers understand the meanings of words that people use.
 
@@ -168,7 +168,7 @@ Lanugage Analysis
   - Entity Disambiguation / Entity Linking
 
 ## Codes
-- [BiDAF](https://github.com/allenai/bi-att-flow) - Bi-Directional Attention Flow (BIDAF) network is a multi-stage hierarchical process that represents the context at different levels of granularity and uses bi-directional attention flow mechanism to obtain a query-aware context representation without early summarization. 
+- [BiDAF](https://github.com/allenai/bi-att-flow) - Bi-Directional Attention Flow (BIDAF) network is a multi-stage hierarchical process that represents the context at different levels of granularity and uses bi-directional attention flow mechanism to obtain a query-aware context representation without early summarization.
   - Official; Tensorflow v1.2
   - [Paper](https://arxiv.org/pdf/1611.01603.pdf)
 - [QANet](https://github.com/NLPLearn/QANet) - A Q&A architecture does not require recurrent networks: Its encoder consists exclusively of convolution and self-attention, where convolution models local interactions and self-attention models global interactions.
@@ -183,7 +183,7 @@ Lanugage Analysis
 - [DrQA](https://github.com/hitvoice/DrQA) - DrQA is a system for reading comprehension applied to open-domain question answering.
   - Facebook; Official; Pytorch v0.4
   - [Paper](#drqa)
-- [BERT](https://github.com/google-research/bert) - A new language representation model which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations by jointly conditioning on both left and right context in all layers. 
+- [BERT](https://github.com/google-research/bert) - A new language representation model which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations by jointly conditioning on both left and right context in all layers.
   - Google; Official implementation; Tensorflow v1.11.0
   - [Paper](https://arxiv.org/abs/1810.04805)
 
@@ -219,7 +219,7 @@ Lanugage Analysis
   - Paper: https://arxiv.org/abs/1611.09268
 - [MultiRC](https://cogcomp.org/multirc/)
   - A dataset of short paragraphs and multi-sentence questions
-  - Paper: http://cogcomp.org/page/publication_view/833 
+  - Paper: http://cogcomp.org/page/publication_view/833
 - [NarrativeQA](https://github.com/deepmind/narrativeqa)
   - It includes the list of documents with Wikipedia summaries, links to full stories, and questions and answers.
   - Paper: https://arxiv.org/pdf/1712.07040v1.pdf
@@ -238,11 +238,11 @@ Lanugage Analysis
   - 'Story Cloze Test' is a new commonsense reasoning framework for evaluating story understanding, story generation, and script learning. This test requires a system to choose the correct ending to a four-sentence story.
   - Paper: https://arxiv.org/abs/1604.01696
 - [TriviaQA](http://nlp.cs.washington.edu/triviaqa/)
-  - TriviaQA is a reading comprehension dataset containing over 650K question-answer-evidence triples. TriviaQA includes 95K question-answer pairs authored by trivia enthusiasts and independently gathered evidence documents, six per question on average, that provide high quality distant supervision for answering the questions. 
+  - TriviaQA is a reading comprehension dataset containing over 650K question-answer-evidence triples. TriviaQA includes 95K question-answer pairs authored by trivia enthusiasts and independently gathered evidence documents, six per question on average, that provide high quality distant supervision for answering the questions.
   - Paper: https://arxiv.org/abs/1705.03551
 - [WikiQA](https://www.microsoft.com/en-us/download/details.aspx?id=52419&from=https%3A%2F%2Fresearch.microsoft.com%2Fen-US%2Fdownloads%2F4495da01-db8c-4041-a7f6-7984a4f6a905%2Fdefault.aspx)
   - A publicly available set of question and sentence pairs for open-domain question answering.
-  
+
 ### The DeepQA Research Team in IBM Watson's publication within 5 years
 - 2015
   - "Automated Problem List Generation from Electronic Medical Records in IBM Watson", Murthy Devarakonda, Ching-Huei Tsou, IAAI, 2015.
@@ -262,7 +262,7 @@ Lanugage Analysis
   - "Multi-level Attention Networks for Visual Question Answering", Dongfei Yu, Jianlong Fu, Tao Mei, Yong Rui, CVPR, 2017.
   - "A Joint Model for Question Answering and Question Generation", Tong Wang, Xingdi (Eric) Yuan, Adam Trischler, ICML, 2017.
   - "Two-Stage Synthesis Networks for Transfer Learning in Machine Comprehension", David Golub, Po-Sen Huang, Xiaodong He, Li Deng, EMNLP, 2017.
-  - "Question-Answering with Grammatically-Interpretable Representations", Hamid Palangi, Paul Smolensky, Xiaodong He, Li Deng, 
+  - "Question-Answering with Grammatically-Interpretable Representations", Hamid Palangi, Paul Smolensky, Xiaodong He, Li Deng,
   - "Search-based Neural Structured Learning for Sequential Question Answering", Mohit Iyyer, Wen-tau Yih, Ming-Wei Chang, ACL, 2017.
 - 2016
   - ["Stacked Attention Networks for Image Question Answering"](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Yang_Stacked_Attention_Networks_CVPR_2016_paper.html), Zichao Yang, Xiaodong He, Jianfeng Gao, Li Deng, Alex Smola, CVPR, 2016.
@@ -276,7 +276,7 @@ Lanugage Analysis
 - 2014
   - ["An Overview of Microsoft Deep QA System on Stanford WebQuestions Benchmark"](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Microsoft20Deep20QA.pdf), Zhenghao Wang, Shengquan Yan, Huaming Wang, and Xuedong Huang, MSR-TR, 2014.
   - ["Semantic Parsing for Single-Relation Question Answering"](), Wen-tau Yih, Xiaodong He, Christopher Meek, ACL, 2014.
-  
+
 ### Google AI's publication within 5 years
 - 2018
   - Google QA <a name="qanet"></a>

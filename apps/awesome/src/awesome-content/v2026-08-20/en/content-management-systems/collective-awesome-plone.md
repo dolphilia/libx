@@ -7,7 +7,7 @@ licenseSource: "github-collective-awesome-plone-readme-md"
 # Awesome Plone [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 
-[<img align="right" src="logo.png" height="64">](https://plone.org)
+[<img align="right" src="https://raw.githubusercontent.com/collective/awesome-plone/2a8601ac9e3a78326e5f9a7991ba80de139d0e10/logo.png" height="64">](https://plone.org)
 
 > A community-curated list of _awesome_ Plone add-ons.
 
@@ -111,7 +111,7 @@ _Products and resources that help developers and users to create and manage site
 * [plone.app.mosaic](https://github.com/plone/plone.app.mosaic) - Powerful and extendable editor that allows users to compose the content of a page with different tiles.
 * [collective.cover](https://github.com/collective/collective.cover) - Cover allows the creation of elaborate covers built around a drag-and-drop interface. Uses the same blocks/tiles ecosystem as plone.app.mosaic but a different approach to editing.
 * [collective.contentsections](https://github.com/collective/collective.contentsections) - Offers a block approach for Plone 6 Classic based entirely on Dexterity content types.
-* [collective.gridlisting](https://github.com/collective/collective.gridlisting) - Adds a dexterity behavior and a browser template to manipulate folder and collection listings by adding Bootstrap 5 CSS classes and `pat-masonry` from patternslib. 
+* [collective.gridlisting](https://github.com/collective/collective.gridlisting) - Adds a dexterity behavior and a browser template to manipulate folder and collection listings by adding Bootstrap 5 CSS classes and `pat-masonry` from patternslib.
 
 
 ## Tiles
@@ -238,7 +238,7 @@ _Add-ons that help developing Plone_
 * [Products.PrintingMailHost](https://github.com/collective/Products.PrintingMailHost) - Log mail messages instead of sending mail.
 * [experimental.gracefulblobmissing](https://github.com/collective/experimental.gracefulblobmissing/) - Gracefully handle missing binary files in Plone.
 * [collective.debugtools](https://github.com/collective/collective.debugtools) - Add remote debugging via debugpy for debugpy-compatible clients like VSCode or PyCharm.
-* [collective.icecream](https://github.com/collective/collective.icecream) - Debug and inspect Plone using the icecream package. 
+* [collective.icecream](https://github.com/collective/collective.icecream) - Debug and inspect Plone using the icecream package.
 * [collective.patchwatcher](https://github.com/collective/collective.patchwatcher) - A companion for keeping track of patched or overridden files.
 * [collective.pdbpp](https://github.com/collective/collective.pdbpp) - Allows you to use the pdbpp package.
 * [collective.relationhelpers](https://github.com/collective/collective.relationhelpers) - Helpers to manage, create, export and rebuild relations in Plone 5.x. For Plone 6 this was merged into Plone core.

@@ -47,8 +47,8 @@ In order to use awesome-cli interactively, just execute it without giving any op
 
 ```bash
 > $ awesome-cli
-Use the arrow keys to navigate: ↓ ↑ → ← 
-? Select from 'Awesome' list: 
+Use the arrow keys to navigate: ↓ ↑ → ←
+? Select from 'Awesome' list:
   ▸ Platforms
     Programming Languages
     Front-End Development
@@ -114,7 +114,7 @@ Follow the steps;
 
 ### Download and use official binary
 
-Visit the [latest release](https://github.com/umutphp/awesome-cli/releases/latest) page, download the zip correspondingly and extract the zip. You can used the binary in the zip file. 
+Visit the [latest release](https://github.com/umutphp/awesome-cli/releases/latest) page, download the zip correspondingly and extract the zip. You can used the binary in the zip file.
 
 ```bash
 > $ cp /path/to/zip/extract/awesome-cli /usr/local/bin/awesome-cli

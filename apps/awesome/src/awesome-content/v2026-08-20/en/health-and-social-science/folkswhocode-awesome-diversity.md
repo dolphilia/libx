@@ -4,7 +4,7 @@ description: "Canonical snapshot of folkswhocode/awesome-diversity"
 licenseSource: "github-folkswhocode-awesome-diversity-readme-md"
 ---
 
-# Awesome Diversity 
+# Awesome Diversity
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 [![Mencionado en Comunidad Tecnológica](https://github.com/comunidad-tecnologica/comunidad-tecnologica/blob/master/img/comunidad-tecnologica.svg)](https://github.com/comunidad-tecnologica/comunidad-tecnologica)
@@ -85,7 +85,7 @@ Organizations bringing diversity to tech.
 - [Rails Girls](http://railsgirls.com/) - Organization which aims to give tools and a community for women to understand technology and to build their ideas.
 - [Rails Girls Summer Of Code](https://railsgirlssummerofcode.org/) - Rails Girls Summer of Code is a global fellowship program aimed at bringing more diversity into Open Source.
 - [R-Ladies](https://rladies.org/) - A worl-wide organization to promote gender diversity in the R community.
-- [RightsTech Women](https://rightstech.org) - Switzerland-based nonprofit that combines robotics, technology and human rights training for girls and women. 
+- [RightsTech Women](https://rightstech.org) - Switzerland-based nonprofit that combines robotics, technology and human rights training for girls and women.
 - [Scala Bridge](http://www.scalabridge.org/) - Building an inclusive Scala community with introductory programming workshops for women.
 - [She++](https://sheplusplus.org) - Non-profit organization that works to empower underrepresented groups in technology by dismantling negative stereotypes surrounding technical careers.
 - [She Can Code](https://shecancode.io/) - An organization with the mission of empower women to enter and remain in the tech industry.
@@ -106,7 +106,7 @@ Organizations bringing diversity to tech.
 - [Wonder Women Tech](https://wonderwomentech.com/) - Organization that produces year-round programming and national and international conferences that highlight, educate, and celebrate women and diversity in STEAM (Science, Technology, Engineering, Arts, Math), innovation and entrepreneurialism.
 - [Write/Speak/Code](https://www.writespeakcode.com/) - A 501c3, tax-exempt non-profit that hosts an annual conference and meetup events designed to help you fully own your expertise through writing, speaking, and open source.
 - [YesWeTech](http://yeswetech.org/) - Feminist community working for an egalitarian and proud culture of women interested in technology.
-- [Natives in Tech](https://nativesintech.org) - Natives in Tech is a coalition of Native and non-Native software developers whose goal is to support software application development that reinforces Native beliefs, knowledge, and identity. 
+- [Natives in Tech](https://nativesintech.org) - Natives in Tech is a coalition of Native and non-Native software developers whose goal is to support software application development that reinforces Native beliefs, knowledge, and identity.
 - [Brazilians in Tech](https://braziliansintech.com/)- Brazilians in Tech is the first Brazilian platform to bring together the most relevant opportunities in the world of Science and Technology for women working or interested in digital technologies.
 - [Latinas in computing](https://latinasincomputing.org/) - A community created by and for the Latinas in Computing with a mission of promoting their representation and success in computing-related fields.
 - [Latinas in tech](https://www.latinasintech.org/) - a non-profit organization with the aim to connect, support, and empower Latina women working in tech. We work hand in hand with top technology companies to create safe spaces for learning, mentorship and recruitment.
@@ -178,7 +178,7 @@ Both articles and posts on diversity and inclusiveness in technology.
 - [A Brief History Of Women In Computing](https://hackernoon.com/a-brief-history-of-women-in-computing-e7253ac24306) - By Faruk Ateş.
 - [A Counterintuitive Way To Increase Diversity In Tech](https://medium.com/@rachelnabors/a-counterintuitive-way-to-increase-diversity-in-tech-31aea2ce6a50) - By Rachel Nabors.
 - [A Study Used Sensors To Show That Men And Women Are Treated Differently At Work](https://hbr.org/2017/10/a-study-used-sensors-to-show-that-men-and-women-are-treated-differently-at-work) - By Stephen Turban, Laura Freeman and Ben Waber.
-- [Accessibility 101: Introduction To Disability And Accessibility](https://www.youtube.com/watch?v=qM7wFZo5yfI) - By Jenny Lay-Flurrie. 
+- [Accessibility 101: Introduction To Disability And Accessibility](https://www.youtube.com/watch?v=qM7wFZo5yfI) - By Jenny Lay-Flurrie.
 - [Advice For Women In Tech Who Are Tired Of Talking About Women In Tech](https://blog.valerieaurora.org/2018/03/11/advice-for-women-in-tech-who-are-tired-of-talking-about-women-in-tech/) - By Valerie Aurora.
 - [Becoming A 10x Developer](https://kateheddleston.com/blog/becoming-a-10x-developer) - By Kate Heddleston.
 - [Bias, Diversity, Backlash, Manifestos, And Rebuttals](https://code.likeagirl.io/bias-diversity-backlash-manifestos-and-rebuttals-834f7425180e) - By Lorena A Barba.

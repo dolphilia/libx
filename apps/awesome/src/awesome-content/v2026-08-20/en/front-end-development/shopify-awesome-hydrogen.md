@@ -4,7 +4,7 @@ description: "Canonical snapshot of shopify/awesome-hydrogen"
 licenseSource: "github-shopify-awesome-hydrogen-readme-md"
 ---
 
-<img width="400" src="./assets/hydrogen-logo.svg">
+<img width="400" src="https://raw.githubusercontent.com/shopify/awesome-hydrogen/bb3eec5064a8d93d2a0ae38e7c28eabc19411466/assets/hydrogen-logo.svg">
 
 # Awesome Hydrogen [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 

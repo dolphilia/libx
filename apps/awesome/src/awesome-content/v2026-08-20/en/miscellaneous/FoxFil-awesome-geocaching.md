@@ -5,7 +5,7 @@ licenseSource: "github-FoxFil-awesome-geocaching-readme-md"
 ---
 
 <h1><div align="center">
-	<a href="https://www.geocaching.com"><img width="50%" height="25%" src="pics/logo.png" alt="Awesome Geocaching"></a>
+	<a href="https://www.geocaching.com"><img width="50%" height="25%" src="https://raw.githubusercontent.com/FoxFil/awesome-geocaching/81fca0108e668af88c5b8861e1e466e7ba7d00f6/pics/logo.png" alt="Awesome Geocaching"></a>
 </div></h1>
 <p align="center">
     <a href="https://github.com/sindresorhus/awesome"><img alt="awesome badge" src="https://awesome.re/badge.svg" />
@@ -31,7 +31,7 @@ Contributions welcome! Read the [contribution guidelines](https://github.com/Fox
 ## Websites
 
 - [Geocaching.com](https://www.geocaching.com/) - Official international website.
-- [Shop Geocaching](https://shop.geocaching.com/) - Official geocaching shop where you can buy cache containers, trackables, wearables and more.    
+- [Shop Geocaching](https://shop.geocaching.com/) - Official geocaching shop where you can buy cache containers, trackables, wearables and more.
 - [Project-GC](https://project-gc.com/) - Website that gives a lot of statistics about your geocaching account.
 - [GeoCheck](https://geocheck.org/) - Coordinates checker for geocaches.
 - [Certitude](https://certitudes.org/) - Tool used to validate solutions for geocaching puzzles.

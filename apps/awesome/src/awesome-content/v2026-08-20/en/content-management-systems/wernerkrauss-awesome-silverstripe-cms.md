@@ -6,7 +6,7 @@ licenseSource: "github-wernerkrauss-awesome-silverstripe-cms-readme-md"
 
 # Awesome Silverstripe CMS [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="images/logo-silverstripe-cms.png" align="right" width="200">](https://www.silverstripe.org/)
+[<img src="https://raw.githubusercontent.com/wernerkrauss/awesome-silverstripe-cms/8f378e0d9585d40573bc1d7ef65dcabadba265f1/images/logo-silverstripe-cms.png" align="right" width="200">](https://www.silverstripe.org/)
 
 > Useful resources for Silverstripe Framework and CMS
 
@@ -91,7 +91,7 @@ Outdated items can be found in the [archive](https://github.com/wernerkrauss/awe
 - [Fluent](https://github.com/tractorcow-farm/silverstripe-fluent) - Multi-language translate module for Silverstripe, without having to manage separate site trees.
 - [Autotranslate](https://github.com/bratiask/silverstripe-autotranslate) -  Creates automatic translations of fields using Google Translate API.
 
-### Site Search 
+### Site Search
 - [Silverstripe Searchable](https://github.com/i-lateral/silverstripe-searchable) - Adds more complex site searching using the Silverstripe ORM. With dedicated templates for search results across multiple search objects.
 - [Searchable DataObjects](https://github.com/g4b0/silverstripe-searchable-dataobjects) - Fast and simple MySQL based search. Useful for single language sites.
 - [Fulltext Search](https://github.com/silverstripe/silverstripe-fulltextsearch) - Full fledged search interface for Solr4 (EOL).
@@ -136,5 +136,3 @@ There is no official box like Laravel has its homestead box. However, there are 
 - [Laravel Homestead](https://github.com/laravel/homestead) - Prepackaged box for local development.
 - [Scotchbox](https://box.scotch.io) - Popular LAMP/LEMP stack for local development.
 - [Zauberfisch Vagrant Boxes](https://github.com/Zauberfisch/vagrant-boxes) -  Preconfigured Vagrant boxes for SS3 and SS4.
-
-

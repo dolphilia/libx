@@ -6,7 +6,7 @@ licenseSource: "github-francoism90-awesome-kde-readme-md"
 
 # Awesome KDE [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="media/logo-kde-grey.svg" align="right" width="144">](http://www.kde.org)
+[<img src="https://raw.githubusercontent.com/francoism90/awesome-kde/579f44b5998628785e7191f6755ed418c2e27e84/media/logo-kde-grey.svg" align="right" width="144">](http://www.kde.org)
 
 > A curated list of _awesome_ apps, extensions, modules, themes and tools for the KDE Desktop Environment.
 
@@ -48,7 +48,7 @@ Tip: An overview of the most used KDE community apps are listed on the [official
 - [qBittorrent](https://www.qbittorrent.org/) - An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar.
 - [Qt WebBrowser](http://doc.qt.io/QtWebBrowser/) - Qt WebBrowser is a browser for embedded devices developed using the capabilities of Qt and Qt WebEngine.
 - [Smb4K](https://apps.kde.org/en/smb4k) - Advanced Network Neighborhood Browser and Samba Share Mounting Utility 📌.
-- [Tokodon](https://apps.kde.org/pt-br/tokodon/) - Tokodon is a Mastodon client. It allows you to interact with the Fediverse community 📌. 
+- [Tokodon](https://apps.kde.org/pt-br/tokodon/) - Tokodon is a Mastodon client. It allows you to interact with the Fediverse community 📌.
 
 ### Graphics & Imaging
 
@@ -145,7 +145,7 @@ Note: Customizations quickly become outdated, it is recommended to look in the [
 - [KDoit](https://github.com/lubdhak7414/KDoit) - Lightweight to-do list plasmoid for KDE Plasma 6 with nested sublists, priorities, due dates, and UUID-based file sync.
 - [Latte-Dock](https://invent.kde.org/plasma/latte-dock) - Latte is a dock based on Plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids for **Plasma 5** 📌. ⚠️ Unmaintained.
 - [Latte Dock NG](https://github.com/ruizhi-lab/latte-dock-ng) is a Wayland-first dock for KDE Plasma 6.5+ that provides an elegant and intuitive experience for your tasks and widgets.
-  
+
 #### KCM Modules and Systems
 
 - [kcm-wacomtablet](https://invent.kde.org/plasma/wacomtablet/) - KDE GUI for the Wacom Linux Drivers 📌.

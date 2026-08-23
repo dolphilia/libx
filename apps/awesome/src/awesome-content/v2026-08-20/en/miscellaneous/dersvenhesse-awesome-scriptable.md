@@ -13,7 +13,7 @@ licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
 > A carefully curated list of awesome Scriptable widgets.
 
 
-[Scriptable](https://scriptable.app/) is an app to automate iOS using JavaScript. 
+[Scriptable](https://scriptable.app/) is an app to automate iOS using JavaScript.
 
 
 ## Contents
@@ -58,7 +58,7 @@ licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
   <img src="https://raw.githubusercontent.com/niklasvieth/polestar-ios-medium-widget/main/images/polestar_medium_widget_relative.jpeg" width="400"/>
 
 - [SmarterTankenWidget.js](https://github.com/Martlgap/SmarterTankenWidget) - Price difference of two gas stations in different countries.
- 
+
   <img src="https://user-images.githubusercontent.com/20643017/189459347-e66e7ec1-c66a-4467-b6c9-5517bd38ac28.png" width="200"/>
 
 - [tankstellenpreise.js](https://github.com/Necriso/ScriptableWidgets/blob/main/tankstellenpreise.js) - Fuel prices from a nearby gas station.
@@ -66,9 +66,9 @@ licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
   <img src="https://raw.githubusercontent.com/Necriso/ScriptableWidgets/main/images/tankstellenpreise.png" width="200"/>
 
 - [TeslaData-Widget](https://github.com/DrieStone/TeslaData-Widget) - Information about your Tesla, like charging status and doors locked/unlocked.
-  
-  <img src="https://raw.githubusercontent.com/DrieStone/TeslaData-Widget/main/documentation/screen_001.png" width="400"/>  
-  
+
+  <img src="https://raw.githubusercontent.com/DrieStone/TeslaData-Widget/main/documentation/screen_001.png" width="400"/>
+
 - [ZOE-Widget.js](https://gist.github.com/mountbatt/772e4512089802a2aa2622058dd1ded7) - Information about your Renault Zoe like charging or location.
 
   <img src="https://user-images.githubusercontent.com/2411246/97786189-41f68f80-1baa-11eb-9c6f-96e8d8f7684a.jpeg" width="400"/>
@@ -110,7 +110,7 @@ licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
 - [btc-usd-course.js](https://github.com/wickenico/btc-usd-course.js) - Shows the current Bitcoin course in USD.
 
   <img src="https://raw.githubusercontent.com/wickenico/btc-usd-course.js/main/img/bitcoin-usd-course-widget-small.png" height="200"/>
-  
+
 - [Tradegate Stock Widget](https://github.com/Chrischi-/tradegate-stock-widget-for-scriptable) - Stocks Widget to show share prices from Tradegate Exchange.
 
   <img src="https://user-images.githubusercontent.com/6323217/147655180-c4d3041c-58c1-4108-b001-29e01767025d.png" height="200"/>
@@ -162,7 +162,7 @@ licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
 - [spotify-now-playing.js](https://gist.github.com/marco79cgn/79a6a265d978dc22cc2a12058b24e02b) - Now playing on Spotify.
 
   <img src="https://user-images.githubusercontent.com/9810829/94380118-76eb6e80-0134-11eb-9d71-c6d587b8b224.jpeg" width="400"/>
-  
+
 ## Reading
 
 - [MyQuotes](https://github.com/rushhiii/Scriptable-IOSWidgets/tree/main/Widgets/Quote%20Widget) - Display daily inspirational quotes pulled from your own Google Sheet. Supports categories like Zen, Gita, Aurelius, Kafka, and more, with auto-refresh and customizable colors.
@@ -194,7 +194,7 @@ licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
 - [termiWidget.js](https://gist.github.com/spencerwooo/7955aefc4ffa5bc8ae7c83d85d05e7a4) - Terminal-like output of subscriber amount.
 
   <img src="https://user-images.githubusercontent.com/32114380/90952313-18780400-e495-11ea-9791-20634a895af6.PNG" width="400"/>
-  
+
 ## Shopping
 
 - [exchangeRate.js](https://github.com/Juniorchen2012/scriptable/blob/master/exchangeRate.js) - Currency exchange rates.
@@ -223,22 +223,22 @@ licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
 - [nfl-team-schedule-widget](https://github.com/brianwalborn/nfl-team-schedule-widget) - The current season schedule for an NFL team.
 
 - [rsg_group_mcfit_high5_johnreed_capacity_widget.js](https://gist.github.com/masselmello/6d4f4c533b98b2550ee23a7a5e6c6cff) - Capacity of the nearest McFit gym.
-  
+
 - [Scriptable-lichess-Widget](https://github.com/bestmacfly/Scriptable-lichess-Widget) - Your current lichess statistics.
 
   <img src="https://raw.githubusercontent.com/bestmacfly/Scriptable-lichess-Widget/main/Screenshot.png" width="400"/>
 
-- [skiable](https://github.com/p0fi/skiable-for-scriptable) - Skiing information like snow height or the number of open lifts. 
+- [skiable](https://github.com/p0fi/skiable-for-scriptable) - Skiing information like snow height or the number of open lifts.
 
   <img src="https://raw.githubusercontent.com/p0fi/skiable-for-scriptable/main/cover.png" width="400"/>
 
 ## Tools
 
-- [bwh-monitor-widget-for-scriptable](https://github.com/f1tz/bwh-monitor-widget-for-scriptable) - BandWagonHost VPS Monitoring Widget.   
+- [bwh-monitor-widget-for-scriptable](https://github.com/f1tz/bwh-monitor-widget-for-scriptable) - BandWagonHost VPS Monitoring Widget.
 
   <img src="https://raw.githubusercontent.com/f1tz/bwh-monitor-widget-for-scriptable/main/imgs/widget_preview.jpg" width="400"/>
 
-- [bamboo-scriptable-widget](https://github.com/Korysam15/bamboo-scriptable-widget) - Status of build plans from Bamboo.   
+- [bamboo-scriptable-widget](https://github.com/Korysam15/bamboo-scriptable-widget) - Status of build plans from Bamboo.
 
   <img src="https://raw.githubusercontent.com/Korysam15/bamboo-scriptable-widget/main/docs/img/widget.png" width="200"/>
 

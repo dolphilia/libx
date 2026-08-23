@@ -417,77 +417,77 @@ Tutorials that cover the path from an existing web app to a published mobile app
 - [Ionic Blocks](https://ionicblocks.com/) - A collection of free and premium Ionic components.
 
 ### Animations
-- [Lottie Animation](https://github.com/chenqingspring/ng-lottie) 
-- [Lottie Animation](https://github.com/fivethree-team/lottie) 
+- [Lottie Animation](https://github.com/chenqingspring/ng-lottie)
+- [Lottie Animation](https://github.com/fivethree-team/lottie)
 
 ### UI Library
-- [Ionic 4 UI Component Library](https://github.com/fivethree-team/ionic-4-components) 
+- [Ionic 4 UI Component Library](https://github.com/fivethree-team/ionic-4-components)
 
 ### Menu, Tabs
-- [Scrollabel Tabs](https://github.com/SinoThomas/Ionic2-ScrollableTabs) 
-- [Circular Tabs](https://github.com/SinoThomas/Ionic2-CircularTabs) 
-- [Fab Toolbar](https://github.com/ekhmoi/fab-toolbar) 
-- [Multi Level Sidemenu](https://github.com/sebaferreras/Ionic2-MultiLevelSideMenu) 
-- [Popover Sidemenu](https://github.com/philipbrack/ionic2-menu-alternative-popover) 
-- [Drop down Title](https://github.com/Mohd-PH/ionic-drop-down-title) 
+- [Scrollabel Tabs](https://github.com/SinoThomas/Ionic2-ScrollableTabs)
+- [Circular Tabs](https://github.com/SinoThomas/Ionic2-CircularTabs)
+- [Fab Toolbar](https://github.com/ekhmoi/fab-toolbar)
+- [Multi Level Sidemenu](https://github.com/sebaferreras/Ionic2-MultiLevelSideMenu)
+- [Popover Sidemenu](https://github.com/philipbrack/ionic2-menu-alternative-popover)
+- [Drop down Title](https://github.com/Mohd-PH/ionic-drop-down-title)
 
 ### Form / Input
-- [Autocomplete](https://github.com/kadoshms/ionic2-autocomplete) 
-- [Form Generator based on JSON](https://github.com/makinacorpus/angular2-schema-form) 
-- [Dynamic Forms](https://github.com/udos86/ng2-dynamic-forms/) 
-- [Form Builder](https://github.com/rohitg7/ionic2-form-builder) 
+- [Autocomplete](https://github.com/kadoshms/ionic2-autocomplete)
+- [Form Generator based on JSON](https://github.com/makinacorpus/angular2-schema-form)
+- [Dynamic Forms](https://github.com/udos86/ng2-dynamic-forms/)
+- [Form Builder](https://github.com/rohitg7/ionic2-form-builder)
 - [Sidemenu tabs](https://github.com/seanmavley/ionic2-sidemenu-tabs)
 - [Selectable](https://github.com/eakoriakin/ionic-selectable)
 - [Masks](https://github.com/amarkes/br-mask)
 
 ### Input - Date/Calendar
-- [Calendar](https://github.com/twinssbc/Ionic2-Calendar) 
-- [Calendar](https://github.com/alexandretok/easy-ionic2-calendar) 
-- [Calendar](https://github.com/redpandatronicsuk/ionic2calendar) 
+- [Calendar](https://github.com/twinssbc/Ionic2-Calendar)
+- [Calendar](https://github.com/alexandretok/easy-ionic2-calendar)
+- [Calendar](https://github.com/redpandatronicsuk/ionic2calendar)
 - [Calendar](https://github.com/mattlewis92/angular-calendar)  (very powerful)
-- [Calendar - Fullcalendar](https://github.com/nekken/ng2-fullcalendar) 
-- [Datepicker](https://github.com/misha130/datepicker-ionic2) 
-- [Datepicker (selectable range dates calendar)](https://github.com/HsuanXyz/ion2-calendar) 
-- [Datepicker](https://github.com/rajeshwarpatlolla/ionic2-datepicker) 
-- [Rating](https://github.com/andrucz/ionic2-rating) 
+- [Calendar - Fullcalendar](https://github.com/nekken/ng2-fullcalendar)
+- [Datepicker](https://github.com/misha130/datepicker-ionic2)
+- [Datepicker (selectable range dates calendar)](https://github.com/HsuanXyz/ion2-calendar)
+- [Datepicker](https://github.com/rajeshwarpatlolla/ionic2-datepicker)
+- [Rating](https://github.com/andrucz/ionic2-rating)
 - [Inputfield Mask](https://github.com/text-mask/text-mask)
 
 ### Lists/Table
-- [Sortable/Filter Tables](https://github.com/valor-software/ng2-table) 
-- [Smart table (sorting, filtering)](https://github.com/akveo/ng2-smart-table) 
-- [Flexible and Light Table](https://github.com/swimlane/ngx-datatable) 
+- [Sortable/Filter Tables](https://github.com/valor-software/ng2-table)
+- [Smart table (sorting, filtering)](https://github.com/akveo/ng2-smart-table)
+- [Flexible and Light Table](https://github.com/swimlane/ngx-datatable)
 
 ### Images
-- [Signatur](https://github.com/wulfsolter/angular2-signaturepad) - Works perfect with Ionic. 
-- [Image Fallback](https://github.com/VadimDez/ng2-img-fallback) 
-- [Lazy Load](https://github.com/tjoskar/ng2-lazyload-image)  
-- [Image Loader](https://github.com/zyramedia/ionic-image-loader) 
-- [Facebook Gallery](https://github.com/skyfloyd/ionic2-fb-gallery) 
-- [Image Viewer](https://github.com/Riron/ionic-img-viewer) 
-- [Gallery Modal](https://github.com/nikini/ionic-gallery-modal) 
-- [Image Zoom](https://github.com/brtnshrdr/angular2-image-zoom) 
+- [Signatur](https://github.com/wulfsolter/angular2-signaturepad) - Works perfect with Ionic.
+- [Image Fallback](https://github.com/VadimDez/ng2-img-fallback)
+- [Lazy Load](https://github.com/tjoskar/ng2-lazyload-image)
+- [Image Loader](https://github.com/zyramedia/ionic-image-loader)
+- [Facebook Gallery](https://github.com/skyfloyd/ionic2-fb-gallery)
+- [Image Viewer](https://github.com/Riron/ionic-img-viewer)
+- [Gallery Modal](https://github.com/nikini/ionic-gallery-modal)
+- [Image Zoom](https://github.com/brtnshrdr/angular2-image-zoom)
 
 ### Charts/Diagram
-- [Charts](https://github.com/valor-software/ng2-charts) 
-- [D3 Service](https://github.com/tomwanzek/d3-ng2-service) 
-- [D3 Angular Examples](https://github.com/datencia/d3js-angular-examples) 
-- [D3 Line/Bar/Pie Charts](https://github.com/datencia/d3js-angular2-example) 
+- [Charts](https://github.com/valor-software/ng2-charts)
+- [D3 Service](https://github.com/tomwanzek/d3-ng2-service)
+- [D3 Angular Examples](https://github.com/datencia/d3js-angular-examples)
+- [D3 Line/Bar/Pie Charts](https://github.com/datencia/d3js-angular2-example)
 
 ### Video/Audio
-- [Video Editor](https://github.com/rossmartin/video-editor-ionic2) 
-- [Simple Audioplayer](https://github.com/arielfaur/ionic-audio) 
+- [Video Editor](https://github.com/rossmartin/video-editor-ionic2)
+- [Simple Audioplayer](https://github.com/arielfaur/ionic-audio)
 
 ### Keyboards
-- [Digit Keyboard](https://github.com/skol-pro/ion-digit-keyboard-v2) 
+- [Digit Keyboard](https://github.com/skol-pro/ion-digit-keyboard-v2)
 
 ### Icons
 - [@robsonos/ionic-mdi](https://www.npmjs.com/package/@robsonos/ionic-mdi) - Material Design Icons for the Ionic `addIcons` function.
 
 ### Dialog
-- [Dialogbox with Counter](https://github.com/HsuanXyz/ionic2-extend-alert) 
+- [Dialogbox with Counter](https://github.com/HsuanXyz/ionic2-extend-alert)
 
 ### Frames
-- [ng Lightning (for Salesforce Apps)](https://github.com/ng-lightning/ng-lightning) 
+- [ng Lightning (for Salesforce Apps)](https://github.com/ng-lightning/ng-lightning)
 
 ## Open Source Projects
 - [Ionic Conference App](https://github.com/driftyco/ionic-conference-app)

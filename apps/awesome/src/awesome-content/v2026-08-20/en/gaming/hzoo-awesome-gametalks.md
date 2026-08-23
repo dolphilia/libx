@@ -38,7 +38,7 @@ Check out [contribution guidelines](https://github.com/hzoo/awesome-gametalks/bl
 - [2014] [Narrative Legos](http://www.gdcvault.com/play/1020434/): Ken Levine (Irrational Games)
 - [2014] [Antichamber: An Overnight Success, Seven Years in the Making](http://www.gdcvault.com/play/1020776/): Alexander Bruce
 - [2014] [Antichamber: Three Years of Hardcore Iteration](http://gdcvault.com/play/1020586/): Alexander Bruce
-- [2014] [A Study in Transparency: How Board Games Matter](http://www.gdcvault.com/play/1020408/): Soren Johnson (Mohawk Games) 
+- [2014] [A Study in Transparency: How Board Games Matter](http://www.gdcvault.com/play/1020408/): Soren Johnson (Mohawk Games)
 - [2014] [Hearts and Minds](http://www.gdcvault.com/play/1020788/): Frank Lantz (NYU Game Center)
 - [2014] [Interpreting Feedback and Maintaining Your Vision](http://www.gdcvault.com/play/1020495/): Andy Nguyen (Pocketwatch Games)
 - [2014] [Why Is Gone Home a Game?](http://www.gdcvault.com/play/1020376/): Steve Gaynor (The Fullbright Company)
@@ -60,7 +60,7 @@ Check out [contribution guidelines](https://github.com/hzoo/awesome-gametalks/bl
 - [2012] [Attention, Not Immersion: Making Your Games Better with Psychology and Playtesting, the Uncharted Way](http://www.gdcvault.com/play/1015745/): Richard Lemarchand (Naughty Dog)
 - [2012] [Classic Game Postmortem: Harvest Moon](http://www.gdcvault.com/play/1015842/): Yasuhiro Wada (Toy Box, Inc.)
 - [2012] [The 5 Domains of Play: Applying Psychology's Big 5 Motivation Domains to Games](http://gdcvault.com/play/1015595/): Jason VandenBerghe (Ubisoft)
-- [2012] [Creating a Sequel to a Game That Doesn't Need One](https://www.youtube.com/watch?v=OLqk4aqpXlQ): Chet Faliszek, Erik Wolpaw (Valve) 
+- [2012] [Creating a Sequel to a Game That Doesn't Need One](https://www.youtube.com/watch?v=OLqk4aqpXlQ): Chet Faliszek, Erik Wolpaw (Valve)
 - [2012] [How I Got My Mom to Play Through Plants vs. Zombies](http://www.gdcvault.com/play/1015541/): George Fan (PopCap)
 - [2011] [Design in Detail: Tuning the Muzzle Velocity of the Plasma Rifle Bolt on Legendary Difficulty Across the HALO Franchise](http://www.gdcvault.com/play/1014704/): Jaime Griesemer (Bungie)
 - [2011] [Dynamics: The State of the Art](http://www.gdcvault.com/play/1014597/): Clint Hocking (LucasArts)
@@ -80,20 +80,20 @@ Check out [contribution guidelines](https://github.com/hzoo/awesome-gametalks/bl
 [http://www.ted.com/topics/gaming](http://www.ted.com/topics/gaming)
 
 - [2015, TED]  [Physical Therapy Is Boring — Play A Game Instead](http://www.ted.com/talks/cosmin_mihaiu_physical_therapy_is_boring_play_a_game_instead): Cosmin Mihaiu
-- [2015, TEDxTokyo] [Play This Game To Come Up With Original ideas](http://www.ted.com/talks/shimpei_takahashi_play_this_game_to_come_up_with_original_ideas): Shimpei Takahashi 
-- [2013, TEDGlobal] [Massively Multi-Player… Thumb-Wrestling?](http://www.ted.com/talks/jane_mcgonigal_massively_multi_player_thumb_wrestling): Jane McGonigal (Institute for the Future) 
-- [2012, TEDGlobal] [The Game That Can Give You 10 Extra Years Of Life](https://www.ted.com/talks/jane_mcgonigal_the_game_that_can_give_you_10_extra_years_of_life?language=en): Jane McGonigal 
-- [2012, TEDxCHUV] [Your Brain On Video Games](http://www.ted.com/talks/daphne_bavelier_your_brain_on_video_games): Daphne Bavelier (University of Geneva) 
-- [2012, TEDxPhoenix] [Gaming For Understanding](http://www.ted.com/talks/brenda_brathwaite_gaming_for_understanding): Brenda Romero (Loot Drop) 
-- [2011, TEDxKids@Brussels] [How Games Make Kids Smarter: ](http://www.ted.com/talks/gabe_zichermann_how_games_make_kids_smarter)Gabe Zichermann (Author) 
-- [2010, TEDGlobal] [7 Ways Games Reward The Brain](http://www.ted.com/talks/tom_chatfield_7_ways_games_reward_the_brain): Tom Chatfield  
-- [2010, TEDxBoston] [The Game Layer On Top Of The World](http://www.ted.com/talks/seth_priebatsch_the_game_layer_on_top_of_the_world): Seth Priebatsch  
-- [2010, TEDGlobal] [Meet Milo, The Virtual Boy](http://www.ted.com/talks/peter_molyneux_demos_milo_the_virtual_boy): Peter Molyneux  
-- [2010, TED] [Gaming Can Make A Better World](http://www.ted.com/talks/jane_mcgonigal_gaming_can_make_a_better_world?language=en): Jane McGonigal (Institute for the Future) 
-- [2009, EG] [The Art of Puzzles](http://www.ted.com/talks/scott_kim_takes_apart_the_art_of_puzzles) Scott Kim (Discover Magazine) 
-- [2009, Serious Play] [Play is More than Just Fun](http://www.ted.com/talks/stuart_brown_says_play_is_more_than_fun_it_s_vital): Stuart Brown (National Institute for Play) 
-- [1998, TED] [Games for Girls](http://www.ted.com/talks/brenda_laurel_on_making_games_for_girls): Brenda Laurel (California College of the Arts) 
-- [2007, TED] [Spore, Birth of a Game](http://www.ted.com/talks/will_wright_makes_toys_that_make_worlds):Will Wright (Maxis) 
+- [2015, TEDxTokyo] [Play This Game To Come Up With Original ideas](http://www.ted.com/talks/shimpei_takahashi_play_this_game_to_come_up_with_original_ideas): Shimpei Takahashi
+- [2013, TEDGlobal] [Massively Multi-Player… Thumb-Wrestling?](http://www.ted.com/talks/jane_mcgonigal_massively_multi_player_thumb_wrestling): Jane McGonigal (Institute for the Future)
+- [2012, TEDGlobal] [The Game That Can Give You 10 Extra Years Of Life](https://www.ted.com/talks/jane_mcgonigal_the_game_that_can_give_you_10_extra_years_of_life?language=en): Jane McGonigal
+- [2012, TEDxCHUV] [Your Brain On Video Games](http://www.ted.com/talks/daphne_bavelier_your_brain_on_video_games): Daphne Bavelier (University of Geneva)
+- [2012, TEDxPhoenix] [Gaming For Understanding](http://www.ted.com/talks/brenda_brathwaite_gaming_for_understanding): Brenda Romero (Loot Drop)
+- [2011, TEDxKids@Brussels] [How Games Make Kids Smarter: ](http://www.ted.com/talks/gabe_zichermann_how_games_make_kids_smarter)Gabe Zichermann (Author)
+- [2010, TEDGlobal] [7 Ways Games Reward The Brain](http://www.ted.com/talks/tom_chatfield_7_ways_games_reward_the_brain): Tom Chatfield
+- [2010, TEDxBoston] [The Game Layer On Top Of The World](http://www.ted.com/talks/seth_priebatsch_the_game_layer_on_top_of_the_world): Seth Priebatsch
+- [2010, TEDGlobal] [Meet Milo, The Virtual Boy](http://www.ted.com/talks/peter_molyneux_demos_milo_the_virtual_boy): Peter Molyneux
+- [2010, TED] [Gaming Can Make A Better World](http://www.ted.com/talks/jane_mcgonigal_gaming_can_make_a_better_world?language=en): Jane McGonigal (Institute for the Future)
+- [2009, EG] [The Art of Puzzles](http://www.ted.com/talks/scott_kim_takes_apart_the_art_of_puzzles) Scott Kim (Discover Magazine)
+- [2009, Serious Play] [Play is More than Just Fun](http://www.ted.com/talks/stuart_brown_says_play_is_more_than_fun_it_s_vital): Stuart Brown (National Institute for Play)
+- [1998, TED] [Games for Girls](http://www.ted.com/talks/brenda_laurel_on_making_games_for_girls): Brenda Laurel (California College of the Arts)
+- [2007, TED] [Spore, Birth of a Game](http://www.ted.com/talks/will_wright_makes_toys_that_make_worlds):Will Wright (Maxis)
 - [2006, TED] [Are Games Better than Liife?](http://www.ted.com/talks/david_perry_on_videogames?language=en): David Perry (Gaikai)
 
 ## Other Talks
@@ -137,19 +137,19 @@ Check out [contribution guidelines](https://github.com/hzoo/awesome-gametalks/bl
 
 ## Conferences
 
-- [2014, DICE Europe] [2014 D.I.C.E Europe](https://www.youtube.com/playlist?list=PLLx_Nt-I7ViqrulUPyfVQQf1xiu7Fj0b1) 
-- [2014, DICE] [2014 D.I.C.E. Summit](https://www.youtube.com/playlist?list=PLLx_Nt-I7Vio9PferYNMlxZoMjD_Yzk3d) 
-- [2014, Steam Dev Days] [Steam Dev Days](https://www.youtube.com/playlist?list=PLckFgM6dUP2hc4iy-IdKFtqR9TeZWMPjm) 
-- [2014, Unknown Worlds Post Mortems] [Game Development Micro-Talks](https://www.youtube.com/playlist?list=PLWuf3ThLEyAgy-V9EtFo_LA-96_lrGTKf) 
-- [2014, Oculus Connect] [Oculus Connect: Developer Sessions](https://www.youtube.com/playlist?list=PLL2xVXGs1SP5CVE6X3GMSroO2cfHxzeCz) 
-- [2013, DICE Europe] [2013 D.I.C.E Europe](https://www.youtube.com/playlist?list=PLLx_Nt-I7Viqp_BIKm8gyyOHVrLi8HrEI) 
-- [2013, DICE] [2013 D.I.C.E. Summit](https://www.youtube.com/playlist?list=PLLx_Nt-I7VioDSuOC24uI52knYk44egII) 
-- [2013 - Now, IndieCade] [Indiecade Official Channel](https://www.youtube.com/user/indiecadeofficial/videos) 
-- [2013, PRACTICE] [PRACTICE 2013](http://vimeo.com/album/2869597) 
-- [2012 - Now, DigiPen Game Engine Architecture] [Game Engine Architecture Club](https://www.youtube.com/user/GameEngineArchitects/videos) 
-- [2012 - Now, NYU Poly Game Lab] [POLYGAMELAB Official Channel](https://www.youtube.com/user/POLYGAMELAB/videos) 
-- [2012, DICE] [dicesummit](http://www.dicesummit.org/video_gallery/video_gallery_2012.asp) 
-- [2011, DICE] [dicesummit](http://www.dicesummit.org/video_gallery/video_gallery_2011.asp) 
+- [2014, DICE Europe] [2014 D.I.C.E Europe](https://www.youtube.com/playlist?list=PLLx_Nt-I7ViqrulUPyfVQQf1xiu7Fj0b1)
+- [2014, DICE] [2014 D.I.C.E. Summit](https://www.youtube.com/playlist?list=PLLx_Nt-I7Vio9PferYNMlxZoMjD_Yzk3d)
+- [2014, Steam Dev Days] [Steam Dev Days](https://www.youtube.com/playlist?list=PLckFgM6dUP2hc4iy-IdKFtqR9TeZWMPjm)
+- [2014, Unknown Worlds Post Mortems] [Game Development Micro-Talks](https://www.youtube.com/playlist?list=PLWuf3ThLEyAgy-V9EtFo_LA-96_lrGTKf)
+- [2014, Oculus Connect] [Oculus Connect: Developer Sessions](https://www.youtube.com/playlist?list=PLL2xVXGs1SP5CVE6X3GMSroO2cfHxzeCz)
+- [2013, DICE Europe] [2013 D.I.C.E Europe](https://www.youtube.com/playlist?list=PLLx_Nt-I7Viqp_BIKm8gyyOHVrLi8HrEI)
+- [2013, DICE] [2013 D.I.C.E. Summit](https://www.youtube.com/playlist?list=PLLx_Nt-I7VioDSuOC24uI52knYk44egII)
+- [2013 - Now, IndieCade] [Indiecade Official Channel](https://www.youtube.com/user/indiecadeofficial/videos)
+- [2013, PRACTICE] [PRACTICE 2013](http://vimeo.com/album/2869597)
+- [2012 - Now, DigiPen Game Engine Architecture] [Game Engine Architecture Club](https://www.youtube.com/user/GameEngineArchitects/videos)
+- [2012 - Now, NYU Poly Game Lab] [POLYGAMELAB Official Channel](https://www.youtube.com/user/POLYGAMELAB/videos)
+- [2012, DICE] [dicesummit](http://www.dicesummit.org/video_gallery/video_gallery_2012.asp)
+- [2011, DICE] [dicesummit](http://www.dicesummit.org/video_gallery/video_gallery_2011.asp)
 - [2010, DICE] [dicesummit](http://www.dicesummit.org/video_gallery/video_gallery_2010.asp)
 
 ## Lists
@@ -160,15 +160,15 @@ Check out [contribution guidelines](https://github.com/hzoo/awesome-gametalks/bl
 
 ## Dedicated Podcasts
 
-- [A life well wasted](http://alifewellwasted.com/): Robert Ashley 
-- [Another Castle](http://gamedesignadvance.com/?page_id=1616): Charles J Pratt (Game Design Advance) 
-- [Brainy Gamer](http://www.brainygamer.com/the_brainy_gamer/podcast/): Michael Abbott  
-- [Game Developers Radio](http://www.gamedevradio.com/): [Joseph Burchett](http://www.linkedin.com/pub/joseph-burchett/10/677/50b) 
-- [The Game Design Round Table](http://thegamedesignroundtable.com): Jon Shafer (Firaxis), Dirk Knemeyer (The New Science, Tomorrow). 
-- [IndieGamePod](http://www.indiegamepod.com/) Interviews with developers about their games. 
-- [Infinite Ammo Podcast](http://infiniteammo.ca/podcast): Alec Holowka 
-- [Ludology](http://ludology.libsyn.com/): Ryan Sturm, Geoff Engelstein 
-- [Podclass](https://www.digipen.edu/news-and-events/podclass-the-digipen-podcast/): (Digipen)  
+- [A life well wasted](http://alifewellwasted.com/): Robert Ashley
+- [Another Castle](http://gamedesignadvance.com/?page_id=1616): Charles J Pratt (Game Design Advance)
+- [Brainy Gamer](http://www.brainygamer.com/the_brainy_gamer/podcast/): Michael Abbott
+- [Game Developers Radio](http://www.gamedevradio.com/): [Joseph Burchett](http://www.linkedin.com/pub/joseph-burchett/10/677/50b)
+- [The Game Design Round Table](http://thegamedesignroundtable.com): Jon Shafer (Firaxis), Dirk Knemeyer (The New Science, Tomorrow).
+- [IndieGamePod](http://www.indiegamepod.com/) Interviews with developers about their games.
+- [Infinite Ammo Podcast](http://infiniteammo.ca/podcast): Alec Holowka
+- [Ludology](http://ludology.libsyn.com/): Ryan Sturm, Geoff Engelstein
+- [Podclass](https://www.digipen.edu/news-and-events/podclass-the-digipen-podcast/): (Digipen)
 
 ## Talks
 

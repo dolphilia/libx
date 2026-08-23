@@ -111,7 +111,7 @@ A helpful checklist / collection of Search Engine Optimization (SEO) tips and te
 - Backlinks: Only add external links if you got a backlink to your site.
 - Internal links: Add ~3 internal links to your content.
 - [Languages](https://moz.com/learn/seo/hreflang-tag) - The hreflang tag tells Google which language you are using on a specific page, so the search engine can serve that result to users searching in that language
-  `<link rel="alternate" href="example.com/fr/" hreflang="fr-fr" />`.
+  `<link rel="alternate" href="https://github.com/marcobiedermann/search-engine-optimization/blob/a4681ed883e5850018b3ebe566e54e751b9aeacf/example.com/fr/" hreflang="fr-fr" />`.
 - Naming: Use a descriptive link name: “Click here” or “Read more” are bad link text. Better “Read more about SEO and Web Accessibility”.
 - [nofollow](https://support.google.com/webmasters/answer/96569) - Add `rel="nofollow"` attribute to external links only to prevent spam and bad links.
 - Title: add the title attribute to links.
@@ -174,7 +174,7 @@ A helpful checklist / collection of Search Engine Optimization (SEO) tips and te
 - [Webpagetest.org](https://www.webpagetest.org/) - Web Page Test gives you an overall performance waterfall as well as rendering timeline for sites. It also provides critical insight into time to first byte and what could be holding back web page performance.
 - [WooRank](https://www.woorank.com/) - WooRank will help you to address issues on your site & identify opportunities to push you ahead of the competition.
 - [Awesometechstack.com](https://awesometechstack.com/) - AwesomeTechStack provides insights into the security, modernity, and performance of any website's technology stack and guidance to improve web vitals and the technology stack.
-- [OptimalUX](https://optimalux.com/seo-patching) - Optimize your site with seamless SEO patching and an A/B testing tool built on top of Cloudflare for easy integration. 
+- [OptimalUX](https://optimalux.com/seo-patching) - Optimize your site with seamless SEO patching and an A/B testing tool built on top of Cloudflare for easy integration.
 
 ### Keywords
 
@@ -183,7 +183,7 @@ A helpful checklist / collection of Search Engine Optimization (SEO) tips and te
 - [Keyword Tool](http://keywordtool.io/) - Best FREE alternative to Google Keyword Tool for SEO & PPC keyword research! Get 750+ relevant long-tail keywords from Google Suggest in seconds!
 - [Moz Keyword Explorer](https://moz.com/explorer) - Paid Keyword Tool that provides precise search volume, keyword difficulty, SERP Features and organic click through rate data.
 - [Keyword Clarity](https://keywordclarity.io) - Free keyword analytics tool that allows you to visualize and group keyword metrics with tree diagrams. The tool works with data from the Google Search Console API and CSVs.
-- [SEOwl](https://www.seowl.co) - Track your keyword rankings overtime and monitor your backlinks 
+- [SEOwl](https://www.seowl.co) - Track your keyword rankings overtime and monitor your backlinks
 
 ### Links
 

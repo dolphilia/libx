@@ -6,7 +6,7 @@ licenseSource: "github-hstsethi-awesome-j2me-readme-md"
 
 # Awesome J2ME [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="j2me-logo.jpg" align="right" width="100">](https://www.oracle.com/java/technologies/javameoverview.html)
+[<img src="https://raw.githubusercontent.com/hstsethi/awesome-j2me/7d55f506c8271450fcb09ca9d44e60e029dcce40/j2me-logo.jpg" align="right" width="100">](https://www.oracle.com/java/technologies/javameoverview.html)
 
 
 > An awesome list about Java platform Micro edition[(J2ME)](https://en.wikipedia.org/wiki/Java_Platform,_Micro_Edition). Documentation, academic papers, tutorials, communities, IDEs, SDKs, emulators, apps, video games. J2ME is a Java specification designed for old keypad phones and PDAs. MIDP, which is built upon CLDC, is used to create Midlets, which have `.jad` or `.jar` extension, and run on platforms like old keypad phones, Symbian and PDAs. MIDP is supported till Java ME SDK 3.4.

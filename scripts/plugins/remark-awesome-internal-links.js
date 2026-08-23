@@ -23,9 +23,9 @@ function githubRepository(url) {
 export function remarkAwesomeInternalLinks(options = {}) {
   const { baseUrl = '/docs/awesome', routes = [] } = options;
   const normalizedBase = baseUrl.replace(/\/+$/, '');
-  const routeByVersionAndRepository = new Map(
+  const routeByVersionLanguageAndRepository = new Map(
     routes.map((route) => [
-      `${route.version}:${route.repository.toLowerCase()}`,
+      `${route.version}:${route.lang}:${route.repository.toLowerCase()}`,
       route.slug.replace(/^\/+|\/+$/g, ''),
     ])
   );
@@ -41,7 +41,7 @@ export function remarkAwesomeInternalLinks(options = {}) {
       const repository = githubRepository(node.url);
       if (!repository) return;
 
-      const slug = routeByVersionAndRepository.get(`${version}:${repository}`);
+      const slug = routeByVersionLanguageAndRepository.get(`${version}:${lang}:${repository}`);
       if (!slug) return;
 
       node.url = `${normalizedBase}/${version}/${lang}/${slug}/`;

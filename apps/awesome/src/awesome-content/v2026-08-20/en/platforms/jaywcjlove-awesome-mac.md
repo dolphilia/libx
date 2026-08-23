@@ -1711,6 +1711,3 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 [app-store Icon]: https://jaywcjlove.github.io/sb/ico/min-app-store.svg "App Store Software"
 [Native Icon]: https://jaywcjlove.github.io/sb/ico/min-native-app.svg "Native App"
 [awesome-list Icon]: https://jaywcjlove.github.io/sb/ico/min-awesome.svg "Awesome List"
-
-
-

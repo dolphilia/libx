@@ -71,7 +71,7 @@ Hope that helps clear things up.
     * Hackernoon's
       * [Blockchain](https://hackernoon.com/blockchain/home)
       * [Bitcoin](https://hackernoon.com/bitcoin/home)
-      * [Coin & Crypto](https://medium.com/@coinandcrypto) 
+      * [Coin & Crypto](https://medium.com/@coinandcrypto)
       * [Daniel Jeffries](https://hackernoon.com/@dan.jeffries)
 
 ## ☤ Coin Mining Pools
@@ -126,7 +126,7 @@ Actual Hosted Coin Wallets:
 
 ## ☤ Coin Exchanges
 
-- [Binance](https://www.binance.com) — Exchange the world. 
+- [Binance](https://www.binance.com) — Exchange the world.
 - [Cryptopia](https://www.cryptopia.co.nz/Register?referrer=kennethreitz) — Wallets for all currencies, trading to/from all currencies.
 - [Shapeshift](https://shapeshift.io/#/coins) — The fastest exchange on Earth.
 - [Bittrex](https://bittrex.com) — Wallets for all currencies, trading to/from all currencies.
@@ -168,7 +168,7 @@ Actual Hosted Coin Wallets:
 
 - [Bit](https://github.com/ofek/bit) — Python’s fastest Bitcoin library with an API allowing transactions
   to be made in only 3 lines of code.
-- [bcoin](http://bcoin.io) — Bitcoin fullnode implementation written entirely in Node.js that you can even run in a browser, includes wallet, mempool, chain, and mining. 
+- [bcoin](http://bcoin.io) — Bitcoin fullnode implementation written entirely in Node.js that you can even run in a browser, includes wallet, mempool, chain, and mining.
 - [**BTC** Mempol and Fee Explorer](https://core.jochen-hoenicke.de/queue/#4d)
 - [Tezos](https://www.tezos.com) — Self-healing blockchain.
 - [Tendermint](https://tendermint.com) — Byzantine fault-tolerant replicated state machines in any programming language.

@@ -18,7 +18,7 @@ licenseSource: "github-iamericfletcher-awesome-r-learning-resources-readme-md"
 
 <br>
 
-> The `R` `Discord` server is a friendly and dedicated community for `R` enthusiasts, programmers, statisticians, data scientists, and students. Whether you are looking to connect with fellow useRs, have awesome data viz to share, or just needed help with your stats assignment, you are at the right place! 
+> The `R` `Discord` server is a friendly and dedicated community for `R` enthusiasts, programmers, statisticians, data scientists, and students. Whether you are looking to connect with fellow useRs, have awesome data viz to share, or just needed help with your stats assignment, you are at the right place!
 
 <div align="center">
 	To join the R Discord server, please click the discoRd badge below. <br>
@@ -36,15 +36,15 @@ licenseSource: "github-iamericfletcher-awesome-r-learning-resources-readme-md"
 - [Podcasts](#podcasts)
 - [YouTube](#youtube)
 
-## Topic Areas 
+## Topic Areas
 
 ### Comprehensive R Tutorials
 
-- [Data Flair](https://data-flair.training/blogs/r-tutorials-home/) - The tutorials are grouped by skill level (beginner, intermediate, expert). 
+- [Data Flair](https://data-flair.training/blogs/r-tutorials-home/) - The tutorials are grouped by skill level (beginner, intermediate, expert).
 - [Intro to R course by Fabio Votta - part 1](https://colab.research.google.com/drive/1dLsdGbkvgn1JbWgsy9Z-pFmPd_2MG4Xu?usp=sharing#scrollTo=vGnW7giO9AeD) - A fun introduction to R programming grouped into categories (operators, objects, functions, exercises, and data frames).
 - [Intro to R course by Fabio Votta - part 2](https://colab.research.google.com/drive/14CRElnKewnp5MnlxhqVu6OOcIXd-Bkaj?usp=sharing) - A fun introduction to R programming grouped into categories (data manipulation and cleaning featuring the janitor, tidyr, and dplyr packages).
 - [Introduction to Data Analysis with R](https://jmbuhr.de/dataIntro20/) - This is a lecture series with videos, scripts and exercises introducing R and the tidyverse as well as statistical concepts.
-- [R CODER](https://r-coder.com) - The tutorials are grouped into categories (introduction, data structures, data wrangling, programming, import & export, graphics) that cover in-depth all the basic needs for someone starting learning the R programming language. 
+- [R CODER](https://r-coder.com) - The tutorials are grouped into categories (introduction, data structures, data wrangling, programming, import & export, graphics) that cover in-depth all the basic needs for someone starting learning the R programming language.
 - [Tutorials Point](https://www.tutorialspoint.com/r/index.htm) - The tutorials are grouped into categories (R tutorial, R Data Interfaces, R Charts & Graphs, R Statistics Examples, R Useful Resources) that cover in-depth all the basic needs for someone starting learning the R programming language.
 
 ### Functions
@@ -96,7 +96,7 @@ licenseSource: "github-iamericfletcher-awesome-r-learning-resources-readme-md"
 - [ggplot2 extensions - gallery](https://exts.ggplot2.tidyverse.org/gallery/) - Maintained by Daniel Emaasit.
 - [ggplot2 - Modify components of a theme](https://ggplot2.tidyverse.org/reference/theme.html) - How to modify components of a theme in ggplot2. Author: the developers of Tidyverse.
 - [Graphics in R with ggplot2](https://www.statsandr.com/blog/graphics-in-r-with-ggplot2/) - A detailed guide for the use of graphics within ggplot2. Author: Antoine Soetewey.
-- [htmlwidgets for R](https://www.htmlwidgets.org/) - Showcase and gallery of the various interactive web visualizations you can build using R. 
+- [htmlwidgets for R](https://www.htmlwidgets.org/) - Showcase and gallery of the various interactive web visualizations you can build using R.
 - [r-color-palettes](https://github.com/EmilHvitfeldt/r-color-palettes) - Comprehensive list of color palettes available in r. Author: Emil Hvitfeldt.
 - [The Data Visualization Catalogue](https://datavizcatalogue.com/index.html) - The Data Visualization Catalogue is a project developed by Severino Ribecca to create a library of different information visualization types.
 - [The Graphic Continuum](https://www.informationisbeautifulawards.com/showcase/611-the-graphic-continuum) - The Graphic Continuum shows the many different types of visualizations available to us when we encode and present data. Authors: Jonathan Schwabish, and Severino Ribecca.
@@ -122,7 +122,7 @@ licenseSource: "github-iamericfletcher-awesome-r-learning-resources-readme-md"
 - [Fakir - Create Fake Data in R for Tutorials](https://thinkr-open.github.io/fakir/) - Author: Colin Fay.
 - [From base R to stringr](https://stringr.tidyverse.org/articles/from-base.html) - This vignette compares stringr functions to their base R equivalents to help users transitioning from using base R to stringr. Author: Sara Stoudt.
 - [Help me help you: creating reproducible examples](https://www.youtube.com/watch?v=5gqksthQ0cM) - Making a great reprex is both an art and a science and this webinar will cover both aspects. A reprex makes a conversation about code more efficient and pleasant for all. This comes up whenever you ask someone for help, report a bug in software, or propose a new feature. The reprex package (https://reprex.Tidyverse.org) makes it especially easy to prepare R code as a reprex, in order to share on sites such as https://community.rstudio.com, https://github.com, or https://stackoverflow.com. Author: Jenny Bryan.
-- [R - discoRd server](https://discord.gg/88uG5UVyE2) - Dedicated discoRd server with the following topic-based channels: `R-Main` for more general discussions, `R-Share` for showing off your data visuals, `General R Help` for asking questions and sharing learning resources, and `Topical Help/Discussion` for issues dealing with statistics, dbi, tidymodels, shiny, natural-science, social-science, bayesians, gis, and finance. 
+- [R - discoRd server](https://discord.gg/88uG5UVyE2) - Dedicated discoRd server with the following topic-based channels: `R-Main` for more general discussions, `R-Share` for showing off your data visuals, `General R Help` for asking questions and sharing learning resources, and `Topical Help/Discussion` for issues dealing with statistics, dbi, tidymodels, shiny, natural-science, social-science, bayesians, gis, and finance.
 - [Subreddit - r/Rlanguage - R Programming Language](https://www.reddit.com/r/Rlanguage/new/) - A Reddit subreddit focused on implementing the R programming language for statistics and data science.
 - [Subreddit - r/programming - The R Project for Statistical Computing](https://www.reddit.com/r/rprogramming/) - A Reddit subreddit focused on using R for statistical computing.
 - [Syntax equivalents: base R vs Tidyverse](https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html) - A detailed comparison of base R and tidyverse. Author: Hugo Tavares.
@@ -134,7 +134,7 @@ licenseSource: "github-iamericfletcher-awesome-r-learning-resources-readme-md"
 - [Alex Cookson](https://www.alexcookson.com/) - Alex Cookson loves making beautiful visualizations and easy-to-read walkthroughs of R concepts. He's particularly interested in data about media, like books, movies, and musicals.
 - [Avery Robbins](https://www.avery-robbins.com) - Avery Robbins loves to learn and to share useful or awesome things that have benefited him personally. This website is a tool for him to actively do just that: share knowledge, ideas, and tips that are helpful.
 - [Tony ElHabr](https://tonyelhabr.rbind.io/) - Tony ElHabr is passionate mostly about energy markets and sports analytics. His blog provides detailed tutorials, project explanations, and presentations.
-- [Cédric Scherer](https://cedricscherer.netlify.app/) - Cédric Scherer is a graduated computational ecologist and freelance data visualization expert who has created visualizations across all disciplines, purposes, and styles and regularly teaches data visualization principles, R, and ggplot2. 
+- [Cédric Scherer](https://cedricscherer.netlify.app/) - Cédric Scherer is a graduated computational ecologist and freelance data visualization expert who has created visualizations across all disciplines, purposes, and styles and regularly teaches data visualization principles, R, and ggplot2.
 - [Data Imaginist](https://www.data-imaginist.com/) - Thomas Lin Pedersen is a data scientist turned software engineer who focuses on improving researchers’ interactions with the data they produce.
 - [Data meets Narrative](http://www.rebeccabarter.com/blog/) - Rebecca Barter enjoys making sense of complex, messy and sometimes nonsensical datasets, such as electronic health records, and insurance claims. Her dual passions are explaining “seemingly complicated” concepts to others in plain English, and exploring and uncovering the stories that underlie complex datasets.
 - [HighlandR](https://johnmackintosh.net/) - John Mackintosh's blog is a place for him to showcase demonstrations or workshops, notes he's learned at work, chart makeovers, and techniques and technology that he doesn't currently use in his role.
@@ -197,7 +197,7 @@ collection, study and presentation of different types of political data. Authors
 - [TidyTuesday](https://github.com/rfordatascience/tidytuesday) - TidyTuesday is a weekly data project aimed at the R ecosystem with an emphasis placed on understanding how to summarize and arrange data to make meaningful charts.
 - [R for Data Science (R4DS) Online Learning Community](https://www.rfordatasci.com/) - Founded by Jessie Mostipak (@kierisi) to create a supportive and responsive online space for learners and mentors to gather and work through the R for Data Science book by Garrett Grolemund and Hadley Wickham. Grown into a community of R learners at all skill levels working together to improve their skills.
 
-## Podcasts 
+## Podcasts
 
 - [Not so Standard Deviations](http://nssdeviations.com/) - A data science podcast where Roger Peng and Hilary Parker talk about the latest in data science and data analysis in academia and industry.
 - [The R-Podcast](https://r-podcast.org/) - Practical advice on how to take advantage of R to accomplish innovative and robust data analyses. Hosted by Eric Nantz.
@@ -221,8 +221,8 @@ collection, study and presentation of different types of political data. Authors
 - [Numyard](https://www.youtube.com/c/TheLearnR/videos) - Topics include working with dataframes, for loops, basic math, vectors, lists, creating functions, data types, and random sampling.
 - [R Programming 101](https://www.youtube.com/c/RProgramming101/featured) - This channel provides teaching videos on data analysis and statistical analysis using R programming. The teaching videos include subjects like data cleaning, data manipulation, data visualization, statistical analysis, and machine learning and AI (artificial intelligence).
 - [Richard Webster](https://www.youtube.com/channel/UC5ktyacv_aPSBmKB7uX5Piw/videos) - Topics include the paste function, the apply family of functions, while and for loops, conditional statements, visualization, removing NAs, and combining data.
-- [RichardOnData](https://www.youtube.com/playlist?list=PLOKCg4WX8ZG4nboHnOgA8PJxGWnO4csiZ) - The R playlist includes videos on manipulating data with dplyr, visualizing data with ggplot2 and ggThemeAssist, data types and structures, important base r functions, handling datetimes with lubridate, conquering factors with forcats, manipulating text with stringr. 
-- [Shiny Developer Series](https://www.youtube.com/c/ShinyDeveloperSeries/videos) - The goals of the Shiny Developer Series are to showcase the innovative applications and packages in the ever-growing Shiny ecosystem, as well as the brilliant developers behind them! 
+- [RichardOnData](https://www.youtube.com/playlist?list=PLOKCg4WX8ZG4nboHnOgA8PJxGWnO4csiZ) - The R playlist includes videos on manipulating data with dplyr, visualizing data with ggplot2 and ggThemeAssist, data types and structures, important base r functions, handling datetimes with lubridate, conquering factors with forcats, manipulating text with stringr.
+- [Shiny Developer Series](https://www.youtube.com/c/ShinyDeveloperSeries/videos) - The goals of the Shiny Developer Series are to showcase the innovative applications and packages in the ever-growing Shiny ecosystem, as well as the brilliant developers behind them!
 - [Simplilearn](https://www.youtube.com/playlist?list=PLEiEAq2VkUUKAw0aAJ1W4jpZ1q9LpX4yG) - The R Programming for Beginners playlist includes videos on data science, charting, data visualization, algorithms, business analytics, regression, random forest, SVM, clustering, time series, modeling, and analytical techniques.
 - [Statistics Globe](https://www.youtube.com/channel/UCyHEww8_SCdxZvEnkCfi55w) - A collection of short but detailed tutorials on how to work through common problems you will face while using R. Topics include data formatting, reordering data, strings, and ggplot2.
 - [StatistikinDD](https://www.youtube.com/c/StatistikinDD/featured) - Playlists on Efficient R Programming (e. g. running R code in parallel), Visualization, Regression Analyses.

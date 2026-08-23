@@ -6,7 +6,7 @@ licenseSource: "github-desiderantes-awesome-vala-readme-md"
 
 # Awesome Vala [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="vala.svg" align="right" width="100">](https://vala.dev)
+[<img src="https://raw.githubusercontent.com/desiderantes/awesome-vala/97e0138da559958aaed0c9de2eac530dbd2f9de5/vala.svg" align="right" width="100">](https://vala.dev)
 
 A curated list of resources for [Vala](https://vala.dev/) - A programming language using modern high level abstractions without imposing additional runtime requirements, by leaning on GLib and GObject.
 

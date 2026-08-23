@@ -5,6 +5,13 @@ import { remarkAwesomeInternalLinks } from '../../scripts/plugins/remark-awesome
 const routes = [
   {
     version: 'v2026-08-20',
+    lang: 'en',
+    repository: 'sindresorhus/awesome-nodejs',
+    slug: 'platforms/sindresorhus-awesome-nodejs',
+  },
+  {
+    version: 'v2026-08-20',
+    lang: 'ja',
     repository: 'sindresorhus/awesome-nodejs',
     slug: 'platforms/sindresorhus-awesome-nodejs',
   },
@@ -31,6 +38,20 @@ test('Awesome概要の収録済みGitHubリンクを同じ言語のlibxページ
     );
     assert.equal(external.url, 'https://github.com/0pandadev/awesome-windows#readme');
   }
+});
+
+test('対応言語のページがない場合はGitHubリンクを維持する', () => {
+  const untranslated = link('https://github.com/busterc/awesome-cordova#readme');
+  const transform = remarkAwesomeInternalLinks({ routes });
+
+  transform(
+    { type: 'root', children: [untranslated] },
+    {
+      path: '/repo/apps/awesome/src/awesome-content/v2026-08-20/ja/overview/sindresorhus-awesome.md',
+    }
+  );
+
+  assert.equal(untranslated.url, 'https://github.com/busterc/awesome-cordova#readme');
 });
 
 test('概要以外のページではGitHubリンクを変更しない', () => {

@@ -16,7 +16,7 @@ A curated collection of databases, software, and papers related to computational
 
 [![Resource Landscape Overview](https://github.com/inoue0426/awesome-computational-biology/blob/dd96b38e5775c672020b9372e78dfa8e8b8ecdb6/docs/overview.png)](https://inoue0426.github.io/awesome-computational-biology/overview.html)
 
-> Interactive version: [Resource Overview page](https://inoue0426.github.io/awesome-computational-biology/overview.html)  
+> Interactive version: [Resource Overview page](https://inoue0426.github.io/awesome-computational-biology/overview.html)
 > Regenerate the figure: `python scripts/generate_overview.py`
 
 ---

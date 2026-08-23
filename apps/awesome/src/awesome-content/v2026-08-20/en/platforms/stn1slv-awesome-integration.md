@@ -458,7 +458,7 @@ System integration is the process of linking together different IT systems (com
 *Robotic Process Automation (RPA) solutions are software tools that automate repetitive, rule-based tasks within business processes. RPA bots can perform tasks such as data entry, data extraction, and data processing with accuracy and speed, freeing up human workers to focus on more complex tasks.*
 - [Automation Anywhere](https://www.automationanywhere.com/) - Intelligent automation ecosystem that streamlines business processes and reduces errors through advanced RPA capabilities.
 - [Blue Prism](https://www.blueprism.com/products/intelligent-rpa-automation/) - No-code platform delivering robust, scalable automation to minimize manual tasks and boost productivity.
-- [OpenRPA (⭐3k)](https://github.com/open-rpa/openrpa) - Enterprise-grade, open-source robotic process automation suite. 
+- [OpenRPA (⭐3k)](https://github.com/open-rpa/openrpa) - Enterprise-grade, open-source robotic process automation suite.
 - [Robot Framework (⭐11k)](https://github.com/robotframework/robotframework) - An open-source automation framework with human-friendly keyword syntax that enables both technical and non-technical users to create test scripts and automate business processes cost-effectively, supporting web, API, mobile, and database automation through extensive libraries and integrations.
 - [TagUI (⭐6.3k)](https://github.com/aisingapore/TagUI) - An open-source RPA tool that democratizes automation through natural language scripting in 20+ human languages, enabling non-programmers to automate web, desktop, and data tasks while integrating AI/ML capabilities via Python and R for intelligent process automation.
 - [Tungsten RPA](https://www.tungstenautomation.com/products/rpa) - AI-powered, no-code automation solution that enhances accuracy, efficiency, and compliance across workflows.
@@ -553,26 +553,26 @@ System integration is the process of linking together different IT systems (com
 *Integration patterns provide standardized solutions for common integration problems within an enterprise. Enterprise Integration Patterns (EIP) provide a common language for describing integration problems and solutions, while Integration Architecture Patterns address high-level concerns of enterprise architects. Service-Oriented Architecture (SOA) patterns provide guidance for designing and implementing service-oriented architectures, ensuring that services are scalable, reusable, and loosely coupled.*
 ### Enterprise Integration Patterns
 *Patterns from a book by Gregor Hohpe and Bobby Woolf.*
-- [Aggregator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html) - How do we combine the results of individual, but related messages so that they can be processed as a whole?  
+- [Aggregator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html) - How do we combine the results of individual, but related messages so that they can be processed as a whole?
 - [Canonical Data Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html) - How can you minimize dependencies when integrating applications that use different data formats?
 - [Channel Adapter](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ChannelAdapter.html) - How can you connect an application to the messaging system so that it can send and receive messages?
 - [Channel Purger](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ChannelPurger.html) - How can you keep 'left-over' messages on a channel from disturbing tests or running systems?
-- [Claim Check](https://www.enterpriseintegrationpatterns.com/patterns/messaging/StoreInLibrary.html) - How can we reduce the data volume of message sent across the system without sacrificing information content?  
-- [Command Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html) - How can messaging be used to invoke a procedure in another application?  
+- [Claim Check](https://www.enterpriseintegrationpatterns.com/patterns/messaging/StoreInLibrary.html) - How can we reduce the data volume of message sent across the system without sacrificing information content?
+- [Command Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html) - How can messaging be used to invoke a procedure in another application?
 - [Competing Consumers](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html) - How can a messaging client process multiple messages concurrently?
-- [Composed Message Processor](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DistributionAggregate.html) - How can you maintain the overall message flow when processing a message consisting of multiple elements, each of which may require different processing?  
-- [Content Enricher](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DataEnricher.html) - How do we communicate with another system if the message originator does not have all the required data items available?  
-- [Content Filter](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentFilter.html) - How do you simplify dealing with a large message, when you are interested only in a few data items?  
-- [Content-Based Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html) - How do we handle a situation where the implementation of a single logical function (e.g., inventory check) is spread across multiple physical systems?  
-- [Control Bus](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ControlBus.html) - How can we effectively administer a messaging system that is distributed across multiple platforms and a wide geographic area?  
+- [Composed Message Processor](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DistributionAggregate.html) - How can you maintain the overall message flow when processing a message consisting of multiple elements, each of which may require different processing?
+- [Content Enricher](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DataEnricher.html) - How do we communicate with another system if the message originator does not have all the required data items available?
+- [Content Filter](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentFilter.html) - How do you simplify dealing with a large message, when you are interested only in a few data items?
+- [Content-Based Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html) - How do we handle a situation where the implementation of a single logical function (e.g., inventory check) is spread across multiple physical systems?
+- [Control Bus](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ControlBus.html) - How can we effectively administer a messaging system that is distributed across multiple platforms and a wide geographic area?
 - [Correlation Identifier](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html) - How does a requestor that has received a reply know which request this is the reply for?
 - [Datatype Channel](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DatatypeChannel.html) - How can the application send a data item such that the receiver will know how to process it?
-- [Dead Letter Channel](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DeadLetterChannel.html) - What will the messaging system do with a message it cannot deliver?  
+- [Dead Letter Channel](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DeadLetterChannel.html) - What will the messaging system do with a message it cannot deliver?
 - [Detour](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Detour.html) - How can you route a message through intermediate steps to perform validation, testing or debugging functions?
 - [Document Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DocumentMessage.html) - How can messaging be used to transfer data between applications?
 - [Durable Subscriber](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DurableSubscription.html) - How can a subscriber avoid missing messages while it is not listening for them?
 - [Dynamic Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/DynamicRouter.html) - How can you avoid the dependency of the router on all possible destinations while maintaining its efficiency?
-- [Envelope Wrapper](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EnvelopeWrapper.html) - How can existing systems participate in a messaging exchange that places specific requirements on the message format, such as message header fields or encryption?  
+- [Envelope Wrapper](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EnvelopeWrapper.html) - How can existing systems participate in a messaging exchange that places specific requirements on the message format, such as message header fields or encryption?
 - [Event Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html) - How can messaging be used to transmit events from one application to another?
 - [Event-Driven Consumer](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventDrivenConsumer.html) - How can an application automatically consume messages as they become available?
 - [Format Indicator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/FormatIndicator.html) - How can a message`s data format be designed to allow for possible future changes?
@@ -582,38 +582,38 @@ System integration is the process of linking together different IT systems (com
 - [Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Message.html) - How can two applications connected by a message channel exchange a piece of information?
 - [Message Dispatcher](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageDispatcher.html) - How can multiple consumers on a single channel coordinate their message processing?
 - [Message Expiration](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageExpiration.html) - How can a sender indicate when a message should be considered stale and thus shouldn`t be processed?
-- [Message Translator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) - How can systems using different data formats communicate with each other using messaging?  
+- [Message Translator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) - How can systems using different data formats communicate with each other using messaging?
 - [Message Broker](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageBroker.html) - How can you decouple the destination of a message from the sender and maintain central control over the flow of messages?
-- [Message Bus](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageBus.html) - What is an architecture that enables separate applications to work together, but in a decoupled fashion such that applications can be easily added or removed without affecting the others?  
+- [Message Bus](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageBus.html) - What is an architecture that enables separate applications to work together, but in a decoupled fashion such that applications can be easily added or removed without affecting the others?
 - [Message Channel](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageChannel.html) - How does one application communicate with another using messaging?
 - [Message Endpoint](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageEndpoint.html) - How does an application connect to a messaging channel to send and receive messages?
 - [Message Filter](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Filter.html) - How can a component avoid receiving uninteresting messages?
-- [Message History](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageHistory.html) - How can we effectively analyze and debug the flow of messages in a loosely coupled system?  
+- [Message History](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageHistory.html) - How can we effectively analyze and debug the flow of messages in a loosely coupled system?
 - [Message Router](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageRouter.html) - How can you decouple individual processing steps so that messages can be passed to different filters depending on a set of conditions?
 - [Message Sequence](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageSequence.html) - How can messaging transmit an arbitrarily large amount of data?
-- [Message Store](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageStore.html) - How can we report against message information without disturbing the loosely coupled and transient nature of a messaging system?  
+- [Message Store](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageStore.html) - How can we report against message information without disturbing the loosely coupled and transient nature of a messaging system?
 - [Messaging Bridge](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingBridge.html) - How can multiple messaging systems be connected so that messages available on one are also available on the others?
 - [Messaging Gateway](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingGateway.html) - How do you encapsulate access to the messaging system from the rest of the application?
 - [Messaging Mapper](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingMapper.html) - How do you move data between domain objects and the messaging infrastructure while keeping the two independent of each other?
 - [Normalizer](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Normalizer.html) - How do you process messages that are semantically equivalent, but arrive in a different format?
-- [Pipes and Filters](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html) - How can we perform complex processing on a message while maintaining independence and flexibility?  
+- [Pipes and Filters](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html) - How can we perform complex processing on a message while maintaining independence and flexibility?
 - [Point-to-Point Channel](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html) - How can the caller be sure that exactly one receiver will receive the document or perform the call?
-- [Polling Consumer](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) - How can an application consume a message when the application is ready?  
+- [Polling Consumer](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PollingConsumer.html) - How can an application consume a message when the application is ready?
 - [Process Manager](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html) - How do we route a message through multiple processing steps when the required steps may not be known at design-time and may not be sequential?
 - [Publish-Subscribe Channel](https://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html) - How can the sender broadcast an event to all interested receivers?
 - [Recipient List](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html) - How do we route a message to a list of dynamically specified recipients?
 - [Request-Reply](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) - When an application sends a message, how can it get a response from the receiver?
 - [Resequencer](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Resequencer.html) - How can we get a stream of related but out-of-sequence messages back into the correct order?
 - [Return Address](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html) - How does a replier know where to send the reply?
-- [Routing Slip](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html) - How do we route a message consecutively through a series of processing steps when the sequence of steps is not known at design-time and may vary for each message?  
-- [Scatter-Gather](https://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html) - How do you maintain the overall message flow when a message needs to be sent to multiple recipients, each of which may send a reply?  
-- [Selective Consumer](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageSelector.html) - How can a message consumer select which messages it wishes to receive?  
+- [Routing Slip](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html) - How do we route a message consecutively through a series of processing steps when the sequence of steps is not known at design-time and may vary for each message?
+- [Scatter-Gather](https://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html) - How do you maintain the overall message flow when a message needs to be sent to multiple recipients, each of which may send a reply?
+- [Selective Consumer](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageSelector.html) - How can a message consumer select which messages it wishes to receive?
 - [Service Activator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingAdapter.html) - How can an application design a service to be invoked both via various messaging technologies and via non-messaging techniques?
 - [Smart Proxy](https://www.enterpriseintegrationpatterns.com/patterns/messaging/SmartProxy.html) - How can you track messages on a service that publishes reply messages to the Return Address specified by the requestor?
-- [Splitter](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Sequencer.html) - How can we process a message if it contains multiple elements, each of which may have to be processed in a different way?  
-- [Test Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/TestMessage.html) - What happens, though, if a component is actively processing messages, but garbles outgoing messages due to an internal fault?  
-- [Transactional Client](https://www.enterpriseintegrationpatterns.com/patterns/messaging/TransactionalClient.html) - How can a client control its transactions with the messaging system?  
-- [Wire Tap](https://www.enterpriseintegrationpatterns.com/patterns/messaging/WireTap.html) - How do you inspect messages that travel on a point-to-point channel?  
+- [Splitter](https://www.enterpriseintegrationpatterns.com/patterns/messaging/Sequencer.html) - How can we process a message if it contains multiple elements, each of which may have to be processed in a different way?
+- [Test Message](https://www.enterpriseintegrationpatterns.com/patterns/messaging/TestMessage.html) - What happens, though, if a component is actively processing messages, but garbles outgoing messages due to an internal fault?
+- [Transactional Client](https://www.enterpriseintegrationpatterns.com/patterns/messaging/TransactionalClient.html) - How can a client control its transactions with the messaging system?
+- [Wire Tap](https://www.enterpriseintegrationpatterns.com/patterns/messaging/WireTap.html) - How do you inspect messages that travel on a point-to-point channel?
 
 
 **[⬆ back to top](#contents)**
@@ -670,17 +670,17 @@ System integration is the process of linking together different IT systems (com
         - [Error Report](https://microservice-api-patterns.org/patterns/structure/specialPurposeRepresentations/ErrorReport) - How can an API provider inform its clients about communication and processing faults? How can this information be made independent of the underlying communication technologies and platforms (for example, protocol-level headers representing status codes)?
         - [Context Representation](https://microservice-api-patterns.org/patterns/structure/specialPurposeRepresentations/ContextRepresentation) - How can API consumers and providers exchange context information without relying on any particular remoting protocols? How can identity information and quality properties in a request be made visible to related subsequent ones in conversations?
 - Quality
-    - Reference Management        
+    - Reference Management
         - [Embedded Entity](https://microservice-api-patterns.org/patterns/quality/referenceManagement/EmbeddedEntity) - How can one avoid sending multiple messages when their receivers require insights about multiple related information elements?
         - [Linked Information Holder](https://microservice-api-patterns.org/patterns/quality/referenceManagement/LinkedInformationHolder) - How can messages be kept small even when an API deals with multiple information elements that reference each other?
-    - Data Transfer Parsimony        
+    - Data Transfer Parsimony
         - [Pagination](https://microservice-api-patterns.org/patterns/quality/dataTransferParsimony/Pagination) - How can an API provider deliver large sequences of structured data without overwhelming clients?
         - [Wish List](https://microservice-api-patterns.org/patterns/quality/dataTransferParsimony/WishList) - How can an API client inform the API provider at runtime about the data it is interested in?
         - [Wish Template](https://microservice-api-patterns.org/patterns/quality/dataTransferParsimony/WishTemplate) - How can an API client inform the API provider about nested data that it is interested in? How can such preferences be expressed flexibly and dynamically?
         - [Conditional Request](https://microservice-api-patterns.org/patterns/quality/dataTransferParsimony/ConditionalRequest) - How can unnecessary server-side processing and bandwidth usage be avoided when frequently invoking API operations that return rarely changing data?
         - [Request Bundle](https://microservice-api-patterns.org/patterns/quality/dataTransferParsimony/RequestBundle) - How can the number of requests and responses be reduced to increase communication efficiency?
 
-    - Quality Management and Governance        
+    - Quality Management and Governance
         - [Pricing Plan](https://microservice-api-patterns.org/patterns/quality/qualityManagementAndGovernance/PricingPlan) - How can the API provider meter API service consumption and charge for it?
         - [Rate Limit](https://microservice-api-patterns.org/patterns/quality/qualityManagementAndGovernance/RateLimit) - How can the API provider prevent API clients from excessive API usage?
         - [Service Level Agreement](https://microservice-api-patterns.org/patterns/quality/qualityManagementAndGovernance/ServiceLevelAgreement) - How can an API client learn about the specific quality-of-service characteristics of an API and its endpoint operations? How can these characteristics, and the consequences of not meeting them, be defined and communicated in a measurable way?
@@ -779,7 +779,7 @@ System integration is the process of linking together different IT systems (com
    - [Service Decomposition](https://patterns.arcitura.com/soa-patterns/design_patterns/service_decomposition) - Breaks down a monolithic service into smaller, more manageable pieces.
    - [Service Refactoring](https://patterns.arcitura.com/soa-patterns/design_patterns/service_refactoring) - Refactors a service to improve its design and performance.
    - [Termination Notification](https://patterns.arcitura.com/soa-patterns/design_patterns/termination_notification) - Notifies clients of a service's termination.
-   - [Version Identification](https://patterns.arcitura.com/soa-patterns/design_patterns/version_identification) - Identifies the version of a service. 
+   - [Version Identification](https://patterns.arcitura.com/soa-patterns/design_patterns/version_identification) - Identifies the version of a service.
 
 - Capability Composition Patterns
    - [Capability Composition](https://patterns.arcitura.com/soa-patterns/design_patterns/capability_composition) - Combines multiple service capabilities to create a new capability.
@@ -879,15 +879,15 @@ the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fie
 ### Certifications
 <details>
 <summary>API Academy</summary>
-  
+
 - [API Designer](https://apiacademy.learnupon.com/lpaths/4147453/courses/262369/details) - Validate your understanding of API design basics and best practices.
 - [API Product Manager](https://apiacademy.learnupon.com/lpaths/4147453/courses/262371/details) - Demonstrate your proficiency in managing APIs as products.
 - [API Security Architect](https://apiacademy.learnupon.com/lpaths/4147453/courses/262370/details) - Validate your expertise in securing APIs using modern architectures.
-  
+
 </details>
 <details>
 <summary>APIsec University</summary>
-  
+
 - [API Documentation Best Practices](https://www.apisecuniversity.com/courses/api-documentation-best-practices) - The 2-hour course covers everything you need to know to create, automate, and publish API documentation your developers, partners and users will love. You wll also learn why API documentation is the foundation for strong governance, effective API security, and achieving your API business goals.
 - [API Penetration Testing](https://www.apisecuniversity.com/courses/api-penetration-testing) - The API Penetration Testing course covers all the key topics to become an APIsec professional. This hands-on course includes over 12 hours of live instruction and provides detailed labs on API hacking techniques and how to uncover vulnerabilities.
 - [API Security for PCI Compliance](https://www.apisecuniversity.com/courses/api-security-for-pci-compliance) - This 60-minute course examines the new PCI DSS 4.0 requirements and details the API security obligations for compliance. DSS 4.0 introduces API security concerns for the time ever - enroll to understand what the implications are for your organization.
@@ -895,7 +895,7 @@ the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fie
 - [Certified API Security Analyst](https://www.apisecuniversity.com/courses/certified-api-security-analyst-exam) - The CASA exam is designed to test your expertise in API security threats, risks, and best practices. Students are expected to have completed the OWASP API Security and Beyond! course before attempting to earn the CASA certification.
 - [OWASP API Security Top 10](https://www.apisecuniversity.com/courses/owasp-api-security-top-10-and-beyond) - The 90-minute course provides a deep-dive into the 2023 edition of the OWASP API Security Top 10 - and covers key concepts that didn't make it into the Top 10.
 - [Securing API Servers](https://www.apisecuniversity.com/courses/securing-api-servers) - Learn key concepts for keeping API servers secure - from CORS to error handling to rate limiting and more.
-  
+
 </details>
 <details>
 <summary>Apollo</summary>
@@ -907,7 +907,7 @@ the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fie
 </details>
 <details>
 <summary>Boomi</summary>
-  
+
 - [Associate Administrator Certification](https://community.boomi.com/s/learning-plan-detail-standard?ltui__urlRecordId=aOM6S0000008OIKWA2&ltui__urlRedirect=learning-plan-detail-standard) - Validates an individual's foundational knowledge and skills in managing and administering the Boomi platform, focusing on platform monitoring, troubleshooting, and security.
 - [Associate Developer Certification](https://community.boomi.com/s/learning-plan-detail-standard?ltui__urlRecordId=aOM6S0000008OIeWAM&ltui__urlRedirect=learning-plan-detail-standard) - Demonstrates a candidate's basic understanding of building and deploying integration processes using the Boomi platform, including design patterns, deployment, and error handling.
 - [Associate EDI for X12 Certification](https://community.boomi.com/s/learning-plan-detail-standard?ltui__urlRecordId=aOM6S0000008OIFWA2&ltui__urlRedirect=learning-plan-detail-standard) - Validates an individual's proficiency in using Boomi to design, develop, and manage Electronic Data Interchange (EDI) integrations with the X12 standard, covering essential concepts like EDI document structure and trading partner management.
@@ -920,11 +920,11 @@ the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fie
 - [Professional Flow Developer Certification](https://community.boomi.com/s/learning-plan-detail-standard?ltui__urlRecordId=aOM6S0000008OIUWA2&ltui__urlRedirect=learning-plan-detail-standard) - Showcases an individual's advanced capabilities in designing, developing, and managing business applications using Boomi Flow, including complex workflow design, custom UI components, and integration with external systems.
 - [Professional Linux Operational Administrator Certification](https://community.boomi.com/s/learning-plan-detail-standard?ltui__urlRecordId=aOM6S0000008OI5WAM&ltui__urlRedirect=learning-plan-detail-standard) - Confirms a candidate's proficiency in managing and administering Boomi on Linux systems, covering topics such as system installation, configuration, security, and performance optimization.
 - [Professional Windows Operational Administrator Certification](https://community.boomi.com/s/learning-plan-detail-standard?ltui__urlRecordId=aOM6S0000008OIAWA2&ltui__urlRedirect=learning-plan-detail-standard) - Validates an individual's expertise in managing and administering Boomi on Windows systems, focusing on system installation, configuration, security, and performance optimization.
-  
+
 </details>
 <details>
 <summary>IBM</summary>
-  
+
 - [IBM Certified Solution Developer – App Connect Enterprise V11](https://www.ibm.com/training/certification/C0003107#exam) - Validate your intermediate-level knowledge and experience to develop, deploy, tune, and support platform-independent message flow applications using IBM App Connect V11.0.
 - [IBM Certified Solution Implementer – API Connect v10.0.3](https://www.ibm.com/training/certification/C0002604#exam) - Demonstrate your intermediate-level knowledge and skills to develop, publish, configure, and manage APIs using IBM API Connect v10.0.3.
 
@@ -934,17 +934,17 @@ the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fie
 
 - [Event-native API Management Foundations](https://gravitee.getlearnworlds.com/course/gravitee-event-native-api-management-foundations) - Basics of Event-native API Management.
 - [Event-native API Management Professional](https://gravitee.getlearnworlds.com/course/gravitee-enap-certification) - Focuses on some more advanced API Management concepts, plus foundational knowledge around how to use Gravitee API Management.
-  
+
 </details>
 <details>
 <summary>Kong</summary>
-  
+
 - [Kong Gateway Certified Associate](https://konghq.com/academy/exam-preparation) - Validate your entry-level knowledge and skills on Kong Gateway for developers, DevOps, and architects.
 
 </details>
 <details>
 <summary>Mulesoft</summary>
-  
+
 - [MuleSoft Certified Developer - Level 1](https://training.mulesoft.com/certification/developer-mule4-level1) - Validate your knowledge and skills to design, build, test and debug, deploy, and manage basic APIs and integrations using MuleSoft.
 - [MuleSoft Certified Developer - Level 2](https://training.mulesoft.com/certification/developer-mule4-level2) - Validate your ability to work on production-ready Mule applications that address and balance critical non-functional requirements including monitoring, performance, maintainability, reliability, and security.
 - [MuleSoft Certified Integration Architect - Level 1](https://training.mulesoft.com/certification/architect-integration-level1) - Validate your knowledge and skills to translate functional and non-functional requirements into integration interfaces and implementations.
@@ -962,18 +962,18 @@ the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fie
 </details>
 <details>
 <summary>Red Hat</summary>
- 
+
 - [Red Hat Certified Specialist in API Management](https://www.redhat.com/en/services/certification/red-hat-certified-specialist-api-management) - Validates the ability to create and maintain enterprise APIs using the Red Hat 3scale API Management platform.
 - [Red Hat Certified Specialist in Business Rules](https://www.redhat.com/en/services/certification/rhcs-business-rules) - Checks the knowledge, skills, and abilities needed to perform tasks involving the implementation and management of business logic using the Red Hat JBoss BRMS.
 - [Red Hat Certified Specialist in Cloud-native Integration](https://www.redhat.com/en/services/certification/rhcs-cloud-native-integration) - Validates the ability to create and maintain enterprise integration services based on Red Hat Fuse, Camel, and APIs.
 - [Red Hat Certified Specialist in Event-Driven Development with Kafka](https://www.redhat.com/en/services/certification/red-hat-certified-specialist-event-driven-development-kafka) - Validates the ability to develop applications using Apache Kafka and Apache Kafka Streams.
-  
+
 </details>
 <details>
 <summary>SAP</summary>
-  
+
 - [SAP Certified Associate - Integration Developer](https://learning.sap.com/certifications/sap-certified-associate-integration-developer) - Validates that the candidate possesses the fundamental and core knowledge required of the SAP Integration Suite profile.
-  
+
 </details>
 <details>
 <summary>SnapLogic</summary>
@@ -1002,7 +1002,7 @@ the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fie
 - [TIBCO Cloud Integration Certified Professional](https://www.credly.com/org/citrix/badge/tcp-tibco-cloud-integration) - Checks the knowledge about capabilities and benefits, integrating, developing, and connecting applications, creating APIs using the API Modeler and Mock functionality, and more.
 - [TIBCO Messaging Associate](https://www.credly.com/org/citrix/badge/tca-tibco-messaging) - Covers topics such as TIBCO Enterprise Message Service (EMS), TIBCO FTL, TIBCO eFTL, as well as other messaging technologies such as Apache Kafka, Apache Pulsar, and Eclipse Mosquitto.
 - [TIBCO Messaging Certified Professional](https://www.credly.com/org/citrix/badge/tcp-tibco-messaging) - Validates the skills and knowledge required to work with TIBCO Messaging and its components, including TIBCO Enterprise Message Service (EMS), TIBCO FTL, and TIBCO eFTL.
-  
+
 </details>
 <details>
 <summary>Workato</summary>

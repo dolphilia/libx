@@ -49,7 +49,7 @@ The official Meteor resources page can be found [here](https://www.meteor.com/to
   - [Blogs](#blogs)
   - [Websites](#websites)
   - [Q&A](#q&a)
-  - [Community Newsletters](#community-newsletters)	
+  - [Community Newsletters](#community-newsletters)
   - [Social](#social)
   - [Work Opportunities](#work-opportunities)
   - [Related](#related)
@@ -163,7 +163,7 @@ _Routers for Blaze_
 - [ostrio:flow-router-extra](https://github.com/VeliovGroup/flow-router) - Carefully extended `flow-router` package. Up-to-date version with support of latest Meteor's releases.
 - [msavin:parrot](https://github.com/msavin/Parrot) - Web router specially designed for building SPAs using Meteor
 - [meteorhacks:picker](https://github.com/meteorhacks/picker) - Server Side Router for Meteor.
-- [iron:router](https://github.com/iron-meteor/iron-router) - A router that works on the server and the browser, designed specifically for Meteor. 
+- [iron:router](https://github.com/iron-meteor/iron-router) - A router that works on the server and the browser, designed specifically for Meteor.
 
 ## Offline
 
@@ -215,7 +215,7 @@ _Mobile Development_
 
 - [meteor-react-native](https://github.com/TheRealNate/meteor-react-native) - Meteor client for React Native matching Meteor Spec.
 - [meteor-push](https://github.com/activitree/meteor-push) - Push notifications for cordova (ios, android) browser (Chrome, Safari, Firefox).
-- [quave:universal-links](https://github.com/quavedev/universal-links) - A Meteor package that allows you to expose your native iOS settings to enable Universal Links. 
+- [quave:universal-links](https://github.com/quavedev/universal-links) - A Meteor package that allows you to expose your native iOS settings to enable Universal Links.
 - [meteoric:ionic](https://github.com/meteoric/meteor-ionic) - Ionic components for Meteor.
 - [driftyco:ionic](https://github.com/driftyco/ionic) - Official Ionic support for Meteor.
 - [martijnwalraven:meteor-ios](https://github.com/martijnwalraven/meteor-ios) - Integrates native iOS apps with the Meteor platform through DDP.

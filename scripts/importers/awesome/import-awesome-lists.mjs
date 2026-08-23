@@ -9,6 +9,8 @@ const included = lock.sources.filter((source) => source.status === 'included');
 const normalizedDir = path.join(tempDir, '03-normalized');
 const exclusionsPath = path.join(notesDir, 'EXCLUSIONS.json');
 const exclusions = readJson(exclusionsPath);
+const missingReview = readJson(path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json'));
+const discovery = readJson(path.join(notesDir, 'DISCOVERY_STATE.json'));
 const prepared = [];
 
 function fixedRawUrl(source, relativeUrl) {
@@ -72,6 +74,30 @@ for (const source of included) {
     ''
   );
   canonical = canonical.replace(
+    /(\b(?:src|href)=)(["'])([^"']+)\2/gi,
+    (match, attribute, quote, url) => {
+      if (/^(?:https?:|mailto:|#|\/\/)/i.test(url)) return match;
+      const resolved = attribute.toLowerCase().startsWith('src=')
+        ? fixedRawUrl(source, url)
+        : fixedRepositoryUrl(source, url);
+      return `${attribute}${quote}${resolved}${quote}`;
+    }
+  );
+  const imageReferenceLabels = new Set(
+    [...canonical.matchAll(/!\[([^\]]+)\](?!\()/g)].map((match) => match[1].toLowerCase())
+  );
+  canonical = canonical.replace(
+    /^(\[([^\]]+)\]:\s*)(<?[^\s>]+>?)(.*)$/gm,
+    (match, prefix, label, rawUrl, suffix) => {
+      const url = rawUrl.replace(/^<|>$/g, '');
+      if (/^(?:https?:|mailto:|#|\/\/)/i.test(url)) return match;
+      const resolved = imageReferenceLabels.has(label.toLowerCase())
+        ? fixedRawUrl(source, url)
+        : fixedRepositoryUrl(source, url);
+      return `${prefix}${resolved}${suffix}`;
+    }
+  );
+  canonical = canonical.replace(
     /(?<!!)\[([^\]]+)\]\(([^\s)]+)(\s+(?:"[^"]*"|'[^']*'))?\)/g,
     (_match, label, url, title = '') => `[${label}](${fixedRepositoryUrl(source, url)}${title})`
   );
@@ -101,12 +127,53 @@ for (const source of included) {
       return `![${alt}](${fixedRawUrl(source, url)}${title})`;
     }
   );
+  canonical =
+    canonical
+      .replace(/\r\n?/g, '\n')
+      .replace(/[ \t]+$/gm, '')
+      .trimEnd() + '\n';
   const header = `---\ntitle: ${JSON.stringify(source.repository)}\ndescription: ${JSON.stringify(`Canonical snapshot of ${source.repository}`)}\nlicenseSource: ${JSON.stringify(source.sourceId)}\n---\n\n`;
   prepared.push({
     source,
     output: `${source.sourceId}.md`,
     content: header + canonical,
     exclusion,
+  });
+}
+
+const sourceByRepository = new Map(
+  lock.sources.map((source) => [source.repository.toLowerCase(), source])
+);
+const discoveryByRepository = new Map(
+  discovery.visited.map((source) => [source.repository.toLowerCase(), source])
+);
+for (const review of missingReview.results.filter((entry) => entry.decision === 'metadata-only')) {
+  const source = sourceByRepository.get(review.repository);
+  const discovered = discoveryByRepository.get(review.repository);
+  const repository = source?.repository ?? discovered?.repository ?? review.repository;
+  const sourceId =
+    source?.sourceId ?? `metadata-${repository.replace('/', '-').replace(/[^A-Za-z0-9._-]/g, '-')}`;
+  const sourceUrl = review.commitSha
+    ? review.readmePath
+      ? `https://github.com/${repository}/blob/${review.commitSha}/${review.readmePath}`
+      : `https://github.com/${repository}/tree/${review.commitSha}`
+    : `https://github.com/${repository}`;
+  const header = `---\ntitle: ${JSON.stringify(repository)}\ndescription: ${JSON.stringify(`Metadata-only entry for ${repository}`)}\nlicenseSource: "sindresorhus-awesome-readme"\n---\n\n`;
+  const content = [
+    `# ${review.label}`,
+    '',
+    `This Awesome list is referenced by the ${review.category} section of the pinned sindresorhus/awesome snapshot.`,
+    '',
+    'The upstream list content is not reproduced on libx because a reusable license could not be confirmed for this snapshot, the fixed README could not be retrieved, or its license requires support that is not yet available here.',
+    '',
+    `- [Open the original repository](${sourceUrl})`,
+    '',
+  ].join('\n');
+  prepared.push({
+    source: { sourceId, repository, status: 'metadata-only' },
+    output: `${sourceId}.md`,
+    content: header + content,
+    exclusion: null,
   });
 }
 
@@ -142,6 +209,7 @@ console.log(
   JSON.stringify(
     {
       normalized: prepared.length,
+      metadataOnly: prepared.filter((entry) => entry.source.status === 'metadata-only').length,
       exclusions: prepared.filter((entry) => entry.exclusion).length,
       output: normalizedDir,
     },

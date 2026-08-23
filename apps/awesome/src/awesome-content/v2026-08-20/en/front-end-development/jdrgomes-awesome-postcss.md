@@ -24,9 +24,9 @@ licenseSource: "github-jdrgomes-awesome-postcss-readme-md"
     - [Official Resources](https://github.com/jdrgomes/awesome-postcss/blob/7fbed6968a775a01a4a7468c510621dc9ef609bd/topics/official-resources.md)
     - [Podcast](https://github.com/jdrgomes/awesome-postcss/blob/7fbed6968a775a01a4a7468c510621dc9ef609bd/topics/podcast.md)
     - [Plugins](https://github.com/jdrgomes/awesome-postcss/blob/7fbed6968a775a01a4a7468c510621dc9ef609bd/topics/plugins.md)
-    - [Presentations](https://github.com/jdrgomes/awesome-postcss/blob/7fbed6968a775a01a4a7468c510621dc9ef609bd/topics/presentations.md)    
+    - [Presentations](https://github.com/jdrgomes/awesome-postcss/blob/7fbed6968a775a01a4a7468c510621dc9ef609bd/topics/presentations.md)
     - [Task Runner](https://github.com/jdrgomes/awesome-postcss/blob/7fbed6968a775a01a4a7468c510621dc9ef609bd/topics/task-runner.md)
-    
+
 ### Contributing
 
 Your contributions are always welcome. But, please take a quick gander at the [CONTRIBUTION guidelines](https://github.com/jdrgomes/awesome-postcss/blob/master/CONTRIBUTING.md) first.

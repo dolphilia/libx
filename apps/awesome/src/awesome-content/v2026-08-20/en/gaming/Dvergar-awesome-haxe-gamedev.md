@@ -4,7 +4,7 @@ description: "Canonical snapshot of Dvergar/awesome-haxe-gamedev"
 licenseSource: "github-Dvergar-awesome-haxe-gamedev-readme-md"
 ---
 
-<div align="center"><a href="https://haxe.org/"><img src="images/haxe-logo.png" width="500"></a></div>
+<div align="center"><a href="https://haxe.org/"><img src="https://raw.githubusercontent.com/Dvergar/awesome-haxe-gamedev/6731f6ebc91caa68bc3d104efd49f6cdc1e79ec7/images/haxe-logo.png" width="500"></a></div>
 
 # Awesome Haxe Game Development [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
 
@@ -41,8 +41,8 @@ Those are Haxe 4 compatible game engines
 * [HxGodot (Godot 4.0)](https://github.com/HxGodot/hxgodot) - A Haxe GDExtension for Godot 4 (`Web`, `Mobile`, `Desktop`, `Consoles`).
 
 ## Low-level Engine
-* [Kha](https://github.com/Kode/Kha) - Ultra-portable, high performance, open source multimedia framework (`Web`, `Mobile`, `Desktop`, `Consoles`).    
-* [Lime](https://github.com/openfl/lime) - A flexible, lightweight layer for Haxe cross-platform developers (`Web`, `Mobile`, `Desktop`).      
+* [Kha](https://github.com/Kode/Kha) - Ultra-portable, high performance, open source multimedia framework (`Web`, `Mobile`, `Desktop`, `Consoles`).
+* [Lime](https://github.com/openfl/lime) - A flexible, lightweight layer for Haxe cross-platform developers (`Web`, `Mobile`, `Desktop`).
 * [linc_glfw](https://github.com/Sunjammer/linc_glfw) - Desktop - GLFW binding (multi-platform library for OpenGL, OpenGL ES and Vulkan) _(Desktop)_.
 * [NME](https://github.com/haxenme/nme) - A cross-platform native backend (`Web`, `Mobile`, `Desktop`).
 * [3DSHaxe](https://github.com/Krismowo/3DSHaxe) - Make 3ds homebrew! (`3DS`).
@@ -56,8 +56,8 @@ Those are Haxe 4 compatible game engines
 
 ## Architecture
 ```
-IoC == Inversion of Control  
-EC == Entity Component  
+IoC == Inversion of Control
+EC == Entity Component
 ECS == Entity-Component-System
 FSM == Finite State Machine
 MVC == Model View Controller
@@ -201,18 +201,18 @@ More showcase :
 * [HGSL](https://github.com/saharan/HGSL) - Haxe to GL Shading Language.
 * [parasol](https://github.com/47rooks/parasol) - HaxeFlixel library of shaders.
 
-### Sprite 
+### Sprite
 * [haxe-aseprite](https://github.com/PongoEngine/haxe-aseprite) - Parser for .ase and .aseprite files.
 
-### Texture Packer 
+### Texture Packer
 * [hxpk](https://github.com/bendmorris/hxpk) - Port of the libGDX Texture Packer.
 
-### Tweening 
+### Tweening
 * [actuate](https://github.com/jgranick/actuate) - A flexible, fast "tween" library.
 * [YATL](https://github.com/Yanrishatum/yatl) - Yet Another (Haxe) Tweening Library.
 * [TweenX/TweenXCore](https://github.com/shohei909/tweenx) - Tween library.
 
-### UI 
+### UI
 * [domkit](https://github.com/ncannasse/domkit) - CSS Components based strictly typed UI framework.
 * [flixel-ui](https://github.com/HaxeFlixel/flixel-ui) - GUI library for HaxeFlixel.
 * [HaxeUI](http://haxeui.org/) - UI library with multiple framework backends (HTML5, Kha, OpenFL, PixiJS, WxWidgets, and a number of others as works in progress).

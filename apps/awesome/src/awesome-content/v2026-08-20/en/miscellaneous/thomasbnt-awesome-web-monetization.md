@@ -4,7 +4,7 @@ description: "Canonical snapshot of thomasbnt/awesome-web-monetization"
 licenseSource: "github-thomasbnt-awesome-web-monetization-readme-md"
 ---
 
-<img src="assets/wm_icon_animated.svg" alt="Logo Web Monetization" align="right" width="120px" />
+<img src="https://raw.githubusercontent.com/thomasbnt/awesome-web-monetization/eadec20369e347086dfd86dd08479ef7ed0f10ef/assets/wm_icon_animated.svg" alt="Logo Web Monetization" align="right" width="120px" />
 
 # Awesome Web Monetization [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
 

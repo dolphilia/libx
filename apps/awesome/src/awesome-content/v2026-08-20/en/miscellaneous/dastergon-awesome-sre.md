@@ -5,7 +5,7 @@ licenseSource: "github-dastergon-awesome-sre-readme-md"
 ---
 
 # Awesome Site Reliability Engineering  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[<img src="awesome-sre-logo.svg" align="right" width="100">](https://dastergon.gr/awesome-sre)
+[<img src="https://raw.githubusercontent.com/dastergon/awesome-sre/e91ef69aa52129662164e54cc22272bc90e9b636/awesome-sre-logo.svg" align="right" width="100">](https://dastergon.gr/awesome-sre)
 
 
 A curated list of awesome [Site Reliability](https://www.usenix.org/conference/srecon14/technical-sessions/presentation/keys-sre) and [Production](https://www.usenix.org/conference/srecon15/program/presentation/canahuati) Engineering resources.

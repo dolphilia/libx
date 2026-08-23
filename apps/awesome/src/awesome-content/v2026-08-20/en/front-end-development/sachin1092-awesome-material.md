@@ -28,7 +28,7 @@ Animation
     - [material-design-hamburger](https://github.com/swirlycheetah/material-design-hamburger) — Android's Material Design hamburger animation built in CSS.
     - [Material-Preloader](https://github.com/aarondo/Material-Preloader) — A jQuery plugin that recreates the Material Design pre-loader (as seen on inbox).
     - [Google-material-design-ripple-effect](https://github.com/ninox92/Google-material-design-ripple-effect) — jQuery plugin recreates ripple and focus effect.
-  
+
 Components
 ==
   - [SVG-Morpheus](https://github.com/alexk111/SVG-Morpheus) — JavaScript library enabling SVG icons to morph from one to the other. It implements Material Design's Delightful Details transitions.
@@ -75,7 +75,7 @@ WordPress
 ==
   - [MaterialPress](https://github.com/alexpatin/MaterialPress) — MaterialPress is a WordPress theme, influenced heavily by Google's Material Design philosophy.
   - [materialwp](https://github.com/braginteractive/materialwp) — Material Design WordPress Theme.
-  
+
  WinForms
 ==
 - [MaterialSkin](https://github.com/IgnaceMaes/MaterialSkin) — Theming .NET WinForms, C# or VB.Net, to Google's Material Design Principles.
@@ -94,7 +94,7 @@ Other
   - [Material Palette](http://www.materialpalette.com/) — Choose your favorite colors and generate your Material Design palette.
   - [Paper Polymer Elements](https://elements.polymer-project.org/browse?package=paper-elements) — Paper elements are a set of visual elements that implement Google's Material Design.
   - [ScaffoldHub.io](https://scaffoldhub.io) — Generate full Angular Material applications with an online modeling tool!
-  
+
 # Other Awesome Lists
 Other amazingly awesome lists can be found in the [awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness) list.
 

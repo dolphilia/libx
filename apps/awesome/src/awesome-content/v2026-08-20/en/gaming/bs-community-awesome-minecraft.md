@@ -6,7 +6,7 @@ licenseSource: "github-bs-community-awesome-minecraft-readme-md"
 
 # Awesome Minecraft [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
 
-<img src="screenshot.png" width="1920" />
+<img src="https://raw.githubusercontent.com/bs-community/awesome-minecraft/2d95490898d83bf9cf0e5f3bc083ae02a276995b/screenshot.png" width="1920" />
 
 > The curated list of awesome things related to Minecraft.
 

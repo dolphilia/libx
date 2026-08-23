@@ -63,7 +63,7 @@ It provides a browser-based editor that makes it easy to wire together flows usi
 - [stackhero-influxdb-v2](https://github.com/stackhero-io/node-red-contrib-stackhero-influxdb-v2) - Save and query data from an InfluxDB v2 time series database.
 - [stackhero-mysql](https://github.com/stackhero-io/node-red-contrib-stackhero-mysql) - Connect to a MySQL or a MariaDB database, using TLS (SSL) and compatible with "Caching SHA2 password" authentication method (MySQL >= 8).
 - [leveldb](https://github.com/node-red/node-red-nodes/tree/master/storage/leveldb) - Uses LevelDB for a simple key value pair database.
-- [mysql](https://github.com/node-red/node-red-nodes/tree/master/storage/mysql) - Allows basic access to a MySQL database. 
+- [mysql](https://github.com/node-red/node-red-nodes/tree/master/storage/mysql) - Allows basic access to a MySQL database.
 - [sqlite](https://github.com/node-red/node-red-nodes/tree/master/storage/sqlite) - Supports read and write to a local sqlite database.
 
 ### Development
@@ -151,13 +151,13 @@ It provides a browser-based editor that makes it easy to wire together flows usi
 - [huemagic](https://github.com/Foddy/node-red-contrib-huemagic) - Controls Philips Hue bridges, lights, groups, scenes, rules, taps, switches, buttons, motion sensors, temperature sensors and Lux sensors.
 - [lgtv](https://github.com/hobbyquaker/node-red-contrib-lgtv) - Controls LG webOS Smart TVs.
 - [loxone](https://github.com/codmpm/node-red-contrib-loxone) - Connect to the Loxone Miniserver.
-- [knx-ultimate](https://github.com/Supergiovane/node-red-contrib-knx-ultimate) - Controls KNX intallation. With optional ETS group address importer and gateway simulation. 
+- [knx-ultimate](https://github.com/Supergiovane/node-red-contrib-knx-ultimate) - Controls KNX intallation. With optional ETS group address importer and gateway simulation.
 - [openhab3](https://github.com/jeroenhendricksen/node-red-contrib-openhab3) - Integration of openHAB item states and commands.
 - [power-saver](https://power-saver.smoky.no/) - Automatically save money on variable electricity prices.
 - [smartnora](https://github.com/andrei-tatar/node-red-contrib-smartnora) - Google smart home Action integration via Smart NORA.
 - [sonos-plus](https://github.com/hklages/node-red-contrib-sonos-plus) - Controls Sonos player in your local network.
 - [tado-client](https://github.com/mattdavis90/node-red-contrib-tado-client) - Connect to the Tado Web API.
-- [tahoma](https://github.com/nikkow/node-red-contrib-tahoma) - Controls a Somfy Tahoma box (Roller shutters, etc.). 
+- [tahoma](https://github.com/nikkow/node-red-contrib-tahoma) - Controls a Somfy Tahoma box (Roller shutters, etc.).
 - [tasmota](https://github.com/DaveMDS/node-red-contrib-tasmota) - Tasmota devices integration for building automation.
 - [tuya-smart](https://github.com/hgross/node-red-contrib-tuya-smart) - Interface with smart plugs, bulbs, etc. from tuya.
 - [zigbee](https://github.com/hobbyquaker/node-red-contrib-zigbee) - Controls Zigbee Devices via a CC253x Module.
@@ -197,7 +197,7 @@ It provides a browser-based editor that makes it easy to wire together flows usi
 - [blindcontroller](https://github.com/alisdairjsmyth/node-red-contrib-blindcontroller) - Automate the control of household roller blinds based on the current position of the sun.
 - [bigtimer](https://github.com/scargill/node-red-contrib-bigtimer) - Timing node with support for dusk/sunset dawn/sunrise and variations also day/week/month (and special days) control. The node offers outputs suitable for MQTT, speech and databases.
 - [cron-plus](https://flows.nodered.org/node/node-red-contrib-cron-plus) - A flexible scheduler (cron, solar events, simple dates) node with full dynamic control and Timezone support.
-- [suncalc](https://github.com/node-red/node-red-nodes/tree/master/time/suncalc) - Uses the suncalc module to generate an output at sunrise and sunset based on a specified location. 
+- [suncalc](https://github.com/node-red/node-red-nodes/tree/master/time/suncalc) - Uses the suncalc module to generate an output at sunrise and sunset based on a specified location.
 - [simpletime](https://github.com/Paul-Reed/node-red-contrib-simpletime) - Adds time and date payloads with various formatting options, which can be retreived and used later in the flow.
 - [sun-position](https://github.com/rdmtc/node-red-contrib-sun-position) - Timer based flow control with dusk, dawn (and variations) and much more. Additional you can get sun and moon position or to control a flow by sun or moon position.
 - [timeswitch](https://github.com/node-red/node-red-nodes/tree/master/time/timeswitch) - Lets the user set simple repeating timers for example for simple heating control, etc.
@@ -207,12 +207,12 @@ It provides a browser-based editor that makes it easy to wire together flows usi
 - [actionflows](https://github.com/Steveorevo/node-red-contrib-actionflows) - Brings easy to use loops and OOP (object oriented programming) features.
 - [alarm](https://github.com/Anamico/node-red-contrib-alarm) - Build your own home alarm system with any number of panels, zones, sensors, triggers and automations.
 - [bool-gate](https://flows.nodered.org/node/node-red-contrib-bool-gate) - Boolean logic gates.
-- [daemon](https://github.com/node-red/node-red-nodes/tree/master/utility/daemon) - Starts up (calls) a long running system program and pipes STDIN, STDOUT and STDERR to and from that process. 
+- [daemon](https://github.com/node-red/node-red-nodes/tree/master/utility/daemon) - Starts up (calls) a long running system program and pipes STDIN, STDOUT and STDERR to and from that process.
 - [exif](https://github.com/node-red/node-red-nodes/tree/master/utility/exif) - Extracts GPS and other EXIF information from a passed in jpeg image.
 - [german-holidays](https://github.com/rdmtc/node-red-contrib-german-holidays) - Getting german holidays or information if today/tomorrow is a holiday.
 - [ical-events](https://github.com/naimo84/node-red-contrib-ical-events) - Get events from an ical-URL, a caldav-server or from iCloud via [kalender-events](https://github.com/naimo84/kalender-events).
 - [interval-length](https://github.com/bartbutenaers/node-red-contrib-interval-length) - Measure the (time) interval length between successive messages.
-- [moment](https://github.com/totallyinformation/node-red-contrib-moment) - Produces a nicely formatted Date/Time string using the Moment.js library. 
+- [moment](https://github.com/totallyinformation/node-red-contrib-moment) - Produces a nicely formatted Date/Time string using the Moment.js library.
 - [owntracks](https://github.com/hardillb/node-red-contrib-owntracks) - Converts Owntrack Messages into standard geo message and deals with encrypted locations.
 - [persist](https://github.com/DeanCording/node-red-contrib-persist) - Persist data over Node-RED restarts and deploys.
 - [self-healing](https://github.com/jpdias/node-red-contrib-self-healing) - Making Node-RED more resilient by adding self-healing capabilities.

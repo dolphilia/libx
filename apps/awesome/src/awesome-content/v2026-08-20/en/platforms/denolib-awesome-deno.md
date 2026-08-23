@@ -6,7 +6,7 @@ licenseSource: "github-denolib-awesome-deno-readme-md"
 
 # Awesome Deno [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="deno-logo.png" align="right" width="100">](https://deno.land)
+[<img src="https://raw.githubusercontent.com/denolib/awesome-deno/04122f91fe965cc109c13108839022d41acf37ed/deno-logo.png" align="right" width="100">](https://deno.land)
 
 Deno is a simple, modern and secure runtime for JavaScript and TypeScript that uses V8 and is built in Rust.
 

@@ -4,7 +4,7 @@ description: "Canonical snapshot of eminyagiz42/awesome-sap-commerce"
 licenseSource: "github-eminyagiz42-awesome-sap-commerce-readme-md"
 ---
 
-# Awesome SAP Commerce  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) 
+# Awesome SAP Commerce  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 > A curated list of delightful [SAP Commerce](https://www.sap.com/products/crm/commerce-cloud.html) (formerly Hybris) resources. SAP Commerce is an e-commerce platform using Java, based on Spring MVC framework. The useful resources for SAP Commerce Developers are below.
 
@@ -43,8 +43,8 @@ licenseSource: "github-eminyagiz42-awesome-sap-commerce-readme-md"
 - [Community SAP Commerce Cloud](https://pages.community.sap.com/topics/commerce-cloud) - Featured content about SAP Commerce.
 - [SAP Commerce Terminology](https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/12be4ac419604b01aabb1adeb2c4c8a2/8bc7d09486691014ac87950f99acad26.html?locale=en-US) - Familiarize yourself with the terminology used in SAP Commerce Cloud documentation.
 - [Learning SAP Commerce Cloud](https://learning.sap.com/learning-journeys/explore-the-technical-essentials-of-sap-commerce-cloud) - Provides technical essentials of SAP Commerce.
-- [Learning Journeys](https://help.sap.com/learning-journeys/overview?search=sap%20commerce) - Provides Learning journey for SAP Commerce developer role. 
-- [SAP Learning Hub](https://learninghub.sap.com/) - Subscription required techinal videos, articles. 
+- [Learning Journeys](https://help.sap.com/learning-journeys/overview?search=sap%20commerce) - Provides Learning journey for SAP Commerce developer role.
+- [SAP Learning Hub](https://learninghub.sap.com/) - Subscription required techinal videos, articles.
 - [SAP Store](https://store.sap.com/dcp/en/search?query=:relevance:worksWith:SAP%20Commerce:worksWith:SAP%20Commerce%20Cloud:solutionTypes:Extensions%20and%20Add-ons&GStoken=r1ke) - Several related extensions and add-ons for SAP Commerce. Some of them provides a free trial for a deep dive.
 - [Support SAP Commerce](https://support.sap.com/en/product/support-by-product/67837800100800007216.html) - Get support from the expert service team.
 - [SAP Commerce Newsletter](https://www.sap.com/cmp/nl/cx-commerce-cloud-news/index.html) - Newsletter that monthly news delivered directly to your inbox.
@@ -74,7 +74,7 @@ _These are official SAP Developer certificates, essential for staying up-to-date
 
 - SAP Certified Development Professional - SAP Commerce Cloud Developer
 - SAP Certified Product Support Specialist - SAP Commerce Cloud
- 
+
 _For more information about valid certifications on [SAP Training](https://training.sap.com/certification/validity)._
 
 - [SAP Certification Hub](https://sapcertification.questionmark.com/700161/ext/CertificationHub/)
@@ -119,7 +119,7 @@ _Sites to read._
 - [Ground Level Hybris](https://groundlevelhybris.wordpress.com/category/hybris/) - The author is unknown.
 - [Hybris Guy](https://hybrisguy.wordpress.com/) - A Blog by Asad Khan.
 - [SAP CX Expert](https://sapcxexpert.in/) - The author is unknown.
-- [Stefankruk E-commerce](https://stefankruk.wordpress.com/tag/e-commerce/) - A Blog by Stefan Kruk. 
+- [Stefankruk E-commerce](https://stefankruk.wordpress.com/tag/e-commerce/) - A Blog by Stefan Kruk.
 - [Piotr Wittchen hybris](https://wittchen.io/posts/building-sap-hybris-commerce-suite-via-gradle/) - A Blog by Piotr Wittchen.
 - [Hybris Explained](https://hybrisexplained.wordpress.com/) - Last activity in 2013.
 - [SAP Commerce Cloud Simplified](https://sapcommercecloudsimplified.blogspot.com/) - A Blog by Vijay Gandhari.
@@ -238,9 +238,9 @@ _These are official repositories supported by SAP._
 
 - [SAP Machine Java](https://github.com/SAP/SapMachine) - A dedicated Java version for SAP Commerce.
 - [SAP Commerce Gradle Plugin](https://github.com/SAP/commerce-gradle-plugin) - Gradle plugin support SAP Commerce folder structure.
-- [SAP Spartacus](https://github.com/SAP/spartacus) - Rebranded as SAP Composable Storefront. 
+- [SAP Spartacus](https://github.com/SAP/spartacus) - Rebranded as SAP Composable Storefront.
 
-_These are interesting GitHub Repositories about SAP Commerce/Hybris._  
+_These are interesting GitHub Repositories about SAP Commerce/Hybris._
 
 - [Flexible search builder](https://github.com/avrilfanomar/flexiblesearchbuilder)
 - [Y-scripts](https://github.com/sergaks/y-scripts)

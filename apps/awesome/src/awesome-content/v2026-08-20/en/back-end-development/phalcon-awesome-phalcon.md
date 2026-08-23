@@ -146,9 +146,9 @@ Join us on [Discord](https://discord.com/invite/kRc2N2M) to chat with other awes
 
  ## IDE
  *List of extensions for IDE*
- 
+
  * [volt-phalcon-language](https://marketplace.visualstudio.com/items?itemName=fbclol.volt-phalcon-language) - An extension for VS Code which provides support for the Phalcon Volt syntax and completion-auto
- 
+
 
 ## Miscellaneous
 
@@ -179,7 +179,7 @@ Join us on [Discord](https://discord.com/invite/kRc2N2M) to chat with other awes
 
 ## Provisioning
 *Tools for provisioning a system for a Phalcon application.*
- 
+
 * [ansible-phalcon](https://github.com/HanXHX/ansible-phalcon) - Ansible Role to install Phalcon Framework in Debian (provides PHP 5.6 and PHP 7.0 packages)
 * [setupify](https://github.com/perchlabs/setupify) - A collection of bash scripts for provisioning a Zephir and Phalcon based system for deployement or development
 

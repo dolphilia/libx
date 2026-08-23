@@ -12,7 +12,7 @@ licenseSource: "github-PanXProject-awesome-certificates-readme-md"
 
 
 <div align="center">
-  
+
 <br/>
 
 <sub>This resource exists thanks to our awesome contributors and these sponsors:</sub>
@@ -70,7 +70,7 @@ The list is organized as follows:
 
 <b>Want to contribute to this list?</b>
 <br>
-Fork this <a href="https://github.com/PanXProject/awesome-certificates/fork" target="_blank" rel="noopener noreferrer">repo</a>, make the changes on the `readme.md` file and then open a <a href="https://github.com/PanXProject/awesome-certificates/compare" target="_blank" rel="noopener noreferrer">new issue</a>. Make sure to check out both the <a href="https://github.com/PanXProject/awesome-certificates/blob/main/pull_request_template.md" target="_blank" rel="noopener noreferrer">contribution</a> and <a href="https://github.com/PanXProject/awesome-certificates/blob/main/pull_request_template.md" target="_blank" rel="noopener noreferrer">pull request</a> guidelines. 
+Fork this <a href="https://github.com/PanXProject/awesome-certificates/fork" target="_blank" rel="noopener noreferrer">repo</a>, make the changes on the `readme.md` file and then open a <a href="https://github.com/PanXProject/awesome-certificates/compare" target="_blank" rel="noopener noreferrer">new issue</a>. Make sure to check out both the <a href="https://github.com/PanXProject/awesome-certificates/blob/main/pull_request_template.md" target="_blank" rel="noopener noreferrer">contribution</a> and <a href="https://github.com/PanXProject/awesome-certificates/blob/main/pull_request_template.md" target="_blank" rel="noopener noreferrer">pull request</a> guidelines.
 
 <b>Have ideas on how to improve this list or features you'd like to see?</b>
 <br>
@@ -460,7 +460,7 @@ Report it <a href="https://github.com/PanXProject/awesome-certificates/issues/ne
 | Course Name | Course Provider | Level | Hour(s) | Reward |
 | :------------- |:-------------|:-------------|:-------------:|:-----:|
 | <a href="https://codered.eccouncil.org/course/android-bug-bounty-hunting-hunt-like-a-rat" target="_blank" rel="noopener noreferrer">Android Bug Bounty Hunting: Hunt Like a Rat</a> | EC-Council | Beginner | 1 | 🏆 |
-| <a href="https://developers.google.com/profile/badges/tier/courses/android/android-development-with-kotlin" target="_blank" rel="noopener noreferrer">Android App Development with Kotlin</a> | Google | Intermediate | 20 |  🏅 |	
+| <a href="https://developers.google.com/profile/badges/tier/courses/android/android-development-with-kotlin" target="_blank" rel="noopener noreferrer">Android App Development with Kotlin</a> | Google | Intermediate | 20 |  🏅 |
 
 <a href="https://github.com/PanXProject/awesome-certificates?tab=readme-ov-file#contents" target="_blank" rel="noopener noreferrer">⬆️</a>
 
@@ -588,7 +588,7 @@ Report it <a href="https://github.com/PanXProject/awesome-certificates/issues/ne
 
 - <a href="https://github.com/ossu/computer-science" target="_blank" rel="noopener noreferrer">Open Source Society University</a> - The OSSU curriculum is a complete education in computer science using online materials. It's not merely for career training or professional development.
 - <a href="https://github.com/prakhar1989/awesome-courses" target="_blank" rel="noopener noreferrer">Awesome Courses</a> - This list is an attempt to bring to light those awesome CS courses which make their high-quality material i.e. assignments, lectures, notes, readings & examinations available online for free.
-- <a href="https://github.com/learn-anything/books" target="_blank" rel="noopener noreferrer">Books</a> - Learn Anything is collecting all material with focus on Computer Science but you'll find other topics ranging from neuro science to philosophy. 
+- <a href="https://github.com/learn-anything/books" target="_blank" rel="noopener noreferrer">Books</a> - Learn Anything is collecting all material with focus on Computer Science but you'll find other topics ranging from neuro science to philosophy.
 - <a href="https://github.com/karlhorky/learn-to-program" target="_blank" rel="noopener noreferrer">Learn to Program</a> - This list aims to be a curated set of high quality educational resources with focus on foundations of web developement.
 
 ---

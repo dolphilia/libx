@@ -9,20 +9,36 @@ const projectRoot = path.join(rootDir, 'apps/awesome');
 const routes = readJson(path.join(projectRoot, 'src/generated/awesome-routes.json'));
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const config = readJsoncFile(path.join(projectRoot, 'src/config/project.config.jsonc'));
+const missingReview = readJson(path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json'));
 const includedIds = new Set(
   lock.sources.filter((source) => source.status === 'included').map((source) => source.sourceId)
 );
 const routeIds = new Set(routes.entries.map((entry) => entry.sourceId));
 const configIds = new Set(config.licensing.sources.map((source) => source.id));
+const expectedRouteIds = new Set([
+  ...includedIds,
+  ...missingReview.results
+    .filter((entry) => entry.decision === 'metadata-only')
+    .map((entry) => {
+      const source = lock.sources.find(
+        (candidate) => candidate.repository.toLowerCase() === entry.repository
+      );
+      const discovered = readJson(path.join(notesDir, 'DISCOVERY_STATE.json')).visited.find(
+        (candidate) => candidate.repository.toLowerCase() === entry.repository
+      );
+      const repository = source?.repository ?? discovered?.repository ?? entry.repository;
+      return (
+        source?.sourceId ??
+        `metadata-${repository.replace('/', '-').replace(/[^A-Za-z0-9._-]/g, '-')}`
+      );
+    }),
+]);
 
 if (includedIds.size === 0) throw new Error('includedソースがありません');
-if (routeIds.size !== includedIds.size)
+if (routeIds.size !== expectedRouteIds.size)
   throw new Error('ルート目録の件数またはsourceIdが重複しています');
-if (configIds.size !== includedIds.size)
-  throw new Error('出典レジストリの件数またはIDが重複しています');
-for (const sourceId of includedIds) {
+for (const sourceId of expectedRouteIds) {
   if (!routeIds.has(sourceId)) throw new Error(`ルート目録にありません: ${sourceId}`);
-  if (!configIds.has(sourceId)) throw new Error(`出典レジストリにありません: ${sourceId}`);
 }
 
 const slugs = new Set();
@@ -53,8 +69,8 @@ for (const entry of routes.entries) {
   const frontmatter = matter(fs.readFileSync(contentPath, 'utf8')).data;
   if (frontmatter.title !== entry.title)
     throw new Error(`titleが目録と一致しません: ${entry.sourceId}`);
-  if (frontmatter.licenseSource !== entry.sourceId) {
-    throw new Error(`licenseSourceが目録と一致しません: ${entry.sourceId}`);
+  if (!configIds.has(frontmatter.licenseSource)) {
+    throw new Error(`licenseSourceが出典レジストリにありません: ${entry.sourceId}`);
   }
 }
 for (const entry of translatedFiles) {

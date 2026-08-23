@@ -12,7 +12,7 @@ licenseSource: "github-brillout-awesome-redux-readme-md"
 
  - Official website: [`devarchy.com/redux`](https://devarchy.com/redux)
  - Use devarchy to add a library to the catalog
- 
+
  <br/>
 
 #### Contents
@@ -232,4 +232,3 @@ If you are curious for more, check out following resources.
 - [Slack](http://slack.redux.io/)
 - [Gitter](https://gitter.im/reactjs/redux)
 - [`#rackt` on freenode](https://webchat.freenode.net/)
-

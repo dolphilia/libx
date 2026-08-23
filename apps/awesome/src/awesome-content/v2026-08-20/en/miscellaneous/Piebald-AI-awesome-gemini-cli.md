@@ -35,7 +35,7 @@ Download it and try it out for free!  **https://piebald.ai/**
 
 # Awesome Gemini CLI [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-<a href="https://github.com/google-gemini/gemini-cli" rel="noopener"><img width="4339" height="1373" alt="banner" src="./assets/banner.png" /></a>
+<a href="https://github.com/google-gemini/gemini-cli" rel="noopener"><img width="4339" height="1373" alt="banner" src="https://raw.githubusercontent.com/Piebald-AI/awesome-gemini-cli/4184c35dd94d472b60c5bfe18098125c028bdd0d/assets/banner.png" /></a>
 
 A curated list of awesome tools, extensions, and resources for [Gemini CLI](https://github.com/google-gemini/gemini-cli)&mdash;an open-source AI agent that brings the power of Gemini directly into your terminal.  See also: [Awesome Gemini CLI Extensions](https://github.com/Piebald-AI/awesome-gemini-cli-extensions).
 

@@ -5,7 +5,7 @@ licenseSource: "github-AllThingsSmitty-must-watch-css-readme-md"
 ---
 
 <p align="center">
-  <img src="./assets/img/tv.svg" width="200" alt="TV icon with play button">
+  <img src="https://raw.githubusercontent.com/AllThingsSmitty/must-watch-css/0b00d05eeaa29f4889d7a4741159483420c8017a/assets/img/tv.svg" width="200" alt="TV icon with play button">
 </p>
 
 # Must-Watch CSS [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)

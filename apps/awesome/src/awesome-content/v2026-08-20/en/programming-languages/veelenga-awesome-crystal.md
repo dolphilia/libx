@@ -6,7 +6,7 @@ licenseSource: "github-veelenga-awesome-crystal-readme-md"
 
 [![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
 
-<p align="center"><img src="logo/logotype_horizontal.jpg" alt="awesome-crystal"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/veelenga/awesome-crystal/47af206ce5e1d168549fed8ad878a0bf815be2cb/logo/logotype_horizontal.jpg" alt="awesome-crystal"></p>
 
 # Awesome Crystal
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)

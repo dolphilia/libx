@@ -237,7 +237,7 @@ For a list of free hacking books available for download, go [here](https://githu
  * [EnCase](https://www.guidancesoftware.com/products/Pages/encase-forensic/overview.aspx) - The shared technology within a suite of digital investigations products by Guidance Software
  * [malzilla](http://malzilla.sourceforge.net/) - Malware hunting tool
  * [IPED - Indexador e Processador de Evidências Digitais](https://servicos.dpf.gov.br/ferramentas/IPED/) - Brazilian Federal Police Tool for Forensic Investigation
- * [CyLR](https://github.com/orlikoski/CyLR) - NTFS forensic image collector 
+ * [CyLR](https://github.com/orlikoski/CyLR) - NTFS forensic image collector
  * [CAINE](https://www.caine-live.net/)- CAINE is a Ubuntu-based app that offers a complete forensic environment that provides a graphical interface. This tool can be integrated into existing software tools as a module. It automatically extracts a timeline from RAM.
 
 # Cryptography
@@ -258,7 +258,7 @@ For a list of free hacking books available for download, go [here](https://githu
  * [pwnable.kr](http://pwnable.kr/) - Provide various pwn challenges regarding system security
  * [Exploit Exercises - Nebula](https://exploit-exercises.com/nebula/)
  * [SmashTheStack](http://smashthestack.org/)
- * [HackingLab](https://www.hacking-lab.com/) 
+ * [HackingLab](https://www.hacking-lab.com/)
 
 ## Reverse Engineering
  * [Reversing.kr](http://www.reversing.kr/) - This site tests your ability to Cracking & Reverse Code Engineering

@@ -8,7 +8,7 @@ licenseSource: "github-aniftyco-awesome-tailwindcss-readme-md"
 
 <p align="center">
   <br>
-  <img width="100" src="./assets/logo.svg" alt="Tailwind CSS logo">
+  <img width="100" src="https://raw.githubusercontent.com/aniftyco/awesome-tailwindcss/d0e0de45e717b57137369b3a28ef4354c5d055cf/assets/logo.svg" alt="Tailwind CSS logo">
   <br>
   <br>
 </p>
@@ -140,5 +140,5 @@ licenseSource: "github-aniftyco-awesome-tailwindcss-readme-md"
   ·
   <br />
   <br />
-  <sub>Contributions welcome! Read the <a href="CONTRIBUTING.md">contribution guidelines</a> first.</sub>
+  <sub>Contributions welcome! Read the <a href="https://github.com/aniftyco/awesome-tailwindcss/blob/d0e0de45e717b57137369b3a28ef4354c5d055cf/CONTRIBUTING.md">contribution guidelines</a> first.</sub>
 </p>

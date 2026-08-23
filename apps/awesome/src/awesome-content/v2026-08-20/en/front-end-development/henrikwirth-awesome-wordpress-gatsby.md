@@ -8,8 +8,8 @@ licenseSource: "github-henrikwirth-awesome-wordpress-gatsby-readme-md"
   <br /><br />
   <a href="https://awesome.re"><img src="https://awesome.re/badge-flat.svg" /></a>
   <br /><br /><br />
-  <a href="https://wordpress.org/"><img width="150" height="150" align="center" src="media/wordpress-logo.svg" alt="WordPress"></a>
-      <a href="https://www.gatsbyjs.org/"><img width="150" height="150" align="center" src="media/gatsby-logo.svg" alt="Gatsby"></a>
+  <a href="https://wordpress.org/"><img width="150" height="150" align="center" src="https://raw.githubusercontent.com/henrikwirth/awesome-wordpress-gatsby/f28012c3c4f9d363aaa36387d1f31fcb33bde384/media/wordpress-logo.svg" alt="WordPress"></a>
+      <a href="https://www.gatsbyjs.org/"><img width="150" height="150" align="center" src="https://raw.githubusercontent.com/henrikwirth/awesome-wordpress-gatsby/f28012c3c4f9d363aaa36387d1f31fcb33bde384/media/gatsby-logo.svg" alt="Gatsby"></a>
   <br /><br />
   <p>
     <b>
@@ -198,5 +198,3 @@ Contributions welcome! Read the [contribution guidelines](https://github.com/hen
 
 To the extent possible under law, Henrik Wirth has waived all copyright and
 related or neighboring rights to this work.
-
-

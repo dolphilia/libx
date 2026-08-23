@@ -55,11 +55,11 @@ For updates on `awesome-db-tools` and thoughts/news about databases/tools/SQL fo
   - [Scripts](#scripts)
 - [Data](#data)
   - [Catalog](#catalog)
-  - [Lineage](#lineage) 
+  - [Lineage](#lineage)
   - [Generation/Masking/Subsetting](#generationmaskingsubsetting)
   - [Data Profilers](#data-profilers)
-  - [Replication](#replication) 
-  - [Compare](#compare) 
+  - [Replication](#replication)
+  - [Compare](#compare)
 - [Papers](#papers)
 - [Machine Learning](#machine-learning)
 
@@ -188,7 +188,7 @@ For updates on `awesome-db-tools` and thoughts/news about databases/tools/SQL fo
 ### Diagrams
 - [Azimutt](https://github.com/azimuttapp/azimutt) - An Entity Relationship diagram (ERD) visualization tool, with various filters and inputs to help understand your database schema.
 - [ChartDB](https://github.com/chartdb/chartdb) - Free and Open-source database diagrams editor, visualize and design your DB with a single query.
-- [DrawDB](https://github.com/drawdb-io/drawdb) - Free, simple, and intuitive online database design tool and SQL generator. 
+- [DrawDB](https://github.com/drawdb-io/drawdb) - Free, simple, and intuitive online database design tool and SQL generator.
 - [DrawSQL](https://drawsql.app) - Online database schema diagram editor with SQL import, AI generation, and real-time team collaboration.
 - [ERAlchemy](https://github.com/Alexis-benoist/eralchemy) - Entity Relation Diagrams generation tool.
 - [ERD Lab](https://www.erdlab.io/) - Free cloud based entity relationship diagram (ERD) tool made for developers.
@@ -253,7 +253,7 @@ Low-code and no-code platforms for application building
 - [pgbackrest](https://github.com/pgbackrest/pgbackrest) - Reliable PostgreSQL Backup & Restore.
 - [pgcopydb](https://github.com/dimitri/pgcopydb) - Copy a PostgreSQL database to a target PostgreSQL server (pg_dump | pg_restore on steroids).
 - [pg_probackup](https://github.com/postgrespro/pg_probackup) - A backup and recovery manager for PostgreSQL.
-- [Portabase](https://github.com/Portabase/portabase) - Agent-based platform for PostgreSQL backups and restores with decentralized execution and centralized orchestration. 
+- [Portabase](https://github.com/Portabase/portabase) - Agent-based platform for PostgreSQL backups and restores with decentralized execution and centralized orchestration.
 
 ## Cloning
 - [Database Lab Engine](https://gitlab.com/postgres-ai/database-lab) - Instant thin cloning for PostgreSQL to scale the development process.
@@ -383,7 +383,7 @@ Low-code and no-code platforms for application building
 - [JSQLFormatter](https://github.com/manticore-projects/jsqlformatter) - Open Source Java SQL Formatter for many RDBMS based on JSqlParser.
 - [SQL Online](https://sqlonline.in) - A Free Tool to format your SQL Queries followed by content for Analysts.
 - [pgFormatter](https://github.com/darold/pgFormatter) - A PostgreSQL SQL syntax beautifier.
-- [Poor SQL](https://poorsql.com) - Instant free and open-source T-SQL formatting. 
+- [Poor SQL](https://poorsql.com) - Instant free and open-source T-SQL formatting.
 - [SQL Formatter](https://github.com/zeroturnaround/sql-formatter) - JavaScript library for pretty-printing SQL queries.
 
 ### Games

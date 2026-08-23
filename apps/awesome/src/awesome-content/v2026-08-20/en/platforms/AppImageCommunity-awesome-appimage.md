@@ -8,7 +8,7 @@ licenseSource: "github-AppImageCommunity-awesome-appimage-readme-md"
 
 <div align="center">
 	<div>
-		<img width="500" src="media/logo.svg" alt="Awesome AppImage">
+		<img width="500" src="https://raw.githubusercontent.com/AppImageCommunity/awesome-appimage/be72cd20f7234bd8e93a6a41d774efb1fd67773f/media/logo.svg" alt="Awesome AppImage">
 	</div>
 	<a href="https://awesome.re">
 		<!img src="https://awesome.re/badge-flat2.svg" alt="Awesome">

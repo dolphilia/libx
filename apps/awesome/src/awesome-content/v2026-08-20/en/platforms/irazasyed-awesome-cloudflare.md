@@ -4,7 +4,7 @@ description: "Canonical snapshot of irazasyed/awesome-cloudflare"
 licenseSource: "github-irazasyed-awesome-cloudflare-readme-md"
 ---
 
-# Awesome Cloudflare [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re) [<img src="media/cf-logo.svg" width="250" align="right" alt="Cloudflare">](https://www.cloudflare.com)
+# Awesome Cloudflare [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re) [<img src="https://raw.githubusercontent.com/irazasyed/awesome-cloudflare/8e40024c2063cc87c35fcde453a7f119b1dd2613/media/cf-logo.svg" width="250" align="right" alt="Cloudflare">](https://www.cloudflare.com)
 
 > Curated list of awesome [Cloudflare](https://www.cloudflare.com) worker recipes, open-source projects, guides, blogs and other resources.
 

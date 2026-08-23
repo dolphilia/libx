@@ -6,7 +6,7 @@ licenseSource: "github-golemfactory-awesome-golem-readme-md"
 
 # Awesome Golem [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![awesome-lint](https://github.com/golemfactory/awesome-golem/actions/workflows/main.yml/badge.svg)](https://github.com/golemfactory/awesome-golem/actions/workflows/main.yml/badge.svg)
 
-[<img src="golem-logo.svg" align="right" width="150">](https://golem.network/)
+[<img src="https://raw.githubusercontent.com/golemfactory/awesome-golem/ea2e7d49e2258f6f7a0f96d95e5e7bc96af728f2/golem-logo.svg" align="right" width="150">](https://golem.network/)
 
 > Welcome to **Awesome Golem**, a community-curated list of resources, links, projects, tools and applications on Golem!
 
@@ -67,11 +67,11 @@ We want to extend the capabilities of Golem Network for GPU workloads. Project s
 
 ### Jupyter on Golem
 
-[Jupyter on Golem](https://github.com/golemfactory/golem-kernel-python) is a JupyterLab Python kernel that empowers you to run your Python Notebooks using the decentralized resources available on the Golem Network. 
+[Jupyter on Golem](https://github.com/golemfactory/golem-kernel-python) is a JupyterLab Python kernel that empowers you to run your Python Notebooks using the decentralized resources available on the Golem Network.
 
 ### Rendering on Golem
 
-In close collaboration with Reality Games, we've developed a service that activates Golem's providers for rendering personalized building animations as a (web2) proof-of-ownership for ERC-1155 tokens. Learn more [here](https://reality.golem.network/) 
+In close collaboration with Reality Games, we've developed a service that activates Golem's providers for rendering personalized building animations as a (web2) proof-of-ownership for ERC-1155 tokens. Learn more [here](https://reality.golem.network/)
 
 
 ### Reputation System
@@ -119,7 +119,7 @@ Emeth specializes in DeFi (Decentralized Finance) portfolio management and block
 
 - [Golem: Distributed parallel computing with JavaScript](https://www.youtube.com/watch?v=2iUhqOJUsoI) - Presentation from Grzegorz Godlewski on Distributed Parallel Computing with JavaScript, based on Golem Network (meet.js Summit 2023).
 - [Golem: Architecture, SDKs and tips with Jakub Mazurek at 0xHack](https://youtu.be/1UoZWC9XI2g) - Live workshop diving into how any developer with Python or JS coding experience can start build applications running on Golem.
-  
+
 
 ### Unraveling Golem's The Next Milestone Blog Series
 
@@ -250,4 +250,3 @@ Pull requests and issues with suggestions to Awesome Golem are welcome! Please r
 - [Golem Image Sharpening](https://github.com/visualNext/golem) - A tool to sharpen images.
 - [Filterms](https://github.com/krunch3r76/filterms) - Market-strategy for whitelisting or blacklisting as a Golem requestor (yapapi).
 - [golem-bulk-image-handler](https://github.com/figurestudios/golem-bulk-image-handler) - Takes an input image and processes it in many different ways using the Pillow library.
-

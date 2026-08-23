@@ -102,7 +102,7 @@ Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
 - [IronFunctions](http://open.iron.io/) - by Iron.io - IronFunctions is an open source serverless computing platform for any cloud - private, public, or hybrid.
 - [OpenWhisk by IBM](https://console.ng.bluemix.net/openwhisk/) - part of their BlueMix hosting platform, and open source, ties into their Watson AI ecosystem nicely
 - [StackPath EdgeEngine](https://www.stackpath.com/products/edgeengine/) - Write functions as a service in the language of your choice and deploy them to a global network of data centers. All the networking, including intelligent routing and load balancing, is managed by StackPath over a private backbone.
-- [Cloud 66](https://www.cloud66.com/) - Build and deploy static websites to your own cloud account. 
+- [Cloud 66](https://www.cloud66.com/) - Build and deploy static websites to your own cloud account.
 - [Vercel](https://vercel.com/home#features) - Vercel lets people write functions as a service in their language of choice and deploy as part of a monorepo.
 - [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/#features) - Full-stack static app hosting including serverless Functions, authentication, CDN and more
 - [Qoddi](https://qoddi.com) - Full stack app hosting with data storage included, similar to Heroku with a developer centric approach. Free to use up to 3 apps.
@@ -125,7 +125,7 @@ Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
 - [Muut.com](https://muut.com/) - Embeddable comments, forum and private messaging. A lot of functionality, but really low footprint left on your website.
 - [Gitment](https://github.com/imsun/gitment) - Comment system based on GitHub Issues, which can be used in the frontend without any server-side implementation.
 - [giscus](https://github.com/laymonage/giscus) - A comments widget built on GitHub Discussions.
-- [utterances](https://github.com/utterance) - A lightweight comments widget built on GitHub issues. 
+- [utterances](https://github.com/utterance) - A lightweight comments widget built on GitHub issues.
 
 ### Forms
 
@@ -180,7 +180,7 @@ Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
 - [tawk.co](https://www.tawk.to/) - Lets you monitor and chat with visitors on your website.
 - [WebsiteAlive](https://www.websitealive.com/) - Live chat for your website & social networks.
 - [Zopim](https://www.zopim.com/) - Live chat with free trial.
-- [Tiledesk](https://tiledesk.com) - Free Live Chat with open source chatbot builder. 
+- [Tiledesk](https://tiledesk.com) - Free Live Chat with open source chatbot builder.
 
 ### Newsletters
 

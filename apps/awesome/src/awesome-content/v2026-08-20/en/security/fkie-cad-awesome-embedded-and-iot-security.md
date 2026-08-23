@@ -6,7 +6,7 @@ licenseSource: "github-fkie-cad-awesome-embedded-and-iot-security-readme-md"
 
 
 <div align="center">
-	<img width="500" height="350" src="iot_awesome_logo.svg" alt="Awesome">
+	<img width="500" height="350" src="https://raw.githubusercontent.com/fkie-cad/awesome-embedded-and-iot-security/fbd0301e6690a21d98ca8d565c0657aae0fba339/iot_awesome_logo.svg" alt="Awesome">
   <br />
 </div>
 
@@ -14,8 +14,8 @@ licenseSource: "github-fkie-cad-awesome-embedded-and-iot-security-readme-md"
 
 > A curated list of awesome resources about embedded and IoT security. The list contains software and hardware tools, books, research papers and more.
 
-Botnets like [Mirai](https://github.com/fkie-cad/awesome-embedded-and-iot-security/blob/fbd0301e6690a21d98ca8d565c0657aae0fba339/https:/en.wikipedia.org/wiki/Mirai_(malware)>) have proven that there is a need for more security in embedded and IoT devices. This list shall help beginners and experts to find helpful resources on the topic.  
-If you are a beginner, you should have a look at the <ins>_Books_</ins> and <ins>_Case Studies_</ins> sections.  
+Botnets like [Mirai](https://github.com/fkie-cad/awesome-embedded-and-iot-security/blob/fbd0301e6690a21d98ca8d565c0657aae0fba339/https:/en.wikipedia.org/wiki/Mirai_(malware)>) have proven that there is a need for more security in embedded and IoT devices. This list shall help beginners and experts to find helpful resources on the topic.
+If you are a beginner, you should have a look at the <ins>_Books_</ins> and <ins>_Case Studies_</ins> sections.
 If you want to start right away with your own analysis, you should give the <ins>_Analysis Frameworks_</ins> a try.
 They are easy to use and you do not need to be an expert to get first meaningful results.
 

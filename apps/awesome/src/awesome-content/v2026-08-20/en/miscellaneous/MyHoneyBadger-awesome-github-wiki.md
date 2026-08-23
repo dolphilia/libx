@@ -16,7 +16,7 @@ Every repository on [GitHub.com](https://github.com/) comes equipped with a sect
 - [Popular AI Tools](#popular-ai-tools)
 
 ## Examples
-Wiki should be detail, up to date and well structured. It should be easy to find required information and navigate through the pages. Use rich possibilities of Markdown in Wiki formatting. Wiki doesn't fully repeat information which is already presented at README. The following list of examples represents mentioned good practices:    
+Wiki should be detail, up to date and well structured. It should be easy to find required information and navigate through the pages. Use rich possibilities of Markdown in Wiki formatting. Wiki doesn't fully repeat information which is already presented at README. The following list of examples represents mentioned good practices:
 - [Netflix/Hystrix](https://github.com/Netflix/Hystrix/wiki)
 - [AWS/aws-parallelcluster](https://github.com/aws/aws-parallelcluster/wiki)
 - [facebook/hhvm](https://github.com/facebook/hhvm/wiki)

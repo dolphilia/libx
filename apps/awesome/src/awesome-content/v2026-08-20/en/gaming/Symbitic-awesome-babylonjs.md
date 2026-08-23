@@ -6,7 +6,7 @@ licenseSource: "github-Symbitic-awesome-babylonjs-readme-md"
 
 # Awesome Babylon.js [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 
-<a href="https://www.babylonjs.com/"><img alt="Babylon.js logo" src="media/logo.svg" align="right" width="150" /></a>
+<a href="https://www.babylonjs.com/"><img alt="Babylon.js logo" src="https://raw.githubusercontent.com/Symbitic/awesome-babylonjs/33c0202a11db5f43833b63b79e801e911897fdcb/media/logo.svg" align="right" width="150" /></a>
 
 > A curated list of _awesome_ things related to the Babylon.js game engine.
 

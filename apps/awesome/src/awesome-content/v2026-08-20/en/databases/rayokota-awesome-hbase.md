@@ -37,7 +37,7 @@ A curated list of awesome HBase projects and resources.
     - [Papers](#papers)
     - [Community](#community)
 
-    
+
 ## Projects
 
 ### Clients

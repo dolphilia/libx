@@ -5,7 +5,7 @@ licenseSource: "github-alexk111-awesome-bitcoin-payment-processors-readme-md"
 ---
 
 <div align="center">
-<img width="500" src="media/logo.svg" alt="Awesome Bitcoin Payment Processors"/>
+<img width="500" src="https://raw.githubusercontent.com/alexk111/awesome-bitcoin-payment-processors/6c70ac4a1ff436d17b52dcd7c2eb2448ff45a79c/media/logo.svg" alt="Awesome Bitcoin Payment Processors"/>
 </div>
 
 # Awesome Bitcoin Payment Processors [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
@@ -22,7 +22,7 @@ A curated list of awesome Bitcoin payment processors enabling merchants, busines
 
 ## Self-Hosted Bitcoin Payment Processors
 
-Self-Hosted payment processors run on your server and provide you with a full control over the entire payment process and funds. There's no third-party involvement - that significantly increases the censorship-resistance, privacy, and security for you and your customers. 
+Self-Hosted payment processors run on your server and provide you with a full control over the entire payment process and funds. There's no third-party involvement - that significantly increases the censorship-resistance, privacy, and security for you and your customers.
 
 | Processor | Fees | Lightning | Directly to Your Wallet | Conversion to Fiat | Requirements |
 | --------- |:----:|:---------:|:-----------------------:|:------------------:| ------------ |

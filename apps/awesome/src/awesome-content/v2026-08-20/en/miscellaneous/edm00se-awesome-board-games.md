@@ -6,7 +6,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 
 
 <div align="center">
-  <img src="./assets/images/Jon_Board.png" alt="Jon and the Board Game of Westeros" title="you know nothing, Jon Snow">
+  <img src="https://raw.githubusercontent.com/edm00se/awesome-board-games/a3ded6b198af71cc3bb38e9c6a359610598e0ac0/assets/images/Jon_Board.png" alt="Jon and the Board Game of Westeros" title="you know nothing, Jon Snow">
   <br />
   <a href="https://awesome.re" title="more awesome lists"><img src="https://awesome.re/badge.svg" alt="Awesome list badge"></a>
 </div>
@@ -26,7 +26,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 
 > Takenoko: A long time ago at the Japanese Imperial court, the Chinese Emperor offered a giant panda bear as a symbol of peace to the Japanese Emperor. Since then, the Japanese Emperor has entrusted his court members (the players) with the difficult task of caring for the animal by tending to his bamboo garden.
 >
-> In Takenoko, the players will cultivate land plots, irrigate them, and grow one of the three species of bamboo (Green, Yellow, and Pink) with the help of the Imperial gardener to maintain this bamboo garden. They will have to bear with the immoderate hunger of this sacred animal for the juicy and tender bamboo. The player who manages his land plots best, growing the most bamboo while feeding the delicate appetite of the panda, will win the game. 
+> In Takenoko, the players will cultivate land plots, irrigate them, and grow one of the three species of bamboo (Green, Yellow, and Pink) with the help of the Imperial gardener to maintain this bamboo garden. They will have to bear with the immoderate hunger of this sacred animal for the juicy and tender bamboo. The player who manages his land plots best, growing the most bamboo while feeding the delicate appetite of the panda, will win the game.
 
 
 ![Takenoko image](https://cf.geekdo-images.com/uvz-5V6A2R6dp2oWIXmj_g__itemrep/img/fT5tXhYc0kc5ur8NDdnJHj_GOSw=/fit-in/246x300/filters:strip_icc()/pic1912529.jpg)
@@ -37,7 +37,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 
 ### [Shadows of Brimstone: Swamps of Death](https://boardgamegeek.com/boardgame/150997/shadows-of-brimstone-swamps-of-death)
 
-> Shadows of Brimstone: Swamps of Death is a fast-paced, fully cooperative, dungeon-crawl board game set in the Old West, with a heavy dose of unspeakable horror! Players create characters, taking on the role of a classic Western Hero Archetype, such as the Law Man, Gunslinger, or Saloon Girl. Forming an adventuring posse, the Heroes venture down into the dark mines, overrun with all manner of ancient demons and foul creatures from another world. With tactical gameplay, lots of dice, and a robust card-driven exploration system, no two games are ever the same as the heroes explore the mines finding new enemies to fight, new loot to collect, and new dangers to overcome. 
+> Shadows of Brimstone: Swamps of Death is a fast-paced, fully cooperative, dungeon-crawl board game set in the Old West, with a heavy dose of unspeakable horror! Players create characters, taking on the role of a classic Western Hero Archetype, such as the Law Man, Gunslinger, or Saloon Girl. Forming an adventuring posse, the Heroes venture down into the dark mines, overrun with all manner of ancient demons and foul creatures from another world. With tactical gameplay, lots of dice, and a robust card-driven exploration system, no two games are ever the same as the heroes explore the mines finding new enemies to fight, new loot to collect, and new dangers to overcome.
 >
 > Players can even find portals to other worlds, stepping through to continue their adventures on the other side!
 >
@@ -53,7 +53,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [The Crew: Mission Deep Sea](https://boardgamegeek.com/boardgame/324856/the-crew-mission-deep-sea)
 
 > In the trick-taking card game The Crew: Mission Deep Sea, you and the other players work together to search for the lost continent of Mu. This new adventure takes your crew deep down into the abyss on a search for the fabled sunken land. How far you get depends entirely on how well you work together as a team. Card by card, trick by trick, your search party will discover the challenges that lie ahead and forge a path to Mu.
-> 
+>
 > This new version of The Crew has the same innovative co-operative trick-taking mechanism as the highly lauded original game — but with some exciting new surprises! While communication between your crew members is severely limited by your submerged state, it is also critical to your success; finding the hidden land in the murky depths depends not only on winning tricks, but also on carefully negotiating the order in which they are won. If things don't go as planned, you might just be able to salvage the operation, but it will take near flawless execution and perhaps a little luck to finally reach Mu.
 
 ![The Crew: Mission Deep Sea game image](https://cf.geekdo-images.com/VuBqZ1sMaDAVVHF_OEJP4g__itemrep/img/tgB3g7PECxG14yQ0FkMiMaXaOFE=/fit-in/246x300/filters:strip_icc()/pic5988903.jpg)
@@ -65,7 +65,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Dungeon Mayhem](https://boardgamegeek.com/boardgame/260300/dungeon-mayhem)
 
 > In this action-packed Dungeons & Dragons card game, you win by being the last adventurer standing.
-> 
+>
 > Play as one of four brave, quirky characters—Barbarian, Paladin, Rogue, or Wizard—battling it out in a dungeon full of treasure! With magic missiles flinging, dual daggers slinging, and spiked shields dinging, it's up to you to prove your adventurer has the guts to bring home the glory!
 
 ![Dungeon Mayhem](https://cf.geekdo-images.com/faJfKYz6tG8JvDYqYHBjHg__itemrep/img/KHoxN3JiwDTqAibJdkagE4T7n_M=/fit-in/246x300/filters:strip_icc()/pic5322689.jpg)
@@ -87,7 +87,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Wingspan](https://boardgamegeek.com/boardgame/266192/wingspan)
 
 > Wingspan is a competitive, medium-weight, card-driven, engine-building board game from Stonemaier Games. It's designed by Elizabeth Hargrave and features over 170 birds illustrated by Beth Sobel, Natalia Rojas, and Ana Maria Martinez.
-> 
+>
 > You are bird enthusiasts—researchers, bird watchers, ornithologists, and collectors—seeking to discover and attract the best birds to your network of wildlife preserves. Each bird extends a chain of powerful combinations in one of your habitats (actions). These habitats focus on several key aspects of growth:
 > - Gain food tokens via custom dice in a birdfeeder dice tower
 > - Lay eggs using egg miniatures in a variety of colors
@@ -113,9 +113,9 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Clank!: Catacombs](https://boardgamegeek.com/boardgame/365717/clank-catacombs)
 
 > The catacombs of the skeletal dragon Umbrok Vessna are mysterious and dangerous. Portals transport you all around the dungeon depths. Wayshrines offer vast riches to intrepid explorers. Prisoners are counting on you to free them. Ghosts, once disturbed, may haunt you to death. Despite all that, it's time to leave the board behind with Clank! Catacombs, a standalone deck-building adventure.
-> 
+>
 > Each trip into the catacombs is unique since you lay tiles to create the dungeon. You can play using only the all-new dungeon deck, or you can include cards from previous Clank! expansions.
-> 
+>
 > Find your fortune (and escape the dragon!) in Clank! Catacombs.
 
 ![Clank!: Catacombs game image](https://cf.geekdo-images.com/cCLn9Mvb7jRSaZzHeUXhoQ__itemrep/img/A1D0c966kaxlKRgGMPakzgeupmU=/fit-in/246x300/filters:strip_icc()/pic6937913.jpg)
@@ -137,7 +137,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Lost Ruins of Arnak](https://boardgamegeek.com/boardgame/312484/lost-ruins-of-arnak)
 
 > On an uninhabited island in uncharted seas, explorers have found traces of a great civilization. Now you will lead an expedition to explore the island, find lost artifacts, and face fearsome guardians, all in a quest to learn the island's secrets.
-> 
+>
 > Lost Ruins of Arnak combines deck-building and worker placement in a game of exploration, resource management, and discovery. In addition to traditional deck-builder effects, cards can also be used to place workers, and new worker actions become available as players explore the island. Some of these actions require resources instead of workers, so building a solid resource base will be essential. You are limited to only one action per turn, so make your choice carefully... what action will benefit you most now? And what can you afford to do later... assuming someone else doesn't take the action first!?
 
 ![Lost Ruins of Arnak game image](https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__itemrep/img/ETni1QwddAVjM-xLhciF0UM0FxQ=/fit-in/246x300/filters:strip_icc()/pic5674958.jpg)
@@ -149,7 +149,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Istanbul](https://boardgamegeek.com/boardgame/148949/istanbul)
 
 > There's hustle and bustle at Istanbul's grand bazaar as merchants and their assistants rush through the narrow alleys in their attempt to be more successful than their competitors. Everything must be well organized: wheelbarrows must be filled with goods at the warehouses, then swiftly transported by the assistants to various destinations. Your goal? Be the first merchant to collect a certain number of rubies.
-> 
+>
 > In Istanbul, you lead a group of one merchant and four assistants through 16 locations in the bazaar. At each such location, you can carry out a specific action. The challenge, though, is that to take an action, you must move your merchant and an assistant there, then leave the assistant behind (to handle all the details while you focus on larger matters). If you want to use that assistant again later, your merchant must return to that location to pick him up. Thus, you must plan ahead carefully to avoid being left with no assistants and thus unable to do anything...
 
 ![Istanbul game image](https://cf.geekdo-images.com/PHH9Mreen2sBcxV6ZsE3ew__itemrep/img/3-96MTKIPtgjJ8inH9DWDxCf0no=/fit-in/246x300/filters:strip_icc()/pic1885326.jpg)
@@ -191,9 +191,9 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Everdell](https://boardgamegeek.com/boardgame/199792/everdell)
 
 > Within the charming valley of Everdell, beneath the boughs of towering trees, among meandering streams and mossy hollows, a civilization of forest critters is thriving and expanding. From Everfrost to Bellsong, many a year have come and gone, but the time has come for new territories to be settled and new cities established. You will be the leader of a group of critters intent on just such a task. There are buildings to construct, lively characters to meet, events to host—you have a busy year ahead of yourself. Will the sun shine brightest on your city before the winter moon rises?
-> 
+>
 > Everdell is a game of dynamic tableau building and worker placement.
-> 
+>
 > On their turn a player can take one of three actions:
 
 ![Everdell game image](https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__itemrep/img/nyVhVuXdmw-1sigbocTKG81UInM=/fit-in/246x300/filters:strip_icc()/pic3918905.png)
@@ -237,10 +237,10 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Crokinole](https://boardgamegeek.com/boardgame/521/crokinole)
 
 > Crokinole is a traditional dexterity game.
-> 
+>
 > Crokinole is played on a circular wooden board, with wooden circular disks as playing pieces.
 > Players take turns shooting disks across the circular wooden board by flicking the disks with their fingers. Players try to land their disks in scoring regions on the board, with the highest scoring area the recessed hole in the very center of the board. Each round, each player/side alternately shoots a set number of disks (usually 12 or 8), shooting one disk each turn.
-> 
+>
 > As a traditional game, there are often many variations played, but the following method is based on the National Crokinole Association's rules which also govern the World Crokinole Championship.
 
 ![Crokinole game image](https://cf.geekdo-images.com/7ejbxsn-UtLl3ehamuAEdw__itemrep/img/5OXvXz34AnlF9eCXZtNFMJ89JNc=/fit-in/246x300/filters:strip_icc()/pic79413.jpg)
@@ -252,7 +252,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Welcome To](https://boardgamegeek.com/boardgame/233867/welcome-to)
 
 > As an architect in Welcome To..., you want to build the best new town in the United States of the 1950s by adding resources to a pool, hiring employees, and more.
-> 
+>
 > Welcome To... plays like a roll-and-write dice game in which you mark results on a score-sheet...but without dice. Instead you flip cards from three piles to make three different action sets with both a house number and a corresponding action from which everyone chooses one. You use the number to fill in a house on your street in numerical order. Then you take the action to increase the point value of estates you build or score points at the end for building parks and pools. Players also have the option of taking actions to alter or duplicate their house numbers. And everyone is racing to be the first to complete public goals. There's lots to do and many paths to becoming the best suburban architect in !
 
 ![Welcome To... game image](https://cf.geekdo-images.com/g4XmxyKhNVdhC3QPd1purQ__itemrep/img/QKJwfdV3Qrv9w2TX_ML5T3z5G9E=/fit-in/246x300/filters:strip_icc()/pic3761012.jpg)
@@ -294,7 +294,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Cascadia](https://boardgamegeek.com/boardgame/295947/cascadia)
 
 > Cascadia is a puzzly tile-laying and token-drafting game featuring the habitats and wildlife of the Pacific Northwest.
-> 
+>
 > In the game, you take turns building out your own terrain area and populating it with wildlife. You start with three hexagonal habitat tiles (with the five types of habitat in the game), and on a turn you choose a new habitat tile that's paired with a wildlife token, then place that tile next to your other ones and place the wildlife token on an appropriate habitat. (Each tile depicts 1-3 types of wildlife from the five types in the game, and you can place at most one tile on a habitat.) Four tiles are on display, with each tile being paired at random with a wildlife token, so you must make the best of what's available — unless you have a nature token to spend so that you can pick your choice of each item.
 
 ![Cascadia game image](https://cf.geekdo-images.com/MjeJZfulbsM1DSV3DrGJYA__itemrep/img/RjD03wEf_LoX0EF4DhnW6f0xNHU=/fit-in/246x300/filters:strip_icc()/pic5100691.jpg)
@@ -378,7 +378,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Heat: Pedal to the Metal](https://boardgamegeek.com/boardgame/366013/heat-pedal-to-the-metal)
 
 > Based on simple and intuitive hand management, Heat: Pedal to the Metal puts players in the driver's seat of intense car races, jockeying for position to cross the finish line first, while managing their car's speed if they don't want to overheat. Selecting the right upgrades for their car will help them hug the curves and keep their engine cool enough to maintain top speeds. Ultimately, their driving skills will be the key to victory!
-> 
+>
 > Drivers can compete in a single race or use the "Championship System" to play a whole season in one game night, customizing their car before each race to claim the top spot of the podium. They have to be careful as the weather, road conditions, and events will change every race to spice up their championship. Players can also enjoy a solo mode with the Legends Module or add automated drivers as additional opponents in multiplayer games.
 
 ![Heat: Pedal to the Metal game image](https://cf.geekdo-images.com/-vOrd4bOspibyohYExLqWg__itemrep/img/mSj0nZUY3ofhIXFZJLGzF-6MQTg=/fit-in/246x300/filters:strip_icc()/pic6940449.png)
@@ -429,7 +429,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 
 ### [PARKS](https://boardgamegeek.com/boardgame/266524/parks)
 
-> PARKS is a celebration of the US National Parks featuring illustrious art from Fifty-Nine Parks. In PARKS, players will take on the role of two hikers who will trek trails to see sites, observe wildlife, take photos, and visit national parks over the course of the game. They will take actions and collect memories of the places your hikers visit. These memories are represented by various resource tokens like mountains and forests. Collecting these memories in sets will allow players to trade them in to visit a National Park at the end of each hike. Each trail, represented by tiles, represents a different season, and as each season passes, the trails change and grow steadily longer. Each turn, players send one of their hikers down the trail. While on the trail, hikers will see beautiful sites and perform an action when they arrive. When a hiker reaches the end of the trail, they can spend tokens they have received to visit Parks and earn points. Your goal is to have the most points from your Parks, photos, and personal bonus at the end of the year. 
+> PARKS is a celebration of the US National Parks featuring illustrious art from Fifty-Nine Parks. In PARKS, players will take on the role of two hikers who will trek trails to see sites, observe wildlife, take photos, and visit national parks over the course of the game. They will take actions and collect memories of the places your hikers visit. These memories are represented by various resource tokens like mountains and forests. Collecting these memories in sets will allow players to trade them in to visit a National Park at the end of each hike. Each trail, represented by tiles, represents a different season, and as each season passes, the trails change and grow steadily longer. Each turn, players send one of their hikers down the trail. While on the trail, hikers will see beautiful sites and perform an action when they arrive. When a hiker reaches the end of the trail, they can spend tokens they have received to visit Parks and earn points. Your goal is to have the most points from your Parks, photos, and personal bonus at the end of the year.
 
 ![PARKS image](https://cf.geekdo-images.com/mF2cSNRk2O6HtE45Sl9TcA__itemrep/img/aO688RtGLH5MV7LUHkmghPUjSJQ=/fit-in/246x300/filters:strip_icc()/pic4852372.jpg)
 
@@ -451,9 +451,9 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [The Quacks of Quedlinburg](https://boardgamegeek.com/boardgame/244521/quacks)
 
 > In The Quacks of Quedlinburg, players are charlatans — or quack doctors — each making their own secret brew by adding ingredients one at a time. Take care with what you add, though, for a pinch too much of this or that will spoil the whole mixture!
-> 
+>
 > Each player has their own bag of ingredient chips. During each round, they simultaneously draw chips from their bags and add them to their pots. The higher the face value of the drawn chip, the further it is placed in the pot's swirling pattern, increasing how much the potion will be worth. Push your luck as far as you can, but if you add too many cherry bombs, your pot will explode!
-> 
+>
 > At the end of each round, players gain victory points and coins to spend on new ingredients, depending on how well they managed to fill up their pots. But players whose pots have exploded must choose points or coins — not both! The player with the most victory points at the end of nine rounds wins the game.
 
 ![The Quacks of Quedlinburg game image](https://cf.geekdo-images.com/pH5LgRL4mNRon-2NsSDb1Q__itemrep/img/qe9ywOTxtPr_n4DoXZgEY-C2qU0=/fit-in/246x300/filters:strip_icc()/pic6137509.png)
@@ -475,7 +475,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [SCOUT](https://boardgamegeek.com/boardgame/291453/scout)
 
 > SCOUT is a ladder-climbing game in which cards have two potential values, players may not rearrange their hand of cards, and players may pass their turn to take a card from the current high set of cards into their hand.
-> 
+>
 > More specifically, cards are dual-indexed, with different values on each half of the card, with the 45 cards having all possible combinations of the numbers 1-10. During set-up, whoever is shuffling the cards should randomize both the order of the cards in the deck and their orientation. Once each player has been dealt their entire hand of cards, they pick up that hand without rearranging any of the cards; if they wish, they can rotate their entire hand of cards in order to use the values on the other end of each card, but again they cannot rearrange the order of cards in their hand.
 
 ![SCOUT game image](https://cf.geekdo-images.com/cf0xxkevbwTGF3VUZymKjg__itemrep/img/SBOXfC-WOg_Iko_2lHw3VMymsow=/fit-in/246x300/filters:strip_icc()/pic6398727.png)
@@ -497,11 +497,11 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Splendor Duel](https://boardgamegeek.com/boardgame/364073/splendor-duel)
 
 > Confront your rival guild in a race for victory. Take Gem and Pearl tokens from the common board, then purchase cards, gather bonuses, royal favours, and prestige.
-> 
+>
 > Discover new twists and strategic opportunities derived from Splendor, the original best-selling game. Acquire cards with impressive powers, take advantage of special Privileges, and fight over scarce access to Pearls.
-> 
+>
 > Splendor Duel is a two-player only standalone game based on Splendor that retains some of the main gameplay mechanisms of that design, while being a bit more complex, dynamic, interactive, rich, tense, and mean.
-> 
+>
 > The game features a main board shared by both opponents, card powers, and three victory conditions.
 
 ![Splendor Duel game image](https://cf.geekdo-images.com/V1PyFDPNFY4bJFgreLPxmQ__itemrep/img/X1a_aOpNwx26n4NuXIK3RDvP7hY=/fit-in/246x300/filters:strip_icc()/pic6929347.jpg)
@@ -523,7 +523,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Azul](https://boardgamegeek.com/boardgame/230802/azul)
 
 > Introduced by the Moors, azulejos (originally white and blue ceramic tiles) were fully embraced by the Portuguese when their king Manuel I, on a visit to the Alhambra palace in Southern Spain, was mesmerized by the stunning beauty of the Moorish decorative tiles. The king, awestruck by the interior beauty of the Alhambra, immediately ordered that his own palace in Portugal be decorated with similar wall tiles. As a tile-laying artist, you have been challenged to embellish the walls of the Royal Palace of Evora.
-> 
+>
 > In the game Azul, players take turns drafting colored tiles from suppliers to their player board. Later in the round, players score points based on how they've placed their tiles to decorate the palace. Extra points are scored for specific patterns and completing sets; wasted supplies harm the player's score. The player with the most points at the end of the game wins.
 
 ![Azul game image](https://cf.geekdo-images.com/aPSHJO0d0XOpQR5X-wJonw__itemrep/img/6oRLPDvy4zz3gOZM6e6NzIk8Seg=/fit-in/246x300/filters:strip_icc()/pic6973671.png)
@@ -535,7 +535,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Azul: Summer Pavilion](https://boardgamegeek.com/boardgame/287954/azul-summer-pavilion)
 
 > At the turn of the 16th Century, King Manuel I commissioned Portugal's greatest artisans to construct grandiose buildings. After completing the Palaces of Evora and Sintra, the king sought to build a summer pavilion to honor the most famous members of the royal family. This construction was intended for the most talented artisans — whose skills meet the splendor that the royal family deserves. Sadly, King Manuel I died before construction ever began.
-> 
+>
 > In Azul: Summer Pavilion, players return to Portugal to accomplish the task that never began. As a master artisan, you must use the finest materials to create the summer pavilion while carefully avoiding wasting supplies. Only the best will rise to the challenge to honor the Portuguese royal family.
 
 ![Azul: Summer Pavilion game image](https://cf.geekdo-images.com/843kZ6WR0HfyXWEybA6L7A__itemrep/img/zOE89_4aCHOqoYITnbMSxAVR_UA=/fit-in/246x300/filters:strip_icc()/pic4930887.jpg)
@@ -547,7 +547,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Patchwork](https://boardgamegeek.com/boardgame/163412/patchwork)
 
 > In Patchwork, two players compete to build the most aesthetic (and high-scoring) patchwork quilt on a personal 9x9 game board. To start play, lay out all of the patches at random in a circle and place a marker directly clockwise of the 2-1 patch. Each player takes five buttons — the currency/points in the game — and someone is chosen as the start player.
-> 
+>
 > On a turn, a player either purchases one of the three patches standing clockwise of the spool or passes. To purchase a patch, you pay the cost in buttons shown on the patch, move the spool to that patch's location in the circle, add the patch to your game board, then advance your time token on the time track a number of spaces equal to the time shown on the patch. You're free to place the patch anywhere on your board that doesn't overlap other patches, but you probably want to fit things together as tightly as possible. If your time token is behind or on top of the other player's time token, then you take another turn; otherwise the opponent now goes. Instead of purchasing a patch, you can choose to pass; to do this, you move your time token to the space immediately in front of the opponent's time token, then take one button from the bank for each space you moved.
 
 ![Patchwork game image](https://cf.geekdo-images.com/wLW7pFn0--20lEizEz5p3A__itemrep/img/rJ1GPoOG_t9d3H2mnfROcR5OhNQ=/fit-in/246x300/filters:strip_icc()/pic2270442.jpg)
@@ -559,7 +559,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Cartographers](https://boardgamegeek.com/boardgame/263918/cartographers)
 
 > Queen Gimnax has ordered the reclamation of the northern lands. As a cartographer in her service, you are sent to map this territory, claiming it for the Kingdom of Nalos. Through official edicts, the queen announces which lands she prizes most, and you will increase your reputation by meeting her demands. But you are not alone in this wilderness. The Dragul contest your claims with their outposts, so you must draw your lines carefully to reduce their influence. Reclaim the greatest share of the queen’s desired lands and you will be declared the greatest cartographer in the kingdom.
-> 
+>
 > In Cartographers: A Roll Player Tale, players compete to earn the most reputation stars by the time four seasons have passed. Each season, players draw on their map sheets and earn reputation by carrying out the queen's edicts before the season is over. The player with the most reputation stars at the end of winter wins!
 
 ![Cartographers game image](https://cf.geekdo-images.com/GifbnAmsA4lfEcDkeaC9VA__itemrep/img/0wjmkvfHlWU5_l9dnaoDanV0s5U=/fit-in/246x300/filters:strip_icc()/pic4397932.png)
@@ -606,9 +606,9 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Welcome to the Moon](https://boardgamegeek.com/boardgame/339789/welcome-to-the-moon)
 
 > You've built housing for humanity in neighborhoods and New Las Vegas. Now you need to save humanity through space colonization...
-> 
+>
 > Welcome to the Moon uses the same flip-and-write game mechanisms as the earlier title Welcome To..., but now you can play in a campaign across eight adventure sheets. On a turn, you flip cards from three stacks to create three different combinations of a starship number and a corresponding action, then all players choose one of these three combinations. You use the number to fill a space in a zone on your adventure sheet in numerical order, and everyone is racing to be the first to complete common missions.
-> 
+>
 > The eight adventure sheets feature very different mechanisms from the classic concept, and when you play in campaign mode, you'll make choices that change the next adventure, which means that each campaign will differ from the previous one.
 
 ![Welcome to the Moon game image](https://cf.geekdo-images.com/eCdiHCB9OobumwaGl4dbOQ__itemrep/img/S8KJaJ1UfomzoC4XGob6pIkresI=/fit-in/246x300/filters:strip_icc()/pic6204967.png)
@@ -643,7 +643,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [The Isle of Cats](https://boardgamegeek.com/boardgame/281259/the-isle-of-cats)
 
 > The Isle of Cats is a competitive, medium-weight, card-drafting, polyomino cat-placement board game for 1-4 players (6 with expansions).
-> 
+>
 > In the game, you are citizens of Squalls End on a rescue mission to The Isle of Cats and must rescue as many cats as possible before the evil Lord Vesh arrives. Each cat is represented by a unique tile and belongs to a family, you must find a way to make them all fit on your boat while keeping families together. You will also need to manage resources as you:
 > - Explore the island (by drafting cards)
 > - Rescue cats
@@ -900,7 +900,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 
 ### [Shogi](https://en.wikipedia.org/wiki/Shogi)
 
-> Shogi, also known as Game of Generals, is a Japanese board game similar to chess, played on a 9x9 grid with 20 pieces per player. The objective is to checkmate the opponent's king, but pieces can be promoted upon reaching the enemy's promotion zone. Shogi offers a dynamic and strategic gameplay experience with unique piece movements and captures. It is much more complex than international chess. 
+> Shogi, also known as Game of Generals, is a Japanese board game similar to chess, played on a 9x9 grid with 20 pieces per player. The objective is to checkmate the opponent's king, but pieces can be promoted upon reaching the enemy's promotion zone. Shogi offers a dynamic and strategic gameplay experience with unique piece movements and captures. It is much more complex than international chess.
 
 ![Shogi image](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Shogi_Ban_Koma.jpg/250px-Shogi_Ban_Koma.jpg)
 
@@ -994,7 +994,7 @@ licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ### [Tzolk'in: The Mayan Calendar](https://boardgamegeek.com/boardgame/126163/tzolkin-the-mayan-calendar)
 
 > Tzolkin: The Mayan Calendar presents a new game mechanism: dynamic worker placement. Players representing different Mayan tribes place their workers on giant connected gears, and as the gears rotate they take the workers to different action spots.
-> During a turn, players can either (a) place one or more workers on the lowest visible spot of the gears or (b) pick up one or more workers. When placing workers, they must pay corn, which is used as a currency in the game. When they pick up a worker, they perform certain actions depending on the position of the worker. Actions located "later" on the gears are more valuable, so it's wise to let the time work for you – but players cannot skip their turn; if they have all their workers on the gears, they have to pick some up. 
+> During a turn, players can either (a) place one or more workers on the lowest visible spot of the gears or (b) pick up one or more workers. When placing workers, they must pay corn, which is used as a currency in the game. When they pick up a worker, they perform certain actions depending on the position of the worker. Actions located "later" on the gears are more valuable, so it's wise to let the time work for you – but players cannot skip their turn; if they have all their workers on the gears, they have to pick some up.
 
 ![Tzolk'in: The Mayan Calendar game image](https://cf.geekdo-images.com/kXf7mDyDYuHg6oe8yTUIEA__itemrep/img/8M-vck69HAdoJdStBZ8q91-7hRs=/fit-in/246x300/filters:strip_icc()/pic4604439.jpg)
 
@@ -2176,7 +2176,7 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 
 ### [Condottiere](https://boardgamegeek.com/boardgame/112/condottiere)
 
-> The object of Condottiere is to acquire four connected provinces in renaissance Italy. To do this players auction off different provinces on the board and bid on these provinces with a hand of cards representing mercenaries,seasons, scarecrows, and political figures. However, unlike standard auctions, in Condottiere every player loses their bid. 
+> The object of Condottiere is to acquire four connected provinces in renaissance Italy. To do this players auction off different provinces on the board and bid on these provinces with a hand of cards representing mercenaries,seasons, scarecrows, and political figures. However, unlike standard auctions, in Condottiere every player loses their bid.
 > Players are, in effect, bidding the number of troops they are willing to lose in order to win a province.
 
 ![Condottiere image](https://cf.geekdo-images.com/PZ3Y8nJBWeQzLrCbjFcNFA__itemrep/img/I5U2ErlXmrnGVjxkdlTrq7EuC8w=/fit-in/246x300/filters:strip_icc()/pic6974400.jpg)
@@ -2219,11 +2219,11 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 
 | Players | Min. Age |   Time |
 |--------:|---------:|-------:|
-|   2 - 6 |        10 | 20-40m 
+|   2 - 6 |        10 | 20-40m
 
 ### [Muse](https://boardgamegeek.com/boardgame/234396/muse)
 
-> Muse is a competitive or cooperative party game where you use imaginative clues to inspire your teammates to get them to correctly guess the Masterpiece. 
+> Muse is a competitive or cooperative party game where you use imaginative clues to inspire your teammates to get them to correctly guess the Masterpiece.
 > As a Muse, you need to be creative to give the right clue to lead your team to their Masterpiece. As artists, you work alongside one another to decipher that clue, and correctly choose the Masterpiece from the line-up.
 
 ![Muse image](https://cf.geekdo-images.com/6gDD73LSCMrr7ab1LHCXCg__itemrep/img/8JT5XGPKSWOt3VUGpjmfdkrBeSc=/fit-in/246x300/filters:strip_icc()/pic3719954.jpg)
@@ -2254,8 +2254,8 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 
 ### [Magic: The Gathering](https://boardgamegeek.com/boardgame/463/magic-the-gathering)
 
-> In the Magic game, you play the role of a planeswalker—a powerful wizard who fights other planeswalkers for glory, knowledge, and conquest. Your deck of cards represents all the weapons in your arsenal. It contains the spells you know and the creatures you can summon to fight for you. This is the grandfather of the collectible card game (or CCG) genre. Cards are categorized as common, uncommon, rare, and mythic rare. Players collect cards and build decks out of their collection. Players build a deck of cards and duel against an opponent's deck. Players are wizards attempting to reduce their opponent's life total to zero. The first player to reduce his opponent's life to zero (or meet another set win condition) wins the game. An important part of the game is deck construction, which is done prior to the actual game by selecting what cards are included in a particular deck. There are over 25,000 different cards from which to build your deck! Cards can be lands, which usually generate mana of various colors, or spells, which require a certain amount of mana to be used. Some cards (creatures, artifacts, and enchantments) stay on the board and continue to affect the game, while others have a one-time effect. Players randomly draw spells to see what they get and can play each turn. Although this limits your choices, there is a lot of strategy in how you play those spells. A robust list of game mechanics, including intricate rules for reactive card play called "the stack," provide for rich tactics and tough choices each turn. Though traditionally a two-player duel, there are several casual and tournament formats to Magic that allow more players to play. 
- 
+> In the Magic game, you play the role of a planeswalker—a powerful wizard who fights other planeswalkers for glory, knowledge, and conquest. Your deck of cards represents all the weapons in your arsenal. It contains the spells you know and the creatures you can summon to fight for you. This is the grandfather of the collectible card game (or CCG) genre. Cards are categorized as common, uncommon, rare, and mythic rare. Players collect cards and build decks out of their collection. Players build a deck of cards and duel against an opponent's deck. Players are wizards attempting to reduce their opponent's life total to zero. The first player to reduce his opponent's life to zero (or meet another set win condition) wins the game. An important part of the game is deck construction, which is done prior to the actual game by selecting what cards are included in a particular deck. There are over 25,000 different cards from which to build your deck! Cards can be lands, which usually generate mana of various colors, or spells, which require a certain amount of mana to be used. Some cards (creatures, artifacts, and enchantments) stay on the board and continue to affect the game, while others have a one-time effect. Players randomly draw spells to see what they get and can play each turn. Although this limits your choices, there is a lot of strategy in how you play those spells. A robust list of game mechanics, including intricate rules for reactive card play called "the stack," provide for rich tactics and tough choices each turn. Though traditionally a two-player duel, there are several casual and tournament formats to Magic that allow more players to play.
+
 ![MTG image](https://cf.geekdo-images.com/CxJmNl4wR4InjqyNrMdBTw__itemrep/img/kBqgXHgOkEqyADW3Fk9c8KcCJRk=/fit-in/246x300/filters:strip_icc()/pic163749.jpg)
 
 | Players | Min. Age | Time |
@@ -2264,8 +2264,8 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 
 ### [Wits & Wagers](https://boardgamegeek.com/boardgame/20100/wits-and-wagers)
 
-> Not a trivia buff? It doesn't matter! In Wits & Wagers, each player writes a guess to a question such as “In what year did the bikini swimsuit makes its first appearance?” or “How many feet wide is an NFL football field?” and places it face-up on the betting mat. Think you know the answer? Bet on your guess. Think you know who the experts are? Bet on their guess. The closest answer — without going over — pays out according to the odds on the betting mat. Strike it big and you'll be cheering like you just hit the jackpot! Wits & Wagers is a trivia game that lets you bet on anyone's answer. So you can win by making educated guesses, by playing the odds, or by knowing the interests of your friends. It can be taught in 2 minutes, played in 25 minutes, and accommodates up to 20 people in teams. 
- 
+> Not a trivia buff? It doesn't matter! In Wits & Wagers, each player writes a guess to a question such as “In what year did the bikini swimsuit makes its first appearance?” or “How many feet wide is an NFL football field?” and places it face-up on the betting mat. Think you know the answer? Bet on your guess. Think you know who the experts are? Bet on their guess. The closest answer — without going over — pays out according to the odds on the betting mat. Strike it big and you'll be cheering like you just hit the jackpot! Wits & Wagers is a trivia game that lets you bet on anyone's answer. So you can win by making educated guesses, by playing the odds, or by knowing the interests of your friends. It can be taught in 2 minutes, played in 25 minutes, and accommodates up to 20 people in teams.
+
 ![Wits & Wagers image](https://cf.geekdo-images.com/TxojLHTFHfBOBAk9MQSyLg__itemrep/img/HoSHsIveJn0jvXHUeM5x3-iGf44=/fit-in/246x300/filters:strip_icc()/pic2558555.jpg)
 
 | Players | Min. Age | Time |
@@ -2284,8 +2284,8 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 
 ### [Blood on the Clocktower](https://boardgamegeek.com/boardgame/240980/blood-on-the-clocktower)
 
-> Blood on the Clocktower is a bluffing game enjoyed by 5 to 20 players on opposing teams of Good and Evil, overseen by a Storyteller player who conducts the action and makes crucial decisions. The goal of the game is to successfully deduce and execute the demons before they outnumber the townfolk. During a 'day' phase players socialize openly and whisper privately to trade knowledge or spread lies, culminating in a player's execution if a majority suspects them of being Evil. Of a 'night' time, players close their eyes and are woken one at a time by the Storyteller to gather information, spread mischief, or kill. The Storyteller uses the game's intricate playing pieces to guide each game, leaving others free to play without a table or board. Players stay in the thick of the action to the very end even if their characters are killed, haunting Ravenswood Bluff as ghosts trying to win from beyond the grave. If you arrive late to a game, you can enter after it's started as a powerful Traveller character with unusual talents and questionable allegiances. Each character comes with their own special ability and no two players in a game are ever the same character. 
- 
+> Blood on the Clocktower is a bluffing game enjoyed by 5 to 20 players on opposing teams of Good and Evil, overseen by a Storyteller player who conducts the action and makes crucial decisions. The goal of the game is to successfully deduce and execute the demons before they outnumber the townfolk. During a 'day' phase players socialize openly and whisper privately to trade knowledge or spread lies, culminating in a player's execution if a majority suspects them of being Evil. Of a 'night' time, players close their eyes and are woken one at a time by the Storyteller to gather information, spread mischief, or kill. The Storyteller uses the game's intricate playing pieces to guide each game, leaving others free to play without a table or board. Players stay in the thick of the action to the very end even if their characters are killed, haunting Ravenswood Bluff as ghosts trying to win from beyond the grave. If you arrive late to a game, you can enter after it's started as a powerful Traveller character with unusual talents and questionable allegiances. Each character comes with their own special ability and no two players in a game are ever the same character.
+
 ![Blood on the clocktower img](https://cf.geekdo-images.com/HINb2nkFn5IiZxAlzQIs4g__itemrep/img/ji9nruIqJkNi8omWgNRZKmrZjwA=/fit-in/246x300/filters:strip_icc()/pic7009391.jpg)
 
 | Players | Min. Age | Time |
@@ -2294,8 +2294,8 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 
 ### [Snake Oil](https://boardgamegeek.com/boardgame/113289/snake-oil)
 
-> In the Old West, the wily snake oil salesman had a special talent, getting the most skeptical customers to buy the most dubious products. Now it's your turn! Invent your own zany two-word products – Rumor Mirror! Burp Balloon! – and sell them to all types of wacky customers. If the round's customer buys your product, you win the round! To set up Snake Oil, each player takes six purple word cards. The customer for the round draws a customer card and announces it. Inventors quickly combine two purple word cards from their hand to form a crazy new product to sell to that customer. When ready, each inventor quickly pitches his or her product directly to the customer. The customer can end any pitch that goes longer than thirty seconds. The customer decides which product to buy and gives the inventor of that product the round's customer card as the prize. Inventors discard all used word cards and take two new word cards each. The player to the left of the customer becomes the next round's customer. Play repeats until each player has been the customer once. Whoever collects the most customer cards wins the game. 
- 
+> In the Old West, the wily snake oil salesman had a special talent, getting the most skeptical customers to buy the most dubious products. Now it's your turn! Invent your own zany two-word products – Rumor Mirror! Burp Balloon! – and sell them to all types of wacky customers. If the round's customer buys your product, you win the round! To set up Snake Oil, each player takes six purple word cards. The customer for the round draws a customer card and announces it. Inventors quickly combine two purple word cards from their hand to form a crazy new product to sell to that customer. When ready, each inventor quickly pitches his or her product directly to the customer. The customer can end any pitch that goes longer than thirty seconds. The customer decides which product to buy and gives the inventor of that product the round's customer card as the prize. Inventors discard all used word cards and take two new word cards each. The player to the left of the customer becomes the next round's customer. Play repeats until each player has been the customer once. Whoever collects the most customer cards wins the game.
+
 ![Snake Oil image](https://cf.geekdo-images.com/q-Sdv383LKSBIPOrSRb5Cg__itemrep/img/c0f6lC5Lk2qu6i1MG8FA7osBb9w=/fit-in/246x300/filters:strip_icc()/pic7617053.jpg)
 
 | Players | Min. Age | Time   |
@@ -2315,7 +2315,7 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 ### [Kragmortha](https://boardgamegeek.com/boardgame/26859/kragmortha)
 
 > Oh clever goblins, will you be able to avoid the wrath of the Dark Lord (Rigor Mortis, the Master of all Evils) while he wanders in his study? Terrible spells will be cast upon those who are hit by the glances of the Dark Lord! Kragmortha is a party game for 2-8 players that will be afflicted by exhilarating penances. No one will resist its humor! BEWARE! This game produces physical penances and is nocive (definition of nocive is : Hurtful or injurious) to the health! Kragmortha shares artwork with Aye, Dark Overlord! The Red Box
- 
+
 ![Kragmortha image](https://cf.geekdo-images.com/wTGi8HXbSeproPHaFizchw__itemrep/img/3wKW83dlMsWHc7CqIxMrxd66JsY=/fit-in/246x300/filters:strip_icc()/pic1703109.jpg)
 
 | Players | Min. Age | Time   |
@@ -2325,7 +2325,7 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 ### [Animocrazy](https://boardgamegeek.com/boardgame/542/animocrazy)
 
 > How can the Jolly Pets resist the big bag of candies right in front of them? Everything goes well at the beginning when they calmly agree on the same amount of candies for each of them, but soon they come up with more and more ideas and a debate starts… the Pig says,“Those who weigh over 10kg should get an extra candy!”... the Dog says, “Whoever oversleeps should return a candy to the pool!” To resolve their hectic argument, they finally decide to form the House of Pets, at which the animal councilors will discuss proposals and vote on new laws. Who can get the most delicious candies in this exciting voting game? Based on Karl-Heinz Schmiel's Das Regeln Wir Schon, players attempt to pass laws which benefit themselves. The laws are either immediate or semi-permanent, and they can have all kinds of different effects: all players with beards get five points, vote cards must be played with the left hand, or some sort of re-evaluation or redistribution of the chips that each player has. The chips are the main way that players score, but their worth fluctuates constantly. On a turn, a player draws a card and then proposes a vote, and this continues until the End card is drawn.
- 
+
 ![Animocrazy image](https://cf.geekdo-images.com/CvX3vmdadXc-ZVlFsd6Iwg__itemrep/img/ChmtyLNIPBaIkRYVkiS4GH1uyEU=/fit-in/246x300/filters:strip_icc()/pic4888035.jpg)
 
 | Players | Min. Age | Time   |
@@ -2335,7 +2335,7 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 ### [Geek Out](https://boardgamegeek.com/boardgame/141430/geek-out)
 
 > Geek Out! is a party game that can determine once and for all which player is the most knowledgeable about your favorite pop culture subjects! In the game, you draw cards asking you to list a certain number of things which fall under a certain category: comic books, fantasy, games, science fiction, and miscellaneous. Before you begin, however, the other players may try to steal your points (and bragging rights!) by bidding to list even more than the card requires. The bidding continues until one player is ready to "out-geek" their friends. Collect a predetermined number of cards, and you win!
- 
+
 ![Geek Out image](https://cf.geekdo-images.com/mrrFDQq5nYASziu28UqomQ__itemrep/img/Wik_Jo17reIqCGCaok772tlLNAY=/fit-in/246x300/filters:strip_icc()/pic1634333.jpg)
 
 | Players | Min. Age | Time   |
@@ -2345,7 +2345,7 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 ### [Over/Under](https://boardgamegeek.com/boardgame/129988/overunder)
 
 > In the game, which was first published as Die Größe macht's! in German, players start with a stack of question cards, with each card having three questions and the game having 200 cards. On a turn, the active player reads one question to the other players, who then collectively decide on a numerical answer for that question. The reader must then state whether the answer given is too high, too low, or exactly right. If the reader guesses wrong, he removes the card from the game and the next player chooses the next question; if he guessed "over" or "under" and was right, he keeps the card, then passes the deck; if he guessed "exactly right" and was right, he keeps the card, then reads the next question himself. Bonus! When the stack of cards runs out, the game ends and whoever has the most cards wins.
- 
+
 ![Over/Under image](https://cf.geekdo-images.com/kpbFiqdQ-yeKNEooopuBQg__itemrep/img/77MAMlhpObiRmNnl0b3CtHZycsQ=/fit-in/246x300/filters:strip_icc()/pic1950463.jpg)
 
 | Players | Min. Age | Time   |
@@ -2693,7 +2693,7 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 | ------: | -------: | -----: |
 |   2 - 4 |       12 | 60-90m |
 
-### [Diplomacy](https://boardgamegeek.com/boardgame/483/diplomacy) 
+### [Diplomacy](https://boardgamegeek.com/boardgame/483/diplomacy)
 
 > This classic game of pure negotiation has taken many forms over the years. The first The Avalon Hill Game Co version has perhaps the widest release, but Avalon Hill re-released the game in 1999, complete with a colorful new map and metal pieces. In 2008, Avalon Hill released a 50th anniversary edition with a new map and cardboard pieces representing the armies and navies.In the game, players represent one of the seven "Great Powers of Europe" (Great Britain, France, Austria-Hungary, Germany, Italy, Russia or Turkey) in the years prior to World War I. Play begins in the Spring of 1901, and players make both Spring and Autumn moves each year. There are only two kinds of military units: armies and fleets. On any given turn, each of your military units has limited options: they can move into an adjoining territory, support an allied unit in an attack on an adjoining territory, support an allied unit in defending an adjoining territory, or hold their position. Players instruct each of their units by writing a set of "orders." The outcome of each turn is determined by the rules of the game. There are no dice rolls or other elements of chance. With its incredibly simplistic movement mechanics fused to a significant negotiation element, this system is highly respected by many gamers.
 
@@ -2816,7 +2816,7 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 | ------: | -------: | -----: |
 |   1 - 4 |       10 | 30-45m |
 
-### [Star Wars: The Deckbuilding Game](https://en.wikipedia.org/wiki/Star_Wars:_The_Deckbuilding_Game) 
+### [Star Wars: The Deckbuilding Game](https://en.wikipedia.org/wiki/Star_Wars:_The_Deckbuilding_Game)
 
 > Star Wars is a deckbuilding game released by Fantasy Flight Games and Asmodee.Each player controls a base that represent that player's life pool, and is able to obtain another base if theirs is destroyed. The object is to destroy three bases to win the game, which is achieved by attacking the opposing player.On their turn, a player uses the resources from the five cards in their hand to obtain new cards from a central "galaxy row", which contains cards of the Empire and Rebel factions. The player may only select from cards of their faction, and the galaxy row is reconstituted with cards from the "galaxy deck".One innovate game mechanic is the ability of a player to attack cards still in the galaxy row before they have been obtained by other players, known as sabotage for the Rebel faction and bounty hunting for the Empire faction. These provide a reward to the player taking that action, and also deny other players from obtaining targeted cards.Throughout the game, a Force meter records the balance in The Force, which may alter the effect of cards in favour of a particular faction.
 
@@ -2870,7 +2870,7 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 
 > With the help of Dwarf Cards, the players are assigned their role: either miner or saboteur. The roles are kept secret until the end of the round. As miners, they are hunting for gold. The miners are trying to build an uninterrupted path from the Start Card to a Goal Card, while the saboteurs are trying to prevent this. They shouldn't try to be too obvious about it, however, lest they be immediately discovered.
 >
-> The Start Card and the three Goal Cards are placed face-down onto the table, each seven cards away from the start and one card between each Goal Card. The gold is on one of the Goal Cards, but nobody knows which. Players have cards in hand. On a player's turn, they must do one of three things: place a Path Card into the mine, play an Action Card in front of a player, or pass. Action Cards can be placed in front of any player, including oneself. 
+> The Start Card and the three Goal Cards are placed face-down onto the table, each seven cards away from the start and one card between each Goal Card. The gold is on one of the Goal Cards, but nobody knows which. Players have cards in hand. On a player's turn, they must do one of three things: place a Path Card into the mine, play an Action Card in front of a player, or pass. Action Cards can be placed in front of any player, including oneself.
 >
 > Action Cards let the players help or hinder one another, as well as obtain information about the Goal Cards. Once a player places a Path Card that reaches the gold, the round is over. The miners have won and would receive cards with gold pieces as their reward. The round is also over if the gold could not be reached. In that case, the saboteurs have won and would receive the gold pieces.
 >
@@ -2937,4 +2937,4 @@ Superfight is a game where you argue with your friends over ridiculous fights. T
 
 Contributions are welcome and encouraged! Read the [contribution guidelines][contrib-guide] first.
 
-[contrib-guide]: contributing.md
+[contrib-guide]: https://github.com/edm00se/awesome-board-games/blob/a3ded6b198af71cc3bb38e9c6a359610598e0ac0/contributing.md

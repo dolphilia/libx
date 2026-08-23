@@ -6,7 +6,7 @@ licenseSource: "github-MartinMiles-Awesome-Sitecore-readme-md"
 
 # Awesome Sitecore [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="sitecore-logo.png" align="right" width="80">](https://sitecore.com)
+[<img src="https://raw.githubusercontent.com/MartinMiles/Awesome-Sitecore/43875b6ed81227a65fe6b08f91a54f60b30c718b/sitecore-logo.png" align="right" width="80">](https://sitecore.com)
 
 > A curated list of Sitecore-related projects on GitHub. Please contribute!
 
@@ -42,7 +42,7 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 - [JAMstack](#jamstack)
 - [JSS](#jss)
 - [Headless](#headless)
-- [Helix](#helix) 
+- [Helix](#helix)
 - [Icons](#icons)
 - [Integration](#integration)
 - [Item Resource Files](#item-resource-files)
@@ -52,19 +52,19 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 - [Marketplace](#marketplace)
 - [Media](#media)
 - [NET Core Headless](#net-core-headless)
-- [ORM](#orm) 
+- [ORM](#orm)
 - [Other](#other)
 - [Packaging](#packaging)
 - [Pipelines](#pipelines)
 - [Publishing](#publishing)
 - [Rules](#rules)
 - [SDK](#sdk)
-- [Security](#security) 
-- [SEO](#seo) 
-- [Serialization](#serialization) 
+- [Security](#security)
+- [SEO](#seo)
+- [Serialization](#serialization)
 - [Sitecore Host](#sitecore-host)
-- [Sitecore Search](#sitecore-search) 
-- [Sitecore Send](#sitecore-send) 
+- [Sitecore Search](#sitecore-search)
+- [Sitecore Send](#sitecore-send)
 - [SPE (Sitecore PowerShell Extension)](#spe-sitecore-powershell-extension)
 - [SPEAK](#speak)
 - [SXA (Sitecore Experience Accelerator)](#sxa-sitecore-experience-accelerator)
@@ -72,12 +72,12 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 - [Templates](#templates)
 - [Tooling](#tooling)
 - [Universal Tracker](#universal-tracker)
-- [WebApi](#webapi) 
+- [WebApi](#webapi)
 - [Workflows](#workflows)
 - [xConnect and xDB](#xconnect-and-xdb)
 - [XM Cloud](#xm-cloud)
 
-> Please note, **Awesome Sitecore** list only classifies and reviews useful GitHub repositories you may benefit from. 
+> Please note, **Awesome Sitecore** list only classifies and reviews useful GitHub repositories you may benefit from.
 >
 > If you're looking for a more comprehensive list of articles, blog posts, videos, and Q'n'A please refer to the [Sitecore Link](https://Sitecore.Link) knowledge base.
 
@@ -188,10 +188,10 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 - [Sitecore spatial geojson polygons](https://github.com/josedbaez/sitecore-spatial-geojson-polygons) - Implementation of a Linq extension to be able to query on points that intercept GeoJson polygons in Solr indexes. The demo provides a template with the spatial field, a couple of sample items with polygons from OpenStreetMap that cover some cities; and a controller rendering that reads lat and long from the query string and returns the polygon of the item found (e.g. Big Ben's coordinates return London).
 - [Sitecore Solr Schema](https://github.com/konabos/solr-sitecore-schema) - Sitecore configsets (schema) for Solr 8.1.1 and 8.4.0.
 - [Search Index Builder](https://github.com/jermdavis/SearchIndexBuilder) - A tool for rebuilding search indexes from outside the Sitecore web app especially good for very long-running builds.
-- [SolrCloud Install Scripts](https://github.com/jermdavis/SolrCloud-Helpers) - PowerShell scripting library to help with installing SolrCloud clusters on Windows. 
+- [SolrCloud Install Scripts](https://github.com/jermdavis/SolrCloud-Helpers) - PowerShell scripting library to help with installing SolrCloud clusters on Windows.
 - [Docker SolrCloud for Sitecore 10](https://github.com/jermdavis/Sitecore-SolrCloud-Docker) - Creates a SolrCloud container that can be used with a Sitecore 10 instance under Docker. The files have been adjusted from the Solr container files in the Sitecore Docker examples repo. The default "solr" service Sitecore provides can be replaced using these files.
 - [Sitecore SolrProxy](https://github.com/Antonytm/Sitecore.SolrProxy) - Tool for easy access to the Solr admin console if you have access only to Sitecore CM.
-- [Common Sitecore ContentSearch extensions](https://github.com/LaubPlusCo/LaubPlusCo.Common.ContentSearch) - Common extensions to Sitecore contentSearch; hereunder PopulateSolrSchema pipeline processors to ensure that all installed languages in Sitecore are added to the solr managed schema. 
+- [Common Sitecore ContentSearch extensions](https://github.com/LaubPlusCo/LaubPlusCo.Common.ContentSearch) - Common extensions to Sitecore contentSearch; hereunder PopulateSolrSchema pipeline processors to ensure that all installed languages in Sitecore are added to the solr managed schema.
 - [Sitecore Computed Search](https://github.com/martinrayenglish/Sitecore-Computed-Search) - An index search development accelerator that allows developers to declare computed search fields on an index that can capture and store targeted field values of items within a scope as well as the field values of items based on specific templates that are part of its presentation. In addition, specific weights can be applied to these computed fields using search boosting so that content-matching search terms can be promoted in search results.
 - [sitecore-azure-search-compat](https://github.com/richardszalay/sitecore-azure-search-compat) - Compatibility patch for Sitecore + Azure Search.
 
@@ -390,7 +390,7 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 
 ## Packaging
 
-- [Package Autoloader](https://github.com/JeffDarchuk/PackageAutoloader) - A tool to automatically apply a Sitecore package to hydrate some content as part of a deployment. 
+- [Package Autoloader](https://github.com/JeffDarchuk/PackageAutoloader) - A tool to automatically apply a Sitecore package to hydrate some content as part of a deployment.
 - [Sitecore.Ship](https://github.com/kevinobee/Sitecore.Ship) - A lightweight means to install Sitecore Update packages via HTTP requests.
 - [UpdatePackageInstaller](https://github.com/HedgehogDevelopment/UpdatePackageInstaller) - Installs update packages in Sitecore from the command line.
 - [Sitecore Package Deployer](https://github.com/HedgehogDevelopment/SitecorePackageDeployer) - Uses a Sitecore Job to automatically deploy update packages from a file system folder on the Sitecore server.
@@ -406,7 +406,7 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 - [Scheduled Publishing](https://github.com/HedgehogDevelopment/SCScheduledPublishing) - Gives the content editor the option to delay the publishing of an item for a future point in time.
 - [AdvancedPublishDialog](https://github.com/Sitecore/AdvancedPublishDialog) - An enhanced standard publish dialog.
 - [Publishing Service Azure Templates](https://github.com/coreyasmith/sitecore-publishing-service-azure-templates) - ARM templates to install the Sitecore Publishing Service in your Sitecore Azure PaaS environment and scripts to create the necessary Web Deployment Packages.
-- [SIF scripts to install Publishing Service](https://github.com/KayeeNL/sitecore-sif-autoinstall-publishingservice) - Powershell scripts that both use the Sitecore Install Framework (SIF) to auto-install the Publishing Service & auto-install the Publishing Module on top of the ContentManagement instance or StandAlone instance. 
+- [SIF scripts to install Publishing Service](https://github.com/KayeeNL/sitecore-sif-autoinstall-publishingservice) - Powershell scripts that both use the Sitecore Install Framework (SIF) to auto-install the Publishing Service & auto-install the Publishing Module on top of the ContentManagement instance or StandAlone instance.
 - [Publish Viewer](https://github.com/mikeedwards83/Glass.PublishViewer) - Allows you to monitor the publishing queue on the Sitecore Publishing CM Server, see their current status, and cancel publishing jobs if required (ie. time queued, time publish job started, duration in the queue, number of items published, average time to publish an item, all messages from the published job).
 - [Sitecore Power Publish](https://github.com/robhabraken/sitecore-power-publish) - Publish button that forces the item being published, regardless of the state of the Publishable option on the Item tab in the Publish restriction. 1) This function will not publish linked pages in your site that are not published, but only resources like media library items and data sources used in item fields, as those are needed to display the item you want to publish correctly. This method even publishes the templates and layouts used by the current item, if that's not done yet. 2) Unpublish button enables you to unpublish an item with a single click. It will change the Publish Restrictions as it unchecks the Publishable option on the Item tab and publishes the item after that, using a full Republish without Subitems. 3) The Publishing State button shows the publishing state for all publishing targets. If a publishing target is up-to-date, a green dot is shown. If the item is published to a publishing target, but the item has changed afterward, an orange dot is shown (so it's published, but not up-to-date). If the current item is not present in a publishing target at all, a red dot is shown. This function enables the content editor to check in detail if the content is published or not, for every publishing target.
 
@@ -464,7 +464,7 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 ## Sitecore Search
 
 - [Sitecore Search Starter Kit](https://github.com/Sitecore/Sitecore-Search-TS-SDK-Starter-Kit) - A website example This repository has an example implementation of a content website using the Sitecore Search JS SDK integrating with Sitecore Search services with the supports of event tracking.
-  
+
 ## Sitecore Send
 
 - [Sitecore Send Postman Collection](https://github.com/neilkillen/SitecoreSendPostmanCollection) - A postman collection derived from converting the Sitecore Send API Blueprint specification to Open API for use within Postman.
@@ -546,4 +546,3 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 - [Sitecore GraphQL Import](https://github.com/jbluemink/Sitecore-GraphQL-Import) - A console app showcases various capabilities of the Sitecore GraphQL API, such as retrieving Sitecore items, obtaining a list of websites, inserting sample items, and uploading media files.
 - [Verticals](https://github.com/Sitecore/Sitecore.Demo.XMCloud.Verticals) - A headless multi-site solution focused on XM Cloud content and site management capabilities. Includes easily customizable sample sites for select industries.
 - [Node XM Cloud Proxy](https://github.com/Sitecore/jss/tree/release/22.0.0/packages/create-sitecore-jss/src/templates/node-xmcloud-proxy) - Node proxy application enables backend functionality and features equivalent to those in our Next.js starter kit for XM Cloud. Was introduced to support the new Angular starter kit. This proxy is designed to work with all SPA frameworks and can also be used to run React and Vue applications, laying the groundwork for future JSS starter kits built for other front-end JavaScript frameworks.
-

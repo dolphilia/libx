@@ -11,7 +11,7 @@ licenseSource: "github-phillipadsmith-awesome-github-readme-md"
 
 Think GitHub is awesome? Contribute something to this list! It's easy, just have a look at the [contribution guidelines](https://github.com/phillipadsmith/awesome-github/blob/5c1e4512c3ea30d4e66d784abb4c3b5925244ec5/CONTRIBUTING.md).
 
-The awesomeness is currently organized into just a few different buckets: 
+The awesomeness is currently organized into just a few different buckets:
 
 * [Infomation for people who are new to GitHub](#infomation-for-people-who-are-new-to-github)
 * [Resources for those already familiar with GitHub](#resources-for-those-already-familiar-with-github)
@@ -32,7 +32,7 @@ The inspiration for this list came from [a session proposal](http://phillipadsmi
 ## Infomation for people who are new to GitHub
 - [Code School's Try Git](https://try.github.io/levels/1/challenges/1) - If you'd like to better understand Git, one of the technologys that makes GitHub possible, this is a great place to start. No GitHub account required.
 - [Git-it](https://github.com/jlord/git-it) -- :computer: :mortar_board: A workshopper for learning Git and GitHub.
-- [On-Demand GitHub Training](https://services.github.com/on-demand/) - Self-paced, interactive projects created and maintained by GitHub's own Training team. 
+- [On-Demand GitHub Training](https://services.github.com/on-demand/) - Self-paced, interactive projects created and maintained by GitHub's own Training team.
 - [Bingo Board](https://github.com/muan/bingo-board) -- Play bingo :boom: by sending pull requests!
 - [Writing on GitHub](https://help.github.com/articles/writing-on-github/) - GitHub's own guide to using GitHub for more than just software development.
 - [GitHubGuides](https://www.youtube.com/user/GitHubGuides) - GitHub Training & Guides on YouTube.
@@ -59,7 +59,7 @@ great software, presented by GitHub. October 1 & 2, 2015, SF.
 - [Atom](https://github.com/blog/2031-announcing-atom-1-0) - Did you know that GitHub makes an editor? Use it to write, code, and more.
 - [Electron](http://electron.atom.io/) - Build cross platform desktop apps with web technologies
 - [GitHub Buttons](https://ghbtns.com/) - Showcase your GitHub repo's success with hotlinkable GitHub star, fork, or follow buttons.
-- [Resume](http://resume.github.io/) - Resumes generated using GitHub. 
+- [Resume](http://resume.github.io/) - Resumes generated using GitHub.
 - [Speaker Deck](https://speakerdeck.com/) - Share Presentations without the Mess, by GitHub.
 - [Blocks](http://bl.ocks.org/) - This is a simple viewer for code examples hosted on GitHub Gist. (Introduction is [here](http://bost.ocks.org/mike/block/))
 - [Block Builder](http://blockbuilder.org/) - Quickly create, edit, and fork D3.js examples
@@ -70,14 +70,14 @@ great software, presented by GitHub. October 1 & 2, 2015, SF.
 - [GitHub Integrations Directory](https://github.com/integrations) - Use your favorite tools with GitHub.
 - [GitHub Cheat Sheet](https://github.com/tiimgreen/github-cheat-sheet) - Use this list to test your GitHub knowledge. (A resource so good, it's worth mentioning twice.)
 - [A collection of awesome browser extensions for GitHub.](https://github.com/stefanbuck/awesome-browser-extensions-for-github) - Well, the link kinda' says it all.
-- [Gitter](https://gitter.im/) - Chat, for GitHub. Unlimited public rooms and one-to-one chats, free. 
+- [Gitter](https://gitter.im/) - Chat, for GitHub. Unlimited public rooms and one-to-one chats, free.
 - [Zenhub](https://www.zenhub.com/) - Project management inside of GitHub, including kanban boards and more.
 - [HuBoard](https://huboard.com/) - Instant project management for your GitHub issues (sadly, no free plan, but appears to be [open source](https://github.com/huboard/huboard-web))
 - [Overv.io](https://overv.io/) - Agile project management for teams who love GitHub. Kanban baords and more.
 - [Penflip](https://www.penflip.com/) - Collaborative writing and version control, powered by GitLab (similar to GitHub).
 - [Gitbook](https://www.gitbook.com/) - A modern publishing toolchain. Simply taking you from ideas to finished, polished books.
-- [Prose](http://prose.io/#about) - Prose provides a beautifully simple content authoring environment for [CMS-free websites](https://developmentseed.org/blog/2012/07/27/build-cms-free-websites/). It's a web-based interface for managing content on GitHub. 
-- [Redliner](https://github.com/benbalter/redliner) - A tool for facilitating the redlining of documents with the GitHub uninitiated. 
+- [Prose](http://prose.io/#about) - Prose provides a beautifully simple content authoring environment for [CMS-free websites](https://developmentseed.org/blog/2012/07/27/build-cms-free-websites/). It's a web-based interface for managing content on GitHub.
+- [Redliner](https://github.com/benbalter/redliner) - A tool for facilitating the redlining of documents with the GitHub uninitiated.
 - [Gatekeeper](https://github.com/prose/gatekeeper) - Enables client-side applications to dance OAuth with GitHub.
 - [github-secret-keeper](https://github.com/HenrikJoreteg/github-secret-keeper) - Microservice to enable GitHub login for multiple server-less applications.
 - [Hub](https://github.com/github/hub) - A command line tool that wraps git in order to extend it with extra features and commands that make working with GitHub easier.
@@ -106,4 +106,4 @@ great software, presented by GitHub. October 1 & 2, 2015, SF.
 - [Clef's Handbook](https://github.com/clef/handbook) - An employee handbook built for inclusion.
 - [The United States Code](https://github.com/divegeek/uscode) - The complete United States Code.
 - [Le code civil français sous git](https://github.com/steeve/france.code-civil) - French Civil Code on GitHub.
-- [Gitron](https://gitron.herokuapp.com) - A web game about GitHub based on Tron movies. 
+- [Gitron](https://gitron.herokuapp.com) - A web game about GitHub based on Tron movies.

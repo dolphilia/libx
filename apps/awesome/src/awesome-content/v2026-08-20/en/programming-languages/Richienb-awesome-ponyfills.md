@@ -5,7 +5,7 @@ licenseSource: "github-Richienb-awesome-ponyfills-readme-md"
 ---
 
 <div align="center">
-  <img src="media/Title.svg"/>
+  <img src="https://raw.githubusercontent.com/Richienb/awesome-ponyfills/303996852d98f5ae70c64ed91598671680691ef0/media/Title.svg"/>
   <br>
   <a href="https://awesome.re">
 	  <img src="https://awesome.re/badge-flat.svg" alt="Awesome">

@@ -5,7 +5,7 @@ licenseSource: "github-AllThingsSmitty-css-protips-readme-md"
 ---
 
 <div align="center">
-  <img src="./assets/img/bulb.svg" width="200" alt="light bulb icon">
+  <img src="https://raw.githubusercontent.com/AllThingsSmitty/css-protips/e95123993037bbcd1bd97170cfa02087155c3690/assets/img/bulb.svg" width="200" alt="light bulb icon">
 </div>
 
 # CSS Protips [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)

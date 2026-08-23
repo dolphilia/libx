@@ -8,7 +8,7 @@ licenseSource: "github-PatrickJS-awesome-angular-readme-md"
 
 <p align="center">
   <a href="https://patrickjs.com" target="_blank">
-    <img src="/media/new/awesome-angular.png" alt="Awesome Angular" />
+    <img src="https://raw.githubusercontent.com/PatrickJS/awesome-angular/842ffeb75fe2cd4a11dc515a7e890e3db8cbe29d/media/new/awesome-angular.png" alt="Awesome Angular" />
   </a>
 </p>
 
@@ -18,7 +18,7 @@ This is the Awesome list of the Angular framework, and it contains intriguing li
 
 > Repo maintained by [@jdegand](https://github.com/jdegand) and [@patrickjs](https://github.com/patrickjs)
 
-Current Angular version: [![npm version](https://badge.fury.io/js/%40angular%2Fcore.svg)](https://www.npmjs.com/~angular)  
+Current Angular version: [![npm version](https://badge.fury.io/js/%40angular%2Fcore.svg)](https://www.npmjs.com/~angular)
 
 ## Contents
 
@@ -247,7 +247,7 @@ Current Angular version: [![npm version](https://badge.fury.io/js/%40angular%2Fc
 
 ### Updating Angular
 
-* [Official website](https://angular.dev/update-guide) - Interactive guide to help you migrate from one version of Angular to another.  
+* [Official website](https://angular.dev/update-guide) - Interactive guide to help you migrate from one version of Angular to another.
 * [Official update reference](https://angular.dev/cli/update) - Use the CLI to update your project or try new Angular features by adding the `--next` flag.
 * [Official migrations reference](https://angular.dev/reference/migrations) - Angular schematics help update projects by enabling conversion to standalone components, new control flow syntax, and more.
 * [ng-morph](https://github.com/taiga-family/ng-morph) - Code mutations in your project or schematics were never easier than now.

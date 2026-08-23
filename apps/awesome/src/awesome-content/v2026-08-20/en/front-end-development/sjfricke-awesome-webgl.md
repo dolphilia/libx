@@ -6,7 +6,7 @@ licenseSource: "github-sjfricke-awesome-webgl-readme-md"
 
 # Awesome WebGL [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-[<img src="webgl_logo.png" align="right" width="175">](https://www.khronos.org/webgl/)
+[<img src="https://raw.githubusercontent.com/sjfricke/awesome-webgl/cfd85fd8e83646e9e871c471a57e286b6dcb44a6/webgl_logo.png" align="right" width="175">](https://www.khronos.org/webgl/)
 
 This is a curated list of awesome WebGL libraries, resources and much more.
 
@@ -52,7 +52,7 @@ Processing Unit (GPU).
 * [Context Loss & Preloading](https://medium.com/@mattdesl/non-intrusive-webgl-cebd176c281d#.gyc6h9mr5) - How to manage WebGL when you run into the dreaded context lost.
 * [WebGL Off the Main Thread](https://hacks.mozilla.org/2016/01/webgl-off-the-main-thread/) - How to use Web Workers in WebGL.
 * [Optimizing Scenes for Better WebGL Performance](https://www.soft8soft.com/docs/manual/en/introduction/Optimizing-WebGL-performance.html) - optimization techniques that proved to work well for creating WebGL-based interactives.
-* [First steps in WebGL](https://dev.to/aralroca/first-steps-in-webgl-385c) - Learn what WebGL is and how it works by drawing a triangle. 
+* [First steps in WebGL](https://dev.to/aralroca/first-steps-in-webgl-385c) - Learn what WebGL is and how it works by drawing a triangle.
 
 ### Blog Series
 
@@ -92,7 +92,7 @@ Processing Unit (GPU).
 > Online GLSL Editors
 >
 > NOTE: [WebGL must conform to The OpenGL ES Shading Language, Version 1.00](https://www.khronos.org/registry/webgl/specs/1.0.3/#4.3)
-> 
+>
 > [Official Specs for GLSL Version 1.00](https://www.khronos.org/registry/OpenGL/specs/es/2.0/GLSL_ES_Specification_1.00.pdf)
 >
 > [Official Specs for Open ES Version 2.0.25](https://www.khronos.org/registry/OpenGL/specs/es/2.0/es_full_spec_2.0.pdf)
@@ -103,7 +103,7 @@ Processing Unit (GPU).
 * [Shader Toy](https://www.shadertoy.com) - Most popular live editor for fragment shaders.
 * [ShaderFrog](https://shaderfrog.com/) - WebGL Shader Editor and Composer.
 * [SHDR Editor](http://shdr.bkcore.com) - Live GLSL shader editor, viewer and validator.
-* [ShaderExpo](https://anuraghazra.github.io/ShaderExpo/) - Dependency free shader editor featuring inline error logs, auto completions, models and textures loading. 
+* [ShaderExpo](https://anuraghazra.github.io/ShaderExpo/) - Dependency free shader editor featuring inline error logs, auto completions, models and textures loading.
 
 ### References
 

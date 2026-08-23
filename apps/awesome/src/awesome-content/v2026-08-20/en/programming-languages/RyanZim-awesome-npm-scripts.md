@@ -7,7 +7,7 @@ licenseSource: "github-RyanZim-awesome-npm-scripts-readme-md"
 
 # Awesome npm Scripts [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="npm-logo.png" align="right" width="150">](https://www.npmjs.com)
+[<img src="https://raw.githubusercontent.com/RyanZim/awesome-npm-scripts/33b464282adae38076e41a94e8d8dbbc55ba4597/npm-logo.png" align="right" width="150">](https://www.npmjs.com)
 
 > Everything awesome for using npm as a build tool.
 

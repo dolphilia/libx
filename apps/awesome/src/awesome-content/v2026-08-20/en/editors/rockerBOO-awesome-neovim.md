@@ -1928,4 +1928,3 @@ Have a problem a plugin can solve? Add it to the [nvim-lua wishlist](https://git
 - [Neovim Cheatsheet](https://neovimcheatsheet.com) - Searchable, interactive cheatsheet with per-keypress search, remappable keybindings, and JSON import/export.
 
 [**⬆ back to top**](#contents)
-

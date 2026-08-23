@@ -5,7 +5,7 @@ licenseSource: "github-hackerkid-bots-readme-md"
 ---
 
 <p align="center">
-  <img src="bots3d.png" />
+  <img src="https://raw.githubusercontent.com/hackerkid/bots/daae684caaf43ce2c849d0c452710c0075ead4d0/bots3d.png" />
 </p>
 <br>
 
@@ -89,7 +89,7 @@ Table of Contents
 * [Claudia Bot Builder](https://github.com/claudiajs/claudia-bot-builder) - Create chat bots for FB, Slack, Skype and Telegram and deploy to AWS Lambda in minutes.
 * [Universal Bot Framework](https://bitbucket.org/phips28/universal-bot-framework/overview) - Create crossplatform chat bots for FB Messenger, Kik, Telegram and Skype with just one logic.
 * [Pandorabots](http://www.pandorabots.com/) - web service for building and deploying chatbots.
-* [Microsoft Bot Framework](http://docs.botframework.com) - Node.js/.NET library for building, connecting, testing, and deploying powerful and intelligent bots. 
+* [Microsoft Bot Framework](http://docs.botframework.com) - Node.js/.NET library for building, connecting, testing, and deploying powerful and intelligent bots.
 * [Bottender](https://github.com/Yoctol/bottender) - Make Bots in Your Way, Fast and Flexibly.
 * [BotMan](https://github.com/botman/botman) - PHP Bot Framework supporting over a dozen platforms (FB, Instagram, MS Bot Framework, etc)
 

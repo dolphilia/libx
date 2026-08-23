@@ -4,11 +4,11 @@ description: "Canonical snapshot of notpresident35/awesome-learn-gamedev"
 licenseSource: "github-notpresident35-awesome-learn-gamedev-readme-md"
 ---
 
-[<img src="images/MainIcon.png" align="right" width="128">](https://en.wikipedia.org/wiki/Easter_egg_(media))
+[<img src="https://raw.githubusercontent.com/notpresident35/awesome-learn-gamedev/28e61535a7180f0174242ce0980d9337a7328a02/images/MainIcon.png" align="right" width="128">](https://en.wikipedia.org/wiki/Easter_egg_(media))
 
 # Awesome Learn Gamedev [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> A Mega-List of Learning Resources for Game Creators 
+> A Mega-List of Learning Resources for Game Creators
 
 <p>
 
@@ -57,7 +57,7 @@ Got resources? Notice a broken link? Email me, shoot me a DM, or make a pull req
 
 ## About
 
-This list is aimed at learning the craft of game development. It has been curated to offer general knowledge, resources, and hiring advice for the variety of disciplines and roles under the gamedev umbrella. 
+This list is aimed at learning the craft of game development. It has been curated to offer general knowledge, resources, and hiring advice for the variety of disciplines and roles under the gamedev umbrella.
 
 Nearly all resources are free, and anything with a price tag will be clearly marked. Paid resources are only included if they have been personally endorsed by an industry professional working in the relevant discipline.
 
@@ -79,7 +79,7 @@ Disclaimer: I'm a technical artist and gameplay programmer, so most resources ar
 
 <br />
 
-## General 
+## General
 
 <br />
 
@@ -98,7 +98,7 @@ Disclaimer: I'm a technical artist and gameplay programmer, so most resources ar
 [GameDev Contacts](https://web.archive.org/web/20250130103712/https://docs.google.com/spreadsheets/d/e/2PACX-1vRYveFAl_GuvBo0iuy3EvgPm0fWAGci-Z8e5CZ6hoYz9n8gcoK4dgE0RML-x0pWqRNjGqte-V7phtqB/pubhtml) 🟪 - A huge list of professional game developers you can contact for advice! Be courteous - these are real people! Curated by Joe Hobbs - @JLHGameArt on Twitter.
 
 
-[MIT Open Courseware](https://ocw.mit.edu/) 💠🟪 - classes and materials from MIT (free to access)! 
+[MIT Open Courseware](https://ocw.mit.edu/) 💠🟪 - classes and materials from MIT (free to access)!
 
 
 [Game Design Stuff](https://www.youtube.com/watch?v=Pb5oIIPO62g&list=PLZQDJJp3vTmB6awcmhFc9V6HG2bd9vofo&index=58) - Another mega-list of game development videos (primarily aimed at game design and programming)
@@ -107,7 +107,7 @@ Disclaimer: I'm a technical artist and gameplay programmer, so most resources ar
 [FOSS GameDev](https://docs.google.com/document/u/0/d/1HMtvSenYvd9SN58gTmRNs-FqiHhbnnVgkMEV5mqKKaQ/mobilebasic) - A list of Free and Open Source Software for every aspect of gamedev
 
 
-[VGDC at UCI Resources](https://docs.google.com/document/d/1yGzqp1Cq8emRasH0JHYMXE4-Z6xYxQ0GDe6ZyemctVM/edit) - A list of workshops and resources from the Video Game Development Club at the University of California, Irvine () 
+[VGDC at UCI Resources](https://docs.google.com/document/d/1yGzqp1Cq8emRasH0JHYMXE4-Z6xYxQ0GDe6ZyemctVM/edit) - A list of workshops and resources from the Video Game Development Club at the University of California, Irvine ()
 
 More huge lists of resources, with many, many more incredible things! Some of these are older, so beware broken links and the like. 🟪
 - [Game Industry Resources](https://docs.google.com/document/d/1G0YTvNM8pzqjy_paxvEyVQSfb7KAJFGxJ5fY2ui8FEI/edit)
@@ -125,7 +125,7 @@ More huge lists of resources, with many, many more incredible things! Some of th
 
 <br />
 
-## Programming 
+## Programming
 
 <br />
 
@@ -142,19 +142,19 @@ More huge lists of resources, with many, many more incredible things! Some of th
 [How Game Engines Work](https://interestingengineering.com/innovation/how-game-engines-work) 💠 - A blog and video explaining the game engine, or a tool/framework used to create games.
 
 
-[Complete Godot 4 Game Deveoper by GameDev.tv](https://www.gamedev.tv/p/godot-complete-2d/?coupon_code=BLIMEY) 💠🟪 - A fantastic way to learn Godot, a free and open source game engine. Gamedev.tv are an invaluable resource for learning game engines and tools, and I cannot recommend their courses enough. They are more than worth the $15.  
+[Complete Godot 4 Game Deveoper by GameDev.tv](https://www.gamedev.tv/p/godot-complete-2d/?coupon_code=BLIMEY) 💠🟪 - A fantastic way to learn Godot, a free and open source game engine. Gamedev.tv are an invaluable resource for learning game engines and tools, and I cannot recommend their courses enough. They are more than worth the $15.
 
 
 [Unreal Engine 5 C++ Developer](https://www.udemy.com/course/unrealcourse/) 💠🟪 - Same as above, but with Unreal 5, a popular and powerful game engine. This course is invaluable - I know several full-time developers who learned from gamedev.tv, they are a gem. Wait for it to go on sale, then go pick this up.
 
 
-[Complete Unity Game Developer by GameDev.tv](https://www.udemy.com/course/unitycourse2/) - Unity has been a long-standing champion in the industry, particularly in the mobile/AR/VR space. Despite this, I would be cautious recommending it over other options, in part because of technical details such as its closed source and slow development, and in part due to poor business practices on behalf of Unity Technologies, such as the now-revoked install-based pricing model and their involvement in defense contracting.   
+[Complete Unity Game Developer by GameDev.tv](https://www.udemy.com/course/unitycourse2/) - Unity has been a long-standing champion in the industry, particularly in the mobile/AR/VR space. Despite this, I would be cautious recommending it over other options, in part because of technical details such as its closed source and slow development, and in part due to poor business practices on behalf of Unity Technologies, such as the now-revoked install-based pricing model and their involvement in defense contracting.
 
 
  [Intro to Computer Science and Programming in Python](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/) 💠 - An introductory python course taught at MIT (free to access!)
 
 
-[Programming in C++ as a Second Language](https://web.archive.org/web/20220604184602/https://www.ics.uci.edu/~thornton/ics45c/Schedule.html) 🟪 - Lecture notes, assignments, and materials from a course on C++ taught at the University of California, Irvine (free to access!) 
+[Programming in C++ as a Second Language](https://web.archive.org/web/20220604184602/https://www.ics.uci.edu/~thornton/ics45c/Schedule.html) 🟪 - Lecture notes, assignments, and materials from a course on C++ taught at the University of California, Irvine (free to access!)
 
 
 [Data Structure Implementation and Analysis](https://web.archive.org/web/20220405031903/https://www.ics.uci.edu/~thornton/ics46/Schedule.html) 🟪 - Lecture notes, assignments, and materials from a course on data structures and algorithms taught at the University of California, Irvine (free to access!)
@@ -217,7 +217,7 @@ More huge lists of resources, with many, many more incredible things! Some of th
 [Tool Dev](https://www.youtube.com/watch?v=pZ45O2hg_30&list=PLImQaTpSAdsBKEkUvKxw6p0tpwl7ylw0d) 💠🟪 - An introduction to tool development (or creating tools to make game development more productive) and editor scripting in Unity by Freya Holmér.
 
 
-[Dive Into Systems](https://diveintosystems.org) - A free textbook on computer systems and C programming. 
+[Dive Into Systems](https://diveintosystems.org) - A free textbook on computer systems and C programming.
 
 
 [Gamedev in Rust for Beginners](https://arewegameyet.rs/#resources) - A collection of books, tutorials, articles, and a community to boot.
@@ -279,7 +279,7 @@ More huge lists of resources, with many, many more incredible things! Some of th
 [Graphics](https://guerilla-tactics.com/hats/graphics/) 💠🟪 - A Megalist of Graphics Programming and Tech Art resources.
 
 
-[How do I become a graphics programmer?](https://gpuopen.com/learn/how_do_you_become_a_graphics_programmer/) 💠🟪 - An overview of graphics programming and a collection of resources tailored to beginners learning graphics programming. 
+[How do I become a graphics programmer?](https://gpuopen.com/learn/how_do_you_become_a_graphics_programmer/) 💠🟪 - An overview of graphics programming and a collection of resources tailored to beginners learning graphics programming.
 
 
 [WebGLFundamentals](https://webglfundamentals.org) 💠🟪 - An introduction to WebGL, a web-based rasterization engine. WebGL is a good tool to use when learning the fundamentals before diving into more complex frameworks such as Vulkan or DirectX 12.
@@ -327,7 +327,7 @@ More huge lists of resources, with many, many more incredible things! Some of th
 ### Networking
 
 
-[Unreal Multiplayer by GameDev.tv](https://www.udemy.com/course/unrealmultiplayer/) 💠🟪 - A course on multiplayer and networking in Unreal. Wait for it to go on sale, then go pick this up. 
+[Unreal Multiplayer by GameDev.tv](https://www.udemy.com/course/unrealmultiplayer/) 💠🟪 - A course on multiplayer and networking in Unreal. Wait for it to go on sale, then go pick this up.
 
 
 [Unity Multiplayer by GameDev.tv](https://www.udemy.com/course/unity-multiplayer/) 💠🟪 - A course on multiplayer and networking in Unity. Wait for it to go on sale, then go pick this up.
@@ -407,7 +407,7 @@ Part 1](https://0fps.net/2014/02/10/replication-in-networked-games-overview-part
 <br />
 
 
-### Shaders 
+### Shaders
 
 
 [Shaders for Game Devs](https://www.youtube.com/watch?v=kfM-yu0iQBk&list=PLImQaTpSAdsCnJon-Eir92SZMl7tPBS4Z) 💠🟪 - An introduction to HLSL Shaders using Unity by Freya Holmér.
@@ -447,7 +447,7 @@ Part 1](https://0fps.net/2014/02/10/replication-in-networked-games-overview-part
 
 [Stop Staring: Facial Modeling and Animation Done Right](https://www.amazon.com/Stop-Staring-Facial-Modeling-Animation/dp/0470609907) - A book on facial modeling, animation, and rigging. Fair warning: this is $80 new. I would recommend getting it used, if possible.
 
-[Mastering Rigging and Python Scripting in Maya](https://www.thegnomonworkshop.com/tutorials/master-rigging-python-scripting-in-maya) - A course from Gnomon, a well-known art university. Fair warning: first 2 hours of content within 7 days are free, but then a subscription costs $54 per month. 
+[Mastering Rigging and Python Scripting in Maya](https://www.thegnomonworkshop.com/tutorials/master-rigging-python-scripting-in-maya) - A course from Gnomon, a well-known art university. Fair warning: first 2 hours of content within 7 days are free, but then a subscription costs $54 per month.
 
 
 <br />
@@ -623,7 +623,7 @@ Royalty Free Game Art! Don't forget to check the license.
 [Game Accessibility Guidelines](https://gameaccessibilityguidelines.com/) 🟪 - A list of accessibility features, organized by implementation difficulty. Also includes testimonials for each feature and the impact it makes on people, as well as best practice examples and implementation resources (tools, guides, etc) where available.
 
 
-[Game Design](https://ocw.mit.edu/courses/cms-608-game-design-fall-2010/) 💠🟪 - A Game Design class taught at MIT (free to access!) 
+[Game Design](https://ocw.mit.edu/courses/cms-608-game-design-fall-2010/) 💠🟪 - A Game Design class taught at MIT (free to access!)
 
 
 [How to make a Game Design Document](https://www.gamedesigning.org/learn/game-design-document/) - A tutorial on writing Game Design Documents (GDDs).
@@ -680,7 +680,7 @@ Royalty Free Game Art! Don't forget to check the license.
 [Quake Mapping Tips](https://www.slipseer.com/index.php?threads/bals-quake-mapping-tips-tricks.100/) - Tips and tricks for Trenchbroom and Quake mapping.
 
 
-[Tiled](https://www.mapeditor.org/) - A free and open source map editor 
+[Tiled](https://www.mapeditor.org/) - A free and open source map editor
 
 
 <br />
@@ -732,17 +732,17 @@ Royalty Free Game Art! Don't forget to check the license.
 
 <br />
 
-## Audio 
+## Audio
 
 <br />
 
-[Game Audio Learning Resources](https://docs.google.com/spreadsheets/d/1fcuhGEesLC_PWCwY3dIwLgF774sKswOwIcZECWiH7Xo/edit#gid=0) 💠🟪 - A megalist of game audio learning resources! 
+[Game Audio Learning Resources](https://docs.google.com/spreadsheets/d/1fcuhGEesLC_PWCwY3dIwLgF774sKswOwIcZECWiH7Xo/edit#gid=0) 💠🟪 - A megalist of game audio learning resources!
 
 
 [The Sound Effects Bible](https://postproduciendoenlaeav.files.wordpress.com/2017/09/the-sound-effects-bible-ric-viers.pdf) 🟪 - A book on everything sound effects.
 
 
-[Another list of resources!](https://twitter.com/chiragmachhar/status/1511446337639927811) 🟪 - [Archived PDF](https://github.com/notpresident35/awesome-learn-gamedev/blob/28e61535a7180f0174242ce0980d9337a7328a02/archives/twitter/chiragmachharThread.pdf). 
+[Another list of resources!](https://twitter.com/chiragmachhar/status/1511446337639927811) 🟪 - [Archived PDF](https://github.com/notpresident35/awesome-learn-gamedev/blob/28e61535a7180f0174242ce0980d9337a7328a02/archives/twitter/chiragmachharThread.pdf).
 
 
 [SFXR](https://sfxr.me/) - A great program for generating simple sound effects.
@@ -751,7 +751,7 @@ Royalty Free Game Art! Don't forget to check the license.
 [Beep Box](https://www.beepbox.co/) - A simple but fun web-based music program.
 
 
-[Bosca Ceoil](https://boscaceoil.net/) - A very simplistic and limited but fast, free, and fun audio program for chiptune music! 
+[Bosca Ceoil](https://boscaceoil.net/) - A very simplistic and limited but fast, free, and fun audio program for chiptune music!
 
 
 [GDC Freebies](https://sonniss.com/gameaudiogdc#1605030813191-c5a1f3d0-8baf) - Royalty free SFX samples from GDC.
@@ -765,7 +765,7 @@ Royalty free music! Don't forget to check the license.
 <br />
 
 
-## Writing 
+## Writing
 
 <br />
 
@@ -829,7 +829,7 @@ Royalty free music! Don't forget to check the license.
 [Blog by Derek Lieu](https://www.derek-lieu.com/blog/) 🟪 - A blog by Derek Lieu with advice on game trailers. I personally recommend "Show the Dream, Not the Job" and "Video Game Trailer Specifications" as starting points.
 
 
-[The Game Developer's Guide to Publishing Agreements](https://deviantlegal.com/guide/game-developers-guide-publishing-agreements/) 🟪 - An introduction to games contract law by René Otto, written primarily for developers seeking to work with publishers. 
+[The Game Developer's Guide to Publishing Agreements](https://deviantlegal.com/guide/game-developers-guide-publishing-agreements/) 🟪 - An introduction to games contract law by René Otto, written primarily for developers seeking to work with publishers.
 
 
 [GameDiscoverCo Newsletter](https://newsletter.gamediscover.co/) - A newsletter by Simon Carless and associates on "how people discover and buy video games" and related marketing/industry topics.
@@ -899,7 +899,7 @@ Royalty free music! Don't forget to check the license.
 <br />
 
 
-## Other 
+## Other
 
 <br />
 
@@ -910,7 +910,7 @@ Royalty free music! Don't forget to check the license.
 [A series of game jam post-mortems](https://www.youtube.com/watch?v=fW88C_w3EzE&list=PLrvwNabyAw30pIbitXIHLdSTm4t9I3iT1) 💠🟪 - These are more valuable than they let on, because they show you the whole game-making process, start to finish. Not only will this help you avoid common pitfalls, it will help you know how to follow that process for your own game. Watch a couple before entering your first jam or starting your first project!
 
 
-[The California Problem](https://ellaguro.blogspot.com/2023/02/the-california-problem.html) 🟪 - One of my favorite articles ever written. A philosophical analysis of the culture of games as an industry and the importance of gamedev as a hobby, not just a business. 
+[The California Problem](https://ellaguro.blogspot.com/2023/02/the-california-problem.html) 🟪 - One of my favorite articles ever written. A philosophical analysis of the culture of games as an industry and the importance of gamedev as a hobby, not just a business.
 
 
 [So, you want to make a TTRPG?](https://thecoppercompendium.co.uk/so-you-want-to-make-a-ttrpg) 💠🟪 - A collection of resources for creating a TTRPG. Paper prototyping, anyone?
@@ -931,16 +931,16 @@ Royalty free music! Don't forget to check the license.
 [Surveillance Self-Defense](https://ssd.eff.org/en) - Tips, Tools, and Tutorials for privacy and online self-defense
 
 
-[Polyglot Gamedev](https://docs.google.com/spreadsheets/d/17f0dQawb-s_Fd7DHgmVvJoEGDMH_yoSd8EYigrb0zmM/edit#gid=296134756) - A big list of localized words across many different languages that can be used to loosely translate simple phrases such as UI buttons or tooltips. 
+[Polyglot Gamedev](https://docs.google.com/spreadsheets/d/17f0dQawb-s_Fd7DHgmVvJoEGDMH_yoSd8EYigrb0zmM/edit#gid=296134756) - A big list of localized words across many different languages that can be used to loosely translate simple phrases such as UI buttons or tooltips.
 
 
-[Tiny Tools](https://tinytools.directory/) - A collection of tiny, usually fun tools for various purposes! 
+[Tiny Tools](https://tinytools.directory/) - A collection of tiny, usually fun tools for various purposes!
 
 
 [Paul Graham](http://paulgraham.com/articles.html) - Good general advice, both for specific disciplines (particularly programming and business) and for life, from Paul Graham (founder of YCombinator).
 
 
-[Open Dyslexic](https://opendyslexic.org/) - A dyslexia-friendly, accessible font! 
+[Open Dyslexic](https://opendyslexic.org/) - A dyslexia-friendly, accessible font!
 
 
 [Is This Arabic?](https://isthatarabic.com) - A friendly guide to not borking Arabic script.
@@ -952,6 +952,5 @@ Royalty free music! Don't forget to check the license.
 </p>
 <br />
 <br />
-  
-![A cute drawing of Asriel from Undertale reaching for a heart](https://raw.githubusercontent.com/notpresident35/awesome-learn-gamedev/28e61535a7180f0174242ce0980d9337a7328a02/images/Asriel.png 'Thanks for reading!')
 
+![A cute drawing of Asriel from Undertale reaching for a heart](https://raw.githubusercontent.com/notpresident35/awesome-learn-gamedev/28e61535a7180f0174242ce0980d9337a7328a02/images/Asriel.png 'Thanks for reading!')

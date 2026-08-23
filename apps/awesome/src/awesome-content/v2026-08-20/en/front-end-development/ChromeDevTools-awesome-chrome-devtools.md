@@ -80,7 +80,7 @@ licenseSource: "github-ChromeDevTools-awesome-chrome-devtools-readme-md"
 - TypeScript/Node.js: [Lumen](https://github.com/omxyz/lumen) - Vision-first browser agent with self-healing deterministic replay over CDP.
 - Rust: [Rust Headless Chrome](https://github.com/atroche/rust-headless-chrome/)
 - Java: [chrome-devtools-java-client](https://github.com/kklisura/chrome-devtools-java-client)
-- Java: [jvppeteer](https://github.com/fanyong920/jvppeteer)  - Headless Chrome For Java 
+- Java: [jvppeteer](https://github.com/fanyong920/jvppeteer)  - Headless Chrome For Java
 - Python: [PyCDP](https://github.com/hyperiongray/python-chrome-devtools-protocol) - Pure-Python, sans-IO wrappers. See also the [Trio CDP driver](https://github.com/hyperiongray/trio-chrome-devtools-protocol)
 - Python: [chromewhip](https://github.com/chuckus/chromewhip) - drop-in replacement for the `splash` service
 - Python: [pyppeteer](https://github.com/pyppeteer/pyppeteer) - Puppeteer port
@@ -139,7 +139,7 @@ licenseSource: "github-ChromeDevTools-awesome-chrome-devtools-readme-md"
 
 ### Web Archivers and Indexers
 - [dn](https://github.com/dosyago/dn) - Archive and index pages you browse for offline viewing and search, implemented using the `Fetch` domain's interceptions, and works with any Chromium-based browser.
-  
+
 ---
 
 ## DevTools Extensions
@@ -171,7 +171,7 @@ licenseSource: "github-ChromeDevTools-awesome-chrome-devtools-readme-md"
 ## Alumni
 Old projects, likely not maintained any longer… But still cool.
 
-- [Remote Debug Gateway](https://github.com/RemoteDebug/remotedebug-gateway) - Allows you to connect a client to multiple browsers at once.  
+- [Remote Debug Gateway](https://github.com/RemoteDebug/remotedebug-gateway) - Allows you to connect a client to multiple browsers at once.
    - Multiuser DevTools: [DevTools Remote](https://github.com/auchenberg/devtools-remote) - Remotely debug someone else's browser.
 - [DevTools Backend](https://github.com/christian-bromann/devtools-backend) - Standalone implementation of the Chrome DevTools backend to debug arbitrary web environments.
 - Python CDP driver: [pychrome](https://github.com/fate0/pychrome) - low level CDP transport handler
