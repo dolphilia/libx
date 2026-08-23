@@ -2045,3 +2045,11 @@
 - 最後に成功した検査: 定型説明監査（確定対象0文書、要確認0文書、定型化項目0件、日本語側だけの追加0件、欠落0件、レビュー済みfalse-positive 53文書）、`awesome:validate-translation`（365/365）、`awesome:publish --check`（365ページ）、Awesome関連回帰テスト15件、リポジトリ整合性検査、`git diff --check`、`apps-awesome build`（735ページ）。
 - 公開判断: 修正内容のProduction反映は未実施。別途ユーザーの公開指示を受けて実行する。
 - 次に実行する一手: なし。本修正計画の全完了条件を満たした。
+
+## 2026-08-23（日本語定型説明修正版のProduction公開）
+
+- 完了したバッチ: 日本語定型説明の全件修正を含む統合`dist`をCloudflare PagesのProductionブランチ`main`へDirect Uploadした。デプロイIDは`3dbc600b-1e0d-4a1d-bbab-94e01b8a78c6`、固有URLは`https://3dbc600b.libx.pages.dev`、公開先は`https://libx.dev`。
+- 失敗・保留理由: 未解決・保留項目はない。カスタムドメインのOKRページが固有URLと異なるハッシュになったが、CloudflareのAutomatic HTTPS Rewritesが外部リンク3件だけを`http`から`https`へ変更した結果であり、それ以外の内容は完全に一致した。
+- 最後に成功した検査: 確認付き統合ビルド、`check:deployment-assets`（2,059ファイル、230.17 MiB、最大5.80 MiB）、`test:smoke`（12/12）、Cloudflareデプロイ一覧のProduction・`main`確認、固有URLと`libx.dev`の代表ページHTTP 200、未知URL404、成果物内容照合、固有URLの`X-Robots-Tag: noindex`とカスタムドメインでの同ヘッダー不在。
+- ロールバック: 直前のProduction deployment `807217fe-adde-4f72-8ec8-b12673e66121`。
+- 次に実行する一手: なし。Production公開と公開後検証を完了した。
