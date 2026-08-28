@@ -178,18 +178,6 @@ A curated directory of Awesome lists spanning technology, science, business, cul
 - [VBA](https://github.com/sancarn/awesome-vba#readme) - An event-driven version of Visual Basic 6.0 built into most Microsoft Office apps for automation and scripting.
 - [F#](https://github.com/fsprojects/awesome-fsharp#readme) - A .NET-based language with focus on functional programming.
 
-<br>
-<hr>
-<br>
-<br>
-<a href="https://vshymanskyy.github.io/StandWithUkraine">
-	<img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg">
-</a>
-<br>
-<br>
-<hr>
-<br>
-
 ## Front-End Development
 
 - [ES6 Tools](https://github.com/addyosmani/es6-tools#readme)

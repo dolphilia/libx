@@ -178,18 +178,6 @@ licenseSource: "sindresorhus-awesome-readme"
 - [VBA](https://github.com/sancarn/awesome-vba#readme) - 自動化とスクリプト作成のためにほとんどの Microsoft Office アプリに組み込まれている Visual Basic 6.0 のイベント駆動型バージョン。
 - [F#](https://github.com/fsprojects/awesome-fsharp#readme) - 関数型プログラミングに重点を置いた .NET ベースの言語。
 
-<br>
-<hr>
-<br>
-<br>
-<a href="https://vshymanskyy.github.io/StandWithUkraine">
-	<img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg">
-</a>
-<br>
-<br>
-<hr>
-<br>
-
 ## フロントエンド開発 <a id="front-end-development"></a>
 
 - [ES6 Tools](https://github.com/addyosmani/es6-tools#readme)

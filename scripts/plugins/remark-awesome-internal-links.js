@@ -17,6 +17,31 @@ function githubRepository(url) {
   return owner && repository ? `${owner}/${repository}`.toLowerCase() : null;
 }
 
+function isExternalUrl(url) {
+  return /^https?:\/\//i.test(url);
+}
+
+function markExternalListLinks(tree) {
+  visit(tree, 'listItem', (listItem) => {
+    visit(listItem, 'link', (link) => {
+      if (!isExternalUrl(link.url)) return;
+
+      const data = (link.data ??= {});
+      const hProperties = (data.hProperties ??= {});
+      const className = Array.isArray(hProperties.className)
+        ? hProperties.className
+        : hProperties.className
+          ? [hProperties.className]
+          : [];
+
+      if (!className.includes('awesome-external-link')) {
+        className.push('awesome-external-link');
+      }
+      hProperties.className = className;
+    });
+  });
+}
+
 /**
  * Awesome概要にある収録済みリポジトリへのGitHubリンクを、同じ版・言語のlibxページへ変換する。
  */
@@ -46,6 +71,8 @@ export function remarkAwesomeInternalLinks(options = {}) {
 
       node.url = `${normalizedBase}/${version}/${lang}/${slug}/`;
     });
+
+    markExternalListLinks(tree);
   };
 }
 

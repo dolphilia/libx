@@ -67,3 +67,35 @@ test('概要以外のページではGitHubリンクを変更しない', () => {
 
   assert.equal(included.url, 'https://github.com/sindresorhus/awesome-nodejs#readme');
 });
+
+test('Awesome概要のリストでは外部リンクだけをアイコン表示対象にする', () => {
+  const included = link('https://github.com/sindresorhus/awesome-nodejs#readme');
+  const external = link('https://github.com/0pandadev/awesome-windows#readme');
+  const sectionLink = link('#platforms');
+  const proseLink = link('https://example.com');
+  const tree = {
+    type: 'root',
+    children: [
+      {
+        type: 'list',
+        children: [
+          {
+            type: 'listItem',
+            children: [{ type: 'paragraph', children: [included, external, sectionLink] }],
+          },
+        ],
+      },
+      { type: 'paragraph', children: [proseLink] },
+    ],
+  };
+  const transform = remarkAwesomeInternalLinks({ routes });
+
+  transform(tree, {
+    path: '/repo/apps/awesome/src/awesome-content/v2026-08-20/en/overview/sindresorhus-awesome.md',
+  });
+
+  assert.equal(included.data, undefined);
+  assert.deepEqual(external.data?.hProperties?.className, ['awesome-external-link']);
+  assert.equal(sectionLink.data, undefined);
+  assert.equal(proseLink.data, undefined);
+});
