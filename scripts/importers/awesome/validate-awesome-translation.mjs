@@ -2,9 +2,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { rootDir } from './common.mjs';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import { rootDir, snapshotVersion } from './common.mjs';
 
-const version = 'v2026-08-20';
+const version = snapshotVersion;
 const requireComplete = process.argv.includes('--require-complete');
 const contentRootOptionIndex = process.argv.indexOf('--content-root');
 const contentRoot =
@@ -26,8 +28,33 @@ function files(root) {
     .map((entry) => path.relative(root, path.join(entry.parentPath, entry.name)))
     .sort();
 }
+function markdownTokens(content) {
+  const codeTokens = [];
+  const localDestinations = [];
+  const tree = unified().use(remarkParse).parse(content);
+  function visit(node) {
+    if (node.type === 'inlineCode') codeTokens.push(node.value);
+    if (
+      (node.type === 'link' || node.type === 'image') &&
+      typeof node.url === 'string' &&
+      !/^(?:https?|ftp):\/\//i.test(node.url)
+    ) {
+      localDestinations.push(node.url);
+    }
+    for (const child of node.children ?? []) visit(child);
+  }
+  visit(tree);
+  return { codeTokens, localDestinations };
+}
 function extract(content) {
   const parsed = matter(content);
+  const isRst = /-rst$/.test(parsed.data.licenseSource ?? '');
+  const markdown = isRst
+    ? { codeTokens: [], localDestinations: [] }
+    : markdownTokens(parsed.content);
+  const rstTargets = [...parsed.content.matchAll(/`[^`]*?<((?:https?|ftp):\/\/[^>]+)>`_/g)].map(
+    (match) => match[1]
+  );
   return {
     licenseSource: parsed.data.licenseSource ?? null,
     headingLevels: [...parsed.content.matchAll(/^(#{1,6})\s+.+$/gm)].map(
@@ -45,7 +72,11 @@ function extract(content) {
         ),
       })
     ),
-    codeTokens: [...parsed.content.matchAll(/`([^`\n]+)`/g)].map((match) => match[1]),
+    rstTargets,
+    codeTokens: isRst
+      ? [...parsed.content.matchAll(/``([^`\n]+)``/g)].map((match) => match[1])
+      : markdown.codeTokens,
+    localDestinations: markdown.localDestinations,
   };
 }
 let englishPageCount = 0;
@@ -80,6 +111,10 @@ let japanesePageCount = 0;
       errors.push(`awesome: URL順序または集合が不一致です: ${file}`);
     if (JSON.stringify(en.codeTokens) !== JSON.stringify(ja.codeTokens))
       errors.push(`awesome: インラインコードが不一致です: ${file}`);
+    if (JSON.stringify(en.localDestinations) !== JSON.stringify(ja.localDestinations))
+      errors.push(`awesome: 内部リンクまたはアンカーリンクが不一致です: ${file}`);
+    if (JSON.stringify(en.rstTargets) !== JSON.stringify(ja.rstTargets))
+      errors.push(`awesome: RSTリンク先が不一致です: ${file}`);
   }
   if (requireComplete) {
     for (const file of [...englishFiles].sort()) {

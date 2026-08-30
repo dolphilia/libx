@@ -1,7 +1,13 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { notesDir, readJson, sha256, writeJsonAtomic } from './common.mjs';
+import {
+  notesDir,
+  readJson,
+  reproducibleLicenseIds,
+  sha256,
+  writeJsonAtomic,
+} from './common.mjs';
 
 const lockPath = path.join(notesDir, 'SOURCES.lock.json');
 const manifestPath = path.join(notesDir, 'SOURCE_MANIFEST.md');
@@ -9,7 +15,6 @@ const reportPath = path.join(notesDir, 'LOCK_CLOSURE_REPORT.json');
 const lock = readJson(lockPath);
 const discovery = readJson(path.join(notesDir, 'DISCOVERY_STATE.json'));
 const decisions = readJson(path.join(notesDir, 'LICENSE_DECISIONS.json'));
-const approvedLicenses = new Set(['MIT', 'CC0-1.0']);
 const errors = [];
 
 if (discovery.status !== 'completed' || discovery.queue.length !== 0)
@@ -21,7 +26,7 @@ for (const source of lock.sources) {
   if (!decision || decision.status !== source.status)
     errors.push(`ライセンス決定がロックと一致しません: ${source.sourceId}`);
   if (source.status === 'included') {
-    if (!approvedLicenses.has(source.licenseSpdx))
+    if (!reproducibleLicenseIds.has(source.licenseSpdx))
       errors.push(`未承認ライセンスがincludedです: ${source.sourceId}`);
     if (!source.licensePath || !source.licenseSha256)
       errors.push(`includedのライセンス根拠が未固定です: ${source.sourceId}`);

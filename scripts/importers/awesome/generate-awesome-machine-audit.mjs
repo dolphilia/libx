@@ -3,9 +3,16 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { notesDir, optionValue, readJson, rootDir, writeJsonAtomic } from './common.mjs';
+import {
+  notesDir,
+  optionValue,
+  readJson,
+  rootDir,
+  snapshotVersion,
+  writeJsonAtomic,
+} from './common.mjs';
 
-const version = 'v2026-08-20';
+const version = snapshotVersion;
 const check = process.argv.includes('--check');
 const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
 const englishRoot = path.join(contentRoot, 'en');
@@ -81,6 +88,7 @@ const reviewResults = fs.existsSync(resultsPath)
   ? readJson(resultsPath)
   : { schemaVersion: 1, snapshotVersion: version, reviews: [] };
 const routes = readJson(path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json'));
+routes.entries = routes.entries.filter((entry) => entry.version === version);
 const includedIds = new Set(
   lock.sources.filter((source) => source.status === 'included').map((source) => source.sourceId)
 );
@@ -89,15 +97,16 @@ const englishFiles = markdownFiles(englishRoot);
 const japaneseFiles = markdownFiles(japaneseRoot);
 const englishSet = new Set(englishFiles);
 const japaneseSet = new Set(japaneseFiles);
-const routeBySource = new Map(routes.entries.map((entry) => [entry.licenseSource, entry]));
-const pageBySource = new Map();
+const routeBySource = new Map(routes.entries.map((entry) => [entry.sourceId, entry]));
+const pageBySource = new Map(
+  routes.entries.map((entry) => [entry.sourceId, `${entry.slug}.md`])
+);
 const lockBySource = new Map(lock.sources.map((source) => [source.sourceId, source]));
 const errors = [];
 const englishResidualCandidates = [];
 
 for (const file of englishFiles) {
   const en = readPage(englishRoot, file);
-  pageBySource.set(en.data.licenseSource, file);
   if (!knownIds.has(en.data.licenseSource)) errors.push(`未知の英語出典ID: ${file}`);
   if (!includedIds.has(en.data.licenseSource)) errors.push(`included以外の英語本文: ${file}`);
   if (!japaneseSet.has(file)) errors.push(`日本語ページ欠落: ${file}`);
@@ -226,19 +235,22 @@ const englishSamples = [...englishSampleBySource.values()];
 const reviewItems = [];
 for (const entry of routes.entries) {
   const file = `${entry.slug}.md`;
+  const hasJapanesePage = japaneseSet.has(file);
+  const englishPage = readPage(englishRoot, file);
+  const japanesePage = hasJapanesePage ? readPage(japaneseRoot, file) : null;
   reviewItems.push({
-    id: `ja-${entry.licenseSource}`,
+    id: `ja-${entry.sourceId}`,
     kind: 'japanese-full-page-semantic-review',
     category: entry.categoryId,
     page: file,
-    sourceId: entry.licenseSource,
+    sourceId: entry.sourceId,
     location: '全文',
     reason:
       '推薦理由、対象範囲、制限、否定、固有名詞、技術・分野用語、自然な日本語を固定原文と照合する。',
     evidence: {
       sourceDocumentSha256: lockBySource.get(entry.licenseSource)?.documentSha256 ?? null,
-      englishCanonicalSha256: sha256(readPage(englishRoot, file).raw),
-      japanesePageSha256: sha256(readPage(japaneseRoot, file).raw),
+      englishCanonicalSha256: sha256(englishPage.raw),
+      japanesePageSha256: japanesePage ? sha256(japanesePage.raw) : null,
     },
     status: 'pending',
   });
@@ -287,6 +299,11 @@ for (const item of reviewItems) {
       evidence: item.evidence,
     })
   );
+}
+
+const reviewItemIds = reviewItems.map((item) => item.id);
+if (new Set(reviewItemIds).size !== reviewItemIds.length) {
+  errors.push('最終レビュー項目IDが重複しています');
 }
 
 const queueEvidenceHash = sha256(
@@ -413,7 +430,9 @@ const queue = {
   snapshotVersion: version,
   evidenceHash: queueEvidenceHash,
   selectionRule:
-    '全365日本語ページ、Markdown構造・ライセンス種別の初出ページ、25取得元バッチごとの決定的な英語標本、exclude/review断片100%',
+    routes.entries.length === 365
+      ? '全365日本語ページ、Markdown構造・ライセンス種別の初出ページ、25取得元バッチごとの決定的な英語標本、exclude/review断片100%'
+      : `全${routes.entries.length}日本語ページ、Markdown構造・ライセンス種別の初出ページ、取得元バッチごとの決定的な英語標本、exclude/review断片100%`,
   counts: {
     japaneseFullPageReviews: routes.entries.length,
     englishCanonicalSamples: englishSamples.length,
@@ -427,6 +446,10 @@ const queue = {
 };
 
 if (errors.length) {
+  if (!check) {
+    writeJsonAtomic(auditPath, audit);
+    writeJsonAtomic(queuePath, queue);
+  }
   console.error(errors.map((error) => `- ${error}`).join('\n'));
   process.exitCode = 1;
 } else if (check) {

@@ -5,10 +5,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "prebuild": "node ../../scripts/importers/awesome/validate-awesome-single-app.mjs && node ../../scripts/sync-service-workers.js --project=awesome",
+    "prebuild": "node ../../scripts/importers/awesome/validate-awesome-single-app.mjs --snapshot=v2026-08-23 && node ../../scripts/sync-service-workers.js --project=awesome",
     "dev": "astro dev",
     "build": "astro build",
-    "check:content": "node ../../scripts/importers/awesome/validate-awesome-single-app.mjs && node ../../scripts/importers/awesome/validate-awesome-translation.mjs",
+    "check:content": "node ../../scripts/importers/awesome/validate-awesome-single-app.mjs --snapshot=v2026-08-23 && node ../../scripts/importers/awesome/validate-awesome-translation.mjs --snapshot=v2026-08-23 --require-complete",
     "preview": "astro preview",
     "astro": "astro"
   },

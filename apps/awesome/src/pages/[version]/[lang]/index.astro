@@ -6,7 +6,7 @@ import { translate } from '@docs/i18n/utils';
 import { getProjectConfig } from '@docs/project-config';
 import routeManifest from '../../../generated/awesome-routes.json';
 import localizedRouteManifest from '../../../generated/awesome-localized-routes.json';
-import previewStatus from '../../../generated/awesome-preview-status.json';
+import previewStatusManifest from '../../../generated/awesome-preview-status.json';
 
 interface DocEntry {
   title: string;
@@ -50,6 +50,10 @@ const baseUrl = projectConfig.paths.baseUrl;
 const docs = localizedRouteManifest.entries.filter(
   (entry) => entry.version === version && entry.lang === lang
 ) as DocEntry[];
+const previewStatus = previewStatusManifest.snapshots.find(
+  (entry) => entry.snapshotId === version
+);
+if (!previewStatus) throw new Error(`Awesome進捗情報が見つかりません: ${version}`);
 
 // カテゴリごとにドキュメントを整理
 const categories = docs.reduce((acc: Record<string, DocEntry[]>, doc: DocEntry) => {
@@ -121,19 +125,23 @@ const sortedCategoryIds = Object.keys(categories).sort(
           </dd>
         </div>
         <div>
-          <dt>{lang === 'ja' ? '人手レビュー済み' : 'Human-reviewed items'}</dt><dd>
-            {previewStatus.humanReviewedItems}/{previewStatus.totalReviewItems}
+          <dt>{lang === 'ja' ? '最終レビュー済み' : 'Reviewed items'}</dt><dd>
+            {previewStatus.reviewedItems ?? previewStatus.humanReviewedItems}/{previewStatus.totalReviewItems}
           </dd>
         </div>
       </dl>
       <p
         class:list={[
           'review-notice',
-          { 'review-complete': previewStatus.contentReviewStatus === 'human-reviewed' },
+          { 'review-complete': previewStatus.contentReviewStatus !== 'human-review-pending' },
         ]}
       >
         {
-          previewStatus.contentReviewStatus === 'human-reviewed'
+          previewStatus.contentReviewStatus === 'automated-evidence-reviewed'
+            ? lang === 'ja'
+              ? '自動証拠レビューは完了しています。人手による自然さの確認を示すものではありません。'
+              : 'Automated evidence review is complete; this does not attest human review of naturalness.'
+            : previewStatus.contentReviewStatus === 'human-reviewed'
             ? lang === 'ja'
               ? '内容の人手レビューは完了しています。'
               : 'Human content review is complete.'

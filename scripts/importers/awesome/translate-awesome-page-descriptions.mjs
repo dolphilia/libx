@@ -5,9 +5,9 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import remarkParse from 'remark-parse';
 import { unified } from 'unified';
-import { rootDir } from './common.mjs';
+import { rootDir, snapshotVersion } from './common.mjs';
 
-const version = 'v2026-08-20';
+const version = snapshotVersion;
 const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
 const file = process.argv.find((argument) => argument.endsWith('.md'));
 const modelOption = process.argv.indexOf('--model');
@@ -32,6 +32,7 @@ const explicitIndexes =
     : process.argv[indexesOption + 1].split(',').map(Number).filter(Number.isInteger);
 const partialApply = process.argv.includes('--partial-apply');
 const concise = process.argv.includes('--concise');
+const noFallback = process.argv.includes('--no-fallback');
 const cachePath = path.join(rootDir, '.tmp/awesome-ja-description-translations.json');
 
 if (
@@ -42,7 +43,7 @@ if (
   (batchSizeOption !== -1 && (!Number.isInteger(batchSize) || batchSize < 1))
 ) {
   console.error(
-    'usage: translate-awesome-page-descriptions.mjs <category/file.md> [--model MODEL] [--limit N] [--pending-limit N] [--batch-size N] [--all-descriptions] [--partial-apply] [--apply]'
+    'usage: translate-awesome-page-descriptions.mjs <category/file.md> [--model MODEL] [--limit N] [--pending-limit N] [--batch-size N] [--all-descriptions] [--no-fallback] [--partial-apply] [--apply]'
   );
   process.exit(1);
 }
@@ -258,7 +259,7 @@ function collisionIndexes(englishItems, japaneseItems) {
 function protectMarkdown(text) {
   const tokens = [];
   const protectedText = text.replace(
-    /(?:\[\[[^\n]+?\)\]|!?\[[^\]]*\]\([^\s)]+(?:\s+"[^"]*")?\)|<https?:\/\/[^>]+>|`[^`]+`|:[A-Za-z0-9_+-]+:|https?:\/\/[^\s)]+)/g,
+    /(?:\[!\[[^\]]*\]\([^)]+\)\]\([^)]+\)|\[\[[^\n]+?\)\]|!?\[[^\]]*\]\([^\s)]+(?:\s+"[^"]*")?\)|<https?:\/\/[^>]+>|`[^`]+`|:[A-Za-z0-9_+-]+:|https?:\/\/[^\s)]+)/g,
     (token) => {
       const marker = `⟦MARKDOWN_${String(tokens.length).padStart(4, '0')}⟧`;
       tokens.push({ marker, token });
@@ -456,7 +457,7 @@ async function translateBatch(entries, forceJapanese = false) {
         },
         required: ['translations'],
       },
-      options: { temperature: 0.1, num_ctx: 8192, num_predict: 2048 },
+      options: { temperature: 0.1, num_ctx: 8192, num_predict: 4096 },
       messages: [
         {
           role: 'system',
@@ -490,9 +491,20 @@ async function translateBatch(entries, forceJapanese = false) {
     const properNameList =
       sourceWords.length === 0 ||
       sourceWords.every((word) => /^[A-Z]/.test(word) || /^[A-Z0-9.+#-]+$/.test(word));
+    const semanticLength = (text) => {
+      let value = text;
+      for (const { token } of tokens) value = value.replaceAll(token, '');
+      return value.replace(/[\s\p{P}\p{S}_]+/gu, '').length;
+    };
+    const sourceSemanticLength = semanticLength(source);
+    const japaneseSemanticLength = semanticLength(japanese);
+    const suspiciouslyShort =
+      sourceSemanticLength >= 20 &&
+      japaneseSemanticLength < Math.max(8, Math.floor(sourceSemanticLength * 0.22));
     const valid = !(
       (!/[ぁ-んァ-ヶ一-龠]/.test(japanese) && !properNameList) ||
-      /^\/?no[_ ]?think$/i.test(japanese.trim())
+      /^\/?no[_ ]?think$/i.test(japanese.trim()) ||
+      suspiciouslyShort
     );
     return { id, japanese, valid };
   });
@@ -539,6 +551,7 @@ let pending = affected
   .slice(0, pendingLimit);
 
 pending = pending.filter(({ english }) => {
+  if (noFallback) return true;
   const fallback = deterministicFallback(english);
   if (!fallback) return true;
   cache[crypto.createHash('sha256').update(english).digest('hex')] = fallback;
@@ -583,6 +596,11 @@ for (let offset = 0; offset < pending.length; offset += batchSize) {
       if (!translated?.valid) {
         if (translated?.skip) {
           translations.push(translated);
+          continue;
+        }
+        if (partialApply) {
+          console.warn(`項目を保留します: ${entry.english} (${translated?.japanese})`);
+          translations.push({ id: entry.id, valid: false, skip: true });
           continue;
         }
         throw new Error(`日本語ではない翻訳結果です: ${translated?.japanese}`);

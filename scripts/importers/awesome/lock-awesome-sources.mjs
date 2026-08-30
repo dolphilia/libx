@@ -1,13 +1,18 @@
 #!/usr/bin/env node
 import path from 'node:path';
-import { isoNow, notesDir, readJson, writeJsonAtomic } from './common.mjs';
+import {
+  isoNow,
+  notesDir,
+  readJson,
+  reproducibleLicenseIds,
+  writeJsonAtomic,
+} from './common.mjs';
 
 const lockPath = path.join(notesDir, 'SOURCES.lock.json');
 const decisionsPath = path.join(notesDir, 'LICENSE_DECISIONS.json');
 const lock = readJson(lockPath);
 const decisions = readJson(decisionsPath);
 const state = readJson(path.join(notesDir, 'DISCOVERY_STATE.json'));
-const approvedLicenses = new Set(['CC0-1.0', 'MIT']);
 const dryRun = process.argv.includes('--dry-run');
 const unreadable = state.visited.filter(
   (candidate) => !candidate.readmePath || !candidate.readmeSha256
@@ -17,7 +22,7 @@ const records = state.visited
   .map((candidate) => {
     const sourceId = `github-${candidate.repository.replace('/', '-')}-${candidate.readmePath.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
     const status =
-      candidate.licenseSpdx && approvedLicenses.has(candidate.licenseSpdx)
+      candidate.licenseSpdx && reproducibleLicenseIds.has(candidate.licenseSpdx)
         ? 'included'
         : 'metadata-only';
     return {

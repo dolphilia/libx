@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schemaVersion", "snapshot", "sources"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "snapshot": {
+      "type": "object",
+      "required": ["version", "rootSourceId", "createdAt"],
+      "properties": {
+        "version": { "type": "string", "pattern": "^v[0-9]{4}-[0-9]{2}-[0-9]{2}(-[0-9]+)?$" },
+        "rootSourceId": { "type": "string", "minLength": 1 },
+        "createdAt": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "sources": { "type": "array", "items": { "$ref": "#/$defs/source" } }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "sourceId",
+        "repository",
+        "defaultBranch",
+        "commitSha",
+        "documentPath",
+        "documentSha256",
+        "licenseSpdx",
+        "licensePath",
+        "licenseSha256",
+        "retrievedAt",
+        "status",
+        "decisionId",
+        "normalizerVersion"
+      ],
+      "properties": {
+        "sourceId": { "type": "string", "minLength": 1 },
+        "parentSourceId": { "type": ["string", "null"] },
+        "discoveryDepth": { "type": "integer", "minimum": 0 },
+        "repository": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+        "defaultBranch": { "type": "string", "minLength": 1 },
+        "commitSha": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "documentPath": { "type": "string", "minLength": 1 },
+        "documentSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "licenseSpdx": { "type": ["string", "null"] },
+        "licensePath": { "type": ["string", "null"] },
+        "licenseSha256": { "type": ["string", "null"] },
+        "retrievedAt": { "type": "string", "format": "date-time" },
+        "status": { "enum": ["included", "metadata-only", "pending-license-review", "excluded"] },
+        "decisionId": { "type": "string", "minLength": 1 },
+        "normalizerVersion": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

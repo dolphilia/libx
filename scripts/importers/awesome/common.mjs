@@ -8,9 +8,34 @@ import { promisify } from 'node:util';
 const execFileAsync = promisify(execFile);
 
 export const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
-export const notesDir = path.join(rootDir, 'docs/notes/document-import/awesome');
-export const tempDir = path.join(rootDir, '.tmp/document-import/awesome');
-export const snapshotVersion = 'v2026-08-20';
+export const notesRootDir = path.join(rootDir, 'docs/notes/document-import/awesome');
+export const tempRootDir = path.join(rootDir, '.tmp/document-import/awesome');
+const requestedSnapshot = optionValue(process.argv.slice(2), '--snapshot', null);
+if (!requestedSnapshot) {
+  throw new Error(
+    'Awesome snapshot IDを明示してください（例: --snapshot=v2026-08-23）。暗黙の最新版は選択しません。'
+  );
+}
+if (!/^v\d{4}-\d{2}-\d{2}(?:-\d+)?$/.test(requestedSnapshot)) {
+  throw new Error(`Awesome snapshot IDが不正です: ${requestedSnapshot}`);
+}
+export const snapshotVersion = requestedSnapshot;
+export const notesDir = path.join(notesRootDir, 'snapshots', snapshotVersion);
+export const tempDir = path.join(tempRootDir, 'snapshots', snapshotVersion);
+
+export const reproducibleLicenseIds = new Set([
+  'CC0-1.0',
+  'CC-BY-3.0',
+  'CC-BY-4.0',
+  'CC-BY-SA-3.0',
+  'CC-BY-SA-4.0',
+  'MIT',
+  'Apache-2.0',
+  'BSD-2-Clause',
+  'BSD-3-Clause',
+  'ISC',
+  'Unlicense',
+]);
 
 export function sha256(value) {
   return crypto.createHash('sha256').update(value).digest('hex');

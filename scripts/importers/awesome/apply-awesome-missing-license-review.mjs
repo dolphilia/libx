@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 import path from 'node:path';
-import { notesDir, readJson, writeJsonAtomic } from './common.mjs';
+import {
+  notesDir,
+  readJson,
+  reproducibleLicenseIds,
+  writeJsonAtomic,
+} from './common.mjs';
 
 const apply = process.argv.includes('--apply');
 const auditPath = path.join(notesDir, 'AWESOME_MISSING_LICENSE_EVIDENCE_AUDIT.json');
@@ -22,20 +27,6 @@ const lockByRepository = new Map(
 const discoveryByRepository = new Map(
   discovery.visited.map((source) => [source.repository.toLowerCase(), source])
 );
-const reproducibleLicenses = new Set([
-  'CC0-1.0',
-  'CC-BY-3.0',
-  'CC-BY-4.0',
-  'CC-BY-SA-3.0',
-  'CC-BY-SA-4.0',
-  'MIT',
-  'Apache-2.0',
-  'BSD-2-Clause',
-  'BSD-3-Clause',
-  'ISC',
-  'Unlicense',
-]);
-
 function evidenceFor(result, licenseSpdx) {
   const document = result.licenseDocuments.find((item) =>
     item.detectedLicenses.includes(licenseSpdx)
@@ -62,7 +53,7 @@ const results = audit.results.map((result) => {
   } else if (override && evidence) {
     decision = 'include-full-text';
     rationale = override.rationale;
-  } else if (licenseSpdx && reproducibleLicenses.has(licenseSpdx) && evidence) {
+  } else if (licenseSpdx && reproducibleLicenseIds.has(licenseSpdx) && evidence) {
     decision = 'include-full-text';
     rationale = `${evidence.kind}で${licenseSpdx}を確認し、固定ハッシュへ結び付けた。`;
   } else if (licenseSpdx === 'GPL-3.0' || licenseSpdx === 'GFDL') {

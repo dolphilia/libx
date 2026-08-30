@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { notesDir, readJson, sha256, tempDir } from './common.mjs';
+import { notesDir, readJson, sha256, snapshotVersion, tempDir } from './common.mjs';
 
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const exclusions = readJson(path.join(notesDir, 'EXCLUSIONS.json'));
-const missingReview = readJson(path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json'));
+const missingReviewPath = path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json');
+const missingReview = fs.existsSync(missingReviewPath)
+  ? readJson(missingReviewPath)
+  : { schemaVersion: 1, snapshot: snapshotVersion, results: [] };
 const normalizedDir = path.join(tempDir, '03-normalized');
 const errors = [];
 const included = lock.sources.filter((source) => source.status === 'included');
+const sourceById = new Map(lock.sources.map((source) => [source.sourceId, source]));
 const sourceByRepository = new Map(
   lock.sources.map((source) => [source.repository.toLowerCase(), source])
 );
@@ -62,17 +66,41 @@ for (const source of lock.sources.filter(
 for (const exclusion of exclusions.exclusions) {
   const output = path.join(normalizedDir, `${exclusion.sourceId}.md`);
   if (!fs.existsSync(output)) continue;
+  const source = sourceById.get(exclusion.sourceId);
   const sourcePath =
     exclusion.sourceId === 'sindresorhus-awesome-readme'
       ? path.join(tempDir, '01-source/responses/root-readme.md')
-      : path.join(tempDir, '01-source/repositories', exclusion.sourceId);
-  if (!fs.existsSync(sourcePath) && exclusion.sourceId !== 'sindresorhus-awesome-readme') continue;
-  const original =
-    exclusion.sourceId === 'sindresorhus-awesome-readme' ? fs.readFileSync(sourcePath, 'utf8') : '';
-  const fragment = original.slice(0, original.indexOf('## Contents'));
+      : source
+        ? path.join(tempDir, '01-source/repositories', exclusion.sourceId, source.documentPath)
+        : null;
+  if (!sourcePath || !fs.existsSync(sourcePath)) continue;
+  const original = fs.readFileSync(sourcePath, 'utf8');
+  let fragment = '';
+  if (exclusion.headingOrRange === '先頭から ## Contents の直前') {
+    fragment = original.slice(0, original.indexOf('## Contents'));
+  } else if (exclusion.headingOrRange.includes('StandWithUkraine')) {
+    fragment =
+      original.match(
+        /<br>\r?\n<hr>\r?\n<br>\r?\n<br>\r?\n<a href="https:\/\/vshymanskyy\.github\.io\/StandWithUkraine">\r?\n\t<img src="https:\/\/raw\.githubusercontent\.com\/vshymanskyy\/StandWithUkraine\/main\/banner2-direct\.svg">\r?\n<\/a>\r?\n<br>\r?\n<br>\r?\n<hr>\r?\n<br>\r?\n\r?\n/
+      )?.[0] ?? '';
+  } else if (exclusion.headingOrRange === 'Check out my projects') {
+    fragment = /^#{1,6}\s+Check out my projects\s*$/im.test(original)
+      ? 'Check out my projects'
+      : '';
+  }
+  if (!fragment) {
+    errors.push(`excluded fragment is not found in source: ${exclusion.sourceId}`);
+    continue;
+  }
   if (fragment && sha256(fragment) !== exclusion.fragmentSha256)
     errors.push(`exclusion hash does not match source: ${exclusion.sourceId}`);
-  if (fragment && fs.readFileSync(output, 'utf8').includes(fragment))
+  const normalized = fs.readFileSync(output, 'utf8');
+  const stillPresent = exclusion.headingOrRange.includes('StandWithUkraine')
+    ? normalized.includes('StandWithUkraine')
+    : exclusion.headingOrRange === 'Check out my projects'
+      ? /^#{1,6}\s+Check out my projects\s*$/im.test(normalized)
+      : normalized.includes(fragment);
+  if (stillPresent)
     errors.push(`excluded fragment remains in canonical output: ${exclusion.sourceId}`);
 }
 if (errors.length) {

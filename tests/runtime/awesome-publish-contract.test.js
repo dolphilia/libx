@@ -16,13 +16,32 @@ function markdownFileCount(directory) {
     .filter((entry) => entry.isFile() && entry.name.endsWith('.md')).length;
 }
 
-test('Awesome英語定本の公開再現性検査は部分翻訳を保持して通過する', () => {
+test('Awesomeコマンドはsnapshot省略時に暗黙の最新版を選ばない', () => {
+  assert.throws(
+    () =>
+      execFileSync(
+        process.execPath,
+        ['scripts/importers/awesome/validate-awesome-translation.mjs'],
+        { cwd: root, encoding: 'utf8', stdio: 'pipe' }
+      ),
+    (error) => {
+      assert.match(error.stderr, /Awesome snapshot IDを明示してください/);
+      return true;
+    }
+  );
+});
+
+test('Awesome履歴版の公開再現性検査は日本語365ページを保持して通過する', () => {
   assert.ok(markdownFileCount(englishRoot) > 0, '英語定本が必要です');
   assert.ok(markdownFileCount(japaneseRoot) > 0, '部分翻訳を含む検査対象が必要です');
 
   const output = execFileSync(
     process.execPath,
-    ['scripts/importers/awesome/publish-awesome.mjs', '--check'],
+    [
+      'scripts/importers/awesome/publish-awesome.mjs',
+      '--snapshot=v2026-08-20',
+      '--check',
+    ],
     { cwd: root, encoding: 'utf8' }
   );
   assert.match(output, /Awesome single-app publish check: OK/);
@@ -60,6 +79,34 @@ test('Awesome英語定本の公開再現性検査は部分翻訳を保持して�
   );
 });
 
+test('単一アプリ検証は版ごとの成果物だけを対象にし、履歴版に新しいレビュー成果物を要求しない', () => {
+  const historicalOutput = execFileSync(
+    process.execPath,
+    [
+      'scripts/importers/awesome/validate-awesome-single-app.mjs',
+      '--snapshot=v2026-08-20',
+    ],
+    { cwd: root, encoding: 'utf8' }
+  );
+  assert.match(
+    historicalOutput,
+    /Awesome single-app validation: OK \(365 English pages, 365 translated pages\)/
+  );
+
+  const currentOutput = execFileSync(
+    process.execPath,
+    [
+      'scripts/importers/awesome/validate-awesome-single-app.mjs',
+      '--snapshot=v2026-08-23',
+    ],
+    { cwd: root, encoding: 'utf8' }
+  );
+  assert.match(
+    currentOutput,
+    /Awesome single-app validation: OK \(672 English pages, 672 translated pages\)/
+  );
+});
+
 test('全件翻訳ゲートは未翻訳ページを明示して停止する', () => {
   const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'awesome-translation-'));
   const fixtureFile = 'overview/sindresorhus-awesome.md';
@@ -76,6 +123,7 @@ test('全件翻訳ゲートは未翻訳ページを明示して停止する', ()
           process.execPath,
           [
             'scripts/importers/awesome/validate-awesome-translation.mjs',
+            '--snapshot=v2026-08-20',
             '--require-complete',
             '--content-root',
             fixtureRoot,
@@ -85,6 +133,48 @@ test('全件翻訳ゲートは未翻訳ページを明示して停止する', ()
       (error) => {
         assert.match(error.stderr, /日本語ページが未翻訳です/);
         assert.match(error.stderr, /overview\/sindresorhus-awesome\.md/);
+        return true;
+      }
+    );
+  } finally {
+    fs.rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+});
+
+test('翻訳ゲートは内部アンカーリンクの変更を検出する', () => {
+  const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'awesome-anchor-'));
+  const fixtureFile = 'fixture/page.md';
+  const frontmatter = '---\nlicenseSource: fixture-license\n---\n';
+
+  try {
+    for (const lang of ['en', 'ja']) {
+      fs.mkdirSync(path.join(fixtureRoot, lang, 'fixture'), { recursive: true });
+    }
+    fs.writeFileSync(
+      path.join(fixtureRoot, 'en', fixtureFile),
+      `${frontmatter}# Title\n\n- [Section](#section)\n\n## Section\n`
+    );
+    fs.writeFileSync(
+      path.join(fixtureRoot, 'ja', fixtureFile),
+      `${frontmatter}# タイトル\n\n- [セクション](#セクション)\n\n## セクション\n`
+    );
+
+    assert.throws(
+      () =>
+        execFileSync(
+          process.execPath,
+          [
+            'scripts/importers/awesome/validate-awesome-translation.mjs',
+            '--snapshot=v2026-08-20',
+            '--require-complete',
+            '--content-root',
+            fixtureRoot,
+          ],
+          { cwd: root, encoding: 'utf8', stdio: 'pipe' }
+        ),
+      (error) => {
+        assert.match(error.stderr, /内部リンクまたはアンカーリンクが不一致です/);
+        assert.match(error.stderr, /fixture\/page\.md/);
         return true;
       }
     );
@@ -129,7 +219,7 @@ test('Awesome概要は簡潔な見出しと概要から始まり、スポンサ�
   assert.match(japanese, /DOS.*1980 年代から 1990 年代初頭にかけて普及した/);
 });
 
-test('人手レビュー完了後の公開メタデータにレビュー前表記を残さない', () => {
+test('自動証拠レビュー済みの公開メタデータは人手レビューと区別する', () => {
   const status = JSON.parse(
     fs.readFileSync(
       path.join(root, 'apps/awesome/src/generated/awesome-preview-status.json'),
@@ -144,12 +234,16 @@ test('人手レビュー完了後の公開メタデータにレビュー前表�
     path.join(root, 'apps/awesome/public/search/v2026-08-20/ja.json'),
     'utf8'
   );
+  const historicalStatus = status.snapshots.find(
+    (entry) => entry.snapshotId === 'v2026-08-20'
+  );
 
-  assert.equal(status.contentReviewStatus, 'human-reviewed');
-  assert.equal(status.humanReviewedItems, status.totalReviewItems);
-  assert.doesNotMatch(routes, /人手レビュー前/);
-  assert.doesNotMatch(search, /人手レビュー前/);
-  assert.match(routes, /人手レビュー済み/);
+  assert.equal(historicalStatus.contentReviewStatus, 'automated-evidence-reviewed');
+  assert.equal(historicalStatus.reviewedItems, 417);
+  assert.equal(historicalStatus.humanReviewedItems, 0);
+  assert.equal(historicalStatus.totalReviewItems, 417);
+  assert.match(routes, /自動証拠レビュー済み/);
+  assert.match(search, /自動証拠レビュー済み/);
 
   const pageRoute = fs.readFileSync(
     path.join(root, 'apps/awesome/src/pages/[version]/[lang]/[...slug].astro'),

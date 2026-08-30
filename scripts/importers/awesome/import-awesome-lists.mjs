@@ -1,7 +1,14 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { notesDir, readJson, sha256, tempDir, writeJsonAtomic } from './common.mjs';
+import {
+  notesDir,
+  readJson,
+  sha256,
+  snapshotVersion,
+  tempDir,
+  writeJsonAtomic,
+} from './common.mjs';
 
 const dryRun = process.argv.includes('--dry-run');
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
@@ -9,7 +16,10 @@ const included = lock.sources.filter((source) => source.status === 'included');
 const normalizedDir = path.join(tempDir, '03-normalized');
 const exclusionsPath = path.join(notesDir, 'EXCLUSIONS.json');
 const exclusions = readJson(exclusionsPath);
-const missingReview = readJson(path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json'));
+const missingReviewPath = path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json');
+const missingReview = fs.existsSync(missingReviewPath)
+  ? readJson(missingReviewPath)
+  : { schemaVersion: 1, snapshot: snapshotVersion, results: [] };
 const discovery = readJson(path.join(notesDir, 'DISCOVERY_STATE.json'));
 const prepared = [];
 
@@ -42,7 +52,7 @@ for (const source of included) {
       : path.join(tempDir, '01-source/repositories', source.sourceId, source.documentPath);
   const original = fs.readFileSync(sourcePath, 'utf8');
   let canonical = original;
-  let exclusion = null;
+  const sourceExclusions = [];
   if (source.sourceId === 'sindresorhus-awesome-readme') {
     const contentsOffset = original.indexOf('## Contents');
     if (contentsOffset < 0) throw new Error('起点READMEにContents見出しがありません');
@@ -55,7 +65,7 @@ for (const source of included) {
       /^- \[Software Patreons\]\(https:\/\/github\.com\/uraimo\/awesome-software-patreons#readme\).*\n/m,
       ''
     );
-    exclusion = {
+    sourceExclusions.push({
       sourceId: source.sourceId,
       commitSha: source.commitSha,
       headingOrRange: '先頭から ## Contents の直前',
@@ -65,7 +75,26 @@ for (const source of included) {
       classification: 'exclude',
       decidedBy: 'repository-administrator',
       decidedAt: new Date().toISOString(),
-    };
+    });
+
+    const standWithUkrainePattern =
+      /<br>\r?\n<hr>\r?\n<br>\r?\n<br>\r?\n<a href="https:\/\/vshymanskyy\.github\.io\/StandWithUkraine">\r?\n\t<img src="https:\/\/raw\.githubusercontent\.com\/vshymanskyy\/StandWithUkraine\/main\/banner2-direct\.svg">\r?\n<\/a>\r?\n<br>\r?\n<br>\r?\n<hr>\r?\n<br>\r?\n\r?\n/;
+    const standWithUkraine = canonical.match(standWithUkrainePattern)?.[0] ?? null;
+    if (standWithUkraine) {
+      canonical = canonical.replace(standWithUkrainePattern, '');
+      sourceExclusions.push({
+        sourceId: source.sourceId,
+        commitSha: source.commitSha,
+        headingOrRange:
+          'Programming LanguagesとFront-End Developmentの間にあるStandWithUkraineバナーブロック',
+        fragmentSha256: sha256(standWithUkraine),
+        reason:
+          'Awesomeリスト本文ではないキャンペーン画像・外部誘導ブロックであり、定本の主題と無関係なため除外する。',
+        classification: 'exclude',
+        decidedBy: 'repository-administrator',
+        decidedAt: new Date().toISOString(),
+      });
+    }
   }
   canonical = canonical.replace(/^>\s*\\?\[!([A-Z]+)\]\s*$/gm, '> **$1:**');
   canonical = canonical.replace(/<!--[\s\S]*?-->/g, '');
@@ -137,7 +166,7 @@ for (const source of included) {
     source,
     output: `${source.sourceId}.md`,
     content: header + canonical,
-    exclusion,
+    exclusions: sourceExclusions,
   });
 }
 
@@ -173,7 +202,7 @@ for (const review of missingReview.results.filter((entry) => entry.decision === 
     source: { sourceId, repository, status: 'metadata-only' },
     output: `${sourceId}.md`,
     content: header + content,
-    exclusion: null,
+    exclusions: [],
   });
 }
 
@@ -184,7 +213,7 @@ if (dryRun) {
         sourceId: item.source.sourceId,
         output: item.output,
         sha256: sha256(item.content),
-        exclusion: item.exclusion?.fragmentSha256 ?? null,
+        exclusions: item.exclusions.map((entry) => entry.fragmentSha256),
       })),
       null,
       2
@@ -198,11 +227,28 @@ fs.mkdirSync(stagingDir, { recursive: true });
 for (const item of prepared) fs.writeFileSync(path.join(stagingDir, item.output), item.content);
 fs.rmSync(normalizedDir, { recursive: true, force: true });
 fs.renameSync(stagingDir, normalizedDir);
-for (const item of prepared.filter((entry) => entry.exclusion)) {
-  exclusions.exclusions = exclusions.exclusions.filter(
-    (entry) => entry.sourceId !== item.source.sourceId
-  );
-  exclusions.exclusions.push(item.exclusion);
+for (const item of prepared) {
+  for (const exclusion of item.exclusions) {
+    const previous = exclusions.exclusions.find(
+      (entry) =>
+        entry.sourceId === exclusion.sourceId &&
+        entry.headingOrRange === exclusion.headingOrRange &&
+        entry.fragmentSha256 === exclusion.fragmentSha256
+    );
+    const stableExclusion = previous
+      ? {
+          ...exclusion,
+          decidedBy: previous.decidedBy,
+          decidedAt: previous.decidedAt,
+        }
+      : exclusion;
+    exclusions.exclusions = exclusions.exclusions.filter(
+      (entry) =>
+        entry.sourceId !== exclusion.sourceId ||
+        entry.headingOrRange !== exclusion.headingOrRange
+    );
+    exclusions.exclusions.push(stableExclusion);
+  }
 }
 writeJsonAtomic(exclusionsPath, exclusions);
 console.log(
@@ -210,7 +256,7 @@ console.log(
     {
       normalized: prepared.length,
       metadataOnly: prepared.filter((entry) => entry.source.status === 'metadata-only').length,
-      exclusions: prepared.filter((entry) => entry.exclusion).length,
+      exclusions: prepared.reduce((total, entry) => total + entry.exclusions.length, 0),
       output: normalizedDir,
     },
     null,

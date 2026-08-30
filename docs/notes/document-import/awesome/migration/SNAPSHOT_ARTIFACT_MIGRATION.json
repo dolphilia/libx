@@ -1,0 +1,773 @@
+{
+  "schemaVersion": 1,
+  "migrationId": "awesome-versioned-evidence-v1",
+  "recordedAt": "2026-08-29T00:00:00+09:00",
+  "sourceLayout": "docs/notes/document-import/awesome/<artifact>",
+  "targetLayout": "docs/notes/document-import/awesome/snapshots/<snapshot>/<artifact>",
+  "snapshots": [
+    "v2026-08-20",
+    "v2026-08-23"
+  ],
+  "policy": {
+    "canonicalReads": "All Awesome pipeline commands resolve evidence through notesDir for an explicitly supplied --snapshot.",
+    "canonicalWrites": "Writing without an explicit --snapshot is rejected; legacy root artifacts are never write targets.",
+    "legacyCompatibility": "Root-level artifacts remain read-only until phase 9 closes; they exist only for historical references and must not prove either snapshot complete.",
+    "removal": "Removing root-level artifacts is outside this migration and requires a separate compatibility audit."
+  },
+  "consumers": [
+    {
+      "scope": "SOURCES.lock.json, CONTENT_MAP.*, CONTENT_PARTITIONS.json, LICENSE_DECISIONS.json, EXCLUSIONS.json",
+      "scripts": [
+        "scripts/importers/awesome/publish-awesome.mjs",
+        "scripts/importers/awesome/generate-awesome-source-registry.mjs",
+        "scripts/importers/awesome/generate-awesome-machine-audit.mjs"
+      ]
+    },
+    {
+      "scope": "BATCH_STATUS.json, FINAL_REVIEW_QUEUE.json, FINAL_REVIEW_RESULTS.json",
+      "scripts": [
+        "scripts/importers/awesome/sync-awesome-translation-status.mjs",
+        "scripts/importers/awesome/validate-awesome-pipeline-status.mjs",
+        "scripts/importers/awesome/sync-awesome-final-review.mjs",
+        "scripts/importers/awesome/generate-awesome-machine-audit.mjs"
+      ]
+    },
+    {
+      "scope": "PROGRESS_REPORT.json, EXTERNAL_LINK_REPORT.json, TEMPLATE_DESCRIPTION_AUDIT.json, AWESOME_*_AUDIT.json",
+      "scripts": [
+        "scripts/importers/awesome/report-awesome-progress.mjs",
+        "scripts/importers/awesome/generate-awesome-external-link-report.mjs",
+        "scripts/importers/awesome/audit-awesome-template-descriptions.mjs",
+        "scripts/importers/awesome/audit-awesome-overview-links.mjs",
+        "scripts/importers/awesome/audit-awesome-missing-license-evidence.mjs"
+      ]
+    },
+    {
+      "scope": "All remaining versioned operational and review artifacts",
+      "scripts": [
+        "scripts/importers/awesome/common.mjs",
+        "docs/notes/document-import/awesome/snapshots/<snapshot>/OPERATIONS.md"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "artifact": "ADMIN_DECISION.json",
+      "legacyPath": "docs/notes/document-import/awesome/ADMIN_DECISION.json",
+      "legacySha256": "341f0ccebf9487426eacabd07e3351e2afc87684f06fe270e4045adc43e009ca",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/ADMIN_DECISION.json",
+          "targetSha256": "341f0ccebf9487426eacabd07e3351e2afc87684f06fe270e4045adc43e009ca",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/ADMIN_DECISION.json",
+          "targetSha256": "dcc0f22fc7c447c547b2e91152045297176e4e48d600ee8129661f5d05c8cde5",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "AWESOME_MISSING_LICENSE_EVIDENCE_AUDIT.json",
+      "legacyPath": "docs/notes/document-import/awesome/AWESOME_MISSING_LICENSE_EVIDENCE_AUDIT.json",
+      "legacySha256": "0c037588d1dbefb7c089f2bda217be2e1dcf5a2260392281d1f739bd2ca035ad",
+      "targets": [
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/AWESOME_MISSING_LICENSE_EVIDENCE_AUDIT.json",
+          "targetSha256": "362ff009c64072df9b73c829b54284c886c02bb2540b82341a2f7ee389de6256",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "AWESOME_MISSING_LICENSE_REVIEW_OVERRIDES.json",
+      "legacyPath": "docs/notes/document-import/awesome/AWESOME_MISSING_LICENSE_REVIEW_OVERRIDES.json",
+      "legacySha256": "d1ac1a53a80309580de7b49d28e9af236b037a31782cd0f2447495dfe74318ef",
+      "targets": [
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/AWESOME_MISSING_LICENSE_REVIEW_OVERRIDES.json",
+          "targetSha256": "d1ac1a53a80309580de7b49d28e9af236b037a31782cd0f2447495dfe74318ef",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json",
+      "legacyPath": "docs/notes/document-import/awesome/AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json",
+      "legacySha256": "829d6fe860103376ecc934ff0458177490ae44ea9854b8ac1cf1686a6fa84b16",
+      "targets": [
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json",
+          "targetSha256": "829d6fe860103376ecc934ff0458177490ae44ea9854b8ac1cf1686a6fa84b16",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "AWESOME_OVERVIEW_INTERNAL_LINK_AUDIT.json",
+      "legacyPath": "docs/notes/document-import/awesome/AWESOME_OVERVIEW_INTERNAL_LINK_AUDIT.json",
+      "legacySha256": "1721dd31cc27a136cd1528b7be87aed277a69863b87acf1d3e379dab534aada4",
+      "targets": [
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/AWESOME_OVERVIEW_INTERNAL_LINK_AUDIT.json",
+          "targetSha256": "2d0ce660f98b89f1ffb9b5655f3862c94208147eefb7296edad1d168fde78c0e",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "BATCH_STATUS.json",
+      "legacyPath": "docs/notes/document-import/awesome/BATCH_STATUS.json",
+      "legacySha256": "d7321337051b0df0e970f910c03a776b26c55aecb55a5037da585abdeb92bb12",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/BATCH_STATUS.json",
+          "targetSha256": "db705b1d71bd9837386e6c10ffd32d9a2c5997875e10b85227e63f52e5173423",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/BATCH_STATUS.json",
+          "targetSha256": "419e20b8cc0f9f170cc464ac8f1ac6ae87622f646afc0e35edf012f0dfdb4104",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "CONTENT_MAP.json",
+      "legacyPath": "docs/notes/document-import/awesome/CONTENT_MAP.json",
+      "legacySha256": "05edd771a7188f758e09a286c425f542f748763763a0481c9b1b1ebb7402e368",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/CONTENT_MAP.json",
+          "targetSha256": "2a49a9cb4f27ab40ab89123986d4f8e8a152599b04ab2244bad1a3a1e44e1b91",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/CONTENT_MAP.json",
+          "targetSha256": "05edd771a7188f758e09a286c425f542f748763763a0481c9b1b1ebb7402e368",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "CONTENT_MAP.md",
+      "legacyPath": "docs/notes/document-import/awesome/CONTENT_MAP.md",
+      "legacySha256": "ebd44405fb11ef42ee02856a0c82c681399adc82ffe0f91f95a5ea9ed3d5a334",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/CONTENT_MAP.md",
+          "targetSha256": "30b8b86180b4b4634485cc8edd0fd8d2c054c3c02023374db94ade5517613d45",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/CONTENT_MAP.md",
+          "targetSha256": "ebd44405fb11ef42ee02856a0c82c681399adc82ffe0f91f95a5ea9ed3d5a334",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "CONTENT_PARTITIONS.json",
+      "legacyPath": "docs/notes/document-import/awesome/CONTENT_PARTITIONS.json",
+      "legacySha256": "51b2abd950e51298f41ac05dc657e3b6d95fc41393bf6ba9ab162f381d077fa6",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/CONTENT_PARTITIONS.json",
+          "targetSha256": "a3070d8b7bf17553cd20b2c05b4eb9cc3aa25455bf32d262fca591e6fa2a3844",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/CONTENT_PARTITIONS.json",
+          "targetSha256": "ae5c69371de35d80933f7ada4cd36075e979b30e1cb1ea27a794f5dbb4b75ede",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "DISCOVERY_CLOSURE_REPORT.json",
+      "legacyPath": "docs/notes/document-import/awesome/DISCOVERY_CLOSURE_REPORT.json",
+      "legacySha256": "e23556689644faa77c6058418a4587d1357955a317d856b219d895acc55235f4",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/DISCOVERY_CLOSURE_REPORT.json",
+          "targetSha256": "e23556689644faa77c6058418a4587d1357955a317d856b219d895acc55235f4",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/DISCOVERY_CLOSURE_REPORT.json",
+          "targetSha256": "d3d3cef8c617946c1f615bb56487e5a350f2c9acc59ad542bf91e239f597ad8f",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "DISCOVERY_STATE.json",
+      "legacyPath": "docs/notes/document-import/awesome/DISCOVERY_STATE.json",
+      "legacySha256": "9a9d682537e85c0fe76e9dfa58c31d4d56cb33309ecd451902764cd432769f3a",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/DISCOVERY_STATE.json",
+          "targetSha256": "a865f195a376213b4defe48ec8b8238f43ee433f294e2354a4a68285c0b46549",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/DISCOVERY_STATE.json",
+          "targetSha256": "134aea40d042abe2f3b6adff365306cbe5fa52e37d4c976c8167957c045d49c0",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "EXCLUSIONS.json",
+      "legacyPath": "docs/notes/document-import/awesome/EXCLUSIONS.json",
+      "legacySha256": "c58b242af96ed2bde9610e02f3b79e9100e2923ee7b0834e3e3e4fc3d35a7113",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/EXCLUSIONS.json",
+          "targetSha256": "ef7f18440e9bf39f427ef36ef789aeeab63f33617a919e6941cf7f7c4651cff6",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/EXCLUSIONS.json",
+          "targetSha256": "d75ef1139f2d0d87780dd227c3a55196d8b7530fc13af6fcdd73bea9f586cc24",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "EXTERNAL_LINK_REPORT.json",
+      "legacyPath": "docs/notes/document-import/awesome/EXTERNAL_LINK_REPORT.json",
+      "legacySha256": "501fc64cd586d8f30bb5b81587a583b6387019d231fe478fb8a87ffa81e17ef9",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/EXTERNAL_LINK_REPORT.json",
+          "targetSha256": "501fc64cd586d8f30bb5b81587a583b6387019d231fe478fb8a87ffa81e17ef9",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/EXTERNAL_LINK_REPORT.json",
+          "targetSha256": "54fe3d921a263dcee063c123a11ff23bd161727ec428ea7674c08f976065fe3c",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "FINAL_REVIEW_QUEUE.json",
+      "legacyPath": "docs/notes/document-import/awesome/FINAL_REVIEW_QUEUE.json",
+      "legacySha256": "36c7fa7cfdb14386752ad7707360be791a835994ee135f9dea8b3ff8e34fee92",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/FINAL_REVIEW_QUEUE.json",
+          "targetSha256": "0a13cbf28385a2d150af52c0585dad53c28f0e3614f345863d19f97660cbd1bc",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/FINAL_REVIEW_QUEUE.json",
+          "targetSha256": "c7cd8c05d6794a614bf464d1424627a9739bbbe47a49bf95e8cedc6d01d18a9e",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "FINAL_REVIEW_RESULTS.json",
+      "legacyPath": "docs/notes/document-import/awesome/FINAL_REVIEW_RESULTS.json",
+      "legacySha256": "13c8e7647da90c44711a34a2138c1b320c264dbfe76758d66cf9b40ac3ebbae4",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/FINAL_REVIEW_RESULTS.json",
+          "targetSha256": "d3e7dc436504556c692a6fc0f528129d3bffcb42d5d93ba2b35e5e17fe9cc611",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/FINAL_REVIEW_RESULTS.json",
+          "targetSha256": "5613d777224bfbd6c3215f02694757a05e0cb242f7f6277f8ff124982a37de66",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "LICENSE_DECISIONS.json",
+      "legacyPath": "docs/notes/document-import/awesome/LICENSE_DECISIONS.json",
+      "legacySha256": "22f362799fe023c2b1d29bd88874d97f7adcc4ce594d988f995a9980c7e95241",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/LICENSE_DECISIONS.json",
+          "targetSha256": "fe394b0058fc39cfd083335d675e0f5a545037acd5bcf8643afabc886530d194",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/LICENSE_DECISIONS.json",
+          "targetSha256": "22f362799fe023c2b1d29bd88874d97f7adcc4ce594d988f995a9980c7e95241",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "LOCK_CLOSURE_REPORT.json",
+      "legacyPath": "docs/notes/document-import/awesome/LOCK_CLOSURE_REPORT.json",
+      "legacySha256": "2c74f21eccc6cde63a34f8f0c183978e30f98c3ee9e7cd6c1c64958d42b83236",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/LOCK_CLOSURE_REPORT.json",
+          "targetSha256": "2c74f21eccc6cde63a34f8f0c183978e30f98c3ee9e7cd6c1c64958d42b83236",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/LOCK_CLOSURE_REPORT.json",
+          "targetSha256": "ad249fd3b73b623eea01cc21df73c6ad525e55fbc335f5039d6d4d51382f9b04",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "MACHINE_AUDIT.json",
+      "legacyPath": "docs/notes/document-import/awesome/MACHINE_AUDIT.json",
+      "legacySha256": "7d37a1fb6acb9b82a9bff395b6c8314d93aaa2f705a0e836a0ddf30e9d40298f",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/MACHINE_AUDIT.json",
+          "targetSha256": "3b14336ac859f9b0054770cc5a3a27d2a0eb2d0a06edd4fe3c8dc8127a3e8201",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/MACHINE_AUDIT.json",
+          "targetSha256": "39e6edffafe3b9b3abfdfd831ed3f1a00f5c63cc7080e90a3cda4ee87e02d093",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "MANUAL_TRANSLATION_PLAN.md",
+      "legacyPath": "docs/notes/document-import/awesome/MANUAL_TRANSLATION_PLAN.md",
+      "legacySha256": "76e17dbfc8745cf34c8945640a4220acb3fb0f572fec1575a4d102c10c50c026",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/MANUAL_TRANSLATION_PLAN.md",
+          "targetSha256": "76e17dbfc8745cf34c8945640a4220acb3fb0f572fec1575a4d102c10c50c026",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/MANUAL_TRANSLATION_PLAN.md",
+          "targetSha256": "76e17dbfc8745cf34c8945640a4220acb3fb0f572fec1575a4d102c10c50c026",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "OPERATIONS.md",
+      "legacyPath": "docs/notes/document-import/awesome/OPERATIONS.md",
+      "legacySha256": "ecc23a56c9f83c8b2312b014bbd5898276d3c00660eea348cb0d352dce8b5238",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/OPERATIONS.md",
+          "targetSha256": "ecc23a56c9f83c8b2312b014bbd5898276d3c00660eea348cb0d352dce8b5238",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "PILOT_SELECTION.md",
+      "legacyPath": "docs/notes/document-import/awesome/PILOT_SELECTION.md",
+      "legacySha256": "bc172409056fa7c59e107121956f702b7f763f6c6292bfeeca0f5f2c336e06a3",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/PILOT_SELECTION.md",
+          "targetSha256": "bc172409056fa7c59e107121956f702b7f763f6c6292bfeeca0f5f2c336e06a3",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/PILOT_SELECTION.md",
+          "targetSha256": "bc172409056fa7c59e107121956f702b7f763f6c6292bfeeca0f5f2c336e06a3",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "PREVIEW_VERIFICATION.md",
+      "legacyPath": "docs/notes/document-import/awesome/PREVIEW_VERIFICATION.md",
+      "legacySha256": "ff1eebb1facf4fd99bcb28cba41d1098aa73bc4a123eab05e55a078468cc4330",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/PREVIEW_VERIFICATION.md",
+          "targetSha256": "ff1eebb1facf4fd99bcb28cba41d1098aa73bc4a123eab05e55a078468cc4330",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/PREVIEW_VERIFICATION.md",
+          "targetSha256": "05ed094a0c85d676303bfba337a7ceeda13d8a5aacdfbbf7122728bc91bbeed7",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "PRODUCTION_VERIFICATION.md",
+      "legacyPath": "docs/notes/document-import/awesome/PRODUCTION_VERIFICATION.md",
+      "legacySha256": "06c4762a9cac359559056e2899668312f8d701007cb18749ed556125f5c41084",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/PRODUCTION_VERIFICATION.md",
+          "targetSha256": "06c4762a9cac359559056e2899668312f8d701007cb18749ed556125f5c41084",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/PRODUCTION_VERIFICATION.md",
+          "targetSha256": "f2c59c31bda7871827c11df74c8f8cd25ab25c75346ad569a1935f651627652f",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "PROGRESS_REPORT.json",
+      "legacyPath": "docs/notes/document-import/awesome/PROGRESS_REPORT.json",
+      "legacySha256": "ea019e38e02e97a2acf326e1166c1e2d6a5241fde3c966411bf03d16c8043aa1",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/PROGRESS_REPORT.json",
+          "targetSha256": "ea019e38e02e97a2acf326e1166c1e2d6a5241fde3c966411bf03d16c8043aa1",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/PROGRESS_REPORT.json",
+          "targetSha256": "59605b58de75dfe0e250760b718c6eab5cacaa8cf7810111e0c806e44c91a1bf",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "README.md",
+      "legacyPath": "docs/notes/document-import/awesome/README.md",
+      "legacySha256": "192e592fc7f286c974b617cc8a290ce0063a98a2452171cdba1b96c430d83390",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/README.md",
+          "targetSha256": "192e592fc7f286c974b617cc8a290ce0063a98a2452171cdba1b96c430d83390",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "RETROSPECTIVE.md",
+      "legacyPath": "docs/notes/document-import/awesome/RETROSPECTIVE.md",
+      "legacySha256": "185cc93532db7e622e00157a4e47238259b9ad0308d55408dfd3013a6c382baf",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/RETROSPECTIVE.md",
+          "targetSha256": "185cc93532db7e622e00157a4e47238259b9ad0308d55408dfd3013a6c382baf",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "REVIEW_CHECKLIST.md",
+      "legacyPath": "docs/notes/document-import/awesome/REVIEW_CHECKLIST.md",
+      "legacySha256": "2ca197cb034369cfcd61fac002b1d5252e5def16dfba64a27516d805ecf9158a",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/REVIEW_CHECKLIST.md",
+          "targetSha256": "2ca197cb034369cfcd61fac002b1d5252e5def16dfba64a27516d805ecf9158a",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/REVIEW_CHECKLIST.md",
+          "targetSha256": "dba4a666749fb9ee6aac3c476c33854294f8416ac78ea91399c43ffd363ec7fb",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "SAFETY_STOP_DEPTH_4.md",
+      "legacyPath": "docs/notes/document-import/awesome/SAFETY_STOP_DEPTH_4.md",
+      "legacySha256": "8b4399e228c1b8fe87a01333d4feada01a3c7c3b7c69a6e7565d4f169c377e59",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/SAFETY_STOP_DEPTH_4.md",
+          "targetSha256": "8b4399e228c1b8fe87a01333d4feada01a3c7c3b7c69a6e7565d4f169c377e59",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/SAFETY_STOP_DEPTH_4.md",
+          "targetSha256": "e81fcad026f1e3787776793f9592cda6c68879f67bf09b264e94159327e153f9",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "SINGLE_APP_ARCHITECTURE.md",
+      "legacyPath": "docs/notes/document-import/awesome/SINGLE_APP_ARCHITECTURE.md",
+      "legacySha256": "c4a494d13ed79c843d719fbb37c3921cda64f4771447b9fc2aa1c31eaeadca33",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/SINGLE_APP_ARCHITECTURE.md",
+          "targetSha256": "c4a494d13ed79c843d719fbb37c3921cda64f4771447b9fc2aa1c31eaeadca33",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/SINGLE_APP_ARCHITECTURE.md",
+          "targetSha256": "9f5a93da5c1f73f55dd5f485c2eb5122450ac11f0c18959df820557881fcbe66",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "SITE_BUDGET_DECISION.md",
+      "legacyPath": "docs/notes/document-import/awesome/SITE_BUDGET_DECISION.md",
+      "legacySha256": "b2db5a26abc5d6a3d32a7f91f7ae9794d7d276deb5e0858009944d88067609a8",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/SITE_BUDGET_DECISION.md",
+          "targetSha256": "b2db5a26abc5d6a3d32a7f91f7ae9794d7d276deb5e0858009944d88067609a8",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/SITE_BUDGET_DECISION.md",
+          "targetSha256": "b2db5a26abc5d6a3d32a7f91f7ae9794d7d276deb5e0858009944d88067609a8",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "SITE_SHARDS.json",
+      "legacyPath": "docs/notes/document-import/awesome/SITE_SHARDS.json",
+      "legacySha256": "8dd2b084a9230fbf289a5f2e05987911c43eadd6d492a38c410b9d47fef70a90",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/SITE_SHARDS.json",
+          "targetSha256": "8dd2b084a9230fbf289a5f2e05987911c43eadd6d492a38c410b9d47fef70a90",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/SITE_SHARDS.json",
+          "targetSha256": "8dd2b084a9230fbf289a5f2e05987911c43eadd6d492a38c410b9d47fef70a90",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "SOURCES.lock.json",
+      "legacyPath": "docs/notes/document-import/awesome/SOURCES.lock.json",
+      "legacySha256": "6f45480dbb97c2dee09c6d76e5a10e9e2de55a894835e9ceabd98e1a438a5d1e",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/SOURCES.lock.json",
+          "targetSha256": "873129ba6a7a70fa50b74c86d2306c2648efbd932316bf5ac7c14f72f61bb778",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/SOURCES.lock.json",
+          "targetSha256": "1b473afeffe99823d6473f2771bc6ed7f3670463b684f028868fa6b4501207c5",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "SOURCE_MANIFEST.md",
+      "legacyPath": "docs/notes/document-import/awesome/SOURCE_MANIFEST.md",
+      "legacySha256": "6de0dec35476ad569f2b2687df0b3431dd497e10cfdb951823daba4136f27d3a",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/SOURCE_MANIFEST.md",
+          "targetSha256": "6de0dec35476ad569f2b2687df0b3431dd497e10cfdb951823daba4136f27d3a",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/SOURCE_MANIFEST.md",
+          "targetSha256": "7f673de88497bb5cc9517b9d5aac1c1cb98b73b1fabfcc8057641714a7f1738c",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "TEMPLATE_DESCRIPTION_AUDIT.json",
+      "legacyPath": "docs/notes/document-import/awesome/TEMPLATE_DESCRIPTION_AUDIT.json",
+      "legacySha256": "2bf966640d5b9c6f5a42c8bf750f52fbf9085747dcc9b6cc3b68c0cabe7d7262",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/TEMPLATE_DESCRIPTION_AUDIT.json",
+          "targetSha256": "2bf966640d5b9c6f5a42c8bf750f52fbf9085747dcc9b6cc3b68c0cabe7d7262",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/TEMPLATE_DESCRIPTION_AUDIT.json",
+          "targetSha256": "2f3e8bd623fc0a91910fe96f47379d023609c8e673e1202f68105ade6c38f5aa",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "TEMPLATE_DESCRIPTION_REVIEW_RESULTS.json",
+      "legacyPath": "docs/notes/document-import/awesome/TEMPLATE_DESCRIPTION_REVIEW_RESULTS.json",
+      "legacySha256": "f8c99507ea98d668c39d3858df501e5e25b2f7d73211e2c8eeea471611a47690",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/TEMPLATE_DESCRIPTION_REVIEW_RESULTS.json",
+          "targetSha256": "f8c99507ea98d668c39d3858df501e5e25b2f7d73211e2c8eeea471611a47690",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/TEMPLATE_DESCRIPTION_REVIEW_RESULTS.json",
+          "targetSha256": "7e517a5d4b4588c421fd481dbd0bfe971c3b0473aa8622f3a3b2427ab6be2565",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "TRANSLATION_GUIDE.md",
+      "legacyPath": "docs/notes/document-import/awesome/TRANSLATION_GUIDE.md",
+      "legacySha256": "ae14090efc69146d8fadbe136f08c9e5314853402e8966be787de257edd829c4",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/TRANSLATION_GUIDE.md",
+          "targetSha256": "ae14090efc69146d8fadbe136f08c9e5314853402e8966be787de257edd829c4",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/TRANSLATION_GUIDE.md",
+          "targetSha256": "ae14090efc69146d8fadbe136f08c9e5314853402e8966be787de257edd829c4",
+          "relationship": "exact-copy"
+        }
+      ]
+    },
+    {
+      "artifact": "TRANSLATION_REVIEW_LOG.json",
+      "legacyPath": "docs/notes/document-import/awesome/TRANSLATION_REVIEW_LOG.json",
+      "legacySha256": "67ba08264f39ec80dea7376b1328eb23c41fed5e3908bbe5e714af4c521a12d6",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/TRANSLATION_REVIEW_LOG.json",
+          "targetSha256": "67ba08264f39ec80dea7376b1328eb23c41fed5e3908bbe5e714af4c521a12d6",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/TRANSLATION_REVIEW_LOG.json",
+          "targetSha256": "43c23acf670e35886caa22ae146c3e67e0df887beaf4386abe775698b73ec0c2",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "TRANSLATION_TERMS.json",
+      "legacyPath": "docs/notes/document-import/awesome/TRANSLATION_TERMS.json",
+      "legacySha256": "f2dab220b32edc6e897308e9d6d62c0c989df3cb040a9e137299359fc0075c30",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/TRANSLATION_TERMS.json",
+          "targetSha256": "f2dab220b32edc6e897308e9d6d62c0c989df3cb040a9e137299359fc0075c30",
+          "relationship": "exact-copy"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/TRANSLATION_TERMS.json",
+          "targetSha256": "b4401611175e507cf815a29113e37677277e380953cdcb70ca0b31130c080e7d",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "URL_MIGRATIONS.json",
+      "legacyPath": "docs/notes/document-import/awesome/URL_MIGRATIONS.json",
+      "legacySha256": "5730b8bbb67f69163ba92461fca9db46db18634ff48099e84d4fa797dfe09556",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/URL_MIGRATIONS.json",
+          "targetSha256": "3387f3db5866aa86ec6863106655b304c87881e1e8370e58959d92e75d7ee828",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/URL_MIGRATIONS.json",
+          "targetSha256": "82522503635bd3f54046fcf340f7708602bca8385582051c0e0b5023e6cfbd4a",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    },
+    {
+      "artifact": "WORK_LOG.md",
+      "legacyPath": "docs/notes/document-import/awesome/WORK_LOG.md",
+      "legacySha256": "522d168f1d8445c78b20cafb301a3ab1fce8158aeffbe3fa9c8919916ad06d19",
+      "targets": [
+        {
+          "snapshot": "v2026-08-20",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-20/WORK_LOG.md",
+          "targetSha256": "c478e54d5ea31812e47708f0a78f73ddaee13ff7ffc58cd29ab76380e8f1599a",
+          "relationship": "version-specific-replacement"
+        },
+        {
+          "snapshot": "v2026-08-23",
+          "targetPath": "docs/notes/document-import/awesome/snapshots/v2026-08-23/WORK_LOG.md",
+          "targetSha256": "2025b869bcecb493c895a1277d2defb1f11f2464dffd744e0a31ca4b7cec5053",
+          "relationship": "version-specific-replacement"
+        }
+      ]
+    }
+  ]
+}

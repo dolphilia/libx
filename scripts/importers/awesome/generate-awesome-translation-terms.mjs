@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { notesDir, rootDir, sha256, writeJsonAtomic } from './common.mjs';
+import { notesDir, rootDir, sha256, snapshotVersion, writeJsonAtomic } from './common.mjs';
 
-const version = 'v2026-08-20';
+const version = snapshotVersion;
 const root = path.join(rootDir, 'apps/awesome/src/awesome-content', version, 'en');
 const files = fs
   .readdirSync(root, { recursive: true, withFileTypes: true })

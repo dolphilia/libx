@@ -1,25 +1,19 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { notesDir, readJson, rootDir, writeJsonAtomic } from './common.mjs';
+import { notesDir, readJson, rootDir, snapshotVersion, writeJsonAtomic } from './common.mjs';
 
-const version = 'v2026-08-20';
+const version = snapshotVersion;
 const statusPath = path.join(notesDir, 'BATCH_STATUS.json');
 const status = readJson(statusPath);
 const jaRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version, 'ja');
 const translated = new Set(
-  fs.existsSync(jaRoot)
-    ? fs
-        .readdirSync(jaRoot, { recursive: true, withFileTypes: true })
-        .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
-        .map(
-          (entry) =>
-            fs
-              .readFileSync(path.join(entry.parentPath ?? entry.path, entry.name), 'utf8')
-              .match(/^licenseSource:\s*"?([^"\n]+)"?$/m)?.[1]
-        )
-        .filter(Boolean)
-    : []
+  readJson(path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json')).entries
+    .filter(
+      (entry) =>
+        entry.version === version && fs.existsSync(path.join(jaRoot, `${entry.slug}.md`))
+    )
+    .map((entry) => entry.sourceId)
 );
 for (const batch of status.batches) {
   for (const sourceId of batch.sourceIds) {

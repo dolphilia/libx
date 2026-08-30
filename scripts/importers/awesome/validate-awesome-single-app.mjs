@@ -3,17 +3,21 @@ import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import { readJsoncFile } from '../../jsonc-utils.js';
-import { notesDir, readJson, rootDir } from './common.mjs';
+import { notesDir, readJson, rootDir, snapshotVersion } from './common.mjs';
 
 const projectRoot = path.join(rootDir, 'apps/awesome');
 const routes = readJson(path.join(projectRoot, 'src/generated/awesome-routes.json'));
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const config = readJsoncFile(path.join(projectRoot, 'src/config/project.config.jsonc'));
-const missingReview = readJson(path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json'));
+const missingReviewPath = path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json');
+const missingReview = fs.existsSync(missingReviewPath)
+  ? readJson(missingReviewPath)
+  : { schemaVersion: 1, snapshot: snapshotVersion, results: [] };
+const snapshotRoutes = routes.entries.filter((entry) => entry.version === snapshotVersion);
 const includedIds = new Set(
   lock.sources.filter((source) => source.status === 'included').map((source) => source.sourceId)
 );
-const routeIds = new Set(routes.entries.map((entry) => entry.sourceId));
+const routeIds = new Set(snapshotRoutes.map((entry) => entry.sourceId));
 const configIds = new Set(config.licensing.sources.map((source) => source.id));
 const expectedRouteIds = new Set([
   ...includedIds,
@@ -49,21 +53,23 @@ const markdownFiles = fs
 const englishFiles = markdownFiles.filter((entry) =>
   path
     .relative(contentRoot, path.join(entry.parentPath ?? entry.path, entry.name))
-    .includes(`${path.sep}en${path.sep}`)
+    .startsWith(`${snapshotVersion}${path.sep}en${path.sep}`)
 );
 const translatedFiles = markdownFiles.filter((entry) =>
   path
     .relative(contentRoot, path.join(entry.parentPath ?? entry.path, entry.name))
-    .includes(`${path.sep}ja${path.sep}`)
+    .startsWith(`${snapshotVersion}${path.sep}ja${path.sep}`)
 );
-if (englishFiles.length !== routes.entries.length) {
+if (englishFiles.length !== snapshotRoutes.length) {
   throw new Error(
-    `英語本文ファイル数が一致しません: ${englishFiles.length} != ${routes.entries.length}`
+    `英語本文ファイル数が一致しません: ${englishFiles.length} != ${snapshotRoutes.length}`
   );
 }
-for (const entry of routes.entries) {
-  if (slugs.has(entry.slug)) throw new Error(`重複slugです: ${entry.slug}`);
-  slugs.add(entry.slug);
+for (const entry of snapshotRoutes) {
+  const versionedSlug = `${entry.version}:${entry.slug}`;
+  if (slugs.has(versionedSlug))
+    throw new Error(`同一版内で重複slugです: ${entry.version}/${entry.slug}`);
+  slugs.add(versionedSlug);
   const contentPath = path.join(projectRoot, entry.moduleKey.replace(/^\/src\//, 'src/'));
   if (!fs.existsSync(contentPath)) throw new Error(`本文がありません: ${entry.moduleKey}`);
   const frontmatter = matter(fs.readFileSync(contentPath, 'utf8')).data;
@@ -104,7 +110,7 @@ if (process.argv.includes('--assets')) {
   if (largest.bytes >= warningLimit) {
     throw new Error(`最大assetが20 MiB以上です: ${largest.path} (${largest.bytes} bytes)`);
   }
-  for (const entry of routes.entries) {
+  for (const entry of snapshotRoutes) {
     const htmlPath = path.join(distRoot, entry.version, entry.lang, entry.slug, 'index.html');
     if (!fs.existsSync(htmlPath)) throw new Error(`生成ページがありません: ${entry.slug}`);
   }
@@ -120,7 +126,7 @@ if (process.argv.includes('--assets')) {
     if (!fs.existsSync(htmlPath)) throw new Error(`翻訳の生成ページがありません: ${relativePath}`);
   }
   console.log(
-    `Awesome asset validation: OK (${routes.entries.length} English pages, ${translatedFiles.length} translated pages, largest=${largest.path} ${largest.bytes} bytes)`
+    `Awesome asset validation: OK (${snapshotRoutes.length} English pages, ${translatedFiles.length} translated pages, largest=${largest.path} ${largest.bytes} bytes)`
   );
 } else {
   console.log(

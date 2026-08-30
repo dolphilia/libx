@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { formatProjectConfigJsonc, readJsoncFile } from '../../jsonc-utils.js';
-import { notesDir, readJson, rootDir } from './common.mjs';
+import { notesDir, notesRootDir, readJson, rootDir, snapshotVersion } from './common.mjs';
 
 const project =
   process.argv.find((argument) => argument.startsWith('--project='))?.slice('--project='.length) ??
@@ -10,6 +10,13 @@ const project =
 if (project !== 'awesome') throw new Error('単一アプリ統合後はproject=awesomeだけを生成できます');
 const configPath = path.join(rootDir, 'apps', project, 'src/config/project.config.jsonc');
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
+const historicalLockPath = path.join(
+  notesRootDir,
+  'snapshots',
+  'v2026-08-20',
+  'SOURCES.lock.json'
+);
+const historicalLock = fs.existsSync(historicalLockPath) ? readJson(historicalLockPath) : null;
 const dryRun = process.argv.includes('--dry-run');
 const licenseUrls = {
   'CC0-1.0': 'https://creativecommons.org/publicdomain/zero/1.0/',
@@ -24,7 +31,10 @@ const licenseUrls = {
   ISC: 'https://opensource.org/licenses/ISC',
   Unlicense: 'https://unlicense.org/',
 };
-const sources = lock.sources
+const sourceRecords = new Map(
+  [...(historicalLock?.sources ?? []), ...lock.sources].map((source) => [source.sourceId, source])
+);
+const sources = [...sourceRecords.values()]
   .filter((source) => source.status === 'included')
   .map((source) => {
     if (!source.licenseSpdx || !licenseUrls[source.licenseSpdx]) {
@@ -61,8 +71,18 @@ config.versioning.versions = [
     id: 'v2026-08-20',
     name: 'Snapshot 2026-08-20',
     date: '2026-08-20T00:00:00.000Z',
-    isLatest: true,
+    isLatest: snapshotVersion === 'v2026-08-20',
   },
+  ...(snapshotVersion === 'v2026-08-20'
+    ? []
+    : [
+        {
+          id: snapshotVersion,
+          name: `Snapshot ${snapshotVersion.slice(1)}`,
+          date: `${snapshotVersion.slice(1)}T00:00:00.000Z`,
+          isLatest: true,
+        },
+      ]),
 ];
 config.licensing.defaultSource =
   sources.find((source) => source.id === 'sindresorhus-awesome-readme')?.id ?? sources[0]?.id;

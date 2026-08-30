@@ -1,33 +1,39 @@
 #!/usr/bin/env node
 import path from 'node:path';
 import fs from 'node:fs';
-import { notesDir, readJson, rootDir, sha256, writeJsonAtomic } from './common.mjs';
+import {
+  notesDir,
+  readJson,
+  rootDir,
+  sha256,
+  snapshotVersion,
+  writeJsonAtomic,
+} from './common.mjs';
 
 const statusPath = path.join(notesDir, 'BATCH_STATUS.json');
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const existing = readJson(statusPath);
-const included = lock.sources
-  .filter((source) => source.status === 'included')
-  .sort((a, b) => a.sourceId.localeCompare(b.sourceId));
+const routes = readJson(
+  path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json')
+).entries
+  .filter((entry) => entry.version === snapshotVersion)
+  .sort((left, right) => left.sourceId.localeCompare(right.sourceId));
+const lockBySource = new Map(lock.sources.map((source) => [source.sourceId, source]));
 const fetchBatches = existing.fetchBatches ?? existing.batches ?? [];
-const jaRoot = path.join(rootDir, 'apps/awesome/src/awesome-content/v2026-08-20/ja');
+const jaRoot = path.join(
+  rootDir,
+  'apps/awesome/src/awesome-content',
+  snapshotVersion,
+  'ja'
+);
 const translated = new Set(
-  fs.existsSync(jaRoot)
-    ? fs
-        .readdirSync(jaRoot, { recursive: true, withFileTypes: true })
-        .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
-        .map(
-          (entry) =>
-            fs
-              .readFileSync(path.join(entry.parentPath ?? entry.path, entry.name), 'utf8')
-              .match(/^licenseSource:\s*"?([^"\n]+)"?$/m)?.[1]
-        )
-        .filter(Boolean)
-    : []
+  routes
+    .filter((entry) => fs.existsSync(path.join(jaRoot, `${entry.slug}.md`)))
+    .map((entry) => entry.sourceId)
 );
 const batches = [];
-for (let index = 0; index < included.length; index += 10) {
-  const sources = included.slice(index, index + 10);
+for (let index = 0; index < routes.length; index += 10) {
+  const sources = routes.slice(index, index + 10);
   batches.push({
     batchNumber: batches.length + 1,
     sourceIds: sources.map((source) => source.sourceId),
@@ -39,10 +45,15 @@ for (let index = 0; index < included.length; index += 10) {
     'translation-validated': 'pending',
     'human-reviewed': 'pending',
     inputHash: sha256(
-      JSON.stringify(sources.map((source) => [source.sourceId, source.documentSha256]))
+      JSON.stringify(
+        sources.map((source) => [
+          source.sourceId,
+          lockBySource.get(source.sourceId)?.documentSha256 ?? source.licenseSource,
+        ])
+      )
     ),
     outputHash: sha256(
-      JSON.stringify(sources.map((source) => [source.sourceId, source.documentSha256]))
+      JSON.stringify(sources.map((source) => [source.sourceId, source.slug]))
     ),
     checks: ['awesome:validate-canonical', 'awesome:publish --check'],
     pages: Object.fromEntries(
@@ -65,5 +76,5 @@ writeJsonAtomic(statusPath, {
   batches,
 });
 console.log(
-  `Initialized Awesome pipeline status (${batches.length} batches, ${included.length} sources)`
+  `Initialized Awesome pipeline status (${batches.length} batches, ${routes.length} pages)`
 );

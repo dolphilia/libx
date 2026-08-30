@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { rootDir } from './common.mjs';
+import { rootDir, snapshotVersion } from './common.mjs';
 
-const snapshot = 'v2026-08-20';
+const snapshot = snapshotVersion;
 const overviewRepository = 'sindresorhus/awesome';
 const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshot);
 const routeManifestPath = path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json');

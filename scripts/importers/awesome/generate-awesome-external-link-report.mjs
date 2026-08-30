@@ -1,9 +1,16 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { notesDir, readJson, rootDir, sha256, writeJsonAtomic } from './common.mjs';
+import {
+  notesDir,
+  readJson,
+  rootDir,
+  sha256,
+  snapshotVersion,
+  writeJsonAtomic,
+} from './common.mjs';
 
-const version = 'v2026-08-20';
+const version = snapshotVersion;
 const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version, 'en');
 const reportPath = path.join(notesDir, 'EXTERNAL_LINK_REPORT.json');
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));

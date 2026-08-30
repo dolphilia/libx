@@ -1,10 +1,15 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { notesDir, rootDir } from './common.mjs';
+import { notesDir, rootDir, snapshotVersion } from './common.mjs';
 
 const log = JSON.parse(fs.readFileSync(path.join(notesDir, 'TRANSLATION_REVIEW_LOG.json'), 'utf8'));
-const englishRoot = path.join(rootDir, 'apps/awesome/src/awesome-content/v2026-08-20/en');
+const englishRoot = path.join(
+  rootDir,
+  'apps/awesome/src/awesome-content',
+  snapshotVersion,
+  'en'
+);
 const errors = [];
 for (const entry of log.pages) {
   if (!entry.draftPath || !fs.existsSync(path.join(rootDir, entry.draftPath))) {

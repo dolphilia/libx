@@ -4,13 +4,13 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import remarkParse from 'remark-parse';
 import { unified } from 'unified';
-import { rootDir } from './common.mjs';
+import { notesDir, rootDir, snapshotVersion } from './common.mjs';
 
-const version = 'v2026-08-20';
+const version = snapshotVersion;
 const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
 const reviewResultsPath = path.join(
-  rootDir,
-  'docs/notes/document-import/awesome/TEMPLATE_DESCRIPTION_REVIEW_RESULTS.json'
+  notesDir,
+  'TEMPLATE_DESCRIPTION_REVIEW_RESULTS.json'
 );
 const outputOptionIndex = process.argv.indexOf('--output');
 const outputPath =
@@ -45,7 +45,7 @@ function listDescriptions(file) {
           .replace(/^\s*(?:[-–—:]|&mdash;)\s*/i, '')
           .replace(/\s+/g, ' ')
           .trim();
-        if (remainder) descriptions.set(listIndex, remainder);
+        if (isSemanticDescription(remainder)) descriptions.set(listIndex, remainder);
       }
       listIndex += 1;
     }
@@ -56,6 +56,26 @@ function listDescriptions(file) {
   visit(tree);
 
   return descriptions;
+}
+
+function isSemanticDescription(description) {
+  if (!description) return false;
+  const withoutAnchors = description.replace(/<a\b[^>]*><\/a>/gi, '').trim();
+  if (!withoutAnchors) return false;
+  const compact = withoutAnchors
+    .replace(/<img\b[^>]*>/gi, '')
+    .replace(/[\s\p{P}\p{S}]+/gu, '')
+    .toLocaleLowerCase('en-US');
+  return !['', 'and', 'or', 'by', 'および', 'または', 'から', 'を参照', '向け'].includes(compact);
+}
+
+function normalizeEnglishMeaning(description) {
+  return description
+    .normalize('NFKC')
+    .toLocaleLowerCase('en-US')
+    .replace(/<a\b[^>]*><\/a>/gi, '')
+    .replace(/[\s.,;:!?"'“”‘’()\[\]{}*_~`<>\-–—]+/g, ' ')
+    .trim();
 }
 
 function severity(collisionItemCount) {
@@ -79,14 +99,15 @@ function collisionGroups(pairs, normalize = (description) => description) {
   const groups = new Map();
   for (const pair of pairs) {
     const key = normalize(pair.japanese);
-    const english = groups.get(key) ?? [];
-    english.push(pair.english);
-    groups.set(key, english);
+    const group = groups.get(key) ?? [];
+    group.push(pair);
+    groups.set(key, group);
   }
 
-  return [...groups.entries()].filter(
-    ([, english]) => english.length > 1 && new Set(english).size > 1
-  );
+  return [...groups.entries()].filter(([, group]) => {
+    const meanings = new Set(group.map(({ english }) => normalizeEnglishMeaning(english)));
+    return group.length > 1 && meanings.size > 1;
+  });
 }
 
 const englishRoot = path.join(contentRoot, 'en');
@@ -117,7 +138,7 @@ for (const file of japaneseFiles) {
 
   for (const [listIndex, japanese] of japaneseDescriptions) {
     const english = englishDescriptions.get(listIndex);
-    if (english) pairs.push({ english, japanese });
+    if (english) pairs.push({ listIndex, english, japanese });
     else japaneseOnlyDescriptionCount += 1;
   }
   for (const listIndex of englishDescriptions.keys()) {
@@ -133,14 +154,30 @@ for (const file of japaneseFiles) {
     exactCollisions.length > 0 ||
     japaneseOnlyDescriptionCount > 0 ||
     missingJapaneseDescriptionCount > 0;
-  const collisions = exactCollisions.length > 0 ? exactCollisions : normalizedCollisions;
+  const collisions = isConfirmed ? exactCollisions : normalizedCollisions;
   if (!isConfirmed && collisions.length === 0) continue;
 
-  const collisionItemCount = collisions.reduce((sum, [, english]) => sum + english.length, 0);
+  const collisionItemCount = collisions.reduce((sum, [, group]) => sum + group.length, 0);
   const collapsedDifferenceCount = collisions.reduce(
-    (sum, [, english]) => sum + english.length - 1,
+    (sum, [, group]) => sum + group.length - 1,
     0
   );
+  const structuralIndexes = new Set();
+  for (const listIndex of japaneseDescriptions.keys()) {
+    if (!englishDescriptions.has(listIndex)) structuralIndexes.add(listIndex);
+  }
+  for (const listIndex of englishDescriptions.keys()) {
+    if (!japaneseDescriptions.has(listIndex)) structuralIndexes.add(listIndex);
+  }
+  const affectedIndexes = [
+    ...new Set([
+      ...collisions.flatMap(([, group]) => group.map(({ listIndex }) => listIndex)),
+      ...structuralIndexes,
+    ]),
+  ].sort((left, right) => left - right);
+  const collisionIndexes = [
+    ...new Set(collisions.flatMap(([, group]) => group.map(({ listIndex }) => listIndex))),
+  ].sort((left, right) => left - right);
 
   const affectedItemCount =
     collisionItemCount + japaneseOnlyDescriptionCount + missingJapaneseDescriptionCount;
@@ -153,16 +190,19 @@ for (const file of japaneseFiles) {
     collisionGroupCount: collisions.length,
     collisionRatio: pairs.length > 0 ? Number((collisionItemCount / pairs.length).toFixed(4)) : 0,
     largestCollisionGroup:
-      collisions.length > 0 ? Math.max(...collisions.map(([, english]) => english.length)) : 0,
+      collisions.length > 0 ? Math.max(...collisions.map(([, group]) => group.length)) : 0,
     japaneseOnlyDescriptionCount,
     missingJapaneseDescriptionCount,
     affectedItemCount,
+    affectedIndexes,
+    collisionIndexes,
+    structuralIndexes: [...structuralIndexes].sort((left, right) => left - right),
     severity: severity(affectedItemCount),
     detection: isConfirmed ? 'structural-or-exact-collision' : 'normalized-only-review',
   };
-  document.sampleGroups = collisions.slice(0, 10).map(([japaneseTemplate, english]) => ({
+  document.sampleGroups = collisions.slice(0, 10).map(([japaneseTemplate, group]) => ({
     japaneseTemplate,
-    englishExamples: [...new Set(english)].slice(0, 3),
+    englishExamples: [...new Set(group.map(({ english }) => english))].slice(0, 3),
   }));
   if (reviewedFalsePositives.has(file)) reviewedFalsePositiveDocuments.push(document);
   else if (isConfirmed) documents.push(document);

@@ -1,7 +1,14 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { notesDir, readJson, rootDir, sha256, writeJsonAtomic } from './common.mjs';
+import {
+  notesDir,
+  readJson,
+  rootDir,
+  sha256,
+  snapshotVersion,
+  writeJsonAtomic,
+} from './common.mjs';
 
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const batches = readJson(path.join(notesDir, 'BATCH_STATUS.json'));
@@ -12,7 +19,7 @@ function countMarkdown(root) {
     .filter((entry) => entry.isFile() && entry.name.endsWith('.md')).length;
 }
 const status = Object.groupBy(lock.sources, (source) => source.status);
-const versionRoot = path.join(rootDir, 'apps/awesome/src/awesome-content/v2026-08-20');
+const versionRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion);
 const pageCounts = {
   awesome: {
     en: countMarkdown(path.join(versionRoot, 'en')),

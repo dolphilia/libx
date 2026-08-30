@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { notesDir, readJson, rootDir } from './common.mjs';
+import { notesDir, readJson, rootDir, snapshotVersion } from './common.mjs';
 
-const version = 'v2026-08-20';
+const version = snapshotVersion;
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const status = readJson(path.join(notesDir, 'BATCH_STATUS.json'));
-const included = new Set(
-  lock.sources.filter((source) => source.status === 'included').map((source) => source.sourceId)
-);
+const routes = readJson(
+  path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json')
+).entries.filter((entry) => entry.version === version);
+const expected = new Set(routes.map((entry) => entry.sourceId));
 const errors = [];
 const seen = new Set();
 const jaRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version, 'ja');
@@ -22,7 +23,7 @@ for (const batch of status.batches ?? []) {
   if (batch.sourceIds.length === 0 || batch.sourceIds.length > 10)
     errors.push(`翻訳バッチのサイズが不正です: ${batch.batchNumber}`);
   for (const sourceId of batch.sourceIds) {
-    if (!included.has(sourceId) || seen.has(sourceId))
+    if (!expected.has(sourceId) || seen.has(sourceId))
       errors.push(`sourceIdが不正または重複です: ${sourceId}`);
     seen.add(sourceId);
     const page = batch.pages?.[sourceId];
@@ -36,21 +37,22 @@ for (const batch of status.batches ?? []) {
   )
     errors.push(`バッチ翻訳検査状態がページと一致しません: ${batch.batchNumber}`);
 }
-for (const sourceId of included)
+for (const sourceId of expected)
   if (!seen.has(sourceId)) errors.push(`翻訳バッチにありません: ${sourceId}`);
-for (const file of jaFiles) {
-  const content = fs.readFileSync(file, 'utf8');
-  const sourceId = content.match(/^licenseSource:\s*"?([^"\n]+)"?$/m)?.[1];
+for (const route of routes) {
+  const file = path.join(jaRoot, `${route.slug}.md`);
+  if (!fs.existsSync(file)) continue;
+  const sourceId = route.sourceId;
   const page = status.batches.flatMap((batch) =>
     batch.pages?.[sourceId] ? [batch.pages[sourceId]] : []
   )[0];
   if (!page || page['translation-validated'] !== 'completed')
-    errors.push(`日本語本文と翻訳状態が一致しません: ${sourceId ?? file}`);
+    errors.push(`日本語本文と翻訳状態が一致しません: ${sourceId}`);
 }
 if (errors.length) {
   console.error(errors.map((error) => `- ${error}`).join('\n'));
   process.exit(1);
 }
 console.log(
-  `Awesome pipeline status: OK (${status.batches.length} batches, ${jaFiles.length}/${included.size} translated pages)`
+  `Awesome pipeline status: OK (${status.batches.length} batches, ${jaFiles.length}/${expected.size} translated pages)`
 );

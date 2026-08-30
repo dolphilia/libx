@@ -4,11 +4,18 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { readJsoncFile } from '../../jsonc-utils.js';
 import { prepareImportForCheck, prepareImportOutput } from '../safe-import-output.js';
-import { notesDir, readJson, rootDir, writeJsonAtomic } from './common.mjs';
+import {
+  notesDir,
+  readJson,
+  rootDir,
+  snapshotVersion,
+  tempDir,
+  writeJsonAtomic,
+} from './common.mjs';
 
-const version = 'v2026-08-20';
+const version = snapshotVersion;
 const projectRoot = path.join(rootDir, 'apps', 'awesome');
-const normalizedRoot = path.join(rootDir, '.tmp/document-import/awesome/03-normalized');
+const normalizedRoot = path.join(tempDir, '03-normalized');
 const contentRoot = path.join(projectRoot, 'src/awesome-content');
 const englishContentRoot = path.join(contentRoot, version, 'en');
 const japaneseContentRoot = path.join(contentRoot, version, 'ja');
@@ -26,9 +33,13 @@ const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const discoveryState = readJson(path.join(notesDir, 'DISCOVERY_STATE.json'));
 const exclusions = readJson(path.join(notesDir, 'EXCLUSIONS.json'));
 const finalReviewQueue = readJson(path.join(notesDir, 'FINAL_REVIEW_QUEUE.json'));
+const finalReviewResults = readJson(path.join(notesDir, 'FINAL_REVIEW_RESULTS.json'));
 const contentMap = readJson(path.join(notesDir, 'CONTENT_MAP.json'));
 const shardPlan = readJson(path.join(notesDir, 'SITE_SHARDS.json'));
-const missingReview = readJson(path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json'));
+const missingReviewPath = path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json');
+const missingReview = fs.existsSync(missingReviewPath)
+  ? readJson(missingReviewPath)
+  : { schemaVersion: 1, snapshot: version, results: [] };
 const included = lock.sources.filter((source) => source.status === 'included');
 const sourceByRepository = new Map(
   lock.sources.map((source) => [source.repository.toLowerCase(), source])
@@ -58,11 +69,17 @@ const mapBySource = new Map(contentMap.entries.map((entry) => [entry.sourceId, e
 const discoveredByRepository = new Map(
   discoveryState.visited.map((source) => [source.repository, source])
 );
-const approvedReviewItems = finalReviewQueue.items.filter(
-  (item) => item.status === 'approved'
-).length;
-const allHumanReviewed =
-  finalReviewQueue.items.length > 0 && approvedReviewItems === finalReviewQueue.items.length;
+const reviewQueueMatchesSnapshot = finalReviewQueue.snapshotVersion === version;
+const approvedReviewItems = reviewQueueMatchesSnapshot
+  ? finalReviewQueue.items.filter((item) => item.status === 'approved').length
+  : 0;
+const allReviewComplete =
+  reviewQueueMatchesSnapshot &&
+  finalReviewQueue.items.length > 0 &&
+  approvedReviewItems === finalReviewQueue.items.length;
+const automatedEvidenceReviewed =
+  allReviewComplete &&
+  finalReviewResults.aggregateReview?.reviewer === 'codex-automated-evidence-review';
 
 function categoryId(value) {
   return value
@@ -243,8 +260,11 @@ function entriesFor(lang) {
         lang,
         moduleKey: entry.moduleKey.replace('/en/', `/${lang}/`),
         title: String(parsed.data.title),
-        description: allHumanReviewed
-          ? description.replaceAll('人手レビュー前', '人手レビュー済み')
+        description: allReviewComplete
+          ? description.replaceAll(
+              '人手レビュー前',
+              automatedEvidenceReviewed ? '自動証拠レビュー済み' : '人手レビュー済み'
+            )
           : description,
         licenseSource: String(parsed.data.licenseSource),
       },
@@ -305,20 +325,60 @@ const pendingReviewItems = finalReviewQueue.items.filter(
 ).length;
 const previewStatus = {
   schemaVersion: 1,
-  snapshotId: lock.snapshot.version,
+  snapshotId: version,
   knownSources: lock.sources.length,
   englishCanonicalPages: model.entries.length,
   japaneseMachineValidatedPages: entriesFor('ja').length,
   excludedFragments: exclusions.exclusions.length,
   metadataOnlySources: lock.sources.filter((source) => source.status === 'metadata-only').length,
-  humanReviewedItems: approvedReviewItems,
-  totalReviewItems: finalReviewQueue.items.length,
-  contentReviewStatus: pendingReviewItems === 0 ? 'human-reviewed' : 'human-review-pending',
+  reviewedItems: approvedReviewItems,
+  humanReviewedItems: automatedEvidenceReviewed ? 0 : approvedReviewItems,
+  totalReviewItems: reviewQueueMatchesSnapshot ? finalReviewQueue.items.length : 0,
+  contentReviewStatus:
+    reviewQueueMatchesSnapshot && pendingReviewItems === 0
+      ? automatedEvidenceReviewed
+        ? 'automated-evidence-reviewed'
+        : 'human-reviewed'
+      : 'human-review-pending',
 };
 const localizedRoutes = {
   schemaVersion: 1,
   snapshotVersion: version,
   entries: [...entriesFor('en'), ...entriesFor('ja')],
+};
+
+function mergeVersionEntries(pathname, currentEntries) {
+  if (!fs.existsSync(pathname)) return currentEntries;
+  const existing = readJson(pathname);
+  return [
+    ...(existing.entries ?? []).filter((entry) => entry.version !== version),
+    ...currentEntries,
+  ].sort(
+    (left, right) =>
+      left.version.localeCompare(right.version) ||
+      left.order - right.order ||
+      left.lang.localeCompare(right.lang)
+  );
+}
+
+const combinedRoutes = {
+  schemaVersion: 2,
+  categories: routes.categories,
+  entries: mergeVersionEntries(routesPath, routes.entries),
+};
+const combinedLocalizedRoutes = {
+  schemaVersion: 2,
+  entries: mergeVersionEntries(localizedRoutesPath, localizedRoutes.entries),
+};
+const existingPreviewStatuses = fs.existsSync(previewStatusPath)
+  ? readJson(previewStatusPath).snapshots ?? []
+  : [];
+const previewStatuses = {
+  schemaVersion: 2,
+  snapshots: [
+    ...existingPreviewStatuses.filter((entry) => entry.snapshotId !== version),
+    previewStatus,
+  ].sort((left, right) => left.snapshotId.localeCompare(right.snapshotId)),
 };
 
 if (check) {
@@ -328,9 +388,9 @@ if (check) {
     validate: validateContent,
   });
   if (!result.matches) throw new Error('単一awesomeアプリの本文が正規化済み入力と一致しません');
-  assertJson(routesPath, routes);
-  assertJson(localizedRoutesPath, localizedRoutes);
-  assertJson(previewStatusPath, previewStatus);
+  assertJson(routesPath, combinedRoutes);
+  assertJson(localizedRoutesPath, combinedLocalizedRoutes);
+  assertJson(previewStatusPath, previewStatuses);
   assertJson(path.join(sidebarRoot, `sidebar-en-${version}.json`), sidebarFor('en'));
   assertJson(path.join(searchRoot, 'en.json'), searchIndexFor('en'));
   if (entriesFor('ja').length) {
@@ -349,9 +409,9 @@ if (check) {
   fs.mkdirSync(path.dirname(routesPath), { recursive: true });
   fs.mkdirSync(sidebarRoot, { recursive: true });
   fs.mkdirSync(searchRoot, { recursive: true });
-  fs.writeFileSync(routesPath, stableJson(routes));
-  fs.writeFileSync(localizedRoutesPath, stableJson(localizedRoutes));
-  fs.writeFileSync(previewStatusPath, stableJson(previewStatus));
+  fs.writeFileSync(routesPath, stableJson(combinedRoutes));
+  fs.writeFileSync(localizedRoutesPath, stableJson(combinedLocalizedRoutes));
+  fs.writeFileSync(previewStatusPath, stableJson(previewStatuses));
   fs.writeFileSync(
     path.join(sidebarRoot, `sidebar-en-${version}.json`),
     stableJson(sidebarFor('en'))

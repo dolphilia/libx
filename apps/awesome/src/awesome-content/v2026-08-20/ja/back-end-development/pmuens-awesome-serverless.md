@@ -14,16 +14,16 @@ licenseSource: "github-pmuens-awesome-serverless-readme-md"
 
 ## 目次
 
-- [概要](#概要)
-- [ブログ](#ブログ)
-- [ブログ記事](#ブログ記事)
-- [スクリーンキャスト](#スクリーンキャスト)
-- [講演](#講演)
-- [プロジェクト](#プロジェクト)
-- [関連プロジェクト](#関連プロジェクト)
-- [Serverless Frameworkプラグイン](#serverless-frameworkプラグイン)
-- [文献／教育](#文献教育)
-- [専門サービス](#専門サービス)
+- [概要](#general)
+- [ブログ](#blogs)
+- [ブログ記事](#blog-posts)
+- [スクリーンキャスト](#screencasts)
+- [講演](#talks)
+- [プロジェクト](#projects)
+- [関連プロジェクト](#related-projects)
+- [Serverless Frameworkプラグイン](#serverless-framework-plugins)
+- [文献／教育](#literature--education)
+- [専門サービス](#professional-services)
 
 ---
 
