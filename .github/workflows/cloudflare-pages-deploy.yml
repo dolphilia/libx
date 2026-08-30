@@ -55,8 +55,26 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Quality gate
-        run: pnpm check
+      - name: Generate shared artifacts
+        run: pnpm sync:service-workers && pnpm build:sidebar
+
+      - name: Static analysis
+        run: pnpm format:check && pnpm lint && pnpm typecheck
+
+      - name: Unit and runtime tests
+        run: pnpm test
+
+      - name: Repository and content checks
+        run: pnpm check:links && pnpm check:integrity && pnpm check:content
+
+      - name: Build template
+        run: pnpm build:template
+
+      - name: Build integrated deployment
+        run: pnpm build -- --confirm
+
+      - name: Smoke tests
+        run: pnpm test:smoke
 
       - name: Verify tracked generated artifacts are current
         run: git diff --exit-code -- 'apps/*/public/sidebar/**' 'apps/*/public/sw.js' 'templates/*/public/sidebar/**' 'templates/*/public/sw.js'
