@@ -1,15 +1,12 @@
 ---
-title: "vuejs/awesome-vue"
-description: "Vue.jsの公式資料、学習資料、採用事例、コンポーネント、ライブラリ、開発ツールを分類した定本スナップショット"
+title: "Awesome logo of vue-awesome repository"
+description: "logo of vue-awesome repositoryを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vuejs-awesome-vue-readme-md"
 ---
 
-Resource from plugin:github:github at repo://vuejs/awesome-vue/sha/14fa265df1bd0a3d78fca341a9739a42bf6cd95d/contents/README.md] <p align="center">
-  <br>
-  <img width="400" src="./assets/logo.svg" alt="logo of vue-awesome repository">
-  <br>
-  <br>
-</p>
+# Awesome logo of vue-awesome repository
+
+logo of vue-awesome repositoryを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Vue.jsのAwesomeリスト [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@main/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/vuejs/awesome-vue) <a id="awesome-vuejs"></a>
 

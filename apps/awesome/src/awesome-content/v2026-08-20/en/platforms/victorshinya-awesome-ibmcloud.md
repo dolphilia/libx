@@ -1,18 +1,12 @@
 ---
-title: "victorshinya/awesome-ibmcloud"
-description: "Canonical snapshot of victorshinya/awesome-ibmcloud"
+title: "Awesome IBM Cloud"
+description: "A curated collection of resources and projects focused on IBM Cloud."
 licenseSource: "github-victorshinya-awesome-ibmcloud-readme-md"
 ---
 
 # Awesome IBM Cloud
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![IBM Cloud powered](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://cloud.ibm.com)
-[![LICENSE](https://img.shields.io/badge/license-CC0%201.0-white.svg)](https://github.com/victorshinya/awesome-ibmcloud/blob/master/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/victorshinya/awesome-ibmcloud/pulls)
-[![Build Status](https://travis-ci.org/victorshinya/awesome-ibmcloud.svg?branch=master)](https://travis-ci.org/victorshinya/awesome-ibmcloud)
-
-A curated list of awesome IBM Cloud SDKs, open source repositories, tools, blogs and other resources.
+A curated collection of resources and projects focused on IBM Cloud.
 
 ## Contents
 

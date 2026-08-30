@@ -1,95 +1,12 @@
 ---
-title: "sorrycc/awesome-javascript"
-description: "Canonical snapshot of sorrycc/awesome-javascript"
+title: "Awesome JavaScript"
+description: "A curated collection of resources and projects focused on JavaScript."
 licenseSource: "github-sorrycc-awesome-javascript-readme-md"
 ---
 
-# Awesome JavaScript [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sorrycc/awesome-javascript/)
+# Awesome JavaScript
 
-A collection of awesome browser-side [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) libraries, resources and shiny things.
-
-* [Awesome JavaScript](#awesome-javascript)
-  * [Package Managers](#package-managers)
-  * [Component management](#component-management)
-  * [Loaders](#loaders)
-  * [Transpilers](#transpilers)
-  * [Bundlers](#bundlers)
-  * [Minimizers](#minimizers)
-  * [Type Checkers](#type-checkers)
-  * [Testing Frameworks](#testing-frameworks)
-  * [QA Tools](#qa-tools)
-  * [MVC Frameworks and Libraries](#mvc-frameworks-and-libraries)
-  * [Node-Powered CMS Frameworks](#node-powered-cms-frameworks)
-  * [Templating Engines](#templating-engines)
-  * [Game Engines](#game-engines)
-  * [Articles/Posts](#articles-and-posts)
-  * [Data Visualization](#data-visualization)
-    * [Timeline](#timeline)
-    * [Spreadsheet](#spreadsheet)
-  * [Editors](#editors)
-  * [Documentation](#documentation)
-  * Utilities
-    * [Files](#files)
-    * [Functional Programming](#functional-programming)
-    * [Reactive Programming](#reactive-programming)
-    * [Data Structure](#data-structure)
-    * [Date](#date)
-    * [String](#string)
-    * [Number](#number)
-    * [Storage](#storage)
-    * [Color](#color)
-    * [I18n And L10n](#i18n-and-l10n)
-    * [Control Flow](#control-flow)
-    * [Routing](#routing)
-    * [Security](#security)
-    * [Log](#log)
-    * [RegExp](#regexp)
-    * [Media](#videoaudio)
-    * [Voice Command](#voice-command)
-    * [API](#api)
-    * [Streaming](#streaming)
-    * [Vision Detection](#vision-detection)
-    * [Browser Detection](#browser-detection)
-    * [Operating System](#operating-system)
-    * [Benchmark](#benchmark)
-    * [Machine Learning](#machine-learning)
-    * [Web Worker](#web-worker)
-  * UI
-    * [Code Highlighting](#code-highlighting)
-    * [Loading Status](#loading-status)
-    * [Validation](#validation)
-    * [Keyboard Wrappers](#keyboard-wrappers)
-    * [Tours And Guides](#tours-and-guides)
-    * [Notifications](#notifications)
-    * [Sliders](#sliders)
-    * [Range Sliders](#range-sliders)
-    * [Form Widgets](#form-widgets)
-    * [Tips](#tips)
-    * [Modals and Popups](#modals-and-popups)
-    * [Scroll](#scroll)
-    * [Menu](#menu)
-    * [Table/Grid](#tablegrid)
-    * [Frameworks](#frameworks-1)
-    * [Boilerplates](#boilerplates)
-    * [Image](#image)
-  * [Gesture](#gesture)
-  * [Maps](#maps)
-  * [Typography](#typography)
-  * [Animations](#animations)
-  * [Image processing](#image-processing)
-  * [ES6](#es6)
-  * [Generators](#generators)
-  * [Full Text Search](#full-text-search)
-  * [SDK](#sdk)
-  * [ORM](#orm)
-  * [WebSockets](#websockets)
-  * [Generative AI](#generative-ai)
-  * [Misc](#misc)
-* [Worth Reading](#worth-reading)
-* [Other Awesome Lists](#other-awesome-lists)
-* [Contributing](#contributing)
-
-----
+A curated collection of resources and projects focused on JavaScript.
 
 ## Package Managers
 *Host the JavaScript libraries and provide tools for fetching and packaging them.*

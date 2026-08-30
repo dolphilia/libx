@@ -1,14 +1,12 @@
 ---
-title: "shano/awesome-backstage"
-description: "Canonical snapshot of shano/awesome-backstage"
+title: "Awesome Backstage"
+description: "A curated collection of resources and projects focused on Backstage."
 licenseSource: "github-shano-awesome-backstage-readme-md"
 ---
 
-# Awesome Backstage [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Backstage
 
-[<img src="backstage-logo.svg" align="right" width="100">](https://backstage.io)
-
-A curated list of awesome [Backstage](https://backstage.io/) resources, plugins, tech docs, and more! Backstage is an open-source platform that helps developers build, test, and maintain software with ease. This repository aims to provide a comprehensive collection of resources and tools for using Backstage effectively.
+A curated collection of resources and projects focused on Backstage.
 
 ## Contents
 

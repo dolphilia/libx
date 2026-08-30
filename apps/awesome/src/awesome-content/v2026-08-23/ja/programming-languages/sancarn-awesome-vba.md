@@ -1,19 +1,13 @@
 ---
-title: "sancarn/awesome-vba"
-description: "VBAとVB6のライブラリ、開発ツール、サンプル、学習資料を集めた厳選リスト"
+title: "Awesome VBA VBALogo"
+description: "VBA VBALogoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sancarn-awesome-vba-readme-md"
 ---
 
-<a id="awesome-vba"></a>
-# Awesome VBA ![VBALogo](https://raw.githubusercontent.com/sancarn/awesome-vba/fdc62016ce17d14ad98e40f108a384b7a6631049/resources/VBALogo.png) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome VBA VBALogo
 
-Visual Basic for Applications (VBA) は、ほとんどのデスクトップ Microsoft Office アプリケーションに組み込まれた、マイクロソフトのイベント駆動型プログラミング言語 Visual Basic 6.0 (VB6) の実装です。
+VBA VBALogoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-VBAおよびVB6向けのライブラリと資料を集めた厳選リストです。
-
-VBAの性質上、すべてのOS、Officeアプリケーション、CPUアーキテクチャ（x64／x86）で動作するとは限りません。そのため互換性を示す[記号](#symbology)を使用しています。
-
-<a id="contents"></a>
 ## 目次
 
 - [Library Collections](#library-collections)

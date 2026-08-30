@@ -1,16 +1,12 @@
 ---
-title: "alexk111/awesome-bitcoin-payment-processors"
-description: "Canonical snapshot of alexk111/awesome-bitcoin-payment-processors"
+title: "Awesome Bitcoin Payment Processors"
+description: "A curated collection of resources and projects focused on Bitcoin Payment Processors."
 licenseSource: "github-alexk111-awesome-bitcoin-payment-processors-readme-md"
 ---
 
-<div align="center">
-<img width="500" src="media/logo.svg" alt="Awesome Bitcoin Payment Processors"/>
-</div>
+# Awesome Bitcoin Payment Processors
 
-# Awesome Bitcoin Payment Processors [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-A curated list of awesome Bitcoin payment processors enabling merchants, businesses and nonprofits to accept Bitcoin payments.
+A curated collection of resources and projects focused on Bitcoin Payment Processors.
 
 ## Contents
 

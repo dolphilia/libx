@@ -153,7 +153,9 @@ for (let offset = 0; offset < pending.length; offset += batchSize) {
   console.log(`翻訳済み: ${Math.min(offset + batchSize, pending.length)}/${pending.length}`);
 }
 
-for (const [lineIndexText, entries] of Object.entries(Object.groupBy(translated, (entry) => entry.lineIndex))) {
+for (const [lineIndexText, entries] of Object.entries(
+  Object.groupBy(translated, (entry) => entry.lineIndex)
+)) {
   const lineIndex = Number(lineIndexText);
   let line = lines[lineIndex];
   for (const entry of entries.toSorted((left, right) => right.start - left.start)) {

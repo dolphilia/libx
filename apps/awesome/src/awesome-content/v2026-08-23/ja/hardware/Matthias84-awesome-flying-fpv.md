@@ -1,25 +1,12 @@
 ---
-title: "Matthias84/awesome-flying-fpv"
-description: "FPV・UAVのオープンな機体、制御、通信、安全運用資源を分類した定本スナップショット"
+title: "Awesome Flying FPV"
+description: "Flying FPVを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Matthias84-awesome-flying-fpv-readme-md"
 ---
 
-# Flying FPVのAwesomeリスト <a id="awesome-flying-fpv"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Flying FPV
 
-
-
-マルチコプター、飛行機、全翼機向けの自由ソフトウェアとオープンハードウェアを集めたリストです。活発なコミュニティを持つ定着したプロジェクトに加え、旧式でも改造例が多く重要な古典的プロジェクトを掲載します。
-
-UAV分野のオープンソース開発の全体像を示し、着手点を見つける手掛かりを提供します。
-
-> **警告**
-> 製作者、整備者、監視者、操縦者であるあなた自身が、機体と行動に**責任を負います**。物損を避け、人や動物を傷つけないでください。
-> 自国の規制を守り、他者と自分への危険を最小限にする飛行場所と方法を理解する責任もあります。
-> [適切なエアマンシップ](https://en.wikipedia.org/wiki/Airmanship)を守ってください。
-
-> **警告**
-> 過去と現在の戦争や**軍事紛争**では、UAVやDIY航空機が偵察や攻撃に利用されています。
-> この技術を扱う目的は、人を殺傷することではなく、技術と自然を平和的に研究・学習することです。[stopkillerrobots.org](https://www.stopkillerrobots.org)
+Flying FPVを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

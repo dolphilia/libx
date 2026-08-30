@@ -1,14 +1,12 @@
 ---
-title: "chentsulin/awesome-graphql"
-description: "Canonical snapshot of chentsulin/awesome-graphql"
+title: "Awesome graphql GitHub Actions Workflow"
+description: "A curated collection of resources and projects focused on graphql GitHub Actions Workflow."
 licenseSource: "github-chentsulin-awesome-graphql-readme-md"
 ---
 
-# awesome-graphql [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/chentsulin/awesome-graphql/awesome_bot.yml?logo=githubactions&label=Awesome%20Bot)
+# Awesome graphql GitHub Actions Workflow
 
-> Awesome list of GraphQL
-
-If you want to contribute to this list (please do), send me a pull request.
+A curated collection of resources and projects focused on graphql GitHub Actions Workflow.
 
 ## Table of Contents
 

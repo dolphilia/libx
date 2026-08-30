@@ -1,15 +1,12 @@
 ---
-title: "homematic-community/awesome-homematic"
-description: "Canonical snapshot of homematic-community/awesome-homematic"
+title: "Awesome Homematic"
+description: "A curated collection of resources and projects focused on Homematic."
 licenseSource: "github-homematic-community-awesome-homematic-readme-md"
 ---
 
-# Awesome Homematic [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Homematic
 
-> A curated list of Homematic related links
-
-[Homematic](https://www.homematic.com/) is a series of Smart Home devices from the manufacturer [eQ-3](https://www.eq-3.de), popular especially in Germany.
-
+A curated collection of resources and projects focused on Homematic.
 
 ## Contents
 

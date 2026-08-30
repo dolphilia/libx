@@ -1,28 +1,12 @@
 ---
-title: "quozd/awesome-dotnet"
-description: ".NETのフレームワーク、ライブラリ、ツール、テスト、学習資料集"
+title: "Awesome .NET"
+description: ".NETを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-quozd-awesome-dotnet-readme-md"
 ---
 
-# Awesome .NET!
+# Awesome .NET
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Build Status](https://github.com/quozd/awesome-dotnet/actions/workflows/awesome-bot.yml/badge.svg)](https://github.com/quozd/awesome-dotnet/actions/workflows/awesome-bot.yml)
-[![Join the chat at https://gitter.im/quozd/awesome-dotnet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/quozd/awesome-dotnet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-素晴らしい.NETライブラリ、ツール、フレームワーク、ソフトウェアのコレクションです
-
-[awesome-ruby](https://github.com/markets/awesome-ruby)、[awesome-php](https://github.com/ziadoz/awesome-php)、[awesome-python](https://github.com/vinta/awesome-python)、[frontend-dev-bookmarks](https://github.com/dypsilon/frontend-dev-bookmarks)および[ruby-bookmarks](https://github.com/dreikanter/ruby-bookmarks)をインスピレーションとして受けています
-
-貢献は常に歓迎されています！まず[contribution guidelines and quality standard](https://github.com/quozd/awesome-dotnet/blob/master/CONTRIBUTING.md)ページをご覧ください。プロパティーや商業ソフトウェアも受け入れています
-
-すべての [contributors](https://github.com/quozd/awesome-dotnet/graphs/contributors)に感謝します。あなたたちのおかげで、素晴らしい存在であり、その存在はあなたたちなしでは不可能です。目標は、非常によく知られたリソースをカテゴリ分けした、コミュニティが中心となるコレクションを構築することです。
-
-# License
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-可能な限り法的に認められている範囲で、[Vitali Fokin](https://github.com/quozd)はこの作品に関するすべての著作権および関連又は隣接する権利を放棄しました。
+.NETを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # Table of Contents
 

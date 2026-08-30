@@ -1,22 +1,12 @@
 ---
-title: "ttt30ga/awesome-product-design"
-description: "ttt30ga/awesome-product-design の正規スナップショット"
+title: "Awesome Product Design"
+description: "Product Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ttt30ga-awesome-product-design-readme-md"
 ---
 
-<div align="center" style="margin: 12px">
-  <a href="https://en.wikipedia.org/wiki/Digital_product_design">
-    <img src="./images/apd-icon.png" width="140">
-  </a>
-</div>
+# Awesome Product Design
 
-# Awesome Product Design [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-
-> プロダクトデザイナー向けのブックマーク、資料、記事のコレクション。
-
-[デジタルプロダクトデザイン](https://en.wikipedia.org/wiki/Digital_product_design)は、機能上の問題を形式的な解決策で解く反復的な設計プロセスである。デジタルプロダクトデザイナーは現実の問題を特定し、可能な限り最善の解決策を提示して、その解決策への需要がある市場へ投入する。
-
-興味深い項目があれば、プルリクエストで[追加してください](https://github.com/ttt30ga/awesome-product-design/blob/cbe26439af5c6331ac24ac32b842d597361b2796/contributing.md)。
+Product Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [リサーチ](#research)

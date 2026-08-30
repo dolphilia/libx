@@ -1,16 +1,12 @@
 ---
-title: "vitalets/awesome-smart-tv"
-description: "vitalets/awesome-smart-tv の正規スナップショット"
+title: "Awesome Smart TV"
+description: "Smart TVを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vitalets-awesome-smart-tv-readme-md"
 ---
 
-# Awesome Smart TV [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Smart TV
 
-> Smart TVアプリ構築向けの優れたリソースの厳選リスト。
-
-<a href="https://github.com/vitalets/awesome-smart-tv"><img align="right" width="150" src="https://user-images.githubusercontent.com/1473072/27913047-7c3a5e60-6267-11e7-8bd1-bef2bf3cd753.png"/></a>
-
-[Smart TV](https://en.wikipedia.org/wiki/Smart_TV)は、インターネットへ接続し、Webサイトの閲覧やアプリケーションのインストールができる、成長中のテレビプラットフォームです。Samsung、LG、Android TV、Apple TVなどを主要プレイヤーとする独自のエコシステムがあります。このリストでは、Smart TVアプリの開発と、遠隔機器からテレビと通信するための公式・サードパーティリソースを紹介します。
+Smart TVを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 * [プラットフォーム](#platforms)

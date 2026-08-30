@@ -1,26 +1,12 @@
 ---
-title: "viatsko/awesome-vscode"
-description: "Canonical snapshot of viatsko/awesome-vscode"
+title: "Awesome Vscode"
+description: "A curated collection of resources and projects focused on Vscode."
 licenseSource: "github-viatsko-awesome-vscode-readme-md"
 ---
 
+# Awesome Vscode
 
-<br/>
-<div align="center">
-  <img width="380px" src="https://raw.githubusercontent.com/viatsko/awesome-vscode/master/awesome-vscode-logo.png">
-</div>
-<br/>
-<div align="center">
-
-A curated list of delightful <a href="https://code.visualstudio.com/">Visual Studio Code</a>
-packages and resources. For more awesomeness, check
-out <a href="https://github.com/sindresorhus/awesome">awesome</a>.
-<br/>
-<br/>
-<a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"/></a>
-<a href="https://github.com/viatsko/awesome-vscode/actions/workflows/links.yml"><img src="https://github.com/viatsko/awesome-vscode/actions/workflows/links.yml/badge.svg" alt="Links Status"/></a>
-</div>
-<br/>
+A curated collection of resources and projects focused on Vscode.
 
 # Table of Contents
 

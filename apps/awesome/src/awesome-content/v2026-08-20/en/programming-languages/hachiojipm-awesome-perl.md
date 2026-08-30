@@ -1,22 +1,12 @@
 ---
-title: "hachiojipm/awesome-perl"
-description: "Canonical snapshot of hachiojipm/awesome-perl"
+title: "Awesome Perl"
+description: "A curated collection of resources and projects focused on Perl."
 licenseSource: "github-hachiojipm-awesome-perl-readme-md"
 ---
 
-# Awesome Perl [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Perl
 
-A curated list of awesome Perl resources, including frameworks, libraries and software. Inspired by [awesome-go](https://github.com/avelino/awesome-go).
-
-### Another module list
-
-We also recommend these lists.
-
-* [Task::Kensho](https://github.com/EnlightenedPerlOrganisation/task-kensho "Task::Kensho")
-* [Perlres - A list of resources about Perl](https://github.com/thibaultduponchelle/perlres)
-* [PerlMaven.com list of Perl Software](http://perlmaven.com/perl-based-open-source-products)
-* [Slaven's CPAN in a nutshell](https://github.com/eserte/srezic-misc/blob/master/cpan_in_a_nutshell/cpan_in_a_nutshell.pod)
-* Many Task::** Modules. (ex. Task::Plack, Task::BeLike::<AuthorName>...)
+A curated collection of resources and projects focused on Perl.
 
 ### Contents
 

@@ -1,31 +1,12 @@
 ---
-title: "riderx/awesome-capacitor"
-description: "Canonical snapshot of riderx/awesome-capacitor"
+title: "Awesome Capacitor"
+description: "A curated collection of resources and projects focused on Capacitor."
 licenseSource: "github-riderx-awesome-capacitor-readme-md"
 ---
 
-# Awesome Capacitor [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Capacitor
 
-<div align="center">
-	<img width="100%" src="https://raw.githubusercontent.com/riderx/awesome-capacitor/main/awesome_capacitor.png" alt="Awesome">
-	<br>
-</div>
-<br/>
-<div align="center">
-⚡ A curated list of awesome resources related to the <a href='https://www.capacitorjs.com/'>Capacitor</a> Platform.
-<br />
-Capacitor is an open-source native runtime for building Web Native apps. Create cross-platform iOS, Android, and Progressive Web Apps with JavaScript, HTML, and CSS.
-<br/>
-</div>
-<p align='center'>
-  <img src='https://capgo.app/readme-banner.svg?repo=riderx/awesome-capacitor' alt='Capgo - Instant updates for capacitor'/>
-</p>
-<br/>
-<div align="center">
-  <h2><a href="https://capgo.app/?ref=awesome-capacitor"> ➡️ Get Instant updates for your App with Capgo </a></h2>
-  <h2><a href="https://capgo.app/consulting/?ref=awesome-capacitor"> Missing a feature? We’ll build the plugin for you 💪</a></h2>
-</div>
-<br/>
+A curated collection of resources and projects focused on Capacitor.
 
 ## Contents
 

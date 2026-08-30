@@ -1,11 +1,12 @@
 ---
-title: "TupleType/awesome-cicd-attacks"
-description: "TupleType/awesome-cicd-attacks の定本スナップショット"
+title: "Awesome CI/CD Attacks"
+description: "CI/CD Attacksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-TupleType-awesome-cicd-attacks-readme-md"
 ---
 
-# Awesome CI/CD Attacks [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-コードの開発・デプロイに関連するシステムとプロセスの攻撃的研究。
+# Awesome CI/CD Attacks
+
+CI/CD Attacksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

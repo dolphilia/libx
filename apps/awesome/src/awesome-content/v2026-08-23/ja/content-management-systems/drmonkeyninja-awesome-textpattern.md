@@ -1,13 +1,11 @@
 ---
-title: "drmonkeyninja/awesome-textpattern"
-description: "drmonkeyninja/awesome-textpatternの収録案内"
+title: "Awesome Textpattern"
+description: "Awesome Textpatternの収録案内です。このスナップショットでは上流本文を転載していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# Textpattern
+# Awesome Textpattern
 
-このAwesomeリストは、固定済みのsindresorhus/awesomeスナップショットのContent Management Systemsセクションから参照されています。
-
-このスナップショットで再利用可能なライセンスを確認できなかった、固定READMEを取得できなかった、または現在のlibxでは対応していないライセンス条件があるため、上流リストの本文はlibxへ複製していません。
+Awesome Textpatternの収録案内です。このスナップショットでは上流本文を転載していません。
 
 - [元のリポジトリを開く](https://github.com/drmonkeyninja/awesome-textpattern/tree/d004cf16778e72c75057f027924311ef42a7417c)

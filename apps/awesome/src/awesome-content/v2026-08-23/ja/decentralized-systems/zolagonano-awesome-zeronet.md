@@ -1,21 +1,12 @@
 ---
-title: "zolagonano/awesome-zeronet"
-description: "zolagonano/awesome-zeronet の正規スナップショット"
+title: "Awesome ZeroNet"
+description: "ZeroNetを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-zolagonano-awesome-zeronet-readme-md"
 ---
 
-<p align="center">
-  <br>
-  <a href="https://zeronet.io"><img width="100" src="./assets/logo.png" alt="ZeroNet's logo"></a>
-  <br>
-</p>
+# Awesome ZeroNet
 
-
-# Awesome ZeroNet [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> [ZeroNet](https://en.wikipedia.org/wiki/ZeroNet) の実装、プラグイン、ツール、zite を集めた Awesome なキュレーション済みリスト。 
-
-ZeroNet は、ピアツーピアユーザーによる分散型 Web 風ネットワークです。
+ZeroNetを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

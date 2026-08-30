@@ -1,16 +1,12 @@
 ---
-title: "nglgzz/awesome-clean-tech"
-description: "Canonical snapshot of nglgzz/awesome-clean-tech"
+title: "Awesome Clean Tech"
+description: "A curated collection of resources and projects focused on Clean Tech."
 licenseSource: "github-nglgzz-awesome-clean-tech-readme-md"
 ---
 
-# Awesome Clean Tech [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+# Awesome Clean Tech
 
-> Clean technology is any process, product, or service that reduces negative environmental impacts through significant energy efficiency improvements, the sustainable use of resources, or environmental protection activities.
-
-The goal of this list is to gather a list of awesome companies fighting climate change, as well as collecting research about the issues and solutions connected to it.
-
-_Contributions to this list are welcome! Just edit the [README.md](https://github.com/nglgzz/awesome-clean-tech/blob/master/README.md) (this document) and send the changes as a pull request. Please read the [guidelines](https://github.com/nglgzz/awesome-clean-tech/blob/763f76ede222c7e9c652d57a3085a5e802e9ed31/CONTRIBUTING.md) before contributing._
+A curated collection of resources and projects focused on Clean Tech.
 
 ## Contents
 

@@ -1,12 +1,12 @@
 ---
-title: "NPACore/awesome-neuroimaging"
-description: "NPACore/awesome-neuroimaging の正規スナップショット"
+title: "Awesome Neuroimaging"
+description: "Neuroimagingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-NPACore-awesome-neuroimaging-readme-md"
 ---
 
-# Awesome Neuroimaging [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Neuroimaging
 
-> 脳画像と記録を探索、整理、解析する。MRに重点を置く。
+Neuroimagingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

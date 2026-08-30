@@ -1,35 +1,12 @@
 ---
-title: "BubuAnabelas/awesome-markdown"
-description: "BubuAnabelas/awesome-markdown の正規スナップショット"
+title: "Awesome Markdown"
+description: "Markdownを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-BubuAnabelas-awesome-markdown-readme-md"
 ---
 
-# Awesome Markdown [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Markdown
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg" align="right" width="208">
-
-> 優れたMarkdown関連のものを集めたキュレーションリスト。
-
-Markdownは、John GruberがAaron Swartzと協力して作成したマークアップ言語です。HTMLへ簡単に変換できるように設計され、さまざまな実装へ拡張されています。
-
-
-
-_貢献する前に[貢献ガイドライン](https://github.com/BubuAnabelas/awesome-markdown/blob/360c7d1930c1a59ec3bcdfbaa926a1fc80ffb07f/.github/contributing.md)を読んでください。_
-
-
-
-:gem: は**特に_素晴らしい／有用_**であることを意味します。<br />
-![Globe][globe] は**_Webアプリ／Webサービス_**であることを意味します。<br />
-![Android OS][android-os] は**_Android_で動作**することを意味します。<br />
-![iOS Logo][ios-logo] は**_iOS_で動作**することを意味します。<br />
-![Mac OS X][macosx] は**_macOS_で動作**することを意味します。<br />
-![Linux][linux] は**_Linux_で動作**することを意味します。<br />
-![Windows][windows] は**_Windows_で動作**することを意味します。<br />
-
-
-
-
-
+Markdownを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

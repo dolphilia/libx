@@ -1,13 +1,12 @@
 ---
-title: "jbmoelker/progressive-enhancement-resources"
-description: "Canonical snapshot of jbmoelker/progressive-enhancement-resources"
+title: "Awesome Progressive Enhancement Resources"
+description: "A curated collection of resources and projects focused on Progressive Enhancement Resources."
 licenseSource: "github-jbmoelker-progressive-enhancement-resources-readme-md"
 ---
 
-# Progressive Enhancement Resources [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Progressive Enhancement Resources
 
-A comprehensive collection of resources on Progressive Enhancement. From concept and strategies to feature detection and testing methods. Complete with a list of (code) examples.
-
+A curated collection of resources and projects focused on Progressive Enhancement Resources.
 
 ## Contents
 

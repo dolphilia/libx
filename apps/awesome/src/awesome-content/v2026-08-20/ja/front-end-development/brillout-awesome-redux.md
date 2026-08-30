@@ -1,19 +1,12 @@
 ---
-title: "brillout/awesome-redux"
-description: "brillout/awesome-redux の定本スナップショット"
+title: "Awesome Redux Libraries & Learning Material"
+description: "Redux Libraries & Learning Materialを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-brillout-awesome-redux-readme-md"
 ---
 
-# Reduxライブラリと学習資料 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Redux Libraries & Learning Material
 
-[<img src="https://rawgit.com/brillout/awesome-redux/master/redux-logo.svg" align="right" width="110">](http://redux.js.org/)
-
-> ReduxはJavaScriptアプリ向けの状態コンテナーです。
-
- - 公式Webサイト: [`devarchy.com/redux`](https://devarchy.com/redux)
- - devarchyを使ってライブラリをカタログへ追加する
- 
- <br/>
+Redux Libraries & Learning Materialを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 #### 目次
 - [コードアーキテクチャ](#code-architecture)

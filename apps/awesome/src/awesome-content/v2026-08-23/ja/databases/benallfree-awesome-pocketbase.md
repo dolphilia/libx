@@ -1,16 +1,12 @@
 ---
-title: "benallfree/awesome-pocketbase"
-description: "benallfree/awesome-pocketbaseの正規スナップショット"
+title: "Awesome PocketBase"
+description: "PocketBaseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-benallfree-awesome-pocketbase-readme-md"
 ---
 
-# Awesome PocketBase [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome PocketBase
 
-![GitHub forks](https://img.shields.io/github/stars/benallfree/awesome-pocketbase?style=flat) ![GitHub forks](https://img.shields.io/github/forks/benallfree/awesome-pocketbase?style=flat) ![GitHub forks](https://img.shields.io/github/contributors/benallfree/awesome-pocketbase?style=flat)
-
-> 優れた[PocketBase](https://pocketbase.io)リソースを集めたリストです。
-
-PocketBaseは、組み込みデータベース（SQLite）、リアルタイム購読、組み込み認証管理、便利なダッシュボードUI、シンプルなREST風APIから成るオープンソースバックエンドです。
+PocketBaseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,20 +1,12 @@
 ---
-title: "componently-com/awesome-building-blocks-for-web-apps"
-description: "Canonical snapshot of componently-com/awesome-building-blocks-for-web-apps"
+title: "Awesome Building Blocks for Web Apps"
+description: "A curated collection of resources and projects focused on Building Blocks for Web Apps."
 licenseSource: "github-componently-com-awesome-building-blocks-for-web-apps-readme-md"
 ---
 
-# Awesome Building Blocks for Web Apps [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Here%27s%20a%20list%20of%20standalone%20features%20you%20can%20integrate%20into%20your%20web%20app&url=https://github.com/componently-com/awesome-building-blocks-for-web-apps&via=componently&hashtags=webdev,componently,react,blocks,developers)
+# Awesome Building Blocks for Web Apps
 
-**Curated list of standalone features to be integrated into web applications: Get full features built by others instead of having to write everything yourself.**
-
-<hr>
-
-If you like these building blocks, check out [componently.com](https://www.componently.com/?utm_source=github-awesome-components&utm_medium=referral&utm_campaign=awesome-list), a marketplace where developers can search, compare and integrate web application building blocks.
-
-<hr>
-
-
+A curated collection of resources and projects focused on Building Blocks for Web Apps.
 
 ## Contents
 

@@ -1,13 +1,12 @@
 ---
-title: "enaqx/awesome-react"
-description: "Canonical snapshot of enaqx/awesome-react"
+title: "Awesome React"
+description: "A curated collection of resources and projects focused on React."
 licenseSource: "github-enaqx-awesome-react-readme-md"
 ---
 
-# Awesome React [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome React
 
-A collection of awesome things regarding the React ecosystem.
-
+A curated collection of resources and projects focused on React.
 
 - [React](#react)
   - [React General Resources](#react-general-resources)

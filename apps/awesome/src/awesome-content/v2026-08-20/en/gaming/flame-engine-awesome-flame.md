@@ -1,36 +1,12 @@
 ---
-title: "flame-engine/awesome-flame"
-description: "Canonical snapshot of flame-engine/awesome-flame"
+title: "Awesome Flame"
+description: "A curated collection of resources and projects focused on Flame."
 licenseSource: "github-flame-engine-awesome-flame-readme-md"
 ---
 
-<div align="center">
-	<div>
-    <a href="https://flame-engine.org/">
-		<img width="300" src="media/logo.png" alt="Awesome Flame">
-    </a>
-	</div>
-  <p style="margin-top:30px;" align="center">
-    <a href="https://github.com/sindresorhus/awesome">
-      <img alt="Awesome" src="https://awesome.re/badge-flat.svg" />
-    </a>
-    <a href="http://creativecommons.org/publicdomain/zero/1.0">
-      <img alt="License: CC0" src="https://img.shields.io/badge/license-CC0-lightgray?style=flat-square" />
-    </a>
-    <a href="https://flame-engine.org">
-      <img alt="Powered by Flame" src="https://img.shields.io/badge/Powered%20by-%F0%9F%94%A5-orange.svg?style=flat-square" />
-    </a>
-    <a href="https://github.com/flame-engine/awesome-flame/blob/main/CONTRIBUTING.md">
-      <img alt="Add your project" src="https://img.shields.io/badge/-Add%20your%20project-blue?style=flat-square" />
-    </a>
-  </p>
-</div>
-
 # Awesome Flame
 
-> A curated list of games, libraries, and articles related to the Flame Engine for Flutter.
-
-[Flame](https://flame-engine.org/) is a minimalist 2D game engine for Flutter that provides a nice set of somewhat independent modules you can choose from to build your games.
+A curated collection of resources and projects focused on Flame.
 
 ## Contents
 

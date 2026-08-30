@@ -1,40 +1,12 @@
 ---
-title: "rickstaa/awesome-adsb"
-description: "Canonical snapshot of rickstaa/awesome-adsb"
+title: "Awesome ADS-B"
+description: "A curated collection of resources and projects focused on ADS-B."
 licenseSource: "github-rickstaa-awesome-adsb-readme-md"
 ---
 
+# Awesome ADS-B
 
-
-<div align="center">
-
-
-
-
-
-# <a style="color: inherit" href="https://github.com/rickstaa/awesome-adsb">Awesome ADS-B</a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![GitHub contributors](https://img.shields.io/github/contributors/rickstaa/awesome-adsb?color=geen)](https://github.com/rickstaa/awesome-adsb/graphs/contributors) [![GitHub Repo stars](https://img.shields.io/github/stars/rickstaa/awesome-adsb)](https://github.com/rickstaa/awesome-adsb/stargazers) 
-
-> **Note**
-> Just type `adsb.cool` to go here.
-
-
-
-A curated list of awesome [ASD-B](https://en.wikipedia.org/wiki/Automatic_Dependent_Surveillance%E2%80%93Broadcast) tools, projects, Docker images, resources and other shiny things 📡.
-
-
-
-<a href="https://www.sportys.com/blog/ads-b-101-what-you-need-know" target="_blank" rel="noopener noreferrer">
-  <img width="600" src="https://www.sportys.com//media/wysiwyg/blog/13_-_Navigating_and_Automation_in_the_21st_Century.png" alt="ADSB.cool Logo"/>
-</a>
-
-
-
-**Automatic Dependent Surveillance–Broadcast (ADS-B)** is a surveillance technology and form of Electronic [Conspicuity](https://en.wikipedia.org/wiki/Airborne_collision_avoidance_system#Aircraft_collision_avoidance) in which an [aircraft](https://en.wikipedia.org/wiki/Aircraft) determines its position via [satellite navigation](https://en.wikipedia.org/wiki/Satellite_navigation) or other sensors and periodically broadcasts it, enabling it to be tracked.
-
-</div>
-
-
-
+A curated collection of resources and projects focused on ADS-B.
 
 ## Contents
 

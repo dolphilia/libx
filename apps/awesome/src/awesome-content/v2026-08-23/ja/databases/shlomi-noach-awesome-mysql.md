@@ -1,14 +1,12 @@
 ---
-title: "shlomi-noach/awesome-mysql"
-description: "shlomi-noach/awesome-mysql の正規スナップショット"
+title: "Awesome mysql"
+description: "mysqlを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-shlomi-noach-awesome-mysql-readme-md"
 ---
 
-# awesome-mysql
+# Awesome mysql
 
-優れたMySQL向けフリー・オープンソースソフトウェア、ライブラリ、リソースのキュレーションリスト。 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-このリストはプルリクエストを受け付け、推奨しています。[CONTRIBUTING](https://github.com/shlomi-noach/awesome-mysql/blob/master/CONTRIBUTING.md)を参照してください。
+mysqlを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次
 

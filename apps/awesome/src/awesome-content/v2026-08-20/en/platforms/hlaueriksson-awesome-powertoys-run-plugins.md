@@ -1,21 +1,12 @@
 ---
-title: "hlaueriksson/awesome-powertoys-run-plugins"
-description: "Canonical snapshot of hlaueriksson/awesome-powertoys-run-plugins"
+title: "Awesome PowerToys Run Plugins"
+description: "A curated collection of resources and projects focused on PowerToys Run Plugins."
 licenseSource: "github-hlaueriksson-awesome-powertoys-run-plugins-readme-md"
 ---
 
-# Awesome PowerToys Run Plugins [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome PowerToys Run Plugins
 
-
-[<img src="powertoys-logo.png" align="right" width="100">](https://learn.microsoft.com/en-us/windows/powertoys/run)
-
-> A curated list of [PowerToys Run](https://learn.microsoft.com/en-us/windows/powertoys/run) community plugins and resources
-
-
-PowerToys Run is a quick launcher for Windows. It is open-source and modular for additional plugins.
-
-![PowerToys Run](https://raw.githubusercontent.com/hlaueriksson/awesome-powertoys-run-plugins/d8108fdfad591844cc30dd56bcbe0a47d023148f/launcher-dark.png#gh-dark-mode-only)
-![PowerToys Run](https://raw.githubusercontent.com/hlaueriksson/awesome-powertoys-run-plugins/d8108fdfad591844cc30dd56bcbe0a47d023148f/launcher-light.png#gh-light-mode-only)
+A curated collection of resources and projects focused on PowerToys Run Plugins.
 
 ## Contents
 
@@ -109,5 +100,3 @@ Contributions welcome!
 
 1. First read the [community plugin checklist](https://github.com/hlaueriksson/awesome-powertoys-run-plugins/blob/d8108fdfad591844cc30dd56bcbe0a47d023148f/checklist.md)
 2. Then read the [contribution guidelines](https://github.com/hlaueriksson/awesome-powertoys-run-plugins/blob/d8108fdfad591844cc30dd56bcbe0a47d023148f/contributing.md)
-
-

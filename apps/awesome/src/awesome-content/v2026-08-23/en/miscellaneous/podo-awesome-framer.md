@@ -1,16 +1,12 @@
 ---
-title: "podo/awesome-framer"
-description: "Canonical snapshot of podo/awesome-framer"
+title: "Awesome Framer"
+description: "A curated collection of resources and projects focused on Framer."
 licenseSource: "github-podo-awesome-framer-readme-md"
 ---
 
-# Awesome Framer [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Framer
 
-[<img src="https://raw.githubusercontent.com/podo/awesome-framer/03e1463593d92bfaa0c5a01943966728bb8a7a07/logo.png" align="right" width="75">](https://framer.com/)
-
-> A curated list of [Framer](http://framer.com) prototyping tool articles, resources, tutorials and other related things.
-
-[Framer](http://framer.com) is a tool to create animated and interactive prototypes. It uses modern web technologies such as JavaScript, HTML and CSS to extend the capabilities for advanced users and auto-correct, intuitive error messaging or in-app documentation to lower the learning curve for beginners.
+A curated collection of resources and projects focused on Framer.
 
 ## Contents
 

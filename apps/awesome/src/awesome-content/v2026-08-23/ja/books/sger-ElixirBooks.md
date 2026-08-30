@@ -1,12 +1,13 @@
 ---
-title: "sger/ElixirBooks"
-description: "sger/ElixirBooks の正規スナップショット"
+title: "Awesome Elixir Books"
+description: "Elixir Booksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sger-ElixirBooks-readme-md"
 ---
 
-<a id="awesome-elixir-books"></a>
-# Awesome Elixir Books [![Build Status](https://github.com/sger/ElixirBooks/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/sger/ElixirBooks/actions/workflows/main.yml) [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-<a id="contents"></a>
+# Awesome Elixir Books
+
+Elixir Booksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+
 目次
 ====
 * [書籍](#books)

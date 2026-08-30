@@ -1,22 +1,12 @@
 ---
-title: "awkward/awesome-netherlands-events"
-description: "awkward/awesome-netherlands-events の正規スナップショット"
+title: "Awesome Events in NL"
+description: "Events in NLを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-awkward-awesome-netherlands-events-readme-md"
 ---
 
-# オランダの Awesome イベント [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Events in NL
 
-> 🇳🇱 で開催される素晴らしいイベントを厳選したリスト
-
-このリストでは、オランダで開催される（多くは定期開催の）カンファレンス、ミートアップ、パーティーなど、技術関連の素晴らしいイベントを紹介します 🎉
-
-貢献を歓迎します。プルリクエストでリンクを追加するか、Issue を作成して議論を始めてください。
-- [Awesome リストとは？](https://github.com/sindresorhus/awesome)
-- [貢献ガイド](https://github.com/awkward/awesome-netherlands-events/blob/ff3d9ebbe94936a84d4d423b1f7a22529e3374a7/contributing.md)
-
----
-
-さらに素晴らしい情報を見たい方は、[Twitter でフォローしてください](https://twitter.com/madeawkward)。
+Events in NLを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [ロッテルダム](#rotterdam)

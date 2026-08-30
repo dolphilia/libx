@@ -1,31 +1,12 @@
 ---
-title: "seancoyne/awesome-coldfusion"
-description: "seancoyne/awesome-coldfusion の正規スナップショット"
+title: "Awesome ColdFusion"
+description: "ColdFusionを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-seancoyne-awesome-coldfusion-readme-md"
 ---
 
-# Awesome ColdFusion [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome ColdFusion
 
-ColdFusion の優れたフレームワーク、ライブラリ、ソフトウェアを集めたリストです。[awesome-javascript](https://github.com/sorrycc/awesome-javascript) に着想を得ています。
-
-Pull Request を大歓迎します。
-
-* [Awesome ColdFusion](https://github.com/seancoyne/awesome-coldfusion)
-	* [エンジン](#engines)
-	* [アプリケーションフレームワーク](#application-frameworks)
-	* [テスト](#testing)
-	* [依存性注入](#dependency-injection)
-	* [コンテンツ管理システム](#cms)
-	* [NoSQL](#nosql)
-	* [REST](#rest)
-	* [その他のライブラリ](#other-libraries)
-	* [エディター](#editors)
-	* [ツール](#tools)
-	* [リファレンス](#references)
-	* [リソース](#resources)
-	* [ドキュメント](#documentation)
-
-----
+ColdFusionを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## エンジン
 

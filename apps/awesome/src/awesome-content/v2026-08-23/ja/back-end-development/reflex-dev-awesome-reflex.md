@@ -1,25 +1,12 @@
 ---
-title: "reflex-dev/awesome-reflex"
-description: "reflex-dev/awesome-reflex の定本スナップショット"
+title: "Awesome Reflex"
+description: "Reflexを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-reflex-dev-awesome-reflex-readme-md"
 ---
 
+# Awesome Reflex
 
-<div align="center">
-    <img src="https://raw.githubusercontent.com/reflex-dev/awesome-reflex/main/images/dark_logo.svg#gh-light-mode-only" alt="Reflex Logo" width="300px">
-    <img src="https://raw.githubusercontent.com/reflex-dev/awesome-reflex/main/images/light_logo.svg#gh-dark-mode-only" alt="Reflex Logo" width="300px">
-
-[![PyPI version](https://badge.fury.io/py/reflex.svg)](https://badge.fury.io/py/reflex)
-![versions](https://img.shields.io/pypi/pyversions/reflex.svg)
-[![Documentation](https://img.shields.io/badge/Documentation%20-Introduction%20-%20%23007ec6)](https://reflex.dev/docs/getting-started/introduction)
-[![Discord](https://img.shields.io/discord/1029853095527727165?color=%237289da&label=Discord)](https://discord.gg/T5WSbC2YtQ)
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-</div>
-
-[Reflex](https://reflex.dev)は、純粋なPythonだけでフルスタックウェブアプリケーションを構築するオープンソースフレームワークです。
-開発者はPythonという一つの言語だけで、ウェブアプリのフロントエンドとバックエンドの両方を作成できます。
-
-Reflexを使うと、HTML、CSS、JavaScriptを書かずに、小規模なデータサイエンスプロジェクトから大規模なマルチページウェブサイトまで構築できます。
+Reflexを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 📚 目次
 

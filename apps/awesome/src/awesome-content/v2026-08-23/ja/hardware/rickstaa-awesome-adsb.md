@@ -1,25 +1,12 @@
 ---
-title: "rickstaa/awesome-adsb"
-description: "rickstaa/awesome-adsb の定本スナップショット"
+title: "Awesome ADS-B"
+description: "ADS-Bを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-rickstaa-awesome-adsb-readme-md"
 ---
 
-<div align="center">
+# Awesome ADS-B
 
-# <a style="color: inherit" href="https://github.com/rickstaa/awesome-adsb">Awesome ADS-B</a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![GitHub contributors](https://img.shields.io/github/contributors/rickstaa/awesome-adsb?color=geen)](https://github.com/rickstaa/awesome-adsb/graphs/contributors) [![GitHub Repo stars](https://img.shields.io/github/stars/rickstaa/awesome-adsb)](https://github.com/rickstaa/awesome-adsb/stargazers)
-
-> **注記**
-> `adsb.cool` と入力するだけでここに移動できます。
-
-優れた[ASD-B](https://en.wikipedia.org/wiki/Automatic_Dependent_Surveillance%E2%80%93Broadcast)ツール、プロジェクト、Dockerイメージ、リソースなどを集めた厳選リスト 📡。
-
-<a href="https://www.sportys.com/blog/ads-b-101-what-you-need-know" target="_blank" rel="noopener noreferrer">
-  <img width="600" src="https://www.sportys.com//media/wysiwyg/blog/13_-_Navigating_and_Automation_in_the_21st_Century.png" alt="ADSB.cool Logo"/>
-</a>
-
-**Automatic Dependent Surveillance–Broadcast（ADS-B）**は、電子的な[視認性](https://en.wikipedia.org/wiki/Airborne_collision_avoidance_system#Aircraft_collision_avoidance)の一形態である監視技術です。[航空機](https://en.wikipedia.org/wiki/Aircraft)が[衛星航法](https://en.wikipedia.org/wiki/Satellite_navigation)などのセンサーを通じて自らの位置を決定し、定期的に送信することで追跡可能にします。
-
-</div>
+ADS-Bを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

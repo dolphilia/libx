@@ -1,11 +1,12 @@
 ---
-title: "expede/awesome-relay"
-description: "Relayの学習資料、ライブラリ、ツール、スターター、サーバー実装をまとめた定本スナップショット"
+title: "Awesome Relay"
+description: "Relayを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-expede-awesome-relay-readme-md"
 ---
 
-# RelayのAwesomeリスト <a id="awesome-relay"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[Relay](https://github.com/facebook/relay)の優れた資料を、[Awesome](https://github.com/sindresorhus/awesome/)プロジェクトを基にまとめたリストです。
+# Awesome Relay
+
+Relayを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # 目次 <a id="table-of-contents"></a>
 - [学習資料](#learning-resources)

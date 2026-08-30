@@ -1,60 +1,13 @@
 ---
-title: "krispo/awesome-haskell"
-description: "krispo/awesome-haskell の正規スナップショット"
+title: "Awesome Haskell"
+description: "Haskellを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-krispo-awesome-haskell-readme-md"
 ---
 
-<a id="awesome-haskell"></a>
-Awesome Haskell [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-=============
+# Awesome Haskell
 
-素晴らしいHaskellのリンク、フレームワーク、ライブラリおよびソフトウェアの補助リスト。[awesome](https://github.com/sindresorhus/awesome)プロジェクトの一部。
+Haskellを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-- [Awesome Haskell](#awesome-haskell)
-    - [_基礎_](#basics)
-    - [アルゴリズム](#algorithmics)
-    - [音声・音楽・サウンド](#audio-music--sound)
-    - [圏論](#category-theory)
-    - [コンパイラ](#compilers)
-    - [並行・並列処理](#concurrency--parallelism)
-    - [設定](#configuration)
-    - [暗号・ハッシュ](#cryptography--hashing)
-    - [データアクセス](#data-access)
-    - [データ形式](#data-formats)
-    - [データサイエンス](#data-science)
-    - [データ構造](#data-structures)
-    - [データベース](#database)
-    - [開発ツール](#development-tools)
-    - [ドキュメント](#documentation)
-    - [分散コンピューティング](#distributed-computing)
-    - [エディター](#editors)
-    - [拡張機能](#extensions)
-    - [ゲーム](#games)
-    - [GUI](#gui)
-    - [グラフィックス](#graphics)
-    - [ネットワーク](#network)
-    - [数論](#number-theory)
-    - [ウェブ／フレームワーク](#web--frameworks)
-    - [テキスト処理](#text-processing)
-    - [メッセージング](#messaging)
-    - [言語](#languages)
-    - [オペレーティングシステム](#operating-systems)
-    - [プラットフォーム](#platforms)
-    - [プログラミング](#programming)
-    - [科学](#science)
-    - [ストリーム処理](#streaming-processing)
-- [資料](#resources)
-    - [ウェブサイト](#websites)
-    - [ブログ執筆者](#bloggers)
-    - [コミュニティ](#community)
-    - [チュートリアル](#tutorials)
-    - [コース](#courses)
-    - [カンファレンス](#conferences)
-    - [パッケージ](#packages)
-- [ライセンス](#license)
-
-
-<a id="basics"></a>
 ## _基礎_
 
 * [Alex](https://www.haskell.org/alex/) - ハスケル用の論理解析生成器

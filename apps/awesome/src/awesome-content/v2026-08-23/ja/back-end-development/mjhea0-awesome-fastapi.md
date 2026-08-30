@@ -1,16 +1,12 @@
 ---
-title: "mjhea0/awesome-fastapi"
-description: "mjhea0/awesome-fastapi の定本スナップショット"
+title: "Awesome FastAPI"
+description: "FastAPIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mjhea0-awesome-fastapi-readme-md"
 ---
 
+# Awesome FastAPI
 
-
-# Awesome FastAPI | [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
-
-> FastAPIに関する優れた資料・拡張・プロジェクトを集めた一覧です。
-
-[FastAPI](https://fastapi.tiangolo.com/)は、RESTful APIの構築に適した、モダンで高性能かつ機能の充実したPythonウェブフレームワークです。
+FastAPIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

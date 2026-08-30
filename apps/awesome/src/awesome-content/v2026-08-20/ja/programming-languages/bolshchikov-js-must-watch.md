@@ -1,11 +1,12 @@
 ---
-title: "bolshchikov/js-must-watch"
-description: "bolshchikov/js-must-watch の定本スナップショット"
+title: "Awesome JS Must Watch"
+description: "JS Must Watchを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-bolshchikov-js-must-watch-readme-md"
 ---
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-> JavaScriptに関する必見動画のリストです。
+# Awesome JS Must Watch
+
+JS Must Watchを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 2020
 1. [David Neal: **JavaScript: Past, Present and Future**](https://youtu.be/n-N67Q0O52U) [47:26]

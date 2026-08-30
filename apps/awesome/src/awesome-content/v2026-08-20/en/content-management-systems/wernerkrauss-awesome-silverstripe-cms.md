@@ -1,21 +1,12 @@
 ---
-title: "wernerkrauss/awesome-silverstripe-cms"
-description: "Canonical snapshot of wernerkrauss/awesome-silverstripe-cms"
+title: "Awesome Silverstripe CMS"
+description: "A curated collection of resources and projects focused on Silverstripe CMS."
 licenseSource: "github-wernerkrauss-awesome-silverstripe-cms-readme-md"
 ---
 
-# Awesome Silverstripe CMS [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Silverstripe CMS
 
-[<img src="images/logo-silverstripe-cms.png" align="right" width="200">](https://www.silverstripe.org/)
-
-> Useful resources for Silverstripe Framework and CMS
-
-[Silverstripe CMS](https://www.silverstripe.org) is an open source PHP framework for building web applications. It is a rapid development MVC framework that serves as a classic fully fledged CMS or as a headless CMS, which can be queried either via GraphQL or a custom API.
-Following the "Active Record" design pattern, you can easily extend the built-in functionality with a project specific data model.
-
-[Contributions welcome](https://github.com/wernerkrauss/awesome-silverstripe-cms/blob/8f378e0d9585d40573bc1d7ef65dcabadba265f1/CONTRIBUTING.md), please send a pull request or open an issue to start a discussion.
-
-Outdated items can be found in the [archive](https://github.com/wernerkrauss/awesome-silverstripe-cms/blob/8f378e0d9585d40573bc1d7ef65dcabadba265f1/ARCHIVE.md).
+A curated collection of resources and projects focused on Silverstripe CMS.
 
 ## Contents
 
@@ -136,5 +127,3 @@ There is no official box like Laravel has its homestead box. However, there are 
 - [Laravel Homestead](https://github.com/laravel/homestead) - Prepackaged box for local development.
 - [Scotchbox](https://box.scotch.io) - Popular LAMP/LEMP stack for local development.
 - [Zauberfisch Vagrant Boxes](https://github.com/Zauberfisch/vagrant-boxes) -  Preconfigured Vagrant boxes for SS3 and SS4.
-
-

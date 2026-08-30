@@ -1,17 +1,12 @@
 ---
-title: "nirgn975/awesome-drupal"
-description: "Canonical snapshot of nirgn975/awesome-drupal"
+title: "Awesome Drupal"
+description: "A curated collection of resources and projects focused on Drupal."
 licenseSource: "github-nirgn975-awesome-drupal-readme-md"
 ---
 
-# Awesome Drupal [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Drupal
 
-[<img src="https://raw.githubusercontent.com/nirgn975/awesome-drupal/master/icon-drupal.png" align="right" width="90">](https://www.drupal.org)
-
-> [Drupal](https://www.drupal.org) is a free and open source CMS written in PHP and distributed under the GNU General Public License, provides a back-end for Web sites worldwide – ranging from personal blogs to corporate, political, and government sites.
-
-You might also like [awesome-php](https://github.com/ziadoz/awesome-php).
-
+A curated collection of resources and projects focused on Drupal.
 
 ## Contents
 

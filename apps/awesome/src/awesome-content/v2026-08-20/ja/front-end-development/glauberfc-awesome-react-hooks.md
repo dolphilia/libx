@@ -1,16 +1,12 @@
 ---
-title: "glauberfc/awesome-react-hooks"
-description: "glauberfc/awesome-react-hooks の定本スナップショット"
+title: "Awesome React Hooks"
+description: "React Hooksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-glauberfc-awesome-react-hooks-readme-md"
 ---
 
-# Awesome React Hooks [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome React Hooks
 
-[<img src="https://user-images.githubusercontent.com/15311858/47717137-ab421180-dc23-11e8-9ee8-a0de40260113.png">](https://reactjs.org/docs/hooks-intro.html)
-
-React Hooks に関する厳選リスト。
-
-> _Hooks は React 16.8 に追加された新しい機能です。クラスを書かずに state やその他の React 機能を使えるようにします。_
+React Hooksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

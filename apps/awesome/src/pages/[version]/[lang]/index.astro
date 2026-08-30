@@ -50,9 +50,7 @@ const baseUrl = projectConfig.paths.baseUrl;
 const docs = localizedRouteManifest.entries.filter(
   (entry) => entry.version === version && entry.lang === lang
 ) as DocEntry[];
-const previewStatus = previewStatusManifest.snapshots.find(
-  (entry) => entry.snapshotId === version
-);
+const previewStatus = previewStatusManifest.snapshots.find((entry) => entry.snapshotId === version);
 if (!previewStatus) throw new Error(`Awesome進捗情報が見つかりません: ${version}`);
 
 // カテゴリごとにドキュメントを整理
@@ -126,7 +124,9 @@ const sortedCategoryIds = Object.keys(categories).sort(
         </div>
         <div>
           <dt>{lang === 'ja' ? '最終レビュー済み' : 'Reviewed items'}</dt><dd>
-            {previewStatus.reviewedItems ?? previewStatus.humanReviewedItems}/{previewStatus.totalReviewItems}
+            {previewStatus.reviewedItems ?? previewStatus.humanReviewedItems}/{
+              previewStatus.totalReviewItems
+            }
           </dd>
         </div>
       </dl>
@@ -142,12 +142,12 @@ const sortedCategoryIds = Object.keys(categories).sort(
               ? '自動証拠レビューは完了しています。人手による自然さの確認を示すものではありません。'
               : 'Automated evidence review is complete; this does not attest human review of naturalness.'
             : previewStatus.contentReviewStatus === 'human-reviewed'
-            ? lang === 'ja'
-              ? '内容の人手レビューは完了しています。'
-              : 'Human content review is complete.'
-            : lang === 'ja'
-              ? '内容の人手レビューは未完了です。'
-              : 'Human content review is pending.'
+              ? lang === 'ja'
+                ? '内容の人手レビューは完了しています。'
+                : 'Human content review is complete.'
+              : lang === 'ja'
+                ? '内容の人手レビューは未完了です。'
+                : 'Human content review is pending.'
         }
       </p>
     </section>

@@ -1,13 +1,11 @@
 ---
-title: "loverajoel/jstips"
-description: "Metadata-only entry for loverajoel/jstips"
+title: "Awesome Jstips"
+description: "An index entry for the Awesome Jstips list. The upstream content is not reproduced in this snapshot."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# Tips
+# Awesome Jstips
 
-This Awesome list is referenced by the Programming Languages section of the pinned sindresorhus/awesome snapshot.
-
-The upstream list content is not reproduced on libx because a reusable license could not be confirmed for this snapshot, the fixed README could not be retrieved, or its license requires support that is not yet available here.
+An index entry for the Awesome Jstips list. The upstream content is not reproduced in this snapshot.
 
 - [Open the original repository](https://github.com/loverajoel/jstips/blob/44a1df45df9635bef6d33eeae49fd181b5632205/README.md)

@@ -1,50 +1,12 @@
 ---
-title: "hantuzun/awesome-clojurescript"
-description: "Canonical snapshot of hantuzun/awesome-clojurescript"
+title: "Awesome ClojureScript"
+description: "A curated collection of resources and projects focused on ClojureScript."
 licenseSource: "github-hantuzun-awesome-clojurescript-readme-md"
 ---
 
-
-<img src="https://avatars2.githubusercontent.com/u/12118456?v=3&s=75"
-     align="right"/>
-
 # Awesome ClojureScript
 
-##### A community driven list of ClojureScript books, frameworks, libraries and wrappers.
-
-* * *
-
-  - [Resources](#resources)
-      - [Books](#books)
-  - [Awesome ClojureScript](#awesome-clojurescript-1)
-      - [Canvas](#canvas)
-      - [Client/Server Communication](#clientserver-communication)
-      - [Code Analysis](#code-analysis)
-      - [Data Serialization](#data-serialization)
-      - [Data Visualization](#data-visualization)
-      - [Database](#database)
-      - [Development](#development)
-      - [Document Object Model](#document-object-model)
-      - [Documentation](#documentation)
-      - [Graphics](#graphics)
-      - [HTTP Handler](#http-handler)
-      - [Internationalization](#internationalization)
-      - [JavaScript Interoperability](#javascript-interoperability)
-      - [Miscellaneous](#miscellaneous)
-      - [React.js Interface](#reactjs-interface)
-      - [Reactive Programming](#reactive-programming)
-      - [Routing](#routing)
-      - [State Management](#state-management)
-      - [Testing](#testing)
-      - [Validation](#validation)
-      - [Web Framework & Template](#web-framework--template)
-      - [WebSockets](#websockets)
-  - [Contributing](#contributing)
-  - [License](#license)
-
-
-* * *
-
+A curated collection of resources and projects focused on ClojureScript.
 
 ## Resources
 

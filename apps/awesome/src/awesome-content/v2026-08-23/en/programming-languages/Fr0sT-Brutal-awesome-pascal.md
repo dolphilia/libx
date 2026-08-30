@@ -1,20 +1,12 @@
 ---
-title: "Fr0sT-Brutal/awesome-pascal"
-description: "Canonical snapshot of Fr0sT-Brutal/awesome-pascal"
+title: "Awesome Pascal"
+description: "A curated collection of resources and projects focused on Pascal."
 licenseSource: "github-Fr0sT-Brutal-awesome-pascal-readme-md"
 ---
 
-# Awesome Pascal [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Pascal
 
-A curated list of awesome Delphi, FreePascal and other *Pascal frameworks, libraries, resources, and shiny things. Inspired by awesome-xxx stuff.
-
-**Note that only open-source projects are considered. Dead projects (not updated for 3 years or more) must be really awesome or unique to be included.**
-
-Feel free to suggest other missing nice projects either by comments or pull requests.
-
-:exclamation: **Note on compiler compatibility**. There are compiler/language dialect compatibility badges for all projects based on a project's description. No real compatibility with compilers not officially supported is checked. Often a code could be used with non-supported compiler/language dialect with minor modifications but there could be exceptions.
-
-:exclamation: **Note on features contained in big projects**. There are plenty of big projects in the list that contain many features deserving to be noted in the corresponding sections. For example, a HTTP server could have JSON parser, logger, command line parser, DB access classes and so on. For really big code base duplicated entry in specific sections is allowed linking to a section with main description. However to reduce duplication additional features are more usually listed in comments. So if you're looking for some feature don't forget to search by key words through the whole list in additon to inspecting the corresponding section. Also feel free to suggest additions of available features in big projects to help others find what they want.
+A curated collection of resources and projects focused on Pascal.
 
 ## Contents ##
 

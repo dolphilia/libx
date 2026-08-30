@@ -1,14 +1,12 @@
 ---
-title: "danvoyce/awesome-creative-tech-events"
-description: "danvoyce/awesome-creative-tech-events の定本スナップショット"
+title: "Awesome Creative Tech Events"
+description: "Creative Tech Eventsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-danvoyce-awesome-creative-tech-events-readme-md"
 ---
 
-# Awesome Creative Tech Events [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Creative Tech Events
 
-> クリエイティブコーディング、テクノロジー、デザイン、音楽、アート、その他クールなものに関する、世界中のイベントの厳選リスト。
-
-貢献を歓迎します。プルリクエストを通じてリンクを追加または更新してください。
+Creative Tech Eventsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

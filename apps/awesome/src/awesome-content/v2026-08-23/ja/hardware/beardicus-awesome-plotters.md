@@ -1,12 +1,12 @@
 ---
-title: "beardicus/awesome-plotters"
-description: "ペンプロッターのハードウェア、制御ソフトウェア、生成アート資料を分類した定本スナップショット"
+title: "Awesome Plotters"
+description: "Plottersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-beardicus-awesome-plotters-readme-md"
 ---
 
-# Awesome Plotters [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Plotters
 
-コンピューター制御の描画機械やビジュアルアートロボット向けコードと資料を厳選したリストです。
+Plottersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

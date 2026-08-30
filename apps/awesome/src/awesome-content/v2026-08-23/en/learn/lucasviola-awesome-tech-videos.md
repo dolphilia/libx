@@ -1,14 +1,12 @@
 ---
-title: "lucasviola/awesome-tech-videos"
-description: "Canonical snapshot of lucasviola/awesome-tech-videos"
+title: "Awesome Tech Videos"
+description: "A curated collection of resources and projects focused on Tech Videos."
 licenseSource: "github-lucasviola-awesome-tech-videos-readme-md"
 ---
 
-## Awesome Tech Videos [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Tech Videos
 
-* A curated list of tech videos from youtube, vimeo, etc, just because
-I think this is one of the best ways for us to learn from people who
-really know what they are doing :)
+A curated collection of resources and projects focused on Tech Videos.
 
 ## Table of Contents
 * [Programming Languages](#programming-languages)

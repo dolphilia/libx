@@ -1,16 +1,12 @@
 ---
-title: "benallfree/awesome-pocketbase"
-description: "Canonical snapshot of benallfree/awesome-pocketbase"
+title: "Awesome PocketBase"
+description: "A curated collection of resources and projects focused on PocketBase."
 licenseSource: "github-benallfree-awesome-pocketbase-readme-md"
 ---
 
-# Awesome PocketBase [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome PocketBase
 
-![GitHub forks](https://img.shields.io/github/stars/benallfree/awesome-pocketbase?style=flat) ![GitHub forks](https://img.shields.io/github/forks/benallfree/awesome-pocketbase?style=flat) ![GitHub forks](https://img.shields.io/github/contributors/benallfree/awesome-pocketbase?style=flat)
-
-> Curated list of awesome [PocketBase](https://pocketbase.io) resources.
-
-PocketBase is an open source backend consisting of embedded database (SQLite) with realtime subscriptions, built-in auth management, convenient dashboard UI and simple REST-ish API.
+A curated collection of resources and projects focused on PocketBase.
 
 ## Contents
 

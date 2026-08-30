@@ -1,12 +1,12 @@
 ---
-title: "kakoni/awesome-healthcare"
-description: "Canonical snapshot of kakoni/awesome-healthcare"
+title: "Awesome Health"
+description: "A curated collection of resources and projects focused on Health."
 licenseSource: "github-kakoni-awesome-healthcare-readme-md"
 ---
 
-# Awesome Health [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Health
 
-Curated list of awesome open source healthcare software, libraries, tools and resources. Each link has been vetted to ensure the project is active and provides value to healthcare facilities, providers, developers, policy experts, and/or research scientists.
+A curated collection of resources and projects focused on Health.
 
 ## Contents
 

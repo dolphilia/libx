@@ -1,14 +1,12 @@
 ---
-title: "catalinmiron/awesome-prisma"
-description: "Canonical snapshot of catalinmiron/awesome-prisma"
+title: "Awesome Prisma"
+description: "A curated collection of resources and projects focused on Prisma."
 licenseSource: "github-catalinmiron-awesome-prisma-readme-md"
 ---
 
-![Awesome Prisma](https://i.imgur.com/MQdCTuN.png)
-
 # Awesome Prisma
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+A curated collection of resources and projects focused on Prisma.
 
 ## Contents
 

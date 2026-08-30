@@ -1,16 +1,12 @@
 ---
-title: "golemfactory/awesome-golem"
-description: "Canonical snapshot of golemfactory/awesome-golem"
+title: "Awesome Golem"
+description: "A curated collection of resources and projects focused on Golem."
 licenseSource: "github-golemfactory-awesome-golem-readme-md"
 ---
 
-# Awesome Golem [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![awesome-lint](https://github.com/golemfactory/awesome-golem/actions/workflows/main.yml/badge.svg)](https://github.com/golemfactory/awesome-golem/actions/workflows/main.yml/badge.svg)
+# Awesome Golem
 
-[<img src="golem-logo.svg" align="right" width="150">](https://golem.network/)
-
-> Welcome to **Awesome Golem**, a community-curated list of resources, links, projects, tools and applications on Golem!
-
-The users of Golem run the reference implementation in the form of the Rust implementation, Yagna. Together the users make up the Golem Network, a P2P marketplace for computational resources where individuals can act as one of the two non-exclusive roles; a provider selling idle resources, or a requestor buying resources to run tasks.
+A curated collection of resources and projects focused on Golem.
 
 ## Contents
 
@@ -250,4 +246,3 @@ Pull requests and issues with suggestions to Awesome Golem are welcome! Please r
 - [Golem Image Sharpening](https://github.com/visualNext/golem) - A tool to sharpen images.
 - [Filterms](https://github.com/krunch3r76/filterms) - Market-strategy for whitelisting or blacklisting as a Golem requestor (yapapi).
 - [golem-bulk-image-handler](https://github.com/figurestudios/golem-bulk-image-handler) - Takes an input image and processes it in many different ways using the Pillow library.
-

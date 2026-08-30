@@ -1,19 +1,12 @@
 ---
-title: "TalAter/awesome-progressive-web-apps"
-description: "TalAter/awesome-progressive-web-apps の定本スナップショット"
+title: "Awesome Progressive Web Apps"
+description: "Progressive Web Appsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-TalAter-awesome-progressive-web-apps-readme-md"
 ---
 
-# Awesome Progressive Web Apps [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Progressive Web Apps
 
-Progressive Web Appsのリソースを厳選して集めたコレクション。
-
-<a href="https://pwabook.com/oreillyapwa"><img align="right" src="images/mpwa.png" alt="Building Progressive Web Apps"></a>
-> Progressive Web Appsは新種のウェブアプリです。ネイティブアプリの利点と、ウェブの摩擦の少なさを組み合わせます。Progressive Web Appsは単純なウェブサイトとして始まりますが、ユーザーとのインタラクションに伴い、段階的に新たな力を得ます。ウェブサイトから、従来のネイティブアプリにずっと近いものへ変化します。
->
-> -- <cite>[Building Progressive Web Apps - O'Reilly](https://pwabook.com/oreillyapwa)</cite>
-
-貢献したい場合は、[貢献ガイドライン](https://github.com/TalAter/awesome-progressive-web-apps/blob/f643dae3ae5cd27c848a0a8a85e2b4958096547d/contributing.md)をお読みください。
+Progressive Web Appsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

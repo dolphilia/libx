@@ -1,13 +1,12 @@
 ---
-title: "eug/awesome-opengl"
-description: "Canonical snapshot of eug/awesome-opengl"
+title: "Awesome opengl"
+description: "A curated collection of resources and projects focused on opengl."
 licenseSource: "github-eug-awesome-opengl-readme-md"
 ---
 
-# awesome-opengl [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[<img src="https://rawgit.com/eug/awesome-opengl/master/opengl-logo.svg" align="right" width="140">](https://www.opengl.org)
+# Awesome opengl
 
-A curated list of awesome OpenGL libraries, debuggers and resources.
+A curated collection of resources and projects focused on opengl.
 
 ## Contents
 

@@ -1,20 +1,13 @@
 ---
-title: "SrinivasanTarget/awesome-appium"
-description: "SrinivasanTarget/awesome-appium の正規スナップショット"
+title: "Awesome Appium"
+description: "Appiumを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-SrinivasanTarget-awesome-appium-readme-md"
 ---
 
-# Awesome Appium [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://travis-ci.org/SrinivasanTarget/awesome-appium.svg?branch=master)](https://travis-ci.org/SrinivasanTarget/awesome-appium)
+# Awesome Appium
 
-[<img src="https://avatars3.githubusercontent.com/u/3221291?v=3&s=200" align="right" width="100">](http://appium.io)
+Appiumを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> 優れた[Appium](http://appium.io/)の[資料](#contents)を厳選した一覧です。
-
-PRによるリンク追加や、議論を始めるためのissue作成を歓迎します。
-
-[awesome](https://github.com/sindresorhus/awesome)リストから着想を得ています。
-
-<a id="contents"></a>
 ## 目次
 
 - [サーバー](#server)

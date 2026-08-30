@@ -1,26 +1,12 @@
 ---
-title: "ttumiel/Awesome-Ethereum"
-description: "ttumiel/Awesome-Ethereum の正規スナップショット"
+title: "Awesome Ethereum"
+description: "Ethereumを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ttumiel-Awesome-Ethereum-readme-md"
 ---
 
-<br/>
-<div align="center">
-  <img width="250px" src="https://raw.githubusercontent.com/ttumiel/Awesome-Ethereum/5a20b7dc70e68086c6bea69d5dd1ded4f8252469/project_logo.jpg">
-</div>
-<br/>
-<div align="center">
-<a href='https://en.wikipedia.org/wiki/Ethereum'>Ethereum</a>プラットフォームに関するあらゆる情報のAwesomeリスト。
-<br />
-Ethereumはオープンソースのブロックチェーンおよびスマートコントラクト計算プラットフォームです。
-<br/>
+# Awesome Ethereum
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-</div>
-<br/>
-
-Pull Requestを歓迎します。ただし、分散アプリケーションの精神に従い、投稿内容が有料の壁に囲まれた製品でないことを確認してください。
-
+Ethereumを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

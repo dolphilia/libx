@@ -1,20 +1,13 @@
 ---
-title: "terkelg/awesome-creative-coding"
-description: "クリエイティブコーディングの書籍、ツール、教材、コミュニティ、作品資料集"
+title: "Awesome Creative Coding"
+description: "Creative Codingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-terkelg-awesome-creative-coding-readme-md"
 ---
 
-# Awesome Creative Coding [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Creative Coding
 
-# [<img src="https://raw.githubusercontent.com/terkelg/awesome-creative-coding/master/cover.png">](https://github.com/terkelg/awesome-creative-coding)
+Creative Codingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> 主に初級・中級者向けの優れた[クリエイティブコーディング](https://en.wikipedia.org/wiki/Creative_coding)資料を厳選したリスト。
-
-クリエイティブ・コーディングは、システムのプログラミングとは異なる分野である。目的は、機能性のものではなく、表現的なものを創出することである。**インタラクションデザイン**、**情報可視化**、**生成芸術**はすべて、クリエイティブ・コーディングの異なる種類である——これは、**コードで表現された芸術作品**を表す一般的な用語となっている。
-
-_貢献する前に、[contribution guidelines](https://github.com/terkelg/awesome-creative-coding/blob/9643124b4a883e20dfb1b79df69505418728dbeb/contributing.md)を読み込んでください._
-
-<a id="contents"></a>
 ## 目次
 
 - [Books](#books)

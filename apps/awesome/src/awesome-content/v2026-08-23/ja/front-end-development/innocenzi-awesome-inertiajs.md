@@ -1,34 +1,12 @@
 ---
-title: "innocenzi/awesome-inertiajs"
-description: "innocenzi/awesome-inertiajs の定本スナップショット"
+title: "Awesome logo of awesome-inertiajs repository"
+description: "logo of awesome-inertiajs repositoryを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-innocenzi-awesome-inertiajs-readme-md"
 ---
 
-<p align="center">
-  <br />
-  <a href="https://inertiajs.com/">
-    <img width="100" src="./assets/logo.svg" alt="logo of awesome-inertiajs repository">
-  </a>
-  <br />
-  <br />
-</p>
+# Awesome logo of awesome-inertiajs repository
 
-<h2 align="center">Awesome Inertia.js</h2>
-
-<p align="center">
-  従来のサーバー側ルーティングとコントローラーを用いてシングルページアプリケーションを構築するツールです。
-  <br />
-  <br />
-  <a href="https://github.com/sindresorhus/awesome">
-    <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome">
-  </a>
-  &nbsp;
-  <a href="https://github.com/sindresorhus/awesome-lint">
-    <img src="https://github.com/innocenzi/awesome-inertiajs/workflows/Lint/badge.svg" alt="Lint status">
-  </a>
-  <br />
-  <br />
-</p>
+logo of awesome-inertiajs repositoryを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 便利なリンク
 

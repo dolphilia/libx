@@ -1,13 +1,11 @@
 ---
-title: "dnbard/awesome-knockout"
-description: "Metadata-only entry for dnbard/awesome-knockout"
+title: "Awesome KnockoutJS"
+description: "An index entry for the Awesome KnockoutJS list. The upstream content is not reproduced in this snapshot."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# KnockoutJS
+# Awesome KnockoutJS
 
-This Awesome list is referenced by the Front-End Development section of the pinned sindresorhus/awesome snapshot.
-
-The upstream list content is not reproduced on libx because a reusable license could not be confirmed for this snapshot, the fixed README could not be retrieved, or its license requires support that is not yet available here.
+An index entry for the Awesome KnockoutJS list. The upstream content is not reproduced in this snapshot.
 
 - [Open the original repository](https://github.com/dnbard/awesome-knockout/blob/ba2646310d81d2a6853f1ccd5cdb143ceeb472bf/readme.md)

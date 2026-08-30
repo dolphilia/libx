@@ -1,16 +1,12 @@
 ---
-title: "tyaga001/awesome-neon"
-description: "Canonical snapshot of tyaga001/awesome-neon"
+title: "Awesome Neon"
+description: "A curated collection of resources and projects focused on Neon."
 licenseSource: "github-tyaga001-awesome-neon-readme-md"
 ---
 
-# Awesome Neon [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Neon
 
-[Neon](https://neon.tech) is an awesome serverless Postgres database, open-source alternative to AWS Aurora you love. It's a serverless platform designed to help you build reliable and scalable applications faster.
-
-This list tries to cover what is awesome about the product and its community! 👁⚡️👁
-
-To **enhance** this list, please refer to [CONTRIBUTING.md](https://github.com/tyaga001/awesome-neon/blob/b3079789c65df35ed33e95212f67ad2bf8efa770/CONTRIBUTING.md).
+A curated collection of resources and projects focused on Neon.
 
 ## Contents
 

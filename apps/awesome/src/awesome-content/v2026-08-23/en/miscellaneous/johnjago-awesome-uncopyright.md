@@ -1,16 +1,12 @@
 ---
-title: "johnjago/awesome-uncopyright"
-description: "Canonical snapshot of johnjago/awesome-uncopyright"
+title: "Awesome Uncopyright"
+description: "A curated collection of resources and projects focused on Uncopyright."
 licenseSource: "github-johnjago-awesome-uncopyright-readme-md"
 ---
 
-# Awesome Uncopyright [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Uncopyright
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/6/62/PD-icon.svg" alt="No copyright symbol" align="right" width="155">](http://questioncopyright.org/)
-
-A curated list of works in the public domain.
-
-Works in the public domain have no copyright restrictions. This can be the result of intellectual property rights expiring or being forfeited. In the case of the latter, authors have used the term *uncopyright* to describe their act of relinquishing copyright.
+A curated collection of resources and projects focused on Uncopyright.
 
 ## Contents
 

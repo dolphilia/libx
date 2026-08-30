@@ -1,13 +1,12 @@
 ---
-title: "rabschi/awesome-beacon"
-description: "Canonical snapshot of rabschi/awesome-beacon"
+title: "Awesome Bluetooth Beacon"
+description: "A curated collection of resources and projects focused on Bluetooth Beacon."
 licenseSource: "github-rabschi-awesome-beacon-readme-md"
 ---
 
-# Awesome Bluetooth Beacon [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Bluetooth Beacon
 
-A curated list of awesome iBeacon and Eddystone Bluetooth beacon resources, open source projects, libraries, tools and tutorials.
-
+A curated collection of resources and projects focused on Bluetooth Beacon.
 
 ## Eddystone by Google
 

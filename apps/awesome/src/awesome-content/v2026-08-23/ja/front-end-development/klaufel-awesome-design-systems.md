@@ -1,18 +1,12 @@
 ---
-title: "klaufel/awesome-design-systems"
-description: "klaufel/awesome-design-systems の正規スナップショット"
+title: "Awesome Design Systems"
+description: "Design Systemsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-klaufel-awesome-design-systems-readme-md"
 ---
 
-# Awesome Design Systems [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Design Systems
 
-> 開発者に焦点を当てた、デザインシステムに関するブックマーク、リソース、記事のキュレーションリスト。
-
-<p align="center">
-  <a href="https://github.com/klaufel/awesome-design-systems#readme">
-    <img src="media/awesome-design-systems-cover.svg" alt="Awesome Design Systems"/>
-  </a>
-</p>
+Design Systemsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

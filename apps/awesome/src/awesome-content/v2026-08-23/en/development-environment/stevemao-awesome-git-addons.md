@@ -1,24 +1,12 @@
 ---
-title: "stevemao/awesome-git-addons"
-description: "Canonical snapshot of stevemao/awesome-git-addons"
+title: "Awesome git addons"
+description: "A curated collection of resources and projects focused on git addons."
 licenseSource: "github-stevemao-awesome-git-addons-readme-md"
 ---
 
-# Awesome git addons [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome git addons
 
-A curated list of add-ons that extend/enhance the git CLI.
-
-```
-$ git bla
-Something awesome happens!
-```
-
-> _“You don’t have to know everything. You simply need to know where to find it when necessary.” (John Brunner)_
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
-
-**Note**: Certain commands may not function immediately after installation. You may need to run a post-install script or manually configure aliases for them to work correctly.
-
+A curated collection of resources and projects focused on git addons.
 
 ## Table of Contents
 

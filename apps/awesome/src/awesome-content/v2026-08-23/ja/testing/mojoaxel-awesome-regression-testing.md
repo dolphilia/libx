@@ -1,24 +1,13 @@
 ---
-title: "mojoaxel/awesome-regression-testing"
-description: "mojoaxel/awesome-regression-testing の正規スナップショット"
+title: "Awesome Visual Regression Testing"
+description: "Visual Regression Testingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mojoaxel-awesome-regression-testing-readme-md"
 ---
 
-<a id="awesome-visual-regression-testing"></a>
-# Awesome Visual Regression Testing [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Visual Regression Testing
 
-> ビジュアルリグレッションテストの優れた資料を集めた厳選リストです。
+Visual Regression Testingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-リグレッションテストは、開発・テスト済みのソフトウェアが変更された後や別のソフトウェアと連携した後も、以前と同じように動作することを検証するソフトウェアテストです。変更によって新たな不具合が生じていないことを確認します。
-
-<a id="foreword"></a>
-## はじめに
-
-これはビジュアルリグレッションテストに関する資料の、意図的に*未完成*なリストです。特定の分野や役割（開発者、QA、UXデザイナー）には限定していません。対象コードを作成した*後*に行う、あらゆる分野のリグレッションテストを扱います。ソフトウェアテスト全般のリストについては、[awesome-testing](https://github.com/TheJambo/awesome-testing) などを参照してください。
-
-このリストを読めば、きっと追加したいものが見つかるでしょう。[貢献方法](https://github.com/mojoaxel/awesome-regression-testing/blob/38f8fcde521b4438fb2fbcaa8d8143d64a2cf404/.github/CONTRIBUTING.md)を読み、**気軽に追加してください**。役に立った場合は、**Star ⭐️ をお願いします**。
-
-<a id="contents"></a>
 ## 目次
 
 - [一般情報](#general-information)

@@ -1,21 +1,12 @@
 ---
-title: "balintkissdev/awesome-dos"
-description: "Canonical snapshot of balintkissdev/awesome-dos"
+title: "Awesome DOS"
+description: "A curated collection of resources and projects focused on DOS."
 licenseSource: "github-balintkissdev-awesome-dos-readme-md"
 ---
 
-# Awesome DOS [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome DOS
 
-Family of operating systems for x86-based personal computers including IBM PC DOS and MS-DOS that were popular during the 1980s and early 1990s.
-
-[<img src="logo.svg" align="right" width="100">](https://github.com/balintkissdev/awesome-dos)
-
-A curated list of references for development of DOS applications and learning
-about the system itself. This includes list of compilers, tutorials, videos,
-links to free and paid books and source code to DOS operating systems and DOS
-games. The goal of this list is to collect information and act as a starting
-point for someone who wants to start out retro-programming for the DOS
-platform.
+A curated collection of resources and projects focused on DOS.
 
 ## Contents
 
@@ -262,4 +253,3 @@ List of all homebrew DOS games: http://www.doshaven.eu
 
 - [SBEMU](https://github.com/crazii/SBEMU) - A TSR that emulates Sound Blaster and OPL3 in pure DOS using modern PCI-based (onboard and add-in card) sound cards. Supports both real mode and protected mode games!
 - [VSB](https://github.com/Baron-von-Riedesel/VSBHDA) - A fork of SBEMU (see above), which also aims to offer Sound Blaster emulation for modern PC hardware, in both real mode and protected mode games.
-

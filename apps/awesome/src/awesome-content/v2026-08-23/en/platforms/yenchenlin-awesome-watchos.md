@@ -1,18 +1,13 @@
 ---
-title: "yenchenlin/awesome-watchos"
-description: "Canonical snapshot of yenchenlin/awesome-watchos"
+title: "Awesome Watchos"
+description: "A curated collection of resources and projects focused on Watchos. The upstream list is archived or no longer maintained."
 licenseSource: "github-yenchenlin-awesome-watchos-readme-md"
 ---
 
-<img src="https://github.com/yenchenlin1994/awesome-watchos/blob/master/resources/title.png" width="500">
-=========================
+# Awesome Watchos
 
-# Deprecated! This list will no longer be updated due to my focus shift.
+A curated collection of resources and projects focused on Watchos. The upstream list is archived or no longer maintained.
 
-=========================
-[![Build Status](https://travis-ci.org/yenchenlin1994/awesome-watchos.svg?branch=master)](https://travis-ci.org/yenchenlin1994/awesome-watchos)
-
-A curated list of awesome watchOS frameworks, libraries, sample apps.
 ### Contents
 - [Getting Started](#getting-started)
 - [Library and Frameworks](#libraries-and-frameworks)

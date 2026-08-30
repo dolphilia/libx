@@ -1,13 +1,12 @@
 ---
-title: "idematos/awesome-permacomputing"
-description: "idematos/awesome-permacomputing の定本スナップショット"
+title: "Awesome Permacomputing"
+description: "Permacomputingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-idematos-awesome-permacomputing-readme-md"
 ---
 
-# Awesome Permacomputing [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-<a href="https://permacomputing.net/"><img src="media/logo.png" alt="Permacomputing Logo" align="right"></a>
-パーマコンピューティングに関連するリソース、プロジェクト、コミュニティを集めたキュレーションです。
-> [パーマコンピューティング](https://permacomputing.net/permacomputing/)は、パーマカルチャーに着想を得て、コンピューター・ネットワーク技術のレジリエンスと再生可能性の問題へ向き合う概念であり、実践コミュニティでもあります。
+# Awesome Permacomputing
+
+Permacomputingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

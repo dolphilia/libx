@@ -1,16 +1,12 @@
 ---
-title: "master-co/awesome-master-css"
-description: "Canonical snapshot of master-co/awesome-master-css"
+title: "Awesome Master CSS"
+description: "A curated collection of resources and projects focused on Master CSS."
 licenseSource: "github-master-co-awesome-master-css-readme-md"
 ---
 
-# Awesome Master CSS [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) 
-   
-<a href="https://github.com/master-co/css#readme"><picture><source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/33840671/205240887-0e354830-f0d4-4eb6-b604-9f7b8112c92c.svg"><source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/33840671/205238744-7355106d-d454-4b3d-a40a-7b19e34ddb9d.svg"><img alt="Master CSS" src="https://user-images.githubusercontent.com/33840671/205238744-7355106d-d454-4b3d-a40a-7b19e34ddb9d.svg" height="60" width="350" align="right"></picture></a>
+# Awesome Master CSS
 
-> Automatically generate corresponding CSS rules based on class names, with enhanced CSS syntax, you can build UIs with less code and directly use performant JIT in production. 
-
-[Master CSS](https://css.master.co) is a virtual CSS language with enhanced syntax, efficiently build your UI and design system with HTML only.
+A curated collection of resources and projects focused on Master CSS.
 
 ## Contents 
 - [Useful Links](#useful-links)

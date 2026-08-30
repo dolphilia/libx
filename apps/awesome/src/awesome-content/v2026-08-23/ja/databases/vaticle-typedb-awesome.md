@@ -1,20 +1,12 @@
 ---
-title: "vaticle/typedb-awesome"
-description: "vaticle/typedb-awesome の定本スナップショット"
+title: "Awesome TypeDB"
+description: "TypeDBを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vaticle-typedb-awesome-readme-md"
 ---
 
-[![TypeDB](https://github.com/typedb/typedb/blob/2c5e3114cb4d19085a329b379eef590d7a3e9eda/docs/banner.png)](https://typedb.com)
+# Awesome TypeDB
 
-# Awesome TypeDB [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-TypeDB リソースの厳選リスト。
-
-TypeDB は、[ポリモーフィック](https://typedb.com/features#polymorphic-queries)なデータベースであり、[概念的](https://typedb.com/features#conceptual-modeling)なデータモデル、強力な[サブタイピング](https://typedb.com/features#strong-type-system)システム、記号的な[推論](https://typedb.com/features#symbolic-reasoning)エンジン、美しく洗練された[型理論](https://typedb.com/features#modern-language)的な言語 TypeQL を備えています。
-
-## 貢献
-
-リストに貢献したいですか？ [Discord](https://typedb.com/discord) でお知らせいただき、プルリクエストを開いてください！
+TypeDBを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

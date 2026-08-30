@@ -1,17 +1,12 @@
 ---
-title: "n2cholas/awesome-jax"
-description: "n2cholas/awesome-jax の定本スナップショット"
+title: "Awesome JAX"
+description: "JAXを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-n2cholas-awesome-jax-readme-md"
 ---
 
+# Awesome JAX
 
-# Awesome JAX [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)[<img src="https://raw.githubusercontent.com/google/jax/master/images/jax_logo_250px.png" alt="JAX Logo" align="right" height="100">](https://github.com/google/jax)
-
-
-[JAX](https://github.com/google/jax) は、自動微分と [XLAコンパイラー](https://www.tensorflow.org/xla) を [NumPy](https://numpy.org/) に似たAPIを通じて組み合わせ、GPUやTPUなどのアクセラレーター上で高性能な機械学習研究を可能にします。
-
-
-優れたJAXライブラリ、プロジェクト、関連リソースを集めた一覧です。コントリビューションを歓迎します。
+JAXを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,26 +1,12 @@
 ---
-title: "ashishb/android-security-awesome"
-description: "Canonical snapshot of ashishb/android-security-awesome"
+title: "Awesome android-security-awesome"
+description: "A curated collection of resources and projects focused on android-security-awesome."
 licenseSource: "github-ashishb-android-security-awesome-readme-md"
 ---
 
-# android-security-awesome ![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
+# Awesome android-security-awesome
 
-[![Star History Rank](https://api.star-history.com/badge?repo=ashishb/android-security-awesome&theme=dark)](https://www.star-history.com/ashishb/android-security-awesome)
-
-[![Link Liveness Checker](https://github.com/ashishb/android-security-awesome/actions/workflows/validate-links.yml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/validate-links.yml)
-
-[![Lint Shell scripts](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-shell-script.yaml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-shell-script.yaml)
-[![Lint Markdown](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-markdown.yaml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-markdown.yaml)
-[![Lint YAML](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-yaml.yaml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-yaml.yaml)
-[![Lint GitHub Actions](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-github-actions.yaml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-github-actions.yaml)
-![GitHub contributors](https://img.shields.io/github/contributors/ashishb/android-security-awesome)
-
-A collection of Android security-related resources.
-
-1. [Tools](#tools)
-1. [Academic/Research/Publications/Books](#academic)
-1. [Exploits/Vulnerabilities/Bugs](#exploits)
+A curated collection of resources and projects focused on android-security-awesome.
 
 ## Tools
 

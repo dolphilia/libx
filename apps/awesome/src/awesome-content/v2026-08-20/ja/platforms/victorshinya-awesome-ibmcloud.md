@@ -1,18 +1,12 @@
 ---
-title: "victorshinya/awesome-ibmcloud"
-description: "IBM CloudのSDK、ツール、資料を分類した定本スナップショット"
+title: "Awesome IBM Cloud"
+description: "IBM Cloudを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-victorshinya-awesome-ibmcloud-readme-md"
 ---
 
-# IBM CloudのAwesomeリスト <a id="awesome-ibm-cloud"></a>
+# Awesome IBM Cloud
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![IBM Cloud powered](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://cloud.ibm.com)
-[![LICENSE](https://img.shields.io/badge/license-CC0%201.0-white.svg)](https://github.com/victorshinya/awesome-ibmcloud/blob/master/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/victorshinya/awesome-ibmcloud/pulls)
-[![Build Status](https://travis-ci.org/victorshinya/awesome-ibmcloud.svg?branch=master)](https://travis-ci.org/victorshinya/awesome-ibmcloud)
-
-IBM CloudのSDK、オープンソースリポジトリ、ツール、ブログなどを厳選したリストです。
+IBM Cloudを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

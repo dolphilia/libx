@@ -1,13 +1,12 @@
 ---
-title: "love2d-community/awesome-love2d"
-description: "Canonical snapshot of love2d-community/awesome-love2d"
+title: "Awesome Löve"
+description: "A curated collection of resources and projects focused on Löve."
 licenseSource: "github-love2d-community-awesome-love2d-readme-md"
 ---
 
-# Awesome Löve [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
-![Awesome Löve](https://raw.githubusercontent.com/love2d-community/awesome-love2d/fd851a96c81f87964e4c4d6b8906083b5a7a3c36/logo.png)
+# Awesome Löve
 
-A categorized community-driven collection of high-quality, awesome [LÖVE](http://love2d.org) libraries, projects, and resources.
+A curated collection of resources and projects focused on Löve.
 
 ## Contents
 

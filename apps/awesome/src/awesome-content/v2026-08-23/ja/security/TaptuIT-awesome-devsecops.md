@@ -1,24 +1,12 @@
 ---
-title: "TaptuIT/awesome-devsecops"
-description: "DevSecOpsの学習資料、ガイドライン、セキュリティツールを分類した定本スナップショット"
+title: "Awesome Devsecops"
+description: "Devsecopsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-TaptuIT-awesome-devsecops-readme-md"
 ---
 
-![Awesome](https://raw.githubusercontent.com/TaptuIT/awesome-devsecops/a271dcf63324c6a6c76a3ec7708671ab55172119/media/banner.png)
+# Awesome Devsecops
 
-<p align="center">
-  <a href="https://awesome.re">
-    <img alt="Awesome" src="https://awesome.re/badge-flat.svg">
-  </a>
-</p>
-<hr/>
-
-> 優れたDevSecOpsの資料とツールを厳選しています。
-
-[DevSecOps](https://www.rapid7.com/fundamentals/devsecops/)は[DevOps](https://www.atlassian.com/devops)を拡張し、開発者中心のセキュリティツールとプロセスによって開発ライフサイクルへセキュリティ実践を組み込む取り組みです。
-
-コントリビューションを歓迎します。Pull Requestでリンクを追加するか、Issueを作成して議論を始めてください。
-
+Devsecopsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 - [資料](#resources)

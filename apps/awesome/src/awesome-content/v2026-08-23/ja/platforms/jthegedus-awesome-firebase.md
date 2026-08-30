@@ -1,37 +1,13 @@
 ---
-title: "jthegedus/awesome-firebase"
-description: "jthegedus/awesome-firebase の正規スナップショット"
+title: "Awesome Firebase Lint Awesome List"
+description: "Firebase Lint Awesome Listを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jthegedus-awesome-firebase-readme-md"
 ---
 
+# Awesome Firebase Lint Awesome List
 
-<div align="center">
+Firebase Lint Awesome Listを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-
-
-# Awesome Firebase [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) ![Lint Awesome List](https://github.com/jthegedus/awesome-firebase/workflows/lint/badge.svg)
-
-
-
-インターネット上で公開されている Firebase のドキュメント、講演、ツール、サンプル、記事を集めた、最も**最新の**リストです。
-
-
-
-<a href="https://firebase.google.com/docs/" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/jthegedus/awesome-firebase/5055b341119af42077ee6e9064b136a04fdd79b0/images/firebase-services.gif" />
-</a>
-
-
-
-翻訳版: [🇬🇧 en](https://github.com/jthegedus/awesome-firebase/blob/5055b341119af42077ee6e9064b136a04fdd79b0/readme.md) · [🇰🇷 ko](https://github.com/jthegedus/awesome-firebase/blob/5055b341119af42077ee6e9064b136a04fdd79b0/readme-ko.md) · [🇷🇺 ru](https://github.com/jthegedus/awesome-firebase/blob/5055b341119af42077ee6e9064b136a04fdd79b0/readme-ru.md)
-
-[Firebase](https://firebase.google.com) は [Google Cloud Platform](https://cloud.google.com/products) 上に構築されたアプリ開発プラットフォームで、各種サービスとクロスプラットフォーム SDK を提供します。
-
-</div>
-
-
-
-<a id="contents"></a>
 ## 目次
 
 - [注目の新着](#featured-new-releases)

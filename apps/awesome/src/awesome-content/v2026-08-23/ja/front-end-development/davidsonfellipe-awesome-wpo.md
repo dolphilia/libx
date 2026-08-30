@@ -1,31 +1,12 @@
 ---
-title: "davidsonfellipe/awesome-wpo"
-description: "Web性能の測定、最適化、監視、配信ツールと資料を分類した定本スナップショット"
+title: "Awesome WPO"
+description: "WPOを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-davidsonfellipe-awesome-wpo-readme-md"
 ---
 
-# Awesome WPO [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome WPO
 
-[![GitHub contributors](https://img.shields.io/github/contributors/davidsonfellipe/awesome-wpo.svg)](https://github.com/davidsonfellipe/awesome-wpo/graphs/contributors)
-[![MIT license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat)](https://davidsonfellipe.mit-license.org/)
-
-Web Performance Optimizationの資料を厳選したリストです。Webサイト性能の最適化に関する優れたツール、記事、ブログ、書籍、講演を集め、開発者、デザイナー、性能改善の実践者を支援します。
-
-> :globe_with_meridians: **オンライン版:** このリストは **[awesome-wpo.dev](https://awesome-wpo.dev/)** でも閲覧できます。
-
-## カテゴリ <a id="categories"></a>
-
-:globe_with_meridians: [WPOのAwesomeリスト](https://awesome-wpo.dev/)
-
-:memo: [WPOのAwesomeリスト](#articles)
-
-:books: [WPOのAwesomeリスト](#books)
-
-:book: [WPOのAwesomeリスト](#documentation)
-
-:calendar: [WPOのAwesomeリスト](#events)
-
-:movie_camera: [WPOのAwesomeリスト](#talks)
+WPOを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 

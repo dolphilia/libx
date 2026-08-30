@@ -1,29 +1,12 @@
 ---
-title: "likedan/Awesome-CoreML-Models"
-description: "Canonical snapshot of likedan/Awesome-CoreML-Models"
+title: "Awesome Models"
+description: "A curated collection of resources and projects focused on Models."
 licenseSource: "github-likedan-Awesome-CoreML-Models-readme-md"
 ---
 
+# Awesome Models
 
-
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/likedan/Awesome-CoreML-Models/f65751092d0ba1e3a8e83c8351f46bfd54606a91/images/coreml.png" width="329" height="295"/>
-</p>
-
-
-Since iOS 11, Apple released Core ML framework to help developers integrate machine learning models into applications. [The official documentation](https://developer.apple.com/documentation/coreml)
-
-We've put up the largest collection of machine learning models in Core ML format, to help  iOS, macOS, tvOS, and watchOS developers experiment with machine learning techniques.
-
-If you've converted a Core ML model, feel free to submit a [pull request](https://github.com/likedan/Awesome-CoreML-Models/compare).
-
-Recently, we've included visualization tools. And here's one [Netron](https://lutzroeder.github.io/Netron).
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
-# Models
+A curated collection of resources and projects focused on Models.
 
 ## Image - Metadata/Text
 *Models that take image data as input and output useful information about the image.*

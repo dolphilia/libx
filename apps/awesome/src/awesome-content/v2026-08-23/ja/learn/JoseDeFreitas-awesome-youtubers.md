@@ -1,34 +1,12 @@
 ---
-title: "JoseDeFreitas/awesome-youtubers"
-description: "プログラミング、Web、計算機科学、ML、DevOps、セキュリティ等を教えるYouTubeチャンネルを分類した定本スナップショット"
+title: "Awesome YouTubers"
+description: "YouTubersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-JoseDeFreitas-awesome-youtubers-readme-md"
 ---
 
+# Awesome YouTubers
 
-
-<div align="center">
-  	<h1>
-    	YouTuberのAwesomeリスト
-		<a href="https://awesome.re">
-			<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-		</a>
-  	</h1>
-	<br />
-	<div>
-		<a href="https://github.com/JoseDeFreitas/awesome-youtubers">
-			<img width="428" src="logo.svg" alt="Awesome YouTubers logo">
-		</a>
-	</div>
-</div>
-
-> 技術を教えるYouTuberの動画チュートリアルを視聴できます。
-
-## その他の言語 <a id="other-languages"></a>
-
-このリポジトリは英語を話す優れたYouTuberだけを掲載します。貢献者が他言語の技術系YouTuber一覧も作成しており、**関連リポジトリを以下に掲載します。** 特定言語で複数の優れたYouTuberを紹介できる場合は、独自の一覧を作成し、[新しいIssue](https://github.com/JoseDeFreitas/awesome-youtubers/issues/new)で知らせてください。
-
--   [Brazilian Portuguese](https://github.com/rcarubbi/awesome-brazilian-youtubers)
--   [Spanish](https://github.com/rcarubbi/awesome-spanish-youtubers)
+YouTubersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

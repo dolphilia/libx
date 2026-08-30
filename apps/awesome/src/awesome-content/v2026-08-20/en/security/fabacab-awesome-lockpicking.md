@@ -1,14 +1,12 @@
 ---
-title: "fabacab/awesome-lockpicking"
-description: "Canonical snapshot of fabacab/awesome-lockpicking"
+title: "Awesome Lockpicking"
+description: "A curated collection of resources and projects focused on Lockpicking."
 licenseSource: "github-fabacab-awesome-lockpicking-readme-md"
 ---
 
-# Awesome Lockpicking [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Lockpicking
 
-> A curated list of awesome guides, tools, and other resources relating to the security and compromise of locks, safes, and keys.
-
-[Lock picking](https://en.wikipedia.org/wiki/Lock_picking) is the art of opening a lock without the key and without damaging or destroying the lock or its door. If you want to contribute, you are highly encouraged to do so. Please read the [contribution guidelines](https://github.com/fabacab/awesome-lockpicking/blob/508b99f6bfdaa945be5144f8a6e72feb2e9ac592/CONTRIBUTING.md).
+A curated collection of resources and projects focused on Lockpicking.
 
 # Contents
 

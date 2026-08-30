@@ -1,42 +1,12 @@
 ---
-title: "ibaaj/awesome-OpenSourcePhotography"
-description: "写真・動画向けの自由・オープンソースソフトウェア、ライブラリ、機材連携、制作資料をまとめた定本スナップショット"
+title: "Awesome OpenSourcePhotography"
+description: "OpenSourcePhotographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ibaaj-awesome-OpenSourcePhotography-readme-md"
 ---
 
-# オープンソース写真のAwesomeリスト <a id="awesome-opensourcephotography"></a>
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome OpenSourcePhotography
 
-写真向けの優れた自由・オープンソースソフトウェアとライブラリ、および動画用ツールのリストです。さらに多くの素晴らしいリストは[awesome](https://github.com/sindresorhus/awesome)をご覧ください。
-
-
-- [一般](#general)
-- [カメラファームウェア改造](#camera-firmware-mods)
-- [ライブラリ](#libraries)
-	- [Canon](#canon)
-	- [GoPro](#gopro)
-	- [Sony](#sony)
-- [ユーティリティ](#utilities)
-- [アナログ写真](#analogue-photography)
-- [RAW画像現像](#raw-image-developers)
-- [HDR専用ソフトウェア](#hdr-specific-software)
-- [パノラマ合成](#panorama-stitching)
-- [写真整理](#photo-organizers)
-- [EXIF編集](#exif-editors)
-- [写真ダウンロード](#photo-downloaders)
-- [カメラテザー撮影](#camera-tetherers)
-- [モニター色補正](#monitor-color-correction)
-- [360度画像](#360-images)
-- [代替画像ビューアー](#alternative-image-viewers)
-- [便利なGIMP改造・スクリプト](#useful-gimp-mods-or-scripts)
-- [コミュニティ](#communities)
-- [素材](#resources)
-- [動画](#video)
-	- [一般ツール](#general-tools)
-	- [コンポジットソフトウェア](#compositing-software)
-	- [動画ライブラリ](#video-libraries)
-- [スクリプト](#scripts)
-	- [動画からパノラマへ](#video-to-panorama)
+OpenSourcePhotographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 一般 <a id="general"></a>
 

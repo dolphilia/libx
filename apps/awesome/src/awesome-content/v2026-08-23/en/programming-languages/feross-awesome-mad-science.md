@@ -1,12 +1,12 @@
 ---
-title: "feross/awesome-mad-science"
-description: "Canonical snapshot of feross/awesome-mad-science"
+title: "Awesome Mad Science"
+description: "A curated collection of resources and projects focused on Mad Science."
 licenseSource: "github-feross-awesome-mad-science-readme-md"
 ---
 
-# Awesome Mad Science [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Mad Science
 
-Delightful npm packages that make you say "wow, didn't know that was possible!" PRs welcome!
+A curated collection of resources and projects focused on Mad Science.
 
 ## peer-to-peer
 - [peerwiki](https://www.npmjs.com/package/peerwiki) - all of wikipedia on bittorrent

@@ -1,28 +1,13 @@
 ---
-title: "margaretmz/awesome-tensorflow-lite"
-description: "margaretmz/awesome-tensorflow-lite の正規スナップショット"
+title: "Awesome TensorFlow Lite"
+description: "TensorFlow Liteを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-margaretmz-awesome-tensorflow-lite-readme-md"
 ---
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/margaretmz/awesome-tensorflow-lite/d20e763afa1912a82056a75f2a97fa1d97c10e79/images/awesome-tflite.png" alt="awesome tflite" width="500">
-</p>
+# Awesome TensorFlow Lite
 
+TensorFlow Liteを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="awesome-tensorflow-lite"></a>
-# Awesome TensorFlow Lite [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Twitter](https://img.shields.io/badge/Twitter-%40margaretmz-blue)](https://twitter.com/margaretmz)
-
-[TensorFlow Lite](https://www.tensorflow.org/lite) は、TensorFlowモデルをモバイルおよびエッジデバイス上で実行できるよう変換・最適化するツール群です。現在、40億台を超えるデバイスで稼働しています。TensorFlow 2.xでは、tf.Kerasでモデルを学習し、.tflite形式へ簡単に変換してデプロイできます。また、モデル集から学習済みTensorFlow Liteモデルをダウンロードすることもできます。
-
-TensorFlow Liteモデル、サンプルアプリ、便利なツール、学習資料をまとめたリストです。
-* コミュニティがTensorFlow Liteで構築したものを紹介する
-* すべてのサンプルを一覧できるようにする
-* 知識と学習資料を共有する
-
-貢献する場合は、[こちらのガイドライン](https://github.com/margaretmz/awesome-tensorflow-lite/blob/d20e763afa1912a82056a75f2a97fa1d97c10e79/CONTRIBUTING.md)に従ってPRを送信してください。
-
-
- <a id="contents"></a>
  ## 目次
 - [過去のお知らせ](#past-announcements)
 - [サンプル付きモデル](#models-with-samples)

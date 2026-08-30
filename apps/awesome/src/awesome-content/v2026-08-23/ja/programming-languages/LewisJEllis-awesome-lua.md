@@ -1,18 +1,13 @@
 ---
-title: "LewisJEllis/awesome-lua"
-description: "高品質な Lua パッケージとリソースを集めた厳選リスト"
+title: "Awesome Lua"
+description: "Luaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-LewisJEllis-awesome-lua-readme-md"
 ---
 
-<a id="awesome-lua"></a>
-# Awesome Lua [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Lua
 
-> 高品質な Lua [パッケージ](#packages)と[リソース](#resources)の厳選リストです。
+Luaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[awesome](https://github.com/sindresorhus/awesome), [awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness), および [awesome-nodejs](https://github.com/sindresorhus/awesome-nodejs) のリストに着想を得て
-
-
-<a id="packages"></a>
 ## パッケージ
 - [Implementations, Interpreters, and Bindings](#implementations-interpreters-and-bindings)
 - [Package Managers](#package-managers)

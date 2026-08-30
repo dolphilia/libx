@@ -1,17 +1,12 @@
 ---
-title: "lutzh/awesome-event-driven-architecture"
-description: "Canonical snapshot of lutzh/awesome-event-driven-architecture"
+title: "Awesome Event-Driven Architecture"
+description: "A curated collection of resources and projects focused on Event-Driven Architecture."
 licenseSource: "github-lutzh-awesome-event-driven-architecture-readme-md"
 ---
 
+# Awesome Event-Driven Architecture
 
-# Awesome Event-Driven Architecture [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-A curated list of awesome articles and resources to learn about event-driven architecture.
-
-Event-driven architecture is a software architecture approach where services collaborate by publishing and subscribing to events. This eliminates runtime coupling of services.
-
-
+A curated collection of resources and projects focused on Event-Driven Architecture.
 
 ## Contents
   
@@ -79,4 +74,3 @@ To be updated about changes, follow me on <a href="https://mastodon.social/@lutz
 
 
 I work as an independent consultant, helping organizations navigate the technical and organizational challenges involved in adopting Event-Driven Architecture. Find out about my services on [//lutz huehnken _consulting*](https://www.huehnken.de).
-

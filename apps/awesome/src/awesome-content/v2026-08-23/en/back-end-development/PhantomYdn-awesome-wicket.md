@@ -1,17 +1,12 @@
 ---
-title: "PhantomYdn/awesome-wicket"
-description: "Canonical snapshot of PhantomYdn/awesome-wicket"
+title: "Awesome Wicket"
+description: "A curated collection of resources and projects focused on Wicket."
 licenseSource: "github-PhantomYdn-awesome-wicket-readme-md"
 ---
 
-# Awesome Wicket [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[<img src="https://upload.wikimedia.org/wikipedia/ru/5/5d/Apache_Wicket_logo.png" align="right" width="100">](http://wicket.apache.org/)
+# Awesome Wicket
 
-A curated list of awesome projects powered by [Apache Wicket](http://wicket.apache.org)
-
-Your contributions are always welcome!
-
-> Wicket is an open source, component oriented, serverside, Java web application framework. With a history of over a decade, it is still going strong and has a solid future ahead.
+A curated collection of resources and projects focused on Wicket.
 
 ## Table of Contents
 

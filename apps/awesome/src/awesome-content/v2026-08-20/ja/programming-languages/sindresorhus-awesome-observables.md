@@ -1,14 +1,12 @@
 ---
-title: "sindresorhus/awesome-observables"
-description: "sindresorhus/awesome-observables の定本スナップショット"
+title: "Awesome Observables"
+description: "Observablesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sindresorhus-awesome-observables-readme-md"
 ---
 
-# Awesome Observables [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Observables
 
-> [Observable](https://github.com/zenparsing/es-observable) は時間とともに到着するコレクションです。Observableは、イベント、タイマー間隔、非同期リクエスト、アニメーションなどのプッシュ型データソースをモデル化するために使えます。Observableは配列のようなメソッドで変換、結合、消費できます。
-
-*貢献する前に、[contribution guidelines](https://github.com/sindresorhus/awesome-observables/blob/5c069a64d68ce5206b404fb0f53fb58b439c772c/contributing.md) をお読みください。*
+Observablesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

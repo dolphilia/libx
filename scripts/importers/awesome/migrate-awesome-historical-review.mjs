@@ -8,9 +8,8 @@ if (snapshotVersion !== 'v2026-08-20') {
 }
 
 const write = process.argv.includes('--write');
-const evidence = readJson(
-  path.join(notesDir, 'HISTORICAL_REVIEW_EVIDENCE_RECONCILIATION.json')
-);
+const classificationOnly = process.argv.includes('--classification-only');
+const evidence = readJson(path.join(notesDir, 'HISTORICAL_REVIEW_EVIDENCE_RECONCILIATION.json'));
 const currentQueue = readJson(path.join(notesDir, 'FINAL_REVIEW_QUEUE.json'));
 const baseline = evidence.publishedBaseline;
 const readBaseline = (gitPath) =>
@@ -62,13 +61,15 @@ const classifyPending = (item, fields) => {
   if (japaneseChanged && englishChanged) {
     return {
       classification: 'english-and-japanese-content-changed',
-      reason: '英語定本と日本語ページの双方が公開時点から変わり、旧全文レビューの証拠を継承できない。',
+      reason:
+        '英語定本と日本語ページの双方が公開時点から変わり、旧全文レビューの証拠を継承できない。',
     };
   }
   if (japaneseChanged) {
     return {
       classification: 'japanese-content-changed',
-      reason: '日本語ページが公開時点から変わり、定型説明の機械監査合格だけでは全文の人手意味レビューを証明できない。',
+      reason:
+        '日本語ページが公開時点から変わり、定型説明の機械監査合格だけでは全文の人手意味レビューを証明できない。',
     };
   }
   if (englishChanged) {
@@ -139,7 +140,8 @@ const classification = {
     currentQueueEvidenceHash: currentQueue.evidenceHash,
   },
   policy: {
-    inheritance: '項目IDと証拠ハッシュが公開時点のキューに完全一致する場合だけ旧包括承認を継承する。',
+    inheritance:
+      '項目IDと証拠ハッシュが公開時点のキューに完全一致する場合だけ旧包括承認を継承する。',
     remediationEvidence:
       '定型説明監査は修正対象0を証明するが、TRANSLATION_REVIEW_LOG.jsonの日本語レビューはpendingであり、変更後ページの全文人手意味レビューとしては使用しない。',
   },
@@ -154,10 +156,14 @@ const classification = {
   pendingItems: pending,
 };
 
-if (write) {
-  writeJsonAtomic(path.join(notesDir, 'FINAL_REVIEW_RESULTS.json'), result);
-  writeJsonAtomic(path.join(notesDir, 'HISTORICAL_REVIEW_DIFF_CLASSIFICATION.json'), classification);
+if (write || classificationOnly) {
+  if (!classificationOnly)
+    writeJsonAtomic(path.join(notesDir, 'FINAL_REVIEW_RESULTS.json'), result);
+  writeJsonAtomic(
+    path.join(notesDir, 'HISTORICAL_REVIEW_DIFF_CLASSIFICATION.json'),
+    classification
+  );
 }
 console.log(
-  `Awesome historical review migration: OK (${inherited.length} inherited, ${result.migration.pendingItems} pending${write ? ', written' : ''})`
+  `Awesome historical review migration: OK (${inherited.length} inherited, ${result.migration.pendingItems} pending${write || classificationOnly ? ', written' : ''})`
 );

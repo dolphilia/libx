@@ -1,28 +1,12 @@
 ---
-title: "MartinZikmund/awesome-uno-platform"
-description: "MartinZikmund/awesome-uno-platform の定本スナップショット"
+title: "Awesome Uno Platform"
+description: "Uno Platformを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-MartinZikmund-awesome-uno-platform-readme-md"
 ---
 
-<div align="center">
-	<div>
-		<img width="160" src="media/logo.png" alt="Uno Platform">
-	</div>
-	<br>
-</div>
-
-<div align="center">
-
 # Awesome Uno Platform
 
-
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-</div>
-
-[Uno Platform](https://platform.uno/) は、Windows、iOS、Android、WebAssembly、macOS、Linux 向けの単一コードベース .NET アプリケーションを構築するためのオープンソース UI プラットフォームです。
-
-これは Uno Platform ユーザー向けの**優れたリソース**一覧です。**このリストが役立つ場合は、⭐ スターを付けてください。**
+Uno Platformを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

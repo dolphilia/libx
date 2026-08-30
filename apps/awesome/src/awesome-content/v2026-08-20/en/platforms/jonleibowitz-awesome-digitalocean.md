@@ -1,19 +1,12 @@
 ---
-title: "jonleibowitz/awesome-digitalocean"
-description: "Canonical snapshot of jonleibowitz/awesome-digitalocean"
+title: "Awesome DigitalOcean"
+description: "A curated collection of resources and projects focused on DigitalOcean."
 licenseSource: "github-jonleibowitz-awesome-digitalocean-readme-md"
 ---
 
-# Awesome DigitalOcean [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome DigitalOcean
 
-[<img src="https://raw.githubusercontent.com/jonleibowitz/awesome-digitalocean/master/media/DO_Logo.png" align="right" width="100">](https://www.digitalocean.com/)
-
-> A curated list of awesome [DigitalOcean](https://www.digitalocean.com) guides, blogs, and other resources.
-
-DigitalOcean's tagline is it is a simple and robust cloud computing platform, designed for developers. With DigitalOcean you can easily spin up cloud compute and storage resources either indivdually or with a team. 
-
-Contributions welcome. Add links through pull requests or create an issue to start a discussion.
-
+A curated collection of resources and projects focused on DigitalOcean.
 
 ## Contents
 

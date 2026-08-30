@@ -1,16 +1,12 @@
 ---
-title: "eleventigers/awesome-rxjava"
-description: "Canonical snapshot of eleventigers/awesome-rxjava"
+title: "Awesome RxJava"
+description: "A curated collection of resources and projects focused on RxJava."
 licenseSource: "github-eleventigers-awesome-rxjava-readme-md"
 ---
 
-# Awesome RxJava [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome RxJava
 
-[<img src="http://reactivex.io/assets/Rx_Logo_S.png" align="right" width="100">](http://reactivex.io/)
-
-> Useful resources for working with [RxJava](https://github.com/ReactiveX/RxJava)
-
-*Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.*
+A curated collection of resources and projects focused on RxJava.
 
 ## Bindings
 

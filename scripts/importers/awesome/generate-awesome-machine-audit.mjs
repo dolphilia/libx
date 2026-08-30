@@ -98,9 +98,7 @@ const japaneseFiles = markdownFiles(japaneseRoot);
 const englishSet = new Set(englishFiles);
 const japaneseSet = new Set(japaneseFiles);
 const routeBySource = new Map(routes.entries.map((entry) => [entry.sourceId, entry]));
-const pageBySource = new Map(
-  routes.entries.map((entry) => [entry.sourceId, `${entry.slug}.md`])
-);
+const pageBySource = new Map(routes.entries.map((entry) => [entry.sourceId, `${entry.slug}.md`]));
 const lockBySource = new Map(lock.sources.map((source) => [source.sourceId, source]));
 const errors = [];
 const englishResidualCandidates = [];

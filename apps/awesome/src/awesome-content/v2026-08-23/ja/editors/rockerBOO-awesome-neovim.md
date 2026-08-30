@@ -1,18 +1,12 @@
 ---
-title: "rockerBOO/awesome-neovim"
-description: "Neovimのプラグイン、設定、開発ツールを用途別に分類した定本スナップショット"
+title: "Awesome Neovim"
+description: "Neovimを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-rockerBOO-awesome-neovim-readme-md"
 ---
 
-# Neovim Awesome リスト [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Neovim
 
-<a href="https://neovim.io/"><img src="https://neovim.io/logos/neovim-mark-flat.png" align="right" width="144"/></a>
-
-> 優れたNeovimプラグインのコレクションで、主にNeovim固有機能を対象とします。
-> そのため、Vim互換だけのプラグインは掲載していません。
-
-[Neovim](https://neovim.io/)は、新しい応用や貢献を促す拡張性と使いやすさを重視したVimベースのテキストエディターです。
-[組み込みプラグイン](https://neovim.io/doc/user/plugins.html#plugins)と豊富なAPIを備え、多様な拡張を開発できます。
+Neovimを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

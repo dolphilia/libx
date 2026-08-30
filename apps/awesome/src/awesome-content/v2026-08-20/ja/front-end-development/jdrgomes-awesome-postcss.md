@@ -1,19 +1,12 @@
 ---
-title: "jdrgomes/awesome-postcss"
-description: "jdrgomes/awesome-postcss の定本スナップショット"
+title: "Awesome PostCSS"
+description: "PostCSSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jdrgomes-awesome-postcss-readme-md"
 ---
 
-<p align="center">
-  <img src="https://rawgit.com/jdrgomes/awesome-postcss/master/media/awesome_postcss.svg" alt="Awesome PostCSS">
-</p>
+# Awesome PostCSS
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Build Status](https://api.travis-ci.org/jdrgomes/awesome-postcss.svg?branch=master)](https://travis-ci.org/jdrgomes/awesome-postcss)
-
-> PostCSSリソースおよび関連項目の厳選リスト。
-
-**PostCSS** は、cssを解析し、プラグインを作成するためのフレームワークを提供します。プラグインでは、アセットの分析、lint、処理、最適化、fallbackの作成、その他の変換を行えます。PostCSSはcssを抽象構文木 [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) に解析し、一連のプラグインへ渡した後、再び文字列へ連結します。
+PostCSSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次
 

@@ -1,11 +1,12 @@
 ---
-title: "jyguyomarch/awesome-conversational-ai"
-description: "Canonical snapshot of jyguyomarch/awesome-conversational-ai"
+title: "Awesome Conversational AI"
+description: "A curated collection of resources and projects focused on Conversational AI."
 licenseSource: "github-jyguyomarch-awesome-conversational-ai-readme-md"
 ---
 
-# Awesome Conversational AI [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-> A curated list of delightful Conversational AI resources to help you dive in and create awesome chatbots or digital assistants.
+# Awesome Conversational AI
+
+A curated collection of resources and projects focused on Conversational AI.
 
 ## Contents
 

@@ -1,14 +1,12 @@
 ---
-title: "cenoura/awesome-ads"
-description: "Canonical snapshot of cenoura/awesome-ads"
+title: "Awesome Advertising"
+description: "A curated collection of resources and projects focused on Advertising."
 licenseSource: "github-cenoura-awesome-ads-readme-md"
 ---
 
-# Awesome Advertising [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Advertising
 
-**A curated list of advertising and programmatic media content and resources.**
-
-**Disclaimer:** I know people really dislike and, sometimes, get angry about ads on sites and apps. As they are widely used by individuals and companies to monetize, the main goal of this list is to share knowledge about how to implement it correctly and in an optimized way.
+A curated collection of resources and projects focused on Advertising.
 
 ## Contents
 

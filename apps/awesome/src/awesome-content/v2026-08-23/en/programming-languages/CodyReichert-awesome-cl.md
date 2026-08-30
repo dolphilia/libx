@@ -1,13 +1,11 @@
 ---
-title: "CodyReichert/awesome-cl"
-description: "Metadata-only entry for CodyReichert/awesome-cl"
+title: "Awesome Common Lisp"
+description: "An index entry for the Awesome Common Lisp list. The upstream content is not reproduced in this snapshot."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# Common Lisp
+# Awesome Common Lisp
 
-This Awesome list is referenced by the Programming Languages section of the pinned sindresorhus/awesome snapshot.
-
-The upstream list content is not reproduced on libx because a reusable license could not be confirmed for this snapshot, the fixed README could not be retrieved, or its license requires support that is not yet available here.
+An index entry for the Awesome Common Lisp list. The upstream content is not reproduced in this snapshot.
 
 - [Open the original repository](https://github.com/CodyReichert/awesome-cl/blob/082be2987b73d13e706d3a4e52396653667b6f83/README.md)

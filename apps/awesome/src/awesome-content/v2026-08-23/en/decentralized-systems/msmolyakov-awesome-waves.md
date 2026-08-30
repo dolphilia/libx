@@ -1,16 +1,12 @@
 ---
-title: "msmolyakov/awesome-waves"
-description: "Canonical snapshot of msmolyakov/awesome-waves"
+title: "Awesome Waves"
+description: "A curated collection of resources and projects focused on Waves."
 licenseSource: "github-msmolyakov-awesome-waves-readme-md"
 ---
 
-<p align="center"><a href="https://wavesprotocol.org/"><img src="logo.svg" width="50%"/></a></p>
+# Awesome Waves
 
-# Awesome Waves [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-Waves is an open source blockchain platform and development toolset for Web 3.0 applications and decentralized solutions.
-    
-This list is a collection of useful resources to create decentralized applications on Waves blockchain.
+A curated collection of resources and projects focused on Waves.
 
 ## Contents
 

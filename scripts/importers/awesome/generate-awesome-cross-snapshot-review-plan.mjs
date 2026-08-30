@@ -22,9 +22,7 @@ const stableJson = (value) => `${JSON.stringify(value, null, 2)}\n`;
 const queues = Object.fromEntries(
   snapshots.map((snapshot) => [
     snapshot,
-    readJson(
-      path.join(notesRoot, 'snapshots', snapshot, 'FINAL_REVIEW_QUEUE.json')
-    ),
+    readJson(path.join(notesRoot, 'snapshots', snapshot, 'FINAL_REVIEW_QUEUE.json')),
   ])
 );
 
@@ -115,17 +113,19 @@ const sharedUnits = reviewUnits.filter((item) => item.snapshots.length > 1);
 const plan = {
   schemaVersion: 1,
   snapshots: Object.fromEntries(
-    snapshots.map((snapshot) => [snapshot, {
-      queueEvidenceHash: queues[snapshot].evidenceHash,
-      pendingItems: pendingBySnapshot[snapshot].length,
-    }])
+    snapshots.map((snapshot) => [
+      snapshot,
+      {
+        queueEvidenceHash: queues[snapshot].evidenceHash,
+        pendingItems: pendingBySnapshot[snapshot].length,
+      },
+    ])
   ),
   policy: {
     identity: '同じ項目IDとevidenceHashを持つ項目だけを同一レビュー単位として扱う。',
     approval:
       '本計画は承認を生成しない。人手で原文・訳文・証拠を確認した後、各snapshotのFINAL_REVIEW_RESULTS.jsonへ署名する。',
-    invalidation:
-      '本文または証拠が変わった場合は本計画を再生成し、古いレビュー結果を継承しない。',
+    invalidation: '本文または証拠が変わった場合は本計画を再生成し、古いレビュー結果を継承しない。',
   },
   counts: {
     rawPendingItems: snapshots.reduce(

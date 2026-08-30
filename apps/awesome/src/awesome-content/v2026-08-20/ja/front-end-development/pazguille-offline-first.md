@@ -1,16 +1,12 @@
 ---
-title: "pazguille/offline-first"
-description: "Offline Firstの仕様、記事、講演、ツール、書籍、事例を整理した定本スナップショット"
+title: "Awesome Offline-First"
+description: "Offline-Firstを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-pazguille-offline-first-readme-md"
 ---
 
-# Offline First <a id="offline-first"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Offline-First
 
-> Useful resources for creating Offline-First web apps
-
-> "Web" and "online" are two closely associated terms, downright synonymous to many people. So why on earth would we talk about "offline" web technologies, and what does the term even mean?
-
-[awesome](https://github.com/sindresorhus/awesome) - Offline Firstに関するOffline Firstの仕様、記事、講演、ツール、または事例です。
+Offline-Firstを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 - [W3C仕様](#w3c-specification)

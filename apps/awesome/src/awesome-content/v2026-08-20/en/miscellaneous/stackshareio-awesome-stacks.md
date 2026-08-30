@@ -1,19 +1,12 @@
 ---
-title: "stackshareio/awesome-stacks"
-description: "Canonical snapshot of stackshareio/awesome-stacks"
+title: "Awesome Stacks"
+description: "A curated collection of resources and projects focused on Stacks."
 licenseSource: "github-stackshareio-awesome-stacks-readme-md"
 ---
 
-<div align="center">
-<a href="https://awesomestacks.dev/"><img alt="Pink sunglasses with text Awesome Stacks" width="680px" src="src/images/awesome-stacks-logo-github.png"></a>
-<br><br>
-<a href="https://awesome.re"><img src="https://awesome.re/badge-flat2.svg"></a>
-</div>
-
 # Awesome Stacks
-[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/stackshare/awesome-stacks)
 
-> Tech stacks for building different applications and features.
+A curated collection of resources and projects focused on Stacks.
 
 ## Contents
 
@@ -516,5 +509,4 @@ See [CONTRIBUTING.md](https://github.com/stackshareio/awesome-stacks/blob/70c81c
 
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
-To the extent possible under law, [StackShare](https://stackshare.io) has waived all copyright and related or neighboring rights to this work [README](https://github.com/stackshareio/awesome-stacks/blob/70c81c220f254b9ca37cc5692cb29bafac306768/README.md) 
-
+To the extent possible under law, [StackShare](https://stackshare.io) has waived all copyright and related or neighboring rights to this work [README](https://github.com/stackshareio/awesome-stacks/blob/70c81c220f254b9ca37cc5692cb29bafac306768/README.md)

@@ -1,29 +1,12 @@
 ---
-title: "ciconia/awesome-music"
-description: "Canonical snapshot of ciconia/awesome-music"
+title: "Awesome Music"
+description: "A curated collection of resources and projects focused on Music."
 licenseSource: "github-ciconia-awesome-music-readme-md"
 ---
 
-# Awesome Music [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Music
 
-A categorized collection of awesome music libraries, tools, frameworks and software.
-
-Contributions and suggestions are always welcome! Please take a look at the [contribution guidelines and quality standard](https://github.com/ciconia/awesome-music/blob/master/CONTRIBUTING.md) first.
-
-Thanks to all [contributors](https://github.com/ciconia/awesome-music/graphs/contributors), you're awesome and this project wouldn't be possible without you!
-
-* [Awesome Music](#awesome-music)
-  * [Audio Editing](#audio-editing)
-  * [Audio Libraries](#audio-libraries)
-  * [Audio Tools](#audio-tools)
-  * [Free Music Scores](#free-music-scores)
-  * [MIDI Tools & Libraries](#midi-tools--libraries)
-  * [Music Notation](#music-notation)
-  * [Music Programming](#music-programming)
-  * [Music Theory](#music-theory-teaching)
-  * [Standards](#standards)
-* [Other Awesomeness](#other-awesomeness)
-  * [Related lists](#related-lists)
+A curated collection of resources and projects focused on Music.
 
 ## Audio Editing
 

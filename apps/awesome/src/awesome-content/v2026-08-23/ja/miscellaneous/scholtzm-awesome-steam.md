@@ -1,16 +1,12 @@
 ---
-title: "scholtzm/awesome-steam"
-description: "scholtzm/awesome-steam の正規スナップショット"
+title: "Awesome Steam"
+description: "Steamを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-scholtzm-awesome-steam-readme-md"
 ---
 
-# Awesome Steam [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Steam
 
-> [Steam](http://store.steampowered.com/)開発に関する[パッケージ](#packages)と[リソース](#resources)の厳選リスト。
-
-*コントリビュートする前に[コントリビューションガイドライン](https://github.com/scholtzm/awesome-steam/blob/5df7c71148523a438d856494790a0f89f9881467/CONTRIBUTING.md)をお読みください。*
-
-この文書は、Steamクライアントの自動化とWebAPIの利用に関して、既存のパッケージ（ライブラリ、モジュールなど）と利用可能なリソースを手早く把握できるようにするものです。新しいプロジェクトを始めるときは、パッケージ一覧から用途に合うものを探してください。技術的な詳細やチュートリアルが必要な場合は、リソースの節を確認してください。
+Steamを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

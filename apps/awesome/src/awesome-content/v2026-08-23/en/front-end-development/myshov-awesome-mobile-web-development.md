@@ -1,15 +1,12 @@
 ---
-title: "myshov/awesome-mobile-web-development"
-description: "Canonical snapshot of myshov/awesome-mobile-web-development"
+title: "Awesome Mobile Web Development"
+description: "A curated collection of resources and projects focused on Mobile Web Development."
 licenseSource: "github-myshov-awesome-mobile-web-development-readme-md"
 ---
 
-# Awesome Mobile Web Development [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Mobile Web Development
 
-All that you need to create a great mobile web experience.
-
-<a href="https://github.com/myshov/awesome-mobile-web-development/blob/master/CONTRIBUTING.md">Contribution Guidelines</a>
-
+A curated collection of resources and projects focused on Mobile Web Development.
 
 ## Contents
 

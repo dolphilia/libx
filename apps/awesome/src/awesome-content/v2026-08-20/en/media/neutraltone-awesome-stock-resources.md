@@ -1,16 +1,12 @@
 ---
-title: "neutraltone/awesome-stock-resources"
-description: "Canonical snapshot of neutraltone/awesome-stock-resources"
+title: "Awesome Stock Resources"
+description: "A curated collection of resources and projects focused on Stock Resources."
 licenseSource: "github-neutraltone-awesome-stock-resources-readme-md"
 ---
 
-# Awesome Stock Resources [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Github Workflow](https://img.shields.io/github/actions/workflow/status/neutraltone/awesome-stock-resources/main.yml)](https://github.com/neutraltone/awesome-stock-resources/actions) [![Support Me via Paypal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.me/tonyphipps) [![Buy Me a Coffee](https://img.shields.io/badge/Donate-Buy_Me_a_Coffee-orange.svg)](https://buymeacoffee.com/neutraltone)
+# Awesome Stock Resources
 
-![Introductory images](https://raw.githubusercontent.com/neutraltone/awesome-stock-resources/3600069a00c1ca8947a60eab2a8a13e82ef962e1/img/splash.jpg)
-
-> A curated list of awesome stock photography, video and illustration websites.
-
-I try my best to maintain this repository and keep it up-to-date but if you spot a broken link or a resource which isn't listed, please, feel free to make a pull request.
+A curated collection of resources and projects focused on Stock Resources.
 
 ## Table of Contents
 

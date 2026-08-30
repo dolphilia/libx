@@ -1,14 +1,12 @@
 ---
-title: "christian-bromann/awesome-selenium"
-description: "christian-bromann/awesome-selenium の日本語訳（人手レビュー前）"
+title: "Awesome Selenium"
+description: "Seleniumを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-christian-bromann-awesome-selenium-readme-md"
 ---
 
-# Awesome Selenium [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Test Awesome List](https://github.com/christian-bromann/awesome-selenium/actions/workflows/test.yaml/badge.svg)](https://github.com/christian-bromann/awesome-selenium/actions/workflows/test.yaml)
+# Awesome Selenium
 
-> 優れた[Selenium](http://www.seleniumhq.org/) [リソース](#resources)を集めたキュレーションリスト。
-
-[awesome](https://github.com/sindresorhus/awesome)リストの考え方に着想を得ています。
+Seleniumを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## リソース
 

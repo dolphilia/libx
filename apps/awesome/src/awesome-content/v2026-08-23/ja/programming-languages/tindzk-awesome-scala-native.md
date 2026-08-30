@@ -1,13 +1,12 @@
 ---
-title: "tindzk/awesome-scala-native"
-description: "tindzk/awesome-scala-native の正規スナップショット"
+title: "Awesome Scala Native"
+description: "Scala Nativeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-tindzk-awesome-scala-native-readme-md"
 ---
 
-# Awesome Scala Native [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-<a href="http://www.scala-native.org/"><img alt="Scala Native" align="right" width="250" height="250" src="https://raw.githubusercontent.com/tindzk/awesome-scala-native/7587033504944347d2d4a35c2b3eaf02dd438d7b/logo.png"></a>
+# Awesome Scala Native
 
-[Scala Native](http://www.scala-native.org/)は、[Scalaプログラミング言語](https://www.scala-lang.org/)向けの最適化Ahead-of-Timeコンパイラーです。従来、Scalaプログラムの実行には仮想マシンである[JVM](https://en.wikipedia.org/wiki/Java_virtual_machine)が必要でした。Scala Nativeはコンパイラーへ介入し、JVMバイトコードではなく[LLVM中間表現](http://llvm.org/docs/LangRef.html)を出力します。その後、[LLVM](http://llvm.org/)コンパイラー基盤を使ってネイティブライブラリと実行ファイルを生成します。Scala Nativeの実行ファイルはスタンドアロンプログラムであるため、一般に起動時間が短く、メモリー消費も少なくなります。これにより、以前は仮想マシンが制約となっていた環境へScalaプログラムを展開する新たな道が開けます。例えば、コマンドラインや組み込み機器向けのプログラムを作成できます。
+Scala Nativeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [Awesome Scala Native ](#awesome-scala-native-)

@@ -1,11 +1,12 @@
 ---
-title: "HollyAdele/awesome-programming-for-kids"
-description: "Canonical snapshot of HollyAdele/awesome-programming-for-kids"
+title: "Awesome Programming for Kids"
+description: "A curated collection of resources and projects focused on Programming for Kids."
 licenseSource: "github-HollyAdele-awesome-programming-for-kids-readme-md"
 ---
 
-# Awesome Programming for Kids [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-A curated list of awesome resources for teaching kids programming. 
+# Awesome Programming for Kids
+
+A curated collection of resources and projects focused on Programming for Kids.
 
 ## Contents
 * [Pre-Literate](#pre-literate)

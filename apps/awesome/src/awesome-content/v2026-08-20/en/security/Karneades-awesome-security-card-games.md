@@ -1,14 +1,12 @@
 ---
-title: "Karneades/awesome-security-card-games"
-description: "Canonical snapshot of Karneades/awesome-security-card-games"
+title: "Awesome Security Card Games"
+description: "A curated collection of resources and projects focused on Security Card Games."
 licenseSource: "github-Karneades-awesome-security-card-games-readme-md"
 ---
 
-# Awesome Security Card Games [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Security Card Games
 
-> A curated list of security card games (which are sometimes known as tabletop exercises).
-
-Security card games help train your skills and enable discussions for various areas of security.
+A curated collection of resources and projects focused on Security Card Games.
 
 ## Contents
 

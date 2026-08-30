@@ -1,44 +1,12 @@
 ---
-title: "donnemartin/awesome-aws"
-description: "AWSの公式資料、サービス別ライブラリ、ツール、ガイド、コミュニティ集"
+title: "Awesome AWS"
+description: "AWSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-donnemartin-awesome-aws-readme-md"
 ---
 
-<br/>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/donnemartin/data-science-ipython-notebooks/master/images/aws.png">
-</p>
-<br/>
+# Awesome AWS
 
-# Awesome AWS [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-素晴らしいAWSライブラリ、オープンソースリポジトリ、ガイド、ブログ、その他リソースを厳選したリスト
-
-[awesome](https://github.com/sindresorhus/awesome)のリストを参考にした
-
-## The Fiery Meter of AWSome
-
-* Repo with 0100+ Stars: :fire:
-* Repo with 0200+ Stars: :fire::fire:
-* Repo with 0500+ Stars: :fire::fire::fire:
-* Repo with 1000+ Stars: :fire::fire::fire::fire:
-* Repo with 2000+ Stars: :fire::fire::fire::fire::fire:
-
-`The Fiery Meter of AWSome`にないリポジトリも素晴らしい可能性があります。[A Note on Repo AWSomeness](https://github.com/donnemartin/awesome-aws/blob/master/CONTRIBUTING.md#a-note-on-repo-awsomeness)を参照してください
-
-### `awesome-aws` Python Module
-
-[![Build Status](https://travis-ci.org/donnemartin/awesome-aws.svg?branch=master)](https://travis-ci.org/donnemartin/awesome-aws) [![Codecov](https://img.shields.io/codecov/c/github/donnemartin/awesome-aws.svg)](https://codecov.io/github/donnemartin/awesome-aws) [![PyPI version](https://badge.fury.io/py/awesome-aws.svg)](http://badge.fury.io/py/awesome-aws)
-
-Pythonモジュール [`awesome-aws`](https://github.com/donnemartin/awesome-aws/tree/master/awesome)は、 [Awesome AWS](https://github.com/donnemartin/awesome-aws)上のリポジトリを定期的にスキャンし、 `Fiery Meter of AWSome`の正確性を維持しています。
-
-## Contributing
-
-ご貢献をお待ちしています！
-
-[Contributing Guidelines](https://github.com/donnemartin/awesome-aws/blob/master/CONTRIBUTING.md)を確認してください。
-
-また、 [Watch List](https://github.com/donnemartin/awesome-aws/issues/34)もチェックしてください。
+AWSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Index
 

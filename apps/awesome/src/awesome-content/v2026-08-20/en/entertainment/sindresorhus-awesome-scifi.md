@@ -1,18 +1,12 @@
 ---
-title: "sindresorhus/awesome-scifi"
-description: "Canonical snapshot of sindresorhus/awesome-scifi"
+title: "Awesome Sci-Fi"
+description: "A curated collection of resources and projects focused on Sci-Fi."
 licenseSource: "github-sindresorhus-awesome-scifi-readme-md"
 ---
 
-# Awesome Sci-Fi [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Sci-Fi
 
-> Sci-Fi worth consuming
-
-I [asked on Twitter](https://twitter.com/sindresorhus/status/557586610850897920) for recommendations as I want to get into reading Sci-Fi novels. The below is the result. Thanks everyone for recommending your favorites! :)
-
-_For fantasy books, see [awesome-fantasy](https://github.com/RichardLitt/awesome-fantasy)._
-
-![](https://cloud.githubusercontent.com/assets/170270/7630100/242bda3a-fa33-11e4-881a-589cffa0c421.gif)
+A curated collection of resources and projects focused on Sci-Fi.
 
 ## Contents
 

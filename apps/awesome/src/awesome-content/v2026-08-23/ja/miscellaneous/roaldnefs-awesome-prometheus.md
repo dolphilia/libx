@@ -1,17 +1,12 @@
 ---
-title: "roaldnefs/awesome-prometheus"
-description: "roaldnefs/awesome-prometheus の正規スナップショット"
+title: "Awesome Prometheus"
+description: "Prometheusを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-roaldnefs-awesome-prometheus-readme-md"
 ---
 
-# Awesome Prometheus  [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Prometheus
 
-> 優れたPrometheusのリソース、プロジェクト、ツールのキュレーションリスト。
-
-
-[![Prometheus](https://github.com/roaldnefs/awesome-prometheus/blob/d21f6de346a8f01ee3ef8b23282139dcc805eb62/media/prometheus.png)](https://prometheus.io/)
-
-Prometheusは、オープンソースのシステム監視・アラートツールキットです。
+Prometheusを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [公式リソース](#official-resources)

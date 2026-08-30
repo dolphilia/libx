@@ -1,17 +1,13 @@
 ---
-title: "meirwah/awesome-incident-response"
-description: "セキュリティインシデント対応とDFIRのツール・資料を集めた厳選リスト"
+title: "Awesome Incident Response"
+description: "Incident Responseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-meirwah-awesome-incident-response-readme-md"
 ---
 
-<a id="awesome-incident-response"></a>
-# Awesome Incident Response [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Check URLs](https://github.com/meirwah/awesome-incident-response/actions/workflows/check_urls.yml/badge.svg)](https://github.com/meirwah/awesome-incident-response/actions/workflows/check_urls.yml)
+# Awesome Incident Response
 
-> セキュリティアナリストと[DFIR](http://www.acronymfinder.com/Digital-Forensics%2c-Incident-Response-%28DFIR%29.html)チームを支援する、セキュリティインシデント対応のツールと資料の厳選リストです。
+Incident Responseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-デジタルフォレンジクスおよびインシデントレスポンス（DFIR）チームは、組織のセキュリティインシデント対応を担います。証拠の収集、影響の修復、再発防止策の導入などがその役割です。
-
-<a id="contents"></a>
 ## 目次
 
 - [Adversary Emulation](#adversary-emulation)

@@ -1,21 +1,12 @@
 ---
-title: "hallvaaw/awesome-biological-image-analysis"
-description: "Canonical snapshot of hallvaaw/awesome-biological-image-analysis"
+title: "Awesome Biological Image Analysis"
+description: "A curated collection of resources and projects focused on Biological Image Analysis."
 licenseSource: "github-hallvaaw-awesome-biological-image-analysis-readme-md"
 ---
 
-# Awesome Biological Image Analysis [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Biological Image Analysis
 
-<p align="center">
-  <br>
-    <img width="300" src="awesome-biological-image-analysis.svg" alt="Awesome Biological Image Analysis">
- <br>
- <br>
-</p>
-
-> Tools and resources for biological image analysis.
-
-Biological image analysis aims to increase our understanding of biology through the use of various computational techniques and approaches to obtain valuable information from images.
+A curated collection of resources and projects focused on Biological Image Analysis.
 
 ## Contents
 - [General image analysis software](#general-image-analysis-software)

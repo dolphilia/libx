@@ -1,17 +1,12 @@
 ---
-title: "web-padawan/awesome-web-components"
-description: "Web Componentsの標準、実装、設計、ツール、標準化史を分類した定本スナップショット"
+title: "Awesome Web Components"
+description: "Web Componentsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-web-padawan-awesome-web-components-readme-md"
 ---
 
-# Web ComponentsのAwesomeリスト <a id="awesome-web-components"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Web Components
 
-Web Componentsに関する優れた資料を厳選したリストです。
-
-> **注記**
-> このプロジェクトは以前「Web Components the Right Way」という名前でした。
-
-[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)は、機能をほかのコードからカプセル化した再利用可能なカスタム要素を作成し、Webアプリで利用するための複数技術の集合です。
+Web Componentsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

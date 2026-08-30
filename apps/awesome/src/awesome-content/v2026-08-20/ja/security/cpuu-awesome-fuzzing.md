@@ -1,17 +1,12 @@
 ---
-title: "cpuu/awesome-fuzzing"
-description: "ファジングの書籍、主要会議論文、対象別ツールを分類した定本スナップショット"
+title: "Awesome Fuzzing"
+description: "Fuzzingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-cpuu-awesome-fuzzing-readme-md"
 ---
 
-# ファジングのAwesomeリスト <a id="awesome-fuzzing"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Fuzzing
 
-> [ファジング](https://en.wikipedia.org/wiki/Fuzzing)またはファズテストは、無効・予期しない・ランダムなデータをプログラムへ入力する自動ソフトウェアテスト技法です。クラッシュ、組み込みアサーション失敗、潜在的なメモリリークなどを監視し、一般に構造化入力を受け取るプログラムを検査します。
-
-セキュリティテスト向けファジング資料を厳選し、無料で利用できる学術論文やツールも収録しています。
-
-お気に入りのツールや自身の論文が未掲載の場合は、フォークしてPull Requestを作成してください。
-
+Fuzzingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 
@@ -639,5 +634,3 @@ licenseSource: "github-cpuu-awesome-fuzzing-readme-md"
 ## コントリビューション <a id="contribute"></a>
 
 コントリビューションを歓迎します。最初に[コントリビューションガイドライン](https://github.com/cpuu/awesome-fuzzing/blob/822418b749c1fc7d49e22591b07cdec14be4ed84/contributing.md)を確認してください。
-
-

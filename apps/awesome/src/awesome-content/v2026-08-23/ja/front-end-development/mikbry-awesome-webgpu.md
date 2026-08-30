@@ -1,17 +1,12 @@
 ---
-title: "mikbry/awesome-webgpu"
-description: "mikbry/awesome-webgpu の定本スナップショット"
+title: "Awesome WebGPU"
+description: "WebGPUを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mikbry-awesome-webgpu-readme-md"
 ---
 
-# Awesome WebGPU [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome WebGPU
 
-[<img src="https://www.w3.org/2023/02/webgpu-logos/webgpu-notext.svg" align="right" height="150">](https://www.w3.org/TR/webgpu/)
-
-
-> WebGPU のリソース、ライブラリ、ツールを集めた素敵なキュレーションリスト。
-
-WebGPU は、モダンな 3D および GPU コンピューティングのために [W3C](https://www.w3.org/) が策定中の Web 標準です。デスクトップからモバイルまで最近の GPU で最高の性能を引き出すことを目的とします。WebGL と異なり、WebGPU は既存ネイティブ API の移植ではなく、Metal、Vulkan、Direct3D12 の概念を取り入れています。
+WebGPUを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -233,4 +228,3 @@ WebGPU は、モダンな 3D および GPU コンピューティングのため�
 法律で可能な限り、[Mik Bry](https://github.com/mikbry) はこの作品に関するすべての著作権および関連・隣接権を放棄しています。
 
 貢献を歓迎します。まず[貢献ガイドライン](https://github.com/mikbry/awesome-webgpu/blob/d0324dc7725f9e3384daad3fc1ac596769802b51/contributing.md) をお読みください。
-

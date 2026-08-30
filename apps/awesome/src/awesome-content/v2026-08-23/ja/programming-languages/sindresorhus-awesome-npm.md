@@ -1,16 +1,12 @@
 ---
-title: "sindresorhus/awesome-npm"
-description: "sindresorhus/awesome-npm の正規スナップショット"
+title: "Awesome npm"
+description: "npmを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sindresorhus-awesome-npm-readme-md"
 ---
 
-# Awesome npm [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://github.com/npm/logos/blob/7fb0bc425e0dac1bab065217c4ed595594448db4/npm-transparent.png" width="200" align="right" alt="npm">](https://www.npmjs.com)
+# Awesome npm
 
-> 優れた[npm](https://www.npmjs.com)リソースとヒント
-
-[npm](https://en.wikipedia.org/wiki/Npm_(software))はJavaScriptプログラミング言語のパッケージマネージャーであり、[Node.js](https://en.wikipedia.org/wiki/Node.js)ランタイムに同梱されています。
-
-*コントリビュート前に[貢献ガイドライン](https://github.com/sindresorhus/awesome-npm/blob/f758b3a7b3e5ff99707b803da4f1396515061dec/contributing.md)を読んでください。*
+npmを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

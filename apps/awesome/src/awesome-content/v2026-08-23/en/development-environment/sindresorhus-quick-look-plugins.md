@@ -1,12 +1,12 @@
 ---
-title: "sindresorhus/quick-look-plugins"
-description: "Canonical snapshot of sindresorhus/quick-look-plugins"
+title: "Awesome Quick Look plugins"
+description: "A curated collection of resources and projects focused on Quick Look plugins."
 licenseSource: "github-sindresorhus-quick-look-plugins-readme-md"
 ---
 
-# Quick Look plugins [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Quick Look plugins
 
-> List of useful [Quick Look](https://en.wikipedia.org/wiki/Quick_Look) plugins for developers
+A curated collection of resources and projects focused on Quick Look plugins.
 
 ## Install
 

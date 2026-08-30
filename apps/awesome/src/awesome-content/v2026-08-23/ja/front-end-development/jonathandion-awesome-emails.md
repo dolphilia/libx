@@ -1,21 +1,13 @@
 ---
-title: "jonathandion/awesome-emails"
-description: "jonathandion/awesome-emails の正規スナップショット"
+title: "Awesome EMAILS"
+description: "EMAILSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jonathandion-awesome-emails-readme-md"
 ---
 
-<h1 align="center">
-AWESOME EMAILS（メール）✉ ✨
-</h1>
-<h4 align="center">
- より良いメールを作るための優れたフレームワーク、テンプレート、ツール、ワークフローなどを集めたリストです。
-</h4>
-<p align="center" style="text-align: center;">
-<a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
-<a href="https://twitter.com/@0xjdion"><img src="https://img.shields.io/twitter/url/https/twitter.com/blueaquilae.svg?style=social&amp;label=Follow%20%400xjdion" alt="Jonathan Dion Twitter"></a>
-</p>
+# Awesome EMAILS
 
-<a id="table-of-contents"></a>
+EMAILSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+
 ### 目次
 
 - [フレームワーク](#frameworks)

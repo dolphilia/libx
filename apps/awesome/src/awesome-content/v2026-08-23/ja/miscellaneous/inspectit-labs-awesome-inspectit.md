@@ -1,16 +1,12 @@
 ---
-title: "inspectit-labs/awesome-inspectit"
-description: "inspectit-labs/awesome-inspectit の正規スナップショット"
+title: "Awesome inspectIT"
+description: "inspectITを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-inspectit-labs-awesome-inspectit-readme-md"
 ---
 
-# Awesome inspectIT  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome inspectIT
 
-> 優れた inspectIT のドキュメントとリソースを厳選したリストです。
-
-[![inspectIT](https://github.com/inspectit-labs/awesome-inspectit/blob/24d03a4f15c0e1fac4eb922a000e4fc39d784e3c/media/inspectit.png)](http://www.inspectit.rocks/)
-
-inspectIT は、Java（EE）アプリケーションを分析するためのオープンソース APM（アプリケーションパフォーマンス管理）ツールです。
+inspectITを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

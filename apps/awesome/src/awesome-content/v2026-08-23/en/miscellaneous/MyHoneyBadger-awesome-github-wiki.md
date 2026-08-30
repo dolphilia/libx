@@ -1,13 +1,12 @@
 ---
-title: "MyHoneyBadger/awesome-github-wiki"
-description: "Canonical snapshot of MyHoneyBadger/awesome-github-wiki"
+title: "Awesome GitHub Wikis"
+description: "A curated collection of resources and projects focused on GitHub Wikis."
 licenseSource: "github-MyHoneyBadger-awesome-github-wiki-readme-md"
 ---
 
-# Awesome GitHub Wikis [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/MyHoneyBadger/awesome-github-wiki/)
-> A curated list of awesome GitHub Wikis
+# Awesome GitHub Wikis
 
-Every repository on [GitHub.com](https://github.com/) comes equipped with a section for hosting documentation, called a [Wiki](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis). Repository's Wiki shares long-form content about project, such as how to use it, how you designed it, or its core principles. A README file quickly tells what project can do, while use a Wiki to provide additional documentation.
+A curated collection of resources and projects focused on GitHub Wikis.
 
 ## Contents
 - [Examples](#examples)

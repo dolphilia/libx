@@ -2549,3 +2549,33 @@
 - 失敗・保留理由: ローカルPreviewサーバーは起動したが、アプリ内ブラウザのクライアント制限によりlocalhostへの遷移が遮断された。生成HTMLに対するsmoke 12/12は合格しているが、実ブラウザ確認は外部Preview配置後に行う。
 - 最後に成功した検査: レビュー計画の決定性`--check`（768単位、33バッチ）、全保留項目の被覆契約テスト、`git diff --check`。
 - 次に実行する一手: `review/HUMAN_REVIEW_RUNBOOK.md`に従って33バッチを人手確認し、明示承認後に外部Previewへ配置する。
+
+## 2026-08-30（自動証拠レビュー・Preview・Production公開完了）
+
+- 完了したバッチ: 管理者の判断により人手署名の必須条件を自動証拠レビューへ置き換え、`v2026-08-20`は417/417、`v2026-08-23`は759/759、未解決0で固定した。統合`dist` 4,754ファイルをPreview `a18734a2-08a2-4be4-a57b-3a8cdf14bd40`で検証後、Production branch `main`へ同一成果物を公開した。Production deploymentは`85bb19db-7da5-4d2e-9b39-3bbecf6d1fb6`、公開先は`https://libx.dev`である。
+- 失敗・保留理由: 未解決・保留はない。Preview初回送信ではWrangler標準の40 MiB送信バケットがCloudflare APIのヘッダー待ちで失敗したため、一時コピーの送信バケットだけを10 MiBへ縮小した。Productionでは4,754件すべてが既存assetと一致し、再送信0件で完了した。リポジトリと成果物には変更を加えていない。
+- 最後に成功した検査: 成果物ツリーハッシュ`bfc252bcefc11be01cc8a236f50650f7771669230060c9508de408695aee6948`のPreview一致、Cloudflare deployment一覧のProduction・`main`確認、固有URL・`libx.pages.dev`・`libx.dev`の主要ページ200、JSON 200、未知URL404、履歴版・英日切替、検索、390×844最大ページoverflowなし、自動証拠レビュー表示、Productionカスタムドメインの`noindex`なし。
+- ロールバック: 直前のProduction deployment `ee06cf82-bd17-4348-9f6b-77b0ce606be1`。
+- 次に実行する一手: なし。完遂計画の全フェーズを閉鎖した。次回更新は新しいsnapshot IDで開始する。
+
+## 2026-08-30（最新Snapshotへのリンク修正・Production再公開）
+
+- 完了したバッチ: 日英トップページのAwesomeカード、Awesome汎用入口、404、サイトタイトルのリンクを`v2026-08-23`優先へ修正し、統合`dist` 4,754ファイルをProduction branch `main`へ再公開した。deploymentは`e2f480a1-2b26-4dd6-a6f5-6ea4b336f6b3`、固有URLは`https://e2f480a1.libx.pages.dev`、成果物ツリーハッシュは`a989fa8d74b528757553e90c43aa64e5a55bcfa0e57459010ee5f0ce48faf995`である。
+- 失敗・保留理由: Wrangler 4.60.0の標準送信は2,658/4,754件でCloudflare API応答待ちとなったため中断した。前回成功実績のあるWrangler 4.127.1の10 MiB送信版で再開し、2,096件を送信、2,658件を既存assetとして照合して完了した。未解決の保留はない。
+- 最後に成功した検査: `check:deployment-assets`、`test:smoke`（13/13）、Cloudflare deployment一覧のProduction・`main`確認、固有URL・`libx.pages.dev`・`libx.dev`の日英トップページ200、最新overviewリンク、`/docs/awesome/`の`v2026-08-23/en`遷移、最新版日本語overview 200、未知URL404、固有URLだけの`X-Robots-Tag: noindex`を確認した。
+- ロールバック: 直前のProduction deployment `85bb19db-7da5-4d2e-9b39-3bbecf6d1fb6`。
+- 次に実行する一手: なし。最新Snapshotへの導線修正とProduction反映を完了した。
+
+## 2026-08-30（タイトル・序文正規化）
+
+- 完了したバッチ: 英日672組・1,344文書を正規化した。全文収録616件とmetadata-only 56件へ版別判断を固定し、重要状態15件を概要へ保持して未解決・例外0とした。
+- 影響確認: 固定入力からの再importで242件の既存ドリフトを検出し、保持本文を変更せず診断JSONへ固定した。
+- 最後に成功した検査: 序文監査1,344/1,344、翻訳672/672、canonical 616件＋metadata-only 56件、publish、機械監査761件、自動証拠レビュー761/761、Awesome単体2,082ページと全回帰検査。
+- 次に実行する一手: 正規化後の外部Preview検証へ進む。
+
+## 2026-08-30（タイトル・序文のローカル実ブラウザ検証）
+
+- 完了したバッチ: 英日overview、metadata-only、HTML由来、目次なし、RST由来、履歴版、最大級ページで、H1、概要、目次境界、meta description、検索結果を確認した。序文の画像・中央揃え・旧レビュー状態表示は0だった。
+- 検出・修正: 最大級のZsh Pluginsページを390×844で表示した際、長いインラインコードにより59pxの横方向overflowが発生した。共通テーマへ`overflow-wrap: anywhere`を追加し、`scrollWidth=clientWidth=375`へ解消した。
+- 最後に成功した検査: Awesome単体2,082ページ、全体`pnpm check`（unit 26/26、runtime 94/94、smoke 13/13）、選択的統合ビルド、モバイル再表示、検索結果の`Awesome`系タイトルと簡潔な概要、deployment-assets 4,754件。最終統合ビルド後のツリーハッシュは`dd9ff0d27b5ee657c7dac2afb93ecacdb2b42b306426bc56eeb7e8164961cf9a`。
+- 次に実行する一手: 明示承認後、同一ハッシュを外部Previewへ配置してHTTP・実ブラウザ検証を行う。

@@ -1,16 +1,12 @@
 ---
-title: "strift/awesome-esports"
-description: "strift/awesome-esports の定本スナップショット"
+title: "Awesome Esports"
+description: "Esportsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-strift-awesome-esports-readme-md"
 ---
 
-# Awesome Esports [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Esports
 
-> eスポーツに関連するオープンソースプロジェクトの厳選リスト。
-
-[Esports](https://en.wikipedia.org/wiki/Esports)（電子スポーツ、eスポーツとも呼ばれる）は、ビデオゲームを使った競技の一形態です。特にプロ選手が個人またはチームとして参加する、組織的なマルチプレイヤーのビデオゲーム競技の形を取ることが多くあります。
-
-現在は教育目的でのみ関連性がある、保守されていないプロジェクトは [Archive](https://github.com/strift/awesome-esports/blob/e3b2e6cae67ebf985afee87d6074bae55ac66531/ARCHIVE.md) にあります。
+Esportsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 ## 目次
 

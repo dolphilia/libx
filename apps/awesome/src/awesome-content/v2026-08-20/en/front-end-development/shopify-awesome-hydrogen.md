@@ -1,14 +1,12 @@
 ---
-title: "shopify/awesome-hydrogen"
-description: "Canonical snapshot of shopify/awesome-hydrogen"
+title: "Awesome Hydrogen"
+description: "A curated collection of resources and projects focused on Hydrogen."
 licenseSource: "github-shopify-awesome-hydrogen-readme-md"
 ---
 
-<img width="400" src="./assets/hydrogen-logo.svg">
+# Awesome Hydrogen
 
-# Awesome Hydrogen [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-Hydrogen is Shopify's open source stack for headless commerce.
+A curated collection of resources and projects focused on Hydrogen.
 
 ## Contents
 

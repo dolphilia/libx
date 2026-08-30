@@ -1,14 +1,12 @@
 ---
-title: "seifrajhi/awesome-cilium"
-description: "Canonical snapshot of seifrajhi/awesome-cilium"
+title: "Awesome Cilium"
+description: "A curated collection of resources and projects focused on Cilium."
 licenseSource: "github-seifrajhi-awesome-cilium-readme-md"
 ---
 
-# Awesome Cilium [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Cilium
 
-> Cilium is an open-source networking project that provides networking and security capabilities for containerized applications, microservices, and virtual machines.
-
-Recently [Cilium](https://docs.cilium.io/en/stable) launched a great website about eBPF called [ebpf.io](https://ebpf.io/). It serves a similar purpose to this list, with [an introduction to eBPF](https://ebpf.io/what-is-ebpf).
+A curated collection of resources and projects focused on Cilium.
 
 ## Contents
 

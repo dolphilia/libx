@@ -1,25 +1,12 @@
 ---
-title: "FoxFil/awesome-geocaching"
-description: "FoxFil/awesome-geocaching の定本スナップショット"
+title: "Awesome Geocaching"
+description: "Geocachingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-FoxFil-awesome-geocaching-readme-md"
 ---
 
-<h1><div align="center">
-	<a href="https://www.geocaching.com"><img width="50%" height="25%" src="pics/logo.png" alt="Awesome Geocaching"></a>
-</div></h1>
-<p align="center">
-    <a href="https://github.com/sindresorhus/awesome"><img alt="awesome badge" src="https://awesome.re/badge.svg" />
-</p>
+# Awesome Geocaching
 
-> Geocaching に関連してインターネット上で利用できる素材の厳選リスト。
-
-[Geocaching](https://en.wikipedia.org/wiki/Geocaching) は、参加者が全地球測位システムの受信機またはモバイルデバイス、その他のナビゲーション技術を使い、世界中の座標で示された特定の場所にあるジオキャッシュまたはキャッシュと呼ばれる容器を隠したり探したりする、屋外レクリエーション活動です。
-
-貢献を歓迎します。まず [contribution guidelines](https://github.com/FoxFil/awesome-geocaching/blob/81fca0108e668af88c5b8861e1e466e7ba7d00f6/contributing.md) をお読みください。
-
-⭐ このリストが気に入ったらスターを付けてください。
-
----
+Geocachingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

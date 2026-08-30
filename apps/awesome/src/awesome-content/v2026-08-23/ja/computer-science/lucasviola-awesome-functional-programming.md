@@ -1,23 +1,12 @@
 ---
-title: "lucasviola/awesome-functional-programming"
-description: "lucasviola/awesome-functional-programming の正規スナップショット"
+title: "Awesome Functional Programming"
+description: "Functional Programmingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lucasviola-awesome-functional-programming-readme-md"
 ---
 
-## Awesome Functional Programming [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Functional Programming
 
-[Awesome](https://github.com/sindresorhus/awesome/)プロジェクトを基にしています。
-
-## これは何？ <a id="what-is-this-about"></a>
-
-この10年間、関数型プログラミングは、その宣言的な特性によって新たな力を得ました。
-この特性は並列計算や[ムーアの法則](https://en.wikipedia.org/wiki/Moore%27s_law)を最大限に活用するうえで
-非常に効果的だと考える人もいます。
-
-このリポジトリは、ブログ記事、論文、動画、ツールなど、関数型プログラミングに関する資料を集め、
-その背景にある理論的な話題の一部を明確にすることも目指しています。
-
-コントリビュートしたい場合は、まず[こちら](https://github.com/lucasviola/awesome-functional-programming/blob/master/contributing.md)を参照してください。
+Functional Programmingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 - [ブログ記事](#blog-posts)

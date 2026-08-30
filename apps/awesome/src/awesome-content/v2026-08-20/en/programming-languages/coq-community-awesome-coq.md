@@ -1,18 +1,12 @@
 ---
-title: "coq-community/awesome-coq"
-description: "Canonical snapshot of coq-community/awesome-coq"
+title: "Awesome Coq"
+description: "A curated collection of resources and projects focused on Coq."
 licenseSource: "github-coq-community-awesome-coq-readme-md"
 ---
 
-# Awesome Coq [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Coq
 
-[<img src="coq-logo.svg" align="right" width="100" alt="coq-community logo" title="Awesome Coq is a coq-community project">](https://github.com/coq-community/manifesto)
-
-> A curated list of awesome Coq libraries, plugins, tools, and resources.
-
-The [Coq proof assistant](https://coq.inria.fr) provides a formal language to write mathematical definitions, executable algorithms, and theorems, together with an environment for semi-interactive development of machine-checked proofs.
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/coq-community/awesome-coq/blob/master/CONTRIBUTING.md) first.
+A curated collection of resources and projects focused on Coq.
 
 ## Contents
 

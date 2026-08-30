@@ -1,16 +1,12 @@
 ---
-title: "xxczaki/awesome-calculators"
-description: "Canonical snapshot of xxczaki/awesome-calculators"
+title: "Awesome Calculators"
+description: "A curated collection of resources and projects focused on Calculators."
 licenseSource: "github-xxczaki-awesome-calculators-readme-md"
 ---
 
-# Awesome Calculators [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Calculators
 
-[<img src="https://i.imgur.com/9q98DcX.png" align="right" width="120">](https://github.com/xxczaki/awesome-calculators)
-
-> A curated list of resources related to calculators!
-
-Is your project mentioned in this list? See [mentioned.md](https://github.com/xxczaki/awesome-calculators/blob/master/mentioned.md)!
+A curated collection of resources and projects focused on Calculators.
 
 ## Contents
 - [Calculator apps](#calculator-apps)

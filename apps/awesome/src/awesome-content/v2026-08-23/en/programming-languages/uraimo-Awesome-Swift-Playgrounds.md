@@ -1,34 +1,12 @@
 ---
-title: "uraimo/Awesome-Swift-Playgrounds"
-description: "Canonical snapshot of uraimo/Awesome-Swift-Playgrounds"
+title: "Awesome Swift Playgrounds 156 playgrounds"
+description: "A curated collection of resources and projects focused on Swift Playgrounds 156 playgrounds."
 licenseSource: "github-uraimo-Awesome-Swift-Playgrounds-readme-md"
 ---
 
-# Awesome Swift Playgrounds [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)  ![156 playgrounds](https://img.shields.io/badge/Playgrounds:-156-orange.svg)
+# Awesome Swift Playgrounds 156 playgrounds
 
-> A curated list of awesome Swift playgrounds.
-
-### Contributing
-
-Please take a quick look at the [contribution guidelines](https://github.com/uraimo/awesome-swift-playgrounds/blob/master/CONTRIBUTING.md) first. Thanks to all [contributors](https://github.com/uraimo/awesome-swift-playgrounds/graphs/contributors); you rock!
-
-If you see a playground here that does not work anymore with the current release of Xcode or is not a good fit, please submit a pull request to improve this file or consider updating it, thank you!
-
-### Downloading all the playgrounds
-
-Unless otherwise indicated, all playgrounds are compatible with Swift 3.
-
-All the playgrounds are available as submodules in the `playgrounds/` directory, to download them all in one go, just clone this repository with `git clone --recursive https://github.com/uraimo/Awesome-Swift-Playgrounds.git` or execute `git submodule update --init` after you have cloned the repository the usual way.
-
-Apple's playgrounds distributed as zip archives have to be downloaded manually.
-
-### Tags
-
-🌟 = My personal favorites
-
-🍁 = Swift 4+ Playground
-
-⏳ = Pre-Swift 3 Playground
+A curated collection of resources and projects focused on Swift Playgrounds 156 playgrounds.
 
 ### Contents
 

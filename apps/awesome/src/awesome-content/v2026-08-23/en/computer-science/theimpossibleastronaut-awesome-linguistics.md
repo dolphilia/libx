@@ -1,13 +1,12 @@
 ---
-title: "theimpossibleastronaut/awesome-linguistics"
-description: "Canonical snapshot of theimpossibleastronaut/awesome-linguistics"
+title: "Awesome Linguistics"
+description: "A curated collection of resources and projects focused on Linguistics."
 licenseSource: "github-theimpossibleastronaut-awesome-linguistics-readme-md"
 ---
 
-### Awesome Linguistics
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Linguistics
 
-A curated list of anything remotely related to linguistics, sorted in alphabetical order.
+A curated collection of resources and projects focused on Linguistics.
 
 - [Programming](#programming)
     - [Platforms and toolkits](#platforms-and-toolkits)

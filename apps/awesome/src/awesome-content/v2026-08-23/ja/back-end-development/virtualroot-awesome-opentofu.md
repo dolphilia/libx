@@ -1,14 +1,12 @@
 ---
-title: "virtualroot/awesome-opentofu"
-description: "virtualroot/awesome-opentofu の定本スナップショット"
+title: "Awesome OpenTofu"
+description: "OpenTofuを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-virtualroot-awesome-opentofu-readme-md"
 ---
 
-# Awesome OpenTofu [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome OpenTofu
 
-> 優れたOpenTofuリソースとツールを集めた、共同編集によるリスト。
-
-[OpenTofu](https://opentofu.org/) を使うと、インフラストラクチャを宣言的に管理できる。Terraformのオープンソースでコミュニティ主導の代替製品である。
+OpenTofuを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

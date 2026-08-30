@@ -1,33 +1,12 @@
 ---
-title: "matiassingers/awesome-slack"
-description: "matiassingers/awesome-slack の正規スナップショット"
+title: "Awesome Slack"
+description: "Slackを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-matiassingers-awesome-slack-readme-md"
 ---
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Slack
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/matiassingers/awesome-slack/master/awesome-slack-pink.png" alt="ロゴ" width="200px">
-</p>
-
-<p align="center">
-    <h3 align="center">Awesome Slack</h3>
-</p>
-
-<p align="center">
-    Slack 関連の優れたものを厳選したリストです。
-</p>
-
-***
-
-Slack の熱心なユーザーですか？ 統合を構築する優れたツールを探す開発者ですか？ それとも着想を探しているだけですか？ Slack に関する最高のものを集めました。
-
-- [:pencil:  リスト](#pencil--lists)
-- [:art:  テーマ](#art--themes)
-- [:hammer_and_wrench:  ライブラリと SDK](#hammer_and_wrench--libraries-and-sdks)
-- [:gear:  オープンソースの Slack アプリと統合](#gear--open-source-slack-apps-and-integrations)
-- [:busts_in_silhouette:  貢献](#busts_in_silhouette--contributions)
-- [:classical_building:  ライセンス](#classical_building--license)
+Slackを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## :pencil: &nbsp; リスト
 - [コミュニティ製ライブラリ](https://api.slack.com/community) - Slack が厳選したコミュニティ製オープンソースライブラリ一覧

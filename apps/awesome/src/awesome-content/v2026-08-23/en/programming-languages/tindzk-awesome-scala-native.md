@@ -1,13 +1,12 @@
 ---
-title: "tindzk/awesome-scala-native"
-description: "Canonical snapshot of tindzk/awesome-scala-native"
+title: "Awesome Scala Native"
+description: "A curated collection of resources and projects focused on Scala Native."
 licenseSource: "github-tindzk-awesome-scala-native-readme-md"
 ---
 
-# Awesome Scala Native [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-<a href="http://www.scala-native.org/"><img alt="Scala Native" align="right" width="250" height="250" src="https://raw.githubusercontent.com/tindzk/awesome-scala-native/7587033504944347d2d4a35c2b3eaf02dd438d7b/logo.png"></a>
+# Awesome Scala Native
 
-[Scala Native](http://www.scala-native.org/) is an optimising ahead-of-time compiler for the [Scala programming language](https://www.scala-lang.org/). Traditionally, a virtual machine, the [JVM](https://en.wikipedia.org/wiki/Java_virtual_machine), was required to run Scala programs. Scala Native taps into the compiler to emit [LLVM intermediate representation](http://llvm.org/docs/LangRef.html) rather than JVM bytecode. Then, the [LLVM](http://llvm.org/) compiler infrastructure is used to produce native libraries and executables. Given that Scala Native executables are stand-alone programs, they generally have a shorter start-up time and low memory consumption. This opens up new avenues to deploy Scala programs where previously the virtual machine would be the limiting factor. For example, developers could write programs for the command line or embedded devices.
+A curated collection of resources and projects focused on Scala Native.
 
 ## Contents
 - [Awesome Scala Native ](#awesome-scala-native-)

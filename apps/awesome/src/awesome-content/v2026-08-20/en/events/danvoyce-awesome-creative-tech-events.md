@@ -1,14 +1,12 @@
 ---
-title: "danvoyce/awesome-creative-tech-events"
-description: "Canonical snapshot of danvoyce/awesome-creative-tech-events"
+title: "Awesome Creative Tech Events"
+description: "A curated collection of resources and projects focused on Creative Tech Events."
 licenseSource: "github-danvoyce-awesome-creative-tech-events-readme-md"
 ---
 
-# Awesome Creative Tech Events [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Creative Tech Events
 
-> A curated list of events from around the globe for creative coding, tech, design, music, arts and cool stuff.
-
-Contributions are welcomed. Add or update links through pull requests.
+A curated collection of resources and projects focused on Creative Tech Events.
 
 ## Contents
 

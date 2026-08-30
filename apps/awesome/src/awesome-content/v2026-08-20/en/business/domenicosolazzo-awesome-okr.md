@@ -1,14 +1,12 @@
 ---
-title: "domenicosolazzo/awesome-okr"
-description: "Canonical snapshot of domenicosolazzo/awesome-okr"
+title: "Awesome OKR"
+description: "A curated collection of resources and projects focused on OKR."
 licenseSource: "github-domenicosolazzo-awesome-okr-readme-md"
 ---
 
-# Awesome OKR [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-A curated list of resources about OKRs
+# Awesome OKR
 
-OKR are the best practice of setting and communicating company, team and employee objectives and measuring their progress based on achieved results.
-It is used in several companies like Google, Netflix, Zynga, LinkedIn, Twitter and it make it easier to align all the employees around the company mission and vision.
+A curated collection of resources and projects focused on OKR.
 
 ## Table of Contents
 - [Basics](#basics)

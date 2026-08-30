@@ -1,30 +1,12 @@
 ---
-title: "Awesome Plone（厳選リスト）"
-description: "Plone の厳選リスト"
+title: "Awesome Plone"
+description: "Ploneを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-collective-awesome-plone-readme-md"
 ---
 
-# Awesome Plone [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Plone
 
-
-[<img align="right" src="logo.png" height="64">](https://plone.org)
-
-> A community-curated list of _awesome_ Plone add-ons.
-
-
-[Plone](https://plone.org) is a open source CMS written in Python with a focus on functionality, customizability and security out of the box.
-
-
-There are over 3000 add-ons for [Plone on PyPi](https://pypi.org/search/?q=&o=&c=Framework+%3A%3A+Plone) and over 1500 repositories in the [Collective](https://github.com/collective) organization on GitHub. If you want to know if there is already a add-on for Plone that fits your needs, searching for it on GitHub or PyPi can be hard. It's hard to understand which one could be a good solution or not.
-
-This list is intended to fill that gap, and create a shared knowledge about common products and techniques.
-
-For a filterable list of addons aggreating all Plone related packages from PyPi see https://pag.derico.tech.
-
-This list only covers add-ons that work with the latest major versions of Plone (currently 5.2 and 6) and only those that support Python 3.
-
-Plone 6 comes with a new default frontend called Volto, which is written in React and uses `plone.restapi` to communicate with Plone. Volto is very extendable in itself. Checkout the [awesome-volto list](https://github.com/collective/awesome-volto) for add-ons to Volto.
-
+Ploneを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Contents
 
@@ -314,4 +296,3 @@ _Because Plone also has a lot of good official info resources_
 ## Contributing
 
 Contributions are welcome! Read the [contribution guidelines](https://github.com/collective/awesome-plone/blob/2a8601ac9e3a78326e5f9a7991ba80de139d0e10/contributing.md).
-

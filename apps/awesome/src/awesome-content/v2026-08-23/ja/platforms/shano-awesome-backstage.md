@@ -1,14 +1,12 @@
 ---
-title: "shano/awesome-backstage"
-description: "shano/awesome-backstage の定本スナップショット"
+title: "Awesome Backstage"
+description: "Backstageを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-shano-awesome-backstage-readme-md"
 ---
 
-# Awesome Backstage [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Backstage
 
-[<img src="backstage-logo.svg" align="right" width="100">](https://backstage.io)
-
-優れた[Backstage](https://backstage.io/)リソース、プラグイン、技術ドキュメントなどを厳選したリストです。Backstageは、開発者がソフトウェアを簡単に構築、テスト、保守できるよう支援するオープンソースプラットフォームです。このリポジトリは、Backstageを効果的に使用するための包括的なリソースとツールのコレクションを提供することを目的としています。
+Backstageを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

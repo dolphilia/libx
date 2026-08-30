@@ -1,11 +1,12 @@
 ---
-title: "TupleType/awesome-cicd-attacks"
-description: "Canonical snapshot of TupleType/awesome-cicd-attacks"
+title: "Awesome CI/CD Attacks"
+description: "A curated collection of resources and projects focused on CI/CD Attacks."
 licenseSource: "github-TupleType-awesome-cicd-attacks-readme-md"
 ---
 
-# Awesome CI/CD Attacks [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-Offensive research of systems and processes related to developing and deploying code.
+# Awesome CI/CD Attacks
+
+A curated collection of resources and projects focused on CI/CD Attacks.
 
 ## Contents
 

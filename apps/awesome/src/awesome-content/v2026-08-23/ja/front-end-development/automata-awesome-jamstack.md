@@ -1,40 +1,13 @@
 ---
-title: "automata/awesome-jamstack"
-description: "automata/awesome-jamstack の正規スナップショット"
+title: "Awesome Jamstack"
+description: "Jamstackを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-automata-awesome-jamstack-readme-md"
 ---
 
-<div align="center">
-  <br /><br />
-  <a href="https://awesome.re"><img src="https://awesome.re/badge-flat.svg" /></a>
-  <br /><br /><br />
-  <img width="500" src="https://raw.githubusercontent.com/automata/awesome-jamstack/7aa9241bf3d718c24d6bfd687070d14ce320b131/media/jamstack-full-logo.svg" alt="Jamstack">
-  <br /><br /><br />
-  <p>
-    <strong>Jamstack</strong>: noun \’jam-stak’\<br />
-    クライアント側JavaScript、再利用可能なAPI、事前構築済みのマークアップを基盤とする、現代的なウェブ開発アーキテクチャです。
-  </p>
-  <br /><br />
-  <p>
-    <b>
-      優れた <a href="https://jamstack.org">Jamstack</a> 関連資料を厳選したリストです。
-    </b>
-  </p>
-  <br /><br />
-  <p>
-    <i>
-      <a href="https://github.com/myles/awesome-static-generators">Awesome Static Generators</a> も参考になります。
-    </i>
-  </p>
-  <p>
-    <i>
-      資料を追加したい場合は、投稿前に <a href="https://github.com/automata/awesome-jamstack/blob/7aa9241bf3d718c24d6bfd687070d14ce320b131/contributing.md">コントリビューションガイドライン</a>をお読みください。
-    </i>
-  </p>
-  <br /><br />
-</div>
+# Awesome Jamstack
 
-<a id="contents"></a>
+Jamstackを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+
 ## 目次
 
 - [目次](#contents)

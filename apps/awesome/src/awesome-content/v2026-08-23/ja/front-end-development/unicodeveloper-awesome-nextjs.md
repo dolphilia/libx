@@ -1,21 +1,13 @@
 ---
-title: "unicodeveloper/awesome-nextjs"
-description: "Next.jsの書籍、動画、記事、テンプレート、拡張機能を集めた厳選リスト"
+title: "Awesome Next.js"
+description: "Next.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-unicodeveloper-awesome-nextjs-readme-md"
 ---
 
-<a id="awesome-nextjs--"></a>
-# Awesome Next.js [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![](https://img.shields.io/badge/unicodeveloper-approved-brightgreen.svg)
+# Awesome Next.js
 
-[<img src="http://res.cloudinary.com/unicodeveloper/image/upload/v1524776764/next-jslogo.svg" align="right" width="250">](https://github.com/vercel/next.js)
+Next.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> Next.jsの利用に関する書籍、動画、記事などの厳選リストです。
-
-[Next.js](https://github.com/vercel/next.js): Reactフレームワークです。
-
-[awesome](https://github.com/sindresorhus/awesome)のリストをインスピレーションとして作成したリストです。あなたはまた [awesome-tdd](https://github.com/unicodeveloper/awesome-tdd)も気に入るかもしれません。
-
-<a id="contents"></a>
 ## 目次
 
 - [Awesome Next.js ](#awesome-nextjs--)

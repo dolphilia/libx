@@ -1,75 +1,12 @@
 ---
-title: "mfornos/awesome-microservices"
-description: "Canonical snapshot of mfornos/awesome-microservices"
+title: "Awesome Microservices"
+description: "A curated collection of resources and projects focused on Microservices."
 licenseSource: "github-mfornos-awesome-microservices-readme-md"
 ---
 
-# Awesome Microservices [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Microservices
 
-A curated list of Microservice Architecture related principles and technologies.
-
-**Table of Contents**
-
-- [Platforms](#platforms)
-- [Frameworks / Runtimes](#frameworks--runtimes)
-- [Service Toolkits](#service-toolkits)
-  - [Polyglot](#polyglot)
-  - [C](#c)
-  - [C++](#c-1)
-  - [C#](#csharp)
-  - [D](#d)
-  - [Erlang VM](#erlang-vm)
-  - [Go](#go)
-  - [Haskell](#haskell)
-  - [Java VM](#java-vm)
-  - [Node.js](#nodejs)
-  - [Perl](#perl)
-  - [PHP](#php)
-  - [Python](#python)
-  - [Ruby](#ruby)
-  - [Rust](#rust)
-- [Frontend / UI](#frontend--ui)
-- [Capabilities](#capabilities)
-  - [API Gateways / Edge Services](#api-gateways--edge-services)
-  - [Configuration & Discovery](#configuration--discovery)
-  - [Workflow Orchestration](#workflow-orchestration)
-  - [Elasticity](#elasticity)
-  - [Job Schedulers / Workload Automation](#job-schedulers--workload-automation)
-  - [Logging](#logging)
-  - [Messaging](#messaging)
-  - [Monitoring & Debugging](#monitoring--debugging)
-  - [Reactivity](#reactivity)
-  - [Resilience](#resilience)
-  - [Security](#security)
-  - [Serialization](#serialization)
-  - [Storage](#storage)
-  - [Testing](#testing)
-- [Continuous Integration & Delivery](#continuous-integration--delivery)
-- [Web API Modeling & Documentation](#web-api-modeling--documentation)
-  - [Async](#async)
-  - [GraphQL](#graphql)
-  - [JSON](#json)
-  - [REST](#rest)
-- [Standards / Recommendations](#standards--recommendations)
-  - [World Wide Web](#world-wide-web)
-  - [Self-sovereignty & Decentralisation](#self-sovereignty--decentralisation)
-  - [HTTP/1.1](#http11)
-  - [HTTP/2](#http2)
-  - [QUIC](#quic)
-  - [RPC](#rpc)
-  - [Messaging](#messaging-1)
-  - [Security](#security-1)
-  - [Service Discovery](#service-discovery)
-  - [Data Formats](#data-formats)
-  - [Vocabularies](#vocabularies)
-  - [Unicode](#unicode)
-- [Organization Design / Team Dynamics](#organization-design--team-dynamics)
-- [Enterprise & Verticals](#enterprise--verticals)
-- [Theory](#theory)
-  - [Articles & Papers](#articles--papers)
-  - [Sites & Organizations](#sites--organizations)
-- [License](#license)
-- [Contributing](#contributing)
+A curated collection of resources and projects focused on Microservices.
 
 ## Platforms
 

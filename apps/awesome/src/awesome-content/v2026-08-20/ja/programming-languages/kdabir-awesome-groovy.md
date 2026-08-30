@@ -1,34 +1,12 @@
 ---
-title: "kdabir/awesome-groovy"
-description: "kdabir/awesome-groovy の定本スナップショット"
+title: "Awesome Groovy"
+description: "Groovyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-kdabir-awesome-groovy-readme-md"
 ---
 
-Awesome Groovy [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-==============
+# Awesome Groovy
 
-優れたGroovyライブラリ、フレームワーク、リソースの厳選リスト。多くのawesome-*リポジトリに着想を得ています。
-
-- [Awesome Groovy](#awesome-groovy)
-    - [ビルドツール、セットアップ、CI](#build-tools-setup-and-ci)
-    - [並行処理](#concurrency)
-    - [データベース](#database)
-    - [デスクトップアプリフレームワーク](#rich-applications)
-    - [HTTP](#http)
-    - [IDEとエディターのサポート](#ide-and-editor-support)
-    - [テスト](#testing)
-    - [コード分析](#code-analysis)
-    - [Webフレームワーク](#web-frameworks)
-    - [トランスパイラー](#transpilers)
-    - [静的Web](#static-web)
-    - [言語ユーティリティ](#language-utilities)
-    - [ファイルシステムユーティリティ](#file-system-utilities)
-    - [ファイル形式DSL](#file-format-dsl)
-    - [スクリプティングツール](#scripting-tools)
-    - [ルールエンジン](#rule-engines)
-- [リソース](#resources)
-- [寄稿](#contributing)
-- [クレジット](#credits)
+Groovyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## ビルドツール、セットアップ、CI
 * [Gradle](https://www.gradle.org/) - JVM向けの強力なビルドシステム。

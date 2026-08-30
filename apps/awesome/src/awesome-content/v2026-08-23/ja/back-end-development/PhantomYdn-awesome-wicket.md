@@ -1,17 +1,12 @@
 ---
-title: "PhantomYdn/awesome-wicket"
-description: "PhantomYdn/awesome-wicket の正規スナップショット"
+title: "Awesome Wicket"
+description: "Wicketを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-PhantomYdn-awesome-wicket-readme-md"
 ---
 
-# Awesome Wicket [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[<img src="https://upload.wikimedia.org/wikipedia/ru/5/5d/Apache_Wicket_logo.png" align="right" width="100">](http://wicket.apache.org/)
+# Awesome Wicket
 
-[Apache Wicket](http://wicket.apache.org)を利用した優れたプロジェクトの厳選リストです。
-
-コントリビューションを歓迎します。
-
-> Wicketは、オープンソースでコンポーネント指向のサーバーサイドJavaウェブアプリケーションフレームワークです。10年以上の歴史を持ち、現在も活発に開発されています。
+Wicketを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 

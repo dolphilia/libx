@@ -1,27 +1,12 @@
 ---
-title: "owainlewis/awesome-artificial-intelligence"
-description: "owainlewis/awesome-artificial-intelligence の定本スナップショット"
+title: "Awesome Artificial Intelligence"
+description: "Artificial Intelligenceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-owainlewis-awesome-artificial-intelligence-readme-md"
 ---
 
 # Awesome Artificial Intelligence
 
-生成AI・エージェントシステムを構築・出荷する方法を学ぶソフトウェア開発者向けの、方針を明確にした継続保守中のリソース集。
-
-![Artificial intelligence](https://media.giphy.com/media/jeAQYN9FfROX6/giphy.gif)
-
-このリストは次を望む開発者を対象にしています。
-
-- 現代のAIシステムを支える基礎を理解する。
-- 言語モデル、検索、ツール、エージェントを使うアプリケーションを構築する。
-- 本番環境でAIシステムを評価、観測、デプロイする。
-- コーディングエージェントでソフトウェアエンジニアリングを改善する。
-
-AI製品の網羅的なディレクトリではありません。各エントリーは、技術的な深さ、実用的な価値、根拠、独自性について絶対的な品質基準を満たす必要があります。カテゴリに件数目標はなく、弱い選択肢で水増しされたカテゴリより短いカテゴリを優先します。
-
-このリストは、小さな変更を独立してレビュー、検証、マージする根拠に基づく自動化によって毎週レビューされています。[リソースの評価方法](https://github.com/owainlewis/awesome-artificial-intelligence/blob/ab1c3cceef8ab906586505a7a7a293f434280862/CURATION.md)を参照してください。
-
-手引きとなる出発点として、エージェントスキル、ソフトウェア割引（100万ドル超）、チュートリアルコードを含む[無料AI Engineerスターターパック](https://aiengineer.co/start)を利用できます。
+Artificial Intelligenceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 学ぶ
 

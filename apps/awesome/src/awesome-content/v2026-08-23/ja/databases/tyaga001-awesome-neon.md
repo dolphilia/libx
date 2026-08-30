@@ -1,16 +1,12 @@
 ---
-title: "tyaga001/awesome-neon"
-description: "tyaga001/awesome-neon の日本語訳（人手レビュー前）"
+title: "Awesome Neon"
+description: "Neonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-tyaga001-awesome-neon-readme-md"
 ---
 
-# Awesome Neon [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Neon
 
-[Neon](https://neon.tech)は、優れたサーバーレスPostgresデータベースであり、愛されるAWS Auroraのオープンソース代替です。信頼性・拡張性の高いアプリケーションをより速く構築するために設計されたサーバーレスプラットフォームです。
-
-このリストは、製品とそのコミュニティの素晴らしい点を扱おうとするものです。👁⚡️👁
-
-このリストを**強化**するには、[CONTRIBUTING.md](https://github.com/tyaga001/awesome-neon/blob/b3079789c65df35ed33e95212f67ad2bf8efa770/CONTRIBUTING.md)を参照してください。
+Neonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

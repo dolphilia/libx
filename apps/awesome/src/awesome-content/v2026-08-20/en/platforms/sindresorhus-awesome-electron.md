@@ -1,38 +1,12 @@
 ---
-title: "sindresorhus/awesome-electron"
-description: "Canonical snapshot of sindresorhus/awesome-electron"
+title: "Awesome Electron"
+description: "A curated collection of resources and projects focused on Electron."
 licenseSource: "github-sindresorhus-awesome-electron-readme-md"
 ---
 
-# Awesome Electron [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Electron
 
-[<img src="electron-logo.svg" align="right" width="100">](https://electronjs.org)
-
-> Useful resources for creating apps with [Electron](https://electronjs.org)
-
-Electron is an open-source framework for creating desktop apps using web technologies. It combines the Chromium rendering engine and the Node.js runtime.
-
-<br>
-
----
-
-<br>
-<br>
-<div align="center">
-	<sub>Check out my macOS app</sub>
-	<br>
-	<h2>
-		<a href="https://sindresorhus.com/text-lens">Text Lens</a>
-		<br>
-		<sup>Copy unselectable text on screen</sup>
-	</h2>
-</div>
-<br>
-<br>
-
----
-
-<br>
+A curated collection of resources and projects focused on Electron.
 
 ## Contents
 

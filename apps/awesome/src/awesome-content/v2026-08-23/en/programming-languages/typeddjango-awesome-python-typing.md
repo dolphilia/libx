@@ -1,12 +1,12 @@
 ---
-title: "typeddjango/awesome-python-typing"
-description: "Canonical snapshot of typeddjango/awesome-python-typing"
+title: "Awesome Python Typing"
+description: "A curated collection of resources and projects focused on Python Typing."
 licenseSource: "github-typeddjango-awesome-python-typing-readme-md"
 ---
 
-# Awesome Python Typing [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Python Typing
 
-Collection of awesome Python types, stubs, plugins, and tools to work with them.
+A curated collection of resources and projects focused on Python Typing.
 
 ## Contents
 

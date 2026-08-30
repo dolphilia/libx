@@ -1,15 +1,12 @@
 ---
-title: "sellisd/awesome-complexity"
-description: "sellisd/awesome-complexity の定本スナップショット"
+title: "Awesome Complexity"
+description: "Complexityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sellisd-awesome-complexity-readme-md"
 ---
 
-# [Awesome Complexity](https://sellisd.github.io/awesome-complexity/) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Complexity
 
-複数の相互作用する部分と創発的性質を持つシステムを研究する科学分野、複雑系に関するリソースの厳選リスト。
-
-
-
+Complexityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,16 +1,13 @@
 ---
-title: "hsiaoyi0504/awesome-cheminformatics"
-description: "hsiaoyi0504/awesome-cheminformatics の正規スナップショット"
+title: "Awesome Cheminformatics"
+description: "Cheminformaticsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hsiaoyi0504-awesome-cheminformatics-readme-md"
 ---
 
-# Awesomeケモインフォマティクス [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Cheminformatics
 
-> ケモインフォマティクス（chemoinformatics、chemioinformatics、chemical informaticsとも呼ばれる）は、化学分野のさまざまな問題へコンピューター技術と情報技術を応用する学問です。— [Wikipedia](https://en.wikipedia.org/wiki/Cheminformatics)
+Cheminformaticsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-優れたケモインフォマティクスのソフトウェア、資料、ライブラリを厳選した一覧です。主にコマンドラインで利用できる、無料またはオープンソースのものを収録しています。ぜひ[貢献](https://github.com/hsiaoyi0504/awesome-cheminformatics/blob/0e841736b611df8f173525c4f814a55945bc63c7/CONTRIBUTING.md)してください。
-
-<a id="contents"></a>
 ## 目次
 
 * [アプリケーション](#applications)

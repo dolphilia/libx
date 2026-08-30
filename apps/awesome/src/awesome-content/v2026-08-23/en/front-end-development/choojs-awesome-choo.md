@@ -1,13 +1,12 @@
 ---
-title: "choojs/awesome-choo"
-description: "Canonical snapshot of choojs/awesome-choo"
+title: "Awesome choo :steam locomotive"
+description: "A curated collection of resources and projects focused on choo :steam locomotive."
 licenseSource: "github-choojs-awesome-choo-readme-md"
 ---
 
-# Awesome choo [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) <div align="right">:steam_locomotive::train::train::train::train::train:</div>
+# Awesome choo :steam locomotive
 
-> [choo](https://choo.io/) is a `4kb` framework for creating
-> sturdy frontend applications
+A curated collection of resources and projects focused on choo :steam locomotive.
 
 ## Contents
 

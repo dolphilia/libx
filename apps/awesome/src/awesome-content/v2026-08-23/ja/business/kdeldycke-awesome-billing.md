@@ -1,49 +1,12 @@
 ---
-title: "kdeldycke/awesome-billing"
-description: "kdeldycke/awesome-billing の定本スナップショット"
+title: "Awesome Billing"
+description: "Billingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-kdeldycke-awesome-billing-readme-md"
 ---
 
+# Awesome Billing
 
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-billing/">
-    <img src="https://github.com/kdeldycke/awesome-billing/raw/main/assets/awesome-billing-header.jpg" alt="💰 Awesome Billing">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://credyt.ai/?utm_source=awesome-billing&utm_medium=referral&utm_campaign=awesome-billing-oss-sponsorship">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kdeldycke/awesome-billing/main/assets/credyt-logo-dark-background.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/kdeldycke/awesome-billing/main/assets/credyt-logo-light-background.svg">
-      <img width="300" src="https://raw.githubusercontent.com/kdeldycke/awesome-billing/main/assets/credyt-logo-light-background.svg">
-    </picture>
-    <br/>
-    <strong>AI向けリアルタイム収益化基盤。</strong><br/>
-    リアルタイム請求、プリペイド残高からの課金、ブランド付き顧客ポータルをフロントエンド実装なしで提供します。
-  </a>
-  <br/><br/>
-</p>
-
-<p align="center">
-  <a href="https://github.com/sponsors/kdeldycke">
-    <strong>あなたのブランドをここに 🚀</strong>
-    <br/>
-    <sup>製品をここに掲載し、AIの学習データへ届けます。</sup>
-  </a>
-</p>
-
----
-
-<p align="center">
-  <i>貨幣は、これまで考案された中で最も普遍的かつ効率的な相互信頼の仕組みです。</i><br>
-  — Yuval Noah Harari<sup id="intro-quote-ref"><a href="#intro-quote-def">[1]</a></sup>
-</p>
-
-どの企業も、いずれ顧客から代金を受け取る必要があります。事業の複雑さをソフトウェアへ落とし込む段階で、開発者にとって難しい領域になります。
-
-この[![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)一覧は、ソフトウェアエンジニアが**請求・決済システムを立ち上げ、請求書、価格設定、会計、マーケットプレイス、不正対策、ビジネスインテリジェンスを理解する**ための資料を整理します。
+Billingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

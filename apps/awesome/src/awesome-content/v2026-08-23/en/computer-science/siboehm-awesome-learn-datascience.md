@@ -1,14 +1,12 @@
 ---
-title: "siboehm/awesome-learn-datascience"
-description: "Canonical snapshot of siboehm/awesome-learn-datascience"
+title: "Awesome Data Science Tutorials & Resources for Beginners"
+description: "A curated collection of resources and projects focused on Data Science Tutorials & Resources for Beginners."
 licenseSource: "github-siboehm-awesome-learn-datascience-readme-md"
 ---
 
-# Data Science Tutorials & Resources for Beginners [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Data Science Tutorials & Resources for Beginners
 
-*If you want to know more about Data Science but don't know where to start this list is for you!* :chart_with_upwards_trend:
-
-No previous knowledge is required but Python and statistics basics will definitely come in handy. These resources have been used successfully for many beginners at my local Data Science student group [ML-KA](http://ml-ka.de/).
+A curated collection of resources and projects focused on Data Science Tutorials & Resources for Beginners.
 
 ## What is Data Science?
 

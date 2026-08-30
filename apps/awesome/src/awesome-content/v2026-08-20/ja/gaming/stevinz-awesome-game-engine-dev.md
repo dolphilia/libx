@@ -1,22 +1,12 @@
 ---
-title: "stevinz/awesome-game-engine-dev"
-description: "ゲームエンジン開発の実装、学習、ライブラリ、専門技術、制作ツールを分類した定本スナップショット"
+title: "Awesome Game Engine Development"
+description: "Game Engine Developmentを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-stevinz-awesome-game-engine-dev-readme-md"
 ---
 
+# Awesome Game Engine Development
 
-
-<div align="center">
-    <a href="https://github.com/stevinz/awesome-game-engine-dev"><img width="1100" src="aged-title.png" alt="Awesome Game Engine Dev Logo"/></a>
-</div>
-
-# ゲームエンジン開発のAwesomeリスト <a id="awesome-game-engine-development"></a> [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome#readme)
-
-ゲーム制作を改善・高速化するゲームエンジン開発資料の厳選リストです。特にGodotやUnityのような高水準で多機能なゲームエンジンの開発を対象とします。
-
-MonoGameやSDLのような低水準エンジン、アプリ／ゲームフレームワーク、グラフィックスライブラリには通常ない機能を含みます。特に視覚的なシーンエディターを重視し、スクリプト、物理、アセット管理、特殊効果、収益化なども扱います。
-
-<br />
+Game Engine Developmentを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

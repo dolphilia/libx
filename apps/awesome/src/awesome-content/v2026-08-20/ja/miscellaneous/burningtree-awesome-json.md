@@ -1,50 +1,12 @@
 ---
-title: "burningtree/awesome-json"
-description: "JSONのライブラリ、ツール、形式、JSON Schema資源を分類した定本スナップショット"
+title: "Awesome JSON"
+description: "JSONを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-burningtree-awesome-json-readme-md"
 ---
 
-# JSONのAwesomeリスト <a id="awesome-json"></a> [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-優れたJSONライブラリと資料を厳選したリストです。
+# Awesome JSON
 
-[awesome](https://github.com/sindresorhus/awesome)リストに着想を得ています。
-
-[![Links](https://github.com/burningtree/awesome-json/actions/workflows/links.yml/badge.svg)](https://github.com/burningtree/awesome-json/actions/workflows/links.yml)
-
----
-
-* [JSONのAwesomeリスト](#awesome-json)
-  * [アプリケーション](#applications)
-  * [バイナリシリアライズ](#binary-serialization)
-  * [ブラウザ拡張](#browser-extensions)
-  * [コマンドラインツール](#command-line-tools)
-  * [データベース](#databases)
-  * [データセット](#datasets)
-  * [データモデリング](#data-modeling)
-  * [データ生成](#data-generation)
-  * [差分比較](#differencing)
-  * [エディター](#editors)
-  * [拡張形式](#format-extensions)
-  * [フロントエンドコンポーネント](#frontend-components)
-  * [ライブラリ](#libraries)
-  * [リンター](#linters)
-  * [オンラインツール](#online-tools)
-  * [スキーマ仕様](#schema-specifications)
-  * [サービス](#services)
-  * [スーパーセット](#supersets)
-  * [関連形式](#related-formats)
-  * [資料](#resources)
-  * [テンプレート](#templates)
-  * [テスト](#testing)
-  * [テキストエディタープラグイン](#text-editor-plugins)
-  * [変換](#transformations)
-  * [チュートリアル](#tutorials)
-  * [クエリ](#queries)
-  * [JSON Schemaフロントエンドコンポーネント](#json-schema-frontend-components)
-  * [JSON Schemaツール](#json-schema-tools)
-  * [JSON Schema資料](#json-schema-resources)
-  * [JSON Schemaバリデーター](#json-schema-validators)
-  * [コントリビューション](#contribute)
+JSONを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## アプリケーション <a id="applications"></a>
 * [Dadroit JSON Viewer](https://dadroit.com) - 非常に高速なJSONビュー、巨大（マルチギガバイト）ファイルに対応、JSONログ（JSON-Linesおよびndjson）

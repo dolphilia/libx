@@ -1,85 +1,12 @@
 ---
-title: "serhii-londar/open-source-mac-os-apps"
-description: "Canonical snapshot of serhii-londar/open-source-mac-os-apps"
+title: "Awesome macOS Open Source Applications"
+description: "A curated collection of resources and projects focused on macOS Open Source Applications."
 licenseSource: "github-serhii-londar-open-source-mac-os-apps-readme-md"
 ---
 
-<div align="center">
-  <a href="https://vshymanskyy.github.io/StandWithUkraine">
-    <img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg" alt="Stand With Ukraine" />
-  </a>
-  
-  <img src="./icons/icon.png">
-  <h1>Awesome macOS Open Source Applications</h1>
-  <p>A curated list of open source applications for macOS</p>
-  <p>
-    <a href="https://github.com/sindresorhus/awesome"><img alt="Awesome" src="https://awesome.re/badge.svg" /></a>
-    <a href="https://gitter.im/open-source-mac-os-apps/Lobby"><img alt="Join the chat at gitter" src="https://badges.gitter.im/Join%20Chat.svg" /></a>
-    <a href="https://t.me/opensourcemacosapps"><img alt="Telegram Channel" src="https://img.shields.io/badge/Telegram-Channel-blue.svg" /></a>
-  </p>
-  <p>
-    <img src="https://img.shields.io/badge/Total%20Apps-689-blue" alt="Total Apps"/>
-    <img src="https://img.shields.io/badge/Categories-49-green" alt="Categories"/>
-    <img src="https://img.shields.io/badge/Last%20Updated-April%2015,%202026-orange" alt="Last Updated"/>
-  </p>
-</div>
+# Awesome macOS Open Source Applications
 
-<p align="center">
-  <a href="#audio">Audio</a> •
-  <a href="#backup">Backup</a> •
-  <a href="#browser">Browser</a> •
-  <a href="#chat">Chat</a> •
-  <a href="#cryptocurrency">Crypto</a> •
-  <a href="#database">Database</a> •
-  <a href="#development">Dev</a> •
-  <a href="#editors">Editors</a> •
-  <a href="#graphics">Graphics</a> •
-  <a href="#productivity">Productivity</a> •
-  <a href="#utilities">Utilities</a>
-</p>
-
-List of awesome open source applications for macOS. This list contains a lot of native, and cross-platform apps. The main goal of this repository is to find free open source apps and start contributing. Feel free to [contribute](https://github.com/serhii-londar/open-source-mac-os-apps/blob/7efc7fe4098982ef69accbe8d6e48601c6062357/CONTRIBUTING.md) to the list, any suggestions are welcome!
-
-To receive all new or popular applications you can join our [telegram channel](https://t.me/opensourcemacosapps).
-
-## Support
-
-Hey friend! Help me out for a couple of :beers:!  <span class="badge-patreon"><a href="https://www.patreon.com/serhiilondar" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a></span>
-
-## 📊 Statistics
-
-| Metric | Count |
-|--------|-------|
-| 📱 Total Applications | 689 |
-| 📂 Categories | 49 |
-| 🔝 Top Languages | Swift: 305 • Objective-C: 137 • Javascript: 113 • C++: 59 • Typescript: 41 |
-
-## Languages
-
-You can see in which language an app is written. Currently there are following languages:
-
-| Language | Icon |
-|----------|------|
-| C | <img src='./icons/c-64.png' alt='C' height='16'/> |
-| C++ | <img src='./icons/cpp-64.png' alt='C++' height='16'/> |
-| C# | <img src='./icons/csharp-64.png' alt='C#' height='16'/> |
-| Clojure | <img src='./icons/clojure-64.png' alt='Clojure' height='16'/> |
-| CoffeeScript | <img src='./icons/coffeescript-64.png' alt='CoffeeScript' height='16'/> |
-| CSS | <img src='./icons/css-64.png' alt='CSS' height='16'/> |
-| Elm | <img src='./icons/elm-64.png' alt='Elm' height='16'/> |
-| Go | <img src='./icons/golang-64.png' alt='Go' height='16'/> |
-| Haskell | <img src='./icons/haskell-64.png' alt='Haskell' height='16'/> |
-| Java | <img src='./icons/java-64.png' alt='Java' height='16'/> |
-| JavaScript | <img src='./icons/javascript-64.png' alt='JavaScript' height='16'/> |
-| Lua | <img src='./icons/Lua-64.png' alt='Lua' height='16'/> |
-| Objective-C | <img src='./icons/objective-c-64.png' alt='Objective-C' height='16'/> |
-| Python | <img src='./icons/python-64.png' alt='Python' height='16'/> |
-| Ruby | <img src='./icons/ruby-64.png' alt='Ruby' height='16'/> |
-| Rust | <img src='./icons/rust-64.png' alt='Rust' height='16'/> |
-| Shell | <img src='./icons/shell-64.png' alt='Shell' height='16'/> |
-| Swift | <img src='./icons/swift-64.png' alt='Swift' height='16'/> |
-| TypeScript | <img src='./icons/typescript-64.png' alt='TypeScript' height='16'/> |
-| Metal | <img src='./icons/metal-64.png' alt='Metal' height='16'/> |
+A curated collection of resources and projects focused on macOS Open Source Applications.
 
 ## Contents
 - [Audio](#audio)

@@ -1,14 +1,12 @@
 ---
-title: "coderabbitai/awesome-coderabbit"
-description: "coderabbitai/awesome-coderabbit の定本スナップショット"
+title: "Awesome CodeRabbit"
+description: "CodeRabbitを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-coderabbitai-awesome-coderabbit-readme-md"
 ---
 
-# Awesome CodeRabbit [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome CodeRabbit
 
-[CodeRabbit](https://www.coderabbit.ai) は、開発チームのコード品質向上とレビュー工程の高速化を支援する AI 搭載コードレビューツールです。一般的なバージョン管理プラットフォームと統合し、コード変更に対して知的なフィードバックを提供します。
-
-この厳選リストでは、CodeRabbit に関する最良のリソース、チュートリアル、コミュニティコンテンツを扱います 🐰
+CodeRabbitを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

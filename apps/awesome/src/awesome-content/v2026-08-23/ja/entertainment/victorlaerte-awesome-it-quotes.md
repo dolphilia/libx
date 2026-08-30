@@ -1,14 +1,13 @@
 ---
-title: "victorlaerte/awesome-it-quotes"
-description: "ITとコンピューター科学の歴史に残る名言集"
+title: "Awesome IT Quotes"
+description: "IT Quotesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-victorlaerte-awesome-it-quotes-readme-md"
 ---
 
-# Awesome IT Quotes（ITの名言） [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome IT Quotes
 
-ITに関する優れた名言のリストです。ITの歴史を通じて語られた重要な言葉を集めることを目的としています。
+IT Quotesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="contents"></a>
 ## 目次
 
 

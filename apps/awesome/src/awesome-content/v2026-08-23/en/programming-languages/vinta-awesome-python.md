@@ -1,14 +1,12 @@
 ---
-title: "vinta/awesome-python"
-description: "Canonical snapshot of vinta/awesome-python"
+title: "Awesome Python"
+description: "A curated collection of resources and projects focused on Python."
 licenseSource: "github-vinta-awesome-python-readme-md"
 ---
 
-# [Awesome Python](https://awesome-python.com/)
+# Awesome Python
 
-An opinionated guide to the best Python frameworks, libraries, and tools.
-
-**Visit the [website](https://awesome-python.com/) to search and filter projects more easily.**
+A curated collection of resources and projects focused on Python.
 
 ## **Sponsors**
 

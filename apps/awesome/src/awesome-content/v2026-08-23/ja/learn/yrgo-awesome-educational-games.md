@@ -1,18 +1,12 @@
 ---
-title: "yrgo/awesome-educational-games"
-description: "yrgo/awesome-educational-games の定本スナップショット"
+title: "Awesome Educational Games"
+description: "Educational Gamesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-yrgo-awesome-educational-games-readme-md"
 ---
 
 # Awesome Educational Games
 
-[<img src="https://cloud.githubusercontent.com/assets/499192/18659925/ed7e6262-7f0d-11e6-8e8e-b53b87158210.png" align="right" alt="Awesome Educational Games" width="150">](https://en.m.wikipedia.org/wiki/Educational_game)
-
-> エディター、言語、プログラミングなどを学ぶための優れた[教育ゲーム](https://en.m.wikipedia.org/wiki/Educational_game)の厳選リスト。
-
-*貢献する前に [contribution guidelines](https://github.com/yrgo/awesome-educational-games/blob/f1fbeec1c89d37ecc2492f19c0f639cbb8ff5404/CONTRIBUTING.md) をお読みください。*
-
-> [教育ゲーム](https://en.m.wikipedia.org/wiki/Educational_game)は、人々に特定の主題を教え、概念を広げ、発達を強化し、歴史的な出来事や文化を理解させ、あるいはプレイしながらスキルを学ぶ支援をするために設計されています。— [Wikipedia](https://en.m.wikipedia.org/wiki/Educational_game)
+Educational Gamesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 #### 目次
 

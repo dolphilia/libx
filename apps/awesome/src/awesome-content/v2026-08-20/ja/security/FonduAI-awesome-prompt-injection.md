@@ -1,12 +1,12 @@
 ---
-title: "FonduAI/awesome-prompt-injection"
-description: "FonduAI/awesome-prompt-injection の定本スナップショット"
+title: "Awesome Prompt Injection"
+description: "Prompt Injectionを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-FonduAI-awesome-prompt-injection-readme-md"
 ---
 
-# Awesome Prompt Injection [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Prompt Injection
 
-機械学習モデルを特に標的とする脆弱性の一種について学ぶためのリスト。
+Prompt Injectionを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## **目次**
 

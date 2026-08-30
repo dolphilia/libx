@@ -1,16 +1,12 @@
 ---
-title: "karlhorky/awesome-speakers"
-description: "Canonical snapshot of karlhorky/awesome-speakers"
+title: "Awesome Speakers"
+description: "A curated collection of resources and projects focused on Speakers."
 licenseSource: "github-karlhorky-awesome-speakers-readme-md"
 ---
 
-# Awesome Speakers [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Speakers
 
-> Awesome speakers in the programming and design communities
-
-Let's make it more transparent and easy to find awesome speakers for meetups and conferences! This list of speakers, their contact details and the topics they talk about is a start towards this goal.
-
-Please add to the list and help make a better-connected, richer community.
+A curated collection of resources and projects focused on Speakers.
 
 ## Contents
 

@@ -1,18 +1,13 @@
 ---
-title: "springload/awesome-wagtail"
-description: "Wagtailコミュニティのパッケージ、記事、資料を集めた厳選リスト"
+title: "Awesome Wagtail"
+description: "Wagtailを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-springload-awesome-wagtail-readme-md"
 ---
 
-<a id="awesome-wagtail"></a>
-# Awesome Wagtail [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [<img src="https://cdn.jsdelivr.net/gh/wagtail/awesome-wagtail@ac912cc661a7099813f90545adffa6bb3e75216c/logo.svg" width="104" align="right" alt="Wagtail">](https://wagtail.org/)
+# Awesome Wagtail
 
-> Wagtailコミュニティの優れたパッケージ、記事、その他の資料を集めた厳選リストです。
-> [Wagtail](https://wagtail.org/)はDjangoを基盤とし、柔軟性とユーザー体験を重視するPython CMSです。
+Wagtailを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-あなたはまた [Awesome Django](https://github.com/wsvincent/awesome-django) と [Awesome Python](https://github.com/vinta/awesome-python) にも興味を持つかもしれません。:snake:
-
-<a id="contents"></a>
 ## 目次
 
 - [General resources](#general-resources)

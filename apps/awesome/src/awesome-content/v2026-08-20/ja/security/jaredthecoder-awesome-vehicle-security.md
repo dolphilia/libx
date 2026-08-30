@@ -1,23 +1,12 @@
 ---
-title: "jaredthecoder/awesome-vehicle-security"
-description: "車両セキュリティ、CAN・診断、研究資料、ハードウェア、ソフトウェアの定本スナップショット"
+title: "Awesome Vehicle Security"
+description: "Vehicle Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jaredthecoder-awesome-vehicle-security-readme-md"
 ---
 
-# Awesome Vehicle Security [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Vehicle Security
 
-
-*車両セキュリティ、カーハッキング、車両機能の調査に関する資料、書籍、ハードウェア、ソフトウェア、人物等を厳選したリストです。*
-
-![](https://raw.githubusercontent.com/jaredthecoder/awesome-vehicle-security/2228c9f842d0dcf2e5dd24c987e9f5602001f8a0/assets/car_hacking_jeep.gif)
-
----
-
-多くの協力を歓迎します。[コントリビューションを始める](https://github.com/jaredmichaelsmith/awesome-vehicle-security/blob/master/contributing.md)ことができます。
-
-セキュリティ情報は[Twitter](https://twitter.com/jaredthecoder)でも確認できます。
-
----
+Vehicle Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # 目次 <a id="contents"></a>
 

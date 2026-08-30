@@ -1,16 +1,12 @@
 ---
-title: "opencompany/awesome-open-company"
-description: "Canonical snapshot of opencompany/awesome-open-company"
+title: "Awesome Open Company"
+description: "A curated collection of resources and projects focused on Open Company."
 licenseSource: "github-opencompany-awesome-open-company-readme-md"
 ---
 
-# Awesome Open Company [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-A community-curated list of awesome [open companies](#what-is-an-open-company),
-inspired by the many [awesome-x lists](https://github.com/sindresorhus/awesome) out there.
+# Awesome Open Company
 
-(**[click here](#companies)** to jump straight to the list below.)
-
-*Contributions to this list are welcome! Just [edit the README.md](#) (this document) and send the changes as a pull request. [Guidelines](#) are available.*
+A curated collection of resources and projects focused on Open Company.
 
 ## Table of contents
 1. [What is an open company?](#what-is-an-open-company)

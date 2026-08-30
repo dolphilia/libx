@@ -1,22 +1,12 @@
 ---
-title: "quangv/awesome-couchdb"
-description: "Canonical snapshot of quangv/awesome-couchdb"
+title: "Awesome CouchDB"
+description: "A curated collection of resources and projects focused on CouchDB."
 licenseSource: "github-quangv-awesome-couchdb-readme-md"
 ---
 
-<p>
-  <br>
-  <img width="300" src="https://rawgit.com/quangv/awesome-couchdb/master/logo--couch.png" alt="awesome couchdb logo">
-  <br>
-</p>
+# Awesome CouchDB
 
-# Awesome CouchDB [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-> A curated meta resources & best practices list for CouchDB.
-
-**[CouchDB](http://couchdb.apache.org/)** is a document-oriented NoSQL database that syncs.
-
-Pull-Requests are welcomed.
+A curated collection of resources and projects focused on CouchDB.
 
 ## Contents
 - [News & Blog Posts](#news--blog-posts)

@@ -1,14 +1,12 @@
 ---
-title: "chiraggude/awesome-laravel"
-description: "Canonical snapshot of chiraggude/awesome-laravel"
+title: "Awesome Laravel"
+description: "A curated collection of resources and projects focused on Laravel."
 licenseSource: "github-chiraggude-awesome-laravel-readme-md"
 ---
 
-# Awesome Laravel [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://img.shields.io/travis/chiraggude/awesome-laravel/master.svg?style=flat)](https://travis-ci.org/chiraggude/awesome-laravel)
+# Awesome Laravel
 
-> A curated list of awesome bookmarks, packages, tutorials, videos and other cool resources from the Laravel ecosystem.
-
-Inspired by [ziadoz/awesome-php](https://github.com/ziadoz/awesome-php)
+A curated collection of resources and projects focused on Laravel.
 
 ## Table of Contents
 

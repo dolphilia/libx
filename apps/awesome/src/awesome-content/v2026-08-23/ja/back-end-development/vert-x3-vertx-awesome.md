@@ -1,21 +1,13 @@
 ---
-title: "vert-x3/vertx-awesome"
-description: "Vert.x関連のフレームワーク、ライブラリ、ツール、資料を集めた厳選リスト"
+title: "Awesome Vert.x"
+description: "Vert.xを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vert-x3-vertx-awesome-readme-md"
 ---
 
-<a id="awesome-vertx"></a>
-# Awesome Vert.x [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Vert.x
 
-[<img src="https://raw.githubusercontent.com/vert-x3/vertx-awesome/6978ef828da5cec96fad20e0f146b06ad35d45d9/vertx-logo.svg" align="right" width="250" alt="Vert.x logo">](http://vertx.io)
+Vert.xを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-*Awesome Vert.x* は、[Vert.x](https://github.com/eclipse/vert.x)関連の優れたフレームワーク、ライブラリ、その他のコンポーネントを集めたリストです。
-
-コンポーネントを掲載するには、このリポジトリへプルリクエストを送ってください。
-
-<img src="https://raw.githubusercontent.com/vert-x3/vertx-awesome/6978ef828da5cec96fad20e0f146b06ad35d45d9/vertx-favicon.svg" alt="(stack)" title="Vert.x Stack" height="16px"> アイコンがない項目については、安定性や本番利用への適性を保証できません。このアイコンは、コンポーネントが公式の[Vert.x stack](https://vertx.io/docs/)に含まれることを示します。
-
-<a id="contents"></a>
 ## 目次
 
 * [Books](#books)

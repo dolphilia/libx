@@ -1,21 +1,12 @@
 ---
-title: "cosmos/awesome-cosmos"
-description: "cosmos/awesome-cosmosの正規スナップショット"
+title: "Awesome Cosmos"
+description: "Cosmosを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-cosmos-awesome-cosmos-readme-md"
 ---
 
+# Awesome Cosmos
 
-# Awesome Cosmos [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> Cosmos エコシステムに関連する優れたプロジェクトを、コミュニティがキュレーションしたリスト
-
-Cosmos SDK は、Go でブロックチェーンアプリケーションを構築するモジュラーなフレームワークです。
-Cosmos Hub の実装である Gaia は、Cosmos SDK で構築されています。
-
-**貢献方法:**
-[貢献ガイド](https://github.com/cosmos/awesome-cosmos/blob/ec1d8616aa879ed04204cb07ea4ea98ac42f356f/CONTRIBUTING.md)をお読みください。すべての[コントリビューター](https://github.com/cosmos/awesome/graphs/contributors)に感謝します。
-
-**免責事項: このコミュニティ保守リポジトリは、いかなる公式組織の見解も反映しません。**
+Cosmosを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

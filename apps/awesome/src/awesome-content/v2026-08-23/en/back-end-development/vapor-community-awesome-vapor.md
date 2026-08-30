@@ -1,19 +1,12 @@
 ---
-title: "vapor-community/awesome-vapor"
-description: "Canonical snapshot of vapor-community/awesome-vapor"
+title: "Awesome Vapor"
+description: "A curated collection of resources and projects focused on Vapor."
 licenseSource: "github-vapor-community-awesome-vapor-readme-md"
 ---
 
-# Awesome Vapor [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Vapor
 
-[<img src="img/vapor-logo.png" align="right" width="150">](https://vapor.codes)
-
-[Vapor](https://vapor.codes) is currently one of the most popular server-side Swift frameworks. It allows you to take the language you already know if you ever developed an iOS application and use it in a whole new way, to develop fast, scalable and reliable back-end systems that integrate easily with a wide range of third party services. This is a curated list of:
-
-- modern libraries that easily integrate with Vapor and follow Vapor’s philosophy of providing simple, clean yet powerful APIs;
-- well-written tutorials, books, videos and education materials;
-- tools to make your development process simpler and more enjoyable;
-- and more!
+A curated collection of resources and projects focused on Vapor.
 
 ## Contents
 

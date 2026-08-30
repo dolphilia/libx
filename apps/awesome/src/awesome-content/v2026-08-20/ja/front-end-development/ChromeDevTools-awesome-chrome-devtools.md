@@ -1,12 +1,12 @@
 ---
-title: "ChromeDevTools/awesome-chrome-devtools"
-description: "ChromeDevTools/awesome-chrome-devtools の正規スナップショット"
+title: "Awesome Chrome DevTools"
+description: "Chrome DevToolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ChromeDevTools-awesome-chrome-devtools-readme-md"
 ---
 
-# Awesome Chrome DevTools [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Chrome DevTools
 
-> Chrome DevTools エコシステムの優れたツールとリソース
+Chrome DevToolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

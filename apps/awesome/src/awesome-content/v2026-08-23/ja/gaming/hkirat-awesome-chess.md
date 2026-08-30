@@ -1,17 +1,12 @@
 ---
-title: "hkirat/awesome-chess"
-description: "hkirat/awesome-chess の正規スナップショット"
+title: "Awesome Chess"
+description: "Chessを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hkirat-awesome-chess-readme-md"
 ---
 
-# Awesome Chess [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Chess
 
-インターネット上で利用できるチェス関連の資料を厳選したリストです。
-
-*[awesome](https://github.com/sindresorhus/awesome) リストに着想を得ています。完全版の [awesome](https://github.com/sindresorhus/awesome) リストもご覧ください。*
-
-### 貢献
-最初に[貢献ガイドライン](https://github.com/hkirat/awesome-chess/blob/master/CONTRIBUTING.md#contribution-guidelines)を確認してください。
+Chessを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 目次
 ---

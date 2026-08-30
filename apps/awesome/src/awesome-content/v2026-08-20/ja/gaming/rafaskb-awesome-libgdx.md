@@ -1,22 +1,12 @@
 ---
-title: "rafaskb/awesome-libgdx"
-description: "rafaskb/awesome-libgdx の正規スナップショット"
+title: "Awesome libGDX"
+description: "libGDXを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-rafaskb-awesome-libgdx-readme-md"
 ---
 
-[![Awesome libGDX Logo](https://github.com/rafaskb/awesome-libgdx/blob/93102878e1b59430845b85d1d8ea057a497d57cb/logo.png 'Awesome libGDX Logo')](https://libgdx.com/)
+# Awesome libGDX
 
-# Awesome libGDX [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) [![Latest libGDX Version](https://img.shields.io/maven-central/v/com.badlogicgames.gdx/gdx?color=e74a45&label=Latest%20libGDX%20Version&style=flat-square)](https://search.maven.org/artifact/com.badlogicgames.gdx/gdx)
-
-> <a href="https://libgdx.com/"><img src="https://libgdx.com/assets/images/logo.png" alt="libGDX Logo" align="right" style="margin-right: 25px" height=40></a>
->
-> [libGDX](https://libgdx.com/) は Java で書かれた、比較的低レベルで無料・オープンソースのクロスプラットフォームゲーム開発フレームワークです。
->
-> このリストは、開発者が[libGDX](https://libgdx.com/)ゲームフレームワークを使い、[Awesome Manifesto](https://github.com/sindresorhus/awesome/blob/master/awesome.md)に従った _awesome_ なゲームを作れるよう、優れたリソース、ツール、チュートリアル、プロジェクトを集めたものです。
->
-> コントリビューションを**歓迎**しますが、まず[Contributing](#contributing)を参照してください。
-
----
+libGDXを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,19 +1,12 @@
 ---
-title: "writing-resources/awesome-scientific-writing"
-description: "writing-resources/awesome-scientific-writing の定本スナップショット"
+title: "Awesome Scientific Writing"
+description: "Scientific Writingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-writing-resources-awesome-scientific-writing-readme-md"
 ---
 
-# Awesome Scientific Writing [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Scientific Writing
 
-> 科学的な文章作成はLaTeXだけにとどまりません。
-> [Markdown](https://daringfireball.net/projects/markdown/)（およびその多様な方言）、
-> [reStructuredText](https://docutils.sourceforge.io/rst.html)、
-> [Jupyter notebooks](https://jupyter.org/)のような形式によって、それが可能になります。
-
-:bookmark: は、**文献をシームレスに引用できる**ことを示します。
-
-:link: は、**文書内の図と節を相互参照できる**ことを示します。
+Scientific Writingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

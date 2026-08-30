@@ -1,26 +1,12 @@
 ---
-title: "simskij/awesome-software-architecture"
-description: "Canonical snapshot of simskij/awesome-software-architecture"
+title: "Awesome Software Architecture"
+description: "A curated collection of resources and projects focused on Software Architecture."
 licenseSource: "github-simskij-awesome-software-architecture-readme-md"
 ---
 
-<div align="center">
+# Awesome Software Architecture
 
-<img src="./banner.png" />
-
-# Awesome Software Architecture<br/>
-  
-[![awesome-badge](https://awesome.re/badge.svg)](https://awesome.re)
-  
-[Software architecture](https://en.wikipedia.org/wiki/Software_architecture) aims to describe the high level 
-structures of software as well as the discipline of creating them. As this topic is pretty broad, it might 
-contain some resources that are also present in more niche lists. 
-
-<i>
-  If you like this list, consider showing your support by following <a href="https://twitter.com/0x12b/">@0x12b</a> on Twitter. 
-</i>
-  
-</div>
+A curated collection of resources and projects focused on Software Architecture.
 
 ## Contents
 

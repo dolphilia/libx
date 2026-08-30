@@ -1,14 +1,12 @@
 ---
-title: "infosecB/awesome-detection-engineering"
-description: "infosecB/awesome-detection-engineering の定本スナップショット"
+title: "Awesome Detection Engineering"
+description: "Detection Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-infosecB-awesome-detection-engineering-readme-md"
 ---
 
-# Awesome Detection Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Detection Engineering
 
-ディテクションエンジニアリングは、個人または組織に悪影響を及ぼす前に悪意ある、または無許可の活動を積極的に特定することを目的として、検知コントロールを設計・実装・運用するサイバーセキュリティ防御プログラムの戦術的機能です。
-
-貢献を歓迎します。プルリクエストを送る前に、必ず[貢献ガイドライン](https://github.com/infosecB/awesome-detection-engineering/blob/main/contributing.md)を注意深く確認してください。
+Detection Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

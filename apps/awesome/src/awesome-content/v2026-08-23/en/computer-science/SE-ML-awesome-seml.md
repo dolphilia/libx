@@ -1,26 +1,12 @@
 ---
-title: "SE-ML/awesome-seml"
-description: "Canonical snapshot of SE-ML/awesome-seml"
+title: "Awesome Software Engineering for Machine Learning"
+description: "A curated collection of resources and projects focused on Software Engineering for Machine Learning."
 licenseSource: "github-SE-ML-awesome-seml-readme-md"
 ---
 
-# Awesome Software Engineering for Machine Learning [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/SE-ML/awesome-seml/blob/master/contributing.md)
+# Awesome Software Engineering for Machine Learning
 
-Software Engineering for Machine Learning are techniques and guidelines for building ML applications that do not concern the core ML problem  -- e.g. the development of new algorithms -- but rather the surrounding activities like data ingestion, coding, testing, versioning, deployment, quality control, and team collaboration.
-Good software engineering practices enhance development, deployment and maintenance of production level applications using machine learning components.
-
-⭐ Must-read
-
-🎓 Scientific publication
-
-
-<br>
-Based on this literature, we compiled a survey on the adoption of software engineering practices for applications with machine learning components.
-
-
-Feel free to [take and share the survey](https://se-ml.github.io/survey) and to [read more](https://se-ml.github.io/practices)!
-
-
+A curated collection of resources and projects focused on Software Engineering for Machine Learning.
 
 ## Contents
 

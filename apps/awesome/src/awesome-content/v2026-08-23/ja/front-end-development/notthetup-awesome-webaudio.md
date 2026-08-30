@@ -1,20 +1,12 @@
 ---
-title: "notthetup/awesome-webaudio"
-description: "notthetup/awesome-webaudio の正規スナップショット"
+title: "Awesome WebAudio"
+description: "WebAudioを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-notthetup-awesome-webaudio-readme-md"
 ---
 
 # Awesome WebAudio
 
-[![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome#readme)
-
-<img src="https://raw.githubusercontent.com/voodootikigod/logo.js/master/webaudio/webaudio-js.png" width="200px" alt="WebAudio">
-
-> 優れた[WebAudio](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)の[パッケージ](#packages)と[デモ](#demos)を集めたリストです。
-
-[awesome](https://github.com/sindresorhus/awesome)リストに着想を得ています。
-
-優れたWebAudio関連項目を追加するには、[Pull Request](https://github.com/notthetup/awesome-webaudio/pulls)を作成してください。
+WebAudioを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

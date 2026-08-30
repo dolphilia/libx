@@ -1,15 +1,12 @@
 ---
-title: "mislavcimpersak/awesome-dev-fun"
-description: "Canonical snapshot of mislavcimpersak/awesome-dev-fun"
+title: "Awesome Dev Fun"
+description: "A curated collection of resources and projects focused on Dev Fun."
 licenseSource: "github-mislavcimpersak-awesome-dev-fun-readme-md"
 ---
 
-# Awesome Dev Fun [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Dev Fun
 
-> A curated list of fun libs/packages/languages that have no real purpose but to make a developer chuckle.
-
-For now this is a really short list, so please contribute. Read [the guide](https://github.com/mislavcimpersak/awesome-dev-fun/blob/c7407753f6ee15ffa3bcf16901a61f10b81f72c3/CONTRIBUTING.md) and make a pull request or just ping me on Twitter [@mislavcimpersak](https://twitter.com/mislavcimpersak) with some funny stuff.
-
+A curated collection of resources and projects focused on Dev Fun.
 
 ## Contents
 

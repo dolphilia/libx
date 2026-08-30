@@ -1,13 +1,12 @@
 ---
-title: "domenicosolazzo/awesome-okr"
-description: "domenicosolazzo/awesome-okr の日本語訳（人手レビュー前）"
+title: "Awesome OKR"
+description: "OKRを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-domenicosolazzo-awesome-okr-readme-md"
 ---
 
-# Awesome OKR [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-OKRに関するリソースをキュレーションしたリスト
+# Awesome OKR
 
-OKRは、企業・チーム・従業員の目標を設定・共有し、達成結果に基づいて進捗を測定するためのベストプラクティスです。Google、Netflix、Zynga、LinkedIn、Twitterなどの企業で使われ、すべての従業員を企業のミッションとビジョンへ合わせやすくします。
+OKRを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [基礎](#basics)

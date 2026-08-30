@@ -1,12 +1,12 @@
 ---
-title: "avajs/awesome-ava"
-description: "avajs/awesome-ava の定本スナップショット"
+title: "Awesome AVA"
+description: "AVAを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-avajs-awesome-ava-readme-md"
 ---
 
-# Awesome AVA [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://github.com/avajs/ava/raw/main/media/header.png" width="280" align="right" alt="AVA">](https://avajs.dev)
+# Awesome AVA
 
-> [AVA](https://avajs.dev) は、最小限で未来志向の JavaScript テストランナーです
+AVAを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

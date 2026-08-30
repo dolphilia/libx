@@ -1,47 +1,12 @@
 ---
-title: "jacobdjwilson/awesome-annual-security-reports"
-description: "年次サイバーセキュリティ分析・調査報告書と関連組織を分類した定本スナップショット"
+title: "Awesome Annual Security Reports"
+description: "Annual Security Reportsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jacobdjwilson-awesome-annual-security-reports-readme-md"
 ---
 
-# 年次セキュリティ報告書のAwesomeリスト <a id="awesome-annual-security-reports"></a> [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-![Awesome Annual Security Reports Logo](https://raw.githubusercontent.com/jacobdjwilson/awesome-annual-security-reports/74ad710754d4bd70c728388df53e1b442c0e03b4/.github/images/awesome-security-reports-logo.png)
-> 年次サイバーセキュリティ分析と業界調査を集約した、年次報告書の厳選一覧です。
+# Awesome Annual Security Reports
 
-**定義:** サイバーセキュリティ環境は絶えず変化し、CIO、CISO、セキュリティ責任者が追随するのは困難です。調査会社、業界団体、非営利組織、政府機関の年次報告書から宣伝を除いて実用的な知見を得る負担を減らすため、最新動向、ツール、連携に関するベンダー中立の信頼できる情報を整理します。
-
-**免責事項:** 有料購読、会員資格、サービス契約を必要としない内容だけを収録します。情報を有料提供する企業・個人の事業モデルを尊重し、報告書内容のライセンスは原著者へ確認してください。
-
-**制限:** 継続して発行される年次データに限定し、個別プロジェクト文書、単発の技術仕様、標準は含めません。業界区分別の年次白書とセキュリティ業界の資金調達報告は含めます。
-
-**アクセシビリティ:** 可能な限り原著者から報告書を取得し、GitHub Actionで[Virus Total](https://virustotal.com/)へアップロードして信頼性確認を補強します。解析リンクはPDFコミットノートへ記載します。PDFはリポジトリの[AI Prompts](https://github.com/jacobdjwilson/awesome-annual-security-reports/blob/74ad710754d4bd70c728388df53e1b442c0e03b4/.github/ai-prompts)を使ってMarkdownへ変換し、各ファイル末尾へ変換メタデータを追加してAI精度の時点を追跡します。
-
-**謝辞:** この一覧に着想を与えた成果として、[Dr. Wade Baker](https://www.linkedin.com/in/drwadebaker/)と[Cyentia Institute](https://www.cyentia.com/)のデータ主導研究、[Rick Howard](https://www.linkedin.com/in/rickhoward/)の必読書一覧[Cyber Cannon](https://cybercanon.org/)、[Richard Stiennon](https://www.linkedin.com/in/stiennon)による[IT Harvest](https://dashboard.it-harvest.com/)の年次業界分析に感謝します。
-
-
-**年次報告書数:** \
-![Total](https://img.shields.io/badge/Total_Reports-991-blue?style=flat-square)
-![2008](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2008?type=file&style=flat-square&label=2008)
-![2009](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2009?type=file&style=flat-square&label=2009)
-![2010](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2010?type=file&style=flat-square&label=2010)
-![2011](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2011?type=file&style=flat-square&label=2011)
-![2012](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2012?type=file&style=flat-square&label=2012)
-![2013](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2013?type=file&style=flat-square&label=2013)
-![2014](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2014?type=file&style=flat-square&label=2014)
-![2015](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2015?type=file&style=flat-square&label=2015)
-![2016](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2016?type=file&style=flat-square&label=2016)
-![2017](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2017?type=file&style=flat-square&label=2017)
-![2018](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2018?type=file&style=flat-square&label=2018)
-![2019](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2019?type=file&style=flat-square&label=2019)
-![2020](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2020?type=file&style=flat-square&label=2020)
-![2021](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2021?type=file&style=flat-square&label=2021)
-![2022](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2022?type=file&style=flat-square&label=2022)
-![2023](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2023?type=file&style=flat-square&label=2023)
-![2024](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2024?type=file&style=flat-square&label=2024)
-![2025](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2025?type=file&style=flat-square&label=2025)
-![2026](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2026?type=file&style=flat-square&label=2026)
-
-
+Annual Security Reportsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

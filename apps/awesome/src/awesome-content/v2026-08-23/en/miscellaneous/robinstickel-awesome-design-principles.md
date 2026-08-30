@@ -1,16 +1,12 @@
 ---
-title: "robinstickel/awesome-design-principles"
-description: "Canonical snapshot of robinstickel/awesome-design-principles"
+title: "Awesome Design Principles"
+description: "A curated collection of resources and projects focused on Design Principles."
 licenseSource: "github-robinstickel-awesome-design-principles-readme-md"
 ---
 
-# Awesome Design Principles [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Design Principles
 
-A curated list of good design and experience principles.
-
-> Design Principles are a tool for creating better and more consistent designs and experiences. They are high level rules that guide detailed design decisions. They are often written down within bigger style guides, pattern libraries or design systems.
-
-Know a resource that isn't listed below? Feel free to create a new [pull request](https://github.com/robinstickel/awesome-design-principles/pulls), or open an [issue](https://github.com/robinstickel/awesome-design-principles/issues/new). Please read the [contribution guidelines](https://github.com/robinstickel/awesome-design-principles/blob/356335792d25524aad524288af34b1b2dc851d07/CONTRIBUTING.md) before contributing.
+A curated collection of resources and projects focused on Design Principles.
 
 ### Contents
 - [Principles within bigger Design Systems](https://github.com/robinstickel/awesome-design-principles#principles-within-bigger-design-systems)

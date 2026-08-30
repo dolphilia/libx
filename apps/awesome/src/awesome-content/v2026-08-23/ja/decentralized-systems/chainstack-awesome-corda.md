@@ -1,22 +1,12 @@
 ---
-title: "chainstack/awesome-corda"
-description: "chainstack/awesome-corda の定本スナップショット"
+title: "Awesome Corda"
+description: "Cordaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-chainstack-awesome-corda-readme-md"
 ---
 
+# Awesome Corda
 
-<div align="center">
-  <a href="https://www.corda.net/"><img width="250px" src="./project_logo.png">
-  </a><br />
-  <a href="https://www.corda.net/">Corda</a> は、当初からビジネス向けに設計されたオープンソースのブロックチェーンプロジェクトです。
-  <br />Corda を使うと、厳格なプライバシーのもとで取引を行う、相互運用可能なブロックチェーンネットワークを構築できます。Corda のスマートコントラクト技術により、企業は価値を直接取引できます。
-  <br />
-
-  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-</div>
-
-
-プルリクエストを歓迎します！
+Cordaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

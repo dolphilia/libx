@@ -1,18 +1,12 @@
 ---
-title: "sfischer13/awesome-ledger"
-description: "Canonical snapshot of sfischer13/awesome-ledger"
+title: "Awesome Ledger"
+description: "A curated collection of resources and projects focused on Ledger."
 licenseSource: "github-sfischer13-awesome-ledger-readme-md"
 ---
 
+# Awesome Ledger
 
-
-# Awesome Ledger [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> Useful resources for the [Ledger](http://ledger-cli.org/) command-line accounting system
-
-You might also like [awesome-beancount](https://github.com/wzyboy/awesome-beancount).
-
-*Please read the [contribution guidelines](https://github.com/sfischer13/awesome-ledger/blob/0a35c4f474722fb0d86a3dc755417ffbd46c563a/contributing.md) before contributing.*
+A curated collection of resources and projects focused on Ledger.
 
 ## Contents
 

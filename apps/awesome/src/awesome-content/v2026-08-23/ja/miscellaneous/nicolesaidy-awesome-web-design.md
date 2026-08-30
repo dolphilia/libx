@@ -1,13 +1,12 @@
 ---
-title: "nicolesaidy/awesome-web-design"
-description: "デジタルデザイナー向けの着想、配色、書体、素材、設計ツール、学習資料をまとめた定本スナップショット"
+title: "Awesome Web Design"
+description: "Web Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-nicolesaidy-awesome-web-design-readme-md"
 ---
 
-# WebデザインのAwesomeリスト <a id="awesome-web-design"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-> デジタルデザイナー向けの優れた資料を厳選したリストです。
+# Awesome Web Design
 
-私の[Webサイト](http://nicolesaidy.com)と[ブログ](http://blog.nicolesaidy.com)もご覧ください。✨
+Web Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

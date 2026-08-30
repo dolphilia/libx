@@ -1,31 +1,12 @@
 ---
-title: "zingchart/awesome-charting"
-description: "Canonical snapshot of zingchart/awesome-charting"
+title: "Awesome Charting"
+description: "A curated collection of resources and projects focused on Charting."
 licenseSource: "github-zingchart-awesome-charting-readme-md"
 ---
 
+# Awesome Charting
 
-<img src="https://cdn.rawgit.com/zingchart/awesome-charting/media/assets/awesome-charting.svg" alt="awesome">
-
-A curated list of chart and dataviz resources that developers may find useful. Focused on relevant and currently active JavaScript charting libraries for different use cases. Ordered alphabetically in each category.
-
-*Inspired by the <a href="https://github.com/sindresorhus/awesome">Awesome</a> thing.*
-
-
-Brought to you by 
-
-[![ZingChart](https://github.com/zingchart/awesome-charting/blob/assets/assets/zingchart-logo-full-color.svg?raw=true)](https://www.zingchart.com)
-
-A declarative, efficient, and simple JavaScript library for building responsive charts
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://travis-ci.org/zingchart/awesome-charting.svg?branch=master)](https://travis-ci.org/zingchart/awesome-charting)
-
-**Table of Contents**
-*  [Commercial Libraries](#commercial-libraries)
-*  [Free and Open Source Libraries](#free-and-open-source-libraries)
-*  [Free Libraries](#free-libraries)
-*  [Framework-Specific Libraries](#framework-specific-libraries)
-*  [Data Visualization Resources](#data-visualization-resources)
+A curated collection of resources and projects focused on Charting.
 
 ## Commercial Libraries
 * [amCharts](https://www.amcharts.com/) - Three libraries for traditional charts, stock, and maps. Features a hand-drawn style theme option.

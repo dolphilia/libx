@@ -1,18 +1,12 @@
 ---
-title: "onqtam/awesome-cmake"
-description: "Canonical snapshot of onqtam/awesome-cmake"
+title: "Awesome CMake"
+description: "A curated collection of resources and projects focused on CMake. The upstream list is archived or no longer maintained."
 licenseSource: "github-onqtam-awesome-cmake-readme-md"
 ---
 
-# Awesome CMake [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome CMake
 
-[<img src="https://rawgit.com/onqtam/awesome-cmake/master/cmake-logo.svg" align="right" width="100">](https://cmake.org/)
-
-> A curated list of awesome [CMake](https://cmake.org/) scripts, modules, examples and others
-
-Your contributions are highly welcome (first see [CONTRIBUTING.md](https://github.com/onqtam/awesome-cmake/blob/40dfb5e378c52cba5710e8041a70c7bca91d883e/CONTRIBUTING.md)).
-
-There is another file [`NonModernCMake.md`](https://github.com/onqtam/awesome-cmake/blob/40dfb5e378c52cba5710e8041a70c7bca91d883e/NonModernCMake.md) with other links worth taking a look, but they use obsolete practices which are considered non-modern - like not using `target_*`-based dependency management - see [`#16`](https://github.com/onqtam/awesome-cmake/issues/16) and [`#42`](https://github.com/onqtam/awesome-cmake/pull/42) for more details.
+A curated collection of resources and projects focused on CMake. The upstream list is archived or no longer maintained.
 
 ## Contents
 

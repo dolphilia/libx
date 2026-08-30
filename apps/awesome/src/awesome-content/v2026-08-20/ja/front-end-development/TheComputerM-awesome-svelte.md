@@ -1,23 +1,12 @@
 ---
-title: "TheComputerM/awesome-svelte"
-description: "TheComputerM/awesome-svelte の定本スナップショット"
+title: "Awesome Svelte"
+description: "Svelteを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-TheComputerM-awesome-svelte-readme-md"
 ---
 
-<p align="center">
-  <br>
-  <img width="200" src="./awesome-svelte.svg" alt="awesome-svelte logo">
-  <br>
-  <br>
-</p>
+# Awesome Svelte
 
-# Awesome Svelte [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> ⚡ 優れたSvelteリソースを厳選したリスト
-
-[Svelte](https://svelte.dev/)はWebアプリケーションを構築する新しい方法です。宣言的なコンポーネントを受け取り、効率的なJavaScriptへ変換するCompilerです。
-
-貢献を歓迎します。Pull Requestでリンクを追加するか、Issueを作成して議論を始めてください。
+Svelteを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

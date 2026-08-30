@@ -1,14 +1,12 @@
 ---
-title: "ambster-public/awesome-qlik"
-description: "Canonical snapshot of ambster-public/awesome-qlik"
+title: "Awesome Qlik"
+description: "A curated collection of resources and projects focused on Qlik."
 licenseSource: "github-ambster-public-awesome-qlik-readme-md"
 ---
 
-# Awesome Qlik [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://webapps.qlik.com/WarsawMarathon/qlik.jpg" width="250" align="right" alt="Qlik logo">](https://qlik.com)
+# Awesome Qlik
 
-> Curated list of awesome [Qlik](https://qlik.com) guides, blogs, extensions, and other resources.
-
-Qlik is a [leading](https://www.qlik.com/us/gartner-magic-quadrant-business-intelligence) business intelligence platform delivering solutions for data visualisation, analytics, and reporting. Running on the same engine, its main products are [QlikView](https://www.qlik.com/us/products/qlikview) (for guided analytics) and [Qlik Sense](https://www.qlik.com/us/products/qlik-sense) (for self-service BI).
+A curated collection of resources and projects focused on Qlik.
 
 ## Contents
 

@@ -1,16 +1,12 @@
 ---
-title: "msub2/awesome-webxr"
-description: "msub2/awesome-webxr の正規スナップショット"
+title: "Awesome WebXR"
+description: "WebXRを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-msub2-awesome-webxr-readme-md"
 ---
 
-# Awesome WebXR [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome WebXR
 
-[<img src="webxr-logo.svg" align="right" width="100">](https://immersiveweb.dev/)
-
-> WebXR のリンクとリソースのキュレーション済みリスト。
-
-[WebXR](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API)は、ブラウザーが仮想・拡張現実デバイスへアクセスできるようにする標準群です。インストールやストアによるキュレーションなしに、オンラインで容易にアクセスできる没入型コンテンツを開発者が作れます。
+WebXRを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

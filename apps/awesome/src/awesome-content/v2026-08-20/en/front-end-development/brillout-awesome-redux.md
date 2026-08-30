@@ -1,19 +1,12 @@
 ---
-title: "brillout/awesome-redux"
-description: "Canonical snapshot of brillout/awesome-redux"
+title: "Awesome Redux Libraries & Learning Material"
+description: "A curated collection of resources and projects focused on Redux Libraries & Learning Material."
 licenseSource: "github-brillout-awesome-redux-readme-md"
 ---
 
-# Redux Libraries & Learning Material [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Redux Libraries & Learning Material
 
-[<img src="https://rawgit.com/brillout/awesome-redux/master/redux-logo.svg" align="right" width="110">](http://redux.js.org/)
-
-> Redux is a state container for JavaScript apps.
-
- - Official website: [`devarchy.com/redux`](https://devarchy.com/redux)
- - Use devarchy to add a library to the catalog
- 
- <br/>
+A curated collection of resources and projects focused on Redux Libraries & Learning Material.
 
 #### Contents
 - [Code Architecture](#code-architecture)
@@ -232,4 +225,3 @@ If you are curious for more, check out following resources.
 - [Slack](http://slack.redux.io/)
 - [Gitter](https://gitter.im/reactjs/redux)
 - [`#rackt` on freenode](https://webchat.freenode.net/)
-

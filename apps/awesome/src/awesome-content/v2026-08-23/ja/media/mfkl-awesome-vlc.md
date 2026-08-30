@@ -1,14 +1,12 @@
 ---
-title: "mfkl/awesome-vlc"
-description: "mfkl/awesome-vlc の定本スナップショット"
+title: "Awesome VLC"
+description: "VLCを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mfkl-awesome-vlc-readme-md"
 ---
 
-# Awesome VLC [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://cdn.worldvectorlogo.com/logos/vlc.svg" align="right" alt="VLC" width="128">](https://github.com/mfkl/awesome-vlc)
+# Awesome VLC
 
-> [VLC](https://www.videolan.org/vlc/) は、ほとんどのマルチメディアファイル、DVD、オーディオ CD、VCD、さまざまなストリーミングプロトコルを再生できる、無料かつオープンソースのクロスプラットフォームマルチメディアプレーヤー兼フレームワークです。
-
-VLC と LibVLC に関する優れたリソースの一覧です。
+VLCを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

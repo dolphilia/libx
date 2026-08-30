@@ -1,42 +1,12 @@
 ---
-title: "dreamingechoes/awesome-mental-health"
-description: "Canonical snapshot of dreamingechoes/awesome-mental-health"
+title: "Awesome Mental Health"
+description: "A curated collection of resources and projects focused on Mental Health."
 licenseSource: "github-dreamingechoes-awesome-mental-health-readme-md"
 ---
 
+# Awesome Mental Health
 
-<p align="center"><img src="./media/logo.png"></p>
-
-<p align="center">
-  <a href="https://github.com/sindresorhus/awesome"><img alt="awesome" src="https://awesome.re/badge.svg"/></a>
-  <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"/>
-</p>
-
----
-
-## About
-
-✨ A curated collection of outstanding articles, tools, and resources focused on mental health in the software industry. ✨
-
-**Mental health** is a foundational aspect of our overall well-being. It encompasses emotional, psychological, and social stability, and affects how we think, feel, act, relate to others, and make choices. In the context of the tech industry—where long hours, high pressure, and remote or isolated work environments are common—supporting mental health is a personal priority and a collective responsibility.
-
-This list gathers resources designed to raise awareness, promote self-care, reduce stigma, and help individuals and organizations navigate mental health challenges. From managing stress and anxiety to cultivating resilience and compassion at work, these tools aim to support developers, designers, managers, and anyone working in tech.
-
-It covers topics including, but not limited to:
-
-* Burnout and recovery
-* Depression and anxiety in remote work
-* Mindfulness and stress reduction
-* Imposter syndrome and self-doubt
-* Building psychologically safe engineering cultures
-
-> **Disclaimer:** This list is a collection of self-help and educational resources. While we’ve found many of them helpful, they are not a substitute for professional mental health care. Therapy, medication, and clinical support are often essential for recovery and well-being.
->
-> If you or someone you know is in crisis, please seek help immediately from local emergency services or a mental health professional. You can find international crisis support here:
-> * 🌍 [To Write Love on Her Arms – Find Help](https://twloha.com/find-help/international-resources/)
-> * 🌐 [International Association for Suicide Prevention – Crisis Centres](https://www.iasp.info/resources/Crisis_Centres/)
-
----
+A curated collection of resources and projects focused on Mental Health.
 
 ## Contents
 

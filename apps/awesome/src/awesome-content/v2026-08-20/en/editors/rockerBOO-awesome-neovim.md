@@ -1,18 +1,12 @@
 ---
-title: "rockerBOO/awesome-neovim"
-description: "Canonical snapshot of rockerBOO/awesome-neovim"
+title: "Awesome Neovim"
+description: "A curated collection of resources and projects focused on Neovim."
 licenseSource: "github-rockerBOO-awesome-neovim-readme-md"
 ---
 
-# Awesome Neovim [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Neovim
 
-<a href="https://neovim.io/"><img src="https://neovim.io/logos/neovim-mark-flat.png" align="right" width="144"/></a>
-
-> A collection of awesome Neovim plugins. Mostly targeting Neovim specific features.
-> This means Vim-compatible plugins are not listed here.
-
-[Neovim](https://neovim.io/) is a Vim-based text editor engineered for extensibility and usability, to encourage new applications and contributions.
-It has some [builtin plugins](https://neovim.io/doc/user/plugins.html#plugins) as well as a rich API for many more to be developed.
+A curated collection of resources and projects focused on Neovim.
 
 ## Contents
 
@@ -1928,4 +1922,3 @@ Have a problem a plugin can solve? Add it to the [nvim-lua wishlist](https://git
 - [Neovim Cheatsheet](https://neovimcheatsheet.com) - Searchable, interactive cheatsheet with per-keypress search, remappable keybindings, and JSON import/export.
 
 [**⬆ back to top**](#contents)
-

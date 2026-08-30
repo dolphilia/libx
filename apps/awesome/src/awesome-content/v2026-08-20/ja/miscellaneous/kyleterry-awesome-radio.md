@@ -1,16 +1,12 @@
 ---
-title: "kyleterry/awesome-radio"
-description: "kyleterry/awesome-radio の定本スナップショット"
+title: "Awesome Radio"
+description: "Radioを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-kyleterry-awesome-radio-readme-md"
 ---
 
-# Awesome Radio [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Radio
 
-優れた無線リソースの厳選リスト。awesome-* に着想を得ています。
-
-最近 CB 無線機を取り出してトラックに取り付けました。これを機に、有用と感じた無線関連リソースとこの分野のメモをまとめるオープンソースリポジトリーを作りました。
-
-このプロジェクトは無線通信のあらゆる面を楽しむハッカー向けです。この技術の多くは市民が使用できず、FCC により厳しく規制されていますが、それを知ること自体に価値があります。私は無線の仕組みを学ぶこと、古今の物語を聞くことに関心を持ってきました。
+Radioを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 一般
 

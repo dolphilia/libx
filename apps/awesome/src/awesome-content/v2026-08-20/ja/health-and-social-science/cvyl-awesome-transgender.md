@@ -1,12 +1,12 @@
 ---
-title: "cvyl/awesome-transgender"
-description: "cvyl/awesome-transgender の定本スナップショット"
+title: "Awesome Transgender Transgender Flag"
+description: "Transgender Transgender Flagを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-cvyl-awesome-transgender-readme-md"
 ---
 
-# Awesome Transgender [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) ![Transgender Flag](https://upload.wikimedia.org/wikipedia/commons/b/b0/Transgender_Pride_flag.svg)
+# Awesome Transgender Transgender Flag
 
-> 自身のジェンダーアイデンティティが、出生時に割り当てられた性別と異なる人。
+Transgender Transgender Flagを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

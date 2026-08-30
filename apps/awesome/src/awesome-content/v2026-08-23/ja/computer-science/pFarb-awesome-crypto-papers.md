@@ -1,28 +1,13 @@
 ---
-title: "pFarb/awesome-crypto-papers"
-description: "pFarb/awesome-crypto-papers の正規スナップショット"
+title: "Awesome Crypto Papers"
+description: "Crypto Papersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-pFarb-awesome-crypto-papers-readme-md"
 ---
 
-<a id="awesome-crypto-papers"></a>
-# Awesome Crypto Papers  [![Awesome](https://raw.githubusercontent.com/sindresorhus/awesome/d2005375894e77d69827b0e3c17073bbf6f062d7/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Crypto Papers
 
-暗号技術の専門家ではない人のために、[暗号学](https://en.wikipedia.org/wiki/Cryptography)の論文、記事、チュートリアル、ハウツーを集めた厳選リストです。
+Crypto Papersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<p align="center">
-  <img src="https://github.com/pFarb/awesome-crypto-papers/blob/master/awesome-felix-big.jpg" style="width: 50%">
-</p>
-
-<a id="notes"></a>
-### 注記
-
-このリストは、暗号技術の知識レベルに応じた学習資料を提供することを目的としています。[Cossack Labs](https://www.cossacklabs.com) でエンジニアのオンボーディングを行う際、暗号技術を教え、特定の話題について読むべき資料を案内するために、同じ資料を繰り返し探していたことが作成のきっかけです。ほかの人にも役立つことを願っています。
-
-データベース暗号化、安全な共有、各種方式のエンドツーエンド暗号化など、上位レベルのセキュリティシステムで暗号技術を利用し、その仕組み、失敗のしかた、攻撃手法を理解する必要がある人を対象とします。著名・重要・歴史的な論文だけを集めたリストではありません（該当する論文も多数含まれます）。必要な資料を把握している研究者や、専門家の指導の下で体系的に学ぶべき暗号研究者志望者を主対象にはしていません。
-
-必読と思える資料を見つけ次第、段階的に拡充します。プルリクエストを歓迎します。
-
-<a id="contents"></a>
 ## 目次
 
 * [データセキュリティと暗号技術の入門](#introducing-people-to-data-security-and-cryptography)

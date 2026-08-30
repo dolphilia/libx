@@ -1,17 +1,12 @@
 ---
-title: "tiimgreen/github-cheat-sheet"
-description: "GitHubとGitの便利な機能、URL、操作例をまとめた定本スナップショット"
+title: "Awesome GitHub Cheat Sheet"
+description: "GitHub Cheat Sheetを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-tiimgreen-github-cheat-sheet-readme-md"
 ---
 
-# GitHubチートシート [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-GitとGitHubの便利な隠し機能・既知の機能を集めたチートシートです。[Zach Holman](https://github.com/holman)によるAloha Ruby Conference 2012の[Git and GitHub Secrets](http://confreaks.tv/videos/aloharuby2012-git-and-github-secrets)講演（[スライド](https://speakerdeck.com/holman/git-and-github-secrets)）と、WDCNZ 2013の[More Git and GitHub Secrets](https://vimeo.com/72955426)講演（[スライド](https://speakerdeck.com/holman/more-git-and-github-secrets)）に着想を得ています。
+# Awesome GitHub Cheat Sheet
 
-*短縮リンク: [`http://git.io/sheet`](http://git.io/sheet)*
-
-*ほかの言語: [English](https://github.com/tiimgreen/github-cheat-sheet/blob/746af1b42356973f66627319bbaf4ac5157c5308/README.md)、[한국어](https://github.com/tiimgreen/github-cheat-sheet/blob/746af1b42356973f66627319bbaf4ac5157c5308/README.ko.md)、[日本語](https://github.com/tiimgreen/github-cheat-sheet/blob/746af1b42356973f66627319bbaf4ac5157c5308/README.ja.md)、[简体中文](https://github.com/tiimgreen/github-cheat-sheet/blob/746af1b42356973f66627319bbaf4ac5157c5308/README.zh-cn.md)、[正體中文](https://github.com/tiimgreen/github-cheat-sheet/blob/746af1b42356973f66627319bbaf4ac5157c5308/README.zh-tw.md)。*
-
-GitHubチートシートは[Snapshot: AIで対話型の高品質な製品写真を作成](https://www.snapshotapp.io/)の提供です。
+GitHub Cheat Sheetを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
   - [GitHub](#github)

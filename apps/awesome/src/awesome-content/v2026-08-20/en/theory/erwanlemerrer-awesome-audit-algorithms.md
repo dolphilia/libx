@@ -1,20 +1,12 @@
 ---
-title: "erwanlemerrer/awesome-audit-algorithms"
-description: "Canonical snapshot of erwanlemerrer/awesome-audit-algorithms"
+title: "Awesome Audit Algorithms"
+description: "A curated collection of resources and projects focused on Audit Algorithms."
 licenseSource: "github-erwanlemerrer-awesome-audit-algorithms-readme-md"
 ---
 
-# Awesome Audit Algorithms [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Audit Algorithms
 
-A curated list of algorithms for auditing black-box algorithms.
-Nowadays, many algorithms (recommendation, scoring, classification) are operated at third party providers, without users or institutions having any insights on how they operate on their data. Audit algorithms in this list thus apply to this setup, coined the "black-box" setup, where one auditor wants to get some insight on these remote algorithms.
-
-<img src="https://github.com/erwanlemerrer/awesome-audit-algorithms/blob/main/resources/audit.png" width="600" alt="banner" class="center">
-
-> A user queries a remote algorithm (eg, through available APIs), to infer information about that algorithm.
-
-## UPDATE
-slow/no update: superseded by current technology...
+A curated collection of resources and projects focused on Audit Algorithms.
 
 ## Contents
 - [Papers](#papers)

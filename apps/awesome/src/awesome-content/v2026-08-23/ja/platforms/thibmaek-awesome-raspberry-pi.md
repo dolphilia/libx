@@ -1,24 +1,13 @@
 ---
-title: "thibmaek/awesome-raspberry-pi"
-description: "Raspberry PiのOS、ツール、プロジェクト、学習資料を集めた厳選リスト"
+title: "Awesome Raspberry Pi"
+description: "Raspberry Piを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-thibmaek-awesome-raspberry-pi-readme-md"
 ---
 
-<a id="awesome-raspberry-pi"></a>
 # Awesome Raspberry Pi
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![All Contributors](https://img.shields.io/badge/all_contributors-43-orange.svg)](https://github.com/thibmaek/awesome-raspberry-pi/blob/main/CONTRIBUTORS.md)
+Raspberry Piを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a href="https://www.raspberrypi.org"><img src="https://www.raspberrypi.org/wp-content/uploads/2012/03/raspberry-pi-logo.png" alt="Raspberry Pi Logo" align="left" style="margin-right: 25px" height=150></a>
-
-> Raspberry Piは、学校や発展途上国で基礎的なコンピューター科学教育を促進するため、英国のRaspberry Pi Foundationが開発したクレジットカード大のシングルボードコンピューターです。公式リンク: [Raspberry Pi Foundation](https://raspberrypi.org)、[Raspberry Pi Computer](https://www.raspberrypi.com)
-
-このリストは、[Awesome Manifesto](https://github.com/sindresorhus/awesome/blob/main/awesome.md)に準拠したツール、プロジェクト、画像およびリソースのコレクションです
-
-貢献は*非常に歓迎*ですが、まず[Contributing](#contributing)を確認してください
-
-<a id="contents"></a>
 ## 目次
 
 - [Models](#models)

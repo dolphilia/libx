@@ -1,31 +1,13 @@
 ---
-title: "YuzheSHI/awesome-agi-cocosci"
-description: "Canonical snapshot of YuzheSHI/awesome-agi-cocosci"
+title: "Awesome Artificial General Intelligence and Computational Cognitive Sciences"
+description: "A curated collection of resources and projects focused on Artificial General Intelligence and Computational Cognitive Sciences."
 licenseSource: "github-YuzheSHI-awesome-agi-cocosci-readme-md"
 ---
 
-<div align="center">
-	<img width="400" height="253" src="assets/abd_map.png" alt="Roadmap of studying Abduction">
-</div>
+# Awesome Artificial General Intelligence and Computational Cognitive Sciences
 
+A curated collection of resources and projects focused on Artificial General Intelligence and Computational Cognitive Sciences.
 
-
-
-# Awesome Artificial General Intelligence and Computational Cognitive Sciences [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-An **awesome & curated** list for **Artificial General Intelligence**, an emerging inter-discipline field that combines artificial intelligence and computational cognitive sciences as majority, alone with probability and statistics, formal logic, cognitive and developmental psychology, computational philosophy, cognitive neuroscience, and computational sociology. We are promoting high-level machine intelligence by getting inspirations from the way that human learns and thinks, while obtaining a deeper understanding of human cognition simultaneously. We believe that this kind of reciprocative research is a potential way towards our big picture: building human-level intelligent systems with capabilities such as abstracting, explaining, learning, planning, and making decisions. And such intelligence may generally help people improve scientific research, engineering, and the arts, which are the hallmarks of human intelligence.
-
-***Awesome AGI & CoCoSci*** is an all-in-one collection, consisting of recources from basic courses and tutorials, to papers and books around diverse topics in mutiple perspectives. Both junior and senior researchers, whether learning, working on, or working around AGI and CoCoSci, meet their interest here.
-
-
-
-## Contributing
-
-Contributions are greatly welcomed! Please refer to [Contribution Guidelines](https://github.com/YuzheSHI/awesome-agi-cocosci/blob/0ff4ed6ef214e4151669e5187cc7d9873219f974/Contributing.md) before taking any actions.
-
-
-
-<span id = "c"></span>
 ## Contents
 
 * [Papers](#papers)

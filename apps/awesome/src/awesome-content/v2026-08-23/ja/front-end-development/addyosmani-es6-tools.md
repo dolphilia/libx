@@ -1,10 +1,12 @@
 ---
-title: "addyosmani/es6-tools"
-description: "addyosmani/es6-tools の正規スナップショット"
+title: "Awesome ECMAScript 6 Tools"
+description: "ECMAScript 6 Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-addyosmani-es6-tools-readme-md"
 ---
 
-# <img src="http://i.imgur.com/yy1sACZ.png" width="100px"/> ECMAScript 6ツール [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome ECMAScript 6 Tools
+
+ECMAScript 6 Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## トランスパイラー <a id="transpilers"></a>
 

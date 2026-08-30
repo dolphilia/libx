@@ -1,11 +1,12 @@
 ---
-title: "jyguyomarch/awesome-productivity"
-description: "Canonical snapshot of jyguyomarch/awesome-productivity"
+title: "Awesome Productivity"
+description: "A curated collection of resources and projects focused on Productivity."
 licenseSource: "github-jyguyomarch-awesome-productivity-readme-md"
 ---
 
-# Awesome Productivity [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-> A curated list of delightful productivity resources.
+# Awesome Productivity
+
+A curated collection of resources and projects focused on Productivity.
 
 ## Contents
 

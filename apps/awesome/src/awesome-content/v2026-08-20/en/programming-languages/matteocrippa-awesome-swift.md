@@ -1,24 +1,12 @@
 ---
-title: "matteocrippa/awesome-swift"
-description: "Canonical snapshot of matteocrippa/awesome-swift"
+title: "Awesome Swift"
+description: "A curated collection of resources and projects focused on Swift."
 licenseSource: "github-matteocrippa-awesome-swift-readme-md"
 ---
 
 # Awesome Swift
- 
 
-
-
-
-| Awesome | Linux | Projects | Updated |
-|:-------:|:-----:|:--------:|:-------:|
-| [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) | :penguin: | 1107 | August 03, 2026 |
-
-In parternship with:
-
-[![Codemotion](https://github.com/matteocrippa/awesome-swift/blob/master/.github/images/codemotion_logo.png?raw=true)](https://codemo.tech/partners)
-
-
+A curated collection of resources and projects focused on Swift.
 
 ### Contents
 

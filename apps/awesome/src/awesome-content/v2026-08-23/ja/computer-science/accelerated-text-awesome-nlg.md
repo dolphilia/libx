@@ -1,14 +1,12 @@
 ---
-title: "accelerated-text/awesome-nlg"
-description: "accelerated-text/awesome-nlg の正規スナップショット"
+title: "Awesome Natural Language Generation"
+description: "Natural Language Generationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-accelerated-text-awesome-nlg-readme-md"
 ---
 
-# Awesome Natural Language Generation [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Natural Language Generation
 
-![BL Harley 647のPiscis Magnus](https://raw.githubusercontent.com/accelerated-text/awesome-nlg/e12d701762a97047e28383ae8b09e13b7e88d280/logo.png)
-
-自然言語生成は、チャットボット、物語生成、データ記述などへ応用される幅広い分野です。NLGプロセスの一部または全体を扱う、多様な技術が存在します。このリストは、さまざまなプロジェクト、ツール、研究論文、学習資料へのリンクを通じて、NLGの応用と技法の多様性を示すことを目的としています。
+Natural Language Generationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

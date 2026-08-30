@@ -1,14 +1,12 @@
 ---
-title: "cenoura/awesome-ads"
-description: "cenoura/awesome-ads の正規スナップショット"
+title: "Awesome Advertising"
+description: "Advertisingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-cenoura-awesome-ads-readme-md"
 ---
 
-# Awesome Advertising [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Advertising
 
-**広告とプログラマティックメディアのコンテンツおよびリソースを厳選したリストです。**
-
-**免責事項：** サイトやアプリ上の広告を強く嫌い、ときには腹を立てる人がいることは承知しています。広告は個人や企業が収益化のため広く利用しているため、このリストでは正しく最適化された実装方法に関する知識の共有を主な目的としています。
+Advertisingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

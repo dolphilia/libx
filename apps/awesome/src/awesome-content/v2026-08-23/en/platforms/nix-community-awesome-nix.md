@@ -1,26 +1,12 @@
 ---
-title: "nix-community/awesome-nix"
-description: "Canonical snapshot of nix-community/awesome-nix"
+title: "Awesome Nix"
+description: "A curated collection of resources and projects focused on Nix."
 licenseSource: "github-nix-community-awesome-nix-readme-md"
 ---
 
-# Awesome Nix [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Nix
 
-<a href="https://nixos.org">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nixos.svg">
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nixos-white.png">
-    <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nixos.svg" align="right" width="250" alt="NixOS logo">
-  </picture>
-</a>
-
-A curated list of the best resources in the Nix community.
-
-<br>
-
-[Nix](https://github.com/nixos/nix) is a powerful package manager for Linux and other Unix systems that makes package management reliable and reproducible.
-
-*Please read the [contribution guidelines](https://github.com/nix-community/awesome-nix/blob/ecbb552376aef2bcf1614c0879dcd4268f59da6b/CONTRIBUTING.md) before contributing.*
+A curated collection of resources and projects focused on Nix.
 
 ## Contents
 

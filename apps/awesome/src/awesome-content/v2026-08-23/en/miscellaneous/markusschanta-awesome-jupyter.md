@@ -1,36 +1,12 @@
 ---
-title: "markusschanta/awesome-jupyter"
-description: "Canonical snapshot of markusschanta/awesome-jupyter"
+title: "Awesome Jupyter"
+description: "A curated collection of resources and projects focused on Jupyter."
 licenseSource: "github-markusschanta-awesome-jupyter-readme-md"
 ---
 
-# Awesome Jupyter [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![HitCount](https://hits.dwyl.com/markusschanta/awesome-jupyter.svg?style=flat)](http://hits.dwyl.com/markusschanta/awesome-jupyter)
+# Awesome Jupyter
 
-A curated list of awesome [Jupyter](http://jupyter.org) projects, libraries and resources. Jupyter is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.
-
-<div align="center" style="border-bottom: 0px;">
-	<br>
-	<img width="400" src="https://raw.githubusercontent.com/markusschanta/awesome-jupyter/62178578fed55a97986dc567b8d58fe7fa58de14/assets/logo.png" alt="Jupyter logo">
-	<br>
-	<br>
-</div>
-
----
-
-<div align="center" style="border-bottom: 0px;">
-	<sub>Awesome Jupyter is proudly supported by our sponsor:</sub>
-	<br>
-	<br>
-	<a href="https://deepnote.com/?utm_source=github&utm_medium=promo&utm_campaign=awesomejupyter"><img width="300" src="https://raw.githubusercontent.com/markusschanta/awesome-jupyter/62178578fed55a97986dc567b8d58fe7fa58de14/assets/deepnote.jpeg" alt="Deepnote logo"></a>
-	<br>
-	<br>
-	<b>Deepnote is a collaborative data science notebook built for teams.</b>
-	<div>
-	<sub>Explore data with Python & SQL from your browser. Add context with data visualizations and rich text editing. Share your work by simply sending a link. <a href="https://deepnote.com/?utm_source=github&utm_medium=promo&utm_campaign=awesomejupyter">Check it out on the Deepnote free plan.</a></sub>
-	</div>
-</div>
-
----
+A curated collection of resources and projects focused on Jupyter.
 
 ## Contents
 

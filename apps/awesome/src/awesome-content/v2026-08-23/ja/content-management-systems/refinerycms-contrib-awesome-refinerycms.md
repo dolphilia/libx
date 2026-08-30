@@ -1,12 +1,12 @@
 ---
-title: "refinerycms-contrib/awesome-refinerycms"
-description: "refinerycms-contrib/awesome-refinerycms の正規スナップショット"
+title: "Awesome Refinery CMS"
+description: "Refinery CMSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-refinerycms-contrib-awesome-refinerycms-readme-md"
 ---
 
-# Awesome Refinery CMS [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Refinery CMS
 
-優れた [Refinery CMS](http://www.refinerycms.com/) 拡張機能、リソース、便利なものを集めたリストです。
+Refinery CMSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## フロントオフィス拡張機能
 * [refinerycms-copywriting](https://github.com/unixcharles/refinerycms-copywriting) - 一度書けば、何度でも表示

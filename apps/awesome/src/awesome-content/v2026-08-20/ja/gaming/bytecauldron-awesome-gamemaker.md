@@ -1,20 +1,12 @@
 ---
-title: "bytecauldron/awesome-gamemaker"
-description: "GameMakerのライブラリ、拡張、制作ツール、学習資料を分類した定本スナップショット"
+title: "Awesome GameMaker"
+description: "GameMakerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-bytecauldron-awesome-gamemaker-readme-md"
 ---
 
-<p align="center">
-    <a href="https://gamemaker.io/"><img src="https://github.com/bytecauldron/awesome-gamemaker/raw/main/images/banner.png" /></a>
-</p>
+# Awesome GameMaker
 
-# GameMakerのAwesomeリスト <a id="awesome-gamemaker"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Made with GameMaker](https://img.shields.io/badge/Made%20with-GameMaker-000000.svg?style=flat&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAZlBMVEX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2BrG8stAAAAIXRSTlMABg0OFBkfcn1%2Bf4CBgoOFhoeIiouWmNDa5ebp8PX2%2B%2F6o6Vq%2BAAAAY0lEQVR42k2OWQ6AIAwFn%2BIOioobrnD%2FS4o0EeanmQxNAdErRFTWtsFq6%2BiiZozz0CSnTjYBwo0RkF8DWDLf51Ni9K%2FYdq0Fy3KAfzk97M7goK1F%2F4rGH9Kk1OlboQtEDIrmC%2BU3CVxTr%2FRMAAAAAElFTkSuQmCC)](https://gamemaker.io) [![Links](https://github.com/bytecauldron/awesome-gamemaker/actions/workflows/links.yml/badge.svg)](https://github.com/bytecauldron/awesome-gamemaker/actions/workflows/links.yml)
-
-> GameMaker向けの優れたライブラリ、スニペット、ガイド、プロジェクトを厳選したリストです。😎
-
-[GameMaker](https://gamemaker.io/)はYoYo Gamesが提供する使いやすいクロスプラットフォームゲームエンジンです。初心者から上級者まで、デスクトップ、HTML5、コンソール向けの2D・3Dゲームを制作できます。
-
-GameMakerで制作できるゲームの例は[こちらのリスト](https://steamdb.info/tech/Engine/GameMaker/)を参照してください。
+GameMakerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

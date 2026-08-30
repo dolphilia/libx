@@ -1,19 +1,13 @@
 ---
-title: "mark-rushakoff/awesome-influxdb"
-description: "mark-rushakoff/awesome-influxdb の正規スナップショット"
+title: "Awesome influxdb"
+description: "influxdbを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mark-rushakoff-awesome-influxdb-readme-md"
 ---
 
-<a id="awesome-influxdb"></a>
-# Awesome InfluxDB [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome influxdb
 
-[InfluxDB](https://www.influxdata.com/)に関連する優れたプロジェクト、ライブラリ、ツールなどを厳選したリストです。
-このリストはInfluxDB 1.0以降をサポートするライブラリやツールを中心に扱います。
+influxdbを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-このリストを改善したいですか？
-[貢献方法](https://github.com/mark-rushakoff/awesome-influxdb/blob/7e22981080cb08302ed3da861d6b12ec31aec88f/CONTRIBUTING.md)を確認して、プルリクエストを作成してください。
-
-<a id="reference-material"></a>
 ## 参考資料
 
 このリストに適した有用なブログ記事、講演、スライドなどをご存じであれば、プルリクエストを作成してください。

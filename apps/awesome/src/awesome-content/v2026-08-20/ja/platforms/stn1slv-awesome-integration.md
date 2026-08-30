@@ -1,14 +1,12 @@
 ---
-title: "stn1slv/awesome-integration"
-description: "システム統合の製品、パターン、API規格、プロトコルを分類した定本スナップショット"
+title: "Awesome Integration"
+description: "Integrationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-stn1slv-awesome-integration-readme-md"
 ---
 
-# システム統合のAwesomeリスト <a id="awesome-integration"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Integration
 
-> システム統合のソフトウェア、パターン、資料を厳選したリストです。
-
-システム統合とは、異なるITシステム（コンポーネント）を接続し、全体として機能的に協調させるプロセスです。
+Integrationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 - [プロジェクト](#projects)

@@ -1,14 +1,12 @@
 ---
-title: "mxschmitt/awesome-playwright"
-description: "mxschmitt/awesome-playwright の正規スナップショット"
+title: "Awesome Playwright"
+description: "Playwrightを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mxschmitt-awesome-playwright-readme-md"
 ---
 
-# Awesome Playwright [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Playwright
 
-> Playwright を使う優れたツール、ユーティリティ、プロジェクトのキュレーション済みリスト。
-
-[Playwright](https://github.com/microsoft/playwright)は Web テスト・自動化のフレームワークです。単一 API で Chromium、Firefox、WebKit をテストできます。Node.js、Python、.NET、Java で利用できます。
+Playwrightを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

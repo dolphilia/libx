@@ -1,12 +1,12 @@
 ---
-title: "Codepoints/awesome-codepoints"
-description: "Codepoints/awesome-codepoints の定本スナップショット"
+title: "Awesome Code Points"
+description: "Code Pointsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Codepoints-awesome-codepoints-readme-md"
 ---
 
-# Awesome Code Points [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Code Points
 
-Unicodeの文字のうち、興味深い（そしておそらく広くは知られていない）特徴を持つ、あるいは別の意味で素晴らしいものを厳選した一覧です。
+Code Pointsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

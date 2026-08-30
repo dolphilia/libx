@@ -1,15 +1,12 @@
 ---
-title: "javierluraschi/awesome-dataviz"
-description: "Canonical snapshot of javierluraschi/awesome-dataviz"
+title: "Awesome Dataviz"
+description: "A curated collection of resources and projects focused on Dataviz."
 licenseSource: "github-javierluraschi-awesome-dataviz-readme-md"
 ---
 
 # Awesome Dataviz
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![Test](https://github.com/javierluraschi/awesome-dataviz/actions/workflows/main.yaml/badge.svg)
 
-
-A curated list of awesome **open-source** data visualizations frameworks, libraries and software. Inspired by [awesome-python](https://github.com/vinta/awesome-python) and originally created by [fasouto](https://github.com/fasouto).
-
+A curated collection of resources and projects focused on Dataviz.
 
 ## Contents
 - [Awesome dataviz](#awesome-dataviz)

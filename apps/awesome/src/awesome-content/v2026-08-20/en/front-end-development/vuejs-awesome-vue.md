@@ -1,15 +1,12 @@
 ---
-title: "vuejs/awesome-vue"
-description: "Canonical snapshot of vuejs/awesome-vue"
+title: "Awesome logo of vue-awesome repository"
+description: "A curated collection of resources and projects focused on logo of vue-awesome repository."
 licenseSource: "github-vuejs-awesome-vue-readme-md"
 ---
 
-Resource from plugin:github:github at repo://vuejs/awesome-vue/sha/14fa265df1bd0a3d78fca341a9739a42bf6cd95d/contents/README.md] <p align="center">
-  <br>
-  <img width="400" src="./assets/logo.svg" alt="logo of vue-awesome repository">
-  <br>
-  <br>
-</p>
+# Awesome logo of vue-awesome repository
+
+A curated collection of resources and projects focused on logo of vue-awesome repository.
 
 ## Awesome Vue.js [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@main/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/vuejs/awesome-vue)
 

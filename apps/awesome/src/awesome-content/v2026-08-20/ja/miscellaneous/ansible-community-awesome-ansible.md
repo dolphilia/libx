@@ -1,21 +1,12 @@
 ---
-title: "ansible-community/awesome-ansible"
-description: "ansible-community/awesome-ansible の正規スナップショット"
+title: "Awesome Ansible"
+description: "Ansibleを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ansible-community-awesome-ansible-readme-md"
 ---
 
-# Awesome Ansible [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Ansible
 
-[<img src="ansible_logo.svg" align="right" width="90">](https://www.ansible.com/)
-
-これは、優れたAnsibleリソース、ツール、Role、チュートリアル、その他の関連情報を共同でキュレーションするコミュニティリストです。
-
-[Ansible](https://www.ansible.com/)はPythonで書かれたオープンソースツールキットであり、設定管理、アプリケーションデプロイ、継続的デリバリー、ITインフラ自動化、一般的な自動化に使用されます。
-
-:warning: Before editing the list to add your project, take a look at the [Ansible ecosystem project development resources](https://docs.ansible.com/ansible/devel/community/ecosystem_project_resources.html). Let's make sure our users, contributors, and maintainers have the best possible experience!
-
-
-
+Ansibleを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

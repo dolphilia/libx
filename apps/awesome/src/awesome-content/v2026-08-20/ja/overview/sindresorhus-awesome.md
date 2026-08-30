@@ -1,12 +1,12 @@
 ---
-title: "sindresorhus/awesome"
-description: "技術・科学・業務・文化のAwesomeリスト群を分野別に整理した定本スナップショット"
+title: "Awesomeリスト"
+description: "技術、科学、ビジネス、文化など、幅広い分野のAwesomeリストを集めたディレクトリです。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesomeリスト
 
-技術、科学、ビジネス、文化など、幅広い分野のAwesomeリストを集めたディレクトリです。このスナップショットでは一覧を分野別に整理し、収録済みのリストからlibx内の対応ページへ移動できます。
+技術、科学、ビジネス、文化など、幅広い分野のAwesomeリストを集めたディレクトリです。
 
 ## 目次 <a id="contents"></a>
 

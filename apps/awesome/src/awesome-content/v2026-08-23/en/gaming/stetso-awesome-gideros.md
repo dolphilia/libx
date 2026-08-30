@@ -1,18 +1,12 @@
 ---
-title: "stetso/awesome-gideros"
-description: "Canonical snapshot of stetso/awesome-gideros"
+title: "Awesome Gideros"
+description: "A curated collection of resources and projects focused on Gideros."
 licenseSource: "github-stetso-awesome-gideros-readme-md"
 ---
 
-# Awesome Gideros [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Gideros
 
-<h1 align="center">
-	<a href="http://giderosmobile.com"><img width="200" src="https://raw.githubusercontent.com/stetso/awesome-gideros/4fa4266feca39bdf4eb9c741f0948622e222b62a/gideros_logo.png" alt="Awesome Gideros"></a>
-	<br>
-	<br>
-</h1>
-
-A curated list of awesome resources for the [Gideros Game Development Framework](http://giderosmobile.com/) that allows you to easily create games and apps for Android, iOS, HTML5, WinRT and Desktop (Windows, OSX). Please feel free to contribute to the list by making a pull request.
+A curated collection of resources and projects focused on Gideros.
 
 ## Contents
 

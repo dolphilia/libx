@@ -1,18 +1,13 @@
 ---
-title: "yenchenlin/awesome-watchos"
-description: "yenchenlin/awesome-watchos の正規スナップショット"
+title: "Awesome Watchos"
+description: "Watchosを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-yenchenlin-awesome-watchos-readme-md"
 ---
 
-<img src="https://github.com/yenchenlin1994/awesome-watchos/blob/master/resources/title.png" width="500">
-=========================
+# Awesome Watchos
 
-# 非推奨！作者の注力分野が変わったため、このリストは今後更新されません。
+Watchosを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
-=========================
-[![ビルド状態](https://travis-ci.org/yenchenlin1994/awesome-watchos.svg?branch=master)](https://travis-ci.org/yenchenlin1994/awesome-watchos)
-
-watchOS の優れたフレームワーク、ライブラリ、サンプルアプリを集めたリストです。
 ### 目次
 - [はじめに](#getting-started)
 - [ライブラリとフレームワーク](#libraries-and-frameworks)

@@ -1,21 +1,12 @@
 ---
-title: "brootware/awesome-cyber-security-university"
-description: "実践型サイバーセキュリティ教材とレッド・ブルーチーム学習経路の定本スナップショット"
+title: "Awesome Cyber Security University"
+description: "Cyber Security Universityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-brootware-awesome-cyber-security-university-readme-md"
 ---
 
-# サイバーセキュリティ大学のAwesomeリスト <a id="awesome-cyber-security-university"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Cyber Security University
 
-> 実践を通じた学習に重点を置く、優れた無料教材の厳選リストです。
-
-<div align="center">
-<a href="https://brootware.github.io/awesome-cyber-security-university/"><img src="assets/purpleteam.png" width="250"/></a>
-<br/>
-<i>教育は無料であるべきだからです。</i>
-<br/>
-
-<a href="https://brootware.github.io/awesome-cyber-security-university/"><img src="https://vbr.nathanchung.dev/badge?page_id=brootware.cyber-security-university&right_color=blue" /></a>
-</div>
+Cyber Security Universityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

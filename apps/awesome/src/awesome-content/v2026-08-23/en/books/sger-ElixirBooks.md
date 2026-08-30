@@ -1,10 +1,13 @@
 ---
-title: "sger/ElixirBooks"
-description: "Canonical snapshot of sger/ElixirBooks"
+title: "Awesome Elixir Books"
+description: "A curated collection of resources and projects focused on Elixir Books."
 licenseSource: "github-sger-ElixirBooks-readme-md"
 ---
 
-# Awesome Elixir Books [![Build Status](https://github.com/sger/ElixirBooks/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/sger/ElixirBooks/actions/workflows/main.yml) [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Elixir Books
+
+A curated collection of resources and projects focused on Elixir Books.
+
 Contents
 ====
 * [Books](#books)

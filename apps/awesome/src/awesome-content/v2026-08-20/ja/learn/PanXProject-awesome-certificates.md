@@ -1,88 +1,12 @@
 ---
-title: "PanXProject/awesome-certificates"
-description: "無料で修了証・デジタルバッジを取得できる講座を分野別に整理した定本スナップショット"
+title: "Awesome Certificates"
+description: "Certificatesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-PanXProject-awesome-certificates-readme-md"
 ---
 
-<img alt="awesome-certificates.png" src="https://github.com/PanXProject/awesome-certificates/blob/main/media/awesome-certificates.png?raw=true" data-hpc="true">
+# Awesome Certificates
 
-<br/><br/>
-
-<hr/>
-
-
-<div align="center">
-  
-<br/>
-
-<sub>この資料はコントリビューターと次のスポンサーの支援により提供されています。</sub>
-
-<br/><br/>
-
-<a href="https://genbounty.com?utm_source=toolseekr&utm_medium=sponsor&utm_campaign=q1_2025&utm_content=awesome_certificates" target="_blank">
-<img src="https://raw.githubusercontent.com/PanXProject/awesome-certificates/main/media/sponsors/genbounty.png" width="180px" alt="GenBounty Logo"/><br/>
-	<strong>GenBounty</strong><br/><br/>
-  EU AI Act準拠機能を備えたAI製品安全性テストプラットフォーム。
-</a>
-
-<br/><br/>
-<sub>• • •</sub>
-<br/><br/>
-
-<a href="https://promoat.ai?utm_source=saas_directory&utm_medium=listing&utm_campaign=beta_launch_q1&utm_content=awesome_certificates" target="_blank">
-<img src="https://raw.githubusercontent.com/PanXProject/awesome-certificates/main/media/sponsors/promoat.png" width="180px" alt="ProMoat Logo"/><br/>
-	<strong>ProMoat</strong><br/><br/>
-  自分のAIクローン動画を3分で生成します。
-</a>
-
-<br/><br/>
-<sub>• • •</sub>
-<br/><br/>
-
-<sub><a href="https://toolseekr.com/sponsor">スポンサーになる</a></sub>
-
-<br/>
-
-</div>
-
-<hr/>
-
-<br/>
-
-# 証明書付き講座のAwesomeリスト <a id="awesome-certificates"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.com/invite/3kSS9dvnPz)
-
-
-[コントリビューションガイドライン](https://github.com/PanXProject/awesome-certificates/blob/main/CONTRIBUTING.md) /
-[講座／証明書を追加](https://github.com/PanXProject/awesome-certificates/compare)
-
-修了時に証明書またはデジタルバッジを取得できる、IT、計算機科学、デザイン、ビジネス講座を厳選したリストです。
-
-掲載講座の受講、バッジ、証明書はいずれも無料です。
-
-一覧は次の項目で構成されます。
-<ol>
-	<li>講座／証明書名</li>
-	<li>講座提供者／証明書発行者名</li>
-	<li>難易度（初級、中級、プロフェッショナル）</li>
-	<li>講座／証明書の所要時間</li>
-	<li>報酬（🏅＝デジタルバッジ、🏆＝修了証明書）</li>
-</ol>
-
-<b>この一覧へ貢献しますか？</b>
-<br>
-<a href="https://github.com/PanXProject/awesome-certificates/fork" target="_blank" rel="noopener noreferrer">リポジトリ</a>をフォークし、`readme.md`を変更して<a href="https://github.com/PanXProject/awesome-certificates/compare" target="_blank" rel="noopener noreferrer">新しいIssue</a>を開きます。<a href="https://github.com/PanXProject/awesome-certificates/blob/main/pull_request_template.md" target="_blank" rel="noopener noreferrer">コントリビューション</a>と<a href="https://github.com/PanXProject/awesome-certificates/blob/main/pull_request_template.md" target="_blank" rel="noopener noreferrer">プルリクエスト</a>のガイドラインを確認してください。
-
-<b>一覧の改善案や追加してほしい機能がありますか？</b>
-<br>
-<a href="https://github.com/PanXProject/awesome-certificates/issues/new?assignees=&labels=&template=feature_request.md&title=%5BFEATURE%5D" target="_blank" rel="noopener noreferrer">こちら</a>で新しいIssueを開いてください。可能な限り対応します。
-
-<b>探している証明書が見つかりませんか？</b>
-<br>
-<a href="https://github.com/PanXProject/awesome-certificates/issues/new?assignees=&labels=&template=certificate-request.md&title=%5BCERTIFICATE%5D" target="_blank" rel="noopener noreferrer">こちら</a>から依頼してください。該当する証明書を探します。
-
-<b>誤りがありますか？</b>
-<br>
-<a href="https://github.com/PanXProject/awesome-certificates/issues/new?assignees=&labels=&template=bug_report.md&title=%5BBUG%5D" target="_blank" rel="noopener noreferrer">こちら</a>から報告してください。
+Certificatesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

@@ -1,18 +1,12 @@
 ---
-title: "44bits/awesome-opensource-documents"
-description: "オープンソースで公開されている技術書、講義資料、文書、教材集"
+title: "Awesome Open Source Documents"
+description: "Open Source Documentsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-44bits-awesome-opensource-documents-readme-md"
 ---
 
 # Awesome Open Source Documents
 
-これは無料のプログラミング書のリストではありません。これは、読み、使用、変更、翻訳、再配布、さらにはその同じライセンスの下で再作成できるオープンソースまたはオープンソースライセンスに基づくドキュメント、ガイド、書籍の厳選されたリストです。
-
-## 文書テンプレート {#document-template}
-
-```
-[TITLE][repository-url] by AUTHOR ([SITE][site-url], LICENSE) - SHORT DESCRIPTION
-```
+Open Source Documentsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 {#table-of-contents}
 

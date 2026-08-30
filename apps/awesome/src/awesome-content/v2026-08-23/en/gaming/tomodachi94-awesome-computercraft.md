@@ -1,29 +1,12 @@
 ---
-title: "tomodachi94/awesome-computercraft"
-description: "Canonical snapshot of tomodachi94/awesome-computercraft"
+title: "Awesome ComputerCraft"
+description: "A curated collection of resources and projects focused on ComputerCraft."
 licenseSource: "github-tomodachi94-awesome-computercraft-readme-md"
 ---
 
+# Awesome ComputerCraft
 
-
-
-
-# Awesome ComputerCraft [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-[<img src="https://raw.githubusercontent.com/tomodachi94/awesome-computercraft/bdefad4c76cb2be7dd88389a67045dab5c60b5d8/assets/cc-tweaked-logo.png" align="right" width="100">](https://computercraft.cc)
-
-> Useful programs, libraries, literature, and mods for [ComputerCraft](https://computercraft.info) and [its forks](https://computercraft.cc).
-
-**ComputerCraft** is a mod for Minecraft which adds computers which are programmable with the Lua programming language. **ComputerCraft: Tweaked** is a fork of the mod for newer Minecraft versions.
-
-This project lives [on GitHub](https://github.com/tomodachi94/awesome-computercraft) and might not render correctly on third-party websites.
-
-If you think something should be added to the list, please [reach out](https://github.com/tomodachi94/awesome-computercraft/issues/new/choose).
-
-If you want to contribute, see [CONTRIBUTING.md](https://github.com/tomodachi94/awesome-computercraft/blob/bdefad4c76cb2be7dd88389a67045dab5c60b5d8/CONTRIBUTING.md).
-If you have other questions, see the [FAQ](https://github.com/tomodachi94/awesome-computercraft/blob/bdefad4c76cb2be7dd88389a67045dab5c60b5d8/FAQ.md).
-
-A note on abbreviations: `CC` is ComputerCraft, `CC:T` is ComputerCraft: Tweaked, and `CC:R` is ComputerCraft: Restitched.
+A curated collection of resources and projects focused on ComputerCraft.
 
 ## Contents
 

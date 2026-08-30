@@ -1,15 +1,12 @@
 ---
-title: "mjhea0/awesome-flask"
-description: "mjhea0/awesome-flask の定本スナップショット"
+title: "Awesome Flask"
+description: "Flaskを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mjhea0-awesome-flask-readme-md"
 ---
 
-# Awesome Flask [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Flask
 
-> Flask に関する素晴らしいものを集めたキュレーションリスト。
-
-
-[Flask](https://flask.palletsprojects.com/) は Python で書かれた軽量な WSGI Web アプリケーションフレームワークです。
+Flaskを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -374,4 +371,3 @@ Compute:
 <br>
 
 > **NOTE**: This project is powered by **[TestDriven.io](https://testdriven.io/)**. Please support this open source project by purchasing one of our Flask courses. Learn how to build, test, and deploy microservices powered by Docker, Flask, and React!
-

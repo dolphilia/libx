@@ -1,16 +1,12 @@
 ---
-title: "ebraminio/awesome-qsharp"
-description: "Canonical snapshot of ebraminio/awesome-qsharp"
+title: "Awesome Q#"
+description: "A curated collection of resources and projects focused on Q#."
 licenseSource: "github-ebraminio-awesome-qsharp-readme-md"
 ---
 
-# Awesome Q# [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Q#
 
-> [Q#](https://docs.microsoft.com/en-us/quantum/) is a domain-specific programming language used for expressing quantum algorithms. It was initially released to the public by Microsoft as part of the Quantum Development Kit. –[Wikipedia](https://en.wikipedia.org/wiki/Q_Sharp)
-
-A list of Q# code and resources.
-
-Feel free to improve this list using GitHub pull request mechanism, see [CONTRIBUTING](https://github.com/ebraminio/awesome-qsharp/blob/10a6e8507761627704b5e77c24ec10e7eebc2b14/contributing.md) for more information.
+A curated collection of resources and projects focused on Q#.
 
 ## Contents
 - [Official Resources](#official-resources)

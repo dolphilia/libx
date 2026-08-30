@@ -1,18 +1,12 @@
 ---
-title: "lauthieb/awesome-storybook"
-description: "lauthieb/awesome-storybook の定本スナップショット"
+title: "Awesome Storybook"
+description: "Storybookを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lauthieb-awesome-storybook-readme-md"
 ---
 
-# Awesome Storybook [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Storybook
 
-[<img src="storybook-logo.svg" align="right" width="80">](https://storybook.js.org)
-
-> Storybook のエコシステムに関する優れたリソースの厳選リスト :art:
-
-[Storybook](https://storybook.js.org) は、UI コンポーネントをより速く、より簡単に構築するためのフロントエンドツールです。
-
-貢献を歓迎します。プルリクエストでリンクを追加するか、議論を始めるための issue を作成してください。
+Storybookを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

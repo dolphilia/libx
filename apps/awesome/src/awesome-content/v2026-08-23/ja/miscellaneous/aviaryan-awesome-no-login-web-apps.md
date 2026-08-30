@@ -1,33 +1,13 @@
 ---
-title: "aviaryan/awesome-no-login-web-apps"
-description: "ログインせずに利用できる優れたウェブアプリの厳選リスト"
+title: "Awesome Web Apps (that work without login)"
+description: "Web Apps (that work without login)を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-aviaryan-awesome-no-login-web-apps-readme-md"
 ---
 
-<a id="awesome-web-apps-that-work-without-login"></a>
-# Awesome Web Apps（ログイン不要で使えるウェブアプリ）
+# Awesome Web Apps (that work without login)
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Mentioned in Awesome](https://awesome.re/mentioned-badge.svg)](https://awesome.re)
-[![Contributors needed](https://img.shields.io/badge/contributors-needed-yellow.svg)](https://github.com/aviaryan/awesome-no-login-web-apps/blob/0d6020e95723429aba75aee880605b74dc6e8ef3/CONTRIBUTING.md)
-[![Join the chat at https://gitter.im/aviaryan/awesome-no-login-web-apps](https://badges.gitter.im/aviaryan/awesome-no-login-web-apps.svg)](https://gitter.im/aviaryan/awesome-no-login-web-apps?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Open Source Helpers](https://www.codetriage.com/aviaryan/awesome-no-login-web-apps/badges/users.svg)](https://www.codetriage.com/aviaryan/awesome-no-login-web-apps)
+Web Apps (that work without login)を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-アカウント作成を求められずに利用できる、優れたウェブアプリの厳選リストです。
-
-<a id="inspiration"></a>
-#### 着想
-
-何をするにもユーザーアカウントを作り、ソフトウェアをインストールしなければならない状況から世界を救うためのリストです。
-
-<a id="some-pointers"></a>
-#### 注意点
-
-* このリストのウェブアプリは、主要機能の大半をログインなしで利用できます。適切な代替がない場合に限り、登録が必要なサイトも掲載し、項目に `[Account]` を付けています。
-* 多くのアプリには履歴や進捗を保存するアカウント機能がありますが、主要機能の利用にアカウントは必要ありません。
-
-
-<a id="contents"></a>
 ## 目次
 
 * [Audio and Video](#audio-and-video)

@@ -14,15 +14,19 @@ import {
 
 const args = process.argv.slice(2);
 const check = args.includes('--check');
-const historicalCommit = optionValue(args, '--historical-commit', 'e3c18a8a545bcee1cfcb4c581fb718545effedd8');
-const expansionCommit = optionValue(args, '--expansion-commit', 'd851c454eb65b5d199564b3d8112658cb6416855');
+const historicalCommit = optionValue(
+  args,
+  '--historical-commit',
+  'e3c18a8a545bcee1cfcb4c581fb718545effedd8'
+);
+const expansionCommit = optionValue(
+  args,
+  '--expansion-commit',
+  'd851c454eb65b5d199564b3d8112658cb6416855'
+);
 const candidateVersion = optionValue(args, '--snapshot', 'v2026-08-23');
 const contentBase = 'apps/awesome/src/awesome-content/v2026-08-20';
-const outputPath = path.join(
-  notesRootDir,
-  'migration',
-  'CURRENT_STATE_INVENTORY.json'
-);
+const outputPath = path.join(notesRootDir, 'migration', 'CURRENT_STATE_INVENTORY.json');
 
 function git(args) {
   return execFileSync('git', args, { cwd: rootDir, encoding: 'utf8' }).trimEnd();
@@ -101,9 +105,7 @@ const historicalLockText = git([
   `${historicalCommit}:docs/notes/document-import/awesome/SOURCES.lock.json`,
 ]);
 const historicalLock = JSON.parse(historicalLockText);
-const worktree = git(['status', '--porcelain=v1'])
-  .split('\n')
-  .filter(Boolean);
+const worktree = git(['status', '--porcelain=v1']).split('\n').filter(Boolean);
 
 const inventory = {
   schemaVersion: 1,

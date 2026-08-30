@@ -1,21 +1,12 @@
 ---
-title: "kyleterry/awesome-radio"
-description: "Canonical snapshot of kyleterry/awesome-radio"
+title: "Awesome Radio"
+description: "A curated collection of resources and projects focused on Radio."
 licenseSource: "github-kyleterry-awesome-radio-readme-md"
 ---
 
-# Awesome Radio [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Radio
 
-A curated list of awesome radio resources. Inspired by awesome-*.
-
-I recently pulled out my CB radio and installed it in my truck. This inspired me
-to create an open source repository of all the radio related resources I found
-helpful and my notes on the subject.
-
-This project is aimed at hackers who enjoy all aspects of radio communication.
-While a lot of this technology isn't usable by citizens and is heavily regulated
-by the FCC, just knowing anything about it is special. I've been interested in
-learning the ins and outs of radio, as well as hearing stories, new and old.
+A curated collection of resources and projects focused on Radio.
 
 ## General
 

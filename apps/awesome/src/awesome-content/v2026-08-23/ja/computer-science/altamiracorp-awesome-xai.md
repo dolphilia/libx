@@ -1,27 +1,12 @@
 ---
-title: "altamiracorp/awesome-xai"
-description: "altamiracorp/awesome-xai の正規スナップショット"
+title: "Awesome XAI"
+description: "XAIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-altamiracorp-awesome-xai-readme-md"
 ---
 
-<div align="center">
+# Awesome XAI
 
-
-
-# Awesome XAI [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-
-XAIと解釈可能な機械学習に関する論文、手法、批評、資料の厳選リストです。
-
-
-<img src="https://raw.githubusercontent.com/altamiracorp/awesome-xai/main/images/icon.svg" width="256" style="max-width: 25% !important"/>
-
-
-説明可能AI（XAI）は、さまざまな機械学習手法を理解しやすくすることを目指す研究分野です。
-
-</div>
-
-
+XAIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 - [論文](#papers)

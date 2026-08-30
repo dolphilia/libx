@@ -1,20 +1,13 @@
 ---
-title: "sobolevn/awesome-cryptography"
-description: "暗号理論、アルゴリズム、実装ライブラリ、ツール、学習資料集"
+title: "Awesome Cryptography"
+description: "Cryptographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sobolevn-awesome-cryptography-readme-md"
 ---
 
-# Awesome Cryptography [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Cryptography
 
-<p align="center">
-  <img src="https://github.com/sobolevn/awesome-cryptography/blob/master/awesome-crypto.png?raw=true" alt="Awesome Cryptography">
-</p>
+Cryptographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Follow us on twitter](https://img.shields.io/twitter/follow/awe_crypto_bot.svg?style=social&maxAge=0)](https://twitter.com/awe_crypto_bot)
-
-暗号技術に関するリソースとリンクの厳選リストです
-
-<a id="contents"></a>
 ## 目次
 
 

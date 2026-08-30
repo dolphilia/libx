@@ -1,47 +1,12 @@
 ---
-title: "arbox/nlp-with-ruby"
-description: "Canonical snapshot of arbox/nlp-with-ruby"
+title: "Awesome NLP with Ruby"
+description: "A curated collection of resources and projects focused on NLP with Ruby."
 licenseSource: "github-arbox-nlp-with-ruby-readme-md"
 ---
 
-<img src="header.png" align="center">
+# Awesome NLP with Ruby
 
-[![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome#readme) [![Support Me](https://img.shields.io/badge/%F0%9F%92%97-Support%20Me-blue.svg?style=flat-square)](https://www.patreon.com/arbox)
-
-[[RubyML](https://github.com/arbox/machine-learning-with-ruby) |
- [RubyDataScience](https://github.com/arbox/data-science-with-ruby) |
- [RubyInterop](https://github.com/arbox/ruby-interoperability)]
-
-
-# Awesome NLP with Ruby [<img src="ruby.jpg" align="left" width="30px" height="30px" />][ruby]
-
-> Useful resources for text processing in Ruby
-
-This curated list comprises [_awesome_](https://github.com/sindresorhus/awesome/blob/master/awesome.md)
-resources, libraries, information sources about computational processing of texts
-in human languages with the [Ruby programming language](https://github.com/arbox/nlp-with-ruby/blob/44db8a3e4c74c2a6fdcc6bef6bd14ed021b7bd24/ruby).
-That field is often referred to as
-[NLP](https://en.wikipedia.org/wiki/Natural_language_processing),
-[Computational Linguistics](https://en.wikipedia.org/wiki/Computational_linguistics),
-[HLT](https://en.wikipedia.org/wiki/Language_technology) (Human Language Technology)
-and can be brought in conjunction with
-[Artificial Intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence),
-[Machine Learning](https://en.wikipedia.org/wiki/Machine_learning),
-[Information Retrieval](https://en.wikipedia.org/wiki/Information_retrieval),
-[Text Mining](https://en.wikipedia.org/wiki/Text_mining),
-[Knowledge Extraction](https://en.wikipedia.org/wiki/Knowledge_extraction)
-and other related disciplines.
-
-This list comes from our day to day work on Language Models and NLP Tools.
-Read [why](https://github.com/arbox/nlp-with-ruby/blob/44db8a3e4c74c2a6fdcc6bef6bd14ed021b7bd24/motivation.md) this list is awesome. Our [FAQ](https://github.com/arbox/nlp-with-ruby/blob/44db8a3e4c74c2a6fdcc6bef6bd14ed021b7bd24/FAQ.md) describes the
-important decisions and useful answers you may be interested in.
-
-:sparkles: Every [contribution](#contributing) is welcome! Add links through pull
-requests or create an issue to start a discussion.
-
-Follow us on [Twitter](https://twitter.com/NonWebRuby)
-and please spread the word using the `#RubyNLP` hash tag!
-
+A curated collection of resources and projects focused on NLP with Ruby.
 
 ## Contents
 

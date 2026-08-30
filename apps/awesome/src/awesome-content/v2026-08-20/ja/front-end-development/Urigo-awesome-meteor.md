@@ -1,63 +1,12 @@
 ---
-title: "Urigo/awesome-meteor"
-description: "Urigo/awesome-meteor の定本スナップショット"
+title: "Awesome Meteor"
+description: "Meteorを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-Urigo-awesome-meteor-readme-md"
 ---
 
-# Awesome Meteor [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Meteor
 
-優れた Meteor パッケージ、ライブラリ、ソフトウェアを集めたキュレーションリスト。
-
-Meteor の公式リソースページは [here](https://www.meteor.com/tools/resources)
-
-- [Awesome Meteor](#awesome-meteor)
-  - [Getting Started](#getting-started)
-  - [Collections](#collections)
-  - [Forms and Templates](#forms-and-templates)
-  - [Users and Authentication](#users-and-authentication)
-  - [REST](#rest)
-  - [Files](#files)
-  - [Routers](#routers)
-  - [Debugging Tools](#debugging-tools)
-  - [Editor Plugins](#editor-plugins)
-  - [Search, sort and paginate](#search-sort-paginate)
-  - [Mobile](#mobile)
-  - [Offline](#offline)
-  - [Testing](#testing)
-  - [SEO](#seo)
-  - [Data Visualization](#data-visualization)
-  - [Analytics](#analytics)
-  - [Cron Jobs](#cron-jobs)
-  - [Administration](#administration)
-  - [Performance](#performance)
-  - [Monitoring](#monitoring)
-  - [Deployment](#deployment)
-    - [Docker Images](#docker-images)
-  - [Front End Frameworks](#front-end-frameworks)
-  - [Alternative Databases](#alternative-databases)
-  - [Boilerplate](#boilerplate)
-  - [Open Source Apps](#open-source-apps)
-  - [Internationalization](#internationalization)
-  - [Scaffolding](#scaffolding)
-  - [Tooling](#tooling)
-- [Resources](#resources)
-  - [Books](#books)
-  - [Courses](#courses)
-    - [Free](#free)
-    - [Paid](#paid)
-  - [Tutorials](#tutorials)
-  - [Blogs](#blogs)
-  - [Websites](#websites)
-  - [Q&A](#q&a)
-  - [Community Newsletters](#community-newsletters)	
-  - [Social](#social)
-  - [Work Opportunities](#work-opportunities)
-  - [Related](#related)
-- [Built With Meteor](#built-with-meteor)
-- [Deprecated](#deprecated)
-- [Contributing](#contributing)
-
----
+Meteorを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 ## はじめに
 
@@ -428,4 +377,3 @@ _この節は現在の Meteor バージョンと互換性がなくなったリ�
 Your contributions are always welcome!
 
 Thank you @gillesfabio for creating this repo!
-

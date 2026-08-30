@@ -1,22 +1,12 @@
 ---
-title: "seed-rs/awesome-seed-rs"
-description: "Canonical snapshot of seed-rs/awesome-seed-rs"
+title: "Awesome Seed RS"
+description: "A curated collection of resources and projects focused on Seed RS."
 licenseSource: "github-seed-rs-awesome-seed-rs-readme-md"
 ---
 
+# Awesome Seed RS
 
-
-# Awesome Seed RS [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/seed-rs/seed-rs.org/81ed1acc77062ede3295683f21f2d39611843192/seed_branding/seed_logo.min.svg" width="256" title="Seed logo">
-</p>
-
-> A curated list of awesome things related to Seed
-
-Seed is an open-source Rust framework for creating fast and reliable web apps running in WebAssembly.
-
-Contributions welcome. Add links through pull requests or create an issue to start a discussion.
+A curated collection of resources and projects focused on Seed RS.
 
 ## Contents
 

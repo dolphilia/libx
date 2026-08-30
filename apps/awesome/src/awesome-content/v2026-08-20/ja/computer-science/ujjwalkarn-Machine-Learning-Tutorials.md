@@ -1,20 +1,12 @@
 ---
-title: "ujjwalkarn/Machine-Learning-Tutorials"
-description: "機械学習・深層学習の分野別チュートリアルと学習資料をまとめた定本スナップショット"
+title: "Awesome Machine Learning & Deep Learning Tutorials"
+description: "Machine Learning & Deep Learning Tutorialsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ujjwalkarn-Machine-Learning-Tutorials-readme-md"
 ---
 
+# Awesome Machine Learning & Deep Learning Tutorials
 
-# 機械学習・深層学習チュートリアル [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-- このリポジトリは、機械学習・深層学習のチュートリアル、記事、その他の資料を分野別に厳選しています。ほかのAwesomeリストは[こちら](https://github.com/sindresorhus/awesome)。
-
-- このリストへ貢献する場合は、[貢献ガイドライン](https://github.com/ujjwalkarn/Machine-Learning-Tutorials/blob/master/contributing.md)を読んでください。
-
-- [データサイエンス・NLP・機械学習向けRチュートリアルの厳選リスト](https://github.com/ujjwalkarn/DataScienceR)。
-
-- [データサイエンス・NLP・機械学習向けPythonチュートリアルの厳選リスト](https://github.com/ujjwalkarn/DataSciencePython)。
-
+Machine Learning & Deep Learning Tutorialsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [入門](#general)

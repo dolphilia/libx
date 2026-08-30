@@ -1,19 +1,12 @@
 ---
-title: "nekofar/awesome-slim"
-description: "nekofar/awesome-slim の定本スナップショット"
+title: "Awesome Slim"
+description: "Slimを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-nekofar-awesome-slim-readme-md"
 ---
 
-# Awesome Slim [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Slim
 
-
-[<img src="assets/slim-logo.png" align="right" width="260" alt="Slim Framework">](https://www.slimframework.com)
-
-
-> 優れた[Slim](https://www.slimframework.com)フレームワークパッケージとリソースの厳選リスト。
-
-
-[Slim](https://www.slimframework.com) は、シンプルながら強力なWebアプリケーションとAPIを素早く書くのに役立つPHPマイクロフレームワークです。
+Slimを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

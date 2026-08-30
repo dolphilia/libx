@@ -1,16 +1,12 @@
 ---
-title: "fregante/Awesome-WebExtensions"
-description: "Canonical snapshot of fregante/Awesome-WebExtensions"
+title: "Awesome WebExtensions"
+description: "A curated collection of resources and projects focused on WebExtensions."
 licenseSource: "github-fregante-Awesome-WebExtensions-readme-md"
 ---
 
-# Awesome WebExtensions [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome WebExtensions
 
-> A curated list of awesome resources for WebExtensions development.
-
-WebExtensions are a cross-browser system for developing browser add-ons. To a large extent the system is compatible with the extension API supported by Google Chrome. Extensions written for this browser will in most cases run in Firefox with just [a few changes](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Porting_a_Google_Chrome_extension).
-
-Follow [@fregante](https://fregante.com) for more webext-related news.
+A curated collection of resources and projects focused on WebExtensions.
 
 ## Contents
 

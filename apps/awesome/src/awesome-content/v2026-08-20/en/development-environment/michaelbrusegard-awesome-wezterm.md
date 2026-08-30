@@ -1,22 +1,12 @@
 ---
-title: "michaelbrusegard/awesome-wezterm"
-description: "Canonical snapshot of michaelbrusegard/awesome-wezterm"
+title: "Awesome WezTerm"
+description: "A curated collection of resources and projects focused on WezTerm."
 licenseSource: "github-michaelbrusegard-awesome-wezterm-readme-md"
 ---
 
+# Awesome WezTerm
 
-
-# Awesome WezTerm [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-<img src="https://raw.githubusercontent.com/wez/wezterm/main/assets/icon/wezterm-icon.svg" align="right" width="144" />
-
-> Collections of awesome WezTerm plugins. [Plugin Guide](https://github.com/wezterm/wezterm/blob/main/docs/config/plugins.md). Found something cool? Please [contribute](https://github.com/michaelbrusegard/awesome-wezterm/blob/dcf976b0298f6ac0f0a5f0c69e21ae5434fcd4e9/CONTRIBUTING.md)!
-
-[WezTerm](https://wezfurlong.org/wezterm/) is a powerful cross-platform terminal emulator and multiplexer written by [@wez](https://github.com/wez) and implemented in [Rust](https://www.rust-lang.org).
-
-To enhance your WezTerm configuration experience:
-
-- [DrKJeff16/wezterm-types](https://github.com/DrKJeff16/wezterm-types) - WezTerm type annotations that can be added as a completion source in your editor to provide code assistance when working with WezTerm's Lua API. Includes community plugins support.
+A curated collection of resources and projects focused on WezTerm.
 
 ## Contents
 

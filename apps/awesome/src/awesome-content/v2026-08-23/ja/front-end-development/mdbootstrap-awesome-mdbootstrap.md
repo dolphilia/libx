@@ -1,14 +1,12 @@
 ---
-title: "mdbootstrap/awesome-mdbootstrap"
-description: "mdbootstrap/awesome-mdbootstrap の定本スナップショット"
+title: "Awesome MDBootstrap"
+description: "MDBootstrapを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mdbootstrap-awesome-mdbootstrap-readme-md"
 ---
 
-# Awesome MDBootstrap [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) [<img src="https://mdbootstrap.com/img/Marketing/general/logo/huge/mdb.png" width="380" align="right" alt="MDBootstrap">](https://mdbootstrap.com)
+# Awesome MDBootstrap
 
-> MDBootstrapコミュニティの優れたリソースを厳選したリストです。
-
-[MDBootstrap](https://github.com/mdbootstrap/mdb-ui-kit)は、ウェブページを迅速に構築するための、洗練されたレスポンシブなページテンプレート、レイアウト、コンポーネント、ウィジェットのセットです。
+MDBootstrapを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [リソース](#resources)

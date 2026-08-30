@@ -1,34 +1,12 @@
 ---
-title: "APA-Technology-Division/urban-and-regional-planning-resources"
-description: "Canonical snapshot of APA-Technology-Division/urban-and-regional-planning-resources"
+title: "Awesome Urban & Regional Planning Resources"
+description: "A curated collection of resources and projects focused on Urban & Regional Planning Resources."
 licenseSource: "github-APA-Technology-Division-urban-and-regional-planning-resources-readme-md"
 ---
 
----
-# Urban & Regional Planning Resources [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) 
-[![GitHub stars](https://img.shields.io/github/stars/APA-Technology-Division/planning-technology-resources)](https://github.com/APA-Technology-Division/planning-technology-resources/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/APA-Technology-Division/planning-technology-resources)](https://github.com/APA-Technology-Division/planning-technology-resources)
-![GitHub contributors](https://img.shields.io/github/contributors/APA-Technology-Division/planning-technology-resources)
-![GitHub last commit](https://img.shields.io/github/last-commit/APA-Technology-Division/planning-technology-resources)
-[![GitHub license](https://img.shields.io/github/license/APA-Technology-Division/planning-technology-resources)](https://github.com/APA-Technology-Division/planning-technology-resources/blob/main/LICENSE)
+# Awesome Urban & Regional Planning Resources
 
-This repository contains a curated list of different urban & regional planning data &amp; technology resources. Those interested in the built environment are invited to review and contribute to this repository.
-
----
-#### Sponsors
-
-The Technology's Division's Resource Repository is [sponsored](https://github.com/APA-Technology-Division/urban-and-regional-planning-resources/blob/main/resources/Division_Sponsorship_Package_23.pdf) by the following companies and organizations. 
-<div style=text-align:center;>
-		<br>
-		<a href="https://www.esri.com/en-us/home">
-			<img src="https://github.com/APA-Technology-Division/urban-and-regional-planning-resources/blob/main/assets/Esri%20Logo%20PNG%20SVG%20Vector-01.png" width="160"/>
-		</a>
-    <br>
-
-</div>
-
----
-
+A curated collection of resources and projects focused on Urban & Regional Planning Resources.
 
 ## Contents
 

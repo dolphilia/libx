@@ -1,21 +1,13 @@
 ---
-title: "substrate-developer-hub/awesome-substrate"
-description: "substrate-developer-hub/awesome-substrate の正規スナップショット"
+title: "Awesome Substrate"
+description: "Substrateを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-substrate-developer-hub-awesome-substrate-readme-md"
 ---
 
-<a id="awesome-substrate"></a>
-# Awesome Substrate [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Substrate
 
-> SubstrateだけでなくPolkadotエコシステム全体を対象とする同種のリストについては、[`awesome-dot`](https://github.com/haquefardeen/awesome-dot) を参照してください。
+Substrateを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
----
-
-> Awesomeリストとは、Substrateコミュニティが選定した優れた情報をまとめたリストです。
-
-Substrateは、アップグレード可能でモジュール式かつ効率的なブロックチェーンを構築するためのフレームワークです。Substrateは [Rust](https://www.rust-lang.org/) で書かれたオープンソースライブラリで、[Parity Technologies](https://www.parity.io/) が保守しています。ソースコードは [GitHub](https://github.com/paritytech/substrate) で公開されています。
-
-<a id="contents"></a>
 ## 目次
 
 - [資料](#resources)

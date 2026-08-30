@@ -1,14 +1,12 @@
 ---
-title: "gramantin/awesome-rails"
-description: "gramantin/awesome-rails の定本スナップショット"
+title: "Awesome Rails"
+description: "Railsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-gramantin-awesome-rails-readme-md"
 ---
 
 # Awesome Rails
 
-> Ruby on Railsに関する優れた資料・プロジェクトを集めた一覧です [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome#readme)
-
-![awesome-rails](https://raw.githubusercontent.com/gramantin/awesome-rails/e1d052387f26e352373c0afe6f66b8831f599b04/.github/assets/awesome-rails.png)
+Railsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

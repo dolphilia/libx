@@ -1,18 +1,13 @@
 ---
-title: "hackerkid/Mind-Expanding-Books"
-description: "Canonical snapshot of hackerkid/Mind-Expanding-Books"
+title: "Awesome Mind Expanding Books"
+description: "A curated collection of resources and projects focused on Mind Expanding Books."
 licenseSource: "github-hackerkid-Mind-Expanding-Books-readme-md"
 ---
 
-# Mind Expanding Books
+# Awesome Mind Expanding Books
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+A curated collection of resources and projects focused on Mind Expanding Books.
 
-Looking to find a book an interesting book to read but don't know where to start? You are in the right place!
-
-See [Contributing Guidelines](https://github.com/hackerkid/Mind-Expanding-Books/blob/2844c5ad5e1f4da8a637c74503763a2cb56f5550/CONTRIBUTING.md) for details on how the books are curated.
-
-<a id="top"></a>
 ## Table of Contents
 - [Mind Expanding Books](#mind-expanding-books)
   - [Table of Contents](#table-of-contents)

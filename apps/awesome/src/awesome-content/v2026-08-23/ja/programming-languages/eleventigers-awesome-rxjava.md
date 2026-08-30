@@ -1,16 +1,12 @@
 ---
-title: "eleventigers/awesome-rxjava"
-description: "eleventigers/awesome-rxjava の正規スナップショット"
+title: "Awesome RxJava"
+description: "RxJavaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-eleventigers-awesome-rxjava-readme-md"
 ---
 
-# Awesome RxJava [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome RxJava
 
-[<img src="http://reactivex.io/assets/Rx_Logo_S.png" align="right" width="100">](http://reactivex.io/)
-
-> [RxJava](https://github.com/ReactiveX/RxJava) を使う際に役立つリソース
-
-*[awesome](https://github.com/sindresorhus/awesome) リストに着想を得ています。*
+RxJavaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## バインディング
 

@@ -1,16 +1,12 @@
 ---
-title: "drewrwilson/toolsforactivism"
-description: "drewrwilson/toolsforactivism の正規スナップショット"
+title: "Awesome Digital Tools for Activism"
+description: "Digital Tools for Activismを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-drewrwilson-toolsforactivism-readme-md"
 ---
 
-# 活動家のためのデジタルツール
+# Awesome Digital Tools for Activism
 
-![活動家のためのデジタルツール](https://raw.githubusercontent.com/drewrwilson/toolsforactivism/master/digital-tool.jpg "活動家のためのデジタルツール")
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-以下は、社会運動に役立つ優れたデジタルツールを集めたリストです。社会変革のためにキャンペーン、組織化、情報発信を行う個人、臨時グループ、正式な組織を対象としています。一部は、自分でセットアップしてホストするために技術知識が必要なオープンソースプロジェクトです。ほかには、ブラウザーで Web ページを開いて利用する SaaS ツールもあります。提案があればぜひ共有してください。
+Digital Tools for Activismを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

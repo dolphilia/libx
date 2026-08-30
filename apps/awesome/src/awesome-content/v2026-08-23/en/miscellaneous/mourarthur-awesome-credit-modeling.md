@@ -1,15 +1,12 @@
 ---
-title: "mourarthur/awesome-credit-modeling"
-description: "Canonical snapshot of mourarthur/awesome-credit-modeling"
+title: "Awesome Credit Modeling"
+description: "A curated collection of resources and projects focused on Credit Modeling."
 licenseSource: "github-mourarthur-awesome-credit-modeling-readme-md"
 ---
 
-# Awesome Credit Modeling [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+# Awesome Credit Modeling
 
-> A growing collection of awesome papers, articles and various resources on credit scoring and credit risk modeling.
-
-Credit scoring is the term used to describe formal statistical methods used for classifying applicants for credit into risk classes. Lenders use such classifications to assess an applicant's creditworthiness and probability of default.
+A curated collection of resources and projects focused on Credit Modeling.
 
 ## Contents
 

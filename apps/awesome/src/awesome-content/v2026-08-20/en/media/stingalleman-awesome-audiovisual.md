@@ -1,14 +1,12 @@
 ---
-title: "stingalleman/awesome-audiovisual"
-description: "Canonical snapshot of stingalleman/awesome-audiovisual"
+title: "Awesome Audiovisual"
+description: "A curated collection of resources and projects focused on Audiovisual."
 licenseSource: "github-stingalleman-awesome-audiovisual-readme-md"
 ---
 
-# Awesome Audiovisual [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Audiovisual
 
-> Curated list of software, libraries and resources for lighting, video and audio professionals and hobbyists.
-
-Want to add something? Just make a pull request, but be sure to follow the [contributing guidelines](https://github.com/stingalleman/awesome-audiovisual/blob/84cb175d4d7d54149fbc42932e6b243a603b47d3/contributing.md)! Question? Ask it in the [General Discussion issue](https://github.com/stingalleman/awesome-audiovisual/issues/2).
+A curated collection of resources and projects focused on Audiovisual.
 
 ## Contents
 

@@ -1,21 +1,12 @@
 ---
-title: "git-tips/tips"
-description: "Gitの日常操作、履歴、ブランチ、設定、取り消しコマンドをまとめた定本スナップショット"
+title: "Awesome Tips"
+description: "Tipsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-git-tips-tips-readme-md"
 ---
 
-## git-tips
-> `git-tips`のコレクションです。ヒントを追加する場合は[contributing.md](https://github.com/git-tips/tips/blob/727551c5dab24c7b1d63814222a06f9d01546bc4/contributing.md)を確認してください。
+# Awesome Tips
 
-[English](http://git.io/git-tips) | [中文](https://github.com/521xueweihan/git-tips) | [Русский](https://github.com/Imangazaliev/git-tips) | [한국어](https://github.com/mingrammer/git-tips) | [Tiếng Việt](https://github.com/hprobotic/git-tips) | [日本語](https://github.com/isotai/git-tips) | [नेपाली](https://github.com/amarduwal/git-tips) | [Polski](https://github.com/mbiesiad/tips) | [فارسی](https://github.com/javadnikbakht/git-tips)
-
-### __ツール:__
-
-* [git-tip](https://www.npmjs.com/package/git-tip) - これらのヒントを効率よく利用するための便利なCLI（[Dockerコンテナー版](https://github.com/djoudi5/docker-git-tip)）。
-
-📖 **[対話型GitBookドキュメントはこちら](https://git-tips.github.io/tips/)**
-
-追記: すべてのコマンドは`git version 2.7.4 (Apple Git-66)`で検証されています。
+Tipsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -1492,4 +1483,3 @@ git restore <file-name>
 ```sh
 git restore --staged <file-name>
 ```
-

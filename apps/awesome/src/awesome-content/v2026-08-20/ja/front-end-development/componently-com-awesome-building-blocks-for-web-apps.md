@@ -1,20 +1,12 @@
 ---
-title: "componently-com/awesome-building-blocks-for-web-apps"
-description: "componently-com/awesome-building-blocks-for-web-apps の定本スナップショット"
+title: "Awesome Building Blocks for Web Apps"
+description: "Building Blocks for Web Appsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-componently-com-awesome-building-blocks-for-web-apps-readme-md"
 ---
 
-# Awesome Building Blocks for Web Apps [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Here%27s%20a%20list%20of%20standalone%20features%20you%20can%20integrate%20into%20your%20web%20app&url=https://github.com/componently-com/awesome-building-blocks-for-web-apps&via=componently&hashtags=webdev,componently,react,blocks,developers)
+# Awesome Building Blocks for Web Apps
 
-**ウェブアプリケーションへ統合するスタンドアロン機能の厳選リスト: すべてを自分で書く代わりに、他者が構築した完全な機能を入手しましょう。**
-
-<hr>
-
-これらのビルディングブロックがお好きなら、開発者がウェブアプリケーションのビルディングブロックを検索、比較、統合できるマーケットプレイス、[componently.com](https://www.componently.com/?utm_source=github-awesome-components&utm_medium=referral&utm_campaign=awesome-list)をご覧ください。
-
-<hr>
-
-
+Building Blocks for Web Appsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

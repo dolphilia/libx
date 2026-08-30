@@ -1,23 +1,12 @@
 ---
-title: "TheComputerM/awesome-svelte"
-description: "Canonical snapshot of TheComputerM/awesome-svelte"
+title: "Awesome Svelte"
+description: "A curated collection of resources and projects focused on Svelte."
 licenseSource: "github-TheComputerM-awesome-svelte-readme-md"
 ---
 
-<p align="center">
-  <br>
-  <img width="200" src="./awesome-svelte.svg" alt="awesome-svelte logo">
-  <br>
-  <br>
-</p>
+# Awesome Svelte
 
-# Awesome Svelte [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> ⚡ A curated list of awesome Svelte resources
-
-[Svelte](https://svelte.dev/) is a new way to build web applications. It's a compiler that takes your declarative components and converts them into efficient JavaScript
-
-Contributions welcome. Add links through pull requests or create an issue to start a discussion.
+A curated collection of resources and projects focused on Svelte.
 
 ## Contents
 

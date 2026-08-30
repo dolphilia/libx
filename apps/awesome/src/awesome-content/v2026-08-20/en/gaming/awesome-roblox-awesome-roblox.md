@@ -1,19 +1,12 @@
 ---
-title: "awesome-roblox/awesome-roblox"
-description: "Canonical snapshot of awesome-roblox/awesome-roblox"
+title: "Awesome Roblox"
+description: "A curated collection of resources and projects focused on Roblox."
 licenseSource: "github-awesome-roblox-awesome-roblox-readme-md"
 ---
 
-<h1 align="center">
-  <img src="media/logo.png" alt="Awesome Roblox">
+# Awesome Roblox
 
-  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-</h1>
-
-[Roblox](https://www.roblox.com/) is an immersive platform for communication and connection, hosting millions of diverse experiences. People can connect with others in an experience and chat with their friends on Roblox.
-
-
-</div>
+A curated collection of resources and projects focused on Roblox.
 
 ## Contents
 

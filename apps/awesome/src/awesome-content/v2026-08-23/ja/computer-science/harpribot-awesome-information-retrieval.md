@@ -1,18 +1,12 @@
 ---
-title: "harpribot/awesome-information-retrieval"
-description: "harpribot/awesome-information-retrieval の正規スナップショット"
+title: "Awesome Information Retrieval"
+description: "Information Retrievalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-harpribot-awesome-information-retrieval-readme-md"
 ---
 
-# Awesome Information Retrieval [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Information Retrieval
 
-[![Join the chat at https://gitter.im/awesome-information-retrieval/Lobby](https://badges.gitter.im/awesome-information-retrieval/Lobby.svg)](https://gitter.im/awesome-information-retrieval/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-ウェブ全体から集めた情報検索とウェブ検索のリソースのキュレーションリスト。
-## はじめに
-[情報検索](https://en.wikipedia.org/wiki/Information_retrieval)は、単純なデータベース検索から複雑なウェブ検索（Google、Bing、Yahooなど）まで、ユーザーのクエリに関連する情報を見つけることを扱う分野です。現在、研究者は、ユーザーの[情報ニーズ](https://en.wikipedia.org/wiki/Information_needs)に対応するため、検索結果の[ユーザーおよびトピックとの関連性](https://en.wikipedia.org/wiki/Relevance_(information_retrieval))を最大化し、[情報過多](https://en.wikipedia.org/wiki/Information_overload)と検索時間を最小化するアルゴリズムを開発しています。
-## コントリビュート
-新しいリンクの追加は、[pull requests](https://github.com/harpribot/awesome-information-retrieval/pulls)の送信、または[email] (mailto:harshal.priyadarshi@utexas.edu)でのご連絡をお気軽にどうぞ。提案と修正を歓迎します。[contributions guide](https://github.com/harpribot/awesome-information-retrieval/blob/a60c61a4f8451e98961a748883e0d0c6263fe1ec/contributing.md)も参照してください。
+Information Retrievalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
  - [Books](#books)

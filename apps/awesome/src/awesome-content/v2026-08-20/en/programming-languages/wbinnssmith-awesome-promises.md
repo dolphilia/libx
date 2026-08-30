@@ -1,27 +1,12 @@
 ---
-title: "wbinnssmith/awesome-promises"
-description: "Canonical snapshot of wbinnssmith/awesome-promises"
+title: "Awesome Promises"
+description: "A curated collection of resources and projects focused on Promises."
 licenseSource: "github-wbinnssmith-awesome-promises-readme-md"
 ---
 
-<a href="https://promisesaplus.com/">
-    <img src="https://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo" align="right" />
-</a>
+# Awesome Promises
 
-# Awesome Promises [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> A curated list of useful resources for JavaScript Promises
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing. Not to be confused with other awesome promises like "I promise you a million dollars" or "I promise you'll stay fit and never have to go to the gym again".
-
-**Table of Contents**
-
-- [Resources, Blogs, and Books](#resources-blogs-and-books)
-- [Promises/A+ Implementations (ES6/ES2015 compatible)](#promisesa-implementations-es6es2015-compatible)
-  - [Strict Implementations](#strict-implementations)
-  - [Implementations with extras](#implementations-with-extras)
-  - [Fallbacks](#fallbacks)
-- [Convenience Utilities](#convenience-utilities)
+A curated collection of resources and projects focused on Promises.
 
 ## Resources, Blogs, and Books
 

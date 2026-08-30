@@ -1,11 +1,12 @@
 ---
-title: "HollyAdele/awesome-programming-for-kids"
-description: "HollyAdele/awesome-programming-for-kids の定本スナップショット"
+title: "Awesome Programming for Kids"
+description: "Programming for Kidsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-HollyAdele-awesome-programming-for-kids-readme-md"
 ---
 
-# Awesome Programming for Kids [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-子どもにプログラミングを教えるための優れたリソースの厳選リスト。
+# Awesome Programming for Kids
+
+Programming for Kidsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 * [文字を読める前](#pre-literate)

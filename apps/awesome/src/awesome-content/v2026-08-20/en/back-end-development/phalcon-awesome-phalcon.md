@@ -1,24 +1,12 @@
 ---
-title: "phalcon/awesome-phalcon"
-description: "Canonical snapshot of phalcon/awesome-phalcon"
+title: "Awesome Phalcon"
+description: "A curated collection of resources and projects focused on Phalcon."
 licenseSource: "github-phalcon-awesome-phalcon-readme-md"
 ---
 
 # Awesome Phalcon
 
-[![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Actions Status](https://github.com/phalcon/awesome-phalcon/workflows/CI/badge.svg)](https://github.com/phalcon/awesome-phalcon/actions)
-
-
-A curated list of awesome Phalcon libraries and resources. Inspired by [awesome-go](https://github.com/avelino/awesome-go).
-
-
-
-### Contributing
-
-Please take a quick gander at the [contribution guidelines](https://github.com/phalcon/awesome-phalcon/blob/6a0fbbd2fa66c2aba79770a2b6671cb4d0ed1c5f/CONTRIBUTING.md) first. Thanks to all [contributors](https://github.com/phalcon/awesome-phalcon/graphs/contributors); you rock!
-
-Join us on [Discord](https://discord.com/invite/kRc2N2M) to chat with other awesome-phalcon maintainers!
+A curated collection of resources and projects focused on Phalcon.
 
 ### Contents
 

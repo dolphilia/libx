@@ -1,19 +1,12 @@
 ---
-title: "DanailMinchev/awesome-payload"
-description: "DanailMinchev/awesome-payload の定本スナップショット"
+title: "Awesome Payload"
+description: "Payloadを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-DanailMinchev-awesome-payload-readme-md"
 ---
 
-# Awesome Payload [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Payload
 
-> ユーザーと開発者向けの、優れた Payload リソースの厳選リスト。
-
-[<img src="./media/payload-logo.jpg" alt="Payload" width="300" align="right" />](https://payloadcms.com/)
-
-<p>
-<a href="https://payloadcms.com/">Payload</a> は、API と管理 UI を構築するうえで最高の開発者第一の体験を提供することを目指した、無料かつオープンソースのフルスタック Next.js フレームワークおよびヘッドレス CMS です。<br />
-Payload は Next.js とネイティブに統合され、Next.js アプリへ直接インストールされます。
-</p>
+Payloadを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

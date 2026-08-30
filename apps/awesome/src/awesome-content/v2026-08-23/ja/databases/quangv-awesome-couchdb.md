@@ -1,22 +1,12 @@
 ---
-title: "quangv/awesome-couchdb"
-description: "quangv/awesome-couchdb の正規スナップショット"
+title: "Awesome CouchDB"
+description: "CouchDBを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-quangv-awesome-couchdb-readme-md"
 ---
 
-<p>
-  <br>
-  <img width="300" src="https://rawgit.com/quangv/awesome-couchdb/master/logo--couch.png" alt="awesome couchdb logo">
-  <br>
-</p>
+# Awesome CouchDB
 
-# Awesome CouchDB [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![PR 歓迎](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-> CouchDB のメタリソースとベストプラクティスを集めたリストです。
-
-**[CouchDB](http://couchdb.apache.org/)** は、同期機能を備えたドキュメント指向 NoSQL データベースです。
-
-Pull Request を歓迎します。
+CouchDBを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [ニュースとブログ記事](#news--blog-posts)

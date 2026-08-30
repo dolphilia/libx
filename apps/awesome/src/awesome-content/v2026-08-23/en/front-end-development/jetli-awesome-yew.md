@@ -1,18 +1,12 @@
 ---
-title: "jetli/awesome-yew"
-description: "Canonical snapshot of jetli/awesome-yew"
+title: "Awesome Yew"
+description: "A curated collection of resources and projects focused on Yew."
 licenseSource: "github-jetli-awesome-yew-readme-md"
 ---
 
-# Awesome Yew [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Yew
 
-[<img src="logo.svg" align="right" width="100" title="Awesome Yew">](https://github.com/yewstack/yew)
-
-> A curated list of awesome things related to Yew.
-
-[Yew](https://github.com/yewstack/yew) is a modern Rust framework inspired by Elm and React for creating multi-threaded frontend apps with WebAssembly.
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/jetli/awesome-yew/blob/33d03a7b3eaf0b8feed3066fbd5c82d4caca06e4/CONTRIBUTING.md) first.
+A curated collection of resources and projects focused on Yew.
 
 ## Contents
 

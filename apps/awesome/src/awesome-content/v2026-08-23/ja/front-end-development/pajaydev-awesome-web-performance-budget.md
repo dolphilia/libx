@@ -1,12 +1,12 @@
 ---
-title: "pajaydev/awesome-web-performance-budget"
-description: "pajaydev/awesome-web-performance-budget の定本スナップショット"
+title: "Awesome Web Performance Budget"
+description: "Web Performance Budgetを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-pajaydev-awesome-web-performance-budget-readme-md"
 ---
 
-# Awesome Web Performance Budget [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-> Web Performance Budgetは、ウェブプロジェクトの設計・開発時に超過すべきでない、サイトパフォーマンスに影響する特定の値の制限群です。パフォーマンスバジェットを設定することで、パフォーマンスにより集中でき、ウェブサイトの速度と全体的なユーザー体験を改善できます。このリストはパフォーマンスバジェットを維持するための、さまざまな記事、プロジェクト、ツール、技術へのリンクを提供します。
+# Awesome Web Performance Budget
 
+Web Performance Budgetを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

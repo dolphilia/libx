@@ -1,13 +1,12 @@
 ---
-title: "jbmoelker/progressive-enhancement-resources"
-description: "jbmoelker/progressive-enhancement-resources の定本スナップショット"
+title: "Awesome Progressive Enhancement Resources"
+description: "Progressive Enhancement Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jbmoelker-progressive-enhancement-resources-readme-md"
 ---
 
-# Progressive Enhancement Resources [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Progressive Enhancement Resources
 
-進歩的エンハンスメントに関する包括的なリソース集です。概念と戦略から機能検出・テスト手法までを扱い、（コード）例の一覧も含みます。
-
+Progressive Enhancement Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

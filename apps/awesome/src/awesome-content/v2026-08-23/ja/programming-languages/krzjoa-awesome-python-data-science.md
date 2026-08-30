@@ -1,28 +1,13 @@
 ---
-title: "krzjoa/awesome-python-data-science"
-description: "Pythonによるデータサイエンス、機械学習、可視化、データ処理のライブラリ集"
+title: "Awesome Python Data Science"
+description: "Python Data Scienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-krzjoa-awesome-python-data-science-readme-md"
 ---
 
-<div align="center">
-    <a href="https://krzjoa.github.io/awesome-python-data-science/"><img width="250" height="250" src="https://raw.githubusercontent.com/krzjoa/awesome-python-data-science/6612257f3e38af232bd08eef25ffc53b92c1b72d/img/py-datascience.png" alt="pyds"></a>
-    <br>
-    <br>
-    <br>
-</div>
+# Awesome Python Data Science
 
-<h1 align="center">
-    Awesome Python Data Science
-</h1>
-<div align="center"><a href="https://github.com/sindresorhus/awesome">
-<img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" border="0">
-</a>
-</div>
-</br>
+Python Data Scienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> Probably the best curated list of data science software in Python
-
-<a id="contents"></a>
 ## 目次
 - [Contents](#contents)
 - [Machine Learning](#machine-learning)

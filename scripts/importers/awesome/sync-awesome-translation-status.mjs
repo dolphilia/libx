@@ -8,10 +8,9 @@ const statusPath = path.join(notesDir, 'BATCH_STATUS.json');
 const status = readJson(statusPath);
 const jaRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version, 'ja');
 const translated = new Set(
-  readJson(path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json')).entries
-    .filter(
-      (entry) =>
-        entry.version === version && fs.existsSync(path.join(jaRoot, `${entry.slug}.md`))
+  readJson(path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json'))
+    .entries.filter(
+      (entry) => entry.version === version && fs.existsSync(path.join(jaRoot, `${entry.slug}.md`))
     )
     .map((entry) => entry.sourceId)
 );

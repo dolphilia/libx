@@ -1,42 +1,12 @@
 ---
-title: "ibaaj/awesome-OpenSourcePhotography"
-description: "Canonical snapshot of ibaaj/awesome-OpenSourcePhotography"
+title: "Awesome OpenSourcePhotography"
+description: "A curated collection of resources and projects focused on OpenSourcePhotography."
 licenseSource: "github-ibaaj-awesome-OpenSourcePhotography-readme-md"
 ---
 
-# Awesome-OpenSourcePhotography
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome OpenSourcePhotography
 
-A list of awesome free open source software & libraries for photography. Also tools for video. For more awesomeness, check out [awesome](https://github.com/sindresorhus/awesome).
-
-
-- [General](#general)
-- [Camera Firmware Mods](#camera-firmware-mods)
-- [Libraries](#libraries)
-	- [Canon](#canon)
-	- [GoPro](#gopro)
-	- [Sony](#sony)
-- [Utilities](#utilities)
-- [Analogue Photography](#analogue-photography)
-- [RAW image developers](#raw-image-developers)
-- [HDR Specific Software](#hdr-specific-software)
-- [Panorama Stitching](#panorama-stitching)
-- [Photo Organizers](#photo-organizers)
-- [EXIF Editors](#exif-editors)
-- [Photo Downloaders](#photo-downloaders)
-- [Camera Tetherers](#camera-tetherers)
-- [Monitor Color Correction](#monitor-color-correction)
-- [360° Images](#360-images)
-- [Alternative Image Viewers](#alternative-image-viewers)
-- [Useful GIMP Mods or Scripts](#useful-gimp-mods-or-scripts)
-- [Communities](#communities)
-- [Resources](#resources)
-- [Video](#video)
-	- [General tools](#general-tools)
-	- [Compositing software](#compositing-software)
-	- [Video Libraries](#video-libraries)
-- [Scripts](#scripts)
-	- [Video to Panorama](#video-to-panorama)
+A curated collection of resources and projects focused on OpenSourcePhotography.
 
 ## General
 

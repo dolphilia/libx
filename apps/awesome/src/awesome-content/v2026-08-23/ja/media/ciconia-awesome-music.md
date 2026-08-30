@@ -1,31 +1,13 @@
 ---
-title: "ciconia/awesome-music"
-description: "ciconia/awesome-music の正規スナップショット"
+title: "Awesome Music"
+description: "Musicを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ciconia-awesome-music-readme-md"
 ---
 
-# Awesome Music（音楽） [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Music
 
-優れた音楽ライブラリ、ツール、フレームワーク、ソフトウェアを分類したコレクションです。
+Musicを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-貢献や提案をいつでも歓迎します。最初に[貢献ガイドラインと品質基準](https://github.com/ciconia/awesome-music/blob/master/CONTRIBUTING.md)を確認してください。
-
-すべての[貢献者](https://github.com/ciconia/awesome-music/graphs/contributors)に感謝します。皆さんなしではこのプロジェクトは実現できませんでした。
-
-* [Awesome Music](#awesome-music)
-  * [音声編集](#audio-editing)
-  * [音声ライブラリ](#audio-libraries)
-  * [音声ツール](#audio-tools)
-  * [無料の楽譜](#free-music-scores)
-  * [MIDIツールとライブラリ](#midi-tools--libraries)
-  * [音楽記譜](#music-notation)
-  * [音楽プログラミング](#music-programming)
-  * [音楽理論教育](#music-theory-teaching)
-  * [標準](#standards)
-* [その他のAwesome](#other-awesomeness)
-  * [関連リスト](#related-lists)
-
-<a id="audio-editing"></a>
 ## 音声編集
 
 * [Audacity](https://github.com/audacity/audacity) - 無料のクロスプラットフォーム対応デジタルオーディオエディター

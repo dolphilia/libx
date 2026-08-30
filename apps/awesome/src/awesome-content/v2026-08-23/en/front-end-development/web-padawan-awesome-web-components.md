@@ -1,17 +1,12 @@
 ---
-title: "web-padawan/awesome-web-components"
-description: "Canonical snapshot of web-padawan/awesome-web-components"
+title: "Awesome Web Components"
+description: "A curated collection of resources and projects focused on Web Components."
 licenseSource: "github-web-padawan-awesome-web-components-readme-md"
 ---
 
-# Awesome Web Components [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Web Components
 
-A curated list of awesome Web Components resources.
-
-> **Note**
-> This project was previously named "Web Components the Right Way"
-
-[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) — a suite of different technologies allowing you to create reusable custom elements — with their functionality encapsulated away from the rest of your code — and utilize them in your web apps.
+A curated collection of resources and projects focused on Web Components.
 
 ## Contents
 

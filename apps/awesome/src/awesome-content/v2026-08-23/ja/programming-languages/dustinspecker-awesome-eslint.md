@@ -1,16 +1,12 @@
 ---
-title: "dustinspecker/awesome-eslint"
-description: "ESLintの共有設定、プラグイン、パーサー、フォーマッター、開発ツールの定本スナップショット"
+title: "Awesome ESLint"
+description: "ESLintを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dustinspecker-awesome-eslint-readme-md"
 ---
 
-# ESLintのAwesomeリスト <a id="awesome-eslint"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome ESLint
 
-[<img src="https://eslint.org/icon.svg" width="160" align="right" alt="eslint">](http://eslint.org)
-
-> 優れたESLint設定、プラグイン等をまとめたリストです。
-
-コントリビューションする場合は、[コントリビューションガイドライン](https://github.com/dustinspecker/awesome-eslint/blob/34384c6b0b5a1845385ddda15b52d0bf662090ed/contributing.md)を参照してください。
+ESLintを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

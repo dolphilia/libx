@@ -1,13 +1,11 @@
 ---
-title: "dnbard/awesome-knockout"
-description: "dnbard/awesome-knockoutの収録案内"
+title: "Awesome KnockoutJS"
+description: "Awesome KnockoutJSの収録案内です。このスナップショットでは上流本文を転載していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# KnockoutJS
+# Awesome KnockoutJS
 
-このAwesomeリストは、固定済みのsindresorhus/awesomeスナップショットのFront-End Developmentセクションから参照されています。
-
-このスナップショットで再利用可能なライセンスを確認できなかった、固定READMEを取得できなかった、または現在のlibxでは対応していないライセンス条件があるため、上流リストの本文はlibxへ複製していません。
+Awesome KnockoutJSの収録案内です。このスナップショットでは上流本文を転載していません。
 
 - [元のリポジトリを開く](https://github.com/dnbard/awesome-knockout/blob/ba2646310d81d2a6853f1ccd5cdb143ceeb472bf/readme.md)

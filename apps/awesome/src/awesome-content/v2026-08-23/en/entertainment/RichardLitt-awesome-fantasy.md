@@ -1,16 +1,12 @@
 ---
-title: "RichardLitt/awesome-fantasy"
-description: "Canonical snapshot of RichardLitt/awesome-fantasy"
+title: "Awesome fantasy"
+description: "A curated collection of resources and projects focused on fantasy."
 licenseSource: "github-RichardLitt-awesome-fantasy-readme-md"
 ---
 
-# awesome-fantasy [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome fantasy
 
-> Fantasy literature worth reading
-
-_Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing. For science fiction books, see [awesome-scifi](https://github.com/sindresorhus/awesome-scifi)._
-
-_Please read the [Contributing Guidelines](https://github.com/RichardLitt/awesome-fantasy/blob/8f3930a2a12db117c6dea2e08357881e6b0651e7/contributing.md) before contributing._
+A curated collection of resources and projects focused on fantasy.
 
 ## Contents
 

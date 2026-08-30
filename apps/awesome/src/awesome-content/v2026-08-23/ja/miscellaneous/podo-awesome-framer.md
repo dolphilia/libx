@@ -1,19 +1,13 @@
 ---
-title: "podo/awesome-framer"
-description: "podo/awesome-framer の正規スナップショット"
+title: "Awesome Framer"
+description: "Framerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-podo-awesome-framer-readme-md"
 ---
 
-<a id="awesome-framer"></a>
-# Awesome Framer [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Framer
 
-[<img src="https://raw.githubusercontent.com/podo/awesome-framer/03e1463593d92bfaa0c5a01943966728bb8a7a07/logo.png" align="right" width="75">](https://framer.com/)
+Framerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> [Framer](http://framer.com) プロトタイピングツールの記事、資料、チュートリアルなどを集めた厳選リストです。
-
-[Framer](http://framer.com) は、アニメーションとインタラクションを備えたプロトタイプを作成するツールです。JavaScript、HTML、CSSなどの現代的なウェブ技術によって上級者向けの機能を拡張でき、自動修正、分かりやすいエラーメッセージ、アプリ内ドキュメントによって初心者の学習負担も軽減します。
-
-<a id="contents"></a>
 ## 目次
 
 * [一般情報](#general)

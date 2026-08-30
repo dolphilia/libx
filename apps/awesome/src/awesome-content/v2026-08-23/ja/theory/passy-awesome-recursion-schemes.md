@@ -1,15 +1,12 @@
 ---
-title: "passy/awesome-recursion-schemes"
-description: "passy/awesome-recursion-schemes の正規スナップショット"
+title: "Awesome Recursion Schemes"
+description: "Recursion Schemesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-passy-awesome-recursion-schemes-readme-md"
 ---
 
-# Awesome Recursion Schemes [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Recursion Schemes
 
-> Recursion Scheme の学習と利用に役立つリソースを集めたリストです。
-
-Recursion Scheme は、入れ子になったデータ構造の走査と再帰を自動化する、シンプルで合成可能な Combinator です。
-
+Recursion Schemesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

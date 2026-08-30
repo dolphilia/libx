@@ -1,18 +1,12 @@
 ---
-title: "terkelg/awesome-creative-coding"
-description: "Canonical snapshot of terkelg/awesome-creative-coding"
+title: "Awesome Creative Coding"
+description: "A curated collection of resources and projects focused on Creative Coding."
 licenseSource: "github-terkelg-awesome-creative-coding-readme-md"
 ---
 
-# Awesome Creative Coding [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Creative Coding
 
-# [<img src="https://raw.githubusercontent.com/terkelg/awesome-creative-coding/master/cover.png">](https://github.com/terkelg/awesome-creative-coding)
-
-> Carefully curated list of awesome [creative coding](https://en.wikipedia.org/wiki/Creative_coding) resources primarily for beginners/intermediates.
-
-Creative coding is a different discipline than programming systems. The goal is to create something expressive instead of something functional. **Interaction design**, **information visualization** and **generative art** are all different types of creative coding – which has become a household term describing **artworks articulated as code**.
-
-_Please read the [contribution guidelines](https://github.com/terkelg/awesome-creative-coding/blob/9643124b4a883e20dfb1b79df69505418728dbeb/contributing.md) before contributing._
+A curated collection of resources and projects focused on Creative Coding.
 
 ## Contents
 

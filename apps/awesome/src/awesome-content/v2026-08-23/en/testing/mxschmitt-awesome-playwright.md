@@ -1,14 +1,12 @@
 ---
-title: "mxschmitt/awesome-playwright"
-description: "Canonical snapshot of mxschmitt/awesome-playwright"
+title: "Awesome Playwright"
+description: "A curated collection of resources and projects focused on Playwright."
 licenseSource: "github-mxschmitt-awesome-playwright-readme-md"
 ---
 
-# Awesome Playwright [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Playwright
 
-> A curated list of awesome tools, utils and projects using Playwright
-
-[Playwright](https://github.com/microsoft/playwright) is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. Available for Node.js, Python, .NET and Java.
+A curated collection of resources and projects focused on Playwright.
 
 ## Contents
 

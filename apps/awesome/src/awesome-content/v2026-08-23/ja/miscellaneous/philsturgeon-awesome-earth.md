@@ -1,14 +1,13 @@
 ---
-title: "philsturgeon/awesome-earth"
-description: "地球環境への負荷を減らすためのリソース、サービス、製品、アイデア集"
+title: "Awesome Earth"
+description: "Earthを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-philsturgeon-awesome-earth-readme-md"
 ---
 
-# Awesome Earth（地球環境） [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Earth
 
-世界は同時に水の下にありながらも炎上しており、人々はそれに対して何ができるかを知りたいと思っています。私たちが共有できるリソース、サービス、製品、そして使えるアイデアを共有しましょう。それらを使って、地球に顔をぶつけるような行動をやめましょう。
+Earthを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="contents"></a>
 ## 目次
 
 

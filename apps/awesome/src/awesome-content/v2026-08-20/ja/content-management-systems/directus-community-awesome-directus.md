@@ -1,16 +1,12 @@
 ---
-title: "directus-community/awesome-directus"
-description: "directus-community/awesome-directus の定本スナップショット"
+title: "Awesome Directus"
+description: "Directusを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-directus-community-awesome-directus-readme-md"
 ---
 
-<p align="center"><a href="https://directus.io"><img alt="Directus Logo" src="https://user-images.githubusercontent.com/522079/158864859-0fbeae62-9d7a-4619-b35e-f8fa5f68e0c8.png" width="1000px"></a></p>
+# Awesome Directus
 
-# Awesome Directus [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> Directusに関連する優れたものを厳選したリスト。
-
-[Directus](https://directus.io)は、SQLデータベースのコンテンツを管理するためのリアルタイムAPIおよびアプリダッシュボードです。
+Directusを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

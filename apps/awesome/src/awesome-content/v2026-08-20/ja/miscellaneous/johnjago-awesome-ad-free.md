@@ -1,16 +1,12 @@
 ---
-title: "johnjago/awesome-ad-free"
-description: "johnjago/awesome-ad-free の定本スナップショット"
+title: "Awesome Ad-Free"
+description: "Ad-Freeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-johnjago-awesome-ad-free-readme-md"
 ---
 
-# Awesome Ad-Free [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Ad-Free
 
-ウェブで人気のサービスに対する、広告なしの代替サービスを選んだリストです。
-
-> 広告ブロッカーを使うなと言っているのでしょうか？いいえ。ただし、不服従を積極的な支援で相殺することを検討してください。財布で投票しましょう。ウェブサイト、雑誌、新聞を問わず、好きな文章にお金を出してください。「でも、あのサイトでは支払えない」。ならば新しいものを発見してください。
-
-—Matthew Butterick
+Ad-Freeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

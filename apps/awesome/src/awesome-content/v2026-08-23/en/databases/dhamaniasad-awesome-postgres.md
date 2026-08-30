@@ -1,18 +1,12 @@
 ---
-title: "dhamaniasad/awesome-postgres"
-description: "Canonical snapshot of dhamaniasad/awesome-postgres"
+title: "Awesome Postgres"
+description: "A curated collection of resources and projects focused on Postgres."
 licenseSource: "github-dhamaniasad-awesome-postgres-readme-md"
 ---
 
-# Awesome Postgres [![awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Postgres
 
-[<img src="https://wiki.postgresql.org/images/a/a4/PostgreSQL_logo.3colors.svg" align="right"  width="100">](https://www.postgresql.org/)
-
-> A curated list of awesome [PostgreSQL](https://www.postgresql.org/) software, libraries, tools and resources, inspired by [awesome-mysql](http://shlomi-noach.github.io/awesome-mysql/)
-
-[PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL), often simply Postgres, is an [object-relational database](https://en.wikipedia.org/wiki/Object-relational_database) (ORDBMS). PostgreSQL is [ACID-compliant](https://en.wikipedia.org/wiki/ACID) and [transactional](https://en.wikipedia.org/wiki/Transaction_processing). (see more: [wikipedia:PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL), [PostgreSQL.org](https://www.postgresql.org))
-
- :elephant: Contributions welcome. Add links through [pull requests](https://github.com/dhamaniasad/awesome-postgres/pulls) or create an [issue](https://github.com/dhamaniasad/awesome-postgres/issues) to start a discussion. Please take a look at the [contribution guidelines](https://github.com/dhamaniasad/awesome-postgres/blob/ef88d7b7b11e980c472e26e4c8562b5bb4473086/CONTRIBUTING.md).
+A curated collection of resources and projects focused on Postgres.
 
 ## Contents
 

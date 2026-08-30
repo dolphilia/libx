@@ -1,17 +1,12 @@
 ---
-title: "Renaller/awesome-position-based-quantum-cryptography"
-description: "Renaller/awesome-position-based-quantum-cryptographyの正規スナップショット"
+title: "Awesome Position-Based Quantum Cryptography"
+description: "Position-Based Quantum Cryptographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Renaller-awesome-position-based-quantum-cryptography-readme-md"
 ---
 
-# Awesome Position-Based Quantum Cryptography [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-位置ベース量子暗号（PBQC）に関する論文のキュレーション済みリストです。成長中のこの分野について、カテゴリ化されたコミュニティ主導の、常に最新の文献概観を構築することを目指します。
+# Awesome Position-Based Quantum Cryptography
 
-QPV = Quantum Position Verification
-
-QPA = Quantum Position-based Authentication
-
-PB-QKD = Position-based Quantum Key Distribution
+Position-Based Quantum Cryptographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

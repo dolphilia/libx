@@ -1,18 +1,12 @@
 ---
-title: "wbkd/awesome-d3"
-description: "Canonical snapshot of wbkd/awesome-d3"
+title: "Awesome D3"
+description: "A curated collection of resources and projects focused on D3."
 licenseSource: "github-wbkd-awesome-d3-readme-md"
 ---
 
-# Awesome D3 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome D3
 
-This list keeps track of interesting [D3js](http://d3js.org) libraries, plugins and utilities.
-<br />We decided not to list tutorials, resources or concepts here, because there is already a **[very good list of readings](https://github.com/mbostock/d3/wiki/Tutorials)** out there you can check out and contribute to.
-
-Curators: [Moritz Klack](https://twitter.com/moklick) and [Christopher Möller](https://twitter.com/chrtze) of [webkid.io](http://www.webkid.io)
-
-You can also explore the list with our interactive [D3 Discovery](https://d3-discovery.net/) tool.
-
+A curated collection of resources and projects focused on D3.
 
 ## Charts
 

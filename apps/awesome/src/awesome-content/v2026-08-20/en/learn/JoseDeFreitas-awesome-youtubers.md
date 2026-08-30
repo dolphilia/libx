@@ -1,34 +1,12 @@
 ---
-title: "JoseDeFreitas/awesome-youtubers"
-description: "Canonical snapshot of JoseDeFreitas/awesome-youtubers"
+title: "Awesome YouTubers"
+description: "A curated collection of resources and projects focused on YouTubers."
 licenseSource: "github-JoseDeFreitas-awesome-youtubers-readme-md"
 ---
 
+# Awesome YouTubers
 
-
-<div align="center">
-  	<h1>
-    	Awesome YouTubers
-		<a href="https://awesome.re">
-			<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-		</a>
-  	</h1>
-	<br />
-	<div>
-		<a href="https://github.com/JoseDeFreitas/awesome-youtubers">
-			<img width="428" src="logo.svg" alt="Awesome YouTubers logo">
-		</a>
-	</div>
-</div>
-
-> Watch video tutorials from YouTubers that teach you about technology.
-
-## Other languages
-
-This repository only lists awesome YouTubers that speak English. Awesome contributors have created their own list of awesome tech YouTubers in other languages. **Below you can see all the repositories related.** If you believe you have awesome YouTubers in a certain language and you have at least more than a few of them, you can create your own list and let me know [opening a new issue](https://github.com/JoseDeFreitas/awesome-youtubers/issues/new).
-
--   [Brazilian Portuguese](https://github.com/rcarubbi/awesome-brazilian-youtubers)
--   [Spanish](https://github.com/rcarubbi/awesome-spanish-youtubers)
+A curated collection of resources and projects focused on YouTubers.
 
 ## Contents
 

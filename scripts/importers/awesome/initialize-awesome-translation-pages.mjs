@@ -6,11 +6,7 @@ import { rootDir, snapshotVersion } from './common.mjs';
 const apply = process.argv.includes('--apply');
 const refresh = process.argv.includes('--refresh');
 const files = process.argv.slice(2).filter((argument) => argument.endsWith('.md'));
-const contentRoot = path.join(
-  rootDir,
-  'apps/awesome/src/awesome-content',
-  snapshotVersion
-);
+const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion);
 const englishRoot = path.join(contentRoot, 'en');
 const japaneseRoot = path.join(contentRoot, 'ja');
 

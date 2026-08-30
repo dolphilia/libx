@@ -1,30 +1,12 @@
 ---
-title: "sindresorhus/awesome-whisper"
-description: "sindresorhus/awesome-whisper の定本スナップショット"
+title: "Awesome Whisper"
+description: "Whisperを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sindresorhus-awesome-whisper-readme-md"
 ---
 
-<div align="center">
-	<br>
-	<br>
-	<div>
-		<img src="media/logo.png" alt="Awesome Whisper">
-		<br>
-	</div>
-	<br>
-	<p>
-		<a href="https://openai.com/research/whisper">Whisper</a> は <a href="https://openai.com">OpenAI</a> が開発した、オープンソースの AI 搭載音声認識システムです。
-	</p>
-	<br>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-</div>
+# Awesome Whisper
+
+Whisperを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -117,14 +117,27 @@ test('landing pages link Awesome directly to the localized overview', async () =
   assert.match(japaneseHtml, />Awesomeリスト<\/h3>/);
   assert.match(
     japaneseHtml,
-    /href="\/docs\/awesome\/v2026-08-20\/ja\/overview\/sindresorhus-awesome"/
+    /href="\/docs\/awesome\/v2026-08-23\/ja\/overview\/sindresorhus-awesome"/
   );
   assert.match(japaneseHtml, /出典と版を固定したAwesomeリストのスナップショット/);
   assert.match(englishHtml, />Awesome Lists<\/h3>/);
   assert.match(
     englishHtml,
-    /href="\/docs\/awesome\/v2026-08-20\/en\/overview\/sindresorhus-awesome"/
+    /href="\/docs\/awesome\/v2026-08-23\/en\/overview\/sindresorhus-awesome"/
   );
+});
+
+test('Awesome generic entry points resolve to the latest snapshot', async () => {
+  const rootHtml = await fs.readFile(path.join(repoRoot, 'apps/awesome/dist/index.html'), 'utf8');
+  const notFoundHtml = await fs.readFile(path.join(repoRoot, 'apps/awesome/dist/404.html'), 'utf8');
+  const latestIndexHtml = await fs.readFile(
+    path.join(repoRoot, 'apps/awesome/dist/v2026-08-23/en/index.html'),
+    'utf8'
+  );
+
+  assert.match(rootHtml, /\/docs\/awesome\/v2026-08-23\/en\//);
+  assert.match(notFoundHtml, /href="\/docs\/awesome\/v2026-08-23\/en\/"/);
+  assert.match(latestIndexHtml, /href="\/docs\/awesome\/v2026-08-23\/en\/"[^>]*class="site-title"/);
 });
 
 test('Awesome Japanese pages include localized sidebar navigation and search data', async () => {

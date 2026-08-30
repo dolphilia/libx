@@ -1,14 +1,12 @@
 ---
-title: "ambster-public/awesome-qlik"
-description: "ambster-public/awesome-qlik の正規スナップショット"
+title: "Awesome Qlik"
+description: "Qlikを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ambster-public-awesome-qlik-readme-md"
 ---
 
-# Awesome Qlik [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://webapps.qlik.com/WarsawMarathon/qlik.jpg" width="250" align="right" alt="Qlik ロゴ">](https://qlik.com)
+# Awesome Qlik
 
-> 優れた [Qlik](https://qlik.com) のガイド、ブログ、拡張機能、その他のリソースを厳選したリストです。
-
-Qlik は、データ可視化、分析、レポート作成のソリューションを提供する[主要な](https://www.qlik.com/us/gartner-magic-quadrant-business-intelligence)ビジネスインテリジェンスプラットフォームです。同じエンジン上で動作する主力製品には、ガイド付き分析向けの [QlikView](https://www.qlik.com/us/products/qlikview) と、セルフサービス BI 向けの [Qlik Sense](https://www.qlik.com/us/products/qlik-sense) があります。
+Qlikを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

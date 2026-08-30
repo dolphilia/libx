@@ -1,12 +1,12 @@
 ---
-title: "kakoni/awesome-healthcare"
-description: "kakoni/awesome-healthcare の定本スナップショット"
+title: "Awesome Health"
+description: "Healthを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-kakoni-awesome-healthcare-readme-md"
 ---
 
-# Awesome Health [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Health
 
-優れたオープンソースの医療ソフトウェア、ライブラリ、ツール、リソースを集めたリストです。各リンクは、プロジェクトが活発で、医療施設、医療提供者、開発者、政策専門家、研究者に価値をもたらすことを確認しています。
+Healthを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -247,4 +247,3 @@ licenseSource: "github-kakoni-awesome-healthcare-readme-md"
   * [ID3C](https://github.com/seattleflu/id3c) - Data logistics system enabling real-time genomic epidemiology.
   * [OpenBoxes](https://github.com/openboxes/openboxes) - an Open Source Inventory and Supply Chain Management System.
   * [OpenLMIS](https://openlmis.org) - Open source, web-based, electronic logistics management information system (LMIS) software, purpose-built to manage health commodity supply chains.
-

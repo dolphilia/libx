@@ -1,14 +1,12 @@
 ---
-title: "fsprojects/awesome-fsharp"
-description: "Canonical snapshot of fsprojects/awesome-fsharp"
+title: "Awesome F#"
+description: "A curated collection of resources and projects focused on F#."
 licenseSource: "github-fsprojects-awesome-fsharp-readme-md"
 ---
 
-# Awesome F# [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) <img src="https://fsharp.org/img/logo/fsharp.svg" width="48" height="48" align="right"/>
+# Awesome F#
 
-F# is a programming language with focus on immutability, type inference, first-class functions, powerful data types and pattern matching, targeting .NET and other platforms.
-
-This is a curated list of awesome F# frameworks, libraries, software and resources.
+A curated collection of resources and projects focused on F#.
 
 ## Contents
 - [Main Language-Related Repositories](#main-language-related-repositories)

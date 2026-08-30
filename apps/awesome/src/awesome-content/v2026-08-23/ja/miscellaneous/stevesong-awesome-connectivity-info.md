@@ -1,23 +1,13 @@
 ---
-title: "stevesong/awesome-connectivity-info"
-description: "stevesong/awesome-connectivity-info の正規スナップショット"
+title: "Awesome Connectivity Logo"
+description: "Connectivity Logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-stevesong-awesome-connectivity-info-readme-md"
 ---
 
-<div align="center">
-  <img width="605" height="495" src="https://raw.githubusercontent.com/stevesong/awesome-connectivity-info/31a5faa6245e085d556d3341586f4283dbf83e31/images/awesome-connectivity-logo.svg" alt="Awesome Connectivity Logo">
-  <br>
-  <sup>Sindre SorhusによるAwesomeリストの<a href="https://awesome.re">awesome list</a>から着想を得ています</sup>
-  <br>
-</div>
+# Awesome Connectivity Logo
 
-# [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+Connectivity Logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-通信インフラを誰がどのような条件で利用できるのかを理解するための、接続性に関する指数、地図、報告書の一覧です。すべての情報はパブリックドメインにあります。
-
-<sub>接続性に関するその他の情報は、私の[ウェブサイト](https://manypossibilities.net)または <a rel="me" href="https://mastodon.cloud/@stevesong">Mastodon</a> を参照してください。</sub>
-
-<a id="contents"></a>
 ## 目次
 
 - [](#)

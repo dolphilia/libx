@@ -1,14 +1,12 @@
 ---
-title: "stn1slv/awesome-integration"
-description: "Canonical snapshot of stn1slv/awesome-integration"
+title: "Awesome Integration"
+description: "A curated collection of resources and projects focused on Integration."
 licenseSource: "github-stn1slv-awesome-integration-readme-md"
 ---
 
-# Awesome Integration [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Integration
 
-> A curated list of awesome system integration software, patterns and resources.
-
-System integration is the process of linking together different IT systems (components) to functionally cooperate as a whole.
+A curated collection of resources and projects focused on Integration.
 
 ## Contents
 - [Projects](#projects)

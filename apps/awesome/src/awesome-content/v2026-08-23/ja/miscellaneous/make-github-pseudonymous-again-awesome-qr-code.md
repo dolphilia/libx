@@ -1,19 +1,12 @@
 ---
-title: "make-github-pseudonymous-again/awesome-qr-code"
-description: "make-github-pseudonymous-again/awesome-qr-code の正規スナップショット"
+title: "Awesome QR Code"
+description: "QR Codeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-make-github-pseudonymous-again-awesome-qr-code-readme-md"
 ---
 
-# Awesome QR Code [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome QR Code
 
-[<img src="https://raw.githubusercontent.com/make-github-pseudonymous-again/awesome-qr-code/d04e5493dc6ac5060031779777e2490e6dcbe5fe/repo-link.svg" align="right" width="100">](https://github.com/make-github-pseudonymous-again/awesome-qr-code#readme)
-
-優れた QR コードのライブラリ、ソフトウェア、リソースを厳選したリストです。
-
-> QR コード（Quick Response code の略）は、1994 年に日本の自動車産業向けとして初めて設計されたマトリックス型バーコード（二次元バーコード）の一種です。
->
-> *Wikipedia* ~ https://en.wikipedia.org/wiki/QR_code
-
+QR Codeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

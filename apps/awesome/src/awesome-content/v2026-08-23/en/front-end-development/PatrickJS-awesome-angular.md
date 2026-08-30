@@ -1,24 +1,12 @@
 ---
-title: "PatrickJS/awesome-angular"
-description: "Canonical snapshot of PatrickJS/awesome-angular"
+title: "Awesome Angular"
+description: "A curated collection of resources and projects focused on Angular."
 licenseSource: "github-PatrickJS-awesome-angular-readme-md"
 ---
 
-# Awesome Angular [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Angular
 
-<p align="center">
-  <a href="https://patrickjs.com" target="_blank">
-    <img src="/media/new/awesome-angular.png" alt="Awesome Angular" />
-  </a>
-</p>
-
-> logo designed by [SAWARATSUKI](https://github.com/SAWARATSUKI/KawaiiLogos)
-
-This is the Awesome list of the Angular framework, and it contains intriguing libraries in the Angular ecosystem for all developers. Something missing? [PRs welcomed!](https://github.com/PatrickJS/awesome-angular/edit/gh-pages/README.md)
-
-> Repo maintained by [@jdegand](https://github.com/jdegand) and [@patrickjs](https://github.com/patrickjs)
-
-Current Angular version: [![npm version](https://badge.fury.io/js/%40angular%2Fcore.svg)](https://www.npmjs.com/~angular)  
+A curated collection of resources and projects focused on Angular.
 
 ## Contents
 

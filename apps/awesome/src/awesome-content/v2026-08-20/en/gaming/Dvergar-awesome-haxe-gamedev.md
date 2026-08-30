@@ -1,16 +1,12 @@
 ---
-title: "Dvergar/awesome-haxe-gamedev"
-description: "Canonical snapshot of Dvergar/awesome-haxe-gamedev"
+title: "Awesome Haxe Game Development"
+description: "A curated collection of resources and projects focused on Haxe Game Development."
 licenseSource: "github-Dvergar-awesome-haxe-gamedev-readme-md"
 ---
 
-<div align="center"><a href="https://haxe.org/"><img src="images/haxe-logo.png" width="500"></a></div>
+# Awesome Haxe Game Development
 
-# Awesome Haxe Game Development [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-
-A curated list of game development resources for **[Haxe 4](https://haxe.org/)**, a high level strictly typed programming language which is used to produce cross-platform native code.
-
-Feel free to update it.
+A curated collection of resources and projects focused on Haxe Game Development.
 
 ## Contents
 * [Game engines](#game-engines)

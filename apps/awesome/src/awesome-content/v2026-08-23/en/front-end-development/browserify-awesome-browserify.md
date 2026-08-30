@@ -1,16 +1,12 @@
 ---
-title: "browserify/awesome-browserify"
-description: "Canonical snapshot of browserify/awesome-browserify"
+title: "Awesome Browserify"
+description: "A curated collection of resources and projects focused on Browserify."
 licenseSource: "github-browserify-awesome-browserify-readme-md"
 ---
 
-<div align="center"><img src="https://raw.githubusercontent.com/browserify/awesome-browserify/185b31da0995d9fe9a20f56add08c22406ed5be9/browserify.png" alt="Browserify!"></div>
+# Awesome Browserify
 
-# Awesome Browserify [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> :crystal_ball: A curated list of awesome [Browserify](https://github.com/substack/node-browserify) resources, libraries, and tools.
-
-Please help improve this list by [contributing](https://github.com/browserify/awesome-browserify/blob/185b31da0995d9fe9a20f56add08c22406ed5be9/contributing.md)!
+A curated collection of resources and projects focused on Browserify.
 
 ## Contents
 

@@ -1,28 +1,12 @@
 ---
-title: "agarrharr/awesome-cli-apps"
-description: "Canonical snapshot of agarrharr/awesome-cli-apps"
+title: "Awesome cli apps"
+description: "A curated collection of resources and projects focused on cli apps."
 licenseSource: "github-agarrharr-awesome-cli-apps-readme-md"
 ---
 
-<p align="center">
-	<img width="763" src="https://cdn.rawgit.com/aharris88/awesome-cli-apps/master/media/banner.png" alt="awesome cli apps">
-</p>
+# Awesome cli apps
 
-<p align="center">
-  Proudly maintained by:
-  <a href="https://jneidel.com">
-    <img width="24px" src="https://jneidel.com/img/logo.png" alt="jneidel.com logo">
-    <span>jneidel.com</span>
-  </a>
-</p>
-
----
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> A curated list of command line apps.
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
+A curated collection of resources and projects focused on cli apps.
 
 ## Table of Contents
 

@@ -1,42 +1,12 @@
 ---
-title: "kdeldycke/awesome-falsehood"
-description: "Canonical snapshot of kdeldycke/awesome-falsehood"
+title: "Awesome Falsehood header image"
+description: "A curated collection of resources and projects focused on Falsehood header image."
 licenseSource: "github-kdeldycke-awesome-falsehood-readme-md"
 ---
 
+# Awesome Falsehood header image
 
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-falsehood/">
-    <img src="https://github.com/kdeldycke/awesome-falsehood/raw/main/assets/awesome-falsehood-header.jpg" alt="Awesome Falsehood header image">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/sponsors/kdeldycke">
-    <strong>Your brand → here 🚀</strong>
-    <br/>
-    <sup>SEO is dead. Place your product here to target AI's training data.</sup>
-  </a>
-</p>
-
----
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-falsehood#readme.md" hreflang="en"><img src="https://img.shields.io/badge/lang-English-blue?style=flat-square" lang="en" alt="English"></a>
-  <a href="https://github.com/kdeldycke/awesome-falsehood/blob/main/readme.zh.md" hreflang="zh"><img src="https://img.shields.io/badge/lang-中文-blue?style=flat-square" lang="zh" alt="中文"></a>
-</p>
-
-<p align="center">
-  <i>The logic of the world is prior to all truth and falsehood.</i><br>
-  — Ludwig Wittgenstein<sup id="intro-quote-ref"><a href="#intro-quote-def">[1]</a></sup>
-</p>
-
-A curated [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome) list of falsehoods programmers believe in. A *falsehood* is an ***idea* that you initially believed was true**, but in reality, it is **proven to be false**.
-
-E.g. of an *idea*: valid email address exactly has one `@` character. So, you will use this rule to implement your email-field validation logic. Right? Wrong! The *reality* is: emails can have multiple `@` chars. Therefore your implementation should allow this. The initial *idea* is a falsehood you believed in.
-
-The *falsehood* articles listed below will have a comprehensive list of those false-beliefs that you should be aware of, to help you become a better programmer.
+A curated collection of resources and projects focused on Falsehood header image.
 
 ## Contents
 

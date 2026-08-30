@@ -1,75 +1,12 @@
 ---
-title: "mfornos/awesome-microservices"
-description: "マイクロサービスの実装、運用機能、API仕様、組織設計資源を分類した定本スナップショット"
+title: "Awesome Microservices"
+description: "Microservicesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mfornos-awesome-microservices-readme-md"
 ---
 
-# マイクロサービスのAwesomeリスト <a id="awesome-microservices"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Microservices
 
-マイクロサービスアーキテクチャに関する原則と技術を厳選したリストです。
-
-**目次**
-
-- [プラットフォーム](#platforms)
-- [フレームワーク／ランタイム](#frameworks--runtimes)
-- [サービスツールキット](#service-toolkits)
-  - [多言語](#polyglot)
-  - [C](#c)
-  - [C++](#c-1)
-  - [C#](#csharp)
-  - [D](#d)
-  - [Erlang VM](#erlang-vm)
-  - [Go](#go)
-  - [Haskell](#haskell)
-  - [Java VM](#java-vm)
-  - [Node.js](#nodejs)
-  - [Perl](#perl)
-  - [PHP](#php)
-  - [Python](#python)
-  - [Ruby](#ruby)
-  - [Rust](#rust)
-- [フロントエンド／UI](#frontend--ui)
-- [機能](#capabilities)
-  - [APIゲートウェイ／エッジサービス](#api-gateways--edge-services)
-  - [構成管理とサービス検出](#configuration--discovery)
-  - [ワークフローオーケストレーション](#workflow-orchestration)
-  - [伸縮性](#elasticity)
-  - [ジョブスケジューラー／ワークロード自動化](#job-schedulers--workload-automation)
-  - [ロギング](#logging)
-  - [メッセージング](#messaging)
-  - [監視とデバッグ](#monitoring--debugging)
-  - [リアクティビティ](#reactivity)
-  - [レジリエンス](#resilience)
-  - [セキュリティ](#security)
-  - [シリアライズ](#serialization)
-  - [ストレージ](#storage)
-  - [テスト](#testing)
-- [継続的インテグレーションとデリバリー](#continuous-integration--delivery)
-- [Web APIモデリングと文書化](#web-api-modeling--documentation)
-  - [非同期API](#async)
-  - [GraphQL](#graphql)
-  - [JSON](#json)
-  - [REST](#rest)
-- [標準／推奨事項](#standards--recommendations)
-  - [World Wide Web](#world-wide-web)
-  - [自己主権と分散化](#self-sovereignty--decentralisation)
-  - [HTTP/1.1](#http11)
-  - [HTTP/2](#http2)
-  - [QUIC](#quic)
-  - [RPC](#rpc)
-  - [メッセージング](#messaging-1)
-  - [セキュリティ](#security-1)
-  - [サービス検出](#service-discovery)
-  - [データ形式](#data-formats)
-  - [語彙](#vocabularies)
-  - [Unicode](#unicode)
-- [組織設計／チーム力学](#organization-design--team-dynamics)
-- [企業・業界別](#enterprise--verticals)
-- [理論](#theory)
-  - [記事と論文](#articles--papers)
-  - [サイトと組織](#sites--organizations)
-- [ライセンス](#license)
-- [コントリビューション](#contributing)
+Microservicesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## プラットフォーム <a id="platforms"></a>
 

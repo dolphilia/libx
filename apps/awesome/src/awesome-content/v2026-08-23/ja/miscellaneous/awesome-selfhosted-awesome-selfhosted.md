@@ -1,22 +1,12 @@
 ---
-title: "awesome-selfhosted/awesome-selfhosted"
-description: "自分でホストできるフリーソフトウェアのサービスとWebアプリケーション集"
+title: "Awesome Selfhosted"
+description: "Selfhostedを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-awesome-selfhosted-awesome-selfhosted-readme-md"
 ---
 
-# Awesome-Selfhosted
+# Awesome Selfhosted
 
-[![Awesome](https://github.com/awesome-selfhosted/awesome-selfhosted/blob/adecb7edf1371a04893a32f744028f2d6cf4ea81/_static/awesome.png)](https://github.com/sindresorhus/awesome) [![](https://github.com/awesome-selfhosted/awesome-selfhosted-data/actions/workflows/check-dead-links.yml/badge.svg)](https://github.com/awesome-selfhosted/awesome-selfhosted-data/issues/1) [![](https://github.com/awesome-selfhosted/awesome-selfhosted-data/actions/workflows/check-unmaintained-projects.yml/badge.svg)](https://github.com/awesome-selfhosted/awesome-selfhosted-data/issues/1) [![](https://img.shields.io/liberapay/goal/awesome-selfhosted.svg?logo=liberapay)](https://liberapay.com/awesome-selfhosted/)
-
-セルフホスティングとは、アプリケーションを自社のサーバー上でホスト・管理する practice であり、 [SaaSS](https://www.gnu.org/philosophy/who-does-that-server-really-serve.html) 提供者からサービスを消費するのではなく、それを行うことである。
-
-これは、自社サーバー上にホストできる [Free](https://en.wikipedia.org/wiki/Free_software) ソフトウェア [network services](https://en.wikipedia.org/wiki/Network_service) および [web applications](https://en.wikipedia.org/wiki/Web_application) のリストです。非フリーソフトウェアは [Non-Free](https://github.com/awesome-selfhosted/awesome-selfhosted/blob/master/non-free.md) ページに掲載されています。
-
-**[HTML version](https://awesome-selfhosted.net/) (推奨)**, [Markdown version](https://github.com/awesome-selfhosted/awesome-selfhosted) (古い)
-
-[Contributing](#contributing)を参照してください。
-
---------------------
+Selfhostedを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Table of contents
 

@@ -1,24 +1,12 @@
 ---
-title: "radek-sprta/awesome-game-remakes"
-description: "Canonical snapshot of radek-sprta/awesome-game-remakes"
+title: "Awesome Game Remakes"
+description: "A curated collection of resources and projects focused on Game Remakes."
 licenseSource: "github-radek-sprta-awesome-game-remakes-readme-md"
 ---
 
-# Awesome Game Remakes [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Game Remakes
 
-Actively maintained open-source game remakes.
-
-Most games require original asssets. The ones not requiring paid assets are marked with :flower_playing_cards:.
-
-If you are also interested in clones and similar games (0 A.D. etc.), take a look at [Open Source Game Clones](https://osgameclones.com/).
-
-If you are looking for game archive file formats see: [Awesome Game File Format Reversing](https://github.com/VelocityRa/awesome-game-file-format-reversing/)
-
-If you are looking for not only remakes have a look at:
-- [Awesome Open Source Games](https://github.com/michelpereira/awesome-open-source-games)
-- [OSGL - Open Source Games List](https://github.com/Trilarion/opensourcegames)
-
----
+A curated collection of resources and projects focused on Game Remakes.
 
 ## Contents
 - [Action](#action)

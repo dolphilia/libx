@@ -1,31 +1,12 @@
 ---
-title: "melvin0008/awesome-projects-boilerplates"
-description: "Canonical snapshot of melvin0008/awesome-projects-boilerplates"
+title: "Awesome boilerplates"
+description: "A curated collection of resources and projects focused on boilerplates."
 licenseSource: "github-melvin0008-awesome-projects-boilerplates-readme-md"
 ---
 
-# Awesome boilerplates[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome boilerplates
 
-Curated list of boilerplates and templates to enhance productivity.
-
-- [Awesome Projects Boilerplates](#awesome-projects-boilerplates)
-    - [Android Development](#android-development)
-    - [iOS Development](#ios-development)
-    - [JavaScript](#javascript)
-    - [Hybrid Mobile App Frameworks](#hybrid-mobile-app-frameworks)
-    - [Microservices](#microservices)
-    - [Python](#python)
-    - [PHP](#php)
-    - [Ruby](#ruby)
-    - [.NET](#net)
-    - [Go](#go)
-    - [Browser Webextensions](#browser-webextensions)
-    - [Websites](#websites)
-    - [IDE Templates](#ide-templates)
-    - [GitHub](#github)
-- [Contributing](#contributing)
-
-
+A curated collection of resources and projects focused on boilerplates.
 
 ## Android Development
 

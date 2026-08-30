@@ -1,22 +1,13 @@
 ---
-title: "alferov/awesome-gulp"
-description: "alferov/awesome-gulp の正規スナップショット"
+title: "Awesome Gulp"
+description: "Gulpを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-alferov-awesome-gulp-readme-md"
 ---
 
-<a id="awesome-gulp"></a>
-# Awesome Gulp [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Gulp
 
-> 開発ワークフローをより良く自動化するための、優れた [gulp](https://github.com/gulpjs/gulp) の資料、プラグイン、ボイラープレートを集めた厳選リストです。
+Gulpを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-_別のものをお探しですか？ほかの [Awesome リスト](https://github.com/sindresorhus/awesome)もご覧ください。_
-
-<a id="contribution"></a>
-## 貢献
-
-:octocat: あらゆる貢献を歓迎します。気軽にご参加ください（[ガイドライン](https://github.com/alferov/awesome-gulp/blob/d88ab8cfd759bc3becd73b90996f08ac49f4d32a/contributing.md)）。
-
-<a id="contents"></a>
 ## 目次
 
 - [凡例](#legend)

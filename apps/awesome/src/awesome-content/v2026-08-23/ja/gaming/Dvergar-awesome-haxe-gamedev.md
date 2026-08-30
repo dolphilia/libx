@@ -1,16 +1,12 @@
 ---
-title: "Dvergar/awesome-haxe-gamedev"
-description: "Dvergar/awesome-haxe-gamedev の定本スナップショット"
+title: "Awesome Haxe Game Development"
+description: "Haxe Game Developmentを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Dvergar-awesome-haxe-gamedev-readme-md"
 ---
 
-<div align="center"><a href="https://haxe.org/"><img src="images/haxe-logo.png" width="500"></a></div>
+# Awesome Haxe Game Development
 
-# Awesome Haxeゲーム開発 [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-
-クロスプラットフォームのネイティブコード生成に使われる高水準・厳格な型付きプログラミング言語**[Haxe 4](https://haxe.org/)**向けゲーム開発リソースの厳選リスト。
-
-自由に更新してください。
+Haxe Game Developmentを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 * [ゲームエンジン](#game-engines)

@@ -1,19 +1,12 @@
 ---
-title: "AllThingsSmitty/css-protips"
-description: "Canonical snapshot of AllThingsSmitty/css-protips"
+title: "Awesome CSS Protips"
+description: "A curated collection of resources and projects focused on CSS Protips."
 licenseSource: "github-AllThingsSmitty-css-protips-readme-md"
 ---
 
-<div align="center">
-  <img src="./assets/img/bulb.svg" width="200" alt="light bulb icon">
-</div>
+# Awesome CSS Protips
 
-# CSS Protips [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-A collection of tips to help take your CSS skills pro.
-
-> **TIP:**
-> For other great lists check out [@sindresorhus](https://github.com/sindresorhus/)'s curated list of [awesome lists](https://github.com/sindresorhus/awesome/).
+A curated collection of resources and projects focused on CSS Protips.
 
 ## Contents
 

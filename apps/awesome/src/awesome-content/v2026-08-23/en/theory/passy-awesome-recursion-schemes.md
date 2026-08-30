@@ -1,15 +1,12 @@
 ---
-title: "passy/awesome-recursion-schemes"
-description: "Canonical snapshot of passy/awesome-recursion-schemes"
+title: "Awesome Recursion Schemes"
+description: "A curated collection of resources and projects focused on Recursion Schemes."
 licenseSource: "github-passy-awesome-recursion-schemes-readme-md"
 ---
 
-# Awesome Recursion Schemes [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Recursion Schemes
 
-> A curation of useful resources for learning about and using recursion schemes.
-
-Recursion schemes are simple, composable combinators, that automate the process of traversing and recursing through nested data structures.
-
+A curated collection of resources and projects focused on Recursion Schemes.
 
 ## Contents
 

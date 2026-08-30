@@ -1,20 +1,12 @@
 ---
-title: "gokayfem/awesome-vlm-architectures"
-description: "Canonical snapshot of gokayfem/awesome-vlm-architectures"
+title: "Awesome VLM Architectures"
+description: "A curated collection of resources and projects focused on VLM Architectures."
 licenseSource: "github-gokayfem-awesome-vlm-architectures-readme-md"
 ---
 
-# 👁️‍🗨️ Awesome VLM Architectures [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome VLM Architectures
 
-![VLM](https://github.com/gokayfem/Awesome-VLM-Architectures/assets/88277926/5c9ee091-1f37-4d92-8398-a7d4e006c014)
-
-**Awesome VLM Architectures** is a citation-first visual catalog of **155+ Vision-Language Model (VLM/MLLM) architectures**, spanning contrastive encoders, multimodal LLMs, native multimodal models, unified understanding and generation, video, OCR, GUI agents, and embodied AI. Each entry links to primary sources and summarizes the model architecture, modality alignment or fusion, training stages, datasets, and distinctive design choices, with an architectural figure when available.
-
-Use this repository to compare multimodal model families, trace architectural ideas over time, or retrieve grounded references for research and AI-agent workflows. The catalog includes a verified release timeline through July 2026 and covers foundational systems such as CLIP and Flamingo alongside current multimodal reasoning and agentic models. **Expand any model panel for its detailed architecture summary.**
-
-- 📙 <a href="https://github.com/gokayfem/ComfyUI_VLM_nodes">Visit my other repo to try Vision Language Models on ComfyUI</a>
-
-*Last reviewed: August 1, 2026.*
+A curated collection of resources and projects focused on VLM Architectures.
 
 ## Contents
 

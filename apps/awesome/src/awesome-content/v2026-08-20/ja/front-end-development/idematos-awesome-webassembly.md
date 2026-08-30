@@ -1,13 +1,12 @@
 ---
-title: "idematos/awesome-webassembly"
-description: "idematos/awesome-webassembly の定本スナップショット"
+title: "Awesome WebAssembly"
+description: "WebAssemblyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-idematos-awesome-webassembly-readme-md"
 ---
 
-# Awesome WebAssembly [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-<a href="https://webassembly.org/"><img src="media/wasm-logo.png" alt="Wasm Logo" align="right" style="height: 120px; width: 120px"></a>
-WebAssembly のリソース、プロジェクト、コミュニティのキュレーション。
-> [WebAssembly](https://webassembly.org/)（略称 Wasm）は、スタックベース仮想マシンのためのバイナリー命令形式です。Wasm はプログラミング言語のポータブルなコンパイルターゲットとして設計されており、クライアントおよびサーバーアプリケーションをウェブへデプロイできます。
+# Awesome WebAssembly
+
+WebAssemblyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

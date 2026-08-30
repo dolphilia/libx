@@ -1,12 +1,12 @@
 ---
-title: "NPACore/awesome-neuroimaging"
-description: "Canonical snapshot of NPACore/awesome-neuroimaging"
+title: "Awesome Neuroimaging"
+description: "A curated collection of resources and projects focused on Neuroimaging."
 licenseSource: "github-NPACore-awesome-neuroimaging-readme-md"
 ---
 
-# Awesome Neuroimaging [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Neuroimaging
 
-> Exploring, organizing, and analysing brain images and recordings. MR focused.
+A curated collection of resources and projects focused on Neuroimaging.
 
 ## Contents
 

@@ -1,14 +1,12 @@
 ---
-title: "hsiaoyi0504/awesome-cheminformatics"
-description: "Canonical snapshot of hsiaoyi0504/awesome-cheminformatics"
+title: "Awesome Cheminformatics"
+description: "A curated collection of resources and projects focused on Cheminformatics."
 licenseSource: "github-hsiaoyi0504-awesome-cheminformatics-readme-md"
 ---
 
-# Awesome Cheminformatics [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Cheminformatics
 
-> Cheminformatics (also known as chemoinformatics, chemioinformatics and chemical informatics) is the use of computer and informational techniques applied to a range of problems in the field of chemistry.— [Wikipedia](https://en.wikipedia.org/wiki/Cheminformatics)
-
-A curated list of awesome Cheminformatics software, resources, and libraries. Mostly command line based, and free or open-source. Please feel free to [contribute](https://github.com/hsiaoyi0504/awesome-cheminformatics/blob/0e841736b611df8f173525c4f814a55945bc63c7/CONTRIBUTING.md) !
+A curated collection of resources and projects focused on Cheminformatics.
 
 ## Contents
 

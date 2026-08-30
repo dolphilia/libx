@@ -1,11 +1,12 @@
 ---
-title: "dok/awesome-text-editing"
-description: "Canonical snapshot of dok/awesome-text-editing"
+title: "Awesome text editing"
+description: "A curated collection of resources and projects focused on text editing."
 licenseSource: "github-dok-awesome-text-editing-readme-md"
 ---
 
-# Awesome text editing [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-A curated collection of text editing libraries, services, and resources for the web.
+# Awesome text editing
+
+A curated collection of resources and projects focused on text editing.
 
 ## Rich-text editors using contenteditable
 * [Slate](https://github.com/ianstormtaylor/slate) - Rich text editor built on top of React and Immutable

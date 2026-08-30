@@ -1,32 +1,12 @@
 ---
-title: "aorumbayev/awesome-algorand"
-description: "Canonical snapshot of aorumbayev/awesome-algorand"
+title: "Awesome Algorand"
+description: "A curated collection of resources and projects focused on Algorand."
 licenseSource: "github-aorumbayev-awesome-algorand-readme-md"
 ---
 
-# Awesome Algorand [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Algorand
 
-<div align="center">
-<a href="https://github.com/awesome-algorand/awesome-algorand"><img src="https://dweb.link/ipfs/QmfTGB4EFu1FypcZEWWgs3jCmFw75MrqezVV7oQbnbQPyQ" /></a>
-</div>
-<br/>
-<div align="center">
-⚡ A curated list of awesome resources related to the <a href='https://www.algorand.co/'>Algorand</a> Blockchain.
-<br />
-<br />
-Algorand is an open-source, proof of stake Blockchain and smart contract computing platform.
-</div>
-
-<p align="center">
-    <img  src="https://api.visitorbadge.io/api/visitors?path=aorumbayev%2Fawesome-algorand&countColor=%23000000&style=flat" />
-    <a target="_blank" href="https://awesomealgo.com"><img src="https://img.shields.io/badge/url-website-black.svg" /></a>
-    <a target="_blank" href="https://github.com/awesome-algorand/awesome-algorand"><img src="https://img.shields.io/badge/url-repository-black.svg" /></a>
-    <br />
-    <a target="_blank" href="https://rss.com/podcasts/the-awesomealgo-podcast"><img src="https://img.shields.io/badge/podcast-rss-black.svg?color=gold" /></a>
-    <a target="_blank" href="https://coinmarketcap.com/currencies/algorand/"><img src="https://img.shields.io/badge/coinmarketcap-price-black.svg?color=teal" /></a>
-    <a target="_blank" href="https://github.com/awesome-algorand/awesome-algorand"><img src="https://img.shields.io/github/stars/awesome-algorand/awesome-algorand?color=teal" /></a>
-    <a target="_blank" href="https://github.com/awesome-algorand/awesome-algorand/network/members"><img src="https://img.shields.io/github/forks/awesome-algorand/awesome-algorand?color=gold" /></a>
-</p>
+A curated collection of resources and projects focused on Algorand.
 
 ## Contents
 

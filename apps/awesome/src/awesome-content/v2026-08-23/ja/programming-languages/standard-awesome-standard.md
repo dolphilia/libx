@@ -1,14 +1,12 @@
 ---
-title: "standard/awesome-standard"
-description: "standard/awesome-standard の正規スナップショット"
+title: "Awesome Standard"
+description: "Standardを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-standard-awesome-standard-readme-md"
 ---
 
-# Awesome Standard [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Standard
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
-急増する [`standard`](https://github.com/feross/standard) エコシステムのパッケージを記録します！
+Standardを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## standard
 

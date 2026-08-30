@@ -1,20 +1,12 @@
 ---
-title: "osmlab/awesome-openstreetmap"
-description: "osmlab/awesome-openstreetmap の定本スナップショット"
+title: "Awesome OpenStreetMap"
+description: "OpenStreetMapを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-osmlab-awesome-openstreetmap-readme-md"
 ---
 
-# Awesome OpenStreetMap [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome OpenStreetMap
 
-[<img src="osm-logo.svg" align="right" width="100">](https://www.openstreetmap.org/about)
-
-> 優れた [OpenStreetMap](https://www.openstreetmap.org) プロジェクトを集めた一覧です。
-
-OpenStreetMapは、毎日数百万の端末と利用者に使われているオープンな地図です。誰でも無料で編集・利用できます。
-
-この一覧には、OpenStreetMapデータを創造的に活用するプロジェクトと、OpenStreetMapの改善に取り組むプロジェクトを掲載します。
-
-<a href="UNMAINTAINED.md">メンテナンスされていないプロジェクト</a>の一覧もあります。開発者の方は引き継ぎを検討してください。
+OpenStreetMapを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 ## 目次
 
@@ -324,4 +316,3 @@ OpenStreetMapおよびOpenStreetMapロゴはOpenStreetMap Foundationの商標で
 Ken VermetteによるOpenStreetMapロゴはCreative Commons Attribution-ShareAlike 3.0 Licenseの下で使用しています。
 
 [^selfhosted-only]: このプロジェクトはホスト済みインスタンスを提供していないため、自身でデプロイする必要があります。手順はプロジェクトのウェブサイトを参照してください。
-

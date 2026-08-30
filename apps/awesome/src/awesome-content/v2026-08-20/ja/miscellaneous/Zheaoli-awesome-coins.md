@@ -1,19 +1,12 @@
 ---
-title: "Zheaoli/awesome-coins"
-description: "Zheaoli/awesome-coins の正規スナップショット"
+title: "Awesome Crypto Currency Tools & Algorithms"
+description: "Crypto Currency Tools & Algorithmsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Zheaoli-awesome-coins-readme-md"
 ---
 
-# ₿ Awesome Crypto Currency Tools & Algorithms
+# Awesome Crypto Currency Tools & Algorithms
 
-[![GitHub stars](https://img.shields.io/github/stars/kennethreitz/awesome-coins.svg?style=social&label=Star)](https://github.com/kennethreitz/awesome-coins)
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Say Thanks!](https://img.shields.io/badge/SayThanks-!-1EAEDB.svg)](https://saythanks.io/to/kennethreitz)
-
-Wikipediaより:
-> A [cryptocurrency](https://en.m.wikipedia.org/wiki/Cryptocurrency) is a digital asset designed to work as a medium of exchange using cryptography to secure the transactions and to control the creation of additional units of the currency.
-
-異なる暗号通貨では多くのアルゴリズムが使用される。この文書は暗号通貨で使われるアルゴリズムを参照し、コイン管理に役立つサービスとユーティリティのリストを提供する。
+Crypto Currency Tools & Algorithmsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 始める前に…
 

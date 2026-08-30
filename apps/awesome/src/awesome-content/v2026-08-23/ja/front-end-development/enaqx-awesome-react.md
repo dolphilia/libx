@@ -1,13 +1,12 @@
 ---
-title: "enaqx/awesome-react"
-description: "enaqx/awesome-react の正規スナップショット"
+title: "Awesome React"
+description: "Reactを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-enaqx-awesome-react-readme-md"
 ---
 
-# Awesome React [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome React
 
-Reactエコシステムに関する優れた情報を集めたリストです。
-
+Reactを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 - [React](#react)
   - [React一般資料](#react-general-resources)

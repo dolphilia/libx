@@ -1,16 +1,13 @@
 ---
-title: "faroit/awesome-python-scientific-audio"
-description: "faroit/awesome-python-scientific-audio の正規スナップショット"
+title: "Awesome Python for Scientific Audio"
+description: "Python for Scientific Audioを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-faroit-awesome-python-scientific-audio-readme-md"
 ---
 
-<a id="python-for-scientific-audio"></a>
-# 科学音響のための Python
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://github.com/faroit/awesome-python-scientific-audio/workflows/CI/badge.svg)](https://github.com/faroit/awesome-python-scientific-audio/actions?query=workflow%3ACI+branch%3Amaster+event%3Apush)
+# Awesome Python for Scientific Audio
 
-このリポジトリは、音響・音楽アプリケーションの科学研究で利用される Python ソフトウェアとツールを網羅的に厳選してまとめることを目的としています。
+Python for Scientific Audioを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="contents"></a>
 ## 目次
 
 * [音響関連パッケージ](#audio-related-packages)

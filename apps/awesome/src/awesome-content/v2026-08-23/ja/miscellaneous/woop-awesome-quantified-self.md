@@ -1,23 +1,13 @@
 ---
-title: "woop/awesome-quantified-self"
-description: "woop/awesome-quantified-self の正規スナップショット"
+title: "Awesome Quantified Self"
+description: "Quantified Selfを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-woop-awesome-quantified-self-readme-md"
 ---
 
-<a id="awesome-quantified-self"></a>
-# Awesome Quantified Self [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Quantified Self
 
+Quantified Selfを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-# [<img src="https://cdn.rawgit.com/willempienaar/awesome-quantified-self/master/awesome-quantified-self.png">](https://github.com/willempienaar/awesome-quantified-self)
-
-
-> 優れたQuantified Self関連資料を厳選したリストです。
-
-[Quantified Self](https://en.wikipedia.org/wiki/Quantified_Self) は、日常生活における入力（食事や周囲の空気質など）、状態（気分、覚醒度、血中酸素濃度など）、能力（精神面・身体面）に関するデータ取得へ技術を取り入れる運動です。
-
-貢献を歓迎します。Pull Requestでリンクを追加するか、Issueを作成して議論を始めてください。
-
-<a id="contents"></a>
 ## 目次
 
 - [ウェブサイトと資料](#websites-and-resources)

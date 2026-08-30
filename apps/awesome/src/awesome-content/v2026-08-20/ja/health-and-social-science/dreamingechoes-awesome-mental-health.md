@@ -1,42 +1,12 @@
 ---
-title: "dreamingechoes/awesome-mental-health"
-description: "dreamingechoes/awesome-mental-health の定本スナップショット"
+title: "Awesome Mental Health"
+description: "Mental Healthを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dreamingechoes-awesome-mental-health-readme-md"
 ---
 
+# Awesome Mental Health
 
-<p align="center"><img src="./media/logo.png"></p>
-
-<p align="center">
-  <a href="https://github.com/sindresorhus/awesome"><img alt="awesome" src="https://awesome.re/badge.svg"/></a>
-  <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"/>
-</p>
-
----
-
-## 概要
-
-✨ ソフトウェア業界のメンタルヘルスに焦点を当てた、優れた記事、ツール、リソースの厳選コレクション。✨
-
-**メンタルヘルス**は、私たちの総合的なウェルビーイングを支える基盤です。感情、心理、社会面の安定性を包含し、考え方、感じ方、行動、人との関わり方、意思決定に影響します。長時間労働、高いプレッシャー、リモートまたは孤立した労働環境が一般的なテック業界では、メンタルヘルスを支えることは個人の優先事項であり、同時に共同の責任でもあります。
-
-このリストは、認知を高め、セルフケアを促進し、スティグマを軽減し、個人や組織がメンタルヘルス上の課題に対処できるようにするリソースを集めています。ストレスや不安の管理から、職場でのレジリエンスや思いやりの育成まで、開発者、デザイナー、マネージャーなどテック業界で働くすべての人を支援することを目指します。
-
-次のようなトピックを扱いますが、これらに限定されません。
-
-* バーンアウトと回復
-* リモートワークにおけるうつと不安
-* マインドフルネスとストレス軽減
-* インポスター症候群と自信喪失
-* 心理的安全性のあるエンジニアリング文化の構築
-
-> **免責事項:** このリストはセルフヘルプと教育用リソースのコレクションです。私たちが役立つと感じたものを多数含みますが、専門家によるメンタルヘルスケアの代わりにはなりません。回復とウェルビーイングには、セラピー、投薬、臨床的支援が不可欠な場合が多くあります。
->
-> あなた自身や知人が危機的状況にある場合は、地域の緊急サービスまたはメンタルヘルスの専門家へ直ちに助けを求めてください。国際的な危機支援は次から確認できます。
-> * 🌍 [To Write Love on Her Arms – 支援を探す](https://twloha.com/find-help/international-resources/)
-> * 🌐 [International Association for Suicide Prevention – Crisis Centres](https://www.iasp.info/resources/Crisis_Centres/)
-
----
+Mental Healthを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

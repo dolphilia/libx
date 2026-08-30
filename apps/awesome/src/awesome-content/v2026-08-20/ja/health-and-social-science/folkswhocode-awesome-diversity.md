@@ -1,19 +1,12 @@
 ---
-title: "folkswhocode/awesome-diversity"
-description: "folkswhocode/awesome-diversity の定本スナップショット"
+title: "Awesome Diversity"
+description: "Diversityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-folkswhocode-awesome-diversity-readme-md"
 ---
 
 # Awesome Diversity
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Mencionado en Comunidad Tecnológica](https://github.com/comunidad-tecnologica/comunidad-tecnologica/blob/master/img/comunidad-tecnologica.svg)](https://github.com/comunidad-tecnologica/comunidad-tecnologica)
-
-:sparkles: テクノロジー分野のダイバーシティに関する優れた記事、Webサイト、資料を厳選したリストです。:sparkles:
-
-このリストには、テクノロジー分野のダイバーシティを中心に、投稿、講演、実行可能な資料、カンファレンス、ソーシャルメディア上の支援者など、多様な資料を収録しています。日々の行動を改善してテクノロジー業界をより包摂的な場にしたい企業・コミュニティと、この分野のダイバーシティや公平性についてさらに読みたい個人が、情報へすばやくアクセスできることを目指します。
-
-**常に作業進行中です。**
+Diversityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

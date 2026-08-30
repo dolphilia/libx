@@ -1,14 +1,12 @@
 ---
-title: "iipc/awesome-web-archiving"
-description: "Canonical snapshot of iipc/awesome-web-archiving"
+title: "Awesome Web Archiving"
+description: "A curated collection of resources and projects focused on Web Archiving. The upstream list is archived or no longer maintained."
 licenseSource: "github-iipc-awesome-web-archiving-readme-md"
 ---
 
+# Awesome Web Archiving
 
-# Awesome Web Archiving [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-Web archiving is the process of collecting portions of the World Wide Web to ensure the information is preserved in an archive for future researchers, historians, and the public. Web archivists typically employ Web crawlers for automated capture due to the massive scale of the Web. Ever-evolving Web standards require continuous evolution of archiving tools to keep up with the changes in Web technologies to ensure reliable and meaningful capture and replay of archived web pages.
-
+A curated collection of resources and projects focused on Web Archiving. The upstream list is archived or no longer maintained.
 
 ## Contents
 

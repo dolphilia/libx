@@ -1,21 +1,12 @@
 ---
-title: "substrate-developer-hub/awesome-substrate"
-description: "Canonical snapshot of substrate-developer-hub/awesome-substrate"
+title: "Awesome Substrate"
+description: "A curated collection of resources and projects focused on Substrate."
 licenseSource: "github-substrate-developer-hub-awesome-substrate-readme-md"
 ---
 
-# Awesome Substrate [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Substrate
 
-> Please see [`awesome-dot`](https://github.com/haquefardeen/awesome-dot) for a similar list that is more general to the entire Polkadot ecosystem, not just Substrate.
-
----
-
-> An awesome list is a list of awesome things curated by the Substrate community.
-
-Substrate is a framework for building upgradable, modular and efficient
-blockchains. Substrate is an open-source library of [Rust](https://www.rust-lang.org/) code that is
-maintained by [Parity Technologies](https://www.parity.io/). Source code available on
-[GitHub](https://github.com/paritytech/substrate).
+A curated collection of resources and projects focused on Substrate.
 
 ## Contents
 

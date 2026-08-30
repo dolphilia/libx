@@ -1,17 +1,13 @@
 ---
-title: "stoeffel/awesome-fp-js"
-description: "stoeffel/awesome-fp-js の正規スナップショット"
+title: "Awesome FP JS"
+description: "FP JSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-stoeffel-awesome-fp-js-readme-md"
 ---
 
-<a id="awesome-fp-js"></a>
-# Awesome FP JS [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome FP JS
 
-JavaScript向けの優れた[関数型プログラミング](https://en.wikipedia.org/wiki/Functional_programming)コードと学習資料を厳選したリストです。JavaScriptはマルチパラダイム言語であり、さまざまなスタイルで記述できます。これらの資料を通じて、JavaScriptが備える_関数型_プログラミングの機能をより活用できるよう支援します。
+FP JSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-関数型プログラミングは、計算を式の評価としてモデル化する[プログラミングスタイル](https://wiki.haskell.org/Functional_programming)です。実行時にグローバル状態を変更する文でプログラムを構成する命令型プログラミングとは対照的です。一般に可変状態を避け、_副作用のない_関数と_不変_データを重視します。これにより、合成可能で宣言的かつ推論しやすいプログラムの記述を促します。
-
-<a id="table-of-contents"></a>
 ##### 目次
 
 * [ライブラリ](#libraries)

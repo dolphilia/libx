@@ -1,12 +1,12 @@
 ---
-title: "igorbarinov/awesome-data-engineering"
-description: "igorbarinov/awesome-data-engineering の定本スナップショット"
+title: "Awesome Data Engineering"
+description: "Data Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-igorbarinov-awesome-data-engineering-readme-md"
 ---
 
-# Awesome Data Engineering [![Awesome](https://awesome.re/badge-flat2.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Data Engineering
 
-> データエンジニアリングに関する優れた技術・ツール・資料を集めた一覧です。
+Data Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

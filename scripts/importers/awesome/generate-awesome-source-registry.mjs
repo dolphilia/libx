@@ -10,12 +10,7 @@ const project =
 if (project !== 'awesome') throw new Error('単一アプリ統合後はproject=awesomeだけを生成できます');
 const configPath = path.join(rootDir, 'apps', project, 'src/config/project.config.jsonc');
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
-const historicalLockPath = path.join(
-  notesRootDir,
-  'snapshots',
-  'v2026-08-20',
-  'SOURCES.lock.json'
-);
+const historicalLockPath = path.join(notesRootDir, 'snapshots', 'v2026-08-20', 'SOURCES.lock.json');
 const historicalLock = fs.existsSync(historicalLockPath) ? readJson(historicalLockPath) : null;
 const dryRun = process.argv.includes('--dry-run');
 const licenseUrls = {

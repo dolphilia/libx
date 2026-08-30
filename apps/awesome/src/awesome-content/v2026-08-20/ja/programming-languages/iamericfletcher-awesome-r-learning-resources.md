@@ -1,32 +1,12 @@
 ---
-title: "iamericfletcher/awesome-r-learning-resources"
-description: "iamericfletcher/awesome-r-learning-resources の定本スナップショット"
+title: "Awesome R Learning Resources"
+description: "R Learning Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-iamericfletcher-awesome-r-learning-resources-readme-md"
 ---
 
-<div align="center">
-	<div>
-		<a href=https://www.r-project.org/about.html><img width="400" id="im" src=https://user-images.githubusercontent.com/64165327/95934136-26177f00-0d9e-11eb-8bdc-748ee65ad17a.png></a>
-	</div>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
-</div>
+# Awesome R Learning Resources
 
-<br>
-
-> `Awesome R Learning Resources` リポジトリは、統計計算とグラフィックスのためのプログラミング言語・環境である `R` への理解を、あらゆる技能レベルと背景の利用者が深められるよう支援するものです。
-
-<br>
-
-> `R` `Discord` サーバーは、`R` の愛好家、プログラマー、統計家、データサイエンティスト、学生のための親しみやすい専用コミュニティです。ほかの useR と交流したい、優れたデータ可視化を共有したい、統計の課題で助けが必要という方に適した場所です。
-
-<div align="center">
-	R Discord サーバーへ参加するには、下の discoRd バッジをクリックしてください。<br>
-<a href="https://discord.gg/6fcReuUHgg">
-<img alt="Discord" src="https://img.shields.io/discord/676433858782298142?label=discoRd%20server&logo=R&logoColor=blue"></a>
-<br>
-</div>
-<br>
+R Learning Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## **目次**
 - [トピック分野](#topic-areas)

@@ -1,14 +1,12 @@
 ---
-title: "LucasBassetti/awesome-less"
-description: "Canonical snapshot of LucasBassetti/awesome-less"
+title: "Awesome Less"
+description: "A curated collection of resources and projects focused on Less."
 licenseSource: "github-LucasBassetti-awesome-less-readme-md"
 ---
 
-# Awesome Less [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Less
 
-[<img src="https://cdn.rawgit.com/LucasBassetti/awesome-less/14437854/less-logo.svg" align="right" height="80">](http://lesscss.org/)
-
-> Curated list of awesome Less frameworks, libraries, style guides, articles, and resources. The main idea is that everyone can contribute here, so we can center all the informations about Less and keep up-to-date.
+A curated collection of resources and projects focused on Less.
 
 ## Contents
 - [About](#about)

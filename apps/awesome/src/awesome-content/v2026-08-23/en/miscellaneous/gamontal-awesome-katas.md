@@ -1,13 +1,12 @@
 ---
-title: "gamontal/awesome-katas"
-description: "Canonical snapshot of gamontal/awesome-katas"
+title: "Awesome Katas"
+description: "A curated collection of resources and projects focused on Katas."
 licenseSource: "github-gamontal-awesome-katas-readme-md"
 ---
 
-![banner](https://github.com/gmontalvoriv/katas/blob/master/images/kata_guruma.png)
+# Awesome Katas
 
-# Awesome Katas [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-> A curated list of code katas
+A curated collection of resources and projects focused on Katas.
 
 ## Table of Contents
 

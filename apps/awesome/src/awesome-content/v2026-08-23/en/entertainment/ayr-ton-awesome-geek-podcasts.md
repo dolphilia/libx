@@ -1,18 +1,12 @@
 ---
-title: "ayr-ton/awesome-geek-podcasts"
-description: "Canonical snapshot of ayr-ton/awesome-geek-podcasts"
+title: "Awesome Geek Podcasts"
+description: "A curated collection of resources and projects focused on Geek Podcasts."
 licenseSource: "github-ayr-ton-awesome-geek-podcasts-readme-md"
 ---
 
----
-title: Awesome Geek Podcasts
-permalink: /
----
+# Awesome Geek Podcasts
 
-
-# Awesome Geek Podcasts [![awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![](https://github.com/ayr-ton/awesome-geek-podcasts/workflows/Awesome%20Bot/badge.svg)](https://github.com/ayr-ton/awesome-geek-podcasts/actions)
-
-A curated list of podcasts we like to listen to.
+A curated collection of resources and projects focused on Geek Podcasts.
 
 # Contents
 

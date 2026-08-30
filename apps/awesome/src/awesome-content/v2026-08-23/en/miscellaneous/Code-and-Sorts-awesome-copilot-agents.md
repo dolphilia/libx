@@ -1,34 +1,12 @@
 ---
-title: "Code-and-Sorts/awesome-copilot-agents"
-description: "Canonical snapshot of Code-and-Sorts/awesome-copilot-agents"
+title: "Awesome Copilot Agents"
+description: "A curated collection of resources and projects focused on Copilot Agents."
 licenseSource: "github-Code-and-Sorts-awesome-copilot-agents-readme-md"
 ---
 
+# Awesome Copilot Agents
 
-
-#
-
-
-<div align="center">
-  <img src="./.refs/imgs/awesome-github-copilot.svg" alt="Awesome Copilot Agents" height="300">
-</div>
-
-<h4 align="center">✨ A curated list of awesome GitHub instructions, prompt, skills, MCPs and custom agent markdown files for enhancing your GitHub Copilot AI experience.</h4>
-
-
-
-<p align="center">
-  <a href="https://awesome.re">
-    <img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-  </a>
-</p>
-
-<hr>
-
-<p align="center">
- <a href="CONTRIBUTING.md">📖 Contribution Guide</a>
-</p>
-<br>
+A curated collection of resources and projects focused on Copilot Agents.
 
 ## Contents
 

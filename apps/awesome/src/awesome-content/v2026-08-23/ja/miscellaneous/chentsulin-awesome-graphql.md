@@ -1,14 +1,12 @@
 ---
-title: "chentsulin/awesome-graphql"
-description: "GraphQLの実装、クライアント、サーバー、ツール、サービス、学習資料集"
+title: "Awesome graphql GitHub Actions Workflow"
+description: "graphql GitHub Actions Workflowを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-chentsulin-awesome-graphql-readme-md"
 ---
 
-# awesome-graphql [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/chentsulin/awesome-graphql/awesome_bot.yml?logo=githubactions&label=Awesome%20Bot)
+# Awesome graphql GitHub Actions Workflow
 
-> Awesome list of GraphQL
-
-このリストに貢献したい（ぜひお願いします）場合は、私にプルリクエストを送ってください。
+graphql GitHub Actions Workflowを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 {#table-of-contents}
 

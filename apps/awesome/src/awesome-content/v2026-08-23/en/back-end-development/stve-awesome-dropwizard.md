@@ -1,21 +1,12 @@
 ---
-title: "stve/awesome-dropwizard"
-description: "Canonical snapshot of stve/awesome-dropwizard"
+title: "Awesome Dropwizard"
+description: "A curated collection of resources and projects focused on Dropwizard."
 licenseSource: "github-stve-awesome-dropwizard-readme-md"
 ---
 
-# Awesome Dropwizard [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)][awesome]
+# Awesome Dropwizard
 
-[<img src="https://cdn.rawgit.com/stve/awesome-dropwizard/master/dropwizard-hat.png" align="right" width="50">][dropwizard]
-
-[awesome]: https://github.com/sindresorhus/awesome
-[dropwizard]: http://www.dropwizard.io
-
-> Useful resources for creating apps with [Dropwizard](http://www.dropwizard.io)
-
-### Contributing
-
-Please take a quick look at the [contribution guidelines](https://github.com/stve/awesome-dropwizard/blob/ae92b8db9ca32455f5162d0d65c9f22162f82dd8/CONTRIBUTING.md) first.
+A curated collection of resources and projects focused on Dropwizard.
 
 ## Editor Support
 

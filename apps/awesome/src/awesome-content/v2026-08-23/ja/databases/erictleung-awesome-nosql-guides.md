@@ -1,19 +1,12 @@
 ---
-title: "erictleung/awesome-nosql-guides"
-description: "erictleung/awesome-nosql-guides の日本語訳（人手レビュー前）"
+title: "Awesome NoSQL Guides"
+description: "NoSQL Guidesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-erictleung-awesome-nosql-guides-readme-md"
 ---
 
-# Awesome NoSQL Guides [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome NoSQL Guides
 
-> NoSQLデータベースを*利用する*際のリソース・リンク、および採用判断時に検討すべき事項を集めたリスト。
-
-NoSQLデータベースの基本的な定義は、Wikipediaで次のように説明されています:
-
-> 「NoSQL（元は『non SQL』または『non relational』を指す）データベースは、リレーショナルデータベースで使われる表形式の関係とは異なる方法でモデル化されたデータを、保存・取得する仕組みを提供する。」
-
-実際のNoSQLデータベースについては、[こちら](https://github.com/sindresorhus/awesome#databases)、[こちら](https://hostingdata.co.uk/nosql-database/)、[こちら](https://db-engines.com/en/ranking)、[こちら](https://dbdb.io/)、[こちら](https://github.com/igorbarinov/awesome-data-engineering#databases)、または[こちら](https://github.com/kahun/awesome-sysadmin#nosql)を参照してください。なお、リレーショナルデータベース管理システムの[NoSQL](http://www.strozzi.it/cgi-bin/CSA/tw7/I/en_US/nosql/Home%20Page)と混同しないでください。
-
+NoSQL Guidesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

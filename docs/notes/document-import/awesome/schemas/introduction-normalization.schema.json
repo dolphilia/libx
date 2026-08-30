@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://libx.dev/schemas/awesome-introduction-normalization.schema.json",
+  "title": "Awesome introduction normalization decisions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "snapshotVersion", "entries"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "snapshotVersion": { "type": "string", "pattern": "^v[0-9]{4}-[0-9]{2}-[0-9]{2}(?:-[0-9]+)?$" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sourceId",
+          "repository",
+          "categoryId",
+          "slug",
+          "paths",
+          "topic",
+          "metadataOnly",
+          "confidence",
+          "importantStatus",
+          "evidence",
+          "normalized",
+          "dispositions",
+          "reviewStatus",
+          "exception"
+        ],
+        "properties": {
+          "sourceId": { "type": "string", "minLength": 1 },
+          "repository": { "type": "string", "minLength": 1 },
+          "categoryId": { "type": "string", "minLength": 1 },
+          "slug": { "type": "string", "minLength": 1 },
+          "paths": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["en", "ja"],
+            "properties": {
+              "en": { "type": "string", "minLength": 1 },
+              "ja": { "type": "string", "minLength": 1 }
+            }
+          },
+          "topic": { "type": "string", "minLength": 1 },
+          "metadataOnly": { "type": "boolean" },
+          "confidence": { "enum": ["high", "medium", "low"] },
+          "importantStatus": { "enum": [null, "archived-or-unmaintained"] },
+          "inheritsFrom": {
+            "type": "string",
+            "pattern": "^v[0-9]{4}-[0-9]{2}-[0-9]{2}(?:-[0-9]+)?$"
+          },
+          "evidence": { "$ref": "#/$defs/localesEvidence" },
+          "normalized": { "$ref": "#/$defs/localesNormalized" },
+          "dispositions": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "reviewStatus": {
+            "enum": ["generated-candidate", "automated-evidence-approved", "reviewed"]
+          },
+          "exception": { "type": ["null", "string"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "languageEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "originalH1",
+        "originalPrefixSha256",
+        "retainedSuffixSha256",
+        "boundaryKind",
+        "flags"
+      ],
+      "properties": {
+        "originalH1": { "type": "array", "items": { "type": "string" } },
+        "originalPrefixSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "acceptedOriginalPrefixSha256": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "uniqueItems": true
+        },
+        "retainedSuffixSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "boundaryKind": { "type": "string", "minLength": 1 },
+        "flags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "localesEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["en", "ja"],
+      "properties": {
+        "en": { "$ref": "#/$defs/languageEvidence" },
+        "ja": { "$ref": "#/$defs/languageEvidence" }
+      }
+    },
+    "languageNormalized": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "summary"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string", "minLength": 1 }
+      }
+    },
+    "localesNormalized": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["en", "ja"],
+      "properties": {
+        "en": { "$ref": "#/$defs/languageNormalized" },
+        "ja": { "$ref": "#/$defs/languageNormalized" }
+      }
+    }
+  }
+}

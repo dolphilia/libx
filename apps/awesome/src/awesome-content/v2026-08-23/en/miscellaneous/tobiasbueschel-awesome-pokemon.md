@@ -1,33 +1,12 @@
 ---
-title: "tobiasbueschel/awesome-pokemon"
-description: "Canonical snapshot of tobiasbueschel/awesome-pokemon"
+title: "Awesome Pokémon"
+description: "A curated collection of resources and projects focused on Pokémon."
 licenseSource: "github-tobiasbueschel-awesome-pokemon-readme-md"
 ---
 
-<p align="center">
-  <a href="https://github.com/tobiasbueschel/awesome-pokemon/">
-    <img alt="Awesome Pokémon" src="https://raw.githubusercontent.com/tobiasbueschel/awesome-pokemon/0b70b83c476f85696577b07c7083eb21f04d2dc8/logo.png" width="700">
-  </a>
-</p>
+# Awesome Pokémon
 
-<div align="center">
-
-<p align="center">
-  A curated list of awesome <a href="http://www.pokemon.com/">Pokémon</a> & <a href="http://www.pokemongo.com/">Pokémon GO</a> resources, tools and more.
-</p>
-
-<p align="center">
-  <a href="https://github.com/sindresorhus/awesome"><img alt="Awesome Badge" src="https://awesome.re/badge-flat.svg"></a>
-  <a href="https://github.com/tobiasbueschel/awesome-pokemon/pulls"><img alt="Pull Requests Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square"></a>
-</p>
-
-<p>
-<i>Looking for contributors. Submit a pull request if you have something to add :) </i><br>
-Please check the <a href="https://github.com/tobiasbueschel/awesome-pokemon/blob/master/contributing.md">contribution guidelines</a> for info on formatting and writing pull requests.
-</p>
-
-</div>
-
+A curated collection of resources and projects focused on Pokémon.
 
 ## Contents
 - [Development Projects](#development-projects)

@@ -1,24 +1,12 @@
 ---
-title: "stevemao/awesome-git-addons"
-description: "Git CLIを拡張するコマンド、ワークフロー、分析、支援ツールの一覧"
+title: "Awesome git addons"
+description: "git addonsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-stevemao-awesome-git-addons-readme-md"
 ---
 
-# Awesome git addons [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome git addons
 
-git CLIを拡張・強化するアドオンの一覧。
-
-```
-$ git bla
-Something awesome happens!
-```
-
-> _“You don’t have to know everything. You simply need to know where to find it when necessary.” (John Brunner)_
-
-[awesome](https://github.com/sindresorhus/awesome)のリスト機能をインスピレーションとして作成。
-
-**注意**: 一部のコマンドはインストール後に即座に動作しない場合があります。正しい動作を実現するには、post-installスクリプトを実行するか、手動でエイリアスを設定する必要がある場合があります。
-
+git addonsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Table of Contents
 

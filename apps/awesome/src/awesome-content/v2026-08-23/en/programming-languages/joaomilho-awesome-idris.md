@@ -1,19 +1,12 @@
 ---
-title: "joaomilho/awesome-idris"
-description: "Canonical snapshot of joaomilho/awesome-idris"
+title: "Awesome Idris"
+description: "A curated collection of resources and projects focused on Idris."
 licenseSource: "github-joaomilho-awesome-idris-readme-md"
 ---
 
+# Awesome Idris
 
-
-
-# Awesome Idris [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-[<img src="https://www.idris-lang.org/logo/logo.png" align="right" width="160">](https://www.idris-lang.org/)
-
-> An auxiliary list of awesome [Idris](https://www.idris-lang.org/) resources.
-
-Idris is a general purpose pure functional programming language with dependent types. Dependent types allow types to be predicated on values, meaning that some aspects of a program’s behaviour can be specified precisely in the type. It is compiled, with eager evaluation. Its features are influenced by Haskell and ML.
+A curated collection of resources and projects focused on Idris.
 
 ## Contents
 

@@ -1,45 +1,12 @@
 ---
-title: "cjbarber/ToolsOfTheTrade"
-description: "開発・運営チームが利用するSaaS、業務ツール、インフラサービスの一覧"
+title: "Awesome Hacker News Tools of the Trade"
+description: "Hacker News Tools of the Tradeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-cjbarber-ToolsOfTheTrade-readme-md"
 ---
 
-# Hacker News Tools of the Trade [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f3/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Hacker News Tools of the Trade
 
-> [Hacker News](https://news.ycombinator.com)で共有された仕事道具の一覧。
-
-##### Background
-
-2010年、Delicious創業者のJoshua SchachterはHacker Newsへ[次の投稿](https://news.ycombinator.com/item?id=1769910)を行いました。
-
-> Deliciousを始めた当初は、CVS、メール、メーリングリストなど、ほとんどのサービスを自分たちでホストする必要がありました。
->
-> 今では、その多くをSaaSとして利用できます。自前でホストする代わりに、皆さんはどのようなツールやサービスを使っていますか？
->
-> （EC2やHerokuのような本番サービスの話ではありません。それは別のスレッドで扱えます。）
-
-2013年、Shahzad Qureshiは[次の投稿](https://news.ycombinator.com/item?id=5235137)を行いました。
-
-> 数年前、Joshua Schachterは便利なホスト型サービスを議論するため、HNでこのスレッドを始めました：https://news.ycombinator.com/item?id=1769910
->
-> スレッドには、サービスの配備や開発に大いに役立つ興味深いSaaSが数多く寄せられました。
->
-> それから3年が経ちました。現在は何があるでしょうか？
-
-前のスレッドに貢献してくれた方々に、多くの感謝を申し上げます。garrettdimon、espeed、netshade、cmadanのほか、名前を挙げられなかった方々にも感謝します。
-
-##### Now
-
-ハッカー・ニュース、アンジェルリスト、クォーラからさらにデータを収集し、2015年以降のバージョンを作成しました。このリストには、自前でホストするサービスも含まれています。
-
-GitHubにそのような理由がある！プルリクエストを提出してください。
-
-## Supported with ❤️ by [Instabug](https://instabug.com/android/sdk?utm_source=toolsofthetrade&utm_medium=spon&utm_content=header)
-### Understand How Your App is Doing with Real-Time Contextual Insights From Your Users
-[![instabug-github](https://user-images.githubusercontent.com/10850625/65512691-fd45f280-ded9-11e9-8921-3528b98c30a7.png)](https://instabug.com/android/sdk?utm_source=toolsofthetrade&utm_medium=spon&utm_content=banner)
->Instabug helps Android developers easily collect bugs and feedback from beta testers and users to iterate faster and ship quality apps. Instabug automatically attaches screenshots, device details, network logs, repro steps, and tons of other critical insights needed to resolve issues and prioritize product backlogs.
-> Mobile teams accelerate their workflows by seamlessly integrating with third-party tools like Github, Jira, Slack, Zendesk and much more. [Instabug is offering Tools of the Trade community an exclusive 15% discount on all paid plans. Get Started!](https://instabug.com/android/sdk/?utm_source=toolsofthetrade&utm_medium=spon&utm_content=get-started)
->[![](https://instabug-ga.appspot.com/UA-41982088-6/github/ToolsOfTheTrade?pixel)](https://instabug.com)
+Hacker News Tools of the Tradeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Contents
 * Business

@@ -1,20 +1,12 @@
 ---
-title: "sjfricke/awesome-webgl"
-description: "sjfricke/awesome-webgl の定本スナップショット"
+title: "Awesome WebGL"
+description: "WebGLを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sjfricke-awesome-webgl-readme-md"
 ---
 
-# Awesome WebGL（厳選リスト） [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome WebGL
 
-[<img src="webgl_logo.png" align="right" width="175">](https://www.khronos.org/webgl/)
-
-これは優れた WebGL ライブラリ、リソースなどを集めた厳選リストです。
-
-## WebGL とは
-
-WebGL（Web Graphics Library）は、プラグインを使わずに対応する任意の Web ブラウザー内で対話的な 3D および 2D コンピューターグラフィックスを描画する JavaScript API です。WebGL はブラウザーの Web 標準に完全に統合されており、Web ページの canvas の一部として、物理演算、画像処理、エフェクトを GPU で高速化できます。
-
-WebGL 要素は他の HTML 要素と組み合わせたり、ページの他の部分や背景と合成したりできます。WebGL プログラムは JavaScript で書かれた制御コードと、コンピューターの Graphics Processing Unit（GPU）で実行されるシェーダーコードから構成されます。
+WebGLを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 * [WebGL](#webgl)
@@ -364,4 +356,3 @@ Travis CI testing automation thanks to [awesome_bot](https://github.com/dkhamsin
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 To the extent possible under law, [Spencer Fricke](https://github.com/sjfricke) has waived all copyright and related or neighboring rights to this work.
-

@@ -1,14 +1,12 @@
 ---
-title: "keller-mark/awesome-biological-visualizations"
-description: "Canonical snapshot of keller-mark/awesome-biological-visualizations"
+title: "Awesome Biological Visualizations"
+description: "A curated collection of resources and projects focused on Biological Visualizations."
 licenseSource: "github-keller-mark-awesome-biological-visualizations-readme-md"
 ---
 
-# Awesome Biological Visualizations [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Biological Visualizations
 
-> Interactive visualization of biological data on the web.
-
-Web-based biology-related visualization tools are often scattered across the internet and difficult to discover. They may be found on GitHub, Twitter, or linked from scientific papers. These tools can be very useful to scientists looking to visualize biological data in the context of diseased or healthy humans or model organisms.
+A curated collection of resources and projects focused on Biological Visualizations.
 
 ## Contents
 - [Cancer](#cancer)

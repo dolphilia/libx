@@ -1,15 +1,12 @@
 ---
-title: "mjhea0/awesome-flask"
-description: "Canonical snapshot of mjhea0/awesome-flask"
+title: "Awesome Flask"
+description: "A curated collection of resources and projects focused on Flask."
 licenseSource: "github-mjhea0-awesome-flask-readme-md"
 ---
 
-# Awesome Flask [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Flask
 
-> A curated list of awesome things related to Flask.
-
-
-[Flask](https://flask.palletsprojects.com/) is a lightweight WSGI web application framework written in Python.
+A curated collection of resources and projects focused on Flask.
 
 ## Contents
 

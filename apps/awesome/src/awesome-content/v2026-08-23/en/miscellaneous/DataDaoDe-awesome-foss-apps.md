@@ -1,16 +1,12 @@
 ---
-title: "DataDaoDe/awesome-foss-apps"
-description: "Canonical snapshot of DataDaoDe/awesome-foss-apps"
+title: "Awesome FOSS apps"
+description: "A curated collection of resources and projects focused on FOSS apps."
 licenseSource: "github-DataDaoDe-awesome-foss-apps-readme-md"
 ---
 
-# Awesome FOSS apps [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome FOSS apps
 
-> A curated list of awesome production grade free and open source software organized by category.
-
-This list is for developers who are looking for non-trivial quality applications they can analyze and learn from.
-
-*Inspired by Sindre Sorhus's [awesome](https://github.com/sindresorhus/awesome).*
+A curated collection of resources and projects focused on FOSS apps.
 
 ## TOC
 

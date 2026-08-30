@@ -1,14 +1,12 @@
 ---
-title: "dstdev/awesome-hpc"
-description: "dstdev/awesome-hpcの正規スナップショット"
+title: "Awesome HPC"
+description: "HPCを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dstdev-awesome-hpc-readme-md"
 ---
 
-# Awesome HPC [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome HPC
 
-エンジニアと管理者向けの高性能計算ツールおよびリソースです。
-
-[高性能計算（HPC）](https://en.wikipedia.org/wiki/Supercomputer)は、科学、工学、ビジネスの大規模問題を解決するため、一般的なデスクトップコンピューターやワークステーションよりはるかに高い性能を実現するよう計算能力を集約する実践を、最も広い意味で指します。
+HPCを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 <details>

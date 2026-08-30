@@ -1,22 +1,12 @@
 ---
-title: "ripienaar/free-for-dev"
-description: "開発者向けに無料枠を提供するクラウド、API、監視、CI、データベース等のサービス集"
+title: "Awesome free-for.dev"
+description: "free-for.devを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ripienaar-free-for-dev-readme-md"
 ---
 
-# free-for.dev
+# Awesome free-for.dev
 
-開発者やオープンソースの作成者にとって、無料プランを提供するサービスは多く存在していますが、それらすべてを確認するには時間がかかり、慎重な判断を下す必要があります。
-
-このリストは、ソフトウェア（SaaS、PaaS、IaaSなど）およびその他のサービスに無料開発者プランを提供しているものについてのリストです。
-
-このリストの範囲は、インフラ開発者（システム管理者、DevOps実務者など）が実際に役立つものに限定されています。私たちが存在する無料サービスをすべて愛していますが、テーマに沿った内容を維持することが望ましいと考えています。場合によっては境界が曖昧なので、私の意見に基づいています。もし私があなたの貢献を採用しないことに不満を感じたなら、ごめんなさい。
-
-このリストは、1600人以上の人が行ったプルリクエスト、レビュー、アイデア、および作業の結果です。さらに貢献するには、[Pull Requests](https://github.com/ripienaar/free-for-dev)を送って、新たにサービスを追加するか、提供内容が変更または廃止されたサービスを削除するようにしてください。
-
-[![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/ripienaar/free-for-dev)
-
-**NOTE**: 本リストは、セルフホストソフトウェアには適用されません。対象となるサービスは、無料プランを提供している必要があります。無料プランは、時間単位で割り当てられている場合は少なくとも1年間の期間を含む必要があります。また、セキュリティの観点から無料プランを評価しており、SSOは問題ありませんが、TLSを有料プランのみに制限するサービスは受け入れません。
+free-for.devを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # Table of Contents
 

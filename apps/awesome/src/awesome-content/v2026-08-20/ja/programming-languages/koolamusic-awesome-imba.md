@@ -1,22 +1,12 @@
 ---
-title: "koolamusic/awesome-imba"
-description: "koolamusic/awesome-imba の定本スナップショット"
+title: "Awesome Imba"
+description: "Imbaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-koolamusic-awesome-imba-readme-md"
 ---
 
-<p align="center">
-	<a href="http://imba.io" align="center" target="_blank">
-		<img width="400" src="./logo/imba-awesome-logo.min.svg">
-	</a>
-</p>
+# Awesome Imba
 
-
-# Awesome Imba [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![GitHub contributors](https://img.shields.io/github/contributors/koolamusic/awesome-imba)](#contributors)
-
-> 優れたImbaのフレームワーク、ライブラリ、ソフトウェア、リソースを集めたリスト。
-
-ImbaはRubyとPythonに着想を得たプログラミング言語で、組み込みのトランスパイラとwebpack loaderにより、高性能で読みやすいJavaScriptへコンパイルされます。
-
+Imbaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

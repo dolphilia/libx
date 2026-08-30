@@ -1,30 +1,12 @@
 ---
-title: "phillipadsmith/awesome-github"
-description: "phillipadsmith/awesome-github の定本スナップショット"
+title: "Awesome GitHub"
+description: "GitHubを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-phillipadsmith-awesome-github-readme-md"
 ---
 
-# Awesome GitHub [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://travis-ci.org/phillipadsmith/awesome-github.svg)](https://travis-ci.org/phillipadsmith/awesome-github)
+# Awesome GitHub
 
-> GitHubの素晴らしさを厳選したリスト。
-
-GitHubが素晴らしいと思いますか？このリストに何かを貢献してください。簡単です。[貢献ガイドライン](https://github.com/phillipadsmith/awesome-github/blob/5c1e4512c3ea30d4e66d784abb4c3b5925244ec5/CONTRIBUTING.md)を見てください。
-
-優れた点は、現在次の少数の分類に整理されています。
-* [GitHubを初めて使う人向けの情報](#infomation-for-people-who-are-new-to-github)
-* [GitHubに既に慣れた人向けのリソース](#resources-for-those-already-familiar-with-github)
-* [GitHubパワーユーザー向けのヒント、コツ、ツール、アドオン](#tips-tricks-tools-and-add-ons-for-github-power-users)
-* [GitHubの新しい利用法](#novel-uses-of-github)
-
-[Awesome GitHub](https://github.com/phillipadsmith/awesome-github)リストとは何でしょうか。**GitHub**を世界で最も素晴らしい共創プラットフォームの一つにするものの集まりです。
-
-これは特に_GitHub_に焦点を当てており、[Git](https://git-scm.com/)そのものではありません。Gitは確かに素晴らしく、GitがなければGitHubも存在しません。しかしGitHubは、人類のオープンソースコードの多くを置く場所以上のものになり、大規模な協働の力を示す世界で最も鮮明な例の一つになりました。
-
-つまり、このリスト、[Awesome GitHub](https://github.com/phillipadsmith/awesome-github)は、Gitの今日をはるかに超え、GitHubがわずか8年前に始まった地点を超えて、GitHubが成し遂げた素晴らしさを記録する試みです。
-
-このリストの着想は、[セッション提案](http://phillipadsmith.com/2015/09/github-gitdown.html)から得ました。これは[2015 Mozilla Festival](https://2015.mozillafestival.org/)向けのものです。後に、Mozilla Festival自身が[GitHub issuesでプログラムを管理していた](https://github.com/mozilla/mozfest-program)ことを偶然知りました。提案をレビューし、セッションをトラックやテーマへ割り当てるなど、GitHubが素晴らしさを作るために使われるもう一つの例です。
-
-------
+GitHubを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## GitHubを初めて使う人向けの情報
 - [Code School's Try Git](https://try.github.io/levels/1/challenges/1) - GitHubを可能にする技術の一つであるGitをより深く理解したい人に最適な出発点。GitHubアカウントは不要です。

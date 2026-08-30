@@ -1,31 +1,13 @@
 ---
-title: "YuzheSHI/awesome-agi-cocosci"
-description: "汎用人工知能と計算認知科学の論文、方法論、研究ツール、研究機関、研究者を分類した定本スナップショット"
+title: "Awesome Artificial General Intelligence and Computational Cognitive Sciences"
+description: "Artificial General Intelligence and Computational Cognitive Sciencesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-YuzheSHI-awesome-agi-cocosci-readme-md"
 ---
 
-<div align="center">
-	<img width="400" height="253" src="assets/abd_map.png" alt="Roadmap of studying Abduction">
-</div>
+# Awesome Artificial General Intelligence and Computational Cognitive Sciences
 
+Artificial General Intelligence and Computational Cognitive Sciencesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-
-
-# 汎用人工知能と計算認知科学のAwesomeリスト [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) <a id="awesome-artificial-general-intelligence-and-computational-cognitive-sciences"></a>
-
-**汎用人工知能**を対象とする**厳選リスト**です。人工知能と計算認知科学を中心に、確率・統計、形式論理、認知・発達心理学、計算哲学、認知神経科学、計算社会学を横断します。人間の学習と思考から高水準の機械知能への着想を得ると同時に、人間の認知理解を深め、抽象化・説明・学習・計画・意思決定が可能な人間水準の知能システムを目指します。
-
-***Awesome AGI & CoCoSci***は、基礎コースやチュートリアルから多様な観点の論文・書籍までをまとめた総合コレクションです。AGIと計算認知科学を学ぶ人、研究する人、その周辺分野で活動する人を対象とします。
-
-
-
-## 貢献 <a id="contributing"></a>
-
-貢献を歓迎します。作業前に[貢献ガイドライン](https://github.com/YuzheSHI/awesome-agi-cocosci/blob/0ff4ed6ef214e4151669e5187cc7d9873219f974/Contributing.md)を確認してください。
-
-
-
-<span id = "c"></span>
 ## 目次 <a id="contents"></a>
 
 * [論文](#papers)

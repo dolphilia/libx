@@ -1,23 +1,13 @@
 ---
-title: "petk/awesome-jquery"
-description: "petk/awesome-jquery の正規スナップショット"
+title: "Awesome jQuery"
+description: "jQueryを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-petk-awesome-jquery-readme-md"
 ---
 
-<a id="awesome-jquery"></a>
 # Awesome jQuery
 
-<a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" height="18"></a>
-[![Join the chat at https://gitter.im/peterkokot/awesome-jquery](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/peterkokot/awesome-jquery?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![CCO License](https://img.shields.io/badge/license-CC0-blue.svg?style=plastic "CC0 License")](#contributing-and-license)
-[![Project Maintained](https://img.shields.io/badge/project-maintained-brightgreen.svg?style=plastic "Project Maintained")](https://github.com/petk/awesome-jquery/commits/master)
-[![Build Status](https://img.shields.io/travis/petk/awesome-jquery/master.svg)](https://travis-ci.org/petk/awesome-jquery)
+jQueryを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-素晴らしい [jQuery](http://jquery.com/) プラグイン、リソースおよびその他の素晴らしいものたちを厳選したリスト。GitHub上の `awesome-*` ツリンドにインスパイアされたもの。
-
-> [jQuery](http://jquery.com/)は、高速・小型で機能豊富な[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)ライブラリです。多数のブラウザーで動作する使いやすいAPIにより、HTML文書の探索と操作、イベント処理、アニメーション、Ajaxを簡単にします。その汎用性と拡張性によって、多くの人のJavaScriptの書き方を変えました。
-
-<a id="table-of-contents"></a>
 ## 目次
 
 <img width="400" src="https://raw.githubusercontent.com/petk/awesome-jquery/master/awesome-jquery.png" alt="awesome-jquery" align=right>

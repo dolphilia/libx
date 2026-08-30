@@ -1,25 +1,12 @@
 ---
-title: "grafana/awesome-k6"
-description: "grafana/awesome-k6 の正規スナップショット"
+title: "Awesome k6"
+description: "k6を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-grafana-awesome-k6-readme-md"
 ---
 
-<div align="center">
-  <a href="https://k6.io/">
-    <img src="assets/bert.png" alt="k6 mascot" width="300px">
-  </a>
+# Awesome k6
 
-
-# Awesome k6 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-
-k6での（テストに関する）<a href="https://k6.io/">k6</a>コミュニティリソースのコレクション。
-
-
-貢献を歓迎します。まず[貢献ガイドライン](https://github.com/grafana/awesome-k6/blob/74f6d67f46d2eb472370517e4d34e10cb1e7f4ba/contributing.md)を読んでください。
-
-
-</div>
+k6を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

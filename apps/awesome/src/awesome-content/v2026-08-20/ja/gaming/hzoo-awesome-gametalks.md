@@ -1,20 +1,12 @@
 ---
-title: "hzoo/awesome-gametalks"
-description: "hzoo/awesome-gametalks の正規スナップショット"
+title: "Awesome Game Talks"
+description: "Game Talksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hzoo-awesome-gametalks-readme-md"
 ---
 
-# Awesome Game Talks [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Game Talks
 
-> [2005] [Heart of a Gamer](https://www.youtube.com/watch?v=RMrj8gdUfCU): Satoru Iwata (Nintendo)
-
-> 名刺には企業の社長と書かれている。頭の中ではゲーム開発者であり、心の中ではゲーマーである。
-
-[貢献ガイドライン](https://github.com/hzoo/awesome-gametalks/blob/733d0328293686894a2025a1d321778e7322b468/CONTRIBUTING.md)と、その他の[Awesome](https://github.com/sindresorhus/awesome)も確認してください。
-
-> GDCには現在チャンネルがあります: https://www.youtube.com/c/gdconf
-
-## 無料のGDC講演リストだけが必要な場合: [GDC](https://github.com/hzoo/awesome-gametalks/blob/733d0328293686894a2025a1d321778e7322b468/GDC.md)
+Game Talksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次
 - [GDC講演](#gdc-talks)

@@ -1,14 +1,12 @@
 ---
-title: "ipfs/awesome-ipfs"
-description: "ipfs/awesome-ipfs の正規スナップショット"
+title: "Awesome IPFS"
+description: "IPFSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ipfs-awesome-ipfs-readme-md"
 ---
 
-# Awesome IPFS [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome IPFS
 
-IPFS に関連する優れたプロジェクト、アプリ、ツール、サービスのコミュニティリストです。
-
-プロジェクトを提出するには、[Content Policy](https://github.com/ipfs/awesome-ipfs/blob/main/CONTRIBUTING.md#content-policy)を読み、[**PR を提出**](https://github.com/ipfs/awesome-ipfs/edit/main/README.md)してください。
+IPFSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

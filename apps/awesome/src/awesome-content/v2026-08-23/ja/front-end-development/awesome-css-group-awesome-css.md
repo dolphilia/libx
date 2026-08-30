@@ -1,39 +1,13 @@
 ---
-title: "awesome-css-group/awesome-css"
-description: "CSSの仕様、パーサー、フレームワーク、設計手法、ツール、学習資料集"
+title: "Awesome CSS Awesome Travis"
+description: "CSS Awesome Travisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-awesome-css-group-awesome-css-readme-md"
 ---
 
-[awesome-link]:  https://github.com/sindresorhus/awesome
-[awesome-badge]: https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg
-[travis-link]:   https://travis-ci.org/awesome-css-group/awesome-css
-[travis-badge]:  https://travis-ci.org/awesome-css-group/awesome-css.svg?branch=master
+# Awesome CSS Awesome Travis
 
-# Awesome CSS [![Awesome][awesome-badge]][awesome-link] [![Travis Build Status][travis-badge]][travis-link]
+CSS Awesome Travisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> /* A curated list of awesome frameworks, style guides, and other cool nuggets for writing amazing CSS. */
-
-<a id="introduction"></a>
-## はじめに
-
-<a id="motivation"></a>
-### 目的
-
-このドキュメントは、素晴らしいCSSを書くために選ばれたフレームワーク、スタイルガイド、そして興味深い情報のコレクションです。これはCSSを学ぶためのリソースを含んでいません。
-
-<a id="complementary-resources"></a>
-### 補完リソース
-
-CSSに関する何かがうまくいかない場合は、以下のリソースを確認してください。
-
-- [CSS - MDN - Mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [Reddit (CSS)](https://www.reddit.com/r/css/)
-- [StackOverflow (CSS)](https://stackoverflow.com/questions/tagged/css)
-
-
-<div id="contents"></div>
-
-<a id="table-of-contents"></a>
 ## 目次
 
 

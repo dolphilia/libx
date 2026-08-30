@@ -1,20 +1,13 @@
 ---
-title: "AchoArnold/discount-for-student-dev"
-description: "学生開発者向けのソフトウェア、クラウド、学習サービス割引を集めたリスト"
+title: "Awesome discount-for-student-dev"
+description: "discount-for-student-devを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-AchoArnold-discount-for-student-dev-readme-md"
 ---
 
-<a id="discount-for-student-dev"></a>
-# discount-for-student-dev [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-学生開発者向けのソフトウェア（SaaS、PaaS、IaaSなど）や各種サービスの割引リストです。
-[free-for-devリスト](https://github.com/ripienaar/free-for-dev)に強く影響を受けています。
+# Awesome discount-for-student-dev
 
-より多くのサービスを追加するためにプルリクエストを送っていただけると助かります。まず[contribution guidelines](https://github.com/AchoArnold/discount-for-student-dev/blob/b196a212b7673569abb34a233e1a0d650f9b9bbd/contributing.md)を読んでください。
-このREADMEファイルに良いリンクセットを整えることができたら、情報とリンクのためのより良いレイアウトを考えます（そのサポートも大歓迎です）。
+discount-for-student-devを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-プルリクエストを作成する気にならない場合は、[@acho_arnold](https://twitter.com/acho_arnold)にツイートしてください！
-
-<a id="table-of-contents"></a>
 目次
 =================
 

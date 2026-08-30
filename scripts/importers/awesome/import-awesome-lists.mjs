@@ -3,14 +3,19 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   notesDir,
+  optionValue,
   readJson,
+  rootDir,
   sha256,
   snapshotVersion,
   tempDir,
   writeJsonAtomic,
 } from './common.mjs';
+import { applyIntroductionDecision } from './awesome-introduction-utils.mjs';
 
 const dryRun = process.argv.includes('--dry-run');
+const diagnoseIntroductions = process.argv.includes('--diagnose-introductions');
+const diagnosticOutput = optionValue(process.argv.slice(2), '--diagnostic-output', null);
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const included = lock.sources.filter((source) => source.status === 'included');
 const normalizedDir = path.join(tempDir, '03-normalized');
@@ -21,7 +26,26 @@ const missingReview = fs.existsSync(missingReviewPath)
   ? readJson(missingReviewPath)
   : { schemaVersion: 1, snapshot: snapshotVersion, results: [] };
 const discovery = readJson(path.join(notesDir, 'DISCOVERY_STATE.json'));
+const introductionManifestPath = path.join(notesDir, 'INTRODUCTION_NORMALIZATION.json');
+const introductionBySource = fs.existsSync(introductionManifestPath)
+  ? new Map(readJson(introductionManifestPath).entries.map((entry) => [entry.sourceId, entry]))
+  : new Map();
 const prepared = [];
+const introductionDrift = [];
+
+function normalizeIntroduction(content, sourceId) {
+  const entry = introductionBySource.get(sourceId);
+  if (!entry) return content;
+  try {
+    return applyIntroductionDecision(content, entry.normalized.en, entry.evidence.en);
+  } catch (error) {
+    if (diagnoseIntroductions) {
+      introductionDrift.push({ sourceId, message: error.message });
+      return content;
+    }
+    throw new Error(`${sourceId}: ${error.message}`, { cause: error });
+  }
+}
 
 function fixedRawUrl(source, relativeUrl) {
   if (/^(?:javascript:|data:|file:)/i.test(relativeUrl)) return '#';
@@ -165,9 +189,35 @@ for (const source of included) {
   prepared.push({
     source,
     output: `${source.sourceId}.md`,
-    content: header + canonical,
+    content: normalizeIntroduction(header + canonical, source.sourceId),
     exclusions: sourceExclusions,
   });
+}
+
+if (diagnoseIntroductions && introductionDrift.length) {
+  if (diagnosticOutput) {
+    const prefixDrift = introductionDrift.filter((entry) =>
+      entry.message.startsWith('冒頭断片ハッシュ')
+    ).length;
+    writeJsonAtomic(path.resolve(rootDir, diagnosticOutput), {
+      schemaVersion: 1,
+      snapshotVersion,
+      status: 'blocked-by-protective-hash-gate',
+      conclusion:
+        '今回の序文正規化より前に、固定source入力からの再import結果と現行英語定本に差異がある。本文を黙って上書きしないため再importを停止する。',
+      counts: {
+        total: introductionDrift.length,
+        prefixDrift,
+        retainedSuffixDrift: introductionDrift.length - prefixDrift,
+      },
+      entries: introductionDrift,
+    });
+  }
+  console.error(
+    introductionDrift.map((entry) => `- ${entry.sourceId}: ${entry.message}`).join('\n')
+  );
+  console.error(`Awesome introduction import drift: ${introductionDrift.length} entries`);
+  process.exit(1);
 }
 
 const sourceByRepository = new Map(
@@ -201,7 +251,7 @@ for (const review of missingReview.results.filter((entry) => entry.decision === 
   prepared.push({
     source: { sourceId, repository, status: 'metadata-only' },
     output: `${sourceId}.md`,
-    content: header + content,
+    content: normalizeIntroduction(header + content, sourceId),
     exclusions: [],
   });
 }
@@ -244,8 +294,7 @@ for (const item of prepared) {
       : exclusion;
     exclusions.exclusions = exclusions.exclusions.filter(
       (entry) =>
-        entry.sourceId !== exclusion.sourceId ||
-        entry.headingOrRange !== exclusion.headingOrRange
+        entry.sourceId !== exclusion.sourceId || entry.headingOrRange !== exclusion.headingOrRange
     );
     exclusions.exclusions.push(stableExclusion);
   }

@@ -1,14 +1,12 @@
 ---
-title: "guillaume-chevalier/awesome-deep-learning-resources"
-description: "guillaume-chevalier/awesome-deep-learning-resources の定本スナップショット"
+title: "Awesome Deep Learning Resources"
+description: "Deep Learning Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-guillaume-chevalier-awesome-deep-learning-resources-readme-md"
 ---
 
-# [Awesome Deep Learning Resources](https://github.com/guillaume-chevalier/Awesome-Deep-Learning-Resources) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Deep Learning Resources
 
-私が気に入っている深層学習資料の大まかなリストです。深層学習を学ぶ際に役立ち、トピックの復習や参照にも使っています。
-私（[Guillaume Chevalier](https://github.com/guillaume-chevalier)）がこのリストを作成し、ここに掲載したすべての内容を注意深く確認しました。
-
+Deep Learning Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

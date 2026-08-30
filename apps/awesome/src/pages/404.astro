@@ -6,8 +6,11 @@ import type { LocaleKey } from '@docs/i18n/locales';
 
 const projectConfig = await getProjectConfig();
 const lang = projectConfig.language.default as LocaleKey;
-const version = projectConfig.versioning.versions[0]?.id ?? 'v1';
-const homePath = projectConfig.paths.baseUrl.replace(/\/+$/, '') || '/';
+const version =
+  projectConfig.versioning.versions.find((item) => item.isLatest)?.id ??
+  projectConfig.versioning.versions[0]?.id ??
+  'v1';
+const homePath = `${projectConfig.paths.baseUrl.replace(/\/+$/, '')}/${version}/${lang}/`;
 ---
 
 <MainLayout

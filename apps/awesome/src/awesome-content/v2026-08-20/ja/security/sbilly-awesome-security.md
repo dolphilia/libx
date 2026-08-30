@@ -1,65 +1,12 @@
 ---
-title: "sbilly/awesome-security"
-description: "セキュリティのソフトウェア、資料、書籍、運用資源を分類した定本スナップショット"
+title: "Awesome Security"
+description: "Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sbilly-awesome-security-readme-md"
 ---
 
-# セキュリティのAwesomeリスト <a id="awesome-security"></a>
+# Awesome Security
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-セキュリティに関する優れたソフトウェア、ライブラリ、文書、書籍、資料を集めたリストです。
-
-着想元: [awesome-php](https://github.com/ziadoz/awesome-php), [awesome-python](https://github.com/vinta/awesome-python).
-
-[コントリビューター](https://github.com/sbilly/awesome-security/graphs/contributors)の皆さんに感謝します。著名な資料を分類し、コミュニティ主導で収集することが目標です。
-
-- [Awesome Security](#awesome-security)
-  - [ネットワーク](#network)
-    - [スキャン／ペネトレーションテスト](#scanning--pentesting)
-    - [監視／ログ](#monitoring--logging)
-    - [IDS／IPS／ホストIDS／ホストIPS](#ids--ips--host-ids--host-ips)
-    - [ハニーポット／ハニーネット](#honey-pot--honey-net)
-    - [完全パケットキャプチャ／フォレンジック](#full-packet-capture--forensic)
-    - [スニファー](#sniffer)
-    - [セキュリティ情報・イベント管理](#security-information--event-management)
-    - [VPN](#vpn)
-    - [高速パケット処理](#fast-packet-processing)
-    - [ファイアウォール](#firewall)
-    - [スパム対策](#anti-spam)
-    - [Docker](#docker-images-for-penetration-testing--security)
-  - [エンドポイント](#endpoint)
-    - [ウイルス／マルウェア対策](#anti-virus--anti-malware)
-    - [コンテンツ無害化・再構成](#content-disarm--reconstruct)
-    - [構成管理](#configuration-management)
-    - [認証](#authentication)
-    - [モバイル／Android／iOS](#mobile--android--ios)
-    - [フォレンジック](#forensics)
-  - [脅威インテリジェンス](#threat-intelligence)
-  - [ソーシャルエンジニアリング](#social-engineering)
-  - [Web](#web)
-    - [組織](#organization)
-    - [Webアプリケーションファイアウォール](#web-application-firewall)
-    - [スキャン／ペネトレーションテスト](#scanning--pentesting-1)
-    - [実行時アプリケーション自己防御](#runtime-application-self-protection)
-    - [開発](#development)
-  - [レッドチーム基盤の配備](#red-team-infrastructure-deployment)
-  - [エクスプロイトとペイロード](#exploits--payloads)
-  - [ユーザビリティ](#usability)
-  - [ビッグデータ](#big-data)
-  - [DevOps](#devops)
-  - [ターミナル](#terminal)
-  - [オペレーティングシステム](#operating-systems)
-    - [オンライン資料](#online-resources)
-  - [データストア](#datastores)
-  - [不正防止](#fraud-prevention)
-  - [電子書籍](#ebooks)
-  - [ほかのAwesomeリスト](#other-awesome-lists)
-    - [ほかのセキュリティAwesomeリスト](#other-security-awesome-lists)
-    - [ほかの一般的なAwesomeリスト](#other-common-awesome-lists)
-  - [Contributing](#contributing)
-
-------
+Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## ネットワーク <a id="network"></a>
 

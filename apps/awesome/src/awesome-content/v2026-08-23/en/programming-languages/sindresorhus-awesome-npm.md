@@ -1,16 +1,12 @@
 ---
-title: "sindresorhus/awesome-npm"
-description: "Canonical snapshot of sindresorhus/awesome-npm"
+title: "Awesome npm"
+description: "A curated collection of resources and projects focused on npm."
 licenseSource: "github-sindresorhus-awesome-npm-readme-md"
 ---
 
-# Awesome npm [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://github.com/npm/logos/blob/7fb0bc425e0dac1bab065217c4ed595594448db4/npm-transparent.png" width="200" align="right" alt="npm">](https://www.npmjs.com)
+# Awesome npm
 
-> Awesome [npm](https://www.npmjs.com) resources and tips
-
-[npm](https://en.wikipedia.org/wiki/Npm_(software)) is a package manager for the JavaScript programming language and comes bundled in the [Node.js](https://en.wikipedia.org/wiki/Node.js) runtime.
-
-*Please read the [contribution guidelines](https://github.com/sindresorhus/awesome-npm/blob/f758b3a7b3e5ff99707b803da4f1396515061dec/contributing.md) before contributing.*
+A curated collection of resources and projects focused on npm.
 
 ## Contents
 

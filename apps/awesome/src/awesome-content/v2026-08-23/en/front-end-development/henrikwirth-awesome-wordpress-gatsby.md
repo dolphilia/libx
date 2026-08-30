@@ -1,33 +1,12 @@
 ---
-title: "henrikwirth/awesome-wordpress-gatsby"
-description: "Canonical snapshot of henrikwirth/awesome-wordpress-gatsby"
+title: "Awesome Wordpress Gatsby"
+description: "A curated collection of resources and projects focused on Wordpress Gatsby."
 licenseSource: "github-henrikwirth-awesome-wordpress-gatsby-readme-md"
 ---
 
-<div align="center">
-  <br /><br />
-  <a href="https://awesome.re"><img src="https://awesome.re/badge-flat.svg" /></a>
-  <br /><br /><br />
-  <a href="https://wordpress.org/"><img width="150" height="150" align="center" src="media/wordpress-logo.svg" alt="WordPress"></a>
-      <a href="https://www.gatsbyjs.org/"><img width="150" height="150" align="center" src="media/gatsby-logo.svg" alt="Gatsby"></a>
-  <br /><br />
-  <p>
-    <b>
-      A curated list of resources about WordPress as a headless CMS with Gatsby as a Static Site Generator (SSG).
-    </b>
-  </p>
-  <br />
-</div>
+# Awesome Wordpress Gatsby
 
-A **headless CMS** is a back-end only content management system (CMS). Its purpose is to serve content and make it accessible via an API (e.g. REST or GraphQL).
-
-A **Static Site Generator (SSG)** is a framework or setup, that helps you to generate static websites (HTML/CSS/JS). The source of your data can be anything from local files (e.g. text files or markdown) to APIs (e.g. REST, GraphQL).
-
-<br />
-
-**Why Gatsby and WordPress?**
-
-WordPress is one of the **most used CMS in the world** and therefore many people already know how to work with it. The typical front-end approach with PHP-based templates is getting more and more problematic in an environment where performance is key. The approach to use WordPress as a headless CMS with normal API calls through JavaScript already exists, but also has the downside of having to make requests to the server and rendering depending on the response. This adds time to load. **Gatsby instead, pre-renders the whole site at compile time** and therefore the user gets a **fully prepared static site on their first request**, making it one of the **best approaches for performance**. Another huge benefit is **security**, as your WordPress instance can be anywhere, even locally and you don't need to expose any of it to the user. **The static Gatsby site therefore, is not hackable.** Find further arguments for pros and cons in the resources below.
+A curated collection of resources and projects focused on Wordpress Gatsby.
 
 ## Contents
 
@@ -198,5 +177,3 @@ Contributions welcome! Read the [contribution guidelines](https://github.com/hen
 
 To the extent possible under law, Henrik Wirth has waived all copyright and
 related or neighboring rights to this work.
-
-

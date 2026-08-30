@@ -1,15 +1,12 @@
 ---
-title: "mourarthur/awesome-credit-modeling"
-description: "mourarthur/awesome-credit-modeling の定本スナップショット"
+title: "Awesome Credit Modeling"
+description: "Credit Modelingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mourarthur-awesome-credit-modeling-readme-md"
 ---
 
-# Awesome Credit Modeling [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+# Awesome Credit Modeling
 
-> クレジットスコアリングと信用リスクモデリングに関する優れた論文、記事、各種リソースの成長中のコレクション。
-
-クレジットスコアリングとは、与信申込者をリスク分類へ分類するための正式な統計的手法を表す用語です。貸し手は、こうした分類を申込者の信用力と債務不履行確率の評価に用います。
+Credit Modelingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

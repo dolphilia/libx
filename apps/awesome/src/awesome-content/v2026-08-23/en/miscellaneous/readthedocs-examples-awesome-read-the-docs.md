@@ -1,45 +1,12 @@
 ---
-title: "readthedocs-examples/awesome-read-the-docs"
-description: "Canonical snapshot of readthedocs-examples/awesome-read-the-docs"
+title: "Awesome Read the Docs"
+description: "A curated collection of resources and projects focused on Read the Docs."
 licenseSource: "github-readthedocs-examples-awesome-read-the-docs-readme-md"
 ---
 
+# Awesome Read the Docs
 
-
-
-
-
-# Awesome Read the Docs [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![lint](https://github.com/readthedocs-examples/awesome-read-the-docs/actions/workflows/lint.yaml/badge.svg)](https://github.com/readthedocs-examples/awesome-read-the-docs/actions/workflows/lint.yaml)
-
-
-
-> A curated list of awesome documentation projects, useful to learn from and for bootstrapping new documentation projects.
-> Plus cool real-life usages of Read the Docs.
-
-
-
-<a href="https://docs.readthedocs.io/en/stable/tutorial/index.html" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/readthedocs-examples/awesome-read-the-docs/7f77aef23e000ca349c3d2bb6c019adb996dbef1/readthedocs-logo.svg" />
-</a>
-
-
-
-Read the Docs is a fully open-source platform that builds and publishes documentation.
-Read more on https://about.readthedocs.com.
-
-## Foreword
-
-Many new and exciting documentation projects have emerged in *science and academia*, taking the world of documentation beyond just software projects.
-To capture the latest development and trends, we are compiling a list of inspirational uses of documentation technology, especially outside of the traditional field of software documentation.
-
-In addition to showing awesome and real-life Read the Docs projects, a number of [Example Projects](#example-projects) are being built to help people learn and get started.
-
-We hope that this will inspire people writing documentation, developing new documentation projects or updating existing ones.
-All projects mentioned here are **open source**, meaning that you can find their source code and understand how it's done.
-
-The list is a work in progress, please feel invited to [contribute](#contributing)!
-
-
+A curated collection of resources and projects focused on Read the Docs.
 
 ## Contents
 

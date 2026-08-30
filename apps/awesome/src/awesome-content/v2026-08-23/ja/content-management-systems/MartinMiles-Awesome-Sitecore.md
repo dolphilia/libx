@@ -1,18 +1,12 @@
 ---
-title: "MartinMiles/Awesome-Sitecore"
-description: "Sitecoreの拡張機能、開発・配備ツールを分類した定本スナップショット"
+title: "Awesome Sitecore"
+description: "Sitecoreを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-MartinMiles-Awesome-Sitecore-readme-md"
 ---
 
-# Sitecore Awesome リスト [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Sitecore
 
-[<img src="sitecore-logo.png" align="right" width="80">](https://sitecore.com)
-
-> GitHub上のSitecore関連プロジェクトを厳選したリストです。ぜひ貢献してください。
-
-Sitecoreは、複数のウェブサイトを一元管理するデジタルプラットフォームです。CRM、トラッキング、POSなど複数デバイス由来の顧客情報を活用するマーケティングツールを備え、デスクトップ、モバイル、API、ソーシャルメディアなど複数チャネルへコンテンツを提供できます。拡張ポイントが多く、オンプレミスとクラウドの双方へ配備できます。以下では、Sitecore開発者に役立つ拡張・配備手段を分類します。
-
-貢献を歓迎します。プルリクエストでリンクを追加するか、Issueを作成して議論を始めてください。
+Sitecoreを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

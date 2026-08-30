@@ -1,14 +1,12 @@
 ---
-title: "Karneades/awesome-security-card-games"
-description: "Karneades/awesome-security-card-games の定本スナップショット"
+title: "Awesome Security Card Games"
+description: "Security Card Gamesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Karneades-awesome-security-card-games-readme-md"
 ---
 
-# Awesome Security Card Games [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Security Card Games
 
-> セキュリティカードゲーム（tabletop exerciseとも呼ばれることがあります）の厳選リスト。
-
-セキュリティカードゲームはスキルの訓練に役立ち、セキュリティのさまざまな領域について議論する機会を提供します。
+Security Card Gamesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

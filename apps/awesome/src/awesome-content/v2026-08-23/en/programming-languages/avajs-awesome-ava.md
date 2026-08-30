@@ -1,12 +1,12 @@
 ---
-title: "avajs/awesome-ava"
-description: "Canonical snapshot of avajs/awesome-ava"
+title: "Awesome AVA"
+description: "A curated collection of resources and projects focused on AVA."
 licenseSource: "github-avajs-awesome-ava-readme-md"
 ---
 
-# Awesome AVA [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://github.com/avajs/ava/raw/main/media/header.png" width="280" align="right" alt="AVA">](https://avajs.dev)
+# Awesome AVA
 
-> [AVA](https://avajs.dev) is a minimal & futuristic JavaScript test runner
+A curated collection of resources and projects focused on AVA.
 
 ## Contents
 

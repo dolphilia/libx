@@ -1,19 +1,12 @@
 ---
-title: "jonleibowitz/awesome-digitalocean"
-description: "jonleibowitz/awesome-digitalocean の定本スナップショット"
+title: "Awesome DigitalOcean"
+description: "DigitalOceanを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jonleibowitz-awesome-digitalocean-readme-md"
 ---
 
-# Awesome DigitalOcean [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome DigitalOcean
 
-[<img src="https://raw.githubusercontent.com/jonleibowitz/awesome-digitalocean/master/media/DO_Logo.png" align="right" width="100">](https://www.digitalocean.com/)
-
-> 優れた [DigitalOcean](https://www.digitalocean.com) ガイド、ブログ、その他のリソースの厳選リスト。
-
-DigitalOcean のタグラインは、開発者向けに設計されたシンプルで堅牢なクラウドコンピューティングプラットフォームです。DigitalOcean では、個人でもチームでも、クラウドコンピューティングとストレージリソースを簡単に起動できます。
-
-貢献を歓迎します。プルリクエストでリンクを追加するか、議論を始めるための issue を作成してください。
-
+DigitalOceanを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

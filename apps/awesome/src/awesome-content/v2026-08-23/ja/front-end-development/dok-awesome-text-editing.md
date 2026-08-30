@@ -1,11 +1,12 @@
 ---
-title: "dok/awesome-text-editing"
-description: "dok/awesome-text-editing の正規スナップショット"
+title: "Awesome text editing"
+description: "text editingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dok-awesome-text-editing-readme-md"
 ---
 
-# Awesome text editing [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-ウェブ向けのテキスト編集ライブラリ、サービス、リソースを厳選したコレクションです。
+# Awesome text editing
+
+text editingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## contenteditable を使うリッチテキストエディター
 * [Slate](https://github.com/ianstormtaylor/slate) - React と Immutable を基盤に構築されたリッチテキストエディター

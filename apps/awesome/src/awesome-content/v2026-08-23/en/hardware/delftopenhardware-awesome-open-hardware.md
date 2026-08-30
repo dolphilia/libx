@@ -1,12 +1,12 @@
 ---
-title: "delftopenhardware/awesome-open-hardware"
-description: "Canonical snapshot of delftopenhardware/awesome-open-hardware"
+title: "Awesome Open Hardware"
+description: "A curated collection of resources and projects focused on Open Hardware."
 licenseSource: "github-delftopenhardware-awesome-open-hardware-readme-md"
 ---
 
-# Awesome Open Hardware [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Open Hardware
 
-🛠 Helpful items for making and learning about open-source hardware projects.
+A curated collection of resources and projects focused on Open Hardware.
 
 ## Contents
 

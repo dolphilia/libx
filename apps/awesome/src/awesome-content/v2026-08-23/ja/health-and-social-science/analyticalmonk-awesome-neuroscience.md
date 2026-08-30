@@ -1,18 +1,12 @@
 ---
-title: "analyticalmonk/awesome-neuroscience"
-description: "analyticalmonk/awesome-neuroscience の正規スナップショット"
+title: "Awesome Neuroscience"
+description: "Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-analyticalmonk-awesome-neuroscience-readme-md"
 ---
 
+# Awesome Neuroscience
 
-<img src="https://raw.githubusercontent.com/analyticalmonk/awesome-neuroscience/33ca06398bff26a53a913f0ea7a600e5e18164eb/AWESOME2.png" width="50%">
-
-> 優れた神経科学ライブラリ、ソフトウェア、その他の関連コンテンツの厳選リスト。
-
-[神経科学](https://en.wikipedia.org/wiki/Neuroscience)は、神経系がどのように発達し、どのような構造を持ち、何を行うかを研究する学問です。神経科学者は脳と、それが行動や認知機能へ与える影響に注目します。伝統的に神経科学は生物学の一分野と見なされてきましたが、現在では複数の研究水準から脳機能を明らかにするために協働する、幅広い学際分野を包含しています。
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
+Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

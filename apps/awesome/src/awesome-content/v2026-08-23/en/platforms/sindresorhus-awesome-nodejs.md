@@ -1,73 +1,12 @@
 ---
-title: "sindresorhus/awesome-nodejs"
-description: "Canonical snapshot of sindresorhus/awesome-nodejs"
+title: "Awesome Node.js"
+description: "A curated collection of resources and projects focused on Node.js."
 licenseSource: "github-sindresorhus-awesome-nodejs-readme-md"
 ---
 
-<div align="center">
-	<div>
-		<img width="500" src="media/logo.svg" alt="Awesome Node.js">
-		<br>
-	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<p>
-		<p>
-			<sup>
-				<a href="https://github.com/sponsors/sindresorhus">My open source work is supported by the community</a>
-			</sup>
-		</p>
-		<sup>Special thanks to:</sup>
-		<br>
-		<br>
-		<br>
-		<a href="https://depot.dev?utm_source=github&utm_medium=sindresorhus">
-			<div>
-				<picture>
-					<source width="180" media="(prefers-color-scheme: dark)" srcset="https://sindresorhus.com/assets/thanks/depot-logo-dark.svg">
-					<source width="180" media="(prefers-color-scheme: light)" srcset="https://sindresorhus.com/assets/thanks/depot-logo-light.svg">
-					<img width="180" src="https://sindresorhus.com/assets/thanks/depot-logo-light.svg" alt="Depot logo">
-				</picture>
-			</div>
-			<b>Fast remote container builds and GitHub Actions runners.</b>
-		</a>
-		<br>
-		<br>
-		<br>
-		<a href="https://circleback.ai?utm_source=sindresorhus&utm_medium=sponsorship&utm_campaign=awesome-list&utm_id=awesome-nodejs">
-			<div>
-				<img width="340" src="https://sindresorhus.com/assets/thanks/circleback-logo.png?x" alt="Circleback logo">
-			</div>
-			<b>Get the most out of every conversation.</b>
-			<div>
-				<sup>AI-powered meeting notes, automations, and search. Give AI agents the context they need to get things done.</sup>
-			</div>
-		</a>
-		<br>
-		<br>
-		<br>
-	</p>
-	<hr>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<p>
-		<sub>Just type <a href="https://node.cool"><code>node.cool</code></a> to go here. Follow me on <a href="https://twitter.com/sindresorhus">Twitter</a>.</sub>
-	</p>
-	<br>
-	<p>
-		<a href="https://en.wikipedia.org/wiki/Node.js">Node.js</a> is an open-source, cross-platform, JavaScript runtime for writing servers and command-line tools.
-	</p>
-	<br>
-</div>
+# Awesome Node.js
+
+A curated collection of resources and projects focused on Node.js.
 
 ## Contents
 

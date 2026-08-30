@@ -1,45 +1,12 @@
 ---
-title: "marmelab/awesome-rest"
-description: "Canonical snapshot of marmelab/awesome-rest"
+title: "Awesome REST"
+description: "A curated collection of resources and projects focused on REST."
 licenseSource: "github-marmelab-awesome-rest-readme-md"
 ---
 
-# Awesome REST [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome REST
 
-A collaborative list of great resources about RESTful API architecture, development, test, and performance. Feel free to contribute to this on-going list.
-
-* [Design](#design)
-  * [Guidelines](#guidelines)
-* [Standards](#standards)
-* [Clients](#clients)
-  * [PHP](#php-clients)
-  * [Client-side JavaScript](#javascript-clients)
-  * [Node.js](#nodejs-clients)
-  * [Ruby](#ruby-clients)
-  * [Go](#go-clients)
-  * [.Net](#net-clients)
-  * [Generators](#generators)
-* [Servers](#servers)
-  * [Directly On Top Of A RMDB](#directly-on-top-of-a-rmdb)
-  * [Node.js](#nodejs)
-  * [PHP](#php)
-  * [Symfony2](#symfony2)
-  * [Python](#python)
-  * [Ruby](#ruby)
-  * [Go](#go)
-  * [Java](#java)
-  * [Haskell](#haskell)
-* [Testing](#testing)
-  * [Querying](#querying)
-  * [Mocking](#mocking)
-  * [Debugging Proxies](#debugging-proxies)
-  * [Public REST APIs To Use In Tests](#public-rest-apis-to-use-in-tests)
-* [Documentation](#documentation)
-* [API Gateway](#api-gateway)
-* [SaaS Tools](#saas-tools)
-* [Miscellaneous](#miscellaneous)
-
-
+A curated collection of resources and projects focused on REST.
 
 ## Design
 

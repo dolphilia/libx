@@ -1,11 +1,12 @@
 ---
-title: "TalAter/awesome-book-authoring"
-description: "Canonical snapshot of TalAter/awesome-book-authoring"
+title: "Awesome Book Authoring"
+description: "A curated collection of resources and projects focused on Book Authoring."
 licenseSource: "github-TalAter-awesome-book-authoring-readme-md"
 ---
 
 # Awesome Book Authoring
-A collection of [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) resources for technical book authors.
+
+A curated collection of resources and projects focused on Book Authoring.
 
 # Table of Contents
 

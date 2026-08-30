@@ -1,18 +1,12 @@
 ---
-title: "harpribot/awesome-information-retrieval"
-description: "Canonical snapshot of harpribot/awesome-information-retrieval"
+title: "Awesome Information Retrieval"
+description: "A curated collection of resources and projects focused on Information Retrieval."
 licenseSource: "github-harpribot-awesome-information-retrieval-readme-md"
 ---
 
-# Awesome Information Retrieval [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Information Retrieval
 
-[![Join the chat at https://gitter.im/awesome-information-retrieval/Lobby](https://badges.gitter.im/awesome-information-retrieval/Lobby.svg)](https://gitter.im/awesome-information-retrieval/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-Curated list of information retrieval and web search resources from all around the web.
-## Introduction
-[Information Retrieval](https://en.wikipedia.org/wiki/Information_retrieval) involves finding relevant information for user queries, ranging from simple domain of database search to complicated aspects of web search (Eg - Google, Bing, Yahoo). Currently, researchers are developing algorithms to address [Information Need](https://en.wikipedia.org/wiki/Information_needs) of user(s), by maximizing [User and Topic Relevance](https://en.wikipedia.org/wiki/Relevance_(information_retrieval)) of retrieved results, while minimizing [Information Overload](https://en.wikipedia.org/wiki/Information_overload) and retrieval time.
-## Contributing
-Please feel free to send me [pull requests](https://github.com/harpribot/awesome-information-retrieval/pulls) or [email] (mailto:harshal.priyadarshi@utexas.edu) me to add new links. I am very open to suggestions and corrections. Please look at the [contributions guide](https://github.com/harpribot/awesome-information-retrieval/blob/a60c61a4f8451e98961a748883e0d0c6263fe1ec/contributing.md).
+A curated collection of resources and projects focused on Information Retrieval.
 
 ## Contents
  - [Books](#books)

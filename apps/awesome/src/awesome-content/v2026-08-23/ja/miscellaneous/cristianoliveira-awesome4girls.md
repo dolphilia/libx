@@ -1,15 +1,13 @@
 ---
-title: "cristianoliveira/awesome4girls"
-description: "技術分野の女性・少女を支援するイベント、コミュニティ、プログラム、資料集"
+title: "Awesome 4girls"
+description: "4girlsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-cristianoliveira-awesome4girls-readme-md"
 ---
 
-# awesome4girls [![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg?style=flat-square&label=awesomeness)](https://travis-ci.org/cristianoliveira/awesome4girls) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![CodeOfConduct](https://img.shields.io/badge/code%20of%20conduct-1.3.0-ff69b4.svg)](http://contributor-covenant.org/version/1/3/0/)
-A curated list of awesome inclusive events/projects/initiatives for women in the tech area.
+# Awesome 4girls
 
-----
+4girlsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="table-of-contents"></a>
 ## 目次
 * [Events/Meetups](#eventsmeetups)
   * [Clojure](#clojure)

@@ -1,56 +1,13 @@
 ---
-title: "uralbash/awesome-pyramid"
-description: "uralbash/awesome-pyramid の正規スナップショット"
+title: "Awesome Pyramid"
+description: "Pyramidを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-uralbash-awesome-pyramid-readme-md"
 ---
 
-<a id="awesome-pyramid"></a>
 # Awesome Pyramid
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![IRC
-Freenode](https://img.shields.io/badge/irc-freenode-blue.svg)](https://webchat.freenode.net/?channels=pyramid)
 
-素晴らしいPyramidアプリ、プロジェクトおよびリソースを厳選したリスト。[awesome-python](https://github.com/vinta/awesome-python/)を参考にし、その基礎にしている。
+Pyramidを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-- [Awesome Pyramid](#awesome-pyramid)
-    - [管理インターフェース](#admin-interface)
-    - [アセット管理](#asset-management)
-    - [非同期処理](#async)
-    - [認証](#authentication)
-    - [認可](#authorization)
-    - [キャッシュとセッション](#caching--session)
-    - [デバッグ](#debugging)
-    - [メール](#email)
-    - [フォーム](#forms)
-    - [メディア管理](#media-management)
-    - [RESTful API](#restful-api)
-    - [検索](#search)
-    - [セキュリティ](#security)
-    - [サービス](#services)
-    - [設定](#settings)
-    - [ストレージ](#storage)
-    - [タスクキュー](#task-queue)
-    - [テスト](#testing)
-    - [翻訳](#translations)
-    - [ウェブフロントエンド統合](#web-frontend-integration)
-    - [ワークフロー](#workflows)
-    - [その他](#other)
-- [プロジェクト](#projects)
-    - [フレームワーク](#framework)
-    - [CMS](#cms)
-    - [Cookiecutter](#cookiecutters)
-    - [e-Commerce](#e-commerce)
-    - [プロジェクト管理](#project-management)
-    - [その他](#other)
-- [資料](#resources)
-    - [書籍](#books)
-    - [ウェブサイト](#websites)
-    - [カンファレンス](#conferences)
-    - [動画](#videos)
-    - [利用者](#who-uses-it)
-- [貢献](#contributing)
-
-<a id="admin-interface"></a>
 ## 管理インターフェース
 
 *Adminインターフェースを拡張し、機能を追加または改善するパッケージ。*

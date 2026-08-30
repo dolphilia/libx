@@ -1,17 +1,12 @@
 ---
-title: "exAspArk/awesome-chatops"
-description: "exAspArk/awesome-chatops の正規スナップショット"
+title: "Awesome ChatOps"
+description: "ChatOpsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-exAspArk-awesome-chatops-readme-md"
 ---
 
-# Awesome ChatOps [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome ChatOps
 
-[ChatOps](https://www.pagerduty.com/blog/what-is-chatops/)に関する優れた情報を集めたリストです。
-
-ChatOpsは、人、プロセス、ツール、自動化を透明性の高いワークフロー（会話駆動開発）で結び付けるコラボレーションモデルです。
-タスクの自動化と共同作業を可能にし、チームの透明性を高め、より良く、低コストで、速く作業できるようにします。
-
-コントリビューションする場合は、[CONTRIBUTING.md](https://github.com/exAspArk/awesome-chatops/blob/540083ff5535a985d95f94557b98db8a11e186ac/CONTRIBUTING.md)を確認してください。
+ChatOpsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

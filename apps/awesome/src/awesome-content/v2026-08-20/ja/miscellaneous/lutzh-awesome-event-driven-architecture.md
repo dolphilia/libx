@@ -1,17 +1,12 @@
 ---
-title: "lutzh/awesome-event-driven-architecture"
-description: "lutzh/awesome-event-driven-architecture の定本スナップショット"
+title: "Awesome Event-Driven Architecture"
+description: "Event-Driven Architectureを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lutzh-awesome-event-driven-architecture-readme-md"
 ---
 
+# Awesome Event-Driven Architecture
 
-# Awesome Event-Driven Architecture [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-イベント駆動アーキテクチャを学ぶための優れた記事・リソースの厳選リスト。
-
-イベント駆動アーキテクチャは、サービスがイベントを発行・購読して協調するソフトウェアアーキテクチャのアプローチです。これによりサービスの実行時結合を排除します。
-
-
+Event-Driven Architectureを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
   

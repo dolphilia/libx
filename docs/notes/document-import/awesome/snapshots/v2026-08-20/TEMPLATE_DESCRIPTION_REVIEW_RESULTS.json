@@ -4,9 +4,9 @@
   "snapshot": "v2026-08-20",
   "status": "complete",
   "summary": {
-    "reviewedDocumentCount": 53,
+    "reviewedDocumentCount": 59,
     "confirmedAffectedCount": 0,
-    "falsePositiveCount": 53
+    "falsePositiveCount": 59
   },
   "results": [
     {
@@ -168,6 +168,18 @@
       "files": ["miscellaneous/Codepoints-awesome-codepoints.md"],
       "decision": "false-positive",
       "reason": "残った7件は複数行に折り返された同一リスト項目の接続語「と」「、」および継続行を監査処理が独立説明として比較した結果である。日本語本文は文字方向、最大の一桁数、C1制御文字、将棋の各固有説明と全URLを保持し、365文書の構造検証にも合格している。"
+    },
+    {
+      "files": [
+        "computer-science/ossu-computer-science.md",
+        "decentralized-systems/cosmos-awesome-cosmos.md",
+        "miscellaneous/iipc-awesome-web-archiving.md",
+        "miscellaneous/jagracey-Awesome-Unicode.md",
+        "miscellaneous/kyleterry-awesome-radio.md",
+        "platforms/balintkissdev-awesome-dos.md"
+      ],
+      "decision": "false-positive",
+      "reason": "序文リスト除去後の項目番号再計算で現れた低severityの構造候補である。英日対応検査は見出し、リスト順、URL、コード、アンカーの全項目で合格しており、該当箇所もOSSUの学習手順、Cosmosモジュール、Web Archiveツール、Unicode解説、各国無線免許、DOSゲームの固有説明を保持している。Markdownの先頭リンク抽出と複数行項目の差によるfalse-positiveである。"
     },
     {
       "files": [

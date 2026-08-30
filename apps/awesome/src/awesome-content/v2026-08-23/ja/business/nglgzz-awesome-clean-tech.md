@@ -1,16 +1,12 @@
 ---
-title: "nglgzz/awesome-clean-tech"
-description: "nglgzz/awesome-clean-techの正規スナップショット"
+title: "Awesome Clean Tech"
+description: "Clean Techを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-nglgzz-awesome-clean-tech-readme-md"
 ---
 
-# Awesome Clean Tech [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+# Awesome Clean Tech
 
-> クリーンテクノロジーとは、大幅なエネルギー効率改善、資源の持続可能な利用、または環境保護活動を通じて、環境への悪影響を低減するあらゆるプロセス、製品、サービスです。
-
-このリストの目的は、気候変動と闘う優れた企業と、関連する課題・解決策についての研究を集めることです。
-
-_このリストへの貢献を歓迎します。[README.md](https://github.com/nglgzz/awesome-clean-tech/blob/master/README.md)（この文書）を編集し、変更をプルリクエストとして送信してください。貢献前に[ガイドライン](https://github.com/nglgzz/awesome-clean-tech/blob/763f76ede222c7e9c652d57a3085a5e802e9ed31/CONTRIBUTING.md)をお読みください。_
+Clean Techを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,14 +1,12 @@
 ---
-title: "johnjago/awesome-theravada"
-description: "johnjago/awesome-theravada の正規スナップショット"
+title: "Awesome Theravada"
+description: "Theravadaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-johnjago-awesome-theravada-readme-md"
 ---
 
-# Awesome Theravada [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Theravada
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Dharma_Wheel.svg" alt="Dharmachakra" align="right" width="170">](https://en.wikipedia.org/wiki/Theravada)
-
-[Theravada](https://en.wikipedia.org/wiki/Theravada)は仏教の一派であり、仏陀の教えについて現存する最古級の記録の一つであるパーリ語経典から教義を得ている。
+Theravadaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

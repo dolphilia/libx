@@ -110,10 +110,7 @@ if (check) {
   }
   console.log('Awesome automated final review: OK (2 snapshots, check)');
 } else {
-  const historicalResults = path.join(
-    notesRoot,
-    'snapshots/v2026-08-20/FINAL_REVIEW_RESULTS.json'
-  );
+  const historicalResults = path.join(notesRoot, 'snapshots/v2026-08-20/FINAL_REVIEW_RESULTS.json');
   const archivePath = path.join(
     notesRoot,
     'snapshots/v2026-08-20/PRE_AUTOMATED_FINAL_REVIEW_RESULTS.json'

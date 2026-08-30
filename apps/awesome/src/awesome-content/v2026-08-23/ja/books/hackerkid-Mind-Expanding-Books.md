@@ -1,19 +1,13 @@
 ---
-title: "hackerkid/Mind-Expanding-Books"
-description: "思考を広げるビジネス、哲学、科学、歴史、文学などの書籍集"
+title: "Awesome Mind Expanding Books"
+description: "Mind Expanding Booksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hackerkid-Mind-Expanding-Books-readme-md"
 ---
 
-# Mind Expanding Books
+# Awesome Mind Expanding Books
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+Mind Expanding Booksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-読みたい本をさがしているけれど、どこから読むべきかわからない？ あなたは正しい場所にいます！
-
-詳細については、[Contributing Guidelines](https://github.com/hackerkid/Mind-Expanding-Books/blob/2844c5ad5e1f4da8a637c74503763a2cb56f5550/CONTRIBUTING.md)を参照してください。
-
-<a id="top"></a>
-<a id="table-of-contents"></a>
 ## 目次
 - [Mind Expanding Books](#mind-expanding-books)
   - [Table of Contents](#table-of-contents)

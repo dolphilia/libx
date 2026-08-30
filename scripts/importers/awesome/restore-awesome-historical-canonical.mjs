@@ -29,9 +29,7 @@ const categoryId = (value) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 
-const evidence = readJson(
-  path.join(notesDir, 'HISTORICAL_REVIEW_EVIDENCE_RECONCILIATION.json')
-);
+const evidence = readJson(path.join(notesDir, 'HISTORICAL_REVIEW_EVIDENCE_RECONCILIATION.json'));
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const contentMap = readJson(path.join(notesDir, 'CONTENT_MAP.json'));
 const categoryBySource = new Map(
@@ -39,12 +37,7 @@ const categoryBySource = new Map(
 );
 const included = lock.sources.filter((source) => source.status === 'included');
 const normalizedRoot = path.join(tempDir, '03-normalized');
-const englishRoot = path.join(
-  rootDir,
-  'apps/awesome/src/awesome-content',
-  snapshotVersion,
-  'en'
-);
+const englishRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion, 'en');
 const manifestPath = path.join(notesDir, 'HISTORICAL_CANONICAL_MANIFEST.json');
 
 const routeFor = (source) => {
@@ -97,10 +90,13 @@ if (freezeManifest) {
 }
 
 if (!fs.existsSync(manifestPath)) {
-  throw new Error('履歴版定本マニフェストがありません。管理者確認後に--freeze-manifestで固定してください');
+  throw new Error(
+    '履歴版定本マニフェストがありません。管理者確認後に--freeze-manifestで固定してください'
+  );
 }
 const manifest = readJson(manifestPath);
-if (manifest.snapshotVersion !== snapshotVersion) throw new Error('履歴版定本マニフェストの版が不正です');
+if (manifest.snapshotVersion !== snapshotVersion)
+  throw new Error('履歴版定本マニフェストの版が不正です');
 if (manifest.pageCount !== included.length || manifest.pages.length !== included.length) {
   throw new Error('履歴版定本マニフェストのページ数が一致しません');
 }
@@ -115,8 +111,8 @@ if (manifest.aggregateSha256 !== aggregateSha256(currentPages)) {
   throw new Error('履歴版定本の集約SHA-256が一致しません');
 }
 const overview = currentPages.find((page) => page.sourceId === 'sindresorhus-awesome-readme');
-if (overview?.sha256 !== evidence.publishedBaseline.englishOverviewSha256) {
-  throw new Error('履歴版の概要が公開時点のハッシュと一致しません');
+if (overview?.sha256 !== evidence.currentReconciledEvidence.englishOverviewSha256) {
+  throw new Error('履歴版の概要が現在の調整済み証拠ハッシュと一致しません');
 }
 
 if (check) {

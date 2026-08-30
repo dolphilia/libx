@@ -1,28 +1,12 @@
 ---
-title: "vinjn/awesome-vulkan"
-description: "Canonical snapshot of vinjn/awesome-vulkan"
+title: "Awesome Vulkan"
+description: "A curated collection of resources and projects focused on Vulkan."
 licenseSource: "github-vinjn-awesome-vulkan-readme-md"
 ---
 
-# Awesome Vulkan [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Vulkan
 
-<img src="https://raw.githubusercontent.com/SaschaWillems/Vulkan/master/images/vulkanlogoscene.png" alt="Vulkan demo scene" height="256px">
-
-A curated list of awesome Vulkan libraries, debuggers and resources. Inspired by [awesome-opengl](https://github.com/eug/awesome-opengl) and other awesome-... stuff.
-
-* **[Hardware Support](#hardware-support)**
-* **[SDK](#sdk)**
-* **[IHV Document](#document)**
-* **[Tutorial](#tutorial)**
-* **[Apps](#apps)**
-* **[Samples](#samples)**
-* **[Libraries](#libraries)**
-* **[Bindings](#bindings)**
-* **[Tools](#tools)**
-* **[Books](#books)**
-* **[Papers](#papers)**
-* **[Khronos](#khronos)**
-* **[Community](#community)**
+A curated collection of resources and projects focused on Vulkan.
 
 ## Hardware Support
 *  [gpuinfo](http://vulkan.gpuinfo.org/) - Vulkan Hardware Database by Sascha Willems

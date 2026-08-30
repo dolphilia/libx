@@ -1,32 +1,13 @@
 ---
-title: "veggiemonk/awesome-docker"
-description: "Dockerの実行環境、イメージ管理、運用ツール、開発資料、コミュニティ集"
+title: "Awesome Docker"
+description: "Dockerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-veggiemonk-awesome-docker-readme-md"
 ---
 
-# Awesome Docker [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)][sindresorhus] [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/veggiemonk/awesome-docker/)[![Last Commit](https://img.shields.io/github/last-commit/veggiemonk/awesome-docker)](https://github.com/veggiemonk/awesome-docker/commits/main)
+# Awesome Docker
 
-> A curated list of projects for Docker.
+Dockerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-ご寄付をご希望の方は、まず [CONTRIBUTING.md](https://github.com/veggiemonk/awesome-docker/blob/master/.github/CONTRIBUTING.md) をお読みください。
-このリストが不完全である場合、ご寄付によりその不完全さを補うことができます。
-ここに掲載されているリンクのうち、もはや適切でないものがあれば、その修正を [pull request][editreadme] としてこのファイルを改善する形でご提出ください。ありがとうございます。
-
-**このプロジェクトはDockerに特化したものでなければならない。**
-
-> Rule of thumb: if removing the Docker integration wouldn't kill the project's value proposition, it doesn't belong in the this list.
-
-このリストの作成者および維持者には、いかなる寄与者による変更を受け入れることに報酬が支払われません。
-このページは、いかなる形でもDockerの公式製品ではありません。
-これはプロジェクトへのリンク一覧であり、ボランティアによって維持されています。
-誰もが寄与を可能としています。
-このリポジトリの目的は、オープンソースプロジェクトをインデックス化することであり、利益を得るための広告ではありません。
-
-> Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications. Consisting of Docker Engine, a portable, lightweight runtime and packaging tool, and Docker Hub, a cloud service for sharing applications and automating workflows, Docker enables apps to be quickly assembled from components and eliminates the friction between development, QA, and production environments. As a result, IT can ship faster and run the same app, unchanged, on laptops, data center VMs, and any cloud.
-
-_ソース:_ [What is Docker](https://www.docker.com/why-docker/)
-
-<a id="contents"></a>
 # 目次
 
 

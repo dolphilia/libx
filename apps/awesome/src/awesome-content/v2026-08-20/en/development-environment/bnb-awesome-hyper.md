@@ -1,26 +1,12 @@
 ---
-title: "bnb/awesome-hyper"
-description: "Canonical snapshot of bnb/awesome-hyper"
+title: "Awesome Hyper"
+description: "A curated collection of resources and projects focused on Hyper."
 licenseSource: "github-bnb-awesome-hyper-readme-md"
 ---
 
-# Awesome Hyper [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Awesome](https://img.shields.io/travis/bnb/awesome-hyper.svg)](https://travis-ci.org/bnb/awesome-hyper)
+# Awesome Hyper
 
-[<img src="hyper-3-color-logo.svg" align="right" width="240">](https://hyper.is)
-
-> A curated list of sweet Hyper [packages](#packages), [themes](#themes), and [resources](#resources).
-
-*Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing. You might also like [awesome-node](https://github.com/sindresorhus/awesome-nodejs) and [awesome-npm](https://github.com/sindresorhus/awesome-npm), which both have CLI stuff you can use with Hyper!*
-
-*Please read the [contribution guidelines](https://github.com/bnb/awesome-hyper/blob/6b9f209da885e047f4dafa35e21f51655e388d91/CONTRIBUTING.md) before contributing.*
-
-**Check out the official [Hyper site](https://hyper.is), check out [Vercel](https://vercel.com), and their interesting Hosting product, [Now](https://vercel.com/home).**
-
-Want to add your awesome Hyper package, theme, or resource? Make the change and [open a pull request](https://opensource.guide/how-to-contribute/#opening-a-pull-request)!
-
-Like `awesome-hyper`? Reach out to [@bitandbang](https://twitter.com/bitandbang), [@matheusfrndes](https://twitter.com/matheusfrndes), and [@iamstarkov](https://twitter.com/iamstarkov) on Twitter and say *hi*! 👋
-
-
+A curated collection of resources and projects focused on Hyper.
 
 # Contents
 

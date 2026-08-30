@@ -1,14 +1,12 @@
 ---
-title: "jzarca01/awesome-food"
-description: "料理、レシピ、食品サービスAPI、栄養、学習資料、動画に関するGitHubプロジェクトをまとめた定本スナップショット"
+title: "Awesome Food"
+description: "Foodを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jzarca01-awesome-food-readme-md"
 ---
 
-# 食のAwesomeリスト <a id="awesome-food"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Food
 
-![Awesome-food](https://raw.githubusercontent.com/jzarca01/awesome-food/7793028a0cb3e55aabeaac4ef120a9dd015cb618/awesome_food.png)
-
-> GitHub上の食に関するプロジェクトを厳選したリストです。
+Foodを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

@@ -1,16 +1,12 @@
 ---
-title: "filipelinhares/awesome-slack"
-description: "Canonical snapshot of filipelinhares/awesome-slack"
+title: "Awesome Slack Communities"
+description: "A curated collection of resources and projects focused on Slack Communities."
 licenseSource: "github-filipelinhares-awesome-slack-readme-md"
 ---
 
-# Awesome Slack Communities [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Build Status](https://api.travis-ci.org/filipelinhares/awesome-slack.svg)](https://travis-ci.org/filipelinhares/awesome-slack)
+# Awesome Slack Communities
 
-A list of communities about web development and design that are powered by **Slack**.
-
-## What's Slack
-> Slack is a platform for team communication: everything in one place, instantly searchable, available wherever you go. *- slack.com*
+A curated collection of resources and projects focused on Slack Communities.
 
 ## Table of Contents
 - [Development](#development)

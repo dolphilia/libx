@@ -1,14 +1,12 @@
 ---
-title: "jorgebucaran/awsm.fish"
-description: "jorgebucaran/awsm.fish の定本スナップショット"
+title: "Awesome awsm.fish"
+description: "awsm.fishを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jorgebucaran-awsm.fish-readme-md"
 ---
 
-# awsm.fish [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome awsm.fish
 
-> Fishは、Linux、macOS、その他の環境に必要だと気づかなかった、洒落ていて使いやすいコマンドラインシェルです。RAMを数バイトでも節約するため機能を省く昔ながらのシェルから離れ、ついに90年代のためのコマンドラインシェルが登場しました。
-
-厳選したプラグイン、プロンプト、その他の[Fish](https://fishshell.com/)の便利なものが集まる究極の宝庫へようこそ。これは単なるコレクションではなく、使いやすい対話型シェル向けの最高のFishプロジェクトだけを厳選しています。掲載したい優れたプロジェクトがありますか？[pull requestを送って](https://github.com/jorgebucaran/awesome-fish/fork)、仲間になりましょう。
+awsm.fishを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

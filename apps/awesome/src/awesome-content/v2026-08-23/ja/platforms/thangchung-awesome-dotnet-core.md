@@ -1,18 +1,12 @@
 ---
-title: "thangchung/awesome-dotnet-core"
-description: ".NET Coreのフレームワーク、ライブラリ、ツール、教材、コミュニティ集"
+title: "Awesome .NET Core"
+description: ".NET Coreを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-thangchung-awesome-dotnet-core-readme-md"
 ---
 
-# Awesome .NET Core [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome .NET Core
 
-[awesome](https://github.com/sindresorhus/awesome), [awesome-dotnet](https://github.com/quozd/awesome-dotnet), [awesome-nodejs](https://github.com/sindresorhus/awesome-nodejs), [frontend-dev-bookmarks](https://github.com/dypsilon/frontend-dev-bookmarks)をインスピレーションとして受けています.
-
-貢献は常に歓迎されています！まず [contribution guidelines](https://github.com/thangchung/awesome-dotnet-core/blob/master/contributing.md) ページを確認してください。私たちは専有ソフトウェアや商業ソフトウェアも受け入れています.
-
-すべての [contributors](https://github.com/thangchung/awesome-dotnet-core/graphs/contributors) に感謝します。あなたたちのおかげで、このプロジェクトは可能であり、素晴らしい存在です。目標は、非常に有名なリソースをカテゴリー分けした、コミュニティが中心となるコレクションを構築することです.
-
-私の [blog](https://dev.to/thangchung) をチェックしてみてください。あるいは [Twitter](https://twitter.com/thangchung) でお会いしましょう！
+.NET Coreを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Contents
 

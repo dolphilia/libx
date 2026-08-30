@@ -1,12 +1,12 @@
 ---
-title: "feross/awesome-mad-science"
-description: "feross/awesome-mad-science の正規スナップショット"
+title: "Awesome Mad Science"
+description: "Mad Scienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-feross-awesome-mad-science-readme-md"
 ---
 
-# Awesome Mad Science [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Mad Science
 
-「こんなことができるとは知らなかった！」と言いたくなる、愉快な npm パッケージです。PR を歓迎します！
+Mad Scienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## ピアツーピア
 - [peerwiki](https://www.npmjs.com/package/peerwiki) - BitTorrent 上に Wikipedia 全体を配置

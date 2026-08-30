@@ -1,18 +1,12 @@
 ---
-title: "eselkin/awesome-computational-neuroscience"
-description: "Canonical snapshot of eselkin/awesome-computational-neuroscience"
+title: "Awesome Computational Neuroscience"
+description: "A curated collection of resources and projects focused on Computational Neuroscience."
 licenseSource: "github-eselkin-awesome-computational-neuroscience-readme-md"
 ---
 
-# Awesome Computational Neuroscience [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Computational Neuroscience
 
-To contribute, see [:pencil2: code of contribution](https://github.com/eselkin/awesome-computational-neuroscience/blob/master/contributing.md)
-
-[Computational neuroscience](https://en.wikipedia.org/wiki/Computational_neuroscience) is a multidisciplinary science that joins biology/neuroscience, medicine, biophysics, psychology, computer science, mathematics, and statistics to study the nervous system using computational approaches.
-
-This list of schools and researchers in computational neuroscience, theoretical neuroscience, (and systems neuroscience) aims to give a global perspective of researchers in the field, make it easier to apply to the listed institutions, and also provide a reasonable way to find an advisor.
-
-In addition to names of PIs, excerpts of their academic biographies, and links to their publications, many of the researchers are qualified with a small scale "+/=/- computational." The metric is subjective to the editor of that material but it generally breaks down as: (+) refers to a researcher the university identifies as a computational neuroscientist, their bio consistently identifies a significant component of their research is in the field, and they have a significant body of work in the field. (=) refers to the fact that the university identifies them as practicing computational research and they have occasionally produced articles in the field. (-) means that the university identifies them as practicing computational neuroscience, their bio might also mention it, but articles could not be found that represent this material. As with ratings, this metric might change for a researcher over time as they publish more.
+A curated collection of resources and projects focused on Computational Neuroscience.
 
 ## Contents
 

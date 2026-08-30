@@ -1,16 +1,12 @@
 ---
-title: "mhxion/awesome-discord-communities"
-description: "開発者、ゲーム技術者、ハッカー、数学者などのためのDiscordコミュニティ集"
+title: "Awesome Discord Communities"
+description: "Discord Communitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mhxion-awesome-discord-communities-readme-md"
 ---
 
-<img align="right" height="207x" width="205px" alt="Banner" src="https://raw.githubusercontent.com/mhxion/awesome-discord-communities/1d973a9d4f59325ef11c48d0b2dde887cf688808/images/awesome_programming_discord.webp">
+# Awesome Discord Communities
 
-
-# Awesome Discord Communities [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-開発者、ゲームエンジニア、ハッカー、ハンドリーファン、数学愛好家、テクノロジー愛好家向けに素晴らしいDiscordコミュニティを厳選したリスト。 [Discord](https://github.com/mhxion/awesome-discord-communities/blob/1d973a9d4f59325ef11c48d0b2dde887cf688808/FAQ.md#what-is-discordcom-exactly) 本質的には、コミュニティ中心の即時メッセージング、音声およびビデオ通話アプリケーションです。 [__This is not a Discord listing, promotional, or affiliated site!__](https://github.com/mhxion/awesome-discord-communities/blob/1d973a9d4f59325ef11c48d0b2dde887cf688808/FAQ.md#how-is-this-list-any-different-from-discord-listing-sites)
-
+Discord Communitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Contents
 

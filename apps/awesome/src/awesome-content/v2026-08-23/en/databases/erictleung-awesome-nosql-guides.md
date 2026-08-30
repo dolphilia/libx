@@ -1,25 +1,12 @@
 ---
-title: "erictleung/awesome-nosql-guides"
-description: "Canonical snapshot of erictleung/awesome-nosql-guides"
+title: "Awesome NoSQL Guides"
+description: "A curated collection of resources and projects focused on NoSQL Guides."
 licenseSource: "github-erictleung-awesome-nosql-guides-readme-md"
 ---
 
-# Awesome NoSQL Guides [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome NoSQL Guides
 
-> Curated list of resources and links about *using* NoSQL databases and things to look for when deciding to use one.
-
-A basic definition of NoSQL databases can be found on Wikipedia as:
-
-> "A NoSQL (originally referring to 'non SQL' or 'non relational') database provides a mechanism for storage and retrieval of data which is modeled in means other than the tabular relations used in relational databases."
-
-For actual NoSQL databases, you can go
-[here](https://github.com/sindresorhus/awesome#databases),
-[here](https://hostingdata.co.uk/nosql-database/),
-[here](https://db-engines.com/en/ranking),
-[here](https://dbdb.io/),
-[here](https://github.com/igorbarinov/awesome-data-engineering#databases), or
-[here](https://github.com/kahun/awesome-sysadmin#nosql). Also, not to be confused with the relational database management system, [NoSQL](http://www.strozzi.it/cgi-bin/CSA/tw7/I/en_US/nosql/Home%20Page).
-
+A curated collection of resources and projects focused on NoSQL Guides.
 
 ## Contents
 
@@ -104,4 +91,3 @@ For actual NoSQL databases, you can go
 - [Dynamo Vs Cassandra : Systems Design Of NoSQL Databases](https://sujithjay.com/data-systems/dynamo-cassandra/) - Blog post comparing and constrating system designs of two well known NoSQL databases.
 - [Why You Should Build Your Wwn NoSQL Database](https://medium.com/@marceloboeira/why-you-should-build-your-own-nosql-database-9bbba42039f5) - Brief overview of NoSQL databases and the spectrum of schema, along with a very basic implementation of a NoSQL database using the Crystal programming language.
 - [PostgreSQL, The NoSQL Database (2015)](https://www.linuxjournal.com/content/postgresql-nosql-database) - An argument for PostgreSQL being an alternative to NoSQL databases with NoSQL-like features using its new features like HStore (key-value store) and JSONB (document-based) as of Version 9.4.
-

@@ -1,12 +1,12 @@
 ---
-title: "marcobiedermann/search-engine-optimization"
-description: "Canonical snapshot of marcobiedermann/search-engine-optimization"
+title: "Awesome Search Engine Optimization (SEO)"
+description: "A curated collection of resources and projects focused on Search Engine Optimization (SEO)."
 licenseSource: "github-marcobiedermann-search-engine-optimization-readme-md"
 ---
 
-# Search Engine Optimization (SEO) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Search Engine Optimization (SEO)
 
-A helpful checklist / collection of Search Engine Optimization (SEO) tips and techniques.
+A curated collection of resources and projects focused on Search Engine Optimization (SEO).
 
 ## Contents
 

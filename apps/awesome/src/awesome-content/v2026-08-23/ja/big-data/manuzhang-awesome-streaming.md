@@ -1,20 +1,13 @@
 ---
-title: "manuzhang/awesome-streaming"
-description: "manuzhang/awesome-streaming の正規スナップショット"
+title: "Awesome Streaming"
+description: "Streamingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-manuzhang-awesome-streaming-readme-md"
 ---
 
-<a id="awesome-streaming"></a>
-## Awesome Streaming  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://github.com/manuzhang/awesome-streaming/workflows/build/badge.svg)](https://github.com/manuzhang/awesome-streaming/actions)
+# Awesome Streaming
 
-優れた[ストリーミング（ストリーム処理）](http://radar.oreilly.com/2015/08/the-world-beyond-batch-streaming-101.html)フレームワーク、アプリケーション、読み物などを厳選したリストです。[他のAwesomeプロジェクト](https://github.com/sindresorhus/awesome)から着想を得ています。
+Streamingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="website"></a>
-## ウェブサイト
-
-[https://manuzhang.github.io/awesome-streaming/](https://manuzhang.github.io/awesome-streaming/) は、このリストに掲載されたプロジェクトの**更新情報**を確認できる、より動的なウェブサイトです。
-
-<a id="table-of-contents"></a>
 ## 目次
 
 - [エンジンとプラットフォーム](#engines-and-platforms)

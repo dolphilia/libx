@@ -1,39 +1,12 @@
 ---
-title: "academic/awesome-datascience"
-description: "データサイエンスの講座、書籍、ツール、ライブラリ、論文、データセット集"
+title: "Awesome DATA SCIENCE"
+description: "DATA SCIENCEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-academic-awesome-datascience-readme-md"
 ---
 
-<div align="center"><img src="https://raw.githubusercontent.com/academic/awesome-datascience/936a76248cbe5fd8be422dc655b62ea5b570769a/assets/head.jpg"></div>
+# Awesome DATA SCIENCE
 
-# AWESOME DATA SCIENCE
-
-[![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-ご寄付は歓迎です - [`CONTRIBUTING.md`](https://github.com/academic/awesome-datascience/blob/936a76248cbe5fd8be422dc655b62ea5b570769a/CONTRIBUTING.md)を参照してください.
-
-**オープンソースのデータサイエンスリポジトリで、現実の問題解決に向けて概念を学び、応用します。**
-
-これは**データサイエンス**を学び始めるためのショートカットパスです。ただ、質問に答える手順に従ってください。「データサイエンスとは何か、そしてデータサイエンスを学ぶために何を学ぶべきか？」
-
-<br>
-
-## $ [academic](https://academic.io/cli)
-
-```
-$ brew tap academic/tap
-$ brew install academic
-```
-
-## Sponsors
-
-
-[![Graphyn: visualize specialized agent workflows](https://raw.githubusercontent.com/fuego-wtf/graphyn-code/main/assets/graphyn-agent-workflows.png)](https://graphyn.ai/?utm_source=github&utm_medium=sponsorship&utm_campaign=graphyn_founding_alpha&utm_content=awesome_datascience_banner)
-
-
-スポンサーになる！ `github@academic.io`
-
-
+DATA SCIENCEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Table of Contents
 

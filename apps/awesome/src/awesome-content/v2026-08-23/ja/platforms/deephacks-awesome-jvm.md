@@ -1,34 +1,12 @@
 ---
-title: "deephacks/awesome-jvm"
-description: "JVMのバイトコード、GC、言語、性能解析、ランタイム資料を分類した定本スナップショット"
+title: "Awesome JVM"
+description: "JVMを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-deephacks-awesome-jvm-readme-md"
 ---
 
-# JVMのAwesomeリスト <a id="awesome-jvm"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome JVM
 
-JVMの低レベル実装、性能、非フレームワーク領域に関する優れた資料を厳選したリストです。
-
-- [JVMのAwesomeリスト](#awesome-jvm)
-    - [バイトコード](#bytecode)
-    - [ガベージコレクター](#garbage-collectors)
-    - [負荷生成ツール](#load-tools)
-    - [言語](#languages)
-    - [機械学習](#machine-learning)
-    - [メモリ・並行処理](#memory-and-concurrency)
-    - [メタプログラミング](#metaprogramming)
-    - [ネイティブ連携](#native)
-    - [ネットワーク](#network)
-    - [Nixツール](#nix-tools)
-    - [プロファイラー](#profilers)
-    - [ランタイム管理](#runtimes)
-    - [仮想マシン](#virtual-machines)
-- [資料](#resources)
-    - [コミュニティ](#communities)    
-    - [ドキュメント](#documentation)
-    - [メディア](#media)
-    - [人物](#people)
-- [コントリビューション](#contributing)
-
+JVMを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## バイトコード <a id="bytecode"></a>
 

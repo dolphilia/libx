@@ -1,17 +1,12 @@
 ---
-title: "pehapkari/awesome-symfony-education"
-description: "pehapkari/awesome-symfony-education の正規スナップショット"
+title: "Awesome Symfony Education"
+description: "Symfony Educationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-pehapkari-awesome-symfony-education-readme-md"
 ---
 
-# Awesome Symfony Education [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Symfony Education
 
-[![ビルド状態](https://img.shields.io/travis/pehapkari/awesome-symfony-education/master.svg?style=flat-square)](https://travis-ci.org/pehapkari/awesome-symfony-education)
-
-Symfony の素晴らしい**記事、シリーズ、書籍**を厳選したリストです。
-
-*Bundle を選ぶ場合は、[sitepoint-editors/awesome-symfony](https://github.com/sitepoint-editors/awesome-symfony)をご覧ください。*
-
+Symfony Educationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Single Action Controller
 

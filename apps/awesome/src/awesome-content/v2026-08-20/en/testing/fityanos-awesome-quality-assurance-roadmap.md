@@ -1,12 +1,12 @@
 ---
-title: "fityanos/awesome-quality-assurance-roadmap"
-description: "Canonical snapshot of fityanos/awesome-quality-assurance-roadmap"
+title: "Awesome Quality Assurance Roadmap"
+description: "A curated collection of resources and projects focused on Quality Assurance Roadmap."
 licenseSource: "github-fityanos-awesome-quality-assurance-roadmap-readme-md"
 ---
 
-❗The updated roadmap can be seen on https://fityanos.github.io/anasfitiani/qaroadmap.html
+# Awesome Quality Assurance Roadmap
 
-# Awesome Quality Assurance Roadmap [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+A curated collection of resources and projects focused on Quality Assurance Roadmap.
 
 ## Contents
 - [Introduction](#introduction)

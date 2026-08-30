@@ -1,17 +1,12 @@
 ---
-title: "matchai/awesome-pinned-gists"
-description: "Canonical snapshot of matchai/awesome-pinned-gists"
+title: "Awesome Pinned Gists"
+description: "A curated collection of resources and projects focused on Pinned Gists."
 licenseSource: "github-matchai-awesome-pinned-gists-readme-md"
 ---
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/4658208/57482610-14f64480-7273-11e9-862e-80d9fe332311.png" width="535">
-  <h3 align="center">Awesome Pinned Gists</h3>
-  <p align="center">A curated list of open source tools for adding dynamic data to pinned gists.<p>
-  <p align="center">
-    <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome Lists"></a>
-  </p>
-</p>
+# Awesome Pinned Gists
+
+A curated collection of resources and projects focused on Pinned Gists.
 
 ## Contents
 

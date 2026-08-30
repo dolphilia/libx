@@ -1,32 +1,13 @@
 ---
-title: "tomodachi94/awesome-computercraft"
-description: "tomodachi94/awesome-computercraft の正規スナップショット"
+title: "Awesome ComputerCraft"
+description: "ComputerCraftを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-tomodachi94-awesome-computercraft-readme-md"
 ---
 
+# Awesome ComputerCraft
 
+ComputerCraftを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-
-
-<a id="awesome-computercraft"></a>
-# Awesome ComputerCraft [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-[<img src="https://raw.githubusercontent.com/tomodachi94/awesome-computercraft/bdefad4c76cb2be7dd88389a67045dab5c60b5d8/assets/cc-tweaked-logo.png" align="right" width="100">](https://computercraft.cc)
-
-> [ComputerCraft](https://computercraft.info) と[そのフォーク](https://computercraft.cc)の有用なプログラム、ライブラリ、文献、Mod を集めたリストです。
-
-**ComputerCraft** は、Lua でプログラミングできるコンピューターを Minecraft に追加する Mod です。**ComputerCraft: Tweaked** は、新しい Minecraft バージョン向けのフォークです。
-
-このプロジェクトは [GitHub](https://github.com/tomodachi94/awesome-computercraft) で公開されており、サードパーティのウェブサイトでは正しく表示されない場合があります。
-
-リストに追加すべきものがあれば、[Issue でお知らせください](https://github.com/tomodachi94/awesome-computercraft/issues/new/choose)。
-
-貢献する場合は [CONTRIBUTING.md](https://github.com/tomodachi94/awesome-computercraft/blob/bdefad4c76cb2be7dd88389a67045dab5c60b5d8/CONTRIBUTING.md) を参照してください。
-その他の質問については [FAQ](https://github.com/tomodachi94/awesome-computercraft/blob/bdefad4c76cb2be7dd88389a67045dab5c60b5d8/FAQ.md) を参照してください。
-
-略称について: `CC` は ComputerCraft、`CC:T` は ComputerCraft: Tweaked、`CC:R` は ComputerCraft: Restitched を指します。
-
-<a id="contents"></a>
 ## 目次
 
 

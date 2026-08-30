@@ -1,17 +1,12 @@
 ---
-title: "ucg8j/awesome-dash"
-description: "ucg8j/awesome-dash の定本スナップショット"
+title: "Awesome Dash"
+description: "Dashを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ucg8j-awesome-dash-readme-md"
 ---
 
-# Awesome Dash [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Dash
 
-[<img src="logo.webp" align="right" width="250">](https://plot.ly/products/dash/)
-
-優れたDash（plotly）リソースを厳選したリスト。
-
-> [Dash](https://plot.ly/products/dash/)は、ウェブアプリケーションを構築するための生産性の高いPythonフレームワークです。
-> Flask、Plotly.js、React.jsの上に構築されたDashは、純粋なPythonで高度にカスタム化したユーザーインターフェースを持つデータ可視化アプリを構築するのに最適です。特にPythonでデータを扱う人に適しています。
+Dashを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [デプロイ](#deployment)

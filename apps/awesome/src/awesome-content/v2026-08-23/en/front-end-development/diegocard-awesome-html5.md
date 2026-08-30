@@ -1,13 +1,12 @@
 ---
-title: "diegocard/awesome-html5"
-description: "Canonical snapshot of diegocard/awesome-html5"
+title: "Awesome HTML5"
+description: "A curated collection of resources and projects focused on HTML5."
 licenseSource: "github-diegocard-awesome-html5-readme-md"
 ---
 
-Awesome HTML5 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://api.travis-ci.org/diegocard/awesome-html5.svg?branch=master)](https://travis-ci.org/diegocard/awesome-html5)
-=============
+# Awesome HTML5
 
-A curated list of awesome HTML5 resources. Inspired by [awesome-php](https://github.com/ziadoz/awesome-php) and [awesome-python](https://github.com/vinta/awesome-python)
+A curated collection of resources and projects focused on HTML5.
 
 ## Table of Contents
 - [Articles and standards](#articles-and-standards)

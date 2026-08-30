@@ -1,24 +1,12 @@
 ---
-title: "fkie-cad/awesome-embedded-and-iot-security"
-description: "fkie-cad/awesome-embedded-and-iot-securityの正規スナップショット"
+title: "Awesome Embedded and IoT Security"
+description: "Embedded and IoT Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-fkie-cad-awesome-embedded-and-iot-security-readme-md"
 ---
 
-<div align="center">
-	<img width="500" height="350" src="iot_awesome_logo.svg" alt="Awesome">
-  <br />
-</div>
+# Awesome Embedded and IoT Security
 
-# Awesome Embedded and IoT Security [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> 組み込みおよびIoTセキュリティに関する優れたリソースを集めたリストです。ソフトウェア・ハードウェアツール、書籍、研究論文などを収録しています。
-
-[Mirai](https://github.com/fkie-cad/awesome-embedded-and-iot-security/blob/fbd0301e6690a21d98ca8d565c0657aae0fba339/https:/en.wikipedia.org/wiki/Mirai_(malware)>)のようなボットネットは、組み込み機器やIoT機器でより強固なセキュリティが必要であることを示しました。このリストは、初心者と専門家がこの分野で役立つリソースを見つける助けとなるものです。  
-初心者は、<ins>_Books_</ins>および<ins>_Case Studies_</ins>の節を確認してください。  
-すぐに自分で分析を始めたい場合は、<ins>_Analysis Frameworks_</ins>を試してください。
-これらは使いやすく、初めて意味のある結果を得るために専門家である必要はありません。
-
-> :euro:が付いた項目は商用製品です。
+Embedded and IoT Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

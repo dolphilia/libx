@@ -1,12 +1,12 @@
 ---
-title: "marcobiedermann/search-engine-optimization"
-description: "marcobiedermann/search-engine-optimization の定本スナップショット"
+title: "Awesome Search Engine Optimization (SEO)"
+description: "Search Engine Optimization (SEO)を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-marcobiedermann-search-engine-optimization-readme-md"
 ---
 
-# Search Engine Optimization (SEO) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Search Engine Optimization (SEO)
 
-検索エンジン最適化（SEO）のヒントと手法をまとめた、役立つチェックリスト／コレクション。
+Search Engine Optimization (SEO)を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -263,4 +263,3 @@ licenseSource: "github-marcobiedermann-search-engine-optimization-readme-md"
 ## ライセンス
 
 [![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-

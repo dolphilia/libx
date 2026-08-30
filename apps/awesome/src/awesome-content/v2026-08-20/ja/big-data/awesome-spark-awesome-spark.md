@@ -1,18 +1,12 @@
 ---
-title: "awesome-spark/awesome-spark"
-description: "awesome-spark/awesome-spark の日本語定本スナップショット"
+title: "Awesome Spark"
+description: "Sparkを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-awesome-spark-awesome-spark-readme-md"
 ---
 
-[<img src="https://cdn.rawgit.com/awesome-spark/awesome-spark/f78a16db/spark-logo-trademark.svg" align="right">](https://spark.apache.org/)
+# Awesome Spark
 
-# Awesome Spark [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-優れた[Apache Spark](https://spark.apache.org/)パッケージとリソースの厳選リストです。
-
-_Apache Sparkはオープンソースのクラスターコンピューティングフレームワークです。元々は[University of California](https://www.universityofcalifornia.edu/)の[Berkeley's AMPLab](https://amplab.cs.berkeley.edu/)で開発され、Sparkコードベースは後に[Apache Software Foundation](https://www.apache.org/)へ寄贈され、以後維持されています。Sparkは、暗黙的なデータ並列性と耐障害性を備え、クラスター全体をプログラミングするインターフェースを提供します_（[Wikipedia 2017](#wikipedia-2017)）。
-
-Apache Sparkの利用者は、Apache Spark APIsと連携するためにPython、R、Scala、Javaという異なるプログラミング言語から選択できます。
+Sparkを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## パッケージ
 

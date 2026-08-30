@@ -1,13 +1,12 @@
 ---
-title: "NoahBuscher/Inspire"
-description: "NoahBuscher/Inspire の正規スナップショット"
+title: "Awesome Inspire"
+description: "Inspireを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-NoahBuscher-Inspire-readme-md"
 ---
 
-Inspire [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-===
+# Awesome Inspire
 
-どのようなウェブプロジェクトでも、現代的なフロントエンドの設計と構築は長く困難な作業になり得ます。役に立つリンクを集めました。お楽しみください！
+Inspireを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 構想
 ##### レイアウトの選択肢やスタイルの方向性について、全体像をつかむのに適したサイトです。

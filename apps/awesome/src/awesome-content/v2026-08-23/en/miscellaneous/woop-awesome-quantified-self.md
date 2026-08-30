@@ -1,20 +1,12 @@
 ---
-title: "woop/awesome-quantified-self"
-description: "Canonical snapshot of woop/awesome-quantified-self"
+title: "Awesome Quantified Self"
+description: "A curated collection of resources and projects focused on Quantified Self."
 licenseSource: "github-woop-awesome-quantified-self-readme-md"
 ---
 
-# Awesome Quantified Self [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Quantified Self
 
-
-# [<img src="https://cdn.rawgit.com/willempienaar/awesome-quantified-self/master/awesome-quantified-self.png">](https://github.com/willempienaar/awesome-quantified-self)
-
-
-> Carefully curated list of awesome Quantified Self resources.
-
-The [Quantified Self](https://en.wikipedia.org/wiki/Quantified_Self) is a movement to incorporate technology into data acquisition on aspects of a person's daily life in terms of inputs (e.g. food consumed, quality of surrounding air), states (e.g. mood, arousal, blood oxygen levels), and performance (mental and physical).
-
-Contributions welcome. Add links through pull requests or create an issue to start a discussion.
+A curated collection of resources and projects focused on Quantified Self.
 
 ## Contents
 

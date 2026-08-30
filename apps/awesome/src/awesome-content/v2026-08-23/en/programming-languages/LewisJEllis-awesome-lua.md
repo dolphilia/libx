@@ -1,15 +1,12 @@
 ---
-title: "LewisJEllis/awesome-lua"
-description: "Canonical snapshot of LewisJEllis/awesome-lua"
+title: "Awesome Lua"
+description: "A curated collection of resources and projects focused on Lua."
 licenseSource: "github-LewisJEllis-awesome-lua-readme-md"
 ---
 
-# Awesome Lua [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Lua
 
-> A curated list of quality Lua [packages](#packages) and [resources](#resources).
-
-Inspired by the lists [awesome](https://github.com/sindresorhus/awesome), [awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness), and [awesome-nodejs](https://github.com/sindresorhus/awesome-nodejs).
-
+A curated collection of resources and projects focused on Lua.
 
 ## Packages
 - [Implementations, Interpreters, and Bindings](#implementations-interpreters-and-bindings)

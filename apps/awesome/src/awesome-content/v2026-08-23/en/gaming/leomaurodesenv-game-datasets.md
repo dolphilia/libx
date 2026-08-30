@@ -1,42 +1,12 @@
 ---
-title: "leomaurodesenv/game-datasets"
-description: "Canonical snapshot of leomaurodesenv/game-datasets"
+title: "Awesome video game: Awesome Game Datasets"
+description: "A curated collection of resources and projects focused on video game: Awesome Game Datasets."
 licenseSource: "github-leomaurodesenv-game-datasets-readme-md"
 ---
 
-# :video_game: Awesome Game Datasets [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome video game: Awesome Game Datasets
 
-[![GitHub](https://img.shields.io/static/v1?label=Code&message=GitHub&color=blue&style=flat-square)](https://github.com/leomaurodesenv/game-datasets)
-[![CC-BY-4.0 license](https://img.shields.io/static/v1?label=License&message=CC-BY-4.0&color=blue&style=flat-square)](https://github.com/leomaurodesenv/game-datasets/blob/f2a3348ef0895fbed20b1fad2ef760b78292bb13/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/leomaurodesenv/game-datasets/continuous-integration.yml?label=Build&style=flat-square)](https://github.com/leomaurodesenv/game-datasets/actions/workflows/continuous-integration.yml)
-
-In computer science, Artificial Intelligence (AI) is intelligence demonstrated by machines. Its definition, AI research as the study of "intelligent agents": any device that perceives its environment and takes actions that achieving its goals _Russell et. al (2016)_.
-
-Withal, Data Mining (DM) is the process of discovering patterns in data sets (or datasets) involving methods of machine learning, statistics, and database systems; DM focus on extract the information of datasets _Han (2011)_.
-
-This repository guides work with **Artificial Intelligence** or **Data Mining** in digital games. Find datasets, tools, and materials to build your _application_ or _dataset_.
-
-**Contributing**
-
-For suggestions or questions, open an issue. To contribute, read [this](https://github.com/leomaurodesenv/game-datasets/blob/f2a3348ef0895fbed20b1fad2ef760b78292bb13/CONTRIBUTING.md) and submit a pull request.
-
-______________________________________________________________________
-
-**Contents**
-
-- [:video_game: Awesome Game Datasets ](#video_game-awesome-game-datasets-)
-  - [API](#api)
-  - [Artificial Intelligence](#artificial-intelligence)
-    - [Mobile](#mobile)
-    - [Web](#web)
-  - [Books](#books)
-  - [Dataset](#dataset)
-    - [Related](#related)
-  - [Market Research](#market-research)
-  - [Miscellaneous](#miscellaneous)
-  - [License](#license)
-
-______________________________________________________________________
+A curated collection of resources and projects focused on video game: Awesome Game Datasets.
 
 ## API
 

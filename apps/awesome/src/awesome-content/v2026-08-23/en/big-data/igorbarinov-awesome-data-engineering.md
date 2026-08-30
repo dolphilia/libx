@@ -1,12 +1,12 @@
 ---
-title: "igorbarinov/awesome-data-engineering"
-description: "Canonical snapshot of igorbarinov/awesome-data-engineering"
+title: "Awesome Data Engineering"
+description: "A curated collection of resources and projects focused on Data Engineering."
 licenseSource: "github-igorbarinov-awesome-data-engineering-readme-md"
 ---
 
-# Awesome Data Engineering [![Awesome](https://awesome.re/badge-flat2.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Data Engineering
 
-> A curated list of awesome things related to Data Engineering.
+A curated collection of resources and projects focused on Data Engineering.
 
 ## Contents
 

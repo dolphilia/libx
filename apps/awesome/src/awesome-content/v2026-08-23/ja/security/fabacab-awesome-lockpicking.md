@@ -1,14 +1,12 @@
 ---
-title: "fabacab/awesome-lockpicking"
-description: "fabacab/awesome-lockpicking の定本スナップショット"
+title: "Awesome Lockpicking"
+description: "Lockpickingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-fabacab-awesome-lockpicking-readme-md"
 ---
 
-# Awesome Lockpicking [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Lockpicking
 
-> 錠、金庫、鍵のセキュリティと侵害に関連する優れたガイド、ツール、その他のリソースを厳選したリスト。
-
-[Lock picking](https://en.wikipedia.org/wiki/Lock_picking)は、鍵を使わず、錠やその扉を損傷・破壊せずに錠を開ける技術です。貢献を強く歓迎します。 [貢献ガイドライン](https://github.com/fabacab/awesome-lockpicking/blob/508b99f6bfdaa945be5144f8a6e72feb2e9ac592/CONTRIBUTING.md)をお読みください。
+Lockpickingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # 目次
 

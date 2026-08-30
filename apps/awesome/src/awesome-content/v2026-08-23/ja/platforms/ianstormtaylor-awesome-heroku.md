@@ -1,33 +1,12 @@
 ---
-title: "ianstormtaylor/awesome-heroku"
-description: "ianstormtaylor/awesome-heroku の正規スナップショット"
+title: "Awesome Heroku"
+description: "Herokuを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ianstormtaylor-awesome-heroku-readme-md"
 ---
 
+# Awesome Heroku
 
-![](https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/banner.png)
-
-<p align="center">
-  <a href="https://github.com/sindresorhus/awesome">
-    <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" />
-  </a>
-</p>
-
-役立つ Heroku リソースを集めたリストです。
-
-- [分析](#-analytics)
-- [アーキテクチャ](#-architecture)
-- [ブログ](#-blogs)
-- [デプロイ](#-deployment)
-- [開発](#-development)
-- [ドメイン](#-domains)
-- [メタ情報](#-meta)
-- [Postgres](#-postgres)
-- [スケーリング](#-scaling)
-- [セキュリティ](#-security)
-- [Toolbelt](#-toolbelt)
-- [さようなら…](#-goodbye)
-
+Herokuを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/analytics.png" /> 分析
 

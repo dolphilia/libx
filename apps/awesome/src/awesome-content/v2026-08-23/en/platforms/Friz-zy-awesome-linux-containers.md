@@ -1,15 +1,12 @@
 ---
-title: "Friz-zy/awesome-linux-containers"
-description: "Canonical snapshot of Friz-zy/awesome-linux-containers"
+title: "Awesome Linux Containers"
+description: "A curated collection of resources and projects focused on Linux Containers."
 licenseSource: "github-Friz-zy-awesome-linux-containers-readme-md"
 ---
 
 # Awesome Linux Containers
 
-[![#StandWithBelarus](https://img.shields.io/badge/Belarus-red?label=%23%20Stand%20With&labelColor=white&color=red)
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Presidential_Standard_of_Belarus_%28fictional%29.svg/240px-Presidential_Standard_of_Belarus_%28fictional%29.svg.png" width="20" height="20" alt="Voices From Belarus" />](https://bysol.org/en/) [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://vshymanskyy.github.io/StandWithUkraine)
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+A curated collection of resources and projects focused on Linux Containers.
 
 ## Table of Contents
 

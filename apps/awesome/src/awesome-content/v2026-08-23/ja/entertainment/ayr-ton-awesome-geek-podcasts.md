@@ -1,21 +1,13 @@
 ---
-title: "ayr-ton/awesome-geek-podcasts"
-description: "技術・開発・科学に関する多言語ポッドキャストを集めた厳選リスト"
+title: "Awesome Geek Podcasts"
+description: "Geek Podcastsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ayr-ton-awesome-geek-podcasts-readme-md"
 ---
 
----
-title: Awesome Geek Podcasts
-permalink: /
----
+# Awesome Geek Podcasts
 
+Geek Podcastsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="awesome-geek-podcasts"></a>
-# Awesome Geek Podcasts [![awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![](https://github.com/ayr-ton/awesome-geek-podcasts/workflows/Awesome%20Bot/badge.svg)](https://github.com/ayr-ton/awesome-geek-podcasts/actions)
-
-おすすめの技術系ポッドキャストを集めた厳選リストです。
-
-<a id="contents"></a>
 # 目次
 
 <a id="podcasts-by-language"></a>

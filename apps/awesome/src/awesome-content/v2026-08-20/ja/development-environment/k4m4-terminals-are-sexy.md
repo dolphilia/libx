@@ -1,20 +1,12 @@
 ---
-title: "k4m4/terminals-are-sexy"
-description: "k4m4/terminals-are-sexy の定本スナップショット"
+title: "Awesome Terminals Are Sexy"
+description: "Terminals Are Sexyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-k4m4-terminals-are-sexy-readme-md"
 ---
 
-[![Terminals_Are_Sexy_Logo](https://camo.githubusercontent.com/e9d11666cb60e6a6781dd8676ac06b9a1233bdfcbb603ac60eccd5f5c1a8ed33/68747470733a2f2f7765622e617263686976652e6f72672f7765622f323031373038323032303130313369665f2f687474703a2f2f6e696b6f6c61736b616d612e6d652f636f6e74656e742f696d616765732f323031372f30322f7465726d696e616c735f6172655f736578792e706e67)
+# Awesome Terminals Are Sexy
 
-# Terminals Are Sexy [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> CLI 愛好者向けのターミナルフレームワーク、プラグイン、リソースを集めたキュレーションリスト。
-
-私の[ブログ](https://nikolaskama.me/)を見て、[Twitter]をフォローしてください。(https://twitter.com/nikolaskama).
-
-[![Build Status](https://travis-ci.org/k4m4/terminals-are-sexy.svg?branch=master)](https://travis-ci.org/k4m4/terminals-are-sexy)
-[![GitHub Stars](https://img.shields.io/github/stars/k4m4/terminals-are-sexy.svg)](https://github.com/k4m4/terminals-are-sexy/stargazers)
-
+Terminals Are Sexyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -334,4 +326,3 @@ licenseSource: "github-k4m4-terminals-are-sexy-readme-md"
 Your contributions are always welcome! Please take a look at our [contribution guidelines](https://github.com/k4m4/terminals-are-sexy/blob/master/contributing.md) and [code of conduct](https://github.com/k4m4/movies-for-hackers/blob/master/code-of-conduct.md) first.
 
 Pull requests might be kept open if it hasn't been decided whether additions are *sexy* enough.
-

@@ -1,25 +1,12 @@
 ---
-title: "thoughtspile/awesome-tiny-js"
-description: "Canonical snapshot of thoughtspile/awesome-tiny-js"
+title: "Awesome Tiny JS"
+description: "A curated collection of resources and projects focused on Tiny JS."
 licenseSource: "github-thoughtspile-awesome-tiny-js-readme-md"
 ---
 
-# Awesome Tiny JS [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Tiny JS
 
-<div align="center">
-  <a href="https://github.com/thoughtspile/awesome-tiny-js#readme">
-    <img src="./awesome-logo.png" width="300" height="207">
-  </a>
-</div>
-
-Tiny front-end libraries to put your bundle on a diet. Rules:
-
-- Size is under 2 kB-ish, min + gzip, with all dependencies, except where noted.
-- For multi-purpose libraries, the size of a useful subset must be under 2 kB-ish.
-- Useful client-side. I haven't figured out participation rules for node-only libraries, and I'm not too worried about them.
-- Second-level libraries only allowed for React, Vue, Angular, svelte. 
-- 100+ GitHub stars _or_ 500+ weekly npm installs to focus on tools with some community review.
-- No zero-JS (CSS- or type-only) libraries. It's not awesome-css or something.
+A curated collection of resources and projects focused on Tiny JS.
 
 ## Contents
 

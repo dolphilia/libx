@@ -13,19 +13,12 @@ import {
 const statusPath = path.join(notesDir, 'BATCH_STATUS.json');
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const existing = readJson(statusPath);
-const routes = readJson(
-  path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json')
-).entries
-  .filter((entry) => entry.version === snapshotVersion)
+const routes = readJson(path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json'))
+  .entries.filter((entry) => entry.version === snapshotVersion)
   .sort((left, right) => left.sourceId.localeCompare(right.sourceId));
 const lockBySource = new Map(lock.sources.map((source) => [source.sourceId, source]));
 const fetchBatches = existing.fetchBatches ?? existing.batches ?? [];
-const jaRoot = path.join(
-  rootDir,
-  'apps/awesome/src/awesome-content',
-  snapshotVersion,
-  'ja'
-);
+const jaRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion, 'ja');
 const translated = new Set(
   routes
     .filter((entry) => fs.existsSync(path.join(jaRoot, `${entry.slug}.md`)))
@@ -52,9 +45,7 @@ for (let index = 0; index < routes.length; index += 10) {
         ])
       )
     ),
-    outputHash: sha256(
-      JSON.stringify(sources.map((source) => [source.sourceId, source.slug]))
-    ),
+    outputHash: sha256(JSON.stringify(sources.map((source) => [source.sourceId, source.slug]))),
     checks: ['awesome:validate-canonical', 'awesome:publish --check'],
     pages: Object.fromEntries(
       sources.map((source) => [

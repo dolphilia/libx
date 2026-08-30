@@ -1,16 +1,12 @@
 ---
-title: "manuzhang/awesome-streaming"
-description: "Canonical snapshot of manuzhang/awesome-streaming"
+title: "Awesome Streaming"
+description: "A curated collection of resources and projects focused on Streaming."
 licenseSource: "github-manuzhang-awesome-streaming-readme-md"
 ---
 
-## Awesome Streaming  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://github.com/manuzhang/awesome-streaming/workflows/build/badge.svg)](https://github.com/manuzhang/awesome-streaming/actions)
+# Awesome Streaming
 
-A curated list of awesome [streaming (stream processing)](http://radar.oreilly.com/2015/08/the-world-beyond-batch-streaming-101.html) frameworks, applications, readings and other resources. Inspired by [other awesome projects](https://github.com/sindresorhus/awesome).
-
-## Website
-
-[https://manuzhang.github.io/awesome-streaming/](https://manuzhang.github.io/awesome-streaming/) is a more dynamic website where you can find **updates** of the awesome projects here.
+A curated collection of resources and projects focused on Streaming.
 
 ## Table of Contents
 

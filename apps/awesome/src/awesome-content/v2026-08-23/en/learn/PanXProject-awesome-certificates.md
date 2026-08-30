@@ -1,88 +1,12 @@
 ---
-title: "PanXProject/awesome-certificates"
-description: "Canonical snapshot of PanXProject/awesome-certificates"
+title: "Awesome Certificates"
+description: "A curated collection of resources and projects focused on Certificates."
 licenseSource: "github-PanXProject-awesome-certificates-readme-md"
 ---
 
-<img alt="awesome-certificates.png" src="https://github.com/PanXProject/awesome-certificates/blob/main/media/awesome-certificates.png?raw=true" data-hpc="true">
+# Awesome Certificates
 
-<br/><br/>
-
-<hr/>
-
-
-<div align="center">
-  
-<br/>
-
-<sub>This resource exists thanks to our awesome contributors and these sponsors:</sub>
-
-<br/><br/>
-
-<a href="https://genbounty.com?utm_source=toolseekr&utm_medium=sponsor&utm_campaign=q1_2025&utm_content=awesome_certificates" target="_blank">
-<img src="https://raw.githubusercontent.com/PanXProject/awesome-certificates/main/media/sponsors/genbounty.png" width="180px" alt="GenBounty Logo"/><br/>
-	<strong>GenBounty</strong><br/><br/>
-  AI product safety testing platform with native EU AI Act compliance.
-</a>
-
-<br/><br/>
-<sub>• • •</sub>
-<br/><br/>
-
-<a href="https://promoat.ai?utm_source=saas_directory&utm_medium=listing&utm_campaign=beta_launch_q1&utm_content=awesome_certificates" target="_blank">
-<img src="https://raw.githubusercontent.com/PanXProject/awesome-certificates/main/media/sponsors/promoat.png" width="180px" alt="ProMoat Logo"/><br/>
-	<strong>ProMoat</strong><br/><br/>
-  Generate AI clone videos of yourself in 3 mins.
-</a>
-
-<br/><br/>
-<sub>• • •</sub>
-<br/><br/>
-
-<sub><a href="https://toolseekr.com/sponsor">Become a sponsor</a></sub>
-
-<br/>
-
-</div>
-
-<hr/>
-
-<br/>
-
-# Awesome Certificates [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.com/invite/3kSS9dvnPz)
-
-
-[Contribution guidelines](https://github.com/PanXProject/awesome-certificates/blob/main/CONTRIBUTING.md) /
-[Add a course/certificate](https://github.com/PanXProject/awesome-certificates/compare)
-
-A curated of list of IT, computer science, design and business courses with certificates & digital badges to earn upon completion.
-
-Each course on the list is free to take as well as the badge and certificate.
-
-The list is organized as follows:
-<ol>
-	<li>Course/certificate title</li>
-	<li>Course provider/certificate issuer name</li>
-	<li>Level of diffculty(Beginner, Intermediate or Professional)</li>
-	<li>Course/certificate duration in hours</li>
-	<li>Reward(🏅= Digital Badge or 🏆 = Certificate of Completion)</li>
-</ol>
-
-<b>Want to contribute to this list?</b>
-<br>
-Fork this <a href="https://github.com/PanXProject/awesome-certificates/fork" target="_blank" rel="noopener noreferrer">repo</a>, make the changes on the `readme.md` file and then open a <a href="https://github.com/PanXProject/awesome-certificates/compare" target="_blank" rel="noopener noreferrer">new issue</a>. Make sure to check out both the <a href="https://github.com/PanXProject/awesome-certificates/blob/main/pull_request_template.md" target="_blank" rel="noopener noreferrer">contribution</a> and <a href="https://github.com/PanXProject/awesome-certificates/blob/main/pull_request_template.md" target="_blank" rel="noopener noreferrer">pull request</a> guidelines. 
-
-<b>Have ideas on how to improve this list or features you'd like to see?</b>
-<br>
-Kindly mention it <a href="https://github.com/PanXProject/awesome-certificates/issues/new?assignees=&labels=&template=feature_request.md&title=%5BFEATURE%5D" target="_blank" rel="noopener noreferrer">here</a> by opening a new issue and we will do our best to address it.
-
-<b>Can't find the certificate you're looking for?</b>
-<br>
-Request it <a href="https://github.com/PanXProject/awesome-certificates/issues/new?assignees=&labels=&template=certificate-request.md&title=%5BCERTIFICATE%5D" target="_blank" rel="noopener noreferrer">here</a> and we will find for you.
-
-<b>Something isn't quite right?</b>
-<br>
-Report it <a href="https://github.com/PanXProject/awesome-certificates/issues/new?assignees=&labels=&template=bug_report.md&title=%5BBUG%5D" target="_blank" rel="noopener noreferrer">here</a>.
+A curated collection of resources and projects focused on Certificates.
 
 ## Contents
 

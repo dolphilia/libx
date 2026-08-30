@@ -1,24 +1,12 @@
 ---
-title: "PatrickJS/awesome-angular"
-description: "Angularの公式資料、設計・開発・セキュリティ・状態管理・テスト・UIライブラリを分類した定本スナップショット"
+title: "Awesome Angular"
+description: "Angularを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-PatrickJS-awesome-angular-readme-md"
 ---
 
-# AngularのAwesomeリスト [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) <a id="awesome-angular"></a>
+# Awesome Angular
 
-<p align="center">
-  <a href="https://patrickjs.com" target="_blank">
-    <img src="/media/new/awesome-angular.png" alt="Awesome Angular" />
-  </a>
-</p>
-
-> ロゴは[SAWARATSUKI](https://github.com/SAWARATSUKI/KawaiiLogos)によるデザインです。
-
-AngularフレームワークのAwesomeリストで、すべての開発者に向けてAngularエコシステムの有用なライブラリを掲載します。不足があれば[PRを歓迎します](https://github.com/PatrickJS/awesome-angular/edit/gh-pages/README.md)。
-
-> リポジトリは[@jdegand](https://github.com/jdegand)と[@patrickjs](https://github.com/patrickjs)が保守しています。
-
-現在のAngular版: [![npm version](https://badge.fury.io/js/%40angular%2Fcore.svg)](https://www.npmjs.com/~angular)  
+Angularを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

@@ -1,21 +1,12 @@
 ---
-title: "SE-ML/awesome-seml"
-description: "SE-ML/awesome-seml の定本スナップショット"
+title: "Awesome Software Engineering for Machine Learning"
+description: "Software Engineering for Machine Learningを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-SE-ML-awesome-seml-readme-md"
 ---
 
-# Awesome Software Engineering for Machine Learning [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/SE-ML/awesome-seml/blob/master/contributing.md)
+# Awesome Software Engineering for Machine Learning
 
-機械学習のためのソフトウェアエンジニアリングとは、コアとなるML問題（例: 新しいアルゴリズムの開発）ではなく、データ取り込み、コーディング、テスト、バージョン管理、デプロイ、品質管理、チームコラボレーションといった周辺活動を対象とする、MLアプリケーション構築の技法・ガイドラインです。優れたソフトウェアエンジニアリング実践は、機械学習コンポーネントを使う本番レベルアプリケーションの開発、デプロイ、保守を強化します。
-
-⭐ 必読
-
-🎓 学術出版物
-
-<br>
-この文献に基づき、機械学習コンポーネントを持つアプリケーションにおけるソフトウェアエンジニアリング実践の採用に関する調査をまとめました。
-
-気軽に[調査へ回答・共有](https://se-ml.github.io/survey)し、[詳細を読む](https://se-ml.github.io/practices)ことができます！
+Software Engineering for Machine Learningを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

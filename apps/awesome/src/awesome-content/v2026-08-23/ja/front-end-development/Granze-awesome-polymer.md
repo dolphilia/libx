@@ -1,12 +1,12 @@
 ---
-title: "Granze/awesome-polymer"
-description: "Granze/awesome-polymer の正規スナップショット"
+title: "Awesome Polymer"
+description: "Polymerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Granze-awesome-polymer-readme-md"
 ---
 
-# Awesome Polymer [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-<a href="https://www.polymer-project.org"><img src="https://www.polymer-project.org/images/logos/p-logo.png" align="left" height="64" width="92"></a>
-> Polymer の優れたリソース集です。
+# Awesome Polymer
+
+Polymerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 一般リソース
 * [公式サイト](https://www.polymer-project.org)

@@ -1,32 +1,12 @@
 ---
-title: "bvolpato/awesome-userscripts"
-description: "閲覧体験を拡張するユーザースクリプト、対応ブラウザー、管理ツール、教材、コミュニティを分類した定本スナップショット"
+title: "Awesome Userscripts"
+description: "Userscriptsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-bvolpato-awesome-userscripts-readme-md"
 ---
 
-<div id="top" align="center">
+# Awesome Userscripts
 
-<a href="#">
-    <img width=333 height=auto src="https://cdn.jsdelivr.net/gh/awesome-scripts/awesome-userscripts@f11c95f/assets/images/icons/awesome/shades/400x200.png"></a>
-
-<h1>ユーザースクリプトのAwesomeリスト</h1>
-
-
-
-<a href="https://github.com/sindresorhus/awesome">
-    <img height=31 alt="Awesome" src="https://img.shields.io/badge/Awesome-fc60a9.svg?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
-<a href="#license">
-    <img height=31 alt="Awesome" src="https://img.shields.io/badge/License-CC0_1.0-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
-<a href="https://github.com/awesome-scripts/awesome-userscripts/blob/master/CONTRIBUTING.md">
-    <img height=31 alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?logo=github&logoColor=white&labelColor=464646&style=for-the-badge"></a>
-
-<h3>優れたユーザースクリプトの厳選リストです。</h3>
-
-ユーザースクリプトは、機能追加、操作の簡素化、不要要素の除去によってWebサイトを改善し、閲覧体験の可能性を広げます。
-
-</div>
-
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/awesome-scripts/awesome-userscripts/assets/images/separators/rainbow-blue-to-red.png">
+Userscriptsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # 目次 <a id="contents"></a>
 

@@ -1,17 +1,13 @@
 ---
-title: "wardley-maps-community/awesome-wardley-maps"
-description: "Wardley Mappingの学習資料、事例、ツール、コミュニティを集めた厳選リスト"
+title: "Awesome Wardley Maps Community Hub"
+description: "Wardley Maps Community Hubを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-wardley-maps-community-awesome-wardley-maps-readme-md"
 ---
 
-<a id="wardley-maps-community-hub"></a>
-# Wardley Maps コミュニティハブ [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Wardley Maps Community Hub
 
-> [Wardley Mapping](https://en.wikipedia.org/wiki/Wardley_map) は、周囲の状況を調べ、今後の変化を見極め、適切な行動を選ぶための手法です。必要なもの、使用する構成要素、その依存関係と特性を調べることで、状況を視覚化し、仮説を検討して、進む方向とそれを支える最適な行動を選べます。
+Wardley Maps Community Hubを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-これは有用なWardleyマッピングのリソースと例のリストです。短縮URL： [list.wardleymaps.com](https://list.wardleymaps.com)。ご貢献をお待ちしています！ [Contribution guidelines](https://list.wardleymaps.com/contributing) に何かを追加してください。
-
-<a id="contents"></a>
 ## 目次
 
 - [Quick Start](#quick-start)

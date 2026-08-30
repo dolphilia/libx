@@ -1,18 +1,12 @@
 ---
-title: "MartinMiles/Awesome-Sitecore"
-description: "Canonical snapshot of MartinMiles/Awesome-Sitecore"
+title: "Awesome Sitecore"
+description: "A curated collection of resources and projects focused on Sitecore."
 licenseSource: "github-MartinMiles-Awesome-Sitecore-readme-md"
 ---
 
-# Awesome Sitecore [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Sitecore
 
-[<img src="sitecore-logo.png" align="right" width="80">](https://sitecore.com)
-
-> A curated list of Sitecore-related projects on GitHub. Please contribute!
-
-Sitecore is a digital platform that helps manage multiple websites from one place. It provides marketing tools that deliver information about customers from different devices (CRMs, tracking, POS, etc.). Sitecore allows creating content to be accessed via different channels (desktops, mobiles, APIs, social media, etc.). The platform is flexible by design, with numerous points of extensions, it can be deployed both on-premise and cloud. The below list classifies extensibility and deployment options for Sitecore developers they can benefit from.
-
-Contributions welcome. Add links through pull requests or create an issue to start a discussion.
+A curated collection of resources and projects focused on Sitecore.
 
 ## Contents
 
@@ -546,4 +540,3 @@ Contributions welcome. Add links through pull requests or create an issue to sta
 - [Sitecore GraphQL Import](https://github.com/jbluemink/Sitecore-GraphQL-Import) - A console app showcases various capabilities of the Sitecore GraphQL API, such as retrieving Sitecore items, obtaining a list of websites, inserting sample items, and uploading media files.
 - [Verticals](https://github.com/Sitecore/Sitecore.Demo.XMCloud.Verticals) - A headless multi-site solution focused on XM Cloud content and site management capabilities. Includes easily customizable sample sites for select industries.
 - [Node XM Cloud Proxy](https://github.com/Sitecore/jss/tree/release/22.0.0/packages/create-sitecore-jss/src/templates/node-xmcloud-proxy) - Node proxy application enables backend functionality and features equivalent to those in our Next.js starter kit for XM Cloud. Was introduced to support the new Angular starter kit. This proxy is designed to work with all SPA frameworks and can also be used to run React and Vue applications, laying the groundwork for future JSS starter kits built for other front-end JavaScript frameworks.
-

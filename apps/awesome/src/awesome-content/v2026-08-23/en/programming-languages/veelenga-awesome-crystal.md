@@ -1,88 +1,12 @@
 ---
-title: "veelenga/awesome-crystal"
-description: "Canonical snapshot of veelenga/awesome-crystal"
+title: "Awesome Crystal"
+description: "A curated collection of resources and projects focused on Crystal."
 licenseSource: "github-veelenga-awesome-crystal-readme-md"
 ---
 
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
-
-<p align="center"><img src="logo/logotype_horizontal.jpg" alt="awesome-crystal"></p>
-
 # Awesome Crystal
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-A curated list of awesome Crystal code and resources. Inspired by [awesome](https://github.com/sindresorhus/awesome) and [awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness).
-The goal is to have projects mostly stable and useful for the community.
-
-Search shards at [shards.info](https://shards.info) for more.
-
-Contributions are welcome. Please take a quick look at the [contribution guidelines](https://github.com/veelenga/awesome-crystal/blob/master/.github/CONTRIBUTING.md) first.
-
-* [Awesome Crystal](#awesome-crystal)
-  * [Algorithms and Data structures](#algorithms-and-data-structures)
-  * [Blockchain](#blockchain)
-  * [C Bindings](#c-bindings)
-  * [Caching](#caching)
-  * [CLI Builders](#cli-builders)
-  * [CLI Utils](#cli-utils)
-  * [Code Analysis and Metrics](#code-analysis-and-metrics)
-  * [Compression](#compression)
-  * [Configuration](#configuration)
-  * [Converters](#converters)
-  * [Cryptography](#cryptography)
-  * [Data Formats](#data-formats)
-  * [Data Generators](#data-generators)
-  * [Database Drivers/Clients](#database-driversclients)
-  * [Database Tools](#database-tools)
-  * [Debugging](#debugging)
-  * [Dependency Injection](#dependency-injection)
-  * [Email](#email)
-  * [Environment Management](#environment-management)
-  * [Examples and funny stuff](#examples-and-funny-stuff)
-  * [Framework Components](#framework-components)
-  * [Game Development](#game-development)
-  * [GUI Development](#gui-development)
-  * [HTML Builders](#html-builders)
-  * [HTML/XML parsing](#htmlxml-parsing)
-  * [HTTP](#http)
-  * [Image Processing](#image-processing)
-  * [Implementations/Compilers](#implementationscompilers)
-  * [Internationalization](#internationalization)
-  * [Logging and monitoring](#logging-and-monitoring)
-  * [Machine Learning](#machine-learning)
-  * [Markdown/Text Processors](#markdowntext-processors)
-  * [Misc](#misc)
-  * [Network Protocols](#network-protocols)
-  * [Networking](#networking)
-  * [ORM/ODM Extensions](#ormodm-extensions)
-  * [Package Management](#package-management)
-  * [Processes and Threads](#processes-and-threads)
-  * [Project Generators](#project-generators)
-  * [Queues and Messaging](#queues-and-messaging)
-  * [Routing](#routing)
-  * [Scheduling](#scheduling)
-  * [Science and Data analysis](#science-and-data-analysis)
-  * [Search](#search)
-  * [Security](#security)
-  * [Serverless Computing](#serverless-computing)
-  * [System](#system)
-  * [Task management](#task-management)
-  * [Template Engine](#template-engine)
-  * [Testing](#testing)
-  * [Third-party APIs](#third-party-apis)
-  * [TUI](#tui)
-  * [Validation](#validation)
-  * [Web Frameworks](#web-frameworks)
-* [Community](#community)
-  * [Unofficial](#unofficial)
-* [Resources](#resources)
-  * [Official Documentation Translations](#official-documentation-translations)
-* [Services and Apps](#services-and-apps)
-* [Tools](#tools)
-  * [DevOps](#devops)
-  * [Editor Plugins](#editor-plugins)
-  * [LSP Language Server Protocol Implementations](#lsp-language-server-protocol-implementations)
-  * [Shell Plugins](#shell-plugins)
+A curated collection of resources and projects focused on Crystal.
 
 ## Algorithms and Data structures
  * [bisect](https://github.com/spider-gazelle/bisect) - Inserting values into a sorted array

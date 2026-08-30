@@ -1,13 +1,11 @@
 ---
-title: "emptymalei/awesome-research"
-description: "emptymalei/awesome-researchの収録案内"
+title: "Awesome Research Tools"
+description: "Awesome Research Toolsの収録案内です。このスナップショットでは上流本文を転載していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# Research Tools
+# Awesome Research Tools
 
-このAwesomeリストは、固定済みのsindresorhus/awesomeスナップショットのMiscellaneousセクションから参照されています。
-
-このスナップショットで再利用可能なライセンスを確認できなかった、固定READMEを取得できなかった、または現在のlibxでは対応していないライセンス条件があるため、上流リストの本文はlibxへ複製していません。
+Awesome Research Toolsの収録案内です。このスナップショットでは上流本文を転載していません。
 
 - [元のリポジトリを開く](https://github.com/emptymalei/awesome-research/blob/4894f1f51eb8de6a4b4362eac30a339c60660c4d/README.md)

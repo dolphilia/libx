@@ -1,24 +1,12 @@
 ---
-title: "gruhn/awesome-naming"
-description: "Canonical snapshot of gruhn/awesome-naming"
+title: "Awesome Naming"
+description: "A curated collection of resources and projects focused on Naming."
 licenseSource: "github-gruhn-awesome-naming-readme-md"
 ---
 
-# Awesome Naming [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Naming
 
-
-Famously...
-
-
-> There are only two hard things in Computer Science: cache invalidation and naming things.
->
-> ― Phil Karlton
-
-Concepts in computer science are usually nothing tangible so it's no surprise that naming things is hard.
-Nevertheless, we _do_ come up with clever, creative and funny names.
-Some of them so established, we never pause and admire.
-
-This is a curated list for when naming things is done right.
+A curated collection of resources and projects focused on Naming.
 
 ## Contents
 

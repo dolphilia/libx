@@ -1,27 +1,13 @@
 ---
-title: "lauris/awesome-scala"
-description: "Scalaのライブラリ、ツール、学習資料、コミュニティ集"
+title: "Awesome Scala"
+description: "Scalaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lauris-awesome-scala-readme-md"
 ---
 
+# Awesome Scala
 
-Awesome Scala [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-=============
+Scalaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-Scalaの便利なライブラリ、フレームワーク、ソフトウェアをコミュニティが運営するリスト。これはすべてのライブラリのカタログではなく、あなたの探索を始めるための出発点です。[awesome-python](https://github.com/vinta/awesome-python)を参考にしています。他の驚異的な素晴らしいリストは、[awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness)のリストに見つかります。
-
-また、[Scaladex](https://index.scala-lang.org/)も素晴らしいです。これはScalaのライブラリを検索可能、タグ付き、中央集約されたインデックスです。
-
-500以上のスターを獲得しているプロジェクトは太字で表示されます。
-
-<a id="contributing"></a>
-## コントリビューション
-
-ご協力は常に歓迎です！新しいフレームワーク、ライブラリ、ソフトウェアをリストに追加するためのプルリクエストを提出または問題を作成してください。過去6か月以内に更新されていないプロジェクトや、素晴らしいとは言えないプロジェクトは提出しないでください。
-
-プルリクエストに `README.md` を変更しないでください。自動的に生成されています。 `template.md` を変更してください。
-
-<a id="table-of-contents"></a>
 ## 目次
 
 - [Learning Scala](#learning-scala)

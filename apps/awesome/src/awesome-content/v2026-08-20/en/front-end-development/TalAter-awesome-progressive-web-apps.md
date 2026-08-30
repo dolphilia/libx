@@ -1,19 +1,12 @@
 ---
-title: "TalAter/awesome-progressive-web-apps"
-description: "Canonical snapshot of TalAter/awesome-progressive-web-apps"
+title: "Awesome Progressive Web Apps"
+description: "A curated collection of resources and projects focused on Progressive Web Apps."
 licenseSource: "github-TalAter-awesome-progressive-web-apps-readme-md"
 ---
 
-# Awesome Progressive Web Apps [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Progressive Web Apps
 
-A curated collection of Progressive Web Apps resources.
-
-<a href="https://pwabook.com/oreillyapwa"><img align="right" src="images/mpwa.png" alt="Building Progressive Web Apps"></a>
-> Progressive web apps are a new breed of web apps. They combine the benefits of a native app with the low friction nature of the web. Progressive web apps start off as simple websites, but as the user interacts with them, they progressively gain new powers. They transform from a website into something much more like a traditional native app.
->
-> -- <cite>[Building Progressive Web Apps - O'Reilly](https://pwabook.com/oreillyapwa)</cite>
-
-If you want to contribute, please read the [contribution guidelines](https://github.com/TalAter/awesome-progressive-web-apps/blob/f643dae3ae5cd27c848a0a8a85e2b4958096547d/contributing.md).
+A curated collection of resources and projects focused on Progressive Web Apps.
 
 ## Contents
 
@@ -128,4 +121,3 @@ If you want to contribute, please read the [contribution guidelines](https://git
 - [Browser Rendering Optimization](https://udacity.com/ud860) - A free Udacity course helping you create web apps that maintain jank-free 60fps performance.
 - [The PRPL Pattern](https://developers.google.com/web/fundamentals/performance/prpl-pattern/) - A new pattern for structuring and serving Progressive Web Apps, with an emphasis on performance.
 - [Browser Rendering Performance](https://developers.google.com/web/fundamentals/performance/rendering/) - Understand how HTML, JavaScript and CSS is handled by the browser, and how to optimize your page accordingly.
-

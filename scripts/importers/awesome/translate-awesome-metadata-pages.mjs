@@ -5,11 +5,7 @@ import matter from 'gray-matter';
 import { notesDir, readJson, rootDir, snapshotVersion } from './common.mjs';
 
 const apply = process.argv.includes('--apply');
-const contentRoot = path.join(
-  rootDir,
-  'apps/awesome/src/awesome-content',
-  snapshotVersion
-);
+const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion);
 const englishRoot = path.join(contentRoot, 'en');
 const japaneseRoot = path.join(contentRoot, 'ja');
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));

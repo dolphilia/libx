@@ -1,14 +1,12 @@
 ---
-title: "kolomied/awesome-cdk"
-description: "kolomied/awesome-cdkの正規スナップショット"
+title: "Awesome CDK"
+description: "CDKを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-kolomied-awesome-cdk-readme-md"
 ---
 
-# Awesome CDK [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://raw.githubusercontent.com/aws/aws-cdk/master/logo/default-128-dark.png" align="right" alt="CDK">](https://github.com/aws/aws-cdk)
+# Awesome CDK
 
-> 優れた [AWS Cloud Development Kit](https://github.com/awslabs/aws-cdk) (AWS CDK) のオープンソースプロジェクト、ガイド、ブログ、その他のリソースをキュレーションしたリスト。
-
-AWS Cloud Development Kit (AWS CDK) は、クラウドインフラストラクチャをコードで定義するオープンソースソフトウェア開発フレームワークです。
+CDKを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

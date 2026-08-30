@@ -1,30 +1,12 @@
 ---
-title: "caesar0301/awesome-pcaptools"
-description: "caesar0301/awesome-pcaptools の定本スナップショット"
+title: "Awesome Pcaptools"
+description: "Pcaptoolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-caesar0301-awesome-pcaptools-readme-md"
 ---
 
-はじめに
-------------
+# Awesome Pcaptools
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-このプロジェクト自体にはソースコードやファイルを収録していません。ネットワークトラフィック研究でpcapファイルを処理するツールを一覧化しています。ほかのAwesomeリストについては https://github.com/sindresorhus/awesome を参照してください。
-
-**ライセンス**: CC0 1.0 Universal（CC0 1.0）。
-
-
-> * [Linuxコマンド](#linuxcmds)
-> * [トラフィックキャプチャ](#capture)
-> * [トラフィック分析・検査](#analysis)
-> * [DNSユーティリティ](#dnstools)
-> * [ファイル抽出](#fileextraction)
-> * [関連プロジェクト](#others)
-
-
-
-Linuxコマンド<a name="linuxcmds"></a>
---------------------------------------
+Pcaptoolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 * **Bmon**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/bmon-640x480.png>
 

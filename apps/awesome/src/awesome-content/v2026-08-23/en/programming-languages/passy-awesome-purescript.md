@@ -1,12 +1,12 @@
 ---
-title: "passy/awesome-purescript"
-description: "Canonical snapshot of passy/awesome-purescript"
+title: "Awesome purescript"
+description: "A curated collection of resources and projects focused on purescript."
 licenseSource: "github-passy-awesome-purescript-readme-md"
 ---
 
-# awesome-purescript [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome purescript
 
-> A curated list of delightful libraries, tools and other shiny things for PureScript.
+A curated collection of resources and projects focused on purescript.
 
 ## Build Tooling
 

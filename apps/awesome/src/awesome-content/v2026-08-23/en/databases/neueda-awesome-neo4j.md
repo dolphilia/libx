@@ -1,23 +1,12 @@
 ---
-title: "neueda/awesome-neo4j"
-description: "Canonical snapshot of neueda/awesome-neo4j"
+title: "Awesome Neo4j"
+description: "A curated collection of resources and projects focused on Neo4j."
 licenseSource: "github-neueda-awesome-neo4j-readme-md"
 ---
 
-Awesome Neo4j
-==============
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Build Status](https://api.travis-ci.org/neueda/awesome-neo4j.svg?branch=master )](https://travis-ci.org/neueda/awesome-neo4j)
+# Awesome Neo4j
 
-A curated list of awesome [Neo4j](https://neo4j.com/) resources.
-Inspired by the `awesome-*` trend on GitHub.
-
-The goal is to build a categorized community-driven collection of very well-known resources.
-Sharing, suggestions and contributions are always welcome!
-
-Thanks to all [contributors](https://github.com/Neueda/awesome-neo4j/graphs/contributors).
-
-Maintained by [Neueda R&D](http://labs.neueda.com/).
+A curated collection of resources and projects focused on Neo4j.
 
 Table of Contents
 =================

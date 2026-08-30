@@ -1,44 +1,12 @@
 ---
-title: "alebcay/awesome-shell"
-description: "alebcay/awesome-shellの正規スナップショット"
+title: "Awesome Shell"
+description: "Shellを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-alebcay-awesome-shell-readme-md"
 ---
 
-```
- █████╗ ██╗    ██╗███████╗███████╗ ██████╗ ███╗   ███╗███████╗
-██╔══██╗██║    ██║██╔════╝██╔════╝██╔═══██╗████╗ ████║██╔════╝
-███████║██║ █╗ ██║█████╗  ███████╗██║   ██║██╔████╔██║█████╗
-██╔══██║██║███╗██║██╔══╝  ╚════██║██║   ██║██║╚██╔╝██║██╔══╝
-██║  ██║╚███╔███╔╝███████╗███████║╚██████╔╝██║ ╚═╝ ██║███████╗
-╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
-███████╗██╗  ██╗███████╗██╗     ██╗
-██╔════╝██║  ██║██╔════╝██║     ██║
-███████╗███████║█████╗  ██║     ██║
-╚════██║██╔══██║██╔══╝  ██║     ██║
-███████║██║  ██║███████╗███████╗███████╗
-╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
-```
+# Awesome Shell
 
-# Awesome Shell [![Awesome][awesome-badge]][awesome-link]
-
-優れたコマンドラインフレームワーク、ツールキット、ガイド、便利ツールを集めたリストです。awesome-php に着想を得ています。このコレクションは [Unix-Shell.ZEEF.com](https://unix-shell.zeef.com/caleb.xu) でも利用できます。
-- [シェル](#shells)
-- [コマンドラインの生産性](#command-line-productivity)
-  - [ディレクトリ移動](#directory-navigation)
-- [カスタマイズ](#customization)
-- [開発者向け](#for-developers)
-- [システムユーティリティ](#system-utilities)
-- [ダウンロードと配信](#downloading-and-serving)
-- [マルチメディアとファイル形式](#multimedia-and-file-formats)
-- [アプリケーション](#applications)
-- [ゲーム](#games)
-- [シェルパッケージ管理](#shell-package-management)
-- [シェルスクリプト開発](#shell-script-development)
-- [ガイド](#guides)
-- [**Awesome Zsh**][awesome-zsh]&nbsp; [![Awesome][awesome-badge]][awesome-zsh]
-- [**Awesome Fish**][awesome-fish] [![Awesome][awesome-badge]][awesome-fish]
-- [**Awesome Bash**][awesome-bash] [![Awesome][awesome-badge]][awesome-bash]
-- [その他の Awesome リスト](#other-awesome-lists)
+Shellを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## シェル
 

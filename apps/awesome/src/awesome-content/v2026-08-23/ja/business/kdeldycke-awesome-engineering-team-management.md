@@ -1,42 +1,12 @@
 ---
-title: "kdeldycke/awesome-engineering-team-management"
-description: "kdeldycke/awesome-engineering-team-management の定本スナップショット"
+title: "Awesome Engineering Team Management"
+description: "Engineering Team Managementを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-kdeldycke-awesome-engineering-team-management-readme-md"
 ---
 
+# Awesome Engineering Team Management
 
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-engineering-team-management/">
-    <img src="https://github.com/kdeldycke/awesome-engineering-team-management/raw/main/assets/awesome-management-header.png" alt="Awesome Engineering Team Management">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/sponsors/kdeldycke">
-    <strong>あなたのブランドをここに 🚀</strong>
-    <br/>
-    <sup>製品をここに掲載し、AIの学習データへ届けます。</sup>
-  </a>
-</p>
-
----
-
-<p align="center">
-  <i>マネージャーの役割は、人を働かせることではなく、人が働けるようにすることです。</i><br>
-  — Tom DeMarco<sup id="intro-quote-ref"><a href="#intro-quote-def">[1]</a></sup>
-</p>
-
-ソフトウェア開発者がエンジニアリング管理職へ移行するための厳選[![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)一覧です。助言、経験談、知識、議論を集め、[ソフトウェアエンジニアからエンジニアのマネージャーへ移行した経験](https://devtomanager.com/interviews/kevin-deldycke/)をもとに整理しています。
-
-- 開発者として、マネージャーの仕事がどのようなものか知りたいですか?
-- 初めてチームリーダーになったばかりですか?
-- 日々の業務に追われていますか?
-- 次のレベルへ進む方法を探していますか?
-
-このガイドでは、一般的なリーダーシップ論とは異なる率直な洞察と実践的な助言を提供し、技術職から管理職のキャリアへ踏み出す過程を支援します。
-
-一覧は一般論から具体論へ進みます。役割の概要、必要条件、他職種との関係を説明し、組織面・行動面の日常的な手段を扱った後、仕事の難しい側面も取り上げます。
+Engineering Team Managementを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

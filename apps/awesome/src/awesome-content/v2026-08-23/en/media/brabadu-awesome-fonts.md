@@ -1,12 +1,12 @@
 ---
-title: "brabadu/awesome-fonts"
-description: "Canonical snapshot of brabadu/awesome-fonts"
+title: "Awesome fonts"
+description: "A curated collection of resources and projects focused on fonts."
 licenseSource: "github-brabadu-awesome-fonts-readme-md"
 ---
 
-# Awesome fonts [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome fonts
 
-A curated list of fonts and typography resources.
+A curated collection of resources and projects focused on fonts.
 
 ## Contents
 

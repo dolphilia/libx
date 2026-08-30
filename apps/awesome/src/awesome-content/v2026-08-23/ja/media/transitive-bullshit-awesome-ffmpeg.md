@@ -1,17 +1,12 @@
 ---
-title: "transitive-bullshit/awesome-ffmpeg"
-description: "transitive-bullshit/awesome-ffmpeg の正規スナップショット"
+title: "Awesome FFmpeg"
+description: "FFmpegを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-transitive-bullshit-awesome-ffmpeg-readme-md"
 ---
 
-# Awesome FFmpeg [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome FFmpeg
 
-> [FFmpeg](http://ffmpeg.org) は、音声と動画の録画、変換、ストリーミングを行うクロスプラットフォームのソリューションです。
-
-<p align="center">
-  <img width="400" src="https://cdn.rawgit.com/transitive-bullshit/awesome-ffmpeg/master/ffmpeg-logo.svg">
-</p>
-
+FFmpegを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

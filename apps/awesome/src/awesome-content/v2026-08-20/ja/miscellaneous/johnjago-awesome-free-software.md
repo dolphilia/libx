@@ -1,12 +1,12 @@
 ---
-title: "johnjago/awesome-free-software"
-description: "johnjago/awesome-free-software の定本スナップショット"
+title: "Awesome Free Software"
+description: "Free Softwareを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-johnjago-awesome-free-software-readme-md"
 ---
 
-# Awesome Free Software [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Free Software
 
-このリストのソフトウェアは、誰もがあらゆる目的で利用、変更、共有できる条件で配布されています。最も一般的なライセンスは[MIT License](https://choosealicense.com/licenses/mit/)と[GNU GPL](https://choosealicense.com/licenses/gpl-3.0/)ですが、これらの権利を付与する[その他多数のライセンス](https://choosealicense.com/appendix/)もあります。
+Free Softwareを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,36 +1,13 @@
 ---
-title: "websemantics/awesome-ant-design"
-description: "websemantics/awesome-ant-design の正規スナップショット"
+title: "Awesome Ant Design"
+description: "Ant Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-websemantics-awesome-ant-design-readme-md"
 ---
 
-```
-                                                                       ---.
-      ╭───╮╭──╮  ╭──╮   ╭──╮ ╭───╮  ╭──╮  ╭─── ───╮   ╭──╮            -..  \
-     /    ││  │──│  │  / ╭─╯/ ╭──╯ /    \ │   │   │  / ╭─╯              _|_|_
-    │  o  ││  │  │  │ /  ╰─(   \─╮│      ││ ─   ─ │ /  ╰─╮            /  O    \
-    │     ││  │  │  ││   ╭─╯\__  ││   O  ││  \_/  ││   ╭─╯            \_______/
-    │  _  ││  `  '  ││   ╰─╮/  \ ││      ││   │   ││   ╰─╮               /   \
-    │  │  │ \      / │     │\    │ \    / │   │   ││     │               \/   \
-    ╰──┴──╯  ╰──╯─╯  ╰─────╯ ╰───╯  ╰──╯  ╰───╯───╯╰─────╯               /'---'\
-                                                                    ____/  |     \_____
-      ╭───╮╭───╮  ╭──────╮   ╭──╮      ╭──╮ ╭───╮╭────╮  ╭───╮╭───╮      __/\____/      \_
-     /    ││    \ │      │   │   \    / ╭─╯/ ╭──╯╰╮  ╭╯ /    ││    \          |            \
-    │  o  ││  _  ││      │   │    \  /  ╰─(   \─╮ │  │ │  ╭──╯│  _  │        / \__  /\      '_
-    │     ││  │  │╰─╯  ╰─╯   │  D  ││   ╭─╯\__  │ │  │ │  │╭─╮│  │  │       /     \__ \        \
-    │  _  ││  │  │  │  │     │     ││   ╰─╮/  \ │ │  │ │  ╰─ ││  │  │       \        \_\_________\
-    │  │  ││  │  │  │  │     │     ││     │\    │╭╯  ╰╮│     ││  │  │        \          \     \
-    ╰──┴──╯╰──┴──╯  ╰──╯     ╰─────╯╰─────╯ ╰───╯╰────╯╰─────╯╰──┴──╯         \          \
-```
+# Awesome Ant Design
 
-> [Ant Design](http://ant.design/) のリソースと関連プロジェクトを厳選したリストです。誰でも貢献でき、Ant Designの最新情報を集約する中心的なリポジトリを目指しています。
+Ant Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[<img src="https://camo.githubusercontent.com/2f393ed1a4c6d222de314c16e0334301cae3fb7a/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f4b4470677667754d704766716148506a6963524b2e7376673f73616e6974697a653d74727565" align="right" width="160">](https://ant.design/)
-
-Ant Designは、Ant FinancialのExperience Technology部門が洗練してきたミドルウェア向けデザイン言語です。ミドルウェアプロジェクトのUI仕様を統一し、設計差異や実装に伴う不要なコストを減らして、デザインとフロントエンド開発の資源を有効活用することを目指しています。
-
-<a id="contents"></a>
 ## 目次
 
 - [目次](#contents)

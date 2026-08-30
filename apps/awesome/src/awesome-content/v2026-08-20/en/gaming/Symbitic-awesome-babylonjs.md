@@ -1,18 +1,12 @@
 ---
-title: "Symbitic/awesome-babylonjs"
-description: "Canonical snapshot of Symbitic/awesome-babylonjs"
+title: "Awesome Babylon.js"
+description: "A curated collection of resources and projects focused on Babylon.js."
 licenseSource: "github-Symbitic-awesome-babylonjs-readme-md"
 ---
 
-# Awesome Babylon.js [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Babylon.js
 
-<a href="https://www.babylonjs.com/"><img alt="Babylon.js logo" src="media/logo.svg" align="right" width="150" /></a>
-
-> A curated list of _awesome_ things related to the Babylon.js game engine.
-
-[Babylon.js](https://www.babylonjs.com/) is an open-source game and rendering engine written in TypeScript designed to be powerful, beautiful, simple, and open. It supports cross-platform game development through WebGL, WebGPU, and the Babylon Native runtime.
-
-> Your contributions are always welcome! Please read the [contributing guidelines](https://github.com/Symbitic/awesome-babylonjs/blob/33c0202a11db5f43833b63b79e801e911897fdcb/CONTRIBUTING.md) to get started.
+A curated collection of resources and projects focused on Babylon.js.
 
 ## Contents
 

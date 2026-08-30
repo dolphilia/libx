@@ -1,14 +1,12 @@
 ---
-title: "notlmn/awesome-icons"
-description: "Canonical snapshot of notlmn/awesome-icons"
+title: "Awesome Icons"
+description: "A curated collection of resources and projects focused on Icons."
 licenseSource: "github-notlmn-awesome-icons-readme-md"
 ---
 
-# Awesome Icons [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Icons
 
-> A curated list of awesome downloadable SVG/PNG/Font icon projects
-
-![Banner](https://raw.githubusercontent.com/notlmn/awesome-icons/cf57bc121f3397747a2f31ef258fdd34d865a96a/media/banner.png)
+A curated collection of resources and projects focused on Icons.
 
 ## Contents
 

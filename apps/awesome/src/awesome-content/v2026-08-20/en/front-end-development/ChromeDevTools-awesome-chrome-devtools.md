@@ -1,12 +1,12 @@
 ---
-title: "ChromeDevTools/awesome-chrome-devtools"
-description: "Canonical snapshot of ChromeDevTools/awesome-chrome-devtools"
+title: "Awesome Chrome DevTools"
+description: "A curated collection of resources and projects focused on Chrome DevTools."
 licenseSource: "github-ChromeDevTools-awesome-chrome-devtools-readme-md"
 ---
 
-# Awesome Chrome DevTools [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Chrome DevTools
 
-> Awesome tooling and resources in the Chrome DevTools ecosystem
+A curated collection of resources and projects focused on Chrome DevTools.
 
 ## Contents
 

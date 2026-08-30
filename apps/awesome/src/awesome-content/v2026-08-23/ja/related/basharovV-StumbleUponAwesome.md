@@ -1,28 +1,12 @@
 ---
-title: "basharovV/StumbleUponAwesome"
-description: "basharovV/StumbleUponAwesome の定本スナップショット"
+title: "Awesome StumbleUpon"
+description: "StumbleUponを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-basharovV-StumbleUponAwesome-readme-md"
 ---
 
-# <img src="extension/images/icon_128.png" width="45" align="left"> StumbleUponAwesome
-開発者、テクノロジーと科学を愛する人のための、*awesome* なインターネット発見ボタン。
+# Awesome StumbleUpon
 
-<img src="https://img.shields.io/chrome-web-store/users/dhfmgppomdaagdcbpccdfjpopgikcdge?color=%236F82EB&label=chrome%20users&labelColor=464646&style=flat-square&logo=google-chrome&logoColor=white"/> <img src="https://flat.badgen.net/amo/users/stumbleuponawesome?color=6F82EB&label=firefox%20users&icon=firefox"/> <img src="https://img.shields.io/chrome-web-store/v/dhfmgppomdaagdcbpccdfjpopgikcdge?color=E87676&label=version&style=flat-square" /> <img src="https://flat.badgen.net/github/license/basharovV/stumbleuponawesome?color=green" />
-[![Mentioned in Awesome](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/sindresorhus/awesome)
-
-<p align="center">
-  <img style="width: 100%;padding:0;margin:0;" src="header.png"/>
-</p>
-
-> [awesome curated lists](https://github.com/sindresorhus/awesome) のいずれかからランダムなサイトへ連れて行くブラウザー拡張機能。かつての StumbleUpon（現在は終了）のようなものです。
-<p align="center">
-  <a href="https://chrome.google.com/webstore/detail/stumbleuponawesome/dhfmgppomdaagdcbpccdfjpopgikcdge?authuser=3"><b>⚡️ Chrome 拡張機能をインストール</b></a>
-  <a href="https://addons.mozilla.org/en-GB/firefox/addon/stumbleuponawesome/"><b>⚡️ Firefox アドオンをインストール</b></a>
-</p>
-
-親切な貢献者による GitHub 上の554件の awesome リストから、45,787件のユニークなサイトを収録しています。そこには隠れた逸品が待っています 💎。
-
-----
+StumbleUponを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 使い方:
 **Stumbleする:** ⚡️ 拡張機能ボタンをクリックするだけで、新しい awesome サイトへ移動します。

@@ -1,14 +1,12 @@
 ---
-title: "lunohodov/awesome-astrophotography"
-description: "lunohodov/awesome-astrophotographyの正規スナップショット"
+title: "Awesome Astrophotography"
+description: "Astrophotographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lunohodov-awesome-astrophotography-readme-md"
 ---
 
-# Awesome Astrophotography [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Astrophotography
 
-[天体写真](https://en.wikipedia.org/wiki/Astrophotography)は天文撮像とも呼ばれ、天体、天文現象、夜空の領域を写真または画像として記録することです。
-
-貢献を歓迎します。貢献する場合は[貢献ガイドライン](https://github.com/lunohodov/awesome-astrophotography/blob/0a2e55658c585b69133411ba5a48c7f42ad877fd/CONTRIBUTING.md)を読んでください。
+Astrophotographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

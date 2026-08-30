@@ -1,16 +1,12 @@
 ---
-title: "DataDaoDe/awesome-foss-apps"
-description: "カテゴリ別に整理された、プロダクション品質の自由・オープンソースアプリケーション集"
+title: "Awesome FOSS apps"
+description: "FOSS appsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-DataDaoDe-awesome-foss-apps-readme-md"
 ---
 
-# FOSSアプリのAwesomeリスト <a id="awesome-foss-apps"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome FOSS apps
 
-> プロダクション品質の優れた自由・オープンソースソフトウェアをカテゴリ別にまとめたリストです。
-
-このリストは、分析して学べる、単純ではない高品質なアプリケーションを探している開発者向けです。
-
-Sindre Sorhusの[awesome](https://github.com/sindresorhus/awesome)に着想を得ています。
+FOSS appsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="toc"></a>
 

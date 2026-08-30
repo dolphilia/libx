@@ -1,16 +1,12 @@
 ---
-title: "strift/awesome-esports"
-description: "Canonical snapshot of strift/awesome-esports"
+title: "Awesome Esports"
+description: "A curated collection of resources and projects focused on Esports. The upstream list is archived or no longer maintained."
 licenseSource: "github-strift-awesome-esports-readme-md"
 ---
 
-# Awesome Esports [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Esports
 
-> A curated list of open-source projects related to esports.
-
-[Esports](https://en.wikipedia.org/wiki/Esports) (also known as electronic sports or e-sports) is a form of competition using video games. It often takes the form of organized, multiplayer video game competitions, particularly between professional players, individually or as teams.
-
-Unmaintained projects, now only relevant for educational purposes, are in the [Archive](https://github.com/strift/awesome-esports/blob/e3b2e6cae67ebf985afee87d6074bae55ac66531/ARCHIVE.md).
+A curated collection of resources and projects focused on Esports. The upstream list is archived or no longer maintained.
 
 ## Contents
 

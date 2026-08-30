@@ -1,12 +1,12 @@
 ---
-title: "Granze/awesome-polymer"
-description: "Canonical snapshot of Granze/awesome-polymer"
+title: "Awesome Polymer"
+description: "A curated collection of resources and projects focused on Polymer."
 licenseSource: "github-Granze-awesome-polymer-readme-md"
 ---
 
-# Awesome Polymer [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-<a href="https://www.polymer-project.org"><img src="https://www.polymer-project.org/images/logos/p-logo.png" align="left" height="64" width="92"></a>
-> A collection of awesome Polymer resources
+# Awesome Polymer
+
+A curated collection of resources and projects focused on Polymer.
 
 ## General resources
 * [Official Site](https://www.polymer-project.org)

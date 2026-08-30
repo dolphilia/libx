@@ -1,14 +1,12 @@
 ---
-title: "csabapalfi/awesome-pagespeed-metrics"
-description: "csabapalfi/awesome-pagespeed-metrics の正規スナップショット"
+title: "Awesome Page Speed Metrics"
+description: "Page Speed Metricsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-csabapalfi-awesome-pagespeed-metrics-readme-md"
 ---
 
-# Awesomeページ速度指標 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Page Speed Metrics
 
-> ページ速度とユーザー体験を理解するための指標です。
-
-初めて学ぶ場合は、まず[web.dev/metrics](https://web.dev/metrics/)を確認してください。
+Page Speed Metricsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

@@ -1,20 +1,12 @@
 ---
-title: "tobiasvl/awesome-chip-8"
-description: "tobiasvl/awesome-chip-8 の定本スナップショット"
+title: "Awesome CHIP-8"
+description: "CHIP-8を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-tobiasvl-awesome-chip-8-readme-md"
 ---
 
-# Awesome CHIP-8 [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome CHIP-8
 
-[<img src="c8.png" align="right" width="100">](https://chip-8.github.io)
-
-> 1970 年代の仮想コンピューターゲーム機
-
-CHIP-8 の優れたリソース、ツール、ドキュメント、関連プロジェクト、オープンソース ROM の厳選リスト。
-
-1977 年に作られた [CHIP-8](https://en.wikipedia.org/wiki/CHIP-8) は、元祖ファンタジーコンソールです。当初は COSMAC VIP キットコンピューター向けのゲーム開発を容易にするために設計され、数十年にわたり、新しく刺激的なプラットフォーム向けに何度も復活してきました。現在、CHIP-8 の実装を作ることは、エミュレーションを学ぶことに興味を持つ人にとっての通過儀礼となっています。
-
-このリストへ追加する場合は、[貢献ガイドライン](https://github.com/tobiasvl/awesome-chip-8/blob/62cec4b6bee270b5de4745d3c107d4138875b212/CONTRIBUTING.md)を参照してください。
+CHIP-8を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

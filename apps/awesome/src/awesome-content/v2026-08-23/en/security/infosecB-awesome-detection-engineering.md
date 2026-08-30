@@ -1,14 +1,12 @@
 ---
-title: "infosecB/awesome-detection-engineering"
-description: "Canonical snapshot of infosecB/awesome-detection-engineering"
+title: "Awesome Detection Engineering"
+description: "A curated collection of resources and projects focused on Detection Engineering."
 licenseSource: "github-infosecB-awesome-detection-engineering-readme-md"
 ---
 
-# Awesome Detection Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Detection Engineering
 
-Detection Engineering is a tactical function of a cybersecurity defense program that involves the design, implementation, and operation of detective controls with the goal of proactively identifying malicious or unauthorized activity before it negatively impacts an individual or an organization.
-
-All contributions are welcome, please carefully review the [contributing guidelines](https://github.com/infosecB/awesome-detection-engineering/blob/main/contributing.md) prior to submitting a pull request.
+A curated collection of resources and projects focused on Detection Engineering.
 
 ## Contents
 

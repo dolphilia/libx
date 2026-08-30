@@ -1,33 +1,13 @@
 ---
-title: "riderx/awesome-capacitor"
-description: "Capacitorの公式・コミュニティプラグイン、開発ツール、学習資料、事例集"
+title: "Awesome Capacitor"
+description: "Capacitorを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-riderx-awesome-capacitor-readme-md"
 ---
 
-# Awesome Capacitor [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Capacitor
 
-<div align="center">
-	<img width="100%" src="https://raw.githubusercontent.com/riderx/awesome-capacitor/main/awesome_capacitor.png" alt="Awesome">
-	<br>
-</div>
-<br/>
-<div align="center">
-⚡ <a href='https://www.capacitorjs.com/'>Capacitor</a>プラットフォームに関する優れたリソースを厳選したリストです。
-<br />
-CapacitorはWeb Nativeアプリを構築するためのオープンソースのネイティブランタイムです。JavaScript、HTML、CSSでクロスプラットフォームのiOS、Android、Progressive Web Appを作成できます。
-<br/>
-</div>
-<p align='center'>
-  <img src='https://capgo.app/readme-banner.svg?repo=riderx/awesome-capacitor' alt='Capgo - Instant updates for capacitor'/>
-</p>
-<br/>
-<div align="center">
-  <h2><a href="https://capgo.app/?ref=awesome-capacitor"> ➡️ Capgoでアプリを即時更新 </a></h2>
-  <h2><a href="https://capgo.app/consulting/?ref=awesome-capacitor"> 必要な機能がありませんか？プラグインを開発します 💪</a></h2>
-</div>
-<br/>
+Capacitorを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="contents"></a>
 ## 目次
 
 - [Official](#official)

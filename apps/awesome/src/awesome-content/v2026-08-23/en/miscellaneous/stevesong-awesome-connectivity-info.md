@@ -1,21 +1,12 @@
 ---
-title: "stevesong/awesome-connectivity-info"
-description: "Canonical snapshot of stevesong/awesome-connectivity-info"
+title: "Awesome Connectivity Logo"
+description: "A curated collection of resources and projects focused on Connectivity Logo."
 licenseSource: "github-stevesong-awesome-connectivity-info-readme-md"
 ---
 
-<div align="center">
-  <img width="605" height="495" src="https://raw.githubusercontent.com/stevesong/awesome-connectivity-info/31a5faa6245e085d556d3341586f4283dbf83e31/images/awesome-connectivity-logo.svg" alt="Awesome Connectivity Logo">
-  <br>
-  <sup>Inspired by Sindre Sorhus's <a href="https://awesome.re">awesome list</a> of awesome lists</sup>
-  <br>
-</div>
+# Awesome Connectivity Logo
 
-# [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-A list of connectivity indexes, maps, and reports to help you better understand who has access to communication infrastructure and on what terms. All info in the public domain.
-
-<sub>More on connectivity on my [website](https://manypossibilities.net) or on <a rel="me" href="https://mastodon.cloud/@stevesong">Mastodon</a>.</sub>
+A curated collection of resources and projects focused on Connectivity Logo.
 
 ## Contents
 

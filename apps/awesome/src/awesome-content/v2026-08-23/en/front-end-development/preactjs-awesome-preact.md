@@ -1,16 +1,12 @@
 ---
-title: "preactjs/awesome-preact"
-description: "Canonical snapshot of preactjs/awesome-preact"
+title: "Awesome Preact"
+description: "A curated collection of resources and projects focused on Preact."
 licenseSource: "github-preactjs-awesome-preact-readme-md"
 ---
 
-# Awesome Preact [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Preact
 
-[<img src="https://rawgit.com/ooade/awesome-preact/master/preact-logo.svg" align="right" width="100">](https://preactjs.com)
-
-> A curated list of amazingly awesome things regarding [Preact](https://github.com/developit/preact) ecosystem :star2:
-
-[Preact](https://github.com/developit/preact) is a fast 3kb React alternative with the same ES6 API. Components & Virtual DOM.
+A curated collection of resources and projects focused on Preact.
 
 ## Contents
 - [Community](#community)

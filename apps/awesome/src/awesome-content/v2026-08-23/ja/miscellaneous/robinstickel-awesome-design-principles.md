@@ -1,16 +1,12 @@
 ---
-title: "robinstickel/awesome-design-principles"
-description: "robinstickel/awesome-design-principles の正規スナップショット"
+title: "Awesome Design Principles"
+description: "Design Principlesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-robinstickel-awesome-design-principles-readme-md"
 ---
 
-# Awesome Design Principles [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Design Principles
 
-優れたデザイン原則と体験設計原則を厳選したリストです。
-
-> デザイン原則は、より良く一貫したデザインと体験を生み出すための道具です。詳細なデザイン上の判断を導く上位レベルのルールであり、多くの場合、より大きなスタイルガイド、パターンライブラリ、デザインシステムの中に記載されます。
-
-以下に掲載されていないリソースをご存じですか？ 新しい[プルリクエスト](https://github.com/robinstickel/awesome-design-principles/pulls)を作成するか、[Issue](https://github.com/robinstickel/awesome-design-principles/issues/new)を開いてください。貢献する前に[貢献ガイドライン](https://github.com/robinstickel/awesome-design-principles/blob/356335792d25524aad524288af34b1b2dc851d07/CONTRIBUTING.md)をお読みください。
+Design Principlesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次
 - [大規模なデザインシステム内の原則](https://github.com/robinstickel/awesome-design-principles#principles-within-bigger-design-systems)

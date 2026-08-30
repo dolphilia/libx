@@ -1,27 +1,12 @@
 ---
-title: "AppImageCommunity/awesome-appimage"
-description: "Canonical snapshot of AppImageCommunity/awesome-appimage"
+title: "Awesome AppImage"
+description: "A curated collection of resources and projects focused on AppImage."
 licenseSource: "github-AppImageCommunity-awesome-appimage-readme-md"
 ---
 
+# Awesome AppImage
 
-
-<div align="center">
-	<div>
-		<img width="500" src="media/logo.svg" alt="Awesome AppImage">
-	</div>
-	<a href="https://awesome.re">
-		<!img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<p>
-		<sub>Lovingly crafted AppImage tools and resources. Follow me on <a href="https://twitter.com/probonopd">Twitter</a>.</sub>
-	</p>
-	<br>
-</div>
-
-# Awesome AppImage [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-[AppImage](https://appimage.org) is a community-based format to distribute applications to various mainstream Linux distributions without the need for a centralized store. One app = one file! This list contains tools to work with AppImages, such as to create AppImages for applications and to integrate AppImages into the system easily. As the vibrant community around AppImage is growing, so is this list.
+A curated collection of resources and projects focused on AppImage.
 
 ## Contents
 

@@ -1,11 +1,12 @@
 ---
-title: "bolshchikov/js-must-watch"
-description: "Canonical snapshot of bolshchikov/js-must-watch"
+title: "Awesome JS Must Watch"
+description: "A curated collection of resources and projects focused on JS Must Watch."
 licenseSource: "github-bolshchikov-js-must-watch-readme-md"
 ---
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-> This is a list of must-watch videos devoted to JavaScript 
+# Awesome JS Must Watch
+
+A curated collection of resources and projects focused on JS Must Watch.
 
 ## 2020
 1. [David Neal: **JavaScript: Past, Present and Future**](https://youtu.be/n-N67Q0O52U) [47:26]

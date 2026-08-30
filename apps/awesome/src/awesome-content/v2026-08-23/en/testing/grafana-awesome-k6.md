@@ -1,25 +1,12 @@
 ---
-title: "grafana/awesome-k6"
-description: "Canonical snapshot of grafana/awesome-k6"
+title: "Awesome k6"
+description: "A curated collection of resources and projects focused on k6."
 licenseSource: "github-grafana-awesome-k6-readme-md"
 ---
 
-<div align="center">
-  <a href="https://k6.io/">
-    <img src="assets/bert.png" alt="k6 mascot" width="300px">
-  </a>
+# Awesome k6
 
-
-# Awesome k6 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-
-A collection of resources by the community, on (testing with) <a href="https://k6.io/">k6</a>.
-
-
-Contributions are welcome! Read the [contribution guidelines](https://github.com/grafana/awesome-k6/blob/74f6d67f46d2eb472370517e4d34e10cb1e7f4ba/contributing.md) first.
-
-
-</div>
+A curated collection of resources and projects focused on k6.
 
 ## Contents
 
@@ -192,4 +179,3 @@ AnyCable, k6, WebSockets, and Yabeda](https://evilmartians.com/chronicles/real-t
 
 
 Want to help in making this list better? Yay, that's awesome! Before you get started though, please have a look at our [code of conduct](https://github.com/grafana/awesome-k6/blob/74f6d67f46d2eb472370517e4d34e10cb1e7f4ba/code_of_conduct.md) and [contribution guidelines](https://github.com/grafana/awesome-k6/blob/74f6d67f46d2eb472370517e4d34e10cb1e7f4ba/contributing.md).
-

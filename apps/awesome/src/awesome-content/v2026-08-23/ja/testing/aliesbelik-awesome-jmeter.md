@@ -1,24 +1,13 @@
 ---
-title: "aliesbelik/awesome-jmeter"
-description: "Apache JMeterのプラグイン、統合、テスト手法、運用リソース集"
+title: "Awesome JMeter"
+description: "JMeterを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-aliesbelik-awesome-jmeter-readme-md"
 ---
 
-# Awesome JMeter [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome JMeter
 
+JMeterを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[Apache JMeter](https://jmeter.apache.org/) に関するリソースを厳選したコレクション。プラグイン、統合、テスト手法、DevOpsの実践など、関連するものや新しく面白いものも含まれています。
-
-
-[<img src="https://raw.githubusercontent.com/aliesbelik/awesome-jmeter/ea110f64a3b78443dd61734ab1b5f1b1a371378a/assets/images/jmeter-logo.svg" align="right" width="260" alt="Apache JMeter">](https://jmeter.apache.org/)
-
-
-> [Apache JMeter](https://jmeter.apache.org/)は、機能動作の負荷テストと性能測定のために設計された、オープンソースの純Javaアプリケーションです。
-
-
-このリストは、Stack Exchange上の [an occasional answer](https://sqa.stackexchange.com/a/2552/1842) と個人のJMeter関連リンクコレクションから生まれ、[awesome](https://github.com/sindresorhus/awesome) プロジェクトからのインスピレーションを受けてさらに拡張され、これらの [amazing contributors](https://github.com/aliesbelik/awesome-jmeter/blob/ea110f64a3b78443dd61734ab1b5f1b1a371378a/CONTRIBUTORS.md) によって改善されました。
-
-<a id="contents"></a>
 ## 目次
 
 

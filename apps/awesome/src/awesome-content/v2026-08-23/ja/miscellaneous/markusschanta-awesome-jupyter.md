@@ -1,39 +1,13 @@
 ---
-title: "markusschanta/awesome-jupyter"
-description: "markusschanta/awesome-jupyter の正規スナップショット"
+title: "Awesome Jupyter"
+description: "Jupyterを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-markusschanta-awesome-jupyter-readme-md"
 ---
 
-<a id="awesome-jupyter"></a>
-# Awesome Jupyter [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![HitCount](https://hits.dwyl.com/markusschanta/awesome-jupyter.svg?style=flat)](http://hits.dwyl.com/markusschanta/awesome-jupyter)
+# Awesome Jupyter
 
-優れた[Jupyter](http://jupyter.org)プロジェクト、ライブラリ、資料を厳選したリストです。Jupyterは、実行可能なコード、数式、可視化、説明文を含む文書を作成・共有できるオープンソースのウェブアプリケーションです。
+Jupyterを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<div align="center" style="border-bottom: 0px;">
-	<br>
-	<img width="400" src="https://raw.githubusercontent.com/markusschanta/awesome-jupyter/62178578fed55a97986dc567b8d58fe7fa58de14/assets/logo.png" alt="Jupyter logo">
-	<br>
-	<br>
-</div>
-
----
-
-<div align="center" style="border-bottom: 0px;">
-	<sub>Awesome Jupyterは次のスポンサーに支援されています。</sub>
-	<br>
-	<br>
-	<a href="https://deepnote.com/?utm_source=github&utm_medium=promo&utm_campaign=awesomejupyter"><img width="300" src="https://raw.githubusercontent.com/markusschanta/awesome-jupyter/62178578fed55a97986dc567b8d58fe7fa58de14/assets/deepnote.jpeg" alt="Deepnote logo"></a>
-	<br>
-	<br>
-	<b>Deepnoteはチーム向けに作られた共同作業型データサイエンスノートブックです。</b>
-	<div>
-	<sub>ブラウザーからPythonとSQLでデータを探索し、可視化とリッチテキストで文脈を追加できます。リンクを送るだけで成果を共有できます。<a href="https://deepnote.com/?utm_source=github&utm_medium=promo&utm_campaign=awesomejupyter">Deepnoteの無料プランをお試しください。</a></sub>
-	</div>
-</div>
-
----
-
-<a id="contents"></a>
 ## 目次
 
 

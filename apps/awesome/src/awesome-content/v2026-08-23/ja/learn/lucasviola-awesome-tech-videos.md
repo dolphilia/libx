@@ -1,13 +1,12 @@
 ---
-title: "lucasviola/awesome-tech-videos"
-description: "lucasviola/awesome-tech-videosの日本語訳"
+title: "Awesome Tech Videos"
+description: "Tech Videosを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lucasviola-awesome-tech-videos-readme-md"
 ---
 
-## Awesome技術動画 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Tech Videos
 
-* YouTubeやVimeoなどで公開されている技術動画の厳選リストです。
-実務を深く理解している人々から学ぶための、優れた方法の一つだと考えています。
+Tech Videosを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 * [プログラミング言語](#programming-languages)

@@ -1,18 +1,12 @@
 ---
-title: "HQarroum/awesome-iot"
-description: "Canonical snapshot of HQarroum/awesome-iot"
+title: "Awesome IoT"
+description: "A curated collection of resources and projects focused on IoT."
 licenseSource: "github-HQarroum-awesome-iot-readme-md"
 ---
 
 # Awesome IoT
 
-<img src="iot-logo.png" align="right" width="100">
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://travis-ci.org/HQarroum/awesome-iot.svg?branch=master)](https://travis-ci.org/HQarroum/awesome-iot)
-
-> A curated list of awesome Internet of Things projects and resources.
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
+A curated collection of resources and projects focused on IoT.
 
 ## Table of Contents
 

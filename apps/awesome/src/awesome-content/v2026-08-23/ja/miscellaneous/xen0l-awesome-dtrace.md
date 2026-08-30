@@ -1,12 +1,12 @@
 ---
-title: "xen0l/awesome-dtrace"
-description: "xen0l/awesome-dtrace の正規スナップショット"
+title: "Awesome DTrace"
+description: "DTraceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-xen0l-awesome-dtrace-readme-md"
 ---
 
-# Awesome DTrace [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome DTrace
 
-DTrace の優れた書籍、記事、動画、ツール、リソースを集めたリストです。
+DTraceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

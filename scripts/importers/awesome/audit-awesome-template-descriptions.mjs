@@ -8,10 +8,7 @@ import { notesDir, rootDir, snapshotVersion } from './common.mjs';
 
 const version = snapshotVersion;
 const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
-const reviewResultsPath = path.join(
-  notesDir,
-  'TEMPLATE_DESCRIPTION_REVIEW_RESULTS.json'
-);
+const reviewResultsPath = path.join(notesDir, 'TEMPLATE_DESCRIPTION_REVIEW_RESULTS.json');
 const outputOptionIndex = process.argv.indexOf('--output');
 const outputPath =
   outputOptionIndex === -1 ? null : path.resolve(process.argv[outputOptionIndex + 1] ?? '');
@@ -158,10 +155,7 @@ for (const file of japaneseFiles) {
   if (!isConfirmed && collisions.length === 0) continue;
 
   const collisionItemCount = collisions.reduce((sum, [, group]) => sum + group.length, 0);
-  const collapsedDifferenceCount = collisions.reduce(
-    (sum, [, group]) => sum + group.length - 1,
-    0
-  );
+  const collapsedDifferenceCount = collisions.reduce((sum, [, group]) => sum + group.length - 1, 0);
   const structuralIndexes = new Set();
   for (const listIndex of japaneseDescriptions.keys()) {
     if (!englishDescriptions.has(listIndex)) structuralIndexes.add(listIndex);

@@ -1,16 +1,12 @@
 ---
-title: "web-padawan/awesome-lit"
-description: "Canonical snapshot of web-padawan/awesome-lit"
+title: "Awesome Lit"
+description: "A curated collection of resources and projects focused on Lit."
 licenseSource: "github-web-padawan-awesome-lit-readme-md"
 ---
 
-# Awesome Lit [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Lit
 
-> A curated list of awesome Lit resources.
-
-[Lit](https://github.com/lit/lit) — a simple library for building fast, lightweight web components.
-
-At Lit's core is a boilerplate-killing component base class that provides reactive state, scoped styles, and a declarative template system that's tiny, fast and expressive.
+A curated collection of resources and projects focused on Lit.
 
 ## Contents
 

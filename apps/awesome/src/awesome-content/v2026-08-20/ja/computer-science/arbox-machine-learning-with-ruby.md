@@ -1,31 +1,12 @@
 ---
-title: "arbox/machine-learning-with-ruby"
-description: "arbox/machine-learning-with-ruby の定本スナップショット"
+title: "Awesome Machine Learning with Ruby"
+description: "Machine Learning with Rubyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-arbox-machine-learning-with-ruby-readme-md"
 ---
 
-<img title="Awesome Machine Learning with Ruby" alt="Awesome Machine Learning with Ruby" src="header.png" align="center">
+# Awesome Machine Learning with Ruby
 
-[![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome#readme) [![Support Me](https://img.shields.io/badge/%F0%9F%92%97-Support%20Me-blue.svg?style=flat-square)](https://www.patreon.com/arbox)
-
-[[RubyNLP](https://github.com/arbox/nlp-with-ruby) |
- [RubyDataScience](https://github.com/arbox/data-science-with-ruby) |
- [RubyInterop](https://github.com/arbox/ruby-interoperability)]
-
-# Awesome Machine Learning with Ruby [<img src="ruby.jpg" align="left" width="30px" height="30px" />][ruby]
-
-> Rubyによる機械学習のリンクとリソースを厳選したリスト
-
-[機械学習][ml]は[計算科学][cs]の一分野で、多くの場合[AI][ai]研究に含まれます。得られたアルゴリズムが、プログラマーによる明示的な指示なしに特定の解決策を体系的に実装できるため、多くの実用的な用途があります。当然、多くのアルゴリズムでは、調査する[特徴量][fe]の定義、または解決策を導き出すための十分に大きな[訓練セット][ts]が必要です。
-
-この厳選リストは、[Ruby][ruby]プログラミング言語を利用した[機械学習][ml]についての[_優れた_][awesome]ライブラリ、データソース、チュートリアル、プレゼンテーションをまとめています。
-
-このリストにある有用なリソースの多くは、[The Ruby Science Foundation][sciruby]、[貢献者][contributors]、そして私たちが日々取り組むさまざまなMLアプリケーションの開発から生まれました。
-
-:sparkles: あらゆる[貢献](https://github.com/arbox/machine-learning-with-ruby/blob/c8c2503b579653487516920a8b955591fbc3336f/contributing.md)を歓迎します！プルリクエストでリンクを追加するか、Issueを作成して議論を始めてください。
-
-[Twitter](https://twitter.com/NonWebRuby)をフォローし、`#RubyML`ハッシュタグを使ってぜひ広めてください！
-
+Machine Learning with Rubyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,14 +1,12 @@
 ---
-title: "iJackUA/awesome-vagrant"
-description: "iJackUA/awesome-vagrant の正規スナップショット"
+title: "Awesome Vagrant"
+description: "Vagrantを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-iJackUA-awesome-vagrant-readme-md"
 ---
 
 # Awesome Vagrant
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/iJackUA/awesome-vagrant?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![ビルド状態](https://api.travis-ci.org/iJackUA/awesome-vagrant.svg?branch=master)](https://travis-ci.org/iJackUA/awesome-vagrant)
 
-Vagrant の優れたリソース、プラグイン、チュートリアル、その他の便利なものを集めたリストです。
-
+Vagrantを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 公式リソース
 

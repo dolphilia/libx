@@ -1,14 +1,12 @@
 ---
-title: "cerberauth/awesome-openid-connect"
-description: "cerberauth/awesome-openid-connect の定本スナップショット"
+title: "Awesome OpenID Connect"
+description: "OpenID Connectを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-cerberauth-awesome-openid-connect-readme-md"
 ---
 
-# Awesome OpenID Connect [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome OpenID Connect
 
-> [OpenID Connect](https://openid.net/#introduction) は OAuth 2.0 上の認証プロトコル・Identity Layerで、多くのSSOとSocial Login（Apple、Facebook、Googleなど）に採用されています。基本的には、利用者がOpenID Connect Provider（OP）の既存AccountでServiceへ認証し、同意後に一部のIdentity情報を共有し、Relying Party（RP）ApplicationのResourceへAccessするTokenを取得できます。
-
-> Provider、Service、Library、資料を厳選したこのリストから、導入方法と既存・Draft仕様を学べます。
+OpenID Connectを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

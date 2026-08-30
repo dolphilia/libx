@@ -1,14 +1,12 @@
 ---
-title: "irazasyed/awesome-cloudflare"
-description: "Canonical snapshot of irazasyed/awesome-cloudflare"
+title: "Awesome Cloudflare"
+description: "A curated collection of resources and projects focused on Cloudflare."
 licenseSource: "github-irazasyed-awesome-cloudflare-readme-md"
 ---
 
-# Awesome Cloudflare [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re) [<img src="media/cf-logo.svg" width="250" align="right" alt="Cloudflare">](https://www.cloudflare.com)
+# Awesome Cloudflare
 
-> Curated list of awesome [Cloudflare](https://www.cloudflare.com) worker recipes, open-source projects, guides, blogs and other resources.
-
-Cloudflare provides content delivery network (CDN) services, DDoS mitigation, Internet security and distributed domain name server (DNS) services, sitting between the visitor and the Cloudflare user's hosting provider, acting as a reverse proxy for websites.
+A curated collection of resources and projects focused on Cloudflare.
 
 ## Contents
 

@@ -1,17 +1,12 @@
 ---
-title: "matchai/awesome-pinned-gists"
-description: "matchai/awesome-pinned-gists の正規スナップショット"
+title: "Awesome Pinned Gists"
+description: "Pinned Gistsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-matchai-awesome-pinned-gists-readme-md"
 ---
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/4658208/57482610-14f64480-7273-11e9-862e-80d9fe332311.png" width="535">
-  <h3 align="center">Awesome Pinned Gists</h3>
-  <p align="center">ピン留め Gist に動的なデータを追加するためのオープンソースツールを集めたリストです。<p>
-  <p align="center">
-    <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome Lists"></a>
-  </p>
-</p>
+# Awesome Pinned Gists
+
+Pinned Gistsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

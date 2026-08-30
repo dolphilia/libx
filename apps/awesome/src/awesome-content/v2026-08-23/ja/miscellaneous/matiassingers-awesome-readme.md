@@ -1,21 +1,13 @@
 ---
-title: "matiassingers/awesome-readme"
-description: "matiassingers/awesome-readme の正規スナップショット"
+title: "Awesome README"
+description: "READMEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-matiassingers-awesome-readme-readme-md"
 ---
 
+# Awesome README
 
+READMEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="awesome-readme"></a>
-# Awesome README [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
-> 優れたREADMEを厳選したリストです。
-> <img src="https://raw.githubusercontent.com/matiassingers/awesome-readme/26c9685d963d90c38da4cf5e8a62a07b7c4b09c6/icon.png" align="right"/>
-
-美しいREADMEを構成する要素には、次のようなものがあります。
-
-画像、スクリーンショット、GIF、テキスト装飾など。
-
-<a id="examples"></a>
 ## 例
 
 - [Abblix/Oidc.Server](https://github.com/Abblix/Oidc.Server#readme) - プロジェクトのバナーに情報的なバッジを配置。明確なプロジェクト説明、認証詳細を情報表で示し、ユニコードアイコンを用いる。詳細なインストールガイド、包括的なドキュメンテーションおよびスタートガイドへのリンク、ライセンス情報。テーブルオブコンテンツによる簡単なナビゲーションで、すべてのセクションに迅速にアクセス可能。

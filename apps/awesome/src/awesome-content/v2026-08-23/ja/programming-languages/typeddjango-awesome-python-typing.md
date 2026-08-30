@@ -1,14 +1,13 @@
 ---
-title: "typeddjango/awesome-python-typing"
-description: "typeddjango/awesome-python-typing の正規スナップショット"
+title: "Awesome Python Typing"
+description: "Python Typingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-typeddjango-awesome-python-typing-readme-md"
 ---
 
-# Awesome Python Typing（型付け） [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Python Typing
 
-優れたPythonの型、スタブ、プラグイン、およびそれらを扱うツールのコレクションです。
+Python Typingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="contents"></a>
 ## 目次
 
 - [静的型チェッカー](#static-type-checkers)

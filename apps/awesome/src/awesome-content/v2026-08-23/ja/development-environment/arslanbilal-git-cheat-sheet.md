@@ -1,17 +1,12 @@
 ---
-title: "arslanbilal/git-cheat-sheet"
-description: "arslanbilal/git-cheat-sheet の正規スナップショット"
+title: "Awesome Git and Git Flow Cheat Sheet"
+description: "Git and Git Flow Cheat Sheetを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-arslanbilal-git-cheat-sheet-readme-md"
 ---
 
-# Git／Git Flowチートシート
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Git and Git Flow Cheat Sheet
 
-<p align="center">
-    <img alt="Git" src="https://raw.githubusercontent.com/arslanbilal/git-cheat-sheet/4098de6b02a1a9ccb0f7e1eb8b6da29d91c67841/Img/git-logo.png" height="190" width="455">
-</p>
-
----
+Git and Git Flow Cheat Sheetを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 📖 概要 <a id="-about"></a>
 

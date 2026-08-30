@@ -1,22 +1,12 @@
 ---
-title: "aliesbelik/awesome-jmeter"
-description: "Canonical snapshot of aliesbelik/awesome-jmeter"
+title: "Awesome JMeter"
+description: "A curated collection of resources and projects focused on JMeter."
 licenseSource: "github-aliesbelik-awesome-jmeter-readme-md"
 ---
 
-# Awesome JMeter [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome JMeter
 
-
-A curated collection of resources covering [Apache JMeter](https://jmeter.apache.org/) and related stuff and shiny things: plugins, integrations, testing techniques, DevOps practices, etc.
-
-
-[<img src="https://raw.githubusercontent.com/aliesbelik/awesome-jmeter/ea110f64a3b78443dd61734ab1b5f1b1a371378a/assets/images/jmeter-logo.svg" align="right" width="260" alt="Apache JMeter">](https://jmeter.apache.org/)
-
-
-> [Apache JMeter](https://jmeter.apache.org/) is open source, pure Java application designed to load test functional behavior and measure performance.
-
-
-This list grew up from [an occasional answer](https://sqa.stackexchange.com/a/2552/1842) on Stack Exchange and personal JMeter-related links collection, got further inspiration from [awesome](https://github.com/sindresorhus/awesome) project and improved by these [amazing contributors](https://github.com/aliesbelik/awesome-jmeter/blob/ea110f64a3b78443dd61734ab1b5f1b1a371378a/CONTRIBUTORS.md).
+A curated collection of resources and projects focused on JMeter.
 
 ## Contents
 

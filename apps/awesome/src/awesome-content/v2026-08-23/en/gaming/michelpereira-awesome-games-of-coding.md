@@ -1,13 +1,12 @@
 ---
-title: "michelpereira/awesome-games-of-coding"
-description: "Canonical snapshot of michelpereira/awesome-games-of-coding"
+title: "Awesome Games of Coding"
+description: "A curated collection of resources and projects focused on Games of Coding."
 licenseSource: "github-michelpereira-awesome-games-of-coding-readme-md"
 ---
 
-# Games of Coding [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Games of Coding
 
-> A curated list of games that teach you a programming language.
-
+A curated collection of resources and projects focused on Games of Coding.
 
 ## Contents
 

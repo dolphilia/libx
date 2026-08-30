@@ -1,14 +1,12 @@
 ---
-title: "bakke92/awesome-gdpr"
-description: "Canonical snapshot of bakke92/awesome-gdpr"
+title: "Awesome GDPR"
+description: "A curated collection of resources and projects focused on GDPR."
 licenseSource: "github-bakke92-awesome-gdpr-readme-md"
 ---
 
-# Awesome GDPR [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome GDPR
 
-[<img src="GDPR.png" align="right" width="300">](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679)
-
-The General Data Protection Regulation (GDPR) is a regulation on data protection and privacy for all individuals within the European Union and the European Economic Area. The regulation has increased the focus on privacy in companies and strengthened the data subjects influence.
+A curated collection of resources and projects focused on GDPR.
 
 ## Contents
 * [Legal text](#legal-text)

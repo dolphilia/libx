@@ -1,20 +1,12 @@
 ---
-title: "craftcms/awesome"
-description: "Craft CMSの公式情報、記事、動画、開発資料、導入事例をまとめた定本スナップショット"
+title: "Awesome Craft CMS"
+description: "Craft CMSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-craftcms-awesome-readme-md"
 ---
 
-# Craft CMS ![Awesome](https://badgen.net/badge/icon/Resources?icon=awesome&label=Craft%20CMS&labelColor=red&color=black)
+# Awesome Craft CMS
 
-[awesome](https://github.com/topics/awesome)なCraft CMS資料、記事、そのほかの優れた情報を集めた公式リストです。
-
-> **注記**  
-> 足りないものがありますか？ [このページを編集](https://github.com/craftcms/awesome/edit/main/README.md)してください。
-
-**[Craft CMS](https://craftcms.com)は、独自のデジタル体験を構築するための柔軟で拡張可能なコンテンツ管理システムです。**
-
-### 貢献
-[貢献ガイドライン](https://github.com/craftcms/awesome/blob/8d232c79ad3bd595efe79f3e04ed04f64ae3b41e/CONTRIBUTING.md)を確認してください。保守されていない、またはこのリストに適さない記事・資料を見つけた場合は、プルリクエストを送ってください。ご協力に感謝します。
+Craft CMSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 ### 目次
 

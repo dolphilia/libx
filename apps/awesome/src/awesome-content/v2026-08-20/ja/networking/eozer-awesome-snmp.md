@@ -1,16 +1,12 @@
 ---
-title: "eozer/awesome-snmp"
-description: "eozer/awesome-snmp の定本スナップショット"
+title: "Awesome SNMP"
+description: "SNMPを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-eozer-awesome-snmp-readme-md"
 ---
 
+# Awesome SNMP
 
-# Awesome SNMP [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Awesome lint](https://github.com/eozer/awesome-snmp/actions/workflows/awesome-lint.yml/badge.svg)](https://github.com/eozer/awesome-snmp/actions/workflows/awesome-lint.yml)
-
-[Simple Network Management Protocol (SNMP)](https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol) は、IPネットワーク上の管理対象デバイスに関する情報を収集・整理し、その情報を変更してデバイスの動作を変えるためのインターネット標準プロトコルです。
-
-優れたSNMPライブラリ、ツール、その他のリソースを厳選したリストです。貢献を歓迎します！
+SNMPを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [ライブラリ](#libraries)

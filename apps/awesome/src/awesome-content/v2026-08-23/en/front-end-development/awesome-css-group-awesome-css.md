@@ -1,34 +1,12 @@
 ---
-title: "awesome-css-group/awesome-css"
-description: "Canonical snapshot of awesome-css-group/awesome-css"
+title: "Awesome CSS Awesome Travis"
+description: "A curated collection of resources and projects focused on CSS Awesome Travis."
 licenseSource: "github-awesome-css-group-awesome-css-readme-md"
 ---
 
-[awesome-link]:  https://github.com/sindresorhus/awesome
-[awesome-badge]: https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg
-[travis-link]:   https://travis-ci.org/awesome-css-group/awesome-css
-[travis-badge]:  https://travis-ci.org/awesome-css-group/awesome-css.svg?branch=master
+# Awesome CSS Awesome Travis
 
-# Awesome CSS [![Awesome][awesome-badge]][awesome-link] [![Travis Build Status][travis-badge]][travis-link]
-
-> /* A curated list of awesome frameworks, style guides, and other cool nuggets for writing amazing CSS. */
-
-## Introduction
-
-### Motivation
-
-This document is a curated list of frameworks, style guides, and cool nuggets of information for writing awesome CSS. It does not contain resources to learn CSS.
-
-### Complementary Resources
-
-If you're struggling with something CSS-related, look for answers within the following resources:
-
-- [CSS - MDN - Mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [Reddit (CSS)](https://www.reddit.com/r/css/)
-- [StackOverflow (CSS)](https://stackoverflow.com/questions/tagged/css)
-
-
-<div id="contents"></div>
+A curated collection of resources and projects focused on CSS Awesome Travis.
 
 ## Table of Contents
 

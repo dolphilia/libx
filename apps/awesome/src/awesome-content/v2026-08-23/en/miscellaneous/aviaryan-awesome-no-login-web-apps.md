@@ -1,28 +1,12 @@
 ---
-title: "aviaryan/awesome-no-login-web-apps"
-description: "Canonical snapshot of aviaryan/awesome-no-login-web-apps"
+title: "Awesome Web Apps (that work without login)"
+description: "A curated collection of resources and projects focused on Web Apps (that work without login)."
 licenseSource: "github-aviaryan-awesome-no-login-web-apps-readme-md"
 ---
 
 # Awesome Web Apps (that work without login)
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Mentioned in Awesome](https://awesome.re/mentioned-badge.svg)](https://awesome.re)
-[![Contributors needed](https://img.shields.io/badge/contributors-needed-yellow.svg)](https://github.com/aviaryan/awesome-no-login-web-apps/blob/0d6020e95723429aba75aee880605b74dc6e8ef3/CONTRIBUTING.md)
-[![Join the chat at https://gitter.im/aviaryan/awesome-no-login-web-apps](https://badges.gitter.im/aviaryan/awesome-no-login-web-apps.svg)](https://gitter.im/aviaryan/awesome-no-login-web-apps?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Open Source Helpers](https://www.codetriage.com/aviaryan/awesome-no-login-web-apps/badges/users.svg)](https://www.codetriage.com/aviaryan/awesome-no-login-web-apps)
-
-Curated list of awesome web apps that work without requesting you to create an account.
-
-#### Inspiration
-
-To save the world from creating user accounts and installing software applications for every damn thing.
-
-#### Some pointers
-
-* The web apps linked in this list provide most of their core features without login. Some websites that require registration have also been included in this list because of lack of a proper alternative. They have been tagged with `[Account]` in their listing.
-* Most of the apps mentioned here do provide some kind of a user account feature to save history and progress. But as already stated before, a user account is not necessary to use the main features of these apps.
-
+A curated collection of resources and projects focused on Web Apps (that work without login).
 
 ## Contents
 

@@ -1,25 +1,12 @@
 ---
-title: "margaretmz/awesome-tensorflow-lite"
-description: "Canonical snapshot of margaretmz/awesome-tensorflow-lite"
+title: "Awesome TensorFlow Lite"
+description: "A curated collection of resources and projects focused on TensorFlow Lite."
 licenseSource: "github-margaretmz-awesome-tensorflow-lite-readme-md"
 ---
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/margaretmz/awesome-tensorflow-lite/d20e763afa1912a82056a75f2a97fa1d97c10e79/images/awesome-tflite.png" alt="awesome tflite" width="500">
-</p>
+# Awesome TensorFlow Lite
 
-
-# Awesome TensorFlow Lite [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Twitter](https://img.shields.io/badge/Twitter-%40margaretmz-blue)](https://twitter.com/margaretmz)
-
-[TensorFlow Lite](https://www.tensorflow.org/lite) is a set of tools that help convert and optimize TensorFlow models to run on mobile and edge devices. It's currently running on more than 4 billion devices! With TensorFlow 2.x, you can train a model with tf.Keras, easily convert a model to .tflite and deploy it; or you can download a pretrained TensorFlow Lite model from the model zoo.
-
-This is an awesome list of TensorFlow Lite models with sample apps, helpful tools and learning resources -
-* Showcase what the community has built with TensorFlow Lite
-* Put all the samples side-by-side for easy reference
-* Share knowledge and learning resources
-
-Please submit a PR if you would like to contribute and follow the guidelines [here](https://github.com/margaretmz/awesome-tensorflow-lite/blob/d20e763afa1912a82056a75f2a97fa1d97c10e79/CONTRIBUTING.md).
-
+A curated collection of resources and projects focused on TensorFlow Lite.
 
  ## Contents
 - [Past announcements:](#past-announcements)

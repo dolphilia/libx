@@ -1,20 +1,12 @@
 ---
-title: "gokayfem/awesome-vlm-architectures"
-description: "視覚言語モデルのリリース年表、155以上のアーキテクチャ、一次資料、設計図をまとめた定本スナップショット"
+title: "Awesome VLM Architectures"
+description: "VLM Architecturesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-gokayfem-awesome-vlm-architectures-readme-md"
 ---
 
-# 👁️‍🗨️ Awesome VLM Architectures [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) <a id="-awesome-vlm-architectures"></a>
+# Awesome VLM Architectures
 
-![VLM](https://github.com/gokayfem/Awesome-VLM-Architectures/assets/88277926/5c9ee091-1f37-4d92-8398-a7d4e006c014)
-
-**Awesome VLM Architectures**は、対照学習エンコーダー、マルチモーダルLLM、ネイティブマルチモーダルモデル、理解・生成統合、動画、OCR、GUIエージェント、身体性AIにわたる**155以上の視覚言語モデル（VLM／MLLM）アーキテクチャ**を引用優先で整理した視覚的カタログです。各項目は一次資料、構造、モダリティ整合・融合、学習段階、データセット、設計上の特徴、利用可能な構成図を示します。
-
-マルチモーダルモデル系列の比較、設計思想の時系列追跡、研究・AIエージェント作業の根拠資料取得に使えます。2026年7月まで確認済みのリリース年表を含み、CLIPやFlamingoから最新の推論・エージェントモデルまでを扱います。**各モデルのパネルを展開すると詳細な構造要約を確認できます。**
-
-- 📙 <a href="https://github.com/gokayfem/ComfyUI_VLM_nodes">Visit my other repo to try Vision Language Models on ComfyUI</a>
-
-*最終レビュー: 2026年8月1日。*
+VLM Architecturesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

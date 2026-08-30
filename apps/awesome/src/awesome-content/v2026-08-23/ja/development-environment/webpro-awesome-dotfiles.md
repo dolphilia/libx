@@ -1,14 +1,13 @@
 ---
-title: "webpro/awesome-dotfiles"
-description: "webpro/awesome-dotfiles の正規スナップショット"
+title: "Awesome Dotfiles"
+description: "Dotfilesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-webpro-awesome-dotfiles-readme-md"
 ---
 
-# Awesome Dotfiles（設定ファイル） [![Awesome][2]][1]
+# Awesome Dotfiles
 
-dotfilesに関する資料を厳選した一覧です。[awesome][3]リストから着想を得ています。一部の記事やツールは古く見えるかもしれませんが、多くの場合、それはdotfiles自体と同様に、実地で検証され成熟していることを意味します。新しい記事、プロジェクト、ツールをぜひ提案してください。
+Dotfilesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="articles"></a>
 ## 記事
 
 <a id="introductions"></a>

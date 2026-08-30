@@ -1,19 +1,12 @@
 ---
-title: "jakoch/awesome-composer"
-description: "Canonical snapshot of jakoch/awesome-composer"
+title: "Awesome Composer"
+description: "A curated collection of resources and projects focused on Composer."
 licenseSource: "github-jakoch-awesome-composer-readme-md"
 ---
 
+# Awesome Composer
 
-# Awesome Composer [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome) [![Build on Windows](https://github.com/jakoch/awesome-composer/actions/workflows/awesome-bot.yml/badge.svg?branch=main)](https://github.com/jakoch/awesome-composer/actions/workflows/awesome-bot.yml) [![license](https://img.shields.io/github/license/jakoch/awesome-composer.svg?maxAge=2592000)]()
-
-[<img src="https://raw.githubusercontent.com/jakoch/awesome-composer/master/logo-composer-transparent.png" align="right" width="150">](https://getcomposer.org/)
-
-> A curated list of resources for Composer, Packagist, Satis, Plugins, Scripts, Videos, Tutorials.
-
-You might also like [awesome-php](https://github.com/ziadoz/awesome-php).
-
-*Please read the [contribution guidelines](https://github.com/jakoch/awesome-composer/blob/main/.github/CONTRIBUTING.md) before contributing.*
+A curated collection of resources and projects focused on Composer.
 
 ## Composer
 

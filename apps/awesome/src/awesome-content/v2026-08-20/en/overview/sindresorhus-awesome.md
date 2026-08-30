@@ -1,12 +1,12 @@
 ---
-title: "sindresorhus/awesome"
-description: "Canonical snapshot of sindresorhus/awesome"
+title: "Awesome Lists"
+description: "A curated directory of Awesome lists spanning technology, science, business, culture, and more."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Lists
 
-A curated directory of Awesome lists spanning technology, science, business, culture, and more. This snapshot organizes the collection by topic and links included lists to their corresponding pages on libx.
+A curated directory of Awesome lists spanning technology, science, business, culture, and more.
 
 ## Contents
 

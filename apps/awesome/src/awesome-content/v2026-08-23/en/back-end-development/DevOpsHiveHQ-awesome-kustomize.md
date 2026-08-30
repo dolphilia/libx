@@ -1,36 +1,12 @@
 ---
-title: "DevOpsHiveHQ/awesome-kustomize"
-description: "Canonical snapshot of DevOpsHiveHQ/awesome-kustomize"
+title: "Awesome Kustomize"
+description: "A curated collection of resources and projects focused on Kustomize."
 licenseSource: "github-DevOpsHiveHQ-awesome-kustomize-readme-md"
 ---
 
+# Awesome Kustomize
 
-# Awesome Kustomize [![Awesome](https://raw.githubusercontent.com/sindresorhus/awesome/main/media/badge.svg)](https://github.com/sindresorhus/awesome) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aabouzaid/awesome-kustomize/compare)
-
-<p align="center">
-  <a href="https://kustomize.io">
-    <img src="https://raw.githubusercontent.com/DevOpsHiveHQ/awesome-kustomize/9ffa6628725ac877ce54d1fd18715893c79c4a81/img/awesome-kustomize.svg" width="90%">
-  </a>
-</p>
-
-> A curated and collaborative list of awesome Kustomize resources.
-
-[Kustomize](https://kustomize.io) introduces a template-free way to customize Kubernetes manifests. It's extensible and uses a purely declarative approach to configuration customization, helping you efficiently manage your Infrastructure as Code (IaC).
-
-Contributions are welcome, add links through [pull requests](https://github.com/aabouzaid/awesome-kustomize/pulls) or create an issue to start a discussion.
-
-Push it forward and add the project badge in your repo to support the community! ⭐
-
-Markdown:
-
-```text
-[![Awesome Kustomize](https://devopshive.com/badges/awesome-kustomize.svg)](https://github.com/DevOpsHiveHQ/awesome-kustomize)
-```
-
-Preview:
-
-[![Awesome Kustomize](https://raw.githubusercontent.com/DevOpsHiveHQ/awesome-kustomize/main/img/awesome-kustomize-badge.svg)](https://github.com/DevOpsHiveHQ/awesome-kustomize)
-
+A curated collection of resources and projects focused on Kustomize.
 
 ## Contents
 

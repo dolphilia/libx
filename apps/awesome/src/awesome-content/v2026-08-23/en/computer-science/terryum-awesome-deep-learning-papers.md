@@ -1,54 +1,12 @@
 ---
-title: "terryum/awesome-deep-learning-papers"
-description: "Canonical snapshot of terryum/awesome-deep-learning-papers"
+title: "Awesome Most Cited Deep Learning Papers"
+description: "A curated collection of resources and projects focused on Most Cited Deep Learning Papers."
 licenseSource: "github-terryum-awesome-deep-learning-papers-readme-md"
 ---
 
-# Awesome - Most Cited Deep Learning Papers
+# Awesome Most Cited Deep Learning Papers
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-[Notice] This list is not being maintained anymore because of the overwhelming amount of deep learning papers published every day since 2017.
-
-A curated list of the most cited deep learning papers (2012-2016)
-
-We believe that there exist *classic* deep learning papers which are worth reading regardless of their application domain. Rather than providing overwhelming amount of papers, We would like to provide a *curated list* of the awesome deep learning papers which are considered as *must-reads* in certain research domains.
-
-## Background
-
-Before this list, there exist other *awesome deep learning lists*, for example, [Deep Vision](https://github.com/kjw0612/awesome-deep-vision) and [Awesome Recurrent Neural Networks](https://github.com/kjw0612/awesome-rnn). Also, after this list comes out, another awesome list for deep learning beginners, called [Deep Learning Papers Reading Roadmap](https://github.com/songrotek/Deep-Learning-Papers-Reading-Roadmap), has been created and loved by many deep learning researchers.
-
-Although the *Roadmap List* includes lots of important deep learning papers, it feels overwhelming for me to read them all. As I mentioned in the introduction, I believe that seminal works can give us lessons regardless of their application domain. Thus, I would like to introduce **top 100 deep learning papers** here as a good starting point of overviewing deep learning researches.
-
-To get the news for newly released papers everyday, follow my [twitter](https://twitter.com/TerryUm_ML) or [facebook page](https://www.facebook.com/terryum.io/)!
-
-## Awesome list criteria
-
-1. A list of **top 100 deep learning papers** published from 2012 to 2016 is suggested.
-2. If a paper is added to the list, another paper (usually from *More Papers from 2016" section) should be removed to keep top 100 papers. (Thus, removing papers is also important contributions as well as adding papers)
-3. Papers that are important, but failed to be included in the list, will be listed in *More than Top 100* section.
-4. Please refer to *New Papers* and *Old Papers* sections for the papers published in recent 6 months or before 2012.
-
-*(Citation criteria)*
-- **< 6 months** : *New Papers* (by discussion)
-- **2016** :  +60 citations or "More Papers from 2016"
-- **2015** :  +200 citations
-- **2014** :  +400 citations
-- **2013** :  +600 citations
-- **2012** :  +800 citations
-- **~2012** : *Old Papers* (by discussion)
-
-Please note that we prefer seminal deep learning papers that can be applied to various researches rather than application papers. For that reason, some papers that meet the criteria may not be accepted while others can be. It depends on the impact of the paper, applicability to other researches scarcity of the research domain, and so on.
-
-**We need your contributions!**
-
-If you have any suggestions (missing papers, new papers, key researchers or typos), please feel free to edit and pull a request.
-(Please read the [contributing guide](https://github.com/terryum/awesome-deep-learning-papers/blob/master/Contributing.md) for further instructions, though just letting me know the title of papers can also be a big contribution to us.)
-
-(Update) You can download all top-100 papers with [this](https://github.com/terryum/awesome-deep-learning-papers/blob/master/fetch_papers.py) and collect all authors' names with [this](https://github.com/terryum/awesome-deep-learning-papers/blob/master/get_authors.py). Also, [bib file](https://github.com/terryum/awesome-deep-learning-papers/blob/master/top100papers.bib) for all top-100 papers are available. Thanks, doodhwala, [Sven](https://github.com/sunshinemyson) and [grepinsight](https://github.com/grepinsight)!
-
-+ Can anyone contribute the code for obtaining the statistics of the authors of Top-100 papers?
-
+A curated collection of resources and projects focused on Most Cited Deep Learning Papers.
 
 ## Contents
 

@@ -1,49 +1,12 @@
 ---
-title: "kdeldycke/awesome-billing"
-description: "Canonical snapshot of kdeldycke/awesome-billing"
+title: "Awesome Billing"
+description: "A curated collection of resources and projects focused on Billing."
 licenseSource: "github-kdeldycke-awesome-billing-readme-md"
 ---
 
+# Awesome Billing
 
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-billing/">
-    <img src="https://github.com/kdeldycke/awesome-billing/raw/main/assets/awesome-billing-header.jpg" alt="💰 Awesome Billing">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://credyt.ai/?utm_source=awesome-billing&utm_medium=referral&utm_campaign=awesome-billing-oss-sponsorship">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kdeldycke/awesome-billing/main/assets/credyt-logo-dark-background.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/kdeldycke/awesome-billing/main/assets/credyt-logo-light-background.svg">
-      <img width="300" src="https://raw.githubusercontent.com/kdeldycke/awesome-billing/main/assets/credyt-logo-light-background.svg">
-    </picture>
-    <br/>
-    <strong>Real-time monetization infrastructure for AI.</strong><br/>
-    Bill in real time, charge from prepaid balances, and ship a branded customer portal without writing frontend.
-  </a>
-  <br/><br/>
-</p>
-
-<p align="center">
-  <a href="https://github.com/sponsors/kdeldycke">
-    <strong>Your brand → here 🚀</strong>
-    <br/>
-    <sup>SEO is dead. Place your product here to target AI's training data.</sup>
-  </a>
-</p>
-
----
-
-<p align="center">
-  <i>Money is the most universal and most efficient system of mutual trust ever devised.</i><br>
-  — Yuval Noah Harari<sup id="intro-quote-ref"><a href="#intro-quote-def">[1]</a></sup>
-</p>
-
-Any company needs at one point to get money from customers. That's when things gets messy for us developers, as we try to reconcile the complexity of the business with our software stack.
-
-This [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome) list helps software engineers **bootstrap billing & payments systems, and make sense of invoicing, pricing, accounting, marketplace, fraud and business intelligence**.
+A curated collection of resources and projects focused on Billing.
 
 ## Contents
 

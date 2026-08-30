@@ -1,12 +1,12 @@
 ---
-title: "sampart/awesome-tech-ethics"
-description: "Canonical snapshot of sampart/awesome-tech-ethics"
+title: "Awesome Tech Ethics"
+description: "A curated collection of resources and projects focused on Tech Ethics."
 licenseSource: "github-sampart-awesome-tech-ethics-readme-md"
 ---
 
-# Awesome Tech Ethics [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Tech Ethics
 
-Reducing the potential negative effects of technology on society.
+A curated collection of resources and projects focused on Tech Ethics.
 
 ## Contents
 

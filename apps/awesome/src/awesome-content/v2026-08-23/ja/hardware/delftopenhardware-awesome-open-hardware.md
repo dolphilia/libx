@@ -1,12 +1,12 @@
 ---
-title: "delftopenhardware/awesome-open-hardware"
-description: "delftopenhardware/awesome-open-hardware の定本スナップショット"
+title: "Awesome Open Hardware"
+description: "Open Hardwareを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-delftopenhardware-awesome-open-hardware-readme-md"
 ---
 
-# Awesome Open Hardware [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Open Hardware
 
-🛠 オープンソースハードウェアプロジェクトを作り、学ぶための有用な項目。
+Open Hardwareを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

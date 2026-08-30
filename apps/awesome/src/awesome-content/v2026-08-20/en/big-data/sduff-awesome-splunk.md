@@ -1,22 +1,12 @@
 ---
-title: "sduff/awesome-splunk"
-description: "Canonical snapshot of sduff/awesome-splunk"
+title: "Awesome Splunk"
+description: "A curated collection of resources and projects focused on Splunk."
 licenseSource: "github-sduff-awesome-splunk-readme-md"
 ---
 
-<div align="center">
-	<img width="344" height="193" src="https://raw.githubusercontent.com/sduff/awesome-splunk/master/splunk.jpg" alt="Splunk">
-</div>
+# Awesome Splunk
 
-# Awesome Splunk [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> A curated list of awesome apps, visualisations and other resources for Splunk.
-
-[*Splunk*](https://splunk.com) captures, indexes, and correlates real-time data in a searchable
-repository from which graphs, reports, alerts, dashboards, and visualizations
-can be generated. It is widely used in industries such as finance, utilities,
-healthcare and manufacturing for use-cases including security, compliance and
-IT service monitoring.
+A curated collection of resources and projects focused on Splunk.
 
 ## Contents
 

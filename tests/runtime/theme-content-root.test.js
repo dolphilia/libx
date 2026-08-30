@@ -53,6 +53,16 @@ test('本文中の長いURLは狭い画面で折り返す', () => {
   assert.match(linkRule, /overflow-wrap:\s*anywhere/);
 });
 
+test('本文中の長いインラインコードは狭い画面で折り返す', () => {
+  const theme = fs.readFileSync(themePath, 'utf8');
+  const inlineCodeRule = theme.match(
+    /:where\(\.article-content, \.sl-markdown-content\) :not\(pre\) > code\s*\{([^}]*)\}/s
+  )?.[1];
+
+  assert.ok(inlineCodeRule);
+  assert.match(inlineCodeRule, /overflow-wrap:\s*anywhere/);
+});
+
 test('全配信レイアウトとテンプレートが正式な本文ルートを使用する', () => {
   for (const relativePath of layoutPaths) {
     const source = fs.readFileSync(path.join(rootDir, relativePath), 'utf8');

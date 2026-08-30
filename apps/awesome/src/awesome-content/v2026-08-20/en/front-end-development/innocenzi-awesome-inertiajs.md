@@ -1,36 +1,12 @@
 ---
-title: "innocenzi/awesome-inertiajs"
-description: "Canonical snapshot of innocenzi/awesome-inertiajs"
+title: "Awesome logo of awesome-inertiajs repository"
+description: "A curated collection of resources and projects focused on logo of awesome-inertiajs repository."
 licenseSource: "github-innocenzi-awesome-inertiajs-readme-md"
 ---
 
+# Awesome logo of awesome-inertiajs repository
 
-
-<p align="center">
-  <br />
-  <a href="https://inertiajs.com/">
-    <img width="100" src="./assets/logo.svg" alt="logo of awesome-inertiajs repository">
-  </a>
-  <br />
-  <br />
-</p>
-
-<h2 align="center">Awesome Inertia.js</h2>
-
-<p align="center">
-  A tool for building single-page applications using classic server-side routing and controllers.
-  <br />
-  <br />
-  <a href="https://github.com/sindresorhus/awesome">
-    <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome">
-  </a>
-  &nbsp;
-  <a href="https://github.com/sindresorhus/awesome-lint">
-    <img src="https://github.com/innocenzi/awesome-inertiajs/workflows/Lint/badge.svg" alt="Lint status">
-  </a>
-  <br />
-  <br />
-</p>
+A curated collection of resources and projects focused on logo of awesome-inertiajs repository.
 
 ## Useful Links
 

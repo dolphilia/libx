@@ -1,23 +1,12 @@
 ---
-title: "dav009/awesome-spanish-nlp"
-description: "dav009/awesome-spanish-nlp の正規スナップショット"
+title: "Awesome Linguistics Resources for Spanish"
+description: "Linguistics Resources for Spanishを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dav009-awesome-spanish-nlp-readme-md"
 ---
 
-# スペイン語向け Awesome 言語資源 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Linguistics Resources for Spanish
 
-
-スペイン語の自然言語処理（NLP）と計算言語学（CL）に使う言語資源を厳選したリストです。
-
-# クラスタリング
-- [多言語潜在的ディリクレ配分法（LDA）](https://github.com/ArtificiAI/Multilingual-Latent-Dirichlet-Allocation-LDA)
-
-# 音声
-
-- [メキシコスペイン語音声認識DB - 150話者](http://www.speechocean.com/en-ASR-Corpora/631.html)
-- [メキシコスペイン語音声認識DB - 299話者](http://www.speechocean.com/en-ASR-Corpora/603.html)
-- [スペイン語発音辞書の音声表記](http://www.speechocean.com/en-Text-Corpora/692.html)
-- [Sphinx 音声認識モデル](http://www.speech.cs.cmu.edu/sphinx/models/hub4spanish_itesm/)
+Linguistics Resources for Spanishを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 品詞タグ付け器（POS Tagger）
 - [TreeTagger - POS Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/)

@@ -1,20 +1,12 @@
 ---
-title: "fuse-compound/awesome-fuse"
-description: "fuse-compound/awesome-fuse の正規スナップショット"
+title: "Awesome Fuse"
+description: "Fuseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-fuse-compound-awesome-fuse-readme-md"
 ---
 
-# Awesome Fuse [![awesome](https://cdn.rawgit.com/sindresorhus/awesome/master/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Fuse
 
-[<img src="https://user-images.githubusercontent.com/499192/31740578-13ed7990-b452-11e7-96ca-e7fb898edff0.png" align="right" alt="Fuse" width="340">](https://www.fusetools.com/)
-
-> 優れた[Fuse](https://www.fusetools.com/)アプリケーション、記事、プラグインの厳選リスト。
-
-*コントリビュートする前に[コントリビューションガイドライン](https://github.com/fuse-compound/awesome-fuse/blob/02d2a50b7444a186bf91f9bdb6529817765c44bd/CONTRIBUTING.md)をお読みください。*
-
-`awesome-fuse`が好きですか？[Twitter](https://twitter.com/fusetools)で連絡して、*こんにちは*と言ってください！ 👋
-
-このリストは現在保守されておらず、新しいメンテナーを探しています。興味がある方は詳細を[こちら](https://github.com/fuse-compound/awesome-fuse/issues/57)で確認してください。
+Fuseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 #### 目次 <a id="contents"></a>
 

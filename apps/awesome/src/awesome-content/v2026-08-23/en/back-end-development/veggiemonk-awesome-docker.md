@@ -1,30 +1,12 @@
 ---
-title: "veggiemonk/awesome-docker"
-description: "Canonical snapshot of veggiemonk/awesome-docker"
+title: "Awesome Docker"
+description: "A curated collection of resources and projects focused on Docker."
 licenseSource: "github-veggiemonk-awesome-docker-readme-md"
 ---
 
-# Awesome Docker [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)][sindresorhus] [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/veggiemonk/awesome-docker/)[![Last Commit](https://img.shields.io/github/last-commit/veggiemonk/awesome-docker)](https://github.com/veggiemonk/awesome-docker/commits/main)
+# Awesome Docker
 
-> A curated list of projects for Docker.
-
-If you would like to contribute, please read [CONTRIBUTING.md](https://github.com/veggiemonk/awesome-docker/blob/master/.github/CONTRIBUTING.md) first.
-If this list is not complete, you can contribute to make it so.
-If you see a link here that is not (any longer) a good fit, you can fix it by submitting a [pull request][editreadme] to improve this file. Thank you!
-
-**The project has to be for Docker, not just using Docker.**
-
-> Rule of thumb: if removing the Docker integration wouldn't kill the project's value proposition, it doesn't belong in the this list.
-
-The creators and maintainers of this list do not receive any form of payment to accept a change made by any contributor.
-This page is not an official Docker product in any way.
-It is a list of links to projects and is maintained by volunteers.
-Everybody is welcome to contribute.
-The goal of this repo is to index open-source projects, not to advertise for profit.
-
-> Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications. Consisting of Docker Engine, a portable, lightweight runtime and packaging tool, and Docker Hub, a cloud service for sharing applications and automating workflows, Docker enables apps to be quickly assembled from components and eliminates the friction between development, QA, and production environments. As a result, IT can ship faster and run the same app, unchanged, on laptops, data center VMs, and any cloud.
-
-_Source:_ [What is Docker](https://www.docker.com/why-docker/)
+A curated collection of resources and projects focused on Docker.
 
 # Contents
 

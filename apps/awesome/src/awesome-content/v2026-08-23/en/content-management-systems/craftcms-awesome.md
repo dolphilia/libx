@@ -1,20 +1,12 @@
 ---
-title: "craftcms/awesome"
-description: "Canonical snapshot of craftcms/awesome"
+title: "Awesome Craft CMS"
+description: "A curated collection of resources and projects focused on Craft CMS. The upstream list is archived or no longer maintained."
 licenseSource: "github-craftcms-awesome-readme-md"
 ---
 
-# Craft CMS ![Awesome](https://badgen.net/badge/icon/Resources?icon=awesome&label=Craft%20CMS&labelColor=red&color=black)
+# Awesome Craft CMS
 
-Official list of [awesome](https://github.com/topics/awesome) Craft CMS resources, article, and other and shiny things.
-
-> **Note**  
-> Something missing? [Edit this page](https://github.com/craftcms/awesome/edit/main/README.md)!
-
-**[Craft CMS](https://craftcms.com) is a flexible, extensible content management system for building bespoke digital experiences.**
-
-### Contributing
-Please take a look at the [contribution guidelines](https://github.com/craftcms/awesome/blob/8d232c79ad3bd595efe79f3e04ed04f64ae3b41e/CONTRIBUTING.md). If you see an article or resource here that is no longer maintained or is not a good fit, please submit a pull request. We appreciate your input!
+A curated collection of resources and projects focused on Craft CMS. The upstream list is archived or no longer maintained.
 
 ### Contents
 

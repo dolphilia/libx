@@ -1,16 +1,12 @@
 ---
-title: "sindresorhus/awesome-tap"
-description: "Canonical snapshot of sindresorhus/awesome-tap"
+title: "Awesome TAP"
+description: "A curated collection of resources and projects focused on TAP."
 licenseSource: "github-sindresorhus-awesome-tap-readme-md"
 ---
 
-# Awesome TAP [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://testanything.org/images/tap.png" width="67" align="right">](https://testanything.org)
+# Awesome TAP
 
-> Useful resources for the [Test Anything Protocol](https://testanything.org)
-
-TAP is a simple text-based interface between testing modules in a test harness.
-
-*The list is very JavaScript focused right now. That's just because I'm only familiar with TAP stuff in the JS world. Contributions welcome for any language.*
+A curated collection of resources and projects focused on TAP.
 
 ## Contents
 

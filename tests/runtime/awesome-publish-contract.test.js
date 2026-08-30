@@ -37,11 +37,7 @@ test('Awesome履歴版の公開再現性検査は日本語365ページを保持�
 
   const output = execFileSync(
     process.execPath,
-    [
-      'scripts/importers/awesome/publish-awesome.mjs',
-      '--snapshot=v2026-08-20',
-      '--check',
-    ],
+    ['scripts/importers/awesome/publish-awesome.mjs', '--snapshot=v2026-08-20', '--check'],
     { cwd: root, encoding: 'utf8' }
   );
   assert.match(output, /Awesome single-app publish check: OK/);
@@ -82,10 +78,7 @@ test('Awesome履歴版の公開再現性検査は日本語365ページを保持�
 test('単一アプリ検証は版ごとの成果物だけを対象にし、履歴版に新しいレビュー成果物を要求しない', () => {
   const historicalOutput = execFileSync(
     process.execPath,
-    [
-      'scripts/importers/awesome/validate-awesome-single-app.mjs',
-      '--snapshot=v2026-08-20',
-    ],
+    ['scripts/importers/awesome/validate-awesome-single-app.mjs', '--snapshot=v2026-08-20'],
     { cwd: root, encoding: 'utf8' }
   );
   assert.match(
@@ -95,10 +88,7 @@ test('単一アプリ検証は版ごとの成果物だけを対象にし、履�
 
   const currentOutput = execFileSync(
     process.execPath,
-    [
-      'scripts/importers/awesome/validate-awesome-single-app.mjs',
-      '--snapshot=v2026-08-23',
-    ],
+    ['scripts/importers/awesome/validate-awesome-single-app.mjs', '--snapshot=v2026-08-23'],
     { cwd: root, encoding: 'utf8' }
   );
   assert.match(
@@ -234,16 +224,19 @@ test('自動証拠レビュー済みの公開メタデータは人手レビュ�
     path.join(root, 'apps/awesome/public/search/v2026-08-20/ja.json'),
     'utf8'
   );
-  const historicalStatus = status.snapshots.find(
-    (entry) => entry.snapshotId === 'v2026-08-20'
-  );
+  const historicalStatus = status.snapshots.find((entry) => entry.snapshotId === 'v2026-08-20');
 
   assert.equal(historicalStatus.contentReviewStatus, 'automated-evidence-reviewed');
-  assert.equal(historicalStatus.reviewedItems, 417);
+  assert.equal(historicalStatus.reviewedItems, 419);
   assert.equal(historicalStatus.humanReviewedItems, 0);
-  assert.equal(historicalStatus.totalReviewItems, 417);
-  assert.match(routes, /自動証拠レビュー済み/);
-  assert.match(search, /自動証拠レビュー済み/);
+  assert.equal(historicalStatus.totalReviewItems, 419);
+  for (const artifact of [routes, search]) {
+    assert.doesNotMatch(
+      artifact,
+      /人手レビュー前|人手レビュー済み|自動証拠レビュー済み/,
+      'レビュー状態は公開用の概要文へ混入させない'
+    );
+  }
 
   const pageRoute = fs.readFileSync(
     path.join(root, 'apps/awesome/src/pages/[version]/[lang]/[...slug].astro'),

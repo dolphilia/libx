@@ -1,58 +1,12 @@
 ---
-title: "qinwf/awesome-R"
-description: "Rのパッケージ、開発環境、データ分析、機械学習、学習資料集"
+title: "Awesome R"
+description: "Rを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-qinwf-awesome-R-readme-md"
 ---
 
 # Awesome R
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-素晴らしいRパッケージとツールの厳選リスト。[awesome-machine-learning](https://github.com/josephmisiti/awesome-machine-learning)を参考にしています。
-
-<p><img class="emoji" alt="heart" src="https://cdn.jsdelivr.net/gh/qinwf/awesome-R@3c66da6e291bcc0520b1649125b0bed750896a9a/heart.png" height="20" align="absmiddle" width="20">
-for <a target="_blank" href="https://github.com/rstudio/RStartHere/blob/master/top_downloads_2016/top_packages">Top 50</a> CRAN downloaded packages or repos with 400+
-<img class="emoji" alt="star" src="https://cdn.jsdelivr.net/gh/qinwf/awesome-R@3c66da6e291bcc0520b1649125b0bed750896a9a/star.png" height="20" align="absmiddle" width="20"></p>
-
-- [Awesome R](#awesome-)
-    - [2023](#2023)
-    - [2020](#2020)
-    - [2019](#2019)
-    - [2018](#2018)
-    - [Integrated Development Environments](#integrated-development-environments)
-    - [Syntax](#syntax)
-    - [Data Manipulation](#data-manipulation)
-    - [Graphic Displays](#graphic-displays)
-    - [Html Widgets](#html-widgets)
-    - [Reproducible Research](#reproducible-research)
-    - [Web Technologies and Services](#web-technologies-and-services)
-    - [Parallel Computing](#parallel-computing)
-    - [High Performance](#high-performance)
-    - [Language API](#language-api)
-    - [Database Management](#database-management)
-    - [Machine Learning](#machine-learning)
-    - [Natural Language Processing](#natural-language-processing)
-    - [Bayesian](#bayesian)
-    - [Optimization](#optimization)
-    - [Finance](#finance)
-    - [Bioinformatics and Biostatistics](#bioinformatics-and-biostatistics)
-    - [Network Analysis](#network-analysis)
-    - [Spatial](#spatial)
-    - [R Development](#r-development)
-    - [Logging](#logging)
-    - [Data Packages](#data-packages)
-    - [Other Tools](#other-tools)
-    - [Other Interpreters](#other-interpreters)
-    - [Learning R](#learning-r)
-- [Resources](#resources)
-    - [Websites](#websites)
-    - [Books](#books)
-    - [Podcasts](#podcasts)
-    - [Reference Cards](#reference-cards)
-    - [MOOCs](#moocs)
-    - [Lists](#lists)
-- [Other Awesome Lists](#other-awesome-lists)
-- [Contributing](#contributing)
+Rを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 2023
 

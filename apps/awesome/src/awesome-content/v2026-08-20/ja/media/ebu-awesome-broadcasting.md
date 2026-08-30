@@ -1,43 +1,12 @@
 ---
-title: "ebu/awesome-broadcasting"
-description: "放送制作に役立つオープンソースのツールと資料を分類した定本スナップショット"
+title: "Awesome Broadcasting"
+description: "Broadcastingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ebu-awesome-broadcasting-readme-md"
 ---
 
-# 放送関連のAwesomeリスト <a id="awesome-broadcasting-"></a> [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-放送事業者に役立つ優れたオープンソース資料を厳選したリストです。
+# Awesome Broadcasting
 
-* [放送関連のAwesomeリスト](#awesome-broadcasting-)
-  * [アニメーション・グラフィックス・映像送出](#animation-graphics--video-playout)
-  * [時計・スタジオ画面](#clocks--studio-screens)
-  * [コーデック](#codecs)
-  * [コミュニケーション](#communication)
-  * [コンパニオン画面](#companion-screens)
-  * [コネクテッドTV](#connected-tvs)
-  * [制御システム](#control-systems)
-  * [分散メディア処理](#distributed-media-processing)
-  * [文書管理](#documentation)
-  * [DVB・Wi-Fi](#dvb--wifi)
-  * [ハイブリッドラジオ](#hybrid-radio)
-  * [LiveIP](#liveip)
-  * [メディアプレーヤー](#media-players)
-  * [メタデータ](#metadata)
-  * [監視・品質管理](#monitoring--quality-control)
-  * [マルチメディアコンテンツ処理](#multimedia-content-processing)
-  * [ネットワーク・ストレージ試験](#network--storage-testing)
-  * [NMOS](#nmos)
-  * [ポッドキャスト](#podcasting)
-  * [ラジオ制作](#radio-production)
-  * [ランダウン自動化](#rundown-automation)
-  * [SCTE-35・SCTE-104](#scte-35--scte-104)
-  * [ソフトウェア無線](#software-defined-radio)
-  * [ストリーミング](#streaming)
-  * [字幕](#subtitling)
-  * [映像制作](#video-production)
-* [資料](#resources)
-  * [ブログ](#blogs)
-  * [Webサイト](#websites)
-* [コントリビューション](#contributing)
+Broadcastingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## アニメーション・グラフィックス・映像送出 <a id="animation-graphics--video-playout"></a>
 

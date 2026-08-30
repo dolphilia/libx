@@ -1,14 +1,12 @@
 ---
-title: "agarrharr/awesome-macos-screensavers"
-description: "agarrharr/awesome-macos-screensavers の正規スナップショット"
+title: "Awesome macOS Screensavers"
+description: "macOS Screensaversを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-agarrharr-awesome-macos-screensavers-readme-md"
 ---
 
-# Awesome macOS Screensavers [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome macOS Screensavers
 
-> macOS 用スクリーンセーバーを集めたリストです。
-
-[awesome](https://github.com/sindresorhus/awesome) リストに着想を得ています。
+macOS Screensaversを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

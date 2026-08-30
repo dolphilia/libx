@@ -1,16 +1,12 @@
 ---
-title: "dstdev/awesome-hpc"
-description: "Canonical snapshot of dstdev/awesome-hpc"
+title: "Awesome HPC"
+description: "A curated collection of resources and projects focused on HPC."
 licenseSource: "github-dstdev-awesome-hpc-readme-md"
 ---
 
+# Awesome HPC
 
-# Awesome HPC [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-High Performance Computing tools and resources for engineers and administrators.
-
-[High Performance Computing (HPC)](https://en.wikipedia.org/wiki/Supercomputer) most generally refers to the practice of aggregating computing power in a way that delivers much higher performance than one could get out of a typical desktop computer or workstation in order to solve large problems in science, engineering, or business.
-
+A curated collection of resources and projects focused on HPC.
 
 ## Contents
 <details>

@@ -2053,3 +2053,19 @@
 - 最後に成功した検査: 確認付き統合ビルド、`check:deployment-assets`（2,059ファイル、230.17 MiB、最大5.80 MiB）、`test:smoke`（12/12）、Cloudflareデプロイ一覧のProduction・`main`確認、固有URLと`libx.dev`の代表ページHTTP 200、未知URL404、成果物内容照合、固有URLの`X-Robots-Tag: noindex`とカスタムドメインでの同ヘッダー不在。
 - ロールバック: 直前のProduction deployment `807217fe-adde-4f72-8ec8-b12673e66121`。
 - 次に実行する一手: なし。Production公開と公開後検証を完了した。
+
+## 2026-08-30（Awesome v2026-08-23完遂・Production公開）
+
+- 完了したバッチ: 人手署名の必須条件を管理者承認済みの自動証拠レビューへ変更し、履歴版417/417、新版759/759、未解決0を確認した。Preview検証済みの4,754ファイルをProduction branch `main`へ同一成果物として公開した。deployment IDは`85bb19db-7da5-4d2e-9b39-3bbecf6d1fb6`、公開先は`https://libx.dev`である。
+- 失敗・保留理由: 未解決・保留はない。人手による日本語の自然さ確認を完了したという意味ではない。
+- 最後に成功した検査: ツリーハッシュ`bfc252bcefc11be01cc8a236f50650f7771669230060c9508de408695aee6948`一致、Production・`main`登録、主要URL・JSON 200、未知URL404、検索、版・言語切替、モバイル表示、Production検索制御。
+- ロールバック: 直前のProduction deployment `ee06cf82-bd17-4348-9f6b-77b0ce606be1`。
+- 次に実行する一手: なし。新しい上流取得は既存版を上書きせず、新しいsnapshot IDで開始する。
+
+## 2026-08-30（Awesomeタイトル・序文正規化・ローカル検証完了）
+
+- 完了したバッチ: 両snapshotの英日2,074文書を、装飾のない`Awesome`系H1と簡潔な一段落概要へ正規化した。版別判断記録、監査、共有schema、正規化器、import統合、契約テストを追加し、検索・ルート・サイドバー・レビュー証拠を再生成した。
+- 影響確認: 固定入力からの再importと現行英語定本の間に、履歴版241件、最新版242件の既存ドリフトを検出した。序文以外を上書きせず`INTRODUCTION_IMPORT_DRIFT.json`へ記録し、保持本文ハッシュ不一致で停止するようにした。
+- 最後に成功した検査: 序文監査は履歴版730/730、新版1,344/1,344、未解決0。英日翻訳365/365・672/672、canonical、publish、機械監査、レビュー同期、Awesome単体2,082ページ、全体`pnpm check`（unit 26/26、runtime 94/94、smoke 13/13）、選択的統合ビルド、links、integrity、deployment-assets 4,754件、`git diff --check`が合格した。実ブラウザで英日overview、metadata-only、HTML・RST由来、目次なし、履歴版、最大級ページ、検索を検証した。最大級ページで検出した長いインラインコードのモバイルoverflowを修正し、390×844で横方向overflow 0を確認した。最終統合ビルド後のPreview候補ツリーハッシュは`dd9ff0d27b5ee657c7dac2afb93ecacdb2b42b306426bc56eeb7e8164961cf9a`である。
+- 公開判断: 新しい統合`dist`の外部配置は未実施。Previewの明示承認後に配置・実ブラウザ検証し、Productionはさらに別の明示承認を得る。
+- 次に実行する一手: Cloudflare PagesのPreview branchへ配置する明示承認を得る。

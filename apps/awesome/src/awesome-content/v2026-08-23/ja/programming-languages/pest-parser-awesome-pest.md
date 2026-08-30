@@ -1,18 +1,12 @@
 ---
-title: "pest-parser/awesome-pest"
-description: "pest-parser/awesome-pest の定本スナップショット"
+title: "Awesome Pest. The Elegant Parser"
+description: "Pest. The Elegant Parserを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-pest-parser-awesome-pest-readme-md"
 ---
 
-# Awesome Pest. The Elegant Parser [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Pest. The Elegant Parser
 
-[<img src="https://avatars.githubusercontent.com/u/26044607" align="right" width="100">](https://github.com/pest-parser/pest/)
-
-> Rust の pest パーサージェネレーターを使う、または pest 向けのリソース、プロジェクト、ツールの厳選リスト
-
-pest は、アクセシビリティ、正確性、パフォーマンスを重視して Rust で書かれた汎用パーサーです。正規表現と精神的には似ていますが、複雑な言語の解析に必要な高い表現力を提供する構文解析式文法（[PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar)）を入力として使用します。
-
-貢献を歓迎します。まず [contribution guidelines](https://github.com/pest-parser/awesome-pest/blob/eae74f52bc40d120c974590e33aa9fe61e7f7185/contributing.md) をお読みください。
+Pest. The Elegant Parserを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

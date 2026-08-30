@@ -1,17 +1,13 @@
 ---
-title: "dylanrees/citizen-science"
-description: "dylanrees/citizen-science の正規スナップショット"
+title: "Awesome Digital Tools for Citizen Science"
+description: "Digital Tools for Citizen Scienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dylanrees-citizen-science-readme-md"
 ---
 
-<a id="digital-tools-for-citizen-science"></a>
-# 市民科学のためのデジタルツール
+# Awesome Digital Tools for Citizen Science
 
-科学ツールを使ってコミュニティを支援したり、組織に属さないさまざまな形の科学活動を実践したりする人のために、優れたソフトウェアと資料を厳選したリストです。活動家向けのデジタルツールを掲載する[このリポジトリ](https://github.com/drewrwilson/toolsforactivism)から大きな着想を得ています。提案を歓迎します。ソフトウェアを追加する場合は、プロプライエタリな製品より自由かつオープンソースのソフトウェアを強く推奨します。
+Digital Tools for Citizen Scienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-<a id="contents"></a>
 ## 目次
 
   - [ソフトウェア](#software)

@@ -1,14 +1,12 @@
 ---
-title: "michelpereira/awesome-open-source-games"
-description: "ソースコードを公開しているゲーム、エンジン、改造・開発資源を分類した定本スナップショット"
+title: "Awesome Open Source Games"
+description: "Open Source Gamesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-michelpereira-awesome-open-source-games-readme-md"
 ---
 
-# オープンソースゲームのAwesomeリスト <a id="awesome-open-source-games"></a> [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Open Source Games
 
-
-
-ソースコードを入手できるオープンソースゲームの一覧です。
+Open Source Gamesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

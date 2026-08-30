@@ -1,14 +1,12 @@
 ---
-title: "mbiesiad/awesome-translations"
-description: "Canonical snapshot of mbiesiad/awesome-translations"
+title: "Awesome Translations"
+description: "A curated collection of resources and projects focused on Translations."
 licenseSource: "github-mbiesiad-awesome-translations-readme-md"
 ---
 
-# Awesome Translations [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Translations
 
-> The transfer of the meaning of a text from one language to another.
-
-This list contains tools, books, articles, blogs, courses and everything related to translations ([t9n](https://en.wikipedia.org/wiki/Translation) - translation, [l10n](https://en.wikipedia.org/wiki/Language_localisation) - localization, [g11n](https://en.wikipedia.org/wiki/Language_localisation#Globalisation_versus_localisation) - globalization, [m17n](https://www.definify.com/word/multilingualization#:~:text=Noun,into%2C%20or%20for%20multiple%20languages) - multilingualization, [i18n](https://en.wikipedia.org/wiki/Language_localisation#Globalisation_versus_localisation) - internationalization, synonymous with globalization).
+A curated collection of resources and projects focused on Translations.
 
 ## Contents
 

@@ -1,21 +1,12 @@
 ---
-title: "ansible-community/awesome-ansible"
-description: "Canonical snapshot of ansible-community/awesome-ansible"
+title: "Awesome Ansible"
+description: "A curated collection of resources and projects focused on Ansible."
 licenseSource: "github-ansible-community-awesome-ansible-readme-md"
 ---
 
-# Awesome Ansible [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Ansible
 
-[<img src="ansible_logo.svg" align="right" width="90">](https://www.ansible.com/)
-
-This is a collaborative community curated list of awesome Ansible resources, tools, Roles, tutorials and other related stuff.
-
-[Ansible](https://www.ansible.com/) is an open source toolkit, written in Python, it is used for  configuration management, application deployment, continuous delivery, IT infrastructure automation and automation in general.
-
-:warning: Before editing the list to add your project, take a look at the [Ansible ecosystem project development resources](https://docs.ansible.com/ansible/devel/community/ecosystem_project_resources.html). Let's make sure our users, contributors, and maintainers have the best possible experience!
-
-
-
+A curated collection of resources and projects focused on Ansible.
 
 ## Contents
 
@@ -187,4 +178,3 @@ For more information about communication, see the [Ansible communication guide](
 - [PyCharm](https://www.jetbrains.com/pycharm/) - A full IDE for Python software development. Useful plugins include:
   - [Ansible Lint](https://plugins.jetbrains.com/plugin/20905-ansible-lint) - Ansible Lint integration with automatic/continuous annotation of errors, warnings, and info while editing.
   - [Ansible Vault Integration](https://plugins.jetbrains.com/plugin/14353-ansible-vault-integration) - Ansible vault integration for IntelliJ IDEA with context actions for vaulting and unvaulting secrets.
-

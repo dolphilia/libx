@@ -1,13 +1,11 @@
 ---
-title: "josephmisiti/awesome-machine-learning"
-description: "josephmisiti/awesome-machine-learningの収録案内"
+title: "Awesome Machine Learning"
+description: "Awesome Machine Learningの収録案内です。このスナップショットでは上流本文を転載していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# Machine Learning
+# Awesome Machine Learning
 
-このAwesomeリストは、固定済みのsindresorhus/awesomeスナップショットのComputer Scienceセクションから参照されています。
-
-このスナップショットで再利用可能なライセンスを確認できなかった、固定READMEを取得できなかった、または現在のlibxでは対応していないライセンス条件があるため、上流リストの本文はlibxへ複製していません。
+Awesome Machine Learningの収録案内です。このスナップショットでは上流本文を転載していません。
 
 - [元のリポジトリを開く](https://github.com/josephmisiti/awesome-machine-learning/blob/8dfdba6622508fed918ab4985e04208d0d89c2a6/README.md)

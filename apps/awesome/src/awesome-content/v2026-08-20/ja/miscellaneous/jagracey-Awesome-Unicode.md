@@ -1,30 +1,12 @@
 ---
-title: "jagracey/Awesome-Unicode"
-description: "Unicodeの標準、符号化、文字特性、絵文字、ライブラリ、フォントを整理した定本スナップショット"
+title: "Awesome Unicode"
+description: "Unicodeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jagracey-Awesome-Unicode-readme-md"
 ---
 
-![](https://raw.githubusercontent.com/jagracey/Awesome-Unicode/58f28d08aef7f36eb6cdca22d25e7654cd8de5ae/resources/banner.jpg)
+# Awesome Unicode
 
-
-# UnicodeのAwesomeリスト <a id="awesome-unicode"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-
-
-> UnicodeのAwesomeリストに関するUnicode標準・文字処理の解説です。
-
-*UnicodeのAwesomeリストに関するUnicode標準・文字処理の解説です。 関連参照: <https://github.com/jagracey/Awesome-Unicode/blob/e219c3f2de42804eae17107149fa5a025b02bc23/CONTRIBUTING.md>。
-*UnicodeのAwesomeリストに関するUnicode標準・文字処理の解説です。 関連参照: <https://github.com/jagracey/Awesome-Unicode/blob/e219c3f2de42804eae17107149fa5a025b02bc23/GLOSSARY.md>。
-
-*UnicodeのAwesomeリストに関するUnicode標準・文字処理の解説です。 関連参照: <https://wisdom.engineering/awesome-unicode/>。
-
-<br><br>
-
-# 前書き <a id="foreword"></a>
-
-Unicodeは素晴らしいものです。Unicode以前は各自がASCII上位領域に異なる拡張文字集合（コードページ）を定義し、国際通信で衝突していました。Unicode標準は通信を統一し、Unicode 8.0では現代・古代・未解読の129超の書記体系から12万超の文字を標準化しています。左右両方向の文字、結合記号、多様な文化・政治・宗教上の文字や絵文字を扱います。
-
-<br>
+Unicodeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # 目次 <a id="contents"></a>
 

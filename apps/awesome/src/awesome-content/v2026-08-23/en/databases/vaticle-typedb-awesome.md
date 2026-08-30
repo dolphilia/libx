@@ -1,20 +1,12 @@
 ---
-title: "vaticle/typedb-awesome"
-description: "Canonical snapshot of vaticle/typedb-awesome"
+title: "Awesome TypeDB"
+description: "A curated collection of resources and projects focused on TypeDB."
 licenseSource: "github-vaticle-typedb-awesome-readme-md"
 ---
 
-[![TypeDB](https://github.com/typedb/typedb/blob/2c5e3114cb4d19085a329b379eef590d7a3e9eda/docs/banner.png)](https://typedb.com)
+# Awesome TypeDB
 
-# Awesome TypeDB [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-A curated list of TypeDB resources.
-
-TypeDB is a [polymorphic](https://typedb.com/features#polymorphic-queries) database with a [conceptual](https://typedb.com/features#conceptual-modeling) data model, a strong [subtyping](https://typedb.com/features#strong-type-system) system, a symbolic [reasoning](https://typedb.com/features#symbolic-reasoning) engine, and a beautiful and elegant [type-theoretic](https://typedb.com/features#modern-language) language TypeQL.
-
-## Contributing
-
-Want to contribute to the list? Let us know on [Discord](https://typedb.com/discord) and open a pull request!
+A curated collection of resources and projects focused on TypeDB.
 
 ## Contents
 

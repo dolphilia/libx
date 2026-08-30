@@ -1,16 +1,12 @@
 ---
-title: "troxler/awesome-css-frameworks"
-description: "Canonical snapshot of troxler/awesome-css-frameworks"
+title: "Awesome CSS Frameworks"
+description: "A curated collection of resources and projects focused on CSS Frameworks."
 licenseSource: "github-troxler-awesome-css-frameworks-readme-md"
 ---
 
-# Awesome CSS Frameworks [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome CSS Frameworks
 
-List of awesome CSS frameworks.
-Feel free to [contribute](https://github.com/troxler/awesome-css-frameworks/blob/master/.github/CONTRIBUTING.md).
-
-**Are you looking for React/Vue/Angular [UI Component Libraries](https://frontaid.ch/web/ui/libraries.html) instead?**
-
+A curated collection of resources and projects focused on CSS Frameworks.
 
 ## Contents
 - [Base / Reset / Normalize](#base--reset--normalize)

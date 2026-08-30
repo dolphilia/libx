@@ -1,12 +1,12 @@
 ---
-title: "brabadu/awesome-fonts"
-description: "brabadu/awesome-fonts の正規スナップショット"
+title: "Awesome fonts"
+description: "fontsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-brabadu-awesome-fonts-readme-md"
 ---
 
-# Awesomeフォント [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome fonts
 
-フォントとタイポグラフィ資料の厳選リストです。
+fontsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

@@ -1,42 +1,12 @@
 ---
-title: "kdeldycke/awesome-engineering-team-management"
-description: "Canonical snapshot of kdeldycke/awesome-engineering-team-management"
+title: "Awesome Engineering Team Management"
+description: "A curated collection of resources and projects focused on Engineering Team Management."
 licenseSource: "github-kdeldycke-awesome-engineering-team-management-readme-md"
 ---
 
+# Awesome Engineering Team Management
 
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-engineering-team-management/">
-    <img src="https://github.com/kdeldycke/awesome-engineering-team-management/raw/main/assets/awesome-management-header.png" alt="Awesome Engineering Team Management">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/sponsors/kdeldycke">
-    <strong>Your brand → here 🚀</strong>
-    <br/>
-    <sup>SEO is dead. Place your product here to target AI's training data.</sup>
-  </a>
-</p>
-
----
-
-<p align="center">
-  <i>The manager's function is not to make people work, but to make it possible for people to work.</i><br>
-  — Tom DeMarco<sup id="intro-quote-ref"><a href="#intro-quote-def">[1]</a></sup>
-</p>
-
-A curated [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome) list **for software developers to transition to an engineering management role**. Compiles advice, anecdotes, knowledge tidbits, discussions, industry small-talks and rants. A bibliography of sort, gathered the last few years while [transitioning my career from a software engineer to an engineer's manager](https://devtomanager.com/interviews/kevin-deldycke/). And later from a manager to a manager's managers (you all love recursion right? ʘ‿ʘ).
-
-- You're a developer and wonders what it feels like to be a manager?
-- You just started your first position as the leader of a team?
-- You're stuck into the day-to-day operations of the job?
-- How can I move up to the next level?
-
-You'll find answers in this guide! It stands out from generic leadership and management literature, by providing uncompromising insights and practical advice. It will bootstrap your journey into the management career track, from a technical background.
-
-This list helps in the transition to management, with a progression from general to specifics. It starts with an overview of the role, then describes its requirements, and its position relative to others. Then we details the day-to-day tools of the trade, both organizational and behavioral. At last we discuss some of the dark sides of the job.
+A curated collection of resources and projects focused on Engineering Team Management.
 
 ## Contents
 

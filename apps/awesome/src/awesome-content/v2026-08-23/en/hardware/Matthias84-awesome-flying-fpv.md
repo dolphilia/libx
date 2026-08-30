@@ -1,25 +1,12 @@
 ---
-title: "Matthias84/awesome-flying-fpv"
-description: "Canonical snapshot of Matthias84/awesome-flying-fpv"
+title: "Awesome Flying FPV"
+description: "A curated collection of resources and projects focused on Flying FPV."
 licenseSource: "github-Matthias84-awesome-flying-fpv-readme-md"
 ---
 
-# Awesome Flying FPV [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Flying FPV
 
-
-
-This is a list of Free Software and Open Hardware dedicated for multicopters as well as airplanes or flying wings. We list esp. established projects with a active community and also some classics that might be legacy but important projects with a lot of mods.
-
-We hope to give you some orientation where to start and present you the full spectrum of open source development on the world of UAVs.
-
-> **Warning**
-> You as creator, mechanic, spotter and pilot **are responsible** for your drone and doing. It is on you to avoid damages and not to hurt any person or animal.
-> You are also responsible to match the local regulations of your country and to know where and how to fly with a minimum risk to others and yourself.
-> Please respect [good airmanship](https://en.wikipedia.org/wiki/Airmanship).
-
-> **Warning**
-> In past and recent wars and **military conflicts**, parties make use of UAVs and sometimes DIY aircraft to spot and attack opponents.
-> My intention on this technology is in opposite a peaceful research and learning on tech and nature, not on killing people! [stopkillerrobots.org](https://www.stopkillerrobots.org)
+A curated collection of resources and projects focused on Flying FPV.
 
 ## Contents
 

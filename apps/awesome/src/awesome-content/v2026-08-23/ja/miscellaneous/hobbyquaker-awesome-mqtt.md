@@ -1,14 +1,12 @@
 ---
-title: "hobbyquaker/awesome-mqtt"
-description: "MQTTのブローカー、クライアント、IoT連携、可視化、安全性資源を分類した定本スナップショット"
+title: "Awesome MQTT"
+description: "MQTTを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hobbyquaker-awesome-mqtt-readme-md"
 ---
 
-# MQTTのAwesomeリスト <a id="awesome-mqtt"></a> [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) [![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+# Awesome MQTT
 
-> MQTTに関する優れた資料を厳選したリストです。
-
-MQTTは高遅延または不安定なネットワーク向けに最適化された、軽量なクライアント・サーバー型のパブリッシュ／サブスクライブメッセージングプロトコルです。IoT、テレメトリー、センサーネットワーク、スマートメーター、ホームオートメーション、メッセージ・通知サービスに適しています。
+MQTTを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

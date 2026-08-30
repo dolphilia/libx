@@ -1,16 +1,12 @@
 ---
-title: "aleixmorgadas/awesome-engineering-strategy"
-description: "Canonical snapshot of aleixmorgadas/awesome-engineering-strategy"
+title: "Awesome Engineering Strategy"
+description: "A curated collection of resources and projects focused on Engineering Strategy."
 licenseSource: "github-aleixmorgadas-awesome-engineering-strategy-readme-md"
 ---
 
-# Awesome Engineering Strategy [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Engineering Strategy
 
-> 🎉 How to design and execute engineering strategies for tech leadership.
-
-Engineering Strategy is a composition of resources such books, posts, templates, learning materials, and open engineering strategies made by the community and companies.
-
-Contributions are welcome! Check out the contribution guidelines for adding items to the list.
+A curated collection of resources and projects focused on Engineering Strategy.
 
 ## Contents
 

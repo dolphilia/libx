@@ -1,25 +1,12 @@
 ---
-title: "dariubs/GoBooks"
-description: "Go言語の入門書、専門書、Web開発書、無料教材、関連リソース集"
+title: "Awesome Go Books"
+description: "Go Booksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dariubs-GoBooks-readme-md"
 ---
 
 # Awesome Go Books
 
-[![Validate README](https://github.com/dariubs/GoBooks/actions/workflows/validate.yml/badge.svg)](https://github.com/dariubs/GoBooks/actions/workflows/validate.yml) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-
-GoBooksは、初心者から並列処理、パフォーマンス、システム設計に取り組むエンジニアまで、すべてのレベルの開発者向けに厳選された最高のGo書籍のコレクションです。適切な学習リソースを見つけるための一つの場所です。
-
-**Other languages:** [Español](https://github.com/dariubs/GoBooks/blob/663df50585267768595a41f69c1c1d959c8a7650/gobooks/README-es.md) · [中文](https://github.com/dariubs/GoBooks/blob/663df50585267768595a41f69c1c1d959c8a7650/gobooks/README-zh.md) · [Português](https://github.com/dariubs/GoBooks/blob/663df50585267768595a41f69c1c1d959c8a7650/gobooks/README-pt.md) · [Русский](https://github.com/dariubs/GoBooks/blob/663df50585267768595a41f69c1c1d959c8a7650/gobooks/README-ru.md) · [Deutsch](https://github.com/dariubs/GoBooks/blob/663df50585267768595a41f69c1c1d959c8a7650/gobooks/README-de.md) · [فارسی](https://github.com/dariubs/GoBooks/blob/663df50585267768595a41f69c1c1d959c8a7650/gobooks/README-fa.md)
-
-- [Most Popular Golang Books](#most-popular-go-books)
-- [Starter Books](#starter-books)
-- [Advanced Books](#advanced-books)
-- [Web Development](#web-development)
-- [Resources](#resources)
-- [Contributing](#contributing)
-- [License](#license)
+Go Booksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Most Popular Go Books
 

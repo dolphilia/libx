@@ -1,32 +1,12 @@
 ---
-title: "bvolpato/awesome-userscripts"
-description: "Canonical snapshot of bvolpato/awesome-userscripts"
+title: "Awesome Userscripts"
+description: "A curated collection of resources and projects focused on Userscripts."
 licenseSource: "github-bvolpato-awesome-userscripts-readme-md"
 ---
 
-<div id="top" align="center">
+# Awesome Userscripts
 
-<a href="#">
-    <img width=333 height=auto src="https://cdn.jsdelivr.net/gh/awesome-scripts/awesome-userscripts@f11c95f/assets/images/icons/awesome/shades/400x200.png"></a>
-
-<h1>Awesome Userscripts</h1>
-
-
-
-<a href="https://github.com/sindresorhus/awesome">
-    <img height=31 alt="Awesome" src="https://img.shields.io/badge/Awesome-fc60a9.svg?logo=awesomelists&logoColor=white&labelColor=464646&style=for-the-badge"></a>
-<a href="#license">
-    <img height=31 alt="Awesome" src="https://img.shields.io/badge/License-CC0_1.0-orange.svg?logo=internetarchive&logoColor=white&labelColor=464646&style=for-the-badge"></a>
-<a href="https://github.com/awesome-scripts/awesome-userscripts/blob/master/CONTRIBUTING.md">
-    <img height=31 alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?logo=github&logoColor=white&labelColor=464646&style=for-the-badge"></a>
-
-<h3>A curated list of Awesome Userscripts.</h3>
-
-Userscripts can improve your browsing experience, and open a lot of possibilities to make the sites you visit better by adding features, making them easier to use, or taking out the annoying bits.
-
-</div>
-
-<img height=6px width="100%" src="https://cdn.jsdelivr.net/gh/awesome-scripts/awesome-userscripts/assets/images/separators/rainbow-blue-to-red.png">
+A curated collection of resources and projects focused on Userscripts.
 
 # Contents
 

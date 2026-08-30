@@ -1,17 +1,12 @@
 ---
-title: "Renaller/awesome-position-based-quantum-cryptography"
-description: "Canonical snapshot of Renaller/awesome-position-based-quantum-cryptography"
+title: "Awesome Position-Based Quantum Cryptography"
+description: "A curated collection of resources and projects focused on Position-Based Quantum Cryptography."
 licenseSource: "github-Renaller-awesome-position-based-quantum-cryptography-readme-md"
 ---
 
-# Awesome Position-Based Quantum Cryptography [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-This is a curated list of papers on position-based quantum cryptography (PBQC). The goal is to build a categorised community-driven always up-to-date literature overview of this growing field.
+# Awesome Position-Based Quantum Cryptography
 
-QPV = Quantum Position Verification
-
-QPA = Quantum Position-based Authentication
-
-PB-QKD = Position-based Quantum Key Distribution
+A curated collection of resources and projects focused on Position-Based Quantum Cryptography.
 
 ## Contents
 

@@ -1,23 +1,12 @@
 ---
-title: "nikgraf/awesome-draft-js"
-description: "nikgraf/awesome-draft-js の正規スナップショット"
+title: "Awesome Draft.js"
+description: "Draft.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-nikgraf-awesome-draft-js-readme-md"
 ---
 
-# Awesome Draft.js [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Draft.js
 
-[Draft.js](https://draftjs.org/) は React で Rich Text Editor を構築するためのフレームワークです。
-
-**目次**
-
-- [コミュニティ](https://github.com/nikgraf/awesome-draft-js#community)
-- [発表](https://github.com/nikgraf/awesome-draft-js#presentations)
-- [Draft.js 上のプロジェクト](https://github.com/nikgraf/awesome-draft-js#standalone-editors-built-on-draftjs)
-- [共通ユーティリティ](https://github.com/nikgraf/awesome-draft-js#common-utilities)
-- [ブログ記事](https://github.com/nikgraf/awesome-draft-js#blog-posts--articles)
-- [ライブデモ](https://github.com/nikgraf/awesome-draft-js#live-demos)
-- [本番環境での利用](https://github.com/nikgraf/awesome-draft-js#usage-in-production)
-- [ライセンス](https://github.com/nikgraf/awesome-draft-js#license)
+Draft.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## コミュニティ
 

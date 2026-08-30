@@ -1,22 +1,12 @@
 ---
-title: "petk/awesome-dojo"
-description: "petk/awesome-dojo の正規スナップショット"
+title: "Awesome Dojo"
+description: "Dojoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-petk-awesome-dojo-readme-md"
 ---
 
 # Awesome Dojo
 
-<a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" height="18"></a>
-[![CCOライセンス](https://img.shields.io/badge/license-CC0-blue.svg?style=plastic "CC0 License")](#contributing-and-license)
-[![プロジェクト保守中](https://img.shields.io/badge/project-maintained-brightgreen.svg?style=plastic "Project Maintained")](https://github.com/petk/awesome-dojo/commits/master)
-[![ビルド状態](https://img.shields.io/travis/petk/awesome-dojo/master.svg)](https://travis-ci.org/petk/awesome-dojo)
-
-優れた[Dojo JavaScript Toolkit](http://dojotoolkit.org)のライブラリ、リソース、その他の魅力的な情報の厳選リスト。
-
-GitHubの`awesome-*`トレンドに着想を得ています。
-
-> 開発時間を節約し、開発プロセスに合わせて拡張できるJavaScriptツールキット。Webアプリ構築に必要なものをすべて提供します。言語ユーティリティ、UIコンポーネントなどが一か所に揃い、完全に連携するよう設計されています。
-
+Dojoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 索引 <a id="index"></a>
 

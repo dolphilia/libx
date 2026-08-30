@@ -1,17 +1,12 @@
 ---
-title: "cpuu/awesome-fuzzing"
-description: "Canonical snapshot of cpuu/awesome-fuzzing"
+title: "Awesome Fuzzing"
+description: "A curated collection of resources and projects focused on Fuzzing."
 licenseSource: "github-cpuu-awesome-fuzzing-readme-md"
 ---
 
-# Awesome Fuzzing [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Fuzzing
 
-> [Fuzzing](https://en.wikipedia.org/wiki/Fuzzing) or fuzz testing is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, failing built-in code assertions, or potential memory leaks. Typically, fuzzers are used to test programs that take structured inputs. 
-
-A curated list of references to awesome Fuzzing for security testing. Additionally there is a collection of freely available academic papers, tools and so on.
-
-Your favorite tool or your own paper is not listed? Fork and create a Pull Request to add it!
-
+A curated collection of resources and projects focused on Fuzzing.
 
 ## Contents
 
@@ -639,5 +634,3 @@ A curated collection of open-source fuzzing tools, organized by target category 
 ## Contribute
 
 Contributions welcome! Read the [contribution guidelines](https://github.com/cpuu/awesome-fuzzing/blob/822418b749c1fc7d49e22591b07cdec14be4ed84/contributing.md) first.
-
-

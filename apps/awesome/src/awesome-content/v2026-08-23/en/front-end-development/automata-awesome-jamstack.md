@@ -1,38 +1,12 @@
 ---
-title: "automata/awesome-jamstack"
-description: "Canonical snapshot of automata/awesome-jamstack"
+title: "Awesome Jamstack"
+description: "A curated collection of resources and projects focused on Jamstack."
 licenseSource: "github-automata-awesome-jamstack-readme-md"
 ---
 
-<div align="center">
-  <br /><br />
-  <a href="https://awesome.re"><img src="https://awesome.re/badge-flat.svg" /></a>
-  <br /><br /><br />
-  <img width="500" src="https://raw.githubusercontent.com/automata/awesome-jamstack/7aa9241bf3d718c24d6bfd687070d14ce320b131/media/jamstack-full-logo.svg" alt="Jamstack">
-  <br /><br /><br />
-  <p>
-    <strong>Jamstack</strong>: noun \’jam-stak’\<br />
-    Modern web development architecture based on client-side JavaScript, reusable APIs, and prebuilt Markup.
-  </p>
-  <br /><br />
-  <p>
-    <b>
-      This is a carefully curated list of awesome <a href="https://jamstack.org">Jamstack</a> resources.
-    </b>
-  </p>
-  <br /><br />
-  <p>
-    <i>
-      You might also like <a href="https://github.com/myles/awesome-static-generators">Awesome Static Generators</a>.
-    </i>
-  </p>
-  <p>
-    <i>
-      Want to contribute with some resource? Great! Please, read the <a href="https://github.com/automata/awesome-jamstack/blob/7aa9241bf3d718c24d6bfd687070d14ce320b131/contributing.md">contribution guidelines</a> before contributing.
-    </i>
-  </p>
-  <br /><br />
-</div>
+# Awesome Jamstack
+
+A curated collection of resources and projects focused on Jamstack.
 
 ## Contents
 

@@ -1,16 +1,12 @@
 ---
-title: "hyperupcall/awesome-mastodon"
-description: "hyperupcall/awesome-mastodon の定本スナップショット"
+title: "Awesome Mastodon"
+description: "Mastodonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hyperupcall-awesome-mastodon-readme-md"
 ---
 
-# Awesome Mastodon [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) 
+# Awesome Mastodon
 
-[<img src="./assets/mastodon-logo.svg" align="right" width="150">](https://joinmastodon.org/)
-
-Mastodonは、世界最大の自由・オープンソース・分散型マイクロブログネットワークです。
-
-このリストは、優れたMastodonリソースを集めたものです。
+Mastodonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次  
 

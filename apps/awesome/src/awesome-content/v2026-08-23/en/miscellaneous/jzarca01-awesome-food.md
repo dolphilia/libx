@@ -1,14 +1,12 @@
 ---
-title: "jzarca01/awesome-food"
-description: "Canonical snapshot of jzarca01/awesome-food"
+title: "Awesome Food"
+description: "A curated collection of resources and projects focused on Food."
 licenseSource: "github-jzarca01-awesome-food-readme-md"
 ---
 
-# Awesome Food [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Food
 
-![Awesome-food](https://raw.githubusercontent.com/jzarca01/awesome-food/7793028a0cb3e55aabeaac4ef120a9dd015cb618/awesome_food.png)
-
-> A curated list of food-related projects on GitHub
+A curated collection of resources and projects focused on Food.
 
 ## Contents
 

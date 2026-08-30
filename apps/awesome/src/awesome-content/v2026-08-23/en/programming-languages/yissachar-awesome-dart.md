@@ -1,17 +1,12 @@
 ---
-title: "yissachar/awesome-dart"
-description: "Canonical snapshot of yissachar/awesome-dart"
+title: "Awesome Dart"
+description: "A curated collection of resources and projects focused on Dart. The upstream list is archived or no longer maintained."
 licenseSource: "github-yissachar-awesome-dart-readme-md"
 ---
 
-Awesome Dart [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-============
+# Awesome Dart
 
-A curated list of awesome Dart frameworks, libraries, and software. Items on the list are actively maintained, well documented, and popular in the Dart community. Inspired by the [awesome](https://github.com/sindresorhus/awesome) lists.
-
-### Contributing
-
-Please take a quick look at the [contribution guidelines](https://github.com/yissachar/awesome-dart/blob/116107d93b8bd5afe467728ee1f59f0b79e94d87/CONTRIBUTING.md) first. If you see a package or project here that is no longer maintained or is not a good fit, please submit a pull request to improve this file. Thank you to all [contributors](https://github.com/yissachar/awesome-dart/graphs/contributors); you rock!
+A curated collection of resources and projects focused on Dart. The upstream list is archived or no longer maintained.
 
 ### Contents
 

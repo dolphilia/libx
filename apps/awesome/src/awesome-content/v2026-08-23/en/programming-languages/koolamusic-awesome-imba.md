@@ -1,22 +1,12 @@
 ---
-title: "koolamusic/awesome-imba"
-description: "Canonical snapshot of koolamusic/awesome-imba"
+title: "Awesome Imba"
+description: "A curated collection of resources and projects focused on Imba."
 licenseSource: "github-koolamusic-awesome-imba-readme-md"
 ---
 
-<p align="center">
-	<a href="http://imba.io" align="center" target="_blank">
-		<img width="400" src="./logo/imba-awesome-logo.min.svg">
-	</a>
-</p>
+# Awesome Imba
 
-
-# Awesome Imba [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![GitHub contributors](https://img.shields.io/github/contributors/koolamusic/awesome-imba)](#contributors)
-
-> A curated list of awesome Imba frameworks, libraries, software and resources
-
-Imba is a programming language inspired by Ruby and Python and compiles to performant and readable JavaScript with build-in transpilers and webpack loader.
-
+A curated collection of resources and projects focused on Imba.
 
 ## Contents
 

@@ -1,16 +1,12 @@
 ---
-title: "vorpaljs/awesome-vorpal"
-description: "Canonical snapshot of vorpaljs/awesome-vorpal"
+title: "Awesome Vorpal"
+description: "A curated collection of resources and projects focused on Vorpal."
 licenseSource: "github-vorpaljs-awesome-vorpal-readme-md"
 ---
 
-# Awesome Vorpal [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Vorpal
 
-A curated list of delightful [Vorpal](https://github.com/dthree/vorpal)-based projects and extensions.
-
-[Vorpal is Node's first framework for building immersive CLI applications.](https://github.com/dthree/vorpal)
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
+A curated collection of resources and projects focused on Vorpal.
 
 ## Table of Contents
 

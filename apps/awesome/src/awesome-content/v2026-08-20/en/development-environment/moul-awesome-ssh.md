@@ -1,20 +1,12 @@
 ---
-title: "moul/awesome-ssh"
-description: "Canonical snapshot of moul/awesome-ssh"
+title: "Awesome SSH"
+description: "A curated collection of resources and projects focused on SSH."
 licenseSource: "github-moul-awesome-ssh-readme-md"
 ---
 
-# Awesome SSH [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome SSH
 
-> A curated list of *SSH* [apps](#apps), [libraries](#libraries) and [resources](#resources).
-
-<h2 align="center"><img src="https://raw.githubusercontent.com/moul/awesome-ssh/master/logo.jpg" width="400" /></h2>
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
-
-Please read the [contribution guidelines](https://github.com/moul/awesome-ssh/blob/be9bfa2a474ef29aecdc54992ec7d5477f042aeb/CONTRIBUTING.md) if you want to contribute.
-
-**Check out my [blog](https://manfred.life/) 🦄 or say *hi* on [Twitter](https://twitter.com/moul).**
+A curated collection of resources and projects focused on SSH.
 
 ## Table of Contents
 

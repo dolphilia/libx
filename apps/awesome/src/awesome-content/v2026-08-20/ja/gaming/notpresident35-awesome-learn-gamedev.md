@@ -1,17 +1,12 @@
 ---
-title: "notpresident35/awesome-learn-gamedev"
-description: "ゲーム開発の技術・アート・設計・音声・制作・キャリア学習資源を分類した定本スナップショット"
+title: "Awesome Learn Gamedev"
+description: "Learn Gamedevを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-notpresident35-awesome-learn-gamedev-readme-md"
 ---
 
-[<img src="images/MainIcon.png" align="right" width="128">](https://en.wikipedia.org/wiki/Easter_egg_(media))
+# Awesome Learn Gamedev
 
-# Awesome Learn Gamedev [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) <a id="awesome-learn-gamedev-awesome-https-awesome-re-badge-svg-https-awesome-re"></a>
-
-> A Mega-List of Learning Resources for Game Creators 
-
-<p>
-
+Learn Gamedevを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 
@@ -954,4 +949,3 @@ Royalty free music! Don't forget to check the license.
 <br />
   
 ![A cute drawing of Asriel from Undertale reaching for a heart](https://raw.githubusercontent.com/notpresident35/awesome-learn-gamedev/28e61535a7180f0174242ce0980d9337a7328a02/images/Asriel.png 'Thanks for reading!')
-

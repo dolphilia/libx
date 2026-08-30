@@ -1,16 +1,12 @@
 ---
-title: "bs-community/awesome-minecraft"
-description: "bs-community/awesome-minecraft の定本スナップショット"
+title: "Awesome Minecraft"
+description: "Minecraftを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-bs-community-awesome-minecraft-readme-md"
 ---
 
-# Awesome Minecraft [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Minecraft
 
-<img src="screenshot.png" width="1920" />
-
-> Minecraft に関する素晴らしいものを集めたキュレーションリスト。
-
-[Minecraft](https://minecraft.net/) は Mojang が開発したサンドボックス型ビデオゲームです。プレイヤーは創造性を発揮し、3D の手続き生成された世界で多様なブロックを使って建築できます。探索、資源収集、クラフト、戦闘もゲーム内の活動です。
+Minecraftを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -268,4 +264,3 @@ licenseSource: "github-bs-community-awesome-minecraft-readme-md"
 ## ライセンス
 
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-

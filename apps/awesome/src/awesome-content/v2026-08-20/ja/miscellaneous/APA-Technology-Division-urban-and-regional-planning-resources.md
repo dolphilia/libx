@@ -1,34 +1,12 @@
 ---
-title: "APA-Technology-Division/urban-and-regional-planning-resources"
-description: "都市・地域計画のデータ、仕様、ソフトウェア、教育資源を分類した定本スナップショット"
+title: "Awesome Urban & Regional Planning Resources"
+description: "Urban & Regional Planning Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-APA-Technology-Division-urban-and-regional-planning-resources-readme-md"
 ---
 
----
-# 都市・地域計画資源 <a id="urban--regional-planning-resources"></a> [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) 
-[![GitHub stars](https://img.shields.io/github/stars/APA-Technology-Division/planning-technology-resources)](https://github.com/APA-Technology-Division/planning-technology-resources/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/APA-Technology-Division/planning-technology-resources)](https://github.com/APA-Technology-Division/planning-technology-resources)
-![GitHub contributors](https://img.shields.io/github/contributors/APA-Technology-Division/planning-technology-resources)
-![GitHub last commit](https://img.shields.io/github/last-commit/APA-Technology-Division/planning-technology-resources)
-[![GitHub license](https://img.shields.io/github/license/APA-Technology-Division/planning-technology-resources)](https://github.com/APA-Technology-Division/planning-technology-resources/blob/main/LICENSE)
+# Awesome Urban & Regional Planning Resources
 
-都市・地域計画に関する各種データと技術資源を厳選したリポジトリです。建築環境に関心がある方の閲覧とコントリビューションを歓迎します。
-
----
-#### スポンサー <a id="sponsors"></a>
-
-Technology Divisionの資源リポジトリは、次の企業・組織から[支援](https://github.com/APA-Technology-Division/urban-and-regional-planning-resources/blob/main/resources/Division_Sponsorship_Package_23.pdf)を受けています。
-<div style=text-align:center;>
-		<br>
-		<a href="https://www.esri.com/en-us/home">
-			<img src="https://github.com/APA-Technology-Division/urban-and-regional-planning-resources/blob/main/assets/Esri%20Logo%20PNG%20SVG%20Vector-01.png" width="160"/>
-		</a>
-    <br>
-
-</div>
-
----
-
+Urban & Regional Planning Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

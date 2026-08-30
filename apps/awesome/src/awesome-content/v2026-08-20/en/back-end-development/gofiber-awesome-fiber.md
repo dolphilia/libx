@@ -1,22 +1,12 @@
 ---
-title: "gofiber/awesome-fiber"
-description: "Canonical snapshot of gofiber/awesome-fiber"
+title: "Awesome Fiber"
+description: "A curated collection of resources and projects focused on Fiber."
 licenseSource: "github-gofiber-awesome-fiber-readme-md"
 ---
 
-# Awesome Fiber [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Fiber
 
-<a href="https://gofiber.io">
-  <picture alt="Fiber Logo" align="right" style="margin-right: 25px">
-    <source height="75" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/gofiber/docs/master/static/img/logo-dark.svg">
-    <img height="75" alt="Fiber Logo" align="right" style="margin-right: 25px" src="https://raw.githubusercontent.com/gofiber/docs/master/static/img/logo.svg">
-  </picture>
-</a>
-
-> **Fiber** is an [Express](https://github.com/expressjs/express) inspired **web framework** built on top of [Fasthttp](https://github.com/valyala/fasthttp), the **fastest** HTTP engine for [Go](https://golang.org/doc/). Designed to **ease** things up for **fast** development with **zero memory allocation** and **performance** in mind.
-
-A curated list of awesome Fiber middlewares, boilerplates, recipes, articles and tools.
-<br>
+A curated collection of resources and projects focused on Fiber.
 
 ## Contents
 
@@ -282,5 +272,3 @@ Fiber is an open-source project that runs on donations to pay the bills, e.g., o
 <tr><td valign="top"><strong>🚀 Fiber Hero</strong></td><td><a href="https://www.thanks.dev" title="@thnxdev"><img src="https://github.com/thnxdev.png" width="40" alt="@thnxdev" /></a></td></tr>
 <tr><td valign="top"><strong>🪴 Fiber Friend</strong></td><td><a href="https://github.com/Gl1tchedPixzl" title="@Gl1tchedPixzl"><img src="https://github.com/Gl1tchedPixzl.png" width="26" alt="@Gl1tchedPixzl" /></a></td></tr>
 </table>
-
-

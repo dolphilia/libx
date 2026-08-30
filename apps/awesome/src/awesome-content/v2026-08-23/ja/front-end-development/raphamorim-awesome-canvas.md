@@ -1,21 +1,13 @@
 ---
-title: "raphamorim/awesome-canvas"
-description: "raphamorim/awesome-canvas の正規スナップショット"
+title: "Awesome Canvas"
+description: "Canvasを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-raphamorim-awesome-canvas-readme-md"
 ---
 
-# Awesome Canvas（キャンバス）
+# Awesome Canvas
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+Canvasを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-優れたCanvasの実例、関連記事、投稿を厳選した一覧です。[awesome-python](https://github.com/vinta/awesome-python)から着想を得ています。
-
-<a id="contributing"></a>
-## 貢献
-
-最初に[貢献ガイドライン](https://github.com/raphamorim/awesome-canvas/blob/master/CONTRIBUTING.md)へ目を通してください。
-
-<a id="summary"></a>
 ## 目次
 
 - [Canvas](#canvas)

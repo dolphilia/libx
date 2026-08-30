@@ -1,19 +1,12 @@
 ---
-title: "joaomilho/awesome-idris"
-description: "joaomilho/awesome-idris の正規スナップショット"
+title: "Awesome Idris"
+description: "Idrisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-joaomilho-awesome-idris-readme-md"
 ---
 
+# Awesome Idris
 
-
-
-# Awesome Idris [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-[<img src="https://www.idris-lang.org/logo/logo.png" align="right" width="160">](https://www.idris-lang.org/)
-
-> 優れた [Idris](https://www.idris-lang.org/) リソースの補助リストです。
-
-Idris は依存型を備えた汎用の純粋関数型プログラミング言語です。依存型では型を値に基づいて定められるため、プログラムの動作の一部を型で正確に指定できます。正格評価を採用するコンパイル言語で、その機能は Haskell と ML の影響を受けています。
+Idrisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,16 +1,12 @@
 ---
-title: "fregante/Awesome-WebExtensions"
-description: "fregante/Awesome-WebExtensions の定本スナップショット"
+title: "Awesome WebExtensions"
+description: "WebExtensionsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-fregante-Awesome-WebExtensions-readme-md"
 ---
 
-# Awesome WebExtensions [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome WebExtensions
 
-> WebExtensions 開発向けの優れたリソースの厳選リスト。
-
-WebExtensions は、ブラウザーアドオンを開発するためのクロスブラウザーシステムです。このシステムは、Google Chrome がサポートする拡張機能 API と大部分で互換性があります。このブラウザー向けに書かれた拡張機能は、ほとんどの場合、[わずかな変更](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Porting_a_Google_Chrome_extension)だけで Firefox でも実行できます。
-
-ウェブ拡張機能関連のニュースは [@fregante](https://fregante.com) をフォローしてください。
+WebExtensionsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,17 +1,12 @@
 ---
-title: "thomasbnt/awesome-web-monetization"
-description: "Canonical snapshot of thomasbnt/awesome-web-monetization"
+title: "Awesome Web Monetization"
+description: "A curated collection of resources and projects focused on Web Monetization."
 licenseSource: "github-thomasbnt-awesome-web-monetization-readme-md"
 ---
 
-<img src="assets/wm_icon_animated.svg" alt="Logo Web Monetization" align="right" width="120px" />
+# Awesome Web Monetization
 
-# Awesome Web Monetization [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-
-> Awesome stuffs about Web Monetization. Learn more, check modules and others tools.
-
-**Web Monetization** is a web service that allows you to send money directly in your browser.
-This is a JavaScript browser API that allows the creation of a payment stream from the user agent to the website
+A curated collection of resources and projects focused on Web Monetization.
 
 ## Contents
 

@@ -8,10 +8,7 @@ import test from 'node:test';
 const root = path.resolve(import.meta.dirname, '../..');
 const notesRoot = path.join(root, 'docs/notes/document-import/awesome');
 const migration = JSON.parse(
-  fs.readFileSync(
-    path.join(notesRoot, 'migration/SNAPSHOT_ARTIFACT_MIGRATION.json'),
-    'utf8'
-  )
+  fs.readFileSync(path.join(notesRoot, 'migration/SNAPSHOT_ARTIFACT_MIGRATION.json'), 'utf8')
 );
 
 function sha256(file) {
@@ -38,9 +35,7 @@ test('Awesome旧直下証拠は版別移行表へハッシュ付きで収録さ�
       assert.equal(sha256(path.join(root, target.targetPath)), target.targetSha256);
       assert.equal(
         target.relationship,
-        target.targetSha256 === entry.legacySha256
-          ? 'exact-copy'
-          : 'version-specific-replacement'
+        target.targetSha256 === entry.legacySha256 ? 'exact-copy' : 'version-specific-replacement'
       );
     }
   }
@@ -65,22 +60,14 @@ test('Awesomeの両snapshotは主要証拠を独立して保持する', () => {
     }
   }
   assert.ok(
-    fs.existsSync(
-      path.join(
-        notesRoot,
-        'snapshots/v2026-08-20/HISTORICAL_CANONICAL_MANIFEST.json'
-      )
-    )
+    fs.existsSync(path.join(notesRoot, 'snapshots/v2026-08-20/HISTORICAL_CANONICAL_MANIFEST.json'))
   );
 });
 
 test('履歴版レビューの公開時点証拠と失効後証拠を混同しない', () => {
   const evidence = JSON.parse(
     fs.readFileSync(
-      path.join(
-        notesRoot,
-        'snapshots/v2026-08-20/HISTORICAL_REVIEW_EVIDENCE_RECONCILIATION.json'
-      ),
+      path.join(notesRoot, 'snapshots/v2026-08-20/HISTORICAL_REVIEW_EVIDENCE_RECONCILIATION.json'),
       'utf8'
     )
   );
@@ -91,7 +78,10 @@ test('履歴版レビューの公開時点証拠と失効後証拠を混同し�
     execFileSync('git', ['show', `${baseline.gitCommit}:${gitPath}`], { cwd: root });
   const hashBuffer = (value) => crypto.createHash('sha256').update(value).digest('hex');
 
-  assert.equal(hashBuffer(gitBlob(baseline.finalReviewQueueGitPath)), baseline.finalReviewQueueBlobSha256);
+  assert.equal(
+    hashBuffer(gitBlob(baseline.finalReviewQueueGitPath)),
+    baseline.finalReviewQueueBlobSha256
+  );
   assert.equal(
     hashBuffer(gitBlob(baseline.finalReviewResultsGitPath)),
     baseline.finalReviewResultsBlobSha256
@@ -119,9 +109,9 @@ test('履歴版レビューの公開時点証拠と失効後証拠を混同し�
     sha256(path.join(root, current.historicalCanonicalManifestPath)),
     current.historicalCanonicalManifestSha256
   );
-  assert.equal(current.reviewItems, 417);
-  assert.equal(current.inheritedApprovedItems, 305);
-  assert.equal(current.automatedEvidenceApprovedItems, 112);
+  assert.equal(current.reviewItems, 419);
+  assert.equal(current.inheritedApprovedItems, 2);
+  assert.equal(current.automatedEvidenceApprovedItems, 417);
   assert.equal(current.pendingItems, 0);
   assert.equal(current.reviewMode, 'automated-evidence-review');
   assert.equal(current.standWithUkraineBannerPresent, false);
@@ -130,14 +120,12 @@ test('履歴版レビューの公開時点証拠と失効後証拠を混同し�
     fs.readFileSync(path.join(root, current.reviewDiffClassificationPath), 'utf8')
   );
   assert.deepEqual(classification.summary.pendingByKind, {
-    'english-canonical-sample-review': 1,
+    'english-canonical-sample-review': 51,
     'exclusion-review': 1,
-    'japanese-full-page-semantic-review': 110,
+    'japanese-full-page-semantic-review': 365,
   });
   assert.equal(
-    classification.pendingItems.every(
-      (item) => item.decision === 'pending-human-review'
-    ),
+    classification.pendingItems.every((item) => item.decision === 'pending-human-review'),
     true
   );
 });
@@ -149,9 +137,8 @@ test('履歴版定本の検証・正規化入力回復は新版snapshotを参照
   );
   const source = fs.readFileSync(scriptPath, 'utf8');
   assert.equal(source.includes('v2026-08-23'), false);
-  execFileSync(
-    process.execPath,
-    [scriptPath, '--snapshot=v2026-08-20', '--check'],
-    { cwd: root, stdio: 'pipe' }
-  );
+  execFileSync(process.execPath, [scriptPath, '--snapshot=v2026-08-20', '--check'], {
+    cwd: root,
+    stdio: 'pipe',
+  });
 });

@@ -1,13 +1,12 @@
 ---
-title: "rtckit/awesome-rtc"
-description: "Canonical snapshot of rtckit/awesome-rtc"
+title: "Awesome Real Time Communications"
+description: "A curated collection of resources and projects focused on Real Time Communications."
 licenseSource: "github-rtckit-awesome-rtc-readme-md"
 ---
 
-# Awesome Real Time Communications [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Real Time Communications
 
-> Protocols and methodology for near simultaneous exchange of media and data.
-
+A curated collection of resources and projects focused on Real Time Communications.
 
 ## Contents
 

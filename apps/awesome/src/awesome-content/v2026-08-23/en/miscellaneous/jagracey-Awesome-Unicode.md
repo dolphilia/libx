@@ -1,30 +1,12 @@
 ---
-title: "jagracey/Awesome-Unicode"
-description: "Canonical snapshot of jagracey/Awesome-Unicode"
+title: "Awesome Unicode"
+description: "A curated collection of resources and projects focused on Unicode."
 licenseSource: "github-jagracey-Awesome-Unicode-readme-md"
 ---
 
-![](https://raw.githubusercontent.com/jagracey/Awesome-Unicode/58f28d08aef7f36eb6cdca22d25e7654cd8de5ae/resources/banner.jpg)
+# Awesome Unicode
 
-
-# Awesome Unicode [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-
-
-> A curated list of delightful Unicode tidbits, packages and resources.
-
-*Please read the [contribution guidelines](https://github.com/jagracey/Awesome-Unicode/blob/e219c3f2de42804eae17107149fa5a025b02bc23/CONTRIBUTING.md) before contributing.*
-*Key Unicode terminology is defined in the [glossary](https://github.com/jagracey/Awesome-Unicode/blob/e219c3f2de42804eae17107149fa5a025b02bc23/GLOSSARY.md).*
-
-*Cross posted to [Wisdom's Dev Blog](https://wisdom.engineering/awesome-unicode/)*
-
-<br><br>
-
-# Foreword
-
-Unicode is Awesome! Prior to Unicode, international communication was grueling- everyone had defined their separate extended character set in the upperhalf of ASCII (called Code Pages) that would conflict- Just think, German speakers coordinating with Korean speakers over which 127 character Code Page to use. Thankfully the Unicode standard caught on and unified communication. Unicode 8.0 standardizes over 120,000 characters from over 129 scripts - some modern, some ancient, and some still undeciphered. Unicode handles left-to-right and right-to-left text, combining marks, and includes diverse cultural, political, religious characters and emojis. Unicode is awesomely human - and ultimately underappreciated.
-
-<br>
+A curated collection of resources and projects focused on Unicode.
 
 # Contents
 

@@ -1,16 +1,12 @@
 ---
-title: "troxler/awesome-css-frameworks"
-description: "troxler/awesome-css-frameworksの日本語訳"
+title: "Awesome CSS Frameworks"
+description: "CSS Frameworksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-troxler-awesome-css-frameworks-readme-md"
 ---
 
-# Awesome CSSフレームワーク [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome CSS Frameworks
 
-優れたCSSフレームワークの一覧です。
-[コントリビューション](https://github.com/troxler/awesome-css-frameworks/blob/master/.github/CONTRIBUTING.md)を歓迎します。
-
-**React／Vue／Angular向けの[UIコンポーネントライブラリ](https://frontaid.ch/web/ui/libraries.html)を探していますか？**
-
+CSS Frameworksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [ベース／リセット／正規化](#base--reset--normalize)

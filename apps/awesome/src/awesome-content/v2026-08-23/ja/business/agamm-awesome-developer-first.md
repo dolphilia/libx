@@ -1,28 +1,13 @@
 ---
-title: "agamm/awesome-developer-first"
-description: "開発者を主な利用者として設計された製品、ツール、サービスのリスト"
+title: "Awesome Developer-First"
+description: "Developer-Firstを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-agamm-awesome-developer-first-readme-md"
 ---
 
-# Awesome Developer-First [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Developer-First
 
-開発者を意識した素晴らしい製品の厳選リスト。
-(👀 自然な宣伝) あなたは [unzip.dev](https://unzip.dev?ref=github-adf)（私が作成した開発者トレンドニュースレター）を気に入ってくれるかもしれません。
-より多くの開発者関連コンテンツについては [Agam](https://x.com/agammore) と [Flo](https://x.com/fmerian) をフォローしてください :)
+Developer-Firstを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-このリポジトリにおける「Developer-First」の定義は次のとおりです。
-* 開発者が対象利用者である。
-* 「ヘッドレス」「APIファースト」「SaaS」といったキーワードがよく使われる。
-* 多くの場合、トップページにコード例が掲載されている。
-* 対価を支払って利用する製品、ツール、サービスである。
-
-```diff
-+ 👀 Watch this repo to get notifications about new products we find
-```
-
-最新の追加アイテム [click here](https://github.com/agamm/awesome-developer-first/commits/main) です。
-
-<a id="contents"></a>
 ## 目次
 * [AI Coding](#ai-coding)
 * [Analytics](#analytics)

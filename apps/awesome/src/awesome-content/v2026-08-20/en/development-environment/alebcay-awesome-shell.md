@@ -1,44 +1,12 @@
 ---
-title: "alebcay/awesome-shell"
-description: "Canonical snapshot of alebcay/awesome-shell"
+title: "Awesome Shell"
+description: "A curated collection of resources and projects focused on Shell."
 licenseSource: "github-alebcay-awesome-shell-readme-md"
 ---
 
-```
- █████╗ ██╗    ██╗███████╗███████╗ ██████╗ ███╗   ███╗███████╗
-██╔══██╗██║    ██║██╔════╝██╔════╝██╔═══██╗████╗ ████║██╔════╝
-███████║██║ █╗ ██║█████╗  ███████╗██║   ██║██╔████╔██║█████╗
-██╔══██║██║███╗██║██╔══╝  ╚════██║██║   ██║██║╚██╔╝██║██╔══╝
-██║  ██║╚███╔███╔╝███████╗███████║╚██████╔╝██║ ╚═╝ ██║███████╗
-╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
-███████╗██╗  ██╗███████╗██╗     ██╗
-██╔════╝██║  ██║██╔════╝██║     ██║
-███████╗███████║█████╗  ██║     ██║
-╚════██║██╔══██║██╔══╝  ██║     ██║
-███████║██║  ██║███████╗███████╗███████╗
-╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
-```
+# Awesome Shell
 
-# Awesome Shell [![Awesome][awesome-badge]][awesome-link]
-
-A curated list of awesome command-line frameworks, toolkits, guides and gizmos. Inspired by awesome-php. This awesome collection is also available on [Unix-Shell.ZEEF.com](https://unix-shell.zeef.com/caleb.xu).
-- [Shells](#shells)
-- [Command-Line Productivity](#command-line-productivity)
-  - [Directory Navigation](#directory-navigation)
-- [Customization](#customization)
-- [For Developers](#for-developers)
-- [System Utilities](#system-utilities)
-- [Downloading and Serving](#downloading-and-serving)
-- [Multimedia and File Formats](#multimedia-and-file-formats)
-- [Applications](#applications)
-- [Games](#games)
-- [Shell Package Management](#shell-package-management)
-- [Shell Script Development](#shell-script-development)
-- [Guides](#guides)
-- [**Awesome Zsh**][awesome-zsh]&nbsp; [![Awesome][awesome-badge]][awesome-zsh]
-- [**Awesome Fish**][awesome-fish] [![Awesome][awesome-badge]][awesome-fish]
-- [**Awesome Bash**][awesome-bash] [![Awesome][awesome-badge]][awesome-bash]
-- [Other Awesome Lists](#other-awesome-lists)
+A curated collection of resources and projects focused on Shell.
 
 ## Shells
 

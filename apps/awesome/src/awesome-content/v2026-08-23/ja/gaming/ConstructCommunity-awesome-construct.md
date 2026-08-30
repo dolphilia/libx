@@ -1,21 +1,12 @@
 ---
-title: "ConstructCommunity/awesome-construct"
-description: "ConstructCommunity/awesome-construct の定本スナップショット"
+title: "Awesome Construct"
+description: "Constructを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ConstructCommunity-awesome-construct-readme-md"
 ---
 
-# Awesome Construct [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Construct
 
-<img src="https://construct-static.com/images/v861/r/global/construct-3-logo_v130.png" align="right" width="100">
-
-> 夢のゲームを作れます。頭を刺激するパズル、驚くべきプラットフォーマー、没入感のあるRPGを構築するか、型を破って新しいものを作りましょう。
-> [Construct](https://www.construct.net)で、望むものを望む方法で作れます。
->
-> — <cite>Ashley（Scirra創設者）</cite>
-
-すべてのバージョンのConstructゲームエンジンに関連する、最高のツール、チュートリアル、例を厳選したリストです。
-
-[貢献方法](https://github.com/armaldio/awesome-construct/blob/master/CONTRIBUTING.md)
+Constructを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [Scirra](#scirra)

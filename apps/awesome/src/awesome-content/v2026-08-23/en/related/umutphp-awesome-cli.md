@@ -1,37 +1,12 @@
 ---
-title: "umutphp/awesome-cli"
-description: "Canonical snapshot of umutphp/awesome-cli"
+title: "Awesome CLI"
+description: "A curated collection of resources and projects focused on CLI."
 licenseSource: "github-umutphp-awesome-cli-readme-md"
 ---
 
 # Awesome CLI
 
-Awesome CLI is a simple command line tool to give you a fancy command line interface to dive into [Awesome](https://github.com/sindresorhus/awesome) lists.
-
-![AWESOME CLI](https://raw.githubusercontent.com/umutphp/awesome-cli/fb83c2f82052482b6ef3cd837b24f49a1566ae04/assets/images/awesome-cli-banner.png)
-
-![Build](https://github.com/umutphp/awesome-cli/workflows/Test%20&%20Build/badge.svg) ![WOSPM Checker](https://github.com/umutphp/awesome-cli/workflows/WOSPM%20Checker/badge.svg)
-
----
-
-
-
-
-- [Introduction](#introduction)
-- [How To Use](#how-to-use)
-  - [Interactive Mode](#interactive-mode)
-  - [Random Mode](#random-mode)
-  - [Surprise Mode](#surprise-mode)
-- [How To Install](#how-to-install)
-  - [Basic](#basic)
-  - [Build as binary](#build-as-binary)
-  - [Download and use official binary](#download-and-use-official-binary)
-  - [CLI Options](#cli-options)
-  - [Sample Execution](#sample-execution)
-- [How To Contribute](#how-to-contribute)
-
-
----
+A curated collection of resources and projects focused on CLI.
 
 ## Introduction
 

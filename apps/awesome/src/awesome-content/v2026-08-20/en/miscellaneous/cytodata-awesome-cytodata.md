@@ -1,21 +1,12 @@
 ---
-title: "cytodata/awesome-cytodata"
-description: "Canonical snapshot of cytodata/awesome-cytodata"
+title: "Awesome Cytodata"
+description: "A curated collection of resources and projects focused on Cytodata."
 licenseSource: "github-cytodata-awesome-cytodata-readme-md"
 ---
 
-# Awesome Cytodata [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Cytodata
 
-> A curated list of awesome cytodata resources.
-
-![cytodata logo](https://raw.githubusercontent.com/cytodata/awesome-cytodata/395cdc9c015a0431e80fc9531931064df59c909c/cytodata-logo.png)
-
-[Cytodata](https://cytodata.org/) refers to a community of researchers and resources involved in the **image-based profiling** of **biological phenotypes**.
-These **biological phenotypes** are typically induced by genetic or chemical perturbations and often represent disease states.
-**Image-based profiling** is used to inspect these phenotypes to uncover biological insight including discovering the impact of genetic alterations and determining the mechanism of action of compounds.
-
-This page represents a curated list of software, datasets, landmark publications, and image-based profiling methods.
-Our goal is to provide researchers, both new and established, a place to discover and document awesome Cytodata resources.
+A curated collection of resources and projects focused on Cytodata.
 
 ## Contents
 

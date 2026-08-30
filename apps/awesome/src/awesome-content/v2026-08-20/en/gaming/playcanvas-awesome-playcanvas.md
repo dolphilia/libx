@@ -1,18 +1,12 @@
 ---
-title: "playcanvas/awesome-playcanvas"
-description: "Canonical snapshot of playcanvas/awesome-playcanvas"
+title: "Awesome PlayCanvas"
+description: "A curated collection of resources and projects focused on PlayCanvas."
 licenseSource: "github-playcanvas-awesome-playcanvas-readme-md"
 ---
 
-# Awesome PlayCanvas [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome PlayCanvas
 
-> <img src="playcanvas-logo.png" align="right" width="100">
->
-> PlayCanvas is an open source platform for building interactive web content. It's written in JavaScript, HTML5, CSS3 and WebGL.
->
-> This list is a curated collection of awesome resources, tools, tutorials and projects using the PlayCanvas engine to help developers make _awesome_ games and visualizations.
->
-> Contributions _very welcome_ but first see [Contributing](#contributing).
+A curated collection of resources and projects focused on PlayCanvas.
 
 ## Contents
 

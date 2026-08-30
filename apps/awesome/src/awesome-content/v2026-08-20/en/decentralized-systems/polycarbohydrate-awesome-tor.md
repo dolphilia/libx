@@ -1,19 +1,13 @@
 ---
-title: "polycarbohydrate/awesome-tor"
-description: "Canonical snapshot of polycarbohydrate/awesome-tor"
+title: "Awesome tor-logo"
+description: "A curated collection of resources and projects focused on tor-logo."
 licenseSource: "github-polycarbohydrate-awesome-tor-readme-md"
 ---
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-# [![awesome-tor-logo](https://github.com/Polycarbohydrate/awesome-tor/assets/169401794/d8c7415e-1874-49f5-a1c6-04b3a8aa689f)](https://www.torproject.org)
-> Awesome Tor is a curated list of resources, tools, and applications related to the Tor network.
+# Awesome tor-logo
 
-> **NOTE:**
-> This product is produced independently from the Tor® anonymity software and carries no guarantee from The Tor Project about quality, suitability or anything else.
+A curated collection of resources and projects focused on tor-logo.
 
-Tor is a free overlay network for enabling anonymous communication. Built on free and open-source software and more than seven thousand volunteer-operated relays worldwide, users can have their Internet traffic routed via a random path through the network.
-
-Before you read, if you want to host a Snowflake bridge in your browser to help users in censored regions bypass censorship, [click here](https://polycarbohydrate.github.io/awesome-tor/selfhost-snowflake). Thank you.
 ## Contents
 - [Official Manual](#official-manual)
 - [Applications](#applications)

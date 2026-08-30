@@ -1,19 +1,12 @@
 ---
-title: "briatte/awesome-network-analysis"
-description: "Canonical snapshot of briatte/awesome-network-analysis"
+title: "Awesome Network Analysis"
+description: "A curated collection of resources and projects focused on Network Analysis."
 licenseSource: "github-briatte-awesome-network-analysis-readme-md"
 ---
 
-# Awesome Network Analysis [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7869481.svg)](https://doi.org/10.5281/zenodo.7869481)
+# Awesome Network Analysis
 
-
-An [awesome list](https://github.com/sindresorhus/awesome) of resources to construct, analyze and visualize network data.
-
-Inspired by [Awesome Deep Learning](https://github.com/ChristosChristofidis/awesome-deep-learning), [Awesome Math](https://github.com/rossant/awesome-math) and others. Started in 2016, and irregularly updated since then.
-
-[![Adamic and Glance’s network of political blogs, 2004.](https://raw.githubusercontent.com/briatte/awesome-network-analysis/master/illustration.png)](http://www.maths.tcd.ie/~mnl/store/AdamicGlance2004a.pdf)
-
-> Network of U.S. political blogs by [Adamic and Glance (2004)](https://dl.acm.org/citation.cfm?doid=1134271.1134277) ([preprint](http://www.maths.tcd.ie/~mnl/store/AdamicGlance2004a.pdf)).
+A curated collection of resources and projects focused on Network Analysis.
 
 ## Contents
 

@@ -1,18 +1,13 @@
 ---
-title: "davisonio/awesome-irc"
-description: "davisonio/awesome-irc の正規スナップショット"
+title: "Awesome IRC"
+description: "IRCを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-davisonio-awesome-irc-readme-md"
 ---
 
-# Awesome IRC [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome IRC
 
-> 優れた[IRC](https://en.wikipedia.org/wiki/Internet_Relay_Chat)関連資料を厳選した一覧です。
+IRCを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-Internet Relay Chat（IRC）プロトコルに関するツール、ソフトウェア、その他資料の一覧です。
-
-IRC（Internet Relay Chat）は、チャンネルを介した複数ユーザー間のテキスト通信に利用できるオープンなプロトコルです。
-
-<a id="contents"></a>
 ## 目次
 
 

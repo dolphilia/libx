@@ -1,14 +1,12 @@
 ---
-title: "cerberauth/awesome-openid-connect"
-description: "Canonical snapshot of cerberauth/awesome-openid-connect"
+title: "Awesome OpenID Connect"
+description: "A curated collection of resources and projects focused on OpenID Connect."
 licenseSource: "github-cerberauth-awesome-openid-connect-readme-md"
 ---
 
-# Awesome OpenID Connect [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome OpenID Connect
 
-> [OpenID Connect](https://openid.net/#introduction) is an authentication protocol and identity layer on top of OAuth 2.0 used in many SSO and adopted in many social logins (Apple, Facebook, Google, etc). Basically, it allows a user to authenticate to a service using an existing account from an OpenID Connect Provider (OP), sharing some identity information after the user consent, and get an access token to access resources on a Relying Party (RP) application.
-
-> Find this curated list of providers, services, libraries, and resources to adopt it and know more about existing and draft specs.
+A curated collection of resources and projects focused on OpenID Connect.
 
 ## Contents
 

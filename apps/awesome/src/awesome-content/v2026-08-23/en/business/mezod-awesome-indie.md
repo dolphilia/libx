@@ -1,31 +1,12 @@
 ---
-title: "mezod/awesome-indie"
-description: "Canonical snapshot of mezod/awesome-indie"
+title: "Awesome Indie"
+description: "A curated collection of resources and projects focused on Indie."
 licenseSource: "github-mezod-awesome-indie-readme-md"
 ---
 
-# Awesome Indie [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-Resources to help independent developers make money.
+# Awesome Indie
 
-Making money from your own code has never been easier, but it's still hard. Here, I try to curate a list of resources to help everyone interested in making money from their digital products get inspired and give it a try. Be it monetizing side-projects, bootstrapping business ideas, etc.
-
-Projects don't need to be big, actually, it's better if they are not, they just need to be profitable. They might provide a passive income after the initial bulk of work, and who knows, maybe even help you reach financial independence.
-
-Going indie does have lots of lifestyle perks :)
-
-All these resources might help inspire you and put you on the right track but in the end what matters is to **MAKE and TRY stuff**. So devour this content responsibly :)
-
-Contributions are more than welcome.
-
-by **[@mezod](https://twitter.com/mezood)** (Doing things every day with **[everyday.app](https://everyday.app)**)
-
-**Notes:**
-
-- If [$], it means it's not free and probably means I haven't tried it but still decided to add it because of the several references.
-- This repo was once [#1 on Github Trending](https://medium.com/@mezood/making-money-from-your-own-code-has-never-been-easier-but-its-still-hard-2242ddaae6a1)! :_)
-- [Icepy](https://github.com/icepy) translated this repo to [Chinese](https://github.com/icepy/awesome-indie) :)
-
-
+A curated collection of resources and projects focused on Indie.
 
 ## Contents
 

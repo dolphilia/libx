@@ -1,16 +1,12 @@
 ---
-title: "rossant/awesome-math"
-description: "数学の学習・教育・研究・計算・形式証明資料を分野別に整理した定本スナップショット"
+title: "Awesome Math"
+description: "Mathを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-rossant-awesome-math-readme-md"
 ---
 
-# 数学のAwesomeリスト <a id="awesome-math"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Math
 
-Awesome Mathは、数学を学び、教え、研究・実践するための高品質な資料を厳選したリストです。純粋数学、応用数学、計算、形式証明、数学におけるAI活用を扱います。
-
-大半の資料は無料でアクセスできます。有料資料は、広く評価され、特に有用で、代替が難しい場合に掲載されることがあります。アクセス制限は各項目に明記する方針です。
-
-資料を提案する前に[コントリビューションガイドライン](https://github.com/rossant/awesome-math/blob/21066c9d58e470d5b9030755bf1cb4c77a786a91/CONTRIBUTING.md)を確認してください。
+Mathを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

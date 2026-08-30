@@ -1,26 +1,12 @@
 ---
-title: "ttumiel/Awesome-Ethereum"
-description: "Canonical snapshot of ttumiel/Awesome-Ethereum"
+title: "Awesome Ethereum"
+description: "A curated collection of resources and projects focused on Ethereum."
 licenseSource: "github-ttumiel-Awesome-Ethereum-readme-md"
 ---
 
-<br/>
-<div align="center">
-  <img width="250px" src="https://raw.githubusercontent.com/ttumiel/Awesome-Ethereum/5a20b7dc70e68086c6bea69d5dd1ded4f8252469/project_logo.jpg">
-</div>
-<br/>
-<div align="center">
-An awesome list about everything related to the <a href='https://en.wikipedia.org/wiki/Ethereum'>Ethereum</a> platform.
-<br />
-Ethereum is an open-source, blockchain and smart contract computing platform.
-<br/>
+# Awesome Ethereum
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-</div>
-<br/>
-
-Pull requests are welcome! In the spirit of decentralized applications however, please ensure your submission is not a paywalled product.
-
+A curated collection of resources and projects focused on Ethereum.
 
 ## Contents
 

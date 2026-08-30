@@ -1,28 +1,12 @@
 ---
-title: "MartinZikmund/awesome-uno-platform"
-description: "Canonical snapshot of MartinZikmund/awesome-uno-platform"
+title: "Awesome Uno Platform"
+description: "A curated collection of resources and projects focused on Uno Platform."
 licenseSource: "github-MartinZikmund-awesome-uno-platform-readme-md"
 ---
 
-<div align="center">
-	<div>
-		<img width="160" src="media/logo.png" alt="Uno Platform">
-	</div>
-	<br>
-</div>
-
-<div align="center">
-
 # Awesome Uno Platform
 
-
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-</div>
-
-[Uno Platform](https://platform.uno/) is an open-source UI Platform for building single-codebase .NET applications for Windows, iOS, Android, WebAssembly, macOS, and Linux. 
-
-This is a list of **awesome resources** for users of Uno Platform. **If you find the list helpful, please make sure to ⭐ star it!**
+A curated collection of resources and projects focused on Uno Platform.
 
 ## Contents
 

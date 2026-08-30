@@ -1,13 +1,12 @@
 ---
-title: "eug/awesome-opengl"
-description: "OpenGLのライブラリ、デバッガー、ローダー、書籍、講演、チュートリアルをまとめた定本スナップショット"
+title: "Awesome opengl"
+description: "openglを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-eug-awesome-opengl-readme-md"
 ---
 
-# OpenGLのAwesomeリスト <a id="awesome-opengl"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[<img src="https://rawgit.com/eug/awesome-opengl/master/opengl-logo.svg" align="right" width="140">](https://www.opengl.org)
+# Awesome opengl
 
-優れたOpenGLライブラリ、デバッガー、資料を厳選したリストです。
+openglを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

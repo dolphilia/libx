@@ -1,34 +1,12 @@
 ---
-title: "Code-and-Sorts/awesome-copilot-agents"
-description: "Code-and-Sorts/awesome-copilot-agents の正規スナップショット"
+title: "Awesome Copilot Agents"
+description: "Copilot Agentsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Code-and-Sorts-awesome-copilot-agents-readme-md"
 ---
 
+# Awesome Copilot Agents
 
-
-#
-
-
-<div align="center">
-  <img src="./.refs/imgs/awesome-github-copilot.svg" alt="Awesome Copilot Agents" height="300">
-</div>
-
-<h4 align="center">✨ GitHub Copilot AIの体験を強化する、優れたGitHub指示、プロンプト、スキル、MCP、カスタムエージェント用Markdownファイルのキュレーションリスト。</h4>
-
-
-
-<p align="center">
-  <a href="https://awesome.re">
-    <img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-  </a>
-</p>
-
-<hr>
-
-<p align="center">
- <a href="CONTRIBUTING.md">📖 貢献ガイド</a>
-</p>
-<br>
+Copilot Agentsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

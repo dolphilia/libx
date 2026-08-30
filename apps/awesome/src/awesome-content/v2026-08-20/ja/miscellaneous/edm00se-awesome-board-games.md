@@ -1,17 +1,12 @@
 ---
-title: "edm00se/awesome-board-games"
-description: "家族向け・戦略・パーティー用ボードゲームを人数、対象年齢、所要時間とともにまとめた定本スナップショット"
+title: "Awesome Board Games"
+description: "Board Gamesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ---
 
+# Awesome Board Games
 
-<div align="center">
-  <img src="./assets/images/Jon_Board.png" alt="Jon and the Board Game of Westeros" title="you know nothing, Jon Snow">
-  <br />
-  <a href="https://awesome.re" title="more awesome lists"><img src="https://awesome.re/badge.svg" alt="Awesome list badge"></a>
-</div>
-
-> ボードゲームの遊び方、テーマ、勝利条件に関する概要です。
+Board Gamesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

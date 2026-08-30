@@ -1,12 +1,12 @@
 ---
-title: "pajaydev/awesome-web-performance-budget"
-description: "Canonical snapshot of pajaydev/awesome-web-performance-budget"
+title: "Awesome Web Performance Budget"
+description: "A curated collection of resources and projects focused on Web Performance Budget."
 licenseSource: "github-pajaydev-awesome-web-performance-budget-readme-md"
 ---
 
-# Awesome Web Performance Budget [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-> Web Performance Budget is a group of limits to certain values that affect site performance that should not be exceeded in the design and development of any web project. By setting up the performance budget, we can focus more towards performance which can improve the speed and overall user experience of our websites. This list help us to provide link to various articles, projects, tools and techniques to maintain performance budget.
+# Awesome Web Performance Budget
 
+A curated collection of resources and projects focused on Web Performance Budget.
 
 ## Contents
 

@@ -1,16 +1,12 @@
 ---
-title: "msmolyakov/awesome-waves"
-description: "msmolyakov/awesome-waves の定本スナップショット"
+title: "Awesome Waves"
+description: "Wavesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-msmolyakov-awesome-waves-readme-md"
 ---
 
-<p align="center"><a href="https://wavesprotocol.org/"><img src="logo.svg" width="50%"/></a></p>
+# Awesome Waves
 
-# Awesome Waves [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-Waves は、Web 3.0 アプリケーションと分散型ソリューションのためのオープンソース・ブロックチェーンプラットフォームおよび開発ツールセットです。
-    
-このリストは、Waves ブロックチェーン上で分散型アプリケーションを作成するための有用なリソース集です。
+Wavesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -286,4 +282,3 @@ Stagenet is unstable network to test release candidates of the official Waves pr
 素晴らしいものを見つけた、または修正したい場合は、気軽にプルリクエストを送ってください。まず [contribution guidelines](https://github.com/msmolyakov/awesome-waves/blob/ab33db79cfb0b5a50c9576d674b7647240f77b8b/CONTRIBUTING.md) をお読みください。
 
 提案をお待ちしています！
-

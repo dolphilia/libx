@@ -1,44 +1,12 @@
 ---
-title: "ember-community-russia/awesome-ember"
-description: "Ember.jsのアドオン、ツール、教材、動画、コミュニティ、事例集"
+title: "Awesome Ember.js"
+description: "Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ember-community-russia-awesome-ember-readme-md"
 ---
 
-# Awesome Ember.js [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Ember.js
 
-<div align="center">
-  <a href="https://emberjs.com"><img width="300" src="https://raw.githubusercontent.com/ember-community-russia/awesome-ember/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/media/ember-logo.svg" alt="Ember.js"></a>
-  <br>
-</div>
-
-<p align="center">A curated list of delightful Ember.js <a href="#packages">packages</a> and <a href="#resources">resources</a>.</p>
-
-<br>
-
-<p align="center">
-  <a href="https://github.com/ember-community-russia/awesome-ember/blob/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/ember-myths.md">Ember.js Myths</a>&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/ember-community-russia/awesome-ember/blob/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/ember-questions.md">Readers Questions</a>&nbsp;&nbsp;&nbsp;
-  <a href="https://help-wanted.emberjs.com/core">Contribute to Ember.js</a>
-</p>
-
-<br>
-
-<p align="center">
-  <sub>Just type <a href="https://ember.cool"><code>ember.cool</code></a> OR <a href="https://ember-community-russia.github.io/awesome-ember/"><code>https://ember-community-russia.github.io/awesome-ember/</code></a> to go here.</sub>
-</p>
-
----
-
-[Ember.js](https://emberjs.com)は、ウェブアプリケーションの開発に必要な時間、労力およびリソースを大きく削減するJavaScriptフレームワークです。開発者としてあなたが可能な限り生産的になるように、ほとんどのウェブ開発プロジェクトで行われる、よくある、繰り返し行われるが重要なタスクをすべて行うことで、焦点を当てています。
-
-[Ember.js](https://emberjs.com)は、JavaScript、HTMLおよびブラウザの最も先進的な機能にアクセスできるようにし、次に開発する最高のウェブアプリケーションを作成するために必要なすべての機能を提供します。
-
----
-
-*あなたはまた、[awesome-javascript](https://github.com/sorrycc/awesome-javascript)も気になさるかもしれません。*
-*貢献する前に、[contribution guidelines](https://github.com/ember-community-russia/awesome-ember/blob/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/contributing.md)を読んでください。*
-
----
+Ember.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Contents
 - Awesome Ember.js [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)

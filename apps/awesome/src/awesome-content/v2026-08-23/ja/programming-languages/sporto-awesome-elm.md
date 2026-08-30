@@ -1,23 +1,13 @@
 ---
-title: "sporto/awesome-elm"
-description: "Elmの学習ガイド、ライブラリ、開発ツール、事例、コミュニティ集"
+title: "Awesome Elm"
+description: "Elmを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sporto-awesome-elm-readme-md"
 ---
 
+# Awesome Elm
 
-<div align="center">
-    <img src="https://raw.githubusercontent.com/sporto/awesome-elm/4cbaafcc77d4cabe5a45d2ef4ed40e50c232d157/assets/elm-logo.svg" height="180" width="180" />
-    <h1>Awesome Elm</h1>
-    <br />
-</div>
+Elmを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://app.travis-ci.com/sporto/awesome-elm.svg?branch=master)](https://app.travis-ci.com/sporto/awesome-elm)
-
-ユーティリティのElmチュートリアル、ライブラリおよびソフトウェアをコミュニティが運営するリスト。
-[awesome](#more-awesome)のリストのアイデアを受けて作成しました。このリストを自由に <a href="https://github.com/sporto/awesome-elm/blob/master/CONTRIBUTION.md" target="_blank">改善</a>してください。
-
-
-<a id="table-of-contents"></a>
 ## 目次
 - [Learning Guides](#learning-guides)
 - [Learning Videos](#learning-videos)

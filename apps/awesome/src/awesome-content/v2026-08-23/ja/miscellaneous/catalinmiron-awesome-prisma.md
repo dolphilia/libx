@@ -1,14 +1,12 @@
 ---
-title: "catalinmiron/awesome-prisma"
-description: "catalinmiron/awesome-prisma の定本スナップショット"
+title: "Awesome Prisma"
+description: "Prismaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-catalinmiron-awesome-prisma-readme-md"
 ---
 
-![Awesome Prisma](https://i.imgur.com/MQdCTuN.png)
-
 # Awesome Prisma
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+Prismaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,12 +1,12 @@
 ---
-title: "sampart/awesome-tech-ethics"
-description: "sampart/awesome-tech-ethics の定本スナップショット"
+title: "Awesome Tech Ethics"
+description: "Tech Ethicsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sampart-awesome-tech-ethics-readme-md"
 ---
 
-# Awesome Tech Ethics [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Tech Ethics
 
-テクノロジーが社会にもたらしうる悪影響を低減する。
+Tech Ethicsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

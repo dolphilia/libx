@@ -1,12 +1,12 @@
 ---
-title: "KimberlyMunoz/empathy-in-engineering"
-description: "Canonical snapshot of KimberlyMunoz/empathy-in-engineering"
+title: "Awesome Empathy in Engineering"
+description: "A curated collection of resources and projects focused on Empathy in Engineering."
 licenseSource: "github-KimberlyMunoz-empathy-in-engineering-readme-md"
 ---
 
-# Empathy in Engineering [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Empathy in Engineering
 
-> A curated list of resources for building and promoting more compassionate engineering cultures
+A curated collection of resources and projects focused on Empathy in Engineering.
 
 ## Contents
 

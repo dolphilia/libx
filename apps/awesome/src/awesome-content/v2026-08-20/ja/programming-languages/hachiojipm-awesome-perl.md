@@ -1,22 +1,12 @@
 ---
-title: "hachiojipm/awesome-perl"
-description: "PerlのCPANモジュール、フレームワーク、ツール、学習資源を分類した定本スナップショット"
+title: "Awesome Perl"
+description: "Perlを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hachiojipm-awesome-perl-readme-md"
 ---
 
-# PerlのAwesomeリスト <a id="awesome-perl"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Perl
 
-フレームワーク、ライブラリ、ソフトウェアを含む優れたPerl資源を厳選したリストです。[awesome-go](https://github.com/avelino/awesome-go)に着想を得ています。
-
-### ほかのモジュール一覧 <a id="another-module-list"></a>
-
-次の一覧も推奨します。
-
-* [Task::Kensho](https://github.com/EnlightenedPerlOrganisation/task-kensho "Task::Kensho")
-* [Perlres - A list of resources about Perl](https://github.com/thibaultduponchelle/perlres)
-* [PerlMaven.com list of Perl Software](http://perlmaven.com/perl-based-open-source-products)
-* [Slaven's CPAN in a nutshell](https://github.com/eserte/srezic-misc/blob/master/cpan_in_a_nutshell/cpan_in_a_nutshell.pod)
-* 多数のTask::**モジュール（例: Task::Plack、Task::BeLike::<AuthorName>など）。
+Perlを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次 <a id="contents"></a>
 

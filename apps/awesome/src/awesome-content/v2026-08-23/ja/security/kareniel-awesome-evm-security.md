@@ -1,16 +1,12 @@
 ---
-title: "kareniel/awesome-evm-security"
-description: "kareniel/awesome-evm-security の日本語訳（人手レビュー前）"
+title: "Awesome EVM Security"
+description: "EVM Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-kareniel-awesome-evm-security-readme-md"
 ---
 
-# Awesome EVM Security [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome EVM Security
 
-[![Awesome EVM Security](https://github.com/kareniel/awesome-evm-security/blob/c1713225eb3e67c800e4c281ed4e136ff75c25bb/awesome-evm-security.png)](https://github.com/kareniel/awesome-evm-security#readme)
-
-[EVM](https://ethereum.org/en/developers/docs/evm/)は「Ethereum Virtual Machine」の略です。EVMはEthereumメインネットだけでなく、Layer 2プロトコル、サイドチェーン、EVM互換チェーンも支えています。
-
-このリストは、情報セキュリティ管理の観点からEVMエコシステムを概観します。
+EVM Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

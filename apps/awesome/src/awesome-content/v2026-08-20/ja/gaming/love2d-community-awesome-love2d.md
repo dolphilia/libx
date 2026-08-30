@@ -1,13 +1,12 @@
 ---
-title: "love2d-community/awesome-love2d"
-description: "LÖVEゲーム開発のライブラリ、ツール、教材、配布資源を分類した定本スナップショット"
+title: "Awesome Löve"
+description: "Löveを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-love2d-community-awesome-love2d-readme-md"
 ---
 
-# Awesome Löve [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
-![Awesome Löve](https://raw.githubusercontent.com/love2d-community/awesome-love2d/fd851a96c81f87964e4c4d6b8906083b5a7a3c36/logo.png)
+# Awesome Löve
 
-高品質な[LÖVE](http://love2d.org)ライブラリ、プロジェクト、資料をカテゴリ別にまとめたコミュニティ主導のコレクションです。
+Löveを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

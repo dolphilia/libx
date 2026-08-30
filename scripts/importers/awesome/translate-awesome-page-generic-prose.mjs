@@ -12,7 +12,13 @@ const batchSizeOption = process.argv.indexOf('--batch-size');
 const batchSize = batchSizeOption === -1 ? 8 : Number(process.argv[batchSizeOption + 1]);
 const apply = process.argv.includes('--apply');
 
-if ((!file && !allPages) || (file && allPages) || !model || !Number.isInteger(batchSize) || batchSize < 1) {
+if (
+  (!file && !allPages) ||
+  (file && allPages) ||
+  !model ||
+  !Number.isInteger(batchSize) ||
+  batchSize < 1
+) {
   console.error(
     'usage: translate-awesome-page-generic-prose.mjs (<category/file.md> | --all-pages) --snapshot=<version> [--model MODEL] [--batch-size N] [--apply]'
   );

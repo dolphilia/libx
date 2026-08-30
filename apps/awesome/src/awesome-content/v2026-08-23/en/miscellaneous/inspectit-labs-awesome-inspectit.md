@@ -1,16 +1,12 @@
 ---
-title: "inspectit-labs/awesome-inspectit"
-description: "Canonical snapshot of inspectit-labs/awesome-inspectit"
+title: "Awesome inspectIT"
+description: "A curated collection of resources and projects focused on inspectIT."
 licenseSource: "github-inspectit-labs-awesome-inspectit-readme-md"
 ---
 
-# Awesome inspectIT  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome inspectIT
 
-> A curated list of awesome inspectIT documentations and resources.
-
-[![inspectIT](https://github.com/inspectit-labs/awesome-inspectit/blob/24d03a4f15c0e1fac4eb922a000e4fc39d784e3c/media/inspectit.png)](http://www.inspectit.rocks/)
-
-inspectIT is an open source APM (Application Performance Management) tool for analyzing Java (EE) applications.
+A curated collection of resources and projects focused on inspectIT.
 
 ## Contents
 

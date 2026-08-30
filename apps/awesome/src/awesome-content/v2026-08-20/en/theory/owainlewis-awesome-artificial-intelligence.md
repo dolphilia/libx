@@ -1,27 +1,12 @@
 ---
-title: "owainlewis/awesome-artificial-intelligence"
-description: "Canonical snapshot of owainlewis/awesome-artificial-intelligence"
+title: "Awesome Artificial Intelligence"
+description: "A curated collection of resources and projects focused on Artificial Intelligence."
 licenseSource: "github-owainlewis-awesome-artificial-intelligence-readme-md"
 ---
 
 # Awesome Artificial Intelligence
 
-An opinionated, actively maintained collection of resources for software developers learning to build and ship generative AI and agentic systems.
-
-![Artificial intelligence](https://media.giphy.com/media/jeAQYN9FfROX6/giphy.gif)
-
-This list is for developers who want to:
-
-- understand the foundations behind modern AI systems;
-- build applications with language models, retrieval, tools, and agents;
-- evaluate, observe, and deploy AI systems in production;
-- use coding agents to improve software engineering work.
-
-This is not a comprehensive directory of AI products. Every entry must clear an absolute quality bar for technical depth, practical value, evidence, and distinctiveness. Categories are not quotas, and a short category is better than one padded with weak choices.
-
-The list is reviewed weekly by an evidence-backed automation that independently reviews, validates, and merges small changes. See [how resources are evaluated](https://github.com/owainlewis/awesome-artificial-intelligence/blob/ab1c3cceef8ab906586505a7a7a293f434280862/CURATION.md).
-
-For a guided starting point, get the [free AI Engineer starter pack](https://aiengineer.co/start), which includes agent skills, $1M+ in software discounts and tutorial code.
+A curated collection of resources and projects focused on Artificial Intelligence.
 
 ## Learn
 

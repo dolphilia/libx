@@ -1,28 +1,12 @@
 ---
-title: "basharovV/StumbleUponAwesome"
-description: "Canonical snapshot of basharovV/StumbleUponAwesome"
+title: "Awesome StumbleUpon"
+description: "A curated collection of resources and projects focused on StumbleUpon."
 licenseSource: "github-basharovV-StumbleUponAwesome-readme-md"
 ---
 
-# <img src="extension/images/icon_128.png" width="45" align="left"> StumbleUponAwesome
-An *awesome* internet discovery button, for developers, tech and science lovers. 
+# Awesome StumbleUpon
 
-<img src="https://img.shields.io/chrome-web-store/users/dhfmgppomdaagdcbpccdfjpopgikcdge?color=%236F82EB&label=chrome%20users&labelColor=464646&style=flat-square&logo=google-chrome&logoColor=white"/> <img src="https://flat.badgen.net/amo/users/stumbleuponawesome?color=6F82EB&label=firefox%20users&icon=firefox"/> <img src="https://img.shields.io/chrome-web-store/v/dhfmgppomdaagdcbpccdfjpopgikcdge?color=E87676&label=version&style=flat-square" /> <img src="https://flat.badgen.net/github/license/basharovV/stumbleuponawesome?color=green" />
-[![Mentioned in Awesome](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/sindresorhus/awesome)
-
-<p align="center">
-  <img style="width: 100%;padding:0;margin:0;" src="header.png"/>
-</p>
-
-> A browser extension that takes you to a random site from one of the [awesome curated lists](https://github.com/sindresorhus/awesome). Like good ol' StumbleUpon (which is now dead). 
-<p align="center">
-  <a href="https://chrome.google.com/webstore/detail/stumbleuponawesome/dhfmgppomdaagdcbpccdfjpopgikcdge?authuser=3"><b>⚡️ Install Chrome Extension</b></a>
-  <a href="https://addons.mozilla.org/en-GB/firefox/addon/stumbleuponawesome/"><b>⚡️ Install Firefox Add-on</b></a>
-</p>
-
-There are 45,787 unique sites from 554 awesome lists on Github from kind contributors. There's some hidden gems waiting in there 💎 . 
-
-----
+A curated collection of resources and projects focused on StumbleUpon.
 
 ## How to use it:
 **To stumble:** Simply click on the ⚡️ extension button → go to a new awesome site!

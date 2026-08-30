@@ -1,18 +1,12 @@
 ---
-title: "kitspace/awesome-electronics"
-description: "Canonical snapshot of kitspace/awesome-electronics"
+title: "Awesome Electronics"
+description: "A curated collection of resources and projects focused on Electronics."
 licenseSource: "github-kitspace-awesome-electronics-readme-md"
 ---
 
-# Awesome Electronics [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Electronics
 
-> A curated list of awesome resources for Electronic Engineers and hobbyists
-
-Electronic Engineering (EE) is the practice of understanding, designing and building electronic circuits. It is often differentiated from electrical engineering in that it mostly deals with low power DC electronic circuits rather than high power AC systems but there is a lot of overlap between electronic and electrical engineering.
-
-Experimenting with and building electronic circuits is also a popular hobby and many professional resources are often equally applicable to hobbyists and vice versa.
-
-This list is for websites, services, software, tools and more: everything that you think is awesome in the world of Electronic Engineering. If you have anything to add please follow the instructions in [contributing.md](https://github.com/kitspace/awesome-electronics/blob/fbecbedf01155d04f64ff686c4881bd1960d8467/contributing.md). 
+A curated collection of resources and projects focused on Electronics.
 
 ## Contents
 
@@ -273,5 +267,3 @@ This list is for websites, services, software, tools and more: everything that y
  - [Complete Digital Electronics Course](https://youtube.com/playlist?list=PLww54WQ2wa5obq6IbRbIiql8oHaTUp3T_&si=I4mqjy3JUZ8xmElT) - دورة الالكترونيات الرقمية
  - [professional Electronics Design](https://youtube.com/playlist?list=PLww54WQ2wa5oKEhE_D3UVbKWwml8o8_Fu&si=BF213_MSJwSiyvIV) - دورة التصميم الالكتروني المحترف كاملة
  - [professional PCB Design](https://www.youtube.com/playlist?list=PLww54WQ2wa5pBm96kQTkqAyMXn9F4Q0i9) - دورة تصميم اللوحات المطبوعة (PCB)
-
-

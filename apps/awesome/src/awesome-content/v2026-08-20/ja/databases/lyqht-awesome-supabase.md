@@ -1,16 +1,12 @@
 ---
-title: "lyqht/awesome-supabase"
-description: "lyqht/awesome-supabase の正規スナップショット"
+title: "Awesome Supabase"
+description: "Supabaseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lyqht-awesome-supabase-readme-md"
 ---
 
-# Awesome Supabase [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Supabase
 
-[Supabase](https://supabase.com/) は、PostgreSQL データベース、認証、即時 API、Edge Functions、Realtime サブスクリプション、Storage を提供する、Firebase の優れたオープンソース代替です。
-
-このリストは、製品とそのコミュニティの素晴らしい点を取り上げます！👁⚡️👁
-
-このリストを**充実させる**には、[CONTRIBUTING.md](https://github.com/lyqht/awesome-supabase/blob/11d47fdfe4b7c639fc84543d092db45530d4fd86/CONTRIBUTING.md)を参照してください。
+Supabaseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

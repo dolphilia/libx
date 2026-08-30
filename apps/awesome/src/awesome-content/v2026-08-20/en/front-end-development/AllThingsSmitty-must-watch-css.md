@@ -1,19 +1,12 @@
 ---
-title: "AllThingsSmitty/must-watch-css"
-description: "Canonical snapshot of AllThingsSmitty/must-watch-css"
+title: "Awesome Must-Watch CSS"
+description: "A curated collection of resources and projects focused on Must-Watch CSS."
 licenseSource: "github-AllThingsSmitty-must-watch-css-readme-md"
 ---
 
-<p align="center">
-  <img src="./assets/img/tv.svg" width="200" alt="TV icon with play button">
-</p>
+# Awesome Must-Watch CSS
 
-# Must-Watch CSS [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-This is a collection of well-received talks about CSS covering topics such as CSS Grid, flexbox, custom variables, performance, frameworks, Sass, tooling, and more.
-
-> **TIP:**
-> **Like JavaScript? Check out [Must-Watch JavaScript](https://github.com/AllThingsSmitty/must-watch-javascript)!** For other great lists check out [@sindresorhus](https://github.com/sindresorhus/)'s curated list of [awesome lists](https://github.com/sindresorhus/awesome/).
+A curated collection of resources and projects focused on Must-Watch CSS.
 
 - [Contribution Guidelines](https://github.com/AllThingsSmitty/must-watch-css/blob/0b00d05eeaa29f4889d7a4741159483420c8017a/CONTRIBUTING.md)
 

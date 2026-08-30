@@ -1,25 +1,12 @@
 ---
-title: "thoughtspile/awesome-tiny-js"
-description: "thoughtspile/awesome-tiny-js の定本スナップショット"
+title: "Awesome Tiny JS"
+description: "Tiny JSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-thoughtspile-awesome-tiny-js-readme-md"
 ---
 
-# Awesome Tiny JS [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Tiny JS
 
-<div align="center">
-  <a href="https://github.com/thoughtspile/awesome-tiny-js#readme">
-    <img src="./awesome-logo.png" width="300" height="207">
-  </a>
-</div>
-
-バンドルを軽量化するための小さなフロントエンドライブラリ。ルール:
-
-- 注記がない限り、すべての依存関係を含め min + gzip でおおむね 2 kB 未満。
-- 多目的ライブラリでは、有用なサブセットのサイズがおおむね 2 kB 未満であること。
-- クライアントサイドで有用であること。node 専用ライブラリの参加ルールは未確定です。
-- React、Vue、Angular、svelte に限り第2階層のライブラリを許可。 
-- ある程度コミュニティレビューを受けたツールに絞るため、GitHub スター 100 以上 _または_ npm 週間インストール 500 以上。
-- JS がゼロのライブラリ（CSS 専用または型専用）は対象外です。awesome-css ではありません。
+Tiny JSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -249,4 +236,3 @@ Finally, one library is specifically built for spellchecking:
 See [WIP](https://github.com/thoughtspile/awesome-tiny-js/blob/f49d74e245824eb1194a01636b8dd3b0904d347c/wip.md) for possibly awesome libraries I have found, but not yet analyzed deeply, and [incubate](https://github.com/thoughtspile/awesome-tiny-js/blob/f49d74e245824eb1194a01636b8dd3b0904d347c/incubate.md) for awesome libraries that don't meet popularity criteria yet.
 
 2023年に [Vladimir Klepov](https://blog.thoughtspile.tech) が収集・レビューしました。
-

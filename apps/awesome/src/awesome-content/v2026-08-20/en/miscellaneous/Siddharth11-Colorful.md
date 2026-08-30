@@ -1,16 +1,12 @@
 ---
-title: "Siddharth11/Colorful"
-description: "Canonical snapshot of Siddharth11/Colorful"
+title: "Awesome Colorful"
+description: "A curated collection of resources and projects focused on Colorful."
 licenseSource: "github-Siddharth11-Colorful-readme-md"
 ---
 
-<p align="center">
-	<img src="color-palette.gif" alt="header image">
-</p>
+# Awesome Colorful
 
-# Colorful [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-__A curated list of awesome resources to choose your next color scheme.__
-Inspired by the __[awesome](https://github.com/sindresorhus/awesome)__ list. Please read the __[contribution guidelines](https://github.com/Siddharth11/Colorful/blob/3af5997a081170eae9f745c2203a41f9fef316d1/contributing.md)__ before contributing.
+A curated collection of resources and projects focused on Colorful.
 
 ## Table of Contents
 - [Tools](#tools)

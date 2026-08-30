@@ -1,85 +1,13 @@
 ---
-title: "zudochkin/awesome-newsletters"
-description: "開発、技術、ビジネス、キャリアなどを扱うニュースレター集"
+title: "Awesome Newsletters"
+description: "Newslettersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-zudochkin-awesome-newsletters-readme-md"
 ---
-人気のニュースレターを厳選したリスト。[![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome#readme)
 
-GitHub上の`awesome-*`のトレンドを参考にしています。
+# Awesome Newsletters
 
-目的は、非常に有名なリソースをカテゴリ分けした、コミュニティが運営するコレクションを構築することです。
+Newslettersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-共有、提案、貢献は常に歓迎です！まず[contribution guidelines](https://github.com/zudochkin/awesome-newsletters/blob/master/CONTRIBUTING.md)を確認してください。
-
-すべての [contributors](https://github.com/zudochkin/awesome-newsletters/graphs/contributors) に感謝します。
-
-- [Frontend](#frontend)
-  - [General Web Development](#general-web-development)
-  - [JavaScript](#javascript)
-    - [React](#react)
-    - [EmberJS](#emberjs)
-    - [VueJS](#vuejs)
-    - [Svelte](#svelte)
-  - [Data Visualization](#data-visualization)
-  - [CSS](#css)
-  - [Design](#design)
-  - [HTML5](#html5)
-  - [SVG](#svg)
-  - [GraphQL](#graphql)
-- [Programming](#programming)
-  - [General Section](#general-section)
-  - [ObjectiveC](#objectivec)
-  - [C#](#c)
-  - [Node.js](#nodejs)
-  - [Swift](#swift)
-  - [Go](#go)
-  - [R](#r)
-  - [Ruby](#ruby)
-  - [PHP](#php)
-  - [Python](#python)
-  - [Groovy](#groovy)
-  - [Perl](#perl)
-  - [Elixir](#elixir)
-  - [Clojure](#clojure)
-  - [Haskell](#haskell)
-  - [Elm](#elm)
-  - [Rust](#rust)
-  - [C/C++](#cc)
-  - [Scala](#scala)
-  - [Java](#java)
-  - [Kotlin](#kotlin)
-  - [Lua](#lua)
-- [Open Source](#open-source)
-- [Git](#git)
-- [Editors](#editors)
-  - [Vim](#vim)
-  - [VSCode](#vscode)
-- [Databases](#databases)
-  - [PostgreSQL](#postgresql)
-  - [Redis](#redis)
-  - [NoSQL](#nosql)
-- [Backend Development](#backend-development)
-  - [Docker](#docker)
-  - [Devops](#devops)
-  - [Cloud Development](#cloud-development)
-  - [Kubernetes](#kubernetes)
-- [Mobile](#mobile)
-- [Artificial Intelligence / Machine Learning / Big Data](#artificial-intelligence--machine-learning--big-data)
-- [Blockchain / Cryptocurrencies](#blockchain--cryptocurrencies)
-- [Technology in General](#technology-in-general)
-- [Leadership](#leadership)
-- [Career and Growth](#career-and-growth)
-- [Marketing](#marketing)
-- [Business/Finance](#businessfinance)
-- [Awesome news](#awesome-news)
-- [Resilience](#resilience)
-- [Security](#security)
-- [Entrepreneurship](#entrepreneurship)
-- [System Design](#system-design)
-- [Miscellaneous](#miscellaneous)
-- [License](#license)
-
-<a id="frontend"></a>
 ## フロントエンド
 
 - [Front-end Front](https://frontendfront.us9.list-manage.com/subscribe?u=b033c4814d034fca4f850fe82&id=ceaf5763d0). [Frontendfront](https://frontendfront.com/)

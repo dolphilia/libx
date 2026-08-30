@@ -1,22 +1,12 @@
 ---
-title: "awkward/awesome-netherlands-events"
-description: "Canonical snapshot of awkward/awesome-netherlands-events"
+title: "Awesome Events in NL"
+description: "A curated collection of resources and projects focused on Events in NL."
 licenseSource: "github-awkward-awesome-netherlands-events-readme-md"
 ---
 
-# Awesome Events in NL [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Events in NL
 
-> A curated list of Awesome Events in 🇳🇱
-
-This list contains awesome (tech related) events happening (and are mostly recurring) in The Netherlands like: conferences, meetups and parties 🎉
-
-Contributions welcome. Add links through pull requests or create an issue to start a discussion.
-- [What is an awesome list?](https://github.com/sindresorhus/awesome)
-- [Contribution guide](https://github.com/awkward/awesome-netherlands-events/blob/ff3d9ebbe94936a84d4d423b1f7a22529e3374a7/contributing.md)
-
----
-
-Want to see more awesomeness? [Follow us on Twitter](https://twitter.com/madeawkward).
+A curated collection of resources and projects focused on Events in NL.
 
 ## Contents
 - [Rotterdam](#rotterdam)

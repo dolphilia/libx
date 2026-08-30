@@ -1,26 +1,13 @@
 ---
-title: "fabacab/awesome-cybersecurity-blueteam"
-description: "サイバーセキュリティの防御チーム向けツール、運用、監視、対応リソース集"
+title: "Awesome Cybersecurity Blue Team"
+description: "Cybersecurity Blue Teamを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-fabacab-awesome-cybersecurity-blueteam-readme-md"
 ---
 
-# Awesome Cybersecurity Blue Team [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Cybersecurity Blue Team
 
-> サイバーセキュリティのブルーチーム向けに、優れたリソース、ツール、関連情報を集めたリスト。
+Cybersecurity Blue Teamを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[サイバーセキュリティのブルーチーム](https://en.wikipedia.org/wiki/Blue_team_(computer_security))は、情報技術システムのセキュリティ上の弱点を特定し、対策の有効性を検証し、導入した防御策が将来も有効であるようシステムを監視する人々の集団です。このリストは完全に限定するものではありませんが、プロプライエタリ製品や企業サービスよりも[自由ソフトウェア](https://www.gnu.org/philosophy/free-sw.html)プロジェクトを重視しています。攻撃側のTTPについては[awesome-pentest](https://github.com/fabacab/awesome-pentest)を参照してください。
-
-ご意見やご提案は心から ♥ 気持ちよく歓迎です。(✿◕‿◕) 詳細については [Contributing Guidelines](https://github.com/fabacab/awesome-cybersecurity-blueteam/blob/d2231996bf67d4b5f86f09825a128b951324f915/CONTRIBUTING.md)をご確認ください。この作業は [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)のライセンスのもとで提供されています。
-
-多くのセキュリティ専門家は、地元、州、連邦の警察機関や、それらに類似する機関と協力することで、公然とあるいは無意識に、人種差別的な国家暴力を助長している。この悪行は、食料、宿泊、医療へのアクセスの欠如の脅威下での雇用という強制的なメカニズムを通じて最もよく起こる。このリストが公開されているにもかかわらず、このリストの管理者の意図と願いは、こうした巨大で平凡な悪に反対する人々と組織を支えることである。
-
-![Image of a raised fist composed of the names of Black people murdered by taxpayer-funded racist police violence.](https://web.archive.org/web/20201028021653if_/https://lauerrealtygroup.com/wp-content/uploads/2020/06/BLM-FIST-scaled.jpg)
-
-![Image of a "Blue Lives Matter" flag with the thin blue line being peeled away to reveal a Nazi swastika underneath.](https://web.archive.org/web/20201123181815if_/https://i.redd.it/86pl28p0dl631.jpg)
-
-**[DEFUND THE POLICE.](https://defundthepolice.org/)**
-
-<a id="contents"></a>
 ## 目次
 
 - [Automation and Convention](#automation-and-convention)

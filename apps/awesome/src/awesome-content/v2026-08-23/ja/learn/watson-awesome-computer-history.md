@@ -1,14 +1,12 @@
 ---
-title: "watson/awesome-computer-history"
-description: "watson/awesome-computer-history の正規スナップショット"
+title: "Awesome Computer History"
+description: "Computer Historyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-watson-awesome-computer-history-readme-md"
 ---
 
-# Awesomeコンピューター史 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build status](https://api.travis-ci.org/watson/awesome-computer-history.svg?branch=master)](https://travis-ci.org/watson/awesome-computer-history)
+# Awesome Computer History
 
-[Thomas Watson](https://twitter.com/wa7son)が管理する、コンピューター史の映像、ドキュメンタリー、関連する逸話の厳選リストです。[Awesomeリスト](https://github.com/sindresorhus/awesome)に着想を得ています。
-
-[Pull Request](https://github.com/watson/awesome-computer-history/edit/master/README.md)を歓迎します。
+Computer Historyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 

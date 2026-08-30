@@ -1,46 +1,13 @@
 ---
-title: "xavidop/awesome-firebase-genkit"
-description: "xavidop/awesome-firebase-genkit の正規スナップショット"
+title: "Awesome Genkit"
+description: "Genkitを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-xavidop-awesome-firebase-genkit-readme-md"
 ---
 
-<div align="center">
-
-
-
-
-
-<a id="awesome-genkit"></a>
 # Awesome Genkit
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![lint](https://github.com/xavidop/awesome-genkit/actions/workflows/lint.yaml/badge.svg)](https://github.com/xavidop/awesome-genkit/actions/workflows/lint.yaml) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/xavidop/awesome-firebase-genkit/)
+Genkitを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-
-
-Genkitエコシステムに関する優れた情報を集めたリストです。
-
-<p align="center">
-  <a href="https://github.com/xavidop/awesome-firebase-genkit/blob/9cca4bdd92430020af0d0dc08e8a629112abb53a/CODE_OF_CONDUCT.md">行動規範</a>
-  <a href="https://github.com/xavidop/awesome-firebase-genkit/blob/9cca4bdd92430020af0d0dc08e8a629112abb53a/CONTRIBUTING.md">貢献ガイド</a>
-  <a href="https://github.com/xavidop/awesome-genkit/graphs/contributors">貢献者</a>
-</p>
-
-
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="/assets/genkit-logo.png">
-  <source media="(prefers-color-scheme: dark)" srcset="/assets/genkit-logo-dark.png">
-  <img alt="ライトモードでは太陽、ダークモードでは星空と月のイラストを表示します。" src="https://raw.githubusercontent.com/xavidop/awesome-firebase-genkit/9cca4bdd92430020af0d0dc08e8a629112abb53a/assets/genkit-logo.png">
-</picture>
-
-
-
-Genkitは、AIを活用したアプリケーションや機能の構築を支援するフレームワークです。Node.jsおよびGo向けのオープンソースライブラリと、テスト・デバッグ用の開発者ツールを提供します。
-
-</div>
-
-
-
-<a id="contents"></a>
 ## 目次
 - [プラグイン](#plugins)
   - [JavaScript - 公式](#javascript---official)

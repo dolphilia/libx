@@ -1,14 +1,12 @@
 ---
-title: "csabapalfi/awesome-pagespeed-metrics"
-description: "Canonical snapshot of csabapalfi/awesome-pagespeed-metrics"
+title: "Awesome Page Speed Metrics"
+description: "A curated collection of resources and projects focused on Page Speed Metrics."
 licenseSource: "github-csabapalfi-awesome-pagespeed-metrics-readme-md"
 ---
 
-# Awesome Page Speed Metrics [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Page Speed Metrics
 
-> Metrics to help understand page speed and user experience.
-
-If you're just getting started check out [web.dev/metrics](https://web.dev/metrics/) first.
+A curated collection of resources and projects focused on Page Speed Metrics.
 
 ## Contents
 

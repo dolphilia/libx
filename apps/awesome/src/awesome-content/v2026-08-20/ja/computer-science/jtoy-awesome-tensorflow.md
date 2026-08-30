@@ -1,20 +1,12 @@
 ---
-title: "jtoy/awesome-tensorflow"
-description: "jtoy/awesome-tensorflow の定本スナップショット"
+title: "Awesome TensorFlow"
+description: "TensorFlowを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jtoy-awesome-tensorflow-readme-md"
 ---
 
-# Awesome TensorFlow  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/jtoy/awesome)
+# Awesome TensorFlow
 
-優れた TensorFlow の実験、ライブラリ、プロジェクトを厳選したリストです。awesome-machine-learning に着想を得ています。
-
-## TensorFlowとは？
-
-TensorFlow は、データフローグラフを使って数値計算を行うオープンソースソフトウェアライブラリです。言い換えれば、深層学習モデルを構築する最良の方法です。
-
-詳細は[こちら](http://tensorflow.org)。
-
-
+TensorFlowを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

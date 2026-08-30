@@ -1,30 +1,13 @@
 ---
-title: "vinjn/awesome-vulkan"
-description: "Vulkanのライブラリ、SDK、サンプル、デバッグツール、学習資料集"
+title: "Awesome Vulkan"
+description: "Vulkanを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vinjn-awesome-vulkan-readme-md"
 ---
 
-# Awesome Vulkan [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Vulkan
 
-<img src="https://raw.githubusercontent.com/SaschaWillems/Vulkan/master/images/vulkanlogoscene.png" alt="Vulkan demo scene" height="256px">
+Vulkanを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-優れたVulkanライブラリ、デバッグツール、関連資料を厳選したリストです。[awesome-opengl](https://github.com/eug/awesome-opengl)などのAwesomeコンテンツから着想を得ています。
-
-* **[Hardware Support](#hardware-support)**
-* **[SDK](#sdk)**
-* **[IHV Document](#document)**
-* **[Tutorial](#tutorial)**
-* **[Apps](#apps)**
-* **[Samples](#samples)**
-* **[Libraries](#libraries)**
-* **[Bindings](#bindings)**
-* **[Tools](#tools)**
-* **[Books](#books)**
-* **[Papers](#papers)**
-* **[Khronos](#khronos)**
-* **[Community](#community)**
-
-<a id="hardware-support"></a>
 ## ハードウェア対応
 *  [gpuinfo](http://vulkan.gpuinfo.org/) - サスハ・ウィルムスによるVulkanハードウェアデータベース
 *  [Khronos](https://www.khronos.org/vulkan)

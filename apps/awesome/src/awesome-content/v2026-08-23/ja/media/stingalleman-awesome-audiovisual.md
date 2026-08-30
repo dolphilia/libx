@@ -1,14 +1,12 @@
 ---
-title: "stingalleman/awesome-audiovisual"
-description: "stingalleman/awesome-audiovisual の定本スナップショット"
+title: "Awesome Audiovisual"
+description: "Audiovisualを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-stingalleman-awesome-audiovisual-readme-md"
 ---
 
-# Awesome Audiovisual [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Audiovisual
 
-> 照明、映像、音響の専門家・愛好家向けソフトウェア、ライブラリ、リソースの厳選リスト。
-
-何か追加したいですか？プルリクエストを作成してください。ただし[寄稿ガイドライン](https://github.com/stingalleman/awesome-audiovisual/blob/84cb175d4d7d54149fbc42932e6b243a603b47d3/contributing.md)に必ず従ってください！質問は[General Discussion issue](https://github.com/stingalleman/awesome-audiovisual/issues/2)でどうぞ。
+Audiovisualを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

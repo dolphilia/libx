@@ -1,12 +1,13 @@
 ---
-title: "ChristosChristofidis/awesome-deep-learning"
-description: "深層学習の書籍、講座、論文、データセット、フレームワーク、研究資料集"
+title: "Awesome Deep Learning"
+description: "Deep Learningを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ChristosChristofidis-awesome-deep-learning-readme-md"
 ---
 
-# Awesome Deep Learning [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Deep Learning
 
-<a id="table-of-contents"></a>
+Deep Learningを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+
 ## 目次
 
 * **[Books](#books)**

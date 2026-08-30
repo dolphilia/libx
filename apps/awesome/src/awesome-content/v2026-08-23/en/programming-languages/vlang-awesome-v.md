@@ -1,18 +1,12 @@
 ---
-title: "vlang/awesome-v"
-description: "Canonical snapshot of vlang/awesome-v"
+title: "Awesome V"
+description: "A curated collection of resources and projects focused on V."
 licenseSource: "github-vlang-awesome-v-readme-md"
 ---
 
+# Awesome V
 
-
-<p align="center"><img src="media/awesome-v-logo.svg" width="400"/></p>
-
-# Awesome V [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Discord](https://img.shields.io/discord/1527933660764831825?label=Discord&logo=discord&logoColor=white)](https://discord.gg/vlang)
-
-> A curated list of awesome V frameworks, libraries, software and resources.
-
-[V](https://vlang.io/) is a simple, fast, safe, compiled language for developing maintainable software.
+A curated collection of resources and projects focused on V.
 
 ## Contents
 

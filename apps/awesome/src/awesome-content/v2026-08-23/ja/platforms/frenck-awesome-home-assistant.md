@@ -1,36 +1,12 @@
 ---
-title: "frenck/awesome-home-assistant"
-description: "Home Assistantの設定、統合、ダッシュボード、アプリ、DIY、情報源集"
+title: "Awesome Home Assistant"
+description: "Home Assistantを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-frenck-awesome-home-assistant-readme-md"
 ---
 
-# Awesome Home Assistant [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Home Assistant
 
-
-<div align="center">
-  <a href="https://awesome-ha.com">
-    <img width="400" src="https://www.awesome-ha.com/images/awesome-home-assistant.svg" alt="Awesome Home Assistant">
-  </a>
-  <br>
-  <a href="https://awesome-ha.com"><strong>https://awesome-ha.com</strong></a>
-</div>
-
-ホームエイシスタントは、ローカル制御とプライバシーを最優先にしたオープンソースのホームオートメーションです。既に数千のデバイスと連携しており、自宅のハードウェア上で動作し、設定にはコーディングが不要です。1つの部屋を自動化する場合も、全体の家を自動化する場合も、すべてがローカルかつプライベートに留まります。
-
-どう見えるか気になる？
-[Home Assistant online demo](https://demo.home-assistant.io)を試してみてください。
-
-素晴らしいホームエイシスタントは、最も優れた
-[Home Assistant](https://www.home-assistant.io)リソースを厳選した一覧です：カスタム統合、ダッシュボードカード、テーマ、アプリ、チュートリアル、その他多くのコンテンツを含みます。
-
-以下の項目の多くは、ホームエイシスタント自体をインストールした後、
-[HACS](https://hacs.xyz)、つまりホームエイシスタントコミュニティストアを通じてワンクリックでインストール可能です。ホームエイシスタントは
-[Open Home Foundation](https://www.openhomefoundation.org)によって所有されており、ESPHome、Music Assistant、Z-Wave JS、およびリスト中に見られるオープンボイスツールを統括しています。スマートホームデバイスを購入する場合、
-[Works with Home Assistant](https://works-with.home-assistant.io)プログラムはプライバシー、ローカル制御、長期サポートについてテストを行います。
-
-リストはカテゴリに分けられています。そのカテゴリ内のリンクは、事前に定められた順序を持っていません。順序は貢献に向けたものです。貢献したい場合は、お読みください [guide](https://github.com/frenck/awesome-home-assistant/blob/main/.github/CONTRIBUTING.md)
-または、追加、更新、削除を提案するための [issue](https://github.com/frenck/awesome-home-assistant/issues/new/choose)
-を提出してください。
+Home Assistantを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 {#contents}
 

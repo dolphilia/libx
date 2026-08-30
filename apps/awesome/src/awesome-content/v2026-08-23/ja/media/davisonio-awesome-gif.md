@@ -1,14 +1,12 @@
 ---
-title: "davisonio/awesome-gif"
-description: "GIFの作成、変換、最適化、再生、配信に使えるツール、ライブラリ、スクリプトをまとめた定本スナップショット"
+title: "Awesome GIF"
+description: "GIFを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-davisonio-awesome-gif-readme-md"
 ---
 
-# GIFのAwesomeリスト <a id="awesome-gif"></a> [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome GIF
 
-> 優れた[GIF](https://en.wikipedia.org/wiki/GIF)資料を厳選したリストです。
-
-Graphics Interchange Format（GIF）に関するツール、スクリプト、ライブラリ、サンプル、そのほかの資料をまとめています。
+GIFを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

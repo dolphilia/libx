@@ -1,14 +1,12 @@
 ---
-title: "steven2358/awesome-blockchain-ai"
-description: "steven2358/awesome-blockchain-ai の正規スナップショット"
+title: "Awesome Blockchain AI"
+description: "Blockchain AIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-steven2358-awesome-blockchain-ai-readme-md"
 ---
 
-# Awesome Blockchain AI  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Blockchain AI
 
-> 人工知能と機械学習のためのブロックチェーンプロジェクトを集めたリストです。
-
-このリストでは、ブロックチェーン技術の特性（分散化、不変性、スマートコントラクトなど）を活用して、次世代の AI システムを構築する優れたプロジェクトを紹介します。
+Blockchain AIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,54 +1,12 @@
 ---
-title: "sindresorhus/awesome-chatgpt"
-description: "Canonical snapshot of sindresorhus/awesome-chatgpt"
+title: "Awesome ChatGPT"
+description: "A curated collection of resources and projects focused on ChatGPT."
 licenseSource: "github-sindresorhus-awesome-chatgpt-readme-md"
 ---
 
-<div align="center">
-	<br>
-	<br>
-	<div>
-		<picture>
-			<source media="(prefers-color-scheme: dark)" srcset="media/logo-dark.svg">
-			<img alt="Awesome ChatGPT" width="500px" src="media/logo.svg">
-		</picture>
-		<br>
-	</div>
-	<p>
-		<a href="https://chat.openai.com">ChatGPT</a> is an artificial intelligence (AI) chatbot developed by <a href="https://openai.com">OpenAI</a>
-	</p>
-	<br>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<p>
-		<p>
-			<sup>
-				<a href="https://github.com/sponsors/sindresorhus">My open source work is supported by the community</a>
-			</sup>
-		</p>
-		<sup>Special thanks to:</sup>
-		<br>
-		<br>
-		<a href="https://nitric.io/?utm_campaign=github_repo&utm_medium=referral&utm_content=sindresorhus&utm_source=github">
-			<div>
-				<img width="230" src="https://sindresorhus.com/assets/thanks/nitric-logo.svg" alt="nitric logo">
-			</div>
-			<b>Effortless backends with infrastructure from code</b>
-			<div>
-				<sup>An open-source framework that supports any programming language, cloud provider, or deployment automation tool.</sup>
-			</div>
-		</a>
-		<br>
-	</p>
-	<hr>
-	<br>
-	<br>
-</div>
+# Awesome ChatGPT
+
+A curated collection of resources and projects focused on ChatGPT.
 
 ## Contents
 

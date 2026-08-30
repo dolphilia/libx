@@ -1,12 +1,12 @@
 ---
-title: "Kikobeats/awesome-network-js"
-description: "Kikobeats/awesome-network-js の定本スナップショット"
+title: "Awesome JavaScript Network"
+description: "JavaScript Networkを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Kikobeats-awesome-network-js-readme-md"
 ---
 
-# Awesome JavaScript Network [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/Kikobeats/awesome-network-js) [![Build Status](https://img.shields.io/travis/Kikobeats/awesome-network-js/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/awesome-network-js) [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
+# Awesome JavaScript Network
 
-> 純粋な JS で書かれたネットワークレイヤーリソースの 🎩 リスト。
+JavaScript Networkを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 高水準
 

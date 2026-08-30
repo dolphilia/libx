@@ -1,43 +1,12 @@
 ---
-title: "xavidop/awesome-firebase-genkit"
-description: "Canonical snapshot of xavidop/awesome-firebase-genkit"
+title: "Awesome Genkit"
+description: "A curated collection of resources and projects focused on Genkit."
 licenseSource: "github-xavidop-awesome-firebase-genkit-readme-md"
 ---
 
-<div align="center">
-
-
-
-
-
 # Awesome Genkit
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![lint](https://github.com/xavidop/awesome-genkit/actions/workflows/lint.yaml/badge.svg)](https://github.com/xavidop/awesome-genkit/actions/workflows/lint.yaml) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/xavidop/awesome-firebase-genkit/)
-
-
-
-A collection of awesome things regarding the Genkit ecosystem.
-
-<p align="center">
-  <a href="https://github.com/xavidop/awesome-firebase-genkit/blob/9cca4bdd92430020af0d0dc08e8a629112abb53a/CODE_OF_CONDUCT.md">Code Of Conduct</a>
-  <a href="https://github.com/xavidop/awesome-firebase-genkit/blob/9cca4bdd92430020af0d0dc08e8a629112abb53a/CONTRIBUTING.md">Contribution guide</a>
-  <a href="https://github.com/xavidop/awesome-genkit/graphs/contributors">Contributors</a>
-</p>
-
-
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="/assets/genkit-logo.png">
-  <source media="(prefers-color-scheme: dark)" srcset="/assets/genkit-logo-dark.png">
-  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://raw.githubusercontent.com/xavidop/awesome-firebase-genkit/9cca4bdd92430020af0d0dc08e8a629112abb53a/assets/genkit-logo.png">
-</picture>
-
-
-
-Genkit is a framework designed to help you build AI-powered applications and features. It provides open source libraries for Node.js and Go, plus developer tools for testing and debugging.
-
-</div>
-
-
+A curated collection of resources and projects focused on Genkit.
 
 ## Contents
 - [Plugins](#plugins)

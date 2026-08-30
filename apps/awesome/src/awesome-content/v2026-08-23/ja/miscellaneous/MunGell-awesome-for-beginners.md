@@ -1,28 +1,13 @@
 ---
-title: "MunGell/awesome-for-beginners"
-description: "初めてのプルリクエストに適したオープンソースプロジェクトの厳選リスト"
+title: "Awesome First Pull Request Opportunities"
+description: "First Pull Request Opportunitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-MunGell-awesome-for-beginners-readme-md"
 ---
 
+# Awesome First Pull Request Opportunities
 
+First Pull Request Opportunitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-
-
-
-<a id="awesome-first-pull-request-opportunities"></a>
-# 初めてのプルリクエストに適したプロジェクト [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-[First Timers Only](https://kentcdodds.com/blog/first-timers-only)のブログ記事を参考にしました。
-
-オープンソースプロジェクトのメンテナーである場合は、プロジェクトにラベル `first-timers-only`（または類似のラベル）を付加し、ここにリストアップしてください。これにより、人々がそのプロジェクトを見つけやすくなります。
-
-プログラマーではないが貢献したい場合は、[Awesome for non-programmers](https://github.com/szabgab/awesome-for-non-programmers)のリストをご確認ください。
-
-GitHub上のリポジトリに貢献する方法についてガイドを受ける場合は、[the First Contributions repository](https://github.com/firstcontributions/first-contributions)をご覧ください。
-
-> **ヒント:**
-> リンクは同じタブで開きます。新しいタブで開くには、Windows／Linuxでは`Ctrl + Click`、Macでは`Cmd + Click`を使用してください。
-<a id="table-of-contents"></a>
 ## 目次:
 
 ||Languages|

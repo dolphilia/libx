@@ -1,14 +1,12 @@
 ---
-title: "seifrajhi/awesome-cilium"
-description: "seifrajhi/awesome-cilium の正規スナップショット"
+title: "Awesome Cilium"
+description: "Ciliumを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-seifrajhi-awesome-cilium-readme-md"
 ---
 
-# Awesome Cilium [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Cilium
 
-> Cilium は、コンテナー化アプリケーション、マイクロサービス、仮想マシン向けのネットワーキング・セキュリティ機能を提供するオープンソースネットワーキングプロジェクトです。
-
-最近[Cilium](https://docs.cilium.io/en/stable)は、eBPF に関する優れた Web サイト[ebpf.io](https://ebpf.io/)を公開しました。このリストと似た目的を持ち、[eBPF の紹介](https://ebpf.io/what-is-ebpf)も提供しています。
+Ciliumを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,18 +1,12 @@
 ---
-title: "stetso/awesome-gideros"
-description: "stetso/awesome-giderosの日本語訳"
+title: "Awesome Gideros"
+description: "Giderosを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-stetso-awesome-gideros-readme-md"
 ---
 
-# Awesome Gideros [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Gideros
 
-<h1 align="center">
-	<a href="http://giderosmobile.com"><img width="200" src="https://raw.githubusercontent.com/stetso/awesome-gideros/4fa4266feca39bdf4eb9c741f0948622e222b62a/gideros_logo.png" alt="Awesome Gideros"></a>
-	<br>
-	<br>
-</h1>
-
-Android、iOS、HTML5、WinRT、デスクトップ（Windows、OSX）向けのゲームやアプリを簡単に作成できる[Giderosゲーム開発フレームワーク](http://giderosmobile.com/)の優れたリソースを集めた一覧です。プルリクエストによるコントリビューションを歓迎します。
+Giderosを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

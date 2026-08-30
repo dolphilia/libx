@@ -1,25 +1,12 @@
 ---
-title: "MobilityData/awesome-transit"
-description: "Canonical snapshot of MobilityData/awesome-transit"
+title: "Awesome transit"
+description: "A curated collection of resources and projects focused on transit."
 licenseSource: "github-MobilityData-awesome-transit-readme-md"
 ---
 
-# awesome-transit [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![RSS](https://img.shields.io/badge/Subscribe-RSS-blue.svg)](https://github.com/MobilityData/awesome-transit/commits/master.atom)
+# Awesome transit
 
-##### Community list of data standards, APIs, apps, tools, datasets, and research around open source technology of public transit.
-
-Open technology provides an opportunity for various stakeholders to collaborate efforts to improve public transit.
-
-Elements of open technology include:
-- Open standards
-- Open data
-- Open source software (both as consumer-facing apps like OpenTripPlanner and developer tools like the GTFS Validator)
-
-This list is focused around the open technology ecosystem for public transportation. Included technologies may be open source themselves and/or rely on open standards and/or open data.
-
-Have something to add or change? Open a [pull request](https://github.com/MobilityData/awesome-transit/pulls) or [issue](https://github.com/MobilityData/awesome-transit/issues) at [MobilityData/awesome-transit](https://github.com/MobilityData/awesome-transit).
-
-------------------------------
+A curated collection of resources and projects focused on transit.
 
 ### Table of Contents
 - [awesome-transit  ](#awesome-transit--)

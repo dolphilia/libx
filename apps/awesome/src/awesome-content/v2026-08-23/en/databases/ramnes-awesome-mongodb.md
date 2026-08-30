@@ -1,18 +1,12 @@
 ---
-title: "ramnes/awesome-mongodb"
-description: "Canonical snapshot of ramnes/awesome-mongodb"
+title: "Awesome MongoDB"
+description: "A curated collection of resources and projects focused on MongoDB."
 licenseSource: "github-ramnes-awesome-mongodb-readme-md"
 ---
 
-![Awesome MongoDB](https://raw.githubusercontent.com/ramnes/awesome-mongodb/655c499612284edc10cdc2e56271b476c7ae7481/logo.png)
+# Awesome MongoDB
 
-# Awesome MongoDB [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-[![Links check](https://github.com/ramnes/awesome-mongodb/actions/workflows/links.yml/badge.svg)](https://github.com/ramnes/awesome-mongodb/actions/workflows/links.yml)
-
-> A curated list of awesome MongoDB resources, libraries, tools and applications
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing. Feel free to improve this list by [contributing](https://github.com/ramnes/awesome-mongodb/blob/655c499612284edc10cdc2e56271b476c7ae7481/CONTRIBUTING.md)!
+A curated collection of resources and projects focused on MongoDB.
 
 ## Table of Contents
  - [Resources](#resources)

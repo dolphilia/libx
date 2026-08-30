@@ -1,16 +1,12 @@
 ---
-title: "balintkissdev/awesome-dos"
-description: "balintkissdev/awesome-dos の定本スナップショット"
+title: "Awesome DOS"
+description: "DOSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-balintkissdev-awesome-dos-readme-md"
 ---
 
-# Awesome DOS [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome DOS
 
-1980年代から1990年代初頭に普及した、IBM PC DOS や MS-DOS を含む x86 ベースのパーソナルコンピューター向けオペレーティングシステム群です。
-
-[<img src="logo.svg" align="right" width="100">](https://github.com/balintkissdev/awesome-dos)
-
-DOS アプリケーションの開発とシステム自体の学習に役立つ資料を厳選したリストです。コンパイラー、チュートリアル、動画、無料・有料書籍へのリンク、DOS オペレーティングシステムと DOS ゲームのソースコードを収録しています。このリストは情報を集約し、DOS プラットフォームでレトロプログラミングを始めたい人の出発点となることを目的としています。
+DOSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,14 +1,12 @@
 ---
-title: "accelerated-text/awesome-nlg"
-description: "Canonical snapshot of accelerated-text/awesome-nlg"
+title: "Awesome Natural Language Generation"
+description: "A curated collection of resources and projects focused on Natural Language Generation."
 licenseSource: "github-accelerated-text-awesome-nlg-readme-md"
 ---
 
-# Awesome Natural Language Generation [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Natural Language Generation
 
-![Piscis Magnus from BL Harley 647](https://raw.githubusercontent.com/accelerated-text/awesome-nlg/e12d701762a97047e28383ae8b09e13b7e88d280/logo.png)
-
-Natural Language Generation is a broad domain with applications in chat-bots, story generation, and data descriptions. There is a wide spectrum of different technologies addressing parts or the whole of the NLG process. This list aims to represent this deversity of NLG applications and techniques by providing links to various projects, tools, research papers, and learning materials.
+A curated collection of resources and projects focused on Natural Language Generation.
 
 ## Contents
 

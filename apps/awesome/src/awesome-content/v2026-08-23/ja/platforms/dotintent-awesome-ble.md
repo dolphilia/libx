@@ -1,18 +1,12 @@
 ---
-title: "dotintent/awesome-ble"
-description: "dotintent/awesome-ble の定本スナップショット"
+title: "Awesome BLE"
+description: "BLEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dotintent-awesome-ble-readme-md"
 ---
 
-# Awesome BLE [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome BLE
 
-![](https://raw.githubusercontent.com/dotintent/awesome-ble/a128934b017fedc72f6be6eca25b5d821e31794b/.github/awesome-ble.png)
-
-**Bluetooth Low Energy（BLE）**: デバイス間の効率的なデータ交換を可能にする低消費電力無線通信プロトコル。IoT、ウェアラブル、その他の電池駆動アプリケーションに適しています。
-
-[🔴 intent](https://withintent.com)による優れたBluetooth Low Energyリソースの共同作成リスト。
-
-![](https://img.shields.io/github/last-commit/dotintent/awesome-ble/main)
+BLEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

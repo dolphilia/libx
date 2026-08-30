@@ -1,14 +1,12 @@
 ---
-title: "IAmCoder/awesome-lucid-dreams"
-description: "Canonical snapshot of IAmCoder/awesome-lucid-dreams"
+title: "Awesome Lucid Dreams"
+description: "A curated collection of resources and projects focused on Lucid Dreams."
 licenseSource: "github-IAmCoder-awesome-lucid-dreams-readme-md"
 ---
 
-# Awesome Lucid Dreams [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Lucid Dreams
 
-A curated list of everything awesome related to lucid dreaming.
-
-In the psychology subfield of oneirology, a [lucid dream](https://en.wikipedia.org/wiki/Lucid_dream) is a type of dream wherein a person that is dreaming realizes that they are dreaming during their dream. The capacity to have lucid dreams is a trainable cognitive skill.
+A curated collection of resources and projects focused on Lucid Dreams.
 
 ## Contents
 

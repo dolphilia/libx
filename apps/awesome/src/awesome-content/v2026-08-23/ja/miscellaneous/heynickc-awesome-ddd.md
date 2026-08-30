@@ -1,30 +1,13 @@
 ---
-title: "heynickc/awesome-ddd"
-description: "ドメイン駆動設計、CQRS、イベントソーシング、イベントストーミングのリソース集"
+title: "Awesome Domain-Driven Design"
+description: "Domain-Driven Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-heynickc-awesome-ddd-readme-md"
 ---
 
-# Awesome Domain-Driven Design（ドメイン駆動設計） [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Domain-Driven Design
 
-> ドメイン駆動設計（DDD）、コマンドクエリ責務分離（CQRS）、イベントソーシング、イベントストーミングのリソースを厳選したリスト。
+Domain-Driven Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-**[blog](https://buildplease.com)と[weekly DDD newsletter](https://buildplease.com/pages/dddweekly/)をチェックして、[Twitter](https://twitter.com/heynickc)でこんにちは！**
-
-**[Domain-Driven Design (DDD)](https://en.m.wikipedia.org/wiki/Domain-driven_design)**は、複雑なニーズに対応するためのソフトウェア開発アプローチで、実装を進化するモデルに結びつけることによって実現する。ドメインドリブンデザイン（Domain-Driven Design）の前提は以下の通りである。
-
-- プロジェクトの主眼をコアドメインとドメインロジックに置く
-- 複雑な設計をドメインモデルに基づいて構築する
-- 技術者とドメイン専門家が創造的に協働し、個別のドメイン課題を扱う概念モデルを反復的に洗練する
-
-この用語は、同じタイトルの書籍でエリック・エヴァンスが考案した。
-
-**[Command Query Responsibility Segregation (CQRS)](http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/)**とは、以前は一つのオブジェクトだったところに、現在は二つのオブジェクトが作られるという話である。この分離は、メソッドが命令（command）かクエリ（query）かに基づいて行われる（メイアーよりも採用されている定義で、命令とは状態を変化させるメソッド、クエリとは値を返すメソッドを指す）。
-
-**[Event Sourcing](http://www.martinfowler.com/eaaDev/EventSourcing.html)** イベントソーシングの基本的な考え方は、アプリケーションの状態のすべての変更をイベントオブジェクトに記録し、それらのイベントオブジェクトが適用された順序で保存され、アプリケーションの状態そのものと同じ期間に保持されることである。
-
-**[Event Storming](https://ziobrando.blogspot.com/2013/11/introducing-event-storming.html)** は、複雑なビジネスドメインを迅速に探求するためのワークショップ形式である。
-
-<a id="contents"></a>
 ## 目次
 
 - [Awesome Domain-Driven Design](https://github.com/heynickc/awesome-ddd/)

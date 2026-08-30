@@ -1,31 +1,12 @@
 ---
-title: "zingchart/awesome-charting"
-description: "zingchart/awesome-charting の定本スナップショット"
+title: "Awesome Charting"
+description: "Chartingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-zingchart-awesome-charting-readme-md"
 ---
 
+# Awesome Charting
 
-<img src="https://cdn.rawgit.com/zingchart/awesome-charting/media/assets/awesome-charting.svg" alt="awesome">
-
-開発者に役立つ可能性のあるチャート・データ可視化リソースの厳選リスト。用途ごとに関連性があり現在も活発な JavaScript チャートライブラリへ焦点を当てる。各カテゴリ内はアルファベット順。
-
-*<a href="https://github.com/sindresorhus/awesome">Awesome</a> に着想を得ています。*
-
-
-提供:
-
-[![ZingChart](https://github.com/zingchart/awesome-charting/blob/assets/assets/zingchart-logo-full-color.svg?raw=true)](https://www.zingchart.com)
-
-レスポンシブチャートを構築するための宣言的、効率的、シンプルな JavaScript ライブラリ
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://travis-ci.org/zingchart/awesome-charting.svg?branch=master)](https://travis-ci.org/zingchart/awesome-charting)
-
-**目次**
-*  [商用ライブラリ](#commercial-libraries)
-*  [無料・オープンソースライブラリ](#free-and-open-source-libraries)
-*  [無料ライブラリ](#free-libraries)
-*  [フレームワーク固有ライブラリ](#framework-specific-libraries)
-*  [データ可視化リソース](#data-visualization-resources)
+Chartingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 商用ライブラリ
 * [amCharts](https://www.amcharts.com/) - 従来型チャート、株価、地図のための 3 ライブラリ。手描き風テーマオプションを備える。

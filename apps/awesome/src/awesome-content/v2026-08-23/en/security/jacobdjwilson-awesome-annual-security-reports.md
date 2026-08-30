@@ -1,47 +1,12 @@
 ---
-title: "jacobdjwilson/awesome-annual-security-reports"
-description: "Canonical snapshot of jacobdjwilson/awesome-annual-security-reports"
+title: "Awesome Annual Security Reports"
+description: "A curated collection of resources and projects focused on Annual Security Reports."
 licenseSource: "github-jacobdjwilson-awesome-annual-security-reports-readme-md"
 ---
 
-# Awesome Annual Security Reports [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-![Awesome Annual Security Reports Logo](https://raw.githubusercontent.com/jacobdjwilson/awesome-annual-security-reports/74ad710754d4bd70c728388df53e1b442c0e03b4/.github/images/awesome-security-reports-logo.png)
-> A curated list of annual cyber security reports - Centralized annual cybersecurity analysis and industry surveys
+# Awesome Annual Security Reports
 
-**Definition:** The cybersecurity landscape is constantly evolving, making it hard for CIOs, CISOs, and security leaders to keep up. They're flooded with annual reports from research consultancies, industry working groups, non-profits, and government agencies, and sifting through marketing material to find actionable insights is a major challenge. This list aims to cut through the noise by providing a vendor-neutral resource for the latest security trends, tools, and partnerships. It curates information from trusted sources, making it easier for security leaders to make informed decisions.
-
-**Disclaimer:** The reports in this collection are limited to content which does not require a paid subscription, membership, or service contract. There are a variety of different business models and drivers that would cause information to be put behind a paywall, I would like to respect those companies and individuals. Consult the original authors for licensing of any report content.
-
-**Limitations:** This repository focuses strictly on recurring annual data. It does not include project-specific documents, one-off technical specifications, or standards. We do include annual, segment-specific industry white papers and security industry funding reports. While all user-submitted uploads or report requests are welcome, we should draw a box around this _awesome_ list. 
-
-**Accessibility:** When possible, all reports will be sourced from their original authors and uploaded to [Virus Total](https://virustotal.com/) via GitHub action to provide an added level of confidence. The resulting analysis link will be included in the PDF commit notes. Additionally, all PDF reports will be converted to Markdown using AI, based on the [AI Prompts](https://github.com/jacobdjwilson/awesome-annual-security-reports/blob/74ad710754d4bd70c728388df53e1b442c0e03b4/.github/ai-prompts) defined in this repository. Conversion metadata is appended as the last line of each markdown file to track and ensure up-to-date AI accuracy.
-
-**Acknowledgement:** I would like to give recognition for other works that inspired this collection. [Dr. Wade Baker](https://www.linkedin.com/in/drwadebaker/) and the team at the [Cyentia Institute](https://www.cyentia.com/) deserve special mention for their pioneering, data-driven cybersecurity research and studies that continuously elevate industry analysis. Additionally, [Rick Howard](https://www.linkedin.com/in/rickhoward/)'s [Cyber Cannon](https://cybercanon.org/) list of must-read books is a timeless resource of curated wisdom, catering to both leadership and practitioner levels within the field. Finally, [Richard Stiennon](https://www.linkedin.com/in/stiennon) produces an annual comprehensive cybersecurity industry analysis at [IT Harvest](https://dashboard.it-harvest.com/) that deserves attention of those in the industry
-
-
-**Annual Report Counts:** \
-![Total](https://img.shields.io/badge/Total_Reports-991-blue?style=flat-square)
-![2008](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2008?type=file&style=flat-square&label=2008)
-![2009](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2009?type=file&style=flat-square&label=2009)
-![2010](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2010?type=file&style=flat-square&label=2010)
-![2011](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2011?type=file&style=flat-square&label=2011)
-![2012](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2012?type=file&style=flat-square&label=2012)
-![2013](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2013?type=file&style=flat-square&label=2013)
-![2014](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2014?type=file&style=flat-square&label=2014)
-![2015](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2015?type=file&style=flat-square&label=2015)
-![2016](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2016?type=file&style=flat-square&label=2016)
-![2017](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2017?type=file&style=flat-square&label=2017)
-![2018](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2018?type=file&style=flat-square&label=2018)
-![2019](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2019?type=file&style=flat-square&label=2019)
-![2020](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2020?type=file&style=flat-square&label=2020)
-![2021](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2021?type=file&style=flat-square&label=2021)
-![2022](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2022?type=file&style=flat-square&label=2022)
-![2023](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2023?type=file&style=flat-square&label=2023)
-![2024](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2024?type=file&style=flat-square&label=2024)
-![2025](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2025?type=file&style=flat-square&label=2025)
-![2026](https://img.shields.io/github/directory-file-count/jacobdjwilson/awesome-annual-security-reports/Annual%20Security%20Reports%2F2026?type=file&style=flat-square&label=2026)
-
-
+A curated collection of resources and projects focused on Annual Security Reports.
 
 ## Contents
 

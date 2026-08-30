@@ -1,32 +1,12 @@
 ---
-title: "compscilauren/awesome-git-hooks"
-description: "Canonical snapshot of compscilauren/awesome-git-hooks"
+title: "Awesome Git Hooks"
+description: "A curated collection of resources and projects focused on Git Hooks."
 licenseSource: "github-compscilauren-awesome-git-hooks-readme-md"
 ---
 
-<h1 align="center">
-  <a href="https://git-scm.com/">
-  <img width="455" src="https://github.com/compscilauren/awesome-git-hooks/blob/master/git-logo.png" alt="Awesome Git Hooks"></a><br>Awesome Git Hooks
-</h1>
-
-<p align="center">
-  <a href="https://awesome.re"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome Lists"></a>
-  <a href="https://github.com/CompSciLauren/awesome-git-hooks/blob/master/CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs welcome"></a>
-</p>
-
 # Awesome Git Hooks
 
-> :anchor: Easy-to-use Git hooks for automating tasks during Git workflows.
-
-Git hooks are custom scripts you can use to automate tasks which are triggered before or after a Git command is executed. There are two groups of these hooks: client-side and server-side. Client-side hooks are triggered by operations such as committing and merging, while server-side hooks run on network operations such as receiving pushed commits. This repo contains helpful resources as well as a variety of Git hook scripts that can be easily customized to serve different purposes.
-
-:heavy_check_mark: Nothing to install/download
-
-:heavy_check_mark: Code is well-documented
-
-:heavy_check_mark: Grab & go! Copy the code you want to use and paste into your .git/hooks folder
-
-Contributions are _always_ welcome! Please see our [Contribution Guidelines](https://github.com/compscilauren/awesome-git-hooks/blob/417f78654fc5064afbfb14ce92fe8c281c33f3c9/CONTRIBUTING.md). Also, if you don't find the script you want below, you can [create a new issue](https://github.com/CompSciLauren/awesome-git-hooks/issues/new?assignees=&labels=enhancement&template=new-git-hook-script-request.md&title=) to request it.
+A curated collection of resources and projects focused on Git Hooks.
 
 ## Contents
 

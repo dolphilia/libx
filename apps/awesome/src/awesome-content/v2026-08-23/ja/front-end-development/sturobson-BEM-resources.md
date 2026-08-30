@@ -1,12 +1,12 @@
 ---
-title: "sturobson/BEM-resources"
-description: "sturobson/BEM-resources の定本スナップショット"
+title: "Awesome BEM Resources"
+description: "BEM Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sturobson-BEM-resources-readme-md"
 ---
 
-# BEM リソース [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome BEM Resources
 
-誰もが開発に少し BEM を取り入れるのが好きです。ここでは、いずれ大きなリソース一覧になることを願う、その始まりを紹介します。
+BEM Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 記事
 

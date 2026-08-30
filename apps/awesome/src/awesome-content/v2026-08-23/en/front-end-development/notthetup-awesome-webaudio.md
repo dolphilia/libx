@@ -1,20 +1,12 @@
 ---
-title: "notthetup/awesome-webaudio"
-description: "Canonical snapshot of notthetup/awesome-webaudio"
+title: "Awesome WebAudio"
+description: "A curated collection of resources and projects focused on WebAudio."
 licenseSource: "github-notthetup-awesome-webaudio-readme-md"
 ---
 
 # Awesome WebAudio
 
-[![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome#readme)
-
-<img src="https://raw.githubusercontent.com/voodootikigod/logo.js/master/webaudio/webaudio-js.png" width="200px" alt="WebAudio">
-
-> A curated list of awesome [WebAudio](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) [packages](#packages) and [demos](#demos).
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
-
-Please raise a [Pull-Request](https://github.com/notthetup/awesome-webaudio/pulls) to add an awesome WebAudio thing to this list.
+A curated collection of resources and projects focused on WebAudio.
 
 ## Contents
 

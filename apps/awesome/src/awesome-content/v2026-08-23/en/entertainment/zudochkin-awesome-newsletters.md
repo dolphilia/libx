@@ -1,84 +1,12 @@
 ---
-title: "zudochkin/awesome-newsletters"
-description: "Canonical snapshot of zudochkin/awesome-newsletters"
+title: "Awesome Newsletters"
+description: "A curated collection of resources and projects focused on Newsletters."
 licenseSource: "github-zudochkin-awesome-newsletters-readme-md"
 ---
 
-A curated list of newsletters, awesome newsletters. [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome#readme)
+# Awesome Newsletters
 
-Inspired by the `awesome-*` trend on GitHub.
-
-The goal is to build a categorized community-driven collection of very well-known resources.
-
-Sharing, suggestions and contributions are always welcome! Please take a look at the [contribution guidelines](https://github.com/zudochkin/awesome-newsletters/blob/master/CONTRIBUTING.md) first.
-
-Thanks to all [contributors](https://github.com/zudochkin/awesome-newsletters/graphs/contributors).
-
-- [Frontend](#frontend)
-  - [General Web Development](#general-web-development)
-  - [JavaScript](#javascript)
-    - [React](#react)
-    - [EmberJS](#emberjs)
-    - [VueJS](#vuejs)
-    - [Svelte](#svelte)
-  - [Data Visualization](#data-visualization)
-  - [CSS](#css)
-  - [Design](#design)
-  - [HTML5](#html5)
-  - [SVG](#svg)
-  - [GraphQL](#graphql)
-- [Programming](#programming)
-  - [General Section](#general-section)
-  - [ObjectiveC](#objectivec)
-  - [C#](#c)
-  - [Node.js](#nodejs)
-  - [Swift](#swift)
-  - [Go](#go)
-  - [R](#r)
-  - [Ruby](#ruby)
-  - [PHP](#php)
-  - [Python](#python)
-  - [Groovy](#groovy)
-  - [Perl](#perl)
-  - [Elixir](#elixir)
-  - [Clojure](#clojure)
-  - [Haskell](#haskell)
-  - [Elm](#elm)
-  - [Rust](#rust)
-  - [C/C++](#cc)
-  - [Scala](#scala)
-  - [Java](#java)
-  - [Kotlin](#kotlin)
-  - [Lua](#lua)
-- [Open Source](#open-source)
-- [Git](#git)
-- [Editors](#editors)
-  - [Vim](#vim)
-  - [VSCode](#vscode)
-- [Databases](#databases)
-  - [PostgreSQL](#postgresql)
-  - [Redis](#redis)
-  - [NoSQL](#nosql)
-- [Backend Development](#backend-development)
-  - [Docker](#docker)
-  - [Devops](#devops)
-  - [Cloud Development](#cloud-development)
-  - [Kubernetes](#kubernetes)
-- [Mobile](#mobile)
-- [Artificial Intelligence / Machine Learning / Big Data](#artificial-intelligence--machine-learning--big-data)
-- [Blockchain / Cryptocurrencies](#blockchain--cryptocurrencies)
-- [Technology in General](#technology-in-general)
-- [Leadership](#leadership)
-- [Career and Growth](#career-and-growth)
-- [Marketing](#marketing)
-- [Business/Finance](#businessfinance)
-- [Awesome news](#awesome-news)
-- [Resilience](#resilience)
-- [Security](#security)
-- [Entrepreneurship](#entrepreneurship)
-- [System Design](#system-design)
-- [Miscellaneous](#miscellaneous)
-- [License](#license)
+A curated collection of resources and projects focused on Newsletters.
 
 ## Frontend
 

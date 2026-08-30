@@ -1,18 +1,12 @@
 ---
-title: "machinomy/awesome-non-financial-blockchain"
-description: "machinomy/awesome-non-financial-blockchain の正規スナップショット"
+title: "Awesome Non-Financial Blockchain"
+description: "Non-Financial Blockchainを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-machinomy-awesome-non-financial-blockchain-readme-md"
 ---
 
-# Awesome Non-Financial Blockchain [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Non-Financial Blockchain
 
-> ブロックチェーンの非金融用途を構築するプロジェクトの厳選リストです。
-
-ブロックチェーンとは、金融取引だけでなく、事実上あらゆる価値あるものを記録するようプログラムできる、改ざん不可能な経済取引のデジタル台帳です（[Don Tapscott](https://www.linkedin.com/pulse/whats-next-generation-internet-surprise-its-all-don-tapscott)による説明）。
-
-ブロックチェーン応用の大半は金融領域にあります。そのため、非金融用途はいっそう興味深いものです。
-
-ブロックチェーン応用の業界分類は、最も大きく変化する業界によって決まります。たとえば、終了した IoT 向け Bitcoin マイクロペイメントのスタートアップ [21](https://21.co)（現 [Earn.com](https://earn.com)）は、IoT と金融の両分野を大きく変える可能性がありました。金融業界は_現在_の慣行を新しい領域へ拡張することになります。しかし IoT では、_ビジネスモデル_そのものが大きく変わります。この考え方に基づき、現在の分類を行っています。
+Non-Financial Blockchainを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

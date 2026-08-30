@@ -1,16 +1,12 @@
 ---
-title: "denolib/awesome-deno"
-description: "Canonical snapshot of denolib/awesome-deno"
+title: "Awesome Deno"
+description: "A curated collection of resources and projects focused on Deno."
 licenseSource: "github-denolib-awesome-deno-readme-md"
 ---
 
-# Awesome Deno [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Deno
 
-[<img src="deno-logo.png" align="right" width="100">](https://deno.land)
-
-Deno is a simple, modern and secure runtime for JavaScript and TypeScript that uses V8 and is built in Rust.
-
-This list is a collection of the best Deno modules and resources.
+A curated collection of resources and projects focused on Deno.
 
 ## Contents
 

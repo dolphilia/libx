@@ -1,19 +1,12 @@
 ---
-title: "RyanZim/awesome-npm-scripts"
-description: "Canonical snapshot of RyanZim/awesome-npm-scripts"
+title: "Awesome npm Scripts"
+description: "A curated collection of resources and projects focused on npm Scripts."
 licenseSource: "github-RyanZim-awesome-npm-scripts-readme-md"
 ---
 
+# Awesome npm Scripts
 
-# Awesome npm Scripts [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-[<img src="npm-logo.png" align="right" width="150">](https://www.npmjs.com)
-
-> Everything awesome for using npm as a build tool.
-
-You might also like [awesome-npm](https://github.com/sindresorhus/awesome-npm).
-
-**Notice: I'm currently too busy to actively expand this list; therefore, I've decided to make this an [OPEN Open Source Project](http://openopensource.github.io/). Individuals making significant and valuable contributions are given commit-access to the project to contribute as they see fit.**
+A curated collection of resources and projects focused on npm Scripts.
 
 ## Contents
 

@@ -1,22 +1,12 @@
 ---
-title: "seed-rs/awesome-seed-rs"
-description: "seed-rs/awesome-seed-rs の定本スナップショット"
+title: "Awesome Seed RS"
+description: "Seed RSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-seed-rs-awesome-seed-rs-readme-md"
 ---
 
+# Awesome Seed RS
 
-
-# Awesome Seed RS [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/seed-rs/seed-rs.org/81ed1acc77062ede3295683f21f2d39611843192/seed_branding/seed_logo.min.svg" width="256" title="Seed logo">
-</p>
-
-> Seed に関連する優れたものの厳選リスト
-
-Seed は、WebAssembly 上で動作する高速で信頼性の高いウェブアプリを作成するためのオープンソース Rust フレームワークです。
-
-貢献を歓迎します。プルリクエストでリンクを追加するか、議論を始めるための issue を作成してください。
+Seed RSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

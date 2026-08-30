@@ -1,16 +1,12 @@
 ---
-title: "karlhorky/awesome-speakers"
-description: "プログラミングとデザイン分野の登壇者、連絡先、講演テーマの地域別一覧"
+title: "Awesome Speakers"
+description: "Speakersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-karlhorky-awesome-speakers-readme-md"
 ---
 
-# Awesome Speakers [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Speakers
 
-> Awesome speakers in the programming and design communities
-
-ミートアップやカンファレンスで素晴らしいスピーカーをもっと明確にし、探しやすくすることができるようになります！このスピーカー一覧、その連絡先、そして彼らが話すテーマは、その目標への一歩です。
-
-このリストに追加していただき、よりつながりのある、豊かなコミュニティの構築を手助けしてください。
+Speakersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Contents
 

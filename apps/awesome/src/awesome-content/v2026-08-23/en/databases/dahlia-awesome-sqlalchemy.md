@@ -1,25 +1,12 @@
 ---
-title: "dahlia/awesome-sqlalchemy"
-description: "Canonical snapshot of dahlia/awesome-sqlalchemy"
+title: "Awesome Sqlalchemy"
+description: "A curated collection of resources and projects focused on Sqlalchemy."
 licenseSource: "github-dahlia-awesome-sqlalchemy-readme-rst"
 ---
 
-Awesome SQLAlchemy
-==================
+# Awesome Sqlalchemy
 
-.. image:: https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg
-   :target: https://github.com/sindresorhus/awesome
-
-A curated list of awesome extra libraries and resources for SQLAlchemy_.  Inspired by
-awesome-python_.  (See also other `awesome lists`__!)
-
-Licensed under a `Creative Commons Attribution-ShareAlike 4.0 International
-License`__.
-
-.. _SQLAlchemy: https://www.sqlalchemy.org/
-.. _awesome-python: https://github.com/vinta/awesome-python
-__ https://github.com/sindresorhus/awesome
-__ https://creativecommons.org/licenses/by-sa/4.0/
+A curated collection of resources and projects focused on Sqlalchemy.
 
 .. contents:: Table of Contents
    :backlinks: none

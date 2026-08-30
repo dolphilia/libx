@@ -1,18 +1,12 @@
 ---
-title: "hstsethi/awesome-j2me"
-description: "hstsethi/awesome-j2me の正規スナップショット"
+title: "Awesome J2ME"
+description: "J2MEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hstsethi-awesome-j2me-readme-md"
 ---
 
-# Awesome J2ME [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome J2ME
 
-[<img src="j2me-logo.jpg" align="right" width="100">](https://www.oracle.com/java/technologies/javameoverview.html)
-
-> Java platform Micro edition[(J2ME)](https://en.wikipedia.org/wiki/Java_Platform,_Micro_Edition) の優れたリスト。ドキュメント、学術論文、チュートリアル、コミュニティ、IDE、SDK、エミュレーター、アプリ、ビデオゲームを収録。J2ME は旧式のテンキー携帯電話と PDA 向けに設計された Java 仕様です。CLDC 上に構築された MIDP は、`.jad` または `.jar` 拡張子を持つ Midlet の作成に使われ、旧式のテンキー携帯、Symbian、PDA などで動作します。MIDP は Java ME SDK 3.4 までサポートされています。
-
-J2ME コミュニティの認知を高め、このプロジェクトの開発を支援するため、スター（⭐）を付けてください。Awesome J2ME の紹介、セットアップ手順、歴史は<a href="https://hstsethi.vercel.app/posts/programming/awesome-j2me">このブログ記事</a>でお読みください。[Awesome Symbian](https://github.com/hstsethi/awesome-symbian)も確認してください。
-
-[Awesome](https://github.com/sindresorhus/awesome)、[Hackclub](https://retrospect.hackclub.com/j2me)、[Awesome Java](https://github.com/akullpp/awesome-java)などで紹介されたことを誇りに思います。
+J2MEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

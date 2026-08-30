@@ -1,14 +1,12 @@
 ---
-title: "gramantin/awesome-rails"
-description: "Canonical snapshot of gramantin/awesome-rails"
+title: "Awesome Rails"
+description: "A curated collection of resources and projects focused on Rails."
 licenseSource: "github-gramantin-awesome-rails-readme-md"
 ---
 
 # Awesome Rails
 
-> A curated list of awesome things related to Ruby on Rails [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome#readme)
-
-![awesome-rails](https://raw.githubusercontent.com/gramantin/awesome-rails/e1d052387f26e352373c0afe6f66b8831f599b04/.github/assets/awesome-rails.png)
+A curated collection of resources and projects focused on Rails.
 
 ## Table of Contents
 

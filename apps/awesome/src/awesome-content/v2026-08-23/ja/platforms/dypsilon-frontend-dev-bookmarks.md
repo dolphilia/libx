@@ -1,25 +1,13 @@
 ---
-title: "dypsilon/frontend-dev-bookmarks"
-description: "dypsilon/frontend-dev-bookmarks の正規スナップショット"
+title: "Awesome Frontend Development"
+description: "Frontend Developmentを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dypsilon-frontend-dev-bookmarks-readme-md"
 ---
 
-# フロントエンド開発 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Frontend Development
 
-**フロントエンドWeb開発者向けの資料を人手で厳選したコレクションです。**
+Frontend Developmentを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-これは、多数の小さなファイルへカテゴリ別に分割した閲覧用バージョンです。すべての資料を1ページへまとめた非常に大きなファイルもあります。必要であれば[完全な巨大ファイル](https://github.com/dypsilon/frontend-dev-bookmarks/blob/50ed051c96428af9d4f020305ca206587514e121/TOTALLY-GIGANTIC-FILE.md)を参照してください。
-
-これは継続的に更新されている現行版です。以前のブックマーク集が必要な場合はタグv.1.0を利用できますが、古い版には現在使えないリンクが多数含まれています。
-
-[![frontend.directory](https://img.shields.io/badge/frontend-directory-blue.svg?style=flat-square)](http://frontend.directory/)
-[![Gitter](https://img.shields.io/gitter/room/dypsilon/frontend-dev-bookmarks.svg?style=flat-square&maxAge=2592000)](https://gitter.im/dypsilon/frontend-dev-bookmarks)
-[![Twitter](https://img.shields.io/badge/follow-twitter-55acee.svg?style=flat-square)](https://twitter.com/FrontendDir)
-
-
----------------------------------------------------------
-
-<a id="appearance"></a>
 ## 外観
 
 Webサイトの外側から見える要素です。

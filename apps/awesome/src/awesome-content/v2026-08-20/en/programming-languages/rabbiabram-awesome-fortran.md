@@ -1,35 +1,12 @@
 ---
-title: "rabbiabram/awesome-fortran"
-description: "Canonical snapshot of rabbiabram/awesome-fortran"
+title: "Awesome Fortran"
+description: "A curated collection of resources and projects focused on Fortran."
 licenseSource: "github-rabbiabram-awesome-fortran-readme-md"
 ---
 
-# Awesome Fortran [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://api.travis-ci.org/rabbiabram/awesome-fortran.svg?branch=master)](https://travis-ci.org/rabbiabram/awesome-fortran)
-A curated list of awesome Fortran frameworks, libraries and software. Inspired by [awesome-swift](https://github.com/Wolg/awesome-swift) by @Wolg.
+# Awesome Fortran
 
-- [Awesome Fortran](#awesome-fortran)
-	- [Functional Libraries](#functional-libraries)
-	- [Graphics Libraries](#graphics-libraries)
-	- [Math libs](#math-libs)
-	- [JSON Manipulation](#json-manipulation)
-	- [XML Manipulation](#xml-manipulation)
-	- [Date and time manipulation](#date-and-time-manipulation)
-	- [Testing](#testing)
-	- [Encoding-Decoding](#encoding-decoding)
-  - [Portability enabling](#portability-enabling)
-  - [Command-Line parsing](#command-line-parsing)
-  - [Compiling and building](#compiling-and-building)
-  - [Preprocessor](#preprocessor)
-  - [Formatting](#formatting)
-  - [Automatic documentation](#automatic-documentation)
-  - [Computational Fluid Dynamics](#computational-fluid-dynamics)
-  - [Docker](#docker)
-  - [Web](#web)
-- [Resources](#resources)
-  - [Fortran Websites](#fortran-websites)
-	- [Fortran Videos](#fortran-videos)
-- [Other Awesome Lists](#other-awesome-lists)
-- [Contributing](#contributing)
+A curated collection of resources and projects focused on Fortran.
 
 ## Functional Libraries
 * [Functional Fortran](https://github.com/wavebitscientific/functional-fortran) - Functional programming for modern Fortran.

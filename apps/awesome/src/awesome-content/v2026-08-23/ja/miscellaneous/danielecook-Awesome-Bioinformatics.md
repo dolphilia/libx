@@ -1,19 +1,13 @@
 ---
-title: "danielecook/Awesome-Bioinformatics"
-description: "バイオインフォマティクスのソフトウェア、ライブラリ、学習資料を集めた厳選リスト"
+title: "Awesome Bioinformatics"
+description: "Bioinformaticsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-danielecook-Awesome-Bioinformatics-readme-md"
 ---
 
-<a id="awesome-bioinformatics"></a>
-# Awesome Bioinformatics [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Check URLs](https://github.com/danielecook/Awesome-Bioinformatics/actions/workflows/url-check.yml/badge.svg)](https://github.com/danielecook/Awesome-Bioinformatics/actions/workflows/url-check.yml) [![Generate TOC](https://github.com/danielecook/Awesome-Bioinformatics/actions/workflows/toc.yml/badge.svg)](https://github.com/danielecook/Awesome-Bioinformatics/actions/workflows/toc.yml)
+# Awesome Bioinformatics
 
-> バイオインフォマティクスは、生物学的データを理解するための手法とソフトウェアツールを開発する学際分野です。— [Wikipedia](https://en.wikipedia.org/wiki/Bioinformatics)
+Bioinformaticsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-素晴らしいバイオインフォマティクスソフトウェア、リソース、およびライブラリを厳選したリスト。ほとんどがコマンドラインベースであり、無料またはオープンソースです。ぜひ [contribute](https://github.com/danielecook/Awesome-Bioinformatics/blob/86812b12322b1da5df821a2af2649607462633b9/CONTRIBUTING.md)ください！
-
-
-
-<a id="table-of-contents"></a>
 ## 目次
 
 - [Package suites](#package-suites)

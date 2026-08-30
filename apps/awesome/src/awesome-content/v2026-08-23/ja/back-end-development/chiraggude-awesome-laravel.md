@@ -1,16 +1,13 @@
 ---
-title: "chiraggude/awesome-laravel"
-description: "Laravelのパッケージ、開発環境、ホスティング、教材、コミュニティ集"
+title: "Awesome Laravel"
+description: "Laravelを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-chiraggude-awesome-laravel-readme-md"
 ---
 
-# Awesome Laravel [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://img.shields.io/travis/chiraggude/awesome-laravel/master.svg?style=flat)](https://travis-ci.org/chiraggude/awesome-laravel)
+# Awesome Laravel
 
-> A curated list of awesome bookmarks, packages, tutorials, videos and other cool resources from the Laravel ecosystem.
+Laravelを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[ziadoz/awesome-php](https://github.com/ziadoz/awesome-php)をインスピレーションとして
-
-<a id="table-of-contents"></a>
 ## 目次
 
 - [Essentials](#essentials)

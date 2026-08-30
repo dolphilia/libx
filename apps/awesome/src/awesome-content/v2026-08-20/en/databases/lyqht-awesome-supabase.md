@@ -1,16 +1,12 @@
 ---
-title: "lyqht/awesome-supabase"
-description: "Canonical snapshot of lyqht/awesome-supabase"
+title: "Awesome Supabase"
+description: "A curated collection of resources and projects focused on Supabase."
 licenseSource: "github-lyqht-awesome-supabase-readme-md"
 ---
 
-# Awesome Supabase [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Supabase
 
-[Supabase](https://supabase.com/) is an awesome open source alternative to Firebase, where it provides you with a PostgreSQL database, Authentication, instant APIs, Edge Functions, Realtime subscriptions, and Storage.
-
-This list tries to cover what is awesome about the product and its community! 👁⚡️👁
-
-To **enhance** this list, please refer to [CONTRIBUTING.md](https://github.com/lyqht/awesome-supabase/blob/11d47fdfe4b7c639fc84543d092db45530d4fd86/CONTRIBUTING.md).
+A curated collection of resources and projects focused on Supabase.
 
 ## Contents
 

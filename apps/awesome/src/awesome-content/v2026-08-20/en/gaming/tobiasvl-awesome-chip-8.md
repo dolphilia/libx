@@ -1,20 +1,12 @@
 ---
-title: "tobiasvl/awesome-chip-8"
-description: "Canonical snapshot of tobiasvl/awesome-chip-8"
+title: "Awesome CHIP-8"
+description: "A curated collection of resources and projects focused on CHIP-8."
 licenseSource: "github-tobiasvl-awesome-chip-8-readme-md"
 ---
 
-# Awesome CHIP-8 [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome CHIP-8
 
-[<img src="c8.png" align="right" width="100">](https://chip-8.github.io)
-
-> Virtual computer game machine from the 70s 
-
-A curated list of awesome CHIP-8 resources, tools, documentation, related projects and open source ROMs.
-
-Created in 1977, [CHIP-8](https://en.wikipedia.org/wiki/CHIP-8) is the original fantasy console. Initially designed to ease game development for the COSMAC VIP kit computer, it has enjoyed several revivals over the decades for new and exciting platforms. Today, creating a CHIP-8 implementation is a rite of passage for anyone interested in learning about emulation.
-
-To add something to this list, please see the [contribution guidelines](https://github.com/tobiasvl/awesome-chip-8/blob/62cec4b6bee270b5de4745d3c107d4138875b212/CONTRIBUTING.md).
+A curated collection of resources and projects focused on CHIP-8.
 
 ## Contents
 

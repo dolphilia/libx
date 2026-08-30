@@ -1,20 +1,12 @@
 ---
-title: "Fr0sT-Brutal/awesome-pascal"
-description: "Delphi・FreePascalのライブラリ、コンポーネント、ツールを分類した定本スナップショット"
+title: "Awesome Pascal"
+description: "Pascalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Fr0sT-Brutal-awesome-pascal-readme-md"
 ---
 
-# PascalのAwesomeリスト <a id="awesome-pascal"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Pascal
 
-Delphi、FreePascalなどの*Pascalフレームワーク、ライブラリ、資料、優れた関連物を厳選したリストです。awesome-xxxに着想を得ています。
-
-**オープンソースプロジェクトのみを対象とします。3年以上更新されていないプロジェクトは、特に優れているか独自性がある場合に限り掲載します。**
-
-不足している優れたプロジェクトは、コメントまたはPull Requestで提案してください。
-
-:exclamation: **コンパイラー互換性の注意**。各プロジェクトには説明に基づくコンパイラー／言語方言の互換バッジがあります。公式に非対応のコンパイラーとの実際の互換性は検証していません。軽微な修正で使える場合もありますが、例外があります。
-
-:exclamation: **大規模プロジェクトに含まれる機能の注意**。大規模プロジェクトは複数分類に該当する機能を持ちます。非常に大きなコードベースは主説明へのリンク付きで重複掲載できますが、重複削減のため追加機能は通常コメントに記載します。機能を探す際は該当節だけでなくリスト全体をキーワード検索し、機能追記も提案してください。
+Pascalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a> ##
 

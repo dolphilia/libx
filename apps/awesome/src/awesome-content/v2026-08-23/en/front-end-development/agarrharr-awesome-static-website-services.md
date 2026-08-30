@@ -1,14 +1,12 @@
 ---
-title: "agarrharr/awesome-static-website-services"
-description: "Canonical snapshot of agarrharr/awesome-static-website-services"
+title: "Awesome Static Website Services"
+description: "A curated collection of resources and projects focused on Static Website Services."
 licenseSource: "github-agarrharr-awesome-static-website-services-readme-md"
 ---
 
-# Awesome Static Website Services [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Static Website Services
 
-> A curated list of services for static websites.
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
+A curated collection of resources and projects focused on Static Website Services.
 
 ## Table of Contents
 

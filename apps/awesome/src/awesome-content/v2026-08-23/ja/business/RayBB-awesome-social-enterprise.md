@@ -1,25 +1,13 @@
 ---
-title: "RayBB/awesome-social-enterprise"
-description: "RayBB/awesome-social-enterprise の正規スナップショット"
+title: "Awesome Social Enterprise"
+description: "Social Enterpriseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-RayBB-awesome-social-enterprise-readme-md"
 ---
 
-# Awesome Social Enterprise（社会的企業） [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-📗社会的企業の世界を深く知るための資料 🌼
+# Awesome Social Enterprise
 
-> 社会的企業とは、主に**社会的インパクトを重視**し、少なくとも一部を**自主財源で運営**する組織です。
+Social Enterpriseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-
-<details>
-  <summary>この一覧を作った理由</summary>
-
-  Eckerd College在学中、私は社会的企業という概念に何度も出会いました。最初は_Technology, Society, and The Environment_という講義、次は社会的企業のCTOとの出会い、最後は_Social Entrepreneurship_という講義でした。そのたびに社会的企業という考え方へ強く惹かれましたが、この世界へ簡単につながる方法がないと感じていました。
-
-  やがて「social entrepreneurs」に関する週次ダイジェストを受け取る[Googleアラート](https://support.google.com/websearch/answer/4815696?hl=en)を設定しました。ある程度は役立ちましたが、まだ何かを見落としている感覚がありました。数年後、私は[hackNY](https://hackny.org/)という非営利団体へ深く関わり、The New York Timesで働きながら、社会的企業についてもっと学びたいという思いを強くしました。そこで、人々が社会的企業の世界へつながりやすくなるよう、この資料一覧を編纂し始めました。よくある質問は末尾のFAQを参照してください。
-
-</details>
-
-<a id="contents"></a>
 ## 目次
 * [読むもの](#what-to-read)
 * [ポッドキャスト 🎧](#podcasts-)

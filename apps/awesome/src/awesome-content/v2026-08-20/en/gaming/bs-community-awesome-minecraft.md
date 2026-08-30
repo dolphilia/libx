@@ -1,16 +1,12 @@
 ---
-title: "bs-community/awesome-minecraft"
-description: "Canonical snapshot of bs-community/awesome-minecraft"
+title: "Awesome Minecraft"
+description: "A curated collection of resources and projects focused on Minecraft."
 licenseSource: "github-bs-community-awesome-minecraft-readme-md"
 ---
 
-# Awesome Minecraft [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Minecraft
 
-<img src="screenshot.png" width="1920" />
-
-> The curated list of awesome things related to Minecraft.
-
-[Minecraft](https://minecraft.net/) is a sandbox video game developed by Mojang. The game allows players to build with a variety of different blocks in a 3D procedurally generated world, requiring creativity from players. Other activities in the game include exploration, resource gathering, crafting, and combat.
+A curated collection of resources and projects focused on Minecraft.
 
 ## Contents
 

@@ -1,14 +1,12 @@
 ---
-title: "desiderantes/awesome-vala"
-description: "Canonical snapshot of desiderantes/awesome-vala"
+title: "Awesome Vala"
+description: "A curated collection of resources and projects focused on Vala."
 licenseSource: "github-desiderantes-awesome-vala-readme-md"
 ---
 
-# Awesome Vala [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Vala
 
-[<img src="vala.svg" align="right" width="100">](https://vala.dev)
-
-A curated list of resources for [Vala](https://vala.dev/) - A programming language using modern high level abstractions without imposing additional runtime requirements, by leaning on GLib and GObject.
+A curated collection of resources and projects focused on Vala.
 
 ## Contents
 

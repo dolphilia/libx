@@ -1,18 +1,12 @@
 ---
-title: "eselkin/awesome-computational-neuroscience"
-description: "計算論的神経科学の大学、研究者、研究領域、出版物を地域別に整理した定本スナップショット"
+title: "Awesome Computational Neuroscience"
+description: "Computational Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-eselkin-awesome-computational-neuroscience-readme-md"
 ---
 
-# 計算論的神経科学のAwesomeリスト <a id="awesome-computational-neuroscience"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Computational Neuroscience
 
-貢献方法は[:pencil2: コントリビューション規約](https://github.com/eselkin/awesome-computational-neuroscience/blob/master/contributing.md)を参照してください。
-
-[計算論的神経科学](https://en.wikipedia.org/wiki/Computational_neuroscience)は、生物学・神経科学、医学、生物物理学、心理学、計算機科学、数学、統計学を組み合わせ、計算的手法で神経系を研究する学際分野です。
-
-この計算論的神経科学、理論神経科学、システム神経科学の教育機関・研究者一覧は、分野の研究者を世界的な視点で示し、掲載機関への応募や指導教員探しを容易にすることを目的としています。
-
-主任研究者（PI）の氏名、経歴の抜粋、出版物へのリンクに加え、多くの研究者には「計算論的 +/=/-」の小さな尺度が付いています。これは編集者の主観的な指標です。(+)は大学が計算論的神経科学者と位置付け、経歴でも研究の重要部分として一貫して示され、相当量の研究実績があること、(=)は大学が計算的研究の実践者と位置付け、この分野の論文を時折発表していること、(-)は大学や経歴に言及があるものの、それを示す論文を確認できなかったことを意味します。この指標は出版実績に応じて変わる可能性があります。
+Computational Neuroscienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

@@ -1,16 +1,12 @@
 ---
-title: "mhxion/awesome-discord-communities"
-description: "Canonical snapshot of mhxion/awesome-discord-communities"
+title: "Awesome Discord Communities"
+description: "A curated collection of resources and projects focused on Discord Communities."
 licenseSource: "github-mhxion-awesome-discord-communities-readme-md"
 ---
 
-<img align="right" height="207x" width="205px" alt="Banner" src="https://raw.githubusercontent.com/mhxion/awesome-discord-communities/1d973a9d4f59325ef11c48d0b2dde887cf688808/images/awesome_programming_discord.webp">
+# Awesome Discord Communities
 
-
-# Awesome Discord Communities [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-A curated list of awesome Discord communities for developers, game engineers, hackers, hobbyists, mathematicians and tech enthusiasts. [Discord](https://github.com/mhxion/awesome-discord-communities/blob/1d973a9d4f59325ef11c48d0b2dde887cf688808/FAQ.md#what-is-discordcom-exactly) at heart, is a community-oriented instant messaging, voice and video call application. [__This is not a Discord listing, promotional, or affiliated site!__](https://github.com/mhxion/awesome-discord-communities/blob/1d973a9d4f59325ef11c48d0b2dde887cf688808/FAQ.md#how-is-this-list-any-different-from-discord-listing-sites)
-
+A curated collection of resources and projects focused on Discord Communities.
 
 ## Contents
 

@@ -1,12 +1,12 @@
 ---
-title: "philsturgeon/awesome-earth"
-description: "Canonical snapshot of philsturgeon/awesome-earth"
+title: "Awesome Earth"
+description: "A curated collection of resources and projects focused on Earth."
 licenseSource: "github-philsturgeon-awesome-earth-readme-md"
 ---
 
-# Awesome Earth [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Earth
 
-The world is simultaneously underwater and on fire, and people want to know what they can do about it. Let's share resources, services, products and ideas you can use to stop kicking the planet in the face.
+A curated collection of resources and projects focused on Earth.
 
 ## Contents
 

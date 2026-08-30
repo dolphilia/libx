@@ -1,16 +1,12 @@
 ---
-title: "mohataher/awesome-tinkerpop"
-description: "mohataher/awesome-tinkerpop の定本スナップショット"
+title: "Awesome TinkerPop"
+description: "TinkerPopを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mohataher-awesome-tinkerpop-readme-md"
 ---
 
-# Awesome TinkerPop [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome TinkerPop
 
-![alt tag](https://raw.githubusercontent.com/mohataher/awesome-tinkerpop/master/tinkerpop-splash.png)
-
-GitHub上の優れたTinkerPopライブラリだけを集めたリストです。
-
->Apache TinkerPop™は、グラフデータベース（OLTP）とグラフ分析システム（OLAP）の両方に対応するグラフコンピューティングフレームワークです。
+TinkerPopを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次
 * [TinkerPop3](#tinkerpop3)

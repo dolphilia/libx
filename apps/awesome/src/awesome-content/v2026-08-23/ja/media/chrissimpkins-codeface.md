@@ -1,13 +1,13 @@
 ---
-title: "chrissimpkins/codeface"
-description: "ソースコード表示に適したオープンライセンスの等幅フォント集"
+title: "Awesome Codeface"
+description: "Codefaceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-chrissimpkins-codeface-readme-md"
 ---
 
-<img src="https://raw.githubusercontent.com/chrissimpkins/codeface/40538ae5ffee793c98355b2c03c30130aed51932/images/non-gallery/codeface-HR-new.png" alt="Codeface | Typefaces for source code beautification" width="790">
+# Awesome Codeface
 
+Codefaceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="typefaces-for-source-code-beautification"></a>
 ## ソースコードを美しく表示する書体
 [![Awesome](https://camo.githubusercontent.com/13c4e50d88df7178ae1882a203ed57b641674f94/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667)](https://github.com/sindresorhus/awesome)
 

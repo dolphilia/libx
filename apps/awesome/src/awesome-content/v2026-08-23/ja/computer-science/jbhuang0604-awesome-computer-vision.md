@@ -1,20 +1,13 @@
 ---
-title: "jbhuang0604/awesome-computer-vision"
-description: "コンピュータービジョンの書籍、講座、論文、ソフトウェア、データセット集"
+title: "Awesome Computer Vision"
+description: "Computer Visionを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jbhuang0604-awesome-computer-vision-readme-md"
 ---
 
+# Awesome Computer Vision
 
-# Awesome Computer Vision: [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-A curated list of awesome computer vision resources, inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+Computer Visionを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-コンピュータビジョンにおける人物のリスト（学際的な学歴を含む）については、 [here](https://github.com/jbhuang0604/awesome-computer-vision/blob/master/people.md) をご参照ください
-
-<a id="contributing"></a>
-## コントリビューション
-Please feel free to send me [pull requests](https://github.com/jbhuang0604/awesome-computer-vision/pulls) or email (jbhuang@vt.edu) to add links.
-
-<a id="table-of-contents"></a>
 ## 目次
 
  - [Awesome Lists](#awesome-lists)

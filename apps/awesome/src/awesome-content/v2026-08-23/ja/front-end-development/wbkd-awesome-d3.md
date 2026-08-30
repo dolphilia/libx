@@ -1,17 +1,12 @@
 ---
-title: "wbkd/awesome-d3"
-description: "wbkd/awesome-d3 の定本スナップショット"
+title: "Awesome D3"
+description: "D3を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-wbkd-awesome-d3-readme-md"
 ---
 
-# Awesome D3 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome D3
 
-このリストは、興味深い[D3js](http://d3js.org)ライブラリ、プラグイン、ユーティリティを追跡します。
-<br />チュートリアル、リソース、コンセプトは、参照・貢献できる**[非常に優れた読書リスト](https://github.com/mbostock/d3/wiki/Tutorials)**が既にあるため、ここには掲載しないことにしました。
-
-キュレーター: [Moritz Klack](https://twitter.com/moklick) と [Christopher Möller](https://twitter.com/chrtze)（[webkid.io](http://www.webkid.io)）。
-
-インタラクティブな[D3 Discovery](https://d3-discovery.net/)ツールでリストを探索することもできます。
+D3を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## チャート
 

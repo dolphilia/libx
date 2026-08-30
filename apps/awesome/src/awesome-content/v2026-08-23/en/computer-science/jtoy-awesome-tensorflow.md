@@ -1,20 +1,12 @@
 ---
-title: "jtoy/awesome-tensorflow"
-description: "Canonical snapshot of jtoy/awesome-tensorflow"
+title: "Awesome TensorFlow"
+description: "A curated collection of resources and projects focused on TensorFlow."
 licenseSource: "github-jtoy-awesome-tensorflow-readme-md"
 ---
 
-# Awesome TensorFlow  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/jtoy/awesome)
+# Awesome TensorFlow
 
-A curated list of awesome TensorFlow experiments, libraries, and projects. Inspired by awesome-machine-learning.
-
-## What is TensorFlow?
-
-TensorFlow is an open source software library for numerical computation using data flow graphs. In other words, the best way to build deep learning models.
-
-More info [here](http://tensorflow.org).
-
-
+A curated collection of resources and projects focused on TensorFlow.
 
 ## Table of Contents
 
@@ -280,4 +272,3 @@ More info on the [guidelines](https://github.com/jtoy/awesome-tensorflow/blob/ma
 
 * Some of the python libraries were cut-and-pasted from [vinta](https://github.com/vinta/awesome-python)
 * The few go reference I found where pulled from [this page](https://code.google.com/p/go-wiki/wiki/Projects#Machine_Learning)
-

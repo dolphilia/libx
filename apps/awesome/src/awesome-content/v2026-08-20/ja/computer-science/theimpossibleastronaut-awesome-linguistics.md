@@ -1,13 +1,12 @@
 ---
-title: "theimpossibleastronaut/awesome-linguistics"
-description: "theimpossibleastronaut/awesome-linguistics の定本スナップショット"
+title: "Awesome Linguistics"
+description: "Linguisticsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-theimpossibleastronaut-awesome-linguistics-readme-md"
 ---
 
-### Awesome Linguistics
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Linguistics
 
-言語学に少しでも関連するものをアルファベット順にまとめたリストです。
+Linguisticsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 - [プログラミング](#programming)
     - [プラットフォームとツールキット](#platforms-and-toolkits)

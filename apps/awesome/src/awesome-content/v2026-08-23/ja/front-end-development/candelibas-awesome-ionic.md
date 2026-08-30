@@ -1,30 +1,12 @@
 ---
-title: "candelibas/awesome-ionic"
-description: "IonicとCapacitorの資料、プラグイン、UI部品、アプリ事例を分類した定本スナップショット"
+title: "Awesome Ionic"
+description: "Ionicを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-candelibas-awesome-ionic-readme-md"
 ---
 
-# IonicのAwesomeリスト <a id="awesome-ionic"></a> [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Ionic
 
-<div align="center">
-	<img width="100%" src="https://raw.githubusercontent.com/Cap-go/awesome-ionic/main/awesome_ionic.png" alt="Awesome ionic">
-	<br>
-</div>
-<br/>
-<div align="center">
-⚡ <a href='https://ionicframework.com/'>Ionic</a>フレームワークに関する優れた資料を厳選したリストです。
-<br />
-Ionicは、Web技術でクロスプラットフォームのモバイルアプリを容易に構築できるオープンソースフレームワークです。
-<br/>
-</div>
-<p align='center'>
-  <img src='https://capgo.app/readme-banner.svg?repo=Cap-go/awesome-ionic' alt='Capgo - Instant updates for capacitor'/>
-</p>
-<div align="center">
-  <h2><a href="https://capgo.app/?ref=awesomelist_ionic"> ➡️ CapgoでCapacitorアプリを即時更新 🚀</a></h2>
-  <h2><a href="https://capgo.app/premium-support/"> Capacitor専門家へ不具合修正を依頼 💪</a></h2>
-</div>
-<br>
+Ionicを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

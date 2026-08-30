@@ -1,17 +1,12 @@
 ---
-title: "yissachar/awesome-dart"
-description: "yissachar/awesome-dart の正規スナップショット"
+title: "Awesome Dart"
+description: "Dartを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-yissachar-awesome-dart-readme-md"
 ---
 
-Awesome Dart [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-============
+# Awesome Dart
 
-優れたDartフレームワーク、ライブラリ、ソフトウェアの厳選リスト。掲載項目は活発に保守され、十分な文書があり、Dartコミュニティで人気があります。[Awesome](https://github.com/sindresorhus/awesome)リスト群に着想を得ています。
-
-### コントリビューション <a id="contributing"></a>
-
-まず[コントリビューションガイドライン](https://github.com/yissachar/awesome-dart/blob/116107d93b8bd5afe467728ee1f59f0b79e94d87/CONTRIBUTING.md)へ目を通してください。保守されていない、または不適切なパッケージやプロジェクトがあれば、このファイルを改善するPull Requestを送ってください。すべての[コントリビューター](https://github.com/yissachar/awesome-dart/graphs/contributors)に感謝します。皆さんは最高です。
+Dartを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 ### 目次 <a id="contents"></a>
 

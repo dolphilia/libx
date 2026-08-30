@@ -1,30 +1,12 @@
 ---
-title: "candelibas/awesome-ionic"
-description: "Canonical snapshot of candelibas/awesome-ionic"
+title: "Awesome Ionic"
+description: "A curated collection of resources and projects focused on Ionic."
 licenseSource: "github-candelibas-awesome-ionic-readme-md"
 ---
 
-# Awesome Ionic [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Ionic
 
-<div align="center">
-	<img width="100%" src="https://raw.githubusercontent.com/Cap-go/awesome-ionic/main/awesome_ionic.png" alt="Awesome ionic">
-	<br>
-</div>
-<br/>
-<div align="center">
-⚡ A curated list of awesome resources related to the <a href='https://ionicframework.com/'>Ionic</a> Framework.
-<br />
-Ionic is an open-source mobile application framework that makes it easy to build cross-platform mobile apps with web technologies.
-<br/>
-</div>
-<p align='center'>
-  <img src='https://capgo.app/readme-banner.svg?repo=Cap-go/awesome-ionic' alt='Capgo - Instant updates for capacitor'/>
-</p>
-<div align="center">
-  <h2><a href="https://capgo.app/?ref=awesomelist_ionic"> ➡️ Get Instant updates for your Capacitor App with Capgo 🚀</a></h2>
-  <h2><a href="https://capgo.app/premium-support/"> Fix your annoying bug now, Hire a Capacitor expert 💪</a></h2>
-</div>
-<br>
+A curated collection of resources and projects focused on Ionic.
 
 ## Contents
 

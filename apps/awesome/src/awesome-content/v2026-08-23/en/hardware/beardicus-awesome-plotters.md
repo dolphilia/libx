@@ -1,12 +1,12 @@
 ---
-title: "beardicus/awesome-plotters"
-description: "Canonical snapshot of beardicus/awesome-plotters"
+title: "Awesome Plotters"
+description: "A curated collection of resources and projects focused on Plotters."
 licenseSource: "github-beardicus-awesome-plotters-readme-md"
 ---
 
-# Awesome Plotters [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Plotters
 
-A curated list of code and resources for computer-controlled drawing machines and other visual art robots.
+A curated collection of resources and projects focused on Plotters.
 
 ## Contents
 

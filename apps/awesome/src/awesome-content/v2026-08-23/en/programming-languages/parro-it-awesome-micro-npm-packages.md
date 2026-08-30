@@ -1,15 +1,12 @@
 ---
-title: "parro-it/awesome-micro-npm-packages"
-description: "Canonical snapshot of parro-it/awesome-micro-npm-packages"
+title: "Awesome Micro npm Packages"
+description: "A curated collection of resources and projects focused on Micro npm Packages."
 licenseSource: "github-parro-it-awesome-micro-npm-packages-readme-md"
 ---
 
-# Awesome Micro npm Packages [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Micro npm Packages
 
-> A curated list of small, focused Node.js modules.
-
-*Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.*
-
+A curated collection of resources and projects focused on Micro npm Packages.
 
 ## Articles
 

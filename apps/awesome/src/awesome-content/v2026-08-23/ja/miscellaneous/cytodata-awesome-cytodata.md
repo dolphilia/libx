@@ -1,21 +1,12 @@
 ---
-title: "cytodata/awesome-cytodata"
-description: "cytodata/awesome-cytodataの正規スナップショット"
+title: "Awesome Cytodata"
+description: "Cytodataを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-cytodata-awesome-cytodata-readme-md"
 ---
 
-# Awesome Cytodata [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Cytodata
 
-> 優れた Cytodata リソースのキュレーション済みリスト。
-
-![cytodata logo](https://raw.githubusercontent.com/cytodata/awesome-cytodata/395cdc9c015a0431e80fc9531931064df59c909c/cytodata-logo.png)
-
-[Cytodata](https://cytodata.org/) は、**生物学的表現型**の**画像ベースプロファイリング**に関わる研究者・リソースのコミュニティを指します。
-この**生物学的表現型**は通常、遺伝的・化学的摂動により誘発され、しばしば疾患状態を表します。
-**画像ベースプロファイリング**はこれらの表現型を調査し、遺伝的改変の影響の発見や化合物の作用機序の決定を含む生物学的洞察を明らかにするために使用されます。
-
-このページは、ソフトウェア、データセット、画期的な出版物、画像ベースプロファイリング手法のキュレーション済みリストです。
-新進・既存を問わず研究者が優れた Cytodata リソースを発見・文書化できる場を提供することが目標です。
+Cytodataを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,19 +1,12 @@
 ---
-title: "TalAter/awesome-service-workers"
-description: "TalAter/awesome-service-workers の定本スナップショット"
+title: "Awesome Service Workers"
+description: "Service Workersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-TalAter-awesome-service-workers-readme-md"
 ---
 
-# Awesome Service Workers [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Service Workers
 
-Service Worker リソースの厳選コレクション。
-
-<a href="https://pwabook.com/oreillyasw"><img align="right" src="https://github.com/TalAter/awesome-progressive-web-apps/raw/master/images/mpwa.png" alt="Building Progressive Web Apps"></a>
->Service Worker はすべてのプログレッシブウェブアプリの中心にあります。その永続的な性質により、プログレッシブウェブアプリはアプリが行うべきことへの期待を満たせます。これは、ネイティブアプリだけができたことと、モダンなプログレッシブウェブアプリができることの間の、欠けていたつながりです。
->
-> -- <cite>[Building Progressive Web Apps - O'Reilly](https://pwabook.com/oreillyasw)</cite>
-
-貢献したい場合は、[contribution guidelines](https://github.com/TalAter/awesome-service-workers/blob/e84fb0dfa784e2ec8f68c2e6d1cfb718d70f9a5c/contributing.md) をお読みください。
+Service Workersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

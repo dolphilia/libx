@@ -1,45 +1,12 @@
 ---
-title: "readthedocs-examples/awesome-read-the-docs"
-description: "readthedocs-examples/awesome-read-the-docs の正規スナップショット"
+title: "Awesome Read the Docs"
+description: "Read the Docsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-readthedocs-examples-awesome-read-the-docs-readme-md"
 ---
 
+# Awesome Read the Docs
 
-
-
-
-
-# Awesome Read the Docs [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![lint](https://github.com/readthedocs-examples/awesome-read-the-docs/actions/workflows/lint.yaml/badge.svg)](https://github.com/readthedocs-examples/awesome-read-the-docs/actions/workflows/lint.yaml)
-
-
-
-> 学習や新しいドキュメントプロジェクトの立ち上げに役立つ、優れたドキュメントプロジェクトを集めたリストです。
-> Read the Docs の実際の活用例も紹介します。
-
-
-
-<a href="https://docs.readthedocs.io/en/stable/tutorial/index.html" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/readthedocs-examples/awesome-read-the-docs/7f77aef23e000ca349c3d2bb6c019adb996dbef1/readthedocs-logo.svg" />
-</a>
-
-
-
-Read the Docs は、ドキュメントをビルドして公開する完全なオープンソースプラットフォームです。
-詳しくは https://about.readthedocs.com を参照してください。
-
-## はじめに
-
-*科学・学術*分野では、多くの新しく刺激的なドキュメントプロジェクトが登場し、ドキュメントの世界をソフトウェアプロジェクトの外へ広げています。
-最新の発展と傾向を捉えるため、特に従来のソフトウェアドキュメント分野以外における、ドキュメント技術の有益な利用例をまとめています。
-
-優れた実用例である Read the Docs プロジェクトの紹介に加え、学習と導入を支援する多数の[サンプルプロジェクト](#example-projects)も構築されています。
-
-これが、ドキュメントを書く人、新しいドキュメントプロジェクトを開発する人、既存のものを更新する人の刺激になることを願っています。
-ここで紹介するプロジェクトはすべて**オープンソース**で、ソースコードを確認して実装方法を理解できます。
-
-このリストは作業途中です。ぜひ[貢献](#contributing)してください。
-
-
+Read the Docsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

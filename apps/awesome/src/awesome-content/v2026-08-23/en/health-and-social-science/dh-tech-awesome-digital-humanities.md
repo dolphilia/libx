@@ -1,16 +1,12 @@
 ---
-title: "dh-tech/awesome-digital-humanities"
-description: "Canonical snapshot of dh-tech/awesome-digital-humanities"
+title: "Awesome Digital Humanities"
+description: "A curated collection of resources and projects focused on Digital Humanities."
 licenseSource: "github-dh-tech-awesome-digital-humanities-readme-md"
 ---
 
-# Awesome Digital Humanities [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Digital Humanities
 
-[<img src="android-chrome-512x512.png" align="right" width="100">](https://github.com/dh-tech/awesome-digital-humanities/)
-
-> Software for humanities scholars using quantitative or computational methods.
-
-This is a curated list of tools, resources, and services supporting the Digital Humanities. [Contributions](https://github.com/dh-tech/awesome-digital-humanities/blob/4f5ed493f19503ea8f2bd31d746a25928f51d806/CONTRIBUTING.md) are welcome!
+A curated collection of resources and projects focused on Digital Humanities.
 
 ## Contents
 

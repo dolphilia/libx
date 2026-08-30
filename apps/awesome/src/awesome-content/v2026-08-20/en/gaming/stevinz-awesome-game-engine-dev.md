@@ -1,22 +1,12 @@
 ---
-title: "stevinz/awesome-game-engine-dev"
-description: "Canonical snapshot of stevinz/awesome-game-engine-dev"
+title: "Awesome Game Engine Development"
+description: "A curated collection of resources and projects focused on Game Engine Development."
 licenseSource: "github-stevinz-awesome-game-engine-dev-readme-md"
 ---
 
+# Awesome Game Engine Development
 
-
-<div align="center">
-    <a href="https://github.com/stevinz/awesome-game-engine-dev"><img width="1100" src="aged-title.png" alt="Awesome Game Engine Dev Logo"/></a>
-</div>
-
-# Awesome Game Engine Development [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome#readme)
-
-Curated list of resources related to the development of game engines (tools that improve and speed up game creation). Specifically toward the development of high-level, fully featured game engines (e.g., Godot / Unity).
-
-This includes things typically not found in low-level game engines, app / game frameworks, or graphics libraries (e.g., MonoGame / SDL). Most importantly of which would be a visual scene editor, but also capabilities like scripting, physics, asset management, special effects, monetization, etc.
-
-<br />
+A curated collection of resources and projects focused on Game Engine Development.
 
 ## Contents
 

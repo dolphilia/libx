@@ -1,33 +1,12 @@
 ---
-title: "ianstormtaylor/awesome-heroku"
-description: "Canonical snapshot of ianstormtaylor/awesome-heroku"
+title: "Awesome Heroku"
+description: "A curated collection of resources and projects focused on Heroku."
 licenseSource: "github-ianstormtaylor-awesome-heroku-readme-md"
 ---
 
+# Awesome Heroku
 
-![](https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/banner.png)
-
-<p align="center">
-  <a href="https://github.com/sindresorhus/awesome">
-    <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" />
-  </a>
-</p>
-
-A curated list of helpful Heroku resources.
-
-- [Analytics](#-analytics)
-- [Architecture](#-architecture)
-- [Blogs](#-blogs)
-- [Deployment](#-deployment)
-- [Development](#-development)
-- [Domains](#-domains)
-- [Meta](#-meta)
-- [Postgres](#-postgres)
-- [Scaling](#-scaling)
-- [Security](#-security)
-- [Toolbelt](#-toolbelt)
-- [Goodbye...](#-goodbye)
-
+A curated collection of resources and projects focused on Heroku.
 
 ## <img width="21" height="21" src="https://raw.githubusercontent.com/ianstormtaylor/awesome-heroku/c9090a52f950af1965a28372f49fc2161bc7df5b/images/analytics.png" /> Analytics
 

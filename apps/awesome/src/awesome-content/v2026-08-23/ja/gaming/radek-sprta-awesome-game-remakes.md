@@ -1,27 +1,13 @@
 ---
-title: "radek-sprta/awesome-game-remakes"
-description: "活発に保守されているオープンソースのゲーム再実装を集めた厳選リスト"
+title: "Awesome Game Remakes"
+description: "Game Remakesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-radek-sprta-awesome-game-remakes-readme-md"
 ---
 
-<a id="awesome-game-remakes"></a>
-# Awesome Game Remakes [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Game Remakes
 
-活発に保守されている、オープンソースのゲーム再実装を集めています。
+Game Remakesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-ほとんどのゲームはオリジナルのアセットを必要とする。料金を払う必要のないアセットを必要とするものは、:flower_playing_cards:でマークされている。
-
-クローンや類似のゲーム（0 A.D.など）にも興味がある場合は、[Open Source Game Clones](https://osgameclones.com/)を確認してみてください。
-
-ゲームアーカイブファイル形式について調べたい場合は、 [Awesome Game File Format Reversing](https://github.com/VelocityRa/awesome-game-file-format-reversing/)を参照してください。
-
-再実装以外のゲームも探している場合は、次のリストを参照してください。
-- [Awesome Open Source Games](https://github.com/michelpereira/awesome-open-source-games)
-- [OSGL - Open Source Games List](https://github.com/Trilarion/opensourcegames)
-
----
-
-<a id="contents"></a>
 ## 目次
 - [Action](#action)
 - [Adventure](#adventure)

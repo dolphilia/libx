@@ -1,16 +1,12 @@
 ---
-title: "satta/awesome-suricata"
-description: "Canonical snapshot of satta/awesome-suricata"
+title: "Awesome Suricata"
+description: "A curated collection of resources and projects focused on Suricata."
 licenseSource: "github-satta-awesome-suricata-readme-md"
 ---
 
-# Awesome Suricata [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Suricata
 
-[<img src="https://suricata.io/wp-content/uploads/2022/01/Logo-SuricataFinal-1-translucent.png" align="right" width="120">](https://suricata.io)
-
-> Curated list of awesome things related to Suricata.
-
-[Suricata](https://suricata.io/features) is a free intrusion detection/prevention system (IDS/IPS) and network security monitoring engine.
+A curated collection of resources and projects focused on Suricata.
 
 ## Contents
 

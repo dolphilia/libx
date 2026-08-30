@@ -1,15 +1,12 @@
 ---
-title: "Siilwyn/awesome-pixel-art"
-description: "Canonical snapshot of Siilwyn/awesome-pixel-art"
+title: "Awesome Pixel Art"
+description: "A curated collection of resources and projects focused on Pixel Art."
 licenseSource: "github-Siilwyn-awesome-pixel-art-readme-md"
 ---
 
 # Awesome Pixel Art
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="https://cdn.rawgit.com/Siilwyn/awesome-pixel-art/1d81c507/sheep-timelapse.gif" align="right" width="118">](https://twitter.com/mnrART)
-
-Awesome Pixel Art is a repository specifically dedicated to creating and learning pixel art, as well as providing links that help you get engaged in the community! In pixel art, every placed pixel has importance in creating the envisioned graphic. Below you'll find help links ranging from basic introductory elements to color and animation tutorials. There are plenty of points of inspiration in games, animations and among other artists!
+A curated collection of resources and projects focused on Pixel Art.
 
 ## Contents
 - [Tutorials](#tutorials)

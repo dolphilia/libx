@@ -1,26 +1,12 @@
 ---
-title: "wbinnssmith/awesome-promises"
-description: "wbinnssmith/awesome-promises の定本スナップショット"
+title: "Awesome Promises"
+description: "Promisesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-wbinnssmith-awesome-promises-readme-md"
 ---
 
-<a href="https://promisesaplus.com/">
-    <img src="https://promisesaplus.com/assets/logo-small.png" alt="Promises/A+ logo" align="right" />
-</a>
+# Awesome Promises
 
-# Awesome Promises [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> JavaScript Promise向けの有用なリソースを厳選したリスト。
-
-[awesome](https://github.com/sindresorhus/awesome)リストから着想を得ました。「100万ドルを約束する」や「健康でジムに行く必要がなくなると約束する」といった別の素晴らしい約束と混同しないでください。
-
-**目次**
-- [リソース、ブログ、書籍](#resources-blogs-and-books)
-- [Promises/A+実装（ES6/ES2015互換）](#promisesa-implementations-es6es2015-compatible)
-  - [厳密な実装](#strict-implementations)
-  - [追加機能を持つ実装](#implementations-with-extras)
-  - [フォールバック](#fallbacks)
-- [便利なユーティリティ](#convenience-utilities)
+Promisesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## リソース、ブログ、書籍
 ### 初心者向け

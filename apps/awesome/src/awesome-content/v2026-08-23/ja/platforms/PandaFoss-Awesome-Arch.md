@@ -1,16 +1,12 @@
 ---
-title: "PandaFoss/Awesome-Arch"
-description: "PandaFoss/Awesome-Arch の定本スナップショット"
+title: "Awesome Arch"
+description: "Archを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-PandaFoss-Awesome-Arch-readme-md"
 ---
 
-# Awesome Arch [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome) [![Netlify Status](https://api.netlify.com/api/v1/badges/4c119a21-57f6-4391-9f3a-fe7f6b72f05c/deploy-status)](https://app.netlify.com/projects/awesome-arch/deploys)
+# Awesome Arch
 
-> 優れたプロジェクトのための素晴らしいリスト。</i></p>
-
-[<img src="https://www.archlinux.org/static/logos/archlinux-logo-dark-90dpi.ebdee92a15b3.png" align="right" width="250">](https://www.archlinux.org/)
-
-[Arch Linux](https://www.archlinux.org/) は、あらゆる役割に適応できる、独自開発の x86-64 汎用 GNU/Linux ディストリビューションです。開発では単純さ、最小主義、コードの優雅さを重視します。Arch は最小限のベースシステムとしてインストールされ、利用者は必要・希望するものだけを導入して理想の環境を組み立てます。
+Archを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

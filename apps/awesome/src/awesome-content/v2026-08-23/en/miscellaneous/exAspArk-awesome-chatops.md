@@ -1,17 +1,12 @@
 ---
-title: "exAspArk/awesome-chatops"
-description: "Canonical snapshot of exAspArk/awesome-chatops"
+title: "Awesome ChatOps"
+description: "A curated collection of resources and projects focused on ChatOps."
 licenseSource: "github-exAspArk-awesome-chatops-readme-md"
 ---
 
-# Awesome ChatOps [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome ChatOps
 
-A collection of awesome things about [ChatOps](https://www.pagerduty.com/blog/what-is-chatops/).
-
-ChatOps is a collaboration model that helps to connect people, process, tools, and automation into a transparent workflow (conversation-driven development).
-So it allows to automate tasks and collaborate, encourages teams to be transparent, working better, cheaper and faster.
-
-If you want to contribute, please read [CONTRIBUTING.md](https://github.com/exAspArk/awesome-chatops/blob/540083ff5535a985d95f94557b98db8a11e186ac/CONTRIBUTING.md).
+A curated collection of resources and projects focused on ChatOps.
 
 ## Contents
 

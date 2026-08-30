@@ -1,14 +1,12 @@
 ---
-title: "coderabbitai/awesome-coderabbit"
-description: "Canonical snapshot of coderabbitai/awesome-coderabbit"
+title: "Awesome CodeRabbit"
+description: "A curated collection of resources and projects focused on CodeRabbit."
 licenseSource: "github-coderabbitai-awesome-coderabbit-readme-md"
 ---
 
-# Awesome CodeRabbit [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome CodeRabbit
 
-[CodeRabbit](https://www.coderabbit.ai) is an AI-powered code review tool that helps development teams improve code quality and accelerate the review process. It integrates with popular version control platforms and provides intelligent feedback on code changes.
-
-This curated list covers the best resources, tutorials, and community content related to CodeRabbit 🐰
+A curated collection of resources and projects focused on CodeRabbit.
 
 ## Contents
 

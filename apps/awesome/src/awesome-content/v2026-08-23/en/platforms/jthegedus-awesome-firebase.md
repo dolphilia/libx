@@ -1,35 +1,12 @@
 ---
-title: "jthegedus/awesome-firebase"
-description: "Canonical snapshot of jthegedus/awesome-firebase"
+title: "Awesome Firebase Lint Awesome List"
+description: "A curated collection of resources and projects focused on Firebase Lint Awesome List."
 licenseSource: "github-jthegedus-awesome-firebase-readme-md"
 ---
 
+# Awesome Firebase Lint Awesome List
 
-<div align="center">
-
-
-
-# Awesome Firebase [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) ![Lint Awesome List](https://github.com/jthegedus/awesome-firebase/workflows/lint/badge.svg)
-
-
-
-The most **up to date** list of Firebase docs, talks, tools, examples & articles the internet has to offer.
-
-
-
-<a href="https://firebase.google.com/docs/" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/jthegedus/awesome-firebase/5055b341119af42077ee6e9064b136a04fdd79b0/images/firebase-services.gif" />
-</a>
-
-
-
-Translations: [🇬🇧 en](https://github.com/jthegedus/awesome-firebase/blob/5055b341119af42077ee6e9064b136a04fdd79b0/readme.md) · [🇰🇷 ko](https://github.com/jthegedus/awesome-firebase/blob/5055b341119af42077ee6e9064b136a04fdd79b0/readme-ko.md) · [🇷🇺 ru](https://github.com/jthegedus/awesome-firebase/blob/5055b341119af42077ee6e9064b136a04fdd79b0/readme-ru.md)
-
-[Firebase](https://firebase.google.com) is an app dev platform built on the [Google Cloud Platform](https://cloud.google.com/products) providing services and cross-platform SDKs!
-
-</div>
-
-
+A curated collection of resources and projects focused on Firebase Lint Awesome List.
 
 ## Contents
 

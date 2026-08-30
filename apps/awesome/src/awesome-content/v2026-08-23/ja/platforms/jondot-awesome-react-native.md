@@ -1,13 +1,11 @@
 ---
-title: "jondot/awesome-react-native"
-description: "jondot/awesome-react-nativeの収録案内"
+title: "Awesome React Native"
+description: "Awesome React Nativeの収録案内です。このスナップショットでは上流本文を転載していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# React Native
+# Awesome React Native
 
-このAwesomeリストは、固定済みのsindresorhus/awesomeスナップショットのPlatformsセクションから参照されています。
-
-このスナップショットで再利用可能なライセンスを確認できなかった、固定READMEを取得できなかった、または現在のlibxでは対応していないライセンス条件があるため、上流リストの本文はlibxへ複製していません。
+Awesome React Nativeの収録案内です。このスナップショットでは上流本文を転載していません。
 
 - [元のリポジトリを開く](https://github.com/jondot/awesome-react-native/blob/23100d54f6ef1cbdf56d4983dde8fe97cbe26c76/README.md)

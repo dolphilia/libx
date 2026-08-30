@@ -1,21 +1,12 @@
 ---
-title: "cosmos/awesome-cosmos"
-description: "Canonical snapshot of cosmos/awesome-cosmos"
+title: "Awesome Cosmos"
+description: "A curated collection of resources and projects focused on Cosmos."
 licenseSource: "github-cosmos-awesome-cosmos-readme-md"
 ---
 
+# Awesome Cosmos
 
-# Awesome Cosmos [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> A community curated list of awesome projects related to the Cosmos ecosystem
-
-The Cosmos SDK is a modular framework for building blockchain applications in Go.
-Gaia, the implementation of the Cosmos Hub, is built with the Cosmos SDK.
-
-**Contributing:**
-Please read the [Contributing guide](https://github.com/cosmos/awesome-cosmos/blob/ec1d8616aa879ed04204cb07ea4ea98ac42f356f/CONTRIBUTING.md). Thank you to all our [contributors](https://github.com/cosmos/awesome/graphs/contributors).
-
-**Disclaimer: This community-maintained repo does not reflect the views of any official entity.**
+A curated collection of resources and projects focused on Cosmos.
 
 ## Contents
 

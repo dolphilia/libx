@@ -1,14 +1,12 @@
 ---
-title: "egeerardyn/awesome-LaTeX"
-description: "Canonical snapshot of egeerardyn/awesome-LaTeX"
+title: "Awesome LaTeX"
+description: "A curated collection of resources and projects focused on LaTeX."
 licenseSource: "github-egeerardyn-awesome-LaTeX-readme-md"
 ---
 
-# Awesome LaTeX [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg?style=flat)](https://github.com/egeerardyn/awesome-LaTeX/blob/649d5293a16afcb0d91cd98cdc68da1248784f93/LICENSE.md)
+# Awesome LaTeX
 
-[![LaTeX Logo](https://github.com/egeerardyn/awesome-LaTeX/blob/649d5293a16afcb0d91cd98cdc68da1248784f93/fig/latex-logo.svg)](https://www.latex-project.org/)
-
-> This is a curated list of awesome stuff for the [(La)TeX typesetting system](https://www.latex-project.org/).
+A curated collection of resources and projects focused on LaTeX.
 
 ## Contents
 

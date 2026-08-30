@@ -1,16 +1,12 @@
 ---
-title: "afonsopacifer/awesome-flexbox"
-description: "afonsopacifer/awesome-flexbox の正規スナップショット"
+title: "Awesome flexbox"
+description: "flexboxを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-afonsopacifer-awesome-flexbox-readme-md"
 ---
 
-[![awesome flexbox](https://github.com/afonsopacifer/awesome-flexbox/blob/e734f8d85a3999a324abe48776b699964989b359/awesome-flexbox.jpg)](https://github.com/afonsopacifer/awesome-flexbox/)
+# Awesome flexbox
 
-[![ビルド状態](https://travis-ci.org/afonsopacifer/awesome-flexbox.svg?branch=master)](https://travis-ci.org/afonsopacifer/awesome-flexbox)
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> CSS Flexible Box Layout Module、通称Flexboxの厳選リスト。
-[awesome-webcomponents](https://github.com/obetomuniz/awesome-webcomponents)と[awesome-svg](https://github.com/willianjusten/awesome-svg)に着想を得ています。
+flexboxを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 * [W3C仕様](#w3c-specification)

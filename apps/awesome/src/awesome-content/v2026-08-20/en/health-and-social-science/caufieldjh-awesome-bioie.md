@@ -1,30 +1,12 @@
 ---
-title: "caufieldjh/awesome-bioie"
-description: "Canonical snapshot of caufieldjh/awesome-bioie"
+title: "Awesome BioIE Logo"
+description: "A curated collection of resources and projects focused on BioIE Logo."
 licenseSource: "github-caufieldjh-awesome-bioie-readme-md"
 ---
 
-<div align="center">
-	<img src="https://github.com/caufieldjh/awesome-bioie/blob/main/images/abie_head.png" alt="Awesome BioIE Logo"/>
-	<br>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<br>
-	How to extract information from unstructured biomedical data and text.
-	<br>
-	
-</div>
+# Awesome BioIE Logo
 
-What is BioIE? It includes any effort to extract structured information from _unstructured_ (or, at least inconsistently structured) biological, clinical, or other biomedical data. The data source is often some collection of text documents written in technical language. If the resulting information is verifiable and consistent across sources, we may then consider it _knowledge_. Extracting information and producing knowledge from bio data requires adaptations upon methods developed for other types of unstructured data.
-
-BioIE has undergone massive changes since the introduction of language models like BERT and the more recently created Large Language Models (LLMs; e.g., GPT-3/4, LLAMA2/3, Gemini, etc).
-
-Resources included here are preferentially those available at no monetary cost and limited license requirements. Methods and datasets should be publicly accessible and actively maintained.
-
-See also [awesome-nlp](https://github.com/keon/awesome-nlp), [awesome-biology](https://github.com/raivivek/awesome-biology) and [Awesome-Bioinformatics](https://github.com/danielecook/Awesome-Bioinformatics).
-
-_Please read the [contribution guidelines](https://github.com/caufieldjh/awesome-bioie/blob/2689dd4118e0cb9be19a164bbf5165188f010d70/contributing.md) before contributing. Please add your favourite resource by raising a [pull request](https://github.com/caufieldjh/awesome-bioie/pulls)._
+A curated collection of resources and projects focused on BioIE Logo.
 
 ## Contents
 * [Research Overviews](#research-overviews)

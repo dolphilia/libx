@@ -1,15 +1,12 @@
 ---
-title: "atkirtland/awesome-computational-geometry"
-description: "atkirtland/awesome-computational-geometry の定本スナップショット"
+title: "Awesome Computational Geometry"
+description: "Computational Geometryを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-atkirtland-awesome-computational-geometry-readme-md"
 ---
 
-# Awesome Computational Geometry [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Computational Geometry
 
-> 優れた計算幾何学の可視化、ライブラリ、リソースを集めたリスト。
-
-[計算幾何学](https://en.wikipedia.org/wiki/Computational_geometry)は、幾何学における問題の解法に焦点を当てるコンピュータサイエンスの分野です。
-計算幾何学の応用には、コンピュータ支援設計、ロボティクス、GISシステム、コンピュータビジョンがあります。
+Computational Geometryを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

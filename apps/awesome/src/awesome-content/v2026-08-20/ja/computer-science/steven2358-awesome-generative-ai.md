@@ -1,16 +1,12 @@
 ---
-title: "steven2358/awesome-generative-ai"
-description: "生成AIのモデル、サービス、開発ツール、学習資料をまとめた定本スナップショット"
+title: "Awesome Generative AI"
+description: "Generative AIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-steven2358-awesome-generative-ai-readme-md"
 ---
 
-# 生成AI Awesome リスト [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Generative AI
 
-> 現代の生成AIプロジェクトとサービスを厳選したリストです。
-
-生成AIは、大量のデータで学習した機械学習アルゴリズムを使い、画像・音声・文章などの独自コンテンツを作る技術です。写実的な画像、デジタルアート、音楽、文章など、従来見られなかった固有の出力を生成でき、人の作品と見分けにくい場合もあります。芸術、娯楽、マーケティング、学術、計算機科学など幅広い分野で利用されています。
-
-このリストへの貢献を歓迎します。提案前に[貢献ガイドライン](https://github.com/steven2358/awesome-generative-ai/blob/63d863418c0a6db3db92cacf150a72f76933e15c/CONTRIBUTING.md)を確認し、基準を満たしてください。[プルリクエスト](https://github.com/steven2358/awesome-generative-ai/pulls)でリンクを追加するか、[Issue](https://github.com/steven2358/awesome-generative-ai/issues)を作成して議論を始められます。幅広い新興生成AIプロジェクトは[Discoveries List](https://github.com/steven2358/awesome-generative-ai/blob/63d863418c0a6db3db92cacf150a72f76933e15c/DISCOVERIES.md)でも紹介しています。
+Generative AIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -486,4 +482,3 @@ licenseSource: "github-steven2358-awesome-generative-ai-readme-md"
 - [FlowGPT](https://flowgpt.com/) - 最適なプロンプトでワークフローを強化します
 - [ChatGPT Prompts for Data Science](https://github.com/travistangvh/ChatGPT-Data-Science-Prompts) - ChatGPT用の有用なデータサイエンスプロンプトのリポジトリ
 - [Awesome ChatGPT](https://github.com/sindresorhus/awesome-chatgpt) - ChatGPT用のもう一つの素晴らしいリスト
-

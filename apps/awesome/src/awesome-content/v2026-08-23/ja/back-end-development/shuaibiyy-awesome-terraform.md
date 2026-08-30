@@ -1,20 +1,12 @@
 ---
-title: "shuaibiyy/awesome-terraform"
-description: "shuaibiyy/awesome-terraform の定本スナップショット"
+title: "Awesome Terraform"
+description: "Terraformを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-shuaibiyy-awesome-terraform-readme-md"
 ---
 
-# Awesome Terraform [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) 
+# Awesome Terraform
 
-[![Link Checker](https://github.com/shuaibiyy/awesome-tf/actions/workflows/link-checker.yml/badge.svg)](https://github.com/shuaibiyy/awesome-tf/actions/workflows/link-checker.yml)
-[![Misspell Check](https://github.com/shuaibiyy/awesome-tf/actions/workflows/misspell.yml/badge.svg)](https://github.com/shuaibiyy/awesome-tf/actions/workflows/misspell.yml)
-[![Not Found Check](https://github.com/shuaibiyy/awesome-tf/actions/workflows/notfound.yml/badge.svg)](https://github.com/shuaibiyy/awesome-tf/actions/workflows/notfound.yml)
-
-> [HashiCorp Terraform](https://www.terraform.io/)に関する厳選リソース一覧です。
-> [<img src="https://raw.githubusercontent.com/shuaibiyy/awesome-terraform/master/terraform.svg" align="right" width="100">](https://terraform.io)
-> [コントリビューション](https://github.com/shuaibiyy/awesome-tf/blob/master/contributing.md)を歓迎します!
-
-Terraformは、本番インフラを安全かつ予測可能に作成・変更・改善するためのオープンソースツールです。APIを宣言的な設定ファイルとしてコード化し、チームで共有、編集、レビュー、バージョン管理できます。
+Terraformを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 
 

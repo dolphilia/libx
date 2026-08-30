@@ -1,19 +1,12 @@
 ---
-title: "vapor-community/awesome-vapor"
-description: "vapor-community/awesome-vapor の定本スナップショット"
+title: "Awesome Vapor"
+description: "Vaporを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vapor-community-awesome-vapor-readme-md"
 ---
 
-# Awesome Vapor [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Vapor
 
-[<img src="img/vapor-logo.png" align="right" width="150">](https://vapor.codes)
-
-[Vapor](https://vapor.codes) は現在、最も人気のあるサーバーサイドSwiftフレームワークの一つです。iOSアプリケーション開発で既に知っている言語をまったく新しい方法で利用し、多様なサードパーティサービスと容易に統合する高速・スケーラブル・信頼性の高いバックエンドシステムを開発できます。以下をキュレーションしたリストです。
-
-- Vaporと容易に統合し、シンプルでクリーンながら強力なAPIを提供するというVaporの思想に従う現代的ライブラリ。
-- よく書かれたチュートリアル、書籍、動画、教育資料。
-- 開発プロセスをより簡単で楽しいものにするツール。
-- その他。
+Vaporを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

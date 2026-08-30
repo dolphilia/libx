@@ -1,16 +1,12 @@
 ---
-title: "joho/awesome-code-review"
-description: "joho/awesome-code-review の正規スナップショット"
+title: "Awesome Code Review"
+description: "Code Reviewを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-joho-awesome-code-review-readme-md"
 ---
 
-<img src="https://raw.githubusercontent.com/joho/awesome-code-review/1887c2a5c78650474c1d13193ea3d38f23d98212/Awesome Code Review.png" alt="Awesome Code Review" />
+# Awesome Code Review
 
-# Awesome Code Review [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> [コードレビュー](https://en.wikipedia.org/wiki/Code_review)に関連するツール、記事、書籍、その他のリソースの厳選リスト。
-
-コードレビューとは、コンピューターのソースコードを体系的に検査することです（ピアレビューとも呼ばれます）。
+Code Reviewを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

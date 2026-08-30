@@ -1,21 +1,12 @@
 ---
-title: "hallvaaw/awesome-biological-image-analysis"
-description: "hallvaaw/awesome-biological-image-analysis の定本スナップショット"
+title: "Awesome Biological Image Analysis"
+description: "Biological Image Analysisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hallvaaw-awesome-biological-image-analysis-readme-md"
 ---
 
-# Awesome Biological Image Analysis [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Biological Image Analysis
 
-<p align="center">
-  <br>
-    <img width="300" src="awesome-biological-image-analysis.svg" alt="Awesome Biological Image Analysis">
- <br>
- <br>
-</p>
-
-> 生物画像解析のためのツールとリソース。
-
-生物画像解析は、さまざまな計算技法とアプローチを用いて画像から価値ある情報を得ることで、生物学への理解を深めることを目的とします。
+Biological Image Analysisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [General image analysis software](#general-image-analysis-software)
@@ -231,4 +222,3 @@ budding cells from bright-field stacks.
 - [Cytodata](https://github.com/cytodata/awesome-cytodata) - A curated list of awesome cytodata resources.
 - [Napari hub](https://www.napari-hub.org) - Collection of napari plugins.
 - [OpenMicroscopy](https://github.com/HohlbeinLab/OpenMicroscopy) - Non-comprehensive list of projects and resources related to open microscopy.
-

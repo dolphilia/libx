@@ -1,32 +1,12 @@
 ---
-title: "airscripts/awesome-steam-deck"
-description: "airscripts/awesome-steam-deck の正規スナップショット"
+title: "Awesome Steam Deck"
+description: "Steam Deckを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-airscripts-awesome-steam-deck-readme-md"
 ---
 
-# Awesome Steam Deck [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-<h3 align="center">
-  <a href="https://ghio.airscript.it/awesome-steam-deck/" target="_blank" rel="noopener noreferrer">
-    <img src="https://raw.githubusercontent.com/airscripts/awesome-steam-deck/main/assets/images/steam-deck-logo.svg" width="64" alt="Logo"/><br/>
-  </a>
-</h3>
+# Awesome Steam Deck
 
-> 優れたSteam Deckソフトウェア、リソースなどのキュレーションリスト。  
-
-[Steam Deck](https://en.wikipedia.org/wiki/Steam_Deck)はValveが製造する携帯型ゲーミングコンピューターです。
-
-このプロジェクトを改善するコントリビュートや提案を歓迎します。  
-[貢献ガイドライン](https://github.com/airscripts/awesome-steam-deck/blob/main/CONTRIBUTING.md)に従ってください。
-
-If you want to support my work you can do it following me, leaving a star, sharing my projects or also donating at the links below.  
-Choose what you find more suitable for you:  
-
-<a href="https://sponsor.airscript.it" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/airscripts/assets/main/images/github-sponsors.svg" alt="GitHub Sponsors" width="30px" />
-</a>&nbsp;
-<a href="https://kofi.airscript.it" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/airscripts/assets/main/images/kofi.svg" alt="Kofi" width="30px" />
-</a>
+Steam Deckを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [Guide](#guide)

@@ -1,19 +1,13 @@
 ---
-title: "robinrodricks/awesome-actionscript3"
-description: "ActionScript 3の開発ツール、フレームワーク、ライブラリ、AIR拡張集"
+title: "Awesome ActionScript 3"
+description: "ActionScript 3を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-robinrodricks-awesome-actionscript3-readme-md"
 ---
-[<img src="https://rawgit.com/hgupta9/awesome-actionscript3/master/AS3_AIR.png" align="right" width="150">](https://www.adobe.com/products/air.html)
 
-# Awesome ActionScript 3 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome ActionScript 3
 
-> A curated list of awesome libraries and components for ActionScript 3 and Adobe AIR.
+ActionScript 3を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[Adobe AIR](https://en.wikipedia.org/wiki/Adobe_AIR)は、クロスプラットフォームのデスクトップ／モバイルアプリケーションおよびゲームを構築するための1つのAPIセットを提供する。[ActionScript 3](https://en.wikipedia.org/wiki/ActionScript)はAIRのプログラミング言語である。ファイルシステム、SQLite、センサーなどの強力なネイティブ機能はデフォルトで含まれている。必要な機能が不足している場合は、ネイティブ言語（例：Windows用のVC++、Android用のJava、iOS用のSwift／Objective-C）で記述されたANE（Air Native Extension）を構築できる。GPUによるグラフィックスレンダリングを用いたモバイルアプリケーションやゲームを構築するには、[Starling](https://gamua.com/starling/)フレームワークを使用し、必要に応じて[Feathers UI](https://feathersui.com/)も併用できる。Adobe AIRはモバイルゲーム分野で非常に人気がある。
-
-ご貢献をお待ちしています。便利なプロジェクトを追加するには、単に [Issue](https://github.com/hgupta9/awesome-actionscript3/issues) を作成してください。
-
-<a id="contents"></a>
 ## 目次
 
 * [Development Tools](#development-tools)

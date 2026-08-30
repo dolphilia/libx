@@ -1,13 +1,12 @@
 ---
-title: "NoahBuscher/Inspire"
-description: "Canonical snapshot of NoahBuscher/Inspire"
+title: "Awesome Inspire"
+description: "A curated collection of resources and projects focused on Inspire."
 licenseSource: "github-NoahBuscher-Inspire-readme-md"
 ---
 
-Inspire [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-===
+# Awesome Inspire
 
-Designing and building a modern frontend in any web project can be a long and arduous process. Here's a collection of links to help you. Enjoy!
+A curated collection of resources and projects focused on Inspire.
 
 ## Concept
 ##### These sites are good to get a general idea of possible layouts and style paths to take.

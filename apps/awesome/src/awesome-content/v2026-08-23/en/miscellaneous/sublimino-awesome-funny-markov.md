@@ -1,16 +1,12 @@
 ---
-title: "sublimino/awesome-funny-markov"
-description: "Canonical snapshot of sublimino/awesome-funny-markov"
+title: "Awesome Funny Markov Chains"
+description: "A curated collection of resources and projects focused on Funny Markov Chains."
 licenseSource: "github-sublimino-awesome-funny-markov-readme-md"
 ---
 
-# Awesome Funny Markov Chains [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Funny Markov Chains
 
-A facetiously curated list of delightfully amusing Markov chain output, inspired by [memorylessness](https://en.wikipedia.org/wiki/Memorylessness).
-
-If you want to [contribute](https://github.com/sublimino/awesome-funny-markov/blob/master/contributing.md) to this list (please do), send a pull request or contact me [@sublimino](https://twitter.com/sublimino).
-
-Looking for more information on Markov Chains? Try [Awesome Machine Learning](https://github.com/josephmisiti/awesome-machine-learning).
+A curated collection of resources and projects focused on Funny Markov Chains.
 
 ## Table of Contents
 

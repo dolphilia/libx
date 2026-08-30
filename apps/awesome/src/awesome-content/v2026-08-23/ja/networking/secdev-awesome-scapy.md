@@ -1,18 +1,12 @@
 ---
-title: "secdev/awesome-scapy"
-description: "secdev/awesome-scapy の正規スナップショット"
+title: "Awesome Scapy"
+description: "Scapyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-secdev-awesome-scapy-readme-md"
 ---
 
-# Awesome Scapy [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-<p align="center">
-  <a href="https://scapy.net/"><img src="https://github.com/secdev/scapy/blob/master/doc/scapy_logo.png" width="200" alt="Scapy" /></a>
-</p>
+# Awesome Scapy
 
-Python ベースの対話型パケット操作プログラム兼ライブラリ **[Scapy](https://scapy.net)** を使うツール、アドオン、記事、興味深いエクスプロイトを厳選したリストです。
-[貢献](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsecdev%2Fawesome-scapy%2Fedit%2Fmain%2FREADME.md)はお気軽にどうぞ！
-
-GitHub で [Scapy のトピックを探索](https://github.com/topics/scapy)することもできます。
+Scapyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

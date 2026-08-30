@@ -1,17 +1,12 @@
 ---
-title: "arslanbilal/git-cheat-sheet"
-description: "Canonical snapshot of arslanbilal/git-cheat-sheet"
+title: "Awesome Git and Git Flow Cheat Sheet"
+description: "A curated collection of resources and projects focused on Git and Git Flow Cheat Sheet."
 licenseSource: "github-arslanbilal-git-cheat-sheet-readme-md"
 ---
 
-# Git and Git Flow Cheat Sheet
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Git and Git Flow Cheat Sheet
 
-<p align="center">
-    <img alt="Git" src="https://raw.githubusercontent.com/arslanbilal/git-cheat-sheet/4098de6b02a1a9ccb0f7e1eb8b6da29d91c67841/Img/git-logo.png" height="190" width="455">
-</p>
-
----
+A curated collection of resources and projects focused on Git and Git Flow Cheat Sheet.
 
 ## 📖 About
 

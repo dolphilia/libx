@@ -1,64 +1,12 @@
 ---
-title: "analysis-tools-dev/static-analysis"
-description: "analysis-tools-dev/static-analysis の定本スナップショット"
+title: "Awesome Static Analysis"
+description: "Static Analysisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-analysis-tools-dev-static-analysis-readme-md"
 ---
 
+# Awesome Static Analysis
 
-
- <a href="https://analysis-tools.dev/">
-   <img alt="Analysis Tools Website" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/redesign.svg" />
- </a>
-
-このリポジトリは、あらゆるプログラミング言語、ビルドツール、設定ファイルなどを対象とする**静的解析ツール**をまとめています。リンターやフォーマッターなど、コード品質を改善するツールを中心に掲載します。
-公式サイト[analysis-tools.dev](https://analysis-tools.dev/)はこのリポジトリを基に、ランキング、利用者コメント、各ツールの動画などの追加資料を提供します。
-
-[![Website](https://img.shields.io/badge/Website-Online-2B5BAE)](https://analysis-tools.dev)
-![CI](https://github.com/analysis-tools-dev/static-analysis/workflows/CI/badge.svg)
-[![Links](https://github.com/analysis-tools-dev/static-analysis/actions/workflows/links.yml/badge.svg)](https://github.com/analysis-tools-dev/static-analysis/actions/workflows/links.yml)
-
-## スポンサー
-
-このプロジェクトはスポンサーの支援によって成り立っています。
-
-<table>
-   <tr>
-      <td>
-         <a href="https://www.pixee.ai/">
-            <picture >
-               <source width="200px" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/pixee-light.png">
-               <img width="200px" alt="Pixee" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/pixee-dark.png">
-            </picture>
-         </a>
-      </td>
-      <td>
-         <a href="https://coderabbit.ai">
-            <img width="200px" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/code-rabbit.svg" />
-         </a>
-      </td>
-      <td>
-         <a href="https://semgrep.dev/">
-            <img width="200px" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/semgrep.svg" />
-         </a>
-      </td>
-      <td>
-         <a href="https://offensive360.com/">
-            <img width="200px" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/offensive360.png" />
-         </a>
-      </td>
-   </tr>
-</table>
-
-プロジェクトを支援する場合は[GitHub Sponsorsページ](https://github.com/sponsors/analysis-tools-dev)をご覧ください。
-
-## 記号の意味:
-
-- :copyright: はプロプライエタリソフトウェアを示します。それ以外はオープンソースです。
-- :information_source: は、新規プロジェクトでの利用をコミュニティが推奨しなくなったツールを示します。アイコンから議論Issueへ移動できます。
-- :warning: は、1年以上更新されていないか、リポジトリがアーカイブされたツールを示します。
-
-プルリクエストを歓迎します。  
-姉妹プロジェクト[awesome-dynamic-analysis](https://github.com/mre/awesome-dynamic-analysis)も参照してください。
+Static Analysisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 ## 目次
 
@@ -1447,7 +1395,7 @@ TSLintはTypeScriptコードの可読性、保守性、機能上の誤りを検�
 
 - **emerge** :warning: — 静的解析、品質検査、整形、セキュリティ検証を支援するツールまたは資料です。
 
-- [Enforster AI](https://enforster.ai/) :copyright:��— Enforster AIは、LLMと人工知能を活用した文脈コードセキュリティSASTを実行し、論理的誤り、秘密情報、データ漏洩、サプライチェーンおよび技術的な脆弱性の検出を減少・豊かにしている。
+- [Enforster AI](https://enforster.ai/) :copyright:��— Enforster AIは、LLMと人工知能を活用した文脈コードセキュリティSASTを実行し、論理的誤り、秘密情報、データ漏洩、サプライチェーンおよび技術的な脆弱性の検出を減少・豊かにしている。
 
 - [ESLint](https://github.com/eslint/eslint) — JavaScript向けの拡張可能なリントツールで、ECMAScript標準に従っています。
 
@@ -1466,7 +1414,7 @@ TSLintはTypeScriptコードの可読性、保守性、機能上の誤りを検�
 
 - [graudit](http://www.justanotherhacker.com) — グリップによる粗いアудイト - ソースコードアудィティングツール。
 
-- [HCL AppScan Source](https://www.hcltechsw.com/products/appscan) :copyright:��— 商業用静的コード分析。
+- [HCL AppScan Source](https://www.hcltechsw.com/products/appscan) :copyright:��— 商業用静的コード分析。
 
 - **Hopper** :warning: — 静的解析、品質検査、整形、セキュリティ検証を支援するツールまたは資料です。
 
@@ -1498,7 +1446,7 @@ TSLintはTypeScriptコードの可読性、保守性、機能上の誤りを検�
  its advanced reporting, runnable on any CI system or locally,
  with assisted installation and configuration, able to apply formatting and fixes
 
-- [Mobb](https://mobb.ai) :copyright:��— Mobbは、アプリケーションを安全に保ち、セキュリティのバックログを削減し、開発者が革新に集中できる、信頼できる自動脆弱性修正ツールです。Mobbはオープンソースプロジェクトには無料です。
+- [Mobb](https://mobb.ai) :copyright:��— Mobbは、アプリケーションを安全に保ち、セキュリティのバックログを削減し、開発者が革新に集中できる、信頼できる自動脆弱性修正ツールです。Mobbはオープンソースプロジェクトには無料です。
 
 - [MOPSA](https://mopsa.lip6.fr) — CおよびPythonなど、幅広い言語に適用可能な抽象領域を簡単に再利用できる静的解析器です。
 
@@ -1510,7 +1458,7 @@ orchestration to ensure zero breaking changes. Specialized for React, Next.js, a
 
 - [oclint](http://oclint.org) — C、C++およびObjective-Cのソースコードを静的に分析し、品質を向上させ、バグを減少させるツールです。
 
-- [Offensive 360](https://offensive360.com/) :copyright:��— 商業用静的ソースコード解析システムは、ソースコードのビルドや事前コンパイルを必要としません。
+- [Offensive 360](https://offensive360.com/) :copyright:��— 商業用静的ソースコード解析システムは、ソースコードのビルドや事前コンパイルを必要としません。
 
 - [OpenRewrite](https://docs.openrewrite.org/) — OpenRewrite [fixes common static analysis issues](https://docs.openrewrite.org/running-recipes/popular-recipe-guides/common-static-analysis-issue-remediation)をSonarおよびその他のツールでMavenおよびGradleプラグインまたはModerne CLIを使って報告。
 
@@ -1518,11 +1466,11 @@ orchestration to ensure zero breaking changes. Specialized for React, Next.js, a
 
 - [oxc](https://github.com/web-infra-dev/oxc) — The Oxidation Compilerは、JavaScript / TypeScript言語をRustで再構築した高パフォーマンスツールのセットを作成しています。
 
-- [parasoft](https://www.parasoft.com/) :copyright:��— ユニット、API、ウェブUIテスト用の自動ソフトウェアテストソリューション。MISRA、OWASPなどに準拠しています。
+- [parasoft](https://www.parasoft.com/) :copyright:��— ユニット、API、ウェブUIテスト用の自動ソフトウェアテストソリューション。MISRA、OWASPなどに準拠しています。
 
 - [pfff](https://github.com/facebookarchive/pfff/wiki/Main) — Facebookが開発した、多数の言語に対応したコード解析、可視化、スタイルを保持したソース変換ツールです。
 
-- [Pixee](https://pixee.ai) :copyright:��— Pixeebotは、あなたのコードにセキュリ及コード品質の問題を検出し、修正を提案したマージ可能なプルリクエストを作成します。
+- [Pixee](https://pixee.ai) :copyright:��— Pixeebotは、あなたのコードにセキュリ及コード品質の問題を検出し、修正を提案したマージ可能なプルリクエストを作成します。
 
 - [PMD](https://pmd.github.io) — Java、Salesforce Apex、JavaScript、PLSQL、XML、XSLなど、他の言語を対象としたソースコード解析ツールです。
 
@@ -1542,13 +1490,13 @@ orchestration to ensure zero breaking changes. Specialized for React, Next.js, a
 
 - [pylama](https://klen.github.io/pylama/) — PythonおよびJavaScriptのコード検査ツール。pycodestyle、pydocstyle、PyFlakes、Mccabe、Pylintなどをラップしています。
 
-- [Qwiet AI](https://qwiet.ai/) :copyright:��— あなたのコードベースに固有の脆弱性を生産前に特定します。コードプロパティグラフ（CPG）を活用し、分析を1つのグラフのグラフ上で並列実行します。開発環境でのハードコードされたシークレットや論理ボムなどのビジネスロジックの欠陥を自動的に検出します。
+- [Qwiet AI](https://qwiet.ai/) :copyright:��— あなたのコードベースに固有の脆弱性を生産前に特定します。コードプロパティグラフ（CPG）を活用し、分析を1つのグラフのグラフ上で並列実行します。開発環境でのハードコードされたシークレットや論理ボムなどのビジネスロジックの欠陥を自動的に検出します。
 
 - [Refactoring Essentials](https://marketplace.visualstudio.com/items?itemName=SharpDevelopTeam.RefactoringEssentialsforVisualStudio) — Visual Studio 2015向けの無料拡張機能で、C#およびVB.NETのリファクタリングを提供し、コードのベストプラクティスを分析します。
 
 - [relint](https://github.com/codingjoe/relint) — 正規表現（RegEx）を使ってカスタムルールを書ける静的ファイルリントツールです。
 
-- [ReSharper](https://www.jetbrains.com/resharper) :copyright:��— C#、VB.NET、ASP.NET、JavaScript、TypeScriptなど、他の技術に対応したVisual Studioへの即時コード検査を拡張します。
+- [ReSharper](https://www.jetbrains.com/resharper) :copyright:��— C#、VB.NET、ASP.NET、JavaScript、TypeScriptなど、他の技術に対応したVisual Studioへの即時コード検査を拡張します。
 
 - [Rev-dep](https://github.com/jayu/rev-dep) — 現代のJavaScriptおよびTypeScriptプロジェクト向けの依存関係分析および最適化ツールキット。インポートのトレース、循環依存関係の特定、未使用コードの検出、nodeモジュールの整理。
 

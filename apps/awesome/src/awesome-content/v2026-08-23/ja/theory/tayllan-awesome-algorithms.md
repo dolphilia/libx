@@ -1,25 +1,12 @@
 ---
-title: "tayllan/awesome-algorithms"
-description: "tayllan/awesome-algorithms の正規スナップショット"
+title: "Awesome Algorithms"
+description: "Algorithmsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-tayllan-awesome-algorithms-readme-md"
 ---
 
 # Awesome Algorithms
 
-アルゴリズムを学習・練習するための優れた場所を厳選したリストです。
-[awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness) と、その他すべての素晴らしい Awesome ライブラリに着想を得ています。
-
-貢献する場合は、[貢献ガイドライン](https://github.com/tayllan/awesome-algorithms/blob/master/CONTRIBUTING.md)をお読みください。
-
-- [Awesome Algorithms](#awesome-algorithms)
-    - [初心者向け](#beginner-friendly)
-    - [プログラミングコンテスト](#programming-contest)
-    - [理論と基礎](#theory--fundamentals)
-    - [本番システム](#production-system)
-    - [データベース](#database)
-    - [専門トピック](#special-topic)
-    - [チートシート](#cheat-sheet)
-    - [関連する Awesome リスト](#related-awesome-list)
+Algorithmsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 初心者向け
 

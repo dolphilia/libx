@@ -1,33 +1,12 @@
 ---
-title: "phillipadsmith/awesome-github"
-description: "Canonical snapshot of phillipadsmith/awesome-github"
+title: "Awesome GitHub"
+description: "A curated collection of resources and projects focused on GitHub."
 licenseSource: "github-phillipadsmith-awesome-github-readme-md"
 ---
 
-# Awesome GitHub [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://travis-ci.org/phillipadsmith/awesome-github.svg)](https://travis-ci.org/phillipadsmith/awesome-github)
+# Awesome GitHub
 
-
-> A curated list of GitHub's awesomeness
-
-Think GitHub is awesome? Contribute something to this list! It's easy, just have a look at the [contribution guidelines](https://github.com/phillipadsmith/awesome-github/blob/5c1e4512c3ea30d4e66d784abb4c3b5925244ec5/CONTRIBUTING.md).
-
-The awesomeness is currently organized into just a few different buckets: 
-
-* [Infomation for people who are new to GitHub](#infomation-for-people-who-are-new-to-github)
-* [Resources for those already familiar with GitHub](#resources-for-those-already-familiar-with-github)
-* [Tips, tricks, tools, and add-ons for GitHub power users](#tips-tricks-tools-and-add-ons-for-github-power-users)
-* [Novel uses of GitHub](#novel-uses-of-github)
-
-What is the [Awesome GitHub](https://github.com/phillipadsmith/awesome-github) list? It's a collection of things that make **GitHub** one of the most amazing co-creation platforms in the world.
-
-It is specifically focused on _GitHub_, and not on [Git](https://git-scm.com/). Git is indeed awesome. And there would be no GitHub without Git. And yet, GitHub has become much more than a home to much of humanity's open-source code; it has become one of the world's most vivid examples of the power of mass collaboration.
-
-All that to say, this list -- [Awesome GitHub](https://github.com/phillipadsmith/awesome-github) -- is an attempt to document that aspect of what is awesome: everything that GitHub has become -- far beyond what Git is today, and beyond where GitHub started just eight years ago.
-
-The inspiration for this list came from [a session proposal](http://phillipadsmith.com/2015/09/github-gitdown.html) for the [2015 Mozilla Festival](https://2015.mozillafestival.org/). I later learned, serendiptiously, that the Mozilla Festival itself was using [GitHub issues to manage the program](https://github.com/mozilla/mozfest-program) -- reviewing proposals, assign sessions to tracks and themes, and much more. Just one more example of how GitHub is being used to make awesome.
-
-------
-
+A curated collection of resources and projects focused on GitHub.
 
 ## Infomation for people who are new to GitHub
 - [Code School's Try Git](https://try.github.io/levels/1/challenges/1) - If you'd like to better understand Git, one of the technologys that makes GitHub possible, this is a great place to start. No GitHub account required.
@@ -106,4 +85,4 @@ great software, presented by GitHub. October 1 & 2, 2015, SF.
 - [Clef's Handbook](https://github.com/clef/handbook) - An employee handbook built for inclusion.
 - [The United States Code](https://github.com/divegeek/uscode) - The complete United States Code.
 - [Le code civil français sous git](https://github.com/steeve/france.code-civil) - French Civil Code on GitHub.
-- [Gitron](https://gitron.herokuapp.com) - A web game about GitHub based on Tron movies. 
+- [Gitron](https://gitron.herokuapp.com) - A web game about GitHub based on Tron movies.

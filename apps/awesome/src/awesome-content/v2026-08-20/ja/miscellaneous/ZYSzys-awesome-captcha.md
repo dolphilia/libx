@@ -1,17 +1,12 @@
 ---
-title: "ZYSzys/awesome-captcha"
-description: "ZYSzys/awesome-captcha の定本スナップショット"
+title: "Awesome Captcha"
+description: "Captchaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ZYSzys-awesome-captcha-readme-md"
 ---
 
-# Awesome Captcha [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Captcha
 
-> 優れた CAPTCHA ライブラリと CAPTCHA 解析ツールの厳選リスト。
-
-[CAPTCHA](https://en.wikipedia.org/wiki/CAPTCHA) は、ユーザーが人間かどうかを判定するためにコンピューティングで用いられるチャレンジレスポンス型テストの一種です。
-
-
-[English](https://github.com/ZYSzys/awesome-captcha/blob/51b13f4b94696ae0bc6e73e0184443f9b65a7a22/README.md) | [中文](https://github.com/ZYSzys/awesome-captcha/blob/51b13f4b94696ae0bc6e73e0184443f9b65a7a22/README-zh.md) | [Polish](https://github.com/ZYSzys/awesome-captcha/blob/51b13f4b94696ae0bc6e73e0184443f9b65a7a22/README-pl.md)
+Captchaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,20 +1,12 @@
 ---
-title: "AdrienTorris/awesome-blazor"
-description: "Canonical snapshot of AdrienTorris/awesome-blazor"
+title: "Awesome Blazor"
+description: "A curated collection of resources and projects focused on Blazor."
 licenseSource: "github-AdrienTorris-awesome-blazor-readme-md"
 ---
 
-# Awesome Blazor [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-[<img src="https://adrientorris.github.io/wwwroot/images/blazor/logo-blazor.png" align="right" width="170">](https://dotnet.microsoft.com/apps/aspnet/web-apps/client)
+# Awesome Blazor
 
-> A collection of awesome Blazor resources.
-
-Blazor is a .NET web framework using C#/Razor and HTML that runs in the browser with WebAssembly.
-
-Contributions are always welcome! Please take a look at the [contribution guidelines](https://github.com/AdrienTorris/awesome-blazor/blob/master/CONTRIBUTING.md) pages first. Thanks to all [contributors](https://github.com/AdrienTorris/awesome-blazor/graphs/contributors), you're awesome and wouldn't be possible without you!
-
-If you need to search on this list you can try this great website: [Awesome Blazor Browser](https://jsakamoto.github.io/awesome-blazor-browser/).
-Thanks @jsakamoto for this! [Source code](https://github.com/jsakamoto/awesome-blazor-browser) ![stars](https://img.shields.io/github/stars/jsakamoto/awesome-blazor-browser?style=flat-square&cacheSeconds=604800) ![last commit](https://img.shields.io/github/last-commit/jsakamoto/awesome-blazor-browser?style=flat-square&cacheSeconds=86400).
+A curated collection of resources and projects focused on Blazor.
 
 ## Contents
 * [Introduction](#introduction)

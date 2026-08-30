@@ -1,20 +1,13 @@
 ---
-title: "dreikanter/sublime-bookmarks"
-description: "dreikanter/sublime-bookmarks の正規スナップショット"
+title: "Awesome Sublime Text Bookmarks"
+description: "Sublime Text Bookmarksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dreikanter-sublime-bookmarks-readme-md"
 ---
 
-# Sublime Textブックマーク集 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Sublime Text Bookmarks
 
-> [Sublime Text](http://www.sublimetext.com/) は、Pythonのアプリケーションプログラミングインターフェースを備えたクロスプラットフォームのテキスト／ソースコードエディターです。プラグインで機能を拡張でき、拡張パッケージの多くは自由ソフトウェアライセンスで、コミュニティによって開発・保守されています。— [Wikipedia](https://en.wikipedia.org/wiki/Sublime_Text)
+Sublime Text Bookmarksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-この小さなプロジェクトは、[GitHubコミュニティの潮流](https://github.com/sindresorhus/awesome)にならい、特定分野で特に重要なブックマークを使いやすく整理されたコレクションとして集約します。Sublime Textのチュートリアルや学習資料、コーディングとテキスト編集に使える汎用拡張機能、用途別に分類した専門的な拡張機能を収録しています。
-
-すべてのSublime Textプラグインを網羅するリストではありません。その用途にはすでに[Package Control](https://packagecontrol.io/)があります。作業環境を整える際の出発点や、既存のSublime環境をさらに便利にする新しい拡張機能を探す場として利用してください。リスト内の★は「編集者のおすすめ」を示します。共有やプルリクエストを歓迎します。
-
-**[フォークして編集](https://github.com/dreikanter/sublime-bookmarks/edit/master/README.md)**するか、[追加候補を提案](https://github.com/dreikanter/sublime-bookmarks/issues/new)してください。
-
-<a id="things-to-start-from"></a>
 ## 最初に確認するもの
 
 - [Sublime Text home page](https://www.sublimetext.com/)

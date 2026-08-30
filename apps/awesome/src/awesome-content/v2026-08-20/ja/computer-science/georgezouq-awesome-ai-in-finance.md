@@ -1,15 +1,12 @@
 ---
-title: "georgezouq/awesome-ai-in-finance"
-description: "georgezouq/awesome-ai-in-finance の定本スナップショット"
+title: "Awesome AI in Finance"
+description: "AI in Financeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-georgezouq-awesome-ai-in-finance-readme-md"
 ---
 
-# Awesome AI in Finance [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) [![Community](https://img.shields.io/discord/733027681184251937.svg?style=flat&label=Join%20Community&color=7289DA)](https://discord.gg/cqaUf47)
+# Awesome AI in Finance
 
-世界の金融市場では毎日数百万件の取引が行われ、データは急速に増加しています。
-最新の人工知能研究を活用し、市場を自動的・知的に分析して取引するための研究、ツール、コードをまとめた一覧です。
-
-[[中文资源](https://github.com/georgezouq/awesome-ai-in-finance/blob/27ef1faa8ea062af45ae2cdcbd2f50f4c358f110/chinese.md)]
+AI in Financeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

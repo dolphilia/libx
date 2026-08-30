@@ -1,14 +1,12 @@
 ---
-title: "ipfs/awesome-ipfs"
-description: "Canonical snapshot of ipfs/awesome-ipfs"
+title: "Awesome IPFS"
+description: "A curated collection of resources and projects focused on IPFS."
 licenseSource: "github-ipfs-awesome-ipfs-readme-md"
 ---
 
-# Awesome IPFS [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome IPFS
 
-This is a community list of awesome projects, apps, tools, and services related to IPFS.
-
-To submit your project, read the [Content Policy](https://github.com/ipfs/awesome-ipfs/blob/main/CONTRIBUTING.md#content-policy), and [**submit a PR**](https://github.com/ipfs/awesome-ipfs/edit/main/README.md)
+A curated collection of resources and projects focused on IPFS.
 
 ## Table of Contents
 

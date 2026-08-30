@@ -1,13 +1,12 @@
 ---
-title: "igorbarinov/awesome-bitcoin"
-description: "Canonical snapshot of igorbarinov/awesome-bitcoin"
+title: "Awesome Bitcoin"
+description: "A curated collection of resources and projects focused on Bitcoin."
 licenseSource: "github-igorbarinov-awesome-bitcoin-readme-md"
 ---
 
-Awesome Bitcoin
-===============
-A curated list of bitcoin services and tools for software developers
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Bitcoin
+
+A curated collection of resources and projects focused on Bitcoin.
 
 ## List of content
 

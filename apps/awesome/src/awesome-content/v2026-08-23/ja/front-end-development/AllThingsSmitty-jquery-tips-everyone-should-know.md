@@ -1,15 +1,12 @@
 ---
-title: "AllThingsSmitty/jquery-tips-everyone-should-know"
-description: "AllThingsSmitty/jquery-tips-everyone-should-know の定本スナップショット"
+title: "Awesome jQuery Tips Everyone Should Know"
+description: "jQuery Tips Everyone Should Knowを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-AllThingsSmitty-jquery-tips-everyone-should-know-readme-md"
 ---
 
-# すべての人が知るべきjQueryのヒント [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome jQuery Tips Everyone Should Know
 
-jQueryのスキルを高めるためのシンプルなヒント集。
-
-> **ヒント:**
-> その他の優れたリストについては、[@sindresorhus](https://github.com/sindresorhus/)がキュレーションした[awesome lists](https://github.com/sindresorhus/awesome/)を確認してください。
+jQuery Tips Everyone Should Knowを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

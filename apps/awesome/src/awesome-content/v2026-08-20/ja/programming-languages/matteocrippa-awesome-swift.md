@@ -1,24 +1,12 @@
 ---
-title: "matteocrippa/awesome-swift"
-description: "Swiftのガイド、開発ツール、依存関係管理、分野別ライブラリ、UI、サーバーレス資源を分類した定本スナップショット"
+title: "Awesome Swift"
+description: "Swiftを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-matteocrippa-awesome-swift-readme-md"
 ---
 
-# SwiftのAwesomeリスト <a id="readme"></a>
- 
+# Awesome Swift
 
-
-
-
-| Awesome | Linux | Projects | Updated |
-|:-------:|:-----:|:--------:|:-------:|
-| [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) | :penguin: | 1107 | August 03, 2026 |
-
-協力:
-
-[![Codemotion](https://github.com/matteocrippa/awesome-swift/blob/master/.github/images/codemotion_logo.png?raw=true)](https://codemo.tech/partners)
-
-
+Swiftを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次 <a id="contents"></a>
 

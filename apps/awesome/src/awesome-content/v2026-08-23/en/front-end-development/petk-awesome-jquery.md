@@ -1,20 +1,12 @@
 ---
-title: "petk/awesome-jquery"
-description: "Canonical snapshot of petk/awesome-jquery"
+title: "Awesome jQuery"
+description: "A curated collection of resources and projects focused on jQuery."
 licenseSource: "github-petk-awesome-jquery-readme-md"
 ---
 
 # Awesome jQuery
 
-<a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" height="18"></a>
-[![Join the chat at https://gitter.im/peterkokot/awesome-jquery](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/peterkokot/awesome-jquery?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![CCO License](https://img.shields.io/badge/license-CC0-blue.svg?style=plastic "CC0 License")](#contributing-and-license)
-[![Project Maintained](https://img.shields.io/badge/project-maintained-brightgreen.svg?style=plastic "Project Maintained")](https://github.com/petk/awesome-jquery/commits/master)
-[![Build Status](https://img.shields.io/travis/petk/awesome-jquery/master.svg)](https://travis-ci.org/petk/awesome-jquery)
-
-A curated list of awesome [jQuery](http://jquery.com/) plugins, resources and other shiny things. Inspired by the `awesome-*` trend on GitHub.
-
-> [jQuery](http://jquery.com/) is a fast, small, and feature-rich [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
+A curated collection of resources and projects focused on jQuery.
 
 ## Table of contents
 

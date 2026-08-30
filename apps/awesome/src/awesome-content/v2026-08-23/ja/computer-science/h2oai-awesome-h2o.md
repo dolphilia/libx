@@ -1,23 +1,13 @@
 ---
-title: "h2oai/awesome-h2o"
-description: "h2oai/awesome-h2o の正規スナップショット"
+title: "Awesome H2O"
+description: "H2Oを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-h2oai-awesome-h2o-readme-md"
 ---
 
-<a id="awesome-h2o"></a>
-# Awesome H2O [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Powered by H2O.ai](https://img.shields.io/badge/powered%20by-h2oai-yellow.svg)](https://github.com/h2oai/)
+# Awesome H2O
 
-[<img src="https://rawgit.com/h2oai/awesome-h2o/master/h2o_logo.png" align="right" width="100">](https://github.com/h2oai/h2o-3)
+H2Oを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-以下は、オープンソースの分散機械学習プラットフォーム[H2O](https://github.com/h2oai/h2o-3)を利用する優れたプロジェクト、アプリケーション、研究、チュートリアル、コース、書籍を厳選したリストです。H2Oは、一般化線形モデル、勾配ブースティングマシン（XGBoostを含む）、ランダムフォレスト、深層ニューラルネットワーク、Stacked Ensembles、Naive Bayes、Cox比例ハザード、K-means、PCA、Word2Vecなど、多数の教師あり・教師なし機械学習アルゴリズムの並列実装に加え、全自動機械学習アルゴリズムAutoMLを提供します。
-
-[H2O.ai](http://www.h2o.ai/about/)自身もH2Oに関する多くの[チュートリアル](https://github.com/h2oai/h2o-tutorials)、[ブログ記事](http://blog.h2o.ai/)、[プレゼンテーション](https://github.com/h2oai/h2o-meetups)、[動画](https://www.youtube.com/user/0xdata)を公開していますが、以下のリストは幅広いH2Oユーザーコミュニティが制作した優れたコンテンツで構成されています。
-
-このリストはまだ始まったばかりなので、プルリクエストを歓迎します！ 🙏 プルリクエストを作成する前に[貢献ガイドライン](https://github.com/h2oai/awesome-h2o/blob/c48c6ffe46b202eec6b574672e26f4f022804148/contributing.md)を確認してください。GitHubユーザーではなく貢献を希望する場合は、community@h2o.aiまでメールでお知らせください。
-
-H2Oが素晴らしいと思ったら、[H2O GitHubリポジトリ](https://github.com/h2oai/h2o-3/)へ⭐をお願いします。
-
-<a id="contents"></a>
 ## 目次
 
 - [ブログ記事とチュートリアル](#blog-posts--tutorials)

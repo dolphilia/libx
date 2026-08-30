@@ -1,25 +1,12 @@
 ---
-title: "dahlia/awesome-sqlalchemy"
-description: "SQLAlchemyのデータ型、移行、検索、検証、可視化、ウェブ統合ライブラリ集"
+title: "Awesome Sqlalchemy"
+description: "Sqlalchemyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dahlia-awesome-sqlalchemy-readme-rst"
 ---
 
-Awesome SQLAlchemy
-==================
+# Awesome Sqlalchemy
 
-.. image:: https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg
-   :target: https://github.com/sindresorhus/awesome
-
-SQLAlchemy_ 向けの優れた追加ライブラリとリソースを厳選したリストです。
-awesome-python_ に着想を得ています。（他の `awesome lists`__ も参照してください！）
-
-クリエイティブ・コモンズの `表示—継承 4.0 国際
-ライセンス`__ の下で提供されます。
-
-.. _SQLAlchemy: https://www.sqlalchemy.org/
-.. _awesome-python: https://github.com/vinta/awesome-python
-__ https://github.com/sindresorhus/awesome
-__ https://creativecommons.org/licenses/by-sa/4.0/
+Sqlalchemyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 .. contents:: 目次
    :backlinks: none

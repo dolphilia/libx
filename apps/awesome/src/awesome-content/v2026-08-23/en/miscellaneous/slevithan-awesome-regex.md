@@ -1,47 +1,12 @@
 ---
-title: "slevithan/awesome-regex"
-description: "Canonical snapshot of slevithan/awesome-regex"
+title: "Awesome Regex"
+description: "A curated collection of resources and projects focused on Regex."
 licenseSource: "github-slevithan-awesome-regex-readme-md"
 ---
 
+# Awesome Regex
 
-<div align="center">
-
-[![Awesome Regex](https://github.com/slevithan/awesome-regex/blob/8edee4497ae8ce1da33b3129c95aeb746de14550/media/awesome-regex-banner.svg)](https://github.com/slevithan/awesome-regex)
-
-[![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) &nbsp;<sup>Shortcut URL: [`regex.cool`](https://regex.cool/)</sup>
-</div>
-
-Awesome Regex curates the best regular expression tools, tutorials, libraries, and other resources, covering all major regex flavors.
-
-> Regular expressions (regex or regexp) are a powerful and concise way to search, parse, and process text. They're built into many programming languages, text editors, IDEs, database engines, word processors, and other tools.
-
-Contributions are welcome. Add links through pull requests ([guidelines](https://github.com/slevithan/awesome-regex/blob/8edee4497ae8ce1da33b3129c95aeb746de14550/CONTRIBUTING.md)).
-
-<details>
-  <summary>📖 <b>Glossary</b></summary>
-  <br>
-
-*A brief glossary of regular expression terms as used in this list.*
-
-- **Regex engine:** Software that interprets and executes regular expressions, either built into a programming language or as a standalone library.
-- **Regex flavor:** A unique set of regex syntax and behavior. Basic syntax is typically shared across flavors, but more advanced features often vary, sometimes in subtle or incompatible ways. A flavor might be shared across multiple implementations or programming languages.
-  - Ex: The “JavaScript” flavor is defined by the ECMAScript spec; implemented by multiple engines (V8, etc.).
-  - Ex: The “PCRE” flavor is the PCRE2 library, used by numerous programming languages and tools.
-  - Ex: Ruby swapped its regex implementation twice from version 1.8 → 1.9 → 2.0, so each used a distinct flavor. The Ruby 2.0+ flavor is referred to here as either “Ruby” or “Onigmo” (the underlying regex library).
-- **Non-backtracking engine:** A regex implementation that uses a non-backtracking algorithm and runs in linear time. This rules out worst case performance from superlinear backtracking, but it's slower with some patterns and precludes some useful features like backreferences.
-</details>
-
-### Featured resource
-
-<a href="https://github.com/slevithan/regex">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/slevithan/regex@6.1.0/media/logo-dark.svg">
-    <img alt="Regex+ logo" height="100" width="225" align="right" src="https://cdn.jsdelivr.net/gh/slevithan/regex@6.1.0/media/logo.svg">
-  </picture>
-</a>
-
-[Regex+](https://github.com/slevithan/regex) is a lightweight JavaScript library for more readable, high-performance, native JavaScript regexes with powerful features including free spacing, atomic groups, possessive quantifiers, subroutines, definition groups, and context-aware interpolation.
+A curated collection of resources and projects focused on Regex.
 
 ## Contents
 

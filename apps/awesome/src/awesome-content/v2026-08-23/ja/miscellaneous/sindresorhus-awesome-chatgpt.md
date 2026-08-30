@@ -1,54 +1,12 @@
 ---
-title: "sindresorhus/awesome-chatgpt"
-description: "sindresorhus/awesome-chatgpt の定本スナップショット"
+title: "Awesome ChatGPT"
+description: "ChatGPTを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sindresorhus-awesome-chatgpt-readme-md"
 ---
 
-<div align="center">
-	<br>
-	<br>
-	<div>
-		<picture>
-			<source media="(prefers-color-scheme: dark)" srcset="media/logo-dark.svg">
-			<img alt="Awesome ChatGPT" width="500px" src="media/logo.svg">
-		</picture>
-		<br>
-	</div>
-	<p>
-		<a href="https://chat.openai.com">ChatGPT</a> は <a href="https://openai.com">OpenAI</a> が開発した人工知能（AI）チャットボットです
-	</p>
-	<br>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<p>
-		<p>
-			<sup>
-				<a href="https://github.com/sponsors/sindresorhus">私のオープンソース活動はコミュニティに支えられています</a>
-			</sup>
-		</p>
-		<sup>特別な謝辞:</sup>
-		<br>
-		<br>
-		<a href="https://nitric.io/?utm_campaign=github_repo&utm_medium=referral&utm_content=sindresorhus&utm_source=github">
-			<div>
-				<img width="230" src="https://sindresorhus.com/assets/thanks/nitric-logo.svg" alt="nitric logo">
-			</div>
-			<b>コードからインフラを扱う、手軽なバックエンド</b>
-			<div>
-				<sup>あらゆるプログラミング言語、クラウドプロバイダー、デプロイ自動化ツールをサポートするオープンソースフレームワーク。</sup>
-			</div>
-		</a>
-		<br>
-	</p>
-	<hr>
-	<br>
-	<br>
-</div>
+# Awesome ChatGPT
+
+ChatGPTを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -312,4 +270,3 @@ licenseSource: "github-sindresorhus-awesome-chatgpt-readme-md"
 
 - [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) - Prompt curation.
 - [awesome-whisper](https://github.com/sindresorhus/awesome-whisper) - Whisper is an AI-powered speech recognition system.
-

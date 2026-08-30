@@ -1,24 +1,12 @@
 ---
-title: "ironcev/awesome-roslyn"
-description: "ironcev/awesome-roslyn の正規スナップショット"
+title: "Awesome Roslyn"
+description: "Roslynを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ironcev-awesome-roslyn-readme-md"
 ---
 
-<p align="center">
-    <a href="https://github.com/dotnet/roslyn">
-        <img src="https://raw.githubusercontent.com/ironcev/awesome-roslyn/master/images/awesome-roslyn-logo.png" alt="Awesome Roslyn" width="500">
-    </a>
-</p>
+# Awesome Roslyn
 
-<p align="center">
-    <a href="https://github.com/sindresorhus/awesome">
-        <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome">
-    </a>
-</p>
-
-> Roslynに関する書籍、チュートリアル、オープンソースプロジェクト、アナライザー、コード修正、リファクタリング、ソースジェネレーターの厳選リストです。
-
-Roslyn（正式名称：[.NET Compiler Platform](https://en.wikipedia.org/wiki/.NET_Compiler_Platform)）は、C#およびVisual Basic .NET向けのオープンソースコンパイラとコード解析API群です。
+Roslynを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

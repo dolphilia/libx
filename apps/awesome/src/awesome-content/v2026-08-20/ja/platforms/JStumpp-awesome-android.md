@@ -1,33 +1,12 @@
 ---
-title: "JStumpp/awesome-android"
-description: "Androidのライブラリ、ツール、開発手段、学習資料を分類した定本スナップショット"
+title: "Awesome Android"
+description: "Androidを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-JStumpp-awesome-android-readme-md"
 ---
 
-# AndroidのAwesomeリスト <a id="awesome-android"></a>
-[<img src="https://raw.githubusercontent.com/jstumpp/awesome-android/master/awesome-android.png">](https://github.com/jstumpp/awesome-android)
+# Awesome Android
 
-<p align="center">
-  <a href="https://github.com/sindresorhus/awesome"><img alt="awesome" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" /></a>
-  <a href="https://travis-ci.org/JStumpp/awesome-android"><img alt="Build Status" src="https://api.travis-ci.org/JStumpp/awesome-android.svg?branch=master" /></a>
-  <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
-</p>
-
-# 概要 <a id="about"></a>
-Androidの優れた[ライブラリ](#libraries)と[資料](#resources)を厳選したリストです。一般的なJavaライブラリは[awesome-java](https://github.com/akullpp/awesome-java)を参照してください。
-
-## ❤️による支援: [Instabug](https://instabug.com/android/sdk?utm_source=toolsofthetrade&utm_medium=spon&utm_content=header)
-### 利用者のリアルタイムな状況情報からAndroidアプリの状態を把握
-[![instabug-github](https://user-images.githubusercontent.com/10850625/65512691-fd45f280-ded9-11e9-8921-3528b98c30a7.png)](https://instabug.com/android/sdk?utm_source=awesomeandroid&utm_medium=spon&utm_content=banner)
-> InstabugはAndroid開発者とプロダクトチームがベータテスターや利用者から不具合・フィードバックを収集し、改善と高品質なリリースを加速できるよう支援します。スクリーンショット、端末情報、ネットワークログ、再現手順など、問題解決とバックログ優先順位付けに必要な情報を自動添付します。
-> モバイルチームはGitHub、Jira、Slack、Zendeskなどとの統合でワークフローを高速化できます。[Awesome Androidコミュニティ向けに有料プランを15%割引します。](https://instabug.com/android/sdk/?utm_source=awesomeandroid&utm_medium=spon&utm_content=get-started)
-[![](https://instabug-ga.appspot.com/UA-41982088-6/github/awesomeandroid?pixel)](https://instabug.com)
-
-
-# 使い方 <a id="how-to-use"></a>
-Awesome Androidはアプリに特定機能を必要とする人向けの一覧です。次の方法で利用できます。
- - Command + Fでキーワードを検索します。
- - 目次から分類をたどります。
+Androidを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # 目次 <a id="content"></a>
 - [エミュレーター](#emulators)

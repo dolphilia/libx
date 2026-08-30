@@ -1,16 +1,12 @@
 ---
-title: "joho/awesome-code-review"
-description: "Canonical snapshot of joho/awesome-code-review"
+title: "Awesome Code Review"
+description: "A curated collection of resources and projects focused on Code Review."
 licenseSource: "github-joho-awesome-code-review-readme-md"
 ---
 
-<img src="https://raw.githubusercontent.com/joho/awesome-code-review/1887c2a5c78650474c1d13193ea3d38f23d98212/Awesome Code Review.png" alt="Awesome Code Review" />
+# Awesome Code Review
 
-# Awesome Code Review [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> A curated list of tools, articles, books, and any other resource related to [code review](https://en.wikipedia.org/wiki/Code_review)
-
-Code review is the systematic examination (sometimes referred to as peer review) of computer source code.
+A curated collection of resources and projects focused on Code Review.
 
 ## Contents
 

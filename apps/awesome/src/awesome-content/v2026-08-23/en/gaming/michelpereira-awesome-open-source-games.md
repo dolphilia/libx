@@ -1,14 +1,12 @@
 ---
-title: "michelpereira/awesome-open-source-games"
-description: "Canonical snapshot of michelpereira/awesome-open-source-games"
+title: "Awesome Open Source Games"
+description: "A curated collection of resources and projects focused on Open Source Games."
 licenseSource: "github-michelpereira-awesome-open-source-games-readme-md"
 ---
 
-# Awesome Open Source Games [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Open Source Games
 
-
-
-Open source games that have the source code available.
+A curated collection of resources and projects focused on Open Source Games.
 
 ## Contents
 

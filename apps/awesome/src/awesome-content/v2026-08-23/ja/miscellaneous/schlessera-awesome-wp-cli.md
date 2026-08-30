@@ -1,14 +1,12 @@
 ---
-title: "schlessera/awesome-wp-cli"
-description: "schlessera/awesome-wp-cli の定本スナップショット"
+title: "Awesome WP-CLI"
+description: "WP-CLIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-schlessera-awesome-wp-cli-readme-md"
 ---
 
+# Awesome WP-CLI
 
-# Awesome WP-CLI [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![awesome-lint](https://github.com/schlessera/awesome-wp-cli/workflows/awesome-lint/badge.svg)](https://github.com/schlessera/awesome-wp-cli/actions?query=workflow%3Aawesome-lint) [<img src="assets/wp-cli-bw-trans-filled-tight@311x160.png" alt="WP-CLI Logo" align="right" height="80">](https://wp-cli.org/)
-
-
-[WP-CLI](https://wp-cli.org/) は WordPress のコマンドラインインターフェースです。WordPress 管理ダッシュボードの完全な代替手段を提供し、多くの場合その機能を上回るか、新しいユースケースを可能にします。また、Composer パッケージにバンドルされる、または WordPress プラグインやテーマへ直接統合される、豊富なサードパーティーコマンドのエコシステムも備えています。
+WP-CLIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

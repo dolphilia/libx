@@ -1,18 +1,12 @@
 ---
-title: "pico-8/awesome-PICO-8"
-description: "pico-8/awesome-PICO-8 の正規スナップショット"
+title: "Awesome PICO-8"
+description: "PICO-8を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-pico-8-awesome-PICO-8-readme-md"
 ---
 
-# Awesome PICO-8 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome PICO-8
 
-![PICO-8](https://www.lexaloffle.com/gfx/p8_jelpi.gif)
-![tools](https://www.lexaloffle.com/gfx/p8_tracker.gif)
-![code](https://www.lexaloffle.com/gfx/p8_cast.gif)
-
- PICO-8 のリソース、チュートリアル、ツールなどのキュレーション済みリスト。[awesome](https://github.com/sindresorhus/awesome) リストに着想を得ています。[awesome-lua](https://github.com/LewisJEllis/awesome-lua)と[awesome-love2d](https://github.com/JanWerder/awesome-love2d)もおすすめです。
-
- PICO-8 は、小さなゲームや他のコンピュータープログラムを作成、共有、プレイするためのファンタジーコンソールです。起動すると、[Lua](https://www.lua.org/)コマンドのサブセットを入力するシェルと、自分のカートリッジを作るためのシンプルな組込みツールが表示されます。
+PICO-8を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

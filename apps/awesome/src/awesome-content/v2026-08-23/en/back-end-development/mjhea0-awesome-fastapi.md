@@ -1,16 +1,12 @@
 ---
-title: "mjhea0/awesome-fastapi"
-description: "Canonical snapshot of mjhea0/awesome-fastapi"
+title: "Awesome FastAPI"
+description: "A curated collection of resources and projects focused on FastAPI."
 licenseSource: "github-mjhea0-awesome-fastapi-readme-md"
 ---
 
+# Awesome FastAPI
 
-
-# Awesome FastAPI | [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
-
-> A curated list of awesome things related to FastAPI.
-
-[FastAPI](https://fastapi.tiangolo.com/) is a modern, high-performance, batteries-included Python web framework that's perfect for building RESTful APIs.
+A curated collection of resources and projects focused on FastAPI.
 
 ## Contents
 

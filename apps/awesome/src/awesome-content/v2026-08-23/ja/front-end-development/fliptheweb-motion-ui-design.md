@@ -1,13 +1,12 @@
 ---
-title: "fliptheweb/motion-ui-design"
-description: "fliptheweb/motion-ui-design の正規スナップショット"
+title: "Awesome Motion UI Design"
+description: "Motion UI Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-fliptheweb-motion-ui-design-readme-md"
 ---
 
-# Motion UI Design [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-モーションデザインとは何でしょうか。インターフェースに命を吹き込み、UIの変化を自然に感じさせる仕組みです。
-モーションUIデザイン、UIアニメーション、トランジションに関する資料、ソフトウェア、ライブラリ、動画、記事を厳選しています。
-興味深い項目は、[ガイド](https://github.com/fliptheweb/motion-ui-design/blob/63cf4e93d0407d54b7f965b2de87c6e01449812c/contributing.md)（TODOあり）に従ってPull Requestで追加してください。
+# Awesome Motion UI Design
+
+Motion UI Designを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 - [着想を得るための資料](#resources-for-inspiration)

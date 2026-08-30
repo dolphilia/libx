@@ -1,18 +1,12 @@
 ---
-title: "klaufel/awesome-design-systems"
-description: "Canonical snapshot of klaufel/awesome-design-systems"
+title: "Awesome Design Systems"
+description: "A curated collection of resources and projects focused on Design Systems."
 licenseSource: "github-klaufel-awesome-design-systems-readme-md"
 ---
 
-# Awesome Design Systems [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Design Systems
 
-> A curated list of bookmarks, resources and articles about design systems focused on developers.
-
-<p align="center">
-  <a href="https://github.com/klaufel/awesome-design-systems#readme">
-    <img src="media/awesome-design-systems-cover.svg" alt="Awesome Design Systems"/>
-  </a>
-</p>
+A curated collection of resources and projects focused on Design Systems.
 
 ## Contents
 

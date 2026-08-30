@@ -1,19 +1,13 @@
 ---
-title: "godotengine/awesome-godot"
-description: "Godot製ゲーム、プロジェクト、テンプレート、プラグイン、開発資料集"
+title: "Awesome Godot"
+description: "Godotを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-godotengine-awesome-godot-readme-md"
 ---
 
-# Awesome Godot [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Godot
 
-[![Godot Engine logo](https://github.com/godotengine/awesome-godot/blob/5bee20edd065a17c8a47ff920b9d36945c989d2b/godot-logo.svg)](https://godotengine.org)
+Godotを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-Godot向けの [free/libre](https://www.gnu.org/philosophy/free-sw.html) ゲーム、プラグイン、アドオン、スクリプトの厳選リスト
-
-Godotにおける第三者プログラミング言語のサポートを検索していますか？
-[Vivraan/godot-lang-support](https://github.com/Vivraan/godot-lang-support) をご確認ください.
-
-<a id="contents"></a>
 ## 目次
 
 - [Games](#games)

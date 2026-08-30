@@ -1,18 +1,12 @@
 ---
-title: "atblueprints/awesome-atproto"
-description: "atblueprints/awesome-atproto の日本語訳（人手レビュー前）"
+title: "Awesome ATProto"
+description: "ATProtoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-atblueprints-awesome-atproto-readme-md"
 ---
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/atblueprints/awesome-atproto/main/assets/logo.png" width="300px">
+# Awesome ATProto
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-</div>
-
-# Awesome ATProto 
-
-> [AT Protocol](https://atproto.com/)は、オープンで分散型のネットワーク上にソーシャルアプリケーションを構築するための連合プロトコルです。
+ATProtoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

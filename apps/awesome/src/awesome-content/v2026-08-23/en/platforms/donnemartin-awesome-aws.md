@@ -1,44 +1,12 @@
 ---
-title: "donnemartin/awesome-aws"
-description: "Canonical snapshot of donnemartin/awesome-aws"
+title: "Awesome AWS"
+description: "A curated collection of resources and projects focused on AWS."
 licenseSource: "github-donnemartin-awesome-aws-readme-md"
 ---
 
-<br/>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/donnemartin/data-science-ipython-notebooks/master/images/aws.png">
-</p>
-<br/>
+# Awesome AWS
 
-# Awesome AWS [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-A curated list of awesome AWS libraries, open source repos, guides, blogs, and other resources.
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list.
-
-## The Fiery Meter of AWSome
-
-* Repo with 0100+ Stars: :fire:
-* Repo with 0200+ Stars: :fire::fire:
-* Repo with 0500+ Stars: :fire::fire::fire:
-* Repo with 1000+ Stars: :fire::fire::fire::fire:
-* Repo with 2000+ Stars: :fire::fire::fire::fire::fire:
-
-Repos not on `The Fiery Meter of AWSome` can still be awesome, see [A Note on Repo AWSomeness](https://github.com/donnemartin/awesome-aws/blob/master/CONTRIBUTING.md#a-note-on-repo-awsomeness).
-
-### `awesome-aws` Python Module
-
-[![Build Status](https://travis-ci.org/donnemartin/awesome-aws.svg?branch=master)](https://travis-ci.org/donnemartin/awesome-aws) [![Codecov](https://img.shields.io/codecov/c/github/donnemartin/awesome-aws.svg)](https://codecov.io/github/donnemartin/awesome-aws) [![PyPI version](https://badge.fury.io/py/awesome-aws.svg)](http://badge.fury.io/py/awesome-aws)
-
-The Python module [`awesome-aws`](https://github.com/donnemartin/awesome-aws/tree/master/awesome) regularly scans repos on [Awesome AWS](https://github.com/donnemartin/awesome-aws) to maintain the accuracy of the `Fiery Meter of AWSome`.
-
-## Contributing
-
-Contributions are welcome!
-
-Review the [Contributing Guidelines](https://github.com/donnemartin/awesome-aws/blob/master/CONTRIBUTING.md).
-
-Also check out the [Watch List](https://github.com/donnemartin/awesome-aws/issues/34).
+A curated collection of resources and projects focused on AWS.
 
 ## Index
 

@@ -1,17 +1,12 @@
 ---
-title: "donBarbos/awesome-standards"
-description: "donBarbos/awesome-standards の定本スナップショット"
+title: "Awesome Standards"
+description: "Standardsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-donBarbos-awesome-standards-readme-md"
 ---
 
+# Awesome Standards
 
-<div align="center">
-  <h1>Awesome Standards</h1>
-  <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome" /></a>
-  <a href="https://github.com/donBarbos/awesome-standards/graphs/contributors"><img src="https://img.shields.io/github/contributors/donbarbos/awesome-standards" alt="GitHub contributors" /></a>
-  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome" /></a>
-  <blockquote>技術標準を集めたキュレーションリスト。RFC、提案、草案、ノート、仕様など、さまざまな名称で呼ばれます。</blockquote>
-</div>
+Standardsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -243,4 +238,3 @@ licenseSource: "github-donBarbos-awesome-standards-readme-md"
 - [Awesome Guidelines](https://github.com/Kristories/awesome-guidelines) - Coding style conventions and standards.
 - [Awesome API Devtools](https://github.com/yosriady/awesome-api-devtools) - A collection of useful resources for building RESTful HTTP+JSON APIs.
 - [Awesome Corporate Standards](https://github.com/openapi/awesome-corporate-standards) - International standards, frameworks, and certification bodies for organizations and businesses (quality, security, privacy, ESG, finance, and sector-specific compliance).
-

@@ -1,17 +1,13 @@
 ---
-title: "javierluraschi/awesome-dataviz"
-description: "javierluraschi/awesome-dataviz の正規スナップショット"
+title: "Awesome Dataviz"
+description: "Datavizを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-javierluraschi-awesome-dataviz-readme-md"
 ---
 
-# Awesome Dataviz（データ可視化）
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![Test](https://github.com/javierluraschi/awesome-dataviz/actions/workflows/main.yaml/badge.svg)
+# Awesome Dataviz
 
+Datavizを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-優れた**オープンソース**のデータ可視化フレームワーク、ライブラリ、ソフトウェアを厳選した一覧です。[awesome-python](https://github.com/vinta/awesome-python)から着想を得て、[fasouto](https://github.com/fasouto)が最初に作成しました。
-
-
-<a id="contents"></a>
 ## 目次
 - [Awesome Dataviz](#awesome-dataviz)
 	- [JavaScriptツール](#javascript-tools)

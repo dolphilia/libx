@@ -7,11 +7,7 @@ import { unified } from 'unified';
 import { rootDir, snapshotVersion } from './common.mjs';
 
 const apply = process.argv.includes('--apply');
-const contentRoot = path.join(
-  rootDir,
-  'apps/awesome/src/awesome-content',
-  snapshotVersion
-);
+const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion);
 
 function markdownFiles(root) {
   return fs
@@ -60,7 +56,9 @@ for (const file of markdownFiles(japaneseRoot)) {
   const japanese = fs.readFileSync(path.join(japaneseRoot, file), 'utf8');
   const expected = localLinks(english);
   const actual = localLinks(japanese);
-  if (JSON.stringify(expected.map(({ url }) => url)) === JSON.stringify(actual.map(({ url }) => url))) {
+  if (
+    JSON.stringify(expected.map(({ url }) => url)) === JSON.stringify(actual.map(({ url }) => url))
+  ) {
     continue;
   }
   if (
@@ -79,11 +77,13 @@ for (const file of markdownFiles(japaneseRoot)) {
     if (relativeIndex === -1) {
       throw new Error(`リンク先の位置を解決できません: ${file}: ${link.url}`);
     }
-    return [{
-      start: link.start + relativeIndex,
-      end: link.start + relativeIndex + link.url.length,
-      value: expectedUrl,
-    }];
+    return [
+      {
+        start: link.start + relativeIndex,
+        end: link.start + relativeIndex + link.url.length,
+        value: expectedUrl,
+      },
+    ];
   });
   let output = japanese;
   for (const replacement of replacements.sort((left, right) => right.start - left.start)) {

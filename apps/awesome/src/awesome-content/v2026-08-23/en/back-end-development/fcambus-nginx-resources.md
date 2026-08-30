@@ -1,14 +1,12 @@
 ---
-title: "fcambus/nginx-resources"
-description: "Canonical snapshot of fcambus/nginx-resources"
+title: "Awesome Nginx Resources"
+description: "A curated collection of resources and projects focused on Nginx Resources."
 licenseSource: "github-fcambus-nginx-resources-readme-md"
 ---
 
-# Nginx Resources [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Nginx Resources
 
-A collection of resources covering Nginx, Nginx + Lua, OpenResty and Tengine.
-
-This list is maintained by [Frederic Cambus](https://www.cambus.net). For updates, follow me on X: [@fcambus](https://x.com/fcambus)
+A curated collection of resources and projects focused on Nginx Resources.
 
 ## Understanding Nginx
 

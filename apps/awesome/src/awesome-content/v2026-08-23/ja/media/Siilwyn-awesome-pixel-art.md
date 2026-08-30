@@ -1,15 +1,12 @@
 ---
-title: "Siilwyn/awesome-pixel-art"
-description: "Siilwyn/awesome-pixel-art の定本スナップショット"
+title: "Awesome Pixel Art"
+description: "Pixel Artを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Siilwyn-awesome-pixel-art-readme-md"
 ---
 
 # Awesome Pixel Art
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-[<img src="https://cdn.rawgit.com/Siilwyn/awesome-pixel-art/1d81c507/sheep-timelapse.gif" align="right" width="118">](https://twitter.com/mnrART)
-
-Awesome Pixel Art は、ピクセルアートの制作と学習、コミュニティに参加するためのリンク提供に特化したリポジトリーです。ピクセルアートでは、配置されるすべてのピクセルが、想定したグラフィックの作成に重要です。以下には基礎的な導入要素から色・アニメーションのチュートリアルまでの支援リンクがあります。ゲーム、アニメーション、他のアーティストから得られるインスピレーションも豊富です。
+Pixel Artを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [チュートリアル](#tutorials)

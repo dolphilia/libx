@@ -1,23 +1,12 @@
 ---
-title: "szenergy/awesome-lidar"
-description: "LIDARセンサー、データセット、点群処理、SLAM、シミュレーターの定本スナップショット"
+title: "Awesome LIDAR"
+description: "LIDARを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-szenergy-awesome-lidar-readme-md"
 ---
 
-# LIDARのAwesomeリスト <a id="awesome-lidar-"></a> [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome LIDAR
 
-<img src="img/lidar02.svg" align="right" width="200" alt="LIDAR" />
-
-> 優れたLIDARセンサーと応用例を厳選したリストです。
-
-[LIDAR](https://en.wikipedia.org/wiki/Lidar)はレーザー光を用い、周囲をおよそcm単位の精度で計測するリモートセンシング技術です。取得データは通常、2次元または3次元の点集合である点群として扱われます。本リストはハードウェア、データセット、点群処理アルゴリズム、フレームワーク、シミュレーター等を収録します。
-
-コントリビューションを歓迎します。[ガイドライン](https://github.com/szenergy/awesome-lidar/blob/35b8c40694f878a1710d3a1fecee7cbd73917301/contributing.md)を確認してください。
-
-> **ヒント:**
-> 別表示: [szenergy.github.io/awesome-lidar](https://szenergy.github.io/awesome-lidar/) 
->
-> ソースコード: [github.com/szenergy/awesome-lidar](https://github.com/szenergy/awesome-lidar)
+LIDARを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

@@ -1,18 +1,12 @@
 ---
-title: "awesome-spark/awesome-spark"
-description: "Canonical snapshot of awesome-spark/awesome-spark"
+title: "Awesome Spark"
+description: "A curated collection of resources and projects focused on Spark."
 licenseSource: "github-awesome-spark-awesome-spark-readme-md"
 ---
 
-[<img src="https://cdn.rawgit.com/awesome-spark/awesome-spark/f78a16db/spark-logo-trademark.svg" align="right">](https://spark.apache.org/)
+# Awesome Spark
 
-# Awesome Spark [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-A curated list of awesome [Apache Spark](https://spark.apache.org/) packages and resources.
-
-_Apache Spark is an open-source cluster-computing framework. Originally developed at the [University of California](https://www.universityofcalifornia.edu/), [Berkeley's AMPLab](https://amplab.cs.berkeley.edu/), the Spark codebase was later donated to the [Apache Software Foundation](https://www.apache.org/), which has maintained it since. Spark provides an interface for programming entire clusters with implicit data parallelism and fault-tolerance_  ([Wikipedia 2017](#wikipedia-2017)).
-
-Users of Apache Spark may choose between different the Python, R, Scala and Java programming languages to interface with the Apache Spark APIs.
+A curated collection of resources and projects focused on Spark.
 
 ## Packages
 

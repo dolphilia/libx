@@ -1,16 +1,12 @@
 ---
-title: "sfischer13/awesome-ledger"
-description: "sfischer13/awesome-ledger の定本スナップショット"
+title: "Awesome Ledger"
+description: "Ledgerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sfischer13-awesome-ledger-readme-md"
 ---
 
-# Awesome Ledger [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Ledger
 
-> コマンドライン会計システム [Ledger](http://ledger-cli.org/) の便利なリソース
-
-[awesome-beancount](https://github.com/wzyboy/awesome-beancount) もおすすめです。
-
-*貢献する前に、[contribution guidelines](https://github.com/sfischer13/awesome-ledger/blob/0a35c4f474722fb0d86a3dc755417ffbd46c563a/contributing.md) をお読みください。*
+Ledgerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

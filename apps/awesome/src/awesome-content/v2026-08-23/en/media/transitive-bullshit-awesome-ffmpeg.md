@@ -1,17 +1,12 @@
 ---
-title: "transitive-bullshit/awesome-ffmpeg"
-description: "Canonical snapshot of transitive-bullshit/awesome-ffmpeg"
+title: "Awesome FFmpeg"
+description: "A curated collection of resources and projects focused on FFmpeg."
 licenseSource: "github-transitive-bullshit-awesome-ffmpeg-readme-md"
 ---
 
-# Awesome FFmpeg [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome FFmpeg
 
-> [FFmpeg](http://ffmpeg.org) is a cross-platform solution to record, convert and stream audio and video.
-
-<p align="center">
-  <img width="400" src="https://cdn.rawgit.com/transitive-bullshit/awesome-ffmpeg/master/ffmpeg-logo.svg">
-</p>
-
+A curated collection of resources and projects focused on FFmpeg.
 
 ## Contents
 

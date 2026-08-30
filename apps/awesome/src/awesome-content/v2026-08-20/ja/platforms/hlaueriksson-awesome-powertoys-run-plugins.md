@@ -1,21 +1,12 @@
 ---
-title: "hlaueriksson/awesome-powertoys-run-plugins"
-description: "hlaueriksson/awesome-powertoys-run-plugins の定本スナップショット"
+title: "Awesome PowerToys Run Plugins"
+description: "PowerToys Run Pluginsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-hlaueriksson-awesome-powertoys-run-plugins-readme-md"
 ---
 
-# Awesome PowerToys Run Plugins [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome PowerToys Run Plugins
 
-
-[<img src="powertoys-logo.png" align="right" width="100">](https://learn.microsoft.com/en-us/windows/powertoys/run)
-
-> [PowerToys Run](https://learn.microsoft.com/en-us/windows/powertoys/run) コミュニティプラグインとリソースの厳選リスト
-
-
-PowerToys Run は Windows 向けのクイックランチャーです。オープンソースであり、追加プラグインのためにモジュール化されています。
-
-![PowerToys Run](https://raw.githubusercontent.com/hlaueriksson/awesome-powertoys-run-plugins/d8108fdfad591844cc30dd56bcbe0a47d023148f/launcher-dark.png#gh-dark-mode-only)
-![PowerToys Run](https://raw.githubusercontent.com/hlaueriksson/awesome-powertoys-run-plugins/d8108fdfad591844cc30dd56bcbe0a47d023148f/launcher-light.png#gh-light-mode-only)
+PowerToys Run Pluginsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

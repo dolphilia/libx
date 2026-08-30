@@ -1,18 +1,12 @@
 ---
-title: "secretGeek/awesomeCSV"
-description: "secretGeek/awesomeCSV の定本スナップショット"
+title: "Awesome CSV"
+description: "CSVを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-secretGeek-awesomeCSV-readme-md"
 ---
 
-# Awesome CSV [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome CSV
 
-**CSV関連ツールとリソースを慎重に選んだリスト**
-
-[CSV](https://en.wikipedia.org/wiki/Comma-separated_values)は、遠い過去から続く最も未来的なデータ形式です。
-
-XMLは栄えて廃れ、JSONは一時の流行、YAMLは毒杯です。**CSVはそのすべてを生き残ります。**
-
-最後のゴキブリが息絶えるとき、後世のために死亡日をCSVへ刻むでしょう。
+CSVを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

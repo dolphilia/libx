@@ -1,16 +1,12 @@
 ---
-title: "davisonio/awesome-irc"
-description: "Canonical snapshot of davisonio/awesome-irc"
+title: "Awesome IRC"
+description: "A curated collection of resources and projects focused on IRC."
 licenseSource: "github-davisonio-awesome-irc-readme-md"
 ---
 
-# Awesome IRC [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome IRC
 
-> A curated list of awesome [IRC](https://en.wikipedia.org/wiki/Internet_Relay_Chat) resources.
-
-A list of tools, software & other resources related to the Internet Relay Chat (IRC) protocol.
-
-IRC (Internet Relay Chat) is an open source protocol that can be used for multi-user text based communication through channels.
+A curated collection of resources and projects focused on IRC.
 
 ## Contents
 

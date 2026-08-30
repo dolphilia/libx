@@ -1,12 +1,12 @@
 ---
-title: "FonduAI/awesome-prompt-injection"
-description: "Canonical snapshot of FonduAI/awesome-prompt-injection"
+title: "Awesome Prompt Injection"
+description: "A curated collection of resources and projects focused on Prompt Injection."
 licenseSource: "github-FonduAI-awesome-prompt-injection-readme-md"
 ---
 
-# Awesome Prompt Injection [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Prompt Injection
 
-Learn about a type of vulnerability that specifically targets machine learning models.
+A curated collection of resources and projects focused on Prompt Injection.
 
 ## **Contents**
 

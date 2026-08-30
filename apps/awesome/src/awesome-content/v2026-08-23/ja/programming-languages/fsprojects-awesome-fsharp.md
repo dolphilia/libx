@@ -1,17 +1,13 @@
 ---
-title: "fsprojects/awesome-fsharp"
-description: "F# のフレームワーク、ライブラリ、ソフトウェア、学習資料を集めた厳選リスト"
+title: "Awesome F#"
+description: "F#を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-fsprojects-awesome-fsharp-readme-md"
 ---
 
-<a id="awesome-f"></a>
-# Awesome F# [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) <img src="https://fsharp.org/img/logo/fsharp.svg" width="48" height="48" align="right"/>
+# Awesome F#
 
-F# は、不変性、型推論、第一級関数、強力なデータ型、パターンマッチングを重視した、.NET をはじめとする各種プラットフォーム向けのプログラミング言語です。
+F#を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-これは、優れた F# フレームワーク、ライブラリ、ソフトウェア、リソースを集めた厳選リストです。
-
-<a id="contents"></a>
 ## 目次
 - [Main Language-Related Repositories](#main-language-related-repositories)
 - [F# Wrappers for Popular .NET Libraries](#f-wrappers-for-popular-net-libraries)

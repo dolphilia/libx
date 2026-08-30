@@ -1,16 +1,12 @@
 ---
-title: "antontarasenko/awesome-economics"
-description: "Canonical snapshot of antontarasenko/awesome-economics"
+title: "Awesome Economics"
+description: "A curated collection of resources and projects focused on Economics."
 licenseSource: "github-antontarasenko-awesome-economics-readme-md"
 ---
 
-# Awesome Economics [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Economics
 
-*A curated collection of links for economists. Part of the ["Awesome X" series](https://github.com/sindresorhus/awesome).*
-
-The list is periodically updated with new links. Click "Watch" in the right top corner to follow.
-
-Your contributions are welcomed. Add links to "Links Sent by Readers" [by yourself](https://github.com/antontarasenko/awesome-economics/blob/dbf48fe12bde278d23b0ad823b5fa94d00c2f96b/contributing.md) or send new content to <antontarasenko@gmail.com>.
+A curated collection of resources and projects focused on Economics.
 
 ## Table of Contents
 

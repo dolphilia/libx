@@ -1,26 +1,12 @@
 ---
-title: "krzjoa/awesome-python-data-science"
-description: "Canonical snapshot of krzjoa/awesome-python-data-science"
+title: "Awesome Python Data Science"
+description: "A curated collection of resources and projects focused on Python Data Science."
 licenseSource: "github-krzjoa-awesome-python-data-science-readme-md"
 ---
 
-<div align="center">
-    <a href="https://krzjoa.github.io/awesome-python-data-science/"><img width="250" height="250" src="https://raw.githubusercontent.com/krzjoa/awesome-python-data-science/6612257f3e38af232bd08eef25ffc53b92c1b72d/img/py-datascience.png" alt="pyds"></a>
-    <br>
-    <br>
-    <br>
-</div>
+# Awesome Python Data Science
 
-<h1 align="center">
-    Awesome Python Data Science
-</h1>
-<div align="center"><a href="https://github.com/sindresorhus/awesome">
-<img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" border="0">
-</a>
-</div>
-</br>
-
-> Probably the best curated list of data science software in Python
+A curated collection of resources and projects focused on Python Data Science.
 
 ## Contents
 - [Contents](#contents)

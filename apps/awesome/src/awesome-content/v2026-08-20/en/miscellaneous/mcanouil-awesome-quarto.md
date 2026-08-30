@@ -1,31 +1,12 @@
 ---
-title: "mcanouil/awesome-quarto"
-description: "Canonical snapshot of mcanouil/awesome-quarto"
+title: "Awesome Quarto"
+description: "A curated collection of resources and projects focused on Quarto."
 licenseSource: "github-mcanouil-awesome-quarto-readme-md"
 ---
 
+# Awesome Quarto
 
-
-<div align="center">
-
-
-
-# <a href="https://quarto.org" target="_blank" rel="noopener noreferrer"><img src="media/media.png" alt-text="Awesome list logo with the Quarto logo with text, which is a pair of sunglasses with below the text 'awesome' and then the Quarto logo in blue and grey blue as per Quarto's logo." width="75%"/></a></br>[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-The most up to date curated list of [Quarto®](https://quarto.org) docs, talks, tools, examples & articles the internet has to offer.
-
-[Quarto®](https://quarto.org) is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org/).
-
-</div>
-
----
-
-Contributions of any kind are welcome, just follow the [guidelines](https://github.com/mcanouil/awesome-quarto/blob/8c6e0c56c35915e88de13eed0f73ac7e681b3f88/.github/CONTRIBUTING.md) by either:
-
-- Filling a [suggestion issue](https://github.com/mcanouil/awesome-quarto/issues/new?assignees=mcanouil&labels=&template=suggestion.yml) (easier).
-- Opening a [pull request](https://github.com/mcanouil/awesome-quarto/compare).
-
----
+A curated collection of resources and projects focused on Quarto.
 
 ## Contents
 

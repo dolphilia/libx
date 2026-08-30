@@ -1,14 +1,12 @@
 ---
-title: "webpro/awesome-dotfiles"
-description: "Canonical snapshot of webpro/awesome-dotfiles"
+title: "Awesome Dotfiles"
+description: "A curated collection of resources and projects focused on Dotfiles."
 licenseSource: "github-webpro-awesome-dotfiles-readme-md"
 ---
 
-# Awesome Dotfiles [![Awesome][2]][1]
+# Awesome Dotfiles
 
-A curated list of dotfiles resources. Inspired by the [awesome][3] list thing. Note that some articles or tools may look
-old or old-fashioned, but this usually means they're battle-tested and mature (like dotfiles themselves). Feel free to
-propose new articles, projects or tools!
+A curated collection of resources and projects focused on Dotfiles.
 
 ## Articles
 

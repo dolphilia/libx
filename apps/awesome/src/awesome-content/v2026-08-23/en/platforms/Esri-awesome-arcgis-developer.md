@@ -1,20 +1,12 @@
 ---
-title: "Esri/awesome-arcgis-developer"
-description: "Canonical snapshot of Esri/awesome-arcgis-developer"
+title: "Awesome ArcGIS Developers"
+description: "A curated collection of resources and projects focused on ArcGIS Developers."
 licenseSource: "github-Esri-awesome-arcgis-developer-readme-md"
 ---
 
+# Awesome ArcGIS Developers
 
-# Awesome ArcGIS Developers [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-
-<img src="esri-logo.png" align="right" width="100">
-
-> An awesome set of resources to help you [develop with ArcGIS Products](https://www.esri.com/en-us/arcgis/products/develop-with-arcgis/overview).
-
-ArcGIS products give you access to APIs, location services, and tools to develop your own mapping and spatial analysis applications. Use mapping products to help developers build web, native, offline, desktop, or integrated solutions for yourself, your organization, or other organizations. Access a full suite of location services to provide basemap layers, geocoding and routing capabilities, and other geospatial functionalities. Securely host and manage your data in the ArcGIS cloud.
-
----
+A curated collection of resources and projects focused on ArcGIS Developers.
 
 ## Contents
 

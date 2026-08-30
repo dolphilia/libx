@@ -1,16 +1,12 @@
 ---
-title: "aleixmorgadas/awesome-engineering-strategy"
-description: "aleixmorgadas/awesome-engineering-strategy の定本スナップショット"
+title: "Awesome Engineering Strategy"
+description: "Engineering Strategyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-aleixmorgadas-awesome-engineering-strategy-readme-md"
 ---
 
-# Awesome Engineering Strategy [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Engineering Strategy
 
-> 🎉 技術リーダーシップのためのエンジニアリング戦略を設計・実行する方法。
-
-Engineering Strategyは、コミュニティや企業が作成した書籍、投稿、テンプレート、学習資料、公開エンジニアリング戦略などのリソースを組み合わせたものです。
-
-貢献を歓迎します。リストへ項目を追加するには貢献ガイドラインを確認してください。
+Engineering Strategyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

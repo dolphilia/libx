@@ -1,50 +1,12 @@
 ---
-title: "qazbnm456/awesome-web-security"
-description: "Webセキュリティの脆弱性、攻撃手法、検査ツール、対策、学習資料集"
+title: "Awesome Web Security"
+description: "Web Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-qazbnm456-awesome-web-security-readme-md"
 ---
 
-# Awesome Web Security [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Web Security
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" align="right" width="70">](https://www.w3.org/TR/html5/)
-
-> 🐶 Curated list of Web Security materials and resources.
-
-言うまでもなく、ほとんどのウェブサイトはさまざまな種類のバグに苦しんでおり、それが最終的に脆弱性につながる可能性があります。なぜこのようなことが頻繁に起こるのでしょうか？誤設定、エンジニアのセキュリティスキルの不足など、多くの要因が関与している可能性があります。これを解決するため、ここに最先端のパッチ技術を学ぶために必要なウェブセキュリティの資料とリソースの厳選リストを提示します。そして、まずこの記事『[So you want to be a web security researcher?](https://portswigger.net/blog/so-you-want-to-be-a-web-security-researcher)』を読むことを強くお勧めします。
-
-*貢献する前に[contribution guidelines](https://github.com/qazbnm456/awesome-web-security/blob/34d1ca64f4cb82d2f5cac28af27f0bf52b684e3c/CONTRIBUTING.md)を読みください。*
-
----
-
-<p align="center"><b>🌈 Want to strengthen your penetration skills?</b><br>I would recommend playing some <a href="https://github.com/apsdehal/awesome-ctf" target="_blank">awesome-ctf</a>s.</p>
-
----
-
-この素晴らしいリストを楽しんでいて、サポートしたい場合は、私の [Patreon](https://www.patreon.com/boik) ページをご覧ください :)<br> また、私の [repos](https://github.com/qazbnm456) 🐾 をチェックしてみてください。あるいは、[X (formerly Twitter)](https://x.com/boik_su) で *hi* とお伝えください！
-
----
-
-### 🤖 AIアシスタントを使う場合 {#-using-an-ai-assistant}
-
-このリストは、AIアグエントが実行時においてクエリできるように、Claude Code Skillとして配布されています — ステレートなスナップショットはなく、常に最新の `data/index.json` を `master` から読み取ります。
-
-**インストール**（ワンライナー、推奨）：
-
-```bash
-npx skills add qazbnm456/awesome-web-security -a claude-code -g -y
-```
-
-または、[Claude Code](https://claude.com/claude-code) 内でプラグインマーケットプレイスを使用：
-
-```text
-/plugin marketplace add qazbnm456/awesome-web-security
-/plugin install awesome-web-security
-```
-
-[Codex](https://github.com/openai/codex) では、`-a claude-code` → `-a codex` に置き換えます。
-
-その後、ウェブセキュリティに関する質問をすれば、XSS、SQLi、SSRF、JWT、OAuth、リコン、WAF回避、デシリアライズ、SAML、CTFの解説など、さまざまなテーマについてスキルが活性化します。詳細は [`skills/awesome-web-security/SKILL.md`](https://github.com/qazbnm456/awesome-web-security/blob/34d1ca64f4cb82d2f5cac28af27f0bf52b684e3c/skills/awesome-web-security/SKILL.md) をご参照ください。
-
+Web Securityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 {#contents}
 

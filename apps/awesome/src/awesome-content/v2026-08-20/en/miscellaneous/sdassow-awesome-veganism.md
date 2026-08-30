@@ -1,15 +1,12 @@
 ---
-title: "sdassow/awesome-veganism"
-description: "Canonical snapshot of sdassow/awesome-veganism"
+title: "Awesome Veganism"
+description: "A curated collection of resources and projects focused on Veganism."
 licenseSource: "github-sdassow-awesome-veganism-readme-md"
 ---
 
-# Awesome Veganism [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Veganism
 
-> A curated list of awesome resources, pointers, and tips to make veganism easy and accessible to everyone.
-
-[Veganism](https://en.wikipedia.org/wiki/Veganism) is a plant-based lifestyle, avoiding animal products as much as possible.
-This list is an attempt to create a community driven approach to guarantee no-nonsense content, 100% aligned with the vegan lifestyle, in order to minimise the effort needed for an awesome experience.
+A curated collection of resources and projects focused on Veganism.
 
 ## Contents
 

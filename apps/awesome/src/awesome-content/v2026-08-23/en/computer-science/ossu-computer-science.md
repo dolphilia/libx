@@ -1,24 +1,12 @@
 ---
-title: "ossu/computer-science"
-description: "Canonical snapshot of ossu/computer-science"
+title: "Awesome Computer Science"
+description: "A curated collection of resources and projects focused on Computer Science."
 licenseSource: "github-ossu-computer-science-readme-md"
 ---
 
-<div align="center" style="text-align: center">
-<img src="images/ossu-logo.webp" alt="Open Source Society logo"/>
-<h3>Open Source Society University</h3>
-<p>
-  Path to a free self-taught education in Computer Science!
-</p>
-<p>
-  <a href="https://github.com/sindresorhus/awesome">
-    <img alt="Awesome" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"
-  ></a>
-  <a href="https://github.com/ossu/computer-science">
-    <img alt="Open Source Society University - Computer Science" src="https://img.shields.io/badge/OSSU-computer--science-blue.svg"
-  ></a>
-</p>
-</div>
+# Awesome Computer Science
+
+A curated collection of resources and projects focused on Computer Science.
 
 # Contents
 

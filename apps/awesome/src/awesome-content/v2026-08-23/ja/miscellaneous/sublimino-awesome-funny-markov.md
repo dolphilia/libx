@@ -1,16 +1,12 @@
 ---
-title: "sublimino/awesome-funny-markov"
-description: "sublimino/awesome-funny-markov の正規スナップショット"
+title: "Awesome Funny Markov Chains"
+description: "Funny Markov Chainsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sublimino-awesome-funny-markov-readme-md"
 ---
 
-# Awesome Funny Markov Chains [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Funny Markov Chains
 
-[無記憶性](https://en.wikipedia.org/wiki/Memorylessness)に着想を得て、愉快で面白いマルコフ連鎖の出力を冗談交じりに厳選したリストです。
-
-このリストへ[貢献](https://github.com/sublimino/awesome-funny-markov/blob/master/contributing.md)する場合は（ぜひお願いします）、プルリクエストを送るか [@sublimino](https://twitter.com/sublimino) までご連絡ください。
-
-マルコフ連鎖について詳しく知りたい方は、[Awesome Machine Learning](https://github.com/josephmisiti/awesome-machine-learning) をお試しください。
+Funny Markov Chainsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,12 +1,12 @@
 ---
-title: "ScaleLeap/awesome-amazon-seller"
-description: "Canonical snapshot of ScaleLeap/awesome-amazon-seller"
+title: "Awesome Amazon Seller"
+description: "A curated collection of resources and projects focused on Amazon Seller."
 licenseSource: "github-ScaleLeap-awesome-amazon-seller-readme-md"
 ---
 
-# Awesome Amazon Seller [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Amazon Seller
 
-> A curated list of tools and resources for Amazon sellers.
+A curated collection of resources and projects focused on Amazon Seller.
 
 ## Contents
 

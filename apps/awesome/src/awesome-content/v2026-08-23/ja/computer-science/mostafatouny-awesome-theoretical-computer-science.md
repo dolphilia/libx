@@ -1,14 +1,12 @@
 ---
-title: "mostafatouny/awesome-theoretical-computer-science"
-description: "理論計算機科学の講義、書籍、論文、コミュニティ資料を体系的にまとめた定本スナップショット"
+title: "Awesome Theoretical Computer Science"
+description: "Theoretical Computer Scienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mostafatouny-awesome-theoretical-computer-science-readme-md"
 ---
 
-![banner](https://raw.githubusercontent.com/mostafatouny/awesome-theoretical-computer-science/87cb04dc28897166a48c01f05397abbac8fc5a1c/TCS-banner.png)
-# 理論計算機科学 Awesome リスト [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-数学と計算機科学が交わる学際分野であり、数学的手法と厳密さを重視する点に特徴があります。
+# Awesome Theoretical Computer Science
 
----
+Theoretical Computer Scienceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [概説](#broad_intros)

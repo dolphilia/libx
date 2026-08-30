@@ -1,14 +1,12 @@
 ---
-title: "shopify/awesome-hydrogen"
-description: "shopify/awesome-hydrogen の定本スナップショット"
+title: "Awesome Hydrogen"
+description: "Hydrogenを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-shopify-awesome-hydrogen-readme-md"
 ---
 
-<img width="400" src="./assets/hydrogen-logo.svg">
+# Awesome Hydrogen
 
-# Awesome Hydrogen [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-Hydrogenは、ヘッドレスコマース向けのShopifyオープンソーススタックです。
+Hydrogenを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

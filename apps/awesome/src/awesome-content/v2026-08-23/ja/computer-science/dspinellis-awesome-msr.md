@@ -1,20 +1,12 @@
 ---
-title: "dspinellis/awesome-msr"
-description: "dspinellis/awesome-msr の日本語訳（人手レビュー前）"
+title: "Awesome Empirical Software Engineering"
+description: "Empirical Software Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dspinellis-awesome-msr-readme-md"
 ---
 
-# Awesome Empirical Software Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-証拠に基づくデータ駆動型のソフトウェアシステム研究を行うために使える、データセットとツールを集めたリポジトリー。
-この研究アプローチは[実験的、または実証的ソフトウェア工学](https://en.wikipedia.org/wiki/Experimental_software_engineering)と呼ばれることが多いです。
-データセットの多くは、[探索ベースのソフトウェア工学](https://en.wikipedia.org/wiki/Search-based_software_engineering)手法を用いる研究にも役立ちます。
-このリポジトリーは、[Mining Software Repositories（MSR）](https://www.msrconf.org/)会議シリーズにちなんで名付けられました。
-この種の研究の例は、MSR会議の[Hall of Fame](http://2016.msrconf.org/#/hall-of-fame)を参照してください。
+# Awesome Empirical Software Engineering
 
-- このリストを継続的に改善するには、あなたの協力が必要です。
-  貢献方法は[コントリビューションガイド](https://github.com/dspinellis/awesome-msr/blob/ac89acae0eb1ac1265903038305433ad0bf8b360/contributing.md)をお読みください。
-  手順が面倒またはわかりにくい場合は、[メール](mailto:dds@aueb.gr)で連絡することもできます。
-- より多くのAwesomeリストは[awesome](https://github.com/sindresorhus/awesome).
+Empirical Software Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [リポジトリー](#repositories)

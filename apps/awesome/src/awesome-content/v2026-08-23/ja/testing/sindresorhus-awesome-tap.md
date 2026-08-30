@@ -1,16 +1,12 @@
 ---
-title: "sindresorhus/awesome-tap"
-description: "sindresorhus/awesome-tap の定本スナップショット"
+title: "Awesome TAP"
+description: "TAPを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sindresorhus-awesome-tap-readme-md"
 ---
 
-# Awesome TAP [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://testanything.org/images/tap.png" width="67" align="right">](https://testanything.org)
+# Awesome TAP
 
-> [Test Anything Protocol](https://testanything.org) のための有用なリソース
-
-TAP は、テストハーネス内のテストモジュール間で用いる、シンプルなテキストベースのインターフェースです。
-
-*現時点では、このリストは JavaScript に大きく焦点を当てています。これは、私が JS の世界の TAP 関連だけに詳しいためです。あらゆる言語からの貢献を歓迎します。*
+TAPを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

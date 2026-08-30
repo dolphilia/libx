@@ -1,29 +1,12 @@
 ---
-title: "umbraco-community/awesome-umbraco"
-description: "Canonical snapshot of umbraco-community/awesome-umbraco"
+title: "Awesome Umbraco"
+description: "A curated collection of resources and projects focused on Umbraco. The upstream list is archived or no longer maintained."
 licenseSource: "github-umbraco-community-awesome-umbraco-readme-md"
 ---
 
-# Awesome Umbraco! [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/main/media/badge.svg)](https://github.com/sindresorhus/awesome) [![UmbracoV9](https://img.shields.io/badge/Umbraco-v9-blue)](https://our.umbraco.com/download/releases/900)
+# Awesome Umbraco
 
-> A collection of awesome [Umbraco CMS](https://github.com/umbraco/Umbraco-CMS/) packages, resources and shiny things.
-
-Inspired by [awesome lists](https://github.com/sindresorhus/awesome). For general C#/.NET please see the [awesome-dotnet](https://github.com/quozd/awesome-dotnet/) collection!
-
-### Contributing
-
-**Contributions are always welcome!**
-
-Please read the [contribution guidelines and quality standard](https://github.com/umbraco-community/awesome-umbraco/blob/master/CONTRIBUTING.md) page before making a pull-request. If you see a resource or package here that is no longer maintained, please submit a pull request to help improve this collection.
-
-Thank you to all [contributors](https://github.com/umbraco-community/awesome-umbraco/graphs/contributors), you are awesome and this list wouldn't be possible without you! The goal is to build a categorized community-driven collection of very well-known resources.
-
-### Versions
-This list is for Umbraco v10 packages. However, we also have lists for older versions! Check them out too.
-
-[![UmbracoV9](https://img.shields.io/badge/Umbraco-v9-blue)](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V9.md)
-[![UmbracoV8](https://img.shields.io/badge/Umbraco-v8-blue)](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V8.md)
-[![UmbracoV7](https://img.shields.io/badge/Umbraco-v7-blue)](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V7.md)
+A curated collection of resources and projects focused on Umbraco. The upstream list is archived or no longer maintained.
 
 ### Contents
 * [Official](#official)

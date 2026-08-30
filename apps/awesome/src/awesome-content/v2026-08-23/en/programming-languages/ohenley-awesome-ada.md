@@ -1,28 +1,12 @@
 ---
-title: "ohenley/awesome-ada"
-description: "Canonical snapshot of ohenley/awesome-ada"
+title: "Awesome Ada"
+description: "A curated collection of resources and projects focused on Ada."
 licenseSource: "github-ohenley-awesome-ada-readme-md"
 ---
 
-# Awesome Ada [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Ada
 
-<br/><br/>
-<div align="center">
-	<img width="260px"  src="https://github.com/ohenley/files/blob/master/awesome-ada/logo_ada_awesome.svg" alt="Awesome"/>
-</div>
-
-<br/><br/>
-
-
-> <font size="7">[Ada is powering satellites, aircrafts, ships, power plants, surgical robots](https://www2.seas.gwu.edu/~mfeldman/ada-project-summary.html), drones, CNCs, servers, games and coffee makers.</font>
-> Ada is arguably the most { <b>performant</b> &cap; <b>capable</b> &cap; <b>precise</b> &cap; <b>readable</b> &cap; <b>mature</b> } programming language.
-> Ada is alive and kicking!
->
-> Long live Ada/SPARK.
-
-<br/><br/>
-
-A curated list of awesome resources related to the Ada and SPARK programming language.      
+A curated collection of resources and projects focused on Ada.
 
 ## Contents
 <details>

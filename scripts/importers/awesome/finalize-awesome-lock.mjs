@@ -1,13 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import {
-  notesDir,
-  readJson,
-  reproducibleLicenseIds,
-  sha256,
-  writeJsonAtomic,
-} from './common.mjs';
+import { notesDir, readJson, reproducibleLicenseIds, sha256, writeJsonAtomic } from './common.mjs';
 
 const lockPath = path.join(notesDir, 'SOURCES.lock.json');
 const manifestPath = path.join(notesDir, 'SOURCE_MANIFEST.md');

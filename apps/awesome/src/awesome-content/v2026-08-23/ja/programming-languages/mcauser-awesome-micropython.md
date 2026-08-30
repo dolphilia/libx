@@ -1,22 +1,12 @@
 ---
-title: "mcauser/awesome-micropython"
-description: "MicroPythonのライブラリ、ハードウェアドライバー、教材、開発ツールを分類した定本スナップショット"
+title: "Awesome Micropython"
+description: "Micropythonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mcauser-awesome-micropython-readme-md"
 ---
 
-<p align="center">
-  <a href="https://awesome-micropython.com/" style="display:block"><img src="https://raw.githubusercontent.com/mcauser/awesome-micropython/master/docs/img/logo.svg"></a>
-</p>
-<p align="center">
-  <a href="https://awesome.re">
-    <img alt="Awesome" src="https://awesome.re/badge-flat.svg">
-  </a>
-</p>
-<hr>
+# Awesome Micropython
 
-優れたMicroPythonライブラリ、フレームワーク、ソフトウェア、資料を厳選したリストです。
-
-[MicroPython](https://micropython.org/)は、Python標準ライブラリの小さなサブセットを含み、マイクロコントローラーや制約環境での実行に最適化された、軽量で効率的なPython 3実装です。
+Micropythonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

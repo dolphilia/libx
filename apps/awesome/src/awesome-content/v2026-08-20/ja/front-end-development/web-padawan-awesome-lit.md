@@ -1,16 +1,12 @@
 ---
-title: "web-padawan/awesome-lit"
-description: "web-padawan/awesome-lit の定本スナップショット"
+title: "Awesome Lit"
+description: "Litを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-web-padawan-awesome-lit-readme-md"
 ---
 
-# Awesome Lit [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Lit
 
-> 優れたLitリソースを厳選したリスト。
-
-[Lit](https://github.com/lit/lit) — 高速で軽量なWeb Componentsを構築するための簡潔なライブラリ。
-
-Litの中核は、リアクティブな状態、スコープ付きスタイル、小さく高速で表現力のある宣言的テンプレートシステムを提供し、定型コードを取り除くコンポーネント基底クラスです。
+Litを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

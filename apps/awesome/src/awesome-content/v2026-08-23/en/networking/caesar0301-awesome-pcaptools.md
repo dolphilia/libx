@@ -1,30 +1,12 @@
 ---
-title: "caesar0301/awesome-pcaptools"
-description: "Canonical snapshot of caesar0301/awesome-pcaptools"
+title: "Awesome Pcaptools"
+description: "A curated collection of resources and projects focused on Pcaptools."
 licenseSource: "github-caesar0301-awesome-pcaptools-readme-md"
 ---
 
-Introduction
-------------
+# Awesome Pcaptools
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-This project does not contain any source code or files. I just want to make a list of tools to process pcap files in research of network traffic. For more awesome lists, see https://github.com/sindresorhus/awesome
-
-**License**: CC0 1.0 Universal (CC0 1.0).
-
-
-> * [Linux commands](#linuxcmds)
-> * [Traffic Capture](#capture)
-> * [Traffic Analysis/Inspection](#analysis)
-> * [DNS Utilities](#dnstools)
-> * [File Extraction](#fileextraction)
-> * [Related Projects](#others)
-
-
-
-Linux commands<a name="linuxcmds"></a>
---------------------------------------
+A curated collection of resources and projects focused on Pcaptools.
 
 * **Bmon**: (Bandwidth Monitor) is a tool similar to nload that shows the traffic load over all the network interfaces on the system. The output also consists of a graph and a section with packet level details. [Screenshot](https://www.binarytides.com/blog/wp-content/uploads/2014/03/bmon-640x480.png)
 

@@ -1,15 +1,12 @@
 ---
-title: "AllThingsSmitty/jquery-tips-everyone-should-know"
-description: "Canonical snapshot of AllThingsSmitty/jquery-tips-everyone-should-know"
+title: "Awesome jQuery Tips Everyone Should Know"
+description: "A curated collection of resources and projects focused on jQuery Tips Everyone Should Know."
 licenseSource: "github-AllThingsSmitty-jquery-tips-everyone-should-know-readme-md"
 ---
 
-# jQuery Tips Everyone Should Know [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome jQuery Tips Everyone Should Know
 
-A collection of simple tips to help up your jQuery game.
-
-> **TIP:**
-> For other great lists check out [@sindresorhus](https://github.com/sindresorhus/)'s curated list of [awesome lists](https://github.com/sindresorhus/awesome/).
+A curated collection of resources and projects focused on jQuery Tips Everyone Should Know.
 
 ## Table of Contents
 

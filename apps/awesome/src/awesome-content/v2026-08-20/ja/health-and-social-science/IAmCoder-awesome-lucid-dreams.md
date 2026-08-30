@@ -1,14 +1,12 @@
 ---
-title: "IAmCoder/awesome-lucid-dreams"
-description: "IAmCoder/awesome-lucid-dreams の定本スナップショット"
+title: "Awesome Lucid Dreams"
+description: "Lucid Dreamsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-IAmCoder-awesome-lucid-dreams-readme-md"
 ---
 
-# Awesome Lucid Dreams [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Lucid Dreams
 
-明晰夢に関連する優れたものを厳選した一覧です。
-
-夢研究の心理学分野である夢科学において、[明晰夢](https://en.wikipedia.org/wiki/Lucid_dream)は、夢を見ている人がその夢の最中に自分が夢を見ていると気付くタイプの夢です。明晰夢を見る能力は訓練可能な認知スキルです。
+Lucid Dreamsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

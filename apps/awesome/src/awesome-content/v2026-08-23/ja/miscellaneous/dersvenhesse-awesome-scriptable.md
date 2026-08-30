@@ -1,16 +1,12 @@
 ---
-title: "dersvenhesse/awesome-scriptable"
-description: "dersvenhesse/awesome-scriptable の日本語訳（人手レビュー前）"
+title: "Awesome Scriptable"
+description: "Scriptableを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
 ---
 
-# Awesome Scriptable [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Scriptable
 
-[<img src="https://scriptable.app/assets/appicon.png" align="right" width="100" style="clip-path">](https://scriptable.app/)
-
-> 優れたScriptableウィジェットを注意深くキュレーションしたリスト。
-
-[Scriptable](https://scriptable.app/)は、JavaScriptを使ってiOSを自動化するアプリです。
+Scriptableを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

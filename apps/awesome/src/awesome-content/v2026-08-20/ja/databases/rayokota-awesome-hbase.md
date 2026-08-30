@@ -1,16 +1,12 @@
 ---
-title: "rayokota/awesome-hbase"
-description: "rayokota/awesome-hbase の定本スナップショット"
+title: "Awesome HBase"
+description: "HBaseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-rayokota-awesome-hbase-readme-md"
 ---
 
-# Awesome HBase [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome HBase
 
-[<img src="https://cdn.rawgit.com/rayokota/awesome-hbase/c197f415/hbase_logo_with_orca-2.png" align="right" width="150">](http://hbase.apache.org/)
-
-優れたHBaseプロジェクトとリソースのキュレーションリストです。
-
-[HBase](http://hbase.apache.org)は分散型でスケーラブルなビッグデータストアです。
+HBaseを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [プロジェクト](#projects)

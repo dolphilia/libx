@@ -1,16 +1,12 @@
 ---
-title: "nschloe/awesome-scientific-computing"
-description: "nschloe/awesome-scientific-computing の定本スナップショット"
+title: "Awesome Scientific Computing"
+description: "Scientific Computingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-nschloe-awesome-scientific-computing-readme-md"
 ---
 
-# 素晴らしい科学計算 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Scientific Computing
 
-[<img src="https://nschloe.github.io/awesome-scientific-computing/sunglasses.svg" align="right" width="30%">](#readme)
-
-> 科学計算と数値解析に役立つリソース。
-
-科学計算と数値解析は、コンピューターの助けを借りて科学のさまざまな分野における大規模問題を解く手法を提供することを目指す研究分野です。典型的な問題には、常微分方程式・偏微分方程式（ODE、PDE）、その離散化、およびそこから生じる線形代数問題の解法が含まれます。
+Scientific Computingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

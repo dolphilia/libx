@@ -1,29 +1,13 @@
 ---
-title: "adafruit/awesome-circuitpython"
-description: "adafruit/awesome-circuitpython の正規スナップショット"
+title: "Awesome CircuitPython"
+description: "CircuitPythonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-adafruit-awesome-circuitpython-readme-md"
 ---
 
-<a id="awesome-circuitpython"></a>
 # Awesome CircuitPython
 
-<p align="center">
-  <img style="width: min(400px, 100%)" src="https://raw.githubusercontent.com/adafruit/awesome-circuitpython/master/assets/awesome_circuitpython.png" alt="Awesome CircuitPython">
-<br>
-</p>
+CircuitPythonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> 優れたCircuitPythonのガイド、動画、ライブラリ、フレームワーク、ソフトウェア、資料を厳選したリストです。
-
-
-<video style="display: block; max-width: 720px; width: 100%; margin: auto;" controls src="https://user-images.githubusercontent.com/1685947/115119719-d6e21f00-9f77-11eb-84bf-3f7af59948a3.mov"></video>
-
-
-
-[CircuitPython](https://learn.adafruit.com/welcome-to-circuitpython/what-is-circuitpython) は、低価格なマイクロコントローラーでの実験や教育を簡単にするために設計された、AdafruitによるMicroPython派生版です。事前にデスクトップソフトウェアをダウンロードせず、すぐに試作を始められます。Arduinoで使われるCやC++のような複雑な低水準言語ではなく、簡潔なPythonコードでハードウェアを制御できるため、初心者にも適しています。
-
-<a id="contents"></a>
 ## 目次
 
 - [CircuitPython.org](#circuitpythonorg)

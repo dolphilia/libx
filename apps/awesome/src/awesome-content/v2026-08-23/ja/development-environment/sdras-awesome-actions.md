@@ -1,20 +1,12 @@
 ---
-title: "sdras/awesome-actions"
-description: "GitHub Actionsの公式・コミュニティActionと自動化資料を分類した定本スナップショット"
+title: "Awesome Actions"
+description: "Actionsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sdras-awesome-actions-readme-md"
 ---
 
-<p align="center">
-  <br>
-    <img src="awesome-actions.png" width="150"/>
-  <br>
-</p>
+# Awesome Actions
 
-# GitHub Actions Awesome リスト [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![GitHub Actions status | sdras/awesome-actions](https://github.com/sdras/awesome-actions/workflows/Lint%20Awesome%20List/badge.svg)](https://github.com/sdras/awesome-actions/actions?workflow=Lint+Awesome+List)
-
-> GitHub Actionsに関する優れた資料を厳選したリストです。
-
-Actionはリポジトリ内のGitHubプラットフォームイベントで起動し、Linux・Windows・macOSの仮想マシンまたはコンテナー内でオンデマンドのワークフローを実行します。GitHub Actionsを使うと、アイデアから本番運用までのワークフローを自動化できます。
+Actionsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

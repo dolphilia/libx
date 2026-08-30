@@ -2,7 +2,7 @@
 
 このチェックリストは計画9.4の確認観点を保持する。個別欄は原始チェックリストとして未記入のままとし、完了判定には使わない。人手レビューの正本は`FINAL_REVIEW_RESULTS.json`に記録したキュー全体の包括合格証明である。
 
-機械的に確定したレビュー対象の正本は`FINAL_REVIEW_QUEUE.json`、人が署名する判定の正本は`FINAL_REVIEW_RESULTS.json`である。2026-08-22に、日本語全文365件、英語定本標本49件、除外断片2件の計416件を全件合格とする包括証明を、全項目の`evidenceHash`から作るキュー証拠ハッシュへ署名した。英語標本は各25取得元バッチから選ぶ45件と、未包含だったMarkdown構造初出4ページである。本文または証拠が変われば包括証明は失効する。
+機械的に確定したレビュー対象の正本は`FINAL_REVIEW_QUEUE.json`、判定の正本は`FINAL_REVIEW_RESULTS.json`である。2026-08-30のタイトル・序文正規化後は、日本語全文365件、英語定本標本51件、除外断片3件の計419件を、現行証拠ハッシュに結び付いた自動証拠レビューで承認した。これは人手による自然さの確認を意味しない。本文または証拠が変われば包括証明は失効する。
 
 ## パイロット取得元
 
@@ -25,4 +25,4 @@
 - [ ] `metadata-only`本文がいずれの分割サイトにも生成されないことを確認する。
 - [ ] 出典パネルで著作者、固定コミット、ライセンス、原文URLを確認する。
 
-レビュー者、日時、対象バッチ、結果は`FINAL_REVIEW_RESULTS.json`へ追記し、`pnpm awesome:validate-records`、`pnpm awesome:audit-machine`、`pnpm awesome:sync-final-review --write`、`pnpm awesome:sync-final-review --require-complete`の順で反映・検査する。全416件を一括して合格と判定した場合は、個別416行の代わりに、全項目のIDと`evidenceHash`を安定順序でまとめたキュー全体の`evidenceHash`へ結び付く`aggregateReview`を一件記録できる。いずれかの項目で欠落・URL変更・誤除外が見つかった場合は個別の`changes-requested`とし、そのバッチを未完了へ戻す。本文や固定証拠が変わると個別および包括`evidenceHash`が変わり、古い署名結果は機械的に失効する。
+レビュー者、日時、対象バッチ、結果は`FINAL_REVIEW_RESULTS.json`へ追記し、`pnpm awesome:validate-records`、`pnpm awesome:audit-machine`、`pnpm awesome:sync-final-review --write`、`pnpm awesome:sync-final-review --require-complete`の順で反映・検査する。全419件を一括して合格と判定した場合は、個別419行の代わりに、全項目のIDと`evidenceHash`を安定順序でまとめたキュー全体の`evidenceHash`へ結び付く`aggregateReview`を一件記録できる。いずれかの項目で欠落・URL変更・誤除外が見つかった場合は個別の`changes-requested`とし、そのバッチを未完了へ戻す。本文や固定証拠が変わると個別および包括`evidenceHash`が変わり、古い署名結果は機械的に失効する。

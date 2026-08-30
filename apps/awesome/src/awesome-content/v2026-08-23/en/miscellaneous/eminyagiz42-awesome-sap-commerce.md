@@ -1,13 +1,12 @@
 ---
-title: "eminyagiz42/awesome-sap-commerce"
-description: "Canonical snapshot of eminyagiz42/awesome-sap-commerce"
+title: "Awesome SAP Commerce"
+description: "A curated collection of resources and projects focused on SAP Commerce."
 licenseSource: "github-eminyagiz42-awesome-sap-commerce-readme-md"
 ---
 
-# Awesome SAP Commerce  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) 
+# Awesome SAP Commerce
 
-> A curated list of delightful [SAP Commerce](https://www.sap.com/products/crm/commerce-cloud.html) (formerly Hybris) resources. SAP Commerce is an e-commerce platform using Java, based on Spring MVC framework. The useful resources for SAP Commerce Developers are below.
-
+A curated collection of resources and projects focused on SAP Commerce.
 
 ## Contents
 

@@ -1,13 +1,12 @@
 ---
-title: "faroit/awesome-python-scientific-audio"
-description: "Canonical snapshot of faroit/awesome-python-scientific-audio"
+title: "Awesome Python for Scientific Audio"
+description: "A curated collection of resources and projects focused on Python for Scientific Audio."
 licenseSource: "github-faroit-awesome-python-scientific-audio-readme-md"
 ---
 
-# Python for Scientific Audio
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://github.com/faroit/awesome-python-scientific-audio/workflows/CI/badge.svg)](https://github.com/faroit/awesome-python-scientific-audio/actions?query=workflow%3ACI+branch%3Amaster+event%3Apush)
+# Awesome Python for Scientific Audio
 
-The aim of this repository is to create a comprehensive, curated list of python software/tools related and used for scientific research in audio/music applications.
+A curated collection of resources and projects focused on Python for Scientific Audio.
 
 ## Contents
 

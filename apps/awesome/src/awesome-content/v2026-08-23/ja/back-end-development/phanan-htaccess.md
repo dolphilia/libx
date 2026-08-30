@@ -1,27 +1,13 @@
 ---
-title: "phanan/htaccess"
-description: "phanan/htaccess の正規スナップショット"
+title: "Awesome .htaccess Snippets"
+description: ".htaccess Snippetsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-phanan-htaccess-readme-md"
 ---
 
-<a id="htaccess-snippets"></a>
-# .htaccessスニペット [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-便利な.htaccessスニペットを一か所にまとめたコレクションです。
+# Awesome .htaccess Snippets
 
-> **注記:**
-> `.htaccess`ファイルは、メインのサーバー設定ファイルを編集する権限がない場合に使います。メイン設定を使う場合より本質的に低速で複雑です。詳しくは[httpdドキュメントの解説](https://httpd.apache.org/docs/current/howto/htaccess.html)を参照してください。
+.htaccess Snippetsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> **警告:**
-> 多くの場合はスニペットを`.htaccess`ファイルへ貼り付けるだけで十分ですが、調整が必要な場合もあります。自己責任で使用してください。
-
-> **重要:**
-> これらのスニペットはApache 2.4向けです。Apache 2.2を使っている場合は[`2.2`ブランチ](https://github.com/phanan/htaccess/tree/2.2)を確認してください。2.2から2.4の破壊的変更については、[アップグレード文書](https://httpd.apache.org/docs/2.4/upgrading.html)と[このIssue](https://github.com/phanan/htaccess/issues/2)を参照してください。
-
-<a id="credits"></a>
-## クレジット
-ここでは、ウェブ上のさまざまな場所にある便利なスニペット（多くは[Apache Server Configs](https://github.com/h5bp/server-configs-apache)由来）を一か所に集めています。出典の明記に努めていますが、漏れがあるかもしれません。自分の成果物にクレジットが必要だと思われる場合は、ご連絡いただくかPRを送ってください。
-
-<a id="table-of-contents"></a>
 ## 目次
 - [書き換えとリダイレクト](#rewrite-and-redirection)
     - [wwwを強制](#force-www)

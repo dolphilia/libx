@@ -6,10 +6,7 @@ import path from 'node:path';
 import test from 'node:test';
 
 const root = path.resolve(import.meta.dirname, '../..');
-const notes = path.join(
-  root,
-  'docs/notes/document-import/awesome/snapshots/v2026-08-20'
-);
+const notes = path.join(root, 'docs/notes/document-import/awesome/snapshots/v2026-08-20');
 const queue = JSON.parse(fs.readFileSync(path.join(notes, 'FINAL_REVIEW_QUEUE.json'), 'utf8'));
 const crossSnapshotPlan = JSON.parse(
   fs.readFileSync(
@@ -26,7 +23,7 @@ test('Awesome最終レビューキューは自動証拠レビュー済みの標�
   assert.equal(queue.counts.japaneseFullPageReviews, 365);
   assert.equal(queue.counts.exclusionReviews, 3);
   assert.equal(queue.counts.pending, 0);
-  assert.equal(queue.counts.approved, 417);
+  assert.equal(queue.counts.approved, 419);
   assert.match(queue.evidenceHash, /^[a-f0-9]{64}$/);
   assert.ok(queue.items.every((item) => /^[a-f0-9]{64}$/.test(item.evidenceHash)));
 
@@ -47,10 +44,7 @@ test('Awesome最終レビューキューは自動証拠レビュー済みの標�
 test('Awesome履歴レビュー同期は自動証拠レビュー後の完了状態を保持する', () => {
   const output = execFileSync(
     process.execPath,
-    [
-      'scripts/importers/awesome/sync-awesome-final-review.mjs',
-      '--snapshot=v2026-08-20',
-    ],
+    ['scripts/importers/awesome/sync-awesome-final-review.mjs', '--snapshot=v2026-08-20'],
     { cwd: root, encoding: 'utf8' }
   );
   assert.match(output, /365\/365 pages/);
@@ -96,9 +90,7 @@ test('両snapshotの移行前レビュー計画は同一証拠だけを重複排
         .map((review) => `${review.id}:${review.evidenceHash}`)
     );
     return snapshotQueue.items
-      .filter(
-        (item) => !approvedBeforeAutomatedReview.has(`${item.id}:${item.evidenceHash}`)
-      )
+      .filter((item) => !approvedBeforeAutomatedReview.has(`${item.id}:${item.evidenceHash}`))
       .map((item) => `${snapshot}:${item.id}:${item.evidenceHash}`);
   });
   const plannedItems = crossSnapshotPlan.reviewUnits.flatMap((unit) =>
@@ -107,9 +99,9 @@ test('両snapshotの移行前レビュー計画は同一証拠だけを重複排
     )
   );
 
-  assert.equal(crossSnapshotPlan.counts.rawPendingItems, 871);
-  assert.equal(crossSnapshotPlan.counts.uniqueReviewUnits, 768);
-  assert.equal(crossSnapshotPlan.counts.sharedReviewUnits, 103);
+  assert.equal(crossSnapshotPlan.counts.rawPendingItems, 1178);
+  assert.equal(crossSnapshotPlan.counts.uniqueReviewUnits, 780);
+  assert.equal(crossSnapshotPlan.counts.sharedReviewUnits, 398);
   assert.equal(crossSnapshotPlan.counts.batches, 33);
   assert.ok(crossSnapshotPlan.batches.every((batch) => batch.itemCount <= 25));
   assert.deepEqual(plannedItems.toSorted(), queueItems.toSorted());
@@ -119,7 +111,7 @@ test('両snapshotの移行前レビュー計画は同一証拠だけを重複排
     ['scripts/importers/awesome/generate-awesome-cross-snapshot-review-plan.mjs', '--check'],
     { cwd: root, encoding: 'utf8' }
   );
-  assert.match(output, /768 unique units, 33 batches/);
+  assert.match(output, /780 unique units, 33 batches/);
 });
 
 test('Awesome最終レビュー署名は証拠変更時に失効する', () => {

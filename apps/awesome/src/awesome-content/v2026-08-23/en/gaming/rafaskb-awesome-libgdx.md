@@ -1,23 +1,12 @@
 ---
-title: "rafaskb/awesome-libgdx"
-description: "Canonical snapshot of rafaskb/awesome-libgdx"
+title: "Awesome libGDX"
+description: "A curated collection of resources and projects focused on libGDX."
 licenseSource: "github-rafaskb-awesome-libgdx-readme-md"
 ---
 
-[![Awesome libGDX Logo](https://github.com/rafaskb/awesome-libgdx/blob/93102878e1b59430845b85d1d8ea057a497d57cb/logo.png 'Awesome libGDX Logo')](https://libgdx.com/)
+# Awesome libGDX
 
-# Awesome libGDX [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) [![Latest libGDX Version](https://img.shields.io/maven-central/v/com.badlogicgames.gdx/gdx?color=e74a45&label=Latest%20libGDX%20Version&style=flat-square)](https://search.maven.org/artifact/com.badlogicgames.gdx/gdx)
-
-> <a href="https://libgdx.com/"><img src="https://libgdx.com/assets/images/logo.png" alt="libGDX Logo" align="right" style="margin-right: 25px" height=40></a>
->
-> [libGDX](https://libgdx.com/) is a relatively low level, free, open source cross platform game development framework written in Java.
->
-> This list is a curated collection of awesome resources, tools, tutorials, and projects using the [libGDX](https://libgdx.com/) game framework to help developers make _awesome_ games, conforming to the [Awesome Manifesto](https://github.com/sindresorhus/awesome/blob/master/awesome.md).
->
-> Contributions _very welcome_ but first see [Contributing](#contributing).
-
----
-
+A curated collection of resources and projects focused on libGDX.
 
 ## Contents
 

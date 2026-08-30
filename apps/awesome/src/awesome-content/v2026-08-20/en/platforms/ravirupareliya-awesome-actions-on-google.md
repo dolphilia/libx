@@ -1,14 +1,12 @@
 ---
-title: "ravirupareliya/awesome-actions-on-google"
-description: "Canonical snapshot of ravirupareliya/awesome-actions-on-google"
+title: "Awesome Actions on Google"
+description: "A curated collection of resources and projects focused on Actions on Google."
 licenseSource: "github-ravirupareliya-awesome-actions-on-google-readme-md"
 ---
 
-# Awesome Actions on Google  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Actions on Google
 
-A curated list of awesome AoG(Action on Google) libraries, blogs, open-source project, videos.
-
-With [Actions on Google](https://developers.google.com/actions/), you can easily reach and engage with users across Google. From quick commands to full conversations, Actions help you connect your content and services to users with the Google Assistant.
+A curated collection of resources and projects focused on Actions on Google.
 
 ## Contents
 

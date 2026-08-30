@@ -1,34 +1,12 @@
 ---
-title: "kdabir/awesome-groovy"
-description: "Canonical snapshot of kdabir/awesome-groovy"
+title: "Awesome Groovy"
+description: "A curated collection of resources and projects focused on Groovy."
 licenseSource: "github-kdabir-awesome-groovy-readme-md"
 ---
 
-Awesome Groovy [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-==============
+# Awesome Groovy
 
-Curated list of awesome groovy libraries, frameworks and resources. Inspired by many other awesome-* repositories.
-
-- [Awesome Groovy](#awesome-groovy)
-    - [Build Tools, Setup and CI](#build-tools-setup-and-ci)
-    - [Concurrency](#concurrency)
-    - [Database](#database)
-    - [Desktop App Frameworks](#rich-applications)
-    - [HTTP](#http)
-    - [IDE and Editor Support](#ide-and-editor-support)
-    - [Testing](#testing)
-    - [Code analysis](#code-analysis)
-    - [Web Frameworks](#web-frameworks)
-    - [Transpilers](#transpilers)
-    - [Static Web](#static-web)
-    - [Language Utilities](#language-utilities)
-    - [File System Utilities](#file-system-utilities)
-    - [File Format DSL](#file-format-dsl)
-    - [Scripting Tools](#scripting-tools)
-    - [Rule Engines](#rule-engines)
-- [Resources](#resources)
-- [Contributing](#contributing)
-- [Credits](#credits)
+A curated collection of resources and projects focused on Groovy.
 
 ## Build tools, setup and CI
 * [Gradle](https://www.gradle.org/) - A powerful build system for the JVM

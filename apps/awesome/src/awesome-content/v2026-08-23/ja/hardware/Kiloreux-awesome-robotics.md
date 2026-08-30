@@ -1,13 +1,11 @@
 ---
-title: "Kiloreux/awesome-robotics"
-description: "Kiloreux/awesome-roboticsの収録案内"
+title: "Awesome Robotics"
+description: "Awesome Roboticsの収録案内です。このスナップショットでは上流本文を転載していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# Robotics
+# Awesome Robotics
 
-このAwesomeリストは、固定済みのsindresorhus/awesomeスナップショットのHardwareセクションから参照されています。
-
-このスナップショットで再利用可能なライセンスを確認できなかった、固定READMEを取得できなかった、または現在のlibxでは対応していないライセンス条件があるため、上流リストの本文はlibxへ複製していません。
+Awesome Roboticsの収録案内です。このスナップショットでは上流本文を転載していません。
 
 - [元のリポジトリを開く](https://github.com/Kiloreux/awesome-robotics/blob/067f76e8c2cbacfef976523dd6bd3c11480900ad/README.md)

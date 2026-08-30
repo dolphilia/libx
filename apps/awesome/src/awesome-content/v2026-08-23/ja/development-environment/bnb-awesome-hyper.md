@@ -1,26 +1,12 @@
 ---
-title: "bnb/awesome-hyper"
-description: "bnb/awesome-hyper の定本スナップショット"
+title: "Awesome Hyper"
+description: "Hyperを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-bnb-awesome-hyper-readme-md"
 ---
 
-# Awesome Hyper [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Awesome](https://img.shields.io/travis/bnb/awesome-hyper.svg)](https://travis-ci.org/bnb/awesome-hyper)
+# Awesome Hyper
 
-[<img src="hyper-3-color-logo.svg" align="right" width="240">](https://hyper.is)
-
-> Hyperの優れた[パッケージ](#packages)、[テーマ](#themes)、[リソース](#resources)を集めた厳選リストです。
-
-*[awesome](https://github.com/sindresorhus/awesome) リストに着想を得ています。Hyperで使えるCLI関連情報を含む [awesome-node](https://github.com/sindresorhus/awesome-nodejs) と [awesome-npm](https://github.com/sindresorhus/awesome-npm) もおすすめです。*
-
-*コントリビュートする前に[コントリビューションガイドライン](https://github.com/bnb/awesome-hyper/blob/6b9f209da885e047f4dafa35e21f51655e388d91/CONTRIBUTING.md)をお読みください。*
-
-**公式の[Hyperサイト](https://hyper.is)、[Vercel](https://vercel.com)、同社のホスティング製品 [Now](https://vercel.com/home) もご覧ください。**
-
-優れたHyperパッケージ、テーマ、リソースを追加するには、変更を加えて[プルリクエストを作成](https://opensource.guide/how-to-contribute/#opening-a-pull-request)してください。
-
-`awesome-hyper` が気に入ったら、Twitterで [@bitandbang](https://twitter.com/bitandbang)、[@matheusfrndes](https://twitter.com/matheusfrndes)、[@iamstarkov](https://twitter.com/iamstarkov) に声をかけてください。👋
-
-
+Hyperを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # 目次
 
@@ -297,4 +283,3 @@ licenseSource: "github-bnb-awesome-hyper-readme-md"
 * ほかのHyperリソースをご存じですか？ [ぜひ共有してください！](https://github.com/bnb/awesome-hyper/issues/new)
 
 [⬆ ページ上部へ戻る](#contents)
-

@@ -1,28 +1,12 @@
 ---
-title: "joewdavies/awesome-frontend-gis"
-description: "joewdavies/awesome-frontend-gis の定本スナップショット"
+title: "Awesome Frontend Gis"
+description: "Frontend Gisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-joewdavies-awesome-frontend-gis-readme-md"
 ---
 
+# Awesome Frontend Gis
 
-<div align='center'>
-<h2>Awesome Frontend GIS   <a href='https://github.com/sindresorhus/awesome'>
-    <img src='https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg' alt='Awesome' href='https://github.com/sindresorhus/awesome'>
-  </a></h2>
-
- ウェブブラウザー向け地理情報システム（GIS）。<br>
- 地理データの管理、分析、編集、可視化に利用します。
-  
-<div>
-    <a href='https://github.com/eurostat/gridviz' target='_blank'>
-        <img src='./images/awesome-fronted-gis-banner.png'>
-    </a>
-</div>
-
- *地理空間関連のウェブフレームワーク、ツール、デモ、アプリケーション、データソースなどを集めた一覧です。*
- 
-</div>
-
+Frontend Gisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [👨‍💻 JavaScriptライブラリ](#-javascript-libraries)
@@ -329,4 +313,3 @@ GISウェブサイトへ追加できるアイコンです。
 ---
 
 この一覧について質問がある場合は、X（旧Twitter）の [@joewdavies](https://twitter.com/joewdavies) へ連絡するか、[GitHub Issueを作成](https://github.com/joewdavies/awesome-frontend-gis/issues/new)してください。
-

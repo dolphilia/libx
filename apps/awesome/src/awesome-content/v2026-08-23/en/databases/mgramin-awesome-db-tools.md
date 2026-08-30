@@ -1,18 +1,12 @@
 ---
-title: "mgramin/awesome-db-tools"
-description: "Canonical snapshot of mgramin/awesome-db-tools"
+title: "Awesome Database Tools"
+description: "A curated collection of resources and projects focused on Database Tools."
 licenseSource: "github-mgramin-awesome-db-tools-readme-md"
 ---
 
-# Awesome Database Tools [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Database Tools
 
-> Community driven list of database tools
-
-Here we will collect information about awesome useful and awesome experimental tools that simplify working with databases for DBA, DevOps, Developers and mere mortals.
-
-Feel free to add information about your own db-tools or your favorite third-party db-tools.
-
-For updates on `awesome-db-tools` and thoughts/news about databases/tools/SQL follow me at [@GraminMaksim](https://twitter.com/GraminMaksim)
+A curated collection of resources and projects focused on Database Tools.
 
 ## Contents
 - [IDE](#ide)

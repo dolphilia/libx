@@ -1,24 +1,13 @@
 ---
-title: "willianjusten/awesome-audio-visualization"
-description: "willianjusten/awesome-audio-visualization の正規スナップショット"
+title: "Awesome Audio Visualization"
+description: "Audio Visualizationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-willianjusten-awesome-audio-visualization-readme-md"
 ---
 
-<p align="center">
-  <img id="awesome-audio-visualization" src="https://raw.githubusercontent.com/willianjusten/awesome-audio-visualization/feabb60432a5a5f3a5714428705a3848138608eb/logo-aav.gif" alt="Logo AAV">
-</p>
+# Awesome Audio Visualization
 
-- [オーディオビジュアライゼーションとは？](https://en.wikipedia.org/wiki/Music_visualization)
+Audio Visualizationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> ミュージックビジュアライゼーションは、電子音楽ビジュアライザーやメディアプレーヤーに搭載される機能で、楽曲を基にアニメーション映像を生成します。通常はリアルタイムに生成・描画され、再生中の音楽と同期します。
-
-- [このリストの作者](#authors)
-- [動作するロゴを見る](http://www.shiz.co/aav/)
-- [貢献ガイド](https://github.com/willianjusten/awesome-audio-visualization/blob/feabb60432a5a5f3a5714428705a3848138608eb/Contributing.md)
-
-[![Travis Build](https://travis-ci.org/willianjusten/awesome-audio-visualization.svg?branch=master)](https://travis-ci.org/willianjusten/awesome-audio-visualization) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-<a id="table-of-contents"></a>
 ## 目次
 
 - [書籍](#books)

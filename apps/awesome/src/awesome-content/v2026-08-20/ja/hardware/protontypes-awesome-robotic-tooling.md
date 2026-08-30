@@ -1,23 +1,12 @@
 ---
-title: "protontypes/awesome-robotic-tooling"
-description: "専門的なロボット開発のソフトウェア、ハードウェア、資料を分類した定本スナップショット"
+title: "Awesome Robotic Tooling"
+description: "Robotic Toolingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-protontypes-awesome-robotic-tooling-readme-md"
 ---
 
-# ロボット開発ツールのAwesomeリスト <a id="awesome-robotic-tooling"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Robotic Tooling
 
-**C++・Pythonによる専門的なロボット開発を中心に、ROS、自動運転、航空宇宙も扱うツールの厳選リストです**
-
-> 車輪の再発明を避けるには、既存の車輪を知る必要があります。このリストは、専門的なロボット開発に役立つ、ソフトウェア・ハードウェア開発の多様なオープン／無料ツールを示します。
-
-リストの維持、品質向上、拡張には貢献が必要です。由来と参加方法は[コントリビューションガイド](https://github.com/protontypes/awesome-robotic-tooling/blob/dc73ead6b38aad66993546455696dfe7f1115dfb/CONTRIBUTING.md)および関連する[ブログ記事](https://rosindustrial.org/news/2020/5/11/guest-article-on-the-story-of-the-autonomous-logistics)を参照してください。新規プロジェクト項目は[protontypes](https://twitter.com/protontypes)から投稿されます。
-
-
-[<img src="https://i.imgur.com/qI1Jfyl.gif" align="right" width="60%" />](https://github.com/leggedrobotics/xpp)
-
-[![](https://img.shields.io/twitter/follow/protontypes?style=social)](https://twitter.com/intent/follow?screen_name=protontypes) [![Join the chat at https://gitter.im/protontypes/community](https://badges.gitter.im/protontypes/community.svg)](https://gitter.im/protontypes/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-
+Robotic Toolingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

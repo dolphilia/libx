@@ -1,18 +1,12 @@
 ---
-title: "44bits/awesome-opensource-documents"
-description: "Canonical snapshot of 44bits/awesome-opensource-documents"
+title: "Awesome Open Source Documents"
+description: "A curated collection of resources and projects focused on Open Source Documents."
 licenseSource: "github-44bits-awesome-opensource-documents-readme-md"
 ---
 
 # Awesome Open Source Documents
 
-This is not a list of free programming books. This is a curated list of open source or open source licensed documents, guides, and books which can be read, used, modified, translated, redistributed and even rewritten under their same license.
-
-## Document Template
-
-```
-[TITLE][repository-url] by AUTHOR ([SITE][site-url], LICENSE) - SHORT DESCRIPTION
-```
+A curated collection of resources and projects focused on Open Source Documents.
 
 ## Table of Contents
 

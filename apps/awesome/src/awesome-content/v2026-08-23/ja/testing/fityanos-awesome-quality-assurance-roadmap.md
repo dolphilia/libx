@@ -1,12 +1,12 @@
 ---
-title: "fityanos/awesome-quality-assurance-roadmap"
-description: "fityanos/awesome-quality-assurance-roadmap の定本スナップショット"
+title: "Awesome Quality Assurance Roadmap"
+description: "Quality Assurance Roadmapを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-fityanos-awesome-quality-assurance-roadmap-readme-md"
 ---
 
-❗更新版のロードマップは https://fityanos.github.io/anasfitiani/qaroadmap.html で確認できます。
+# Awesome Quality Assurance Roadmap
 
-# Awesome Quality Assurance Roadmap [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+Quality Assurance Roadmapを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [はじめに](#introduction)

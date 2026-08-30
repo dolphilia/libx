@@ -1,21 +1,12 @@
 ---
-title: "DanailMinchev/awesome-eosio"
-description: "Canonical snapshot of DanailMinchev/awesome-eosio"
+title: "Awesome EOSIO"
+description: "A curated collection of resources and projects focused on EOSIO."
 licenseSource: "github-DanailMinchev-awesome-eosio-readme-md"
 ---
 
-# Awesome EOSIO [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome EOSIO
 
-[<img src="eos-logo.png" alt="EOSIO" align="right" width="100">](https://eos.io/)
-
-> A curated list of awesome **EOSIO** resources for users and developers.
-
-<p>
-  EOSIO is the most powerful infrastructure for decentralized applications and open source smart contract platform.
-  EOSIO software enables businesses to rapidly build and deploy high-performance and high-security blockchain-based applications.
-</p>
-
-<p>Contributions welcome. Add links through pull requests or create an issue to start a discussion. Please read the <a href="https://github.com/DanailMinchev/awesome-eosio/blob/main/contributing.md">contribution guidelines</a> first.</p>
+A curated collection of resources and projects focused on EOSIO.
 
 ## Contents
 

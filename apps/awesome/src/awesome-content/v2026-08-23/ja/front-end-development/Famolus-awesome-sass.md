@@ -1,17 +1,12 @@
 ---
-title: "Famolus/awesome-sass"
-description: "Famolus/awesome-sass の定本スナップショット"
+title: "Awesome Sass"
+description: "Sassを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Famolus-awesome-sass-readme-md"
 ---
 
-![Awesome Sass](https://raw.githubusercontent.com/Famolus/awesome-sass/master/awesome-sass-logo-github.png)
+# Awesome Sass
 
-# Awesome Sass [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> 優れた[Sass](http://sass-lang.com/)・[SCSS](http://sass-lang.com/)のフレームワーク、ライブラリ、スタイルガイド、記事、リソースを厳選した一覧。
-
-- <kbd>command</kbd> + <kbd>F</kbd>または<kbd>ctrl</kbd> + <kbd>F</kbd>でキーワードを検索してください。
-- 貢献を歓迎します。[貢献ガイド](https://github.com/Famolus/awesome-sass/blob/c3ed9db19967b7e263edcdb9c8f3731b27285399/contributing.md).
+Sassを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [概要](#about)

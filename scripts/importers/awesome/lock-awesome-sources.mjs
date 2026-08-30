@@ -1,12 +1,6 @@
 #!/usr/bin/env node
 import path from 'node:path';
-import {
-  isoNow,
-  notesDir,
-  readJson,
-  reproducibleLicenseIds,
-  writeJsonAtomic,
-} from './common.mjs';
+import { isoNow, notesDir, readJson, reproducibleLicenseIds, writeJsonAtomic } from './common.mjs';
 
 const lockPath = path.join(notesDir, 'SOURCES.lock.json');
 const decisionsPath = path.join(notesDir, 'LICENSE_DECISIONS.json');

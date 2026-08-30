@@ -1,18 +1,12 @@
 ---
-title: "alferov/awesome-gulp"
-description: "Canonical snapshot of alferov/awesome-gulp"
+title: "Awesome Gulp"
+description: "A curated collection of resources and projects focused on Gulp."
 licenseSource: "github-alferov-awesome-gulp-readme-md"
 ---
 
-# Awesome Gulp [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Gulp
 
-> A curated list of awesome [gulp](https://github.com/gulpjs/gulp) resources, plugins, and boilerplates for a better development workflow automation.
-
-_Looking for something else? Take a look at other [awesome lists](https://github.com/sindresorhus/awesome)._
-
-## Contribution
-
-:octocat: All contributions welcome. Feel free to contribute ([guidelines](https://github.com/alferov/awesome-gulp/blob/d88ab8cfd759bc3becd73b90996f08ac49f4d32a/contributing.md)).
+A curated collection of resources and projects focused on Gulp.
 
 ## Contents
 

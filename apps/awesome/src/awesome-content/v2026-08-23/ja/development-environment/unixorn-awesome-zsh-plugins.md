@@ -1,24 +1,12 @@
 ---
-title: "unixorn/awesome-zsh-plugins"
-description: "Zshプラグイン、フレームワーク、テーマ、チュートリアルを用途別にまとめた一覧"
+title: "Awesome zsh-plugins"
+description: "zsh-pluginsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-unixorn-awesome-zsh-plugins-readme-md"
 ---
 
-# awesome-zsh-plugins
+# Awesome zsh-plugins
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-## Status
-
-[![License](https://img.shields.io/github/license/unixorn/awesome-zsh-plugins.svg)](https://opensource.org/license/BSD-3-Clause)
-![Awesomebot](https://github.com/unixorn/awesome-zsh-plugins/actions/workflows/awesomebot.yml/badge.svg)
-![Contributors](https://img.shields.io/github/contributors/unixorn/awesome-zsh-plugins.svg)
-[![GitHub last commit](https://img.shields.io/github/last-commit/unixorn/awesome-zsh-plugins/main.svg)](https://github.com/unixorn/awesome-zsh-plugins)
-[![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/unixorn/awesome-zsh-plugins/)
-
-ZSHのフレームワーク、プラグイン、チュートリアルおよびテーマを集めたコレクションで、さまざまな素晴らしいリストコレクションをインスピレーションとしています。
-
-
+zsh-pluginsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Table of Contents
 

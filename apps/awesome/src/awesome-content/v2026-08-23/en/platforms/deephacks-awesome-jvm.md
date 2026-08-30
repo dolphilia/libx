@@ -1,34 +1,12 @@
 ---
-title: "deephacks/awesome-jvm"
-description: "Canonical snapshot of deephacks/awesome-jvm"
+title: "Awesome JVM"
+description: "A curated collection of resources and projects focused on JVM."
 licenseSource: "github-deephacks-awesome-jvm-readme-md"
 ---
 
-# Awesome JVM [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome JVM
 
-A curated list of awesome JVM low level, performance and non-framework related stuff.
-
-- [Awesome JVM](#awesome-jvm)
-    - [Bytecode](#bytecode)
-    - [Garbage collectors](#garbage-collectors)
-    - [Load tools](#load-tools)
-    - [Languages](#languages)
-    - [Machine Learning](#machine-learning)
-    - [Memory and Concurrency](#memory-and-concurrency)
-    - [Metaprogramming](#metaprogramming)
-    - [Native](#native)
-    - [Network](#network)
-    - [Nix tools](#nix-tools)
-    - [Profilers](#profilers)
-    - [Runtimes](#runtimes)
-    - [Virtual Machines](#virtual-machines)
-- [Resources](#resources)
-    - [Communities](#communities)    
-    - [Documentation](#documentation)
-    - [Media](#media)
-    - [People](#people)
-- [Contributing](#contributing)
-
+A curated collection of resources and projects focused on JVM.
 
 ## Bytecode
 

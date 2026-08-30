@@ -1,16 +1,12 @@
 ---
-title: "pmuens/awesome-serverless"
-description: "pmuens/awesome-serverless の定本スナップショット"
+title: "Awesome Serverless"
+description: "Serverlessを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-pmuens-awesome-serverless-readme-md"
 ---
 
-# Awesome Serverless [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Serverless
 
-> サーバーレスに関するあらゆるリソースを厳選した一覧。
-
-*[awesome](https://github.com/sindresorhus/awesome)リストプロジェクトに着想を得ています。*
-
-**[Twitter](https://twitter.com/pmmuens)で*こんにちは*と言ってください。**
+Serverlessを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

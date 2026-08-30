@@ -1,18 +1,12 @@
 ---
-title: "mgramin/awesome-db-tools"
-description: "データベースの設計、開発、運用、監視用ツールを分類した定本スナップショット"
+title: "Awesome Database Tools"
+description: "Database Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mgramin-awesome-db-tools-readme-md"
 ---
 
-# データベースツール Awesome リスト [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Database Tools
 
-> コミュニティが作るデータベースツールのリストです。
-
-DBA、DevOps、開発者、一般利用者のデータベース作業を簡単にする、実用的または実験的な優れたツールを収集します。
-
-自作のデータベースツールや、お気に入りの第三者製ツールを自由に追加してください。
-
-`awesome-db-tools`の更新やデータベース・ツール・SQLに関する情報は、[@GraminMaksim](https://twitter.com/GraminMaksim)をフォローしてください。
+Database Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [IDE](#ide)

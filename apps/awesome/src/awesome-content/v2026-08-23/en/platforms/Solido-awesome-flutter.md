@@ -1,63 +1,12 @@
 ---
-title: "Solido/awesome-flutter"
-description: "Canonical snapshot of Solido/awesome-flutter"
+title: "Awesome Solido%2Fawesome-flutter | Trendshift"
+description: "A curated collection of resources and projects focused on Solido%2Fawesome-flutter | Trendshift."
 licenseSource: "github-Solido-awesome-flutter-readme-md"
 ---
 
-[<img src="https://user-images.githubusercontent.com/1295961/45949308-cbb2f680-bffb-11e8-8054-28c35ed6d132.png" align="center" width="850">](https://flutter.dev/)
+# Awesome Solido%2Fawesome-flutter | Trendshift
 
-
-<p align="center">
-  <a href="https://github.com/sindresorhus/awesome">
-    <img alt="Awesome" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" />
-  </a>
-   <a href="https://twitter.com/blueaquilae">
-    <img alt="Awesome" src="https://img.shields.io/twitter/url/https/twitter.com/blueaquilae.svg?style=social&label=Follow%20%40blueaquilae" />
-  </a>
-</p>
-
-<p align="center">
-<a href="https://trendshift.io/repositories/9391" target="_blank"><img src="https://trendshift.io/api/badge/repositories/9391" alt="Solido%2Fawesome-flutter | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-</p>
-
-
-<a href="https://flutter.dev/">Flutter</a> is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
-If you appreciate the content 📖, support projects visibility, give 👍| ⭐| 👏
-
-<p align="center">
-  <a href="https://getstream.io/chat/sdk/flutter/?utm_source=Github&utm_medium=Github_Repo_Content_Ad&utm_content=Developer&utm_campaign=Github_Mar2022_FlutterChatSDK&utm_term=Awesome">
-    <img src="https://raw.githubusercontent.com/Solido/awesome-flutter/1111f0e9b62726b6649d1116992e1923db000198/assets/images/stream-logo.png" width="450" alt="Stream Chat" style="margin: 20px auto;" />
-  </a>
-</p>
-
-<p align="center">
-  Stream helps developers build engaging apps that scale to millions with performant and flexible Chat, Video, Voice, Feeds, and Moderation APIs and SDKs powered by a global edge network and enterprise-grade infrastructure.
-</p>
-
-<br>
-
-#### Demonstrations
-<div style="text-align: center"><table><tr>
-  <td style="text-align: center, width: 180">
-
-
-[Instant Chat Integration](https://getstream.io/chat/sdk/flutter/?utm_source=Github&utm_medium=Github_Repo_Content_Ad&utm_content=Developer&utm_campaign=Github_Mar2022_FlutterChatSDK&utm_term=Awesome)
-
-<a href="https://getstream.io/chat/sdk/flutter/?utm_source=Github&utm_medium=Github_Repo_Content_Ad&utm_content=Developer&utm_campaign=Github_Mar2022_FlutterChatSDK&utm_term=Awesome">
-    <img alt="Stream" src="https://raw.githubusercontent.com/Solido/awesome-flutter/1111f0e9b62726b6649d1116992e1923db000198/.github/stream-animation.gif" />
-    </a>
-
-[with Stream!](https://getstream.io/chat/sdk/flutter/?utm_source=Github&utm_medium=Github_Repo_Content_Ad&utm_content=Developer&utm_campaign=Github_Mar2022_FlutterChatSDK&utm_term=Awesome)
-
-
-  </td>
-   <td style="text-align: center">
-    <img width="480" alt="Heroine" src="https://github.com/whynotmake-it/rivership/raw/main/packages/heroine/doc/main.gif">
-  </td>
-
-
-</tr></table></div>
-
+A curated collection of resources and projects focused on Solido%2Fawesome-flutter | Trendshift.
 
 ## Contents
 

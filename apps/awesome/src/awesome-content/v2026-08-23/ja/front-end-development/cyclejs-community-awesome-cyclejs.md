@@ -1,10 +1,13 @@
 ---
-title: "cyclejs-community/awesome-cyclejs"
-description: "cyclejs-community/awesome-cyclejs の正規スナップショット"
+title: "Awesome Cyclejs"
+description: "Cyclejsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-cyclejs-community-awesome-cyclejs-readme-md"
 ---
 
-<a id="awesome-cyclejs"></a>
+# Awesome Cyclejs
+
+Cyclejsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+
 ## Awesome Cycle.js [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 優れたCycle.jsのツール、リソース、動画などを集めたリストです。

@@ -1,22 +1,12 @@
 ---
-title: "chainstack/awesome-corda"
-description: "Canonical snapshot of chainstack/awesome-corda"
+title: "Awesome Corda"
+description: "A curated collection of resources and projects focused on Corda."
 licenseSource: "github-chainstack-awesome-corda-readme-md"
 ---
 
+# Awesome Corda
 
-<div align="center">
-  <a href="https://www.corda.net/"><img width="250px" src="./project_logo.png">
-  </a><br />
-  <a href="https://www.corda.net/">Corda</a> is an open source blockchain project, designed for business from the start.
-  <br />Corda allows you to build interoperable blockchain networks that transact in strict privacy. Corda's smart contract technology allows businesses to transact directly, with value.
-  <br />
-
-  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-</div>
-
-
-Pull requests are welcome!
+A curated collection of resources and projects focused on Corda.
 
 ## Contents
 

@@ -1,14 +1,12 @@
 ---
-title: "NARKOZ/guides"
-description: "NARKOZ/guides の正規スナップショット"
+title: "Awesome Guides"
+description: "Guidesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-NARKOZ-guides-readme-md"
 ---
 
-# ガイド
+# Awesome Guides
 
-優れたプログラマーを目指す人のためのガイドです。
-このリポジトリは、Web 上にある有用なコーディングスタイルガイドと
-開発プラクティスへのリンクを収集・共有することを目的としています。
+Guidesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

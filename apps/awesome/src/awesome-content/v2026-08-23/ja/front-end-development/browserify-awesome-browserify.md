@@ -1,16 +1,12 @@
 ---
-title: "browserify/awesome-browserify"
-description: "browserify/awesome-browserify の正規スナップショット"
+title: "Awesome Browserify"
+description: "Browserifyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-browserify-awesome-browserify-readme-md"
 ---
 
-<div align="center"><img src="https://raw.githubusercontent.com/browserify/awesome-browserify/185b31da0995d9fe9a20f56add08c22406ed5be9/browserify.png" alt="Browserify!"></div>
+# Awesome Browserify
 
-# Awesome Browserify [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> :crystal_ball: 優れた [Browserify](https://github.com/substack/node-browserify) のリソース、ライブラリ、ツールを厳選したリストです。
-
-[貢献](https://github.com/browserify/awesome-browserify/blob/185b31da0995d9fe9a20f56add08c22406ed5be9/contributing.md)して、このリストの改善にご協力ください！
+Browserifyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

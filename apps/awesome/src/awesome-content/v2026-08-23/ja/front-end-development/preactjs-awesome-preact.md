@@ -1,19 +1,13 @@
 ---
-title: "preactjs/awesome-preact"
-description: "preactjs/awesome-preact の正規スナップショット"
+title: "Awesome Preact"
+description: "Preactを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-preactjs-awesome-preact-readme-md"
 ---
 
-<a id="awesome-preact"></a>
-# Awesome Preact [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Preact
 
-[<img src="https://rawgit.com/ooade/awesome-preact/master/preact-logo.svg" align="right" width="100">](https://preactjs.com)
+Preactを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> [Preact](https://github.com/developit/preact) エコシステムの素晴らしいリソースを集めた厳選リストです :star2:
-
-[Preact](https://github.com/developit/preact) は、React と同じ ES6 API を備えた高速な 3kb の代替実装です。コンポーネントと Virtual DOM を提供します。
-
-<a id="contents"></a>
 ## 目次
 - [コミュニティ](#community)
 - [ツールキット](#toolkits)

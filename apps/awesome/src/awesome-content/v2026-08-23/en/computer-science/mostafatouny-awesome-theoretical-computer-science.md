@@ -1,14 +1,12 @@
 ---
-title: "mostafatouny/awesome-theoretical-computer-science"
-description: "Canonical snapshot of mostafatouny/awesome-theoretical-computer-science"
+title: "Awesome Theoretical Computer Science"
+description: "A curated collection of resources and projects focused on Theoretical Computer Science."
 licenseSource: "github-mostafatouny-awesome-theoretical-computer-science-readme-md"
 ---
 
-![banner](https://raw.githubusercontent.com/mostafatouny/awesome-theoretical-computer-science/87cb04dc28897166a48c01f05397abbac8fc5a1c/TCS-banner.png)
-# Awesome Theoretical Computer Science [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-The interdisciplinary of Mathematics and Computer Science; It is distinguished by its emphasis on mathemtical technique and rigour.
+# Awesome Theoretical Computer Science
 
----
+A curated collection of resources and projects focused on Theoretical Computer Science.
 
 ## Contents
 - [Broad Intros](#broad_intros)

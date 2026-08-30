@@ -1,18 +1,12 @@
 ---
-title: "atblueprints/awesome-atproto"
-description: "Canonical snapshot of atblueprints/awesome-atproto"
+title: "Awesome ATProto"
+description: "A curated collection of resources and projects focused on ATProto."
 licenseSource: "github-atblueprints-awesome-atproto-readme-md"
 ---
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/atblueprints/awesome-atproto/main/assets/logo.png" width="300px">
+# Awesome ATProto
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-</div>
-
-# Awesome ATProto 
-
-> [AT Protocol](https://atproto.com/) is a federated protocol for building social applications on an open, decentralized network
+A curated collection of resources and projects focused on ATProto.
 
 ## Contents
 

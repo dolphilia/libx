@@ -1,18 +1,12 @@
 ---
-title: "unicodeveloper/awesome-lumen"
-description: "Canonical snapshot of unicodeveloper/awesome-lumen"
+title: "Awesome lumen"
+description: "A curated collection of resources and projects focused on lumen."
 licenseSource: "github-unicodeveloper-awesome-lumen-readme-md"
 ---
 
-# Awesome lumen [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![](https://img.shields.io/badge/unicodeveloper-approved-brightgreen.svg)
+# Awesome lumen
 
-> Curated list of resources: books, videos, articles about using Lumen ( PHP Microframework by Laravel )
-
-*Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing. You might also like [awesome-tdd](https://github.com/unicodeveloper/awesome-tdd).*
-
-*Please read the [contribution guidelines](#guidelines) before contributing.*
-
-**Check out my [blog](https://goodheads.io) or say *hi* on [Twitter](https://twitter.com/unicodeveloper).**
+A curated collection of resources and projects focused on lumen.
 
 ## Table of Contents
 

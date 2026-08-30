@@ -1,16 +1,12 @@
 ---
-title: "dribdat/awesome-hackathon"
-description: "dribdat/awesome-hackathonの正規スナップショット"
+title: "Awesome Hackathon"
+description: "Hackathonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dribdat-awesome-hackathon-readme-md"
 ---
 
 # Awesome Hackathon
 
-寛容で生産的なハッカソンを**企画・運営**する際に役立つプラットフォームとツールを集めた、オープンなリスト。
-
-> このリストは、[ハッカソン](https://en.wikipedia.org/wiki/Hackathon)、ハックデイ、ハックナイト、そしてそれらを運営するオーガナイザーのコミュニティの⚡️素晴らしい⚡️点を扱います。🕶️[awesome-hackathons](https://github.com/mbiesiad/awesome-hackathons)、🕶️[awesome-hackathon-projects](https://github.com/Olanetsoft/awesome-hackathon-projects)、🕶️[awesome-hackathon-starters](https://github.com/geekcamp-ph/awesome-hackathon-starters/issues/12)も参照してください。ハッカソンの_科学_に関心がありますか？ 新しい📚 [Zotero ライブラリ](https://www.zotero.org/groups/5538025/awesome_hackathons)に参加しましょう。
-
-このリストの改善に協力するには、[貢献方法](#contributing)節を参照してください。
+Hackathonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
 

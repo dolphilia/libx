@@ -1,20 +1,12 @@
 ---
-title: "30-seconds/30-seconds-of-code"
-description: "Canonical snapshot of 30-seconds/30-seconds-of-code"
+title: "Awesome 30 seconds of code"
+description: "A curated collection of resources and projects focused on 30 seconds of code."
 licenseSource: "github-30-seconds-30-seconds-of-code-readme-md"
 ---
 
-[![Logo](https://github.com/30-seconds/30-seconds-of-code/blob/f1b2d5a65c32432a877de94a749be40a396ebed2/logo.png)](https://30secondsofcode.org/js/p/1)
+# Awesome 30 seconds of code
 
-# 30 seconds of code
-
-> Coding articles to level up your development skills
-
-* Visit [the website](https://30secondsofcode.org) to view all articles.
-* Search for articles and collections that suit your needs, using the name, tags, language or description.
-* Browse all [articles](https://30secondsofcode.org/snippets/p/1) or individual [collections](https://30secondsofcode.org/collections/p/1) for each topic.
-* Click on each card to view the whole article, including code snippets, explanation and examples.
-* If you like the project, give it a star. It means a lot.
+A curated collection of resources and projects focused on 30 seconds of code.
 
 ## Want to contribute?
 

@@ -1,20 +1,12 @@
 ---
-title: "moul/awesome-ssh"
-description: "moul/awesome-ssh の定本スナップショット"
+title: "Awesome SSH"
+description: "SSHを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-moul-awesome-ssh-readme-md"
 ---
 
-# Awesome SSH [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome SSH
 
-> *SSH* の[アプリ](#apps)、[ライブラリ](#libraries)、[リソース](#resources)を集めたキュレーションリスト。
-
-<h2 align="center"><img src="https://raw.githubusercontent.com/moul/awesome-ssh/master/logo.jpg" width="400" /></h2>
-
-[awesome](https://github.com/sindresorhus/awesome) リストという考え方に着想を得ています。
-
-貢献したい場合は、[貢献ガイドライン](https://github.com/moul/awesome-ssh/blob/be9bfa2a474ef29aecdc54992ec7d5477f042aeb/CONTRIBUTING.md)をお読みください。
-
-**私の[ブログ](https://manfred.life/) 🦄 を見るか、[Twitter](https://twitter.com/moul)で *hi* と声をかけてください。**
+SSHを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -208,4 +200,3 @@ licenseSource: "github-moul-awesome-ssh-readme-md"
 [![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 法律で可能な限り、[Manfred Touron](https://github.com/moul) はこの作品に関するすべての著作権および関連・隣接権を放棄しています。
-

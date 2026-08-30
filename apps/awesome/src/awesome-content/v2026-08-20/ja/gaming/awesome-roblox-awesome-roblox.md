@@ -1,19 +1,12 @@
 ---
-title: "awesome-roblox/awesome-roblox"
-description: "awesome-roblox/awesome-roblox の定本スナップショット"
+title: "Awesome Roblox"
+description: "Robloxを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-awesome-roblox-awesome-roblox-readme-md"
 ---
 
-<h1 align="center">
-  <img src="media/logo.png" alt="Awesome Roblox">
+# Awesome Roblox
 
-  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-</h1>
-
-[Roblox](https://www.roblox.com/) は、多様な数百万の体験を提供する、コミュニケーションとつながりのための没入型プラットフォームです。人々は体験の中で他者とつながり、Roblox 上の友人とチャットできます。
-
-
-</div>
+Robloxを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

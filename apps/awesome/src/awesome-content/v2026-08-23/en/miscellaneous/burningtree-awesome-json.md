@@ -1,50 +1,12 @@
 ---
-title: "burningtree/awesome-json"
-description: "Canonical snapshot of burningtree/awesome-json"
+title: "Awesome JSON"
+description: "A curated collection of resources and projects focused on JSON."
 licenseSource: "github-burningtree-awesome-json-readme-md"
 ---
 
-# Awesome JSON [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-A curated list of awesome JSON libraries and resources.
+# Awesome JSON
 
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list.
-
-[![Links](https://github.com/burningtree/awesome-json/actions/workflows/links.yml/badge.svg)](https://github.com/burningtree/awesome-json/actions/workflows/links.yml)
-
----
-
-* [Awesome JSON](#awesome-json)
-  * [Applications](#applications)
-  * [Binary Serialization](#binary-serialization)
-  * [Browser Extensions](#browser-extensions)
-  * [Command-line tools](#command-line-tools)
-  * [Databases](#databases)
-  * [Datasets](#datasets)
-  * [Data modeling](#data-modeling)
-  * [Data generation](#data-generation)
-  * [Differencing](#differencing)
-  * [Editors](#editors)
-  * [Format Extensions](#format-extensions)
-  * [Frontend components](#frontend-components)
-  * [Libraries](#libraries)
-  * [Linters](#linters)
-  * [Online tools](#online-tools)
-  * [Schema Specifications](#schema-specifications)
-  * [Services](#services)
-  * [Supersets](#supersets)
-  * [Related formats](#related-formats)
-  * [Resources](#resources)
-  * [Templates](#templates)
-  * [Testing](#testing)
-  * [Text Editor Plugins](#text-editor-plugins)
-  * [Transformations](#transformations)
-  * [Tutorials](#tutorials)
-  * [Queries](#queries)
-  * [JSON Schema Frontend components](#json-schema-frontend-components)
-  * [JSON Schema Tools](#json-schema-tools)
-  * [JSON Schema Resources](#json-schema-resources)
-  * [JSON Schema Validators](#json-schema-validators)
-  * [Contribute](#contribute)
+A curated collection of resources and projects focused on JSON.
 
 ## Applications
 * [Dadroit JSON Viewer](https://dadroit.com) - Very fast JSON Viewer, supporting huge (multi gigabytes) files, JSON log (JSON-Lines and ndjson).

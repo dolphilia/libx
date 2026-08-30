@@ -1,20 +1,12 @@
 ---
-title: "bcoe/awesome-cross-platform-nodejs"
-description: "bcoe/awesome-cross-platform-nodejs の正規スナップショット"
+title: "Awesome cross-platform-nodejs logo"
+description: "cross-platform-nodejs logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-bcoe-awesome-cross-platform-nodejs-readme-md"
 ---
 
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="logo_dark.svg"/>
-    <img alt="awesome-cross-platform-nodejs logo" src="https://raw.githubusercontent.com/bcoe/awesome-cross-platform-nodejs/d54a9f1769768752bb239e5f376aa01a5114d120/logo.svg" width="500"/>
-  </picture>
-  <br>
-  <a href="https://awesome.re">
-	  <img src="https://awesome.re/badge.svg" alt="Awesome">
-  </a>
-  <p>クロスプラットフォームのNode.jsコードを書くための優れた開発ツールを集めたリストです。</p>
-</div>
+# Awesome cross-platform-nodejs logo
+
+cross-platform-nodejs logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

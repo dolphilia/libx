@@ -1,26 +1,12 @@
 ---
-title: "ildoc/awesome-italy-events"
-description: "ildoc/awesome-italy-events の正規スナップショット"
+title: "Awesome Events in Italy (2021 Edition)"
+description: "Events in Italy (2021 Edition)を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ildoc-awesome-italy-events-readme-md"
 ---
 
-# イタリアの Awesome イベント（2021 年版） [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [<img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" width="200" align="right" alt="イタリア国旗">](https://github.com/ildoc/awesome-italy-events#readme)
+# Awesome Events in Italy (2021 Edition)
 
-> イタリアの素晴らしい技術イベントを厳選したリスト
-
-このリストでは、イタリアで開催されるカンファレンス、ミートアップ、ワークショップ、パーティーなど、技術関連の素晴らしいイベントを紹介します 🎉
-
-貢献を歓迎します。プルリクエストでリンクを追加するか、Issue を作成して議論を始めてください。
-- [Awesome リストとは？](https://github.com/sindresorhus/awesome)
-- [貢献ガイド](https://github.com/ildoc/awesome-italy-events/blob/6a5ace4266532a2e20da5855c6639b2d24d21167/contributing.md)
-
-利用可能なデータ形式：[json](https://github.com/ildoc/awesome-italy-events/blob/6a5ace4266532a2e20da5855c6639b2d24d21167/data/2021.json) - [ics](https://github.com/ildoc/awesome-italy-events/blob/6a5ace4266532a2e20da5855c6639b2d24d21167/data/2021.ics)
-
-各年版：[2019](https://github.com/ildoc/awesome-italy-events/blob/6a5ace4266532a2e20da5855c6639b2d24d21167/archive/2019.md) [2020](https://github.com/ildoc/awesome-italy-events/blob/6a5ace4266532a2e20da5855c6639b2d24d21167/archive/2020.md) [2021](https://github.com/ildoc/awesome-italy-events/blob/6a5ace4266532a2e20da5855c6639b2d24d21167/README.md) [2022](https://github.com/ildoc/awesome-italy-events/blob/6a5ace4266532a2e20da5855c6639b2d24d21167/2022.md)
-
----
-
-イベントを追加するには、[プルリクエスト](https://github.com/ildoc/awesome-italy-events/blob/6a5ace4266532a2e20da5855c6639b2d24d21167/contributing.md)を送るか、Twitter の [@il_doc](https://twitter.com/il_doc) までお知らせください。
+Events in Italy (2021 Edition)を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [1 月](#january)

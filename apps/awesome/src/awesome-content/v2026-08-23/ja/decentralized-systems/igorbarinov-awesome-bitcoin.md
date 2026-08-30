@@ -1,16 +1,13 @@
 ---
-title: "igorbarinov/awesome-bitcoin"
-description: "igorbarinov/awesome-bitcoin の正規スナップショット"
+title: "Awesome Bitcoin"
+description: "Bitcoinを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-igorbarinov-awesome-bitcoin-readme-md"
 ---
 
-<a id="awesome-bitcoin"></a>
-Awesome Bitcoin（ビットコイン）
-===============
-ソフトウェア開発者向けのBitcoinサービスとツールを厳選したリストです。
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Bitcoin
 
-<a id="list-of-content"></a>
+Bitcoinを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+
 ## 目次
 
 - [ユーティリティ](#utilities)

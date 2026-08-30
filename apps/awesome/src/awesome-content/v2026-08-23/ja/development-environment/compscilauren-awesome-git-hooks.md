@@ -1,32 +1,12 @@
 ---
-title: "compscilauren/awesome-git-hooks"
-description: "compscilauren/awesome-git-hooks の定本スナップショット"
+title: "Awesome Git Hooks"
+description: "Git Hooksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-compscilauren-awesome-git-hooks-readme-md"
 ---
 
-<h1 align="center">
-  <a href="https://git-scm.com/">
-  <img width="455" src="https://github.com/compscilauren/awesome-git-hooks/blob/master/git-logo.png" alt="Awesome Git Hooks"></a><br>Awesome Git Hooks
-</h1>
-
-<p align="center">
-  <a href="https://awesome.re"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome Lists"></a>
-  <a href="https://github.com/CompSciLauren/awesome-git-hooks/blob/master/CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs welcome"></a>
-</p>
-
 # Awesome Git Hooks
 
-> :anchor: Gitワークフロー中のタスクを自動化する、使いやすいGitフック。
-
-Gitフックは、Gitコマンドの実行前後にトリガーされるタスクを自動化するために使えるカスタムスクリプトです。フックにはクライアント側とサーバー側の2つのグループがあります。クライアント側フックはコミットやマージなどの操作でトリガーされ、サーバー側フックはプッシュされたコミットの受信などネットワーク操作で実行されます。このリポジトリには、さまざまな目的に合わせて容易にカスタマイズできる多様なGitフックスクリプトと役立つリソースが含まれています。
-
-:heavy_check_mark: インストール／ダウンロードは不要
-
-:heavy_check_mark: コードは十分に文書化されています
-
-:heavy_check_mark: すぐに使えます！使用したいコードをコピーして、.git/hooksフォルダーに貼り付けてください
-
-貢献は常に歓迎します！[貢献ガイドライン](https://github.com/compscilauren/awesome-git-hooks/blob/417f78654fc5064afbfb14ce92fe8c281c33f3c9/CONTRIBUTING.md)をご覧ください。また、以下に欲しいスクリプトが見つからない場合は、リクエストするために[新しいissueを作成](https://github.com/CompSciLauren/awesome-git-hooks/issues/new?assignees=&labels=enhancement&template=new-git-hook-script-request.md&title=)できます。
+Git Hooksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

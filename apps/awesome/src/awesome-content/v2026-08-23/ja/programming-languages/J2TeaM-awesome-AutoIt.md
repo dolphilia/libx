@@ -1,21 +1,13 @@
 ---
-title: "J2TeaM/awesome-AutoIt"
-description: "AutoItのUDF、サンプルスクリプト、ツール、学習リソース集"
+title: "Awesome AutoIt"
+description: "AutoItを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-J2TeaM-awesome-AutoIt-readme-md"
 ---
 
 # Awesome AutoIt
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Build Status](https://travis-ci.org/J2TeaM/awesome-AutoIt.svg)](https://travis-ci.org/J2TeaM/awesome-AutoIt)
-[![Creator](https://img.shields.io/badge/Creator-Juno__okyo-blue.svg)](https://junookyo.blogspot.com/)
-[![Twitter Follow](https://img.shields.io/twitter/follow/juno_okyo.svg?label=Follow&maxAge=2592000)](https://twitter.com/juno_okyo)
+AutoItを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> [AutoIt](https://www.autoitscript.com/)向けの優れたUDF、サンプルスクリプト、ツール、役立つリソースを厳選したリスト。
-
-[Juno_okyo](https://twitter.com/juno_okyo)が作成し、[awesome](https://github.com/sindresorhus/awesome)リストから着想を得ています。
-
-<a id="table-of-contents"></a>
 ## 目次
 
 

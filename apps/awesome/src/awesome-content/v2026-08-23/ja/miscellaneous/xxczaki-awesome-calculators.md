@@ -1,16 +1,12 @@
 ---
-title: "xxczaki/awesome-calculators"
-description: "xxczaki/awesome-calculators の正規スナップショット"
+title: "Awesome Calculators"
+description: "Calculatorsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-xxczaki-awesome-calculators-readme-md"
 ---
 
-# Awesome Calculators [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Calculators
 
-[<img src="https://i.imgur.com/9q98DcX.png" align="right" width="120">](https://github.com/xxczaki/awesome-calculators)
-
-> 電卓に関するリソースを厳選したリストです！
-
-あなたのプロジェクトがこのリストに載っていますか？ [mentioned.md](https://github.com/xxczaki/awesome-calculators/blob/master/mentioned.md)をご覧ください！
+Calculatorsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [電卓アプリ](#calculator-apps)

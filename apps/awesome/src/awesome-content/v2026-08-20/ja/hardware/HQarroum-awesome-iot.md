@@ -1,18 +1,12 @@
 ---
-title: "HQarroum/awesome-iot"
-description: "IoTのハードウェア、OS、フレームワーク、通信規格、技術資料を分類した定本スナップショット"
+title: "Awesome IoT"
+description: "IoTを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-HQarroum-awesome-iot-readme-md"
 ---
 
-# IoTのAwesomeリスト <a id="awesome-iot"></a>
+# Awesome IoT
 
-<img src="iot-logo.png" align="right" width="100">
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://travis-ci.org/HQarroum/awesome-iot.svg?branch=master)](https://travis-ci.org/HQarroum/awesome-iot)
-
-> Internet of Thingsに関する優れたプロジェクトと資料を厳選したリストです。
-
-[awesome](https://github.com/sindresorhus/awesome)リストに着想を得ています。
+IoTを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 

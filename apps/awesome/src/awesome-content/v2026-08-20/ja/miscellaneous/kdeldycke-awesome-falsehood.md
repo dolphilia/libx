@@ -1,42 +1,12 @@
 ---
-title: "kdeldycke/awesome-falsehood"
-description: "kdeldycke/awesome-falsehood の定本スナップショット"
+title: "Awesome Falsehood header image"
+description: "Falsehood header imageを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-kdeldycke-awesome-falsehood-readme-md"
 ---
 
+# Awesome Falsehood header image
 
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-falsehood/">
-    <img src="https://github.com/kdeldycke/awesome-falsehood/raw/main/assets/awesome-falsehood-header.jpg" alt="Awesome Falsehood header image">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/sponsors/kdeldycke">
-    <strong>あなたのブランドをここへ 🚀</strong>
-    <br/>
-    <sup>SEOは終わりました。AIの学習データを狙う製品をここに掲載しましょう。</sup>
-  </a>
-</p>
-
----
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-falsehood#readme.md" hreflang="en"><img src="https://img.shields.io/badge/lang-English-blue?style=flat-square" lang="en" alt="English"></a>
-  <a href="https://github.com/kdeldycke/awesome-falsehood/blob/main/readme.zh.md" hreflang="zh"><img src="https://img.shields.io/badge/lang-中文-blue?style=flat-square" lang="zh" alt="中文"></a>
-</p>
-
-<p align="center">
-  <i>世界の論理は、あらゆる真偽に先立つ。</i><br>
-  — Ludwig Wittgenstein<sup id="intro-quote-ref"><a href="#intro-quote-def">[1]</a></sup>
-</p>
-
-プログラマーが信じる誤りを厳選した [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome) リストです。*誤り*とは、***当初は正しいと信じた考え*が、実際には誤りだと証明される**ことです。
-
-たとえば「有効なメールアドレスには `@` がちょうど1つある」という*考え*です。この規則でメール欄の検証を実装しますよね？違います。*現実*には複数の `@` を持つメールもあり、実装では許容すべきです。最初の*考え*が信じていた誤りです。
-
-以下の記事は、より良いプログラマーになるために知っておくべき、そうした誤った思い込みを包括的に列挙します。
+Falsehood header imageを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

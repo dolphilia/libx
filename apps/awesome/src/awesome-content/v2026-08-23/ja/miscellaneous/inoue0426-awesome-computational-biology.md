@@ -1,35 +1,12 @@
 ---
-title: "inoue0426/awesome-computational-biology"
-description: "計算生物学のデータベース、データセット、ツール、機械学習モデルを分類した定本スナップショット"
+title: "Awesome Computational Biology"
+description: "Computational Biologyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-inoue0426-awesome-computational-biology-readme-md"
 ---
 
-# 計算生物学のAwesomeリスト <a id="awesome-computational-biology-"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Computational Biology
 
-計算生物学に関するデータベース、ソフトウェア、論文を厳選したコレクションです。
-
-> 計算生物学は、生物・生態・行動・社会システムの研究に、データ解析・理論的方法、数理モデリング、計算機シミュレーション技術を開発・応用する分野です。— [Wikipedia](https://en.wikipedia.org/wiki/Computational_biology)
-
----
-
-## 概要 <a id="overview"></a>
-
-[![Resource Landscape Overview](https://github.com/inoue0426/awesome-computational-biology/blob/dd96b38e5775c672020b9372e78dfa8e8b8ecdb6/docs/overview.png)](https://inoue0426.github.io/awesome-computational-biology/overview.html)
-
-> インタラクティブ版: [Resource Overview page](https://inoue0426.github.io/awesome-computational-biology/overview.html)  
-> 図を再生成するコマンド: `python scripts/generate_overview.py`
-
----
-
-## GitHub Pages UI <a id="github-pages-ui"></a>
-
-[GitHub Pages UI](https://inoue0426.github.io/awesome-computational-biology/)で資料を閲覧・検索できます。
-
-- 検索対象は`name`、`description`、`tasks`、`modalities`、`tags`です。
-- **Task**、**Modality**、**Type**フィルターの`tasks`、`modalities`、`type`は、`docs/data/resources.json`内の項目へ直接対応します。
-- カード上のバッジをクリックすると、対応するフィルターが適用されます。
-
----
+Computational Biologyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 

@@ -1,16 +1,12 @@
 ---
-title: "sancarn/awesome-vba"
-description: "Canonical snapshot of sancarn/awesome-vba"
+title: "Awesome VBA VBALogo"
+description: "A curated collection of resources and projects focused on VBA VBALogo."
 licenseSource: "github-sancarn-awesome-vba-readme-md"
 ---
 
-# Awesome VBA ![VBALogo](https://raw.githubusercontent.com/sancarn/awesome-vba/fdc62016ce17d14ad98e40f108a384b7a6631049/resources/VBALogo.png) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome VBA VBALogo
 
-Visual Basic for Applications (VBA) is an implementation of Microsoft's event-driven programming language Visual Basic 6.0 (VB6) built into most desktop Microsoft Office applications.
-
-This is a curated list of Libraries and Resources for both VBA and VB6.
-
-Because of the nature of VBA, many libraries do not work on all Operating Systems, in all Office Applications or on all architectures(x64/x86), therefore we use symbology. [Read more about this here](#symbology).
+A curated collection of resources and projects focused on VBA VBALogo.
 
 ## Contents
 

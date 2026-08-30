@@ -1,18 +1,12 @@
 ---
-title: "sduff/awesome-splunk"
-description: "sduff/awesome-splunk の定本スナップショット"
+title: "Awesome Splunk"
+description: "Splunkを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sduff-awesome-splunk-readme-md"
 ---
 
-<div align="center">
-	<img width="344" height="193" src="https://raw.githubusercontent.com/sduff/awesome-splunk/master/splunk.jpg" alt="Splunk">
-</div>
+# Awesome Splunk
 
-# Awesome Splunk [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> Splunk 向けの優れたアプリ、可視化、その他のリソースの厳選リスト。
-
-[*Splunk*](https://splunk.com) は、リアルタイムデータを検索可能なリポジトリに取り込み、インデックス化、相関付けを行い、そこからグラフ、レポート、アラート、ダッシュボード、可視化を生成できます。セキュリティ、コンプライアンス、IT サービス監視などのユースケースのため、金融、公益事業、ヘルスケア、製造業などで広く利用されています。
+Splunkを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,36 +1,12 @@
 ---
-title: "DevOpsHiveHQ/awesome-kustomize"
-description: "DevOpsHiveHQ/awesome-kustomize の正規スナップショット"
+title: "Awesome Kustomize"
+description: "Kustomizeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-DevOpsHiveHQ-awesome-kustomize-readme-md"
 ---
 
+# Awesome Kustomize
 
-# Awesome Kustomize [![Awesome](https://raw.githubusercontent.com/sindresorhus/awesome/main/media/badge.svg)](https://github.com/sindresorhus/awesome) [![PR 歓迎](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aabouzaid/awesome-kustomize/compare)
-
-<p align="center">
-  <a href="https://kustomize.io">
-    <img src="https://raw.githubusercontent.com/DevOpsHiveHQ/awesome-kustomize/9ffa6628725ac877ce54d1fd18715893c79c4a81/img/awesome-kustomize.svg" width="90%">
-  </a>
-</p>
-
-> 優れた Kustomize リソースを共同で厳選したリストです。
-
-[Kustomize](https://kustomize.io) は、テンプレートを使わず Kubernetes マニフェストをカスタマイズする方法を導入します。拡張可能で、設定のカスタマイズに純粋な宣言的アプローチを用いるため、Infrastructure as Code（IaC）を効率的に管理できます。
-
-貢献を歓迎します。[プルリクエスト](https://github.com/aabouzaid/awesome-kustomize/pulls)でリンクを追加するか、Issue を作成して議論を始めてください。
-
-プロジェクトを前進させ、リポジトリにプロジェクトバッジを追加してコミュニティを支援しましょう！ ⭐
-
-Markdown：
-
-```text
-[![Awesome Kustomize](https://devopshive.com/badges/awesome-kustomize.svg)](https://github.com/DevOpsHiveHQ/awesome-kustomize)
-```
-
-プレビュー：
-
-[![Awesome Kustomize](https://raw.githubusercontent.com/DevOpsHiveHQ/awesome-kustomize/main/img/awesome-kustomize-badge.svg)](https://github.com/DevOpsHiveHQ/awesome-kustomize)
-
+Kustomizeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,16 +1,12 @@
 ---
-title: "alexk111/awesome-bitcoin-payment-processors"
-description: "alexk111/awesome-bitcoin-payment-processors の定本スナップショット"
+title: "Awesome Bitcoin Payment Processors"
+description: "Bitcoin Payment Processorsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-alexk111-awesome-bitcoin-payment-processors-readme-md"
 ---
 
-<div align="center">
-<img width="500" src="media/logo.svg" alt="Awesome Bitcoin Payment Processors"/>
-</div>
+# Awesome Bitcoin Payment Processors
 
-# Awesome Bitcoin Payment Processors [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-加盟店、企業、非営利組織がBitcoin決済を受け取れるようにする、厳選された優れたBitcoin決済処理事業者の一覧です。
+Bitcoin Payment Processorsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

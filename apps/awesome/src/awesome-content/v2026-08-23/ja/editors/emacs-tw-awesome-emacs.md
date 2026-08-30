@@ -1,13 +1,11 @@
 ---
-title: "emacs-tw/awesome-emacs"
-description: "emacs-tw/awesome-emacsの収録案内"
+title: "Awesome Emacs"
+description: "Awesome Emacsの収録案内です。このスナップショットでは上流本文を転載していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# Emacs
+# Awesome Emacs
 
-このAwesomeリストは、固定済みのsindresorhus/awesomeスナップショットのEditorsセクションから参照されています。
-
-このスナップショットで再利用可能なライセンスを確認できなかった、固定READMEを取得できなかった、または現在のlibxでは対応していないライセンス条件があるため、上流リストの本文はlibxへ複製していません。
+Awesome Emacsの収録案内です。このスナップショットでは上流本文を転載していません。
 
 - [元のリポジトリを開く](https://github.com/emacs-tw/awesome-emacs/tree/d56acc65a8db1e7a0061b5486afabda717e7f9b8)

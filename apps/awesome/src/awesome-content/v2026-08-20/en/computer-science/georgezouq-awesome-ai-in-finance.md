@@ -1,15 +1,12 @@
 ---
-title: "georgezouq/awesome-ai-in-finance"
-description: "Canonical snapshot of georgezouq/awesome-ai-in-finance"
+title: "Awesome AI in Finance"
+description: "A curated collection of resources and projects focused on AI in Finance."
 licenseSource: "github-georgezouq-awesome-ai-in-finance-readme-md"
 ---
 
-# Awesome AI in Finance [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) [![Community](https://img.shields.io/discord/733027681184251937.svg?style=flat&label=Join%20Community&color=7289DA)](https://discord.gg/cqaUf47)
+# Awesome AI in Finance
 
-There are millions of trades made in the global financial market every day. Data grows very quickly and people are hard to understand.
-With the power of the latest artificial intelligence research, people analyze & trade automatically and intelligently. This list contains the research, tools and code that people use to beat the market.
-
-[[中文资源](https://github.com/georgezouq/awesome-ai-in-finance/blob/27ef1faa8ea062af45ae2cdcbd2f50f4c358f110/chinese.md)]
+A curated collection of resources and projects focused on AI in Finance.
 
 ## Contents
 

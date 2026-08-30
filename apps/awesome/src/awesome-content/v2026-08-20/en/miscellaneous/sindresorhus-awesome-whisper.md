@@ -1,30 +1,12 @@
 ---
-title: "sindresorhus/awesome-whisper"
-description: "Canonical snapshot of sindresorhus/awesome-whisper"
+title: "Awesome Whisper"
+description: "A curated collection of resources and projects focused on Whisper."
 licenseSource: "github-sindresorhus-awesome-whisper-readme-md"
 ---
 
-<div align="center">
-	<br>
-	<br>
-	<div>
-		<img src="media/logo.png" alt="Awesome Whisper">
-		<br>
-	</div>
-	<br>
-	<p>
-		<a href="https://openai.com/research/whisper">Whisper</a> is an open-source AI-powered speech recognition system developed by <a href="https://openai.com">OpenAI</a>
-	</p>
-	<br>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-</div>
+# Awesome Whisper
+
+A curated collection of resources and projects focused on Whisper.
 
 ## Contents
 

@@ -1,116 +1,12 @@
 ---
-title: "jaywcjlove/awesome-mac"
-description: "Canonical snapshot of jaywcjlove/awesome-mac"
+title: "Awesome Mac"
+description: "A curated collection of resources and projects focused on Mac."
 licenseSource: "github-jaywcjlove-awesome-mac-readme-md"
 ---
 
-<div align="center" markdown="1">
-  <sup>Special thanks to:</sup>
-  <br>
-  <br>
+# Awesome Mac
 
-  <a href="https://getapps.cafe/">
-    <img alt="getapps.cafe" width="400" src="https://jaywcjlove.github.io/sponsor/getapps.cafe.png">
-  </a>
-  <br>
-  <a href="https://getapps.cafe/">getapps.cafe, 60+ native Mac apps across utilities, office, creative, and productivity categories, all running locally so your data never leaves your machine.</a>
-  <br><br>
-
-  <a href="https://screensage.pro/">
-    <img alt="ScreenSage Pro" width="400" src="https://jaywcjlove.github.io/sponsor/screensage.png">
-  </a>
-  <br>
-  <a href="https://screensage.pro/">ScreenSage Pro, record beautiful screen recordings in minutes on macOS</a>
-  <br><br>
-
-  <a href="https://lizhi.shop/?cid=nboxz71a">
-    <img alt="LIZHI.SHOP - Selected Software. 100% Genuine. Best Deals." width="400" src="https://jaywcjlove.github.io/sponsor/lizhi.shop.png">
-  </a>
-  <br>
-  <a href="https://lizhi.shop/?cid=nboxz71a">LIZHI.SHOP - Selected Software. 100% Genuine. Best Deals.</a>
-  <br><br>
-
-  <a href="https://ip.im/">
-    <img alt="IP.IM" width="400" src="https://jaywcjlove.github.io/sponsor/ip.im.png">
-  </a>
-  <br>
-  <a href="https://ip.im/">IP.IM Free IP address information query website</a>
-  <br><br>
-
-</div>
-<hr>
-
-<p style="display: inline_block">
-  <sup>Using <a href="https://wangchujiang.com/#/app" target="_blank">my app</a> is also a way to <a href="https://wangchujiang.com/#/sponsor" target="_blank">support</a> me:</sup><br/>
-  <a target="_blank" href="https://wangchujiang.com/dock-lift/" title="DockLift: Windows, Here"><img alt="DockLift: Windows, Here" height="52" src="https://wangchujiang.com/appicon/dock-lift.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6766860898" title="Zipora: Zip/RAR/7Z Unarchiver"><img alt="Zipora: Zip/RAR/7Z Unarchiver" height="52" src="https://wangchujiang.com/appicon/zipora.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6758053530" title="Scap: Screenshot & Markup Edit for macOS"><img alt="Scap: Screenshot & Markup Edit" height="52" src="https://wangchujiang.com/appicon/scap.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6757317079" title="Screen Test for macOS"><img alt="Screen Test" height="52" src="https://wangchujiang.com/appicon/screen-test.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6755948110" title="Deskmark for macOS"><img alt="Deskmark" height="52" src="https://wangchujiang.com/appicon/deskmark.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6500434773" title="Keyzer for macOS"><img alt="Keyzer" height="52" src="https://wangchujiang.com/appicon/keyzer.png"></a>
-  <a target="_blank" href="https://github.com/jaywcjlove/vidwall-hub" title="Vidwall Hub for macOS"><img alt="Vidwall Hub" height="52" src="https://wangchujiang.com/appicon/vidwall-hub.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6752624705" title="VidCrop for macOS"><img alt="VidCrop" height="52" src="https://wangchujiang.com/appicon/vidcrop.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6747587746" title="Vidwall for macOS"><img alt="Vidwall" height="52" src="https://wangchujiang.com/appicon/vidwall.png"></a>
-  <a target="_blank" href="https://wangchujiang.com/mousio-hint/" title="Mousio Hint for macOS"><img alt="Mousio Hint" height="52" src="https://wangchujiang.com/appicon/mousio-hint.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6746747327" title="Mousio for macOS"><img alt="Mousio" height="52" src="https://wangchujiang.com/appicon/mousio.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6745227444" title="Musicer for macOS"><img alt="Musicer" height="52" src="https://wangchujiang.com/appicon/musicer.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6743841447" title="Audioer for macOS"><img alt="Audioer" height="52" src="https://wangchujiang.com/appicon/audioer.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6744690194" title="FileSentinel for macOS"><img alt="FileSentinel" height="52" src="https://wangchujiang.com/appicon/file-sentinel.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6743495172" title="FocusCursor for macOS"><img alt="FocusCursor" height="52" src="https://wangchujiang.com/appicon/focus-cursor.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6742680573" title="Videoer for macOS"><img alt="Videoer" height="52" src="https://wangchujiang.com/appicon/videoer.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6740425504" title="KeyClicker for macOS"><img alt="KeyClicker" height="52" src="https://wangchujiang.com/appicon/key-clicker.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6739052447" title="DayBar for macOS"><img alt="DayBar" height="52" src="https://wangchujiang.com/appicon/daybar.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6739444407" title="Iconed for macOS"><img alt="Iconed" height="52" src="https://wangchujiang.com/appicon/iconed.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6737160756" title="Menuist for macOS"><img alt="Menuist" height="52" src="https://wangchujiang.com/appicon/rightmenu-master.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6723903021" title="Paste Quick for macOS"><img alt="Quick RSS" height="52" src="https://wangchujiang.com/appicon/paste-quick.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6670696072&platform=mac" title="Quick RSS for macOS/iOS"><img alt="Quick RSS" height="52" src="https://wangchujiang.com/appicon/quick-rss.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6670167443" title="Web Serve for macOS"><img alt="Web Serve" height="52" src="https://wangchujiang.com/appicon/web-serve.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6503953628&platform=mac" title="Copybook Generator for macOS/iOS"><img alt="Copybook Generator" height="52" src="https://wangchujiang.com/appicon/copybook-generator.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6471227008&platform=mac" title="DevTutor for macOS/iOS"><img alt="DevTutor for SwiftUI" height="52" src="https://wangchujiang.com/appicon/devtutor.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6479819388&platform=mac" title="RegexMate for macOS/iOS"><img alt="RegexMate" height="52" src="https://wangchujiang.com/appicon/regex-mate.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6479194014&platform=mac" title="Time Passage for macOS/iOS"><img alt="Time Passage" height="52" src="https://wangchujiang.com/appicon/time-passage.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6478772538" title="IconizeFolder for macOS"><img alt="Iconize Folder" height="52" src="https://wangchujiang.com/appicon/iconize-folder.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6478511402&platform=mac" title="Textsound Saver for macOS/iOS"><img alt="Textsound Saver" height="52" src="https://wangchujiang.com/appicon/textsound-saver.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6476924627" title="Create Custom Symbols for macOS"><img alt="Create Custom Symbols" height="52" src="https://wangchujiang.com/appicon/create-custom-symbols.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6476452351" title="DevHub for macOS"><img alt="DevHub" height="52" src="https://wangchujiang.com/appicon/devhub.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6476400184" title="Resume Revise for macOS"><img alt="Resume Revise" height="52" src="https://wangchujiang.com/appicon/resume-revise.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6472593276" title="Palette Genius for macOS"><img alt="Palette Genius" height="52" src="https://wangchujiang.com/appicon/palette-genius.png"></a>
-  <a target="_blank" href="https://jaywcjlove.github.io/maslink/?id=6470879005" title="Symbol Scribe for macOS"><img alt="Symbol Scribe" height="52" src="https://wangchujiang.com/appicon/symbol-scribe.png"></a>
-</p>
-<hr>
-
-Awesome Mac
-===
-
-
-[![Buy me a coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://jaywcjlove.github.io/#/sponsor)
-[![Follow On X](https://img.shields.io/badge/Follow%20on%20X-333333?logo=x&logoColor=white)](https://x.com/jaywcjlove)
-[![Awesome](https://jaywcjlove.github.io/sb/ico/awesome.svg)](https://github.com/sindresorhus/awesome)
-[![NPM version](https://img.shields.io/npm/v/awesome-mac.svg?style=flat)](https://npmjs.org/package/awesome-mac)
-[![WeiBo](https://jaywcjlove.github.io/sb/ico/weibo.svg)](https://weibo.com/pc175)
-[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/wcjiang/awesome-mac?logo=docker)](https://hub.docker.com/r/wcjiang/awesome-mac)
-[![Chinese List](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/jaywcjlove/awesome-mac/blob/32f7bfc5caf9f04117539bb65528a2ccdb394878/README-zh.md)
-[![Japanese List](https://jaywcjlove.github.io/sb/lang/japanese.svg)](https://github.com/jaywcjlove/awesome-mac/blob/32f7bfc5caf9f04117539bb65528a2ccdb394878/README-ja.md)
-[![Korean List](https://jaywcjlove.github.io/sb/lang/korean.svg)](https://github.com/jaywcjlove/awesome-mac/blob/32f7bfc5caf9f04117539bb65528a2ccdb394878/README-ko.md)
-
-
-This project is dedicated to collecting high-quality macOS software and organizing them systematically by different categories for easy search and use. As it continues to grow, the project has far exceeded our initial expectations and has become more comprehensive and refined.
-
-Feel free to **star** ⭐ and **fork** 🍴 to support the project!
-
-If you have any suggestions, ideas, or discover excellent software, feel free to submit a PR to help improve this list. Please read the [contributing guidelines](https://github.com/jaywcjlove/awesome-mac/blob/master/docs/CONTRIBUTING.md) before contributing. We also welcome you to continue following this [awesome](https://github.com/sindresorhus/awesome) list to build a better macOS tool collection together.
-
-**Explanation**
-
-[中文](https://github.com/jaywcjlove/awesome-mac/blob/32f7bfc5caf9f04117539bb65528a2ccdb394878/README-zh.md) | [한국어](https://github.com/jaywcjlove/awesome-mac/blob/32f7bfc5caf9f04117539bb65528a2ccdb394878/README-ko.md) | [日本語](https://github.com/jaywcjlove/awesome-mac/blob/32f7bfc5caf9f04117539bb65528a2ccdb394878/README-ja.md) | [RSS](https://github.com/jaywcjlove/awesome-mac/blob/32f7bfc5caf9f04117539bb65528a2ccdb394878/feed/feed.md) | [Awesome Command Line Apps](https://github.com/jaywcjlove/awesome-mac/blob/32f7bfc5caf9f04117539bb65528a2ccdb394878/command-line-apps.md) | [Awesome Swift macOS Apps](https://github.com/jaywcjlove/awesome-swift-macos-apps)
-
-![Open-Source Software][OSS Icon] means **open source**. click the icon to see the item's repository;\
-![Freeware][Freeware Icon] means **free** to use, or **free** personal license;\
-![App Store][app-store Icon] means **App store** hyperlink;\
-![Native App][Native Icon] means **native app**;\
-![Awesome List][awesome-list Icon] means hyperlink to a corresponding **Awesome list** for the item;
-
-
+A curated collection of resources and projects focused on Mac.
 
 ## Contents
 
@@ -1711,6 +1607,3 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 [app-store Icon]: https://jaywcjlove.github.io/sb/ico/min-app-store.svg "App Store Software"
 [Native Icon]: https://jaywcjlove.github.io/sb/ico/min-native-app.svg "Native App"
 [awesome-list Icon]: https://jaywcjlove.github.io/sb/ico/min-awesome.svg "Awesome List"
-
-
-

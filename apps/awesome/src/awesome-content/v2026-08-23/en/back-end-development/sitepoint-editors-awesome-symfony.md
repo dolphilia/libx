@@ -1,36 +1,12 @@
 ---
-title: "sitepoint-editors/awesome-symfony"
-description: "Canonical snapshot of sitepoint-editors/awesome-symfony"
+title: "Awesome Symfony"
+description: "A curated collection of resources and projects focused on Symfony."
 licenseSource: "github-sitepoint-editors-awesome-symfony-readme-md"
 ---
 
-# Awesome Symfony [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-A list of awesome [Symfony](http://symfony.com) bundles, utilities and resources.
+# Awesome Symfony
 
-Table of contents:
-
-* [Administration](#administration)
-* [Certification](#certification)
-* [Community](#community)
-* [Development](#development)
-* [Distributions](#distributions)
-* [Ecommerce](#ecommerce)
-* [Forms](#forms)
-* [Internationalization](#internationalization)
-* [Miscellaneous](#miscellaneous)
-* [Monitoring](#monitoring)
-* [Payments Management](#payments-management)
-* [Queues](#queues)
-* [Reading](#reading)
-* [Recipes](#recipes)
-* [Resources](#resources)
-* [Service Container](#service-container)
-* [Storage](#storage)
-* [Template Engine](#template-engine)
-* [Third Party APIs](#third-party-apis)
-* [User Management](#user-management)
-* [Validation](#validation)
-* [Web Services](#web-services)
+A curated collection of resources and projects focused on Symfony.
 
 ## Administration
 

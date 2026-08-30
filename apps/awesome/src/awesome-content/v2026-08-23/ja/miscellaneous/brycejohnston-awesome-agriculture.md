@@ -1,16 +1,12 @@
 ---
-title: "brycejohnston/awesome-agriculture"
-description: "brycejohnston/awesome-agriculture の正規スナップショット"
+title: "Awesome Agriculture"
+description: "Agricultureを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-brycejohnston-awesome-agriculture-readme-md"
 ---
 
-# Awesome Agriculture [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Agriculture
 
-> 農業、営農、園芸のための優れたオープンソース技術の厳選リスト。
-
-[農業](https://en.wikipedia.org/wiki/Agriculture)は、食料や材料を得るために植物と家畜を育てる科学および技術です。
-
-コントリビューションを歓迎します。[コントリビューションガイドライン](https://github.com/beaorn/awesome-agriculture/blob/master/contributing.md)に従ってください。
+Agricultureを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

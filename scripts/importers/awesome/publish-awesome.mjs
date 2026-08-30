@@ -371,7 +371,7 @@ const combinedLocalizedRoutes = {
   entries: mergeVersionEntries(localizedRoutesPath, localizedRoutes.entries),
 };
 const existingPreviewStatuses = fs.existsSync(previewStatusPath)
-  ? readJson(previewStatusPath).snapshots ?? []
+  ? (readJson(previewStatusPath).snapshots ?? [])
   : [];
 const previewStatuses = {
   schemaVersion: 2,

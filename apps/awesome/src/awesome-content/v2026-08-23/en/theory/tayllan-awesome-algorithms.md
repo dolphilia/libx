@@ -1,25 +1,12 @@
 ---
-title: "tayllan/awesome-algorithms"
-description: "Canonical snapshot of tayllan/awesome-algorithms"
+title: "Awesome Algorithms"
+description: "A curated collection of resources and projects focused on Algorithms."
 licenseSource: "github-tayllan-awesome-algorithms-readme-md"
 ---
 
 # Awesome Algorithms
 
-A curated list of awesome places to learn and/or practice algorithms.
-Inspired by [awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness) and all the other awesome Awesome libraries.
-
-If you want to contribute, please read the [contribution guidelines](https://github.com/tayllan/awesome-algorithms/blob/master/CONTRIBUTING.md).
-
-- [Awesome Algorithms](#awesome-algorithms)
-    - [Beginner-Friendly](#beginner-friendly)
-    - [Programming Contest](#programming-contest)
-    - [Theory & Fundamentals](#theory--fundamentals)
-    - [Production System](#production-system)
-    - [Database](#database)
-    - [Special Topic](#special-topic)
-    - [Cheat Sheet](#cheat-sheet)
-    - [Related Awesome List](#related-awesome-list)
+A curated collection of resources and projects focused on Algorithms.
 
 ## Beginner-Friendly
 

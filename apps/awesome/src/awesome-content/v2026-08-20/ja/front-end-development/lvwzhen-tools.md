@@ -1,20 +1,12 @@
 ---
-title: "lvwzhen/tools"
-description: "lvwzhen/tools の定本スナップショット"
+title: "Awesome Web Tools"
+description: "Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lvwzhen-tools-readme-md"
 ---
 
-# ウェブツール [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Web Tools
 
->ウェブ開発向けホスト型ツールの awesome リスト。
-
-## スポンサー
-
-<p>
-  <a href="https://sailboatui.com/" target="_blank">
-    <img src="https://raw.githubusercontent.com/sailboatui/sailboatui/main/.github/logo-light.svg"  height="50" alt="Sailboat UI">
-  </a>
-</p>
+Web Toolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

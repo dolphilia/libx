@@ -1,13 +1,12 @@
 ---
-title: "eminyagiz42/awesome-sap-commerce"
-description: "eminyagiz42/awesome-sap-commerce の正規スナップショット"
+title: "Awesome SAP Commerce"
+description: "SAP Commerceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-eminyagiz42-awesome-sap-commerce-readme-md"
 ---
 
-# Awesome SAP Commerce  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) 
+# Awesome SAP Commerce
 
-> 優れた[SAP Commerce](https://www.sap.com/products/crm/commerce-cloud.html)（旧Hybris）リソースのキュレーションリスト。SAP CommerceはSpring MVCフレームワークを基盤にJavaを使用するeコマースプラットフォームである。以下にSAP Commerce開発者向けの有用なリソースを示す。
-
+SAP Commerceを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

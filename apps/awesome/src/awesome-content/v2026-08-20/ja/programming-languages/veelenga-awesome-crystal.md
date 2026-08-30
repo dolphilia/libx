@@ -1,88 +1,12 @@
 ---
-title: "veelenga/awesome-crystal"
-description: "Crystalのライブラリ、サービス、資料、開発ツールを分類した定本スナップショット"
+title: "Awesome Crystal"
+description: "Crystalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-veelenga-awesome-crystal-readme-md"
 ---
 
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
+# Awesome Crystal
 
-<p align="center"><img src="logo/logotype_horizontal.jpg" alt="awesome-crystal"></p>
-
-# CrystalのAwesomeリスト <a id="awesome-crystal"></a>
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-[awesome](https://github.com/sindresorhus/awesome)と[awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness)に着想を得た、優れたCrystalコードと資料の厳選リストです。
-おおむね安定しており、コミュニティに役立つプロジェクトを掲載することを目標としています。
-
-さらに探す場合は[shards.info](https://shards.info)でshardを検索できます。
-
-コントリビューションを歓迎します。最初に[コントリビューションガイドライン](https://github.com/veelenga/awesome-crystal/blob/master/.github/CONTRIBUTING.md)を確認してください。
-
-* [CrystalのAwesomeリスト](#awesome-crystal)
-  * [アルゴリズムとデータ構造](#algorithms-and-data-structures)
-  * [ブロックチェーン](#blockchain)
-  * [Cバインディング](#c-bindings)
-  * [キャッシュ](#caching)
-  * [CLIビルダー](#cli-builders)
-  * [CLIユーティリティ](#cli-utils)
-  * [コード解析とメトリクス](#code-analysis-and-metrics)
-  * [圧縮](#compression)
-  * [構成](#configuration)
-  * [変換ツール](#converters)
-  * [暗号](#cryptography)
-  * [データ形式](#data-formats)
-  * [データ生成](#data-generators)
-  * [データベースドライバー／クライアント](#database-driversclients)
-  * [データベースツール](#database-tools)
-  * [デバッグ](#debugging)
-  * [依存性注入](#dependency-injection)
-  * [メール](#email)
-  * [環境管理](#environment-management)
-  * [サンプルと楽しい作品](#examples-and-funny-stuff)
-  * [フレームワーク部品](#framework-components)
-  * [ゲーム開発](#game-development)
-  * [GUI開発](#gui-development)
-  * [HTMLビルダー](#html-builders)
-  * [HTML／XML解析](#htmlxml-parsing)
-  * [HTTP](#http)
-  * [画像処理](#image-processing)
-  * [実装／コンパイラー](#implementationscompilers)
-  * [国際化](#internationalization)
-  * [ログと監視](#logging-and-monitoring)
-  * [機械学習](#machine-learning)
-  * [Markdown／テキスト処理](#markdowntext-processors)
-  * [その他](#misc)
-  * [ネットワークプロトコル](#network-protocols)
-  * [ネットワーク](#networking)
-  * [ORM／ODM拡張](#ormodm-extensions)
-  * [パッケージ管理](#package-management)
-  * [プロセスとスレッド](#processes-and-threads)
-  * [プロジェクト生成](#project-generators)
-  * [キューとメッセージング](#queues-and-messaging)
-  * [ルーティング](#routing)
-  * [スケジューリング](#scheduling)
-  * [科学計算とデータ解析](#science-and-data-analysis)
-  * [検索](#search)
-  * [セキュリティ](#security)
-  * [サーバーレスコンピューティング](#serverless-computing)
-  * [システム](#system)
-  * [タスク管理](#task-management)
-  * [テンプレートエンジン](#template-engine)
-  * [テスト](#testing)
-  * [サードパーティAPI](#third-party-apis)
-  * [TUI](#tui)
-  * [検証](#validation)
-  * [Webフレームワーク](#web-frameworks)
-* [コミュニティ](#community)
-  * [非公式](#unofficial)
-* [資料](#resources)
-  * [公式文書の翻訳](#official-documentation-translations)
-* [サービスとアプリ](#services-and-apps)
-* [ツール](#tools)
-  * [DevOps](#devops)
-  * [エディタープラグイン](#editor-plugins)
-  * [LSP（Language Server Protocol）実装](#lsp-language-server-protocol-implementations)
-  * [シェルプラグイン](#shell-plugins)
+Crystalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## アルゴリズムとデータ構造 <a id="algorithms-and-data-structures"></a>
  * [bisect](https://github.com/spider-gazelle/bisect) - ソート済み配列に値を挿入する

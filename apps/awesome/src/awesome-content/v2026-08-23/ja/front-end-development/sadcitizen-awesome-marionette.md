@@ -1,12 +1,12 @@
 ---
-title: "sadcitizen/awesome-marionette"
-description: "sadcitizen/awesome-marionette の正規スナップショット"
+title: "Awesome Marionette.js"
+description: "Marionette.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sadcitizen-awesome-marionette-readme-md"
 ---
 
-# Awesome Marionette.js [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Marionette.js
 
-> Marionette.js のリソース一覧です。
+Marionette.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 全般
 

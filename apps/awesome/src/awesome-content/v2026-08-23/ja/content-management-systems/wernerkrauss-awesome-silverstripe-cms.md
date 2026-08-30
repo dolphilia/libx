@@ -1,21 +1,12 @@
 ---
-title: "wernerkrauss/awesome-silverstripe-cms"
-description: "wernerkrauss/awesome-silverstripe-cms の定本スナップショット"
+title: "Awesome Silverstripe CMS"
+description: "Silverstripe CMSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-wernerkrauss-awesome-silverstripe-cms-readme-md"
 ---
 
-# Awesome Silverstripe CMS [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Silverstripe CMS
 
-[<img src="images/logo-silverstripe-cms.png" align="right" width="200">](https://www.silverstripe.org/)
-
-> Silverstripe Framework・CMS 向けの便利なリソース
-
-[Silverstripe CMS](https://www.silverstripe.org) は Web アプリケーション構築用のオープンソース PHP フレームワークです。従来のフル機能 CMS または GraphQL・カスタム API でクエリーできるヘッドレス CMS として機能する、迅速開発 MVC フレームワークです。
-「Active Record」デザインパターンに従い、プロジェクト固有のデータモデルで組み込み機能を容易に拡張できます。
-
-[貢献を歓迎します](https://github.com/wernerkrauss/awesome-silverstripe-cms/blob/8f378e0d9585d40573bc1d7ef65dcabadba265f1/CONTRIBUTING.md)。議論を始めるにはプルリクエストを送るか Issue を開いてください。
-
-古い項目は[アーカイブ](https://github.com/wernerkrauss/awesome-silverstripe-cms/blob/8f378e0d9585d40573bc1d7ef65dcabadba265f1/ARCHIVE.md)にあります。
+Silverstripe CMSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

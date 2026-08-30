@@ -1,10 +1,12 @@
 ---
-title: "ChristosChristofidis/awesome-deep-learning"
-description: "Canonical snapshot of ChristosChristofidis/awesome-deep-learning"
+title: "Awesome Deep Learning"
+description: "A curated collection of resources and projects focused on Deep Learning."
 licenseSource: "github-ChristosChristofidis-awesome-deep-learning-readme-md"
 ---
 
-# Awesome Deep Learning [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Deep Learning
+
+A curated collection of resources and projects focused on Deep Learning.
 
 ## Table of Contents
 

@@ -1,23 +1,12 @@
 ---
-title: "GustavBertram/awesome-common-lisp-learning"
-description: "Canonical snapshot of GustavBertram/awesome-common-lisp-learning"
+title: "Awesome Common Lisp Learning"
+description: "A curated collection of resources and projects focused on Common Lisp Learning."
 licenseSource: "github-GustavBertram-awesome-common-lisp-learning-readme-md"
 ---
 
-# Awesome Common Lisp Learning [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Common Lisp Learning
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/GustavBertram/awesome-common-lisp-learning/2bcbbc47a9bce0dfbf5dd81d97f94d1d8360ae11/LISP_logo_mid.png">
-</div>
-
-This list focuses on resources for learning Common Lisp, especially resources that I've found useful.
-
-There are other Awesome Common Lisp lists that focus on other topics:
-- [Libraries](https://github.com/CodyReichert/awesome-cl)
-  - [Curated Libraries](https://github.com/vindarel/curated-awesome-cl) - Forked and updated from the above list.
-- [Software](https://github.com/azzamsa/awesome-cl-software)
-
-Contributions are welcome. Please read the [contribution guidelines](https://github.com/GustavBertram/awesome-common-lisp-learning/blob/2bcbbc47a9bce0dfbf5dd81d97f94d1d8360ae11/contributing.md) for details.
+A curated collection of resources and projects focused on Common Lisp Learning.
 
 ## Contents
 

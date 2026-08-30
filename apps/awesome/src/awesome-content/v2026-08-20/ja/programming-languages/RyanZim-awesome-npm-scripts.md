@@ -1,19 +1,12 @@
 ---
-title: "RyanZim/awesome-npm-scripts"
-description: "RyanZim/awesome-npm-scripts の定本スナップショット"
+title: "Awesome npm Scripts"
+description: "npm Scriptsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-RyanZim-awesome-npm-scripts-readme-md"
 ---
 
+# Awesome npm Scripts
 
-# Awesome npm Scripts [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-[<img src="npm-logo.png" align="right" width="150">](https://www.npmjs.com)
-
-> npm をビルドツールとして使うための素晴らしい情報をすべて集めたリスト。
-
-[awesome-npm](https://github.com/sindresorhus/awesome-npm) もおすすめです。
-
-**お知らせ: 現在このリストを積極的に拡充する時間がないため、[OPEN Open Source Project](http://openopensource.github.io/) にすることを決めました。重要かつ価値ある貢献を行った人には、適切と考える形でプロジェクトへ貢献できるようコミット権限が与えられます。**
+npm Scriptsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

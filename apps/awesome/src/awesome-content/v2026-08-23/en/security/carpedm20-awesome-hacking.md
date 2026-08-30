@@ -1,17 +1,12 @@
 ---
-title: "carpedm20/awesome-hacking"
-description: "Canonical snapshot of carpedm20/awesome-hacking"
+title: "Awesome Hacking -An Amazing Project"
+description: "A curated collection of resources and projects focused on Hacking -An Amazing Project."
 licenseSource: "github-carpedm20-awesome-hacking-readme-md"
 ---
 
-# Awesome Hacking -An Amazing Project [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Hacking -An Amazing Project
 
-A curated list of awesome Hacking. Inspired by [awesome-machine-learning](https://github.com/josephmisiti/awesome-machine-learning/)
-
-If you want to contribute to this list (please do), send me a pull request!
-
-For a list of free hacking books available for download, go [here](https://github.com/Hack-with-Github/Free-Security-eBooks)
-
+A curated collection of resources and projects focused on Hacking -An Amazing Project.
 
 ## Table of Contents
 

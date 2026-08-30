@@ -1,22 +1,12 @@
 ---
-title: "dhondta/awesome-executable-packing"
-description: "実行形式パッキングの文献、研究、データセット、パッカー、解析ツールを分類した定本スナップショット"
+title: "Awesome Executable Packing"
+description: "Executable Packingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dhondta-awesome-executable-packing-readme-md"
 ---
 
-# 実行形式パッキングのAwesomeリスト <a id="awesome-executable-packing"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) <a href="https://x.com/intent/tweet?text=Awesome%20Executable%20Packing%20-%20A%20curated%20list%20of%20resources%20related%20to%20the%20packing%20of%20various%20executable%20formats%20and%20its%20detection.%0D%0Ahttps%3a%2f%2fgithub%2ecom%2fdhondta%2fawesome-executable-packing%0D%0A&hashtags=awesomelists,malware,malwareresearch,executablepacking,cybersecurity,infosec"><img id="top" src="https://img.shields.io/badge/Tweet--lightgrey?logo=twitter&style=social" alt="Tweet" height="20"/></a>
+# Awesome Executable Packing
 
-> Portable Executable、Executable and Linkable Formatなどの実行形式パッキングに関する書籍、論文、ブログ記事、パッカー、検出・展開ツールを厳選したリストです。
-
-*パッキング*とは、目的を変えずに実行ファイルを変更する行為で、一般に次の操作の一つまたは組み合わせです。
-- バンドル: 複数ファイルを一つの実行ファイルにまとめます
-- 圧縮: 実行ファイルを圧縮して元のサイズを縮小します
-- エンコード: 実行ファイルを符号化して難読化します
-- 暗号化: 実行ファイルを暗号化して難読化します
-- 変異: 異なる命令セットやアーキテクチャを使うよう実行コードを変更します（例: オリゴモーフィズム）
-- 保護: アンチデバッグや改ざん防止などにより、実行ファイルの解析を難しくします
-- 仮想化: 仮想マシンを埋め込み、実行ファイルの命令を仮想化します
-
+Executable Packingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 
@@ -847,5 +837,3 @@ licenseSource: "github-dhondta-awesome-executable-packing-readme-md"
 ## コントリビューション <a id="contributing"></a>
 
 コントリビューションを歓迎します。最初に[コントリビューションガイドライン](https://github.com/dhondta/awesome-executable-packing/blob/ae1a476586df715abe168549aefbc8695474d21c/CONTRIBUTING.md)を確認してください。
-
-

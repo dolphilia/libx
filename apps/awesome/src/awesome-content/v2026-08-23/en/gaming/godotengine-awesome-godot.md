@@ -1,17 +1,12 @@
 ---
-title: "godotengine/awesome-godot"
-description: "Canonical snapshot of godotengine/awesome-godot"
+title: "Awesome Godot"
+description: "A curated collection of resources and projects focused on Godot."
 licenseSource: "github-godotengine-awesome-godot-readme-md"
 ---
 
-# Awesome Godot [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Godot
 
-[![Godot Engine logo](https://github.com/godotengine/awesome-godot/blob/5bee20edd065a17c8a47ff920b9d36945c989d2b/godot-logo.svg)](https://godotengine.org)
-
-A curated list of [free/libre](https://www.gnu.org/philosophy/free-sw.html) games, plugins, add-ons and scripts for Godot.
-
-Looking for third-party programming language support in Godot?
-See [Vivraan/godot-lang-support](https://github.com/Vivraan/godot-lang-support).
+A curated collection of resources and projects focused on Godot.
 
 ## Contents
 

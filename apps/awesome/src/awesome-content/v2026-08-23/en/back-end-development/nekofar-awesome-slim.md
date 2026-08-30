@@ -1,19 +1,12 @@
 ---
-title: "nekofar/awesome-slim"
-description: "Canonical snapshot of nekofar/awesome-slim"
+title: "Awesome Slim"
+description: "A curated collection of resources and projects focused on Slim."
 licenseSource: "github-nekofar-awesome-slim-readme-md"
 ---
 
-# Awesome Slim [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Slim
 
-
-[<img src="assets/slim-logo.png" align="right" width="260" alt="Slim Framework">](https://www.slimframework.com)
-
-
-> A curated list of awesome [Slim](https://www.slimframework.com) framework packages and resources.
-
-
-[Slim](https://www.slimframework.com) is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs.
+A curated collection of resources and projects focused on Slim.
 
 ## Contents
 

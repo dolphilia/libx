@@ -1,12 +1,12 @@
 ---
-title: "KimberlyMunoz/empathy-in-engineering"
-description: "KimberlyMunoz/empathy-in-engineering の定本スナップショット"
+title: "Awesome Empathy in Engineering"
+description: "Empathy in Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-KimberlyMunoz-empathy-in-engineering-readme-md"
 ---
 
-# エンジニアリングにおける共感 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Empathy in Engineering
 
-> より思いやりのあるエンジニアリング文化を築き、促進するためのリソースの厳選リスト
+Empathy in Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

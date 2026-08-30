@@ -1,16 +1,12 @@
 ---
-title: "RichardLitt/awesome-fantasy"
-description: "ファンタジー小説、映画、ゲーム、音楽、アート、研究資料の一覧"
+title: "Awesome fantasy"
+description: "fantasyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-RichardLitt-awesome-fantasy-readme-md"
 ---
 
-# awesome-fantasy [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome fantasy
 
-> Fantasy literature worth reading
-
-[awesome](https://github.com/sindresorhus/awesome)リストのアイデアを受けて。科学小説の本については、[awesome-scifi](https://github.com/sindresorhus/awesome-scifi)を参照してください。
-
-貢献する前に、[Contributing Guidelines](https://github.com/RichardLitt/awesome-fantasy/blob/8f3930a2a12db117c6dea2e08357881e6b0651e7/contributing.md)を読んでください。
+fantasyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Contents
 

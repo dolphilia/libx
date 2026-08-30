@@ -1,21 +1,13 @@
 ---
-title: "onqtam/awesome-cmake"
-description: "onqtam/awesome-cmake の正規スナップショット"
+title: "Awesome CMake"
+description: "CMakeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-onqtam-awesome-cmake-readme-md"
 ---
 
-<a id="awesome-cmake"></a>
-# Awesome CMake [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome CMake
 
-[<img src="https://rawgit.com/onqtam/awesome-cmake/master/cmake-logo.svg" align="right" width="100">](https://cmake.org/)
+CMakeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
-> 優れた [CMake](https://cmake.org/) スクリプト、モジュール、サンプルなどを厳選したリストです。
-
-貢献を歓迎します。最初に [CONTRIBUTING.md](https://github.com/onqtam/awesome-cmake/blob/40dfb5e378c52cba5710e8041a70c7bca91d883e/CONTRIBUTING.md) を確認してください。
-
-別ファイルの [`NonModernCMake.md`](https://github.com/onqtam/awesome-cmake/blob/40dfb5e378c52cba5710e8041a70c7bca91d883e/NonModernCMake.md) にも参考になるリンクがありますが、`target_*` ベースの依存関係管理を使わないなど、現代的ではない旧来の手法を扱っています。詳細は [`#16`](https://github.com/onqtam/awesome-cmake/issues/16) と [`#42`](https://github.com/onqtam/awesome-cmake/pull/42) を参照してください。
-
-<a id="contents"></a>
 ## 目次
 
 - [コミュニティ](#community)

@@ -1,18 +1,12 @@
 ---
-title: "francoism90/awesome-kde"
-description: "Canonical snapshot of francoism90/awesome-kde"
+title: "Awesome KDE"
+description: "A curated collection of resources and projects focused on KDE."
 licenseSource: "github-francoism90-awesome-kde-readme-md"
 ---
 
-# Awesome KDE [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome KDE
 
-[<img src="media/logo-kde-grey.svg" align="right" width="144">](http://www.kde.org)
-
-> A curated list of _awesome_ apps, extensions, modules, themes and tools for the KDE Desktop Environment.
-
-[KDE](https://kde.org/) is a free software community dedicated to creating an open and user-friendly computing experience, offering an advanced graphical desktop, a wide variety of applications for communication, work, education and entertainment and a platform to easily build new applications upon.
-
-> Items marked with 📌 (pushpin) are projects hosted on KDE's own infrastructure and developed by the KDE community.
+A curated collection of resources and projects focused on KDE.
 
 ## Contents
 

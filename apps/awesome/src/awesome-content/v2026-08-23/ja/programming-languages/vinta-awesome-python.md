@@ -1,14 +1,12 @@
 ---
-title: "vinta/awesome-python"
-description: "Pythonのフレームワーク、ライブラリ、ツール、データ処理、学習資料集"
+title: "Awesome Python"
+description: "Pythonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vinta-awesome-python-readme-md"
 ---
 
-# [Awesome Python](https://awesome-python.com/)
+# Awesome Python
 
-Pythonの最も優れたフレームワーク、ライブラリ、ツールについての主張を含むガイド
-
-**[website](https://awesome-python.com/)にアクセスして、プロジェクトをより簡単に検索およびフィルタリングできます。**
+Pythonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## **Sponsors**
 

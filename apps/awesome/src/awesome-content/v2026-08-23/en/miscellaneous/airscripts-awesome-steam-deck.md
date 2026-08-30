@@ -1,32 +1,12 @@
 ---
-title: "airscripts/awesome-steam-deck"
-description: "Canonical snapshot of airscripts/awesome-steam-deck"
+title: "Awesome Steam Deck"
+description: "A curated collection of resources and projects focused on Steam Deck."
 licenseSource: "github-airscripts-awesome-steam-deck-readme-md"
 ---
 
-# Awesome Steam Deck [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-<h3 align="center">
-  <a href="https://ghio.airscript.it/awesome-steam-deck/" target="_blank" rel="noopener noreferrer">
-    <img src="https://raw.githubusercontent.com/airscripts/awesome-steam-deck/main/assets/images/steam-deck-logo.svg" width="64" alt="Logo"/><br/>
-  </a>
-</h3>
+# Awesome Steam Deck
 
-> A curated list of awesome Steam Deck software, resources and more.  
-
-[Steam Deck](https://en.wikipedia.org/wiki/Steam_Deck) is a handheld gaming computer made by Valve.
-
-Contributions and suggestions about how to improve this project are welcome!  
-Please follow [our contribution guidelines](https://github.com/airscripts/awesome-steam-deck/blob/main/CONTRIBUTING.md).
-
-If you want to support my work you can do it following me, leaving a star, sharing my projects or also donating at the links below.  
-Choose what you find more suitable for you:  
-
-<a href="https://sponsor.airscript.it" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/airscripts/assets/main/images/github-sponsors.svg" alt="GitHub Sponsors" width="30px" />
-</a>&nbsp;
-<a href="https://kofi.airscript.it" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/airscripts/assets/main/images/kofi.svg" alt="Kofi" width="30px" />
-</a>
+A curated collection of resources and projects focused on Steam Deck.
 
 ## Contents
 - [Guide](#guide)

@@ -1,28 +1,12 @@
 ---
-title: "joewdavies/awesome-frontend-gis"
-description: "Canonical snapshot of joewdavies/awesome-frontend-gis"
+title: "Awesome Frontend Gis"
+description: "A curated collection of resources and projects focused on Frontend Gis."
 licenseSource: "github-joewdavies-awesome-frontend-gis-readme-md"
 ---
 
+# Awesome Frontend Gis
 
-<div align='center'>
-<h2>Awesome Frontend GIS   <a href='https://github.com/sindresorhus/awesome'>
-    <img src='https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg' alt='Awesome' href='https://github.com/sindresorhus/awesome'>
-  </a></h2>
-
- Geographic Information Systems (GIS) for web browsers. <br>
- For managing, analyzing, editing, and visualizing geographic data.
-  
-<div>
-    <a href='https://github.com/eurostat/gridviz' target='_blank'>
-        <img src='./images/awesome-fronted-gis-banner.png'>
-    </a>
-</div>
-
- *A compilation of geospatial-related web frameworks, tools, demos, applications, data sources and more.*
- 
-</div>
-
+A curated collection of resources and projects focused on Frontend Gis.
 
 ## Contents
 - [👨‍💻 JavaScript Libraries](#-javascript-libraries)

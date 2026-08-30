@@ -1,13 +1,12 @@
 ---
-title: "fliptheweb/motion-ui-design"
-description: "Canonical snapshot of fliptheweb/motion-ui-design"
+title: "Awesome Motion UI Design"
+description: "A curated collection of resources and projects focused on Motion UI Design."
 licenseSource: "github-fliptheweb-motion-ui-design-readme-md"
 ---
 
-# Motion UI Design [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-What is motion design? It's the magic that brings your interfaces to life and makes UI changes feel natural.
-A curated collection of resources, software, libraries, videos and articles related to motion UI design, UI animations and transitions.
-Feel free to [add something interesting](https://github.com/fliptheweb/motion-ui-design/blob/63cf4e93d0407d54b7f965b2de87c6e01449812c/contributing.md) (todo inside) by pull request!
+# Awesome Motion UI Design
+
+A curated collection of resources and projects focused on Motion UI Design.
 
 ## Contents
 - [Resources for inspiration](#resources-for-inspiration)

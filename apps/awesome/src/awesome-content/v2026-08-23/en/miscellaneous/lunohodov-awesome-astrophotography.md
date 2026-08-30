@@ -1,14 +1,12 @@
 ---
-title: "lunohodov/awesome-astrophotography"
-description: "Canonical snapshot of lunohodov/awesome-astrophotography"
+title: "Awesome Astrophotography"
+description: "A curated collection of resources and projects focused on Astrophotography."
 licenseSource: "github-lunohodov-awesome-astrophotography-readme-md"
 ---
 
-# Awesome Astrophotography [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Astrophotography
 
-[Astrophotography](https://en.wikipedia.org/wiki/Astrophotography), also known as astronomical imaging, is the photography or imaging of astronomical objects, celestial events, or areas of the night sky.
-
-Contributions are welcome. Please read the [contributing guideline](https://github.com/lunohodov/awesome-astrophotography/blob/0a2e55658c585b69133411ba5a48c7f42ad877fd/CONTRIBUTING.md) if you wish to contribute.
+A curated collection of resources and projects focused on Astrophotography.
 
 ## Contents
 
@@ -197,4 +195,3 @@ Contributions are welcome. Please read the [contributing guideline](https://gith
 - [Astrobin](https://www.astrobin.com) - Social image hosting dedicated to astrophotography.
 - [Cloudy Nights](https://www.cloudynights.com) - Arguably the largest community forums.
 - [Stargazers Lounge](https://stargazerslounge.com) - Small but active UK community forums.
-

@@ -1,14 +1,12 @@
 ---
-title: "desiderantes/awesome-vala"
-description: "desiderantes/awesome-vala の日本語訳（人手レビュー前）"
+title: "Awesome Vala"
+description: "Valaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-desiderantes-awesome-vala-readme-md"
 ---
 
-# Awesome Vala [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Vala
 
-[<img src="vala.svg" align="right" width="100">](https://vala.dev)
-
-[Vala](https://vala.dev/)向けのリソースを集めたリスト。Valaは、GLibとGObjectを活用して追加のランタイム要件を課すことなく、モダンな高水準抽象化を用いるプログラミング言語です。
+Valaを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

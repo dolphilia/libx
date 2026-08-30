@@ -1,18 +1,12 @@
 ---
-title: "secdev/awesome-scapy"
-description: "Canonical snapshot of secdev/awesome-scapy"
+title: "Awesome Scapy"
+description: "A curated collection of resources and projects focused on Scapy."
 licenseSource: "github-secdev-awesome-scapy-readme-md"
 ---
 
-# Awesome Scapy [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-<p align="center">
-  <a href="https://scapy.net/"><img src="https://github.com/secdev/scapy/blob/master/doc/scapy_logo.png" width="200" alt="Scapy" /></a>
-</p>
+# Awesome Scapy
 
-A curated list of tools, add-ons, articles or cool exploits using **[Scapy](https://scapy.net)**, the Python-based interactive packet manipulation program & library.
-Feel free to [contribute](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsecdev%2Fawesome-scapy%2Fedit%2Fmain%2FREADME.md)!
-
-You can also [explore Scapy topics](https://github.com/topics/scapy) on GitHub!
+A curated collection of resources and projects focused on Scapy.
 
 ## Contents
 

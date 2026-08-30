@@ -1,14 +1,12 @@
 ---
-title: "NARKOZ/guides"
-description: "Canonical snapshot of NARKOZ/guides"
+title: "Awesome Guides"
+description: "A curated collection of resources and projects focused on Guides."
 licenseSource: "github-NARKOZ-guides-readme-md"
 ---
 
-# Guides
+# Awesome Guides
 
-Guides for programmers who want to be awesome.
-The intent of this repository is to collect and distribute links to useful
-coding style guides and development practices across the web.
+A curated collection of resources and projects focused on Guides.
 
 ## Contents
 

@@ -1,14 +1,12 @@
 ---
-title: "standard/awesome-standard"
-description: "Canonical snapshot of standard/awesome-standard"
+title: "Awesome Standard"
+description: "A curated collection of resources and projects focused on Standard."
 licenseSource: "github-standard-awesome-standard-readme-md"
 ---
 
-# Awesome Standard [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Standard
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
-Documenting the explosion of packages in the [`standard`](https://github.com/feross/standard) ecosystem!
+A curated collection of resources and projects focused on Standard.
 
 ## standard
 

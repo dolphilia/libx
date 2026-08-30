@@ -1,16 +1,12 @@
 ---
-title: "karlhorky/learn-to-program"
-description: "初級から上級までのプログラミング・Web開発学習資料を、料金体系と主題付きでまとめた定本スナップショット"
+title: "Awesome Learn to Program"
+description: "Learn to Programを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-karlhorky-learn-to-program-readme-md"
 ---
 
-# プログラミングを学ぶ <a id="learn-to-program"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Learn to Program
 
-#### Web開発の基礎 <a id="foundation-in-web-development"></a>
-
-インターネットには、あらゆる習熟度のプログラマーが技能を高めるためのコース、書籍、ガイドが増え続けています。残念ながら、それらの資料は見つけにくいか、品質が低い場合があります。
-
-このリストは、高品質な教育資料を厳選してまとめることを目的としています。プラットフォーム上で無料コンテンツを利用できるかどうかと、主に扱うトピックを明記しています。
+Learn to Programを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 初級 <a id="beginner"></a>
 

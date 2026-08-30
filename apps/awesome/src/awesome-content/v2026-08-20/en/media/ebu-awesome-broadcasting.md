@@ -1,43 +1,12 @@
 ---
-title: "ebu/awesome-broadcasting"
-description: "Canonical snapshot of ebu/awesome-broadcasting"
+title: "Awesome Broadcasting"
+description: "A curated collection of resources and projects focused on Broadcasting."
 licenseSource: "github-ebu-awesome-broadcasting-readme-md"
 ---
 
-# Awesome Broadcasting [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-A curated list of amazingly awesome open source resources for broadcasters.
+# Awesome Broadcasting
 
-* [Awesome Broadcasting](#awesome-broadcasting-)
-  * [Animation, Graphics & Video Playout](#animation-graphics--video-playout)
-  * [Clocks & Studio Screens](#clocks--studio-screens)
-  * [Codecs](#codecs)
-  * [Communication](#communication)
-  * [Companion Screens](#companion-screens)
-  * [Connected TVs](#connected-tvs)
-  * [Control Systems](#control-systems)
-  * [Distributed Media Processing](#distributed-media-processing)
-  * [Documentation](#documentation)
-  * [DVB & WiFi](#dvb--wifi)
-  * [Hybrid Radio](#hybrid-radio)
-  * [LiveIP](#liveip)
-  * [Media Players](#media-players)
-  * [Metadata](#metadata)
-  * [Monitoring & Quality Control](#monitoring--quality-control)
-  * [Multimedia content processing](#multimedia-content-processing)
-  * [Network & Storage Testing](#network--storage-testing)
-  * [NMOS](#nmos)
-  * [Podcasting](#podcasting)
-  * [Radio Production](#radio-production)
-  * [Rundown Automation](#rundown-automation)
-  * [SCTE-35 & SCTE-104](#scte-35--scte-104)
-  * [Software-defined radio](#software-defined-radio)
-  * [Streaming](#streaming)
-  * [Subtitling](#subtitling)
-  * [Video Production](#video-production)
-* [Resources](#resources)
-  * [Blogs](#blogs)
-  * [Websites](#websites)
-* [Contributing](#contributing)
+A curated collection of resources and projects focused on Broadcasting.
 
 ## Animation, Graphics & Video Playout
 

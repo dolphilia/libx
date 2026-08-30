@@ -1,24 +1,12 @@
 ---
-title: "vhladiienko/awesome-game-production"
-description: "vhladiienko/awesome-game-production の日本語定本スナップショット"
+title: "Awesome Game Production"
+description: "Game Productionを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vhladiienko-awesome-game-production-readme-md"
 ---
 
-# Awesome Game Production [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Game Production
 
-[![Awesome Game Production](https://github.com/vhladiienko/awesome-game-production/blob/11832b9db8a13417fa62a5b249942a640bf8d8e4/media/awesome_game_production.jpg)](https://github.com/vhladiienko/awesome-game-production)
-
-> ゲームプロデューサーがゲームをリリースする助けとなる、ゲーム制作プロセスに関する**素晴らしい**リソース（書籍、記事、ツール、プロジェクト管理、方法論）の厳選リスト。
-
-[Video game development](https://en.wikipedia.org/wiki/Video_game_development)（ゲーム開発、または制作）は、必ずしも専門職や雇用された人に限らず、個人または開発者チームがビデオゲームを開発するプロセスです。このリストは、さまざまな形でゲーム制作プロセスを管理・指揮する人、すなわち[ゲームプロデューサー](https://en.wikipedia.org/wiki/Video_game_producer)の役割に焦点を当てています。そのためリスト名も短くしています。
-
-このリストはゲームデザイン、品質保証、プログラミングのような個別分野を扱いません。その他のゲーム開発関連は「master」awesomeリストの[Gaming section](https://github.com/sindresorhus/awesome#gaming)を参照してください。
-
-掲載リソースの大半は英語ですが、[pull requestを作成](https://github.com/vhladiienko/awesome-game-production/blob/main/contributing.md)して協力いただければ、ほかの言語の項目も含めるかもしれません。リンク横の国旗を確認してください。
-
-- 🔥 - 素晴らしさが9000超：非常に実践的で使いやすい
-- 🎓 - 完全な基礎
-- 🤯 - 理解が難しい可能性がある複雑なトピック
+Game Productionを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 
 - [📚 Books](#-books)

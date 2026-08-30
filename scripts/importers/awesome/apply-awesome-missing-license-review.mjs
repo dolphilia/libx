@@ -1,11 +1,6 @@
 #!/usr/bin/env node
 import path from 'node:path';
-import {
-  notesDir,
-  readJson,
-  reproducibleLicenseIds,
-  writeJsonAtomic,
-} from './common.mjs';
+import { notesDir, readJson, reproducibleLicenseIds, writeJsonAtomic } from './common.mjs';
 
 const apply = process.argv.includes('--apply');
 const auditPath = path.join(notesDir, 'AWESOME_MISSING_LICENSE_EVIDENCE_AUDIT.json');

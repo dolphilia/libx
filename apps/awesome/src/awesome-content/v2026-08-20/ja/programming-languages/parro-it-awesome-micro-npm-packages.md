@@ -1,15 +1,12 @@
 ---
-title: "parro-it/awesome-micro-npm-packages"
-description: "parro-it/awesome-micro-npm-packages の正規スナップショット"
+title: "Awesome Micro npm Packages"
+description: "Micro npm Packagesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-parro-it-awesome-micro-npm-packages-readme-md"
 ---
 
-# Awesome Micro npm Packages [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Micro npm Packages
 
-> 小さく焦点を絞ったNode.jsモジュールのキュレーションリスト。
-
-*[awesome](https://github.com/sindresorhus/awesome)リストに着想を得たものです。*
-
+Micro npm Packagesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 記事
 

@@ -1,39 +1,13 @@
 ---
-title: "sitepoint-editors/awesome-symfony"
-description: "Symfonyのバンドル、ユーティリティ、資料を集めた厳選リスト"
+title: "Awesome Symfony"
+description: "Symfonyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sitepoint-editors-awesome-symfony-readme-md"
 ---
 
-<a id="awesome-symfony"></a>
-# Awesome Symfony [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-優れた[Symfony](http://symfony.com)バンドル、ユーティリティ、資料のリストです。
+# Awesome Symfony
 
-目次:
+Symfonyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-* [Administration](#administration)
-* [Certification](#certification)
-* [Community](#community)
-* [Development](#development)
-* [Distributions](#distributions)
-* [Ecommerce](#ecommerce)
-* [Forms](#forms)
-* [Internationalization](#internationalization)
-* [Miscellaneous](#miscellaneous)
-* [Monitoring](#monitoring)
-* [Payments Management](#payments-management)
-* [Queues](#queues)
-* [Reading](#reading)
-* [Recipes](#recipes)
-* [Resources](#resources)
-* [Service Container](#service-container)
-* [Storage](#storage)
-* [Template Engine](#template-engine)
-* [Third Party APIs](#third-party-apis)
-* [User Management](#user-management)
-* [Validation](#validation)
-* [Web Services](#web-services)
-
-<a id="administration"></a>
 ## 管理
 
 * [AdminCrudBundle](https://github.com/MWSimple/AdminCrudBundle) - AdminCrudBundle - SensioGeneratorBundleを使用。コントローラを拡張し、ページネーター、フィルター、その他機能を追加。

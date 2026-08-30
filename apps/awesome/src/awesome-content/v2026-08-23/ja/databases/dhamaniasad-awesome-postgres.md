@@ -1,18 +1,12 @@
 ---
-title: "dhamaniasad/awesome-postgres"
-description: "PostgreSQLの運用、開発ツール、拡張機能、学習資料をまとめた定本スナップショット"
+title: "Awesome Postgres"
+description: "Postgresを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dhamaniasad-awesome-postgres-readme-md"
 ---
 
-# PostgreSQL Awesome リスト [![awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Postgres
 
-[<img src="https://wiki.postgresql.org/images/a/a4/PostgreSQL_logo.3colors.svg" align="right"  width="100">](https://www.postgresql.org/)
-
-> [PostgreSQL](https://www.postgresql.org/)の優れたソフトウェア、ライブラリ、ツール、資料を、[awesome-mysql](http://shlomi-noach.github.io/awesome-mysql/)にならって厳選したリストです。
-
-[PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)（単にPostgresとも呼ばれる）は、[オブジェクト関係データベース](https://en.wikipedia.org/wiki/Object-relational_database)（ORDBMS）です。[ACID準拠](https://en.wikipedia.org/wiki/ACID)で[トランザクション](https://en.wikipedia.org/wiki/Transaction_processing)をサポートします（詳細: [Wikipedia: PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)、[PostgreSQL.org](https://www.postgresql.org)）。
-
- :elephant: 貢献を歓迎します。[プルリクエスト](https://github.com/dhamaniasad/awesome-postgres/pulls)でリンクを追加するか、[Issue](https://github.com/dhamaniasad/awesome-postgres/issues)を作成して議論を始めてください。[貢献ガイドライン](https://github.com/dhamaniasad/awesome-postgres/blob/ef88d7b7b11e980c472e26e4c8562b5bb4473086/CONTRIBUTING.md)も確認してください。
+Postgresを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

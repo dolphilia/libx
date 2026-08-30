@@ -1,18 +1,13 @@
 ---
-title: "Friz-zy/awesome-linux-containers"
-description: "Friz-zy/awesome-linux-containers の正規スナップショット"
+title: "Awesome Linux Containers"
+description: "Linux Containersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Friz-zy-awesome-linux-containers-readme-md"
 ---
 
-<a id="awesome-linux-containers"></a>
 # Awesome Linux Containers
 
-[![#StandWithBelarus](https://img.shields.io/badge/Belarus-red?label=%23%20Stand%20With&labelColor=white&color=red)
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Presidential_Standard_of_Belarus_%28fictional%29.svg/240px-Presidential_Standard_of_Belarus_%28fictional%29.svg.png" width="20" height="20" alt="Voices From Belarus" />](https://bysol.org/en/) [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://vshymanskyy.github.io/StandWithUkraine)
+Linux Containersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-<a id="table-of-contents"></a>
 ## 目次
 
 * [作者について](#About-the-Author)

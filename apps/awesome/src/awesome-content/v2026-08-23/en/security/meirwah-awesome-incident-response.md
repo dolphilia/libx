@@ -1,14 +1,12 @@
 ---
-title: "meirwah/awesome-incident-response"
-description: "Canonical snapshot of meirwah/awesome-incident-response"
+title: "Awesome Incident Response"
+description: "A curated collection of resources and projects focused on Incident Response."
 licenseSource: "github-meirwah-awesome-incident-response-readme-md"
 ---
 
-# Awesome Incident Response [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Check URLs](https://github.com/meirwah/awesome-incident-response/actions/workflows/check_urls.yml/badge.svg)](https://github.com/meirwah/awesome-incident-response/actions/workflows/check_urls.yml)
+# Awesome Incident Response
 
-> A curated list of tools and resources for security incident response, aimed to help security analysts and [DFIR](http://www.acronymfinder.com/Digital-Forensics%2c-Incident-Response-%28DFIR%29.html) teams.
-
-Digital Forensics and Incident Response (DFIR) teams are groups of people in an organization responsible for managing the response to a security incident, including gathering evidence of the incident, remediating its effects, and implementing controls to prevent the incident from recurring in the future.
+A curated collection of resources and projects focused on Incident Response.
 
 ## Contents
 

@@ -1,13 +1,12 @@
 ---
-title: "deanhume/typography"
-description: "Canonical snapshot of deanhume/typography"
+title: "Awesome Web Typography"
+description: "A curated collection of resources and projects focused on Web Typography."
 licenseSource: "github-deanhume-typography-readme-md"
 ---
 
-# Awesome Web Typography [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Web Typography
 
-
-A curated collection of awesome web typography articles.
+A curated collection of resources and projects focused on Web Typography.
 
 ## Articles
 

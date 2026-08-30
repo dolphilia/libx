@@ -1,19 +1,12 @@
 ---
-title: "folkswhocode/awesome-diversity"
-description: "Canonical snapshot of folkswhocode/awesome-diversity"
+title: "Awesome Diversity"
+description: "A curated collection of resources and projects focused on Diversity."
 licenseSource: "github-folkswhocode-awesome-diversity-readme-md"
 ---
 
-# Awesome Diversity 
+# Awesome Diversity
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Mencionado en Comunidad Tecnológica](https://github.com/comunidad-tecnologica/comunidad-tecnologica/blob/master/img/comunidad-tecnologica.svg)](https://github.com/comunidad-tecnologica/comunidad-tecnologica)
-
-:sparkles: A curated list of amazingly awesome articles, websites and resources about diversity in technology. :sparkles:
-
-This list contains a variety of resources on diversity, more specifically diversity in tech, including posts, talks, actionable resources, conferences, social media advocates and more. The goal of the list is to provide quick access to information on diversity to tech companies and communities that are willing to do better in their everyday actions to make the tech industry a more inclusive place, and to individuals that look for further reading on topics that might interest them about diversity and equity in the tech field.
-
-**Always work in progress.**
+A curated collection of resources and projects focused on Diversity.
 
 ## Contents
 

@@ -1,14 +1,12 @@
 ---
-title: "agarrharr/awesome-macos-screensavers"
-description: "Canonical snapshot of agarrharr/awesome-macos-screensavers"
+title: "Awesome macOS Screensavers"
+description: "A curated collection of resources and projects focused on macOS Screensavers."
 licenseSource: "github-agarrharr-awesome-macos-screensavers-readme-md"
 ---
 
-# Awesome macOS Screensavers [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome macOS Screensavers
 
-> A curated list of screensavers for macOS.
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
+A curated collection of resources and projects focused on macOS Screensavers.
 
 ## Table of Contents
 

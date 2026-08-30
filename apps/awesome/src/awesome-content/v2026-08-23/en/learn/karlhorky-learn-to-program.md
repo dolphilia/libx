@@ -1,16 +1,12 @@
 ---
-title: "karlhorky/learn-to-program"
-description: "Canonical snapshot of karlhorky/learn-to-program"
+title: "Awesome Learn to Program"
+description: "A curated collection of resources and projects focused on Learn to Program."
 licenseSource: "github-karlhorky-learn-to-program-readme-md"
 ---
 
-# Learn to Program [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Learn to Program
 
-#### Foundation in Web Development
-
-The Internet is filled with an ever-expanding number of courses, books and guides for programmers of all skill levels to improve their skills. Unfortunately, these resources are either hard to find or of low quality.
-
-This list aims to be a curated set of high quality educational resources. The availability of free content on the platform is highlighted along with the primary topics covered.
+A curated collection of resources and projects focused on Learn to Program.
 
 ## Beginner
 

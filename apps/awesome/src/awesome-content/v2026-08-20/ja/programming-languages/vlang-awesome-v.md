@@ -1,18 +1,12 @@
 ---
-title: "vlang/awesome-v"
-description: "V言語のアプリケーション、ライブラリ、開発ツール、学習資料を分類した定本スナップショット"
+title: "Awesome V"
+description: "Vを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vlang-awesome-v-readme-md"
 ---
 
+# Awesome V
 
-
-<p align="center"><img src="media/awesome-v-logo.svg" width="400"/></p>
-
-# V言語のAwesomeリスト <a id="awesome-v"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Discord](https://img.shields.io/discord/1527933660764831825?label=Discord&logo=discord&logoColor=white)](https://discord.gg/vlang)
-
-> V言語の優れたフレームワーク、ライブラリ、ソフトウェア、資料を厳選したリストです。
-
-[V](https://vlang.io/)は、保守しやすいソフトウェアを開発するための、簡潔で高速かつ安全なコンパイル言語です。
+Vを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

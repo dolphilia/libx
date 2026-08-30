@@ -1,22 +1,12 @@
 ---
-title: "mcauser/awesome-micropython"
-description: "Canonical snapshot of mcauser/awesome-micropython"
+title: "Awesome Micropython"
+description: "A curated collection of resources and projects focused on Micropython."
 licenseSource: "github-mcauser-awesome-micropython-readme-md"
 ---
 
-<p align="center">
-  <a href="https://awesome-micropython.com/" style="display:block"><img src="https://raw.githubusercontent.com/mcauser/awesome-micropython/master/docs/img/logo.svg"></a>
-</p>
-<p align="center">
-  <a href="https://awesome.re">
-    <img alt="Awesome" src="https://awesome.re/badge-flat.svg">
-  </a>
-</p>
-<hr>
+# Awesome Micropython
 
-A curated list of awesome MicroPython libraries, frameworks, software and resources.
-
-[MicroPython](https://micropython.org/) is a lean and efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments.
+A curated collection of resources and projects focused on Micropython.
 
 ## Contents
 

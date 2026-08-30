@@ -1,23 +1,12 @@
 ---
-title: "szenergy/awesome-lidar"
-description: "Canonical snapshot of szenergy/awesome-lidar"
+title: "Awesome LIDAR"
+description: "A curated collection of resources and projects focused on LIDAR."
 licenseSource: "github-szenergy-awesome-lidar-readme-md"
 ---
 
-# Awesome LIDAR [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome LIDAR
 
-<img src="img/lidar02.svg" align="right" width="200" alt="LIDAR" />
-
-> A curated list of awesome LIDAR sensors and its applications.
-
-[LIDAR](https://en.wikipedia.org/wiki/Lidar) is a remote sensing sensor that uses laser light to measure the surroundings in ~cm accuracy. The sensory data is usually referred as point cloud which means set of data points in 3D or 2D. The list contains hardwares, datasets, point cloud-processing algorithms, point cloud frameworks, simulators etc.
-
-Contributions are welcome! Please [check out](https://github.com/szenergy/awesome-lidar/blob/35b8c40694f878a1710d3a1fecee7cbd73917301/contributing.md) our guidelines.
-
-> **TIP:**
-> An optional view: [szenergy.github.io/awesome-lidar](https://szenergy.github.io/awesome-lidar/) 
->
-> Source code: [github.com/szenergy/awesome-lidar](https://github.com/szenergy/awesome-lidar)
+A curated collection of resources and projects focused on LIDAR.
 
 ## Contents
 

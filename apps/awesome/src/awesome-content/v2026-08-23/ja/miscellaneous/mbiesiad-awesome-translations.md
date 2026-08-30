@@ -1,14 +1,12 @@
 ---
-title: "mbiesiad/awesome-translations"
-description: "mbiesiad/awesome-translations の正規スナップショット"
+title: "Awesome Translations"
+description: "Translationsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mbiesiad-awesome-translations-readme-md"
 ---
 
-# Awesome Translations [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Translations
 
-> ある言語のテキストの意味を別の言語へ移すこと。
-
-このリストは、翻訳に関するツール、書籍、記事、ブログ、コースなどを含みます（[t9n](https://en.wikipedia.org/wiki/Translation) - 翻訳、[l10n](https://en.wikipedia.org/wiki/Language_localisation) - ローカライゼーション、[g11n](https://en.wikipedia.org/wiki/Language_localisation#Globalisation_versus_localisation) - グローバリゼーション、[m17n](https://www.definify.com/word/multilingualization#:~:text=Noun,into%2C%20or%20for%20multiple%20languages) - 多言語化、[i18n](https://en.wikipedia.org/wiki/Language_localisation#Globalisation_versus_localisation) - 国際化、グローバリゼーションの同義語）。
+Translationsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

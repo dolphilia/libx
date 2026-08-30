@@ -1,16 +1,12 @@
 ---
-title: "naimo84/awesome-nodered"
-description: "naimo84/awesome-nodered の定本スナップショット"
+title: "Awesome Node-RED"
+description: "Node-REDを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-naimo84-awesome-nodered-readme-md"
 ---
 
-# Awesome Node-RED [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) <a href="https://nodered.org/"><img src="https://nodered.org/about/resources/media/node-red-hexagon.png" width="200" align="right" alt="Node-RED"></a>
+# Awesome Node-RED
 
-> Node-RED 向けの有用なリソースを集めたキュレーションリスト。
-
-[Node-RED](https://nodered.org/) は、ハードウェアデバイス、API、オンラインサービスを新しく興味深い方法でつなぐためのプログラミングツールです。
-
-ブラウザーベースのエディターを提供し、パレット内の豊富なノードを使ったフローの接続と、ワンクリックでのランタイムへのデプロイを容易にします。
+Node-REDを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -251,4 +247,3 @@ licenseSource: "github-naimo84-awesome-nodered-readme-md"
 ## 貢献
 
 貢献を歓迎します。まず [contribution guidelines](https://github.com/naimo84/awesome-nodered/blob/b3cc9962da3b212e0a4daa39b4f48ad0b4b4f2f4/contributing.md) をお読みください。
-

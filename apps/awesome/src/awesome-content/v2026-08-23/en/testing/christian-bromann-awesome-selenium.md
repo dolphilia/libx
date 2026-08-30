@@ -1,14 +1,12 @@
 ---
-title: "christian-bromann/awesome-selenium"
-description: "Canonical snapshot of christian-bromann/awesome-selenium"
+title: "Awesome Selenium"
+description: "A curated collection of resources and projects focused on Selenium."
 licenseSource: "github-christian-bromann-awesome-selenium-readme-md"
 ---
 
-# Awesome Selenium [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Test Awesome List](https://github.com/christian-bromann/awesome-selenium/actions/workflows/test.yaml/badge.svg)](https://github.com/christian-bromann/awesome-selenium/actions/workflows/test.yaml)
+# Awesome Selenium
 
-> A curated list of delightful [Selenium](http://www.seleniumhq.org/) [resources](#resources).
-
-Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
+A curated collection of resources and projects focused on Selenium.
 
 ## Resources
 

@@ -1,33 +1,12 @@
 ---
-title: "henrikwirth/awesome-wordpress-gatsby"
-description: "henrikwirth/awesome-wordpress-gatsby の正規スナップショット"
+title: "Awesome Wordpress Gatsby"
+description: "Wordpress Gatsbyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-henrikwirth-awesome-wordpress-gatsby-readme-md"
 ---
 
-<div align="center">
-  <br /><br />
-  <a href="https://awesome.re"><img src="https://awesome.re/badge-flat.svg" /></a>
-  <br /><br /><br />
-  <a href="https://wordpress.org/"><img width="150" height="150" align="center" src="media/wordpress-logo.svg" alt="WordPress"></a>
-      <a href="https://www.gatsbyjs.org/"><img width="150" height="150" align="center" src="media/gatsby-logo.svg" alt="Gatsby"></a>
-  <br /><br />
-  <p>
-    <b>
-      静的サイトジェネレーター（SSG）としてGatsbyを使うヘッドレスCMSとしてのWordPressに関するリソースのキュレーションリスト。
-    </b>
-  </p>
-  <br />
-</div>
+# Awesome Wordpress Gatsby
 
-**ヘッドレスCMS**は、バックエンドのみのコンテンツ管理システム（CMS）です。その目的は、コンテンツを提供し、API（例: RESTまたはGraphQL）経由でアクセス可能にすることです。
-
-**静的サイトジェネレーター（SSG）**は、静的Webサイト（HTML/CSS/JS）の生成を支援するフレームワークまたはセットアップです。データソースはローカルファイル（例: テキストファイルまたはMarkdown）からAPI（例: REST、GraphQL）まで、何でも構いません。
-
-<br />
-
-**なぜGatsbyとWordPressなのか？**
-
-WordPressは、**世界で最も利用されているCMSの一つ**であり、多くの人がすでにその使い方を知っています。PHPベースのテンプレートを使う典型的なフロントエンドのアプローチは、パフォーマンスが重要な環境ではますます問題になっています。JavaScriptを通じた通常のAPI呼び出しでWordPressをヘッドレスCMSとして使う方法はすでにありますが、サーバーへのリクエストとレスポンスに依存したレンダリングが必要という欠点もあります。これにより読み込み時間が増えます。一方**Gatsbyは、コンパイル時にサイト全体を事前レンダリング**するため、ユーザーは**最初のリクエストで完全に準備済みの静的サイトを受け取れ**、パフォーマンスにおける**最良のアプローチの一つ**になります。もう一つの大きな利点は**セキュリティ**です。WordPressインスタンスはローカルを含むどこにあってもよく、ユーザーへその一部を公開する必要はありません。**そのため静的Gatsbyサイトはハッキングされません。**長所と短所に関する追加の論拠は、下記リソースを参照してください。
+Wordpress Gatsbyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

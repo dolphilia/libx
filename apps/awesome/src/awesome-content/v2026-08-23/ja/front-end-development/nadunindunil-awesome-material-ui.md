@@ -1,16 +1,12 @@
 ---
-title: "nadunindunil/awesome-material-ui"
-description: "nadunindunil/awesome-material-ui の定本スナップショット"
+title: "Awesome Material-UI"
+description: "Material-UIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-nadunindunil-awesome-material-ui-readme-md"
 ---
 
-[<p align="center"><img src="https://github.com/nadunindunil/awesome-material-ui/blob/master/material-ui-logo.svg" height=300></p>](https://material-ui.com/)
+# Awesome Material-UI
 
-<h1 align="center">Awesome Material-UI</h1>
-
-[<p align="center"><img src="https://awesome.re/badge.svg" height=20></p>](https://github.com/sindresorhus/awesome)
-
-[Material-UI](https://material-ui.com/)は、より速く容易なウェブ開発のためのReactコンポーネントライブラリです。Googleの[Material Design](https://material.io/design/introduction/)に従います。
+Material-UIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

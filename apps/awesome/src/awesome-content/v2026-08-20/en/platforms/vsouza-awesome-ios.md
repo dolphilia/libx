@@ -1,27 +1,12 @@
 ---
-title: "vsouza/awesome-ios"
-description: "Canonical snapshot of vsouza/awesome-ios"
+title: "Awesome iOS"
+description: "A curated collection of resources and projects focused on iOS."
 licenseSource: "github-vsouza-awesome-ios-readme-md"
 ---
 
-<div align="center">
-    <img src="https://github.com/vsouza/awesome-ios/blob/master/header.png?raw=true" alt="Awesome">
-    <br>
-    <p align="center">
-        <img alt="awesome" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" />
-        <a href="https://ko-fi.com/M4M3WPRD"><img width="110" alt="Buy  Me a Coffee" src="buy_me_a_coffee.png" /></a>
-    </p>
-    <a href="http://github.com/Doloffer-g/guide">
-        <img src="sponsor_banner.png" alt="Sponsor">
-    </a>
-</div>
+# Awesome iOS
 
-
-
-
-## Contributing and Collaborating
-
-Please see [CONTRIBUTING](https://github.com/vsouza/awesome-ios/blob/master/.github/CONTRIBUTING.md) and [CODE-OF-CONDUCT](https://github.com/vsouza/awesome-ios/blob/master/CODE_OF_CONDUCT.md) for details.
+A curated collection of resources and projects focused on iOS.
 
 ## Contents
 

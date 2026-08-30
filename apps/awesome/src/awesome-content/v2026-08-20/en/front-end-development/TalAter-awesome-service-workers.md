@@ -1,19 +1,12 @@
 ---
-title: "TalAter/awesome-service-workers"
-description: "Canonical snapshot of TalAter/awesome-service-workers"
+title: "Awesome Service Workers"
+description: "A curated collection of resources and projects focused on Service Workers."
 licenseSource: "github-TalAter-awesome-service-workers-readme-md"
 ---
 
-# Awesome Service Workers [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Service Workers
 
-A curated collection of service worker resources.
-
-<a href="https://pwabook.com/oreillyasw"><img align="right" src="https://github.com/TalAter/awesome-progressive-web-apps/raw/master/images/mpwa.png" alt="Building Progressive Web Apps"></a>
->Service workers are at the heart of every progressive web app. Their persistent nature allows progressive web apps to fulfill our expectations of what an app should do. They are the missing link between what only native apps could do and what modern progressive web apps can do.
->
-> -- <cite>[Building Progressive Web Apps - O'Reilly](https://pwabook.com/oreillyasw)</cite>
-
-If you want to contribute, please read the [contribution guidelines](https://github.com/TalAter/awesome-service-workers/blob/e84fb0dfa784e2ec8f68c2e6d1cfb718d70f9a5c/contributing.md).
+A curated collection of resources and projects focused on Service Workers.
 
 ## Contents
 

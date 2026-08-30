@@ -1,12 +1,12 @@
 ---
-title: "rtckit/awesome-rtc"
-description: "rtckit/awesome-rtc の日本語訳（人手レビュー前）"
+title: "Awesome Real Time Communications"
+description: "Real Time Communicationsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-rtckit-awesome-rtc-readme-md"
 ---
 
-# Awesome Real Time Communications [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Real Time Communications
 
-> メディアとデータをほぼ同時に交換するためのプロトコルと方法論。
+Real Time Communicationsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

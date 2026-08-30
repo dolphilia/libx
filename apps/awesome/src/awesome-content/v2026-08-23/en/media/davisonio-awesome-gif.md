@@ -1,14 +1,12 @@
 ---
-title: "davisonio/awesome-gif"
-description: "Canonical snapshot of davisonio/awesome-gif"
+title: "Awesome GIF"
+description: "A curated collection of resources and projects focused on GIF."
 licenseSource: "github-davisonio-awesome-gif-readme-md"
 ---
 
-# Awesome GIF [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome GIF
 
-> A curated list of awesome [GIF](https://en.wikipedia.org/wiki/GIF) resources.
-
-A list of tools, scripts, libraries, examples & other resources related to the Graphics Interchange Format (GIF).
+A curated collection of resources and projects focused on GIF.
 
 ## Contents
 

@@ -21,18 +21,8 @@ const historicalRoot = path.join(
   historicalVersion,
   'en'
 );
-const targetRoot = path.join(
-  rootDir,
-  'apps/awesome/src/awesome-content',
-  targetVersion,
-  'en'
-);
-const normalizedRoot = path.join(
-  tempRootDir,
-  'snapshots',
-  targetVersion,
-  '03-normalized'
-);
+const targetRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', targetVersion, 'en');
+const normalizedRoot = path.join(tempRootDir, 'snapshots', targetVersion, '03-normalized');
 const reportPath = path.join(notesRootDir, 'migration', 'RECONCILIATION_REPORT.json');
 
 const historicalLock = readJson(path.join(historicalNotes, 'SOURCES.lock.json'));

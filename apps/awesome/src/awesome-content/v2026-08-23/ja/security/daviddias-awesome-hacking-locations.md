@@ -1,13 +1,12 @@
 ---
-title: "daviddias/awesome-hacking-locations"
-description: "Wi-Fi・電源・営業時間を備えた作業場所を国・都市別に整理した定本スナップショット"
+title: "Awesome Hacking Locations"
+description: "Hacking Locationsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-daviddias-awesome-hacking-locations-readme-md"
 ---
 
-作業場所のAwesomeリスト <a id="awesome-hacking-spots-"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-===============================
+# Awesome Hacking Locations
 
-> 国・都市別に整理し、電源とWi-Fiの有無を掲載した優れた作業場所の一覧です。[awesome lists](https://github.com/sindresorhus/awesome)に着想を得ています。
+Hacking Locationsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 索引 <a id="index"></a>
 
@@ -1522,4 +1521,3 @@ open | ✔ | ✔ | [171 S Jackson St, Seattle, WA 98104](https://goo.gl/maps/SBz
 Wi-Fi | 電源 | コーヒー | 住所 | 営業時間
 ---- | ----- | ------ | ------- | ----------
 ask | ✔ | ✔ | [425 15th Ave E, Seattle, WA 98112](https://goo.gl/maps/2RFTNQaXynm) | Mon-Sun 8:00-22:00
-

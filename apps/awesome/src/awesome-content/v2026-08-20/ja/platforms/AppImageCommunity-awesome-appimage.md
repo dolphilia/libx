@@ -1,27 +1,12 @@
 ---
-title: "Awesome AppImage（厳選リスト）"
-description: "AppImage の厳選リスト"
+title: "Awesome AppImage"
+description: "AppImageを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-AppImageCommunity-awesome-appimage-readme-md"
 ---
 
+# Awesome AppImage
 
-
-<div align="center">
-	<div>
-		<img width="500" src="media/logo.svg" alt="Awesome AppImage">
-	</div>
-	<a href="https://awesome.re">
-		<!img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<p>
-		<sub>Lovingly crafted AppImage tools and resources. Follow me on <a href="https://twitter.com/probonopd">Twitter</a>.</sub>
-	</p>
-	<br>
-</div>
-
-# Awesome AppImage [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-[AppImage](https://appimage.org) is a community-based format to distribute applications to various mainstream Linux distributions without the need for a centralized store. One app = one file! This list contains tools to work with AppImages, such as to create AppImages for applications and to integrate AppImages into the system easily. As the vibrant community around AppImage is growing, so is this list.
+AppImageを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Contents
 
@@ -328,4 +313,3 @@ Although the AppImage format was carefully designed not to need any special supp
 - [AppImage-Integrator](https://github.com/w-j-r/AppImage-Integrator) - A simple program to integrate AppImages into the Linux desktop written in Qt6.
 - [Get AppImage](https://g.sreve/get-appimage/) - Collection of all AppImages in one website. Great search functionality.
 - [AppStream Generator](https://output.jsbin.com/qoqukof) - Very simple generator for AppStream MetaInfo files which application authors can use to add metadata (like descriptions, screenshots, links) to their AppImage.
-

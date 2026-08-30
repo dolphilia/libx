@@ -1,62 +1,13 @@
 ---
-title: "mailtoharshit/awesome-salesforce"
-description: "Salesforceアプリ開発に役立つツール、ライブラリ、学習資料の厳選リスト"
+title: "Awesome A Note on Repo AWSomeness"
+description: "A Note on Repo AWSomenessを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mailtoharshit-awesome-salesforce-readme-md"
 ---
 
+# Awesome A Note on Repo AWSomeness
 
-<img src="https://raw.githubusercontent.com/mailtoharshit/awesome-salesforce/master/src/Spring19Logo.gif" align="right" width="220" height="400">
+A Note on Repo AWSomenessを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-[![Join the chat at https://gitter.im/mailtoharshit/awesome-salesforce](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mailtoharshit/awesome-salesforce?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-
-
-> [Salesforce](https://login.salesforce.com/)アプリの開発に役立つ資料をまとめています。
-
-*[awesome](https://github.com/sindresorhus/awesome)リストのアイデアを受けて作られた。完全版の[awesome-list](https://github.com/sindresorhus/awesome)もぜひ読んでください。*
-
-
-<a id="what-is-awesome-salesforce-"></a>
-## Awesome Salesforceとは？
-[Sindre Sorhus](https://github.com/sindresorhus)が[GitHub](https://github.com/sindresorhus)で始めたAwesomeは、優れたリンクを一か所へ整理するプロジェクトです。その後、世界中の開発者が好きな技術に特化したAwesomeリストを作るようになりました。
-
-<a id="what-makes-for-an-awesome-list"></a>
-## 優れたAwesomeリストの条件
-[Awesomeマニフェスト](https://github.com/mailtoharshit/awesome-salesforce/blob/master/contributing.md)を読み、リストが要件に沿っていることを確認してください。
-
-<a id="the-fiery-meter-of-awsome"></a>
-## AWSome炎メーター
-
-* スター100以上のリポジトリ: :fire:
-* スター200以上のリポジトリ: :fire::fire:
-* スター500以上のリポジトリ: :fire::fire::fire:
-* Repo with 1000+ Stars: :fire::fire::fire::fire:
-* Repo with 2000+ Stars: :fire::fire::fire::fire::fire:
-
-`The Fiery Meter of AWSome`にないリポジトリでも、依然として素晴らしいことができます
-
-<a id="a-note-on-repo-awsomeness"></a>
-# リポジトリのAWSomenessに関する注意
-
-リストされている各リポジトリは、以下のいずれかの要件を満たしている必要があります。
-
-* コミュニティが作成し、スター100以上のリポジトリ
-* スター100未満でも、コミュニティが推薦するリポジトリ
-
-コミュニティリポジトリについて100個以上のスターが求められるわけではありません。これは初期の編集に用いるガイドラインに過ぎません。100個未満のスターのリポジトリであっても、その素晴らしさを証明でき、なぜリストにすべきか説明できる場合は、プルリクエストを提出してください。
-
-プルリクエストは、コミュニティの意見を聞き、そのリポジトリを認定できるようにするため、一定期間開かれることがあります。コミュニティが望む場合、 [aws](https://github.com/aws) または [awslabs](https://github.com/awslabs) の公式リポジトリは削除されます。 [awesome manifesto](https://github.com/sindresorhus/awesome/blob/master/awesome.md) をご確認ください。
-
-関連する素晴らしいページを参照 :
-   * [Awesome Lighting](https://github.com/mailtoharshit/awesome-lighting)
-   * [Awesome Articles](https://github.com/mailtoharshit/awesome-salesforce-articles)
-   * [Awesome Browser Extensions](https://github.com/mailtoharshit/awesome-browser-extensions-for-salesforce/blob/master/README.md)
-   * [Awesome Heroku](https://github.com/mailtoharshit/awesome-heroku)
-
-
-<a id="table-of-contents"></a>
 ## 目次
 * [Awesome Salesforce](#awesome-salesforce--)
   * [Salesforce Developer Free Edition Signup](#salesforce-developer-free-edition-signup)

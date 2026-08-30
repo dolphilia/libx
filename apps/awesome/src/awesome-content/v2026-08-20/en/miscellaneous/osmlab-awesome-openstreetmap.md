@@ -1,20 +1,12 @@
 ---
-title: "osmlab/awesome-openstreetmap"
-description: "Canonical snapshot of osmlab/awesome-openstreetmap"
+title: "Awesome OpenStreetMap"
+description: "A curated collection of resources and projects focused on OpenStreetMap. The upstream list is archived or no longer maintained."
 licenseSource: "github-osmlab-awesome-openstreetmap-readme-md"
 ---
 
-# Awesome OpenStreetMap [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome OpenStreetMap
 
-[<img src="osm-logo.svg" align="right" width="100">](https://www.openstreetmap.org/about)
-
-> A curated list of awesome [OpenStreetMap](https://www.openstreetmap.org)-projects.
-
-OpenStreetMap is an open map being used by millions of devices and users every day. It can both be edited and used by anyone free of charge.
-
-This list contains projects using OpenStreetMap data for creative purposes, as well as projects dedicated to improving OpenStreetMap.
-
-We also have a list of <a href="UNMAINTAINED.md">unmaintained projects</a>. If you are a developer, consider adopting one!
+A curated collection of resources and projects focused on OpenStreetMap. The upstream list is archived or no longer maintained.
 
 ## Contents
 

@@ -1,18 +1,12 @@
 ---
-title: "unicodeveloper/awesome-lumen"
-description: "unicodeveloper/awesome-lumen の正規スナップショット"
+title: "Awesome lumen"
+description: "lumenを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-unicodeveloper-awesome-lumen-readme-md"
 ---
 
-# Awesome lumen [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![](https://img.shields.io/badge/unicodeveloper-approved-brightgreen.svg)
+# Awesome lumen
 
-> Lumen（Laravel 製 PHP マイクロフレームワーク）の利用に関する書籍、動画、記事などのリソースを厳選したリスト
-
-*[awesome](https://github.com/sindresorhus/awesome) リストに着想を得ています。[awesome-tdd](https://github.com/unicodeveloper/awesome-tdd) もおすすめです。*
-
-*貢献する前に[貢献ガイドライン](#guidelines)をお読みください。*
-
-**私の[ブログ](https://goodheads.io)を読むか、[Twitter](https://twitter.com/unicodeveloper) で声をかけてください。**
+lumenを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

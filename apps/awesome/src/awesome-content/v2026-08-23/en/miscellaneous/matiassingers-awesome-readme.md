@@ -1,18 +1,12 @@
 ---
-title: "matiassingers/awesome-readme"
-description: "Canonical snapshot of matiassingers/awesome-readme"
+title: "Awesome README"
+description: "A curated collection of resources and projects focused on README."
 licenseSource: "github-matiassingers-awesome-readme-readme-md"
 ---
 
+# Awesome README
 
-
-# Awesome README [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
-> A curated list of awesome READMEs
-> <img src="https://raw.githubusercontent.com/matiassingers/awesome-readme/26c9685d963d90c38da4cf5e8a62a07b7c4b09c6/icon.png" align="right"/>
-
-Elements in beautiful READMEs include, but are not limited to:
-
-images, screenshots, GIFs, text formatting, etc.
+A curated collection of resources and projects focused on README.
 
 ## Examples
 

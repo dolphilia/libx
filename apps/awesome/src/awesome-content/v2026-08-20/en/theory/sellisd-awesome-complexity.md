@@ -1,15 +1,12 @@
 ---
-title: "sellisd/awesome-complexity"
-description: "Canonical snapshot of sellisd/awesome-complexity"
+title: "Awesome Complexity"
+description: "A curated collection of resources and projects focused on Complexity."
 licenseSource: "github-sellisd-awesome-complexity-readme-md"
 ---
 
-# [Awesome Complexity](https://sellisd.github.io/awesome-complexity/) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Complexity
 
-A curated list of resources related to complex systems, the scientific field studying systems with multiple interacting parts and emergent properties.
-
-
-
+A curated collection of resources and projects focused on Complexity.
 
 ## Contents
 

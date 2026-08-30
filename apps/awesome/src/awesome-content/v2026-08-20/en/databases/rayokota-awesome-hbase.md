@@ -1,16 +1,12 @@
 ---
-title: "rayokota/awesome-hbase"
-description: "Canonical snapshot of rayokota/awesome-hbase"
+title: "Awesome HBase"
+description: "A curated collection of resources and projects focused on HBase."
 licenseSource: "github-rayokota-awesome-hbase-readme-md"
 ---
 
-# Awesome HBase [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome HBase
 
-[<img src="https://cdn.rawgit.com/rayokota/awesome-hbase/c197f415/hbase_logo_with_orca-2.png" align="right" width="150">](http://hbase.apache.org/)
-
-A curated list of awesome HBase projects and resources.
-
-[HBase](http://hbase.apache.org) is a distributed, scalable, big data store.
+A curated collection of resources and projects focused on HBase.
 
 ## Contents
 

@@ -1,14 +1,12 @@
 ---
-title: "dylanrees/citizen-science"
-description: "Canonical snapshot of dylanrees/citizen-science"
+title: "Awesome Digital Tools for Citizen Science"
+description: "A curated collection of resources and projects focused on Digital Tools for Citizen Science."
 licenseSource: "github-dylanrees-citizen-science-readme-md"
 ---
 
-# Digital Tools for Citizen Science
+# Awesome Digital Tools for Citizen Science
 
-Below is a curated list of awesome software and other resources to enable those who want to use scientific tools to empower communities and/or practice various forms of non-institutional science.  It is largely inspired by [this repository](https://github.com/drewrwilson/toolsforactivism) listing digital tools for activists.  Feel free to share suggestions. If you add software to the list, free and open-source software is strongly encouraged over proprietary software.
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+A curated collection of resources and projects focused on Digital Tools for Citizen Science.
 
 ## Contents
 

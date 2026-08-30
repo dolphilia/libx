@@ -1,29 +1,12 @@
 ---
-title: "umbraco-community/awesome-umbraco"
-description: "umbraco-community/awesome-umbraco の正規スナップショット"
+title: "Awesome Umbraco"
+description: "Umbracoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-umbraco-community-awesome-umbraco-readme-md"
 ---
 
-# Awesome Umbraco! [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/main/media/badge.svg)](https://github.com/sindresorhus/awesome) [![UmbracoV9](https://img.shields.io/badge/Umbraco-v9-blue)](https://our.umbraco.com/download/releases/900)
+# Awesome Umbraco
 
-> 優れた [Umbraco CMS](https://github.com/umbraco/Umbraco-CMS/) のパッケージ、リソース、便利なものを集めたコレクションです。
-
-[Awesome リスト](https://github.com/sindresorhus/awesome)に着想を得ています。一般的な C#/.NET については [awesome-dotnet](https://github.com/quozd/awesome-dotnet/) コレクションをご覧ください！
-
-### 貢献
-
-**貢献はいつでも歓迎します！**
-
-プルリクエストを作成する前に、[貢献ガイドラインと品質基準](https://github.com/umbraco-community/awesome-umbraco/blob/master/CONTRIBUTING.md)のページをお読みください。ここに掲載されているリソースやパッケージが保守されなくなっている場合は、コレクション改善のためプルリクエストを送ってください。
-
-すべての[貢献者](https://github.com/umbraco-community/awesome-umbraco/graphs/contributors)に感謝します。皆さんは素晴らしく、皆さんなしではこのリストは実現できません！ よく知られたリソースを分類し、コミュニティ主導で集めることが目標です。
-
-### バージョン
-このリストは Umbraco v10 パッケージ向けです。旧バージョン向けのリストもありますので、ぜひご覧ください。
-
-[![UmbracoV9](https://img.shields.io/badge/Umbraco-v9-blue)](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V9.md)
-[![UmbracoV8](https://img.shields.io/badge/Umbraco-v8-blue)](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V8.md)
-[![UmbracoV7](https://img.shields.io/badge/Umbraco-v7-blue)](https://github.com/umbraco-community/awesome-umbraco/blob/da417f18e2bd4f412c0453c769a435e6f3d9f08d/UMBRACO-V7.md)
+Umbracoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 ### 目次
 * [公式](#official)

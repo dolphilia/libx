@@ -1,24 +1,12 @@
 ---
-title: "simskij/awesome-software-architecture"
-description: "simskij/awesome-software-architecture の定本スナップショット"
+title: "Awesome Software Architecture"
+description: "Software Architectureを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-simskij-awesome-software-architecture-readme-md"
 ---
 
-<div align="center">
+# Awesome Software Architecture
 
-<img src="./banner.png" />
-
-# Awesome Software Architecture<br/>
-  
-[![awesome-badge](https://awesome.re/badge.svg)](https://awesome.re)
-  
-[Software architecture](https://en.wikipedia.org/wiki/Software_architecture)は、ソフトウェアの高レベルな構造と、それらを作成する規律を記述することを目指します。このトピックはかなり広いため、よりニッチなリストにも存在するリソースを含む場合があります。
-
-<i>
-  このリストがお好きなら、Twitterで<a href="https://twitter.com/0x12b/">@0x12b</a>をフォローして支援をご検討ください。
-</i>
-  
-</div>
+Software Architectureを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

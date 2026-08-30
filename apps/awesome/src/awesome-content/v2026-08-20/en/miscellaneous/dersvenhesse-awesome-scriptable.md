@@ -1,20 +1,12 @@
 ---
-title: "dersvenhesse/awesome-scriptable"
-description: "Canonical snapshot of dersvenhesse/awesome-scriptable"
+title: "Awesome Scriptable"
+description: "A curated collection of resources and projects focused on Scriptable."
 licenseSource: "github-dersvenhesse-awesome-scriptable-readme-md"
 ---
 
-# Awesome Scriptable [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Scriptable
 
-
-[<img src="https://scriptable.app/assets/appicon.png" align="right" width="100" style="clip-path">](https://scriptable.app/)
-
-
-> A carefully curated list of awesome Scriptable widgets.
-
-
-[Scriptable](https://scriptable.app/) is an app to automate iOS using JavaScript. 
-
+A curated collection of resources and projects focused on Scriptable.
 
 ## Contents
 

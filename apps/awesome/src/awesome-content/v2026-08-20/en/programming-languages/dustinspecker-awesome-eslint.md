@@ -1,16 +1,12 @@
 ---
-title: "dustinspecker/awesome-eslint"
-description: "Canonical snapshot of dustinspecker/awesome-eslint"
+title: "Awesome ESLint"
+description: "A curated collection of resources and projects focused on ESLint."
 licenseSource: "github-dustinspecker-awesome-eslint-readme-md"
 ---
 
-# Awesome ESLint [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome ESLint
 
-[<img src="https://eslint.org/icon.svg" width="160" align="right" alt="eslint">](http://eslint.org)
-
-> A list of awesome ESLint configs, plugins, etc.
-
-If you want to contribute, please read the [contribution guidelines](https://github.com/dustinspecker/awesome-eslint/blob/34384c6b0b5a1845385ddda15b52d0bf662090ed/contributing.md).
+A curated collection of resources and projects focused on ESLint.
 
 ## Contents
 

@@ -1,20 +1,12 @@
 ---
-title: "Esri/awesome-arcgis-developer"
-description: "Esri/awesome-arcgis-developer の定本スナップショット"
+title: "Awesome ArcGIS Developers"
+description: "ArcGIS Developersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Esri-awesome-arcgis-developer-readme-md"
 ---
 
+# Awesome ArcGIS Developers
 
-# Awesome ArcGIS Developers [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-
-<img src="esri-logo.png" align="right" width="100">
-
-> [ArcGIS製品を使った開発](https://www.esri.com/en-us/arcgis/products/develop-with-arcgis/overview)に役立つ優れたリソース集です。
-
-ArcGIS製品は、地図・空間解析アプリケーションを開発するためのAPI、位置情報サービス、ツールを提供します。ウェブ、ネイティブ、オフライン、デスクトップ、統合型の各種ソリューションを構築でき、ベースマップ、ジオコーディング、ルーティングなどの地理空間機能を利用できます。データはArcGISクラウドで安全にホスト・管理できます。
-
----
+ArcGIS Developersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

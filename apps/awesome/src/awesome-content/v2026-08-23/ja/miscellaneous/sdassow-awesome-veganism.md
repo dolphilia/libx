@@ -1,15 +1,12 @@
 ---
-title: "sdassow/awesome-veganism"
-description: "sdassow/awesome-veganism の日本語訳（人手レビュー前）"
+title: "Awesome Veganism"
+description: "Veganismを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sdassow-awesome-veganism-readme-md"
 ---
 
-# Awesome Veganism [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Veganism
 
-> ヴィーガニズムを誰にとっても容易で身近なものにする、優れたリソース、手がかり、ヒントを集めたリスト。
-
-[ヴィーガニズム](https://en.wikipedia.org/wiki/Veganism)は、動物由来製品を可能な限り避ける植物ベースのライフスタイルです。
-このリストは、素晴らしい体験に必要な労力を最小限にするため、ヴィーガンのライフスタイルに100%沿った実用的なコンテンツを保証する、コミュニティ主導の取り組みを作ろうとするものです。
+Veganismを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

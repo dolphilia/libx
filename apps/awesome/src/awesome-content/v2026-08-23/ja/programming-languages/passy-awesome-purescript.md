@@ -1,12 +1,12 @@
 ---
-title: "passy/awesome-purescript"
-description: "passy/awesome-purescript の正規スナップショット"
+title: "Awesome purescript"
+description: "purescriptを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-passy-awesome-purescript-readme-md"
 ---
 
-# awesome-purescript [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome purescript
 
-> PureScript の魅力的なライブラリ、ツール、その他の優れたものを集めたリストです。
+purescriptを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## ビルドツール
 

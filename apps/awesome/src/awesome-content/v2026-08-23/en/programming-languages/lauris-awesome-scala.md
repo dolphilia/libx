@@ -1,24 +1,12 @@
 ---
-title: "lauris/awesome-scala"
-description: "Canonical snapshot of lauris/awesome-scala"
+title: "Awesome Scala"
+description: "A curated collection of resources and projects focused on Scala."
 licenseSource: "github-lauris-awesome-scala-readme-md"
 ---
 
+# Awesome Scala
 
-Awesome Scala [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-=============
-
-A community driven list of useful Scala libraries, frameworks and software. This is not a catalog of all the libraries, just a starting point for your explorations. Inspired by [awesome-python](https://github.com/vinta/awesome-python). Other amazingly awesome lists can be found in the [awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness) list.
-
-Also awesome is [Scaladex](https://index.scala-lang.org/), the searchable, tagged, and centralized index of Scala libraries.
-
-Projects with over 500 stargazers are in bold.
-
-## Contributing
-
-Your contributions are always welcome! Please submit a pull request or create an issue to add a new framework, library or software to the list. Do not submit a project that hasn’t been updated in the past 6 months or is not awesome.
-
-Don't modify `README.md` in your pull request. It is automatically generated. Modify `template.md` instead.
+A curated collection of resources and projects focused on Scala.
 
 ## Table of Contents
 

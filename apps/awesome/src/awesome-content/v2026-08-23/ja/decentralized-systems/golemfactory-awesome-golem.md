@@ -1,16 +1,12 @@
 ---
-title: "golemfactory/awesome-golem"
-description: "golemfactory/awesome-golemの正規スナップショット"
+title: "Awesome Golem"
+description: "Golemを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-golemfactory-awesome-golem-readme-md"
 ---
 
-# Awesome Golem [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![awesome-lint](https://github.com/golemfactory/awesome-golem/actions/workflows/main.yml/badge.svg)](https://github.com/golemfactory/awesome-golem/actions/workflows/main.yml/badge.svg)
+# Awesome Golem
 
-[<img src="golem-logo.svg" align="right" width="150">](https://golem.network/)
-
-> **Awesome Golem** へようこそ。Golem のリソース、リンク、プロジェクト、ツール、アプリケーションをコミュニティがキュレーションしたリストです！
-
-Golem のユーザーは、Rust 実装である参照実装 Yagna を実行します。ユーザーはともに Golem Network を構成します。これは計算リソースの P2P マーケットプレイスであり、個人はアイドルリソースを販売するプロバイダー、またはタスク実行用リソースを購入するリクエスターという、排他的ではない二つの役割の一方として行動できます。
+Golemを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

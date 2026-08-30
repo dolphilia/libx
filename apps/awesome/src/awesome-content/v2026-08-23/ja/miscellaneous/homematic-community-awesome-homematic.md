@@ -1,15 +1,12 @@
 ---
-title: "homematic-community/awesome-homematic"
-description: "homematic-community/awesome-homematicの日本語訳"
+title: "Awesome Homematic"
+description: "Homematicを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-homematic-community-awesome-homematic-readme-md"
 ---
 
-# Awesome Homematic [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Homematic
 
-> Homematicに関連するリンクの厳選リストです。
-
-[Homematic](https://www.homematic.com/)は、メーカー[eQ-3](https://www.eq-3.de)が提供するスマートホーム機器シリーズで、特にドイツで広く利用されています。
-
+Homematicを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

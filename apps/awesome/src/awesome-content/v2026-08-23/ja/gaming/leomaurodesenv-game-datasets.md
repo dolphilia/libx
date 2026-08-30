@@ -1,45 +1,13 @@
 ---
-title: "leomaurodesenv/game-datasets"
-description: "leomaurodesenv/game-datasets の正規スナップショット"
+title: "Awesome video game: Awesome Game Datasets"
+description: "video game: Awesome Game Datasetsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-leomaurodesenv-game-datasets-readme-md"
 ---
 
-<a id="video_game-awesome-game-datasets-"></a>
-# :video_game: Awesome Game Datasets [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome video game: Awesome Game Datasets
 
-[![GitHub](https://img.shields.io/static/v1?label=Code&message=GitHub&color=blue&style=flat-square)](https://github.com/leomaurodesenv/game-datasets)
-[![CC-BY-4.0 license](https://img.shields.io/static/v1?label=License&message=CC-BY-4.0&color=blue&style=flat-square)](https://github.com/leomaurodesenv/game-datasets/blob/f2a3348ef0895fbed20b1fad2ef760b78292bb13/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/leomaurodesenv/game-datasets/continuous-integration.yml?label=Build&style=flat-square)](https://github.com/leomaurodesenv/game-datasets/actions/workflows/continuous-integration.yml)
+video game: Awesome Game Datasetsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-コンピューター科学における人工知能（AI）とは、機械が示す知能です。AI研究は「知的エージェント」、すなわち環境を認識し、目標達成のために行動する装置を研究する分野と定義されます _Russell et al. (2016)_。
-
-データマイニング（DM）は、機械学習、統計、データベースシステムの手法を用いてデータセットからパターンを発見し、情報を抽出するプロセスです _Han (2011)_。
-
-このリポジトリは、デジタルゲームにおける**人工知能**または**データマイニング**の取り組みを案内します。_アプリケーション_や_データセット_の構築に利用できるデータセット、ツール、資料を掲載しています。
-
-**貢献**
-
-提案や質問はIssueを作成してください。貢献する場合は[こちら](https://github.com/leomaurodesenv/game-datasets/blob/f2a3348ef0895fbed20b1fad2ef760b78292bb13/CONTRIBUTING.md)を読み、Pull Requestを送信してください。
-
-______________________________________________________________________
-
-**目次**
-
-- [:video_game: Awesome Game Datasets ](#video_game-awesome-game-datasets-)
-  - [API](#api)
-  - [人工知能](#artificial-intelligence)
-    - [モバイル](#mobile)
-    - [ウェブ](#web)
-  - [書籍](#books)
-  - [データセット](#dataset)
-    - [関連情報](#related)
-  - [市場調査](#market-research)
-  - [その他](#miscellaneous)
-  - [ライセンス](#license)
-
-______________________________________________________________________
-
-<a id="api"></a>
 ## API
 
 APIとは、_「オペレーティングシステム、アプリケーション、その他のサービスの機能やデータへアクセスするアプリケーションを作成できるようにする、関数と手続きの集合」_です（Google）。

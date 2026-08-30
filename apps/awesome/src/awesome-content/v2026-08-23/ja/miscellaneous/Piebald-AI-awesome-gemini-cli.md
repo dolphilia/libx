@@ -1,66 +1,12 @@
 ---
-title: "Piebald-AI/awesome-gemini-cli"
-description: "Piebald-AI/awesome-gemini-cli の定本スナップショット"
+title: "Awesome Gemini CLI"
+description: "Gemini CLIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-Piebald-AI-awesome-gemini-cli-readme-md"
 ---
 
-<div>
-<div align="right">
-<a href="https://piebald.ai"><img width="200" top="20" align="right" src="https://github.com/Piebald-AI/.github/raw/main/Wordmark.svg"></a>
-</div>
+# Awesome Gemini CLI
 
-<div align="left">
-
-### Piebaldをチェック
-究極のエージェント型AI開発体験を提供する **Piebald** をリリースしました。 \
-ダウンロードして無料でお試しください！ **https://piebald.ai/**
-
-<a href="https://piebald.ai/discord"><img src="https://img.shields.io/badge/Join%20our%20Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Join our Discord"></a>
-<a href="https://x.com/PiebaldAI"><img src="https://img.shields.io/badge/Follow%20%40PiebaldAI-000000?style=flat&logo=x&logoColor=white" alt="X"></a>
-
-<sub>[**Awesome Gemini CLIへスクロール。**](#awesome-gemini-cli-) :point_down:</sub>
-
-</div>
-</div>
-
-<div align="left">
-<a href="https://piebald.ai">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://piebald.ai/screenshot-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://piebald.ai/screenshot-light.png">
-  <img alt="hero" width="800" src="https://piebald.ai/screenshot-light.png">
-</picture>
-</a>
-</div>
-
-# Awesome Gemini CLI [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-<a href="https://github.com/google-gemini/gemini-cli" rel="noopener"><img width="4339" height="1373" alt="banner" src="./assets/banner.png" /></a>
-
-Geminiの能力をターミナルで利用できるオープンソースAIエージェント [Gemini CLI](https://github.com/google-gemini/gemini-cli) 向けの優れたツール、拡張機能、リソースを集めた一覧です。[Awesome Gemini CLI Extensions](https://github.com/Piebald-AI/awesome-gemini-cli-extensions) も参照してください。
-
-**Gemini CLI向けの優れたものを開発しましたか？** この一覧へ追加してください。[コントリビューション](#contributing)を参照してください。
-
-
-
-## :tada: 新着
-- [Darkmoon](https://github.com/ASCIT31/Dark-Moon) - GPL-3.0の自律的なパーセンテーションテストプラットフォーム：技術ごとのエージェント、80以上のツール、証拠に基づく結果、そしてターゲットデータをモデルから遮断するプライバシーガイアート
-- [llm-box](https://github.com/alib8b8/llm-box) - ターミナル中心のワークフロー自動化エンジン。自然な英語からYAMLワークフローを生成・実行。20以上の組み込みノード、15以上のLLMプロバイダー、MCPサーバーモード。`gemini extensions install https://github.com/alib8b8/llm-box` からインストール。
-- [Maestro](https://github.com/josstei/maestro-gemini) - Gemini CLIをマルチエージェントプラットフォームに変換 — 12の専門サブエージェント、並列実行、4段階のオーケストレーション、コードレビュー、デバッグ、セキュリティ、パフォーマンスのためのスタンドアローン開発ツールを備える
-- [Task Monitor](https://github.com/davidwiet/task-monitor) - メッセージトラッキングによりエージェントループを防止し、長時間のタスクやフォーカス外のプロンプトに対して音声通知を発生させる
-- [Signum](https://github.com/heurema/signum) - Gemini CLIを3つの独立したレビュアーの一つとして、マルチモデルコード審査パネル（クラウドとコデックスとともに）に活用する、証拠に基づいた開発パイプライン。
-- [Tars](https://tars.saccolabs.com) - Google Geminiをベースにしたローカル優先の自律監視者とアシスタント。バックグラウンド永続化（ハートビート）、階層型ローカルメモリ、マルチチャネル通知（ディスコード／ワタサビ）、自己回復バックグラウンドサービスを備えている。ターミナル内で信頼性高く長期間運用可能なエージェントオーケストレーションに設計。
-- [ATXP](https://github.com/atxp-dev/atxp) - Gemini CLIエージェントにウォレット、メールアドレス、電話番号、100以上の有料MCPツール（ウェブ検索、画像生成、SMS、音声、LLMゲートウェイ）を提供。`gemini extensions install https://github.com/atxp-dev/atxp` で自ら登録可能 — 人間のログイン不要、5ドル分の無料クレジット付き。
-- [Untether](https://github.com/littlebearapps/untether) - Gemini CLI（および5つの他のエージェント）向けのTelegramブリッジ。音声でタスクを送信し、進行状況をストリーム表示し、インラインボタンで承認モード（読み取り専用／ファイル編集／フルアクセス）を設定。セルフホスト、MITライセンス。
-- [Parallel Code](https://github.com/johannesjo/parallel-code) - 複数のAIコーディングエージェント（Claude Code、Codex CLI、Gemini CLI）を同時に、隔離されたgitワークツリー内でオーケストレーションするデスクトップアプリ。
-- [wolfpack](https://github.com/almogdepaz/wolfpack) - スマートフォンから、AIコーディングエージェント（Claude、Codex、Gemini）を複数のマシンで制御するモバイル・デスクトップコマンドセンター。Tailscaleでセキュア。セルフホスト。
-- [Xquik MCP](https://github.com/Xquik-dev/x-twitter-scraper) - X/TwitterデータMCPサーバー。76のREST APIエンドポイント、20の抽出ツール、アカウント監視、プレゼント抽選機能を備えている。Gemini CLIを含むすべてのMCPクライアントと互換性がある
-- [rule-gen](https://github.com/nedcodes-ok/rule-gen) - 実際のコードベースからAIコーディングルールを生成。ソースファイルをGoogle Geminiの1Mトークンコンテキストウィンドウに投入し、プロジェクトに特化したルールを生成。カーソル（.mdc）、クラウド・コード（CLAUDE.md）、コピロ、ウィンズルフの出力フォーマットをサポート。依存関係なし。
-- [Pluribus](https://github.com/caioribeiroclw-pixel/pluribus) - 1つの標準プロジェクトコンテキストを、ネイティブAIコーディングエージェントのルールファイルに同期。含まれるGemini CLI `GEMINI.md`、Claude Code `CLAUDE.md`/`AGENTS.md`、Cursor、Cline、Roo Code、Amazon Q、Junie、Warp、Copilot、Windsurf、Continue、Zed、OpenCode、OpenClaw。
-- [BGPT MCP](https://github.com/connerlambden/bgpt-mcp) - 科学論文を検索し、全文研究から構造化された実験データ（方法、結果、サンプルサイズ、品質スコア）を取得。Gemini CLIを含む任意のMCPクライアントと対応。
-
-> [!tip]
-> **[Splitrail](https://github.com/Piebald-AI/splitrail) でローカルのGemini CLI使用状況を追跡できます。**
+Gemini CLIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 ## 目次
 

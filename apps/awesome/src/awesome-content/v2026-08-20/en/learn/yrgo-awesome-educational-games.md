@@ -1,18 +1,12 @@
 ---
-title: "yrgo/awesome-educational-games"
-description: "Canonical snapshot of yrgo/awesome-educational-games"
+title: "Awesome Educational Games"
+description: "A curated collection of resources and projects focused on Educational Games."
 licenseSource: "github-yrgo-awesome-educational-games-readme-md"
 ---
 
 # Awesome Educational Games
 
-[<img src="https://cloud.githubusercontent.com/assets/499192/18659925/ed7e6262-7f0d-11e6-8e8e-b53b87158210.png" align="right" alt="Awesome Educational Games" width="150">](https://en.m.wikipedia.org/wiki/Educational_game)
-
-> A curated list of awesome [educational games](https://en.m.wikipedia.org/wiki/Educational_game) to learn editors, languages, programming, etc.
-
-*Please read the [contribution guidelines](https://github.com/yrgo/awesome-educational-games/blob/f1fbeec1c89d37ecc2492f19c0f639cbb8ff5404/CONTRIBUTING.md) before contributing.*
-
-> [Educational games](https://en.m.wikipedia.org/wiki/Educational_game) are designed to teach people about certain subjects, expand concepts, reinforce development, understand an historical event or culture, or assist them in learning a skill as they play - [Wikipedia](https://en.m.wikipedia.org/wiki/Educational_game)
+A curated collection of resources and projects focused on Educational Games.
 
 #### Contents
 

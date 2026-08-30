@@ -1,18 +1,13 @@
 ---
-title: "MystenLabs/awesome-move"
-description: "MystenLabs/awesome-move の正規スナップショット"
+title: "Awesome Move"
+description: "Moveを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-MystenLabs-awesome-move-readme-md"
 ---
 
+# Awesome Move
 
-<a id="awesome-move"></a>
-# Awesome Move [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+Moveを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> A curated list of code and content from the [Move](https://github.com/move-language/move) programming language community.
-
-Moveは、Facebookで開発された最初のスマートコントラクトの安全な実装用のプログラミング言語であり、Libraブロックチェーンを動かすために開発された。Moveは、データや実行モデルが大きく異なるさまざまなブロックチェーン間で、共通のライブラリ、ツール、開発コミュニティを可能にするため、プラットフォームに依存しない言語として設計されている。Moveの目標は、ウェブ3の「JavaScript」のような普及性を持つことである――開発者が資産に関連する安全なコードを迅速に書く必要があるとき、そのコードはMoveで書かれるべきである。
-
-<a id="contents"></a>
 ## 目次
 
 - [概要](#overview)

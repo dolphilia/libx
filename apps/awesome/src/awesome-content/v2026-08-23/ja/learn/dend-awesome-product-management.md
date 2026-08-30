@@ -1,25 +1,12 @@
 ---
-title: "dend/awesome-product-management"
-description: "プロダクト管理のツール、方法論、記事、書籍、コミュニティを分類した定本スナップショット"
+title: "Awesome Product Management"
+description: "Product Managementを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dend-awesome-product-management-readme-md"
 ---
 
-<div align="center">
+# Awesome Product Management
 
-# プロダクト管理のAwesomeリスト <a id="awesome-product-management"></a>
-
-[![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-[![PDF Build](https://github.com/dend/awesome-product-management/actions/workflows/makepdf.yml/badge.svg)](https://github.com/dend/awesome-product-management/actions/workflows/makepdf.yml)
-[![Link Checker](https://github.com/dend/awesome-product-management/actions/workflows/linkchecker.yml/badge.svg)](https://github.com/dend/awesome-product-management/actions/workflows/linkchecker.yml)
-[![GitHub Repo stars](https://img.shields.io/github/stars/dend/awesome-product-management?style=flat)](https://github.com/dend/awesome-product-management/stargazers)
-
-*プロダクト／プログラムマネージャーの学習と成長に役立つ優れた資料を厳選したリストです。*
-
-</div> 
-
-## プロダクトマネージャーとは <a id="whos-a-product-manager"></a>
-
-プロダクトマネージャーはプロダクトビジョンを推進し、顧客ニーズを深く理解する役割です。一般にビジネス、技術、デザインの交点に立つ問題領域の専門家であり、素早く学習・反復して顧客へ価値ある体験を届けます。
+Product Managementを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 
@@ -585,5 +572,3 @@ Tabilityに関する目的、利用方法、または評価観点を説明して
 ## ライセンス <a id="license"></a>
 
 [Creative Commons CC0ライセンス](https://creativecommons.org/publicdomain/zero/1.0/)で提供されます。
-
-

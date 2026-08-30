@@ -1,13 +1,12 @@
 ---
-title: "RomanTsegelskyi/rbooks"
-description: "RomanTsegelskyi/rbooks の正規スナップショット"
+title: "Awesome R Books"
+description: "R Booksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-RomanTsegelskyi-rbooks-readme-md"
 ---
 
-<a id="r-books"></a>
-Rの書籍 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-===
-プログラミング言語 [R](https://www.r-project.org/) のさまざまな側面と用途を扱う書籍を厳選し、[R Books]() をより使いやすい形に刷新することを目指したリストです。[GoBooks]() に着想を得ています。
+# Awesome R Books
+
+R Booksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 * [Rの書籍](#r-books)
 	* [初心者向け書籍](#beginner-books)

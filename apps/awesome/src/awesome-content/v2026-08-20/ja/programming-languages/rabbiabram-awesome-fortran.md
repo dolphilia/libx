@@ -1,35 +1,12 @@
 ---
-title: "rabbiabram/awesome-fortran"
-description: "rabbiabram/awesome-fortran の定本スナップショット"
+title: "Awesome Fortran"
+description: "Fortranを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-rabbiabram-awesome-fortran-readme-md"
 ---
 
-# Awesome Fortran [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://api.travis-ci.org/rabbiabram/awesome-fortran.svg?branch=master)](https://travis-ci.org/rabbiabram/awesome-fortran)
-優れた Fortran フレームワーク、ライブラリ、ソフトウェアの厳選リスト。@Wolg による [awesome-swift](https://github.com/Wolg/awesome-swift) に着想を得ています。
+# Awesome Fortran
 
-- [Awesome Fortran](#awesome-fortran)
-	- [関数型ライブラリ](#functional-libraries)
-	- [グラフィックスライブラリ](#graphics-libraries)
-	- [数学ライブラリ](#math-libs)
-	- [JSON 操作](#json-manipulation)
-	- [XML 操作](#xml-manipulation)
-	- [日付・時刻操作](#date-and-time-manipulation)
-	- [テスト](#testing)
-	- [エンコード・デコード](#encoding-decoding)
-  - [移植性の実現](#portability-enabling)
-  - [コマンドライン解析](#command-line-parsing)
-  - [コンパイル・ビルド](#compiling-and-building)
-  - [プリプロセッサー](#preprocessor)
-  - [フォーマット](#formatting)
-  - [自動ドキュメント](#automatic-documentation)
-  - [計算流体力学](#computational-fluid-dynamics)
-  - [Docker](#docker)
-  - [Web](#web)
-- [リソース](#resources)
-  - [Fortran Web サイト](#fortran-websites)
-	- [Fortran 動画](#fortran-videos)
-- [その他の Awesome リスト](#other-awesome-lists)
-- [貢献](#contributing)
+Fortranを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 関数型ライブラリ
 * [Functional Fortran](https://github.com/wavebitscientific/functional-fortran) - モダン Fortran 向け関数型プログラミング。

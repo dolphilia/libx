@@ -1,13 +1,11 @@
 ---
-title: "dlang-community/awesome-d"
-description: "dlang-community/awesome-dの収録案内"
+title: "Awesome D"
+description: "Awesome Dの収録案内です。このスナップショットでは上流本文を転載していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# D
+# Awesome D
 
-このAwesomeリストは、固定済みのsindresorhus/awesomeスナップショットのProgramming Languagesセクションから参照されています。
-
-このスナップショットで再利用可能なライセンスを確認できなかった、固定READMEを取得できなかった、または現在のlibxでは対応していないライセンス条件があるため、上流リストの本文はlibxへ複製していません。
+Awesome Dの収録案内です。このスナップショットでは上流本文を転載していません。
 
 - [元のリポジトリを開く](https://github.com/dlang-community/awesome-d/blob/508bfd09b260630d896ba6c5e464619d1592e28a/README.md)

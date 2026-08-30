@@ -1,18 +1,12 @@
 ---
-title: "francoism90/awesome-kde"
-description: "francoism90/awesome-kdeの正規スナップショット"
+title: "Awesome KDE"
+description: "KDEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-francoism90-awesome-kde-readme-md"
 ---
 
-# Awesome KDE [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome KDE
 
-[<img src="media/logo-kde-grey.svg" align="right" width="144">](http://www.kde.org)
-
-> KDE デスクトップ環境向けの優れたアプリ、拡張機能、モジュール、テーマ、ツールを集めたリスト。
-
-[KDE](https://kde.org/) は、高度なグラフィカルデスクトップ、コミュニケーション・仕事・教育・娯楽向けの多彩なアプリケーション、新しいアプリケーションを容易に構築できるプラットフォームを提供し、オープンで使いやすいコンピューティング体験の創造に取り組む自由ソフトウェアコミュニティです。
-
-> 📌（画鋲）付きの項目は、KDE 独自のインフラストラクチャでホストされ、KDE コミュニティが開発したプロジェクトです。
+KDEを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

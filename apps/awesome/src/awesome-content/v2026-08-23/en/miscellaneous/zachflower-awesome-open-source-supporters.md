@@ -1,14 +1,12 @@
 ---
-title: "zachflower/awesome-open-source-supporters"
-description: "Canonical snapshot of zachflower/awesome-open-source-supporters"
+title: "Awesome Open Source Supporters"
+description: "A curated collection of resources and projects focused on Open Source Supporters."
 licenseSource: "github-zachflower-awesome-open-source-supporters-readme-md"
 ---
 
-# Awesome Open Source Supporters [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Open Source Supporters
 
-A curated list of awesome companies that offer their tools and services for free to Open Source and public projects.
-
-**Note: While there are many companies that have great free tiers (Slack, for example), this list focuses specifically on organizations that have made an overt commitment to the Open Source community through additional offerings.**
+A curated collection of resources and projects focused on Open Source Supporters.
 
 ## Contents
 

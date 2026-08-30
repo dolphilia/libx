@@ -1,16 +1,12 @@
 ---
-title: "opencompany/awesome-open-company"
-description: "opencompany/awesome-open-company の正規スナップショット"
+title: "Awesome Open Company"
+description: "Open Companyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-opencompany-awesome-open-company-readme-md"
 ---
 
-# Awesome Open Company [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-数多くの [awesome-x リスト](https://github.com/sindresorhus/awesome)に着想を得た、優れた[オープンカンパニー](#what-is-an-open-company)を
-コミュニティでまとめたリストです。
+# Awesome Open Company
 
-（以下のリストへ直接移動するには**[こちらをクリック](#companies)**してください。）
-
-*このリストへのコントリビューションを歓迎します。[README.md を編集](#)（この文書）し、変更を Pull Request として送ってください。[ガイドライン](#)もあります。*
+Open Companyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 1. [オープンカンパニーとは？](#what-is-an-open-company)

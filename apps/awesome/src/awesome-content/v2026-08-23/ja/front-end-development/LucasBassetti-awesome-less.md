@@ -1,14 +1,12 @@
 ---
-title: "LucasBassetti/awesome-less"
-description: "LucasBassetti/awesome-lessの正規スナップショット"
+title: "Awesome Less"
+description: "Lessを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-LucasBassetti-awesome-less-readme-md"
 ---
 
-# Awesome Less [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Less
 
-[<img src="https://cdn.rawgit.com/LucasBassetti/awesome-less/14437854/less-logo.svg" align="right" height="80">](http://lesscss.org/)
-
-> 優れた Less フレームワーク、ライブラリ、スタイルガイド、記事、リソースをキュレーションしたリスト。誰でもここへ貢献でき、Less に関するすべての情報を集約して最新の状態に保つことを主な考え方としています。
+Lessを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [概要](#about)

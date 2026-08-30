@@ -1,25 +1,12 @@
 ---
-title: "FoxFil/awesome-geocaching"
-description: "Canonical snapshot of FoxFil/awesome-geocaching"
+title: "Awesome Geocaching"
+description: "A curated collection of resources and projects focused on Geocaching."
 licenseSource: "github-FoxFil-awesome-geocaching-readme-md"
 ---
 
-<h1><div align="center">
-	<a href="https://www.geocaching.com"><img width="50%" height="25%" src="pics/logo.png" alt="Awesome Geocaching"></a>
-</div></h1>
-<p align="center">
-    <a href="https://github.com/sindresorhus/awesome"><img alt="awesome badge" src="https://awesome.re/badge.svg" />
-</p>
+# Awesome Geocaching
 
-> A curated list of assets available on the Internet related to Geocaching.
-
-[Geocaching](https://en.wikipedia.org/wiki/Geocaching) is an outdoor recreational activity, in which participants use a Global Positioning System receiver or mobile device and other navigational techniques to hide and seek containers, called geocaches or caches, at specific locations marked by coordinates all over the world.
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/FoxFil/awesome-geocaching/blob/81fca0108e668af88c5b8861e1e466e7ba7d00f6/contributing.md) first.
-
-⭐ Leave a star if you liked this list!
-
----
+A curated collection of resources and projects focused on Geocaching.
 
 ## Contents
 

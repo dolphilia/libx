@@ -1,64 +1,12 @@
 ---
-title: "analysis-tools-dev/static-analysis"
-description: "Canonical snapshot of analysis-tools-dev/static-analysis"
+title: "Awesome Static Analysis"
+description: "A curated collection of resources and projects focused on Static Analysis. The upstream list is archived or no longer maintained."
 licenseSource: "github-analysis-tools-dev-static-analysis-readme-md"
 ---
 
+# Awesome Static Analysis
 
-
- <a href="https://analysis-tools.dev/">
-   <img alt="Analysis Tools Website" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/redesign.svg" />
- </a>
-
-This repository lists **static analysis tools** for all programming languages, build tools, config files and more. The focus is on tools which improve code quality such as linters and formatters.
-The official website, [analysis-tools.dev](https://analysis-tools.dev/) is based on this repository and adds rankings, user comments, and additional resources like videos for each tool.
-
-[![Website](https://img.shields.io/badge/Website-Online-2B5BAE)](https://analysis-tools.dev)
-![CI](https://github.com/analysis-tools-dev/static-analysis/workflows/CI/badge.svg)
-[![Links](https://github.com/analysis-tools-dev/static-analysis/actions/workflows/links.yml/badge.svg)](https://github.com/analysis-tools-dev/static-analysis/actions/workflows/links.yml)
-
-## Sponsors
-
-This project would not be possible without the generous support of our sponsors.
-
-<table>
-   <tr>
-      <td>
-         <a href="https://www.pixee.ai/">
-            <picture >
-               <source width="200px" media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/pixee-light.png">
-               <img width="200px" alt="Pixee" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/pixee-dark.png">
-            </picture>
-         </a>
-      </td>
-      <td>
-         <a href="https://coderabbit.ai">
-            <img width="200px" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/code-rabbit.svg" />
-         </a>
-      </td>
-      <td>
-         <a href="https://semgrep.dev/">
-            <img width="200px" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/semgrep.svg" />
-         </a>
-      </td>
-      <td>
-         <a href="https://offensive360.com/">
-            <img width="200px" src="https://raw.githubusercontent.com/analysis-tools-dev/assets/master/static/sponsors/offensive360.png" />
-         </a>
-      </td>
-   </tr>
-</table>
-
-If you also want to support this project, head over to our [Github sponsors page](https://github.com/sponsors/analysis-tools-dev).
-
-## Meaning of Symbols:
-
-- :copyright: stands for proprietary software. All other tools are Open Source.
-- :information_source: indicates that the community does not recommend to use this tool for new projects anymore. The icon links to the discussion issue.
-- :warning: means that this tool was not updated for more than 1 year, or the repo was archived.
-
-Pull requests are very welcome!  
-Also check out the sister project, [awesome-dynamic-analysis](https://github.com/mre/awesome-dynamic-analysis).
+A curated collection of resources and projects focused on Static Analysis. The upstream list is archived or no longer maintained.
 
 ## Table of Contents
 

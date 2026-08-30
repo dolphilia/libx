@@ -1,18 +1,12 @@
 ---
-title: "sobolevn/awesome-cryptography"
-description: "Canonical snapshot of sobolevn/awesome-cryptography"
+title: "Awesome Cryptography"
+description: "A curated collection of resources and projects focused on Cryptography."
 licenseSource: "github-sobolevn-awesome-cryptography-readme-md"
 ---
 
-# Awesome Cryptography [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Cryptography
 
-<p align="center">
-  <img src="https://github.com/sobolevn/awesome-cryptography/blob/master/awesome-crypto.png?raw=true" alt="Awesome Cryptography">
-</p>
-
-[![Follow us on twitter](https://img.shields.io/twitter/follow/awe_crypto_bot.svg?style=social&maxAge=0)](https://twitter.com/awe_crypto_bot)
-
-A curated list of cryptography resources and links.
+A curated collection of resources and projects focused on Cryptography.
 
 ## Contents
 

@@ -1,22 +1,12 @@
 ---
-title: "petk/awesome-dojo"
-description: "Canonical snapshot of petk/awesome-dojo"
+title: "Awesome Dojo"
+description: "A curated collection of resources and projects focused on Dojo."
 licenseSource: "github-petk-awesome-dojo-readme-md"
 ---
 
 # Awesome Dojo
 
-<a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" height="18"></a>
-[![CCO License](https://img.shields.io/badge/license-CC0-blue.svg?style=plastic "CC0 License")](#contributing-and-license)
-[![Project Maintained](https://img.shields.io/badge/project-maintained-brightgreen.svg?style=plastic "Project Maintained")](https://github.com/petk/awesome-dojo/commits/master)
-[![Build Status](https://img.shields.io/travis/petk/awesome-dojo/master.svg)](https://travis-ci.org/petk/awesome-dojo)
-
-A curated list of awesome [Dojo JavaScript Toolkit](http://dojotoolkit.org) libraries, resources and other shiny things.
-
-Inspired by the `awesome-*` trend on GitHub.
-
-> A JavaScript toolkit that saves you time and scales with your development process. Provides everything you need to build a Web app. Language utilities, UI components, and more, all in one place, designed to work together perfectly.
-
+A curated collection of resources and projects focused on Dojo.
 
 ## Index
 

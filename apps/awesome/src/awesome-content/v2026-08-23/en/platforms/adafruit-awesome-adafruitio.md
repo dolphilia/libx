@@ -1,20 +1,12 @@
 ---
-title: "adafruit/awesome-adafruitio"
-description: "Canonical snapshot of adafruit/awesome-adafruitio"
+title: "Awesome Adafruit IO"
+description: "A curated collection of resources and projects focused on Adafruit IO."
 licenseSource: "github-adafruit-awesome-adafruitio-readme-md"
 ---
 
-<h1 align="center">
-  <a href="https://io.adafruit.com">
-  <img width="600" src="https://github.com/adafruit/awesome-adafruitio/blob/master/awesome_io.png" alt="Awesome AdafruitIO"></a><br>Awesome Adafruit IO
-</h1>
+# Awesome Adafruit IO
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> A curated list of awesome Adafruit IO guides, hardware, guides, videos, libraries, frameworks, and resources.
-
-[Adafruit IO is the easiest way to connect your project to the internet](https://io.adafruit.com). You can easily connect your project to Adafruit IO with your device-of-choice by using your programming language of choice (we have _lots_ of libraries) and control or monitor over the internet. Data stored with Adafruit IO is _yours_ to manage and control. You can download it all anytime and we will never sell or give it away to another company. It's great for getting started with the internet of things!
-
+A curated collection of resources and projects focused on Adafruit IO.
 
 ## Contents
 

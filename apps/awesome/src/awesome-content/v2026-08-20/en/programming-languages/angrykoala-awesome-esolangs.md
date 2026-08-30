@@ -1,19 +1,12 @@
 ---
-title: "angrykoala/awesome-esolangs"
-description: "Canonical snapshot of angrykoala/awesome-esolangs"
+title: "Awesome Esolangs"
+description: "A curated collection of resources and projects focused on Esolangs."
 licenseSource: "github-angrykoala-awesome-esolangs-readme-md"
 ---
 
-# Awesome Esolangs [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Esolangs
 
-<img src="logo_piet.png" align="right">
-
-Curated list of awesome esoteric programming languages, resources and related projects.
-
-
-> "An esoteric programming language, or esolang, is a computer programming language designed to experiment with weird ideas, to be hard to program in, or as a joke, rather than for practical use."  
-> ***esolang.org***
-
+A curated collection of resources and projects focused on Esolangs.
 
 ## Contents
 * [Languages](#languages)

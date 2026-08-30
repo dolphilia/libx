@@ -1,14 +1,12 @@
 ---
-title: "aorumbayev/awesome-omarchy"
-description: "aorumbayev/awesome-omarchy の定本スナップショット"
+title: "Awesome Omarchy"
+description: "Omarchyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-aorumbayev-awesome-omarchy-readme-md"
 ---
 
-# Awesome Omarchy [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Omarchy
 
-> 現代的なArch Linux／Hyprland環境向けの優れたOmarchyテーマ、リソース、ツールを厳選したリスト。
-
-[Omarchy](https://omarchy.org/)は方針を明確にしたArch Linux／Hyprland設定で、インストール直後のArchを、一つのコマンドで完全に設定された美しく現代的なデスクトップ環境へ変えます。
+Omarchyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

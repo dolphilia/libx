@@ -1,12 +1,12 @@
 ---
-title: "sindresorhus/quick-look-plugins"
-description: "sindresorhus/quick-look-plugins の正規スナップショット"
+title: "Awesome Quick Look plugins"
+description: "Quick Look pluginsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sindresorhus-quick-look-plugins-readme-md"
 ---
 
-# Quick Look プラグイン [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Quick Look plugins
 
-> 開発者向けの便利な [Quick Look](https://en.wikipedia.org/wiki/Quick_Look) プラグイン一覧です。
+Quick Look pluginsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## インストール
 

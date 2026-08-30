@@ -1,14 +1,12 @@
 ---
-title: "siboehm/awesome-learn-datascience"
-description: "siboehm/awesome-learn-datascience の正規スナップショット"
+title: "Awesome Data Science Tutorials & Resources for Beginners"
+description: "Data Science Tutorials & Resources for Beginnersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-siboehm-awesome-learn-datascience-readme-md"
 ---
 
-# 初心者向けデータサイエンスのチュートリアルとリソース [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Data Science Tutorials & Resources for Beginners
 
-*データサイエンスについて詳しく知りたいものの、どこから始めればよいか分からない方のためのリストです。* :chart_with_upwards_trend:
-
-事前知識は不要ですが、Python と統計の基礎は間違いなく役立ちます。これらのリソースは、私が地域で運営するデータサイエンス学生グループ [ML-KA](http://ml-ka.de/) の多くの初心者に役立っています。
+Data Science Tutorials & Resources for Beginnersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## データサイエンスとは？
 

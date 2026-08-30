@@ -1,23 +1,12 @@
 ---
-title: "GustavBertram/awesome-common-lisp-learning"
-description: "GustavBertram/awesome-common-lisp-learning の正規スナップショット"
+title: "Awesome Common Lisp Learning"
+description: "Common Lisp Learningを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-GustavBertram-awesome-common-lisp-learning-readme-md"
 ---
 
-# Awesome Common Lisp Learning [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Common Lisp Learning
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/GustavBertram/awesome-common-lisp-learning/2bcbbc47a9bce0dfbf5dd81d97f94d1d8360ae11/LISP_logo_mid.png">
-</div>
-
-このリストはCommon Lispを学ぶためのリソース、特に作者が役立つと感じたものに焦点を当てています。
-
-ほかの話題に焦点を当てたAwesome Common Lispリストもあります。
-- [ライブラリ](https://github.com/CodyReichert/awesome-cl)
-  - [厳選ライブラリ](https://github.com/vindarel/curated-awesome-cl) - 上記のリストからフォークして更新。
-- [ソフトウェア](https://github.com/azzamsa/awesome-cl-software)
-
-コントリビューションを歓迎します。詳細は[コントリビューションガイドライン](https://github.com/GustavBertram/awesome-common-lisp-learning/blob/2bcbbc47a9bce0dfbf5dd81d97f94d1d8360ae11/contributing.md)をお読みください。
+Common Lisp Learningを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

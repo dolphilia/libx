@@ -1,40 +1,13 @@
 ---
-title: "uraimo/Awesome-Swift-Playgrounds"
-description: "uraimo/Awesome-Swift-Playgrounds の正規スナップショット"
+title: "Awesome Swift Playgrounds 156 playgrounds"
+description: "Swift Playgrounds 156 playgroundsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-uraimo-Awesome-Swift-Playgrounds-readme-md"
 ---
 
-<a id="awesome-swift-playgrounds"></a>
-# Awesome Swift Playgrounds [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)  ![156 playgrounds](https://img.shields.io/badge/Playgrounds:-156-orange.svg)
+# Awesome Swift Playgrounds 156 playgrounds
 
-> 優れたSwift Playgroundを厳選したリストです。
+Swift Playgrounds 156 playgroundsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="contributing"></a>
-### 貢献
-
-まず [contribution guidelines](https://github.com/uraimo/awesome-swift-playgrounds/blob/master/CONTRIBUTING.md) を確認してください。すべての [contributors](https://github.com/uraimo/awesome-swift-playgrounds/graphs/contributors) に感謝します。素晴らしいです！
-
-ここに存在するプレイグランド（プレイグランド）が、現在のXcodeリリースと互換性を失っているか、あるいは適切ではない場合は、このファイルを改善するためのプルリクエストを提出してください。あるいは、更新を検討してください。ご協力ありがとうございます！
-
-<a id="downloading-all-the-playgrounds"></a>
-### すべてのPlaygroundをダウンロード
-
-別に示されていない限り、すべてのプレイグランドはSwift 3と互換です。
-
-すべてのプレイグランドは、 `playgrounds/` ディレクトリ内のサブモジュールとして提供されています。すべてを一度にダウンロードしたい場合は、このリポジトリを `git clone --recursive https://github.com/uraimo/Awesome-Swift-Playgrounds.git` でクローンするか、通常通りクローンした後、 `git submodule update --init` を実行してください。
-
-AppleのプレイグランドはZIPアーカイブとして配布されており、手動でダウンロードする必要があります。
-
-<a id="tags"></a>
-### タグ
-
-🌟 = 私の個人的なおすすめ
-
-🍁 = Swift 4以降のプレイグランド
-
-⏳ = Swift 3以前のプレイグランド
-
-<a id="contents"></a>
 ### 目次
 
 - [WWDC学生応募作品](#wwdc-students-submissions)

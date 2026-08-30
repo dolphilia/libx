@@ -1,15 +1,12 @@
 ---
-title: "myshov/awesome-mobile-web-development"
-description: "myshov/awesome-mobile-web-development の正規スナップショット"
+title: "Awesome Mobile Web Development"
+description: "Mobile Web Developmentを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-myshov-awesome-mobile-web-development-readme-md"
 ---
 
-# Awesomeモバイルウェブ開発 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Mobile Web Development
 
-優れたモバイルウェブ体験を作るために必要な情報をまとめています。
-
-<a href="https://github.com/myshov/awesome-mobile-web-development/blob/master/CONTRIBUTING.md">コントリビューションガイドライン</a>
-
+Mobile Web Developmentを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

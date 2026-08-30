@@ -1,16 +1,12 @@
 ---
-title: "kareniel/awesome-evm-security"
-description: "Canonical snapshot of kareniel/awesome-evm-security"
+title: "Awesome EVM Security"
+description: "A curated collection of resources and projects focused on EVM Security."
 licenseSource: "github-kareniel-awesome-evm-security-readme-md"
 ---
 
-# Awesome EVM Security [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome EVM Security
 
-[![Awesome EVM Security](https://github.com/kareniel/awesome-evm-security/blob/c1713225eb3e67c800e4c281ed4e136ff75c25bb/awesome-evm-security.png)](https://github.com/kareniel/awesome-evm-security#readme)
-
-[EVM](https://ethereum.org/en/developers/docs/evm/) stands for "Ethereum Virtual Machine". The EVM powers the Ethereum mainnet, but also Layer 2 protocols, sidechains, and EVM-compatible chains.
-
-This list is an overview of the EVM ecosystem from an information security management perspective.
+A curated collection of resources and projects focused on EVM Security.
 
 ## Contents
 

@@ -1,25 +1,13 @@
 ---
-title: "lukasz-madon/awesome-remote-job"
-description: "リモートワークの求人、企業、働き方、ツール、コミュニティに関する資料集"
+title: "Awesome Remote Job"
+description: "Remote Jobを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lukasz-madon-awesome-remote-job-readme-md"
 ---
 
-# Awesome Remote Job [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/lukasz-madon/awesome-remote-job/)
+# Awesome Remote Job
 
-素晴らしい [remote working](https://en.wikipedia.org/wiki/Telecommuting) リソースを厳選したリスト
+Remote Jobを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-<a id="languages"></a>
-## 言語
-
-- [English (default)](https://github.com/lukasz-madon/awesome-remote-job/blob/a242efa849ab0c7be1623a0f2b464e111ba66da5/README.md)
-- [Español](https://github.com/lukasz-madon/awesome-remote-job/blob/a242efa849ab0c7be1623a0f2b464e111ba66da5/README.es.md)
-- [Français](https://github.com/lukasz-madon/awesome-remote-job/blob/a242efa849ab0c7be1623a0f2b464e111ba66da5/README.fr.md)
-- [简体中文](https://github.com/lukasz-madon/awesome-remote-job/blob/a242efa849ab0c7be1623a0f2b464e111ba66da5/README.zh.md)
-- [日本語](https://github.com/lukasz-madon/awesome-remote-job/blob/a242efa849ab0c7be1623a0f2b464e111ba66da5/README.ja.md)
-
-*貢献したい場合は、README.md をクリックし、ペンのアイコンをクリックして変更を行ってください。変更内容を確認した後、「ファイル変更を提案」ボタンをクリックし、プルリクエストを提出してください。必ず [the contributions guidelines](https://github.com/lukasz-madon/awesome-remote-job/blob/a242efa849ab0c7be1623a0f2b464e111ba66da5/CONTRIBUTING.md) を遵守してください。
-
-<a id="table-of-contents"></a>
 ## 目次
 
 

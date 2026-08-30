@@ -1,13 +1,12 @@
 ---
-title: "deanhume/typography"
-description: "deanhume/typography の正規スナップショット"
+title: "Awesome Web Typography"
+description: "Web Typographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-deanhume-typography-readme-md"
 ---
 
-# Awesome Web Typography [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Web Typography
 
-
-Web タイポグラフィに関する優れた記事を集めたコレクションです。
+Web Typographyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 記事
 

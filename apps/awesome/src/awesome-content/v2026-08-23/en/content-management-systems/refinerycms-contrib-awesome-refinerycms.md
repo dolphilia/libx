@@ -1,12 +1,12 @@
 ---
-title: "refinerycms-contrib/awesome-refinerycms"
-description: "Canonical snapshot of refinerycms-contrib/awesome-refinerycms"
+title: "Awesome Refinery CMS"
+description: "A curated collection of resources and projects focused on Refinery CMS."
 licenseSource: "github-refinerycms-contrib-awesome-refinerycms-readme-md"
 ---
 
-# Awesome Refinery CMS [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Refinery CMS
 
-A collection of awesome [Refinery CMS](http://www.refinerycms.com/) extensions, resources and shiny things.
+A curated collection of resources and projects focused on Refinery CMS.
 
 ## Frontoffice extensions
 * [refinerycms-copywriting](https://github.com/unixcharles/refinerycms-copywriting) - Write once, display at the infinite

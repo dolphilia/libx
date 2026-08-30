@@ -1,16 +1,12 @@
 ---
-title: "filipelinhares/awesome-slack"
-description: "filipelinhares/awesome-slack の正規スナップショット"
+title: "Awesome Slack Communities"
+description: "Slack Communitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-filipelinhares-awesome-slack-readme-md"
 ---
 
-# Awesome Slack コミュニティ [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![ビルド状態](https://api.travis-ci.org/filipelinhares/awesome-slack.svg)](https://travis-ci.org/filipelinhares/awesome-slack)
+# Awesome Slack Communities
 
-**Slack** を利用するウェブ開発・デザイン関連コミュニティのリストです。
-
-## Slack とは
-> Slack はチームコミュニケーションのためのプラットフォームです。すべてを一か所に集約し、すぐに検索でき、どこにいても利用できます。*- slack.com*
+Slack Communitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [開発](#development)

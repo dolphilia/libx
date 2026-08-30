@@ -1,57 +1,12 @@
 ---
-title: "krispo/awesome-haskell"
-description: "Canonical snapshot of krispo/awesome-haskell"
+title: "Awesome Haskell"
+description: "A curated collection of resources and projects focused on Haskell."
 licenseSource: "github-krispo-awesome-haskell-readme-md"
 ---
 
-Awesome Haskell [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-=============
+# Awesome Haskell
 
-An auxiliary list of awesome Haskell links, frameworks, libraries and software. The part of the [awesome](https://github.com/sindresorhus/awesome) projects line.
-
-- [Awesome Haskell](#awesome-haskell)
-    - [_Basics_](#basics)
-    - [Algorithmics](#algorithmics)
-    - [Audio, Music & Sound](#audio-music--sound)
-    - [Category Theory](#category-theory)
-    - [Compilers](#compilers)
-    - [Concurrency & Parallelism](#concurrency--parallelism)
-    - [Configuration](#configuration)
-    - [Cryptography & Hashing](#cryptography--hashing)
-    - [Data Access](#data-access)
-    - [Data Formats](#data-formats)
-    - [Data Science](#data-science)
-    - [Data Structures](#data-structures)
-    - [Database](#database)
-    - [Development Tools](#development-tools)
-    - [Documentation](#documentation)
-    - [Distributed Computing](#distributed-computing)
-    - [Editors](#editors)
-    - [Extensions](#extensions)
-    - [Games](#games)
-    - [GUI](#gui)
-    - [Graphics](#graphics)
-    - [Network](#network)
-    - [Number Theory](#number-theory)
-    - [Web / Frameworks](#web--frameworks)
-    - [Text Processing](#text-processing)
-    - [Messaging](#messaging)
-    - [Languages](#languages)
-    - [Operating Systems](#operating-systems)
-    - [Platforms](#platforms)
-    - [Programming](#programming)
-    - [Science](#science)
-    - [Streaming Processing](#streaming-processing)
-- [Resources](#resources)
-    - [Websites](#websites)
-    - [Bloggers](#bloggers)
-    - [Community](#community)
-    - [Tutorials](#tutorials)
-    - [Courses](#courses)
-    - [Conferences](#conferences)
-    - [Packages](#packages)
-- [License](#license)
-
+A curated collection of resources and projects focused on Haskell.
 
 ## _Basics_
 

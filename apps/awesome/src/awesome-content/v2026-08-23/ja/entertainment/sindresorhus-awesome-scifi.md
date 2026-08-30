@@ -1,18 +1,12 @@
 ---
-title: "sindresorhus/awesome-scifi"
-description: "小説、短編、映画、テレビ、コミック、オーディオブックの優れたSF作品を分類した定本スナップショット"
+title: "Awesome Sci-Fi"
+description: "Sci-Fiを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sindresorhus-awesome-scifi-readme-md"
 ---
 
-# SFのAwesomeリスト [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) <a id="awesome-sci-fi"></a>
+# Awesome Sci-Fi
 
-> SF作品の内容、設定、主題に関する概要です。
-
-SF小説を読み始めるため、[Twitterで](https://twitter.com/sindresorhus/status/557586610850897920)推薦を募った結果です。お気に入りを推薦してくれた皆さんに感謝します。
-
-_SFのAwesomeリスト作品の範囲と特徴を説明します。_ 関連参照: <https://github.com/RichardLitt/awesome-fantasy>。
-
-![](https://cloud.githubusercontent.com/assets/170270/7630100/242bda3a-fa33-11e4-881a-589cffa0c421.gif)
+Sci-Fiを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

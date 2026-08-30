@@ -1,23 +1,12 @@
 ---
-title: "dspinellis/awesome-msr"
-description: "Canonical snapshot of dspinellis/awesome-msr"
+title: "Awesome Empirical Software Engineering"
+description: "A curated collection of resources and projects focused on Empirical Software Engineering."
 licenseSource: "github-dspinellis-awesome-msr-readme-md"
 ---
 
-# Awesome Empirical Software Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-A curated repository of data sets and tools that can be used for conducting evidence-based, data-driven research on software systems.
-This research approach is often termed [experimental, or empirical software engineering](https://en.wikipedia.org/wiki/Experimental_software_engineering).
-Many of the data sets can also be useful in research using [search-based software engineering](https://en.wikipedia.org/wiki/Search-based_software_engineering) methods.
-The repository is named after the [Mining Software Repositories (MSR)](https://www.msrconf.org/) conference series.
-For examples of such work see the MSR conference's [Hall of Fame](http://2016.msrconf.org/#/hall-of-fame).
+# Awesome Empirical Software Engineering
 
-
-- This list requires your input for its continuous improvement.
-  Read the [contribution guide](https://github.com/dspinellis/awesome-msr/blob/ac89acae0eb1ac1265903038305433ad0bf8b360/contributing.md) for instructions on how
-  you can contribute.
-  Alternatively, you can send me an [email](mailto:dds@aueb.gr)
-  if you find the process too cumbersome or confusing.
-- For more awesome lists, see [awesome](https://github.com/sindresorhus/awesome).
+A curated collection of resources and projects focused on Empirical Software Engineering.
 
 ## Contents
 - [Repositories](#repositories)

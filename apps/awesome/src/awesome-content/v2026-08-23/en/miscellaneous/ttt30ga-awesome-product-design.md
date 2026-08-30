@@ -1,22 +1,12 @@
 ---
-title: "ttt30ga/awesome-product-design"
-description: "Canonical snapshot of ttt30ga/awesome-product-design"
+title: "Awesome Product Design"
+description: "A curated collection of resources and projects focused on Product Design."
 licenseSource: "github-ttt30ga-awesome-product-design-readme-md"
 ---
 
-<div align="center" style="margin: 12px">
-  <a href="https://en.wikipedia.org/wiki/Digital_product_design">
-    <img src="./images/apd-icon.png" width="140">
-  </a>
-</div>
+# Awesome Product Design
 
-# Awesome Product Design [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-
-> A collection of bookmarks, resources, articles for product designers.
-
-[Digital product design](https://en.wikipedia.org/wiki/Digital_product_design) is an iterative design process to solve a functional problem with a formal solution. A digital product designer identifies a real problem, offers the best possible solution, and launch it to a market that is showing demand for that particular solution.
-
-Feel free to [add something interesting](https://github.com/ttt30ga/awesome-product-design/blob/cbe26439af5c6331ac24ac32b842d597361b2796/contributing.md) by pull request.
+A curated collection of resources and projects focused on Product Design.
 
 ## Contents
 - [Research](#research)

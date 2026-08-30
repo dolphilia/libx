@@ -1,20 +1,12 @@
 ---
-title: "erwanlemerrer/awesome-audit-algorithms"
-description: "erwanlemerrer/awesome-audit-algorithmsの正規スナップショット"
+title: "Awesome Audit Algorithms"
+description: "Audit Algorithmsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-erwanlemerrer-awesome-audit-algorithms-readme-md"
 ---
 
-# Awesome Audit Algorithms [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Audit Algorithms
 
-ブラックボックスアルゴリズムを監査するアルゴリズムのキュレーション済みリストです。
-現在、多くのアルゴリズム（推薦、スコアリング、分類）は第三者プロバイダーで運用され、ユーザー・機関はデータ上でどのように動作するかの洞察を得られません。このリストの監査アルゴリズムは、監査者がリモートアルゴリズムについての洞察を得ようとする、この「ブラックボックス」設定へ適用されます。
-
-<img src="https://github.com/erwanlemerrer/awesome-audit-algorithms/blob/main/resources/audit.png" width="600" alt="banner" class="center">
-
-> ユーザーは利用可能な API などを通じてリモートアルゴリズムへ問い合わせ、そのアルゴリズムに関する情報を推論します。
-
-## 更新
-更新は低速・停止中: 現行技術により置き換えられています...
+Audit Algorithmsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [論文](#papers)

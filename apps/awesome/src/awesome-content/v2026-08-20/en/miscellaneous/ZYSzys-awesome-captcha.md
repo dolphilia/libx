@@ -1,17 +1,12 @@
 ---
-title: "ZYSzys/awesome-captcha"
-description: "Canonical snapshot of ZYSzys/awesome-captcha"
+title: "Awesome Captcha"
+description: "A curated collection of resources and projects focused on Captcha."
 licenseSource: "github-ZYSzys-awesome-captcha-readme-md"
 ---
 
-# Awesome Captcha [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Captcha
 
-> Curated list of awesome captcha libraries and captcha crack tools.
-
-[CAPTCHA](https://en.wikipedia.org/wiki/CAPTCHA) is a type of challenge–response test used in computing to determine whether or not the user is human.
-
-
-[English](https://github.com/ZYSzys/awesome-captcha/blob/51b13f4b94696ae0bc6e73e0184443f9b65a7a22/README.md) | [中文](https://github.com/ZYSzys/awesome-captcha/blob/51b13f4b94696ae0bc6e73e0184443f9b65a7a22/README-zh.md) | [Polish](https://github.com/ZYSzys/awesome-captcha/blob/51b13f4b94696ae0bc6e73e0184443f9b65a7a22/README-pl.md)
+A curated collection of resources and projects focused on Captcha.
 
 ## Contents
 

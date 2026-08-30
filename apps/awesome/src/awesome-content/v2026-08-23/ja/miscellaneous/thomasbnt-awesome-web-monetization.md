@@ -1,16 +1,12 @@
 ---
-title: "thomasbnt/awesome-web-monetization"
-description: "thomasbnt/awesome-web-monetization の定本スナップショット"
+title: "Awesome Web Monetization"
+description: "Web Monetizationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-thomasbnt-awesome-web-monetization-readme-md"
 ---
 
-<img src="assets/wm_icon_animated.svg" alt="Logo Web Monetization" align="right" width="120px" />
+# Awesome Web Monetization
 
-# Awesome Web Monetization [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-
-> Web Monetizationに関する優れた情報。さらに学び、モジュールやその他のツールを確認しましょう。
-
-**Web Monetization**は、ブラウザー内で直接送金できるWebサービスです。これは、ユーザーエージェントからWebサイトへの支払いストリームを作成できるJavaScriptブラウザーAPIです。
+Web Monetizationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

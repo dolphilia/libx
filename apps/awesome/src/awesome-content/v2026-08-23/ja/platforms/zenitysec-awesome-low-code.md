@@ -1,37 +1,13 @@
 ---
-title: "zenitysec/awesome-low-code"
-description: "zenitysec/awesome-low-code の正規スナップショット"
+title: "Awesome Low Code"
+description: "Low Codeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-zenitysec-awesome-low-code-readme-md"
 ---
 
-<div align=center>
-	<img width="250" height="175" src="https://raw.githubusercontent.com/zenitysec/awesome-low-code/14807b9b580e32d6c9224cb048b4afbdb55dd5fa/media/repo_logo.png" alt="Awesome Low Code">
-	<br>
-	<br>
-	<hr>
-	<p>
-		<sup>Maintained by:</sup>
-		<br>
-		<br>
-		<a href="https://www.zenity.io">
-			<img src="https://raw.githubusercontent.com/zenitysec/awesome-low-code/14807b9b580e32d6c9224cb048b4afbdb55dd5fa/media/zenity_logo.svg"/>
-		</a>
-        <br>
-        <sub>Secure AI Agents Everywhere</sub>
-	</p>
-	<hr>
-</div>
+# Awesome Low Code
 
-<a id="awesome-low-code"></a>
-# Awesome Low Code [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+Low Codeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> 優れたローコードプラットフォーム、ベンダー、ツール、資料を集めた厳選リストです。
-
-> ローコードプラットフォームは、直感的な操作により、ほとんど、またはまったくコーディングスキルを必要とせずに各種ソフトウェアを作成できる開発・実行環境を提供します。
-
-貢献を歓迎します。まず[貢献ガイドライン](https://github.com/zenitysec/awesome-low-code/blob/14807b9b580e32d6c9224cb048b4afbdb55dd5fa/contributing.md)をお読みください。
-
-<a id="contents"></a>
 ## 目次
 
 - [プラットフォーム](#platforms)

@@ -1,13 +1,12 @@
 ---
-title: "Codepoints/awesome-codepoints"
-description: "Canonical snapshot of Codepoints/awesome-codepoints"
+title: "Awesome Code Points"
+description: "A curated collection of resources and projects focused on Code Points."
 licenseSource: "github-Codepoints-awesome-codepoints-readme-md"
 ---
 
-# Awesome Code Points [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Code Points
 
-This is a curated list of characters in Unicode, that have interesting (and
-maybe not widely known) features or are awesome in some other way.
+A curated collection of resources and projects focused on Code Points.
 
 ## Table of Contents
 

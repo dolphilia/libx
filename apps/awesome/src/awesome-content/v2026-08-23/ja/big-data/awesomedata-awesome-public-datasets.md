@@ -1,33 +1,12 @@
 ---
-title: "awesomedata/awesome-public-datasets"
-description: "農業、科学、社会、経済、画像、機械学習など分野別の公開データセット集"
+title: "Awesome Public Datasets"
+description: "Public Datasetsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-awesomedata-awesome-public-datasets-readme-rst"
 ---
 
-Awesome Public Datasets
-=======================
+# Awesome Public Datasets
 
-.. image:: https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg
-   :alt: Awesome
-   :target: https://github.com/sindresorhus/awesome
-
-これは `トピック中心の公開データソース <https://github.com/awesomedata/awesome-public-datasets>`_ のリストです
-高品質に。これらはブログ、回答、ユーザーの反応から収集・整理されています。
-下記に挙げられたデータセットの多くは無料ですが、一部は無料ではありません。
-このプロジェクトは、陳孝明の博士課程研究期間中に上海交通大学の`OMNILab <https://github.com/OMNILab>`_で育成されました。
-OMNILabは現在、`BaiYuLan Open AI community <https://github.com/Bai-Yu-Lan>`_に含まれています。
-他の驚異的な素晴らしいリストは、`sindresorhus's awesome <https://github.com/sindresorhus/awesome>`_ リストに見つかります。
-
-**注意**: このリポジトリは `apd-core <https://github.com/awesomedata/apd-core/tree/master/core>`_ によって自動生成されています。
-このファイルを直接編集しないでください。`このリポジトリへ貢献する方法 <https://github.com/awesomedata/apd-core/blob/master/CONTRIBUTING.md>`_ を用意しています。
-最新のデータ更新をすぐに確認するには、`参加リンク <https://join.slack.com/t/awesomedataworld/shared_invite/zt-dllew5xy-PJYi~mWUdY3hupohbmVZsA>`_ から
-`Slackコミュニティ <https://awesomedataworld.slack.com>`_ へ参加してください。
-
-.. |OK_ICON| image:: https://raw.githubusercontent.com/awesomedata/apd-core/master/deploy/ok-24.png
-.. |FIXME_ICON| image:: https://raw.githubusercontent.com/awesomedata/apd-core/master/deploy/fixme-24.png
-
-* |OK_ICON| 私は大丈夫です。
-* |FIXME_ICON| 修正してください。
+Public Datasetsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 .. contents:: **Table of Contents**
 

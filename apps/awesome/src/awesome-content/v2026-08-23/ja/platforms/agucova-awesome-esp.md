@@ -1,19 +1,12 @@
 ---
-title: "agucova/awesome-esp"
-description: "agucova/awesome-esp の定本スナップショット"
+title: "Awesome ESP"
+description: "ESPを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-agucova-awesome-esp-readme-md"
 ---
 
-# Awesome ESP [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://github.com/agucova/awesome-esp/blob/d6f4c9ba5fc4cddb54103aadd5dc88ef4c3f39dc/code-of-conduct.md)
-ESP8266/32向けの優れたプロジェクトとコードを厳選した一覧です。
+# Awesome ESP
 
-<a href="http://espressif.com/en/products/hardware/esp8266ex/overview"><img src="img/esp8266.jpg" alt="ESP8266" align="left" style="margin-right: 25px" height=150></a>
-<a href="http://espressif.com/en/products/hardware/esp32/overview"><img src="https://pbs.twimg.com/profile_images/863510403120222208/rjVOiTe3.jpg" alt="ESP32" align="left" style="margin-right: 25px" height=150></a>
-> [ESP8266](http://espressif.com/en/products/hardware/esp8266ex/overview)と[ESP32](http://espressif.com/en/products/hardware/esp32/overview)は、ともに上海拠点のEspressif Systemsが製造する、完全なTCP/IPスタックとマイクロコントローラー機能を持つ低コストWi-Fiマイクロチップです。
-> <br/>
-> このリストへの貢献方法は[貢献](https://github.com/agucova/awesome-esp/blob/d6f4c9ba5fc4cddb54103aadd5dc88ef4c3f39dc/contributing.md)を参照してください。
-> <br/><br/>
----
+ESPを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [ファームウェア](#firmware)

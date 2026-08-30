@@ -1,18 +1,12 @@
 ---
-title: "Symbitic/awesome-babylonjs"
-description: "Babylon.jsの公式資料、Playground、デモ、ゲーム、プロジェクトを分類した定本スナップショット"
+title: "Awesome Babylon.js"
+description: "Babylon.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Symbitic-awesome-babylonjs-readme-md"
 ---
 
-# Babylon.jsのAwesomeリスト <a id="awesome-babylonjs"></a> [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome Babylon.js
 
-<a href="https://www.babylonjs.com/"><img alt="Babylon.js logo" src="media/logo.svg" align="right" width="150" /></a>
-
-> Babylon.jsゲームエンジンに関する優れた情報を厳選したリストです。
-
-[Babylon.js](https://www.babylonjs.com/)はTypeScriptで実装された、強力で美しくシンプルかつオープンなゲーム・レンダリングエンジンです。WebGL、WebGPU、Babylon Nativeランタイムによりクロスプラットフォームのゲーム開発に対応します。
-
-> コントリビューションを歓迎します。始める前に[コントリビューションガイドライン](https://github.com/Symbitic/awesome-babylonjs/blob/33c0202a11db5f43833b63b79e801e911897fdcb/CONTRIBUTING.md)を参照してください。
+Babylon.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

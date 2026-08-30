@@ -1,12 +1,12 @@
 ---
-title: "victorlaerte/awesome-it-quotes"
-description: "Canonical snapshot of victorlaerte/awesome-it-quotes"
+title: "Awesome IT Quotes"
+description: "A curated collection of resources and projects focused on IT Quotes."
 licenseSource: "github-victorlaerte-awesome-it-quotes-readme-md"
 ---
 
-# Awesome IT Quotes [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome IT Quotes
 
-This is a list of awesome IT quotes. The aim is to collect all relevant quotes said over the history of IT.
+A curated collection of resources and projects focused on IT Quotes.
 
 ## Contents
 

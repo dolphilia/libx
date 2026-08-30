@@ -1,35 +1,13 @@
 ---
-title: "kilimchoi/engineering-blogs"
-description: "Canonical snapshot of kilimchoi/engineering-blogs"
+title: "Awesome Software Engineering Blogs"
+description: "A curated collection of resources and projects focused on Software Engineering Blogs."
 licenseSource: "github-kilimchoi-engineering-blogs-readme-md"
 ---
 
-# Software Engineering Blogs [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Software Engineering Blogs
 
-### [Companies](#companies-1)
-|     |     |     |     |     |     |     |     |     |
-|:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |
-| [#](#-companies) 	| [A](#a-companies) 	| [B](#b-companies) 	| [C](#c-companies) 	| [D](#d-companies) 	| [E](#e-companies) 	| [F](#f-companies) 	| [G](#g-companies) 	| [H](#h-companies) 	|
-| [I](#i-companies) 	| [J](#j-companies) 	| [K](#k-companies) 	| [L](#l-companies) 	| [M](#m-companies) 	| [N](#n-companies) 	| [O](#o-companies) 	| [P](#p-companies) 	| [Q](#q-companies) 	|
-| [R](#r-companies) 	| [S](#s-companies) 	| [T](#t-companies) 	| [U](#u-companies) 	| [V](#v-companies) 	| [W](#w-companies) 	| [X](#x-companies) 	| [Y](#y-companies) 	| [Z](#z-companies)  	|
+A curated collection of resources and projects focused on Software Engineering Blogs.
 
-### [Individuals/Group Contributors](#individualsgroup-contributors-1)
-|   	|   	|   	|   	|   	|   	|   	|   	|   	|
-|:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |
-| [#](#-individuals) 	| [A](#a-individuals) 	| [B](#b-individuals) 	| [C](#c-individuals) 	| [D](#d-individuals) 	| [E](#e-individuals) 	| [F](#f-individuals) 	| [G](#g-individuals) 	| [H](#h-individuals) 	|
-| [I](#i-individuals) 	| [J](#j-individuals) 	| [K](#k-individuals) 	| [L](#l-individuals) 	| [M](#m-individuals) 	| [N](#n-individuals) 	| [O](#o-individuals) 	| [P](#p-individuals) 	| [Q](#q-individuals) 	|
-| [R](#r-individuals) 	| [S](#s-individuals) 	| [T](#t-individuals) 	| [U](#u-individuals) 	| [V](#v-individuals) 	| [W](#w-individuals) 	| [X](#x-individuals) 	| [Y](#y-individuals) 	| [Z](#z-individuals)  	|
-
-### [Products/Technologies](#productstechnologies-1)
-|   	|   	|   	|   	|   	|   	|   	|   	|   	|
-|:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |:-:  |
-| [#](#-technologies) 	| [A](#a-technologies) 	| [B](#b-technologies) 	| [C](#c-technologies) 	| [D](#d-technologies) 	| [E](#e-technologies) 	| [F](#f-technologies) 	| [G](#g-technologies) 	| [H](#h-technologies) 	|
-| [I](#i-technologies) 	| [J](#j-technologies) 	| [K](#k-technologies) 	| [L](#l-technologies) 	| [M](#m-technologies) 	| [N](#n-technologies) 	| [O](#o-technologies) 	| [P](#p-technologies) 	| [Q](#q-technologies) 	|
-| [R](#r-technologies) 	| [S](#s-technologies) 	| [T](#t-technologies) 	| [U](#u-technologies) 	| [V](#v-technologies) 	| [W](#w-technologies) 	| [X](#x-technologies) 	| [Y](#y-technologies) 	| [Z](#z-technologies)  	|
-
-### Companies
-
-#### \# companies
 * 8th Light https://8thlight.com/blog/
 
 #### A companies

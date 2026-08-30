@@ -1,16 +1,12 @@
 ---
-title: "Siddharth11/Colorful"
-description: "Siddharth11/Colorful の定本スナップショット"
+title: "Awesome Colorful"
+description: "Colorfulを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Siddharth11-Colorful-readme-md"
 ---
 
-<p align="center">
-	<img src="color-palette.gif" alt="header image">
-</p>
+# Awesome Colorful
 
-# Colorful [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-__次の配色を選ぶための優れたリソースを集めたリスト。__
-__[awesome](https://github.com/sindresorhus/awesome)__リストに着想を得ています。貢献する前に__[コントリビューションガイドライン](https://github.com/Siddharth11/Colorful/blob/3af5997a081170eae9f745c2203a41f9fef316d1/contributing.md)__をお読みください。
+Colorfulを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [ツール](#tools)

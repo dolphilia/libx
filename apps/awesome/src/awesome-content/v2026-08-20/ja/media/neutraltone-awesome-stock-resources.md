@@ -1,16 +1,12 @@
 ---
-title: "neutraltone/awesome-stock-resources"
-description: "写真、動画、イラスト、音声などのストック素材を分類した定本スナップショット"
+title: "Awesome Stock Resources"
+description: "Stock Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-neutraltone-awesome-stock-resources-readme-md"
 ---
 
-# ストック素材のAwesomeリスト <a id="awesome-stock-resources"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Github Workflow](https://img.shields.io/github/actions/workflow/status/neutraltone/awesome-stock-resources/main.yml)](https://github.com/neutraltone/awesome-stock-resources/actions) [![Support Me via Paypal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.me/tonyphipps) [![Buy Me a Coffee](https://img.shields.io/badge/Donate-Buy_Me_a_Coffee-orange.svg)](https://buymeacoffee.com/neutraltone)
+# Awesome Stock Resources
 
-![Introductory images](https://raw.githubusercontent.com/neutraltone/awesome-stock-resources/3600069a00c1ca8947a60eab2a8a13e82ef962e1/img/splash.jpg)
-
-> ストック写真、動画、イラストを提供する優れたWebサイトを厳選したリストです。
-
-このリポジトリは可能な限り最新に保たれています。リンク切れや未掲載の資料を見つけた場合はPull Requestを送ってください。
+Stock Resourcesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 

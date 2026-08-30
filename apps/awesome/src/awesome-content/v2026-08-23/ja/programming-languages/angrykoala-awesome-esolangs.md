@@ -1,19 +1,12 @@
 ---
-title: "angrykoala/awesome-esolangs"
-description: "angrykoala/awesome-esolangs の定本スナップショット"
+title: "Awesome Esolangs"
+description: "Esolangsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-angrykoala-awesome-esolangs-readme-md"
 ---
 
-# Awesome Esolangs [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Esolangs
 
-<img src="logo_piet.png" align="right">
-
-優れた難解プログラミング言語、リソース、関連プロジェクトを集めたリスト。
-
-
-> 「難解プログラミング言語、またはesolangとは、実用のためではなく、奇妙な考えを実験したり、プログラミングを困難にしたり、あるいは冗談として設計されたコンピュータプログラミング言語である。」  
-> ***esolang.org***
-
+Esolangsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 * [言語](#languages)

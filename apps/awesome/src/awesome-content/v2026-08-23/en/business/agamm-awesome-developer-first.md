@@ -1,26 +1,12 @@
 ---
-title: "agamm/awesome-developer-first"
-description: "Canonical snapshot of agamm/awesome-developer-first"
+title: "Awesome Developer-First"
+description: "A curated collection of resources and projects focused on Developer-First."
 licenseSource: "github-agamm-awesome-developer-first-readme-md"
 ---
 
-# Awesome Developer-First [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Developer-First
 
-A curated list of awesome developer-first products.
-(👀 Shameless plug) You might like [unzip.dev](https://unzip.dev?ref=github-adf) (developer trends newsletter I created).
-You can follow [Agam](https://x.com/agammore) and [Flo](https://x.com/fmerian) for more dev related content :)
-
-The definition of developer-first for this repo is:
-* Developers are the target audience.
-* "Headless", "API-first", "SaaS" are frequently used keywords.
-* Usually, this means that the front page has some code examples.
-* Products - tools/services that people pay for.
-
-```diff
-+ 👀 Watch this repo to get notifications about new products we find
-```
-
-For the latest additions [click here](https://github.com/agamm/awesome-developer-first/commits/main).
+A curated collection of resources and projects focused on Developer-First.
 
 ## Contents
 * [AI Coding](#ai-coding)

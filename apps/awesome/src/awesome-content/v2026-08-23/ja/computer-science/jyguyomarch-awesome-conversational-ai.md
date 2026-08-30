@@ -1,11 +1,12 @@
 ---
-title: "jyguyomarch/awesome-conversational-ai"
-description: "jyguyomarch/awesome-conversational-ai の定本スナップショット"
+title: "Awesome Conversational AI"
+description: "Conversational AIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jyguyomarch-awesome-conversational-ai-readme-md"
 ---
 
-# Awesome Conversational AI [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-> 優れたチャットボットやデジタルアシスタントの世界に入り、作成するために役立つ、対話型 AI リソースの厳選リスト。
+# Awesome Conversational AI
+
+Conversational AIを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

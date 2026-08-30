@@ -1,26 +1,12 @@
 ---
-title: "adafruit/awesome-circuitpython"
-description: "Canonical snapshot of adafruit/awesome-circuitpython"
+title: "Awesome CircuitPython"
+description: "A curated collection of resources and projects focused on CircuitPython."
 licenseSource: "github-adafruit-awesome-circuitpython-readme-md"
 ---
 
 # Awesome CircuitPython
 
-<p align="center">
-  <img style="width: min(400px, 100%)" src="https://raw.githubusercontent.com/adafruit/awesome-circuitpython/master/assets/awesome_circuitpython.png" alt="Awesome CircuitPython">
-<br>
-</p>
-
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> A curated list of awesome CircuitPython guides, videos, libraries, frameworks, software and resources.
-
-
-<video style="display: block; max-width: 720px; width: 100%; margin: auto;" controls src="https://user-images.githubusercontent.com/1685947/115119719-d6e21f00-9f77-11eb-84bf-3f7af59948a3.mov"></video>
-
-
-
-[CircuitPython](https://learn.adafruit.com/welcome-to-circuitpython/what-is-circuitpython) is Adafruit's branch of MicroPython designed to simplify experimentation and education on low-cost microcontrollers. It makes it easier than ever to start prototyping by requiring no upfront desktop software downloads. With CircuitPython you can write clean and simple Python code to control hardware instead of having to use complex low-level languages like C or C++ (what Arduino uses for programming). It's great for beginners!
+A curated collection of resources and projects focused on CircuitPython.
 
 ## Contents
 

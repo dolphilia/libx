@@ -1,17 +1,12 @@
 ---
-title: "AchoArnold/discount-for-student-dev"
-description: "Canonical snapshot of AchoArnold/discount-for-student-dev"
+title: "Awesome discount-for-student-dev"
+description: "A curated collection of resources and projects focused on discount-for-student-dev."
 licenseSource: "github-AchoArnold-discount-for-student-dev-readme-md"
 ---
 
-# discount-for-student-dev [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-This is list of discounts on software (SaaS, PaaS, IaaS, etc.) and other offerings for developers who happen to be students.
-This list is greatly inspired by the [free-for-dev list](https://github.com/ripienaar/free-for-dev).
+# Awesome discount-for-student-dev
 
-You can help by sending Pull Requests to add more services. Please read the [contribution guidelines](https://github.com/AchoArnold/discount-for-student-dev/blob/b196a212b7673569abb34a233e1a0d650f9b9bbd/contributing.md) first.
-Once I have a good set of links in this README file, I'll look into a better layout for the information and links (help with that is appreciated too).
-
-If you're not inclined to make PRs you can tweet me at [@acho_arnold](https://twitter.com/acho_arnold)!
+A curated collection of resources and projects focused on discount-for-student-dev.
 
 Table of Contents
 =================

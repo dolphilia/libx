@@ -1,12 +1,12 @@
 ---
-title: "ScaleLeap/awesome-amazon-seller"
-description: "ScaleLeap/awesome-amazon-seller の定本スナップショット"
+title: "Awesome Amazon Seller"
+description: "Amazon Sellerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ScaleLeap-awesome-amazon-seller-readme-md"
 ---
 
-# Awesome Amazon Seller [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Amazon Seller
 
-> Amazon販売者向けツールとリソースの厳選リスト。
+Amazon Sellerを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

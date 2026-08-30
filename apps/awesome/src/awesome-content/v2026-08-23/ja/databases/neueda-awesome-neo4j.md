@@ -1,23 +1,12 @@
 ---
-title: "neueda/awesome-neo4j"
-description: "neueda/awesome-neo4j の正規スナップショット"
+title: "Awesome Neo4j"
+description: "Neo4jを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-neueda-awesome-neo4j-readme-md"
 ---
 
-Awesome Neo4j
-==============
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![ビルド状態](https://api.travis-ci.org/neueda/awesome-neo4j.svg?branch=master )](https://travis-ci.org/neueda/awesome-neo4j)
+# Awesome Neo4j
 
-優れた[Neo4j](https://neo4j.com/)リソースの厳選リスト。
-GitHubの`awesome-*`トレンドに着想を得ています。
-
-よく知られたリソースを分類し、コミュニティ主導で収集することを目標としています。
-共有、提案、コントリビューションをいつでも歓迎します。
-
-すべての[コントリビューター](https://github.com/Neueda/awesome-neo4j/graphs/contributors)に感謝します。
-
-[Neueda R&D](http://labs.neueda.com/)が管理しています。
+Neo4jを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 目次
 =================

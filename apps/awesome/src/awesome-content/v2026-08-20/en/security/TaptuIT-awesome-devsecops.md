@@ -1,24 +1,12 @@
 ---
-title: "TaptuIT/awesome-devsecops"
-description: "Canonical snapshot of TaptuIT/awesome-devsecops"
+title: "Awesome Devsecops"
+description: "A curated collection of resources and projects focused on Devsecops."
 licenseSource: "github-TaptuIT-awesome-devsecops-readme-md"
 ---
 
-![Awesome](https://raw.githubusercontent.com/TaptuIT/awesome-devsecops/a271dcf63324c6a6c76a3ec7708671ab55172119/media/banner.png)
+# Awesome Devsecops
 
-<p align="center">
-  <a href="https://awesome.re">
-    <img alt="Awesome" src="https://awesome.re/badge-flat.svg">
-  </a>
-</p>
-<hr/>
-
-> Curating the best DevSecOps resources and tooling.
-
-[DevSecOps](https://www.rapid7.com/fundamentals/devsecops/) is an extension of the [DevOps](https://www.atlassian.com/devops) movement that aims to bring security practices into the development lifecycle through developer-centric security tooling and processes.
-
-Contributions welcome. Add links through pull requests or create an issue to start a discussion.
-
+A curated collection of resources and projects focused on Devsecops.
 
 ## Contents
 - [Resources](#resources)

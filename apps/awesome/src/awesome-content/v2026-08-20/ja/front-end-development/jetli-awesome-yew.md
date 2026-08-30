@@ -1,18 +1,12 @@
 ---
-title: "jetli/awesome-yew"
-description: "jetli/awesome-yew の定本スナップショット"
+title: "Awesome Yew"
+description: "Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jetli-awesome-yew-readme-md"
 ---
 
-# Awesome Yew [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Yew
 
-[<img src="logo.svg" align="right" width="100" title="Awesome Yew">](https://github.com/yewstack/yew)
-
-> Yew に関連する素晴らしいものを厳選したリストです。
-
-[Yew](https://github.com/yewstack/yew) は、WebAssembly を使ったマルチスレッドのフロントエンドアプリを作成するための、Elm と React に着想を得たモダンな Rust フレームワークです。
-
-コントリビューションを歓迎します。最初に[コントリビューションガイドライン](https://github.com/jetli/awesome-yew/blob/33d03a7b3eaf0b8feed3066fbd5c82d4caca06e4/CONTRIBUTING.md)をお読みください。
+Yewを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,16 +1,12 @@
 ---
-title: "aliesbelik/awesome-gatling"
-description: "aliesbelik/awesome-gatling の正規スナップショット"
+title: "Awesome Gatling"
+description: "Gatlingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-aliesbelik-awesome-gatling-readme-md"
 ---
 
-# Awesome Gatling [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Gatling
 
-[<img src="https://raw.githubusercontent.com/aliesbelik/awesome-gatling/d742881c4a82d75dc95b9ac4b32cbc6caf75828d/assets/images/gatling-logo.svg" align="right" width="260" alt="Gatling">](https://gatling.io/)
-
-[Gatling](https://gatling.io/) を使った負荷テストのあらゆる側面と、プラグイン、統合、テスト手法、DevOps プラクティスなどの関連事項を扱うリソース集です。
-
-> [Gatling](https://gatling.io/) は Scala、Akka、Netty を基にしたオープンソースの負荷・性能テストフレームワークです。
+Gatlingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

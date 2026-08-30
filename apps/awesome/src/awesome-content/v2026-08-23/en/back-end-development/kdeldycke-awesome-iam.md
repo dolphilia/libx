@@ -1,58 +1,12 @@
 ---
-title: "kdeldycke/awesome-iam"
-description: "Canonical snapshot of kdeldycke/awesome-iam"
+title: "Awesome IAM"
+description: "A curated collection of resources and projects focused on IAM."
 licenseSource: "github-kdeldycke-awesome-iam-readme-md"
 ---
 
+# Awesome IAM
 
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-iam#readme">
-    <img src="https://raw.githubusercontent.com/kdeldycke/awesome-iam/main/assets/awesome-iam-header.jpg" alt="Awesome IAM">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/kdeldycke/awesome-iam#readme" hreflang="en"><img src="https://img.shields.io/badge/lang-English-blue?style=flat-square" lang="en" alt="English"></a>
-  <a href="https://github.com/kdeldycke/awesome-iam/blob/main/readme.zh.md" hreflang="zh"><img src="https://img.shields.io/badge/lang-中文-blue?style=flat-square" lang="zh" alt="中文"></a>
-</p>
-
-<p align="center">
-  <a href="https://www.descope.com/?utm_source=awesome-iam&utm_medium=referral&utm_campaign=awesome-iam-oss-sponsorship">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kdeldycke/awesome-iam/main/assets/descope-logo-dark-background.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/kdeldycke/awesome-iam/main/assets/descope-logo-light-background.svg">
-      <img width="300" src="https://raw.githubusercontent.com/kdeldycke/awesome-iam/main/assets/descope-logo-light-background.svg">
-    </picture>
-    <br/>
-    <strong>Drag and drop your auth.</strong><br/>
-    Add authentication, user management, and authorization to your app with a few lines of code.
-  </a>
-  <br/><br/>
-</p>
-
-<p align="center">
-  <a href="https://github.com/sponsors/kdeldycke">
-    <strong>Your brand → here 🚀</strong>
-    <br/>
-    <sup>SEO is dead. Place your product here to target AI's training data.</sup>
-  </a>
-</p>
-
----
-
-<p align="center">
-  <i>Trusting is hard. Knowing who to trust, even harder.</i><br>
-  — Maria V. Snyder<sup id="intro-quote-ref"><a href="#intro-quote-def">[1]</a></sup>
-</p>
-
-
-
-[IAM](https://en.wikipedia.org/wiki/Identity_management) stands for Identity and Access Management. It is a complex domain which covers **user accounts, authentication, authorization, roles, permissions and privacy**. It is an essential pillar of the cloud stack, where users, products and security meets. The [other pillar being billing & payments 💰](https://github.com/kdeldycke/awesome-billing/).
-
-This curated [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome) list expose all the technologies, protocols and jargon of the domain in a comprehensive and actionable manner.
-
-
+A curated collection of resources and projects focused on IAM.
 
 ## Contents
 

@@ -1,35 +1,12 @@
 ---
-title: "inoue0426/awesome-computational-biology"
-description: "Canonical snapshot of inoue0426/awesome-computational-biology"
+title: "Awesome Computational Biology"
+description: "A curated collection of resources and projects focused on Computational Biology."
 licenseSource: "github-inoue0426-awesome-computational-biology-readme-md"
 ---
 
-# Awesome Computational Biology [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Computational Biology
 
-A curated collection of databases, software, and papers related to computational biology.
-
-> Computational biology involves the development and application of data-analytical and theoretical methods, mathematical modelling and computational simulation techniques to the study of biological, ecological, behavioural, and social systems. — [Wikipedia](https://en.wikipedia.org/wiki/Computational_biology)
-
----
-
-## Overview
-
-[![Resource Landscape Overview](https://github.com/inoue0426/awesome-computational-biology/blob/dd96b38e5775c672020b9372e78dfa8e8b8ecdb6/docs/overview.png)](https://inoue0426.github.io/awesome-computational-biology/overview.html)
-
-> Interactive version: [Resource Overview page](https://inoue0426.github.io/awesome-computational-biology/overview.html)  
-> Regenerate the figure: `python scripts/generate_overview.py`
-
----
-
-## GitHub Pages UI
-
-Browse and search the resources via the [GitHub Pages UI](https://inoue0426.github.io/awesome-computational-biology/).
-
-- Search matches `name`, `description`, `tasks`, `modalities`, and `tags`.
-- The **Task**, **Modality**, and **Type** filters map directly to `tasks`, `modalities`, and `type` in `docs/data/resources.json`.
-- Clicking badges on cards applies the corresponding filter.
-
----
+A curated collection of resources and projects focused on Computational Biology.
 
 ## Table of Contents
 

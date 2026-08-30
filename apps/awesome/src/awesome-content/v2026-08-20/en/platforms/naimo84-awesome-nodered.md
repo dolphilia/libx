@@ -1,16 +1,12 @@
 ---
-title: "naimo84/awesome-nodered"
-description: "Canonical snapshot of naimo84/awesome-nodered"
+title: "Awesome Node-RED"
+description: "A curated collection of resources and projects focused on Node-RED."
 licenseSource: "github-naimo84-awesome-nodered-readme-md"
 ---
 
-# Awesome Node-RED [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) <a href="https://nodered.org/"><img src="https://nodered.org/about/resources/media/node-red-hexagon.png" width="200" align="right" alt="Node-RED"></a>
+# Awesome Node-RED
 
-> Curated list of useful resources for Node-RED.
-
-[Node-RED](https://nodered.org/) is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.
-
-It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click.
+A curated collection of resources and projects focused on Node-RED.
 
 ## Contents
 

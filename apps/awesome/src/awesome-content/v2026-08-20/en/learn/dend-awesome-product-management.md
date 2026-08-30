@@ -1,25 +1,12 @@
 ---
-title: "dend/awesome-product-management"
-description: "Canonical snapshot of dend/awesome-product-management"
+title: "Awesome Product Management"
+description: "A curated collection of resources and projects focused on Product Management."
 licenseSource: "github-dend-awesome-product-management-readme-md"
 ---
 
-<div align="center">
-
 # Awesome Product Management
 
-[![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-[![PDF Build](https://github.com/dend/awesome-product-management/actions/workflows/makepdf.yml/badge.svg)](https://github.com/dend/awesome-product-management/actions/workflows/makepdf.yml)
-[![Link Checker](https://github.com/dend/awesome-product-management/actions/workflows/linkchecker.yml/badge.svg)](https://github.com/dend/awesome-product-management/actions/workflows/linkchecker.yml)
-[![GitHub Repo stars](https://img.shields.io/github/stars/dend/awesome-product-management?style=flat)](https://github.com/dend/awesome-product-management/stargazers)
-
-*A curated list of awesome resources for product/program managers to learn and grow.*
-
-</div> 
-
-## Who's a product manager?
-
-By definition, a product manager is an individual who drives the product vision and has a deep understanding of customer needs. PMs generally are considered to be at the intersection of the business, technology and design spaces - they are the experts in the problem space, and are able to learn and iterate quickly to deliver valuable experiences to consumers.
+A curated collection of resources and projects focused on Product Management.
 
 ## Contents
 
@@ -585,5 +572,3 @@ Technical perspectives on product development and engineering practices.
 ## License
 
 Licensed under the [Creative Commons CC0 License](https://creativecommons.org/publicdomain/zero/1.0/).
-
-

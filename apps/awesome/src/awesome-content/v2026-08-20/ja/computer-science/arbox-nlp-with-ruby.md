@@ -1,39 +1,12 @@
 ---
-title: "arbox/nlp-with-ruby"
-description: "arbox/nlp-with-ruby の定本スナップショット"
+title: "Awesome NLP with Ruby"
+description: "NLP with Rubyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-arbox-nlp-with-ruby-readme-md"
 ---
 
-<img src="header.png" align="center">
+# Awesome NLP with Ruby
 
-[![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome#readme) [![Support Me](https://img.shields.io/badge/%F0%9F%92%97-Support%20Me-blue.svg?style=flat-square)](https://www.patreon.com/arbox)
-
-[[RubyML](https://github.com/arbox/machine-learning-with-ruby) |
- [RubyDataScience](https://github.com/arbox/data-science-with-ruby) |
- [RubyInterop](https://github.com/arbox/ruby-interoperability)]
-
-
-# Awesome NLP with Ruby [<img src="ruby.jpg" align="left" width="30px" height="30px" />][ruby]
-
-> Rubyによるテキスト処理に役立つリソースです。
-
-この厳選一覧は、[awesome](https://github.com/sindresorhus/awesome/blob/master/awesome.md)な資料、ライブラリ、情報源のうち、[Rubyプログラミング言語](https://github.com/arbox/nlp-with-ruby/blob/44db8a3e4c74c2a6fdcc6bef6bd14ed021b7bd24/ruby)で人間の言語を計算処理するものを集めています。
-この分野は[NLP](https://en.wikipedia.org/wiki/Natural_language_processing)、
-[計算言語学](https://en.wikipedia.org/wiki/Computational_linguistics)、
-[HLT](https://en.wikipedia.org/wiki/Language_technology)（Human Language Technology）と呼ばれ、
-[人工知能](https://en.wikipedia.org/wiki/Artificial_intelligence)、
-[機械学習](https://en.wikipedia.org/wiki/Machine_learning)、
-[情報検索](https://en.wikipedia.org/wiki/Information_retrieval)、
-[テキストマイニング](https://en.wikipedia.org/wiki/Text_mining)、
-[知識抽出](https://en.wikipedia.org/wiki/Knowledge_extraction)などの関連分野と組み合わせて利用されます。
-
-この一覧は、言語モデルとNLPツールに関する日々の実務から生まれました。
-[この一覧の目的](https://github.com/arbox/nlp-with-ruby/blob/44db8a3e4c74c2a6fdcc6bef6bd14ed021b7bd24/motivation.md)と、重要な判断・回答をまとめた[FAQ](https://github.com/arbox/nlp-with-ruby/blob/44db8a3e4c74c2a6fdcc6bef6bd14ed021b7bd24/FAQ.md)も参照してください。
-
-:sparkles: [コントリビューション](#contributing)を歓迎します。プルリクエストでリンクを追加するか、Issueで議論を始めてください。
-
-最新情報は[Twitter](https://twitter.com/NonWebRuby)をフォローし、`#RubyNLP`ハッシュタグで共有してください。
-
+NLP with Rubyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

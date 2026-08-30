@@ -1,18 +1,12 @@
 ---
-title: "d3viant0ne/awesome-rethinkdb"
-description: "d3viant0ne/awesome-rethinkdb の正規スナップショット"
+title: "Awesome Rethinkdb"
+description: "Rethinkdbを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-d3viant0ne-awesome-rethinkdb-readme-md"
 ---
 
-<h3 align="center">
-	<img width="120" src="https://github.com/d3viant0ne/awesome-rethinkdb/blob/master/media/rethinkdb.jpg" alt="RethinkDB">
-	<br>
-</h3>
-## Awesome RethinkDB [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Rethinkdb
 
-> RethinkDBの優れたリソース、ライブラリ、ツール、アプリケーションのキュレーションリスト。
-
-[awesome](https://github.com/sindresorhus/awesome)リストに着想を得たものです。[コントリビュート](https://github.com/d3viant0ne/awesome-rethinkdb/blob/c98b27d16c237e46d997f5eee2c24e946ba40a38/CONTRIBUTING.md)により、このリストを改善してください。
+Rethinkdbを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次
  - [Resources](#resources)

@@ -1,73 +1,12 @@
 ---
-title: "sindresorhus/awesome-nodejs"
-description: "Node.jsの公式資料、パッケージ、運用・学習資源を用途別に整理した定本スナップショット"
+title: "Awesome Node.js"
+description: "Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sindresorhus-awesome-nodejs-readme-md"
 ---
 
-<div align="center">
-	<div>
-		<img width="500" src="media/logo.svg" alt="Awesome Node.js">
-		<br>
-	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<p>
-		<p>
-			<sup>
-				<a href="https://github.com/sponsors/sindresorhus">私のオープンソース活動はコミュニティに支えられています</a>
-			</sup>
-		</p>
-		<sup>特別な支援者:</sup>
-		<br>
-		<br>
-		<br>
-		<a href="https://depot.dev?utm_source=github&utm_medium=sindresorhus">
-			<div>
-				<picture>
-					<source width="180" media="(prefers-color-scheme: dark)" srcset="https://sindresorhus.com/assets/thanks/depot-logo-dark.svg">
-					<source width="180" media="(prefers-color-scheme: light)" srcset="https://sindresorhus.com/assets/thanks/depot-logo-light.svg">
-					<img width="180" src="https://sindresorhus.com/assets/thanks/depot-logo-light.svg" alt="Depot logo">
-				</picture>
-			</div>
-			<b>高速なリモートコンテナビルドとGitHub Actionsランナー。</b>
-		</a>
-		<br>
-		<br>
-		<br>
-		<a href="https://circleback.ai?utm_source=sindresorhus&utm_medium=sponsorship&utm_campaign=awesome-list&utm_id=awesome-nodejs">
-			<div>
-				<img width="340" src="https://sindresorhus.com/assets/thanks/circleback-logo.png?x" alt="Circleback logo">
-			</div>
-			<b>あらゆる会話を最大限に活用します。</b>
-			<div>
-				<sup>AIによる会議メモ、自動化、検索を提供し、AIエージェントへ作業に必要なコンテキストを与えます。</sup>
-			</div>
-		</a>
-		<br>
-		<br>
-		<br>
-	</p>
-	<hr>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<p>
-		<sub><a href="https://node.cool"><code>node.cool</code></a>と入力するとこのページへ移動できます。<a href="https://twitter.com/sindresorhus">Twitter</a>も参照してください。</sub>
-	</p>
-	<br>
-	<p>
-		<a href="https://en.wikipedia.org/wiki/Node.js">Node.js</a>は、サーバーやコマンドラインツールを作成するためのオープンソースかつクロスプラットフォームのJavaScriptランタイムです。
-	</p>
-	<br>
-</div>
+# Awesome Node.js
+
+Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

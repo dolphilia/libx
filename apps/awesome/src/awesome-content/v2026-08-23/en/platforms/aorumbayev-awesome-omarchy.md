@@ -1,14 +1,12 @@
 ---
-title: "aorumbayev/awesome-omarchy"
-description: "Canonical snapshot of aorumbayev/awesome-omarchy"
+title: "Awesome Omarchy"
+description: "A curated collection of resources and projects focused on Omarchy."
 licenseSource: "github-aorumbayev-awesome-omarchy-readme-md"
 ---
 
-# Awesome Omarchy [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Omarchy
 
-> A curated list of awesome Omarchy themes, resources, and tools for the modern Arch Linux/Hyprland setup.
-
-[Omarchy](https://omarchy.org/) is an opinionated Arch Linux/Hyprland configuration that transforms a fresh Arch installation into a fully-configured, beautiful, and modern desktop environment with a single command.
+A curated collection of resources and projects focused on Omarchy.
 
 ## Contents
 

@@ -1,16 +1,12 @@
 ---
-title: "dh-tech/awesome-digital-humanities"
-description: "dh-tech/awesome-digital-humanities の定本スナップショット"
+title: "Awesome Digital Humanities"
+description: "Digital Humanitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dh-tech-awesome-digital-humanities-readme-md"
 ---
 
-# Awesome Digital Humanities [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Digital Humanities
 
-[<img src="android-chrome-512x512.png" align="right" width="100">](https://github.com/dh-tech/awesome-digital-humanities/)
-
-> 定量的・計算的手法を用いる人文学研究者のためのソフトウェア。
-
-これはデジタル人文学を支援するツール、リソース、サービスのキュレーションリストです。 [Contributions](https://github.com/dh-tech/awesome-digital-humanities/blob/4f5ed493f19503ea8f2bd31d746a25928f51d806/CONTRIBUTING.md) are welcome!
+Digital Humanitiesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -208,4 +204,3 @@ licenseSource: "github-dh-tech-awesome-digital-humanities-readme-md"
 - [Cultural AI](https://www.zotero.org/groups/2782799/cultural_ai) - A collaborative bibliography on the intersection of cultural heritage and artificial intelligence.
 - [DH Unibe](https://www.zotero.org/groups/2386895/dh_unibe) - A collaborative bibliography on Digital Humanities from the University of Bern.
 - [Doing Digital Humanities - A DARIAH Bibliography](https://www.zotero.org/groups/113737/doing_digital_humanities_-_a_dariah_bibliography) - A comprehensive bibliography on Digital Humanities methods and practices.
-

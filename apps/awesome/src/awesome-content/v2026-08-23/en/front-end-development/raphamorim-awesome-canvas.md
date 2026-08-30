@@ -1,18 +1,12 @@
 ---
-title: "raphamorim/awesome-canvas"
-description: "Canonical snapshot of raphamorim/awesome-canvas"
+title: "Awesome Canvas"
+description: "A curated collection of resources and projects focused on Canvas."
 licenseSource: "github-raphamorim-awesome-canvas-readme-md"
 ---
 
 # Awesome Canvas
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-A curated list of awesome Canvas examples, related articles and posts. Inspired by [awesome-python](https://github.com/vinta/awesome-python).
-
-## Contributing
-
-Please take a quick gander at the [contribution guidelines](https://github.com/raphamorim/awesome-canvas/blob/master/CONTRIBUTING.md) first.
+A curated collection of resources and projects focused on Canvas.
 
 ## Summary
 

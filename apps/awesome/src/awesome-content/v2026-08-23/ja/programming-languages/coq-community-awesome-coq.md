@@ -1,18 +1,12 @@
 ---
-title: "coq-community/awesome-coq"
-description: "coq-community/awesome-coq の定本スナップショット"
+title: "Awesome Coq"
+description: "Coqを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-coq-community-awesome-coq-readme-md"
 ---
 
-# Awesome Coq [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Coq
 
-[<img src="coq-logo.svg" align="right" width="100" alt="coq-community logo" title="Awesome Coq is a coq-community project">](https://github.com/coq-community/manifesto)
-
-> 優れたCoq Library、Plugin、Tool、資料を厳選したリストです。
-
-[Coq Proof Assistant](https://coq.inria.fr)は、数学的定義、実行可能Algorithm、定理を書くための形式言語と、機械検査される証明を半対話的に開発する環境を提供します。
-
-コントリビューションを歓迎します。最初に[ガイドライン](https://github.com/coq-community/awesome-coq/blob/master/CONTRIBUTING.md)をお読みください。
+Coqを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

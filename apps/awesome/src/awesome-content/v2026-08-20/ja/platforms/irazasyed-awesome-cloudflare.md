@@ -1,14 +1,12 @@
 ---
-title: "irazasyed/awesome-cloudflare"
-description: "irazasyed/awesome-cloudflare の定本スナップショット"
+title: "Awesome Cloudflare"
+description: "Cloudflareを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-irazasyed-awesome-cloudflare-readme-md"
 ---
 
-# Awesome Cloudflare [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re) [<img src="media/cf-logo.svg" width="250" align="right" alt="Cloudflare">](https://www.cloudflare.com)
+# Awesome Cloudflare
 
-> 優れた[Cloudflare](https://www.cloudflare.com) Workerレシピ、オープンソースプロジェクト、ガイド、ブログ、その他のリソースの厳選リスト。
-
-Cloudflareは、コンテンツ配信ネットワーク（CDN）サービス、DDoS軽減、インターネットセキュリティ、分散ドメインネームサーバー（DNS）サービスを提供し、訪問者とCloudflareユーザーのホスティングプロバイダーの間に位置して、Webサイトのリバースプロキシとして機能します。
+Cloudflareを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

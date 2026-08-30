@@ -1,13 +1,12 @@
 ---
-title: "idematos/awesome-permacomputing"
-description: "Canonical snapshot of idematos/awesome-permacomputing"
+title: "Awesome Permacomputing"
+description: "A curated collection of resources and projects focused on Permacomputing."
 licenseSource: "github-idematos-awesome-permacomputing-readme-md"
 ---
 
-# Awesome Permacomputing [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-<a href="https://permacomputing.net/"><img src="media/logo.png" alt="Permacomputing Logo" align="right"></a>
-A curation of resources, projects, and communities related to permacomputing.
-> [Permacomputing](https://permacomputing.net/permacomputing/) is both a concept and a community of practice oriented around issues of resilience and regenerativity in computer and network technology inspired by permaculture. 
+# Awesome Permacomputing
+
+A curated collection of resources and projects focused on Permacomputing.
 
 ## Contents
 

@@ -1,19 +1,12 @@
 ---
-title: "sergey-pimenov/awesome-web-animation"
-description: "sergey-pimenov/awesome-web-animation の正規スナップショット"
+title: "Awesome Web Animation"
+description: "Web Animationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-sergey-pimenov-awesome-web-animation-readme-md"
 ---
 
-# Awesome Web Animation [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Web Animation
 
-<a href="https://awesome-web-animation.netlify.com">
-  <img src="readme_assets/header.png">
-</a>
-
-このリストには、Web アニメーション作成向けの最も有用なツール・データを収録しています。
-* Canvas、SVG、テキスト、スクロールなど、ブラウザー内のあらゆるものをアニメーションさせるライブラリ。
-* ブラウザー内のアニメーションに関する書籍。
-* ブラウザーへエクスポートできるアニメーション用 GUI ツール。
+Web Animationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [SVG](#svg)

@@ -1,31 +1,12 @@
 ---
-title: "melvin0008/awesome-projects-boilerplates"
-description: "melvin0008/awesome-projects-boilerplates の正規スナップショット"
+title: "Awesome boilerplates"
+description: "boilerplatesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-melvin0008-awesome-projects-boilerplates-readme-md"
 ---
 
-# Awesomeボイラープレート集[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome boilerplates
 
-生産性を高めるボイラープレートとテンプレートの厳選リストです。
-
-- [Awesomeプロジェクト・ボイラープレート集](#awesome-projects-boilerplates)
-    - [Android開発](#android-development)
-    - [iOS開発](#ios-development)
-    - [JavaScript](#javascript)
-    - [ハイブリッドモバイルアプリ・フレームワーク](#hybrid-mobile-app-frameworks)
-    - [マイクロサービス](#microservices)
-    - [Python](#python)
-    - [PHP](#php)
-    - [Ruby](#ruby)
-    - [.NET](#net)
-    - [Go](#go)
-    - [ブラウザー拡張機能](#browser-webextensions)
-    - [ウェブサイト](#websites)
-    - [IDEテンプレート](#ide-templates)
-    - [GitHub](#github)
-- [コントリビューション](#contributing)
-
-
+boilerplatesを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Android開発 <a id="android-development"></a>
 

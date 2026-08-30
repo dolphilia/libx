@@ -1,12 +1,12 @@
 ---
-title: "sadcitizen/awesome-marionette"
-description: "Canonical snapshot of sadcitizen/awesome-marionette"
+title: "Awesome Marionette.js"
+description: "A curated collection of resources and projects focused on Marionette.js."
 licenseSource: "github-sadcitizen-awesome-marionette-readme-md"
 ---
 
-# Awesome Marionette.js [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Marionette.js
 
-> A list of resources for marionette.js
+A curated collection of resources and projects focused on Marionette.js.
 
 ## General
 

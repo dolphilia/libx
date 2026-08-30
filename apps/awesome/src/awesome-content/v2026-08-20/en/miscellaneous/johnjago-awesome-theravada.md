@@ -1,14 +1,12 @@
 ---
-title: "johnjago/awesome-theravada"
-description: "Canonical snapshot of johnjago/awesome-theravada"
+title: "Awesome Theravada"
+description: "A curated collection of resources and projects focused on Theravada."
 licenseSource: "github-johnjago-awesome-theravada-readme-md"
 ---
 
-# Awesome Theravada [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Theravada
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Dharma_Wheel.svg" alt="Dharmachakra" align="right" width="170">](https://en.wikipedia.org/wiki/Theravada)
-
-[Theravada](https://en.wikipedia.org/wiki/Theravada) is a branch of Buddhism that draws its doctrine from the Pāli Canon, one of the oldest surviving records of the Buddha's teachings.
+A curated collection of resources and projects focused on Theravada.
 
 ## Contents
 

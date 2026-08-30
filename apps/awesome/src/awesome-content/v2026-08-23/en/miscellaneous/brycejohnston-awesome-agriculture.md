@@ -1,16 +1,12 @@
 ---
-title: "brycejohnston/awesome-agriculture"
-description: "Canonical snapshot of brycejohnston/awesome-agriculture"
+title: "Awesome Agriculture"
+description: "A curated collection of resources and projects focused on Agriculture."
 licenseSource: "github-brycejohnston-awesome-agriculture-readme-md"
 ---
 
-# Awesome Agriculture [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Agriculture
 
-> A curated list of awesome open source technology for agriculture, farming, and gardening.
-
-[Agriculture](https://en.wikipedia.org/wiki/Agriculture) is the science and art of cultivating plants and livestock for food and materials.
-
-Contributions welcome! Please follow the [contributing guidelines](https://github.com/beaorn/awesome-agriculture/blob/master/contributing.md).
+A curated collection of resources and projects focused on Agriculture.
 
 ## Contents
 

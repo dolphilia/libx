@@ -1,22 +1,12 @@
 ---
-title: "Mo-way/awesome-aoip"
-description: "Canonical snapshot of Mo-way/awesome-aoip"
+title: "Awesome Audio Over IP"
+description: "A curated collection of resources and projects focused on Audio Over IP. The upstream list is archived or no longer maintained."
 licenseSource: "github-Mo-way-awesome-aoip-readme-md"
 ---
 
-# Awesome Audio Over IP [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Audio Over IP
 
-[<img src="./resources/aes67-logo.png" alt="AES67 Logo" align="centre">](https://wikipedia.org/wiki/AES67)
-
-> A curated list of awesome [Audio over IP](https://www.avid.com/resource-center/audio-over-ip-avb-and-dante-what-todays-music-producer-should-know) and AES67 tools and resources.
-
-In the professional audio sector, Audio over IP (AoIP) is about transmitting uncompressed, low-latency audio over an IP (layer 3) network. Popular examples of protocols are [Dante](https://en.wikipedia.org/wiki/Dante_(networking)), [AES67](https://en.wikipedia.org/wiki/AES67) and [Ravenna](https://en.wikipedia.org/wiki/Ravenna_(networking)).
-
-This list is short, partly due to excluding unmaintained projects. Check out the [Footnotes](#footnotes) section at the bottom and [awesome-but-inactive](https://github.com/Mo-way/awesome-aoip/blob/f370f91ded5a7f833c09ca2139ded63142269c4b/awesome-but-inactive.md), if you prefer a more lenient approach. In General, the AoIP ecosystem is still growing and there is rather sparse tooling available at the moment. Hence, if you find anything missing, it would delight me if you open a PR to add it.
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/Mo-way/awesome-aoip/blob/f370f91ded5a7f833c09ca2139ded63142269c4b/contributing.md) first.
-
----
+A curated collection of resources and projects focused on Audio Over IP. The upstream list is archived or no longer maintained.
 
 ## Contents
 

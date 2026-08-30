@@ -1,21 +1,12 @@
 ---
-title: "writing-resources/awesome-scientific-writing"
-description: "Canonical snapshot of writing-resources/awesome-scientific-writing"
+title: "Awesome Scientific Writing"
+description: "A curated collection of resources and projects focused on Scientific Writing."
 licenseSource: "github-writing-resources-awesome-scientific-writing-readme-md"
 ---
 
-# Awesome Scientific Writing [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Scientific Writing
 
-> Scientific writing can extend beyond LaTeX, made possible by formats,
-> such as
-> [Markdown](https://daringfireball.net/projects/markdown/) (and its many flavours),
-> [reStructuredText](https://docutils.sourceforge.io/rst.html) and
-> [Jupyter notebooks](https://jupyter.org/).
-
-:bookmark: means ability to **seamlessly cite references**.
-
-:link: means ability to **cross-reference figures and sections within the
-document**.
+A curated collection of resources and projects focused on Scientific Writing.
 
 ## Contents
 

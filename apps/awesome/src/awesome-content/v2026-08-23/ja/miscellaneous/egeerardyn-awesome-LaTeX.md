@@ -1,17 +1,13 @@
 ---
-title: "egeerardyn/awesome-LaTeX"
-description: "egeerardyn/awesome-LaTeX の正規スナップショット"
+title: "Awesome LaTeX"
+description: "LaTeXを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-egeerardyn-awesome-LaTeX-readme-md"
 ---
 
-<a id="awesome-latex--"></a>
-# Awesome LaTeX [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg?style=flat)](https://github.com/egeerardyn/awesome-LaTeX/blob/649d5293a16afcb0d91cd98cdc68da1248784f93/LICENSE.md)
+# Awesome LaTeX
 
-[![LaTeX Logo](https://github.com/egeerardyn/awesome-LaTeX/blob/649d5293a16afcb0d91cd98cdc68da1248784f93/fig/latex-logo.svg)](https://www.latex-project.org/)
+LaTeXを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-> [(La)TeX組版システム](https://www.latex-project.org/)向けの優れた資料を厳選したリストです。
-
-<a id="contents"></a>
 ## 目次
 
 

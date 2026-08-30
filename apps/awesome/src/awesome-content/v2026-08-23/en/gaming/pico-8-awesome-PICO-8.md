@@ -1,19 +1,12 @@
 ---
-title: "pico-8/awesome-PICO-8"
-description: "Canonical snapshot of pico-8/awesome-PICO-8"
+title: "Awesome PICO-8"
+description: "A curated collection of resources and projects focused on PICO-8."
 licenseSource: "github-pico-8-awesome-PICO-8-readme-md"
 ---
 
-# Awesome PICO-8 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome PICO-8
 
-
-![PICO-8](https://www.lexaloffle.com/gfx/p8_jelpi.gif)
-![tools](https://www.lexaloffle.com/gfx/p8_tracker.gif)
-![code](https://www.lexaloffle.com/gfx/p8_cast.gif)
-
- A curated list of PICO-8 resources, tutorials, tools and more. Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing. You might also like [awesome-lua](https://github.com/LewisJEllis/awesome-lua) and [awesome-love2d](https://github.com/JanWerder/awesome-love2d).
-
- PICO-8 is a fantasy console for making, sharing and playing tiny games and other computer programs. When you turn it on, the machine greets you with a shell for typing in a subset of [Lua](https://www.lua.org/) commands and provides simple built-in tools for creating your own cartridges.
+A curated collection of resources and projects focused on PICO-8.
 
 ## Contents
 

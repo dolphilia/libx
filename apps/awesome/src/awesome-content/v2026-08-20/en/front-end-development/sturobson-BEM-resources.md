@@ -1,12 +1,12 @@
 ---
-title: "sturobson/BEM-resources"
-description: "Canonical snapshot of sturobson/BEM-resources"
+title: "Awesome BEM Resources"
+description: "A curated collection of resources and projects focused on BEM Resources."
 licenseSource: "github-sturobson-BEM-resources-readme-md"
 ---
 
-# BEM Resources [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome BEM Resources
 
-Everyone loves a bit of BEM in their development. Here's just the starts of hopefully a large list of resources.
+A curated collection of resources and projects focused on BEM Resources.
 
 ## Articles
 

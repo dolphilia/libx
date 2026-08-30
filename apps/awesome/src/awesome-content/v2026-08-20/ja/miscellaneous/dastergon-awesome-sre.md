@@ -1,22 +1,12 @@
 ---
-title: "dastergon/awesome-sre"
-description: "SREの文化、信頼性、可観測性、オンコール、運用資料を分類した定本スナップショット"
+title: "Awesome Site Reliability Engineering"
+description: "Site Reliability Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-dastergon-awesome-sre-readme-md"
 ---
 
-# サイト信頼性エンジニアリングのAwesomeリスト <a id="awesome-site-reliability-engineering"></a>  [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[<img src="awesome-sre-logo.svg" align="right" width="100">](https://dastergon.gr/awesome-sre)
+# Awesome Site Reliability Engineering
 
-
-[サイト信頼性](https://www.usenix.org/conference/srecon14/technical-sessions/presentation/keys-sre)および[プロダクション](https://www.usenix.org/conference/srecon15/program/presentation/canahuati)エンジニアリングの優れた資料を厳選したリストです。
-
-#### サイト信頼性エンジニアリングとは <a id="what-is-site-reliability-engineering"></a>
-> 「本質的には、ソフトウェアエンジニアに運用機能の設計を依頼したときに生まれるものです。」— Ben Treynor Sloss（Google Engineering VP、Google SRE創設者）
-
-## コントリビューション <a id="contributing"></a>
-
-最初に[コントリビューションガイドライン](https://github.com/dastergon/awesome-sre/blob/e91ef69aa52129662164e54cc22272bc90e9b636/CONTRIBUTING.md)を確認してください。
-コントリビューションを歓迎します。
+Site Reliability Engineeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 - [文化](#culture)

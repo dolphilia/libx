@@ -1,32 +1,12 @@
 ---
-title: "iamericfletcher/awesome-r-learning-resources"
-description: "Canonical snapshot of iamericfletcher/awesome-r-learning-resources"
+title: "Awesome R Learning Resources"
+description: "A curated collection of resources and projects focused on R Learning Resources."
 licenseSource: "github-iamericfletcher-awesome-r-learning-resources-readme-md"
 ---
 
-<div align="center">
-	<div>
-		<a href=https://www.r-project.org/about.html><img width="400" id="im" src=https://user-images.githubusercontent.com/64165327/95934136-26177f00-0d9e-11eb-8bdc-748ee65ad17a.png></a>
-	</div>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
-</div>
+# Awesome R Learning Resources
 
-<br>
-
-> The `Awesome R Learning Resources` repository is meant to help users from all skill levels and backgrounds deepen their understanding of `R`, which is a programming language and environment for statistical computing and graphics.
-
-<br>
-
-> The `R` `Discord` server is a friendly and dedicated community for `R` enthusiasts, programmers, statisticians, data scientists, and students. Whether you are looking to connect with fellow useRs, have awesome data viz to share, or just needed help with your stats assignment, you are at the right place! 
-
-<div align="center">
-	To join the R Discord server, please click the discoRd badge below. <br>
-<a href="https://discord.gg/6fcReuUHgg">
-<img alt="Discord" src="https://img.shields.io/discord/676433858782298142?label=discoRd%20server&logo=R&logoColor=blue"></a>
-<br>
-</div>
-<br>
+A curated collection of resources and projects focused on R Learning Resources.
 
 ## **Contents**
 - [Topic Areas](#topic-areas)

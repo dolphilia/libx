@@ -1,21 +1,12 @@
 ---
-title: "phalcon/awesome-phalcon"
-description: "phalcon/awesome-phalcon の定本スナップショット"
+title: "Awesome Phalcon"
+description: "Phalconを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-phalcon-awesome-phalcon-readme-md"
 ---
 
 # Awesome Phalcon
 
-[![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Actions Status](https://github.com/phalcon/awesome-phalcon/workflows/CI/badge.svg)](https://github.com/phalcon/awesome-phalcon/actions)
-
-優れたPhalconライブラリ・リソースの厳選リスト。[awesome-go](https://github.com/avelino/awesome-go)に着想を得ています。
-
-### 寄稿
-
-まず[寄稿ガイドライン](https://github.com/phalcon/awesome-phalcon/blob/6a0fbbd2fa66c2aba79770a2b6671cb4d0ed1c5f/CONTRIBUTING.md)をざっと確認してください。すべての[寄稿者](https://github.com/phalcon/awesome-phalcon/graphs/contributors)に感謝します。あなたたちは素晴らしい！
-
-ほかのawesome-phalconメンテナーと話すには[Discord](https://discord.com/invite/kRc2N2M)へ参加してください！
+Phalconを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次
 

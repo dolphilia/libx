@@ -1,43 +1,12 @@
 ---
-title: "arbox/machine-learning-with-ruby"
-description: "Canonical snapshot of arbox/machine-learning-with-ruby"
+title: "Awesome Machine Learning with Ruby"
+description: "A curated collection of resources and projects focused on Machine Learning with Ruby."
 licenseSource: "github-arbox-machine-learning-with-ruby-readme-md"
 ---
 
-<img title="Awesome Machine Learning with Ruby" alt="Awesome Machine Learning with Ruby" src="header.png" align="center">
+# Awesome Machine Learning with Ruby
 
-[![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome#readme) [![Support Me](https://img.shields.io/badge/%F0%9F%92%97-Support%20Me-blue.svg?style=flat-square)](https://www.patreon.com/arbox)
-
-[[RubyNLP](https://github.com/arbox/nlp-with-ruby) |
- [RubyDataScience](https://github.com/arbox/data-science-with-ruby) |
- [RubyInterop](https://github.com/arbox/ruby-interoperability)]
-
-# Awesome Machine Learning with Ruby [<img src="ruby.jpg" align="left" width="30px" height="30px" />][ruby]
-
-> Curated List of Ruby Machine Learning Links and Resources
-
-[Machine Learning][ml] is a field of [Computational Science][cs] -
-often nested under [AI][ai] research - with many practical
-applications due to the ability of resulting algorithms to
-systematically implement a specific solution without explicit
-programmer's instructions. Obviously many algorithms need a definition
-of [features][fe] to look at or a biggish [training set][ts] of data to derive the
-solution from.
-
-This curated list comprises [_awesome_][awesome] libraries,
-data sources, tutorials and presentations about [Machine Learning][ml]
-utilizing the [Ruby][ruby] programming language.
-
-A lot of useful resources on this list come from the development by
-[The Ruby Science Foundation][sciruby], our [contributors][contributors] and
-our own day to day work on various ML applications.
-
-:sparkles: Every [contribution](https://github.com/arbox/machine-learning-with-ruby/blob/c8c2503b579653487516920a8b955591fbc3336f/contributing.md) is welcome! Add links through pull
-requests or create an issue to start a discussion.
-
-Follow us on [Twitter](https://twitter.com/NonWebRuby) and please spread
-the word using the `#RubyML` hash tag!
-
+A curated collection of resources and projects focused on Machine Learning with Ruby.
 
 ## Contents
 

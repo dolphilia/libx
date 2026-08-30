@@ -1,13 +1,12 @@
 ---
-title: "diegocard/awesome-html5"
-description: "diegocard/awesome-html5の正規スナップショット"
+title: "Awesome HTML5"
+description: "HTML5を扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-diegocard-awesome-html5-readme-md"
 ---
 
-Awesome HTML5 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Build Status](https://api.travis-ci.org/diegocard/awesome-html5.svg?branch=master)](https://travis-ci.org/diegocard/awesome-html5)
-=============
+# Awesome HTML5
 
-優れた HTML5 リソースのキュレーション済みリスト。[awesome-php](https://github.com/ziadoz/awesome-php) と [awesome-python](https://github.com/vinta/awesome-python) から着想を得ています。
+HTML5を扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [記事と標準](#articles-and-standards)

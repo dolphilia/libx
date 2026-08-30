@@ -1,13 +1,12 @@
 ---
-title: "daviddias/awesome-hacking-locations"
-description: "Canonical snapshot of daviddias/awesome-hacking-locations"
+title: "Awesome Hacking Locations"
+description: "A curated collection of resources and projects focused on Hacking Locations."
 licenseSource: "github-daviddias-awesome-hacking-locations-readme-md"
 ---
 
-Awesome Hacking Locations [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-===============================
+# Awesome Hacking Locations
 
-> List of Awesome Hacking Locations, organised by Country and City, listing if it features power and wifi. Inspired by the [awesome lists](https://github.com/sindresorhus/awesome) thing.
+A curated collection of resources and projects focused on Hacking Locations.
 
 ## Index
 
@@ -1522,4 +1521,3 @@ open | ✔ | ✔ | [171 S Jackson St, Seattle, WA 98104](https://goo.gl/maps/SBz
 Wifi | Power | Coffee | Address | Open Hours
 ---- | ----- | ------ | ------- | ----------
 ask | ✔ | ✔ | [425 15th Ave E, Seattle, WA 98112](https://goo.gl/maps/2RFTNQaXynm) | Mon-Sun 8:00-22:00
-

@@ -1,34 +1,13 @@
 ---
-title: "mezod/awesome-indie"
-description: "mezod/awesome-indie の正規スナップショット"
+title: "Awesome Indie"
+description: "Indieを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mezod-awesome-indie-readme-md"
 ---
 
-<a id="awesome-indie"></a>
-# Awesome Indie [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-独立系開発者の収益化を支援する資料集です。
+# Awesome Indie
 
-自分のコードからお金を稼ぐことは、これまでほど簡単ではなかったが、それでも難しい。ここでは、デジタル製品からお金を稼ぐことに興味があるすべての人々に、インスピレーションを与え、実際に試してもらうためのリソースのリストを厳選して紹介します。サイドプロジェクトの収益化、事業アイデアの自立運営など、どんな形でも構いません。
+Indieを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-プロジェクトは大きくなくてもよいです。実際には、大きすぎず、むしろ小さくてもよいのです。ただ、利益を生み出せるようにすればいいのです。初期の大量の作業の後には、パッシブインカムを提供する可能性があり、それどころか、財政的自立に至る手助けになるかもしれません。
-
-インディー（独立）に進むことは、ライフスタイルのメリットがたくさんあります :)
-
-これらのリソースは、あなたをインスピレーションに満ちて、正しい道に進む手助けになるかもしれませんが、結局のところ、**何かを作り、実際に試してみること**が重要です。したがって、このコンテンツを責任を持ってお召し上がりください :)
-
-寄付は心より歓迎です。
-
-by **[@mezod](https://twitter.com/mezood)** (毎日**[everyday.app](https://everyday.app)**を実行することによって)
-
-**備考：**
-
-- [$]は有料であることを示します。複数の推薦をもとに、作者が未試用でも掲載している場合があります。
-- このリポジトリはかつて[GitHub Trendingの1位](https://medium.com/@mezood/making-money-from-your-own-code-has-never-been-easier-but-its-still-hard-2242ddaae6a1)! :_)
-- [Icepy](https://github.com/icepy)がこのリポジトリを[中国語](https://github.com/icepy/awesome-indie)へ翻訳しました :)
-
-
-
-<a id="contents"></a>
 ## 目次
 
 - [コミュニティ](#communities)

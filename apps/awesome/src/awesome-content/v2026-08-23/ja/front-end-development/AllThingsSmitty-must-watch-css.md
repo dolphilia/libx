@@ -1,19 +1,12 @@
 ---
-title: "AllThingsSmitty/must-watch-css"
-description: "AllThingsSmitty/must-watch-css の定本スナップショット"
+title: "Awesome Must-Watch CSS"
+description: "Must-Watch CSSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-AllThingsSmitty-must-watch-css-readme-md"
 ---
 
-<p align="center">
-  <img src="./assets/img/tv.svg" width="200" alt="TV icon with play button">
-</p>
+# Awesome Must-Watch CSS
 
-# Must-Watch CSS [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
-CSS Grid、flexbox、カスタム変数、パフォーマンス、フレームワーク、Sass、ツールなどの話題を扱う、好評を得たCSS講演のコレクションです。
-
-> **ヒント:**
-> **JavaScriptがお好きですか？[Must-Watch JavaScript](https://github.com/AllThingsSmitty/must-watch-javascript)をご覧ください！** ほかの優れたリストは、[@sindresorhus](https://github.com/sindresorhus/)が厳選した[awesome lists](https://github.com/sindresorhus/awesome/)をご覧ください。
+Must-Watch CSSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 - [貢献ガイドライン](https://github.com/AllThingsSmitty/must-watch-css/blob/0b00d05eeaa29f4889d7a4741159483420c8017a/CONTRIBUTING.md)
 

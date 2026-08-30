@@ -1,21 +1,13 @@
 ---
-title: "ramnes/awesome-mongodb"
-description: "ramnes/awesome-mongodb の正規スナップショット"
+title: "Awesome MongoDB"
+description: "MongoDBを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ramnes-awesome-mongodb-readme-md"
 ---
 
-![Awesome MongoDB](https://raw.githubusercontent.com/ramnes/awesome-mongodb/655c499612284edc10cdc2e56271b476c7ae7481/logo.png)
+# Awesome MongoDB
 
-<a id="awesome-mongodb"></a>
-# Awesome MongoDB [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+MongoDBを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Links check](https://github.com/ramnes/awesome-mongodb/actions/workflows/links.yml/badge.svg)](https://github.com/ramnes/awesome-mongodb/actions/workflows/links.yml)
-
-> MongoDB の優れた資料、ライブラリ、ツール、アプリケーションを集めた厳選リストです。
-
-[awesome](https://github.com/sindresorhus/awesome) リストに着想を得ています。[貢献](https://github.com/ramnes/awesome-mongodb/blob/655c499612284edc10cdc2e56271b476c7ae7481/CONTRIBUTING.md)して、このリストをぜひ改善してください。
-
-<a id="table-of-contents"></a>
 ## 目次
  - [資料](#resources)
    - [ドキュメント](#documentation)

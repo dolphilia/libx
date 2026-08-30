@@ -1,33 +1,12 @@
 ---
-title: "JStumpp/awesome-android"
-description: "Canonical snapshot of JStumpp/awesome-android"
+title: "Awesome Android"
+description: "A curated collection of resources and projects focused on Android."
 licenseSource: "github-JStumpp-awesome-android-readme-md"
 ---
 
 # Awesome Android
-[<img src="https://raw.githubusercontent.com/jstumpp/awesome-android/master/awesome-android.png">](https://github.com/jstumpp/awesome-android)
 
-<p align="center">
-  <a href="https://github.com/sindresorhus/awesome"><img alt="awesome" src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" /></a>
-  <a href="https://travis-ci.org/JStumpp/awesome-android"><img alt="Build Status" src="https://api.travis-ci.org/JStumpp/awesome-android.svg?branch=master" /></a>
-  <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
-</p>
-
-# About
-A curated list of awesome Android [libraries](#libraries) and [resources](#resources). For general Java libraries have a look at [awesome-java](https://github.com/akullpp/awesome-java).
-
-## Supported with ❤️ by [Instabug](https://instabug.com/android/sdk?utm_source=toolsofthetrade&utm_medium=spon&utm_content=header)
-### Understand How Your Android App is Doing with Real-Time Contextual Insights From Your Users
-[![instabug-github](https://user-images.githubusercontent.com/10850625/65512691-fd45f280-ded9-11e9-8921-3528b98c30a7.png)](https://instabug.com/android/sdk?utm_source=awesomeandroid&utm_medium=spon&utm_content=banner)
->Instabug helps Android developers and product teams easily collect bugs and feedback from beta testers and users to iterate faster and ship quality apps. Instabug automatically attaches screenshots, device details, network logs, repro steps, and tons of other critical insights needed to resolve issues and prioritize product backlogs. 
-> Mobile teams accelerate their workflows by seamlessly integrating with third-party tools like Github, Jira, Slack, Zendesk and much more. [Instabug is offering Awesome Android community an exclusive 15% discount on all paid plans. Get Started!](https://instabug.com/android/sdk/?utm_source=awesomeandroid&utm_medium=spon&utm_content=get-started)
-[![](https://instabug-ga.appspot.com/UA-41982088-6/github/awesomeandroid?pixel)](https://instabug.com)
-
-
-# How to Use
-Awesome-Android is an amazing list for people who need a certain feature on their app, so the best ways to use are:
- - Simply press command + F to search for a keyword
- - Go through our Content Menu
+A curated collection of resources and projects focused on Android.
 
 # Content
 - [Emulators](#emulators)

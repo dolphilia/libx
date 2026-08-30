@@ -1,14 +1,12 @@
 ---
-title: "ravirupareliya/awesome-actions-on-google"
-description: "ravirupareliya/awesome-actions-on-google の正規スナップショット"
+title: "Awesome Actions on Google"
+description: "Actions on Googleを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ravirupareliya-awesome-actions-on-google-readme-md"
 ---
 
-# Awesome Actions on Google  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Actions on Google
 
-優れた AoG（Action on Google）ライブラリ、ブログ、オープンソースプロジェクト、動画のキュレーション済みリスト。
-
-[Actions on Google](https://developers.google.com/actions/) を使うと、Google 全体でユーザーに届き、関与できます。短いコマンドから完全な会話まで、Google Assistant を通じてコンテンツとサービスをユーザーにつなげます。
+Actions on Googleを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

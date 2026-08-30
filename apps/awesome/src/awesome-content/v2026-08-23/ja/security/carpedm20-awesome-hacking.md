@@ -1,17 +1,12 @@
 ---
-title: "carpedm20/awesome-hacking"
-description: "carpedm20/awesome-hacking の定本スナップショット"
+title: "Awesome Hacking -An Amazing Project"
+description: "Hacking -An Amazing Projectを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-carpedm20-awesome-hacking-readme-md"
 ---
 
-# Awesome Hacking -An Amazing Project [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Hacking -An Amazing Project
 
-優れたハッキング関連情報を集めたキュレーションリスト。 [awesome-machine-learning](https://github.com/josephmisiti/awesome-machine-learning/)
-
-このリストに貢献したい場合は（ぜひお願いします）、プルリクエストを送ってください。
-
-ダウンロード可能な無料ハッキング書籍の一覧は [here](https://github.com/Hack-with-Github/Free-Security-eBooks)
-
+Hacking -An Amazing Projectを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

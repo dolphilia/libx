@@ -1,24 +1,12 @@
 ---
-title: "timofurrer/awesome-asyncio"
-description: "timofurrer/awesome-asyncio の正規スナップショット"
+title: "Awesome asyncio"
+description: "asyncioを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-timofurrer-awesome-asyncio-readme-md"
 ---
 
-> **警告：**
-> このプロジェクトは新しい移管先を探しています。現在はメンテナンスされていません。
-> メンテナンスを引き継ぎたい方はお知らせください。
-> timo@furrer.lifeまでメールを送ってください。
+# Awesome asyncio
 
-# Awesome asyncio [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> 優れたPython asyncioフレームワーク、ライブラリ、ソフトウェア、リソースの厳選リスト。
-
-Python 3.4で標準ライブラリへ導入されたPythonの[asyncio](https://docs.python.org/3/library/asyncio.html)モジュールは、コルーチンを使ったシングルスレッド並行コードの記述、ソケットなどのリソースに対するI/Oアクセスの多重化、ネットワーククライアントとサーバーの実行、および関連する基本機能のための基盤を提供します。
-
-Asyncio自体はまったく新しい技術ではありませんが、ここ数年、特にPythonコミュニティや2014年3月のPython 3.4リリース以降、大きな注目を集めています。
-そのため、優れた最新パッケージを把握し続けることは簡単ではありません。
-ここでいくつかの*優れた*パッケージを見つけてください。足りないものがあれば、提案を添えて[IssueまたはPull Requestを作成](https://github.com/timofurrer/awesome-asyncio/blob/master/CONTRIBUTING.md)していただけることを期待しています。
-
+asyncioを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

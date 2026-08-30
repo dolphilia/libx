@@ -1,13 +1,12 @@
 ---
-title: "nicolesaidy/awesome-web-design"
-description: "Canonical snapshot of nicolesaidy/awesome-web-design"
+title: "Awesome Web Design"
+description: "A curated collection of resources and projects focused on Web Design."
 licenseSource: "github-nicolesaidy-awesome-web-design-readme-md"
 ---
 
-# Awesome Web Design [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-> A curated list of awesome resources for digital designers.
+# Awesome Web Design
 
-**Check out my [website](http://nicolesaidy.com) & [blog](http://blog.nicolesaidy.com). ✨**
+A curated collection of resources and projects focused on Web Design.
 
 ## Contents
 

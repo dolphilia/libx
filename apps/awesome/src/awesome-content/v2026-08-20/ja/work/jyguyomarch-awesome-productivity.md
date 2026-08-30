@@ -1,11 +1,12 @@
 ---
-title: "jyguyomarch/awesome-productivity"
-description: "jyguyomarch/awesome-productivity の定本スナップショット"
+title: "Awesome Productivity"
+description: "Productivityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-jyguyomarch-awesome-productivity-readme-md"
 ---
 
-# Awesome Productivity [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-> 快適な生産性向上リソースを厳選したリストです。
+# Awesome Productivity
+
+Productivityを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [ウェブサイト](#websites)

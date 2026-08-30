@@ -1,29 +1,13 @@
 ---
-title: "ashishb/android-security-awesome"
-description: "ashishb/android-security-awesome の正規スナップショット"
+title: "Awesome android-security-awesome"
+description: "android-security-awesomeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ashishb-android-security-awesome-readme-md"
 ---
 
-<a id="android-security-awesome"></a>
-# android-security-awesome ![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
+# Awesome android-security-awesome
 
-[![Star History Rank](https://api.star-history.com/badge?repo=ashishb/android-security-awesome&theme=dark)](https://www.star-history.com/ashishb/android-security-awesome)
+android-security-awesomeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Link Liveness Checker](https://github.com/ashishb/android-security-awesome/actions/workflows/validate-links.yml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/validate-links.yml)
-
-[![Lint Shell scripts](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-shell-script.yaml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-shell-script.yaml)
-[![Lint Markdown](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-markdown.yaml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-markdown.yaml)
-[![Lint YAML](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-yaml.yaml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-yaml.yaml)
-[![Lint GitHub Actions](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-github-actions.yaml/badge.svg)](https://github.com/ashishb/android-security-awesome/actions/workflows/lint-github-actions.yaml)
-![GitHub contributors](https://img.shields.io/github/contributors/ashishb/android-security-awesome)
-
-Androidセキュリティ関連資料のコレクションです。
-
-1. [ツール](#tools)
-1. [学術・研究・出版物・書籍](#academic)
-1. [エクスプロイト・脆弱性・バグ](#exploits)
-
-<a id="tools"></a>
 ## ツール
 
 <a id="online-analyzers"></a>

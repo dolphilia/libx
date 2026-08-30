@@ -1,15 +1,12 @@
 ---
-title: "atkirtland/awesome-computational-geometry"
-description: "Canonical snapshot of atkirtland/awesome-computational-geometry"
+title: "Awesome Computational Geometry"
+description: "A curated collection of resources and projects focused on Computational Geometry."
 licenseSource: "github-atkirtland-awesome-computational-geometry-readme-md"
 ---
 
-# Awesome Computational Geometry [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Computational Geometry
 
-> A curated list of awesome computational geometry visualizations, libraries, and resources.
-
-[Computational geometry](https://en.wikipedia.org/wiki/Computational_geometry) is a topic in computer science that focuses on solving problems in geometry.
-Applications of computational geometry include computer-aided design, robotics, GIS systems, and computer vision.
+A curated collection of resources and projects focused on Computational Geometry.
 
 ## Contents
 

@@ -1,14 +1,12 @@
 ---
-title: "friedger/awesome-stacks-chain"
-description: "friedger/awesome-stacks-chain の日本語訳（人手レビュー前）"
+title: "Awesome Stacks"
+description: "Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-friedger-awesome-stacks-chain-readme-md"
 ---
 
-# Awesome Stacks[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Stacks
 
-[![Awesome Stacks](https://github.com/friedger/awesome-stacks-chain/blob/fd4cbc5fa6116652e62b3b29ecf2f266e447e090/img/awesome-stacks.png 'Awesome Stacks')](https://www.stacks.co)
-
-[Stacks](https://www.stacks.co/what-is-stacks)は、アプリ、スマートコントラクト、デジタル資産を可能にするBitcoinにアンカーされたブロックチェーンです。StacksはBitcoinへ接続するレイヤー1ブロックチェーンであり、[Clarity言語](https://clarity-lang.org/)を通じてスマートコントラクトと分散アプリケーションを実装します。[Proof of Transfer（PoX）コンセンサスメカニズム](https://docs.stacks.co/stacks-101/proof-of-transfer)により、Stacksブロックチェーンの状態はBitcoinブロックチェーンにアンカーされ、BitcoinのセキュリティとファイナリティをStacksへ提供します。StacksはBitcoin自体のコアコンセンサスメカニズムを変更することなく、他のブロックチェーン技術のプログラマビリティをBitcoinにもたらします。
+Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

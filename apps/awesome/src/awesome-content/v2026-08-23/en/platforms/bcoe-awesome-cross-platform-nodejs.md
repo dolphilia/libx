@@ -1,20 +1,12 @@
 ---
-title: "bcoe/awesome-cross-platform-nodejs"
-description: "Canonical snapshot of bcoe/awesome-cross-platform-nodejs"
+title: "Awesome cross-platform-nodejs logo"
+description: "A curated collection of resources and projects focused on cross-platform-nodejs logo."
 licenseSource: "github-bcoe-awesome-cross-platform-nodejs-readme-md"
 ---
 
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="logo_dark.svg"/>
-    <img alt="awesome-cross-platform-nodejs logo" src="https://raw.githubusercontent.com/bcoe/awesome-cross-platform-nodejs/d54a9f1769768752bb239e5f376aa01a5114d120/logo.svg" width="500"/>
-  </picture>
-  <br>
-  <a href="https://awesome.re">
-	  <img src="https://awesome.re/badge.svg" alt="Awesome">
-  </a>
-  <p>A curated list of awesome developer tools for writing cross-platform Node.js code.</p>
-</div>
+# Awesome cross-platform-nodejs logo
+
+A curated collection of resources and projects focused on cross-platform-nodejs logo.
 
 ## Contents
 

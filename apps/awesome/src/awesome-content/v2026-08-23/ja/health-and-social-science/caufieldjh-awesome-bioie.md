@@ -1,30 +1,12 @@
 ---
-title: "caufieldjh/awesome-bioie"
-description: "caufieldjh/awesome-bioie の定本スナップショット"
+title: "Awesome BioIE Logo"
+description: "BioIE Logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-caufieldjh-awesome-bioie-readme-md"
 ---
 
-<div align="center">
-	<img src="https://github.com/caufieldjh/awesome-bioie/blob/main/images/abie_head.png" alt="Awesome BioIE Logo"/>
-	<br>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<br>
-	構造化されていない生物医学データとテキストから情報を抽出する方法。
-	<br>
-	
-</div>
+# Awesome BioIE Logo
 
-BioIEとは何でしょうか。これは、_非構造化_（または少なくとも一貫して構造化されていない）生物学、臨床、その他の生物医学データから構造化情報を抽出するあらゆる試みを含みます。データ源は専門用語で書かれた文書集であることが多く、得られた情報が検証可能で情報源をまたいで一貫していれば、それを_知識_とみなせます。生物データから情報を抽出して知識を作るには、ほかの非構造化データ向け手法の適応が必要です。
-
-BioIEはBERTなどのLanguage Model、さらに近年のLarge Language Model（LLM。GPT-3/4、LLAMA2/3、Geminiなど）の登場以来、大きく変化しました。
-
-ここでは金銭的費用がなく、License要件が限定的な資料を優先します。手法とデータセットは公開Access可能で、活発に保守されているものとします。
-
-[awesome-nlp](https://github.com/keon/awesome-nlp)、[awesome-biology](https://github.com/raivivek/awesome-biology)、[Awesome-Bioinformatics](https://github.com/danielecook/Awesome-Bioinformatics)も参照してください。
-
-_コントリビューション前に[ガイドライン](https://github.com/caufieldjh/awesome-bioie/blob/2689dd4118e0cb9be19a164bbf5165188f010d70/contributing.md)をお読みください。お気に入りの資料は[Pull Request](https://github.com/caufieldjh/awesome-bioie/pulls)で追加してください。_
+BioIE Logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 * [研究概観](#research-overviews)

@@ -1,17 +1,12 @@
 ---
-title: "Richienb/awesome-ponyfills"
-description: "Canonical snapshot of Richienb/awesome-ponyfills"
+title: "Awesome Ponyfills"
+description: "A curated collection of resources and projects focused on Ponyfills."
 licenseSource: "github-Richienb-awesome-ponyfills-readme-md"
 ---
 
-<div align="center">
-  <img src="media/Title.svg"/>
-  <br>
-  <a href="https://awesome.re">
-	  <img src="https://awesome.re/badge-flat.svg" alt="Awesome">
-  </a>
-    <p><a href="https://ponyfill.com">Ponyfills</a> are like polyfills but without overriding native APIs. Polyfills patch a piece of functionality so that older environments can support newer features whilst Ponyfills, on the other hand, provide functionality as standalone modules.</p>
-</div>
+# Awesome Ponyfills
+
+A curated collection of resources and projects focused on Ponyfills.
 
 ## Contents
 

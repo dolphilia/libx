@@ -1,26 +1,13 @@
 ---
-title: "MunGell/awesome-for-beginners"
-description: "Canonical snapshot of MunGell/awesome-for-beginners"
+title: "Awesome First Pull Request Opportunities"
+description: "A curated collection of resources and projects focused on First Pull Request Opportunities."
 licenseSource: "github-MunGell-awesome-for-beginners-readme-md"
 ---
 
+# Awesome First Pull Request Opportunities
 
+A curated collection of resources and projects focused on First Pull Request Opportunities.
 
-
-
-
-# Awesome First Pull Request Opportunities [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-Inspired by [First Timers Only](https://kentcdodds.com/blog/first-timers-only) blog post.
-
-If you are a maintainer of open-source projects, add the label `first-timers-only` (or similar) to your project and list it here so that people can find it.
-
-If you are not a programmer but would like to contribute, check out the [Awesome for non-programmers](https://github.com/szabgab/awesome-for-non-programmers) list.
-
-If you would like to be guided through how to contribute to a repository on GitHub, check out [the First Contributions repository](https://github.com/firstcontributions/first-contributions).
-
-> **TIP:**
-> All links open in the same tab. If you want to open in a new tab, use `Ctrl + Click` (Windows/Linux) or `Cmd + Click` (Mac).
 ## Table of Contents:
 
 ||Languages|

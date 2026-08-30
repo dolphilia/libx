@@ -1,50 +1,13 @@
 ---
-title: "slevithan/awesome-regex"
-description: "正規表現のテスター、可視化、エンジン、ライブラリ、教材を集めたリスト"
+title: "Awesome Regex"
+description: "Regexを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-slevithan-awesome-regex-readme-md"
 ---
 
+# Awesome Regex
 
-<div align="center">
+Regexを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[![Awesome Regex](https://github.com/slevithan/awesome-regex/blob/8edee4497ae8ce1da33b3129c95aeb746de14550/media/awesome-regex-banner.svg)](https://github.com/slevithan/awesome-regex)
-
-[![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) &nbsp;<sup>Shortcut URL: [`regex.cool`](https://regex.cool/)</sup>
-</div>
-
-素晴らしい正規表現ツールを厳選したAwesome Regexは、主要な正規表現の味方を含む、最も優れた正規表現ツール、チュートリアル、ライブラリ、およびその他のリソースを提供しています。
-
-> 正規表現（regexまたはregexp）は、テキストを検索・解析・処理するための強力で簡潔な方法です。多くのプログラミング言語、テキストエディター、IDE、データベースエンジン、ワードプロセッサーなどに組み込まれています。
-
-貢献は歓迎されています。プルリクエスト（[guidelines](https://github.com/slevithan/awesome-regex/blob/8edee4497ae8ce1da33b3129c95aeb746de14550/CONTRIBUTING.md)）を通じてリンクを追加してください。
-
-<details>
-  <summary>📖 <b>Glossary</b></summary>
-  <br>
-
-*このリストで使用される正規表現用語の簡単な辞書。*
-
-- **正規表現エンジン:** 正規表現を解釈・実行するソフトウェア。プログラミング言語に組み込まれる場合と、独立したライブラリとして提供される場合があります。
-- **正規表現フレーバー:** 正規表現の構文と動作の固有の組み合わせ。基本構文は多くのフレーバーで共通しますが、高度な機能には細かな違いや互換性のない違いがあります。一つのフレーバーを複数の実装や言語が共有する場合もあります。
-  - 例: 「JavaScript」フレーバーはECMAScript仕様で定義され、V8など複数のエンジンが実装しています。
-  - 例: 「PCRE」フレーバーは、多数の言語やツールで使われるPCRE2ライブラリです。
-  - 例: Rubyは1.8 → 1.9 → 2.0で正規表現実装を二度変更したため、それぞれ異なるフレーバーです。ここではRuby 2.0以降を「Ruby」または基盤ライブラリ名の「Onigmo」と呼びます。
-- **非バックトラッキングエンジン:** バックトラッキングを使わず、線形時間で動作する正規表現実装。超線形バックトラッキングによる最悪時性能を避けられますが、一部のパターンでは遅く、後方参照などの機能を利用できません。
-</details>
-
-<a id="featured-resource"></a>
-### 注目のリソース
-
-<a href="https://github.com/slevithan/regex">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/slevithan/regex@6.1.0/media/logo-dark.svg">
-    <img alt="Regex+ logo" height="100" width="225" align="right" src="https://cdn.jsdelivr.net/gh/slevithan/regex@6.1.0/media/logo.svg">
-  </picture>
-</a>
-
-[Regex+](https://github.com/slevithan/regex)は、読みやすく、高速で、ネイティブJavaScriptの正規表現を実現する軽量JavaScriptライブラリであり、スペースの自由使用、原子グループ、所有量詞、サブルーチン、定義グループ、および文脈認識型の埋め込みといった強力な機能を備えている。
-
-<a id="contents"></a>
 ## 目次
 
 - [Testers](#testers)

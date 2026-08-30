@@ -1,13 +1,12 @@
 ---
-title: "michelpereira/awesome-games-of-coding"
-description: "michelpereira/awesome-games-of-coding の定本スナップショット"
+title: "Awesome Games of Coding"
+description: "Games of Codingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-michelpereira-awesome-games-of-coding-readme-md"
 ---
 
-# Games of Coding [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Games of Coding
 
-> プログラミング言語を教えてくれるゲームの厳選リスト。
-
+Games of Codingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

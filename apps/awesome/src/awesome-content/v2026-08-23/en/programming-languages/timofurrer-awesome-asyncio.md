@@ -1,24 +1,12 @@
 ---
-title: "timofurrer/awesome-asyncio"
-description: "Canonical snapshot of timofurrer/awesome-asyncio"
+title: "Awesome asyncio"
+description: "A curated collection of resources and projects focused on asyncio."
 licenseSource: "github-timofurrer-awesome-asyncio-readme-md"
 ---
 
-> **WARNING:**
-> This project is looking for a new home. I'm no longer maintaining it.
-> Please let me know if you want to take over maintainance for it.
-> Write me an email to timo@furrer.life
+# Awesome asyncio
 
-# Awesome asyncio [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> A carefully curated list of awesome Python asyncio frameworks, libraries, software and resources.
-
-The Python [asyncio](https://docs.python.org/3/library/asyncio.html) module introduced to the standard library with Python 3.4 provides infrastructure for writing single-threaded concurrent code using coroutines, multiplexing I/O access over sockets and other resources, running network clients and servers, and other related primitives.
-
-Asyncio is not really a brand-new technology however it appears to be very trending since a few years - especially in the Python community and with the release of Python 3.4 in March 2014.
-Thus, it's pretty hard to keep yourself up-to-date with the most awesome packages out there.
-Find some of those *awesome* packages here and if you are missing one we count on you to [create an Issue or a Pull Request](https://github.com/timofurrer/awesome-asyncio/blob/master/CONTRIBUTING.md) with your suggestion.
-
+A curated collection of resources and projects focused on asyncio.
 
 ## Contents
 

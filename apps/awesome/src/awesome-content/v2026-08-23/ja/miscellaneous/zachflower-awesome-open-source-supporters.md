@@ -1,14 +1,12 @@
 ---
-title: "zachflower/awesome-open-source-supporters"
-description: "zachflower/awesome-open-source-supporters の定本スナップショット"
+title: "Awesome Open Source Supporters"
+description: "Open Source Supportersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-zachflower-awesome-open-source-supporters-readme-md"
 ---
 
-# Awesome Open Source Supporters [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Open Source Supporters
 
-オープンソース・公開プロジェクトに対して、ツールやサービスを無償で提供する素晴らしい企業の厳選リスト。
-
-**注記: 優れた無料ティアを設ける企業は多くありますが（例: Slack）、このリストでは追加の提供を通じてオープンソースコミュニティへの明確なコミットメントを示している組織に特化しています。**
+Open Source Supportersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

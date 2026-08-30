@@ -1,14 +1,12 @@
 ---
-title: "mdbootstrap/awesome-mdbootstrap"
-description: "Canonical snapshot of mdbootstrap/awesome-mdbootstrap"
+title: "Awesome MDBootstrap"
+description: "A curated collection of resources and projects focused on MDBootstrap."
 licenseSource: "github-mdbootstrap-awesome-mdbootstrap-readme-md"
 ---
 
-# Awesome MDBootstrap [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) [<img src="https://mdbootstrap.com/img/Marketing/general/logo/huge/mdb.png" width="380" align="right" alt="MDBootstrap">](https://mdbootstrap.com)
+# Awesome MDBootstrap
 
-> A curated list of the best resources in the MDBootstrap community.
-
-[MDBootstrap](https://github.com/mdbootstrap/mdb-ui-kit) is a set of slick, responsive page templates, layouts, components, and widgets to rapidly build web pages.
+A curated collection of resources and projects focused on MDBootstrap.
 
 ## Contents
 

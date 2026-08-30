@@ -1,8 +1,12 @@
 ---
-title: "cyclejs-community/awesome-cyclejs"
-description: "Canonical snapshot of cyclejs-community/awesome-cyclejs"
+title: "Awesome Cyclejs"
+description: "A curated collection of resources and projects focused on Cyclejs."
 licenseSource: "github-cyclejs-community-awesome-cyclejs-readme-md"
 ---
+
+# Awesome Cyclejs
+
+A curated collection of resources and projects focused on Cyclejs.
 
 ## Awesome Cycle.js [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 

@@ -1,16 +1,12 @@
 ---
-title: "johnjago/awesome-uncopyright"
-description: "johnjago/awesome-uncopyright の定本スナップショット"
+title: "Awesome Uncopyright"
+description: "Uncopyrightを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-johnjago-awesome-uncopyright-readme-md"
 ---
 
-# Awesome Uncopyright [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Uncopyright
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/6/62/PD-icon.svg" alt="No copyright symbol" align="right" width="155">](http://questioncopyright.org/)
-
-パブリックドメインにある作品を厳選した一覧です。
-
-パブリックドメインの作品には著作権上の制約がありません。これは知的財産権の満了または放棄によるものです。後者の場合、著者は著作権を放棄する行為を表すために*uncopyright*という語を用いています。
+Uncopyrightを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

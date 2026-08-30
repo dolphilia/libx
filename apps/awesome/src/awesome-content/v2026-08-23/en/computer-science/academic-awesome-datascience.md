@@ -1,39 +1,12 @@
 ---
-title: "academic/awesome-datascience"
-description: "Canonical snapshot of academic/awesome-datascience"
+title: "Awesome DATA SCIENCE"
+description: "A curated collection of resources and projects focused on DATA SCIENCE."
 licenseSource: "github-academic-awesome-datascience-readme-md"
 ---
 
-<div align="center"><img src="https://raw.githubusercontent.com/academic/awesome-datascience/936a76248cbe5fd8be422dc655b62ea5b570769a/assets/head.jpg"></div>
+# Awesome DATA SCIENCE
 
-# AWESOME DATA SCIENCE
-
-[![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-Contributions are welcome - see [`CONTRIBUTING.md`](https://github.com/academic/awesome-datascience/blob/936a76248cbe5fd8be422dc655b62ea5b570769a/CONTRIBUTING.md).
-
-**An open-source Data Science repository to learn and apply concepts toward solving real- world problems.**
-
-This is a shortcut path to start studying **Data Science**. Just follow the steps to answer the questions, "What is Data Science, and what should I study to learn Data Science?"
-
-<br>
-
-## $ [academic](https://academic.io/cli)
-
-```
-$ brew tap academic/tap
-$ brew install academic
-```
-
-## Sponsors
-
-
-[![Graphyn: visualize specialized agent workflows](https://raw.githubusercontent.com/fuego-wtf/graphyn-code/main/assets/graphyn-agent-workflows.png)](https://graphyn.ai/?utm_source=github&utm_medium=sponsorship&utm_campaign=graphyn_founding_alpha&utm_content=awesome_datascience_banner)
-
-
-Become a sponsor! `github@academic.io`
-
-
+A curated collection of resources and projects focused on DATA SCIENCE.
 
 ## Table of Contents
 

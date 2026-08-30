@@ -1,33 +1,12 @@
 ---
-title: "matiassingers/awesome-slack"
-description: "Canonical snapshot of matiassingers/awesome-slack"
+title: "Awesome Slack"
+description: "A curated collection of resources and projects focused on Slack."
 licenseSource: "github-matiassingers-awesome-slack-readme-md"
 ---
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Slack
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/matiassingers/awesome-slack/master/awesome-slack-pink.png" alt="Logo" width="200px">
-</p>
-
-<p align="center">
-    <h3 align="center">Awesome Slack</h3>
-</p>
-
-<p align="center">
-    A curated list of awesome, Slack-related things.
-</p>
-
-***
-
-An avid Slack user? A developer looking for awesome tools to build out an integration? Just looking for inspiration? This is a list of all the best things Slack.
-
-- [:pencil:  Lists](#pencil--lists)
-- [:art:  Themes](#art--themes)
-- [:hammer_and_wrench:  Libraries and SDKs](#hammer_and_wrench--libraries-and-sdks)
-- [:gear:  Open-Source Slack Apps and Integrations](#gear--open-source-slack-apps-and-integrations)
-- [:busts_in_silhouette:  Contributions](#busts_in_silhouette--contributions)
-- [:classical_building:  License](#classical_building--license)
+A curated collection of resources and projects focused on Slack.
 
 ## :pencil: &nbsp; Lists
 - [Community-Built Libraries](https://api.slack.com/community) - Slack-curated list of community open-source libraries

@@ -1,13 +1,12 @@
 ---
-title: "choojs/awesome-choo"
-description: "choojs/awesome-choo の正規スナップショット"
+title: "Awesome choo :steam locomotive"
+description: "choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-choojs-awesome-choo-readme-md"
 ---
 
-# Awesome choo [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) <div align="right">:steam_locomotive::train::train::train::train::train:</div>
+# Awesome choo :steam locomotive
 
-> [choo](https://choo.io/) は、堅牢なフロントエンドアプリケーションを作るための
-> `4kb` フレームワークです
+choo :steam locomotiveを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

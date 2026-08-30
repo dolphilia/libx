@@ -1,31 +1,12 @@
 ---
-title: "seancoyne/awesome-coldfusion"
-description: "Canonical snapshot of seancoyne/awesome-coldfusion"
+title: "Awesome ColdFusion"
+description: "A curated collection of resources and projects focused on ColdFusion."
 licenseSource: "github-seancoyne-awesome-coldfusion-readme-md"
 ---
 
-# Awesome ColdFusion [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome ColdFusion
 
-A curated list of awesome ColdFusion frameworks, libraries and software. Inspired by [awesome-javascript](https://github.com/sorrycc/awesome-javascript).
-
-Pull requests very welcome.
-
-* [Awesome ColdFusion](https://github.com/seancoyne/awesome-coldfusion)
-	* [Engines](#engines)
-	* [Application Frameworks](#application-frameworks)
-	* [Testing](#testing)
-	* [Dependency Injection](#dependency-injection)
-	* [Content Management Systems](#cms)
-	* [NoSQL](#nosql)
-	* [REST](#rest)
-	* [Other Libraries](#other-libraries)
-	* [Editors](#editors)
-	* [Tools](#tools)
-	* [References](#references)
-	* [Resources](#resources)
-	* [Documentation](#documentation)
-
-----
+A curated collection of resources and projects focused on ColdFusion.
 
 ## Engines
 

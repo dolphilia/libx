@@ -1,24 +1,12 @@
 ---
-title: "sjfricke/awesome-webgl"
-description: "Canonical snapshot of sjfricke/awesome-webgl"
+title: "Awesome WebGL"
+description: "A curated collection of resources and projects focused on WebGL."
 licenseSource: "github-sjfricke-awesome-webgl-readme-md"
 ---
 
-# Awesome WebGL [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome WebGL
 
-[<img src="webgl_logo.png" align="right" width="175">](https://www.khronos.org/webgl/)
-
-This is a curated list of awesome WebGL libraries, resources and much more.
-
-## What is WebGL
-
-WebGL (Web Graphics Library) is a JavaScript API for rendering interactive 3D computer graphics and 2D graphics within
-any compatible web browser without the use of plug-ins. WebGL is integrated completely into all the web standards
-of the browser allowing GPU accelerated usage of physics and image processing and effects as part of the web page canvas.
-
-WebGL elements can be mixed with other HTML elements and composited with other parts of the page or page background.
-WebGL programs consist of control code written in JavaScript and shader code that is executed on a computer's Graphics
-Processing Unit (GPU).
+A curated collection of resources and projects focused on WebGL.
 
 ## Contents
 * [WebGL](#webgl)

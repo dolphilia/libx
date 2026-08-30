@@ -1,16 +1,12 @@
 ---
-title: "satta/awesome-suricata"
-description: "satta/awesome-suricata の定本スナップショット"
+title: "Awesome Suricata"
+description: "Suricataを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-satta-awesome-suricata-readme-md"
 ---
 
-# Awesome Suricata [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Suricata
 
-[<img src="https://suricata.io/wp-content/uploads/2022/01/Logo-SuricataFinal-1-translucent.png" align="right" width="120">](https://suricata.io)
-
-> Suricataに関連する優れたものの厳選リスト。
-
-[Suricata](https://suricata.io/features)は、無料の侵入検知・防御システム（IDS/IPS）およびネットワークセキュリティ監視エンジンです。
+Suricataを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

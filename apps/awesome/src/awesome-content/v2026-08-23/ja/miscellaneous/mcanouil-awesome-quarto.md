@@ -1,31 +1,12 @@
 ---
-title: "mcanouil/awesome-quarto"
-description: "Quartoの公式資料、学習資料、拡張機能、実例を分類した定本スナップショット"
+title: "Awesome Quarto"
+description: "Quartoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mcanouil-awesome-quarto-readme-md"
 ---
 
+# Awesome Quarto
 
-
-<div align="center">
-
-
-
-# <a href="https://quarto.org" target="_blank" rel="noopener noreferrer"><img src="media/media.png" alt-text="Awesome list logo with the Quarto logo with text, which is a pair of sunglasses with below the text 'awesome' and then the Quarto logo in blue and grey blue as per Quarto's logo." width="75%"/></a></br>[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-インターネット上で公開されている[Quarto®](https://quarto.org)のドキュメント、講演、ツール、実例、記事を最新の状態で厳選したリストです。
-
-[Quarto®](https://quarto.org) is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org/).
-
-</div>
-
----
-
-Contributions of any kind are welcome, just follow the [guidelines](https://github.com/mcanouil/awesome-quarto/blob/8c6e0c56c35915e88de13eed0f73ac7e681b3f88/.github/CONTRIBUTING.md) by either:
-
-- Filling a [suggestion issue](https://github.com/mcanouil/awesome-quarto/issues/new?assignees=mcanouil&labels=&template=suggestion.yml) (簡単な方法)
-- Opening a [pull request](https://github.com/mcanouil/awesome-quarto/compare).
-
----
+Quartoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

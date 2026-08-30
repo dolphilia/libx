@@ -1,12 +1,12 @@
 ---
-title: "xen0l/awesome-dtrace"
-description: "Canonical snapshot of xen0l/awesome-dtrace"
+title: "Awesome DTrace"
+description: "A curated collection of resources and projects focused on DTrace."
 licenseSource: "github-xen0l-awesome-dtrace-readme-md"
 ---
 
-# Awesome DTrace [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome DTrace
 
-A curated list of awesome DTrace books, articles, videos, tools and resources.
+A curated collection of resources and projects focused on DTrace.
 
 ## Contents
 

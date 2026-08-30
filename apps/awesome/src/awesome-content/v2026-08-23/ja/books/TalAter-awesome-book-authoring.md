@@ -1,11 +1,12 @@
 ---
-title: "TalAter/awesome-book-authoring"
-description: "TalAter/awesome-book-authoring の定本スナップショット"
+title: "Awesome Book Authoring"
+description: "Book Authoringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-TalAter-awesome-book-authoring-readme-md"
 ---
 
 # Awesome Book Authoring
-技術書の著者向け [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) リソースのコレクション。
+
+Book Authoringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # 目次
 

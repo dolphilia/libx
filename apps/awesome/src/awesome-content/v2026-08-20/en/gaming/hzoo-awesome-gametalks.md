@@ -1,20 +1,12 @@
 ---
-title: "hzoo/awesome-gametalks"
-description: "Canonical snapshot of hzoo/awesome-gametalks"
+title: "Awesome Game Talks"
+description: "A curated collection of resources and projects focused on Game Talks."
 licenseSource: "github-hzoo-awesome-gametalks-readme-md"
 ---
 
-# Awesome Game Talks [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Game Talks
 
-> [2005] [Heart of a Gamer](https://www.youtube.com/watch?v=RMrj8gdUfCU): Satoru Iwata (Nintendo)
-
-> On my business card, I am a corporate president. In my mind, I am a game developer. But in my heart, I am a gamer.
-
-Check out [contribution guidelines](https://github.com/hzoo/awesome-gametalks/blob/733d0328293686894a2025a1d321778e7322b468/CONTRIBUTING.md) and other [awesome](https://github.com/sindresorhus/awesome) stuff!
-
-> GDC has a channel now: https://www.youtube.com/c/gdconf
-
-## If you want just a list of free GDC talks: [GDC](https://github.com/hzoo/awesome-gametalks/blob/733d0328293686894a2025a1d321778e7322b468/GDC.md)
+A curated collection of resources and projects focused on Game Talks.
 
 ### Table of Contents
 - [GDC Talks](#gdc-talks)

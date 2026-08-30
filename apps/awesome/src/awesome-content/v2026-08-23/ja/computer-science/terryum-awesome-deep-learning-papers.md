@@ -1,59 +1,13 @@
 ---
-title: "terryum/awesome-deep-learning-papers"
-description: "2012〜2016年の被引用数が多い深層学習論文を集めた厳選リスト"
+title: "Awesome Most Cited Deep Learning Papers"
+description: "Most Cited Deep Learning Papersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-terryum-awesome-deep-learning-papers-readme-md"
 ---
 
-<a id="awesome---most-cited-deep-learning-papers"></a>
-# Awesome - 被引用数の多い深層学習論文
+# Awesome Most Cited Deep Learning Papers
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+Most Cited Deep Learning Papersを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-[注意] 2017年以降、毎日多くの深層学習論文が発表されているため、このリストはもう維持されていません。
-
-citation数が最も高い深層学習論文の選ばれたリスト（2012-2016）
-
-我々は、応用分野に関係なく読む価値がある*クラシック*ディープラーニングの論文が存在することを信じています。その論文の数を押し倒すような量ではなく、特定の研究分野で*必須読書*とされる*厳選されたリスト*の素晴らしいディープラーニング論文を提供したいと考えています。
-
-<a id="background"></a>
-## 背景
-
-このリスト以前に、他の*素晴らしいディープラーニングリスト*が存在しています。たとえば、[Deep Vision](https://github.com/kjw0612/awesome-deep-vision)と[Awesome Recurrent Neural Networks](https://github.com/kjw0612/awesome-rnn)です。また、このリストが公開された後、ディープラーニング初心者向けの素晴らしいリストである[Deep Learning Papers Reading Roadmap](https://github.com/songrotek/Deep-Learning-Papers-Reading-Roadmap)が作られ、多くのディープラーニング研究者によって愛されています。
-
-*Roadmap List*には重要なディープラーニング論文がたくさん含まれていますが、それらすべてを読むのは私には圧倒的に感じられます。導入部分で述べたように、私は、応用分野に関わらず、基礎的な研究は私たちに教訓をもたらしてくれると信じています。そのため、ここではディープラーニング研究の概観を始めるための**トップ100のディープラーニング論文**を紹介したいと思います。
-
-新しく公開された論文のニュースを毎日受け取るには、私の [twitter](https://twitter.com/TerryUm_ML) または [facebook page](https://www.facebook.com/terryum.io/) をフォローしてください！
-
-<a id="awesome-list-criteria"></a>
-## リストの選定基準
-
-1. A list of **top 100 deep learning papers** published from 2012 to 2016 is suggested.
-2. If a paper is added to the list, another paper (usually from *More Papers from 2016" section) should be removed to keep top 100 papers. (Thus, removing papers is also important contributions as well as adding papers)
-3. Papers that are important, but failed to be included in the list, will be listed in *More than Top 100* section.
-4. Please refer to *New Papers* and *Old Papers* sections for the papers published in recent 6 months or before 2012.
-
-*(Citation criteria)*
-- **< 6 months** : *New Papers* (by discussion)
-- **2016** :  +60 citations or "More Papers from 2016"
-- **2015** :  +200 citations
-- **2014** :  +400 citations
-- **2013** :  +600 citations
-- **2012** :  +800 citations
-- **~2012** : *Old Papers* (by discussion)
-
-ご注意ください。我々は、さまざまな研究に応用可能な、基礎的なディープラーニングの論文を好むため、応用に関する論文よりも優先します。そのため、基準を満たす論文の一部は受け入れられず、一部は受け入れられる場合があります。これは、論文の影響力、他の研究への適用可能性、研究分野の稀有性などに依存します。
-
-**あなたの協力が必要です！**
-
-ご意見（欠落している論文、新規論文、重要な研究者、誤字脱字など）がございましたら、編集およびプルリクエストをお願いします。
-（さらに詳しい指示については、[contributing guide](https://github.com/terryum/awesome-deep-learning-papers/blob/master/Contributing.md)を参照ください。ただし、論文のタイトルだけを教えてくださることも、私たちにとって大きな貢献になります。）
-
-(更新) すべてのトップ100論文を [this](https://github.com/terryum/awesome-deep-learning-papers/blob/master/fetch_papers.py) でダウンロードし、すべての著者の名前を [this](https://github.com/terryum/awesome-deep-learning-papers/blob/master/get_authors.py) で収集できます。また、すべてのトップ100論文についての [bib file](https://github.com/terryum/awesome-deep-learning-papers/blob/master/top100papers.bib) が提供されています。ありがとうございました、doodhwala、[Sven](https://github.com/sunshinemyson) および [grepinsight](https://github.com/grepinsight)！
-
-+ Top 100論文の著者統計を取得するコードの貢献を募集しています。
-
-
-<a id="contents"></a>
 ## 目次
 
 * [Understanding / Generalization / Transfer](#understanding--generalization--transfer)

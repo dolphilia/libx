@@ -1,19 +1,12 @@
 ---
-title: "secretGeek/awesomeCSV"
-description: "Canonical snapshot of secretGeek/awesomeCSV"
+title: "Awesome CSV"
+description: "A curated collection of resources and projects focused on CSV."
 licenseSource: "github-secretGeek-awesomeCSV-readme-md"
 ---
 
-# Awesome CSV [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome CSV
 
-**A carefully curated list of CSV-related tools and resources**
-
-[CSV](https://en.wikipedia.org/wiki/Comma-separated_values) remains the most futuristic data format from the distant past.
-
-XML has risen and fallen. JSON is just a flash in the pan. YAML is a poisoned chalice. **CSV will outlast them all.**
-
-When the final cockroach breathes her last breath, her dying act will be to scratch her date of death in a CSV file for posterity.
-
+A curated collection of resources and projects focused on CSV.
 
 ## Contents
 

@@ -1,17 +1,12 @@
 ---
-title: "Richienb/awesome-ponyfills"
-description: "Richienb/awesome-ponyfills の定本スナップショット"
+title: "Awesome Ponyfills"
+description: "Ponyfillsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-Richienb-awesome-ponyfills-readme-md"
 ---
 
-<div align="center">
-  <img src="media/Title.svg"/>
-  <br>
-  <a href="https://awesome.re">
-	  <img src="https://awesome.re/badge-flat.svg" alt="Awesome">
-  </a>
-    <p><a href="https://ponyfill.com">Ponyfill</a>はポリフィルに似ていますが、ネイティブAPIを上書きしません。ポリフィルは古い環境でも新しい機能を利用できるように機能の一部へパッチを当てます。一方Ponyfillは、機能をスタンドアロンのモジュールとして提供します。</p>
-</div>
+# Awesome Ponyfills
+
+Ponyfillsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

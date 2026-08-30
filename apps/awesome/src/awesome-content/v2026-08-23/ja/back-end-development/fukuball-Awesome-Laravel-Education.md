@@ -1,36 +1,12 @@
 ---
-title: "fukuball/Awesome-Laravel-Education"
-description: "fukuball/Awesome-Laravel-Education の定本スナップショット"
+title: "Awesome Laravel Education"
+description: "Laravel Educationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-fukuball-Awesome-Laravel-Education-readme-md"
 ---
 
-# [Awesome Laravel Education](https://fukuball.github.io/Awesome-Laravel-Education/) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Laravel Education
 
-Laravel PHP Framework を学ぶためのリソースを集めたリスト。初級・中級・上級の開発者を支援します。
-
-# 翻訳
-
-Laravel PHP Framework の学習を始めるには、以下のキュレーションリストを選択してください。
-
-- [Chinese](https://github.com/fukuball/Awesome-Laravel-Education/blob/master/langs/zh_TW.md)
-- [English](#user-content-english-version)
-- [Portuguese](https://github.com/fukuball/Awesome-Laravel-Education/blob/master/langs/pt_BR.md)
-
-# 貢献方法
-
-- 提案ごとに個別のプルリクエストを作成してください
-- 新しい分類や既存分類の改善を歓迎します
-
-## 変化を生み出そう
-以下の方々はコンテンツ、翻訳などに貢献しました。さあ、あなたも参加して名前を加えませんか ;)
-
-- [Laravel 台灣](https://www.facebook.com/groups/laravel.tw/)
-- [@fukeball](https://github.com/fukuball)
-- [@joaosvieira](https://github.com/joaosvieira)
-
-![Laravel Logo](https://raw.githubusercontent.com/fukuball/Awesome-Laravel-Education/master/laravel-logo-white.png)
-
-# 英語版
+Laravel Educationを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 索引
 
@@ -376,4 +352,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-

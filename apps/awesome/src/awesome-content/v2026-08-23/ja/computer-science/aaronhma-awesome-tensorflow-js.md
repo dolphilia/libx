@@ -1,16 +1,12 @@
 ---
-title: "aaronhma/awesome-tensorflow-js"
-description: "TensorFlow.jsの学習資料、モデル、プロジェクト、ツール、コミュニティをまとめた定本スナップショット"
+title: "Awesome TensorFlowJS"
+description: "TensorFlowJSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-aaronhma-awesome-tensorflow-js-readme-md"
 ---
 
-# TensorFlowJSのAwesomeリスト <a id="awesome-tensorflowjs"></a> [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome TensorFlowJS
 
-TensorFlow.jsは、JavaScriptで機械学習モデルを開発し、ブラウザまたはNode.js上で機械学習（訓練と推論）を直接利用するための[オープンソースソフトウェアライブラリ](https://github.com/tensorflow/tfjs)です。
-
-このリストは、優れた[TensorFlow.js](https://www.tensorflow.org/js)のツール、資料、動画、注目プロジェクトを集めたものです。
-
----
+TensorFlowJSを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 

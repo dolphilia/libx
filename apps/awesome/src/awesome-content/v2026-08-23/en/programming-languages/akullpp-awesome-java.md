@@ -1,22 +1,12 @@
 ---
-title: "akullpp/awesome-java"
-description: "Canonical snapshot of akullpp/awesome-java"
+title: "Awesome Java"
+description: "A curated collection of resources and projects focused on Java."
 licenseSource: "github-akullpp-awesome-java-readme-md"
 ---
 
+# Awesome Java
 
-
-# Awesome Java [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-A curated list of noteworthy Java frameworks, libraries, tools and resources.
-
-<sub>818 projects · 80 categories · 85 resources</sub>
-
-<sub>Activity: 🟢 pushed within 3 months · 🟠 pushed 3–12 months ago · 🔴 no push for over 12 months</sub>
-
-<sub>License chips use GitHub SPDX metadata when available.</sub>
-
-<sub>Entries spanning several repositories combine their stars, use the most recent push for activity and show a license only when all repositories agree.</sub>
+A curated collection of resources and projects focused on Java.
 
 ## Projects
 

@@ -1,18 +1,12 @@
 ---
-title: "dotintent/awesome-ble"
-description: "Canonical snapshot of dotintent/awesome-ble"
+title: "Awesome BLE"
+description: "A curated collection of resources and projects focused on BLE."
 licenseSource: "github-dotintent-awesome-ble-readme-md"
 ---
 
-# Awesome BLE [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome BLE
 
-![](https://raw.githubusercontent.com/dotintent/awesome-ble/a128934b017fedc72f6be6eca25b5d821e31794b/.github/awesome-ble.png)
-
-**Bluetooth Low Energy (BLE)**: Low-power wireless communication protocol enabling efficient data exchange between devices, ideal for IoT, wearables, and other battery-powered applications.
-
-A collaborative list of Awesome Bluetooth Low Energy resources by [🔴 intent](https://withintent.com).
-
-![](https://img.shields.io/github/last-commit/dotintent/awesome-ble/main)
+A curated collection of resources and projects focused on BLE.
 
 ## Contents
 

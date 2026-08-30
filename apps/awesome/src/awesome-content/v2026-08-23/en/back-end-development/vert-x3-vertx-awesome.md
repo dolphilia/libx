@@ -1,22 +1,12 @@
 ---
-title: "vert-x3/vertx-awesome"
-description: "Canonical snapshot of vert-x3/vertx-awesome"
+title: "Awesome Vert.x"
+description: "A curated collection of resources and projects focused on Vert.x."
 licenseSource: "github-vert-x3-vertx-awesome-readme-md"
 ---
 
-# Awesome Vert.x [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Vert.x
 
-[<img src="https://raw.githubusercontent.com/vert-x3/vertx-awesome/6978ef828da5cec96fad20e0f146b06ad35d45d9/vertx-logo.svg" align="right" width="250" alt="Vert.x logo">](http://vertx.io)
-
-*Awesome Vert.x* is a list of awesome frameworks, libraries or other components related to
-[Vert.x](https://github.com/eclipse/vert.x).
-
-If you want your component to appear here, send a pull request to this repository to add it.
-
-Please note that we can't vouch for the stability or production-worthiness of everything on this list unless it has
-the icon <img src="https://raw.githubusercontent.com/vert-x3/vertx-awesome/6978ef828da5cec96fad20e0f146b06ad35d45d9/vertx-favicon.svg" alt="(stack)" title="Vert.x Stack" height="16px">
-next to it. This icon means the component is part of the official
-[Vert.x stack](https://vertx.io/docs/).
+A curated collection of resources and projects focused on Vert.x.
 
 ## Contents
 

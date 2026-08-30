@@ -1,14 +1,12 @@
 ---
-title: "keller-mark/awesome-biological-visualizations"
-description: "keller-mark/awesome-biological-visualizations の定本スナップショット"
+title: "Awesome Biological Visualizations"
+description: "Biological Visualizationsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-keller-mark-awesome-biological-visualizations-readme-md"
 ---
 
-# Awesome Biological Visualizations [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Biological Visualizations
 
-> ウェブ上で生物学データを対話的に可視化します。
-
-ウェブベースの生物学関連可視化ツールは、インターネット上に散在し発見が困難なことが多いです。GitHub、Twitter、科学論文からのリンクで見つかる場合があります。これらのツールは、疾患または健康な人間・モデル生物の文脈で生物学データを可視化したい科学者に非常に有用です。
+Biological Visualizationsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [がん](#cancer)

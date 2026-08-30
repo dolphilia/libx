@@ -1,23 +1,12 @@
 ---
-title: "nikgraf/awesome-draft-js"
-description: "Canonical snapshot of nikgraf/awesome-draft-js"
+title: "Awesome Draft.js"
+description: "A curated collection of resources and projects focused on Draft.js."
 licenseSource: "github-nikgraf-awesome-draft-js-readme-md"
 ---
 
-# Awesome Draft.js [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Draft.js
 
-[Draft.js](https://draftjs.org/) is a framework for building rich text editors in React.
-
-**Table of Contents**
-
-- [Community](https://github.com/nikgraf/awesome-draft-js#community)
-- [Presentations](https://github.com/nikgraf/awesome-draft-js#presentations)
-- [Projects on Top of Draft.js](https://github.com/nikgraf/awesome-draft-js#standalone-editors-built-on-draftjs)
-- [Common Utilities](https://github.com/nikgraf/awesome-draft-js#common-utilities)
-- [Blog Posts & Articles](https://github.com/nikgraf/awesome-draft-js#blog-posts--articles)
-- [Live Demos](https://github.com/nikgraf/awesome-draft-js#live-demos)
-- [Usage in Production](https://github.com/nikgraf/awesome-draft-js#usage-in-production)
-- [License](https://github.com/nikgraf/awesome-draft-js#license)
+A curated collection of resources and projects focused on Draft.js.
 
 ## Community
 

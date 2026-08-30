@@ -1,17 +1,12 @@
 ---
-title: "Famolus/awesome-sass"
-description: "Canonical snapshot of Famolus/awesome-sass"
+title: "Awesome Sass"
+description: "A curated collection of resources and projects focused on Sass."
 licenseSource: "github-Famolus-awesome-sass-readme-md"
 ---
 
-![Awesome Sass](https://raw.githubusercontent.com/Famolus/awesome-sass/master/awesome-sass-logo-github.png)
+# Awesome Sass
 
-# Awesome Sass [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> Curated list of awesome [Sass](http://sass-lang.com/) and [SCSS](http://sass-lang.com/) frameworks, libraries, style guides, articles, and resources.
-
-- Use <kbd>command</kbd> + <kbd>F</kbd> or <kbd>ctrl</kbd> + <kbd>F</kbd> to search for a keyword.
-- Contributions welcome, please see [contribution guide](https://github.com/Famolus/awesome-sass/blob/c3ed9db19967b7e263edcdb9c8f3731b27285399/contributing.md).
+A curated collection of resources and projects focused on Sass.
 
 ## Contents
 - [About](#about)

@@ -1,17 +1,12 @@
 ---
-title: "roaldnefs/awesome-prometheus"
-description: "Canonical snapshot of roaldnefs/awesome-prometheus"
+title: "Awesome Prometheus"
+description: "A curated collection of resources and projects focused on Prometheus."
 licenseSource: "github-roaldnefs-awesome-prometheus-readme-md"
 ---
 
-# Awesome Prometheus  [![Awesome](https://awesome.re/badge-flat.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Prometheus
 
-> A curated list of awesome Prometheus resources, projects and tools.
-
-
-[![Prometheus](https://github.com/roaldnefs/awesome-prometheus/blob/d21f6de346a8f01ee3ef8b23282139dcc805eb62/media/prometheus.png)](https://prometheus.io/)
-
-Prometheus is an open-source systems monitoring and alerting toolkit.
+A curated collection of resources and projects focused on Prometheus.
 
 ## Contents
 - [Official resources](#official-resources)

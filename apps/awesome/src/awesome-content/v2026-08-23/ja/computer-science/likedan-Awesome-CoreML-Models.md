@@ -1,29 +1,12 @@
 ---
-title: "likedan/Awesome-CoreML-Models"
-description: "likedan/Awesome-CoreML-Modelsの日本語訳"
+title: "Awesome Models"
+description: "Modelsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-likedan-Awesome-CoreML-Models-readme-md"
 ---
 
+# Awesome Models
 
-
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/likedan/Awesome-CoreML-Models/f65751092d0ba1e3a8e83c8351f46bfd54606a91/images/coreml.png" width="329" height="295"/>
-</p>
-
-
-iOS 11以降、Appleは開発者が機械学習モデルをアプリケーションへ統合できるようCore MLフレームワークを提供しています。 [公式ドキュメント](https://developer.apple.com/documentation/coreml)
-
-iOS、macOS、tvOS、watchOSの開発者が機械学習技術を試せるよう、Core ML形式の機械学習モデルを大規模に集めています。
-
-Core MLモデルを変換した場合は、ぜひ[プルリクエスト]を送ってください。(https://github.com/likedan/Awesome-CoreML-Models/compare).
-
-可視化ツールも収録しています。その一つが[Netron]です。(https://lutzroeder.github.io/Netron).
-
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
-# モデル
+Modelsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 画像 - メタデータ／テキスト
 *画像データを入力として受け取り、画像に関する有用な情報を出力するモデルです。*

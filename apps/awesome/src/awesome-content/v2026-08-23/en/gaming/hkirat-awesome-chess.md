@@ -1,20 +1,13 @@
 ---
-title: "hkirat/awesome-chess"
-description: "Canonical snapshot of hkirat/awesome-chess"
+title: "Awesome Chess"
+description: "A curated collection of resources and projects focused on Chess."
 licenseSource: "github-hkirat-awesome-chess-readme-md"
 ---
 
-# Awesome Chess [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Chess
 
-A curated list of assets availible on the Internet related to chess.
+A curated collection of resources and projects focused on Chess.
 
-*Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing. You might want to read the complete [awesome](https://github.com/sindresorhus/awesome) list.*
-
-### Contributing
-Kindly go through [Contribution Guidelines](https://github.com/hkirat/awesome-chess/blob/master/CONTRIBUTING.md#contribution-guidelines) first.
-
-Content
----
  - [Books](#books)
  - [FEN Parsers](#fen-parsers)
  - [Move Validators](#move-validators)

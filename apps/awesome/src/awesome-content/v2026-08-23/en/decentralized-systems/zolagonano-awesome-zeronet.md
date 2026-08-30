@@ -1,21 +1,12 @@
 ---
-title: "zolagonano/awesome-zeronet"
-description: "Canonical snapshot of zolagonano/awesome-zeronet"
+title: "Awesome ZeroNet"
+description: "A curated collection of resources and projects focused on ZeroNet."
 licenseSource: "github-zolagonano-awesome-zeronet-readme-md"
 ---
 
-<p align="center">
-  <br>
-  <a href="https://zeronet.io"><img width="100" src="./assets/logo.png" alt="ZeroNet's logo"></a>
-  <br>
-</p>
+# Awesome ZeroNet
 
-
-# Awesome ZeroNet [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> An Awesome & curated list of [ZeroNet](https://en.wikipedia.org/wiki/ZeroNet) implementations, plugins, tools, and zites. 
-
-ZeroNet is a decentralized web-like network of peer-to-peer users.
+A curated collection of resources and projects focused on ZeroNet.
 
 ## Contents
 

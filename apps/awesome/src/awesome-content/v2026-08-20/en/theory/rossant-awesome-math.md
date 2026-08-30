@@ -1,16 +1,12 @@
 ---
-title: "rossant/awesome-math"
-description: "Canonical snapshot of rossant/awesome-math"
+title: "Awesome Math"
+description: "A curated collection of resources and projects focused on Math."
 licenseSource: "github-rossant-awesome-math-readme-md"
 ---
 
-# Awesome Math [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Math
 
-Awesome Math is a curated list of high-quality resources for learning, teaching, and doing mathematics. It covers pure mathematics, applied mathematics, computation, formal proof, and the use of AI in mathematics.
-
-Most resources are free to access. Paid resources may be included when they are widely respected, unusually useful, and hard to replace. Access limits should be stated in the entry.
-
-Read the [contribution guidelines](https://github.com/rossant/awesome-math/blob/21066c9d58e470d5b9030755bf1cb4c77a786a91/CONTRIBUTING.md) before suggesting a resource.
+A curated collection of resources and projects focused on Math.
 
 ## Contents
 

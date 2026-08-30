@@ -1,22 +1,12 @@
 ---
-title: "michaelbrusegard/awesome-wezterm"
-description: "michaelbrusegard/awesome-wezterm の定本スナップショット"
+title: "Awesome WezTerm"
+description: "WezTermを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-michaelbrusegard-awesome-wezterm-readme-md"
 ---
 
+# Awesome WezTerm
 
-
-# Awesome WezTerm [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-<img src="https://raw.githubusercontent.com/wez/wezterm/main/assets/icon/wezterm-icon.svg" align="right" width="144" />
-
-> 素晴らしい WezTerm プラグインのコレクション。[Plugin Guide](https://github.com/wezterm/wezterm/blob/main/docs/config/plugins.md)。便利なものを見つけましたか？ぜひ[貢献](https://github.com/michaelbrusegard/awesome-wezterm/blob/dcf976b0298f6ac0f0a5f0c69e21ae5434fcd4e9/CONTRIBUTING.md)してください。
-
-[WezTerm](https://wezfurlong.org/wezterm/) は、[@wez](https://github.com/wez) が開発し、[Rust](https://www.rust-lang.org) で実装した強力なクロスプラットフォーム端末エミュレーター・マルチプレクサーです。
-
-WezTerm の設定体験を改善するには:
-
-- [DrKJeff16/wezterm-types](https://github.com/DrKJeff16/wezterm-types) - WezTerm の Lua API 利用時にコード支援を提供するため、エディターの補完ソースとして追加できる WezTerm 型アノテーション。コミュニティプラグインにも対応。
+WezTermを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

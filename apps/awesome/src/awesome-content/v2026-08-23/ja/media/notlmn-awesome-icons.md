@@ -1,14 +1,12 @@
 ---
-title: "notlmn/awesome-icons"
-description: "notlmn/awesome-icons の定本スナップショット"
+title: "Awesome Icons"
+description: "Iconsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-notlmn-awesome-icons-readme-md"
 ---
 
-# Awesome Icons [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Icons
 
-> ダウンロード可能な素晴らしい SVG/PNG/フォントアイコンプロジェクトの厳選リスト
-
-![Banner](https://raw.githubusercontent.com/notlmn/awesome-icons/cf57bc121f3397747a2f31ef258fdd34d865a96a/media/banner.png)
+Iconsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

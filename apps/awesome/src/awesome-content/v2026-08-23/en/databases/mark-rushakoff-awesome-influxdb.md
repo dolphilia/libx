@@ -1,16 +1,12 @@
 ---
-title: "mark-rushakoff/awesome-influxdb"
-description: "Canonical snapshot of mark-rushakoff/awesome-influxdb"
+title: "Awesome influxdb"
+description: "A curated collection of resources and projects focused on influxdb."
 licenseSource: "github-mark-rushakoff-awesome-influxdb-readme-md"
 ---
 
-# awesome-influxdb [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome influxdb
 
-A curated list of awesome projects, libraries, tools, etc. related to [InfluxDB](https://www.influxdata.com/).
-This list focuses on libraries, tools, etc. supporting InfluxDB version 1.0 and up.
-
-Want to make this list better?
-Take a look at our page on [contributing](https://github.com/mark-rushakoff/awesome-influxdb/blob/7e22981080cb08302ed3da861d6b12ec31aec88f/CONTRIBUTING.md) and then open a pull request!
+A curated collection of resources and projects focused on influxdb.
 
 ## Reference material
 

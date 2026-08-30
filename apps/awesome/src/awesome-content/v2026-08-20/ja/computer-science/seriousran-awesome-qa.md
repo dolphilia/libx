@@ -1,15 +1,12 @@
 ---
-title: "seriousran/awesome-qa"
-description: "seriousran/awesome-qa の定本スナップショット"
+title: "Awesome Question Answering"
+description: "Question Answeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-seriousran-awesome-qa-readme-md"
 ---
 
-# Awesome Question Answering [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome) 
+# Awesome Question Answering
 
-_情報検索と自然言語処理（NLP）の分野に属し、機械学習・深層学習を活用する計算機科学領域である__[質問応答（QA）](https://en.wikipedia.org/wiki/Question_answering)__の厳選リストです。_
-
-_정보 검색 및 자연 언어 처리 분야의 질의응답에 관한 큐레이션 - 머신러닝과 딥러닝 단계까지_<br/>
-_问答系统主题的精选列表，是信息检索和自然语言处理领域的计算机科学学科 - 使用机器学习和深度学习_
+Question Answeringを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 
@@ -323,4 +320,3 @@ Common Sense](https://www.aclweb.org/anthology/W19-2008.pdf), Michael Chen, et a
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/share-your-work/public-domain/cc0/)
 
 法律で認められる限り、メンテナーの [seriousmac](https://github.com/seriousmac) は本作品に関するすべての著作権および関連・隣接権を放棄しています。
-

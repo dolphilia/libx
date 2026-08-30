@@ -1,16 +1,12 @@
 ---
-title: "aliesbelik/awesome-gatling"
-description: "Canonical snapshot of aliesbelik/awesome-gatling"
+title: "Awesome Gatling"
+description: "A curated collection of resources and projects focused on Gatling."
 licenseSource: "github-aliesbelik-awesome-gatling-readme-md"
 ---
 
-# Awesome Gatling [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Gatling
 
-[<img src="https://raw.githubusercontent.com/aliesbelik/awesome-gatling/d742881c4a82d75dc95b9ac4b32cbc6caf75828d/assets/images/gatling-logo.svg" align="right" width="260" alt="Gatling">](https://gatling.io/)
-
-A curated collection of resources covering all aspects of load testing using [Gatling](https://gatling.io/) and related stuff: plugins, integrations, testing techniques, DevOps practices, etc.
-
-> [Gatling](https://gatling.io/) is an open-source load and performance testing framework based on Scala, Akka and Netty.
+A curated collection of resources and projects focused on Gatling.
 
 ## Contents
 

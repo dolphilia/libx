@@ -1,37 +1,12 @@
 ---
-title: "j0hnm4r5/awesome-creative-technology"
-description: "クリエイティブテクノロジーのスタジオ、組織、イベント、教育機関を分類した定本スナップショット"
+title: "Awesome Creative Technology"
+description: "Creative Technologyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-j0hnm4r5-awesome-creative-technology-readme-md"
 ---
 
-<div align="center">
-	<div>
-		<a href="https://github.com/j0hnm4r5/awesome-creative-technology">
-			<img width="500" src="./logo.gif" alt="Awesome Creative Technology Groups">
-		</a>
-	</div>
-	<br>
-	<p>
-		クリエイティブテクノロジーに関わるグループ、企業、スタジオ、コレクティブ等の厳選リストです。
-	</p>
-	<br>
-	<a href="https://awesome.re">
-		<img src="https://awesome.re/badge-flat2.svg" alt="Awesome">
-	</a>
-	<hr>
-</div>
+# Awesome Creative Technology
 
-# クリエイティブテクノロジーのAwesomeリスト <a id="awesome-creative-technology"></a>
-
-> コンピューティング、デザイン、アート、ユーザー体験を組み合わせる企業、グループ、エージェンシー、学校、イベントをまとめます。
-
-クリエイティブテクノロジーは、コンピューティング、デザイン、アート、ユーザー体験を組み合わせる広範な学際・超学際分野です。
-
-本リストは世界各地の優れたグループと資料を集め、着想源であると同時に、就職先候補や交流機会を調べるための参照点となることを目指します。
-
-クリエイティブテクノロジストは特定分野だけでなく幅広い技能を持つため、厳密な分類は困難です。完全な区分ではありませんが、各グループを主な専門領域へ配置しています。
-
----
+Creative Technologyを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 

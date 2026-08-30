@@ -1,16 +1,12 @@
 ---
-title: "afonsopacifer/awesome-flexbox"
-description: "Canonical snapshot of afonsopacifer/awesome-flexbox"
+title: "Awesome flexbox"
+description: "A curated collection of resources and projects focused on flexbox."
 licenseSource: "github-afonsopacifer-awesome-flexbox-readme-md"
 ---
 
-[![awesome flexbox](https://github.com/afonsopacifer/awesome-flexbox/blob/e734f8d85a3999a324abe48776b699964989b359/awesome-flexbox.jpg)](https://github.com/afonsopacifer/awesome-flexbox/)
+# Awesome flexbox
 
-[![Build Status](https://travis-ci.org/afonsopacifer/awesome-flexbox.svg?branch=master)](https://travis-ci.org/afonsopacifer/awesome-flexbox)
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-> A curated list of CSS Flexible Box Layout Module or only Flexbox.
-Inspired by [awesome-webcomponents](https://github.com/obetomuniz/awesome-webcomponents) and [awesome-svg](https://github.com/willianjusten/awesome-svg).
+A curated collection of resources and projects focused on flexbox.
 
 ## Table of Contents
 * [W3C Specification](#w3c-specification)

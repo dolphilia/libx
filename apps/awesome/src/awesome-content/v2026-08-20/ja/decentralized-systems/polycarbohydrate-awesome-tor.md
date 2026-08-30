@@ -1,19 +1,13 @@
 ---
-title: "polycarbohydrate/awesome-tor"
-description: "polycarbohydrate/awesome-tor の日本語定本スナップショット"
+title: "Awesome tor-logo"
+description: "tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-polycarbohydrate-awesome-tor-readme-md"
 ---
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-# [![awesome-tor-logo](https://github.com/Polycarbohydrate/awesome-tor/assets/169401794/d8c7415e-1874-49f5-a1c6-04b3a8aa689f)](https://www.torproject.org)
-> Awesome Torは、Torネットワークに関するリソース、ツール、アプリケーションの厳選リストです。
+# Awesome tor-logo
 
-> **注記：**
-> この製品はTor®匿名化ソフトウェアとは独立して制作されており、品質、適合性、その他いかなる点についてもThe Tor Projectによる保証はありません。
+tor-logoを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-Torは匿名通信を可能にする無料のオーバーレイネットワークです。フリーかつオープンソースのソフトウェアと、世界中でボランティアが運用する7,000以上のリレーで構成され、利用者のインターネットトラフィックはネットワーク内のランダムな経路を通じてルーティングされます。
-
-読み始める前に、検閲地域の利用者が検閲を回避できるよう、ブラウザーでSnowflakeブリッジをホストしたい場合は、[こちらをクリック](https://polycarbohydrate.github.io/awesome-tor/selfhost-snowflake)してください。ありがとうございます。
 ## 目次
 - [Official Manual](#official-manual)
 - [Applications](#applications)

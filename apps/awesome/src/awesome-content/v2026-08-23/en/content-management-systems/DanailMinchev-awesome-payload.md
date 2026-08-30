@@ -1,19 +1,12 @@
 ---
-title: "DanailMinchev/awesome-payload"
-description: "Canonical snapshot of DanailMinchev/awesome-payload"
+title: "Awesome Payload"
+description: "A curated collection of resources and projects focused on Payload."
 licenseSource: "github-DanailMinchev-awesome-payload-readme-md"
 ---
 
-# Awesome Payload [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Payload
 
-> A curated list of awesome Payload resources for users and developers.
-
-[<img src="./media/payload-logo.jpg" alt="Payload" width="300" align="right" />](https://payloadcms.com/)
-
-<p>
-<a href="https://payloadcms.com/">Payload</a> is a free and open-source full-stack Next.js framework and headless CMS aimed sharply at providing the best, developer-first experience possible to build out APIs and admin UI.<br />
-Payload is natively integrated with Next.js and is installed directly into your Next.js app.
-</p>
+A curated collection of resources and projects focused on Payload.
 
 ## Contents
 

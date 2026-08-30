@@ -1,19 +1,12 @@
 ---
-title: "make-github-pseudonymous-again/awesome-qr-code"
-description: "Canonical snapshot of make-github-pseudonymous-again/awesome-qr-code"
+title: "Awesome QR Code"
+description: "A curated collection of resources and projects focused on QR Code."
 licenseSource: "github-make-github-pseudonymous-again-awesome-qr-code-readme-md"
 ---
 
-# Awesome QR Code [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome QR Code
 
-[<img src="https://raw.githubusercontent.com/make-github-pseudonymous-again/awesome-qr-code/d04e5493dc6ac5060031779777e2490e6dcbe5fe/repo-link.svg" align="right" width="100">](https://github.com/make-github-pseudonymous-again/awesome-qr-code#readme)
-
-A curated list of awesome QR code libraries, software and resources.
-
-> QR code (abbreviated from Quick Response code) is a type of matrix barcode (or two-dimensional barcode) first designed in 1994 for the automotive industry in Japan.
->
-> *Wikipedia* ~ https://en.wikipedia.org/wiki/QR_code
-
+A curated collection of resources and projects focused on QR Code.
 
 ## Contents
 

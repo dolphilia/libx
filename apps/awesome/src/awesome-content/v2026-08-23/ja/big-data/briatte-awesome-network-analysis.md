@@ -1,19 +1,12 @@
 ---
-title: "briatte/awesome-network-analysis"
-description: "ネットワークデータの構築、分析、可視化に関する書籍、論文、ソフトウェア、教材集"
+title: "Awesome Network Analysis"
+description: "Network Analysisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-briatte-awesome-network-analysis-readme-md"
 ---
 
-# Awesome Network Analysis [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7869481.svg)](https://doi.org/10.5281/zenodo.7869481)
+# Awesome Network Analysis
 
-
-ネットワークデータの構築、分析、可視化に役立つリソースの[Awesomeリスト](https://github.com/sindresorhus/awesome)。
-
-[Awesome Deep Learning](https://github.com/ChristosChristofidis/awesome-deep-learning), [Awesome Math](https://github.com/rossant/awesome-math) 他を参考に。2016年に開始され、それ以降、不規則に更新されている。
-
-[![Adamic and Glance’s network of political blogs, 2004.](https://raw.githubusercontent.com/briatte/awesome-network-analysis/master/illustration.png)](http://www.maths.tcd.ie/~mnl/store/AdamicGlance2004a.pdf)
-
-> [AdamicとGlance（2004）](https://dl.acm.org/citation.cfm?doid=1134271.1134277)による米国政治ブログのネットワーク（[プレプリント](http://www.maths.tcd.ie/~mnl/store/AdamicGlance2004a.pdf)）。
+Network Analysisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## Contents
 

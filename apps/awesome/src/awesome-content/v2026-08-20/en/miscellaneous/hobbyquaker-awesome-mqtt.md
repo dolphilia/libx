@@ -1,14 +1,12 @@
 ---
-title: "hobbyquaker/awesome-mqtt"
-description: "Canonical snapshot of hobbyquaker/awesome-mqtt"
+title: "Awesome MQTT"
+description: "A curated collection of resources and projects focused on MQTT."
 licenseSource: "github-hobbyquaker-awesome-mqtt-readme-md"
 ---
 
-# Awesome MQTT [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) [![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+# Awesome MQTT
 
-> A curated list of MQTT related stuff.
-
-MQTT is a lightweight client-server publish/subscribe messaging protocol, optimized for high-latency or unreliable networks. This protocol is a good choice for Internet of Things applications, Telemetry, Sensor Networks, Smart Metering, Home Automation, Messaging and Notification Services.
+A curated collection of resources and projects focused on MQTT.
 
 ## Contents
 

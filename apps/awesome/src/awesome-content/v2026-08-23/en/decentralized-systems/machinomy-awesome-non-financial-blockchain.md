@@ -1,18 +1,12 @@
 ---
-title: "machinomy/awesome-non-financial-blockchain"
-description: "Canonical snapshot of machinomy/awesome-non-financial-blockchain"
+title: "Awesome Non-Financial Blockchain"
+description: "A curated collection of resources and projects focused on Non-Financial Blockchain."
 licenseSource: "github-machinomy-awesome-non-financial-blockchain-readme-md"
 ---
 
-# Awesome Non-Financial Blockchain [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Non-Financial Blockchain
 
-> Curated list of projects that build non-financial applications of blockchain.
-
-The blockchain is an incorruptible digital ledger of economic transactions that can be programmed to record not just financial transactions but virtually everything of value (by [Don Tapscott](https://www.linkedin.com/pulse/whats-next-generation-internet-surprise-its-all-don-tapscott)).
-
-Most applications of blockchain lie in a financial realm. That makes non-financial applications even more intriguing.
-
-Industry of a blockchain application is defined by the one that is changed the most. For example, discontinued IoT bitcoin micropayments startup [21](https://21.co) (now [Earn.com](https://earn.com)) could significantly change both IoT and Financial sectors. Financial industry would expand its _current_ practice to a new domain. For IoT, however, _business model_ would change significantly. That intuition commands current classification.
+A curated collection of resources and projects focused on Non-Financial Blockchain.
 
 ## Contents
 

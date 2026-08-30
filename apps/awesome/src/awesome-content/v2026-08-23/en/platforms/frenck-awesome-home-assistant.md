@@ -1,47 +1,12 @@
 ---
-title: "frenck/awesome-home-assistant"
-description: "Canonical snapshot of frenck/awesome-home-assistant"
+title: "Awesome Home Assistant"
+description: "A curated collection of resources and projects focused on Home Assistant."
 licenseSource: "github-frenck-awesome-home-assistant-readme-md"
 ---
 
-# Awesome Home Assistant [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
+# Awesome Home Assistant
 
-
-<div align="center">
-  <a href="https://awesome-ha.com">
-    <img width="400" src="https://www.awesome-ha.com/images/awesome-home-assistant.svg" alt="Awesome Home Assistant">
-  </a>
-  <br>
-  <a href="https://awesome-ha.com"><strong>https://awesome-ha.com</strong></a>
-</div>
-
-Home Assistant is open source home automation that puts local control and
-privacy first. It works with thousands of devices out of the box, runs on
-your own hardware, and does not require any coding to set up. Whether you
-are automating a single room or an entire house, everything stays local
-and private.
-
-Curious what it looks like? Try the
-[Home Assistant online demo](https://demo.home-assistant.io).
-
-Awesome Home Assistant is a curated list of the best
-[Home Assistant](https://www.home-assistant.io) resources: custom
-integrations, dashboard cards, themes, apps, tutorials, and much more.
-
-Most of the items below can be installed in one click through
-[HACS](https://hacs.xyz), the Home Assistant Community Store, after you
-install Home Assistant itself. Home Assistant is owned by the
-[Open Home Foundation](https://www.openhomefoundation.org), which also
-stewards ESPHome, Music Assistant, Z-Wave JS, and the open voice tools you
-will see throughout the list. If you are buying smart-home devices, the
-[Works with Home Assistant](https://works-with.home-assistant.io) program
-tests for privacy, local control, and long-term support.
-
-The list is divided into categories. The links in those categories do not have
-pre-established order; the order is for contribution. If you want to contribute,
-please read the [guide](https://github.com/frenck/awesome-home-assistant/blob/main/.github/CONTRIBUTING.md)
-or raise an [issue](https://github.com/frenck/awesome-home-assistant/issues/new/choose)
-to suggest additions, updates or removals.
+A curated collection of resources and projects focused on Home Assistant.
 
 ## Contents
 

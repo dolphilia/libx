@@ -1,13 +1,12 @@
 ---
-title: "MyHoneyBadger/awesome-github-wiki"
-description: "MyHoneyBadger/awesome-github-wiki の定本スナップショット"
+title: "Awesome GitHub Wikis"
+description: "GitHub Wikisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-MyHoneyBadger-awesome-github-wiki-readme-md"
 ---
 
-# Awesome GitHub Wikis [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/MyHoneyBadger/awesome-github-wiki/)
-> 優れた GitHub Wiki の厳選リスト
+# Awesome GitHub Wikis
 
-[GitHub.com](https://github.com/) 上のすべてのリポジトリには、[Wiki](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis)と呼ばれるドキュメントをホストするためのセクションが備わっています。リポジトリの Wiki は、使い方、設計方法、核となる原則など、プロジェクトに関する長文コンテンツを共有します。README ファイルはプロジェクトができることを素早く伝えますが、Wiki は追加ドキュメントの提供に使います。
+GitHub Wikisを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 - [例](#examples)

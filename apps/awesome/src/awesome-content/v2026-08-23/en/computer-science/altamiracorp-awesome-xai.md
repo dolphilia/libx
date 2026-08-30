@@ -1,29 +1,12 @@
 ---
-title: "altamiracorp/awesome-xai"
-description: "Canonical snapshot of altamiracorp/awesome-xai"
+title: "Awesome XAI"
+description: "A curated collection of resources and projects focused on XAI."
 licenseSource: "github-altamiracorp-awesome-xai-readme-md"
 ---
 
-<div align="center">
+# Awesome XAI
 
-
-
-# Awesome XAI [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-
-A curated list of XAI and Interpretable ML papers, methods, critiques, and
-resources.
-
-
-<img src="https://raw.githubusercontent.com/altamiracorp/awesome-xai/main/images/icon.svg" width="256" style="max-width: 25% !important"/>
-
-
-Explainable AI (XAI) is a branch of machine learning research which seeks to
-make various machine learning techniques more understandable.
-
-</div>
-
-
+A curated collection of resources and projects focused on XAI.
 
 ## Contents
 - [Papers](#papers)

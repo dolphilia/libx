@@ -1,31 +1,12 @@
 ---
-title: "davidsonfellipe/awesome-wpo"
-description: "Canonical snapshot of davidsonfellipe/awesome-wpo"
+title: "Awesome WPO"
+description: "A curated collection of resources and projects focused on WPO."
 licenseSource: "github-davidsonfellipe-awesome-wpo-readme-md"
 ---
 
-# Awesome WPO [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome WPO
 
-[![GitHub contributors](https://img.shields.io/github/contributors/davidsonfellipe/awesome-wpo.svg)](https://github.com/davidsonfellipe/awesome-wpo/graphs/contributors)
-[![MIT license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat)](https://davidsonfellipe.mit-license.org/)
-
-Welcome to the curated list of Web Performance Optimization resources. This repository aims to gather the best tools, articles, blogs, books, and talks related to optimizing website performance. Whether you're a developer, designer, or performance enthusiast, you'll find valuable content here to supercharge your web projects.
-
-> :globe_with_meridians: **Browse online:** This list is also available as a website at **[awesome-wpo.dev](https://awesome-wpo.dev/)**.
-
-## Categories
-
-:globe_with_meridians: [Awesome WPO / Website](https://awesome-wpo.dev/)
-
-:memo: [Awesome WPO / Articles](#articles)
-
-:books: [Awesome WPO / Books](#books)
-
-:book: [Awesome WPO / Docs](#documentation)
-
-:calendar: [Awesome WPO / Events](#events)
-
-:movie_camera: [Awesome WPO / Talks](#talks)
+A curated collection of resources and projects focused on WPO.
 
 ## Table of Contents
 

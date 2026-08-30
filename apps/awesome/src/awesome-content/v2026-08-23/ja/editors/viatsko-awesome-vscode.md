@@ -1,26 +1,12 @@
 ---
-title: "viatsko/awesome-vscode"
-description: "Visual Studio Codeの拡張機能、テーマ、開発資料を分類した定本スナップショット"
+title: "Awesome Vscode"
+description: "Vscodeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-viatsko-awesome-vscode-readme-md"
 ---
 
+# Awesome Vscode
 
-<br/>
-<div align="center">
-  <img width="380px" src="https://raw.githubusercontent.com/viatsko/awesome-vscode/master/awesome-vscode-logo.png">
-</div>
-<br/>
-<div align="center">
-
-<a href="https://code.visualstudio.com/">Visual Studio Code</a>の優れたパッケージと資料を
-厳選したリストです。さらに多くのリストは
-<a href="https://github.com/sindresorhus/awesome">awesome</a>を参照してください。
-<br/>
-<br/>
-<a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"/></a>
-<a href="https://github.com/viatsko/awesome-vscode/actions/workflows/links.yml"><img src="https://github.com/viatsko/awesome-vscode/actions/workflows/links.yml/badge.svg" alt="Links Status"/></a>
-</div>
-<br/>
+Vscodeを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 # 目次
 

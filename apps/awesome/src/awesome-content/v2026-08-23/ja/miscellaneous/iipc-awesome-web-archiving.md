@@ -1,14 +1,12 @@
 ---
-title: "iipc/awesome-web-archiving"
-description: "iipc/awesome-web-archiving の定本スナップショット"
+title: "Awesome Web Archiving"
+description: "Web Archivingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。"
 licenseSource: "github-iipc-awesome-web-archiving-readme-md"
 ---
 
+# Awesome Web Archiving
 
-# Awesome Web Archiving [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-ウェブアーカイブとは、将来の研究者、歴史家、一般利用者のために情報を保存する目的で、World Wide Webの一部を収集する活動です。ウェブは巨大なため、通常はウェブクローラーで自動収集します。変化し続けるウェブ技術に対応し、保存ページを確実かつ有意義に取得・再生するには、アーカイブツールも継続的に進化する必要があります。
-
+Web Archivingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。 上流ではアーカイブ済み、または更新終了と案内されています。
 
 ## 目次
 
@@ -313,4 +311,3 @@ licenseSource: "github-iipc-awesome-web-archiving-readme-md"
 * [Internet Archive Wayback](https://web.archive.org/web/) - IAのウェイバックマシンのベースURL
 * [Webrecorder US GovArchive](https://govarchive.us/) - 高精度再現
 * [UK Government Web Archive](https://www.nationalarchives.gov.uk/webarchive/) - UKGWAのメインページ
-

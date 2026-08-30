@@ -1,23 +1,12 @@
 ---
-title: "jaredthecoder/awesome-vehicle-security"
-description: "Canonical snapshot of jaredthecoder/awesome-vehicle-security"
+title: "Awesome Vehicle Security"
+description: "A curated collection of resources and projects focused on Vehicle Security."
 licenseSource: "github-jaredthecoder-awesome-vehicle-security-readme-md"
 ---
 
-# Awesome Vehicle Security [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Vehicle Security
 
-
-*A curated list of awesome resources, books, hardware, software, applications, people to follow, and more cool stuff about vehicle security, car hacking, and tinkering with the functionality of your car.*
-
-![](https://raw.githubusercontent.com/jaredthecoder/awesome-vehicle-security/2228c9f842d0dcf2e5dd24c987e9f5602001f8a0/assets/car_hacking_jeep.gif)
-
----
-
-I would love as much help as I can get. [Start contributing!](https://github.com/jaredmichaelsmith/awesome-vehicle-security/blob/master/contributing.md)
-
-Follow me on [Twitter](https://twitter.com/jaredthecoder) for more security goodness.
-
----
+A curated collection of resources and projects focused on Vehicle Security.
 
 # Contents
 

@@ -1,14 +1,12 @@
 ---
-title: "bakke92/awesome-gdpr"
-description: "bakke92/awesome-gdpr の定本スナップショット"
+title: "Awesome GDPR"
+description: "GDPRを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-bakke92-awesome-gdpr-readme-md"
 ---
 
-# Awesome GDPR [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome GDPR
 
-[<img src="GDPR.png" align="right" width="300">](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679)
-
-一般データ保護規則（GDPR）は、欧州連合および欧州経済領域内のすべての個人を対象とする、データ保護とプライバシーに関する規則です。この規則により、企業におけるプライバシーへの注目が高まり、データ主体の影響力が強化されました。
+GDPRを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 * [法令本文](#legal-text)

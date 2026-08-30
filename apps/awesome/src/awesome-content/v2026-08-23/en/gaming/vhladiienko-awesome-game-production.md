@@ -1,24 +1,12 @@
 ---
-title: "vhladiienko/awesome-game-production"
-description: "Canonical snapshot of vhladiienko/awesome-game-production"
+title: "Awesome Game Production"
+description: "A curated collection of resources and projects focused on Game Production."
 licenseSource: "github-vhladiienko-awesome-game-production-readme-md"
 ---
 
-# Awesome Game Production [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Game Production
 
-[![Awesome Game Production](https://github.com/vhladiienko/awesome-game-production/blob/11832b9db8a13417fa62a5b249942a640bf8d8e4/media/awesome_game_production.jpg)](https://github.com/vhladiienko/awesome-game-production)
-
-> A curated list of **awesome** resources, related to game production process - books, articles, tools, project management, methodologies - aimed to help game producers deliver their games.
-
-[Video game development](https://en.wikipedia.org/wiki/Video_game_development) (or production) is a process of developing a video game by a single person or a team of developers, not necessarily professionals or employed by someone to do so. This list is focused on [game producer's](https://en.wikipedia.org/wiki/Video_game_producer) role - a person, who manages and orchestrates the game production process in multitude of ways. Hence the shortened list name.
-
-This list does not cover specific disciplines like game design, quality assurance, programming. Refer to the [Gaming section](https://github.com/sindresorhus/awesome#gaming) of the "master" awesome list for other gamedev stuff.
-
-Majority of the provided resources are in English, but I might include items in other languages too, if you help me by [creating a pull request](https://github.com/vhladiienko/awesome-game-production/blob/main/contributing.md). Look for a flag next to the link.
-
-- 🔥 - awesomeness over 9000: highly practical and easy to use
-- 🎓 - absolute basics
-- 🤯 - a complex topic, that might be hard to understand
+A curated collection of resources and projects focused on Game Production.
 
 ## Contents 
 - [📚 Books](#-books)

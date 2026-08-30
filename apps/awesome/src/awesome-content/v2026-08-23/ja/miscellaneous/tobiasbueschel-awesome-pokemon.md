@@ -1,33 +1,12 @@
 ---
-title: "tobiasbueschel/awesome-pokemon"
-description: "PokémonとPokémon GOのAPI、アプリ、Bot、開発ツール、コミュニティ、攻略資料をまとめた定本スナップショット"
+title: "Awesome Pokémon"
+description: "Pokémonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-tobiasbueschel-awesome-pokemon-readme-md"
 ---
 
-<p align="center">
-  <a href="https://github.com/tobiasbueschel/awesome-pokemon/">
-    <img alt="Awesome Pokémon" src="https://raw.githubusercontent.com/tobiasbueschel/awesome-pokemon/0b70b83c476f85696577b07c7083eb21f04d2dc8/logo.png" width="700">
-  </a>
-</p>
+# Awesome Pokémon
 
-<div align="center">
-
-<p align="center">
-  優れた<a href="http://www.pokemon.com/">Pokémon</a>と<a href="http://www.pokemongo.com/">Pokémon GO</a>の資料、ツールなどを厳選したリストです。
-</p>
-
-<p align="center">
-  <a href="https://github.com/sindresorhus/awesome"><img alt="Awesome Badge" src="https://awesome.re/badge-flat.svg"></a>
-  <a href="https://github.com/tobiasbueschel/awesome-pokemon/pulls"><img alt="Pull Requests Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square"></a>
-</p>
-
-<p>
-<i>コントリビューターを募集しています。追加したいものがあればプルリクエストを送ってください :) </i><br>
-書式とプルリクエストの書き方については、<a href="https://github.com/tobiasbueschel/awesome-pokemon/blob/master/contributing.md">コントリビューションガイドライン</a>を確認してください。
-</p>
-
-</div>
-
+Pokémonを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 - [開発プロジェクト](#development-projects)

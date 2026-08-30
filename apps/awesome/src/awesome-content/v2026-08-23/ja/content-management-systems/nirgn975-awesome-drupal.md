@@ -1,17 +1,12 @@
 ---
-title: "nirgn975/awesome-drupal"
-description: "nirgn975/awesome-drupal の正規スナップショット"
+title: "Awesome Drupal"
+description: "Drupalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-nirgn975-awesome-drupal-readme-md"
 ---
 
-# Awesome Drupal [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Drupal
 
-[<img src="https://raw.githubusercontent.com/nirgn975/awesome-drupal/master/icon-drupal.png" align="right" width="90">](https://www.drupal.org)
-
-> [Drupal](https://www.drupal.org)はPHPで記述され、GNU General Public Licenseの下で配布される無料オープンソースCMSです。個人ブログから企業、政治、政府サイトまで、世界中のWebサイトへバックエンドを提供します。
-
-[awesome-php](https://github.com/ziadoz/awesome-php)もおすすめです。
-
+Drupalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

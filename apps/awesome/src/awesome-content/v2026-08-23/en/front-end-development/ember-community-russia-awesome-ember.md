@@ -1,45 +1,12 @@
 ---
-title: "ember-community-russia/awesome-ember"
-description: "Canonical snapshot of ember-community-russia/awesome-ember"
+title: "Awesome Ember.js"
+description: "A curated collection of resources and projects focused on Ember.js."
 licenseSource: "github-ember-community-russia-awesome-ember-readme-md"
 ---
 
-# Awesome Ember.js [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Ember.js
 
-<div align="center">
-  <a href="https://emberjs.com"><img width="300" src="https://raw.githubusercontent.com/ember-community-russia/awesome-ember/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/media/ember-logo.svg" alt="Ember.js"></a>
-  <br>
-</div>
-
-<p align="center">A curated list of delightful Ember.js <a href="#packages">packages</a> and <a href="#resources">resources</a>.</p>
-
-<br>
-
-<p align="center">
-  <a href="https://github.com/ember-community-russia/awesome-ember/blob/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/ember-myths.md">Ember.js Myths</a>&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/ember-community-russia/awesome-ember/blob/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/ember-questions.md">Readers Questions</a>&nbsp;&nbsp;&nbsp;
-  <a href="https://help-wanted.emberjs.com/core">Contribute to Ember.js</a>
-</p>
-
-<br>
-
-<p align="center">
-  <sub>Just type <a href="https://ember.cool"><code>ember.cool</code></a> OR <a href="https://ember-community-russia.github.io/awesome-ember/"><code>https://ember-community-russia.github.io/awesome-ember/</code></a> to go here.</sub>
-</p>
-
----
-
-[Ember.js](https://emberjs.com) is a JavaScript framework that greatly reduces the time, effort and resources needed
-to build any web application. It is focused on making you, the developer, as productive as possible by doing all the common, repetitive, yet essential, tasks involved in most web development projects.
-
-[Ember.js](https://emberjs.com) also provides access to the most advanced features of JavaScript, HTML and the Browser giving you everything you need to create your next killer web app.
-
----
-
-*You might also like [awesome-javascript](https://github.com/sorrycc/awesome-javascript).*
-*Please read the [contribution guidelines](https://github.com/ember-community-russia/awesome-ember/blob/6f7743a5868b3cb619caea7566d93b83f6f0e2bc/contributing.md) before contributing.*
-
----
+A curated collection of resources and projects focused on Ember.js.
 
 ## Contents
 - Awesome Ember.js [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)

@@ -1,12 +1,12 @@
 ---
-title: "cvyl/awesome-transgender"
-description: "Canonical snapshot of cvyl/awesome-transgender"
+title: "Awesome Transgender Transgender Flag"
+description: "A curated collection of resources and projects focused on Transgender Transgender Flag."
 licenseSource: "github-cvyl-awesome-transgender-readme-md"
 ---
 
-# Awesome Transgender [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re) ![Transgender Flag](https://upload.wikimedia.org/wikipedia/commons/b/b0/Transgender_Pride_flag.svg)
+# Awesome Transgender Transgender Flag
 
-> Someone whose gender identity differs from their assigned birth sex.
+A curated collection of resources and projects focused on Transgender Transgender Flag.
 
 ## Contents
 

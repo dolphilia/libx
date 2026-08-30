@@ -1,17 +1,12 @@
 ---
-title: "edm00se/awesome-board-games"
-description: "Canonical snapshot of edm00se/awesome-board-games"
+title: "Awesome Board Games"
+description: "A curated collection of resources and projects focused on Board Games."
 licenseSource: "github-edm00se-awesome-board-games-readme-md"
 ---
 
+# Awesome Board Games
 
-<div align="center">
-  <img src="./assets/images/Jon_Board.png" alt="Jon and the Board Game of Westeros" title="you know nothing, Jon Snow">
-  <br />
-  <a href="https://awesome.re" title="more awesome lists"><img src="https://awesome.re/badge.svg" alt="Awesome list badge"></a>
-</div>
-
-> Board games are played on a tabletop, often employ combinations of strategy, skill, and luck, and are a great way to pass the time with friends and loved ones.
+A curated collection of resources and projects focused on Board Games.
 
 ## Contents
 

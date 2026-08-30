@@ -1,14 +1,12 @@
 ---
-title: "steven2358/awesome-blockchain-ai"
-description: "Canonical snapshot of steven2358/awesome-blockchain-ai"
+title: "Awesome Blockchain AI"
+description: "A curated collection of resources and projects focused on Blockchain AI."
 licenseSource: "github-steven2358-awesome-blockchain-ai-readme-md"
 ---
 
-# Awesome Blockchain AI  [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Blockchain AI
 
-> A curated list of Blockchain projects for Artificial Intelligence and Machine Learning.
-
-This list explores awesome projects that exploit the properties of blockchain technologies (decentralization, immutability, smart contracts, etc.) to build the next generation of AI systems.
+A curated collection of resources and projects focused on Blockchain AI.
 
 ## Contents
 

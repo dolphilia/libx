@@ -1,17 +1,12 @@
 ---
-title: "pehapkari/awesome-symfony-education"
-description: "Canonical snapshot of pehapkari/awesome-symfony-education"
+title: "Awesome Symfony Education"
+description: "A curated collection of resources and projects focused on Symfony Education."
 licenseSource: "github-pehapkari-awesome-symfony-education-readme-md"
 ---
 
-# Awesome Symfony Education [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Symfony Education
 
-[![Build Status](https://img.shields.io/travis/pehapkari/awesome-symfony-education/master.svg?style=flat-square)](https://travis-ci.org/pehapkari/awesome-symfony-education)
-
-A curated list of amazingly awesome Symfony **articles, series and books**.
-
-*For bundles selection, check [sitepoint-editors/awesome-symfony](https://github.com/sitepoint-editors/awesome-symfony).*
-
+A curated collection of resources and projects focused on Symfony Education.
 
 ## Single Action Controller
 

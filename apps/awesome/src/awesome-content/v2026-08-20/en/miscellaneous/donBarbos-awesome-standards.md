@@ -1,17 +1,12 @@
 ---
-title: "donBarbos/awesome-standards"
-description: "Canonical snapshot of donBarbos/awesome-standards"
+title: "Awesome Standards"
+description: "A curated collection of resources and projects focused on Standards."
 licenseSource: "github-donBarbos-awesome-standards-readme-md"
 ---
 
+# Awesome Standards
 
-<div align="center">
-  <h1>Awesome Standards</h1>
-  <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome" /></a>
-  <a href="https://github.com/donBarbos/awesome-standards/graphs/contributors"><img src="https://img.shields.io/github/contributors/donbarbos/awesome-standards" alt="GitHub contributors" /></a>
-  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome" /></a>
-  <blockquote>A curated list of technical standards, they may be called requests for comments, proposals, drafts, notes, specifications, or something else.</blockquote>
-</div>
+A curated collection of resources and projects focused on Standards.
 
 ## Contents
 

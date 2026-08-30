@@ -1,33 +1,13 @@
 ---
-title: "lnishan/awesome-competitive-programming"
-description: "競技プログラミング、アルゴリズム、データ構造の優れた学習リソース集"
+title: "Awesome Competitive Programming"
+description: "Competitive Programmingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-lnishan-awesome-competitive-programming-readme-md"
 ---
 
-# Awesome Competitive Programming（競技プログラミング） [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Competitive Programming
 
-素晴らしい `Competitive Programming`, `Algorithm` および `Data Structure` リソースを厳選したリスト
+Competitive Programmingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-情報にアクセスできるように設計されたこのリストは、私が11年間競技プログラミングを続けてきた間に集めたすべての素晴らしいリソースを完全に収録しています。ご活用いただけることを願っています :)
-
-[競技プログラミングとは？ - Quora](https://www.quora.com/What-is-competitive-programming-2)
-
-
-<a id="contributing"></a>
-## コントリビューション
-
-[CONTRIBUTING.md](https://github.com/lnishan/awesome-competitive-programming/blob/2026f375a1136d70199361f047ed81f28bc0373f/CONTRIBUTING.md) をフォローしてください。
-
-あなたは、共有することでも貢献できます！
-クラスメートや友達、そして誰でも共有してくださいね :)
-
-> より多くの人を情報につなげることで、
-> あなたは私だけでなく、すべての人に大きく貢献しています！
->
-> より多くの人がこのリストから恩恵を受けることを心から願っています :)
-
-
-<a id="table-of-contents"></a>
 ## 目次
 
 * [リスト集](#list-of-lists)

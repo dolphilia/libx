@@ -1,20 +1,12 @@
 ---
-title: "adafruit/awesome-adafruitio"
-description: "adafruit/awesome-adafruitio の正規スナップショット"
+title: "Awesome Adafruit IO"
+description: "Adafruit IOを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-adafruit-awesome-adafruitio-readme-md"
 ---
 
-<h1 align="center">
-  <a href="https://io.adafruit.com">
-  <img width="600" src="https://github.com/adafruit/awesome-adafruitio/blob/master/awesome_io.png" alt="Awesome AdafruitIO"></a><br>Awesome Adafruit IO
-</h1>
+# Awesome Adafruit IO
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-
-> 優れた Adafruit IO のガイド、ハードウェア、動画、ライブラリ、フレームワーク、リソースを厳選したリストです。
-
-[Adafruit IO は、プロジェクトをインターネットへ接続する最も簡単な方法です](https://io.adafruit.com)。好みのデバイスとプログラミング言語（多数のライブラリがあります）を使ってプロジェクトを簡単に Adafruit IO へ接続し、インターネット経由で制御・監視できます。Adafruit IO に保存したデータは、管理・制御する権利を持つ_あなた自身_のものです。いつでもすべてダウンロードでき、私たちが別の企業へ販売・提供することはありません。モノのインターネットを始めるのに最適です！
-
+Adafruit IOを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

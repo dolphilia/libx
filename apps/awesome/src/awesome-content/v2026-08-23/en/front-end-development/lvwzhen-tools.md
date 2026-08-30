@@ -1,20 +1,12 @@
 ---
-title: "lvwzhen/tools"
-description: "Canonical snapshot of lvwzhen/tools"
+title: "Awesome Web Tools"
+description: "A curated collection of resources and projects focused on Web Tools."
 licenseSource: "github-lvwzhen-tools-readme-md"
 ---
 
-# Web Tools [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Web Tools
 
->An awesome list of hosted tools for web development.
-
-## Sponsors
-
-<p>
-  <a href="https://sailboatui.com/" target="_blank">
-    <img src="https://raw.githubusercontent.com/sailboatui/sailboatui/main/.github/logo-light.svg"  height="50" alt="Sailboat UI">
-  </a>
-</p>
+A curated collection of resources and projects focused on Web Tools.
 
 ## Contents
 
@@ -198,4 +190,3 @@ licenseSource: "github-lvwzhen-tools-readme-md"
 * [FreeToolBox](https://www.freetoolbox.site/)
 * [Hreflang checker](https://localizely.com/hreflang-checker/)
 * [giga.tools](https://giga.tools/)
-

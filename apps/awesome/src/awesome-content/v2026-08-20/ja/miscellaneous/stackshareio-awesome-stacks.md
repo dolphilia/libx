@@ -1,19 +1,12 @@
 ---
-title: "stackshareio/awesome-stacks"
-description: "アプリケーション構築用の技術スタックと主要ツールを分類した定本スナップショット"
+title: "Awesome Stacks"
+description: "Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-stackshareio-awesome-stacks-readme-md"
 ---
 
-<div align="center">
-<a href="https://awesomestacks.dev/"><img alt="Pink sunglasses with text Awesome Stacks" width="680px" src="src/images/awesome-stacks-logo-github.png"></a>
-<br><br>
-<a href="https://awesome.re"><img src="https://awesome.re/badge-flat2.svg"></a>
-</div>
+# Awesome Stacks
 
-# 技術スタックのAwesomeリスト <a id="awesome-stacks"></a>
-[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/stackshare/awesome-stacks)
-
-> さまざまなアプリケーションや機能を構築するための技術スタックです。
+Stacksを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="contents"></a>
 
@@ -517,4 +510,3 @@ Workflow Automation with GitHub, Jira and Jenkinsは、モバイルアプリケ�
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 法令で認められる範囲において、[StackShare](https://stackshare.io)はこの[README](https://github.com/stackshareio/awesome-stacks/blob/70c81c220f254b9ca37cc5692cb29bafac306768/README.md)に関する著作権および関連・隣接する権利を放棄しています。
-

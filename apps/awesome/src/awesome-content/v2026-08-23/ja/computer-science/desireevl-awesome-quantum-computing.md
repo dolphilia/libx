@@ -1,18 +1,12 @@
 ---
-title: "desireevl/awesome-quantum-computing"
-description: "desireevl/awesome-quantum-computingの正規スナップショット"
+title: "Awesome Quantum Computing"
+description: "Quantum Computingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-desireevl-awesome-quantum-computing-readme-md"
 ---
 
-# Awesome Quantum Computing [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome Quantum Computing
 
-[<img src="https://raw.githubusercontent.com/desireevl/awesome-quantum-computing/master/logo.png" align="right" width="110">](https://en.wikipedia.org/wiki/Quantum_computing)
-
-[量子コンピューティング](https://en.wikipedia.org/wiki/Quantum_computing)は、量子もつれや重ね合わせなどの量子力学的現象を利用して量子ビットを操作し、量子コンピューター上で計算を実行します。現在は、一般に利用可能な量子コンピューター上でプログラムを作成・実行するツールと、それらについて学ぶためのリソースが利用できます。
-
-これは、量子コンピューターの学習と開発に関する最新リソースを厳選したリストです。最新かつ高品質のリソースを分類した、コミュニティ主導のコレクションを構築することを目標としています。
-
-共有、提案、貢献はいつでも歓迎します。まず貢献ガイドラインと品質基準を確認してください。すべての貢献者に感謝します。皆さんは素晴らしく、皆さんなしには実現できません！
+Quantum Computingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

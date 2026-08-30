@@ -1,14 +1,12 @@
 ---
-title: "mislavcimpersak/awesome-dev-fun"
-description: "mislavcimpersak/awesome-dev-fun の正規スナップショット"
+title: "Awesome Dev Fun"
+description: "Dev Funを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-mislavcimpersak-awesome-dev-fun-readme-md"
 ---
 
-# Awesome Dev Fun [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Dev Fun
 
-> 開発者を笑わせること以外に実用的な目的を持たない、楽しいライブラリ、パッケージ、言語のキュレーション済みリスト。
-
-現時点ではとても短いリストなので、ぜひ貢献してください。[ガイド](https://github.com/mislavcimpersak/awesome-dev-fun/blob/c7407753f6ee15ffa3bcf16901a61f10b81f72c3/CONTRIBUTING.md)を読み、プルリクエストを作成するか、面白いものを Twitter の[@mislavcimpersak](https://twitter.com/mislavcimpersak)へ知らせてください。
+Dev Funを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

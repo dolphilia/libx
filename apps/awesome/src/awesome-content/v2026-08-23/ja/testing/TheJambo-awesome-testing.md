@@ -1,18 +1,12 @@
 ---
-title: "TheJambo/awesome-testing"
-description: "TheJambo/awesome-testing の定本スナップショット"
+title: "Awesome Testing"
+description: "Testingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-TheJambo-awesome-testing-readme-md"
 ---
 
-![](https://github.com/TheJambo/awesome-testing/blob/master/AwesomeTesting.jpg?raw=true)
+# Awesome Testing
 
-# Awesome Testing [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Dead link checker](https://github.com/TheJambo/awesome-testing/actions/workflows/404-links.yml/badge.svg)](https://github.com/TheJambo/awesome-testing/actions/workflows/404-links.yml)
-> テスト用ソフトウェア、拡張機能、リソースを厳選したリスト
-
-## はじめに
-これは、ソフトウェアテストコミュニティの初心者向けリソースを厳選することを目的としています。特定の領域（ユーザビリティ／パフォーマンス）や役割（自動化／管理）に限定したものではありません。コンピューターサイエンス専攻の卒業生にこのリストを渡せば、テストの技能、効率、知識の幅を大きく向上できるような内容を目指しています。対象となるコードが書かれた後の、ソフトウェアテストのあらゆる領域を扱います（単体テストや静的解析は含みません！）。
-
-このリストを読む方なら、誰もが何か一つ追加したい項目を持っているはずです。[貢献方法](https://github.com/TheJambo/awesome-testing/blob/master/CONTRIBUTING.md)のページを読み、ぜひリストへ追加してください。:)
+Testingを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

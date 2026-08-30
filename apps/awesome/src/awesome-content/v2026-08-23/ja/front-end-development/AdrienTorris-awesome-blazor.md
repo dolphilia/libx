@@ -1,22 +1,13 @@
 ---
-title: "AdrienTorris/awesome-blazor"
-description: "Blazorの公式情報、テンプレート、サンプル、ライブラリ、教材、コミュニティ集"
+title: "Awesome Blazor"
+description: "Blazorを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-AdrienTorris-awesome-blazor-readme-md"
 ---
 
-# Awesome Blazor [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
-[<img src="https://adrientorris.github.io/wwwroot/images/blazor/logo-blazor.png" align="right" width="170">](https://dotnet.microsoft.com/apps/aspnet/web-apps/client)
+# Awesome Blazor
 
-> Blazorに関する優れたリソースを集めたリスト。
+Blazorを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
-Blazorは、C#/RazorおよびHTMLを使用する.NETのウェブフレームワークで、WebAssemblyでブラウザ上で実行されます。
-
-貢献は常に歓迎です！まず [contribution guidelines](https://github.com/AdrienTorris/awesome-blazor/blob/master/CONTRIBUTING.md) ページを確認してください。すべての [contributors](https://github.com/AdrienTorris/awesome-blazor/graphs/contributors) に感謝します。あなたたちのおかげで、Blazorは存在することができました！
-
-このリストを検索する必要がある場合は、この素晴らしいウェブサイトを試してみてください： [Awesome Blazor Browser](https://jsakamoto.github.io/awesome-blazor-browser/)。
-@jsakamoto さんに感謝します！ [Source code](https://github.com/jsakamoto/awesome-blazor-browser) ![stars](https://img.shields.io/github/stars/jsakamoto/awesome-blazor-browser?style=flat-square&cacheSeconds=604800) ![last commit](https://img.shields.io/github/last-commit/jsakamoto/awesome-blazor-browser?style=flat-square&cacheSeconds=86400)。
-
-<a id="contents"></a>
 ## 目次
 * [Introduction](#introduction)
 * [General](#general)

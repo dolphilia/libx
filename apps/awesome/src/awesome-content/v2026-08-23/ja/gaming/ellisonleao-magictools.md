@@ -1,27 +1,12 @@
 ---
-title: "ellisonleao/magictools"
-description: "ゲーム開発の画像、音声、エンジン、制作・学習ツールを分類した定本スナップショット"
+title: "Awesome Magictools"
+description: "Magictoolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-ellisonleao-magictools-readme-md"
 ---
 
-<h1 align="center">
-    <img width="900" src="https://cdn.rawgit.com/ellisonleao/magictools/7d8012bc/magicbg.jpg" alt="logo"/>
-</h1>
-<hr/>
+# Awesome Magictools
 
-<p align="center">
-    <a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome"/></a>
-    <a href="#"><img src="https://github.com/ellisonleao/magictools/actions/workflows/validate-links.yml/badge.svg" alt="build"/></a>
-</p>
-
-ゲーム開発で**魔法**を生み出すための資料を厳選したリストです。
-
-### ライセンス凡例 <a id="license-legends"></a>
-
-- :free: - 無料
-- :tada: - オープンソース
-- :moneybag: - 有料
-- :money_with_wings: - 一部無料
+Magictoolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次 <a id="table-of-contents"></a>
 

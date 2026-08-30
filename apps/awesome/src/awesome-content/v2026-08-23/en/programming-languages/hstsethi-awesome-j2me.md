@@ -1,21 +1,12 @@
 ---
-title: "hstsethi/awesome-j2me"
-description: "Canonical snapshot of hstsethi/awesome-j2me"
+title: "Awesome J2ME"
+description: "A curated collection of resources and projects focused on J2ME."
 licenseSource: "github-hstsethi-awesome-j2me-readme-md"
 ---
 
-# Awesome J2ME [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome J2ME
 
-[<img src="j2me-logo.jpg" align="right" width="100">](https://www.oracle.com/java/technologies/javameoverview.html)
-
-
-> An awesome list about Java platform Micro edition[(J2ME)](https://en.wikipedia.org/wiki/Java_Platform,_Micro_Edition). Documentation, academic papers, tutorials, communities, IDEs, SDKs, emulators, apps, video games. J2ME is a Java specification designed for old keypad phones and PDAs. MIDP, which is built upon CLDC, is used to create Midlets, which have `.jad` or `.jar` extension, and run on platforms like old keypad phones, Symbian and PDAs. MIDP is supported till Java ME SDK 3.4.
-
-
-Please give it a star(⭐) to raise awareness about J2ME community, and support the development of this project. Read about introduction, setup-process, and history of Awesome J2ME in <a href="https://hstsethi.vercel.app/posts/programming/awesome-j2me">this blog post</a>. Also check out [Awesome Symbian](https://github.com/hstsethi/awesome-symbian).
-
-
-Proud to be featured in [Awesome](https://github.com/sindresorhus/awesome), [Hackclub](https://retrospect.hackclub.com/j2me), [Awesome Java](https://github.com/akullpp/awesome-java) and more.
+A curated collection of resources and projects focused on J2ME.
 
 ## Contents
 

@@ -1,16 +1,12 @@
 ---
-title: "vorpaljs/awesome-vorpal"
-description: "vorpaljs/awesome-vorpal の正規スナップショット"
+title: "Awesome Vorpal"
+description: "Vorpalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-vorpaljs-awesome-vorpal-readme-md"
 ---
 
-# Awesome Vorpal [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Vorpal
 
-[Vorpal](https://github.com/dthree/vorpal) ベースの優れたプロジェクトと拡張機能を厳選したリストです。
-
-[Vorpal は、没入感のある CLI アプリケーションを構築するための Node 初のフレームワークです。](https://github.com/dthree/vorpal)
-
-[awesome](https://github.com/sindresorhus/awesome) リストに着想を得ています。
+Vorpalを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ## 目次
 

@@ -1,13 +1,11 @@
 ---
-title: "numetriclabz/awesome-db"
-description: "numetriclabz/awesome-dbの収録案内"
+title: "Awesome Database"
+description: "Awesome Databaseの収録案内です。このスナップショットでは上流本文を転載していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
-# Database
+# Awesome Database
 
-このAwesomeリストは、固定済みのsindresorhus/awesomeスナップショットのDatabasesセクションから参照されています。
-
-このスナップショットで再利用可能なライセンスを確認できなかった、固定READMEを取得できなかった、または現在のlibxでは対応していないライセンス条件があるため、上流リストの本文はlibxへ複製していません。
+Awesome Databaseの収録案内です。このスナップショットでは上流本文を転載していません。
 
 - [元のリポジトリを開く](https://github.com/numetriclabz/awesome-db/blob/ca38653f43b9ba91955cf8d98db9c572dc1dd346/README.md)

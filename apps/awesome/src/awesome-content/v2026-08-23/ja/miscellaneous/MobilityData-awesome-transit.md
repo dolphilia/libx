@@ -1,25 +1,12 @@
 ---
-title: "MobilityData/awesome-transit"
-description: "公共交通のオープンデータ規格、API、アプリ、ツール、研究を分類した定本スナップショット"
+title: "Awesome transit"
+description: "transitを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
 licenseSource: "github-MobilityData-awesome-transit-readme-md"
 ---
 
-# 公共交通のAwesomeリスト <a id="awesome-transit--"></a> [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![RSS](https://img.shields.io/badge/Subscribe-RSS-blue.svg)](https://github.com/MobilityData/awesome-transit/commits/master.atom)
+# Awesome transit
 
-##### 公共交通のオープン技術に関するデータ標準・API・アプリ・ツール・データセット・研究のコミュニティリスト <a id="community-list-of-data-standards-apis-apps-tools-datasets-and-research-around-open-source-technology-of-public-transit"></a>
-
-オープン技術は、さまざまな関係者が公共交通の改善に向けて協働する機会を提供します。
-
-オープン技術の要素には次が含まれます。
-- オープン標準
-- オープンデータ
-- オープンソースソフトウェア（OpenTripPlannerのような利用者向けアプリと、GTFS Validatorのような開発者向けツールの両方）
-
-このリストは公共交通のオープン技術エコシステムに焦点を当てています。掲載技術は、それ自体がオープンソースである場合のほか、オープン標準やオープンデータに依存する場合があります。
-
-追加や変更がある場合は、[pull request](https://github.com/MobilityData/awesome-transit/pulls)または[issue](https://github.com/MobilityData/awesome-transit/issues)を[MobilityData/awesome-transit](https://github.com/MobilityData/awesome-transit)で作成してください。
-
-------------------------------
+transitを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
 
 ### 目次 <a id="table-of-contents"></a>
 - [公共交通のAwesomeリスト](#awesome-transit--)
