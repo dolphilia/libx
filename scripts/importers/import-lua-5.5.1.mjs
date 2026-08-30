@@ -534,7 +534,12 @@ export function runCli(args = process.argv.slice(2)) {
     'en'
   );
   const checkOnly = args.includes('--check');
+  const allowMissingSource = args.includes('--allow-missing-source');
   const dryRun = args.includes('--dry-run');
+  if (checkOnly && allowMissingSource && !fs.existsSync(sourceRoot) && !fs.existsSync(bugsSource)) {
+    console.log(`Lua固定入力がないため再現性検査をスキップします: ${sourceRoot}, ${bugsSource}`);
+    return;
+  }
   const sources = loadSources(sourceRoot, bugsSource);
   const pageSlices = buildPageSlices(sources);
   const anchorMap = buildAnchorMap(pageSlices);

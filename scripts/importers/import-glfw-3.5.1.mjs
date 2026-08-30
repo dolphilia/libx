@@ -44,8 +44,14 @@ const outputRoot = assertSafeImportTarget(
   'en'
 );
 const checkOnly = cliArguments.includes('--check');
+const allowMissingSource = cliArguments.includes('--allow-missing-source');
 const dryRun = cliArguments.includes('--dry-run');
 const siteBase = `/docs/glfw/${version}/en`;
+
+if (checkOnly && allowMissingSource && !fs.existsSync(sourceRoot)) {
+  console.log(`GLFW固定入力がないため再現性検査をスキップします: ${sourceRoot}`);
+  process.exit(0);
+}
 
 if (dryRun) {
   if (!fs.existsSync(sourceRoot)) throw new Error(`取得元が存在しません: ${sourceRoot}`);
