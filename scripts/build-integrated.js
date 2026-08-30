@@ -24,6 +24,7 @@ import { copyDirRecursive } from './utils.js';
 import * as logger from './logger.js';
 import { confirmAction, createBackup } from './safety-utils.js';
 import { rewriteBasePathInHtml } from './html-url-rewriter.js';
+import { pruneUnreferencedJavaScriptAssets } from './prune-unreferenced-javascript-assets.js';
 
 logger.useUnifiedConsole();
 
@@ -279,6 +280,14 @@ async function main() {
 
       updateBasePathsRecursive(target.destDir, oldBasePath, newBasePath);
     }
+  }
+
+  if (!isDryRun) {
+    const pruneReport = await pruneUnreferencedJavaScriptAssets(distDir, { apply: true });
+    console.log(
+      `未参照JavaScriptを削除しました: ${pruneReport.unreferenced.length}件 ` +
+        `(${(pruneReport.removableBytes / 1024 / 1024).toFixed(2)} MiB)`
+    );
   }
 
   console.log('統合ビルドが完了しました。');

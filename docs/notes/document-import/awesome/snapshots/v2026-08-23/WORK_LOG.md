@@ -2579,3 +2579,12 @@
 - 検出・修正: 最大級のZsh Pluginsページを390×844で表示した際、長いインラインコードにより59pxの横方向overflowが発生した。共通テーマへ`overflow-wrap: anywhere`を追加し、`scrollWidth=clientWidth=375`へ解消した。
 - 最後に成功した検査: Awesome単体2,082ページ、全体`pnpm check`（unit 26/26、runtime 94/94、smoke 13/13）、選択的統合ビルド、モバイル再表示、検索結果の`Awesome`系タイトルと簡潔な概要、deployment-assets 4,754件。最終統合ビルド後のツリーハッシュは`dd9ff0d27b5ee657c7dac2afb93ecacdb2b42b306426bc56eeb7e8164961cf9a`。
 - 次に実行する一手: 明示承認後、同一ハッシュを外部Previewへ配置してHTTP・実ブラウザ検証を行う。
+
+## 2026-08-31（タイトル・序文正規化Preview／配信軽量化）
+
+- 完了したバッチ: 承認済み成果物4,754件、646.00 MiB、ツリーハッシュ`dd9ff0d27b5ee657c7dac2afb93ecacdb2b42b306426bc56eeb7e8164961cf9a`をPreview `cfc7aff9-c346-4d0a-99c7-07d101a784f6`へ配置した。overview、metadata-only、RST、最大級ページ、検索、英日・最新版リンク、モバイル表示を確認した。
+- 配置実測: Wrangler 4.127.1標準設定で新規4,176件、既存578件、asset upload 1,620.79秒。エラーなく完了したが、ローカル回線と大規模バッチの応答待ちが長かった。
+- 改善: 到達不能なAstro静的生成用JavaScript 2,276件、189.90 MiBを統合時に除外する決定的処理を追加した。軽量化後は2,478件、456.10 MiB、ツリーハッシュ`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`。
+- CI修正: クリーン環境で不足する履歴版`.tmp`入力を追跡済み定本から復元するよう契約テストを修正した。PreviewとProductionを分離した手動・専用branch CIへ更新した。
+- 最後に成功した検査: ローカル`pnpm check`、クリーン環境での失敗原因再現、修正後runtime 95/95、smoke 13/13、配信予算、通常統合ビルド、ローカル実ブラウザのJavaScript読込み・検索・最大級ページ。
+- 次に実行する一手: 軽量化候補をCI専用branchからCloudflare Previewへ配置し、配置時間と外部表示を再確認する。Productionは別の明示承認まで変更しない。

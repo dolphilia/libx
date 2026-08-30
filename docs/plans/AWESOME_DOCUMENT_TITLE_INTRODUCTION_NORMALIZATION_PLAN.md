@@ -7,7 +7,7 @@
 - 対象文書数: 2,074文書
 - 主対象: `v2026-08-23`の英日672組
 - 定本言語: 英語
-- 状態: `local-validation-completed / preview-approval-required`
+- 状態: `preview-content-validation-completed / optimized-preview-in-progress / production-approval-required`
 - 先行計画: `AWESOME_LIST_IMPORT_TRANSLATION_COMPLETION_PLAN.md`（完了済み・履歴として保持）
 
 ## 1. 計画の位置付け
@@ -192,7 +192,7 @@ A curated directory of Awesome lists spanning technology, science, business, cul
 | 3 最新版672組の整理 | `completed` | `v2026-08-23`英日全件が完成形規則へ合格 |
 | 4 履歴版365組の整理 | `completed` | 安全な継承と個別判断により履歴版全件が合格 |
 | 5 全件回帰・レビュー再固定 | `completed` | 派生生成物、監査、レビュー証拠、ビルドが整合 |
-| 6 Preview検証 | `pending` | 明示承認後のPreviewで表示・動線・検索が合格 |
+| 6 Preview検証 | `in-progress` | 内容候補は合格済み。配信軽量化後の同内容をCI Previewで再確認 |
 | 7 Production公開・記録閉鎖 | `pending` | 別の明示承認後に公開し、証跡とロールバックを記録 |
 
 ### 2026-08-30 ローカル実施結果
@@ -208,6 +208,16 @@ A curated directory of Awesome lists spanning technology, science, business, cul
 - 最大級のZsh Pluginsページで、長いインラインコードによるモバイル横方向overflowを検出したため、共通テーマへ安全な折返しを追加した。390×844で`scrollWidth=clientWidth=375`、横方向overflow 0を再確認した。
 - 最終統合ビルド後のPreview候補`dist`は4,754ファイル、646.00 MiB、成果物ツリーハッシュ`dd9ff0d27b5ee657c7dac2afb93ecacdb2b42b306426bc56eeb7e8164961cf9a`として固定した。
 - 固定入力から現行英語定本を再importすると、履歴版241件、最新版242件で序文以外にも既存差分があることを検出した。これは本計画と無関係な先行作業の影響であり、正規化器は保持本文ハッシュ不一致として上書きを停止する。対象は`INTRODUCTION_IMPORT_DRIFT.json`へ記録し、今回の公開候補へ無断で混入させていない。
+
+### 2026-08-31 Preview・配信改善結果
+
+- 管理者承認済みの4,754ファイル、646.00 MiB、ツリーハッシュ`dd9ff0d27b5ee657c7dac2afb93ecacdb2b42b306426bc56eeb7e8164961cf9a`をCloudflare Pages Previewへ配置した。
+- deployment IDは`cfc7aff9-c346-4d0a-99c7-07d101a784f6`、固有URLは`https://cfc7aff9.libx.pages.dev`。4,176件を新規送信、578件を再利用し、asset uploadは1,620.79秒で完了した。
+- overview、metadata-only、RST由来、最大級ページ、英日切替、最新版リンク、検索、390×844表示を検証し、内容候補は合格した。Productionは変更していない。
+- 遅延対策として、HTML等から到達不能なAstro静的生成用JavaScript 2,276件、189.90 MiBを統合時に除外する処理と契約テストを追加した。
+- 軽量化後は2,478ファイル、456.10 MiBとなり、ファイル数47.9%、容量29.4%を削減した。runtime 95/95、smoke 13/13、配信予算、ローカル実ブラウザの検索・最大級ページに合格した。
+- 軽量化後のツリーハッシュは`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`。GitHub Actionsのクリーン環境で不足していた履歴版正規化入力を、追跡済み定本から復元するよう契約テストを修正した。
+- 次の一手は、Productionを更新しないCI専用branchから軽量化候補をPreviewへ配置し、同じ表示検証と配置時間を記録することである。
 
 ### フェーズ0: 全件監査と境界固定
 

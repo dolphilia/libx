@@ -2,24 +2,49 @@ name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - 'codex/pages-preview/**'
   pull_request:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      deploy_target:
+        description: '実行内容'
+        required: true
+        default: preview
+        type: choice
+        options:
+          - quality-only
+          - preview
+          - production
+      preview_branch:
+        description: 'Preview配置時のCloudflare Pages branch'
+        required: true
+        default: ci-preview
+        type: string
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: cloudflare-pages-${{ github.event_name == 'workflow_dispatch' && inputs.deploy_target || github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  # ローカルと同じ必須品質ゲート
   quality-check:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: 'pnpm'
@@ -33,20 +58,23 @@ jobs:
       - name: Verify tracked generated artifacts are current
         run: git diff --exit-code -- 'apps/*/public/sidebar/**' 'apps/*/public/sw.js' 'templates/*/public/sidebar/**' 'templates/*/public/sw.js'
 
-  # Cloudflare Pagesにデプロイ（mainブランチのみ）
-  deploy:
+  deploy-preview:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     needs: quality-check
-    if: github.ref == 'refs/heads/main'
+    if: >-
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/codex/pages-preview/')) ||
+      (github.event_name == 'workflow_dispatch' && inputs.deploy_target == 'preview')
+    environment: preview
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: 'pnpm'
@@ -63,8 +91,54 @@ jobs:
       - name: Check deployment asset budget
         run: pnpm check:deployment-assets
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+      - name: Deploy Preview to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy dist --project-name libx
+          wranglerVersion: '4.127.1'
+          command: >-
+            pages deploy dist --project-name libx
+            --branch=${{ github.event_name == 'workflow_dispatch' && inputs.preview_branch || github.ref_name }}
+            --commit-hash=${{ github.sha }} --commit-dirty=false
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    needs: quality-check
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy_target == 'production'
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build sidebar
+        run: pnpm build:sidebar
+
+      - name: Build project
+        run: pnpm build -- --confirm
+
+      - name: Check deployment asset budget
+        run: pnpm check:deployment-assets
+
+      - name: Deploy Production to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: '4.127.1'
+          command: >-
+            pages deploy dist --project-name libx --branch=main
+            --commit-hash=${{ github.sha }} --commit-dirty=false

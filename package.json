@@ -26,6 +26,7 @@
     "check:integrity": "node scripts/validate-repository-integrity.js && node scripts/validate-category-structure.js && node scripts/sync-docs-layouts.js --check",
     "check:content": "pnpm --recursive --if-present run check:content",
     "check:deployment-assets": "node scripts/check-deployment-assets.js dist",
+    "prune:deployment-assets": "node scripts/prune-unreferenced-javascript-assets.js dist --apply",
     "check": "pnpm sync:service-workers && pnpm build:sidebar && pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm check:links && pnpm check:integrity && pnpm check:content && pnpm build:template && pnpm build:separate && pnpm test:smoke",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

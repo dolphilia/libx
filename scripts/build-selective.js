@@ -23,6 +23,7 @@ import { copyDirRecursive } from './utils.js';
 import { collectReservedRootNames, integrateSelectiveOutputs } from './selective-output.js';
 import { rewriteBasePathInHtml } from './html-url-rewriter.js';
 import * as logger from './logger.js';
+import { pruneUnreferencedJavaScriptAssets } from './prune-unreferenced-javascript-assets.js';
 
 logger.useUnifiedConsole();
 
@@ -257,6 +258,12 @@ async function main() {
     console.error('選択した出力の統合に失敗しました。既存のdistは維持されます:', error);
     process.exit(1);
   }
+
+  const pruneReport = await pruneUnreferencedJavaScriptAssets(distDir, { apply: true });
+  console.log(
+    `未参照JavaScriptを削除しました: ${pruneReport.unreferenced.length}件 ` +
+      `(${(pruneReport.removableBytes / 1024 / 1024).toFixed(2)} MiB)`
+  );
 
   console.log('選択的統合ビルドが完了しました。');
   console.log(`処理したプロジェクト: ${requestedProjects.join(', ')}`);

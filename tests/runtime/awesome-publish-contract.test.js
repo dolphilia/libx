@@ -35,6 +35,16 @@ test('Awesome履歴版の公開再現性検査は日本語365ページを保持�
   assert.ok(markdownFileCount(englishRoot) > 0, '英語定本が必要です');
   assert.ok(markdownFileCount(japaneseRoot) > 0, '部分翻訳を含む検査対象が必要です');
 
+  const restoreOutput = execFileSync(
+    process.execPath,
+    [
+      'scripts/importers/awesome/restore-awesome-historical-canonical.mjs',
+      '--snapshot=v2026-08-20',
+    ],
+    { cwd: root, encoding: 'utf8' }
+  );
+  assert.match(restoreOutput, /Restored Awesome historical normalized input \(365 pages\)/);
+
   const output = execFileSync(
     process.execPath,
     ['scripts/importers/awesome/publish-awesome.mjs', '--snapshot=v2026-08-20', '--check'],

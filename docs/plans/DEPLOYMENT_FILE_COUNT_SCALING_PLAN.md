@@ -3,7 +3,7 @@
 - 作成日: 2026-08-11
 - 入力資料: `docs/notes/DEPLOYMENT_FILE_COUNT_SCALING_RESEARCH.md`
 - 根拠原則: `docs/spec/PROJECT_PRINCIPLES.md`
-- ステータス: 今回範囲の実施完了
+- ステータス: フェーズ1再実施完了 / CI Preview実証中
 
 ## 1. 目的
 
@@ -80,3 +80,28 @@ Pages Direct Uploadの100,000件適用を確認できるまでは`L=20,000`と�
 - `pnpm check:deployment-assets`、統合ビルド、`pnpm check`が成功した。
 
 残る外部作業は、Pagesプロジェクト設定への`PAGES_WRANGLER_MAJOR_VERSION=4`追加と、Direct Uploadで100,000件枠が適用されることの確認である。確認までは20,000件を実効上限として維持する。
+
+## 7. 2026-08-31 大規模Awesome成果物への対応
+
+Awesome二版・英日2,074文書の統合後、成果物は4,754ファイル、646.00 MiBへ増加した。内訳はAwesomeが約612 MiB、HTMLが約452 MiB、JavaScriptが約190 MiBであり、ローカル回線からのPages Direct Uploadには1,620.79秒を要した。
+
+### フェーズ1: 未参照asset除去（完了）
+
+- HTML、CSS、JSON、ルートJavaScriptから参照されるJavaScriptと、その静的依存を到達可能集合として計算する。
+- `assets/`内のJavaScriptだけを削除候補とし、service workerや画像、フォント、検索JSONは対象外とする。
+- 通常・選択的統合ビルドの最後に同じ処理を適用する。
+- 参照されたentryと依存chunkを保持し、未参照chunkだけを削除する契約テストを設ける。
+
+実測では2,276件、189.90 MiBを除去し、2,478ファイル、456.10 MiBへ削減した。ファイル数は47.9%、容量は29.4%減少した。runtime 95/95、smoke 13/13、配信予算、ローカル実ブラウザの最大級ページ・検索・JavaScript読込みへ合格した。
+
+### フェーズ2: CI Direct Upload（実証中）
+
+- GitHub Actionsのクリーン環境で失敗していた履歴版公開契約を、追跡済み履歴定本から中間入力を復元するよう修正する。
+- `codex/pages-preview/**`だけを自動Preview対象とし、`main`へのpushでは品質検査だけを行う。
+- Productionは`workflow_dispatch`で`production`を明示選択した場合だけ実行する。
+- Wrangler Action v4とWrangler 4.127.1を固定し、PreviewとProductionを別job・別environmentにする。
+- CI Previewで品質ゲート、2,478ファイルの配置、主要ページ、検索、配置時間を確認する。
+
+### フェーズ3: サイト・snapshot分割（条件付き）
+
+軽量化とCI化後も配置失敗が続く、またはPreview配置が継続して30分を超える場合に着手する。既存URLを維持するため、単純なsnapshot削除は行わず、Workers Static Assetsまたはオブジェクトストレージを経由した`/docs/awesome/<snapshot>/`単位のルーティングを比較する。404、ヘッダー、検索、言語・版切替、原子的切替、ロールバックを満たす試作を先に行い、Production移行は別承認とする。
