@@ -28,6 +28,9 @@ permissions:
   contents: read
   deployments: write
 
+env:
+  NODE_OPTIONS: '--max-old-space-size=6144'
+
 concurrency:
   group: cloudflare-pages-${{ github.event_name == 'workflow_dispatch' && inputs.deploy_target || github.ref }}
   cancel-in-progress: false
