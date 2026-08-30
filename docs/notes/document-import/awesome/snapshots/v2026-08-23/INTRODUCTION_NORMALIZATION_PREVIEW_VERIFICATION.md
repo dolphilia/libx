@@ -25,8 +25,20 @@ Wrangler 4.127.1の標準送信設定で、4,176件を新規送信し、578件�
 
 タイトル・序文の外部表示検証は合格した。Productionは変更していない。
 
-## Preview後の配信軽量化
+## 軽量化CI Preview
 
 Previewの遅延調査後、HTMLなどから到達不能なAstro静的生成用JavaScript 2,276件、189.90 MiBを配信成果物から除く処理を追加した。通常の統合ビルドで再生成した次候補は2,478ファイル、456.10 MiB、ツリーハッシュ`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`である。
 
-軽量化候補はruntime 95/95、smoke 13/13、配信予算検査、ローカル実ブラウザの最大級ページ・検索・JavaScript読込みへ合格した。CI経由の外部Previewを追加実施してからProduction候補として固定する。
+GitHub Actions run [#72](https://github.com/dolphilia/libx/actions/runs/33338909166)で品質ゲートとCI Direct Uploadを実行し、次のPreviewを固定した。
+
+- source commit: `f150c2d61d230e9a79d41ed8eb9d797f14e17ba7`
+- deployment ID: `476b728e-0fd4-464c-aeda-ae51347128f7`
+- 固有URL: `https://476b728e.libx.pages.dev`
+- branch alias: `https://codex-pages-preview-awesome.libx.pages.dev`
+- branch: `codex/pages-preview/awesome-introduction-normalization`
+- 配置成果物: 2,478ファイル、456.10 MiB
+- 配置成果物ツリーハッシュ: `a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`
+
+品質jobは約6分49秒、Preview jobは約5分13秒で完了した。Preview job内のビルドは約4分9秒、既存workspaceのWrangler 4.60.0によるPages配置は30秒だった。ローカル回線からのasset upload 1,620.79秒に対し、CIからの配置は大幅に短縮した。
+
+固有URLでトップ、overview、metadata-only、RST由来、最大級ページ、未知URLを再検証し、期待する200または404を確認した。実ブラウザではH1と概要、序文内画像0、中央揃えなし、検索、最新版リンク、読込みJavaScript 6件のHTTP 200、コンソール警告・エラーなし、狭幅表示の横方向overflow 0を確認した。軽量化CI Previewは合格し、Production候補を上記ハッシュへ更新する。Production deploymentは変更していない。

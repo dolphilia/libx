@@ -2588,3 +2588,11 @@
 - CI修正: クリーン環境で不足する履歴版`.tmp`入力を追跡済み定本から復元するよう契約テストを修正した。PreviewとProductionを分離した手動・専用branch CIへ更新した。
 - 最後に成功した検査: ローカル`pnpm check`、クリーン環境での失敗原因再現、修正後runtime 95/95、smoke 13/13、配信予算、通常統合ビルド、ローカル実ブラウザのJavaScript読込み・検索・最大級ページ。
 - 次に実行する一手: 軽量化候補をCI専用branchからCloudflare Previewへ配置し、配置時間と外部表示を再確認する。Productionは別の明示承認まで変更しない。
+
+## 2026-08-31（軽量化CI Preview完了）
+
+- 完了したバッチ: GitHub Actions run `33338909166`で品質ゲートを通過し、軽量化成果物2,478件、456.10 MiB、ツリーハッシュ`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`をPreview `476b728e-0fd4-464c-aeda-ae51347128f7`へ配置した。source commitは`f150c2d61d230e9a79d41ed8eb9d797f14e17ba7`、固有URLは`https://476b728e.libx.pages.dev`である。
+- 配置実測: 品質jobは約6分49秒、Preview jobは約5分13秒、Preview job内のビルドは約4分9秒、リポジトリ固定のWrangler 4.60.0によるPages配置は30秒だった。ローカル回線からの1,620.79秒に対し、CI Direct Uploadで大幅に短縮した。
+- CI修正: クリーン環境で不足する履歴版入力の復元、GLFW・Luaの入力なし検査、実際の統合成果物を生成する品質ゲート、履歴証拠用の完全checkout、macOS runnerとNode heap、診断段階の分割、workspace Wranglerの直接実行を適用した。PreviewとProductionは別job・別environmentを維持し、Productionは手動の明示選択時だけ実行する。
+- 最後に成功した検査: GitHub Actionsの全品質ゲート、固有URLのトップ・overview・metadata-only・RST・最大級ページ200と未知URL404、H1・概要、検索、最新版リンク、JavaScript 6件の200、コンソール警告・エラーなし、狭幅表示の横方向overflow 0。
+- 次に実行する一手: 別の明示承認後、同一ツリーハッシュをProductionへ配置してタイトル・序文整理計画のフェーズ7を閉鎖する。それまではProduction deployment `e2f480a1-2b26-4dd6-a6f5-6ea4b336f6b3`を維持する。

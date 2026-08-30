@@ -3,7 +3,7 @@
 - 作成日: 2026-08-11
 - 入力資料: `docs/notes/DEPLOYMENT_FILE_COUNT_SCALING_RESEARCH.md`
 - 根拠原則: `docs/spec/PROJECT_PRINCIPLES.md`
-- ステータス: フェーズ1再実施完了 / CI Preview実証中
+- ステータス: フェーズ1・2完了 / フェーズ3は条件未成立のため保留
 
 ## 1. 目的
 
@@ -94,14 +94,18 @@ Awesome二版・英日2,074文書の統合後、成果物は4,754ファイル、
 
 実測では2,276件、189.90 MiBを除去し、2,478ファイル、456.10 MiBへ削減した。ファイル数は47.9%、容量は29.4%減少した。runtime 95/95、smoke 13/13、配信予算、ローカル実ブラウザの最大級ページ・検索・JavaScript読込みへ合格した。
 
-### フェーズ2: CI Direct Upload（実証中）
+### フェーズ2: CI Direct Upload（完了）
 
 - GitHub Actionsのクリーン環境で失敗していた履歴版公開契約を、追跡済み履歴定本から中間入力を復元するよう修正する。
 - `codex/pages-preview/**`だけを自動Preview対象とし、`main`へのpushでは品質検査だけを行う。
 - Productionは`workflow_dispatch`で`production`を明示選択した場合だけ実行する。
-- Wrangler Action v4とWrangler 4.127.1を固定し、PreviewとProductionを別job・別environmentにする。
+- リポジトリで固定済みのWrangler 4.60.0を直接実行し、PreviewとProductionを別job・別environmentにする。
 - CI Previewで品質ゲート、2,478ファイルの配置、主要ページ、検索、配置時間を確認する。
+
+GitHub Actions run [#72](https://github.com/dolphilia/libx/actions/runs/33338909166)で全項目に合格した。品質jobは約6分49秒、Preview jobは約5分13秒、Preview job内のビルドは約4分9秒、Pages配置は30秒だった。deployment `476b728e-0fd4-464c-aeda-ae51347128f7`で主要ページ、検索、JavaScript読込み、404、最新版リンク、狭幅表示を確認した。Productionは変更していない。
 
 ### フェーズ3: サイト・snapshot分割（条件付き）
 
 軽量化とCI化後も配置失敗が続く、またはPreview配置が継続して30分を超える場合に着手する。既存URLを維持するため、単純なsnapshot削除は行わず、Workers Static Assetsまたはオブジェクトストレージを経由した`/docs/awesome/<snapshot>/`単位のルーティングを比較する。404、ヘッダー、検索、言語・版切替、原子的切替、ロールバックを満たす試作を先に行い、Production移行は別承認とする。
+
+今回のCI配置は30秒で成功し、着手条件に該当しなかった。分割は将来のファイル数・容量増加またはCI配置時間の悪化を検知した場合に再評価する。
