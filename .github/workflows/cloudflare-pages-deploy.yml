@@ -116,14 +116,13 @@ jobs:
 
       - name: Deploy Preview to Cloudflare Pages
         id: deploy
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          wranglerVersion: '4.127.1'
-          command: >-
-            pages deploy dist --project-name libx
-            --branch=${{ github.event_name == 'workflow_dispatch' && inputs.preview_branch || github.ref_name }}
-            --commit-hash=${{ github.sha }} --commit-dirty=false
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: >-
+          pnpm exec wrangler pages deploy dist --project-name libx
+          --branch=${{ github.event_name == 'workflow_dispatch' && inputs.preview_branch || github.ref_name }}
+          --commit-hash=${{ github.sha }} --commit-dirty=false
 
   deploy-production:
     runs-on: macos-latest
@@ -158,10 +157,9 @@ jobs:
 
       - name: Deploy Production to Cloudflare Pages
         id: deploy
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          wranglerVersion: '4.127.1'
-          command: >-
-            pages deploy dist --project-name libx --branch=main
-            --commit-hash=${{ github.sha }} --commit-dirty=false
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: >-
+          pnpm exec wrangler pages deploy dist --project-name libx --branch=main
+          --commit-hash=${{ github.sha }} --commit-dirty=false
