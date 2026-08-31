@@ -37,8 +37,10 @@ GitHub Actions run [#72](https://github.com/dolphilia/libx/actions/runs/33338909
 - branch alias: `https://codex-pages-preview-awesome.libx.pages.dev`
 - branch: `codex/pages-preview/awesome-introduction-normalization`
 - 配置成果物: 2,478ファイル、456.10 MiB
-- 配置成果物ツリーハッシュ: `a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`
+- 配置成果物ツリーハッシュ: CIビルド固有（ローカルProduction候補とはバイト単位で非同一）
 
 品質jobは約6分49秒、Preview jobは約5分13秒で完了した。Preview job内のビルドは約4分9秒、既存workspaceのWrangler 4.60.0によるPages配置は30秒だった。ローカル回線からのasset upload 1,620.79秒に対し、CIからの配置は大幅に短縮した。
 
-固有URLでトップ、overview、metadata-only、RST由来、最大級ページ、未知URLを再検証し、期待する200または404を確認した。実ブラウザではH1と概要、序文内画像0、中央揃えなし、検索、最新版リンク、読込みJavaScript 6件のHTTP 200、コンソール警告・エラーなし、狭幅表示の横方向overflow 0を確認した。軽量化CI Previewは合格し、Production候補を上記ハッシュへ更新する。Production deploymentは変更していない。
+CI Previewは同じsource commitと生成規則から作成した内容上同等の成果物だが、Astroがビルドごとに生成するscope IDが変わるため、ローカルで固定したツリーハッシュ`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`とバイト単位では一致しない。したがって、このハッシュをCI deployment自体のハッシュとしては扱わない。外部表示・検索・狭幅表示の検証結果は有効であり、Productionにはローカルに保全した同ハッシュの成果物を再照合して使用した。
+
+固有URLでトップ、overview、metadata-only、RST由来、最大級ページ、未知URLを再検証し、期待する200または404を確認した。実ブラウザではH1と概要、序文内画像0、中央揃えなし、検索、最新版リンク、読込みJavaScript 6件のHTTP 200、コンソール警告・エラーなし、狭幅表示の横方向overflow 0を確認した。軽量化CI Previewの内容検証は合格した。その後、別の明示承認により保全済みProduction候補を公開した。

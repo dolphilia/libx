@@ -102,7 +102,13 @@ Awesome二版・英日2,074文書の統合後、成果物は4,754ファイル、
 - リポジトリで固定済みのWrangler 4.60.0を直接実行し、PreviewとProductionを別job・別environmentにする。
 - CI Previewで品質ゲート、2,478ファイルの配置、主要ページ、検索、配置時間を確認する。
 
-GitHub Actions run [#72](https://github.com/dolphilia/libx/actions/runs/33338909166)で全項目に合格した。品質jobは約6分49秒、Preview jobは約5分13秒、Preview job内のビルドは約4分9秒、Pages配置は30秒だった。deployment `476b728e-0fd4-464c-aeda-ae51347128f7`で主要ページ、検索、JavaScript読込み、404、最新版リンク、狭幅表示を確認した。Productionは変更していない。
+GitHub Actions run [#72](https://github.com/dolphilia/libx/actions/runs/33338909166)で全項目に合格した。品質jobは約6分49秒、Preview jobは約5分13秒、Preview job内のビルドは約4分9秒、Pages配置は30秒だった。deployment `476b728e-0fd4-464c-aeda-ae51347128f7`で主要ページ、検索、JavaScript読込み、404、最新版リンク、狭幅表示を確認した。Astroのビルド固有scope IDにより、CI成果物はローカルで固定したProduction候補と内容上同等だがバイト単位では同一ではない。
+
+### Production実測（完了）
+
+2026-08-31にローカルで保全した2,478ファイル、456.10 MiB、ツリーハッシュ`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`をProductionへ配置した。初回は2,172件でCloudflareの汎用upload errorとなり、同一成果物の再送で成功した。再送時は2,356件送信、122件既存一致、asset upload 1,139.82秒で、deploymentは`14e20cca-afbc-45f7-9243-c7029c6b7080`である。
+
+CI配置30秒に対しローカルDirect Uploadは約19分を要し、回線・Cloudflare API待ちの影響は残る。通常運用はCI Direct Uploadを優先する。一方、バイト単位で承認した成果物を再利用する場合は、再ビルドせずCIへ受け渡せる決定的artifact保管経路を将来整備する。
 
 ### フェーズ3: サイト・snapshot分割（条件付き）
 

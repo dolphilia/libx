@@ -1,17 +1,37 @@
 # Awesome Production公開検証
 
-- 最終更新日: 2026-08-30
+- 最終更新日: 2026-08-31
 - snapshot ID: `v2026-08-23`
 - 状態: `completed`
 - Production branch: `main`
-- deployment ID: `e2f480a1-2b26-4dd6-a6f5-6ea4b336f6b3`
-- 固有URL: `https://e2f480a1.libx.pages.dev`
+- deployment ID: `14e20cca-afbc-45f7-9243-c7029c6b7080`
+- 固有URL: `https://14e20cca.libx.pages.dev`
 - Pages標準URL: `https://libx.pages.dev`
 - カスタムドメイン: `https://libx.dev`
-- source: `452b5d0`
-- 公開・確認日時: 2026-08-30T11:34:04+09:00
+- source: `f150c2d`
+- 公開・確認日時: 2026-08-31T10:30:00+09:00
 - 実施・確認者: `codex`
-- 管理者の公開承認: 取得済み（2026-08-30、明示指示）
+- 管理者の公開承認: 取得済み（2026-08-31、明示指示）
+
+## タイトル・序文正規化の最適化版公開
+
+管理者の明示承認後、英日2,074文書のタイトル・序文正規化と未参照Astro静的生成用JavaScript除去を含む成果物を、Cloudflare Pages Production branch `main`へDirect Uploadした。再ビルドではAstroのscope IDによりバイト列が変わるため、ローカルに保全した承認済み成果物を公開直前に再照合して使用した。
+
+| 項目 | 値 |
+| --- | ---: |
+| ファイル数 | 2,478 |
+| 合計容量 | 456.10 MiB |
+| 成果物ツリーハッシュ | `a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538` |
+| Cloudflare upload | 2,356件送信、122件既存一致 |
+| asset upload時間 | 1,139.82秒 |
+
+初回送信は2,172/2,478件でCloudflareの汎用upload errorとなったが、成果物を変更せず再送して完了した。deployment一覧で`14e20cca-afbc-45f7-9243-c7029c6b7080`がProduction、branch `main`、source `f150c2d`として登録されたことを確認した。
+
+固有URLのトップ、英日overview、metadata-only、RST由来、最大級Zsh Pluginsの代表6 HTMLは、保全成果物とSHA-256がすべて一致した。`libx.pages.dev`と`libx.dev`の英日overviewも一致し、主要URL 200、未知URL 404、英日トップとAwesome汎用入口の`v2026-08-23`導線を確認した。固有URLだけに`X-Robots-Tag: noindex`があり、Pages標準URLとカスタムドメインには付与されていない。
+
+実ブラウザでは最大級ページのH1と簡潔な概要、Snapshot 2026-08-23、`node`検索結果を確認した。390×844で`documentElement.scrollWidth=clientWidth=375`、コンソール警告・エラー0だった。
+
+直前のProduction deployment `e2f480a1-2b26-4dd6-a6f5-6ea4b336f6b3`をロールバック先とする。タイトル・序文正規化計画のProduction公開、公開後検証、証跡記録は完了した。
 
 ## 最新リンク修正版の再公開
 

@@ -2069,3 +2069,11 @@
 - 最後に成功した検査: 序文監査は履歴版730/730、新版1,344/1,344、未解決0。英日翻訳365/365・672/672、canonical、publish、機械監査、レビュー同期、Awesome単体2,082ページ、全体`pnpm check`（unit 26/26、runtime 94/94、smoke 13/13）、選択的統合ビルド、links、integrity、deployment-assets 4,754件、`git diff --check`が合格した。実ブラウザで英日overview、metadata-only、HTML・RST由来、目次なし、履歴版、最大級ページ、検索を検証した。最大級ページで検出した長いインラインコードのモバイルoverflowを修正し、390×844で横方向overflow 0を確認した。最終統合ビルド後のPreview候補ツリーハッシュは`dd9ff0d27b5ee657c7dac2afb93ecacdb2b42b306426bc56eeb7e8164961cf9a`である。
 - 公開判断: 新しい統合`dist`の外部配置は未実施。Previewの明示承認後に配置・実ブラウザ検証し、Productionはさらに別の明示承認を得る。
 - 次に実行する一手: Cloudflare PagesのPreview branchへ配置する明示承認を得る。
+
+## 2026-08-31（Awesomeタイトル・序文正規化・Production公開完了）
+
+- 完了したバッチ: 軽量化済み成果物2,478件、456.10 MiB、ツリーハッシュ`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`をCloudflare Pages Production branch `main`へ公開した。deployment IDは`14e20cca-afbc-45f7-9243-c7029c6b7080`、固有URLは`https://14e20cca.libx.pages.dev`、公開先は`https://libx.dev`である。
+- 失敗・保留理由: 初回送信は2,172/2,478件でCloudflareの汎用upload errorとなった。同一の保全成果物を再送し、2,356件送信・122件既存一致、asset upload 1,139.82秒で成功した。未解決・保留はない。
+- 最後に成功した検査: 公開直前のツリーハッシュ再照合、Production・`main`登録、固有URLの代表6 HTMLと保全成果物のSHA-256一致、`libx.pages.dev`・`libx.dev`への同一overview反映、主要URL 200、未知URL 404、Snapshot 2026-08-23導線、検索制御ヘッダー、実ブラウザ検索、390×844の横方向overflow 0、コンソール警告・エラー0。
+- ロールバック: 直前のProduction deployment `e2f480a1-2b26-4dd6-a6f5-6ea4b336f6b3`。
+- 次に実行する一手: なし。タイトル・序文整理計画の全フェーズを閉鎖した。

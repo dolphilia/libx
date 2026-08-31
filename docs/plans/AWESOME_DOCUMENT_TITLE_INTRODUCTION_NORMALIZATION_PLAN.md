@@ -7,7 +7,7 @@
 - 対象文書数: 2,074文書
 - 主対象: `v2026-08-23`の英日672組
 - 定本言語: 英語
-- 状態: `optimized-preview-validation-completed / production-approval-required`
+- 状態: `completed`
 - 先行計画: `AWESOME_LIST_IMPORT_TRANSLATION_COMPLETION_PLAN.md`（完了済み・履歴として保持）
 
 ## 1. 計画の位置付け
@@ -193,7 +193,7 @@ A curated directory of Awesome lists spanning technology, science, business, cul
 | 4 履歴版365組の整理 | `completed` | 安全な継承と個別判断により履歴版全件が合格 |
 | 5 全件回帰・レビュー再固定 | `completed` | 派生生成物、監査、レビュー証拠、ビルドが整合 |
 | 6 Preview検証 | `completed` | 軽量化後の同内容をCI Previewへ配置し、外部表示と配置時間を確認 |
-| 7 Production公開・記録閉鎖 | `pending` | 別の明示承認後に公開し、証跡とロールバックを記録 |
+| 7 Production公開・記録閉鎖 | `completed` | 明示承認後に公開し、証跡とロールバックを記録 |
 
 ### 2026-08-30 ローカル実施結果
 
@@ -217,9 +217,18 @@ A curated directory of Awesome lists spanning technology, science, business, cul
 - 遅延対策として、HTML等から到達不能なAstro静的生成用JavaScript 2,276件、189.90 MiBを統合時に除外する処理と契約テストを追加した。
 - 軽量化後は2,478ファイル、456.10 MiBとなり、ファイル数47.9%、容量29.4%を削減した。runtime 95/95、smoke 13/13、配信予算、ローカル実ブラウザの検索・最大級ページに合格した。
 - 軽量化後のツリーハッシュは`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`。GitHub Actionsのクリーン環境で不足していた履歴版正規化入力を、追跡済み定本から復元するよう契約テストを修正した。
-- GitHub Actions run [#72](https://github.com/dolphilia/libx/actions/runs/33338909166)で品質ゲートと軽量化後のCI Preview配置に成功した。deployment IDは`476b728e-0fd4-464c-aeda-ae51347128f7`、固有URLは`https://476b728e.libx.pages.dev`である。
+- GitHub Actions run [#72](https://github.com/dolphilia/libx/actions/runs/33338909166)で品質ゲートと軽量化後のCI Preview配置に成功した。deployment IDは`476b728e-0fd4-464c-aeda-ae51347128f7`、固有URLは`https://476b728e.libx.pages.dev`である。Astroがビルドごとに生成するscope IDにより、CI成果物は内容上同等だがローカルで固定したProduction候補とはバイト単位で同一ではない。
 - 2,478ファイル、456.10 MiBをリポジトリ固定のWrangler 4.60.0で配置し、Pages配置は30秒だった。外部Previewで主要ページ、検索、最新版リンク、JavaScript読込み、404、狭幅表示を再確認し、フェーズ6を完了した。
-- 次の一手は、別の明示承認を得た後、ツリーハッシュ`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`をProductionへ配置してフェーズ7を閉鎖することである。Productionは変更していない。
+- 管理者の明示承認後、ローカルに保全したツリーハッシュ`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`をProductionへ配置し、フェーズ7を閉鎖した。
+
+### 2026-08-31 Production公開結果
+
+- 2,478ファイル、456.10 MiB、ツリーハッシュ`a2d0291f55105504852abe63d26d1a76ca82e9a83f694a8d70b856a492fd1538`を再照合し、Cloudflare Pages Production branch `main`へDirect Uploadした。
+- deployment IDは`14e20cca-afbc-45f7-9243-c7029c6b7080`、固有URLは`https://14e20cca.libx.pages.dev`、sourceは`f150c2d`である。
+- 初回送信は2,172/2,478件でCloudflareの汎用upload errorとなった。同一成果物を再送し、2,356件送信・122件既存一致、asset upload 1,139.82秒で完了した。
+- 固有URLの代表6 HTMLを保全成果物とSHA-256照合して全件一致した。`libx.pages.dev`と`libx.dev`にも同一の英日overviewが反映され、主要URL 200、未知URL 404、最新版リンク、検索制御ヘッダーを確認した。
+- 実ブラウザではH1・概要、Snapshot表示、検索、390×844で横方向overflow 0、コンソール警告・エラー0を確認した。
+- 直前Production deployment `e2f480a1-2b26-4dd6-a6f5-6ea4b336f6b3`をロールバック先として記録した。未解決・保留項目はない。
 
 ### フェーズ0: 全件監査と境界固定
 
