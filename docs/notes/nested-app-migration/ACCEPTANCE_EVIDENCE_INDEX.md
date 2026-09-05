@@ -34,3 +34,9 @@
 ## 初回Worker外部検証の追記
 
 コミット6031543の[実配信記録](./worker-preview-deployment.json)で初回9 Workerの作成・8単位と入口の全2,150ファイルのハッシュ照合・入口有効化を確認した。[追加HTTP検証](./worker-preview-http.json)27件も成功。これにより計画第7節の初回独立配信・経路・資産取得の項目は完了した。上記の初回未実施・認証待ちの記述は当時の状態であり、現在残るのは外部での更新・同時公開・部分失敗・キャッシュ・資産保持・復旧の検証である。
+
+## 統合Pages本番公開の追記
+
+コミット472bc7fの[配信記録](./pages-production-deployment.json)でrun 33966491244の品質job・本番job成功、unit 27件・runtime 211件、現行本番commitを確認した。[全件照合](./pages-production-validation.json)では全2,526ファイルの原文を本番ドメインまたは固定URLでハッシュ照合し、本番ドメイン側のCloudflare変換も限定した手順で確認。説明不能な差分は0件。[ブラウザー記録](./pages-production-browser.json)は公開後の既存タブ・検索・本文・言語切替・幅390の確認を対象とする。
+
+標準の統合Pages本番切替は完了。[復旧先と手順](./PAGES_PRODUCTION_RUNBOOK.md)を保存したが、本番の実ロールバックは実行していない。独立Workerの残りの外部検証と計画全体の最終監査が完了したという意味ではない。

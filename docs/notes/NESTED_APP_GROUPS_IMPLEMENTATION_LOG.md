@@ -525,3 +525,13 @@ Wrangler呼出し失敗時の終了コード・signal・stdout/stderrを各8,000
 ## 2026-09-05: 統合Pagesの本番公開を準備
 
 利用者の本番デプロイ指示を受け、標準方式である統合Pagesを選択した。GitHub production環境と確認済みaccount IDを設定。現行本番の復旧先を公開前にartifact保存し、直前のID再確認と公開後のcommit照合を追加した。状態記録は公開情報だけに絞り、環境変数を含むAPI応答全体は保存しない。[本番手順](./nested-app-migration/PAGES_PRODUCTION_RUNBOOK.md)に復旧方法と外部更新との競合の限界を記録した。
+
+## 2026-09-05: 統合Pagesの本番公開と外部照合が完了
+
+コミット472bc7fのrun 33966491244が成功し、既存project libxのmain branchへ統合成果物を配置した。APIで本番deployment 9b0b5454-7424-4665-897d-b956fbc20afdと公開commitの一致を確認。直前の本番14e20cca-afbc-45f7-9243-c7029c6b7080を復旧先として公開前に保存した。[配信記録](./nested-app-migration/pages-production-deployment.json)と[復旧手順](./nested-app-migration/PAGES_PRODUCTION_RUNBOOK.md)を参照。
+
+品質job 581秒、公開job 55秒。unit 27件・runtime 211件と全品質検査成功。12appを再ビルド、2,526ファイル194,378,646 bytesを生成。Cloudflareへの追加アップロードは4件、2,522件は既存、アップロード処理1.19秒。
+
+本番ドメインの全ファイルを取得し、2,020件は生ハッシュ一致。506件の差分は固定URLで原文ハッシュ一致を確認し、本番側では442件がHTTP→HTTPSだけ、64件がメール保護と任意のHTTPS書き換えだけだった。説明不能な差は0件。[照合記録](./nested-app-migration/pages-production-validation.json)へ保存。固定URL・Pagesエイリアスの代表経路各39件と、[実ブラウザー](./nested-app-migration/pages-production-browser.json)で再読込・検索・本文・言語切替・モバイル表示を確認した。
+
+Git mainのマージと独立Workerの入口変更は行っていない。計画の標準統合Pages本番切替は完了したが、独立Workerの更新・障害・復旧などの外部受け入れ検証と計画全体の最終監査は残る。

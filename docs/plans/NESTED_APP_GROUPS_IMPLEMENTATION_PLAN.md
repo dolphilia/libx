@@ -1,7 +1,7 @@
 # 入れ子型アプリグループの実装・Awesome移行計画
 
 - 作成日: 2026-09-05
-- ステータス: 基本実装・Awesome移行・品質CI・Pagesプレビュー検証済み。独立Workersの外部検証は未完了、本番切替は未実施。
+- ステータス: 基本実装・Awesome移行・品質CI・統合Pages本番切替済み（run 33966491244）。独立Workersの初回プレビュー配信済み、更新・障害・復旧の外部検証は未完了。
 - 採用根拠: ユーザーによる一段の入れ子案の採用指示
 - 対象: アプリ検出、設定、CLI、共通閲覧UI、出力統合、CI、Awesome移行
 - 関連調査: [大規模ドキュメント調査](../notes/AWESOME_AND_LARGE_DOCUMENT_SCALING_RESEARCH.md)
