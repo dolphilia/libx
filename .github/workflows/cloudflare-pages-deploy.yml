@@ -259,6 +259,26 @@ jobs:
           node scripts/deployment-artifact.js --verify --directory=.tmp/verified-deployment --commit="$BUILD_COMMIT"
           node scripts/check-deployment-assets.js .tmp/verified-deployment/dist
 
+      - name: Capture current production for rollback
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/pages-production-state.js --output=.tmp/pages-production/before.json
+
+      - name: Preserve rollback reference before publishing
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-production-before-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .tmp/pages-production/before.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Confirm production has not changed
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/pages-production-state.js --baseline=.tmp/pages-production/before.json --output=.tmp/pages-production/prepublish.json
+
       - name: Deploy Production to Cloudflare Pages
         id: deploy
         env:
@@ -268,3 +288,19 @@ jobs:
         run: >-
           pnpm exec wrangler pages deploy .tmp/verified-deployment/dist --project-name libx --branch=main
           --commit-hash="$BUILD_COMMIT" --commit-dirty=false
+
+      - name: Verify published production commit
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/pages-production-state.js --commit="$BUILD_COMMIT" --output=.tmp/pages-production/after.json
+
+      - name: Save production publication records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-production-state-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .tmp/pages-production/
+          if-no-files-found: warn
+          retention-days: 90

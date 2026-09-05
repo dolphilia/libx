@@ -29,3 +29,8 @@
 `c9bb3ff` は[Worker梱包](./worker-ci-prepared-package.json)まで照合済み。公開baseは `/docs/awesome`、公開2,150ファイル、所有単位8個＋入口1個。[初回配信候補](./WORKER_PREVIEW_PUBLICATION_CANDIDATE.md)は承認済み。[初回配信CIの2回目](./worker-preview-second-attempt.json)が入口状態読取のHTTP 403で停止し、Worker作成は未実行。利用者の設定後の[3回目](./worker-preview-third-attempt.json)はAPI読取を通過し、Wranglerの必要Node版との不整合を確認した。配信jobをNode 24へ修正して検証を継続する。
 
 計画第7節の未完了2項目は維持する。初回HTTP確認に加え、一子更新、部分失敗時の到達性、競合制御、キャッシュ、新旧資産保持と復旧を実際の配信先で確認してから、計画全体の各契約・操作・成果物について最終監査する。
+
+
+## 初回Worker外部検証の追記
+
+コミット6031543の[実配信記録](./worker-preview-deployment.json)で初回9 Workerの作成・8単位と入口の全2,150ファイルのハッシュ照合・入口有効化を確認した。[追加HTTP検証](./worker-preview-http.json)27件も成功。これにより計画第7節の初回独立配信・経路・資産取得の項目は完了した。上記の初回未実施・認証待ちの記述は当時の状態であり、現在残るのは外部での更新・同時公開・部分失敗・キャッシュ・資産保持・復旧の検証である。

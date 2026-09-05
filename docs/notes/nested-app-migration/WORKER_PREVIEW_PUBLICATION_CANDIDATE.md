@@ -1,6 +1,6 @@
 # 独立Workerプレビューの初回配信候補
 
-このメモは配信対象の確認用。2026-09-05に利用者が初回9 Worker配信を承認し、[配信CI 33959850978](https://github.com/dolphilia/libx/actions/runs/33959850978)を起動した。初回はaccount ID空値、設定後の2回目はAPI読取HTTP 403で停止した（[1回目](./worker-preview-first-attempt.json)、[2回目](./worker-preview-second-attempt.json)）。利用者のtoken設定後、3回目はAPI読取を通過し、Node版が固定Wranglerの必要版を満たさずCLI段階で停止した（[3回目](./worker-preview-third-attempt.json)）。配信済み版の記録はなく、publish jobのNode版を修正して再開する。承認済みPagesプレビューは配信・HTTP照合済み。
+このメモは当初承認した配信対象の記録。配信処理の修正後、コミット6031543の[run 33963924574](https://github.com/dolphilia/libx/actions/runs/33963924574)で同一梱包SHAの初回配信が成功した。[配信記録](./worker-preview-deployment.json)と[HTTP検証](./worker-preview-http.json)を参照。
 
 - コミット: `c9bb3ffe7c4172d3294fbac4ac482b64879b656b`
 - ブランチ: `codex/quality/nested-app-groups`

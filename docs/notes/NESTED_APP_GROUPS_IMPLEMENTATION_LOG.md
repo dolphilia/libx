@@ -514,3 +514,14 @@ Wrangler呼出し失敗時の終了コード・signal・stdout/stderrを各8,000
 初回のみ同じWorker名に、本文・資産・bindingを持たず503/no-storeを返す初期版をdeployする処理を追加した。コードと設定から初期版revisionを計算し、APIで版・etag・設定を照合して作成記録を保存する。記録と一致する初期版だけを未公開状態として扱い、その後の通常版をHTTP照合して最後に切り替える。未知の既存Workerや記録なしの作成結果は採用しない。初期作成の応答喪失も自動再送しない。
 
 結合テストのCLIを実Cloudflareの初回作成要件に合わせ、初期版503・bindingなし、初期作成後のアップロード失敗からの再開、一子更新と復旧、既存Workerの記録欠落拒否を確認した。関連9テスト成功。外部再検証は継続する。
+
+
+## 2026-09-05: 独立Worker初回プレビュー配信成功
+
+コミット6031543のrun 33963924574が成功した。承認済み梱包SHAを維持し、9個の初期Workerを作成、8配信単位の各ファイルと入口の全2,150公開ファイルを実HTTPでSHA-256照合してから入口を有効化した。APIでactive version 659ca134-531b-4059-9634-8fc302e5e5c5、deployment 71c91162-a23c-487c-a885-35a3d3387e6eを確認した。公開URLは https://659ca134-libx-preview-705db0603fd54314.miga-and-raia.workers.dev/docs/awesome/ 。
+
+[配信記録](./nested-app-migration/worker-preview-deployment.json)と状態artifact 9968942508のハッシュを保存した。curlによる追加HTTP確認27件で、各配信単位の本文ハッシュ、HEAD、index別名308・クエリ保持、404本文、405、no-store・revisionヘッダーが成功した。[HTTP記録](./nested-app-migration/worker-preview-http.json)を保存し、計画の初回独立配信・経路・資産検証項目を完了にした。外部での一子更新・同時公開・部分失敗・キャッシュ・旧資産保持と復旧はまだ未完了。本番Pagesと本番ドメインは切り替えていない。
+
+## 2026-09-05: 統合Pagesの本番公開を準備
+
+利用者の本番デプロイ指示を受け、標準方式である統合Pagesを選択した。GitHub production環境と確認済みaccount IDを設定。現行本番の復旧先を公開前にartifact保存し、直前のID再確認と公開後のcommit照合を追加した。状態記録は公開情報だけに絞り、環境変数を含むAPI応答全体は保存しない。[本番手順](./nested-app-migration/PAGES_PRODUCTION_RUNBOOK.md)に復旧方法と外部更新との競合の限界を記録した。
