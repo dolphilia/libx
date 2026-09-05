@@ -21,6 +21,7 @@ import {
   resolveSiteUrl,
 } from './global-defaults';
 import { stripJsonComments } from './jsonc';
+import { readAppGroup } from './app-registry.js';
 
 /**
  * プロジェクトルートの解決
@@ -64,11 +65,12 @@ export async function loadProjectConfigFromJSON(
     );
     const configDir = path.dirname(configPath);
     const inferredProjectDir = options.projectDir ?? path.resolve(configDir, '..', '..');
+    const group = readAppGroup(inferredProjectDir);
     const pathSettings = parsed.paths;
     const baseUrlPrefix = await resolveBaseUrlPrefix(pathSettings.baseUrlPrefix);
     const projectSlug = await resolveProjectSlug(pathSettings.projectSlug, inferredProjectDir);
     const baseUrl = await resolveBaseUrl({
-      baseUrl: pathSettings.baseUrl,
+      baseUrl: group?.publicBase ?? pathSettings.baseUrl,
       baseUrlPrefix,
       projectSlug,
       projectDir: inferredProjectDir,

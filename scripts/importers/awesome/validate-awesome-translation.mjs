@@ -5,14 +5,23 @@ import matter from 'gray-matter';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import { rootDir, snapshotVersion } from './common.mjs';
+import { getAwesomeApps } from './app-ownership.mjs';
 
 const version = snapshotVersion;
 const requireComplete = process.argv.includes('--require-complete');
 const contentRootOptionIndex = process.argv.indexOf('--content-root');
-const contentRoot =
+const contentRoots =
   contentRootOptionIndex === -1
-    ? path.join(rootDir, 'apps/awesome/src/awesome-content', version)
-    : path.resolve(process.argv[contentRootOptionIndex + 1] ?? '');
+    ? getAwesomeApps(rootDir).apps.map((app) => ({
+        appId: app.id,
+        directory: path.join(app.directory, 'src/awesome-content', version),
+      }))
+    : [
+        {
+          appId: 'awesome',
+          directory: path.resolve(process.argv[contentRootOptionIndex + 1] ?? ''),
+        },
+      ];
 const errors = [];
 
 if (contentRootOptionIndex !== -1 && !process.argv[contentRootOptionIndex + 1]) {
@@ -81,7 +90,7 @@ function extract(content) {
 }
 let englishPageCount = 0;
 let japanesePageCount = 0;
-{
+for (const { appId, directory: contentRoot } of contentRoots) {
   const englishRoot = path.join(contentRoot, 'en');
   const japaneseRoot = path.join(contentRoot, 'ja');
   const englishFiles = new Set(files(englishRoot));
@@ -90,7 +99,7 @@ let japanesePageCount = 0;
   japanesePageCount += japaneseFiles.length;
   for (const file of japaneseFiles) {
     if (!englishFiles.has(file)) {
-      errors.push(`awesome: 日本語ページに対応する英語ページがありません: ${file}`);
+      errors.push(`${appId}: 日本語ページに対応する英語ページがありません: ${file}`);
       continue;
     }
     const englishMarkdown = fs.readFileSync(path.join(englishRoot, file), 'utf8');
@@ -98,30 +107,31 @@ let japanesePageCount = 0;
     const en = extract(englishMarkdown);
     const ja = extract(japaneseMarkdown);
     if (/[⟦⟧]|MARKDOWN_/.test(japaneseMarkdown))
-      errors.push(`awesome: Markdown保護記号が日本語ページに残っています: ${file}`);
+      errors.push(`${appId}: Markdown保護記号が日本語ページに残っています: ${file}`);
     if (/:[ぁ-んァ-ヶ一-龠]+[：:]/.test(japaneseMarkdown))
-      errors.push(`awesome: 翻訳されたショートコードが日本語ページに残っています: ${file}`);
+      errors.push(`${appId}: 翻訳されたショートコードが日本語ページに残っています: ${file}`);
     if (en.licenseSource !== ja.licenseSource)
-      errors.push(`awesome: licenseSource が不一致です: ${file}`);
+      errors.push(`${appId}: licenseSource が不一致です: ${file}`);
     if (JSON.stringify(en.headingLevels) !== JSON.stringify(ja.headingLevels))
-      errors.push(`awesome: 見出し階層または順序が不一致です: ${file}`);
+      errors.push(`${appId}: 見出し階層または順序が不一致です: ${file}`);
     if (JSON.stringify(en.listStructure) !== JSON.stringify(ja.listStructure))
-      errors.push(`awesome: リスト項目構造または順序が不一致です: ${file}`);
+      errors.push(`${appId}: リスト項目構造または順序が不一致です: ${file}`);
     if (JSON.stringify(en.urls) !== JSON.stringify(ja.urls))
-      errors.push(`awesome: URL順序または集合が不一致です: ${file}`);
+      errors.push(`${appId}: URL順序または集合が不一致です: ${file}`);
     if (JSON.stringify(en.codeTokens) !== JSON.stringify(ja.codeTokens))
-      errors.push(`awesome: インラインコードが不一致です: ${file}`);
+      errors.push(`${appId}: インラインコードが不一致です: ${file}`);
     if (JSON.stringify(en.localDestinations) !== JSON.stringify(ja.localDestinations))
-      errors.push(`awesome: 内部リンクまたはアンカーリンクが不一致です: ${file}`);
+      errors.push(`${appId}: 内部リンクまたはアンカーリンクが不一致です: ${file}`);
     if (JSON.stringify(en.rstTargets) !== JSON.stringify(ja.rstTargets))
-      errors.push(`awesome: RSTリンク先が不一致です: ${file}`);
+      errors.push(`${appId}: RSTリンク先が不一致です: ${file}`);
   }
   if (requireComplete) {
     for (const file of [...englishFiles].sort()) {
-      if (!japaneseFiles.includes(file)) errors.push(`awesome: 日本語ページが未翻訳です: ${file}`);
+      if (!japaneseFiles.includes(file)) errors.push(`${appId}: 日本語ページが未翻訳です: ${file}`);
     }
   }
 }
+if (englishPageCount === 0) errors.push('awesome: 検査対象の英語本文がありません');
 if (errors.length) {
   console.error(errors.map((error) => `- ${error}`).join('\n'));
   process.exitCode = 1;

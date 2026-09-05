@@ -6,6 +6,7 @@ import SidebarResizer from './SidebarResizer.astro';
 import Icon from './icons/Icon.astro';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { translate } from '@docs/i18n/utils';
+import { createHash } from 'node:crypto';
 
 interface SidebarItem {
   title: string;
@@ -49,8 +50,8 @@ function shouldBeOpen(section: SidebarItem): boolean {
 }
 
 // サイドバーのハッシュを生成するヘルパー関数
-function getSidebarHash(_items: SidebarItem[]): string {
-  return hash || 'sidebar-' + Math.random().toString(36).substring(2, 9);
+function getSidebarHash(items: SidebarItem[]): string {
+  return hash || 'sidebar-' + createHash('sha256').update(JSON.stringify(items)).digest('hex');
 }
 
 const sidebarHash = getSidebarHash(items);

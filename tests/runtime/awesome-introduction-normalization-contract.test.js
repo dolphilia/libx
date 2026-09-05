@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import Ajv2020 from 'ajv/dist/2020.js';
+import { createAwesomeResolver } from '../../scripts/importers/awesome/app-ownership.mjs';
 
 import {
   applyIntroductionDecision,
@@ -152,12 +153,17 @@ test('版別判断記録はschema、件数、パス、タイトル規則、継�
     assert.equal(validate(manifest), true, JSON.stringify(validate.errors));
     assert.equal(manifest.entries.length, expected);
     assert.equal(new Set(manifest.entries.map((entry) => entry.sourceId)).size, expected);
+    const resolver = createAwesomeResolver(root);
     for (const entry of manifest.entries) {
       assert.equal(entry.confidence === 'low', false, entry.sourceId);
       assert.match(entry.normalized.en.title, /^Awesome(?:\s|リスト)/, entry.sourceId);
       assert.match(entry.normalized.ja.title, /^Awesome(?:\s|リスト)/, entry.sourceId);
       for (const lang of ['en', 'ja']) {
-        assert.ok(fs.existsSync(path.join(root, entry.paths[lang])), entry.paths[lang]);
+        const prefix = `apps/awesome/src/awesome-content/${snapshot}/${lang}/`;
+        assert.ok(entry.paths[lang].startsWith(prefix), entry.paths[lang]);
+        const moduleKey = `/src/awesome-content/${snapshot}/${lang}/${entry.paths[lang].slice(prefix.length)}`;
+        const currentPath = resolver.contentPath({ sourceId: entry.sourceId, moduleKey });
+        assert.ok(fs.existsSync(currentPath), currentPath);
       }
     }
   }

@@ -20,3 +20,13 @@ test('shared content schema rejects inverted table-of-contents levels', () => {
 test('shared content schema rejects category overrides because directories own navigation', () => {
   assert.throws(() => docsSchema.parse({ title: 'Page', category: 'guide' }), /Unrecognized key/);
 });
+
+test('document IDs are optional stable metadata and cannot be blank or multiline', () => {
+  assert.equal(
+    docsSchema.parse({ title: 'Page', documentId: 'guide:start' }).documentId,
+    'guide:start'
+  );
+  for (const documentId of ['', '  ', 'first\nsecond']) {
+    assert.throws(() => docsSchema.parse({ title: 'Page', documentId }));
+  }
+});

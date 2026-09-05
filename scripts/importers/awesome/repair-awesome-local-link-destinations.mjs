@@ -1,21 +1,13 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess } from './app-ownership.mjs';
 import fs from 'node:fs';
-import path from 'node:path';
 import matter from 'gray-matter';
 import remarkParse from 'remark-parse';
 import { unified } from 'unified';
 import { rootDir, snapshotVersion } from './common.mjs';
 
 const apply = process.argv.includes('--apply');
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion);
-
-function markdownFiles(root) {
-  return fs
-    .readdirSync(root, { recursive: true, withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
-    .map((entry) => path.relative(root, path.join(entry.parentPath, entry.name)))
-    .sort();
-}
+const content = createAwesomeContentAccess(snapshotVersion, rootDir);
 
 function localLinks(markdown) {
   const parsed = matter(markdown);
@@ -44,16 +36,14 @@ function localLinks(markdown) {
   return links;
 }
 
-const englishRoot = path.join(contentRoot, 'en');
-const japaneseRoot = path.join(contentRoot, 'ja');
 const changed = [];
 const skipped = [];
 
-for (const file of markdownFiles(japaneseRoot)) {
-  const englishPath = path.join(englishRoot, file);
+for (const file of content.files('ja')) {
+  const englishPath = content.pathFor('en', file);
   if (!fs.existsSync(englishPath)) continue;
   const english = fs.readFileSync(englishPath, 'utf8');
-  const japanese = fs.readFileSync(path.join(japaneseRoot, file), 'utf8');
+  const japanese = fs.readFileSync(content.pathFor('ja', file), 'utf8');
   const expected = localLinks(english);
   const actual = localLinks(japanese);
   if (
@@ -89,7 +79,7 @@ for (const file of markdownFiles(japaneseRoot)) {
   for (const replacement of replacements.sort((left, right) => right.start - left.start)) {
     output = `${output.slice(0, replacement.start)}${replacement.value}${output.slice(replacement.end)}`;
   }
-  if (apply) fs.writeFileSync(path.join(japaneseRoot, file), output);
+  if (apply) fs.writeFileSync(content.pathFor('ja', file), output);
   changed.push(`${file}: ${replacements.length}`);
 }
 

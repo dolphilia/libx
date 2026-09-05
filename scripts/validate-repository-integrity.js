@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { discoverApps } from '../packages/project-config/src/app-registry.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
@@ -25,7 +26,7 @@ export function validateProjectConfigData(
     )
   );
 
-  if (config.paths?.projectSlug !== appId) {
+  if (config.paths?.projectSlug !== appId.split('/').at(-1)) {
     errors.push(`paths.projectSlug must match app directory: ${appId}`);
   }
   const slugError = getContentSegmentError(config.paths?.projectSlug, 'paths.projectSlug');
@@ -144,13 +145,12 @@ export async function validateRepositoryIntegrity(repositoryRoot = rootDir) {
   if (JSON.stringify(localeFiles) !== JSON.stringify(registeredLocales)) {
     errors.push('i18n: locale dictionaries and language-names registry must have identical keys');
   }
-  const appsDir = path.join(repositoryRoot, 'apps');
-  const appIds = (await fs.readdir(appsDir, { withFileTypes: true }))
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name);
+  const registry = discoverApps(repositoryRoot);
+  const appIds = registry.apps.map((app) => app.id);
 
-  for (const appId of appIds) {
-    const appDir = path.join(appsDir, appId);
+  for (const app of registry.apps) {
+    const appId = app.id;
+    const appDir = app.directory;
     const config = await readJsoncFileAsync(path.join(appDir, 'src/config/project.config.jsonc'));
     for (const locale of config.language?.supported ?? []) {
       if (!registeredLocales.includes(locale)) errors.push(`${appId}: unknown locale ${locale}`);
@@ -169,7 +169,10 @@ export async function validateRepositoryIntegrity(repositoryRoot = rootDir) {
     path.join(repositoryRoot, 'sites/landing/src/config/projects.config.jsonc')
   );
   for (const decorationId of Object.keys(landing.projectDecorations ?? {})) {
-    if (!appIds.includes(decorationId)) {
+    if (
+      !appIds.includes(decorationId) &&
+      !registry.groups.some((group) => group.id === decorationId)
+    ) {
       errors.push(`landing: projectDecorations.${decorationId} has no matching app`);
     }
   }

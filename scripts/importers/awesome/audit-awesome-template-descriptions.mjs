@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
@@ -7,7 +8,7 @@ import { unified } from 'unified';
 import { notesDir, rootDir, snapshotVersion } from './common.mjs';
 
 const version = snapshotVersion;
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
+const content = createAwesomeContentAccess(version, rootDir);
 const reviewResultsPath = path.join(notesDir, 'TEMPLATE_DESCRIPTION_REVIEW_RESULTS.json');
 const outputOptionIndex = process.argv.indexOf('--output');
 const outputPath =
@@ -16,14 +17,6 @@ const outputPath =
 if (outputOptionIndex !== -1 && !process.argv[outputOptionIndex + 1]) {
   console.error('awesome: --output にはJSONファイルを指定してください');
   process.exit(1);
-}
-
-function markdownFiles(root) {
-  return fs
-    .readdirSync(root, { recursive: true, withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
-    .map((entry) => path.relative(root, path.join(entry.parentPath, entry.name)))
-    .sort();
 }
 
 function listDescriptions(file) {
@@ -71,7 +64,7 @@ function normalizeEnglishMeaning(description) {
     .normalize('NFKC')
     .toLocaleLowerCase('en-US')
     .replace(/<a\b[^>]*><\/a>/gi, '')
-    .replace(/[\s.,;:!?"'“”‘’()\[\]{}*_~`<>\-–—]+/g, ' ')
+    .replace(/[\s.,;:!?"'“”‘’()[\]{}*_~`<>\-–—]+/g, ' ')
     .trim();
 }
 
@@ -107,9 +100,7 @@ function collisionGroups(pairs, normalize = (description) => description) {
   });
 }
 
-const englishRoot = path.join(contentRoot, 'en');
-const japaneseRoot = path.join(contentRoot, 'ja');
-const japaneseFiles = markdownFiles(japaneseRoot);
+const japaneseFiles = content.files('ja');
 const documents = [];
 const reviewDocuments = [];
 const reviewedFalsePositiveDocuments = [];
@@ -124,11 +115,11 @@ let comparablePageCount = 0;
 let alignedDescriptionCount = 0;
 
 for (const file of japaneseFiles) {
-  const englishFile = path.join(englishRoot, file);
+  const englishFile = content.pathFor('en', file);
   if (!fs.existsSync(englishFile)) continue;
 
   const englishDescriptions = listDescriptions(englishFile);
-  const japaneseDescriptions = listDescriptions(path.join(japaneseRoot, file));
+  const japaneseDescriptions = listDescriptions(content.pathFor('ja', file));
   const pairs = [];
   let japaneseOnlyDescriptionCount = 0;
   let missingJapaneseDescriptionCount = 0;

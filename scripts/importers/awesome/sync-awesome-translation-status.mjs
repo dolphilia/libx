@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeResolver, readAwesomeRouteManifest } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { notesDir, readJson, rootDir, snapshotVersion, writeJsonAtomic } from './common.mjs';
@@ -6,12 +7,12 @@ import { notesDir, readJson, rootDir, snapshotVersion, writeJsonAtomic } from '.
 const version = snapshotVersion;
 const statusPath = path.join(notesDir, 'BATCH_STATUS.json');
 const status = readJson(statusPath);
-const jaRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version, 'ja');
+const resolver = createAwesomeResolver(rootDir);
+const translatedPath = (entry) =>
+  resolver.contentPath({ ...entry, moduleKey: entry.moduleKey.replace('/en/', '/ja/') });
 const translated = new Set(
-  readJson(path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json'))
-    .entries.filter(
-      (entry) => entry.version === version && fs.existsSync(path.join(jaRoot, `${entry.slug}.md`))
-    )
+  readAwesomeRouteManifest({ root: rootDir, localized: false })
+    .entries.filter((entry) => entry.version === version && fs.existsSync(translatedPath(entry)))
     .map((entry) => entry.sourceId)
 );
 for (const batch of status.batches) {

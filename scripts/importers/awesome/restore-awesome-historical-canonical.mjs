@@ -3,6 +3,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { prepareImportOutput } from '../safe-import-output.js';
+import { createAwesomeResolver } from './app-ownership.mjs';
 import {
   notesDir,
   readJson,
@@ -37,7 +38,7 @@ const categoryBySource = new Map(
 );
 const included = lock.sources.filter((source) => source.status === 'included');
 const normalizedRoot = path.join(tempDir, '03-normalized');
-const englishRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion, 'en');
+const resolver = createAwesomeResolver(rootDir);
 const manifestPath = path.join(notesDir, 'HISTORICAL_CANONICAL_MANIFEST.json');
 
 const routeFor = (source) => {
@@ -56,7 +57,10 @@ const routeFor = (source) => {
 const currentPages = included
   .map((source) => {
     const slug = routeFor(source);
-    const pathname = path.join(englishRoot, `${slug}.md`);
+    const pathname = resolver.contentPath({
+      sourceId: source.sourceId,
+      moduleKey: `/src/awesome-content/${snapshotVersion}/en/${slug}.md`,
+    });
     if (!fs.existsSync(pathname)) throw new Error(`履歴版定本がありません: ${slug}`);
     const content = fs.readFileSync(pathname, 'utf8');
     if (!content.includes(`licenseSource: ${JSON.stringify(source.sourceId)}`)) {
@@ -82,7 +86,7 @@ if (freezeManifest) {
     sourceLockSha256: sha256(fs.readFileSync(path.join(notesDir, 'SOURCES.lock.json'))),
     pageCount: currentPages.length,
     aggregateSha256: aggregateSha256(currentPages),
-    pages: currentPages.map(({ content, ...page }) => page),
+    pages: currentPages.map(({ content: _content, ...page }) => page),
   };
   writeJsonAtomic(manifestPath, manifest);
   console.log(`Frozen Awesome historical canonical manifest (${manifest.pageCount} pages)`);

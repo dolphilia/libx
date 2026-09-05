@@ -17,7 +17,8 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
+import { discoverApps, resolveApp } from '../packages/project-config/src/app-registry.js';
 import * as logger from './logger.js';
 import { confirmAction, createBackup } from './safety-utils.js';
 import {
@@ -45,7 +46,9 @@ function showUsage(exitCode = 1) {
   logger.detail('--description-ja=<text>: 日本語説明文（既定: display-name-ja を元に自動生成）');
   logger.detail('--icon=<name>: アイコン名（既定: file-text）');
   logger.detail('--tags=<tag1,tag2>: カンマ区切りタグ（既定: documentation）');
+  logger.detail('--group=<id>: 既存グループの子アプリを作成します');
   logger.detail('--template=<name>: コピー元テンプレート（既定: docs-site）');
+  logger.detail('--skip-install: 依存関係のインストールを後でまとめて行います');
   logger.detail('--skip-test: 動作確認テストをスキップします');
   logger.detail('--dry-run: 実際のファイル操作を行わず手順のみ確認します');
   logger.detail('--confirm: インタラクティブな確認をスキップします');
@@ -85,11 +88,13 @@ function parseArguments() {
     showUsage(1);
   }
 
-  const [projectName, displayNameEn, displayNameJa] = args.slice(0, 3);
+  const positional = args.filter((arg) => !arg.startsWith('--'));
+  if (positional.length !== 3) showUsage(1);
+  const [childName, displayNameEn, displayNameJa] = positional;
   const options = {};
 
   // オプション引数を解析
-  for (let i = 3; i < args.length; i++) {
+  for (let i = 0; i < args.length; i++) {
     const arg = args[i];
     if (arg.startsWith('--')) {
       if (arg.includes('=')) {
@@ -103,7 +108,9 @@ function parseArguments() {
   }
 
   return {
-    projectName,
+    projectName: options.group ? `${options.group}/${childName}` : childName,
+    childName,
+    group: options.group,
     displayNameEn,
     displayNameJa,
     descriptionEn: options['description-en'] || `Documentation for ${displayNameEn}`,
@@ -112,6 +119,7 @@ function parseArguments() {
     tags: options.tags ? options.tags.split(',').map((tag) => tag.trim()) : ['documentation'],
     template: options.template || 'docs-site',
     skipTest: Boolean(options['skip-test']),
+    skipInstall: Boolean(options['skip-install']),
     dryRun: Boolean(options['dry-run']),
     autoConfirm: Boolean(options.confirm),
   };
@@ -167,6 +175,8 @@ function checkProjectDuplication(projectName) {
  * テンプレートプロジェクトの存在確認
  */
 export function validateTemplate(templateName) {
+  const error = getContentSegmentError(templateName, 'テンプレート名');
+  if (error) return [error];
   const templateDir = path.join(templatesDir, templateName);
 
   if (!fs.existsSync(templateDir)) {
@@ -291,13 +301,21 @@ export function updatePackageJson(projectDir, projectName) {
   const packageJsonPath = path.join(projectDir, 'package.json');
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
-  packageJson.name = `apps-${projectName}`;
+  packageJson.name = `apps-${projectName.replaceAll('/', '-')}`;
   packageJson.private = true;
   packageJson.description = `Documentation site for ${projectName}`;
-  packageJson.scripts.prebuild = `node ../../scripts/build-sidebar-selective.js --projects=${projectName} && node ../../scripts/sync-service-workers.js --project=${projectName}`;
+  packageJson.scripts.prebuild = `libx-docs-prepare --projects=${projectName}`;
 
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
   console.log('  ✅ package.json更新完了');
+}
+
+/** Use the workspace configuration regardless of application nesting depth. */
+export function updateTsConfig(projectDir) {
+  const file = path.join(projectDir, 'tsconfig.json');
+  const config = JSON.parse(fs.readFileSync(file, 'utf8'));
+  config.extends = '@docs/config/astro.json';
+  fs.writeFileSync(file, JSON.stringify(config, null, 2) + '\n');
 }
 
 /**
@@ -339,7 +357,7 @@ export function updateProjectConfig(projectDir, config) {
   const projectConfig = readJsoncFile(projectConfigPath);
 
   projectConfig.paths ??= {};
-  projectConfig.paths.projectSlug = config.projectName;
+  projectConfig.paths.projectSlug = config.projectName.split('/').at(-1);
 
   // 翻訳情報の更新
   projectConfig.translations.en.displayName = config.displayNameEn;
@@ -415,6 +433,7 @@ function updateAllConfigFiles(projectDir, config, options = {}) {
 
   updatePackageJson(projectDir, config.projectName);
   updateAstroConfig(projectDir);
+  updateTsConfig(projectDir);
   updateProjectConfig(projectDir, config);
   updateLandingConfig(config, options);
 
@@ -427,8 +446,9 @@ function updateAllConfigFiles(projectDir, config, options = {}) {
 function installDependencies(projectDir, { dryRun = false } = {}) {
   console.log('  依存関係をインストールしています...');
 
-  const projectName = path.basename(projectDir);
-  const packageName = `apps-${projectName}`;
+  const packageName = dryRun
+    ? `apps-${path.relative(path.join(rootDir, 'apps'), projectDir).replaceAll(path.sep, '-')}`
+    : JSON.parse(fs.readFileSync(path.join(projectDir, 'package.json'), 'utf8')).name;
 
   if (dryRun) {
     logger.dryRun(
@@ -440,7 +460,7 @@ function installDependencies(projectDir, { dryRun = false } = {}) {
   try {
     // 新規アプリをpnpmワークスペースとロックファイルへ確実に登録するため、
     // アプリ内ではなくリポジトリルートから対象を絞って実行する。
-    execSync(`pnpm install --filter=${packageName}`, {
+    execFileSync('pnpm', ['install', `--filter=${packageName}`], {
       cwd: rootDir,
       stdio: ['inherit', 'pipe', 'pipe'],
       timeout: 120000, // 2分タイムアウト
@@ -474,7 +494,7 @@ async function runProjectTests(projectName, { skipTest = false, dryRun = false }
   // ビルドテスト
   console.log('    📦 ビルドテストを実行中...');
   try {
-    execSync(`pnpm --filter=apps-${projectName} build`, {
+    execFileSync('pnpm', [`--filter=${resolveApp(projectName, rootDir).packageName}`, 'build'], {
       stdio: ['inherit', 'pipe', 'pipe'],
       timeout: 120000, // 2分タイムアウト
       cwd: rootDir,
@@ -496,13 +516,16 @@ function showSuccessReport(config, projectDir, testResult, options = {}) {
   const { dryRun = false } = options;
   console.log('\n🎉 新しいドキュメントプロジェクトの作成が完了しました！\n');
 
+  const publicBase = config.group
+    ? discoverApps(rootDir).groups.find((group) => group.id === config.group).publicBase
+    : `/docs/${config.projectName}`;
   console.log('📋 作成されたプロジェクト情報:');
   console.log(`  プロジェクト名: ${config.projectName}`);
   console.log(`  プロジェクトパス: ${projectDir}`);
-  console.log(`  パッケージ名: apps-${config.projectName}`);
+  console.log(`  パッケージ名: apps-${config.projectName.replaceAll('/', '-')}`);
   console.log(`  英語表示名: ${config.displayNameEn}`);
   console.log(`  日本語表示名: ${config.displayNameJa}`);
-  console.log(`  ベースURL: /docs/${config.projectName}`);
+  console.log(`  ベースURL: ${publicBase}`);
   console.log(`  アイコン: ${config.icon}`);
   console.log(`  タグ: ${config.tags.join(', ')}`);
   console.log('');
@@ -513,11 +536,11 @@ function showSuccessReport(config, projectDir, testResult, options = {}) {
 
   console.log('🚀 次のステップ:');
   console.log('  1. 開発サーバーを起動:');
-  console.log(`     pnpm --filter=apps-${config.projectName} dev`);
+  console.log(`     pnpm --filter=apps-${config.projectName.replaceAll('/', '-')} dev`);
   console.log(`     または: cd apps/${config.projectName} && pnpm dev`);
   console.log('');
   console.log('  2. ブラウザでアクセス:');
-  console.log(`     http://localhost:4321/docs/${config.projectName}`);
+  console.log(`     http://localhost:4321${publicBase}`);
   console.log('');
   console.log('  3. 統合ビルドでテスト:');
   console.log('     pnpm build');
@@ -560,7 +583,8 @@ async function main() {
   showProgress(2, 7, 'プロジェクト設定を検証しています...');
 
   const validationErrors = [
-    ...validateProjectName(config.projectName),
+    ...validateProjectName(config.childName),
+    ...(config.group ? validateProjectName(config.group) : []),
     ...checkProjectDuplication(config.projectName),
     ...validateTemplate(config.template),
   ];
@@ -571,6 +595,17 @@ async function main() {
     process.exit(1);
   }
 
+  const registry = discoverApps(rootDir);
+  if (config.group && !registry.groups.some((group) => group.id === config.group)) {
+    throw new Error(`グループが見つかりません: ${config.group}`);
+  }
+  if (
+    registry.apps.some(
+      (app) => app.packageName === `apps-${config.projectName.replaceAll('/', '-')}`
+    )
+  ) {
+    throw new Error('生成するpackage名が既存アプリと重複します。');
+  }
   console.log('✅ バリデーション完了');
   console.log('');
 
@@ -612,7 +647,8 @@ async function main() {
   // 5. 依存関係のインストール
   showProgress(5, 7, '依存関係をインストールしています...');
 
-  const installSuccess = installDependencies(targetDir, { dryRun: config.dryRun });
+  const installSuccess =
+    config.skipInstall || installDependencies(targetDir, { dryRun: config.dryRun });
   if (!installSuccess) {
     console.error('❌ 依存関係のインストールに失敗しました。手動でインストールしてください。');
     console.error(`   cd apps/${config.projectName} && pnpm install`);

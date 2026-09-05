@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess } from './app-ownership.mjs';
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -25,6 +26,7 @@ const expansionCommit = optionValue(
   'd851c454eb65b5d199564b3d8112658cb6416855'
 );
 const candidateVersion = optionValue(args, '--snapshot', 'v2026-08-23');
+// This prefix belongs to the frozen historical Git commits, not today's worktree.
 const contentBase = 'apps/awesome/src/awesome-content/v2026-08-20';
 const outputPath = path.join(notesRootDir, 'migration', 'CURRENT_STATE_INVENTORY.json');
 
@@ -32,19 +34,15 @@ function git(args) {
   return execFileSync('git', args, { cwd: rootDir, encoding: 'utf8' }).trimEnd();
 }
 
-function walkMarkdown(root, prefix = '') {
-  if (!fs.existsSync(root)) return [];
-  const files = [];
-  for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
-    const relative = prefix ? `${prefix}/${entry.name}` : entry.name;
-    const absolute = path.join(root, entry.name);
-    if (entry.isDirectory()) files.push(...walkMarkdown(absolute, relative));
-    else if (entry.isFile() && entry.name.endsWith('.md')) {
-      const content = fs.readFileSync(absolute);
-      files.push({ path: relative, bytes: content.length, sha256: sha256(content) });
-    }
-  }
-  return files.sort((left, right) => left.path.localeCompare(right.path));
+const contentAccess = createAwesomeContentAccess('v2026-08-20', rootDir);
+function currentMarkdown(language) {
+  return contentAccess
+    .files(language)
+    .map((file) => {
+      const content = fs.readFileSync(contentAccess.pathFor(language, file));
+      return { path: file, bytes: content.length, sha256: sha256(content) };
+    })
+    .sort((left, right) => left.path.localeCompare(right.path));
 }
 
 function commitMarkdown(commit, language) {
@@ -95,8 +93,8 @@ function lockSummary(lock) {
   };
 }
 
-const currentEnglish = walkMarkdown(path.join(rootDir, contentBase, 'en'));
-const currentJapanese = walkMarkdown(path.join(rootDir, contentBase, 'ja'));
+const currentEnglish = currentMarkdown('en');
+const currentJapanese = currentMarkdown('ja');
 const historicalEnglish = commitMarkdown(historicalCommit, 'en');
 const historicalJapanese = commitMarkdown(historicalCommit, 'ja');
 const currentLock = readJson(path.join(notesDir, 'SOURCES.lock.json'));

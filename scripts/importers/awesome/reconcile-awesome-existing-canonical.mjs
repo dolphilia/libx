@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess, readAwesomeRouteManifest } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
@@ -15,21 +16,14 @@ const targetVersion = 'v2026-08-23';
 const apply = process.argv.includes('--apply');
 const historicalNotes = path.join(notesRootDir, 'snapshots', historicalVersion);
 const targetNotes = path.join(notesRootDir, 'snapshots', targetVersion);
-const historicalRoot = path.join(
-  rootDir,
-  'apps/awesome/src/awesome-content',
-  historicalVersion,
-  'en'
-);
-const targetRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', targetVersion, 'en');
+const historicalAccess = createAwesomeContentAccess(historicalVersion, rootDir);
+const targetContent = createAwesomeContentAccess(targetVersion, rootDir);
 const normalizedRoot = path.join(tempRootDir, 'snapshots', targetVersion, '03-normalized');
 const reportPath = path.join(notesRootDir, 'migration', 'RECONCILIATION_REPORT.json');
 
 const historicalLock = readJson(path.join(historicalNotes, 'SOURCES.lock.json'));
 const targetLock = readJson(path.join(targetNotes, 'SOURCES.lock.json'));
-const routes = readJson(
-  path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json')
-).entries;
+const routes = readAwesomeRouteManifest({ root: rootDir, localized: false }).entries;
 const historicalRoutes = new Map(
   routes
     .filter((entry) => entry.version === historicalVersion)
@@ -70,8 +64,8 @@ for (const historical of historicalIncluded) {
     errors.push(`版別ルートがありません: ${historical.sourceId}`);
     continue;
   }
-  const historicalPath = path.join(historicalRoot, `${historicalRoute.slug}.md`);
-  const targetPath = path.join(targetRoot, `${targetRoute.slug}.md`);
+  const historicalPath = historicalAccess.pathFor('en', `${historicalRoute.slug}.md`);
+  const targetPath = targetContent.pathFor('en', `${targetRoute.slug}.md`);
   const normalizedPath = path.join(normalizedRoot, `${historical.sourceId}.md`);
   const historicalContent = fs.readFileSync(historicalPath);
   const beforeContent = fs.existsSync(targetPath) ? fs.readFileSync(targetPath) : null;

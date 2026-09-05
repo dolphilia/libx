@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { discoverApps, resolveApp } from '../packages/project-config/src/app-registry.js';
 
 /**
  * プロジェクト設定内のカテゴリ翻訳構造を検証するスクリプト
@@ -25,20 +26,10 @@ function resolveConfigPath(projectDir) {
 }
 
 function getProjectConfigPaths() {
-  const appsDir = path.join(rootDir, 'apps');
-  if (!fs.existsSync(appsDir)) {
-    logger.error('apps ディレクトリが見つかりませんでした。');
-    process.exit(1);
-  }
-
-  const entries = fs.readdirSync(appsDir, { withFileTypes: true });
-  return entries
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => ({
-      projectName: entry.name,
-      configPath: resolveConfigPath(path.join(appsDir, entry.name)),
-    }))
-    .filter(({ configPath }) => fs.existsSync(configPath));
+  return discoverApps(rootDir).apps.map((app) => ({
+    projectName: app.id,
+    configPath: resolveConfigPath(app.directory),
+  }));
 }
 
 function loadConfig(configPath) {
@@ -50,7 +41,7 @@ function loadConfig(configPath) {
 }
 
 function collectContentCategoryIds(projectName) {
-  const projectDir = path.join(rootDir, 'apps', projectName);
+  const projectDir = resolveApp(projectName, rootDir).directory;
   const awesomeContentDir = path.join(projectDir, 'src', 'awesome-content');
   const docsDir = fs.existsSync(awesomeContentDir)
     ? awesomeContentDir

@@ -2,6 +2,35 @@
 
 このガイドでは、ドキュメントサイトのビルドとデプロイメントプロセスについて詳しく説明します。統合ビルドシステムからCloudflare Pagesへのデプロイまで、すべての手順を網羅します。
 
+## 入れ子グループと検証済み成果物
+
+`apps/awesome/<child>/` は独立したビルド対象です。公開URLは引き続き `/docs/awesome/` の下に統合されます。
+
+```bash
+# 一つの子を更新し、同じグループの検証済み出力と統合
+pnpm build:selective --projects=awesome/web
+
+# グループ全体を生成
+pnpm build:selective --group=awesome
+
+# 全サイトを揃える。入力・出力が一致する成果物は再利用
+pnpm build -- --confirm --reuse
+```
+
+`--reuse` は全体・選択ビルドで利用できます。各appの `.astro/libx-output.json` と `dist/` の両方が必要です。本文、設定、共通コード、依存ロック、Nodeバージョン・OS・CPUアーキテクチャなどの入力と、出力ファイル集合・ハッシュを照合します。一致しない成果物は再生成します。グループのページメタデータが変わると、それを利用する子も再生成の対象になります。
+
+別のcheckoutへ成果物を復元しても同じ検査を通します。キャッシュは正本ではなく、なくても全体ビルドを完了できる構成です。`--reuse` を省けば明示した対象を再生成します。選択ビルドでは同じグループ内の不足・古い子出力も補いますが、クリーン環境に他グループや単独サイトまで揃える操作には全体ビルドを使ってください。
+
+### CIから公開まで
+
+Cloudflare Pagesのworkflowでは品質ジョブだけがビルドします。smoke、成果物予算、追跡生成物の整合性を確認した後、`scripts/deployment-artifact.js` が公開出力と全ファイルのハッシュ目録を `.tmp/verified-deployment/` に梱包します。公開ジョブは品質ジョブが返したartifact IDを取得し、同じcommitとバイト列であることを照合してから、その `dist/` を公開します。公開ジョブでサイドバーやHTMLを再生成しません。
+
+再利用候補のキャッシュと公開用artifactは別に管理します。キャッシュサービスの失敗時は再ビルドへ進めますが、公開用artifactの欠損・改変・commit不一致はデプロイを停止します。デプロイジョブだけを再実行する場合も、成功した品質ジョブのartifact IDを使います。
+
+現在のプレビューと本番は同じ静的公開設定を使います。環境によってcanonicalや本文を変える構成を追加する際は、設定別に品質検証とartifact生成を行い、その設定で検証した成果物を公開してください。
+
+このCI構成は[GitHubのartifact受け渡し](https://docs.github.com/en/actions/tutorials/store-and-share-data)と[キャッシュの復元・保存](https://github.com/actions/cache)を利用します。選択ビルドの導入だけでは、Cloudflare上の子単位の独立公開にはなりません。
+
 ## 🚀 クイックスタート（推奨）
 
 最も効率的なビルド・デプロイ方法から始めましょう。
@@ -46,12 +75,30 @@ pnpm build:sidebar-selective --templates=docs-site
 ### ローカル開発用ビルド
 
 ```bash
-# ローカル環境用ビルド（ベースパスなし）
+# ローカル確認用ビルド（公開パスを維持）
 pnpm build:local
 
 # 開発サーバー起動
 pnpm dev
 ```
+
+生成済みの統合サイトは `pnpm preview` で確認します。既定の待受は `127.0.0.1:8080` で、`--port=8081` のように変更できます。
+
+```bash
+pnpm build:selective --group=awesome
+pnpm preview --group=awesome
+# http://127.0.0.1:8080/docs/awesome/
+
+# 全サイトを確認
+pnpm build -- --confirm --reuse
+pnpm preview
+```
+
+グループプレビューの開始前に、各子の文書、検索、ナビ、静的一覧、入口・404の存在を検査します。不足している場合は先にビルドしてください。子を編集する開発サーバーは `pnpm --filter=apps-awesome-web dev` などで起動でき、グループ全体の遷移確認には統合プレビューを使います。各app自身のプレビューが必要な場合は `pnpm --filter=<package名> preview` を使えます。
+
+`build:local` と `build:selective:local` は通常ビルドと同じ公開パスを維持します。従来の文書HTMLを共通リダイレクトへ置き換える処理は廃止しました。canonicalは設定した公開サイトURLを維持し、プレビューだけのHTML改変は行いません。`pnpm preview` は以前の複数app同時プレビューから統合出力の配信へ変更しました。旧操作は `pnpm preview:separate` に残しています。
+
+プレビューの応答は `no-store` とし、Service Workerのキャッシュ名はoriginと登録scopeを含みます。同じoriginでも他appのキャッシュは削除・参照しません。グループナビはHTMLとJSONで世代IDを照合し、通信失敗や世代違いでは初期HTMLの局所リンクと静的一覧リンクを維持します。新しい世代の取得に成功すれば全体ナビへ戻ります。未訪問の本文をオフラインで新規取得する機能は、このナビキャッシュには含まれません。
 
 ### よく使用するコマンド
 
@@ -222,24 +269,24 @@ pnpm build:selective --projects=sample-docs
 # 複数プロジェクトの選択的ビルド
 pnpm build:selective --projects=sample-docs,test-verification
 
-# ローカル開発用（ベースパスなし）
+# ローカル開発用（公開パスを維持）
 pnpm build:selective:local --projects=landing
 ```
 
 ### 3. ベースパス処理
 
 **プロダクション環境**:
-- ベースパス: `/libx`
+- ベースパス: プロジェクト設定またはグループ設定から解決（例: `/docs/awesome`）
 - URL例: `https://libx.dev/docs/sample-docs/v2/ja/`
 
 **ローカル開発環境**:
-- ベースパスなし
-- URL例: `http://localhost:8080/v2/ja/`
+- 公開時と同じベースパスを維持
+- URL例: `http://127.0.0.1:8080/docs/sample-docs/v2/ja/`
 
 **処理内容**:
-- HTMLファイル内のアセットパスを環境に応じて書き換え
-- リダイレクト先URLの修正
-- canonical URLの環境別設定
+- 文書・リダイレクト・資産の公開パスをローカルでも保持
+- 旧 `/libx` 形式の補正は必要な既存出力だけに適用
+- canonical URLはプロジェクトの公開設定を使用
 
 ## 🚀 デプロイメント詳細
 
@@ -765,3 +812,9 @@ rm -rf dist/ apps/*/dist/
 このガイドでは、ビルドとデプロイの包括的な手順を詳しく説明しました。**推奨は`pnpm build:deploy`による統合ワークフローの使用**ですが、個別のステップも理解しておくことで、問題発生時に適切な対応が可能になります。
 
 質問や問題がある場合は、プロジェクトのIssueトラッカーまたはドキュメントメンテナーにお問い合わせください。
+
+## CLIのヘルプと復旧確認
+
+`pnpm build -- --help`、`pnpm build:selective --help`、`pnpm preview --help` で実行前に使用方法を表示できる。ヘルプではビルド・バックアップ・サーバー待受を開始しない。未知の引数はエラーとする。
+
+旧出力へ戻すときは[artifactの復旧手順](./BACKUP_OPERATIONS_GUIDE.md)に従い、保存済みの検証結果とmanifestを照合する。グループ所属や現行ソースを変更してから旧版を再ビルドすることを復旧条件にしない。

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess, readAwesomeRouteManifest } from './app-ownership.mjs';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,9 +15,7 @@ import {
 
 const version = snapshotVersion;
 const check = process.argv.includes('--check');
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
-const englishRoot = path.join(contentRoot, 'en');
-const japaneseRoot = path.join(contentRoot, 'ja');
+const contentAccess = createAwesomeContentAccess(version, rootDir);
 const auditPath = path.join(notesDir, 'MACHINE_AUDIT.json');
 const queuePath = path.join(notesDir, 'FINAL_REVIEW_QUEUE.json');
 const resultsPath = optionValue(
@@ -24,14 +23,6 @@ const resultsPath = optionValue(
   '--results',
   path.join(notesDir, 'FINAL_REVIEW_RESULTS.json')
 );
-
-function markdownFiles(directory) {
-  return fs
-    .readdirSync(directory, { recursive: true, withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
-    .map((entry) => path.relative(directory, path.join(entry.parentPath, entry.name)))
-    .sort();
-}
 
 function stableJson(value) {
   return `${JSON.stringify(value, null, 2)}\n`;
@@ -41,8 +32,8 @@ function sha256(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
 }
 
-function readPage(directory, file) {
-  const raw = fs.readFileSync(path.join(directory, file), 'utf8');
+function readPage(lang, file) {
+  const raw = fs.readFileSync(contentAccess.pathFor(lang, file), 'utf8');
   const parsed = matter(raw);
   return { raw, data: parsed.data, content: parsed.content };
 }
@@ -70,7 +61,7 @@ function proseLines(content) {
     const withoutProtectedValues = line
       .replace(/https?:\/\/[^\s)>]+/g, '')
       .replace(/`[^`]+`/g, '')
-      .replace(/[\[\]()*_>]/g, ' ')
+      .replace(/[[\]()*_>]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
     const englishWords = withoutProtectedValues.match(/\b[A-Za-z][A-Za-z'-]{2,}\b/g) ?? [];
@@ -87,14 +78,16 @@ const exclusions = readJson(path.join(notesDir, 'EXCLUSIONS.json'));
 const reviewResults = fs.existsSync(resultsPath)
   ? readJson(resultsPath)
   : { schemaVersion: 1, snapshotVersion: version, reviews: [] };
-const routes = readJson(path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json'));
+const routes = readAwesomeRouteManifest({ root: rootDir, localized: false });
+// Physical ownership is not part of the frozen logical route evidence.
+routes.entries = routes.entries.map(({ appId: _appId, ...entry }) => entry);
 routes.entries = routes.entries.filter((entry) => entry.version === version);
 const includedIds = new Set(
   lock.sources.filter((source) => source.status === 'included').map((source) => source.sourceId)
 );
 const knownIds = new Set(lock.sources.map((source) => source.sourceId));
-const englishFiles = markdownFiles(englishRoot);
-const japaneseFiles = markdownFiles(japaneseRoot);
+const englishFiles = contentAccess.files('en');
+const japaneseFiles = contentAccess.files('ja');
 const englishSet = new Set(englishFiles);
 const japaneseSet = new Set(japaneseFiles);
 const routeBySource = new Map(routes.entries.map((entry) => [entry.sourceId, entry]));
@@ -104,19 +97,19 @@ const errors = [];
 const englishResidualCandidates = [];
 
 for (const file of englishFiles) {
-  const en = readPage(englishRoot, file);
+  const en = readPage('en', file);
   if (!knownIds.has(en.data.licenseSource)) errors.push(`未知の英語出典ID: ${file}`);
   if (!includedIds.has(en.data.licenseSource)) errors.push(`included以外の英語本文: ${file}`);
   if (!japaneseSet.has(file)) errors.push(`日本語ページ欠落: ${file}`);
 }
 
 for (const file of japaneseFiles) {
-  const ja = readPage(japaneseRoot, file);
+  const ja = readPage('ja', file);
   if (!englishSet.has(file)) {
     errors.push(`対応英語ページのない日本語本文: ${file}`);
     continue;
   }
-  const en = readPage(englishRoot, file);
+  const en = readPage('en', file);
   if (!knownIds.has(ja.data.licenseSource)) errors.push(`未知の日本語出典ID: ${file}`);
   if (ja.data.licenseSource !== en.data.licenseSource) errors.push(`英日出典ID不一致: ${file}`);
   if (ja.raw === en.raw) errors.push(`英語本文と同一の日本語ページ: ${file}`);
@@ -216,7 +209,7 @@ const markdownStructures = [
 const firstSourceByStructure = new Map();
 for (const sourceId of orderedIncludedSources) {
   const route = routeBySource.get(sourceId);
-  const content = readPage(englishRoot, `${route.slug}.md`).content;
+  const content = readPage('en', `${route.slug}.md`).content;
   for (const [structure, pattern] of markdownStructures) {
     if (!firstSourceByStructure.has(structure) && pattern.test(content)) {
       firstSourceByStructure.set(structure, sourceId);
@@ -234,8 +227,8 @@ const reviewItems = [];
 for (const entry of routes.entries) {
   const file = `${entry.slug}.md`;
   const hasJapanesePage = japaneseSet.has(file);
-  const englishPage = readPage(englishRoot, file);
-  const japanesePage = hasJapanesePage ? readPage(japaneseRoot, file) : null;
+  const englishPage = readPage('en', file);
+  const japanesePage = hasJapanesePage ? readPage('ja', file) : null;
   reviewItems.push({
     id: `ja-${entry.sourceId}`,
     kind: 'japanese-full-page-semantic-review',
@@ -263,7 +256,7 @@ for (const sample of englishSamples) {
     reason: `計画9.4の決定的標本（${sample.selectionReasons.join('、')}）として、固定原文と英語定本の項目、URL、順序、説明、除外を全文照合する。`,
     evidence: {
       sourceDocumentSha256: source?.documentSha256 ?? null,
-      englishCanonicalSha256: sha256(readPage(englishRoot, sample.page).raw),
+      englishCanonicalSha256: sha256(readPage('en', sample.page).raw),
     },
     status: 'pending',
   });

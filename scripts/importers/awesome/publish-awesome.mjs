@@ -3,27 +3,27 @@ import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import { readJsoncFile } from '../../jsonc-utils.js';
-import { prepareImportForCheck, prepareImportOutput } from '../safe-import-output.js';
-import {
-  notesDir,
-  readJson,
-  rootDir,
-  snapshotVersion,
-  tempDir,
-  writeJsonAtomic,
-} from './common.mjs';
+import { getAwesomeApps, loadAwesomeOwnership, ownerForSource } from './app-ownership.mjs';
+import { prepareImportForCheck } from '../safe-import-output.js';
+import { prepareImportBatch } from '../batch-import-output.js';
+import { notesDir, readJson, rootDir, snapshotVersion, tempDir } from './common.mjs';
 
 const version = snapshotVersion;
-const projectRoot = path.join(rootDir, 'apps', 'awesome');
+const layout = getAwesomeApps(rootDir);
+const ownership = loadAwesomeOwnership(rootDir);
+const projectRoot = layout.group
+  ? layout.apps.find((app) => app.id === `awesome/${layout.group.config.entry}`).directory
+  : layout.apps[0].directory;
 const normalizedRoot = path.join(tempDir, '03-normalized');
-const contentRoot = path.join(projectRoot, 'src/awesome-content');
-const englishContentRoot = path.join(contentRoot, version, 'en');
-const japaneseContentRoot = path.join(contentRoot, version, 'ja');
-const routesPath = path.join(projectRoot, 'src/generated/awesome-routes.json');
-const localizedRoutesPath = path.join(projectRoot, 'src/generated/awesome-localized-routes.json');
-const previewStatusPath = path.join(projectRoot, 'src/generated/awesome-preview-status.json');
-const sidebarRoot = path.join(projectRoot, 'public/sidebar');
-const searchRoot = path.join(projectRoot, 'public/search', version);
+function owns(app, entry) {
+  const child = ownerForSource(entry.sourceId, ownership);
+  return !layout.group || app.id === `awesome/${child}`;
+}
+function sourceApp(entry) {
+  const app = layout.apps.find((candidate) => owns(candidate, entry));
+  if (!app) throw new Error(`取得元の配置先がありません: ${entry.sourceId}`);
+  return app;
+}
 const partitionsPath = path.join(notesDir, 'CONTENT_PARTITIONS.json');
 const migrationsPath = path.join(notesDir, 'URL_MIGRATIONS.json');
 const check = process.argv.includes('--check');
@@ -185,20 +185,20 @@ function buildModel() {
 
 const model = buildModel();
 
-function generateContent(target) {
-  for (const entry of model.entries) {
+function generateContent(target, entries = model.entries) {
+  for (const entry of entries) {
     const targetPath = path.join(target, entry.categoryId, `${entry.pageId}.md`);
     fs.mkdirSync(path.dirname(targetPath), { recursive: true });
     fs.writeFileSync(targetPath, entry.markdown);
   }
 }
 
-function validateContent(target) {
+function validateContent(target, expectedCount = model.entries.length) {
   const files = fs
     .readdirSync(target, { recursive: true, withFileTypes: true })
     .filter((entry) => entry.isFile() && entry.name.endsWith('.md'));
-  if (files.length !== model.entries.length) {
-    throw new Error(`統合ページ数が一致しません: ${files.length} != ${model.entries.length}`);
+  if (files.length !== expectedCount) {
+    throw new Error(`統合ページ数が一致しません: ${files.length} != ${expectedCount}`);
   }
 }
 
@@ -206,11 +206,11 @@ const routes = {
   schemaVersion: 1,
   snapshotVersion: version,
   categories: model.categories.map((name, order) => ({ name, id: categoryId(name), order })),
-  entries: model.entries.map(({ markdown, ...entry }, order) => ({ ...entry, order })),
+  entries: model.entries.map(({ markdown: _markdown, ...entry }, order) => ({ ...entry, order })),
 };
 
-function sidebarFor(lang) {
-  const localizedEntries = entriesFor(lang);
+function sidebarFor(lang, app) {
+  const localizedEntries = entriesFor(lang).filter((entry) => owns(app, entry));
   const categoryNames = projectConfig.translations[lang]?.categories ?? {};
   return routes.categories
     .map((category) => ({
@@ -225,8 +225,8 @@ function sidebarFor(lang) {
     .filter((category) => category.items.length > 0);
 }
 
-function searchIndexFor(lang) {
-  const localizedEntries = entriesFor(lang);
+function searchIndexFor(lang, app) {
+  const localizedEntries = entriesFor(lang).filter((entry) => owns(app, entry));
   return {
     schemaVersion: 1,
     version,
@@ -248,9 +248,15 @@ function searchIndexFor(lang) {
 
 function entriesFor(lang) {
   if (lang === 'en') return routes.entries;
-  if (lang !== 'ja' || !fs.existsSync(japaneseContentRoot)) return [];
+  if (lang !== 'ja') return [];
   return routes.entries.flatMap((entry) => {
-    const pathname = path.join(japaneseContentRoot, `${entry.slug}.md`);
+    const pathname = path.join(
+      sourceApp(entry).directory,
+      'src/awesome-content',
+      version,
+      lang,
+      `${entry.slug}.md`
+    );
     if (!fs.existsSync(pathname)) return [];
     const parsed = matter(fs.readFileSync(pathname, 'utf8'));
     const description = String(parsed.data.description ?? '');
@@ -361,70 +367,103 @@ function mergeVersionEntries(pathname, currentEntries) {
   );
 }
 
-const combinedRoutes = {
-  schemaVersion: 2,
-  categories: routes.categories,
-  entries: mergeVersionEntries(routesPath, routes.entries),
-};
-const combinedLocalizedRoutes = {
-  schemaVersion: 2,
-  entries: mergeVersionEntries(localizedRoutesPath, localizedRoutes.entries),
-};
-const existingPreviewStatuses = fs.existsSync(previewStatusPath)
-  ? (readJson(previewStatusPath).snapshots ?? [])
-  : [];
-const previewStatuses = {
-  schemaVersion: 2,
-  snapshots: [
-    ...existingPreviewStatuses.filter((entry) => entry.snapshotId !== version),
-    previewStatus,
-  ].sort((left, right) => left.snapshotId.localeCompare(right.snapshotId)),
-};
+// Resolve every source before preparing or mutating any app output.
+for (const entry of localizedRoutes.entries) sourceApp(entry);
+const targets = layout.apps.map((app) => {
+  const routesPath = path.join(app.directory, 'src/generated/awesome-routes.json');
+  const localizedRoutesPath = path.join(
+    app.directory,
+    'src/generated/awesome-localized-routes.json'
+  );
+  const previewStatusPath = path.join(app.directory, 'src/generated/awesome-preview-status.json');
+  const sidebarRoot = path.join(app.directory, 'public/sidebar');
+  const searchRoot = path.join(app.directory, 'public/search', version);
+  const englishContentRoot = path.join(app.directory, 'src/awesome-content', version, 'en');
+  const entries = model.entries.filter((entry) => owns(app, entry));
+  const existingPreviewStatuses = fs.existsSync(previewStatusPath)
+    ? (readJson(previewStatusPath).snapshots ?? [])
+    : [];
+  const artifacts = new Map([
+    [
+      routesPath,
+      {
+        schemaVersion: 2,
+        categories: routes.categories,
+        entries: mergeVersionEntries(
+          routesPath,
+          routes.entries.filter((entry) => owns(app, entry))
+        ),
+      },
+    ],
+    [
+      localizedRoutesPath,
+      {
+        schemaVersion: 2,
+        entries: mergeVersionEntries(
+          localizedRoutesPath,
+          localizedRoutes.entries.filter((entry) => owns(app, entry))
+        ),
+      },
+    ],
+    [
+      previewStatusPath,
+      {
+        schemaVersion: 2,
+        snapshots: [
+          ...existingPreviewStatuses.filter((entry) => entry.snapshotId !== version),
+          previewStatus,
+        ].sort((a, b) => a.snapshotId.localeCompare(b.snapshotId)),
+      },
+    ],
+  ]);
+  for (const lang of ['en', 'ja']) {
+    artifacts.set(path.join(sidebarRoot, `sidebar-${lang}-${version}.json`), sidebarFor(lang, app));
+    artifacts.set(path.join(searchRoot, `${lang}.json`), searchIndexFor(lang, app));
+  }
+  return { app, entries, englishContentRoot, artifacts };
+});
 
 if (check) {
-  const result = prepareImportForCheck({
-    targetPath: englishContentRoot,
-    generate: generateContent,
-    validate: validateContent,
-  });
-  if (!result.matches) throw new Error('単一awesomeアプリの本文が正規化済み入力と一致しません');
-  assertJson(routesPath, combinedRoutes);
-  assertJson(localizedRoutesPath, combinedLocalizedRoutes);
-  assertJson(previewStatusPath, previewStatuses);
-  assertJson(path.join(sidebarRoot, `sidebar-en-${version}.json`), sidebarFor('en'));
-  assertJson(path.join(searchRoot, 'en.json'), searchIndexFor('en'));
-  if (entriesFor('ja').length) {
-    assertJson(path.join(sidebarRoot, `sidebar-ja-${version}.json`), sidebarFor('ja'));
-    assertJson(path.join(searchRoot, 'ja.json'), searchIndexFor('ja'));
+  for (const target of targets) {
+    const result = prepareImportForCheck({
+      targetPath: target.englishContentRoot,
+      generate: (directory) => generateContent(directory, target.entries),
+      validate: (directory) => validateContent(directory, target.entries.length),
+    });
+    if (!result.matches)
+      throw new Error(`Awesome本文が正規化済み入力と一致しません: ${target.app.id}`);
+    for (const [pathname, expected] of target.artifacts) assertJson(pathname, expected);
   }
   assertJson(partitionsPath, partitions);
   assertJson(migrationsPath, migrations);
-  console.log(`Awesome single-app publish check: OK (${model.entries.length} pages)`);
-} else {
-  prepareImportOutput({
-    targetPath: englishContentRoot,
-    generate: generateContent,
-    validate: validateContent,
-  });
-  fs.mkdirSync(path.dirname(routesPath), { recursive: true });
-  fs.mkdirSync(sidebarRoot, { recursive: true });
-  fs.mkdirSync(searchRoot, { recursive: true });
-  fs.writeFileSync(routesPath, stableJson(combinedRoutes));
-  fs.writeFileSync(localizedRoutesPath, stableJson(combinedLocalizedRoutes));
-  fs.writeFileSync(previewStatusPath, stableJson(previewStatuses));
-  fs.writeFileSync(
-    path.join(sidebarRoot, `sidebar-en-${version}.json`),
-    stableJson(sidebarFor('en'))
+  console.log(
+    `Awesome ${layout.group ? 'group' : 'single-app'} publish check: OK (${model.entries.length} pages, ${targets.length} app(s))`
   );
-  fs.writeFileSync(path.join(searchRoot, 'en.json'), stableJson(searchIndexFor('en')));
-  if (entriesFor('ja').length) {
-    fs.writeFileSync(
-      path.join(sidebarRoot, `sidebar-ja-${version}.json`),
-      stableJson(sidebarFor('ja'))
-    );
-    fs.writeFileSync(path.join(searchRoot, 'ja.json'), stableJson(searchIndexFor('ja')));
-  }
-  writeJsonAtomic(partitionsPath, partitions);
-  writeJsonAtomic(migrationsPath, migrations);
-  console.log(`Published ${model.entries.length} canonical pages to the single awesome app`);
+} else {
+  const outputs = targets.flatMap((target) => [
+    {
+      targetPath: target.englishContentRoot,
+      kind: 'directory',
+      generate: (directory) => generateContent(directory, target.entries),
+      validate: (directory) => validateContent(directory, target.entries.length),
+    },
+    ...[...target.artifacts].map(([targetPath, value]) => ({
+      targetPath,
+      kind: 'file',
+      generate: (file) => fs.writeFileSync(file, stableJson(value)),
+    })),
+  ]);
+  for (const [targetPath, value] of [
+    [partitionsPath, partitions],
+    [migrationsPath, migrations],
+  ])
+    outputs.push({
+      targetPath,
+      kind: 'file',
+      generate: (file) => fs.writeFileSync(file, stableJson(value)),
+    });
+  prepareImportBatch({ outputs, stagingRoot: path.join(tempDir, 'publish-staging') });
+  console.log(
+    `Published ${model.entries.length} canonical pages to ${targets.length} Awesome app(s)`
+  );
 }

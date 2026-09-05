@@ -7,6 +7,19 @@ import {
 } from '../../scripts/locale-utils.js';
 import { rewriteBasePathInHtml } from '../../scripts/html-url-rewriter.js';
 
+test('ローカル確認でも文書のindex.htmlを共通リダイレクトへ置き換えない', () => {
+  const source = '<h1>本文</h1><a href="/docs/example/v1/ja/guide/">次へ</a>';
+  assert.equal(
+    rewriteBasePathInHtml(source, {
+      oldBasePath: '/libx',
+      newBasePath: '/docs/example',
+      isIndex: true,
+      isLocalBuild: true,
+    }),
+    source
+  );
+});
+
 test('共有ロケール検証はBCP 47形式の登録済みロケールを扱う', () => {
   for (const locale of ['en', 'ar', 'zh-Hans', 'zh-Hant', 'pt-BR']) {
     assert.equal(isValidLanguageTag(locale), true, locale);

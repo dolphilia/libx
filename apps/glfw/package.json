@@ -5,10 +5,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "prebuild": "node ../../scripts/build-sidebar-selective.js --projects=glfw && node ../../scripts/build-search-index.js --project=glfw && node ../../scripts/sync-service-workers.js --project=glfw",
+    "prebuild": "libx-docs-prepare --projects=glfw",
     "dev": "astro dev",
     "build": "astro build",
-    "check:content": "node ../../scripts/importers/import-glfw-3.5.1.mjs --check --allow-missing-source && node ../../scripts/validate-translated-content.mjs --project=glfw --version=v3-5-1 --target=ja --identifier-prefixes=GLFW,glfw,Vk,VK_",
+    "check:content": "node check-content.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

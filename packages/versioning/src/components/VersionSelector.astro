@@ -9,6 +9,7 @@ interface Props {
   currentVersion: string;
   basePath: string;
   currentSlug?: string; // 追加
+  versionPaths?: Record<string, string>;
   className?: string;
   showVersionHistory?: boolean;
   showVersionAlert?: boolean; // バージョン警告を表示するかどうか
@@ -21,6 +22,7 @@ const {
   currentVersion,
   basePath,
   currentSlug = '', // 追加
+  versionPaths,
   className = '',
   showVersionHistory = false,
   showVersionAlert = false, // デフォルトで非表示
@@ -80,6 +82,7 @@ function getVersionTag(
 
 // 動的フォールバック戦略（ハードコーディングなし）
 function getVersionPath(versionId: string): string {
+  if (versionPaths?.[versionId]) return versionPaths[versionId];
   if (currentSlug) {
     // 新しいURL構造: /basePath/version/lang/slug
     const targetPath = `${basePath}/${versionId}/${currentSlug}`;

@@ -6,6 +6,11 @@ import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { MobileTableOfContents, TableOfContents, Pagination } from '@docs/ui/components';
 import { getProjectConfig } from '@docs/project-config';
+import {
+  loadGroupPages,
+  resolveGroupPagination,
+  resolveGroupDocumentLink,
+} from '@docs/project-config/group-pages';
 import { mergePagination, type PageLink } from '@docs/versioning/utils';
 
 import {
@@ -23,30 +28,32 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   const docs = await getCollection('docs');
 
   // 結果を生成
-  const result = docs
-    .map((entry: CollectionEntry<'docs'>) => {
-      // スラグからパスパラメータを抽出
-      // 例: "v2/ja/01-guide/01-getting-started" → { version: "v2", lang: "ja", slug: ["01-guide", "01-getting-started"] }
-      const pathParts = entry.slug.split('/');
+  const result = docs.map((entry: CollectionEntry<'docs'>) => {
+    // スラグからパスパラメータを抽出
+    // 例: "v1/en/01-guide/01-getting-started" → { version: "v1", lang: "en", slug: ["01-guide", "01-getting-started"] }
+    const pathParts = entry.slug.split('/');
 
-      if (pathParts.length < 3) {
-        console.warn(`Invalid entry slug format: ${entry.slug}`);
-        return null;
-      }
+    if (pathParts.length < 3) {
+      console.warn(`Invalid entry slug format: ${entry.slug}`);
+      return null;
+    }
 
-      const version = pathParts[0]; // "v2"
-      const lang = pathParts[1]; // "ja"
-      const slugParts = pathParts.slice(2); // ["01-guide", "01-getting-started"]
-      const slug = slugParts.join('/'); // "01-guide/01-getting-started"
+    const version = pathParts[0]; // "v1"
+    const lang = pathParts[1]; // "en"
+    const slugParts = pathParts.slice(2); // ["01-guide", "01-getting-started"]
+    const slug = slugParts.join('/'); // "01-guide/01-getting-started"
 
-      return {
-        params: { version, lang, slug },
-        props: { entry },
-      };
-    })
-    .filter(Boolean); // nullを除去
+    return {
+      params: { version, lang, slug },
+      props: { entry },
+    };
+  });
 
-  return result as GetStaticPathsResult;
+  // nullを除外
+  const filteredResult = result.filter((item): item is NonNullable<typeof item> => item !== null);
+
+  // ドキュメント数をログ出力
+  return filteredResult;
 }
 
 const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
@@ -59,24 +66,29 @@ const lang = (langParam || 'en') as LocaleKey;
 const dir = getLocaleDirection(lang);
 
 // ファイルベースのページネーション生成
+const groupCatalog = loadGroupPages(process.cwd(), { cache: import.meta.env.PROD });
 let autoPagination = {};
-try {
-  // entry.slug から情報を抽出 (例: "v2/ja/01-guide/01-getting-started")
-  const slugParts = entry.slug.split('/');
-  const currentSection = slugParts[2]; // "01-guide"
-  const currentFile = slugParts[3]; // "01-getting-started"
-  const currentSlug = currentFile.replace(/^\d+-/, ''); // "getting-started"
+if (groupCatalog) {
+  autoPagination = resolveGroupPagination(groupCatalog, Astro.url.pathname);
+} else {
+  try {
+    // entry.slug から情報を抽出 (例: "v1/en/01-guide/01-getting-started")
+    const slugParts = entry.slug.split('/');
+    const currentSection = slugParts[2]; // "01-guide"
+    const currentFile = slugParts[3]; // "01-getting-started"
+    const currentSlug = currentFile.replace(/^\d+-/, ''); // "getting-started"
 
-  // ファイル構造ベースのページネーションを生成
-  autoPagination = await generateFileBasedPagination(
-    lang,
-    version,
-    currentSection,
-    currentSlug,
-    projectConfig.paths.baseUrl
-  );
-} catch (error) {
-  console.error('[File-Based Pagination] Error generating pagination:', error);
+    // ファイル構造ベースのページネーションを生成
+    autoPagination = await generateFileBasedPagination(
+      lang,
+      version,
+      currentSection,
+      currentSlug,
+      projectConfig.paths.baseUrl
+    );
+  } catch (error) {
+    console.error('[File-Based Pagination] Error generating pagination:', error);
+  }
 }
 
 // 手動設定のページネーション情報を取得（存在するファイルのみ）
@@ -84,11 +96,14 @@ let manualPrev: PageLink | undefined = undefined;
 let manualNext: PageLink | undefined = undefined;
 
 if (entry.data.prev) {
-  const prevExists = await checkFileExists(entry.data.prev.link);
+  const target = groupCatalog
+    ? resolveGroupDocumentLink(groupCatalog, entry.data.prev.link, Astro.url.pathname)
+    : null;
+  const prevExists = target || (await checkFileExists(entry.data.prev.link));
   if (prevExists) {
     manualPrev = {
       title: entry.data.prev.text,
-      url: projectConfig.paths.baseUrl + entry.data.prev.link,
+      url: target?.url ?? projectConfig.paths.baseUrl + entry.data.prev.link,
     };
   } else {
     console.warn(`[Manual Pagination] Previous page file does not exist: ${entry.data.prev.link}`);
@@ -96,11 +111,14 @@ if (entry.data.prev) {
 }
 
 if (entry.data.next) {
-  const nextExists = await checkFileExists(entry.data.next.link);
+  const target = groupCatalog
+    ? resolveGroupDocumentLink(groupCatalog, entry.data.next.link, Astro.url.pathname)
+    : null;
+  const nextExists = target || (await checkFileExists(entry.data.next.link));
   if (nextExists) {
     manualNext = {
       title: entry.data.next.text,
-      url: projectConfig.paths.baseUrl + entry.data.next.link,
+      url: target?.url ?? projectConfig.paths.baseUrl + entry.data.next.link,
     };
   } else {
     console.warn(`[Manual Pagination] Next page file does not exist: ${entry.data.next.link}`);

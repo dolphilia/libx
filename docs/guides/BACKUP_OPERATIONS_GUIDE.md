@@ -730,3 +730,21 @@ libxプロジェクトのバックアップ戦略：
 ✅ **Cloudflare Pagesで本番環境を保護**
 
 このガイドに従うことで、安全で効率的な開発・運用が可能になります。不明点があれば、関連ドキュメントを参照するか、プロジェクト管理者に相談してください。
+
+## 入れ子移行時の公開artifactと復旧
+
+ソースの配置を戻す操作と、配信中の成果物を戻す操作は分ける。復旧対象はディレクトリ名だけで選ばず、保存したmanifestのハッシュ、commitラベル、取得時の検証記録、版・言語・URLの範囲で特定する。未コミットworktreeではcommitラベルだけで内容を特定できない。
+
+移行前の統合出力は `.backups/build-integrated/2026-09-05T04-22-56-394Z/dist` を全2074文書の保存目録へ照合し、`.tmp/nested-app-migration/rollback-verified` に検証済みartifactとして保持した。2478ファイル・478267546 bytes。全ファイルを一時的な配信先へ復元して照合し、旧Awesome URLのHTTP 200も確認した。[復旧実演の記録](../notes/nested-app-migration/rollback-validation.json)を参照。これらのローカル保存先はGit管理外なので、本番切替前には保存期間を定めた外部artifactストレージにも保持する。
+
+復旧前に、選定したartifactをその記録のcommitで照合する。現在のHEADへ置き換えない。
+
+```bash
+node scripts/deployment-artifact.js --verify --directory=.tmp/nested-app-migration/rollback-verified --commit=4cd36fe5c67fcba2cab578f2dbdf2d5213a0abfe
+```
+
+ローカルで差し替える場合は、artifactを別の準備ディレクトリへコピーして再照合し、`commitPreparedPathsAtomically` で準備済みdistを切り替える。旧配信先を先に削除しない。失敗時は旧配信先へ戻す。通常の新構成のビルドを復旧処理へ混ぜない。旧artifactにはグループナビがないため、現行ソースのグループ検査を要求する `pnpm preview --group=awesome` ではなく、`createPreviewServer` に検証済みartifactのdistを渡して旧経路を確認する。
+
+Cloudflare本番の復旧では、事前に記録した成功済みproduction deploymentを選ぶ。Pagesの[公式ロールバック](https://developers.cloudflare.com/pages/configuration/rollbacks/)は成功した本番deploymentが対象で、preview deploymentは対象にならない。ローカルartifactの存在だけでは本番復旧先があるとは扱わない。既存deploymentへ戻せない場合は、保管した検証済みartifactを再ビルドせず公開する経路を別途検証する。
+
+復旧後はオンラインでページを再読込し、Service Workerの登録URL・scope、版・言語・現在地・資産取得を確認する。現行workerのキャッシュはoriginとscopeで分離される。旧workerは旧共有sidebar-cache系列を使用するため、オフラインのまま新旧を切り替えた動作まで今回のHTTP確認で保証しない。手動でキャッシュを消す場合も対象origin/scopeを特定し、他appのキャッシュを一括削除しない。隔離Chromeの同一origin・URLで新→旧→新へ切り替え、オンラインでのService Worker更新、本文表示、全体ナビの復帰、他app用キャッシュの保持を確認した。[ブラウザー記録](../notes/nested-app-migration/rollback-browser-validation.json)を参照。他app用キャッシュは検証用の値を事前投入したもので、全appの操作をこの試験で網羅したとは扱わない。本番deploymentの選定と外部切替は別途公開作業の範囲で実施する。

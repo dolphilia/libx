@@ -1,24 +1,29 @@
 #!/usr/bin/env node
+import { createAwesomeResolver, readAwesomeRouteManifest } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { notesDir, readJson, rootDir, snapshotVersion } from './common.mjs';
 
 const version = snapshotVersion;
-const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const status = readJson(path.join(notesDir, 'BATCH_STATUS.json'));
-const routes = readJson(
-  path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json')
-).entries.filter((entry) => entry.version === version);
+const routes = readAwesomeRouteManifest({ root: rootDir, localized: false }).entries.filter(
+  (entry) => entry.version === version
+);
 const expected = new Set(routes.map((entry) => entry.sourceId));
 const errors = [];
 const seen = new Set();
-const jaRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version, 'ja');
-const jaFiles = fs.existsSync(jaRoot)
-  ? fs
-      .readdirSync(jaRoot, { recursive: true, withFileTypes: true })
-      .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
-      .map((entry) => path.join(entry.parentPath ?? entry.path, entry.name))
-  : [];
+const resolver = createAwesomeResolver(rootDir);
+const translatedPath = (entry) =>
+  resolver.contentPath({ ...entry, moduleKey: entry.moduleKey.replace('/en/', '/ja/') });
+const jaFiles = resolver.apps.flatMap((app) => {
+  const jaRoot = path.join(app.directory, 'src/awesome-content', version, 'ja');
+  return fs.existsSync(jaRoot)
+    ? fs
+        .readdirSync(jaRoot, { recursive: true, withFileTypes: true })
+        .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
+        .map((entry) => path.join(entry.parentPath ?? entry.path, entry.name))
+    : [];
+});
 for (const batch of status.batches ?? []) {
   if (batch.sourceIds.length === 0 || batch.sourceIds.length > 10)
     errors.push(`翻訳バッチのサイズが不正です: ${batch.batchNumber}`);
@@ -40,7 +45,7 @@ for (const batch of status.batches ?? []) {
 for (const sourceId of expected)
   if (!seen.has(sourceId)) errors.push(`翻訳バッチにありません: ${sourceId}`);
 for (const route of routes) {
-  const file = path.join(jaRoot, `${route.slug}.md`);
+  const file = translatedPath(route);
   if (!fs.existsSync(file)) continue;
   const sourceId = route.sourceId;
   const page = status.batches.flatMap((batch) =>

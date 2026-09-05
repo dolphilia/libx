@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeResolver, readAwesomeRouteManifest } from './app-ownership.mjs';
 import path from 'node:path';
 import fs from 'node:fs';
 import {
@@ -13,16 +14,16 @@ import {
 const statusPath = path.join(notesDir, 'BATCH_STATUS.json');
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const existing = readJson(statusPath);
-const routes = readJson(path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json'))
+const routes = readAwesomeRouteManifest({ root: rootDir, localized: false })
   .entries.filter((entry) => entry.version === snapshotVersion)
   .sort((left, right) => left.sourceId.localeCompare(right.sourceId));
 const lockBySource = new Map(lock.sources.map((source) => [source.sourceId, source]));
 const fetchBatches = existing.fetchBatches ?? existing.batches ?? [];
-const jaRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion, 'ja');
+const resolver = createAwesomeResolver(rootDir);
+const translatedPath = (entry) =>
+  resolver.contentPath({ ...entry, moduleKey: entry.moduleKey.replace('/en/', '/ja/') });
 const translated = new Set(
-  routes
-    .filter((entry) => fs.existsSync(path.join(jaRoot, `${entry.slug}.md`)))
-    .map((entry) => entry.sourceId)
+  routes.filter((entry) => fs.existsSync(translatedPath(entry))).map((entry) => entry.sourceId)
 );
 const batches = [];
 for (let index = 0; index < routes.length; index += 10) {

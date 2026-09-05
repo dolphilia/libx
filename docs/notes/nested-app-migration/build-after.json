@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-09-05T06:08:24.703Z",
+  "gitHead": "4cd36fe5c67fcba2cab578f2dbdf2d5213a0abfe",
+  "inputFingerprint": "7207f2e82635f2429d397d415df73f63d654bc68140f999670597e8bcf08a301",
+  "runs": 1,
+  "conditions": {
+    "rssIntervalMs": 100,
+    "diskIntervalMs": 1000,
+    "clean": "target app/site dist and .astro removed before each case; generated source indexes and dependency caches retained",
+    "disk": "allocated bytes of app/site outputs, .astro, integrated output, integration stages, and safety backups; pre-existing backups included in starting amount",
+    "publication": "CLI full build includes its safety backup; selective case preserves other existing public outputs"
+  },
+  "samples": [
+    {
+      "name": "full-1",
+      "command": [
+        "pnpm",
+        "build",
+        "--",
+        "--confirm"
+      ],
+      "durationMs": 180842,
+      "peakTreeRssBytes": 2466168832,
+      "rssSamples": 61,
+      "startingOutputDiskBytes": 8778014720,
+      "peakOutputDiskBytes": 9807421440,
+      "peakAdditionalOutputDiskBytes": 1029406720,
+      "integrated": {
+        "bytes": 194379420,
+        "allocatedBytes": 237125632,
+        "files": 2526
+      },
+      "apps": {
+        "awesome/overview": {
+          "bytes": 3100838,
+          "allocatedBytes": 3215360,
+          "files": 42
+        },
+        "awesome/web": {
+          "bytes": 54397562,
+          "allocatedBytes": 56328192,
+          "files": 887
+        },
+        "awesome/languages": {
+          "bytes": 67939808,
+          "allocatedBytes": 69181440,
+          "files": 615
+        },
+        "awesome/systems": {
+          "bytes": 74775373,
+          "allocatedBytes": 76419072,
+          "files": 795
+        },
+        "awesome/science": {
+          "bytes": 53360178,
+          "allocatedBytes": 54620160,
+          "files": 583
+        },
+        "awesome/creative": {
+          "bytes": 27112423,
+          "allocatedBytes": 27758592,
+          "files": 323
+        },
+        "awesome/community": {
+          "bytes": 74064579,
+          "allocatedBytes": 76374016,
+          "files": 1075
+        },
+        "glfw": {
+          "bytes": 15076264,
+          "allocatedBytes": 15392768,
+          "files": 107
+        },
+        "lua": {
+          "bytes": 10934819,
+          "allocatedBytes": 11309056,
+          "files": 146
+        },
+        "sample-docs": {
+          "bytes": 7935118,
+          "allocatedBytes": 8511488,
+          "files": 186
+        },
+        "test-verification": {
+          "bytes": 1496539,
+          "allocatedBytes": 1785856,
+          "files": 102
+        }
+      },
+      "logFile": ".tmp/nested-app-migration/measurement-build-after-full-1.log"
+    },
+    {
+      "name": "selective-1",
+      "command": [
+        "pnpm",
+        "build:selective",
+        "--group=awesome"
+      ],
+      "durationMs": 162335,
+      "peakTreeRssBytes": 2346926080,
+      "rssSamples": 55,
+      "startingOutputDiskBytes": 9083920384,
+      "peakOutputDiskBytes": 9875947520,
+      "peakAdditionalOutputDiskBytes": 792027136,
+      "integrated": {
+        "bytes": 194379420,
+        "allocatedBytes": 231870464,
+        "files": 2526
+      },
+      "apps": {
+        "awesome/overview": {
+          "bytes": 3100838,
+          "allocatedBytes": 3215360,
+          "files": 42
+        },
+        "awesome/web": {
+          "bytes": 54397562,
+          "allocatedBytes": 56328192,
+          "files": 887
+        },
+        "awesome/languages": {
+          "bytes": 67939808,
+          "allocatedBytes": 69181440,
+          "files": 615
+        },
+        "awesome/systems": {
+          "bytes": 74775373,
+          "allocatedBytes": 76419072,
+          "files": 795
+        },
+        "awesome/science": {
+          "bytes": 53360178,
+          "allocatedBytes": 54620160,
+          "files": 583
+        },
+        "awesome/creative": {
+          "bytes": 27112423,
+          "allocatedBytes": 27758592,
+          "files": 323
+        },
+        "awesome/community": {
+          "bytes": 74064579,
+          "allocatedBytes": 76374016,
+          "files": 1075
+        },
+        "glfw": {
+          "bytes": 15076264,
+          "allocatedBytes": 15392768,
+          "files": 107
+        },
+        "lua": {
+          "bytes": 10934819,
+          "allocatedBytes": 11309056,
+          "files": 146
+        },
+        "sample-docs": {
+          "bytes": 7935118,
+          "allocatedBytes": 8511488,
+          "files": 186
+        },
+        "test-verification": {
+          "bytes": 1496539,
+          "allocatedBytes": 1785856,
+          "files": 102
+        }
+      },
+      "logFile": ".tmp/nested-app-migration/measurement-build-after-selective-1.log"
+    }
+  ],
+  "currentInputFingerprint": "7207f2e82635f2429d397d415df73f63d654bc68140f999670597e8bcf08a301",
+  "inputsUnchanged": true,
+  "completedAt": "2026-09-05T06:14:18.316Z"
+}

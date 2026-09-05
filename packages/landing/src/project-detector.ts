@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { discoverApps, resolveApp } from '@docs/project-config/app-registry';
 import path from 'node:path';
 import type { LocaleKey } from '@docs/i18n/locales';
 import { loadProjectConfig } from '@docs/project-config';
@@ -24,37 +25,28 @@ export interface ContentFile {
 /**
  * apps/ディレクトリ内のドキュメントプロジェクトを検出
  */
-export async function scanAppsDirectory(): Promise<string[]> {
-  const repoRoot = path.resolve(process.cwd(), '..', '..');
-  const appsDir = path.join(repoRoot, 'apps');
+export async function scanAppsDirectory(repositoryRoot?: string): Promise<string[]> {
   const projects: string[] = [];
-
-  try {
-    const entries = await fs.readdir(appsDir, { withFileTypes: true });
-
-    for (const entry of entries) {
-      if (!entry.isDirectory()) {
-        continue;
-      }
-
-      const projectPath = path.join(appsDir, entry.name);
-      if (await findProjectContentRoot(projectPath)) {
-        projects.push(entry.name);
-      }
-    }
-  } catch (error) {
-    console.warn('apps/ディレクトリのスキャンに失敗しました:', error);
+  const registry = discoverApps(repositoryRoot);
+  for (const app of registry.apps) {
+    if (!(await findProjectContentRoot(app.directory))) continue;
+    const id = app.groupId ?? app.id;
+    if (!projects.includes(id)) projects.push(id);
   }
-
   return projects;
 }
 
 /**
  * 指定されたプロジェクトの情報を自動検出
  */
-export async function detectProject(projectId: string): Promise<DetectedProject> {
-  const repoRoot = path.resolve(process.cwd(), '..', '..');
-  const projectPath = path.join(repoRoot, 'apps', projectId);
+export async function detectProject(
+  projectId: string,
+  repositoryRoot?: string
+): Promise<DetectedProject> {
+  const registry = discoverApps(repositoryRoot);
+  const group = registry.groups.find((entry) => entry.id === projectId);
+  const appId = group ? `${group.id}/${group.config.entry}` : projectId;
+  const projectPath = resolveApp(appId, registry.root).directory;
 
   const docsConfig = await loadProjectConfig(projectPath);
   const baseUrl = docsConfig.paths.baseUrl;
@@ -91,7 +83,9 @@ export async function detectProject(projectId: string): Promise<DetectedProject>
 
   return {
     id: projectId,
-    name: extractDisplayNames(docsConfig),
+    name: group
+      ? { ...extractDisplayNames(docsConfig), ...group.config.name }
+      : extractDisplayNames(docsConfig),
     description: extractDisplayDescriptions(docsConfig),
     basePath: baseUrl,
     supportedLangs:

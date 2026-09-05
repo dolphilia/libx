@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { notesDir, readJson, rootDir, snapshotVersion, tempDir } from './common.mjs';
 import { applyIntroductionDecision } from './awesome-introduction-utils.mjs';
+import { createAwesomeContentAccess } from './app-ownership.mjs';
 
 const version = snapshotVersion;
 const check = process.argv.includes('--check');
@@ -13,7 +14,7 @@ const selectedSourceIds = sourceIdsArgument
 const manifestPath = path.join(notesDir, 'INTRODUCTION_NORMALIZATION.json');
 if (!fs.existsSync(manifestPath)) throw new Error(`判断記録がありません: ${manifestPath}`);
 const manifest = readJson(manifestPath);
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
+const content = createAwesomeContentAccess(version, rootDir);
 const normalizedRoot = path.join(tempDir, '03-normalized');
 const changed = [];
 
@@ -43,7 +44,7 @@ if (selectedSourceIds && selectedEntries.length !== selectedSourceIds.size) {
 for (const entry of selectedEntries) {
   for (const lang of ['en', 'ja']) {
     applyFile(
-      path.join(contentRoot, lang, `${entry.slug}.md`),
+      content.pathFor(lang, `${entry.slug}.md`),
       entry.normalized[lang],
       entry.evidence[lang]
     );

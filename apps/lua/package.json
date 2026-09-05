@@ -5,10 +5,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "prebuild": "node ../../scripts/build-sidebar-selective.js --projects=lua && node ../../scripts/build-search-index.js --project=lua && node ../../scripts/sync-service-workers.js --project=lua",
+    "prebuild": "libx-docs-prepare --projects=lua",
     "dev": "astro dev",
     "build": "astro build",
-    "check:content": "node ../../scripts/importers/import-lua-5.5.1.mjs --check --allow-missing-source && node ../../scripts/importers/normalize-lua-translation-format.mjs --check && node ../../scripts/validate-translated-content.mjs --project=lua --version=v5-5-1 --target=ja --identifier-prefixes=lua_,luaL_,LUA_",
+    "check:content": "node check-content.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

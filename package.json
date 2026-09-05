@@ -8,14 +8,15 @@
     "pnpm": ">=10.10.0"
   },
   "scripts": {
-    "dev": "pnpm --filter=./apps/* dev",
+    "dev": "pnpm --filter=./apps/* --filter=./apps/*/* dev",
     "build": "node scripts/build-integrated.js",
     "build:local": "node scripts/build-integrated.js --local",
-    "build:separate": "pnpm --workspace-concurrency=1 --filter=./apps/* build",
+    "build:separate": "pnpm --workspace-concurrency=1 --filter=./apps/* --filter=./apps/*/* build",
     "build:template": "pnpm --filter=template-docs-site build",
     "build:selective": "node scripts/build-selective.js",
     "build:selective:local": "node scripts/build-selective.js --local",
-    "preview": "pnpm --filter=./apps/* preview",
+    "preview": "node scripts/preview-integrated.js",
+    "preview:separate": "pnpm --filter=./apps/* --filter=./apps/*/* preview",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit -p packages/config/tsconfig.json && tsc --noEmit -p packages/i18n/tsconfig.json && tsc --noEmit -p packages/project-config/tsconfig.json && tsc --noEmit -p packages/content-utils/tsconfig.json && tsc --noEmit -p packages/landing/tsconfig.json && tsc --noEmit -p packages/theme/tsconfig.json && tsc --noEmit -p packages/versioning/tsconfig.typecheck.json",
     "test:unit": "tsc -p config/tsconfig.tests.json && node --test .tmp/tests/tests/unit/*.test.js",
@@ -89,7 +90,8 @@
     "awesome:discover-depth-two": "node scripts/importers/awesome/discover-awesome-depth-two.mjs",
     "awesome:discover-depth-three": "node scripts/importers/awesome/discover-awesome-depth-three.mjs",
     "awesome:resume-discovery": "node scripts/importers/awesome/resume-awesome-discovery.mjs",
-    "awesome:finalize-discovery": "node scripts/importers/awesome/finalize-awesome-discovery.mjs"
+    "awesome:finalize-discovery": "node scripts/importers/awesome/finalize-awesome-discovery.mjs",
+    "create:group": "node scripts/create-group.js"
   },
   "devDependencies": {
     "@astrojs/starlight": "0.34.8",

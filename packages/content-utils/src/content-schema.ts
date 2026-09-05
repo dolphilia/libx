@@ -4,6 +4,12 @@ import { z } from 'astro/zod';
 export const docsSchema = z
   .object({
     title: z.string(),
+    documentId: z
+      .string()
+      .trim()
+      .min(1)
+      .regex(/^[^\0\r\n]+$/)
+      .optional(),
     description: z.string().optional(),
     categoryOrder: z.number().optional(),
     pubDate: z.date().optional(),

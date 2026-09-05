@@ -40,7 +40,7 @@ function clearLandingOwnedEntries(stageDirectory, reservedRootNames) {
   }
 }
 
-function commitPreparedDirectory(currentDirectory, preparedDirectory) {
+export function commitPreparedDirectory(currentDirectory, preparedDirectory) {
   const backupDirectory = createSiblingPath(currentDirectory, 'previous');
   const hadCurrentDirectory = fs.existsSync(currentDirectory);
 

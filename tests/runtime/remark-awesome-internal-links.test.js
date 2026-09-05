@@ -29,7 +29,7 @@ test('Awesome概要の収録済みGitHubリンクを同じ言語のlibxページ
     const transform = remarkAwesomeInternalLinks({ routes });
 
     transform(tree, {
-      path: `/repo/apps/awesome/src/awesome-content/v2026-08-20/${lang}/overview/sindresorhus-awesome.md`,
+      path: `/repo/apps/awesome/overview/src/awesome-content/v2026-08-20/${lang}/overview/sindresorhus-awesome.md`,
     });
 
     assert.equal(
@@ -47,7 +47,7 @@ test('対応言語のページがない場合はGitHubリンクを維持する',
   transform(
     { type: 'root', children: [untranslated] },
     {
-      path: '/repo/apps/awesome/src/awesome-content/v2026-08-20/ja/overview/sindresorhus-awesome.md',
+      path: '/repo/apps/awesome/overview/src/awesome-content/v2026-08-20/ja/overview/sindresorhus-awesome.md',
     }
   );
 
@@ -61,7 +61,7 @@ test('概要以外のページではGitHubリンクを変更しない', () => {
   transform(
     { type: 'root', children: [included] },
     {
-      path: '/repo/apps/awesome/src/awesome-content/v2026-08-20/ja/platforms/example.md',
+      path: '/repo/apps/awesome/web/src/awesome-content/v2026-08-20/ja/platforms/example.md',
     }
   );
 
@@ -91,7 +91,7 @@ test('Awesome概要のリストでは外部リンクだけをアイコン表示�
   const transform = remarkAwesomeInternalLinks({ routes });
 
   transform(tree, {
-    path: '/repo/apps/awesome/src/awesome-content/v2026-08-20/en/overview/sindresorhus-awesome.md',
+    path: '/repo/apps/awesome/overview/src/awesome-content/v2026-08-20/en/overview/sindresorhus-awesome.md',
   });
 
   assert.equal(included.data, undefined);

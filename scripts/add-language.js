@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { resolveApp } from '../packages/project-config/src/app-registry.js';
 
 /**
  * ドキュメントプロジェクトに新しい言語を自動追加するスクリプト
@@ -18,7 +19,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import { loadProjectConfig, saveProjectConfig } from './document-utils.js';
 import * as logger from './logger.js';
 import { languageNames, validateSupportedLocale } from './locale-utils.js';
@@ -252,7 +253,7 @@ function validateProject(projectName) {
     return errors;
   }
 
-  const projectPath = path.join(rootDir, 'apps', projectName);
+  const projectPath = resolveApp(projectName, rootDir).directory;
   if (!fs.existsSync(projectPath)) {
     errors.push(`プロジェクト "${projectName}" が見つかりません: ${projectPath}`);
     return errors;
@@ -324,7 +325,7 @@ function updateProjectConfig(
   console.log('  プロジェクト設定ファイルを更新しています...');
 
   try {
-    const projectPath = path.join(rootDir, 'apps', projectName);
+    const projectPath = resolveApp(projectName, rootDir).directory;
     const configPath = resolveProjectConfigPath(projectPath);
 
     // バックアップを作成
@@ -393,7 +394,7 @@ function createDirectoryStructure(
 
   try {
     const config = loadProjectConfig(projectName);
-    const projectPath = path.join(rootDir, 'apps', projectName);
+    const projectPath = resolveApp(projectName, rootDir).directory;
     const docsPath = path.join(projectPath, 'src', 'content', 'docs');
 
     let createdDirs = 0;
@@ -470,7 +471,7 @@ function generateTemplateFiles(
 
   try {
     const config = loadProjectConfig(projectName);
-    const projectPath = path.join(rootDir, 'apps', projectName);
+    const projectPath = resolveApp(projectName, rootDir).directory;
     const docsPath = path.join(projectPath, 'src', 'content', 'docs');
 
     let generatedFiles = 0;
@@ -563,7 +564,7 @@ async function runBuildTest(projectName, skipTest = false) {
   try {
     console.log('    📦 プロジェクト個別ビルドテストを実行中...');
 
-    execSync(`pnpm --filter=apps-${projectName} build`, {
+    execFileSync('pnpm', [`--filter=${resolveApp(projectName, rootDir).packageName}`, 'build'], {
       stdio: ['inherit', 'pipe', 'pipe'],
       timeout: 120000, // 2分タイムアウト
       cwd: rootDir,
@@ -614,7 +615,7 @@ function showSuccessReport(config, results) {
 
   console.log('🚀 次のステップ:');
   console.log('  1. 開発サーバーを起動:');
-  console.log(`     pnpm --filter=apps-${config.projectName} dev`);
+  console.log(`     pnpm --filter=${resolveApp(config.projectName, rootDir).packageName} dev`);
   console.log('');
   console.log('  2. ブラウザで新しい言語を確認:');
   console.log(`     http://localhost:4321/docs/${config.projectName}/v1/${config.languageCode}/`);

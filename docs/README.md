@@ -13,15 +13,18 @@
 - `UPSTREAM_DOCUMENT_IMPORT_AND_TRANSLATION_GUIDE.md` – 外部公式文書の取得・定本化・翻訳・検証手順
 
 ## ノート (`docs/notes`)
+- [NESTED_APP_GROUPS_IMPLEMENTATION_LOG.md](notes/NESTED_APP_GROUPS_IMPLEMENTATION_LOG.md) – 入れ子型グループ実装の進捗・検証・未完了事項
 - `LIBX_CONCEPT_AND_DIRECTION_RESEARCH.md` – libx のコンセプト・方針・方向性に関する調査と推論
 - `PROJECT_PRINCIPLES_COMPLIANCE_AUDIT.md` – 正式原則を基準にしたリポジトリ全体の準拠状況と改善点の再調査
 - `PROJECT_PRINCIPLES_COMPLIANCE_IMPLEMENTATION_LOG.md` – 正式原則準拠改善計画の実施内容と検証結果
 - `LIBX_USABILITY_AND_MARKDOWN_IMPROVEMENT_IMPLEMENTATION.md` – 使いやすさ、閲覧性、Markdown／MDX改善の実施内容と検証結果
 - `PERFORMANCE_BASELINE_2026-08-11.md` – 正式原則準拠改善後の性能基準値
 - `DEPLOYMENT_FILE_COUNT_SCALING_RESEARCH.md` – デプロイ先のファイル数制限、Pages／Workers／R2と将来の分割方針の調査
+- [AWESOME_AND_LARGE_DOCUMENT_SCALING_RESEARCH.md](notes/AWESOME_AND_LARGE_DOCUMENT_SCALING_RESEARCH.md) – Awesomeの容量実測、リスト別ビルド・公開、libx共通基盤と他appsへの改善提案
 - `document-import/` – 外部公式文書の取得・整形・定本化・翻訳パイロットの逐次記録
 
 ## ADR (`docs/adr`)
+- [0012-nested-app-groups.md](adr/0012-nested-app-groups.md) – 一段の入れ子型アプリグループの採用
 - `README.md` – ADRの対象、命名、ステータス、承認手順
 - `0000-template.md` – 新しいADRを作成するためのテンプレート
 - `0001-adopt-project-principles.md` – libxの正式原則を採用した決定記録
@@ -35,6 +38,7 @@
 - `0009-synchronize-doc-site-layouts.md` – 正規テンプレートからのレイアウト同期
 
 ## 計画 (`docs/plans`)
+- [NESTED_APP_GROUPS_IMPLEMENTATION_PLAN.md](plans/NESTED_APP_GROUPS_IMPLEMENTATION_PLAN.md) – 一段の入れ子型アプリグループ、共通検出・閲覧・ビルド基盤とAwesome移行の実装計画
 - `CODE_QUALITY_IMPROVEMENT_PLAN.md` – コード品質改善の実施計画と受け入れ基準
 - `PROJECT_PRINCIPLES_COMPLIANCE_IMPROVEMENT_PLAN.md` – 正式原則準拠監査で確認した課題の優先度付き改善計画
 - `RTL_SUPPORT_PLAN.md` – ドキュメントサイトとランディングのRTL対応計画

@@ -6,6 +6,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { readJsoncFile } from './jsonc-utils.js';
+import { readAppGroup } from '../packages/project-config/src/app-registry.js';
 import {
   normalizeSlug,
   resolveBaseUrlPrefixValue,
@@ -91,12 +92,16 @@ export function resolveProjectSlug(projectSlug, projectName) {
   }
 
   if (typeof projectName === 'string') {
-    return normalizeSlug(projectName);
+    return normalizeSlug(projectName.split('/').at(-1));
   }
 
   return '';
 }
 
 export function resolveBaseUrl(options = {}) {
+  if (options.projectName && /^[a-z0-9-]+\/[a-z0-9-]+$/.test(options.projectName)) {
+    const group = readAppGroup(path.join(rootDir, 'apps', options.projectName));
+    if (group) return group.publicBase;
+  }
   return resolveBaseUrlValue(getDefaults(), options);
 }

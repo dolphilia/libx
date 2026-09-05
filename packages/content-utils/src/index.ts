@@ -5,3 +5,4 @@ export * from './dynamic-navigation';
 export * from './sidebar-generator';
 export * from './category-navigation.js';
 export * from './table-of-contents';
+export type { DocumentationNavigationProvider } from './navigation-provider';

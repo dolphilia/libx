@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { rootDir, snapshotVersion } from './common.mjs';
@@ -17,13 +18,7 @@ if (!file || !model || !Number.isInteger(batchSize) || batchSize < 1) {
   process.exit(1);
 }
 
-const targetPath = path.join(
-  rootDir,
-  'apps/awesome/src/awesome-content',
-  snapshotVersion,
-  'ja',
-  file
-);
+const targetPath = createAwesomeContentAccess(snapshotVersion, rootDir).pathFor('ja', file);
 if (!fs.existsSync(targetPath)) {
   console.error(`日本語ページが見つかりません: ${file}`);
   process.exit(1);

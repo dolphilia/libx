@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { resolveApp } from '../packages/project-config/src/app-registry.js';
 
 /**
  * ドキュメント管理用の共通ユーティリティ関数
@@ -26,7 +27,7 @@ const PLACEHOLDER_PREFIX = '[要翻訳] ';
 const CONFIG_FILE_JSONC = 'project.config.jsonc';
 
 export function resolveProjectConfigFile(projectName) {
-  const configDir = path.join(rootDir, 'apps', projectName, 'src', 'config');
+  const configDir = path.join(resolveApp(projectName, rootDir).directory, 'src', 'config');
   return path.join(configDir, CONFIG_FILE_JSONC);
 }
 
@@ -45,7 +46,7 @@ export function serializeProjectConfig(config) {
  * プロジェクトの設定を読み込む
  */
 export function loadProjectConfig(projectName) {
-  const projectPath = path.join(rootDir, 'apps', projectName);
+  const projectPath = resolveApp(projectName, rootDir).directory;
 
   if (!fs.existsSync(projectPath)) {
     throw new Error(`プロジェクト "${projectName}" が見つかりません`);
@@ -132,7 +133,7 @@ export function saveProjectConfig(projectName, config, options = {}) {
  * 既存のカテゴリとドキュメント構造を分析
  */
 export function analyzeProjectStructure(projectName, lang, version) {
-  const projectPath = path.join(rootDir, 'apps', projectName);
+  const projectPath = resolveApp(projectName, rootDir).directory;
   const docsPath = path.join(projectPath, 'src', 'content', 'docs', version, lang);
 
   const categories = {};
@@ -280,7 +281,7 @@ export function validateDocumentPath(projectName, lang, version, category, fileN
   const errors = [];
 
   // プロジェクト名チェック
-  const projectPath = path.join(rootDir, 'apps', projectName);
+  const projectPath = resolveApp(projectName, rootDir).directory;
   if (!fs.existsSync(projectPath)) {
     errors.push(`プロジェクト "${projectName}" が存在しません`);
   }

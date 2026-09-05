@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { discoverApps } from '../packages/project-config/src/app-registry.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -7,10 +8,16 @@ const rootDir = path.resolve(scriptDir, '..');
 const sourcePath = path.join(scriptDir, 'service-worker', 'sidebar-sw.js');
 async function discoverTargets() {
   const targets = [];
-  const groups = [
-    { kind: 'project', baseDir: path.join(rootDir, 'apps') },
-    { kind: 'template', baseDir: path.join(rootDir, 'templates') },
-  ];
+  for (const app of discoverApps(rootDir).apps) {
+    const publicDir = path.join(app.directory, 'public');
+    try {
+      await fs.access(publicDir);
+    } catch {
+      continue;
+    }
+    targets.push({ kind: 'project', name: app.id, destination: path.join(publicDir, 'sw.js') });
+  }
+  const groups = [{ kind: 'template', baseDir: path.join(rootDir, 'templates') }];
 
   for (const group of groups) {
     const entries = await fs.readdir(group.baseDir, { withFileTypes: true });

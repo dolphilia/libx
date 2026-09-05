@@ -3,11 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "bin": {
+    "libx-docs-prepare": "./src/prepare-app.js"
+  },
   "exports": {
     ".": "./src/index.ts",
+    "./app-registry": {
+      "types": "./src/app-registry.d.ts",
+      "default": "./src/app-registry.js"
+    },
     "./jsonc": {
       "types": "./src/jsonc-runtime.d.ts",
       "default": "./src/jsonc-runtime.js"
+    },
+    "./group-pages": {
+      "types": "./src/group-pages.d.ts",
+      "default": "./src/group-pages.js"
     }
   },
   "scripts": {
@@ -16,7 +27,8 @@
   },
   "dependencies": {
     "astro": "^5.0.0",
-    "@docs/i18n": "workspace:*"
+    "@docs/i18n": "workspace:*",
+    "gray-matter": "^4.0.3"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",

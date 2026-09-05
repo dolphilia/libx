@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
 import fs from 'node:fs';
+import { resolveApp } from '../packages/project-config/src/app-registry.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
+import { commitPreparedDirectory } from './selective-output.js';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MAX_INDEX_BYTES = 2 * 1024 * 1024;
@@ -95,20 +97,27 @@ export function buildSearchIndexes(projectRoot, baseUrl) {
     groups.set(key, entries);
   }
 
-  fs.mkdirSync(outputRoot, { recursive: true });
-  const outputs = [];
-  for (const [key, entries] of [...groups].sort()) {
+  const prepared = [...groups].sort().map(([key, entries]) => {
     const [version, lang] = key.split('/');
-    const outputPath = path.join(outputRoot, version, `${lang}.json`);
     const json = `${JSON.stringify({ schemaVersion: 1, version, lang, entries })}\n`;
     if (Buffer.byteLength(json) > MAX_INDEX_BYTES) {
       throw new Error(`Search index exceeds 2 MiB: ${key}`);
     }
-    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-    fs.writeFileSync(outputPath, json);
-    outputs.push({ key, pages: entries.length, bytes: Buffer.byteLength(json) });
+    return { key, version, lang, json, pages: entries.length, bytes: Buffer.byteLength(json) };
+  });
+  fs.mkdirSync(path.dirname(outputRoot), { recursive: true });
+  const staging = fs.mkdtempSync(`${outputRoot}.prepared-`);
+  try {
+    for (const entry of prepared) {
+      const outputPath = path.join(staging, entry.version, `${entry.lang}.json`);
+      fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+      fs.writeFileSync(outputPath, entry.json);
+    }
+    commitPreparedDirectory(outputRoot, staging);
+  } finally {
+    fs.rmSync(staging, { recursive: true, force: true });
   }
-  return outputs;
+  return prepared.map(({ key, pages, bytes }) => ({ key, pages, bytes }));
 }
 
 function option(args, name) {
@@ -123,13 +132,14 @@ export function runCli(args = process.argv.slice(2)) {
     throw new Error('Specify exactly one of --project or --template');
   }
   const projectRoot = project
-    ? path.join(rootDir, 'apps', project)
+    ? resolveApp(project, rootDir).directory
     : path.join(rootDir, 'templates', template);
   const config = fs.readFileSync(path.join(projectRoot, 'src/config/project.config.jsonc'), 'utf8');
   const explicitBaseUrl = config.match(/"baseUrl"\s*:\s*"([^"]+)"/)?.[1];
   const baseUrlPrefix = config.match(/"baseUrlPrefix"\s*:\s*"([^"]+)"/)?.[1] ?? '/docs';
   const projectSlug = config.match(/"projectSlug"\s*:\s*"([^"]+)"/)?.[1];
   const baseUrl =
+    (project ? resolveApp(project, rootDir).publicBase : undefined) ??
     explicitBaseUrl ??
     (projectSlug ? `${baseUrlPrefix.replace(/\/$/, '')}/${projectSlug}` : undefined);
   if (!baseUrl) throw new Error(`Cannot resolve baseUrl: ${projectRoot}`);

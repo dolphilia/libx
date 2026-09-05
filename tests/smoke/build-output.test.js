@@ -128,16 +128,20 @@ test('landing pages link Awesome directly to the localized overview', async () =
 });
 
 test('Awesome generic entry points resolve to the latest snapshot', async () => {
-  const rootHtml = await fs.readFile(path.join(repoRoot, 'apps/awesome/dist/index.html'), 'utf8');
-  const notFoundHtml = await fs.readFile(path.join(repoRoot, 'apps/awesome/dist/404.html'), 'utf8');
+  const rootHtml = await fs.readFile(path.join(repoRoot, 'dist/docs/awesome/index.html'), 'utf8');
+  const notFoundHtml = await fs.readFile(path.join(repoRoot, 'dist/docs/awesome/404.html'), 'utf8');
   const latestIndexHtml = await fs.readFile(
-    path.join(repoRoot, 'apps/awesome/dist/v2026-08-23/en/index.html'),
+    path.join(repoRoot, 'dist/docs/awesome/v2026-08-23/en/index.html'),
     'utf8'
   );
 
   assert.match(rootHtml, /\/docs\/awesome\/v2026-08-23\/en\//);
   assert.match(notFoundHtml, /href="\/docs\/awesome\/v2026-08-23\/en\/"/);
-  assert.match(latestIndexHtml, /href="\/docs\/awesome\/v2026-08-23\/en\/"[^>]*class="site-title"/);
+  assert.match(
+    latestIndexHtml,
+    /href="\/docs\/awesome\/navigation\/v2026-08-23\/en\/"[^>]*class="site-title"/
+  );
+  await fs.access(path.join(repoRoot, 'dist/docs/awesome/navigation/v2026-08-23/en/index.html'));
 });
 
 test('Awesome Japanese pages include localized sidebar navigation and search data', async () => {
@@ -170,7 +174,7 @@ test('Awesome overview links included lists to the matching localized pages', as
     const html = await fs.readFile(
       path.join(
         repoRoot,
-        `apps/awesome/dist/v2026-08-20/${lang}/overview/sindresorhus-awesome/index.html`
+        `dist/docs/awesome/v2026-08-20/${lang}/overview/sindresorhus-awesome/index.html`
       ),
       'utf8'
     );
@@ -188,14 +192,14 @@ test('Awesome overview exposes its matching language and snapshot selectors', as
   const japaneseHtml = await fs.readFile(
     path.join(
       repoRoot,
-      'apps/awesome/dist/v2026-08-20/ja/overview/sindresorhus-awesome/index.html'
+      'dist/docs/awesome/v2026-08-20/ja/overview/sindresorhus-awesome/index.html'
     ),
     'utf8'
   );
   const englishHtml = await fs.readFile(
     path.join(
       repoRoot,
-      'apps/awesome/dist/v2026-08-20/en/overview/sindresorhus-awesome/index.html'
+      'dist/docs/awesome/v2026-08-20/en/overview/sindresorhus-awesome/index.html'
     ),
     'utf8'
   );
@@ -232,7 +236,7 @@ test('Awesome overview starts with a localized title and summary without sponsor
     const html = await fs.readFile(
       path.join(
         repoRoot,
-        `apps/awesome/dist/v2026-08-20/${page.lang}/overview/sindresorhus-awesome/index.html`
+        `dist/docs/awesome/v2026-08-20/${page.lang}/overview/sindresorhus-awesome/index.html`
       ),
       'utf8'
     );
@@ -253,22 +257,45 @@ test('Awesome sidebar uses curated list names and localized Japanese categories'
   const japaneseHtml = await fs.readFile(
     path.join(
       repoRoot,
-      'apps/awesome/dist/v2026-08-20/ja/platforms/agucova-awesome-esp/index.html'
+      'dist/docs/awesome/v2026-08-20/ja/platforms/agucova-awesome-esp/index.html'
     ),
     'utf8'
   );
 
-  assert.match(japaneseHtml, />プラットフォーム<\/span>/);
+  const navigationRevision = japaneseHtml.match(
+    /data-url="\/docs\/awesome\/navigation\/v2026-08-20\/ja.json\?revision=([a-f0-9]{64})"/
+  )?.[1];
+  assert.ok(navigationRevision, 'HTML must identify the matching navigation generation');
   assert.match(
     japaneseHtml,
-    /href="\/docs\/awesome\/v2026-08-20\/ja\/platforms\/agucova-awesome-esp"[^>]*>\s*<span[^>]*>ESP<\/span>/
+    /href="\/docs\/awesome\/v2026-08-20\/ja\/platforms\/agucova-awesome-esp"[^>]*aria-current="page"[^>]*>\s*ESP\s*<\/a>/
   );
+  const navigation = JSON.parse(
+    await fs.readFile(
+      path.join(repoRoot, 'dist/docs/awesome/navigation/v2026-08-20/ja.json'),
+      'utf8'
+    )
+  );
+  assert.equal(navigation.revision, navigationRevision);
+  const platforms = navigation.items.find((category) => category.categoryId === 'platforms');
+  assert.equal(platforms.title, 'プラットフォーム');
+  for (const [slug, title] of [
+    ['agucova-awesome-esp', 'ESP'],
+    ['balintkissdev-awesome-dos', 'DOS'],
+  ]) {
+    const href = `/docs/awesome/v2026-08-20/ja/platforms/${slug}`;
+    assert.equal(platforms.items.find((item) => item.href === href)?.title, title);
+    await fs.access(path.join(repoRoot, 'dist', href.slice(1), 'index.html'));
+  }
+  const fallback = await fs.readFile(
+    path.join(repoRoot, 'dist/docs/awesome/navigation/v2026-08-20/ja/index.html'),
+    'utf8'
+  );
+  assert.match(fallback, /プラットフォーム/);
   assert.match(
-    japaneseHtml,
-    /href="\/docs\/awesome\/v2026-08-20\/ja\/platforms\/balintkissdev-awesome-dos"[^>]*>\s*<span[^>]*>DOS<\/span>/
+    fallback,
+    /href="\/docs\/awesome\/v2026-08-20\/ja\/platforms\/balintkissdev-awesome-dos"[^>]*>DOS<\/a>/
   );
-  assert.doesNotMatch(japaneseHtml, /<span[^>]*>agucova\/awesome-esp<\/span>/);
-  assert.doesNotMatch(japaneseHtml, /<span[^>]*>balintkissdev\/awesome-dos<\/span>/);
 });
 
 async function collectHtmlFiles(directory) {

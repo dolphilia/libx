@@ -1,8 +1,10 @@
 #!/usr/bin/env node
+import { createAwesomeResolver, readAwesomeRouteManifest } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
   notesDir,
+  optionValue,
   readJson,
   rootDir,
   sha256,
@@ -11,8 +13,15 @@ import {
 } from './common.mjs';
 
 const version = snapshotVersion;
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version, 'en');
-const reportPath = path.join(notesDir, 'EXTERNAL_LINK_REPORT.json');
+const resolver = createAwesomeResolver(rootDir);
+const routes = new Map(
+  readAwesomeRouteManifest({ root: rootDir, localized: false })
+    .entries.filter((entry) => entry.version === version)
+    .map((entry) => [entry.sourceId, entry])
+);
+const reportPath = path.resolve(
+  optionValue(process.argv.slice(2), '--report', path.join(notesDir, 'EXTERNAL_LINK_REPORT.json'))
+);
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const discovery = readJson(path.join(notesDir, 'DISCOVERY_STATE.json'));
 const included = lock.sources.filter((source) => source.status === 'included');
@@ -20,16 +29,9 @@ const linkPattern = /!?\[[^\]]*\]\((https?:\/\/[^\s)]+)[^)]*\)/g;
 
 function linksFor(source) {
   const matches = [];
-  const sourceFiles = fs.readdirSync(contentRoot, { recursive: true, withFileTypes: true });
-  const file = sourceFiles.find((entry) => {
-    if (!entry.isFile() || !entry.name.endsWith('.md')) return false;
-    const candidate = path.join(entry.parentPath ?? entry.path, entry.name);
-    return fs
-      .readFileSync(candidate, 'utf8')
-      .includes(`licenseSource: ${JSON.stringify(source.sourceId)}`);
-  });
-  if (!file) throw new Error(`公開本文がありません: ${source.sourceId}`);
-  const content = fs.readFileSync(path.join(file.parentPath ?? file.path, file.name), 'utf8');
+  const route = routes.get(source.sourceId);
+  if (!route) throw new Error(`公開本文がありません: ${source.sourceId}`);
+  const content = fs.readFileSync(resolver.contentPath(route), 'utf8');
   for (const match of content.matchAll(linkPattern))
     matches.push(match[1].replace(/[.,;:]+$/u, ''));
   return { count: matches.length, hash: sha256([...new Set(matches)].sort().join('\n')) };
@@ -73,10 +75,14 @@ const report = {
   redirects: [],
 };
 
-if (process.argv.includes('--check')) {
+if (process.argv.includes('--stdout')) {
+  console.log(JSON.stringify(report, null, 2));
+} else if (process.argv.includes('--check')) {
   const existing = readJson(reportPath);
-  const { generatedAt: _generatedAt, ...expected } = report;
-  const { generatedAt: _existingGeneratedAt, ...actual } = existing;
+  const expected = { ...report };
+  const actual = { ...existing };
+  delete expected.generatedAt;
+  delete actual.generatedAt;
   if (JSON.stringify(actual) !== JSON.stringify(expected)) {
     console.error('EXTERNAL_LINK_REPORT.jsonが現在の英語定本と一致しません');
     process.exit(1);

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { getAwesomeApps } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
@@ -19,13 +20,18 @@ function countMarkdown(root) {
     .filter((entry) => entry.isFile() && entry.name.endsWith('.md')).length;
 }
 const status = Object.groupBy(lock.sources, (source) => source.status);
-const versionRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion);
-const pageCounts = {
-  awesome: {
-    en: countMarkdown(path.join(versionRoot, 'en')),
-    ja: countMarkdown(path.join(versionRoot, 'ja')),
-  },
-};
+const pageCounts = Object.fromEntries(
+  getAwesomeApps(rootDir).apps.map((app) => {
+    const versionRoot = path.join(app.directory, 'src/awesome-content', snapshotVersion);
+    return [
+      app.id,
+      {
+        en: countMarkdown(path.join(versionRoot, 'en')),
+        ja: countMarkdown(path.join(versionRoot, 'ja')),
+      },
+    ];
+  })
+);
 const report = {
   schemaVersion: 1,
   generatedAt: new Date().toISOString(),
@@ -53,5 +59,5 @@ const report = {
   ),
 };
 const reportPath = path.join(notesDir, 'PROGRESS_REPORT.json');
-writeJsonAtomic(reportPath, report);
+if (!process.argv.includes('--stdout')) writeJsonAtomic(reportPath, report);
 console.log(JSON.stringify(report, null, 2));

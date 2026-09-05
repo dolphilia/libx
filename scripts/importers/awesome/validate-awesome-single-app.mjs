@@ -5,10 +5,17 @@ import matter from 'gray-matter';
 import { readJsoncFile } from '../../jsonc-utils.js';
 import { notesDir, readJson, rootDir, snapshotVersion } from './common.mjs';
 
-const projectRoot = path.join(rootDir, 'apps/awesome');
-const routes = readJson(path.join(projectRoot, 'src/generated/awesome-routes.json'));
+import { createAwesomeResolver, readAwesomeRouteManifest } from './app-ownership.mjs';
+
+const resolver = createAwesomeResolver(rootDir);
+const routes = readAwesomeRouteManifest({ root: rootDir, localized: false });
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
-const config = readJsoncFile(path.join(projectRoot, 'src/config/project.config.jsonc'));
+const configIdsByApp = new Map(
+  resolver.apps.map((app) => {
+    const config = readJsoncFile(path.join(app.directory, 'src/config/project.config.jsonc'));
+    return [app.id, new Set(config.licensing.sources.map((source) => source.id))];
+  })
+);
 const missingReviewPath = path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json');
 const missingReview = fs.existsSync(missingReviewPath)
   ? readJson(missingReviewPath)
@@ -18,7 +25,6 @@ const includedIds = new Set(
   lock.sources.filter((source) => source.status === 'included').map((source) => source.sourceId)
 );
 const routeIds = new Set(snapshotRoutes.map((entry) => entry.sourceId));
-const configIds = new Set(config.licensing.sources.map((source) => source.id));
 const expectedRouteIds = new Set([
   ...includedIds,
   ...missingReview.results
@@ -46,19 +52,22 @@ for (const sourceId of expectedRouteIds) {
 }
 
 const slugs = new Set();
-const contentRoot = path.join(projectRoot, 'src/awesome-content');
-const markdownFiles = fs
-  .readdirSync(contentRoot, { recursive: true, withFileTypes: true })
-  .filter((entry) => entry.isFile() && entry.name.endsWith('.md'));
+const markdownFiles = resolver.apps.flatMap((app) => {
+  const contentRoot = path.join(app.directory, 'src/awesome-content');
+  if (!fs.existsSync(contentRoot)) throw new Error(`本文ルートがありません: ${app.id}`);
+  return fs
+    .readdirSync(contentRoot, { recursive: true, withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
+    .map((entry) => {
+      const file = path.join(entry.parentPath ?? entry.path, entry.name);
+      return { app, contentRoot, file, relativePath: path.relative(contentRoot, file) };
+    });
+});
 const englishFiles = markdownFiles.filter((entry) =>
-  path
-    .relative(contentRoot, path.join(entry.parentPath ?? entry.path, entry.name))
-    .startsWith(`${snapshotVersion}${path.sep}en${path.sep}`)
+  entry.relativePath.startsWith(`${snapshotVersion}${path.sep}en${path.sep}`)
 );
 const translatedFiles = markdownFiles.filter((entry) =>
-  path
-    .relative(contentRoot, path.join(entry.parentPath ?? entry.path, entry.name))
-    .startsWith(`${snapshotVersion}${path.sep}ja${path.sep}`)
+  entry.relativePath.startsWith(`${snapshotVersion}${path.sep}ja${path.sep}`)
 );
 if (englishFiles.length !== snapshotRoutes.length) {
   throw new Error(
@@ -70,18 +79,17 @@ for (const entry of snapshotRoutes) {
   if (slugs.has(versionedSlug))
     throw new Error(`同一版内で重複slugです: ${entry.version}/${entry.slug}`);
   slugs.add(versionedSlug);
-  const contentPath = path.join(projectRoot, entry.moduleKey.replace(/^\/src\//, 'src/'));
+  const contentPath = resolver.contentPath(entry);
   if (!fs.existsSync(contentPath)) throw new Error(`本文がありません: ${entry.moduleKey}`);
   const frontmatter = matter(fs.readFileSync(contentPath, 'utf8')).data;
   if (frontmatter.title !== entry.title)
     throw new Error(`titleが目録と一致しません: ${entry.sourceId}`);
-  if (!configIds.has(frontmatter.licenseSource)) {
+  if (!configIdsByApp.get(entry.appId).has(frontmatter.licenseSource)) {
     throw new Error(`licenseSourceが出典レジストリにありません: ${entry.sourceId}`);
   }
 }
 for (const entry of translatedFiles) {
-  const translatedPath = path.join(entry.parentPath ?? entry.path, entry.name);
-  const relativePath = path.relative(contentRoot, translatedPath);
+  const { file: translatedPath, relativePath, contentRoot } = entry;
   const englishPath = path.join(
     contentRoot,
     relativePath.replace(`${path.sep}ja${path.sep}`, `${path.sep}en${path.sep}`)
@@ -95,34 +103,38 @@ for (const entry of translatedFiles) {
 }
 
 if (process.argv.includes('--assets')) {
-  const distRoot = path.join(projectRoot, 'dist');
-  if (!fs.existsSync(distRoot)) throw new Error('apps/awesome/distがありません');
-  const files = fs
-    .readdirSync(distRoot, { recursive: true, withFileTypes: true })
-    .filter((entry) => entry.isFile())
-    .map((entry) => path.join(entry.parentPath ?? entry.path, entry.name));
+  const files = resolver.apps.flatMap((app) => {
+    if (!fs.existsSync(app.outputDirectory)) throw new Error(`ビルド出力がありません: ${app.id}`);
+    return fs
+      .readdirSync(app.outputDirectory, { recursive: true, withFileTypes: true })
+      .filter((entry) => entry.isFile())
+      .map((entry) => path.join(entry.parentPath ?? entry.path, entry.name));
+  });
   let largest = { path: '', bytes: 0 };
   for (const file of files) {
     const bytes = fs.statSync(file).size;
-    if (bytes > largest.bytes) largest = { path: path.relative(distRoot, file), bytes };
+    if (bytes > largest.bytes) largest = { path: path.relative(rootDir, file), bytes };
   }
   const warningLimit = 20 * 1024 * 1024;
   if (largest.bytes >= warningLimit) {
     throw new Error(`最大assetが20 MiB以上です: ${largest.path} (${largest.bytes} bytes)`);
   }
   for (const entry of snapshotRoutes) {
-    const htmlPath = path.join(distRoot, entry.version, entry.lang, entry.slug, 'index.html');
+    const htmlPath = path.join(
+      resolver.appForSource(entry.sourceId).outputDirectory,
+      entry.version,
+      entry.lang,
+      entry.slug,
+      'index.html'
+    );
     if (!fs.existsSync(htmlPath)) throw new Error(`生成ページがありません: ${entry.slug}`);
   }
   for (const entry of translatedFiles) {
-    const relativePath = path.relative(
-      contentRoot,
-      path.join(entry.parentPath ?? entry.path, entry.name)
-    );
+    const { relativePath } = entry;
     const segments = relativePath.split(path.sep);
     const [version, lang, ...slugParts] = segments;
     const slug = path.join(...slugParts).replace(/\.md$/, '');
-    const htmlPath = path.join(distRoot, version, lang, slug, 'index.html');
+    const htmlPath = path.join(entry.app.outputDirectory, version, lang, slug, 'index.html');
     if (!fs.existsSync(htmlPath)) throw new Error(`翻訳の生成ページがありません: ${relativePath}`);
   }
   console.log(
@@ -130,6 +142,6 @@ if (process.argv.includes('--assets')) {
   );
 } else {
   console.log(
-    `Awesome single-app validation: OK (${englishFiles.length} English pages, ${translatedFiles.length} translated pages)`
+    `Awesome ${resolver.group ? 'group' : 'single-app'} validation: OK (${englishFiles.length} English pages, ${translatedFiles.length} translated pages)`
   );
 }

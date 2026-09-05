@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess } from './app-ownership.mjs';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -8,7 +9,7 @@ import { unified } from 'unified';
 import { rootDir, snapshotVersion } from './common.mjs';
 
 const version = snapshotVersion;
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
+const content = createAwesomeContentAccess(version, rootDir);
 const file = process.argv.find((argument) => argument.endsWith('.md'));
 const modelOption = process.argv.indexOf('--model');
 const model = modelOption === -1 ? 'qwen3:8b' : process.argv[modelOption + 1];
@@ -510,8 +511,8 @@ async function translateBatch(entries, forceJapanese = false) {
   });
 }
 
-const englishPath = path.join(contentRoot, 'en', file);
-const japanesePath = path.join(contentRoot, 'ja', file);
+const englishPath = content.pathFor('en', file);
+const japanesePath = content.pathFor('ja', file);
 if (!fs.existsSync(englishPath) || !fs.existsSync(japanesePath)) {
   console.error(`英日ページが見つかりません: ${file}`);
   process.exit(1);

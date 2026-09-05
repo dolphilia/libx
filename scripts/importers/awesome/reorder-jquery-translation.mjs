@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { rootDir } from './common.mjs';
@@ -7,9 +8,9 @@ const draftPath = path.join(
   rootDir,
   '.tmp/document-import/awesome/04-translation/AllThingsSmitty-jquery-tips-everyone-should-know.ja.md'
 );
-const targetPath = path.join(
-  rootDir,
-  'apps/awesome/src/awesome-content/v2026-08-20/ja/front-end-development/AllThingsSmitty-jquery-tips-everyone-should-know.md'
+const targetPath = createAwesomeContentAccess('v2026-08-20', rootDir).pathFor(
+  'ja',
+  'front-end-development/AllThingsSmitty-jquery-tips-everyone-should-know.md'
 );
 const tipOrder = [
   '`noConflict()`を使う',

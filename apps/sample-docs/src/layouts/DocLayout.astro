@@ -1,16 +1,18 @@
 ---
 import MainLayout from './MainLayout.astro';
-import { DocumentProvenance, Sidebar, TableOfContents } from '@docs/ui/components';
+import { DocumentProvenance, GroupSidebar, Sidebar, TableOfContents } from '@docs/ui/components';
 import { translate } from '@docs/i18n/utils';
 import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 
 // 設定ファイルのインポート
 import { getProjectConfig } from '@docs/project-config';
-import { getSidebarAsync } from '@docs/content-utils';
+import { readAppGroup } from '@docs/project-config/app-registry';
+import { navigation } from '../lib/navigation';
 
 // 設定を初期化
 const projectConfig = await getProjectConfig();
+const group = readAppGroup(process.cwd());
 
 // Sidebarコンポーネントで使用されるSidebarItem型を定義
 interface SidebarItem {
@@ -45,20 +47,24 @@ const baseUrl = projectConfig.paths.baseUrl;
 const currentPath = Astro.url.pathname;
 
 // サイドバー項目の取得（非同期）
-const sidebarItems = await getSidebarAsync(lang, version, baseUrl);
+const sidebarItems = await navigation.sidebar(lang, version, baseUrl);
+const normalizedCurrentPath = currentPath.replace(/\/+$/, '');
+function isCurrentPath(href: string): boolean {
+  return href.replace(/\/+$/, '') === normalizedCurrentPath;
+}
 
 // 現在のページに対応するサイドバー項目にisCurrent=trueを設定
 function markCurrentPage(items: SidebarItem[]): SidebarItem[] {
   return items.map((section) => {
     // セクション自体のhrefがあり、現在のパスと一致する場合
-    if (section.href && (section.href === currentPath || currentPath.endsWith(section.href))) {
+    if (section.href && isCurrentPath(section.href)) {
       return { ...section, isCurrent: true };
     }
 
     // 子項目がある場合は再帰的に処理
     if (section.items && section.items.length > 0) {
       const updatedItems = section.items.map((item) => {
-        if (item.href && (item.href === currentPath || currentPath.endsWith(item.href))) {
+        if (item.href && isCurrentPath(item.href)) {
           return { ...item, isCurrent: true };
         }
         return item;
@@ -94,12 +100,24 @@ const TRANSLATION_KEYS = {
   <div class="doc-layout-container" dir={dir}>
     <aside class="sidebar-column print:hidden" dir={dir}>
       <div class="sidebar-content">
-        <Sidebar
-          items={markedSidebarItems}
-          title={translate(TRANSLATION_KEYS.DOCUMENTATION, lang)}
-          lang={lang}
-          dir={dir}
-        />
+        {
+          group ? (
+            <GroupSidebar
+              items={markedSidebarItems}
+              baseUrl={baseUrl}
+              version={version}
+              lang={lang}
+              dir={dir}
+            />
+          ) : (
+            <Sidebar
+              items={markedSidebarItems}
+              title={translate(TRANSLATION_KEYS.DOCUMENTATION, lang)}
+              lang={lang}
+              dir={dir}
+            />
+          )
+        }
       </div>
     </aside>
 
@@ -134,7 +152,7 @@ const TRANSLATION_KEYS = {
   </div>
 </MainLayout>
 
-<script is:inline define:vars={{ baseUrl }}>
+<script is:inline define:vars={{ baseUrl, isGroup: Boolean(group) }}>
   // サイドバーのプリフェッチ
   function prefetchSidebar(lang, version) {
     // バージョンが有効な形式（v1, v2など）かチェック
@@ -181,5 +199,5 @@ const TRANSLATION_KEYS = {
   const currentVersion = extractVersionFromPath();
 
   // 現在のサイドバーをプリフェッチ
-  prefetchSidebar(currentLang, currentVersion);
+  if (!isGroup) prefetchSidebar(currentLang, currentVersion);
 </script>

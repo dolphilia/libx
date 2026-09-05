@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { resolveApp } from '../packages/project-config/src/app-registry.js';
 
 /**
  * 新しいバージョンを追加するスクリプト（改良版）
@@ -85,7 +86,7 @@ function prepareVersionContent({
   supportedLangs,
   copyFromPrevious,
 }) {
-  const docsPath = path.join(process.cwd(), 'apps', projectName, 'src', 'content', 'docs');
+  const docsPath = path.join(resolveApp(projectName).directory, 'src', 'content', 'docs');
   const targetPath = path.join(docsPath, newVersion);
   if (fs.existsSync(targetPath)) {
     throw new Error(`コンテンツディレクトリが既に存在します: ${targetPath}`);

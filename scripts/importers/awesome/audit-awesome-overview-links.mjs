@@ -2,11 +2,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { rootDir, snapshotVersion } from './common.mjs';
+import { createAwesomeResolver, readAwesomeRouteManifest } from './app-ownership.mjs';
 
 const snapshot = snapshotVersion;
 const overviewRepository = 'sindresorhus/awesome';
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshot);
-const routeManifestPath = path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json');
+const resolver = createAwesomeResolver(rootDir);
+const routes = readAwesomeRouteManifest({ root: rootDir, localized: false }).entries.filter(
+  (route) => route.version === snapshot
+);
 const outputOptionIndex = process.argv.indexOf('--output');
 const outputPath =
   outputOptionIndex === -1 ? null : path.resolve(process.argv[outputOptionIndex + 1] ?? '');
@@ -30,7 +33,10 @@ function githubRepository(url) {
 }
 
 function overviewLinks(lang) {
-  const file = path.join(contentRoot, lang, 'overview/sindresorhus-awesome.md');
+  const file = resolver.contentPath({
+    sourceId: 'sindresorhus-awesome-readme',
+    moduleKey: `/src/awesome-content/${snapshot}/${lang}/overview/sindresorhus-awesome.md`,
+  });
   const lines = fs.readFileSync(file, 'utf8').split('\n');
   const links = [];
   let section = '';
@@ -56,17 +62,19 @@ function overviewLinks(lang) {
   return links;
 }
 
-function localeFileExists(lang, slug) {
-  return fs.existsSync(path.join(contentRoot, lang, `${slug}.md`));
+function localeFileExists(lang, route) {
+  return fs.existsSync(
+    resolver.contentPath({
+      ...route,
+      moduleKey: `/src/awesome-content/${snapshot}/${lang}/${route.slug}.md`,
+    })
+  );
 }
 
 const englishLinks = overviewLinks('en');
 const japaneseLinks = overviewLinks('ja');
 const englishOtherLists = englishLinks.filter((link) => link.repository !== overviewRepository);
 const japaneseOtherLists = japaneseLinks.filter((link) => link.repository !== overviewRepository);
-const routes = JSON.parse(fs.readFileSync(routeManifestPath, 'utf8')).entries.filter(
-  (route) => route.version === snapshot
-);
 const routeByRepository = new Map(routes.map((route) => [route.repository.toLowerCase(), route]));
 
 const sequenceMatches =
@@ -78,8 +86,8 @@ const sequenceMatches =
 const items = englishOtherLists.map((link, index) => {
   const japanese = japaneseOtherLists[index];
   const route = routeByRepository.get(link.repository);
-  const hasEnglishSource = route ? localeFileExists('en', route.slug) : false;
-  const hasJapaneseSource = route ? localeFileExists('ja', route.slug) : false;
+  const hasEnglishSource = route ? localeFileExists('en', route) : false;
+  const hasJapaneseSource = route ? localeFileExists('ja', route) : false;
   const hasBilingualPages = Boolean(route && hasEnglishSource && hasJapaneseSource);
 
   return {

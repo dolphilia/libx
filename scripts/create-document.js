@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { resolveApp } from '../packages/project-config/src/app-registry.js';
 
 /**
  * 新しいドキュメントを作成するスクリプト（インタラクティブ対応）
@@ -312,7 +313,7 @@ async function main() {
       return;
     }
 
-    const projectRoot = path.join(process.cwd(), 'apps', args.projectName);
+    const projectRoot = resolveApp(args.projectName).directory;
     const preparedDocPath = path.join(
       projectRoot,
       `.document-prepared-${process.pid}-${randomUUID()}`

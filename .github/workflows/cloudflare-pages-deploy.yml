@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - 'codex/pages-preview/**'
+      - 'codex/quality/**'
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -37,6 +38,8 @@ concurrency:
 
 jobs:
   quality-check:
+    outputs:
+      artifact-id: ${{ steps.upload-deployment.outputs.artifact-id }}
     runs-on: macos-latest
     timeout-minutes: 30
     steps:
@@ -72,14 +75,60 @@ jobs:
       - name: Build template
         run: pnpm build:template
 
+      - name: Restore app build candidates
+        continue-on-error: true
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            apps/*/dist
+            apps/*/*/dist
+            apps/*/.astro/libx-output.json
+            apps/*/*/.astro/libx-output.json
+            sites/*/dist
+            sites/*/.astro/libx-output.json
+          key: app-builds-v1-${{ runner.os }}-${{ runner.arch }}-node20-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            app-builds-v1-${{ runner.os }}-${{ runner.arch }}-node20-
+
       - name: Build integrated deployment
-        run: pnpm build -- --confirm
+        run: pnpm build -- --confirm --reuse
+
+      - name: Check deployment asset budget
+        run: pnpm check:deployment-assets
 
       - name: Smoke tests
         run: pnpm test:smoke
 
       - name: Verify tracked generated artifacts are current
-        run: git diff --exit-code -- 'apps/*/public/sidebar/**' 'apps/*/public/sw.js' 'templates/*/public/sidebar/**' 'templates/*/public/sw.js'
+        run: git diff --exit-code -- 'apps/*/public/sidebar/**' 'apps/*/public/sw.js' 'apps/*/*/public/sidebar/**' 'apps/*/*/public/sw.js' 'templates/*/public/sidebar/**' 'templates/*/public/sw.js'
+
+      - name: Package verified deployment
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+        run: node scripts/deployment-artifact.js --directory=.tmp/verified-deployment --commit="$BUILD_COMMIT"
+
+      - name: Upload verified deployment
+        id: upload-deployment
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-deployment-${{ github.sha }}-${{ github.run_attempt }}
+          path: .tmp/verified-deployment/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Save verified app build candidates
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            apps/*/dist
+            apps/*/*/dist
+            apps/*/.astro/libx-output.json
+            apps/*/*/.astro/libx-output.json
+            sites/*/dist
+            sites/*/.astro/libx-output.json
+          key: app-builds-v1-${{ runner.os }}-${{ runner.arch }}-node20-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
 
   deploy-preview:
     runs-on: macos-latest
@@ -105,24 +154,31 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build sidebar
-        run: pnpm build:sidebar
+      - name: Download verified deployment
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ needs.quality-check.outputs.artifact-id }}
+          merge-multiple: true
+          path: .tmp/verified-deployment
 
-      - name: Build project
-        run: pnpm build -- --confirm
-
-      - name: Check deployment asset budget
-        run: pnpm check:deployment-assets
+      - name: Verify deployment content and budget
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+        run: |
+          node scripts/deployment-artifact.js --verify --directory=.tmp/verified-deployment --commit="$BUILD_COMMIT"
+          node scripts/check-deployment-assets.js .tmp/verified-deployment/dist
 
       - name: Deploy Preview to Cloudflare Pages
         id: deploy
         env:
+          DEPLOY_BRANCH: ${{ github.event_name == 'workflow_dispatch' && inputs.preview_branch || github.ref_name }}
+          BUILD_COMMIT: ${{ github.sha }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: >-
-          pnpm exec wrangler pages deploy dist --project-name libx
-          --branch=${{ github.event_name == 'workflow_dispatch' && inputs.preview_branch || github.ref_name }}
-          --commit-hash=${{ github.sha }} --commit-dirty=false
+          pnpm exec wrangler pages deploy .tmp/verified-deployment/dist --project-name libx
+          --branch="$DEPLOY_BRANCH"
+          --commit-hash="$BUILD_COMMIT" --commit-dirty=false
 
   deploy-production:
     runs-on: macos-latest
@@ -146,20 +202,26 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build sidebar
-        run: pnpm build:sidebar
+      - name: Download verified deployment
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ needs.quality-check.outputs.artifact-id }}
+          merge-multiple: true
+          path: .tmp/verified-deployment
 
-      - name: Build project
-        run: pnpm build -- --confirm
-
-      - name: Check deployment asset budget
-        run: pnpm check:deployment-assets
+      - name: Verify deployment content and budget
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+        run: |
+          node scripts/deployment-artifact.js --verify --directory=.tmp/verified-deployment --commit="$BUILD_COMMIT"
+          node scripts/check-deployment-assets.js .tmp/verified-deployment/dist
 
       - name: Deploy Production to Cloudflare Pages
         id: deploy
         env:
+          BUILD_COMMIT: ${{ github.sha }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: >-
-          pnpm exec wrangler pages deploy dist --project-name libx --branch=main
-          --commit-hash=${{ github.sha }} --commit-dirty=false
+          pnpm exec wrangler pages deploy .tmp/verified-deployment/dist --project-name libx --branch=main
+          --commit-hash="$BUILD_COMMIT" --commit-dirty=false

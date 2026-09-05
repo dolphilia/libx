@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess, readAwesomeRouteManifest } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -27,9 +28,9 @@ const schemaPath = path.join(
   rootDir,
   'docs/notes/document-import/awesome/schemas/introduction-normalization.schema.json'
 );
-const routes = readJson(
-  path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json')
-).entries.filter((entry) => entry.version === version);
+const routes = readAwesomeRouteManifest({ root: rootDir, localized: false }).entries.filter(
+  (entry) => entry.version === version
+);
 const missingReviewPath = path.join(notesDir, 'AWESOME_MISSING_LICENSE_REVIEW_RESULTS.json');
 const metadataOnlyRepositories = new Set(
   fs.existsSync(missingReviewPath)
@@ -38,10 +39,10 @@ const metadataOnlyRepositories = new Set(
         .map((entry) => entry.repository.toLowerCase())
     : []
 );
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', version);
+const content = createAwesomeContentAccess(version, rootDir);
 
 function pagePath(entry, lang) {
-  return path.join(contentRoot, lang, `${entry.slug}.md`);
+  return content.pathFor(lang, `${entry.slug}.md`);
 }
 
 function languageEvidence(detected) {
@@ -198,9 +199,7 @@ if (rebaseSourceIds) {
         encoding: 'utf8',
       });
       const detected = detectIntroduction(source);
-      const currentDetected = detectIntroduction(
-        fs.readFileSync(path.join(rootDir, gitPath), 'utf8')
-      );
+      const currentDetected = detectIntroduction(fs.readFileSync(pagePath(entry, lang), 'utf8'));
       const accepted = new Set(entry.evidence[lang].acceptedOriginalPrefixSha256 ?? []);
       accepted.add(entry.evidence[lang].originalPrefixSha256);
       accepted.add(currentDetected.prefixSha256);

@@ -191,8 +191,15 @@ pnpm create:project
 # 統合ビルドを実行（すべてのアプリケーションをビルドして統合）
 pnpm build
 
-# ローカル開発環境用のビルドを実行（ベースパスなし）
+# ローカル確認用のビルドを実行（公開パスを維持）
 pnpm build:local
+
+# 統合サイトをローカルで閲覧
+pnpm preview
+
+# Awesome全体を生成・閲覧
+pnpm build:selective --group=awesome
+pnpm preview --group=awesome
 
 # 各アプリケーションを個別にビルド
 pnpm build:separate

@@ -514,3 +514,15 @@ done
 このガイドでは、バージョン追加の自動化と手動の両方の方法を詳しく説明しました。**推奨は自動化スクリプトの使用**ですが、特別な要件がある場合は手動での作業も可能です。
 
 質問や問題がある場合は、プロジェクトのIssueトラッカーまたはドキュメントメンテナーにお問い合わせください。
+
+## 入れ子グループの版追加
+
+対象はグループ名ではなく `reference/web` のような子app IDで指定する。以下は通常の `src/content/docs` を持つ子appが存在する場合の例。
+
+```bash
+node scripts/create-version.js reference/web v2 --dry-run
+```
+
+`versioning.mode: shared` のグループでは、各子の版宣言を揃え、必要な文書と索引を生成してからグループ全体をビルドする。一子のCLI実行だけでグループ全体へ版が追加されたとは扱わない。版が揃わない目録は公開時に拒否される。`independent` の場合は所有appごとの版を維持する。
+
+Awesomeの版は専用取得・公開パイプラインが生成する。通常の版追加CLIでAwesomeの `src/awesome-content` と出典・経路目録を置き換えない。構成は[入れ子実装計画](../plans/NESTED_APP_GROUPS_IMPLEMENTATION_PLAN.md)を参照。

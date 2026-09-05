@@ -1,26 +1,33 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess, readAwesomeRouteManifest } from './app-ownership.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import { notesDir, readJson, rootDir, snapshotVersion } from './common.mjs';
+import { applyIntroductionDecision } from './awesome-introduction-utils.mjs';
 
 const apply = process.argv.includes('--apply');
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion);
-const englishRoot = path.join(contentRoot, 'en');
-const japaneseRoot = path.join(contentRoot, 'ja');
+const content = createAwesomeContentAccess(snapshotVersion, rootDir);
 const lock = readJson(path.join(notesDir, 'SOURCES.lock.json'));
 const included = new Set(
   lock.sources.filter((source) => source.status === 'included').map((source) => source.sourceId)
 );
-const routes = readJson(
-  path.join(rootDir, 'apps/awesome/src/generated/awesome-routes.json')
-).entries.filter((entry) => entry.version === snapshotVersion && !included.has(entry.sourceId));
+const routes = readAwesomeRouteManifest({ root: rootDir, localized: false }).entries.filter(
+  (entry) => entry.version === snapshotVersion && !included.has(entry.sourceId)
+);
 const errors = [];
 const generated = [];
+const normalizationPath = path.join(notesDir, 'INTRODUCTION_NORMALIZATION.json');
+const decisions = new Map(
+  (fs.existsSync(normalizationPath) ? readJson(normalizationPath).entries : []).map((entry) => [
+    entry.sourceId,
+    entry,
+  ])
+);
 
 for (const route of routes) {
-  const englishPath = path.join(englishRoot, `${route.slug}.md`);
-  const japanesePath = path.join(japaneseRoot, `${route.slug}.md`);
+  const englishPath = content.pathFor('en', `${route.slug}.md`);
+  const japanesePath = content.pathFor('ja', `${route.slug}.md`);
   const parsed = matter(fs.readFileSync(englishPath, 'utf8'));
   const heading = parsed.content.match(/^#\s+(.+)$/m)?.[1]?.trim();
   const sourceUrl = parsed.content.match(/^- \[[^\]]+\]\((https?:\/\/[^)]+)\)$/m)?.[1];
@@ -46,7 +53,14 @@ for (const route of routes) {
     `- [元のリポジトリを開く](${sourceUrl})`,
     '',
   ].join('\n');
-  const output = `${frontmatter}\n${body}`;
+  const decision = decisions.get(route.sourceId);
+  // Emit the recorded introduction when one exists; still verify the retained link hash.
+  const rawOutput = decision
+    ? `${frontmatter}\n# ${decision.normalized.ja.title}\n\n${decision.normalized.ja.summary}\n\n- [元のリポジトリを開く](${sourceUrl})\n`
+    : `${frontmatter}\n${body}`;
+  const output = decision
+    ? applyIntroductionDecision(rawOutput, decision.normalized.ja, decision.evidence.ja)
+    : rawOutput;
   if (apply) {
     fs.mkdirSync(path.dirname(japanesePath), { recursive: true });
     fs.writeFileSync(japanesePath, output);

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-09-05T03:45:25.389Z",
+  "gitHead": "4cd36fe5c67fcba2cab578f2dbdf2d5213a0abfe",
+  "inputFingerprint": "94cf384f9780e79f27fe7671ae5817c4de7dd63e3c1f48ada78af422b6636bc0",
+  "runs": 1,
+  "conditions": {
+    "rssIntervalMs": 100,
+    "diskIntervalMs": 1000,
+    "clean": "target app/site dist and .astro removed before each case; generated source indexes and dependency caches retained",
+    "disk": "allocated bytes of app/site outputs, .astro, integrated output, integration stages, and safety backups; pre-existing backups included in starting amount",
+    "publication": "CLI full build includes its safety backup; selective case preserves other existing public outputs"
+  },
+  "samples": [
+    {
+      "name": "full-1",
+      "command": [
+        "pnpm",
+        "build",
+        "--",
+        "--confirm"
+      ],
+      "durationMs": 149105,
+      "peakTreeRssBytes": 3370991616,
+      "rssSamples": 70,
+      "startingOutputDiskBytes": 7121543168,
+      "peakOutputDiskBytes": 9090547712,
+      "peakAdditionalOutputDiskBytes": 1969004544,
+      "integrated": {
+        "bytes": 478267546,
+        "allocatedBytes": 562970624,
+        "files": 2478
+      },
+      "apps": {
+        "awesome": {
+          "bytes": 641544991,
+          "allocatedBytes": 650498048,
+          "files": 4185
+        },
+        "glfw": {
+          "bytes": 15055379,
+          "allocatedBytes": 15364096,
+          "files": 107
+        },
+        "lua": {
+          "bytes": 10909454,
+          "allocatedBytes": 11272192,
+          "files": 146
+        },
+        "sample-docs": {
+          "bytes": 7922229,
+          "allocatedBytes": 8503296,
+          "files": 187
+        },
+        "test-verification": {
+          "bytes": 1485969,
+          "allocatedBytes": 1781760,
+          "files": 103
+        }
+      },
+      "logFile": ".tmp/nested-app-migration/measurement-full-1.log"
+    },
+    {
+      "name": "selective-1",
+      "command": [
+        "pnpm",
+        "build:selective",
+        "--projects=awesome"
+      ],
+      "durationMs": 130100,
+      "peakTreeRssBytes": 3741663232,
+      "rssSamples": 62,
+      "startingOutputDiskBytes": 7720833024,
+      "peakOutputDiskBytes": 9072570368,
+      "peakAdditionalOutputDiskBytes": 1351737344,
+      "integrated": {
+        "bytes": 478267546,
+        "allocatedBytes": 557760512,
+        "files": 2478
+      },
+      "apps": {
+        "awesome": {
+          "bytes": 641544991,
+          "allocatedBytes": 650498048,
+          "files": 4185
+        },
+        "glfw": {
+          "bytes": 15055379,
+          "allocatedBytes": 15278080,
+          "files": 107
+        },
+        "lua": {
+          "bytes": 10909454,
+          "allocatedBytes": 11223040,
+          "files": 146
+        },
+        "sample-docs": {
+          "bytes": 7922229,
+          "allocatedBytes": 8429568,
+          "files": 187
+        },
+        "test-verification": {
+          "bytes": 1485969,
+          "allocatedBytes": 1781760,
+          "files": 103
+        }
+      },
+      "logFile": ".tmp/nested-app-migration/measurement-selective-1.log"
+    }
+  ],
+  "currentInputFingerprint": "94cf384f9780e79f27fe7671ae5817c4de7dd63e3c1f48ada78af422b6636bc0",
+  "inputsUnchanged": true,
+  "completedAt": "2026-09-05T03:50:13.629Z"
+}

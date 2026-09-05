@@ -2,6 +2,55 @@
 
 このガイドでは、新しいドキュメントサイトを作成する方法を説明します。**自動化スクリプト**による簡単な作成方法と、従来の手動による詳細な手順の両方を説明します。
 
+## 入れ子型グループの作成（基盤実装中）
+
+`apps/<group>/<project>/`に子アプリを配置できます。所属は親ディレクトリから判定し、`group.config.jsonc`で入口と表示順を指定します。グループとその入口は一緒に作成します。
+
+```bash
+pnpm create:group example "Example Docs" "文書集"
+pnpm create:project --group=example guide "Guide" "ガイド" --confirm
+pnpm --filter=apps-example-guide build
+```
+
+`create:group`は`overview`子アプリを含む完成したディレクトリを作成します。`--dry-run`ではファイルを変更せず、`--skip-install`ではインストールを後回しにします。`create:project`にも`--skip-install`があり、その場合はビルド前にリポジトリルートで`pnpm install`を実行してください。
+
+文書・版・言語追加の対象IDには`example/guide`を使います。新規アプリのprebuildはworkspaceの`libx-docs-prepare`を利用し、親までの`../`の数に依存しません。package名を内部IDから推測する代わりに、各アプリの`package.json`を確認してください。
+
+現時点では子アプリの生成・単独ビルド、グループ選択ビルドと安全な出力統合、共有ナビ・検索の初期実装を検証済みです。文書IDによる言語／版の横断切替も検証済みです。CI、Awesome移行、独立デプロイ、ナビの詳細な互換性検査は実装中です。[実装計画](../plans/NESTED_APP_GROUPS_IMPLEMENTATION_PLAN.md)と[実装記録](../notes/NESTED_APP_GROUPS_IMPLEMENTATION_LOG.md)で対応範囲を確認してください。
+
+### 文書IDとグループの版
+
+同じ文書を改名したり、翻訳だけを別の子へ置く場合は、全版・言語で同じ`documentId`をFrontmatterに設定してください。
+
+```yaml
+---
+title: Getting started
+documentId: getting-started
+---
+```
+
+`documentId`はURLやカテゴリを変更しません。同じID・版・言語を二つのファイルへ割り当てるとエラーになります。省略時は内部app IDと相対スラッグから導出するため、改名・子間移動の前に明示IDを設定してください。Awesomeの移行では既存のsourceIdを文書IDとして利用し、本文のFrontmatterを移動のために書き換えません。
+
+`versioning.mode: shared`では全子の版IDと最新版の指定を揃えます。言語や文書が版ごとに欠けることは許容し、対応文書がなければ実在するその版・言語の一覧へ誘導します。一覧へのリンクを文書のhreflangとして出力することはありません。`independent`では版・言語の対応を所有appの範囲で解決します。
+
+本文だけの変更では対象の子をビルドし、他の子の検証済み出力を再利用できます。タイトル・文書ID・経路・版など共有目録が変わる場合、現在の実装はグループ内の出力を保守的に再検証・再ビルドします。必要な参照元だけに絞り込む依存追跡は今後の対応です。
+
+### カテゴリと前後リンク
+
+カテゴリの同一性は表示名ではなく、文書ディレクトリのカテゴリID（番号接頭辞を除いた名前）で判定します。同じIDを複数の子で使う場合は、その言語の表示名も揃えてください。同名でも異なるIDは別カテゴリとして表示し、同じIDに異なる表示名がある場合は統合時にエラーにします。
+
+sharedグループでは、同一版・言語・カテゴリ内の前後リンクが子をまたいでつながります。子の表示順はgroup設定、子の中の文書順はorderとファイル名を使います。independentグループの前後リンクは所有appの中で解決します。手動のprev／nextもグループの文書目録で検査し、存在しない文書へは公開しません。
+
+専用ルートから`resolveGroupPagination`へ`{ scope: 'version', order: 'document' }`を渡すと、同じ版・言語全体を文書のorder順でつなげられます。Awesomeはカテゴリを越える元のリスト順を保持するため、この指定を使います。independentの場合はこの指定でも他appへ版をまたいでつなげません。
+
+```yaml
+prev:
+  text: Overview
+  link: /v1/en/01-guide/01-getting-started/
+```
+
+言語の文書を削除した場合、選択ビルドでHTMLと共有ナビ・検索も更新されます。検索生成は生成専用のpublic/searchを一式で置き換えるため、そこに手書きファイルを保存しないでください。
+
 ## 🚀 推奨方法：自動化スクリプトを使用した作成
 
 **2025年8月より、新しい自動化スクリプト `scripts/create-project.js` が利用可能になりました。このスクリプトを使用することで、プロジェクト作成作業を大幅に効率化できます。**
@@ -367,7 +416,7 @@ pnpm install
 
 ### 7. 共有パッケージの活用
 
-コピーしたテンプレートには以下の共有パッケージが組み込まれており、個別に `src/lib` や `src/utils` を維持する必要はありません。
+コピーしたテンプレートには以下の共有パッケージが組み込まれています。通常の処理は共有パッケージを利用し、生成済み経路目録を使うサイトではナビ供給元だけを切り替えます。
 
 - **`@docs/project-config`**: 非同期の `getProjectConfig` で `project.config.jsonc` を読み込み、キャッシュします。
 - **`@docs/content-utils`**: サイドバー生成、ページネーション、バージョンリンク解決などの処理を提供します。`pathPattern` オプションで `version-first`（既定）か `locale-first` を選択してください。
@@ -380,6 +429,16 @@ const projectConfig = await getProjectConfig();
 
 const sidebar = await getSidebarAsync('en', 'v1', projectConfig.paths.baseUrl);
 ```
+
+`src/lib/navigation.ts`は、`@docs/content-utils/navigation-provider`の`DocumentationNavigationProvider`型に従う`navigation`をexportします。この型モジュールはcontent collectionに依存しません。共通レイアウトは次の3操作を呼び出します。
+
+- `documentSlugs()`: 自appで実在する`version/lang/slug`の一覧を返す。
+- `sidebar(lang, version, baseUrl)`: 自appの版・言語に対応するナビを返す。
+- `homeLinks(lang, version, baseUrl)`: 文書ホームと、パンくず非表示時のサイト名リンクを返す。
+
+通常appはテンプレートの供給元でcontent collectionを使用します。Awesomeは自appの生成済みJSONから同じ情報を供給します。本文や他の子のMarkdownをナビ生成のためにimportしないでください。グループ全体のナビ・言語／版切替は、共通レイアウトが別途ページ目録を使って解決します。
+
+`sync:layouts`はMainLayoutとDocLayoutを通常app・専用供給元のappで共通化します。通常の`src/content/docs`を持つappでは、正規の本文ルートと供給元も同期対象です。専用供給元のappでは、その供給元と本文ルートを保持します。
 
 ### 8. 動作確認
 
@@ -551,3 +610,11 @@ pnpm --filter=apps-my-project build
 - 📊 **自動テスト**: ビルドと動作確認が自動実行
 
 **推奨**: まず自動化スクリプトを使用し、特殊な要件がある場合のみ手動方法を参照してください。これにより、開発チーム全体で効率的かつ安全にプロジェクトを立ち上げることができます。
+
+## 階層に依存しないTypeScript設定
+
+単独app・入れ子app・正規テンプレートは `@docs/config/astro.json` を継承する。共有パッケージのエイリアスはこの設定が管理するため、子appへ移動する際に `../../packages` を書き換える必要はない。app自身の `include`・`exclude`・`files` はapp側に残す。
+
+`@/*` は `${configDir}/src/*` として利用側appのsrcへ解決する。この機能は[TypeScript 5.5以降のconfigDir](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-5.html#the-configdir-template-variable-for-configuration-files)を使用する。検証したlockfileのTypeScriptは5.8.3。独自の古いTypeScriptへ置き換える場合はこの要件を満たすこと。
+
+TypeScriptの `compilerOptions.paths` は継承元へ個別キーを追加する設定ではなく、オブジェクト全体を上書きする。独自エイリアスを追加するときは共有設定との関係も確認する。標準構成ではapp側にpathsを複製しない。

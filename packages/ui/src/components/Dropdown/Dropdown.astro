@@ -1,5 +1,6 @@
 ---
 import { getDropdownScript, getCustomElementScript } from './utils';
+import { allocateInstanceId } from '../instance-id.js';
 
 interface Props {
   /**
@@ -60,9 +61,13 @@ if (shouldRenderDropdownScript) {
   Astro.locals[didRenderDropdownScriptSymbol] = true;
 }
 
-// ユニークなIDを生成
-const buttonId = `dropdown-button-${Math.random().toString(36).substring(2, 11)}`;
-const menuId = `dropdown-menu-${Math.random().toString(36).substring(2, 11)}`;
+// Different controls have stable identities even if their async rendering order changes.
+const instanceId = allocateInstanceId(
+  Astro.locals,
+  JSON.stringify([className, label, dir, align, width])
+);
+const buttonId = `dropdown-button-${instanceId}`;
+const menuId = `dropdown-menu-${instanceId}`;
 ---
 
 {/* ドロップダウンコンポーネントのスクリプト */}

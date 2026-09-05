@@ -9,13 +9,12 @@ import { getLocaleDirection } from '@docs/i18n/locales';
 import type { LocaleKey } from '@docs/i18n/locales';
 import '../styles/global.css';
 import { getProjectConfig, getDisplayNameAsync } from '@docs/project-config';
+import { readAppGroup } from '@docs/project-config/app-registry';
+import { loadGroupPages, resolveGroupPageContext } from '@docs/project-config/group-pages';
+import { defaultLanguageNames } from '@docs/i18n/language-names';
 import { Icons } from '@docs/ui/components/icons/Icons';
-import {
-  buildAvailableLanguagePaths,
-  collectAvailableVersionIds,
-  generateRedirectUrl,
-} from '@docs/content-utils';
-import { getCollection } from 'astro:content';
+import { buildAvailableLanguagePaths, collectAvailableVersionIds } from '@docs/content-utils';
+import { navigation } from '../lib/navigation';
 
 // 定数定義
 
@@ -56,10 +55,13 @@ const {
 
 // プロジェクト設定を読み込み
 const projectConfig = await getProjectConfig();
-const displayName = await getDisplayNameAsync(lang);
+const group = readAppGroup(process.cwd());
+const displayName = group
+  ? (group.config.name[lang] ?? group.config.name.en ?? Object.values(group.config.name)[0])
+  : await getDisplayNameAsync(lang);
 const dir = getLocaleDirection(lang);
 const breadcrumbIcon = dir === 'rtl' ? 'chevron-left' : 'chevron-right';
-const docs = await getCollection('docs');
+const documentSlugs = await navigation.documentSlugs();
 
 // HTML属性の設定
 const htmlDataAttributes: Record<string, string> = { 'data-theme': 'dark' };
@@ -75,15 +77,15 @@ const slugSliceIndex = 1 + numBaseSegments + 1 + 1; // 1 (leading empty) + base 
 const currentSlugForSelector = `${lang}/${Astro.url.pathname.split('/').slice(slugSliceIndex).join('/').replace(/\/$/, '')}`; // lang/slug 形式
 const relativeSlug = Astro.url.pathname.split('/').slice(slugSliceIndex).filter(Boolean).join('/');
 const availableVersionIds = collectAvailableVersionIds({
-  documentSlugs: docs.map((entry) => entry.slug),
+  documentSlugs,
   language: lang,
   relativeSlug,
 });
-const availableVersions = projectConfig.versioning.versions.filter((item) =>
+let availableVersions = projectConfig.versioning.versions.filter((item) =>
   availableVersionIds.has(item.id)
 );
-const availableLanguagePaths = buildAvailableLanguagePaths({
-  documentSlugs: docs.map((entry) => entry.slug),
+let availableLanguagePaths = buildAvailableLanguagePaths({
+  documentSlugs,
   supportedLanguages: projectConfig.language.supported,
   displayNames: projectConfig.language.displayNames,
   baseUrl: projectConfig.paths.baseUrl,
@@ -91,6 +93,34 @@ const availableLanguagePaths = buildAvailableLanguagePaths({
   currentLanguage: lang,
   relativeSlug,
 });
+const groupCatalog = group ? loadGroupPages(process.cwd(), { cache: import.meta.env.PROD }) : null;
+const groupPageContext = groupCatalog
+  ? resolveGroupPageContext(groupCatalog, {
+      url: Astro.url.pathname,
+      appId: `${group!.id}/${projectConfig.paths.projectSlug}`,
+      version,
+      lang,
+    })
+  : null;
+if (groupPageContext) {
+  availableVersions = groupPageContext.versions.map((item) => ({
+    ...item,
+    date: item.date ? new Date(item.date) : undefined,
+  }));
+  availableLanguagePaths = groupPageContext.languagePaths.map((item) => ({
+    ...item,
+    lang: item.lang as LocaleKey,
+    name:
+      projectConfig.language.displayNames[item.lang as LocaleKey] ??
+      defaultLanguageNames[item.lang] ??
+      item.lang,
+  }));
+}
+const alternateLanguagePaths = groupPageContext
+  ? availableLanguagePaths.filter(
+      (item) => groupPageContext.languagePaths.find((entry) => entry.lang === item.lang)?.exact
+    )
+  : availableLanguagePaths;
 const pageDescription =
   description ??
   projectConfig.translations[lang]?.displayDescription ??
@@ -99,12 +129,17 @@ const pageDescription =
 const pageTitle = title === displayName ? displayName : `${title} | ${displayName}`;
 const siteUrl = projectConfig.paths.siteUrl ?? Astro.url.origin;
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
-const defaultLanguagePath = availableLanguagePaths.find(
+const defaultLanguagePath = alternateLanguagePaths.find(
   (item) => item.lang === projectConfig.language.default
 );
 
 // ドキュメントトップへの動的リンクを生成
-const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
+const homeLinks = group
+  ? null
+  : await navigation.homeLinks(lang, version, projectConfig.paths.baseUrl);
+const docTopLink = group
+  ? `${group.publicBase}/navigation/${version}/${lang}/`
+  : homeLinks!.document;
 ---
 
 <!doctype html>
@@ -138,7 +173,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
     {pageType === 'not-found' && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
     {
-      availableLanguagePaths.map((item) => (
+      alternateLanguagePaths.map((item) => (
         <link rel="alternate" hreflang={item.lang} href={new URL(item.path, siteUrl).toString()} />
       ))
     }
@@ -187,7 +222,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
                 </a>
               </div>
             ) : (
-              <a href={`/${lang}`} class="site-title">
+              <a href={group ? docTopLink : homeLinks!.siteTitle} class="site-title">
                 {displayName}
               </a>
             )
@@ -201,6 +236,7 @@ const docTopLink = await generateRedirectUrl(lang, projectConfig.paths.baseUrl);
                 <VersionSelector
                   currentVersion={version}
                   versions={availableVersions}
+                  versionPaths={groupPageContext?.versionPaths}
                   basePath={projectConfig.paths.baseUrl}
                   currentSlug={currentSlugForSelector}
                   lang={lang}

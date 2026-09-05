@@ -1,6 +1,6 @@
 #!/usr/bin/env node
+import { createAwesomeContentAccess } from './app-ownership.mjs';
 import fs from 'node:fs';
-import path from 'node:path';
 import matter from 'gray-matter';
 import { rootDir, snapshotVersion } from './common.mjs';
 
@@ -25,7 +25,7 @@ if (
   process.exit(1);
 }
 
-const contentRoot = path.join(rootDir, 'apps/awesome/src/awesome-content', snapshotVersion);
+const content = createAwesomeContentAccess(snapshotVersion, rootDir);
 
 const genericPattern =
   /(?:遊び方、テーマ、勝利条件に関する概要です|(?:記事|書籍)に関する学習資料の概要です|に関するライブラリと資料です|に関する年次報告書、調査、標準化組織、または関連資源です)/;
@@ -128,8 +128,8 @@ async function translateWithFallback(entries) {
 }
 
 async function translateFile(targetFile) {
-  const englishPath = path.join(contentRoot, 'en', targetFile);
-  const japanesePath = path.join(contentRoot, 'ja', targetFile);
+  const englishPath = content.pathFor('en', targetFile);
+  const japanesePath = content.pathFor('ja', targetFile);
   if (!fs.existsSync(englishPath) || !fs.existsSync(japanesePath)) {
     throw new Error(`英日ページがそろっていません: ${targetFile}`);
   }
@@ -169,16 +169,12 @@ async function translateFile(targetFile) {
   return pending.length;
 }
 
-const japaneseRoot = path.join(contentRoot, 'ja');
 const targetFiles = allPages
-  ? fs
-      .readdirSync(japaneseRoot, { recursive: true, withFileTypes: true })
-      .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
-      .map((entry) => path.relative(japaneseRoot, path.join(entry.parentPath, entry.name)))
+  ? content
+      .files('ja')
       .filter((targetFile) =>
-        genericPattern.test(fs.readFileSync(path.join(japaneseRoot, targetFile), 'utf8'))
+        genericPattern.test(fs.readFileSync(content.pathFor('ja', targetFile), 'utf8'))
       )
-      .sort()
   : [file];
 
 let translatedCount = 0;

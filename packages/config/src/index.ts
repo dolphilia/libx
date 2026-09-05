@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import path from 'path';
 import { stripJsonComments } from '@docs/project-config/jsonc';
+import { findRepositoryRoot, readAppGroup, resolveApp } from '@docs/project-config/app-registry';
+import { recordAppBuild } from '../../../scripts/group-output.js';
 // JavaScript製の既存プラグインをESMとして読み込む。
 import { remarkLinkTransformer } from '../../../scripts/plugins/remark-link-transformer.js';
 import { remarkCallouts } from '../../../scripts/plugins/remark-callouts.js';
@@ -13,15 +15,33 @@ import { keepKatexWoff2Only } from '../../../scripts/plugins/katex-woff2-only.js
 export interface DocsConfigOptions {
   site?: string;
   base?: string;
+  rootDir?: string;
 }
 
 export function defineDocsConfig(options: DocsConfigOptions = {}) {
   const { site = 'https://libx.dev', base = '/' } = options;
+  const appRoot = options.rootDir ?? process.cwd();
+  const group = readAppGroup(appRoot);
+  const assetsDirectory = group ? `assets/${path.basename(appRoot)}` : 'assets';
 
   return defineConfig({
     site,
     base,
+    build: { assets: assetsDirectory },
     integrations: [
+      ...(group
+        ? [
+            {
+              name: 'libx-group-artifact',
+              hooks: {
+                'astro:build:done': async () => {
+                  const root = findRepositoryRoot(appRoot);
+                  recordAppBuild(resolveApp(`${group.id}/${path.basename(appRoot)}`, root), root);
+                },
+              },
+            },
+          ]
+        : []),
       mdx({
         syntaxHighlight: 'shiki',
         shikiConfig: {
@@ -52,9 +72,9 @@ export function defineDocsConfig(options: DocsConfigOptions = {}) {
         cssCodeSplit: false,
         rollupOptions: {
           output: {
-            assetFileNames: 'assets/[name].[hash].[ext]',
-            chunkFileNames: 'assets/[name].[hash].js',
-            entryFileNames: 'assets/[name].[hash].js',
+            assetFileNames: `${assetsDirectory}/[name].[hash].[ext]`,
+            chunkFileNames: `${assetsDirectory}/[name].[hash].js`,
+            entryFileNames: `${assetsDirectory}/[name].[hash].js`,
           },
         },
       },

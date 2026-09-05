@@ -17,6 +17,7 @@
  */
 
 import fs from 'fs/promises';
+import { discoverApps } from '../packages/project-config/src/app-registry.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { glob } from 'glob';
@@ -64,11 +65,10 @@ function parseTargetsFromArgs(args) {
     process.exit(1);
   }
 
+  const names = targetsValue.split(',').map((value) => value.trim());
+  if (names.some((name) => !name)) throw new Error('対象名に空のIDを含めることはできません。');
   return {
-    names: targetsValue
-      .split(',')
-      .map((value) => value.trim())
-      .filter(Boolean),
+    names: [...new Set(names)],
     baseDir: projectsArg ? config.appsDir : config.templatesDir,
     label: projectsArg ? 'プロジェクト' : 'テンプレート',
   };
@@ -81,8 +81,12 @@ async function getAvailableProjects(baseDir) {
   const projects = [];
 
   try {
-    const entries = await fs.readdir(baseDir, { withFileTypes: true });
-    const appDirs = entries.filter((entry) => entry.isDirectory());
+    const appDirs =
+      baseDir === config.appsDir
+        ? discoverApps(rootDir).apps.map((app) => ({ name: app.id }))
+        : (await fs.readdir(baseDir, { withFileTypes: true })).filter((entry) =>
+            entry.isDirectory()
+          );
 
     for (const dir of appDirs) {
       const appName = dir.name;
@@ -110,7 +114,7 @@ async function getAvailableProjects(baseDir) {
       }
     }
   } catch (error) {
-    console.error('プロジェクト検出中にエラーが発生しました:', error);
+    throw new Error('プロジェクト検出に失敗しました', { cause: error });
   }
 
   return projects;
@@ -187,10 +191,11 @@ async function getProjectInfo(projectName, baseDir) {
 async function detectVersions(contentPath) {
   try {
     const entries = await fs.readdir(contentPath, { withFileTypes: true });
-    return entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+    return entries
+      .filter((entry) => entry.isDirectory() && !entry.name.startsWith('.'))
+      .map((entry) => entry.name);
   } catch (error) {
-    console.error('バージョンディレクトリの検出中にエラーが発生しました:', error);
-    return [];
+    throw new Error('バージョンディレクトリの検出に失敗しました', { cause: error });
   }
 }
 
@@ -201,10 +206,11 @@ async function detectLanguages(contentPath, version) {
   try {
     const versionPath = path.join(contentPath, version);
     const entries = await fs.readdir(versionPath, { withFileTypes: true });
-    return entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+    return entries
+      .filter((entry) => entry.isDirectory() && !entry.name.startsWith('.'))
+      .map((entry) => entry.name);
   } catch (error) {
-    console.error('言語ディレクトリの検出中にエラーが発生しました:', error);
-    return [];
+    throw new Error('言語ディレクトリの検出に失敗しました', { cause: error });
   }
 }
 
@@ -288,7 +294,7 @@ async function generateSidebarForVersion(project, lang, version) {
         data,
       });
     } catch (error) {
-      console.warn(`ファイルの処理中にエラーが発生しました: ${file}`, error);
+      throw new Error(`Markdownの処理に失敗しました: ${file}`, { cause: error });
     }
   }
 
@@ -456,36 +462,36 @@ async function main() {
       await fs.rm(previousOutputDir, { recursive: true, force: true });
       await fs.mkdir(preparedOutputDir, { recursive: true });
 
-      // 言語とバージョンの組み合わせごとにサイドバーを生成
-      for (const version of project.versions) {
-        const languagesForVersion = project.languagesByVersion[version] || [];
-        if (languagesForVersion.length === 0) {
-          console.warn(
-            `  ${version} で対応言語が検出できなかったため、サイドバー生成をスキップします。`
-          );
-          continue;
-        }
-
-        const expectedLanguages = project.expectedLanguages ?? project.languages;
-        const missingLanguages = expectedLanguages.filter(
-          (lang) => !languagesForVersion.includes(lang)
-        );
-        if (missingLanguages.length > 0) {
-          console.log(
-            `  ${version} では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ${missingLanguages.join(', ')}`
-          );
-        }
-
-        for (const lang of languagesForVersion) {
-          console.log(`  ${lang}/${version} のサイドバーを生成中...`);
-
-          const sidebar = await generateSidebarForVersion(project, lang, version);
-          const outputPath = path.join(preparedOutputDir, `sidebar-${lang}-${version}.json`);
-          await saveJson(outputPath, sidebar);
-        }
-      }
-
       try {
+        // 言語とバージョンの組み合わせごとにサイドバーを生成
+        for (const version of project.versions) {
+          const languagesForVersion = project.languagesByVersion[version] || [];
+          if (languagesForVersion.length === 0) {
+            console.warn(
+              `  ${version} で対応言語が検出できなかったため、サイドバー生成をスキップします。`
+            );
+            continue;
+          }
+
+          const expectedLanguages = project.expectedLanguages ?? project.languages;
+          const missingLanguages = expectedLanguages.filter(
+            (lang) => !languagesForVersion.includes(lang)
+          );
+          if (missingLanguages.length > 0) {
+            console.log(
+              `  ${version} では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ${missingLanguages.join(', ')}`
+            );
+          }
+
+          for (const lang of languagesForVersion) {
+            console.log(`  ${lang}/${version} のサイドバーを生成中...`);
+
+            const sidebar = await generateSidebarForVersion(project, lang, version);
+            const outputPath = path.join(preparedOutputDir, `sidebar-${lang}-${version}.json`);
+            await saveJson(outputPath, sidebar);
+          }
+        }
+
         await fs.rename(project.outputDir, previousOutputDir).catch((error) => {
           if (error.code !== 'ENOENT') throw error;
         });

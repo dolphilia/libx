@@ -1,0 +1,167 @@
+---
+import { translate } from '@docs/i18n/utils';
+import type { LocaleKey } from '@docs/i18n/locales';
+import { loadGroupPages } from '@docs/project-config/group-pages';
+
+interface Item {
+  title: string;
+  href?: string;
+  items?: Item[];
+  isCurrent?: boolean;
+}
+interface Props {
+  items: Item[];
+  baseUrl: string;
+  version: string;
+  lang: LocaleKey;
+  dir: 'ltr' | 'rtl';
+}
+const { items, baseUrl, version, lang, dir } = Astro.props;
+const normalize = (url: string) => url.replace(/\/$/, '');
+const currentPath = normalize(Astro.url.pathname);
+const leaves = (entries: Item[]): Item[] =>
+  entries.flatMap((item) => (item.href ? [item] : leaves(item.items ?? [])));
+const localItems = leaves(items);
+const currentIndex = localItems.findIndex(
+  (item) => item.href && normalize(item.href) === currentPath
+);
+// Keep the initial HTML bounded even when a child contains thousands of documents.
+const nearby =
+  currentIndex < 0 ? [] : localItems.slice(Math.max(0, currentIndex - 2), currentIndex + 3);
+const label = translate('docs.documentation', lang);
+const indexUrl = `${baseUrl}/navigation/${version}/${lang}/`;
+const revision = loadGroupPages(process.cwd(), { cache: import.meta.env.PROD })?.navigationRevision;
+if (!revision) throw new Error('グループナビの世代がありません');
+const dataUrl = `${baseUrl}/navigation/${version}/${lang}.json?revision=${revision}`;
+---
+
+<libx-group-sidebar
+  data-url={dataUrl}
+  data-base={baseUrl}
+  data-version={version}
+  data-lang={lang}
+  data-revision={revision}
+  dir={dir}
+>
+  <nav aria-label={label}>
+    <p><a href={indexUrl}>{label}</a></p>
+    <div data-navigation>
+      <ul>
+        {
+          nearby.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={
+                  item.href && normalize(item.href) === currentPath ? 'page' : undefined
+                }
+              >
+                {item.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+</libx-group-sidebar>
+
+<script>
+  import { validateGroupNavigation } from './group-navigation.js';
+
+  class GroupSidebar extends HTMLElement {
+    connectedCallback() {
+      void this.loadNavigation();
+    }
+
+    async loadNavigation() {
+      try {
+        const response = await fetch(this.dataset.url!, { cache: 'no-cache' });
+        if (!response.ok) return;
+        const data = validateGroupNavigation(await response.json(), {
+          baseUrl: this.dataset.base!,
+          version: this.dataset.version!,
+          lang: this.dataset.lang!,
+          revision: this.dataset.revision!,
+        });
+        const currentPath = window.location.pathname.replace(/\/$/, '');
+        // A stale/offline index must not replace the useful local navigation.
+        const hasCurrent = (items: typeof data.items): boolean =>
+          items.some(
+            (item) => item.href?.replace(/\/$/, '') === currentPath || hasCurrent(item.items ?? [])
+          );
+        if (!hasCurrent(data.items) || !this.isConnected) return;
+        const render = (items: typeof data.items): HTMLUListElement => {
+          const list = document.createElement('ul');
+          for (const item of items) {
+            const row = document.createElement('li');
+            if (item.href) {
+              const link = document.createElement('a');
+              link.href = item.href;
+              link.textContent = item.title;
+              if (item.href.replace(/\/$/, '') === currentPath)
+                link.setAttribute('aria-current', 'page');
+              row.append(link);
+            }
+            if (item.items?.length) {
+              const details = document.createElement('details');
+              const summary = document.createElement('summary');
+              summary.textContent = item.title;
+              details.open = hasCurrent(item.items);
+              details.append(summary, render(item.items));
+              row.append(details);
+            }
+            list.append(row);
+          }
+          return list;
+        };
+        this.querySelector('[data-navigation]')?.replaceChildren(render(data.items));
+        const active = this.querySelector<HTMLElement>('[aria-current="page"]');
+        // Scroll the sidebar only, without moving the document body on page load.
+        const panel = this.closest<HTMLElement>('.sidebar-content');
+        if (active && panel && panel.scrollHeight > panel.clientHeight) {
+          panel.scrollTop +=
+            active.getBoundingClientRect().top -
+            panel.getBoundingClientRect().top -
+            panel.clientHeight / 3;
+        }
+      } catch {
+        // The static index link and local page links remain available.
+      }
+    }
+  }
+  if (!customElements.get('libx-group-sidebar'))
+    customElements.define('libx-group-sidebar', GroupSidebar);
+</script>
+
+<style>
+  libx-group-sidebar {
+    display: block;
+    overflow-wrap: anywhere;
+  }
+  libx-group-sidebar :global(ul) {
+    list-style: none;
+    margin: 0;
+    padding-inline-start: 0.75rem;
+  }
+  libx-group-sidebar :global(a),
+  libx-group-sidebar :global(summary) {
+    display: block;
+    padding-block: 0.35rem;
+    color: var(--sl-color-text);
+  }
+  libx-group-sidebar :global(summary) {
+    display: list-item;
+    cursor: pointer;
+  }
+  libx-group-sidebar :global([aria-current='page']) {
+    font-weight: 700;
+    border-inline-start: 3px solid currentColor;
+    padding-inline-start: 0.5rem;
+  }
+  libx-group-sidebar :global(a:focus-visible),
+  libx-group-sidebar :global(summary:focus-visible) {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+</style>

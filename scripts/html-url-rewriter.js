@@ -7,10 +7,7 @@ function escapeRegExp(value) {
 /**
  * Astro生成HTML内の既知のベースURLを統合出力用URLへ置換する。
  */
-export function rewriteBasePathInHtml(
-  source,
-  { oldBasePath, newBasePath, isIndex = false, isLocalBuild = false, localPort = 8080 }
-) {
+export function rewriteBasePathInHtml(source, { oldBasePath, newBasePath, isIndex = false }) {
   const escapedOldBasePath = escapeRegExp(oldBasePath);
   let content = source.replace(
     new RegExp(`${escapedOldBasePath}/assets/`, 'g'),
@@ -44,10 +41,6 @@ export function rewriteBasePathInHtml(
     ),
     `Redirecting from <code>${newBasePath}</code> to <code>${newBasePath}/$1/$2/</code>`
   );
-
-  if (isLocalBuild) {
-    return `<!doctype html><title>Redirecting to: /en/</title><meta http-equiv="refresh" content="2;url=/en/"><meta name="robots" content="noindex"><link rel="canonical" href="http://localhost:${localPort}/en/"><body><a href="/en/">Redirecting from <code>/</code> to <code>/en/</code></a></body>`;
-  }
 
   return content.replace(
     new RegExp(
