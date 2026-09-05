@@ -54,3 +54,14 @@ node scripts/experimental/group-workers.js package --group=awesome --source=.tmp
 ```
 
 `verify`、`status`、`publish`、`rollback-package`、`reconcile` は同CLIのヘルプに示す。梱包ハッシュは生成時の出力から別途保存する。Cloudflareへの操作前に配信範囲の指示を確認する。Pagesプレビューへの承認は独立Workerへの配信承認として流用しない。
+
+
+## 初回CIで認証設定により停止した場合
+
+このCLIはaccount IDを明示してAPIを読む。Pages用Wranglerがaccount IDなしで動いていても、独立Worker CLIの設定完了とはみなせない。GitHubのpreview環境に `CLOUDFLARE_ACCOUNT_ID` が渡っていることを確認する。初回run 33959850978のattempt 1は空値でAPI初期化前に停止し、設定を補ったattempt 2は入口deployments読取のHTTP 403で停止した。いずれもWorker作成には進んでいない。
+
+403の場合はtokenの対象アカウントと権限を確認する。公式APIの[配置読取](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/get/)はWorkers Scripts ReadまたはWrite等、[配置作成](https://developers.cloudflare.com/api/python/resources/workers/subresources/scripts/subresources/deployments/methods/create/)はWorkers Scripts Writeを要求する。今回の公開には読取だけでは不足する。既存Pages配信とtokenを共有する場合、Pages用権限を維持する。トークン値はチャットや検証メモに保存せず、必要な場合はGitHub secretへ設定する。
+
+初期API読取より前またはその読取で停止し、外部変更なしとログ・コードから確認できた場合は、設定修正後に同じrunの失敗jobを再実行できる。アップロードや切替を開始した後の失敗はこの手順に流用せず、配置記録・未確定状態の引継ぎ手順を使う。
+
+公開jobはNode.js 24を使用する。固定Wrangler 4.129.0はNode.js 22以上が必要で、アプリ準備ビルドのNode.js 20と同じ環境では起動できない。公開前のWrangler版確認stepでCLI起動を検査する。

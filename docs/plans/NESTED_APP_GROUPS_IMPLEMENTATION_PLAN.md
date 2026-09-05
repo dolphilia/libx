@@ -1,7 +1,7 @@
 # 入れ子型アプリグループの実装・Awesome移行計画
 
 - 作成日: 2026-09-05
-- ステータス: 実装中（共通検出・管理CLI・安全な統合とグループUIの一部を実施）
+- ステータス: 基本実装・Awesome移行・品質CI・Pagesプレビュー検証済み。独立Workersの外部検証は未完了、本番切替は未実施。
 - 採用根拠: ユーザーによる一段の入れ子案の採用指示
 - 対象: アプリ検出、設定、CLI、共通閲覧UI、出力統合、CI、Awesome移行
 - 関連調査: [大規模ドキュメント調査](../notes/AWESOME_AND_LARGE_DOCUMENT_SCALING_RESEARCH.md)
@@ -236,7 +236,7 @@ workflowの更新と[ローカルの成果物受け渡し検証](../notes/nested
 
 完了条件: 全版・言語の文書と出典が保持され、全URLが一意に解決し、各子が独立ビルドできる。本文が増えたことによるサイズ差と構造改善の差を混同しない。
 
-配置移行と最初の7子統合ビルドは成功。[移行後照合](../notes/nested-app-migration/after-move-validation.json)で2,074文書の保持を確認した。ブラウザー操作と現行出力の再照合も成功。根拠は[現行ローカル検証](../notes/nested-app-migration/current-local-validation.json)と[プレビュー検証](../notes/nested-app-migration/preview-validation.json)を参照。分割数の最終評価、残存参照の全体監査、リモート公開検証は継続する。
+配置移行と最初の7子統合ビルドは成功。[移行後照合](../notes/nested-app-migration/after-move-validation.json)で2,074文書の保持を確認した。ブラウザー操作と現行出力の再照合も成功。根拠は[現行ローカル検証](../notes/nested-app-migration/current-local-validation.json)と[プレビュー検証](../notes/nested-app-migration/preview-validation.json)を参照。分割数は[全子の計測](../notes/nested-app-migration/partition-build-comparison.json)を基に7子で確定した。リモート品質CIと統合Pagesの全ファイルHTTP照合は成功している（[CI記録](../notes/nested-app-migration/worker-ci-success.json)、[Pages検証](../notes/nested-app-migration/pages-preview-http.json)）。独立Workersの外部検証はフェーズ7に残す。
 
 ### フェーズ6: 全体検証・文書更新・公開準備
 
@@ -263,6 +263,8 @@ workflowの更新と[ローカルの成果物受け渡し検証](../notes/nested
 完了条件: 子app更新のために他の子をデプロイせず、失敗時にも既存文書へ到達できる。R2導入やリスト単位増分ビルドは、この計画から自動的に採用されたものとはしない。
 
 ## 8. 必須の受け入れケース
+
+[受け入れ根拠の中間監査](../notes/nested-app-migration/ACCEPTANCE_EVIDENCE_INDEX.md)に、条件ごとの検証資料と適用範囲を記録する。ローカル検証と外部Workerの未検証部分を区別し、最終完了判定は別途行う。
 
 | ケース | 期待結果 |
 | --- | --- |

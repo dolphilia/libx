@@ -470,3 +470,31 @@ CI補助4テスト、actionlint 1.7.12、全体の整形・lint・型検査、un
 ## 2026-09-05: 梱包準備CIの履歴取得を修正
 
 準備CI 33958682021は履歴版レビュー証拠のテストで失敗した。再利用workflowが既定の浅いcheckoutを使用しており、過去コミットのレビュー記録をgit showできなかった。同コミットの通常品質CIは全履歴を取得しており、このテストを通過していた。準備jobもfetch-depth: 0へ変更した。テストの省略や証拠の差替えは行っていない。[失敗記録](./nested-app-migration/worker-prepare-first-run.json)を保存した。外部Worker配信はskipped。
+
+
+## 2026-09-05: 独立Workerの品質CI・梱包準備CIが成功
+
+[品質CI 33958570359](https://github.com/dolphilia/libx/actions/runs/33958570359)、修正後c9bb3ffの[品質CI 33958950361](https://github.com/dolphilia/libx/actions/runs/33958950361)、[梱包準備CI 33958974958](https://github.com/dolphilia/libx/actions/runs/33958974958)が成功した。各実行でunit 27件・runtime 207件が全件成功。通常品質CIは統合ビルド・smoke・成果物予算も通過し、c9bb3ffでは12対象を再利用した。[CI記録](./nested-app-migration/worker-ci-success.json)へログハッシュとjob結果を保存した。全実行で外部配信jobはskipped。
+
+準備artifact 9967394646を取得し、ZIPのSHA-256をAPIとアップロードログに照合した。準備ログの梱包SHAを外部期待値として全2,171ファイル・174,594,684 bytesのパス・サイズ・SHA-256が一致した。公開対象は2,150ファイル・173,274,929 bytes、7子＋共有の8単位と入口Worker。配信先・コミット・SHA・操作範囲を[初回配信候補](./nested-app-migration/WORKER_PREVIEW_PUBLICATION_CANDIDATE.md)に固定した。独立Workerの外部配置は未実行で、Pages承認とは別の確認を必要とする。
+
+
+## 2026-09-05: 配信待ちの受け入れ根拠監査
+
+計画第8節の15ケースについて、テスト内のassertionと保存済み検証資料を確認し、[根拠一覧](./nested-app-migration/ACCEPTANCE_EVIDENCE_INDEX.md)へ範囲と境界を記録した。古いJSONは当時の記録として維持し、計画冒頭の現状表示だけ更新した。配信候補の公開パス誤記を修正し、実artifactのpublicBase `/docs/awesome` を検証記録へ追加した。コードや配信成果物は変更していない。文書リンクと変更JSONの整形検査が成功した。独立Worker配信は承認待ち、計画全体は未完了。
+
+
+## 2026-09-05: 独立Worker初回プレビューの承認と起動
+
+利用者が確認済み候補の9 Worker初回配信を承認した。コミットc9bb3ffと梱包全2,171ファイルを再照合し、リモートブランチのHEADと品質CI成功を確認して[run 33959850978](https://github.com/dolphilia/libx/actions/runs/33959850978)を起動した。worker_package_shaは07b2c21ce9dda7e8a149f26cfa90def36ef58301d11fa021ea694ecd3b91d3ac、初回基点none。品質検査成功、グループビルド進行中。配信完了はまだ確認していない。
+
+初回配信はaccount IDの空値によりAPIクライアント初期化で停止した。GitHubのsecret名一覧でrepoにはAPI tokenのみ、preview環境にはsecretなしと確認。既存Wranglerのlibx用アカウントキャッシュから不足するpreview用account IDを新規登録した（HTTP 201）。ローカルAPI tokenはなく、ローカルからの配信一覧確認はできなかった。[初回記録](./nested-app-migration/worker-preview-first-attempt.json)に保存した。
+
+同じrunの失敗jobだけを再実行した2回目は、account ID・token双方の受渡しを確認できたが、入口のdeployments読取APIでHTTP 403となった。Worker作成・版アップロードへ進む前に停止しており、配置記録も未作成。トークンの実権限や対象アカウント範囲はGitHubから参照できないため、どちらが原因か断定しない。[2回目記録](./nested-app-migration/worker-preview-second-attempt.json)に保存した。承認は継続して有効だが、次の再試行にはトークン権限・対象アカウント設定の確認が必要。
+
+
+## 2026-09-05: トークン設定後のCLI実行環境を修正
+
+利用者の設定完了後、run 33959850978の失敗jobを再実行した。3回目は最初のAPI読取を通過し、version-uploadのCLI起動で失敗した。CIログのNode 20.20.2と、固定Wrangler 4.129.0のengines >=22・起動時最低版検査の不整合を確認。publish jobだけNode 24へ変更し、公開前にWrangler版を表示するstepを追加した。準備ビルドのNode版と公開payloadは変更しない。actionlintと整形検査が成功した。
+
+[3回目記録](./nested-app-migration/worker-preview-third-attempt.json)と状態artifact 9968359563を照合した。journalはfailed-before-promotion、uploaded/reusedは空、candidateなし。生CLI stderrは従来のCI artifact対象外だったため直接のエラー文は保存されていない。次のrunは同じ梱包SHAと前回run指定で状態を引き継ぎ、配置先を読み直してから進む。
