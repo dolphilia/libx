@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "commit": "82234a4783abff3a24dfe6624c676f0993a4d1bd",
+  "runId": 33951907929,
+  "attempt": 2,
+  "url": "https://github.com/dolphilia/libx/actions/runs/33951907929/attempts/2",
+  "jobs": [
+    {
+      "id": 101272000672,
+      "name": "quality-check",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-09-05T07:43:10Z",
+      "completed_at": "2026-09-05T07:48:08Z"
+    },
+    {
+      "id": 101272631170,
+      "name": "deploy-production",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-09-05T07:48:09Z",
+      "completed_at": "2026-09-05T07:48:08Z"
+    },
+    {
+      "id": 101272631280,
+      "name": "deploy-preview",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-09-05T07:48:09Z",
+      "completed_at": "2026-09-05T07:48:08Z"
+    }
+  ],
+  "build": {
+    "selected": [
+      "awesome/overview",
+      "awesome/web",
+      "awesome/languages",
+      "awesome/systems",
+      "awesome/science",
+      "awesome/creative",
+      "awesome/community",
+      "glfw",
+      "lua",
+      "sample-docs",
+      "test-verification",
+      "landing"
+    ],
+    "built": [
+      "test-verification"
+    ],
+    "reused": [
+      "awesome/overview",
+      "awesome/web",
+      "awesome/languages",
+      "awesome/systems",
+      "awesome/science",
+      "awesome/creative",
+      "awesome/community",
+      "glfw",
+      "lua",
+      "sample-docs",
+      "landing"
+    ],
+    "groups": [
+      "awesome"
+    ],
+    "removedJavaScriptFiles": 197
+  },
+  "cacheRestoreEvidence": "2026-09-05T07:47:08.8810600Z Cache restored from key: app-builds-v1-macOS-ARM64-node20-82234a4783abff3a24dfe6624c676f0993a4d1bd-33951907929-1",
+  "unexpectedRebuildEvidence": "2026-09-05T07:47:17.9554800Z 【情報】test-verification: 再生成します (生成物の集合が変更されています: test-verification)",
+  "artifactSummary": {
+    "files": 2526,
+    "sizeMiB": 185.37
+  },
+  "logArchiveSha256": "0a92299430925e63d6cae2691b3e814cf3779b700c40557676cda413b5fca262",
+  "finding": "The contract test built into apps/test-verification/dist before cache restore. Overlay restoration retained newly named JS files not present in the cached manifest. The build correctly rejected the mixed candidate and rebuilt it.",
+  "followUp": "Run the contract build into a temporary outDir and verify the normal dist contents and mtimes remain unchanged. The local fix passed; remote verification of that fix is pending."
+}

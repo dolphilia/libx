@@ -1,28 +1,53 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, mkdtempSync, rmSync, existsSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import os from 'node:os';
+import path from 'node:path';
 import test from 'node:test';
 
-test('built Markdown and MDX share metadata and semantic HTML contracts', () => {
-  execFileSync('pnpm', ['--filter=apps-test-verification', 'build'], {
+function outputSnapshot(directory) {
+  if (!existsSync(directory)) return null;
+  return readdirSync(directory, { withFileTypes: true })
+    .sort((a, b) => a.name.localeCompare(b.name, 'en'))
+    .map((entry) => {
+      const file = path.join(directory, entry.name);
+      if (entry.isDirectory()) return [entry.name, outputSnapshot(file)];
+      if (!entry.isFile()) return [entry.name, 'non-file'];
+      return [
+        entry.name,
+        statSync(file).mtimeMs,
+        createHash('sha256').update(readFileSync(file)).digest('hex'),
+      ];
+    });
+}
+
+test('built Markdown and MDX share metadata and semantic HTML contracts', (t) => {
+  // Do not overlay fresh test output with an older CI build-cache candidate.
+  const output = mkdtempSync(path.join(os.tmpdir(), 'libx-test-verification-build-'));
+  const appOutput = 'apps/test-verification/dist';
+  const before = outputSnapshot(appOutput);
+  t.after(() => rmSync(output, { recursive: true, force: true }));
+  execFileSync('pnpm', ['--filter=apps-test-verification', 'build', `--outDir=${output}`], {
     cwd: process.cwd(),
     encoding: 'utf8',
     stdio: 'pipe',
   });
+  assert.deepEqual(outputSnapshot(appOutput), before, '契約テストは通常のdistを変更しない');
 
   const markdown = readFileSync(
-    'apps/test-verification/dist/v2/en/03-markdown-contract/01-markdown-parity/index.html',
+    path.join(output, 'v2/en/03-markdown-contract/01-markdown-parity/index.html'),
     'utf8'
   );
   const mdx = readFileSync(
-    'apps/test-verification/dist/v2/en/03-markdown-contract/02-mdx-parity/index.html',
+    path.join(output, 'v2/en/03-markdown-contract/02-mdx-parity/index.html'),
     'utf8'
   );
   const noToc = readFileSync(
-    'apps/test-verification/dist/v2/en/03-markdown-contract/04-no-toc/index.html',
+    path.join(output, 'v2/en/03-markdown-contract/04-no-toc/index.html'),
     'utf8'
   );
-  const notFound = readFileSync('apps/test-verification/dist/404.html', 'utf8');
+  const notFound = readFileSync(path.join(output, '404.html'), 'utf8');
   const searchIndex = JSON.parse(
     readFileSync('apps/test-verification/public/search/v2/en.json', 'utf8')
   );
@@ -63,6 +88,6 @@ test('built Markdown and MDX share metadata and semantic HTML contracts', () => 
   assert.match(notFound, /<h1 id="not-found-title"[^>]*>Page not found<\/h1>/);
   assert.doesNotMatch(notFound, /document-provenance/);
 
-  const builtFiles = readdirSync('apps/test-verification/dist', { recursive: true }).map(String);
+  const builtFiles = readdirSync(output, { recursive: true }).map(String);
   assert.equal(builtFiles.filter((file) => /KaTeX|katex/i.test(file)).length, 0);
 });
