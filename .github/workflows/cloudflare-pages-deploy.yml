@@ -19,25 +19,68 @@ on:
           - quality-only
           - preview
           - production
+          - workers-prepare
+          - workers-publish
+          - workers-rollback
+          - workers-reconcile
       preview_branch:
         description: 'Preview配置時のCloudflare Pages branch'
         required: true
         default: ci-preview
         type: string
 
+      worker_group:
+        description: '独立Worker検証のgroup ID'
+        required: true
+        default: awesome
+        type: string
+      worker_expected_deployment:
+        description: '確認済み入口deployment ID（初回はnone）'
+        required: true
+        default: none
+        type: string
+      worker_package_sha:
+        description: '準備runで確認した梱包SHA-256（publish / rollbackに必須）'
+        required: false
+        type: string
+      worker_previous_run:
+        description: '直前の独立Worker実行ID（梱包と配置記録の引継ぎ元）'
+        required: false
+        type: string
+      worker_rollback_run:
+        description: '復旧対象の独立Worker実行ID（rollbackのみ）'
+        required: false
+        type: string
+
 permissions:
   contents: read
+  actions: read
   deployments: write
 
 env:
   NODE_OPTIONS: '--max-old-space-size=6144'
 
 concurrency:
-  group: cloudflare-pages-${{ github.event_name == 'workflow_dispatch' && inputs.deploy_target || github.ref }}
+  group: ${{ startsWith(inputs.deploy_target, 'workers-') && format('cloudflare-workers-{0}', inputs.worker_group) || format('cloudflare-pages-{0}', github.event_name == 'workflow_dispatch' && inputs.deploy_target || github.ref) }}
   cancel-in-progress: false
 
 jobs:
+  workers-preview:
+    if: github.event_name == 'workflow_dispatch' && startsWith(inputs.deploy_target, 'workers-')
+    uses: ./.github/workflows/group-workers-preview.yml
+    with:
+      action: ${{ inputs.deploy_target == 'workers-prepare' && 'prepare' || inputs.deploy_target == 'workers-publish' && 'publish' || inputs.deploy_target == 'workers-rollback' && 'rollback' || 'reconcile' }}
+      group: ${{ inputs.worker_group }}
+      expected_deployment: ${{ inputs.worker_expected_deployment }}
+      expected_package_sha: ${{ inputs.worker_package_sha }}
+      previous_run: ${{ inputs.worker_previous_run }}
+      rollback_run: ${{ inputs.worker_rollback_run }}
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
   quality-check:
+    if: ${{ !startsWith(inputs.deploy_target, 'workers-') }}
     outputs:
       artifact-id: ${{ steps.upload-deployment.outputs.artifact-id }}
     runs-on: macos-latest

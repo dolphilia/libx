@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "scope": "Published immutable Pages preview; all artifact file bodies compared to manifest",
+  "origin": "https://eabcd13f.libx.pages.dev",
+  "runId": 33954776258,
+  "commit": "5a17379bc4883ffa280020c952830565941280f1",
+  "artifactId": 9966066729,
+  "verifiedFiles": 2526,
+  "totalFiles": 2526,
+  "expectedBytes": 194378646,
+  "elapsedSeconds": 281.939,
+  "failures": [],
+  "client": "curl; 8 concurrent HTTPS requests",
+  "routes": [
+    {
+      "route": "/docs/awesome/navigation/v2026-08-20/ja/",
+      "method": "HEAD",
+      "status": 200,
+      "location": null,
+      "ok": true
+    },
+    {
+      "route": "/docs/awesome/navigation/v2026-08-20/ja?probe=1",
+      "method": "GET",
+      "status": 308,
+      "location": "/docs/awesome/navigation/v2026-08-20/ja/?probe=1",
+      "ok": true
+    },
+    {
+      "route": "/docs/awesome/navigation/v2026-08-20/ja/index.html?probe=1",
+      "method": "GET",
+      "status": 308,
+      "location": "/docs/awesome/navigation/v2026-08-20/ja/?probe=1",
+      "ok": true
+    },
+    {
+      "route": "/docs/awesome/nonexistent-validation-route/",
+      "method": "GET",
+      "status": 404,
+      "location": null,
+      "ok": true
+    }
+  ],
+  "priorAttempt": {
+    "client": "Python urllib",
+    "status": 403,
+    "failedFiles": 2526,
+    "note": "Client-dependent result; curl retrieved the published bytes. Underlying cause not established."
+  },
+  "limitations": [
+    "One immutable preview deployment from one client location; no availability guarantee.",
+    "Full body hash comparison; browser interaction and MIME assertions not included in this HTTP test.",
+    "HTTP verification duration is not deployment duration."
+  ]
+}

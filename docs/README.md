@@ -4,6 +4,7 @@
 
 ## ガイド (`docs/guides`)
 - `BACKUP_OPERATIONS_GUIDE.md` – バックアップと復旧に関する運用手順
+- [INDEPENDENT_GROUP_WORKERS_PREVIEW_GUIDE.md](guides/INDEPENDENT_GROUP_WORKERS_PREVIEW_GUIDE.md) – 実験用の独立Workerプレビュー、準備・公開・復旧・配置記録の引継ぎ
 - `BUILD_AND_DEPLOYMENT_GUIDE.md` – ビルド／デプロイのフローと注意点
 - `DOCUMENT_ADDITION_GUIDE.md` – 新しいドキュメントを追加する際のルール
 - `LANGUAGE_ADDITION_GUIDE.md` – 新しい言語を追加するための手順

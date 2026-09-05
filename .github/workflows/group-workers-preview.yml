@@ -1,0 +1,157 @@
+name: Independent group Worker preview
+
+on:
+  workflow_call:
+    inputs:
+      action:
+        required: true
+        type: string
+      group:
+        required: true
+        type: string
+      expected_deployment:
+        required: true
+        type: string
+      expected_package_sha:
+        required: false
+        default: ''
+        type: string
+      previous_run:
+        required: false
+        default: ''
+        type: string
+      rollback_run:
+        required: false
+        default: ''
+        type: string
+    secrets:
+      CLOUDFLARE_API_TOKEN:
+        required: false
+      CLOUDFLARE_ACCOUNT_ID:
+        required: false
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  NODE_OPTIONS: '--max-old-space-size=6144'
+  WORKER_ACTION: ${{ inputs.action }}
+  WORKER_GROUP: ${{ inputs.group }}
+  WORKER_EXPECTED_DEPLOYMENT: ${{ inputs.expected_deployment }}
+  WORKER_EXPECTED_PACKAGE_SHA: ${{ inputs.expected_package_sha }}
+  WORKER_PREVIOUS_RUN: ${{ inputs.previous_run }}
+  WORKER_ROLLBACK_RUN: ${{ inputs.rollback_run }}
+
+# The caller holds the group lock across preparation and publishing. Do not use
+# the same concurrency group again here: GitHub would cancel/deadlock the caller.
+jobs:
+  prepare:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    outputs:
+      package_sha: ${{ steps.package.outputs.package_sha }}
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Validate request before downloads or builds
+        run: node scripts/experimental/group-workers-ci.js validate
+      - name: Validate previous runs
+        if: inputs.previous_run != '' || inputs.rollback_run != ''
+        uses: actions/github-script@v8
+        with:
+          script: |
+            for (const value of new Set([process.env.WORKER_PREVIOUS_RUN, process.env.WORKER_ROLLBACK_RUN].filter(Boolean))) {
+              const { data: run } = await github.rest.actions.getWorkflowRun({ ...context.repo, run_id: Number(value) });
+              if (run.event !== 'workflow_dispatch' || run.status !== 'completed' || run.path !== '.github/workflows/cloudflare-pages-deploy.yml') {
+                throw new Error('Only completed manual runs of the verified caller can supply previous packages/state');
+              }
+            }
+      - name: Download previous package
+        if: inputs.previous_run != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: worker-package-${{ inputs.group }}
+          run-id: ${{ inputs.previous_run }}
+          github-token: ${{ github.token }}
+          path: .tmp/previous-worker-artifact
+      - name: Download rollback target
+        if: inputs.rollback_run != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: worker-package-${{ inputs.group }}
+          run-id: ${{ inputs.rollback_run }}
+          github-token: ${{ github.token }}
+          path: .tmp/rollback-worker-artifact
+      - name: Generate shared artifacts
+        run: pnpm sync:service-workers && pnpm build:sidebar
+      - name: Quality checks
+        run: pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm check:links && pnpm check:integrity
+      - name: Build selected group
+        if: (inputs.action == 'prepare' || inputs.action == 'publish') && inputs.rollback_run == ''
+        run: pnpm build:selective --group="$WORKER_GROUP" --reuse
+      - name: Package or restore verified release
+        id: package
+        run: node scripts/experimental/group-workers-ci.js package
+      - name: Upload prepared package and external digest
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: worker-package-${{ inputs.group }}
+          path: .tmp/worker-artifact/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    if: inputs.action != 'prepare'
+    needs: prepare
+    runs-on: macos-latest
+    timeout-minutes: 90
+    environment: preview
+    env:
+      WORKER_PACKAGE_SHA: ${{ needs.prepare.outputs.package_sha }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Download verified package by exact artifact ID
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ needs.prepare.outputs.artifact_id }}
+          merge-multiple: true
+          path: .tmp/worker-artifact
+      - name: Restore previous deployment receipts and unresolved state
+        if: inputs.previous_run != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: worker-state-${{ inputs.group }}
+          run-id: ${{ inputs.previous_run }}
+          github-token: ${{ github.token }}
+          path: .tmp/worker-state
+      - name: Verify and publish or reconcile
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/experimental/group-workers-ci.js publish
+      - name: Preserve deployment records even after failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: worker-state-${{ inputs.group }}
+          path: |
+            .tmp/worker-state/
+            !.tmp/worker-state/operations/**
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
