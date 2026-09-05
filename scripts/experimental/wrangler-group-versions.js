@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { groupWorkerBootstrap } from './group-worker-bootstrap.js';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 
@@ -16,6 +17,10 @@ export function parseGroupVersionOutput(content, { type, service }) {
   if (matches.length !== 1 || matches[0].version !== 1 || matches[0].worker_name !== service)
     throw new Error('Wranglerの操作結果が欠損・重複または別Workerです');
   const result = matches[0];
+  if (type === 'deploy') {
+    if (!uuid.test(result.version_id)) throw new Error('初期作成版IDが不正です');
+    return { versionId: result.version_id };
+  }
   if (type === 'version-upload') {
     if (!uuid.test(result.version_id)) throw new Error('アップロード版IDが不正です');
     let previewUrl = null;
@@ -74,7 +79,7 @@ export function createWranglerGroupVersionClient({
     throw new Error('Cloudflare接続情報またはWrangler版が不正です');
   workDirectory = path.resolve(workDirectory);
   fs.mkdirSync(workDirectory, { recursive: true });
-  const run = async (directory, args, type) => {
+  const run = async (directory, args, type, bootstrap) => {
     directory = path.resolve(directory);
     if (workDirectory === directory || workDirectory.startsWith(directory + path.sep))
       throw new Error('操作記録を封印済みWorker内部へ保存できません');
@@ -85,7 +90,13 @@ export function createWranglerGroupVersionClient({
     const operation = path.join(workDirectory, crypto.randomUUID());
     fs.mkdirSync(operation);
     const input = path.join(operation, 'worker');
-    fs.cpSync(directory, input, { recursive: true, errorOnExist: true, force: false });
+    if (bootstrap) {
+      fs.mkdirSync(input);
+      fs.writeFileSync(path.join(input, 'wrangler.jsonc'), JSON.stringify(bootstrap.config));
+      fs.writeFileSync(path.join(input, 'index.js'), bootstrap.source);
+    } else {
+      fs.cpSync(directory, input, { recursive: true, errorOnExist: true, force: false });
+    }
     configuration = path.join(input, 'wrangler.jsonc');
     const output = path.join(operation, 'output.jsonl');
     try {
@@ -140,6 +151,16 @@ export function createWranglerGroupVersionClient({
     };
   };
   return {
+    async initialize(directory) {
+      const config = JSON.parse(fs.readFileSync(path.join(directory, 'wrangler.jsonc'), 'utf8'));
+      const bootstrap = groupWorkerBootstrap(config);
+      return run(
+        directory,
+        ['deploy', '--message', `libx-release:${bootstrap.revision}`],
+        'deploy',
+        bootstrap
+      );
+    },
     async upload(directory, revision) {
       if (!/^[a-f0-9]{64}$/.test(revision)) throw new Error('リリース識別子が不正です');
       return run(

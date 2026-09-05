@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { groupWorkerBootstrap } from './group-worker-bootstrap.js';
 import { verifyGroupWorkerPackage } from './group-worker-package-integrity.js';
 import {
   createCloudflareGroupStateReader,
@@ -97,8 +98,70 @@ export function createCloudflareGroupDriver({
       throw new Error('配置済み設定と梱包の記録が一致しません');
     verifyGroupWorkerConfiguration(remote.details, config);
   };
+  const bootstrapDirectory = path.join(stateDirectory, 'bootstrap');
+  fs.mkdirSync(bootstrapDirectory, { recursive: true });
+  if (fs.lstatSync(bootstrapDirectory).isSymbolicLink())
+    throw new Error('初期作成記録の保存先が不正です');
+  const bootstrapPath = (service) => path.join(bootstrapDirectory, `${service}.json`);
+  const loadBootstrap = (service) => {
+    const file = bootstrapPath(service);
+    if (!fs.existsSync(file)) return null;
+    if (fs.lstatSync(file).isSymbolicLink()) throw new Error('初期作成記録が不正です');
+    const receipt = JSON.parse(fs.readFileSync(file, 'utf8'));
+    if (receipt.accountId !== accountId || receipt.service !== service)
+      throw new Error('初期作成記録の対象が一致しません');
+    return receipt;
+  };
+  const readReleaseActive = async (service) => {
+    const active = await reader.readActive(service);
+    const bootstrap = loadBootstrap(service);
+    if (active && bootstrap && active.versionId === bootstrap.versionId) {
+      matchReceipt(active, bootstrap);
+      const config = service === routerConfig.name ? routerConfig : configs.get(service);
+      const expected = groupWorkerBootstrap(config);
+      if (bootstrap.revision !== expected.revision) throw new Error('初期作成コードが一致しません');
+      verifyGroupWorkerConfiguration(active.details, expected.config);
+      return null;
+    }
+    return active;
+  };
+  const ensureInitialized = async (service, workerDirectory, config) => {
+    if (await reader.readActive(service)) {
+      const visible = await readReleaseActive(service);
+      if (visible) {
+        const receipt = load(
+          service,
+          service === routerConfig.name ? visible.versionId : undefined
+        );
+        if (!receipt) throw new Error('記録のない既存Workerを初期化できません');
+        matchReceipt(visible, receipt);
+      }
+      return;
+    }
+    if (loadBootstrap(service) || (await reader.readVersions(service)).length)
+      throw new Error('初期作成の状態が未確定です');
+    seal();
+    const created = await client.initialize(workerDirectory);
+    const remote = await reader.readVersion(service, created.versionId);
+    const expected = groupWorkerBootstrap(config);
+    if (remote.revision !== expected.revision) throw new Error('初期作成版が一致しません');
+    verifyGroupWorkerConfiguration(remote.details, expected.config);
+    const receipt = {
+      accountId,
+      service,
+      versionId: remote.versionId,
+      revision: remote.revision,
+      scriptEtag: remote.scriptEtag,
+    };
+    fs.mkdirSync(bootstrapDirectory, { recursive: true });
+    fs.writeFileSync(bootstrapPath(service), JSON.stringify(receipt, null, 2) + '\n', {
+      flag: 'wx',
+    });
+    matchReceipt(await reader.readActive(service), receipt);
+  };
   const upload = async (service, workerDirectory, revision, config, isRouter = false) => {
     seal();
+    await ensureInitialized(service, workerDirectory, config);
     const uploaded = await client.upload(workerDirectory, revision);
     const origin = groupVersionOrigin(uploaded.previewUrl, service, uploaded.versionId);
     seal();
@@ -124,7 +187,7 @@ export function createCloudflareGroupDriver({
   };
   const readActive = async (groupId) => {
     checkGroup(groupId);
-    const active = await reader.readActive(routerConfig.name);
+    const active = await readReleaseActive(routerConfig.name);
     if (active === null) return null;
     const receipt = load(routerConfig.name, active.versionId);
     if (!receipt) throw new Error('稼働中の入口に対応する配置記録がありません');
@@ -138,7 +201,7 @@ export function createCloudflareGroupDriver({
   return {
     readActive,
     async readUnit(service) {
-      const active = await reader.readActive(service);
+      const active = await readReleaseActive(service);
       if (active === null) return null;
       const receipt = load(service);
       if (!receipt) throw new Error(`配置記録のない既存Workerは再利用できません: ${service}`);
@@ -148,10 +211,14 @@ export function createCloudflareGroupDriver({
     async uploadUnit(unit, workerDirectory) {
       if (workerDirectory !== path.join(directory, unit.service) || !configs.has(unit.service))
         throw new Error('単位の配置元が一致しません');
-      if (await reader.readActive(unit.service)) throw new Error('既存単位を上書きできません');
+      if (await readReleaseActive(unit.service)) throw new Error('既存単位を上書きできません');
       let receipt = load(unit.service);
       if (!receipt) {
-        if ((await reader.readVersions(unit.service)).length)
+        if (
+          (await reader.readVersions(unit.service)).some(
+            (version) => version.id !== loadBootstrap(unit.service)?.versionId
+          )
+        )
           throw new Error('記録のないアップロード済み版があります');
         receipt = await upload(
           unit.service,

@@ -505,3 +505,12 @@ CI補助4テスト、actionlint 1.7.12、全体の整形・lint・型検査、un
 修正コミットcce2c55の配信run 33962699470は準備・同一梱包SHA照合・Wrangler版確認・前回状態引継ぎに成功したが、最初のversion-uploadで失敗した。状態artifact 9968518454は2件の失敗journalのみで、配置済み版の記録はない。Node版の修正だけでは配信完了に至らず、生CLI出力を保存していなかったため次の原因を特定できなかった。
 
 Wrangler呼出し失敗時の終了コード・signal・stdout/stderrを各8,000文字以内に制限し、token・account ID・環境中の認証値・Bearer値を除去した診断JSONをstate artifactへ保存するよう修正した。生debug logや操作コピーは引き続き保存対象外。CLI関連5件、公開制御・driver10件のテストとlintが成功した。公開payloadは変更しない。
+
+
+## 2026-09-05: 未作成Workerへのversions uploadを修正
+
+診断対応run 33963192075のstate artifact 9968690995（SHA-256 a25a5760f833e0382fe85b29f9220fdd9beb74b6e711874d95c9d230c400928c）から、未作成Workerにはversions uploadできず最初にdeployが必要というCLIエラーを取得した。API読取の403は解消している。
+
+初回のみ同じWorker名に、本文・資産・bindingを持たず503/no-storeを返す初期版をdeployする処理を追加した。コードと設定から初期版revisionを計算し、APIで版・etag・設定を照合して作成記録を保存する。記録と一致する初期版だけを未公開状態として扱い、その後の通常版をHTTP照合して最後に切り替える。未知の既存Workerや記録なしの作成結果は採用しない。初期作成の応答喪失も自動再送しない。
+
+結合テストのCLIを実Cloudflareの初回作成要件に合わせ、初期版503・bindingなし、初期作成後のアップロード失敗からの再開、一子更新と復旧、既存Workerの記録欠落拒否を確認した。関連9テスト成功。外部再検証は継続する。

@@ -26,7 +26,8 @@ function setup(t) {
   const versions = new Map(),
     active = new Map(),
     uploads = [];
-  let loseRouterResponse = false;
+  let loseRouterResponse = false,
+    failUpload = false;
   const stateDirectory = path.join(root, 'state');
   const reader = createCloudflareGroupStateReader({
     accountId,
@@ -58,9 +59,19 @@ function setup(t) {
       const config = JSON.parse(fs.readFileSync(args[args.indexOf('--config') + 1]));
       const service = config.name;
       let result;
-      if (args.includes('upload')) {
+      const initial = args[3] === 'deploy';
+      if (args.includes('upload') && failUpload) throw new Error('simulated upload failure');
+      if (args.includes('upload') || initial) {
+        if (!initial)
+          assert.ok(versions.has(service), 'version upload requires an existing Worker');
+        else {
+          assert.equal(versions.has(service), false);
+          assert.equal(config.assets, undefined);
+          assert.equal(config.services, undefined);
+          assert.match(fs.readFileSync(path.join(options.cwd, 'index.js'), 'utf8'), /status: 503/);
+        }
         const id = crypto.randomUUID();
-        uploads.push(service);
+        if (!initial) uploads.push(service);
         const revision = args[args.indexOf('--message') + 1];
         const bindings = config.assets
           ? [{ type: 'assets', name: 'ASSETS' }]
@@ -90,12 +101,17 @@ function setup(t) {
         if (!versions.has(service)) versions.set(service, new Map());
         versions.get(service).set(id, { details, directory: options.cwd, config });
         result = {
-          type: 'version-upload',
+          type: initial ? 'deploy' : 'version-upload',
           version: 1,
           worker_name: service,
           version_id: id,
           preview_url: `https://${id.slice(0, 8)}-${service}.test.workers.dev`,
         };
+        if (initial)
+          active.set(service, {
+            id: crypto.randomUUID(),
+            versions: [{ version_id: id, percentage: 100 }],
+          });
       } else {
         const id = args.find((arg) => arg.endsWith('@100')).slice(0, -4);
         const deploymentId = crypto.randomUUID();
@@ -212,6 +228,9 @@ function setup(t) {
     driverFor,
     publish,
     publicFetch,
+    set failUpload(value) {
+      failUpload = value;
+    },
     set loseRouterResponse(value) {
       loseRouterResponse = value;
     },
@@ -252,7 +271,7 @@ test('配置記録を失った既存Workerと公開本文の改変を検出し�
   fs.unlinkSync(file);
   await assert.rejects(f.publish(first), /配置記録/);
   fs.writeFileSync(file, receipt);
-  const remote = [...f.versions.get(unit.service).values()][0];
+  const remote = f.versions.get(unit.service).get(JSON.parse(receipt).versionId);
   const asset = unit.files[0];
   fs.appendFileSync(path.join(remote.directory, 'assets', 'docs/docs', asset.path), 'changed');
   const before = structuredClone([...f.active.entries()]);
@@ -272,4 +291,19 @@ test('CLIが切替応答を失ってもAPIと保存した版記録で照合で�
   });
   assert.equal(result.status, 'published-after-reconciliation');
   assert.equal(f.uploads.length, 4);
+});
+
+test('初期作成後にアップロードが失敗しても503の初期版を照合して再開できる', async (t) => {
+  const f = setup(t),
+    pkg = f.makePackage('old');
+  f.failUpload = true;
+  await assert.rejects(f.publish(pkg), /未確定/);
+  assert.equal(f.uploads.length, 0);
+  const service = pkg.release.units[0].service;
+  assert.equal(f.versions.get(service).size, 1);
+  assert.equal(await f.driverFor(pkg).readUnit(service), null);
+  f.failUpload = false;
+  await f.publish(pkg);
+  assert.equal(f.versions.get(service).size, 2);
+  assert.equal(fs.readdirSync(path.join(f.stateDirectory, 'bootstrap')).length, 4);
 });

@@ -65,3 +65,10 @@ node scripts/experimental/group-workers.js package --group=awesome --source=.tmp
 初期API読取より前またはその読取で停止し、外部変更なしとログ・コードから確認できた場合は、設定修正後に同じrunの失敗jobを再実行できる。アップロードや切替を開始した後の失敗はこの手順に流用せず、配置記録・未確定状態の引継ぎ手順を使う。
 
 公開jobはNode.js 24を使用する。固定Wrangler 4.129.0はNode.js 22以上が必要で、アプリ準備ビルドのNode.js 20と同じ環境では起動できない。公開前のWrangler版確認stepでCLI起動を検査する。
+
+
+## 初回Worker作成
+
+未作成Workerへの `versions upload` はCLIが拒否する。初回だけ、同じWorker名へ本文・資産・bindingなしの503応答版を `deploy` し、作成版とコード・設定の識別情報を照合してbootstrap記録へ保存する。入口のworkers.devはこの段階では503を返す。本来の本文は通常の版アップロード・全件照合を通してから有効化する。既存公開がある更新では初期版へ戻さない。
+
+初期作成の応答が失われて記録を保存できなかった場合は、未知の既存Workerとして停止する。作成記録のない版を手作業で正規の記録へ偽装しない。APIの実状態を確認して復旧方法を判断する。
