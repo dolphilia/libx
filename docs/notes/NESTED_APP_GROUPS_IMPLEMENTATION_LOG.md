@@ -463,3 +463,10 @@ AwesomeのCLI梱包2171ファイルと入口dry-runを確認した。相対outdi
 CI補助4テスト、actionlint 1.7.12、全体の整形・lint・型検査、unit27件が成功した。runtimeは206件中205件成功、統合previewのlistenだけがsandboxのEPERMで失敗したため、そのファイルの2テストを権限調整して再実行し成功した。後から追加した確認済みSHAの拒否テストも成功した。相対リンク、repository integrity、カテゴリ構造、レイアウト30一致も確認した。
 
 [操作ガイド](../guides/INDEPENDENT_GROUP_WORKERS_PREVIEW_GUIDE.md)に入力、前回runの選定、復旧、状態保持期限と未確定時の手順を記録した。リモートCIと独立Workerの外部検証は引き続き未実施。
+
+コミット9e3e1e7を品質専用ブランチへpushし、[品質CI 33958570359](https://github.com/dolphilia/libx/actions/runs/33958570359)と[Worker梱包準備CI 33958682021](https://github.com/dolphilia/libx/actions/runs/33958682021)を起動した。品質CIは静的解析・テスト・本文検査・テンプレートビルドを通過し、準備CIは品質検査中。両実行の完了はまだ確認していない。準備CIはCloudflareへ接続せず、既存Pagesの両配信jobもskippedだった。
+
+
+## 2026-09-05: 梱包準備CIの履歴取得を修正
+
+準備CI 33958682021は履歴版レビュー証拠のテストで失敗した。再利用workflowが既定の浅いcheckoutを使用しており、過去コミットのレビュー記録をgit showできなかった。同コミットの通常品質CIは全履歴を取得しており、このテストを通過していた。準備jobもfetch-depth: 0へ変更した。テストの省略や証拠の差替えは行っていない。[失敗記録](./nested-app-migration/worker-prepare-first-run.json)を保存した。外部Worker配信はskipped。
