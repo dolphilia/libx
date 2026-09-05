@@ -498,3 +498,10 @@ CI補助4テスト、actionlint 1.7.12、全体の整形・lint・型検査、un
 利用者の設定完了後、run 33959850978の失敗jobを再実行した。3回目は最初のAPI読取を通過し、version-uploadのCLI起動で失敗した。CIログのNode 20.20.2と、固定Wrangler 4.129.0のengines >=22・起動時最低版検査の不整合を確認。publish jobだけNode 24へ変更し、公開前にWrangler版を表示するstepを追加した。準備ビルドのNode版と公開payloadは変更しない。actionlintと整形検査が成功した。
 
 [3回目記録](./nested-app-migration/worker-preview-third-attempt.json)と状態artifact 9968359563を照合した。journalはfailed-before-promotion、uploaded/reusedは空、candidateなし。生CLI stderrは従来のCI artifact対象外だったため直接のエラー文は保存されていない。次のrunは同じ梱包SHAと前回run指定で状態を引き継ぎ、配置先を読み直してから進む。
+
+
+## 2026-09-05: Node修正後のCLI診断を保存
+
+修正コミットcce2c55の配信run 33962699470は準備・同一梱包SHA照合・Wrangler版確認・前回状態引継ぎに成功したが、最初のversion-uploadで失敗した。状態artifact 9968518454は2件の失敗journalのみで、配置済み版の記録はない。Node版の修正だけでは配信完了に至らず、生CLI出力を保存していなかったため次の原因を特定できなかった。
+
+Wrangler呼出し失敗時の終了コード・signal・stdout/stderrを各8,000文字以内に制限し、token・account ID・環境中の認証値・Bearer値を除去した診断JSONをstate artifactへ保存するよう修正した。生debug logや操作コピーは引き続き保存対象外。CLI関連5件、公開制御・driver10件のテストとlintが成功した。公開payloadは変更しない。

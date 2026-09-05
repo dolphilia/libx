@@ -5,6 +5,7 @@ import path from 'node:path';
 import test from 'node:test';
 import {
   createWranglerGroupVersionClient,
+  groupWranglerFailureSummary,
   parseGroupVersionOutput,
 } from '../../scripts/experimental/wrangler-group-versions.js';
 const versionId = '11111111-1111-1111-1111-111111111111';
@@ -104,7 +105,10 @@ test('CLI失敗は再送せず、stdoutや認証情報を例外へ転記しな�
     workDirectory: path.join(root, 'operations'),
     execute: async () => {
       calls++;
-      throw new Error('sensitive stdout');
+      throw Object.assign(new Error('sensitive stdout'), {
+        code: 1,
+        stderr: 'Upload failed test-only-token',
+      });
     },
   });
   await assert.rejects(client.deploy(directory, versionId), (error) => {
@@ -113,6 +117,11 @@ test('CLI失敗は再送せず、stdoutや認証情報を例外へ転記しな�
     return true;
   });
   assert.equal(calls, 1);
+  const diagnostics = fs.readdirSync(path.join(root, 'diagnostics'));
+  assert.equal(diagnostics.length, 1);
+  const report = JSON.parse(fs.readFileSync(path.join(root, 'diagnostics', diagnostics[0])));
+  assert.equal(report.stderr, 'Upload failed [redacted]');
+  assert.equal(report.exitCode, 1);
 });
 
 test('CLIは未知・重複引数と基点省略をCloudflare接続前に拒否する', async () => {
@@ -131,4 +140,23 @@ test('CLIは未知・重複引数と基点省略をCloudflare接続前に拒否�
     runGroupWorkers([...options, '--expected-deployment=invalid']),
     /deployment ID/
   );
+});
+
+test('CLI診断は終了コードとエラーを保持し、認証情報を除去してサイズを制限する', () => {
+  const result = groupWranglerFailureSummary(
+    {
+      code: 1,
+      stdout: 'upload failed: token-value',
+      stderr: 'Bearer other-secret\naccount-value\n' + 'x'.repeat(9000),
+    },
+    ['token-value', 'account-value']
+  );
+  assert.equal(result.exitCode, 1);
+  assert.match(result.stdout, /upload failed: \[redacted\]/);
+  assert.ok(result.stderr.length <= 8000);
+  const short = groupWranglerFailureSummary({ stderr: 'Bearer other-secret account-value' }, [
+    'account-value',
+  ]);
+  assert.equal(short.stderr, 'Bearer [redacted] [redacted]');
+  assert.doesNotMatch(JSON.stringify(result), /token-value|account-value|other-secret/);
 });

@@ -37,6 +37,26 @@ export function parseGroupVersionOutput(content, { type, service }) {
   return { deploymentId: result.deployment_id };
 }
 
+/** Keep actionable CLI errors without persisting credentials or debug logs. */
+export function groupWranglerFailureSummary(error, sensitiveValues = []) {
+  const redact = (value) => {
+    let text = String(value ?? '')
+      .split(String.fromCharCode(27))
+      .join('')
+      .replace(/\[[0-9;]*m/g, '');
+    for (const secret of sensitiveValues.filter((value) => typeof value === 'string' && value))
+      text = text.split(secret).join('[redacted]');
+    text = text.replace(/Bearer\s+[^\s"']+/gi, 'Bearer [redacted]');
+    return text.slice(-8000);
+  };
+  return {
+    exitCode: Number.isInteger(error?.code) ? error.code : null,
+    signal: typeof error?.signal === 'string' ? error.signal : null,
+    stdout: redact(error?.stdout),
+    stderr: redact(error?.stderr),
+  };
+}
+
 /** Thin CLI transport. Callers must verify the package and serialize all writers. */
 export function createWranglerGroupVersionClient({
   accountId,
@@ -94,8 +114,23 @@ export function createWranglerGroupVersionClient({
           maxBuffer: 8 * 1024 * 1024,
         }
       );
-    } catch {
-      // Do not print stdout/stderr or retry a mutation whose result is uncertain.
+    } catch (error) {
+      const sensitiveValues = [
+        accountId,
+        apiToken,
+        ...Object.entries(process.env)
+          .filter(([key]) => /TOKEN|SECRET|PASSWORD|PRIVATE_KEY/i.test(key))
+          .map(([, value]) => value),
+      ];
+      const summary = groupWranglerFailureSummary(error, sensitiveValues);
+      const diagnostics = path.join(workDirectory, '..', 'diagnostics');
+      fs.mkdirSync(diagnostics, { recursive: true });
+      fs.writeFileSync(
+        path.join(diagnostics, `${path.basename(operation)}.json`),
+        JSON.stringify({ type, service: config.name, ...summary }, null, 2) + '\n'
+      );
+      // The bounded, redacted summary is kept in the state artifact, never raw logs.
+      // Do not retry a mutation whose result is uncertain.
       throw new Error(`Wrangler操作が失敗または未確定です: ${type}。記録: ${operation}`);
     }
     if (!fs.existsSync(output)) throw new Error(`Wranglerの操作記録がありません: ${operation}`);
