@@ -198,6 +198,8 @@ apps/<group>/<project>/src/content/docs/<version>/<lang>/<NN-category>/<NN-page>
 
 ### 7.6 配信構造とソース構造を混同しない
 
+2026-09-06の利用者方針: 本番・外部プレビューは統合Cloudflare Pagesで運用し、開発・検証を含めCloudflare Workersを使用しない。ローカル開発はAstroの開発／プレビューサーバーを使う。ブラウザー内のService Worker（sw.js）はこの制限の対象外。 独立Worker配信の実験は終了し、未実施の外部検証を今後の必須作業とは扱わない。
+
 各アプリは独立して開発・検証でき、統合ビルドが公開用 `dist/` へ配置する。URL書換えや統合処理をアプリ固有コードへ分散させない。
 
 ## 8. 設定原則

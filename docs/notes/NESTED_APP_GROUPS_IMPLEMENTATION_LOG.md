@@ -535,3 +535,10 @@ Wrangler呼出し失敗時の終了コード・signal・stdout/stderrを各8,000
 本番ドメインの全ファイルを取得し、2,020件は生ハッシュ一致。506件の差分は固定URLで原文ハッシュ一致を確認し、本番側では442件がHTTP→HTTPSだけ、64件がメール保護と任意のHTTPS書き換えだけだった。説明不能な差は0件。[照合記録](./nested-app-migration/pages-production-validation.json)へ保存。固定URL・Pagesエイリアスの代表経路各39件と、[実ブラウザー](./nested-app-migration/pages-production-browser.json)で再読込・検索・本文・言語切替・モバイル表示を確認した。
 
 Git mainのマージと独立Workerの入口変更は行っていない。計画の標準統合Pages本番切替は完了したが、独立Workerの更新・障害・復旧などの外部受け入れ検証と計画全体の最終監査は残る。
+
+
+## 2026-09-06: 統合Pagesへ方針を統一し、検証用Workersを削除
+
+利用者が開発・検証を含めWorkersを使用しない方針を指定したため、独立Worker実験を終了した。run 34006492505で初回配信の9個についてaccount・有効版・コードetag・既知版集合を確認し、入口から順に強制オプションなしで削除した。全9個がdeleted、各削除後のAPIで不存在を確認。本番Pagesのdeployment 9b0b5454-7424-4665-897d-b956fbc20afdは削除前後で不変、本番AwesomeはHTTP 200。[削除記録](./nested-app-migration/worker-retirement.json)を保存した。一時削除CIは用済みのため除去する。
+
+今後はAstroのローカル開発・プレビューと統合Pagesを使用する。Workersの未実施外部検証は中止し、過去のstate・receiptを現行状態として使用しない。ブラウザー内のService Workerは継続利用できる。

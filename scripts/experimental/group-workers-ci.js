@@ -171,10 +171,8 @@ export async function runGroupWorkersCI(
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
-  try {
-    console.log(JSON.stringify(await runGroupWorkersCI(process.argv[2]), null, 2));
-  } catch (error) {
-    console.error(error.message);
-    process.exitCode = 1;
-  }
+  console.error(
+    '2026-09-06の方針変更によりWorkers CLIは廃止しました。開発・プレビュー・本番は統合Pagesを使用してください。'
+  );
+  process.exitCode = 1;
 }
