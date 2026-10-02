@@ -102,6 +102,15 @@ jobs:
           "$asciidoc_environment/bin/asciidoc" --version
           printf 'UTHASH_ASCIIDOC=%s\n' "$asciidoc_environment/bin/asciidoc" >> "$GITHUB_ENV"
 
+      - name: Setup pinned Markdown for cJSON content checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          cjson_environment="$RUNNER_TEMP/cjson-markdown-3.7"
+          python -m venv "$cjson_environment"
+          "$cjson_environment/bin/python" -m pip install -r scripts/importers/requirements-cjson.txt
+          printf 'LIBX_CJSON_PYTHON=%s\n' "$cjson_environment/bin/python" >> "$GITHUB_ENV"
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -140,6 +149,9 @@ jobs:
 
       - name: Verify fmt English and Japanese rendered content
         run: pnpm --filter=apps-fmt check:rendered
+
+      - name: Verify cJSON English and Japanese rendered content
+        run: pnpm --filter=apps-cjson check:rendered
 
       - name: Check deployment asset budget
         run: pnpm check:deployment-assets

@@ -1,0 +1,2130 @@
+[
+  {
+    "id": "000",
+    "page": "01-guide/01-usage.md",
+    "tag": "h1",
+    "source": "cJSON",
+    "sourceSha256": "1e3a4f65000f623645b7bf4b70da5fc9e1eff6e1586fe7f2c504fa3a7df664c1",
+    "unchangedReason": null
+  },
+  {
+    "id": "001",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Ultralightweight JSON parser in ANSI C.",
+    "sourceSha256": "6816a3bceae1abafa02c77bdd48edb413a253a007c479f2c6a31e612dd66c799",
+    "unchangedReason": null
+  },
+  {
+    "id": "002",
+    "page": "01-guide/01-usage.md",
+    "tag": "h2",
+    "source": "Table of contents",
+    "sourceSha256": "e331da0741fb6d0552bc27483ba0720778440c520b59be917613781679ede70f",
+    "unchangedReason": null
+  },
+  {
+    "id": "003",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#license\">License</a>",
+    "sourceSha256": "32a241d687b7b2e9311c2e309bc49b78c9ea0c91bc369e8e2d0c7dc73e9ceafe",
+    "unchangedReason": null
+  },
+  {
+    "id": "004",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#usage\">Usage</a>",
+    "sourceSha256": "f0b5534c03249e394e72f5183bd747ec36608555056f13b62bd7a64bdec036fc",
+    "unchangedReason": null
+  },
+  {
+    "id": "005",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#welcome-to-cjson\">Welcome to cJSON</a>",
+    "sourceSha256": "c0f7506895b62cfb4c674651153c128dc1b42c04994786b5bebcd7e1f48b7451",
+    "unchangedReason": null
+  },
+  {
+    "id": "006",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#copying-the-source\">Copying the source</a>",
+    "sourceSha256": "aa1748e6e2ca46bd5470e67d19da368a070e14a6beb4dd5365325c7054428fef",
+    "unchangedReason": null
+  },
+  {
+    "id": "007",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#cmake\">CMake</a>",
+    "sourceSha256": "7a27d2af9e4a6bd8adac5436e676ec3bcf2bf79d4727d7fcce09bbdb47c5e2ee",
+    "unchangedReason": null
+  },
+  {
+    "id": "008",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#makefile\">Makefile</a>",
+    "sourceSha256": "8fb27ac59775dc3b5509afe02376cc6a8ed8d08feae77fafb9499005da74526c",
+    "unchangedReason": null
+  },
+  {
+    "id": "009",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#meson\">Meson</a>",
+    "sourceSha256": "ce5af3970b03023b9d0af1854e462ccd24565fb64af4e474c388c98628436437",
+    "unchangedReason": null
+  },
+  {
+    "id": "010",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#vcpkg\">Vcpkg</a>",
+    "sourceSha256": "2f76b342a11f4c23f9b90cba2c30db5f246432f8d043807fa2237985ea8503c3",
+    "unchangedReason": null
+  },
+  {
+    "id": "011",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#including-cjson\">Including cJSON</a>",
+    "sourceSha256": "015d711acb69e06631f1b651f750d4d56e3ee6b2993a43342790bccdb1a9d054",
+    "unchangedReason": null
+  },
+  {
+    "id": "012",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#data-structure\">Data Structure</a>",
+    "sourceSha256": "959e79e526b195423659935c6e40cb26e7ffb63a49debd1b272ff676499acfb1",
+    "unchangedReason": null
+  },
+  {
+    "id": "013",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#basic-types\">Basic types</a>",
+    "sourceSha256": "350a6a75171e4d4eabe0d2f6c294dedfa6fde33324ba7057e6c961d2dc8e5bd7",
+    "unchangedReason": null
+  },
+  {
+    "id": "014",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#arrays\">Arrays</a>",
+    "sourceSha256": "e9ab800e6aed750ef8d6950fb1bfae812fc7d9c760af9f1ab357476518842c28",
+    "unchangedReason": null
+  },
+  {
+    "id": "015",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#objects\">Objects</a>",
+    "sourceSha256": "43f4fbbc74055214357372f36ffe4730c9cf1bc174c6a2450b965060b39c4c1a",
+    "unchangedReason": null
+  },
+  {
+    "id": "016",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#parsing-json\">Parsing JSON</a>",
+    "sourceSha256": "b3f049ff41fe5220e4d4439349354b76b32156f9c1643fcc9714665d4e3fdc70",
+    "unchangedReason": null
+  },
+  {
+    "id": "017",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#printing-json\">Printing JSON</a>",
+    "sourceSha256": "efe9c04de93d740be98a468b64865ff46f82af90e0ed9b4a1a4a7ecdd66ea970",
+    "unchangedReason": null
+  },
+  {
+    "id": "018",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#printing\">Printing</a>",
+    "sourceSha256": "67be88e1c9e72245848cbf2109b860d90739d2d6e6508a32026ae5292bbbc43b",
+    "unchangedReason": null
+  },
+  {
+    "id": "019",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#parsing\">Parsing</a>",
+    "sourceSha256": "86d7bea9293efcb11138d6db2c19821201881c873671b3ea68386a5cdd304cfe",
+    "unchangedReason": null
+  },
+  {
+    "id": "020",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#zero-character\">Zero Character</a>",
+    "sourceSha256": "877a4809b17510e5d6ca1a206a485c040689e9fbdca8b7e0d987323a12aba505",
+    "unchangedReason": null
+  },
+  {
+    "id": "021",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#character-encoding\">Character Encoding</a>",
+    "sourceSha256": "35a3ce91739b0e36838983b139a5223771d1aea9a2e3889aa3cb62786e91fae2",
+    "unchangedReason": null
+  },
+  {
+    "id": "022",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#c-standard\">C Standard</a>",
+    "sourceSha256": "76c24e1b94e91b93aedcfa86abdc8202f0efd441ee68a7c0f2d2a604241ae648",
+    "unchangedReason": null
+  },
+  {
+    "id": "023",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#floating-point-numbers\">Floating Point Numbers</a>",
+    "sourceSha256": "c1603c1917ee3a87335a63869fb3e7d64adeb88ba3d33a0d84adaeeea945b0ab",
+    "unchangedReason": null
+  },
+  {
+    "id": "024",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#deep-nesting-of-arrays-and-objects\">Deep Nesting Of Arrays And Objects</a>",
+    "sourceSha256": "bb682b68963bb7ac8085365699ede59932d84cf8bd590d890d965a814bcb6139",
+    "unchangedReason": null
+  },
+  {
+    "id": "025",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#thread-safety\">Thread Safety</a>",
+    "sourceSha256": "51c75e7d353b905ff3913e4d9e336f84f971bf4fe2360f997d0aec9c3998692d",
+    "unchangedReason": null
+  },
+  {
+    "id": "026",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#case-sensitivity\">Case Sensitivity</a>",
+    "sourceSha256": "a6645d70c37745b07f1d549204dac51bfc1b18b737b345917b3743a292442f60",
+    "unchangedReason": null
+  },
+  {
+    "id": "027",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#duplicate-object-members\">Duplicate Object Members</a>",
+    "sourceSha256": "984ede85d5d0eba1d440b6eced2840ea2b0170eaaebce8a8d50b420471e6d8a9",
+    "unchangedReason": null
+  },
+  {
+    "id": "028",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<a href=\"#enjoy-cjson\">Enjoy cJSON!</a>",
+    "sourceSha256": "1254dbf425ab59cf66f31ba3ec6685062069e868cd5caf63e521bfcc803fff53",
+    "unchangedReason": null
+  },
+  {
+    "id": "029",
+    "page": "01-guide/01-usage.md",
+    "tag": "h2",
+    "source": "License",
+    "sourceSha256": "c011d6097bfbc8e936280addcf2e3e7d06ea2223ffd596973191b800a7035c32",
+    "unchangedReason": null
+  },
+  {
+    "id": "030",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "MIT License",
+    "sourceSha256": "abb2896dc3c2a9402f901b88d5035cf0a83d5cf7c17e73642cdf562b0b9d3bc5",
+    "unchangedReason": null
+  },
+  {
+    "id": "031",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Copyright (c) 2009-2017 Dave Gamble and cJSON contributors",
+    "sourceSha256": "8c0c445625a17b862c513b7921a83a1cd2e7f8d65a3a08d6a2aa82e92dd38884",
+    "unchangedReason": "Original English MIT notice retained in original guideposition"
+  },
+  {
+    "id": "032",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Permission is hereby granted, free of charge, to any person obtaining a copy\n of this software and associated documentation files (the \"Software\"), to deal\n in the Software without restriction, including without limitation the rights\n to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n copies of the Software, and to permit persons to whom the Software is\n furnished to do so, subject to the following conditions:",
+    "sourceSha256": "9376f01bc956472b3b399fec877ad8cccbf4848417978f885f2b40674a78c303",
+    "unchangedReason": "Original English MIT notice retained in original guideposition"
+  },
+  {
+    "id": "033",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "The above copyright notice and this permission notice shall be included in\n all copies or substantial portions of the Software.",
+    "sourceSha256": "a76b343b866fe41473a0ad2ac353e55b315a4010c80e810e48f98ca8694a272c",
+    "unchangedReason": "Original English MIT notice retained in original guideposition"
+  },
+  {
+    "id": "034",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n THE SOFTWARE.",
+    "sourceSha256": "871ff95933d511cd823f2e6e45d8779b4079e4f1272e86bd8ffe676063297181",
+    "unchangedReason": "Original English MIT notice retained in original guideposition"
+  },
+  {
+    "id": "035",
+    "page": "01-guide/01-usage.md",
+    "tag": "h2",
+    "source": "Usage",
+    "sourceSha256": "8d59829c1e15afe1a7fae93e8e5e32d8511bec5fd598a09f4fea6033b31e8a66",
+    "unchangedReason": null
+  },
+  {
+    "id": "036",
+    "page": "01-guide/01-usage.md",
+    "tag": "h3",
+    "source": "Welcome to cJSON.",
+    "sourceSha256": "7c97aec7af140cdfce655aebfd8339b91167dbab35794d1ac65836ddca3eba57",
+    "unchangedReason": null
+  },
+  {
+    "id": "037",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON aims to be the dumbest possible parser that you can get your job done with.\nIt's a single file of C, and a single header file.",
+    "sourceSha256": "863f71ad9f7019dea960d904a058f3b52e2a8d4daa836eaad36f8f13915b3842",
+    "unchangedReason": null
+  },
+  {
+    "id": "038",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "JSON is described best here: http://www.json.org/\nIt's like XML, but fat-free. You use it to move data around, store things, or just\ngenerally represent your program's state.",
+    "sourceSha256": "9105d5057f048d02abdac2313be35a69e20dbdf40dfe3bfd4f08ffc84ed2c81b",
+    "unchangedReason": null
+  },
+  {
+    "id": "039",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "As a library, cJSON exists to take away as much legwork as it can, but not get in your way.\nAs a point of pragmatism (i.e. ignoring the truth), I'm going to say that you can use it\nin one of two modes: Auto and Manual. Let's have a quick run-through.",
+    "sourceSha256": "c61909adcbbc34ea6b373d0a45a6eb9e302e09e0493045b0756c1cd5384c0601",
+    "unchangedReason": null
+  },
+  {
+    "id": "040",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "I lifted some JSON from this page: http://www.json.org/fatfree.html\nThat page inspired me to write cJSON, which is a parser that tries to share the same\nphilosophy as JSON itself. Simple, dumb, out of the way.",
+    "sourceSha256": "ba941ca5551e01aaa54faa984260a349bb602c0aff79e7865c67bd32bdf3193a",
+    "unchangedReason": null
+  },
+  {
+    "id": "041",
+    "page": "01-guide/01-usage.md",
+    "tag": "h3",
+    "source": "Building",
+    "sourceSha256": "87c5912f2cefdf9d7d1913611187fa8ab653a89a8d4b65f574812f899834e8b1",
+    "unchangedReason": null
+  },
+  {
+    "id": "042",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "There are several ways to incorporate cJSON into your project.",
+    "sourceSha256": "34e8194e9b4e0993bf0915e3d003089eb5ce50c9232febec6b7b255cd3221a4c",
+    "unchangedReason": null
+  },
+  {
+    "id": "043",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "copying the source",
+    "sourceSha256": "0c09bbf67322ffde5c0b1fd7117e96a86f9760f7e98f3b9b46f6ce0728c30f87",
+    "unchangedReason": null
+  },
+  {
+    "id": "044",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Because the entire library is only one C file and one header file, you can just copy <code>cJSON.h</code> and <code>cJSON.c</code> to your projects source and start using it.",
+    "sourceSha256": "af0d70eb160a67888dfa8aa7bd4d30017586da9117fe86834013cfe595a7b50c",
+    "unchangedReason": null
+  },
+  {
+    "id": "045",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON is written in ANSI C (C89) in order to support as many platforms and compilers as possible.",
+    "sourceSha256": "b4fa903895c0e2f4c37be715951a543035b989ee7abfe9ab45940d64a51b61fe",
+    "unchangedReason": null
+  },
+  {
+    "id": "046",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "CMake",
+    "sourceSha256": "e7efda826b6d097e47d7cb2cd6b1cf126084197d7834e7b022048183509c774b",
+    "unchangedReason": null
+  },
+  {
+    "id": "047",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "With CMake, cJSON supports a full blown build system. This way you get the most features. CMake with an equal or higher version than 2.8.5 is supported. With CMake it is recommended to do an out of tree build, meaning the compiled files are put in a directory separate from the source files. So in order to build cJSON with CMake on a Unix platform, make a <code>build</code> directory and run CMake inside it.",
+    "sourceSha256": "e7b78048a3ae2e37788a19b493bcf78b8d486a25c1359876a3c7d650b511c3ed",
+    "unchangedReason": null
+  },
+  {
+    "id": "048",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "This will create a Makefile and a bunch of other files. You can then compile it:",
+    "sourceSha256": "171d6ed011f8a766e94edcbd97173d263e0859f915923b761c79a6a40fc1438c",
+    "unchangedReason": null
+  },
+  {
+    "id": "049",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "And install it with <code>make install</code> if you want. By default it installs the headers <code>/usr/local/include/cjson</code> and the libraries to <code>/usr/local/lib</code>. It also installs files for pkg-config to make it easier to detect and use an existing installation of CMake. And it installs CMake config files, that can be used by other CMake based projects to discover the library.",
+    "sourceSha256": "bdb9bae4b4201496c2349ca1ae059ca037a50e81b05213616cc539003c1d2141",
+    "unchangedReason": null
+  },
+  {
+    "id": "050",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "You can change the build process with a list of different options that you can pass to CMake. Turn them on with <code>On</code> and off with <code>Off</code>:",
+    "sourceSha256": "cd49036d5bfacae3118bbfaeffee2c6da2a172170fe16fcc1f2a373d4435c948",
+    "unchangedReason": null
+  },
+  {
+    "id": "051",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DENABLE_CJSON_TEST=On</code>: Enable building the tests. (on by default)",
+    "sourceSha256": "fa95178a4a4e8dcce1b635486aa9c3b56ec581186bd0438b2d6b6b7166f05bbe",
+    "unchangedReason": null
+  },
+  {
+    "id": "052",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DENABLE_CJSON_UTILS=On</code>: Enable building cJSON_Utils. (off by default)",
+    "sourceSha256": "17dee529de3f7c773fefefe5dad7919af69fd5dd77d3e4275c641fe3686f8186",
+    "unchangedReason": null
+  },
+  {
+    "id": "053",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DENABLE_TARGET_EXPORT=On</code>: Enable the export of CMake targets. Turn off if it makes problems. (on by default)",
+    "sourceSha256": "0b7bf11dade2eee69335343c842b330e638138bb2ef5072fbe591ef137804ed5",
+    "unchangedReason": null
+  },
+  {
+    "id": "054",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DENABLE_CUSTOM_COMPILER_FLAGS=On</code>: Enable custom compiler flags (currently for Clang, GCC and MSVC). Turn off if it makes problems. (on by default)",
+    "sourceSha256": "e350903686a87644122ebc03fce310925d8007b16c4b9a633e4ce8ec7a3958e6",
+    "unchangedReason": null
+  },
+  {
+    "id": "055",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DENABLE_VALGRIND=On</code>: Run tests with <a href=\"http://valgrind.org\">valgrind</a>. (off by default)",
+    "sourceSha256": "0c3288cbcb5930933933362367b80e3ecd23babac20ffdcff4db74dfe4318472",
+    "unchangedReason": null
+  },
+  {
+    "id": "056",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DENABLE_SANITIZERS=On</code>: Compile cJSON with <a href=\"https://github.com/google/sanitizers/wiki/AddressSanitizer\">AddressSanitizer</a> and <a href=\"https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html\">UndefinedBehaviorSanitizer</a> enabled (if possible). (off by default)",
+    "sourceSha256": "5af85fd3ced8fba452a1285a96b18a988b43ca35eda8d71d5bb957a697d7dc8b",
+    "unchangedReason": null
+  },
+  {
+    "id": "057",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DENABLE_SAFE_STACK</code>: Enable the <a href=\"https://clang.llvm.org/docs/SafeStack.html\">SafeStack</a> instrumentation pass. Currently only works with the Clang compiler. (off by default)",
+    "sourceSha256": "8af2e0f5a75e627385a21680abdf152a9ad18a1d0c3630b410e3dfb96ecb14a0",
+    "unchangedReason": null
+  },
+  {
+    "id": "058",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DBUILD_SHARED_LIBS=On</code>: Build the shared libraries. (on by default)",
+    "sourceSha256": "132c2f9c287fdd15f78778f3a743250c0220d91eef4d7659b547eae6ffd32cc0",
+    "unchangedReason": null
+  },
+  {
+    "id": "059",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DBUILD_SHARED_AND_STATIC_LIBS=On</code>: Build both shared and static libraries. (off by default)",
+    "sourceSha256": "1a104e96bbe3814eae3e1e7ab66e9f4441b245b5804f01389cdffab309389ed2",
+    "unchangedReason": null
+  },
+  {
+    "id": "060",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DCMAKE_INSTALL_PREFIX=/usr</code>: Set a prefix for the installation.",
+    "sourceSha256": "c2e953c73088874e4b11fd57e70a83021103540c16228a2ae0eaf10da8b12d4c",
+    "unchangedReason": null
+  },
+  {
+    "id": "061",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DENABLE_LOCALES=On</code>: Enable the usage of localeconv method. ( on by default )",
+    "sourceSha256": "fe3b301aa46742ac16128f922343823d41b53ea3542e87f7ee908c47ec99ca1a",
+    "unchangedReason": null
+  },
+  {
+    "id": "062",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DCJSON_OVERRIDE_BUILD_SHARED_LIBS=On</code>: Enable overriding the value of <code>BUILD_SHARED_LIBS</code> with <code>-DCJSON_BUILD_SHARED_LIBS</code>.",
+    "sourceSha256": "ed028de5d6b36ee2129849ada1f36dea99a7ea247cebda250b17530ef7092a4c",
+    "unchangedReason": null
+  },
+  {
+    "id": "063",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>-DENABLE_CJSON_VERSION_SO</code>: Enable cJSON so version. ( on by default )",
+    "sourceSha256": "cb8164286c61ba33e1a6f48c0b690402f1d82b4fdec6310ac85f9105df2eeb1a",
+    "unchangedReason": null
+  },
+  {
+    "id": "064",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you are packaging cJSON for a distribution of Linux, you would probably take these steps for example:",
+    "sourceSha256": "fdd3f0a94f4ba8808278a8cf67550db4a13cf1a8df1afdd137ad522a0bbb0422",
+    "unchangedReason": null
+  },
+  {
+    "id": "065",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "On Windows CMake is usually used to create a Visual Studio solution file by running it inside the Developer Command Prompt for Visual Studio, for exact steps follow the official documentation from CMake and Microsoft and use the online search engine of your choice. The descriptions of the the options above still generally apply, although not all of them work on Windows.",
+    "sourceSha256": "8d8393eb313609662ba8587c0a9412e4de4ef28f093ebd241054f4643ceecb4c",
+    "unchangedReason": null
+  },
+  {
+    "id": "066",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Makefile",
+    "sourceSha256": "76ed074a9305c04054cdebb9e9aad2d818052b07091de1f20cad0bbac34ffb52",
+    "unchangedReason": null
+  },
+  {
+    "id": "067",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "<strong>NOTE:</strong> This Method is deprecated. Use CMake if at all possible. Makefile support is limited to fixing bugs.",
+    "sourceSha256": "32d26a11767625c078c2408c9908c87904477ed0dad8c800f5626b10579ec398",
+    "unchangedReason": null
+  },
+  {
+    "id": "068",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you don't have CMake available, but still have GNU make. You can use the makefile to build cJSON:",
+    "sourceSha256": "f26cc37e49714a953b8588f90df42ff28c10245a5b74d3f671a39eda0d2bc8ec",
+    "unchangedReason": null
+  },
+  {
+    "id": "069",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Run this command in the directory with the source code and it will automatically compile static and shared libraries and a little test program (not the full test suite).",
+    "sourceSha256": "40e7b2468ae8c5b9fe43316add3489ce8cc97dc420a004c98f90a821cb1af4a6",
+    "unchangedReason": null
+  },
+  {
+    "id": "070",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you want, you can install the compiled library to your system using <code>make install</code>. By default it will install the headers in <code>/usr/local/include/cjson</code> and the libraries in <code>/usr/local/lib</code>. But you can change this behavior by setting the <code>PREFIX</code> and <code>DESTDIR</code> variables: <code>make PREFIX=/usr DESTDIR=temp install</code>. And uninstall them with: <code>make PREFIX=/usr DESTDIR=temp uninstall</code>.",
+    "sourceSha256": "b974afe4bffe6224f51944364d2eb959b8b932965bad71930b4ed6160677400f",
+    "unchangedReason": null
+  },
+  {
+    "id": "071",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Meson",
+    "sourceSha256": "33742f4611a169d1d8fe82f1797e5c1a6741d8e459c5b62c98c6c6a104de815f",
+    "unchangedReason": null
+  },
+  {
+    "id": "072",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "To make cjson work in a project using meson, the libcjson dependency has to be included:",
+    "sourceSha256": "41ee6a045b626905403fd78f83e0c17fe5ac3a80cbb6c8ef64ad7906bb245620",
+    "unchangedReason": null
+  },
+  {
+    "id": "073",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Vcpkg",
+    "sourceSha256": "ee410be3337a6c510bb4d538a2b3efb082a988a883139066d6b3025770fd843c",
+    "unchangedReason": null
+  },
+  {
+    "id": "074",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "You can download and install cJSON using the <a href=\"https://github.com/Microsoft/vcpkg\">vcpkg</a> dependency manager:",
+    "sourceSha256": "7f6f2d900f5c4259bdc4fa5fb4b4cc1e0b5b3ca5e3ef1bff74fd5681ee71d7e0",
+    "unchangedReason": null
+  },
+  {
+    "id": "075",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "The cJSON port in vcpkg is kept up to date by Microsoft team members and community contributors. If the version is out of date, please <a href=\"https://github.com/Microsoft/vcpkg\">create an issue or pull request</a> on the vcpkg repository.",
+    "sourceSha256": "59c8b1a6854b3471f3d89a48c2dd827278d8295d67d488543b98cb02d1fa098a",
+    "unchangedReason": null
+  },
+  {
+    "id": "076",
+    "page": "01-guide/01-usage.md",
+    "tag": "h3",
+    "source": "Including cJSON",
+    "sourceSha256": "22f669f64b457fe2e74689fff22818b0207746f6aa7469619b86af71be4fbf97",
+    "unchangedReason": null
+  },
+  {
+    "id": "077",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you installed it via CMake or the Makefile, you can include cJSON like this:",
+    "sourceSha256": "c13fa8c51a7fe110dde631a2e0a32ab0d5f6e249ae0d6fbfa7d7f42d4e3c0f13",
+    "unchangedReason": null
+  },
+  {
+    "id": "078",
+    "page": "01-guide/01-usage.md",
+    "tag": "h3",
+    "source": "Data Structure",
+    "sourceSha256": "c7614b596a71baff1dfd03c147a803754fe149f021319576402555a14edaa1e9",
+    "unchangedReason": null
+  },
+  {
+    "id": "079",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON represents JSON data using the <code>cJSON</code> struct data type:",
+    "sourceSha256": "73f051bdb378cc3a19bf8193b284a96c7724aa0ec5e8356d022d7cd84f4a4179",
+    "unchangedReason": null
+  },
+  {
+    "id": "080",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "An item of this type represents a JSON value. The type is stored in <code>type</code> as a bit-flag (<strong>this means that you cannot find out the type by just comparing the value of <code>type</code></strong>).",
+    "sourceSha256": "0f86c0138772849d53fccd406a286a783b2356a4f7c9e0553377a1f2653863ca",
+    "unchangedReason": null
+  },
+  {
+    "id": "081",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "To check the type of an item, use the corresponding <code>cJSON_Is...</code> function. It does a <code>NULL</code> check followed by a type check and returns a boolean value if the item is of this type.",
+    "sourceSha256": "110fab429e3410998c240204f530a86ff5def28250b1b98a09af8890700e6dc1",
+    "unchangedReason": null
+  },
+  {
+    "id": "082",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "The type can be one of the following:",
+    "sourceSha256": "da480fb799c1eec7fc4d8121fc0220b6b2276fe43caef68d8f395e6c40fbeeda",
+    "unchangedReason": null
+  },
+  {
+    "id": "083",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_Invalid</code> (check with <code>cJSON_IsInvalid</code>): Represents an invalid item that doesn't contain any value. You automatically have this type if you set the item to all zero bytes.",
+    "sourceSha256": "bdea0df19b557264f53cbb6c404bfed82373c5b0a1135d8f08e9934776d3ea0b",
+    "unchangedReason": null
+  },
+  {
+    "id": "084",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_False</code> (check with <code>cJSON_IsFalse</code>): Represents a <code>false</code> boolean value. You can also check for boolean values in general with <code>cJSON_IsBool</code>.",
+    "sourceSha256": "0614c9e66669477b2b7ff7dcc35507cd3174f6cf024f45473c005f3395cfba52",
+    "unchangedReason": null
+  },
+  {
+    "id": "085",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_True</code> (check with <code>cJSON_IsTrue</code>): Represents a <code>true</code> boolean value. You can also check for boolean values in general with <code>cJSON_IsBool</code>.",
+    "sourceSha256": "d302c7c8d46812dec672ec90bc8762a62760b36f58d492903441508e8b86fd8a",
+    "unchangedReason": null
+  },
+  {
+    "id": "086",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_NULL</code> (check with <code>cJSON_IsNull</code>): Represents a <code>null</code> value.",
+    "sourceSha256": "123fb3bae73b8bdd858e38f2a06ef160ffa7342e5ebf1551fe621a2c275dea14",
+    "unchangedReason": null
+  },
+  {
+    "id": "087",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_Number</code> (check with <code>cJSON_IsNumber</code>): Represents a number value. The value is stored as a double in <code>valuedouble</code> and also in <code>valueint</code>. If the number is outside of the range of an integer, <code>INT_MAX</code> or <code>INT_MIN</code> are used for <code>valueint</code>.",
+    "sourceSha256": "fdd3225a23991293e5db905811f7d6a19c6f322a777ea9922322cec2b058bd8b",
+    "unchangedReason": null
+  },
+  {
+    "id": "088",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_String</code> (check with <code>cJSON_IsString</code>): Represents a string value. It is stored in the form of a zero terminated string in <code>valuestring</code>.",
+    "sourceSha256": "08680d45f86974532bddd2a4cc6ca3931c687c527d0456e00d23cefe37701660",
+    "unchangedReason": null
+  },
+  {
+    "id": "089",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_Array</code> (check with <code>cJSON_IsArray</code>): Represent an array value. This is implemented by pointing <code>child</code> to a linked list of <code>cJSON</code> items that represent the values in the array. The elements are linked together using <code>next</code> and <code>prev</code>, where the first element has <code>prev.next == NULL</code> and the last element <code>next == NULL</code>.",
+    "sourceSha256": "4299bda3e56da1e8c70bdbfb9a689c13be707ecf139d7e3a07c5c38677d604e1",
+    "unchangedReason": null
+  },
+  {
+    "id": "090",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_Object</code> (check with <code>cJSON_IsObject</code>): Represents an object value. Objects are stored same way as an array, the only difference is that the items in the object store their keys in <code>string</code>.",
+    "sourceSha256": "9f2600d4d715313507426c30e42a7521af4fe32e2ca207ede8fef312e3f36d9f",
+    "unchangedReason": null
+  },
+  {
+    "id": "091",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_Raw</code> (check with <code>cJSON_IsRaw</code>): Represents any kind of JSON that is stored as a zero terminated array of characters in <code>valuestring</code>. This can be used, for example, to avoid printing the same static JSON over and over again to save performance. cJSON will never create this type when parsing. Also note that cJSON doesn't check if it is valid JSON.",
+    "sourceSha256": "882ff7b225748cce808003cc84a29a7de302c182c7ef8adb5ec07d65a1ba7266",
+    "unchangedReason": null
+  },
+  {
+    "id": "092",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Additionally there are the following two flags:",
+    "sourceSha256": "6b1a1583129f2c5d6b26ad9bdca5a6f49019cd4372af416db7180318c1768d6c",
+    "unchangedReason": null
+  },
+  {
+    "id": "093",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_IsReference</code>: Specifies that the item that <code>child</code> points to and/or <code>valuestring</code> is not owned by this item, it is only a reference. So <code>cJSON_Delete</code> and other functions will only deallocate this item, not its <code>child</code>/<code>valuestring</code>.",
+    "sourceSha256": "89a0c7a8c2036caa332338463d732d0be612b9c71e8180f7c8206acebb299548",
+    "unchangedReason": null
+  },
+  {
+    "id": "094",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_StringIsConst</code>: This means that <code>string</code> points to a constant string. This means that <code>cJSON_Delete</code> and other functions will not try to deallocate <code>string</code>.",
+    "sourceSha256": "445d86431ae406b56baad54ed164419d098b1d7ff85578d975c055c2d34bf36b",
+    "unchangedReason": null
+  },
+  {
+    "id": "095",
+    "page": "01-guide/01-usage.md",
+    "tag": "h3",
+    "source": "Working with the data structure",
+    "sourceSha256": "2d79220fe78fc4d114f06b42c2a9114562ef4d17bd6d81aea3227e49c8eea9ba",
+    "unchangedReason": null
+  },
+  {
+    "id": "096",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "For every value type there is a <code>cJSON_Create...</code> function that can be used to create an item of that type.\nAll of these will allocate a <code>cJSON</code> struct that can later be deleted with <code>cJSON_Delete</code>.\nNote that you have to delete them at some point, otherwise you will get a memory leak.<br />\n<strong>Important</strong>: If you have added an item to an array or an object already, you <strong>mustn't</strong> delete it with <code>cJSON_Delete</code>. Adding it to an array or object transfers its ownership so that when that array or object is deleted, \nit gets deleted as well. You also could use <code>cJSON_SetValuestring</code> to change a <code>cJSON_String</code>'s <code>valuestring</code>, and you needn't to free the previous <code>valuestring</code> manually.",
+    "sourceSha256": "74ab09bdd97ccab158e8dc56ea7b72c8c7bfd14ac08c25e3e91bba5ee2d54e1e",
+    "unchangedReason": null
+  },
+  {
+    "id": "097",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Basic types",
+    "sourceSha256": "51a5f2a7130b1180f9e05c458848ff702d4aa0ffc6ed37ea103300f6c752d2ed",
+    "unchangedReason": null
+  },
+  {
+    "id": "098",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<strong>null</strong> is created with <code>cJSON_CreateNull</code>",
+    "sourceSha256": "a0370d05ff2244f7807e538415cc37a75d888f119555a087511242f88d02850d",
+    "unchangedReason": null
+  },
+  {
+    "id": "099",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<strong>booleans</strong> are created with <code>cJSON_CreateTrue</code>, <code>cJSON_CreateFalse</code> or <code>cJSON_CreateBool</code>",
+    "sourceSha256": "77d5a1bc7491158851e905c5c5e02ce110c25902842946591429f6a808c8ccb0",
+    "unchangedReason": null
+  },
+  {
+    "id": "100",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<strong>numbers</strong> are created with <code>cJSON_CreateNumber</code>. This will set both <code>valuedouble</code> and <code>valueint</code>. If the number is outside of the range of an integer, <code>INT_MAX</code> or <code>INT_MIN</code> are used for <code>valueint</code>",
+    "sourceSha256": "f160fe756e285d13a5bead8ab3ae00b59c3c228cfb93dbd0add6f8411330cee3",
+    "unchangedReason": null
+  },
+  {
+    "id": "101",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<strong>strings</strong> are created with <code>cJSON_CreateString</code> (copies the string) or with <code>cJSON_CreateStringReference</code> (directly points to the string. This means that <code>valuestring</code> won't be deleted by <code>cJSON_Delete</code> and you are responsible for its lifetime, useful for constants)",
+    "sourceSha256": "713adda447ffadb6430540a8d5a48562f7d24584ff24ec26daae2f09f6586d1a",
+    "unchangedReason": null
+  },
+  {
+    "id": "102",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Arrays",
+    "sourceSha256": "b6392a1a9830cb9259c387c3d292c893253c52a3eeefeae12a285da6ec42929f",
+    "unchangedReason": null
+  },
+  {
+    "id": "103",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "You can create an empty array with <code>cJSON_CreateArray</code>. <code>cJSON_CreateArrayReference</code> can be used to create an array that doesn't \"own\" its content, so its content doesn't get deleted by <code>cJSON_Delete</code>.",
+    "sourceSha256": "937206616afc5234636032c4c03bcbd8e40647d806cffb62ffae37124829e30e",
+    "unchangedReason": null
+  },
+  {
+    "id": "104",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "To add items to an array, use <code>cJSON_AddItemToArray</code> to append items to the end.\nUsing <code>cJSON_AddItemReferenceToArray</code> an element can be added as a reference to another item, array or string. This means that <code>cJSON_Delete</code> will not delete that items <code>child</code> or <code>valuestring</code> properties, so no double frees are occurring if they are already used elsewhere.\nTo insert items in the middle, use <code>cJSON_InsertItemInArray</code>. It will insert an item at the given 0 based index and shift all the existing items to the right.",
+    "sourceSha256": "f7d48ed6fe3a87f07fc99c8a326928a0c047b0b9085b17a4f036b2ce27503e04",
+    "unchangedReason": null
+  },
+  {
+    "id": "105",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you want to take an item out of an array at a given index and continue using it, use <code>cJSON_DetachItemFromArray</code>, it will return the detached item, so be sure to assign it to a pointer, otherwise you will have a memory leak.",
+    "sourceSha256": "0d74136d477e1ffdf3c88656cbd8450a76d90406e18ddc4a3f47daf4d922900e",
+    "unchangedReason": null
+  },
+  {
+    "id": "106",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Deleting items is done with <code>cJSON_DeleteItemFromArray</code>. It works like <code>cJSON_DetachItemFromArray</code>, but deletes the detached item via <code>cJSON_Delete</code>.",
+    "sourceSha256": "b9c84c08a988b6392d25e96ca19736eda34d31640772d7f0ab777840495b849b",
+    "unchangedReason": null
+  },
+  {
+    "id": "107",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "You can also replace an item in an array in place. Either with <code>cJSON_ReplaceItemInArray</code> using an index or with <code>cJSON_ReplaceItemViaPointer</code> given a pointer to an element. <code>cJSON_ReplaceItemViaPointer</code> will return <code>0</code> if it fails. What this does internally is to detach the old item, delete it and insert the new item in its place.",
+    "sourceSha256": "2dabb785ff00b9e4942a3198c2cc46e77a05a6e854950add43cf509063ff1dc8",
+    "unchangedReason": null
+  },
+  {
+    "id": "108",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "To get the size of an array, use <code>cJSON_GetArraySize</code>. Use <code>cJSON_GetArrayItem</code> to get an element at a given index.",
+    "sourceSha256": "bc5a88e46547854e7ed7898ac53fb1297b9d666d532372bd8282e09d20e14902",
+    "unchangedReason": null
+  },
+  {
+    "id": "109",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Because an array is stored as a linked list, iterating it via index is inefficient (<code>O(n²)</code>), so you can iterate over an array using the <code>cJSON_ArrayForEach</code> macro in <code>O(n)</code> time complexity.",
+    "sourceSha256": "313b5e847b93f8268fe7f548b41eab7206c5b87206bd162faab68aa7a517a090",
+    "unchangedReason": null
+  },
+  {
+    "id": "110",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Objects",
+    "sourceSha256": "de5236ee1561d9d4123d1a8dad5442710ac2acdc26111be2076d9b8ddf453650",
+    "unchangedReason": null
+  },
+  {
+    "id": "111",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "You can create an empty object with <code>cJSON_CreateObject</code>. <code>cJSON_CreateObjectReference</code> can be used to create an object that doesn't \"own\" its content, so its content doesn't get deleted by <code>cJSON_Delete</code>.",
+    "sourceSha256": "dc9538bcb9a61c6fed4510bfbd10ca5e351d7a9e50bcc2de6774dbf31ffd7387",
+    "unchangedReason": null
+  },
+  {
+    "id": "112",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "To add items to an object, use <code>cJSON_AddItemToObject</code>. Use <code>cJSON_AddItemToObjectCS</code> to add an item to an object with a name that is a constant or reference (key of the item, <code>string</code> in the <code>cJSON</code> struct), so that it doesn't get freed by <code>cJSON_Delete</code>.\nUsing <code>cJSON_AddItemReferenceToArray</code> an element can be added as a reference to another object, array or string. This means that <code>cJSON_Delete</code> will not delete that items <code>child</code> or <code>valuestring</code> properties, so no double frees are occurring if they are already used elsewhere.",
+    "sourceSha256": "c8d6070c5a9b10b9cc6865d70643a2714033c0c89252ed851193372fed65aacf",
+    "unchangedReason": null
+  },
+  {
+    "id": "113",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you want to take an item out of an object, use <code>cJSON_DetachItemFromObjectCaseSensitive</code>, it will return the detached item, so be sure to assign it to a pointer, otherwise you will have a memory leak.",
+    "sourceSha256": "9458704cd293483977dd921a7ae9be9e1b49e7af2e80391d9e23469fbc654b8f",
+    "unchangedReason": null
+  },
+  {
+    "id": "114",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Deleting items is done with <code>cJSON_DeleteItemFromObjectCaseSensitive</code>. It works like <code>cJSON_DetachItemFromObjectCaseSensitive</code> followed by <code>cJSON_Delete</code>.",
+    "sourceSha256": "56b9559b3f210ac4b68357b354db3af31a9185cb12aa4322bec4f27a78bdd4dc",
+    "unchangedReason": null
+  },
+  {
+    "id": "115",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "You can also replace an item in an object in place. Either with <code>cJSON_ReplaceItemInObjectCaseSensitive</code> using a key or with <code>cJSON_ReplaceItemViaPointer</code> given a pointer to an element. <code>cJSON_ReplaceItemViaPointer</code> will return <code>0</code> if it fails. What this does internally is to detach the old item, delete it and insert the new item in its place.",
+    "sourceSha256": "bd74e4cf5b1dbccf8552b45c3a20d07ea9570544ab104fa2d1c5f8c0cfd7f942",
+    "unchangedReason": null
+  },
+  {
+    "id": "116",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "To get the size of an object, you can use <code>cJSON_GetArraySize</code>, this works because internally objects are stored as arrays.",
+    "sourceSha256": "c76486131b30e330720cd28e7ff1cb97260be4a8445a7def80d422d1f34604a7",
+    "unchangedReason": null
+  },
+  {
+    "id": "117",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you want to access an item in an object, use <code>cJSON_GetObjectItemCaseSensitive</code>.",
+    "sourceSha256": "dfdbefd983d1409653b4c570f29d1dc49b9e2dbb32695e10c5cd37fa066b714f",
+    "unchangedReason": null
+  },
+  {
+    "id": "118",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "To iterate over an object, you can use the <code>cJSON_ArrayForEach</code> macro the same way as for arrays.",
+    "sourceSha256": "83965462f39f54d1513b36428663caaa1cc03c3a993eb5be1d357c73a7b21270",
+    "unchangedReason": null
+  },
+  {
+    "id": "119",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON also provides convenient helper functions for quickly creating a new item and adding it to an object, like <code>cJSON_AddNullToObject</code>. They return a pointer to the new item or <code>NULL</code> if they failed.",
+    "sourceSha256": "881f6aeabb3a9030a9703b47b36ac5f5c11cd90194a94bdcf98432a0e8ba6de6",
+    "unchangedReason": null
+  },
+  {
+    "id": "120",
+    "page": "01-guide/01-usage.md",
+    "tag": "h3",
+    "source": "Parsing JSON",
+    "sourceSha256": "6411db0b47bbe384fc468c59a15bd1c05a42e5592aedcacacb9acdbdb44eb652",
+    "unchangedReason": null
+  },
+  {
+    "id": "121",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Given some JSON in a zero terminated string, you can parse it with <code>cJSON_Parse</code>.",
+    "sourceSha256": "72320c29bc379eb327b3114fad394f5476dc3ec373497beb0a349bdf1f686899",
+    "unchangedReason": null
+  },
+  {
+    "id": "122",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Given some JSON in a string (whether zero terminated or not), you can parse it with <code>cJSON_ParseWithLength</code>.",
+    "sourceSha256": "8bbe68eae1ebc58c1a20fbf04eb41ab1211fb84438308e54f720d7af94214320",
+    "unchangedReason": null
+  },
+  {
+    "id": "123",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "It will parse the JSON and allocate a tree of <code>cJSON</code> items that represents it. Once it returns, you are fully responsible for deallocating it after use with <code>cJSON_Delete</code>.",
+    "sourceSha256": "c9a8ae0b8a82cad8e82772e1bb8805c00319478d962f48dc391fbeeccb44fa0a",
+    "unchangedReason": null
+  },
+  {
+    "id": "124",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "The allocator used by <code>cJSON_Parse</code> is <code>malloc</code> and <code>free</code> by default but can be changed (globally) with <code>cJSON_InitHooks</code>.",
+    "sourceSha256": "7cf9b8303325635d319afe8808dfc980bddfd42d0620ce4e7c04ec9560d2bc5d",
+    "unchangedReason": null
+  },
+  {
+    "id": "125",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If an error occurs a pointer to the position of the error in the input string can be accessed using <code>cJSON_GetErrorPtr</code>. Note though that this can produce race conditions in multithreading scenarios, in that case it is better to use <code>cJSON_ParseWithOpts</code> with <code>return_parse_end</code>.\nBy default, characters in the input string that follow the parsed JSON will not be considered as an error.",
+    "sourceSha256": "97ea6f53cf0b31a2cf8fbb33617720fc69e47c997e8a38a6d8771dfc013e3d61",
+    "unchangedReason": null
+  },
+  {
+    "id": "126",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you want more options, use <code>cJSON_ParseWithOpts(const char *value, const char **return_parse_end, cJSON_bool require_null_terminated)</code>.\n<code>return_parse_end</code> returns a pointer to the end of the JSON in the input string or the position that an error occurs at (thereby replacing <code>cJSON_GetErrorPtr</code> in a thread safe way). <code>require_null_terminated</code>, if set to <code>1</code> will make it an error if the input string contains data after the JSON.",
+    "sourceSha256": "3b6b5296e578700b7d52899c791c8b2ad3ceea3f762ebd279b07169da0040aa0",
+    "unchangedReason": null
+  },
+  {
+    "id": "127",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you want more options giving buffer length, use <code>cJSON_ParseWithLengthOpts(const char *value, size_t buffer_length, const char **return_parse_end, cJSON_bool require_null_terminated)</code>.",
+    "sourceSha256": "4ff54bef6b38e149ccb319ca0d3a6c6c953b6b59c350687da3c6311d11042723",
+    "unchangedReason": null
+  },
+  {
+    "id": "128",
+    "page": "01-guide/01-usage.md",
+    "tag": "h3",
+    "source": "Printing JSON",
+    "sourceSha256": "4b35da8bd5f5996ca623fbe64e5bbc545d457890b475568b7697334290291654",
+    "unchangedReason": null
+  },
+  {
+    "id": "129",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Given a tree of <code>cJSON</code> items, you can print them as a string using <code>cJSON_Print</code>.",
+    "sourceSha256": "b6829c1f8800a6b3a504d63ceb8aa8833f7d56c5d42b73d0fbbd5876e848ae6d",
+    "unchangedReason": null
+  },
+  {
+    "id": "130",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "It will allocate a string and print a JSON representation of the tree into it. Once it returns, you are fully responsible for deallocating it after use with your allocator. (usually <code>free</code>, depends on what has been set with <code>cJSON_InitHooks</code>).",
+    "sourceSha256": "d656ee9cf1d849a2a79da51e0fe8651196c7eaddd5319616a877e04f2703c1d6",
+    "unchangedReason": null
+  },
+  {
+    "id": "131",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "<code>cJSON_Print</code> will print with whitespace for formatting. If you want to print without formatting, use <code>cJSON_PrintUnformatted</code>.",
+    "sourceSha256": "c737942d92da4f82f017cb0ace500e78f659c1f9c00db6090b46b41b705c4fd2",
+    "unchangedReason": null
+  },
+  {
+    "id": "132",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "If you have a rough idea of how big your resulting string will be, you can use <code>cJSON_PrintBuffered(const cJSON *item, int prebuffer, cJSON_bool fmt)</code>. <code>fmt</code> is a boolean to turn formatting with whitespace on and off. <code>prebuffer</code> specifies the first buffer size to use for printing. <code>cJSON_Print</code> currently uses 256 bytes for its first buffer size. Once printing runs out of space, a new buffer is allocated and the old gets copied over before printing is continued.",
+    "sourceSha256": "f3d4b4d0affbbe4a3f3be7aeaa209c51500e89d1668abeb1490e2e9e94c17d8e",
+    "unchangedReason": null
+  },
+  {
+    "id": "133",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "These dynamic buffer allocations can be completely avoided by using <code>cJSON_PrintPreallocated(cJSON *item, char *buffer, const int length, const cJSON_bool format)</code>. It takes a buffer to a pointer to print to and its length. If the length is reached, printing will fail and it returns <code>0</code>. In case of success, <code>1</code> is returned. Note that you should provide 5 bytes more than is actually needed, because cJSON is not 100% accurate in estimating if the provided memory is enough.",
+    "sourceSha256": "ad904973d5a5162971f0499582ad2af99e765494dc9bdda8b8ff6489abeddf1d",
+    "unchangedReason": null
+  },
+  {
+    "id": "134",
+    "page": "01-guide/01-usage.md",
+    "tag": "h3",
+    "source": "Example",
+    "sourceSha256": "d029f87e3d80f8fd9b1be67c7426b4cc1ff47b4a9d0a8461c826a59d8c5eb6cd",
+    "unchangedReason": null
+  },
+  {
+    "id": "135",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "In this example we want to build and parse the following JSON:",
+    "sourceSha256": "940ff5ab013c401db733ec91f2d7bf0308f0ba8860f5e34039dab02a33f85c9c",
+    "unchangedReason": null
+  },
+  {
+    "id": "136",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Printing",
+    "sourceSha256": "c0f169737344e28e87eb123df627ba6ab840219985f7858a037cbef25b4e505e",
+    "unchangedReason": null
+  },
+  {
+    "id": "137",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Let's build the above JSON and print it to a string:",
+    "sourceSha256": "dd27b10ea923a40763d77266a295a3baabeb70a91dc365fb19938f572837170b",
+    "unchangedReason": null
+  },
+  {
+    "id": "138",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Alternatively we can use the <code>cJSON_Add...ToObject</code> helper functions to make our lives a little easier:",
+    "sourceSha256": "dba2a91af37ddb5972f2806927e46b325ed6216cfb2f4de07bdc16aace877c5a",
+    "unchangedReason": null
+  },
+  {
+    "id": "139",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Parsing",
+    "sourceSha256": "3bdead7639232d651717ab7c8ce736711791d28f61e158d9c3a5f9a160bb832e",
+    "unchangedReason": null
+  },
+  {
+    "id": "140",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "In this example we will parse a JSON in the above format and check if the monitor supports a Full HD resolution while printing some diagnostic output:",
+    "sourceSha256": "1c1e92fd2cf3a9d38bf07c62b4ddab42127a3afe3e37c47ae89bae03896c4230",
+    "unchangedReason": null
+  },
+  {
+    "id": "141",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "Note that there are no NULL checks except for the result of <code>cJSON_Parse</code> because <code>cJSON_GetObjectItemCaseSensitive</code> checks for <code>NULL</code> inputs already, so a <code>NULL</code> value is just propagated and <code>cJSON_IsNumber</code> and <code>cJSON_IsString</code> return <code>0</code> if the input is <code>NULL</code>.",
+    "sourceSha256": "64d73bd088d975e1f168ce9e67f06d4a474d55f317e6e21980a5a6abc455fa43",
+    "unchangedReason": null
+  },
+  {
+    "id": "142",
+    "page": "01-guide/01-usage.md",
+    "tag": "h3",
+    "source": "Caveats",
+    "sourceSha256": "712cfefcf76f0a0a2ca783ab7c5487dde050f4480f149197d44e61247db07ebf",
+    "unchangedReason": null
+  },
+  {
+    "id": "143",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Zero Character",
+    "sourceSha256": "8e7cbf6858e8588d9c4cd26daa5b3986f6e96bdddbc2f2bc126ca56879cbe678",
+    "unchangedReason": null
+  },
+  {
+    "id": "144",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON doesn't support strings that contain the zero character <code>'\\0'</code> or <code>\\u0000</code>. This is impossible with the current API because strings are zero terminated.",
+    "sourceSha256": "1f059e65bb1879b626f0fb196e9c3a342dcb19f4992287b71bcda2a956518244",
+    "unchangedReason": null
+  },
+  {
+    "id": "145",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Character Encoding",
+    "sourceSha256": "776603eeded3a93c2206635bd8190cfea17ef1fb9be70829b95f2b3ba641e433",
+    "unchangedReason": null
+  },
+  {
+    "id": "146",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON only supports UTF-8 encoded input. In most cases it doesn't reject invalid UTF-8 as input though, it just propagates it through as is. As long as the input doesn't contain invalid UTF-8, the output will always be valid UTF-8.",
+    "sourceSha256": "ddb8dc734f6720198b3d0ddd87e9d08297cce16c6a774d02fa9627804c23cc8d",
+    "unchangedReason": null
+  },
+  {
+    "id": "147",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "C Standard",
+    "sourceSha256": "bd90ae4db3f60b0c939c2b28fa8936bb1142b2d0a06ebe45d7e435604b5c4f68",
+    "unchangedReason": null
+  },
+  {
+    "id": "148",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON is written in ANSI C (or C89, C90). If your compiler or C library doesn't follow this standard, correct behavior is not guaranteed.",
+    "sourceSha256": "a508c00dc8769a9b41208ce288b19380f45d0d4e9574b684fc832c47ce446f53",
+    "unchangedReason": null
+  },
+  {
+    "id": "149",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "NOTE: ANSI C is not C++ therefore it shouldn't be compiled with a C++ compiler. You can compile it with a C compiler and link it with your C++ code however. Although compiling with a C++ compiler might work, correct behavior is not guaranteed.",
+    "sourceSha256": "41a3b10a38c90375693b4de9bd7d98ae72210401306ddae8bc671da3bb620327",
+    "unchangedReason": null
+  },
+  {
+    "id": "150",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Floating Point Numbers",
+    "sourceSha256": "b842612821af347f3bd199fba9c2c8a3170e7ea230f0eaecbe62fa930e4d9677",
+    "unchangedReason": null
+  },
+  {
+    "id": "151",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON does not officially support any <code>double</code> implementations other than IEEE754 double precision floating point numbers. It might still work with other implementations but bugs with these will be considered invalid.",
+    "sourceSha256": "599e7ffba9aee970a1bb0840bba667f538fd6c8b47f6670caca845653f3d5cba",
+    "unchangedReason": null
+  },
+  {
+    "id": "152",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "The maximum length of a floating point literal that cJSON supports is currently 63 characters.",
+    "sourceSha256": "fc2c2e2bc6157f96d47a76c9a39d899db7fc1ad3af2289c1bca80407b6c490f6",
+    "unchangedReason": null
+  },
+  {
+    "id": "153",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Deep Nesting Of Arrays And Objects",
+    "sourceSha256": "95ac202a9140aa79b8b1e63d8dd27e815a2fa1d7ea9d315e6164ef6b6afda0f8",
+    "unchangedReason": null
+  },
+  {
+    "id": "154",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON doesn't support arrays and objects that are nested too deeply because this would result in a stack overflow. To prevent this cJSON limits the depth to <code>CJSON_NESTING_LIMIT</code> which is 1000 by default but can be changed at compile time.",
+    "sourceSha256": "eb2a58f96ab147fb4e06f9e5ec68fe953ce2eda4e6648f71d981978b1ec5372f",
+    "unchangedReason": null
+  },
+  {
+    "id": "155",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Thread Safety",
+    "sourceSha256": "06b2359c8da1ef8488d399be89398a0a79b36b106897308deb2774c6a5c286f7",
+    "unchangedReason": null
+  },
+  {
+    "id": "156",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "In general cJSON is <strong>not thread safe</strong>.",
+    "sourceSha256": "00e71fa79e5e6736b01d275fbcb6ff9464bcbeba94c5c2052b54335f5da69415",
+    "unchangedReason": null
+  },
+  {
+    "id": "157",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "However it is thread safe under the following conditions:",
+    "sourceSha256": "38cfc22d92926ed3f0151ee20846b6e01ac34e48dfdf7e736a7df1ee05dfc2cc",
+    "unchangedReason": null
+  },
+  {
+    "id": "158",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_GetErrorPtr</code> is never used (the <code>return_parse_end</code> parameter of <code>cJSON_ParseWithOpts</code> can be used instead)",
+    "sourceSha256": "71eca847459c4a8ab9e477c323979f6bbae27e6810ccefde113e6a59b45be970",
+    "unchangedReason": null
+  },
+  {
+    "id": "159",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>cJSON_InitHooks</code> is only ever called before using cJSON in any threads.",
+    "sourceSha256": "2c8c54b78c00026dd60bbf0a6c2f4f40f3dae783eec57ab4daf4af2eb711dee5",
+    "unchangedReason": null
+  },
+  {
+    "id": "160",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "<code>setlocale</code> is never called before all calls to cJSON functions have returned.",
+    "sourceSha256": "d2c95716874aec8e1fe95b902507baeb52edf511a7c8d2d6db2a4d25251a82a4",
+    "unchangedReason": null
+  },
+  {
+    "id": "161",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Case Sensitivity",
+    "sourceSha256": "aef80b17cc741ef65940378945b5c7a3615400b379cbc62b0ba13a1c1d49aea3",
+    "unchangedReason": null
+  },
+  {
+    "id": "162",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "When cJSON was originally created, it didn't follow the JSON standard and didn't make a distinction between uppercase and lowercase letters. If you want the correct, standard compliant, behavior, you need to use the <code>CaseSensitive</code> functions where available.",
+    "sourceSha256": "87d0a516c6cf3f33a38c40c470763e9c0294e9022d81af9bd3151720252ac52c",
+    "unchangedReason": null
+  },
+  {
+    "id": "163",
+    "page": "01-guide/01-usage.md",
+    "tag": "h4",
+    "source": "Duplicate Object Members",
+    "sourceSha256": "5f369a0aac5e8a55b6564a34056baaa4c287350fb7578a4c4f3b4bbe01b1f474",
+    "unchangedReason": null
+  },
+  {
+    "id": "164",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "cJSON supports parsing and printing JSON that contains objects that have multiple members with the same name. <code>cJSON_GetObjectItemCaseSensitive</code> however will always only return the first one.",
+    "sourceSha256": "2cb65cc89210625bc1d449fc6ce97b75d0d2efe15c11ee8bb3c0d3cf036f3b89",
+    "unchangedReason": null
+  },
+  {
+    "id": "165",
+    "page": "01-guide/01-usage.md",
+    "tag": "h1",
+    "source": "Enjoy cJSON!",
+    "sourceSha256": "2e954c30efb22cd8de4fcedcc98681e4b8fcf521e86471cef11778d602124987",
+    "unchangedReason": null
+  },
+  {
+    "id": "166",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "Dave Gamble (original author)",
+    "sourceSha256": "0f38a63a3dbfce1ccd122346d14217108530711a891a6ec8608a6193b1f82d3f",
+    "unchangedReason": null
+  },
+  {
+    "id": "167",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "Max Bruckner and Alan Wang (current maintainer)",
+    "sourceSha256": "d34d5fa7e11af2f3307a201370936897459f826baa74d476f95e72e772bfb5fc",
+    "unchangedReason": null
+  },
+  {
+    "id": "168",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "and the other <a href=\"/docs/cjson/v1-7-19/en/02-license/02-contributors/\">cJSON contributors</a>",
+    "sourceSha256": "7dff0bb558628fdb1e64a3d5f58a0b492732ffc67228c06b8a139a61ad6d4356",
+    "unchangedReason": null
+  },
+  {
+    "id": "169",
+    "page": "01-guide/01-usage.md",
+    "tag": "h2",
+    "source": "libx source notes",
+    "sourceSha256": "5b2066036ca0966f9969b9d127bf731932294f1655cc91700797b7c1d6cd4109",
+    "unchangedReason": null
+  },
+  {
+    "id": "170",
+    "page": "01-guide/01-usage.md",
+    "tag": "p",
+    "source": "The complete upstream guide above is retained. The following editorial notes distinguish fixed-version discrepancies from the original text.",
+    "sourceSha256": "ff654ebe4128b6b563d29a0d326cfb927be43ca82247ca10b01aebaf4e4b8dd8",
+    "unchangedReason": null
+  },
+  {
+    "id": "171",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "The README states CMake 2.8.5 or newer. The same release's <a href=\"https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/CMakeLists.txt#L2\">CMakeLists.txt, line 2</a> requires CMake 3.0. Check the fixed build configuration when building version 1.7.19.",
+    "sourceSha256": "57764e0f5f4aa26ddacee256b8daab88e931347ea057a4fc4839364a5fd34be7",
+    "unchangedReason": null
+  },
+  {
+    "id": "172",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "The Objects paragraph names <code>cJSON_AddItemReferenceToArray</code>. The fixed <a href=\"https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/cJSON.h#L235-L236\">header, lines 235–236</a> separately declares <code>cJSON_AddItemReferenceToObject(cJSON *object, const char *string, cJSON *item)</code>, including the object member key. The original paragraph is preserved.",
+    "sourceSha256": "a45440fe60c431ce0ec7cce7698f85da9631dc6ef85aa84aef883adcb0f4eeae",
+    "unchangedReason": null
+  },
+  {
+    "id": "173",
+    "page": "01-guide/01-usage.md",
+    "tag": "li",
+    "source": "The examples are reproduced as published, not executed or validated here as complete error-handling recipes. Static review of <code>create_monitor_with_helpers</code> shows that a newly created resolution is attached to the parent array only after both number additions. If an addition fails first, deleting the monitor does not free that unattached object. The examples also omit checks for some item-addition return values. Review allocation failures and ownership before using them in production.",
+    "sourceSha256": "f75725114486ef6d517c9d50da0f9b46b9ae9f588877574872cfb8dba113b088",
+    "unchangedReason": null
+  },
+  {
+    "id": "174",
+    "page": "02-license/01-license.md",
+    "tag": "h1",
+    "source": "License",
+    "sourceSha256": "c011d6097bfbc8e936280addcf2e3e7d06ea2223ffd596973191b800a7035c32",
+    "unchangedReason": null
+  },
+  {
+    "id": "175",
+    "page": "02-license/02-contributors.md",
+    "tag": "h1",
+    "source": "Contributors",
+    "sourceSha256": "350ad433c42fe8cecdb38439f33947ea04c43fe819455772fd3c03b85c389f16",
+    "unchangedReason": null
+  },
+  {
+    "id": "176",
+    "page": "02-license/02-contributors.md",
+    "tag": "p",
+    "source": "Original Author:",
+    "sourceSha256": "d35458203085200362edba236d345a075e5f2f99dae73d35fb257f79e3263e3f",
+    "unchangedReason": null
+  },
+  {
+    "id": "177",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/DaveGamble\">Dave Gamble</a>  ",
+    "sourceSha256": "f3fc3a119742b91b5f1810a9b06b8e0ccfe1f15751d66bd1bf79546b8e2517eb",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "178",
+    "page": "02-license/02-contributors.md",
+    "tag": "p",
+    "source": "Current Maintainer:",
+    "sourceSha256": "b9ff0cce5f1d7a8daddb99f454cca4c29ea8e4a9fb7116bdbe80b15f8482d690",
+    "unchangedReason": null
+  },
+  {
+    "id": "179",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/FSMaxB\">Max Bruckner</a> ",
+    "sourceSha256": "c53e5677c728f3909383f42d93200052534aed5685e9f07b6ca64f330ca7c465",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "180",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/Alanscut\">Alan Wang</a>",
+    "sourceSha256": "0a2ee14f6b4b877fd6a6d384d79e052ead4c61cff6f0f4af4868438c44f235b3",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "181",
+    "page": "02-license/02-contributors.md",
+    "tag": "p",
+    "source": "Contributors:",
+    "sourceSha256": "76be39a58b5c20db9da05a88bc5e0df230f3992d87cf9d8e05a985663ddb2700",
+    "unchangedReason": null
+  },
+  {
+    "id": "182",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/ajaybhargav\">Ajay Bhargav</a>",
+    "sourceSha256": "17fdcca68a39a87f541bcbb3c7e2884bc579294aae629951c52f90c514515ec6",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "183",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/AlexanderVasiljev\">AlexanderVasiljev</a>",
+    "sourceSha256": "0fe1471611755c9d8ba5f9b7b82a31aeadb1170210a35e7e14bf497698806b51",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "184",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/alperakcan\">Alper Akcan</a>",
+    "sourceSha256": "a3f2a07396652444ab87036f9f1d5ac0834f679b94a72142a2125f0d2fbaa452",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "185",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/singku\">Andrew Tang</a>",
+    "sourceSha256": "e2ada4d50b88e97349cf2001a6fec81ecc17ab81f4df93e326b81660cfd14fd7",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "186",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/mlh0101\">Andy</a>",
+    "sourceSha256": "7f0b1006b7e49268d992c3c8bb5dc36b58009378ff345fd17d46122d60bbfcda",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "187",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/anton-sergeev\">Anton Sergeev</a>",
+    "sourceSha256": "31d14329d5f9ae8ef03e697f48d088952d1419a312d5878f53d0fc5feaa1509d",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "188",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/bnason-nf\">Benbuck Nason</a>",
+    "sourceSha256": "b3a8a99fa5c1fd9de7a1c259a96ec0c0e310fe4bfaa578a02617543dd963e32f",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "189",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/bjda\">Bernt Johan Damslora</a>",
+    "sourceSha256": "71cf47b942e08c21b804f1c9458433e9c3c3c7bee6a3fe494021faa73c5aa3fd",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "190",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/bobkocisko\">Bob Kocisko</a>",
+    "sourceSha256": "593ebcbe0750cfbede96cbe2397954d9f00d7cfc585043243993448ede4d2952",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "191",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/ChristianSch\">Christian Schulze</a>",
+    "sourceSha256": "f73a4289d03affb725a670a10c505865665a4dd0df1c57f632b83f5336d851ef",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "192",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/Casperinous\">Casperinous</a>",
+    "sourceSha256": "0bb6277a9b8cef6b01969d99f9b80b5ab997564075a27a818ebdc06050bf094d",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "193",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/zjuchenyuan\">ChenYuan</a>",
+    "sourceSha256": "5a168f1e49f421de0f14973b2264d21b5f881bcbad1bcddedf775037368c27d0",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "194",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/DeboraG\">Debora Grosse</a>",
+    "sourceSha256": "18901a82cb4f818572f2ba0db3fbad01e79d95822a4829438a449cf0fecf33eb",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "195",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/dieyushi\">dieyushi</a>",
+    "sourceSha256": "474212f74c74861c06a2a01badd085a9fc2ab87067710d96228e5e75681e5b8a",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "196",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/DongwenHuang\">Dōngwén Huáng (黄东文)</a>",
+    "sourceSha256": "29b09e76fb460d7419e14f8206a13bcfa7c59e911a1024fd131c0fcec75e5ed8",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "197",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/DL6ER\">Dominik</a>",
+    "sourceSha256": "0485b18bddf84a523fad330a4a1116a9a9d9ce706f85cc13fba80ce8cc6c4dab",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "198",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/ldm0\">Donough Liu</a>",
+    "sourceSha256": "78324b7717bac696c5b2ffa316ccd97b4aa7e49d54921377b6bf74c695388ba8",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "199",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/erez-o\">Erez Oxman</a>",
+    "sourceSha256": "e6369a07dbf1a74839fd35b8d9549f73c302efa898d30b1aae47ce9d89df433f",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "200",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "Eswar Yaganti",
+    "sourceSha256": "31a8658375e65d09ca4cfc7c7465883b996a37dfa2f37244e4407a1ff7581d1b",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "201",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/etodd\">Evan Todd</a>",
+    "sourceSha256": "bf91d3b27f53b153a439653afa7f9150b4960494228a7ac8c55a5f25efdbdc36",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "202",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/ffontaine\">Fabrice Fontaine</a>",
+    "sourceSha256": "d65e92aab276b39c080203751bcd7ca5b3b68bf0b7e6a96a76fb563821a019fb",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "203",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "Ian Mobley",
+    "sourceSha256": "6ec453066a4ca87bb0b7edcdf0f3ddaf50f5ba1af2b19326fba42fb0ac26b517",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "204",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "Irwan Djadjadi",
+    "sourceSha256": "c2ebc3aa4e79d34c66fa2b8e3632f09e08ef28626b40c684dcb1bf7f6c45469c",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "205",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/hopper-vul\">hopper-vul</a>",
+    "sourceSha256": "c5ac971fc5b76d26cd5253cb18ae7e2d6d2cb1d5a57d858e13ade46221c90f50",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "206",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/HuKeping\">HuKeping</a>",
+    "sourceSha256": "e73c15896e76a985d882dd85c9f20f55f018dd7e9de650bd421ba48c695bdb2b",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "207",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/npi3pak\">IvanVoid</a>",
+    "sourceSha256": "08b64e7e558e652d9c4534701c4269ea84a3dfc206e6dcf617f9ff340fd5bdfc",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "208",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/jwilk\">Jakub Wilk</a>",
+    "sourceSha256": "ffab43b5cb01132c844bd2f11daefd080f9f93c32d3dad5e49ac3d9cff0bfab4",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "209",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/loigu\">Jiri Zouhar</a>",
+    "sourceSha256": "32c0a9047129963056b4b743b3130e3d665dbdee1860c7826695f478de99a867",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "210",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/jfether\">Jonathan Fether</a>",
+    "sourceSha256": "411cb49a9d5f2dc9c26fc94e007a58fcb718b2c2f55b6922d8c229c79f458956",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "211",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/jarulsamy\">Joshua Arulsamy</a>",
+    "sourceSha256": "3948be2c78c58e035ecdfc6ef120baa83c80233275e0222cea1f53b41c962370",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "212",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/julian-st\">Julian Ste</a>",
+    "sourceSha256": "cdd593f0dbdeba832522dadbe5bc414cca1ff2bae7f4c0064501c6ce30cd8a38",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "213",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/juvasquezg\">Julián Vásquez</a>",
+    "sourceSha256": "d6bc99e0dcc3f06c5c31c2414a68c7816296bcd816312af523831923c340c365",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "214",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/Junbo-Zheng\">Junbo Zheng</a>",
+    "sourceSha256": "50f18fd7ad78abec742f3fb5790bd73e18964e955901455f62397559d69cd4d0",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "215",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/kbranigan\">Kevin Branigan</a>",
+    "sourceSha256": "3b64e906561be9e8d5d2161a6b4dce8c88c372f41a7440a0a32ac92d47282ea9",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "216",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/sappo\">Kevin Sapper</a>",
+    "sourceSha256": "2f4f6885a79eebd46a8f1c813e50dc344f6a18a7b192d2cb3042161d0f277008",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "217",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/ChisholmKyle\">Kyle Chisholm</a>",
+    "sourceSha256": "3fa438466bdafdbe4778bdd10f54f6a20c2d259967535adc6afdf399e5ada672",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "218",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/ecksun\">Linus Wallgren</a>",
+    "sourceSha256": "c6cbb27e031ad214552a911171c0170a035430db9ef13e39c5b95c92a27a6462",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "219",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/Up-wind\">Luo Jin</a>",
+    "sourceSha256": "0f7036519e31ae20815a876d3e07ae25b598f949db4694cc45b839a9835af08f",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "220",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/maebex\">Max</a>",
+    "sourceSha256": "336a8ac233af7802c45f2018223a995a1daf9eaf65fbca613c87745d31bf161b",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "221",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/MaxBrandtner\">MaxBrandtner</a>",
+    "sourceSha256": "623a75177516b732c58108309aa2a9cf7ee043b46e9c3a04e93165da3aba1794",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "222",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/raiden00pl\">Mateusz Szafoni</a>",
+    "sourceSha256": "d271f24031658cc44343ce0637fe25eefd8eaf9add1faa3e6b8fa5f64b7d77f4",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "223",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "Mike Pontillo",
+    "sourceSha256": "492885bd10d426399f43e634cc458711b2744ec815095539df4af76f3f128461",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "224",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/miaoerduo\">miaoerduo</a>",
+    "sourceSha256": "87b09879f1a3dfd7019e392ff74331ef30837fbacd16200fc719ff22819ebd68",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "225",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/mohawk2\">mohawk2</a>",
+    "sourceSha256": "856efdeeccf8ed268e8df3f1c714d8ca712f8450237daa55b07279c39c0a7123",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "226",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/mjerris\">Mike Jerris</a>",
+    "sourceSha256": "5b92090dc3ffeec6e659cb39786b315172506f79bc6dc8e4a8807cbe3f6e738f",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "227",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/mhrobinson\">Mike Robinson</a>",
+    "sourceSha256": "3cc22a9e45194fc31a38010044b2ea99915d5ca07068ad3c88d50da8d9de35d3",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "228",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/moorthy-bs\">Moorthy</a>",
+    "sourceSha256": "9f8aed86317002b4520775fb748ca6368a5796c571d2d0ae0aa472e115e80c29",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "229",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/myd7349\">myd7349</a>",
+    "sourceSha256": "a183c32381ac7b1211bd7eab10282e5022d9e65d9ce8db85ccce76ab544d9846",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "230",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/NancyLi1013\">NancyLi1013</a>",
+    "sourceSha256": "efb23caf0887d13963c6f605c174a9b60069481b99f975fa3b179e5fe81286d5",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "231",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/sbvoxel\">Orri</a>",
+    "sourceSha256": "28ff6f2d8b91ccdfbb780f3ab0a4af0561b60b471729764d7e57573fc2f0ed1e",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "232",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "Paulo Antonio Alvarez",
+    "sourceSha256": "76a9c665c8d93d41be9062ba9e0d3accafce40b739783543bb6e97d76ab75b0e",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "233",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/PawelMalowany\">Paweł Malowany</a>",
+    "sourceSha256": "2a5d8ec1561d9b6f1cb14bd86db5eb49daaeb0b77369250bcb9507af3bb3e112",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "234",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/PawelWMS\">Pawel Winogrodzki</a>",
+    "sourceSha256": "42eca34ba864e2f476845831cf2eb31212dd2e145b8b744dd727f62d6faaa684",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "235",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/prefetchnta\">prefetchnta</a>",
+    "sourceSha256": "ea6d2dec4d9268325700aaf92c8936834b2e54a4ea89bf3cfc5999a9a4f0a273",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "236",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/rafaeldias\">Rafael Leal Dias</a>",
+    "sourceSha256": "b0fd44cc15b45b7452953d80dc25a2aa5e70fb43bc7d70079579eb899c473453",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "237",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/randy408\">Randy</a>",
+    "sourceSha256": "d880caa46bbfe54fac62c2222ed9316112b04f12d7052c07f380808dd85defb7",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "238",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/raiden00pl\">raiden00pl</a>",
+    "sourceSha256": "c3ac37aa7c82bc50092de1bf237bc2c3c091f0b19e083738f5f9d7a4f11c97aa",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "239",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/rmallins\">Robin Mallinson</a>",
+    "sourceSha256": "7eda649a8d32c0a0fb539d76cd1082bdbe10c943e365b3cde1cc1ec2175065d9",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "240",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/rvagg\">Rod Vagg</a>",
+    "sourceSha256": "b1eba4c1742888a61f2bc6b589d0ce02d76cd1631f857a907fc419d2fe5b871b",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "241",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/rmeertens\">Roland Meertens</a>",
+    "sourceSha256": "7334364fc77cf7c4abe4b77825418572a2f42877aae3846c1e6c27534fd9c6ed",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "242",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/MicroJoe\">Romain Porte</a>",
+    "sourceSha256": "ee3c30ce8882435128f2019c195b029af2c7703e96bd5fcecd9e81cbf5d81b55",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "243",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/basanjeev\">SANJEEV BA</a>",
+    "sourceSha256": "c1eacd09c94f727296b7642b1571aabb24cdcdf5212d8e366099ce39ec4e04d3",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "244",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/lntuition\">Sang-Heon Jeon</a>",
+    "sourceSha256": "0543d55863ebb49e03a81a0f3d3268d343abcb5b3d0399441cca494d68df5224",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "245",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/saynb\">Sayan Bandyopadhyay</a>",
+    "sourceSha256": "b10f25ce843c733c9dca946311a31681b78333c2dfc981407b247c8a4180fd02",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "246",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/GitMensch\">Simon Sobisch</a>",
+    "sourceSha256": "1649744ea48da71b9066d786ee40abc610ab41e1728893940b099531ab3e2aea",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "247",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/simon-p-r\">Simon Ricaldone</a>",
+    "sourceSha256": "a4115eb23247d9c5b49e9e62b0db51035da3dc325be733cc448c5b4856565eb1",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "248",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/sdrsdr\">Stoian Ivanov</a>",
+    "sourceSha256": "8eaa1d13c7fa6f57baddd3b6d7ff1eef07ba49a4b57465ed5459825663372fae",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "249",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/SuperH-0630\">SuperH-0630</a>",
+    "sourceSha256": "418a82929ce449f8c8058b6271f96abcf2fc24ae9525ba10191ff06751cb4596",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "250",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/Square789\">Square789</a>",
+    "sourceSha256": "627ae028a9572e7fa457befdd6d1457d2337ac02445032595abff8a112073a09",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "251",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/gatzka\">Stephan Gatzka</a>",
+    "sourceSha256": "f39a4eab41570b8d39f64f9aac0990535bad56ec03f5d881c68badfab2212483",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "252",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/BigBrainAFK\">Tony Langhammer</a>",
+    "sourceSha256": "b45eba626d72d2ff8e3d1e9fa69d2750294ae9c006a9fce744b7d9e9deb3a000",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "253",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/vemakereporter\">Vemake</a>",
+    "sourceSha256": "d0d899dfcfc27c858c97494b13653c3d33a0a782f0941c6d5da174179239245e",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "254",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/vwvw\">vwvw</a>",
+    "sourceSha256": "54139a3eeeb87662ad4d4f03157a6cf7adaa92d552cbe344462199e03078fbff",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "255",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/warmsocks\">warmsocks</a>",
+    "sourceSha256": "d63a20206b777f7ca8f1dc1e18049a21a96a4d226e6ec210a47d00c8164f4bf6",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "256",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/tan-wei\">Wei Tan</a>",
+    "sourceSha256": "ac8f51c007a3f54e0186c6f813191d60e804fd80272af6d57763eafb2e9f2a26",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "257",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/schmidtw\">Weston Schmidt</a>",
+    "sourceSha256": "ce92e53af09dcdec9d3013e62a8757b87ccf04d3347f76ef1fa1836565c673fa",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "258",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/xiaomianhehe\">xiaomianhehe</a>",
+    "sourceSha256": "3549c0f02be0eb014699592f42edf457b16c0a3b43856a0d8c2fdec86e1659f2",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "259",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/yangfl\">yangfl</a>",
+    "sourceSha256": "1a5e2050e5aa9ab1330a6e2e79f40ad93628fb547b92b3eb9e158b98783b498f",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "260",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/yuta-oxo\">yuta-oxo</a>",
+    "sourceSha256": "7e83a5dc9032c889dd42308b4107961c1490a5749feaf5cfef85203e9490e248",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "261",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/zhindes\">Zach Hindes</a>",
+    "sourceSha256": "2e1e49f2c4b4091e0362801c9a8a1e56c92173a936d10e19d1f0b601c6fa1966",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "262",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/zhaozhixu\">Zhao Zhixu</a>",
+    "sourceSha256": "7d63e46df7f831b900f60e3a47a28fde18d3fe4e6f430feafa9fea03b106e09f",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "263",
+    "page": "02-license/02-contributors.md",
+    "tag": "li",
+    "source": "<a href=\"https://github.com/10km\">10km</a>",
+    "sourceSha256": "ac7a458aeec57d92d41d2f551ed63730d509f2b532ea5d3aa922f84fcef21313",
+    "unchangedReason": "Original contributor propernames and links"
+  },
+  {
+    "id": "264",
+    "page": "02-license/02-contributors.md",
+    "tag": "p",
+    "source": "And probably more people on <a href=\"https://sourceforge.net/p/cjson/bugs/search/?q=status%3Aclosed-rejected+or+status%3Aclosed-out-of-date+or+status%3Awont-fix+or+status%3Aclosed-fixed+or+status%3Aclosed&amp;page=0\">SourceForge</a>",
+    "sourceSha256": "f263903dd9766bd3111b2cafa734989d1fa7dfb64653339f8ef46519c6b826ce",
+    "unchangedReason": null
+  },
+  {
+    "id": "265",
+    "page": "02-license/02-contributors.md",
+    "tag": "p",
+    "source": "Also thanks to all the people who reported bugs and suggested new features.",
+    "sourceSha256": "05ba3d3fb10d57f5f20e7c85c3b3ca96964fa0bb70a385ce086e18ea452dc27c",
+    "unchangedReason": null
+  }
+]

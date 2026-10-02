@@ -160,7 +160,10 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     // scope. Published Ninja references are checked by check-ninja-rendered.mjs.
     return (
       !relative.startsWith('docs/notes/document-import/fmt/v12-2-0/source/') &&
-      relative !== 'docs/notes/document-import/ninja/v1-13-2/source/README.md'
+      relative !== 'docs/notes/document-import/ninja/v1-13-2/source/README.md' &&
+      // Preserve upstream's broken #Vcpkg in the frozen evidence; the canonical
+      // repair and all published fragments are checked by check-cjson-content.mjs.
+      relative !== 'docs/notes/document-import/cjson/v1-7-19/source/README.md'
     );
   });
   const failures = markdownFiles.flatMap((filePath) =>
