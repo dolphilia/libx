@@ -86,6 +86,7 @@ export function initializeSearch(root: HTMLElement) {
           const item = document.createElement('li');
           const link = document.createElement('a');
           link.href = result.url;
+          link.addEventListener('click', () => dialog?.close());
           link.textContent = result.title;
           const detail = document.createElement('small');
           detail.textContent = result.detail;

@@ -1,0 +1,107 @@
+[
+  {
+    "canonicalLine": 935,
+    "en": "### Iterating and sorting",
+    "ja": "### 反復処理とソート"
+  },
+  {
+    "canonicalLine": 939,
+    "en": "You can loop over the items in the hash by starting from the beginning and following the `hh.next` pointer.",
+    "ja": "ハッシュの先頭から `hh.next` ポインターをたどると、要素を順に処理できます。"
+  },
+  {
+    "canonicalLine": 947,
+    "en": "Iterating over all the items in a hash",
+    "ja": "ハッシュ内のすべての要素を順に処理する"
+  },
+  {
+    "canonicalLine": 967,
+    "en": "There is also an `hh.prev` pointer you could use to iterate backwards through the hash, starting from any known item.",
+    "ja": "`hh.prev` ポインターもあり、既知の任意の要素から始めて、ハッシュを逆順にたどれます。"
+  },
+  {
+    "canonicalLine": 975,
+    "en": "#### Deletion-safe iteration",
+    "ja": "#### 削除を安全に行える反復処理"
+  },
+  {
+    "canonicalLine": 979,
+    "en": "In the example above, it would not be safe to delete and free `s` in the body of the *for* loop, (because `s` is dereferenced each time the loop iterates). This is easy to rewrite correctly (by copying the `s->hh.next` pointer to a temporary variable *before* freeing `s`), but it comes up often enough that a deletion-safe iteration macro, `HASH_ITER`, is included. It expands to a `for`-loop header. Here is how it could be used to rewrite the last example:",
+    "ja": "上の例では、`s` を *for* ループの本体で削除してメモリーを解放すると、安全ではありません（ループを繰り返すたびに `s` を参照外しするためです）。正しく書き直すのは簡単で、`s->hh.next` ポインターを一時変数にコピーし、解放する *前に* 次の要素を保存してから、`s` のメモリーを解放すればよいのです。ただし、この処理はよく必要になるため、削除を安全に行える反復処理のマクロ `HASH_ITER` が用意されています。これは `for` ループのヘッダーに展開されます。直前の例は、次のように書き直せます。"
+  },
+  {
+    "canonicalLine": 1012,
+    "en": "A hash is also a doubly-linked list.",
+    "ja": "ハッシュは双方向連結リストでもあります。"
+  },
+  {
+    "canonicalLine": 1018,
+    "en": "Iterating backward and forward through the items in the hash is possible because of the `hh.prev` and `hh.next` fields. All the items in the hash can be reached by repeatedly following these pointers, thus the hash is also a doubly-linked list.",
+    "ja": "ハッシュ内の要素を前後にたどれるのは、`hh.prev` と `hh.next` フィールドがあるためです。このポインターを繰り返したどれば、ハッシュ内のすべての要素に到達できるので、ハッシュは双方向連結リストでもあります。"
+  },
+  {
+    "canonicalLine": 1028,
+    "en": "If you’re using uthash in a C++ program, you need an extra cast on the `for` iterator, e.g., `s = static_cast<my_struct*>(s->hh.next)`.",
+    "ja": "C++のプログラムでuthashを使う場合は、`for` の反復処理に追加のキャストが必要です。たとえば、`s = static_cast<my_struct*>(s->hh.next)` とします。"
+  },
+  {
+    "canonicalLine": 1038,
+    "en": "#### Sorting",
+    "ja": "#### ソート"
+  },
+  {
+    "canonicalLine": 1042,
+    "en": "The items in the hash are visited in \"insertion order\" when you follow the `hh.next` pointer. You can sort the items into a new order using `HASH_SORT`.",
+    "ja": "`hh.next` ポインターをたどると、ハッシュ内の要素は「挿入順」で処理されます。`HASH_SORT` を使うと、要素を別の順序に並べ替えられます。"
+  },
+  {
+    "canonicalLine": 1058,
+    "en": "The second argument is a pointer to a comparison function. It must accept two pointer arguments (the items to compare), and must return an `int` which is less than zero, zero, or greater than zero, if the first item sorts before, equal to, or after the second item, respectively. (This is the same convention used by `strcmp` or `qsort` in the standard C library).",
+    "ja": "第2引数は、比較関数へのポインターです。この関数は、比較する2つの要素へのポインターを引数として受け取らなければなりません。また、`int` を返し、第1の要素が第2の要素より前に並ぶ場合は0未満、同じ場合は0、後に並ぶ場合は0より大きい値にしなければなりません（標準Cライブラリーの `strcmp` や `qsort` と同じ規約です）。"
+  },
+  {
+    "canonicalLine": 1080,
+    "en": "Below, `name_sort` and `id_sort` are two examples of sort functions.",
+    "ja": "以下の `name_sort` と `id_sort` は、ソート関数の2つの例です。"
+  },
+  {
+    "canonicalLine": 1088,
+    "en": "Sorting the items in the hash",
+    "ja": "ハッシュ内の要素をソートする"
+  },
+  {
+    "canonicalLine": 1116,
+    "en": "When the items in the hash are sorted, the first item may change position. In the example above, `users` may point to a different structure after calling `HASH_SORT`.",
+    "ja": "ハッシュ内の要素をソートすると、先頭の要素の位置が変わる場合があります。上の例では、`users` は `HASH_SORT` を呼び出した後に別の構造体を指す場合があります。"
+  },
+  {
+    "canonicalLine": 1128,
+    "en": "### A complete example",
+    "ja": "### 完全な例"
+  },
+  {
+    "canonicalLine": 1132,
+    "en": "We’ll repeat all the code and embellish it with a `main()` function to form a working example.",
+    "ja": "これまでのコードをまとめ、`main()` 関数を追加して、動作する例を作ります。"
+  },
+  {
+    "canonicalLine": 1138,
+    "en": "If this code was placed in a file called `example.c` in the same directory as `uthash.h`, it could be compiled and run like this:",
+    "ja": "このコードを `example.c` というファイルに保存し、`uthash.h` と同じディレクトリに置くと、次のようにコンパイルして実行できます。"
+  },
+  {
+    "canonicalLine": 1155,
+    "en": "Follow the prompts to try the program.",
+    "ja": "表示される指示に従って、プログラムを試してください。"
+  },
+  {
+    "canonicalLine": 1163,
+    "en": "A complete program",
+    "ja": "完全なプログラム"
+  },
+  {
+    "canonicalLine": 1323,
+    "en": "This program is included in the distribution in `tests/example.c`. You can run `make example` in that directory to compile it easily.",
+    "ja": "このプログラムは、配布物の `tests/example.c` に収録されています。そのディレクトリで `make example` を実行すれば、簡単にコンパイルできます。"
+  }
+]

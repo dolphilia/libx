@@ -1,0 +1,197 @@
+[
+  {
+    "canonicalLine": 2396,
+    "en": "### Specifying an alternate key comparison function",
+    "ja": "### 別のキー比較関数を指定する"
+  },
+  {
+    "canonicalLine": 2400,
+    "en": "When you call `HASH_FIND(hh, head, intfield, sizeof(int), out)`, uthash will first call [`HASH_FUNCTION`](#hash_functions)`(intfield, sizeof(int), hashvalue)` to determine the bucket `b` in which to search, and then, for each element `elt` of bucket `b`, uthash will evaluate `elt->hh.hashv == hashvalue && elt.hh.keylen == sizeof(int) && HASH_KEYCMP(intfield, elt->hh.key, sizeof(int)) == 0`. `HASH_KEYCMP` should return `0` to indicate that `elt` is a match and should be returned, and any non-zero value to indicate that the search for a matching element should continue.",
+    "ja": "`HASH_FIND(hh, head, intfield, sizeof(int), out)` を呼び出すと、uthashはまず [`HASH_FUNCTION`](#hash_functions)`(intfield, sizeof(int), hashvalue)` を呼び出し、検索するバケット `b` を決めます。続いて、各要素 `elt` について、バケット `b` の中で、`elt->hh.hashv == hashvalue && elt.hh.keylen == sizeof(int) && HASH_KEYCMP(intfield, elt->hh.key, sizeof(int)) == 0` を評価します。`HASH_KEYCMP` は、`0` を返すことで、`elt` が一致しており返すべき要素であることを示します。0以外の値は、一致する要素の検索を続けるべきことを示します。"
+  },
+  {
+    "canonicalLine": 2406,
+    "en": "By default, uthash defines `HASH_KEYCMP` as an alias for `memcmp`. On platforms that do not provide `memcmp`, you can substitute your own implementation.",
+    "ja": "既定では、uthashは `HASH_KEYCMP` を `memcmp` の別名として定義します。`memcmp` を提供しないプラットフォームでは、独自の実装に置き換えられます。"
+  },
+  {
+    "canonicalLine": 2423,
+    "en": "Another reason to substitute your own key comparison function is if your \"key\" is not trivially comparable. In this case you will also need to substitute your own `HASH_FUNCTION`.",
+    "ja": "キー比較関数を独自のものに置き換える別の理由として、単純には比較できない「キー」を使う場合があります。この場合、`HASH_FUNCTION` も独自のものに置き換える必要があります。"
+  },
+  {
+    "canonicalLine": 2449,
+    "en": "Another reason to substitute your own key comparison function is to trade off correctness for raw speed. During its linear search of a bucket, uthash always compares the 32-bit `hashv` first, and calls `HASH_KEYCMP` only if the `hashv` compares equal. This means that `HASH_KEYCMP` is called at least once per successful find. Given a good hash function, we expect the `hashv` comparison to produce a \"false positive\" equality only once in four billion times. Therefore, we expect `HASH_KEYCMP` to produce `0` most of the time. If we expect many successful finds, and our application doesn’t mind the occasional false positive, we might substitute a no-op comparison function:",
+    "ja": "キー比較関数を独自のものに置き換えるもう1つの理由は、正確性を犠牲にして速度を高めることです。uthashは、バケットを線形探索するとき、常に32ビットの `hashv` を先に比較し、`HASH_KEYCMP` を呼び出すのは `hashv` が等しい場合だけです。そのため、`HASH_KEYCMP` は、検索が成功するたびに少なくとも1回呼び出されます。良いハッシュ関数なら、`hashv` の比較が「偽陽性」の一致になるのは40億回に1回だけと期待できます。そのため、`HASH_KEYCMP` はほとんどの場合に `0` を返すと期待できます。検索が多数成功すると見込まれ、アプリケーションが時折の偽陽性を許容するなら、何もしない比較関数に置き換えることも考えられます。"
+  },
+  {
+    "canonicalLine": 2466,
+    "en": "Note: The global equality-comparison function `HASH_KEYCMP` has no relationship at all to the lessthan-comparison function passed as a parameter to `HASH_ADD_INORDER`.",
+    "ja": "注意：グローバルな等値比較関数 `HASH_KEYCMP` は、`HASH_ADD_INORDER` に引数として渡す大小比較関数とは、まったく関係がありません。"
+  },
+  {
+    "canonicalLine": 2476,
+    "en": "### Built-in hash functions",
+    "ja": "### 組み込みハッシュ関数"
+  },
+  {
+    "canonicalLine": 2480,
+    "en": "Internally, a hash function transforms a key into a bucket number. You don’t have to take any action to use the default hash function, currently Jenkins.",
+    "ja": "内部では、ハッシュ関数がキーをバケット番号へ変換します。既定のハッシュ関数を使うために何かする必要はありません。現在の既定はJenkinsです。"
+  },
+  {
+    "canonicalLine": 2486,
+    "en": "Some programs may benefit from using another of the built-in hash functions. There is a simple analysis utility included with uthash to help you determine if another hash function will give you better performance.",
+    "ja": "別の組み込みハッシュ関数を使うと、性能が向上するプログラムもあります。uthashには、別のハッシュ関数で性能が向上するかどうかを判断するための、簡単な解析ユーティリティーが同梱されています。"
+  },
+  {
+    "canonicalLine": 2492,
+    "en": "You can use a different hash function by compiling your program with `-DHASH_FUNCTION=HASH_xyz` where `xyz` is one of the symbolic names listed below. E.g.,",
+    "ja": "別のハッシュ関数を使うには、`-DHASH_FUNCTION=HASH_xyz` を付けてプログラムをコンパイルします。`xyz` は、以下に示すシンボル名のいずれかです。たとえば、次のようにします。"
+  },
+  {
+    "canonicalLine": 2509,
+    "en": "<caption class=\"title\">Table 2. Built-in hash functions</caption>",
+    "ja": "<caption class=\"title\">表2. 組み込みハッシュ関数</caption>"
+  },
+  {
+    "canonicalLine": 2514,
+    "en": "<th align=\"center\" valign=\"top\">Symbol </th>",
+    "ja": "<th align=\"center\" valign=\"top\">シンボル </th>"
+  },
+  {
+    "canonicalLine": 2515,
+    "en": "<th align=\"left\" valign=\"top\">   Name</th>",
+    "ja": "<th align=\"left\" valign=\"top\">   名前</th>"
+  },
+  {
+    "canonicalLine": 2521,
+    "en": "<td align=\"left\" valign=\"top\"><p class=\"table\">Jenkins (default)</p></td>",
+    "ja": "<td align=\"left\" valign=\"top\"><p class=\"table\">Jenkins（既定）</p></td>"
+  },
+  {
+    "canonicalLine": 2552,
+    "en": "#### Which hash function is best?",
+    "ja": "#### どのハッシュ関数が最適ですか？"
+  },
+  {
+    "canonicalLine": 2556,
+    "en": "You can easily determine the best hash function for your key domain. To do so, you’ll need to run your program once in a data-collection pass, and then run the collected data through an included analysis utility.",
+    "ja": "使用するキーの範囲に最適なハッシュ関数を簡単に判断できます。そのためには、まずデータ収集のためにプログラムを1回実行し、収集したデータを同梱の解析ユーティリティーで処理します。"
+  },
+  {
+    "canonicalLine": 2562,
+    "en": "First you must build the analysis utility. From the top-level directory,",
+    "ja": "まず、解析ユーティリティーをビルドしなければなりません。最上位のディレクトリから、次のように実行します。"
+  },
+  {
+    "canonicalLine": 2579,
+    "en": "We’ll use `test14.c` to demonstrate the data-collection and analysis steps (here using `sh` syntax to redirect file descriptor 3 to a file):",
+    "ja": "データ収集と解析の手順を、`test14.c` を使って示します（ここでは、`sh` の構文を使い、ファイル記述子3の出力をファイルへリダイレクトします）。"
+  },
+  {
+    "canonicalLine": 2587,
+    "en": "Using keystats",
+    "ja": "keystatsの使用"
+  },
+  {
+    "canonicalLine": 2613,
+    "en": "<div class=\"title\">Note</div>",
+    "ja": "<div class=\"title\">注意</div>"
+  },
+  {
+    "canonicalLine": 2615,
+    "en": "<td class=\"content\">The number 3 in <code>-DHASH_EMIT_KEYS=3</code> is a file descriptor. Any file descriptor",
+    "ja": "<td class=\"content\"><code>-DHASH_EMIT_KEYS=3</code>の数値3はファイル記述子です。"
+  },
+  {
+    "canonicalLine": 2616,
+    "en": "that your program doesn’t use for its own purposes can be used instead of 3.",
+    "ja": "プログラムが自身の用途に使っていないファイル記述子であれば、3の代わりに使えます。"
+  },
+  {
+    "canonicalLine": 2617,
+    "en": "The data-collection mode enabled by <code>-DHASH_EMIT_KEYS=x</code> should not be used in",
+    "ja": "<code>-DHASH_EMIT_KEYS=x</code>で有効にするデータ収集モードは、"
+  },
+  {
+    "canonicalLine": 2618,
+    "en": "production code.</td>",
+    "ja": "本番のコードで使うべきではありません。</td>"
+  },
+  {
+    "canonicalLine": 2625,
+    "en": "Usually, you should just pick the first hash function that is listed. Here, this is `SFH`. This is the function that provides the most even distribution for your keys. If several have the same `ideal%`, then choose the fastest one according to the `find_usec` column.",
+    "ja": "通常は、一覧の先頭にあるハッシュ関数を選べばよいでしょう。この例では `SFH` です。キーを最も均等に分布させる関数です。複数の関数で `ideal%` が同じ場合は、`find_usec` 列を見て最も高速なものを選んでください。"
+  },
+  {
+    "canonicalLine": 2635,
+    "en": "#### keystats column reference",
+    "ja": "#### keystatsの列リファレンス"
+  },
+  {
+    "canonicalLine": 2640,
+    "en": "symbolic name of hash function",
+    "ja": "ハッシュ関数のシンボル名"
+  },
+  {
+    "canonicalLine": 2643,
+    "en": "The percentage of items in the hash table which can be looked up within an ideal number of steps. (Further explained below).",
+    "ja": "理想的なステップ数以内で検索できる、ハッシュテーブル内の要素の割合です（以下で詳しく説明します）。"
+  },
+  {
+    "canonicalLine": 2646,
+    "en": "the number of keys that were read in from the emitted key file",
+    "ja": "出力されたキーファイルから読み込んだキーの数"
+  },
+  {
+    "canonicalLine": 2649,
+    "en": "the number of buckets in the hash after all the keys were added",
+    "ja": "すべてのキーを追加した後の、ハッシュ内のバケット数"
+  },
+  {
+    "canonicalLine": 2652,
+    "en": "the percent of duplicate keys encountered in the emitted key file. Duplicates keys are filtered out to maintain key uniqueness. (Duplicates are normal. For example, if the application adds an item to a hash, deletes it, then re-adds it, the key is written twice to the emitted file.)",
+    "ja": "出力されたキーファイルで見つかった重複キーの割合です。キーの一意性を保つため、重複するキーは除去します（重複は通常起こるものです。たとえば、アプリケーションがハッシュへ要素を追加し、削除してから再び追加すると、そのキーは出力ファイルに2回書き込まれます）。"
+  },
+  {
+    "canonicalLine": 2655,
+    "en": "this is either `ok`, or `nx` (noexpand) if the expansion inhibited flag is set, described in [Expansion internals](#expansion). It is not recommended to use a hash function that has the `noexpand` flag set.",
+    "ja": "これは `ok` または `nx`（noexpand）です。後者は、[拡張の内部処理](#expansion)で説明する拡張抑制フラグが設定されている場合です。`noexpand` フラグが設定されるハッシュ関数の使用は推奨されません。"
+  },
+  {
+    "canonicalLine": 2658,
+    "en": "the clock time in microseconds required to add all the keys to a hash",
+    "ja": "すべてのキーをハッシュに追加するために必要な実経過時間（マイクロ秒）"
+  },
+  {
+    "canonicalLine": 2661,
+    "en": "the clock time in microseconds required to look up every key in the hash",
+    "ja": "ハッシュ内のすべてのキーを検索するために必要な実経過時間（マイクロ秒）"
+  },
+  {
+    "canonicalLine": 2664,
+    "en": "the clock time in microseconds required to delete every item in the hash",
+    "ja": "ハッシュ内のすべての要素を削除するために必要な実経過時間（マイクロ秒）"
+  },
+  {
+    "canonicalLine": 2674,
+    "en": "#### ideal%",
+    "ja": "#### ideal%の意味"
+  },
+  {
+    "canonicalLine": 2682,
+    "en": "What is ideal%?",
+    "ja": "ideal%とは何ですか？"
+  },
+  {
+    "canonicalLine": 2688,
+    "en": "The *n* items in a hash are distributed into *k* buckets. Ideally each bucket would contain an equal share *(n/k)* of the items. In other words, the maximum linear position of any item in a bucket chain would be *n/k* if every bucket is equally used. If some buckets are overused and others are underused, the overused buckets will contain items whose linear position surpasses *n/k*. Such items are considered non-ideal.",
+    "ja": "ハッシュ内の *n* 個の要素は、*k* 個のバケットに分配されます。理想的には、各バケットが均等に *(n/k)* 個の要素を持ちます。言い換えると、すべてのバケットを均等に使えば、バケットのチェーン内での要素の線形位置の最大値は *n/k* になります。一部のバケットが多用され、他のバケットの使用が少ない場合、多用されるバケットには、線形位置が *n/k* を超える要素が入ります。このような要素を、理想的でない要素とみなします。"
+  },
+  {
+    "canonicalLine": 2694,
+    "en": "As you might guess, `ideal%` is the percentage of ideal items in the hash. These items have favorable linear positions in their bucket chains. As `ideal%` approaches 100%, the hash table approaches constant-time lookup performance.",
+    "ja": "お察しのとおり、`ideal%` は、ハッシュ内の理想的な要素の割合です。これらの要素は、バケットのチェーン内で有利な線形位置にあります。`ideal%` が100%に近づくほど、ハッシュテーブルの検索性能は定数時間に近づきます。"
+  }
+]

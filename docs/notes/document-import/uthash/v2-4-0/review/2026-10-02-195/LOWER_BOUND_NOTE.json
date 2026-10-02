@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T11:11:45.234Z",
+  "status": "confirmed-note-pending-app",
+  "page": "01-guides/02-utlist.md",
+  "source": {
+    "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utlist.txt",
+    "sha256": "a0b2acd6bcadddb3953262262c658d6cfe88e28cfa62e60c5ccc6c92107ad0bf"
+  },
+  "archive": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-114/uthash-fixed-source.tar.gz",
+    "sha256": "ccad12f52903071c60b18eca8aee322a1cb1d9efdb55fb94a686d05efa4ca306"
+  },
+  "evidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-195/utlist.h",
+      "sha256": "6aa27f17f55e1126ce2fe2fff58eef48993cff98ffc88871f2394e9fe36aabdb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-195/lower-bound.c",
+      "sha256": "5a9499ec590454b56e01f5a5e691485ac909f40d75d00014360a29cb0c0975e2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-195/lower-bound.log",
+      "sha256": "2bea36fd73cbf32846ff78845895b5c6af51a85437654ff6a26d83730de99bf6"
+    }
+  ],
+  "verification": "ヘッダーを固定配布物から抽出し既存研究コピーとbyte比較。cc -Wall -Wextra -std=c11でコンパイルし全6assert合格。",
+  "sourceQuote": "first element ... no greater",
+  "implementation": "昇順リストでlikeより厳密に小さい最後の要素、または先頭挿入ならNULL。LL/DL/CDLでcmp(next,like)>=0時停止。",
+  "noteEn": "The original lower_bound description says “first” and “no greater”. In the fixed 2.4.0 implementation, for an ascending list, the result is the predecessor of the insertion point: the last element strictly less than like, or NULL when insertion belongs at the front. A list 1, 3, 5 returns 3 for like=4 and 1 for like=3. The original wording is retained above.",
+  "noteJa": "原文のlower_bound説明は「最初の、like以下の要素」としていますが、固定2.4.0の実装は、昇順リストで挿入位置の直前、すなわちlikeより厳密に小さい最後の要素を返します。先頭に挿入する場合はNULLです。1、3、5のリストではlike=4で3、like=3で1を返します。上の本文は原文の記述を保持しています。",
+  "nextAction": "既存4注記を保持してこの第5注記を正式appのutlist英日出典欄へ適用し、最終HTML/ブラウザーで検証する。"
+}

@@ -1,0 +1,207 @@
+[
+  {
+    "canonicalLine": 1337,
+    "en": "## Standard key types",
+    "ja": "## 標準的なキーの型"
+  },
+  {
+    "canonicalLine": 1343,
+    "en": "This section goes into specifics of how to work with different kinds of keys. You can use nearly any type of key-- integers, strings, pointers, structures, etc.",
+    "ja": "この節では、さまざまな種類のキーを扱う方法を詳しく説明します。整数、文字列、ポインター、構造体など、ほぼすべての型をキーに使えます。"
+  },
+  {
+    "canonicalLine": 1351,
+    "en": "<div class=\"title\">Note</div>",
+    "ja": "<div class=\"title\">注意</div>"
+  },
+  {
+    "canonicalLine": 1354,
+    "en": "<div class=\"title\">A note about float</div>",
+    "ja": "<div class=\"title\">浮動小数点数についての注意</div>"
+  },
+  {
+    "canonicalLine": 1355,
+    "en": "<div class=\"paragraph\"><p>You can use floating point keys. This comes with the same caveats as with any",
+    "ja": "<div class=\"paragraph\"><p>浮動小数点数をキーに使えます。ただし、浮動小数点数の等値性を調べる"
+  },
+  {
+    "canonicalLine": 1356,
+    "en": "program that tests floating point equality. In other words, even the tiniest",
+    "ja": "プログラムと同じ注意が必要です。つまり、2つの浮動小数点数にごくわずかでも"
+  },
+  {
+    "canonicalLine": 1357,
+    "en": "difference in two floating point numbers makes them distinct keys.</p></div>",
+    "ja": "違いがあれば、それらは別のキーになります。</p></div>"
+  },
+  {
+    "canonicalLine": 1367,
+    "en": "### Integer keys",
+    "ja": "### 整数のキー"
+  },
+  {
+    "canonicalLine": 1371,
+    "en": "The preceding examples demonstrated use of integer keys. To recap, use the convenience macros `HASH_ADD_INT` and `HASH_FIND_INT` for structures with integer keys. (The other operations such as `HASH_DELETE` and `HASH_SORT` are the same for all types of keys).",
+    "ja": "これまでの例では、整数のキーを使ってきました。まとめると、整数のキーを持つ構造体には、簡便マクロ `HASH_ADD_INT` と `HASH_FIND_INT` を使います（`HASH_DELETE` や `HASH_SORT` などの他の操作は、すべての型のキーで同じです）。"
+  },
+  {
+    "canonicalLine": 1381,
+    "en": "### String keys",
+    "ja": "### 文字列のキー"
+  },
+  {
+    "canonicalLine": 1385,
+    "en": "If your structure has a string key, the operations to use depend on whether your structure *points to* the key (`char *`) or the string resides `within` the structure (`char a[10]`). **This distinction is important**. As we’ll see below, you need to use `HASH_ADD_KEYPTR` when your structure *points* to a key (that is, the key itself is *outside* of the structure); in contrast, use `HASH_ADD_STR` for a string key that is contained **within** your structure.",
+    "ja": "構造体が文字列のキーを持つ場合、使う操作は、構造体がキーを *指している*（`char *`）のか、文字列が構造体の `内部` にある（`char a[10]`）のかによって異なります。**この違いは重要です**。以下で説明するように、`HASH_ADD_KEYPTR` を使う必要があるのは、構造体がキーを *指している* 場合（キー自体が構造体の *外部* にある場合）です。一方、`HASH_ADD_STR` を使うのは、文字列のキーが構造体の **内部** にある場合です。"
+  },
+  {
+    "canonicalLine": 1393,
+    "en": "<div class=\"title\">Note</div>",
+    "ja": "<div class=\"title\">注意</div>"
+  },
+  {
+    "canonicalLine": 1396,
+    "en": "<div class=\"title\">char[ ] vs. char*</div>",
+    "ja": "<div class=\"title\">char[ ]とchar*の違い</div>"
+  },
+  {
+    "canonicalLine": 1397,
+    "en": "<div class=\"paragraph\"><p>The string is <em>within</em> the structure in the first example below-- <code>name</code> is a",
+    "ja": "<div class=\"paragraph\"><p>以下の最初の例では、文字列は構造体の<em>内部</em>にあります。<code>name</code>は"
+  },
+  {
+    "canonicalLine": 1398,
+    "en": "<code>char[10]</code> field.  In the second example, the key is <em>outside</em> of the",
+    "ja": "<code>char[10]</code>のフィールドです。2番目の例では、キーは構造体の<em>外部</em>にあり、"
+  },
+  {
+    "canonicalLine": 1399,
+    "en": "structure-- <code>name</code> is a <code>char *</code>. So the first example uses <code>HASH_ADD_STR</code> but",
+    "ja": "<code>name</code>は<code>char *</code>です。そのため、最初の例では<code>HASH_ADD_STR</code>を使い、"
+  },
+  {
+    "canonicalLine": 1400,
+    "en": "the second example uses <code>HASH_ADD_KEYPTR</code>.  For information on this macro, see",
+    "ja": "2番目の例では<code>HASH_ADD_KEYPTR</code>を使います。このマクロの詳細については、"
+  },
+  {
+    "canonicalLine": 1401,
+    "en": "the <a href=\"#Macro_reference\">Macro reference</a>.</p></div>",
+    "ja": "<a href=\"#Macro_reference\">マクロリファレンス</a>を参照してください。</p></div>"
+  },
+  {
+    "canonicalLine": 1411,
+    "en": "#### String *within* structure",
+    "ja": "#### 構造体の *内部* にある文字列"
+  },
+  {
+    "canonicalLine": 1417,
+    "en": "A string-keyed hash (string within structure)",
+    "ja": "文字列をキーとするハッシュ（文字列が構造体の内部にある場合）"
+  },
+  {
+    "canonicalLine": 1463,
+    "en": "This example is included in the distribution in `tests/test15.c`. It prints:",
+    "ja": "この例は、配布物の `tests/test15.c` に収録されています。次のように出力します。"
+  },
+  {
+    "canonicalLine": 1483,
+    "en": "#### String *pointer* in structure",
+    "ja": "#### 構造体内の文字列 *ポインター*"
+  },
+  {
+    "canonicalLine": 1487,
+    "en": "Now, here is the same example but using a `char *` key instead of `char [ ]`:",
+    "ja": "次は、同じ例で、`char *` のキーを `char [ ]` の代わりに使う場合です。"
+  },
+  {
+    "canonicalLine": 1495,
+    "en": "A string-keyed hash (structure points to string)",
+    "ja": "文字列をキーとするハッシュ（構造体が文字列を指す場合）"
+  },
+  {
+    "canonicalLine": 1541,
+    "en": "This example is included in `tests/test40.c`.",
+    "ja": "この例は `tests/test40.c` に収録されています。"
+  },
+  {
+    "canonicalLine": 1553,
+    "en": "### Pointer keys",
+    "ja": "### ポインターのキー"
+  },
+  {
+    "canonicalLine": 1557,
+    "en": "Your key can be a pointer. To be very clear, this means the *pointer itself* can be the key (in contrast, if the thing *pointed to* is the key, this is a different use case handled by `HASH_ADD_KEYPTR`).",
+    "ja": "ポインターをキーに使うこともできます。明確に言うと、*ポインター自体* をキーにできるという意味です（*指しているもの* がキーである場合は、これとは異なる用途で、`HASH_ADD_KEYPTR` が扱います）。"
+  },
+  {
+    "canonicalLine": 1563,
+    "en": "Here is a simple example where a structure has a pointer member, called `key`.",
+    "ja": "以下は、構造体に `key` というポインターのメンバーがある簡単な例です。"
+  },
+  {
+    "canonicalLine": 1571,
+    "en": "A pointer key",
+    "ja": "ポインターのキー"
+  },
+  {
+    "canonicalLine": 1611,
+    "en": "This example is included in `tests/test57.c`.",
+    "ja": "この例は `tests/test57.c` に収録されています。"
+  },
+  {
+    "canonicalLine": 1621,
+    "en": "### Structure keys",
+    "ja": "### 構造体のキー"
+  },
+  {
+    "canonicalLine": 1625,
+    "en": "Your key field can have any data type. To uthash, it is just a sequence of bytes. Therefore, even a nested structure can be used as a key. We’ll use the general macros `HASH_ADD` and `HASH_FIND` to demonstrate.",
+    "ja": "キーのフィールドには、任意のデータ型を使えます。uthashにとって、キーは単なるバイト列です。そのため、入れ子になった構造体でもキーに使えます。汎用マクロ `HASH_ADD` と `HASH_FIND` を使って例を示します。"
+  },
+  {
+    "canonicalLine": 1633,
+    "en": "<div class=\"title\">Note</div>",
+    "ja": "<div class=\"title\">注意</div>"
+  },
+  {
+    "canonicalLine": 1635,
+    "en": "<td class=\"content\">Structures contain padding (wasted internal space used to fulfill",
+    "ja": "<td class=\"content\">構造体にはパディング（構造体のメンバーのアラインメント要件を満たすための、"
+  },
+  {
+    "canonicalLine": 1636,
+    "en": "alignment requirements for the members of the structure). These padding bytes",
+    "ja": "使われない内部領域）が含まれます。このパディングのバイトは、"
+  },
+  {
+    "canonicalLine": 1637,
+    "en": "<em>must be zeroed</em> before adding an item to the hash or looking up an item.",
+    "ja": "<em>必ずゼロにしてください</em>。これは、ハッシュに要素を追加したり、要素を検索したりする前に必要です。"
+  },
+  {
+    "canonicalLine": 1638,
+    "en": "Therefore always zero the whole structure before setting the members of",
+    "ja": "そのため、使用するメンバーを設定する前に、必ず構造体全体をゼロにしてください。"
+  },
+  {
+    "canonicalLine": 1639,
+    "en": "interest. The example below does this-- see the two calls to <code>memset</code>.</td>",
+    "ja": "以下の例では、この処理を行っています。<code>memset</code>を2回呼び出している箇所を確認してください。</td>"
+  },
+  {
+    "canonicalLine": 1648,
+    "en": "A key which is a structure",
+    "ja": "構造体をキーにする"
+  },
+  {
+    "canonicalLine": 1698,
+    "en": "This usage is nearly the same as the usage of a compound key explained below.",
+    "ja": "この使い方は、以下で説明する複合キーの使い方とほぼ同じです。"
+  },
+  {
+    "canonicalLine": 1704,
+    "en": "Note that the general macros require the name of the `UT_hash_handle` to be passed as the first argument (here, this is `hh`). The general macros are documented in [Macro Reference](#Macro_reference).",
+    "ja": "汎用マクロには、`UT_hash_handle` の名前を第1引数として渡す必要がある点に注意してください（この例では `hh` です）。汎用マクロについては、[マクロリファレンス](#Macro_reference)で説明しています。"
+  }
+]

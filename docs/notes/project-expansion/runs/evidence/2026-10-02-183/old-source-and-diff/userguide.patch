@@ -1,0 +1,358 @@
+--- v2.3.0/doc/userguide.txt
++++ v2.4.0/doc/userguide.txt
+@@ -1,11 +1,12 @@
+ uthash User Guide
+ =================
+-Troy D. Hanson, Arthur O'Dwyer
+-v2.3.0, February 2021
++Troy D. Hanson <tdh@tkhanson.net>
++Arthur O'Dwyer <arthur.j.odwyer@gmail.com>
++v2.4.0, June 2026
+ 
+ To download uthash, follow this link back to the
+ https://github.com/troydhanson/uthash[GitHub project page].
+-Back to my http://troydhanson.github.io/[other projects].
++Back to my https://troydhanson.github.io/[other projects].
+ 
+ A hash in C
+ -----------
+@@ -215,7 +216,7 @@
+ void add_user(int user_id, char *name) {
+     struct my_struct *s;
+ 
+-    s = malloc(sizeof(struct my_struct));
++    s = malloc(sizeof *s);
+     s->id = user_id;
+     strcpy(s->name, name);
+     HASH_ADD_INT(users, id, s);  /* id: name of key field */
+@@ -227,7 +228,7 @@
+ last parameter is a pointer to the structure being added.
+ 
+ [[validc]]
+-.Wait.. the field name is a parameter?
++.Wait.. the parameter is a field name?
+ *******************************************************************************
+ If you find it strange that `id`, which is the 'name of a field' in the
+ structure, can be passed as a parameter... welcome to the world of macros. Don't
+@@ -479,20 +480,20 @@
+ 
+ .Sorting the items in the hash
+ ----------------------------------------------------------------------
+-int name_sort(struct my_struct *a, struct my_struct *b) {
++int by_name(const struct my_struct *a, const struct my_struct *b) {
+     return strcmp(a->name, b->name);
+ }
+ 
+-int id_sort(struct my_struct *a, struct my_struct *b) {
++int by_id(const struct my_struct *a, const struct my_struct *b) {
+     return (a->id - b->id);
+ }
+ 
+ void sort_by_name() {
+-    HASH_SORT(users, name_sort);
++    HASH_SORT(users, by_name);
+ }
+ 
+ void sort_by_id() {
+-    HASH_SORT(users, id_sort);
++    HASH_SORT(users, by_id);
+ }
+ ----------------------------------------------------------------------
+ 
+@@ -516,53 +517,59 @@
+ 
+ .A complete program
+ ----------------------------------------------------------------------
+-#include <stdio.h>   /* gets */
++#include <stdio.h>   /* printf */
+ #include <stdlib.h>  /* atoi, malloc */
+ #include <string.h>  /* strcpy */
+ #include "uthash.h"
+ 
+ struct my_struct {
+     int id;                    /* key */
+-    char name[10];
++    char name[21];
+     UT_hash_handle hh;         /* makes this structure hashable */
+ };
+ 
+ struct my_struct *users = NULL;
+ 
+-void add_user(int user_id, char *name) {
++void add_user(int user_id, const char *name)
++{
+     struct my_struct *s;
+ 
+     HASH_FIND_INT(users, &user_id, s);  /* id already in the hash? */
+     if (s == NULL) {
+-      s = (struct my_struct *)malloc(sizeof *s);
+-      s->id = user_id;
+-      HASH_ADD_INT(users, id, s);  /* id: name of key field */
++        s = (struct my_struct*)malloc(sizeof *s);
++        s->id = user_id;
++        HASH_ADD_INT(users, id, s);  /* id is the key field */
+     }
+     strcpy(s->name, name);
+ }
+ 
+-struct my_struct *find_user(int user_id) {
++struct my_struct *find_user(int user_id)
++{
+     struct my_struct *s;
+ 
+     HASH_FIND_INT(users, &user_id, s);  /* s: output pointer */
+     return s;
+ }
+ 
+-void delete_user(struct my_struct *user) {
++void delete_user(struct my_struct *user)
++{
+     HASH_DEL(users, user);  /* user: pointer to deletee */
+     free(user);
+ }
+ 
+-void delete_all() {
+-  struct my_struct *current_user, *tmp;
+-
+-  HASH_ITER(hh, users, current_user, tmp) {
+-    HASH_DEL(users, current_user);  /* delete it (users advances to next) */
+-    free(current_user);             /* free it */
+-  }
+-}
+-
+-void print_users() {
++void delete_all()
++{
++    struct my_struct *current_user;
++    struct my_struct *tmp;
++
++    HASH_ITER(hh, users, current_user, tmp) {
++        HASH_DEL(users, current_user);  /* delete it (users advances to next) */
++        free(current_user);             /* free it */
++    }
++}
++
++void print_users()
++{
+     struct my_struct *s;
+ 
+     for (s = users; s != NULL; s = (struct my_struct*)(s->hh.next)) {
+@@ -570,31 +577,40 @@
+     }
+ }
+ 
+-int name_sort(struct my_struct *a, struct my_struct *b) {
++int by_name(const struct my_struct *a, const struct my_struct *b)
++{
+     return strcmp(a->name, b->name);
+ }
+ 
+-int id_sort(struct my_struct *a, struct my_struct *b) {
++int by_id(const struct my_struct *a, const struct my_struct *b)
++{
+     return (a->id - b->id);
+ }
+ 
+-void sort_by_name() {
+-    HASH_SORT(users, name_sort);
+-}
+-
+-void sort_by_id() {
+-    HASH_SORT(users, id_sort);
+-}
+-
+-int main(int argc, char *argv[]) {
+-    char in[10];
+-    int id = 1, running = 1;
++const char *getl(const char *prompt)
++{
++    static char buf[21];
++    char *p;
++    printf("%s? ", prompt); fflush(stdout);
++    p = fgets(buf, sizeof(buf), stdin);
++    if (p == NULL || (p = strchr(buf, '\n')) == NULL) {
++        puts("Invalid input!");
++        exit(EXIT_FAILURE);
++    }
++    *p = '\0';
++    return buf;
++}
++
++int main()
++{
++    int id = 1;
++    int running = 1;
+     struct my_struct *s;
+-    unsigned num_users;
++    int temp;
+ 
+     while (running) {
+         printf(" 1. add user\n");
+-        printf(" 2. add/rename user by id\n");
++        printf(" 2. add or rename user by id\n");
+         printf(" 3. find user\n");
+         printf(" 4. delete user\n");
+         printf(" 5. delete all users\n");
+@@ -603,44 +619,41 @@
+         printf(" 8. print users\n");
+         printf(" 9. count users\n");
+         printf("10. quit\n");
+-        gets(in);
+-        switch(atoi(in)) {
++        switch (atoi(getl("Command"))) {
+             case 1:
+-                printf("name?\n");
+-                add_user(id++, gets(in));
++                add_user(id++, getl("Name (20 char max)"));
+                 break;
+             case 2:
+-                printf("id?\n");
+-                gets(in); id = atoi(in);
+-                printf("name?\n");
+-                add_user(id, gets(in));
++                temp = atoi(getl("ID"));
++                add_user(temp, getl("Name (20 char max)"));
+                 break;
+             case 3:
+-                printf("id?\n");
+-                s = find_user(atoi(gets(in)));
++                s = find_user(atoi(getl("ID to find")));
+                 printf("user: %s\n", s ? s->name : "unknown");
+                 break;
+             case 4:
+-                printf("id?\n");
+-                s = find_user(atoi(gets(in)));
+-                if (s) delete_user(s);
+-                else printf("id unknown\n");
++                s = find_user(atoi(getl("ID to delete")));
++                if (s) {
++                    delete_user(s);
++                } else {
++                    printf("id unknown\n");
++                }
+                 break;
+             case 5:
+                 delete_all();
+                 break;
+             case 6:
+-                sort_by_name();
++                HASH_SORT(users, by_name);
+                 break;
+             case 7:
+-                sort_by_id();
++                HASH_SORT(users, by_id);
+                 break;
+             case 8:
+                 print_users();
+                 break;
+             case 9:
+-                num_users = HASH_COUNT(users);
+-                printf("there are %u users\n", num_users);
++                temp = HASH_COUNT(users);
++                printf("there are %d users\n", temp);
+                 break;
+             case 10:
+                 running = 0;
+@@ -793,7 +806,7 @@
+ 
+ .A pointer key
+ ----------------------------------------------------------------------
+-#include <stdio.h>
++#include <assert.h>
+ #include <stdlib.h>
+ #include "uthash.h"
+ 
+@@ -804,17 +817,16 @@
+ } el_t;
+ 
+ el_t *hash = NULL;
+-char *someaddr = NULL;
++void *someaddr = &hash;
+ 
+ int main() {
+   el_t *d;
+   el_t *e = (el_t *)malloc(sizeof *e);
+-  if (!e) return -1;
+-  e->key = (void*)someaddr;
++  e->key = someaddr;
+   e->i = 1;
+   HASH_ADD_PTR(hash, key, e);
+   HASH_FIND_PTR(hash, &someaddr, d);
+-  if (d) printf("found\n");
++  assert(d == e);
+ 
+   /* release memory */
+   HASH_DEL(hash, e);
+@@ -823,9 +835,7 @@
+ }
+ ----------------------------------------------------------------------
+ 
+-This example is included in `tests/test57.c`. Note that the end of the program
+-deletes the element out of the hash, (and since no more elements remain in the
+-hash), uthash releases its internal memory.
++This example is included in `tests/test57.c`.
+ 
+ Structure keys
+ ~~~~~~~~~~~~~~
+@@ -881,7 +891,7 @@
+ 
+ ----------------------------------------------------------------------
+ 
+-This usage is nearly the same as use of a compound key explained below.
++This usage is nearly the same as the usage of a compound key explained below.
+ 
+ Note that the general macros require the name of the `UT_hash_handle` to be
+ passed as the first argument (here, this is `hh`). The general macros are
+@@ -1119,7 +1129,7 @@
+     int i;
+     char *name;
+ 
+-    s = malloc(sizeof(struct my_struct));
++    s = malloc(sizeof *s);
+     s->id = 1;
+     strcpy(s->username, "thanson");
+ 
+@@ -1141,17 +1151,16 @@
+ 
+ Sorted insertion of new items
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-If you would like to maintain a sorted hash you have two options. The first
+-option is to use the HASH_SRT() macro, which will sort any unordered list in
++To maintain a sorted hash, you have two options. Your first
++option is to use the `HASH_SRT` macro, which will sort any unordered list in
+ 'O(n log(n))'. This is the best strategy if you're just filling up a hash
+-table with items in random order with a single final HASH_SRT() operation
+-when all is done. Obviously, this won't do what you want if you need
+-the list to be in an ordered state at times between insertion of
+-items. You can use HASH_SRT() after every insertion operation, but that will
+-yield a computational complexity of 'O(n^2 log n)'.
+-
+-The second route you can take is via the in-order add and replace macros.
+-The `HASH_ADD_INORDER*` macros work just like their `HASH_ADD*` counterparts, but
++table with items in random order with a single final `HASH_SRT` operation
++when all is done. If you need the table to remain sorted as you add and remove
++items, you can use `HASH_SRT` after every insertion operation, but that gives
++a computational complexity of 'O(n^2 log n)' to insert 'n' items.
++
++Your second option is to use the in-order add and replace macros.
++The `HASH_ADD_*_INORDER` macros work just like their `HASH_ADD_*` counterparts, but
+ with an additional comparison-function argument:
+ 
+   int name_sort(struct my_struct *a, struct my_struct *b) {
+@@ -1160,11 +1169,11 @@
+ 
+   HASH_ADD_KEYPTR_INORDER(hh, items, &item->name, strlen(item->name), item, name_sort);
+ 
+-New items are sorted at insertion time in 'O(n)', thus resulting in a
+-total computational complexity of 'O(n^2)' for the creation of the hash
+-table with all items.
+-For in-order add to work, the list must be in an ordered state before
+-insertion of the new item.
++These macros assume that the hash is already sorted according to the
++comparison function, and insert the new item in its proper place.
++A single insertion takes 'O(n)', resulting in a total computational
++complexity of 'O(n^2)' to insert all 'n' items: slower than a single
++`HASH_SRT`, but faster than doing a `HASH_SRT` after every insertion.
+ 
+ Several sort orders
+ ~~~~~~~~~~~~~~~~~~~

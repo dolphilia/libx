@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T10:49:35.522Z",
+  "status": "confirmed-upstream-error",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.3.2)\nTarget: arm64-apple-darwin24.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin",
+  "arguments": [
+    "-fsyntax-only",
+    "/private/tmp/libx-uthash-review-189/userguide-original-key-functions.c"
+  ],
+  "exitCode": 1,
+  "stderr": "/private/tmp/libx-uthash-review-189/userguide-original-key-functions.c:8:57: error: use of undeclared identifier 'f'\n    8 | unsigned key_hash(struct Key *s) { return s + (unsigned)f; }\n      |                                                         ^\n/private/tmp/libx-uthash-review-189/userguide-original-key-functions.c:9:56: error: member reference type 'struct Key *' is a pointer; did you mean to use '->'?\n    9 | bool key_equal(struct Key *a, struct Key *b) { return a.s == b.s && a.f == b.f; }\n      |                                                       ~^\n      |                                                        ->\n/private/tmp/libx-uthash-review-189/userguide-original-key-functions.c:9:63: error: member reference type 'struct Key *' is a pointer; did you mean to use '->'?\n    9 | bool key_equal(struct Key *a, struct Key *b) { return a.s == b.s && a.f == b.f; }\n      |                                                              ~^\n      |                                                               ->\n/private/tmp/libx-uthash-review-189/userguide-original-key-functions.c:9:70: error: member reference type 'struct Key *' is a pointer; did you mean to use '->'?\n    9 | bool key_equal(struct Key *a, struct Key *b) { return a.s == b.s && a.f == b.f; }\n      |                                                                     ~^\n      |                                                                      ->\n/private/tmp/libx-uthash-review-189/userguide-original-key-functions.c:9:77: error: member reference type 'struct Key *' is a pointer; did you mean to use '->'?\n    9 | bool key_equal(struct Key *a, struct Key *b) { return a.s == b.s && a.f == b.f; }\n      |                                                                            ~^\n      |                                                                             ->\n5 errors generated.\n",
+  "input": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-189/userguide-original-key-functions.c",
+    "sha256": "f00303614c813935bd29f62702993728ba0a634e3ff05275f4e4d37854885695"
+  },
+  "scope": "Complete original struct Key/hash/equal/macros block with stdbool include added only to define bool in C. No original expression changed.",
+  "conclusion": "Original f undeclared and pointer-member dot accesses fail. Preserve source and display separate provenance note; do not claim examples all compile."
+}

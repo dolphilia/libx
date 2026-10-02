@@ -84,6 +84,22 @@ jobs:
           test -x "$pandoc_binary"
           "$pandoc_binary" --version
           printf '%s\n' "$(dirname "$pandoc_binary")" >> "$GITHUB_PATH"
+          printf 'UTHASH_PANDOC=%s\n' "$pandoc_binary" >> "$GITHUB_ENV"
+
+      - name: Setup Python for pinned AsciiDoc
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Setup pinned AsciiDoc for uthash content checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          asciidoc_environment="$RUNNER_TEMP/uthash-asciidoc-10.2.1"
+          python -m venv "$asciidoc_environment"
+          "$asciidoc_environment/bin/python" -m pip install 'asciidoc==10.2.1'
+          "$asciidoc_environment/bin/asciidoc" --version
+          printf 'UTHASH_ASCIIDOC=%s\n' "$asciidoc_environment/bin/asciidoc" >> "$GITHUB_ENV"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

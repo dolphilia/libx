@@ -54,7 +54,11 @@ export function collectAnchors(filePath) {
   const occurrences = new Map();
   const lines = removeFencedCode(fs.readFileSync(filePath, 'utf8'));
 
-  for (const line of lines) {
+  for (const [index, line] of lines.entries()) {
+    // This marker is rendered as the next heading's ID by remarkSourceHeadingIds.
+    const sourceId = line.match(/^\s*<!--libx-source-heading:([A-Za-z0-9_.:-]+)-->\s*$/)?.[1];
+    const nextBlock = sourceId ? lines.slice(index + 1).find((next) => next.trim()) : null;
+    if (sourceId && /^\s{0,3}#{1,6}\s+/.test(nextBlock ?? '')) anchors.add(sourceId);
     const heading = line.match(/^\s{0,3}#{1,6}\s+(.+?)\s*#*\s*$/)?.[1];
     if (!heading) continue;
 
@@ -91,6 +95,21 @@ function parseTarget(rawTarget) {
 
 export function checkFile(filePath) {
   const failures = [];
+  let fragmentContext = filePath;
+  const contextPath = path.join(path.dirname(filePath), 'link-context.json');
+  if (fs.existsSync(contextPath)) {
+    const context = JSON.parse(fs.readFileSync(contextPath, 'utf8'));
+    const segments = context.segments.map((name) => path.resolve(path.dirname(filePath), name));
+    if (segments.includes(path.resolve(filePath))) {
+      fragmentContext = path.resolve(path.dirname(filePath), context.target);
+      const assembled = segments.map((segment) => fs.readFileSync(segment, 'utf8')).join('');
+      if (assembled !== fs.readFileSync(fragmentContext, 'utf8')) {
+        return [
+          { line: 1, target: context.target, reason: '分割草稿の結合が参照先の全文と一致しません' },
+        ];
+      }
+    }
+  }
   const lines = removeFencedCode(fs.readFileSync(filePath, 'utf8'));
   const linkPattern = /!?\[[^\]]*\]\((<[^>]+>|[^\s)]+)(?:\s+["'][^)]*["'])?\)/g;
 
@@ -109,7 +128,7 @@ export function checkFile(filePath) {
 
       const targetFile = target.relativePath
         ? path.resolve(path.dirname(filePath), target.relativePath)
-        : filePath;
+        : fragmentContext;
 
       if (!fs.existsSync(targetFile)) {
         failures.push({ line: index + 1, target: rawTarget, reason: '参照先が存在しません' });

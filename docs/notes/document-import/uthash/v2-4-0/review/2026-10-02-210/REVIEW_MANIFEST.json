@@ -1,0 +1,773 @@
+{
+  "schemaVersion": 1,
+  "project": "uthash",
+  "version": "v2-4-0",
+  "checkedAt": "2026-10-02T11:44:12.675Z",
+  "phase": "content-review",
+  "status": "passed",
+  "scope": [
+    "01-guides/01-userguide.md",
+    "01-guides/02-utlist.md",
+    "01-guides/03-utarray.md",
+    "01-guides/04-utringbuffer.md",
+    "01-guides/05-utstack.md",
+    "01-guides/06-utstring.md",
+    "01-guides/07-changelog.md",
+    "02-license/01-license.md"
+  ],
+  "completedPages": 8,
+  "unreviewedPages": 0,
+  "method": "ai-content-review",
+  "previousCycleClassification": "no-progress: 前回は既反映の優先順位と台帳を確認したのみ。今回は保存済み未登録ChangeLog初稿から内容レビュー/修正/機械検査を実施。",
+  "carriedReview": {
+    "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-197/TRANSLATION_REVIEW.json",
+    "sha256": "a5934f2e02ce981f929a4f503992cf31615059e6726fd7dccec54f56eeefe231"
+  },
+  "retentionReason": "既存7ページ全source/EN/JA SHA一致。UserGuide11セグメントの原文/定本/訳文に隙間・重複なし、別工程reviewと結合一致を監査。",
+  "pages": [
+    {
+      "id": "01-guides/05-utstack.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T11:00:43.216Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utstack.txt",
+        "sha256": "8aebe8d41ba87342ab6213cd6c1db3aa1e755ba40633acce3a9cd0f6be39baf3",
+        "coverage": [
+          [
+            1,
+            158
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/05-utstack.md",
+        "sha256": "3e32e0c7938603b9a9a6d903f79469164ab77644515633ff9259e2e6b55caa44",
+        "coverage": [
+          [
+            1,
+            337
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/05-utstack.md",
+        "sha256": "ea4c806f9728549abba668c9bafc497583a00128bdeea24345a4ea47bc30787e",
+        "coverage": [
+          [
+            1,
+            337
+          ]
+        ]
+      },
+      "readScope": {
+        "untruncatedReads": true,
+        "fullPageIncludingCodeTablesMetadata": true,
+        "passes": "初稿作成後にJA337行全文を再読し、固定原文158行/定本337行へ照合。語順調整後JA337行をもう一度全文確認。"
+      },
+      "confirmedTopics": [
+        "導入・侵入型連結リスト・ヘッダー配置・取得方法",
+        "BSD原文記述と旧Windows/VS2008/2010の保持",
+        "NULL必須初期化・先頭ポインター兼用",
+        "O(1)push/pop・O(n)count・先頭以外へ直接アクセス不可",
+        "全5API表と全5パラメーター・初期化不要条件",
+        "名前の読み込み・逆順出力全例・コード原文保持",
+        "next別名の必須マクロ群・2接尾辞・末尾引数・全3API表"
+      ],
+      "findings": [
+        {
+          "kind": "presentation-refinement",
+          "status": "resolved",
+          "detail": "代替マクロの説明文を原文と同じ識別子順に調整。意味は変えず、インラインコードの厳密な順序照合も可能にした。"
+        },
+        {
+          "kind": "upstream-sample-error",
+          "status": "recorded-separate-note",
+          "detail": "原文のsizeof el->bname誤記は変更せず保持。既存原文外注記は最終JA app表示で確認が必要。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-189/PROVENANCE_NOTES.json",
+              "sha256": "dbe779eeda5b379768b32773d9bc684f53e3d726dced1e45f3a9b7a8b19e40dd"
+            }
+          ]
+        }
+      ],
+      "judgment": "全説明・見出し・表セル・引数・例・著者/版/出典を照合。否定、必須条件、例外、数値を保持し、重大な誤訳/欠落なし。日本語単独でも操作と制約を理解できる。"
+    },
+    {
+      "id": "01-guides/06-utstring.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T11:03:16.256Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utstring.txt",
+        "sha256": "d34aec031f89ab604890a3effe2da341ef31a0059423edca67313790723fd6ba",
+        "coverage": [
+          [
+            1,
+            240
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/06-utstring.md",
+        "sha256": "fba6e5c7d5be26c49444d1d53ca697985b059ac259503707c91a212e33162f37",
+        "coverage": [
+          [
+            1,
+            546
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/06-utstring.md",
+        "sha256": "c941c9475f6ad3e42a1f15d152016366f93a8eff186be8e6f67d174cd88cece7",
+        "coverage": [
+          [
+            1,
+            546
+          ]
+        ]
+      },
+      "readScope": {
+        "untruncatedReads": true,
+        "fullPageIncludingCodeTablesMetadata": true,
+        "passes": "原文とEN全体を確認後翻訳、別工程でJA546行全文を原文/ENへ照合。検索方向表現の修正後JA546行を全文再読。"
+      },
+      "confirmedTopics": [
+        "導入/バイナリ格納/関数とマクロ/取得/旧VS版/通知",
+        "UT_string宣言・new/freeとinit/doneの内部メモリー区別",
+        "printf/bincpy追記・concat・clear・len/body・常時ヌル終端と長さ除外",
+        "3全サンプルと全13API表/renewNULL分岐/符号なし長さ",
+        "検索開始位置0/負値/逆方向は末尾を基準、返り値は開始位置・未発見-1、全6結果",
+        "KMP一度使用/再利用・全4内部関数と説明・BuildTable例・第2引数長さ/位置相当操作",
+        "OOM exit(-1)とinclude前override・全コード"
+      ],
+      "findings": [
+        {
+          "kind": "clarity",
+          "status": "resolved",
+          "detail": "backwardの訳「後方」を「先頭方向」へ修正し逆方向走査を明確化。"
+        },
+        {
+          "kind": "translated-explanatory-literal",
+          "status": "mapped",
+          "detail": "内部関数一覧の括弧内説明4行を翻訳。関数識別子は保持。実行例9ブロックは同一で、説明1ブロックのみ全4行対応表で検査。",
+          "evidence": [
+            {
+              "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-192/UTSTRING_MECHANICAL_FINAL.json",
+              "sha256": "9452574f4dec5adf52fcd9e16a8e85efed1514a7eade6c4f7107e1b62d4a1ae4"
+            }
+          ]
+        },
+        {
+          "kind": "upstream-sample-error",
+          "status": "recorded-separate-note",
+          "detail": "原KPM_TABLEスペル/malloc余分括弧は原文のまま。既存原文外注記を最終JA表示で確認する。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-189/PROVENANCE_NOTES.json",
+              "sha256": "dbe779eeda5b379768b32773d9bc684f53e3d726dced1e45f3a9b7a8b19e40dd"
+            }
+          ]
+        }
+      ],
+      "judgment": "全13API/条件・否定・数値・表・説明・例を全文照合。内容欠落/重大誤訳なし。日本語単独の読みやすさを確認。"
+    },
+    {
+      "id": "01-guides/04-utringbuffer.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T11:05:55.095Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utringbuffer.txt",
+        "sha256": "257d2beae67f6f1b9ea8a147e40044bea83460fc3c7e53d2c606f0f28cb1f300",
+        "coverage": [
+          [
+            1,
+            374
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/04-utringbuffer.md",
+        "sha256": "ebdaab4c672c11af9f27fc7c248ad447135e4300fd568c020f25ca0cf873ca36",
+        "coverage": [
+          [
+            1,
+            685
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/04-utringbuffer.md",
+        "sha256": "bb6812ac655d9595333039028fdef7884a5b6a8ed8bdabb9ca55fd3ffd8e86c4",
+        "coverage": [
+          [
+            1,
+            685
+          ]
+        ]
+      },
+      "readScope": {
+        "untruncatedReads": true,
+        "fullPageIncludingCodeTablesMetadata": true,
+        "passes": "原文/EN全体を確認後翻訳、別工程でJA685行全文を原文/ENへ照合。独自UT_icd文/注意4の語順調整後、変更段落を出力して再確認。初回全文と最終変更範囲で全体を覆う。"
+      },
+      "confirmedTopics": [
+        "utarray先行参照/両ヘッダー配置/構築破棄反復push、明示popなし",
+        "位置0・満杯時最古を上書き・startindex増加/clear例外は後段に保持",
+        "UT_ringbuffer型/作成解放/全5サンプル/整数第2引数pointerとchar**/コピー",
+        "UT_icd全構造体/型/size/init未使用/copyNULLmemcpy/dtorの条件",
+        "long容量1最新値・単純構造体/深いコピー解放/NULL対応",
+        "全15APIとnew-init/free-done/next-prevNULL分岐",
+        "全5注意：容量n/clear例外/論理pop/非再割り当てと参照意味変化/連続メモリー≠論理順序"
+      ],
+      "findings": [
+        {
+          "kind": "presentation-refinement",
+          "status": "resolved",
+          "detail": "独自init/copy/dtor文と注意4の語順を原文のinline要素順に揃え、意味・条件を保持。機械比較を緩和せず合格。"
+        },
+        {
+          "kind": "upstream-context",
+          "status": "preserved",
+          "detail": "導入の「満杯後は戻らない」を原文どおり保持。注意3のclear例外も全文翻訳し、例外を落とさない。原文へ無言補筆しない。"
+        }
+      ],
+      "judgment": "全15API/5注意/条件・否定・例外・数値・表・説明・例を全文照合。内容欠落/重大誤訳なし。日本語単独の読みやすさを確認。"
+    },
+    {
+      "id": "01-guides/03-utarray.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T11:08:18.043Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utarray.txt",
+        "sha256": "6be9687077a20936e0c990ca7a278f8c1e771d91953aaa6ed6b0300f8bb89165",
+        "coverage": [
+          [
+            1,
+            385
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/03-utarray.md",
+        "sha256": "ee9e82cde7372a7b0da4d858d27654bc3f31dcc7257a39fd973e3f6cf0e7a64f",
+        "coverage": [
+          [
+            1,
+            742
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/03-utarray.md",
+        "sha256": "75a60d31e52c25602912aaa426d04274325c20f442502c1e402c6bb9f44858a5",
+        "coverage": [
+          [
+            1,
+            742
+          ]
+        ]
+      },
+      "readScope": {
+        "untruncatedReads": true,
+        "fullPageIncludingCodeTablesMetadata": true,
+        "passes": "固定原文とEN定本を出力して全行確認。初稿保存後、別工程でJA742行の全文を省略なし出力で読み、原文/ENと全説明・見出し・表セル・コード・注意事項を照合。既存の同一表現の再利用部分もこのページの文脈で再レビュー。"
+      },
+      "confirmedTopics": [
+        "汎用動的配列/ヘッダー配置/push-pop-erase/STLとの関係/連続メモリーとrealloc",
+        "UT_array型/new-free/格納取り出し反復・全5サンプル",
+        "第2引数pointer/char**/文字列コピー",
+        "UT_icd全構造体/prototype/size/initのresize-extend条件とNULL時memset",
+        "copyのpush-insert-inserta-concatとNULL時memcpy/dtorの全6呼び出し条件",
+        "long/単純構造体/深いコピー解放とNULL",
+        "全24API表：replace/reserve増分/erase範囲/resize/比較とfind前提/next-prevNULL",
+        "全6注意：内部resource/new-init/free-done/増分・総容量区別/比較符号と同一比較事前sort/ポインター失効とindex/OOM override"
+      ],
+      "findings": [
+        {
+          "kind": "translation-reuse",
+          "status": "reviewed-in-context",
+          "detail": "utringbufferと同じ原文表現のみ既存訳の一部を再利用。utarray固有のinit/copy/dtor、再割り当て、操作、注意は新規翻訳し、全体をこのページで別review。リングバッファー固有の容量/満杯説明を混入させていない。"
+        },
+        {
+          "kind": "translation-generation-guard",
+          "status": "resolved-before-save",
+          "detail": "初回の表セル置換が本文にも一致するためガードが停止。表終端を含む完全一致へ限定し、最終稿生成後に全文照合。停止時に不完全な翻訳ファイルは保存されていない。"
+        }
+      ],
+      "judgment": "全24API/6注意/条件・否定・例外・数値・表・説明・例を全文照合。内容欠落/重大誤訳なし。日本語単独の読みやすさを確認。"
+    },
+    {
+      "id": "01-guides/02-utlist.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T11:11:45.234Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utlist.txt",
+        "sha256": "a0b2acd6bcadddb3953262262c658d6cfe88e28cfa62e60c5ccc6c92107ad0bf",
+        "coverage": [
+          [
+            1,
+            296
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/02-utlist.md",
+        "sha256": "2d733dbfeded655570e1fd0cf394aeea56c423d269d8a1e9c0f4edb6ab8b2d05",
+        "coverage": [
+          [
+            1,
+            646
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/02-utlist.md",
+        "sha256": "fccf5e62ea66557793336a46eabea4fc90072ddc66b0dd1061bab970581f45b4",
+        "coverage": [
+          [
+            1,
+            646
+          ]
+        ]
+      },
+      "readScope": {
+        "untruncatedReads": true,
+        "fullPageIncludingCodeTablesMetadata": true,
+        "passes": "原文296行とEN646行を省略なし出力で全文確認。初稿後、別工程でJA646行全文を原文/ENへ照合。lower_boundの語順と計算量の強調マーク修正後、変更範囲を出力して確認。全96API署名/6表見出し/11パラメーター/全例を確認。"
+      },
+      "confirmedTopics": [
+        "導入/ヘッダー配置/取得/通知/VS2008-2010/Cygwin",
+        "全3リスト形式/全6計算量とhead-prev末尾保持",
+        "next必須/双方向prev必須/全要素同型/別名/NULL必須初期化",
+        "通常16操作x3とflex16操作x3/2表ヘッダー全6",
+        "prepend/append/concatとVS2008制限/ref前後挿入/replace",
+        "sortメモリー不移動・head変更/foreach-safe削除/searchは高速化なし",
+        "lower-bound原文のfirst/no-greaterと挿入位置説明/不一致を固定実装と再現で確認",
+        "全11パラメーター/refNULL値変数可・literalNULL不可/cmp負0正/VSvoid*",
+        "全名前入力ソート検索カウント/SAFE削除例/別名2末尾引数"
+      ],
+      "findings": [
+        {
+          "kind": "markdown-emphasis",
+          "status": "resolved",
+          "detail": "計算量3箇所のMarkdown閉じ強調後に空白を補い、日本語連続文字で強調が消える問題を修正。processor構造一致を確認。"
+        },
+        {
+          "kind": "upstream-documentation-inconsistency",
+          "status": "recorded-separate-note",
+          "detail": "lower_boundのfirst/no-greaterは固定実装と不一致。LL/DL/CDL全3の昇順1,3,5でlike4=>3、like3=>1を再現。本文の元記述を保持し、追加注記を掲載前にappへ設定する。",
+          "evidence": [
+            {
+              "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-195/LOWER_BOUND_NOTE.json",
+              "sha256": "de709e6d5584db181c5406cc7b2e95aea3ad3997731eb4f01701d7a68032542d"
+            }
+          ]
+        }
+      ],
+      "judgment": "全96API署名/全11パラメーター/条件・否定・例外・数値・表・説明・例を全文照合。翻訳の欠落/重大誤訳なし。原文lower_bound不一致は別注記として公開前に説明する。"
+    },
+    {
+      "id": "02-license/01-license.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T11:13:57.076Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/source/LICENSE",
+        "sha256": "40f48f89e1d0095bf1c5fb4d00affd74959c3ff77463b672cf7fac547d1d6465",
+        "coverage": [
+          [
+            1,
+            21
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/canonical/02-license/01-license.md",
+        "sha256": "f74ae77596101851aad7e1deed51ca92cffe93d85a08347fdad481e524e89738",
+        "coverage": [
+          [
+            1,
+            31
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/02-license/01-license.md",
+        "sha256": "15497f2633819610eb7420fa0664eae097dead5e79574ded8f962bfcab3cf2fe",
+        "coverage": [
+          [
+            1,
+            47
+          ]
+        ]
+      },
+      "readScope": {
+        "untruncatedReads": true,
+        "fullPageIncludingMetadataAndOriginalNotice": true,
+        "passes": "原LICENSE/EN全行確認後に日本語参考訳を作成。初稿後、JA47行全文を別工程で再読し原文全通知へ照合。"
+      },
+      "confirmedTopics": [
+        "著作権者Troy/2005-2026/URL/全権利留保",
+        "ソース・バイナリー形式/改変有無/条件付き再配布使用許可",
+        "唯一のsource再配布条件：著作権表示/条件一覧/免責保持",
+        "AS IS/著作権者と貢献者/明示黙示/商品性特定目的の非限定保証否認",
+        "直接間接付随特別懲罰的結果的損害/代替調達・使用データ利益喪失・事業中断",
+        "原因/契約厳格責任不法行為・過失その他/使用との関係/可能性通知済みでも適用",
+        "非公式参考訳ラベル/原通知全文末尾2改行を保持"
+      ],
+      "findings": [],
+      "judgment": "通知全文を原文/定本/JAへ逐条照合し、条件・範囲・例外・免責の欠落や重大誤訳なし。原通知は未変更、参考訳と区別。法律判断を新たに追加せず固定通知を翻訳。"
+    },
+    {
+      "id": "01-guides/07-changelog.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T11:19:44.940Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/ChangeLog.txt",
+        "sha256": "360017add81441bb5082271051c416db2487c0685157369c1882d96c93783af4",
+        "coverage": [
+          [
+            1,
+            291
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/07-changelog.md",
+        "sha256": "105489ef8b5ebbe0c7584a50c1866046a9fd91c7003768898120314d454ce42c",
+        "coverage": [
+          [
+            1,
+            771
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/07-changelog.md",
+        "sha256": "71e877b4bb41a4d2e294618f1565a42959b7a81a1dfd2e1f34647f68761db23c",
+        "coverage": [
+          [
+            1,
+            771
+          ]
+        ]
+      },
+      "readScope": {
+        "untruncatedReads": true,
+        "fullPageIncludingMetadata": true,
+        "passes": "保存済み初稿に対し原ChangeLog全文/EN771行/JA771行と143対訳を省略なしで実読。初稿とは別工程で全項目・段落・注意書き・見出しを照合。修正4箇所を再読。"
+      },
+      "confirmedTopics": [
+        "全26版の版番号/日付/原見出しID",
+        "143項目の追加/削除/改名/互換性/条件と寄稿者",
+        "MurmurHashの過去の採用/削除/復活/最適化と必須フラグを当時の履歴として保持",
+        "整数演算/0.5未満/13%/a/b*2対a/(b*2)と拡張係数",
+        "原文不完全/不正確の可能性という注意書き",
+        "原文全リンク/内部言語対応/歴史的URL/RSS",
+        "帰属5名/Alfred/移行段落を含む全段落"
+      ],
+      "findings": [
+        {
+          "bullet": 50,
+          "status": "resolved",
+          "issue": "利用可能性変更という曖昧な表現を原文の発見可能性に修正。"
+        },
+        {
+          "bullet": 51,
+          "status": "resolved",
+          "issue": "存在の記述から開設を推測していた訳を「がある」に修正。"
+        },
+        {
+          "bullet": 54,
+          "status": "resolved",
+          "issue": "prepend/replace操作の説明を先頭への追加/置換と翻訳。"
+        },
+        {
+          "bullet": 102,
+          "status": "resolved",
+          "issue": "末尾への特殊ポインター維持の説明を明確化しコード識別子順を保持。"
+        }
+      ],
+      "judgment": "原文/EN/JA全文を照合、修正後に重大な誤訳・欠落なし。原文の歴史記述と現行仕様を混同せず保持。"
+    },
+    {
+      "id": "01-guides/01-userguide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T11:44:12.675Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/userguide.txt",
+        "sha256": "a605a5bef028b76274ef34a22ed4dbfaa2057a1f79b08b1b8e074115eebbd2a0",
+        "coverage": [
+          [
+            1,
+            1912
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/01-userguide.md",
+        "sha256": "be80ec531839cc87cc7e8a38968d08b4757f91a9313afb56a626290cbdc7fe27",
+        "coverage": [
+          [
+            1,
+            3638
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/01-userguide.md",
+        "sha256": "2aff8bd35314620f2ca0d3df59465dab968a483f79199e23d64055675968f7de",
+        "coverage": [
+          [
+            1,
+            3638
+          ]
+        ]
+      },
+      "readScope": {
+        "untruncatedReads": true,
+        "fullPageIncludingCodeTablesMetadata": true,
+        "passes": "全11セグメント作成後に各JA全文を別工程で固定原文/ENへ照合。今回は各証拠の連続coverageとSHA、全文結合バイト一致を監査。"
+      },
+      "segmentReviews": {
+        "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-208/USERGUIDE_SEGMENTS.json",
+        "sha256": "dbcbc7ecd7bd40a2489ee20c0cb4e60edb6c47b5b30c77df2e7ac40026a5e74e"
+      },
+      "coverageAudit": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-209/COVERAGE_AUDIT.json",
+        "sha256": "c55675157a70d44f8418021000d09d8404e0e6eb414a8861e20e0a2da147ced8"
+      },
+      "confirmedTopics": [
+        "C構造体ハッシュ/6操作",
+        "通常定数時間・キーと関数による条件/約1000行/マクロ",
+        "単一ヘッダーとリンク不要/対応環境/テスト手順",
+        "BSD原ライセンス参照/取得/質問/貢献方針",
+        "同梱3種類を原文のまま保持",
+        "2004-2006/2006-2013/30,000/2016年7月から/寄稿者",
+        "構造体とキー値/構造体を移動コピーしない/連続フィールド/任意データ型",
+        "キーの一意性はアプリ必須、HASH_FINDで確認",
+        "UT_hash_handle必須/初期化不要/hhと簡便マクロ",
+        "32bit32bytes/64bit56bytes/最後の要素削除で内部全解放NULL",
+        "簡便と汎用マクロのキー型/フィールド名条件",
+        "NULL初期化宣言/キーの一意初期化と引数のフィールド名",
+        "使用中キー変更禁止/削除変更再追加",
+        "重複可能性があれば必須チェック/既存更新/置換要素メモリー解放",
+        "ハッシュポインターへのポインター/参照外し/ポインター自体変更",
+        "HASH_REPLACEの先検索削除と出力ポインター",
+        "検索のキー/出力ポインター/未発見NULL",
+        "リテラルキーの直接渡し禁止/変数へ代入してポインターを渡す",
+        "削除には構造体ポインター必須、キーしかなければ先に検索",
+        "削除はfreeではない/置換出力と利用者のメモリー解放責任",
+        "先頭削除でハッシュポインター変更",
+        "HASH_ITERの削除安全性/全件削除の任意free",
+        "HASH_CLEARはfree/要素別後処理を不要とする場合のみ/先頭NULL",
+        "HASH_COUNTはNULLでも使用可、0を返す",
+        "hh.next/prevの前後反復/双方向連結リスト",
+        "通常for中の削除freeは危険/解放前にnext保存/HASH_ITER",
+        "C++forの追加static_cast",
+        "挿入順/ソートで新順序/先頭ポインター変更",
+        "比較関数の2ポインター引数/int負ゼロ正/strcmp-qsort規約",
+        "name_sort-id_sort説明とby_name-by_idコードの原文不一致を保持",
+        "完全な実行例全コード/コンパイルコマンド/入力手順/配布例への参照",
+        "ほぼすべてのキー型/浮動小数点等値は微小差でも異なるキー",
+        "整数簡便マクロ/他の操作はキー型共通",
+        "構造体内文字列と外部文字列へのポインターの必須区別",
+        "char配列HASH_ADD_STR/外部文字列HASH_ADD_KEYPTR/検索HASH_FIND_STR",
+        "test15出力とtest40例を不変保持",
+        "ポインター自体のキーと指すもののキーの区別/test57",
+        "構造体キーはバイト列/HASH_ADD-FIND汎用",
+        "パディングは追加検索前に必ずゼロ/メンバー設定前に全構造体ゼロ/memset2回",
+        "汎用マクロのUT_hash_handle名前が第1引数/原アンカー保持",
+        "連続複数フィールドのキー/3byteと4alignmentの条件付き例",
+        "パディングを含むoffsetof+sizeof-offsetのキー長計算",
+        "HASH_ADD/FIND前に必ず全構造体ゼロ/未初期化差による不一致",
+        "比較とハッシュ両関数のカスタマイズによるパディング無視",
+        "多段items/bob/age37/任意階層・別構造体可/上下階層の解放コード",
+        "1構造体の複数hash/各hash専用UT_hash_handle",
+        "名前の一意条件/ID名前両キー/構造体複製不要/同じキーも可",
+        "hh1/hh2とusers_by_id/nameの専用対応",
+        "HASH_SRT一括O(n log(n))/毎挿入O(n^2 log n)",
+        "INORDERは既ソート必須/1挿入O(n)/総O(n^2)",
+        "同じ要素の複数ソート順と前後リンク",
+        "検索失敗割合による性能利益の可能性/ヒットのみの不利益と既定無効",
+        "削除があれば使うべきでないが動作結果は正しい/利点低下",
+        "HASH_BLOOM n上限32/27例/多メモリーによる精度と失敗高速化可能性",
+        "16-8KB/20-128KB/24-2MB/28-32MB/32-512MB全表",
+        "性能のみで操作結果不変/適合性は試験で判断/原文16-32bits表記を保持",
+        "実験的選択/キーhash再計算不要/元から削除せず二重存在",
+        "宛先に既存要素可/構造体2以上ハンドル/各テーブル専用",
+        "ID1024未満/宛先handle-tableと元handle-table/最後条件/マクロも関数も可",
+        "常に真ならマージ/元テーブル不変/元宛先同一禁止/test36例",
+        "HASH_FINDでhash値/bucket/長さ/KEYCMP一致を確認/0が一致・非0で継続",
+        "memcmp代替/非自明キーはHASH_FUNCTIONも代替",
+        "32bit hashv/40億回の期待値/偽陽性を許す時のみno-op比較",
+        "等値KEYCMPとINORDER大小比較は無関係",
+        "Jenkins既定/6関数表のシンボルと固有名",
+        "HASH_FUNCTIONコンパイル定義/データ収集とkeystats解析",
+        "ファイル記述子3は任意未使用fdへ置換可/データ収集を本番に使うべきでない",
+        "最上位関数=最均等/ideal同点ならfind_usecで最速",
+        "keystats全9列の意味/重複除去/マイクロ秒/拡張抑制非推奨",
+        "n/kの理想線形位置/ideal100%へ近づくと定数時間性能へ",
+        "Linux/FreeBSD8.1以降限定",
+        "hashscanのbuild/実行中プロセス/keys保存/keystats解析",
+        "全9列意味/仮想address/ideal/mc10/ok-NX/Bloom指数2^16と飽和割合",
+        "一時attach停止/仮想メモリーsignature/有効構造/デタッチ再開/読取専用/実行間差",
+        "バケット内線形走査定数時間には要素数上限",
+        "通常10個未満/超過時バケット2倍再分配/自動で発生",
+        "バケット毎しきい値10の倍数/実chain対ideal倍率",
+        "キーに不適hashなら拡張無効/停止してO(n)を許容",
+        "2回連続ideal50%未満で抑制/要素がある限りflag保持/定数時間より悪化しうる",
+        "expand/noexpand診断2hookは任意/未定義時compile除去/イベント別実行",
+        "フックは任意/未定義ならdefault/前後定義可能",
+        "malloc/freeの置換とfreeのsz引数",
+        "strlen/memsetゼロクリアの置換",
+        "fatal既定exit(-1)/終了または安全なlongjmp/回収不能メモリーとHASH_CLEARも非安全の場合",
+        "NONFATAL定義はinclude前/各失敗1回/挿入要素address/no-op",
+        "nonfatal前rollback/リークなし/throw-longjmp可",
+        "HASH_SELECTではvoid*cast必須/全場合hh.tblNULL",
+        "ADD-REPLACE-SELECT割当失敗/free失敗禁止",
+        "DEBUG毎add-delete内部検査/本番使用禁止/2走査4検査",
+        "macro展開後再コンパイルの警告行確認",
+        "1.5以降並行reader可/利用側lock責務",
+        "FINDと反復前readlock/追加削除ソート前排他write lock",
+        "mutexはreader同時1thread/同梱example",
+        "便利マクロのhh命名と追加検索キーint-char[]-pointer条件",
+        "便利12/汎用22マクロ署名・引数順完全保持",
+        "汎用マクロ用途と原文の適用条件を保持",
+        "KEYPTRはキー自体ではなくpointer",
+        "HASH_VALUEとBYHASHVALUEの異種table同keyで再計算回避",
+        "全10引数のinput-output方向とpointer-literal不可",
+        "複合key先頭fieldと長さbytes/原注意2リンク",
+        "replaceなしNULL/tmp_item_ptr同型内部変数",
+        "cmpは2pointer受取int順序/conditionはvoid*castと非ゼロ選択"
+      ],
+      "findings": [
+        {
+          "status": "resolved",
+          "issue": "As of July 2016を時点だけの記述から保守開始時期が伝わる表現へ修正し再読。"
+        },
+        {
+          "status": "resolved",
+          "issue": "4文で識別子と強調の順を原文に揃え、全文機械構造検査に対応。意味は保持。"
+        },
+        {
+          "status": "resolved",
+          "issue": "2文で識別子と強調の順を原文に揃え、全文機械構造検査に対応。意味は保持。"
+        },
+        {
+          "status": "resolved",
+          "issue": "nextポインターの退避が解放前であることを自然な表現に修正し再読。"
+        },
+        {
+          "status": "confirmed-source-issue-note-pending-app",
+          "issue": "ソート関数の説明name_sort/id_sortと実例by_name/by_idが不一致。原文/EN/JAを保持し出典注記を記録。"
+        },
+        {
+          "status": "resolved",
+          "issue": "説明語withinはAPI識別子ではないため「内部」と訳し、機械検査へ明示対応を登録。他のinline codeと全コードは一致。文字列節のマクロ・強調順を原文に揃えて再読。"
+        }
+      ],
+      "judgment": "全原文1912行/定本3638行の翻訳・別内容レビューが連続対応。機械検査は別記録。原文問題は別注記へ保持し、正式表示は未検証。"
+    }
+  ],
+  "mechanicalEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-197/CHANGELOG_MECHANICAL.json",
+      "sha256": "fba41432718163aaef652a078b1b11cf0dfbe9e57e7d37065667c10df0d94661"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-209/USERGUIDE_FULL_MECHANICAL.json",
+      "sha256": "17f20ea1c1b522850f91867ac489d402a392d920cf0d276b3959c7cf86edc2d0"
+    }
+  ],
+  "modelObservation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-197/MODEL_OBSERVATION.json",
+    "sha256": "b3a6547918240a8052c654086e94463eb98b1bf973151848ef0427326d4b151b"
+  },
+  "limitations": [
+    "全8content gate/正式JA build/表示/統合公開未完。",
+    "原文ソート関数名の説明とコード不一致注記はapp適用・表示検証待ち。"
+  ],
+  "pendingSourceNotes": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-201/SORT_NAMES_NOTE.json",
+      "sha256": "835df8085b4fa9575b24d55f7ad7bd3629787477dd444ff1497571f109ea50c0"
+    }
+  ],
+  "derivedFrom": {
+    "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-209/TRANSLATION_REVIEW.json",
+    "sha256": "b4d11ccbe9c3f52be9de479909d6d0c33c1b6cd4c28146e007a3c6b3fcb19ff9"
+  }
+}

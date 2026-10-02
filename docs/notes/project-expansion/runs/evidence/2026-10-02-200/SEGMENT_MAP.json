@@ -1,0 +1,132 @@
+[
+  {
+    "canonicalLine": 709,
+    "en": "### Find item",
+    "ja": "### 要素の検索"
+  },
+  {
+    "canonicalLine": 713,
+    "en": "To look up a structure in a hash, you need its key. Then call `HASH_FIND`. (Here we use the convenience macro `HASH_FIND_INT` for keys of type `int`).",
+    "ja": "ハッシュ内の構造体を検索するには、そのキーが必要です。そのキーを使って `HASH_FIND` を呼び出します（ここでは、簡便マクロ `HASH_FIND_INT` を `int` 型のキーに使います）。"
+  },
+  {
+    "canonicalLine": 721,
+    "en": "Find a structure using its key",
+    "ja": "キーを使って構造体を検索する"
+  },
+  {
+    "canonicalLine": 740,
+    "en": "Here, the hash table is `users`, and `&user_id` points to the key (an integer in this case). Last, `s` is the *output* variable of `HASH_FIND_INT`. The final result is that `s` points to the structure with the given key, or is `NULL` if the key wasn’t found in the hash.",
+    "ja": "この例では、ハッシュテーブルは `users` で、`&user_id` はキー（この場合は整数）を指します。最後の `s` は *出力* 変数で、`HASH_FIND_INT` が結果を格納します。最終的に、`s` は指定したキーを持つ構造体を指すか、ハッシュ内にキーが見つからなければ `NULL` になります。"
+  },
+  {
+    "canonicalLine": 748,
+    "en": "<div class=\"title\">Note</div>",
+    "ja": "<div class=\"title\">注意</div>"
+  },
+  {
+    "canonicalLine": 750,
+    "en": "<td class=\"content\">The middle argument is a <em>pointer</em> to the key. You can’t pass a literal key",
+    "ja": "<td class=\"content\">中央の引数は、キーを指す<em>ポインター</em>です。リテラルのキー"
+  },
+  {
+    "canonicalLine": 751,
+    "en": "value to <code>HASH_FIND</code>. Instead assign the literal value to a variable, and pass",
+    "ja": "値を<code>HASH_FIND</code>に渡すことはできません。代わりに、そのリテラル値を変数に代入し、"
+  },
+  {
+    "canonicalLine": 752,
+    "en": "a pointer to the variable.</td>",
+    "ja": "その変数へのポインターを渡してください。</td>"
+  },
+  {
+    "canonicalLine": 763,
+    "en": "### Delete item",
+    "ja": "### 要素の削除"
+  },
+  {
+    "canonicalLine": 767,
+    "en": "To delete a structure from a hash, you must have a pointer to it. (If you only have the key, first do a `HASH_FIND` to get the structure pointer).",
+    "ja": "ハッシュから構造体を削除するには、その構造体へのポインターが必要です（キーしかない場合は、先に `HASH_FIND` を使って構造体へのポインターを取得してください）。"
+  },
+  {
+    "canonicalLine": 775,
+    "en": "Delete an item from a hash",
+    "ja": "ハッシュから要素を削除する"
+  },
+  {
+    "canonicalLine": 792,
+    "en": "Here again, `users` is the hash table, and `user` is a pointer to the structure we want to remove from the hash.",
+    "ja": "この例でも、`users` はハッシュテーブルで、`user` はハッシュから取り除きたい構造体へのポインターです。"
+  },
+  {
+    "canonicalLine": 800,
+    "en": "#### uthash never frees your structure",
+    "ja": "#### uthashが構造体のメモリーを解放することはありません"
+  },
+  {
+    "canonicalLine": 804,
+    "en": "Deleting a structure just removes it from the hash table-- it doesn’t `free` it. The choice of when to free your structure is entirely up to you; uthash will never free your structure. For example when using `HASH_REPLACE` macros, a replaced output argument is returned back, in order to make it possible for the user to de-allocate it.",
+    "ja": "構造体の削除は、その構造体をハッシュテーブルから取り除くだけで、`free` は行いません。構造体のメモリーをいつ解放するかは、完全に利用者の判断に委ねられています。uthashが構造体のメモリーを解放することはありません。たとえば、`HASH_REPLACE` マクロでは、利用者が置換された要素のメモリーを解放できるように、その要素へのポインターを出力引数として返します。"
+  },
+  {
+    "canonicalLine": 814,
+    "en": "#### Delete can change the pointer",
+    "ja": "#### 削除によってポインターが変わる場合があります"
+  },
+  {
+    "canonicalLine": 818,
+    "en": "The hash table pointer (which initially points to the first item added to the hash) can change in response to `HASH_DEL` (i.e. if you delete the first item in the hash table).",
+    "ja": "ハッシュテーブルのポインターは、最初はハッシュに最初に追加した要素を指しますが、`HASH_DEL` によって変わる場合があります（ハッシュテーブルの先頭の要素を削除した場合です）。"
+  },
+  {
+    "canonicalLine": 828,
+    "en": "#### Iterative deletion",
+    "ja": "#### 反復処理による削除"
+  },
+  {
+    "canonicalLine": 832,
+    "en": "The `HASH_ITER` macro is a deletion-safe iteration construct which expands to a simple *for* loop.",
+    "ja": "`HASH_ITER` マクロは、削除を安全に行える反復処理の構文で、単純な *for* ループに展開されます。"
+  },
+  {
+    "canonicalLine": 840,
+    "en": "Delete all items from a hash",
+    "ja": "ハッシュからすべての要素を削除する"
+  },
+  {
+    "canonicalLine": 865,
+    "en": "#### All-at-once deletion",
+    "ja": "#### 一括削除"
+  },
+  {
+    "canonicalLine": 869,
+    "en": "If you only want to delete all the items, but not free them or do any per-element clean up, you can do this more efficiently in a single operation:",
+    "ja": "すべての要素を削除するだけで、メモリーの解放や要素ごとの後処理を行わない場合は、次の1回の操作で、より効率よく削除できます。"
+  },
+  {
+    "canonicalLine": 885,
+    "en": "Afterward, the list head (here, `users`) will be set to `NULL`.",
+    "ja": "その後、リストの先頭（この例では `users`）は `NULL` に設定されます。"
+  },
+  {
+    "canonicalLine": 897,
+    "en": "### Count items",
+    "ja": "### 要素数の取得"
+  },
+  {
+    "canonicalLine": 901,
+    "en": "The number of items in the hash table can be obtained using `HASH_COUNT`:",
+    "ja": "ハッシュテーブル内の要素数は、`HASH_COUNT` を使って取得できます。"
+  },
+  {
+    "canonicalLine": 909,
+    "en": "Count of items in the hash table",
+    "ja": "ハッシュテーブル内の要素数"
+  },
+  {
+    "canonicalLine": 925,
+    "en": "Incidentally, this works even if the list head (here, `users`) is `NULL`, in which case the count is 0.",
+    "ja": "なお、リストの先頭（この例では `users`）が `NULL` でも使えます。その場合、要素数は0です。"
+  }
+]
