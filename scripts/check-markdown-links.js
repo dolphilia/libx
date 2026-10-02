@@ -155,7 +155,13 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     // Fixed upstream fmt Markdown requires its API generator to create anchors.
     // Validate the assembled canonical/translated links with check-fmt-content.mjs.
     const relative = path.relative(repositoryRoot, filePath).split(path.sep).join('/');
-    return !relative.startsWith('docs/notes/document-import/fmt/v12-2-0/source/');
+    // This fixed upstream README is acquisition evidence, not a published page.
+    // Its CONTRIBUTING.md belongs to the upstream repository, outside the manual
+    // scope. Published Ninja references are checked by check-ninja-rendered.mjs.
+    return (
+      !relative.startsWith('docs/notes/document-import/fmt/v12-2-0/source/') &&
+      relative !== 'docs/notes/document-import/ninja/v1-13-2/source/README.md'
+    );
   });
   const failures = markdownFiles.flatMap((filePath) =>
     checkFile(filePath).map((failure) => ({ filePath, ...failure }))
