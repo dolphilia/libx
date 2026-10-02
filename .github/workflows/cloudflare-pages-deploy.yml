@@ -24,6 +24,11 @@ on:
         required: true
         default: ci-preview
         type: string
+      expected_production_commit:
+        description: 'Production公開前に照合する現在の配信commit（省略時は照合しない）'
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: read
@@ -221,7 +226,13 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: node scripts/pages-production-state.js --output=.tmp/pages-production/before.json
+          EXPECTED_PRODUCTION_COMMIT: ${{ inputs.expected_production_commit }}
+        run: |
+          args=(--output=.tmp/pages-production/before.json)
+          if [[ -n "$EXPECTED_PRODUCTION_COMMIT" ]]; then
+            args+=(--commit="$EXPECTED_PRODUCTION_COMMIT")
+          fi
+          node scripts/pages-production-state.js "${args[@]}"
 
       - name: Preserve rollback reference before publishing
         uses: actions/upload-artifact@v4
