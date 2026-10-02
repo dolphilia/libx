@@ -47,6 +47,10 @@ const attributionText = getLicenseTemplate(
       </div>
 
       <p class="attribution-text">{attributionText}</p>
+      {source.copyrightNotice && <p class="attribution-text">{source.copyrightNotice}</p>}
+      {source.provenanceNotes?.map((note) => (
+        <p class="attribution-text">{lang === 'ja' ? note.ja : note.en}</p>
+      ))}
 
       <dl class="provenance-metadata">
         <div>
@@ -70,6 +74,11 @@ const attributionText = getLicenseTemplate(
         <a href={source.licenseUrl} target="_blank" rel="noopener">
           {source.license} {translate('license.links.license', lang)}
         </a>
+        {source.attributionLinks?.map((link) => (
+          <a href={link.url} target="_blank" rel="noopener">
+            {lang === 'ja' ? link.label.ja : link.label.en}
+          </a>
+        ))}
       </div>
     </aside>
   )

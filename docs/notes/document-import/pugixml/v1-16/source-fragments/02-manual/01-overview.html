@@ -1,0 +1,103 @@
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a><a class="link" href="#overview">1. Overview</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="overview.introduction"><a class="anchor" href="#overview.introduction"></a><a class="link" href="#overview.introduction">1.1. Introduction</a></h3>
+<div class="paragraph">
+<p><a href="https://pugixml.org/">pugixml</a> is a light-weight C&#43;&#43; XML processing library. It consists of a DOM-like interface with rich traversal/modification capabilities, an extremely fast XML parser which constructs the DOM tree from an XML file/buffer, and an <a href="#xpath">XPath 1.0 implementation</a> for complex data-driven tree queries. Full Unicode support is also available, with <a href="#dom.unicode">two Unicode interface variants</a> and conversions between different Unicode encodings (which happen automatically during parsing/saving). The library is <a href="#install.portability">extremely portable</a> and easy to integrate and use. pugixml is developed and maintained since 2006 and has many users. All code is distributed under the <a href="#overview.license">MIT license</a>, making it completely free to use in both open-source and proprietary applications.</p>
+</div>
+<div class="paragraph">
+<p>pugixml enables very fast, convenient and memory-efficient XML document processing. However, since pugixml has a DOM parser, it can&#8217;t process XML documents that do not fit in memory; also the parser is a non-validating one, so if you need DTD or XML Schema validation, the library is not for you.</p>
+</div>
+<div class="paragraph">
+<p>This is the complete manual for pugixml, which describes all features of the library in detail. If you want to start writing code as quickly as possible, you are advised to <a href="quickstart.html">read the quick start guide first</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+No documentation is perfect; neither is this one. If you find errors or omissions, please don’t hesitate to <a href="https://github.com/zeux/pugixml/issues/new">submit an issue or open a pull request</a> with a fix.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="overview.feedback"><a class="anchor" href="#overview.feedback"></a><a class="link" href="#overview.feedback">1.2. Feedback</a></h3>
+<div class="paragraph">
+<p>If you believe you&#8217;ve found a bug in pugixml (bugs include compilation problems (errors/warnings), crashes, performance degradation and incorrect behavior), please file an issue via <a href="https://github.com/zeux/pugixml/issues/new">issue submission form</a>. Be sure to include the relevant information so that the bug can be reproduced: the version of pugixml, compiler version and target architecture, the code that uses pugixml and exhibits the bug, etc.</p>
+</div>
+<div class="paragraph">
+<p>Feature requests can be reported the same way as bugs, so if you&#8217;re missing some functionality in pugixml or if the API is rough in some places and you can suggest an improvement, <a href="https://github.com/zeux/pugixml/issues/new">file an issue</a>. However please note that there are many factors when considering API changes (compatibility with previous versions, API redundancy, etc.), so generally features that can be implemented via a small function without pugixml modification are not accepted. However, all rules have exceptions.</p>
+</div>
+<div class="paragraph">
+<p>If you have a contribution to pugixml, such as build script for some build system/IDE, or a well-designed set of helper functions, or a binding to some language other than C&#43;&#43;, please <a href="https://github.com/zeux/pugixml/issues/new">file an issue or open a pull request</a>. Your contribution has to be distributed under the terms of a license that&#8217;s compatible with pugixml license; i.e. GPL/LGPL licensed code is not accepted.</p>
+</div>
+<div class="paragraph">
+<p>If filing an issue is not possible due to privacy or other concerns, you can contact pugixml author by e-mail directly: <a href="mailto:arseny.kapoulkine@gmail.com">arseny.kapoulkine@gmail.com</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="overview.thanks"><a class="anchor" href="#overview.thanks"></a><a class="link" href="#overview.thanks">1.3. Acknowledgments</a></h3>
+<div class="paragraph">
+<p>pugixml could not be developed without the help from many people; some of them are listed in this section. If you&#8217;ve played a part in pugixml development and you can not find yourself on this list, I&#8217;m truly sorry; please <a href="#email">send me an e-mail</a> so I can fix this.</p>
+</div>
+<div class="paragraph">
+<p>Thanks to <strong>Kristen Wegner</strong> for pugxml parser, which was used as a basis for pugixml.</p>
+</div>
+<div class="paragraph">
+<p>Thanks to <strong>Neville Franks</strong> for contributions to pugxml parser.</p>
+</div>
+<div class="paragraph">
+<p>Thanks to <strong>Artyom Palvelev</strong> for suggesting a lazy gap contraction approach.</p>
+</div>
+<div class="paragraph">
+<p>Thanks to <strong>Vyacheslav Egorov</strong> for documentation proofreading and fuzz testing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="overview.license"><a class="anchor" href="#overview.license"></a><a class="link" href="#overview.license">1.4. License</a></h3>
+<div class="paragraph">
+<p>The pugixml library is distributed under the MIT license:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Copyright (c) 2006-2026 Arseny Kapoulkine
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This means that you can freely use pugixml in your applications, both open-source and proprietary. If you use pugixml in a product, it is sufficient to add an acknowledgment like this to the product distribution:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>This software is based on pugixml library (https://pugixml.org).
+pugixml is Copyright (C) 2006-2026 Arseny Kapoulkine.</pre>
+</div>
+</div>
+</div>
+</div>
+</div>

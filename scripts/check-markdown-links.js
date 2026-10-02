@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseFragment } from 'parse5';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptDirectory, '..');
@@ -48,7 +49,7 @@ function githubSlug(heading) {
     .replace(/\s+/g, '-');
 }
 
-function collectAnchors(filePath) {
+export function collectAnchors(filePath) {
   const anchors = new Set();
   const occurrences = new Map();
   const lines = removeFencedCode(fs.readFileSync(filePath, 'utf8'));
@@ -62,6 +63,18 @@ function collectAnchors(filePath) {
     occurrences.set(baseSlug, count + 1);
     anchors.add(count === 0 ? baseSlug : `${baseSlug}-${count}`);
   }
+  // Raw HTML anchors are valid in Markdown. Literal code and HTML comments are not targets.
+  const html = lines.join('\n').replace(/(`+)([\s\S]*?)\1/g, '');
+  const visit = (node) => {
+    if (node.tagName === 'pre' || node.tagName === 'code') return;
+    for (const attr of node.attrs ?? []) {
+      if (attr.name === 'id' || (node.tagName === 'a' && attr.name === 'name')) {
+        anchors.add(attr.value);
+      }
+    }
+    for (const child of node.childNodes ?? []) visit(child);
+  };
+  visit(parseFragment(html));
   return anchors;
 }
 
@@ -72,11 +85,11 @@ function parseTarget(rawTarget) {
   const relativePath = pathAndQuery.split('?', 1)[0];
   return {
     relativePath: decodeURIComponent(relativePath),
-    fragment: decodeURIComponent(fragment).toLowerCase(),
+    fragment: decodeURIComponent(fragment),
   };
 }
 
-function checkFile(filePath) {
+export function checkFile(filePath) {
   const failures = [];
   const lines = removeFencedCode(fs.readFileSync(filePath, 'utf8'));
   const linkPattern = /!?\[[^\]]*\]\((<[^>]+>|[^\s)]+)(?:\s+["'][^)]*["'])?\)/g;
@@ -115,22 +128,24 @@ function checkFile(filePath) {
   return failures;
 }
 
-const markdownFiles = [
-  path.join(repositoryRoot, 'README.md'),
-  ...collectMarkdownFiles(path.join(repositoryRoot, 'docs')),
-];
-const failures = markdownFiles.flatMap((filePath) =>
-  checkFile(filePath).map((failure) => ({ filePath, ...failure }))
-);
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const markdownFiles = [
+    path.join(repositoryRoot, 'README.md'),
+    ...collectMarkdownFiles(path.join(repositoryRoot, 'docs')),
+  ];
+  const failures = markdownFiles.flatMap((filePath) =>
+    checkFile(filePath).map((failure) => ({ filePath, ...failure }))
+  );
 
-if (failures.length > 0) {
-  console.error('Markdownの相対リンクに問題があります:');
-  for (const failure of failures) {
-    console.error(
-      `  ${path.relative(repositoryRoot, failure.filePath)}:${failure.line} ${failure.target} (${failure.reason})`
-    );
+  if (failures.length > 0) {
+    console.error('Markdownの相対リンクに問題があります:');
+    for (const failure of failures) {
+      console.error(
+        `  ${path.relative(repositoryRoot, failure.filePath)}:${failure.line} ${failure.target} (${failure.reason})`
+      );
+    }
+    process.exit(1);
   }
-  process.exit(1);
-}
 
-console.log(`Markdown相対リンク検査: ${markdownFiles.length}ファイル、問題なし`);
+  console.log(`Markdown相対リンク検査: ${markdownFiles.length}ファイル、問題なし`);
+}

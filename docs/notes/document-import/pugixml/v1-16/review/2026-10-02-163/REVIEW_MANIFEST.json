@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "operationId": "pugixml:v1-16:51b0d28a9c73800a93c4444d10937c57868468fdf434c6ab0a1e2aa16b1b4eb6",
+  "scope": [
+    "01-overview/01-quick-start.md",
+    "02-manual/01-overview.md",
+    "02-manual/02-installation.md",
+    "02-manual/03-document-object-model.md",
+    "02-manual/04-loading-documents.md",
+    "02-manual/05-accessing-document-data.md",
+    "02-manual/06-modifying-document-data.md",
+    "02-manual/07-saving-documents.md",
+    "02-manual/08-xpath.md",
+    "03-reference/01-changelog.md",
+    "03-reference/02-api-reference.md",
+    "04-license/01-license.md"
+  ],
+  "completedPages": 12,
+  "unreviewedPages": 0,
+  "method": "ai-content-review",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "fullAIContentReview": "passed",
+  "reviewedAt": "2026-10-02T08:42:28.800Z",
+  "pages": [
+    {
+      "id": "01-overview/01-quick-start.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T07:40:04.611Z",
+      "separateReviewPass": true,
+      "findings": [
+        "DTD/Schema非検証・非W3C完全準拠と一部整形式検査省略の制約を保持。",
+        "xml_document所有権、ハンドル破棄とノード破棄の区別、空ハンドル伝播と暗黙boolを保持。",
+        "load_buffer / load_buffer_inplace / load_buffer_inplace_ownの不変性と所有者の3区分、連続メモリー・ストリーム条件を保持。",
+        "イテレーター削除時無効化と追加時非無効化、ノード削除で終端後イテレーター無効化も保持。",
+        "構造の整合性とXMLの有効性を区別。属性アクセスは挿入せず、XPath例外は例で未捕捉という警告を保持。",
+        "MIT通知・謝辞の原文は改変せず保持。リンク表示・全見出し・注意ラベル・脚注・footnote titleは翻訳。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/01-overview/01-quick-start.html",
+        "sha256": "2585443c03da1e77e02fc491bb3322e9a132396dc37d20b58eb9bc110f34f3ab",
+        "coverage": [
+          [
+            1,
+            567
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/01-overview/01-quick-start.md",
+        "sha256": "980de18cbdf3873fbb4f0efe172bd07dff4c344477ebfe9859e78bc77334044b",
+        "coverage": [
+          [
+            1,
+            976
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-133/ja/01-overview/01-quick-start.md",
+        "sha256": "a0d55f71291d9520918113cf447c7cbc35630dbfcefb4fe86e387c18ea320019",
+        "coverage": [
+          [
+            1,
+            976
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-133/FULL_REVIEW.json",
+        "sha256": "41965fec60625157053d03adee58ab252482bb011227acd0e8b92625f4a9e314"
+      }
+    },
+    {
+      "id": "02-manual/01-overview.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T05:00:47.608Z",
+      "separateReviewPass": true,
+      "findings": [
+        "3段落と注記全体: DOM風走査/変更・高速パーサー・XPath1.0・Unicode2種と解析/保存自動変換・移植性・2006年・自由使用・メモリー制限・非妥当性検証/DTD/Schema不適合・クイックスタート推奨・Issue修正案を等価に保持。",
+        "4段落全体: エラー/警告・クラッシュ・性能低下/誤動作、再現に必要な版/アーキテクチャー/使用コード、旧版互換/冗長性と例外、通常小関数追加拒否、ビルド/IDE/ヘルパー/他言語binding、ライセンス互換・GPL/LGPL不可、メール代替を保持。",
+        "謝辞5段落全体: 一覧の不備連絡、4名の綴りと各貢献（基礎parser/貢献/遅延gap縮小提案/校正・fuzz）を保持。省略/追加なし。",
+        "2段落と2全文通知: MIT説明、オープン/プロプライエタリ両方の自由利用と製品配布での謝辞、2006–2026、許諾全項目・保持条件・ASIS/免責は英語原通知を完全保持。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/01-overview.html",
+        "sha256": "1a46c1cc1201936939c50c53e94fc0ee229ad5da09ba2dddcbfc83fa99ab7d0e",
+        "coverage": [
+          [
+            1,
+            103
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/01-overview.md",
+        "sha256": "f252b6c1db0148a4b22462da78402aeeeae2f90da08e6f8b74667afd287aac6b",
+        "coverage": [
+          [
+            1,
+            196
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-121/ja/02-manual/01-overview.md",
+        "sha256": "d78fe7d8e91542a5e5b2a0c59f28b36083ae5faa33f5a0e8e4af73f7d2615e0f",
+        "coverage": [
+          [
+            1,
+            196
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-121/PARTIAL_CONTENT_REVIEW.json",
+        "sha256": "b6a66a85dc490512e965aca6d885861087013fc187355a63204eee7647c5ba53"
+      }
+    },
+    {
+      "id": "02-manual/02-installation.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T07:45:14.076Z",
+      "separateReviewPass": true,
+      "findings": [
+        "入手方法のlatest/masterと固定版タグの差、別保守パッケージの最新性非保証を保持。",
+        "CRT動的/静的のファイル名とアプリの一致、VS版による依存/参照操作の差を保持。",
+        "共有CRTと単一ヒープの条件を保持。/MD,/MDdのlinker switchという上流表現は無断修正せず保存。実コンパイラー設定の新規検証とは扱わない。",
+        "header-onlyのLTOの有無、inlining、コンパイル時間増加、XPath無効化、Releaseのみ有効化の条件を保持。",
+        "全翻訳単位の定義一貫性、条件付き定義の例外、PUGIXML_APIのimport/export例外を保持。",
+        "全macroの機能・条件を照合。charconvのC++17/UTF-8/locale非依存、wcharサイズ、long long/string_viewの自動/手動認識も保持。",
+        "C++98/11/17と各コンパイラー/環境/カバレッジの数値は固定版の公式記述として保持。現在の環境を検証したものとは扱わない。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/02-installation.html",
+        "sha256": "426e9af38208b30e68f854881a6d2f82a6f40e187aad4d1da744085fa20db03f",
+        "coverage": [
+          [
+            1,
+            308
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/02-installation.md",
+        "sha256": "24c58dc41d166a4871d3ada7558c167ffa7ded3f586f6dc7598753104da7b091",
+        "coverage": [
+          [
+            1,
+            553
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-135/ja/02-manual/02-installation.md",
+        "sha256": "45943001008cf17f92448eb1e6aea600d0d1f62436a3c71c3887ad14ea7a47ed",
+        "coverage": [
+          [
+            1,
+            553
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-135/FULL_REVIEW.json",
+        "sha256": "837753f3fa0c573ac0bc2a8103ca96d4b3c8b983ca84f7e9980cbefa2ce6eade"
+      }
+    },
+    {
+      "id": "02-manual/03-document-object-model.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T07:52:30.903Z",
+      "separateReviewPass": true,
+      "findings": [
+        "全ノード型の名前/値/属性/子の有無、複数要素のfragment例外と宣言/DOCTYPEの個数・親条件、既定の非取り込みと変更フラグを保持。",
+        "xml_document非コピー・reset・デストラクターとハンドル寿命・未定義動作、空ノード伝播、比較/hashの限界を保持。",
+        "UTF-8/16/32、wcharサイズ、型とC++17条件、UTF変換方向、不正シーケンス破棄とnullの未定義動作を保持。",
+        "同じツリーのread-only並行性と単一ツリーread/write要同期、set_memory_management_functions例外を保持。",
+        "XPath/STL/stream/callbackの例外保証とbad_alloc/PUGIXML_NO_EXCEPTIONSの条件を保持。",
+        "allocatorのアラインメント/サイズ/失敗条件と置換時の生存オブジェクト禁止、ページ回収の全オブジェクト条件と再利用非保証を保持。",
+        "32/10/4 Kb、最小1 Kb/256 bytes、2.1/8.3 Mb、2.5x/5x、10–50%、O(1)と例外を保持。上流Kb/Mb表記やtwo code pointsの表現は保全し、無断の技術補筆をしない。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/03-document-object-model.html",
+        "sha256": "9e398f80f108e153dc64811b59761983fd03f6a6ece46a9b3b849b130ae00ffe",
+        "coverage": [
+          [
+            1,
+            439
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/03-document-object-model.md",
+        "sha256": "0c83713811cee1d8d9e9c415d3a107ec78da7224c24712da0458ff5db736a080",
+        "coverage": [
+          [
+            1,
+            774
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-138/ja/02-manual/03-document-object-model.md",
+        "sha256": "e5aa294af65316afc3e7a66b721807ee4b40b70a3734b610458d128caadf15d5",
+        "coverage": [
+          [
+            1,
+            774
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-138/FULL_REVIEW.json",
+        "sha256": "85cf326f7e8315715f240399e79e586309ba84c8f44bfe38a46e48beb9f42e06"
+      }
+    },
+    {
+      "id": "02-manual/04-loading-documents.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T08:00:07.463Z",
+      "separateReviewPass": true,
+      "findings": [
+        "ファイルパスのOS依存、既存ツリーの破棄、load_bufferのコピーとinplaceの寿命/所有権、ownのpugixml allocator必須条件を保持。",
+        "load_stringのnative encoding、strlen/wcslenサイズ、istreamの現在位置から末尾、wistreamのencoding_wcharとロケール設定条件を保持。",
+        "全エラー状態、descriptionの英語/版変更/wchar条件、失敗時部分ツリー、offsetの単位とエンコーディング変換後の位置追跡制限を保持。",
+        "全parseフラグの既定値、ws_pcdata_singleとws_pcdataの優先関係、mergeとembedの非互換、fragmentの末尾PCDATA欠損とnull終端回避例を保持。",
+        "escapes/EOL/属性正規化の対象と優先関係、3マスクの内容と空白PCDATA除外、全encoding値と推定順序を保持。",
+        "W3C非準拠全9項目とDOCTYPE非処理、invalid UTFの変換有無による扱いを保持。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/04-loading-documents.html",
+        "sha256": "a45f67d968870e00077f120ef4fbc24c5e2bc6ee8cd064cb0881e4efb3f7b291",
+        "coverage": [
+          [
+            1,
+            504
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/04-loading-documents.md",
+        "sha256": "0b4e5cd1dbae5bb8ff3c9f41e6c8ba5a0fa621301519371503e3ec261df10c66",
+        "coverage": [
+          [
+            1,
+            738
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-141/ja/02-manual/04-loading-documents.md",
+        "sha256": "eb0b6a49123d24250f80a14df4999eaf989d941b2b0eb653eee23809b513cb7c",
+        "coverage": [
+          [
+            1,
+            738
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-141/FULL_REVIEW.json",
+        "sha256": "f6739f25edcd08907c04f0821865773f825829da1914aab28860f7caff6000d6"
+      }
+    },
+    {
+      "id": "02-manual/05-accessing-document-data.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T08:07:45.148Z",
+      "separateReviewPass": true,
+      "findings": [
+        "基本走査の説明が原文のまま残り、訳文が閉じdiv後に重複する配置誤りを修正。旧検査はHTMLで始まる行の英語散文を分類しなかったため見逃した。",
+        "全ノード型の名前/値、null時の空文字列と非nullポインター、PCDATA/CDATAの最初の子、as_stringの既定値条件を保持。",
+        "全数値変換の形式/先頭空白/範囲クランプ/CRT-STL依存、CロケールとCHARCONV例外、真偽値の先頭文字判定とlong long条件を保持。",
+        "名前検索の大文字小文字区別、hintの次属性への更新・nullか同一ノード所属・未定義動作、属性値検索の2/3引数と有効文字列必須を保持。",
+        "C++11/C++20とBoost互換性の条件、末尾イテレーター非参照外しと空でのデクリメント未定義、削除で無効化/追加では非無効化、代入はローカルハンドルを変える注意を保持。",
+        "walkerの根除外の深さ優先順/false即停止/depthの-1と子0、述語のnull非入力と直接の子/全子孫の区別を保持。",
+        "xml_textの対象と空/既定値変換、パスの絶対/相対/自身/親/曖昧時最初の選択、NO_STL、offsetの条件とchar_t単位を保持。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/05-accessing-document-data.html",
+        "sha256": "6cc53fd9381e499982106f5515aa12356e38caf7728ebe29518b663887af8af1",
+        "coverage": [
+          [
+            1,
+            658
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/05-accessing-document-data.md",
+        "sha256": "151442e47d0e6946dfaac9a600fe635fe4ede1f356a126ddd46011e1e3b45de1",
+        "coverage": [
+          [
+            1,
+            1195
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-145/ja/02-manual/05-accessing-document-data.md",
+        "sha256": "575828d1eded158944fc6e2873b16a8527b67b6afe805e679d3ff1db9624358c",
+        "coverage": [
+          [
+            1,
+            1195
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-145/FULL_REVIEW.json",
+        "sha256": "82f61f8b15c12892215cd659fe9fd893afd120dddd4ea1b4f912d6f4d8141420"
+      }
+    },
+    {
+      "id": "02-manual/06-modifying-document-data.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T08:16:27.434Z",
+      "separateReviewPass": true,
+      "findings": [
+        "構造上の整合性とXMLの有効性の違い、constハンドルの代入可能性、set_name/set_valueの型制約/null/メモリー失敗と文字列コピー/内容未検証を保持。",
+        "数値の表記、浮動小数点のロケール依存とCHARCONV例外、long longの条件、代入演算子の戻り値によるエラー無視を保持。",
+        "append/prepend/insert/ensureの位置と存在条件、追加全7失敗条件、失敗後整合性、attribute/childは追加しない注意を保持。",
+        "remove全失敗条件、部分ツリー削除、ハンドル/指すイテレーターと末尾イテレーターの無効化、名前削除は最初だけ/while全削除を保持。",
+        "xml_textのsetが必要時にPCDATA子を作る条件、値を持てない非要素/null/メモリーの失敗条件と文字列コピーを保持。",
+        "深い複製/文書間コピー/文書ノード直接不可/内部ノードへのコピーは開始前状態、移動は同一文書限定/自己と内部ノードへの移動禁止を保持。",
+        "append_bufferのnative encoding性能条件、バッファコピーは文書破棄まで存続し全ノード削除でも回収不可、入力不変/戻り後解放可、根型制約を保持。",
+        "テキスト代入説明のattributeは掲載xml_text&宣言と不一致。テキストオブジェクトと訳し、原文の誤記を訳注で明示。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/06-modifying-document-data.html",
+        "sha256": "d9643488d4a04160a3aa88d57ce097470dba7489091964814f7e021f7ddbe930",
+        "coverage": [
+          [
+            1,
+            593
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/06-modifying-document-data.md",
+        "sha256": "17caa40b3c553e771c6fdce5b906cbc334c41b28793b2531e0f9b29524307922",
+        "coverage": [
+          [
+            1,
+            919
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-149/ja/02-manual/06-modifying-document-data.md",
+        "sha256": "47604f971e90294fd75937cfc4d6936c0a84bd89d6cedd3f17b01f00dacdac96",
+        "coverage": [
+          [
+            1,
+            919
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-149/FULL_REVIEW.json",
+        "sha256": "531b19765f82eee5c78ca6d3f8ec817e0cc8a296f044310dc763b587763f990e"
+      }
+    },
+    {
+      "id": "02-manual/07-saving-documents.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T08:21:04.308Z",
+      "separateReviewPass": true,
+      "findings": [
+        "escape例外、空名の:anonymous、CDATAの分割と再読時の構造変化を保持。",
+        "save_fileのOSパスとtrue/false、要求ヘッダーと宣言、FILE* writer等価性を保持。",
+        "ostream/wostreamのencodingとlocale設定、wide writerのencoding_wchar明示必須を保持。",
+        "writerのdata/sizeの単位、戻り後バッファ内容変更とポインター非保持、通常数KBと最終小ブロックを保持。",
+        "printはフラグ値にかかわらずBOM/既定宣言を出力しないが実ノードの宣言は出力する条件を保持。",
+        "format全10フラグの既定値、rawのindentに対する優先、indent_attributesがindentを伴う条件、非escapeの不正XMLリスク、空要素/制御文字/引用符/テキストモードを保持。",
+        "format_defaultはindent有効・BOM無効・必要時既定宣言、全出力例の順序と改行を保持。",
+        "encoding_autoは出力ではUTF8、wide streamはwchar、不正UTFの読み飛ばしに非依存と空名のリスクを保持。",
+        "既定宣言の条件/非調整、parse_declarationによる元宣言保持、宣言ノードは属性のみで子なしを保持。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/07-saving-documents.html",
+        "sha256": "94c491b64226a7c5663570a66cc6c13a86656f83fcd0adb6eaacd34c24f61f7a",
+        "coverage": [
+          [
+            1,
+            337
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/07-saving-documents.md",
+        "sha256": "8e367d88e598b68bbaa990ac2604d80a1d24eff378d2216e033858b19c912947",
+        "coverage": [
+          [
+            1,
+            550
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-152/ja/02-manual/07-saving-documents.md",
+        "sha256": "a15a8f4bf30d0160853846a49217171e9e69d1bf277d160fa1b49a607117ae70",
+        "coverage": [
+          [
+            1,
+            550
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-152/FULL_REVIEW.json",
+        "sha256": "1658d60c740311b1053f51304fd9c56aed0e426ab312f5799059ab2353b3f515"
+      }
+    },
+    {
+      "id": "02-manual/08-xpath.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T08:30:06.081Z",
+      "separateReviewPass": true,
+      "findings": [
+        "XPath4型とxml_node/xml_attributeの判別、null/parent/暗黙変換と3コンストラクターの属性所属条件を保持。",
+        "ノード集合のランダムアクセス/範囲外未定義、文書順と集合内順の違い、firstの結果と計算量、手動集合の重複禁止と整列責任を保持。",
+        "select_nodesとselect_nodeの文書順、null/未一致、コンパイル済み選択と結果型例外を保持。",
+        "問い合わせの不変/非コピー、型変換の制約、evaluate_stringのSTL制約と容量/ゼロ終端/終端込み返却サイズ/2回評価を保持。",
+        "原文C11は固定アーカイブ内ヘッダーのC++11判定とムーブ宣言に基づきC++11と訳し、原文表記を訳注で明示。",
+        "変数集合が問い合わせより長寿命、問い合わせ生存中の集合への代入/ムーブ代入禁止、addの既存型チェック/確保失敗、既定値とset/getの型不一致結果を保持。",
+        "値のコピー後の元値の変更/破棄可と変数型の固定を保持。",
+        "例外有効時のxpath_exception/bad_alloc、無効時の無効問い合わせとfalse/NaN/空の結果、ノード集合型不一致を保持。",
+        "ASCIIのerror/description、wide modeでもchar、offsetのchar_t単位と最後の解析成功文字の原文説明を保持。source streamは入力ストリームへ明確化。",
+        "連続テキスト非結合、id常時空、名前空間ノード非対応、QNameと展開名の差、char/wchar_t単位のUnicode制限の5項目を保持。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/08-xpath.html",
+        "sha256": "1ea5e3c49b7df53038cc8e7d63c9335718e174286446ec10da0013e34d3ad7e9",
+        "coverage": [
+          [
+            1,
+            550
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/08-xpath.md",
+        "sha256": "fb4c3469d60e250da1c41853a85a16f7cfb30b0a46268b652bb0acec725a24a4",
+        "coverage": [
+          [
+            1,
+            971
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-156/ja/02-manual/08-xpath.md",
+        "sha256": "27f3a08c96a0ecf18131b92031ad29107c953b2b027c9e4934f8d95072a2a316",
+        "coverage": [
+          [
+            1,
+            971
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/FULL_REVIEW.json",
+        "sha256": "a31c7beed6a466fcadb6a7e3ac53b4438050f5d204dc02595388f5eac4193369"
+      }
+    },
+    {
+      "id": "03-reference/01-changelog.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T08:39:55.914Z",
+      "separateReviewPass": true,
+      "findings": [
+        "v1.16の空PCDATA子の条件とformat例外、C++17/locale、32bit/wchar/crash条件、ensure/API追加を保持。",
+        "v1.15〜v1.9のstring_view、非null終端、メモリー/ディスク不足、CMake target互換条件、軸/和集合の安定順と文書順整列要否、非推奨APIを保持。",
+        "v1.8〜v1.5のPCDATA埋込み、コンパクトサイズ、整数負値のUINT_MAX→0、C++11ムーブ/コピー条件、強い例外保証、性能数値を保持。",
+        "v1.5のcross-document/inter-documentは文書間のまま数値を保持し、区別が原文で明確でないことを訳注に明示。",
+        "v1.4/v1.2の断片解析例外、16進/long long、single whitespace、header-only/STL/escape/シーク条件を保持。",
+        "v1.0の属性コンテキスト、STL/例外なしXPath、wide path、CDATA分割、offset/メモリー、削除APIと代替名を保持。",
+        "v0.9のUTFエンコーディング範囲、2の32乗-1、メモリーページ解放条件、1.0削除予定を当時の記録として保持。",
+        "v0.5の軸の旧挙動、文字列→数値の旧結果と新結果、traverseのdepth変更、無効UTF条件を保持。原文xpath_node::select_nodes表記は訳注付きで保持。",
+        "v0.42以下の独自確保/解放、空ノード、旧旗名PUGIXML_NO_EXCEPTION、寿命/所有権、最初の公開/非公開の区別を保持。",
+        "原文ASCII表後半の説明、Gb単位、SPARC64と32bit併記は原文の表記を保持し、現在の仕様に推測で書き換えない。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/03-reference/01-changelog.html",
+        "sha256": "1c933c95bba45ed55f36ea795b4220247e6d208b8f538ecdd74469fdf9ba11c2",
+        "coverage": [
+          [
+            1,
+            1708
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/03-reference/01-changelog.md",
+        "sha256": "27e4084e1ba16fbc964e23d5f73a6e7d17104e18e119454793c77cf1e2196049",
+        "coverage": [
+          [
+            1,
+            1531
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-163/ja/03-reference/01-changelog.md",
+        "sha256": "e5672c771b864ab3782f01e7ea154fb55741bf5f077f7043558f537e29233761",
+        "coverage": [
+          [
+            1,
+            1531
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-162/FULL_REVIEW.json",
+        "sha256": "adaa581c886896d8b6a45b26dcce4929b9e657a82a4a3945df272f24a8d41f03"
+      },
+      "followup": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-163/TRANSLATOR_NOTE_FIX.json",
+        "sha256": "d0d4784b5921d5570c603cf2641c4e427aab6eb13f71204de6a0fcadfa0aacd3"
+      }
+    },
+    {
+      "id": "03-reference/02-api-reference.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T07:06:32.810Z",
+      "separateReviewPass": true,
+      "findings": [
+        "全文6宣言ブロックのマクロ14、型5、全enum/format/parse定数、xml_attribute/node/document/parse_result/iterator/tree_walker/text/writer/XPath全宣言・関数7を分割実読。型・引数・const/virtual/explicit/noexcept・既定値・演算子・overload順を保持。上流の省略宣言は補完せず保存。",
+        "1説明段落・7見出し・frontmatterを全文実読。each symbolの指示対象とmanual該当節の関係を保持。APIの識別子/宣言/コメントは原文のまま全文保存。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/03-reference/02-api-reference.html",
+        "sha256": "fbb859b66aa4271caf38ecf769ce6e9ac9c03e1eec3b4e4a366cb6ddf11e7007",
+        "coverage": [
+          [
+            1,
+            541
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/03-reference/02-api-reference.md",
+        "sha256": "b0f7b32f320b9ce3c360296ef8f4da863934b4293a5aa90ccebfefc22c58d183",
+        "coverage": [
+          [
+            1,
+            616
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-131/ja/03-reference/02-api-reference.md",
+        "sha256": "5e3bb0ad24a2b80f47f0987e4f6a083a093d4c8f286b1c1a1b965b991fa37b84",
+        "coverage": [
+          [
+            1,
+            616
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-131/API_FULL_REVIEW.json",
+        "sha256": "039f07735fe1c57ab8577e25bcf3de2204090486e2c2def6fadd8e9e0fcc248f"
+      }
+    },
+    {
+      "id": "04-license/01-license.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T05:00:47.608Z",
+      "separateReviewPass": true,
+      "findings": [
+        "固定LICENSE.md全文と定本/訳文を対照。日本語は標題/説明だけ、全原法文25行の内容を保持。条項の翻訳や運用上の法的解釈を追加しない。"
+      ],
+      "source": {
+        "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/04-license/01-license.txt",
+        "sha256": "90974fbb120e966b452654eaae3ba6ee55f3647db3b28918a7649733ee99da97",
+        "coverage": [
+          [
+            1,
+            24
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/pugixml/v1-16/canonical/04-license/01-license.md",
+        "sha256": "45b2e1d18c556ec37dca36cd39eb6073271dd4bac848883753f0d20585c48d97",
+        "coverage": [
+          [
+            1,
+            34
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-121/ja/04-license/01-license.md",
+        "sha256": "9f329eb8956ef14da9a13de461ab73dade7c62bf01a764f2afddfdd13bf3b086",
+        "coverage": [
+          [
+            1,
+            34
+          ]
+        ]
+      },
+      "detail": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-121/PARTIAL_CONTENT_REVIEW.json",
+        "sha256": "b6a66a85dc490512e965aca6d885861087013fc187355a63204eee7647c5ba53"
+      }
+    }
+  ],
+  "projectVerified": false,
+  "remainingChecks": [
+    "全体表示/UI",
+    "全体ビルド",
+    "統合回帰",
+    "公開前証拠再検証"
+  ]
+}
