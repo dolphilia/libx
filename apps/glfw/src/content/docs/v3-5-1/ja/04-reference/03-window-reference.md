@@ -3,6 +3,8 @@ title: "ウィンドウリファレンス"
 description: "GLFW 3.5.1のウィンドウリファレンス"
 ---
 
+# ウィンドウリファレンス
+
 <span id="details"></span>
 
 ## 説明
@@ -96,7 +98,7 @@ description: "GLFW 3.5.1のウィンドウリファレンス"
 </tr>
 <tr class="memdesc:ga7fb0be51407783b41adbf5bec0b09d80">
 <td class="mdescLeft"> </td>
-<td class="mdescRight">ウィンドウのフローティング状態に関するウィンドウヒントおよび属性。<br />
+<td class="mdescRight">ウィンドウ装飾に関するウィンドウヒントおよび属性。<br />
 </td>
 </tr>
 <tr class="separator:ga7fb0be51407783b41adbf5bec0b09d80">
@@ -1534,7 +1536,9 @@ description: "GLFW 3.5.1のウィンドウリファレンス"
 
 <div class="memdoc">
 
-ウィンドウのフローティング状態に関する<a href="/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_FLOATING_hint" class="el">ウィンドウヒント</a>および<a href="/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_FLOATING_attrib" class="el">ウィンドウ属性</a>です。
+ウィンドウ装飾に関する<a href="/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_FLOATING_hint" class="el">ウィンドウヒント</a>および<a href="/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_FLOATING_attrib" class="el">ウィンドウ属性</a>です。
+
+> **Libx参照注記（GLFW 3.5.1）:** 原文の一覧と詳細は `GLFW_FLOATING` を装飾の設定と説明しています。[固定版のウィンドウガイド](https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L211-L216)は、通常のウィンドウより上に表示される状態（topmost、always-on-top）を説明し、[固定版のヒント実装](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L360-L362)もフローティングの設定を保存します。ウィンドウ装飾は別の `GLFW_DECORATED` で制御します。上では原文の表現を保っています。
 
 </div>
 
@@ -2172,7 +2176,9 @@ OpenGLのステレオレンダリングに関する<a href="/docs/glfw/v3-5-1/ja
 
 <div class="memdoc">
 
-コンテキストの堅牢性に関する<a href="/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_CONTEXT_ROBUSTNESS_hint" class="el">ヒント</a>および<a href="/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_CONTEXT_ROBUSTNESS_attrib" class="el">属性</a>です。
+コンテキストのクライアントAPIのリビジョン番号に関する<a href="/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_CONTEXT_ROBUSTNESS_hint" class="el">ヒント</a>および<a href="/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_CONTEXT_ROBUSTNESS_attrib" class="el">属性</a>です。
+
+> **Libx参照注記（GLFW 3.5.1）:** 原文の詳細説明はリビジョン番号と述べています。[固定版のウィンドウガイド](https://github.com/glfw/glfw/blob/3.5.1/docs/window.md#L442-L447)は、このヒントをコンテキストの堅牢性戦略として定義し、[固定版のヒント実装](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L412-L414)も `context.robustness` に保存します。これは `GLFW_CONTEXT_REVISION` 属性とは別です。上では原文の詳細説明を保っています。
 
 </div>
 
@@ -3318,6 +3324,8 @@ struct GLFWwindow GLFWwindow
 
 **Win32:** 実行ファイルに `GLFW_ICON,` という名前のアイコンリソースがある場合、それがウィンドウの初期アイコンとして設定されます。そのようなアイコンがない場合は、代わりに `IDI_APPLICATION` アイコンが使用されます。別のアイコンを設定する方法については、<a href="/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#gadd7ccd39fe7a7d1f0904666ae5932dc5" class="el">glfwSetWindowIcon</a> を参照してください。
 
+> **Libx参照注記（GLFW 3.5.1）:** 上では、原文のコード表記 `GLFW_ICON,` に含まれるカンマを保っています。[固定版のWin32実装](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L1294-L1297)が検索するリソース名は、カンマを含まない `GLFW_ICON` です。
+
 **Win32:** リソース共有元のコンテキストは、ほかのどのスレッドでもカレントであってはなりません。
 
 **macOS:** OSがサポートするOpenGL 3.2以降のコンテキストは、コアプロファイルコンテキストだけです。OpenGL 3.2以降のコンテキストを作成する前に、<a href="/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_OPENGL_PROFILE_hint" class="el">GLFW_OPENGL_PROFILE</a> ヒントをそれに応じて設定しなければなりません。macOSはOpenGL 3.0および3.1のコンテキストをまったくサポートしていません。
@@ -3798,9 +3806,11 @@ UTF-8でエンコードされたウィンドウタイトル。<a href="/docs/glf
 引数  
 |  |  |  |
 |----|----|----|
-| \[in\] | window | 位置を設定するウィンドウ。 |
+| \[in\] | window | 照会するウィンドウ。 |
 | \[in\] | xpos | コンテンツ領域の左上隅のx座標。 |
 | \[in\] | ypos | コンテンツ領域の左上隅のy座標。 |
+
+> **Libx参照注記（GLFW 3.5.1）:** 原文の引数表は `window` を照会するウィンドウと説明しています。[固定版のsetter実装](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L596-L607)は、ウィンドウモードの場合、このウィンドウをプラットフォームの位置設定関数へ渡します。ここで `window` は位置を設定するウィンドウを指定します。上記のフルスクリーン時には何もしないという条件は変わりません。上では原文の引数表を保っています。
 
 <!-- -->
 
@@ -4281,6 +4291,8 @@ UTF-8でエンコードされたウィンドウタイトル。<a href="/docs/glf
 
 不透明度（アルファ）値はゼロから 1 までの正の有限数で、ゼロは完全な透明、1 は完全な不透明を表します。システムがウィンドウ全体の透過をサポートしていない場合、この関数は常に 1 を返します。
 
+> **Libx参照注記（GLFW 3.5.1）:** 原文のpositive（正の）という語は、明示されているゼロの端点と整合しません。[固定版の不透明度setter](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796)は、0以上1以下の有限値であることを検査し、ゼロも範囲に含めます。ウィンドウ全体の透過がサポートされるかは、引き続きプラットフォームに依存します。上では原文の表現を保っています。
+
 新しく作成されたウィンドウの初期不透明度は 1 です。
 
 引数  
@@ -4341,9 +4353,11 @@ UTF-8でエンコードされたウィンドウタイトル。<a href="/docs/glf
 
 不透明度（アルファ）値はゼロから 1 までの正の有限数で、ゼロは完全な透明、1 は完全な不透明を表します。
 
+> **Libx参照注記（GLFW 3.5.1）:** 原文のpositive（正の）という語は、明示されているゼロの端点と整合しません。[固定版の不透明度setter](https://github.com/glfw/glfw/blob/3.5.1/src/window.c#L777-L796)は、0以上1以下の有限値であることを検査し、ゼロも範囲に含めます。ウィンドウ全体の透過がサポートされるかは、引き続きプラットフォームに依存します。上では原文の表現を保っています。
+
 新しく作成されたウィンドウの初期不透明度は 1 です。
 
-フレームバッファ透過を有効にして作成したウィンドウでは、ウィンドウ全体の透過を使用できないことがあります。これを行った場合の結果は未定義です。
+フレームバッファ透過を有効にして作成したウィンドウでは、ウィンドウ全体の透過を使用してはなりません。これを行った場合の結果は未定義です。
 
 引数  
 |        |         |                                              |
@@ -4469,6 +4483,8 @@ UTF-8でエンコードされたウィンドウタイトル。<a href="/docs/glf
 
 備考  
 **Wayland:** 最大化されたウィンドウの復元は、現在、共通の Wayland プロトコルには含まれていないため、この関数が復元できるのは最大化されたウィンドウに限られます。
+
+> **Libx参照注記（GLFW 3.5.1）:** 原文の備考は、最大化からの復元について自己矛盾しています。[固定版のWayland実装](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L2688-L2710)のコメントは最小化を解除できないと述べ、ウィンドウモードの分岐ではlibdecorまたはxdg-toplevelで最大化を解除するか、保存された最大化フラグをクリアします。これは固定版3.5.1の動作の説明であり、現在のWaylandプロトコルの機能を確定するものではありません。上では原文の備考を保っています。
 
 <!-- -->
 
@@ -4873,7 +4889,7 @@ GLFW 3.2 で追加されました。
 <!-- -->
 
 備考  
-大きさの変更やモードの切り替えによって OpenGL または OpenGL ES コンテキストが破棄されたり、その他の影響を受けたりすることはありません。ただし、フレームバッファの大きさが変わった場合は、ビューポートを更新する必要があります。
+大きさの変更やモードの切り替えによって OpenGL または OpenGL ES コンテキストが破棄されたり、その他の影響を受けたりすることはありません。ただし、フレームバッファの大きさが変わった場合は、ビューポートを更新する必要になる場合があります。
 
 **Wayland:** ウィンドウ位置は、現在、共通の Wayland プロトコルには含まれていません。ウィンドウ位置の引数は無視されます。
 

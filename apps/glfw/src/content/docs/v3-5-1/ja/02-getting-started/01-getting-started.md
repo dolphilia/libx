@@ -9,7 +9,7 @@ description: "GLFWでウィンドウを作成して描画する"
 
 このガイドでは、GLFW 3 を使った小さなアプリケーションの作成手順を説明します。このアプリケーションはウィンドウと OpenGL コンテキストを作成し、回転する三角形を描画します。ユーザーがウィンドウを閉じるか _Escape_ キーを押すと終了します。このガイドで紹介するのは、よく使われる関数の一部です。GLFW にはほかにも多くの関数があります。
 
-このガイドは、以前のバージョンの GLFW を使った経験がないことを前提としています。過去に GLFW 2 を使ったことがある場合は、GLFW 3 で動作が変わった関数があるため、[moving_guide](/docs/glfw/v3-5-1/ja/05-migration-and-history/01-moving-from-2-to-3/#moving_guide)を読んでください。
+このガイドを読むために、以前のバージョンの GLFW を使った経験は必要ありません。過去に GLFW 2 を使ったことがある場合は、GLFW 3 で動作が変わった関数があるため、[GLFW 2 から 3 への移行](/docs/glfw/v3-5-1/ja/05-migration-and-history/01-moving-from-2-to-3/#moving_guide)を読んでください。
 
 
 <a id="quick_steps"></a>
@@ -30,7 +30,7 @@ description: "GLFWでウィンドウを作成して描画する"
 
 デフォルトでは、開発環境の OpenGL ヘッダーもインクルードします。プラットフォームによっては、このヘッダーが古いバージョンの OpenGL しかサポートしていません。最も極端なのは Windows で、通常は OpenGL 1.2 までしかサポートしていません。
 
-その代わりに、多くのプログラムは[拡張ローダーライブラリ](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_glext_auto)を使い、そのヘッダーをインクルードします。この例では [glad](https://gen.glad.sh/) が生成したファイルを使います。多くの場合、GLFW ヘッダーは先にインクルードされたこの種のヘッダーを検出し、開発環境のヘッダーをインクルードしません。
+その代わりに、多くのプログラムは[拡張ローダーライブラリ](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_glext_auto)を使い、そのヘッダーをインクルードします。この例では [glad](https://gen.glad.sh/) が生成したファイルを使います。GLFW ヘッダーは、この種のヘッダーの多くを、先にインクルードされている場合に検出できます。その場合は、開発環境のヘッダーをインクルードしません。
 
 ```c
 #include <glad/gl.h>
@@ -429,12 +429,12 @@ int main(void)
 
 このチュートリアルで使ったのは、GLFW が提供する多数の関数のうち一部だけです。GLFW が扱う領域ごとにガイドがあり、各ガイドではその分類のすべての関数を紹介します。
 
- - [intro_guide](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
- - [window_guide](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
- - [context_guide](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
+ - [API の概要](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [ウィンドウガイド](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
+ - [コンテキストガイド](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
+ - [モニターガイド](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
+ - [入力ガイド](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
 
 GLFW 関数をクリックすると、その関数のリファレンスドキュメントを参照できます。各関数のリファレンスからは、関連する関数やガイドの節へ移動できます。
 
-チュートリアルはここまでです。GLFW を使うプログラムを作成したら、コンパイルしてリンクする必要があります。その方法は使用する開発環境によって異なるため、その環境のドキュメントを参照するのが最適です。GLFW 固有の詳細については、[build_guide](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_guide)を参照してください。
+チュートリアルはここまでです。GLFW を使うプログラムを作成したら、コンパイルしてリンクする必要があります。その方法は使用する開発環境によって異なるため、その環境のドキュメントを参照するのが最適です。GLFW 固有の詳細については、[アプリケーションのビルド](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_guide)を参照してください。

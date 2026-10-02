@@ -3,6 +3,8 @@ title: "Deprecated list"
 description: "GLFW 3.5.1 Deprecated list"
 ---
 
+# Deprecated list
+
 <div class="textblock">
 
 Global <a href="/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gac3cf64f90b6219c05ac7b7822d5a4b8f" class="el">GLFWcharmodsfun</a> )(GLFWwindow \*window, unsigned int codepoint, int mods)  

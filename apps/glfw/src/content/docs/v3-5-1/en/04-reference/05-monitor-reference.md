@@ -3,6 +3,8 @@ title: "Monitor reference"
 description: "GLFW 3.5.1 Monitor reference"
 ---
 
+# Monitor reference
+
 <span id="details"></span>
 
 ## Description
@@ -1116,6 +1118,8 @@ Possible errors include <a href="/docs/glfw/v3-5-1/en/04-reference/02-error-code
 
 Pointer lifetime  
 The returned array is allocated and freed by GLFW. You should not free it yourself. It is valid until the specified monitor is disconnected or the library is terminated.
+
+> **Libx reference note (GLFW 3.5.1):** The upstream lifetime paragraph above says array. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/monitor.c#L451-L461) returns a pointer to a single `GLFWvidmode` stored in the monitor. The array-returning function is `glfwGetVideoModes`. The upstream wording is preserved above.
 
 <!-- -->
 

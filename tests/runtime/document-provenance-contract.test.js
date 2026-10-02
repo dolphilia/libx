@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
+import matter from 'gray-matter';
+import { readJsoncFile } from '../../scripts/jsonc-utils.js';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const componentPath = path.join(rootDir, 'packages/ui/src/components/DocumentProvenance.astro');
@@ -37,6 +39,9 @@ test('旧表示APIとページ単位の帰属非表示設定を残さない', ()
 
 test('GLFWとLuaは既定ソースをFrontmatterへ重複記述しない', () => {
   for (const app of ['glfw', 'lua']) {
+    const { licensing } = readJsoncFile(
+      path.join(rootDir, 'apps', app, 'src/config/project.config.jsonc')
+    );
     const contentRoot = path.join(rootDir, 'apps', app, 'src/content/docs');
     const pending = [contentRoot];
 
@@ -46,9 +51,28 @@ test('GLFWとLuaは既定ソースをFrontmatterへ重複記述しない', () =>
         const target = path.join(directory, entry.name);
         if (entry.isDirectory()) pending.push(target);
         if (entry.isFile() && /\.mdx?$/.test(entry.name)) {
-          assert.doesNotMatch(fs.readFileSync(target, 'utf8'), /^licenseSource:/m, target);
+          const { licenseSource } = matter(fs.readFileSync(target, 'utf8')).data;
+          if (licenseSource !== undefined) {
+            assert.notEqual(licenseSource, licensing.defaultSource, target);
+            assert.ok(
+              licensing.sources.some((source) => source.id === licenseSource),
+              target
+            );
+          }
         }
       }
     }
+  }
+});
+
+test('Luaの既知問題は英日とも固定取得版の別出典を明示する', () => {
+  for (const language of ['en', 'ja']) {
+    const target = path.join(
+      rootDir,
+      'apps/lua/src/content/docs/v5-5-1',
+      language,
+      '07-migration-and-known-issues/03-known-issues.md'
+    );
+    assert.equal(matter(fs.readFileSync(target, 'utf8')).data.licenseSource, 'lua-bugs-2026-08-11');
   }
 });

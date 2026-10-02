@@ -3,6 +3,8 @@ title: "初期化・バージョン・エラーリファレンス"
 description: "GLFW 3.5.1の初期化、バージョン、エラーに関するリファレンス"
 ---
 
+# 初期化・バージョン・エラーリファレンス
+
 <span id="details"></span>
 
 ## 説明
@@ -524,6 +526,8 @@ GLFWヘッダーのリビジョン番号です。APIの変更を含まないバ�
 
 これは数値0を意味的に分かりやすくするためのものにすぎません。代わりに、`0`、`false`、`_False`、`GL_FALSE`、`VK_FALSE`、または0と等しいほかの任意の値を使用できます。
 
+> **Libx参照注記（GLFW 3.5.1）:** 上記の原文にある `GLFW_TRUE` と `GLFW_FALSE` の説明には、`_True` と `_False` が含まれています。[固定版のGLFWヘッダー](https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L303-L320) は `GLFW_TRUE` を1、`GLFW_FALSE` を0と定義していますが、`_True` と `_False` を宣言・定義していません。これらの名前をGLFWが提供すると仮定することはできません。GLFWだけに依存する場合は、`GLFW_TRUE` / `GLFW_FALSE` または1 / 0を使用してください。上記の原文の記述は保持しています。
+
 </div>
 
 </div>
@@ -1005,6 +1009,8 @@ Wayland固有の<a href="/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-a
 
 この関数は、指定されたメモリブロックを解放できます。このメモリブロックは、同じアロケータによって割り当てられたものです。
 
+> **Libx参照注記（GLFW 3.5.1）:** 下記の原文にある「`NULL` を返す」という段落は、このコールバックの戻り値型が `void` であることと矛盾します。[固定版の宣言](https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L1571) と[解放処理の実装](https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L296-L300) では戻り値はなく、解放結果が `NULL` かどうかを検査しません。割り当て・再割り当て時の `GLFW_OUT_OF_MEMORY` 検査とは別です。下記の原文の段落は保持しています。
+
 この関数は、<a href="/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga317aac130a235ab08c6db0834907d85e" class="el">glfwInit</a> の実行中で、ライブラリが初期化済みとされる前に呼び出される場合と、<a href="/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#gaaae48c0a18607ea4a4ba951d939f0901" class="el">glfwTerminate</a> の実行中で、ライブラリが初期化済みではなくなった後に呼び出される場合の両方をサポートしなければなりません。
 
 ブロックのアドレスが `NULL` になることはありません。`NULL` の解放は、カスタムアロケータへ到達する前に除外されます。
@@ -1318,6 +1324,8 @@ GLFWが初期化されていない場合、この関数は何も行いません�
 関連項目  
 init_hints
 
+> **Libx参照注記（GLFW 3.5.1）:** 上記の原文にある `init_hints` の参照は平文です。参照先は[初期化ヒント](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#init_hints)です。
+
 <a href="/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga317aac130a235ab08c6db0834907d85e" class="el" title="GLFWライブラリを初期化します。">glfwInit</a>
 
 <!-- -->
@@ -1348,6 +1356,8 @@ init_hints
 既定のアロケータを使用するには、この関数を `NULL` 引数で呼び出します。
 
 アロケータ構造体を指定する場合は、すべてのメンバーが有効な関数ポインターでなければなりません。いずれかのメンバーが `NULL` の場合、この関数は <a href="/docs/glfw/v3-5-1/ja/04-reference/02-error-codes/#gaaf2ef9aa8202c2b82ac2d921e554c687" class="el">GLFW_INVALID_VALUE</a> を発生させ、初期化時のアロケータは変更されません。
+
+> **Libx参照注記（GLFW 3.5.1）:** 上記の原文にある関数ポインターの要件は、`allocate`、`reallocate`、`deallocate` に適用されます。[固定版の構造体](https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L2142-L2160) には、ユーザーポインターである `void* user` メンバーもあります。[固定版の設定処理](https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L471-L482) は3つのコールバックを検査し、`user` が非 `NULL` であることを要求せずにコピーします。上記の原文の記述は保持しています。
 
 アロケータ内の関数は、複数の要件を満たさなければなりません。詳細については、<a href="/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga4306a564e9f60f4de8cc8f31731a3120" class="el">GLFWallocatefun</a>、<a href="/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga3e88a829615d8efe8bec1746f7309c63" class="el">GLFWreallocatefun</a>、<a href="/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga7181615eda94c4b07bd72bdcee39fa28" class="el">GLFWdeallocatefun</a> の各ドキュメントを参照してください。
 
@@ -1608,6 +1618,8 @@ ASCIIでエンコードされたGLFWのバージョン文字列。
 |  |  |  |
 |----|----|----|
 | \[in\] | description | エラー説明ポインターの格納先、または `NULL`。 |
+
+> **Libx参照注記（GLFW 3.5.1）:** 上記の原文の引数表では `description` を `[in]` と表記していますが、その説明は格納先を示しています。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L499-L521) は、格納先が指定されている場合、`*description` にエラー説明ポインターを書き込みます。このポインターを受け取る場合は `const char*` 変数のアドレスを、受け取らない場合は `NULL` を渡してください。上記の `[in]` 表記は保持しています。
 
 <!-- -->
 

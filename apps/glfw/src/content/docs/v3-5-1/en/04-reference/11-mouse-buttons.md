@@ -3,6 +3,8 @@ title: "Mouse buttons"
 description: "GLFW 3.5.1 Mouse buttons"
 ---
 
+# Mouse buttons
+
 <span id="details"></span>
 
 ## Description

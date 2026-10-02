@@ -163,6 +163,6 @@ int lua_pcallk (lua_State *L,
                 lua_KFunction k);
 ```
 
-この関数は、呼び出された関数がyieldすることを許可する点（[§4.5](/docs/lua/v5-5-1/ja/03-c-api/11-functions-and-types-n-pcall/#lua_pcall)を参照）を除き、[`lua_pcall`](/docs/lua/v5-5-1/ja/03-c-api/06-handling-yields-in-c/#4.5)とまったく同様に動作します。
+この関数は、呼び出された関数がyieldすることを許可する点（[§4.5](/docs/lua/v5-5-1/ja/03-c-api/06-handling-yields-in-c/#4.5)を参照）を除き、[`lua_pcall`](/docs/lua/v5-5-1/ja/03-c-api/11-functions-and-types-n-pcall/#lua_pcall)とまったく同様に動作します。
 
 ---

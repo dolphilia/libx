@@ -5,6 +5,8 @@ description: "GLFW 3.5.1 ゲームパッド軸"
 
 <span id="details"></span>
 
+# ゲームパッド軸
+
 ## 説明
 
 これらの使用方法については、<a href="/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#gamepad" class="el">ゲームパッド入力</a>を参照してください。

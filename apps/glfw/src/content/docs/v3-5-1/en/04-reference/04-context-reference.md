@@ -3,6 +3,8 @@ title: "Context reference"
 description: "GLFW 3.5.1 Context reference"
 ---
 
+# Context reference
+
 <span id="details"></span>
 
 ## Description

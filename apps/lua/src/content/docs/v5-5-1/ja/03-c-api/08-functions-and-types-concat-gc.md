@@ -95,36 +95,13 @@ int lua_gc (lua_State *L, int what, ...);
 - **<a id="pdf-LUA_GCISRUNNING"></a>`LUA_GCISRUNNING`**：コレクターが実行中（つまり停止していない）かを示すブール値を返します。
 - **<a id="pdf-LUA_GCINC"></a>`LUA_GCINC`**：コレクターをインクリメンタルモードへ変更します。以前のモード（`LUA_GCGEN`または`LUA_GCINC`）を返します。
 - **<a id="pdf-LUA_GCGEN"></a>`LUA_GCGEN`**：コレクターを世代別モードへ変更します。以前のモード（`LUA_GCGEN`または`LUA_GCINC`）を返します。
-- **<a id="pdf-LUA_GCPARAM"></a>`LUA_GCPARAM` (int param, int val)**
-  
-  ：コレクターの引数値を変更または返します。
-  
-  `val`
-  
-  が-1なら、呼び出しは現在の値を返すだけです。引数
-  
-  `param`
-  
-  は次の値のいずれかでなければなりません。
-  
-  - **<a id="pdf-LUA_GCPMINORMUL"></a>`LUA_GCPMINORMUL`**
-    
-    ：マイナー乗数。
-  - **<a id="pdf-LUA_GCPMAJORMINOR"></a>`LUA_GCPMAJORMINOR`**
-    
-    ：メジャー・マイナー乗数。
-  - **<a id="pdf-LUA_GCPMINORMAJOR"></a>`LUA_GCPMINORMAJOR`**
-    
-    ：マイナー・メジャー乗数。
-  - **<a id="pdf-LUA_GCPPAUSE"></a>`LUA_GCPPAUSE`**
-    
-    ：ガベージコレクターの一時停止。
-  - **<a id="pdf-LUA_GCPSTEPMUL"></a>`LUA_GCPSTEPMUL`**
-    
-    ：ステップ乗数。
-  - **<a id="pdf-LUA_GCPSTEPSIZE"></a>`LUA_GCPSTEPSIZE`**
-    
-    ：ステップサイズ。
+- **<a id="pdf-LUA_GCPARAM"></a>`LUA_GCPARAM` (int param, int val)**：コレクターのパラメーターの値を変更するか返すか、または変更と返却の両方を行います。`val`が-1なら、呼び出しは現在の値を返すだけです。引数`param`は次の値のいずれかでなければなりません。
+  - **<a id="pdf-LUA_GCPMINORMUL"></a>`LUA_GCPMINORMUL`**：マイナー乗数。
+  - **<a id="pdf-LUA_GCPMAJORMINOR"></a>`LUA_GCPMAJORMINOR`**：メジャー・マイナー乗数。
+  - **<a id="pdf-LUA_GCPMINORMAJOR"></a>`LUA_GCPMINORMAJOR`**：マイナー・メジャー乗数。
+  - **<a id="pdf-LUA_GCPPAUSE"></a>`LUA_GCPPAUSE`**：ガベージコレクターの一時停止。
+  - **<a id="pdf-LUA_GCPSTEPMUL"></a>`LUA_GCPSTEPMUL`**：ステップ乗数。
+  - **<a id="pdf-LUA_GCPSTEPSIZE"></a>`LUA_GCPSTEPSIZE`**：ステップサイズ。
 
 これらのオプションの詳細については[`collectgarbage`](/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-collectgarbage)を参照してください。
 

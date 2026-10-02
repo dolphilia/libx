@@ -3,6 +3,8 @@ title: "Modifier key flags"
 description: "GLFW 3.5.1 Modifier key flags"
 ---
 
+# Modifier key flags
+
 <span id="details"></span>
 
 ## Description

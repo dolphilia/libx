@@ -3,6 +3,8 @@ title: "GLFWgamepadstate structure"
 description: "GLFW 3.5.1 GLFWgamepadstate structure"
 ---
 
+# GLFWgamepadstate structure
+
 Gamepad input state. [More...](/docs/glfw/v3-5-1/en/04-reference/18-glfwgamepadstate/#details)
 
 <table class="memberdecls">

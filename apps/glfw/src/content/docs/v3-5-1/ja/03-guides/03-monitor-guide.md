@@ -7,13 +7,13 @@ description: "モニターオブジェクト、モード、ガンマランプ"
 
 # モニターガイド
 
-このガイドでは、モニターに関連する GLFW の関数を紹介します。この分類の特定の関数について詳しくは、[monitor](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/)を参照してください。GLFW のほかの領域についてもガイドがあります。
+このガイドでは、モニターに関連する GLFW の関数を紹介します。この分類の特定の関数について詳しくは、[モニターリファレンス](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/)を参照してください。GLFW のほかの領域についてもガイドがあります。
 
- - [intro_guide](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
- - [window_guide](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
- - [context_guide](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
- - [vulkan_guide](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)
- - [input_guide](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
+ - [API入門](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [ウィンドウガイド](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
+ - [コンテキストガイド](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
+ - [Vulkanガイド](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [入力ガイド](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
 
 
 <a id="monitor_object"></a>
@@ -111,7 +111,7 @@ const GLFWvidmode* mode = glfwGetVideoMode(monitor);
 
 ### 物理サイズ
 
-モニターの物理サイズまたはその推定値は、[glfwGetMonitorPhysicalSize](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#ga7d8bffc6c55539286a6bd20d32a8d7ea) を使ってミリメートル単位で取得できます。これは現在の_解像度_、つまり現在の[ビデオモード](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_modes)の幅と高さとは関係ありません。
+モニターの物理サイズまたはその推定値は、[glfwGetMonitorPhysicalSize](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#ga7d8bffc6c55539286a6bd20d32a8d7ea) を使ってミリメートル単位で取得できます。これは現在の*解像度*、つまり現在の[ビデオモード](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_modes)の幅と高さとは関係ありません。
 
 ```c
 int width_mm, height_mm;
@@ -222,6 +222,6 @@ glfwSetGamma(monitor, 1.0);
 
 [glfwSetGamma](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#ga6ac582625c990220785ddd34efa3169a) 関数を使ったガンマ補正を試すには、`gamma` テストプログラムを実行してください。
 
-> **注:** ソフトウェア制御のガンマランプは、ハードウェアのガンマ補正に_加えて_適用されます。現在のハードウェア補正は通常、sRGB ガンマの近似です。したがって、完全に線形なランプ、すなわちガンマ 1.0 を設定すると、デフォルトの（通常は sRGB に似た）動作になります。
+> **注:** ソフトウェア制御のガンマランプは、ハードウェアのガンマ補正に*加えて*適用されます。現在のハードウェア補正は通常、sRGB ガンマの近似です。したがって、完全に線形なランプ、すなわちガンマ 1.0 を設定すると、デフォルトの（通常は sRGB に似た）動作になります。
 
 > **注:** __Wayland:__ アプリケーションはモニターのガンマランプを読み取りまたは変更できません。[glfwGetGammaRamp](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#ga76ba90debcf0062b5c4b73052b24f96f)、[glfwSetGammaRamp](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#ga583f0ffd0d29613d8cd172b996bbf0dd)、[glfwSetGamma](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#ga6ac582625c990220785ddd34efa3169a) の各関数は [GLFW_FEATURE_UNAVAILABLE](/docs/glfw/v3-5-1/ja/04-reference/02-error-codes/#ga526fba20a01504a8086c763b6ca53ce5) を通知します。

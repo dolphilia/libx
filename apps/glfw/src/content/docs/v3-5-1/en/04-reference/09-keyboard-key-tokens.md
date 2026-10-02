@@ -3,6 +3,8 @@ title: "Keyboard key tokens"
 description: "GLFW 3.5.1 Keyboard key tokens"
 ---
 
+# Keyboard key tokens
+
 <span id="details"></span>
 
 ## Description
@@ -910,7 +912,7 @@ The naming of the key codes follow these rules:
 
 |                                             |
 |---------------------------------------------|
-| \#define GLFW_KEY_APOSTROPHE   39 /\* ' \*/ |
+| \#define GLFW_KEY_APOSTROPHE   39 `/* ' */` |
 
 </div>
 

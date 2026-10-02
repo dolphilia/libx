@@ -257,6 +257,6 @@ Luaチャンクを実行せずに読み込みます。エラーがなければ�
 
 `lua_load`は[`LUA_OK`](/docs/lua/v5-5-1/ja/03-c-api/05-error-handling-in-c/#pdf-LUA_OK)、[`LUA_ERRSYNTAX`](/docs/lua/v5-5-1/ja/03-c-api/05-error-handling-in-c/#pdf-LUA_ERRSYNTAX)、または[`LUA_ERRMEM`](/docs/lua/v5-5-1/ja/03-c-api/05-error-handling-in-c/#pdf-LUA_ERRMEM)を返せます。read関数が発生させたエラーに対応するほかの値を返す場合もあります（[§4.4.1](/docs/lua/v5-5-1/ja/03-c-api/05-error-handling-in-c/#4.4.1)を参照）。
 
-結果の関数に上位値がある場合、最初の上位値はレジストリ内のインデックス`LUA_RIDX_GLOBALS`に保存されたグローバル環境の値へ設定されます（[§4.3](/docs/lua/v5-5-1/ja/03-c-api/04-registry/#4.3)を参照）。メインチャンクを読み込むとき、この上位値は変数`_ENV`になります（[§2.2](/docs/lua/v5-5-1/ja/02-language/02-scopes-variables-and-environments/#2.2)を参照）。そのほかの上位値は**nil**で初期化されます。
+結果の関数にアップバリューがある場合、最初のアップバリューはレジストリ内のインデックス`LUA_RIDX_GLOBALS`に保存されたグローバル環境の値へ設定されます（[§4.3](/docs/lua/v5-5-1/ja/03-c-api/04-registry/#4.3)を参照）。メインチャンクを読み込むとき、このアップバリューは変数`_ENV`になります（[§2.2](/docs/lua/v5-5-1/ja/02-language/02-scopes-variables-and-environments/#2.2)を参照）。そのほかのアップバリューは**nil**で初期化されます。
 
 ---

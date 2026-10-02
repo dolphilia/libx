@@ -7,13 +7,13 @@ description: "ウィンドウの作成、プロパティ、イベント"
 
 # ウィンドウガイド
 
-このガイドでは、ウィンドウに関連する GLFW の関数を紹介します。この分類の特定の関数について詳しくは、[window](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/)を参照してください。GLFW のほかの領域についてもガイドがあります。
+このガイドでは、ウィンドウに関連する GLFW の関数を紹介します。この分類の特定の関数について詳しくは、[ウィンドウリファレンス](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/)を参照してください。GLFW のほかの領域についてもガイドがあります。
 
- - [intro_guide](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
- - [context_guide](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
- - [vulkan_guide](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
+ - [API 入門](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [コンテキストガイド](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
+ - [Vulkan ガイド](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [モニターガイド](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
+ - [入力ガイド](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
 
 
 <a id="window_object"></a>
@@ -44,7 +44,7 @@ GLFWwindow* window = glfwCreateWindow(640, 480, "My Title", NULL, NULL);
 
 #### フルスクリーンウィンドウ
 
-フルスクリーンウィンドウを作成するには、ウィンドウが使うモニターを指定する必要があります。多くの場合は、ユーザーのプライマリモニターが適切です。モニターの取得について詳しくは、[monitor_monitors](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_monitors)を参照してください。
+フルスクリーンウィンドウを作成するには、ウィンドウが使うモニターを指定する必要があります。多くの場合は、ユーザーのプライマリモニターが適切です。モニターの取得について詳しくは、[モニターの取得](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_monitors)を参照してください。
 
 ```c
 GLFWwindow* window = glfwCreateWindow(640, 480, "My Title", glfwGetPrimaryMonitor(), NULL);
@@ -54,7 +54,7 @@ GLFWwindow* window = glfwCreateWindow(640, 480, "My Title", glfwGetPrimaryMonito
 
 ウィンドウモードのウィンドウは、[glfwSetWindowMonitor](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga81c76c418af80a1cce7055bccb0ae0a7) でモニターを設定するとフルスクリーンにできます。フルスクリーンウィンドウは、同じ関数でモニターの設定を解除するとウィンドウモードにできます。
 
-[GLFWvidmode](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#ga902c2816ac9b34b757282daab59b2565) 構造体の各フィールドは関数引数またはウィンドウヒントに対応し、組み合わせてそのウィンドウの_希望するビデオモード_を構成します。ウィンドウが入力フォーカスを持つ間、希望するビデオモードに最も近い、サポートされているビデオモードが選択したモニターに設定されます。ビデオモードの取得について詳しくは、[monitor_modes](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_modes)を参照してください。
+[GLFWvidmode](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#ga902c2816ac9b34b757282daab59b2565) 構造体の各フィールドは関数引数またはウィンドウヒントに対応し、組み合わせてそのウィンドウの*希望するビデオモード*を構成します。ウィンドウが入力フォーカスを持つ間、希望するビデオモードに最も近い、サポートされているビデオモードが選択したモニターに設定されます。ビデオモードの取得について詳しくは、[ビデオモード](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_modes)を参照してください。
 
 ビデオモードのフィールド | 対応先
 ------------------------- | ------
@@ -69,14 +69,14 @@ GLFWvidmode.refreshRate | [GLFW_REFRESH_RATE](/docs/glfw/v3-5-1/ja/03-guides/04-
 
 デフォルトでは、ウィンドウが入力フォーカスを失うと、ユーザーがデスクトップへ戻れるように、モニターの元のビデオモードが復元され、ウィンドウがアイコン化されます。複数のモニターをフルスクリーンウィンドウで同時に覆う場合などは、[GLFW_AUTO_ICONIFY](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_AUTO_ICONIFY_hint) ウィンドウヒントでこの動作を無効にできます。
 
-モニターが切断されると、そのモニター上でフルスクリーンになっているすべてのウィンドウはウィンドウモードへ切り替わります。詳しくは [monitor_event](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_event)を参照してください。
+モニターが切断されると、そのモニター上でフルスクリーンになっているすべてのウィンドウはウィンドウモードへ切り替わります。詳しくは [モニター構成の変更](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_event)を参照してください。
 
 
 <a id="window_windowed_full_screen"></a>
 
 #### 「ウィンドウ化フルスクリーン」ウィンドウ
 
-希望するビデオモードに最も近いものが現在のビデオモードであれば、ビデオモードは変更されません。これによりウィンドウ作成が高速になり、アプリケーションの切り替えもはるかに滑らかになります。これは_ウィンドウ化フルスクリーン_または_ボーダーレスフルスクリーン_ウィンドウと呼ばれることがあり、フルスクリーンウィンドウとして扱われます。このようなウィンドウを作成するには、現在のビデオモードを要求します。
+希望するビデオモードに最も近いものが現在のビデオモードであれば、ビデオモードは変更されません。これによりウィンドウ作成が高速になり、アプリケーションの切り替えもはるかに滑らかになります。これは*ウィンドウ化フルスクリーン*または*ボーダーレスフルスクリーン*ウィンドウと呼ばれることがあり、フルスクリーンウィンドウとして扱われます。このようなウィンドウを作成するには、現在のビデオモードを要求します。
 
 ```c
 const GLFWvidmode* mode = glfwGetVideoMode(monitor);
@@ -97,7 +97,7 @@ const GLFWvidmode* mode = glfwGetVideoMode(monitor);
 glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
 ```
 
-[glfwGetVideoMode](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#gaba376fa7e76634b4788bddc505d6c9d5) はモニターの_現在の_ビデオモードを返すことに注意してください。そのモニター上にある既存のフルスクリーンウィンドウをウィンドウ化フルスクリーンにする場合は、あらかじめデスクトップの解像度を保存しておく必要があります。
+[glfwGetVideoMode](/docs/glfw/v3-5-1/ja/04-reference/05-monitor-reference/#gaba376fa7e76634b4788bddc505d6c9d5) はモニターの*現在の*ビデオモードを返すことに注意してください。そのモニター上にある既存のフルスクリーンウィンドウをウィンドウ化フルスクリーンにする場合は、あらかじめデスクトップの解像度を保存しておく必要があります。
 
 
 <a id="window_destruction"></a>
@@ -112,7 +112,7 @@ glfwDestroyWindow(window);
 
 ウィンドウの破棄は常に成功します。実際に破棄する前にすべてのコールバックが解除されるため、そのウィンドウへ以後イベントが配信されることはありません。[glfwTerminate](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#gaaae48c0a18607ea4a4ba951d939f0901) の呼び出し時に残っているすべてのウィンドウも破棄されます。
 
-フルスクリーンウィンドウを破棄すると、モニターの元のビデオモードは復元されますが、ガンマランプは変更されたままです。
+フルスクリーンウィンドウを破棄すると、モニターの元のビデオモードは復元されますが、ガンマランプは変更されません。
 
 
 <a id="window_hints"></a>
@@ -130,7 +130,7 @@ glfwDestroyWindow(window);
 
 #### ハード制約とソフト制約
 
-一部のウィンドウヒントはハード制約です。ウィンドウとコンテキストの作成を成功させるには、利用可能な機能と_正確に_一致しなければなりません。ハード制約ではないヒントは可能な限り近いものと照合されますが、作成されるコンテキストとフレームバッファは、ヒントで要求した内容と異なる可能性があります。
+一部のウィンドウヒントはハード制約です。ウィンドウとコンテキストの作成を成功させるには、利用可能な機能と*正確に*一致しなければなりません。ハード制約ではないヒントは可能な限り近いものと照合されますが、作成されるコンテキストとフレームバッファは、ヒントで要求した内容と異なる可能性があります。
 
 次のヒントは常にハード制約です。
 
@@ -151,7 +151,7 @@ glfwDestroyWindow(window);
 
 <a id="GLFW_RESIZABLE_hint"></a>
 
-__GLFW_RESIZABLE__ は、ウィンドウモードのウィンドウを_ユーザーが_サイズ変更できるかどうかを指定します。[glfwSetWindowSize](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga371911f12c74c504dd8d47d832d095cb) 関数を使えば、引き続きウィンドウのサイズを変更できます。指定できる値は `GLFW_TRUE` と `GLFW_FALSE` です。フルスクリーンウィンドウと装飾のないウィンドウでは、このヒントは無視されます。
+__GLFW_RESIZABLE__ は、ウィンドウモードのウィンドウを*ユーザーが*サイズ変更できるかどうかを指定します。[glfwSetWindowSize](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga371911f12c74c504dd8d47d832d095cb) 関数を使えば、引き続きウィンドウのサイズを変更できます。指定できる値は `GLFW_TRUE` と `GLFW_FALSE` です。フルスクリーンウィンドウと装飾のないウィンドウでは、このヒントは無視されます。
 
 <a id="GLFW_VISIBLE_hint"></a>
 
@@ -379,7 +379,7 @@ __GLFW_COCOA_GRAPHICS_SWITCHING__ は、自動グラフィックス切り替え�
 
 単純なプログラムやツールでは節電のために有効にするとよいでしょう。一方、ゲームなど高度な描画を行うアプリケーションでは無効のままにするとよいでしょう。
 
-自動グラフィックス切り替えへ参加するバンドル形式のアプリケーションは、`Info.plist` の `NSSupportsAutomaticGraphicsSwitching` キーを `true` に設定し、そのことを宣言する必要もあります。
+自動グラフィックス切り替えへ参加するバンドル形式のアプリケーションは、`Info.plist` の `NSSupportsAutomaticGraphicsSwitching` キーを `true` に設定し、そのことを宣言することも推奨されます。
 
 
 <a id="window_hints_wayland"></a>
@@ -460,7 +460,7 @@ GLFW_X11_INSTANCE_NAME | `""` | ASCII エンコードの `WM_CLASS` インスタ
 
 ## ウィンドウイベントの処理
 
-[events](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#events)を参照してください。
+[イベント処理](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#events)を参照してください。
 
 
 <a id="window_properties"></a>
@@ -480,7 +480,7 @@ GLFW_X11_INSTANCE_NAME | `""` | ASCII エンコードの `WM_CLASS` インスタ
 
 ### ウィンドウを閉じる操作とクローズフラグ
 
-ユーザーが閉じるボタンをクリックしたり Alt+F4 のようなキー操作を使ったりしてウィンドウを閉じようとすると、ウィンドウの_クローズフラグ_が設定されます。ただし、実際にウィンドウが破棄されるわけではなく、この状態変化を監視しなければ、それ以上は何も起こりません。
+ユーザーが閉じるボタンをクリックしたり Alt+F4 のようなキー操作を使ったりしてウィンドウを閉じようとすると、ウィンドウの*クローズフラグ*が設定されます。ただし、実際にウィンドウが破棄されるわけではなく、この状態変化を監視しなければ、それ以上は何も起こりません。
 
 クローズフラグの現在の状態は [glfwWindowShouldClose](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga24e02fbfefbb81fc45320989f8140ab5) が返します。また、[glfwSetWindowShouldClose](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga49c449dde2a6f87d996f4daaa09d6708) で直接設定・解除できます。一般的には、クローズフラグをメインループの条件として使います。
 
@@ -500,7 +500,7 @@ while (!glfwWindowShouldClose(window))
 glfwSetWindowCloseCallback(window, window_close_callback);
 ```
 
-コールバック関数は、クローズフラグが設定された_直後_に呼び出されます。たとえば、クローズ要求を選別し、特定の条件を満たさない場合にクローズフラグを再び解除するために使えます。
+コールバック関数は、クローズフラグが設定された*直後*に呼び出されます。たとえば、クローズ要求を選別し、特定の条件を満たさない場合にクローズフラグを再び解除するために使えます。
 
 ```c
 void window_close_callback(GLFWwindow* window)
@@ -515,7 +515,7 @@ void window_close_callback(GLFWwindow* window)
 
 ### ウィンドウサイズ
 
-ウィンドウのサイズは [glfwSetWindowSize](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga371911f12c74c504dd8d47d832d095cb) で変更できます。ウィンドウモードのウィンドウでは、ウィンドウの_コンテンツ領域_のサイズを[スクリーン座標](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#coordinate_systems)で設定します。ウィンドウシステムがウィンドウサイズに制限を課すことがあります。
+ウィンドウのサイズは [glfwSetWindowSize](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga371911f12c74c504dd8d47d832d095cb) で変更できます。ウィンドウモードのウィンドウでは、ウィンドウの*コンテンツ領域*のサイズを[スクリーン座標](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#coordinate_systems)で設定します。ウィンドウシステムがウィンドウサイズに制限を課すことがあります。
 
 ```c
 glfwSetWindowSize(window, 640, 480);
@@ -1090,27 +1090,27 @@ glfwSetWindowAttrib(window, GLFW_RESIZABLE, GLFW_FALSE);
 
 <a id="GLFW_FOCUSED_attrib"></a>
 
-__GLFW_FOCUSED__ は、指定したウィンドウが入力フォーカスを持つかどうかを示します。詳しくは [window_focus](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_focus)を参照してください。
+__GLFW_FOCUSED__ は、指定したウィンドウが入力フォーカスを持つかどうかを示します。詳しくは [ウィンドウの入力フォーカス](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_focus)を参照してください。
 
 <a id="GLFW_ICONIFIED_attrib"></a>
 
-__GLFW_ICONIFIED__ は、指定したウィンドウがアイコン化されているかどうかを示します。詳しくは [window_iconify](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_iconify)を参照してください。
+__GLFW_ICONIFIED__ は、指定したウィンドウがアイコン化されているかどうかを示します。詳しくは [ウィンドウのアイコン化](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_iconify)を参照してください。
 
 <a id="GLFW_MAXIMIZED_attrib"></a>
 
-__GLFW_MAXIMIZED__ は、指定したウィンドウが最大化されているかどうかを示します。詳しくは [window_maximize](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_maximize)を参照してください。
+__GLFW_MAXIMIZED__ は、指定したウィンドウが最大化されているかどうかを示します。詳しくは [ウィンドウの最大化](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_maximize)を参照してください。
 
 <a id="GLFW_HOVERED_attrib"></a>
 
-__GLFW_HOVERED__ は、ほかのウィンドウを挟まず、カーソルが現在ウィンドウのコンテンツ領域上に直接あるかどうかを示します。詳しくは [cursor_enter](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#cursor_enter)を参照してください。
+__GLFW_HOVERED__ は、ほかのウィンドウを挟まず、カーソルが現在ウィンドウのコンテンツ領域上に直接あるかどうかを示します。詳しくは [カーソルの進入・退出イベント](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#cursor_enter)を参照してください。
 
 <a id="GLFW_VISIBLE_attrib"></a>
 
-__GLFW_VISIBLE__ は、指定したウィンドウが表示されているかどうかを示します。詳しくは [window_hide](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_hide)を参照してください。
+__GLFW_VISIBLE__ は、指定したウィンドウが表示されているかどうかを示します。詳しくは [ウィンドウの表示状態](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_hide)を参照してください。
 
 <a id="GLFW_RESIZABLE_attrib"></a>
 
-__GLFW_RESIZABLE__ は、指定したウィンドウを_ユーザーが_サイズ変更できるかどうかを示します。作成前は [GLFW_RESIZABLE](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_RESIZABLE_hint) ウィンドウヒント、作成後は [glfwSetWindowAttrib](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#gace2afda29b4116ec012e410a6819033e) で設定できます。
+__GLFW_RESIZABLE__ は、指定したウィンドウを*ユーザーが*サイズ変更できるかどうかを示します。作成前は [GLFW_RESIZABLE](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_RESIZABLE_hint) ウィンドウヒント、作成後は [glfwSetWindowAttrib](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#gace2afda29b4116ec012e410a6819033e) で設定できます。
 
 <a id="GLFW_DECORATED_attrib"></a>
 
@@ -1126,7 +1126,7 @@ __GLFW_FLOATING__ は、指定したウィンドウが前面表示されるか�
 
 <a id="GLFW_TRANSPARENT_FRAMEBUFFER_attrib"></a>
 
-__GLFW_TRANSPARENT_FRAMEBUFFER__ は、指定したウィンドウが透明なフレームバッファを持つかどうかを示します。つまり、ウィンドウのフレームバッファのアルファチャンネルを使って、ウィンドウの内容を背景と合成するかどうかです。詳しくは [window_transparency](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_transparency)を参照してください。
+__GLFW_TRANSPARENT_FRAMEBUFFER__ は、指定したウィンドウが透明なフレームバッファを持つかどうかを示します。つまり、ウィンドウのフレームバッファのアルファチャンネルを使って、ウィンドウの内容を背景と合成するかどうかです。詳しくは [ウィンドウの透明度](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_transparency)を参照してください。
 
 <a id="GLFW_FOCUS_ON_SHOW_attrib"></a>
 
@@ -1203,7 +1203,7 @@ MSAA サンプル数は常に `glGetIntegerv` で取得します。フレーム�
 アルファのビット数 | `GL_ALPHA_BITS` | `GL_FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE`
 深度のビット数 | `GL_DEPTH_BITS` | `GL_FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE`
 ステンシルのビット数 | `GL_STENCIL_BITS` | `GL_FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE`
-MSAAサンプル数 | `GL_SAMPLES` | _この関数では提供されません_
+MSAAサンプル数 | `GL_SAMPLES` | *この関数では提供されません*
 
 `glGetFramebufferAttachmentParameteriv` を呼び出すとき、赤、緑、青、アルファのサイズは `GL_BACK_LEFT` から取得し、深度とステンシルのサイズはそれぞれ `GL_DEPTH` と `GL_STENCIL` のアタッチメントから取得します。
 
@@ -1234,4 +1234,4 @@ glfwSwapInterval(1);
 
 一部のドライバーにはアプリケーションが要求するスワップ間隔を上書きする、ユーザー制御の設定があるため、すべてのマシンで機能するとは限りません。
 
-`WGL_EXT_swap_control_tear` または `GLX_EXT_swap_control_tear` 拡張のいずれかをサポートするコンテキストは、_負の_スワップ間隔も受け付けます。これにより、フレームの到着が少し遅れてもドライバーが直ちに交換できます。目に見えるティアリングの危険性と引き換えに、フレームレートの安定性が高まります。これらの拡張は [glfwExtensionSupported](/docs/glfw/v3-5-1/ja/04-reference/04-context-reference/#ga87425065c011cef1ebd6aac75e059dfa) で確認できます。
+`WGL_EXT_swap_control_tear` または `GLX_EXT_swap_control_tear` 拡張のいずれかをサポートするコンテキストは、*負の*スワップ間隔も受け付けます。これにより、フレームの到着が少し遅れてもドライバーが直ちに交換できます。目に見えるティアリングの危険性と引き換えに、フレームレートの安定性が高まります。これらの拡張は [glfwExtensionSupported](/docs/glfw/v3-5-1/ja/04-reference/04-context-reference/#ga87425065c011cef1ebd6aac75e059dfa) で確認できます。

@@ -5,6 +5,8 @@ description: "GLFW 3.5.1 標準カーソル形状"
 
 <span id="details"></span>
 
+# 標準カーソル形状
+
 ## 説明
 
 これらは、プラットフォーム（ウィンドウシステム）に要求できる<a href="/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#cursor_standard" class="el">標準カーソル形状</a>です。
@@ -144,7 +146,7 @@ description: "GLFW 3.5.1 標準カーソル形状"
 </tr>
 <tr class="memdesc:gabb3eb0109f11bb808fc34659177ca962">
 <td class="mdescLeft"> </td>
-<td class="mdescRight">Legacy name for compatibility.<br />
+<td class="mdescRight">互換性のための旧名。<br />
 </td>
 </tr>
 <tr class="separator:gabb3eb0109f11bb808fc34659177ca962">
@@ -156,7 +158,7 @@ description: "GLFW 3.5.1 標準カーソル形状"
 </tr>
 <tr class="memdesc:gaf024f0e1ff8366fb2b5c260509a1fce5">
 <td class="mdescLeft"> </td>
-<td class="mdescRight">Legacy name for compatibility.<br />
+<td class="mdescRight">互換性のための旧名。<br />
 </td>
 </tr>
 <tr class="separator:gaf024f0e1ff8366fb2b5c260509a1fce5">
@@ -168,7 +170,7 @@ description: "GLFW 3.5.1 標準カーソル形状"
 </tr>
 <tr class="memdesc:ga1db35e20849e0837c82e3dc1fd797263">
 <td class="mdescLeft"> </td>
-<td class="mdescRight">Legacy name for compatibility.<br />
+<td class="mdescRight">互換性のための旧名。<br />
 </td>
 </tr>
 <tr class="separator:ga1db35e20849e0837c82e3dc1fd797263">

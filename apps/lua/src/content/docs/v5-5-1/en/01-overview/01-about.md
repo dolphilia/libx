@@ -1,6 +1,6 @@
 ---
 title: "About Lua 5.5"
-description: "Overview, source layout and supported platforms"
+description: "Overview of Lua and its official documentation"
 ---
 
 # Welcome to Lua 5.5

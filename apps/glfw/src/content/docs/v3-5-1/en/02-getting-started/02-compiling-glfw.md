@@ -7,7 +7,7 @@ description: "Compile the GLFW library from source"
 
 # Compiling GLFW
 This is about compiling the GLFW library itself.  For information on how to
-build applications that use GLFW, see [build_guide](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_guide).
+build applications that use GLFW, see [Building applications](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_guide).
 
 GLFW uses some C99 features and does not support Visual Studio 2012 and earlier.
 
@@ -17,7 +17,7 @@ GLFW uses some C99 features and does not support Visual Studio 2012 and earlier.
 ## Using CMake
 GLFW behaves like most other libraries that use CMake so this guide mostly
 describes the standard configure, generate and compile sequence.  If you are already
-familiar with this from other projects, you may want to focus on the [compile_deps](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_deps) and [compile_options](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_options) sections for GLFW-specific information.
+familiar with this from other projects, you may want to focus on the [Installing dependencies](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_deps) and [CMake options](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_options) sections for GLFW-specific information.
 
 GLFW uses [CMake](https://cmake.org/) to generate project files or makefiles
 for your chosen development environment.  To compile GLFW, first generate these
@@ -89,7 +89,7 @@ On Cygwin Wayland is not supported but you will need the `libXcursor-devel`,
 compile for X11.  These can be found in the Libs section of the GUI installer and will
 pull in all other dependencies.
 
-Once you have the required dependencies, move on to [compile_generate](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_generate).
+Once you have the required dependencies, move on to [Generating build files with CMake](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_generate).
 
 
 <a id="compile_generate"></a>
@@ -131,7 +131,7 @@ and/or [GLFW_BUILD_X11](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glf
 new value as described above.
 
 Once you have generated the project files or makefiles for your chosen
-development environment, move on to [compile_compile](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_compile).
+development environment, move on to [Compiling the library](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_compile).
 
 
 <a id="compile_generate_cli"></a>
@@ -170,7 +170,7 @@ cmake -S path/to/glfw -B path/to/build -D GLFW_BUILD_X11=0
 ```
 
 Once you have generated the project files or makefiles for your chosen
-development environment, move on to [compile_compile](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_compile).
+development environment, move on to [Compiling the library](/docs/glfw/v3-5-1/en/02-getting-started/02-compiling-glfw/#compile_compile).
 
 
 <a id="compile_compile"></a>
@@ -207,7 +207,7 @@ cmake --build path/to/build
 This will run the platform specific build tool the directory was generated for.
 
 Once the GLFW library is compiled you are ready to build your application,
-linking it to the GLFW library.  See [build_guide](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_guide) for more information.
+linking it to the GLFW library.  See [Building applications](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_guide) for more information.
 
 
 <a id="compile_options"></a>
@@ -380,6 +380,6 @@ If you are using a custom name for the Vulkan, EGL, GLX, OSMesa, OpenGL, GLESv1
 or GLESv2 library, you can override the default names by defining those you need
 of `_GLFW_VULKAN_LIBRARY`, `_GLFW_EGL_LIBRARY`, `_GLFW_GLX_LIBRARY`, `_GLFW_OSMESA_LIBRARY`, `_GLFW_OPENGL_LIBRARY`, `_GLFW_GLESV1_LIBRARY` and `_GLFW_GLESV2_LIBRARY`.  Otherwise, GLFW will use the built-in default names.
 
-> **Note:** None of the [build_macros](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_macros) may be defined during the compilation of
+> **Note:** None of the [GLFW header option macros](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_macros) may be defined during the compilation of
 GLFW.  If you define any of these in your build files, make sure they are not
 applied to the GLFW sources.

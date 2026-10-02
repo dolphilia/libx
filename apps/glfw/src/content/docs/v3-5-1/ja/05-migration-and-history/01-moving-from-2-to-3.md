@@ -19,6 +19,8 @@ GLFW 3 のヘッダーは [glfw3](https://github.com/glfw/glfw/blob/3.5.1/includ
 
 [soname]: https://en.wikipedia.org/wiki/soname
 
+> **Libx 参考注記（GLFW 3.5.1）:** 上の `glfw3,` に含まれるコンマは原文の表記です。[固定版のライブラリ出力名設定](https://github.com/glfw/glfw/blob/3.5.1/src/CMakeLists.txt#L118-L126)では、Unix 系システムの共有ライブラリに `glfw`、それ以外に `glfw3` を使い、コンマは含みません。上の原文表記は保持しています。
+
 __旧構文__
 ```c
 #include <GL/glfw.h>
@@ -43,13 +45,13 @@ C++11 または C11 の機能を使用したくてもコンパイラーがまだ
 [TinyThread++]: https://gitorious.org/tinythread/tinythreadpp
 [TinyCThread]: https://github.com/tinycthread/tinycthread
 
-一方、GLFW 3 は GLFW 2 よりも_複数スレッドからの使用_を適切にサポートしています。一度に 1 スレッドだけという制約はありますが、どのスレッドでもコンテキストをカレントにできます。また、どの関数を任意のスレッドから使用でき、どの関数をメインスレッドからのみ使用すべきかがドキュメントに明記されています。
+一方、GLFW 3 は GLFW 2 よりも*複数スレッドからの使用*を適切にサポートしています。一度に 1 スレッドだけという制約はありますが、どのスレッドでもコンテキストをカレントにできます。また、どの関数を任意のスレッドから使用でき、どの関数をメインスレッドからのみ使用すべきかがドキュメントに明記されています。
 
 __削除された関数__
 > `glfwSleep`, `glfwCreateThread`, `glfwDestroyThread`, `glfwWaitThread`,
 > `glfwGetThreadID`, `glfwCreateMutex`, `glfwDestroyMutex`, `glfwLockMutex`,
 > `glfwUnlockMutex`, `glfwCreateCond`, `glfwDestroyCond`, `glfwWaitCond`,
-> `glfwSignalCond`, `glfwBroadcastCond` and `glfwGetNumberOfProcessors`.
+> `glfwSignalCond`, `glfwBroadcastCond` および `glfwGetNumberOfProcessors`。
 
 __削除された型__
 > `GLFWthreadfun`
@@ -64,7 +66,7 @@ __削除された型__
 
 __削除された関数__
 > `glfwReadImage`, `glfwReadMemoryImage`, `glfwFreeImage`, `glfwLoadTexture2D`,
-> `glfwLoadMemoryTexture2D` and `glfwLoadTextureImage2D`.
+> `glfwLoadMemoryTexture2D` および `glfwLoadTextureImage2D`。
 
 
 <a id="moving_stdcall"></a>
@@ -382,7 +384,7 @@ GLU が提供する機能の代替となるライブラリは多数あります�
 
 ### 改名された型
 | GLFW 2              | GLFW 3                | 備考 |
-| ------------------- | --------------------- |       |
+| ------------------- | --------------------- | ----- |
 | `GLFWmousewheelfun` | [GLFWscrollfun](/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#gaf656112c33de3efdb227fa58f0134cf5)    |       |
 | `GLFWmouseposfun`   | [GLFWcursorposfun](/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#gad6fae41b3ac2e4209aaa87b596c57f68) |       |
 

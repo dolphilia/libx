@@ -3,6 +3,8 @@ title: "GLFWgammaramp structure"
 description: "GLFW 3.5.1 GLFWgammaramp structure"
 ---
 
+# GLFWgammaramp structure
+
 Gamma ramp. [More...](/docs/glfw/v3-5-1/en/04-reference/19-glfwgammaramp/#details)
 
 <table class="memberdecls">

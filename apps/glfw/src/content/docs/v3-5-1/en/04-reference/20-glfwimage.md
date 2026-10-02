@@ -3,6 +3,8 @@ title: "GLFWimage structure"
 description: "GLFW 3.5.1 GLFWimage structure"
 ---
 
+# GLFWimage structure
+
 Image data. [More...](/docs/glfw/v3-5-1/en/04-reference/20-glfwimage/#details)
 
 <table class="memberdecls">

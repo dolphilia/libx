@@ -87,6 +87,11 @@
     margin-top: 0 !important;
   }
 
+  /* Doxygen API names can be longer than a mobile viewport. */
+  :where(.article-content, .sl-markdown-content) h2:has(> .permalink) {
+    overflow-wrap: anywhere;
+  }
+
   /* Markdown変換で空段落になった互換アンカーは、位置だけを保持して余白を作らない。 */
   :where(.article-content, .sl-markdown-content) > p:has(> a[id]:only-child:empty) {
     margin-block: 0 !important;
@@ -311,6 +316,12 @@
     overflow-x: auto;
     margin-block: 1rem;
     border-radius: 0.375rem;
+  }
+
+  /* Keep API identifiers intact; wide tables scroll inside their existing wrapper. */
+  :where(.article-content, .sl-markdown-content) .docs-table-scroll :is(a, code) {
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   :where(.article-content, .sl-markdown-content) .docs-table-scroll:focus-visible {

@@ -220,7 +220,13 @@ function renderInline(node, context) {
     if (!label) return anchor;
     return `${anchor}[${label}](${rewriteHref(href, context.page, context.anchorMap)})`;
   }
-  if (tag === 'code' || tag === 'tt') return escapeInlineCode(cleanInline(textContent(node)));
+  if (tag === 'code' || tag === 'tt') {
+    const value = textContent(node);
+    // A literal space is a meaningful format flag/option in the Lua manual.
+    const code =
+      value && /^[ \t\r\n]+$/.test(value) ? value.replace(/[\t\r\n]+/g, ' ') : cleanInline(value);
+    return escapeInlineCode(code);
+  }
   if (tag === 'kbd') return `<kbd>${cleanInline(textContent(node))}</kbd>`;
   if (tag === 'em' || tag === 'i') return `*${cleanInline(inner())}*`;
   if (tag === 'b' || tag === 'strong') return `**${cleanInline(inner())}**`;
@@ -253,9 +259,10 @@ function renderPre(node, context) {
 
 function indentListItem(value, marker) {
   const lines = value.trim().split('\n');
+  const continuationIndent = ' '.repeat(marker.length + 1);
   return `${marker} ${lines[0]}${lines
     .slice(1)
-    .map((line) => `\n  ${line}`)
+    .map((line) => (line ? `\n${continuationIndent}${line}` : '\n'))
     .join('')}`;
 }
 
@@ -270,7 +277,10 @@ function renderMixedChildren(node, context) {
 
   for (const child of node.childNodes ?? []) {
     const childTag = child.tagName?.toLowerCase();
-    if (['p', 'pre', 'ul', 'ol', 'dl', 'blockquote', 'div'].includes(childTag)) {
+    if (
+      ['p', 'pre', 'ul', 'ol', 'dl', 'blockquote', 'div', 'hr'].includes(childTag) ||
+      /^h[1-6]$/.test(childTag ?? '')
+    ) {
       flushInline();
       const value = renderBlock(child, context);
       if (value) parts.push(value);
@@ -318,7 +328,8 @@ function renderBlock(node, context) {
       if (childTag === 'dt') term = cleanInline(renderInline(child, context));
       if (childTag === 'dd') {
         const description = cleanInline(renderMixedChildren(child, context));
-        rows.push(`- **${term}**${description ? `: ${description}` : ''}`);
+        const separator = term.endsWith(':') ? ' ' : ': ';
+        rows.push(`- **${term}**${description ? `${separator}${description}` : ''}`);
         term = '';
       }
     }
@@ -368,10 +379,7 @@ function renderHtmlPage(slice, anchorMap) {
   const minimum = minimumHeadingLevel(slice.nodes);
   const headingShift = slice.page.syntheticHeading ? 2 - minimum : 1 - minimum;
   const context = { page: slice.page, anchorMap, headingShift };
-  const body = slice.nodes
-    .map((node) => renderBlock(node, context))
-    .filter(Boolean)
-    .join('\n\n');
+  const body = renderMixedChildren({ childNodes: slice.nodes }, context);
   const heading = slice.page.syntheticHeading ? `# ${slice.page.title}\n\n` : '';
   return `${heading}${body}`.trim();
 }
@@ -391,7 +399,9 @@ function renderTroffMacro(macro, value) {
   return tokens
     .map((token, index) => {
       const style = styles[index % styles.length];
-      if (style === 'B') return `**${token}**`;
+      // Protect literal command syntax from Markdown smart punctuation.
+      if (style === 'B')
+        return token === '--' || token === "'-'" ? `**\`${token}\`**` : `**${token}**`;
       if (style === 'I') return `*${token}*`;
       return token;
     })
@@ -455,10 +465,7 @@ export function renderHtmlFragmentForTest(html, page = {}) {
     anchorMap: new Map(),
     headingShift: 0,
   };
-  return (body?.childNodes ?? [])
-    .map((node) => renderBlock(node, context))
-    .filter(Boolean)
-    .join('\n\n');
+  return renderMixedChildren(body ?? { childNodes: [] }, context);
 }
 
 function frontmatter(page) {
@@ -466,6 +473,7 @@ function frontmatter(page) {
     '---',
     `title: ${quoteYaml(page.title)}`,
     `description: ${quoteYaml(page.description)}`,
+    ...(page.kind === 'bugs' ? ['licenseSource: "lua-bugs-2026-08-11"'] : []),
     '---',
   ].join('\n');
 }
@@ -476,7 +484,11 @@ function renderPage(slice, sources, anchorMap) {
     page.kind === 'man'
       ? renderMan(fs.readFileSync(sources.paths[page.source], 'utf8'), page)
       : renderHtmlPage(slice, anchorMap);
-  return `${frontmatter(page)}\n\n${body}\n`;
+  const snapshotNotice =
+    page.kind === 'bugs'
+      ? '> **Libx snapshot note (2026-08-11):** The text below preserves the official bugs list acquired on this date; it does not describe the current list. For later reports, see the [current official bugs list](https://www.lua.org/bugs.html#5.5.1).\n\n'
+      : '';
+  return `${frontmatter(page)}\n\n${snapshotNotice}${body}\n`;
 }
 
 function validateGenerated(outputRoot, pageSlices, anchorMap) {

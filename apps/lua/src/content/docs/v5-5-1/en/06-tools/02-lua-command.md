@@ -39,7 +39,7 @@ Before handling command line options and scripts, **lua** checks the contents of
 
 - **-W**: turn warnings on.
 
-- **--**: stop handling options.
+- **`--`**: stop handling options.
 
 - **-**: stop handling options and execute the standard input as a file.
 

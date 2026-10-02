@@ -15,35 +15,7 @@ The string library assumes one-byte character encodings.
 
 ## <a id="pdf-string.byte"></a>`string.byte (s [, i [, j]])`
 
-Returns the internal numeric codes of the characters
-
-`s[i]`
-
-,
-
-`s[i+1]`
-
-,...,
-
-`s[j]`
-
-. The default value for
-
-`i`
-
-is 1; the default value for
-
-`j`
-
-is
-
-`i`
-
-. These indices are corrected following the same rules of function
-
-[`string.sub`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.sub)
-
-.
+Returns the internal numeric codes of the characters `s[i]`, `s[i+1]`,..., `s[j]`. The default value for `i` is 1; the default value for `j` is `i`. These indices are corrected following the same rules of function [`string.sub`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.sub).
 
 Numeric codes are not necessarily portable across platforms.
 
@@ -75,7 +47,7 @@ If the pattern has captures, then in a successful match the captured values are 
 
 ## <a id="pdf-string.format"></a>`string.format (formatstring, ···)`
 
-Returns a formatted version of its variable number of arguments following the description given in its first argument, which must be a string. The format string follows the same rules as the ISO C function `sprintf`. The accepted conversion specifiers are `A`, `a`, `c`, `d`, `E`, `e`, `f`, `G`, `g`, `i`, `o`, `p`, `s`, `u`, `X`, `x`, and '`%`', plus a non-C specifier `q`. The accepted flags are '`-`', '`+`', '`#`', '`0`', and '``' (space). Both width and precision, when present, are limited to two digits.
+Returns a formatted version of its variable number of arguments following the description given in its first argument, which must be a string. The format string follows the same rules as the ISO C function `sprintf`. The accepted conversion specifiers are `A`, `a`, `c`, `d`, `E`, `e`, `f`, `G`, `g`, `i`, `o`, `p`, `s`, `u`, `X`, `x`, and '`%`', plus a non-C specifier `q`. The accepted flags are '`-`', '`+`', '`#`', '`0`', and '` `' (space). Both width and precision, when present, are limited to two digits.
 
 The specifier `q` formats booleans, nil, numbers, and strings in a way that the result is a valid constant in Lua source code. Booleans and nil are written in the obvious way (`true`, `false`, `nil`). Floats are written in hexadecimal, to preserve full precision. A string is written between double quotes, using escape sequences when necessary to ensure that it can safely be read back by the Lua interpreter. For instance, the call
 
@@ -102,27 +74,7 @@ The specifier `p` formats the pointer returned by [`lua_topointer`](/docs/lua/v5
 
 ## <a id="pdf-string.gmatch"></a>`string.gmatch (s, pattern [, init])`
 
-Returns an iterator function that, each time it is called, returns the next captures from
-
-`pattern`
-
-(see
-
-[§6.5.1](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5.1)
-
-) over the string
-
-`s`
-
-. If
-
-`pattern`
-
-specifies no captures, then the whole match is produced in each call. A third, optional numeric argument
-
-`init`
-
-specifies where to start the search; its default value is 1 and can be negative.
+Returns an iterator function that, each time it is called, returns the next captures from `pattern` (see [§6.5.1](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5.1)) over the string `s`. If `pattern` specifies no captures, then the whole match is produced in each call. A third, optional numeric argument `init` specifies where to start the search; its default value is 1 and can be negative.
 
 As an example, the following loop will iterate over all the words from string `s`, printing one per line:
 
@@ -149,39 +101,7 @@ For this function, a caret '`^`' at the start of a pattern does not work as an a
 
 ## <a id="pdf-string.gsub"></a>`string.gsub (s, pattern, repl [, n])`
 
-Returns a copy of
-
-`s`
-
-in which all (or the first
-
-`n`
-
-, if given) occurrences of the
-
-`pattern`
-
-(see
-
-[§6.5.1](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5.1)
-
-) have been replaced by a replacement string specified by
-
-`repl`
-
-, which can be a string, a table, or a function.
-
-`gsub`
-
-also returns, as its second value, the total number of matches that occurred. The name
-
-`gsub`
-
-comes from
-
-*Global SUBstitution*
-
-.
+Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the `pattern` (see [§6.5.1](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5.1)) have been replaced by a replacement string specified by `repl`, which can be a string, a table, or a function. `gsub` also returns, as its second value, the total number of matches that occurred. The name `gsub` comes from *Global SUBstitution*.
 
 If `repl` is a string, then its value is used for replacement. The character `%` works as an escape character: any sequence in `repl` of the form `%d`, with *d* between 1 and 9, stands for the value of the *d*-th captured substring; the sequence `%0` stands for the whole match; the sequence `%%` stands for a single `%`.
 
@@ -304,9 +224,9 @@ A *character class* is used to represent a set of characters. The following comb
 - **`%x`**: represents all hexadecimal digits.
 - **`%x`**: (where *x* is any non-alphanumeric character) represents the character *x*. This is the standard way to escape the magic characters. Any non-alphanumeric character (including all punctuation characters, even the non-magical) can be preceded by a '`%`' to represent itself in a pattern.
 - **`[set]`**: represents the class which is the union of all characters in *set*. A range of characters can be specified by separating the end characters of the range, in ascending order, with a '`-`'. All classes `%`*x* described above can also be used as components in *set*. All other characters in *set* represent themselves. For example, `[%w_]` (or `[_%w]`) represents all alphanumeric characters plus the underscore, `[0-7]` represents the octal digits, and `[0-7%l%-]` represents the octal digits plus the lowercase letters plus the '`-`' character.
-  
+
   You can put a closing square bracket in a set by positioning it as the first character in the set. You can put a hyphen in a set by positioning it as the first or the last character in the set. (You can also use an escape for both cases.)
-  
+
   The interaction between ranges and classes is not defined. Therefore, patterns like `[%a-z]` or `[a-%%]` have no meaning.
 - **`[^set]`**: represents the complement of *set*, where *set* is interpreted as above.
 
@@ -379,7 +299,7 @@ A format string is a sequence of conversion options. The conversion options are 
 - **`s[n]`**: a string preceded by its length coded as an unsigned integer with `n` bytes (default is a `size_t`)
 - **`x`**: one byte of padding
 - **`Xop`**: an empty item that aligns according to option `op` (which is otherwise ignored)
-- **'``'**: (space) ignored
+- **'` `'**: (space) ignored
 
 (A "`[n]`" means an optional integral numeral.) Except for padding, spaces, and configurations (options "`xX <=>!`"), each option corresponds to an argument in [`string.pack`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.pack) or a result in [`string.unpack`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.unpack).
 

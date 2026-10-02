@@ -12,7 +12,7 @@ and exit when the user closes the window or presses _Escape_.  This guide will
 introduce a few of the most commonly used functions, but there are many more.
 
 This guide assumes no experience with earlier versions of GLFW.  If you
-have used GLFW 2 in the past, read [moving_guide](/docs/glfw/v3-5-1/en/05-migration-and-history/01-moving-from-2-to-3/#moving_guide), as some functions
+have used GLFW 2 in the past, read [Moving from GLFW 2 to 3](/docs/glfw/v3-5-1/en/05-migration-and-history/01-moving-from-2-to-3/#moving_guide), as some functions
 behave differently in GLFW 3.
 
 
@@ -506,11 +506,11 @@ This tutorial used only a few of the many functions GLFW provides.  There are
 guides for each of the areas covered by GLFW.  Each guide will introduce all the
 functions for that category.
 
- - [intro_guide](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
- - [window_guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
- - [context_guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
+ - [Introduction to the API](/docs/glfw/v3-5-1/en/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [Window guide](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_guide)
+ - [Context guide](/docs/glfw/v3-5-1/en/03-guides/02-context-guide/#context_guide)
+ - [Monitor guide](/docs/glfw/v3-5-1/en/03-guides/03-monitor-guide/#monitor_guide)
+ - [Input guide](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#input_guide)
 
 You can access reference documentation for any GLFW function by clicking it and
 the reference for each function links to related functions and guide sections.
@@ -519,4 +519,4 @@ The tutorial ends here.  Once you have written a program that uses GLFW, you
 will need to compile and link it.  How to do that depends on the development
 environment you are using and is best explained by the documentation for that
 environment.  To learn about the details that are specific to GLFW, see
-[build_guide](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_guide).
+[Building applications](/docs/glfw/v3-5-1/en/02-getting-started/03-building-applications/#build_guide).

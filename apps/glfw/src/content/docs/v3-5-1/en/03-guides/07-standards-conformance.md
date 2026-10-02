@@ -78,6 +78,8 @@ GLFW uses the XRandR 1.3 and Xf86vidmode extensions to provide gamma ramp
 support.  If the running X server does not support either or both of these
 extensions, gamma ramp support will not function.
 
+> **Libx reference note (GLFW 3.5.1):** The wording above can suggest that both extensions must be present. The [fixed gamma-ramp implementation](https://github.com/glfw/glfw/blob/3.5.1/src/x11_monitor.c#L540-L574) first uses RandR when available and its gamma support is not marked broken, then falls back to Xf86vidmode when available. One usable path is sufficient; the upstream wording is preserved above.
+
 GLFW uses the Xkb extension and detectable auto-repeat to provide keyboard
 input.  If the running X server does not support this extension, a non-Xkb
 fallback path is used.
@@ -175,10 +177,14 @@ systems using the X Window System.
 GLFW uses the GLX 1.3 `GLXFBConfig` functions to enumerate and select framebuffer pixel
 formats.  If GLX 1.3 is not supported, [glfwInit](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga317aac130a235ab08c6db0834907d85e) will fail.
 
+> **Libx reference note (GLFW 3.5.1):** The sentence above names [glfwInit](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga317aac130a235ab08c6db0834907d85e). In the [fixed X11 window-creation implementation](https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L1963-L1985), GLX initialization happens when creating a window with a native OpenGL context. The [GLX version check](https://github.com/glfw/glfw/blob/3.5.1/src/glx_context.c#L348-L360) rejects GLX 1.x below 1.3 at that stage. Windows using `GLFW_NO_API` and the EGL path do not take that GLX initialization branch. This clarifies the failure stage without changing the upstream sentence.
+
 GLFW uses the `GLX_MESA_swap_control,` `GLX_EXT_swap_control` and
 `GLX_SGI_swap_control` extensions to provide vertical retrace synchronization
 (or _vsync_), in that order of preference.  When none of these extensions are
 available, calling [glfwSwapInterval](/docs/glfw/v3-5-1/en/04-reference/04-context-reference/#ga6d4e0cdf151b5e579bd67f13202994ed) will have no effect.
+
+> **Libx reference note (GLFW 3.5.1):** The comma inside `GLX_MESA_swap_control,` above is part of the upstream wording; the [fixed extension lookup](https://github.com/glfw/glfw/blob/3.5.1/src/glx_context.c#L380-L386) uses `GLX_MESA_swap_control` without it. The [fixed swap-interval implementation](https://github.com/glfw/glfw/blob/3.5.1/src/glx_context.c#L188-L205) prefers EXT, then MESA, then SGI, which differs from the order stated above.
 
 GLFW uses the `GLX_ARB_multisample` extension to create contexts with
 multisampling anti-aliasing.  Where this extension is unavailable, the
@@ -218,6 +224,8 @@ GLFW uses either the `WGL_EXT_extension_string` or the
 extensions listed below.  If both are available, the EXT one is preferred.  If
 neither is available, no other extensions are used and many GLFW features
 related to context creation will have no effect or cause errors when used.
+
+> **Libx reference note (GLFW 3.5.1):** The extension names above use singular `extension`. The [fixed implementation](https://github.com/glfw/glfw/blob/3.5.1/src/wgl_context.c#L482-L483) names `WGL_ARB_extensions_string` and `WGL_EXT_extensions_string`, with plural `extensions`. Its [extension-string query](https://github.com/glfw/glfw/blob/3.5.1/src/wgl_context.c#L363-L375) uses the ARB function when available, falling back to EXT, contrary to the preference stated above. The upstream names and preference are preserved above.
 
 GLFW uses the `WGL_EXT_swap_control` extension to provide vertical retrace
 synchronization (or _vsync_).  Where this extension is unavailable, calling [glfwSwapInterval](/docs/glfw/v3-5-1/en/04-reference/04-context-reference/#ga6d4e0cdf151b5e579bd67f13202994ed) will have no effect.

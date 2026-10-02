@@ -3,19 +3,21 @@ title: "API入門"
 description: "初期化、エラー、座標系、バージョン管理"
 ---
 
+> **Libx リファレンス注記（GLFW 3.5.1）:** 以下の初期化の節は、初期化前の呼び出しをメインスレッドに限定しています。一方、同じ固定版の [glfwGetVersion](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga9f8ffaacf3c269cc48eafbf8b9b71197) と [glfwGetVersionString](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga026abd003c8e6501981ab1662062f1c0) のリファレンスは、初期化前かつ任意のスレッドからの呼び出しを明示的に許可しています。このガイドのバージョン互換性の節にあるとおり、リファレンスの記述がガイドより優先されます。スレッド制約は各関数のリファレンスで確認してください。
+
 <a id="intro_guide"></a>
 
 # API入門
 
-このガイドでは GLFW の基本概念を紹介し、初期化、エラー処理、API の保証と制限について説明します。広範な内容を簡潔に学ぶチュートリアルについては、代わりに [quick_guide](/docs/glfw/v3-5-1/ja/02-getting-started/01-getting-started/#quick_guide)を参照してください。この分類の特定の関数について詳しくは、[init](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/)を参照してください。
+このガイドでは GLFW の基本概念を紹介し、初期化、エラー処理、API の保証と制限について説明します。広範な内容を簡潔に学ぶチュートリアルについては、代わりに [はじめに](/docs/glfw/v3-5-1/ja/02-getting-started/01-getting-started/#quick_guide)を参照してください。この分類の特定の関数について詳しくは、[初期化・バージョン・エラーリファレンス](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/)を参照してください。
 
 GLFW のほかの領域についてもガイドがあります。
 
- - [window_guide](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
- - [context_guide](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
- - [vulkan_guide](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
+ - [ウィンドウガイド](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
+ - [コンテキストガイド](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
+ - [Vulkanガイド](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [モニターガイド](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
+ - [入力ガイド](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
 
 
 <a id="intro_init"></a>
@@ -306,7 +308,7 @@ __通知されるエラーが致命的になることはありません。__ GLF
 
 ## 座標系
 
-GLFW には、_仮想スクリーン_と、ウィンドウの_コンテンツ領域_（単に_コンテンツ領域_とも呼びます）という2つの主要な座標系があります。どちらも同じ単位、すなわち_仮想スクリーン座標_（単に_スクリーン座標_とも呼びます）を使います。この単位がピクセルと一致するとは限りません。
+GLFW には、*仮想スクリーン*と、ウィンドウの*コンテンツ領域*（単に*コンテンツ領域*とも呼びます）という2つの主要な座標系があります。どちらも同じ単位、すなわち*仮想スクリーン座標*（単に*スクリーン座標*とも呼びます）を使います。この単位がピクセルと一致するとは限りません。
 
 <img src="/docs/glfw/assets/glfw-3.5.1/spaces.svg" width="90%" />
 

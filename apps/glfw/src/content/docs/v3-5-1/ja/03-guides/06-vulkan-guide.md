@@ -13,13 +13,13 @@ Vulkan 向けに開発するには、使用するプラットフォーム用の 
 
 [Vulkan Tutorial](https://vulkan-tutorial.com/) には、GLFW と Vulkan の使い方についてさらに詳しい情報があります。[Khronos Vulkan Samples](https://github.com/KhronosGroup/Vulkan-Samples) も、小さなフレームワークを挟んで GLFW を使っています。
 
-特定の Vulkan サポート関数について詳しくは、[vulkan](/docs/glfw/v3-5-1/ja/04-reference/07-vulkan-support-reference/)を参照してください。GLFW API のほかの領域についてもガイドがあります。
+特定の Vulkan サポート関数について詳しくは、[Vulkan サポートリファレンス](/docs/glfw/v3-5-1/ja/04-reference/07-vulkan-support-reference/)を参照してください。GLFW API のほかの領域についてもガイドがあります。
 
- - [intro_guide](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
- - [window_guide](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
- - [context_guide](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
+ - [API 入門](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [ウィンドウガイド](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
+ - [コンテキストガイド](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_guide)
+ - [モニターガイド](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
+ - [入力ガイド](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
 
 
 <a id="vulkan_loader"></a>
@@ -179,7 +179,7 @@ glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 GLFWwindow* window = glfwCreateWindow(640, 480, "Window Title", NULL, NULL);
 ```
 
-詳しくは [context_less](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_less)を参照してください。
+詳しくは [コンテキストのないウィンドウ](/docs/glfw/v3-5-1/ja/03-guides/02-context-guide/#context_less)を参照してください。
 
 
 <a id="vulkan_surface"></a>

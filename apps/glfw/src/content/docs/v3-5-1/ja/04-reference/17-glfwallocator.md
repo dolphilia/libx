@@ -3,6 +3,8 @@ title: "GLFWallocator 構造体"
 description: "GLFW 3.5.1 GLFWallocator 構造体"
 ---
 
+# GLFWallocator 構造体
+
 独自ヒープメモリアロケーター。[詳細...](/docs/glfw/v3-5-1/ja/04-reference/17-glfwallocator/#details)
 
 <table class="memberdecls">

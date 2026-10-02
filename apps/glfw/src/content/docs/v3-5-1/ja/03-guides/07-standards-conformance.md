@@ -43,6 +43,8 @@ GLFW は、マルチモニターをサポートするために XRandR 1.3 拡張
 
 GLFW は、ガンマランプをサポートするために XRandR 1.3 および Xf86vidmode 拡張機能を使用します。実行中の X サーバーがこれらの一方または両方をサポートしていない場合、ガンマランプは機能しません。
 
+> **Libx 参照注記（GLFW 3.5.1）：** 上の記述は、両方の拡張機能が必要であるとも読めます。[同版のガンマランプ実装](https://github.com/glfw/glfw/blob/3.5.1/src/x11_monitor.c#L540-L574)は、RandR が利用可能でガンマ機能の不具合が記録されていなければ先に RandR を使い、それ以外の場合は利用可能な Xf86vidmode に切り替えます。利用できる経路が一方あれば処理できます。上の原文の記述は保持しています。
+
 GLFW は、キーボード入力を提供するために Xkb 拡張機能と検出可能な自動リピートを使用します。実行中の X サーバーがこの拡張機能をサポートしていない場合は、Xkb を使わないフォールバック経路が使用されます。
 
 GLFW は、カーソルが無効なときに加速されていない生のマウス移動を提供するため、XInput2 拡張機能を使用します。実行中の X サーバーがこの拡張機能をサポートしていない場合は、通常の加速されたマウス移動が使用されます。
@@ -99,7 +101,11 @@ GLX API は、X Window System を使用する Unix 系システムで OpenGL コ
 
 GLFW は、フレームバッファのピクセルフォーマットを列挙して選択するために、GLX 1.3 の `GLXFBConfig` 関数を使用します。GLX 1.3 がサポートされていない場合、[glfwInit](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga317aac130a235ab08c6db0834907d85e) は失敗します。
 
+> **Libx 参照注記（GLFW 3.5.1）：** 上の文は [glfwInit](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga317aac130a235ab08c6db0834907d85e) を挙げていますが、[同版の X11 ウィンドウ作成実装](https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L1963-L1985)では、ネイティブ OpenGL コンテキストを持つウィンドウの作成時に GLX を初期化します。[GLX のバージョン検査](https://github.com/glfw/glfw/blob/3.5.1/src/glx_context.c#L348-L360)は、この段階で 1.3 未満の GLX 1.x を拒否します。`GLFW_NO_API` を使うウィンドウと EGL の経路は、この GLX 初期化の分岐を通りません。原文の文を変更せず、失敗する段階を補足しています。
+
 GLFW は、垂直帰線同期（_vsync_）を提供するために、`GLX_MESA_swap_control,`、`GLX_EXT_swap_control`、`GLX_SGI_swap_control` の各拡張機能をこの優先順で使用します。これらの拡張機能をどれも利用できない場合、[glfwSwapInterval](/docs/glfw/v3-5-1/ja/04-reference/04-context-reference/#ga6d4e0cdf151b5e579bd67f13202994ed) を呼び出しても効果はありません。
+
+> **Libx 参照注記（GLFW 3.5.1）：** 上の `GLX_MESA_swap_control,` 内のコンマは原文に含まれています。[同版の拡張機能検索](https://github.com/glfw/glfw/blob/3.5.1/src/glx_context.c#L380-L386)では、コンマのない `GLX_MESA_swap_control` を使用します。また、[同版のスワップ間隔実装](https://github.com/glfw/glfw/blob/3.5.1/src/glx_context.c#L188-L205)の優先順は EXT、MESA、SGI で、上の記述の順序と異なります。
 
 GLFW は、マルチサンプリングによるアンチエイリアスを備えたコンテキストを作成するために、`GLX_ARB_multisample` 拡張機能を使用します。この拡張機能を利用できない場合、`GLFW_SAMPLES` ヒントは効果を持ちません。
 
@@ -119,6 +125,8 @@ GLFW は、sRGB フレームバッファをサポートするために `GLX_ARB_
 WGL API は、Microsoft Windows および Wine などの Win32 API 実装で OpenGL コンテキストを作成するために使用されます。
 
 GLFW は、以下に挙げるほかのすべての WGL 拡張機能が存在するかを確認するために、`WGL_EXT_extension_string` または `WGL_ARB_extension_string` 拡張機能を使用します。両方を利用できる場合は EXT の方が優先されます。どちらも利用できない場合、ほかの拡張機能は使用されず、コンテキスト作成に関係する GLFW の多くの機能は、使用しても効果を持たないかエラーを発生させます。
+
+> **Libx 参照注記（GLFW 3.5.1）：** 上の拡張名では単数の `extension` が使われています。[同版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/wgl_context.c#L482-L483)が挙げる名前は、複数の `extensions` を含む `WGL_ARB_extensions_string` と `WGL_EXT_extensions_string` です。また、[拡張文字列の取得処理](https://github.com/glfw/glfw/blob/3.5.1/src/wgl_context.c#L363-L375)は、利用可能な ARB 関数を先に使い、それ以外の場合に EXT を使います。これは上に記載された優先順と異なります。上の原文の名前と優先順は保持しています。
 
 GLFW は、垂直帰線同期（_vsync_）を提供するために `WGL_EXT_swap_control` 拡張機能を使用します。この拡張機能を利用できない場合、[glfwSwapInterval](/docs/glfw/v3-5-1/ja/04-reference/04-context-reference/#ga6d4e0cdf151b5e579bd67f13202994ed) を呼び出しても効果はありません。
 
@@ -152,7 +160,7 @@ macOS は、OpenGL コンテキストをカレントではない状態にして�
 
 ## Vulkan ローダーと API
 
-既定では、GLFW は macOS を除くすべてのプラットフォームで、システム全体の標準 Vulkan ローダーを使用して Vulkan API にアクセスします。このローダーは、グラフィックスドライバーと Vulkan SDK のどちらによってもインストールされます。ローダーまたは最低限機能する ICD が少なくとも 1 つ存在しない場合、[glfwVulkanSupported](/docs/glfw/v3-5-1/ja/04-reference/07-vulkan-support-reference/#ga2e7f30931e02464b5bc8d0d4b6f9fe2b) は `GLFW_FALSE` を返し、そのほかの Vulkan 関連関数はすべて [GLFW_API_UNAVAILABLE](/docs/glfw/v3-5-1/ja/04-reference/02-error-codes/#ga56882b290db23261cc6c053c40c2d08e) エラーで失敗します。
+既定では、GLFW は macOS を除くすべてのプラットフォームで、システム全体の標準 Vulkan ローダーを使用して Vulkan API にアクセスします。このローダーは、グラフィックスドライバーと Vulkan SDK のどちらによってもインストールされます。ローダーが存在しない場合、または最低限機能する ICD が 1 つも存在しない場合、[glfwVulkanSupported](/docs/glfw/v3-5-1/ja/04-reference/07-vulkan-support-reference/#ga2e7f30931e02464b5bc8d0d4b6f9fe2b) は `GLFW_FALSE` を返し、そのほかの Vulkan 関連関数はすべて [GLFW_API_UNAVAILABLE](/docs/glfw/v3-5-1/ja/04-reference/02-error-codes/#ga56882b290db23261cc6c053c40c2d08e) エラーで失敗します。
 
 
 <a id="compat_wsi"></a>

@@ -3,6 +3,8 @@ title: "キーボードキートークン"
 description: "GLFW 3.5.1 キーボードキートークン"
 ---
 
+# キーボードキートークン
+
 <span id="details"></span>
 
 ## 説明
@@ -910,7 +912,7 @@ description: "GLFW 3.5.1 キーボードキートークン"
 
 |                                             |
 |---------------------------------------------|
-| \#define GLFW_KEY_APOSTROPHE   39 /\* ' \*/ |
+| \#define GLFW_KEY_APOSTROPHE   39 `/* ' */` |
 
 </div>
 

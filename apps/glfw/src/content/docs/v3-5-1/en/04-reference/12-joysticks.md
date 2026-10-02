@@ -3,6 +3,8 @@ title: "Joysticks"
 description: "GLFW 3.5.1 Joysticks"
 ---
 
+# Joysticks
+
 <span id="details"></span>
 
 ## Description

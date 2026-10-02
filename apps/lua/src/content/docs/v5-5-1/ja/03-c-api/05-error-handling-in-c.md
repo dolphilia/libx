@@ -28,4 +28,5 @@ APIでエラーを報告するいくつかの関数は、異なる種類のエ�
 - **<a id="pdf-LUA_ERRSYNTAX"></a>`LUA_ERRSYNTAX`**：プリコンパイル中の構文エラー、またはバイナリチャンクの形式エラー。
 - **<a id="pdf-LUA_YIELD"></a>`LUA_YIELD`**：スレッド（コルーチン）がyieldした。
 - **<a id="pdf-LUA_ERRFILE"></a>`LUA_ERRFILE`**：ファイル関連のエラー。たとえば、ファイルを開けない、または読み取れない場合。
+
 これらの定数はヘッダーファイル`lua.h`で定義されています。

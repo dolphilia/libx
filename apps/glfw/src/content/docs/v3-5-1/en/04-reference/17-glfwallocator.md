@@ -3,6 +3,8 @@ title: "GLFWallocator structure"
 description: "GLFW 3.5.1 GLFWallocator structure"
 ---
 
+# GLFWallocator structure
+
 Custom heap memory allocator. [More...](/docs/glfw/v3-5-1/en/04-reference/17-glfwallocator/#details)
 
 <table class="memberdecls">

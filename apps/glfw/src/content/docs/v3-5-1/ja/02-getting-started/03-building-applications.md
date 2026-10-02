@@ -7,7 +7,7 @@ description: "GLFWを使うアプリケーションをビルドしてリンク�
 
 # アプリケーションをビルドする
 
-このページでは、GLFW を使うアプリケーションのコンパイルとリンクについて説明します。そのようなアプリケーションの作成方法については、[入門チュートリアル](/docs/glfw/v3-5-1/ja/02-getting-started/01-getting-started/#quick_guide)から始めてください。GLFW ライブラリ自体のコンパイル方法については、[compile_guide](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_guide)を参照してください。
+このページでは、GLFW を使うアプリケーションのコンパイルとリンクについて説明します。そのようなアプリケーションの作成方法については、[入門チュートリアル](/docs/glfw/v3-5-1/ja/02-getting-started/01-getting-started/#quick_guide)から始めてください。GLFW ライブラリ自体のコンパイル方法については、[GLFWのコンパイル](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_guide)を参照してください。
 
 これはコンパイルやリンクそのもののチュートリアルではありません。C プログラムをコンパイル・リンクする方法と、選択した開発環境のコンパイラの使い方について、基本的な知識があることを前提としています。コンパイルとリンクの手順については、C プログラミングの教材や開発環境のドキュメントで説明されているはずです。
 
@@ -194,7 +194,7 @@ gcc -o myprog myprog.c -D GLFW_DLL -I path/to/glfw/include path/to/glfw/lib-ming
 
 ### CMakeとGLFWソースを使う
 
-この節では、CMake を使い、アプリケーションとともに GLFW をコンパイルしてリンクする方法を説明します。インストール済みのバイナリを使う場合は、[build_link_cmake_package](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_link_cmake_package)を参照してください。
+この節では、CMake を使い、アプリケーションとともに GLFW をコンパイルしてリンクする方法を説明します。インストール済みのバイナリを使う場合は、[CMakeとインストール済みGLFWバイナリを使う](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_link_cmake_package)を参照してください。
 
 `CMakeLists.txt` にいくつか変更を加えると、GLFW ソースツリーをアプリケーションと一緒にビルドできます。
 
@@ -231,7 +231,7 @@ CMake でプログラムと GLFW ソースをビルドする最小構成の例�
 
 ### CMakeとインストール済みGLFWバイナリを使う
 
-この節では、ビルドしてインストールした後の GLFW を CMake でリンクする方法を説明します。アプリケーションと一緒に GLFW をビルドする場合は、[build_link_cmake_source](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_link_cmake_source)を参照してください。
+この節では、ビルドしてインストールした後の GLFW を CMake でリンクする方法を説明します。アプリケーションと一緒に GLFW をビルドする場合は、[CMakeとGLFWソースを使う](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_link_cmake_source)を参照してください。
 
 `CMakeLists.txt` にいくつか変更を加えると、GLFW のインストール時に生成されたパッケージファイルとターゲットファイルを検索できます。
 

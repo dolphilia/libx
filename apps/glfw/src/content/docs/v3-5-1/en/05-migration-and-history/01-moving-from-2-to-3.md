@@ -26,6 +26,8 @@ Unix-like systems, where it uses the [soname][] `libglfw.so.3`.
 
 [soname]: https://en.wikipedia.org/wiki/soname
 
+> **Libx reference note (GLFW 3.5.1):** The comma inside `glfw3,` above is part of the upstream wording. The [fixed library output-name configuration](https://github.com/glfw/glfw/blob/3.5.1/src/CMakeLists.txt#L118-L126) uses `glfw` for a shared library on Unix-like systems and `glfw3` otherwise, without a comma. The upstream wording is preserved above.
+
 __Old syntax__
 ```c
 #include <GL/glfw.h>
@@ -514,7 +516,7 @@ example [libtess2][].
 
 ### Renamed types
 | GLFW 2              | GLFW 3                | Notes |
-| ------------------- | --------------------- |       |
+| ------------------- | --------------------- | ----- |
 | `GLFWmousewheelfun` | [GLFWscrollfun](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaf656112c33de3efdb227fa58f0134cf5)    |       |
 | `GLFWmouseposfun`   | [GLFWcursorposfun](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gad6fae41b3ac2e4209aaa87b596c57f68) |       |
 

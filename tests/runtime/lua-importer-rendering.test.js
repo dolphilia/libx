@@ -38,6 +38,51 @@ stop handling options.
 
 - **-e** *stat*: execute statement *stat*.
 
-- **--**: stop handling options.`
+- **\`--\`**: stop handling options.`
+  );
+});
+
+test('Lua見出し直後のpで囲まれていない説明をインライン要素で分割しない', () => {
+  const source = `<p><hr><h3><a name="pdf-dofile"><code>dofile ([filename])</code></a></h3>
+Opens the named file and executes its content as a Lua chunk.
+When called without arguments, <code>dofile</code> executes the content of
+standard input (<code>stdin</code>).
+<p>Errors propagate to the caller.
+`;
+
+  assert.equal(
+    renderHtmlFragmentForTest(source),
+    '---\n\n### <a id="pdf-dofile"></a>`dofile ([filename])`\n\n' +
+      'Opens the named file and executes its content as a Lua chunk. When called without arguments, `dofile` executes the content of standard input (`stdin`).\n\n' +
+      'Errors propagate to the caller.'
+  );
+});
+
+test('Lua説明のインライン要素を結合しても明示段落とコード境界を保つ', () => {
+  const source =
+    '<h3>Values</h3>First <code>x</code> and <b>nil</b>.' +
+    '<p>Second <code>y</code>.</p><pre>print(x)\nprint(y)</pre>' +
+    'After <code>z</code>.<hr><h3>Next</h3>Last <code>w</code>.';
+
+  assert.equal(
+    renderHtmlFragmentForTest(source),
+    '### Values\n\nFirst `x` and **nil**.\n\nSecond `y`.\n\n' +
+      '```lua\nprint(x)\nprint(y)\n```\n\nAfter `z`.\n\n---\n\n### Next\n\nLast `w`.'
+  );
+});
+
+test('Lua書式で意味を持つ空白コードを消さずに保持する', () => {
+  assert.equal(
+    renderHtmlFragmentForTest(
+      "<p>Flags: <code> </code>; ordinary <code>x</code>.</p><ul><li><b>'<code> </code>'</b>: ignored</li></ul>"
+    ),
+    "Flags: ` `; ordinary `x`.\n\n- **'` `'**: ignored"
+  );
+});
+
+test('Lua manの標準出力記号のASCII引用符をコードで保持する', () => {
+  assert.equal(
+    renderMan('.SH OPTIONS\n.TP\n.B "\'\\-\'"\nstandard output.\n', { title: 'luac command' }),
+    "# luac command\n\n## OPTIONS\n\n- **`'-'`**: standard output."
   );
 });

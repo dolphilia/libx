@@ -3,6 +3,8 @@ title: "GLFWgammaramp 構造体"
 description: "GLFW 3.5.1 GLFWgammaramp 構造体"
 ---
 
+# GLFWgammaramp 構造体
+
 ガンマランプ。[詳細...](/docs/glfw/v3-5-1/ja/04-reference/19-glfwgammaramp/#details)
 
 <table class="memberdecls">

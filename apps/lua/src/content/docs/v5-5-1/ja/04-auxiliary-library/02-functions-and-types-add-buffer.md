@@ -142,61 +142,17 @@ typedef struct luaL_Buffer luaL_Buffer;
 
 文字列バッファーを使うと、CコードでLua文字列を断片ごとに構築できます。使用パターンは次のとおりです。
 
-- 最初に、型
-  
-  [`luaL_Buffer`](/docs/lua/v5-5-1/ja/04-auxiliary-library/02-functions-and-types-add-buffer/#luaL_Buffer)
-  
-  の変数
-  
-  `b`
-  
-  を宣言します。
-- 次に、呼び出し
-  
-  `luaL_buffinit(L,&b)`
-  
-  で初期化します。
-- 次に、いずれかの
-  
-  `luaL_add*`
-  
-  関数を呼び出し、文字列の断片をバッファーへ追加します。
-- 最後に、
-  
-  `luaL_pushresult(&b)`
-  
-  を呼び出します。この呼び出しは最終的な文字列をスタック最上部に残します。
+- 最初に、型[`luaL_Buffer`](/docs/lua/v5-5-1/ja/04-auxiliary-library/02-functions-and-types-add-buffer/#luaL_Buffer)の変数`b`を宣言します。
+- 次に、呼び出し`luaL_buffinit(L,&b)`で初期化します。
+- 次に、いずれかの`luaL_add*`関数を呼び出し、文字列の断片をバッファーへ追加します。
+- 最後に、`luaL_pushresult(&b)`を呼び出します。この呼び出しは最終的な文字列をスタック最上部に残します。
 
 結果の文字列の最大サイズが事前に分かっている場合、次のようにバッファーを使えます。
 
-- 最初に、型
-  
-  [`luaL_Buffer`](/docs/lua/v5-5-1/ja/04-auxiliary-library/02-functions-and-types-add-buffer/#luaL_Buffer)
-  
-  の変数
-  
-  `b`
-  
-  を宣言します。
-- 次に、呼び出し
-  
-  `luaL_buffinitsize(L,&b,sz)`
-  
-  で初期化し、サイズ
-  
-  `sz`
-  
-  の領域を事前に割り当てます。
+- 最初に、型[`luaL_Buffer`](/docs/lua/v5-5-1/ja/04-auxiliary-library/02-functions-and-types-add-buffer/#luaL_Buffer)の変数`b`を宣言します。
+- 次に、呼び出し`luaL_buffinitsize(L,&b,sz)`で初期化し、サイズ`sz`の領域を事前に割り当てます。
 - 次に、その領域へ文字列を生成します。
-- 最後に、
-  
-  `luaL_pushresultsize(&b,sz)`
-  
-  を呼び出します。ここで
-  
-  `sz`
-  
-  は、その領域へコピーされた結果の文字列の総サイズです（事前割り当てサイズ以下の場合があります）。
+- 最後に、`luaL_pushresultsize(&b,sz)`を呼び出します。ここで`sz`は、その領域へコピーされた結果の文字列の総サイズです（事前割り当てサイズ以下の場合があります）。
 
 通常の動作中、文字列バッファーは可変数のスタックスロットを使います。そのため、バッファーを使っている間、スタック最上部の位置が分かっていると仮定できません。バッファー操作を連続して呼び出す間では、使用が釣り合っている限りスタックを使えます。つまり、バッファー操作を呼び出すとき、スタックは直前のバッファー操作直後と同じレベルでなければなりません。（この規則の唯一の例外は[`luaL_addvalue`](/docs/lua/v5-5-1/ja/04-auxiliary-library/02-functions-and-types-add-buffer/#luaL_addvalue)です。）[`luaL_pushresult`](/docs/lua/v5-5-1/ja/04-auxiliary-library/05-functions-and-types-make-push/#luaL_pushresult)を呼び出すと、スタックは、バッファー初期化時のレベルに戻り、最上部に最終的な文字列が置かれます。
 
