@@ -1,0 +1,60 @@
+{
+  "status": "needs-editorial-note",
+  "version": "12.2.0",
+  "sourceCommit": "1be298e1bd68957e4cd352e1f676f00e07dcfb57",
+  "documentation": {
+    "path": "docs/notes/document-import/fmt/v12-2-0/source/doc/api.md",
+    "sha256": "a9c8401c65c4cbbfb3d1abd569ac0781903e15cf07599bb6cfba028d22ee212b"
+  },
+  "canonical": {
+    "path": "docs/notes/document-import/fmt/v12-2-0/generated/canonical/01-docs/03-api.md",
+    "sha256": "e31c127df02d8ee09fe67c4519aa8467d59b27f7c6f3d91ffe77e2c5af85723a"
+  },
+  "claims": {
+    "macroDefault": "FMT_USE_LOCALE default1;0when FMT_OPTIMIZE_SIZE>1",
+    "optimizationList": "FMT_OPTIMIZE_SIZE level1 disables locale support"
+  },
+  "fixedHeader": {
+    "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h",
+    "sha256": "888315df369b34360880a89998ce24191e7c1b2b0606666ec8fddb31f0cae2fb"
+  },
+  "headerLines": {
+    "start": 890,
+    "end": 892
+  },
+  "actualDefaultDefinition": "#ifndef FMT_USE_LOCALE\n#  define FMT_USE_LOCALE (FMT_OPTIMIZE_SIZE <= 1)\n#endif",
+  "verification": {
+    "compiler": "/usr/bin/clang++",
+    "standard": "c++11",
+    "mode": "fsyntax-only static_assert",
+    "test": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/locale-check.cpp",
+      "sha256": "f7980d1644f715c7c9219cc203b32c1130a698f8f8d01c384240fd32f6263c4a"
+    },
+    "level1": {
+      "expectedLocale": 1,
+      "exitCode": 0,
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/LOCALE_LEVEL1_VERIFIED.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "level2": {
+      "expectedLocale": 0,
+      "exitCode": 0,
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/LOCALE_LEVEL2_VERIFIED.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "initialCompilerFailure": {
+    "compiler": "/opt/homebrew/opt/llvm@19/bin/clang++",
+    "log": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/LOCALE_LEVEL1_CHECK.log",
+      "sha256": "bb004e0651e75b8725881998df41dc89b07779a1f71e8087f4a803e2944a1762"
+    },
+    "reason": "Local Homebrew standard-header setup reported12undefined Csystem types/functions; not used as successful fmtverification."
+  },
+  "decision": "Keep original documentation text; add English/JA editorial annotation linked to fixedbase.h890-892, stating defaultlocale enabled at optimizelevel1 anddisabled atlevel2 unless explicitly overridden. Do not silently rewrite source or pass unresolved condition."
+}

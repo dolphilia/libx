@@ -1,0 +1,52 @@
+In file included from /private/tmp/libx-fmt-locale-check-234.cpp:1:
+In file included from docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:18:
+/opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/string.h:94:102: error: unknown type name 'size_t'
+   94 | inline _LIBCPP_HIDE_FROM_ABI _LIBCPP_PREFERRED_OVERLOAD const void* memchr(const void* __s, int __c, size_t __n) {
+      |                                                                                                      ^
+/opt/homebrew/Cellar/llvm@19/19.1.7/bin/../include/c++/v1/string.h:97:90: error: unknown type name 'size_t'
+   97 | inline _LIBCPP_HIDE_FROM_ABI _LIBCPP_PREFERRED_OVERLOAD void* memchr(void* __s, int __c, size_t __n) {
+      |                                                                                          ^
+In file included from /private/tmp/libx-fmt-locale-check-234.cpp:1:
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2401:29: error: unknown type name 'FILE'
+ 2401 | inline void vprint_mojibake(FILE*, string_view, const format_args&, bool) {}
+      |                             ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2883:21: error: unknown type name 'FILE'
+ 2883 | FMT_API void vprint(FILE* f, string_view fmt, format_args args);
+      |                     ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2884:23: error: unknown type name 'FILE'
+ 2884 | FMT_API void vprintln(FILE* f, string_view fmt, format_args args);
+      |                       ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2885:30: error: unknown type name 'FILE'
+ 2885 | FMT_API void vprint_buffered(FILE* f, string_view fmt, format_args args);
+      |                              ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2899:36: error: use of undeclared identifier 'stdout'
+ 2899 |     return detail::vprint_mojibake(stdout, fmt.str, va, false);
+      |                                    ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2900:48: error: use of undeclared identifier 'stdout'
+ 2900 |   detail::is_locking<T...>() ? vprint_buffered(stdout, fmt.str, va)
+      |                                                ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2913:23: error: unknown type name 'FILE'
+ 2913 | FMT_INLINE void print(FILE* f, format_string<T...> fmt, T&&... args) {
+      |                       ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2924:25: error: unknown type name 'FILE'
+ 2924 | FMT_INLINE void println(FILE* f, format_string<T...> fmt, T&&... args) {
+      |                         ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2934:16: error: use of undeclared identifier 'stdout'
+ 2934 |   fmt::println(stdout, fmt, static_cast<T&&>(args)...);
+      |                ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:457:61: error: use of undeclared identifier 'memcmp'
+  457 |   if (!is_constant_evaluated() && sizeof(Char) == 1) return memcmp(s1, s2, n);
+      |                                                             ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:573:23: note: in instantiation of function template specialization 'fmt::detail::compare<char>' requested here
+  573 |     int cmp = detail::compare(data_, other.data_, min_of(size_, other.size_));
+      |                       ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:580:16: note: in instantiation of member function 'fmt::basic_string_view<char>::compare' requested here
+  580 |     return lhs.compare(rhs) == 0;
+      |                ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2617:35: note: in instantiation of member function 'fmt::operator==' requested here
+ 2617 |       if (named_args.data[i].name == name) return named_args.data[i].id;
+      |                                   ^
+docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h:2654:18: note: in instantiation of function template specialization 'fmt::basic_format_args<fmt::context>::get_id<char>' requested here
+ 2654 |     return args_.get_id(name);
+      |                  ^
+12 errors generated.
