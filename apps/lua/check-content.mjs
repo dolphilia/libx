@@ -4,6 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { findRepositoryRoot } from '@docs/project-config/app-registry';
 const root = findRepositoryRoot(path.dirname(fileURLToPath(import.meta.url)));
 const operations = [
+  ['importers/lua-bugs-2026-10-02.mjs', '--check'],
   ['importers/import-lua-5.5.1.mjs', '--check', '--allow-missing-source'],
   ['importers/normalize-lua-translation-format.mjs', '--check'],
   [
