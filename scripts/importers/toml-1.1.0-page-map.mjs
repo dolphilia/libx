@@ -1,0 +1,50 @@
+export const TOML_VERSION = '1.1.0';
+export const TOML_VERSION_ID = 'v1-1-0';
+export const TOML_SPECIFICATION_HEADINGS = [
+  ['TOML v1.1.0', 'toml-v110'],
+  ['Objectives', 'objectives'],
+  ['Table of contents', 'table-of-contents'],
+  ['Preliminaries', 'preliminaries'],
+  ['Comment', 'comment'],
+  ['Key/Value Pair', 'keyvalue-pair'],
+  ['Keys', 'keys'],
+  ['String', 'string'],
+  ['Integer', 'integer'],
+  ['Float', 'float'],
+  ['Boolean', 'boolean'],
+  ['Offset Date-Time', 'offset-date-time'],
+  ['Local Date-Time', 'local-date-time'],
+  ['Local Date', 'local-date'],
+  ['Local Time', 'local-time'],
+  ['Array', 'array'],
+  ['Table', 'table'],
+  ['Inline Table', 'inline-table'],
+  ['Array of Tables', 'array-of-tables'],
+  ['Filename Extension', 'filename-extension'],
+  ['MIME Type', 'mime-type'],
+  ['ABNF Grammar', 'abnf-grammar'],
+];
+export const TOML_PAGE_MAP = [
+  {
+    id: '01-specification/01-specification.md',
+    title: 'TOML v1.1.0',
+    description: 'The complete official TOML 1.1.0 specification.',
+    source: 'specification.md',
+    kind: 'specification',
+  },
+  {
+    id: '02-reference/02-abnf.md',
+    title: 'TOML 1.1.0 ABNF grammar',
+    description: 'The complete formal grammar for TOML 1.1.0.',
+    source: 'toml.abnf',
+    kind: 'grammar',
+    licenseSource: 'toml-grammar-1.1.0',
+  },
+  {
+    id: '03-license/01-license.md',
+    title: 'TOML 1.1.0 licenses',
+    description: 'Original MIT notices for the published specification and grammar.',
+    source: ['SITE-LICENSE.txt', 'SPEC-LICENSE.txt'],
+    kind: 'licenses',
+  },
+];
