@@ -1,0 +1,2021 @@
+{
+  "schemaVersion": 1,
+  "page": "01-docs/03-api.md",
+  "status": "all-segments-drafted",
+  "canonical": {
+    "path": "docs/notes/document-import/fmt/v12-2-0/generated/canonical/01-docs/03-api.md",
+    "sha256": "af885832ee4d4f203a1869d1fb650103a372096b85fe104dadc9c60c2df4aa2f"
+  },
+  "segmentSource": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-236/API_TRANSLATION_SEGMENTS.json",
+    "sha256": "13c8aadb8a29bac7b90341af8743e1647647a75e2dca453422a7d64527c83b1c"
+  },
+  "totalSegments": 286,
+  "segments": [
+    {
+      "index": 0,
+      "tag": "p",
+      "id": null,
+      "text": "The {fmt} library API consists of the following components:",
+      "translated": "{fmt}ライブラリのAPIは、次の構成要素からなります。"
+    },
+    {
+      "index": 1,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/base.h: the base API providing main formatting\nfunctions for char/UTF-8 with C++20 compile-time checks and minimal\ndependencies",
+      "translated": "fmt/base.h：C++20のコンパイル時チェックと最小限の依存関係を備えた、char/UTF-8向けの主要な書式設定関数を提供する基本API"
+    },
+    {
+      "index": 2,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/format.h: fmt::format and other formatting\nfunctions as well as locale support",
+      "translated": "fmt/format.h：fmt::formatなどの書式設定関数とロケールサポート"
+    },
+    {
+      "index": 3,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/ranges.h: formatting of ranges and tuples",
+      "translated": "fmt/ranges.h：範囲とタプルの書式設定"
+    },
+    {
+      "index": 4,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/chrono.h: date and time formatting",
+      "translated": "fmt/chrono.h：日付と時刻の書式設定"
+    },
+    {
+      "index": 5,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/std.h: formatters for standard library types",
+      "translated": "fmt/std.h：標準ライブラリ型のフォーマッター"
+    },
+    {
+      "index": 6,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/compile.h: format string compilation",
+      "translated": "fmt/compile.h：書式文字列のコンパイル"
+    },
+    {
+      "index": 7,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/color.h: terminal colors and text styles",
+      "translated": "fmt/color.h：端末の色とテキストスタイル"
+    },
+    {
+      "index": 8,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/os.h: system APIs",
+      "translated": "fmt/os.h：システムAPI"
+    },
+    {
+      "index": 9,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/ostream.h: std::ostream support",
+      "translated": "fmt/ostream.h：std::ostreamのサポート"
+    },
+    {
+      "index": 10,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/args.h: dynamic argument lists",
+      "translated": "fmt/args.h：動的な引数リスト"
+    },
+    {
+      "index": 11,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/printf.h: safe printf",
+      "translated": "fmt/printf.h：安全なprintf"
+    },
+    {
+      "index": 12,
+      "tag": "li",
+      "id": null,
+      "text": "fmt/xchar.h: optional wchar_t support",
+      "translated": "fmt/xchar.h：任意で利用できるwchar_tサポート"
+    },
+    {
+      "index": 13,
+      "tag": "p",
+      "id": null,
+      "text": "All functions and types provided by the library reside in namespace\nfmt and macros have prefix FMT_.",
+      "translated": "ライブラリが提供するすべての関数と型はfmt名前空間に置かれ、マクロにはFMT_接頭辞が付きます。"
+    },
+    {
+      "index": 14,
+      "tag": "h2",
+      "id": "c-module-api",
+      "text": "C++ Module API",
+      "translated": "C++モジュールAPI"
+    },
+    {
+      "index": 15,
+      "tag": "p",
+      "id": null,
+      "text": "With the C++ module API, the headers listed above don't need to be\nincluded. You can use the import fmt; statement instead. All other\nfunctionality, listed below, remains the same.",
+      "translated": "C++モジュールAPIを使う場合、上に挙げたヘッダーをインクルードする必要はありません。代わりにimport fmt;文を使えます。以下で説明するその他の機能はすべて同じです。"
+    },
+    {
+      "index": 16,
+      "tag": "h2",
+      "id": "base-api",
+      "text": "Base API",
+      "translated": "基本API"
+    },
+    {
+      "index": 17,
+      "tag": "p",
+      "id": null,
+      "text": "fmt/base.h defines the base API which provides main formatting\nfunctions for char/UTF-8 with C++20 compile-time checks. It has\nminimal include dependencies for better compile times. This header is\nonly beneficial when using {fmt} as a library (the default) and not in\nthe header-only mode. It also provides formatter specializations for\nthe following types:",
+      "translated": "fmt/base.hは、C++20のコンパイル時チェックを備えたchar/UTF-8向けの主要な書式設定関数を提供する基本APIを定義します。コンパイル時間を短くするため、インクルードする依存ヘッダーを最小限に抑えています。このヘッダーの利点が得られるのは、{fmt}を既定のライブラリ形式で使う場合だけで、ヘッダーのみのモードではありません。また、次の型に対するformatterの特殊化も提供します。"
+    },
+    {
+      "index": 18,
+      "tag": "li",
+      "id": null,
+      "text": "int, long long",
+      "translated": "int, long long"
+    },
+    {
+      "index": 19,
+      "tag": "li",
+      "id": null,
+      "text": "unsigned, unsigned long long",
+      "translated": "unsigned, unsigned long long"
+    },
+    {
+      "index": 20,
+      "tag": "li",
+      "id": null,
+      "text": "float, double, long double",
+      "translated": "float, double, long double"
+    },
+    {
+      "index": 21,
+      "tag": "li",
+      "id": null,
+      "text": "bool",
+      "translated": "bool"
+    },
+    {
+      "index": 22,
+      "tag": "li",
+      "id": null,
+      "text": "char",
+      "translated": "char"
+    },
+    {
+      "index": 23,
+      "tag": "li",
+      "id": null,
+      "text": "const char*, fmt::string_view",
+      "translated": "const char*, fmt::string_view"
+    },
+    {
+      "index": 24,
+      "tag": "li",
+      "id": null,
+      "text": "const void*",
+      "translated": "const void*"
+    },
+    {
+      "index": 25,
+      "tag": "p",
+      "id": null,
+      "text": "The following functions use format string syntax similar\nto that of\nstr.format\nin Python. They take fmt and args as arguments.",
+      "translated": "次の関数は、Pythonのstr.formatに似た書式文字列の構文を使います。fmtとargsを引数として受け取ります。"
+    },
+    {
+      "index": 26,
+      "tag": "p",
+      "id": null,
+      "text": "fmt is a format string that contains literal text and replacement\nfields surrounded by braces {}. The fields are replaced with formatted\narguments in the resulting string.\nfmt::format_string is a format string which can be\nimplicitly constructed from a string literal or a constexpr string and\nis checked at compile time in C++20. To pass a runtime format string\nwrap it in fmt::runtime.",
+      "translated": "fmtは、通常のテキストと、波括弧{}で囲まれた置換フィールドを含む書式文字列です。結果の文字列では、フィールドが書式設定された引数に置き換わります。fmt::format_stringは、文字列リテラルまたはconstexpr文字列から暗黙に構築できる書式文字列で、C++20ではコンパイル時に検査されます。実行時の書式文字列を渡すには、fmt::runtimeで包みます。"
+    },
+    {
+      "index": 27,
+      "tag": "p",
+      "id": null,
+      "text": "args is an argument list representing objects to be formatted.",
+      "translated": "argsは、書式設定するオブジェクトを表す引数リストです。"
+    },
+    {
+      "index": 28,
+      "tag": "p",
+      "id": null,
+      "text": "I/O errors are reported as\nstd::system_error\nexceptions unless specified otherwise.",
+      "translated": "別途指定されていない限り、入出力エラーはstd::system_error例外として報告されます。"
+    },
+    {
+      "index": 29,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt and writes the output to stdout.",
+      "translated": "fmtの指定に従ってargsを書式設定し、出力をstdoutに書き込みます。"
+    },
+    {
+      "index": 30,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 31,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 32,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt and writes the output to the file f.",
+      "translated": "fmtの指定に従ってargsを書式設定し、出力をファイルfに書き込みます。"
+    },
+    {
+      "index": 33,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 34,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 35,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt and writes the output to stdout followed by a newline. ",
+      "translated": "fmtの指定に従ってargsを書式設定し、出力をstdoutに書き込んでから改行を出力します。"
+    },
+    {
+      "index": 36,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt and writes the output to the file f followed by a newline. ",
+      "translated": "fmtの指定に従ってargsを書式設定し、出力をファイルfに書き込んでから改行を出力します。"
+    },
+    {
+      "index": 37,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt, writes the result to the output iterator out and returns the iterator past the end of the output range. format_to does not append a terminating null character.",
+      "translated": "fmtの指定に従ってargsを書式設定し、結果を出力イテレーターoutに書き込み、出力範囲の終端の次を指すイテレーターを返します。format_toは終端のヌル文字を追加しません。"
+    },
+    {
+      "index": 38,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 39,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 40,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt, writes up to n characters of the result to the output iterator out and returns the total (not truncated) output size and the iterator past the end of the output range. format_to_n does not append a terminating null character. ",
+      "translated": "fmtの指定に従ってargsを書式設定し、結果のうち最大n文字を出力イテレーターoutに書き込みます。切り詰める前の出力全体のサイズと、出力範囲の終端の次を指すイテレーターを返します。format_to_nは終端のヌル文字を追加しません。"
+    },
+    {
+      "index": 41,
+      "tag": "p",
+      "id": null,
+      "text": "Iterator past the end of the output range. ",
+      "translated": "出力範囲の終端の次を指すイテレーター。"
+    },
+    {
+      "index": 42,
+      "tag": "p",
+      "id": null,
+      "text": "Total (not truncated) output size. ",
+      "translated": "切り詰める前の出力全体のサイズ。"
+    },
+    {
+      "index": 43,
+      "tag": "p",
+      "id": null,
+      "text": "Returns the number of chars in the output of format(fmt, args...). ",
+      "translated": "format(fmt, args...)の出力に含まれる文字数を返します。"
+    },
+    {
+      "index": 44,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 45,
+      "tag": "h3",
+      "id": "formatting-user-defined-types",
+      "text": "Formatting User-Defined Types",
+      "translated": "ユーザー定義型の書式設定"
+    },
+    {
+      "index": 46,
+      "tag": "p",
+      "id": null,
+      "text": "The {fmt} library provides formatters for many standard C++ types. See\nfmt/ranges.h for ranges and tuples including standard\ncontainers such as std::vector, fmt/chrono.h for date\nand time formatting and fmt/std.h for other standard\nlibrary types.",
+      "translated": "{fmt}ライブラリは、多くの標準C++型に対するフォーマッターを提供します。std::vectorなどの標準コンテナーを含む範囲とタプルについてはfmt/ranges.h、日付と時刻の書式設定についてはfmt/chrono.h、その他の標準ライブラリ型についてはfmt/std.hを参照してください。"
+    },
+    {
+      "index": 47,
+      "tag": "p",
+      "id": null,
+      "text": "There are two ways to make a user-defined type formattable: providing a\nformat_as function or specializing the formatter struct template.\nFormatting of non-void pointer types is intentionally disallowed and\nthey cannot be made formattable via either extension API.",
+      "translated": "ユーザー定義型を書式設定可能にする方法は2つあります。format_as関数を提供する方法と、formatter構造体テンプレートを特殊化する方法です。void型以外を指すポインター型の書式設定は意図的に禁止されており、どちらの拡張APIを使っても書式設定可能にはできません。"
+    },
+    {
+      "index": 48,
+      "tag": "p",
+      "id": null,
+      "text": "Use format_as if you want to make your type formattable as some other\ntype with the same format specifiers. The format_as function should\ntake an object of your type and return an object of a formattable type.\nIt should be defined in the same namespace as your type.",
+      "translated": "型を別の型として、同じ書式指定子で書式設定可能にしたい場合は、format_asを使います。format_as関数は、その型のオブジェクトを受け取り、書式設定可能な型のオブジェクトを返すようにします。この関数は、対象の型と同じ名前空間に定義するようにします。"
+    },
+    {
+      "index": 49,
+      "tag": "p",
+      "id": null,
+      "text": "Example (run):",
+      "translated": "例（実行）："
+    },
+    {
+      "index": 50,
+      "tag": "p",
+      "id": null,
+      "text": "Using a specialization is more complex, but gives you full control over\nparsing and formatting. To use this method, specialize the formatter\nstruct template for your type and implement parse and format\nmethods.",
+      "translated": "特殊化を使う方法はより複雑ですが、解析と書式設定を完全に制御できます。この方法を使うには、対象の型についてformatter構造体テンプレートを特殊化し、parseメソッドとformatメソッドを実装します。"
+    },
+    {
+      "index": 51,
+      "tag": "p",
+      "id": null,
+      "text": "The recommended way of defining a formatter is by reusing an existing\none via inheritance or composition. This way you can support standard\nformat specifiers without implementing them yourself. For example:",
+      "translated": "フォーマッターの定義では、継承またはコンポジションによって既存のフォーマッターを再利用する方法が推奨されます。こうすると、標準の書式指定子を自分で実装せずにサポートできます。例："
+    },
+    {
+      "index": 52,
+      "tag": "p",
+      "id": null,
+      "text": "Note that formatter<string_view>::format is defined in fmt/format.h\nso it has to be included in the source file. Since parse is inherited\nfrom formatter<string_view> it will recognize all string format\nspecifications, for example",
+      "translated": "formatter<string_view>::formatはfmt/format.hに定義されているため、このヘッダーをソースファイルにインクルードする必要があります。parseはformatter<string_view>から継承されるので、文字列の書式指定をすべて認識します。たとえば、"
+    },
+    {
+      "index": 53,
+      "tag": "p",
+      "id": null,
+      "text": "will return \"      blue\".",
+      "translated": "は\"      blue\"を返します。"
+    },
+    {
+      "index": 54,
+      "tag": "p",
+      "id": null,
+      "text": "In general the formatter has the following form:",
+      "translated": "一般に、フォーマッターは次の形を取ります。"
+    },
+    {
+      "index": 55,
+      "tag": "p",
+      "id": null,
+      "text": "It is recommended to at least support fill, align and width that apply\nto the whole object and have the same semantics as in standard\nformatters.",
+      "translated": "少なくとも、オブジェクト全体に適用され、標準フォーマッターと同じ意味を持つfill、align、widthをサポートすることが推奨されます。"
+    },
+    {
+      "index": 56,
+      "tag": "p",
+      "id": null,
+      "text": "You can also write a formatter for a hierarchy of classes:",
+      "translated": "クラス階層に対するフォーマッターも記述できます。"
+    },
+    {
+      "index": 57,
+      "tag": "p",
+      "id": null,
+      "text": "Providing both a formatter specialization and a format_as overload\nis disallowed.",
+      "translated": "formatterの特殊化とformat_asのオーバーロードを両方提供することは禁止されています。"
+    },
+    {
+      "index": 58,
+      "tag": "p",
+      "id": null,
+      "text": "Constructs a context object. References to the arguments are stored in the object so make sure they have appropriate lifetimes. ",
+      "translated": "contextオブジェクトを構築します。引数への参照がオブジェクトに保存されるため、引数の生存期間が適切であることを確認してください。"
+    },
+    {
+      "index": 59,
+      "tag": "h3",
+      "id": "compile-time-checks",
+      "text": "Compile-Time Checks",
+      "translated": "コンパイル時チェック"
+    },
+    {
+      "index": 60,
+      "tag": "p",
+      "id": null,
+      "text": "Compile-time format string checks are enabled by default on compilers\nthat support C++20 consteval. On older compilers you can use the\nFMT_STRING macro defined in fmt/format.h instead.",
+      "translated": "C++20のconstevalをサポートするコンパイラーでは、書式文字列のコンパイル時チェックが既定で有効です。古いコンパイラーでは、代わりにfmt/format.hで定義されたFMT_STRINGマクロを使えます。"
+    },
+    {
+      "index": 61,
+      "tag": "p",
+      "id": null,
+      "text": "Unused arguments are allowed as in Python's str.format and ordinary\nfunctions.",
+      "translated": "Pythonのstr.formatや通常の関数と同様に、使われない引数を渡すこともできます。"
+    },
+    {
+      "index": 62,
+      "tag": "p",
+      "id": null,
+      "text": "See Type Erasure for an example of how to enable\ncompile-time checks in your own functions with fmt::format_string\nwhile avoiding template bloat.",
+      "translated": "テンプレートによるコードの肥大化を避けながら、fmt::format_stringを使って独自の関数でコンパイル時チェックを有効にする例は、「型消去」を参照してください。"
+    },
+    {
+      "index": 63,
+      "tag": "p",
+      "id": null,
+      "text": "A compile-time format string. Use format_string in the public API to prevent type deduction. ",
+      "translated": "コンパイル時の書式文字列。公開APIでは、型推論を防ぐためにformat_stringを使います。"
+    },
+    {
+      "index": 64,
+      "tag": "p",
+      "id": null,
+      "text": "Creates a runtime format string.",
+      "translated": "実行時の書式文字列を作成します。"
+    },
+    {
+      "index": 65,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 66,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 67,
+      "tag": "h3",
+      "id": "type-erasure",
+      "text": "Type Erasure",
+      "translated": "型消去"
+    },
+    {
+      "index": 68,
+      "tag": "p",
+      "id": null,
+      "text": "You can create your own formatting function with compile-time checks and\nsmall binary footprint, for example\n(run):",
+      "translated": "コンパイル時チェックを備え、バイナリーサイズを小さく抑えた独自の書式設定関数を作成できます。例（実行）："
+    },
+    {
+      "index": 69,
+      "tag": "p",
+      "id": null,
+      "text": "Note that vlog is not parameterized on argument types which improves\ncompile times and reduces binary code size compared to a fully\nparameterized version.",
+      "translated": "vlogは引数の型をパラメーター化していないため、すべてをパラメーター化した版と比べて、コンパイル時間が短くなり、バイナリーのコードサイズも小さくなります。"
+    },
+    {
+      "index": 70,
+      "tag": "p",
+      "id": null,
+      "text": "Constructs an object that stores references to arguments and can be implicitly converted to format_args. Context can be omitted in which case it defaults to context. See arg for lifetime considerations. ",
+      "translated": "引数への参照を保存し、format_argsへ暗黙に変換できるオブジェクトを構築します。Contextは省略でき、その場合はcontextが既定値になります。生存期間についてはargを参照してください。"
+    },
+    {
+      "index": 71,
+      "tag": "p",
+      "id": null,
+      "text": "A view of a collection of formatting arguments. To avoid lifetime issues it should only be used as a parameter type in type-erased functions such as vformat: ",
+      "translated": "書式設定引数の集合を参照するビュー。生存期間の問題を避けるため、vformatなどの型消去を使う関数で、パラメーター型としてだけ使うようにします。"
+    },
+    {
+      "index": 72,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 73,
+      "tag": "p",
+      "id": null,
+      "text": "Constructs a basic_format_args object from format_arg_store. ",
+      "translated": "format_arg_storeからbasic_format_argsオブジェクトを構築します。"
+    },
+    {
+      "index": 74,
+      "tag": "p",
+      "id": null,
+      "text": "Constructs a basic_format_args object from a dynamic list of arguments. ",
+      "translated": "動的な引数リストからbasic_format_argsオブジェクトを構築します。"
+    },
+    {
+      "index": 75,
+      "tag": "p",
+      "id": null,
+      "text": "Returns the argument with the specified id. ",
+      "translated": "指定されたidの引数を返します。"
+    },
+    {
+      "index": 76,
+      "tag": "p",
+      "id": null,
+      "text": "Visits an argument dispatching to the appropriate visit method based on the argument type. For example, if the argument type is double then vis(value) will be called with the value of type double. ",
+      "translated": "引数の型に応じて適切なvisitメソッドへ処理を振り分け、引数を訪問します。たとえば、引数の型がdoubleの場合は、double型の値を渡してvis(value)を呼び出します。"
+    },
+    {
+      "index": 77,
+      "tag": "h3",
+      "id": "named-arguments",
+      "text": "Named Arguments",
+      "translated": "名前付き引数"
+    },
+    {
+      "index": 78,
+      "tag": "p",
+      "id": null,
+      "text": "Returns a named argument to be used in a formatting function. It should only be used in a call to a formatting function.",
+      "translated": "書式設定関数で使う名前付き引数を返します。書式設定関数の呼び出しの中だけで使うようにします。"
+    },
+    {
+      "index": 79,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 80,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 81,
+      "tag": "p",
+      "id": null,
+      "text": "Named arguments passed with fmt::arg are not supported in compile-time checks, but \"answer\"_a=42 are compile-time checked in sufficiently new compilers. See operator\"\"_a(). ",
+      "translated": "fmt::argで渡した名前付き引数はコンパイル時チェックでサポートされませんが、十分に新しいコンパイラーでは、\"answer\"_a=42はコンパイル時に検査されます。operator\"\"_a()を参照してください。"
+    },
+    {
+      "index": 82,
+      "tag": "h3",
+      "id": "compatibility",
+      "text": "Compatibility",
+      "translated": "互換性"
+    },
+    {
+      "index": 83,
+      "tag": "p",
+      "id": null,
+      "text": "An implementation of std::basic_string_view for pre-C++17 providing a subset of the API. fmt::basic_string_view is used in the public API even if std::basic_string_view is available to prevent issues when a library is compiled with a different -std option than the client code (which is not recommended). ",
+      "translated": "C++17より前の環境向けに、APIの一部を提供するstd::basic_string_viewの実装です。std::basic_string_viewが利用できる場合でも、公開APIではfmt::basic_string_viewを使います。これは、ライブラリとクライアントコードを異なる-stdオプションでコンパイルした場合の問題を防ぐためです。ただし、そのようなコンパイル方法は推奨されません。"
+    },
+    {
+      "index": 84,
+      "tag": "h2",
+      "id": "format-api",
+      "text": "Format API",
+      "translated": "書式設定API"
+    },
+    {
+      "index": 85,
+      "tag": "p",
+      "id": null,
+      "text": "fmt/format.h defines the full format API providing additional\nformatting functions and locale support.",
+      "translated": "fmt/format.hは、追加の書式設定関数とロケールサポートを提供する、完全な書式設定APIを定義します。"
+    },
+    {
+      "index": 86,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 87,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt and returns the result as a string.",
+      "translated": "fmtの指定に従ってargsを書式設定し、結果を文字列として返します。"
+    },
+    {
+      "index": 88,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 89,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 90,
+      "tag": "p",
+      "id": null,
+      "text": "User-defined literal equivalent of fmt::arg, but with compile-time checks.",
+      "translated": "fmt::argに相当するユーザー定義リテラルで、コンパイル時チェックを備えています。"
+    },
+    {
+      "index": 91,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 92,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 93,
+      "tag": "h3",
+      "id": "utilities",
+      "text": "Utilities",
+      "translated": "ユーティリティー"
+    },
+    {
+      "index": 94,
+      "tag": "p",
+      "id": null,
+      "text": "Converts p to const void* for pointer formatting.",
+      "translated": "ポインターを書式設定するために、pをconst void*に変換します。"
+    },
+    {
+      "index": 95,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 96,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 97,
+      "tag": "p",
+      "id": null,
+      "text": "Converts e to the underlying type.",
+      "translated": "eを基底型に変換します。"
+    },
+    {
+      "index": 98,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 99,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 100,
+      "tag": "p",
+      "id": null,
+      "text": "Returns a view that formats an integer value using ',' as a locale-independent thousands separator.",
+      "translated": "ロケールに依存しない3桁ごとの区切り文字として','を使い、整数値を書式設定するビューを返します。"
+    },
+    {
+      "index": 101,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 102,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 103,
+      "tag": "p",
+      "id": null,
+      "text": "A contiguous memory buffer with an optional growing ability. It is an internal class and shouldn't be used directly, only via memory_buffer. ",
+      "translated": "必要に応じて拡張できる、連続したメモリーバッファーです。内部クラスなので、直接は使わず、memory_bufferを通してだけ使うようにします。"
+    },
+    {
+      "index": 104,
+      "tag": "p",
+      "id": null,
+      "text": "Returns the size of this buffer. ",
+      "translated": "このバッファーのサイズを返します。"
+    },
+    {
+      "index": 105,
+      "tag": "p",
+      "id": null,
+      "text": "Returns the capacity of this buffer. ",
+      "translated": "このバッファーの容量を返します。"
+    },
+    {
+      "index": 106,
+      "tag": "p",
+      "id": null,
+      "text": "Returns a pointer to the buffer data (not null-terminated). ",
+      "translated": "バッファーデータへのポインターを返します。データはヌル終端されていません。"
+    },
+    {
+      "index": 107,
+      "tag": "p",
+      "id": null,
+      "text": "Clears this buffer. ",
+      "translated": "このバッファーをクリアします。"
+    },
+    {
+      "index": 108,
+      "tag": "p",
+      "id": null,
+      "text": "Appends data to the end of the buffer. ",
+      "translated": "バッファーの末尾にデータを追加します。"
+    },
+    {
+      "index": 109,
+      "tag": "p",
+      "id": null,
+      "text": "A dynamically growing memory buffer for trivially copyable/constructible types with the first SIZE elements stored in the object itself. Most commonly used via the memory_buffer alias for char.",
+      "translated": "自明にコピー／構築できる型のための、動的に拡張するメモリーバッファーです。最初のSIZE個の要素は、オブジェクト自体の内部に保存されます。通常は、char向けの別名memory_bufferを通して使います。"
+    },
+    {
+      "index": 110,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 111,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 112,
+      "tag": "p",
+      "id": null,
+      "text": "This will append \"The answer is 42.\" to out. The buffer content can be converted to std::string with to_string(out). ",
+      "translated": "これにより、outに\"The answer is 42.\"が追加されます。バッファーの内容は、to_string(out)でstd::stringに変換できます。"
+    },
+    {
+      "index": 113,
+      "tag": "p",
+      "id": null,
+      "text": "Constructs a basic_memory_buffer object moving the content of the other object to it. ",
+      "translated": "別のオブジェクトの内容をムーブして、basic_memory_bufferオブジェクトを構築します。"
+    },
+    {
+      "index": 114,
+      "tag": "p",
+      "id": null,
+      "text": "Moves the content of the other basic_memory_buffer object to this one. ",
+      "translated": "もう一方のbasic_memory_bufferオブジェクトの内容を、このオブジェクトへムーブします。"
+    },
+    {
+      "index": 115,
+      "tag": "p",
+      "id": null,
+      "text": "Resizes the buffer to contain count elements. If T is a POD type new elements may not be initialized. ",
+      "translated": "バッファーのサイズを変更し、count個の要素を含むようにします。TがPOD型の場合、新しい要素は初期化されないことがあります。"
+    },
+    {
+      "index": 116,
+      "tag": "p",
+      "id": null,
+      "text": "Increases the buffer capacity to new_capacity. ",
+      "translated": "バッファーの容量をnew_capacityまで増やします。"
+    },
+    {
+      "index": 117,
+      "tag": "h3",
+      "id": "system-errors",
+      "text": "System Errors",
+      "translated": "システムエラー"
+    },
+    {
+      "index": 118,
+      "tag": "p",
+      "id": null,
+      "text": "{fmt} does not use errno to communicate errors to the user, but it may\ncall system functions which set errno. Users should not make any\nassumptions about the value of errno being preserved by library\nfunctions.",
+      "translated": "{fmt}は利用者にエラーを伝えるためにerrnoを使いませんが、errnoを設定するシステム関数を呼び出すことがあります。ライブラリ関数がerrnoの値を保持するとは想定しないようにしてください。"
+    },
+    {
+      "index": 119,
+      "tag": "p",
+      "id": null,
+      "text": "Constructs std::system_error with a message formatted with fmt::format(fmt, args...). error_code is a system error code as given by errno.",
+      "translated": "fmt::format(fmt, args...)で書式設定したメッセージを使って、std::system_errorを構築します。error_codeは、errnoが表すようなシステムエラーコードです。"
+    },
+    {
+      "index": 120,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 121,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 122,
+      "tag": "p",
+      "id": null,
+      "text": "Formats an error message for an error returned by an operating system or a language runtime, for example a file opening error, and writes it to out. The format is the same as the one used by std::system_error(ec, message) where ec is std::error_code(error_code, std::generic_category()). It is implementation-defined but normally looks like: ",
+      "translated": "ファイルを開く際のエラーなど、オペレーティングシステムや言語ランタイムが返したエラーのメッセージを書式設定し、outに書き込みます。書式はstd::system_error(ec, message)と同じで、ここでecはstd::error_code(error_code, std::generic_category())です。この書式は実装定義ですが、通常は次のようになります。"
+    },
+    {
+      "index": 123,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 124,
+      "tag": "p",
+      "id": null,
+      "text": "where <message> is the passed message and <system-message> is the system message corresponding to the error code. error_code is a system error code as given by errno. ",
+      "translated": "ここで、<message>は渡したメッセージ、<system-message>はエラーコードに対応するシステムメッセージです。error_codeは、errnoが表すようなシステムエラーコードです。"
+    },
+    {
+      "index": 125,
+      "tag": "h3",
+      "id": "custom-allocators",
+      "text": "Custom Allocators",
+      "translated": "カスタムアロケーター"
+    },
+    {
+      "index": 126,
+      "tag": "p",
+      "id": null,
+      "text": "The {fmt} library supports custom dynamic memory allocators. A custom\nallocator class can be specified as a template argument to\nfmt::basic_memory_buffer:",
+      "translated": "{fmt}ライブラリは、カスタムの動的メモリーアロケーターをサポートします。fmt::basic_memory_bufferのテンプレート引数として、カスタムアロケーターのクラスを指定できます。"
+    },
+    {
+      "index": 127,
+      "tag": "p",
+      "id": null,
+      "text": "It is also possible to write a formatting function that uses a custom\nallocator:",
+      "translated": "カスタムアロケーターを使う書式設定関数を記述することもできます。"
+    },
+    {
+      "index": 128,
+      "tag": "p",
+      "id": null,
+      "text": "The allocator will be used for the output container only. Formatting\nfunctions normally don't do any allocations for built-in and string\ntypes except for non-default floating-point formatting that occasionally\nfalls back on sprintf.",
+      "translated": "このアロケーターが使われるのは、出力コンテナーだけです。書式設定関数は通常、組み込み型と文字列型に対してメモリーを割り当てません。ただし、既定以外の浮動小数点書式では、場合によってsprintfにフォールバックする例外があります。"
+    },
+    {
+      "index": 129,
+      "tag": "h3",
+      "id": "locale",
+      "text": "Locale",
+      "translated": "ロケール"
+    },
+    {
+      "index": 130,
+      "tag": "p",
+      "id": null,
+      "text": "All formatting is locale-independent by default. Use the 'L' format\nspecifier to insert the appropriate number separator characters from the\nlocale:",
+      "translated": "すべての書式設定は、既定ではロケールに依存しません。ロケールに応じた数値の区切り文字を挿入するには、'L'書式指定子を使います。"
+    },
+    {
+      "index": 131,
+      "tag": "p",
+      "id": null,
+      "text": "fmt/format.h provides the following overloads of formatting functions\nthat take std::locale as a parameter. The locale type is a template\nparameter to avoid the expensive <locale> include.",
+      "translated": "fmt/format.hは、std::localeをパラメーターとして受け取る、次の書式設定関数のオーバーロードを提供します。コストの高い<locale>のインクルードを避けるため、ロケールの型はテンプレートパラメーターになっています。"
+    },
+    {
+      "index": 132,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 133,
+      "tag": "h3",
+      "id": "legacy-compile-time-checks",
+      "text": "Legacy Compile-Time Checks",
+      "translated": "従来のコンパイル時チェック"
+    },
+    {
+      "index": 134,
+      "tag": "p",
+      "id": null,
+      "text": "FMT_STRING enables compile-time checks on older compilers. It requires\nC++14 or later and is a no-op in C++11.",
+      "translated": "FMT_STRINGは、古いコンパイラーでコンパイル時チェックを有効にします。C++14以降が必要で、C++11では何も行いません。"
+    },
+    {
+      "index": 135,
+      "tag": "p",
+      "id": null,
+      "text": "Constructs a legacy compile-time format string from a string literal s.",
+      "translated": "文字列リテラルsから、従来方式のコンパイル時書式文字列を構築します。"
+    },
+    {
+      "index": 136,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 137,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 138,
+      "tag": "p",
+      "id": null,
+      "text": "To force the use of legacy compile-time checks, define the preprocessor\nvariable FMT_ENFORCE_COMPILE_STRING. When set, functions accepting\nFMT_STRING will fail to compile with regular strings.",
+      "translated": "従来のコンパイル時チェックの使用を強制するには、プリプロセッサー変数FMT_ENFORCE_COMPILE_STRINGを定義します。これを設定すると、FMT_STRINGを受け取る関数に通常の文字列を渡した場合、コンパイルが失敗します。"
+    },
+    {
+      "index": 139,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 140,
+      "tag": "h2",
+      "id": "range-and-tuple-formatting",
+      "text": "Range and Tuple Formatting",
+      "translated": "範囲とタプルの書式設定"
+    },
+    {
+      "index": 141,
+      "tag": "p",
+      "id": null,
+      "text": "fmt/ranges.h provides formatting support for ranges and tuples:",
+      "translated": "fmt/ranges.hは、範囲とタプルの書式設定をサポートします。"
+    },
+    {
+      "index": 142,
+      "tag": "p",
+      "id": null,
+      "text": "Using fmt::join, you can separate tuple elements with a custom\nseparator:",
+      "translated": "fmt::joinを使うと、任意の区切り文字でタプルの要素を区切れます。"
+    },
+    {
+      "index": 143,
+      "tag": "p",
+      "id": null,
+      "text": "Returns a view that formats range with elements separated by sep.",
+      "translated": "rangeの要素をsepで区切って書式設定するビューを返します。"
+    },
+    {
+      "index": 144,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 145,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 146,
+      "tag": "p",
+      "id": null,
+      "text": "fmt::join applies passed format specifiers to the range elements: ",
+      "translated": "fmt::joinは、渡された書式指定子を範囲の要素に適用します。"
+    },
+    {
+      "index": 147,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 148,
+      "tag": "p",
+      "id": null,
+      "text": "Returns a view that formats the iterator range [begin, end) with elements separated by sep. ",
+      "translated": "イテレーター範囲[begin, end)の要素をsepで区切って書式設定するビューを返します。"
+    },
+    {
+      "index": 149,
+      "tag": "p",
+      "id": null,
+      "text": "Returns an object that formats std::initializer_list with elements separated by sep.",
+      "translated": "std::initializer_listの要素をsepで区切って書式設定するオブジェクトを返します。"
+    },
+    {
+      "index": 150,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 151,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 152,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 153,
+      "tag": "h2",
+      "id": "date-and-time-formatting",
+      "text": "Date and Time Formatting",
+      "translated": "日付と時刻の書式設定"
+    },
+    {
+      "index": 154,
+      "tag": "p",
+      "id": null,
+      "text": "fmt/chrono.h provides formatters for",
+      "translated": "fmt/chrono.hは、次の型のフォーマッターを提供します。"
+    },
+    {
+      "index": 155,
+      "tag": "li",
+      "id": null,
+      "text": "std::chrono::duration",
+      "translated": "std::chrono::duration"
+    },
+    {
+      "index": 156,
+      "tag": "li",
+      "id": null,
+      "text": "std::chrono::time_point",
+      "translated": "std::chrono::time_point"
+    },
+    {
+      "index": 157,
+      "tag": "li",
+      "id": null,
+      "text": "std::tm",
+      "translated": "std::tm"
+    },
+    {
+      "index": 158,
+      "tag": "p",
+      "id": null,
+      "text": "The format syntax is described in Chrono Format\nSpecifications.",
+      "translated": "書式の構文は、「Chronoの書式指定」で説明しています。"
+    },
+    {
+      "index": 159,
+      "tag": "p",
+      "id": null,
+      "text": "Example:",
+      "translated": "例："
+    },
+    {
+      "index": 160,
+      "tag": "p",
+      "id": null,
+      "text": "Converts given time since epoch as std::time_t value into calendar time, expressed in Coordinated Universal Time (UTC). Unlike std::gmtime, this function is thread-safe on most platforms. ",
+      "translated": "エポックからの経過時間を表すstd::time_tの値を、協定世界時（UTC）で表した暦時刻に変換します。std::gmtimeとは異なり、この関数はほとんどのプラットフォームでスレッドセーフです。"
+    },
+    {
+      "index": 161,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 162,
+      "tag": "h2",
+      "id": "standard-library-types-formatting",
+      "text": "Standard Library Types Formatting",
+      "translated": "標準ライブラリ型の書式設定"
+    },
+    {
+      "index": 163,
+      "tag": "p",
+      "id": null,
+      "text": "fmt/std.h provides formatters for:",
+      "translated": "fmt/std.hは、次の型のフォーマッターを提供します。"
+    },
+    {
+      "index": 164,
+      "tag": "li",
+      "id": null,
+      "text": "std::atomic",
+      "translated": "std::atomic"
+    },
+    {
+      "index": 165,
+      "tag": "li",
+      "id": null,
+      "text": "std::atomic_flag",
+      "translated": "std::atomic_flag"
+    },
+    {
+      "index": 166,
+      "tag": "li",
+      "id": null,
+      "text": "std::bitset",
+      "translated": "std::bitset"
+    },
+    {
+      "index": 167,
+      "tag": "li",
+      "id": null,
+      "text": "std::error_code",
+      "translated": "std::error_code"
+    },
+    {
+      "index": 168,
+      "tag": "li",
+      "id": null,
+      "text": "std::exception",
+      "translated": "std::exception"
+    },
+    {
+      "index": 169,
+      "tag": "li",
+      "id": null,
+      "text": "std::filesystem::path",
+      "translated": "std::filesystem::path"
+    },
+    {
+      "index": 170,
+      "tag": "li",
+      "id": null,
+      "text": "std::monostate",
+      "translated": "std::monostate"
+    },
+    {
+      "index": 171,
+      "tag": "li",
+      "id": null,
+      "text": "std::optional",
+      "translated": "std::optional"
+    },
+    {
+      "index": 172,
+      "tag": "li",
+      "id": null,
+      "text": "std::source_location",
+      "translated": "std::source_location"
+    },
+    {
+      "index": 173,
+      "tag": "li",
+      "id": null,
+      "text": "std::thread::id",
+      "translated": "std::thread::id"
+    },
+    {
+      "index": 174,
+      "tag": "li",
+      "id": null,
+      "text": "std::variant",
+      "translated": "std::variant"
+    },
+    {
+      "index": 175,
+      "tag": "h3",
+      "id": "variants",
+      "text": "Variants",
+      "translated": "バリアント"
+    },
+    {
+      "index": 176,
+      "tag": "p",
+      "id": null,
+      "text": "A std::variant can be formatted only if every alternative is\nformattable, and requires the __cpp_lib_variant library\nfeature.",
+      "translated": "std::variantを書式設定できるのは、すべての選択肢の型が書式設定可能な場合だけです。また、ライブラリー機能__cpp_lib_variantが必要です。"
+    },
+    {
+      "index": 177,
+      "tag": "p",
+      "id": null,
+      "text": "Example:",
+      "translated": "例："
+    },
+    {
+      "index": 178,
+      "tag": "h2",
+      "id": "bit-fields-and-packed-structs",
+      "text": "Bit-Fields and Packed Structs",
+      "translated": "ビットフィールドとパックされた構造体"
+    },
+    {
+      "index": 179,
+      "tag": "p",
+      "id": null,
+      "text": "To format a bit-field or a field of a struct with\n__attribute__((packed)) applied to it, you need to convert it to the\nunderlying or compatible type via a cast or a unary +\n(godbolt):",
+      "translated": "ビットフィールドや、__attribute__((packed))を適用した構造体のフィールドを書式設定するには、キャストまたは単項+によって、基底型または互換性のある型に変換する必要があります（godbolt）。"
+    },
+    {
+      "index": 180,
+      "tag": "p",
+      "id": null,
+      "text": "This is a known limitation of \"perfect\" forwarding in C++.",
+      "translated": "これは、C++の「完全」転送に関する既知の制限です。"
+    },
+    {
+      "index": 181,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 182,
+      "tag": "h2",
+      "id": "compile-time-support",
+      "text": "Compile-Time Support",
+      "translated": "コンパイル時のサポート"
+    },
+    {
+      "index": 183,
+      "tag": "p",
+      "id": null,
+      "text": "fmt/compile.h provides format string compilation and compile-time\n(constexpr) formatting enabled via the FMT_COMPILE macro or the\n_cf user-defined literal defined in namespace fmt::literals. Format\nstrings marked with FMT_COMPILE or _cf are parsed, checked and\nconverted into efficient formatting code at compile-time. This supports\narguments of built-in and string types as well as user-defined types\nwith format methods taking the format context type as a template\nparameter in their formatter specializations. For example\n(run):",
+      "translated": "fmt/compile.hは、書式文字列のコンパイルと、コンパイル時（constexpr）の書式設定を提供します。これらはFMT_COMPILEマクロ、またはfmt::literals名前空間で定義されたユーザー定義リテラル_cfで有効になります。FMT_COMPILEまたは_cfを付けた書式文字列は、コンパイル時に解析・検査され、効率的な書式設定コードへ変換されます。組み込み型と文字列型の引数に加え、formatterの特殊化で、書式設定コンテキストの型をテンプレートパラメーターとして受け取るformatメソッドを持つユーザー定義型もサポートします。例（実行）："
+    },
+    {
+      "index": 184,
+      "tag": "p",
+      "id": null,
+      "text": "Format string compilation can generate more binary code compared to the\ndefault API and is only recommended in places where formatting is a\nperformance bottleneck.",
+      "translated": "書式文字列のコンパイルでは、既定のAPIより多くのバイナリーコードが生成されることがあります。書式設定が性能のボトルネックになっている箇所でのみ、使用が推奨されます。"
+    },
+    {
+      "index": 185,
+      "tag": "p",
+      "id": null,
+      "text": "The same APIs support formatting at compile time e.g. in constexpr and\nconsteval functions. Additionally there is an experimental\nFMT_STATIC_FORMAT that allows formatting into a string of the exact\nrequired size at compile time. Compile-time formatting works with\nbuilt-in and user-defined formatters that have constexpr format\nmethods. Example:",
+      "translated": "同じAPIは、constexpr関数やconsteval関数などでのコンパイル時の書式設定もサポートします。さらに、必要なサイズと厳密に一致する文字列へコンパイル時に書式設定できる、実験的なFMT_STATIC_FORMATもあります。コンパイル時の書式設定は、constexprのformatメソッドを持つ、組み込みおよびユーザー定義のフォーマッターで利用できます。例："
+    },
+    {
+      "index": 186,
+      "tag": "p",
+      "id": null,
+      "text": "Converts a string literal s into a format string that will be parsed at compile time and converted into efficient formatting code. Requires C++17 constexpr if compiler support.",
+      "translated": "文字列リテラルsを、コンパイル時に解析され、効率的な書式設定コードへ変換される書式文字列に変換します。コンパイラーによるC++17のconstexpr ifのサポートが必要です。"
+    },
+    {
+      "index": 187,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 188,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 189,
+      "tag": "p",
+      "id": null,
+      "text": "Formats arguments according to the format string fmt_str and produces a string of the exact required size at compile time. Both the format string and the arguments must be compile-time expressions.",
+      "translated": "書式文字列fmt_strに従って引数を書式設定し、必要なサイズと厳密に一致する文字列をコンパイル時に生成します。書式文字列と引数は、どちらもコンパイル時の式でなければなりません。"
+    },
+    {
+      "index": 190,
+      "tag": "p",
+      "id": null,
+      "text": "The resulting string can be accessed as a C string via c_str() or as a fmt::string_view via str().",
+      "translated": "結果の文字列には、c_str()でC文字列として、またはstr()でfmt::string_viewとしてアクセスできます。"
+    },
+    {
+      "index": 191,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 192,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 193,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 194,
+      "tag": "h2",
+      "id": "terminal-colors-and-text-styles",
+      "text": "Terminal Colors and Text Styles",
+      "translated": "端末の色とテキストスタイル"
+    },
+    {
+      "index": 195,
+      "tag": "p",
+      "id": null,
+      "text": "fmt/color.h provides support for terminal color and text style output.",
+      "translated": "fmt/color.hは、端末の色とテキストスタイルを指定した出力をサポートします。"
+    },
+    {
+      "index": 196,
+      "tag": "p",
+      "id": null,
+      "text": "Formats a string and prints it to stdout using ANSI escape sequences to specify text formatting.",
+      "translated": "文字列を書式設定し、ANSIエスケープシーケンスでテキストの書式を指定してstdoutに出力します。"
+    },
+    {
+      "index": 197,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 198,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 199,
+      "tag": "p",
+      "id": null,
+      "text": "Creates a text style from the foreground (text) color. ",
+      "translated": "前景色（文字色）からテキストスタイルを作成します。"
+    },
+    {
+      "index": 200,
+      "tag": "p",
+      "id": null,
+      "text": "Creates a text style from the background color. ",
+      "translated": "背景色からテキストスタイルを作成します。"
+    },
+    {
+      "index": 201,
+      "tag": "p",
+      "id": null,
+      "text": "Returns an argument that will be formatted using ANSI escape sequences, to be used in a formatting function.",
+      "translated": "ANSIエスケープシーケンスを使って書式設定される引数を返します。書式設定関数で使用します。"
+    },
+    {
+      "index": 202,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 203,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 204,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 205,
+      "tag": "h2",
+      "id": "system-apis",
+      "text": "System APIs",
+      "translated": "システムAPI"
+    },
+    {
+      "index": 206,
+      "tag": "p",
+      "id": null,
+      "text": "A fast buffered output stream for writing from a single thread. Writing from multiple threads without external synchronization may result in a data race. ",
+      "translated": "単一のスレッドから書き込むための、高速なバッファー付き出力ストリームです。外部で同期せずに複数のスレッドから書き込むと、データ競合が生じることがあります。"
+    },
+    {
+      "index": 207,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt and writes the output to the file. ",
+      "translated": "fmtの指定に従ってargsを書式設定し、出力をファイルに書き込みます。"
+    },
+    {
+      "index": 208,
+      "tag": "p",
+      "id": null,
+      "text": "Opens a file for writing. Supported parameters passed in params:",
+      "translated": "書き込み用にファイルを開きます。paramsで渡せるパラメーターは次のとおりです。"
+    },
+    {
+      "index": 209,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 210,
+      "tag": "p",
+      "id": null,
+      "text": "<integer>: Flags passed to open (file::WRONLY | file::CREATE | file::TRUNC by default)",
+      "translated": "<integer>：openに渡すフラグ（既定はfile::WRONLY | file::CREATE | file::TRUNC）"
+    },
+    {
+      "index": 211,
+      "tag": "p",
+      "id": null,
+      "text": "buffer_size=<integer>: Output buffer size",
+      "translated": "buffer_size=<integer>：出力バッファーのサイズ"
+    },
+    {
+      "index": 212,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 213,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 214,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 215,
+      "tag": "p",
+      "id": null,
+      "text": "Constructs a std::system_error object with the description of the form ",
+      "translated": "次の形式の説明を持つstd::system_errorオブジェクトを構築します。"
+    },
+    {
+      "index": 216,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 217,
+      "tag": "p",
+      "id": null,
+      "text": "where <message> is the formatted message and <system-message> is the system message corresponding to the error code. error_code is a Windows error code as given by GetLastError. If error_code is not a valid error code such as -1, the system message will look like \"error -1\".",
+      "translated": "ここで、<message>は書式設定されたメッセージ、<system-message>はエラーコードに対応するシステムメッセージです。error_codeは、GetLastErrorが返すようなWindowsのエラーコードです。error_codeが-1などの有効でないエラーコードの場合、システムメッセージは\"error -1\"のようになります。"
+    },
+    {
+      "index": 218,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 219,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 220,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 221,
+      "tag": "h2",
+      "id": "stdostream-support",
+      "text": "std::ostream Support",
+      "translated": "std::ostreamのサポート"
+    },
+    {
+      "index": 222,
+      "tag": "p",
+      "id": null,
+      "text": "fmt/ostream.h provides std::ostream support including formatting of\nuser-defined types that have an overloaded insertion operator\n(operator<<). In order to make a type formattable via std::ostream\nyou should provide a formatter specialization inherited from\nostream_formatter:",
+      "translated": "fmt/ostream.hは、挿入演算子（operator<<）をオーバーロードしたユーザー定義型の書式設定など、std::ostreamのサポートを提供します。std::ostreamを通して型を書式設定可能にするには、ostream_formatterから継承したformatterの特殊化を提供するようにします。"
+    },
+    {
+      "index": 223,
+      "tag": "p",
+      "id": null,
+      "text": "Returns a view that formats value via an ostream operator<<.",
+      "translated": "ostreamのoperator<<を通してvalueを書式設定するビューを返します。"
+    },
+    {
+      "index": 224,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 225,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 226,
+      "tag": "p",
+      "id": null,
+      "text": "Prints formatted data to the stream os.",
+      "translated": "書式設定したデータをストリームosに出力します。"
+    },
+    {
+      "index": 227,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 228,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 229,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 230,
+      "tag": "h2",
+      "id": "dynamic-argument-lists",
+      "text": "Dynamic Argument Lists",
+      "translated": "動的な引数リスト"
+    },
+    {
+      "index": 231,
+      "tag": "p",
+      "id": null,
+      "text": "The header fmt/args.h provides dynamic_format_arg_store, a\nbuilder-like API that can be used to construct format argument lists\ndynamically.",
+      "translated": "ヘッダーfmt/args.hは、書式設定引数のリストを動的に構築できる、ビルダーのようなAPIであるdynamic_format_arg_storeを提供します。"
+    },
+    {
+      "index": 232,
+      "tag": "p",
+      "id": null,
+      "text": "A dynamic list of formatting arguments with storage.",
+      "translated": "保存領域を備えた、動的な書式設定引数のリストです。"
+    },
+    {
+      "index": 233,
+      "tag": "p",
+      "id": null,
+      "text": "It can be implicitly converted into fmt::basic_format_args for passing into type-erased formatting functions such as fmt::vformat. ",
+      "translated": "fmt::vformatなどの型消去を使う書式設定関数へ渡すために、fmt::basic_format_argsへ暗黙に変換できます。"
+    },
+    {
+      "index": 234,
+      "tag": "p",
+      "id": null,
+      "text": "Adds an argument into the dynamic store for later passing to a formatting function.",
+      "translated": "後で書式設定関数へ渡すため、動的ストアに引数を追加します。"
+    },
+    {
+      "index": 235,
+      "tag": "p",
+      "id": null,
+      "text": "Note that custom types and string types (but not string views) are copied into the store dynamically allocating memory if necessary.",
+      "translated": "カスタム型と文字列型はストアへコピーされ、必要に応じてメモリーが動的に割り当てられます。ただし、文字列ビューはこの対象に含まれません。"
+    },
+    {
+      "index": 236,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 237,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 238,
+      "tag": "p",
+      "id": null,
+      "text": "Adds a reference to the argument into the dynamic store for later passing to a formatting function.",
+      "translated": "後で書式設定関数へ渡すため、動的ストアに引数への参照を追加します。"
+    },
+    {
+      "index": 239,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 240,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 241,
+      "tag": "p",
+      "id": null,
+      "text": "Adds named argument into the dynamic store for later passing to a formatting function. std::reference_wrapper is supported to avoid copying of the argument. The name is always copied into the store. ",
+      "translated": "後で書式設定関数へ渡すため、動的ストアに名前付き引数を追加します。引数のコピーを避けるためにstd::reference_wrapperを使えます。名前は常にストアへコピーされます。"
+    },
+    {
+      "index": 242,
+      "tag": "p",
+      "id": null,
+      "text": "Erase all elements from the store. ",
+      "translated": "ストアからすべての要素を消去します。"
+    },
+    {
+      "index": 243,
+      "tag": "p",
+      "id": null,
+      "text": "Reserves space to store at least new_cap arguments including new_cap_named named arguments. ",
+      "translated": "new_cap_named個の名前付き引数を含む、少なくともnew_cap個の引数を保存できる領域を予約します。"
+    },
+    {
+      "index": 244,
+      "tag": "p",
+      "id": null,
+      "text": "Returns the number of elements in the store. ",
+      "translated": "ストア内の要素数を返します。"
+    },
+    {
+      "index": 245,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 246,
+      "tag": "h2",
+      "id": "safe-printf",
+      "text": "Safe printf",
+      "translated": "安全なprintf"
+    },
+    {
+      "index": 247,
+      "tag": "p",
+      "id": null,
+      "text": "The header fmt/printf.h provides printf-like formatting\nfunctionality. The following functions use printf format string\nsyntax\nwith the POSIX extension for positional arguments. Unlike their standard\ncounterparts, the fmt functions are type-safe and throw an exception\nif an argument type doesn't match its format specification.",
+      "translated": "ヘッダーfmt/printf.hは、printfに似た書式設定機能を提供します。次の関数は、位置指定引数のPOSIX拡張を含むprintfの書式文字列構文を使います。対応する標準関数とは異なり、fmtの関数は型安全で、引数の型が書式指定に合わない場合は例外を送出します。"
+    },
+    {
+      "index": 248,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt and writes the output to stdout.",
+      "translated": "fmtの指定に従ってargsを書式設定し、出力をstdoutに書き込みます。"
+    },
+    {
+      "index": 249,
+      "tag": "p",
+      "id": null,
+      "text": "Example:",
+      "translated": "例："
+    },
+    {
+      "index": 250,
+      "tag": "p",
+      "id": null,
+      "text": "fmt::printf(\"Elapsed time: %.2f seconds\", 1.23); ",
+      "translated": "fmt::printf(\"Elapsed time: %.2f seconds\", 1.23); "
+    },
+    {
+      "index": 251,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt and writes the output to f.",
+      "translated": "fmtの指定に従ってargsを書式設定し、出力をfに書き込みます。"
+    },
+    {
+      "index": 252,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 253,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 254,
+      "tag": "p",
+      "id": null,
+      "text": "Formats args according to specifications in fmt and returns the result as string.",
+      "translated": "fmtの指定に従ってargsを書式設定し、結果を文字列として返します。"
+    },
+    {
+      "index": 255,
+      "tag": "p",
+      "id": null,
+      "text": "Example: ",
+      "translated": "例："
+    },
+    {
+      "index": 256,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 257,
+      "tag": "p",
+      "id": null,
+      "text": "",
+      "translated": ""
+    },
+    {
+      "index": 258,
+      "tag": "h2",
+      "id": "wide-strings",
+      "text": "Wide Strings",
+      "translated": "ワイド文字列"
+    },
+    {
+      "index": 259,
+      "tag": "p",
+      "id": null,
+      "text": "The optional header fmt/xchar.h provides support for wchar_t and\nexotic character types.",
+      "translated": "任意で利用するヘッダーfmt/xchar.hは、wchar_tや特殊な文字型のサポートを提供します。"
+    },
+    {
+      "index": 260,
+      "tag": "p",
+      "id": null,
+      "text": "Converts value to std::wstring using the default format for type T. ",
+      "translated": "型Tの既定の書式を使って、valueをstd::wstringに変換します。"
+    },
+    {
+      "index": 261,
+      "tag": "h2",
+      "id": "compatibility-with-c20-stdformat",
+      "text": "Compatibility with C++20 std::format",
+      "translated": "C++20のstd::formatとの互換性"
+    },
+    {
+      "index": 262,
+      "tag": "p",
+      "id": null,
+      "text": "{fmt} implements nearly all of the C++20 formatting\nlibrary with the\nfollowing differences:",
+      "translated": "{fmt}は、次の相違点を除き、C++20の書式設定ライブラリーのほぼすべてを実装しています。"
+    },
+    {
+      "index": 263,
+      "tag": "p",
+      "id": null,
+      "text": "Names are defined in the fmt namespace instead of std to avoid\ncollisions with standard library implementations.",
+      "translated": "標準ライブラリーの実装との衝突を避けるため、名前はstdではなくfmt名前空間に定義されます。"
+    },
+    {
+      "index": 264,
+      "tag": "p",
+      "id": null,
+      "text": "Width calculation doesn't use grapheme clusterization. The latter has\nbeen implemented in a separate branch but hasn't been integrated yet.",
+      "translated": "幅の計算では、書記素クラスターへの分割を使いません。これは別のブランチでは実装されていますが、まだ統合されていません。"
+    },
+    {
+      "index": 265,
+      "tag": "p",
+      "id": null,
+      "text": "The default floating-point representation in {fmt} uses the smallest\nprecision that provides round-trip guarantees similarly to other\nlanguages like Java and Python. std::format is currently specified\nin terms of std::to_chars which tries to generate the smallest\nnumber of characters (ignoring redundant digits and sign in exponent)\nand may produce more decimal digits than necessary.",
+      "translated": "{fmt}の既定の浮動小数点表現は、JavaやPythonなどの他の言語と同様に、ラウンドトリップを保証できる最小の精度を使います。std::formatは現在、std::to_charsに基づいて規定されています。std::to_charsは、指数の冗長な桁と符号を無視して、文字数を最小にしようとするため、必要以上の十進桁を出力することがあります。"
+    },
+    {
+      "index": 266,
+      "tag": "h2",
+      "id": "configuration-options",
+      "text": "Configuration Options",
+      "translated": "設定オプション"
+    },
+    {
+      "index": 267,
+      "tag": "p",
+      "id": null,
+      "text": "{fmt} provides configuration via CMake options and preprocessor macros\nto enable or disable features and to optimize for binary size. For\nexample, you can disable OS-specific APIs defined in fmt/os.h with\n-DFMT_OS=OFF when configuring CMake.",
+      "translated": "{fmt}は、機能の有効・無効の切り替えやバイナリーサイズの最適化のために、CMakeオプションとプリプロセッサーマクロによる設定を提供します。たとえば、CMakeの設定時に-DFMT_OS=OFFを指定すると、fmt/os.hで定義されたOS固有のAPIを無効にできます。"
+    },
+    {
+      "index": 268,
+      "tag": "h3",
+      "id": "cmake-options",
+      "text": "CMake Options",
+      "translated": "CMakeオプション"
+    },
+    {
+      "index": 269,
+      "tag": "li",
+      "id": null,
+      "text": "FMT_OS: When set to OFF, disables OS-specific APIs\n(fmt/os.h).",
+      "translated": "FMT_OS：OFFに設定すると、OS固有のAPI（fmt/os.h）を無効にします。"
+    },
+    {
+      "index": 270,
+      "tag": "li",
+      "id": null,
+      "text": "FMT_UNICODE: When set to OFF, disables Unicode support on\nWindows/MSVC. Unicode support is always enabled on other platforms.",
+      "translated": "FMT_UNICODE：OFFに設定すると、Windows/MSVCでUnicodeサポートを無効にします。他のプラットフォームでは、Unicodeサポートは常に有効です。"
+    },
+    {
+      "index": 271,
+      "tag": "h3",
+      "id": "macros",
+      "text": "Macros",
+      "translated": "マクロ"
+    },
+    {
+      "index": 272,
+      "tag": "p",
+      "id": null,
+      "text": "FMT_HEADER_ONLY: Enables the header-only mode when defined. It\nis an alternative to using the fmt::fmt-header-only CMake target.\nDefault: not defined.",
+      "translated": "FMT_HEADER_ONLY：定義すると、ヘッダーのみのモードを有効にします。CMakeターゲットfmt::fmt-header-onlyを使う代わりの方法です。既定：未定義。"
+    },
+    {
+      "index": 273,
+      "tag": "p",
+      "id": null,
+      "text": "FMT_USE_EXCEPTIONS: Disables the use of exceptions when set to\n0. Default: 1 (0 if compiled with -fno-exceptions).",
+      "translated": "FMT_USE_EXCEPTIONS：0に設定すると、例外の使用を無効にします。既定：1（-fno-exceptionsでコンパイルした場合は0）。"
+    },
+    {
+      "index": 274,
+      "tag": "p",
+      "id": null,
+      "text": "FMT_USE_LOCALE: When set to 0, disables locale support.\nDefault: 1 (0 when FMT_OPTIMIZE_SIZE > 1).",
+      "translated": "FMT_USE_LOCALE：0に設定すると、ロケールサポートを無効にします。既定：1（FMT_OPTIMIZE_SIZE > 1の場合は0）。"
+    },
+    {
+      "index": 275,
+      "tag": "p",
+      "id": null,
+      "text": "FMT_CUSTOM_ASSERT_FAIL: When set to 1, allows users to provide\na custom fmt::assert_fail function which is called on assertion\nfailures and, if exceptions are disabled, on runtime errors. Default:\n0.",
+      "translated": "FMT_CUSTOM_ASSERT_FAIL：1に設定すると、利用者が独自のfmt::assert_fail関数を提供できるようになります。この関数はアサーションの失敗時に呼ばれ、例外が無効の場合は実行時エラーでも呼ばれます。既定：0。"
+    },
+    {
+      "index": 276,
+      "tag": "p",
+      "id": null,
+      "text": "FMT_BUILTIN_TYPES: When set to 0, disables built-in handling\nof arithmetic and string types other than int. This reduces library\nsize at the cost of per-call overhead. Default: 1.",
+      "translated": "FMT_BUILTIN_TYPES：0に設定すると、int以外の算術型と文字列型の組み込み処理を無効にします。これにより、呼び出しごとのオーバーヘッドと引き換えにライブラリーのサイズが小さくなります。既定：1。"
+    },
+    {
+      "index": 277,
+      "tag": "p",
+      "id": null,
+      "text": "FMT_OPTIMIZE_SIZE: Controls binary size optimizations:",
+      "translated": "FMT_OPTIMIZE_SIZE：バイナリーサイズの最適化を制御します。"
+    },
+    {
+      "index": 278,
+      "tag": "li",
+      "id": null,
+      "text": "0 - off (default)",
+      "translated": "0 - 無効（既定）"
+    },
+    {
+      "index": 279,
+      "tag": "li",
+      "id": null,
+      "text": "1 - disables locale support and applies some optimizations",
+      "translated": "1 - ロケールサポートを無効にし、いくつかの最適化を適用します"
+    },
+    {
+      "index": 280,
+      "tag": "li",
+      "id": null,
+      "text": "2 - disables some Unicode features, named arguments and applies\nmore aggressive optimizations",
+      "translated": "2 - 一部のUnicode機能と名前付き引数を無効にし、より積極的な最適化を適用します"
+    },
+    {
+      "index": 281,
+      "tag": "h3",
+      "id": "binary-size-optimization",
+      "text": "Binary Size Optimization",
+      "translated": "バイナリーサイズの最適化"
+    },
+    {
+      "index": 282,
+      "tag": "p",
+      "id": null,
+      "text": "To minimize the binary footprint of {fmt} as much as possible at the\ncost of some features, you can use the following configuration:",
+      "translated": "一部の機能を制限して{fmt}のバイナリーサイズをできる限り小さくするには、次の設定を使えます。"
+    },
+    {
+      "index": 283,
+      "tag": "li",
+      "id": null,
+      "text": "FMT_OS=OFF",
+      "translated": "FMT_OS=OFF"
+    },
+    {
+      "index": 284,
+      "tag": "li",
+      "id": null,
+      "text": "FMT_BUILTIN_TYPES=0",
+      "translated": "FMT_BUILTIN_TYPES=0"
+    },
+    {
+      "index": 285,
+      "tag": "li",
+      "id": null,
+      "text": "FMT_OPTIMIZE_SIZE=2",
+      "translated": "FMT_OPTIMIZE_SIZE=2"
+    }
+  ],
+  "remaining": null,
+  "fullPageReview": "pending",
+  "renderedTranslation": "not-generated"
+}

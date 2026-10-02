@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "project": "fmt",
+  "version": "12.2.0",
+  "sourceCommit": "1be298e1bd68957e4cd352e1f676f00e07dcfb57",
+  "notes": [
+    {
+      "id": "locale-optimize-size",
+      "page": "api",
+      "beforeHeading": "### Binary Size Optimization",
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h",
+        "sha256": "888315df369b34360880a89998ce24191e7c1b2b0606666ec8fddb31f0cae2fb"
+      },
+      "lines": {
+        "start": 890,
+        "end": 892
+      },
+      "sourceExcerpt": "#ifndef FMT_USE_LOCALE\n#  define FMT_USE_LOCALE (FMT_OPTIMIZE_SIZE <= 1)\n#endif",
+      "finding": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/LOCALE_DISCREPANCY.json",
+        "sha256": "d13048a2c13636b8f8e0c2bb69512ed0a5ee45acbb73a78c43bdf5c585e2c96c"
+      },
+      "enHTML": "<aside class=\"fmt-editorial-note\" role=\"note\"><p><strong>Editorial note for fmt 12.2.0.</strong> The upstream list above says that <code>FMT_OPTIMIZE_SIZE=1</code> disables locale support. However, the <a href=\"https://github.com/fmtlib/fmt/blob/1be298e1bd68957e4cd352e1f676f00e07dcfb57/include/fmt/base.h#L890-L892\">fixed-version header</a> defines <code>FMT_USE_LOCALE</code> as <code>(FMT_OPTIMIZE_SIZE &lt;= 1)</code> when it has not been explicitly defined. Therefore the default is enabled at level 1 and disabled at level 2. An explicit <code>FMT_USE_LOCALE</code> setting overrides that default. The original documentation wording is retained above.</p></aside>",
+      "jaHTML": "<aside class=\"fmt-editorial-note\" role=\"note\"><p><strong>fmt 12.2.0に対する編集注。</strong> 上の原文リストには、<code>FMT_OPTIMIZE_SIZE=1</code>でロケールサポートが無効になるとあります。一方、<a href=\"https://github.com/fmtlib/fmt/blob/1be298e1bd68957e4cd352e1f676f00e07dcfb57/include/fmt/base.h#L890-L892\">固定版のヘッダー</a>では、<code>FMT_USE_LOCALE</code>が明示的に定義されていない場合、<code>(FMT_OPTIMIZE_SIZE &lt;= 1)</code>として定義されます。そのため、既定ではレベル1で有効、レベル2で無効です。<code>FMT_USE_LOCALE</code>を明示的に設定した場合は、その設定が優先されます。上には原文の記述を保持しています。</p></aside>"
+    }
+  ]
+}
