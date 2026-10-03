@@ -1,0 +1,40 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import { parseFragment, serialize } from 'parse5';
+const hash = (s) => crypto.createHash('sha256').update(s).digest('hex'),
+  read = (p) => fs.readFileSync(p, 'utf8'),
+  at = (n, k) => n.attrs?.find((a) => a.name === k)?.value,
+  walk = (n, p) => [...(p(n) ? [n] : []), ...(n.childNodes ?? []).flatMap((c) => walk(c, p))],
+  doc = (s) => parseFragment(s.split('---', 3)[2]),
+  blocks = (d) => walk(d, (n) => at(n, 'data-zlib-block') !== undefined);
+const review = JSON.parse(read('meta/translation-drafts/06-gzip-fragment-review.json')),
+  canonical = read(review.canonical),
+  ja = doc(read('src/content/docs/v1-3-2/ja/01-api/06-gzip.md'));
+assert.equal(hash(canonical), review.canonicalSHA256);
+const expected = [];
+for (const f of review.fragments) {
+  const s = read(f.draft);
+  assert.equal(hash(s), f.sha256);
+  expected.push(...blocks(doc(s)));
+}
+assert.deepEqual(
+  blocks(ja).map((n) => +at(n, 'data-zlib-block')),
+  Array.from({ length: 54 }, (_, i) => 110 + i)
+);
+assert.deepEqual(blocks(ja).map(serialize), expected.map(serialize));
+assert.equal(walk(ja, (n) => at(n, 'class') === 'zlib-document').length, 1);
+assert.equal(walk(ja, (n) => at(n, 'data-editorial') === 'draft-status').length, 0);
+assert.equal(walk(ja, (n) => at(n, 'data-editorial') === 'source-note').length, 1);
+console.log(
+  JSON.stringify({
+    status: 'passed-assembly-only',
+    blocks: 54,
+    eachReviewedFragmentBlockUnchanged: true,
+    orderedWithoutDuplication: true,
+    singleDocumentWrapper: true,
+    sourceNotePresent: true,
+    meaningReview: 'separate',
+    native: 'pending',
+  })
+);

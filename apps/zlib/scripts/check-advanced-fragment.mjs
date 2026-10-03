@@ -1,0 +1,45 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { parseFragment } from 'parse5';
+const source =
+    fs
+      .readFileSync('src/content/docs/v1-3-2/en/01-api/04-advanced.md', 'utf8')
+      .split('<a id="deflateParams"')[0] + '</div>\n',
+  draft = fs.readFileSync('meta/translation-drafts/04-advanced-40-52.md', 'utf8');
+const doc = (s) => parseFragment(s.split('---', 3)[2]);
+const at = (n, k) => n.attrs?.find((a) => a.name === k)?.value;
+const walk = (n, p) => [...(p(n) ? [n] : []), ...(n.childNodes ?? []).flatMap((c) => walk(c, p))];
+const txt = (n) => (n.nodeName === '#text' ? n.value : (n.childNodes ?? []).map(txt).join(''));
+const en = doc(source),
+  ja = doc(draft);
+const ids = (d) => walk(d, (n) => at(n, 'id')).map((n) => at(n, 'id'));
+assert.deepEqual(ids(en), ids(ja));
+const blocks = (d) => walk(d, (n) => at(n, 'data-zlib-block') !== undefined);
+assert.deepEqual(
+  blocks(ja).map((n) => +at(n, 'data-zlib-block')),
+  Array.from({ length: 13 }, (_, i) => i + 40)
+);
+const codes = (d) =>
+  walk(d, (n) => n.nodeName === 'code' && n.parentNode?.nodeName === 'pre').map(txt);
+assert.deepEqual(codes(en), codes(ja));
+const links = (d) =>
+  blocks(d)
+    .flatMap((b) => walk(b, (n) => n.nodeName === 'a').map((n) => at(n, 'href')))
+    .sort();
+assert.deepEqual(links(en), links(ja));
+assert(!fs.existsSync('src/content/docs/v1-3-2/ja/01-api/04-advanced.md'));
+console.log(
+  JSON.stringify({
+    status: 'passed-fragment-machine-scope',
+    translatedBlocks: [40, 52],
+    blocks: 13,
+    codeFragments: codes(ja).length,
+    codeTextExact: true,
+    allFragmentIdsExact: true,
+    sourceBlockLinksExact: true,
+    fragmentOutsideRoutes: true,
+    fullPageReview: 'pending',
+    fragmentContentReview: 'pending',
+    remainingBlocks: [53, 95],
+  })
+);
