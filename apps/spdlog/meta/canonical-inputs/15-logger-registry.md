@@ -1,0 +1,37 @@
+spdlog maintains a global (per process) registry of the created loggers.
+
+The purpose is for loggers to be accessed easily from anywhere in the project without passing them around.
+
+```c++
+spdlog::get("logger1")->info("hello");
+.. 
+.. 
+some other source file..
+..
+auto l = spdlog::get("logger1");
+l->info("hello again");
+```
+
+If a logger is not found, an empty shared pointer is returned. You use `if(l)` to check the validity of the pointer `l`.
+
+### Registering new loggers
+Normally  there is no need to register loggers as they are registered automatically for you.
+
+To register manually created loggers(i.e. not created by the spdlog.h factory functions) use the ```register_logger(std::shared_ptr<logger>)``` function:
+```c++
+spdlog::register_logger(some_logger);
+```
+which will register ```some_logger``` using its name.
+
+### Registry conflicts
+spdlog will throw a ```spdlog::spdlog_ex``` exception  on attempting to register using a name that already exists in the registry
+
+### Removing loggers from the registry
+The "drop()" function can be used to remove a logger from the registry.
+
+If no other shared_ptr pointing to the logger exists, the logger will be closed and all its resources will be freed.
+```c++
+spdlog::drop("logger_name");
+//or remove them all
+spdlog::drop_all()
+```

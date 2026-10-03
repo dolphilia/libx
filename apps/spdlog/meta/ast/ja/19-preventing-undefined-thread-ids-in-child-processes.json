@@ -1,0 +1,235 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "Preventing-undefined-thread-ids-in-child-processes.md",
+    "slug": "19-preventing-undefined-thread-ids-in-child-processes",
+    "source": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Preventing-undefined-thread-ids-in-child-processes.md",
+    "sourceSHA256": "ecaf833b4deb534067c70721119491c65e0eba2674d2fad794d9edfc70f3b16e",
+    "canonicalInput": "apps/spdlog/meta/canonical-inputs/19-preventing-undefined-thread-ids-in-child-processes.md",
+    "canonicalInputSHA256": "ecaf833b4deb534067c70721119491c65e0eba2674d2fad794d9edfc70f3b16e",
+    "trial": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/19-preventing-undefined-thread-ids-in-child-processes.md",
+    "canonicalSHA256": "b281ee1527e5828f8446519e8ecce410c1d45ae79f511db3aabd2ba11f2e5874",
+    "title": "Preventing undefined thread ids in child processes",
+    "excluded": [],
+    "sourceNote": null
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "デフォルトでは、spdlogは呼び出しごとに数マイクロ秒を節約するため、スレッドIDをスレッドローカルストレージに保存します。ただし、プログラムがforkする場合、",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 778
+            },
+            "end": {
+              "line": 5,
+              "column": 83,
+              "offset": 860
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/blob/master/include/spdlog/tweakme.h",
+          "children": [
+            {
+              "type": "text",
+              "value": "tweakme.h",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 84,
+                  "offset": 861
+                },
+                "end": {
+                  "line": 5,
+                  "column": 93,
+                  "offset": 870
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 83,
+              "offset": 860
+            },
+            "end": {
+              "line": 5,
+              "column": 165,
+              "offset": 942
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "の ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 165,
+              "offset": 942
+            },
+            "end": {
+              "line": 5,
+              "column": 167,
+              "offset": 944
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_DISABLE_TID_CACHING",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 167,
+              "offset": 944
+            },
+            "end": {
+              "line": 5,
+              "column": 195,
+              "offset": 972
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " フラグのコメントを",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 195,
+              "offset": 972
+            },
+            "end": {
+              "line": 5,
+              "column": 205,
+              "offset": 982
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "必ず",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 207,
+                  "offset": 984
+                },
+                "end": {
+                  "line": 5,
+                  "column": 209,
+                  "offset": 986
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 205,
+              "offset": 982
+            },
+            "end": {
+              "line": 5,
+              "column": 211,
+              "offset": 988
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "外してください。",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 211,
+              "offset": 988
+            },
+            "end": {
+              "line": 5,
+              "column": 219,
+              "offset": 996
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 778
+        },
+        "end": {
+          "line": 5,
+          "column": 219,
+          "offset": 996
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "これにより、子プロセスのログメッセージでスレッドIDが未定義になるのを防ぎます。",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 998
+            },
+            "end": {
+              "line": 7,
+              "column": 41,
+              "offset": 1038
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 998
+        },
+        "end": {
+          "line": 7,
+          "column": 41,
+          "offset": 1038
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#define SPDLOG_DISABLE_TID_CACHING",
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 1040
+        },
+        "end": {
+          "line": 11,
+          "column": 4,
+          "offset": 1085
+        }
+      }
+    }
+  ],
+  "changes": []
+}

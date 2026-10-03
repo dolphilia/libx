@@ -163,7 +163,11 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       relative !== 'docs/notes/document-import/ninja/v1-13-2/source/README.md' &&
       // Preserve upstream's broken #Vcpkg in the frozen evidence; the canonical
       // repair and all published fragments are checked by check-cjson-content.mjs.
-      relative !== 'docs/notes/document-import/cjson/v1-7-19/source/README.md'
+      relative !== 'docs/notes/document-import/cjson/v1-7-19/source/README.md' &&
+      // Frozen spdlog README/Wiki links use upstream repository and Wiki paths.
+      // check:content locks their bytes; check:rendered checks the published
+      // canonical/translated targets and fragments against actual HTML.
+      !relative.startsWith('docs/notes/document-import/spdlog/v1-17-0/sources/')
     );
   });
   const failures = markdownFiles.flatMap((filePath) =>

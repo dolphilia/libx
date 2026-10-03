@@ -1,0 +1,1014 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "QuickStart.md",
+    "slug": "20-quickstart",
+    "source": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/QuickStart.md",
+    "sourceSHA256": "c431355d7af40d984c3b9906ddbf7558cb4855662c3eaed3274c2c1fdd27d051",
+    "canonicalInput": "apps/spdlog/meta/canonical-inputs/20-quickstart.md",
+    "canonicalInputSHA256": "c431355d7af40d984c3b9906ddbf7558cb4855662c3eaed3274c2c1fdd27d051",
+    "trial": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/20-quickstart.md",
+    "canonicalSHA256": "a1a30744f8cddb1584166d046e76cd975c950abf6439f030b56b083d975ab60b",
+    "title": "QuickStart",
+    "excluded": [],
+    "sourceNote": "The final user-defined-object example contains a namespace-scope friend declaration and access to the private code member. It is retained as written, without a claim that the example compiles."
+  },
+  "children": [
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include \"spdlog/spdlog.h\"\nint main()\n{\n    //Use the default logger (stdout, multi-threaded, colored)\n    spdlog::info(\"Hello, {}!\", \"World\");\n}",
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 852
+        },
+        "end": {
+          "line": 12,
+          "column": 4,
+          "offset": 1008
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlogは、同梱の",
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 1,
+              "offset": 1010
+            },
+            "end": {
+              "line": 14,
+              "column": 12,
+              "offset": 1021
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/fmtlib/fmt",
+          "children": [
+            {
+              "type": "text",
+              "value": "fmt",
+              "position": {
+                "start": {
+                  "line": 14,
+                  "column": 13,
+                  "offset": 1022
+                },
+                "end": {
+                  "line": 14,
+                  "column": 16,
+                  "offset": 1025
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 12,
+              "offset": 1021
+            },
+            "end": {
+              "line": 14,
+              "column": 48,
+              "offset": 1057
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "ライブラリを使い、Pythonに似た書式化APIを提供します（",
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 48,
+              "offset": 1057
+            },
+            "end": {
+              "line": 14,
+              "column": 79,
+              "offset": 1088
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://fmt.dev/latest/syntax.html",
+          "children": [
+            {
+              "type": "text",
+              "value": "リファレンス",
+              "position": {
+                "start": {
+                  "line": 14,
+                  "column": 80,
+                  "offset": 1089
+                },
+                "end": {
+                  "line": 14,
+                  "column": 86,
+                  "offset": 1095
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 79,
+              "offset": 1088
+            },
+            "end": {
+              "line": 14,
+              "column": 123,
+              "offset": 1132
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "を参照）。",
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 123,
+              "offset": 1132
+            },
+            "end": {
+              "line": 14,
+              "column": 128,
+              "offset": 1137
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 14,
+          "column": 1,
+          "offset": 1010
+        },
+        "end": {
+          "line": 14,
+          "column": 128,
+          "offset": 1137
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "logger->info(\"Hello {} {} !!\", \"param1\", 123.4);",
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1,
+          "offset": 1138
+        },
+        "end": {
+          "line": 17,
+          "column": 4,
+          "offset": 1197
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlogは「必要なものをインクルードする」という方針です。コードでは、実際に必要な機能をインクルードしてください。",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 1,
+              "offset": 1198
+            },
+            "end": {
+              "line": 18,
+              "column": 60,
+              "offset": 1257
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 18,
+          "column": 1,
+          "offset": 1198
+        },
+        "end": {
+          "line": 18,
+          "column": 60,
+          "offset": 1257
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "たとえば、ローテーションするロガーだけが必要なら、\"",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 1,
+              "offset": 1259
+            },
+            "end": {
+              "line": 20,
+              "column": 27,
+              "offset": 1285
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "spdlog/sinks/rotating_file_sink.h",
+              "position": {
+                "start": {
+                  "line": 20,
+                  "column": 29,
+                  "offset": 1287
+                },
+                "end": {
+                  "line": 20,
+                  "column": 62,
+                  "offset": 1320
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 27,
+              "offset": 1285
+            },
+            "end": {
+              "line": 20,
+              "column": 64,
+              "offset": 1322
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "\"をインクルードします。",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 64,
+              "offset": 1322
+            },
+            "end": {
+              "line": 20,
+              "column": 76,
+              "offset": 1334
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 20,
+          "column": 1,
+          "offset": 1259
+        },
+        "end": {
+          "line": 20,
+          "column": 76,
+          "offset": 1334
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "また、非同期ログの機能を使うには、\"",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 1,
+              "offset": 1336
+            },
+            "end": {
+              "line": 22,
+              "column": 19,
+              "offset": 1354
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "spdlog/async.h",
+              "position": {
+                "start": {
+                  "line": 22,
+                  "column": 21,
+                  "offset": 1356
+                },
+                "end": {
+                  "line": 22,
+                  "column": 35,
+                  "offset": 1370
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 19,
+              "offset": 1354
+            },
+            "end": {
+              "line": 22,
+              "column": 37,
+              "offset": 1372
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "\"をインクルードします。",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 37,
+              "offset": 1372
+            },
+            "end": {
+              "line": 22,
+              "column": 49,
+              "offset": 1384
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 22,
+          "column": 1,
+          "offset": 1336
+        },
+        "end": {
+          "line": 22,
+          "column": 49,
+          "offset": 1384
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "基本的な例",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 6,
+              "offset": 1391
+            },
+            "end": {
+              "line": 24,
+              "column": 11,
+              "offset": 1396
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 24,
+          "column": 1,
+          "offset": 1386
+        },
+        "end": {
+          "line": 24,
+          "column": 11,
+          "offset": 1396
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include <iostream>\n#include \"spdlog/spdlog.h\"\n#include \"spdlog/sinks/basic_file_sink.h\" // support for basic file logging\n#include \"spdlog/sinks/rotating_file_sink.h\" // support for rotating file logging\n\nint main(int, char* [])\n{\n    try \n    {\n        // Create basic file logger (not rotated)\n        auto my_logger = spdlog::basic_logger_mt(\"basic_logger\", \"logs/basic.txt\");\n        \n        // create a file rotating logger with 5mb size max and 3 rotated files\n        auto file_logger = spdlog::rotating_logger_mt(\"file_logger\", \"myfilename\", 1024 * 1024 * 5, 3);\n    }\n    catch (const spdlog::spdlog_ex& ex)\n    {\n        std::cout << \"Log initialization failed: \" << ex.what() << std::endl;\n    }\n}",
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1,
+          "offset": 1397
+        },
+        "end": {
+          "line": 46,
+          "column": 4,
+          "offset": 2118
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "ファクトリメソッドによる非同期ロガーの作成",
+          "position": {
+            "start": {
+              "line": 48,
+              "column": 6,
+              "offset": 2125
+            },
+            "end": {
+              "line": 48,
+              "column": 27,
+              "offset": 2146
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 48,
+          "column": 1,
+          "offset": 2120
+        },
+        "end": {
+          "line": 48,
+          "column": 27,
+          "offset": 2146
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include <iostream>\n#include \"spdlog/spdlog.h\"\n#include \"spdlog/async.h\" //support for async logging.\n#include \"spdlog/sinks/basic_file_sink.h\"\n\nint main(int, char* [])\n{\n    try\n    {        \n        auto async_file = spdlog::basic_logger_mt<spdlog::async_factory>(\"async_file_logger\", \"logs/async_log.txt\");\n        for (int i = 1; i < 101; ++i)\n        {\n            async_file->info(\"Async message #{}\", i);\n        }\n        // Under VisualStudio, this must be called before main finishes to workaround a known VS issue\n        spdlog::drop_all(); \n    }\n    catch (const spdlog::spdlog_ex& ex)\n    {\n        std::cout << \"Log initialization failed: \" << ex.what() << std::endl;\n    }\n}",
+      "position": {
+        "start": {
+          "line": 49,
+          "column": 1,
+          "offset": 2147
+        },
+        "end": {
+          "line": 72,
+          "column": 4,
+          "offset": 2849
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "非同期ロガーの作成とスレッドプール設定の変更",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 6,
+              "offset": 2856
+            },
+            "end": {
+              "line": 74,
+              "column": 28,
+              "offset": 2878
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 74,
+          "column": 1,
+          "offset": 2851
+        },
+        "end": {
+          "line": 74,
+          "column": 28,
+          "offset": 2878
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include <iostream>\n#include \"spdlog/spdlog.h\"\n#include \"spdlog/async.h\" //support for async logging\n#include \"spdlog/sinks/basic_file_sink.h\"\n#include \"spdlog/sinks/daily_file_sink.h\"\nint main(int, char* [])\n{\n    try\n    {                                        \n        auto daily_sink = std::make_shared<spdlog::sinks::daily_file_sink_mt>(\"logfile\", 23, 59);\n        // default thread pool settings can be modified *before* creating the async logger:\n        spdlog::init_thread_pool(10000, 1); // queue with 10K items and 1 backing thread.\n        auto async_file = spdlog::basic_logger_mt<spdlog::async_factory>(\"async_file_logger\", \"logs/async_log.txt\");       \n        spdlog::drop_all(); \n    }\n    catch (const spdlog::spdlog_ex& ex)\n    {\n        std::cout << \"Log initialization failed: \" << ex.what() << std::endl;\n    }\n}",
+      "position": {
+        "start": {
+          "line": 75,
+          "column": 1,
+          "offset": 2879
+        },
+        "end": {
+          "line": 96,
+          "column": 4,
+          "offset": 3725
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "同じファイル（sink）を共有する複数ロガーの作成（カテゴリー）",
+          "position": {
+            "start": {
+              "line": 98,
+              "column": 6,
+              "offset": 3732
+            },
+            "end": {
+              "line": 98,
+              "column": 38,
+              "offset": 3764
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 98,
+          "column": 1,
+          "offset": 3727
+        },
+        "end": {
+          "line": 98,
+          "column": 38,
+          "offset": 3764
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include <iostream>\n#include \"spdlog/spdlog.h\"\n#include \"spdlog/sinks/daily_file_sink.h\"\nint main(int, char* [])\n{\n    try\n    {\n        auto daily_sink = std::make_shared<spdlog::sinks::daily_file_sink_mt>(\"logfile\", 23, 59);\n        // create synchronous  loggers\n        auto net_logger = std::make_shared<spdlog::logger>(\"net\", daily_sink);\n        auto hw_logger  = std::make_shared<spdlog::logger>(\"hw\",  daily_sink);\n        auto db_logger  = std::make_shared<spdlog::logger>(\"db\",  daily_sink);      \n\n        net_logger->set_level(spdlog::level::critical); // independent levels\n        hw_logger->set_level(spdlog::level::debug);\n         \n        // globally register the loggers so they can be accessed using spdlog::get(logger_name)\n        spdlog::register_logger(net_logger);\n    }\n    catch (const spdlog::spdlog_ex& ex)\n    {\n        std::cout << \"Log initialization failed: \" << ex.what() << std::endl;\n    }\n}",
+      "position": {
+        "start": {
+          "line": 99,
+          "column": 1,
+          "offset": 3765
+        },
+        "end": {
+          "line": 124,
+          "column": 4,
+          "offset": 4704
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "sinkごとに独自の書式とログレベルを持つ、複数sinkのロガーを作成する",
+          "position": {
+            "start": {
+              "line": 126,
+              "column": 6,
+              "offset": 4711
+            },
+            "end": {
+              "line": 126,
+              "column": 43,
+              "offset": 4748
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 126,
+          "column": 1,
+          "offset": 4706
+        },
+        "end": {
+          "line": 126,
+          "column": 43,
+          "offset": 4748
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "//\n// Logger with console and file output.\n// the console will show only warnings or worse, while the file will log all messages.\n// \n#include <iostream>\n#include \"spdlog/spdlog.h\"\n#include \"spdlog/sinks/stdout_color_sinks.h\" // or \"../stdout_sinks.h\" if no colors needed\n#include \"spdlog/sinks/basic_file_sink.h\"\nint main(int, char* [])\n{\n    try\n    {\n        auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();\n        console_sink->set_level(spdlog::level::warn);\n        console_sink->set_pattern(\"[multi_sink_example] [%^%l%$] %v\");\n\n        auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(\"logs/multisink.txt\", true);\n        file_sink->set_level(spdlog::level::trace);\n\n        spdlog::sinks_init_list sink_list = { file_sink, console_sink };\n\n        spdlog::logger logger(\"multi_sink\", sink_list.begin(), sink_list.end());\n        logger.set_level(spdlog::level::debug);\n        logger.warn(\"this should appear in both console and file\");\n        logger.info(\"this message should not appear in the console, only in the file\");\n\n        // or you can even set multi_sink logger as default logger\n        spdlog::set_default_logger(std::make_shared<spdlog::logger>(\"multi_sink\", spdlog::sinks_init_list({console_sink, file_sink})));\n\n    }\n    catch (const spdlog::spdlog_ex& ex)\n    {\n        std::cout << \"Log initialization failed: \" << ex.what() << std::endl;\n    }\n}",
+      "position": {
+        "start": {
+          "line": 127,
+          "column": 1,
+          "offset": 4749
+        },
+        "end": {
+          "line": 163,
+          "column": 4,
+          "offset": 6185
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "ログマクロ",
+          "position": {
+            "start": {
+              "line": 165,
+              "column": 6,
+              "offset": 6192
+            },
+            "end": {
+              "line": 165,
+              "column": 11,
+              "offset": 6197
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 165,
+          "column": 1,
+          "offset": 6187
+        },
+        "end": {
+          "line": 165,
+          "column": 11,
+          "offset": 6197
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"spdlog.h\"をインクルードする",
+          "position": {
+            "start": {
+              "line": 166,
+              "column": 1,
+              "offset": 6198
+            },
+            "end": {
+              "line": 166,
+              "column": 20,
+              "offset": 6217
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "前",
+              "position": {
+                "start": {
+                  "line": 166,
+                  "column": 21,
+                  "offset": 6218
+                },
+                "end": {
+                  "line": 166,
+                  "column": 22,
+                  "offset": 6219
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 166,
+              "column": 20,
+              "offset": 6217
+            },
+            "end": {
+              "line": 166,
+              "column": 23,
+              "offset": 6220
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "に、SPDLOG_ACTIVE_LEVELを必要なログレベルに定義できます。",
+          "position": {
+            "start": {
+              "line": 166,
+              "column": 23,
+              "offset": 6220
+            },
+            "end": {
+              "line": 166,
+              "column": 61,
+              "offset": 6258
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 166,
+          "column": 1,
+          "offset": 6198
+        },
+        "end": {
+          "line": 166,
+          "column": 61,
+          "offset": 6258
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "これにより、コンパイル時にログ文を有効・無効にします。",
+          "position": {
+            "start": {
+              "line": 168,
+              "column": 1,
+              "offset": 6260
+            },
+            "end": {
+              "line": 168,
+              "column": 28,
+              "offset": 6287
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 168,
+          "column": 1,
+          "offset": 6260
+        },
+        "end": {
+          "line": 168,
+          "column": 28,
+          "offset": 6287
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_DEBUG\n\nspdlog::set_level(spdlog::level::debug); // or spdlog::set_level(spdlog::level::trace); \n\nSPDLOG_LOGGER_TRACE(file_logger , \"Some trace message that will not be evaluated.{} ,{}\", 1, 3.23);\nSPDLOG_LOGGER_DEBUG(file_logger , \"Some Debug message that will be evaluated.. {} ,{}\", 1, 3.23);\nSPDLOG_DEBUG(\"Some debug message to default logger that will be evaluated\");",
+      "position": {
+        "start": {
+          "line": 169,
+          "column": 1,
+          "offset": 6288
+        },
+        "end": {
+          "line": 177,
+          "column": 4,
+          "offset": 6711
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "debugやtraceのメッセージを表示するには、",
+          "position": {
+            "start": {
+              "line": 179,
+              "column": 1,
+              "offset": 6713
+            },
+            "end": {
+              "line": 179,
+              "column": 26,
+              "offset": 6738
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::set_level",
+          "position": {
+            "start": {
+              "line": 179,
+              "column": 26,
+              "offset": 6738
+            },
+            "end": {
+              "line": 179,
+              "column": 45,
+              "offset": 6757
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " も必要な点に注意してください。",
+          "position": {
+            "start": {
+              "line": 179,
+              "column": 45,
+              "offset": 6757
+            },
+            "end": {
+              "line": 179,
+              "column": 61,
+              "offset": 6773
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 179,
+          "column": 1,
+          "offset": 6713
+        },
+        "end": {
+          "line": 179,
+          "column": 61,
+          "offset": 6773
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "ユーザー定義オブジェクトのログ記録",
+          "position": {
+            "start": {
+              "line": 181,
+              "column": 6,
+              "offset": 6780
+            },
+            "end": {
+              "line": 181,
+              "column": 23,
+              "offset": 6797
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 181,
+          "column": 1,
+          "offset": 6775
+        },
+        "end": {
+          "line": 181,
+          "column": 23,
+          "offset": 6797
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include \"spdlog/spdlog.h\"\n#include \"spdlog/fmt/ostr.h\" // must be included\n#include \"spdlog/sinks/stdout_sinks.h\"\n\nclass some_class {};\nstd::ostream& operator<<(std::ostream& os, const some_class& c)\n{ \n    return os << \"some_class\"; \n}\n\n// fmt v10 and above requires `fmt::formatter<T>` extends `fmt::ostream_formatter`.\n// See: https://github.com/fmtlib/fmt/issues/3318\ntemplate <> struct fmt::formatter<some_class> : fmt::ostream_formatter {};\n\nvoid custom_class_example()\n{\n    some_class c;\n    auto console = spdlog::stdout_logger_mt(\"console\");\n    console->info(\"custom class with operator<<: {}..\", c);\n}",
+      "position": {
+        "start": {
+          "line": 182,
+          "column": 1,
+          "offset": 6798
+        },
+        "end": {
+          "line": 203,
+          "column": 4,
+          "offset": 7423
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "または、高度な書式化が必要な場合、同梱の ",
+          "position": {
+            "start": {
+              "line": 204,
+              "column": 1,
+              "offset": 7424
+            },
+            "end": {
+              "line": 204,
+              "column": 22,
+              "offset": 7445
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "fmt",
+          "position": {
+            "start": {
+              "line": 204,
+              "column": 22,
+              "offset": 7445
+            },
+            "end": {
+              "line": 204,
+              "column": 27,
+              "offset": 7450
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " ライブラリを使います。",
+          "position": {
+            "start": {
+              "line": 204,
+              "column": 27,
+              "offset": 7450
+            },
+            "end": {
+              "line": 204,
+              "column": 39,
+              "offset": 7462
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 204,
+          "column": 1,
+          "offset": 7424
+        },
+        "end": {
+          "line": 204,
+          "column": 39,
+          "offset": 7462
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include <iterator>\n\n#include \"spdlog/spdlog.h\"\n#include \"spdlog/fmt/ostr.h\" // must be included\n#include \"spdlog/sinks/stdout_sinks.h\"\n\nclass some_class {\n    int code;\n};\n\ntemplate<typename OStream>\nfriend OStream &operator<<(OStream &os, const some_class& to_log)\n{\n    fmt::format_to(std::ostream_iterator<char>(os), \"{:04X}\", to_log.code);\n    return os;\n}\n\nvoid custom_class_example()\n{\n    some_class c; c.code = 17;\n    auto console = spdlog::stdout_logger_mt(\"console\");\n    console->info(\"custom class with operator<< using fmt: {}..\", c);\n}",
+      "position": {
+        "start": {
+          "line": 205,
+          "column": 1,
+          "offset": 7463
+        },
+        "end": {
+          "line": 229,
+          "column": 4,
+          "offset": 8025
+        }
+      }
+    }
+  ],
+  "changes": []
+}

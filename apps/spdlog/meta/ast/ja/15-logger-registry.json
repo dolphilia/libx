@@ -1,0 +1,632 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "Logger-registry.md",
+    "slug": "15-logger-registry",
+    "source": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Logger-registry.md",
+    "sourceSHA256": "ee3bce045fcd74fd092d50d21d1ba79fcb53dec6a5c213e456d0f3b0f491204c",
+    "canonicalInput": "apps/spdlog/meta/canonical-inputs/15-logger-registry.md",
+    "canonicalInputSHA256": "ee3bce045fcd74fd092d50d21d1ba79fcb53dec6a5c213e456d0f3b0f491204c",
+    "trial": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/15-logger-registry.md",
+    "canonicalSHA256": "a18a208e6be37825d5435c3e748b74968ed5f0ab65a2fcd0e6a88ede3e3e0627",
+    "title": "Logger registry",
+    "excluded": [],
+    "sourceNote": null
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlogは、作成したロガーのグローバルなレジストリを、プロセスごとに管理します。",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 708
+            },
+            "end": {
+              "line": 5,
+              "column": 43,
+              "offset": 750
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 708
+        },
+        "end": {
+          "line": 5,
+          "column": 43,
+          "offset": 750
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "目的は、ロガーを受け渡さなくても、プロジェクトのどこからでも簡単にアクセスできるようにすることです。",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 752
+            },
+            "end": {
+              "line": 7,
+              "column": 51,
+              "offset": 802
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 752
+        },
+        "end": {
+          "line": 7,
+          "column": 51,
+          "offset": 802
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::get(\"logger1\")->info(\"hello\");\n.. \n.. \nsome other source file..\n..\nauto l = spdlog::get(\"logger1\");\nl->info(\"hello again\");",
+      "position": {
+        "start": {
+          "line": 8,
+          "column": 1,
+          "offset": 803
+        },
+        "end": {
+          "line": 16,
+          "column": 4,
+          "offset": 945
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "ロガーが見つからなければ、空の共有ポインターを返します。",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 1,
+              "offset": 947
+            },
+            "end": {
+              "line": 18,
+              "column": 29,
+              "offset": 975
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "if(l)",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 29,
+              "offset": 975
+            },
+            "end": {
+              "line": 18,
+              "column": 36,
+              "offset": 982
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を使うと、ポインター ",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 36,
+              "offset": 982
+            },
+            "end": {
+              "line": 18,
+              "column": 48,
+              "offset": 994
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "l",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 48,
+              "offset": 994
+            },
+            "end": {
+              "line": 18,
+              "column": 51,
+              "offset": 997
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " が有効かどうか確認できます。",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 51,
+              "offset": 997
+            },
+            "end": {
+              "line": 18,
+              "column": 66,
+              "offset": 1012
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 18,
+          "column": 1,
+          "offset": 947
+        },
+        "end": {
+          "line": 18,
+          "column": 66,
+          "offset": 1012
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "新しいロガーの登録",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 5,
+              "offset": 1018
+            },
+            "end": {
+              "line": 20,
+              "column": 14,
+              "offset": 1027
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 20,
+          "column": 1,
+          "offset": 1014
+        },
+        "end": {
+          "line": 20,
+          "column": 14,
+          "offset": 1027
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "通常、ロガーは自動的に登録されるため、登録する必要はありません。",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 1,
+              "offset": 1028
+            },
+            "end": {
+              "line": 21,
+              "column": 33,
+              "offset": 1060
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1,
+          "offset": 1028
+        },
+        "end": {
+          "line": 21,
+          "column": 33,
+          "offset": 1060
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "手動で作成したロガー（spdlog.hのファクトリ関数で作成していないもの）を登録するには、",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 1,
+              "offset": 1062
+            },
+            "end": {
+              "line": 23,
+              "column": 47,
+              "offset": 1108
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "register_logger(std::shared_ptr<logger>)",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 47,
+              "offset": 1108
+            },
+            "end": {
+              "line": 23,
+              "column": 89,
+              "offset": 1150
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " 関数を使います。",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 89,
+              "offset": 1150
+            },
+            "end": {
+              "line": 23,
+              "column": 98,
+              "offset": 1159
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 23,
+          "column": 1,
+          "offset": 1062
+        },
+        "end": {
+          "line": 23,
+          "column": 98,
+          "offset": 1159
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::register_logger(some_logger);",
+      "position": {
+        "start": {
+          "line": 24,
+          "column": 1,
+          "offset": 1160
+        },
+        "end": {
+          "line": 26,
+          "column": 4,
+          "offset": 1208
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "これにより、",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 1,
+              "offset": 1209
+            },
+            "end": {
+              "line": 27,
+              "column": 7,
+              "offset": 1215
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "some_logger",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 7,
+              "offset": 1215
+            },
+            "end": {
+              "line": 27,
+              "column": 20,
+              "offset": 1228
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " がその名前で登録されます。",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 20,
+              "offset": 1228
+            },
+            "end": {
+              "line": 27,
+              "column": 34,
+              "offset": 1242
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 27,
+          "column": 1,
+          "offset": 1209
+        },
+        "end": {
+          "line": 27,
+          "column": 34,
+          "offset": 1242
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "レジストリでの衝突",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 5,
+              "offset": 1248
+            },
+            "end": {
+              "line": 29,
+              "column": 14,
+              "offset": 1257
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 29,
+          "column": 1,
+          "offset": 1244
+        },
+        "end": {
+          "line": 29,
+          "column": 14,
+          "offset": 1257
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "レジストリに既に存在する名前で登録しようとすると、spdlogは ",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 1,
+              "offset": 1258
+            },
+            "end": {
+              "line": 30,
+              "column": 34,
+              "offset": 1291
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::spdlog_ex",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 34,
+              "offset": 1291
+            },
+            "end": {
+              "line": 30,
+              "column": 53,
+              "offset": 1310
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " 例外を送出します。",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 53,
+              "offset": 1310
+            },
+            "end": {
+              "line": 30,
+              "column": 63,
+              "offset": 1320
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 30,
+          "column": 1,
+          "offset": 1258
+        },
+        "end": {
+          "line": 30,
+          "column": 63,
+          "offset": 1320
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "レジストリからのロガーの削除",
+          "position": {
+            "start": {
+              "line": 32,
+              "column": 5,
+              "offset": 1326
+            },
+            "end": {
+              "line": 32,
+              "column": 19,
+              "offset": 1340
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 32,
+          "column": 1,
+          "offset": 1322
+        },
+        "end": {
+          "line": 32,
+          "column": 19,
+          "offset": 1340
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"drop()\"関数を使うと、ロガーをレジストリから削除できます。",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 1,
+              "offset": 1341
+            },
+            "end": {
+              "line": 33,
+              "column": 34,
+              "offset": 1374
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 33,
+          "column": 1,
+          "offset": 1341
+        },
+        "end": {
+          "line": 33,
+          "column": 34,
+          "offset": 1374
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "そのロガーを指すほかのshared_ptrが存在しなければ、ロガーは閉じられ、すべてのリソースが解放されます。",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 1,
+              "offset": 1376
+            },
+            "end": {
+              "line": 35,
+              "column": 56,
+              "offset": 1431
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 35,
+          "column": 1,
+          "offset": 1376
+        },
+        "end": {
+          "line": 35,
+          "column": 56,
+          "offset": 1431
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::drop(\"logger_name\");\n//or remove them all\nspdlog::drop_all()",
+      "position": {
+        "start": {
+          "line": 36,
+          "column": 1,
+          "offset": 1432
+        },
+        "end": {
+          "line": 40,
+          "column": 4,
+          "offset": 1511
+        }
+      }
+    }
+  ],
+  "changes": []
+}
