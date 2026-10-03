@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseFragment } from 'parse5';
+import { createHash } from 'node:crypto';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptDirectory, '..');
@@ -59,7 +60,9 @@ export function collectAnchors(filePath) {
     const sourceId = line.match(/^\s*<!--libx-source-heading:([A-Za-z0-9_.:-]+)-->\s*$/)?.[1];
     const nextBlock = sourceId ? lines.slice(index + 1).find((next) => next.trim()) : null;
     if (sourceId && /^\s{0,3}#{1,6}\s+/.test(nextBlock ?? '')) anchors.add(sourceId);
-    const heading = line.match(/^\s{0,3}#{1,6}\s+(.+?)\s*#*\s*$/)?.[1];
+    const heading =
+      line.match(/^\s{0,3}#{1,6}\s+(.+?)\s*#*\s*$/)?.[1] ??
+      (line.trim() && /^ {0,3}(?:=+|-+)[ \t]*$/.test(lines[index + 1] ?? '') ? line.trim() : null);
     if (!heading) continue;
 
     const baseSlug = githubSlug(heading);
@@ -99,7 +102,33 @@ export function checkFile(filePath) {
   const contextPath = path.join(path.dirname(filePath), 'link-context.json');
   if (fs.existsSync(contextPath)) {
     const context = JSON.parse(fs.readFileSync(contextPath, 'utf8'));
-    const segments = context.segments.map((name) => path.resolve(path.dirname(filePath), name));
+    const segments = (context.segments ?? []).map((name) =>
+      path.resolve(path.dirname(filePath), name)
+    );
+    const snapshot = (context.snapshots ?? []).find(
+      (item) => path.resolve(path.dirname(filePath), item.file) === path.resolve(filePath)
+    );
+    if (snapshot) {
+      const target = path.resolve(path.dirname(filePath), context.target);
+      const hash = (file) => createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+      if (
+        !fs.existsSync(target) ||
+        hash(filePath) !== snapshot.sha256 ||
+        hash(target) !== context.targetSHA256
+      ) {
+        return [
+          {
+            line: 1,
+            target: context.target,
+            reason: '保存草稿または完成参照文書のハッシュが文脈記録と一致しません',
+          },
+        ];
+      }
+      // Snapshot TOCs include sections not yet drafted. Validate every link,
+      // using the pinned complete document only for same-document fragments.
+      fragmentContext = target;
+    }
+
     if (segments.includes(path.resolve(filePath))) {
       fragmentContext = path.resolve(path.dirname(filePath), context.target);
       const assembled = segments.map((segment) => fs.readFileSync(segment, 'utf8')).join('');

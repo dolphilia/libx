@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -84,4 +85,60 @@ test('split drafts check fragments against a byte-identical assembled document',
   );
   fs.appendFileSync(path.join(dir, 'last.md'), 'changed');
   assert.match(checkFile(path.join(dir, 'first.md'))[0].reason, /結合.*一致しません/);
+});
+
+test('Setext headings and ATX duplicates share anchors while fenced literals do not', (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'libx-setext-anchor-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const file = path.join(dir, 'page.md');
+  fs.writeFileSync(
+    file,
+    [
+      'Introduction',
+      '============',
+      '',
+      '# Introduction',
+      '',
+      'API details',
+      '-----------',
+      '',
+      '```md',
+      'Literal',
+      '=======',
+      '```',
+      '',
+      '[intro](#introduction) [duplicate](#introduction-1) [api](#api-details) [literal](#literal)',
+    ].join('\n')
+  );
+  assert.deepEqual(
+    checkFile(file).map((x) => x.target),
+    ['#literal']
+  );
+});
+
+test('pinned progress snapshots check final fragments without hiding missing links or stale bytes', (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'libx-snapshot-context-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const draft = path.join(dir, 'draft.md'),
+    final = path.join(dir, 'final.md');
+  fs.writeFileSync(draft, '[later](#later) [missing](#absent)\n');
+  fs.writeFileSync(final, '# Later\n');
+  const hash = (file) => createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+  fs.writeFileSync(
+    path.join(dir, 'link-context.json'),
+    JSON.stringify({
+      target: 'final.md',
+      targetSHA256: hash(final),
+      snapshots: [{ file: 'draft.md', sha256: hash(draft) }],
+    })
+  );
+  assert.deepEqual(
+    checkFile(draft).map((x) => x.target),
+    ['#absent']
+  );
+  fs.appendFileSync(final, 'changed');
+  assert.match(checkFile(draft)[0].reason, /ハッシュ/);
+  fs.writeFileSync(final, '# Later\n');
+  fs.appendFileSync(draft, 'changed');
+  assert.match(checkFile(draft)[0].reason, /ハッシュ/);
 });

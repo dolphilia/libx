@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
   // 現在のサイドバーをプリフェッチ
   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
 </script>
+
+<script>
+  // An app may enhance its own document content without changing the shared layout.
+  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
+  for (const load of Object.values(enhancements)) void load();
+</script>
