@@ -53,7 +53,17 @@ try {
     assert.equal(typeof original, 'string');
     fs.writeFileSync(path.join(temporary, entry.path), original);
   }
-  const result = spawnSync('pnpm', ['--recursive', '--if-present', 'run', 'check:content'], {
+  const rendered = process.argv.find((arg) => arg.startsWith('--rendered='))?.split('=')[1];
+  assert(!rendered || ['fmt', 'spdlog'].includes(rendered));
+  if (rendered) {
+    const actual = path.join(root, 'apps', rendered, 'dist');
+    assert(fs.existsSync(actual), 'Build the project before its rendered check');
+    fs.symlinkSync(actual, path.join(temporary, 'apps', rendered, 'dist'), 'dir');
+  }
+  const args = rendered
+    ? ['--filter=apps-' + rendered, 'run', 'check:rendered']
+    : ['--recursive', '--if-present', 'run', 'check:content'];
+  const result = spawnSync('pnpm', args, {
     cwd: temporary,
     stdio: 'inherit',
   });

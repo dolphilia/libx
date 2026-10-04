@@ -148,13 +148,13 @@ jobs:
         run: pnpm build -- --confirm --reuse
 
       - name: Verify fmt English and Japanese rendered content
-        run: pnpm --filter=apps-fmt check:rendered
+        run: node scripts/check-content-after-presentation.mjs --rendered=fmt
 
       - name: Verify cJSON English and Japanese rendered content
         run: node scripts/check-document-context-rendered.mjs
 
       - name: Verify spdlog English and Japanese rendered content
-        run: pnpm --filter=apps-spdlog check:rendered
+        run: node scripts/check-content-after-presentation.mjs --rendered=spdlog
 
       - name: Check deployment asset budget
         run: pnpm check:deployment-assets

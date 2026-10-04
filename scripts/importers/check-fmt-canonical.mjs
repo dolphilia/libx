@@ -57,19 +57,26 @@ if (process.argv.includes('--rendered')) {
     const generated = article.childNodes.filter((n) =>
       ['navigation-container', 'document-provenance'].includes(a(n, 'class'))
     );
-    assert.equal(generated.length, 2, 'テンプレート生成要素を正確に限定してください');
+    assert.equal(generated.length, 1, '本文の生成要素はページナビゲーション1件だけ');
     article.childNodes = article.childNodes.filter((n) => !generated.includes(n));
     const editorial = article.childNodes.filter((n) => a(n, 'class') === 'fmt-editorial-note');
     if (page.key === 'api') {
-      assert.equal(editorial.length, 1, 'API編集注は明示された1件だけ必要');
+      assert.equal(editorial.length, 0, 'API編集注は本文からフッターへ移動');
+      const whole = walk(parse(fs.readFileSync(file, 'utf8')));
+      const footer = whole.find(
+        (n) => n.tagName === 'footer' && a(n, 'class') === 'document-context-footer'
+      );
+      assert(footer, '既存出典フッターを拡張した領域が必要');
+      const footerEditorial = walk(footer).filter((n) => a(n, 'class') === 'fmt-editorial-note');
+      assert.equal(footerEditorial.length, 1, 'API編集注はフッターに明示された1件だけ必要');
       const expected = parseFragment(readEditorialNote(path.join(root, NOTES)).enHTML).childNodes;
       assert.equal(expected.length, 1);
       assert.equal(
-        serializeOuter(editorial[0]),
+        serializeOuter(footerEditorial[0]),
         serializeOuter(expected[0]),
         '編集注の固定HTMLと表示内容が不一致'
       );
-      article.childNodes = article.childNodes.filter((n) => n !== editorial[0]);
+      // The note is verified in the footer and is absent from the body.
     } else assert.equal(editorial.length, 0);
     built.set(page.key, { article, file });
   }

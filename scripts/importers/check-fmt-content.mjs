@@ -99,7 +99,7 @@ if (process.argv.includes('--rendered')) {
       const generated = article.childNodes.filter((n) =>
         ['navigation-container', 'document-provenance'].includes(attr(n, 'class'))
       );
-      assert.equal(generated.length, 2);
+      assert.equal(generated.length, 1);
       article.childNodes = article.childNodes.filter((n) => !generated.includes(n));
       return { file, tree, nodes: walk(article) };
     };

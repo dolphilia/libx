@@ -30,7 +30,7 @@ for (const article of Object.values(articles)) {
   const generated = article.childNodes.filter((n) =>
     ['navigation-container', 'document-provenance'].includes(a(n, 'class'))
   );
-  assert.equal(generated.length, 2);
+  assert.equal(generated.length, 1);
   article.childNodes = article.childNodes.filter((n) => !generated.includes(n));
 }
 const draft = JSON.parse(
@@ -120,7 +120,20 @@ for (const href of links(ja)) {
     );
 }
 const note = JSON.parse(fs.readFileSync(root + '/' + notes + '/EDITORIAL_NOTES.json')).notes[0],
-  aside = ja.filter((n) => a(n, 'class') === 'fmt-editorial-note');
+  aside = w(full.ja).filter((n) => a(n, 'class') === 'fmt-editorial-note');
+assert.equal(
+  ja.filter((n) => a(n, 'class') === 'fmt-editorial-note').length,
+  0,
+  '編集注は本文に残さない'
+);
+assert(
+  aside.every((n) =>
+    anc(n).some(
+      (parent) => parent.tagName === 'footer' && a(parent, 'class') === 'document-context-footer'
+    )
+  ),
+  '編集注は出典フッター内に表示'
+);
 assert.equal(aside.length, 1);
 assert.equal(serializeOuter(aside[0]), serializeOuter(parseFragment(note.jaHTML).childNodes[0]));
 const headings = ja
