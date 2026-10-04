@@ -1,0 +1,30 @@
+{
+  "title": "I/O",
+  "body": "\nAt this time jq has minimal support for I/O, mostly in the\nform of control over when inputs are read.  Two builtins functions\nare provided for this, `input` and `inputs`, that read from the\nsame sources (e.g., `stdin`, files named on the command-line) as\njq itself.  These two builtins, and jq's own reading actions, can\nbe interleaved with each other.  They are commonly used in combination\nwith the null input option `-n` to prevent one input from being read\nimplicitly.\n\nTwo builtins provide minimal output capabilities, `debug`, and\n`stderr`.  (Recall that a jq program's output values are always\noutput as JSON texts on `stdout`.) The `debug` builtin can have\napplication-specific behavior, such as for executables that use\nthe libjq C API but aren't the jq executable itself.  The `stderr`\nbuiltin outputs its input in raw mode to stderr with no additional\ndecoration, not even a newline.\n\nMost jq builtins are referentially transparent, and yield constant\nand repeatable value streams when applied to constant inputs.\nThis is not true of I/O builtins.\n",
+  "entries": [
+    {
+      "title": "`input`",
+      "body": "\nOutputs one new input.\n\nNote that when using `input` it is generally necessary to\ninvoke jq with the `-n` command-line option, otherwise\nthe first entity will be lost.\n\n    echo 1 2 3 4 | jq '[., input]' # [1,2] [3,4]\n"
+    },
+    {
+      "title": "`inputs`",
+      "body": "\nOutputs all remaining inputs, one by one.\n\nThis is primarily useful for reductions over a program's\ninputs.  Note that when using `inputs` it is generally necessary\nto invoke jq with the `-n` command-line option, otherwise\nthe first entity will be lost.\n\n    echo 1 2 3 | jq -n 'reduce inputs as $i (0; . + $i)' # 6\n"
+    },
+    {
+      "title": "`debug`, `debug(msgs)`",
+      "body": "\nThese two filters are like `.` but have as a side-effect the\nproduction of one or more messages on stderr.\n\nThe message produced by the `debug` filter has the form\n\n    [\"DEBUG:\",<input-value>]\n\nwhere `<input-value>` is a compact rendition of the input\nvalue.  This format may change in the future.\n\nThe `debug(msgs)` filter is defined as `(msgs | debug | empty), .`\nthus allowing great flexibility in the content of the message,\nwhile also allowing multi-line debugging statements to be created.\n\nFor example, the expression:\n\n    1 as $x | 2 | debug(\"Entering function foo with $x == \\($x)\", .) | (.+1)\n\nwould produce the value 3 but with the following two lines\nbeing written to stderr:\n\n    [\"DEBUG:\",\"Entering function foo with $x == 1\"]\n    [\"DEBUG:\",2]\n"
+    },
+    {
+      "title": "`stderr`",
+      "body": "\nPrints its input in raw and compact mode to stderr with no\nadditional decoration, not even a newline.\n"
+    },
+    {
+      "title": "`input_filename`",
+      "body": "\nReturns the name of the file whose input is currently being\nfiltered.  Note that this will not work well unless jq is\nrunning in a UTF-8 locale.\n"
+    },
+    {
+      "title": "`input_line_number`",
+      "body": "\nReturns the line number of the input currently being filtered.\n"
+    }
+  ]
+}

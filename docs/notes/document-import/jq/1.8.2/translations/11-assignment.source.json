@@ -1,0 +1,72 @@
+{
+  "title": "Assignment",
+  "body": "Assignment works a little differently in jq than in most\nprogramming languages. jq doesn't distinguish between references\nto and copies of something - two objects or arrays are either\nequal or not equal, without any further notion of being \"the\nsame object\" or \"not the same object\".\n\nIf an object has two fields which are arrays, `.foo` and `.bar`,\nand you append something to `.foo`, then `.bar` will not get\nbigger, even if you've previously set `.bar = .foo`.  If you're\nused to programming in languages like Python, Java, Ruby,\nJavaScript, etc. then you can think of it as though jq does a full\ndeep copy of every object before it does the assignment (for\nperformance it doesn't actually do that, but that's the general\nidea).\n\nThis means that it's impossible to build circular values in jq\n(such as an array whose first element is itself). This is quite\nintentional, and ensures that anything a jq program can produce\ncan be represented in JSON.\n\nAll the assignment operators in jq have path expressions on the\nleft-hand side (LHS).  The right-hand side (RHS) provides values\nto set to the paths named by the LHS path expressions.\n\nValues in jq are always immutable.  Internally, assignment works\nby using a reduction to compute new, replacement values for `.` that\nhave had all the desired assignments applied to `.`, then\noutputting the modified value.  This might be made clear by this\nexample: `{a:{b:{c:1}}} | (.a.b|=3), .`.  This will output\n`{\"a\":{\"b\":3}}` and `{\"a\":{\"b\":{\"c\":1}}}` because the last\nsub-expression, `.`, sees the original value, not the modified\nvalue.\n\nMost users will want to use modification assignment operators,\nsuch as `|=` or `+=`, rather than `=`.\n\nNote that the LHS of assignment operators refers to a value in\n`.`.  Thus `$var.foo = 1` won't work as expected (`$var.foo` is\nnot a valid or useful path expression in `.`); use `$var | .foo =\n1` instead.\n\nNote too that `.a,.b=0` does not set `.a` and `.b`, but\n`(.a,.b)=0` sets both.\n",
+  "entries": [
+    {
+      "title": "Update-assignment: `|=`",
+      "body": "This is the \"update\" operator `|=`.  It takes a filter on the\nright-hand side and works out the new value for the property\nof `.` being assigned to by running the old value through this\nexpression. For instance, `(.foo, .bar) |= .+1` will build an\nobject with the `foo` field set to the input's `foo` plus 1,\nand the `bar` field set to the input's `bar` plus 1.\n\nThe left-hand side can be any general path expression; see `path()`.\n\nNote that the left-hand side of `|=` refers to a value in `.`.\nThus `$var.foo |= . + 1` won't work as expected (`$var.foo` is\nnot a valid or useful path expression in `.`); use `$var |\n.foo |= . + 1` instead.\n\nIf the right-hand side outputs no values (i.e., `empty`), then\nthe left-hand side path will be deleted, as with `del(path)`.\n\nIf the right-hand side outputs multiple values, only the first\none will be used (COMPATIBILITY NOTE: in jq 1.5 and earlier\nreleases, it used to be that only the last one was used).\n",
+      "examples": [
+        {
+          "program": "(..|select(type==\"boolean\")) |= if . then 1 else 0 end",
+          "input": "[true,false,[5,true,[true,[false]],false]]",
+          "output": [
+            "[1,0,[5,1,[1,[0]],0]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Arithmetic update-assignment: `+=`, `-=`, `*=`, `/=`, `%=`, `//=`",
+      "body": "\njq has a few operators of the form `a op= b`, which are all\nequivalent to `a |= . op b`. So, `+= 1` can be used to\nincrement values, being the same as `|= . + 1`.\n",
+      "examples": [
+        {
+          "program": ".foo += 1",
+          "input": "{\"foo\": 42}",
+          "output": [
+            "{\"foo\": 43}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Plain assignment: `=`",
+      "body": "\nThis is the plain assignment operator.  Unlike the others, the\ninput to the right-hand side (RHS) is the same as the input to\nthe left-hand side (LHS) rather than the value at the LHS\npath, and all values output by the RHS will be used (as shown\nbelow).\n\nIf the RHS of `=` produces multiple values, then for each such\nvalue jq will set the paths on the left-hand side to the value\nand then it will output the modified `.`.  For example,\n`(.a,.b) = range(2)` outputs `{\"a\":0,\"b\":0}`, then\n`{\"a\":1,\"b\":1}`.  The \"update\" assignment forms (see above) do\nnot do this.\n\nThis example should show the difference between `=` and `|=`:\n\nProvide input `{\"a\": {\"b\": 10}, \"b\": 20}` to the programs\n\n    .a = .b\n\nand\n\n    .a |= .b\n\nThe former will set the `a` field of the input to the `b`\nfield of the input, and produce the output `{\"a\": 20, \"b\": 20}`.\nThe latter will set the `a` field of the input to the `a`\nfield's `b` field, producing `{\"a\": 10, \"b\": 20}`.\n",
+      "examples": [
+        {
+          "program": ".a = .b",
+          "input": "{\"a\": {\"b\": 10}, \"b\": 20}",
+          "output": [
+            "{\"a\":20,\"b\":20}"
+          ]
+        },
+        {
+          "program": ".a |= .b",
+          "input": "{\"a\": {\"b\": 10}, \"b\": 20}",
+          "output": [
+            "{\"a\":10,\"b\":20}"
+          ]
+        },
+        {
+          "program": "(.a, .b) = range(3)",
+          "input": "null",
+          "output": [
+            "{\"a\":0,\"b\":0}",
+            "{\"a\":1,\"b\":1}",
+            "{\"a\":2,\"b\":2}"
+          ]
+        },
+        {
+          "program": "(.a, .b) |= range(3)",
+          "input": "null",
+          "output": [
+            "{\"a\":0,\"b\":0}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Complex assignments",
+      "body": "Lots more things are allowed on the left-hand side of a jq assignment\nthan in most languages. We've already seen simple field accesses on\nthe left hand side, and it's no surprise that array accesses work just\nas well:\n\n    .posts[0].title = \"JQ Manual\"\n\nWhat may come as a surprise is that the expression on the left may\nproduce multiple results, referring to different points in the input\ndocument:\n\n    .posts[].comments |= . + [\"this is great\"]\n\nThat example appends the string \"this is great\" to the \"comments\"\narray of each post in the input (where the input is an object with a\nfield \"posts\" which is an array of posts).\n\nWhen jq encounters an assignment like 'a = b', it records the \"path\"\ntaken to select a part of the input document while executing a. This\npath is then used to find which part of the input to change while\nexecuting the assignment. Any filter may be used on the\nleft-hand side of an equals - whichever paths it selects from the\ninput will be where the assignment is performed.\n\nThis is a very powerful operation. Suppose we wanted to add a comment\nto blog posts, using the same \"blog\" input above. This time, we only\nwant to comment on the posts written by \"stedolan\". We can find those\nposts using the \"select\" function described earlier:\n\n    .posts[] | select(.author == \"stedolan\")\n\nThe paths provided by this operation point to each of the posts that\n\"stedolan\" wrote, and we can comment on each of them in the same way\nthat we did before:\n\n    (.posts[] | select(.author == \"stedolan\") | .comments) |=\n        . + [\"terrible.\"]\n"
+    }
+  ]
+}

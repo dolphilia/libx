@@ -1,0 +1,227 @@
+{
+  "entryStart": 43,
+  "entries": [
+    {
+      "title": "`indices(s)`",
+      "body": "\nOutputs an array containing the indices in `.` where `s`\noccurs.  The input may be an array, in which case if `s` is an\narray then the indices output will be those where all elements\nin `.` match those of `s`.\n",
+      "examples": [
+        {
+          "program": "indices(\", \")",
+          "input": "\"a,b, cd, efg, hijk\"",
+          "output": [
+            "[3,7,12]"
+          ]
+        },
+        {
+          "program": "indices(1)",
+          "input": "[0,1,2,1,3,1,4]",
+          "output": [
+            "[1,3,5]"
+          ]
+        },
+        {
+          "program": "indices([1,2])",
+          "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+          "output": [
+            "[1,8]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`index(s)`, `rindex(s)`",
+      "body": "\nOutputs the index of the first (`index`) or last (`rindex`)\noccurrence of `s` in the input.\n",
+      "examples": [
+        {
+          "program": "index(\", \")",
+          "input": "\"a,b, cd, efg, hijk\"",
+          "output": [
+            "3"
+          ]
+        },
+        {
+          "program": "index(1)",
+          "input": "[0,1,2,1,3,1,4]",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "index([1,2])",
+          "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "rindex(\", \")",
+          "input": "\"a,b, cd, efg, hijk\"",
+          "output": [
+            "12"
+          ]
+        },
+        {
+          "program": "rindex(1)",
+          "input": "[0,1,2,1,3,1,4]",
+          "output": [
+            "5"
+          ]
+        },
+        {
+          "program": "rindex([1,2])",
+          "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+          "output": [
+            "8"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`inside`",
+      "body": "\nThe filter `inside(b)` will produce true if the input is\ncompletely contained within b. It is, essentially, an\ninversed version of `contains`.\n",
+      "examples": [
+        {
+          "program": "inside(\"foobar\")",
+          "input": "\"bar\"",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "inside([\"foobar\", \"foobaz\", \"blarp\"])",
+          "input": "[\"baz\", \"bar\"]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "inside([\"foobar\", \"foobaz\", \"blarp\"])",
+          "input": "[\"bazzzzz\", \"bar\"]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "inside({\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]})",
+          "input": "{\"foo\": 12, \"bar\": [{\"barp\": 12}]}",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "inside({\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]})",
+          "input": "{\"foo\": 12, \"bar\": [{\"barp\": 15}]}",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`startswith(str)`",
+      "body": "\nOutputs `true` if . starts with the given string argument.\n",
+      "examples": [
+        {
+          "program": "[.[]|startswith(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"barfoob\"]",
+          "output": [
+            "[false, true, false, true, false]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`endswith(str)`",
+      "body": "\nOutputs `true` if . ends with the given string argument.\n",
+      "examples": [
+        {
+          "program": "[.[]|endswith(\"foo\")]",
+          "input": "[\"foobar\", \"barfoo\"]",
+          "output": [
+            "[false, true]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`combinations`, `combinations(n)`",
+      "body": "\nOutputs all combinations of the elements of the arrays in the\ninput array. If given an argument `n`, it outputs all combinations\nof `n` repetitions of the input array.\n",
+      "examples": [
+        {
+          "program": "combinations",
+          "input": "[[1,2], [3, 4]]",
+          "output": [
+            "[1, 3]",
+            "[1, 4]",
+            "[2, 3]",
+            "[2, 4]"
+          ]
+        },
+        {
+          "program": "combinations(2)",
+          "input": "[0, 1]",
+          "output": [
+            "[0, 0]",
+            "[0, 1]",
+            "[1, 0]",
+            "[1, 1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`ltrimstr(str)`",
+      "body": "\nOutputs its input with the given prefix string removed, if it\nstarts with it.\n",
+      "examples": [
+        {
+          "program": "[.[]|ltrimstr(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"afoo\"]",
+          "output": [
+            "[\"fo\",\"\",\"barfoo\",\"bar\",\"afoo\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`rtrimstr(str)`",
+      "body": "\nOutputs its input with the given suffix string removed, if it\nends with it.\n",
+      "examples": [
+        {
+          "program": "[.[]|rtrimstr(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"foob\"]",
+          "output": [
+            "[\"fo\",\"\",\"bar\",\"foobar\",\"foob\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`trimstr(str)`",
+      "body": "\nOutputs its input with the given string removed at both ends, if it\nstarts or ends with it.\n",
+      "examples": [
+        {
+          "program": "[.[]|trimstr(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobarfoo\", \"foob\"]",
+          "output": [
+            "[\"fo\",\"\",\"bar\",\"bar\",\"b\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`trim`, `ltrim`, `rtrim`",
+      "body": "\n`trim` trims both leading and trailing whitespace.\n\n`ltrim` trims only leading (left side) whitespace.\n\n`rtrim` trims only trailing (right side) whitespace.\n\nWhitespace characters are the usual `\" \"`, `\"\\n\"` `\"\\t\"`, `\"\\r\"`\nand also all characters in the Unicode character database with the\nwhitespace property. Note that what considers whitespace might\nchange in the future.\n",
+      "examples": [
+        {
+          "program": "trim, ltrim, rtrim",
+          "input": "\" abc \"",
+          "output": [
+            "\"abc\"",
+            "\"abc \"",
+            "\" abc\""
+          ]
+        }
+      ]
+    }
+  ]
+}

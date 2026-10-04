@@ -1,0 +1,193 @@
+{
+  "title": "条件式と比較",
+  "entries": [
+    {
+      "title": "`==`, `!=`",
+      "body": "\n式'a == b'は、aとbを評価した結果が等しい場合（つまり、等価なJSON値を表す場合）に'true'を生成し、それ以外の場合に'false'を生成します。特に、文字列が数値と等しいとみなされることはありません。JSONオブジェクトの等価性を調べるとき、キーの順序は関係ありません。JavaScriptを使っていた方は、jqの `==` が、JavaScriptの「厳密等価」演算子 `===` と同様であることに注意してください。\n\n!=は「等しくない」を意味し、'a != b'は'a == b'と逆の値を返します。\n",
+      "examples": [
+        {
+          "program": ". == false",
+          "input": "null",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": ". == {\"b\": {\"d\": (4 + 1e-20), \"c\": 3}, \"a\":1}",
+          "input": "{\"a\":1, \"b\": {\"c\": 3, \"d\": 4}}",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": ".[] == 1",
+          "input": "[1, 1.0, \"1\", \"banana\"]",
+          "output": [
+            "true",
+            "true",
+            "false",
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "if-then-else-end",
+      "body": "\n`if A then B else C end` が `B` と同じ動作をするのは、`A` がfalseでもnullでもない値を生成する場合です。それ以外の場合は `C` と同じ動作をします。\n\n`if A then B end` は、`if A then B else .  end` と同じです。つまり、`else` 分岐は省略可能で、省略した場合は `.` と同じです。これは、`elif` で最後の `else` 分岐を省略した場合にも当てはまります。\n\nfalseかnullかを調べるという「真とみなすかどうか」の基準は、JavaScriptやPythonより単純です。ただし、求める条件を、より明示的に指定しなければならない場合があります。たとえば、`if .name then A else B end` では文字列が空かどうかは調べられません。代わりに、`if .name == \"\" then A else B end` のような式が必要です。\n\n条件 `A` が複数の結果を生成する場合、`B` はfalseでもnullでもない各結果に対して1回ずつ評価され、`C` はfalseまたはnullの各結果に対して1回ずつ評価されます。\n\nifにさらに条件を追加するには、`elif A then B` 構文を使います。\n",
+      "examples": [
+        {
+          "program": "if . == 0 then\n  \"zero\"\nelif . == 1 then\n  \"one\"\nelse\n  \"many\"\nend",
+          "input": "2",
+          "output": [
+            "\"many\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`>`, `>=`, `<=`, `<`",
+      "body": "\n比較演算子 `>`、`>=`、`<=`、`<` は、それぞれ、左の引数が右の引数より大きいか、以上か、以下か、より小さいかを返します。\n\n順序は、前述の `sort` で説明した順序と同じです。\n",
+      "examples": [
+        {
+          "program": ". < 5",
+          "input": "2",
+          "output": [
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`and`, `or`, `not`",
+      "body": "\njqは、通常の真偽値演算子 `and`、`or`、`not` に対応しています。真とみなす基準はif式と同じです。`false` と `null` は「偽の値」とみなされ、それ以外はすべて「真の値」です。\n\nこれらの演算子のオペランドが複数の結果を生成する場合、演算子自体も各入力に対して結果を生成します。\n\n実際には、`not` は演算子ではなく組込み関数です。そのため、専用の構文ではなく、値をパイプで渡すフィルターとして呼び出します。たとえば、`.foo and .bar |\nnot` のように使います。\n\nこの3つは、`true` と `false` の値だけを生成します。そのため、純粋な真偽値演算に使うもので、Perl/Python/Rubyでよく使われる\"value_that_may_be_null or default\"という書き方には使えません。このような「or」を使い、条件を評価する代わりに2つの値から選びたい場合は、後述の `//` 演算子を参照してください。\n",
+      "examples": [
+        {
+          "program": "42 and \"a string\"",
+          "input": "null",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "(true, false) or false",
+          "input": "null",
+          "output": [
+            "true",
+            "false"
+          ]
+        },
+        {
+          "program": "(true, true) and (true, false)",
+          "input": "null",
+          "output": [
+            "true",
+            "false",
+            "true",
+            "false"
+          ]
+        },
+        {
+          "program": "[true, false | not]",
+          "input": "null",
+          "output": [
+            "[false, true]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "代替演算子：`//`",
+      "body": "\n演算子 `//` は、左辺の値のうち、`false` でも `null` でもないものをすべて生成します。左辺が `false` または `null` 以外の値を1つも生成しない場合、`//` は右辺の値をすべて生成します。\n\n`a // b` という形式のフィルターは、`a` の結果のうち、`false` でも `null` でもないものをすべて生成します。`a` が結果を1つも生成しない場合、または `false` か `null` 以外の結果を生成しない場合、`a\n// b` は `b` の結果を生成します。\n\nこれは既定値を与える際に便利です。`.foo // 1` が `1` に評価されるのは、入力に `.foo` 要素がない場合です。これは、Pythonで `or` が使われることがある方法と似ています（jqの `or` 演算子は、厳密な真偽値演算専用です）。\n\n注意：`some_generator // defaults_here` は、`some_generator | . // defaults_here` と同じではありません。後者は左辺の、`false` でない値、`null` でない値のすべてに対して既定値を生成しますが、前者はそうではありません。優先順位の規則が分かりにくくする場合があります。たとえば、`false, 1 // 2` で `//` の左辺となるのは `1` であって、`false, 1` ではありません。`false, 1 // 2` は、`false,\n(1 // 2)` と同じように解析されます。`(false, null, 1) | . // 42` で `//` の左辺となるのは `.` で、常に1つの値だけを生成します。一方、`(false, null, 1) // 42` の左辺は3つの値のジェネレーターです。`false` と `null` 以外の値を生成するため、既定値 `42` は生成されません。\n",
+      "examples": [
+        {
+          "program": "empty // 42",
+          "input": "null",
+          "output": [
+            "42"
+          ]
+        },
+        {
+          "program": ".foo // 42",
+          "input": "{\"foo\": 19}",
+          "output": [
+            "19"
+          ]
+        },
+        {
+          "program": ".foo // 42",
+          "input": "{}",
+          "output": [
+            "42"
+          ]
+        },
+        {
+          "program": "(false, null, 1) // 42",
+          "input": "null",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "(false, null, 1) | . // 42",
+          "input": "null",
+          "output": [
+            "42",
+            "42",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "try-catch",
+      "body": "\nエラーは、`try EXP catch EXP` を使って捕捉できます。最初の式を実行し、失敗した場合は、エラーメッセージを入力として2番目の式を実行します。ハンドラーが何かを出力した場合、それは、試した式の出力であるかのように出力されます。\n\n`try EXP` という形式は、例外ハンドラーとして `empty` を使います。\n",
+      "examples": [
+        {
+          "program": "try .a catch \". is not an object\"",
+          "input": "true",
+          "output": [
+            "\". is not an object\""
+          ]
+        },
+        {
+          "program": "[.[]|try .a]",
+          "input": "[{}, true, {\"a\":1}]",
+          "output": [
+            "[null, 1]"
+          ]
+        },
+        {
+          "program": "try error(\"some exception\") catch .",
+          "input": "true",
+          "output": [
+            "\"some exception\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "制御構造から抜け出す",
+      "body": "\ntry/catchの便利な用途の1つは、`reduce`、`foreach`、`while` などの制御構造から抜け出すことです。\n\n例：\n\n    # Repeat an expression until it raises \"break\" as an\n    # error, then stop repeating without re-raising the error.\n    # But if the error caught is not \"break\" then re-raise it.\n    try repeat(exp) catch if .==\"break\" then empty else error\n\njqには、「抜け出す」または「戻る」先として使う、名前付きの字句的なラベルの構文があります。\n\n    label $out | ... break $out ...\n\n式 `break $label_name` は、最も近い左側の `label $label_name` が `empty` を生成したかのように、プログラムを動作させます。\n\n`break` と対応する `label` の関係は字句的なものです。ラベルがbreakから「見える」位置にある必要があります。\n\nたとえば、`reduce` から抜け出すには、次のようにします。\n\n    label $out | reduce .[] as $item (null; if .==false then break $out else ... end)\n\n次のjqプログラムは、構文エラーを生成します。\n\n    break $out\n\nラベル `$out` が見える位置にないためです。\n"
+    },
+    {
+      "title": "エラー抑制／オプショナル演算子：`?`",
+      "body": "\n演算子 `?` を `EXP?` として使う書き方は、`try EXP` の省略形です。\n",
+      "examples": [
+        {
+          "program": "[.[] | .a?]",
+          "input": "[{}, true, {\"a\":1}]",
+          "output": [
+            "[null, 1]"
+          ]
+        },
+        {
+          "program": "[.[] | tonumber?]",
+          "input": "[\"1\", \"invalid\", \"3\", 4]",
+          "output": [
+            "[1, 3, 4]"
+          ]
+        }
+      ]
+    }
+  ]
+}

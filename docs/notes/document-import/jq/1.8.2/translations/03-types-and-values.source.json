@@ -1,0 +1,60 @@
+{
+  "title": "Types and Values",
+  "body": "\njq supports the same set of datatypes as JSON - numbers,\nstrings, booleans, arrays, objects (which in JSON-speak are\nhashes with only string keys), and \"null\".\n\nBooleans, null, strings and numbers are written the same way as\nin JSON. Just like everything else in jq, these simple\nvalues take an input and produce an output - `42` is a valid jq\nexpression that takes an input, ignores it, and returns 42\ninstead.\n\nNumbers in jq are internally represented by their IEEE754 double\nprecision approximation. Any arithmetic operation with numbers,\nwhether they are literals or results of previous filters, will\nproduce a double precision floating point result.\n\nHowever, when parsing a literal jq will store the original literal\nstring. If no mutation is applied to this value then it will make\nto the output in its original form, even if conversion to double\nwould result in a loss.\n",
+  "entries": [
+    {
+      "title": "Array construction: `[]`",
+      "body": "\nAs in JSON, `[]` is used to construct arrays, as in\n`[1,2,3]`. The elements of the arrays can be any jq\nexpression, including a pipeline. All of the results produced\nby all of the expressions are collected into one big array.\nYou can use it to construct an array out of a known quantity\nof values (as in `[.foo, .bar, .baz]`) or to \"collect\" all the\nresults of a filter into an array (as in `[.items[].name]`)\n\nOnce you understand the \",\" operator, you can look at jq's array\nsyntax in a different light: the expression `[1,2,3]` is not using a\nbuilt-in syntax for comma-separated arrays, but is instead applying\nthe `[]` operator (collect results) to the expression 1,2,3 (which\nproduces three different results).\n\nIf you have a filter `X` that produces four results,\nthen the expression `[X]` will produce a single result, an\narray of four elements.\n",
+      "examples": [
+        {
+          "program": "[.user, .projects[]]",
+          "input": "{\"user\":\"stedolan\", \"projects\": [\"jq\", \"wikiflow\"]}",
+          "output": [
+            "[\"stedolan\", \"jq\", \"wikiflow\"]"
+          ]
+        },
+        {
+          "program": "[ .[] | . * 2]",
+          "input": "[1, 2, 3]",
+          "output": [
+            "[2, 4, 6]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Object Construction: `{}`",
+      "body": "\nLike JSON, `{}` is for constructing objects (aka\ndictionaries or hashes), as in: `{\"a\": 42, \"b\": 17}`.\n\nIf the keys are \"identifier-like\", then the quotes can be left\noff, as in `{a:42, b:17}`.  Variable references as key\nexpressions use the value of the variable as the key.  Key\nexpressions other than constant literals, identifiers, or\nvariable references, need to be parenthesized, e.g.,\n`{(\"a\"+\"b\"):59}`.\n\nThe value can be any expression (although you may need to wrap\nit in parentheses if, for example, it contains colons), which\ngets applied to the {} expression's input (remember, all\nfilters have an input and an output).\n\n    {foo: .bar}\n\nwill produce the JSON object `{\"foo\": 42}` if given the JSON\nobject `{\"bar\":42, \"baz\":43}` as its input. You can use this\nto select particular fields of an object: if the input is an\nobject with \"user\", \"title\", \"id\", and \"content\" fields and\nyou just want \"user\" and \"title\", you can write\n\n    {user: .user, title: .title}\n\nBecause that is so common, there's a shortcut syntax for it:\n`{user, title}`.\n\nIf one of the expressions produces multiple results,\nmultiple dictionaries will be produced. If the input's\n\n    {\"user\":\"stedolan\",\"titles\":[\"JQ Primer\", \"More JQ\"]}\n\nthen the expression\n\n    {user, title: .titles[]}\n\nwill produce two outputs:\n\n    {\"user\":\"stedolan\", \"title\": \"JQ Primer\"}\n    {\"user\":\"stedolan\", \"title\": \"More JQ\"}\n\nPutting parentheses around the key means it will be evaluated as an\nexpression. With the same input as above,\n\n    {(.user): .titles}\n\nproduces\n\n    {\"stedolan\": [\"JQ Primer\", \"More JQ\"]}\n\nVariable references as keys use the value of the variable as\nthe key.  Without a value then the variable's name becomes the\nkey and its value becomes the value,\n\n    \"f o o\" as $foo | \"b a r\" as $bar | {$foo, $bar:$foo}\n\nproduces\n\n    {\"foo\":\"f o o\",\"b a r\":\"f o o\"}\n",
+      "examples": [
+        {
+          "program": "{user, title: .titles[]}",
+          "input": "{\"user\":\"stedolan\",\"titles\":[\"JQ Primer\", \"More JQ\"]}",
+          "output": [
+            "{\"user\":\"stedolan\", \"title\": \"JQ Primer\"}",
+            "{\"user\":\"stedolan\", \"title\": \"More JQ\"}"
+          ]
+        },
+        {
+          "program": "{(.user): .titles}",
+          "input": "{\"user\":\"stedolan\",\"titles\":[\"JQ Primer\", \"More JQ\"]}",
+          "output": [
+            "{\"stedolan\": [\"JQ Primer\", \"More JQ\"]}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Recursive Descent: `..`",
+      "body": "\nRecursively descends `.`, producing every value.  This is the\nsame as the zero-argument `recurse` builtin (see below).  This\nis intended to resemble the XPath `//` operator.  Note that\n`..a` does not work; use `.. | .a` instead.  In the example\nbelow we use `.. | .a?` to find all the values of object keys\n\"a\" in any object found \"below\" `.`.\n\nThis is particularly useful in conjunction with `path(EXP)`\n(also see below) and the `?` operator.\n",
+      "examples": [
+        {
+          "program": ".. | .a?",
+          "input": "[[{\"a\":1}]]",
+          "output": [
+            "1"
+          ]
+        }
+      ]
+    }
+  ]
+}

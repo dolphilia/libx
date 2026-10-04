@@ -1,0 +1,1489 @@
+{
+  "title": "Builtin operators and functions",
+  "body": "\nSome jq operators (for instance, `+`) do different things\ndepending on the type of their arguments (arrays, numbers,\netc.). However, jq never does implicit type conversions. If you\ntry to add a string to an object you'll get an error message and\nno result.\n\nPlease note that all numbers are converted to IEEE754 double precision\nfloating point representation. Arithmetic and logical operators are working\nwith these converted doubles. Results of all such operations are also limited\nto the double precision.\n\nThe only exception to this behaviour of number is a snapshot of original number\nliteral. When a number which originally was provided as a literal is never\nmutated until the end of the program then it is printed to the output in its\noriginal literal form. This also includes cases when the original literal\nwould be truncated when converted to the IEEE754 double precision floating point\nnumber.\n",
+  "entries": [
+    {
+      "title": "Addition: `+`",
+      "body": "\nThe operator `+` takes two filters, applies them both\nto the same input, and adds the results together. What\n\"adding\" means depends on the types involved:\n\n- **Numbers** are added by normal arithmetic.\n\n- **Arrays** are added by being concatenated into a larger array.\n\n- **Strings** are added by being joined into a larger string.\n\n- **Objects** are added by merging, that is, inserting all\n  the key-value pairs from both objects into a single\n  combined object. If both objects contain a value for the\n  same key, the object on the right of the `+` wins. (For\n  recursive merge use the `*` operator.)\n\n`null` can be added to any value, and returns the other\nvalue unchanged.\n",
+      "examples": [
+        {
+          "program": ".a + 1",
+          "input": "{\"a\": 7}",
+          "output": [
+            "8"
+          ]
+        },
+        {
+          "program": ".a + .b",
+          "input": "{\"a\": [1,2], \"b\": [3,4]}",
+          "output": [
+            "[1,2,3,4]"
+          ]
+        },
+        {
+          "program": ".a + null",
+          "input": "{\"a\": 1}",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": ".a + 1",
+          "input": "{}",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "{a: 1} + {b: 2} + {c: 3} + {a: 42}",
+          "input": "null",
+          "output": [
+            "{\"a\": 42, \"b\": 2, \"c\": 3}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Subtraction: `-`",
+      "body": "\nAs well as normal arithmetic subtraction on numbers, the `-`\noperator can be used on arrays to remove all occurrences of\nthe second array's elements from the first array.\n",
+      "examples": [
+        {
+          "program": "4 - .a",
+          "input": "{\"a\":3}",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": ". - [\"xml\", \"yaml\"]",
+          "input": "[\"xml\", \"yaml\", \"json\"]",
+          "output": [
+            "[\"json\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Multiplication, division, modulo: `*`, `/`, `%`",
+      "body": "\nThese infix operators behave as expected when given two numbers.\nDivision by zero raises an error. `x % y` computes x modulo y.\n\nMultiplying a string by a number produces the concatenation of\nthat string that many times. `\"x\" * 0` produces `\"\"`.\n\nDividing a string by another splits the first using the second\nas separators.\n\nMultiplying two objects will merge them recursively: this works\nlike addition but if both objects contain a value for the\nsame key, and the values are objects, the two are merged with\nthe same strategy.\n",
+      "examples": [
+        {
+          "program": "10 / . * 3",
+          "input": "5",
+          "output": [
+            "6"
+          ]
+        },
+        {
+          "program": ". / \", \"",
+          "input": "\"a, b,c,d, e\"",
+          "output": [
+            "[\"a\",\"b,c,d\",\"e\"]"
+          ]
+        },
+        {
+          "program": "{\"k\": {\"a\": 1, \"b\": 2}} * {\"k\": {\"a\": 0,\"c\": 3}}",
+          "input": "null",
+          "output": [
+            "{\"k\": {\"a\": 0, \"b\": 2, \"c\": 3}}"
+          ]
+        },
+        {
+          "program": ".[] | (1 / .)?",
+          "input": "[1,0,-1]",
+          "output": [
+            "1",
+            "-1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`abs`",
+      "body": "\nThe builtin function `abs` is defined naively as: `if . < 0 then - . else . end`.\n\nFor numeric input, this is the absolute value.  See the\nsection on the identity filter for the implications of this\ndefinition for numeric input.\n\nTo compute the absolute value of a number as a floating point number, you may wish use `fabs`.\n",
+      "examples": [
+        {
+          "program": "map(abs)",
+          "input": "[-10, -1.1, -1e-1]",
+          "output": [
+            "[10,1.1,1e-1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`length`",
+      "body": "\nThe builtin function `length` gets the length of various\ndifferent types of value:\n\n- The length of a **string** is the number of Unicode\n  codepoints it contains (which will be the same as its\n  JSON-encoded length in bytes if it's pure ASCII).\n\n- The length of a **number** is its absolute value.\n\n- The length of an **array** is the number of elements.\n\n- The length of an **object** is the number of key-value pairs.\n\n- The length of **null** is zero.\n\n- It is an error to use `length` on a **boolean**.\n",
+      "examples": [
+        {
+          "program": ".[] | length",
+          "input": "[[1,2], \"string\", {\"a\":2}, null, -5]",
+          "output": [
+            "2",
+            "6",
+            "1",
+            "0",
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`utf8bytelength`",
+      "body": "\nThe builtin function `utf8bytelength` outputs the number of\nbytes used to encode a string in UTF-8.\n",
+      "examples": [
+        {
+          "program": "utf8bytelength",
+          "input": "\"\\u03bc\"",
+          "output": [
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`keys`, `keys_unsorted`",
+      "body": "\nThe builtin function `keys`, when given an object, returns\nits keys in an array.\n\nThe keys are sorted \"alphabetically\", by unicode codepoint\norder. This is not an order that makes particular sense in\nany particular language, but you can count on it being the\nsame for any two objects with the same set of keys,\nregardless of locale settings.\n\nWhen `keys` is given an array, it returns the valid indices\nfor that array: the integers from 0 to length-1.\n\nThe `keys_unsorted` function is just like `keys`, but if\nthe input is an object then the keys will not be sorted,\ninstead the keys will roughly be in insertion order.\n",
+      "examples": [
+        {
+          "program": "keys",
+          "input": "{\"abc\": 1, \"abcd\": 2, \"Foo\": 3}",
+          "output": [
+            "[\"Foo\", \"abc\", \"abcd\"]"
+          ]
+        },
+        {
+          "program": "keys",
+          "input": "[42,3,35]",
+          "output": [
+            "[0,1,2]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`has(key)`",
+      "body": "\nThe builtin function `has` returns whether the input object\nhas the given key, or the input array has an element at the\ngiven index.\n\n`has($key)` has the same effect as checking whether `$key`\nis a member of the array returned by `keys`, although `has`\nwill be faster.\n",
+      "examples": [
+        {
+          "program": "map(has(\"foo\"))",
+          "input": "[{\"foo\": 42}, {}]",
+          "output": [
+            "[true, false]"
+          ]
+        },
+        {
+          "program": "map(has(2))",
+          "input": "[[0,1], [\"a\",\"b\",\"c\"]]",
+          "output": [
+            "[false, true]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`in`",
+      "body": "\nThe builtin function `in` returns whether or not the input key is in the\ngiven object, or the input index corresponds to an element\nin the given array. It is, essentially, an inversed version\nof `has`.\n",
+      "examples": [
+        {
+          "program": ".[] | in({\"foo\": 42})",
+          "input": "[\"foo\", \"bar\"]",
+          "output": [
+            "true",
+            "false"
+          ]
+        },
+        {
+          "program": "map(in([0,1]))",
+          "input": "[2, 0]",
+          "output": [
+            "[false, true]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`map(f)`, `map_values(f)`",
+      "body": "\nFor any filter `f`, `map(f)` and `map_values(f)` apply `f`\nto each of the values in the input array or object, that is,\nto the values of `.[]`.\n\nIn the absence of errors, `map(f)` always outputs an array\nwhereas `map_values(f)` outputs an array if given an array,\nor an object if given an object.\n\nWhen the input to `map_values(f)` is an object, the output\nobject has the same keys as the input object except for\nthose keys whose values when piped to `f` produce no values\nat all.\n\nThe key difference between `map(f)` and `map_values(f)` is\nthat the former simply forms an array from all the values of\n`($x|f)` for each value, `$x`, in the input array or object,\nbut `map_values(f)` only uses `first($x|f)`.\n\nSpecifically, for object inputs, `map_values(f)` constructs\nthe output object by examining in turn the value of\n`first(.[$k]|f)` for each key, `$k`, of the input.  If this\nexpression produces no values, then the corresponding key\nwill be dropped; otherwise, the output object will have that\nvalue at the key, `$k`.\n\nHere are some examples to clarify the behavior of `map` and\n`map_values` when applied to arrays. These examples assume the\ninput is `[1]` in all cases:\n\n    map(.+1)          #=>  [2]\n    map(., .)         #=>  [1,1]\n    map(empty)        #=>  []\n\n    map_values(.+1)   #=>  [2]\n    map_values(., .)  #=>  [1]\n    map_values(empty) #=>  []\n\n`map(f)` is equivalent to `[.[] | f]` and\n`map_values(f)` is equivalent to `.[] |= f`.\n\nIn fact, these are their implementations.\n",
+      "examples": [
+        {
+          "program": "map(.+1)",
+          "input": "[1,2,3]",
+          "output": [
+            "[2,3,4]"
+          ]
+        },
+        {
+          "program": "map_values(.+1)",
+          "input": "{\"a\": 1, \"b\": 2, \"c\": 3}",
+          "output": [
+            "{\"a\": 2, \"b\": 3, \"c\": 4}"
+          ]
+        },
+        {
+          "program": "map(., .)",
+          "input": "[1,2]",
+          "output": [
+            "[1,1,2,2]"
+          ]
+        },
+        {
+          "program": "map_values(. // empty)",
+          "input": "{\"a\": null, \"b\": true, \"c\": false}",
+          "output": [
+            "{\"b\":true}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`pick(pathexps)`",
+      "body": "\nEmit the projection of the input object or array defined by the\nspecified sequence of path expressions, such that if `p` is any\none of these specifications, then `(. | p)` will evaluate to the\nsame value as `(. | pick(pathexps) | p)`. For arrays, negative\nindices and `.[m:n]` specifications should not be used.\n",
+      "examples": [
+        {
+          "program": "pick(.a, .b.c, .x)",
+          "input": "{\"a\": 1, \"b\": {\"c\": 2, \"d\": 3}, \"e\": 4}",
+          "output": [
+            "{\"a\":1,\"b\":{\"c\":2},\"x\":null}"
+          ]
+        },
+        {
+          "program": "pick(.[2], .[0], .[0])",
+          "input": "[1,2,3,4]",
+          "output": [
+            "[1,null,3]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`path(path_expression)`",
+      "body": "\nOutputs array representations of the given path expression\nin `.`.  The outputs are arrays of strings (object keys)\nand/or numbers (array indices).\n\nPath expressions are jq expressions like `.a`, but also `.[]`.\nThere are two types of path expressions: ones that can match\nexactly, and ones that cannot.  For example, `.a.b.c` is an\nexact match path expression, while `.a[].b` is not.\n\n`path(exact_path_expression)` will produce the array\nrepresentation of the path expression even if it does not\nexist in `.`, if `.` is `null` or an array or an object.\n\n`path(pattern)` will produce array representations of the\npaths matching `pattern` if the paths exist in `.`.\n\nNote that the path expressions are not different from normal\nexpressions.  The expression\n`path(..|select(type==\"boolean\"))` outputs all the paths to\nboolean values in `.`, and only those paths.\n",
+      "examples": [
+        {
+          "program": "path(.a[0].b)",
+          "input": "null",
+          "output": [
+            "[\"a\",0,\"b\"]"
+          ]
+        },
+        {
+          "program": "[path(..)]",
+          "input": "{\"a\":[{\"b\":1}]}",
+          "output": [
+            "[[],[\"a\"],[\"a\",0],[\"a\",0,\"b\"]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`del(path_expression)`",
+      "body": "\nThe builtin function `del` removes a key and its corresponding\nvalue from an object.\n",
+      "examples": [
+        {
+          "program": "del(.foo)",
+          "input": "{\"foo\": 42, \"bar\": 9001, \"baz\": 42}",
+          "output": [
+            "{\"bar\": 9001, \"baz\": 42}"
+          ]
+        },
+        {
+          "program": "del(.[1, 2])",
+          "input": "[\"foo\", \"bar\", \"baz\"]",
+          "output": [
+            "[\"foo\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`getpath(PATHS)`",
+      "body": "\nThe builtin function `getpath` outputs the values in `.` found\nat each path in `PATHS`.\n",
+      "examples": [
+        {
+          "program": "getpath([\"a\",\"b\"])",
+          "input": "null",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": "[getpath([\"a\",\"b\"], [\"a\",\"c\"])]",
+          "input": "{\"a\":{\"b\":0, \"c\":1}}",
+          "output": [
+            "[0, 1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`setpath(PATHS; VALUE)`",
+      "body": "\nThe builtin function `setpath` sets the `PATHS` in `.` to `VALUE`.\n",
+      "examples": [
+        {
+          "program": "setpath([\"a\",\"b\"]; 1)",
+          "input": "null",
+          "output": [
+            "{\"a\": {\"b\": 1}}"
+          ]
+        },
+        {
+          "program": "setpath([\"a\",\"b\"]; 1)",
+          "input": "{\"a\":{\"b\":0}}",
+          "output": [
+            "{\"a\": {\"b\": 1}}"
+          ]
+        },
+        {
+          "program": "setpath([0,\"a\"]; 1)",
+          "input": "null",
+          "output": [
+            "[{\"a\":1}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`delpaths(PATHS)`",
+      "body": "\nThe builtin function `delpaths` deletes the `PATHS` in `.`.\n`PATHS` must be an array of paths, where each path is an array\nof strings and numbers.\n",
+      "examples": [
+        {
+          "program": "delpaths([[\"a\",\"b\"]])",
+          "input": "{\"a\":{\"b\":1},\"x\":{\"y\":2}}",
+          "output": [
+            "{\"a\":{},\"x\":{\"y\":2}}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`to_entries`, `from_entries`, `with_entries(f)`",
+      "body": "\nThese functions convert between an object and an array of\nkey-value pairs. If `to_entries` is passed an object, then\nfor each `k: v` entry in the input, the output array\nincludes `{\"key\": k, \"value\": v}`.\n\n`from_entries` does the opposite conversion, and `with_entries(f)`\nis a shorthand for `to_entries | map(f) | from_entries`, useful for\ndoing some operation to all keys and values of an object.\n`from_entries` accepts `\"key\"`, `\"Key\"`, `\"name\"`, `\"Name\"`,\n`\"value\"`, and `\"Value\"` as keys.\n",
+      "examples": [
+        {
+          "program": "to_entries",
+          "input": "{\"a\": 1, \"b\": 2}",
+          "output": [
+            "[{\"key\":\"a\", \"value\":1}, {\"key\":\"b\", \"value\":2}]"
+          ]
+        },
+        {
+          "program": "from_entries",
+          "input": "[{\"key\":\"a\", \"value\":1}, {\"key\":\"b\", \"value\":2}]",
+          "output": [
+            "{\"a\": 1, \"b\": 2}"
+          ]
+        },
+        {
+          "program": "with_entries(.key |= \"KEY_\" + .)",
+          "input": "{\"a\": 1, \"b\": 2}",
+          "output": [
+            "{\"KEY_a\": 1, \"KEY_b\": 2}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`select(boolean_expression)`",
+      "body": "\nThe function `select(f)` produces its input unchanged if\n`f` returns true for that input, and produces no output\notherwise.\n\nIt's useful for filtering lists: `[1,2,3] | map(select(. >= 2))`\nwill give you `[2,3]`.\n",
+      "examples": [
+        {
+          "program": "map(select(. >= 2))",
+          "input": "[1,5,3,0,7]",
+          "output": [
+            "[5,3,7]"
+          ]
+        },
+        {
+          "program": ".[] | select(.id == \"second\")",
+          "input": "[{\"id\": \"first\", \"val\": 1}, {\"id\": \"second\", \"val\": 2}]",
+          "output": [
+            "{\"id\": \"second\", \"val\": 2}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`arrays`, `objects`, `iterables`, `booleans`, `numbers`, `normals`, `finites`, `strings`, `nulls`, `values`, `scalars`",
+      "body": "\nThese built-ins select only inputs that are arrays, objects,\niterables (arrays or objects), booleans, numbers, normal\nnumbers, finite numbers, strings, null, non-null values, and\nnon-iterables, respectively.\n",
+      "examples": [
+        {
+          "program": ".[]|numbers",
+          "input": "[[],{},1,\"foo\",null,true,false]",
+          "output": [
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`empty`",
+      "body": "\n`empty` returns no results. None at all. Not even `null`.\n\nIt's useful on occasion. You'll know if you need it :)\n",
+      "examples": [
+        {
+          "program": "1, empty, 2",
+          "input": "null",
+          "output": [
+            "1",
+            "2"
+          ]
+        },
+        {
+          "program": "[1,2,empty,3]",
+          "input": "null",
+          "output": [
+            "[1,2,3]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`error`, `error(message)`",
+      "body": "\nProduces an error with the input value, or with the message\ngiven as the argument. Errors can be caught with try/catch;\nsee below.\n",
+      "examples": [
+        {
+          "program": "try error catch .",
+          "input": "\"error message\"",
+          "output": [
+            "\"error message\""
+          ]
+        },
+        {
+          "program": "try error(\"invalid value: \\(.)\") catch .",
+          "input": "42",
+          "output": [
+            "\"invalid value: 42\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`halt`",
+      "body": "\nStops the jq program with no further outputs.  jq will exit\nwith exit status `0`.\n"
+    },
+    {
+      "title": "`halt_error`, `halt_error(exit_code)`",
+      "body": "\nStops the jq program with no further outputs.  The input will\nbe printed on `stderr` as raw output (i.e., strings will not\nhave double quotes) with no decoration, not even a newline.\n\nThe given `exit_code` (defaulting to `5`) will be jq's exit\nstatus.\n\nFor example, `\"Error: something went wrong\\n\"|halt_error(1)`.\n"
+    },
+    {
+      "title": "`$__loc__`",
+      "body": "\nProduces an object with a \"file\" key and a \"line\" key, with\nthe filename and line number where `$__loc__` occurs, as\nvalues.\n",
+      "examples": [
+        {
+          "program": "try error(\"\\($__loc__)\") catch .",
+          "input": "null",
+          "output": [
+            "\"{\\\"file\\\":\\\"<top-level>\\\",\\\"line\\\":1}\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`paths`, `paths(node_filter)`",
+      "body": "\n`paths` outputs the paths to all the elements in its input\n(except it does not output the empty list, representing .\nitself).\n\n`paths(f)` outputs the paths to any values for which `f` is `true`.\nThat is, `paths(type == \"number\")` outputs the paths to all numeric\nvalues.\n",
+      "examples": [
+        {
+          "program": "[paths]",
+          "input": "[1,[[],{\"a\":2}]]",
+          "output": [
+            "[[0],[1],[1,0],[1,1],[1,1,\"a\"]]"
+          ]
+        },
+        {
+          "program": "[paths(type == \"number\")]",
+          "input": "[1,[[],{\"a\":2}]]",
+          "output": [
+            "[[0],[1,1,\"a\"]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`add`, `add(generator)`",
+      "body": "\nThe filter `add` takes as input an array, and produces as\noutput the elements of the array added together. This might\nmean summed, concatenated or merged depending on the types\nof the elements of the input array - the rules are the same\nas those for the `+` operator (described above).\n\nIf the input is an empty array, `add` returns `null`.\n\n`add(generator)` operates on the given generator rather than\nthe input.\n",
+      "examples": [
+        {
+          "program": "add",
+          "input": "[\"a\",\"b\",\"c\"]",
+          "output": [
+            "\"abc\""
+          ]
+        },
+        {
+          "program": "add",
+          "input": "[1, 2, 3]",
+          "output": [
+            "6"
+          ]
+        },
+        {
+          "program": "add",
+          "input": "[]",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": "add(.[].a)",
+          "input": "[{\"a\":3}, {\"a\":5}, {\"b\":6}]",
+          "output": [
+            "8"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`any`, `any(condition)`, `any(generator; condition)`",
+      "body": "\nThe filter `any` takes as input an array of boolean values,\nand produces `true` as output if any of the elements of\nthe array are `true`.\n\nIf the input is an empty array, `any` returns `false`.\n\nThe `any(condition)` form applies the given condition to the\nelements of the input array.\n\nThe `any(generator; condition)` form applies the given\ncondition to all the outputs of the given generator.\n",
+      "examples": [
+        {
+          "program": "any",
+          "input": "[true, false]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "any",
+          "input": "[false, false]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "any",
+          "input": "[]",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`all`, `all(condition)`, `all(generator; condition)`",
+      "body": "\nThe filter `all` takes as input an array of boolean values,\nand produces `true` as output if all of the elements of\nthe array are `true`.\n\nThe `all(condition)` form applies the given condition to the\nelements of the input array.\n\nThe `all(generator; condition)` form applies the given\ncondition to all the outputs of the given generator.\n\nIf the input is an empty array, `all` returns `true`.\n",
+      "examples": [
+        {
+          "program": "all",
+          "input": "[true, false]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "all",
+          "input": "[true, true]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "all",
+          "input": "[]",
+          "output": [
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`flatten`, `flatten(depth)`",
+      "body": "\nThe filter `flatten` takes as input an array of nested arrays,\nand produces a flat array in which all arrays inside the original\narray have been recursively replaced by their values. You can pass\nan argument to it to specify how many levels of nesting to flatten.\n\n`flatten(2)` is like `flatten`, but going only up to two\nlevels deep.\n",
+      "examples": [
+        {
+          "program": "flatten",
+          "input": "[1, [2], [[3]]]",
+          "output": [
+            "[1, 2, 3]"
+          ]
+        },
+        {
+          "program": "flatten(1)",
+          "input": "[1, [2], [[3]]]",
+          "output": [
+            "[1, 2, [3]]"
+          ]
+        },
+        {
+          "program": "flatten",
+          "input": "[[]]",
+          "output": [
+            "[]"
+          ]
+        },
+        {
+          "program": "flatten",
+          "input": "[{\"foo\": \"bar\"}, [{\"foo\": \"baz\"}]]",
+          "output": [
+            "[{\"foo\": \"bar\"}, {\"foo\": \"baz\"}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`range(upto)`, `range(from; upto)`, `range(from; upto; by)`",
+      "body": "\nThe `range` function produces a range of numbers. `range(4; 10)`\nproduces 6 numbers, from 4 (inclusive) to 10 (exclusive). The numbers\nare produced as separate outputs. Use `[range(4; 10)]` to get a range as\nan array.\n\nThe one argument form generates numbers from 0 to the given\nnumber, with an increment of 1.\n\nThe two argument form generates numbers from `from` to `upto`\nwith an increment of 1.\n\nThe three argument form generates numbers `from` to `upto`\nwith an increment of `by`.\n",
+      "examples": [
+        {
+          "program": "range(2; 4)",
+          "input": "null",
+          "output": [
+            "2",
+            "3"
+          ]
+        },
+        {
+          "program": "[range(2; 4)]",
+          "input": "null",
+          "output": [
+            "[2,3]"
+          ]
+        },
+        {
+          "program": "[range(4)]",
+          "input": "null",
+          "output": [
+            "[0,1,2,3]"
+          ]
+        },
+        {
+          "program": "[range(0; 10; 3)]",
+          "input": "null",
+          "output": [
+            "[0,3,6,9]"
+          ]
+        },
+        {
+          "program": "[range(0; 10; -1)]",
+          "input": "null",
+          "output": [
+            "[]"
+          ]
+        },
+        {
+          "program": "[range(0; -5; -1)]",
+          "input": "null",
+          "output": [
+            "[0,-1,-2,-3,-4]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`floor`",
+      "body": "\nThe `floor` function returns the floor of its numeric input.\n",
+      "examples": [
+        {
+          "program": "floor",
+          "input": "3.14159",
+          "output": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`sqrt`",
+      "body": "\nThe `sqrt` function returns the square root of its numeric input.\n",
+      "examples": [
+        {
+          "program": "sqrt",
+          "input": "9",
+          "output": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`tonumber`",
+      "body": "\nThe `tonumber` function parses its input as a number. It\nwill convert correctly-formatted strings to their numeric\nequivalent, leave numbers alone, and give an error on all other input.\n",
+      "examples": [
+        {
+          "program": ".[] | tonumber",
+          "input": "[1, \"1\"]",
+          "output": [
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`toboolean`",
+      "body": "\nThe `toboolean` function parses its input as a boolean. It\nwill convert correctly-formatted strings to their boolean\nequivalent, leave booleans alone, and give an error on all other input.\n",
+      "examples": [
+        {
+          "program": ".[] | toboolean",
+          "input": "[\"true\", \"false\", true, false]",
+          "output": [
+            "true",
+            "false",
+            "true",
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`tostring`",
+      "body": "\nThe `tostring` function prints its input as a\nstring. Strings are left unchanged, and all other values are\nJSON-encoded.\n",
+      "examples": [
+        {
+          "program": ".[] | tostring",
+          "input": "[1, \"1\", [1]]",
+          "output": [
+            "\"1\"",
+            "\"1\"",
+            "\"[1]\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`type`",
+      "body": "\nThe `type` function returns the type of its argument as a\nstring, which is one of null, boolean, number, string, array\nor object.\n",
+      "examples": [
+        {
+          "program": "map(type)",
+          "input": "[0, false, [], {}, null, \"hello\"]",
+          "output": [
+            "[\"number\", \"boolean\", \"array\", \"object\", \"null\", \"string\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`infinite`, `nan`, `isinfinite`, `isnan`, `isfinite`, `isnormal`",
+      "body": "\nSome arithmetic operations can yield infinities and \"not a\nnumber\" (NaN) values.  The `isinfinite` builtin returns `true`\nif its input is infinite.  The `isnan` builtin returns `true`\nif its input is a NaN.  The `infinite` builtin returns a\npositive infinite value.  The `nan` builtin returns a NaN.\nThe `isnormal` builtin returns true if its input is a normal\nnumber.\n\nNote that division by zero raises an error.\n\nCurrently most arithmetic operations operating on infinities,\nNaNs, and sub-normals do not raise errors.\n",
+      "examples": [
+        {
+          "program": ".[] | (infinite * .) < 0",
+          "input": "[-1, 1]",
+          "output": [
+            "true",
+            "false"
+          ]
+        },
+        {
+          "program": "infinite, nan | type",
+          "input": "null",
+          "output": [
+            "\"number\"",
+            "\"number\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`sort`, `sort_by(path_expression)`",
+      "body": "\nThe `sort` functions sorts its input, which must be an\narray. Values are sorted in the following order:\n\n* `null`\n* `false`\n* `true`\n* numbers\n* strings, in alphabetical order (by unicode codepoint value)\n* arrays, in lexical order\n* objects\n\nThe ordering for objects is a little complex: first they're\ncompared by comparing their sets of keys (as arrays in\nsorted order), and if their keys are equal then the values\nare compared key by key.\n\n`sort_by` may be used to sort by a particular field of an\nobject, or by applying any jq filter. `sort_by(f)` compares\ntwo elements by comparing the result of `f` on each element.\nWhen `f` produces multiple values, it firstly compares the\nfirst values, and the second values if the first values are\nequal, and so on.\n",
+      "examples": [
+        {
+          "program": "sort",
+          "input": "[8,3,null,6]",
+          "output": [
+            "[null,3,6,8]"
+          ]
+        },
+        {
+          "program": "sort_by(.foo)",
+          "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":10}, {\"foo\":2, \"bar\":1}]",
+          "output": [
+            "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":4, \"bar\":10}]"
+          ]
+        },
+        {
+          "program": "sort_by(.foo, .bar)",
+          "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}]",
+          "output": [
+            "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":4, \"bar\":10}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`group_by(path_expression)`",
+      "body": "\n`group_by(.foo)` takes as input an array, groups the\nelements having the same `.foo` field into separate arrays,\nand produces all of these arrays as elements of a larger\narray, sorted by the value of the `.foo` field.\n\nAny jq expression, not just a field access, may be used in\nplace of `.foo`. The sorting order is the same as described\nin the `sort` function above.\n",
+      "examples": [
+        {
+          "program": "group_by(.foo)",
+          "input": "[{\"foo\":1, \"bar\":10}, {\"foo\":3, \"bar\":100}, {\"foo\":1, \"bar\":1}]",
+          "output": [
+            "[[{\"foo\":1, \"bar\":10}, {\"foo\":1, \"bar\":1}], [{\"foo\":3, \"bar\":100}]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`min`, `max`, `min_by(path_exp)`, `max_by(path_exp)`",
+      "body": "\nFind the minimum or maximum element of the input array.\n\nThe `min_by(path_exp)` and `max_by(path_exp)` functions allow\nyou to specify a particular field or property to examine, e.g.\n`min_by(.foo)` finds the object with the smallest `foo` field.\n",
+      "examples": [
+        {
+          "program": "min",
+          "input": "[5,4,2,7]",
+          "output": [
+            "2"
+          ]
+        },
+        {
+          "program": "max_by(.foo)",
+          "input": "[{\"foo\":1, \"bar\":14}, {\"foo\":2, \"bar\":3}]",
+          "output": [
+            "{\"foo\":2, \"bar\":3}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`unique`, `unique_by(path_exp)`",
+      "body": "\nThe `unique` function takes as input an array and produces\nan array of the same elements, in sorted order, with\nduplicates removed.\n\nThe `unique_by(path_exp)` function will keep only one element\nfor each value obtained by applying the argument. Think of it\nas making an array by taking one element out of every group\nproduced by `group`.\n",
+      "examples": [
+        {
+          "program": "unique",
+          "input": "[1,2,5,3,5,3,1,3]",
+          "output": [
+            "[1,2,3,5]"
+          ]
+        },
+        {
+          "program": "unique_by(.foo)",
+          "input": "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 1, \"bar\": 3}, {\"foo\": 4, \"bar\": 5}]",
+          "output": [
+            "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 4, \"bar\": 5}]"
+          ]
+        },
+        {
+          "program": "unique_by(length)",
+          "input": "[\"chunky\", \"bacon\", \"kitten\", \"cicada\", \"asparagus\"]",
+          "output": [
+            "[\"bacon\", \"chunky\", \"asparagus\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`reverse`",
+      "body": "\nThis function reverses an array.\n",
+      "examples": [
+        {
+          "program": "reverse",
+          "input": "[1,2,3,4]",
+          "output": [
+            "[4,3,2,1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`contains(element)`",
+      "body": "\nThe filter `contains(b)` will produce true if b is\ncompletely contained within the input. A string B is\ncontained in a string A if B is a substring of A. An array B\nis contained in an array A if all elements in B are\ncontained in any element in A. An object B is contained in\nobject A if all of the values in B are contained in the\nvalue in A with the same key. All other types are assumed to\nbe contained in each other if they are equal.\n",
+      "examples": [
+        {
+          "program": "contains(\"bar\")",
+          "input": "\"foobar\"",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains([\"baz\", \"bar\"])",
+          "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains([\"bazzzzz\", \"bar\"])",
+          "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "contains({foo: 12, bar: [{barp: 12}]})",
+          "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains({foo: 12, bar: [{barp: 15}]})",
+          "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`indices(s)`",
+      "body": "\nOutputs an array containing the indices in `.` where `s`\noccurs.  The input may be an array, in which case if `s` is an\narray then the indices output will be those where all elements\nin `.` match those of `s`.\n",
+      "examples": [
+        {
+          "program": "indices(\", \")",
+          "input": "\"a,b, cd, efg, hijk\"",
+          "output": [
+            "[3,7,12]"
+          ]
+        },
+        {
+          "program": "indices(1)",
+          "input": "[0,1,2,1,3,1,4]",
+          "output": [
+            "[1,3,5]"
+          ]
+        },
+        {
+          "program": "indices([1,2])",
+          "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+          "output": [
+            "[1,8]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`index(s)`, `rindex(s)`",
+      "body": "\nOutputs the index of the first (`index`) or last (`rindex`)\noccurrence of `s` in the input.\n",
+      "examples": [
+        {
+          "program": "index(\", \")",
+          "input": "\"a,b, cd, efg, hijk\"",
+          "output": [
+            "3"
+          ]
+        },
+        {
+          "program": "index(1)",
+          "input": "[0,1,2,1,3,1,4]",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "index([1,2])",
+          "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "rindex(\", \")",
+          "input": "\"a,b, cd, efg, hijk\"",
+          "output": [
+            "12"
+          ]
+        },
+        {
+          "program": "rindex(1)",
+          "input": "[0,1,2,1,3,1,4]",
+          "output": [
+            "5"
+          ]
+        },
+        {
+          "program": "rindex([1,2])",
+          "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+          "output": [
+            "8"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`inside`",
+      "body": "\nThe filter `inside(b)` will produce true if the input is\ncompletely contained within b. It is, essentially, an\ninversed version of `contains`.\n",
+      "examples": [
+        {
+          "program": "inside(\"foobar\")",
+          "input": "\"bar\"",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "inside([\"foobar\", \"foobaz\", \"blarp\"])",
+          "input": "[\"baz\", \"bar\"]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "inside([\"foobar\", \"foobaz\", \"blarp\"])",
+          "input": "[\"bazzzzz\", \"bar\"]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "inside({\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]})",
+          "input": "{\"foo\": 12, \"bar\": [{\"barp\": 12}]}",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "inside({\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]})",
+          "input": "{\"foo\": 12, \"bar\": [{\"barp\": 15}]}",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`startswith(str)`",
+      "body": "\nOutputs `true` if . starts with the given string argument.\n",
+      "examples": [
+        {
+          "program": "[.[]|startswith(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"barfoob\"]",
+          "output": [
+            "[false, true, false, true, false]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`endswith(str)`",
+      "body": "\nOutputs `true` if . ends with the given string argument.\n",
+      "examples": [
+        {
+          "program": "[.[]|endswith(\"foo\")]",
+          "input": "[\"foobar\", \"barfoo\"]",
+          "output": [
+            "[false, true]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`combinations`, `combinations(n)`",
+      "body": "\nOutputs all combinations of the elements of the arrays in the\ninput array. If given an argument `n`, it outputs all combinations\nof `n` repetitions of the input array.\n",
+      "examples": [
+        {
+          "program": "combinations",
+          "input": "[[1,2], [3, 4]]",
+          "output": [
+            "[1, 3]",
+            "[1, 4]",
+            "[2, 3]",
+            "[2, 4]"
+          ]
+        },
+        {
+          "program": "combinations(2)",
+          "input": "[0, 1]",
+          "output": [
+            "[0, 0]",
+            "[0, 1]",
+            "[1, 0]",
+            "[1, 1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`ltrimstr(str)`",
+      "body": "\nOutputs its input with the given prefix string removed, if it\nstarts with it.\n",
+      "examples": [
+        {
+          "program": "[.[]|ltrimstr(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"afoo\"]",
+          "output": [
+            "[\"fo\",\"\",\"barfoo\",\"bar\",\"afoo\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`rtrimstr(str)`",
+      "body": "\nOutputs its input with the given suffix string removed, if it\nends with it.\n",
+      "examples": [
+        {
+          "program": "[.[]|rtrimstr(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"foob\"]",
+          "output": [
+            "[\"fo\",\"\",\"bar\",\"foobar\",\"foob\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`trimstr(str)`",
+      "body": "\nOutputs its input with the given string removed at both ends, if it\nstarts or ends with it.\n",
+      "examples": [
+        {
+          "program": "[.[]|trimstr(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobarfoo\", \"foob\"]",
+          "output": [
+            "[\"fo\",\"\",\"bar\",\"bar\",\"b\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`trim`, `ltrim`, `rtrim`",
+      "body": "\n`trim` trims both leading and trailing whitespace.\n\n`ltrim` trims only leading (left side) whitespace.\n\n`rtrim` trims only trailing (right side) whitespace.\n\nWhitespace characters are the usual `\" \"`, `\"\\n\"` `\"\\t\"`, `\"\\r\"`\nand also all characters in the Unicode character database with the\nwhitespace property. Note that what considers whitespace might\nchange in the future.\n",
+      "examples": [
+        {
+          "program": "trim, ltrim, rtrim",
+          "input": "\" abc \"",
+          "output": [
+            "\"abc\"",
+            "\"abc \"",
+            "\" abc\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`explode`",
+      "body": "\nConverts an input string into an array of the string's\ncodepoint numbers.\n",
+      "examples": [
+        {
+          "program": "explode",
+          "input": "\"foobar\"",
+          "output": [
+            "[102,111,111,98,97,114]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`implode`",
+      "body": "\nThe inverse of explode.\n",
+      "examples": [
+        {
+          "program": "implode",
+          "input": "[65, 66, 67]",
+          "output": [
+            "\"ABC\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`split(str)`",
+      "body": "\nSplits an input string on the separator argument.\n\n`split` can also split on regex matches when called with\ntwo arguments (see the regular expressions section below).\n",
+      "examples": [
+        {
+          "program": "split(\", \")",
+          "input": "\"a, b,c,d, e, \"",
+          "output": [
+            "[\"a\",\"b,c,d\",\"e\",\"\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`join(str)`",
+      "body": "\nJoins the array of elements given as input, using the\nargument as separator. It is the inverse of `split`: that is,\nrunning `split(\"foo\") | join(\"foo\")` over any input string\nreturns said input string.\n\nNumbers and booleans in the input are converted to strings.\nNull values are treated as empty strings. Arrays and objects\nin the input are not supported.\n",
+      "examples": [
+        {
+          "program": "join(\", \")",
+          "input": "[\"a\",\"b,c,d\",\"e\"]",
+          "output": [
+            "\"a, b,c,d, e\""
+          ]
+        },
+        {
+          "program": "join(\" \")",
+          "input": "[\"a\",1,2.3,true,null,false]",
+          "output": [
+            "\"a 1 2.3 true  false\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`ascii_downcase`, `ascii_upcase`",
+      "body": "\nEmit a copy of the input string with its alphabetic characters (a-z and A-Z)\nconverted to the specified case.\n",
+      "examples": [
+        {
+          "program": "ascii_upcase",
+          "input": "\"useful but not for é\"",
+          "output": [
+            "\"USEFUL BUT NOT FOR é\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`while(cond; update)`",
+      "body": "\nThe `while(cond; update)` function allows you to repeatedly\napply an update to `.` until `cond` is false.\n\nNote that `while(cond; update)` is internally defined as a\nrecursive jq function.  Recursive calls within `while` will\nnot consume additional memory if `update` produces at most one\noutput for each input.  See advanced topics below.\n",
+      "examples": [
+        {
+          "program": "[while(.<100; .*2)]",
+          "input": "1",
+          "output": [
+            "[1,2,4,8,16,32,64]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`repeat(exp)`",
+      "body": "\nThe `repeat(exp)` function allows you to repeatedly\napply expression `exp` to `.` until an error is raised.\n\nNote that `repeat(exp)` is internally defined as a\nrecursive jq function.  Recursive calls within `repeat` will\nnot consume additional memory if `exp` produces at most one\noutput for each input.  See advanced topics below.\n",
+      "examples": [
+        {
+          "program": "[repeat(.*2, error)?]",
+          "input": "1",
+          "output": [
+            "[2]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`until(cond; next)`",
+      "body": "\nThe `until(cond; next)` function allows you to repeatedly\napply the expression `next`, initially to `.` then to its own\noutput, until `cond` is true.  For example, this can be used\nto implement a factorial function (see below).\n\nNote that `until(cond; next)` is internally defined as a\nrecursive jq function.  Recursive calls within `until()` will\nnot consume additional memory if `next` produces at most one\noutput for each input.  See advanced topics below.\n",
+      "examples": [
+        {
+          "program": "[.,1]|until(.[0] < 1; [.[0] - 1, .[1] * .[0]])|.[1]",
+          "input": "4",
+          "output": [
+            "24"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`recurse(f)`, `recurse`, `recurse(f; condition)`",
+      "body": "\nThe `recurse(f)` function allows you to search through a\nrecursive structure, and extract interesting data from all\nlevels. Suppose your input represents a filesystem:\n\n    {\"name\": \"/\", \"children\": [\n      {\"name\": \"/bin\", \"children\": [\n        {\"name\": \"/bin/ls\", \"children\": []},\n        {\"name\": \"/bin/sh\", \"children\": []}]},\n      {\"name\": \"/home\", \"children\": [\n        {\"name\": \"/home/stephen\", \"children\": [\n          {\"name\": \"/home/stephen/jq\", \"children\": []}]}]}]}\n\nNow suppose you want to extract all of the filenames\npresent. You need to retrieve `.name`, `.children[].name`,\n`.children[].children[].name`, and so on. You can do this\nwith:\n\n    recurse(.children[]) | .name\n\nWhen called without an argument, `recurse` is equivalent to\n`recurse(.[]?)`.\n\n`recurse(f)` is identical to `recurse(f; true)` and can be\nused without concerns about recursion depth.\n\n`recurse(f; condition)` is a generator which begins by\nemitting . and then emits in turn .|f, .|f|f, .|f|f|f, ...  so long\nas the computed value satisfies the condition. For example,\nto generate all the integers, at least in principle, one\ncould write `recurse(.+1; true)`.\n\nThe recursive calls in `recurse` will not consume additional\nmemory whenever `f` produces at most a single output for each\ninput.\n",
+      "examples": [
+        {
+          "program": "recurse(.foo[])",
+          "input": "{\"foo\":[{\"foo\": []}, {\"foo\":[{\"foo\":[]}]}]}",
+          "output": [
+            "{\"foo\":[{\"foo\":[]},{\"foo\":[{\"foo\":[]}]}]}",
+            "{\"foo\":[]}",
+            "{\"foo\":[{\"foo\":[]}]}",
+            "{\"foo\":[]}"
+          ]
+        },
+        {
+          "program": "recurse",
+          "input": "{\"a\":0,\"b\":[1]}",
+          "output": [
+            "{\"a\":0,\"b\":[1]}",
+            "0",
+            "[1]",
+            "1"
+          ]
+        },
+        {
+          "program": "recurse(. * .; . < 20)",
+          "input": "2",
+          "output": [
+            "2",
+            "4",
+            "16"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`walk(f)`",
+      "body": "\nThe `walk(f)` function applies f recursively to every\ncomponent of the input entity.  When an array is\nencountered, f is first applied to its elements and then to\nthe array itself; when an object is encountered, f is first\napplied to all the values and then to the object.  In\npractice, f will usually test the type of its input, as\nillustrated in the following examples.  The first example\nhighlights the usefulness of processing the elements of an\narray of arrays before processing the array itself.  The second\nexample shows how all the keys of all the objects within the\ninput can be considered for alteration.\n",
+      "examples": [
+        {
+          "program": "walk(if type == \"array\" then sort else . end)",
+          "input": "[[4, 1, 7], [8, 5, 2], [3, 6, 9]]",
+          "output": [
+            "[[1,4,7],[2,5,8],[3,6,9]]"
+          ]
+        },
+        {
+          "program": "walk( if type == \"object\" then with_entries( .key |= sub( \"^_+\"; \"\") ) else . end )",
+          "input": "[ { \"_a\": { \"__b\": 2 } } ]",
+          "output": [
+            "[{\"a\":{\"b\":2}}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`have_literal_numbers`",
+      "body": "\nThis builtin returns true if jq's build configuration\nincludes support for preservation of input number literals.\n"
+    },
+    {
+      "title": "`have_decnum`",
+      "body": "\nThis builtin returns true if jq was built with \"decnum\",\nwhich is the current literal number preserving numeric\nbackend implementation for jq.\n"
+    },
+    {
+      "title": "`$JQ_BUILD_CONFIGURATION`",
+      "body": "\nThis builtin binding shows the jq executable's build\nconfiguration.  Its value has no particular format, but\nit can be expected to be at least the `./configure`\ncommand-line arguments, and may be enriched in the\nfuture to include the version strings for the build\ntooling used.\n\nNote that this can be overridden in the command-line\nwith `--arg` and related options.\n"
+    },
+    {
+      "title": "`$ENV`, `env`",
+      "body": "\n`$ENV` is an object representing the environment variables as\nset when the jq program started.\n\n`env` outputs an object representing jq's current environment.\n\nAt the moment there is no builtin for setting environment\nvariables.\n",
+      "examples": [
+        {
+          "program": "$ENV.PAGER",
+          "input": "null",
+          "output": [
+            "\"less\""
+          ]
+        },
+        {
+          "program": "env.PAGER",
+          "input": "null",
+          "output": [
+            "\"less\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`transpose`",
+      "body": "\nTranspose a possibly jagged matrix (an array of arrays).\nRows are padded with nulls so the result is always rectangular.\n",
+      "examples": [
+        {
+          "program": "transpose",
+          "input": "[[1], [2,3]]",
+          "output": [
+            "[[1,2],[null,3]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`bsearch(x)`",
+      "body": "\n`bsearch(x)` conducts a binary search for x in the input\narray.  If the input is sorted and contains x, then\n`bsearch(x)` will return its index in the array; otherwise, if\nthe array is sorted, it will return (-1 - ix) where ix is an\ninsertion point such that the array would still be sorted\nafter the insertion of x at ix.  If the array is not sorted,\n`bsearch(x)` will return an integer that is probably of no\ninterest.\n",
+      "examples": [
+        {
+          "program": "bsearch(0)",
+          "input": "[0,1]",
+          "output": [
+            "0"
+          ]
+        },
+        {
+          "program": "bsearch(0)",
+          "input": "[1,2,3]",
+          "output": [
+            "-1"
+          ]
+        },
+        {
+          "program": "bsearch(4) as $ix | if $ix < 0 then .[-(1+$ix)] = 4 else . end",
+          "input": "[1,2,3]",
+          "output": [
+            "[1,2,3,4]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "String interpolation: `\\(exp)`",
+      "body": "\nInside a string, you can put an expression inside parens\nafter a backslash. Whatever the expression returns will be\ninterpolated into the string.\n",
+      "examples": [
+        {
+          "program": "\"The input was \\(.), which is one less than \\(.+1)\"",
+          "input": "42",
+          "output": [
+            "\"The input was 42, which is one less than 43\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Convert to/from JSON",
+      "body": "\nThe `tojson` and `fromjson` builtins dump values as JSON texts\nor parse JSON texts into values, respectively.  The `tojson`\nbuiltin differs from `tostring` in that `tostring` returns strings\nunmodified, while `tojson` encodes strings as JSON strings.\n",
+      "examples": [
+        {
+          "program": "[.[]|tostring]",
+          "input": "[1, \"foo\", [\"foo\"]]",
+          "output": [
+            "[\"1\",\"foo\",\"[\\\"foo\\\"]\"]"
+          ]
+        },
+        {
+          "program": "[.[]|tojson]",
+          "input": "[1, \"foo\", [\"foo\"]]",
+          "output": [
+            "[\"1\",\"\\\"foo\\\"\",\"[\\\"foo\\\"]\"]"
+          ]
+        },
+        {
+          "program": "[.[]|tojson|fromjson]",
+          "input": "[1, \"foo\", [\"foo\"]]",
+          "output": [
+            "[1,\"foo\",[\"foo\"]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Format strings and escaping",
+      "body": "\nThe `@foo` syntax is used to format and escape strings,\nwhich is useful for building URLs, documents in a language\nlike HTML or XML, and so forth. `@foo` can be used as a\nfilter on its own, the possible escapings are:\n\n* `@text`:\n\n  Calls `tostring`, see that function for details.\n\n* `@json`:\n\n  Serializes the input as JSON.\n\n* `@html`:\n\n  Applies HTML/XML escaping, by mapping the characters\n  `<>&'\"` to their entity equivalents `&lt;`, `&gt;`,\n  `&amp;`, `&apos;`, `&quot;`.\n\n* `@uri`:\n\n  Applies percent-encoding, by mapping all reserved URI\n  characters to a `%XX` sequence.\n\n* `@urid`:\n\n  The inverse of `@uri`, applies percent-decoding, by mapping\n  all `%XX` sequences to their corresponding URI characters.\n\n* `@csv`:\n\n  The input must be an array, and it is rendered as CSV\n  with double quotes for strings, and quotes escaped by\n  repetition.\n\n* `@tsv`:\n\n  The input must be an array, and it is rendered as TSV\n  (tab-separated values). Each input array will be printed as\n  a single line. Fields are separated by a single\n  tab (ascii `0x09`). Input characters line-feed (ascii `0x0a`),\n  carriage-return (ascii `0x0d`), tab (ascii `0x09`) and\n  backslash (ascii `0x5c`) will be output as escape sequences\n  `\\n`, `\\r`, `\\t`, `\\\\` respectively.\n\n* `@sh`:\n\n  The input is escaped suitable for use in a command-line\n  for a POSIX shell. If the input is an array, the output\n  will be a series of space-separated strings.\n\n* `@base64`:\n\n  The input is converted to base64 as specified by RFC 4648.\n\n* `@base64d`:\n\n  The inverse of `@base64`, input is decoded as specified by RFC 4648.\n  Note\\: If the decoded string is not UTF-8, the results are undefined.\n\nThis syntax can be combined with string interpolation in a\nuseful way. You can follow a `@foo` token with a string\nliteral. The contents of the string literal will *not* be\nescaped. However, all interpolations made inside that string\nliteral will be escaped. For instance,\n\n    @uri \"https://www.google.com/search?q=\\(.search)\"\n\nwill produce the following output for the input\n`{\"search\":\"what is jq?\"}`:\n\n    \"https://www.google.com/search?q=what%20is%20jq%3F\"\n\nNote that the slashes, question mark, etc. in the URL are\nnot escaped, as they were part of the string literal.\n",
+      "examples": [
+        {
+          "program": "@html",
+          "input": "\"This works if x < y\"",
+          "output": [
+            "\"This works if x &lt; y\""
+          ]
+        },
+        {
+          "program": "@sh \"echo \\(.)\"",
+          "input": "\"O'Hara's Ale\"",
+          "output": [
+            "\"echo 'O'\\\\''Hara'\\\\''s Ale'\""
+          ]
+        },
+        {
+          "program": "@base64",
+          "input": "\"This is a message\"",
+          "output": [
+            "\"VGhpcyBpcyBhIG1lc3NhZ2U=\""
+          ]
+        },
+        {
+          "program": "@base64d",
+          "input": "\"VGhpcyBpcyBhIG1lc3NhZ2U=\"",
+          "output": [
+            "\"This is a message\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dates",
+      "body": "\njq provides some basic date handling functionality, with some\nhigh-level and low-level builtins.  In all cases these\nbuiltins deal exclusively with time in UTC.\n\nThe `fromdateiso8601` builtin parses datetimes in the ISO 8601\nformat to a number of seconds since the Unix epoch\n(1970-01-01T00:00:00Z).  The `todateiso8601` builtin does the\ninverse.\n\nThe `fromdate` builtin parses datetime strings.  Currently\n`fromdate` only supports ISO 8601 datetime strings, but in the\nfuture it will attempt to parse datetime strings in more\nformats.\n\nThe `todate` builtin is an alias for `todateiso8601`.\n\nThe `now` builtin outputs the current time, in seconds since\nthe Unix epoch.\n\nLow-level jq interfaces to the C-library time functions are\nalso provided: `strptime`, `strftime`, `strflocaltime`,\n`mktime`, `gmtime`, and `localtime`.  Refer to your host\noperating system's documentation for the format strings used\nby `strptime` and `strftime`.  Note: these are not necessarily\nstable interfaces in jq, particularly as to their localization\nfunctionality.\n\nThe `gmtime` builtin consumes a number of seconds since the\nUnix epoch and outputs a \"broken down time\" representation of\nGreenwich Mean Time as an array of numbers representing\n(in this order): the year, the month (zero-based), the day of\nthe month (one-based), the hour of the day, the minute of the\nhour, the second of the minute, the day of the week, and the\nday of the year -- all one-based unless otherwise stated.  The\nday of the week number may be wrong on some systems for dates\nbefore March 1st 1900, or after December 31 2099.\n\nThe `localtime` builtin works like the `gmtime` builtin, but\nusing the local timezone setting.\n\nThe `mktime` builtin consumes \"broken down time\"\nrepresentations of time output by `gmtime` and `strptime`.\n\nThe `strptime(fmt)` builtin parses input strings matching the\n`fmt` argument.  The output is in the \"broken down time\"\nrepresentation consumed by `mktime` and output by `gmtime`.\n\nThe `strftime(fmt)` builtin formats a time (GMT) with the\ngiven format.  The `strflocaltime` does the same, but using\nthe local timezone setting.\n\nThe format strings for `strptime` and `strftime` are described\nin typical C library documentation.  The format string for ISO\n8601 datetime is `\"%Y-%m-%dT%H:%M:%SZ\"`.\n\njq may not support some or all of this date functionality on\nsome systems. In particular, the `%u` and `%j` specifiers for\n`strptime(fmt)` are not supported on macOS.\n",
+      "examples": [
+        {
+          "program": "fromdate",
+          "input": "\"2015-03-05T23:51:47Z\"",
+          "output": [
+            "1425599507"
+          ]
+        },
+        {
+          "program": "strptime(\"%Y-%m-%dT%H:%M:%SZ\")",
+          "input": "\"2015-03-05T23:51:47Z\"",
+          "output": [
+            "[2015,2,5,23,51,47,4,63]"
+          ]
+        },
+        {
+          "program": "strptime(\"%Y-%m-%dT%H:%M:%SZ\")|mktime",
+          "input": "\"2015-03-05T23:51:47Z\"",
+          "output": [
+            "1425599507"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SQL-Style Operators",
+      "body": "\njq provides a few SQL-style operators.\n\n* `INDEX(stream; index_expression)`:\n\n  This builtin produces an object whose keys are computed by\n  the given index expression applied to each value from the\n  given stream.\n\n* `JOIN($idx; stream; idx_expr; join_expr)`:\n\n  This builtin joins the values from the given stream to the\n  given index.  The index's keys are computed by applying the\n  given index expression to each value from the given stream.\n  An array of the value in the stream and the corresponding\n  value from the index is fed to the given join expression to\n  produce each result.\n\n* `JOIN($idx; stream; idx_expr)`:\n\n  Same as `JOIN($idx; stream; idx_expr; .)`.\n\n* `JOIN($idx; idx_expr)`:\n\n  This builtin joins the input `.` to the given index, applying\n  the given index expression to `.` to compute the index key.\n  The join operation is as described above.\n\n* `IN(s)`:\n\n  This builtin outputs `true` if `.` appears in the given\n  stream, otherwise it outputs `false`.\n\n* `IN(source; s)`:\n\n  This builtin outputs `true` if any value in the source stream\n  appears in the second stream, otherwise it outputs `false`.\n"
+    },
+    {
+      "title": "`builtins`",
+      "body": "\nReturns a list of all builtin functions in the format `name/arity`.\nSince functions with the same name but different arities are considered\nseparate functions, `all/0`, `all/1`, and `all/2` would all be present\nin the list.\n"
+    }
+  ]
+}

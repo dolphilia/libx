@@ -1,0 +1,252 @@
+{
+  "entryStart": 30,
+  "entries": [
+    {
+      "title": "`floor`",
+      "body": "\nThe `floor` function returns the floor of its numeric input.\n",
+      "examples": [
+        {
+          "program": "floor",
+          "input": "3.14159",
+          "output": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`sqrt`",
+      "body": "\nThe `sqrt` function returns the square root of its numeric input.\n",
+      "examples": [
+        {
+          "program": "sqrt",
+          "input": "9",
+          "output": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`tonumber`",
+      "body": "\nThe `tonumber` function parses its input as a number. It\nwill convert correctly-formatted strings to their numeric\nequivalent, leave numbers alone, and give an error on all other input.\n",
+      "examples": [
+        {
+          "program": ".[] | tonumber",
+          "input": "[1, \"1\"]",
+          "output": [
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`toboolean`",
+      "body": "\nThe `toboolean` function parses its input as a boolean. It\nwill convert correctly-formatted strings to their boolean\nequivalent, leave booleans alone, and give an error on all other input.\n",
+      "examples": [
+        {
+          "program": ".[] | toboolean",
+          "input": "[\"true\", \"false\", true, false]",
+          "output": [
+            "true",
+            "false",
+            "true",
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`tostring`",
+      "body": "\nThe `tostring` function prints its input as a\nstring. Strings are left unchanged, and all other values are\nJSON-encoded.\n",
+      "examples": [
+        {
+          "program": ".[] | tostring",
+          "input": "[1, \"1\", [1]]",
+          "output": [
+            "\"1\"",
+            "\"1\"",
+            "\"[1]\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`type`",
+      "body": "\nThe `type` function returns the type of its argument as a\nstring, which is one of null, boolean, number, string, array\nor object.\n",
+      "examples": [
+        {
+          "program": "map(type)",
+          "input": "[0, false, [], {}, null, \"hello\"]",
+          "output": [
+            "[\"number\", \"boolean\", \"array\", \"object\", \"null\", \"string\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`infinite`, `nan`, `isinfinite`, `isnan`, `isfinite`, `isnormal`",
+      "body": "\nSome arithmetic operations can yield infinities and \"not a\nnumber\" (NaN) values.  The `isinfinite` builtin returns `true`\nif its input is infinite.  The `isnan` builtin returns `true`\nif its input is a NaN.  The `infinite` builtin returns a\npositive infinite value.  The `nan` builtin returns a NaN.\nThe `isnormal` builtin returns true if its input is a normal\nnumber.\n\nNote that division by zero raises an error.\n\nCurrently most arithmetic operations operating on infinities,\nNaNs, and sub-normals do not raise errors.\n",
+      "examples": [
+        {
+          "program": ".[] | (infinite * .) < 0",
+          "input": "[-1, 1]",
+          "output": [
+            "true",
+            "false"
+          ]
+        },
+        {
+          "program": "infinite, nan | type",
+          "input": "null",
+          "output": [
+            "\"number\"",
+            "\"number\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`sort`, `sort_by(path_expression)`",
+      "body": "\nThe `sort` functions sorts its input, which must be an\narray. Values are sorted in the following order:\n\n* `null`\n* `false`\n* `true`\n* numbers\n* strings, in alphabetical order (by unicode codepoint value)\n* arrays, in lexical order\n* objects\n\nThe ordering for objects is a little complex: first they're\ncompared by comparing their sets of keys (as arrays in\nsorted order), and if their keys are equal then the values\nare compared key by key.\n\n`sort_by` may be used to sort by a particular field of an\nobject, or by applying any jq filter. `sort_by(f)` compares\ntwo elements by comparing the result of `f` on each element.\nWhen `f` produces multiple values, it firstly compares the\nfirst values, and the second values if the first values are\nequal, and so on.\n",
+      "examples": [
+        {
+          "program": "sort",
+          "input": "[8,3,null,6]",
+          "output": [
+            "[null,3,6,8]"
+          ]
+        },
+        {
+          "program": "sort_by(.foo)",
+          "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":10}, {\"foo\":2, \"bar\":1}]",
+          "output": [
+            "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":4, \"bar\":10}]"
+          ]
+        },
+        {
+          "program": "sort_by(.foo, .bar)",
+          "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}]",
+          "output": [
+            "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":4, \"bar\":10}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`group_by(path_expression)`",
+      "body": "\n`group_by(.foo)` takes as input an array, groups the\nelements having the same `.foo` field into separate arrays,\nand produces all of these arrays as elements of a larger\narray, sorted by the value of the `.foo` field.\n\nAny jq expression, not just a field access, may be used in\nplace of `.foo`. The sorting order is the same as described\nin the `sort` function above.\n",
+      "examples": [
+        {
+          "program": "group_by(.foo)",
+          "input": "[{\"foo\":1, \"bar\":10}, {\"foo\":3, \"bar\":100}, {\"foo\":1, \"bar\":1}]",
+          "output": [
+            "[[{\"foo\":1, \"bar\":10}, {\"foo\":1, \"bar\":1}], [{\"foo\":3, \"bar\":100}]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`min`, `max`, `min_by(path_exp)`, `max_by(path_exp)`",
+      "body": "\nFind the minimum or maximum element of the input array.\n\nThe `min_by(path_exp)` and `max_by(path_exp)` functions allow\nyou to specify a particular field or property to examine, e.g.\n`min_by(.foo)` finds the object with the smallest `foo` field.\n",
+      "examples": [
+        {
+          "program": "min",
+          "input": "[5,4,2,7]",
+          "output": [
+            "2"
+          ]
+        },
+        {
+          "program": "max_by(.foo)",
+          "input": "[{\"foo\":1, \"bar\":14}, {\"foo\":2, \"bar\":3}]",
+          "output": [
+            "{\"foo\":2, \"bar\":3}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`unique`, `unique_by(path_exp)`",
+      "body": "\nThe `unique` function takes as input an array and produces\nan array of the same elements, in sorted order, with\nduplicates removed.\n\nThe `unique_by(path_exp)` function will keep only one element\nfor each value obtained by applying the argument. Think of it\nas making an array by taking one element out of every group\nproduced by `group`.\n",
+      "examples": [
+        {
+          "program": "unique",
+          "input": "[1,2,5,3,5,3,1,3]",
+          "output": [
+            "[1,2,3,5]"
+          ]
+        },
+        {
+          "program": "unique_by(.foo)",
+          "input": "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 1, \"bar\": 3}, {\"foo\": 4, \"bar\": 5}]",
+          "output": [
+            "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 4, \"bar\": 5}]"
+          ]
+        },
+        {
+          "program": "unique_by(length)",
+          "input": "[\"chunky\", \"bacon\", \"kitten\", \"cicada\", \"asparagus\"]",
+          "output": [
+            "[\"bacon\", \"chunky\", \"asparagus\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`reverse`",
+      "body": "\nThis function reverses an array.\n",
+      "examples": [
+        {
+          "program": "reverse",
+          "input": "[1,2,3,4]",
+          "output": [
+            "[4,3,2,1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`contains(element)`",
+      "body": "\nThe filter `contains(b)` will produce true if b is\ncompletely contained within the input. A string B is\ncontained in a string A if B is a substring of A. An array B\nis contained in an array A if all elements in B are\ncontained in any element in A. An object B is contained in\nobject A if all of the values in B are contained in the\nvalue in A with the same key. All other types are assumed to\nbe contained in each other if they are equal.\n",
+      "examples": [
+        {
+          "program": "contains(\"bar\")",
+          "input": "\"foobar\"",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains([\"baz\", \"bar\"])",
+          "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains([\"bazzzzz\", \"bar\"])",
+          "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "contains({foo: 12, bar: [{barp: 12}]})",
+          "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains({foo: 12, bar: [{barp: 15}]})",
+          "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    }
+  ]
+}

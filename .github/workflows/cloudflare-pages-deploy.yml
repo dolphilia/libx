@@ -156,6 +156,9 @@ jobs:
       - name: Verify spdlog English and Japanese rendered content
         run: node scripts/check-content-after-presentation.mjs --rendered=spdlog
 
+      - name: Verify jq English and Japanese rendered content and footer
+        run: node scripts/document-import/jq/check-rendered-v4.mjs
+
       - name: Check deployment asset budget
         run: pnpm check:deployment-assets
 

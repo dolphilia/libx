@@ -1,0 +1,213 @@
+{
+  "entryStart": 22,
+  "entries": [
+    {
+      "title": "`halt_error`, `halt_error(exit_code)`",
+      "body": "\nそれ以上何も出力せずに、jqプログラムを停止します。入力は `stderr` に、そのままの出力として表示されます（つまり、文字列に二重引用符は付きません）。装飾は一切付かず、改行さえ付きません。\n\n指定した `exit_code`（既定値は `5`）が、jqの終了ステータスになります。\n\n例：`\"Error: something went wrong\\n\"|halt_error(1)`。\n"
+    },
+    {
+      "title": "`$__loc__`",
+      "body": "\n\"file\"キーと\"line\"キーを持つオブジェクトを生成します。それぞれの値は、`$__loc__` が現れる位置のファイル名と行番号です。\n",
+      "examples": [
+        {
+          "program": "try error(\"\\($__loc__)\") catch .",
+          "input": "null",
+          "output": [
+            "\"{\\\"file\\\":\\\"<top-level>\\\",\\\"line\\\":1}\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`paths`, `paths(node_filter)`",
+      "body": "\n`paths` は、入力のすべての要素に至るパスを出力します。ただし、.自体を表す空のリストは出力しません。\n\n`paths(f)` は、`f` が `true` になる値に至るパスを出力します。つまり、`paths(type == \"number\")` は、すべての数値に至るパスを出力します。\n",
+      "examples": [
+        {
+          "program": "[paths]",
+          "input": "[1,[[],{\"a\":2}]]",
+          "output": [
+            "[[0],[1],[1,0],[1,1],[1,1,\"a\"]]"
+          ]
+        },
+        {
+          "program": "[paths(type == \"number\")]",
+          "input": "[1,[[],{\"a\":2}]]",
+          "output": [
+            "[[0],[1,1,\"a\"]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`add`, `add(generator)`",
+      "body": "\nフィルター `add` は配列を入力として受け取り、その配列の要素を足し合わせた結果を出力します。入力配列の要素の型に応じて、これは合計、連結、またはマージになります。規則は、前述の `+` 演算子と同じです。\n\n入力が空の配列の場合、`add` は `null` を返します。\n\n`add(generator)` は、入力ではなく、指定したジェネレーターに対して動作します。\n",
+      "examples": [
+        {
+          "program": "add",
+          "input": "[\"a\",\"b\",\"c\"]",
+          "output": [
+            "\"abc\""
+          ]
+        },
+        {
+          "program": "add",
+          "input": "[1, 2, 3]",
+          "output": [
+            "6"
+          ]
+        },
+        {
+          "program": "add",
+          "input": "[]",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": "add(.[].a)",
+          "input": "[{\"a\":3}, {\"a\":5}, {\"b\":6}]",
+          "output": [
+            "8"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`any`, `any(condition)`, `any(generator; condition)`",
+      "body": "\nフィルター `any` は真偽値の配列を入力として受け取り、出力として `true` を生成するのは、配列の要素のいずれかが `true` の場合です。\n\n入力が空の配列の場合、`any` は `false` を返します。\n\n`any(condition)` という形式は、指定した条件を入力配列の要素に適用します。\n\n`any(generator; condition)` という形式は、指定した条件を、指定したジェネレーターのすべての出力に適用します。\n",
+      "examples": [
+        {
+          "program": "any",
+          "input": "[true, false]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "any",
+          "input": "[false, false]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "any",
+          "input": "[]",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`all`, `all(condition)`, `all(generator; condition)`",
+      "body": "\nフィルター `all` は真偽値の配列を入力として受け取り、出力として `true` を生成するのは、配列のすべての要素が `true` の場合です。\n\n`all(condition)` という形式は、指定した条件を入力配列の要素に適用します。\n\n`all(generator; condition)` という形式は、指定した条件を、指定したジェネレーターのすべての出力に適用します。\n\n入力が空の配列の場合、`all` は `true` を返します。\n",
+      "examples": [
+        {
+          "program": "all",
+          "input": "[true, false]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "all",
+          "input": "[true, true]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "all",
+          "input": "[]",
+          "output": [
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`flatten`, `flatten(depth)`",
+      "body": "\nフィルター `flatten` は、入れ子になった配列を含む配列を入力として受け取り、元の配列の内側にあるすべての配列を、それぞれの値で再帰的に置き換えた、平坦な配列を生成します。引数を渡すことで、入れ子を何階層まで平坦化するか指定できます。\n\n`flatten(2)` は `flatten` と同様ですが、深さ2階層までしか処理しません。\n",
+      "examples": [
+        {
+          "program": "flatten",
+          "input": "[1, [2], [[3]]]",
+          "output": [
+            "[1, 2, 3]"
+          ]
+        },
+        {
+          "program": "flatten(1)",
+          "input": "[1, [2], [[3]]]",
+          "output": [
+            "[1, 2, [3]]"
+          ]
+        },
+        {
+          "program": "flatten",
+          "input": "[[]]",
+          "output": [
+            "[]"
+          ]
+        },
+        {
+          "program": "flatten",
+          "input": "[{\"foo\": \"bar\"}, [{\"foo\": \"baz\"}]]",
+          "output": [
+            "[{\"foo\": \"bar\"}, {\"foo\": \"baz\"}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`range(upto)`, `range(from; upto)`, `range(from; upto; by)`",
+      "body": "\n関数 `range` は、ある範囲の数値を生成します。`range(4; 10)` は、4を含み10を含まない範囲の6個の数値を生成します。これらの数値は、個別の出力として生成されます。範囲を配列として取得するには、`[range(4; 10)]` を使います。\n\n引数が1つの形式は、0から指定した数値まで、1ずつ増加する数値を生成します。\n\n引数が2つの形式は、`from` から `upto` まで、1ずつ増加する数値を生成します。\n\n引数が3つの形式は、`from` から `upto` まで、`by` ずつ増加する数値を生成します。\n",
+      "examples": [
+        {
+          "program": "range(2; 4)",
+          "input": "null",
+          "output": [
+            "2",
+            "3"
+          ]
+        },
+        {
+          "program": "[range(2; 4)]",
+          "input": "null",
+          "output": [
+            "[2,3]"
+          ]
+        },
+        {
+          "program": "[range(4)]",
+          "input": "null",
+          "output": [
+            "[0,1,2,3]"
+          ]
+        },
+        {
+          "program": "[range(0; 10; 3)]",
+          "input": "null",
+          "output": [
+            "[0,3,6,9]"
+          ]
+        },
+        {
+          "program": "[range(0; 10; -1)]",
+          "input": "null",
+          "output": [
+            "[]"
+          ]
+        },
+        {
+          "program": "[range(0; -5; -1)]",
+          "input": "null",
+          "output": [
+            "[0,-1,-2,-3,-4]"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1489 @@
+{
+  "title": "組込み演算子と関数",
+  "body": "\njqの演算子の一部（たとえば `+`）は、引数の型（配列、数値など）によって異なる処理を行います。ただし、jqは暗黙の型変換を行いません。文字列をオブジェクトに加えようとすると、エラーメッセージが表示され、結果は得られません。\n\nすべての数値はIEEE754の倍精度浮動小数点表現へ変換されることに注意してください。算術演算子と論理演算子は、この変換済みの倍精度数値を使って動作します。これらの演算の結果も、倍精度に制限されます。\n\nこの数値の扱いに対する唯一の例外は、元の数値リテラルを保存したものです。最初にリテラルとして与えられた数値が、プログラムの最後まで一度も変更されなかった場合、元のリテラル形式のまま出力されます。元のリテラルをIEEE754の倍精度浮動小数点数へ変換すると切り詰められる場合も、これに含まれます。\n",
+  "entries": [
+    {
+      "title": "加算：`+`",
+      "body": "\n演算子 `+` は2つのフィルターを受け取り、両方を同じ入力に適用して、その結果を加えます。「加える」が何を意味するかは、対象の型によって異なります。\n\n- **数値**は、通常の算術演算で加算されます。\n\n- **配列**は、連結されて、より大きな配列になります。\n\n- **文字列**は、結合されて、より長い文字列になります。\n\n- **オブジェクト**は、両方のオブジェクトのすべてのキーと値の組を1つのオブジェクトへ挿入する、マージ処理で加算されます。両方のオブジェクトに同じキーの値がある場合、`+` の右側のオブジェクトが優先されます（再帰的にマージするには、`*` 演算子を使ってください）。\n\n`null` は任意の値に加えることができ、もう一方の値を変更せずに返します。\n",
+      "examples": [
+        {
+          "program": ".a + 1",
+          "input": "{\"a\": 7}",
+          "output": [
+            "8"
+          ]
+        },
+        {
+          "program": ".a + .b",
+          "input": "{\"a\": [1,2], \"b\": [3,4]}",
+          "output": [
+            "[1,2,3,4]"
+          ]
+        },
+        {
+          "program": ".a + null",
+          "input": "{\"a\": 1}",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": ".a + 1",
+          "input": "{}",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "{a: 1} + {b: 2} + {c: 3} + {a: 42}",
+          "input": "null",
+          "output": [
+            "{\"a\": 42, \"b\": 2, \"c\": 3}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "減算：`-`",
+      "body": "\n数値に対する通常の算術的な減算に加えて、`-` 演算子は配列にも使えます。2つ目の配列の要素について、1つ目の配列からすべての出現箇所を取り除きます。\n",
+      "examples": [
+        {
+          "program": "4 - .a",
+          "input": "{\"a\":3}",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": ". - [\"xml\", \"yaml\"]",
+          "input": "[\"xml\", \"yaml\", \"json\"]",
+          "output": [
+            "[\"json\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "乗算・除算・剰余：`*`、`/`、`%`",
+      "body": "\nこれらの中置演算子は、2つの数値を与えると期待どおりに動作します。0による除算はエラーになります。`x % y` は、xのyによる剰余を計算します。\n\n文字列に数値を掛けると、その数だけ文字列を連結したものを生成します。`\"x\" * 0` は `\"\"` を生成します。\n\n文字列を別の文字列で割ると、2つ目の文字列を区切りとして1つ目の文字列を分割します。\n\n2つのオブジェクトを掛けると、再帰的にマージします。加算と同様に動作しますが、両方のオブジェクトに同じキーの値があり、その値がオブジェクトである場合、その2つの値も同じ方法でマージされます。\n",
+      "examples": [
+        {
+          "program": "10 / . * 3",
+          "input": "5",
+          "output": [
+            "6"
+          ]
+        },
+        {
+          "program": ". / \", \"",
+          "input": "\"a, b,c,d, e\"",
+          "output": [
+            "[\"a\",\"b,c,d\",\"e\"]"
+          ]
+        },
+        {
+          "program": "{\"k\": {\"a\": 1, \"b\": 2}} * {\"k\": {\"a\": 0,\"c\": 3}}",
+          "input": "null",
+          "output": [
+            "{\"k\": {\"a\": 0, \"b\": 2, \"c\": 3}}"
+          ]
+        },
+        {
+          "program": ".[] | (1 / .)?",
+          "input": "[1,0,-1]",
+          "output": [
+            "1",
+            "-1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`abs`",
+      "body": "\n組込み関数 `abs` は、単純に `if . < 0 then - . else . end` と定義されています。\n\n数値を入力した場合、これは絶対値になります。この定義が数値入力に与える影響については、恒等フィルターの節を参照してください。\n\n数値の絶対値を浮動小数点数として計算する場合は、`fabs` の使用を検討してください。\n",
+      "examples": [
+        {
+          "program": "map(abs)",
+          "input": "[-10, -1.1, -1e-1]",
+          "output": [
+            "[10,1.1,1e-1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`length`",
+      "body": "\n組込み関数 `length` は、さまざまな型の値の長さを取得します。\n\n- **文字列**の長さは、含まれるUnicodeコードポイントの数です（ASCIIだけで構成されている場合、そのJSONエンコード後のバイト長と同じになります）。\n\n- **数値**の長さは、その絶対値です。\n\n- **配列**の長さは、要素の数です。\n\n- **オブジェクト**の長さは、キーと値の組の数です。\n\n- **null**の長さは0です。\n\n- **真偽値**に `length` を使うと、エラーになります。\n",
+      "examples": [
+        {
+          "program": ".[] | length",
+          "input": "[[1,2], \"string\", {\"a\":2}, null, -5]",
+          "output": [
+            "2",
+            "6",
+            "1",
+            "0",
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`utf8bytelength`",
+      "body": "\n組込み関数 `utf8bytelength` は、文字列をUTF-8でエンコードするために使うバイト数を出力します。\n",
+      "examples": [
+        {
+          "program": "utf8bytelength",
+          "input": "\"\\u03bc\"",
+          "output": [
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`keys`, `keys_unsorted`",
+      "body": "\n組込み関数 `keys` は、オブジェクトを与えると、そのキーを配列として返します。\n\nキーは、Unicodeコードポイントの順序で「アルファベット順」にソートされます。これは、特定の言語で特に意味のある順序ではありませんが、ロケール設定にかかわらず、同じキーの集合を持つ2つのオブジェクトでは同じ順序になることが保証されます。\n\n`keys` に配列を与えると、その配列の有効な索引、つまり0からlength-1までの整数を返します。\n\n関数 `keys_unsorted` は `keys` と同様ですが、入力がオブジェクトの場合、キーはソートされず、おおむね挿入順になります。\n",
+      "examples": [
+        {
+          "program": "keys",
+          "input": "{\"abc\": 1, \"abcd\": 2, \"Foo\": 3}",
+          "output": [
+            "[\"Foo\", \"abc\", \"abcd\"]"
+          ]
+        },
+        {
+          "program": "keys",
+          "input": "[42,3,35]",
+          "output": [
+            "[0,1,2]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`has(key)`",
+      "body": "\n組込み関数 `has` は、入力オブジェクトに指定したキーがあるかどうか、または入力配列の指定した索引に要素があるかどうかを返します。\n\n`has($key)` は、`$key` が `keys` の返す配列の要素かどうかを調べるのと同じ効果がありますが、`has` の方が高速です。\n",
+      "examples": [
+        {
+          "program": "map(has(\"foo\"))",
+          "input": "[{\"foo\": 42}, {}]",
+          "output": [
+            "[true, false]"
+          ]
+        },
+        {
+          "program": "map(has(2))",
+          "input": "[[0,1], [\"a\",\"b\",\"c\"]]",
+          "output": [
+            "[false, true]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`in`",
+      "body": "\n組込み関数 `in` は、入力のキーが指定したオブジェクトにあるかどうか、または入力の索引が指定した配列の要素に対応するかどうかを返します。基本的には、`has` の向きを逆にしたものです。\n",
+      "examples": [
+        {
+          "program": ".[] | in({\"foo\": 42})",
+          "input": "[\"foo\", \"bar\"]",
+          "output": [
+            "true",
+            "false"
+          ]
+        },
+        {
+          "program": "map(in([0,1]))",
+          "input": "[2, 0]",
+          "output": [
+            "[false, true]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`map(f)`, `map_values(f)`",
+      "body": "\n任意のフィルター `f` に対して、`map(f)` と `map_values(f)` は、入力配列またはオブジェクトの各値に `f` を適用します。これらは `.[]` の値です。\n\nエラーがない場合、`map(f)` は常に配列を出力します。一方、`map_values(f)` は、配列を与えられた場合は配列を、オブジェクトを与えられた場合はオブジェクトを出力します。\n\n`map_values(f)` への入力がオブジェクトの場合、出力オブジェクトは入力オブジェクトと同じキーを持ちます。ただし、その値を `f` へパイプで渡したときに値が1つも生成されないキーは除かれます。\n\n`map(f)` と `map_values(f)` の主な違いは、前者が、`($x|f)` のすべての値を単に配列へまとめるのに対し（`$x` は入力配列またはオブジェクトの各値です）、`map_values(f)` は `first($x|f)` だけを使う点です。\n\n具体的には、オブジェクト入力の場合、`map_values(f)` は、`first(.[$k]|f)` の値を順に調べて、出力オブジェクトを構築します。このとき `$k` は入力の各キーです。この式が値を1つも生成しなければ、対応するキーは削除されます。それ以外の場合、出力オブジェクトのキー `$k` には、その値が入ります。\n\n以下の例で、配列に対する `map` と `map_values` の動作を示します。これらの例では、どの場合も入力は `[1]` であるとします。\n\n    map(.+1)          #=>  [2]\n    map(., .)         #=>  [1,1]\n    map(empty)        #=>  []\n\n    map_values(.+1)   #=>  [2]\n    map_values(., .)  #=>  [1]\n    map_values(empty) #=>  []\n\n`map(f)` は `[.[] | f]` と同じで、`map_values(f)` は `.[] |= f` と同じです。\n\n実際、これらがその実装です。\n",
+      "examples": [
+        {
+          "program": "map(.+1)",
+          "input": "[1,2,3]",
+          "output": [
+            "[2,3,4]"
+          ]
+        },
+        {
+          "program": "map_values(.+1)",
+          "input": "{\"a\": 1, \"b\": 2, \"c\": 3}",
+          "output": [
+            "{\"a\": 2, \"b\": 3, \"c\": 4}"
+          ]
+        },
+        {
+          "program": "map(., .)",
+          "input": "[1,2]",
+          "output": [
+            "[1,1,2,2]"
+          ]
+        },
+        {
+          "program": "map_values(. // empty)",
+          "input": "{\"a\": null, \"b\": true, \"c\": false}",
+          "output": [
+            "{\"b\":true}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`pick(pathexps)`",
+      "body": "\n指定した一連のパス式によって定義される、入力オブジェクトまたは配列の射影を出力します。`p` が指定したパス式のいずれかであれば、`(. | p)` は `(. | pick(pathexps) | p)` と同じ値に評価されます。配列では、負の索引や `.[m:n]` という指定を使うべきではありません。\n",
+      "examples": [
+        {
+          "program": "pick(.a, .b.c, .x)",
+          "input": "{\"a\": 1, \"b\": {\"c\": 2, \"d\": 3}, \"e\": 4}",
+          "output": [
+            "{\"a\":1,\"b\":{\"c\":2},\"x\":null}"
+          ]
+        },
+        {
+          "program": "pick(.[2], .[0], .[0])",
+          "input": "[1,2,3,4]",
+          "output": [
+            "[1,null,3]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`path(path_expression)`",
+      "body": "\n`.` 内の指定したパス式を配列で表したものを出力します。出力は、文字列（オブジェクトのキー）や数値（配列の索引）からなる配列です。\n\nパス式には、`.a` のようなjqの式だけでなく、`.[]` も含まれます。パス式には、完全一致できるものと、できないものの2種類があります。たとえば、`.a.b.c` は完全一致するパス式ですが、`.a[].b` はそうではありません。\n\n`path(exact_path_expression)` は、そのパスが `.` 内に存在しなくても、`.` が `null`、配列、またはオブジェクトの場合に、パス式を配列で表したものを生成します。\n\n`path(pattern)` は、`pattern` に一致するパスが `.` 内に存在する場合、それらを配列で表したものを生成します。\n\nパス式は通常の式と異なるものではないことに注意してください。式 `path(..|select(type==\"boolean\"))` は、`.` 内の真偽値に至るパスをすべて出力し、それ以外のパスは出力しません。\n",
+      "examples": [
+        {
+          "program": "path(.a[0].b)",
+          "input": "null",
+          "output": [
+            "[\"a\",0,\"b\"]"
+          ]
+        },
+        {
+          "program": "[path(..)]",
+          "input": "{\"a\":[{\"b\":1}]}",
+          "output": [
+            "[[],[\"a\"],[\"a\",0],[\"a\",0,\"b\"]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`del(path_expression)`",
+      "body": "\n組込み関数 `del` は、オブジェクトからキーと、それに対応する値を削除します。\n",
+      "examples": [
+        {
+          "program": "del(.foo)",
+          "input": "{\"foo\": 42, \"bar\": 9001, \"baz\": 42}",
+          "output": [
+            "{\"bar\": 9001, \"baz\": 42}"
+          ]
+        },
+        {
+          "program": "del(.[1, 2])",
+          "input": "[\"foo\", \"bar\", \"baz\"]",
+          "output": [
+            "[\"foo\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`getpath(PATHS)`",
+      "body": "\n組込み関数 `getpath` は、`.` 内の、`PATHS` の各パスで見つかった値を出力します。\n",
+      "examples": [
+        {
+          "program": "getpath([\"a\",\"b\"])",
+          "input": "null",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": "[getpath([\"a\",\"b\"], [\"a\",\"c\"])]",
+          "input": "{\"a\":{\"b\":0, \"c\":1}}",
+          "output": [
+            "[0, 1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`setpath(PATHS; VALUE)`",
+      "body": "\n組込み関数 `setpath` は、`PATHS` で指定した `.` 内のパスを `VALUE` に設定します。\n",
+      "examples": [
+        {
+          "program": "setpath([\"a\",\"b\"]; 1)",
+          "input": "null",
+          "output": [
+            "{\"a\": {\"b\": 1}}"
+          ]
+        },
+        {
+          "program": "setpath([\"a\",\"b\"]; 1)",
+          "input": "{\"a\":{\"b\":0}}",
+          "output": [
+            "{\"a\": {\"b\": 1}}"
+          ]
+        },
+        {
+          "program": "setpath([0,\"a\"]; 1)",
+          "input": "null",
+          "output": [
+            "[{\"a\":1}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`delpaths(PATHS)`",
+      "body": "\n組込み関数 `delpaths` は、`PATHS` で指定した `.` 内のパスを削除します。\n`PATHS` はパスの配列でなければなりません。各パスは、文字列と数値からなる配列です。\n",
+      "examples": [
+        {
+          "program": "delpaths([[\"a\",\"b\"]])",
+          "input": "{\"a\":{\"b\":1},\"x\":{\"y\":2}}",
+          "output": [
+            "{\"a\":{},\"x\":{\"y\":2}}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`to_entries`, `from_entries`, `with_entries(f)`",
+      "body": "\nこれらの関数は、オブジェクトと、キーと値の組の配列との間で変換します。`to_entries` にオブジェクトを渡すと、入力の各 `k: v` エントリーに対して、出力配列に `{\"key\": k, \"value\": v}` が含まれます。\n\n`from_entries` は逆方向の変換を行います。`with_entries(f)` は `to_entries | map(f) | from_entries` の省略形で、オブジェクトのすべてのキーと値に何らかの操作を行う際に便利です。\n`from_entries` は、キーとして `\"key\"`、`\"Key\"`、`\"name\"`、`\"Name\"`、`\"value\"`、`\"Value\"` を受け付けます。\n",
+      "examples": [
+        {
+          "program": "to_entries",
+          "input": "{\"a\": 1, \"b\": 2}",
+          "output": [
+            "[{\"key\":\"a\", \"value\":1}, {\"key\":\"b\", \"value\":2}]"
+          ]
+        },
+        {
+          "program": "from_entries",
+          "input": "[{\"key\":\"a\", \"value\":1}, {\"key\":\"b\", \"value\":2}]",
+          "output": [
+            "{\"a\": 1, \"b\": 2}"
+          ]
+        },
+        {
+          "program": "with_entries(.key |= \"KEY_\" + .)",
+          "input": "{\"a\": 1, \"b\": 2}",
+          "output": [
+            "{\"KEY_a\": 1, \"KEY_b\": 2}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`select(boolean_expression)`",
+      "body": "\n関数 `select(f)` は、その入力に対して `f` がtrueを返す場合、入力をそのまま出力します。それ以外の場合は何も出力しません。\n\nリストを絞り込む際に便利です。`[1,2,3] | map(select(. >= 2))` は `[2,3]` を返します。\n",
+      "examples": [
+        {
+          "program": "map(select(. >= 2))",
+          "input": "[1,5,3,0,7]",
+          "output": [
+            "[5,3,7]"
+          ]
+        },
+        {
+          "program": ".[] | select(.id == \"second\")",
+          "input": "[{\"id\": \"first\", \"val\": 1}, {\"id\": \"second\", \"val\": 2}]",
+          "output": [
+            "{\"id\": \"second\", \"val\": 2}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`arrays`, `objects`, `iterables`, `booleans`, `numbers`, `normals`, `finites`, `strings`, `nulls`, `values`, `scalars`",
+      "body": "\nこれらの組込み関数は、それぞれ、配列、オブジェクト、反復可能な値（配列またはオブジェクト）、真偽値、数値、正規数、有限数、文字列、null、null以外の値、反復可能でない値である入力だけを選択します。\n",
+      "examples": [
+        {
+          "program": ".[]|numbers",
+          "input": "[[],{},1,\"foo\",null,true,false]",
+          "output": [
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`empty`",
+      "body": "\n`empty` は結果を1つも返しません。まったく何も返さず、`null` さえ返しません。\n\nときどき便利です。必要になれば、使いどころが分かるでしょう :)\n",
+      "examples": [
+        {
+          "program": "1, empty, 2",
+          "input": "null",
+          "output": [
+            "1",
+            "2"
+          ]
+        },
+        {
+          "program": "[1,2,empty,3]",
+          "input": "null",
+          "output": [
+            "[1,2,3]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`error`, `error(message)`",
+      "body": "\n入力値、または引数として与えたメッセージを使って、エラーを生成します。エラーはtry/catchで捕捉できます。後述の説明を参照してください。\n",
+      "examples": [
+        {
+          "program": "try error catch .",
+          "input": "\"error message\"",
+          "output": [
+            "\"error message\""
+          ]
+        },
+        {
+          "program": "try error(\"invalid value: \\(.)\") catch .",
+          "input": "42",
+          "output": [
+            "\"invalid value: 42\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`halt`",
+      "body": "\nそれ以上何も出力せずに、jqプログラムを停止します。jqは終了ステータス `0` で終了します。\n"
+    },
+    {
+      "title": "`halt_error`, `halt_error(exit_code)`",
+      "body": "\nそれ以上何も出力せずに、jqプログラムを停止します。入力は `stderr` に、そのままの出力として表示されます（つまり、文字列に二重引用符は付きません）。装飾は一切付かず、改行さえ付きません。\n\n指定した `exit_code`（既定値は `5`）が、jqの終了ステータスになります。\n\n例：`\"Error: something went wrong\\n\"|halt_error(1)`。\n"
+    },
+    {
+      "title": "`$__loc__`",
+      "body": "\n\"file\"キーと\"line\"キーを持つオブジェクトを生成します。それぞれの値は、`$__loc__` が現れる位置のファイル名と行番号です。\n",
+      "examples": [
+        {
+          "program": "try error(\"\\($__loc__)\") catch .",
+          "input": "null",
+          "output": [
+            "\"{\\\"file\\\":\\\"<top-level>\\\",\\\"line\\\":1}\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`paths`, `paths(node_filter)`",
+      "body": "\n`paths` は、入力のすべての要素に至るパスを出力します。ただし、.自体を表す空のリストは出力しません。\n\n`paths(f)` は、`f` が `true` になる値に至るパスを出力します。つまり、`paths(type == \"number\")` は、すべての数値に至るパスを出力します。\n",
+      "examples": [
+        {
+          "program": "[paths]",
+          "input": "[1,[[],{\"a\":2}]]",
+          "output": [
+            "[[0],[1],[1,0],[1,1],[1,1,\"a\"]]"
+          ]
+        },
+        {
+          "program": "[paths(type == \"number\")]",
+          "input": "[1,[[],{\"a\":2}]]",
+          "output": [
+            "[[0],[1,1,\"a\"]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`add`, `add(generator)`",
+      "body": "\nフィルター `add` は配列を入力として受け取り、その配列の要素を足し合わせた結果を出力します。入力配列の要素の型に応じて、これは合計、連結、またはマージになります。規則は、前述の `+` 演算子と同じです。\n\n入力が空の配列の場合、`add` は `null` を返します。\n\n`add(generator)` は、入力ではなく、指定したジェネレーターに対して動作します。\n",
+      "examples": [
+        {
+          "program": "add",
+          "input": "[\"a\",\"b\",\"c\"]",
+          "output": [
+            "\"abc\""
+          ]
+        },
+        {
+          "program": "add",
+          "input": "[1, 2, 3]",
+          "output": [
+            "6"
+          ]
+        },
+        {
+          "program": "add",
+          "input": "[]",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": "add(.[].a)",
+          "input": "[{\"a\":3}, {\"a\":5}, {\"b\":6}]",
+          "output": [
+            "8"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`any`, `any(condition)`, `any(generator; condition)`",
+      "body": "\nフィルター `any` は真偽値の配列を入力として受け取り、出力として `true` を生成するのは、配列の要素のいずれかが `true` の場合です。\n\n入力が空の配列の場合、`any` は `false` を返します。\n\n`any(condition)` という形式は、指定した条件を入力配列の要素に適用します。\n\n`any(generator; condition)` という形式は、指定した条件を、指定したジェネレーターのすべての出力に適用します。\n",
+      "examples": [
+        {
+          "program": "any",
+          "input": "[true, false]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "any",
+          "input": "[false, false]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "any",
+          "input": "[]",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`all`, `all(condition)`, `all(generator; condition)`",
+      "body": "\nフィルター `all` は真偽値の配列を入力として受け取り、出力として `true` を生成するのは、配列のすべての要素が `true` の場合です。\n\n`all(condition)` という形式は、指定した条件を入力配列の要素に適用します。\n\n`all(generator; condition)` という形式は、指定した条件を、指定したジェネレーターのすべての出力に適用します。\n\n入力が空の配列の場合、`all` は `true` を返します。\n",
+      "examples": [
+        {
+          "program": "all",
+          "input": "[true, false]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "all",
+          "input": "[true, true]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "all",
+          "input": "[]",
+          "output": [
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`flatten`, `flatten(depth)`",
+      "body": "\nフィルター `flatten` は、入れ子になった配列を含む配列を入力として受け取り、元の配列の内側にあるすべての配列を、それぞれの値で再帰的に置き換えた、平坦な配列を生成します。引数を渡すことで、入れ子を何階層まで平坦化するか指定できます。\n\n`flatten(2)` は `flatten` と同様ですが、深さ2階層までしか処理しません。\n",
+      "examples": [
+        {
+          "program": "flatten",
+          "input": "[1, [2], [[3]]]",
+          "output": [
+            "[1, 2, 3]"
+          ]
+        },
+        {
+          "program": "flatten(1)",
+          "input": "[1, [2], [[3]]]",
+          "output": [
+            "[1, 2, [3]]"
+          ]
+        },
+        {
+          "program": "flatten",
+          "input": "[[]]",
+          "output": [
+            "[]"
+          ]
+        },
+        {
+          "program": "flatten",
+          "input": "[{\"foo\": \"bar\"}, [{\"foo\": \"baz\"}]]",
+          "output": [
+            "[{\"foo\": \"bar\"}, {\"foo\": \"baz\"}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`range(upto)`, `range(from; upto)`, `range(from; upto; by)`",
+      "body": "\n関数 `range` は、ある範囲の数値を生成します。`range(4; 10)` は、4を含み10を含まない範囲の6個の数値を生成します。これらの数値は、個別の出力として生成されます。範囲を配列として取得するには、`[range(4; 10)]` を使います。\n\n引数が1つの形式は、0から指定した数値まで、1ずつ増加する数値を生成します。\n\n引数が2つの形式は、`from` から `upto` まで、1ずつ増加する数値を生成します。\n\n引数が3つの形式は、`from` から `upto` まで、`by` ずつ増加する数値を生成します。\n",
+      "examples": [
+        {
+          "program": "range(2; 4)",
+          "input": "null",
+          "output": [
+            "2",
+            "3"
+          ]
+        },
+        {
+          "program": "[range(2; 4)]",
+          "input": "null",
+          "output": [
+            "[2,3]"
+          ]
+        },
+        {
+          "program": "[range(4)]",
+          "input": "null",
+          "output": [
+            "[0,1,2,3]"
+          ]
+        },
+        {
+          "program": "[range(0; 10; 3)]",
+          "input": "null",
+          "output": [
+            "[0,3,6,9]"
+          ]
+        },
+        {
+          "program": "[range(0; 10; -1)]",
+          "input": "null",
+          "output": [
+            "[]"
+          ]
+        },
+        {
+          "program": "[range(0; -5; -1)]",
+          "input": "null",
+          "output": [
+            "[0,-1,-2,-3,-4]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`floor`",
+      "body": "\n関数 `floor` は、数値入力の床、つまりその値以下の最大の整数を返します。\n",
+      "examples": [
+        {
+          "program": "floor",
+          "input": "3.14159",
+          "output": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`sqrt`",
+      "body": "\n関数 `sqrt` は、数値入力の平方根を返します。\n",
+      "examples": [
+        {
+          "program": "sqrt",
+          "input": "9",
+          "output": [
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`tonumber`",
+      "body": "\n関数 `tonumber` は、入力を数値として解析します。正しい形式の文字列を対応する数値に変換し、数値はそのままにします。それ以外の入力はすべてエラーになります。\n",
+      "examples": [
+        {
+          "program": ".[] | tonumber",
+          "input": "[1, \"1\"]",
+          "output": [
+            "1",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`toboolean`",
+      "body": "\n関数 `toboolean` は、入力を真偽値として解析します。正しい形式の文字列を対応する真偽値に変換し、真偽値はそのままにします。それ以外の入力はすべてエラーになります。\n",
+      "examples": [
+        {
+          "program": ".[] | toboolean",
+          "input": "[\"true\", \"false\", true, false]",
+          "output": [
+            "true",
+            "false",
+            "true",
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`tostring`",
+      "body": "\n関数 `tostring` は、入力を文字列として出力します。文字列は変更せず、それ以外のすべての値はJSONエンコードします。\n",
+      "examples": [
+        {
+          "program": ".[] | tostring",
+          "input": "[1, \"1\", [1]]",
+          "output": [
+            "\"1\"",
+            "\"1\"",
+            "\"[1]\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`type`",
+      "body": "\n関数 `type` は、引数の型を文字列で返します。その文字列は、null、boolean、number、string、array、objectのいずれかです。\n",
+      "examples": [
+        {
+          "program": "map(type)",
+          "input": "[0, false, [], {}, null, \"hello\"]",
+          "output": [
+            "[\"number\", \"boolean\", \"array\", \"object\", \"null\", \"string\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`infinite`, `nan`, `isinfinite`, `isnan`, `isfinite`, `isnormal`",
+      "body": "\n一部の算術演算は、無限大や「非数」（NaN）の値を生成することがあります。組込み関数 `isinfinite` は、入力が無限大の場合に `true` を返します。組込み関数 `isnan` は、入力がNaNの場合に `true` を返します。組込み関数 `infinite` は、正の無限大の値を返します。組込み関数 `nan` はNaNを返します。組込み関数 `isnormal` は、入力が正規数の場合にtrueを返します。\n\nゼロによる除算はエラーを発生させることに注意してください。\n\n現在、無限大、NaN、非正規数を扱う算術演算のほとんどは、エラーを発生させません。\n",
+      "examples": [
+        {
+          "program": ".[] | (infinite * .) < 0",
+          "input": "[-1, 1]",
+          "output": [
+            "true",
+            "false"
+          ]
+        },
+        {
+          "program": "infinite, nan | type",
+          "input": "null",
+          "output": [
+            "\"number\"",
+            "\"number\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`sort`, `sort_by(path_expression)`",
+      "body": "\n関数 `sort` は、入力をソートします。入力は配列でなければなりません。値は次の順序でソートされます。\n\n* `null`\n* `false`\n* `true`\n* 数値\n* 文字列。Unicodeコードポイントの値によるアルファベット順\n* 配列。辞書式順序\n* オブジェクト\n\nオブジェクトの順序は少し複雑です。まず、キーの集合を、ソート済みの配列として比較します。キーが同じであれば、キーごとに値を比較します。\n\n`sort_by` は、オブジェクトの特定のフィールドによるソートや、任意のjqフィルターを適用したソートに使えます。`sort_by(f)` は、それぞれの要素に対する `f` の結果を比較することで、2つの要素を比較します。`f` が複数の値を生成する場合、まず最初の値を比較し、それらが等しければ2番目の値を比較する、というように続けます。\n",
+      "examples": [
+        {
+          "program": "sort",
+          "input": "[8,3,null,6]",
+          "output": [
+            "[null,3,6,8]"
+          ]
+        },
+        {
+          "program": "sort_by(.foo)",
+          "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":10}, {\"foo\":2, \"bar\":1}]",
+          "output": [
+            "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":4, \"bar\":10}]"
+          ]
+        },
+        {
+          "program": "sort_by(.foo, .bar)",
+          "input": "[{\"foo\":4, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}]",
+          "output": [
+            "[{\"foo\":2, \"bar\":1}, {\"foo\":3, \"bar\":10}, {\"foo\":3, \"bar\":20}, {\"foo\":4, \"bar\":10}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`group_by(path_expression)`",
+      "body": "\n`group_by(.foo)` は配列を入力として受け取り、同じ `.foo` フィールドを持つ要素を個別の配列にまとめます。そして、それらの配列すべてを、`.foo` フィールドの値でソートした大きな配列の要素として出力します。\n\n`.foo` の代わりに使えるのはフィールドへのアクセスだけでなく、任意のjq式です。ソート順は、前述の `sort` 関数で説明した順序と同じです。\n",
+      "examples": [
+        {
+          "program": "group_by(.foo)",
+          "input": "[{\"foo\":1, \"bar\":10}, {\"foo\":3, \"bar\":100}, {\"foo\":1, \"bar\":1}]",
+          "output": [
+            "[[{\"foo\":1, \"bar\":10}, {\"foo\":1, \"bar\":1}], [{\"foo\":3, \"bar\":100}]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`min`, `max`, `min_by(path_exp)`, `max_by(path_exp)`",
+      "body": "\n入力配列の最小または最大の要素を見つけます。\n\n関数 `min_by(path_exp)` と `max_by(path_exp)` では、調べる特定のフィールドやプロパティを指定できます。たとえば、`min_by(.foo)` は、`foo` フィールドが最小のオブジェクトを見つけます。\n",
+      "examples": [
+        {
+          "program": "min",
+          "input": "[5,4,2,7]",
+          "output": [
+            "2"
+          ]
+        },
+        {
+          "program": "max_by(.foo)",
+          "input": "[{\"foo\":1, \"bar\":14}, {\"foo\":2, \"bar\":3}]",
+          "output": [
+            "{\"foo\":2, \"bar\":3}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`unique`, `unique_by(path_exp)`",
+      "body": "\n関数 `unique` は配列を入力として受け取り、同じ要素をソート順に並べ、重複を取り除いた配列を生成します。\n\n関数 `unique_by(path_exp)` は、引数を適用して得られる値ごとに、1つの要素だけを残します。`group` が生成する各グループから1つずつ要素を取り出して、配列を作ると考えてください。\n",
+      "examples": [
+        {
+          "program": "unique",
+          "input": "[1,2,5,3,5,3,1,3]",
+          "output": [
+            "[1,2,3,5]"
+          ]
+        },
+        {
+          "program": "unique_by(.foo)",
+          "input": "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 1, \"bar\": 3}, {\"foo\": 4, \"bar\": 5}]",
+          "output": [
+            "[{\"foo\": 1, \"bar\": 2}, {\"foo\": 4, \"bar\": 5}]"
+          ]
+        },
+        {
+          "program": "unique_by(length)",
+          "input": "[\"chunky\", \"bacon\", \"kitten\", \"cicada\", \"asparagus\"]",
+          "output": [
+            "[\"bacon\", \"chunky\", \"asparagus\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`reverse`",
+      "body": "\nこの関数は、配列の要素の順序を逆にします。\n",
+      "examples": [
+        {
+          "program": "reverse",
+          "input": "[1,2,3,4]",
+          "output": [
+            "[4,3,2,1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`contains(element)`",
+      "body": "\nフィルター `contains(b)` は、bが入力に完全に含まれている場合にtrueを生成します。文字列Bが文字列Aに含まれているとは、BがAの部分文字列であることを意味します。配列Bが配列Aに含まれているとは、Bのすべての要素が、それぞれAのいずれかの要素に含まれていることを意味します。オブジェクトBがオブジェクトAに含まれているとは、Bのすべての値が、Aの同じキーに対応する値に含まれていることを意味します。それ以外の型はすべて、互いに等しい場合に、互いに含まれているとみなします。\n",
+      "examples": [
+        {
+          "program": "contains(\"bar\")",
+          "input": "\"foobar\"",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains([\"baz\", \"bar\"])",
+          "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains([\"bazzzzz\", \"bar\"])",
+          "input": "[\"foobar\", \"foobaz\", \"blarp\"]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "contains({foo: 12, bar: [{barp: 12}]})",
+          "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "contains({foo: 12, bar: [{barp: 15}]})",
+          "input": "{\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]}",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`indices(s)`",
+      "body": "\n`.` 内で `s` が現れる位置の索引を含む配列を出力します。入力は配列でも構いません。その場合、`s` も配列であれば、`.` 内の一連の要素が `s` のすべての要素と一致する位置の索引を出力します。\n",
+      "examples": [
+        {
+          "program": "indices(\", \")",
+          "input": "\"a,b, cd, efg, hijk\"",
+          "output": [
+            "[3,7,12]"
+          ]
+        },
+        {
+          "program": "indices(1)",
+          "input": "[0,1,2,1,3,1,4]",
+          "output": [
+            "[1,3,5]"
+          ]
+        },
+        {
+          "program": "indices([1,2])",
+          "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+          "output": [
+            "[1,8]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`index(s)`, `rindex(s)`",
+      "body": "\n最初の出現位置（`index`）または最後の出現位置（`rindex`）の索引を出力します。探す対象は、入力内の `s` です。\n",
+      "examples": [
+        {
+          "program": "index(\", \")",
+          "input": "\"a,b, cd, efg, hijk\"",
+          "output": [
+            "3"
+          ]
+        },
+        {
+          "program": "index(1)",
+          "input": "[0,1,2,1,3,1,4]",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "index([1,2])",
+          "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+          "output": [
+            "1"
+          ]
+        },
+        {
+          "program": "rindex(\", \")",
+          "input": "\"a,b, cd, efg, hijk\"",
+          "output": [
+            "12"
+          ]
+        },
+        {
+          "program": "rindex(1)",
+          "input": "[0,1,2,1,3,1,4]",
+          "output": [
+            "5"
+          ]
+        },
+        {
+          "program": "rindex([1,2])",
+          "input": "[0,1,2,3,1,4,2,5,1,2,6,7]",
+          "output": [
+            "8"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`inside`",
+      "body": "\nフィルター `inside(b)` は、入力がbに完全に含まれている場合にtrueを生成します。基本的には、`contains` の向きを逆にしたものです。\n",
+      "examples": [
+        {
+          "program": "inside(\"foobar\")",
+          "input": "\"bar\"",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "inside([\"foobar\", \"foobaz\", \"blarp\"])",
+          "input": "[\"baz\", \"bar\"]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "inside([\"foobar\", \"foobaz\", \"blarp\"])",
+          "input": "[\"bazzzzz\", \"bar\"]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "inside({\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]})",
+          "input": "{\"foo\": 12, \"bar\": [{\"barp\": 12}]}",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "inside({\"foo\": 12, \"bar\":[1,2,{\"barp\":12, \"blip\":13}]})",
+          "input": "{\"foo\": 12, \"bar\": [{\"barp\": 15}]}",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`startswith(str)`",
+      "body": "\n.が指定した文字列引数で始まる場合、`true` を出力します。\n",
+      "examples": [
+        {
+          "program": "[.[]|startswith(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"barfoob\"]",
+          "output": [
+            "[false, true, false, true, false]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`endswith(str)`",
+      "body": "\n.が指定した文字列引数で終わる場合、`true` を出力します。\n",
+      "examples": [
+        {
+          "program": "[.[]|endswith(\"foo\")]",
+          "input": "[\"foobar\", \"barfoo\"]",
+          "output": [
+            "[false, true]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`combinations`, `combinations(n)`",
+      "body": "\n入力配列の中にある各配列の要素の、すべての組合せを出力します。引数 `n` を与えた場合、入力配列を `n` 回繰り返した、すべての組合せを出力します。\n",
+      "examples": [
+        {
+          "program": "combinations",
+          "input": "[[1,2], [3, 4]]",
+          "output": [
+            "[1, 3]",
+            "[1, 4]",
+            "[2, 3]",
+            "[2, 4]"
+          ]
+        },
+        {
+          "program": "combinations(2)",
+          "input": "[0, 1]",
+          "output": [
+            "[0, 0]",
+            "[0, 1]",
+            "[1, 0]",
+            "[1, 1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`ltrimstr(str)`",
+      "body": "\n入力が指定した接頭文字列で始まる場合、その接頭文字列を取り除いた入力を出力します。\n",
+      "examples": [
+        {
+          "program": "[.[]|ltrimstr(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"afoo\"]",
+          "output": [
+            "[\"fo\",\"\",\"barfoo\",\"bar\",\"afoo\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`rtrimstr(str)`",
+      "body": "\n入力が指定した接尾文字列で終わる場合、その接尾文字列を取り除いた入力を出力します。\n",
+      "examples": [
+        {
+          "program": "[.[]|rtrimstr(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobar\", \"foob\"]",
+          "output": [
+            "[\"fo\",\"\",\"bar\",\"foobar\",\"foob\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`trimstr(str)`",
+      "body": "\n入力が指定した文字列で始まるか終わる場合、両端からその文字列を取り除いた入力を出力します。\n",
+      "examples": [
+        {
+          "program": "[.[]|trimstr(\"foo\")]",
+          "input": "[\"fo\", \"foo\", \"barfoo\", \"foobarfoo\", \"foob\"]",
+          "output": [
+            "[\"fo\",\"\",\"bar\",\"bar\",\"b\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`trim`, `ltrim`, `rtrim`",
+      "body": "\n`trim` は、先頭と末尾の両方の空白文字を取り除きます。\n\n`ltrim` は、先頭（左側）の空白文字だけを取り除きます。\n\n`rtrim` は、末尾（右側）の空白文字だけを取り除きます。\n\n空白文字には、通常の `\" \"`、`\"\\n\"`、`\"\\t\"`、`\"\\r\"` に加え、Unicode文字データベースで空白プロパティを持つすべての文字が含まれます。何を空白とみなすかは、将来変わる可能性があることに注意してください。\n",
+      "examples": [
+        {
+          "program": "trim, ltrim, rtrim",
+          "input": "\" abc \"",
+          "output": [
+            "\"abc\"",
+            "\"abc \"",
+            "\" abc\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`explode`",
+      "body": "\n入力文字列を、その文字列のコードポイントの数値からなる配列に変換します。\n",
+      "examples": [
+        {
+          "program": "explode",
+          "input": "\"foobar\"",
+          "output": [
+            "[102,111,111,98,97,114]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`implode`",
+      "body": "\nexplodeの逆の操作です。\n",
+      "examples": [
+        {
+          "program": "implode",
+          "input": "[65, 66, 67]",
+          "output": [
+            "\"ABC\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`split(str)`",
+      "body": "\n区切り文字の引数を使って、入力文字列を分割します。\n\n`split` は、引数を2つ指定して呼び出すと、正規表現の一致箇所でも分割できます。後述の正規表現の節を参照してください。\n",
+      "examples": [
+        {
+          "program": "split(\", \")",
+          "input": "\"a, b,c,d, e, \"",
+          "output": [
+            "[\"a\",\"b,c,d\",\"e\",\"\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`join(str)`",
+      "body": "\n入力として与えられた要素の配列を、引数を区切り文字として使って結合します。これは `split` の逆の操作です。つまり、任意の入力文字列に対して `split(\"foo\") | join(\"foo\")` を実行すると、その入力文字列が返ります。\n\n入力内の数値と真偽値は文字列に変換されます。nullの値は空文字列として扱われます。入力内の配列とオブジェクトには対応していません。\n",
+      "examples": [
+        {
+          "program": "join(\", \")",
+          "input": "[\"a\",\"b,c,d\",\"e\"]",
+          "output": [
+            "\"a, b,c,d, e\""
+          ]
+        },
+        {
+          "program": "join(\" \")",
+          "input": "[\"a\",1,2.3,true,null,false]",
+          "output": [
+            "\"a 1 2.3 true  false\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`ascii_downcase`, `ascii_upcase`",
+      "body": "\n入力文字列のコピーを出力し、英字（a-zとA-Z）を指定した大文字または小文字に変換します。\n",
+      "examples": [
+        {
+          "program": "ascii_upcase",
+          "input": "\"useful but not for é\"",
+          "output": [
+            "\"USEFUL BUT NOT FOR é\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`while(cond; update)`",
+      "body": "\n関数 `while(cond; update)` は、`.` に更新を繰り返し適用し、`cond` がfalseになるまで続けます。\n\n`while(cond; update)` は、内部では再帰的なjq関数として定義されています。`while` 内の再帰呼び出しは、`update` が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。後述の高度な話題を参照してください。\n",
+      "examples": [
+        {
+          "program": "[while(.<100; .*2)]",
+          "input": "1",
+          "output": [
+            "[1,2,4,8,16,32,64]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`repeat(exp)`",
+      "body": "\n関数 `repeat(exp)` は、式 `exp` を `.` に繰り返し適用し、エラーが発生するまで続けます。\n\n`repeat(exp)` は、内部では再帰的なjq関数として定義されています。`repeat` 内の再帰呼び出しは、`exp` が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。後述の高度な話題を参照してください。\n",
+      "examples": [
+        {
+          "program": "[repeat(.*2, error)?]",
+          "input": "1",
+          "output": [
+            "[2]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`until(cond; next)`",
+      "body": "\n関数 `until(cond; next)` は、式 `next` を繰り返し適用します。最初は `.` に、その後は式自身の出力に適用し、`cond` がtrueになるまで続けます。たとえば、階乗関数の実装に使えます。以下を参照してください。\n\n`until(cond; next)` は、内部では再帰的なjq関数として定義されています。`until()` 内の再帰呼び出しは、`next` が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。後述の高度な話題を参照してください。\n",
+      "examples": [
+        {
+          "program": "[.,1]|until(.[0] < 1; [.[0] - 1, .[1] * .[0]])|.[1]",
+          "input": "4",
+          "output": [
+            "24"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`recurse(f)`, `recurse`, `recurse(f; condition)`",
+      "body": "\n関数 `recurse(f)` は、再帰的な構造を探索し、すべての階層から必要なデータを抽出できます。入力が次のようなファイルシステムを表すとします。\n\n    {\"name\": \"/\", \"children\": [\n      {\"name\": \"/bin\", \"children\": [\n        {\"name\": \"/bin/ls\", \"children\": []},\n        {\"name\": \"/bin/sh\", \"children\": []}]},\n      {\"name\": \"/home\", \"children\": [\n        {\"name\": \"/home/stephen\", \"children\": [\n          {\"name\": \"/home/stephen/jq\", \"children\": []}]}]}]}\n\n存在するすべてのファイル名を抽出したいとします。`.name`、`.children[].name`、`.children[].children[].name`、というように取得する必要があります。これは次の式で行えます。\n\n    recurse(.children[]) | .name\n\n引数なしで呼び出した `recurse` は、`recurse(.[]?)` と同じです。\n\n`recurse(f)` は `recurse(f; true)` と同じで、再帰の深さを気にせずに使えます。\n\n`recurse(f; condition)` は、まず.を出力し、その後は計算した値が条件を満たす限り、.|f、.|f|f、.|f|f|f、…と順に出力するジェネレーターです。たとえば、少なくとも原理的には、`recurse(.+1; true)` と書けば、すべての整数を生成できます。\n\n`recurse` 内の再帰呼び出しは、`f` が各入力に対して最大1つの出力を生成する場合、追加のメモリーを消費しません。\n",
+      "examples": [
+        {
+          "program": "recurse(.foo[])",
+          "input": "{\"foo\":[{\"foo\": []}, {\"foo\":[{\"foo\":[]}]}]}",
+          "output": [
+            "{\"foo\":[{\"foo\":[]},{\"foo\":[{\"foo\":[]}]}]}",
+            "{\"foo\":[]}",
+            "{\"foo\":[{\"foo\":[]}]}",
+            "{\"foo\":[]}"
+          ]
+        },
+        {
+          "program": "recurse",
+          "input": "{\"a\":0,\"b\":[1]}",
+          "output": [
+            "{\"a\":0,\"b\":[1]}",
+            "0",
+            "[1]",
+            "1"
+          ]
+        },
+        {
+          "program": "recurse(. * .; . < 20)",
+          "input": "2",
+          "output": [
+            "2",
+            "4",
+            "16"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`walk(f)`",
+      "body": "\n関数 `walk(f)` は、入力の各構成要素にfを再帰的に適用します。配列に出会うと、まずその要素にfを適用し、その後に配列自体に適用します。オブジェクトに出会うと、まずすべての値にfを適用し、その後にオブジェクトに適用します。実際には、以下の例のように、fは通常、入力の型を調べます。最初の例は、配列の配列について、配列自体を処理する前に要素を処理することの便利さを示します。2番目の例は、入力内のすべてのオブジェクトのすべてのキーを、変更の対象にできることを示します。\n",
+      "examples": [
+        {
+          "program": "walk(if type == \"array\" then sort else . end)",
+          "input": "[[4, 1, 7], [8, 5, 2], [3, 6, 9]]",
+          "output": [
+            "[[1,4,7],[2,5,8],[3,6,9]]"
+          ]
+        },
+        {
+          "program": "walk( if type == \"object\" then with_entries( .key |= sub( \"^_+\"; \"\") ) else . end )",
+          "input": "[ { \"_a\": { \"__b\": 2 } } ]",
+          "output": [
+            "[{\"a\":{\"b\":2}}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`have_literal_numbers`",
+      "body": "\njqのビルド設定が入力の数値リテラルを保持する機能を含んでいる場合、この組込み関数はtrueを返します。\n"
+    },
+    {
+      "title": "`have_decnum`",
+      "body": "\njqが\"decnum\"を使ってビルドされた場合、この組込み関数はtrueを返します。これは、現在のjqで数値リテラルを保持する数値バックエンドの実装です。\n"
+    },
+    {
+      "title": "`$JQ_BUILD_CONFIGURATION`",
+      "body": "\nこの組込みの束縛は、jq実行ファイルのビルド設定を示します。値に決まった形式はありませんが、少なくとも `./configure` のコマンドライン引数が含まれると期待できます。将来は、使用したビルドツールのバージョン文字列などが追加される可能性があります。\n\nこれは、コマンドラインの `--arg` や関連するオプションで上書きできることに注意してください。\n"
+    },
+    {
+      "title": "`$ENV`, `env`",
+      "body": "\n`$ENV` は、jqプログラムの開始時点で設定されていた環境変数を表すオブジェクトです。\n\n`env` は、jqの現在の環境を表すオブジェクトを出力します。\n\n現時点では、環境変数を設定する組込み関数はありません。\n",
+      "examples": [
+        {
+          "program": "$ENV.PAGER",
+          "input": "null",
+          "output": [
+            "\"less\""
+          ]
+        },
+        {
+          "program": "env.PAGER",
+          "input": "null",
+          "output": [
+            "\"less\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`transpose`",
+      "body": "\n行ごとの長さが異なる場合もある行列（配列の配列）を転置します。行はnullで埋められるため、結果は常に長方形になります。\n",
+      "examples": [
+        {
+          "program": "transpose",
+          "input": "[[1], [2,3]]",
+          "output": [
+            "[[1,2],[null,3]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`bsearch(x)`",
+      "body": "\n`bsearch(x)` は、入力配列からxを二分探索します。入力がソート済みでxを含んでいる場合、`bsearch(x)` は配列内でのその索引を返します。そうでなくても配列がソート済みであれば、(-1 - ix)を返します。ここでixは、その位置にxを挿入しても配列のソート順が保たれる挿入位置です。配列がソートされていない場合、`bsearch(x)` は、おそらく意味のない整数を返します。\n",
+      "examples": [
+        {
+          "program": "bsearch(0)",
+          "input": "[0,1]",
+          "output": [
+            "0"
+          ]
+        },
+        {
+          "program": "bsearch(0)",
+          "input": "[1,2,3]",
+          "output": [
+            "-1"
+          ]
+        },
+        {
+          "program": "bsearch(4) as $ix | if $ix < 0 then .[-(1+$ix)] = 4 else . end",
+          "input": "[1,2,3]",
+          "output": [
+            "[1,2,3,4]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "文字列への式の埋込み：`\\(exp)`",
+      "body": "\n文字列内では、バックスラッシュに続く丸括弧の中に式を置けます。その式が返すものが、文字列に埋め込まれます。\n",
+      "examples": [
+        {
+          "program": "\"The input was \\(.), which is one less than \\(.+1)\"",
+          "input": "42",
+          "output": [
+            "\"The input was 42, which is one less than 43\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "JSONへの変換とJSONからの変換",
+      "body": "\n組込み関数 `tojson` と `fromjson` は、それぞれ、値をJSONテキストとして出力するか、JSONテキストを値へ解析します。組込み関数 `tojson` と `tostring` の違いは、`tostring` が文字列を変更せず返すのに対し、`tojson` は文字列をJSON文字列としてエンコードする点です。\n",
+      "examples": [
+        {
+          "program": "[.[]|tostring]",
+          "input": "[1, \"foo\", [\"foo\"]]",
+          "output": [
+            "[\"1\",\"foo\",\"[\\\"foo\\\"]\"]"
+          ]
+        },
+        {
+          "program": "[.[]|tojson]",
+          "input": "[1, \"foo\", [\"foo\"]]",
+          "output": [
+            "[\"1\",\"\\\"foo\\\"\",\"[\\\"foo\\\"]\"]"
+          ]
+        },
+        {
+          "program": "[.[]|tojson|fromjson]",
+          "input": "[1, \"foo\", [\"foo\"]]",
+          "output": [
+            "[1,\"foo\",[\"foo\"]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "文字列の書式設定とエスケープ",
+      "body": "\n`@foo` 構文は、文字列の書式設定やエスケープに使います。URLや、HTML・XMLのような言語の文書などを作る際に便利です。`@foo` は、それ自体をフィルターとして使えます。利用できるエスケープは次のとおりです。\n\n* `@text`:\n\n  `tostring` を呼び出します。詳細はその関数を参照してください。\n\n* `@json`:\n\n  入力をJSONとしてシリアライズします。\n\n* `@html`:\n\n  文字 `<>&'\"` を、対応する実体参照 `&lt;`、`&gt;`、`&amp;`、`&apos;`、`&quot;` に置き換えて、HTML/XMLエスケープを適用します。\n\n* `@uri`:\n\n  URIのすべての予約文字を `%XX` という並びに置き換えて、パーセントエンコードを適用します。\n\n* `@urid`:\n\n  `@uri` の逆の操作です。すべての `%XX` という並びを対応するURIの文字に置き換えて、パーセントデコードを適用します。\n\n* `@csv`:\n\n  入力は配列でなければなりません。CSVとして出力し、文字列は二重引用符で囲み、引用符は繰り返すことでエスケープします。\n\n* `@tsv`:\n\n  入力は配列でなければなりません。TSV（タブ区切りの値）として出力します。各入力配列を1行として出力します。フィールドは1つのタブ（ASCII `0x09`）で区切ります。入力の改行（ASCII `0x0a`）、復帰（ASCII `0x0d`）、タブ（ASCII `0x09`）、バックスラッシュ（ASCII `0x5c`）は、それぞれエスケープシーケンス `\\n`、`\\r`、`\\t`、`\\\\` として出力します。\n\n* `@sh`:\n\n  POSIXシェルのコマンドラインで使えるように入力をエスケープします。入力が配列の場合、出力はスペースで区切った文字列の並びになります。\n\n* `@base64`:\n\n  RFC 4648で規定されているbase64へ入力を変換します。\n\n* `@base64d`:\n\n  `@base64` の逆の操作です。RFC 4648に従って入力をデコードします。注意：デコードした文字列がUTF-8でない場合、結果は未定義です。\n\nこの構文は、文字列への式の埋込みと便利に組み合わせられます。`@foo` トークンの後に文字列リテラルを置けます。文字列リテラルの内容自体は、エスケープ*されません*。ただし、その文字列リテラル内に埋め込まれる式の結果は、すべてエスケープされます。たとえば、\n\n    @uri \"https://www.google.com/search?q=\\(.search)\"\n\nは、入力 `{\"search\":\"what is jq?\"}` に対して、次の出力を生成します。\n\n    \"https://www.google.com/search?q=what%20is%20jq%3F\"\n\nURLのスラッシュや疑問符などは、文字列リテラルの一部だったため、エスケープされないことに注意してください。\n",
+      "examples": [
+        {
+          "program": "@html",
+          "input": "\"This works if x < y\"",
+          "output": [
+            "\"This works if x &lt; y\""
+          ]
+        },
+        {
+          "program": "@sh \"echo \\(.)\"",
+          "input": "\"O'Hara's Ale\"",
+          "output": [
+            "\"echo 'O'\\\\''Hara'\\\\''s Ale'\""
+          ]
+        },
+        {
+          "program": "@base64",
+          "input": "\"This is a message\"",
+          "output": [
+            "\"VGhpcyBpcyBhIG1lc3NhZ2U=\""
+          ]
+        },
+        {
+          "program": "@base64d",
+          "input": "\"VGhpcyBpcyBhIG1lc3NhZ2U=\"",
+          "output": [
+            "\"This is a message\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "日付",
+      "body": "\njqは、高水準と低水準の組込み関数による、基本的な日付処理機能を提供します。これらの組込み関数は、すべての場合においてUTCの時刻だけを扱います。\n\n組込み関数 `fromdateiso8601` は、ISO 8601形式の日時を、Unixエポック（1970-01-01T00:00:00Z）からの秒数へ解析します。組込み関数 `todateiso8601` は、その逆の操作を行います。\n\n組込み関数 `fromdate` は日時文字列を解析します。現在、`fromdate` はISO 8601形式の日時文字列にだけ対応していますが、将来はさらに多くの形式の日時文字列の解析を試みるようになります。\n\n組込み関数 `todate` は、`todateiso8601` の別名です。\n\n組込み関数 `now` は、現在の時刻を、Unixエポックからの秒数で出力します。\n\nCライブラリの時刻関数に対する低水準のjqインターフェースも提供されています。`strptime`、`strftime`、`strflocaltime`、`mktime`、`gmtime`、`localtime` です。`strptime` と `strftime` で使う書式文字列については、ホストOSの文書を参照してください。注意：これらはjqで必ずしも安定したインターフェースではなく、特に地域化機能については注意が必要です。\n\n組込み関数 `gmtime` は、Unixエポックからの秒数を受け取り、グリニッジ標準時の「分解された時刻」表現を出力します。これは数値の配列で、次の順序で表します。年、月（0始まり）、月内の日（1始まり）、時、分、秒、曜日、年内の日です。別途記載がない限り、すべて1始まりです。一部のシステムでは、1900年3月1日より前、または2099年12月31日より後の日付で、曜日の数値が誤っていることがあります。\n\n組込み関数 `localtime` は、組込み関数 `gmtime` と同様に動作しますが、ローカルのタイムゾーン設定を使います。\n\n組込み関数 `mktime` は、`gmtime` と `strptime` が出力する「分解された時刻」表現を受け取ります。\n\n組込み関数 `strptime(fmt)` は、引数 `fmt` に一致する入力文字列を解析します。出力は「分解された時刻」表現で、`mktime` が受け取り、`gmtime` が出力する表現です。\n\n組込み関数 `strftime(fmt)` は、指定した書式で時刻（GMT）を整形します。`strflocaltime` は同じ操作を行いますが、ローカルのタイムゾーン設定を使います。\n\n`strptime` と `strftime` の書式文字列は、一般的なCライブラリの文書で説明されています。ISO 8601日時の書式文字列は `\"%Y-%m-%dT%H:%M:%SZ\"` です。\n\n一部のシステムでは、jqがこれらの日付機能の一部またはすべてに対応していない場合があります。特に、macOSでは、`%u` と `%j` の指定子を `strptime(fmt)` で使えません。\n",
+      "examples": [
+        {
+          "program": "fromdate",
+          "input": "\"2015-03-05T23:51:47Z\"",
+          "output": [
+            "1425599507"
+          ]
+        },
+        {
+          "program": "strptime(\"%Y-%m-%dT%H:%M:%SZ\")",
+          "input": "\"2015-03-05T23:51:47Z\"",
+          "output": [
+            "[2015,2,5,23,51,47,4,63]"
+          ]
+        },
+        {
+          "program": "strptime(\"%Y-%m-%dT%H:%M:%SZ\")|mktime",
+          "input": "\"2015-03-05T23:51:47Z\"",
+          "output": [
+            "1425599507"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SQL形式の演算子",
+      "body": "\njqはいくつかのSQL形式の演算子を提供します。\n\n* `INDEX(stream; index_expression)`:\n\n  この組込み関数は、指定したストリームの各値に、指定した索引式を適用してキーを計算したオブジェクトを生成します。\n\n* `JOIN($idx; stream; idx_expr; join_expr)`:\n\n  この組込み関数は、指定したストリームの値を、指定した索引へ結合します。索引のキーは、指定したストリームの各値に、指定した索引式を適用して計算します。ストリーム内の値と、索引内の対応する値からなる配列を、指定した結合式に渡して、それぞれの結果を生成します。\n\n* `JOIN($idx; stream; idx_expr)`:\n\n  `JOIN($idx; stream; idx_expr; .)` と同じです。\n\n* `JOIN($idx; idx_expr)`:\n\n  この組込み関数は、入力 `.` を指定した索引へ結合します。指定した索引式を `.` に適用して、索引のキーを計算します。結合操作は、前述のとおりです。\n\n* `IN(s)`:\n\n  この組込み関数が `true` を出力するのは、`.` が指定したストリームに現れる場合です。それ以外の場合は `false` を出力します。\n\n* `IN(source; s)`:\n\n  この組込み関数が `true` を出力するのは、元のストリームのいずれかの値が2番目のストリームに現れる場合です。それ以外の場合は `false` を出力します。\n"
+    },
+    {
+      "title": "`builtins`",
+      "body": "\nすべての組込み関数のリストを、`name/arity` という形式で返します。同じ名前でも引数の数が異なる関数は別の関数とみなされるため、`all/0`、`all/1`、`all/2` はすべてリストに含まれます。\n"
+    }
+  ]
+}

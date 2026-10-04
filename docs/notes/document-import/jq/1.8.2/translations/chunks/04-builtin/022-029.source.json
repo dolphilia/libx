@@ -1,0 +1,213 @@
+{
+  "entryStart": 22,
+  "entries": [
+    {
+      "title": "`halt_error`, `halt_error(exit_code)`",
+      "body": "\nStops the jq program with no further outputs.  The input will\nbe printed on `stderr` as raw output (i.e., strings will not\nhave double quotes) with no decoration, not even a newline.\n\nThe given `exit_code` (defaulting to `5`) will be jq's exit\nstatus.\n\nFor example, `\"Error: something went wrong\\n\"|halt_error(1)`.\n"
+    },
+    {
+      "title": "`$__loc__`",
+      "body": "\nProduces an object with a \"file\" key and a \"line\" key, with\nthe filename and line number where `$__loc__` occurs, as\nvalues.\n",
+      "examples": [
+        {
+          "program": "try error(\"\\($__loc__)\") catch .",
+          "input": "null",
+          "output": [
+            "\"{\\\"file\\\":\\\"<top-level>\\\",\\\"line\\\":1}\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`paths`, `paths(node_filter)`",
+      "body": "\n`paths` outputs the paths to all the elements in its input\n(except it does not output the empty list, representing .\nitself).\n\n`paths(f)` outputs the paths to any values for which `f` is `true`.\nThat is, `paths(type == \"number\")` outputs the paths to all numeric\nvalues.\n",
+      "examples": [
+        {
+          "program": "[paths]",
+          "input": "[1,[[],{\"a\":2}]]",
+          "output": [
+            "[[0],[1],[1,0],[1,1],[1,1,\"a\"]]"
+          ]
+        },
+        {
+          "program": "[paths(type == \"number\")]",
+          "input": "[1,[[],{\"a\":2}]]",
+          "output": [
+            "[[0],[1,1,\"a\"]]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`add`, `add(generator)`",
+      "body": "\nThe filter `add` takes as input an array, and produces as\noutput the elements of the array added together. This might\nmean summed, concatenated or merged depending on the types\nof the elements of the input array - the rules are the same\nas those for the `+` operator (described above).\n\nIf the input is an empty array, `add` returns `null`.\n\n`add(generator)` operates on the given generator rather than\nthe input.\n",
+      "examples": [
+        {
+          "program": "add",
+          "input": "[\"a\",\"b\",\"c\"]",
+          "output": [
+            "\"abc\""
+          ]
+        },
+        {
+          "program": "add",
+          "input": "[1, 2, 3]",
+          "output": [
+            "6"
+          ]
+        },
+        {
+          "program": "add",
+          "input": "[]",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": "add(.[].a)",
+          "input": "[{\"a\":3}, {\"a\":5}, {\"b\":6}]",
+          "output": [
+            "8"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`any`, `any(condition)`, `any(generator; condition)`",
+      "body": "\nThe filter `any` takes as input an array of boolean values,\nand produces `true` as output if any of the elements of\nthe array are `true`.\n\nIf the input is an empty array, `any` returns `false`.\n\nThe `any(condition)` form applies the given condition to the\nelements of the input array.\n\nThe `any(generator; condition)` form applies the given\ncondition to all the outputs of the given generator.\n",
+      "examples": [
+        {
+          "program": "any",
+          "input": "[true, false]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "any",
+          "input": "[false, false]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "any",
+          "input": "[]",
+          "output": [
+            "false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`all`, `all(condition)`, `all(generator; condition)`",
+      "body": "\nThe filter `all` takes as input an array of boolean values,\nand produces `true` as output if all of the elements of\nthe array are `true`.\n\nThe `all(condition)` form applies the given condition to the\nelements of the input array.\n\nThe `all(generator; condition)` form applies the given\ncondition to all the outputs of the given generator.\n\nIf the input is an empty array, `all` returns `true`.\n",
+      "examples": [
+        {
+          "program": "all",
+          "input": "[true, false]",
+          "output": [
+            "false"
+          ]
+        },
+        {
+          "program": "all",
+          "input": "[true, true]",
+          "output": [
+            "true"
+          ]
+        },
+        {
+          "program": "all",
+          "input": "[]",
+          "output": [
+            "true"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`flatten`, `flatten(depth)`",
+      "body": "\nThe filter `flatten` takes as input an array of nested arrays,\nand produces a flat array in which all arrays inside the original\narray have been recursively replaced by their values. You can pass\nan argument to it to specify how many levels of nesting to flatten.\n\n`flatten(2)` is like `flatten`, but going only up to two\nlevels deep.\n",
+      "examples": [
+        {
+          "program": "flatten",
+          "input": "[1, [2], [[3]]]",
+          "output": [
+            "[1, 2, 3]"
+          ]
+        },
+        {
+          "program": "flatten(1)",
+          "input": "[1, [2], [[3]]]",
+          "output": [
+            "[1, 2, [3]]"
+          ]
+        },
+        {
+          "program": "flatten",
+          "input": "[[]]",
+          "output": [
+            "[]"
+          ]
+        },
+        {
+          "program": "flatten",
+          "input": "[{\"foo\": \"bar\"}, [{\"foo\": \"baz\"}]]",
+          "output": [
+            "[{\"foo\": \"bar\"}, {\"foo\": \"baz\"}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`range(upto)`, `range(from; upto)`, `range(from; upto; by)`",
+      "body": "\nThe `range` function produces a range of numbers. `range(4; 10)`\nproduces 6 numbers, from 4 (inclusive) to 10 (exclusive). The numbers\nare produced as separate outputs. Use `[range(4; 10)]` to get a range as\nan array.\n\nThe one argument form generates numbers from 0 to the given\nnumber, with an increment of 1.\n\nThe two argument form generates numbers from `from` to `upto`\nwith an increment of 1.\n\nThe three argument form generates numbers `from` to `upto`\nwith an increment of `by`.\n",
+      "examples": [
+        {
+          "program": "range(2; 4)",
+          "input": "null",
+          "output": [
+            "2",
+            "3"
+          ]
+        },
+        {
+          "program": "[range(2; 4)]",
+          "input": "null",
+          "output": [
+            "[2,3]"
+          ]
+        },
+        {
+          "program": "[range(4)]",
+          "input": "null",
+          "output": [
+            "[0,1,2,3]"
+          ]
+        },
+        {
+          "program": "[range(0; 10; 3)]",
+          "input": "null",
+          "output": [
+            "[0,3,6,9]"
+          ]
+        },
+        {
+          "program": "[range(0; 10; -1)]",
+          "input": "null",
+          "output": [
+            "[]"
+          ]
+        },
+        {
+          "program": "[range(0; -5; -1)]",
+          "input": "null",
+          "output": [
+            "[0,-1,-2,-3,-4]"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "entryStart": 12,
+  "entries": [
+    {
+      "title": "`del(path_expression)`",
+      "body": "\nThe builtin function `del` removes a key and its corresponding\nvalue from an object.\n",
+      "examples": [
+        {
+          "program": "del(.foo)",
+          "input": "{\"foo\": 42, \"bar\": 9001, \"baz\": 42}",
+          "output": [
+            "{\"bar\": 9001, \"baz\": 42}"
+          ]
+        },
+        {
+          "program": "del(.[1, 2])",
+          "input": "[\"foo\", \"bar\", \"baz\"]",
+          "output": [
+            "[\"foo\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`getpath(PATHS)`",
+      "body": "\nThe builtin function `getpath` outputs the values in `.` found\nat each path in `PATHS`.\n",
+      "examples": [
+        {
+          "program": "getpath([\"a\",\"b\"])",
+          "input": "null",
+          "output": [
+            "null"
+          ]
+        },
+        {
+          "program": "[getpath([\"a\",\"b\"], [\"a\",\"c\"])]",
+          "input": "{\"a\":{\"b\":0, \"c\":1}}",
+          "output": [
+            "[0, 1]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`setpath(PATHS; VALUE)`",
+      "body": "\nThe builtin function `setpath` sets the `PATHS` in `.` to `VALUE`.\n",
+      "examples": [
+        {
+          "program": "setpath([\"a\",\"b\"]; 1)",
+          "input": "null",
+          "output": [
+            "{\"a\": {\"b\": 1}}"
+          ]
+        },
+        {
+          "program": "setpath([\"a\",\"b\"]; 1)",
+          "input": "{\"a\":{\"b\":0}}",
+          "output": [
+            "{\"a\": {\"b\": 1}}"
+          ]
+        },
+        {
+          "program": "setpath([0,\"a\"]; 1)",
+          "input": "null",
+          "output": [
+            "[{\"a\":1}]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`delpaths(PATHS)`",
+      "body": "\nThe builtin function `delpaths` deletes the `PATHS` in `.`.\n`PATHS` must be an array of paths, where each path is an array\nof strings and numbers.\n",
+      "examples": [
+        {
+          "program": "delpaths([[\"a\",\"b\"]])",
+          "input": "{\"a\":{\"b\":1},\"x\":{\"y\":2}}",
+          "output": [
+            "{\"a\":{},\"x\":{\"y\":2}}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`to_entries`, `from_entries`, `with_entries(f)`",
+      "body": "\nThese functions convert between an object and an array of\nkey-value pairs. If `to_entries` is passed an object, then\nfor each `k: v` entry in the input, the output array\nincludes `{\"key\": k, \"value\": v}`.\n\n`from_entries` does the opposite conversion, and `with_entries(f)`\nis a shorthand for `to_entries | map(f) | from_entries`, useful for\ndoing some operation to all keys and values of an object.\n`from_entries` accepts `\"key\"`, `\"Key\"`, `\"name\"`, `\"Name\"`,\n`\"value\"`, and `\"Value\"` as keys.\n",
+      "examples": [
+        {
+          "program": "to_entries",
+          "input": "{\"a\": 1, \"b\": 2}",
+          "output": [
+            "[{\"key\":\"a\", \"value\":1}, {\"key\":\"b\", \"value\":2}]"
+          ]
+        },
+        {
+          "program": "from_entries",
+          "input": "[{\"key\":\"a\", \"value\":1}, {\"key\":\"b\", \"value\":2}]",
+          "output": [
+            "{\"a\": 1, \"b\": 2}"
+          ]
+        },
+        {
+          "program": "with_entries(.key |= \"KEY_\" + .)",
+          "input": "{\"a\": 1, \"b\": 2}",
+          "output": [
+            "{\"KEY_a\": 1, \"KEY_b\": 2}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`select(boolean_expression)`",
+      "body": "\nThe function `select(f)` produces its input unchanged if\n`f` returns true for that input, and produces no output\notherwise.\n\nIt's useful for filtering lists: `[1,2,3] | map(select(. >= 2))`\nwill give you `[2,3]`.\n",
+      "examples": [
+        {
+          "program": "map(select(. >= 2))",
+          "input": "[1,5,3,0,7]",
+          "output": [
+            "[5,3,7]"
+          ]
+        },
+        {
+          "program": ".[] | select(.id == \"second\")",
+          "input": "[{\"id\": \"first\", \"val\": 1}, {\"id\": \"second\", \"val\": 2}]",
+          "output": [
+            "{\"id\": \"second\", \"val\": 2}"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`arrays`, `objects`, `iterables`, `booleans`, `numbers`, `normals`, `finites`, `strings`, `nulls`, `values`, `scalars`",
+      "body": "\nThese built-ins select only inputs that are arrays, objects,\niterables (arrays or objects), booleans, numbers, normal\nnumbers, finite numbers, strings, null, non-null values, and\nnon-iterables, respectively.\n",
+      "examples": [
+        {
+          "program": ".[]|numbers",
+          "input": "[[],{},1,\"foo\",null,true,false]",
+          "output": [
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`empty`",
+      "body": "\n`empty` returns no results. None at all. Not even `null`.\n\nIt's useful on occasion. You'll know if you need it :)\n",
+      "examples": [
+        {
+          "program": "1, empty, 2",
+          "input": "null",
+          "output": [
+            "1",
+            "2"
+          ]
+        },
+        {
+          "program": "[1,2,empty,3]",
+          "input": "null",
+          "output": [
+            "[1,2,3]"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`error`, `error(message)`",
+      "body": "\nProduces an error with the input value, or with the message\ngiven as the argument. Errors can be caught with try/catch;\nsee below.\n",
+      "examples": [
+        {
+          "program": "try error catch .",
+          "input": "\"error message\"",
+          "output": [
+            "\"error message\""
+          ]
+        },
+        {
+          "program": "try error(\"invalid value: \\(.)\") catch .",
+          "input": "42",
+          "output": [
+            "\"invalid value: 42\""
+          ]
+        }
+      ]
+    },
+    {
+      "title": "`halt`",
+      "body": "\nStops the jq program with no further outputs.  jq will exit\nwith exit status `0`.\n"
+    }
+  ]
+}
