@@ -1,0 +1,54 @@
+<H2><A NAME="SEC21" HREF="gperf.html#TOC21">5.3  Options to specify the Language for the Output Code</A></H2>
+
+<P>
+These options are also available as declarations in the input file
+(see section <A HREF="gperf.html#SEC9">4.1.1.2  Gperf Declarations</A>).
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>&lsquo;-L <VAR>generated-language-name</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--language=<VAR>generated-language-name</VAR>&rsquo;</SAMP>
+<DD>
+Instructs <CODE>gperf</CODE> to generate code in the language specified by the
+option's argument.  Languages handled are currently:
+
+<DL COMPACT>
+
+<DT><SAMP>&lsquo;KR-C&rsquo;</SAMP>
+<DD>
+Old-style K&#38;R C.  This language is understood by old-style C compilers and
+ANSI C compilers, but ANSI C compilers may flag warnings (or even errors)
+because of lacking <SAMP>&lsquo;const&rsquo;</SAMP>.
+
+<DT><SAMP>&lsquo;C&rsquo;</SAMP>
+<DD>
+Common C.  This language is understood by ANSI C compilers, and also by
+old-style C compilers, provided that you <CODE>#define const</CODE> to empty
+for compilers which don't know about this keyword.
+
+<DT><SAMP>&lsquo;ANSI-C&rsquo;</SAMP>
+<DD>
+ANSI C.  This language is understood by ANSI C compilers and C++ compilers.
+
+<DT><SAMP>&lsquo;C++&rsquo;</SAMP>
+<DD>
+C++.  This language is understood by C++ compilers.
+</DL>
+
+The default is ANSI-C.
+
+<DT><SAMP>&lsquo;-a&rsquo;</SAMP>
+<DD>
+This option is supported for compatibility with previous releases of
+<CODE>gperf</CODE>.  It does not do anything.
+
+<DT><SAMP>&lsquo;-g&rsquo;</SAMP>
+<DD>
+This option is supported for compatibility with previous releases of
+<CODE>gperf</CODE>.  It does not do anything.
+</DL>
+
+
+

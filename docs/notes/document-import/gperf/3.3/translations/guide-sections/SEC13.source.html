@@ -1,0 +1,48 @@
+<H3><A NAME="SEC13" HREF="gperf.html#TOC13">4.1.4  Where to place directives for GNU <CODE>indent</CODE>.</A></H3>
+
+<P>
+If you want to invoke GNU <CODE>indent</CODE> on a <CODE>gperf</CODE> input file,
+you will see that GNU <CODE>indent</CODE> doesn't understand the <SAMP>&lsquo;%%&rsquo;</SAMP>,
+<SAMP>&lsquo;%{&rsquo;</SAMP> and <SAMP>&lsquo;%}&rsquo;</SAMP> directives that control <CODE>gperf</CODE>'s
+interpretation of the input file.  Therefore you have to insert some
+directives for GNU <CODE>indent</CODE>.  More precisely, assuming the most
+general input file structure
+
+</P>
+
+<PRE>
+declarations part 1
+%{
+verbatim code
+%}
+declarations part 2
+%%
+keywords
+%%
+functions
+</PRE>
+
+<P>
+you would insert <SAMP>&lsquo;*INDENT-OFF*&rsquo;</SAMP> and <SAMP>&lsquo;*INDENT-ON*&rsquo;</SAMP> comments
+as follows:
+
+</P>
+
+<PRE>
+/* *INDENT-OFF* */
+declarations part 1
+%{
+/* *INDENT-ON* */
+verbatim code
+/* *INDENT-OFF* */
+%}
+declarations part 2
+%%
+keywords
+%%
+/* *INDENT-ON* */
+functions
+</PRE>
+
+
+

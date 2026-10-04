@@ -1,0 +1,15 @@
+<H2><A NAME="SEC21" HREF="#TOC21">5.3 出力コードの言語を指定するオプション</A></H2>
+<P>これらのオプションは、入力ファイルの宣言としても指定できます（<A HREF="#SEC9">4.1.1.2 Gperfの宣言</A>を参照）。</P>
+<DL COMPACT>
+<DT><SAMP>&lsquo;-L <VAR>generated-language-name</VAR>&rsquo;</SAMP><DD>
+<DT><SAMP>&lsquo;--language=<VAR>generated-language-name</VAR>&rsquo;</SAMP><DD>オプションの引数で指定した言語のコードを生成するよう、<CODE>gperf</CODE>に指示します。現在対応している言語は次のとおりです。
+<DL COMPACT>
+<DT><SAMP>&lsquo;KR-C&rsquo;</SAMP><DD>旧式のK&#38;R Cです。旧式のCコンパイラとANSI Cコンパイラで処理できますが、ANSI Cコンパイラでは<SAMP>&lsquo;const&rsquo;</SAMP>がないため、警告やエラーが出ることがあります。
+<DT><SAMP>&lsquo;C&rsquo;</SAMP><DD>共通のCです。ANSI Cコンパイラで処理できます。また、このキーワードを認識しないコンパイラ向けに<CODE>#define const</CODE>で空の定義を与えれば、旧式のCコンパイラでも処理できます。
+<DT><SAMP>&lsquo;ANSI-C&rsquo;</SAMP><DD>ANSI Cです。ANSI CコンパイラとC++コンパイラで処理できます。
+<DT><SAMP>&lsquo;C++&rsquo;</SAMP><DD>C++です。C++コンパイラで処理できます。
+</DL>
+デフォルトはANSI-Cです。
+<DT><SAMP>&lsquo;-a&rsquo;</SAMP><DD>このオプションは、以前の<CODE>gperf</CODE>リリースとの互換性のためにサポートされています。何も行いません。
+<DT><SAMP>&lsquo;-g&rsquo;</SAMP><DD>このオプションは、以前の<CODE>gperf</CODE>リリースとの互換性のためにサポートされています。何も行いません。
+</DL>

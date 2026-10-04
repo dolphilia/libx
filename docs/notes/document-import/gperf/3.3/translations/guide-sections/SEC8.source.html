@@ -1,0 +1,60 @@
+<H4><A NAME="SEC8" HREF="gperf.html#TOC8">4.1.1.1  User-supplied <CODE>struct</CODE></A></H4>
+
+<P>
+If the <SAMP>&lsquo;-t&rsquo;</SAMP> option (or, equivalently, the <SAMP>&lsquo;%struct-type&rsquo;</SAMP> declaration)
+<EM>is</EM> enabled, you <EM>must</EM> provide a C <CODE>struct</CODE> as the last
+component in the declaration section from the input file.  The first
+field in this struct must be of type <CODE>char *</CODE> or <CODE>const char *</CODE>
+if the <SAMP>&lsquo;-P&rsquo;</SAMP> option is not given, or of type <CODE>int</CODE> if the option
+<SAMP>&lsquo;-P&rsquo;</SAMP> (or, equivalently, the <SAMP>&lsquo;%pic&rsquo;</SAMP> declaration) is enabled.
+This first field must be called <SAMP>&lsquo;name&rsquo;</SAMP>, although it is possible to modify
+its name with the <SAMP>&lsquo;-K&rsquo;</SAMP> option (or, equivalently, the
+<SAMP>&lsquo;%define slot-name&rsquo;</SAMP> declaration) described below.
+
+</P>
+<P>
+Here is a simple example, using months of the year and their attributes as
+input:
+
+</P>
+
+<PRE>
+struct month { char *name; int number; int days; int leap_days; };
+%%
+january,   1, 31, 31
+february,  2, 28, 29
+march,     3, 31, 31
+april,     4, 30, 30
+may,       5, 31, 31
+june,      6, 30, 30
+july,      7, 31, 31
+august,    8, 31, 31
+september, 9, 30, 30
+october,  10, 31, 31
+november, 11, 30, 30
+december, 12, 31, 31
+</PRE>
+
+<P>
+<A NAME="IDX8"></A>
+Separating the <CODE>struct</CODE> declaration from the list of keywords and
+other fields are a pair of consecutive percent signs, <SAMP>&lsquo;%%&rsquo;</SAMP>,
+appearing left justified in the first column, as in the UNIX utility
+<CODE>lex</CODE>.
+
+</P>
+<P>
+If the <CODE>struct</CODE> has already been declared in an include file, it can
+be mentioned in an abbreviated form, like this:
+
+</P>
+
+<PRE>
+struct month;
+%%
+january,   1, 31, 31
+...
+</PRE>
+
+
+

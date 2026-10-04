@@ -1,0 +1,88 @@
+<H2><A NAME="SEC14" HREF="gperf.html#TOC14">4.2  Output Format for Generated C Code with <CODE>gperf</CODE></A></H2>
+<P>
+<A NAME="IDX35"></A>
+
+</P>
+<P>
+Several options control how the generated C code appears on the standard 
+output.  Two C functions are generated.  They are called <CODE>hash</CODE> and 
+<CODE>in_word_set</CODE>, although you may modify their names with a command-line 
+option.  Both functions require two arguments, a string, <CODE>char *</CODE> 
+<VAR>str</VAR>, and a length parameter, <CODE>int</CODE> <VAR>len</VAR>.  Their default 
+function prototypes are as follows:
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U> unsigned int <B>hash</B> <I>(const char * <VAR>str</VAR>, size_t <VAR>len</VAR>)</I>
+<DD><A NAME="IDX36"></A>
+By default, the generated <CODE>hash</CODE> function returns an integer value
+created by adding <VAR>len</VAR> to several user-specified <VAR>str</VAR> byte
+positions indexed into an <EM>associated values</EM> table stored in a
+local static array.  The associated values table is constructed
+internally by <CODE>gperf</CODE> and later output as a static local C array
+called <SAMP>&lsquo;hash_table&rsquo;</SAMP>.  The relevant selected positions (i.e. indices
+into <VAR>str</VAR>) are specified via the <SAMP>&lsquo;-k&rsquo;</SAMP> option when running
+<CODE>gperf</CODE>, as detailed in the <EM>Options</EM> section below (see section <A HREF="gperf.html#SEC18">5  Invoking <CODE>gperf</CODE></A>).
+</DL>
+
+</P>
+<P>
+<DL>
+<DT><U>Function:</U>  <B>in_word_set</B> <I>(const char * <VAR>str</VAR>, size_t <VAR>len</VAR>)</I>
+<DD><A NAME="IDX37"></A>
+If <VAR>str</VAR> is in the keyword set, returns a pointer to that
+keyword.  More exactly, if the option <SAMP>&lsquo;-t&rsquo;</SAMP> (or, equivalently, the
+<SAMP>&lsquo;%struct-type&rsquo;</SAMP> declaration) was given, it returns
+a pointer to the matching keyword's structure.  Otherwise it returns
+<CODE>NULL</CODE>.
+</DL>
+
+</P>
+<P>
+If the option <SAMP>&lsquo;-c&rsquo;</SAMP> (or, equivalently, the <SAMP>&lsquo;%compare-strncmp&rsquo;</SAMP>
+declaration) is not used, <VAR>str</VAR> must be a NUL terminated
+string of exactly length <VAR>len</VAR>.  If <SAMP>&lsquo;-c&rsquo;</SAMP> (or, equivalently, the
+<SAMP>&lsquo;%compare-strncmp&rsquo;</SAMP> declaration) is used, <VAR>str</VAR> must
+simply be an array of <VAR>len</VAR> bytes and does not need to be NUL
+terminated.
+
+</P>
+<P>
+The code generated for these two functions is affected by the following
+options:
+
+</P>
+<DL COMPACT>
+
+<DT><SAMP>&lsquo;-t&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--struct-type&rsquo;</SAMP>
+<DD>
+Make use of the user-defined <CODE>struct</CODE>.
+
+<DT><SAMP>&lsquo;-S <VAR>total-switch-statements</VAR>&rsquo;</SAMP>
+<DD>
+<DT><SAMP>&lsquo;--switch=<VAR>total-switch-statements</VAR>&rsquo;</SAMP>
+<DD>
+<A NAME="IDX38"></A>
+Generate 1 or more C <CODE>switch</CODE> statement rather than use a large,
+(and potentially sparse) static array.  Although the exact time and
+space savings of this approach vary according to your C compiler's
+degree of optimization, this method often results in smaller and faster
+code.
+</DL>
+
+<P>
+If the <SAMP>&lsquo;-t&rsquo;</SAMP> and <SAMP>&lsquo;-S&rsquo;</SAMP> options (or, equivalently, the
+<SAMP>&lsquo;%struct-type&rsquo;</SAMP> and <SAMP>&lsquo;%switch&rsquo;</SAMP> declarations) are omitted, the default
+action
+is to generate a <CODE>char *</CODE> array containing the keywords, together with
+additional empty strings used for padding the array.  By experimenting
+with the various input and output options, and timing the resulting C
+code, you can determine the best option choices for different keyword
+set characteristics.
+
+</P>
+
+

@@ -1,0 +1,70 @@
+<H4><A NAME="SEC9" HREF="#TOC9">4.1.1.2 Gperfの宣言</A></H4>
+<P>宣言セクションには、<CODE>gperf</CODE>の宣言を含めることができます。コマンドラインオプションと同様に、<CODE>gperf</CODE>の動作に影響します。実際、各宣言はそれぞれコマンドラインオプションに対応しています。宣言には次の3つの形式があります。</P>
+<OL>
+<LI><SAMP>&lsquo;%compare-lengths&rsquo;</SAMP>のような、引数を取らない宣言。
+<LI><SAMP>&lsquo;%switch=<VAR>count</VAR>&rsquo;</SAMP>のような、引数を取る宣言。
+<LI><SAMP>&lsquo;%define lookup-function-name <VAR>name</VAR>&rsquo;</SAMP>のような、出力ファイル内の要素の名前を指定する宣言。
+</OL>
+<P>同じ宣言を入力ファイルとコマンドラインオプションの両方で指定した場合は、コマンドラインオプションの値が優先されます。</P>
+<P>次の<CODE>gperf</CODE>宣言を利用できます。</P>
+<DL COMPACT>
+<DT><SAMP>&lsquo;%delimiters=<VAR>delimiter-list</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX9"></A>キーワードとその属性を区切るための区切り文字を含む文字列を指定できます。デフォルトは「,」です。カンマや改行を含むキーワードを使うには、このオプションが必要です。
+<DT><SAMP>&lsquo;%struct-type&rsquo;</SAMP>
+<DD><A NAME="IDX10"></A>生成コードに<CODE>struct</CODE>型の宣言を含められます。例は前節を参照してください。
+<DT><SAMP>&lsquo;%ignore-case&rsquo;</SAMP>
+<DD><A NAME="IDX11"></A>ASCII文字の大文字と小文字を同等とみなします。文字列の比較では、大文字と小文字を区別せずに文字を比較します。ロケールに依存する大文字・小文字の対応は無視されることに注意してください。
+<DT><SAMP>&lsquo;%language=<VAR>language-name</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX12"></A>オプションの引数で指定した言語のコードを生成するよう、<CODE>gperf</CODE>に指示します。現在対応している言語は次のとおりです。
+<DL COMPACT>
+<DT><SAMP>&lsquo;KR-C&rsquo;</SAMP>
+<DD>旧式のK&#38;R Cです。旧式のCコンパイラとANSI Cコンパイラで処理できますが、ANSI Cコンパイラでは<SAMP>&lsquo;const&rsquo;</SAMP>がないため、警告やエラーが出ることがあります。
+<DT><SAMP>&lsquo;C&rsquo;</SAMP>
+<DD>共通のCです。ANSI Cコンパイラで処理できます。また、このキーワードを認識しないコンパイラ向けに<CODE>#define const</CODE>で空の定義を与えれば、旧式のCコンパイラでも処理できます。
+<DT><SAMP>&lsquo;ANSI-C&rsquo;</SAMP>
+<DD>ANSI Cです。ANSI C（C89、ISO C90）コンパイラ、ISO C99コンパイラ、C++コンパイラで処理できます。
+<DT><SAMP>&lsquo;C++&rsquo;</SAMP>
+<DD>C++です。C++コンパイラで処理できます。
+</DL>
+デフォルトはANSI-Cです。
+<DT><SAMP>&lsquo;%define slot-name <VAR>name</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX13"></A>この宣言が役立つのは、<SAMP>&lsquo;-t&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%struct-type&rsquo;</SAMP>宣言を指定した場合だけです。デフォルトでは、キーワードを格納する構造体メンバーの識別子を<SAMP>&lsquo;name&rsquo;</SAMP>とみなします。このオプションで、そのメンバーの識別子を任意に選べます。ただし、指定した<CODE>struct</CODE>の最初のフィールドでなければならない点は変わりません。
+<DT><SAMP>&lsquo;%define initializer-suffix <VAR>initializers</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX14"></A>この宣言が役立つのは、<SAMP>&lsquo;-t&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%struct-type&rsquo;</SAMP>宣言を指定した場合だけです。空のハッシュテーブル項目で、<VAR>slot-name</VAR>より後にある構造体メンバーの初期化子を指定できます。初期化子の一覧はカンマで始める必要があります。デフォルトでは、出力コードは<VAR>slot-name</VAR>より後の構造体メンバーをゼロで初期化します。
+<DT><SAMP>&lsquo;%define hash-function-name <VAR>name</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX15"></A>生成するハッシュ関数の名前を指定できます。デフォルトの名前は<SAMP>&lsquo;hash&rsquo;</SAMP>です。このオプションにより、同じファイル内で2つのハッシュテーブルを使えます。
+<DT><SAMP>&lsquo;%define lookup-function-name <VAR>name</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX16"></A>生成する検索関数の名前を指定できます。デフォルトの名前は<SAMP>&lsquo;in_word_set&rsquo;</SAMP>です。このオプションにより、生成した複数のハッシュ関数を同じアプリケーションで使えます。
+<DT><SAMP>&lsquo;%define class-name <VAR>name</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX17"></A>このオプションが役立つのは、<SAMP>&lsquo;-L C++&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%language=C++&rsquo;</SAMP>宣言を指定した場合だけです。生成するC++クラスの名前を指定できます。デフォルトの名前は<CODE>Perfect_Hash</CODE>です。
+<DT><SAMP>&lsquo;%7bit&rsquo;</SAMP>
+<DD><A NAME="IDX18"></A>生成するハッシュ関数と検索関数に引数として渡す文字列がすべて、7ビットASCII文字（0..127の範囲のバイト）だけで構成されることを指定します。ANSI Cの<CODE>isalnum</CODE>関数や<CODE>isgraph</CODE>関数は、バイトがこの範囲内にあることを保証<EM>しません</EM>。これを保証するのは、<SAMP>&lsquo;c &#62;= 'A' &#38;&#38; c &#60;= 'Z'&rsquo;</SAMP>のような明示的な検査だけです。
+<DT><SAMP>&lsquo;%compare-lengths&rsquo;</SAMP>
+<DD><A NAME="IDX19"></A>文字列の比較を試みる前に、キーワードの長さを比較します。このオプションはバイナリ比較には必須です（<A HREF="#SEC15">4.3 NULバイトの使用</A>を参照）。長さの異なるキーワードを<CODE>strcmp</CODE>で比較しなくなるため、検索時の文字列比較の回数を減らせる場合もあります。ただし、検索テーブルの範囲が大きい場合、つまりswitchオプションの<SAMP>&lsquo;-S&rsquo;</SAMP>または<SAMP>&lsquo;%switch&rsquo;</SAMP>が有効でない場合は、<SAMP>&lsquo;%compare-lengths&rsquo;</SAMP>を使うと生成するCコードのサイズが大幅に増える可能性があります。長さのテーブルが、検索テーブルの項目数と同じ数の要素を持つためです。
+<DT><SAMP>&lsquo;%compare-strncmp&rsquo;</SAMP>
+<DD><A NAME="IDX20"></A>文字列比較に<CODE>strncmp</CODE>関数を使うCコードを生成します。デフォルトでは<CODE>strcmp</CODE>を使います。
+<DT><SAMP>&lsquo;%readonly-tables&rsquo;</SAMP>
+<DD><A NAME="IDX21"></A>生成するすべての検索テーブルの内容を定数、つまり「読み取り専用」にします。多くのコンパイラでは、テーブルを読み取り専用メモリに置くことで、より効率のよいコードを生成できます。
+<DT><SAMP>&lsquo;%enum&rsquo;</SAMP>
+<DD><A NAME="IDX22"></A>#defineの代わりに、検索関数内のローカルなenumを使って定数値を定義します。これにより、異なる検索関数を同じファイル内に置くこともできます。James Clark <CODE>&#60;jjc@ai.mit.edu&#62;</CODE>に感謝します。
+<DT><SAMP>&lsquo;%includes&rsquo;</SAMP>
+<DD><A NAME="IDX23"></A>コードの先頭に、必要なシステムのインクルードファイル<CODE>&#60;string.h&#62;</CODE>を含めます。デフォルトでは含めないため、コードをコンパイルできるように、利用者自身がこのヘッダーファイルをインクルードする必要があります。
+<DT><SAMP>&lsquo;%global-table&rsquo;</SAMP>
+<DD><A NAME="IDX24"></A>キーワードの静的テーブルを、検索関数の中に隠すデフォルトの動作ではなく、静的なグローバル変数として生成します。
+<DT><SAMP>&lsquo;%pic&rsquo;</SAMP>
+<DD><A NAME="IDX25"></A>生成するテーブルを、共有ライブラリに組み込むために最適化します。生成コードを含む共有ライブラリを使うプログラムの起動時間を短縮します。<SAMP>&lsquo;%struct-type&rsquo;</SAMP>宣言、または同じ働きをする<SAMP>&lsquo;-t&rsquo;</SAMP>オプションも指定した場合、利用者が定義するstructの最初のフィールドの型は、<SAMP>&lsquo;char *&rsquo;</SAMP>ではなく<SAMP>&lsquo;int&rsquo;</SAMP>でなければなりません。実際の文字列ではなく、文字列プール内のオフセットを格納するためです。そのオフセットを文字列に変換するには、<SAMP>&lsquo;stringpool + <VAR>o</VAR>&rsquo;</SAMP>という式を使えます。<VAR>o</VAR>はオフセットです。文字列プールの名前は、<SAMP>&lsquo;%define string-pool-name&rsquo;</SAMP>宣言で変更できます。
+<DT><SAMP>&lsquo;%define string-pool-name <VAR>name</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX26"></A><SAMP>&lsquo;%pic&rsquo;</SAMP>宣言、または同じ働きをする<SAMP>&lsquo;-P&rsquo;</SAMP>オプションによって作る文字列プールの名前を指定できます。デフォルトの名前は<SAMP>&lsquo;stringpool&rsquo;</SAMP>です。この宣言により、<SAMP>&lsquo;%pic&rsquo;</SAMP>を使う場合に同じファイル内で2つのハッシュテーブルを使えます。<SAMP>&lsquo;%global-table&rsquo;</SAMP>宣言、または同じ働きをする<SAMP>&lsquo;-G&rsquo;</SAMP>オプションを指定した場合でも使えます。
+<DT><SAMP>&lsquo;%null-strings&rsquo;</SAMP>
+<DD><A NAME="IDX27"></A>空のキーワードテーブル項目に、空文字列の代わりにNULL文字列を使います。実行時に検査と分岐の命令が1つ増えますが、生成コードを含む共有ライブラリを使うプログラムの起動時間を短縮します。ただし、<SAMP>&lsquo;%pic&rsquo;</SAMP>宣言ほどの効果はありません。
+<DT><SAMP>&lsquo;%define constants-prefix <VAR>prefix</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX28"></A><CODE>TOTAL_KEYWORDS</CODE>、<CODE>MIN_WORD_LENGTH</CODE>、<CODE>MAX_WORD_LENGTH</CODE>などの定数に付ける接頭辞を指定できます。このオプションにより、<SAMP>&lsquo;-E&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%enum&rsquo;</SAMP>宣言を指定しない場合や、<SAMP>&lsquo;-G&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%global-table&rsquo;</SAMP>宣言を指定した場合でも、同じファイル内で2つのハッシュテーブルを使えます。
+<DT><SAMP>&lsquo;%define word-array-name <VAR>name</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX29"></A>ハッシュテーブルを格納する生成配列の名前を指定できます。デフォルトの名前は<SAMP>&lsquo;wordlist&rsquo;</SAMP>です。このオプションにより、<SAMP>&lsquo;-G&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%global-table&rsquo;</SAMP>宣言を指定した場合でも、同じファイル内で2つのハッシュテーブルを使えます。
+<DT><SAMP>&lsquo;%define length-table-name <VAR>name</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX30"></A>長さのテーブルを格納する生成配列の名前を指定できます。デフォルトの名前は<SAMP>&lsquo;lengthtable&rsquo;</SAMP>です。このオプションにより、<SAMP>&lsquo;-G&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%global-table&rsquo;</SAMP>宣言を指定した場合でも、同じファイル内で2つの長さのテーブルを使えます。
+<DT><SAMP>&lsquo;%switch=<VAR>count</VAR>&rsquo;</SAMP>
+<DD><A NAME="IDX31"></A>生成するCコードで、配列の検索テーブルの代わりに<CODE>switch</CODE>文方式を使います。入力ファイルによっては、必要な実行時間と記憶領域の両方を減らせます。このオプションの引数は、生成する<CODE>switch</CODE>文の数を指定します。値が1なら全要素を含む1つの<CODE>switch</CODE>を生成し、値が2なら各<CODE>switch</CODE>に要素の半分ずつを含む2つのテーブルを生成します。ほかの値でも同様です。多くのCコンパイラは、大きな<CODE>switch</CODE>文のコードを正しく生成できないため、この指定が役立ちます。このオプションは、Keith Bosticによる元のCプログラムからも着想を得ました。
+<DT><SAMP>&lsquo;%omit-struct-type&rsquo;</SAMP>
+<DD><A NAME="IDX32"></A>型の宣言を出力ファイルへ転送しないようにします。型がすでにほかの場所で定義されている場合に使ってください。
+</DL>
