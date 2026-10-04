@@ -3,9 +3,10 @@ title: "zconf.h設定ヘッダー"
 licenseSource: zlib-zconf
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>固定したzlib 1.3.2のzconf.h全文を整形した英語定本からの非公式な日本語訳です。原資料：zconf.h。<a href=\"https://zlib.net/zlib-1.3.2.tar.gz\">公式配布物</a>のSHA-256：<code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>。原資料のSHA-256：<code>cb7c2c84211473b4699223edd363d3207b43b9578e739b5bf638f42204ea6e0f</code>。原通知は下記に改変せず併記しています。この整形版と翻訳は非公式です。</p><p><a href=\"../05-license/\">ライセンス原文の全文</a>。本文の外にあるソース参照（deflate.c、zutil.c、test/example.c、test/minigzip.c、ChangeLog、contribなど）は固定した公式配布物内を参照してください。</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>固定したzlib 1.3.2のzconf.h全文を整形した英語定本からの非公式な日本語訳です。原資料：zconf.h。<a href="https://zlib.net/zlib-1.3.2.tar.gz">公式配布物</a>のSHA-256：<code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>。原資料のSHA-256：<code>cb7c2c84211473b4699223edd363d3207b43b9578e739b5bf638f42204ea6e0f</code>。原通知は下記に改変せず併記しています。この整形版と翻訳は非公式です。</p><p><a href="../05-license/">ライセンス原文の全文</a>。本文の外にあるソース参照（deflate.c、zutil.c、test/example.c、test/minigzip.c、ChangeLog、contribなど）は固定した公式配布物内を参照してください。</p></aside>
+
 <div class="zlib-document" style="overflow-wrap:anywhere"><div data-zlib-block="0"><div style="white-space:pre-wrap;overflow-wrap:anywhere"> <a href="./">zconf.h</a> — zlib圧縮ライブラリの設定
  Copyright (C) 1995-2026 Jean-loup Gailly, Mark Adler
  配布・使用条件については<a href="../../01-api/01-overview/">zlib.h</a>の著作権通知を参照してください

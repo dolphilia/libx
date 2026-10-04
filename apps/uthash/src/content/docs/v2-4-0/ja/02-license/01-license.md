@@ -5,11 +5,12 @@ sourceURL: "https://github.com/troydhanson/uthash/blob/a49bed0b4abb7dff16c73906d
 licenseSource: "uthash-license-2.4.0"
 upstreamAuthors: ["Troy D. Hanson"]
 upstreamVersionHeader: null
+documentContext: [{"kind":"editorial","html":"<p>以下はLibxによる非公式の参考訳です。原通知全文を後段に保持しています。参考訳は原通知に新たな条件や許諾を追加するものではありません。</p>","context":{"anchor":"日本語参考訳","label":"日本語参考訳"}}]
 ---
 
 ## 日本語参考訳
 
-以下はLibxによる非公式の参考訳です。原通知全文を後段に保持しています。参考訳は原通知に新たな条件や許諾を追加するものではありません。
+
 
 Copyright (c) 2005-2026, Troy D. Hanson  <https://troydhanson.github.io/uthash/>
 

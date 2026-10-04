@@ -1,11 +1,12 @@
 ---
 title: "make-header — 原通知"
 licenseSource: "xxhash-make"
+documentContext: [{"kind":"source","html":"<p>原通知を変更せず保持しています。</p>"},{"kind":"source","html":"<p><a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/build/make/multiconf.make\">固定版の原文</a></p>"},{"kind":"editorial","html":"<p>以下は内容理解のための非公式訳です。上記の英語の原通知を保持しており、この訳は原通知を置き換えるものではありません。</p>","context":{"anchor":"非公式の日本語訳","label":"非公式の日本語訳"}}]
 ---
 
 # make-header
 
-原通知を変更せず保持しています。
+
 
 ```text
 # ##########################################################################
@@ -32,11 +33,11 @@ licenseSource: "xxhash-make"
 
 ```
 
-[固定版の原文](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/build/make/multiconf.make)
+
 
 ## 非公式の日本語訳
 
-以下は内容理解のための非公式訳です。上記の英語の原通知を保持しており、この訳は原通知を置き換えるものではありません。
+
 
 multiconf.make。著作権 (C) Yann Collet。
 

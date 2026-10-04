@@ -3,9 +3,10 @@ title: "spdlog README"
 licenseSource: spdlog-readme
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>Unofficial presentation of the complete guide in the spdlog 1.17.0 README. <a href=\"https://github.com/gabime/spdlog/blob/79524ddd08a4ec981b7fea76afd08ee05f83755d/README.md\">Original source</a>. Source SHA-256: <code>d6ea8fd52d4e3194edf0b1cead3f55e9cd75130a192d52e9cd9aae87c1aa5254</code>. Software commit: <code>79524ddd08a4ec981b7fea76afd08ee05f83755d</code>. <a href=\"/docs/spdlog/v1-17-0/en/02-reference/01-license/\">Full original licenses and notices</a>. This presentation, translations and version annotations are unofficial Libx changes.</p></aside>"},{"kind":"editorial","html":"<aside data-editorial=\"source-note\"><p>The benchmark figures and code examples below are the fixed original statements, not measurements or executed examples by Libx. The original register-several-loggers example explicitly marks its code as sic.</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>Unofficial presentation of the complete guide in the spdlog 1.17.0 README. <a href="https://github.com/gabime/spdlog/blob/79524ddd08a4ec981b7fea76afd08ee05f83755d/README.md">Original source</a>. Source SHA-256: <code>d6ea8fd52d4e3194edf0b1cead3f55e9cd75130a192d52e9cd9aae87c1aa5254</code>. Software commit: <code>79524ddd08a4ec981b7fea76afd08ee05f83755d</code>. <a href="/docs/spdlog/v1-17-0/en/02-reference/01-license/">Full original licenses and notices</a>. This presentation, translations and version annotations are unofficial Libx changes.</p></aside><aside data-editorial="source-note"><p>The benchmark figures and code examples below are the fixed original statements, not measurements or executed examples by Libx. The original register-several-loggers example explicitly marks its code as sic.</p></aside>
+
 
 <div data-spdlog-source-body="01-readme">
 

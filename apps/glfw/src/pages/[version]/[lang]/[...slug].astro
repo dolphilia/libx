@@ -174,6 +174,7 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
   title={entry.data.title}
   description={entry.data.description}
   licenseSource={entry.data.licenseSource}
+  documentContext={entry.data.documentContext}
   hasToc={hasToc}
   lang={lang}
   version={version}
@@ -187,16 +188,18 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
     slot="mobile-toc"
   />
   <Content />
-  {
-    (documentExtras[version]?.downloads ?? []).map((download) => (
-      <aside aria-label={download.labels[lang] ?? download.labels.en}>
-        <p>
-          <a href={download.url}>{download.labels[lang] ?? download.labels.en}</a>
-        </p>
-        <p>{download.notices[lang] ?? download.notices.en}</p>
-      </aside>
-    ))
-  }
+  <Fragment slot="document-context">
+    {
+      (documentExtras[version]?.downloads ?? []).map((download) => (
+        <aside aria-label={download.labels[lang] ?? download.labels.en}>
+          <p>
+            <a href={download.url}>{download.labels[lang] ?? download.labels.en}</a>
+          </p>
+          <p>{download.notices[lang] ?? download.notices.en}</p>
+        </aside>
+      ))
+    }
+  </Fragment>
 
   {/* ページナビゲーション */}
   <div class="navigation-container">

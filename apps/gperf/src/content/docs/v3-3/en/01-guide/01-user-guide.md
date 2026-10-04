@@ -1,14 +1,8 @@
 ---
 title: "User guide (edition 3.2 bundled with gperf 3.3)"
 licenseSource: "gperf-guide"
+documentContext: [{"kind":"source","html":"<p>This is an unofficial Libx presentation of the complete documentation bundled in the fixed GNU gperf 3.3 release archive. The user guide identifies itself as edition 3.2 (28 October 2024); the CLI identifies version 3.3 (April 2025). These original version labels are preserved. The version metadata date is the source acquisition date (2026-10-03), not a claimed upstream release day.</p>\n<p><a href=\"https://ftp.gnu.org/pub/gnu/gperf/gperf-3.3.tar.gz\">Original release archive</a> — SHA-256 <code>fd87e0aba7e43ae054837afd6cd4db03a3f2693deb3619085e6ed9d8d9604ad8</code>. Formatting, internal links, and explicitly marked editorial notes are Libx changes.</p>\n<p>Libx modification date (Japan Standard Time): 2026-10-04. This complete derived user guide, including the Libx translation, formatting and editorial changes, is distributed under the original manual permission notice reproduced below.</p>"},{"kind":"editorial","html":"<h2 id=\"editorial-notes-on-the-fixed-source\">Editorial notes on the fixed source</h2>\n<ul>\n<li>In guide section 4.2, the sentence “Otherwise it returns NULL” after the struct-return description is ambiguous for a successful non-struct lookup. The fixed 3.3 implementation (<code>src/output.cc</code>, ordinary lookup success branch) returns the matching keyword string pointer without <code>--struct-type</code>, and a structure pointer with that option. The failure path returns NULL. The original guide text is retained; this is a separate implementation note, not an upstream correction.</li>\n<li>The CLI states that <code>--jump</code> must be odd, while guide section 5.5 describes rounding up even values. The fixed <code>src/options.cc</code> parser rejects negative values and adds one to a nonzero even value. Both original texts are retained. The zero-value random behavior has not been independently executed here.</li>\n<li>In guide section 4.2, the introductory prose calls the parameters <code>char * str</code> and <code>int len</code>, while the displayed default prototypes use <code>const char * str</code> and <code>size_t len</code>. Both original forms are retained. This note identifies a difference within the fixed guide and does not replace either form or claim an independently executed signature test.</li>\n</ul>"}]
 ---
-
-This is an unofficial Libx presentation of the complete documentation bundled in the fixed GNU gperf 3.3 release archive. The user guide identifies itself as edition 3.2 (28 October 2024); the CLI identifies version 3.3 (April 2025). These original version labels are preserved. The version metadata date is the source acquisition date (2026-10-03), not a claimed upstream release day.
-
-[Original release archive](https://ftp.gnu.org/pub/gnu/gperf/gperf-3.3.tar.gz) — SHA-256 `fd87e0aba7e43ae054837afd6cd4db03a3f2693deb3619085e6ed9d8d9604ad8`. Formatting, internal links, and explicitly marked editorial notes are Libx changes.
-
-Libx modification date (Japan Standard Time): 2026-10-04. This complete derived user guide, including the Libx translation, formatting and editorial changes, is distributed under the original manual permission notice reproduced below.
-
 <div class="gperf-original">
 
 <H1>User's Guide to <CODE>gperf</CODE> 3.2</H1>
@@ -2574,8 +2568,3 @@ translator version 1.52b.</P>
 </div>
 
 
-## Editorial notes on the fixed source
-
-- In guide section 4.2, the sentence “Otherwise it returns NULL” after the struct-return description is ambiguous for a successful non-struct lookup. The fixed 3.3 implementation (`src/output.cc`, ordinary lookup success branch) returns the matching keyword string pointer without `--struct-type`, and a structure pointer with that option. The failure path returns NULL. The original guide text is retained; this is a separate implementation note, not an upstream correction.
-- The CLI states that `--jump` must be odd, while guide section 5.5 describes rounding up even values. The fixed `src/options.cc` parser rejects negative values and adds one to a nonzero even value. Both original texts are retained. The zero-value random behavior has not been independently executed here.
-- In guide section 4.2, the introductory prose calls the parameters `char * str` and `int len`, while the displayed default prototypes use `const char * str` and `size_t len`. Both original forms are retained. This note identifies a difference within the fixed guide and does not replace either form or claim an independently executed signature test.

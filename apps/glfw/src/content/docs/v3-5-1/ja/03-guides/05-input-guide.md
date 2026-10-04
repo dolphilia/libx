@@ -1,6 +1,7 @@
 ---
 title: "入力ガイド"
 description: "キーボード、マウス、ジョイスティック、ゲームパッド入力"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx 参照注記（GLFW 3.5.1）:</strong> 上記の「すべての入力コールバック」には例外があります。ジョイスティックコールバックが受け取るのはジョイスティック ID とイベントで、ウィンドウハンドルは受け取りません。<a href=\"/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#joystick_event\">ジョイスティック構成の変更</a>と、その節のコールバック例を参照してください。</p>\n</blockquote>","context":{"anchor":"入力ガイド","label":"入力ガイド"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx 参照注記（GLFW 3.5.1）:</strong> 上記の段落は、ジョイスティックコールバックの節で「モニターコールバック」と記載しています。また、切断後も有用な値を返す関数に <a href=\"/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#gac6a8e769e18e0bcfa9097793fc2c3978\">glfwGetJoystickName</a> を含めています。<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1169-L1195\">固定版 3.5.1 の実装</a>では、ジョイスティックコールバックの呼び出し前に切断状態へ変更され、この関数は切断されたジョイスティックについて <code>NULL</code> を返します。<a href=\"/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#ga18cefd7265d1fa04f3fd38a6746db5f3\">glfwGetJoystickUserPointer</a> は、そのコールバック内でも取得できます。必要なジョイスティック名は切断前に取得・コピーしてください。リファレンスに記載された名前の有効期間は切断時に終了します。この注記は、保持した上流本文への補足です。</p>\n</blockquote>","context":{"anchor":"ジョイスティック構成の変更","label":"ジョイスティック構成の変更"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx 参照注記（GLFW 3.5.1）:</strong> 上流の例は <code>a7</code> を8番目のボタンと呼んでいますが、このマッピング形式では8番目の軸（インデックス7）を表します。<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L210-L228\">固定版のマッピングパーサー</a>は <code>a</code> を軸、<code>b</code> をボタンとして解釈します。上記では上流の表現を保持しています。</p>\n</blockquote>","context":{"anchor":"ゲームパッドマッピング","label":"ゲームパッドマッピング"}}]
 ---
 
 <a id="input_guide"></a>
@@ -19,7 +20,7 @@ GLFW は多くの種類の入力を提供します。時刻のようにポーリ
 
 すべての入力コールバックはウィンドウハンドルを受け取ります。[ウィンドウのユーザーポインター](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_userptr)を使うと、コールバックからグローバルではない構造体やオブジェクトへアクセスできます。
 
-> **Libx 参照注記（GLFW 3.5.1）:** 上記の「すべての入力コールバック」には例外があります。ジョイスティックコールバックが受け取るのはジョイスティック ID とイベントで、ウィンドウハンドルは受け取りません。[ジョイスティック構成の変更](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#joystick_event)と、その節のコールバック例を参照してください。
+
 
 さまざまなイベントコールバックの動作を把握するには、`events` テストプログラムを実行してください。このプログラムは GLFW がサポートするすべてのコールバックを登録し、各イベントについて渡されたすべての引数を、時刻・順序情報とともに出力します。
 
@@ -615,7 +616,7 @@ void joystick_callback(int jid, int event)
 
 切断されたジョイスティックについて有用な値を返すのは [glfwGetJoystickName](/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#gac6a8e769e18e0bcfa9097793fc2c3978) と [glfwGetJoystickUserPointer](/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#ga18cefd7265d1fa04f3fd38a6746db5f3) だけであり、それもモニターコールバックが処理を返すまでに限られます。
 
-> **Libx 参照注記（GLFW 3.5.1）:** 上記の段落は、ジョイスティックコールバックの節で「モニターコールバック」と記載しています。また、切断後も有用な値を返す関数に [glfwGetJoystickName](/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#gac6a8e769e18e0bcfa9097793fc2c3978) を含めています。[固定版 3.5.1 の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1169-L1195)では、ジョイスティックコールバックの呼び出し前に切断状態へ変更され、この関数は切断されたジョイスティックについて `NULL` を返します。[glfwGetJoystickUserPointer](/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#ga18cefd7265d1fa04f3fd38a6746db5f3) は、そのコールバック内でも取得できます。必要なジョイスティック名は切断前に取得・コピーしてください。リファレンスに記載された名前の有効期間は切断時に終了します。この注記は、保持した上流本文への補足です。
+
 
 
 <a id="gamepad"></a>
@@ -708,7 +709,7 @@ CMake を使って GLFW をソースからコンパイルする場合は、_upda
 
 軸またはボタンフィールドの値には、ジョイスティックボタン、ジョイスティック軸、ハットのビットマスク、または空値を指定できます。ジョイスティックボタンは `bN` で指定します。たとえば3番目のボタンは `b2` です。ジョイスティック軸は `aN` で指定します。たとえば8番目のボタンは `a7` です。ジョイスティックハットのビットマスクは `hN.N` で指定します。たとえば最初のハットの左方向は `h0.8` です。マスクには複数のビットを設定できます。
 
-> **Libx 参照注記（GLFW 3.5.1）:** 上流の例は `a7` を8番目のボタンと呼んでいますが、このマッピング形式では8番目の軸（インデックス7）を表します。[固定版のマッピングパーサー](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L210-L228)は `a` を軸、`b` をボタンとして解釈します。上記では上流の表現を保持しています。
+
 
 軸の前には `+` または `-` の範囲修飾子を付けられます。たとえば4番目の軸の正の半分は `+a3` です。これにより、入力をジョイスティック軸の正または負の半分だけに制限します。軸または半軸の後には `~` 反転修飾子を付けられます。たとえば `a2~` または `-a7~` です。これはゲームパッド軸の値の符号を反転します。
 

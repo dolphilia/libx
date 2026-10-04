@@ -3,9 +3,10 @@ title: "zlibマニュアルページ"
 licenseSource: zlib-manual
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>固定したzlib 1.3.2のzlib.3全文を整形した英語定本からの非公式な日本語訳です。原資料：zlib.3。<a href=\"https://zlib.net/zlib-1.3.2.tar.gz\">公式配布物</a>のSHA-256：<code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>。原資料のSHA-256：<code>5eebcb61a9c1ef91ff6c8e6d37b32554f5eefff825b190b1b5e5982f35d87534</code>。原通知は下記に改変せず併記しています。この整形版と翻訳は非公式です。</p><p><a href=\"../05-license/\">ライセンス原文の全文</a>。本文の外にあるソース参照（deflate.c、zutil.c、test/example.c、test/minigzip.c、ChangeLog、contribなど）は固定した公式配布物内を参照してください。</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>固定したzlib 1.3.2のzlib.3全文を整形した英語定本からの非公式な日本語訳です。原資料：zlib.3。<a href="https://zlib.net/zlib-1.3.2.tar.gz">公式配布物</a>のSHA-256：<code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>。原資料のSHA-256：<code>5eebcb61a9c1ef91ff6c8e6d37b32554f5eefff825b190b1b5e5982f35d87534</code>。原通知は下記に改変せず併記しています。この整形版と翻訳は非公式です。</p><p><a href="../05-license/">ライセンス原文の全文</a>。本文の外にあるソース参照（deflate.c、zutil.c、test/example.c、test/minigzip.c、ChangeLog、contribなど）は固定した公式配布物内を参照してください。</p></aside>
+
 <div class="zlib-document" style="overflow-wrap:anywhere"><div data-zlib-block="0"><table class="head"><tr><td class="head-ltitle">ZLIB(3)</td><td class="head-vol">ライブラリ関数マニュアル</td><td class="head-rtitle">ZLIB(3)</td></tr></table></div><div data-zlib-block="1">
 <section class="Sh">
 <h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">名前</a></h1>

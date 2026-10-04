@@ -1,6 +1,7 @@
 ---
 title: "tests/collisions/README.md"
 licenseSource: "xxhash-collisions"
+documentContext: [{"kind":"source","html":"<h2 id=\"出典と通知\">出典と通知</h2>\n<p>記録した確認では、文書専用のライセンス表記は見つかりませんでした。Libxの運用方針に基づき、この注記とともにソフトウェアコンポーネントのGPL-2.0-or-laterライセンスを文書に適用します。これは運用上の判断であり、新たに許可を得たことを意味しません。</p>\n<p>固定したソフトウェアのバージョン：<strong>0.8.4</strong>。ソースコミット：<code>c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0</code>。非公式の日本語訳です。書式、内部リンク、および明示した編集注記はLibxによる変更です。</p>\n<p><a href=\"/docs/xxhash/v0-8-4/ja/03-notices/collision-header/\">collision-header</a> · <a href=\"/docs/xxhash/v0-8-4/ja/03-notices/gpl-v2/\">gpl-v2</a></p>\n<p><a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/tests/collisions/README.md\">固定した原典</a> · <a href=\"/docs/xxhash/source/v0-8-4/tests/collisions/README.md.txt\">原文のダウンロード</a></p>"}]
 ---
 
 __collisionsTest__は、総当たり方式のハッシュ解析ツールです。数十億個のハッシュを生成し、その結果を「理想的な」目標と比較することで、64ビットハッシュアルゴリズムの衝突率を測定します。
@@ -92,12 +93,3 @@ RAMに余裕がなく、この例では32 GBとすると、意味のある測定
 | __XXH128__ | 100 |  13 Gi |   0.0 |   0 | テスト範囲 17-128 |
 | __XXH128__ | 200 |  13 Gi |   0.0 |   0 | テスト範囲 129-240 |
 
-## 出典と通知
-
-記録した確認では、文書専用のライセンス表記は見つかりませんでした。ユーザー承認済みの運用方針に基づき、この注記とともにソフトウェアコンポーネントのGPL-2.0-or-laterライセンスを文書に適用します。これは運用上の判断であり、新たに許可を得たことを意味しません。
-
-固定したソフトウェアのバージョン：**0.8.4**。ソースコミット：`c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`。非公式の日本語訳です。書式、内部リンク、および明示した編集注記はLibxによる変更です。
-
-[collision-header](/docs/xxhash/v0-8-4/ja/03-notices/collision-header/) · [gpl-v2](/docs/xxhash/v0-8-4/ja/03-notices/gpl-v2/)
-
-[固定した原典](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/tests/collisions/README.md) · [原文のダウンロード](/docs/xxhash/source/v0-8-4/tests/collisions/README.md.txt)

@@ -10,15 +10,18 @@ const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../.
 const componentPath = path.join(rootDir, 'packages/ui/src/components/DocumentProvenance.astro');
 const layoutPath = path.join(rootDir, 'templates/docs-site/src/layouts/DocLayout.astro');
 
-test('文書情報を単一の意味的パネルとして文書最下部へ配置する', () => {
+test('文書情報を単一の意味的パネルとして本文から分離したページフッターへ配置する', () => {
   const component = fs.readFileSync(componentPath, 'utf8');
   const layout = fs.readFileSync(layoutPath, 'utf8');
 
-  assert.match(component, /<aside class="document-provenance" aria-labelledby=/);
+  assert.match(component, /<aside class="document-provenance"[^>]*aria-labelledby=/);
   assert.match(component, /getLicenseTemplate/);
   assert.match(component, /sourceStatus\.canonical/);
   assert.match(component, /sourceStatus\.translation/);
-  assert.ok(layout.indexOf('<slot />') < layout.indexOf('<DocumentProvenance'));
+  assert.ok(layout.indexOf('</article>') < layout.indexOf('<DocumentProvenance'));
+  assert.match(layout, /<footer class="document-context-footer">/);
+  assert.match(component, /data-context-kind/);
+  assert.match(component, /note\.context\.anchor/);
   assert.doesNotMatch(layout, /SourceStatus|LicenseAttribution/);
 });
 
@@ -74,5 +77,47 @@ test('Luaの既知問題は英日とも固定取得版の別出典を明示す�
       '07-migration-and-known-issues/03-known-issues.md'
     );
     assert.equal(matter(fs.readFileSync(target, 'utf8')).data.licenseSource, 'lua-bugs-2026-08-11');
+  }
+});
+
+test('公開公式文書のLibx注記と会話上の承認表現を本文へ戻さない', () => {
+  const projects = [
+    'cjson',
+    'fmt',
+    'glfw',
+    'gperf',
+    'lua',
+    'ninja',
+    'pugixml',
+    'spdlog',
+    'toml',
+    'uthash',
+    'xxhash',
+    'zlib',
+  ];
+  const markers =
+    /<aside[^>]*(?:data-editorial="(?:provenance|source-note|license)"|class="(?:libx-source-notes|fmt-editorial-note)")|^> \*\*Libx|^## (?:Editorial notes|固定した(?:上流)?原文.*編集注記|固定した上流原文に対する編集注記|固定原文についての編集注記|Source and notices|出典と通知)|訳注：|^編集注記：/im;
+  const approval =
+    /user.approved|approved operating policy|ユーザー.{0,12}承認|承認.{0,12}運用方針/i;
+  for (const project of projects) {
+    const pending = [path.join(rootDir, 'apps', project, 'src/content/docs')];
+    while (pending.length) {
+      const directory = pending.pop();
+      for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+        const target = path.join(directory, entry.name);
+        if (entry.isDirectory()) pending.push(target);
+        if (!entry.isFile() || !/\.mdx?$/.test(entry.name)) continue;
+        // Separate, unpublished Lua update remains owned by its existing maintenance operation.
+        if (entry.name === '04-known-issues-2026-10-02.md') continue;
+        const source = fs.readFileSync(target, 'utf8');
+        const { content, data } = matter(source);
+        assert.doesNotMatch(content, markers, target);
+        assert.doesNotMatch(source, approval, target);
+        for (const note of data.documentContext ?? []) {
+          assert.ok(['source', 'editorial'].includes(note.kind), target);
+          assert.ok(note.html.trim(), target);
+        }
+      }
+    }
   }
 });

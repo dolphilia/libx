@@ -1,6 +1,7 @@
 ---
 title: "doc/xxhash_spec.md"
 licenseSource: "xxhash-spec"
+documentContext: [{"kind":"source","html":"<h2 id=\"source-and-notices\">Source and notices</h2>\n<p>Unofficial presentation. The original document explicitly permits translations and compilations subject to its preserved notice.</p>\n<p>Fixed software version: <strong>0.8.4</strong>. Source commit: <code>c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0</code>. This is an unofficial presentation; formatting, internal links and clearly marked editorial notes are Libx changes. The Japanese translation is provided separately when completed.</p>\n<p><a href=\"/docs/xxhash/v0-8-4/en/03-notices/spec-notice/\">spec-notice</a></p>\n<p><a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/doc/xxhash_spec.md\">Fixed original source</a> · <a href=\"/docs/xxhash/source/v0-8-4/doc/xxhash_spec.md.txt\">Original text download</a></p>"}]
 ---
 
 xxHash fast digest algorithm
@@ -824,14 +825,4 @@ v0.2.0: added XXH3 specification, by Adrien Wu
 v0.1.1: added a note on rationale for selection of constants
 v0.1.0: initial release
 
-
-## Source and notices
-
-Unofficial presentation. The original document explicitly permits translations and compilations subject to its preserved notice.
-
-Fixed software version: **0.8.4**. Source commit: `c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`. This is an unofficial presentation; formatting, internal links and clearly marked editorial notes are Libx changes. The Japanese translation is provided separately when completed.
-
-[spec-notice](/docs/xxhash/v0-8-4/en/03-notices/spec-notice/)
-
-[Fixed original source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/doc/xxhash_spec.md) · [Original text download](/docs/xxhash/source/v0-8-4/doc/xxhash_spec.md.txt)
 

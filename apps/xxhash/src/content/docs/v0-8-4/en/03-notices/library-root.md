@@ -1,11 +1,12 @@
 ---
 title: "library-root — original notice"
 licenseSource: "xxhash-library"
+documentContext: [{"kind":"source","html":"<p>Original notice retained verbatim.</p>"},{"kind":"source","html":"<p><a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/LICENSE\">Fixed original source</a></p>"}]
 ---
 
 # library-root
 
-Original notice retained verbatim.
+
 
 ```text
 xxHash Library
@@ -37,5 +38,5 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ```
 
-[Fixed original source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/LICENSE)
+
 

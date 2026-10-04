@@ -1,9 +1,10 @@
 ---
 title: "API入門"
 description: "初期化、エラー、座標系、バージョン管理"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx リファレンス注記（GLFW 3.5.1）:</strong> 以下の初期化の節は、初期化前の呼び出しをメインスレッドに限定しています。一方、同じ固定版の <a href=\"/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga9f8ffaacf3c269cc48eafbf8b9b71197\">glfwGetVersion</a> と <a href=\"/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga026abd003c8e6501981ab1662062f1c0\">glfwGetVersionString</a> のリファレンスは、初期化前かつ任意のスレッドからの呼び出しを明示的に許可しています。このガイドのバージョン互換性の節にあるとおり、リファレンスの記述がガイドより優先されます。スレッド制約は各関数のリファレンスで確認してください。</p>\n</blockquote>"}]
 ---
 
-> **Libx リファレンス注記（GLFW 3.5.1）:** 以下の初期化の節は、初期化前の呼び出しをメインスレッドに限定しています。一方、同じ固定版の [glfwGetVersion](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga9f8ffaacf3c269cc48eafbf8b9b71197) と [glfwGetVersionString](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#ga026abd003c8e6501981ab1662062f1c0) のリファレンスは、初期化前かつ任意のスレッドからの呼び出しを明示的に許可しています。このガイドのバージョン互換性の節にあるとおり、リファレンスの記述がガイドより優先されます。スレッド制約は各関数のリファレンスで確認してください。
+
 
 <a id="intro_guide"></a>
 

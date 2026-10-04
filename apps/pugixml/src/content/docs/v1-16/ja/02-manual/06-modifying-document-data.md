@@ -2,6 +2,7 @@
 title: "文書データの変更"
 description: "pugixml 1.16の公式文書データ変更説明全文。"
 licenseSource: "pugixml-manual-1.16"
+documentContext: [{"kind":"editorial","html":"<p>（訳注：原文は戻り値を「属性」と記していますが、上の関数宣言ではテキストオブジェクトへの参照を返します。）</p>","context":{"anchor":"65-テキスト内容の操作","label":"<a href=\"#source-modify.text\" class=\"anchor\"></a><a href=\"#source-modify.text\" class=\"link\">6.5. テキスト内容の操作</a>"}}]
 ---
 
 <div class="sect1">
@@ -615,7 +616,7 @@ xml_text& xml_text::operator=(unsigned long long rhs);
 
 <div class="paragraph">
 
-これらの演算子は、対応する`set`を呼び出し、呼び出し元のテキストオブジェクトを返すだけです。`set`の戻り値を無視するため、エラーも無視されます。（訳注：原文は戻り値を「属性」と記していますが、上の関数宣言ではテキストオブジェクトへの参照を返します。）
+これらの演算子は、対応する`set`を呼び出し、呼び出し元のテキストオブジェクトを返すだけです。`set`の戻り値を無視するため、エラーも無視されます。
 
 </div>
 

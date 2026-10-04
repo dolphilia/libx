@@ -1,6 +1,7 @@
 ---
 title: "エラーコード"
 description: "GLFW 3.5.1のエラーコード"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx参照注記（GLFW 3.5.1）:</strong> 上記の分析は原文の記述です。<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L249-L294\">固定版の割り当て・再割り当て処理</a>は、対応するアロケーターコールバックが <code>NULL</code> を返すと <code>GLFW_OUT_OF_MEMORY</code> を設定します。このエラーだけで、失敗の原因をバグだと確定することはできません。上記の原文の分析は保持しています。</p>\n</blockquote>","context":{"anchor":"macros","label":"マクロ"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx参照注記（GLFW 3.5.1）:</strong> これらは<a href=\"https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L728-L734\">固定版3.5.1の文書</a>にある例です。特定のドライバーやマシンの互換性を確認した結果ではありません。上記の原文の例は保持しています。</p>\n</blockquote>","context":{"anchor":"macros","label":"マクロ"}}]
 ---
 
 # エラーコード
@@ -353,7 +354,7 @@ description: "GLFW 3.5.1のエラーコード"
 分析  
 GLFWまたは基盤となるオペレーティングシステムのバグです。[issue tracker](https://github.com/glfw/glfw/issues)へバグを報告してください。
 
-> **Libx参照注記（GLFW 3.5.1）:** 上記の分析は原文の記述です。[固定版の割り当て・再割り当て処理](https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L249-L294)は、対応するアロケーターコールバックが `NULL` を返すと `GLFW_OUT_OF_MEMORY` を設定します。このエラーだけで、失敗の原因をバグだと確定することはできません。上記の原文の分析は保持しています。
+
 
 </div>
 
@@ -385,7 +386,7 @@ GLFWまたは基盤となるオペレーティングシステムのバグです�
   
 Windowsにプリインストールされている一部のグラフィックスドライバーはOpenGLをサポートしていません。AMDではOpenGL ESのサポートはEGL経由に限られ、NvidiaとIntelではWGLまたはGLX拡張機能経由に限られます。macOSはOpenGL ESをまったく提供していません。MesaのEGL、OpenGL、OpenGL ESライブラリは、Nvidiaのバイナリドライバーと連携しません。古いグラフィックスドライバーはVulkanをサポートしていません。
 
-> **Libx参照注記（GLFW 3.5.1）:** これらは[固定版3.5.1の文書](https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L728-L734)にある例です。特定のドライバーやマシンの互換性を確認した結果ではありません。上記の原文の例は保持しています。
+
 
 </div>
 

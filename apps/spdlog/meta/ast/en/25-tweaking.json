@@ -22,14 +22,14 @@
           "value": "To squeeze every last drop of performance out of spdlog, the ",
           "position": {
             "start": {
-              "line": 5,
+              "line": 3,
               "column": 1,
-              "offset": 1226
+              "offset": 45
             },
             "end": {
-              "line": 5,
+              "line": 3,
               "column": 62,
-              "offset": 1287
+              "offset": 106
             }
           }
         },
@@ -43,28 +43,28 @@
               "value": "tweakme.h",
               "position": {
                 "start": {
-                  "line": 5,
+                  "line": 3,
                   "column": 63,
-                  "offset": 1288
+                  "offset": 107
                 },
                 "end": {
-                  "line": 5,
+                  "line": 3,
                   "column": 72,
-                  "offset": 1297
+                  "offset": 116
                 }
               }
             }
           ],
           "position": {
             "start": {
-              "line": 5,
+              "line": 3,
               "column": 62,
-              "offset": 1287
+              "offset": 106
             },
             "end": {
-              "line": 5,
+              "line": 3,
               "column": 144,
-              "offset": 1369
+              "offset": 188
             }
           }
         },
@@ -73,28 +73,28 @@
           "value": " header file can be edited.",
           "position": {
             "start": {
-              "line": 5,
+              "line": 3,
               "column": 144,
-              "offset": 1369
+              "offset": 188
             },
             "end": {
-              "line": 5,
+              "line": 3,
               "column": 171,
-              "offset": 1396
+              "offset": 215
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 5,
+          "line": 3,
           "column": 1,
-          "offset": 1226
+          "offset": 45
         },
         "end": {
-          "line": 5,
+          "line": 3,
           "column": 171,
-          "offset": 1396
+          "offset": 215
         }
       }
     },
@@ -106,28 +106,28 @@
           "value": "Here is an example which let spdlog use Linux's CLOCK_REALTIME_COARSE fast clock",
           "position": {
             "start": {
-              "line": 7,
+              "line": 5,
               "column": 1,
-              "offset": 1398
+              "offset": 217
             },
             "end": {
-              "line": 7,
+              "line": 5,
               "column": 81,
-              "offset": 1478
+              "offset": 297
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 7,
+          "line": 5,
           "column": 1,
-          "offset": 1398
+          "offset": 217
         },
         "end": {
-          "line": 7,
+          "line": 5,
           "column": 81,
-          "offset": 1478
+          "offset": 297
         }
       }
     },
@@ -138,14 +138,14 @@
       "value": "\n///////////////////////////////////////////////////////////////////////////////\n//\n// Edit this file to squeeze more performance, and to customize supported\n// features\n//\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Under Linux, the much faster CLOCK_REALTIME_COARSE clock can be used.\n// This clock is less accurate - can be off by dozens of millis - depending on\n// the kernel HZ.\n// Uncomment to use it instead of the regular clock.\n//\n#define SPDLOG_CLOCK_COARSE\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment if thread id logging is not needed (i.e. no %t in the log pattern).\n// This will prevent spdlog from querying the thread id on each log call.\n//\n// WARNING: If the log pattern contains thread id (i.e, %t) while this flag is\n// on, the result is undefined.\n//\n// #define SPDLOG_NO_THREAD_ID\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to prevent spdlog from using thread local storage.\n//\n// WARNING: if your program forks, UNCOMMENT this flag to prevent undefined\n// thread ids in the children logs.\n//\n// #define SPDLOG_NO_TLS\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to avoid spdlog's usage of atomic log levels\n// Use only if your code never modifies a logger's log levels concurrently by\n// different threads.\n//\n// #define SPDLOG_NO_ATOMIC_LEVELS\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to enable usage of wchar_t for file names on Windows.\n//\n// #define SPDLOG_WCHAR_FILENAMES\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to override default eol (\"\\n\" or \"\\r\\n\" under Linux/Windows)\n//\n// #define SPDLOG_EOL \";-)\\n\"\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to use your own copy of the fmt library instead of spdlog's copy.\n// In this case spdlog will try to include <fmt/format.h> so set your -I flag\n// accordingly.\n//\n// #define SPDLOG_FMT_EXTERNAL\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to enable wchar_t support (convert to utf8)\n//\n// #define SPDLOG_WCHAR_TO_UTF8_SUPPORT\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to prevent child processes from inheriting log file descriptors\n//\n// #define SPDLOG_PREVENT_CHILD_FD\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to customize level names (e.g. \"MY TRACE\")\n//\n// #define SPDLOG_LEVEL_NAMES { \"MY TRACE\", \"MY DEBUG\", \"MY INFO\", \"MY WARNING\",\n// \"MY ERROR\", \"MY CRITICAL\", \"OFF\" }\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to customize short level names (e.g. \"MT\")\n// These can be longer than one character.\n//\n// #define SPDLOG_SHORT_LEVEL_NAMES { \"T\", \"D\", \"I\", \"W\", \"E\", \"C\", \"O\" }\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment to disable default logger creation.\n// This might save some (very) small initialization time if no default logger is needed.\n//\n// #define SPDLOG_DISABLE_DEFAULT_LOGGER\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment and set to compile time level with zero cost (default is INFO).\n// Macros like SPDLOG_DEBUG(..), SPDLOG_INFO(..)  will expand to empty statements if not enabled\n//\n// #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO\n///////////////////////////////////////////////////////////////////////////////\n\n///////////////////////////////////////////////////////////////////////////////\n// Uncomment (and change if desired) macro to use for function names.\n// This is compiler dependent.\n// __PRETTY_FUNCTION__ might be nicer in clang/gcc, and __FUNCTION__ in msvc.\n// Defaults to __FUNCTION__ (should work on all compilers) if not defined.\n//\n// #define SPDLOG_FUNCTION __PRETTY_FUNCTION__\n///////////////////////////////////////////////////////////////////////////////\n",
       "position": {
         "start": {
-          "line": 9,
+          "line": 7,
           "column": 1,
-          "offset": 1480
+          "offset": 299
         },
         "end": {
-          "line": 123,
+          "line": 121,
           "column": 4,
-          "offset": 6657
+          "offset": 5476
         }
       }
     }

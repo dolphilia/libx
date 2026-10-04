@@ -151,7 +151,7 @@ jobs:
         run: pnpm --filter=apps-fmt check:rendered
 
       - name: Verify cJSON English and Japanese rendered content
-        run: pnpm --filter=apps-cjson check:rendered
+        run: node scripts/check-document-context-rendered.mjs
 
       - name: Verify spdlog English and Japanese rendered content
         run: pnpm --filter=apps-spdlog check:rendered

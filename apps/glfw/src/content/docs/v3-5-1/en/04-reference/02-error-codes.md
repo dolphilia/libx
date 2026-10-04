@@ -1,6 +1,7 @@
 ---
 title: "Error codes"
 description: "GLFW 3.5.1 Error codes"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The analysis above is the upstream wording. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L249-L294\">fixed allocation and reallocation paths</a> set <code>GLFW_OUT_OF_MEMORY</code> when the corresponding allocator callback returns <code>NULL</code>. This error by itself does not identify a bug as the cause of that failure. The upstream analysis is preserved above.</p>\n</blockquote>","context":{"anchor":"macros","label":"Macros"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> These are examples from the <a href=\"https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L728-L734\">fixed 3.5.1 documentation</a>. They are not a compatibility check for a particular driver or machine. The upstream examples are preserved above.</p>\n</blockquote>","context":{"anchor":"macros","label":"Macros"}}]
 ---
 
 # Error codes
@@ -353,7 +354,7 @@ A memory allocation failed.
 Analysis  
 A bug in GLFW or the underlying operating system. Report the bug to our [issue tracker](https://github.com/glfw/glfw/issues).
 
-> **Libx reference note (GLFW 3.5.1):** The analysis above is the upstream wording. The [fixed allocation and reallocation paths](https://github.com/glfw/glfw/blob/3.5.1/src/init.c#L249-L294) set `GLFW_OUT_OF_MEMORY` when the corresponding allocator callback returns `NULL`. This error by itself does not identify a bug as the cause of that failure. The upstream analysis is preserved above.
+
 
 </div>
 
@@ -385,7 +386,7 @@ The installed graphics driver does not support the requested API, or does not su
   
 Some pre-installed Windows graphics drivers do not support OpenGL. AMD only supports OpenGL ES via EGL, while Nvidia and Intel only support it via a WGL or GLX extension. macOS does not provide OpenGL ES at all. The Mesa EGL, OpenGL and OpenGL ES libraries do not interface with the Nvidia binary driver. Older graphics drivers do not support Vulkan.
 
-> **Libx reference note (GLFW 3.5.1):** These are examples from the [fixed 3.5.1 documentation](https://github.com/glfw/glfw/blob/3.5.1/include/GLFW/glfw3.h#L728-L734). They are not a compatibility check for a particular driver or machine. The upstream examples are preserved above.
+
 
 </div>
 

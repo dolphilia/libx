@@ -1,6 +1,7 @@
 ---
 title: "Input guide"
 description: "Keyboard, mouse, joystick and gamepad input"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The statement above about all input callbacks has an exception: the joystick callback receives a joystick ID and an event, with no window handle. See <a href=\"/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#joystick_event\">Joystick configuration changes</a> and the callback example in that section.</p>\n</blockquote>","context":{"anchor":"input-guide","label":"Input guide"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The paragraph above says \"monitor callback\" in a section about joystick callbacks. It also includes <a href=\"/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gac6a8e769e18e0bcfa9097793fc2c3978\">glfwGetJoystickName</a> among functions that return useful values after disconnection. In the <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1169-L1195\">fixed 3.5.1 implementation</a>, the joystick is marked disconnected before the joystick callback runs, and this function returns <code>NULL</code> for a disconnected joystick. <a href=\"/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga18cefd7265d1fa04f3fd38a6746db5f3\">glfwGetJoystickUserPointer</a> can still be queried during that callback. Obtain and copy any needed joystick name before disconnection; the lifetime stated in its reference ends on disconnection. These clarifications supplement the preserved upstream text.</p>\n</blockquote>","context":{"anchor":"joystick-configuration-changes","label":"Joystick configuration changes"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The upstream example above calls <code>a7</code> the eighth button. In this mapping format it denotes the eighth axis (index 7). The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L210-L228\">fixed mapping parser</a> interprets <code>a</code> as an axis and <code>b</code> as a button. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"gamepad-mappings","label":"Gamepad mappings"}}]
 ---
 
 <a id="input_guide"></a>
@@ -25,7 +26,7 @@ All input callbacks receive a window handle.  By using the
 [window user pointer](/docs/glfw/v3-5-1/en/03-guides/04-window-guide/#window_userptr), you can access non-global structures
 or objects from your callbacks.
 
-> **Libx reference note (GLFW 3.5.1):** The statement above about all input callbacks has an exception: the joystick callback receives a joystick ID and an event, with no window handle. See [Joystick configuration changes](/docs/glfw/v3-5-1/en/03-guides/05-input-guide/#joystick_event) and the callback example in that section.
+
 
 To get a better feel for how the various events callbacks behave, run the
 `events` test program.  It registers every callback supported by GLFW and prints
@@ -763,7 +764,7 @@ Only [glfwGetJoystickName](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/
 useful values for a disconnected joystick and only before the monitor callback
 returns.
 
-> **Libx reference note (GLFW 3.5.1):** The paragraph above says "monitor callback" in a section about joystick callbacks. It also includes [glfwGetJoystickName](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gac6a8e769e18e0bcfa9097793fc2c3978) among functions that return useful values after disconnection. In the [fixed 3.5.1 implementation](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1169-L1195), the joystick is marked disconnected before the joystick callback runs, and this function returns `NULL` for a disconnected joystick. [glfwGetJoystickUserPointer](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#ga18cefd7265d1fa04f3fd38a6746db5f3) can still be queried during that callback. Obtain and copy any needed joystick name before disconnection; the lifetime stated in its reference ends on disconnection. These clarifications supplement the preserved upstream text.
+
 
 
 <a id="gamepad"></a>
@@ -902,7 +903,7 @@ a hat bitmask or empty.  Joystick buttons are specified as `bN`, for example
 example `h0.8` for left on the first hat.  More than one bit may be set in the
 mask.
 
-> **Libx reference note (GLFW 3.5.1):** The upstream example above calls `a7` the eighth button. In this mapping format it denotes the eighth axis (index 7). The [fixed mapping parser](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L210-L228) interprets `a` as an axis and `b` as a button. The upstream wording is preserved above.
+
 
 Before an axis there may be a `+` or `-` range modifier, for example `+a3` for
 the positive half of the fourth axis.  This restricts input to only the positive

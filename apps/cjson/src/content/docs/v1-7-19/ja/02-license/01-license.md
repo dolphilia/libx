@@ -3,6 +3,7 @@ title: "MIT ライセンス"
 licenseSource: cjson-license
 toc:
   maxLevel: 6
+documentContext: [{"kind":"editorial","html":"<p>以下は上に保持した英語の原通知の非公式参考訳です。ライセンス条件の原文は英語の通知を参照してください。</p>","context":{"anchor":"mit-reference-translation","label":"MITライセンスの日本語参考訳"}}]
 ---
 
 <div class="cjson-upstream-document">
@@ -31,7 +32,7 @@ THE SOFTWARE.
 
 <section class="cjson-license-reference-translation" aria-label="MITライセンスの日本語参考訳">
 <h2 id="mit-reference-translation">MITライセンスの日本語参考訳</h2>
-<p>以下は上に保持した英語の原通知の非公式参考訳です。ライセンス条件の原文は英語の通知を参照してください。</p>
+
 <p>Copyright (c) 2009-2017 Dave Gamble and cJSON contributors</p>
 <p>本ソフトウェアおよび関連する文書ファイル（以下「本ソフトウェア」）の複製を取得するすべての人に対し、本ソフトウェアを無制限に扱うことを、無償で許可します。これには、本ソフトウェアの使用、複製、変更、結合、公開、頒布、サブライセンス、および複製の販売の権利が含まれますが、これらに限定されません。また、本ソフトウェアを提供する相手に同じ権利を許可することも認めます。ただし、次の条件に従うものとします。</p>
 <p>上記の著作権表示および本許諾表示を、本ソフトウェアのすべての複製、またはその重要な部分に含めるものとします。</p>

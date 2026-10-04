@@ -1,6 +1,7 @@
 ---
 title: "API Reference"
 licenseSource: "fmt-12-2-0"
+documentContext: [{"kind":"editorial","html":"<aside class=\"fmt-editorial-note\" role=\"note\"><p><strong>Editorial note for fmt 12.2.0.</strong> The upstream list above says that <code>FMT_OPTIMIZE_SIZE=1</code> disables locale support. However, the <a href=\"https://github.com/fmtlib/fmt/blob/1be298e1bd68957e4cd352e1f676f00e07dcfb57/include/fmt/base.h#L890-L892\">fixed-version header</a> defines <code>FMT_USE_LOCALE</code> as <code>(FMT_OPTIMIZE_SIZE &lt;= 1)</code> when it has not been explicitly defined. Therefore the default is enabled at level 1 and disabled at level 2. An explicit <code>FMT_USE_LOCALE</code> setting overrides that default. The original documentation wording is retained above.</p></aside>","context":{"anchor":"macros","label":"Macros"}}]
 ---
 
 # API Reference
@@ -546,7 +547,7 @@ example, you can disable OS-specific APIs defined in `fmt/os.h` with
   - `2` - disables some Unicode features, named arguments and applies
     more aggressive optimizations
 
-<aside class="fmt-editorial-note" role="note"><p><strong>Editorial note for fmt 12.2.0.</strong> The upstream list above says that <code>FMT_OPTIMIZE_SIZE=1</code> disables locale support. However, the <a href="https://github.com/fmtlib/fmt/blob/1be298e1bd68957e4cd352e1f676f00e07dcfb57/include/fmt/base.h#L890-L892">fixed-version header</a> defines <code>FMT_USE_LOCALE</code> as <code>(FMT_OPTIMIZE_SIZE &lt;= 1)</code> when it has not been explicitly defined. Therefore the default is enabled at level 1 and disabled at level 2. An explicit <code>FMT_USE_LOCALE</code> setting overrides that default. The original documentation wording is retained above.</p></aside>
+
 
 ### Binary Size Optimization
 

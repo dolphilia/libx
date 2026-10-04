@@ -22,14 +22,14 @@
           "value": "We had a need to add a callback sink to our logs so we can reprocess log messages to different formats (json and MQTT) while keeping the original logging. I discovered a small trap based on not knowing the C++ standard inside out. To add a sink, be careful how you access ",
           "position": {
             "start": {
-              "line": 5,
+              "line": 3,
               "column": 1,
-              "offset": 1054
+              "offset": 69
             },
             "end": {
-              "line": 5,
+              "line": 3,
               "column": 273,
-              "offset": 1326
+              "offset": 341
             }
           }
         },
@@ -38,14 +38,14 @@
           "value": "sinks()",
           "position": {
             "start": {
-              "line": 5,
+              "line": 3,
               "column": 273,
-              "offset": 1326
+              "offset": 341
             },
             "end": {
-              "line": 5,
+              "line": 3,
               "column": 282,
-              "offset": 1335
+              "offset": 350
             }
           }
         },
@@ -54,28 +54,28 @@
           "value": " in the logger. This doesn't work:",
           "position": {
             "start": {
-              "line": 5,
+              "line": 3,
               "column": 282,
-              "offset": 1335
+              "offset": 350
             },
             "end": {
-              "line": 5,
+              "line": 3,
               "column": 316,
-              "offset": 1369
+              "offset": 384
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 5,
+          "line": 3,
           "column": 1,
-          "offset": 1054
+          "offset": 69
         },
         "end": {
-          "line": 5,
+          "line": 3,
           "column": 316,
-          "offset": 1369
+          "offset": 384
         }
       }
     },
@@ -86,14 +86,14 @@
       "value": "auto sinks = log_->sinks();\nsinks.push_back(std::make_shared<spdlog::sinks::callback_sink<std::mutex> >([this](const spdlog::details::log_msg& msg) {this->LogCallback(msg);}));",
       "position": {
         "start": {
-          "line": 7,
+          "line": 5,
           "column": 1,
-          "offset": 1371
+          "offset": 386
         },
         "end": {
-          "line": 10,
+          "line": 8,
           "column": 4,
-          "offset": 1558
+          "offset": 573
         }
       }
     },
@@ -105,14 +105,14 @@
           "value": "\"auto sinks = ...\"",
           "position": {
             "start": {
-              "line": 12,
+              "line": 10,
               "column": 1,
-              "offset": 1560
+              "offset": 575
             },
             "end": {
-              "line": 12,
+              "line": 10,
               "column": 21,
-              "offset": 1580
+              "offset": 595
             }
           }
         },
@@ -121,14 +121,14 @@
           "value": " gives you a copy of the sinks vector so you're not modifying the sinks vector in the logger. The C++ compiler is actually doing what it should with the C++ standard, ",
           "position": {
             "start": {
-              "line": 12,
+              "line": 10,
               "column": 21,
-              "offset": 1580
+              "offset": 595
             },
             "end": {
-              "line": 12,
+              "line": 10,
               "column": 188,
-              "offset": 1747
+              "offset": 762
             }
           }
         },
@@ -137,14 +137,14 @@
           "value": "\"auto var = xyz\"",
           "position": {
             "start": {
-              "line": 12,
+              "line": 10,
               "column": 188,
-              "offset": 1747
+              "offset": 762
             },
             "end": {
-              "line": 12,
+              "line": 10,
               "column": 206,
-              "offset": 1765
+              "offset": 780
             }
           }
         },
@@ -153,28 +153,28 @@
           "value": " is never supposed to give you a reference, it calls the copy constructor of the RHS object.",
           "position": {
             "start": {
-              "line": 12,
+              "line": 10,
               "column": 206,
-              "offset": 1765
+              "offset": 780
             },
             "end": {
-              "line": 12,
+              "line": 10,
               "column": 298,
-              "offset": 1857
+              "offset": 872
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 12,
+          "line": 10,
           "column": 1,
-          "offset": 1560
+          "offset": 575
         },
         "end": {
-          "line": 12,
+          "line": 10,
           "column": 298,
-          "offset": 1857
+          "offset": 872
         }
       }
     },
@@ -186,14 +186,14 @@
           "value": "You need to use ",
           "position": {
             "start": {
-              "line": 14,
+              "line": 12,
               "column": 1,
-              "offset": 1859
+              "offset": 874
             },
             "end": {
-              "line": 14,
+              "line": 12,
               "column": 17,
-              "offset": 1875
+              "offset": 890
             }
           }
         },
@@ -202,14 +202,14 @@
           "value": "auto&",
           "position": {
             "start": {
-              "line": 14,
+              "line": 12,
               "column": 17,
-              "offset": 1875
+              "offset": 890
             },
             "end": {
-              "line": 14,
+              "line": 12,
               "column": 24,
-              "offset": 1882
+              "offset": 897
             }
           }
         },
@@ -218,14 +218,14 @@
           "value": " or the original sink_ptr type defined in ",
           "position": {
             "start": {
-              "line": 14,
+              "line": 12,
               "column": 24,
-              "offset": 1882
+              "offset": 897
             },
             "end": {
-              "line": 14,
+              "line": 12,
               "column": 66,
-              "offset": 1924
+              "offset": 939
             }
           }
         },
@@ -234,14 +234,14 @@
           "value": "common.h",
           "position": {
             "start": {
-              "line": 14,
+              "line": 12,
               "column": 66,
-              "offset": 1924
+              "offset": 939
             },
             "end": {
-              "line": 14,
+              "line": 12,
               "column": 76,
-              "offset": 1934
+              "offset": 949
             }
           }
         },
@@ -250,28 +250,28 @@
           "value": ", but it needs to be a reference to the vector.",
           "position": {
             "start": {
-              "line": 14,
+              "line": 12,
               "column": 76,
-              "offset": 1934
+              "offset": 949
             },
             "end": {
-              "line": 14,
+              "line": 12,
               "column": 123,
-              "offset": 1981
+              "offset": 996
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 14,
+          "line": 12,
           "column": 1,
-          "offset": 1859
+          "offset": 874
         },
         "end": {
-          "line": 14,
+          "line": 12,
           "column": 124,
-          "offset": 1982
+          "offset": 997
         }
       }
     },
@@ -282,14 +282,14 @@
       "value": "auto& sinks = log_->sinks();\nsinks.push_back( .....etc",
       "position": {
         "start": {
-          "line": 16,
+          "line": 14,
           "column": 1,
-          "offset": 1984
+          "offset": 999
         },
         "end": {
-          "line": 19,
+          "line": 17,
           "column": 4,
-          "offset": 2049
+          "offset": 1064
         }
       }
     },
@@ -301,28 +301,28 @@
           "value": "Hopefully this saves someone else an hour of head-scratching.",
           "position": {
             "start": {
-              "line": 21,
+              "line": 19,
               "column": 1,
-              "offset": 2051
+              "offset": 1066
             },
             "end": {
-              "line": 21,
+              "line": 19,
               "column": 62,
-              "offset": 2112
+              "offset": 1127
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 21,
+          "line": 19,
           "column": 1,
-          "offset": 2051
+          "offset": 1066
         },
         "end": {
-          "line": 21,
+          "line": 19,
           "column": 63,
-          "offset": 2113
+          "offset": 1128
         }
       }
     },
@@ -330,14 +330,14 @@
       "type": "thematicBreak",
       "position": {
         "start": {
-          "line": 23,
+          "line": 21,
           "column": 1,
-          "offset": 2115
+          "offset": 1130
         },
         "end": {
-          "line": 23,
+          "line": 21,
           "column": 4,
-          "offset": 2118
+          "offset": 1133
         }
       }
     },
@@ -349,14 +349,14 @@
           "value": "See details ",
           "position": {
             "start": {
-              "line": 25,
+              "line": 23,
               "column": 1,
-              "offset": 2120
+              "offset": 1135
             },
             "end": {
-              "line": 25,
+              "line": 23,
               "column": 13,
-              "offset": 2132
+              "offset": 1147
             }
           }
         },
@@ -370,42 +370,42 @@
               "value": "#3014",
               "position": {
                 "start": {
-                  "line": 25,
+                  "line": 23,
                   "column": 14,
-                  "offset": 2133
+                  "offset": 1148
                 },
                 "end": {
-                  "line": 25,
+                  "line": 23,
                   "column": 19,
-                  "offset": 2138
+                  "offset": 1153
                 }
               }
             }
           ],
           "position": {
             "start": {
-              "line": 25,
+              "line": 23,
               "column": 13,
-              "offset": 2132
+              "offset": 1147
             },
             "end": {
-              "line": 25,
+              "line": 23,
               "column": 66,
-              "offset": 2185
+              "offset": 1200
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 25,
+          "line": 23,
           "column": 1,
-          "offset": 2120
+          "offset": 1135
         },
         "end": {
-          "line": 25,
+          "line": 23,
           "column": 66,
-          "offset": 2185
+          "offset": 1200
         }
       }
     }

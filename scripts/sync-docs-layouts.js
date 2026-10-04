@@ -10,8 +10,9 @@ const templateRoot = path.join(rootDir, 'templates/docs-site/src');
 function layoutApps() {
   return discoverApps(rootDir).apps.filter(
     (app) =>
-      fs.existsSync(path.join(app.directory, 'src/content/docs')) ||
-      fs.existsSync(path.join(app.directory, 'src/lib/navigation.ts'))
+      !path.relative(rootDir, app.directory).startsWith('apps/awesome/') &&
+      (fs.existsSync(path.join(app.directory, 'src/content/docs')) ||
+        fs.existsSync(path.join(app.directory, 'src/lib/navigation.ts')))
   );
 }
 const sharedLayouts = ['layouts/MainLayout.astro', 'layouts/DocLayout.astro'];

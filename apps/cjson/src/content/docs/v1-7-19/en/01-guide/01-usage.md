@@ -3,6 +3,7 @@ title: "cJSON Usage Guide"
 licenseSource: cjson-readme
 toc:
   maxLevel: 6
+documentContext: [{"kind":"editorial","html":"<aside class=\"libx-source-notes\" aria-label=\"libx source notes\">\n<h2 id=\"libx-source-notes\">libx source notes</h2>\n<p>The complete upstream guide above is retained. The following editorial notes distinguish fixed-version discrepancies from the original text.</p>\n<ul>\n<li>The README states CMake 2.8.5 or newer. The same release's <a href=\"https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/CMakeLists.txt#L2\">CMakeLists.txt, line 2</a> requires CMake 3.0. Check the fixed build configuration when building version 1.7.19.</li>\n<li>The Objects paragraph names <code>cJSON_AddItemReferenceToArray</code>. The fixed <a href=\"https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/cJSON.h#L235-L236\">header, lines 235–236</a> separately declares <code>cJSON_AddItemReferenceToObject(cJSON *object, const char *string, cJSON *item)</code>, including the object member key. The original paragraph is preserved.</li>\n<li>The examples are reproduced as published, not executed or validated here as complete error-handling recipes. Static review of <code>create_monitor_with_helpers</code> shows that a newly created resolution is attached to the parent array only after both number additions. If an addition fails first, deleting the monitor does not free that unattached object. The examples also omit checks for some item-addition return values. Review allocation failures and ownership before using them in production.</li>\n</ul>\n</aside>","context":{"anchor":"enjoy-cjson","label":"Enjoy cJSON!"}}]
 ---
 
 <div class="cjson-upstream-document">
@@ -478,12 +479,4 @@ end:
 <li>and the other <a href="/docs/cjson/v1-7-19/en/02-license/02-contributors/">cJSON contributors</a></li>
 </ul>
 </div>
-<aside class="libx-source-notes" aria-label="libx source notes">
-<h2 id="libx-source-notes">libx source notes</h2>
-<p>The complete upstream guide above is retained. The following editorial notes distinguish fixed-version discrepancies from the original text.</p>
-<ul>
-<li>The README states CMake 2.8.5 or newer. The same release's <a href="https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/CMakeLists.txt#L2">CMakeLists.txt, line 2</a> requires CMake 3.0. Check the fixed build configuration when building version 1.7.19.</li>
-<li>The Objects paragraph names <code>cJSON_AddItemReferenceToArray</code>. The fixed <a href="https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/cJSON.h#L235-L236">header, lines 235–236</a> separately declares <code>cJSON_AddItemReferenceToObject(cJSON *object, const char *string, cJSON *item)</code>, including the object member key. The original paragraph is preserved.</li>
-<li>The examples are reproduced as published, not executed or validated here as complete error-handling recipes. Static review of <code>create_monitor_with_helpers</code> shows that a newly created resolution is attached to the parent array only after both number additions. If an addition fails first, deleting the monitor does not free that unattached object. The examples also omit checks for some item-addition return values. Review allocation failures and ownership before using them in production.</li>
-</ul>
-</aside>
+

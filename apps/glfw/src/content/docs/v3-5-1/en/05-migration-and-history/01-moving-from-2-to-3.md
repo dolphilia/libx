@@ -1,6 +1,7 @@
 ---
 title: "Moving from GLFW 2 to 3"
 description: "Migration guide for GLFW 2 users"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The comma inside <code>glfw3,</code> above is part of the upstream wording. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/CMakeLists.txt#L118-L126\">fixed library output-name configuration</a> uses <code>glfw</code> for a shared library on Unix-like systems and <code>glfw3</code> otherwise, without a comma. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"renamed-library-and-header-file","label":"Renamed library and header file"}}]
 ---
 
 <a id="moving_guide"></a>
@@ -26,7 +27,7 @@ Unix-like systems, where it uses the [soname][] `libglfw.so.3`.
 
 [soname]: https://en.wikipedia.org/wiki/soname
 
-> **Libx reference note (GLFW 3.5.1):** The comma inside `glfw3,` above is part of the upstream wording. The [fixed library output-name configuration](https://github.com/glfw/glfw/blob/3.5.1/src/CMakeLists.txt#L118-L126) uses `glfw` for a shared library on Unix-like systems and `glfw3` otherwise, without a comma. The upstream wording is preserved above.
+
 
 __Old syntax__
 ```c

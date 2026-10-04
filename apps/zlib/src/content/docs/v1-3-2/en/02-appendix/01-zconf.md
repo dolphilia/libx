@@ -3,9 +3,10 @@ title: "zconf.h original appendix"
 licenseSource: zlib-zconf
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>Unofficial formatting of the complete fixed zlib 1.3.2 originals. Original source: zconf.h. <a href=\"https://zlib.net/zlib-1.3.2.tar.gz\">Official archive</a>; SHA-256: <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>. Source file SHA-256: <code>cb7c2c84211473b4699223edd363d3207b43b9578e739b5bf638f42204ea6e0f</code>. Original notices remain intact. This presentation and its translations are unofficial.</p><p><a href=\"../05-license/\">Full original license</a>. Plain source references outside this manual, including deflate.c, zutil.c, test/example.c, test/minigzip.c, ChangeLog and contrib, can be found in that fixed official archive.</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>Unofficial formatting of the complete fixed zlib 1.3.2 originals. Original source: zconf.h. <a href="https://zlib.net/zlib-1.3.2.tar.gz">Official archive</a>; SHA-256: <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>. Source file SHA-256: <code>cb7c2c84211473b4699223edd363d3207b43b9578e739b5bf638f42204ea6e0f</code>. Original notices remain intact. This presentation and its translations are unofficial.</p><p><a href="../05-license/">Full original license</a>. Plain source references outside this manual, including deflate.c, zutil.c, test/example.c, test/minigzip.c, ChangeLog and contrib, can be found in that fixed official archive.</p></aside>
+
 <div class="zlib-document" style="overflow-wrap:anywhere"><div data-zlib-block="0"><div style="white-space:pre-wrap;overflow-wrap:anywhere"> <a href="./">zconf.h</a> -- configuration of the zlib compression library
  Copyright (C) 1995-2026 Jean-loup Gailly, Mark Adler
  For conditions of distribution and use, see copyright notice in <a href="../../01-api/01-overview/">zlib.h</a>

@@ -1,6 +1,7 @@
 ---
 title: "GLFW 2 から 3 への移行"
 description: "GLFW 2 ユーザー向け移行ガイド"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx 参考注記（GLFW 3.5.1）:</strong> 上の <code>glfw3,</code> に含まれるコンマは原文の表記です。<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/CMakeLists.txt#L118-L126\">固定版のライブラリ出力名設定</a>では、Unix 系システムの共有ライブラリに <code>glfw</code>、それ以外に <code>glfw3</code> を使い、コンマは含みません。上の原文表記は保持しています。</p>\n</blockquote>","context":{"anchor":"名前が変更されたライブラリとヘッダーファイル","label":"名前が変更されたライブラリとヘッダーファイル"}}]
 ---
 
 <a id="moving_guide"></a>
@@ -19,7 +20,7 @@ GLFW 3 のヘッダーは [glfw3](https://github.com/glfw/glfw/blob/3.5.1/includ
 
 [soname]: https://en.wikipedia.org/wiki/soname
 
-> **Libx 参考注記（GLFW 3.5.1）:** 上の `glfw3,` に含まれるコンマは原文の表記です。[固定版のライブラリ出力名設定](https://github.com/glfw/glfw/blob/3.5.1/src/CMakeLists.txt#L118-L126)では、Unix 系システムの共有ライブラリに `glfw`、それ以外に `glfw3` を使い、コンマは含みません。上の原文表記は保持しています。
+
 
 __旧構文__
 ```c

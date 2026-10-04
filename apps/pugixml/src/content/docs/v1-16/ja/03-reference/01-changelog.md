@@ -2,6 +2,7 @@
 title: "変更履歴"
 description: "pugixml 1.16の公式変更履歴全文。"
 licenseSource: "pugixml-manual-1.16"
+documentContext: [{"kind":"editorial","html":"<p>訳注：原文は「cross-document copies」と「inter-document copies」を併記しています。両者の区別はこの記述だけでは明確でないため、原文の数値と表記を保持しています。</p>","context":{"anchor":"v15-2014-11-27","label":"<a href=\"#source-v1.5\" class=\"anchor\"></a><a href=\"#source-v1.5\" class=\"link\">v1.5 <sup>2014-11-27</sup></a>"}},{"kind":"editorial","html":"<p>訳注：関数名はこの履歴の原文表記です。固定版ヘッダーでは、この選択関数はXMLノードのクラスのメンバーとして宣言されています。</p>","context":{"anchor":"v05-2009-11-08","label":"<a href=\"#source-v0.5\" class=\"anchor\"></a><a href=\"#source-v0.5\" class=\"link\">v0.5 <sup>2009-11-08</sup></a>"}}]
 ---
 
 <div class="sect1">
@@ -720,7 +721,7 @@ licenseSource: "pugixml-manual-1.16"
 
   2.  同じ文書内でノードをコピーする場合のメモリー消費を最適化しました（文字列の内容を共有するようになりました）。
 
-  3.  ノードのコピーを最適化しました（文書間のコピーで10%、文書間のコピーで3倍高速化。使用するスタック領域も一定量になりました）。 訳注：原文は「cross-document copies」と「inter-document copies」を併記しています。両者の区別はこの記述だけでは明確でないため、原文の数値と表記を保持しています。
+  3.  ノードのコピーを最適化しました（文書間のコピーで10%、文書間のコピーで3倍高速化。使用するスタック領域も一定量になりました）。
 
   4.  ノードの出力を最適化しました（60%高速化。使用するスタック領域も一定量になりました）。
 
@@ -1216,7 +1217,7 @@ Unicode対応の拡張と改善、各種性能改善、不具合修正などを�
 
   <div class="olist arabic">
 
-  1.  `xpath_node::select_nodes()`と関連関数は、式の戻り値の型がノード集合以外の場合、アサーションではなく例外を送出するようになりました。 訳注：関数名はこの履歴の原文表記です。固定版ヘッダーでは、この選択関数はXMLノードのクラスのメンバーとして宣言されています。
+  1.  `xpath_node::select_nodes()`と関連関数は、式の戻り値の型がノード集合以外の場合、アサーションではなく例外を送出するようになりました。
 
   2.  `xml_node::traverse()`が、`begin()`と`end()`の両コールバックで深さを-1に設定するようになりました（以前は`begin()`で0、`end()`で-1でした）。
 

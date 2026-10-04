@@ -1,6 +1,7 @@
 ---
 title: "README.md"
 licenseSource: "xxhash-library"
+documentContext: [{"kind":"source","html":"<h2 id=\"出典と通知\">出典と通知</h2>\n<p>記録した確認範囲では、文書専用ライセンスの表記が見つかりませんでした。Libxの運用方針に基づき、ソフトウェア本体のBSD-2-Clauseライセンスを、この注釈を付けて文書にも適用しています。これは運用上の判断であり、新たに取得した許諾ではありません。</p>\n<p>固定したソフトウェア版は<strong>0.8.4</strong>、出典コミットは<code>c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0</code>です。これは非公式の日本語訳です。書式、内部リンク、明示した編集者注記はLibxによる変更です。</p>\n<p><a href=\"/docs/xxhash/v0-8-4/ja/03-notices/library-root/\">ライブラリの著作権・許諾条件・免責の原文</a></p>\n<p><a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/README.md\">固定した原文</a> · <a href=\"/docs/xxhash/source/v0-8-4/README.md.txt\">原文テキストのダウンロード</a></p>\n<p>原文のグラフとCI・パッケージのバッジは、外部の元URLを保持しています。現在の表示は固定した原文スナップショットと同一とは限りません。Libxはこれらの画像ファイルを再配布していません。</p>"}]
 ---
 
 xxHash — 非常に高速なハッシュアルゴリズム
@@ -201,14 +202,3 @@ Cの参照実装に加え、多くの貢献者のおかげで、xxHashはさま�
 - Mathias Westerdahl（@JCash）：`XXH64`の初版を導入してくれたことに感謝します。
 - Devin Hussey（@easyaspi314）：`XXH3`と`XXH128`での優れた低水準最適化に感謝します。
 
-## 出典と通知
-
-記録した確認範囲では、文書専用ライセンスの表記が見つかりませんでした。ユーザーが承認した運用方針に基づき、ソフトウェア本体のBSD-2-Clauseライセンスを、この注釈を付けて文書にも適用しています。これは運用上の判断であり、新たに取得した許諾ではありません。
-
-固定したソフトウェア版は**0.8.4**、出典コミットは`c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`です。これは非公式の日本語訳です。書式、内部リンク、明示した編集者注記はLibxによる変更です。
-
-[ライブラリの著作権・許諾条件・免責の原文](/docs/xxhash/v0-8-4/ja/03-notices/library-root/)
-
-[固定した原文](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/README.md) · [原文テキストのダウンロード](/docs/xxhash/source/v0-8-4/README.md.txt)
-
-原文のグラフとCI・パッケージのバッジは、外部の元URLを保持しています。現在の表示は固定した原文スナップショットと同一とは限りません。Libxはこれらの画像ファイルを再配布していません。

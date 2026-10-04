@@ -3,9 +3,10 @@ title: "spdlog README"
 licenseSource: spdlog-readme
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>spdlog 1.17.0 READMEのガイド全文に基づく非公式の日本語訳です。<a href=\"https://github.com/gabime/spdlog/blob/79524ddd08a4ec981b7fea76afd08ee05f83755d/README.md\">原資料</a>。原資料のSHA-256：<code>d6ea8fd52d4e3194edf0b1cead3f55e9cd75130a192d52e9cd9aae87c1aa5254</code>。ソフトウェアのコミット：<code>79524ddd08a4ec981b7fea76afd08ee05f83755d</code>。<a href=\"/docs/spdlog/v1-17-0/ja/02-reference/01-license/\">原ライセンス・通知の全文</a>。本文の表示形式、日本語訳、版に関する注記は、Libxによる非公式の変更です。</p></aside>"},{"kind":"editorial","html":"<aside data-editorial=\"source-note\"><p>以下のベンチマーク値とコード例は、固定した原資料の記述です。Libxによる測定値や実行済みの例ではありません。複数ロガー登録の原資料の例には、コードにsicの明示があります。</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>spdlog 1.17.0 READMEのガイド全文に基づく非公式の日本語訳です。<a href="https://github.com/gabime/spdlog/blob/79524ddd08a4ec981b7fea76afd08ee05f83755d/README.md">原資料</a>。原資料のSHA-256：<code>d6ea8fd52d4e3194edf0b1cead3f55e9cd75130a192d52e9cd9aae87c1aa5254</code>。ソフトウェアのコミット：<code>79524ddd08a4ec981b7fea76afd08ee05f83755d</code>。<a href="/docs/spdlog/v1-17-0/ja/02-reference/01-license/">原ライセンス・通知の全文</a>。本文の表示形式、日本語訳、版に関する注記は、Libxによる非公式の変更です。</p></aside><aside data-editorial="source-note"><p>以下のベンチマーク値とコード例は、固定した原資料の記述です。Libxによる測定値や実行済みの例ではありません。複数ロガー登録の原資料の例には、コードにsicの明示があります。</p></aside>
+
 
 <div data-spdlog-source-body="01-readme">
 

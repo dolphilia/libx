@@ -2,9 +2,10 @@
 title: "Lua 5.5.1の既知の問題（2026-08-11取得版）"
 description: "2026-08-11時点で公式に報告されているLua 5.5.1のバグ。以後の報告は別途リンクを参照"
 licenseSource: "lua-bugs-2026-08-11"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libxの取得版について（2026-08-11）：</strong> 以下の本文は、この日に取得した公式バグ一覧を保持したもので、現在の一覧を示すものではありません。以後の報告は、<a href=\"https://www.lua.org/bugs.html#5.5.1\">現在の公式バグ一覧</a>を参照してください。</p>\n</blockquote>"}]
 ---
 
-> **Libxの取得版について（2026-08-11）：** 以下の本文は、この日に取得した公式バグ一覧を保持したもので、現在の一覧を示すものではありません。以後の報告は、[現在の公式バグ一覧](https://www.lua.org/bugs.html#5.5.1)を参照してください。
+
 
 # <a id="5.5.1"></a>Lua 5.5.1
 

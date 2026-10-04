@@ -3,9 +3,10 @@ title: "Original license"
 licenseSource: zlib-license
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>Unofficial formatting of the complete fixed zlib 1.3.2 originals. Original source: LICENSE. <a href=\"https://zlib.net/zlib-1.3.2.tar.gz\">Official archive</a>; SHA-256: <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>. Source file SHA-256: <code>e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2</code>. Original notices remain intact. This presentation and its translations are unofficial.</p><p><a href=\"./\">Full original license</a>. Plain source references outside this manual, including deflate.c, zutil.c, test/example.c, test/minigzip.c, ChangeLog and contrib, can be found in that fixed official archive.</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>Unofficial formatting of the complete fixed zlib 1.3.2 originals. Original source: LICENSE. <a href="https://zlib.net/zlib-1.3.2.tar.gz">Official archive</a>; SHA-256: <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>. Source file SHA-256: <code>e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2</code>. Original notices remain intact. This presentation and its translations are unofficial.</p><p><a href="./">Full original license</a>. Plain source references outside this manual, including deflate.c, zutil.c, test/example.c, test/minigzip.c, ChangeLog and contrib, can be found in that fixed official archive.</p></aside>
+
 <div class="zlib-document" style="overflow-wrap:anywhere"><section data-zlib-block="0"><div style="white-space:pre-wrap;overflow-wrap:anywhere">Copyright notice:
 
 </div></section><section data-zlib-block="1"><div style="white-space:pre-wrap;overflow-wrap:anywhere"> (C) 1995-2026 Jean-loup Gailly and Mark Adler

@@ -3,6 +3,7 @@ title: "cJSON 利用ガイド"
 licenseSource: cjson-readme
 toc:
   maxLevel: 6
+documentContext: [{"kind":"editorial","html":"<aside class=\"libx-source-notes\" aria-label=\"libxによる原文注記\">\n<h2 id=\"libx-source-notes\">libxによる原文注記</h2>\n<p>上には上流の利用ガイド全体を保持しています。以下の編集上の注記では、固定版内の不一致を原文と区別して示します。</p>\n<ul>\n<li>READMEにはCMake 2.8.5以降と記載されています。同じリリースの<a href=\"https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/CMakeLists.txt#L2\">CMakeLists.txtの2行目</a>ではCMake 3.0を要求しています。1.7.19をビルドする際は、固定版のビルド設定を確認してください。</li>\n<li>Objectsの段落には<code>cJSON_AddItemReferenceToArray</code>と記載されています。固定版の<a href=\"https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/cJSON.h#L235-L236\">ヘッダーの235〜236行目</a>には、オブジェクトのメンバーキーを含む<code>cJSON_AddItemReferenceToObject(cJSON *object, const char *string, cJSON *item)</code>が別途宣言されています。原文の段落はそのまま保持しています。</li>\n<li>コード例は公開されたまま掲載しており、ここで実行したり、完全なエラー処理の実装例として検証したりはしていません。<code>create_monitor_with_helpers</code>を静的に確認すると、新しく作成したresolutionは、2回の数値追加が終わった後で初めて親配列に追加されています。先に追加処理が失敗すると、monitorを削除しても、まだ追加されていないそのオブジェクトは解放されません。また、要素を追加する関数の戻り値を確認していない箇所もあります。実運用に使う前に、メモリー割り当ての失敗と所有権を検討してください。</li>\n</ul>\n</aside>","context":{"anchor":"enjoy-cjson","label":"cJSONをお楽しみください！"}}]
 ---
 
 <div class="cjson-upstream-document">
@@ -463,12 +464,4 @@ end:
 <li>その他の<a href="/docs/cjson/v1-7-19/ja/02-license/02-contributors/">cJSONの貢献者</a></li>
 </ul>
 </div>
-<aside class="libx-source-notes" aria-label="libxによる原文注記">
-<h2 id="libx-source-notes">libxによる原文注記</h2>
-<p>上には上流の利用ガイド全体を保持しています。以下の編集上の注記では、固定版内の不一致を原文と区別して示します。</p>
-<ul>
-<li>READMEにはCMake 2.8.5以降と記載されています。同じリリースの<a href="https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/CMakeLists.txt#L2">CMakeLists.txtの2行目</a>ではCMake 3.0を要求しています。1.7.19をビルドする際は、固定版のビルド設定を確認してください。</li>
-<li>Objectsの段落には<code>cJSON_AddItemReferenceToArray</code>と記載されています。固定版の<a href="https://github.com/DaveGamble/cJSON/blob/c859b25da02955fef659d658b8f324b5cde87be3/cJSON.h#L235-L236">ヘッダーの235〜236行目</a>には、オブジェクトのメンバーキーを含む<code>cJSON_AddItemReferenceToObject(cJSON *object, const char *string, cJSON *item)</code>が別途宣言されています。原文の段落はそのまま保持しています。</li>
-<li>コード例は公開されたまま掲載しており、ここで実行したり、完全なエラー処理の実装例として検証したりはしていません。<code>create_monitor_with_helpers</code>を静的に確認すると、新しく作成したresolutionは、2回の数値追加が終わった後で初めて親配列に追加されています。先に追加処理が失敗すると、monitorを削除しても、まだ追加されていないそのオブジェクトは解放されません。また、要素を追加する関数の戻り値を確認していない箇所もあります。実運用に使う前に、メモリー割り当ての失敗と所有権を検討してください。</li>
-</ul>
-</aside>
+

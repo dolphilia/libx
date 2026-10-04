@@ -3,9 +3,10 @@ title: "Basic functions"
 licenseSource: zlib-api
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>Unofficial formatting of the complete fixed zlib 1.3.2 originals. Original source: zlib.h. <a href=\"https://zlib.net/zlib-1.3.2.tar.gz\">Official archive</a>; SHA-256: <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>. Source file SHA-256: <code>818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a</code>. Original notices remain intact. This presentation and its translations are unofficial.</p><p><a href=\"../../02-appendix/05-license/\">Full original license</a>. Plain source references outside this manual, including deflate.c, zutil.c, test/example.c, test/minigzip.c, ChangeLog and contrib, can be found in that fixed official archive.</p></aside>"},{"kind":"editorial","html":"<aside data-editorial=\"source-note\"><p>Original-source note: the stream structure defines adler; the inflate comment uses strm-&gt;adler32. Both original forms are preserved.</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>Unofficial formatting of the complete fixed zlib 1.3.2 originals. Original source: zlib.h. <a href="https://zlib.net/zlib-1.3.2.tar.gz">Official archive</a>; SHA-256: <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>. Source file SHA-256: <code>818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a</code>. Original notices remain intact. This presentation and its translations are unofficial.</p><p><a href="../../02-appendix/05-license/">Full original license</a>. Plain source references outside this manual, including deflate.c, zutil.c, test/example.c, test/minigzip.c, ChangeLog and contrib, can be found in that fixed official archive.</p></aside><aside data-editorial="source-note"><p>Original-source note: the stream structure defines adler; the inflate comment uses strm-&gt;adler32. Both original forms are preserved.</p></aside>
+
 <div class="zlib-document" style="overflow-wrap:anywhere"><div data-zlib-block="24"><h2 id="section-24" data-source-role="section"> basic functions </h2></div><a id="zlibVersion" data-editorial="anchor"></a><h3 id="nav-25" data-editorial="navigation">zlibVersion</h3><div data-zlib-block="25"><pre><code>
 
 ZEXTERN const char * ZEXPORT zlibVersion(void);

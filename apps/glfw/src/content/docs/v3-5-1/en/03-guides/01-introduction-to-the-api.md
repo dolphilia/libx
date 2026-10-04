@@ -1,9 +1,10 @@
 ---
 title: "Introduction to the API"
 description: "Initialization, errors, coordinates and version management"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The initialization section below restricts calls before initialization to the main thread. However, the reference for <a href=\"/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga9f8ffaacf3c269cc48eafbf8b9b71197\">glfwGetVersion</a> and <a href=\"/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga026abd003c8e6501981ab1662062f1c0\">glfwGetVersionString</a> in the same fixed version explicitly permits calls before initialization and from any thread. As this guide states under version compatibility, the reference takes precedence over a guide. Consult each function's reference for its thread restrictions.</p>\n</blockquote>"}]
 ---
 
-> **Libx reference note (GLFW 3.5.1):** The initialization section below restricts calls before initialization to the main thread. However, the reference for [glfwGetVersion](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga9f8ffaacf3c269cc48eafbf8b9b71197) and [glfwGetVersionString](/docs/glfw/v3-5-1/en/04-reference/01-initialization-version-error/#ga026abd003c8e6501981ab1662062f1c0) in the same fixed version explicitly permits calls before initialization and from any thread. As this guide states under version compatibility, the reference takes precedence over a guide. Consult each function's reference for its thread restrictions.
+
 
 <a id="intro_guide"></a>
 

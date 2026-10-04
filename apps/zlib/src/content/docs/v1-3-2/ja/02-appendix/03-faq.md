@@ -3,9 +3,10 @@ title: "よくある質問"
 licenseSource: zlib-faq
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>固定したzlib 1.3.2のFAQ全文を整形した英語定本からの非公式な日本語訳です。原資料：FAQ。<a href=\"https://zlib.net/zlib-1.3.2.tar.gz\">公式配布物</a>のSHA-256：<code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>。原資料のSHA-256：<code>8f64fd44e4773233f22a07c9d7a8cd83646d78c1e7c9bb79c43a9876e6ddb0d5</code>。原通知はそのまま保持しています。この整形版と翻訳は非公式です。</p><p><a href=\"../05-license/\">ライセンス原文の全文</a>。本文の外にあるソース参照（deflate.c、zutil.c、test/example.c、test/minigzip.c、ChangeLog、contribなど）は固定した公式配布物内を参照してください。</p></aside>"},{"kind":"editorial","html":"<aside data-editorial=\"source-note\"><p>以下のセキュリティ、ライセンス、環境に関する記述は、固定したzlib 1.3.2に付属するFAQの記述です。FAQ32の原文の識別子strm_total_outは構造体フィールドtotal_outと異なります。原文を黙って修正せず、両方の表記を保持しています。contribの各項目にはそれぞれのライセンスがあります。</p></aside>"},{"kind":"source","html":"<aside data-editorial=\"license\"><p>このFAQに固有の文書ライセンスは確認できませんでした。Libxの運用方針に基づき、この注釈を付けてソフトウェアのzlib LicenseをFAQに適用しています。文書固有の許諾を別途確認したという意味ではありません。原通知と免責事項は、ライセンス原文の全文へのリンクから確認できます。</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>固定したzlib 1.3.2のFAQ全文を整形した英語定本からの非公式な日本語訳です。原資料：FAQ。<a href="https://zlib.net/zlib-1.3.2.tar.gz">公式配布物</a>のSHA-256：<code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>。原資料のSHA-256：<code>8f64fd44e4773233f22a07c9d7a8cd83646d78c1e7c9bb79c43a9876e6ddb0d5</code>。原通知はそのまま保持しています。この整形版と翻訳は非公式です。</p><p><a href="../05-license/">ライセンス原文の全文</a>。本文の外にあるソース参照（deflate.c、zutil.c、test/example.c、test/minigzip.c、ChangeLog、contribなど）は固定した公式配布物内を参照してください。</p></aside><aside data-editorial="source-note"><p>以下のセキュリティ、ライセンス、環境に関する記述は、固定したzlib 1.3.2に付属するFAQの記述です。FAQ32の原文の識別子strm_total_outは構造体フィールドtotal_outと異なります。原文を黙って修正せず、両方の表記を保持しています。contribの各項目にはそれぞれのライセンスがあります。</p></aside><aside data-editorial="license"><p>このFAQに固有の文書ライセンスは確認できませんでした。承認済みの運用方針に従い、この注釈を付けてソフトウェアのzlib LicenseをFAQに適用しています。文書固有の許諾を別途確認したという意味ではありません。原通知と免責事項は、ライセンス原文の全文へのリンクから確認できます。</p></aside>
+
 <div class="zlib-document" style="overflow-wrap:anywhere"><section data-zlib-block="0"><div style="white-space:pre-wrap;overflow-wrap:anywhere">                zlibについてよくある質問
 
 ここに質問がない場合は、zlibホームページ

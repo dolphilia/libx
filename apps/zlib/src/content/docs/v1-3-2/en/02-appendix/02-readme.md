@@ -3,9 +3,10 @@ title: "README"
 licenseSource: zlib-readme
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>Unofficial formatting of the complete fixed zlib 1.3.2 originals. Original source: README. <a href=\"https://zlib.net/zlib-1.3.2.tar.gz\">Official archive</a>; SHA-256: <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>. Source file SHA-256: <code>4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f</code>. Original notices remain intact. This presentation and its translations are unofficial.</p><p><a href=\"../05-license/\">Full original license</a>. Plain source references outside this manual, including deflate.c, zutil.c, test/example.c, test/minigzip.c, ChangeLog and contrib, can be found in that fixed official archive.</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>Unofficial formatting of the complete fixed zlib 1.3.2 originals. Original source: README. <a href="https://zlib.net/zlib-1.3.2.tar.gz">Official archive</a>; SHA-256: <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>. Source file SHA-256: <code>4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f</code>. Original notices remain intact. This presentation and its translations are unofficial.</p><p><a href="../05-license/">Full original license</a>. Plain source references outside this manual, including deflate.c, zutil.c, test/example.c, test/minigzip.c, ChangeLog and contrib, can be found in that fixed official archive.</p></aside>
+
 <div class="zlib-document" style="overflow-wrap:anywhere"><section data-zlib-block="0"><div style="white-space:pre-wrap;overflow-wrap:anywhere">ZLIB DATA COMPRESSION LIBRARY
 
 </div></section><section data-zlib-block="1"><div style="white-space:pre-wrap;overflow-wrap:anywhere">zlib 1.3.2 is a general purpose data compression library.  All the code is

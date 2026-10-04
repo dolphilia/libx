@@ -1,6 +1,7 @@
 ---
 title: "build/cmake/README.md"
 licenseSource: "xxhash-cmake"
+documentContext: [{"kind":"source","html":"<h2 id=\"出典と通知\">出典と通知</h2>\n<p>記録した確認範囲では、文書専用ライセンスの表記が見つかりませんでした。Libxの運用方針に基づき、ソフトウェア本体のCC0-1.0ライセンスを、この注釈を付けて文書にも適用しています。これは運用上の判断であり、新たに取得した許諾ではありません。</p>\n<p>固定したソフトウェア版は<strong>0.8.4</strong>、出典コミットは<code>c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0</code>です。これは非公式の日本語訳です。書式、内部リンク、明示した編集者注記はLibxによる変更です。コード例の英語コメントは原文どおり保持しています。コメントは順に、任意で追加前の設定を行うこと、コマンドラインツールをビルドしないこと、静的ライブラリをビルドすること、プロジェクトにxxHashを追加すること、対象ターゲットにリンクすることを説明しています。</p>\n<p><a href=\"/docs/xxhash/v0-8-4/ja/03-notices/cmake-header/\">CMakeファイルの原通知</a></p>\n<p><a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/build/cmake/README.md\">固定した原文</a> · <a href=\"/docs/xxhash/source/v0-8-4/build/cmake/README.md.txt\">原文テキストのダウンロード</a></p>"}]
 ---
 
 # xxHashのCMakeへの組み込み
@@ -56,12 +57,3 @@ add_subdirectory(path/to/xxHash/build/cmake xxhash_build EXCLUDE_FROM_ALL)
 target_link_libraries(YourTarget PRIVATE xxHash::xxhash)
 ```
 
-## 出典と通知
-
-記録した確認範囲では、文書専用ライセンスの表記が見つかりませんでした。ユーザーが承認した運用方針に基づき、ソフトウェア本体のCC0-1.0ライセンスを、この注釈を付けて文書にも適用しています。これは運用上の判断であり、新たに取得した許諾ではありません。
-
-固定したソフトウェア版は**0.8.4**、出典コミットは`c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`です。これは非公式の日本語訳です。書式、内部リンク、明示した編集者注記はLibxによる変更です。コード例の英語コメントは原文どおり保持しています。コメントは順に、任意で追加前の設定を行うこと、コマンドラインツールをビルドしないこと、静的ライブラリをビルドすること、プロジェクトにxxHashを追加すること、対象ターゲットにリンクすることを説明しています。
-
-[CMakeファイルの原通知](/docs/xxhash/v0-8-4/ja/03-notices/cmake-header/)
-
-[固定した原文](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/build/cmake/README.md) · [原文テキストのダウンロード](/docs/xxhash/source/v0-8-4/build/cmake/README.md.txt)

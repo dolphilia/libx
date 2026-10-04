@@ -3,14 +3,10 @@ title: "Sources and original license notices"
 licenseSource: spdlog-license
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<p>The guide combines the spdlog 1.17.0 README at software commit <code>79524ddd08a4ec981b7fea76afd08ee05f83755d</code> and the independent official Wiki snapshot of 2025-10-15 at commit <code>d384272cd5320e27b041ae92625040aa6db71a1e</code>. The Wiki is not claimed to be a manual tagged for 1.17.0. Original code examples, historical statements and notices are preserved. This is an unofficial presentation and Japanese translation project; Libx annotations identify presentation and version differences.</p>\n<p>No separate documentation license was identified for the Wiki. Under Libx’s operating policy, the software MIT License is applied to the Wiki with an annotation on each page. This is an operational judgment, not newly obtained documentation permission. Third-party Japanese articles examined during candidate research are not reused. The optional fmt exception below applies to compiled machine-executable object form, not to document text.</p>"}]
 ---
 
 # Sources and original license notices
-
-The guide combines the spdlog 1.17.0 README at software commit `79524ddd08a4ec981b7fea76afd08ee05f83755d` and the independent official Wiki snapshot of 2025-10-15 at commit `d384272cd5320e27b041ae92625040aa6db71a1e`. The Wiki is not claimed to be a manual tagged for 1.17.0. Original code examples, historical statements and notices are preserved. This is an unofficial presentation and Japanese translation project; Libx annotations identify presentation and version differences.
-
-No separate documentation license was identified for the Wiki. Under the approved operating policy, the software MIT License is applied to the Wiki with an annotation on each page. This is an operational judgment, not newly obtained documentation permission. Third-party Japanese articles examined during candidate research are not reused. The optional fmt exception below applies to compiled machine-executable object form, not to document text.
-
 ## LICENSE
 
 <pre data-original-notice="LICENSE" style="white-space:pre-wrap;overflow-wrap:anywhere">The MIT License (MIT)

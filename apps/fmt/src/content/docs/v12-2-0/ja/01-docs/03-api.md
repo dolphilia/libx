@@ -1,6 +1,7 @@
 ---
 title: "APIリファレンス"
 licenseSource: "fmt-12-2-0"
+documentContext: [{"kind":"editorial","html":"<aside class=\"fmt-editorial-note\" role=\"note\"><p><strong>fmt 12.2.0に対する編集注。</strong> 上の原文リストには、<code>FMT_OPTIMIZE_SIZE=1</code>でロケールサポートが無効になるとあります。一方、<a href=\"https://github.com/fmtlib/fmt/blob/1be298e1bd68957e4cd352e1f676f00e07dcfb57/include/fmt/base.h#L890-L892\">固定版のヘッダー</a>では、<code>FMT_USE_LOCALE</code>が明示的に定義されていない場合、<code>(FMT_OPTIMIZE_SIZE &lt;= 1)</code>として定義されます。そのため、既定ではレベル1で有効、レベル2で無効です。<code>FMT_USE_LOCALE</code>を明示的に設定した場合は、その設定が優先されます。上には原文の記述を保持しています。</p></aside>","context":{"anchor":"macros","label":"マクロ"}}]
 ---
 
 <h1 id="api-reference">APIリファレンス</h1>
@@ -913,7 +914,7 @@ licenseSource: "fmt-12-2-0"
 <li><code>2</code> - 一部のUnicode機能と名前付き引数を無効にし、より積極的な最適化を適用します</li>
 </ul></li>
 </ul>
-<aside class="fmt-editorial-note" role="note"><p><strong>fmt 12.2.0に対する編集注。</strong> 上の原文リストには、<code>FMT_OPTIMIZE_SIZE=1</code>でロケールサポートが無効になるとあります。一方、<a href="https://github.com/fmtlib/fmt/blob/1be298e1bd68957e4cd352e1f676f00e07dcfb57/include/fmt/base.h#L890-L892">固定版のヘッダー</a>では、<code>FMT_USE_LOCALE</code>が明示的に定義されていない場合、<code>(FMT_OPTIMIZE_SIZE &lt;= 1)</code>として定義されます。そのため、既定ではレベル1で有効、レベル2で無効です。<code>FMT_USE_LOCALE</code>を明示的に設定した場合は、その設定が優先されます。上には原文の記述を保持しています。</p></aside>
+
 
 <h3 id="binary-size-optimization">バイナリーサイズの最適化</h3>
 <p>一部の機能を制限して{fmt}のバイナリーサイズをできる限り小さくするには、次の設定を使えます。</p>

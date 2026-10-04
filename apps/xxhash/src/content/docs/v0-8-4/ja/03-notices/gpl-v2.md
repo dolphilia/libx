@@ -1,11 +1,12 @@
 ---
 title: "gpl-v2 — 原通知"
 licenseSource: "xxhash-cli"
+documentContext: [{"kind":"source","html":"<p>原通知を変更せず保持しています。</p>"},{"kind":"source","html":"<p><a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/cli/COPYING\">固定版の原文</a></p>"},{"kind":"editorial","html":"<p>以下は内容理解のための非公式訳です。上記の英語のライセンス原文を変更せず保持しており、この訳は原文を置き換えるものではありません。</p>","context":{"anchor":"非公式の日本語訳","label":"非公式の日本語訳"}}]
 ---
 
 # gpl-v2
 
-原通知を変更せず保持しています。
+
 
 ```text
                     GNU GENERAL PUBLIC LICENSE
@@ -350,11 +351,11 @@ Public License instead of this License.
 
 ```
 
-[固定版の原文](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/cli/COPYING)
+
 
 ## 非公式の日本語訳
 
-以下は内容理解のための非公式訳です。上記の英語のライセンス原文を変更せず保持しており、この訳は原文を置き換えるものではありません。
+
 
 ### GNU一般公衆利用許諾書
 

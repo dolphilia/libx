@@ -23,28 +23,28 @@
           "value": "Problem",
           "position": {
             "start": {
-              "line": 5,
+              "line": 3,
               "column": 5,
-              "offset": 1044
+              "offset": 66
             },
             "end": {
-              "line": 5,
+              "line": 3,
               "column": 12,
-              "offset": 1051
+              "offset": 73
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 5,
+          "line": 3,
           "column": 1,
-          "offset": 1040
+          "offset": 62
         },
         "end": {
-          "line": 5,
+          "line": 3,
           "column": 12,
-          "offset": 1051
+          "offset": 73
         }
       }
     },
@@ -56,14 +56,14 @@
           "value": "Because spdlog is header-only, building shared libraries and using it in a main program will not share the registry between them.\nThis means that calls to functions like ",
           "position": {
             "start": {
-              "line": 7,
+              "line": 5,
               "column": 1,
-              "offset": 1053
+              "offset": 75
             },
             "end": {
-              "line": 8,
+              "line": 6,
               "column": 41,
-              "offset": 1223
+              "offset": 245
             }
           }
         },
@@ -72,14 +72,14 @@
           "value": "spdlog::set_level(spdlog::level::level_enum::info)",
           "position": {
             "start": {
-              "line": 8,
+              "line": 6,
               "column": 41,
-              "offset": 1223
+              "offset": 245
             },
             "end": {
-              "line": 8,
+              "line": 6,
               "column": 97,
-              "offset": 1279
+              "offset": 301
             }
           }
         },
@@ -88,28 +88,28 @@
           "value": " will not change loggers in DLLs.",
           "position": {
             "start": {
-              "line": 8,
+              "line": 6,
               "column": 97,
-              "offset": 1279
+              "offset": 301
             },
             "end": {
-              "line": 8,
+              "line": 6,
               "column": 130,
-              "offset": 1312
+              "offset": 334
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 7,
+          "line": 5,
           "column": 1,
-          "offset": 1053
+          "offset": 75
         },
         "end": {
-          "line": 8,
+          "line": 6,
           "column": 130,
-          "offset": 1312
+          "offset": 334
         }
       }
     },
@@ -122,28 +122,28 @@
           "value": "Workaround",
           "position": {
             "start": {
-              "line": 10,
+              "line": 8,
               "column": 5,
-              "offset": 1318
+              "offset": 340
             },
             "end": {
-              "line": 10,
+              "line": 8,
               "column": 15,
-              "offset": 1328
+              "offset": 350
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 10,
+          "line": 8,
           "column": 1,
-          "offset": 1314
+          "offset": 336
         },
         "end": {
-          "line": 10,
+          "line": 8,
           "column": 15,
-          "offset": 1328
+          "offset": 350
         }
       }
     },
@@ -155,28 +155,28 @@
           "value": "What can be done is to register the logger in both registries.",
           "position": {
             "start": {
-              "line": 12,
+              "line": 10,
               "column": 1,
-              "offset": 1330
+              "offset": 352
             },
             "end": {
-              "line": 12,
+              "line": 10,
               "column": 63,
-              "offset": 1392
+              "offset": 414
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 12,
+          "line": 10,
           "column": 1,
-          "offset": 1330
+          "offset": 352
         },
         "end": {
-          "line": 12,
+          "line": 10,
           "column": 63,
-          "offset": 1392
+          "offset": 414
         }
       }
     },
@@ -187,14 +187,14 @@
       "value": "/*\n * Disclaimer:\n *   This was not compiled but extracted from documentation and some code.\n */\n\n// mylibrary.h\n// In library, we skip the symbol exporting part\n\n#include <memory>\n#include <vector>\n#include <spdlog/spdlog.h>\n#include <spdlog/logger.h>\n#include <spdlog/sinks/stdout_color_sinks.h>\n\nnamespace library\n{\nstatic const std::string logger_name = \"example\";\n\nstd::shared_ptr<spdlog::logger> setup_logger(std::vector<spdlog::sink_ptr> sinks)\n{\n    auto logger = spdlog::get(logger_name);\n    if(not logger)\n    {\n        if(sinks.size() > 0)\n        {\n            logger = std::make_shared<spdlog::logger>(logger_name,\n                                                      std::begin(sinks),\n                                                      std::end(sinks));\n            spdlog::register_logger(logger);\n        }\n        else\n        {\n            logger = spdlog::stdout_color_mt(logger_name);\n        }\n    }\n\n    return logger;\n}\n\nvoid test(std::string message)\n{\n    auto logger = spdlog::get(logger_name);\n    if(logger)\n    {\n        logger->debug(\"{}::{}\", __FUNCTION__, message);\n    }\n}\n\n}",
       "position": {
         "start": {
-          "line": 14,
+          "line": 12,
           "column": 1,
-          "offset": 1394
+          "offset": 416
         },
         "end": {
-          "line": 64,
+          "line": 62,
           "column": 4,
-          "offset": 2519
+          "offset": 1541
         }
       }
     },
@@ -205,14 +205,14 @@
       "value": "// In the main program\n\n#include <mylibrary.h>\n#include <spdlog/logger.h>\n#include <spdlog/sinks/daily_file_sink.h>\n#include <spdlog/sinks/stdout_sinks.h>\n\nint main()\n{\n    // We assume that we load the library here\n    ...\n\n    // Let's use the library\n    std::vector<spdlog::sink_ptr> sinks;\n    sinks.push_back(std::make_shared<spdlog::sinks::stdout_sink_st>());\n    sinks.push_back(std::make_shared<spdlog::sinks::daily_file_sink_st>(\"logfile\", 23, 59));\n\n    auto logger = library::setup_logger(sinks);\n\n    spdlog::set_level(spdlog::level::level_enum::debug); // No effect for the library.\n    library::test(\"Hello World!\"); // No logging\n\n    spdlog::register_logger(logger);\n\n    // Now this will also affect the library logger\n    spdlog::set_level(spdlog::level::level_enum::debug);\n\n    library::test(\"Hello World!\"); // Hurray !\n\n    return 0;\n}",
       "position": {
         "start": {
-          "line": 66,
+          "line": 64,
           "column": 1,
-          "offset": 2521
+          "offset": 1543
         },
         "end": {
-          "line": 98,
+          "line": 96,
           "column": 4,
-          "offset": 3390
+          "offset": 2412
         }
       }
     }

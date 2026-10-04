@@ -3,9 +3,10 @@ title: "ライセンス原文と日本語訳"
 licenseSource: zlib-license
 toc:
   maxLevel: 6
+documentContext: [{"kind":"source","html":"<aside data-editorial=\"provenance\"><p>固定したzlib 1.3.2のLICENSE全文の非公式な日本語訳です。原資料：LICENSE。 <a href=\"https://zlib.net/zlib-1.3.2.tar.gz\">公式配布物</a>のSHA-256： <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>。原資料のSHA-256： <code>e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2</code>。原通知全文は下記に改変せず併記しています。この整形版と翻訳は非公式です。</p><p><a href=\"./\">ライセンス原文の全文</a>。本文の外にあるソース参照（deflate.c、zutil.c、test/example.c、test/minigzip.c、ChangeLog、contribなど）は固定した公式配布物内を参照してください。</p></aside>"}]
 ---
 
-<aside data-editorial="provenance"><p>固定したzlib 1.3.2のLICENSE全文の非公式な日本語訳です。原資料：LICENSE。 <a href="https://zlib.net/zlib-1.3.2.tar.gz">公式配布物</a>のSHA-256： <code>bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16</code>。原資料のSHA-256： <code>e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2</code>。原通知全文は下記に改変せず併記しています。この整形版と翻訳は非公式です。</p><p><a href="./">ライセンス原文の全文</a>。本文の外にあるソース参照（deflate.c、zutil.c、test/example.c、test/minigzip.c、ChangeLog、contribなど）は固定した公式配布物内を参照してください。</p></aside>
+
 <div class="zlib-document" style="overflow-wrap:anywhere"><section data-zlib-block="0"><div style="white-space:pre-wrap;overflow-wrap:anywhere">著作権表示：
 
 </div></section><section data-zlib-block="1"><div style="white-space:pre-wrap;overflow-wrap:anywhere"> (C) 1995-2026 Jean-loup Gailly and Mark Adler

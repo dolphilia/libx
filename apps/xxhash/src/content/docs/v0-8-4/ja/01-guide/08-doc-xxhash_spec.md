@@ -1,6 +1,7 @@
 ---
 title: "doc/xxhash_spec.md"
 licenseSource: "xxhash-spec"
+documentContext: [{"kind":"source","html":"<h2 id=\"出典と通知\">出典と通知</h2>\n<p>非公式の日本語訳です。原文は、通知を保持することを条件として、翻訳および編集物への収録を明示的に許可しています。</p>\n<p>固定したソフトウェアのバージョン：<strong>0.8.4</strong>。ソースコミット：<code>c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0</code>。文書の仕様バージョンは前掲の0.2.0です。書式、内部リンク、および明示した編集注記はLibxによる変更です。</p>\n<p><a href=\"/docs/xxhash/v0-8-4/en/03-notices/spec-notice/\">原文の通知全文</a></p>\n<p><a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/doc/xxhash_spec.md\">固定した原典</a> · <a href=\"/docs/xxhash/source/v0-8-4/doc/xxhash_spec.md.txt\">原文のダウンロード</a></p>\n<h3 id=\"libx編集注記シードとシークレットのapi表記\">Libx編集注記：シードとシークレットのAPI表記</h3>\n<p>概要の「同時に指定することはできません」と<code>*_withSecretAndSeed</code>という表記は、仕様原文に従っています。固定した0.8.4の実装では、API名は<code>XXH3_64bits_withSecretandSeed</code>および<code>XXH3_128bits_withSecretandSeed</code>です。どちらもシークレットとシードを引数として受け取りますが、入力が240バイト以下ならシードと既定のシークレットを使い、それを超える入力では指定されたシークレットを使います。したがって、原文の記述を、両方の引数を渡せないという意味に解釈しないでください。</p>\n<p>根拠：<a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h#L6489-L6495\">固定したヘッダーの64ビット実装</a>、<a href=\"https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h#L7319-L7325\">128ビット実装</a>。</p>\n<h3 id=\"libx編集注記ストライプ処理のオフセット\">Libx編集注記：ストライプ処理のオフセット</h3>\n<p>大きい入力の手順2-1にある「その後の各ラウンド」は原文の表現です。同じ箇所の疑似コードでは、ブロック内の各ストライプについて<code>n</code>を増やし、シークレットのオフセットに<code>n*8</code>を使っています。</p>"}]
 ---
 
 xxHashの高速ダイジェストアルゴリズム
@@ -867,22 +868,3 @@ v0.2.0：Adrien WuによるXXH3仕様を追加。
 v0.1.1：定数を選ぶ理由についての注記を追加。  
 v0.1.0：初版。
 
-## 出典と通知
-
-非公式の日本語訳です。原文は、通知を保持することを条件として、翻訳および編集物への収録を明示的に許可しています。
-
-固定したソフトウェアのバージョン：**0.8.4**。ソースコミット：`c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`。文書の仕様バージョンは前掲の0.2.0です。書式、内部リンク、および明示した編集注記はLibxによる変更です。
-
-[原文の通知全文](/docs/xxhash/v0-8-4/en/03-notices/spec-notice/)
-
-[固定した原典](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/doc/xxhash_spec.md) · [原文のダウンロード](/docs/xxhash/source/v0-8-4/doc/xxhash_spec.md.txt)
-
-### Libx編集注記：シードとシークレットのAPI表記
-
-概要の「同時に指定することはできません」と`*_withSecretAndSeed`という表記は、仕様原文に従っています。固定した0.8.4の実装では、API名は`XXH3_64bits_withSecretandSeed`および`XXH3_128bits_withSecretandSeed`です。どちらもシークレットとシードを引数として受け取りますが、入力が240バイト以下ならシードと既定のシークレットを使い、それを超える入力では指定されたシークレットを使います。したがって、原文の記述を、両方の引数を渡せないという意味に解釈しないでください。
-
-根拠：[固定したヘッダーの64ビット実装](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h#L6489-L6495)、[128ビット実装](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h#L7319-L7325)。
-
-### Libx編集注記：ストライプ処理のオフセット
-
-大きい入力の手順2-1にある「その後の各ラウンド」は原文の表現です。同じ箇所の疑似コードでは、ブロック内の各ストライプについて`n`を増やし、シークレットのオフセットに`n*8`を使っています。

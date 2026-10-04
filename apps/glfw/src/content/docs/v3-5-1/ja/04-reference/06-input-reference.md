@@ -1,6 +1,7 @@
 ---
 title: "入力リファレンス"
 description: "GLFW 3.5.1 入力リファレンス"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx参照注記（GLFW 3.5.1）:</strong> 上流のモード一覧には <code>GLFW_UNLIMITED_MOUSE_BUTTONS</code> がありません。<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L559-L583\">固定版の実装</a>はこのモードを受け付け、現在の値を返します。上流の一覧は保持しています。</p>\n</blockquote>","context":{"anchor":"functions","label":"関数"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx参照注記（GLFW 3.5.1）:</strong> 上の段落は <code>GLFW_FEATURE_UNAVAILABLE</code> と記載しています。<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L668-L687\">固定版の実装</a>は raw mouse motion が未対応の場合、<code>GLFW_PLATFORM_ERROR</code> を発生させます。これは <code>glfwRawMouseMotionSupported</code> の説明と一致します。上流の記述は上に保持しています。</p>\n</blockquote>","context":{"anchor":"functions","label":"関数"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx参照注記（GLFW 3.5.1）:</strong> この段落には説明がありますが、下の引数表には <code>GLFW_UNLIMITED_MOUSE_BUTTONS</code> がありません。<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L689-L693\">固定版の実装</a>はこのモードを受け付けます。上流の表は保持しています。</p>\n</blockquote>","context":{"anchor":"functions","label":"関数"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx参照注記（GLFW 3.5.1）:</strong> 上の「NORMAL の場合のみ」という説明は、キャプチャーに対応するバックエンドについては不完全です。固定版の <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L225-L242\">Win32</a>、<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L457-L474\">X11</a>、<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L3307-L3353\">Wayland</a> の実装は、<code>GLFW_CURSOR_CAPTURED</code> でもカーソル画像を選択します。固定版の <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/cocoa_window.m#L1669-L1683\">Cocoa 実装</a>は、キャプチャーモードに対して <code>GLFW_FEATURE_UNIMPLEMENTED</code> を報告します。上流の記述は上に保持しています。</p>\n</blockquote>","context":{"anchor":"functions","label":"関数"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx参照注記（GLFW 3.5.1）:</strong> 上の「いずれも」という説明には例外があります。固定版の<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1225-L1255\">ユーザーポインター関数</a>は、接続状態をポーリングせず、ジョイスティックオブジェクトが確保されているかを確認します。各関数の説明どおり、切断コールバック中でも使用できます。固定版の<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L414-L426\">コールバック処理</a>は、切断状態にしてからコールバックを呼び出します。上流の記述は上に保持しています。</p>\n</blockquote>","context":{"anchor":"functions","label":"関数"}},{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx参照注記（GLFW 3.5.1）:</strong> 上流の段落は「正の」と記載しています。<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1494-L1507\">固定版の実装</a>はゼロも許容し、有限でない値、0.0 未満、18446744073.0 を超える値を拒否します。上流の記述は上に保持しています。</p>\n</blockquote>","context":{"anchor":"functions","label":"関数"}}]
 ---
 
 # 入力リファレンス
@@ -1445,7 +1446,7 @@ struct GLFWwindow GLFWwindow
 
 この関数は、指定されたウィンドウの入力オプション値を返します。モードは <a href="/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_CURSOR" class="el">GLFW_CURSOR</a>、<a href="/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_STICKY_KEYS" class="el">GLFW_STICKY_KEYS</a>、<a href="/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_STICKY_MOUSE_BUTTONS" class="el">GLFW_STICKY_MOUSE_BUTTONS</a>、<a href="/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_LOCK_KEY_MODS" class="el">GLFW_LOCK_KEY_MODS</a>、または <a href="/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#GLFW_RAW_MOUSE_MOTION" class="el">GLFW_RAW_MOUSE_MOTION</a> のいずれかでなければなりません。
 
-> **Libx参照注記（GLFW 3.5.1）:** 上流のモード一覧には `GLFW_UNLIMITED_MOUSE_BUTTONS` がありません。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L559-L583)はこのモードを受け付け、現在の値を返します。上流の一覧は保持しています。
+
 
 引数  
 |  |  |  |
@@ -1513,11 +1514,11 @@ struct GLFWwindow GLFWwindow
 
 モードが `GLFW_RAW_MOUSE_MOTION` の場合、値はカーソル無効時の生の（拡大縮小も加速もされない）マウス移動を有効にする `GLFW_TRUE`、または無効にする `GLFW_FALSE` でなければなりません。生の移動がサポートされていない場合、設定しようとすると <a href="/docs/glfw/v3-5-1/ja/04-reference/02-error-codes/#ga526fba20a01504a8086c763b6ca53ce5" class="el">GLFW_FEATURE_UNAVAILABLE</a> が発生します。サポートの確認には <a href="/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#gae4ee0dbd0d256183e1ea4026d897e1c2" class="el">glfwRawMouseMotionSupported</a> を呼び出してください。
 
-> **Libx参照注記（GLFW 3.5.1）:** 上の段落は `GLFW_FEATURE_UNAVAILABLE` と記載しています。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L668-L687)は raw mouse motion が未対応の場合、`GLFW_PLATFORM_ERROR` を発生させます。これは `glfwRawMouseMotionSupported` の説明と一致します。上流の記述は上に保持しています。
+
 
 モードが `GLFW_UNLIMITED_MOUSE_BUTTONS` の場合、値はマウスボタンコールバック呼び出し時のボタン制限を無効にする `GLFW_TRUE`、またはコールバックへ送るボタンを `GLFW_MOUSE_BUTTON_LAST` までのマウスボタントークン値に制限する `GLFW_FALSE` でなければなりません。
 
-> **Libx参照注記（GLFW 3.5.1）:** この段落には説明がありますが、下の引数表には `GLFW_UNLIMITED_MOUSE_BUTTONS` がありません。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L689-L693)はこのモードを受け付けます。上流の表は保持しています。
+
 
 引数  
 |  |  |  |
@@ -2216,7 +2217,7 @@ UTF-8 でエンコードされたレイアウト固有のキー名、または `
 
 この関数は、カーソルが指定されたウィンドウのコンテンツ領域上にあるときに使用するカーソル画像を設定します。設定したカーソルは、ウィンドウの<a href="/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#cursor_mode" class="el">カーソルモード</a>が `GLFW_CURSOR_NORMAL` の場合にのみ表示されます。
 
-> **Libx参照注記（GLFW 3.5.1）:** 上の「NORMAL の場合のみ」という説明は、キャプチャーに対応するバックエンドについては不完全です。固定版の [Win32](https://github.com/glfw/glfw/blob/3.5.1/src/win32_window.c#L225-L242)、[X11](https://github.com/glfw/glfw/blob/3.5.1/src/x11_window.c#L457-L474)、[Wayland](https://github.com/glfw/glfw/blob/3.5.1/src/wl_window.c#L3307-L3353) の実装は、`GLFW_CURSOR_CAPTURED` でもカーソル画像を選択します。固定版の [Cocoa 実装](https://github.com/glfw/glfw/blob/3.5.1/src/cocoa_window.m#L1669-L1683)は、キャプチャーモードに対して `GLFW_FEATURE_UNIMPLEMENTED` を報告します。上流の記述は上に保持しています。
+
 
 一部のプラットフォームでは、ウィンドウが入力フォーカスも持っていなければ、設定したカーソルが表示されないことがあります。
 
@@ -2857,7 +2858,7 @@ GLFW が合成キーイベントを生成する必要がある場合があり、
 
 ジョイスティック ID を受け取るほかの関数は、いずれも処理を行う前にジョイスティックの存在を確認するため、それらの関数より先にこの関数を呼び出す必要はありません。
 
-> **Libx参照注記（GLFW 3.5.1）:** 上の「いずれも」という説明には例外があります。固定版の[ユーザーポインター関数](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1225-L1255)は、接続状態をポーリングせず、ジョイスティックオブジェクトが確保されているかを確認します。各関数の説明どおり、切断コールバック中でも使用できます。固定版の[コールバック処理](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L414-L426)は、切断状態にしてからコールバックを呼び出します。上流の記述は上に保持しています。
+
 
 引数  
 |  |  |  |
@@ -3876,7 +3877,7 @@ UTF-8 エンコード文字列としてのクリップボードの内容。<a hr
 
 この関数は、現在の GLFW 時刻を秒単位で設定します。値は、約 584.5 年に相当する 18446744073.0 以下の、正の有限数でなければなりません。
 
-> **Libx参照注記（GLFW 3.5.1）:** 上流の段落は「正の」と記載しています。[固定版の実装](https://github.com/glfw/glfw/blob/3.5.1/src/input.c#L1494-L1507)はゼロも許容し、有限でない値、0.0 未満、18446744073.0 を超える値を拒否します。上流の記述は上に保持しています。
+
 
 この関数と <a href="/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#gaa6cf4e7a77158a3b8fd00328b1720a4a" class="el">glfwGetTime</a> は、<a href="/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#ga3289ee876572f6e91f06df3a24824443" class="el">glfwGetTimerFrequency</a> と <a href="/docs/glfw/v3-5-1/ja/04-reference/06-input-reference/#ga09b2bd37d328e0b9456c7ec575cc26aa" class="el">glfwGetTimerValue</a> の上に構築されたヘルパー関数です。
 
