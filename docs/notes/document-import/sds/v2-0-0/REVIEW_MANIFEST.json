@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "scope": [
+    "01-guide/01-guide.md",
+    "01-guide/02-guide.md",
+    "01-guide/03-guide.md",
+    "01-guide/04-guide.md",
+    "01-guide/05-guide.md",
+    "01-guide/06-guide.md",
+    "01-guide/07-guide.md",
+    "01-guide/08-guide.md"
+  ],
+  "completedPages": 8,
+  "unreviewedPages": 0,
+  "reviewPass": "separate after saved drafts; corrections only affected token/dependencies revisited",
+  "apiReferencesEnglishOnly": 4,
+  "pages": [
+    {
+      "id": "01-guide/01-guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T20:03:49.328750+00:00",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/sds/v2-0-0/source/guide/01-guide/01-guide.md",
+        "sha256": "f4fb8c296e826dee5de2514bf80b69b79e0fedc7db087ae8ebba096e3b8f0dcd",
+        "coverage": [
+          [
+            1,
+            118
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/en/01-guide/01-guide.md",
+        "sha256": "3618b7394b42936f68259786ec295567d962758eccd63435dbf4c5298ee62e7d",
+        "coverage": [
+          [
+            1,
+            75
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/ja/01-guide/01-guide.md",
+        "sha256": "a65b99c142aed559fb12b0ccbfab874268900a55d13608db34264d7726dbad06",
+        "coverage": [
+          [
+            1,
+            46
+          ]
+        ]
+      },
+      "sourceBodySHA256": "8a6be0e9ebfcb0cc46cf1af5dd741eec4a988cd593c93426e6d0ac2dc042ebc8",
+      "translationBodySHA256": "112bc3c0de1aac4fe3cf9b1d859035cdd0100f1ebe489f7ad967075c00a0cf8a",
+      "findings": [
+        "27本文ブロック/7codeを保存後別パスでEN/JA対照。バイナリー非互換/API99%/可変header、read-only互換、返値再代入/共有参照/キャッシュ局所性の条件・因果を保持。"
+      ],
+      "passDescription": "草稿を全8章保存した後、独立した読解パスで全161本文ブロック/inline値をEN/JA対照し、全56原code/図表記を読んで文脈を確認。機械code/構造保全は補助証拠。API/header4英語参照は全文意味review対象外。",
+      "proseBlocks": 27,
+      "codeBlocks": 7,
+      "comparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-860/01-guide-review-pair.txt",
+        "sha256": "281b156838fbfdafd8a91258bc47afa6696564687c199f6ccd792c03075d01f1"
+      },
+      "metadataDelta": {
+        "path": "docs/notes/document-import/sds/v2-0-0/FOOTER_DELTA.json",
+        "sha256": "85459db1e4e4d372d3cf3bbaf3d5cbc09a0e0507db5805281228a08f3c9e4a90"
+      }
+    },
+    {
+      "id": "01-guide/02-guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T20:03:49.328750+00:00",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/sds/v2-0-0/source/guide/01-guide/02-guide.md",
+        "sha256": "3c99a62814a0f247bf1b1973a9ff0e4246fc14f9466df9818ce4eec87b10f379",
+        "coverage": [
+          [
+            1,
+            191
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/en/01-guide/02-guide.md",
+        "sha256": "a9142c8c46d73454b588dacec97f1903198c68013258f5f29950f520fe8b244f",
+        "coverage": [
+          [
+            1,
+            90
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/ja/01-guide/02-guide.md",
+        "sha256": "173f27abfe4d1add5b08173b3b39c5c88ded4b6662cdb1086094d0918d13c566",
+        "coverage": [
+          [
+            1,
+            60
+          ]
+        ]
+      },
+      "sourceBodySHA256": "ab62059085ace963e4b0aac62676073420bc99a8c6f8b6a55c2ee215b48b2997",
+      "translationBodySHA256": "9299741f7a6f1284263b5092cfa8d6db2bbf906a72a07952e0b355e7dc708902",
+      "findings": [
+        "30本文ブロック/15codeを保存後別パス対照。char*/sds alias、newlen/empty/dup、O(1)/binary-safe/途中NUL/末尾s[4]、NULLfree/連結3方式/growzeroを保持。型説明のinline順序だけ日本語語順に変更、値・個数は同一。"
+      ],
+      "passDescription": "草稿を全8章保存した後、独立した読解パスで全161本文ブロック/inline値をEN/JA対照し、全56原code/図表記を読んで文脈を確認。機械code/構造保全は補助証拠。API/header4英語参照は全文意味review対象外。",
+      "proseBlocks": 30,
+      "codeBlocks": 15,
+      "comparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-860/02-guide-review-pair.txt",
+        "sha256": "812b0f58c45dd4eec80b40ce868f7261217266fd745a99217539ba5a6f75a821"
+      },
+      "metadataDelta": {
+        "path": "docs/notes/document-import/sds/v2-0-0/FOOTER_DELTA.json",
+        "sha256": "85459db1e4e4d372d3cf3bbaf3d5cbc09a0e0507db5805281228a08f3c9e4a90"
+      }
+    },
+    {
+      "id": "01-guide/03-guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T20:03:49.328750+00:00",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/sds/v2-0-0/source/guide/01-guide/03-guide.md",
+        "sha256": "2731b9cda52317128e5a1f398a7938b882a6f2113ac4800066674823d36e45f9",
+        "coverage": [
+          [
+            1,
+            60
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/en/01-guide/03-guide.md",
+        "sha256": "f3c4d2377d0b58a4877b1f6f27ed85ef269a0d9ab4bd6b555437f693f537f67c",
+        "coverage": [
+          [
+            1,
+            29
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/ja/01-guide/03-guide.md",
+        "sha256": "7264aaf7db9a6e91e48053daa987fff1bf5f847c9193079ea131b03f78a3f9c1",
+        "coverage": [
+          [
+            1,
+            25
+          ]
+        ]
+      },
+      "sourceBodySHA256": "f857fe24b0c37a2484c17c79b16f04b9a60eceebce59d2f6e1a0900c2223ccb4",
+      "translationBodySHA256": "55ca5631b09fe1fc94b7892ab967574b7eb3a38fd4d1f25d51d12c95de2e6b2f",
+      "findings": [
+        "9本文ブロック/6codeを保存後別パス対照。printf形式連結/空文字列への連結/整数変換の性能差/sdsfromlonglongを保持。原コードの署名表記もそのまま。"
+      ],
+      "passDescription": "草稿を全8章保存した後、独立した読解パスで全161本文ブロック/inline値をEN/JA対照し、全56原code/図表記を読んで文脈を確認。機械code/構造保全は補助証拠。API/header4英語参照は全文意味review対象外。",
+      "proseBlocks": 9,
+      "codeBlocks": 6,
+      "comparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-860/03-guide-review-pair.txt",
+        "sha256": "2f7a689a955644545b906402ac76f7c1a461dec0788ed915c646284cb794bcf4"
+      },
+      "metadataDelta": {
+        "path": "docs/notes/document-import/sds/v2-0-0/FOOTER_DELTA.json",
+        "sha256": "85459db1e4e4d372d3cf3bbaf3d5cbc09a0e0507db5805281228a08f3c9e4a90"
+      }
+    },
+    {
+      "id": "01-guide/04-guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T20:03:49.328750+00:00",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/sds/v2-0-0/source/guide/01-guide/04-guide.md",
+        "sha256": "ec6faeacb0337eb282a0a9978e42d19c4d8ddf44f5fe20961481392ebe3c6b55",
+        "coverage": [
+          [
+            1,
+            193
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/en/01-guide/04-guide.md",
+        "sha256": "b0794f08de63966c324da4f96d5a631036c26eff1a3f671c7f67e011fe067ce6",
+        "coverage": [
+          [
+            1,
+            109
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/ja/01-guide/04-guide.md",
+        "sha256": "f0972d1925ce53a72707a27364e95917b05adc762df27ae72b1f5f7ae0bde8e2",
+        "coverage": [
+          [
+            1,
+            53
+          ]
+        ]
+      },
+      "sourceBodySHA256": "dca39de375a954004cd1b4376758db186fbee0cb135871221aa9b7ead210ce53",
+      "translationBodySHA256": "e7ac14932ed1476973fea7355682c3285cfe2f371adf368454c3771843445051",
+      "findings": [
+        "31本文ブロック/10codeを保存後別パス対照。trimの両端集合/間の空白/0-basedと負index/送信済みbuffer除去、copy容量再利用、reprのescape規則4項/逆変換を保持。原文null戻り値等は既存注記で補い、原文自体を技術監査しない。"
+      ],
+      "passDescription": "草稿を全8章保存した後、独立した読解パスで全161本文ブロック/inline値をEN/JA対照し、全56原code/図表記を読んで文脈を確認。機械code/構造保全は補助証拠。API/header4英語参照は全文意味review対象外。",
+      "proseBlocks": 31,
+      "codeBlocks": 10,
+      "comparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-860/04-guide-review-pair.txt",
+        "sha256": "ee170599e8ff7d6285805013b83c043238afad422dcbc8e438efbd42efe96805"
+      },
+      "metadataDelta": {
+        "path": "docs/notes/document-import/sds/v2-0-0/FOOTER_DELTA.json",
+        "sha256": "85459db1e4e4d372d3cf3bbaf3d5cbc09a0e0507db5805281228a08f3c9e4a90"
+      }
+    },
+    {
+      "id": "01-guide/05-guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T20:03:49.328750+00:00",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/sds/v2-0-0/source/guide/01-guide/05-guide.md",
+        "sha256": "ac653cfccb429f706a06b3512ed404d9597e8308ec31010212daad9a0d11a4a7",
+        "coverage": [
+          [
+            1,
+            133
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/en/01-guide/05-guide.md",
+        "sha256": "f57731d8b40ac61175b16c6d03f1a4ac98f4e118e8529c5eb85850d2537ca80f",
+        "coverage": [
+          [
+            1,
+            76
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/ja/01-guide/05-guide.md",
+        "sha256": "bd31369fb502896be1bd00788a56494ea2befcb900b3f29e131e86491ec8c1fe",
+        "coverage": [
+          [
+            1,
+            46
+          ]
+        ]
+      },
+      "sourceBodySHA256": "3a07f7320a6f254ff6ec4378ebc6720ffc6aa7ad5497bfd975f98c9d684c2473",
+      "translationBodySHA256": "eeb5fde99293df423a158baaf062a7c5b08c353475788126938b07264952a0a2",
+      "findings": [
+        "26本文ブロック/8codeを保存後別パス対照。sep/seplen/count、配列と個別要素の所有権/NULL再利用、CLI引用token4、CとSDSjoinのbinary差、OOMNULL/abortを保持。Mark Smithの原文バックスラッシュ+nを草稿保存後に復元し、このtokenと前後のtoken/codeだけ再対照。"
+      ],
+      "passDescription": "草稿を全8章保存した後、独立した読解パスで全161本文ブロック/inline値をEN/JA対照し、全56原code/図表記を読んで文脈を確認。機械code/構造保全は補助証拠。API/header4英語参照は全文意味review対象外。",
+      "proseBlocks": 26,
+      "codeBlocks": 8,
+      "comparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-860/05-guide-review-pair.txt",
+        "sha256": "e9c48e5135cf29b03e76e8c8e65a2b4a97c8b1699d36a4e3322dd54e3a439523"
+      },
+      "metadataDelta": {
+        "path": "docs/notes/document-import/sds/v2-0-0/FOOTER_DELTA.json",
+        "sha256": "85459db1e4e4d372d3cf3bbaf3d5cbc09a0e0507db5805281228a08f3c9e4a90"
+      }
+    },
+    {
+      "id": "01-guide/06-guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T20:03:49.328750+00:00",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/sds/v2-0-0/source/guide/01-guide/06-guide.md",
+        "sha256": "601cabbf0fe064f34aebe41c4ab5ace1d3d9e5058a5291d8d2ff423034d35df0",
+        "coverage": [
+          [
+            1,
+            124
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/en/01-guide/06-guide.md",
+        "sha256": "61615e1a34824acd9d8b9b0e22ec5c4da70c4cf0f1c01f3ed0369463b486f40b",
+        "coverage": [
+          [
+            1,
+            67
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/ja/01-guide/06-guide.md",
+        "sha256": "99f35a60b450e902c5d865261fc5a06f3314fe9b7c74d58e6fa01ff2cb245b28",
+        "coverage": [
+          [
+            1,
+            35
+          ]
+        ]
+      },
+      "sourceBodySHA256": "316ca97d75ac244235747b2b8769fe85394985e8ed9f0d17d5b7afbd33ae9915",
+      "translationBodySHA256": "01244981d220e987ee9d3d51a0b451e0a8963a454f7ef28e7a99b77e109f92d4",
+      "findings": [
+        "17本文ブロック/8codeを保存後別パス対照。原旧sdshdr/len/free/buf、先行確保30+2→64/1MB既定上限、縮小/総容量取得/直接変更後strlen再計算を保持。現固定版との原説明差は既存注記の範囲で提供し、技術修正を本文へ混ぜない。"
+      ],
+      "passDescription": "草稿を全8章保存した後、独立した読解パスで全161本文ブロック/inline値をEN/JA対照し、全56原code/図表記を読んで文脈を確認。機械code/構造保全は補助証拠。API/header4英語参照は全文意味review対象外。",
+      "proseBlocks": 17,
+      "codeBlocks": 8,
+      "comparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-860/06-guide-review-pair.txt",
+        "sha256": "ef0cb68304bc0f5d8e2c1f52e5d9215ed5ece98521c7d2917bc8280dc1c88583"
+      },
+      "metadataDelta": {
+        "path": "docs/notes/document-import/sds/v2-0-0/FOOTER_DELTA.json",
+        "sha256": "85459db1e4e4d372d3cf3bbaf3d5cbc09a0e0507db5805281228a08f3c9e4a90"
+      }
+    },
+    {
+      "id": "01-guide/07-guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T20:03:49.328750+00:00",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/sds/v2-0-0/source/guide/01-guide/07-guide.md",
+        "sha256": "1769c1cb3acc3ea9e9ad61444800321245141fa49f50c4ebc2ec52ca7129109d",
+        "coverage": [
+          [
+            1,
+            62
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/en/01-guide/07-guide.md",
+        "sha256": "48a84d0984f2708838caafa011d308a915ef2d85b8a91b955f31456ae5dcd735",
+        "coverage": [
+          [
+            1,
+            47
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/ja/01-guide/07-guide.md",
+        "sha256": "c793e044ecc57744f6ed49cd0da60051b092484bb4d4d7827684d07947cae0e9",
+        "coverage": [
+          [
+            1,
+            35
+          ]
+        ]
+      },
+      "sourceBodySHA256": "f69a2125582d13b0cd50cae1a620bc7f93178e16d81383e885ceba4c2f9f88cd",
+      "translationBodySHA256": "519133ae5d69e99f9f37b1715df79f16d957be103fa74e04e55513436278be2d",
+      "findings": [
+        "17本文ブロック/2codeを保存後別パス対照。参照数1/inc/dec0で文字列と構造体解放、共有更新不要、possibly/definitely lost区別・著者経験、OSXとゼロコピーread/length更新を保持。原文当時の説明として提供。"
+      ],
+      "passDescription": "草稿を全8章保存した後、独立した読解パスで全161本文ブロック/inline値をEN/JA対照し、全56原code/図表記を読んで文脈を確認。機械code/構造保全は補助証拠。API/header4英語参照は全文意味review対象外。",
+      "proseBlocks": 17,
+      "codeBlocks": 2,
+      "comparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-860/07-guide-review-pair.txt",
+        "sha256": "780b16651fcc876792c82100a66bafa47b4fdb32ddccebafff3c6af8f3c30128"
+      },
+      "metadataDelta": {
+        "path": "docs/notes/document-import/sds/v2-0-0/FOOTER_DELTA.json",
+        "sha256": "85459db1e4e4d372d3cf3bbaf3d5cbc09a0e0507db5805281228a08f3c9e4a90"
+      }
+    },
+    {
+      "id": "01-guide/08-guide.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "configured gpt-6.1-sol; actual runtime not independently exposed; no local LLM",
+      "reviewedAt": "2026-10-05T20:03:49.328750+00:00",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/sds/v2-0-0/source/guide/01-guide/08-guide.md",
+        "sha256": "d148ecf0d7dc68779464c9ade9819ee59762123518c1ef8fea9dd475ad20f1a3",
+        "coverage": [
+          [
+            1,
+            11
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/en/01-guide/08-guide.md",
+        "sha256": "93ce143d81dfd1d97e5314f865f449c30422a3e22a7862e99940f45390573ebe",
+        "coverage": [
+          [
+            1,
+            15
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/sds/v2-0-0/canonical/ja/01-guide/08-guide.md",
+        "sha256": "cc95b94e8ef08b2375b72543164d20dd83553374083466497c353e37cdc443e4",
+        "coverage": [
+          [
+            1,
+            14
+          ]
+        ]
+      },
+      "sourceBodySHA256": "6c069115115d6c2651271d20c29597037bc8ce87e33bb04f305cfcaffd99fc74",
+      "translationBodySHA256": "5b63a503d621d10ecbf5a53e99a193f998845e2f518f5acee614454312c9a135",
+      "findings": [
+        "4本文ブロックを保存後別パス対照。sds.c/sds.hコピー/C99小規模、著者/READMEのBSD2条項/原LICENSE参照を保持。原BDS表記はライセンス証拠に基づきBSDと訳し、C/header個別BSD3通知を混同しない。"
+      ],
+      "passDescription": "草稿を全8章保存した後、独立した読解パスで全161本文ブロック/inline値をEN/JA対照し、全56原code/図表記を読んで文脈を確認。機械code/構造保全は補助証拠。API/header4英語参照は全文意味review対象外。",
+      "proseBlocks": 4,
+      "codeBlocks": 0,
+      "comparison": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-06-860/08-guide-review-pair.txt",
+        "sha256": "889a9cc362cc00869d465c8050c59f2c9f35d9a69cf7ce2d73a31da12df28694"
+      },
+      "metadataDelta": {
+        "path": "docs/notes/document-import/sds/v2-0-0/FOOTER_DELTA.json",
+        "sha256": "85459db1e4e4d372d3cf3bbaf3d5cbc09a0e0507db5805281228a08f3c9e4a90"
+      }
+    }
+  ]
+}

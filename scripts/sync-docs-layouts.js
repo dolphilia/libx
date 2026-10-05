@@ -18,18 +18,23 @@ function layoutApps() {
 }
 const sharedLayouts = ['layouts/MainLayout.astro', 'layouts/DocLayout.astro'];
 function canonicalLayout(app, file) {
-  // libuv retains upstream document order and an explicit overview entry.
-  // These two reviewed runtime adapters are frozen separately; shared UI stays canonical.
-  const override = path.join(rootDir, 'docs/notes/document-import/libuv/1.53.0/runtime-layouts');
+  // App navigation adapters preserve upstream chapter identities and order.
+  // Their reviewed runtime files are hash-frozen; shared UI stays canonical.
+  const adapterVersion = { libuv: '1.53.0', sds: 'v2-0-0' }[app.id];
+  const override = adapterVersion
+    ? path.join(rootDir, 'docs/notes/document-import', app.id, adapterVersion, 'runtime-layouts')
+    : null;
   if (
-    app.id === 'libuv' &&
-    ['lib/navigation.ts', 'pages/[version]/[lang]/[...slug].astro'].includes(file)
+    override &&
+    (app.id === 'libuv'
+      ? ['lib/navigation.ts', 'pages/[version]/[lang]/[...slug].astro'].includes(file)
+      : file === 'pages/[version]/[lang]/[...slug].astro')
   ) {
     const manifest = JSON.parse(fs.readFileSync(path.join(override, 'MANIFEST.json'), 'utf8'));
     const entry = manifest.files.find((entry) => entry.file === file);
     const source = fs.readFileSync(path.join(override, file));
     if (!entry || crypto.createHash('sha256').update(source).digest('hex') !== entry.sha256)
-      throw new Error(`libuv runtime adapter hash mismatch: ${file}`);
+      throw new Error(`${app.id} runtime adapter hash mismatch: ${file}`);
     return source;
   }
   return fs.readFileSync(path.join(templateRoot, file));

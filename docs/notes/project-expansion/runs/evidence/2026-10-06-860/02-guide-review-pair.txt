@@ -1,0 +1,150 @@
+1 [h1]
+EN: SDS basics
+JA: SDSの基本
+
+2 [p]
+EN: The type of SDS strings is just the char pointer ⟦CODE0⟧. However SDS defines
+an ⟦CODE1⟧ type as alias of ⟦CODE2⟧ in its header file: you should use the
+⟦CODE3⟧ type in order to make sure you remember that a given variable in your
+program holds an SDS string and not a C string, however this is not mandatory.
+JA: SDS文字列の型は、単なる文字ポインター⟦CODE0⟧です。ただし、SDSはヘッダーファイルで⟦CODE2⟧の別名として⟦CODE1⟧型を定義しています。変数がC文字列ではなくSDS文字列を保持していることを忘れないよう、⟦CODE3⟧型を使うとよいでしょう。ただし、必須ではありません。
+
+3 [p]
+EN: This is the simplest SDS program you can write that does something:
+JA: 何らかの処理を行うSDSプログラムの、最も簡単な例です。
+
+4 [p]
+EN: The above small program already shows a few important things about SDS:
+JA: この短いプログラムだけでも、SDSの重要な点がいくつか分かります。
+
+5 [li]
+EN: SDS strings are created, and heap allocated, via the ⟦CODE0⟧ function, or other similar functions that we'll see in a moment.
+JA: SDS文字列は、⟦CODE0⟧関数や、この後に説明する同様の関数で作成し、ヒープ上に確保します。
+
+6 [li]
+EN: SDS strings can be passed to ⟦CODE0⟧ like any other C string.
+JA: SDS文字列は、ほかのC文字列と同じように⟦CODE0⟧へ渡せます。
+
+7 [li]
+EN: SDS strings require to be freed with ⟦CODE0⟧, since they are heap allocated.
+JA: SDS文字列はヒープ上に確保されるため、⟦CODE0⟧で解放する必要があります。
+
+8 [h2]
+EN: Creating SDS strings
+JA: SDS文字列の作成
+
+9 [p]
+EN: There are many ways to create SDS strings:
+JA: SDS文字列には、さまざまな作成方法があります。
+
+10 [li]
+EN: The ⟦CODE0⟧ function creates an SDS string starting from a C null terminated string. We already saw how it works in the above example.
+JA: ⟦CODE0⟧関数は、NUL終端されたC文字列からSDS文字列を作成します。前の例で、その使い方を示しました。
+
+11 [li]
+EN: The ⟦CODE1⟧ function is similar to ⟦CODE2⟧ but instead of creating the string assuming that the input string is null terminated, it gets an additional length parameter. This way you can create a string using binary data:⟦PRE0⟧
+
+JA: ⟦CODE1⟧関数は⟦CODE2⟧に似ていますが、入力文字列がNUL終端されていると仮定せず、長さを表す追加の引数を受け取ります。そのため、バイナリーデータからも文字列を作れます。⟦PRE0⟧
+
+12 [p]
+EN: Note: ⟦CODE0⟧ return value is casted to ⟦CODE1⟧ because it returns a ⟦CODE2⟧
+type. You can use the right ⟦CODE3⟧ specifier instead of casting.
+JA: 注：⟦CODE0⟧は⟦CODE2⟧型を返すため、戻り値を⟦CODE1⟧へキャストしています。キャストする代わりに、適切な⟦CODE3⟧書式指定子を使うこともできます。
+
+13 [li]
+EN: 
+<p>The ⟦CODE1⟧ function creates an empty zero-length string:</p>
+⟦PRE0⟧
+
+JA: <p>⟦CODE1⟧関数は、長さが0の空文字列を作成します。</p>⟦PRE0⟧
+
+14 [li]
+EN: 
+<p>The ⟦CODE1⟧ function duplicates an already existing SDS string:</p>
+⟦PRE0⟧
+
+JA: <p>⟦CODE1⟧関数は、既存のSDS文字列を複製します。</p>⟦PRE0⟧
+
+15 [h2]
+EN: Obtaining the string length
+JA: 文字列の長さの取得
+
+16 [p]
+EN: In the examples above we already used the ⟦CODE0⟧ function in order to get
+the length of the string. This function works like ⟦CODE1⟧ of the libc
+except that:
+JA: ここまでの例では、文字列の長さを得るために⟦CODE0⟧関数を使いました。この関数はlibcの⟦CODE1⟧と同様に働きますが、次の違いがあります。
+
+17 [li]
+EN: It runs in constant time since the length is stored in the prefix of SDS strings, so calling ⟦CODE0⟧ is not expensive even when called with very large strings.
+JA: 長さがSDS文字列の接頭部に格納されているため、一定時間で処理できます。したがって、非常に長い文字列でも、⟦CODE0⟧呼び出しの負担は大きくありません。
+
+18 [li]
+EN: The function is binary safe like any other SDS string function, so the length is the true length of the string regardless of the content, there is no problem if the string includes null term characters in the middle.
+JA: ほかのSDS文字列関数と同じくバイナリーセーフなので、内容にかかわらず実際の文字列長を返します。途中にNUL終端文字が含まれていても問題ありません。
+
+19 [p]
+EN: As an example of the binary safeness of SDS strings, we can run the following
+code:
+JA: SDS文字列のバイナリーセーフな性質を示すために、次のコードを実行できます。
+
+20 [p]
+EN: Note that SDS strings are always null terminated at the end, so even in that
+case ⟦CODE0⟧ will be a null term, however printing the string with ⟦CODE1⟧
+would result in just ⟦CODE2⟧ to be printed since libc will treat the SDS string
+like a normal C string.
+JA: SDS文字列の末尾は常にNUL終端されています。そのため、この場合も⟦CODE0⟧はNUL終端文字です。ただし、⟦CODE1⟧で文字列を出力すると、libcはSDS文字列を通常のC文字列として扱うため、⟦CODE2⟧だけが出力されます。
+
+21 [h2]
+EN: Destroying strings
+JA: 文字列の破棄
+
+22 [p]
+EN: The destroy an SDS string there is just to call ⟦CODE0⟧ with the string
+pointer. However note that empty strings created with ⟦CODE1⟧ need to be
+destroyed as well otherwise they'll result into a memory leak.
+JA: SDS文字列を破棄するには、文字列ポインターを渡して⟦CODE0⟧を呼ぶだけです。ただし、⟦CODE1⟧で作成した空文字列も破棄する必要があります。そうしないと、メモリーリークになります。
+
+23 [p]
+EN: The function ⟦CODE0⟧ does not perform any operation if instead of an SDS
+string pointer, ⟦CODE1⟧ is passed, so you don't need to check for ⟦CODE2⟧ explicitly before calling it:
+JA: ⟦CODE0⟧関数は、SDS文字列のポインターの代わりに⟦CODE1⟧を渡した場合、何もしません。したがって、呼び出す前に⟦CODE2⟧かどうかを明示的に確認する必要はありません。
+
+24 [h2]
+EN: Concatenating strings
+JA: 文字列の連結
+
+25 [p]
+EN: Concatenating strings to other strings is likely the operation you will end
+using the most with a dynamic C string library. SDS provides different
+functions to concatenate strings to existing strings.
+JA: 動的なC文字列ライブラリーを使うとき、最もよく行う操作は、文字列へ別の文字列を連結することになるでしょう。SDSには、既存の文字列へ文字列を連結するための複数の関数があります。
+
+26 [p]
+EN: The main string concatenation functions are ⟦CODE0⟧ and ⟦CODE1⟧ that are
+identical, the only difference being that ⟦CODE2⟧ does not have an explicit
+length argument since it expects a null terminated string.
+JA: 主な文字列連結関数は⟦CODE0⟧と⟦CODE1⟧で、動作は同じです。唯一の違いは、⟦CODE2⟧がNUL終端文字列を想定するため、明示的な長さの引数を持たないことです。
+
+27 [p]
+EN: Sometimes you want to cat an SDS string to another SDS string, so you don't
+need to specify the length, but at the same time the string does not need to
+be null terminated but can contain any binary data. For this there is a
+special function:
+JA: あるSDS文字列を別のSDS文字列へ連結したい場合があります。この場合、長さを指定する必要はありませんが、連結する文字列にはNUL終端を要求せず、任意のバイナリーデータを含められるようにしたいものです。そのための専用関数があります。
+
+28 [p]
+EN: Usage is straightforward:
+JA: 使い方は簡単です。
+
+29 [p]
+EN: Sometimes you don't want to append any special data to the string, but you want
+to make sure that there are at least a given number of bytes composing the
+whole string.
+JA: 特定のデータを追加するのではなく、文字列全体が少なくとも指定したバイト数になるようにしたい場合もあります。
+
+30 [p]
+EN: The ⟦CODE0⟧ function will do nothing if the current string length is
+already ⟦CODE1⟧ bytes, otherwise it will enlarge the string to ⟦CODE2⟧ just padding
+it with zero bytes.
+JA: ⟦CODE0⟧関数は、現在の文字列長がすでに⟦CODE1⟧バイトなら何もせず、それ以外の場合はゼロバイトで埋めて長さを⟦CODE2⟧まで増やします。

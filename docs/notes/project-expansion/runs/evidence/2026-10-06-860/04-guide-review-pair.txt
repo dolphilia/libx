@@ -1,0 +1,180 @@
+1 [h2]
+EN: Trimming strings and getting ranges
+JA: 文字列のトリミングと範囲の取得
+
+2 [p]
+EN: String trimming is a common operation where a set of characters are
+removed from the left and the right of the string. Another useful operation
+regarding strings is the ability to just take a range out of a larger
+string.
+JA: 文字列のトリミングは、指定した文字の集合を文字列の左端と右端から取り除く、よく使う操作です。長い文字列から一部分だけを取り出すことも、便利な文字列操作です。
+
+3 [p]
+EN: SDS provides both the operations with the ⟦CODE0⟧ and ⟦CODE1⟧ functions.
+However note that both functions work differently than most functions modifying
+SDS strings since the return value is null: basically those functions always
+destructively modify the passed SDS string, never allocating a new one, because
+both trimming and ranges will never need more room: the operations can only
+remove characters from the original strings.
+JA: SDSは、⟦CODE0⟧と⟦CODE1⟧関数で、この両方の操作を提供します。ただし、両関数は、SDS文字列を変更する大半の関数とは異なり、戻り値はnullです。基本的には、渡されたSDS文字列を常に破壊的に変更し、新しい文字列を確保することはありません。トリミングと範囲の取得はいずれも元の文字列から文字を取り除くだけなので、追加の容量を必要としないためです。
+
+4 [p]
+EN: Because of this behavior, both functions are fast and don't involve reallocation.
+JA: このため、両関数は高速で、再確保を伴いません。
+
+5 [p]
+EN: This is an example of string trimming where newlines and spaces are removed
+from an SDS strings:
+JA: 次は、SDS文字列から改行と空白を取り除くトリミングの例です。
+
+6 [p]
+EN: Basically ⟦CODE0⟧ takes the SDS string to trim as first argument, and a
+null terminated set of characters to remove from left and right of the string.
+The characters are removed as long as they are not interrupted by a character
+that is not in the list of characters to trim: this is why the space between
+⟦CODE1⟧ and ⟦CODE2⟧ was preserved in the above example.
+JA: ⟦CODE0⟧は、第1引数にトリミングするSDS文字列を受け取り、次に、文字列の左端と右端から取り除く文字の集合をNUL終端文字列として受け取ります。指定した集合にない文字が現れるまで、文字を取り除きます。そのため、前の例では⟦CODE1⟧と⟦CODE2⟧の間の空白が残ります。
+
+7 [p]
+EN: Taking ranges is similar, but instead to take a set of characters, it takes
+to indexes, representing the start and the end as specified by zero-based
+indexes inside the string, to obtain the range that will be retained.
+JA: 範囲の取得も同様ですが、文字の集合ではなく、文字列内の0始まりのインデックスで開始位置と終了位置を指定し、残す範囲を決めます。
+
+8 [p]
+EN: Indexes can be negative to specify a position starting from the end of the
+string, so that ⟦CODE0⟧ means the last character, ⟦CODE1⟧ the penultimate, and so forth:
+JA: インデックスを負数にすると、文字列の末尾から数えた位置を指定できます。⟦CODE0⟧は最後の文字、⟦CODE1⟧は最後から2番目の文字を表します。
+
+9 [p]
+EN: ⟦CODE0⟧ is very useful when implementing networking servers processing
+a protocol or sending messages. For example the following code is used
+implementing the write handler of the Redis Cluster message bus between
+nodes:
+JA: ⟦CODE0⟧は、プロトコルを処理したり、メッセージを送ったりするネットワークサーバーの実装にとても便利です。たとえば、次のコードは、Redis Clusterのノード間メッセージバスの書き込みハンドラーで使われています。
+
+10 [p]
+EN: Every time the socket of the node we want to send the message to is writable
+we attempt to write as much bytes as possible, and we use ⟦CODE0⟧ in order
+to remove from the buffer what was already sent.
+JA: 送信先ノードのソケットが書き込み可能になるたびに、できるだけ多くのバイトを書き込もうとします。そして、⟦CODE0⟧を使い、送信済みの部分をバッファーから取り除きます。
+
+11 [p]
+EN: The function to queue new messages to send to some node in the cluster will
+simply use ⟦CODE0⟧ in order to put more data in the send buffer.
+JA: クラスター内のノードへ送る新しいメッセージをキューへ入れる関数は、⟦CODE0⟧を使って、送信バッファーへデータを追加するだけです。
+
+12 [p]
+EN: Note that the Redis Cluster bus implements a binary protocol, but since SDS
+is binary safe this is not a problem, so the goal of SDS is not just to provide
+an high level string API for the C programmer but also dynamically allocated
+buffers that are easy to manage.
+JA: Redis Clusterのバスはバイナリープロトコルを実装していますが、SDSはバイナリーセーフなので問題ありません。このように、SDSの目的は、Cプログラマーへ高水準の文字列APIを提供することだけではなく、管理しやすい動的確保バッファーを提供することでもあります。
+
+13 [h2]
+EN: String copying
+JA: 文字列のコピー
+
+14 [p]
+EN: The most dangerous and infamus function of the standard C library is probably
+⟦CODE0⟧, so perhaps it is funny how in the context of better designed dynamic
+string libraries the concept of copying strings is almost irrelevant. Usually
+what you do is to create strings with the content you want, or concatenating
+more content as needed.
+JA: C標準ライブラリーで最も危険で悪名高い関数は、おそらく⟦CODE0⟧でしょう。より良く設計された動的文字列ライブラリーでは、文字列のコピーという概念がほぼ不要になるのは、面白いことかもしれません。通常は、必要な内容を持つ文字列を作成したり、必要に応じて内容を追加したりします。
+
+15 [p]
+EN: However SDS features a string copy function that is useful in performance
+critical code sections, however I guess its practical usefulness is limited
+as the function never managed to get called in the context of the 50k
+lines of code composing the Redis code base.
+JA: それでも、SDSには性能が重要なコード部分で役立つ文字列コピー関数があります。ただ、5万行からなるRedisのコードベースでは一度も呼ばれなかったため、実用上の用途は限られているのではないかと思います。
+
+16 [p]
+EN: The string copy function of SDS is called ⟦CODE0⟧ and works like that:
+JA: SDSの文字列コピー関数は⟦CODE0⟧と呼ばれ、次のように動作します。
+
+17 [p]
+EN: As you can see the function receives as input the SDS string ⟦CODE0⟧, but also
+returns an SDS string. This is common to many SDS functions that modify the
+string: this way the returned SDS string may be the original one modified
+or a newly allocated one (for example if there was not enough room in the
+old SDS string).
+JA: このように、関数は入力としてSDS文字列⟦CODE0⟧を受け取りますが、SDS文字列を戻り値としても返します。これは文字列を変更する多くのSDS関数に共通しています。戻り値は、変更した元のSDS文字列の場合も、新しく確保した文字列の場合もあります。たとえば、元のSDS文字列に十分な容量がなければ、新しい文字列を確保します。
+
+18 [p]
+EN: The ⟦CODE0⟧ will simply replace what was in the old SDS string with the
+new data you pass using the pointer and length argument. There is a similar
+function called ⟦CODE1⟧ that does not need a length but expects a null
+terminated string instead.
+JA: ⟦CODE0⟧は、元のSDS文字列の内容を、ポインターと長さの引数で渡した新しいデータへ置き換えるだけです。⟦CODE1⟧という同様の関数もあり、こちらは長さを必要とせず、代わりにNUL終端文字列を想定します。
+
+19 [p]
+EN: You may wonder why it makes sense to have a string copy function in the
+SDS library, since you can simply create a new SDS string from scratch
+with the new value instead of copying the value in an existing SDS string.
+The reason is efficiency: ⟦CODE0⟧ will always allocate a new string
+while ⟦CODE1⟧ will try to reuse the existing string if there is enough
+room to old the new content specified by the user, and will allocate a new
+one only if needed.
+JA: 既存のSDS文字列へ値をコピーしなくても、新しい値からSDS文字列を作り直せるのに、コピー関数を用意する理由があるのかと思うかもしれません。理由は効率です。⟦CODE0⟧は常に新しい文字列を確保します。一方、⟦CODE1⟧は、利用者が指定した新しい内容を保持するだけの容量があれば、既存の文字列の再利用を試み、必要な場合にだけ新しい文字列を確保します。
+
+20 [h2]
+EN: Quoting strings
+JA: 文字列の引用表現
+
+21 [p]
+EN: In order to provide consistent output to the program user, or for debugging
+purposes, it is often important to turn a string that may contain binary
+data or special characters into a quoted string. Here for quoted string
+we mean the common format for String literals in programming source code.
+However today this format is also part of the well known serialization formats
+like JSON and CSV, so it definitely escaped the simple gaol of representing
+literals strings in the source code of programs.
+JA: 利用者へ一貫した出力を提供するためや、デバッグのために、バイナリーデータや特殊文字を含む可能性がある文字列を、引用表現へ変換することがよくあります。ここでいう引用表現は、プログラムのソースコードで文字列リテラルに使われる一般的な形式です。現在ではJSONやCSVなどのよく知られたシリアライズ形式にも含まれているため、プログラム内の文字列リテラルを表すという用途を超えています。
+
+22 [p]
+EN: An example of quoted string literal is the following:
+JA: 引用表現の文字列リテラルの例です。
+
+23 [p]
+EN: The first byte is a zero byte while the last byte is a newline, so there are
+two non alphanumerical characters inside the string.
+JA: 最初のバイトはゼロバイト、最後のバイトは改行なので、この文字列には英数字以外の文字が2つあります。
+
+24 [p]
+EN: SDS uses a concatenation function for this goal, that concatenates to an
+existing string the quoted string representation of the input string.
+JA: SDSはこの目的に連結関数を使い、入力文字列の引用表現を既存の文字列へ連結します。
+
+25 [p]
+EN: The ⟦CODE0⟧ (where ⟦CODE1⟧ means <em>representation</em>) follows the usualy
+SDS string function rules accepting a char pointer and a length, so you can
+use it with SDS strings, normal C strings by using strlen() as ⟦CODE2⟧ argument,
+or binary data. The following is an example usage:
+JA: ⟦CODE0⟧の⟦CODE1⟧は<em>representation（表現）</em>の意味です。この関数は、通常のSDS文字列関数の規則に従い、文字ポインターと長さを受け取ります。したがって、SDS文字列、⟦CODE2⟧引数にstrlen()を使った通常のC文字列、バイナリーデータのいずれにも使えます。次は使用例です。
+
+26 [p]
+EN: This is the rules ⟦CODE0⟧ uses for conversion:
+JA: ⟦CODE0⟧は、次の規則で変換します。
+
+27 [li]
+EN: ⟦CODE0⟧ and ⟦CODE1⟧ are quoted with a backslash.
+JA: ⟦CODE0⟧と⟦CODE1⟧は、バックスラッシュでエスケープします。
+
+28 [li]
+EN: It quotes special characters ⟦CODE0⟧, ⟦CODE1⟧, ⟦CODE2⟧, ⟦CODE3⟧ and ⟦CODE4⟧.
+JA: 特殊文字⟦CODE0⟧、⟦CODE1⟧、⟦CODE2⟧、⟦CODE3⟧、⟦CODE4⟧をエスケープします。
+
+29 [li]
+EN: All the other non printable characters not passing the ⟦CODE0⟧ test are quoted in ⟦CODE1⟧ form, that is: backslash followed by ⟦CODE2⟧ followed by two digit hex number representing the character byte value.
+JA: ⟦CODE0⟧の検査に通らない、ほかのすべての非表示文字は、⟦CODE1⟧形式でエスケープします。これは、バックスラッシュ、⟦CODE2⟧、文字のバイト値を表す2桁の16進数の順に並べた形式です。
+
+30 [li]
+EN: The function always adds initial and final double quotes characters.
+JA: 関数は常に、先頭と末尾に二重引用符を追加します。
+
+31 [p]
+EN: There is an SDS function that is able to perform the reverse conversion and is
+documented in the <em>Tokenization</em> paragraph below.
+JA: SDSには逆変換を行う関数もあり、後の<em>トークン化</em>の節で説明します。

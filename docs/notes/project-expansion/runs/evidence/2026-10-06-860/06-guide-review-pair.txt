@@ -1,0 +1,100 @@
+1 [h1]
+EN: SDS internals and advanced usage
+JA: SDSの内部構造と高度な使い方
+
+2 [p]
+EN: At the very beginning of this documentation it was explained how SDS strings
+are allocated, however the prefix stored before the pointer returned to the
+user was classified as an <em>header</em> without further details. For an advanced
+usage it is better to dig more into the internals of SDS and show the
+structure implementing it:
+JA: この文書の冒頭で、SDS文字列の確保方法を説明しましたが、利用者へ返すポインターの直前に格納する接頭部については、詳しく説明せず<em>ヘッダー</em>と呼びました。高度な使い方のために、SDSの内部を詳しく見て、その実装に使う構造体を示します。
+
+3 [p]
+EN: As you can see, the structure may resemble the one of a conventional string
+library, however the ⟦CODE0⟧ field of the structure is different since it is
+not a pointer but an array without any length declared, so ⟦CODE1⟧ actually
+points at the first byte just after the ⟦CODE2⟧ integer. So in order to create
+an SDS string we just allocate a piece of memory that is as large as the
+⟦CODE3⟧ structure plus the length of our string, plus an additional byte
+for the mandatory null term that every SDS string has.
+JA: この構造体は、従来の文字列ライブラリーのものに似て見えるかもしれません。ただし、⟦CODE0⟧フィールドは異なります。ポインターではなく、長さを宣言していない配列なので、⟦CODE1⟧は実際には整数⟦CODE2⟧の直後の最初のバイトを指します。そのため、SDS文字列の作成では、⟦CODE3⟧構造体のサイズと文字列長の合計に、すべてのSDS文字列で必須のNUL終端用の1バイトを加えた大きさのメモリー領域を確保するだけです。
+
+4 [p]
+EN: The ⟦CODE0⟧ field of the structure is quite obvious, and is the current length
+of the SDS string, always computed every time the string is modified via
+SDS function calls. The ⟦CODE1⟧ field instead represents the amount of free
+memory in the current allocation that can be used to store more characters.
+JA: 構造体の⟦CODE0⟧フィールドは、その名のとおりSDS文字列の現在の長さで、SDS関数の呼び出しで文字列を変更するたびに計算されます。一方、⟦CODE1⟧フィールドは、現在の確保領域のうち、さらに文字を格納するために使える空きメモリー量を表します。
+
+5 [p]
+EN: So the actual SDS layout is this one:
+JA: したがって、実際のSDSの配置は次のようになります。
+
+6 [p]
+EN: You may wonder why there is some free space at the end of the string, it
+looks like a waste. Actually after a new SDS string is created, there is no
+free space at the end at all: the allocation will be as small as possible to
+just hold the header, string, and null term. However other access patterns
+will create extra free space at the end, like in the following program:
+JA: 文字列の末尾に空き領域があるのは、無駄ではないかと思うかもしれません。実際、新しいSDS文字列を作成した直後には、末尾に空き領域はありません。ヘッダー、文字列、NUL終端だけを保持する、最小限のサイズを確保します。ただし、次のプログラムのような別のアクセス方法では、末尾に追加の空き領域が作られます。
+
+7 [p]
+EN: Since SDS tries to be efficient it can't afford to reallocate the string every
+time new data is appended, since this would be very inefficient, so it uses
+the <strong>preallocation of some free space</strong> every time you enlarge the string.
+JA: SDSは効率を重視しているため、データを追加するたびに文字列を再確保することはできません。それでは非常に非効率になるため、文字列を大きくするたびに、<strong>空き領域をあらかじめ確保</strong>します。
+
+8 [p]
+EN: The preallocation algorithm used is the following: every time the string
+is reallocated in order to hold more bytes, the actual allocation size performed
+is two times the minimum required. So for instance if the string currently
+is holding 30 bytes, and we concatenate 2 more bytes, instead of allocating 32
+bytes in total SDS will allocate 64 bytes.
+JA: 先行確保のアルゴリズムは次のとおりです。より多くのバイトを保持するために文字列を再確保するたびに、実際には最低限必要なサイズの2倍を確保します。たとえば、現在の文字列が30バイトを保持していて、さらに2バイトを連結する場合、SDSは合計32バイトではなく64バイトを確保します。
+
+9 [p]
+EN: However there is an hard limit to the allocation it can perform ahead, and is
+defined by ⟦CODE0⟧. SDS will never allocate more than 1MB of
+additional space (by default, you can change this default).
+JA: ただし、先行して確保できる量には上限があり、⟦CODE0⟧で定義されています。SDSが追加で確保する領域は1MBを超えません。これは既定値で、変更できます。
+
+10 [h2]
+EN: Shrinking strings
+JA: 文字列の縮小
+
+11 [p]
+EN: Sometimes there are class of programs that require to use very little memory.
+After strings concatenations, trimming, ranges, the string may end having
+a non trivial amount of additional space at the end.
+JA: プログラムの種類によっては、メモリー使用量を非常に小さくする必要があります。文字列の連結、トリミング、範囲の取得の後には、末尾にかなりの追加領域が残る場合があります。
+
+12 [p]
+EN: It is possible to resize a string back to its minimal size in order to hold
+the current content by using the function ⟦CODE0⟧.
+JA: ⟦CODE0⟧関数を使うと、現在の内容を保持するのに必要な最小サイズまで文字列を縮められます。
+
+13 [p]
+EN: There is also a function that can be used in order to get the size of the
+total allocation for a given string, and is called ⟦CODE0⟧.
+JA: 指定した文字列の確保領域全体のサイズを取得する関数もあり、⟦CODE0⟧と呼ばれます。
+
+14 [p]
+EN: NOTE: SDS Low level API use cammelCase in order to warn you that you are playing with the fire.
+JA: 注：SDSの低水準APIは、危険を伴う操作をしていることへの注意として、キャメルケースを使っています。
+
+15 [h2]
+EN: Manual modifications of SDS strings
+JA: SDS文字列の手動変更
+
+16 [p]
+EN: Sometimes you may want to hack with an SDS string manually, without using
+SDS functions. In the following example we implicitly change the length
+of the string, however we want the logical length to reflect the null terminated
+C string.
+JA: SDS関数を使わず、SDS文字列を手動で変更したい場合があります。次の例では文字列の長さを暗黙に変更しますが、論理上の長さにも、NUL終端されたC文字列の長さを反映させたいものです。
+
+17 [p]
+EN: The function ⟦CODE0⟧ does just that, updating the internal length
+information for the specified string to the length obtained via ⟦CODE1⟧.
+JA: ⟦CODE0⟧関数は、このための関数です。指定した文字列の内部の長さ情報を、⟦CODE1⟧で取得した長さへ更新します。
