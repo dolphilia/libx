@@ -1,0 +1,62 @@
+<div class="mdbook-guide">
+<h1 id="configuring-preprocessors"><a class="header" href="#configuring-preprocessors">Configuring Preprocessors</a></h1>
+<p>Preprocessors are extensions that can modify the raw Markdown source before it gets sent to the renderer.</p>
+<p>The following preprocessors are built-in and included by default:</p>
+<ul>
+<li><code>links</code>: Expands the <code>{{ #playground }}</code>, <code>{{ #include }}</code>, and <code>{{ #rustdoc_include }}</code> handlebars
+helpers in a chapter to include the contents of a file.
+See <a href="../mdbook.html#including-files">Including files</a> for more.</li>
+<li><code>index</code>: Convert all chapter files named <code>README.md</code> into <code>index.md</code>. That is
+to say, all <code>README.md</code> would be rendered to an index file <code>index.html</code> in the
+rendered book.</li>
+</ul>
+<p>The built-in preprocessors can be disabled with the <a href="general.html#build-options"><code>build.use-default-preprocessors</code></a> config option.</p>
+<p>The community has developed several preprocessors.
+See the <a href="https://github.com/rust-lang/mdBook/wiki/Third-party-plugins">Third Party Plugins</a> wiki page for a list of available preprocessors.</p>
+<p>For information on how to create a new preprocessor, see the <a href="../../for_developers/preprocessors.html">Preprocessors for Developers</a> chapter.</p>
+<h2 id="custom-preprocessor-configuration"><a class="header" href="#custom-preprocessor-configuration">Custom preprocessor configuration</a></h2>
+<p>Preprocessors can be added by including a <code>preprocessor</code> table in <code>book.toml</code> with the name of the preprocessor.
+For example, if you have a preprocessor called <code>mdbook-example</code>, then you can include it with:</p>
+<pre><code class="language-toml">[preprocessor.example]
+</code></pre>
+<p>With this table, mdBook will execute the <code>mdbook-example</code> preprocessor.</p>
+<p>This table can include additional key-value pairs that are specific to the preprocessor.
+For example, if our example preprocessor needed some extra configuration options:</p>
+<pre><code class="language-toml">[preprocessor.example]
+some-extra-feature = true
+</code></pre>
+<h2 id="locking-a-preprocessor-dependency-to-a-renderer"><a class="header" href="#locking-a-preprocessor-dependency-to-a-renderer">Locking a preprocessor dependency to a renderer</a></h2>
+<p>You can explicitly specify that a preprocessor should run for a renderer by
+binding the two together.</p>
+<pre><code class="language-toml">[preprocessor.example]
+renderers = ["html"]  # example preprocessor only runs with the HTML renderer
+</code></pre>
+<h2 id="provide-your-own-command"><a class="header" href="#provide-your-own-command">Provide your own command</a></h2>
+<p>By default when you add a <code>[preprocessor.foo]</code> table to your <code>book.toml</code> file,
+<code>mdbook</code> will try to invoke the <code>mdbook-foo</code> executable. If you want to use a
+different program name or pass in command-line arguments, this behaviour can
+be overridden by adding a <code>command</code> field.</p>
+<pre><code class="language-toml">[preprocessor.random]
+command = "python random.py"
+</code></pre>
+<h3 id="optional-preprocessors"><a class="header" href="#optional-preprocessors">Optional preprocessors</a></h3>
+<p>If you enable a preprocessor that isn’t installed, the default behavior is to throw an error.
+This behavior can be changed by marking the preprocessor as optional:</p>
+<pre><code class="language-toml">[preprocessor.example]
+optional = true
+</code></pre>
+<p>This demotes the error to a warning.</p>
+<h2 id="require-a-certain-order"><a class="header" href="#require-a-certain-order">Require a certain order</a></h2>
+<p>The order in which preprocessors are run can be controlled with the <code>before</code> and <code>after</code> fields.
+For example, suppose you want your <code>linenos</code> preprocessor to process lines that may have been <code>{{#include}}</code>d; then you want it to run after the built-in <code>links</code> preprocessor, which you can require using either the <code>before</code> or <code>after</code> field:</p>
+<pre><code class="language-toml">[preprocessor.linenos]
+after = [ "links" ]
+</code></pre>
+<p>or</p>
+<pre><code class="language-toml">[preprocessor.links]
+before = [ "linenos" ]
+</code></pre>
+<p>It would also be possible, though redundant, to specify both of the above in the same config file.</p>
+<p>Preprocessors having the same priority specified through <code>before</code> and <code>after</code> are sorted by name.
+Any infinite loops will be detected and produce an error.</p>
+</div>

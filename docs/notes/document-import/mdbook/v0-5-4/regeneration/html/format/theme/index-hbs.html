@@ -1,0 +1,99 @@
+<div class="mdbook-guide">
+<h1 id="indexhbs"><a class="header" href="#indexhbs">index.hbs</a></h1>
+<p><code>index.hbs</code> is the handlebars template that is used to render the book. The
+markdown files are processed to html and then injected in that template.</p>
+<p>If you want to change the layout or style of your book, chances are that you
+will have to modify this template a little bit. Here is what you need to know.</p>
+<h2 id="data"><a class="header" href="#data">Data</a></h2>
+<p>A lot of data is exposed to the handlebars template with the “context”. In the
+handlebars template you can access this information by using</p>
+<pre><code class="language-handlebars">{{name_of_property}}
+</code></pre>
+<p>Here is a list of the properties that are exposed:</p>
+<ul>
+<li>
+<p><em><strong>language</strong></em> Language of the book in the form <code>en</code>, as specified in <code>book.toml</code> (if not specified, defaults to <code>en</code>). To use in <code class="language-html">&#x3C;html lang="{{ language }}"></code> for example.</p>
+</li>
+<li>
+<p><em><strong>title</strong></em> Title used for the current page. This is identical to <code>{{ chapter_title }} - {{ book_title }}</code> unless <code>book_title</code> is not set in which case it just defaults to the <code>chapter_title</code>.</p>
+</li>
+<li>
+<p><em><strong>book_title</strong></em> Title of the book, as specified in <code>book.toml</code></p>
+</li>
+<li>
+<p><em><strong>chapter_title</strong></em> Title of the current chapter, as listed in <code>SUMMARY.md</code></p>
+</li>
+<li>
+<p><em><strong>path</strong></em> Relative path to the original markdown file from the source
+directory</p>
+</li>
+<li>
+<p><em><strong>content</strong></em> This is the rendered markdown.</p>
+</li>
+<li>
+<p><em><strong>path_to_root</strong></em> This is a path containing exclusively <code>../</code>’s that points
+to the root of the book from the current file. Since the original directory
+structure is maintained, it is useful to prepend relative links with this
+<code>path_to_root</code>.</p>
+</li>
+<li>
+<p><em><strong>previous</strong></em> and <em><strong>next</strong></em> These are objects used for linking to the previous and next chapter. They contain the properties <code>title</code> and <code>link</code> of the corresponding chapter.</p>
+</li>
+<li>
+<p><em><strong>chapters</strong></em> Is an array of dictionaries of the form</p>
+<pre><code class="language-json">{"section": "1.2.1", "name": "name of this chapter", "path": "dir/markdown.md"}
+</code></pre>
+<p>containing all the chapters of the book. It is used for example to construct
+the table of contents (sidebar).</p>
+</li>
+</ul>
+<h2 id="handlebars-helpers"><a class="header" href="#handlebars-helpers">Handlebars helpers</a></h2>
+<p>In addition to the properties you can access, there are some handlebars helpers
+at your disposal.</p>
+<h3 id="toc"><a class="header" href="#toc">toc</a></h3>
+<p>The toc helper is used like this</p>
+<pre><code class="language-handlebars">{{#toc}}{{/toc}}
+</code></pre>
+<p>and outputs something that looks like this, depending on the structure of your
+book</p>
+<pre><code class="language-html">&#x3C;ul class="chapter">
+    &#x3C;li>&#x3C;a href="link/to/file.html">Some chapter&#x3C;/a>&#x3C;/li>
+    &#x3C;li>
+        &#x3C;ul class="section">
+            &#x3C;li>&#x3C;a href="link/to/other_file.html">Some other Chapter&#x3C;/a>&#x3C;/li>
+        &#x3C;/ul>
+    &#x3C;/li>
+&#x3C;/ul>
+</code></pre>
+<p>If you would like to make a toc with another structure, you have access to the
+chapters property containing all the data. The only limitation at the moment
+is that you would have to do it with JavaScript instead of with a handlebars
+helper.</p>
+<pre><code class="language-html">&#x3C;script>
+var chapters = {{chapters}};
+// Processing here
+&#x3C;/script>
+</code></pre>
+<h3 id="resource"><a class="header" href="#resource">resource</a></h3>
+<p>The path to a static file.
+It implicitly includes <code>path_to_root</code>,
+and accounts for files that are renamed with a hash in their filename.</p>
+<pre><code class="language-handlebars">&#x3C;link rel="stylesheet" href="{{ resource "css/chrome.css" }}">
+</code></pre>
+<h3 id="fa"><a class="header" href="#fa">fa</a></h3>
+<p>mdBook includes a copy of <a href="https://fontawesome.com">Font Awesome Free’s</a>
+MIT-licensed SVG files. It accepts three positional arguments:</p>
+<ol>
+<li>Type: one of “solid”, “regular”, and “brands” (light and duotone are not
+currently supported)</li>
+<li>Icon: anything chosen from the
+<a href="https://fontawesome.com/v6/search">free icon set</a></li>
+<li>ID (optional): if included, an HTML ID attribute will be added to the
+icon’s wrapping <code>&#x3C;span></code> tag</li>
+</ol>
+<p>For example, this handlebars syntax will become this HTML:</p>
+<pre><code class="language-handlebars">{{fa "solid" "print" "print-button"}}
+</code></pre>
+<pre><code class="language-html">&#x3C;span class=fa-svg id="print-button">&#x3C;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">&#x3C;path d="M448 192V77.25c0-8.49-3.37-16.62-9.37-22.63L393.37 9.37c-6-6-14.14-9.37-22.63-9.37H96C78.33 0 64 14.33 64 32v160c-35.35 0-64 28.65-64 64v112c0 8.84 7.16 16 16 16h48v96c0 17.67 14.33 32 32 32h320c17.67 0 32-14.33 32-32v-96h48c8.84 0 16-7.16 16-16V256c0-35.35-28.65-64-64-64zm-64 256H128v-96h256v96zm0-224H128V64h192v48c0 8.84 7.16 16 16 16h48v96zm48 72c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"/>&#x3C;/svg>&#x3C;/span>
+</code></pre>
+</div>
