@@ -1,0 +1,72 @@
+{
+  "id": "03-format/02-frame-format.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T05:04:33.126390+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/doc/lz4_Frame_format.md",
+    "sha256": "8c2a10c4b99be177b874020cf4839d374d7a895b3c4d5292623edf948a13cc8f",
+    "coverage": [
+      [
+        1,
+        438
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/03-format/02-frame-format.md",
+    "sha256": "927a6269e58da328c802d078d4301a0bec58c498cac1e57fa8ae1b9216c92966",
+    "coverage": [
+      [
+        1,
+        446
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-797/translation/02-frame-format.md",
+    "sha256": "23e9c1f5b3af6714003fdf879658d844c839582e5d87137a671506d47dfde551",
+    "coverage": [
+      [
+        1,
+        305
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "原文→定本/許諾・版・導入全文",
+      "result": "固定原文と定本は本文同一。2013–2020 Yannのコピー/配布/翻訳/編纂許可・通知保持・実質変更/削除明示条件と配布無制限の英文を訳文でも全量保持。本文仕様版1.6.4/dateと上流LZ4 1.10.0を区別。CPU/OS/filesystem/charset独立、可逆/file/pipe/stream、任意長逐次入力と中間storage事前bounded、optionalxxHash/no randomaccess、対象読者とbit背景を確認。圧縮器must準拠/alloptions不要、展開器atleastone workingparams/checksum無視可/非対応時明瞭code+message必須を保持。"
+    },
+    {
+      "scope": "全体構造全文",
+      "result": "MagicLE0x184D2204/4byte、descriptor3–15/header7–19、lastblock後32bit0EndMark、contentchecksumdecoded original/seedzero/flag時のみ/fullblock順序とencode/decodeの無歪み/recommended、footer4–8を照合。連結各frame独自flags/independent/orderonly、複数連結decode仕様外/referenceCLI全順次を保持。"
+    },
+    {
+      "scope": "記述子/全FLG・BD・最大size・予約bits全文",
+      "result": "3–15byte/FLG1BD1ContentSize0–8Dict0–4HC1、FLG7–6Version/5Indep/4BChecksum/3CSize/2CChecksum/1reserved/0Dict、BD7reserved/6–5–4max/3–2–1–0reservedとhigh7/low0全表照合。Version2bit01must/他不可/将来配置、indep1vslinked0/prev64KB/must順次/小blockratio改善/ランダム・multithread不可。blockrawcompressed4bytechecksum前decode/optional、CSize8unsignedLEflags後/optional、CChecksum32afterEnd、Dict4flags+ContentSize後。blockmax非圧縮/code0–3NA/4=64KB/5=256KB/6=1MB/7=4MB、system制限拒否可/unused future/currentdefinedonly、reservedmust0/currentdecoderfuturebit不可を保持。"
+    },
+    {
+      "scope": "ContentSize/辞書/HC全文",
+      "result": "ContentSizeoptionalflag/unsigned8LE/max16Exabytes/informational/skip又検証可。辞書shortinputs/knownprefix、independent各block同辞書/linkedframe開始once、comp/decomp厳密同一must、Dictflagonly/unsigned32LE/1frame1field/別経路context可を確認。HC全optional含むdescriptor、一byte/xxh32secondbyte式そのまま/seedzero/fullinput/badchecksum descriptorerrorを保持。"
+    },
+    {
+      "scope": "DataBlocks全文",
+      "result": "4byteLEsize最高1uncompressed/0compressed、otherbitsdatasize/checksum除外、BlockSize<=Max規範と非圧縮への必須fallback。0x00000000Endでinvalidblock、0x80000000validempty非終端、emptyにもflag有なら32checksum必須。data圧縮状態/圧縮時blockspec必須、uncompresseduptoMaxでfull不要。checksumflagonly/4LE/rawundecoded/seedzero/先検出/contentchecksum併用を保持。原dev/releasebranch外部URLは保持し固定版URLと誤表示しない。"
+    },
+    {
+      "scope": "skippable/legacy全文",
+      "result": "skipuserdata/quickcontinue、先頭skippableはdiscouraged/必要時zero-byteLZ4frame先行推奨を確認。LE4magic0x184D2A5X/50–5F16全有効、framesizeuserdataonly/magic+size除外/4LEunsigned32/max2^32-1、useranythingskip。legacyLZ4Demo初期/新compressorsshouldnot/8MBfixed/allfull除最後/allalwayscompressed evendetrimental/EOF又knownmagic/nochk/LEの6items、全table、magic0x184C2102、size4LEcompresseddata/alwayscompressed、implicitend standardEOFfileorstream/validnextmagicでdone/連結可/otherasblocksize範囲外errorを保持。"
+    },
+    {
+      "scope": "変更履歴全19項/日本語再読",
+      "result": "1.6.4から0.4まで19項を落とさず、辞書復活と削除、streamchecksum再追加と削除、dynamicBlockSize判断延期、bitflag追加/8byteLE確定を照合。shall neverを事実断言から超えてはならない規範へ修正しDataBlock節を再読。初稿後に原文/定本全文および日本語全範囲を分割再読、表8個・10見出し・否定/optional/must/may/推奨・同名checksumの入力差を確認。本文の許諾は英文保持、Libxsource注記はfooter。"
+    },
+    {
+      "scope": "機械検査で発見した強調syntaxの補修後再読",
+      "result": "日本語に隣接したunderscore強調がMarkdownで解析されないため、inline protocol fieldとHeader/Footerをasterisk/空白へ置換。EndMarkのstandalone太字は元の形式を維持。意味を変更せず日本語305行全文を再読。本文通知は原文そのまま。"
+    }
+  ]
+}

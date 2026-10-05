@@ -305,7 +305,10 @@ function isLicensingConfig(value: unknown): value is LicensingConfig {
             (link) =>
               isRecord(link) &&
               isNonEmptyString(link.url) &&
-              /^https?:\/\//.test(link.url) &&
+              (/^https?:\/\//.test(link.url) ||
+                (link.url.startsWith('/') &&
+                  !link.url.startsWith('//') &&
+                  !link.url.includes('\\'))) &&
               isRecord(link.label) &&
               isNonEmptyString(link.label.en) &&
               isNonEmptyString(link.label.ja)

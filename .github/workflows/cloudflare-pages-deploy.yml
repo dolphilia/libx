@@ -126,6 +126,9 @@ jobs:
       - name: Unit and runtime tests
         run: pnpm test
 
+      - name: Build LZ4 for rendered content checks
+        run: pnpm --filter=apps-lz4 build
+
       - name: Repository and content checks
         run: pnpm check:links && pnpm check:integrity && pnpm check:content
 

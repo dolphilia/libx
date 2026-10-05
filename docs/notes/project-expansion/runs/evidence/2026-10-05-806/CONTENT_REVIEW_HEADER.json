@@ -1,0 +1,56 @@
+{
+  "id": "06-library/02-block-header.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T05:41:46.754055+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/lib/lz4.h",
+    "sha256": "26b82efc53d1570f3b54eef02e9c4764c1ad374ff03cac04e2ced5ea4d4c552f",
+    "coverage": [
+      [
+        1,
+        884
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/06-library/02-block-header.md",
+    "sha256": "45b959f72a6c4dc2ed2554b1af785cbcbd618fe0e6851694a232e00c7618bd7a",
+    "coverage": [
+      [
+        1,
+        1093
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-806/translation/02-block-header.md",
+    "sha256": "3b6fed328163353521d34e0ba97a162b77cca6b88bba0ab10fc7e9a6b4b185f2",
+    "coverage": [
+      [
+        1,
+        911
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "source/EN/JA全文・52区画",
+      "result": "初稿作成後に英語定本全1092行と日本語本文全910行を別工程で再読。固定原文884行を対応させ全52コメント区画の意味・条件・否定・should/must/possible・パラメーター/戻り値を確認。法的通知0は英語全文、全宣言/マクロ/inline comment/診断文字列は原文で保持。速度主張は原著時点の説明で今回測定ではない。"
+    },
+    {
+      "scope": "1–18 基本/高度API全文",
+      "result": "ブロック/フレームとメタデータ区別、DLL/freestanding必須3macro/heapless制限、N→2^Nと既定14/16KB、圧縮失敗0/出力未定義/境界保護、safe負のエラー/正確compressedSize、compressBound/accelerationの1/0/max65537と3%、extState8byte境界、destSize入出力と1.8.2–1.9.1バグ/1.9.2+修正/少なくとも1byteを照合。partial5注意、特に入力サイズ過大時target上限必須とsilent corruptionを弱めず保持。"
+    },
+    {
+      "scope": "19–33 ストリーミング全文",
+      "result": "初回初期化とfastReset再利用/garbage禁止/extState冗長、load辞書最後64KB/同一辞書必要/Slow見込み表現、attachの初回解除と辞書stream/source bufferはセッション完了まで同位置/アクセス可能/不変の両方を保持。圧縮block個別展開/前64KB保持/double-buffer一byte隔離/ring/error後reset-free限定、saveDictを照合。展開dictionary安定/decoderリング最小とwrap条件、wholeblock/前64KBまたは全データ必須、非同期最小・厳密同期と末尾例外・encoder+maxBlockSizeの三条件、不可時save/setを全保持。usingDict無状態/部分展開/performance可能性を保持。"
+    },
+    {
+      "scope": "34–51 実験/内部/旧API全文・日本語単独",
+      "result": "実験API不安定/静的リンク限定/defaultdynamic非公開/2macro条件、fastReset既初期化必須、destSizeextStateacceleration、in-place4行図と全size/マージン/履歴/非圧縮fallback制約、原proseとmacro異なる表記はfooter説明し黙って修正せず保持。内部API/ABI破壊禁止とstaticobject、implicitpadding、initサイズ/アラインメントNULL/旧reset、全旧API年代と警告無効化3法を照合。旧stream履歴なし、fast unsafe/遅い/入力境界越えとunderflow/bytes read return/信頼環境ANDデータONLY、将来reset警告を全保持。日本語単独再読で意味・例外の欠落なし。ソフト本体実行や新たな性能/安全検証は未実施。"
+    }
+  ]
+}

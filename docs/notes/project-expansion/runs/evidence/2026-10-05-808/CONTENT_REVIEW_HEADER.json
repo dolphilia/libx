@@ -1,0 +1,56 @@
+{
+  "id": "06-library/03-frame-header.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T05:53:04.766631+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/lib/lz4frame.h",
+    "sha256": "b845db4b7ee1bfa64b8f641a94f62e7f636a8b5d673cc61766413782283aaad1",
+    "coverage": [
+      [
+        1,
+        751
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/06-library/03-frame-header.md",
+    "sha256": "6e16f4c3bea0317d06986b34185accd8c178e325c97a7937d5a9719ba7eec6b3",
+    "coverage": [
+      [
+        1,
+        972
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-808/translation/03-frame-header.md",
+    "sha256": "9164510b2edec323b0d2a7fe5922fce730774545a07abf5c9c0f82b62f51304f",
+    "coverage": [
+      [
+        1,
+        894
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "source/EN/JA全文・54区画と日本語単独",
+      "result": "初稿後に固定原文751行、英語定本全範囲、日本語全範囲を別工程で照合・再読。独立53説明コメントを翻訳、0法的通知英語全文保持。全宣言/マクロ/inline code comments/diagnostic文字列は原文を保持。仕様v1.6.1と固定doc1.6.4/APIの原誤表記はfooterで区別し黙って訂正なし。性能/仕様の原主張と今回の検査を区別。"
+    },
+    {
+      "scope": "1–28 型/一括/圧縮ストリーミング全文",
+      "result": "CLI互換/standalone/lz4.h不要例外、enum有効化/大blockのratioとmemory双方、linked改善とindependentのみのdecoder、構造体0init/全reserved0、one-shot全消費/無状態/stack既定→heap1時allocfree増、FrameBoundとUpdateのflushなし限定、max12、cctxversion/ptr必須/0生成成功/free常成功NULLnoop/reuseを保持。各header/checksumのbyte意味、compressBegin最小HEADER_MAX、compressBoundの単一呼出/毎回remaining確認/0flush-end上限/内部blockSize-1とfooter含むheader除く、update最悪容量必須/UBreset-free/非圧縮後flush、flush即時とEnd4byte/終了後reuseを全照合。"
+    },
+    {
+      "scope": "29–36 展開全文/inlineコメント",
+      "result": "dctx作成version/ptr必須/free結果should0、ヘッダーmin/maxとlength可変、getFrameInfo任意/新frameheader全部必須・超過はheaderのみ・不足error/途中header未済error、src消費<=元値/消費条件AND/再開pointer加算必須/errordctx不変を全保持。decompress入力出力ptr両方書換<=、未消費再提示必須、dst自由移動/上書き、getFrameInfo後pointer更新失敗→error又成功誤展開、returnはhint任意入力可能/終端exact0/余剰未消費、error後再開不可reset、complete後reuseを全照合。stableDst最終64KB直前維持pledgeframe末まで・skipChecksums一回1でframe残り無効・reserved0の原inlineコメントを完全保持し意味も確認。"
+    },
+    {
+      "scope": "37–53 辞書/実験/カスタムメモリ全文・修正",
+      "result": "小data辞書最後64KB/同一辞書必須/dictID任意、usingDict圧縮firstblockだけvsCDict全independentblocks、dictBuffer/cdictはsessionをoutlive、decomp辞書inplace無前処理/frame全体アクセス必須、bulkcost共有同時可/decoder初期化なし、CDictreadonlythreadshared/copiedsource解放可を全保持。stablev1.10とstatic未stable/2macro/defaultdynamic非公開を区別。全errorlist原コード、getBlockSizeinvalidエラー、uncompressedUpdate全srccapacity/UBreset-free/圧縮後flush/independent限定、customallocator/free作成時全操作とoptionalcalloc fallback原inline保持。レビューで辞書寿命を「セッションより長く存続」に修正、getFrameInfo上限の重複訳を整理。変更3区画とfooterを再読し原文条件と一致。"
+    }
+  ]
+}

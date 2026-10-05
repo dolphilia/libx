@@ -138,6 +138,27 @@ test('provenance metadata preserves valid bilingual notices and rejects malforme
     licensing: { ...validConfig.licensing, sources: [value] },
   });
   assert.equal(validateProjectConfigJSON(config(source)), true);
+  assert.equal(
+    validateProjectConfigJSON(
+      config({
+        ...source,
+        attributionLinks: [
+          {
+            url: '/docs/lz4/source/v1-10-0/LIBX_LZ4_SOURCEKIT.tar.gz',
+            label: { en: 'Source', ja: 'ソース' },
+          },
+        ],
+      })
+    ),
+    true
+  );
+  for (const url of ['//example.com/source', '/\\example.com/source', 'data:text/html,x'])
+    assert.equal(
+      validateProjectConfigJSON(
+        config({ ...source, attributionLinks: [{ url, label: { en: 'Source', ja: 'ソース' } }] })
+      ),
+      false
+    );
   const input = config(source);
   if (!validateProjectConfigJSON(input)) throw new Error('Valid provenance rejected');
   assert.deepEqual(convertProjectConfigJSONToRuntime(input).licensing.sources[0], source);

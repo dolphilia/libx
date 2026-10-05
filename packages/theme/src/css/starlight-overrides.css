@@ -64,7 +64,7 @@
   :where(.article-content, .sl-markdown-content) h5,
   :where(.article-content, .sl-markdown-content) h6 {
     margin-bottom: 1rem;
-    scroll-margin-top: calc(var(--sl-nav-height) + 1rem);
+    scroll-margin-top: calc(var(--sl-nav-height, 0px) + 1rem);
     position: relative;
   }
 
@@ -95,6 +95,14 @@
   /* Markdown変換で空段落になった互換アンカーは、位置だけを保持して余白を作らない。 */
   :where(.article-content, .sl-markdown-content) > p:has(> a[id]:only-child:empty) {
     margin-block: 0 !important;
+  }
+
+  /* 互換アンカーは折り返し後の行ではなく見出し先頭へ移動する。 */
+  :where(.article-content, .sl-markdown-content) :is(h1, h2, h3, h4, h5, h6) > a[id]:empty {
+    position: absolute;
+    top: 0;
+    left: 0;
+    scroll-margin-top: 1rem;
   }
 
   /* サイドバーと目次の見出しはマージンをリセット */

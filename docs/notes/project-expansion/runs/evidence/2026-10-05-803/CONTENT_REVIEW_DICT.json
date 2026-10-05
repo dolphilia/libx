@@ -1,0 +1,52 @@
+{
+  "id": "05-examples/05-dictionary-random-access.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T05:20:39.676812+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/examples/dictionaryRandomAccess.md",
+    "sha256": "013d1e25de9217ff6224d14522f2a562901c78216cafd832f77c1921175abfe7",
+    "coverage": [
+      [
+        1,
+        67
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-802/canonical/05-examples/05-dictionary-random-access.md",
+    "sha256": "2c90fb0fd16661b35fd82f0a7887a5e8dbd1919205ae145b15cce4d7da4b82a3",
+    "coverage": [
+      [
+        1,
+        77
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-803/translation/05-dictionary-random-access.md",
+    "sha256": "ddd5f851d7567b8f40271c666280ad96789564d6f10b0686f60f31f2f2f56d78",
+    "coverage": [
+      [
+        1,
+        74
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "原文/訂正後定本/訳文全文・概要/圧縮",
+      "result": "初稿後source/EN/JA全範囲を別工程で照合。sourcefilenamecode・辞書compression/randomaccessdecomp、lz4frame非互換/platformdependency、homogeneousfiles辞書/圧縮blocksrandomaccessを保持。辞書file読→eachblockhistory→独立/ratio保持と全2ブロック図保全。TESTmagic→compressedblocks→jump table、最後4byte blockcountという原記述、N blocksならその直前N+1個4byteintegers各begin/endoffset、OffsetK=BlockK書後総bytes/magic含む強調を保持。ASCII全2図・先頭4/Offset1…N/N+1を保持。"
+    },
+    {
+      "scope": "展開全6項/終了条件/日本語",
+      "result": "filelast4へseek/countoffsetread→eachoffsetarray→必要data最初blockseek/全blockfixeduncompressed量ただしlast例外may→decomp必要datawrite→nextblockread→decomp pagewrite、必要data全部readまでrepeat（ファイル全体展開必須にしない）を保持。reverseorderを列挙に従って逆の処理と訳しfooter明示。除くとmay例外の補足は原条件を強めない。日本語単独で否定/順序/offset基点/単位/強調を全文再読。"
+    },
+    {
+      "scope": "Libx訂正と上流食い違いの明示",
+      "result": "誤った以前のN offsets注記を継承しない。原文がN+1 offsets明示済み/圧縮prose末尾block数と図・展開offset数の相違をfooterへ記録。固定code write offsetsEnd-offsets/read numOffsetsという確認済み事実に対応。本文原条件は黙ってcorrectせず保持。意味reviewと機械検査は別工程。"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "06-library/05-file-header.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T06:00:46.825572+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/lib/lz4file.h",
+    "sha256": "400ed90bc74324abcf338d37235dd81aa431fd815c22db4b369b88c12b213115",
+    "coverage": [
+      [
+        1,
+        93
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/06-library/05-file-header.md",
+    "sha256": "51b68241e33f1e0b863a171274326c460b96f90b382dbf11ce359ca24eecac3a",
+    "coverage": [
+      [
+        1,
+        128
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-810/translation/05-file-header.md",
+    "sha256": "7d4cddae12921f925f90d600165c8749a8ad3084bdebe39bcf9d8eca8ccf51b7",
+    "coverage": [
+      [
+        1,
+        137
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "source/EN/JA全文・7区画",
+      "result": "初稿後にsource/EN/JAを別工程で全文再読。Xiaomi2022著作権/条件/免責を英語全文保持。6API説明のread/writeの方向、openハンドル設定/fopen戻り値fp必須、read/readCloseは最初LZ4_readOpen・write/writeCloseは最初LZ4F_writeOpen必須、bufとsizeの意味を全部保持。全6宣言/型/引数/戻り型/externC/includes/guards/inlinecomment原文保持。"
+    },
+    {
+      "scope": "原不足・原表記・日本語単独",
+      "result": "原lz4f表記と宣言lz4fRead/lz4fWrite、LZ4_readOpen原表記とLZ4F_readOpen宣言をfooterで区別し黙って修正なし。原文に戻り値詳細/エラー条件/FILE*所有権がないので推測追加しない。日本語単独再読し不自然な指示/条件欠落なし。未説明仕様やAPI動作を今回実行検証済みとせず、文書buildと区別。"
+    }
+  ]
+}

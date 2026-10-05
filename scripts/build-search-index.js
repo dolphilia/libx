@@ -29,12 +29,16 @@ const headingText = (node) =>
     : (node.value ?? (node.children ?? []).map(headingText).join(''));
 
 function stripMarkdown(value) {
+  const withoutMarkup = value
+    .replace(/<a\s+id=["'][^"']+["']\s*><\/a>/gi, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1');
+  // Decode HTML text before stripping Markdown delimiters, which would split
+  // numeric references such as &#95; inside API names. Remove real markup
+  // first so encoded <tags> remain searchable text rather than disappearing.
   return (
-    value
-      .replace(/<a\s+id=["'][^"']+["']\s*><\/a>/gi, '')
-      .replace(/<[^>]+>/g, ' ')
-      .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    htmlText(parseFragment(withoutMarkup))
       // Preserve underscores inside API identifiers while removing emphasis delimiters.
       .replace(/(?<![\p{Letter}\p{Number}])_+|_+(?![\p{Letter}\p{Number}])/gu, ' ')
       .replace(/[`*~>#|]/g, ' ')

@@ -1,0 +1,52 @@
+{
+  "id": "05-examples/03-double-buffer.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T05:11:18.959932+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/examples/blockStreaming_doubleBuffer.md",
+    "sha256": "186607a249d039a9b558592719845ee13222284d4bc8c90eb577a1697007dab0",
+    "coverage": [
+      [
+        1,
+        100
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/05-examples/03-double-buffer.md",
+    "sha256": "23c97b8d43788ff22a1746012d50c7c567463fd8ad9dc9ef9964982b045804f4",
+    "coverage": [
+      [
+        1,
+        108
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-800/translation/03-double-buffer.md",
+    "sha256": "9cbfe2e3b25100266d8cc77a9320d7425c9d593f766d59768a5af09d65002e3b",
+    "coverage": [
+      [
+        1,
+        104
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "原文→定本/概要・注意・ポイント全文",
+      "result": "原文全量と定本全文、初稿後のJAを別工程で再読。原先頭BOMは定本FMに明示しrawdownload保持。著者Takayuki、sourcefilenamecode、DoubleBuffer圧縮展開、基礎先読/比較的advanced/lz4frame非互換/platform dependent全3条件を保持。少量mem巨大file/always betterratio/均一sizeの3目的を保持し、always主張は測定ではないとfooter区別。"
+    },
+    {
+      "scope": "圧縮全手順/図",
+      "result": "inputDoubleBufferとoutputcompressedbuffer、2pagesPage1/2、最初blockfirstpage/旧compress_continue()/previousdependencyなし/Out1buffer→file、secondblocksecondpage/Block1prefix依存ratio改善、thirdblockfirstpage/Block2外部dict依存、EOFまで繰返しを全照合。図の4出力/交互pages/3種類依存と矢印空白全量保持。firstの強調保持。"
+    },
+    {
+      "scope": "展開全6手順/原文曖昧語/日本語",
+      "result": "firstread→firstpagedecomp/write、secondread→secondpage/write、thirdread→firstpage/write、compressedEOFまでrepeatを全照合。reverse orderは列挙の先頭順序に合わせ逆の処理と訳し判断footer明示。lineとDictonaly原表記をbodyで黙って訂正せず、line→行/typo→外部辞書の訳をfooter表示。旧APIを固定header810のdeprecated代替と共に注記、本文codeは改変しない。否定・順序・依存方向・日本語自然さを全範囲確認。"
+    }
+  ]
+}

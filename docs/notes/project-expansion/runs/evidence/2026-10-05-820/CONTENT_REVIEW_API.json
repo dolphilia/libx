@@ -1,0 +1,87 @@
+{
+  "id": "04-api/02-frame-api.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T06:44:42.922921+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/doc/lz4frame_manual.html",
+    "sha256": "16d83fc4920d1df5e26c3de9e1c6c24fe0233033fb1c8c52c0ef689cb20a11d3",
+    "coverage": [
+      [
+        1,
+        250
+      ],
+      [
+        251,
+        508
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/04-api/02-frame-api.md",
+    "sha256": "c1cd1bf63b0ba0f6bdaf7f296363ddd2c15df4687194a4fc7ecaa4712a63c1f2",
+    "coverage": [
+      [
+        1,
+        265
+      ],
+      [
+        266,
+        529
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-820/translation/02-frame-api.md",
+    "sha256": "c077a418b3b37be676ced40af32205efb14fdee2576701d9c53cbec1b825f98c",
+    "coverage": [
+      [
+        1,
+        150
+      ],
+      [
+        151,
+        280
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "原文/定本/日本語全量",
+      "result": "原文508行、定本529行、日本語280行を別工程で省略のない出力により全量再読。25説明、全宣言と宣言内コメント、見出し16・目次14を照合。808既存訳再利用を新ページのレビュー省略にしない。outer wrapper除去、文字保護、named ID追加以外に原技術内容の欠落なし。"
+    },
+    {
+      "scope": "説明0–11/圧縮",
+      "result": "導入のblock/frameの区別、各型のzero-initとreserved、stateless全入力/全出力、HEAPMODE1、bound関数の別用途とflush前提、VERSION/ptr/error/freeNULL、begin最大header、update1call bound/内部最大block-1/footer・header別、失敗後UB/reinitfree、compressed/uncompressed切替flush、NULLopt/0return、end最小4/再利用条件を照合。"
+    },
+    {
+      "scope": "説明12–16/展開",
+      "result": "dctx生成version/ptrとfree結果0条件、header最小必要入力/上下限、getFrameInfo任意・開始時と既開始の2場合・全header必須/不足失敗/消費は開始前成功時のみ/入出力size上限/input+consumed再開/エラー未変更を確認。decompress未消費再投入、dst上書き/変更可能、getFrameInfo後input更新必須/誤成功危険、hint非強制、余分な入力でもframe終端で停止0、error後reset必須と完了後再利用を確認。inline stableDst末尾64KB寿命とskipChecksums一度設定後継続は英語のまま保持。"
+    },
+    {
+      "scope": "説明17–24/辞書とadvanced",
+      "result": "usingDict辞書のsessionを超える寿命/最初block限定とCDict各blockの違い、dictIDを提供する唯一のprefs経路、展開frame全体で辞書アクセス必須、CDict一度生成/readonly並行共有/元buffer解放可、frameCDict context/null辞書/bound/prefs、CDictbegin寿命を確認。invalidBlockエラー、uncompressedIndependentのみ/入力全capacity/errorUB/以前圧縮flush/nullopt/0return、customallocatorとoptionalcalloc+memset、stdlib代替を保持。"
+    },
+    {
+      "scope": "原誤記/編集注記/ライセンス",
+      "result": "原LZ4F_compress/LZ4_flush/LZ4_createCDict/LZ4_CDict/LZ4F_customMem/@dstBufferとenum句読点を無断修正しない。日本語注記で省略していた定本の未収録5API名を明示し変更箇所再読。<stdlib.h>文字保護を確認。非公式訳/固定commitとSHA/原通知と取得導線/GPL運用判断/ソフト実行未実施を確認。sourcekit・ブラウザー・統合未完は維持。"
+    }
+  ],
+  "reviewedDraft": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-819/draft/02-frame-api.md",
+    "sha256": "8387fe9c2ee43d4de41351c0b7189e046aa722c6de7f19bfc059940685d2dcc2",
+    "coverage": [
+      [
+        1,
+        150
+      ],
+      [
+        151,
+        280
+      ]
+    ],
+    "editorialCorrection": "docs/notes/project-expansion/runs/evidence/2026-10-05-820/EDITORIAL_CORRECTION.json"
+  }
+}

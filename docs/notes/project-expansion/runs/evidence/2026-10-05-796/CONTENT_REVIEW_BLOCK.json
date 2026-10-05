@@ -1,0 +1,64 @@
+{
+  "id": "03-format/01-block-format.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T04:47:45.721009+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/doc/lz4_Block_format.md",
+    "sha256": "dce3c34a8738c44ed1dffb48c73e30297fca98ba7881408dc228865912c9a42e",
+    "coverage": [
+      [
+        1,
+        244
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/03-format/01-block-format.md",
+    "sha256": "985c7b1e95ecfa4d4452866a221f157ff4702f413db65b05fa2a0468573773ac",
+    "coverage": [
+      [
+        1,
+        252
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-796/translation/01-block-format.md",
+    "sha256": "b751a4d7c47b11878eee545e5ed578e50dcb3ae270c9f15297823ff2d5043e3d",
+    "coverage": [
+      [
+        1,
+        145
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "原文→定本全文/概要",
+      "result": "原改訂2022-07-31/著者YannとLZ77固定byte encoding/entropy backendなし/frame別処理/formatのみ説明を保持。定本はFrame相対URLを既存ENrouteへ移すのみで全文保全。全8見出しと著者本文保持。"
+    },
+    {
+      "scope": "定本→訳文: compressed block format全文",
+      "result": "sequence literal→match、1byte tokenのtwo4bit 0–15、upper literal fieldの<15/0/15特殊・追加0–255/255続行・format無上限対実装上限を保持。0.4%拡張、48=15+33/280=15+255+10/15=15+0の全3例と15時zero必須を照合。decoded literal数一致/ゼロ可、offset2byte little endian low→high、current-1/max65535/65536以上不可/0不正を確認。low token+minmatch4・0→4/<15→4–18/15→19+・追加255連鎖と無上限/実装上限、約250比と次token順序を保持。"
+    },
+    {
+      "scope": "定本→訳文: end conditions全文",
+      "result": "最後literalのみ/nooffset、最後5入力byteと最低5/入力<5唯一literal sequence/emptyzero finaltoken、lastmatch末尾>=12手前/penultimate/最後onlyliteral、<12不可/independent<13不可/先頭atleastone literalを全照合。適合decoderは不正としてrejectできる許可（義務化せず）とhistorical speeddecoder互換目的を保持。"
+    },
+    {
+      "scope": "定本→訳文: metadata/large lengths全文",
+      "result": "設計自由/指針、圧縮sizeと展開upperboundおよび逆の既知size/入力upperbound、out-of-band経路とDBindex/threshold、self-containedならFrame推奨を保持。format無上限と固定width実装、64bit/multipetabyte現実性、32bitoverflowには>16MB必要/扱わない場合そのoverflow安全/扱う場合check推奨、16bit<300可能を保持。should detect/errorout・inputは無効とは限らずlocaldecoder限界、upto4MBの長さとblock受入推奨/32bit予防を保持。"
+    },
+    {
+      "scope": "定本→訳文: safe decoding/compression techniques全文",
+      "result": "external input耐性推奨、read/write必ずbuffer内、copybytesinput/output両方・offsetcopyposがbuffer開始より前へ行かない/最初64KB、fuzz条件の並び+asanoverflow/msan初期化を保持。0offset禁止/未初期化destination保持によるprivate漏洩/参照実装zero値クリア（他解法可）を保持。matchlength>offsetと式完全保持/後のcopybyte未生成で初期copyにより生成/特別care必須/offset1で直前byteをmatchlength回反復を確認。過去64KB重複/matchsearch選択無制限/full optimal parsing資源コスト/異なるtradeoffs/format適合なら全適合decoder互換を保持。"
+    },
+    {
+      "scope": "日本語単独・修正後全範囲再確認",
+      "result": "optional length bytesを自由に省略できると読ませないよう必要な場合に置かれると修正。0 bytesはbyte数でなく値0と明示、参照実装の表現を自然化。conditions sequencesは組み合わせでなく並びへ、high CPU/memory costはCPUが大きいと誤読されない表現へ修正。全source244/EN252/JA145を再読し、否定/例外/数値/比較の強さ/順序を確認。Libx注記はfooterのみ。"
+    }
+  ]
+}

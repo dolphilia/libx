@@ -53,6 +53,12 @@ try {
     assert.equal(typeof original, 'string');
     fs.writeFileSync(path.join(temporary, entry.path), original);
   }
+  // LZ4 is a newly reviewed project and has no historical presentation restoration.
+  const lz4Output = path.join(root, 'apps/lz4/dist');
+  if (fs.existsSync(path.join(root, 'apps/lz4/check-content.mjs'))) {
+    assert(fs.existsSync(lz4Output), 'Build LZ4 before checking its rendered content');
+    fs.symlinkSync(lz4Output, path.join(temporary, 'apps/lz4/dist'), 'dir');
+  }
   const rendered = process.argv.find((arg) => arg.startsWith('--rendered='))?.split('=')[1];
   assert(!rendered || ['fmt', 'spdlog'].includes(rendered));
   if (rendered) {

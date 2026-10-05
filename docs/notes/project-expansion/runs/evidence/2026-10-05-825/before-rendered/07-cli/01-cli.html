@@ -1,0 +1,562 @@
+<!DOCTYPE html><html lang="ja" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar data-dir="ltr"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/docs/lz4/favicon.svg"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- ダークモードフラッシュ防止スクリプト --><script>
+      (function () {
+        const STORAGE_KEY = 'theme-preference';
+
+        function getThemePreference() {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY)) {
+            return localStorage.getItem(STORAGE_KEY);
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        const theme = getThemePreference();
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script><meta name="generator" content="Astro v5.7.12"><meta name="description" content="LZ4 1.10.0 の公式文書と非公式日本語訳"><link rel="canonical" href="https://libx.dev/docs/lz4/v1-10-0/ja/07-cli/01-cli/"><link rel="alternate" hreflang="en" href="https://libx.dev/docs/lz4/v1-10-0/en/07-cli/01-cli/"><link rel="alternate" hreflang="ja" href="https://libx.dev/docs/lz4/v1-10-0/ja/07-cli/01-cli/"><link rel="alternate" hreflang="x-default" href="https://libx.dev/docs/lz4/v1-10-0/en/07-cli/01-cli/"><meta property="og:type" content="article"><meta property="og:title" content="LZ4: コマンドラインインターフェース | LZ4 ドキュメント"><meta property="og:description" content="LZ4 1.10.0 の公式文書と非公式日本語訳"><meta property="og:url" content="https://libx.dev/docs/lz4/v1-10-0/ja/07-cli/01-cli/"><title>LZ4: コマンドラインインターフェース | LZ4 ドキュメント</title><script type="module" src="/docs/lz4/assets/MainLayout.astro_astro_type_script_index_0_lang.AM23D57d.js"></script><link rel="stylesheet" href="/docs/lz4/assets/style.B3M0jg3i.css"></head> <body> <div class="page"> <header class="header" dir="ltr"> <div class="header-container"> <div class="header-content"> <div class="title-wrapper"><div class="breadcrumb-title"> <a href="/ja" class="site-title">
+Libx
+</a> <svg class="breadcrumb-separator" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg> <a href="/docs/lz4/v1-10-0/ja/01-overview/01-about" class="doc-title"> LZ4 ドキュメント </a> </div></div> <div class="print:hidden right-group"> <div class="docs-search" data-search-root data-index-url="/docs/lz4/search/v1-10-0/ja.json" data-no-results="'{query}'に一致する結果が見つかりませんでした" data-error="検索エラー" data-astro-cid-tum4gdqp> <button type="button" class="search-trigger" data-search-trigger aria-haspopup="dialog" aria-label="検索" data-astro-cid-tum4gdqp> <span data-astro-cid-tum4gdqp>検索</span><kbd data-astro-cid-tum4gdqp>/</kbd> </button> <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" data-astro-cid-tum4gdqp> <form method="dialog" class="search-header" data-astro-cid-tum4gdqp> <label id="search-dialog-title" for="docs-search-input" data-astro-cid-tum4gdqp> 検索結果 </label> <button type="submit" aria-label="閉じる" data-astro-cid-tum4gdqp>×</button> </form> <input id="docs-search-input" type="search" autocomplete="off" placeholder="ドキュメントを検索..." data-search-input data-astro-cid-tum4gdqp> <p class="search-status" data-search-status aria-live="polite" data-astro-cid-tum4gdqp></p> <ol class="search-results" data-search-results data-astro-cid-tum4gdqp></ol> </dialog> </div> <script type="module" src="/docs/lz4/assets/Search.astro_astro_type_script_index_0_lang.DBczfp5P.js"></script>  <div class="version-selector-container"> <div class="version-selector" dir="ltr" data-astro-cid-2rgn72zw> <script>
+  class DocsDropdown extends HTMLElement {
+    constructor() {
+      super();
+    }
+  }
+  
+  // カスタム要素として登録
+  customElements.define('docs-dropdown', DocsDropdown);
+  </script><script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // すべてのドロップダウンコンポーネントを初期化
+    document.querySelectorAll('docs-dropdown').forEach(dropdown => {
+      if (dropdown._initialized) return;
+      dropdown._initialized = true;
+      
+      const button = dropdown.querySelector('[data-dropdown-button]');
+      const menu = dropdown.querySelector('[data-dropdown-menu]');
+      
+      if (button && menu) {
+        // ボタンクリックでメニューの表示/非表示を切り替え
+        button.addEventListener('click', function() {
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', (!expanded).toString());
+          menu.classList.toggle('hidden');
+        });
+        
+        const closeMenu = function(restoreFocus) {
+          button.setAttribute('aria-expanded', 'false');
+          menu.classList.add('hidden');
+          if (restoreFocus) button.focus();
+        };
+        const items = function() {
+          return Array.from(menu.querySelectorAll('[role="menuitem"]'))
+            .filter(item => item.getAttribute('aria-disabled') !== 'true');
+        };
+        const openAndFocus = function(last) {
+          button.setAttribute('aria-expanded', 'true');
+          menu.classList.remove('hidden');
+          const entries = items();
+          const entry = last ? entries[entries.length - 1] : entries[0];
+          if (entry) entry.focus();
+        };
+        button.addEventListener('keydown', function(event) {
+          if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key)) {
+            event.preventDefault();
+            if (['Enter', ' '].includes(event.key) && button.getAttribute('aria-expanded') === 'true') {
+              closeMenu(true);
+            } else {
+              openAndFocus(event.key === 'ArrowUp');
+            }
+          }
+        });
+        menu.addEventListener('keydown', function(event) {
+          if (event.key === 'Tab') {
+            closeMenu(false);
+            return;
+          }
+          const entries = items();
+          if (!entries.length) return;
+          const current = entries.indexOf(document.activeElement);
+          let next;
+          if (event.key === 'ArrowDown') next = (current + 1) % entries.length;
+          else if (event.key === 'ArrowUp') next = (current - 1 + entries.length) % entries.length;
+          else if (event.key === 'Home') next = 0;
+          else if (event.key === 'End') next = entries.length - 1;
+          else return;
+          event.preventDefault();
+          entries[next].focus();
+        });
+
+        // 外部クリックでメニューを閉じる
+        document.addEventListener('click', function(event) {
+          if (!dropdown.contains(event.target)) {
+            button.setAttribute('aria-expanded', 'false');
+            menu.classList.add('hidden');
+          }
+        });
+        
+        // ESCキーでメニューを閉じる
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            closeMenu(dropdown.contains(event.target));
+          }
+        });
+      }
+    });
+  });
+  </script><docs-dropdown dir="ltr" data-astro-cid-2rgn72zw="true" data-astro-cid-db4h3dce="true" class="dropdown version-dropdown">  <div data-astro-cid-db4h3dce> <button type="button" class="dropdown-button" id="dropdown-button-a7449e805a4ec68e-0" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-menu-a7449e805a4ec68e-0" data-dropdown-button data-astro-cid-db4h3dce> <span class="dropdown-label" data-astro-cid-db4h3dce>LZ4 1.10.0</span> <span class="dropdown-icon" data-astro-cid-db4h3dce><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span> </button> </div>  <div class="dropdown-menu hidden" id="dropdown-menu-a7449e805a4ec68e-0" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button-a7449e805a4ec68e-0" tabindex="-1" data-dropdown-menu data-align="right" style="width: 14rem;" data-astro-cid-db4h3dce> <div class="dropdown-content" role="none" data-astro-cid-db4h3dce>   <a href="/docs/lz4/v1-10-0/ja/07-cli/01-cli" class="dropdown-item dropdown-item-active" role="menuitem" tabindex="-1" aria-current="page" data-version-link="true" data-astro-cid-2rgn72zw="true" data-astro-cid-io2tsak2><span class="dropdown-item-label" data-astro-cid-io2tsak2>LZ4 1.10.0</span><span class="version-badge version-badge-latest" data-astro-cid-2rgn72zw> 最新 </span><div class="version-meta" data-astro-cid-2rgn72zw> <div class="version-date" data-astro-cid-2rgn72zw> 2024年7月22日 </div>  </div> </a>  </div> </div> </docs-dropdown>  <div class="version-info" data-astro-cid-2rgn72zw>   </div> </div>  <script>(function(){const versionsLabel = "バージョン一覧";
+const collapseLabel = "閉じる";
+
+  // バージョン履歴の「すべてのバージョンを表示」リンクの処理
+  document.addEventListener('DOMContentLoaded', () => {
+    const moreLinks = document.querySelectorAll('.version-history-more');
+    moreLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const historyList = link
+          .closest('.version-history')
+          ?.querySelector('.version-history-list');
+        const historyItems = historyList?.querySelectorAll('.version-history-item');
+
+        if (historyItems) {
+          historyItems.forEach((item) => {
+            if (item.classList.contains('hidden')) {
+              item.classList.remove('hidden');
+            }
+          });
+
+          // 「すべて表示」リンクを「折りたたむ」に変更
+          link.textContent = collapseLabel;
+          link.classList.add('is-expanded');
+
+          // クリック時の動作を切り替え
+          link.addEventListener(
+            'click',
+            (e) => {
+              e.preventDefault();
+              if (link.classList.contains('is-expanded')) {
+                // 3つ目以降を非表示
+                Array.from(historyItems)
+                  .slice(3)
+                  .forEach((item) => {
+                    item.classList.add('hidden');
+                  });
+                link.textContent = versionsLabel;
+                link.classList.remove('is-expanded');
+              } else {
+                // すべて表示
+                historyItems.forEach((item) => {
+                  item.classList.remove('hidden');
+                });
+                link.textContent = collapseLabel;
+                link.classList.add('is-expanded');
+              }
+            },
+            { once: true }
+          );
+        }
+      });
+    });
+
+    // バージョンセレクターリンクの動的フォールバック処理
+    setupVersionSelectorFallback();
+  });
+
+  // バージョンセレクターリンクの動的フォールバック処理
+  function setupVersionSelectorFallback() {
+    const versionLinks = document.querySelectorAll('.version-dropdown [data-version-link]');
+
+    versionLinks.forEach((link) => {
+      const originalHref = link.getAttribute('href');
+      if (!originalHref) return;
+
+      link.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        // リンク先が存在するかチェック
+        const isValid = await checkLinkValidity(originalHref);
+
+        if (isValid) {
+          // 有効なリンクならそのまま遷移
+          window.location.href = originalHref;
+        } else {
+          // 無効なリンクならフォールバック先を計算
+          const fallbackUrl = await calculateFallbackUrl(originalHref);
+          window.location.href = fallbackUrl;
+        }
+      });
+    });
+  }
+
+  // リンク先の有効性をチェック
+  async function checkLinkValidity(url) {
+    try {
+      const response = await fetch(url, { method: 'HEAD' });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // フォールバック先URLを計算
+  async function calculateFallbackUrl(originalUrl) {
+    // URLを解析
+    const urlParts = originalUrl.split('/');
+    const baseIndex = urlParts.findIndex((part) => part === 'docs');
+
+    if (baseIndex === -1) return originalUrl;
+
+    // パス構造: /docs/sample-docs/lang/version/section/file
+    const basePath = urlParts.slice(0, baseIndex + 3).join('/'); // /docs/sample-docs/lang
+    const version = urlParts[baseIndex + 3]; // version
+    const section = urlParts[baseIndex + 4]; // section (guide など)
+
+    // フォールバック戦略
+    const fallbackCandidates = [
+      // 1. 同じセクションの最初のファイル（getting-started系）
+      basePath + '/' + version + '/' + section + '/01-getting-started',
+      basePath + '/' + version + '/' + section + '/getting-started',
+      // 2. デフォルトセクション（guide）の最初のファイル
+      basePath + '/' + version + '/guide/01-getting-started',
+      basePath + '/' + version + '/guide/getting-started',
+      // 3. バージョンのルートページ
+      basePath + '/' + version + '/',
+      basePath + '/' + version,
+    ];
+
+    // 各候補を順次チェック
+    for (const candidate of fallbackCandidates) {
+      const isValid = await checkLinkValidity(candidate);
+      if (isValid) {
+        return candidate;
+      }
+    }
+
+    // すべて失敗した場合は元のURLを返す
+    return originalUrl;
+  }
+})();</script> </div><div class="language-selector-container"> <div class="language-selector-container" dir="ltr" data-astro-cid-zjqtw2v6> <docs-dropdown dir="ltr" data-astro-cid-zjqtw2v6="true" data-astro-cid-db4h3dce="true" class="dropdown language-dropdown ">  <div data-astro-cid-db4h3dce> <button type="button" class="dropdown-button" id="dropdown-button-12201b488d3741ee-0" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-menu-12201b488d3741ee-0" data-dropdown-button data-astro-cid-db4h3dce> <span class="dropdown-label" data-astro-cid-db4h3dce>日本語</span> <span class="dropdown-icon" data-astro-cid-db4h3dce><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span> </button> </div>  <div class="dropdown-menu hidden" id="dropdown-menu-12201b488d3741ee-0" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button-12201b488d3741ee-0" tabindex="-1" data-dropdown-menu data-align="right" style="width: 14rem;" data-astro-cid-db4h3dce> <div class="dropdown-content" role="none" data-astro-cid-db4h3dce>   <a href="/docs/lz4/v1-10-0/en/07-cli/01-cli/" class="dropdown-item" role="menuitem" tabindex="-1" data-astro-cid-zjqtw2v6="true" data-astro-cid-io2tsak2><span class="dropdown-item-label" data-astro-cid-io2tsak2>English</span></a><a href="/docs/lz4/v1-10-0/ja/07-cli/01-cli/" class="dropdown-item dropdown-item-active" role="menuitem" tabindex="-1" aria-current="page" data-astro-cid-zjqtw2v6="true" data-astro-cid-io2tsak2><span class="dropdown-item-label" data-astro-cid-io2tsak2>日本語</span><span class="language-current-badge" data-astro-cid-zjqtw2v6> 現在 </span></a> </div> </div> </docs-dropdown>  </div>  </div> <theme-toggle data-astro-cid-lkmva3em="true"> <button class="theme-toggle" type="button" aria-label="テーマを切り替える" data-astro-cid-lkmva3em> <span class="theme-toggle-icon" data-astro-cid-lkmva3em> <!-- 太陽アイコン（ライトモード用） --> <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-lkmva3em> <circle cx="12" cy="12" r="5" data-astro-cid-lkmva3em></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-lkmva3em></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-lkmva3em></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-lkmva3em></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-lkmva3em></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-lkmva3em></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-lkmva3em></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-lkmva3em></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-lkmva3em></line> </svg> <!-- 月アイコン（ダークモード用） --> <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-lkmva3em> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-lkmva3em></path> </svg> </span> </button> </theme-toggle>  <script type="module" src="/docs/lz4/assets/ThemeToggle.astro_astro_type_script_index_0_lang.BDHHZQnD.js"></script> </div> </div> </div> </header> <div class="main-frame"> <main id="main-content">  <div class="doc-layout-container" dir="ltr"> <aside class="sidebar-column print:hidden" dir="ltr"> <div class="sidebar-content"> <aside class="sidebar" role="complementary" aria-label="ドキュメント" id="sidebar" style="position: relative;" dir="ltr" data-astro-cid-wcw5g6vn> <div class="sidebar-resizer" data-astro-cid-q357bzyo> <div class="resizer-handle" title="サイドバーの幅を調整する" aria-hidden="true" data-astro-cid-q357bzyo> <div class="handle-line" data-astro-cid-q357bzyo></div> </div> <button type="button" class="collapse-button" title="サイドバーを折りたたむ、または展開する" aria-label="サイドバーを折りたたむ、または展開する" aria-expanded="true" aria-controls="sidebar" data-astro-cid-q357bzyo> <span class="collapse-icon" data-astro-cid-q357bzyo></span> </button> </div>  <script>(function(){const minWidth = 200;
+const maxWidth = 280;
+const initialWidth = 260;
+const collapsedWidth = 50;
+const storageKey = "sidebar-width";
+const dir = "ltr";
+
+  // CSSからの初期化を避けるため、DOMContentLoadedより早く実行
+  const initializeSidebar = () => {
+    const sidebar = document.getElementById('sidebar');
+
+    if (!sidebar) return;
+
+    // ローカルストレージから幅と折りたたみ状態を取得
+    const savedWidth = localStorage.getItem(storageKey);
+    const savedCollapsed = localStorage.getItem(`${storageKey}-collapsed`) === 'true';
+
+    // 初期幅を設定（保存された値がある場合のみ上書き）
+    if (savedWidth && !savedCollapsed) {
+      const sidebarWidth = parseInt(savedWidth);
+      sidebar.style.width = `${sidebarWidth}px`;
+    }
+
+    // 初期状態を設定
+    if (savedCollapsed) {
+      sidebar.classList.add('sidebar-collapsed');
+      sidebar.style.width = `${collapsedWidth}px`;
+    }
+
+    const collapseButton = document.querySelector('.collapse-button');
+    collapseButton?.setAttribute('aria-expanded', String(!savedCollapsed));
+  };
+
+  // できるだけ早く実行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSidebar);
+  } else {
+    initializeSidebar();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const resizer = document.querySelector('.sidebar-resizer');
+    const collapseButton = document.querySelector('.collapse-button');
+
+    if (!sidebar || !resizer || !collapseButton) return;
+
+    // リサイズ処理
+    let isResizing = false;
+    let startX = 0;
+    let startWidth = 0;
+
+    // リサイズ開始
+    const startResize = (e) => {
+      isResizing = true;
+      startX = e.clientX || e.touches[0].clientX;
+      startWidth = parseInt(sidebar.offsetWidth);
+      resizer.classList.add('resizing');
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+
+      // イベントリスナーを追加
+      document.addEventListener('mousemove', resize);
+      document.addEventListener('touchmove', resize, { passive: false });
+      document.addEventListener('mouseup', stopResize);
+      document.addEventListener('touchend', stopResize);
+    };
+
+    // リサイズ中
+    const resize = (e) => {
+      if (!isResizing) return;
+
+      e.preventDefault();
+
+      const clientX = e.clientX || e.touches[0].clientX;
+      const pointerDelta = dir === 'rtl' ? startX - clientX : clientX - startX;
+      let newWidth = startWidth + pointerDelta;
+
+      // 最小幅と最大幅の制限
+      newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+
+      // サイドバーの幅を更新
+      sidebar.style.width = `${newWidth}px`;
+
+      // 折りたたみ状態を解除
+      if (sidebar.classList.contains('sidebar-collapsed') && newWidth > collapsedWidth) {
+        sidebar.classList.remove('sidebar-collapsed');
+        localStorage.setItem(`${storageKey}-collapsed`, 'false');
+      }
+    };
+
+    // リサイズ終了
+    const stopResize = () => {
+      if (!isResizing) return;
+
+      isResizing = false;
+      resizer.classList.remove('resizing');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+
+      // 現在の幅をローカルストレージに保存
+      if (!sidebar.classList.contains('sidebar-collapsed')) {
+        localStorage.setItem(storageKey, sidebar.offsetWidth);
+      }
+
+      // イベントリスナーを削除
+      document.removeEventListener('mousemove', resize);
+      document.removeEventListener('touchmove', resize);
+      document.removeEventListener('mouseup', stopResize);
+      document.removeEventListener('touchend', stopResize);
+    };
+
+    // 折りたたみ/展開ボタンのクリックイベント
+    const toggleCollapse = () => {
+      const widthBeforeToggle = sidebar.offsetWidth;
+      const isCollapsed = sidebar.classList.toggle('sidebar-collapsed');
+
+      if (isCollapsed) {
+        // 現在の幅を一時保存
+        if (!localStorage.getItem(`${storageKey}-width-before-collapse`)) {
+          localStorage.setItem(`${storageKey}-width-before-collapse`, widthBeforeToggle);
+        }
+
+        // 折りたたみ幅に設定
+        sidebar.style.width = `${collapsedWidth}px`;
+      } else {
+        // 以前の幅に戻す
+        const widthBeforeCollapse =
+          localStorage.getItem(`${storageKey}-width-before-collapse`) || initialWidth;
+        const restoredWidth = Number(widthBeforeCollapse);
+        sidebar.style.width = `${Math.min(maxWidth, Math.max(minWidth, Number.isFinite(restoredWidth) ? restoredWidth : initialWidth))}px`;
+        localStorage.removeItem(`${storageKey}-width-before-collapse`);
+        sidebar.scrollLeft = 0;
+      }
+
+      // 折りたたみ状態をローカルストレージに保存
+      localStorage.setItem(`${storageKey}-collapsed`, isCollapsed);
+      collapseButton.setAttribute('aria-expanded', String(!isCollapsed));
+    };
+
+    // イベントリスナーを設定
+    resizer.addEventListener('mousedown', startResize);
+    resizer.addEventListener('touchstart', startResize, { passive: false });
+    collapseButton.addEventListener('click', toggleCollapse);
+  });
+})();</script> <h3 class="sidebar-title" id="sidebar-title" data-astro-cid-wcw5g6vn> ドキュメント </h3> <nav aria-labelledby="sidebar-title" data-astro-cid-wcw5g6vn> <sl-sidebar-state-persist data-hash="sidebar-hash" data-astro-cid-hdpizrhq="true"> <script aria-hidden="true">
+    (() => {
+      try {
+        if (!matchMedia('(min-width: 50em)').matches) return;
+        /** @type {HTMLElement | null} */
+        const target = document.querySelector('sl-sidebar-state-persist');
+        const state = JSON.parse(sessionStorage.getItem('sidebar-state') || '0');
+        if (!target || !state || target.dataset.hash !== state.hash) return;
+        window._sidebarScrollRestore = state.scroll;
+        customElements.define(
+          'sl-sidebar-restore',
+          class SidebarRestore extends HTMLElement {
+            connectedCallback() {
+              try {
+                const idx = parseInt(this.dataset.index || '');
+                const details = this.closest('details');
+                if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+              } catch {
+                // 段階的な拡張機能のため、エラーは静かに無視
+              }
+            }
+          }
+        );
+      } catch {
+        // 段階的な拡張機能のため、エラーは静かに無視
+      }
+    })();
+  </script>  <ul class="top-level" data-astro-cid-wcw5g6vn> <li data-astro-cid-wcw5g6vn> <details data-astro-cid-wcw5g6vn> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary data-astro-cid-wcw5g6vn> <div class="group-label" data-astro-cid-wcw5g6vn> <span class="large" data-astro-cid-wcw5g6vn>概要</span>  </div> <span class="caret-container" data-astro-cid-wcw5g6vn> <span class="caret-wrapper" data-astro-cid-wcw5g6vn> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-pnz7nfxd style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-wcw5g6vn> <li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/01-overview/01-about" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: 概要</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/01-overview/02-installing" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: インストール</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/01-overview/03-history" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: 変更履歴</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/01-overview/04-security" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: セキュリティポリシー</span>  </a> </li> </ul> </details> </li><li data-astro-cid-wcw5g6vn> <details data-astro-cid-wcw5g6vn> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary data-astro-cid-wcw5g6vn> <div class="group-label" data-astro-cid-wcw5g6vn> <span class="large" data-astro-cid-wcw5g6vn>ビルド</span>  </div> <span class="caret-container" data-astro-cid-wcw5g6vn> <span class="caret-wrapper" data-astro-cid-wcw5g6vn> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-pnz7nfxd style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-wcw5g6vn> <li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/02-building/01-building" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: 各種IDE向けのビルド</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/02-building/02-meson" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: Mesonビルドシステム</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/02-building/03-visual" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: Visual Studioソリューションの生成</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/02-building/04-djgpp" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: DOS/djgpp向けビルド</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/02-building/05-snap" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: Snapパッケージ化</span>  </a> </li> </ul> </details> </li><li data-astro-cid-wcw5g6vn> <details data-astro-cid-wcw5g6vn> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary data-astro-cid-wcw5g6vn> <div class="group-label" data-astro-cid-wcw5g6vn> <span class="large" data-astro-cid-wcw5g6vn>形式仕様</span>  </div> <span class="caret-container" data-astro-cid-wcw5g6vn> <span class="caret-wrapper" data-astro-cid-wcw5g6vn> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-pnz7nfxd style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-wcw5g6vn> <li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/03-format/01-block-format" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: ブロック形式</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/03-format/02-frame-format" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: フレーム形式</span>  </a> </li> </ul> </details> </li><li data-astro-cid-wcw5g6vn> <details data-astro-cid-wcw5g6vn> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <summary data-astro-cid-wcw5g6vn> <div class="group-label" data-astro-cid-wcw5g6vn> <span class="large" data-astro-cid-wcw5g6vn>API マニュアル</span>  </div> <span class="caret-container" data-astro-cid-wcw5g6vn> <span class="caret-wrapper" data-astro-cid-wcw5g6vn> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-pnz7nfxd style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-wcw5g6vn> <li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/04-api/01-block-api" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: ブロックAPIマニュアル</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/04-api/02-frame-api" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: フレームAPIマニュアル</span>  </a> </li> </ul> </details> </li><li data-astro-cid-wcw5g6vn> <details data-astro-cid-wcw5g6vn> <sl-sidebar-restore data-index="4"></sl-sidebar-restore> <summary data-astro-cid-wcw5g6vn> <div class="group-label" data-astro-cid-wcw5g6vn> <span class="large" data-astro-cid-wcw5g6vn>使用例</span>  </div> <span class="caret-container" data-astro-cid-wcw5g6vn> <span class="caret-wrapper" data-astro-cid-wcw5g6vn> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-pnz7nfxd style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-wcw5g6vn> <li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/05-examples/01-examples" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: サンプル</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/05-examples/02-streaming-basics" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: ストリーミングAPIの基礎</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/05-examples/03-double-buffer" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: ダブルバッファー</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/05-examples/04-line-by-line" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: 行単位のテキスト圧縮</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/05-examples/05-dictionary-random-access" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: 辞書によるランダムアクセス</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/05-examples/06-dll-example" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: Windows DLL使用例</span>  </a> </li> </ul> </details> </li><li data-astro-cid-wcw5g6vn> <details data-astro-cid-wcw5g6vn> <sl-sidebar-restore data-index="5"></sl-sidebar-restore> <summary data-astro-cid-wcw5g6vn> <div class="group-label" data-astro-cid-wcw5g6vn> <span class="large" data-astro-cid-wcw5g6vn>ライブラリとヘッダー</span>  </div> <span class="caret-container" data-astro-cid-wcw5g6vn> <span class="caret-wrapper" data-astro-cid-wcw5g6vn> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-pnz7nfxd style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-wcw5g6vn> <li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/06-library/01-library" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: ライブラリファイル</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/06-library/02-block-header" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: ブロックAPIヘッダー</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/06-library/03-frame-header" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: フレームAPIヘッダー</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/06-library/04-hc-header" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: 高圧縮APIヘッダー</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/06-library/05-file-header" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: ファイルAPIヘッダー</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/06-library/06-static-wrapper" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: 旧静的フレームヘッダー</span>  </a> </li> </ul> </details> </li><li data-astro-cid-wcw5g6vn> <details open data-astro-cid-wcw5g6vn> <sl-sidebar-restore data-index="6"></sl-sidebar-restore> <summary data-astro-cid-wcw5g6vn> <div class="group-label" data-astro-cid-wcw5g6vn> <span class="large" data-astro-cid-wcw5g6vn>コマンドライン</span>  </div> <span class="caret-container" data-astro-cid-wcw5g6vn> <span class="caret-wrapper" data-astro-cid-wcw5g6vn> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-pnz7nfxd style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-wcw5g6vn> <li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/07-cli/01-cli" aria-current="page" class="active" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: コマンドラインインターフェース</span>  </a> </li><li data-astro-cid-wcw5g6vn> <a href="/docs/lz4/v1-10-0/ja/07-cli/02-lz4-command" data-astro-cid-wcw5g6vn> <span data-astro-cid-wcw5g6vn>LZ4: コマンドラインマニュアル</span>  </a> </li> </ul> </details> </li> </ul>  <script aria-hidden="true">
+    (() => {
+      const scroller = document.getElementById('sidebar');
+      if (!window._sidebarScrollRestore || !scroller) return;
+      scroller.scrollTop = window._sidebarScrollRestore;
+      delete window._sidebarScrollRestore;
+    })();
+  </script> </sl-sidebar-state-persist> <script type="module" src="/docs/lz4/assets/SidebarPersister.astro_astro_type_script_index_0_lang.1HBmR04Y.js"></script>  </nav> </aside>  <script type="module" src="/docs/lz4/assets/Sidebar.astro_astro_type_script_index_0_lang.Dr4m1BH4.js"></script> </div> </aside> <div class="main-column" dir="ltr"> <details class="mobile-toc" dir="ltr" data-astro-cid-tdixxhuy> <summary data-astro-cid-tdixxhuy>このページの内容</summary> <starlight-toc data-min-h="2" data-max-h="3" dir="ltr" data-astro-cid-uy3kupgb="true" class="starlight-toc--mobile"><div class="starlight-toc-wrapper" data-astro-cid-uy3kupgb><nav aria-labelledby="starlight-toc-heading-mobile" data-astro-cid-uy3kupgb><h3 id="starlight-toc-heading-mobile" class="starlight-toc-heading" data-astro-cid-uy3kupgb>このページの内容</h3><div class="starlight-toc-list" data-astro-cid-uy3kupgb><ul class="starlight-toc__list starlight-toc__list--mobile" data-astro-cid-mitp2h7x> <li class="starlight-toc__item" data-astro-cid-mitp2h7x> <a class="starlight-toc__link" href="#ビルド" data-depth="0" data-heading-level="3" data-astro-cid-mitp2h7x> <span data-astro-cid-mitp2h7x>ビルド</span> </a>  </li><li class="starlight-toc__item" data-astro-cid-mitp2h7x> <a class="starlight-toc__link" href="#パラメーターの連結" data-depth="0" data-heading-level="3" data-astro-cid-mitp2h7x> <span data-astro-cid-mitp2h7x>パラメーターの連結</span> </a>  </li><li class="starlight-toc__item" data-astro-cid-mitp2h7x> <a class="starlight-toc__link" href="#コマンドラインインターフェースのベンチマーク" data-depth="0" data-heading-level="3" data-astro-cid-mitp2h7x> <span data-astro-cid-mitp2h7x>コマンドラインインターフェースのベンチマーク</span> </a>  </li><li class="starlight-toc__item" data-astro-cid-mitp2h7x> <a class="starlight-toc__link" href="#コマンドラインインターフェースの使い方" data-depth="0" data-heading-level="3" data-astro-cid-mitp2h7x> <span data-astro-cid-mitp2h7x>コマンドラインインターフェースの使い方</span> </a>  </li> </ul> </div></nav></div></starlight-toc><script type="module" src="/docs/lz4/assets/TableOfContents.astro_astro_type_script_index_0_lang.ClgIWJ3a.js"></script> </details>  <div class="content-panel"> <article class="sl-markdown-content" dir="ltr">   <p><span id="command-line-interface-for-lz4-library"></span></p>
+<h1 id="lz4ライブラリのコマンドラインインターフェース">LZ4ライブラリのコマンドラインインターフェース</h1>
+<p><span id="build"></span></p>
+<h3 id="ビルド">ビルド</h3>
+<p><code>lz4</code>のコマンドラインインターフェース（CLI）は、追加のパラメーターを指定せず、<code>make</code>コマンドで生成します。</p>
+<p>CLIは、<a href="/docs/lz4/v1-10-0/en/03-format/02-frame-format/">LZ4で圧縮したフレーム</a>を生成・展開します。</p>
+<p>ビルド処理をさらに制御できるよう、<code>Makefile</code>スクリプトは<a href="https://www.gnu.org/prep/standards/html_node/Makefile-Conventions.html">標準の規約</a>すべてに対応します。標準のターゲット（<code>all</code>、<code>install</code>、<code>clean</code>など）や変数（<code>CC</code>、<code>CFLAGS</code>、<code>CPPFLAGS</code>など）も含みます。</p>
+<p>Makefileは、用途に応じた複数のターゲットを提供します。</p>
+<ul>
+<li><code>lz4</code>: gzipに似たコマンドライン構文を使う、既定のCLI。</li>
+<li><code>lz4c</code>: 旧来のlz4コマンドに対応します（gzipとは互換性がありません）。</li>
+<li><code>lz4c32</code>: <code>lz4c</code>と同じですが、32ビットの実行ファイルを生成します。</li>
+<li><code>unlz4</code>、<code>lz4cat</code>: <code>lz4</code>へのシンボリックリンクで、既定では展開と、圧縮ファイルの<code>cat</code>を行います。</li>
+<li><code>man</code>: Markdownソースの<code>lz4.1.md</code>からmanページを生成します。</li>
+</ul>
+<p><span id="makefile-build-variables"></span></p>
+<h4 id="makefileのビルド変数">Makefileのビルド変数</h4>
+<ul>
+<li><code>HAVE_MULTITHREAD</code>: マルチスレッド対応でビルドします。通常は自動検出ですが、必要に応じて<code>0</code>または<code>1</code>へ強制できます。例えば、LinuxからWindows向けにクロスコンパイルする際に役立ちます。</li>
+<li><code>HAVE_PTHREAD</code>: <code>&#x3C;pthread></code>対応の有無を決めます。自動検出ですが、必要に応じて<code>0</code>または<code>1</code>へ強制できます。<code>make</code>は、この結果を使い、マルチスレッド対応を自動的に有効にします。</li>
+</ul>
+<p><span id="c-preprocessor-build-variables"></span></p>
+<h4 id="cプリプロセッサーのビルド変数">Cプリプロセッサーのビルド変数</h4>
+<p>これらは、コンパイル時にプリプロセッサーが読む変数です。開始時の既定値など、実行ファイルの動作に影響し、<code>programs/lz4conf.h</code>で公開しています。どのビルドシステムからでも操作できます。代入方法は環境によって異なります。
+通常の<code>posix</code> + <code>gcc</code> + <code>make</code>環境では、<code>CPPFLAGS=-DVARIABLE=value</code>の代入で定義できます。</p>
+<ul>
+<li><code>LZ4_CLEVEL_DEFAULT</code>: 指定がない場合の既定の圧縮レベル。既定値は<code>1</code>です。</li>
+<li><code>LZ4IO_MULTITHREAD</code>: マルチスレッド対応を有効にします。既定では無効です。</li>
+<li><code>LZ4_NBWORKERS_DEFAULT</code>: マルチスレッドモードで使うワーカースレッド数の既定値（<code>-T#</code>コマンドで上書きできます）。既定値は<code>0</code>で、ローカルCPUに基づく「自動決定」を意味します。</li>
+<li><code>LZ4_NBWORKERS_MAX</code>: 実行時に要求できるワーカー数の絶対的な最大値。現在、既定値は200です。主に、百万スレッドなど、不合理で、おそらく誤った要求からシステムを保護するためです。</li>
+<li><code>LZ4_BLOCKSIZEID_DEFAULT</code>: <code>lz4</code>のブロックサイズコードの既定値。有効な値は[4-7]で、64 KB、256 KB、1 MB、4 MBに対応します。執筆時点の既定値は7で、4 MBのブロックサイズです。</li>
+</ul>
+<p><span id="environment-variables"></span></p>
+<h4 id="環境変数">環境変数</h4>
+<p>環境変数を通じて、<code>lz4</code>へ一部のパラメーターを渡せます。例えばスクリプト内から呼ぶなど、<code>lz4</code>の呼び出しは分かっていても、圧縮セッションに影響するパラメーターを<code>lz4</code>へ渡す手段がない場合に役立ちます。
+環境変数は、実行ファイルの既定値より優先しますが、対応する実行時コマンドより優先順位は低くなります。グローバルな環境変数として設定すれば、実行ファイルの設定と異なる個人用の既定値を適用できます。</p>
+<p><code>LZ4_CLEVEL</code>は、コマンドラインで他の圧縮レベルを指定していない場合に、<code>lz4</code>が使う既定の圧縮レベルを指定できます。実行ファイルの既定値は、通常<code>1</code>です。</p>
+<p><code>LZ4_NBWORKERS</code>は、<code>lz4</code>が圧縮で使うスレッド数の既定値を指定できます。実行ファイルの既定値は、通常<code>0</code>で、ローカルCPUに基づく自動決定を意味します。この機能が関係するのは、<code>lz4</code>をマルチスレッド対応でコンパイルした場合だけです。ワーカー数の上限は<code>LZ4_NBWORKERS_MAX</code>です（既定では<code>200</code>）。</p>
+<p><span id="aggregation-of-parameters"></span></p>
+<h3 id="パラメーターの連結">パラメーターの連結</h3>
+<p><code>lz4</code> CLIは、短いコマンドの連結に対応します。例えば、<code>-d</code>、<code>-q</code>、<code>-f</code>は<code>-dqf</code>へまとめられます。
+<code>--long-commands</code>では連結できず、<strong>必ず</strong>別々にしなければなりません。</p>
+<p><span id="benchmark-in-command-line-interface"></span></p>
+<h3 id="コマンドラインインターフェースのベンチマーク">コマンドラインインターフェースのベンチマーク</h3>
+<p><code>lz4</code> CLIは、メモリ内の圧縮ベンチマークモジュールを備え、<code>-b#</code>コマンドで開始します。<code>#</code>は圧縮レベルです。
+ベンチマークは、渡したファイル名の一覧を対象に行います。I/Oの負荷をなくすため、ファイル全体をメモリへ読み込みます。
+複数のファイルを渡すと、同じベンチマークセッションへまとめます（ただし、各ファイルの圧縮・展開は別々です）。<code>-S</code>コマンドを使うと、ファイルごとに一セッションへ分けます。
+ファイルを渡していない場合は、代わりに内部のLorem Ipsum生成器を使います。</p>
+<p>ベンチマークは、圧縮率、圧縮サイズ、圧縮速度、展開速度を測定します。<code>-b</code>から<code>-e</code>まで、昇順に複数の圧縮レベルを選べます。<code>-i</code>パラメーターは、各セッションに使う秒数を指定します。</p>
+<p><span id="usage-of-command-line-interface"></span></p>
+<h3 id="コマンドラインインターフェースの使い方">コマンドラインインターフェースの使い方</h3>
+<p>コマンドの完全な一覧は、<code>-h</code>または<code>-H</code>パラメーターで取得できます。</p>
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="コードをコピー" data-copied-label="コピーしました" aria-label="コードをコピー">コードをコピー</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Usage :</span></span>
+<span class="line"><span>      lz4 [arg] [input] [output]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>input   : a filename</span></span>
+<span class="line"><span>          with no FILE, or when FILE is - or stdin, read standard input</span></span>
+<span class="line"><span>Arguments :</span></span>
+<span class="line"><span> -1     : Fast compression (default)</span></span>
+<span class="line"><span> -9     : High compression</span></span>
+<span class="line"><span> -d     : decompression (default for .lz4 extension)</span></span>
+<span class="line"><span> -z     : force compression</span></span>
+<span class="line"><span> -D FILE: use FILE as dictionary</span></span>
+<span class="line"><span> -f     : overwrite output without prompting</span></span>
+<span class="line"><span> -k     : preserve source files(s)  (default)</span></span>
+<span class="line"><span>--rm    : remove source file(s) after successful de/compression</span></span>
+<span class="line"><span> -h/-H  : display help/long help and exit</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Advanced arguments :</span></span>
+<span class="line"><span> -V     : display Version number and exit</span></span>
+<span class="line"><span> -v     : verbose mode</span></span>
+<span class="line"><span> -q     : suppress warnings; specify twice to suppress errors too</span></span>
+<span class="line"><span> -c     : force write to standard output, even if it is the console</span></span>
+<span class="line"><span> -t     : test compressed file integrity</span></span>
+<span class="line"><span> -m     : multiple input files (implies automatic output filenames)</span></span>
+<span class="line"><span> -r     : operate recursively on directories (sets also -m)</span></span>
+<span class="line"><span> -l     : compress using Legacy format (Linux kernel compression)</span></span>
+<span class="line"><span> -B#    : cut file into blocks of size # bytes [32+]</span></span>
+<span class="line"><span>                     or predefined block size [4-7] (default: 7)</span></span>
+<span class="line"><span> -BD    : Block dependency (improve compression ratio)</span></span>
+<span class="line"><span> -BX    : enable block checksum (default:disabled)</span></span>
+<span class="line"><span>--no-frame-crc : disable stream checksum (default:enabled)</span></span>
+<span class="line"><span>--content-size : compressed frame includes original size (default:not present)</span></span>
+<span class="line"><span>--[no-]sparse  : sparse mode (default:enabled on file, disabled on stdout)</span></span>
+<span class="line"><span>--favor-decSpeed: compressed files decompress faster, but are less compressed</span></span>
+<span class="line"><span>--fast[=#]: switch to ultra fast compression level (default: 1)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Benchmark arguments :</span></span>
+<span class="line"><span> -b#    : benchmark file(s), using # compression level (default : 1)</span></span>
+<span class="line"><span> -e#    : test all compression levels from -bX to # (default : 1)</span></span>
+<span class="line"><span> -i#    : minimum evaluation time in seconds (default : 3s)```</span></span></code></pre></div>
+<p><span id="license"></span></p>
+<h4 id="ライセンス">ライセンス</h4>
+<p>このディレクトリの全ファイルは、GPL-v2の条件でライセンスされています。
+詳細は<a href="https://github.com/lz4/lz4/blob/ebb370ca83af193212df4dcbadcc5d87bc0de2f0/programs/COPYING">COPYING</a>を参照してください。
+ライセンス本文は、各ソースファイルの先頭にも含まれています。</p><script type="module">document.addEventListener('click',async e=>{const b=e.target.closest?.('.docs-code-copy');if(!b)return;const c=b.closest('.docs-code-frame')?.querySelector('code');if(!c)return;await navigator.clipboard.writeText(c.textContent??'');b.textContent=b.dataset.copiedLabel;setTimeout(()=>b.textContent=b.dataset.copyLabel,1500)});</script>  <div class="navigation-container" data-astro-cid-w75peyc3> <div class="pagination-links" dir="ltr" data-astro-cid-el2bzhkx>  <a href="/docs/lz4/v1-10-0/ja/07-cli/02-lz4-command" rel="next" data-astro-cid-el2bzhkx> <span class="link-copy" data-astro-cid-el2bzhkx> 次へ <br data-astro-cid-el2bzhkx> <span class="link-title" data-astro-cid-el2bzhkx>LZ4: コマンドラインマニュアル</span> </span> <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" data-astro-cid-el2bzhkx> <path fill="currentColor" d="M10.7 17.3c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4L12.6 13 9.3 9.7c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l3.6 3.6c.4.4.4 1 0 1.4l-3.6 3.6z" data-astro-cid-el2bzhkx></path> </svg> </a> </div>  </div>   </article> <footer class="document-context-footer"> <aside class="document-provenance" aria-labelledby="document-provenance-title" data-astro-cid-dof6b54c><div class="provenance-header" data-astro-cid-dof6b54c><h2 id="document-provenance-title" data-astro-cid-dof6b54c>出典・編集注記</h2><span class="provenance-status" data-astro-cid-dof6b54c>翻訳</span></div><p class="attribution-text" data-astro-cid-dof6b54c>「LZ4 1.10.0 programs/README.md」を翻訳しました。派生物は同一ライセンスで配布する必要があります。</p><dl class="provenance-metadata" data-astro-cid-dof6b54c><div data-astro-cid-dof6b54c><dt data-astro-cid-dof6b54c>出典</dt><dd data-astro-cid-dof6b54c>LZ4 1.10.0 programs/README.md</dd></div><div data-astro-cid-dof6b54c><dt data-astro-cid-dof6b54c>上流バージョン</dt><dd data-astro-cid-dof6b54c>LZ4 1.10.0</dd></div><div data-astro-cid-dof6b54c><dt data-astro-cid-dof6b54c>ライセンス</dt><dd data-astro-cid-dof6b54c>GPL-2.0-or-later（本掲載はversion2条件を履行）</dd></div></dl><div class="provenance-links" data-astro-cid-dof6b54c><a href="https://github.com/lz4/lz4/blob/ebb370ca83af193212df4dcbadcc5d87bc0de2f0/programs/README.md" target="_blank" rel="noopener" data-astro-cid-dof6b54c>原文を開く</a><a href="/docs/lz4/source/v1-10-0/licenses/GPL-2.0-or-later.txt" target="_blank" rel="noopener" data-astro-cid-dof6b54c>GPL-2.0-or-later（本掲載はversion2条件を履行）ライセンス</a></div><p class="attribution-text" data-astro-cid-dof6b54c>編集注記中の位置表現（上・下など）は、移動前の本文中の位置を指します。対象箇所のリンクから本文を確認できます。</p><details class="page-document-context" data-context-kind="source" data-astro-cid-dof6b54c><summary data-astro-cid-dof6b54c>ページの出典詳細</summary><div class="sl-markdown-content" data-astro-cid-dof6b54c><p>LZ4 1.10.0 の固定英語原文から作成した非公式日本語訳です。翻訳・整形日: 2026-10-05。原典コミット: <code>ebb370ca83af193212df4dcbadcc5d87bc0de2f0</code>。原文 SHA-256: <code>d432e342c1f8dae1ce59732904c3ed36aa8e4604a0f1bb5e5af6c9f6c107e599</code>。<a href="https://github.com/lz4/lz4/blob/ebb370ca83af193212df4dcbadcc5d87bc0de2f0/programs/README.md">固定原典</a>、<a href="/docs/lz4/source/v1-10-0/originals/programs/README.md.txt">変更していない原文と原通知</a>、<a href="/docs/lz4/source/v1-10-0/LZ4_FIXED.tar.gz">固定上流ソース全体</a>、<a href="/docs/lz4/source/v1-10-0/licenses/UPSTREAM_LICENSE.txt">上流のライセンス適用範囲</a>。原著の著作権・許諾条件・無保証通知を保持しています。</p><p>文書専用ライセンスの表記が確認できないため、Libxの運用方針に基づき、ソフトウェア本体の GPL-2.0-or-later（本掲載はversion2条件を履行） をこの文書にも適用しています。新たに許諾を取得したという意味ではありません。</p><p>本文は日本語に翻訳しました。コード・URL・API名と原通知を保持し、必要な英語見出しアンカーは実在する定本IDに合わせて明示します。</p></div></details><details class="page-document-context" data-context-kind="editorial" data-astro-cid-dof6b54c><summary data-astro-cid-dof6b54c>原文に関する編集注記</summary><div class="sl-markdown-content" data-astro-cid-dof6b54c><p>説明本文を日本語に翻訳し、ヘルプ表示の英語・コマンド・既定値を原文のまま保持しました。最後の3sの後にあるバッククォート3文字も原文の一部として保持しています。READMEの全ファイルGPL-v2という主張は原記述で、個別のGPL-2.0-or-later通知およびCOPYINGの適用を別途確認しています。マルチスレッドのビルド設定・実行時既定値・ベンチマークの説明は固定原著の記述です。今回、CLIのビルド・実行や性能測定は行っていません。</p></div></details>  </aside> </footer> </div> </div> <aside class="toc-column print:hidden" dir="ltr"> <div class="toc-content"> <starlight-toc data-min-h="2" data-max-h="3" dir="ltr" data-astro-cid-uy3kupgb="true"><div class="starlight-toc-wrapper" data-astro-cid-uy3kupgb><nav aria-labelledby="starlight-toc-heading" data-astro-cid-uy3kupgb><h3 id="starlight-toc-heading" class="starlight-toc-heading" data-astro-cid-uy3kupgb>このページの内容</h3><div class="starlight-toc-list" data-astro-cid-uy3kupgb><ul class="starlight-toc__list" data-astro-cid-mitp2h7x> <li class="starlight-toc__item" data-astro-cid-mitp2h7x> <a class="starlight-toc__link" href="#ビルド" data-depth="0" data-heading-level="3" data-astro-cid-mitp2h7x> <span data-astro-cid-mitp2h7x>ビルド</span> </a>  </li><li class="starlight-toc__item" data-astro-cid-mitp2h7x> <a class="starlight-toc__link" href="#パラメーターの連結" data-depth="0" data-heading-level="3" data-astro-cid-mitp2h7x> <span data-astro-cid-mitp2h7x>パラメーターの連結</span> </a>  </li><li class="starlight-toc__item" data-astro-cid-mitp2h7x> <a class="starlight-toc__link" href="#コマンドラインインターフェースのベンチマーク" data-depth="0" data-heading-level="3" data-astro-cid-mitp2h7x> <span data-astro-cid-mitp2h7x>コマンドラインインターフェースのベンチマーク</span> </a>  </li><li class="starlight-toc__item" data-astro-cid-mitp2h7x> <a class="starlight-toc__link" href="#コマンドラインインターフェースの使い方" data-depth="0" data-heading-level="3" data-astro-cid-mitp2h7x> <span data-astro-cid-mitp2h7x>コマンドラインインターフェースの使い方</span> </a>  </li> </ul> </div></nav></div></starlight-toc> </div> </aside> </div>  </main> </div> </div> </body></html> <script>(function(){const baseUrl = "/docs/lz4";
+const isGroup = false;
+
+  // サイドバーのプリフェッチ
+  function prefetchSidebar(lang, version) {
+    // バージョンが有効な形式（v1, v2など）かチェック
+    if (!version || !version.match(/^v\d+(?:-\d+)*$/)) {
+      version = 'v1'; // デフォルトバージョンを設定
+    }
+
+    const sidebarPath = `${baseUrl}/sidebar/sidebar-${lang}-${version}.json`;
+
+    // プリフェッチ用のlink要素を作成
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = sidebarPath;
+    document.head.appendChild(link);
+  }
+
+  // 現在のページの言語とバージョンを取得
+  const currentLang = document.documentElement.lang;
+
+  // URLパスからバージョン情報を正確に抽出
+  function extractVersionFromPath() {
+    const path = window.location.pathname;
+
+    // ベースパスを除去
+    const baseUrlPath = baseUrl.replace(/^\/|\/$/g, ''); // 先頭と末尾のスラッシュを削除
+    const pathWithoutBase = path.replace(new RegExp(`^/?${baseUrlPath}/?`), '');
+
+    // パスを分割
+    const segments = pathWithoutBase.split('/').filter((segment) => segment);
+
+    // version-first ルートの先頭セグメントがバージョン
+    if (segments.length >= 1) {
+      const potentialVersion = segments[0];
+      // バージョン形式をチェック (v1, v2, etc.)
+      if (potentialVersion.match(/^v\d+(?:-\d+)*$/)) {
+        return potentialVersion;
+      }
+    }
+
+    // バージョンが見つからない場合はデフォルトを返す
+    return 'v1';
+  }
+
+  const currentVersion = extractVersionFromPath();
+
+  // 現在のサイドバーをプリフェッチ
+  if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+})();</script> <script type="module" src="/docs/lz4/assets/DocLayout.astro_astro_type_script_index_0_lang.SnA9FtQP.js"></script> 
