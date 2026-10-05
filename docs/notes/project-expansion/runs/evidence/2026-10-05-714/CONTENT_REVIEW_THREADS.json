@@ -1,0 +1,82 @@
+{
+  "page": "guide/threads",
+  "status": "passed",
+  "at": "2026-10-04T20:57:01.973731+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page fixed-text content review after713 translation/alignment/build; full fixed RST, all English narrative leaves and full Japanese narrative/code/captions/footer read, with all16 literal blocks and all199 narrative leaves. Mechanical checks recorded separately.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/threads.rst",
+      "sha256": "48155bf8a2759cb4ed4a3547a5dc8fcf9c354d02607aae81006dc8e915a06946"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/threads.md",
+      "sha256": "5e680930e002cbf8a83092e3e23839f6a856a203bcb048432923e5545ad854a2"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/threads.md",
+      "sha256": "cf182a98c509f45a475f27773b2d9b7eb4cbf4f1f3d72202077f26adeed5bfee"
+    }
+  ],
+  "coverage": {
+    "original": "all threads.rst with directives/16literal blocks/references and old errorno wording",
+    "canonical": "entire original article/code and footer",
+    "translation": "entire current Japanese article/code/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "entire fixed-source mapping",
+      "result": "Read full threads.rst, all199 English narrative leaves, entire Japanese article/footer and all16original code blocks. Fixed literals include source partial function boundaries and old example syntax; not silently rewritten into compilable examples. Overshoot26-36 on35line file preserved/annotated in footer."
+    },
+    {
+      "scope": "thread model and core",
+      "result": "Event-loop vs thread rhetorical contrast, internal blocking task offload, Windows/POSIX analogy/limitations and thread API independence retained. Single main loop/thread and only async_send from others stated as chapter assumption, not general libuv restriction. create/join, void* argument, preemptive scheduling and lack of returned join value retained; Unix pthread alias is implementation detail."
+    },
+    {
+      "scope": "mutex/rwlock/synchronization",
+      "result": "All6mutex signatures/return types retained. Original debug abort statement and EAGAIN/EBUSY exceptions translated with exact logical scope after draft word-order correction. Recursive mutex advisory/cond restriction, BSD double-lock caveat and original Windows assertion retained. Concurrent readers/exclusive writer, scheduling usually qualifier, complete57line rwlock/barrier example, semaphore/condition/barrier links and once-only/TLS version retained. Original once example calls unchanged, not certified compilable."
+    },
+    {
+      "scope": "work queue and cancellation",
+      "result": "Blocking/CPU-bound work off main loop, fib examples, work_t/data proper locks and after callback on event-loop thread retained. Baton link, since0.9.4, not-started-only cancellation vs already-started/completed failure, pending tasks shutdown rationale, SIGINT example/return0 and after status ECANCELED retained. Existing original errorno mismatch to fixed result structure explicitly annotated only in footer."
+    },
+    {
+      "scope": "interthread communication and async notifications",
+      "result": "Sender-any/receiver-loop distinction, print_progress, async timing immediate-or-later, coalescing multiple sends into one callback, at-least-once and no duplicate per-single-event/none-without-pending conditions retained. Draft sentence ordering corrected before final713 inputs. Nonblocking immediate return, progress/watch cleanup instructions and full fixed atomic acquire/release example slices preserved; code/prose old data-field explanation not silently modernized."
+    },
+    {
+      "scope": "data safety/signals/thread affinity",
+      "result": "Original data field misuse attribution/bnoordhuis, wake-up role and mutex/rwlock ordering retained. Signal handler mutex/rwlock prohibition vs async_send retained. V8 thread-affinity/undefined-cross-thread consequence, complete4-step third-party blocking library example and raw JavaScript snippet retained."
+    },
+    {
+      "scope": "readability/footer and limitations",
+      "result": "All headings/captions/emphasis/links/version qualifiers/numbers reviewed. English API identifiers/code comments preserved. FixedCC licence/source/original notices/unofficial translation and Libx source discrepancy notes only footer. Literal preservation does not certify modern example correctness or execution."
+    }
+  ],
+  "corrections": [
+    "mutex exception/coalescing Japanese sentence order corrected before713 final inputs; no current edits in review stage.",
+    "713 summary links typo587 corrected by mapping to actual554-link evidence."
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-713/TRANSLATION_THREADS.json",
+      "sha256": "c306fcda4cc6649fbfd9ec8f80a415d51c440335f1272c52080a245039935baa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-713/RENDER_VERIFICATION.json",
+      "sha256": "47cdce6279eaa0a5f028f2e57315018230d88bbf7af4295a650a83d4d0f80639"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-713/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "089a678c52bcf7a0b19ddd8aed12b41a6b75719270479a2d0412f35e0c0f5a6b"
+    }
+  ],
+  "limitations": [
+    "No sample compilation/run or execution/cross-thread experiment.",
+    "Full-project final check:content/native/integration/publication pending.",
+    "Supplementary external video full content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

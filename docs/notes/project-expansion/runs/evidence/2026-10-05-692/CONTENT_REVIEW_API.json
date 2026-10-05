@@ -1,0 +1,53 @@
+{
+  "page": "reference/api",
+  "status": "passed",
+  "at": "2026-10-04T19:12:39.343Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page content review after 691 draft. Read fixed RST entire toctree and complete EN/JA API directory; reviewed source footer separately.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/api.rst",
+      "sha256": "7d434a8621ae0dbfd83d143d5e3785289434022460ef6fce8e3a88128e0553b1"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/api.md",
+      "sha256": "08cc4ad049dae554fb9fe42e9c65638e0c7934b8e9e56deeec331404d9cd8754"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/api.md",
+      "sha256": "e5c76ce3d932c6b06a99187f3e7734d1fab5d93b9e4d08585de79271216fc50f"
+    }
+  ],
+  "coverage": {
+    "original": "api.rst entire",
+    "canonical": "title and full heading/all27 entries/type labels/permalink/footer",
+    "translation": "entire page including footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "RST to EN",
+      "result": "27 toctree references preserved in exact order; rendered labels resolved from pinned source titles, no API prose or declarations omitted."
+    },
+    {
+      "scope": "EN to JA",
+      "result": "All27 labels retain API/category meaning and type identifiers. Prepare/Check/Idle/Async/Poll and FS Event/FS Poll distinguish named handle types. Version-checking includes both macros/functions; threading/synchronization, work scheduling, metrics and shared library handling retain scope."
+    },
+    {
+      "scope": "JA readability",
+      "result": "Short directory labels are consistent and readable; no incorrect normative verbs, numbers or exceptions introduced."
+    },
+    {
+      "scope": "footer",
+      "result": "Fixed version/commit, CC BY4.0, original MIT/component/Apache notifications and editable source retained as footer; unofficial translation clearly stated."
+    },
+    {
+      "scope": "links",
+      "result": "Current real EN destinations deliberately retained during partial JA creation. Final JA route switch remains pending."
+    }
+  ],
+  "corrections": [],
+  "projectFullReviewComplete": false,
+  "remaining": "Other42page translation/review; final JA link switch and all-project checks/native/integration/publication remain pending."
+}

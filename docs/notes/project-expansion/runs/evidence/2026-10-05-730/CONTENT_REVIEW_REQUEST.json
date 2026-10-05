@@ -1,0 +1,71 @@
+{
+  "page": "reference/request",
+  "status": "passed",
+  "at": "2026-10-04T21:47:57.718208+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-text review after729 full translation. Entire fixed RST and current EN/JA body,12 declarations/one enum/version notes/footer read together; semantic fidelity review distinct from mechanical DOM/link/build/signature tests.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/request.rst",
+      "sha256": "c798691f4f5cf400bbcd21a8e0610372d7457295d02fda0ba61348021cf16219"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/request.md",
+      "sha256": "2ccb1370b4f58072342de319cae337ea797e1b1884b2bd6c060f37c1151afffa"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/request.md",
+      "sha256": "a186d769b8bb18b7f7db48356728e103fe27cfb5868ded0450f48ba76f39e749"
+    }
+  ],
+  "coverage": {
+    "original": "all request.rst including all literalinclude directives/full inline code/ref/footnote",
+    "canonical": "all current article/code/footer",
+    "translation": "all current Japanese article/code/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "complete source/EN/JA/code/footer",
+      "result": "Read complete fixed request.rst and full current EN/JA including twelve declarations, all150mapped nodes, one enum code, version notes and footer separately after729 translation. No unread ranges; no figures/table/footnotes."
+    },
+    {
+      "scope": "base type, members and macro",
+      "result": "Cast-compatible aligned structures, any request API applicability, base/union/enum definitions and readonly type retained. Arbitrary user data not used by libuv retained. Macro receives two arguments with precise UV_ prefix and uv_/_t removal; original enum members including original omission of UV_RANDOM remain fixed source, not silently amended."
+    },
+    {
+      "scope": "cancellation and memory lifetime",
+      "result": "Pending-only cancellation, running/completed failure and write exceptions retained: attempt interruption/partial callback, completed write successful no-op. Success0/failure<0, six supported request types, deferred callback and no free until callback preserved. fs result versus work/DNS/random callback status distinctions retained. Writes report status, nwritten retrieval, zero-byte cancellation callback order and kernel completion before cancellation may succeed/other-error retained."
+    },
+    {
+      "scope": "helper APIs and notices",
+      "result": "FFI size, req->data get/set, readonly req->type getter, type-name connect/uv_connect_t/UV_CONNECT mapping and NULL fallback retained. Four version1.19 notes exact. All fixed source/licences/notices/editable link/unofficial JA footer preserved. Original declarations/code unchanged; existing22reviewed inputs unchanged. Native/runtime/full-project gates remain pending."
+    }
+  ],
+  "corrections": [],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-729/TRANSLATION_REQUEST.json",
+      "sha256": "cd080f36bda90c6fd5adaf2d810a66e34774347a327698928ea35bc5c9aa42eb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-729/API_VERIFICATION.json",
+      "sha256": "15253be9649db1de41c43c39c5524db311801389e59aa0d9a71ebc5a6eaa13d5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-729/RENDER_VERIFICATION.json",
+      "sha256": "62279ba5d58748de26e61a8d23dce598cf5872693831e51246767b622613b0f0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-729/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "0166b2001bb378e96ca32095f950b74df256bbdb71c80f58463e58c0c89ea1d4"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

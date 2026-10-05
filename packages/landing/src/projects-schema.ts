@@ -19,6 +19,7 @@ export interface SiteConfigJSON {
 }
 
 export interface ProjectDecorationJSON {
+  fallbackUrl?: Partial<Record<LocaleKey, string>>;
   icon?: IconName;
   tags?: string[];
   isNew?: boolean;
@@ -54,6 +55,7 @@ export interface TopPageConfig {
 
 // プロジェクト装飾設定（旧projectDecorationsと互換）
 export interface ProjectDecoration {
+  fallbackUrl?: Partial<Record<LocaleKey, string>>;
   icon?: IconName;
   tags?: string[];
   isNew?: boolean;

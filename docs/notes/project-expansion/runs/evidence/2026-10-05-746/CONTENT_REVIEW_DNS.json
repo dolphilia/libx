@@ -1,0 +1,79 @@
+{
+  "page": "reference/dns",
+  "status": "passed",
+  "at": "2026-10-04T22:38:37.494023+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/source-editorial footer reading after745 translation; no correction required. Mechanical checks distinct from semantic review.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/dns.rst",
+      "sha256": "8a35059186247951fa2274823414798cd1c5bd4e82d5837a1429b46c202bd3d4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/dns.md",
+      "sha256": "e651bb44a518075b8f792f765f0bd7c1fcf85449502b2643b486ebea09242afb"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/dns.md",
+      "sha256": "337ede52a597c3ef379fcf0849d36f071aa7deca12e3a8d60f1fb71242b7490e"
+    }
+  ],
+  "coverage": {
+    "original": "all dns.rst including both array declarations and both synchronous-exception notes",
+    "canonical": "all current English article/API/source-editorial footer",
+    "translation": "all current Japanese article/API/source-editorial footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "full fixed RST / EN / JA / footer",
+      "result": "Entire fixed dns.rst/current English/current Japanese/API/source-editorial footer read separately after745 translation. All199mapped nodes/12declarations covered, no code block/no unread ranges. No correction required."
+    },
+    {
+      "scope": "types, callbacks and members",
+      "result": "Asynchronous getaddrinfo/getnameinfo variants and both request/callback signatures retained. Cancellation status ECANCELED retained. Both readonly initiating/completion loops, result addrinfo must user free via freeaddrinfo,1.3 public field retained. Host/service original char array declarations with NI_MAXHOST/NI_MAXSERV and null-terminated result plus1.3 public notes retained, including originally unparsed declarations."
+    },
+    {
+      "scope": "getaddrinfo and memory",
+      "result": "node or service mayNULL but not both, hints additional address type constraints orNULL, original man reference retained. Return0 versus negative immediate failure and later callback successful lookup with status0 valid res or negative resNULL/EAI errors retained. freeaddrinfo required and NULL allowed/noop retained."
+    },
+    {
+      "scope": "getnameinfo and synchronous exceptions",
+      "result": "Getnameinfo callback later with result when successful, return0/negative error and man reference retained. Both1.3 allow NULL callback causing synchronous operation, bold emphasis retained; not mistaken for synchronous callback or changing async default. Request members/API inherited."
+    },
+    {
+      "scope": "canonicalisation annotation and review boundary",
+      "result": "Original array declaration text and two added navigation anchors retained; English generator limitation/anchor annotation translated in Japanese footer, not article. Fixed source/licences/notices/unofficial Japanese context retained. Actual API/render/link/TOC checks separate from semantic review; unchanged745 build reused. No native/runtime/content/integration/release or external supplementary video full review claimed."
+    }
+  ],
+  "corrections": [],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-746/API_VERIFICATION.json",
+      "sha256": "5f563c8d7dff47441f8e6306f3c3c1ab745ee628bc24edd6d748b2a685702352"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-746/RENDER_VERIFICATION.json",
+      "sha256": "07229d9dd8c15e380f49b5fbac2178c5089763ce6a49577966ea4c0793b52f0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-746/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "8c82182a75398b80029b7d5d2f00cb991f6263754c5eeb5dcbc2781d2f987db6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-745/PREBUILD.log",
+      "sha256": "1e4f4c6e0a3f51ff4e9fb87da0619159472dd53fbd9e20fe5800b38fcd2cd197"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-745/BUILD.log",
+      "sha256": "19aeeb67d8d3bd0cbedaa17455b2be3f0aca6d05417b0838660816e70e8b8b70"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

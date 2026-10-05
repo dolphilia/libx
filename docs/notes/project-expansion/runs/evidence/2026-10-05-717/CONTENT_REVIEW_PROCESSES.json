@@ -1,0 +1,94 @@
+{
+  "page": "guide/processes",
+  "status": "passed",
+  "at": "2026-10-04T21:08:39.508782+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-text review after715 full translation and716 deterministic footer overlay. Read current full JA20codes/footer and current complete original RST/244EN narrative leaves; compare exact original code preserved in JA. Readability correction followed by build/actual DOM checks; semantic review separate from those mechanical tests.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/processes.rst",
+      "sha256": "3077d63729eabd43f0ec723d806fd0dc8a0f8b26b5f5acd650a2f8c10527d75e"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/processes.md",
+      "sha256": "95f6700c1a95b2e98fd86cf2ef17f4b213c1264b98fc5c660e48735baa8f4efa"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/processes.md",
+      "sha256": "f18a215df00a211b8fac6c0fcfcf4264e6b3775816c03811aa946b63aa369bf6"
+    }
+  ],
+  "coverage": {
+    "original": "all processes.rst including all literalinclude directives/full inline code/ref/footnote",
+    "canonical": "all current article/code/footer",
+    "translation": "all current Japanese article/code/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "complete source/EN/JA/code",
+      "result": "Read full current fixed processes.rst, all244EN narrative leaves, all20literal blocks through current full JA article, full headings/list/footnote/footer. Existing original snippets intentionally partial, not rewritten or certified compilable. One-event and uv_kill old-type originals preserved and footer annotated against fixed public documentation."
+    },
+    {
+      "scope": "spawn and process configuration",
+      "result": "Child-process abstractions, message-vs-shared-memory and multiple-core rationale retained. spawn/zero-initialized global versus local options, process handle vs options, file/args/path/NULL-array conventions, pid, exit status/signal, do-not-close-before-exit and required-close-after-exit retained. cwd/env NULL inheritance, bitwise flags/uid/gid/Unix-only+Windows ENOTSUP, Windows verbatim ignored Unix retained."
+    },
+    {
+      "scope": "detached lifecycle/kill/signals",
+      "result": "Detached new session/parent-independent lifetime and handle still referenced/unref advisory retained. kill(2)/Windows termination caveat SIGTERM/INT/KILL retained. Original uv_err_t signature distinct from fixed int and both source/API footer links retained. process_kill uses handle not pid and after-exit close retained; Japanese close word order corrected in this pass and actual render rechecked. Signals init/start/one-number overwrite/stop, all66line signal sample/four watchers retained. NOWAIT-vs-ONCE wait distinction retains original one-event wording with footer explaining loop pass/poll, not exact callback guarantee."
+    },
+    {
+      "scope": "child stdio and CGI",
+      "result": "Descriptors0/1/2 correctly stdin/stdout/stderr, stderr-only test, stdio count/container flags/union, ignore first3 to devnull, inherit fd2, inherit stream data.stream retained. Complete test/tick examples and original CGI excerpt slices unchanged. Ten ticks, socket-as-stdout, OS buffering and process creation cost retained. Partial slices and guide minor proc-stream name remain original."
+    },
+    {
+      "scope": "parent-child/arbitrary IPC",
+      "result": "Create-pipe plus readable/writable flags explicitly child perspective, initialized-unopened pipe instance requirement retained. Pipe versus streamable objects, Unix domain/mkfifo/pipe and Windows named pipe, socketpair choice retained. Domain sockets unrelated process/D-BUS/MySQL examples, echo.sock/socat/path/platform name and all references/footnote retained."
+    },
+    {
+      "scope": "descriptor passing/workers",
+      "result": "TCP/other-pipe only qualifier retained. Round-robin/master-worker scope and full-code reading advice retained. Worker ipc1/stdin association, pending count/type and accept client from queue retained. Process+options+pipe struct, CPU count/free-info, one worker perCPU, stdio child-readable pipe/stdout ignored/stderr inherited, connection dispatch/write2/dummy1-byte buffer and nonempty buffer attribution retained. Original return/error checks untouched; runtime correctness not certified."
+    },
+    {
+      "scope": "readability/provenance",
+      "result": "All narrative/modal qualifiers/numbers/types/comments reviewed. Fixed guide WIP/v1.42 caveat and source discrepancy notes distinct from original content, located only footer. CC BY4.0/original software/component/Apache notices/editable sources/unofficial translation retained. Prior17passed inputs unchanged."
+    }
+  ],
+  "corrections": [
+    "Japanese mandatory close sentence corrected to 必ずuv_closeを呼び出してください, preserving timing before/after exit meaning and identifiers.",
+    "Original fixed-guide uv_kill/one-event discrepancies disclosed only footer, not silently corrected."
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-716/OVERLAY_VERIFICATION.json",
+      "sha256": "bce14c966da7c120751fa33040200e29d91e483d98a7c98ee1f27ba8fca28c80"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-716/FOOTER_VERIFICATION.json",
+      "sha256": "5b60d2deb161c0a1f6c41bc3d3998939c4eee3be8aef1587e5c97297b43cef67"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-716/OUTPUT_PRESERVATION.json",
+      "sha256": "c0b7ead3ac8abb0e7fd8abbab8daff5c7a3407f7c76554f8c1f775ab49f84dad"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-717/READABILITY_CORRECTION.json",
+      "sha256": "381d129e915b6f750aa0eb0ff5fcaa1b2207e62114efe4de4f48af0e7d934ff5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-717/RENDER_VERIFICATION.json",
+      "sha256": "608279427f00c444d184c997d1c870ca81dc558f2a8253aa73b9d8b36ee29efb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-717/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "1a71ef3aa87ad399709b324df4a2c5893d5df6f858ed098ca5ce1f2f52de2fba"
+    }
+  ],
+  "limitations": [
+    "No sample compilation/runtime/CGI/IPC/signal experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

@@ -1,0 +1,94 @@
+{
+  "page": "guide/networking",
+  "status": "passed",
+  "at": "2026-10-04T20:50:36.840653+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page fixed-source content review after710 translation and711 restoration/build. Entire source RST, entire EN/JA narrative/code/footnotes/footer read; first combined tool output truncated part of EN DNS/interfaces, so reread those sections separately. Semantic decisions separated from mechanical renderer assertions.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/networking.rst",
+      "sha256": "6d12921724fd84c70c256f27b894df5b41a113d0ad87688b733b4af03bb68e73"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/networking.md",
+      "sha256": "6c01861257ca863c0b5a2513242d10b15622dde93d0a1998361f5b7d23a811a7"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/networking.md",
+      "sha256": "d5e2cbd2f6d9cddb4b51107f2dfb30c44d44c10d4db9a0a24056409b09393339"
+    }
+  ],
+  "coverage": {
+    "original": "all networking.rst including literalincludes, malformed code directive body and3footnotes",
+    "canonical": "all corrected original narrative9code blocks/footnotes/footer",
+    "translation": "all current Japanese text9original-code blocks/footnotes/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "RST/code preservation and conversion correction",
+      "result": "Read all fixed networking.rst, full EN/JA article including9 literal blocks. Missing original multicast declaration restored verbatim at original location; footer discloses malformed original directive and conversion correction. Existing8blocks retain exact comments/names/whitespace and original slice boundaries; did not invent missing enclosing function lines."
+    },
+    {
+      "scope": "TCP server and client",
+      "result": "Nonblocking BSD abstractions, uv_tcp_t/uv_udp_t, original memory-leak/improper-close warning, complete5-step server sequence, backlog bound, ip4/ip6 transforms, accept/read registration and close advice retained. Client connect request/handle/lifetime example retained; same-style callback wording adjusted to similarity rather than identical callback claim, without changing original."
+    },
+    {
+      "scope": "UDP semantics and DHCP example",
+      "result": "Connectionless/unreliable vs stream distinction, receiving handle vs sending request, DHCP discover scope retained. Root requirement/below1024, addresses0.0.0.0/255.255.255.255, port0, ports68/67, REUSEADDR, required broadcast flag/EACCES and failure<0 retained. nread0/null address means no data versus nonnull empty datagram, allocator-too-small/PARTIAL and OS discards excess retained."
+    },
+    {
+      "scope": "TTL IPv6 multicast",
+      "result": "TTL setting, dual-stack IPv6 with IPV6ONLY restriction, restored membership declaration including4params/types, JOIN/LEAVE group, multicast loopback default and disabling call, multicast TTL/external supplemental guide references retained."
+    },
+    {
+      "scope": "DNS",
+      "result": "Async replacement/system-threadpool footnote, Libera.chat example, nonzero setup failure/no callback, immediate argument release as original wording, hostname/servname/hints docs and NULL callback synchronous alternative retained. Resolver list selection, connect example and required freeaddrinfo call retained; reverse getnameinfo retained. No claim sample runtime tested."
+    },
+    {
+      "scope": "interfaces and all footnotes",
+      "result": "Interface-address collection/type/family inspection/freeing sample retained; is_internal loopback and duplicate names per physical IPv4/IPv6 address retained. All3footnotes/backlinks/referencedURLs and removed c-ares<=0.8 vs0.9 distinction retained."
+    },
+    {
+      "scope": "JA full-page readability/footer",
+      "result": "Read full headings/captions/ordered list/narrative/warnings/code/footnotes/footer. Technical identifiers and numbers retained; advisory/necessary qualifiers not strengthened. Fixed version/commit/CC BY4.0/software component notices/RST/unofficial translation and guide work-in-progress/version caveat in footer. Restoration note/footer remains outside original article."
+    }
+  ],
+  "corrections": [
+    "Same ... style translated as callback similarity, not same callback identity. Original EN/RST unchanged.",
+    "711 restored original missing declaration; all9blocks included in this review."
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-711/OVERLAY_VERIFICATION.json",
+      "sha256": "e9b4dc5cbbb593fe8f8acbfd8a944f1ff3d268dca274d6f8b5f0b0a0c3f4de9b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-711/RST_CODE_DIRECTIVE_SCAN.json",
+      "sha256": "736f59595514bc4f3495e8155eff852367d702c78332bfee9ec061c9f4cd1ce0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-711/OUTPUT_PRESERVATION.json",
+      "sha256": "65f9392161fe3c350679995e202df08ace59af7cc881d3bffbe53fcaf6bb6d08"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-712/READABILITY_CORRECTION.json",
+      "sha256": "8c497aa5c80f86cccf880751a40bd0b14e9b8ea4b2ca7281f696e2564cb15e23"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-712/RENDER_VERIFICATION.json",
+      "sha256": "44bf097ee01245dfc4efef7d0212560925bf42ac1e85faec6c78b27830094c1f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-712/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "f046e6df1ea4ef349001a2f3a74abd47a79e7c006883365b6438d74b86edebbe"
+    }
+  ],
+  "limitations": [
+    "Sample compilation/network execution not performed; root DHCP example not executed.",
+    "Final full-project check:content/native/integration/publication pending.",
+    "Supplementary external video full content review remains unperformed; unrelated to this textual page."
+  ],
+  "fullProjectComplete": false
+}

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import { discoverApps } from '../packages/project-config/src/app-registry.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,6 +17,23 @@ function layoutApps() {
   );
 }
 const sharedLayouts = ['layouts/MainLayout.astro', 'layouts/DocLayout.astro'];
+function canonicalLayout(app, file) {
+  // libuv retains upstream document order and an explicit overview entry.
+  // These two reviewed runtime adapters are frozen separately; shared UI stays canonical.
+  const override = path.join(rootDir, 'docs/notes/document-import/libuv/1.53.0/runtime-layouts');
+  if (
+    app.id === 'libuv' &&
+    ['lib/navigation.ts', 'pages/[version]/[lang]/[...slug].astro'].includes(file)
+  ) {
+    const manifest = JSON.parse(fs.readFileSync(path.join(override, 'MANIFEST.json'), 'utf8'));
+    const entry = manifest.files.find((entry) => entry.file === file);
+    const source = fs.readFileSync(path.join(override, file));
+    if (!entry || crypto.createHash('sha256').update(source).digest('hex') !== entry.sha256)
+      throw new Error(`libuv runtime adapter hash mismatch: ${file}`);
+    return source;
+  }
+  return fs.readFileSync(path.join(templateRoot, file));
+}
 function filesFor(app) {
   return fs.existsSync(path.join(app.directory, 'src/content/docs'))
     ? [...sharedLayouts, 'pages/[version]/[lang]/[...slug].astro', 'lib/navigation.ts']
@@ -25,7 +43,7 @@ function filesFor(app) {
 export function findLayoutDifferences() {
   return layoutApps().flatMap((app) =>
     filesFor(app).flatMap((file) => {
-      const canonical = fs.readFileSync(path.join(templateRoot, file));
+      const canonical = canonicalLayout(app, file);
       const targetPath = path.join(app.directory, 'src', file);
       return fs.existsSync(targetPath) && canonical.equals(fs.readFileSync(targetPath))
         ? []
@@ -38,7 +56,7 @@ export function syncLayouts() {
   for (const app of layoutApps()) {
     for (const file of filesFor(app)) {
       fs.mkdirSync(path.dirname(path.join(app.directory, 'src', file)), { recursive: true });
-      fs.copyFileSync(path.join(templateRoot, file), path.join(app.directory, 'src', file));
+      fs.writeFileSync(path.join(app.directory, 'src', file), canonicalLayout(app, file));
     }
   }
 }

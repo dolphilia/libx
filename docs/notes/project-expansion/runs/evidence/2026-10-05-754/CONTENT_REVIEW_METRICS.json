@@ -1,0 +1,75 @@
+{
+  "page": "reference/metrics",
+  "status": "passed",
+  "at": "2026-10-04T22:58:29.733488+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/footer reading after753 translation; no correction required. Mechanical checks distinct from semantic review.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/metrics.rst",
+      "sha256": "7806eca5509685431e03878d8f012fd2ceca8e2dd05c5766f2cb6b676b9731b4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/metrics.md",
+      "sha256": "24877099aa6ae99bc05f1c3b6e085e82ac318846cdc5a168fe0a287add3a515b"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/metrics.md",
+      "sha256": "6fc6bf2dbf957f619ef33903eef8c68c3a802dca7eb305f6039e7429333d56f8"
+    }
+  ],
+  "coverage": {
+    "original": "all metrics.rst including structure/counter distinctions/configuration conditions/version additions",
+    "canonical": "all current English article/footer",
+    "translation": "all current Japanese article/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "full fixed RST / EN / JA / footer",
+      "result": "Entire metrics.rst/current English/current Japanese/API/code/frontmatter/footer read separately after753 translation. All54 mapped nodes/6 declarations/1 structure code covered. No unread ranges, no correction necessary."
+    },
+    {
+      "scope": "metric structure and counters",
+      "result": "uv_metrics_t and original reserved[13] structure retained. Retrieving metrics in uv_prepare_cb is a recommendation to prevent counter inconsistencies, not an imposed runtime constraint. loop_count iterations, events processed by handler, events_waiting at provider call distinguished correctly."
+    },
+    {
+      "scope": "API conditions and version additions",
+      "result": "uv_metrics_idle_time is thread safe and measures idle time in kernel event provider such as epoll_wait. Accumulation begins only after uv_loop_configure with UV_METRICS_IDLE_TIME; start point is configuration, not loop construction.1.39.0 added label retained. uv_metrics_info copies current set into metrics pointer;1.45.0 added label retained. No duration units/counter-reset/return semantics invented."
+    },
+    {
+      "scope": "footer and review boundary",
+      "result": "Fixed commit/source, CC BY4.0, software/component/generator notices and unofficial Japanese footer retained. Current actual API/structure/render/link/TOC checks separate from full content review, unchanged753 build/prebuild reused. Native/full-project content/integration/publication and external supplementary video review pending."
+    }
+  ],
+  "corrections": [],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-754/API_VERIFICATION.json",
+      "sha256": "7ddd61dae52a54ea6a4fdfd787ef32076f4fc65b56889c124ff5cb11d9ec0fda"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-754/RENDER_VERIFICATION.json",
+      "sha256": "b0ce934c82fadc6f1ba847d5dff46cb592d2d58a8a2518634bab9b9a8237086b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-754/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "83e5c72a06b732d5db405c57dd840d15645345b8b9cdf3990ce735deabf5f006"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-753/PREBUILD.log",
+      "sha256": "890ca59b43bd47a5d30599cd41bd068e347901f0c8d6984265cd08c1a9df3bb8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-753/BUILD.log",
+      "sha256": "55bb9639c52ff35fa965b8989936341004aac5aad0e86c04d0a53a83b238b34e"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

@@ -1,0 +1,11 @@
+{
+ "scope":"libuv1.53.0 利用ガイドと公開API全42reader。6必須条件の根拠を固定してからの推薦採点。別照合は次工程。",
+ "additionalValue":{"value":4,"reason":"2014旧0.11.1 uvbookの日本語8章を認め、未翻訳ガイドとは扱わない。固定現行API27項目とガイド/設計の一式、buffer API版差、1.53.0 uv_write_nwritten/seq_cst変更を日本語で読める具体的追加価値。世界的な訳不存在や品質不良を主張して5にしない。"},
+ "practicality":{"value":4,"reason":"C既習者のnetwork service/client、cross-platform file I/O/child IPC/worker queueの利用場面がguideに明示され、Node.js/Julia/uvloopの基盤として公式が案内。既存C/C++公式文書の読者が非同期I/Oへ進む用途に接続する。アクセス需要・利用者統計は測定せず5にしない。"},
+ "quality":{"value":3,"reason":"design/guide/APIの体系が主要概念から現行契約まで同範囲で成立する。ただしguide1.42/WIP/未徹底review・TODO・不安定例/漏れ・原API差2件とgenerator syntax問題がある。原内容を黙って補正せずfooter注記を扱うため高品質4/5としない。"},
+ "maintenance":{"value":3,"reason":"単一正式tagでdocs/取り込み元/実装例を固定しRSTと依存SHA・原Canchorで差分追跡できる。全量保全試験成立。ただし33,056語、独自generator/残warning/2anchor/旧guideと現行APIの注記保守を要し、容易4/5とはしない。"},
+ "reuse":{"value":3,"reason":"正規template/DocLayout/出典footer/search/sidebarとrawHTML境界検査を使用。Sphinx生成は固定再現できるが、RST3syntax補正/独自plugin/2anchor/専用route/CSS/order providerなどapp固有アダプターが必要。通常Markdownだけで再利用できる4/5にはしない。"},
+ "weights":{"additionalValue":30,"practicality":25,"quality":20,"maintenance":15,"reuse":10},
+ "total":71,
+ "recommendation":"追加価値と実用性各4、合計71。必須条件のpassと点数根拠を別パスで再照合してからeligible判断する。採用件数を埋めるために閾値を下げない。"
+}

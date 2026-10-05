@@ -1,0 +1,75 @@
+{
+  "page": "guide/eventloops",
+  "status": "passed",
+  "at": "2026-10-04T21:16:55.607430+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-text review after718 full translation, five-stage canonical generation and footer disclosure. Complete original RST, EN and JA bodies/code/footer were read; semantic review separate from mechanical output checks.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/eventloops.rst",
+      "sha256": "00d4b0ec25bbf56753d5e6881aca5a7f2b0a0543ff96638351d14cf803794b82"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/eventloops.md",
+      "sha256": "c634161133cb5e7ffe9329272ccbc7376c9b0f9b272651414c1fe4ce99db3ad3"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/eventloops.md",
+      "sha256": "32e0d7ef47e65637344dc48f503442cc96d4eb0022e9d53cf8a7bd2ae8cac36b"
+    }
+  ],
+  "coverage": {
+    "original": "all eventloops.rst including all literalinclude directives/full inline code/ref/footnote",
+    "canonical": "all current article/code/footer",
+    "translation": "all current Japanese article/code/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "all fixed source, canonical, Japanese and footer",
+      "result": "Separate full read of eventloops.rst, complete EN article/code/footer and complete Japanese article/code/footer after718 translation. All23 narrative leaves, headings, two code excerpts and source/licence notices compared; no omitted text or unread ranges."
+    },
+    {
+      "scope": "embedding and stopping semantics",
+      "result": "Multiple-loop and Qt embedding example retained. uv_stop earliest next iteration possibly later, already-ready events continue, not a kill switch and no I/O blocking during current iteration retained. stop_flag setting, timer/pending/idle/prepare/I/O order as stated in original, timeout zero and already-finished I/O in check-handler case retained. No claim that old guide sequence was updated to fixed release."
+    },
+    {
+      "scope": "examples and original discrepancy",
+      "result": "Full handle-closing excerpt21 lines and uvstop33 lines preserved. Counter >=5 invokes uv_stop and current prepare callback continues, idle/prepare setup and default loop retained. Original304–324 range mislabeled uv_run remains original and EN/JA footer explicitly says closing code versus uv_run start427 with fixed API/source links. No silent source substitution or compilation claim."
+    },
+    {
+      "scope": "provenance and editorial boundary",
+      "result": "Fixed commit, documentation CC BY4.0, software/component/Apache notices and editable source retained. Unofficial Japanese translation and original guide v1.42/WIP caveat visible only footer. Prior18 reviewed input hashes unchanged."
+    }
+  ],
+  "corrections": [],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-718/OVERLAY_VERIFICATION.json",
+      "sha256": "8cecf79bfca5b9f2b435aaf76d6bc751443584abadfddcbe4b13fe34628c60be"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-718/SOURCE_RANGE_FOOTER_VERIFICATION.json",
+      "sha256": "1abbba3c98ab0954cfd830756c03b3b6e4bb99bc891fb6572fc96c8538fe02f3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-718/OUTPUT_PRESERVATION.json",
+      "sha256": "6d07d8a46c4ca61b2505f70bbcef54ae1150548714bf32540349f09ed7eae6a3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-718/RENDER_VERIFICATION.json",
+      "sha256": "f5053070de70349e1189dcb397421a0bba6c733898ab1f9f1a510d059ea6e4ad"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-718/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "7d09343ff5344640e238960ca521e3571999e431d1afda07aa38d3f60d8af092"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

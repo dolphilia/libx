@@ -1,0 +1,16 @@
+"""Fourth canonical step: annotate fixed-guide uv_kill return-type discrepancy.
+The original body/code and source files are preserved byte for byte.
+"""
+from pathlib import Path
+import argparse,json,hashlib
+arg=argparse.ArgumentParser();arg.add_argument('--repository',required=True);arg.add_argument('--workspace',required=True);arg.add_argument('--translation',action='store_true');a=arg.parse_args();root=Path(a.repository);packet=root/'docs/notes/document-import/libuv/1.53.0';app=Path(a.workspace)/'apps/libuv';sha=lambda b:hashlib.sha256(b).hexdigest();sources={'docs/src/guide/processes.rst':'3077d63729eabd43f0ec723d806fd0dc8a0f8b26b5f5acd650a2f8c10527d75e','docs/src/process.rst':'3de02a76a25a9570bbce99e8a41b2cc4a4d9e1f9574d61963275545d4ad8e0bd','include/uv.h':'565b25538707aa7244eb197af397e566be591b26cb66b5742ed095063946a558'}
+for path,expected in sources.items():
+ p=packet/'sources'/path;assert sha(p.read_bytes())==expected;assert (app/'public/source/v1-53-0'/path).read_bytes()==p.read_bytes()
+notes={'en':'<p>Libx editorial note on the uv_kill return type: the fixed guide shows <code>uv_err_t uv_kill(int pid, int signum);</code>. The fixed 1.53.0 <a href="/docs/libuv/v1-53-0/en/reference/process/#c.uv_kill">public API</a> and <a href="/docs/libuv/source/v1-53-0/include/uv.h">original header</a> declare <code>int uv_kill(int pid, int signum);</code>. The guide and its code are preserved; this note identifies their version discrepancy.</p>','ja':'<p>uv_killの戻り値型についてのLibx編集注記: 固定ガイドには<code>uv_err_t uv_kill(int pid, int signum);</code>とあります。固定1.53.0の<a href="/docs/libuv/v1-53-0/en/reference/process/#c.uv_kill">公開API</a>と<a href="/docs/libuv/source/v1-53-0/include/uv.h">原ヘッダー</a>の宣言は、<code>int uv_kill(int pid, int signum);</code>です。ガイドの本文・コードは保持し、この注記で版の不一致を示しています。</p>'}
+for lang in ['en','ja'] if a.translation else ['en']:
+ p=packet/('canonical/en/guide/processes.md' if lang=='en' else 'translation/ja/guide/processes.md');head,body=p.read_text().split('---\n',2)[1:];line=next(l for l in head.splitlines() if l.startswith('documentContext: '));contexts=json.loads(line.split(': ',1)[1]);editorial=next(c for c in contexts if c['kind']=='editorial');note=notes[lang]
+ if note not in editorial['html']:editorial['html']+=note
+ head=head.replace(line,'documentContext: '+json.dumps(contexts,ensure_ascii=False));p.write_text('---\n'+head+'---\n'+body);assert p.read_text().split('---\n',2)[2]==body;(app/('src/content/docs/v1-53-0/'+lang+'/guide/processes.md')).write_bytes(p.read_bytes())
+ if lang=='en':
+  mp=packet/'CONTENT_MAP.json';m=json.loads(mp.read_text());row=next(r for r in m['rows'] if r['slug']=='guide/processes');row['canonicalSha256']=sha(p.read_bytes());assert row['bodySha256']==sha(body.encode());m['canonicalGenerationSteps']=[f+' --repository ROOT --workspace WORKSPACE' for f in ['generate-canonical.py','apply-basics-editorial-note.py','apply-networking-declaration.py','apply-processes-editorial-note.py']];m['processesEditorialOverlay']='Fixed guide uv_kill return type uv_err_t vs fixed public/header int; note in footer only, body/code unchanged.';mp.write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
+print('processes uv_kill footer note saved; original body/code unchanged')

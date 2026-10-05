@@ -1,0 +1,8 @@
+{
+ "status":"pass",
+ "scope":"固定1.53.0の利用ガイドと公開API全42reader。ガイドの原版表記1.42.0も保持する。原ガイドの全記載が現行APIへ更新済みであるとの判定ではない。",
+ "basis":["C既習者向けguideの導入→イベントループ/handle/request→filesystem/network/threads/processes/utilitiesと、design/API27項目は同じ固定範囲内にある。","主要ライフサイクルはdesign/handle/request、実行モードはloop、ファイル結果/cleanupはfs、work queue/cancelはthreadpool/requestに説明があり、Issue/チャット/動画から新規説明を執筆して穴埋めしない。","原iframeは補助的な導入映像で、本文が基本概念と最初の例を説明している。原37literalinclude元を保管し、複雑なmulti-echoの全文参照も同じ固定kit内で可能。"],
+ "originalIssues":["guideはWIP/未徹底レビュー/1.42.0ベース、uvtee不安定、network例のleak/close不足、utilitiesのcheck/prepare TODOを明示。TODOは原まま保持し、同じscopeのprepare/check APIへ読者が移動できる。","uv_fs_t.errornoは固定header/APIと一致しない。固定request.rst:89のresult=UV_ECANCELEDとfs.rst:202のresult契約へ誘導するLibx注記を隔離trial footerへ追加。","guide Processesのone eventはloop.rst:126-134のpoll onceと区別し、単一callback保証と読まない旨のfooter注記を追加。原proseは改訂しない。"],
+ "verification":"3footer metadata変更のみ、全43bodyDOM/151code保持、2642body/footer localhref欠落0。既存684native代表表示/検索/前後移動を保持。追加注記は機械検査のみであり新しいnative表示検査/全42意味レビューではない。",
+ "limits":"個別原誤記は正式翻訳・内容レビューでさらに検出/注記する。教材サンプルのビルド/実行検証や動画全文視聴は実施していない。それらがないことを全例動作の保証に置換しない。"
+}

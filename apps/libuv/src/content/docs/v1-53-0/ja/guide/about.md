@@ -1,0 +1,9 @@
+---
+title: "本書について"
+documentId: "libuv:guide/about.html"
+order: 9
+licenseSource: "libuv-fixed"
+documentContext: [{"kind": "source", "html": "<p>固定原文: libuv 1.53.0、コミット840404ce8ba7cc0204be52389a6cfff9f2c90fb6。文書のライセンスはCC BY 4.0です。<a href=\"/docs/libuv/notices/LICENSE-docs.txt\">ライセンスと免責の全文</a>。<a href=\"/docs/libuv/notices/LICENSE.txt\">ソフトウェアの原MIT通知</a>、<a href=\"/docs/libuv/notices/LICENSE-extra.txt\">構成要素の通知</a>、<a href=\"/docs/libuv/notices/APACHE_LICENSE.txt\">生成器のApache 2通知</a>を保持しています。原manpage.pyの帰属表示も保持しています。Libxが固定原文から整形した非公式の日本語訳です。</p><p>編集可能な原文: <a href=\"/docs/libuv/source/v1-53-0/docs/src/guide/about.rst\">固定RST</a>。原コードと図のソースも別途保持しています。</p>"}, {"kind": "editorial", "html": "<p>固定リリースに含まれるガイドは、本書と例がv1.42.0を基にしており、執筆途中で、十分なレビューを受けていないと説明しています。これらの原文の記述は保持しています。すべてのガイドの例が1.53.0向けに更新されたとするものではありません。</p>"}]
+---
+
+<article class="libuv-document" id="furo-main-content" role="main">&#10;<section id="about">&#10;<h1>本書について<a class="headerlink" href="#about" title="この見出しへの固定リンク">¶</a></h1>&#10;<p><a class="reference external" href="https://nikhilism.com">Nikhil Marathe</a>は、プログラミングをする気分になれなかった2012年6月16日の午後に、本書を書き始めました。それに先立ち、<a class="reference external" href="https://github.com/nikhilm/node-taglib">node-taglib</a>に取り組んでいたとき、libuvについての良い文書が不足していることに悩まされていました。リファレンス文書はありましたが、体系的なチュートリアルはありませんでした。本書はその必要から生まれたもので、正確な説明を目指しています。ただし、誤りがあるかもしれません。プルリクエストを歓迎します。</p>&#10;<p>Nikhilは、2つのライブラリの動作の意味を幅広く説明する、Marc Lehmannによるlibevの充実した、<a class="reference external" href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod">マニュアルページ</a>に多くを負っています。</p>&#10;<p>本書は、<a class="reference external" href="https://www.sphinx-doc.org">Sphinx</a>と、<a class="reference external" href="https://www.vim.org">vim</a>を使って作成しました。</p>&#10;<div class="admonition note">&#10;<p class="admonition-title">注記</p>&#10;<p>2017年、libuvプロジェクトはNikhilの著作を公式文書に取り込み、それ以降はそこで保守しています。</p>&#10;</div>&#10;</section>&#10;</article>

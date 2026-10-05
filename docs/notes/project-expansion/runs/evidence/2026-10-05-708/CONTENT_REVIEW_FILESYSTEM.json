@@ -1,0 +1,85 @@
+{
+  "page": "guide/filesystem",
+  "status": "passed",
+  "at": "2026-10-04T20:36:45.847254+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-text content review after707 translation and actual rendered verification; full fixed RST, all EN narrative leaves, all18 original code blocks, entire Japanese prose/code/footnotes/footer read and compared. Mechanical checks are separately recorded.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/filesystem.rst",
+      "sha256": "e7ff2e8ccec2d504db9856c1818b0fe470b10d08189e563afa80844f9314e685"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/filesystem.md",
+      "sha256": "bbc081892ca35b1bede3b465929791d90ec596bf174dfb6f20e98728ec2057ca"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/filesystem.md",
+      "sha256": "ebb1716b930d2af5d7a7270101a472dddb46434cb4d217d5c6a7bf7f94edd4be"
+    }
+  ],
+  "coverage": {
+    "original": "entire filesystem.rst including all declarations, literalincludes, warnings, notes and footnotes",
+    "canonical": "entire fixed textual page/all18 code blocks/footer",
+    "translation": "entire current Japanese page/all18 original code blocks/footnotes/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "filesystem vs socket / synchronous asynchronous",
+      "result": "Threadpool-backed blocking filesystem calls distinguished from OS nonblocking socket operations. Null callback invokes synchronous blocking form; original error-code/async return0 prose retained without strengthening into universal successful submission guarantee."
+    },
+    {
+      "scope": "uvcat all includes / results / cleanup",
+      "result": "Open/read/write/close prototypes, all4 uvcat slices, positive fd result, initialized read buffer, result0 file EOF vs UV_EOF stream status, callback-driven alternating reads/writes reviewed in full. Synchronous close/one-off startup-shutdown rationale retained. Disk durability warning and mandatory request cleanup warning translated, not removed."
+    },
+    {
+      "scope": "filesystem complete list",
+      "result": "All37 declarations preserved verbatim including buffers arrays/count, int64_t offsets, flags/modes, directory/scan/free-dependent APIs, uid/gid and statfs. Caption/prose result field and original full-list assertion retained."
+    },
+    {
+      "scope": "buffers streams / memory lifetime",
+      "result": "Stream subclasses TCP/TTY/pipes, start-once/read-stop, pointer/length/value semantics and application-owned bytes retained. uvtee copy-before-free, separate two-write allocations and callback freeing, nread negative/EOF/zero, UV_ENOBUFS retry and explicit close retained. Reference counting/pool suggestions retain advisory scope."
+    },
+    {
+      "scope": "original sample limitations / literal includes",
+      "result": "Strong original THIS PROGRAM DOES NOT ALWAYS WORK warning translated prominently. Exact18 literal blocks include original noncontiguous source ranges with partially shown function boundaries; did not rewrite these into invented compilable examples. Overshooting62-80 include on79line source noted in original and translated footer. Preserved original comments/signals/example calls, no successful compile/run claim."
+    },
+    {
+      "scope": "SIGPIPE / file changes",
+      "result": "Pipe writes can abort on SIGPIPE and original signal(SIGPIPE,SIG_IGN) initialization advice retained. OSX/Windows example restriction, event init vs start sequence, flags1/2/4, two inactive flags and recursive support qualifier retained. All4 callback args, optional filename/null even on Linux/Windows, bitwise OR events and negative status error retained. system command invocation and original1023path limitation comment retained."
+    },
+    {
+      "scope": "footnotes / readability / footer",
+      "result": "Both numbered footnotes/backlinks, platform notification implementations/Cygwin unsupported and parent-child IPC target preserved. Full166 narrative leaves reviewed; result/uv_fs_t word order corrected before final saved input. Titles/captions/warnings translate consistently. Libx provenance/editorial notices only footer, fixed CC BY4.0/original software notices/source links/unofficial translation distinct."
+    }
+  ],
+  "corrections": [
+    "Translation draft result/uv_fs_t grammatical order corrected before final707 inputs; no original body/code corrected."
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-707/TRANSLATION_FILESYSTEM.json",
+      "sha256": "ca227b53328b1fea92dedb15eb90e492fd2f5588cff8148f6b61e88217d47cfd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-707/RENDER_VERIFICATION.json",
+      "sha256": "9893be1ebd7f702d16e412dc058fd238e3fa5f2ed35be9cf575b313c4efbb5b2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-707/OUTPUT_PRESERVATION.json",
+      "sha256": "483393e164bfc816178848f9c5dfa670646468b149226823bff5e51a73227534"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-707/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "a3e934faf9927c2063607e6ad3c8a2c34d881a2769b4ee92bd42d920dd86d8a0"
+    }
+  ],
+  "limitations": [
+    "All sample compilation/execution not performed; original incomplete/warning examples retained.",
+    "No final full-project native/content/integration/publication validation.",
+    "External supplementary video whole content review remains unperformed."
+  ],
+  "fullProjectComplete": false
+}

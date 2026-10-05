@@ -1,0 +1,47 @@
+{
+  "page": "reference/dll",
+  "status": "passed",
+  "at": "2026-10-04T19:37:38.676Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page content review after697 draft and actual renderer checks. Read complete fixed RST, canonical narrative and declarations, complete Japanese page and source footer. Evaluated preservation, meaning, negative/exception/ordering and readability independently of machine assertions.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/dll.rst",
+      "sha256": "a359238664f1c7838722eb7b5c0744800d5edbc94a259b2a9d9b44e268609f85"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/dll.md",
+      "sha256": "695b16c5285fdf2413028603af58e14a4041940f40fbdf77236989a20df8b4b3"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/dll.md",
+      "sha256": "6e87ba7f8bd99bf038cf5136d1fc2cb452c6faf284e168d931bff6d069942f07"
+    }
+  ],
+  "coverage": {
+    "original": "entire dll.rst",
+    "canonical": "entire headings/types/API descriptions/return fields/admonitions/inherited references",
+    "translation": "entire page including footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "result": "Cross-platform loading and symbol retrieval preserved; uv_lib_t data type and no public members retained."
+    },
+    {
+      "result": "All4 API declarations/parameters/pointer levels retained. uv_dlopen UTF-8 filename and success0/error-1 plus uv_dlerror link are exact in meaning."
+    },
+    {
+      "result": "uv_dlclose closes the library. uv_dlsym retrieves data pointer, allows symbol mapping to NULL, distinguishes success0 from not-found-1. NULL is not falsely called lookup failure."
+    },
+    {
+      "result": "uv_dlerror returns last dlopen or dlsym error message; no thread/lifetime guarantee invented."
+    }
+  ],
+  "readability": "Natural Japanese sentences and consistent handle labels; context-specific endings retain typedef, NULL exception and return condition. No technical content added.",
+  "footer": "Fixed1.53.0/commit/CC BY4.0 and all original software/component/generator licences linked outside body; editable RST correct per page, unofficial translation explicit. No approval-conversation language.",
+  "corrections": [],
+  "projectFullReviewComplete": false,
+  "remaining": "Other35pages translation/review, final JA link switch and all content/native/integration/publication gates."
+}

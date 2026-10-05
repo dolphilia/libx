@@ -1,0 +1,81 @@
+{
+  "page": "reference/tcp",
+  "status": "passed",
+  "at": "2026-10-04T22:11:20.517900+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current EN/current JA review after735 translation. Missing Japanese editorial context restored in footer, article unchanged; corrected footer reread and actual output/API/code/build/links/TOC checked separately.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/tcp.rst",
+      "sha256": "e2e4205fb2e3ac32fcce34e8db9f0621c7c597397028e4fec741f77ea4c3dabe"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/tcp.md",
+      "sha256": "d834e950b46dffe033535719701563291eacb7f3403de7f932691fc0df1c6a9f"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/tcp.md",
+      "sha256": "2088aa35f6d24df41bb9ebd1b333690f503a616777ecaebdb383e9bfacb291fc"
+    }
+  ],
+  "coverage": {
+    "original": "all tcp.rst including full enum/comments and malformed versionchanged backtick",
+    "canonical": "all current English article/code/footer",
+    "translation": "all current Japanese article/code/footer; restored footer reread",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "complete fixed RST / EN / JA / code / footer",
+      "result": "Entire fixed tcp.rst and entire current EN and JA read separately after735 translation; all395 mapped nodes/15 declarations/one full enum code/all version and platform notes covered, no unread ranges. Missing Japanese editorial footer note for platform-list separator restored, body unchanged and current footer reread."
+    },
+    {
+      "scope": "type, initialisation, open and nodelay",
+      "result": "Streams and servers/subclass retained. Entire uv_tcp_flags enum and comments/IPv6ONLY1/REUSEPORT2 unchanged. No public members and inherited stream members retained. Init no socket, init_ex lower8bits domain/AF_UNSPEC no socket/1.7 retained. Open existing fd/SOCKET,1.2.1 nonblocking and valid stream socket but no type check retained. TCP_NODELAY disables Nagle retained."
+    },
+    {
+      "scope": "keepalive and simultaneous accepts",
+      "result": "Delay seconds/enable0 ignored/10probes1second/timeout callback destruction/minimum1/EINVAL/1.49 retained. Extended idle/intvl/cnt socket option mapping/on0 ignored, probe delay/interval/count/replies/destruction/ETIMEDOUT/minimum1 and1.52 retained. All9 supported OS names preserved. Async simultaneous accepts default enabled/performance versus multiprocess unequal load retained. Original malformed UV_EINVAL triple trailing backtick retained by both EN and JA; correct error identifier also appears plainly in preceding paragraph, no invented API."
+    },
+    {
+      "scope": "bind, address getters and connect",
+      "result": "Bind occupied port EADDRINUSE from listen/connect unless REUSEPORT on all bindings and bind success not sufficient retained. Parameter initialisation, sockaddr4/6, flags dual stack disable and process/thread load balance, return0/negative,1.49 and exact five platform thresholds/ENOTSUP retained. Both getters valid large memory and sockaddr_storage retained. Connect initialized handle/uninitialized request/initialized address, Windows0.0.0.0/:: to localhost for Linux consistency, callback success/error and1.19 retained."
+    },
+    {
+      "scope": "reset/socketpair and review boundary",
+      "result": "Inherited stream API, reset RST via linger0/close and shutdown-reset mixing prohibition/1.32 retained. Socketpair parameters and flags0/flags1, OVERLAPPED/FIONBIO/O_NONBLOCK and libuv-only recommendation, AF_UNIX equivalent/1.41 retained. Existing English list-format editorial annotation now present as Japanese footer annotation; source/licence/unofficial notice and all code remain. Semantic full review distinct from checks. Project final native/content/integration/publication and external supplementary video full review remain unperformed."
+    }
+  ],
+  "corrections": [
+    "Restored translated existing editorial annotation for separator blank line before platform list in page footer."
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-736/FOOTER_CORRECTION.json",
+      "sha256": "27aa9a6ba467aa7d4904ee108461e862a4986675c89453c41d3e618f450e727e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-736/FOOTER_RENDER_VERIFICATION.json",
+      "sha256": "71a5a8a290bcc673bfe350efc649263c05c96569d5d466c7f21685965ce12d75"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-736/API_VERIFICATION.json",
+      "sha256": "95247f84786d6c2cf99518eb94c0d9b96e97f27ade3b3f9230e4a9da40a60705"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-736/RENDER_VERIFICATION.json",
+      "sha256": "86c65c964da1cc10c3fad923025638d0ae3399472c908bbeff3e628a4b07c8c4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-736/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "31a9c8472682e780eedf8ba956f49cf74108d2c32d5e597b5ae65239612b5635"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

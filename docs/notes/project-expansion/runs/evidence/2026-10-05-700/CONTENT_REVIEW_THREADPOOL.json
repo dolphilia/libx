@@ -1,0 +1,53 @@
+{
+  "page": "reference/threadpool",
+  "status": "passed",
+  "at": "2026-10-04T19:44:31.414Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page content review after699 drafts/render. Read complete fixed RST, complete canonical narrative/declarations and complete JA text/footer. Assessed original preservation, meaning/numbers/units/negative/exception/version differences and Japanese readability separately from mechanical assertions.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/threadpool.rst",
+      "sha256": "6e99b4a0e98185bcd424c677def5f29796fb223f123e582cb8e89ec4ba9ee2c3"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/threadpool.md",
+      "sha256": "a497a103c0fc66248f5d84e9eca6d8e0741103bcf039f2cd7eeec7ba67157273"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/threadpool.md",
+      "sha256": "8aa797a5f62b45d92b9ef9ec720c8c31f77e1af0c40862a465e1eaebdb460520"
+    }
+  ],
+  "coverage": {
+    "original": "entire threadpool.rst",
+    "canonical": "all headings/types/members/APIs/intro/admonitions/version notes/inherited references",
+    "translation": "entire page including source footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "result": "Intro preserves user code and notification on loop thread, internal filesystem operations/getaddrinfo/getnameinfo."
+    },
+    {
+      "result": "Default4 and startup UV_THREADPOOL_SIZE absolute maximum1024; changes1.30.0 max128->1024,1.45.0 stack8MB vs platform default sometimes too low,1.50.0 defaultname libuv-worker retained."
+    },
+    {
+      "result": "Global pool shared across all loops, maximum permitted thread preallocation/initialization on using functions, throughput/memory tradeoff and lazy stack growth on most platforms retained."
+    },
+    {
+      "result": "Critical negative note explicitly says functions are NOT thread safe despite global shared pool."
+    },
+    {
+      "result": "uv_work_t and both callback typedefs preserved. work_cb runs on pool; after_work_cb on loop thread after completion; cancellation with uv_cancel gives status UV_ECANCELED. Japanese reorders cancellation clause while preserving condition/identifiers."
+    },
+    {
+      "result": "Readonly uv_work_t.loop is initiating loop and completion reporting destination. uv_queue_work initializes request/work callback then after-work callback on loop thread; cancellable with uv_cancel; inherited uv_req_t members/API retained."
+    }
+  ],
+  "readability": "Complete Japanese explanations; callback/thread and repeat/timeout terms consistent. Conditional and exception statements retain scope without added guarantees.",
+  "footer": "Fixed version/commit/CC BY4.0 and original notices/editable RST retained in footer; unofficial translation clear, no process approval language in body.",
+  "corrections": [],
+  "projectFullReviewComplete": false,
+  "remaining": "Other33pages translation/review and final JA links/content/native/integration/publication gates."
+}

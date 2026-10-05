@@ -1,0 +1,84 @@
+{
+  "page": "reference/process",
+  "status": "passed",
+  "at": "2026-10-04T23:08:09.152087+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/footer reading after757 translation; two Japanese narrative paragraphs clarified; current corrected paragraphs reread. Mechanical checks distinct from semantic review.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/process.rst",
+      "sha256": "3de02a76a25a9570bbce99e8a41b2cc4a4d9e1f9574d61963275545d4ad8e0bd"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/process.md",
+      "sha256": "84c2326da72e92b44af717053e99968155e6d758234400f888a930b6f5b5113a"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/process.md",
+      "sha256": "69d83b65ce3b8a80baed995d89aad09e093eb9458ad7ba17b9cfea0dba8a5865"
+    }
+  ],
+  "coverage": {
+    "original": "all process.rst including24 declarations/4 original code blocks/options/flags/lifetime/kill/version conditions",
+    "canonical": "all current English article/footer",
+    "translation": "all current Japanese article/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "full fixed RST / EN / JA / footer",
+      "result": "Entire fixed process.rst/current English/current Japanese/API/code/frontmatter/footer read separately after757 translation. All225 mapped nodes/24 declarations/4 original code blocks covered. Two Japanese narrative paragraphs clarified and reread; no unread ranges."
+    },
+    {
+      "scope": "types/flags/options/stdio",
+      "result": "Process control/stream channels, exit callback status/signal, options and flags retained. Original enum comments include Windows-only escaping/window options/exact-name search and detached process group/uv_unref condition. stdio exclusive flags, unopened initialized pipe, inheritance duplicates, child-view readable/writable duplex and nonblocking data-loss warning retained exactly in original code. Options file/args/env NULL/cwd, Windows MSVCRT fd>2 and unsupported uid/gid ENOTSUP retained."
+    },
+    {
+      "scope": "lifetime/inheritance/spawn",
+      "result": "PID set after spawn and retained after exit, uniqueness only while alive retained. Inheritance disabled early before close/duplicate with best-effort caveat retained. spawn success0/failure negative, close required before free on either success/failure, nonexhaustive failure reasons retained. Unix close-before-process-exit zombie responsibility/waitpid and Windows exception retained; Japanese argument order clarified."
+    },
+    {
+      "scope": "kill and version conditions",
+      "result": "process_kill handle will not kill a different process reusing dead PID; uv_kill with cached get_pid may do so retained. Signal support pointer especially Windows, direct PID signal, handle->pid return,1.19 addition,1.24 hide-console/gui and1.48 exact-name additions retained."
+    },
+    {
+      "scope": "source issues/footer/review boundary",
+      "result": "Original enum comment malformed closing delimiter retained; original options description missing parenthesis clarified as Japanese sentence boundary without modifying source/code. Fixed source/licences/notices/unofficial Japanese footer outside body retained. Current758 rebuilt actual API/code/render/link/TOC checks distinct. No native/runtime experiments; final full-project content/integration/publication and supplementary video full review pending."
+    }
+  ],
+  "corrections": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-758/CORRECTIONS.json",
+      "sha256": "6939dfff50d0dae56c363eba65af1c29c573cb7d943b63d37f62076e00fbc401"
+    }
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-758/API_VERIFICATION.json",
+      "sha256": "8a31425339f83877e59ef7d52848c9d6b8b11c893b9d7b9543e0280b8b7a89bb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-758/RENDER_VERIFICATION.json",
+      "sha256": "b59602a4871d7ce2126f6676bdc9850601df0f9ea8de7ab5b5f5ed1dda33ff8f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-758/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "f0b2bda1ada70a5a46328803cbd4584b97eb7334c70f0a12281640ce624adf5b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-758/PREBUILD.log",
+      "sha256": "9095328662f635b3d26ccf02066261c5aa1c772458bdbba666e32b91ff4f1be9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-758/BUILD.log",
+      "sha256": "635c247575d9fc8425cf228e6cd6bc70e8d78bbf01f9f16ef3102568e6e19b42"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

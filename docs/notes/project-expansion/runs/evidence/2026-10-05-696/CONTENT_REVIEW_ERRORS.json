@@ -1,0 +1,61 @@
+{
+  "page": "reference/errors",
+  "status": "passed",
+  "at": "2026-10-04T19:31:55.862Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page review after 695 draft/render. Read complete fixed RST, complete canonical descriptions/signatures and complete JA prose/80constants/7API blocks/footer. Semantic judgments are independent of machine signature/link preservation.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/errors.rst",
+      "sha256": "e937e4e485c793bfb1f59c6bcc6e95937f8cf86bd7b8c835b632c94c70dae810"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/errors.md",
+      "sha256": "010be54945ff141a52576dd3d7063f9ae614e07abc5bc27c77390fa78d0769dd"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/errors.md",
+      "sha256": "21c5263c2cafa3972015c9c5c4ba0a94fe29c84c722d1c2c5663f700439ab05f"
+    }
+  ],
+  "coverage": {
+    "original": "entire errors.rst",
+    "canonical": "title, intro, implementation note, all80 error constants, macro and6 functions, version notes",
+    "translation": "entire page including footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "source -> canonical",
+      "result": "80constants and UV_ERRNO_MAP plus6functions retained. All87declaration blocks preserved. Original negative-error conventions, Unix/Windows distinction and leak warnings retained."
+    },
+    {
+      "scope": "error descriptions",
+      "result": "All80constant labels checked in order against original. Address family/socket type/protocol, transient vs permanent failure, file/permission/memory/network/device errors, EOF/cancellation and all other labels retain their particular meaning."
+    },
+    {
+      "scope": "negative and callback conditions",
+      "result": "Rule of thumb retained, not strengthened to universal guarantee. Callback-taking function returning error means callback never invoked. Unix negated errno and Windows arbitrary negative libuv definitions retained."
+    },
+    {
+      "scope": "API macro",
+      "result": "One invocation per error constant, two arguments, removal of UV_ prefix, message string literal retained. iter_macro identifier unchanged."
+    },
+    {
+      "scope": "error names/messages",
+      "result": "uv_strerror and uv_err_name retain few-byte leaks for unknown error codes. Both _r variants distinguish message vs name, NUL termination, supplied buf and at-most buflen bytes. Both added1.22.0 retained."
+    },
+    {
+      "scope": "system errors",
+      "result": "POSIX errno/Unix and Win32 GetLastError or WSAGetLastError/Windows remain distinct. Already-libuv sys_errno returned unchanged; public declaration1.10.0 preserved."
+    },
+    {
+      "scope": "Japanese readability/footer",
+      "result": "Complete sentences and short error labels are coherent. Source/license/notice/editorial metadata stays outside body, fixed editable source linked; no conversation approval wording."
+    }
+  ],
+  "corrections": [],
+  "projectFullReviewComplete": false,
+  "remaining": "Other39page translation/review; final JA links, content checks/native/integration/publication."
+}

@@ -1,0 +1,81 @@
+{
+  "page": "reference/loop",
+  "status": "passed",
+  "at": "2026-10-04T20:00:48.982Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page review after701 draft and actual renderer correction. Read complete fixed loop.rst, complete EN narrative/declarations/enums, and complete Japanese page/footer. Full original code literals are additionally confirmed by renderer byte/whitespace preservation. Meaning/readability assessed independently of machine assertions.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/loop.rst",
+      "sha256": "bbff439c8e84037d8e54b1129bf823fc056bc172d8c45662777c949a23930d48"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/loop.md",
+      "sha256": "1e60e5c6203e09efe33871189118a136b3e65b027942cb0189d3f502d3659bc0"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/loop.md",
+      "sha256": "a1ac7924b1892ca0eedbe3fdeb7b85bb8a401b00b84de31c3ae7c1bbeb9009b3"
+    }
+  ],
+  "coverage": {
+    "original": "entire loop.rst",
+    "canonical": "intro, all4 type/enum declarations and2 literal enum blocks, public data member, all16 API functions and all platform/version cautions",
+    "translation": "entire page including source footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "types/public data",
+      "result": "Loop/options/run mode/walk callback and data member preserved. Both enum code blocks copied exactly; all constant ordering and UV_RUN_DEFAULT/UV_LOOP_BLOCK_SIGNAL=0 retained. User data is untouched by libuv."
+    },
+    {
+      "scope": "configure",
+      "result": "Normal before-first-run recommendation and unless-otherwise exception retained.0/UV_E* errors and UV_ENOSYS unsupported option, only SIGPROF with other signals UV_EINVAL, option meanings and1.0.2/1.39.0/1.49.0 versions preserved."
+    },
+    {
+      "scope": "close/default",
+      "result": "Close requires finished loop and all open handles/requests closed; otherwise UV_EBUSY retained. Freeing-memory statement is read under preceding successful-close precondition, supported by fixed primary implementation. Default allocation NULL, equality with normal initialized loop, can/should close and not-thread-safe warning retained."
+    },
+    {
+      "scope": "run/alive/stop",
+      "result": "DEFAULT active referenced handles/requests and stop return condition retained. ONCE vs NOWAIT are once-poll modes, blocking difference preserved, not one-callback claims. Non-reentrant/must-not-call-from-callback explicit. Alive referenced-active/active-request/closing categories retained. Stop as-soon-as-possible but not-before-next-iteration and before-I/O-no-block exception retained."
+    },
+    {
+      "scope": "size/backends",
+      "result": "FFI size use, backend kqueue/epoll/event ports only, separate poll/callback threads example, kqueue embedding caveat/no events and timeout milliseconds/-1 preserved."
+    },
+    {
+      "scope": "time/walk",
+      "result": "Cached milliseconds at tick start, monotonically increasing arbitrary origin/no origin assumption, sub-ms uv_hrtime, system-call reduction and subjective probably-ms-or-more threshold retained. Walk passes arg to walk_cb."
+    },
+    {
+      "scope": "fork",
+      "result": "Child kernel reinitialization after fork, previous watchers, every reused parent loop including default even if unused later in parent, must precede child run/any loop API and undefined behavior consequences retained. Prefer new child loop; new loops should not use fork repair. Windows UV_ENOSYS and experimental/API/ABI no guarantee retained."
+    },
+    {
+      "scope": "fork platform caveats",
+      "result": "Mac any-parent-loop directory watchers force fallback FSEvent behavior; AIX/SunOS inherited FS watchers do not deliver until close/restart; others unchanged. Prior backend fd invalid/must reacquire retained."
+    },
+    {
+      "scope": "data accessors/footer/readability",
+      "result": "get/set loop->data and1.19.0 retained. Natural complete Japanese conditional/exception statements; all source metadata/notice/editable RST outside body and unofficial translation explicit. No technical fixes silently added."
+    }
+  ],
+  "corrections": [
+    "Renderer code indentation loss fixed through actual-article raw-block serialization and original raw pre copy. Full rendered code incl whitespace now identical; narrative meaning unchanged."
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-701/LOOP_CLOSE_PRIMARY_CONFIRMATION.json",
+      "sha256": "edb3b90b1b5ba7f66be5ff566eab734f899e94b5c88fb5bb698ac0f6d014d927"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-701/HEADING_CODE_VERIFICATION.json",
+      "sha256": "69abfb42471c0d03806d0fc213589623fb09bd55725828a9b4c3642c509f9d44"
+    }
+  ],
+  "projectFullReviewComplete": false,
+  "remaining": "Other32pages translation/review and final JA links/content/native/integration/publication."
+}

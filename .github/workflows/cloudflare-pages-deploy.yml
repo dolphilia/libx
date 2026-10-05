@@ -114,6 +114,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Setup pinned BeautifulSoup for libuv content checks
+        run: python -m pip install -r docs/notes/document-import/libuv/1.53.0/requirements-content.txt
+
       - name: Generate shared artifacts
         run: pnpm sync:service-workers && pnpm build:sidebar
 
@@ -158,6 +161,9 @@ jobs:
 
       - name: Verify jq English and Japanese rendered content and footer
         run: node scripts/document-import/jq/check-rendered-v4.mjs
+
+      - name: Verify libuv English and Japanese rendered content and footer
+        run: python docs/notes/document-import/libuv/1.53.0/check-rendered.py
 
       - name: Check deployment asset budget
         run: pnpm check:deployment-assets

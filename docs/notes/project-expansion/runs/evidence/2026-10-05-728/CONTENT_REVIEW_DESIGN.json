@@ -1,0 +1,83 @@
+{
+  "page": "reference/design",
+  "status": "passed",
+  "at": "2026-10-04T21:43:27.118501+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-text and original figure content review after726 translation and727 footer supplement. Full source and EN/JA article read727, original figures viewed, fixed cancellation API read and current EN/JA footer finalized728; mechanical tests distinct.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/design.rst",
+      "sha256": "3b823869f1152dae6d5f1b3201ade736f73bd4f232f700afd783c4cf9c4c65a4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/design.md",
+      "sha256": "7c7003d050a5d011f04655966ab663ff24bfea3bc16c1e0ca133ca5153ab3323"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/design.md",
+      "sha256": "441878c39059c0777763b361c6c773f067cc5a689fe38248ee892c9f482cb2bb"
+    }
+  ],
+  "coverage": {
+    "original": "all design.rst including all literalinclude directives/full inline code/ref/footnote",
+    "canonical": "all current article/code/footer",
+    "translation": "all current Japanese article/code/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "all fixed source/EN/JA/footer",
+      "result": "Separate full review spans727-728: full original design.rst, all98 EN/JA narrative leaves, identifiers, all headings, lists, Important/Note/Warning and current footer compared. No code blocks or footnotes. No unread ranges."
+    },
+    {
+      "scope": "handle/request lifetimes",
+      "result": "Long-lived handles vs short-lived operations, prepare/TCP callback examples, standalone getaddrinfo, all7 lifecycle rules retained. Successful init requires close; init failure no action; only handles closed; close callback before reclamation; spawn combined init/start; fs cleanup and addrinfo free retained. Cancellation original wording kept with fixed API explicit no free before callback clarification in EN/JA footer."
+    },
+    {
+      "scope": "thread model and loop sequence",
+      "result": "Per-loop single-thread restriction and not-thread-safe exception qualifier retained. epoll/kqueue/event ports/IOCP mapping and readable/writable/hangup conditions retained. All13 ordered stages include initial default-mode timers, alive handles/requests/closing handles, pending/idle/prepare, six timeout rules, poll/check/close, time update/timers and NOWAIT/ONCE/default continuation. Timer due while processing deferred to nextiteration preserved."
+    },
+    {
+      "scope": "file I/O and figures",
+      "result": "Network I/O always loop thread contrasted with file I/O threadpool; global pool shared across loops, filesystem/DNS/user queue work and limited-size warning retained. Both original PNGs directly viewed727 and textual diagrams read: architecture grouping and iteration branches/order consistent. Original pixels/English labels retained; native rendered display remains pending."
+    },
+    {
+      "scope": "provenance",
+      "result": "Fixed source commit/licences/notices/editable RST/unofficial JA translation retained. Original whitespace-only image-directive indentation correction disclosed EN/JA footer. Cancellation API supplement explicit Libx note outside body, original unchanged. Prior21 passed hashes unchanged."
+    }
+  ],
+  "corrections": [],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-727/OVERLAY_VERIFICATION.json",
+      "sha256": "60c2ab7a12a0341d37f224733e482c34eae02476ff7f9d93cb89f1037f2a6940"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-727/FOOTER_VERIFICATION.json",
+      "sha256": "1352d4729eded22c5a5ecba436e9cd1b4c7dc0413719c67b24777bfc7b23e695"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-727/OUTPUT_PRESERVATION.json",
+      "sha256": "8a3409e7a7005c6db16348dc0b0b818bd4f646aa49c68ccd7f3327a950af3148"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-727/RENDER_VERIFICATION.json",
+      "sha256": "55741f13ba5f8002245323ba3aa908ba59f9a33b739315285e04721f0a66ee4c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-727/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "63b8f41a984b4c2cffea269696cd8fcbebae2358fdaa342983baa56ac2fff516"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-727/REVIEW_FINDING.json",
+      "sha256": "3bb6a8f0fc2d78cbb3ec6b76b3cb9fe3ef8b7ad5c8bba1b4cf7e41a9e05b5cd9"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

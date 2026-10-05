@@ -1,0 +1,79 @@
+{
+  "page": "reference/migration_010_100",
+  "status": "passed",
+  "at": "2026-10-04T23:02:56.501004+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/footer reading after755 translation; no correction required. Mechanical checks distinct from semantic review.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/migration_010_100.rst",
+      "sha256": "53aaaa9380782dd8b3f38418f0f81a8ff16f2c556be4de8e0cdb66dcb6f1c5cf"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/migration_010_100.md",
+      "sha256": "ba6f8ae7f1879688dbe44f7c9bdf7f0389ddc97485b2282564f00e832446ded6"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/migration_010_100.md",
+      "sha256": "0504e550efd97255184cc71e4071eae69427c5723d544d99119c2d172042ac4e"
+    }
+  ],
+  "coverage": {
+    "original": "all migration_010_100.rst including all9 change sections and13 original code examples",
+    "canonical": "all current English article/footer",
+    "translation": "all current Japanese article/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "full fixed RST / EN / JA / footer",
+      "result": "Entire migration_010_100.rst/current English/current Japanese/API examples/frontmatter/footer read separately after755 translation. All81 mapped nodes/0API declarations/13 original code blocks covered; all9 change sections. No unread ranges, no correction necessary."
+    },
+    {
+      "scope": "loops/errors/threadpool",
+      "result": "0.10 and earlier uv_loop_new allocates+initializes, uv_loop_delete destroys+frees;1.0 deprecates and caller allocates/initializes/closes/frees distinguished. Error-handling omission notice retained. Old0 success/-1 failure/positive last-error versus new0/negative code retained. Historical Unix4/Windows internal QueueUserWorkItem512 per process and unified1.0/exported UV_THREADPOOL_SIZE retained as historical claims."
+    },
+    {
+      "scope": "allocation/address/receive/pipe APIs",
+      "result": "Filled uv_buf_t returned by value versus passed pointer to fill retained. IPv4/IPv6 unification into uv_tcp_bind, sockaddr value versus sockaddr pointer, stack allocation, ip4/ip6 creation changes and all-distinguishing-functions applicability retained. Streams/UDP receive pointers and const changes exact in code. uv_read2_start removed and pending count/type checked within read callback retained."
+    },
+    {
+      "scope": "fileno/scandir and original limitations",
+      "result": "Unsupported internal descriptor access versus official uv_fileno retained. Old readdir list req->ptr/new scandir naming and one-at-a-time scandir_next without threadpool roundtrip because libuv retains dents list preserved. Original malformed ..note:: and code missing semicolons retained with no inferred source repairs."
+    },
+    {
+      "scope": "footer and review boundary",
+      "result": "Fixed commit/source, CC BY4.0, notices and unofficial Japanese footer outside body retained. API/code/render/link/TOC checks separate from full semantic review; unchanged755 build/prebuild reused. No sample compilation/runtime experiments; native/full-project content/integration/publication and external supplementary video full review pending."
+    }
+  ],
+  "corrections": [],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-756/API_VERIFICATION.json",
+      "sha256": "cc3cb72dfbce3314c0da8441b81cc874095a343aad355b85446602b31dea979e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-756/RENDER_VERIFICATION.json",
+      "sha256": "5a7a4c059a2f5438d10780a8d3c33211104a642eed6fe459b5083e3ba1d991a5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-756/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "61ceb751fed2fdb70574d65693e1636c1dcc5e6d23c960360364102b6bbccb19"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-755/PREBUILD.log",
+      "sha256": "bcff4013da56c08948366b4781498722702f70253ccbff1c38b2cedc57dc5ca7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-755/BUILD.log",
+      "sha256": "e9e7a1bd8f773a00ae11576040ef0e113bc606a4caef8f08f6cceb25f40f87d4"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}
