@@ -338,6 +338,11 @@ async function generateSidebarForVersion(project, lang, version) {
 
   // カテゴリを順序で並べ替え
   const sortedCategories = Object.entries(categories).sort((a, b) => {
+    // libuv uses unnumbered directories; retain upstream order independently of glob traversal.
+    if (project.name === 'libuv') {
+      const order = ['reference', 'guide'];
+      return order.indexOf(a[0]) - order.indexOf(b[0]);
+    }
     return a[1].order - b[1].order;
   });
 
@@ -489,6 +494,9 @@ async function main() {
             const sidebar = await generateSidebarForVersion(project, lang, version);
             const outputPath = path.join(preparedOutputDir, `sidebar-${lang}-${version}.json`);
             await saveJson(outputPath, sidebar);
+            if (project.name === 'libuv') {
+              await fs.appendFile(outputPath, '\n');
+            }
           }
         }
 
