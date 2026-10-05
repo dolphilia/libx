@@ -1,0 +1,65 @@
+1 [h1]
+EN: Variables
+JA: 変数
+
+2 [p]
+EN: Variables are named slots for storing values. You define a new variable in Wren
+using a ⟦CODE0⟧ statement, like so:
+JA: 変数は、値を保存するための名前付きのスロットです。Wrenでは、次のように⟦CODE0⟧文で新しい変数を定義します。
+
+3 [p]
+EN: This creates a new variable ⟦CODE0⟧ in the current scope and initializes it with
+the result of the expression following the ⟦CODE1⟧. Once a variable has been
+defined, it can be accessed by name as you would expect.
+JA: これで、現在のスコープに⟦CODE0⟧という新しい変数を作り、⟦CODE1⟧の後にある式の結果で初期化します。変数を定義すると、予想どおり名前でアクセスできます。
+
+4 [h2]
+EN: Scope <a class="header-anchor" href="#scope" name="scope">#</a>
+JA: スコープ <a class="header-anchor" href="#scope" name="scope">#</a>
+
+5 [p]
+EN: Wren has true block scope: a variable exists from the point where it is defined
+until the end of the <a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks">block</a> where that definition appears.
+JA: Wrenには本来のブロックスコープがあります。変数は、定義した位置から、その定義がある<a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks">ブロック</a>の終わりまで存在します。
+
+6 [p]
+EN: Variables defined at the top level of a script are <em>top-level</em> and are visible
+to the <a href="/docs/wren/v0-4-0/en/01-guide/14-modularity/">module</a> system. All other variables are <em>local</em>.
+Declaring a variable in an inner scope with the same name as an outer one is
+called <em>shadowing</em> and is not an error (although it’s not something you likely
+intend to do much).
+JA: スクリプトの最上位で定義した変数は<em>トップレベル</em>で、<a href="/docs/wren/v0-4-0/en/01-guide/14-modularity/">モジュール</a>システムから見えます。それ以外の変数はすべて<em>ローカル</em>です。外側の変数と同じ名前の変数を内側のスコープで宣言することを<em>シャドーイング</em>と呼びます。これはエラーではありません（ただし、頻繁に行いたい操作ではないでしょう）。
+
+7 [p]
+EN: Declaring a variable with the same name in the <em>same</em> scope <em>is</em> an error.
+JA: <em>同じ</em>スコープで同じ名前の変数を宣言することは、<em>エラーです</em>。
+
+8 [h2]
+EN: Assignment <a class="header-anchor" href="#assignment" name="assignment">#</a>
+JA: 代入 <a class="header-anchor" href="#assignment" name="assignment">#</a>
+
+9 [p]
+EN: After a variable has been declared, you can assign to it using ⟦CODE0⟧
+JA: 変数を宣言した後は、⟦CODE0⟧を使って代入できます。
+
+10 [p]
+EN: An assignment walks up the scope stack to find where the named variable is
+declared. It’s an error to assign to a variable that isn’t defined. Wren
+doesn’t roll with implicit variable definition.
+JA: 代入では、スコープのスタックを外側へたどって、指定した名前の変数が宣言されている場所を探します。定義されていない変数へ代入すると、エラーになります。Wrenは、暗黙の変数定義を認めません。
+
+11 [p]
+EN: When used in a larger expression, an assignment expression evaluates to the
+assigned value.
+JA: より大きな式の中で使う場合、代入式の評価結果は、代入した値です。
+
+12 [p]
+EN: If the left-hand side is some more complex expression than a bare variable name,
+then it isn’t an assignment. Instead, it’s calling a <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#setters">setter method</a>.
+JA: 左辺が単なる変数名より複雑な式なら、これは代入ではありません。代わりに、<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#setters">セッターメソッド</a>を呼び出しています。
+
+13 [p]
+EN: <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/11-functions/">Functions →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/">← Control Flow</a>
+JA: <br/><hr/><a class="right" href="/docs/wren/v0-4-0/en/01-guide/11-functions/">関数 →</a><a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/">← 制御フロー</a>

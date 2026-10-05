@@ -1,0 +1,360 @@
+1 [h1]
+EN: Modularity
+JA: モジュール化
+
+2 [p]
+EN: Once you start writing programs that are more than little toys, you quickly run
+into two problems:
+JA: 小さなおもちゃ以上のプログラムを書き始めると、すぐに二つの問題に遭遇します。
+
+3 [li]
+EN: 
+<p>You want to break them down into multiple smaller files to make it easier to
+   find your way around them.</p>
+
+JA: <p>全体を把握しやすいように、複数の小さなファイルへ分割したい。</p>
+
+4 [li]
+EN: 
+<p>You want to reuse pieces of them across different programs.</p>
+
+JA: <p>その一部分を、別のプログラムでも再利用したい。</p>
+
+5 [p]
+EN: To address those, Wren has a simple module system. A file containing Wren code
+defines a <em>module</em>. A module can use the code defined in another module by
+<em>importing</em> it. You can break big programs into smaller modules that you
+import, and you can reuse code by having multiple programs share the use of a
+single module.
+JA: これらに対応するため、Wrenには単純なモジュールシステムがあります。Wrenのコードを含むファイルは、<em>モジュール</em>を定義します。モジュールは、別のモジュールを<em>インポート</em>することで、そのモジュールで定義したコードを使えます。大きなプログラムを、インポートする小さなモジュールへ分割でき、複数のプログラムで一つのモジュールを共有することで、コードを再利用できます。
+
+6 [p]
+EN: Wren does not have a single global scope. Instead, each module has its own
+top-level scope independent of all other modules. This means, for example, that
+two modules can define a top-level variable with the same name without causing
+a name collision. Each module is, well, modular.
+JA: Wrenには、単一のグローバルスコープがありません。代わりに、各モジュールが、ほかのすべてのモジュールから独立したトップレベルのスコープを持ちます。例えば、二つのモジュールで同じ名前のトップレベル変数を定義しても、名前の衝突が起きません。各モジュールは、モジュールとして独立しています。
+
+7 [h2]
+EN: Importing, briefly <a class="header-anchor" href="#importing,-briefly" name="importing,-briefly">#</a>
+JA: インポートの概要 <a class="header-anchor" href="#importing,-briefly" name="importing,-briefly">#</a>
+
+8 [p]
+EN: When you run Wren and give it a file name to execute, the contents of that file
+define the “main” module that execution starts at. To load and execute other
+modules, you use an import statement:
+JA: Wrenを実行し、実行するファイル名を渡すと、そのファイルの内容が、実行を開始する「main」モジュールを定義します。ほかのモジュールを読み込んで実行するには、import文を使います。
+
+9 [p]
+EN: This finds a module named “beverages” and executes its source code. Then, it
+looks up two top-level variables, ⟦CODE0⟧ and ⟦CODE1⟧ in <em>that</em> module and
+creates new variables in <em>this</em> module with their values.
+JA: これは、「beverages」というモジュールを探し、そのソースコードを実行します。続いて、<em>その</em>モジュール内の二つのトップレベル変数、⟦CODE0⟧と⟦CODE1⟧を探し、それらの値を持つ新しい変数を<em>この</em>モジュールに作成します。
+
+10 [p]
+EN: This statement can appear anywhere a variable declaration is allowed, even
+inside blocks:
+JA: この文は、変数宣言が許される場所なら、ブロック内を含め、どこにでも書けます。
+
+11 [p]
+EN: If you need to import a variable under a different name, you can use 
+⟦CODE0⟧. This looks up the top-level variable
+⟦CODE1⟧ in <em>that</em> module, but declares a variable called ⟦CODE2⟧ in <em>this</em> module
+with its value.
+JA: 別の名前で変数をインポートする必要がある場合は、⟦CODE0⟧を使えます。これは、<em>その</em>モジュールのトップレベル変数⟦CODE1⟧を探し、その値を持つ⟦CODE2⟧という変数を<em>この</em>モジュールに宣言します。
+
+12 [p]
+EN: If you want to load a module, but not bind any variables from it, you can omit
+the ⟦CODE0⟧ clause:
+JA: モジュールを読み込むだけで、その変数を束縛する必要がない場合は、⟦CODE0⟧節を省けます。
+
+13 [p]
+EN: That’s the basic idea. Now let’s break it down into each of the steps it
+performs:
+JA: これが基本的な考え方です。では、行う処理を各段階に分けましょう。
+
+14 [li]
+EN: Locate the source code for the module.
+JA: モジュールのソースコードを見つける。
+
+15 [li]
+EN: Execute the imported module’s code.
+JA: インポートするモジュールのコードを実行する。
+
+16 [li]
+EN: Bind new variables in the importing module to values defined in the imported
+   module.
+JA: インポートする側のモジュールに新しい変数を作り、インポートされるモジュールで定義した値に束縛する。
+
+17 [p]
+EN: We’ll go through each step:
+JA: 各段階を説明します。
+
+18 [h2]
+EN: Locating a module <a class="header-anchor" href="#locating-a-module" name="locating-a-module">#</a>
+JA: モジュールを見つける <a class="header-anchor" href="#locating-a-module" name="locating-a-module">#</a>
+
+19 [p]
+EN: The first thing you need to do to import a module is actually <em>find</em> the code
+for it. The import specifies a <em>name</em>—some arbitrary string that is used
+to uniquely identify the module. The embedding application controls how that
+string is used to locate a blob of source code.
+JA: モジュールをインポートするときに、最初に必要なのは、そのコードを実際に<em>見つける</em>ことです。importは、モジュールを一意に識別するための任意の文字列である<em>名前</em>を指定します。組み込み先のアプリケーションが、その文字列からソースコードのまとまりを見つける方法を制御します。
+
+20 [p]
+EN: When the host application creates a new Wren VM, it provides a module loader
+function:
+JA: ホストアプリケーションは、新しいWren VMを作るときに、モジュールローダー関数を提供します。
+
+21 [p]
+EN: That function has this signature:
+JA: その関数のシグネチャは、次のとおりです。
+
+22 [p]
+EN: Whenever a module is imported, the VM calls this and passes it the name of the
+module. The embedder is expected to return the source code contents of the
+module in a ⟦CODE0⟧. When you embed Wren in your app, you can handle
+this however you want: reach out to the file system, look inside resources bundled
+into your app, whatever.
+JA: モジュールをインポートするたび、VMは、この関数へモジュール名を渡して呼び出します。組み込む側は、モジュールのソースコードの内容を、⟦CODE0⟧で返すことを求められます。自分のアプリにWrenを組み込む場合、ファイルシステムを参照したり、アプリに同梱した資源から探したりと、好きな方法で処理できます。
+
+23 [p]
+EN: You can return the source field as ⟦CODE0⟧ from this function to indicate that a module
+couldn’t be found. When you do this, Wren will report it as a runtime error.
+JA: この関数から、sourceフィールドを⟦CODE0⟧として返すと、モジュールが見つからなかったことを示せます。この場合、Wrenは実行時エラーとして報告します。
+
+24 [h3]
+EN: The command-line loader <a class="header-anchor" href="#the-command-line-loader" name="the-command-line-loader">#</a>
+JA: コマンドラインのローダー <a class="header-anchor" href="#the-command-line-loader" name="the-command-line-loader">#</a>
+
+25 [p]
+EN: The <a href="https://wren.io/cli/">Wren CLI command-line tool</a> has a very simple
+lookup process. It appends the module name and “.wren” to the directory where
+the main module was loaded and looks for that file. So, let’s say you run:
+JA: <a href="https://wren.io/cli/">Wren CLIコマンドラインツール</a>の検索処理は、とても単純です。mainモジュールを読み込んだディレクトリーに、モジュール名と「.wren」を追加し、そのファイルを探します。例えば、次のように実行したとします。
+
+26 [p]
+EN: And that main module has:
+JA: そのmainモジュールに、次の文があると、
+
+27 [p]
+EN: Then the command-line VM will try to find ⟦CODE0⟧. By
+convention, forward slashes should be used as path separators, even on Windows,
+to help ensure your scripts are platform-independent. (Forward slashes are a
+valid separator on Windows, but backslashes are not valid on other OSes.)
+JA: コマンドラインVMは、⟦CODE0⟧を探します。慣例として、スクリプトをプラットフォームに依存させないため、Windowsでも、パスの区切りにはスラッシュを使うべきです。（Windowsでもスラッシュは有効な区切りですが、ほかのOSではバックスラッシュは有効ではありません。）
+
+28 [h2]
+EN: Executing the module <a class="header-anchor" href="#executing-the-module" name="executing-the-module">#</a>
+JA: モジュールを実行する <a class="header-anchor" href="#executing-the-module" name="executing-the-module">#</a>
+
+29 [p]
+EN: Once we have the source code for a module, we need to run it. First, the VM
+takes the <a href="/docs/wren/v0-4-0/en/01-guide/12-concurrency/">fiber</a> that is executing the ⟦CODE0⟧ statement in the importing
+module and pauses it.
+JA: モジュールのソースコードが得られたら、それを実行する必要があります。まずVMは、インポートする側のモジュールで⟦CODE0⟧文を実行している<a href="/docs/wren/v0-4-0/en/01-guide/12-concurrency/">ファイバー</a>を一時停止します。
+
+30 [p]
+EN: Then it creates a new module object—a new fresh top-level scope,
+basically—and a new fiber. It executes the new module’s code in that
+fiber and scope. The module can run whatever imperative code it wants and
+define whatever top-level variables it wants.
+JA: 続いて、新しいモジュールオブジェクト、つまり基本的には新しいトップレベルのスコープと、新しいファイバーを作成します。そのファイバーとスコープで、新しいモジュールのコードを実行します。モジュールは、任意の命令型コードを実行し、任意のトップレベル変数を定義できます。
+
+31 [p]
+EN: When the module’s code is done being executed and its fiber completes, the
+suspended fiber for the importing module is resumed. This suspending and
+resuming is recursive. So, if “a” imports “b” which imports “c”, both “a” and
+“b” will be suspended while “c” is running. When “c” is done, “b” is resumed.
+Then, when “b” completes, “a” is resumed.
+JA: モジュールのコードの実行が終わり、そのファイバーが完了すると、一時停止していた、インポートする側のモジュールのファイバーを再開します。この中断と再開は再帰的です。「a」が「b」をインポートし、「b」が「c」をインポートするなら、「c」の実行中は「a」と「b」の両方を中断します。「c」が終わると「b」を再開し、その後「b」が完了すると「a」を再開します。
+
+32 [p]
+EN: Think of it like traversing the tree of imports, one node at a time. At any
+given point in time, only one module’s code is running.
+JA: インポートの木を、一度に一つのノードずつたどるように考えてください。どの時点でも、実行中のコードは、一つのモジュールのものだけです。
+
+33 [h2]
+EN: Binding variables <a class="header-anchor" href="#binding-variables" name="binding-variables">#</a>
+JA: 変数の束縛 <a class="header-anchor" href="#binding-variables" name="binding-variables">#</a>
+
+34 [p]
+EN: Once the module is done executing, the last step is to actually <em>import</em> some
+data from it. Any module can define “top-level” <a href="/docs/wren/v0-4-0/en/01-guide/09-variables/">variables</a>.
+These are simply variables declared outside of any
+<a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#methods">method</a> or <a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">function</a>.
+JA: モジュールの実行が終わると、最後の段階は、そこからデータを実際に<em>インポート</em>することです。どのモジュールでも、「トップレベル」の<a href="/docs/wren/v0-4-0/en/01-guide/09-variables/">変数</a>を定義できます。これは、<a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#methods">メソッド</a>や<a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">関数</a>の外で宣言する変数のことです。
+
+35 [p]
+EN: These are visible to anything inside the module, but they can also be
+<em>exported</em> and used by other modules. When Wren executes an import like:
+JA: これらは、モジュール内のどこからでも見えますが、<em>エクスポート</em>して、ほかのモジュールから使うこともできます。Wrenが次のようなimportを実行すると、
+
+36 [p]
+EN: First it runs the “beverages” module. Then it goes through each of the variable
+names in the ⟦CODE0⟧ clause. For each one, it looks for a top-level variable with
+that name in the imported module. If a variable with that name can’t be found
+in the imported module, it’s a runtime error.
+JA: まず、「beverages」モジュールを実行します。続いて、⟦CODE0⟧節の各変数名を順に調べます。各名前について、インポートされたモジュールで、その名前のトップレベル変数を探します。変数が見つからなければ、実行時エラーになります。
+
+37 [p]
+EN: Otherwise, it gets the current value of the variable and defines a new variable
+in the importing module with the same name and value. It’s worth noting that
+the importing module gets its <em>own</em> variable whose value is a snapshot of the
+value of the imported variable at the time it was imported. If either module
+later assigns to that variable, the other won’t see it. It’s not a “live”
+connection.
+JA: 見つかった場合は、その変数の現在の値を取得し、同じ名前と値を持つ新しい変数を、インポートする側のモジュールに定義します。インポートする側が得るのは<em>独自の</em>変数で、その値は、インポートした時点の元の変数の値のスナップショットです。後で一方のモジュールがその変数に代入しても、もう一方には反映されません。「生きた」接続ではありません。
+
+38 [p]
+EN: In practice, most top-level variables are only assigned once anyway, so this
+rarely makes a difference.
+JA: 実際には、トップレベル変数の大半は、一度しか代入しないため、この違いが問題になることはまれです。
+
+39 [h2]
+EN: Shared imports <a class="header-anchor" href="#shared-imports" name="shared-imports">#</a>
+JA: 共有されるインポート <a class="header-anchor" href="#shared-imports" name="shared-imports">#</a>
+
+40 [p]
+EN: Earlier, I described a program’s set of modules as a tree. Of course, it’s only
+a <em>tree</em> of modules if there are no <em>shared imports</em>. But consider a program
+like:
+JA: 先ほど、プログラムのモジュールの集合を木として説明しました。もちろん、モジュールが<em>木</em>になるのは、<em>共有されるインポート</em>がない場合だけです。次のようなプログラムを考えてください。
+
+41 [p]
+EN: Here, “a” and “b” both want to use “shared”. If “shared” defines some top-level
+state, we only want a single copy of that in memory. To handle this, a module’s
+code is only executed the <em>first</em> time it is loaded. After that, importing the
+module again just looks up the previously loaded module.
+JA: ここでは、「a」と「b」の両方が「shared」を使おうとします。「shared」がトップレベルの状態を定義するなら、メモリー内に、そのコピーは一つだけあってほしいところです。そのため、モジュールのコードを実行するのは、<em>最初に</em>読み込むときだけです。その後、同じモジュールを再びインポートすると、すでに読み込んだモジュールを探すだけです。
+
+42 [p]
+EN: Internally, Wren maintains a map of every module it has previously loaded. When
+a module is imported, Wren looks for it in that map first before it calls out
+to the embedder for its source.
+JA: 内部では、Wrenは、これまで読み込んだすべてのモジュールのマップを保持します。モジュールをインポートするとき、ソースを得るために組み込む側を呼び出す前に、まず、そのマップで探します。
+
+43 [p]
+EN: In other words, in that list of steps above, there’s an implicit zeroth step:
+“See if we already loaded the module and reuse it if we did”. That means the
+above program only prints “Shared!” once.
+JA: つまり、上の段階の一覧には、暗黙の第ゼロ段階として、「すでにモジュールを読み込んだか調べ、読み込み済みなら再利用する」があります。したがって、上のプログラムが「Shared!」を表示するのは一度だけです。
+
+44 [h2]
+EN: Cyclic imports <a class="header-anchor" href="#cyclic-imports" name="cyclic-imports">#</a>
+JA: 循環するインポート <a class="header-anchor" href="#cyclic-imports" name="cyclic-imports">#</a>
+
+45 [p]
+EN: You can even have cycles in your imports, provided you’re a bit careful with
+them. The loading process, in detail, is:
+JA: 少し注意すれば、インポートを循環させることもできます。読み込み処理の詳細は、次のとおりです。
+
+46 [li]
+EN: See if we have already created a module with the given name.
+JA: 指定した名前のモジュールを、すでに作成したか調べる。
+
+47 [li]
+EN: If so, use it.
+JA: 作成済みなら、それを使う。
+
+48 [li]
+EN: Otherwise, create a new module with the name and store it in the module
+   registry.
+JA: そうでなければ、その名前の新しいモジュールを作り、モジュールの登録簿に保存する。
+
+49 [li]
+EN: Create a fiber for it and execute its code.
+JA: そのためのファイバーを作り、コードを実行する。
+
+50 [p]
+EN: Note the order of the last two steps. When a module is loaded, it is added to
+the registry <em>before</em> it is executed. This means if an import for that same
+module is reached while the module itself or one of its imports is executing,
+it will be found in the registry and the cycle is short-circuited.
+JA: 最後の二段階の順序に注意してください。モジュールを読み込むときは、実行する<em>前</em>に登録簿へ追加します。これにより、そのモジュール自身や、そのモジュールがインポートしたものの実行中に、同じモジュールのimportへ到達しても、登録簿で見つかり、循環を打ち切れます。
+
+51 [p]
+EN: For example:
+JA: 例えば、次のようになります。
+
+52 [p]
+EN: This program runs successfully and prints:
+JA: このプログラムは正常に実行し、次のように表示します。
+
+53 [p]
+EN: Where you have to be careful is binding variables. Consider:
+JA: 注意が必要なのは、変数の束縛です。次の例を考えてください。
+
+54 [p]
+EN: The import of “a” in b.wren will fail here. If you trace the execution, you
+get:
+JA: ここでは、b.wren内で「a」をインポートすると失敗します。実行をたどると、次のようになります。
+
+55 [li]
+EN: Execute ⟦CODE0⟧ in “main.wren”. That suspends “main.wren”.
+JA: 「main.wren」で⟦CODE0⟧を実行する。「main.wren」を中断する。
+
+56 [li]
+EN: Execute ⟦CODE0⟧ in “a.wren”. That suspends “a.wren”.
+JA: 「a.wren」で⟦CODE0⟧を実行する。「a.wren」を中断する。
+
+57 [li]
+EN: Execute ⟦CODE0⟧ in “b.wren”. Since “a” is already in the module map,
+   this does <em>not</em> suspend it.
+JA: 「b.wren」で⟦CODE0⟧を実行する。「a」はすでにモジュールのマップにあるため、「b.wren」は中断<em>しない</em>。
+
+58 [p]
+EN: Instead, we look for a variable named ⟦CODE0⟧ in that module. But it hasn’t been
+defined yet since “a.wren” is still sitting on the ⟦CODE1⟧ line
+before the declaration. To get this to work, you would need to move the
+variable declaration above the import:
+JA: 代わりに、そのモジュールで⟦CODE0⟧という変数を探します。しかし、「a.wren」は宣言より前の⟦CODE1⟧の行で停止しているため、その変数はまだ定義していません。動作させるには、変数宣言をimportより前へ移動する必要があります。
+
+59 [p]
+EN: Now when we run it, we get:
+JA: 今度は、実行すると次のようになります。
+
+60 [li]
+EN: Execute ⟦CODE0⟧ in “main.wren”. That suspends “main.wren”.
+JA: 「main.wren」で⟦CODE0⟧を実行する。「main.wren」を中断する。
+
+61 [li]
+EN: Define ⟦CODE0⟧ in “a.wren”.
+JA: 「a.wren」で⟦CODE0⟧を定義する。
+
+62 [li]
+EN: Execute ⟦CODE0⟧ in “a.wren”. That suspends “a.wren”.
+JA: 「a.wren」で⟦CODE0⟧を実行する。「a.wren」を中断する。
+
+63 [li]
+EN: Execute ⟦CODE0⟧ in “b.wren”. Since “a” is already in the module map,
+   this does <em>not</em> suspend it. It looks up ⟦CODE1⟧, which has already been defined,
+   and binds it.
+JA: 「b.wren」で⟦CODE0⟧を実行する。「a」はすでにモジュールのマップにあるため、「b.wren」は中断<em>しない</em>。すでに定義済みの⟦CODE1⟧を探し、それを束縛する。
+
+64 [li]
+EN: Define ⟦CODE0⟧ in “b.wren”.
+JA: 「b.wren」で⟦CODE0⟧を定義する。
+
+65 [li]
+EN: Complete “b.wren”.
+JA: 「b.wren」を完了する。
+
+66 [li]
+EN: Look up ⟦CODE0⟧ in “b.wren” and bind it in “a.wren”.
+JA: 「b.wren」で⟦CODE0⟧を探し、「a.wren」に束縛する。
+
+67 [li]
+EN: Resume “a.wren”.
+JA: 「a.wren」を再開する。
+
+68 [p]
+EN: This sounds super hairy, but that’s because cyclic dependencies are hairy in
+general. The key point here is that Wren <em>can</em> handle them in the rare cases
+where you need them.
+JA: 非常に複雑に聞こえますが、それは循環依存が一般に複雑なためです。ここでの要点は、必要になるまれな場合に、Wrenは循環依存を扱うことが<em>できる</em>ということです。
+
+69 [p]
+EN: <br/><hr/>
+<a href="/docs/wren/v0-4-0/en/01-guide/13-error-handling/">← Error Handling</a>
+JA: <br/><hr/><a href="/docs/wren/v0-4-0/en/01-guide/13-error-handling/">← エラー処理</a>

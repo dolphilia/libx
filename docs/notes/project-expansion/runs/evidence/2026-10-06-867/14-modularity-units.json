@@ -1,0 +1,601 @@
+{
+  "page": "01-guide/14-modularity.md",
+  "titleEN": "Modularity",
+  "titleJA": "モジュール化",
+  "sourceCanonicalSHA256": "2094777cca5ae0023f8d5ed3bba6f7100af3a8dd260030488525e5b7a87002e4",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Modularity",
+      "originalInnerHTML": "Modularity",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Once you start writing programs that are more than little toys, you quickly run\ninto two problems:",
+      "originalInnerHTML": "Once you start writing programs that are more than little toys, you quickly run\ninto two problems:",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "li",
+      "sourceHTML": "\n<p>You want to break them down into multiple smaller files to make it easier to\n   find your way around them.</p>\n",
+      "originalInnerHTML": "\n<p>You want to break them down into multiple smaller files to make it easier to\n   find your way around them.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "li",
+      "sourceHTML": "\n<p>You want to reuse pieces of them across different programs.</p>\n",
+      "originalInnerHTML": "\n<p>You want to reuse pieces of them across different programs.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "To address those, Wren has a simple module system. A file containing Wren code\ndefines a <em>module</em>. A module can use the code defined in another module by\n<em>importing</em> it. You can break big programs into smaller modules that you\nimport, and you can reuse code by having multiple programs share the use of a\nsingle module.",
+      "originalInnerHTML": "To address those, Wren has a simple module system. A file containing Wren code\ndefines a <em>module</em>. A module can use the code defined in another module by\n<em>importing</em> it. You can break big programs into smaller modules that you\nimport, and you can reuse code by having multiple programs share the use of a\nsingle module.",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "Wren does not have a single global scope. Instead, each module has its own\ntop-level scope independent of all other modules. This means, for example, that\ntwo modules can define a top-level variable with the same name without causing\na name collision. Each module is, well, modular.",
+      "originalInnerHTML": "Wren does not have a single global scope. Instead, each module has its own\ntop-level scope independent of all other modules. This means, for example, that\ntwo modules can define a top-level variable with the same name without causing\na name collision. Each module is, well, modular.",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "h2",
+      "sourceHTML": "Importing, briefly <a class=\"header-anchor\" href=\"#importing,-briefly\" name=\"importing,-briefly\">#</a>",
+      "originalInnerHTML": "Importing, briefly <a class=\"header-anchor\" href=\"#importing,-briefly\" name=\"importing,-briefly\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "When you run Wren and give it a file name to execute, the contents of that file\ndefine the “main” module that execution starts at. To load and execute other\nmodules, you use an import statement:",
+      "originalInnerHTML": "When you run Wren and give it a file name to execute, the contents of that file\ndefine the “main” module that execution starts at. To load and execute other\nmodules, you use an import statement:",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "This finds a module named “beverages” and executes its source code. Then, it\nlooks up two top-level variables, ⟦CODE0⟧ and ⟦CODE1⟧ in <em>that</em> module and\ncreates new variables in <em>this</em> module with their values.",
+      "originalInnerHTML": "This finds a module named “beverages” and executes its source code. Then, it\nlooks up two top-level variables, <code>Coffee</code> and <code>Tea</code> in <em>that</em> module and\ncreates new variables in <em>this</em> module with their values.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>Coffee</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>Tea</code>"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "This statement can appear anywhere a variable declaration is allowed, even\ninside blocks:",
+      "originalInnerHTML": "This statement can appear anywhere a variable declaration is allowed, even\ninside blocks:",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "If you need to import a variable under a different name, you can use \n⟦CODE0⟧. This looks up the top-level variable\n⟦CODE1⟧ in <em>that</em> module, but declares a variable called ⟦CODE2⟧ in <em>this</em> module\nwith its value.",
+      "originalInnerHTML": "If you need to import a variable under a different name, you can use \n<code>import \"...\" for Name as OtherName</code>. This looks up the top-level variable\n<code>Name</code> in <em>that</em> module, but declares a variable called <code>OtherName</code> in <em>this</em> module\nwith its value.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import \"...\" for Name as OtherName</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>Name</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>OtherName</code>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "If you want to load a module, but not bind any variables from it, you can omit\nthe ⟦CODE0⟧ clause:",
+      "originalInnerHTML": "If you want to load a module, but not bind any variables from it, you can omit\nthe <code>for</code> clause:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>for</code>"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "That’s the basic idea. Now let’s break it down into each of the steps it\nperforms:",
+      "originalInnerHTML": "That’s the basic idea. Now let’s break it down into each of the steps it\nperforms:",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "li",
+      "sourceHTML": "Locate the source code for the module.",
+      "originalInnerHTML": "Locate the source code for the module.",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "li",
+      "sourceHTML": "Execute the imported module’s code.",
+      "originalInnerHTML": "Execute the imported module’s code.",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "li",
+      "sourceHTML": "Bind new variables in the importing module to values defined in the imported\n   module.",
+      "originalInnerHTML": "Bind new variables in the importing module to values defined in the imported\n   module.",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "We’ll go through each step:",
+      "originalInnerHTML": "We’ll go through each step:",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "h2",
+      "sourceHTML": "Locating a module <a class=\"header-anchor\" href=\"#locating-a-module\" name=\"locating-a-module\">#</a>",
+      "originalInnerHTML": "Locating a module <a class=\"header-anchor\" href=\"#locating-a-module\" name=\"locating-a-module\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "The first thing you need to do to import a module is actually <em>find</em> the code\nfor it. The import specifies a <em>name</em>—some arbitrary string that is used\nto uniquely identify the module. The embedding application controls how that\nstring is used to locate a blob of source code.",
+      "originalInnerHTML": "The first thing you need to do to import a module is actually <em>find</em> the code\nfor it. The import specifies a <em>name</em>—some arbitrary string that is used\nto uniquely identify the module. The embedding application controls how that\nstring is used to locate a blob of source code.",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "When the host application creates a new Wren VM, it provides a module loader\nfunction:",
+      "originalInnerHTML": "When the host application creates a new Wren VM, it provides a module loader\nfunction:",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "That function has this signature:",
+      "originalInnerHTML": "That function has this signature:",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "Whenever a module is imported, the VM calls this and passes it the name of the\nmodule. The embedder is expected to return the source code contents of the\nmodule in a ⟦CODE0⟧. When you embed Wren in your app, you can handle\nthis however you want: reach out to the file system, look inside resources bundled\ninto your app, whatever.",
+      "originalInnerHTML": "Whenever a module is imported, the VM calls this and passes it the name of the\nmodule. The embedder is expected to return the source code contents of the\nmodule in a <code>WrenLoadModuleResult</code>. When you embed Wren in your app, you can handle\nthis however you want: reach out to the file system, look inside resources bundled\ninto your app, whatever.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>WrenLoadModuleResult</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "You can return the source field as ⟦CODE0⟧ from this function to indicate that a module\ncouldn’t be found. When you do this, Wren will report it as a runtime error.",
+      "originalInnerHTML": "You can return the source field as <code>NULL</code> from this function to indicate that a module\ncouldn’t be found. When you do this, Wren will report it as a runtime error.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>NULL</code>"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "tag": "h3",
+      "sourceHTML": "The command-line loader <a class=\"header-anchor\" href=\"#the-command-line-loader\" name=\"the-command-line-loader\">#</a>",
+      "originalInnerHTML": "The command-line loader <a class=\"header-anchor\" href=\"#the-command-line-loader\" name=\"the-command-line-loader\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "The <a href=\"https://wren.io/cli/\">Wren CLI command-line tool</a> has a very simple\nlookup process. It appends the module name and “.wren” to the directory where\nthe main module was loaded and looks for that file. So, let’s say you run:",
+      "originalInnerHTML": "The <a href=\"https://wren.io/cli/\">Wren CLI command-line tool</a> has a very simple\nlookup process. It appends the module name and “.wren” to the directory where\nthe main module was loaded and looks for that file. So, let’s say you run:",
+      "protected": []
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "And that main module has:",
+      "originalInnerHTML": "And that main module has:",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "Then the command-line VM will try to find ⟦CODE0⟧. By\nconvention, forward slashes should be used as path separators, even on Windows,\nto help ensure your scripts are platform-independent. (Forward slashes are a\nvalid separator on Windows, but backslashes are not valid on other OSes.)",
+      "originalInnerHTML": "Then the command-line VM will try to find <code>/code/some/module.wren</code>. By\nconvention, forward slashes should be used as path separators, even on Windows,\nto help ensure your scripts are platform-independent. (Forward slashes are a\nvalid separator on Windows, but backslashes are not valid on other OSes.)",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>/code/some/module.wren</code>"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "tag": "h2",
+      "sourceHTML": "Executing the module <a class=\"header-anchor\" href=\"#executing-the-module\" name=\"executing-the-module\">#</a>",
+      "originalInnerHTML": "Executing the module <a class=\"header-anchor\" href=\"#executing-the-module\" name=\"executing-the-module\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "Once we have the source code for a module, we need to run it. First, the VM\ntakes the <a href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">fiber</a> that is executing the ⟦CODE0⟧ statement in the importing\nmodule and pauses it.",
+      "originalInnerHTML": "Once we have the source code for a module, we need to run it. First, the VM\ntakes the <a href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">fiber</a> that is executing the <code>import</code> statement in the importing\nmodule and pauses it.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import</code>"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "Then it creates a new module object—a new fresh top-level scope,\nbasically—and a new fiber. It executes the new module’s code in that\nfiber and scope. The module can run whatever imperative code it wants and\ndefine whatever top-level variables it wants.",
+      "originalInnerHTML": "Then it creates a new module object—a new fresh top-level scope,\nbasically—and a new fiber. It executes the new module’s code in that\nfiber and scope. The module can run whatever imperative code it wants and\ndefine whatever top-level variables it wants.",
+      "protected": []
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "sourceHTML": "When the module’s code is done being executed and its fiber completes, the\nsuspended fiber for the importing module is resumed. This suspending and\nresuming is recursive. So, if “a” imports “b” which imports “c”, both “a” and\n“b” will be suspended while “c” is running. When “c” is done, “b” is resumed.\nThen, when “b” completes, “a” is resumed.",
+      "originalInnerHTML": "When the module’s code is done being executed and its fiber completes, the\nsuspended fiber for the importing module is resumed. This suspending and\nresuming is recursive. So, if “a” imports “b” which imports “c”, both “a” and\n“b” will be suspended while “c” is running. When “c” is done, “b” is resumed.\nThen, when “b” completes, “a” is resumed.",
+      "protected": []
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "Think of it like traversing the tree of imports, one node at a time. At any\ngiven point in time, only one module’s code is running.",
+      "originalInnerHTML": "Think of it like traversing the tree of imports, one node at a time. At any\ngiven point in time, only one module’s code is running.",
+      "protected": []
+    },
+    {
+      "id": "33",
+      "tag": "h2",
+      "sourceHTML": "Binding variables <a class=\"header-anchor\" href=\"#binding-variables\" name=\"binding-variables\">#</a>",
+      "originalInnerHTML": "Binding variables <a class=\"header-anchor\" href=\"#binding-variables\" name=\"binding-variables\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "34",
+      "tag": "p",
+      "sourceHTML": "Once the module is done executing, the last step is to actually <em>import</em> some\ndata from it. Any module can define “top-level” <a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">variables</a>.\nThese are simply variables declared outside of any\n<a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#methods\">method</a> or <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a>.",
+      "originalInnerHTML": "Once the module is done executing, the last step is to actually <em>import</em> some\ndata from it. Any module can define “top-level” <a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">variables</a>.\nThese are simply variables declared outside of any\n<a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#methods\">method</a> or <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a>.",
+      "protected": []
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "sourceHTML": "These are visible to anything inside the module, but they can also be\n<em>exported</em> and used by other modules. When Wren executes an import like:",
+      "originalInnerHTML": "These are visible to anything inside the module, but they can also be\n<em>exported</em> and used by other modules. When Wren executes an import like:",
+      "protected": []
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "First it runs the “beverages” module. Then it goes through each of the variable\nnames in the ⟦CODE0⟧ clause. For each one, it looks for a top-level variable with\nthat name in the imported module. If a variable with that name can’t be found\nin the imported module, it’s a runtime error.",
+      "originalInnerHTML": "First it runs the “beverages” module. Then it goes through each of the variable\nnames in the <code>for</code> clause. For each one, it looks for a top-level variable with\nthat name in the imported module. If a variable with that name can’t be found\nin the imported module, it’s a runtime error.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>for</code>"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "tag": "p",
+      "sourceHTML": "Otherwise, it gets the current value of the variable and defines a new variable\nin the importing module with the same name and value. It’s worth noting that\nthe importing module gets its <em>own</em> variable whose value is a snapshot of the\nvalue of the imported variable at the time it was imported. If either module\nlater assigns to that variable, the other won’t see it. It’s not a “live”\nconnection.",
+      "originalInnerHTML": "Otherwise, it gets the current value of the variable and defines a new variable\nin the importing module with the same name and value. It’s worth noting that\nthe importing module gets its <em>own</em> variable whose value is a snapshot of the\nvalue of the imported variable at the time it was imported. If either module\nlater assigns to that variable, the other won’t see it. It’s not a “live”\nconnection.",
+      "protected": []
+    },
+    {
+      "id": "38",
+      "tag": "p",
+      "sourceHTML": "In practice, most top-level variables are only assigned once anyway, so this\nrarely makes a difference.",
+      "originalInnerHTML": "In practice, most top-level variables are only assigned once anyway, so this\nrarely makes a difference.",
+      "protected": []
+    },
+    {
+      "id": "39",
+      "tag": "h2",
+      "sourceHTML": "Shared imports <a class=\"header-anchor\" href=\"#shared-imports\" name=\"shared-imports\">#</a>",
+      "originalInnerHTML": "Shared imports <a class=\"header-anchor\" href=\"#shared-imports\" name=\"shared-imports\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "40",
+      "tag": "p",
+      "sourceHTML": "Earlier, I described a program’s set of modules as a tree. Of course, it’s only\na <em>tree</em> of modules if there are no <em>shared imports</em>. But consider a program\nlike:",
+      "originalInnerHTML": "Earlier, I described a program’s set of modules as a tree. Of course, it’s only\na <em>tree</em> of modules if there are no <em>shared imports</em>. But consider a program\nlike:",
+      "protected": []
+    },
+    {
+      "id": "41",
+      "tag": "p",
+      "sourceHTML": "Here, “a” and “b” both want to use “shared”. If “shared” defines some top-level\nstate, we only want a single copy of that in memory. To handle this, a module’s\ncode is only executed the <em>first</em> time it is loaded. After that, importing the\nmodule again just looks up the previously loaded module.",
+      "originalInnerHTML": "Here, “a” and “b” both want to use “shared”. If “shared” defines some top-level\nstate, we only want a single copy of that in memory. To handle this, a module’s\ncode is only executed the <em>first</em> time it is loaded. After that, importing the\nmodule again just looks up the previously loaded module.",
+      "protected": []
+    },
+    {
+      "id": "42",
+      "tag": "p",
+      "sourceHTML": "Internally, Wren maintains a map of every module it has previously loaded. When\na module is imported, Wren looks for it in that map first before it calls out\nto the embedder for its source.",
+      "originalInnerHTML": "Internally, Wren maintains a map of every module it has previously loaded. When\na module is imported, Wren looks for it in that map first before it calls out\nto the embedder for its source.",
+      "protected": []
+    },
+    {
+      "id": "43",
+      "tag": "p",
+      "sourceHTML": "In other words, in that list of steps above, there’s an implicit zeroth step:\n“See if we already loaded the module and reuse it if we did”. That means the\nabove program only prints “Shared!” once.",
+      "originalInnerHTML": "In other words, in that list of steps above, there’s an implicit zeroth step:\n“See if we already loaded the module and reuse it if we did”. That means the\nabove program only prints “Shared!” once.",
+      "protected": []
+    },
+    {
+      "id": "44",
+      "tag": "h2",
+      "sourceHTML": "Cyclic imports <a class=\"header-anchor\" href=\"#cyclic-imports\" name=\"cyclic-imports\">#</a>",
+      "originalInnerHTML": "Cyclic imports <a class=\"header-anchor\" href=\"#cyclic-imports\" name=\"cyclic-imports\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "45",
+      "tag": "p",
+      "sourceHTML": "You can even have cycles in your imports, provided you’re a bit careful with\nthem. The loading process, in detail, is:",
+      "originalInnerHTML": "You can even have cycles in your imports, provided you’re a bit careful with\nthem. The loading process, in detail, is:",
+      "protected": []
+    },
+    {
+      "id": "46",
+      "tag": "li",
+      "sourceHTML": "See if we have already created a module with the given name.",
+      "originalInnerHTML": "See if we have already created a module with the given name.",
+      "protected": []
+    },
+    {
+      "id": "47",
+      "tag": "li",
+      "sourceHTML": "If so, use it.",
+      "originalInnerHTML": "If so, use it.",
+      "protected": []
+    },
+    {
+      "id": "48",
+      "tag": "li",
+      "sourceHTML": "Otherwise, create a new module with the name and store it in the module\n   registry.",
+      "originalInnerHTML": "Otherwise, create a new module with the name and store it in the module\n   registry.",
+      "protected": []
+    },
+    {
+      "id": "49",
+      "tag": "li",
+      "sourceHTML": "Create a fiber for it and execute its code.",
+      "originalInnerHTML": "Create a fiber for it and execute its code.",
+      "protected": []
+    },
+    {
+      "id": "50",
+      "tag": "p",
+      "sourceHTML": "Note the order of the last two steps. When a module is loaded, it is added to\nthe registry <em>before</em> it is executed. This means if an import for that same\nmodule is reached while the module itself or one of its imports is executing,\nit will be found in the registry and the cycle is short-circuited.",
+      "originalInnerHTML": "Note the order of the last two steps. When a module is loaded, it is added to\nthe registry <em>before</em> it is executed. This means if an import for that same\nmodule is reached while the module itself or one of its imports is executing,\nit will be found in the registry and the cycle is short-circuited.",
+      "protected": []
+    },
+    {
+      "id": "51",
+      "tag": "p",
+      "sourceHTML": "For example:",
+      "originalInnerHTML": "For example:",
+      "protected": []
+    },
+    {
+      "id": "52",
+      "tag": "p",
+      "sourceHTML": "This program runs successfully and prints:",
+      "originalInnerHTML": "This program runs successfully and prints:",
+      "protected": []
+    },
+    {
+      "id": "53",
+      "tag": "p",
+      "sourceHTML": "Where you have to be careful is binding variables. Consider:",
+      "originalInnerHTML": "Where you have to be careful is binding variables. Consider:",
+      "protected": []
+    },
+    {
+      "id": "54",
+      "tag": "p",
+      "sourceHTML": "The import of “a” in b.wren will fail here. If you trace the execution, you\nget:",
+      "originalInnerHTML": "The import of “a” in b.wren will fail here. If you trace the execution, you\nget:",
+      "protected": []
+    },
+    {
+      "id": "55",
+      "tag": "li",
+      "sourceHTML": "Execute ⟦CODE0⟧ in “main.wren”. That suspends “main.wren”.",
+      "originalInnerHTML": "Execute <code>import \"a\"</code> in “main.wren”. That suspends “main.wren”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import \"a\"</code>"
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "tag": "li",
+      "sourceHTML": "Execute ⟦CODE0⟧ in “a.wren”. That suspends “a.wren”.",
+      "originalInnerHTML": "Execute <code>import \"b\"</code> in “a.wren”. That suspends “a.wren”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import \"b\"</code>"
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "tag": "li",
+      "sourceHTML": "Execute ⟦CODE0⟧ in “b.wren”. Since “a” is already in the module map,\n   this does <em>not</em> suspend it.",
+      "originalInnerHTML": "Execute <code>import \"a\"</code> in “b.wren”. Since “a” is already in the module map,\n   this does <em>not</em> suspend it.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import \"a\"</code>"
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "tag": "p",
+      "sourceHTML": "Instead, we look for a variable named ⟦CODE0⟧ in that module. But it hasn’t been\ndefined yet since “a.wren” is still sitting on the ⟦CODE1⟧ line\nbefore the declaration. To get this to work, you would need to move the\nvariable declaration above the import:",
+      "originalInnerHTML": "Instead, we look for a variable named <code>A</code> in that module. But it hasn’t been\ndefined yet since “a.wren” is still sitting on the <code>import \"b\" for B</code> line\nbefore the declaration. To get this to work, you would need to move the\nvariable declaration above the import:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>A</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>import \"b\" for B</code>"
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "tag": "p",
+      "sourceHTML": "Now when we run it, we get:",
+      "originalInnerHTML": "Now when we run it, we get:",
+      "protected": []
+    },
+    {
+      "id": "60",
+      "tag": "li",
+      "sourceHTML": "Execute ⟦CODE0⟧ in “main.wren”. That suspends “main.wren”.",
+      "originalInnerHTML": "Execute <code>import \"a\"</code> in “main.wren”. That suspends “main.wren”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import \"a\"</code>"
+        }
+      ]
+    },
+    {
+      "id": "61",
+      "tag": "li",
+      "sourceHTML": "Define ⟦CODE0⟧ in “a.wren”.",
+      "originalInnerHTML": "Define <code>A</code> in “a.wren”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>A</code>"
+        }
+      ]
+    },
+    {
+      "id": "62",
+      "tag": "li",
+      "sourceHTML": "Execute ⟦CODE0⟧ in “a.wren”. That suspends “a.wren”.",
+      "originalInnerHTML": "Execute <code>import \"b\"</code> in “a.wren”. That suspends “a.wren”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import \"b\"</code>"
+        }
+      ]
+    },
+    {
+      "id": "63",
+      "tag": "li",
+      "sourceHTML": "Execute ⟦CODE0⟧ in “b.wren”. Since “a” is already in the module map,\n   this does <em>not</em> suspend it. It looks up ⟦CODE1⟧, which has already been defined,\n   and binds it.",
+      "originalInnerHTML": "Execute <code>import \"a\"</code> in “b.wren”. Since “a” is already in the module map,\n   this does <em>not</em> suspend it. It looks up <code>A</code>, which has already been defined,\n   and binds it.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import \"a\"</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>A</code>"
+        }
+      ]
+    },
+    {
+      "id": "64",
+      "tag": "li",
+      "sourceHTML": "Define ⟦CODE0⟧ in “b.wren”.",
+      "originalInnerHTML": "Define <code>B</code> in “b.wren”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>B</code>"
+        }
+      ]
+    },
+    {
+      "id": "65",
+      "tag": "li",
+      "sourceHTML": "Complete “b.wren”.",
+      "originalInnerHTML": "Complete “b.wren”.",
+      "protected": []
+    },
+    {
+      "id": "66",
+      "tag": "li",
+      "sourceHTML": "Look up ⟦CODE0⟧ in “b.wren” and bind it in “a.wren”.",
+      "originalInnerHTML": "Look up <code>B</code> in “b.wren” and bind it in “a.wren”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>B</code>"
+        }
+      ]
+    },
+    {
+      "id": "67",
+      "tag": "li",
+      "sourceHTML": "Resume “a.wren”.",
+      "originalInnerHTML": "Resume “a.wren”.",
+      "protected": []
+    },
+    {
+      "id": "68",
+      "tag": "p",
+      "sourceHTML": "This sounds super hairy, but that’s because cyclic dependencies are hairy in\ngeneral. The key point here is that Wren <em>can</em> handle them in the rare cases\nwhere you need them.",
+      "originalInnerHTML": "This sounds super hairy, but that’s because cyclic dependencies are hairy in\ngeneral. The key point here is that Wren <em>can</em> handle them in the rare cases\nwhere you need them.",
+      "protected": []
+    },
+    {
+      "id": "69",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/13-error-handling/\">← Error Handling</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/13-error-handling/\">← Error Handling</a>",
+      "protected": []
+    }
+  ]
+}

@@ -1,0 +1,392 @@
+1 [h1]
+EN: Control Flow
+JA: 制御フロー
+
+2 [p]
+EN: Control flow is used to determine which chunks of code are executed and how many
+times. Branching statements and expressions decide whether or not to execute
+some code and looping ones execute something more than once.
+JA: 制御フローは、どのコードを何回実行するかを決めるために使います。分岐の文や式は、あるコードを実行するかどうかを決め、ループの文や式は、同じものを複数回実行します。
+
+3 [h2]
+EN: Truth #
+JA: 真偽の判定 #
+
+4 [p]
+EN: All control flow is based on deciding whether or not to do something. This
+decision depends on some expression’s value. We take the entire universe of
+possible objects and divide them into two buckets: some we consider “true” and
+the rest are “false”. If the expression results in a value in the true bucket,
+we do one thing. Otherwise, we do something else.
+JA: すべての制御フローは、何かをするかどうかの判断に基づいています。この判断は、ある式の値によって決まります。考えられるすべてのオブジェクトを二つに分け、一方を「真」、残りを「偽」と見なします。式の結果が真の側の値なら、ある動作を行います。そうでなければ、別の動作を行います。
+
+5 [p]
+EN: Obviously, the boolean true is in the “true” bucket and false is in
+“false”, but what about values of other types? The choice is ultimately
+arbitrary, and different languages have different rules. Wren’s rules follow
+Ruby:
+JA: 当然、真偽値trueは「真」、falseは「偽」に入ります。しかし、ほかの型の値はどうでしょうか？ この選択に絶対的な決まりはなく、言語ごとに規則が異なります。Wrenの規則はRubyに従っています。
+
+6 [li]
+EN: The boolean value false is false.
+JA: 真偽値falseは偽です。
+
+7 [li]
+EN: The null value null is false.
+JA: null値nullは偽です。
+
+8 [li]
+EN: Everything else is true.
+JA: それ以外はすべて真です。
+
+9 [p]
+EN: This means 0, empty strings, and empty collections are all considered “true”
+values.
+JA: つまり、0、空の文字列、空のコレクションも、すべて「真」の値と見なします。
+
+10 [h2]
+EN: If statements #
+JA: if文 #
+
+11 [p]
+EN: The simplest branching statement, if lets you conditionally skip a chunk of
+code. It looks like this:
+JA: 最も単純な分岐文であるifは、条件に応じてコードを読み飛ばします。次のように書きます。
+
+UNCHANGED CODE 1
+
+if (ready) System.print("go!")
+
+
+12 [p]
+EN: That evaluates the parenthesized expression after if. If it’s true, then the
+statement after the condition is evaluated. Otherwise it is skipped. Instead of
+a statement, you can have a block:
+JA: ifの後にある、丸括弧で囲んだ式を評価します。真なら、条件の後の文を評価します。そうでなければ、その文を読み飛ばします。単独の文の代わりに、ブロックも書けます。
+
+UNCHANGED CODE 2
+
+if (ready) {
+  System.print("getSet")
+  System.print("go!")
+}
+
+
+13 [p]
+EN: You may also provide an else branch. It will be executed if the condition is
+false:
+JA: elseの分岐を設けることもできます。条件が偽の場合は、こちらを実行します。
+
+UNCHANGED CODE 3
+
+if (ready) System.print("go!") else System.print("not ready!")
+
+
+14 [p]
+EN: And, of course, it can take a block too:
+JA: もちろん、こちらもブロックにできます。
+
+UNCHANGED CODE 4
+
+if (ready) {
+  System.print("go!")
+} else {
+  System.print("not ready!")
+}
+
+
+15 [h2]
+EN: Logical operators #
+JA: 論理演算子 #
+
+16 [p]
+EN: Unlike most other operators in Wren which are just a special syntax for
+method calls, the && and || operators are special. This is because they
+only conditionally evaluate the right operand—they short-circuit.
+JA: Wrenのほかの多くの演算子は、メソッド呼び出しの特別な構文にすぎませんが、&&と||は特別です。右のオペランドを条件に応じてしか評価しない、短絡評価を行うためです。
+
+17 [p]
+EN: A && (“logical and”) expression evaluates the left-hand argument. If it’s
+false, it returns that value. Otherwise it evaluates and returns the right-hand
+argument.
+JA: &&（「論理AND」）の式は、左の引数を評価します。偽なら、その値を返します。そうでなければ、右の引数を評価して返します。
+
+UNCHANGED CODE 5
+
+System.print(false && 1)  //> false
+System.print(1 && 2)      //> 2
+
+
+18 [p]
+EN: A || (“logical or”) expression is reversed. If the left-hand argument is
+true, it’s returned, otherwise the right-hand argument is evaluated and
+returned:
+JA: ||（「論理OR」）の式は逆です。左の引数が真なら、それを返します。そうでなければ、右の引数を評価して返します。
+
+UNCHANGED CODE 6
+
+System.print(false || 1)  //> 1
+System.print(1 || 2)      //> 1
+
+
+19 [h2]
+EN: The conditional operator ?: #
+JA: 条件演算子?: #
+
+20 [p]
+EN: Also known as the “ternary” operator since it takes three arguments, Wren has
+the little “if statement in the form of an expression” you know and love from C
+and similar languages.
+JA: Wrenには、Cや似た言語でおなじみの、小さな「式の形をしたif文」があります。三つの引数を取るので、「三項」演算子とも呼ばれます。
+
+UNCHANGED CODE 7
+
+System.print(1 != 2 ? "math is sane" : "math is not sane!")
+
+
+21 [p]
+EN: It takes a condition expression, followed by ?, followed by a then
+expression, a :, then an else expression. Just like if, it evaluates the
+condition. If true, it evaluates and returns the then expression. Otherwise
+it does the else expression.
+JA: 条件式、?、then側の式、:、else側の式の順に書きます。ifと同じように条件を評価し、真ならthen側の式を評価して返します。そうでなければ、else側の式を評価して返します。
+
+22 [h2]
+EN: While statements #
+JA: while文 #
+
+23 [p]
+EN: It’s hard to write a useful program without executing some chunk of code
+repeatedly. To do that, you use looping statements. There are two in Wren, and
+they should be familiar if you’ve used other imperative languages.
+JA: コードの一部分を繰り返し実行しなければ、役に立つプログラムを書くのは難しいでしょう。そのために、ループ文を使います。Wrenには二つあり、ほかの命令型言語を使ったことがあれば、なじみのあるものです。
+
+24 [p]
+EN: The simplest, a while statement executes a chunk of code as long as a
+condition continues to hold. For example:
+JA: 最も単純なwhile文は、条件が成り立ち続ける限り、コードを実行します。例えば、次のように書きます。
+
+UNCHANGED CODE 8
+
+// Hailstone sequence.
+var n = 27
+while (n != 1) {
+  if (n % 2 == 0) {
+    n = n / 2
+  } else {
+    n = 3 * n + 1
+  }
+}
+
+
+25 [p]
+EN: This evaluates the expression n != 1. If it is true, then it executes the
+following body. After that, it loops back to the top, and evaluates the
+condition again. It keeps doing this as long as the condition evaluates to
+something true.
+JA: 式n != 1を評価し、真なら、その後の本体を実行します。その後、先頭に戻って条件をもう一度評価します。条件が真と見なされる値になる限り、これを繰り返します。
+
+26 [p]
+EN: The condition for a while loop can be any expression, and must be surrounded by
+parentheses. The body of the loop is usually a curly block but can also be a
+single statement:
+JA: whileループの条件には任意の式を使えますが、丸括弧で囲む必要があります。ループの本体は、通常は波括弧で囲んだブロックですが、単独の文でもかまいません。
+
+UNCHANGED CODE 9
+
+var n = 27
+while (n != 1) if (n % 2 == 0) n = n / 2 else n = 3 * n + 1
+
+
+27 [h2]
+EN: For statements #
+JA: for文 #
+
+28 [p]
+EN: While statements are useful when you want to loop indefinitely or according to
+some complex condition. But in most cases, you’re looping through
+a list, a series of numbers, or some other “sequence” object.
+That’s what for is, uh, for. It looks like this:
+JA: while文は、無期限に、または複雑な条件に従って繰り返したい場合に便利です。しかし、多くの場合はリスト、一連の数値、その他の「シーケンス」オブジェクトを順に処理します。forは、そのための文です。次のように書きます。
+
+UNCHANGED CODE 10
+
+for (beatle in ["george", "john", "paul", "ringo"]) {
+  System.print(beatle)
+}
+
+
+29 [p]
+EN: A for loop has three components:
+JA: forループは、三つの部分からなります。
+
+30 [li]
+EN: 
+A variable name to bind. In the example, that’s beatle. Wren will create
+   a new variable with that name whose scope is the body of the loop.
+
+JA: 値を結び付ける変数名。例ではbeatleです。Wrenは、この名前の新しい変数を作ります。そのスコープは、ループの本体です。
+
+31 [li]
+EN: 
+A sequence expression. This determines what you’re looping over. It gets
+   evaluated once before the body of the loop. In this case, it’s a list
+   literal, but it can be any expression.
+
+JA: シーケンス式。何を反復処理するかを決めます。ループ本体の実行前に一度だけ評価します。この例ではリストリテラルですが、任意の式を使えます。
+
+32 [li]
+EN: 
+A body. This is a curly block or a single statement. It gets executed once
+   for each iteration of the loop.
+
+JA: 本体。波括弧で囲んだブロックか、単独の文です。ループの各反復で一度実行します。
+
+33 [h2]
+EN: Break statements #
+JA: break文 #
+
+34 [p]
+EN: Sometimes, right in the middle of a loop body, you decide you want to bail out
+and stop. To do that, you can use a break statement. It’s just the break
+keyword all by itself. That immediately exits out of the nearest enclosing
+while or for loop.
+JA: ループの本体の途中で、抜け出して終了したくなることがあります。そのためにbreak文を使えます。breakキーワードを単独で書くだけです。直ちに、最も内側の、現在の文を囲むwhileまたはforループを抜けます。
+
+UNCHANGED CODE 11
+
+for (i in [1, 2, 3, 4]) {
+  System.print(i)           //> 1
+  if (i == 3) break         //> 2
+}                           //> 3
+
+
+35 [h2]
+EN: Continue statements #
+JA: continue文 #
+
+36 [p]
+EN: During the execution of a loop body, you might decide that you want to skip the 
+rest of this iteration and move on to the next one. You can use a continue 
+statement to do that. It’s just the continue keyword all by itself. Execution
+will immediately jump to the beginning of the next loop iteration (and check the
+loop conditions).
+JA: ループ本体の実行中に、現在の反復の残りを読み飛ばして次の反復へ進みたくなることがあります。そのためにcontinue文を使えます。continueキーワードを単独で書くだけです。直ちに次のループ反復の先頭へ移り、ループの条件を確認します。
+
+UNCHANGED CODE 12
+
+for (i in [1, 2, 3, 4]) {
+  System.print(i)           //> 1
+  if (i == 2) continue      //> 3
+}                           //> 4
+
+
+37 [h2]
+EN: Numeric ranges #
+JA: 数値の範囲 #
+
+38 [p]
+EN: Lists are one common use for for loops, but sometimes you want to walk over a
+sequence of numbers, or loop a number of times. For that, you can create a
+range, like so:
+JA: リストはforループのよくある用途ですが、一連の数値を順に処理したり、一定の回数だけ繰り返したりしたい場合もあります。その場合は、次のように範囲を作れます。
+
+UNCHANGED CODE 13
+
+for (i in 1..100) {
+  System.print(i)
+}
+
+
+39 [p]
+EN: This loops over the numbers from 1 to 100, including 100 itself. If you want to
+leave off the last value, use three dots instead of two:
+JA: これは100そのものも含め、1から100までの数値について繰り返します。最後の値を含めたくなければ、点を二つではなく三つにします。
+
+UNCHANGED CODE 14
+
+for (i in 1...100) {
+  System.print(i)
+}
+
+
+40 [p]
+EN: This looks like some special “range” syntax in the for loop, but it’s actually
+just a pair of operators. The .. and ... syntax are infix “range” operators.
+Like other operators, they are special syntax for a regular method
+call. The number type implements them and returns a range object that knows
+how to iterate over a series of numbers.
+JA: forループ専用の「範囲」構文に見えますが、実際には二つの演算子です。..と...は、中置の「範囲」演算子です。ほかの演算子と同様、通常のメソッド呼び出しの特別な構文です。数値型がこれらを実装し、一連の数値を反復処理する方法を知っている範囲オブジェクトを返します。
+
+41 [h2]
+EN: The iterator protocol #
+JA: イテレータープロトコル #
+
+42 [p]
+EN: Lists and ranges cover the two most common kinds of loops, but you should also
+be able to define your own sequences. To enable that, the semantics of for
+are defined in terms of an “iterator protocol”. The loop itself doesn’t know
+anything about lists or ranges, it just knows how to call two particular
+methods on the object that resulted from evaluating the sequence expression.
+JA: リストと範囲で、最も一般的な二種類のループを扱えますが、自分のシーケンスも定義できる必要があります。そのために、forの意味は「イテレータープロトコル」で定義されています。ループ自体はリストや範囲を知りません。シーケンス式を評価して得たオブジェクトに対し、特定の二つのメソッドを呼び出す方法だけを知っています。
+
+43 [p]
+EN: When you write a loop like this:
+JA: 次のようなループを書くと、
+
+UNCHANGED CODE 15
+
+for (i in 1..100) {
+  System.print(i)
+}
+
+
+44 [p]
+EN: Wren sees it something like this:
+JA: Wrenには、おおよそ次のように見えます。
+
+UNCHANGED CODE 16
+
+var iter_ = null
+var seq_ = 1..100
+while (iter_ = seq_.iterate(iter_)) {
+  var i = seq_.iteratorValue(iter_)
+  System.print(i)
+}
+
+
+45 [p]
+EN: First, Wren evaluates the sequence expression and stores it in a hidden
+variable (written seq_ in the example but in reality it doesn’t have a name
+you can use). It also creates a hidden “iterator” variable and initializes it
+to null.
+JA: まず、Wrenはシーケンス式を評価し、隠れた変数に保存します（例ではseq_と書いていますが、実際には利用できる名前はありません）。また、隠れた「イテレーター」変数を作り、nullで初期化します。
+
+46 [p]
+EN: Each iteration, it calls iterate() on the sequence, passing in the current
+iterator value. (In the first iteration, it passes in null.) The sequence’s
+job is to take that iterator and advance it to the next element in the
+sequence. (Or, in the case where the iterator is null, to advance it to the
+first element). It then returns either the new iterator, or false to
+indicate that there are no more elements.
+JA: 各反復で、現在のイテレーターの値を渡してシーケンスのiterate()を呼び出します（最初の反復ではnullを渡します）。シーケンスの役目は、そのイテレーターを受け取って次の要素へ進めることです（イテレーターがnullの場合は、最初の要素へ進めます）。その後、新しいイテレーターか、もう要素がないことを示すfalseを返します。
+
+47 [p]
+EN: If false is returned, Wren exits out of the loop and we’re done. If anything
+else is returned, that means that we have advanced to a new valid element. To
+get that, Wren then calls iteratorValue() on the sequence and passes in the
+iterator value that it just got from calling iterate(). The sequence uses
+that to look up and return the appropriate element.
+JA: falseが返ると、Wrenはループを抜けて終了します。それ以外が返ると、新しい有効な要素へ進んだという意味です。その要素を得るため、Wrenは続いてシーケンスのiteratorValue()を呼び出し、iterate()から得たばかりのイテレーターの値を渡します。シーケンスはそれを使って、該当する要素を調べて返します。
+
+48 [p]
+EN: The built-in List and Range types implement
+iterate() and iteratorValue() to walk over their respective sequences. You
+can implement the same methods in your classes to make your own types iterable.
+JA: 組み込みのList型とRange型は、それぞれのシーケンスを順に処理するため、iterate()とiteratorValue()を実装しています。自分のクラスでも同じメソッドを実装すれば、独自の型を反復処理できるようになります。
+
+49 [p]
+EN: 
+Variables →
+← Method Calls
+JA: 変数 →← メソッド呼び出し

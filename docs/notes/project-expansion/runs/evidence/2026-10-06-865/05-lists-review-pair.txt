@@ -1,0 +1,127 @@
+1 [h1]
+EN: Lists
+JA: リスト
+
+2 [p]
+EN: A list is a compound object that holds a collection of elements identified by
+integer index. You can create a list by placing a sequence of comma-separated
+expressions inside square brackets:
+JA: リストは、整数のインデックスで識別する要素の集まりを格納する複合オブジェクトです。コンマで区切った一連の式を角括弧で囲むと、リストを作成できます。
+
+3 [p]
+EN: Here, we’ve created a list of three elements. Notice that the elements don’t
+have to be the same type.
+JA: ここでは、要素が三つのリストを作りました。要素の型をそろえる必要はない点に注意してください。
+
+4 [h2]
+EN: Accessing elements <a class="header-anchor" href="#accessing-elements" name="accessing-elements">#</a>
+JA: 要素へのアクセス <a class="header-anchor" href="#accessing-elements" name="accessing-elements">#</a>
+
+5 [p]
+EN: You can access an element from a list by calling the <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#subscripts">subscript
+operator</a> on it with the index of the
+element you want. Like most languages, indexes start at zero:
+JA: 目的の要素のインデックスを渡して、リストの<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#subscripts">添字演算子</a>を呼び出すと、要素にアクセスできます。多くの言語と同様、インデックスはゼロから始まります。
+
+6 [p]
+EN: Negative indices counts backwards from the end:
+JA: 負のインデックスは、末尾から逆向きに数えます。
+
+7 [p]
+EN: It’s a runtime error to pass an index outside of the bounds of the list. If you
+don’t know what those bounds are, you can find out using count:
+JA: リストの範囲外のインデックスを渡すと、実行時エラーになります。範囲が分からない場合は、countで調べられます。
+
+8 [h2]
+EN: Slices and ranges <a class="header-anchor" href="#slices-and-ranges" name="slices-and-ranges">#</a>
+JA: スライスと範囲 <a class="header-anchor" href="#slices-and-ranges" name="slices-and-ranges">#</a>
+
+9 [p]
+EN: Sometimes you want to copy a chunk of elements from a list. You can do that by
+passing a <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">range</a> to the subscript operator, like so:
+JA: リストから、まとまった要素をコピーしたいことがあります。次のように、添字演算子に<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">範囲</a>を渡すと、それができます。
+
+10 [p]
+EN: This returns a new list containing the elements of the original list whose
+indices are within the given range. Both inclusive and exclusive ranges work
+and do what you expect.
+JA: 指定した範囲内のインデックスを持つ元のリストの要素を含んだ、新しいリストが返ります。終点を含む範囲でも、含まない範囲でも、予想どおりに動作します。
+
+11 [p]
+EN: Negative bounds also work like they do when passing a single number, so to copy
+a list, you can just do:
+JA: 単一の数値を渡す場合と同様、範囲の端点にも負の値を使えます。したがって、リストをコピーするには次のように書くだけです。
+
+12 [h2]
+EN: Adding elements <a class="header-anchor" href="#adding-elements" name="adding-elements">#</a>
+JA: 要素の追加 <a class="header-anchor" href="#adding-elements" name="adding-elements">#</a>
+
+13 [p]
+EN: Lists are <em>mutable</em>, meaning their contents can be changed. You can swap out an
+existing element in the list using the subscript setter:
+JA: リストは<em>可変</em>で、内容を変更できます。添字セッターを使うと、リスト内の既存の要素を置き換えられます。
+
+14 [p]
+EN: It’s an error to set an element that’s out of bounds. To grow a list, you can
+use ⟦CODE0⟧ to append a single item to the end:
+JA: 範囲外の要素を設定しようとすると、エラーになります。リストを大きくするには、⟦CODE0⟧で一つの項目を末尾に追加できます。
+
+15 [p]
+EN: You can insert a new element at a specific position using ⟦CODE0⟧:
+JA: ⟦CODE0⟧を使うと、指定した位置に新しい要素を挿入できます。
+
+16 [p]
+EN: The first argument is the index to insert at, and the second is the value to
+insert. All elements following the inserted one will be pushed down to
+make room for it.
+JA: 最初の引数は挿入先のインデックス、二番目の引数は挿入する値です。場所を空けるため、挿入した要素以降のすべての要素を後ろへずらします。
+
+17 [p]
+EN: It’s valid to “insert” after the last element in the list, but only <em>right</em>
+after it. Like other methods, you can use a negative index to count from the
+back. Doing so counts back from the size of the list <em>after</em> it’s grown by one:
+JA: リストの最後の要素の後に「挿入」することもできますが、その<em>直後</em>に限ります。ほかのメソッドと同様、負のインデックスで末尾から数えることもできます。この場合、一つ要素が増えた<em>後</em>のリストの大きさを基準に、後ろから数えます。
+
+18 [h2]
+EN: Adding lists together <a class="header-anchor" href="#adding-lists-together" name="adding-lists-together">#</a>
+JA: リストの連結 <a class="header-anchor" href="#adding-lists-together" name="adding-lists-together">#</a>
+
+19 [p]
+EN: Lists have the ability to be added together via the ⟦CODE0⟧ operator. This is often known as concatenation.
+JA: リスト同士は⟦CODE0⟧演算子で足し合わせられます。この操作は、一般に連結と呼ばれます。
+
+20 [h2]
+EN: Removing elements <a class="header-anchor" href="#removing-elements" name="removing-elements">#</a>
+JA: 要素の削除 <a class="header-anchor" href="#removing-elements" name="removing-elements">#</a>
+
+21 [p]
+EN: The opposite of ⟦CODE0⟧ is ⟦CODE1⟧. It removes a single element from a
+given position in the list. 
+JA: ⟦CODE0⟧の反対の操作は⟦CODE1⟧です。リスト内の指定した位置から、一つの要素を削除します。
+
+22 [p]
+EN: To remove a specific <em>value</em> instead, use ⟦CODE0⟧. The first value that 
+matches using regular equality will be removed.
+JA: 代わりに特定の<em>値</em>を削除するには、⟦CODE0⟧を使います。通常の等価比較で最初に一致する値を削除します。
+
+23 [p]
+EN: In both cases, all following items are shifted up to fill in the gap.
+JA: どちらの場合も、後続のすべての項目を前へずらし、空いた場所を埋めます。
+
+24 [p]
+EN: Both the ⟦CODE0⟧ and ⟦CODE1⟧ method return the removed item:
+JA: ⟦CODE0⟧と⟦CODE1⟧のメソッドは、どちらも削除した項目を返します。
+
+25 [p]
+EN: If ⟦CODE0⟧ couldn’t find the value in the list, it returns null:
+JA: ⟦CODE0⟧がリスト内で値を見つけられなかった場合は、nullを返します。
+
+26 [p]
+EN: If you want to remove everything from the list, you can clear it:
+JA: リストからすべてを削除したい場合は、clearで空にできます。
+
+27 [p]
+EN: <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/06-maps/">Maps →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/04-values/">← Values</a>
+JA: <br/><hr/><a class="right" href="/docs/wren/v0-4-0/en/01-guide/06-maps/">マップ →</a><a href="/docs/wren/v0-4-0/en/01-guide/04-values/">← 値</a>

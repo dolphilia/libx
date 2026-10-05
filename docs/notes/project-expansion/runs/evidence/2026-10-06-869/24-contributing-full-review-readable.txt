@@ -1,0 +1,193 @@
+1 [h1]
+EN: Contributing
+JA: 貢献
+
+2 [p]
+EN: Like the bird, Wren’s ecosystem is small but full of life. Almost everything is
+under active development and there’s lots to do. We’d be delighted to have you
+help.
+JA: 鳥のミソサザイと同じく、Wrenのエコシステムは小さいながら、活気に満ちています。ほぼすべてが活発に開発中で、やることはたくさんあります。手伝っていただければ、うれしく思います。
+
+3 [p]
+EN: The first thing to do is to join the discord community (or the mailing list) and say,
+“Hi”. There are no strangers to Wren, just friends we haven’t met yet.
+JA: まず、Discordコミュニティー、またはメーリングリストへ参加して、「こんにちは」と言ってください。Wrenに見知らぬ人はいません。まだ会ったことのない友人がいるだけです。
+
+4 [h2]
+EN: Growing the ecosystem #
+JA: エコシステムを広げる #
+
+5 [p]
+EN: The simplest and often most helpful way to join the Wren party is to be a Wren
+user. Create an application that embeds Wren. Write a library or a handy
+utility in Wren. Add syntax highlighting support for Wren to your favorite text
+editor. Share that stuff and it will help the next Wren user to come along.
+JA: Wrenへ参加する最も簡単で、よく役立つ方法は、Wrenの利用者になることです。Wrenを組み込むアプリケーションを作る。Wrenでライブラリーや便利なユーティリティーを書く。好きなテキストエディターへ、Wrenの構文強調を追加する。それらを共有すると、次にやって来るWrenの利用者の助けになります。
+
+6 [p]
+EN: If you do any of the above, let us know by adding it to the wiki. 
+We like to keep track of:
+JA: そのどれかを行ったら、Wikiへ追加して知らせてください。私たちは、次のものを把握しておきたいと思っています。
+
+7 [li]
+EN: Applications that host Wren as a scripting language.
+JA: スクリプト言語としてWrenをホストするアプリケーション。
+
+8 [li]
+EN: Modules written in Wren that others can use.
+JA: ほかの人が使える、Wrenで書いたモジュール。
+
+9 [li]
+EN: Language bindings that let you interact with Wren from other
+  languages.
+JA: ほかの言語からWrenとやり取りできる言語バインディング。
+
+10 [li]
+EN: Tools and utilities that make it easier to be a Wren programmer.
+JA: Wrenプログラマーの作業を容易にするツールとユーティリティー。
+
+11 [h2]
+EN: Contributing to Wren #
+JA: Wrenへの貢献 #
+
+12 [p]
+EN: You’re also more than welcome to contribute to Wren itself, both the core VM and
+the command-line interpreter. The source is developed on GitHub. Our
+hope is that the codebase, tests, and documentation are easy to
+understand and contribute to. If they aren’t, that’s a bug.
+JA: コアVMでも、コマンドラインインタープリターでも、Wren自身への貢献も大歓迎です。ソースはGitHubで開発しています。コード、テスト、文書が、理解しやすく、貢献しやすいことを願っています。そうでなければ、それは不具合です。
+
+13 [p]
+EN: You can learn how to build wren on the getting started page.
+JA: Wrenのビルド方法は、入門ページで確認できます。
+
+14 [h3]
+EN: Finding something to hack on #
+JA: 取り組むものを探す #
+
+15 [p]
+EN: Between the issue tracker and searching for TODO comments in the
+code, it’s pretty easy to find something that needs doing, though we don’t
+always do a good job of writing everything down.
+JA: 課題管理を見たり、コード内でTODOコメントを探したりすれば、必要な作業を見つけるのは、かなり簡単です。ただし、私たちは、いつもすべてを書き留められているわけではありません。
+
+16 [p]
+EN: If nothing there suits your fancy, new ideas are welcome as well! If you have an
+idea for a significant change or addition, please file a proposal to discuss
+it before writing lots of code. Wren tries very very hard to be minimal which
+means often having to say “no” to language additions, even really cool ones.
+JA: 合うものがなければ、新しい考えも歓迎します！ 大きな変更や追加を考えているなら、大量のコードを書く前に、提案を登録して相談してください。Wrenは、最小限に保つため、非常に努力しています。そのため、言語への追加は、とても良いものでも、「いいえ」と言う必要がよくあります。
+
+17 [h3]
+EN: Hacking on docs #
+JA: 文書を変更する #
+
+18 [p]
+EN: The documentation is one of the easiest—and most
+important!—parts of Wren to contribute to. The source for the site is
+written in Markdown and lives under doc/site. A
+simple Python 3 script, util/generate_docs.py, converts that to HTML and CSS.
+JA: 文書は、Wrenへ貢献しやすい部分の一つであり、とても重要でもあります！ サイトのソースはMarkdownで書き、doc/siteにあります。単純なPython 3のスクリプトutil/generate_docs.pyが、HTMLとCSSへ変換します。
+
+19 [p]
+EN: This generates the site in build/docs/. You can run any simple static web
+server from there. Python includes one:
+JA: これは、build/docs/へサイトを生成します。そこから、どんな単純な静的Webサーバーでも実行できます。Pythonにも、次が含まれます。
+
+20 [p]
+EN: Running that script every time you change a line of Markdown can be slow,
+so there is also a file watching version that will automatically regenerate the
+docs when you edit a file:
+JA: Markdownを一行変えるたびに、そのスクリプトを実行すると、時間がかかる場合があります。そのため、ファイルを監視し、編集したときに文書を自動で再生成する版もあります。
+
+21 [h3]
+EN: Hacking on the VM #
+JA: VMを変更する #
+
+22 [p]
+EN: The basic process is simple:
+JA: 基本的な手順は、単純です。
+
+23 [li]
+EN: 
+Make sure you can build and run the tests locally. It’s good to ensure
+   you’re starting from a happy place before you poke at the code. Running the
+   tests is as simple as building the vm project,
+   which generates bin/wren_test and then running the following python 3 script:
+$ python util/test.py
+
+If there are no failures, you’re good to go.
+
+JA: ローカルでビルドし、テストを実行できることを確認します。コードを触る前に、正常な状態から始めるとよいでしょう。テストの実行は、bin/wren_testを生成するvmプロジェクトをビルドし、次のPython 3のスクリプトを実行するだけです。$ python util/test.py
+失敗がなければ、準備できています。
+
+24 [li]
+EN: 
+Fork the repo so you can change it locally. Please make your
+   changes in separate feature branches to make things a little easier.
+
+JA: ローカルで変更できるよう、リポジトリをフォークします。作業を容易にするため、変更は別の機能ブランチで行ってください。
+
+25 [li]
+EN: 
+Change the code. Please follow the style of the surrounding code. That
+   basically means camelCase names, { on the next line, keep within 80
+   columns, and two spaces of indentation. If you see places where the existing
+   code is inconsistent, let us know.
+
+JA: コードを変更します。周囲のコードのスタイルに合わせてください。基本的には、camelCaseの名前、次の行に置く{、80桁以内、2スペースの字下げです。既存コードの不統一を見つけたら、知らせてください。
+
+26 [li]
+EN: 
+Write some tests for your new functionality. They live under test/.
+   Take a look at some existing tests to get an idea of how to define
+   expectations.
+
+JA: 新しい機能のテストを書きます。テストはtest/にあります。期待結果の定義方法は、既存のテストを見て確認してください。
+
+27 [li]
+EN: 
+Make sure the tests all pass, both the old ones and your new ones.
+
+JA: 既存のテストも新しいテストも、すべて合格することを確認します。
+
+28 [li]
+EN: 
+Add your name and email to the AUTHORS file if you haven’t already.
+
+JA: まだ登録していなければ、AUTHORSファイルへ名前とメールアドレスを追加します。
+
+29 [li]
+EN: 
+Send a pull request. Pat yourself on the back for contributing to a
+   fun open source project! 
+
+JA: プルリクエストを送ります。楽しいオープンソースプロジェクトへ貢献した自分を、ねぎらってください！
+
+30 [h2]
+EN: Getting help #
+JA: 助けを求める #
+
+31 [p]
+EN: If at any point you have questions, feel free to file an issue or ask
+on the discord community (or the mailing list). If you’re a Redditor, try the
+/r/wren_lang subreddit. You can also email me directly (robert at
+stuffwithstuff.com) if you want something less public.
+JA: 途中で質問があれば、気軽に課題を登録するか、Discordコミュニティー、またはメーリングリストで尋ねてください。Redditを使っているなら、/r/wren_langサブレディットもあります。あまり公開したくなければ、私へ直接メールしてもかまいません。（robert at stuffwithstuff.com）
+
+SOURCE/JA CODE 1 EXACT:
+$ python util/generate_docs.py
+
+
+SOURCE/JA CODE 2 EXACT:
+$ cd build/docs
+$ python -m http.server
+
+
+SOURCE/JA CODE 3 EXACT:
+$ python util/generate_docs.py --watch
+
+
+SOURCE/JA CODE 4 EXACT:
+$ python util/test.py
+

@@ -1,0 +1,1085 @@
+{
+  "page": "01-guide/10-classes.md",
+  "titleEN": "Classes",
+  "titleJA": "クラス",
+  "sourceCanonicalSHA256": "73025ce506a9bfb85022927bc22ed5ff8fa7ae639f924da96202008fb29e250a",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Classes",
+      "originalInnerHTML": "Classes",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Every value in Wren is an object, and every object is an instance of a class.\nEven ⟦CODE0⟧ and ⟦CODE1⟧ are full-featured objects—instances of the\n<a href=\"/docs/wren/v0-4-0/en/02-reference/01-modules-core-bool/\">Bool</a> class.",
+      "originalInnerHTML": "Every value in Wren is an object, and every object is an instance of a class.\nEven <code>true</code> and <code>false</code> are full-featured objects—instances of the\n<a href=\"/docs/wren/v0-4-0/en/02-reference/01-modules-core-bool/\">Bool</a> class.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>true</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>false</code>"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "Classes define an objects <em>behavior</em> and <em>state</em>. Behavior is defined by\n<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\"><em>methods</em></a> which live in the class. Every object of the same\nclass supports the same methods. State is defined in <em>fields</em>, whose values are\nstored in each instance.",
+      "originalInnerHTML": "Classes define an objects <em>behavior</em> and <em>state</em>. Behavior is defined by\n<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\"><em>methods</em></a> which live in the class. Every object of the same\nclass supports the same methods. State is defined in <em>fields</em>, whose values are\nstored in each instance.",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "h2",
+      "sourceHTML": "Defining a class <a class=\"header-anchor\" href=\"#defining-a-class\" name=\"defining-a-class\">#</a>",
+      "originalInnerHTML": "Defining a class <a class=\"header-anchor\" href=\"#defining-a-class\" name=\"defining-a-class\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "Classes are created using the ⟦CODE0⟧ keyword, unsurprisingly:",
+      "originalInnerHTML": "Classes are created using the <code>class</code> keyword, unsurprisingly:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>class</code>"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "This creates a class named ⟦CODE0⟧ with no methods or fields.",
+      "originalInnerHTML": "This creates a class named <code>Unicorn</code> with no methods or fields.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>Unicorn</code>"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "tag": "h2",
+      "sourceHTML": "Methods <a class=\"header-anchor\" href=\"#methods\" name=\"methods\">#</a>",
+      "originalInnerHTML": "Methods <a class=\"header-anchor\" href=\"#methods\" name=\"methods\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "To let our unicorn do stuff, we need to give it methods.",
+      "originalInnerHTML": "To let our unicorn do stuff, we need to give it methods.",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "This defines a ⟦CODE0⟧ method that takes no arguments. To add parameters, put\ntheir names inside the parentheses:",
+      "originalInnerHTML": "This defines a <code>prance()</code> method that takes no arguments. To add parameters, put\ntheir names inside the parentheses:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>prance()</code>"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "Since the number of parameters is part of a method’s <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature\">signature</a> a class can\ndefine multiple methods with the same name:",
+      "originalInnerHTML": "Since the number of parameters is part of a method’s <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature\">signature</a> a class can\ndefine multiple methods with the same name:",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "It’s often natural to have the same conceptual operation work with different\nsets of arguments. In other languages, you’d define a single method for the\noperation and have to check for missing optional arguments. In Wren, they are\ndifferent methods that you implement separately.",
+      "originalInnerHTML": "It’s often natural to have the same conceptual operation work with different\nsets of arguments. In other languages, you’d define a single method for the\noperation and have to check for missing optional arguments. In Wren, they are\ndifferent methods that you implement separately.",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "In addition to named methods with parameter lists, Wren has a bunch of other\ndifferent syntaxes for methods. Your classes can define all of them.",
+      "originalInnerHTML": "In addition to named methods with parameter lists, Wren has a bunch of other\ndifferent syntaxes for methods. Your classes can define all of them.",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "h3",
+      "sourceHTML": "Getters <a class=\"header-anchor\" href=\"#getters\" name=\"getters\">#</a>",
+      "originalInnerHTML": "Getters <a class=\"header-anchor\" href=\"#getters\" name=\"getters\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "A getter leaves off the parameter list and the parentheses:",
+      "originalInnerHTML": "A getter leaves off the parameter list and the parentheses:",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "h3",
+      "sourceHTML": "Setters <a class=\"header-anchor\" href=\"#setters\" name=\"setters\">#</a>",
+      "originalInnerHTML": "Setters <a class=\"header-anchor\" href=\"#setters\" name=\"setters\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "A setter has ⟦CODE0⟧ after the name, followed by a single parenthesized parameter:",
+      "originalInnerHTML": "A setter has <code>=</code> after the name, followed by a single parenthesized parameter:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>=</code>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "By convention, the parameter is usually named ⟦CODE0⟧ but you can call it\nwhatever makes your heart flutter.",
+      "originalInnerHTML": "By convention, the parameter is usually named <code>value</code> but you can call it\nwhatever makes your heart flutter.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>value</code>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "tag": "h3",
+      "sourceHTML": "Operators <a class=\"header-anchor\" href=\"#operators\" name=\"operators\">#</a>",
+      "originalInnerHTML": "Operators <a class=\"header-anchor\" href=\"#operators\" name=\"operators\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "Prefix operators, like getters, have no parameter list:",
+      "originalInnerHTML": "Prefix operators, like getters, have no parameter list:",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "Infix operators, like setters, have a single parenthesized parameter for the\nright-hand operand:",
+      "originalInnerHTML": "Infix operators, like setters, have a single parenthesized parameter for the\nright-hand operand:",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "A subscript operator puts the parameters inside square brackets and can have\nmore than one:",
+      "originalInnerHTML": "A subscript operator puts the parameters inside square brackets and can have\nmore than one:",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "Unlike with named methods, you can’t define a subscript operator with an empty\nparameter list.",
+      "originalInnerHTML": "Unlike with named methods, you can’t define a subscript operator with an empty\nparameter list.",
+      "protected": []
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "As the name implies, a subscript setter looks like a combination of a subscript\noperator and a setter:",
+      "originalInnerHTML": "As the name implies, a subscript setter looks like a combination of a subscript\noperator and a setter:",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "h2",
+      "sourceHTML": "Method Scope <a class=\"header-anchor\" href=\"#method-scope\" name=\"method-scope\">#</a>",
+      "originalInnerHTML": "Method Scope <a class=\"header-anchor\" href=\"#method-scope\" name=\"method-scope\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "Up to this point, “<a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/#scope\">scope</a>” has been used to talk exclusively about\n<a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">variables</a>. In a procedural language like C, or a functional one like Scheme,\nthat’s the only kind of scope there is. But object-oriented languages like Wren\nintroduce another kind of scope: <em>object scope</em>. It contains the methods that\nare available on an object. When you write:",
+      "originalInnerHTML": "Up to this point, “<a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/#scope\">scope</a>” has been used to talk exclusively about\n<a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">variables</a>. In a procedural language like C, or a functional one like Scheme,\nthat’s the only kind of scope there is. But object-oriented languages like Wren\nintroduce another kind of scope: <em>object scope</em>. It contains the methods that\nare available on an object. When you write:",
+      "protected": []
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "You’re saying “look up the method ⟦CODE0⟧ in the scope of the object\n⟦CODE1⟧”. In this case, the fact that you want to look up a <em>method</em>\n⟦CODE2⟧ and not a <em>variable</em> ⟦CODE3⟧ is explicit. That’s what ⟦CODE4⟧ does and\nthe object to the left of the period is the object you want to look up the\nmethod on.",
+      "originalInnerHTML": "You’re saying “look up the method <code>isFancy</code> in the scope of the object\n<code>unicorn</code>”. In this case, the fact that you want to look up a <em>method</em>\n<code>isFancy</code> and not a <em>variable</em> <code>isFancy</code> is explicit. That’s what <code>.</code> does and\nthe object to the left of the period is the object you want to look up the\nmethod on.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>isFancy</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>unicorn</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>isFancy</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>isFancy</code>"
+        },
+        {
+          "token": "⟦CODE4⟧",
+          "html": "<code>.</code>"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "tag": "h3",
+      "sourceHTML": "⟦CODE0⟧ <a class=\"header-anchor\" href=\"#this\" name=\"this\">#</a>",
+      "originalInnerHTML": "<code>this</code> <a class=\"header-anchor\" href=\"#this\" name=\"this\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "Things get more interesting when you’re inside the body of a method. When the\nmethod is called on some object and the body is being executed, you often need\nto access that object itself. You can do that using ⟦CODE0⟧.",
+      "originalInnerHTML": "Things get more interesting when you’re inside the body of a method. When the\nmethod is called on some object and the body is being executed, you often need\nto access that object itself. You can do that using <code>this</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ keyword works sort of like a variable, but has special behavior. It\nalways refers to the instance whose method is currently being executed. This\nlets you invoke methods on “yourself”.",
+      "originalInnerHTML": "The <code>this</code> keyword works sort of like a variable, but has special behavior. It\nalways refers to the instance whose method is currently being executed. This\nlets you invoke methods on “yourself”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "It’s an error to refer to ⟦CODE0⟧ outside of a method. However, it’s perfectly\nfine to use it inside a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a> declared <em>inside</em> a method. When you do,\n⟦CODE1⟧ still refers to the instance whose <em>method</em> is being called:",
+      "originalInnerHTML": "It’s an error to refer to <code>this</code> outside of a method. However, it’s perfectly\nfine to use it inside a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a> declared <em>inside</em> a method. When you do,\n<code>this</code> still refers to the instance whose <em>method</em> is being called:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "sourceHTML": "This is unlike Lua and JavaScript which can “forget” ⟦CODE0⟧ when you create a\ncallback inside a method. Wren does what you want here and retains the\nreference to the original object.",
+      "originalInnerHTML": "This is unlike Lua and JavaScript which can “forget” <code>this</code> when you create a\ncallback inside a method. Wren does what you want here and retains the\nreference to the original object.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "(In technical terms, a function’s closure includes ⟦CODE0⟧. Wren can do this\nbecause it makes a distinction between methods and functions.)",
+      "originalInnerHTML": "(In technical terms, a function’s closure includes <code>this</code>. Wren can do this\nbecause it makes a distinction between methods and functions.)",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "tag": "h3",
+      "sourceHTML": "Implicit ⟦CODE0⟧ <a class=\"header-anchor\" href=\"#implicit-this\" name=\"implicit-this\">#</a>",
+      "originalInnerHTML": "Implicit <code>this</code> <a class=\"header-anchor\" href=\"#implicit-this\" name=\"implicit-this\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "tag": "p",
+      "sourceHTML": "Using ⟦CODE0⟧ every time you want to call a method on yourself works, but it’s\ntedious and verbose, which is why some languages don’t require it. You can do a\n“self send” by calling a method (or getter or setter) without any explicit\nreceiver:",
+      "originalInnerHTML": "Using <code>this.</code> every time you want to call a method on yourself works, but it’s\ntedious and verbose, which is why some languages don’t require it. You can do a\n“self send” by calling a method (or getter or setter) without any explicit\nreceiver:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this.</code>"
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "sourceHTML": "Code like this gets tricky when there is also a variable outside of the class\nwith the same name. Consider:",
+      "originalInnerHTML": "Code like this gets tricky when there is also a variable outside of the class\nwith the same name. Consider:",
+      "protected": []
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "Should ⟦CODE0⟧ print “variable” or “Francis”? A method body has a foot in\neach of two worlds. It is surrounded by the lexical scope where it’s defined in\nthe program, but it also has the object scope of the methods on ⟦CODE1⟧.",
+      "originalInnerHTML": "Should <code>printName()</code> print “variable” or “Francis”? A method body has a foot in\neach of two worlds. It is surrounded by the lexical scope where it’s defined in\nthe program, but it also has the object scope of the methods on <code>this</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>printName()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "tag": "p",
+      "sourceHTML": "Which scope wins? Every language has to decide how to handle this and there\nis a surprising plethora of approaches. Wren’s approach to resolving a name\ninside a method works like this:",
+      "originalInnerHTML": "Which scope wins? Every language has to decide how to handle this and there\nis a surprising plethora of approaches. Wren’s approach to resolving a name\ninside a method works like this:",
+      "protected": []
+    },
+    {
+      "id": "38",
+      "tag": "li",
+      "sourceHTML": "If there is a local variable inside the method with that name, that wins.",
+      "originalInnerHTML": "If there is a local variable inside the method with that name, that wins.",
+      "protected": []
+    },
+    {
+      "id": "39",
+      "tag": "li",
+      "sourceHTML": "Else, if the name starts with a lowercase letter, treat it like a method on\n    ⟦CODE0⟧.",
+      "originalInnerHTML": "Else, if the name starts with a lowercase letter, treat it like a method on\n    <code>this</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "tag": "li",
+      "sourceHTML": "Otherwise, look for a variable with that name in the surrounding scope.",
+      "originalInnerHTML": "Otherwise, look for a variable with that name in the surrounding scope.",
+      "protected": []
+    },
+    {
+      "id": "41",
+      "tag": "p",
+      "sourceHTML": "So, in the above example, we hit case #2 and it prints “Francis”. Distinguishing\nself sends from outer variables based on the <em>case</em> of the first letter in the\nname probably seems weird but it works surprisingly well. Method names are\nlowercase in Wren. Class names are capitalized.",
+      "originalInnerHTML": "So, in the above example, we hit case #2 and it prints “Francis”. Distinguishing\nself sends from outer variables based on the <em>case</em> of the first letter in the\nname probably seems weird but it works surprisingly well. Method names are\nlowercase in Wren. Class names are capitalized.",
+      "protected": []
+    },
+    {
+      "id": "42",
+      "tag": "p",
+      "sourceHTML": "Most of the time, when you’re in a method and want to access a name from outside\nof the class, it’s usually the name of some other class. This rule makes that\nwork.",
+      "originalInnerHTML": "Most of the time, when you’re in a method and want to access a name from outside\nof the class, it’s usually the name of some other class. This rule makes that\nwork.",
+      "protected": []
+    },
+    {
+      "id": "43",
+      "tag": "p",
+      "sourceHTML": "Here’s an example that shows all three cases:",
+      "originalInnerHTML": "Here’s an example that shows all three cases:",
+      "protected": []
+    },
+    {
+      "id": "44",
+      "tag": "p",
+      "sourceHTML": "It’s a bit of a strange rule, but Ruby works more or less the same way.",
+      "originalInnerHTML": "It’s a bit of a strange rule, but Ruby works more or less the same way.",
+      "protected": []
+    },
+    {
+      "id": "45",
+      "tag": "h2",
+      "sourceHTML": "Constructors <a class=\"header-anchor\" href=\"#constructors\" name=\"constructors\">#</a>",
+      "originalInnerHTML": "Constructors <a class=\"header-anchor\" href=\"#constructors\" name=\"constructors\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "46",
+      "tag": "p",
+      "sourceHTML": "We’ve seen how to define kinds of objects and how to declare methods on them.\nOur unicorns can prance around, but we don’t actually <em>have</em> any unicorns to do\nit. To create <em>instances</em> of a class, we need a <em>constructor</em>. You define one\nlike so:",
+      "originalInnerHTML": "We’ve seen how to define kinds of objects and how to declare methods on them.\nOur unicorns can prance around, but we don’t actually <em>have</em> any unicorns to do\nit. To create <em>instances</em> of a class, we need a <em>constructor</em>. You define one\nlike so:",
+      "protected": []
+    },
+    {
+      "id": "47",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ keyword says we’re defining a constructor, and ⟦CODE1⟧ is its\nname. In Wren, all constructors have names. The word “new” isn’t special to\nWren, it’s just a common constructor name.",
+      "originalInnerHTML": "The <code>construct</code> keyword says we’re defining a constructor, and <code>new</code> is its\nname. In Wren, all constructors have names. The word “new” isn’t special to\nWren, it’s just a common constructor name.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>construct</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>new</code>"
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "tag": "p",
+      "sourceHTML": "To make a unicorn now, we call the constructor method on the class itself:",
+      "originalInnerHTML": "To make a unicorn now, we call the constructor method on the class itself:",
+      "protected": []
+    },
+    {
+      "id": "49",
+      "tag": "p",
+      "sourceHTML": "Giving constructors names is handy because it means you can have more than one,\nand each can clarify how it creates the instance:",
+      "originalInnerHTML": "Giving constructors names is handy because it means you can have more than one,\nand each can clarify how it creates the instance:",
+      "protected": []
+    },
+    {
+      "id": "50",
+      "tag": "p",
+      "sourceHTML": "Note that we have to declare a constructor because, unlike some other\nlanguages, Wren doesn’t give you a default one. This is useful because some\nclasses aren’t designed to be constructed. If you have an abstract base class\nthat just contains methods to be inherited by other classes, it doesn’t need\nand won’t have a constructor.",
+      "originalInnerHTML": "Note that we have to declare a constructor because, unlike some other\nlanguages, Wren doesn’t give you a default one. This is useful because some\nclasses aren’t designed to be constructed. If you have an abstract base class\nthat just contains methods to be inherited by other classes, it doesn’t need\nand won’t have a constructor.",
+      "protected": []
+    },
+    {
+      "id": "51",
+      "tag": "p",
+      "sourceHTML": "Like other methods, constructors can obviously have arguments, and can be\noverloaded by <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature\">arity</a>. A constructor <em>must</em> be a named method with\na (possibly empty) argument list. Operators, getters, and setters cannot be\nconstructors.",
+      "originalInnerHTML": "Like other methods, constructors can obviously have arguments, and can be\noverloaded by <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature\">arity</a>. A constructor <em>must</em> be a named method with\na (possibly empty) argument list. Operators, getters, and setters cannot be\nconstructors.",
+      "protected": []
+    },
+    {
+      "id": "52",
+      "tag": "p",
+      "sourceHTML": "A constructor returns the instance of the class being created, even if you \ndon’t explicitly use ⟦CODE0⟧. It is valid to use ⟦CODE1⟧ inside of a \nconstructor, but it is an error to have an expression after the return.\nThat rule applies to ⟦CODE2⟧ as well, return handles that implicitly inside\na constructor, so just ⟦CODE3⟧ is enough.",
+      "originalInnerHTML": "A constructor returns the instance of the class being created, even if you \ndon’t explicitly use <code>return</code>. It is valid to use <code>return</code> inside of a \nconstructor, but it is an error to have an expression after the return.\nThat rule applies to <code>return this</code> as well, return handles that implicitly inside\na constructor, so just <code>return</code> is enough.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>return</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>return</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>return this</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>return</code>"
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "tag": "p",
+      "sourceHTML": "A constructor is actually a pair of methods. You get a method on the class:",
+      "originalInnerHTML": "A constructor is actually a pair of methods. You get a method on the class:",
+      "protected": []
+    },
+    {
+      "id": "54",
+      "tag": "p",
+      "sourceHTML": "That creates the new instance, then it invokes the <em>initializer</em> on that\ninstance. This is where the constructor body you defined gets run.",
+      "originalInnerHTML": "That creates the new instance, then it invokes the <em>initializer</em> on that\ninstance. This is where the constructor body you defined gets run.",
+      "protected": []
+    },
+    {
+      "id": "55",
+      "tag": "p",
+      "sourceHTML": "This distinction is important because it means inside the body of the\nconstructor, you can access ⟦CODE0⟧, assign <a href=\"#fields\">fields</a>, call superclass\nconstructors, etc.",
+      "originalInnerHTML": "This distinction is important because it means inside the body of the\nconstructor, you can access <code>this</code>, assign <a href=\"#fields\">fields</a>, call superclass\nconstructors, etc.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>this</code>"
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "tag": "h2",
+      "sourceHTML": "Fields <a class=\"header-anchor\" href=\"#fields\" name=\"fields\">#</a>",
+      "originalInnerHTML": "Fields <a class=\"header-anchor\" href=\"#fields\" name=\"fields\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "57",
+      "tag": "p",
+      "sourceHTML": "All state stored in instances is stored in <em>fields</em>. Each field has a name\nthat starts with an underscore.",
+      "originalInnerHTML": "All state stored in instances is stored in <em>fields</em>. Each field has a name\nthat starts with an underscore.",
+      "protected": []
+    },
+    {
+      "id": "58",
+      "tag": "p",
+      "sourceHTML": "Here, ⟦CODE0⟧ and ⟦CODE1⟧ in the ⟦CODE2⟧ <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#methods\">getter</a> refer\nto fields on the rectangle instance. You can think of them like ⟦CODE3⟧\nand ⟦CODE4⟧ in other languages.",
+      "originalInnerHTML": "Here, <code>_width</code> and <code>_height</code> in the <code>area</code> <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#methods\">getter</a> refer\nto fields on the rectangle instance. You can think of them like <code>this.width</code>\nand <code>this.height</code> in other languages.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>_width</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>_height</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>area</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>this.width</code>"
+        },
+        {
+          "token": "⟦CODE4⟧",
+          "html": "<code>this.height</code>"
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "tag": "p",
+      "sourceHTML": "When a field name appears, Wren looks for the nearest enclosing class and looks\nup the field on the instance of that class. Field names cannot be used outside\nof an instance method. They <em>can</em> be used inside a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a>\nin a method. Wren will look outside any nested functions until it finds an\nenclosing method.",
+      "originalInnerHTML": "When a field name appears, Wren looks for the nearest enclosing class and looks\nup the field on the instance of that class. Field names cannot be used outside\nof an instance method. They <em>can</em> be used inside a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a>\nin a method. Wren will look outside any nested functions until it finds an\nenclosing method.",
+      "protected": []
+    },
+    {
+      "id": "60",
+      "tag": "p",
+      "sourceHTML": "Unlike <a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">variables</a>, fields are implicitly declared by simply\nassigning to them. If you access a field before it has been initialized, its\nvalue is ⟦CODE0⟧.",
+      "originalInnerHTML": "Unlike <a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">variables</a>, fields are implicitly declared by simply\nassigning to them. If you access a field before it has been initialized, its\nvalue is <code>null</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "61",
+      "tag": "h3",
+      "sourceHTML": "Encapsulation <a class=\"header-anchor\" href=\"#encapsulation\" name=\"encapsulation\">#</a>",
+      "originalInnerHTML": "Encapsulation <a class=\"header-anchor\" href=\"#encapsulation\" name=\"encapsulation\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "62",
+      "tag": "p",
+      "sourceHTML": "All fields are <em>private</em> in Wren—an object’s fields can only be directly\naccessed from within methods defined on the object’s class. ",
+      "originalInnerHTML": "All fields are <em>private</em> in Wren—an object’s fields can only be directly\naccessed from within methods defined on the object’s class. ",
+      "protected": []
+    },
+    {
+      "id": "63",
+      "tag": "p",
+      "sourceHTML": "In short, if you want to make a property of an object visible,\n<strong>you need to define a getter to expose it</strong>:",
+      "originalInnerHTML": "In short, if you want to make a property of an object visible,\n<strong>you need to define a getter to expose it</strong>:",
+      "protected": []
+    },
+    {
+      "id": "64",
+      "tag": "p",
+      "sourceHTML": "To allow outside code to modify the field,\n<strong>you need to provide setters to provide access</strong>:",
+      "originalInnerHTML": "To allow outside code to modify the field,\n<strong>you need to provide setters to provide access</strong>:",
+      "protected": []
+    },
+    {
+      "id": "65",
+      "tag": "p",
+      "sourceHTML": "This might be different from what you’re used to, so here are two important facts:",
+      "originalInnerHTML": "This might be different from what you’re used to, so here are two important facts:",
+      "protected": []
+    },
+    {
+      "id": "66",
+      "tag": "li",
+      "sourceHTML": "You can’t access fields from a base class.",
+      "originalInnerHTML": "You can’t access fields from a base class.",
+      "protected": []
+    },
+    {
+      "id": "67",
+      "tag": "li",
+      "sourceHTML": "You can’t access fields on another instance of your own class.",
+      "originalInnerHTML": "You can’t access fields on another instance of your own class.",
+      "protected": []
+    },
+    {
+      "id": "68",
+      "tag": "p",
+      "sourceHTML": "Here is an example in code:",
+      "originalInnerHTML": "Here is an example in code:",
+      "protected": []
+    },
+    {
+      "id": "69",
+      "tag": "p",
+      "sourceHTML": "One thing we’ve learned in the past forty years of software engineering is that\nencapsulating state tends to make code easier to maintain, so Wren defaults to\nkeeping your object’s state pretty tightly bundled up. Don’t feel that you have\nto or even should define getters or setters for most of your object’s fields.",
+      "originalInnerHTML": "One thing we’ve learned in the past forty years of software engineering is that\nencapsulating state tends to make code easier to maintain, so Wren defaults to\nkeeping your object’s state pretty tightly bundled up. Don’t feel that you have\nto or even should define getters or setters for most of your object’s fields.",
+      "protected": []
+    },
+    {
+      "id": "70",
+      "tag": "h2",
+      "sourceHTML": "Metaclasses and static members <a class=\"header-anchor\" href=\"#metaclasses-and-static-members\" name=\"metaclasses-and-static-members\">#</a>",
+      "originalInnerHTML": "Metaclasses and static members <a class=\"header-anchor\" href=\"#metaclasses-and-static-members\" name=\"metaclasses-and-static-members\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "71",
+      "tag": "p",
+      "sourceHTML": "<strong>TODO</strong>",
+      "originalInnerHTML": "<strong>TODO</strong>",
+      "protected": []
+    },
+    {
+      "id": "72",
+      "tag": "h3",
+      "sourceHTML": "Static fields <a class=\"header-anchor\" href=\"#static-fields\" name=\"static-fields\">#</a>",
+      "originalInnerHTML": "Static fields <a class=\"header-anchor\" href=\"#static-fields\" name=\"static-fields\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "73",
+      "tag": "p",
+      "sourceHTML": "A name that starts with <em>two</em> underscores is a <em>static</em> field. They work\nsimilar to <a href=\"#fields\">fields</a> except the data is stored on the class itself, and\nnot the instance. They can be used in <em>both</em> instance and static methods.",
+      "originalInnerHTML": "A name that starts with <em>two</em> underscores is a <em>static</em> field. They work\nsimilar to <a href=\"#fields\">fields</a> except the data is stored on the class itself, and\nnot the instance. They can be used in <em>both</em> instance and static methods.",
+      "protected": []
+    },
+    {
+      "id": "74",
+      "tag": "p",
+      "sourceHTML": "Just like instance fields, static fields are initially ⟦CODE0⟧:",
+      "originalInnerHTML": "Just like instance fields, static fields are initially <code>null</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "75",
+      "tag": "p",
+      "sourceHTML": "They can be used from static methods:",
+      "originalInnerHTML": "They can be used from static methods:",
+      "protected": []
+    },
+    {
+      "id": "76",
+      "tag": "p",
+      "sourceHTML": "And also instance methods. When you do so, there is still only one static field\nshared among all instances of the class:",
+      "originalInnerHTML": "And also instance methods. When you do so, there is still only one static field\nshared among all instances of the class:",
+      "protected": []
+    },
+    {
+      "id": "77",
+      "tag": "h2",
+      "sourceHTML": "Inheritance <a class=\"header-anchor\" href=\"#inheritance\" name=\"inheritance\">#</a>",
+      "originalInnerHTML": "Inheritance <a class=\"header-anchor\" href=\"#inheritance\" name=\"inheritance\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "78",
+      "tag": "p",
+      "sourceHTML": "A class can inherit from a “parent” or <em>superclass</em>. When you invoke a method\non an object of some class, if it can’t be found, it walks up the chain of\nsuperclasses looking for it there.",
+      "originalInnerHTML": "A class can inherit from a “parent” or <em>superclass</em>. When you invoke a method\non an object of some class, if it can’t be found, it walks up the chain of\nsuperclasses looking for it there.",
+      "protected": []
+    },
+    {
+      "id": "79",
+      "tag": "p",
+      "sourceHTML": "By default, any new class inherits from Object, which is the superclass from\nwhich all other classes ultimately descend. You can specify a different parent\nclass using ⟦CODE0⟧ when you declare the class:",
+      "originalInnerHTML": "By default, any new class inherits from Object, which is the superclass from\nwhich all other classes ultimately descend. You can specify a different parent\nclass using <code>is</code> when you declare the class:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>is</code>"
+        }
+      ]
+    },
+    {
+      "id": "80",
+      "tag": "p",
+      "sourceHTML": "This declares a new class Pegasus that inherits from Unicorn.",
+      "originalInnerHTML": "This declares a new class Pegasus that inherits from Unicorn.",
+      "protected": []
+    },
+    {
+      "id": "81",
+      "tag": "p",
+      "sourceHTML": "Note that you should not create classes that inherit from the built-in types\n(Bool, Num, String, Range, List). The built-in types expect their internal bit\nrepresentation to be very specific and get horribly confused when you invoke one\nof the inherited built-in methods on the derived type.",
+      "originalInnerHTML": "Note that you should not create classes that inherit from the built-in types\n(Bool, Num, String, Range, List). The built-in types expect their internal bit\nrepresentation to be very specific and get horribly confused when you invoke one\nof the inherited built-in methods on the derived type.",
+      "protected": []
+    },
+    {
+      "id": "82",
+      "tag": "p",
+      "sourceHTML": "The metaclass hierarchy does <em>not</em> parallel the regular class hierarchy. So, if\nPegasus inherits from Unicorn, Pegasus’s metaclass does not inherit from\nUnicorn’s metaclass. In more prosaic terms, this means that static methods are\nnot inherited.",
+      "originalInnerHTML": "The metaclass hierarchy does <em>not</em> parallel the regular class hierarchy. So, if\nPegasus inherits from Unicorn, Pegasus’s metaclass does not inherit from\nUnicorn’s metaclass. In more prosaic terms, this means that static methods are\nnot inherited.",
+      "protected": []
+    },
+    {
+      "id": "83",
+      "tag": "p",
+      "sourceHTML": "This also means constructors are not inherited:",
+      "originalInnerHTML": "This also means constructors are not inherited:",
+      "protected": []
+    },
+    {
+      "id": "84",
+      "tag": "p",
+      "sourceHTML": "Each class gets to control how it may be constructed independently of its base\nclasses. However, constructor <em>initializers</em> are inherited since those are\ninstance methods on the new object.",
+      "originalInnerHTML": "Each class gets to control how it may be constructed independently of its base\nclasses. However, constructor <em>initializers</em> are inherited since those are\ninstance methods on the new object.",
+      "protected": []
+    },
+    {
+      "id": "85",
+      "tag": "p",
+      "sourceHTML": "This means you can do ⟦CODE0⟧ calls inside a constructor:",
+      "originalInnerHTML": "This means you can do <code>super</code> calls inside a constructor:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>super</code>"
+        }
+      ]
+    },
+    {
+      "id": "86",
+      "tag": "h2",
+      "sourceHTML": "Super <a class=\"header-anchor\" href=\"#super\" name=\"super\">#</a>",
+      "originalInnerHTML": "Super <a class=\"header-anchor\" href=\"#super\" name=\"super\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "87",
+      "tag": "p",
+      "sourceHTML": "<strong>TODO: Integrate better into page. Should explain this before mentioning\nsuper above.</strong>",
+      "originalInnerHTML": "<strong>TODO: Integrate better into page. Should explain this before mentioning\nsuper above.</strong>",
+      "protected": []
+    },
+    {
+      "id": "88",
+      "tag": "p",
+      "sourceHTML": "Sometimes you want to invoke a method on yourself, but using methods defined in\none of your <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#inheritance\">superclasses</a>. You typically do this in\nan overridden method when you want to access the original method being\noverridden.",
+      "originalInnerHTML": "Sometimes you want to invoke a method on yourself, but using methods defined in\none of your <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/#inheritance\">superclasses</a>. You typically do this in\nan overridden method when you want to access the original method being\noverridden.",
+      "protected": []
+    },
+    {
+      "id": "89",
+      "tag": "p",
+      "sourceHTML": "To do that, you can use the special ⟦CODE0⟧ keyword as the receiver in a method\ncall:",
+      "originalInnerHTML": "To do that, you can use the special <code>super</code> keyword as the receiver in a method\ncall:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>super</code>"
+        }
+      ]
+    },
+    {
+      "id": "90",
+      "tag": "p",
+      "sourceHTML": "You can also use ⟦CODE0⟧ without a method name inside a constructor to invoke a\nbase class constructor:",
+      "originalInnerHTML": "You can also use <code>super</code> without a method name inside a constructor to invoke a\nbase class constructor:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>super</code>"
+        }
+      ]
+    },
+    {
+      "id": "91",
+      "tag": "h2",
+      "sourceHTML": "Attributes <a class=\"header-anchor\" href=\"#attributes\" name=\"attributes\">#</a>",
+      "originalInnerHTML": "Attributes <a class=\"header-anchor\" href=\"#attributes\" name=\"attributes\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "92",
+      "tag": "p",
+      "sourceHTML": "<small><strong>experimental stage</strong>: subject to minor changes</small>",
+      "originalInnerHTML": "<small><strong>experimental stage</strong>: subject to minor changes</small>",
+      "protected": []
+    },
+    {
+      "id": "93",
+      "tag": "p",
+      "sourceHTML": "A class and methods within a class can be tagged with ‘meta attributes’.",
+      "originalInnerHTML": "A class and methods within a class can be tagged with ‘meta attributes’.",
+      "protected": []
+    },
+    {
+      "id": "94",
+      "tag": "p",
+      "sourceHTML": "Like this:",
+      "originalInnerHTML": "Like this:",
+      "protected": []
+    },
+    {
+      "id": "95",
+      "tag": "p",
+      "sourceHTML": "These attributes are metadata, they give you a way to annotate and store\nany additional information about a class, which you can optionally access at runtime.\nThis information can also be used by external tools, to provide additional\nhints and information from code to the tool.",
+      "originalInnerHTML": "These attributes are metadata, they give you a way to annotate and store\nany additional information about a class, which you can optionally access at runtime.\nThis information can also be used by external tools, to provide additional\nhints and information from code to the tool.",
+      "protected": []
+    },
+    {
+      "id": "96",
+      "tag": "p",
+      "sourceHTML": "<small>\nSince this feature has just been introduced, <strong>take note</strong>.</small>",
+      "originalInnerHTML": "<small>\nSince this feature has just been introduced, <strong>take note</strong>.</small>",
+      "protected": []
+    },
+    {
+      "id": "97",
+      "tag": "p",
+      "sourceHTML": "<strong>Currently</strong> there are no attributes with a built-in meaning. \nAttributes are user-defined metadata. This may not remain \ntrue as some may become well defined through convention or potentially\nthrough use by Wren itself. \n",
+      "originalInnerHTML": "<strong>Currently</strong> there are no attributes with a built-in meaning. \nAttributes are user-defined metadata. This may not remain \ntrue as some may become well defined through convention or potentially\nthrough use by Wren itself. \n",
+      "protected": []
+    },
+    {
+      "id": "98",
+      "tag": "p",
+      "sourceHTML": "Attributes are placed before a class or method definition,\nand use the ⟦CODE0⟧ hash/pound symbol. ",
+      "originalInnerHTML": "Attributes are placed before a class or method definition,\nand use the <code>#</code> hash/pound symbol. ",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>#</code>"
+        }
+      ]
+    },
+    {
+      "id": "99",
+      "tag": "p",
+      "sourceHTML": "They can be ",
+      "originalInnerHTML": "They can be ",
+      "protected": []
+    },
+    {
+      "id": "100",
+      "tag": "li",
+      "sourceHTML": "a ⟦CODE0⟧ on it’s own",
+      "originalInnerHTML": "a <code>#key</code> on it’s own",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>#key</code>"
+        }
+      ]
+    },
+    {
+      "id": "101",
+      "tag": "li",
+      "sourceHTML": "a ⟦CODE0⟧",
+      "originalInnerHTML": "a <code>#key = value</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>#key = value</code>"
+        }
+      ]
+    },
+    {
+      "id": "102",
+      "tag": "li",
+      "sourceHTML": "a ⟦CODE0⟧",
+      "originalInnerHTML": "a <code>#group(with, multiple = true, keys = \"value\")</code>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>#group(with, multiple = true, keys = \"value\")</code>"
+        }
+      ]
+    },
+    {
+      "id": "103",
+      "tag": "p",
+      "sourceHTML": "An attribute <em>key</em> can only be a ⟦CODE0⟧. This is the same type of name \nas a method name, a class name or variable name, an identifier that matches\nthe Wren identifier rules. A name results in a String value at runtime.",
+      "originalInnerHTML": "An attribute <em>key</em> can only be a <code>Name</code>. This is the same type of name \nas a method name, a class name or variable name, an identifier that matches\nthe Wren identifier rules. A name results in a String value at runtime.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>Name</code>"
+        }
+      ]
+    },
+    {
+      "id": "104",
+      "tag": "p",
+      "sourceHTML": "An attribute <em>value</em> can be any of these literal values: ⟦CODE0⟧.\nValues cannot contain expressions, just a value, there is no compile time \nevaluation.",
+      "originalInnerHTML": "An attribute <em>value</em> can be any of these literal values: <code>Name, String, Bool, Num</code>.\nValues cannot contain expressions, just a value, there is no compile time \nevaluation.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>Name, String, Bool, Num</code>"
+        }
+      ]
+    },
+    {
+      "id": "105",
+      "tag": "p",
+      "sourceHTML": "Groups can span multiple lines, methods have their own attributes, and duplicate\nkeys are valid.",
+      "originalInnerHTML": "Groups can span multiple lines, methods have their own attributes, and duplicate\nkeys are valid.",
+      "protected": []
+    },
+    {
+      "id": "106",
+      "tag": "h3",
+      "sourceHTML": "Accessing attributes at runtime <a class=\"header-anchor\" href=\"#accessing-attributes-at-runtime\" name=\"accessing-attributes-at-runtime\">#</a>",
+      "originalInnerHTML": "Accessing attributes at runtime <a class=\"header-anchor\" href=\"#accessing-attributes-at-runtime\" name=\"accessing-attributes-at-runtime\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "107",
+      "tag": "p",
+      "sourceHTML": "By default, attributes are compiled out and ignored.",
+      "originalInnerHTML": "By default, attributes are compiled out and ignored.",
+      "protected": []
+    },
+    {
+      "id": "108",
+      "tag": "p",
+      "sourceHTML": "For an attribute to be visible at runtime, mark it for runtime\naccess using an exclamation:",
+      "originalInnerHTML": "For an attribute to be visible at runtime, mark it for runtime\naccess using an exclamation:",
+      "protected": []
+    },
+    {
+      "id": "109",
+      "tag": "p",
+      "sourceHTML": "Attributes at runtime are stored on the class. You can access them via \n⟦CODE0⟧. The ⟦CODE1⟧ field on a class will \nbe null if a class has no attributes or if it’s attributes aren’t marked.",
+      "originalInnerHTML": "Attributes at runtime are stored on the class. You can access them via \n<code>YourClass.attributes</code>. The <code>attributes</code> field on a class will \nbe null if a class has no attributes or if it’s attributes aren’t marked.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>YourClass.attributes</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>attributes</code>"
+        }
+      ]
+    },
+    {
+      "id": "110",
+      "tag": "p",
+      "sourceHTML": "If the class contains class or method attributes, it will be an object with\ntwo getters:",
+      "originalInnerHTML": "If the class contains class or method attributes, it will be an object with\ntwo getters:",
+      "protected": []
+    },
+    {
+      "id": "111",
+      "tag": "li",
+      "sourceHTML": "⟦CODE0⟧ for the class attributes",
+      "originalInnerHTML": "<code>YourClass.attributes.self</code> for the class attributes",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>YourClass.attributes.self</code>"
+        }
+      ]
+    },
+    {
+      "id": "112",
+      "tag": "li",
+      "sourceHTML": "⟦CODE0⟧ for the method attributes",
+      "originalInnerHTML": "<code>YourClass.attributes.methods</code> for the method attributes",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>YourClass.attributes.methods</code>"
+        }
+      ]
+    },
+    {
+      "id": "113",
+      "tag": "p",
+      "sourceHTML": "Attributes are stored by group in a regular Wren Map. \nKeys that are not grouped, use ⟦CODE0⟧ as the group key.",
+      "originalInnerHTML": "Attributes are stored by group in a regular Wren Map. \nKeys that are not grouped, use <code>null</code> as the group key.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "114",
+      "tag": "p",
+      "sourceHTML": "Values are stored in a list, since duplicate keys are allowed, multiple\nvalues need to be stored. They’re stored in order of definition.",
+      "originalInnerHTML": "Values are stored in a list, since duplicate keys are allowed, multiple\nvalues need to be stored. They’re stored in order of definition.",
+      "protected": []
+    },
+    {
+      "id": "115",
+      "tag": "p",
+      "sourceHTML": "Method attributes are stored in a map by method signature, and each method\nhas it’s own attributes that match the above structure. The method signature\nis prefixed by ⟦CODE0⟧ or ⟦CODE1⟧ as needed.",
+      "originalInnerHTML": "Method attributes are stored in a map by method signature, and each method\nhas it’s own attributes that match the above structure. The method signature\nis prefixed by <code>static</code> or <code>foreign static</code> as needed.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>static</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>foreign static</code>"
+        }
+      ]
+    },
+    {
+      "id": "116",
+      "tag": "p",
+      "sourceHTML": "Let’s see what that looks like:",
+      "originalInnerHTML": "Let’s see what that looks like:",
+      "protected": []
+    },
+    {
+      "id": "117",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">Concurrency →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">← Functions</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">Concurrency →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">← Functions</a>",
+      "protected": []
+    }
+  ]
+}

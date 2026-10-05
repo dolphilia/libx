@@ -1,0 +1,275 @@
+1 [h1]
+EN: Control Flow
+JA: 制御フロー
+
+2 [p]
+EN: Control flow is used to determine which chunks of code are executed and how many
+times. <em>Branching</em> statements and expressions decide whether or not to execute
+some code and <em>looping</em> ones execute something more than once.
+JA: 制御フローは、どのコードを何回実行するかを決めるために使います。<em>分岐</em>の文や式は、あるコードを実行するかどうかを決め、<em>ループ</em>の文や式は、同じものを複数回実行します。
+
+3 [h2]
+EN: Truth <a class="header-anchor" href="#truth" name="truth">#</a>
+JA: 真偽の判定 <a class="header-anchor" href="#truth" name="truth">#</a>
+
+4 [p]
+EN: All control flow is based on <em>deciding</em> whether or not to do something. This
+decision depends on some expression’s value. We take the entire universe of
+possible objects and divide them into two buckets: some we consider “true” and
+the rest are “false”. If the expression results in a value in the true bucket,
+we do one thing. Otherwise, we do something else.
+JA: すべての制御フローは、何かをするかどうかの<em>判断</em>に基づいています。この判断は、ある式の値によって決まります。考えられるすべてのオブジェクトを二つに分け、一方を「真」、残りを「偽」と見なします。式の結果が真の側の値なら、ある動作を行います。そうでなければ、別の動作を行います。
+
+5 [p]
+EN: Obviously, the boolean ⟦CODE0⟧ is in the “true” bucket and ⟦CODE1⟧ is in
+“false”, but what about values of other types? The choice is ultimately
+arbitrary, and different languages have different rules. Wren’s rules follow
+Ruby:
+JA: 当然、真偽値⟦CODE0⟧は「真」、⟦CODE1⟧は「偽」に入ります。しかし、ほかの型の値はどうでしょうか？ この選択に絶対的な決まりはなく、言語ごとに規則が異なります。Wrenの規則はRubyに従っています。
+
+6 [li]
+EN: The boolean value ⟦CODE0⟧ is false.
+JA: 真偽値⟦CODE0⟧は偽です。
+
+7 [li]
+EN: The null value ⟦CODE0⟧ is false.
+JA: null値⟦CODE0⟧は偽です。
+
+8 [li]
+EN: Everything else is true.
+JA: それ以外はすべて真です。
+
+9 [p]
+EN: This means ⟦CODE0⟧, empty strings, and empty collections are all considered “true”
+values.
+JA: つまり、⟦CODE0⟧、空の文字列、空のコレクションも、すべて「真」の値と見なします。
+
+10 [h2]
+EN: If statements <a class="header-anchor" href="#if-statements" name="if-statements">#</a>
+JA: if文 <a class="header-anchor" href="#if-statements" name="if-statements">#</a>
+
+11 [p]
+EN: The simplest branching statement, ⟦CODE0⟧ lets you conditionally skip a chunk of
+code. It looks like this:
+JA: 最も単純な分岐文である⟦CODE0⟧は、条件に応じてコードを読み飛ばします。次のように書きます。
+
+12 [p]
+EN: That evaluates the parenthesized expression after ⟦CODE0⟧. If it’s true, then the
+statement after the condition is evaluated. Otherwise it is skipped. Instead of
+a statement, you can have a <a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks">block</a>:
+JA: ⟦CODE0⟧の後にある、丸括弧で囲んだ式を評価します。真なら、条件の後の文を評価します。そうでなければ、その文を読み飛ばします。単独の文の代わりに、<a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks">ブロック</a>も書けます。
+
+13 [p]
+EN: You may also provide an ⟦CODE0⟧ branch. It will be executed if the condition is
+false:
+JA: ⟦CODE0⟧の分岐を設けることもできます。条件が偽の場合は、こちらを実行します。
+
+14 [p]
+EN: And, of course, it can take a block too:
+JA: もちろん、こちらもブロックにできます。
+
+15 [h2]
+EN: Logical operators <a class="header-anchor" href="#logical-operators" name="logical-operators">#</a>
+JA: 論理演算子 <a class="header-anchor" href="#logical-operators" name="logical-operators">#</a>
+
+16 [p]
+EN: Unlike most other <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">operators</a> in Wren which are just a special syntax for
+<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">method calls</a>, the ⟦CODE0⟧ and ⟦CODE1⟧ operators are special. This is because they
+only conditionally evaluate the right operand—they short-circuit.
+JA: Wrenのほかの多くの<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">演算子</a>は、<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">メソッド呼び出し</a>の特別な構文にすぎませんが、⟦CODE0⟧と⟦CODE1⟧は特別です。右のオペランドを条件に応じてしか評価しない、短絡評価を行うためです。
+
+17 [p]
+EN: A ⟦CODE0⟧ (“logical and”) expression evaluates the left-hand argument. If it’s
+false, it returns that value. Otherwise it evaluates and returns the right-hand
+argument.
+JA: ⟦CODE0⟧（「論理AND」）の式は、左の引数を評価します。偽なら、その値を返します。そうでなければ、右の引数を評価して返します。
+
+18 [p]
+EN: A ⟦CODE0⟧ (“logical or”) expression is reversed. If the left-hand argument is
+<em>true</em>, it’s returned, otherwise the right-hand argument is evaluated and
+returned:
+JA: ⟦CODE0⟧（「論理OR」）の式は逆です。左の引数が<em>真</em>なら、それを返します。そうでなければ、右の引数を評価して返します。
+
+19 [h2]
+EN: The conditional operator ⟦CODE0⟧ <a class="header-anchor" href="#the-conditional-operator-" name="the-conditional-operator-">#</a>
+JA: 条件演算子⟦CODE0⟧ <a class="header-anchor" href="#the-conditional-operator-" name="the-conditional-operator-">#</a>
+
+20 [p]
+EN: Also known as the “ternary” operator since it takes three arguments, Wren has
+the little “if statement in the form of an expression” you know and love from C
+and similar languages.
+JA: Wrenには、Cや似た言語でおなじみの、小さな「式の形をしたif文」があります。三つの引数を取るので、「三項」演算子とも呼ばれます。
+
+21 [p]
+EN: It takes a condition expression, followed by ⟦CODE0⟧, followed by a then
+expression, a ⟦CODE1⟧, then an else expression. Just like ⟦CODE2⟧, it evaluates the
+condition. If true, it evaluates and returns the then expression. Otherwise
+it does the else expression.
+JA: 条件式、⟦CODE0⟧、then側の式、⟦CODE1⟧、else側の式の順に書きます。⟦CODE2⟧と同じように条件を評価し、真ならthen側の式を評価して返します。そうでなければ、else側の式を評価して返します。
+
+22 [h2]
+EN: While statements <a class="header-anchor" href="#while-statements" name="while-statements">#</a>
+JA: while文 <a class="header-anchor" href="#while-statements" name="while-statements">#</a>
+
+23 [p]
+EN: It’s hard to write a useful program without executing some chunk of code
+repeatedly. To do that, you use looping statements. There are two in Wren, and
+they should be familiar if you’ve used other imperative languages.
+JA: コードの一部分を繰り返し実行しなければ、役に立つプログラムを書くのは難しいでしょう。そのために、ループ文を使います。Wrenには二つあり、ほかの命令型言語を使ったことがあれば、なじみのあるものです。
+
+24 [p]
+EN: The simplest, a ⟦CODE0⟧ statement executes a chunk of code as long as a
+condition continues to hold. For example:
+JA: 最も単純な⟦CODE0⟧文は、条件が成り立ち続ける限り、コードを実行します。例えば、次のように書きます。
+
+25 [p]
+EN: This evaluates the expression ⟦CODE0⟧. If it is true, then it executes the
+following body. After that, it loops back to the top, and evaluates the
+condition again. It keeps doing this as long as the condition evaluates to
+something true.
+JA: 式⟦CODE0⟧を評価し、真なら、その後の本体を実行します。その後、先頭に戻って条件をもう一度評価します。条件が真と見なされる値になる限り、これを繰り返します。
+
+26 [p]
+EN: The condition for a while loop can be any expression, and must be surrounded by
+parentheses. The body of the loop is usually a curly block but can also be a
+single statement:
+JA: whileループの条件には任意の式を使えますが、丸括弧で囲む必要があります。ループの本体は、通常は波括弧で囲んだブロックですが、単独の文でもかまいません。
+
+27 [h2]
+EN: For statements <a class="header-anchor" href="#for-statements" name="for-statements">#</a>
+JA: for文 <a class="header-anchor" href="#for-statements" name="for-statements">#</a>
+
+28 [p]
+EN: While statements are useful when you want to loop indefinitely or according to
+some complex condition. But in most cases, you’re looping through
+a <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">list</a>, a series of numbers, or some other “sequence” object.
+That’s what ⟦CODE0⟧ is, uh, for. It looks like this:
+JA: while文は、無期限に、または複雑な条件に従って繰り返したい場合に便利です。しかし、多くの場合は<a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">リスト</a>、一連の数値、その他の「シーケンス」オブジェクトを順に処理します。⟦CODE0⟧は、そのための文です。次のように書きます。
+
+29 [p]
+EN: A ⟦CODE0⟧ loop has three components:
+JA: ⟦CODE0⟧ループは、三つの部分からなります。
+
+30 [li]
+EN: 
+<p>A <em>variable name</em> to bind. In the example, that’s ⟦CODE0⟧. Wren will create
+   a new variable with that name whose scope is the body of the loop.</p>
+
+JA: <p>値を結び付ける<em>変数名</em>。例では⟦CODE0⟧です。Wrenは、この名前の新しい変数を作ります。そのスコープは、ループの本体です。</p>
+
+31 [li]
+EN: 
+<p>A <em>sequence expression</em>. This determines what you’re looping over. It gets
+   evaluated <em>once</em> before the body of the loop. In this case, it’s a list
+   literal, but it can be any expression.</p>
+
+JA: <p><em>シーケンス式</em>。何を反復処理するかを決めます。ループ本体の実行前に<em>一度だけ</em>評価します。この例ではリストリテラルですが、任意の式を使えます。</p>
+
+32 [li]
+EN: 
+<p>A <em>body</em>. This is a curly block or a single statement. It gets executed once
+   for each iteration of the loop.</p>
+
+JA: <p><em>本体</em>。波括弧で囲んだブロックか、単独の文です。ループの各反復で一度実行します。</p>
+
+33 [h2]
+EN: Break statements <a class="header-anchor" href="#break-statements" name="break-statements">#</a>
+JA: break文 <a class="header-anchor" href="#break-statements" name="break-statements">#</a>
+
+34 [p]
+EN: Sometimes, right in the middle of a loop body, you decide you want to bail out
+and stop. To do that, you can use a ⟦CODE0⟧ statement. It’s just the ⟦CODE1⟧
+keyword all by itself. That immediately exits out of the nearest enclosing
+⟦CODE2⟧ or ⟦CODE3⟧ loop.
+JA: ループの本体の途中で、抜け出して終了したくなることがあります。そのために⟦CODE0⟧文を使えます。⟦CODE1⟧キーワードを単独で書くだけです。直ちに、最も内側の、現在の文を囲む⟦CODE2⟧または⟦CODE3⟧ループを抜けます。
+
+35 [h2]
+EN: Continue statements <a class="header-anchor" href="#continue-statements" name="continue-statements">#</a>
+JA: continue文 <a class="header-anchor" href="#continue-statements" name="continue-statements">#</a>
+
+36 [p]
+EN: During the execution of a loop body, you might decide that you want to skip the 
+rest of this iteration and move on to the next one. You can use a ⟦CODE0⟧ 
+statement to do that. It’s just the ⟦CODE1⟧ keyword all by itself. Execution
+will immediately jump to the beginning of the next loop iteration (and check the
+loop conditions).
+JA: ループ本体の実行中に、現在の反復の残りを読み飛ばして次の反復へ進みたくなることがあります。そのために⟦CODE0⟧文を使えます。⟦CODE1⟧キーワードを単独で書くだけです。直ちに次のループ反復の先頭へ移り、ループの条件を確認します。
+
+37 [h2]
+EN: Numeric ranges <a class="header-anchor" href="#numeric-ranges" name="numeric-ranges">#</a>
+JA: 数値の範囲 <a class="header-anchor" href="#numeric-ranges" name="numeric-ranges">#</a>
+
+38 [p]
+EN: Lists are one common use for ⟦CODE0⟧ loops, but sometimes you want to walk over a
+sequence of numbers, or loop a number of times. For that, you can create a
+<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">range</a>, like so:
+JA: リストは⟦CODE0⟧ループのよくある用途ですが、一連の数値を順に処理したり、一定の回数だけ繰り返したりしたい場合もあります。その場合は、次のように<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">範囲</a>を作れます。
+
+39 [p]
+EN: This loops over the numbers from 1 to 100, including 100 itself. If you want to
+leave off the last value, use three dots instead of two:
+JA: これは100そのものも含め、1から100までの数値について繰り返します。最後の値を含めたくなければ、点を二つではなく三つにします。
+
+40 [p]
+EN: This looks like some special “range” syntax in the ⟦CODE0⟧ loop, but it’s actually
+just a pair of operators. The ⟦CODE1⟧ and ⟦CODE2⟧ syntax are infix “range” operators.
+Like <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">other operators</a>, they are special syntax for a regular method
+call. The number type implements them and returns a <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">range object</a> that knows
+how to iterate over a series of numbers.
+JA: ⟦CODE0⟧ループ専用の「範囲」構文に見えますが、実際には二つの演算子です。⟦CODE1⟧と⟦CODE2⟧は、中置の「範囲」演算子です。<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">ほかの演算子</a>と同様、通常のメソッド呼び出しの特別な構文です。数値型がこれらを実装し、一連の数値を反復処理する方法を知っている<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">範囲オブジェクト</a>を返します。
+
+41 [h2]
+EN: The iterator protocol <a class="header-anchor" href="#the-iterator-protocol" name="the-iterator-protocol">#</a>
+JA: イテレータープロトコル <a class="header-anchor" href="#the-iterator-protocol" name="the-iterator-protocol">#</a>
+
+42 [p]
+EN: Lists and ranges cover the two most common kinds of loops, but you should also
+be able to define your own sequences. To enable that, the semantics of ⟦CODE0⟧
+are defined in terms of an “iterator protocol”. The loop itself doesn’t know
+anything about lists or ranges, it just knows how to call two particular
+methods on the object that resulted from evaluating the sequence expression.
+JA: リストと範囲で、最も一般的な二種類のループを扱えますが、自分のシーケンスも定義できる必要があります。そのために、⟦CODE0⟧の意味は「イテレータープロトコル」で定義されています。ループ自体はリストや範囲を知りません。シーケンス式を評価して得たオブジェクトに対し、特定の二つのメソッドを呼び出す方法だけを知っています。
+
+43 [p]
+EN: When you write a loop like this:
+JA: 次のようなループを書くと、
+
+44 [p]
+EN: Wren sees it something like this:
+JA: Wrenには、おおよそ次のように見えます。
+
+45 [p]
+EN: First, Wren evaluates the sequence expression and stores it in a hidden
+variable (written ⟦CODE0⟧ in the example but in reality it doesn’t have a name
+you can use). It also creates a hidden “iterator” variable and initializes it
+to ⟦CODE1⟧.
+JA: まず、Wrenはシーケンス式を評価し、隠れた変数に保存します（例では⟦CODE0⟧と書いていますが、実際には利用できる名前はありません）。また、隠れた「イテレーター」変数を作り、⟦CODE1⟧で初期化します。
+
+46 [p]
+EN: Each iteration, it calls ⟦CODE0⟧ on the sequence, passing in the current
+iterator value. (In the first iteration, it passes in ⟦CODE1⟧.) The sequence’s
+job is to take that iterator and advance it to the next element in the
+sequence. (Or, in the case where the iterator is ⟦CODE2⟧, to advance it to the
+<em>first</em> element). It then returns either the new iterator, or ⟦CODE3⟧ to
+indicate that there are no more elements.
+JA: 各反復で、現在のイテレーターの値を渡してシーケンスの⟦CODE0⟧を呼び出します（最初の反復では⟦CODE1⟧を渡します）。シーケンスの役目は、そのイテレーターを受け取って次の要素へ進めることです（イテレーターが⟦CODE2⟧の場合は、<em>最初の</em>要素へ進めます）。その後、新しいイテレーターか、もう要素がないことを示す⟦CODE3⟧を返します。
+
+47 [p]
+EN: If ⟦CODE0⟧ is returned, Wren exits out of the loop and we’re done. If anything
+else is returned, that means that we have advanced to a new valid element. To
+get that, Wren then calls ⟦CODE1⟧ on the sequence and passes in the
+iterator value that it just got from calling ⟦CODE2⟧. The sequence uses
+that to look up and return the appropriate element.
+JA: ⟦CODE0⟧が返ると、Wrenはループを抜けて終了します。それ以外が返ると、新しい有効な要素へ進んだという意味です。その要素を得るため、Wrenは続いてシーケンスの⟦CODE1⟧を呼び出し、⟦CODE2⟧から得たばかりのイテレーターの値を渡します。シーケンスはそれを使って、該当する要素を調べて返します。
+
+48 [p]
+EN: The built-in <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">List</a> and <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">Range</a> types implement
+⟦CODE0⟧ and ⟦CODE1⟧ to walk over their respective sequences. You
+can implement the same methods in your classes to make your own types iterable.
+JA: 組み込みの<a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">List</a>型と<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#ranges">Range</a>型は、それぞれのシーケンスを順に処理するため、⟦CODE0⟧と⟦CODE1⟧を実装しています。自分のクラスでも同じメソッドを実装すれば、独自の型を反復処理できるようになります。
+
+49 [p]
+EN: <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/09-variables/">Variables →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">← Method Calls</a>
+JA: <br/><hr/><a class="right" href="/docs/wren/v0-4-0/en/01-guide/09-variables/">変数 →</a><a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">← メソッド呼び出し</a>

@@ -1,0 +1,231 @@
+1 [h1] Syntax
+
+2 [p] Wren’s syntax is designed to be familiar to people coming from C-like languages
+while being a bit simpler and more streamlined.
+
+3 [p] Scripts are stored in plain text files with a ⟦CODE0⟧ file extension. Wren does
+not compile ahead of time: programs are run directly from source, from top to
+bottom like a typical scripting language. (Internally, programs are compiled to
+bytecode for <a href="/docs/wren/v0-4-0/en/01-guide/22-performance/">efficiency</a>, but that’s an implementation detail.)
+
+4 [h2] Comments <a class="header-anchor" href="#comments" name="comments">#</a>
+
+5 [p] Line comments start with ⟦CODE0⟧ and end at the end of the line:
+
+6 [p] Block comments start with ⟦CODE0⟧ and end with ⟦CODE1⟧. They can span multiple lines:
+
+7 [p] Unlike C, block comments can nest in Wren:
+
+8 [p] This is handy because it lets you easily comment out an entire block of code,
+even if the code already contains block comments.
+
+9 [h2] Reserved words <a class="header-anchor" href="#reserved-words" name="reserved-words">#</a>
+
+10 [p] One way to get a quick feel for a language’s style is to see what words it
+reserves. Here’s what Wren has:
+
+11 [h2] Identifiers <a class="header-anchor" href="#identifiers" name="identifiers">#</a>
+
+12 [p] Naming rules are similar to other programming languages. Identifiers start with
+a letter or underscore and may contain letters, digits, and underscores. Case
+is sensitive.
+
+13 [p] Identifiers that start with underscore (⟦CODE0⟧) are special in Wren. They are used
+to indicate <a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#fields">fields</a> in classes.
+
+14 [h2] Newlines <a class="header-anchor" href="#newlines" name="newlines">#</a>
+
+15 [p] Newlines (⟦CODE0⟧) are meaningful in Wren. They are used to separate statements:
+
+16 [p] Sometimes, though, a statement doesn’t fit on a single line and jamming a
+newline in the middle would trip it up. To handle that, Wren has a very simple
+rule: It ignores a newline following any token that can’t end a statement.
+
+17 [p] In practice, this means you can put each statement on its own line and wrap
+them across lines as needed without too much trouble.
+
+18 [h2] Blocks <a class="header-anchor" href="#blocks" name="blocks">#</a>
+
+19 [p] Wren uses curly braces to define <em>blocks</em>. You can use a block anywhere a
+statement is allowed, like in <a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/">control flow</a> statements.
+<a href="/docs/wren/v0-4-0/en/01-guide/10-classes/#methods">Method</a> and <a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">function</a> bodies are also
+blocks. For example, here we have a block for the then case, and a single
+statement for the else:
+
+20 [p] Blocks have two similar but not identical forms. Typically, blocks contain a
+series of statements like:
+
+21 [p] Blocks of this form when used for method and function bodies automatically
+return ⟦CODE0⟧ after the block has completed. If you want to return a different
+value, you need an explicit ⟦CODE1⟧ statement.
+
+22 [p] However, it’s pretty common to have a method or function that just evaluates and
+returns the result of a single expression. Some other languages use ⟦CODE0⟧ to
+define these. Wren uses:
+
+23 [p] If there is no newline after the ⟦CODE0⟧ (or after the parameter list in a
+<a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">function</a>), then the block may only contain a single
+expression, and it automatically returns the result of it. It’s exactly the same
+as doing:
+
+24 [p] Statements are not allowed in this form (since they don’t produce values), which
+means nothing starting with ⟦CODE0⟧, ⟦CODE1⟧, ⟦CODE2⟧, ⟦CODE3⟧,  ⟦CODE4⟧,
+⟦CODE5⟧, or ⟦CODE6⟧. If you want a block that contains a single statement,
+put a newline in there:
+
+25 [p] Using an initial newline after the ⟦CODE0⟧ does feel a little weird or magical, but
+newlines are already significant in Wren, so it’s not totally unreasonable. The nice
+thing about this syntax as opposed to something like ⟦CODE1⟧ is that the <em>end</em> of
+the block has an explicit delimiter. That helps when chaining:
+
+26 [h2] Precedence and Associativity <a class="header-anchor" href="#precedence-and-associativity" name="precedence-and-associativity">#</a>
+
+27 [p] We’ll talk about Wren’s different expression forms and what they mean in the
+next few pages. But if you want to see how they interact with each other
+grammatically, here’s the whole table.
+
+28 [p] It shows which expressions have higher <em>precedence</em>—which ones bind more
+tightly than others—and their <em>associativity</em>—how a series of the
+same kind of expression is ordered. Wren mostly follows C, except that it fixes
+<a href="http://www.lysator.liu.se/c/dmr-on-or.html">the bitwise operator mistake</a>. The full precedence table, from
+tightest to loosest, is:
+
+29 [th] Prec
+
+30 [th] Operator
+
+31 [th] Description
+
+32 [th] Associates
+
+33 [td] 1
+
+34 [td] ⟦CODE0⟧ ⟦CODE1⟧ ⟦CODE2⟧
+
+35 [td] Grouping, <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">Subscript, Method call</a>
+
+36 [td] Left
+
+37 [td] 2
+
+38 [td] ⟦CODE0⟧ ⟦CODE1⟧ ⟦CODE2⟧
+
+39 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Negate, Not, Complement</a>
+
+40 [td] Right
+
+41 [td] 3
+
+42 [td] ⟦CODE0⟧ ⟦CODE1⟧ ⟦CODE2⟧
+
+43 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Multiply, Divide, Modulo</a>
+
+44 [td] Left
+
+45 [td] 4
+
+46 [td] ⟦CODE0⟧ ⟦CODE1⟧
+
+47 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Add, Subtract</a>
+
+48 [td] Left
+
+49 [td] 5
+
+50 [td] ⟦CODE0⟧ ⟦CODE1⟧
+
+51 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Inclusive range, Exclusive range</a>
+
+52 [td] Left
+
+53 [td] 6
+
+54 [td] ⟦CODE0⟧ ⟦CODE1⟧
+
+55 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Left shift, Right shift</a>
+
+56 [td] Left
+
+57 [td] 7
+
+58 [td] ⟦CODE0⟧
+
+59 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Bitwise and</a>
+
+60 [td] Left
+
+61 [td] 8
+
+62 [td] ⟦CODE0⟧
+
+63 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Bitwise xor</a>
+
+64 [td] Left
+
+65 [td] 9
+
+66 [td] ⟦CODE0⟧
+
+67 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Bitwise or</a>
+
+68 [td] Left
+
+69 [td] 10
+
+70 [td] ⟦CODE0⟧ ⟦CODE1⟧ ⟦CODE2⟧ ⟦CODE3⟧
+
+71 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Comparison</a>
+
+72 [td] Left
+
+73 [td] 11
+
+74 [td] ⟦CODE0⟧
+
+75 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Type test</a>
+
+76 [td] Left
+
+77 [td] 12
+
+78 [td] ⟦CODE0⟧ ⟦CODE1⟧
+
+79 [td] <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">Equals, Not equal</a>
+
+80 [td] Left
+
+81 [td] 13
+
+82 [td] ⟦CODE0⟧
+
+83 [td] <a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/#logical-operators">Logical and</a>
+
+84 [td] Left
+
+85 [td] 14
+
+86 [td] ⟦CODE0⟧
+
+87 [td] <a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/#logical-operators">Logical or</a>
+
+88 [td] Left
+
+89 [td] 15
+
+90 [td] ⟦CODE0⟧
+
+91 [td] <a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/#the-conditional-operator-">Conditional</a>
+
+92 [td] Right
+
+93 [td] 16
+
+94 [td] ⟦CODE0⟧
+
+95 [td] <a href="/docs/wren/v0-4-0/en/01-guide/09-variables/#assignment">Assignment</a>, <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#setters">Setter</a>
+
+96 [td] Right
+
+97 [p] <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/04-values/">Values →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/02-getting-started/">← Getting Started</a>

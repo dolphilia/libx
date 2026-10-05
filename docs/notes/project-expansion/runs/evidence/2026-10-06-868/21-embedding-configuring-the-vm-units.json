@@ -1,0 +1,539 @@
+{
+  "page": "01-guide/21-embedding-configuring-the-vm.md",
+  "titleEN": "Configuring the VM",
+  "titleJA": "VMの設定",
+  "sourceCanonicalSHA256": "6e426b737be1db1aa758410c4f9d9e21bdee38b691729a10a0646a4c7553d399",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Configuring the VM",
+      "originalInnerHTML": "Configuring the VM",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "When you create a Wren VM, you tweak it by passing in a pointer to a\nWrenConfiguration structure. Since Wren has no global state, you can configure\neach VM differently if your application happens to run multiple.",
+      "originalInnerHTML": "When you create a Wren VM, you tweak it by passing in a pointer to a\nWrenConfiguration structure. Since Wren has no global state, you can configure\neach VM differently if your application happens to run multiple.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "The struct looks like:",
+      "originalInnerHTML": "The struct looks like:",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "Most fields have useful defaults, which you can (and should) initialize by\ncalling:",
+      "originalInnerHTML": "Most fields have useful defaults, which you can (and should) initialize by\ncalling:",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "Calling this ensures that your VM doesn’t get uninitialized configuration when\nnew fields are added to WrenConfiguration. Here is what each field does, roughly\ncategorized:",
+      "originalInnerHTML": "Calling this ensures that your VM doesn’t get uninitialized configuration when\nnew fields are added to WrenConfiguration. Here is what each field does, roughly\ncategorized:",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "h2",
+      "sourceHTML": "Binding <a class=\"header-anchor\" href=\"#binding\" name=\"binding\">#</a>",
+      "originalInnerHTML": "Binding <a class=\"header-anchor\" href=\"#binding\" name=\"binding\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "The VM is isolated from the outside world. These callbacks let the VM request\naccess to imported code and foreign functionality.",
+      "originalInnerHTML": "The VM is isolated from the outside world. These callbacks let the VM request\naccess to imported code and foreign functionality.",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "h3",
+      "sourceHTML": "<strong>⟦CODE0⟧</strong> <a class=\"header-anchor\" href=\"#loadmodulefn\" name=\"loadmodulefn\">#</a>",
+      "originalInnerHTML": "<strong><code>loadModuleFn</code></strong> <a class=\"header-anchor\" href=\"#loadmodulefn\" name=\"loadmodulefn\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>loadModuleFn</code>"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "This is the callback Wren uses to load an imported module. The VM itself does\nnot know how to talk to the file system, so when an ⟦CODE0⟧ statement is\nexecuted, it relies on the host application to locate and read the source code\nfor a module.",
+      "originalInnerHTML": "This is the callback Wren uses to load an imported module. The VM itself does\nnot know how to talk to the file system, so when an <code>import</code> statement is\nexecuted, it relies on the host application to locate and read the source code\nfor a module.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import</code>"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "The signature of this function is:",
+      "originalInnerHTML": "The signature of this function is:",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "When a module is imported, Wren calls this and passes in the module’s name. The\nhost should return the source code for that module in a ⟦CODE0⟧ struct.",
+      "originalInnerHTML": "When a module is imported, Wren calls this and passes in the module’s name. The\nhost should return the source code for that module in a <code>WrenLoadModuleResult</code> struct.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>WrenLoadModuleResult</code>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "The module loader is only be called once for any given module name. Wren caches\nthe result internally so subsequent imports of the same module use the\npreviously loaded code.",
+      "originalInnerHTML": "The module loader is only be called once for any given module name. Wren caches\nthe result internally so subsequent imports of the same module use the\npreviously loaded code.",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "If your host application isn’t able to load a module with some name, it should\nmake sure the ⟦CODE0⟧ value is ⟦CODE1⟧ when returned. Wren will then report that as a runtime error.",
+      "originalInnerHTML": "If your host application isn’t able to load a module with some name, it should\nmake sure the <code>source</code> value is <code>NULL</code> when returned. Wren will then report that as a runtime error.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>source</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>NULL</code>"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "If you don’t use any ⟦CODE0⟧ statements, you can leave the ⟦CODE1⟧ field in\nthe configuration set to ⟦CODE2⟧ (the default).",
+      "originalInnerHTML": "If you don’t use any <code>import</code> statements, you can leave the <code>loadModuleFn</code> field in\nthe configuration set to <code>NULL</code> (the default).",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>import</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>loadModuleFn</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>NULL</code>"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "Additionally, the ⟦CODE0⟧ allows us to add a callback for when Wren is \ndone with the ⟦CODE1⟧, so we can free the memory if needed.",
+      "originalInnerHTML": "Additionally, the <code>WrenLoadModuleResult</code> allows us to add a callback for when Wren is \ndone with the <code>source</code>, so we can free the memory if needed.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>WrenLoadModuleResult</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>source</code>"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "tag": "h3",
+      "sourceHTML": "<strong>⟦CODE0⟧</strong> <a class=\"header-anchor\" href=\"#bindforeignmethodfn\" name=\"bindforeignmethodfn\">#</a>",
+      "originalInnerHTML": "<strong><code>bindForeignMethodFn</code></strong> <a class=\"header-anchor\" href=\"#bindforeignmethodfn\" name=\"bindforeignmethodfn\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>bindForeignMethodFn</code>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "The callback Wren uses to find a foreign method and bind it to a class. See\n<a href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/\">this page</a> for details. If your application defines no foreign\nmethods, you can leave this ⟦CODE0⟧.",
+      "originalInnerHTML": "The callback Wren uses to find a foreign method and bind it to a class. See\n<a href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/\">this page</a> for details. If your application defines no foreign\nmethods, you can leave this <code>NULL</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>NULL</code>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "tag": "h3",
+      "sourceHTML": "<strong>⟦CODE0⟧</strong> <a class=\"header-anchor\" href=\"#bindforeignclassfn\" name=\"bindforeignclassfn\">#</a>",
+      "originalInnerHTML": "<strong><code>bindForeignClassFn</code></strong> <a class=\"header-anchor\" href=\"#bindforeignclassfn\" name=\"bindforeignclassfn\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>bindForeignClassFn</code>"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "The callback Wren uses to find a foreign class and get its foreign methods. See\n<a href=\"/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/\">this page</a> for details. If your application defines no foreign\nclasses, you can leave this ⟦CODE0⟧.",
+      "originalInnerHTML": "The callback Wren uses to find a foreign class and get its foreign methods. See\n<a href=\"/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/\">this page</a> for details. If your application defines no foreign\nclasses, you can leave this <code>NULL</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>NULL</code>"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "tag": "h2",
+      "sourceHTML": "Diagnostics <a class=\"header-anchor\" href=\"#diagnostics\" name=\"diagnostics\">#</a>",
+      "originalInnerHTML": "Diagnostics <a class=\"header-anchor\" href=\"#diagnostics\" name=\"diagnostics\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "These let you wire up some minimal output so you can tell if your code is doing\nwhat you expect.",
+      "originalInnerHTML": "These let you wire up some minimal output so you can tell if your code is doing\nwhat you expect.",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "h3",
+      "sourceHTML": "<strong>⟦CODE0⟧</strong> <a class=\"header-anchor\" href=\"#writefn\" name=\"writefn\">#</a>",
+      "originalInnerHTML": "<strong><code>writeFn</code></strong> <a class=\"header-anchor\" href=\"#writefn\" name=\"writefn\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>writeFn</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "This is the callback Wren uses to output text when ⟦CODE0⟧ or the other\nrelated functions are called. This is the minimal connection the VM has with the\noutside world and lets you do rudimentary “printf debugging”. Its signature is:",
+      "originalInnerHTML": "This is the callback Wren uses to output text when <code>System.print()</code> or the other\nrelated functions are called. This is the minimal connection the VM has with the\noutside world and lets you do rudimentary “printf debugging”. Its signature is:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>System.print()</code>"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "Wren does <em>not</em> have a default implementation for this. It’s up to you to wire\nit up to ⟦CODE0⟧ or some other way to show the text. If you leave it ⟦CODE1⟧,\ncalls to ⟦CODE2⟧ and others silently do nothing.",
+      "originalInnerHTML": "Wren does <em>not</em> have a default implementation for this. It’s up to you to wire\nit up to <code>printf()</code> or some other way to show the text. If you leave it <code>NULL</code>,\ncalls to <code>System.print()</code> and others silently do nothing.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>printf()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>NULL</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>System.print()</code>"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "tag": "h3",
+      "sourceHTML": "<strong>⟦CODE0⟧</strong> <a class=\"header-anchor\" href=\"#errorfn\" name=\"errorfn\">#</a>",
+      "originalInnerHTML": "<strong><code>errorFn</code></strong> <a class=\"header-anchor\" href=\"#errorfn\" name=\"errorfn\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>errorFn</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "Wren uses this callback to report compile time and runtime errors. Its signature\nis:",
+      "originalInnerHTML": "Wren uses this callback to report compile time and runtime errors. Its signature\nis:",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ parameter is one of:",
+      "originalInnerHTML": "The <code>type</code> parameter is one of:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>type</code>"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "When a compile error occurs, ⟦CODE0⟧ is called once with type\n⟦CODE1⟧, the name of the module and line where the error occurs,\nand the error message.",
+      "originalInnerHTML": "When a compile error occurs, <code>errorFn</code> is called once with type\n<code>WREN_ERROR_COMPILE</code>, the name of the module and line where the error occurs,\nand the error message.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>errorFn</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>WREN_ERROR_COMPILE</code>"
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "Runtime errors include stack traces. To handle this, Wren first calls ⟦CODE0⟧\nwith ⟦CODE1⟧, no module or line, and the runtime error’s message.\nAfter that, it calls ⟦CODE2⟧ again using type ⟦CODE3⟧, once\nfor each line in the stack trace. Each of those calls has the module and line\nwhere the method or function is defined and ⟦CODE4⟧ is the name of the method\nor function.",
+      "originalInnerHTML": "Runtime errors include stack traces. To handle this, Wren first calls <code>errorFn</code>\nwith <code>WREN_ERROR_RUNTIME</code>, no module or line, and the runtime error’s message.\nAfter that, it calls <code>errorFn</code> again using type <code>WREN_ERROR_STACK_TRACE</code>, once\nfor each line in the stack trace. Each of those calls has the module and line\nwhere the method or function is defined and <code>message</code> is the name of the method\nor function.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>errorFn</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>WREN_ERROR_RUNTIME</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>errorFn</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>WREN_ERROR_STACK_TRACE</code>"
+        },
+        {
+          "token": "⟦CODE4⟧",
+          "html": "<code>message</code>"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "If you leave this ⟦CODE0⟧, Wren does not report any errors.",
+      "originalInnerHTML": "If you leave this <code>NULL</code>, Wren does not report any errors.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>NULL</code>"
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "tag": "h2",
+      "sourceHTML": "Memory Management <a class=\"header-anchor\" href=\"#memory-management\" name=\"memory-management\">#</a>",
+      "originalInnerHTML": "Memory Management <a class=\"header-anchor\" href=\"#memory-management\" name=\"memory-management\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "These fields control how the VM allocates and manages memory.",
+      "originalInnerHTML": "These fields control how the VM allocates and manages memory.",
+      "protected": []
+    },
+    {
+      "id": "33",
+      "tag": "h3",
+      "sourceHTML": "<strong>⟦CODE0⟧</strong> <a class=\"header-anchor\" href=\"#reallocatefn\" name=\"reallocatefn\">#</a>",
+      "originalInnerHTML": "<strong><code>reallocateFn</code></strong> <a class=\"header-anchor\" href=\"#reallocatefn\" name=\"reallocatefn\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>reallocateFn</code>"
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "tag": "p",
+      "sourceHTML": "This lets you provide a custom memory allocation function. Its signature is:",
+      "originalInnerHTML": "This lets you provide a custom memory allocation function. Its signature is:",
+      "protected": []
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "sourceHTML": "Wren uses this one function to allocate, grow, shrink, and deallocate memory.\nWhen called, ⟦CODE0⟧ is the existing pointer to the block of memory if an\nallocation is being changed or freed. If Wren is requesting new memory, then\n⟦CODE1⟧ is ⟦CODE2⟧.",
+      "originalInnerHTML": "Wren uses this one function to allocate, grow, shrink, and deallocate memory.\nWhen called, <code>memory</code> is the existing pointer to the block of memory if an\nallocation is being changed or freed. If Wren is requesting new memory, then\n<code>memory</code> is <code>NULL</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>memory</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>memory</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>NULL</code>"
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "⟦CODE0⟧ is the number of bytes of memory being requested. If memory is being\nfreed, this is zero. Your callback should allocate the proper amount of memory\nand return it.",
+      "originalInnerHTML": "<code>newSize</code> is the number of bytes of memory being requested. If memory is being\nfreed, this is zero. Your callback should allocate the proper amount of memory\nand return it.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>newSize</code>"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "tag": "p",
+      "sourceHTML": "If you don’t provide a custom allocator, the VM uses a default one that relies\non ⟦CODE0⟧ and ⟦CODE1⟧.",
+      "originalInnerHTML": "If you don’t provide a custom allocator, the VM uses a default one that relies\non <code>realloc</code> and <code>free</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>realloc</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>free</code>"
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "tag": "h3",
+      "sourceHTML": "<strong>⟦CODE0⟧</strong> <a class=\"header-anchor\" href=\"#initialheapsize\" name=\"initialheapsize\">#</a>",
+      "originalInnerHTML": "<strong><code>initialHeapSize</code></strong> <a class=\"header-anchor\" href=\"#initialheapsize\" name=\"initialheapsize\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>initialHeapSize</code>"
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "tag": "p",
+      "sourceHTML": "This defines the total number of bytes of memory the VM will allocate before\ntriggering the first garbage collection. Setting this to a smaller number\nreduces the amount of memory Wren will have allocated at one time, but causes it\nto collect garbage more frequently.",
+      "originalInnerHTML": "This defines the total number of bytes of memory the VM will allocate before\ntriggering the first garbage collection. Setting this to a smaller number\nreduces the amount of memory Wren will have allocated at one time, but causes it\nto collect garbage more frequently.",
+      "protected": []
+    },
+    {
+      "id": "40",
+      "tag": "p",
+      "sourceHTML": "If you set this to zero, Wren uses a default size of 10MB.",
+      "originalInnerHTML": "If you set this to zero, Wren uses a default size of 10MB.",
+      "protected": []
+    },
+    {
+      "id": "41",
+      "tag": "h3",
+      "sourceHTML": "<strong>⟦CODE0⟧</strong> <a class=\"header-anchor\" href=\"#minheapsize\" name=\"minheapsize\">#</a>",
+      "originalInnerHTML": "<strong><code>minHeapSize</code></strong> <a class=\"header-anchor\" href=\"#minheapsize\" name=\"minheapsize\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>minHeapSize</code>"
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "tag": "p",
+      "sourceHTML": "After a garbage collection occurs, the threshold for the <em>next</em> collection is\ndetermined based on the number of bytes remaining in use. This allows Wren to\ngrow or shrink its memory usage automatically based on how much memory is\nactually needed.",
+      "originalInnerHTML": "After a garbage collection occurs, the threshold for the <em>next</em> collection is\ndetermined based on the number of bytes remaining in use. This allows Wren to\ngrow or shrink its memory usage automatically based on how much memory is\nactually needed.",
+      "protected": []
+    },
+    {
+      "id": "43",
+      "tag": "p",
+      "sourceHTML": "This can be used to ensure that the heap does not get <em>too</em> small, which can\nin turn lead to a large number of collections afterwards as the heap grows\nback to a usable size.",
+      "originalInnerHTML": "This can be used to ensure that the heap does not get <em>too</em> small, which can\nin turn lead to a large number of collections afterwards as the heap grows\nback to a usable size.",
+      "protected": []
+    },
+    {
+      "id": "44",
+      "tag": "p",
+      "sourceHTML": "If zero, this defaults to 1MB.",
+      "originalInnerHTML": "If zero, this defaults to 1MB.",
+      "protected": []
+    },
+    {
+      "id": "45",
+      "tag": "h3",
+      "sourceHTML": "<strong>⟦CODE0⟧</strong> <a class=\"header-anchor\" href=\"#heapgrowthpercent\" name=\"heapgrowthpercent\">#</a>",
+      "originalInnerHTML": "<strong><code>heapGrowthPercent</code></strong> <a class=\"header-anchor\" href=\"#heapgrowthpercent\" name=\"heapgrowthpercent\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>heapGrowthPercent</code>"
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "tag": "p",
+      "sourceHTML": "Wren tunes the rate of garbage collection based on how much memory is still in\nuse after a collection. This number controls that. It determines the amount of\nadditional memory Wren will use after a collection, as a percentage of the\ncurrent heap size.",
+      "originalInnerHTML": "Wren tunes the rate of garbage collection based on how much memory is still in\nuse after a collection. This number controls that. It determines the amount of\nadditional memory Wren will use after a collection, as a percentage of the\ncurrent heap size.",
+      "protected": []
+    },
+    {
+      "id": "47",
+      "tag": "p",
+      "sourceHTML": "For example, say that this is 50. After a garbage collection, there are 400\nbytes of memory still in use. That means the next collection will be triggered\nafter a total of 600 bytes are allocated (including the 400 already in use.)",
+      "originalInnerHTML": "For example, say that this is 50. After a garbage collection, there are 400\nbytes of memory still in use. That means the next collection will be triggered\nafter a total of 600 bytes are allocated (including the 400 already in use.)",
+      "protected": []
+    },
+    {
+      "id": "48",
+      "tag": "p",
+      "sourceHTML": "Setting this to a smaller number wastes less memory, but triggers more\nfrequent garbage collections.",
+      "originalInnerHTML": "Setting this to a smaller number wastes less memory, but triggers more\nfrequent garbage collections.",
+      "protected": []
+    },
+    {
+      "id": "49",
+      "tag": "p",
+      "sourceHTML": "If set to zero, the VM uses a default of 50.",
+      "originalInnerHTML": "If set to zero, the VM uses a default of 50.",
+      "protected": []
+    },
+    {
+      "id": "50",
+      "tag": "p",
+      "sourceHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/\">← Storing C Data</a>",
+      "originalInnerHTML": "<a href=\"/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/\">← Storing C Data</a>",
+      "protected": []
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+{
+  "page": "01-guide/11-functions.md",
+  "titleEN": "Functions",
+  "titleJA": "関数",
+  "sourceCanonicalSHA256": "a0b1fc40b091187ac8c2683e9228bb335b8ac4ba3a6ca588d955b8413e10785c",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Functions",
+      "originalInnerHTML": "Functions",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Like many languages today, functions in Wren are little bundles of code \nyou can store in a variable, or pass as an argument to a method. ",
+      "originalInnerHTML": "Like many languages today, functions in Wren are little bundles of code \nyou can store in a variable, or pass as an argument to a method. ",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "Notice there’s a difference between <em>function</em> and <em>method</em>.",
+      "originalInnerHTML": "Notice there’s a difference between <em>function</em> and <em>method</em>.",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "Since Wren is object-oriented, most of your code will live in methods on\nclasses, but free-floating functions are still eminently handy. ",
+      "originalInnerHTML": "Since Wren is object-oriented, most of your code will live in methods on\nclasses, but free-floating functions are still eminently handy. ",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "Functions are objects like everything else in Wren, instances of the ⟦CODE0⟧\nclass.",
+      "originalInnerHTML": "Functions are objects like everything else in Wren, instances of the <code>Fn</code>\nclass.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>Fn</code>"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "tag": "h2",
+      "sourceHTML": "Creating a function <a class=\"header-anchor\" href=\"#creating-a-function\" name=\"creating-a-function\">#</a>",
+      "originalInnerHTML": "Creating a function <a class=\"header-anchor\" href=\"#creating-a-function\" name=\"creating-a-function\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "To create a function, we call ⟦CODE0⟧, which takes a block to execute.\nTo call the function, we use ⟦CODE1⟧ on the function instance.",
+      "originalInnerHTML": "To create a function, we call <code>Fn.new</code>, which takes a block to execute.\nTo call the function, we use <code>.call()</code> on the function instance.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>Fn.new</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>.call()</code>"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "Note that we’ll see a shorthand syntax for creating a function below.",
+      "originalInnerHTML": "Note that we’ll see a shorthand syntax for creating a function below.",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "h2",
+      "sourceHTML": "Function parameters <a class=\"header-anchor\" href=\"#function-parameters\" name=\"function-parameters\">#</a>",
+      "originalInnerHTML": "Function parameters <a class=\"header-anchor\" href=\"#function-parameters\" name=\"function-parameters\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "Of course, functions aren’t very useful if you can’t pass values to them. The\nfunction above takes no arguments. To change that, you can provide a parameter\nlist surrounded by ⟦CODE0⟧ immediately after the opening brace of the body.",
+      "originalInnerHTML": "Of course, functions aren’t very useful if you can’t pass values to them. The\nfunction above takes no arguments. To change that, you can provide a parameter\nlist surrounded by <code>|</code> immediately after the opening brace of the body.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>|</code>"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "To pass arguments to the function, pass them to the ⟦CODE0⟧ method:",
+      "originalInnerHTML": "To pass arguments to the function, pass them to the <code>call</code> method:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>call</code>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "It’s an error to call a function with fewer arguments than its parameter list\nexpects. If you pass too <em>many</em> arguments, the extras are ignored.",
+      "originalInnerHTML": "It’s an error to call a function with fewer arguments than its parameter list\nexpects. If you pass too <em>many</em> arguments, the extras are ignored.",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "h2",
+      "sourceHTML": "Returning values <a class=\"header-anchor\" href=\"#returning-values\" name=\"returning-values\">#</a>",
+      "originalInnerHTML": "Returning values <a class=\"header-anchor\" href=\"#returning-values\" name=\"returning-values\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "The body of a function is a <a href=\"/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks\">block</a>. If it is a single\nexpression—more precisely if there is no newline after the ⟦CODE0⟧ or\nparameter list—then the function implicitly returns the value of the\nexpression.",
+      "originalInnerHTML": "The body of a function is a <a href=\"/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks\">block</a>. If it is a single\nexpression—more precisely if there is no newline after the <code>{</code> or\nparameter list—then the function implicitly returns the value of the\nexpression.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>{</code>"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "Otherwise, the body returns ⟦CODE0⟧ by default. You can explicitly return a\nvalue using a ⟦CODE1⟧ statement. In other words, these two functions do the\nsame thing:",
+      "originalInnerHTML": "Otherwise, the body returns <code>null</code> by default. You can explicitly return a\nvalue using a <code>return</code> statement. In other words, these two functions do the\nsame thing:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>return</code>"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "The return value is handed back to you when using ⟦CODE0⟧:",
+      "originalInnerHTML": "The return value is handed back to you when using <code>call</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>call</code>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "tag": "h2",
+      "sourceHTML": "Closures <a class=\"header-anchor\" href=\"#closures\" name=\"closures\">#</a>",
+      "originalInnerHTML": "Closures <a class=\"header-anchor\" href=\"#closures\" name=\"closures\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "sourceHTML": "As you expect, functions are closures—they can access variables defined\noutside of their scope. They will hold onto closed-over variables even after\nleaving the scope where the function is defined:",
+      "originalInnerHTML": "As you expect, functions are closures—they can access variables defined\noutside of their scope. They will hold onto closed-over variables even after\nleaving the scope where the function is defined:",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "Here, the ⟦CODE0⟧ method returns the function created on its second line. That\nfunction references a variable ⟦CODE1⟧ declared outside of the function. Even after\nthe function is returned from ⟦CODE2⟧, it is still able to read and assign\nto⟦CODE3⟧:",
+      "originalInnerHTML": "Here, the <code>create</code> method returns the function created on its second line. That\nfunction references a variable <code>i</code> declared outside of the function. Even after\nthe function is returned from <code>create</code>, it is still able to read and assign\nto<code>i</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>create</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>i</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>create</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>i</code>"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "tag": "h2",
+      "sourceHTML": "Callable classes <a class=\"header-anchor\" href=\"#callable-classes\" name=\"callable-classes\">#</a>",
+      "originalInnerHTML": "Callable classes <a class=\"header-anchor\" href=\"#callable-classes\" name=\"callable-classes\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "Because ⟦CODE0⟧ is a class, and responds to ⟦CODE1⟧, any class can respond to \n⟦CODE2⟧ and be used in place of a function. This is particularly handy when \nthe function is passed to a method to be called, like a callback or event.",
+      "originalInnerHTML": "Because <code>Fn</code> is a class, and responds to <code>call()</code>, any class can respond to \n<code>call()</code> and be used in place of a function. This is particularly handy when \nthe function is passed to a method to be called, like a callback or event.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>Fn</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>call()</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>call()</code>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "tag": "h2",
+      "sourceHTML": "Block arguments <a class=\"header-anchor\" href=\"#block-arguments\" name=\"block-arguments\">#</a>",
+      "originalInnerHTML": "Block arguments <a class=\"header-anchor\" href=\"#block-arguments\" name=\"block-arguments\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "Very frequently, functions are passed to methods to be called. There are \ncountless examples of this in Wren, like <a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">list</a> can be filtered\nusing a method ⟦CODE0⟧ which accepts a function:",
+      "originalInnerHTML": "Very frequently, functions are passed to methods to be called. There are \ncountless examples of this in Wren, like <a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">list</a> can be filtered\nusing a method <code>where</code> which accepts a function:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>where</code>"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "This syntax is a bit less fun to read and write, so Wren implements the \n<em>block argument</em> concept. When a function is being passed to a method, \nand is the last argument to the method, it can use a shorter syntax: \n<em>just the block part</em>.",
+      "originalInnerHTML": "This syntax is a bit less fun to read and write, so Wren implements the \n<em>block argument</em> concept. When a function is being passed to a method, \nand is the last argument to the method, it can use a shorter syntax: \n<em>just the block part</em>.",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "Let’s use a block argument for ⟦CODE0⟧, it’s the last (only) argument:",
+      "originalInnerHTML": "Let’s use a block argument for <code>list.where</code>, it’s the last (only) argument:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>list.where</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "We’ve seen this before in a previous page using ⟦CODE0⟧ and ⟦CODE1⟧:",
+      "originalInnerHTML": "We’ve seen this before in a previous page using <code>map</code> and <code>where</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>map</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>where</code>"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "tag": "h2",
+      "sourceHTML": "Block argument example <a class=\"header-anchor\" href=\"#block-argument-example\" name=\"block-argument-example\">#</a>",
+      "originalInnerHTML": "Block argument example <a class=\"header-anchor\" href=\"#block-argument-example\" name=\"block-argument-example\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "Let’s look at a complete example, so we can see both ends.",
+      "originalInnerHTML": "Let’s look at a complete example, so we can see both ends.",
+      "protected": []
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "Here’s a fictional class for something that will call a function\nwhen a click event is sent to it. It allows us to pass just a \nfunction and assume the left mouse button, or to pass a button and a function.",
+      "originalInnerHTML": "Here’s a fictional class for something that will call a function\nwhen a click event is sent to it. It allows us to pass just a \nfunction and assume the left mouse button, or to pass a button and a function.",
+      "protected": []
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "Now that we’ve got the clickable class, let’s use it.\nWe’ll start by using the method that accepts just a function\nbecause we’re fine with it just being the default left mouse button.",
+      "originalInnerHTML": "Now that we’ve got the clickable class, let’s use it.\nWe’ll start by using the method that accepts just a function\nbecause we’re fine with it just being the default left mouse button.",
+      "protected": []
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "sourceHTML": "Now let’s try with the extra button argument:",
+      "originalInnerHTML": "Now let’s try with the extra button argument:",
+      "protected": []
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "Notice that we still pass the other arguments normally, \nit’s only the last argument that is special.",
+      "originalInnerHTML": "Notice that we still pass the other arguments normally, \nit’s only the last argument that is special.",
+      "protected": []
+    },
+    {
+      "id": "33",
+      "tag": "p",
+      "sourceHTML": "<strong>Just a regular function</strong> ",
+      "originalInnerHTML": "<strong>Just a regular function</strong> ",
+      "protected": []
+    },
+    {
+      "id": "34",
+      "tag": "p",
+      "sourceHTML": "Block arguments are purely syntax sugar for creating a function and passing it\nin one little blob of syntax. These two are equivalent:",
+      "originalInnerHTML": "Block arguments are purely syntax sugar for creating a function and passing it\nin one little blob of syntax. These two are equivalent:",
+      "protected": []
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "sourceHTML": "And this is just as valid:",
+      "originalInnerHTML": "And this is just as valid:",
+      "protected": []
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "<strong>Fn.new</strong> <br/>\nAs you may have noticed by now, ⟦CODE0⟧ accepts a block argument for the ⟦CODE1⟧.\nAll the constructor does is return that argument right back to you!",
+      "originalInnerHTML": "<strong>Fn.new</strong> <br/>\nAs you may have noticed by now, <code>Fn</code> accepts a block argument for the <code>Fn.new</code>.\nAll the constructor does is return that argument right back to you!",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>Fn</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>Fn.new</code>"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/\">Classes →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">← Variables</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/\">Classes →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">← Variables</a>",
+      "protected": []
+    }
+  ]
+}

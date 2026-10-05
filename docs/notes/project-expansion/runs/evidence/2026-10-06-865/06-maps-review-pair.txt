@@ -1,0 +1,142 @@
+1 [h1]
+EN: Maps
+JA: マップ
+
+2 [p]
+EN: A map is an <em>associative</em> collection. It holds a set of entries, each of which
+maps a <em>key</em> to a <em>value</em>. The same data structure has a variety of names in
+other languages: hash table, dictionary, association, table, etc.
+JA: マップは<em>連想</em>コレクションです。<em>キー</em>を<em>値</em>に対応付けるエントリーの集まりを格納します。同じデータ構造には、ほかの言語でハッシュテーブル、辞書、連想配列、テーブルなど、さまざまな名前が付いています。
+
+3 [p]
+EN: You can create a map by placing a series of comma-separated entries inside
+curly braces. Each entry is a key and a value separated by a colon:
+JA: コンマで区切った一連のエントリーを波括弧で囲むと、マップを作成できます。各エントリーは、コロンで区切ったキーと値です。
+
+4 [p]
+EN: This creates a map that associates a type of tree (key) to a specific 
+tree within that family (value). Syntactically, in a map literal, keys 
+can be any literal, a variable name, or a parenthesized expression. 
+Values can be any expression. Here, we’re using string literals for both keys 
+and values.
+JA: これは、木の種類（キー）を、その仲間の特定の木（値）に対応付けるマップを作成します。構文上、マップリテラルのキーには、任意のリテラル、変数名、丸括弧で囲んだ式を使えます。値には任意の式を使えます。この例では、キーと値の両方に文字列リテラルを使っています。
+
+5 [p]
+EN: <em>Semantically</em>, values can be any object, and multiple keys may map to the same
+value. 
+JA: <em>意味上は</em>、値にどんなオブジェクトでも使え、複数のキーを同じ値に対応付けることもできます。
+
+6 [p]
+EN: Keys have a few limitations. They must be one of the immutable built-in
+<a href="/docs/wren/v0-4-0/en/01-guide/04-values/">value types</a> in Wren. That means a number, string, range, bool, or ⟦CODE0⟧.
+You can also use a <a href="/docs/wren/v0-4-0/en/01-guide/10-classes/">class object</a> as a key (not an instance of that class, 
+the actual class itself).
+JA: キーにはいくつかの制限があります。Wrenに組み込まれた不変の<a href="/docs/wren/v0-4-0/en/01-guide/04-values/">値型</a>のいずれかでなければなりません。つまり、数値、文字列、範囲、真偽値、または⟦CODE0⟧です。<a href="/docs/wren/v0-4-0/en/01-guide/10-classes/">クラスオブジェクト</a>もキーに使えます（そのクラスのインスタンスではなく、クラスそのものです）。
+
+7 [p]
+EN: The reason for this limitation—and the reason maps are called “<em>hash</em>
+tables” in other languages—is that each key is used to generate a numeric
+<em>hash code</em>. This lets a map locate the value associated with a key in constant
+time, even in very large maps. Since Wren only knows how to hash certain
+built-in types, only those can be used as keys.
+JA: この制限がある理由、そしてほかの言語でマップを「<em>ハッシュ</em>テーブル」と呼ぶ理由は、各キーから数値の<em>ハッシュコード</em>を生成するためです。これにより、とても大きなマップでも、キーに対応する値を定数時間で見つけられます。Wrenは特定の組み込み型のハッシュ方法しか知らないので、キーに使えるのもそれらだけです。
+
+8 [h2]
+EN: Adding entries <a class="header-anchor" href="#adding-entries" name="adding-entries">#</a>
+JA: エントリーの追加 <a class="header-anchor" href="#adding-entries" name="adding-entries">#</a>
+
+9 [p]
+EN: You add new key-value pairs to the map using the <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#subscripts">subscript operator</a>:
+JA: 新しいキーと値の組をマップに追加するには、<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#subscripts">添字演算子</a>を使います。
+
+10 [p]
+EN: If the key isn’t already present, this adds it and associates it with the given
+value. If the key is already there, this just replaces its value.
+JA: キーがまだ存在しなければ、そのキーを追加して指定した値に対応付けます。キーがすでに存在すれば、その値を置き換えるだけです。
+
+11 [h2]
+EN: Looking up values <a class="header-anchor" href="#looking-up-values" name="looking-up-values">#</a>
+JA: 値の検索 <a class="header-anchor" href="#looking-up-values" name="looking-up-values">#</a>
+
+12 [p]
+EN: To find the value associated with some key, again you use your friend the
+subscript operator:
+JA: キーに対応する値を見つけるときも、おなじみの添字演算子を使います。
+
+13 [p]
+EN: If the key is present, this returns its value. Otherwise, it returns ⟦CODE0⟧. Of
+course, ⟦CODE1⟧ itself can also be used as a value, so seeing ⟦CODE2⟧ here
+doesn’t necessarily mean the key wasn’t found.
+JA: キーが存在すれば、その値を返します。存在しなければ、⟦CODE0⟧を返します。もちろん、⟦CODE1⟧自体も値として使えるため、ここで⟦CODE2⟧が得られても、必ずしもキーが見つからなかったとは限りません。
+
+14 [p]
+EN: To tell definitively if a key exists, you can call ⟦CODE0⟧:
+JA: キーが存在するかを確実に調べるには、⟦CODE0⟧を呼び出せます。
+
+15 [p]
+EN: You can see how many entries a map contains using ⟦CODE0⟧:
+JA: ⟦CODE0⟧を使うと、マップに含まれるエントリーの数を確認できます。
+
+16 [h2]
+EN: Removing entries <a class="header-anchor" href="#removing-entries" name="removing-entries">#</a>
+JA: エントリーの削除 <a class="header-anchor" href="#removing-entries" name="removing-entries">#</a>
+
+17 [p]
+EN: To remove an entry from a map, call ⟦CODE0⟧ and pass in the key for the
+entry you want to delete:
+JA: マップからエントリーを削除するには、⟦CODE0⟧を呼び出し、削除したいエントリーのキーを渡します。
+
+18 [p]
+EN: If the key was found, this returns the value that was associated with it:
+JA: キーが見つかれば、それに対応していた値を返します。
+
+19 [p]
+EN: If the key wasn’t in the map to begin with, ⟦CODE0⟧ just returns ⟦CODE1⟧.
+JA: もともとマップにキーがなかった場合は、⟦CODE0⟧は⟦CODE1⟧を返すだけです。
+
+20 [p]
+EN: If you want to remove <em>everything</em> from the map, like with <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">lists</a>, you call
+⟦CODE0⟧:
+JA: マップから<em>すべて</em>を削除したい場合は、<a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">リスト</a>と同様、⟦CODE0⟧を呼び出します。
+
+21 [h2]
+EN: Iterating over the contents <a class="header-anchor" href="#iterating-over-the-contents" name="iterating-over-the-contents">#</a>
+JA: 内容の反復処理 <a class="header-anchor" href="#iterating-over-the-contents" name="iterating-over-the-contents">#</a>
+
+22 [p]
+EN: The subscript operator works well for finding values when you know the key
+you’re looking for, but sometimes you want to see everything that’s in the map.
+You can use a regular for loop to iterate the contents, and map exposes two 
+additional methods to access the contents: ⟦CODE0⟧ and ⟦CODE1⟧. 
+JA: 探しているキーが分かっている場合、添字演算子は値を見つけるのに適しています。しかし、マップのすべての内容を見たいこともあります。通常のforループで内容を反復処理できます。また、マップは内容にアクセスするため、⟦CODE0⟧と⟦CODE1⟧という二つのメソッドも公開しています。
+
+23 [p]
+EN: The ⟦CODE0⟧ method on a map returns a <a href="/docs/wren/v0-4-0/en/02-reference/11-modules-core-sequence/">Sequence</a> that <a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/#the-iterator-protocol">iterates</a> over all of
+the keys in the map, and the ⟦CODE1⟧ method returns one that iterates over the values.
+JA: マップの⟦CODE0⟧メソッドは、すべてのキーを<a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/#the-iterator-protocol">反復処理する</a><a href="/docs/wren/v0-4-0/en/02-reference/11-modules-core-sequence/">Sequence</a>を返します。⟦CODE1⟧メソッドは、値を反復処理するSequenceを返します。
+
+24 [p]
+EN: Regardless of how you iterate, the <em>order</em> that things are iterated in 
+isn’t defined. Wren makes no promises about what order keys and values are 
+iterated. All it promises is that every entry will appear exactly once.
+JA: どの方法で反復処理しても、その<em>順序</em>は定義されていません。Wrenは、キーや値をどの順番で反復するかを保証しません。保証するのは、すべてのエントリーがそれぞれ一度だけ現れることです。
+
+25 [p]
+EN: <strong>Iterating with for(entry in map)</strong> <br/>
+When you iterate a map with ⟦CODE0⟧, you’ll be handed an <em>entry</em>, which contains
+a ⟦CODE1⟧ and a ⟦CODE2⟧ field. That gives you the info for each element in the map.
+JA: <strong>for(entry in map)による反復処理</strong><br/>⟦CODE0⟧でマップを反復処理すると、⟦CODE1⟧フィールドと⟦CODE2⟧フィールドを持つ<em>エントリー</em>を受け取ります。これで、マップ内の各要素の情報が得られます。
+
+26 [p]
+EN: <strong>Iterating using the keys</strong> 
+JA: <strong>キーを使った反復処理</strong>
+
+27 [p]
+EN: You can also iterate over the keys and use each to look up its value:
+JA: キーを反復処理し、それぞれのキーで値を検索することもできます。
+
+28 [p]
+EN: <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">Method Calls →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">← Lists</a>
+JA: <br/><hr/><a class="right" href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">メソッド呼び出し →</a><a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">← リスト</a>

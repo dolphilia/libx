@@ -1,0 +1,178 @@
+1 [h1]
+EN: Values
+JA: 値
+
+2 [p]
+EN: Values are the built-in atomic object types that all other objects are composed
+of. They can be created through <em>literals</em>, expressions that evaluate to a
+value. All values are <em>immutable</em>—once created, they do not change. The
+number ⟦CODE0⟧ is always the number ⟦CODE1⟧. The string ⟦CODE2⟧ can never have its
+character array modified in place.
+JA: 値は、ほかのすべてのオブジェクトの構成要素となる、組み込みの基本的なオブジェクト型です。値を評価結果として得る式である<em>リテラル</em>を使って作成できます。すべての値は<em>不変</em>で、一度作成すると変わりません。数値⟦CODE0⟧は常に数値⟦CODE1⟧です。文字列⟦CODE2⟧の文字配列を、その場で変更することはできません。
+
+3 [h2]
+EN: Booleans <a class="header-anchor" href="#booleans" name="booleans">#</a>
+JA: 真偽値 <a class="header-anchor" href="#booleans" name="booleans">#</a>
+
+4 [p]
+EN: A boolean value represents truth or falsehood. There are two boolean literals,
+⟦CODE0⟧ and ⟦CODE1⟧. Their class is <a href="/docs/wren/v0-4-0/en/02-reference/01-modules-core-bool/">Bool</a>.
+JA: 真偽値は真または偽を表します。真偽値リテラルは⟦CODE0⟧と⟦CODE1⟧の二つです。そのクラスは<a href="/docs/wren/v0-4-0/en/02-reference/01-modules-core-bool/">Bool</a>です。
+
+5 [h2]
+EN: Numbers <a class="header-anchor" href="#numbers" name="numbers">#</a>
+JA: 数値 <a class="header-anchor" href="#numbers" name="numbers">#</a>
+
+6 [p]
+EN: Like other scripting languages, Wren has a single numeric type:
+double-precision floating point. Number literals look like you expect coming
+from other languages:
+JA: ほかのスクリプト言語と同じように、Wrenの数値型は倍精度浮動小数点数の一種類です。数値リテラルは、ほかの言語を使ってきた人が予想するような形をしています。
+
+7 [p]
+EN: Numbers are instances of the <a href="/docs/wren/v0-4-0/en/02-reference/08-modules-core-num/">Num</a> class.
+JA: 数値は<a href="/docs/wren/v0-4-0/en/02-reference/08-modules-core-num/">Num</a>クラスのインスタンスです。
+
+8 [h2]
+EN: Strings <a class="header-anchor" href="#strings" name="strings">#</a>
+JA: 文字列 <a class="header-anchor" href="#strings" name="strings">#</a>
+
+9 [p]
+EN: A string is an array of bytes. Typically, they store characters encoded in
+UTF-8, but you can put any byte values in there, even zero or invalid UTF-8
+sequences. (You might have some trouble <em>printing</em> the latter to your terminal,
+though.)
+JA: 文字列はバイトの配列です。通常はUTF-8で符号化した文字を保存しますが、ゼロや不正なUTF-8列を含め、どんなバイト値でも入れられます。（ただし、後者を端末に<em>表示する</em>のは難しいかもしれません。）
+
+10 [p]
+EN: String literals are surrounded in double quotes:
+JA: 文字列リテラルは二重引用符で囲みます。
+
+11 [p]
+EN: They can also span multiple lines:
+JA: 複数行にまたがることもできます。
+
+12 [h3]
+EN: Escaping <a class="header-anchor" href="#escaping" name="escaping">#</a>
+JA: エスケープ <a class="header-anchor" href="#escaping" name="escaping">#</a>
+
+13 [p]
+EN: A handful of escape characters are supported:
+JA: いくつかのエスケープ文字をサポートしています。
+
+14 [p]
+EN: A ⟦CODE0⟧ followed by two hex digits specifies a single unencoded byte:
+JA: ⟦CODE0⟧に続けて16進数の数字を二桁書くと、文字の符号化を行わず、単一のバイトを指定できます。
+
+15 [p]
+EN: A ⟦CODE0⟧ followed by four hex digits can be used to specify a Unicode code point:
+JA: ⟦CODE0⟧に続けて16進数の数字を四桁書くと、Unicodeコードポイントを指定できます。
+
+16 [p]
+EN: A capital ⟦CODE0⟧ followed by <em>eight</em> hex digits allows Unicode code points outside
+of the basic multilingual plane, like all-important emoji:
+JA: 大文字の⟦CODE0⟧に続けて16進数の数字を<em>八桁</em>書くと、欠かせない絵文字など、基本多言語面の外にあるUnicodeコードポイントを指定できます。
+
+17 [p]
+EN: Strings are instances of class <a href="/docs/wren/v0-4-0/en/02-reference/12-modules-core-string/">String</a>.
+JA: 文字列は<a href="/docs/wren/v0-4-0/en/02-reference/12-modules-core-string/">String</a>クラスのインスタンスです。
+
+18 [h3]
+EN: Interpolation <a class="header-anchor" href="#interpolation" name="interpolation">#</a>
+JA: 文字列補間 <a class="header-anchor" href="#interpolation" name="interpolation">#</a>
+
+19 [p]
+EN: String literals also allow <em>interpolation</em>. If you have a percent sign (⟦CODE0⟧)
+followed by a parenthesized expression, the expression is evaluated. The
+resulting object’s ⟦CODE1⟧ method is called and the result is inserted in the
+string:
+JA: 文字列リテラルでは<em>補間</em>も使えます。パーセント記号（⟦CODE0⟧）の後に丸括弧で囲んだ式を書くと、その式が評価されます。結果のオブジェクトの⟦CODE1⟧メソッドを呼び出し、その結果を文字列に挿入します。
+
+20 [p]
+EN: Arbitrarily complex expressions are allowed inside the parentheses:
+JA: 丸括弧の中には、どれほど複雑な式でも書けます。
+
+21 [p]
+EN: An interpolated expression can even contain a string literal which in turn has
+its own nested interpolations, but doing that gets unreadable pretty quickly.
+JA: 補間する式には、さらに独自の補間を入れ子にした文字列リテラルを含めることもできます。ただし、そうするとすぐに読みにくくなります。
+
+22 [h3]
+EN: Raw strings <a class="header-anchor" href="#raw-strings" name="raw-strings">#</a>
+JA: raw文字列 <a class="header-anchor" href="#raw-strings" name="raw-strings">#</a>
+
+23 [p]
+EN: A string literal can also be created using triple quotes ⟦CODE0⟧ which is
+parsed as a raw string. A raw string is no different
+from any other string, it’s just parsed in a different way.
+JA: 三重引用符⟦CODE0⟧を使って文字列リテラルを作ることもでき、この場合はraw文字列として解析します。raw文字列も、ほかの文字列と違いはありません。解析の仕方が違うだけです。
+
+24 [p]
+EN: <strong>Raw strings do not process escapes and do not apply any interpolation</strong>.
+JA: <strong>raw文字列ではエスケープを処理せず、補間も一切行いません</strong>。
+
+25 [p]
+EN: When a raw string spans multiple lines and a triple quote is on it’s own line,
+any whitespace on that line will be ignored. This means the opening and closing
+lines are not counted as part of the string when the triple quotes are separate lines,
+as long as they only contain whitespace (spaces + tabs).
+JA: raw文字列が複数行にまたがり、三重引用符がそれだけの行にある場合、その行の空白は無視します。つまり、三重引用符を別の行に置き、それ以外が空白（スペースとタブ）だけなら、開始行と終了行は文字列の一部として数えません。
+
+26 [p]
+EN: The resulting value in the string above has no newlines or trailing whitespace. 
+Note the spaces in front of the Hello are preserved. 
+JA: 上の例で得られる文字列の値には、改行も末尾の空白もありません。Helloの前にあるスペースは保持される点に注意してください。
+
+27 [p]
+EN: A raw string will be parsed exactly as is in the file, unmodified.
+This means it can contain quotes, invalid syntax, other data formats 
+and so on without being modified by Wren.
+JA: raw文字列は、ファイルに書かれたとおりに、変更せず解析します。つまり、引用符、不正な構文、ほかのデータ形式などを含めても、Wrenによって変更されません。
+
+28 [p]
+EN: One more example, embedding wren code inside a string safely.
+JA: もう一つの例として、文字列にWrenのコードを安全に埋め込みます。
+
+29 [h2]
+EN: Ranges <a class="header-anchor" href="#ranges" name="ranges">#</a>
+JA: 範囲 <a class="header-anchor" href="#ranges" name="ranges">#</a>
+
+30 [p]
+EN: A range is a little object that represents a consecutive range of numbers. They
+don’t have their own dedicated literal syntax. Instead, the number class
+implements the ⟦CODE0⟧ and ⟦CODE1⟧ <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">operators</a> to create them:
+JA: 範囲は、連続する数値の範囲を表す小さなオブジェクトです。専用のリテラル構文はありません。代わりに、数値クラスが範囲を作る⟦CODE0⟧と⟦CODE1⟧の<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">演算子</a>を実装しています。
+
+31 [p]
+EN: This creates a range from three to eight, including eight itself. If you want a
+half-inclusive range, use ⟦CODE0⟧:
+JA: これで、8そのものも含む3から8までの範囲を作成します。片側の端点だけを含む範囲にしたい場合は、⟦CODE0⟧を使います。
+
+32 [p]
+EN: This creates a range from four to six <em>not</em> including six itself. Ranges are
+commonly used for <a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/#for-statements">iterating</a> over a
+sequences of numbers, but are useful in other places too. You can pass them to
+a <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">list</a>’s subscript operator to return a subset of the list, for
+example, or on a String, the substring in that range:
+JA: これは、6そのものを<em>含まない</em>4から6までの範囲を作成します。範囲は、数値の列を<a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/#for-statements">反復処理する</a>際によく使いますが、ほかにも用途があります。例えば、<a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">リスト</a>の添字演算子に渡すとリストの一部分を、Stringに渡すとその範囲の部分文字列を返します。
+
+33 [p]
+EN: Their class is <a href="/docs/wren/v0-4-0/en/02-reference/10-modules-core-range/">Range</a>.
+JA: そのクラスは<a href="/docs/wren/v0-4-0/en/02-reference/10-modules-core-range/">Range</a>です。
+
+34 [h2]
+EN: Null <a class="header-anchor" href="#null" name="null">#</a>
+JA: Null <a class="header-anchor" href="#null" name="null">#</a>
+
+35 [p]
+EN: Wren has a special value ⟦CODE0⟧, which is the only instance of the class
+<a href="/docs/wren/v0-4-0/en/02-reference/07-modules-core-null/">Null</a>. (Note the difference in case.) It functions a bit like ⟦CODE1⟧ in some
+languages: it indicates the absence of a value. If you call a method that
+doesn’t return anything and get its returned value, you get ⟦CODE2⟧ back.
+JA: Wrenには特別な値⟦CODE0⟧があり、これは<a href="/docs/wren/v0-4-0/en/02-reference/07-modules-core-null/">Null</a>クラスの唯一のインスタンスです。（大文字と小文字の違いに注意してください。）一部の言語の⟦CODE1⟧に似た働きをし、値がないことを表します。何も返さないメソッドを呼び出して戻り値を取得すると、⟦CODE2⟧が返ります。
+
+36 [p]
+EN: <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/05-lists/">Lists →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/">← Syntax</a>
+JA: <br/><hr/><a class="right" href="/docs/wren/v0-4-0/en/01-guide/05-lists/">リスト →</a><a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/">← 構文</a>

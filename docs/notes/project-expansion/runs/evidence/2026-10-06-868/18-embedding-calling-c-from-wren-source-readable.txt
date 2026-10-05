@@ -1,0 +1,81 @@
+1 [h1] Calling C from Wren
+
+2 [p] When we are ensconced within the world of Wren, the external C world is
+“foreign” to us. There are two reasons we might want to bring some foreign
+flavor into our VM:
+
+3 [li] We want to execute code written in C.
+
+4 [li] We want to store raw C data.
+
+5 [p] Since Wren is object-oriented, behavior lives in methods, so for the former we
+have <strong>foreign methods</strong>. Likewise, data lives in objects, so for the latter, we
+define <strong>foreign classes</strong>. This page is about the first, foreign methods. The
+<a href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">next page</a> covers foreign classes.
+
+6 [p] A foreign method looks to Wren like a regular method. It is defined on a Wren
+class, it has a name and signature, and calls to it are dynamically dispatched.
+The only difference is that the <em>body</em> of the method is written in C.
+
+7 [p] A foreign method is declared in Wren like so:
+
+8 [p] The ⟦CODE0⟧ keyword tells Wren that the method ⟦CODE1⟧ is declared on ⟦CODE2⟧,
+but implemented in C. Both static and instance methods can be foreign.
+
+9 [h2] Binding Foreign Methods <a class="header-anchor" href="#binding-foreign-methods" name="binding-foreign-methods">#</a>
+
+10 [p] When you call a foreign method, Wren needs to figure out which C function to
+execute. This process is called <em>binding</em>. Binding is performed on-demand by the
+VM. When a class that declares a foreign method is executed – when the ⟦CODE0⟧
+statement itself is evaluated – the VM asks the host application for the C
+function that should be used for the foreign method.
+
+11 [p] It does this through the ⟦CODE0⟧ callback you give it when you
+first <a href="/docs/wren/v0-4-0/en/01-guide/21-embedding-configuring-the-vm/">configure the VM</a>. This callback isn’t the foreign method itself.
+It’s the binding function your app uses to <em>look up</em> foreign methods.
+
+12 [p] Its signature is:
+
+13 [p] Every time a foreign method is first declared, the VM invokes this callback. It
+passes in the module containing the class declaration, the name of the class
+containing the method, the method’s signature, and whether or not it’s a static
+method. In the above example, it would pass something like:
+
+14 [p] When you configure the VM, you give it a C callback that looks up the
+appropriate function for the given foreign method and returns a pointer to it.
+Something like:
+
+15 [p] This implementation is pretty tedious, but you get the idea. Feel free to do
+something more clever here in your host application.
+
+16 [p] The important part is that it returns a pointer to a C function to use for that
+foreign method. Wren does this binding step <em>once</em> when the class definition is
+first executed. It then keeps the function pointer you return and associates it
+with that method. This way, <em>calls</em> to the foreign method are fast.
+
+17 [h2] Implementing a Foreign Method <a class="header-anchor" href="#implementing-a-foreign-method" name="implementing-a-foreign-method">#</a>
+
+18 [p] All C functions for foreign methods have the same signature:
+
+19 [p] Arguments passed from Wren are not passed as C arguments, and the method’s
+return value is not a C return value. Instead – you guessed it – we go through
+the <a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/">slot array</a>.
+
+20 [p] When a foreign method is called from Wren, the VM sets up the slot array with
+the receiver and arguments to the call. As in calling Wren from C, the receiver
+object is in slot zero, and arguments are in consecutive slots after that.
+
+21 [p] You use the slot API to read those arguments, and then perform whatever work you
+want to in C. If you want the foreign method to return a value, place it in slot
+zero. Like so:
+
+22 [p] While your foreign method is executing, the VM is completely suspended. No other
+fibers run until your foreign method returns. You should <em>not</em> try to resume the
+VM from within a foreign method by calling ⟦CODE0⟧ or ⟦CODE1⟧.
+The VM is not re-entrant.
+
+23 [p] This covers foreign behavior, but what about foreign <em>state</em>? For that, we need
+a foreign <em>class</em>…
+
+24 [p] <a class="right" href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">Storing C Data →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/19-embedding-calling-wren-from-c/">← Calling Wren from C</a>

@@ -1,0 +1,80 @@
+---
+title: "スロットとハンドル"
+documentId: "wren:embedding/slots-and-handles.html"
+order: 17
+licenseSource: "wren-fixed"
+toc: { maxLevel: 6 }
+documentContext: [{"kind": "source", "html": "<p>Wren 0.4.0; fixed commit 4a18fc489f9ea3d253b20dd40f4cdad0d6bb40eb. By Robert Nystrom and Wren contributors. Unofficial Libx edition: complete English originals (41 articles and MIT licence), Japanese translation of 24 language/VM/use guides, 17 API originals untranslated. <a href=\"/docs/wren/notices/LICENSE.txt\">Original MIT notice</a>.</p><p>Wren 0.4.0の固定原文を静的に提供します。言語・VM・利用ガイド24ページが日本語訳の対象で、API 17ページは未翻訳の英語参照です。Libxの運用方針に基づき、見出し・内部リンク・静的な図表を調整しています。CLI・ブログ・実行デモ等は原典へのリンクで案内します。版の日付は0.4.0の公開記録です。</p>"}, {"kind": "editorial", "html": "<p>原著に残る未執筆・説明不足も保持しています。ClassesのTODOと不完全な例、組み込み/モジュールの説明や設定例の不整合は、固定版の原典と<a href=\"/docs/wren/notices/wren.h.txt\">公開ヘッダー原文</a>を参照してください。Metaモジュールの原API 2ページはTODOで未執筆です。Libxは欠けた説明を補作せず、元の例の実行や原著全体の技術的正しさを保証していません。</p><p>Original TODOs/incomplete examples remain in Classes and Meta API. Embedding/module prose and configuration examples have known inconsistencies; consult the fixed original and public header. The unresolved performance script is omitted while its fixed tables and bars are retained. Example programs are not executed by this edition.</p>"}]
+---
+<div class="wren-document">
+<h1 id="page-title">スロットとハンドル</h1>
+<p><code>wrenInterpret()</code>でコードを実行できますが、そのコードだけでは、特に面白いことはできません。既定では、VMは外の世界から隔離されているので、ノートパソコンを膝を温めるものにするくらいしかできないのです。</p>
+<p>Wrenコードを<em>役立つ</em>ものにするには、VMが外の世界と通信する必要があります。Wrenでは、VMとの間でデータを渡すために、統一した一組の関数を使います。これらの関数は、<strong>スロット</strong>と<strong>ハンドル</strong>という二つの基本概念に基づきます。</p>
+<h2>スロット配列 <a class="header-anchor" href="#the-slot-array" name="the-slot-array">#</a></h2>
+<p>Wrenへデータを送り、Wrenから読み取り、一般にCからWrenオブジェクトを操作するときは、スロットの配列を経由します。VMとCコードが、相手に処理してもらうメッセージを残す、共有の掲示板だと考えてください。</p>
+<p>配列はゼロから始まり、各スロットには、どの型の値でも格納できます。大きさは動的に変わりますが、使う<em>前</em>に十分な個数のスロットがあることを確保するのは、利用者の責任です。次の関数を呼び出して行います。</p>
+<pre class="snippet" data-lang="c"><code>&#10;wrenEnsureSlots(WrenVM* vm, int slotCount);&#10;</code></pre>
+<p>これは、指定した個数のスロットが利用できるよう、必要に応じてスロット配列を拡張します。すでに十分な大きさなら、何もしません。通常は、Wrenへ送るデータをスロットへ格納する前に、一度呼び出します。</p>
+<pre class="snippet" data-lang="c"><code>&#10;wrenEnsureSlots(vm, 4);&#10;// Can now use slots 0 through 3, inclusive.&#10;</code></pre>
+<p>スロット配列を確保した後、その存在を保証できるのは、Wrenへ制御を戻すまでです。<code>wrenCall()</code>や<code>wrenInterpret()</code>を呼ぶこと、<a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">外部メソッド</a>から戻ることも、制御を戻す操作に含まれます。</p>
+<p>有効性を確保していないスロットを読み書きした場合、何が起きるかをWrenは一切保証しません。利用者のコンピューターから煙と羽が飛び出したといううわさを聞いたこともあります。</p>
+<p>スロット配列の大きさを知りたい場合は、次を使います。</p>
+<pre class="snippet" data-lang="c"><code>&#10;int wrenGetSlotCount(WrenVM* vm);&#10;</code></pre>
+<p>これは、配列内のスロット数を返します。その数は、確保した個数より多い場合がある点に注意してください。Wrenは可能なら、この配列のメモリーを再利用します。そのため、大きな配列が残っていた場合は、必要なものより大きな配列が得られることがあります。</p>
+<p>Wrenが<a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">Cコードを呼び出し</a>、データを渡すときは、渡すオブジェクトに十分な個数のスロットを確保します。</p>
+<h3>スロットへの書き込み <a class="header-anchor" href="#writing-slots" name="writing-slots">#</a></h3>
+<p>スロットが得られたら、<code>wrenSetSlot&lt;type&gt;()</code>という名前の一連の関数を使って、データを保存します。<code>&lt;type&gt;</code>は、データの種類を表します。単純なものから始めましょう。</p>
+<pre class="snippet" data-lang="c"><code>&#10;void wrenSetSlotBool(WrenVM* vm, int slot, bool value);&#10;void wrenSetSlotDouble(WrenVM* vm, int slot, double value);&#10;void wrenSetSlotNull(WrenVM* vm, int slot);&#10;</code></pre>
+<p>これらは、それぞれCの基本的な値を受け取り、対応する<a href="/docs/wren/v0-4-0/en/01-guide/04-values/">Wrenの値</a>へ変換します。（Wrenの<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#numbers">基本の数値型</a>はdouble<em>そのもの</em>なので、実際には大した<em>変換</em>は行いませんが、考え方は分かるでしょう。）</p>
+<p>文字列データをWrenへ渡すこともできます。</p>
+<pre class="snippet" data-lang="c"><code>&#10;void wrenSetSlotBytes(WrenVM* vm, int slot,&#10;                      const char* bytes, size_t length);&#10;&#10;void wrenSetSlotString(WrenVM* vm, int slot,&#10;                       const char* text);&#10;</code></pre>
+<p>どちらも、バイト列を、Wrenのガベージコレクターが管理する新しい<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#strings">String</a>オブジェクトへコピーするため、呼び出した後は、手元のコピーを解放できます。二つの違いは、<code>wrenSetSlotBytes()</code>が明示的な長さを受け取ることです。Wrenの文字列には、ヌルバイトを含む任意のバイト値を入れられるので、それらも渡せます。通常の文字列でも、長さが分かっているなら、こちらを使う方が少し速くなります。後者は、<code>strlen()</code>を使って文字列の長さを計算します。</p>
+<h3>スロットの読み取り <a class="header-anchor" href="#reading-slots" name="reading-slots">#</a></h3>
+<p>もちろん、スロットからデータを取り出すこともできます。単純なものは、次のとおりです。</p>
+<pre class="snippet" data-lang="c"><code>&#10;bool wrenGetSlotBool(WrenVM* vm, int slot);&#10;double wrenGetSlotDouble(WrenVM* vm, int slot);&#10;</code></pre>
+<p>これらは、対応する型のWrenの値を受け取り、生のC表現へ変換します。文字列については、次の関数があります。</p>
+<pre class="snippet" data-lang="c"><code>&#10;const char* wrenGetSlotString(WrenVM* vm, int slot);&#10;const char* wrenGetSlotBytes(WrenVM* vm, int slot,&#10;                             int* length);&#10;</code></pre>
+<p>これらは、文字列の最初のバイトへのポインターを返します。長さも必要なら、後者は、<code>length</code>が指す変数に、その長さを保存します。どちらも、Wrenが管理するバイト列への直接のポインターを返します。このポインターを長く保持するべきではありません。Wrenは、そのデータを移動したり解放したりしないことを保証しません。</p>
+<p>これらの関数では、動的型付けのWrenデータから、静的型付けのCへ移ります。値を正しい型で読み取ることを保証するのは、<em>利用者</em>の責任です。現在、文字列を格納しているスロットから数値を読み取ると、困ったことになります。</p>
+<p>幸い、通常はスロット内のデータの型が分かっています。分からない場合は、次のように問い合わせられます。</p>
+<pre class="snippet" data-lang="c"><code>&#10;WrenType wrenGetSlotType(WrenVM* vm, int slot);&#10;</code></pre>
+<p>これは、スロット内の値の型を表す列挙値を返します。対象は、C APIが対応する基本的な値だけです。範囲やクラスのインスタンスなどは、<code>WREN_TYPE_UNKNOWN</code>として返ります。この種類のデータをWrenとCの間で移動したい場合は、まず、オブジェクトを単純な基本値へ分解するか、<a href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">外部クラス</a>を使う必要があります。</p>
+<h3>変数を探す <a class="header-anchor" href="#looking-up-variables" name="looking-up-variables">#</a></h3>
+<p>スロットへデータを入れたり、取り出したりする、ほかの補助関数もあります。最初は、次の関数です。</p>
+<pre class="snippet" data-lang="c"><code>&#10;void wrenGetVariable(WrenVM* vm, const char* module,&#10;                     const char* name, int slot);&#10;</code></pre>
+<p>これは、指定した名前のモジュールで、指定した名前のトップレベル変数を探し、その値を指定したスロットへ保存します。クラスも、変数に保存したオブジェクトにすぎないため、名前でクラスを探すことにも使えます。クラスの静的メソッドを呼び出す際に便利です。</p>
+<p>文字列を扱うほかのメソッドと同様、この関数は少し遅くなります。名前をハッシュ化し、モジュールの文字列テーブルで探す必要があります。性能が重要な、頻繁に実行するループの中では、呼び出しを避けたいでしょう。代わりに、ループの外で一度だけ変数を探し、<a href="#handles">ハンドル</a>でオブジェクトへの参照を保存する方が速くなります。</p>
+<h3>リストの操作 <a class="header-anchor" href="#working-with-lists" name="working-with-lists">#</a></h3>
+<p>スロット配列は、固定個数のオブジェクトをWrenとCの間で移動するのに適しています。しかし、ときには、より多くの、または大きさが動的に変わるデータのまとまりを渡す必要があります。それには<a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">Listオブジェクト</a>が適しているため、C APIでは、それを直接操作できます。</p>
+<p>Cから、新しい空のリストを作成するには、次を使います。</p>
+<pre class="snippet" data-lang="c"><code>&#10;void wrenSetSlotNewList(WrenVM* vm, int slot);&#10;</code></pre>
+<p>これは、作成したリストを指定したスロットへ保存します。Cで作ったものでも、Wrenで作ったものでも、スロット内のリストへ要素を追加するには、次を使います。</p>
+<pre class="snippet" data-lang="c"><code>&#10;void wrenInsertInList(WrenVM* vm, int listSlot, int index,&#10;                      int elementSlot);&#10;</code></pre>
+<p>intパラメーターがたくさんあります。</p>
+<ul>
+<li><p><code>listSlot</code>は、リストオブジェクトを格納しているスロットです。変更するのは、このリストです。Cでリストを作成したなら、<code>wrenSetSlotNewList()</code>へ渡したスロットになります。</p></li>
+<li><p><code>index</code>は、要素を挿入するリスト内のインデックスです。Wren内と同様、負の数で末尾から数えられるため、<code>-1</code>は、リストの末尾へ追加します。</p></li>
+<li><p><code>elementSlot</code>は、リストへ挿入したい値があるスロットを指定します。</p></li>
+</ul>
+<p>このAPIでは、Cの値をリストへ入れる操作は二段階になります。まず値をスロットへ移し、続いて、そのスロットから取り出してリストへ挿入します。少し面倒ですが、これにより、各基本型の値をスロットへ移動するために、同じ一組の関数を使えます。そうしなければ、<code>wrenInsertInListDouble()</code>や<code>wrenInsertInListBool()</code>などが必要になります。</p>
+<h2>ハンドル <a class="header-anchor" href="#handles" name="handles">#</a></h2>
+<p>スロットは、CとWrenの間で基本的なデータを渡すのに適していますが、二つの制限があります。</p>
+<ol>
+<li><p><strong>有効期間が短い。</strong>さらにWrenコードを実行すると、スロット配列は直ちに無効になります。あるオブジェクトを永続的に追跡するために、スロットを使うことはできません。</p></li>
+<li><p><strong>基本型だけに対応する。</strong>スロットには、どの型の値でも格納できますが、ここまでで見たC APIでは、単純な基本値でないものに対して、何かを<em>行う</em>ことはできません。例えば、あるクラスのインスタンスへの参照を得たい場合は、どうすればよいでしょうか？</p></li>
+</ol>
+<p>これらへ対応するため、ハンドルがあります。ハンドルは、文字列、数値、クラスのインスタンス、コレクションなど、どの種類のオブジェクトへの参照でも包みます。次を使って作成します。</p>
+<pre class="snippet" data-lang="c"><code>&#10;WrenHandle* wrenGetSlotHandle(WrenVM* vm, int slot);&#10;</code></pre>
+<p>これは、指定したスロット内のオブジェクトを受け取り、それを包む新しいWrenHandleを作って、そのポインターを返します。次を呼び出すと、そのオブジェクトをWrenへ戻せます。</p>
+<pre class="snippet" data-lang="c"><code>&#10;void wrenSetSlotHandle(WrenVM* vm, int slot, WrenHandle* handle);&#10;</code></pre>
+<p>この操作は、WrenHandleを無効にしない点に注意してください。引き続き使えます。</p>
+<h3>ハンドルの保持と解放 <a class="header-anchor" href="#retaining-and-releasing-handles" name="retaining-and-releasing-handles">#</a></h3>
+<p>ハンドルは、どの型のオブジェクトでも包む不透明なラッパーですが、同じくらい重要なのは、<em>永続的</em>であることです。WrenがWrenHandleへのポインターを渡したなら、そのポインターが有効であり続けることを保証します。必要な限り、保持できます。ガベージコレクションが起きても、ハンドルと、それが包むオブジェクトを安全にメモリー内へ保持します。</p>
+<p>内部では、Wrenは、作成したすべてのWrenHandleのリストを保持します。これにより、ガベージコレクション中に、それらをすべて見つけ、オブジェクトを解放しないようにできます。しかし、もう保持したくなくなった場合はどうするのでしょうか？ Cは手動のメモリー管理に依存するため、WrenHandleも同じです。使い終わったら、次を呼び出して、明示的に解放する必要があります。</p>
+<pre class="snippet" data-lang="c"><code>&#10;void wrenReleaseHandle(WrenVM* vm, WrenHandle* handle);&#10;</code></pre>
+<p>これは、包んでいるオブジェクトを直ちに削除するわけではありません。同じオブジェクトへの参照が、プログラム内のほかの場所にもあるかもしれないためです。無効になるのは、WrenHandleラッパー自身だけです。呼び出した後は、そのポインターを再び使えません。</p>
+<p>VMを終了する前に、作成したすべてのWrenHandleを解放する必要があります。解放しなければ、どこかで資源がリークしている可能性があるため、Wrenは警告します。</p>
+<p>WrenとCの間で値を渡す方法は分かりましたが、その値で何かを実際に<em>行う</em>方法は、まだ分かりません。次は、スロットを使って、CからWrenのメソッドへパラメーターを渡す方法を学びます。</p>
+<p><a class="right" href="/docs/wren/v0-4-0/en/01-guide/19-embedding-calling-wren-from-c/">CからWrenを呼び出す →</a><a href="/docs/wren/v0-4-0/en/01-guide/16-embedding/">← はじめに</a></p>
+</div>
+

@@ -1,0 +1,161 @@
+---
+title: "Num Class (English original)"
+documentId: "wren:modules/core/num.html"
+order: 8
+licenseSource: "wren-fixed"
+toc: { maxLevel: 6 }
+documentContext: [{"kind": "source", "html": "<p>Wren 0.4.0; fixed commit 4a18fc489f9ea3d253b20dd40f4cdad0d6bb40eb. By Robert Nystrom and Wren contributors. Unofficial Libx edition: complete English originals (41 articles and MIT licence), Japanese translation of 24 language/VM/use guides, 17 API originals untranslated. <a href=\"/docs/wren/notices/LICENSE.txt\">Original MIT notice</a>.</p><p>Wren 0.4.0の固定原文を静的に提供します。言語・VM・利用ガイド24ページが日本語訳の対象で、API 17ページは未翻訳の英語参照です。Libxの運用方針に基づき、見出し・内部リンク・静的な図表を調整しています。CLI・ブログ・実行デモ等は原典へのリンクで案内します。版の日付は0.4.0の公開記録です。</p>"}, {"kind": "editorial", "html": "<p>原著に残る未執筆・説明不足も保持しています。ClassesのTODOと不完全な例、組み込み/モジュールの説明や設定例の不整合は、固定版の原典と<a href=\"/docs/wren/notices/wren.h.txt\">公開ヘッダー原文</a>を参照してください。Metaモジュールの原API 2ページはTODOで未執筆です。Libxは欠けた説明を補作せず、元の例の実行や原著全体の技術的正しさを保証していません。</p><p>Original TODOs/incomplete examples remain in Classes and Meta API. Embedding/module prose and configuration examples have known inconsistencies; consult the fixed original and public header. The unresolved performance script is omitted while its fixed tables and bars are retained. Example programs are not executed by this edition.</p>"}, {"kind": "source", "html": "<p><a href=\"/docs/wren/source/v0-4-0/source.zip\">Libx編集用ソース一式（ZIP） / Editable Libx source</a>：固定原文45ファイル、英語42ページ・非公式日本語訳24ガイドの編集原稿、再生成入力、原通知、共有ビルドコードと再構築手順を含みます。API 17ページは未翻訳の英語原文です。各ファイルの原条件を参照してください。</p>"}]
+---
+<div class="wren-document">
+<h1 id="page-title">Num Class (English original)</h1>
+<h2>Static Methods <a href="#static-methods" name="static-methods" class="header-anchor">#</a></h2>
+<h3>Num.<strong>fromString</strong>(value) <a href="#num.fromstring(value)" name="num.fromstring(value)" class="header-anchor">#</a></h3>
+<p>Attempts to parse <code>value</code> as a decimal literal and return it as an instance of
+<code>Num</code>. If the number cannot be parsed <code>null</code> will be returned.</p>
+<p>It is a runtime error if <code>value</code> is not a string.</p>
+<h3>Num.<strong>infinity</strong> <a href="#num.infinity" name="num.infinity" class="header-anchor">#</a></h3>
+<p>The value of &infin;.</p>
+<h3>Num.<strong>nan</strong> <a href="#num.nan" name="num.nan" class="header-anchor">#</a></h3>
+<p>One value representing a NaN.</p>
+<p>Provides a default NaN number suitable for the vm internal values.</p>
+<h3>Num.<strong>pi</strong> <a href="#num.pi" name="num.pi" class="header-anchor">#</a></h3>
+<p>The value of &pi;.</p>
+<h3>Num.<strong>tau</strong> <a href="#num.tau" name="num.tau" class="header-anchor">#</a></h3>
+<p>The value of &tau;. This is equivalent to <code>2 * Num.pi</code>.</p>
+<h3>Num.<strong>largest</strong> <a href="#num.largest" name="num.largest" class="header-anchor">#</a></h3>
+<p>The largest representable numeric value.</p>
+<h3>Num.<strong>smallest</strong> <a href="#num.smallest" name="num.smallest" class="header-anchor">#</a></h3>
+<p>The smallest positive representable numeric value.</p>
+<h3>Num.<strong>maxSafeInteger</strong> <a href="#num.maxsafeinteger" name="num.maxsafeinteger" class="header-anchor">#</a></h3>
+<p>The largest integer that Wren can safely represent. It&rsquo;s a constant value of <code>9007199254740991</code>.</p>
+<p>This is relevant because Wren uses double precision <a href="https://en.wikipedia.org/wiki/IEEE_floating_point">floating-point format</a>
+ for numbers, which can only safely represent integers between <code>-(2<sup>53</sup> - 1)</code> and <code>2<sup>53</sup> - 1</code>.</p>
+<h3>Num.<strong>minSafeInteger</strong> <a href="#num.minsafeinteger" name="num.minsafeinteger" class="header-anchor">#</a></h3>
+<p>The smallest integer Wren can safely represent. It&rsquo;s a constant value of <code>-9007199254740991</code>. </p>
+<h2>Methods <a href="#methods" name="methods" class="header-anchor">#</a></h2>
+<h3><strong>abs</strong> <a href="#abs" name="abs" class="header-anchor">#</a></h3>
+<p>The absolute value of the number.</p>
+<pre class="snippet"><code>&#10;System.print( (-123).abs ) //&gt; 123&#10;</code></pre>
+
+<h3><strong>acos</strong> <a href="#acos" name="acos" class="header-anchor">#</a></h3>
+<p>The arc cosine of the number.</p>
+<h3><strong>asin</strong> <a href="#asin" name="asin" class="header-anchor">#</a></h3>
+<p>The arc sine of the number.</p>
+<h3><strong>atan</strong> <a href="#atan" name="atan" class="header-anchor">#</a></h3>
+<p>The arc tangent of the number.</p>
+<h3><strong>atan</strong>(x) <a href="#atan(x)" name="atan(x)" class="header-anchor">#</a></h3>
+<p>The arc tangent of the number when divided by <code>x</code>, using the signs of the two
+numbers to determine the quadrant of the result.</p>
+<h3><strong>cbrt</strong> <a href="#cbrt" name="cbrt" class="header-anchor">#</a></h3>
+<p>The cube root of the number.</p>
+<h3><strong>ceil</strong> <a href="#ceil" name="ceil" class="header-anchor">#</a></h3>
+<p>Rounds the number up to the nearest integer.</p>
+<pre class="snippet"><code>&#10;System.print(1.5.ceil)    //&gt; 2&#10;System.print((-3.2).ceil) //&gt; -3&#10;</code></pre>
+
+<h3><strong>cos</strong> <a href="#cos" name="cos" class="header-anchor">#</a></h3>
+<p>The cosine of the number.</p>
+<h3><strong>floor</strong> <a href="#floor" name="floor" class="header-anchor">#</a></h3>
+<p>Rounds the number down to the nearest integer.</p>
+<pre class="snippet"><code>&#10;System.print(1.5.floor)    //&gt; 1&#10;System.print((-3.2).floor) //&gt; -4&#10;</code></pre>
+
+<h3><strong>fraction</strong> <a href="#fraction" name="fraction" class="header-anchor">#</a></h3>
+<p>The fractional part of a number i.e. the part after any decimal point.</p>
+<p>The returned value has the same sign as <code>this</code>.</p>
+<pre class="snippet"><code>&#10;System.print(1.5.fraction)    //&gt; 0.5&#10;System.print((-3.2).fraction) //&gt; -0.2&#10;</code></pre>
+
+<h3><strong>isInfinity</strong> <a href="#isinfinity" name="isinfinity" class="header-anchor">#</a></h3>
+<p>Whether the number is positive or negative infinity or not.</p>
+<pre class="snippet"><code>&#10;System.print(99999.isInfinity)  //&gt; false&#10;System.print((1/0).isInfinity)  //&gt; true&#10;</code></pre>
+
+<h3><strong>isInteger</strong> <a href="#isinteger" name="isinteger" class="header-anchor">#</a></h3>
+<p>Whether the number is an integer or has some fractional component.</p>
+<pre class="snippet"><code>&#10;System.print(2.isInteger)   //&gt; true&#10;System.print(2.3.isInteger) //&gt; false&#10;</code></pre>
+
+<h3><strong>isNan</strong> <a href="#isnan" name="isnan" class="header-anchor">#</a></h3>
+<p>Whether the number is <a href="http://en.wikipedia.org/wiki/NaN">not a number</a>. This is
+<code>false</code> for normal number values and infinities, and <code>true</code> for the result of
+<code>0/0</code>, the square root of a negative number, etc.</p>
+<h3><strong>log</strong> <a href="#log" name="log" class="header-anchor">#</a></h3>
+<p>The natural logarithm of the number. Returns <code>nan</code> if the base is negative.</p>
+<h3><strong>log2</strong> <a href="#log2" name="log2" class="header-anchor">#</a></h3>
+<p>The binary (base-2) logarithm of the number. Returns <code>nan</code> if the base is negative.</p>
+<h3><strong>exp</strong> <a href="#exp" name="exp" class="header-anchor">#</a></h3>
+<p>The exponential <code>e</code> (Euler’s number) raised to the number. This: <code>eⁿ</code>. </p>
+<h3><strong>min</strong>(other) <a href="#min(other)" name="min(other)" class="header-anchor">#</a></h3>
+<p>Returns the minimum value when comparing this number and <code>other</code>.</p>
+<h3><strong>max</strong>(other) <a href="#max(other)" name="max(other)" class="header-anchor">#</a></h3>
+<p>Returns the maximum value when comparing this number and <code>other</code>.</p>
+<h3><strong>clamp</strong>(min, max) <a href="#clamp(min,-max)" name="clamp(min,-max)" class="header-anchor">#</a></h3>
+<p>Clamps a number into the range of <code>min</code> and <code>max</code>. If this number is less than min, 
+<code>min</code> is returned. If bigger than <code>max</code>, <code>max</code> is returned. Otherwise, the number 
+itself is returned.</p>
+<h3><strong>pow</strong>(power) <a href="#pow(power)" name="pow(power)" class="header-anchor">#</a></h3>
+<p>Raises this number (the base) to <code>power</code>. Returns <code>nan</code> if the base is negative.</p>
+<h3><strong>round</strong> <a href="#round" name="round" class="header-anchor">#</a></h3>
+<p>Rounds the number to the nearest integer.</p>
+<pre class="snippet"><code>&#10;System.print(1.5.round)    //&gt; 2&#10;System.print((-3.2).round) //&gt; -3&#10;System.print((-3.7).round) //&gt; -4&#10;</code></pre>
+
+<h3><strong>sign</strong> <a href="#sign" name="sign" class="header-anchor">#</a></h3>
+<p>The sign of the number, expressed as a -1, 1 or 0, for negative and positive numbers, and zero.</p>
+<h3><strong>sin</strong> <a href="#sin" name="sin" class="header-anchor">#</a></h3>
+<p>The sine of the number.</p>
+<h3><strong>sqrt</strong> <a href="#sqrt" name="sqrt" class="header-anchor">#</a></h3>
+<p>The square root of the number. Returns <code>nan</code> if the number is negative.</p>
+<h3><strong>tan</strong> <a href="#tan" name="tan" class="header-anchor">#</a></h3>
+<p>The tangent of the number.</p>
+<h3><strong>toString</strong> <a href="#tostring" name="tostring" class="header-anchor">#</a></h3>
+<p>The string representation of the number.</p>
+<h3><strong>truncate</strong> <a href="#truncate" name="truncate" class="header-anchor">#</a></h3>
+<p>Rounds the number to the nearest integer towards zero.</p>
+<p>It is therefore equivalent to <code>floor</code> if the number is non-negative or <code>ceil</code> if it is negative.</p>
+<pre class="snippet"><code>&#10;System.print(1.5.truncate)    //&gt; 1&#10;System.print((-3.2).truncate) //&gt; -3&#10;</code></pre>
+
+<h3><strong>-</strong> operator <a href="#--operator" name="--operator" class="header-anchor">#</a></h3>
+<p>Negates the number.</p>
+<pre class="snippet"><code>&#10;var a = 123&#10;System.print(-a) //&gt; -123&#10;</code></pre>
+
+<h3><strong>-</strong>(other), <strong>+</strong>(other), <strong>/</strong>(other), <strong>*</strong>(other) operators <a href="#-(other),-+(other),-(other),-\(other)-operators" name="-(other),-+(other),-(other),-\(other)-operators" class="header-anchor">#</a></h3>
+<p>The usual arithmetic operators you know and love. All of them do 64-bit
+floating point arithmetic. It is a runtime error if the right-hand operand is
+not a number. Wren doesn&rsquo;t roll with implicit conversions.</p>
+<h3><strong>%</strong>(denominator) operator <a href="#%(denominator)-operator" name="%(denominator)-operator" class="header-anchor">#</a></h3>
+<p>Also known as mod or modulus. <br />
+The floating-point remainder of this number divided by <code>denominator</code>. </p>
+<p>The returned value has the same sign as <code>this</code> (internally calls <code>fmod</code> from C).</p>
+<p>It is a runtime error if <code>denominator</code> is not a number.</p>
+<h3><strong>&lt;</strong>(other), <strong>&gt;</strong>(other), <strong>&lt;=</strong>(other), <strong>&gt;=</strong>(other) operators <a href="#&lt;(other),-&gt;(other),-&lt;=(other),-&gt;=(other)-operators" name="&lt;(other),-&gt;(other),-&lt;=(other),-&gt;=(other)-operators" class="header-anchor">#</a></h3>
+<p>Compares this and <code>other</code>, returning <code>true</code> or <code>false</code> based on how the numbers
+are ordered. It is a runtime error if <code>other</code> is not a number.</p>
+<h3><strong>~</strong> operator <a href="#~-operator" name="~-operator" class="header-anchor">#</a></h3>
+<p>Performs <em>bitwise</em> negation on the number. The number is first converted to a
+32-bit unsigned value, which will truncate any floating point value. The bits
+of the result of that are then negated, yielding the result.</p>
+<h3><strong>&amp;</strong>(other) operator <a href="#&(other)-operator" name="&(other)-operator" class="header-anchor">#</a></h3>
+<p>Performs bitwise and on the number. Both numbers are first converted to 32-bit
+unsigned values. The result is then a 32-bit unsigned number where each bit is
+<code>true</code> only where the corresponding bits of both inputs were <code>true</code>.</p>
+<p>It is a runtime error if <code>other</code> is not a number.</p>
+<h3><strong>|</strong>(other) operator <a href="#|(other)-operator" name="|(other)-operator" class="header-anchor">#</a></h3>
+<p>Performs bitwise or on the number. Both numbers are first converted to 32-bit
+unsigned values. The result is then a 32-bit unsigned number where each bit is
+<code>true</code> only where the corresponding bits of one or both inputs were <code>true</code>.</p>
+<p>It is a runtime error if <code>other</code> is not a number.</p>
+<h3><strong>^</strong>(other) operator <a href="#^(other)-operator" name="^(other)-operator" class="header-anchor">#</a></h3>
+<p>Performs bitwise exclusive or on the number. Both numbers are first converted to 32-bit unsigned values. The result is then a 32-bit unsigned number where each bit is <code>true</code> only where the corresponding bits of one (but not both) inputs were <code>true</code>. Each bit is therefore <code>false</code> if the corresponding bits of both inputs were either both <code>true</code> or both <code>false</code>.</p>
+<p>It is a runtime error if <code>other</code> is not a number.</p>
+<h3><strong>&lt;&lt;</strong>(other) operator <a href="#&lt;&lt;(other)-operator" name="&lt;&lt;(other)-operator" class="header-anchor">#</a></h3>
+<p>Performs a bitwise left shift on the number. Internally, both numbers are first converted to 32-bit unsigned values and C&rsquo;s left shift operator is then applied to them.</p>
+<p>It is a runtime error if <code>other</code> is not a number.</p>
+<h3><strong>&gt;&gt;</strong>(other) operator <a href="#&gt;&gt;(other)-operator" name="&gt;&gt;(other)-operator" class="header-anchor">#</a></h3>
+<p>Performs a bitwise right shift on the number. Internally, both numbers are first converted to 32-bit unsigned values and C&rsquo;s right shift operator is then applied to them.</p>
+<p>It is a runtime error if <code>other</code> is not a number.</p>
+<h3><strong>..</strong>(other) operator <a href="#..(other)-operator" name="..(other)-operator" class="header-anchor">#</a></h3>
+<p>Creates a <a href="/docs/wren/v0-4-0/en/02-reference/10-modules-core-range/">Range</a> representing a consecutive range of numbers
+from the beginning number to the ending number.</p>
+<pre class="snippet"><code>&#10;var range = 1.2..3.4&#10;System.print(range.min)         //&gt; 1.2&#10;System.print(range.max)         //&gt; 3.4&#10;System.print(range.isInclusive) //&gt; true&#10;</code></pre>
+
+<h3><strong>&hellip;</strong>(other) operator <a href="#...(other)-operator" name="...(other)-operator" class="header-anchor">#</a></h3>
+<p>Creates a <a href="/docs/wren/v0-4-0/en/02-reference/10-modules-core-range/">Range</a> representing a consecutive range of numbers
+from the beginning number to the ending number not including the ending number.</p>
+<pre class="snippet"><code>&#10;var range = 1.2...3.4&#10;System.print(range.min)         //&gt; 1.2&#10;System.print(range.max)         //&gt; 3.4&#10;System.print(range.isInclusive) //&gt; false&#10;</code></pre>
+</div>

@@ -1,0 +1,217 @@
+1 [h1]
+EN: Calling Wren from C
+JA: CからWrenを呼び出す
+
+2 [p]
+EN: From C, we can tell Wren to do stuff by calling ⟦CODE0⟧, but that’s
+not always the ideal way to drive the VM. First of all, it’s slow. It has to
+parse and compile the string of source code you give it. Wren has a pretty fast
+compiler, but that’s still a good bit of work.
+JA: Cからは、⟦CODE0⟧を呼び出してWrenに処理を指示できますが、VMを動かす最適な方法とは限りません。まず、遅いという問題があります。渡したソースコードの文字列を解析し、コンパイルする必要があります。Wrenのコンパイラーはかなり速いものの、それでも相応の処理が必要です。
+
+3 [p]
+EN: It’s also not an effective way to communicate. You can’t pass arguments to
+Wren—at least, not without doing something nasty like converting them to
+literals in a string of source code—and you can’t get a result value back.
+JA: 通信の方法としても効率的ではありません。引数をソースコード文字列内のリテラルへ変換するような扱いづらい方法を使わない限り、Wrenへ引数を渡せません。また、結果の値を受け取ることもできません。
+
+4 [p]
+EN: ⟦CODE0⟧ is great for loading code into the VM, but it’s not the best
+way to execute code that’s already been loaded. What we want to do is invoke
+some already compiled chunk of code. Since Wren is an object-oriented language,
+“chunk of code” means a <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">method</a>, not a <a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">function</a>.
+JA: ⟦CODE0⟧は、VMへコードを読み込むのには適していますが、すでに読み込んだコードを実行する最適な方法ではありません。必要なのは、コンパイル済みのコードのまとまりを呼び出すことです。Wrenはオブジェクト指向なので、「コードのまとまり」は、<a href="/docs/wren/v0-4-0/en/01-guide/11-functions/">関数</a>ではなく、<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/">メソッド</a>を意味します。
+
+5 [p]
+EN: The C API for doing this is ⟦CODE0⟧. In order to invoke a Wren method from
+C, we need a few things:
+JA: このためのC APIは⟦CODE0⟧です。CからWrenのメソッドを呼び出すには、いくつかのものが必要です。
+
+6 [li]
+EN: 
+<p><strong>The method to call.</strong> Wren is dynamically typed, so this means we’ll look it
+  up by name. Further, since Wren supports overloading by arity, we actually
+  need its entire <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature">signature</a>.</p>
+
+JA: <p><strong>呼び出すメソッド。</strong>Wrenは動的型付けなので、名前で探します。さらに、引数の個数によるオーバーロードができるため、実際には完全な<a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature">シグネチャ</a>が必要です。</p>
+
+7 [li]
+EN: 
+<p><strong>The receiver object to invoke the method on.</strong> The receiver’s class
+  determines which method is actually called.</p>
+
+JA: <p><strong>メソッドを呼び出す対象のレシーバーオブジェクト。</strong>実際に呼び出すメソッドは、レシーバーのクラスが決めます。</p>
+
+8 [li]
+EN: 
+<p><strong>The arguments to pass to the method.</strong></p>
+
+JA: <p><strong>メソッドへ渡す引数。</strong></p>
+
+9 [p]
+EN: We’ll tackle these one at a time.
+JA: これらを一つずつ説明します。
+
+10 [h3]
+EN: Getting a Method Handle <a class="header-anchor" href="#getting-a-method-handle" name="getting-a-method-handle">#</a>
+JA: メソッドハンドルの取得 <a class="header-anchor" href="#getting-a-method-handle" name="getting-a-method-handle">#</a>
+
+11 [p]
+EN: When you run a chunk of Wren code like this:
+JA: 次のようなWrenコードを実行すると、
+
+12 [p]
+EN: At runtime, the VM has to look up the class of ⟦CODE0⟧ and find a method there
+whose signature is ⟦CODE1⟧. This sounds like it’s doing some string
+manipulation—at the very least hashing the signature—every time a
+method is called. That’s how many dynamic languages work.
+JA: 実行時には、VMは⟦CODE0⟧のクラスを調べ、シグネチャが⟦CODE1⟧のメソッドを探す必要があります。メソッドを呼び出すたびに、少なくともシグネチャをハッシュ化するような文字列の操作を行っているように聞こえます。多くの動的言語は、そのように動作します。
+
+13 [p]
+EN: But, as you can imagine, that’s pretty slow. So, instead, Wren does as much of
+that work at compile time as it can. When it’s compiling the above code to
+bytecode, it takes that method signature a converts it to a <em>method symbol</em>, a
+number that uniquely identifes that method. That’s the only part of the process
+that requires treating a signature as a string.
+JA: しかし、想像できるとおり、それはかなり遅くなります。代わりに、Wrenは、その処理を可能な限りコンパイル時に行います。上のコードをバイトコードへコンパイルするとき、メソッドのシグネチャを、そのメソッドを一意に識別する数値である<em>メソッドシンボル</em>へ変換します。この処理の中で、シグネチャを文字列として扱う必要があるのは、ここだけです。
+
+14 [p]
+EN: At runtime, the VM just looks for the method <em>symbol</em> in the receiver’s class’s
+method table. In fact, the way it’s implemented today, the symbol is simply the
+array index into the table. That’s <a href="/docs/wren/v0-4-0/en/01-guide/22-performance/">why method calls are so fast</a> in Wren.
+JA: 実行時には、VMはレシーバーのクラスのメソッドテーブルで、メソッドの<em>シンボル</em>を探すだけです。実際、現在の実装では、シンボルは単なる、そのテーブルの配列インデックスです。これが、Wrenの<a href="/docs/wren/v0-4-0/en/01-guide/22-performance/">メソッド呼び出しが高速な理由</a>です。
+
+15 [p]
+EN: It would be a shame if calling a method from C didn’t have that same speed
+benefit. To achieve that, we split the process of calling a method into two
+steps. First, we create a handle that represents a “compiled” method signature:
+JA: Cからのメソッド呼び出しで、同じ速度の利点が得られなければ、残念です。これを実現するため、メソッド呼び出しの処理を二段階に分けます。まず、「コンパイル済み」のメソッドシグネチャを表すハンドルを作成します。
+
+16 [p]
+EN: That takes a method signature as a string and gives you back an opaque handle
+that represents the compiled method symbol. Now you have a <em>reusable</em> handle
+that can be used to very quickly call a certain method given a receiver and some
+arguments.
+JA: これは、文字列のメソッドシグネチャを受け取り、コンパイル済みのメソッドシンボルを表す不透明なハンドルを返します。これで、レシーバーと引数を指定し、特定のメソッドを非常に速く呼び出すための、<em>再利用可能な</em>ハンドルが得られました。
+
+17 [p]
+EN: This is just a regular WrenHandle, which means you can hold onto it as long as
+you like. Typically, you’d call this once outside of your application’s
+performance critical loops and reuse it as long as you need. It is us up to you
+to release it when you no longer need it by calling ⟦CODE0⟧.
+JA: これは通常のWrenHandleなので、必要な限り保持できます。通常は、アプリケーションの性能が重要なループの外で一度だけ呼び出し、必要な間、再利用します。不要になったときに⟦CODE0⟧を呼び出して解放するのは、利用者の責任です。
+
+18 [h2]
+EN: Setting Up a Receiver <a class="header-anchor" href="#setting-up-a-receiver" name="setting-up-a-receiver">#</a>
+JA: レシーバーの準備 <a class="header-anchor" href="#setting-up-a-receiver" name="setting-up-a-receiver">#</a>
+
+19 [p]
+EN: OK, we have a method, but who are we calling it on? We need a receiver, and as
+you can probably guess after reading the <a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/">last section</a>, we give that to Wren
+by storing it in a slot. In particular, <strong>the receiver for a method call goes in
+slot zero.</strong>
+JA: メソッドは得られましたが、誰を対象に呼び出すのでしょうか？ レシーバーが必要です。<a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/">前の節</a>を読めば予想できるように、スロットに保存してWrenへ渡します。特に、<strong>メソッド呼び出しのレシーバーは、スロット0へ入れます。</strong>
+
+20 [p]
+EN: Any object you store in that slot can be used as a receiver. You could even call
+⟦CODE0⟧ on a number by storing a number in there if you felt like it.
+JA: そのスロットに保存した、どんなオブジェクトでもレシーバーとして使えます。必要なら、数値を保存して、その数値の⟦CODE0⟧を呼び出すこともできます。
+
+21 [p]
+EN: Needing a receiver to call some Wren code from C might feel strange. C is
+procedural, so it’s natural to want to just invoke a bare <em>function</em> from Wren,
+but Wren isn’t procedural. Instead, if you want to define some executable
+operation that isn’t logically tied to a specific object, the natural way is to
+define a static method on an appropriate class.
+JA: CからWrenのコードを呼び出すためにレシーバーが必要なのは、奇妙に感じるかもしれません。Cは手続き型なので、Wrenの単独の<em>関数</em>を呼びたいと思うのは自然です。しかし、Wrenは手続き型ではありません。特定のオブジェクトへ論理的に結び付かない、実行可能な操作を定義したいなら、適したクラスに静的メソッドを定義するのが自然です。
+
+22 [p]
+EN: For example, say we’re making a game engine. From C, we want to tell the game
+engine to update all of the entities each frame. We’ll keep track of the list of
+entities within Wren, so from C, there’s no obvious object to call ⟦CODE0⟧
+on. Instead, we’ll just make it a static method:
+JA: 例えば、ゲームエンジンを作っているとします。Cから、毎フレーム、すべてのエンティティーを更新するよう指示したいとします。エンティティーのリストはWren内で管理するため、C側には、⟦CODE0⟧を呼び出す明らかな対象オブジェクトがありません。そこで、静的メソッドにします。
+
+23 [p]
+EN: Often, when you call a Wren method from C, you’ll be calling a static method.
+But, even then, you need a receiver. Now, though, the receiver is the <em>class
+itself</em>. Classes are first class objects in Wren, and when you define a named
+class, you’re really declaring a variable with the class’s name and storing a
+reference to the class object in it.
+JA: CからWrenのメソッドを呼び出すときは、静的メソッドを呼ぶことがよくあります。その場合も、レシーバーは必要です。ただし、レシーバーは<em>クラス自身</em>です。Wrenのクラスは第一級のオブジェクトであり、名前付きクラスを定義する際には、実際には、そのクラス名の変数を宣言し、クラスオブジェクトへの参照を保存しています。
+
+24 [p]
+EN: Assuming you declared that class at the top level, the C API <a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/#looking-up-variables">gives you a way to
+look it up</a>. We can get a handle to the above class like so:
+JA: そのクラスをトップレベルで宣言したとすれば、C APIには、それを<a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/#looking-up-variables">探す方法があります</a>。上のクラスのハンドルを、次のように取得できます。
+
+25 [p]
+EN: We could do this every time we call ⟦CODE0⟧, but, again, that’s kind of slow
+because we’re looking up “GameEngine” by name each time. A faster solution is to
+create a handle to the class once and use it each time:
+JA: ⟦CODE0⟧を呼び出すたびに、これを行うこともできます。しかし、毎回「GameEngine」を名前で探すため、やはり少し遅くなります。速い方法は、クラスのハンドルを一度だけ作り、毎回使うことです。
+
+26 [p]
+EN: Now, each time we want to call a method on GameEngine, we store that value back
+in slot zero:
+JA: これで、GameEngineのメソッドを呼び出すたび、その値をスロット0へ戻して保存します。
+
+27 [p]
+EN: Just like we hoisted ⟦CODE0⟧ out of our performance critical
+loop, we can hoist the call to ⟦CODE1⟧ out. Of course, if your code
+isn’t performance critical, you don’t have to do this.
+JA: 性能が重要なループの外へ⟦CODE0⟧を移したのと同じように、⟦CODE1⟧の呼び出しも外へ移せます。もちろん、性能が重要でなければ、そうする必要はありません。
+
+28 [h2]
+EN: Passing Arguments <a class="header-anchor" href="#passing-arguments" name="passing-arguments">#</a>
+JA: 引数を渡す <a class="header-anchor" href="#passing-arguments" name="passing-arguments">#</a>
+
+29 [p]
+EN: We’ve got a receiver in slot zero now, next we need to pass in any other
+arguments. In our GameEngine example, that’s just the elapsed time. Method
+arguments go in consecutive slots after the receiver. So the elapsed time goes
+into slot one. You can use any of the slot functions to set this up. For the
+example, it’s just:
+JA: レシーバーをスロット0に準備できたので、次は、ほかの引数を渡します。GameEngineの例では、経過時間だけです。メソッドの引数は、レシーバーの後の連続したスロットへ入れます。したがって、経過時間はスロット1に入ります。準備には、どのスロット関数も使えます。この例では、次のようにするだけです。
+
+30 [h2]
+EN: Calling the Method <a class="header-anchor" href="#calling-the-method" name="calling-the-method">#</a>
+JA: メソッドの呼び出し <a class="header-anchor" href="#calling-the-method" name="calling-the-method">#</a>
+
+31 [p]
+EN: We have all of the data in place, so all that’s left is to pull the trigger and
+tell the VM to start running some code:
+JA: 必要なデータはすべて準備できたので、後は、VMにコードの実行開始を指示するだけです。
+
+32 [p]
+EN: It takes the method handle we created using ⟦CODE0⟧. Now Wren
+starts running code. It looks up the method on the receiver, executes it and
+keeps running until either the method returns or a fiber <a href="/docs/wren/v0-4-0/en/02-reference/03-modules-core-fiber/#fiber.suspend()">suspends</a>.
+JA: これは、⟦CODE0⟧で作成したメソッドハンドルを受け取ります。Wrenはコードの実行を開始し、レシーバーのメソッドを探して実行します。メソッドが戻るか、ファイバーが<a href="/docs/wren/v0-4-0/en/02-reference/03-modules-core-fiber/#fiber.suspend()">suspend</a>するまで、実行を続けます。
+
+33 [p]
+EN: ⟦CODE0⟧ returns the same WrenInterpretResult enum as ⟦CODE1⟧ to
+tell you if the method completed successfully or a runtime error occurred.
+(⟦CODE2⟧ never returns ⟦CODE3⟧ since it doesn’t compile
+anything.)
+JA: ⟦CODE0⟧は、⟦CODE1⟧と同じWrenInterpretResult列挙値を返し、メソッドが正常に完了したか、実行時エラーが起きたかを知らせます。（⟦CODE2⟧は何もコンパイルしないので、⟦CODE3⟧を返すことはありません。）
+
+34 [h2]
+EN: Getting the Return Value <a class="header-anchor" href="#getting-the-return-value" name="getting-the-return-value">#</a>
+JA: 戻り値の取得 <a class="header-anchor" href="#getting-the-return-value" name="getting-the-return-value">#</a>
+
+35 [p]
+EN: When ⟦CODE0⟧ returns, it leaves the slot array in place. In slot zero, you
+can find the method’s return value, which you can access using any of the slot
+reading functions. If you don’t need the return value, you can ignore it.
+JA: ⟦CODE0⟧が戻ると、スロット配列は残ります。スロット0にはメソッドの戻り値があり、どのスロット読み取り関数でもアクセスできます。戻り値が不要なら、無視できます。
+
+36 [p]
+EN: This is how you drive Wren from C, but how do you put control in Wren’s hands?
+For that, you’ll need the next section…
+JA: CからWrenを動かす方法は、これで分かりました。それでは、Wrenへ制御を渡すには、どうするのでしょうか？ 次の節で説明します。
+
+37 [p]
+EN: <a class="right" href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">Calling C From Wren →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/">← Slots and Handles</a>
+JA: <a class="right" href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">WrenからCを呼び出す →</a><a href="/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/">← スロットとハンドル</a>

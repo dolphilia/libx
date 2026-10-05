@@ -1,0 +1,106 @@
+1 [h1] Values
+
+2 [p] Values are the built-in atomic object types that all other objects are composed
+of. They can be created through <em>literals</em>, expressions that evaluate to a
+value. All values are <em>immutable</em>—once created, they do not change. The
+number ⟦CODE0⟧ is always the number ⟦CODE1⟧. The string ⟦CODE2⟧ can never have its
+character array modified in place.
+
+3 [h2] Booleans <a class="header-anchor" href="#booleans" name="booleans">#</a>
+
+4 [p] A boolean value represents truth or falsehood. There are two boolean literals,
+⟦CODE0⟧ and ⟦CODE1⟧. Their class is <a href="/docs/wren/v0-4-0/en/02-reference/01-modules-core-bool/">Bool</a>.
+
+5 [h2] Numbers <a class="header-anchor" href="#numbers" name="numbers">#</a>
+
+6 [p] Like other scripting languages, Wren has a single numeric type:
+double-precision floating point. Number literals look like you expect coming
+from other languages:
+
+7 [p] Numbers are instances of the <a href="/docs/wren/v0-4-0/en/02-reference/08-modules-core-num/">Num</a> class.
+
+8 [h2] Strings <a class="header-anchor" href="#strings" name="strings">#</a>
+
+9 [p] A string is an array of bytes. Typically, they store characters encoded in
+UTF-8, but you can put any byte values in there, even zero or invalid UTF-8
+sequences. (You might have some trouble <em>printing</em> the latter to your terminal,
+though.)
+
+10 [p] String literals are surrounded in double quotes:
+
+11 [p] They can also span multiple lines:
+
+12 [h3] Escaping <a class="header-anchor" href="#escaping" name="escaping">#</a>
+
+13 [p] A handful of escape characters are supported:
+
+14 [p] A ⟦CODE0⟧ followed by two hex digits specifies a single unencoded byte:
+
+15 [p] A ⟦CODE0⟧ followed by four hex digits can be used to specify a Unicode code point:
+
+16 [p] A capital ⟦CODE0⟧ followed by <em>eight</em> hex digits allows Unicode code points outside
+of the basic multilingual plane, like all-important emoji:
+
+17 [p] Strings are instances of class <a href="/docs/wren/v0-4-0/en/02-reference/12-modules-core-string/">String</a>.
+
+18 [h3] Interpolation <a class="header-anchor" href="#interpolation" name="interpolation">#</a>
+
+19 [p] String literals also allow <em>interpolation</em>. If you have a percent sign (⟦CODE0⟧)
+followed by a parenthesized expression, the expression is evaluated. The
+resulting object’s ⟦CODE1⟧ method is called and the result is inserted in the
+string:
+
+20 [p] Arbitrarily complex expressions are allowed inside the parentheses:
+
+21 [p] An interpolated expression can even contain a string literal which in turn has
+its own nested interpolations, but doing that gets unreadable pretty quickly.
+
+22 [h3] Raw strings <a class="header-anchor" href="#raw-strings" name="raw-strings">#</a>
+
+23 [p] A string literal can also be created using triple quotes ⟦CODE0⟧ which is
+parsed as a raw string. A raw string is no different
+from any other string, it’s just parsed in a different way.
+
+24 [p] <strong>Raw strings do not process escapes and do not apply any interpolation</strong>.
+
+25 [p] When a raw string spans multiple lines and a triple quote is on it’s own line,
+any whitespace on that line will be ignored. This means the opening and closing
+lines are not counted as part of the string when the triple quotes are separate lines,
+as long as they only contain whitespace (spaces + tabs).
+
+26 [p] The resulting value in the string above has no newlines or trailing whitespace. 
+Note the spaces in front of the Hello are preserved. 
+
+27 [p] A raw string will be parsed exactly as is in the file, unmodified.
+This means it can contain quotes, invalid syntax, other data formats 
+and so on without being modified by Wren.
+
+28 [p] One more example, embedding wren code inside a string safely.
+
+29 [h2] Ranges <a class="header-anchor" href="#ranges" name="ranges">#</a>
+
+30 [p] A range is a little object that represents a consecutive range of numbers. They
+don’t have their own dedicated literal syntax. Instead, the number class
+implements the ⟦CODE0⟧ and ⟦CODE1⟧ <a href="/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators">operators</a> to create them:
+
+31 [p] This creates a range from three to eight, including eight itself. If you want a
+half-inclusive range, use ⟦CODE0⟧:
+
+32 [p] This creates a range from four to six <em>not</em> including six itself. Ranges are
+commonly used for <a href="/docs/wren/v0-4-0/en/01-guide/08-control-flow/#for-statements">iterating</a> over a
+sequences of numbers, but are useful in other places too. You can pass them to
+a <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">list</a>’s subscript operator to return a subset of the list, for
+example, or on a String, the substring in that range:
+
+33 [p] Their class is <a href="/docs/wren/v0-4-0/en/02-reference/10-modules-core-range/">Range</a>.
+
+34 [h2] Null <a class="header-anchor" href="#null" name="null">#</a>
+
+35 [p] Wren has a special value ⟦CODE0⟧, which is the only instance of the class
+<a href="/docs/wren/v0-4-0/en/02-reference/07-modules-core-null/">Null</a>. (Note the difference in case.) It functions a bit like ⟦CODE1⟧ in some
+languages: it indicates the absence of a value. If you call a method that
+doesn’t return anything and get its returned value, you get ⟦CODE2⟧ back.
+
+36 [p] <br/><hr/>
+<a class="right" href="/docs/wren/v0-4-0/en/01-guide/05-lists/">Lists →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/">← Syntax</a>

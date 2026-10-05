@@ -1,0 +1,515 @@
+1 [h1]
+EN: Syntax
+JA: 構文
+
+2 [p]
+EN: Wren’s syntax is designed to be familiar to people coming from C-like languages
+while being a bit simpler and more streamlined.
+JA: Wrenの構文は、Cに似た言語を使ってきた人にとってなじみがあり、その一方で少し単純で無駄の少ないものになるよう設計されています。
+
+3 [p]
+EN: Scripts are stored in plain text files with a .wren file extension. Wren does
+not compile ahead of time: programs are run directly from source, from top to
+bottom like a typical scripting language. (Internally, programs are compiled to
+bytecode for efficiency, but that’s an implementation detail.)
+JA: スクリプトは、拡張子が.wrenのプレーンテキストファイルに保存します。Wrenは事前コンパイルを行いません。一般的なスクリプト言語と同様、ソースから直接、上から下へプログラムを実行します。（内部では効率のためにバイトコードへコンパイルしますが、これは実装上の詳細です。）
+
+4 [h2]
+EN: Comments #
+JA: コメント #
+
+5 [p]
+EN: Line comments start with // and end at the end of the line:
+JA: 行コメントは//で始まり、行末で終わります。
+
+UNCHANGED CODE 1
+
+// This is a comment.
+
+
+6 [p]
+EN: Block comments start with /* and end with */. They can span multiple lines:
+JA: ブロックコメントは/*で始まり、*/で終わります。複数行にまたがることができます。
+
+UNCHANGED CODE 2
+
+/* This
+   is
+   a
+   multi-line
+   comment. */
+
+
+7 [p]
+EN: Unlike C, block comments can nest in Wren:
+JA: Cとは異なり、Wrenではブロックコメントを入れ子にできます。
+
+UNCHANGED CODE 3
+
+/* This is /* a nested */ comment. */
+
+
+8 [p]
+EN: This is handy because it lets you easily comment out an entire block of code,
+even if the code already contains block comments.
+JA: これは、すでにブロックコメントを含むコードでも、ブロック全体を簡単にコメントアウトできるので便利です。
+
+9 [h2]
+EN: Reserved words #
+JA: 予約語 #
+
+10 [p]
+EN: One way to get a quick feel for a language’s style is to see what words it
+reserves. Here’s what Wren has:
+JA: その言語らしさを手早くつかむには、どの語が予約されているかを見る方法があります。Wrenの予約語は次のとおりです。
+
+UNCHANGED CODE 4
+
+as break class construct continue else false for foreign if import
+in is null return static super this true var while
+
+
+11 [h2]
+EN: Identifiers #
+JA: 識別子 #
+
+12 [p]
+EN: Naming rules are similar to other programming languages. Identifiers start with
+a letter or underscore and may contain letters, digits, and underscores. Case
+is sensitive.
+JA: 名前の規則は、ほかのプログラミング言語と似ています。識別子は英字またはアンダースコアで始まり、英字・数字・アンダースコアを含められます。大文字と小文字は区別します。
+
+UNCHANGED CODE 5
+
+hi
+camelCase
+PascalCase
+_under_score
+abc123
+ALL_CAPS
+
+
+13 [p]
+EN: Identifiers that start with underscore (_) are special in Wren. They are used
+to indicate fields in classes.
+JA: アンダースコア（_）で始まる識別子は、Wrenでは特別な意味を持ちます。クラスのフィールドを表すために使います。
+
+14 [h2]
+EN: Newlines #
+JA: 改行 #
+
+15 [p]
+EN: Newlines (\n) are meaningful in Wren. They are used to separate statements:
+JA: 改行（\n）はWrenでは意味を持ち、文を区切るために使われます。
+
+UNCHANGED CODE 6
+
+// Two statements:
+System.print("hi") // Newline.
+System.print("bye")
+
+
+16 [p]
+EN: Sometimes, though, a statement doesn’t fit on a single line and jamming a
+newline in the middle would trip it up. To handle that, Wren has a very simple
+rule: It ignores a newline following any token that can’t end a statement.
+JA: ただし、一つの文が一行に収まらず、途中に改行を入れると問題になる場合もあります。そのためWrenには、とても単純な規則があります。文の終わりになれないトークンの直後にある改行を無視します。
+
+UNCHANGED CODE 7
+
+System.print( // Newline here is ignored.
+    "hi")
+
+
+17 [p]
+EN: In practice, this means you can put each statement on its own line and wrap
+them across lines as needed without too much trouble.
+JA: 実際には、各文を別々の行に書き、必要に応じて複数行に折り返しても、それほど困らないということです。
+
+18 [h2]
+EN: Blocks #
+JA: ブロック #
+
+19 [p]
+EN: Wren uses curly braces to define blocks. You can use a block anywhere a
+statement is allowed, like in control flow statements.
+Method and function bodies are also
+blocks. For example, here we have a block for the then case, and a single
+statement for the else:
+JA: Wrenでは波括弧でブロックを定義します。制御フローの文など、文を書ける場所ならどこでもブロックを使えます。メソッドや関数の本体もブロックです。例えば次のコードでは、then側にブロックを、else側に単独の文を使っています。
+
+UNCHANGED CODE 8
+
+if (happy && knowIt) {
+  hands.clap()
+} else System.print("sad")
+
+
+20 [p]
+EN: Blocks have two similar but not identical forms. Typically, blocks contain a
+series of statements like:
+JA: ブロックには、似てはいるものの同じではない二つの形式があります。通常、ブロックには次のように一連の文を入れます。
+
+UNCHANGED CODE 9
+
+{
+  System.print("one")
+  System.print("two")
+  System.print("three")
+}
+
+
+21 [p]
+EN: Blocks of this form when used for method and function bodies automatically
+return null after the block has completed. If you want to return a different
+value, you need an explicit return statement.
+JA: この形式をメソッドや関数の本体に使うと、ブロックの実行が終わった後、自動的にnullを返します。別の値を返したい場合は、明示的なreturn文が必要です。
+
+22 [p]
+EN: However, it’s pretty common to have a method or function that just evaluates and
+returns the result of a single expression. Some other languages use => to
+define these. Wren uses:
+JA: しかし、一つの式を評価してその結果を返すだけのメソッドや関数もよく使われます。ほかの言語には、その定義に=>を使うものがあります。Wrenでは次のように書きます。
+
+UNCHANGED CODE 10
+
+{ "single expression" }
+
+
+23 [p]
+EN: If there is no newline after the { (or after the parameter list in a
+function), then the block may only contain a single
+expression, and it automatically returns the result of it. It’s exactly the same
+as doing:
+JA: {の後（関数の場合は引数リストの後）に改行がなければ、ブロックには一つの式しか入れられず、その結果を自動的に返します。これは、次のように書くのとまったく同じです。
+
+UNCHANGED CODE 11
+
+{
+  return "single expression"
+}
+
+
+24 [p]
+EN: Statements are not allowed in this form (since they don’t produce values), which
+means nothing starting with class, for, if, import,  return,
+var, or while. If you want a block that contains a single statement,
+put a newline in there:
+JA: この形式では、値を生まない文は使えません。つまり、class、for、if、import、return、var、whileで始まるものは書けません。一つだけ文を含むブロックにしたい場合は、そこに改行を入れます。
+
+UNCHANGED CODE 12
+
+{
+  if (happy) {
+    System.print("I'm feelin' it!")
+  }
+}
+
+
+25 [p]
+EN: Using an initial newline after the { does feel a little weird or magical, but
+newlines are already significant in Wren, so it’s not totally unreasonable. The nice
+thing about this syntax as opposed to something like => is that the end of
+the block has an explicit delimiter. That helps when chaining:
+JA: {の直後に改行を置くというのは、少し奇妙で魔法めいて感じられます。しかし、Wrenではもともと改行が意味を持つので、それほど不自然ではありません。=>のような構文と比べてよい点は、ブロックの終わりに明示的な区切りがあることです。これは、呼び出しを連鎖させるときに役立ちます。
+
+UNCHANGED CODE 13
+
+numbers.map {|n| n * 2 }.where {|n| n < 100 }
+
+
+26 [h2]
+EN: Precedence and Associativity #
+JA: 優先順位と結合性 #
+
+27 [p]
+EN: We’ll talk about Wren’s different expression forms and what they mean in the
+next few pages. But if you want to see how they interact with each other
+grammatically, here’s the whole table.
+JA: Wrenの各種の式とその意味は、次の数ページで説明します。ただし、構文上それらがどう組み合わさるかを知りたい場合のために、一覧表を示します。
+
+28 [p]
+EN: It shows which expressions have higher precedence—which ones bind more
+tightly than others—and their associativity—how a series of the
+same kind of expression is ordered. Wren mostly follows C, except that it fixes
+the bitwise operator mistake. The full precedence table, from
+tightest to loosest, is:
+JA: この表は、どの式の優先順位が高いか、つまりどれがより強く結び付くかと、同種の式が連続するときにどの順番でまとまるかという結合性を示します。Wrenは、おおむねCに従いますが、ビット演算子の誤りを修正しています。強く結び付くものから弱いものへの、全優先順位表は次のとおりです。
+
+29 [th]
+EN: Prec
+JA: 優先順位
+
+30 [th]
+EN: Operator
+JA: 演算子
+
+31 [th]
+EN: Description
+JA: 説明
+
+32 [th]
+EN: Associates
+JA: 結合方向
+
+33 [td]
+EN: 1
+JA: 1
+
+34 [td]
+EN: () [] .
+JA: () [] .
+
+35 [td]
+EN: Grouping, Subscript, Method call
+JA: グループ化、添字、メソッド呼び出し
+
+36 [td]
+EN: Left
+JA: 左
+
+37 [td]
+EN: 2
+JA: 2
+
+38 [td]
+EN: - ! ~
+JA: - ! ~
+
+39 [td]
+EN: Negate, Not, Complement
+JA: 符号反転、論理否定、補数
+
+40 [td]
+EN: Right
+JA: 右
+
+41 [td]
+EN: 3
+JA: 3
+
+42 [td]
+EN: * / %
+JA: * / %
+
+43 [td]
+EN: Multiply, Divide, Modulo
+JA: 乗算、除算、剰余
+
+44 [td]
+EN: Left
+JA: 左
+
+45 [td]
+EN: 4
+JA: 4
+
+46 [td]
+EN: + -
+JA: + -
+
+47 [td]
+EN: Add, Subtract
+JA: 加算、減算
+
+48 [td]
+EN: Left
+JA: 左
+
+49 [td]
+EN: 5
+JA: 5
+
+50 [td]
+EN: .. ...
+JA: .. ...
+
+51 [td]
+EN: Inclusive range, Exclusive range
+JA: 終点を含む範囲、終点を含まない範囲
+
+52 [td]
+EN: Left
+JA: 左
+
+53 [td]
+EN: 6
+JA: 6
+
+54 [td]
+EN: << >>
+JA: << >>
+
+55 [td]
+EN: Left shift, Right shift
+JA: 左シフト、右シフト
+
+56 [td]
+EN: Left
+JA: 左
+
+57 [td]
+EN: 7
+JA: 7
+
+58 [td]
+EN: &
+JA: &
+
+59 [td]
+EN: Bitwise and
+JA: ビット単位のAND
+
+60 [td]
+EN: Left
+JA: 左
+
+61 [td]
+EN: 8
+JA: 8
+
+62 [td]
+EN: ^
+JA: ^
+
+63 [td]
+EN: Bitwise xor
+JA: ビット単位のXOR
+
+64 [td]
+EN: Left
+JA: 左
+
+65 [td]
+EN: 9
+JA: 9
+
+66 [td]
+EN: |
+JA: |
+
+67 [td]
+EN: Bitwise or
+JA: ビット単位のOR
+
+68 [td]
+EN: Left
+JA: 左
+
+69 [td]
+EN: 10
+JA: 10
+
+70 [td]
+EN: < <= > >=
+JA: < <= > >=
+
+71 [td]
+EN: Comparison
+JA: 比較
+
+72 [td]
+EN: Left
+JA: 左
+
+73 [td]
+EN: 11
+JA: 11
+
+74 [td]
+EN: is
+JA: is
+
+75 [td]
+EN: Type test
+JA: 型の検査
+
+76 [td]
+EN: Left
+JA: 左
+
+77 [td]
+EN: 12
+JA: 12
+
+78 [td]
+EN: == !=
+JA: == !=
+
+79 [td]
+EN: Equals, Not equal
+JA: 等価、非等価
+
+80 [td]
+EN: Left
+JA: 左
+
+81 [td]
+EN: 13
+JA: 13
+
+82 [td]
+EN: &&
+JA: &&
+
+83 [td]
+EN: Logical and
+JA: 論理AND
+
+84 [td]
+EN: Left
+JA: 左
+
+85 [td]
+EN: 14
+JA: 14
+
+86 [td]
+EN: ||
+JA: ||
+
+87 [td]
+EN: Logical or
+JA: 論理OR
+
+88 [td]
+EN: Left
+JA: 左
+
+89 [td]
+EN: 15
+JA: 15
+
+90 [td]
+EN: ?:
+JA: ?:
+
+91 [td]
+EN: Conditional
+JA: 条件式
+
+92 [td]
+EN: Right
+JA: 右
+
+93 [td]
+EN: 16
+JA: 16
+
+94 [td]
+EN: =
+JA: =
+
+95 [td]
+EN: Assignment, Setter
+JA: 代入、セッター
+
+96 [td]
+EN: Right
+JA: 右
+
+97 [p]
+EN: 
+Values →
+← Getting Started
+JA: 値 →← はじめに

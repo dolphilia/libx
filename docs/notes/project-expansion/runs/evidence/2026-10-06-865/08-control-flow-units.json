@@ -1,0 +1,549 @@
+{
+  "page": "01-guide/08-control-flow.md",
+  "titleEN": "Control Flow",
+  "titleJA": "制御フロー",
+  "sourceCanonicalSHA256": "916170cb5f29b771b5a2839fd50607ac1b7f1de3c7ebd9c182ac4030d5386916",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Control Flow",
+      "originalInnerHTML": "Control Flow",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Control flow is used to determine which chunks of code are executed and how many\ntimes. <em>Branching</em> statements and expressions decide whether or not to execute\nsome code and <em>looping</em> ones execute something more than once.",
+      "originalInnerHTML": "Control flow is used to determine which chunks of code are executed and how many\ntimes. <em>Branching</em> statements and expressions decide whether or not to execute\nsome code and <em>looping</em> ones execute something more than once.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "h2",
+      "sourceHTML": "Truth <a class=\"header-anchor\" href=\"#truth\" name=\"truth\">#</a>",
+      "originalInnerHTML": "Truth <a class=\"header-anchor\" href=\"#truth\" name=\"truth\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "All control flow is based on <em>deciding</em> whether or not to do something. This\ndecision depends on some expression’s value. We take the entire universe of\npossible objects and divide them into two buckets: some we consider “true” and\nthe rest are “false”. If the expression results in a value in the true bucket,\nwe do one thing. Otherwise, we do something else.",
+      "originalInnerHTML": "All control flow is based on <em>deciding</em> whether or not to do something. This\ndecision depends on some expression’s value. We take the entire universe of\npossible objects and divide them into two buckets: some we consider “true” and\nthe rest are “false”. If the expression results in a value in the true bucket,\nwe do one thing. Otherwise, we do something else.",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "Obviously, the boolean ⟦CODE0⟧ is in the “true” bucket and ⟦CODE1⟧ is in\n“false”, but what about values of other types? The choice is ultimately\narbitrary, and different languages have different rules. Wren’s rules follow\nRuby:",
+      "originalInnerHTML": "Obviously, the boolean <code>true</code> is in the “true” bucket and <code>false</code> is in\n“false”, but what about values of other types? The choice is ultimately\narbitrary, and different languages have different rules. Wren’s rules follow\nRuby:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>true</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>false</code>"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "tag": "li",
+      "sourceHTML": "The boolean value ⟦CODE0⟧ is false.",
+      "originalInnerHTML": "The boolean value <code>false</code> is false.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>false</code>"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "tag": "li",
+      "sourceHTML": "The null value ⟦CODE0⟧ is false.",
+      "originalInnerHTML": "The null value <code>null</code> is false.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "tag": "li",
+      "sourceHTML": "Everything else is true.",
+      "originalInnerHTML": "Everything else is true.",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "This means ⟦CODE0⟧, empty strings, and empty collections are all considered “true”\nvalues.",
+      "originalInnerHTML": "This means <code>0</code>, empty strings, and empty collections are all considered “true”\nvalues.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>0</code>"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "tag": "h2",
+      "sourceHTML": "If statements <a class=\"header-anchor\" href=\"#if-statements\" name=\"if-statements\">#</a>",
+      "originalInnerHTML": "If statements <a class=\"header-anchor\" href=\"#if-statements\" name=\"if-statements\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "The simplest branching statement, ⟦CODE0⟧ lets you conditionally skip a chunk of\ncode. It looks like this:",
+      "originalInnerHTML": "The simplest branching statement, <code>if</code> lets you conditionally skip a chunk of\ncode. It looks like this:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>if</code>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "That evaluates the parenthesized expression after ⟦CODE0⟧. If it’s true, then the\nstatement after the condition is evaluated. Otherwise it is skipped. Instead of\na statement, you can have a <a href=\"/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks\">block</a>:",
+      "originalInnerHTML": "That evaluates the parenthesized expression after <code>if</code>. If it’s true, then the\nstatement after the condition is evaluated. Otherwise it is skipped. Instead of\na statement, you can have a <a href=\"/docs/wren/v0-4-0/en/01-guide/03-syntax/#blocks\">block</a>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>if</code>"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "You may also provide an ⟦CODE0⟧ branch. It will be executed if the condition is\nfalse:",
+      "originalInnerHTML": "You may also provide an <code>else</code> branch. It will be executed if the condition is\nfalse:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>else</code>"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "And, of course, it can take a block too:",
+      "originalInnerHTML": "And, of course, it can take a block too:",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "h2",
+      "sourceHTML": "Logical operators <a class=\"header-anchor\" href=\"#logical-operators\" name=\"logical-operators\">#</a>",
+      "originalInnerHTML": "Logical operators <a class=\"header-anchor\" href=\"#logical-operators\" name=\"logical-operators\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "Unlike most other <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">operators</a> in Wren which are just a special syntax for\n<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">method calls</a>, the ⟦CODE0⟧ and ⟦CODE1⟧ operators are special. This is because they\nonly conditionally evaluate the right operand—they short-circuit.",
+      "originalInnerHTML": "Unlike most other <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">operators</a> in Wren which are just a special syntax for\n<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">method calls</a>, the <code>&amp;&amp;</code> and <code>||</code> operators are special. This is because they\nonly conditionally evaluate the right operand—they short-circuit.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>&amp;&amp;</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>||</code>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "A ⟦CODE0⟧ (“logical and”) expression evaluates the left-hand argument. If it’s\nfalse, it returns that value. Otherwise it evaluates and returns the right-hand\nargument.",
+      "originalInnerHTML": "A <code>&amp;&amp;</code> (“logical and”) expression evaluates the left-hand argument. If it’s\nfalse, it returns that value. Otherwise it evaluates and returns the right-hand\nargument.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>&amp;&amp;</code>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "sourceHTML": "A ⟦CODE0⟧ (“logical or”) expression is reversed. If the left-hand argument is\n<em>true</em>, it’s returned, otherwise the right-hand argument is evaluated and\nreturned:",
+      "originalInnerHTML": "A <code>||</code> (“logical or”) expression is reversed. If the left-hand argument is\n<em>true</em>, it’s returned, otherwise the right-hand argument is evaluated and\nreturned:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>||</code>"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "tag": "h2",
+      "sourceHTML": "The conditional operator ⟦CODE0⟧ <a class=\"header-anchor\" href=\"#the-conditional-operator-\" name=\"the-conditional-operator-\">#</a>",
+      "originalInnerHTML": "The conditional operator <code>?:</code> <a class=\"header-anchor\" href=\"#the-conditional-operator-\" name=\"the-conditional-operator-\">#</a>",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>?:</code>"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "Also known as the “ternary” operator since it takes three arguments, Wren has\nthe little “if statement in the form of an expression” you know and love from C\nand similar languages.",
+      "originalInnerHTML": "Also known as the “ternary” operator since it takes three arguments, Wren has\nthe little “if statement in the form of an expression” you know and love from C\nand similar languages.",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "It takes a condition expression, followed by ⟦CODE0⟧, followed by a then\nexpression, a ⟦CODE1⟧, then an else expression. Just like ⟦CODE2⟧, it evaluates the\ncondition. If true, it evaluates and returns the then expression. Otherwise\nit does the else expression.",
+      "originalInnerHTML": "It takes a condition expression, followed by <code>?</code>, followed by a then\nexpression, a <code>:</code>, then an else expression. Just like <code>if</code>, it evaluates the\ncondition. If true, it evaluates and returns the then expression. Otherwise\nit does the else expression.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>?</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>:</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>if</code>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "tag": "h2",
+      "sourceHTML": "While statements <a class=\"header-anchor\" href=\"#while-statements\" name=\"while-statements\">#</a>",
+      "originalInnerHTML": "While statements <a class=\"header-anchor\" href=\"#while-statements\" name=\"while-statements\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "It’s hard to write a useful program without executing some chunk of code\nrepeatedly. To do that, you use looping statements. There are two in Wren, and\nthey should be familiar if you’ve used other imperative languages.",
+      "originalInnerHTML": "It’s hard to write a useful program without executing some chunk of code\nrepeatedly. To do that, you use looping statements. There are two in Wren, and\nthey should be familiar if you’ve used other imperative languages.",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "The simplest, a ⟦CODE0⟧ statement executes a chunk of code as long as a\ncondition continues to hold. For example:",
+      "originalInnerHTML": "The simplest, a <code>while</code> statement executes a chunk of code as long as a\ncondition continues to hold. For example:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>while</code>"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "This evaluates the expression ⟦CODE0⟧. If it is true, then it executes the\nfollowing body. After that, it loops back to the top, and evaluates the\ncondition again. It keeps doing this as long as the condition evaluates to\nsomething true.",
+      "originalInnerHTML": "This evaluates the expression <code>n != 1</code>. If it is true, then it executes the\nfollowing body. After that, it loops back to the top, and evaluates the\ncondition again. It keeps doing this as long as the condition evaluates to\nsomething true.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>n != 1</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "The condition for a while loop can be any expression, and must be surrounded by\nparentheses. The body of the loop is usually a curly block but can also be a\nsingle statement:",
+      "originalInnerHTML": "The condition for a while loop can be any expression, and must be surrounded by\nparentheses. The body of the loop is usually a curly block but can also be a\nsingle statement:",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "h2",
+      "sourceHTML": "For statements <a class=\"header-anchor\" href=\"#for-statements\" name=\"for-statements\">#</a>",
+      "originalInnerHTML": "For statements <a class=\"header-anchor\" href=\"#for-statements\" name=\"for-statements\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "While statements are useful when you want to loop indefinitely or according to\nsome complex condition. But in most cases, you’re looping through\na <a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">list</a>, a series of numbers, or some other “sequence” object.\nThat’s what ⟦CODE0⟧ is, uh, for. It looks like this:",
+      "originalInnerHTML": "While statements are useful when you want to loop indefinitely or according to\nsome complex condition. But in most cases, you’re looping through\na <a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">list</a>, a series of numbers, or some other “sequence” object.\nThat’s what <code>for</code> is, uh, for. It looks like this:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>for</code>"
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "A ⟦CODE0⟧ loop has three components:",
+      "originalInnerHTML": "A <code>for</code> loop has three components:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>for</code>"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "tag": "li",
+      "sourceHTML": "\n<p>A <em>variable name</em> to bind. In the example, that’s ⟦CODE0⟧. Wren will create\n   a new variable with that name whose scope is the body of the loop.</p>\n",
+      "originalInnerHTML": "\n<p>A <em>variable name</em> to bind. In the example, that’s <code>beatle</code>. Wren will create\n   a new variable with that name whose scope is the body of the loop.</p>\n",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>beatle</code>"
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "tag": "li",
+      "sourceHTML": "\n<p>A <em>sequence expression</em>. This determines what you’re looping over. It gets\n   evaluated <em>once</em> before the body of the loop. In this case, it’s a list\n   literal, but it can be any expression.</p>\n",
+      "originalInnerHTML": "\n<p>A <em>sequence expression</em>. This determines what you’re looping over. It gets\n   evaluated <em>once</em> before the body of the loop. In this case, it’s a list\n   literal, but it can be any expression.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "32",
+      "tag": "li",
+      "sourceHTML": "\n<p>A <em>body</em>. This is a curly block or a single statement. It gets executed once\n   for each iteration of the loop.</p>\n",
+      "originalInnerHTML": "\n<p>A <em>body</em>. This is a curly block or a single statement. It gets executed once\n   for each iteration of the loop.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "33",
+      "tag": "h2",
+      "sourceHTML": "Break statements <a class=\"header-anchor\" href=\"#break-statements\" name=\"break-statements\">#</a>",
+      "originalInnerHTML": "Break statements <a class=\"header-anchor\" href=\"#break-statements\" name=\"break-statements\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "34",
+      "tag": "p",
+      "sourceHTML": "Sometimes, right in the middle of a loop body, you decide you want to bail out\nand stop. To do that, you can use a ⟦CODE0⟧ statement. It’s just the ⟦CODE1⟧\nkeyword all by itself. That immediately exits out of the nearest enclosing\n⟦CODE2⟧ or ⟦CODE3⟧ loop.",
+      "originalInnerHTML": "Sometimes, right in the middle of a loop body, you decide you want to bail out\nand stop. To do that, you can use a <code>break</code> statement. It’s just the <code>break</code>\nkeyword all by itself. That immediately exits out of the nearest enclosing\n<code>while</code> or <code>for</code> loop.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>break</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>break</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>while</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>for</code>"
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "tag": "h2",
+      "sourceHTML": "Continue statements <a class=\"header-anchor\" href=\"#continue-statements\" name=\"continue-statements\">#</a>",
+      "originalInnerHTML": "Continue statements <a class=\"header-anchor\" href=\"#continue-statements\" name=\"continue-statements\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "During the execution of a loop body, you might decide that you want to skip the \nrest of this iteration and move on to the next one. You can use a ⟦CODE0⟧ \nstatement to do that. It’s just the ⟦CODE1⟧ keyword all by itself. Execution\nwill immediately jump to the beginning of the next loop iteration (and check the\nloop conditions).",
+      "originalInnerHTML": "During the execution of a loop body, you might decide that you want to skip the \nrest of this iteration and move on to the next one. You can use a <code>continue</code> \nstatement to do that. It’s just the <code>continue</code> keyword all by itself. Execution\nwill immediately jump to the beginning of the next loop iteration (and check the\nloop conditions).",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>continue</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>continue</code>"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "tag": "h2",
+      "sourceHTML": "Numeric ranges <a class=\"header-anchor\" href=\"#numeric-ranges\" name=\"numeric-ranges\">#</a>",
+      "originalInnerHTML": "Numeric ranges <a class=\"header-anchor\" href=\"#numeric-ranges\" name=\"numeric-ranges\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "38",
+      "tag": "p",
+      "sourceHTML": "Lists are one common use for ⟦CODE0⟧ loops, but sometimes you want to walk over a\nsequence of numbers, or loop a number of times. For that, you can create a\n<a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">range</a>, like so:",
+      "originalInnerHTML": "Lists are one common use for <code>for</code> loops, but sometimes you want to walk over a\nsequence of numbers, or loop a number of times. For that, you can create a\n<a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">range</a>, like so:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>for</code>"
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "tag": "p",
+      "sourceHTML": "This loops over the numbers from 1 to 100, including 100 itself. If you want to\nleave off the last value, use three dots instead of two:",
+      "originalInnerHTML": "This loops over the numbers from 1 to 100, including 100 itself. If you want to\nleave off the last value, use three dots instead of two:",
+      "protected": []
+    },
+    {
+      "id": "40",
+      "tag": "p",
+      "sourceHTML": "This looks like some special “range” syntax in the ⟦CODE0⟧ loop, but it’s actually\njust a pair of operators. The ⟦CODE1⟧ and ⟦CODE2⟧ syntax are infix “range” operators.\nLike <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">other operators</a>, they are special syntax for a regular method\ncall. The number type implements them and returns a <a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">range object</a> that knows\nhow to iterate over a series of numbers.",
+      "originalInnerHTML": "This looks like some special “range” syntax in the <code>for</code> loop, but it’s actually\njust a pair of operators. The <code>..</code> and <code>...</code> syntax are infix “range” operators.\nLike <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#operators\">other operators</a>, they are special syntax for a regular method\ncall. The number type implements them and returns a <a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">range object</a> that knows\nhow to iterate over a series of numbers.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>for</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>..</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>...</code>"
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "tag": "h2",
+      "sourceHTML": "The iterator protocol <a class=\"header-anchor\" href=\"#the-iterator-protocol\" name=\"the-iterator-protocol\">#</a>",
+      "originalInnerHTML": "The iterator protocol <a class=\"header-anchor\" href=\"#the-iterator-protocol\" name=\"the-iterator-protocol\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "42",
+      "tag": "p",
+      "sourceHTML": "Lists and ranges cover the two most common kinds of loops, but you should also\nbe able to define your own sequences. To enable that, the semantics of ⟦CODE0⟧\nare defined in terms of an “iterator protocol”. The loop itself doesn’t know\nanything about lists or ranges, it just knows how to call two particular\nmethods on the object that resulted from evaluating the sequence expression.",
+      "originalInnerHTML": "Lists and ranges cover the two most common kinds of loops, but you should also\nbe able to define your own sequences. To enable that, the semantics of <code>for</code>\nare defined in terms of an “iterator protocol”. The loop itself doesn’t know\nanything about lists or ranges, it just knows how to call two particular\nmethods on the object that resulted from evaluating the sequence expression.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>for</code>"
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "tag": "p",
+      "sourceHTML": "When you write a loop like this:",
+      "originalInnerHTML": "When you write a loop like this:",
+      "protected": []
+    },
+    {
+      "id": "44",
+      "tag": "p",
+      "sourceHTML": "Wren sees it something like this:",
+      "originalInnerHTML": "Wren sees it something like this:",
+      "protected": []
+    },
+    {
+      "id": "45",
+      "tag": "p",
+      "sourceHTML": "First, Wren evaluates the sequence expression and stores it in a hidden\nvariable (written ⟦CODE0⟧ in the example but in reality it doesn’t have a name\nyou can use). It also creates a hidden “iterator” variable and initializes it\nto ⟦CODE1⟧.",
+      "originalInnerHTML": "First, Wren evaluates the sequence expression and stores it in a hidden\nvariable (written <code>seq_</code> in the example but in reality it doesn’t have a name\nyou can use). It also creates a hidden “iterator” variable and initializes it\nto <code>null</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>seq_</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "tag": "p",
+      "sourceHTML": "Each iteration, it calls ⟦CODE0⟧ on the sequence, passing in the current\niterator value. (In the first iteration, it passes in ⟦CODE1⟧.) The sequence’s\njob is to take that iterator and advance it to the next element in the\nsequence. (Or, in the case where the iterator is ⟦CODE2⟧, to advance it to the\n<em>first</em> element). It then returns either the new iterator, or ⟦CODE3⟧ to\nindicate that there are no more elements.",
+      "originalInnerHTML": "Each iteration, it calls <code>iterate()</code> on the sequence, passing in the current\niterator value. (In the first iteration, it passes in <code>null</code>.) The sequence’s\njob is to take that iterator and advance it to the next element in the\nsequence. (Or, in the case where the iterator is <code>null</code>, to advance it to the\n<em>first</em> element). It then returns either the new iterator, or <code>false</code> to\nindicate that there are no more elements.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>iterate()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>null</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>null</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>false</code>"
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "tag": "p",
+      "sourceHTML": "If ⟦CODE0⟧ is returned, Wren exits out of the loop and we’re done. If anything\nelse is returned, that means that we have advanced to a new valid element. To\nget that, Wren then calls ⟦CODE1⟧ on the sequence and passes in the\niterator value that it just got from calling ⟦CODE2⟧. The sequence uses\nthat to look up and return the appropriate element.",
+      "originalInnerHTML": "If <code>false</code> is returned, Wren exits out of the loop and we’re done. If anything\nelse is returned, that means that we have advanced to a new valid element. To\nget that, Wren then calls <code>iteratorValue()</code> on the sequence and passes in the\niterator value that it just got from calling <code>iterate()</code>. The sequence uses\nthat to look up and return the appropriate element.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>false</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>iteratorValue()</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>iterate()</code>"
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "tag": "p",
+      "sourceHTML": "The built-in <a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">List</a> and <a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">Range</a> types implement\n⟦CODE0⟧ and ⟦CODE1⟧ to walk over their respective sequences. You\ncan implement the same methods in your classes to make your own types iterable.",
+      "originalInnerHTML": "The built-in <a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">List</a> and <a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">Range</a> types implement\n<code>iterate()</code> and <code>iteratorValue()</code> to walk over their respective sequences. You\ncan implement the same methods in your classes to make your own types iterable.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>iterate()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>iteratorValue()</code>"
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">Variables →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">← Method Calls</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/09-variables/\">Variables →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">← Method Calls</a>",
+      "protected": []
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+1 [h1]
+EN: Getting Started
+JA: はじめに
+
+2 [h2]
+EN: Trying out the language <a class="header-anchor" href="#trying-out-the-language" name="trying-out-the-language">#</a>
+JA: 言語を試す <a class="header-anchor" href="#trying-out-the-language" name="trying-out-the-language">#</a>
+
+3 [p]
+EN: If you’d like to try Wren, you have a few options.
+JA: Wrenを試すには、いくつかの方法があります。
+
+4 [li]
+EN: <strong>In your browser.</strong> You can try Wren <strong><a href="https://wren.io/try">right here</a></strong>!
+JA: <strong>ブラウザーで。</strong> <strong><a href="https://wren.io/try">ここで</a></strong>Wrenを試せます！
+
+5 [li]
+EN: <strong>On your computer.</strong> The <a href="https://wren.io/cli">Wren CLI</a> project is a downloadable executable
+      to run scripts with access to file io and more. See the <a href="https://wren.io/cli">Wren CLI docs</a>.
+JA: <strong>自分のコンピューターで。</strong> <a href="https://wren.io/cli">Wren CLI</a>プロジェクトはダウンロードできる実行ファイルで、ファイル入出力などを利用するスクリプトを実行できます。<a href="https://wren.io/cli">Wren CLIの文書</a>を参照してください。
+
+6 [li]
+EN: <strong>Embedded in your code.</strong> See how to <a href="#embed-the-vm">build and embed Wren</a> below. <br/>
+    And then read the <a href="/docs/wren/v0-4-0/en/01-guide/16-embedding/">embedding guide</a>!
+JA: <strong>自分のコードに組み込んで。</strong> 下の<a href="#embed-the-vm">Wrenのビルドと組み込み</a>を参照してください。<br/>続いて、<a href="/docs/wren/v0-4-0/en/01-guide/16-embedding/">組み込みガイド</a>を読んでください！
+
+7 [p]
+EN: Once you have somewhere to explore, it’s time to <a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/">learn the
+language</a>.
+JA: 試せる場所が用意できたら、<a href="/docs/wren/v0-4-0/en/01-guide/03-syntax/">言語を学ぶ</a>番です。
+
+8 [h2]
+EN: Embed the VM <a class="header-anchor" href="#embed-the-vm" name="embed-the-vm">#</a>
+JA: VMを組み込む <a class="header-anchor" href="#embed-the-vm" name="embed-the-vm">#</a>
+
+9 [p]
+EN: <strong>The Wren Virtual Machine</strong> is the core of the language that executes Wren
+    source code. It is just a library, not a standalone application. It’s
+    designed to be <a href="/docs/wren/v0-4-0/en/01-guide/16-embedding/">embedded</a> in a larger host application.
+JA: <strong>Wren仮想マシン</strong>は、Wrenのソースコードを実行する言語の中核です。単なるライブラリであり、単独で動くアプリケーションではありません。より大きなホストアプリケーションに<a href="/docs/wren/v0-4-0/en/01-guide/16-embedding/">組み込む</a>ことを意図しています。
+
+10 [p]
+EN: It has no dependencies beyond the C standard library.
+You can use it as a static library, shared library, or simply compile the source into your app.
+JA: C標準ライブラリ以外に依存するものはありません。静的ライブラリや共有ライブラリとして利用しても、ソースをアプリケーションに含めてコンパイルしてもかまいません。
+
+11 [h3]
+EN: Building Wren <a class="header-anchor" href="#building-wren" name="building-wren">#</a>
+JA: Wrenをビルドする <a class="header-anchor" href="#building-wren" name="building-wren">#</a>
+
+12 [p]
+EN: To build the Wren library, we look inside the ⟦CODE0⟧ folder.
+In here you’ll find ready to go projects for ⟦CODE1⟧, ⟦CODE2⟧ and tools like ⟦CODE3⟧.
+JA: Wrenライブラリをビルドするには、⟦CODE0⟧フォルダーを見ます。ここには⟦CODE1⟧、⟦CODE2⟧、および⟦CODE3⟧などのツール向けに、すぐ使えるプロジェクトが入っています。
+
+13 [li]
+EN: <strong>Windows</strong> Open ⟦CODE0⟧ inside ⟦CODE1⟧ (or ⟦CODE2⟧), hit build.
+JA: <strong>Windows</strong> ⟦CODE1⟧（または⟦CODE2⟧）内の⟦CODE0⟧を開き、ビルドを実行します。
+
+14 [li]
+EN: <strong>Mac</strong> Open ⟦CODE0⟧ inside ⟦CODE1⟧, hit build.
+JA: <strong>Mac</strong> ⟦CODE1⟧内の⟦CODE0⟧を開き、ビルドを実行します。
+
+15 [li]
+EN: <strong>Linux</strong> Run ⟦CODE0⟧ inside of ⟦CODE1⟧.
+JA: <strong>Linux</strong> ⟦CODE1⟧内で⟦CODE0⟧を実行します。
+
+16 [p]
+EN: In each case, <strong>there will be library files generated into the root ⟦CODE0⟧ folder</strong>. <br/>
+These are what you’ll link into your project, based on your needs.
+JA: いずれの場合も、<strong>ルートの⟦CODE0⟧フォルダーにライブラリのファイルが生成されます</strong>。<br/>必要に応じて、これらを自分のプロジェクトにリンクします。
+
+17 [li]
+EN: <strong>Static Linking</strong> ⟦CODE0⟧ on Windows, ⟦CODE1⟧ elsewhere.
+JA: <strong>静的リンク</strong> Windowsでは⟦CODE0⟧、それ以外では⟦CODE1⟧です。
+
+18 [li]
+EN: <strong>Dynamic Linking</strong> ⟦CODE0⟧ on Windows, ⟦CODE1⟧ on Linux, and ⟦CODE2⟧ on Mac.
+JA: <strong>動的リンク</strong> Windowsでは⟦CODE0⟧、Linuxでは⟦CODE1⟧、Macでは⟦CODE2⟧です。
+
+19 [p]
+EN: <small>
+  Note that the default build will also generate ⟦CODE0⟧ inside of ⟦CODE1⟧, <br/>
+  a binary that is used to run the language tests. It can execute simple scripts.
+</small>
+JA: <small>既定のビルドでは、⟦CODE1⟧内に⟦CODE0⟧も生成されます。<br/>これは言語のテストを実行するためのバイナリーで、簡単なスクリプトも実行できます。</small>
+
+20 [p]
+EN: <strong>Other platforms</strong> <br/>
+If your platform isn’t explicitly supported,
+it is recommended that you include the Wren source
+in your project for a portable experience.
+JA: <strong>その他のプラットフォーム</strong><br/>利用するプラットフォームが明示的にサポートされていない場合は、移植性を得るため、自分のプロジェクトにWrenのソースを含めることをお勧めします。
+
+21 [h3]
+EN: Including the code in your project <a class="header-anchor" href="#including-the-code-in-your-project" name="including-the-code-in-your-project">#</a>
+JA: 自分のプロジェクトにコードを含める <a class="header-anchor" href="#including-the-code-in-your-project" name="including-the-code-in-your-project">#</a>
+
+22 [p]
+EN: <strong>all source files</strong> <br/>
+The alternative to building via the provided projects is to include the wren source code in your project.
+Since it has no dependencies this is simple, all the code in ⟦CODE0⟧ comes along. There’s a readme in ⟦CODE1⟧ for details.
+JA: <strong>すべてのソースファイル</strong><br/>用意されているプロジェクトでビルドする代わりに、自分のプロジェクトへWrenのソースコードを含めることもできます。依存関係がないので、⟦CODE0⟧にあるコードをすべて含めるだけです。詳しくは⟦CODE1⟧内のreadmeを参照してください。
+
+23 [p]
+EN: <strong>‘amalgamated’ build</strong> <br/>
+If you want an even simpler way, there’s an ‘amalgamated’ build (often called ⟦CODE0⟧, or ⟦CODE1⟧ builds.).
+This is <em>all of the wren source code in one file</em>.
+JA: <strong>「amalgamated」ビルド</strong><br/>さらに簡単な方法として、「amalgamated」ビルド（⟦CODE0⟧または⟦CODE1⟧ビルドとも呼ばれます）があります。これは<em>Wrenのすべてのソースコードを一つのファイルにまとめたもの</em>です。
+
+24 [p]
+EN: This file can be generated by running ⟦CODE0⟧, 
+which saves the generated output in ⟦CODE1⟧.
+JA: このファイルは⟦CODE0⟧を実行すると生成され、出力は⟦CODE1⟧に保存されます。
+
+25 [p]
+EN: Include ⟦CODE0⟧ and ⟦CODE1⟧ in your project code and you’re good to go.
+<small>Ideally later we can automate generating this and include it in the repo.</small>
+JA: 自分のプロジェクトのコードに⟦CODE0⟧と⟦CODE1⟧を含めれば、準備は完了です。<small>将来的には、この生成を自動化してリポジトリに含められるとよいと考えています。</small>
+
+26 [p]
+EN: If you run into bugs, or have ideas or questions, any of
+the following work:
+JA: バグを見つけた場合や、アイデア・質問がある場合は、次のいずれかを利用してください。
+
+27 [li]
+EN: Join the <a href="https://discord.gg/Kx6PxSX">discord community</a>.
+JA: <a href="https://discord.gg/Kx6PxSX">Discordコミュニティー</a>に参加する。
+
+28 [li]
+EN: Ask on the <a href="https://groups.google.com/forum/#!forum/wren-lang">Wren mailing list</a> (which is pretty quiet).
+JA: <a href="https://groups.google.com/forum/#!forum/wren-lang">Wrenのメーリングリスト</a>で質問する（あまり活発ではありません）。
+
+29 [li]
+EN: Tell us on twitter at <a href="https://twitter.com/intent/user?screen_name=munificentbob">@munificentbob</a> or <a href="https://twitter.com/intent/user?screen_name=ruby0x1">@ruby0x1</a>.
+JA: Twitterの<a href="https://twitter.com/intent/user?screen_name=munificentbob">@munificentbob</a>または<a href="https://twitter.com/intent/user?screen_name=ruby0x1">@ruby0x1</a>に知らせる。
+
+30 [li]
+EN: <a href="https://github.com/wren-lang/wren/issues">File a ticket</a> at <a href="https://github.com/wren-lang/wren">the GitHub repo</a>.
+JA: <a href="https://github.com/wren-lang/wren">GitHubリポジトリ</a>に<a href="https://github.com/wren-lang/wren/issues">チケットを登録する</a>。
+
+31 [li]
+EN: The CLI also has <a href="https://github.com/wren-lang/wren-cli/issues">tickets</a> and a <a href="https://github.com/wren-lang/wren-cli">GitHub repo</a> too.
+JA: CLIにも<a href="https://github.com/wren-lang/wren-cli/issues">チケット</a>と<a href="https://github.com/wren-lang/wren-cli">GitHubリポジトリ</a>があります。
+
+32 [li]
+EN: Pull requests are welcome.
+JA: プルリクエストを歓迎します。

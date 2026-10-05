@@ -1,0 +1,302 @@
+{
+  "page": "01-guide/13-error-handling.md",
+  "titleEN": "Error Handling",
+  "titleJA": "エラー処理",
+  "sourceCanonicalSHA256": "21c25cbfff02f72a463369bf43a60caa36e34d9edf51525204869836fc057beb",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Error Handling",
+      "originalInnerHTML": "Error Handling",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Errors come in a few fun flavors.",
+      "originalInnerHTML": "Errors come in a few fun flavors.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "h2",
+      "sourceHTML": "Syntax errors <a class=\"header-anchor\" href=\"#syntax-errors\" name=\"syntax-errors\">#</a>",
+      "originalInnerHTML": "Syntax errors <a class=\"header-anchor\" href=\"#syntax-errors\" name=\"syntax-errors\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "The first errors you’re likely to run into are syntax errors. These include\nsimple bugs where your code doesn’t follow the language’s grammar, like:",
+      "originalInnerHTML": "The first errors you’re likely to run into are syntax errors. These include\nsimple bugs where your code doesn’t follow the language’s grammar, like:",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "Wren detects these errors as soon as it tries to read your code. When it hits\none, you get a friendly error message, like:",
+      "originalInnerHTML": "Wren detects these errors as soon as it tries to read your code. When it hits\none, you get a friendly error message, like:",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "Some slightly more “semantic” errors fall into this bucket too. Things like\nusing a variable that hasn’t been defined, or declaring two variables with the\nsame name in the same scope. So if you do:",
+      "originalInnerHTML": "Some slightly more “semantic” errors fall into this bucket too. Things like\nusing a variable that hasn’t been defined, or declaring two variables with the\nsame name in the same scope. So if you do:",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "Wren tells you:",
+      "originalInnerHTML": "Wren tells you:",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "Note that it does this before it executes <em>any</em> code. Unlike some other\nscripting languages, Wren tries to help you find your errors as soon as\npossible when it can.",
+      "originalInnerHTML": "Note that it does this before it executes <em>any</em> code. Unlike some other\nscripting languages, Wren tries to help you find your errors as soon as\npossible when it can.",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "If it starts running your code, you can be sure you don’t have any errors\nrelated to syntax or variable scope.",
+      "originalInnerHTML": "If it starts running your code, you can be sure you don’t have any errors\nrelated to syntax or variable scope.",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "h2",
+      "sourceHTML": "Runtime errors <a class=\"header-anchor\" href=\"#runtime-errors\" name=\"runtime-errors\">#</a>",
+      "originalInnerHTML": "Runtime errors <a class=\"header-anchor\" href=\"#runtime-errors\" name=\"runtime-errors\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "Alas, just fixing all of the “compile-time” errors doesn’t mean your code does\nwhat you want. Your program may still have errors that can’t be detected\nstatically. Since they can’t be found until your code is run, they’re called\n“runtime” errors.",
+      "originalInnerHTML": "Alas, just fixing all of the “compile-time” errors doesn’t mean your code does\nwhat you want. Your program may still have errors that can’t be detected\nstatically. Since they can’t be found until your code is run, they’re called\n“runtime” errors.",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "Most runtime errors come from the VM itself. They arise from code trying to\nperform an operation that the VM can’t do. The most common error is a “method\nnot found” one. If you call a method on an object and its class (and all of its\nsuperclasses) don’t define that method, there’s nothing Wren can do:",
+      "originalInnerHTML": "Most runtime errors come from the VM itself. They arise from code trying to\nperform an operation that the VM can’t do. The most common error is a “method\nnot found” one. If you call a method on an object and its class (and all of its\nsuperclasses) don’t define that method, there’s nothing Wren can do:",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "If you run this, Wren will print:",
+      "originalInnerHTML": "If you run this, Wren will print:",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "Then it stops executing code. Unlike some other languages, Wren doesn’t keep\nplugging away after a runtime error has occurred. A runtime error implies\nthere’s a bug in your code and it wants to draw your attention to it. To help\nyou out, it prints a stack trace showing where in the code the error occurred,\nand all of the method calls that led to it.",
+      "originalInnerHTML": "Then it stops executing code. Unlike some other languages, Wren doesn’t keep\nplugging away after a runtime error has occurred. A runtime error implies\nthere’s a bug in your code and it wants to draw your attention to it. To help\nyou out, it prints a stack trace showing where in the code the error occurred,\nand all of the method calls that led to it.",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "Another common runtime error is passing an argument of the wrong type to a\nmethod. For example, lists are indexed using a number. If you try to pass some\nother type, it’s an error:",
+      "originalInnerHTML": "Another common runtime error is passing an argument of the wrong type to a\nmethod. For example, lists are indexed using a number. If you try to pass some\nother type, it’s an error:",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "This exits with:",
+      "originalInnerHTML": "This exits with:",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "These are the two most common kinds of runtime errors, but there are others.\nStuff like out of bounds errors on lists, calling a function with the wrong\nnumber of arguments, etc.",
+      "originalInnerHTML": "These are the two most common kinds of runtime errors, but there are others.\nStuff like out of bounds errors on lists, calling a function with the wrong\nnumber of arguments, etc.",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "h2",
+      "sourceHTML": "Handling runtime errors <a class=\"header-anchor\" href=\"#handling-runtime-errors\" name=\"handling-runtime-errors\">#</a>",
+      "originalInnerHTML": "Handling runtime errors <a class=\"header-anchor\" href=\"#handling-runtime-errors\" name=\"handling-runtime-errors\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "Most of the time, runtime errors indicate a bug in your code and the best\nsolution is to fix the bug. However, sometimes it’s useful to be able to handle\nthem at, uh, runtime.",
+      "originalInnerHTML": "Most of the time, runtime errors indicate a bug in your code and the best\nsolution is to fix the bug. However, sometimes it’s useful to be able to handle\nthem at, uh, runtime.",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "To keep the language simpler, Wren does not have exception handling. Instead, it\ntakes advantage of <a href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">fibers</a> for handling errors. When a runtime error occurs,\nthe current fiber is aborted. Normally, Wren will also abort any fibers that\ninvoked that one, all the way to the main fiber, and then exit the VM.",
+      "originalInnerHTML": "To keep the language simpler, Wren does not have exception handling. Instead, it\ntakes advantage of <a href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">fibers</a> for handling errors. When a runtime error occurs,\nthe current fiber is aborted. Normally, Wren will also abort any fibers that\ninvoked that one, all the way to the main fiber, and then exit the VM.",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "However, you can run a fiber using the ⟦CODE0⟧ method. If a runtime error occurs\nin the called fiber, the error is captured and the ⟦CODE1⟧ method returns the\nerror message as a string.",
+      "originalInnerHTML": "However, you can run a fiber using the <code>try</code> method. If a runtime error occurs\nin the called fiber, the error is captured and the <code>try</code> method returns the\nerror message as a string.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>try</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>try</code>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "For example, if you run this program:",
+      "originalInnerHTML": "For example, if you run this program:",
+      "protected": []
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "It prints:",
+      "originalInnerHTML": "It prints:",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "The called fiber can no longer be used, but any other fibers can proceed as\nusual. When a fiber has been aborted because of a runtime error, you can also\nget the error from the fiber object. Continuing the above example:",
+      "originalInnerHTML": "The called fiber can no longer be used, but any other fibers can proceed as\nusual. When a fiber has been aborted because of a runtime error, you can also\nget the error from the fiber object. Continuing the above example:",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "This also prints:",
+      "originalInnerHTML": "This also prints:",
+      "protected": []
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "If you have a chain of fiber calls and a runtime error occurs, it will walk the\nchain looking for a ⟦CODE0⟧ call, so this can also be used to capture runtime\nerrors generated in fibers that are invoked by the one you called ⟦CODE1⟧ on.",
+      "originalInnerHTML": "If you have a chain of fiber calls and a runtime error occurs, it will walk the\nchain looking for a <code>try</code> call, so this can also be used to capture runtime\nerrors generated in fibers that are invoked by the one you called <code>try</code> on.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>try</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>try</code>"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "tag": "h2",
+      "sourceHTML": "Creating runtime errors <a class=\"header-anchor\" href=\"#creating-runtime-errors\" name=\"creating-runtime-errors\">#</a>",
+      "originalInnerHTML": "Creating runtime errors <a class=\"header-anchor\" href=\"#creating-runtime-errors\" name=\"creating-runtime-errors\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "Most runtime errors come from within the Wren VM, but you may want to be able\nto cause your own runtime errors to occur. This can be done by calling the\n⟦CODE0⟧ static method on ⟦CODE1⟧:",
+      "originalInnerHTML": "Most runtime errors come from within the Wren VM, but you may want to be able\nto cause your own runtime errors to occur. This can be done by calling the\n<code>abort()</code> static method on <code>Fiber</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>abort()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>Fiber</code>"
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "You must pass in an error message, and it must be a string.",
+      "originalInnerHTML": "You must pass in an error message, and it must be a string.",
+      "protected": []
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "If the provided message is ⟦CODE0⟧, no runtime error is raised.",
+      "originalInnerHTML": "If the provided message is <code>null</code>, no runtime error is raised.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "tag": "h2",
+      "sourceHTML": "Failures <a class=\"header-anchor\" href=\"#failures\" name=\"failures\">#</a>",
+      "originalInnerHTML": "Failures <a class=\"header-anchor\" href=\"#failures\" name=\"failures\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "The last flavor of errors is the highest-level one. All of the above errors\nindicate <em>bugs</em>—places where the code itself is incorrect. But some\nerrors indicate that the code simply couldn’t accomplish its task for\nunforeseeable reasons. We’ll call these “failures”.",
+      "originalInnerHTML": "The last flavor of errors is the highest-level one. All of the above errors\nindicate <em>bugs</em>—places where the code itself is incorrect. But some\nerrors indicate that the code simply couldn’t accomplish its task for\nunforeseeable reasons. We’ll call these “failures”.",
+      "protected": []
+    },
+    {
+      "id": "33",
+      "tag": "p",
+      "sourceHTML": "Consider a program that reads in a string of input from the user and parses it\nto a number. Many strings are not valid numbers, so this parsing can fail. The\nonly way the program could prevent that failure is by validating the string\nbefore its parsed, but validating that a string is a number is pretty much the\nsame thing as parsing it.",
+      "originalInnerHTML": "Consider a program that reads in a string of input from the user and parses it\nto a number. Many strings are not valid numbers, so this parsing can fail. The\nonly way the program could prevent that failure is by validating the string\nbefore its parsed, but validating that a string is a number is pretty much the\nsame thing as parsing it.",
+      "protected": []
+    },
+    {
+      "id": "34",
+      "tag": "p",
+      "sourceHTML": "For cases like this where failure can occur and the program <em>will</em> want to\nhandle it, fibers and ⟦CODE0⟧ are too coarse-grained to work with. Instead,\nthese operations will indicate failure by <em>returning</em> some sort of error\nindication.",
+      "originalInnerHTML": "For cases like this where failure can occur and the program <em>will</em> want to\nhandle it, fibers and <code>try()</code> are too coarse-grained to work with. Instead,\nthese operations will indicate failure by <em>returning</em> some sort of error\nindication.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>try()</code>"
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "sourceHTML": "For example, a method for parsing a number could return a number on success and\n⟦CODE0⟧ to indicate parsing failed. Since Wren is dynamically typed, it’s easy\nand natural for a method to return different types of values.",
+      "originalInnerHTML": "For example, a method for parsing a number could return a number on success and\n<code>null</code> to indicate parsing failed. Since Wren is dynamically typed, it’s easy\nand natural for a method to return different types of values.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/14-modularity/\">Modularity →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">← Concurrency</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/14-modularity/\">Modularity →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/12-concurrency/\">← Concurrency</a>",
+      "protected": []
+    }
+  ]
+}

@@ -1,0 +1,347 @@
+{
+  "page": "01-guide/19-embedding-calling-wren-from-c.md",
+  "titleEN": "Calling Wren from C",
+  "titleJA": "CからWrenを呼び出す",
+  "sourceCanonicalSHA256": "564da222259920934b809da241934493777c25fbe07dae3285cd554fa345282b",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Calling Wren from C",
+      "originalInnerHTML": "Calling Wren from C",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "From C, we can tell Wren to do stuff by calling ⟦CODE0⟧, but that’s\nnot always the ideal way to drive the VM. First of all, it’s slow. It has to\nparse and compile the string of source code you give it. Wren has a pretty fast\ncompiler, but that’s still a good bit of work.",
+      "originalInnerHTML": "From C, we can tell Wren to do stuff by calling <code>wrenInterpret()</code>, but that’s\nnot always the ideal way to drive the VM. First of all, it’s slow. It has to\nparse and compile the string of source code you give it. Wren has a pretty fast\ncompiler, but that’s still a good bit of work.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenInterpret()</code>"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "It’s also not an effective way to communicate. You can’t pass arguments to\nWren—at least, not without doing something nasty like converting them to\nliterals in a string of source code—and you can’t get a result value back.",
+      "originalInnerHTML": "It’s also not an effective way to communicate. You can’t pass arguments to\nWren—at least, not without doing something nasty like converting them to\nliterals in a string of source code—and you can’t get a result value back.",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "⟦CODE0⟧ is great for loading code into the VM, but it’s not the best\nway to execute code that’s already been loaded. What we want to do is invoke\nsome already compiled chunk of code. Since Wren is an object-oriented language,\n“chunk of code” means a <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">method</a>, not a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a>.",
+      "originalInnerHTML": "<code>wrenInterpret()</code> is great for loading code into the VM, but it’s not the best\nway to execute code that’s already been loaded. What we want to do is invoke\nsome already compiled chunk of code. Since Wren is an object-oriented language,\n“chunk of code” means a <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">method</a>, not a <a href=\"/docs/wren/v0-4-0/en/01-guide/11-functions/\">function</a>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenInterpret()</code>"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "The C API for doing this is ⟦CODE0⟧. In order to invoke a Wren method from\nC, we need a few things:",
+      "originalInnerHTML": "The C API for doing this is <code>wrenCall()</code>. In order to invoke a Wren method from\nC, we need a few things:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenCall()</code>"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "tag": "li",
+      "sourceHTML": "\n<p><strong>The method to call.</strong> Wren is dynamically typed, so this means we’ll look it\n  up by name. Further, since Wren supports overloading by arity, we actually\n  need its entire <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature\">signature</a>.</p>\n",
+      "originalInnerHTML": "\n<p><strong>The method to call.</strong> Wren is dynamically typed, so this means we’ll look it\n  up by name. Further, since Wren supports overloading by arity, we actually\n  need its entire <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#signature\">signature</a>.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "li",
+      "sourceHTML": "\n<p><strong>The receiver object to invoke the method on.</strong> The receiver’s class\n  determines which method is actually called.</p>\n",
+      "originalInnerHTML": "\n<p><strong>The receiver object to invoke the method on.</strong> The receiver’s class\n  determines which method is actually called.</p>\n",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "li",
+      "sourceHTML": "\n<p><strong>The arguments to pass to the method.</strong></p>\n",
+      "originalInnerHTML": "\n<p><strong>The arguments to pass to the method.</strong></p>\n",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "We’ll tackle these one at a time.",
+      "originalInnerHTML": "We’ll tackle these one at a time.",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "h3",
+      "sourceHTML": "Getting a Method Handle <a class=\"header-anchor\" href=\"#getting-a-method-handle\" name=\"getting-a-method-handle\">#</a>",
+      "originalInnerHTML": "Getting a Method Handle <a class=\"header-anchor\" href=\"#getting-a-method-handle\" name=\"getting-a-method-handle\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "When you run a chunk of Wren code like this:",
+      "originalInnerHTML": "When you run a chunk of Wren code like this:",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "At runtime, the VM has to look up the class of ⟦CODE0⟧ and find a method there\nwhose signature is ⟦CODE1⟧. This sounds like it’s doing some string\nmanipulation—at the very least hashing the signature—every time a\nmethod is called. That’s how many dynamic languages work.",
+      "originalInnerHTML": "At runtime, the VM has to look up the class of <code>object</code> and find a method there\nwhose signature is <code>someMethod(_,_,_)</code>. This sounds like it’s doing some string\nmanipulation—at the very least hashing the signature—every time a\nmethod is called. That’s how many dynamic languages work.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>object</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>someMethod(_,_,_)</code>"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "But, as you can imagine, that’s pretty slow. So, instead, Wren does as much of\nthat work at compile time as it can. When it’s compiling the above code to\nbytecode, it takes that method signature a converts it to a <em>method symbol</em>, a\nnumber that uniquely identifes that method. That’s the only part of the process\nthat requires treating a signature as a string.",
+      "originalInnerHTML": "But, as you can imagine, that’s pretty slow. So, instead, Wren does as much of\nthat work at compile time as it can. When it’s compiling the above code to\nbytecode, it takes that method signature a converts it to a <em>method symbol</em>, a\nnumber that uniquely identifes that method. That’s the only part of the process\nthat requires treating a signature as a string.",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "At runtime, the VM just looks for the method <em>symbol</em> in the receiver’s class’s\nmethod table. In fact, the way it’s implemented today, the symbol is simply the\narray index into the table. That’s <a href=\"/docs/wren/v0-4-0/en/01-guide/22-performance/\">why method calls are so fast</a> in Wren.",
+      "originalInnerHTML": "At runtime, the VM just looks for the method <em>symbol</em> in the receiver’s class’s\nmethod table. In fact, the way it’s implemented today, the symbol is simply the\narray index into the table. That’s <a href=\"/docs/wren/v0-4-0/en/01-guide/22-performance/\">why method calls are so fast</a> in Wren.",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "It would be a shame if calling a method from C didn’t have that same speed\nbenefit. To achieve that, we split the process of calling a method into two\nsteps. First, we create a handle that represents a “compiled” method signature:",
+      "originalInnerHTML": "It would be a shame if calling a method from C didn’t have that same speed\nbenefit. To achieve that, we split the process of calling a method into two\nsteps. First, we create a handle that represents a “compiled” method signature:",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "That takes a method signature as a string and gives you back an opaque handle\nthat represents the compiled method symbol. Now you have a <em>reusable</em> handle\nthat can be used to very quickly call a certain method given a receiver and some\narguments.",
+      "originalInnerHTML": "That takes a method signature as a string and gives you back an opaque handle\nthat represents the compiled method symbol. Now you have a <em>reusable</em> handle\nthat can be used to very quickly call a certain method given a receiver and some\narguments.",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "This is just a regular WrenHandle, which means you can hold onto it as long as\nyou like. Typically, you’d call this once outside of your application’s\nperformance critical loops and reuse it as long as you need. It is us up to you\nto release it when you no longer need it by calling ⟦CODE0⟧.",
+      "originalInnerHTML": "This is just a regular WrenHandle, which means you can hold onto it as long as\nyou like. Typically, you’d call this once outside of your application’s\nperformance critical loops and reuse it as long as you need. It is us up to you\nto release it when you no longer need it by calling <code>wrenReleaseHandle()</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenReleaseHandle()</code>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "tag": "h2",
+      "sourceHTML": "Setting Up a Receiver <a class=\"header-anchor\" href=\"#setting-up-a-receiver\" name=\"setting-up-a-receiver\">#</a>",
+      "originalInnerHTML": "Setting Up a Receiver <a class=\"header-anchor\" href=\"#setting-up-a-receiver\" name=\"setting-up-a-receiver\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "OK, we have a method, but who are we calling it on? We need a receiver, and as\nyou can probably guess after reading the <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">last section</a>, we give that to Wren\nby storing it in a slot. In particular, <strong>the receiver for a method call goes in\nslot zero.</strong>",
+      "originalInnerHTML": "OK, we have a method, but who are we calling it on? We need a receiver, and as\nyou can probably guess after reading the <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">last section</a>, we give that to Wren\nby storing it in a slot. In particular, <strong>the receiver for a method call goes in\nslot zero.</strong>",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "Any object you store in that slot can be used as a receiver. You could even call\n⟦CODE0⟧ on a number by storing a number in there if you felt like it.",
+      "originalInnerHTML": "Any object you store in that slot can be used as a receiver. You could even call\n<code>+</code> on a number by storing a number in there if you felt like it.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>+</code>"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "Needing a receiver to call some Wren code from C might feel strange. C is\nprocedural, so it’s natural to want to just invoke a bare <em>function</em> from Wren,\nbut Wren isn’t procedural. Instead, if you want to define some executable\noperation that isn’t logically tied to a specific object, the natural way is to\ndefine a static method on an appropriate class.",
+      "originalInnerHTML": "Needing a receiver to call some Wren code from C might feel strange. C is\nprocedural, so it’s natural to want to just invoke a bare <em>function</em> from Wren,\nbut Wren isn’t procedural. Instead, if you want to define some executable\noperation that isn’t logically tied to a specific object, the natural way is to\ndefine a static method on an appropriate class.",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "For example, say we’re making a game engine. From C, we want to tell the game\nengine to update all of the entities each frame. We’ll keep track of the list of\nentities within Wren, so from C, there’s no obvious object to call ⟦CODE0⟧\non. Instead, we’ll just make it a static method:",
+      "originalInnerHTML": "For example, say we’re making a game engine. From C, we want to tell the game\nengine to update all of the entities each frame. We’ll keep track of the list of\nentities within Wren, so from C, there’s no obvious object to call <code>update(_)</code>\non. Instead, we’ll just make it a static method:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>update(_)</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "Often, when you call a Wren method from C, you’ll be calling a static method.\nBut, even then, you need a receiver. Now, though, the receiver is the <em>class\nitself</em>. Classes are first class objects in Wren, and when you define a named\nclass, you’re really declaring a variable with the class’s name and storing a\nreference to the class object in it.",
+      "originalInnerHTML": "Often, when you call a Wren method from C, you’ll be calling a static method.\nBut, even then, you need a receiver. Now, though, the receiver is the <em>class\nitself</em>. Classes are first class objects in Wren, and when you define a named\nclass, you’re really declaring a variable with the class’s name and storing a\nreference to the class object in it.",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "Assuming you declared that class at the top level, the C API <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/#looking-up-variables\">gives you a way to\nlook it up</a>. We can get a handle to the above class like so:",
+      "originalInnerHTML": "Assuming you declared that class at the top level, the C API <a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/#looking-up-variables\">gives you a way to\nlook it up</a>. We can get a handle to the above class like so:",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "We could do this every time we call ⟦CODE0⟧, but, again, that’s kind of slow\nbecause we’re looking up “GameEngine” by name each time. A faster solution is to\ncreate a handle to the class once and use it each time:",
+      "originalInnerHTML": "We could do this every time we call <code>update()</code>, but, again, that’s kind of slow\nbecause we’re looking up “GameEngine” by name each time. A faster solution is to\ncreate a handle to the class once and use it each time:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>update()</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "Now, each time we want to call a method on GameEngine, we store that value back\nin slot zero:",
+      "originalInnerHTML": "Now, each time we want to call a method on GameEngine, we store that value back\nin slot zero:",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "Just like we hoisted ⟦CODE0⟧ out of our performance critical\nloop, we can hoist the call to ⟦CODE1⟧ out. Of course, if your code\nisn’t performance critical, you don’t have to do this.",
+      "originalInnerHTML": "Just like we hoisted <code>wrenMakeCallHandle()</code> out of our performance critical\nloop, we can hoist the call to <code>wrenGetVariable()</code> out. Of course, if your code\nisn’t performance critical, you don’t have to do this.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenMakeCallHandle()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>wrenGetVariable()</code>"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "tag": "h2",
+      "sourceHTML": "Passing Arguments <a class=\"header-anchor\" href=\"#passing-arguments\" name=\"passing-arguments\">#</a>",
+      "originalInnerHTML": "Passing Arguments <a class=\"header-anchor\" href=\"#passing-arguments\" name=\"passing-arguments\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "We’ve got a receiver in slot zero now, next we need to pass in any other\narguments. In our GameEngine example, that’s just the elapsed time. Method\narguments go in consecutive slots after the receiver. So the elapsed time goes\ninto slot one. You can use any of the slot functions to set this up. For the\nexample, it’s just:",
+      "originalInnerHTML": "We’ve got a receiver in slot zero now, next we need to pass in any other\narguments. In our GameEngine example, that’s just the elapsed time. Method\narguments go in consecutive slots after the receiver. So the elapsed time goes\ninto slot one. You can use any of the slot functions to set this up. For the\nexample, it’s just:",
+      "protected": []
+    },
+    {
+      "id": "30",
+      "tag": "h2",
+      "sourceHTML": "Calling the Method <a class=\"header-anchor\" href=\"#calling-the-method\" name=\"calling-the-method\">#</a>",
+      "originalInnerHTML": "Calling the Method <a class=\"header-anchor\" href=\"#calling-the-method\" name=\"calling-the-method\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "sourceHTML": "We have all of the data in place, so all that’s left is to pull the trigger and\ntell the VM to start running some code:",
+      "originalInnerHTML": "We have all of the data in place, so all that’s left is to pull the trigger and\ntell the VM to start running some code:",
+      "protected": []
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "It takes the method handle we created using ⟦CODE0⟧. Now Wren\nstarts running code. It looks up the method on the receiver, executes it and\nkeeps running until either the method returns or a fiber <a href=\"/docs/wren/v0-4-0/en/02-reference/03-modules-core-fiber/#fiber.suspend()\">suspends</a>.",
+      "originalInnerHTML": "It takes the method handle we created using <code>wrenMakeCallHandle()</code>. Now Wren\nstarts running code. It looks up the method on the receiver, executes it and\nkeeps running until either the method returns or a fiber <a href=\"/docs/wren/v0-4-0/en/02-reference/03-modules-core-fiber/#fiber.suspend()\">suspends</a>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenMakeCallHandle()</code>"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "tag": "p",
+      "sourceHTML": "⟦CODE0⟧ returns the same WrenInterpretResult enum as ⟦CODE1⟧ to\ntell you if the method completed successfully or a runtime error occurred.\n(⟦CODE2⟧ never returns ⟦CODE3⟧ since it doesn’t compile\nanything.)",
+      "originalInnerHTML": "<code>wrenCall()</code> returns the same WrenInterpretResult enum as <code>wrenInterpret()</code> to\ntell you if the method completed successfully or a runtime error occurred.\n(<code>wrenCall()</code> never returns <code>WREN_ERROR_COMPILE</code> since it doesn’t compile\nanything.)",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenCall()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>wrenInterpret()</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>wrenCall()</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>WREN_ERROR_COMPILE</code>"
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "tag": "h2",
+      "sourceHTML": "Getting the Return Value <a class=\"header-anchor\" href=\"#getting-the-return-value\" name=\"getting-the-return-value\">#</a>",
+      "originalInnerHTML": "Getting the Return Value <a class=\"header-anchor\" href=\"#getting-the-return-value\" name=\"getting-the-return-value\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "35",
+      "tag": "p",
+      "sourceHTML": "When ⟦CODE0⟧ returns, it leaves the slot array in place. In slot zero, you\ncan find the method’s return value, which you can access using any of the slot\nreading functions. If you don’t need the return value, you can ignore it.",
+      "originalInnerHTML": "When <code>wrenCall()</code> returns, it leaves the slot array in place. In slot zero, you\ncan find the method’s return value, which you can access using any of the slot\nreading functions. If you don’t need the return value, you can ignore it.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>wrenCall()</code>"
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "This is how you drive Wren from C, but how do you put control in Wren’s hands?\nFor that, you’ll need the next section…",
+      "originalInnerHTML": "This is how you drive Wren from C, but how do you put control in Wren’s hands?\nFor that, you’ll need the next section…",
+      "protected": []
+    },
+    {
+      "id": "37",
+      "tag": "p",
+      "sourceHTML": "<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/\">Calling C From Wren →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">← Slots and Handles</a>",
+      "originalInnerHTML": "<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/\">Calling C From Wren →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/17-embedding-slots-and-handles/\">← Slots and Handles</a>",
+      "protected": []
+    }
+  ]
+}

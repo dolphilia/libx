@@ -1,0 +1,263 @@
+1 [h1]
+EN: Error Handling
+JA: エラー処理
+
+2 [p]
+EN: Errors come in a few fun flavors.
+JA: エラーには、いくつかの種類があります。
+
+3 [h2]
+EN: Syntax errors #
+JA: 構文エラー #
+
+4 [p]
+EN: The first errors you’re likely to run into are syntax errors. These include
+simple bugs where your code doesn’t follow the language’s grammar, like:
+JA: 最初に遭遇するのは、たいてい構文エラーでしょう。これは、コードが言語の文法に従っていない、次のような単純な不具合を含みます。
+
+UNCHANGED CODE 1
+
+1 + * 2
+
+
+5 [p]
+EN: Wren detects these errors as soon as it tries to read your code. When it hits
+one, you get a friendly error message, like:
+JA: Wrenは、コードを読み取ろうとした時点で、これらのエラーを検出します。エラーがあると、次のような分かりやすいメッセージを表示します。
+
+UNCHANGED CODE 2
+[main line 1] Error on '*': Unexpected token for expression.
+
+
+6 [p]
+EN: Some slightly more “semantic” errors fall into this bucket too. Things like
+using a variable that hasn’t been defined, or declaring two variables with the
+same name in the same scope. So if you do:
+JA: もう少し「意味的」なエラーも、この種類に含まれます。未定義の変数を使うことや、同じスコープで同じ名前の変数を二つ宣言することなどです。例えば、次のように書くと、
+
+UNCHANGED CODE 3
+
+var a = "once"
+var a = "twice"
+
+
+7 [p]
+EN: Wren tells you:
+JA: Wrenは、次のように知らせます。
+
+UNCHANGED CODE 4
+[main line 2] Error on 'a': Top-level variable is already defined.
+
+
+8 [p]
+EN: Note that it does this before it executes any code. Unlike some other
+scripting languages, Wren tries to help you find your errors as soon as
+possible when it can.
+JA: これは、コードを一つでも実行する前に行う点に注意してください。ほかの一部のスクリプト言語とは異なり、Wrenは、可能な限り早くエラーを見つけられるようにします。
+
+9 [p]
+EN: If it starts running your code, you can be sure you don’t have any errors
+related to syntax or variable scope.
+JA: コードの実行を開始したなら、構文や変数のスコープに関するエラーがないことは確かです。
+
+10 [h2]
+EN: Runtime errors #
+JA: 実行時エラー #
+
+11 [p]
+EN: Alas, just fixing all of the “compile-time” errors doesn’t mean your code does
+what you want. Your program may still have errors that can’t be detected
+statically. Since they can’t be found until your code is run, they’re called
+“runtime” errors.
+JA: 残念ながら、「コンパイル時」のエラーをすべて直しても、コードが意図どおりに動くとは限りません。プログラムには、静的には検出できないエラーが残っているかもしれません。コードを実行するまで見つけられないので、「実行時」エラーと呼びます。
+
+12 [p]
+EN: Most runtime errors come from the VM itself. They arise from code trying to
+perform an operation that the VM can’t do. The most common error is a “method
+not found” one. If you call a method on an object and its class (and all of its
+superclasses) don’t define that method, there’s nothing Wren can do:
+JA: 実行時エラーの大半は、VM自身から発生します。VMができない操作を、コードが行おうとするためです。最も一般的なのは、「メソッドが見つからない」というエラーです。オブジェクトのメソッドを呼び出しても、そのクラスにも、すべてのスーパークラスにもそのメソッドが定義されていなければ、Wrenには何もできません。
+
+UNCHANGED CODE 5
+
+class Foo {
+  construct new() {}
+}
+
+var foo = Foo.new()
+foo.someRandomMethod
+
+
+13 [p]
+EN: If you run this, Wren will print:
+JA: これを実行すると、Wrenは次のように表示します。
+
+UNCHANGED CODE 6
+Foo does not implement method 'someRandomMethod'.
+
+
+14 [p]
+EN: Then it stops executing code. Unlike some other languages, Wren doesn’t keep
+plugging away after a runtime error has occurred. A runtime error implies
+there’s a bug in your code and it wants to draw your attention to it. To help
+you out, it prints a stack trace showing where in the code the error occurred,
+and all of the method calls that led to it.
+JA: その後、コードの実行を停止します。ほかの一部の言語とは異なり、Wrenは実行時エラーが起きた後に実行を続けません。実行時エラーは、コードに不具合があることを意味するため、それに気付いてほしいのです。助けとなるよう、エラーが起きたコードの位置と、そこへ至るすべてのメソッド呼び出しを示すスタックトレースを表示します。
+
+15 [p]
+EN: Another common runtime error is passing an argument of the wrong type to a
+method. For example, lists are indexed using a number. If you try to pass some
+other type, it’s an error:
+JA: ほかによくある実行時エラーは、メソッドに型の違う引数を渡すことです。例えば、リストのインデックスには数値を使います。ほかの型を渡そうとすると、エラーになります。
+
+UNCHANGED CODE 7
+
+var list = ["a", "b", "c"]
+list["1"]
+
+
+16 [p]
+EN: This exits with:
+JA: これは、次のように表示して終了します。
+
+UNCHANGED CODE 8
+Subscript must be a number or a range.
+[main line 2] in (script)
+
+
+17 [p]
+EN: These are the two most common kinds of runtime errors, but there are others.
+Stuff like out of bounds errors on lists, calling a function with the wrong
+number of arguments, etc.
+JA: この二つが、最も一般的な実行時エラーですが、ほかにもあります。リストの範囲外へのアクセス、引数の個数を間違えた関数呼び出しなどです。
+
+18 [h2]
+EN: Handling runtime errors #
+JA: 実行時エラーを処理する #
+
+19 [p]
+EN: Most of the time, runtime errors indicate a bug in your code and the best
+solution is to fix the bug. However, sometimes it’s useful to be able to handle
+them at, uh, runtime.
+JA: ほとんどの場合、実行時エラーはコードの不具合を示し、最善の解決策は、不具合を直すことです。しかし、実行時にエラーを処理できると便利な場合もあります。
+
+20 [p]
+EN: To keep the language simpler, Wren does not have exception handling. Instead, it
+takes advantage of fibers for handling errors. When a runtime error occurs,
+the current fiber is aborted. Normally, Wren will also abort any fibers that
+invoked that one, all the way to the main fiber, and then exit the VM.
+JA: 言語を単純にするため、Wrenには例外処理がありません。代わりに、エラーの処理にファイバーを使います。実行時エラーが起きると、現在のファイバーは中止します。通常は、そのファイバーを呼び出したファイバーも、メインファイバーまで順に中止し、VMを終了します。
+
+21 [p]
+EN: However, you can run a fiber using the try method. If a runtime error occurs
+in the called fiber, the error is captured and the try method returns the
+error message as a string.
+JA: ただし、tryメソッドを使ってファイバーを実行することもできます。呼び出したファイバーで実行時エラーが起きると、エラーを捕捉し、tryメソッドはエラーメッセージを文字列として返します。
+
+22 [p]
+EN: For example, if you run this program:
+JA: 例えば、次のプログラムを実行すると、
+
+UNCHANGED CODE 9
+
+var fiber = Fiber.new {
+  123.badMethod
+}
+
+var error = fiber.try()
+System.print("Caught error: " + error)
+
+
+23 [p]
+EN: It prints:
+JA: 次のように表示します。
+
+UNCHANGED CODE 10
+Caught error: Num does not implement method 'badMethod'.
+
+
+24 [p]
+EN: The called fiber can no longer be used, but any other fibers can proceed as
+usual. When a fiber has been aborted because of a runtime error, you can also
+get the error from the fiber object. Continuing the above example:
+JA: 呼び出したファイバーは、もう使えませんが、ほかのファイバーは通常どおり続行できます。実行時エラーによってファイバーが中止された場合、そのファイバーオブジェクトからエラーを取得することもできます。上の例を続けると、
+
+UNCHANGED CODE 11
+
+System.print(fiber.error)
+
+
+25 [p]
+EN: This also prints:
+JA: これも、次のように表示します。
+
+UNCHANGED CODE 12
+Num does not implement method 'badMethod'.
+
+
+26 [p]
+EN: If you have a chain of fiber calls and a runtime error occurs, it will walk the
+chain looking for a try call, so this can also be used to capture runtime
+errors generated in fibers that are invoked by the one you called try on.
+JA: ファイバー呼び出しの連鎖の中で実行時エラーが起きると、その連鎖をたどってtry呼び出しを探します。したがって、tryを呼び出したファイバーが、さらに呼び出したファイバーで発生した実行時エラーも捕捉できます。
+
+27 [h2]
+EN: Creating runtime errors #
+JA: 実行時エラーを発生させる #
+
+28 [p]
+EN: Most runtime errors come from within the Wren VM, but you may want to be able
+to cause your own runtime errors to occur. This can be done by calling the
+abort() static method on Fiber:
+JA: 実行時エラーの大半はWren VMの内部から発生しますが、自分で実行時エラーを発生させたい場合もあります。Fiberの静的abort()メソッドを呼び出すと、それができます。
+
+UNCHANGED CODE 13
+
+Fiber.abort("Something bad happened")
+
+
+29 [p]
+EN: You must pass in an error message, and it must be a string.
+JA: エラーメッセージを渡す必要があり、そのメッセージは文字列でなければなりません。
+
+30 [p]
+EN: If the provided message is null, no runtime error is raised.
+JA: 渡したメッセージがnullなら、実行時エラーは発生しません。
+
+31 [h2]
+EN: Failures #
+JA: 処理の失敗 #
+
+32 [p]
+EN: The last flavor of errors is the highest-level one. All of the above errors
+indicate bugs—places where the code itself is incorrect. But some
+errors indicate that the code simply couldn’t accomplish its task for
+unforeseeable reasons. We’ll call these “failures”.
+JA: 最後の種類のエラーは、最も高水準のものです。これまでのエラーは、すべて不具合、つまりコード自体が正しくない箇所を示します。しかし、予測できない理由により、単にコードが処理を達成できなかったことを示すエラーもあります。これを「失敗」と呼びます。
+
+33 [p]
+EN: Consider a program that reads in a string of input from the user and parses it
+to a number. Many strings are not valid numbers, so this parsing can fail. The
+only way the program could prevent that failure is by validating the string
+before its parsed, but validating that a string is a number is pretty much the
+same thing as parsing it.
+JA: ユーザーから入力文字列を読み取り、数値へ解析するプログラムを考えてください。多くの文字列は有効な数値ではないので、この解析は失敗することがあります。プログラムが失敗を防ぐには、解析の前に文字列を検証するしかありませんが、文字列が数値かどうかの検証は、解析とほぼ同じ処理です。
+
+34 [p]
+EN: For cases like this where failure can occur and the program will want to
+handle it, fibers and try() are too coarse-grained to work with. Instead,
+these operations will indicate failure by returning some sort of error
+indication.
+JA: このように失敗が起こり得て、プログラムがそれを処理したい場合、ファイバーとtry()は、粒度が粗すぎます。代わりに、こうした操作は、何らかのエラーの印を返すことで、失敗を示します。
+
+35 [p]
+EN: For example, a method for parsing a number could return a number on success and
+null to indicate parsing failed. Since Wren is dynamically typed, it’s easy
+and natural for a method to return different types of values.
+JA: 例えば、数値を解析するメソッドは、成功したら数値を、解析が失敗したことを示すためにはnullを返せます。Wrenは動的型付けなので、メソッドから型の異なる値を返すことは、簡単で自然です。
+
+36 [p]
+EN: 
+Modularity →
+← Concurrency
+JA: モジュール化 →← 並行処理

@@ -1,0 +1,52 @@
+1 [h1]
+EN: Modules
+JA: 組み込みモジュール
+
+2 [p]
+EN: Wren comes with two kinds of modules, the core module (built-in),
+and a few optional modules that the host embedding Wren can enable.
+JA: Wrenには、組み込みのコアモジュールと、Wrenを組み込むホストが有効にできるいくつかのオプションモジュールという、二種類のモジュールがあります。
+
+3 [h2]
+EN: Core module #
+JA: コアモジュール #
+
+4 [p]
+EN: The core module is built directly into the VM and is implicitly
+imported by every other module. You don’t need to import anything to use it.
+It contains objects and types for the language itself like numbers and strings.
+JA: コアモジュールはVMに直接組み込まれており、ほかのすべてのモジュールが暗黙にインポートします。使うために何かをimportする必要はありません。数値や文字列など、言語自体のオブジェクトや型を含みます。
+
+5 [p]
+EN: Because Wren is designed for embedding in applications, its core
+module is minimal and is focused on working with objects within Wren. For
+stuff like file IO, graphics, etc., it is up to the host application to provide
+interfaces for this.
+JA: Wrenはアプリケーションへの組み込みを想定しているため、コアモジュールは最小限で、Wren内のオブジェクトの操作に重点を置いています。ファイル入出力やグラフィックスなどのためのインターフェースは、ホストアプリケーションが提供します。
+
+6 [h2]
+EN: Optional modules #
+JA: オプションモジュール #
+
+7 [p]
+EN: Optional modules are available in the Wren project, but whether they are included is up to the host.
+They are written in Wren and C, with no external dependencies, so including them in
+your application is as easy as a simple compile flag.
+JA: オプションモジュールはWrenプロジェクト内にありますが、組み込むかどうかはホストが決めます。WrenとCで書かれていて、外部依存がないので、単純なコンパイルフラグだけで、簡単にアプリケーションへ組み込めます。
+
+8 [p]
+EN: Since they aren’t needed by the VM itself to function, you can
+disable some or all of them, so check if your host has them available.
+JA: VM自身の動作には必要ないため、一部またはすべてを無効にできます。使っているホストで利用できるか確認してください。
+
+9 [p]
+EN: So far there are a few optional modules:
+JA: 現在、次のオプションモジュールがあります。
+
+10 [li]
+EN: meta docs
+JA: metaの文書
+
+11 [li]
+EN: random docs
+JA: randomの文書

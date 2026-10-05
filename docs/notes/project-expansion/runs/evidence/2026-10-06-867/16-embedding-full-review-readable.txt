@@ -1,0 +1,355 @@
+1 [h1]
+EN: Embedding
+JA: Wrenの組み込み
+
+2 [p]
+EN: Wren is designed to be a scripting language that lives inside a host
+application, so the embedding API is as important as any of its language
+features. Designing this API well requires satisfying several constraints:
+JA: Wrenは、ホストアプリケーションの中で動くスクリプト言語として設計されています。そのため、組み込みAPIは、言語の各機能と同じくらい重要です。このAPIを適切に設計するには、いくつかの制約を満たす必要があります。
+
+3 [li]
+EN: 
+Wren is dynamically typed, but C is not. A variable can hold a value of
+   any type in Wren, but that’s definitely not the case in C unless you define
+   some sort of variant type, which ultimately just kicks the problem down the
+   road. Eventually, we have to move data across the boundary between statically and dynamically typed code.
+
+JA: Wrenは動的型付けですが、Cは違います。Wrenの変数には、どの型の値でも格納できますが、Cでは、何らかのバリアント型を定義しない限り、そうはいきません。そして、バリアント型を定義しても、結局は問題を先送りするだけです。最終的には、静的型付けのコードと動的型付けのコードの境界を越えて、データを移動する必要があります。
+
+4 [li]
+EN: 
+Wren uses garbage collection, but C manages memory manually. GC adds a
+   few constraints on the API. The VM must be able to find every Wren object
+   that is still usable, even if that object is being referenced from native C
+   code. Otherwise, Wren could free an object that’s still in use.
+Also, we ideally don’t want to let native C code see a bare pointer to a
+chunk of memory managed by Wren. Many garbage collection strategies involve
+moving objects in memory. If we allow C code to point directly to an
+object, that pointer will be left dangling when the object moves. Wren’s GC
+doesn’t move objects today, but we would like to keep that option for the
+future.
+
+JA: Wrenはガベージコレクションを使いますが、Cはメモリーを手動で管理します。GCによって、APIにいくつかの制約が加わります。VMは、まだ利用できるすべてのWrenオブジェクトを、ネイティブCコードから参照しているものも含めて、見つけられる必要があります。そうでなければ、まだ使用中のオブジェクトを解放してしまうかもしれません。また、理想的には、Wrenが管理するメモリー領域への生のポインターを、ネイティブCコードに見せたくありません。多くのガベージコレクション方式では、メモリー内のオブジェクトを移動します。Cコードがオブジェクトを直接指せると、オブジェクトが移動した際、そのポインターは無効な場所を指すことになります。現在のWrenのGCはオブジェクトを移動しませんが、将来、その選択肢を残しておきたいのです。
+
+5 [li]
+EN: 
+The embedding API needs to be fast. Users may add layers of abstraction
+   on top of the API to make it more pleasant to work with, but the base API
+   defines the maximum performance you can get out of the system. It’s the
+   bottom of the stack, so there’s no way for a user to optimize around it if
+   it’s too slow. There is no lower level alternative.
+
+JA: 組み込みAPIは高速でなければなりません。利用者は、APIを扱いやすくするため、その上に抽象化の層を加えるかもしれません。しかし、基本のAPIが、システムで得られる最大の性能を決めます。スタックの最下層なので、遅すぎる場合に、利用者がそれを回避して最適化する方法はありません。さらに低水準の代替手段もありません。
+
+6 [li]
+EN: 
+We want the API to be pleasant to use. This is the last constraint
+   because it’s the softest. Of course, we want a beautiful, usable API. But we
+   really need to handle the above, so we’re willing to make things a bit more
+   of a chore to reach the first three goals.
+
+JA: APIを使いやすいものにしたい。これは、最も柔らかい制約なので、最後に挙げています。もちろん、美しく使いやすいAPIにしたいと考えています。しかし、上の制約への対応は、本当に必要です。そのため、最初の三つの目標を達成するためには、少し手間のかかるものにすることも受け入れます。
+
+7 [p]
+EN: Fortunately, we aren’t the first people to tackle this. If you’re familiar with
+Lua’s C API, you’ll find Wren’s similar.
+JA: 幸い、この問題に取り組むのは私たちが初めてではありません。LuaのC APIに慣れていれば、Wrenも似ていると感じるでしょう。
+
+8 [h3]
+EN: Performance and safety #
+JA: 性能と安全性 #
+
+9 [p]
+EN: When code is safely snuggled within the confines of the VM, it’s pretty safe.
+Method calls are dynamically checked and generate runtime errors which can be
+caught and handled. The stack grows if it gets close to overflowing. In general,
+when you’re within Wren code, it tries very hard to avoid crashing and burning.
+JA: コードがVMの範囲に収まっているときは、かなり安全です。メソッド呼び出しを動的に検査し、捕捉して処理できる実行時エラーを発生させます。スタックがあふれそうになると、スタックを拡張します。一般に、Wrenコードの中では、クラッシュを避けるために、できる限りのことをします。
+
+10 [p]
+EN: This is why you use a high level language after all—it’s safer and more
+productive than C. C, meanwhile, really assumes you know what you’re doing. You
+can cast pointers in invalid ways, misinterpret bits, use memory after freeing
+it, etc. What you get in return is blazing performance. Many of the reasons C is
+fast are because it takes all the governors and guardrails off.
+JA: そもそも、高水準言語を使う理由は、Cより安全で生産的だからです。一方、Cは、利用者が何をしているか理解していることを前提とします。ポインターを不正にキャストしたり、ビットを誤って解釈したり、解放済みのメモリーを使ったりできます。その代わりに、非常に高い性能が得られます。Cが速い理由の多くは、制限装置や保護柵を外していることにあります。
+
+11 [p]
+EN: Wren’s embedding API defines the border between those worlds, and takes on some
+of the characteristics of C. When you call any of the embedding API functions,
+it assumes you are calling them correctly. If you invoke a Wren method from C
+that expects three arguments, it trusts that you gave it three arguments.
+JA: Wrenの組み込みAPIは、この二つの世界の境界を定義し、Cの特徴の一部を引き継ぎます。組み込みAPIの各関数を呼び出すときは、正しく呼んでいることを前提とします。Cから、引数を三つ要求するWrenメソッドを呼び出すなら、三つの引数を渡したと信頼します。
+
+12 [p]
+EN: In debug builds, Wren has assertions to check as many things as it can, but in
+release builds, Wren expects you to do the right thing. This means you need to
+take care when using the embedding API, just like you do in all C code you
+write. In return, you get an API that is quite fast.
+JA: デバッグビルドでは、可能な限り多くのことを調べるアサーションがありますが、リリースビルドでは、利用者が正しく操作することを前提とします。つまり、組み込みAPIを使う際は、ほかのCコードを書く場合と同じように注意が必要です。その代わり、かなり高速なAPIが得られます。
+
+13 [h2]
+EN: Including Wren #
+JA: Wrenを組み入れる #
+
+14 [p]
+EN: There are two (well, three) ways to get the Wren VM into your program:
+JA: Wren VMを自分のプログラムへ組み入れる方法は、二つ（実際には三つ）あります。
+
+15 [li]
+EN: 
+Link to the static or dynamic library. When you build Wren, it
+    generates both shared and static libraries in lib that you can link to.
+
+JA: 静的ライブラリーまたは動的ライブラリーへリンクする。Wrenをビルドすると、リンクに使える共有ライブラリーと静的ライブラリーの両方をlibに生成します。
+
+16 [li]
+EN: 
+Include the source directly in your application. If you want to include
+    the source directly in your program, you don’t need to run any build steps.
+    Just add the source files in src/vm to your project. They should compile
+    cleanly as C99 or C++98 or anything later.
+
+JA: アプリケーションにソースを直接組み入れる。プログラムへソースを直接組み入れるなら、ビルド手順を実行する必要はありません。src/vm内のソースファイルを、プロジェクトへ追加するだけです。C99、C++98、またはそれ以降の規格で、問題なくコンパイルできるはずです。
+
+17 [p]
+EN: In either case, you also want to add src/include to your include path so you
+can find the public header for Wren:
+JA: どちらの場合も、Wrenの公開ヘッダーを見つけられるよう、インクルードパスにsrc/includeを追加します。
+
+UNCHANGED CODE 1
+
+#include "wren.h"
+
+
+18 [p]
+EN: Wren depends only on the C standard library, so you don’t usually need to link
+to anything else. On some platforms (at least BSD and Linux) some of the math
+functions in math.h are implemented in a separate library, libm, that you
+have to explicitly link to.
+JA: WrenはC標準ライブラリーだけに依存するため、通常は、ほかのものへリンクする必要はありません。一部のプラットフォーム（少なくともBSDとLinux）では、math.hの数学関数の一部が、独立したlibmライブラリーで実装されているため、明示的にリンクする必要があります。
+
+19 [p]
+EN: If your program is in C++ but you are linking to the Wren library compiled as C,
+this header handles the differences in calling conventions between C and C++:
+JA: プログラムがC++で、CとしてコンパイルしたWrenライブラリーへリンクする場合、このヘッダーが、CとC++の呼び出し規約の違いを処理します。
+
+UNCHANGED CODE 2
+
+#include "wren.hpp"
+
+
+20 [h2]
+EN: Creating a Wren VM #
+JA: Wren VMの作成 #
+
+21 [p]
+EN: Once you’ve integrated the code into your executable, you need to create a
+virtual machine. To do that, you create a WrenConfiguration object and
+initialize it.
+JA: コードを実行可能ファイルへ組み入れたら、仮想マシンを作る必要があります。そのためには、WrenConfigurationオブジェクトを作り、初期化します。
+
+UNCHANGED CODE 3
+
+    WrenConfiguration config;
+    wrenInitConfiguration(&config);
+
+
+22 [p]
+EN: This gives you a basic configuration that has reasonable defaults for
+everything. We’ll learn more about what you can configure later,
+but for now we’ll just add the writeFn, so that we can print text.
+JA: これで、すべての項目に妥当な既定値を持つ基本設定が得られます。設定できることは後で詳しく説明しますが、ここでは、テキストを表示できるよう、writeFnだけを追加します。
+
+23 [p]
+EN: First we need a function that will do something with the output
+that Wren sends us from System.print (or System.write). Note that it doesn’t
+include a newline in the output.
+JA: まず、WrenがSystem.print（またはSystem.write）から送ってくる出力を、何らかの方法で処理する関数が必要です。出力に改行を含まない点に注意してください。
+
+UNCHANGED CODE 4
+
+void writeFn(WrenVM* vm, const char* text) {
+  printf("%s", text);
+}
+
+
+24 [p]
+EN: And then, we update the configuration to point to it.
+JA: 続いて、その関数を指すように設定を更新します。
+
+UNCHANGED CODE 5
+
+  WrenConfiguration config;
+  wrenInitConfiguration(&config);
+    config.writeFn = &writeFn;
+
+
+25 [p]
+EN: With this ready, you can create the VM:
+JA: これが準備できたら、VMを作成できます。
+
+UNCHANGED CODE 6
+
+WrenVM* vm = wrenNewVM(&config);
+
+
+26 [p]
+EN: This allocates memory for a new VM and initializes it. The Wren C implementation
+has no global state, so every single bit of data Wren uses is bundled up inside
+a WrenVM. You can have multiple Wren VMs running independently of each other
+without any problems, even concurrently on different threads.
+JA: これは、新しいVMのためのメモリーを確保し、初期化します。WrenのC実装にはグローバルな状態がなく、Wrenが使うすべてのデータは、WrenVMの中にまとめられています。複数のWren VMを互いに独立して、問題なく実行でき、別々のスレッドで並行して動かすこともできます。
+
+27 [p]
+EN: wrenNewVM() stores its own copy of the configuration, so after calling it, you
+can discard the WrenConfiguration struct you filled in. Now you have a live
+VM, waiting to run some code!
+JA: wrenNewVM()は設定のコピーを自分で保存するため、呼び出した後は、値を設定したWrenConfiguration構造体を破棄できます。これで、コードの実行を待つ、動作中のVMができました！
+
+28 [h2]
+EN: Executing Wren code #
+JA: Wrenコードの実行 #
+
+29 [p]
+EN: You execute a string of Wren source code like so:
+JA: Wrenソースコードの文字列は、次のように実行します。
+
+UNCHANGED CODE 7
+
+WrenInterpretResult result = wrenInterpret(
+    vm,
+    "my_module",
+    "System.print(\"I am running in a VM!\")");
+
+
+30 [p]
+EN: The string is a series of one or more statements separated by newlines. Wren
+copies the string, so you can free it after calling this. When you call
+wrenInterpret(), Wren first compiles your source to bytecode. If an error
+occurs, it returns immediately with WREN_RESULT_COMPILE_ERROR.
+JA: この文字列は、改行で区切った一つ以上の文です。Wrenは文字列をコピーするため、呼び出した後に解放できます。wrenInterpret()を呼び出すと、まずソースをバイトコードへコンパイルします。エラーが起きると、直ちにWREN_RESULT_COMPILE_ERRORを返します。
+
+31 [p]
+EN: Otherwise, Wren spins up a new fiber and executes the code in that. Your
+code can in turn spawn whatever other fibers it wants. It keeps running fibers
+until they all complete or one suspends.
+JA: エラーがなければ、Wrenは新しいファイバーを起動し、その中でコードを実行します。そのコードは、さらに必要なファイバーを自由に作れます。すべてのファイバーが完了するか、一つがsuspendするまで、ファイバーの実行を続けます。
+
+32 [p]
+EN: If a runtime error occurs (and another fiber doesn’t handle it), Wren aborts
+fibers all the way back to the main one and returns WREN_RESULT_RUNTIME_ERROR.
+Otherwise, when the last fiber successfully returns, it returns
+WREN_RESULT_SUCCESS.
+JA: 実行時エラーが起き、ほかのファイバーが処理しなければ、メインファイバーまで順に中止し、WREN_RESULT_RUNTIME_ERRORを返します。そうでなければ、最後のファイバーが正常に戻ったとき、WREN_RESULT_SUCCESSを返します。
+
+33 [p]
+EN: All code passed to wrenInterpret() runs in a special “main” module. That way,
+top-level names defined in one call can be accessed in later ones. It’s similar
+to a REPL session.
+JA: wrenInterpret()へ渡したすべてのコードは、特別な「main」モジュールで実行します。そのため、一つの呼び出しで定義したトップレベルの名前へ、後の呼び出しからアクセスできます。REPLのセッションに似ています。
+
+34 [h2]
+EN: Shutting down a VM #
+JA: VMの終了 #
+
+35 [p]
+EN: Once the party is over and you’re ready to end your relationship with a VM, you
+need to free any memory it allocated. You do that like so:
+JA: 処理が終わり、VMを終了したい場合は、そのVMが確保したメモリーを解放する必要があります。次のように行います。
+
+UNCHANGED CODE 8
+
+wrenFreeVM(vm);
+
+
+36 [p]
+EN: After calling that, you obviously cannot use the WrenVM* you passed to it
+again. It’s dead.
+JA: 呼び出した後は、当然、渡したWrenVM*を再び使うことはできません。もう終了しています。
+
+37 [p]
+EN: Note that Wren will yell at you if you still have any live WrenHandle
+objects when you call this. This makes sure you haven’t lost track of any of
+them (which leaks memory) and you don’t try to use any of them after the VM has
+been freed.
+JA: この呼び出しの時点で、まだ有効なWrenHandleオブジェクトがあると、Wrenは警告する点に注意してください。これにより、追跡できなくなったハンドルによるメモリーリークがないことと、VM解放後にハンドルを使おうとしないことを確認できます。
+
+38 [h2]
+EN: A complete example #
+JA: 全体の例 #
+
+39 [p]
+EN: Below is a complete example of the above.
+You can find this file in the example folder.
+JA: 以下は、上の内容をまとめた全体の例です。このファイルは、exampleフォルダーにあります。
+
+UNCHANGED CODE 9
+
+//For more details, visit https://wren.io/embedding/
+
+#include <stdio.h>
+#include "wren.h"
+
+static void writeFn(WrenVM* vm, const char* text)
+{
+  printf("%s", text);
+}
+
+void errorFn(WrenVM* vm, WrenErrorType errorType,
+             const char* module, const int line,
+             const char* msg)
+{
+  switch (errorType)
+  {
+    case WREN_ERROR_COMPILE:
+    {
+      printf("[%s line %d] [Error] %s\n", module, line, msg);
+    } break;
+    case WREN_ERROR_STACK_TRACE:
+    {
+      printf("[%s line %d] in %s\n", module, line, msg);
+    } break;
+    case WREN_ERROR_RUNTIME:
+    {
+      printf("[Runtime Error] %s\n", msg);
+    } break;
+  }
+}
+
+int main()
+{
+
+  WrenConfiguration config;
+  wrenInitConfiguration(&config);
+    config.writeFn = &writeFn;
+    config.errorFn = &errorFn;
+  WrenVM* vm = wrenNewVM(&config);
+
+  const char* module = "main";
+  const char* script = "System.print(\"I am running in a VM!\")";
+
+  WrenInterpretResult result = wrenInterpret(vm, module, script);
+
+  switch (result) {
+    case WREN_RESULT_COMPILE_ERROR:
+      { printf("Compile Error!\n"); } break;
+    case WREN_RESULT_RUNTIME_ERROR:
+      { printf("Runtime Error!\n"); } break;
+    case WREN_RESULT_SUCCESS:
+      { printf("Success!\n"); } break;
+  }
+
+  wrenFreeVM(vm);
+
+}
+
+
+40 [p]
+EN: Next, we’ll learn to make that VM do useful stuff…
+JA: 次は、このVMで役立つ処理を行う方法を学びます。
+
+41 [p]
+EN: Slots and Handles →
+JA: スロットとハンドル →

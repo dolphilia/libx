@@ -1,0 +1,114 @@
+1 [h1]
+EN: Variables
+JA: 変数
+
+2 [p]
+EN: Variables are named slots for storing values. You define a new variable in Wren
+using a var statement, like so:
+JA: 変数は、値を保存するための名前付きのスロットです。Wrenでは、次のようにvar文で新しい変数を定義します。
+
+UNCHANGED CODE 1
+
+var a = 1 + 2
+
+
+3 [p]
+EN: This creates a new variable a in the current scope and initializes it with
+the result of the expression following the =. Once a variable has been
+defined, it can be accessed by name as you would expect.
+JA: これで、現在のスコープにaという新しい変数を作り、=の後にある式の結果で初期化します。変数を定義すると、予想どおり名前でアクセスできます。
+
+UNCHANGED CODE 2
+
+var animal = "Slow Loris"
+System.print(animal) //> Slow Loris
+
+
+4 [h2]
+EN: Scope #
+JA: スコープ #
+
+5 [p]
+EN: Wren has true block scope: a variable exists from the point where it is defined
+until the end of the block where that definition appears.
+JA: Wrenには本来のブロックスコープがあります。変数は、定義した位置から、その定義があるブロックの終わりまで存在します。
+
+UNCHANGED CODE 3
+
+{
+  System.print(a) //! "a" doesn't exist yet.
+  var a = 123
+  System.print(a) //> 123
+}
+System.print(a) //! "a" doesn't exist anymore.
+
+
+6 [p]
+EN: Variables defined at the top level of a script are top-level and are visible
+to the module system. All other variables are local.
+Declaring a variable in an inner scope with the same name as an outer one is
+called shadowing and is not an error (although it’s not something you likely
+intend to do much).
+JA: スクリプトの最上位で定義した変数はトップレベルで、モジュールシステムから見えます。それ以外の変数はすべてローカルです。外側の変数と同じ名前の変数を内側のスコープで宣言することをシャドーイングと呼びます。これはエラーではありません（ただし、頻繁に行いたい操作ではないでしょう）。
+
+UNCHANGED CODE 4
+
+var a = "outer"
+{
+  var a = "inner"
+  System.print(a) //> inner
+}
+System.print(a) //> outer
+
+
+7 [p]
+EN: Declaring a variable with the same name in the same scope is an error.
+JA: 同じスコープで同じ名前の変数を宣言することは、エラーです。
+
+UNCHANGED CODE 5
+
+var a = "hi"
+var a = "again" //! "a" is already declared.
+
+
+8 [h2]
+EN: Assignment #
+JA: 代入 #
+
+9 [p]
+EN: After a variable has been declared, you can assign to it using =
+JA: 変数を宣言した後は、=を使って代入できます。
+
+UNCHANGED CODE 6
+
+var a = 123
+a = 234
+
+
+10 [p]
+EN: An assignment walks up the scope stack to find where the named variable is
+declared. It’s an error to assign to a variable that isn’t defined. Wren
+doesn’t roll with implicit variable definition.
+JA: 代入では、スコープのスタックを外側へたどって、指定した名前の変数が宣言されている場所を探します。定義されていない変数へ代入すると、エラーになります。Wrenは、暗黙の変数定義を認めません。
+
+11 [p]
+EN: When used in a larger expression, an assignment expression evaluates to the
+assigned value.
+JA: より大きな式の中で使う場合、代入式の評価結果は、代入した値です。
+
+UNCHANGED CODE 7
+
+var a = "before"
+System.print(a = "after") //> after
+
+
+12 [p]
+EN: If the left-hand side is some more complex expression than a bare variable name,
+then it isn’t an assignment. Instead, it’s calling a setter method.
+JA: 左辺が単なる変数名より複雑な式なら、これは代入ではありません。代わりに、セッターメソッドを呼び出しています。
+
+13 [p]
+EN: 
+Functions →
+← Control Flow
+JA: 関数 →← 制御フロー

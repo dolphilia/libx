@@ -1,0 +1,303 @@
+1 [h1]
+EN: Slots and Handles
+JA: スロットとハンドル
+
+2 [p]
+EN: With ⟦CODE0⟧, we can execute code, but that code can’t do anything
+particularly interesting. By default, the VM is isolated from the rest of the
+world, so pretty much all it can do is turn your laptop into a lap warmer.
+JA: ⟦CODE0⟧でコードを実行できますが、そのコードだけでは、特に面白いことはできません。既定では、VMは外の世界から隔離されているので、ノートパソコンを膝を温めるものにするくらいしかできないのです。
+
+3 [p]
+EN: To make our Wren code <em>useful</em>, the VM needs to communicate with the outside
+world. Wren uses a single unified set of functions for passing data into and out
+of the VM. These functions are based on two fundamental concepts: <strong>slots</strong> and
+<strong>handles</strong>.
+JA: Wrenコードを<em>役立つ</em>ものにするには、VMが外の世界と通信する必要があります。Wrenでは、VMとの間でデータを渡すために、統一した一組の関数を使います。これらの関数は、<strong>スロット</strong>と<strong>ハンドル</strong>という二つの基本概念に基づきます。
+
+4 [h2]
+EN: The Slot Array <a class="header-anchor" href="#the-slot-array" name="the-slot-array">#</a>
+JA: スロット配列 <a class="header-anchor" href="#the-slot-array" name="the-slot-array">#</a>
+
+5 [p]
+EN: When you want to send data to Wren, read data from it, or generally monkey
+around with Wren objects from C, you do so by going through an array of slots.
+Think of it as a shared message board that both the VM and your C code leave
+notes on for the other side to process.
+JA: Wrenへデータを送り、Wrenから読み取り、一般にCからWrenオブジェクトを操作するときは、スロットの配列を経由します。VMとCコードが、相手に処理してもらうメッセージを残す、共有の掲示板だと考えてください。
+
+6 [p]
+EN: The array is zero-based, and each slot can hold a value of any type. It is
+dynamically sized, but it’s your responsibility to ensure there are enough slots
+<em>before</em> you use them. You do this by calling:
+JA: 配列はゼロから始まり、各スロットには、どの型の値でも格納できます。大きさは動的に変わりますが、使う<em>前</em>に十分な個数のスロットがあることを確保するのは、利用者の責任です。次の関数を呼び出して行います。
+
+7 [p]
+EN: This grows the slot array if needed to ensure that many slots are available. If
+it’s already big enough, this does nothing. You’ll typically call this once
+before populating the slots with data that you want to send to Wren.
+JA: これは、指定した個数のスロットが利用できるよう、必要に応じてスロット配列を拡張します。すでに十分な大きさなら、何もしません。通常は、Wrenへ送るデータをスロットへ格納する前に、一度呼び出します。
+
+8 [p]
+EN: After you ensure an array of slots, you can only rely on them being there until
+you pass control back to Wren. That includes calling ⟦CODE0⟧ or
+⟦CODE1⟧, or returning from a <a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">foreign method</a>.
+JA: スロット配列を確保した後、その存在を保証できるのは、Wrenへ制御を戻すまでです。⟦CODE0⟧や⟦CODE1⟧を呼ぶこと、<a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">外部メソッド</a>から戻ることも、制御を戻す操作に含まれます。
+
+9 [p]
+EN: If you read or write from a slot that you haven’t ensured is valid, Wren makes
+no guarantees about what will happen. I’ve heard rumors of smoke and feathers
+flying out of a user’s computer.
+JA: 有効性を確保していないスロットを読み書きした場合、何が起きるかをWrenは一切保証しません。利用者のコンピューターから煙と羽が飛び出したといううわさを聞いたこともあります。
+
+10 [p]
+EN: If you want to see how big the slot array is, use:
+JA: スロット配列の大きさを知りたい場合は、次を使います。
+
+11 [p]
+EN: It returns the number of slots in the array. Note that this may be higher than
+the size you’ve ensured. Wren reuses the memory for this array when possible,
+so you may get one bigger than you need if it happened to be laying around.
+JA: これは、配列内のスロット数を返します。その数は、確保した個数より多い場合がある点に注意してください。Wrenは可能なら、この配列のメモリーを再利用します。そのため、大きな配列が残っていた場合は、必要なものより大きな配列が得られることがあります。
+
+12 [p]
+EN: When Wren <a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">calls your C code</a> and passes data to you, it ensures there are
+enough slots for the objects it is sending you.
+JA: Wrenが<a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">Cコードを呼び出し</a>、データを渡すときは、渡すオブジェクトに十分な個数のスロットを確保します。
+
+13 [h3]
+EN: Writing slots <a class="header-anchor" href="#writing-slots" name="writing-slots">#</a>
+JA: スロットへの書き込み <a class="header-anchor" href="#writing-slots" name="writing-slots">#</a>
+
+14 [p]
+EN: Once you have some slots, you store data in them using a number of functions all
+named ⟦CODE0⟧ where ⟦CODE1⟧ is the kind of data. We’ll start with
+the simple ones:
+JA: スロットが得られたら、⟦CODE0⟧という名前の一連の関数を使って、データを保存します。⟦CODE1⟧は、データの種類を表します。単純なものから始めましょう。
+
+15 [p]
+EN: Each of these takes a primitive C value and converts it to the corresponding
+<a href="/docs/wren/v0-4-0/en/01-guide/04-values/">Wren value</a>. (Since Wren’s <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#numbers">native number type</a> <em>is</em> a double, there’s not
+really much <em>conversion</em> going on, but you get the idea.)
+JA: これらは、それぞれCの基本的な値を受け取り、対応する<a href="/docs/wren/v0-4-0/en/01-guide/04-values/">Wrenの値</a>へ変換します。（Wrenの<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#numbers">基本の数値型</a>はdouble<em>そのもの</em>なので、実際には大した<em>変換</em>は行いませんが、考え方は分かるでしょう。）
+
+16 [p]
+EN: You can also pass string data to Wren:
+JA: 文字列データをWrenへ渡すこともできます。
+
+17 [p]
+EN: Both of these copy the bytes into a new <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#strings">String</a> object managed by Wren’s
+garbage collector, so you can free your copy of it after you call this. The
+difference between the two is that ⟦CODE0⟧ takes an explicit
+length. Since Wren strings may contain arbitrary byte values, including the null
+byte, this lets you pass those in. It’s also a little faster to use this for
+regular strings if you happen to know the length. The latter calculates the
+length of the string using ⟦CODE1⟧.
+JA: どちらも、バイト列を、Wrenのガベージコレクターが管理する新しい<a href="/docs/wren/v0-4-0/en/01-guide/04-values/#strings">String</a>オブジェクトへコピーするため、呼び出した後は、手元のコピーを解放できます。二つの違いは、⟦CODE0⟧が明示的な長さを受け取ることです。Wrenの文字列には、ヌルバイトを含む任意のバイト値を入れられるので、それらも渡せます。通常の文字列でも、長さが分かっているなら、こちらを使う方が少し速くなります。後者は、⟦CODE1⟧を使って文字列の長さを計算します。
+
+18 [h3]
+EN: Reading slots <a class="header-anchor" href="#reading-slots" name="reading-slots">#</a>
+JA: スロットの読み取り <a class="header-anchor" href="#reading-slots" name="reading-slots">#</a>
+
+19 [p]
+EN: You can, of course, also pull data out of slots. Here are the simple ones:
+JA: もちろん、スロットからデータを取り出すこともできます。単純なものは、次のとおりです。
+
+20 [p]
+EN: These take a Wren value of the corresponding type and convert it to its raw C
+representation. For strings, we have:
+JA: これらは、対応する型のWrenの値を受け取り、生のC表現へ変換します。文字列については、次の関数があります。
+
+21 [p]
+EN: These return a pointer to the first byte of the string. If you want to know the
+length, the latter stores it in the variable pointed to by ⟦CODE0⟧. Both of
+these return a direct pointer to the bytes managed by Wren. You should not hold
+on to this pointer for long. Wren does not promise that it won’t move or free
+the data.
+JA: これらは、文字列の最初のバイトへのポインターを返します。長さも必要なら、後者は、⟦CODE0⟧が指す変数に、その長さを保存します。どちらも、Wrenが管理するバイト列への直接のポインターを返します。このポインターを長く保持するべきではありません。Wrenは、そのデータを移動したり解放したりしないことを保証しません。
+
+22 [p]
+EN: With these functions, you are going from dynamically typed Wren data to
+statically typed C. It’s up to <em>you</em> to ensure that you read a value as the
+correct type. If you read a number from a slot that currently holds a string,
+you’re gonna have a bad time.
+JA: これらの関数では、動的型付けのWrenデータから、静的型付けのCへ移ります。値を正しい型で読み取ることを保証するのは、<em>利用者</em>の責任です。現在、文字列を格納しているスロットから数値を読み取ると、困ったことになります。
+
+23 [p]
+EN: Fortunately, you usually know what type of data you have in a slot. If not, you
+can ask:
+JA: 幸い、通常はスロット内のデータの型が分かっています。分からない場合は、次のように問い合わせられます。
+
+24 [p]
+EN: This returns an enum defining what type of value is in the slot. It only covers
+the primitive values that are supported by the C API. Things like ranges and
+instances of classes come back as ⟦CODE0⟧. If you want to move that
+kind of data between Wren and C, you’ll have to pull the object apart into
+simple primitive values first or use a <a href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">foreign class</a>.
+JA: これは、スロット内の値の型を表す列挙値を返します。対象は、C APIが対応する基本的な値だけです。範囲やクラスのインスタンスなどは、⟦CODE0⟧として返ります。この種類のデータをWrenとCの間で移動したい場合は、まず、オブジェクトを単純な基本値へ分解するか、<a href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">外部クラス</a>を使う必要があります。
+
+25 [h3]
+EN: Looking up variables <a class="header-anchor" href="#looking-up-variables" name="looking-up-variables">#</a>
+JA: 変数を探す <a class="header-anchor" href="#looking-up-variables" name="looking-up-variables">#</a>
+
+26 [p]
+EN: There are a few other utility functions that move data into and out of slots.
+Here’s the first:
+JA: スロットへデータを入れたり、取り出したりする、ほかの補助関数もあります。最初は、次の関数です。
+
+27 [p]
+EN: This looks up a top level variable with the given name in the module with the
+given name and stores its value in the given slot. Note that classes are just
+objects stored in variables too, so you can use this to look up a class by its
+name. Handy for calling static methods on it.
+JA: これは、指定した名前のモジュールで、指定した名前のトップレベル変数を探し、その値を指定したスロットへ保存します。クラスも、変数に保存したオブジェクトにすぎないため、名前でクラスを探すことにも使えます。クラスの静的メソッドを呼び出す際に便利です。
+
+28 [p]
+EN: Like any method that works with strings, this one is a bit slow. It has to hash
+the name and look it up in the module’s string table. You might want to avoid
+calling this in the middle of a hot loop where performance is critical. Instead,
+it’s faster to look up the variable once outside the loop and store a reference
+to the object using a <a href="#handles">handle</a>.
+JA: 文字列を扱うほかのメソッドと同様、この関数は少し遅くなります。名前をハッシュ化し、モジュールの文字列テーブルで探す必要があります。性能が重要な、頻繁に実行するループの中では、呼び出しを避けたいでしょう。代わりに、ループの外で一度だけ変数を探し、<a href="#handles">ハンドル</a>でオブジェクトへの参照を保存する方が速くなります。
+
+29 [h3]
+EN: Working with lists <a class="header-anchor" href="#working-with-lists" name="working-with-lists">#</a>
+JA: リストの操作 <a class="header-anchor" href="#working-with-lists" name="working-with-lists">#</a>
+
+30 [p]
+EN: The slot array is fine for moving a fixed number of objects between Wren and
+C, but sometimes you need to shuttle a larger or dynamically-sized ball of
+stuff. <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">List objects</a> work well for that, so the C API lets you work
+with them directly.
+JA: スロット配列は、固定個数のオブジェクトをWrenとCの間で移動するのに適しています。しかし、ときには、より多くの、または大きさが動的に変わるデータのまとまりを渡す必要があります。それには<a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">Listオブジェクト</a>が適しているため、C APIでは、それを直接操作できます。
+
+31 [p]
+EN: You can create a new empty list from C using:
+JA: Cから、新しい空のリストを作成するには、次を使います。
+
+32 [p]
+EN: It stores the resulting list in the given slot. If you have a list in a
+slot—either one you created from C or from Wren—you can add elements
+to it using:
+JA: これは、作成したリストを指定したスロットへ保存します。Cで作ったものでも、Wrenで作ったものでも、スロット内のリストへ要素を追加するには、次を使います。
+
+33 [p]
+EN: That’s a lot of int parameters:
+JA: intパラメーターがたくさんあります。
+
+34 [li]
+EN: 
+<p>⟦CODE0⟧ is the slot where the list object is stored. That’s the list you’ll
+  be modifying. If you created the list from C, it will be the slot you passed
+  to ⟦CODE1⟧.</p>
+
+JA: <p>⟦CODE0⟧は、リストオブジェクトを格納しているスロットです。変更するのは、このリストです。Cでリストを作成したなら、⟦CODE1⟧へ渡したスロットになります。</p>
+
+35 [li]
+EN: 
+<p>⟦CODE0⟧ is the index within the list where you want to insert the element.
+  Just like from within Wren, you can use a negative number to count back from
+  the end, so ⟦CODE1⟧ appends to the list.</p>
+
+JA: <p>⟦CODE0⟧は、要素を挿入するリスト内のインデックスです。Wren内と同様、負の数で末尾から数えられるため、⟦CODE1⟧は、リストの末尾へ追加します。</p>
+
+36 [li]
+EN: 
+<p>⟦CODE0⟧ identifies the slot where the value you want to insert in the
+  list can be found.</p>
+
+JA: <p>⟦CODE0⟧は、リストへ挿入したい値があるスロットを指定します。</p>
+
+37 [p]
+EN: This API means getting a value from C into a list is a two step operation. First
+you move the value into a slot, then you take it from the slot and insert it in
+the list. This is kind of tedious, but it lets us use the same set of functions
+for moving values into slots of each primitive type. Otherwise, we’d need
+⟦CODE0⟧, ⟦CODE1⟧, etc.
+JA: このAPIでは、Cの値をリストへ入れる操作は二段階になります。まず値をスロットへ移し、続いて、そのスロットから取り出してリストへ挿入します。少し面倒ですが、これにより、各基本型の値をスロットへ移動するために、同じ一組の関数を使えます。そうしなければ、⟦CODE0⟧や⟦CODE1⟧などが必要になります。
+
+38 [h2]
+EN: Handles <a class="header-anchor" href="#handles" name="handles">#</a>
+JA: ハンドル <a class="header-anchor" href="#handles" name="handles">#</a>
+
+39 [p]
+EN: Slots are pretty good for shuttling primitive data between C and Wren, but they
+have two limitations:
+JA: スロットは、CとWrenの間で基本的なデータを渡すのに適していますが、二つの制限があります。
+
+40 [li]
+EN: 
+<p><strong>They are short-lived.</strong> As soon as you execute some more Wren code, the
+    slot array is invalidated. You can’t use a slot to persistently keep track
+    of some object.</p>
+
+JA: <p><strong>有効期間が短い。</strong>さらにWrenコードを実行すると、スロット配列は直ちに無効になります。あるオブジェクトを永続的に追跡するために、スロットを使うことはできません。</p>
+
+41 [li]
+EN: 
+<p><strong>They only support primitive types.</strong> A slot can hold a value of any type,
+    but the C API we’ve seen so far doesn’t let you <em>do</em> anything with values
+    that aren’t simple primitive ones. If you want to grab a reference to,
+    say, an instance of some class, how do you do it?</p>
+
+JA: <p><strong>基本型だけに対応する。</strong>スロットには、どの型の値でも格納できますが、ここまでで見たC APIでは、単純な基本値でないものに対して、何かを<em>行う</em>ことはできません。例えば、あるクラスのインスタンスへの参照を得たい場合は、どうすればよいでしょうか？</p>
+
+42 [p]
+EN: To address those, we have handles. A handle wraps a reference to an object of
+any kind—strings, numbers, instances of classes, collections, whatever.
+You create a handle using this:
+JA: これらへ対応するため、ハンドルがあります。ハンドルは、文字列、数値、クラスのインスタンス、コレクションなど、どの種類のオブジェクトへの参照でも包みます。次を使って作成します。
+
+43 [p]
+EN: This takes the object stored in the given slot, creates a new WrenHandle to wrap
+it, and returns a pointer to it back to you. You can send that wrapped object
+back to Wren by calling:
+JA: これは、指定したスロット内のオブジェクトを受け取り、それを包む新しいWrenHandleを作って、そのポインターを返します。次を呼び出すと、そのオブジェクトをWrenへ戻せます。
+
+44 [p]
+EN: Note that this doesn’t invalidate your WrenHandle. You can still keep using it.
+JA: この操作は、WrenHandleを無効にしない点に注意してください。引き続き使えます。
+
+45 [h3]
+EN: Retaining and releasing handles <a class="header-anchor" href="#retaining-and-releasing-handles" name="retaining-and-releasing-handles">#</a>
+JA: ハンドルの保持と解放 <a class="header-anchor" href="#retaining-and-releasing-handles" name="retaining-and-releasing-handles">#</a>
+
+46 [p]
+EN: A handle is an opaque wrapper around an object of any type, but just as
+important, it’s a <em>persistent</em> one. When Wren gives you a pointer to a
+WrenHandle, it guarantees that that pointer remains valid. You can keep it
+around as long as you want. Even if a garbage collection occurs, Wren will
+ensure the handle and the object it wraps are kept safely in memory.
+JA: ハンドルは、どの型のオブジェクトでも包む不透明なラッパーですが、同じくらい重要なのは、<em>永続的</em>であることです。WrenがWrenHandleへのポインターを渡したなら、そのポインターが有効であり続けることを保証します。必要な限り、保持できます。ガベージコレクションが起きても、ハンドルと、それが包むオブジェクトを安全にメモリー内へ保持します。
+
+47 [p]
+EN: Internally, Wren keeps a list of all of the WrenHandles that have been created.
+That way, during garbage collection, it can find them all and make sure their
+objects aren’t freed. But what if you don’t want it to be kept around any more?
+Since C relies on manual memory management, WrenHandle does too. When you are
+done with one, you must explicitly release it by calling:
+JA: 内部では、Wrenは、作成したすべてのWrenHandleのリストを保持します。これにより、ガベージコレクション中に、それらをすべて見つけ、オブジェクトを解放しないようにできます。しかし、もう保持したくなくなった場合はどうするのでしょうか？ Cは手動のメモリー管理に依存するため、WrenHandleも同じです。使い終わったら、次を呼び出して、明示的に解放する必要があります。
+
+48 [p]
+EN: This does not immediately delete the wrapped object—after all, there may
+be other references to the same object in the program. It just invalidates the
+WrenHandle wrapper itself. After you call this, you cannot use that pointer
+again.
+JA: これは、包んでいるオブジェクトを直ちに削除するわけではありません。同じオブジェクトへの参照が、プログラム内のほかの場所にもあるかもしれないためです。無効になるのは、WrenHandleラッパー自身だけです。呼び出した後は、そのポインターを再び使えません。
+
+49 [p]
+EN: You must release every WrenHandle you’ve created before shutting down the VM.
+Wren warns you if you don’t, since it implies you’ve probably leaked a resource
+somewhere.
+JA: VMを終了する前に、作成したすべてのWrenHandleを解放する必要があります。解放しなければ、どこかで資源がリークしている可能性があるため、Wrenは警告します。
+
+50 [p]
+EN: Now we know how to pass values between Wren and C, but we don’t know how to
+actually <em>do</em> anything with them. Next, we’ll learn how to use slots to pass
+parameters to a Wren method from C…
+JA: WrenとCの間で値を渡す方法は分かりましたが、その値で何かを実際に<em>行う</em>方法は、まだ分かりません。次は、スロットを使って、CからWrenのメソッドへパラメーターを渡す方法を学びます。
+
+51 [p]
+EN: <a class="right" href="/docs/wren/v0-4-0/en/01-guide/19-embedding-calling-wren-from-c/">Calling Wren from C →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/16-embedding/">← Introduction</a>
+JA: <a class="right" href="/docs/wren/v0-4-0/en/01-guide/19-embedding-calling-wren-from-c/">CからWrenを呼び出す →</a><a href="/docs/wren/v0-4-0/en/01-guide/16-embedding/">← はじめに</a>

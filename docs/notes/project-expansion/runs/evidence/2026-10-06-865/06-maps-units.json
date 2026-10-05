@@ -1,0 +1,282 @@
+{
+  "page": "01-guide/06-maps.md",
+  "titleEN": "Maps",
+  "titleJA": "マップ",
+  "sourceCanonicalSHA256": "7ca9e14051e0189e50871dde38aca70996d3ea901ddac94cbb849f6d73dead63",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Maps",
+      "originalInnerHTML": "Maps",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "A map is an <em>associative</em> collection. It holds a set of entries, each of which\nmaps a <em>key</em> to a <em>value</em>. The same data structure has a variety of names in\nother languages: hash table, dictionary, association, table, etc.",
+      "originalInnerHTML": "A map is an <em>associative</em> collection. It holds a set of entries, each of which\nmaps a <em>key</em> to a <em>value</em>. The same data structure has a variety of names in\nother languages: hash table, dictionary, association, table, etc.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "You can create a map by placing a series of comma-separated entries inside\ncurly braces. Each entry is a key and a value separated by a colon:",
+      "originalInnerHTML": "You can create a map by placing a series of comma-separated entries inside\ncurly braces. Each entry is a key and a value separated by a colon:",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "This creates a map that associates a type of tree (key) to a specific \ntree within that family (value). Syntactically, in a map literal, keys \ncan be any literal, a variable name, or a parenthesized expression. \nValues can be any expression. Here, we’re using string literals for both keys \nand values.",
+      "originalInnerHTML": "This creates a map that associates a type of tree (key) to a specific \ntree within that family (value). Syntactically, in a map literal, keys \ncan be any literal, a variable name, or a parenthesized expression. \nValues can be any expression. Here, we’re using string literals for both keys \nand values.",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "<em>Semantically</em>, values can be any object, and multiple keys may map to the same\nvalue. ",
+      "originalInnerHTML": "<em>Semantically</em>, values can be any object, and multiple keys may map to the same\nvalue. ",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "Keys have a few limitations. They must be one of the immutable built-in\n<a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/\">value types</a> in Wren. That means a number, string, range, bool, or ⟦CODE0⟧.\nYou can also use a <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/\">class object</a> as a key (not an instance of that class, \nthe actual class itself).",
+      "originalInnerHTML": "Keys have a few limitations. They must be one of the immutable built-in\n<a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/\">value types</a> in Wren. That means a number, string, range, bool, or <code>null</code>.\nYou can also use a <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/\">class object</a> as a key (not an instance of that class, \nthe actual class itself).",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "The reason for this limitation—and the reason maps are called “<em>hash</em>\ntables” in other languages—is that each key is used to generate a numeric\n<em>hash code</em>. This lets a map locate the value associated with a key in constant\ntime, even in very large maps. Since Wren only knows how to hash certain\nbuilt-in types, only those can be used as keys.",
+      "originalInnerHTML": "The reason for this limitation—and the reason maps are called “<em>hash</em>\ntables” in other languages—is that each key is used to generate a numeric\n<em>hash code</em>. This lets a map locate the value associated with a key in constant\ntime, even in very large maps. Since Wren only knows how to hash certain\nbuilt-in types, only those can be used as keys.",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "h2",
+      "sourceHTML": "Adding entries <a class=\"header-anchor\" href=\"#adding-entries\" name=\"adding-entries\">#</a>",
+      "originalInnerHTML": "Adding entries <a class=\"header-anchor\" href=\"#adding-entries\" name=\"adding-entries\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "You add new key-value pairs to the map using the <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#subscripts\">subscript operator</a>:",
+      "originalInnerHTML": "You add new key-value pairs to the map using the <a href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/#subscripts\">subscript operator</a>:",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "If the key isn’t already present, this adds it and associates it with the given\nvalue. If the key is already there, this just replaces its value.",
+      "originalInnerHTML": "If the key isn’t already present, this adds it and associates it with the given\nvalue. If the key is already there, this just replaces its value.",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "h2",
+      "sourceHTML": "Looking up values <a class=\"header-anchor\" href=\"#looking-up-values\" name=\"looking-up-values\">#</a>",
+      "originalInnerHTML": "Looking up values <a class=\"header-anchor\" href=\"#looking-up-values\" name=\"looking-up-values\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "To find the value associated with some key, again you use your friend the\nsubscript operator:",
+      "originalInnerHTML": "To find the value associated with some key, again you use your friend the\nsubscript operator:",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "If the key is present, this returns its value. Otherwise, it returns ⟦CODE0⟧. Of\ncourse, ⟦CODE1⟧ itself can also be used as a value, so seeing ⟦CODE2⟧ here\ndoesn’t necessarily mean the key wasn’t found.",
+      "originalInnerHTML": "If the key is present, this returns its value. Otherwise, it returns <code>null</code>. Of\ncourse, <code>null</code> itself can also be used as a value, so seeing <code>null</code> here\ndoesn’t necessarily mean the key wasn’t found.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>null</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>null</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "To tell definitively if a key exists, you can call ⟦CODE0⟧:",
+      "originalInnerHTML": "To tell definitively if a key exists, you can call <code>containsKey()</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>containsKey()</code>"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "You can see how many entries a map contains using ⟦CODE0⟧:",
+      "originalInnerHTML": "You can see how many entries a map contains using <code>count</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>count</code>"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "tag": "h2",
+      "sourceHTML": "Removing entries <a class=\"header-anchor\" href=\"#removing-entries\" name=\"removing-entries\">#</a>",
+      "originalInnerHTML": "Removing entries <a class=\"header-anchor\" href=\"#removing-entries\" name=\"removing-entries\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "To remove an entry from a map, call ⟦CODE0⟧ and pass in the key for the\nentry you want to delete:",
+      "originalInnerHTML": "To remove an entry from a map, call <code>remove()</code> and pass in the key for the\nentry you want to delete:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>remove()</code>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "sourceHTML": "If the key was found, this returns the value that was associated with it:",
+      "originalInnerHTML": "If the key was found, this returns the value that was associated with it:",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "If the key wasn’t in the map to begin with, ⟦CODE0⟧ just returns ⟦CODE1⟧.",
+      "originalInnerHTML": "If the key wasn’t in the map to begin with, <code>remove()</code> just returns <code>null</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>remove()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>null</code>"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "If you want to remove <em>everything</em> from the map, like with <a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">lists</a>, you call\n⟦CODE0⟧:",
+      "originalInnerHTML": "If you want to remove <em>everything</em> from the map, like with <a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">lists</a>, you call\n<code>clear()</code>:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>clear()</code>"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "tag": "h2",
+      "sourceHTML": "Iterating over the contents <a class=\"header-anchor\" href=\"#iterating-over-the-contents\" name=\"iterating-over-the-contents\">#</a>",
+      "originalInnerHTML": "Iterating over the contents <a class=\"header-anchor\" href=\"#iterating-over-the-contents\" name=\"iterating-over-the-contents\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "The subscript operator works well for finding values when you know the key\nyou’re looking for, but sometimes you want to see everything that’s in the map.\nYou can use a regular for loop to iterate the contents, and map exposes two \nadditional methods to access the contents: ⟦CODE0⟧ and ⟦CODE1⟧. ",
+      "originalInnerHTML": "The subscript operator works well for finding values when you know the key\nyou’re looking for, but sometimes you want to see everything that’s in the map.\nYou can use a regular for loop to iterate the contents, and map exposes two \nadditional methods to access the contents: <code>keys</code> and <code>values</code>. ",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>keys</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>values</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ method on a map returns a <a href=\"/docs/wren/v0-4-0/en/02-reference/11-modules-core-sequence/\">Sequence</a> that <a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/#the-iterator-protocol\">iterates</a> over all of\nthe keys in the map, and the ⟦CODE1⟧ method returns one that iterates over the values.",
+      "originalInnerHTML": "The <code>keys</code> method on a map returns a <a href=\"/docs/wren/v0-4-0/en/02-reference/11-modules-core-sequence/\">Sequence</a> that <a href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/#the-iterator-protocol\">iterates</a> over all of\nthe keys in the map, and the <code>values</code> method returns one that iterates over the values.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>keys</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>values</code>"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "Regardless of how you iterate, the <em>order</em> that things are iterated in \nisn’t defined. Wren makes no promises about what order keys and values are \niterated. All it promises is that every entry will appear exactly once.",
+      "originalInnerHTML": "Regardless of how you iterate, the <em>order</em> that things are iterated in \nisn’t defined. Wren makes no promises about what order keys and values are \niterated. All it promises is that every entry will appear exactly once.",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "<strong>Iterating with for(entry in map)</strong> <br/>\nWhen you iterate a map with ⟦CODE0⟧, you’ll be handed an <em>entry</em>, which contains\na ⟦CODE1⟧ and a ⟦CODE2⟧ field. That gives you the info for each element in the map.",
+      "originalInnerHTML": "<strong>Iterating with for(entry in map)</strong> <br/>\nWhen you iterate a map with <code>for</code>, you’ll be handed an <em>entry</em>, which contains\na <code>key</code> and a <code>value</code> field. That gives you the info for each element in the map.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>for</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>key</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>value</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "<strong>Iterating using the keys</strong> ",
+      "originalInnerHTML": "<strong>Iterating using the keys</strong> ",
+      "protected": []
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "You can also iterate over the keys and use each to look up its value:",
+      "originalInnerHTML": "You can also iterate over the keys and use each to look up its value:",
+      "protected": []
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">Method Calls →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">← Lists</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/07-method-calls/\">Method Calls →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/05-lists/\">← Lists</a>",
+      "protected": []
+    }
+  ]
+}

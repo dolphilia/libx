@@ -1,0 +1,448 @@
+{
+  "page": "01-guide/07-method-calls.md",
+  "titleEN": "Method Calls",
+  "titleJA": "メソッド呼び出し",
+  "sourceCanonicalSHA256": "43de18ab8d23f3790a88bb02befc38ee1709719a91d1592aa3028a131d9f1941",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Method Calls",
+      "originalInnerHTML": "Method Calls",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Wren is deeply object oriented, so most code consists of invoking methods on\nobjects, usually something like this:",
+      "originalInnerHTML": "Wren is deeply object oriented, so most code consists of invoking methods on\nobjects, usually something like this:",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "You have a <em>receiver</em> expression (here ⟦CODE0⟧) followed by a ⟦CODE1⟧, then a name\n(⟦CODE2⟧) and an argument list in parentheses (⟦CODE3⟧). Multiple arguments\nare separated by commas:",
+      "originalInnerHTML": "You have a <em>receiver</em> expression (here <code>System</code>) followed by a <code>.</code>, then a name\n(<code>print</code>) and an argument list in parentheses (<code>(\"Heyoo!\")</code>). Multiple arguments\nare separated by commas:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>System</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>.</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>print</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>(\"Heyoo!\")</code>"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "The argument list can also be empty:",
+      "originalInnerHTML": "The argument list can also be empty:",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "The VM executes a method call like so:",
+      "originalInnerHTML": "The VM executes a method call like so:",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "li",
+      "sourceHTML": "Evaluate the receiver and arguments from left to right.",
+      "originalInnerHTML": "Evaluate the receiver and arguments from left to right.",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "li",
+      "sourceHTML": "Look up the method on the receiver’s <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/\">class</a>.",
+      "originalInnerHTML": "Look up the method on the receiver’s <a href=\"/docs/wren/v0-4-0/en/01-guide/10-classes/\">class</a>.",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "li",
+      "sourceHTML": "Invoke it, passing in the argument values.",
+      "originalInnerHTML": "Invoke it, passing in the argument values.",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "h2",
+      "sourceHTML": "Signature <a class=\"header-anchor\" href=\"#signature\" name=\"signature\">#</a>",
+      "originalInnerHTML": "Signature <a class=\"header-anchor\" href=\"#signature\" name=\"signature\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "Unlike most other dynamically-typed languages, in Wren a class can have multiple\nmethods with the same <em>name</em>, as long as they have different <em>signatures</em>. The\nsignature includes the method’s name along with the number of arguments it\ntakes. In technical terms, this means you can <em>overload by arity</em>.",
+      "originalInnerHTML": "Unlike most other dynamically-typed languages, in Wren a class can have multiple\nmethods with the same <em>name</em>, as long as they have different <em>signatures</em>. The\nsignature includes the method’s name along with the number of arguments it\ntakes. In technical terms, this means you can <em>overload by arity</em>.",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "For example, the <a href=\"/docs/wren/v0-4-0/en/02-reference/17-modules-random-random/\">Random</a> class has two methods for getting a random integer.\nOne takes a minimum and maximum value and returns a value in that range. The\nother only takes a maximum value and uses 0 as the minimum:",
+      "originalInnerHTML": "For example, the <a href=\"/docs/wren/v0-4-0/en/02-reference/17-modules-random-random/\">Random</a> class has two methods for getting a random integer.\nOne takes a minimum and maximum value and returns a value in that range. The\nother only takes a maximum value and uses 0 as the minimum:",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "In a language like Python or JavaScript, these would both call a single ⟦CODE0⟧\nmethod, which has some kind of “optional” parameter. The body of the method\nfigures out how many arguments were passed and uses control flow to handle the\ntwo different behaviors. That means first parameter represents “max unless\nanother parameter was passed, in which case it’s min”. ",
+      "originalInnerHTML": "In a language like Python or JavaScript, these would both call a single <code>int()</code>\nmethod, which has some kind of “optional” parameter. The body of the method\nfigures out how many arguments were passed and uses control flow to handle the\ntwo different behaviors. That means first parameter represents “max unless\nanother parameter was passed, in which case it’s min”. ",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>int()</code>"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "This type of ‘variadic’ code isn’t ideal, so Wren doesn’t encourage it.",
+      "originalInnerHTML": "This type of ‘variadic’ code isn’t ideal, so Wren doesn’t encourage it.",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "In Wren, these are calls to two entirely separate methods, ⟦CODE0⟧ and\n⟦CODE1⟧. This makes it easier to define “overloads” like this since you don’t\nneed optional parameters or any kind of control flow to handle the different\ncases.",
+      "originalInnerHTML": "In Wren, these are calls to two entirely separate methods, <code>int(_,_)</code> and\n<code>int(_)</code>. This makes it easier to define “overloads” like this since you don’t\nneed optional parameters or any kind of control flow to handle the different\ncases.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>int(_,_)</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>int(_)</code>"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "It’s also faster to execute. Since we know how many arguments are passed at\ncompile time, we can compile this to directly call the right method and avoid\nany “if I got two arguments do this…” runtime work.",
+      "originalInnerHTML": "It’s also faster to execute. Since we know how many arguments are passed at\ncompile time, we can compile this to directly call the right method and avoid\nany “if I got two arguments do this…” runtime work.",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "h2",
+      "sourceHTML": "Getters <a class=\"header-anchor\" href=\"#getters\" name=\"getters\">#</a>",
+      "originalInnerHTML": "Getters <a class=\"header-anchor\" href=\"#getters\" name=\"getters\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "Some methods exist to expose a stored or computed property of an object. These\nare <em>getters</em> and have no parentheses:",
+      "originalInnerHTML": "Some methods exist to expose a stored or computed property of an object. These\nare <em>getters</em> and have no parentheses:",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "sourceHTML": "A getter is <em>not</em> the same as a method with an empty argument list. The ⟦CODE0⟧ is\npart of the signature, so ⟦CODE1⟧ and ⟦CODE2⟧ have different signatures.\nUnlike Ruby’s optional parentheses, Wren wants to make sure you call a getter\nlike a getter and a ⟦CODE3⟧ method like a ⟦CODE4⟧ method. These don’t work:",
+      "originalInnerHTML": "A getter is <em>not</em> the same as a method with an empty argument list. The <code>()</code> is\npart of the signature, so <code>count</code> and <code>count()</code> have different signatures.\nUnlike Ruby’s optional parentheses, Wren wants to make sure you call a getter\nlike a getter and a <code>()</code> method like a <code>()</code> method. These don’t work:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>count</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>count()</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>()</code>"
+        },
+        {
+          "token": "⟦CODE4⟧",
+          "html": "<code>()</code>"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "If you’re defining some member that doesn’t need any parameters, you need to\ndecide if it should be a getter or a method with an empty ⟦CODE0⟧ parameter list.\nThe general guidelines are:",
+      "originalInnerHTML": "If you’re defining some member that doesn’t need any parameters, you need to\ndecide if it should be a getter or a method with an empty <code>()</code> parameter list.\nThe general guidelines are:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>()</code>"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "tag": "li",
+      "sourceHTML": "If it modifies the object or has some other side effect, make it a method:",
+      "originalInnerHTML": "If it modifies the object or has some other side effect, make it a method:",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "li",
+      "sourceHTML": "If the method supports multiple arities, make the zero-parameter case a ⟦CODE0⟧\n    method to be consistent with the other versions:",
+      "originalInnerHTML": "If the method supports multiple arities, make the zero-parameter case a <code>()</code>\n    method to be consistent with the other versions:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>()</code>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "tag": "li",
+      "sourceHTML": "Otherwise, it can probably be a getter.",
+      "originalInnerHTML": "Otherwise, it can probably be a getter.",
+      "protected": []
+    },
+    {
+      "id": "23",
+      "tag": "h2",
+      "sourceHTML": "Setters <a class=\"header-anchor\" href=\"#setters\" name=\"setters\">#</a>",
+      "originalInnerHTML": "Setters <a class=\"header-anchor\" href=\"#setters\" name=\"setters\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "A getter lets an object expose a public “property” that you can <em>read</em>.\nLikewise, a <em>setter</em> lets you write to a property:",
+      "originalInnerHTML": "A getter lets an object expose a public “property” that you can <em>read</em>.\nLikewise, a <em>setter</em> lets you write to a property:",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "Despite the ⟦CODE0⟧, this is just another syntax for a method call. From the\nlanguage’s perspective, the above line is just a call to the ⟦CODE1⟧\nmethod on ⟦CODE2⟧, passing in ⟦CODE3⟧.",
+      "originalInnerHTML": "Despite the <code>=</code>, this is just another syntax for a method call. From the\nlanguage’s perspective, the above line is just a call to the <code>height=(_)</code>\nmethod on <code>person</code>, passing in <code>74</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>=</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>height=(_)</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>person</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>74</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "Since the ⟦CODE0⟧ is in the setter’s signature, an object can have both a getter\nand setter with the same name without a collision. Defining both lets you\nprovide a read/write property.",
+      "originalInnerHTML": "Since the <code>=(_)</code> is in the setter’s signature, an object can have both a getter\nand setter with the same name without a collision. Defining both lets you\nprovide a read/write property.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>=(_)</code>"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "tag": "h2",
+      "sourceHTML": "Operators <a class=\"header-anchor\" href=\"#operators\" name=\"operators\">#</a>",
+      "originalInnerHTML": "Operators <a class=\"header-anchor\" href=\"#operators\" name=\"operators\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "Wren has most of the same operators you know and love with the same precedence\nand associativity. We have three prefix operators:",
+      "originalInnerHTML": "Wren has most of the same operators you know and love with the same precedence\nand associativity. We have three prefix operators:",
+      "protected": []
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "They are just method calls on their operand without any other arguments. An\nexpression like ⟦CODE0⟧ means “call the ⟦CODE1⟧ method on ⟦CODE2⟧”.",
+      "originalInnerHTML": "They are just method calls on their operand without any other arguments. An\nexpression like <code>!possible</code> means “call the <code>!</code> method on <code>possible</code>”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>!possible</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>!</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>possible</code>"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "We also have a slew of infix operators—they have operands on both sides.\nThey are:",
+      "originalInnerHTML": "We also have a slew of infix operators—they have operands on both sides.\nThey are:",
+      "protected": []
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "sourceHTML": "Like prefix operators, they are all funny ways of writing method calls. The left\noperand is the receiver, and the right operand gets passed to it. So ⟦CODE0⟧ is\nsemantically interpreted as “invoke the ⟦CODE1⟧ method on ⟦CODE2⟧, passing it ⟦CODE3⟧”.",
+      "originalInnerHTML": "Like prefix operators, they are all funny ways of writing method calls. The left\noperand is the receiver, and the right operand gets passed to it. So <code>a + b</code> is\nsemantically interpreted as “invoke the <code>+(_)</code> method on <code>a</code>, passing it <code>b</code>”.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>a + b</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>+(_)</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>a</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>b</code>"
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "tag": "p",
+      "sourceHTML": "Note that ⟦CODE0⟧ is both a prefix and an infix operator. Since they have different\nsignatures (⟦CODE1⟧ and ⟦CODE2⟧), there’s no ambiguity between them.",
+      "originalInnerHTML": "Note that <code>-</code> is both a prefix and an infix operator. Since they have different\nsignatures (<code>-</code> and <code>-(_)</code>), there’s no ambiguity between them.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>-</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>-</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>-(_)</code>"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "tag": "p",
+      "sourceHTML": "Most of these are probably familiar already. The ⟦CODE0⟧ and ⟦CODE1⟧ operators are\n“range” operators. The number type implements those to create <a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">range</a>\nobjects, but they are method calls like other operators.",
+      "originalInnerHTML": "Most of these are probably familiar already. The <code>..</code> and <code>...</code> operators are\n“range” operators. The number type implements those to create <a href=\"/docs/wren/v0-4-0/en/01-guide/04-values/#ranges\">range</a>\nobjects, but they are method calls like other operators.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>..</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>...</code>"
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ keyword is a “type test” operator. The base <a href=\"/docs/wren/v0-4-0/en/02-reference/09-modules-core-object/\">Object</a> class implements\nit to tell if an object is an instance of a given class. You’ll rarely need to,\nbut you can override ⟦CODE1⟧ in your own classes. That can be useful for things\nlike mocks or proxies where you want an object to masquerade as a certain class.",
+      "originalInnerHTML": "The <code>is</code> keyword is a “type test” operator. The base <a href=\"/docs/wren/v0-4-0/en/02-reference/09-modules-core-object/\">Object</a> class implements\nit to tell if an object is an instance of a given class. You’ll rarely need to,\nbut you can override <code>is</code> in your own classes. That can be useful for things\nlike mocks or proxies where you want an object to masquerade as a certain class.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>is</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>is</code>"
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "tag": "h2",
+      "sourceHTML": "Subscripts <a class=\"header-anchor\" href=\"#subscripts\" name=\"subscripts\">#</a>",
+      "originalInnerHTML": "Subscripts <a class=\"header-anchor\" href=\"#subscripts\" name=\"subscripts\">#</a>",
+      "protected": []
+    },
+    {
+      "id": "36",
+      "tag": "p",
+      "sourceHTML": "Another familiar syntax from math is <em>subscripting</em> using square brackets\n(⟦CODE0⟧). It’s handy for working with collection-like objects. For example:",
+      "originalInnerHTML": "Another familiar syntax from math is <em>subscripting</em> using square brackets\n(<code>[]</code>). It’s handy for working with collection-like objects. For example:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>[]</code>"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "tag": "p",
+      "sourceHTML": "You know the refrain by now. In Wren, these are method calls. In the above\nexamples, the signature is ⟦CODE0⟧. Subscript operators may also take multiple\narguments, which is useful for things like multi-dimensional arrays:",
+      "originalInnerHTML": "You know the refrain by now. In Wren, these are method calls. In the above\nexamples, the signature is <code>[_]</code>. Subscript operators may also take multiple\narguments, which is useful for things like multi-dimensional arrays:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>[_]</code>"
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "tag": "p",
+      "sourceHTML": "These examples are subscript “getters”, and there are also\ncorresponding <em>subscript setters</em>:",
+      "originalInnerHTML": "These examples are subscript “getters”, and there are also\ncorresponding <em>subscript setters</em>:",
+      "protected": []
+    },
+    {
+      "id": "39",
+      "tag": "p",
+      "sourceHTML": "These are equivalent to method calls whose signature is ⟦CODE0⟧ and whose\narguments are both the subscript (or subscripts) and the value on the right-hand\nside.",
+      "originalInnerHTML": "These are equivalent to method calls whose signature is <code>[_]=(_)</code> and whose\narguments are both the subscript (or subscripts) and the value on the right-hand\nside.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>[_]=(_)</code>"
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "tag": "p",
+      "sourceHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/\">Control Flow →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/06-maps/\">← Maps</a>",
+      "originalInnerHTML": "<br/><hr/>\n<a class=\"right\" href=\"/docs/wren/v0-4-0/en/01-guide/08-control-flow/\">Control Flow →</a>\n<a href=\"/docs/wren/v0-4-0/en/01-guide/06-maps/\">← Maps</a>",
+      "protected": []
+    }
+  ]
+}

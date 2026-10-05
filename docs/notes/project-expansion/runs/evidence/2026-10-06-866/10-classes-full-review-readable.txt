@@ -1,0 +1,1032 @@
+1 [h1]
+EN: Classes
+JA: クラス
+
+2 [p]
+EN: Every value in Wren is an object, and every object is an instance of a class.
+Even true and false are full-featured objects—instances of the
+Bool class.
+JA: Wrenのすべての値はオブジェクトで、すべてのオブジェクトはクラスのインスタンスです。trueとfalseも、完全な機能を持つオブジェクトで、Boolクラスのインスタンスです。
+
+3 [p]
+EN: Classes define an objects behavior and state. Behavior is defined by
+methods which live in the class. Every object of the same
+class supports the same methods. State is defined in fields, whose values are
+stored in each instance.
+JA: クラスは、オブジェクトの振る舞いと状態を定義します。振る舞いは、クラスに置くメソッドで定義します。同じクラスのオブジェクトは、すべて同じメソッドに対応します。状態はフィールドで定義し、その値は各インスタンスに保存します。
+
+4 [h2]
+EN: Defining a class #
+JA: クラスの定義 #
+
+5 [p]
+EN: Classes are created using the class keyword, unsurprisingly:
+JA: 予想どおり、クラスはclassキーワードで作成します。
+
+UNCHANGED CODE 1
+
+class Unicorn {}
+
+
+6 [p]
+EN: This creates a class named Unicorn with no methods or fields.
+JA: これで、メソッドもフィールドも持たない、Unicornというクラスを作成します。
+
+7 [h2]
+EN: Methods #
+JA: メソッド #
+
+8 [p]
+EN: To let our unicorn do stuff, we need to give it methods.
+JA: ユニコーンが何かできるようにするには、メソッドを与える必要があります。
+
+UNCHANGED CODE 2
+
+class Unicorn {
+  prance() {
+    System.print("The unicorn prances in a fancy manner!")
+  }
+}
+
+
+9 [p]
+EN: This defines a prance() method that takes no arguments. To add parameters, put
+their names inside the parentheses:
+JA: これで、引数を取らないprance()メソッドを定義します。パラメーターを追加するには、丸括弧の中にその名前を書きます。
+
+UNCHANGED CODE 3
+
+class Unicorn {
+  prance(where, when) {
+    System.print("The unicorn prances in %(where) at %(when).")
+  }
+}
+
+
+10 [p]
+EN: Since the number of parameters is part of a method’s signature a class can
+define multiple methods with the same name:
+JA: パラメーターの個数はメソッドのシグネチャの一部なので、一つのクラスに同じ名前のメソッドを複数定義できます。
+
+UNCHANGED CODE 4
+
+class Unicorn {
+  prance() {
+    System.print("The unicorn prances in a fancy manner!")
+  }
+
+  prance(where) {
+    System.print("The unicorn prances in %(where).")
+  }
+
+  prance(where, when) {
+    System.print("The unicorn prances in %(where) at %(when).")
+  }
+}
+
+
+11 [p]
+EN: It’s often natural to have the same conceptual operation work with different
+sets of arguments. In other languages, you’d define a single method for the
+operation and have to check for missing optional arguments. In Wren, they are
+different methods that you implement separately.
+JA: 同じ概念的な操作を、異なる引数の組で使えるようにするのは、自然なことです。ほかの言語では、操作のために一つのメソッドを定義し、省略可能な引数が渡されていないかを調べる必要があります。Wrenでは、これらを別々のメソッドとして、それぞれ実装します。
+
+12 [p]
+EN: In addition to named methods with parameter lists, Wren has a bunch of other
+different syntaxes for methods. Your classes can define all of them.
+JA: パラメーターリストを持つ名前付きメソッドに加え、Wrenには、メソッドのためのさまざまな構文があります。自分のクラスでも、そのすべてを定義できます。
+
+13 [h3]
+EN: Getters #
+JA: ゲッター #
+
+14 [p]
+EN: A getter leaves off the parameter list and the parentheses:
+JA: ゲッターでは、パラメーターリストと丸括弧を省きます。
+
+UNCHANGED CODE 5
+
+class Unicorn {
+  // Unicorns are always fancy.
+  isFancy { true }
+}
+
+
+15 [h3]
+EN: Setters #
+JA: セッター #
+
+16 [p]
+EN: A setter has = after the name, followed by a single parenthesized parameter:
+JA: セッターでは、名前の後に=を置き、その後に丸括弧で囲んだ一つのパラメーターを書きます。
+
+UNCHANGED CODE 6
+
+class Unicorn {
+  rider=(value) {
+    System.print("I am being ridden by %(value).")
+  }
+}
+
+
+17 [p]
+EN: By convention, the parameter is usually named value but you can call it
+whatever makes your heart flutter.
+JA: 慣例として、このパラメーターには通常valueという名前を付けますが、好きな名前を付けてかまいません。
+
+18 [h3]
+EN: Operators #
+JA: 演算子 #
+
+19 [p]
+EN: Prefix operators, like getters, have no parameter list:
+JA: 前置演算子には、ゲッターと同様、パラメーターリストがありません。
+
+UNCHANGED CODE 7
+
+class Unicorn {
+  - {
+    System.print("Negating a unicorn is weird.")
+  }
+}
+
+
+20 [p]
+EN: Infix operators, like setters, have a single parenthesized parameter for the
+right-hand operand:
+JA: 中置演算子には、セッターと同様、右のオペランドのための、丸括弧で囲んだ一つのパラメーターがあります。
+
+UNCHANGED CODE 8
+
+class Unicorn {
+  -(other) {
+    System.print("Subtracting %(other) from a unicorn is weird.")
+  }
+}
+
+
+21 [p]
+EN: A subscript operator puts the parameters inside square brackets and can have
+more than one:
+JA: 添字演算子では、角括弧の中にパラメーターを書きます。複数のパラメーターも使えます。
+
+UNCHANGED CODE 9
+
+class Unicorn {
+  [index] {
+    System.print("Unicorns are not lists!")
+  }
+
+  [x, y] {
+    System.print("Unicorns are not matrices either!")
+  }
+}
+
+
+22 [p]
+EN: Unlike with named methods, you can’t define a subscript operator with an empty
+parameter list.
+JA: 名前付きメソッドとは異なり、パラメーターリストが空の添字演算子は定義できません。
+
+23 [p]
+EN: As the name implies, a subscript setter looks like a combination of a subscript
+operator and a setter:
+JA: 名前が示すとおり、添字セッターは、添字演算子とセッターを組み合わせた形になります。
+
+UNCHANGED CODE 10
+
+class Unicorn {
+  [index]=(value) {
+    System.print("You can't stuff %(value) into me at %(index)!")
+  }
+}
+
+
+24 [h2]
+EN: Method Scope #
+JA: メソッドのスコープ #
+
+25 [p]
+EN: Up to this point, “scope” has been used to talk exclusively about
+variables. In a procedural language like C, or a functional one like Scheme,
+that’s the only kind of scope there is. But object-oriented languages like Wren
+introduce another kind of scope: object scope. It contains the methods that
+are available on an object. When you write:
+JA: ここまで、スコープという語は、変数についてだけ使ってきました。Cのような手続き型言語や、Schemeのような関数型言語では、スコープはこの一種類だけです。しかし、Wrenのようなオブジェクト指向言語には、もう一つのオブジェクトスコープがあります。これは、そのオブジェクトで利用できるメソッドを含みます。次のように書くと、
+
+UNCHANGED CODE 11
+
+unicorn.isFancy
+
+
+26 [p]
+EN: You’re saying “look up the method isFancy in the scope of the object
+unicorn”. In this case, the fact that you want to look up a method
+isFancy and not a variable isFancy is explicit. That’s what . does and
+the object to the left of the period is the object you want to look up the
+method on.
+JA: 「オブジェクトunicornのスコープで、メソッドisFancyを探す」と指示しています。この場合、探したいものが変数isFancyではなく、メソッドisFancyであることは明示されています。それを表すのが.であり、ピリオドの左側のオブジェクトが、メソッドを探す対象です。
+
+27 [h3]
+EN: this #
+JA: this #
+
+28 [p]
+EN: Things get more interesting when you’re inside the body of a method. When the
+method is called on some object and the body is being executed, you often need
+to access that object itself. You can do that using this.
+JA: メソッドの本体の中では、もう少し複雑になります。あるオブジェクトのメソッドが呼び出され、その本体を実行しているときには、そのオブジェクト自身へアクセスしたいことがよくあります。thisを使うと、それができます。
+
+UNCHANGED CODE 12
+
+class Unicorn {
+  name { "Francis" }
+
+  printName() {
+    System.print(this.name) //> Francis
+  }
+}
+
+
+29 [p]
+EN: The this keyword works sort of like a variable, but has special behavior. It
+always refers to the instance whose method is currently being executed. This
+lets you invoke methods on “yourself”.
+JA: thisキーワードは、変数のように働きますが、特別な振る舞いがあります。常に、現在実行しているメソッドのインスタンスを参照します。これにより、「自分自身」のメソッドを呼び出せます。
+
+30 [p]
+EN: It’s an error to refer to this outside of a method. However, it’s perfectly
+fine to use it inside a function declared inside a method. When you do,
+this still refers to the instance whose method is being called:
+JA: メソッドの外でthisを参照すると、エラーになります。しかし、メソッドの中で宣言した関数の中なら、問題なく使えます。その場合も、thisは、呼び出されたメソッドのインスタンスを参照します。
+
+UNCHANGED CODE 13
+
+class Unicorn {
+  name { "Francis" }
+
+  printNameThrice() {
+    (1..3).each {
+      // Use "this" inside the function passed to each().
+      System.print(this.name) //> Francis
+    } //> Francis
+  } //> Francis
+}
+
+
+31 [p]
+EN: This is unlike Lua and JavaScript which can “forget” this when you create a
+callback inside a method. Wren does what you want here and retains the
+reference to the original object.
+JA: これは、メソッドの中でコールバックを作ると、thisを「忘れる」場合があるLuaやJavaScriptとは異なります。Wrenでは、この場面で意図どおり、元のオブジェクトへの参照を保持します。
+
+32 [p]
+EN: (In technical terms, a function’s closure includes this. Wren can do this
+because it makes a distinction between methods and functions.)
+JA: （専門的に言うと、関数のクロージャーにはthisも含まれます。Wrenがこれをできるのは、メソッドと関数を区別しているためです。）
+
+33 [h3]
+EN: Implicit this #
+JA: 暗黙のthis #
+
+34 [p]
+EN: Using this. every time you want to call a method on yourself works, but it’s
+tedious and verbose, which is why some languages don’t require it. You can do a
+“self send” by calling a method (or getter or setter) without any explicit
+receiver:
+JA: 自分自身のメソッドを呼ぶたびにthis.を使うことはできますが、面倒で冗長です。そのため、一部の言語では必須にしていません。明示的なレシーバーなしでメソッド（またはゲッターやセッター）を呼び出すと、「自己への送信」ができます。
+
+UNCHANGED CODE 14
+
+class Unicorn {
+  name { "Francis" }
+
+  printName() {
+    System.print(name) //> Francis
+  }
+}
+
+
+35 [p]
+EN: Code like this gets tricky when there is also a variable outside of the class
+with the same name. Consider:
+JA: クラスの外にも同じ名前の変数があると、このようなコードは複雑になります。次の例を考えてください。
+
+UNCHANGED CODE 15
+
+var name = "variable"
+
+class Unicorn {
+  name { "Francis" }
+
+  printName() {
+    System.print(name) // ???
+  }
+}
+
+
+36 [p]
+EN: Should printName() print “variable” or “Francis”? A method body has a foot in
+each of two worlds. It is surrounded by the lexical scope where it’s defined in
+the program, but it also has the object scope of the methods on this.
+JA: printName()は「variable」と「Francis」のどちらを表示すべきでしょうか？ メソッドの本体は、二つの世界にまたがっています。プログラム内で定義した位置のレキシカルスコープに囲まれていますが、同時に、thisのメソッドからなるオブジェクトスコープも持ちます。
+
+37 [p]
+EN: Which scope wins? Every language has to decide how to handle this and there
+is a surprising plethora of approaches. Wren’s approach to resolving a name
+inside a method works like this:
+JA: どちらのスコープが優先されるのでしょうか？ 各言語は、これをどう扱うか決める必要があり、驚くほど多くの方法があります。Wrenは、メソッド内の名前を次の手順で解決します。
+
+38 [li]
+EN: If there is a local variable inside the method with that name, that wins.
+JA: メソッド内にその名前のローカル変数があれば、それを優先する。
+
+39 [li]
+EN: Else, if the name starts with a lowercase letter, treat it like a method on
+    this.
+JA: そうでなく、名前が小文字で始まるなら、thisのメソッドとして扱う。
+
+40 [li]
+EN: Otherwise, look for a variable with that name in the surrounding scope.
+JA: それ以外なら、周囲のスコープでその名前の変数を探す。
+
+41 [p]
+EN: So, in the above example, we hit case #2 and it prints “Francis”. Distinguishing
+self sends from outer variables based on the case of the first letter in the
+name probably seems weird but it works surprisingly well. Method names are
+lowercase in Wren. Class names are capitalized.
+JA: したがって、上の例では二番目の場合に該当し、「Francis」を表示します。名前の最初の文字の大小によって、自己への送信と外側の変数を区別するのは、奇妙に思えるかもしれませんが、意外にうまく機能します。Wrenのメソッド名は小文字で、クラス名は大文字で始まります。
+
+42 [p]
+EN: Most of the time, when you’re in a method and want to access a name from outside
+of the class, it’s usually the name of some other class. This rule makes that
+work.
+JA: メソッドの中からクラスの外の名前へアクセスしたいとき、その名前はたいてい、別のクラスの名前です。この規則によって、それが機能します。
+
+43 [p]
+EN: Here’s an example that shows all three cases:
+JA: 次は、三つの場合をすべて示す例です。
+
+UNCHANGED CODE 16
+
+var shadowed = "surrounding"
+var lowercase = "surrounding"
+var Capitalized = "surrounding"
+
+class Scope {
+  shadowed { "object" }
+  lowercase { "object" }
+  Capitalized { "object" }
+
+  test() {
+    var shadowed = "local"
+
+    System.print(shadowed) //> local
+    System.print(lowercase) //> object
+    System.print(Capitalized) //> surrounding
+  }
+}
+
+
+44 [p]
+EN: It’s a bit of a strange rule, but Ruby works more or less the same way.
+JA: 少し変わった規則ですが、Rubyも、おおむね同じように動作します。
+
+45 [h2]
+EN: Constructors #
+JA: コンストラクター #
+
+46 [p]
+EN: We’ve seen how to define kinds of objects and how to declare methods on them.
+Our unicorns can prance around, but we don’t actually have any unicorns to do
+it. To create instances of a class, we need a constructor. You define one
+like so:
+JA: オブジェクトの種類を定義し、そのメソッドを宣言する方法を見てきました。ユニコーンは跳ね回れますが、そうするためのユニコーン自体を、まだ持っていません。クラスのインスタンスを作るには、コンストラクターが必要です。次のように定義します。
+
+UNCHANGED CODE 17
+
+class Unicorn {
+  construct new(name, color) {
+    System.print("My name is " + name + " and I am " + color + ".")
+  }
+}
+
+
+47 [p]
+EN: The construct keyword says we’re defining a constructor, and new is its
+name. In Wren, all constructors have names. The word “new” isn’t special to
+Wren, it’s just a common constructor name.
+JA: constructキーワードは、コンストラクターを定義していることを表し、newは、その名前です。Wrenでは、すべてのコンストラクターに名前があります。「new」はWrenで特別な語ではなく、よく使われるコンストラクター名にすぎません。
+
+48 [p]
+EN: To make a unicorn now, we call the constructor method on the class itself:
+JA: ユニコーンを作るには、クラス自身のコンストラクターメソッドを呼び出します。
+
+UNCHANGED CODE 18
+
+var fred = Unicorn.new("Fred", "palomino")
+
+
+49 [p]
+EN: Giving constructors names is handy because it means you can have more than one,
+and each can clarify how it creates the instance:
+JA: コンストラクターに名前を付けると、複数のコンストラクターを持て、それぞれがどのようにインスタンスを作るか明確にできるので、便利です。
+
+UNCHANGED CODE 19
+
+class Unicorn {
+  construct brown(name) {
+    System.print("My name is " + name + " and I am brown.")
+  }
+}
+
+var dave = Unicorn.brown("Dave")
+
+
+50 [p]
+EN: Note that we have to declare a constructor because, unlike some other
+languages, Wren doesn’t give you a default one. This is useful because some
+classes aren’t designed to be constructed. If you have an abstract base class
+that just contains methods to be inherited by other classes, it doesn’t need
+and won’t have a constructor.
+JA: ほかの一部の言語とは異なり、Wrenは既定のコンストラクターを提供しないため、自分で宣言する必要があります。これは、構築することを想定していないクラスもあるので、役立ちます。ほかのクラスが継承するメソッドだけを含む抽象基底クラスなら、コンストラクターは不要で、持つこともありません。
+
+51 [p]
+EN: Like other methods, constructors can obviously have arguments, and can be
+overloaded by arity. A constructor must be a named method with
+a (possibly empty) argument list. Operators, getters, and setters cannot be
+constructors.
+JA: ほかのメソッドと同様、コンストラクターにも当然、引数を渡せ、引数の個数によるオーバーロードもできます。コンストラクターは、空でもよい引数リストを持つ名前付きメソッドでなければなりません。演算子、ゲッター、セッターをコンストラクターにはできません。
+
+52 [p]
+EN: A constructor returns the instance of the class being created, even if you 
+don’t explicitly use return. It is valid to use return inside of a 
+constructor, but it is an error to have an expression after the return.
+That rule applies to return this as well, return handles that implicitly inside
+a constructor, so just return is enough.
+JA: コンストラクターは、returnを明示的に使わなくても、作成しているクラスのインスタンスを返します。コンストラクター内でreturnを使うことはできますが、returnの後に式を書くとエラーになります。この規則はreturn thisにも当てはまります。コンストラクター内では、returnがそれを暗黙に扱うため、returnだけで十分です。
+
+UNCHANGED CODE 20
+
+return          //> valid, returns 'this'
+
+return variable //> invalid
+return null     //> invalid
+return this     //> also invalid
+
+
+53 [p]
+EN: A constructor is actually a pair of methods. You get a method on the class:
+JA: 実際には、コンストラクターは二つのメソッドの組です。クラス側に、次のメソッドができます。
+
+UNCHANGED CODE 21
+
+Unicorn.brown("Dave")
+
+
+54 [p]
+EN: That creates the new instance, then it invokes the initializer on that
+instance. This is where the constructor body you defined gets run.
+JA: これは新しいインスタンスを作り、続いて、そのインスタンスの初期化メソッドを呼び出します。定義したコンストラクター本体を実行するのは、こちらです。
+
+55 [p]
+EN: This distinction is important because it means inside the body of the
+constructor, you can access this, assign fields, call superclass
+constructors, etc.
+JA: この区別は重要です。これにより、コンストラクターの本体の中でthisへアクセスし、フィールドへ代入し、スーパークラスのコンストラクターを呼び出すことなどができます。
+
+56 [h2]
+EN: Fields #
+JA: フィールド #
+
+57 [p]
+EN: All state stored in instances is stored in fields. Each field has a name
+that starts with an underscore.
+JA: インスタンスに保存する状態は、すべてフィールドに保存します。各フィールドの名前は、アンダースコアで始まります。
+
+UNCHANGED CODE 22
+
+class Rectangle {
+  area { _width * _height }
+
+  // Other stuff...
+}
+
+
+58 [p]
+EN: Here, _width and _height in the area getter refer
+to fields on the rectangle instance. You can think of them like this.width
+and this.height in other languages.
+JA: ここでは、areaゲッター内の_widthと_heightは、長方形のインスタンスのフィールドを参照します。ほかの言語のthis.widthやthis.heightのようなものと考えられます。
+
+59 [p]
+EN: When a field name appears, Wren looks for the nearest enclosing class and looks
+up the field on the instance of that class. Field names cannot be used outside
+of an instance method. They can be used inside a function
+in a method. Wren will look outside any nested functions until it finds an
+enclosing method.
+JA: フィールド名が現れると、Wrenは、最も内側の、その位置を囲むクラスを探し、そのクラスのインスタンスでフィールドを探します。フィールド名は、インスタンスメソッドの外では使えません。メソッド内の関数の中では使えます。Wrenは、入れ子になった関数の外側を、その位置を囲むメソッドが見つかるまで探します。
+
+60 [p]
+EN: Unlike variables, fields are implicitly declared by simply
+assigning to them. If you access a field before it has been initialized, its
+value is null.
+JA: 変数とは異なり、フィールドは、代入するだけで暗黙に宣言されます。初期化する前にフィールドへアクセスすると、その値はnullです。
+
+61 [h3]
+EN: Encapsulation #
+JA: カプセル化 #
+
+62 [p]
+EN: All fields are private in Wren—an object’s fields can only be directly
+accessed from within methods defined on the object’s class. 
+JA: Wrenでは、すべてのフィールドは非公開です。オブジェクトのフィールドへ直接アクセスできるのは、そのオブジェクトのクラスで定義したメソッドの内部だけです。
+
+63 [p]
+EN: In short, if you want to make a property of an object visible,
+you need to define a getter to expose it:
+JA: つまり、オブジェクトのプロパティーを外から見えるようにするには、それを公開するゲッターを定義する必要があります。
+
+UNCHANGED CODE 23
+
+class Rectangle {
+  width { _width }
+  height { _height }
+
+  // ...
+}
+
+
+64 [p]
+EN: To allow outside code to modify the field,
+you need to provide setters to provide access:
+JA: 外側のコードからフィールドを変更できるようにするには、アクセス用のセッターを提供する必要があります。
+
+UNCHANGED CODE 24
+
+class Rectangle {
+  width=(value) { _width = value }
+  height=(value) { _height = value }
+}
+
+
+65 [p]
+EN: This might be different from what you’re used to, so here are two important facts:
+JA: なじみのある動作とは違うかもしれませんので、重要な二つの事実を挙げます。
+
+66 [li]
+EN: You can’t access fields from a base class.
+JA: 基底クラスのフィールドにはアクセスできません。
+
+67 [li]
+EN: You can’t access fields on another instance of your own class.
+JA: 自分と同じクラスの別インスタンスのフィールドにはアクセスできません。
+
+68 [p]
+EN: Here is an example in code:
+JA: 次は、コードによる例です。
+
+UNCHANGED CODE 25
+
+class Shape {
+  construct new() {
+    _shape = "none"
+  }
+}
+
+class Rectangle is Shape {
+  construct new() {
+    //This will print null!
+    //_shape from the parent class is private,
+    //we are reading `_shape` from `this`,
+    //which has not been set, so returns null.
+    System.print("I am a %(_shape)")
+
+    //a local variable, all variables are private
+    _width = 10
+    var other = Rectangle.new()
+
+    //other._width is not accessible from here,
+    //even though we are also a rectangle. The field
+    //is private, and other._width is invalid syntax!
+  }
+}
+...
+
+
+69 [p]
+EN: One thing we’ve learned in the past forty years of software engineering is that
+encapsulating state tends to make code easier to maintain, so Wren defaults to
+keeping your object’s state pretty tightly bundled up. Don’t feel that you have
+to or even should define getters or setters for most of your object’s fields.
+JA: 過去40年のソフトウェア工学で学んだことの一つは、状態をカプセル化するとコードを保守しやすくなる傾向があることです。そのため、Wrenでは、既定でオブジェクトの状態をかなり厳密に閉じ込めます。オブジェクトのフィールドの大半について、ゲッターやセッターを定義しなければならない、あるいは定義すべきだと考える必要はありません。
+
+70 [h2]
+EN: Metaclasses and static members #
+JA: メタクラスと静的メンバー #
+
+71 [p]
+EN: TODO
+JA: TODO
+
+72 [h3]
+EN: Static fields #
+JA: 静的フィールド #
+
+73 [p]
+EN: A name that starts with two underscores is a static field. They work
+similar to fields except the data is stored on the class itself, and
+not the instance. They can be used in both instance and static methods.
+JA: アンダースコア二つで始まる名前は、静的フィールドです。フィールドと同様に働きますが、データはインスタンスではなく、クラス自身に保存します。インスタンスメソッドと静的メソッドの両方で使えます。
+
+UNCHANGED CODE 26
+
+class Foo {
+  construct new() {}
+
+  static setFromStatic(a) { __a = a }
+  setFromInstance(a) { __a = a }
+
+  static printFromStatic() {
+    System.print(__a)
+  }
+
+  printFromInstance() {
+    System.print(__a)
+  }
+}
+
+
+74 [p]
+EN: Just like instance fields, static fields are initially null:
+JA: インスタンスフィールドと同様、静的フィールドの初期値はnullです。
+
+UNCHANGED CODE 27
+
+Foo.printFromStatic() //> null
+
+
+75 [p]
+EN: They can be used from static methods:
+JA: 静的メソッドから使えます。
+
+UNCHANGED CODE 28
+
+Foo.setFromStatic("first")
+Foo.printFromStatic() //> first
+
+
+76 [p]
+EN: And also instance methods. When you do so, there is still only one static field
+shared among all instances of the class:
+JA: インスタンスメソッドからも使えます。その場合も、クラスのすべてのインスタンスで共有する静的フィールドは一つだけです。
+
+UNCHANGED CODE 29
+
+var foo1 = Foo.new()
+var foo2 = Foo.new()
+
+foo1.setFromInstance("second")
+foo2.printFromInstance() //> second
+
+
+77 [h2]
+EN: Inheritance #
+JA: 継承 #
+
+78 [p]
+EN: A class can inherit from a “parent” or superclass. When you invoke a method
+on an object of some class, if it can’t be found, it walks up the chain of
+superclasses looking for it there.
+JA: クラスは、「親」またはスーパークラスから継承できます。あるクラスのオブジェクトでメソッドを呼び出し、それが見つからない場合は、スーパークラスの連鎖を上へたどって探します。
+
+79 [p]
+EN: By default, any new class inherits from Object, which is the superclass from
+which all other classes ultimately descend. You can specify a different parent
+class using is when you declare the class:
+JA: 既定では、新しいクラスはObjectを継承します。Objectは、ほかのすべてのクラスが最終的に派生するスーパークラスです。クラスの宣言時にisを使うと、別の親クラスを指定できます。
+
+UNCHANGED CODE 30
+
+class Pegasus is Unicorn {}
+
+
+80 [p]
+EN: This declares a new class Pegasus that inherits from Unicorn.
+JA: これで、Unicornを継承する、新しいPegasusクラスを宣言します。
+
+81 [p]
+EN: Note that you should not create classes that inherit from the built-in types
+(Bool, Num, String, Range, List). The built-in types expect their internal bit
+representation to be very specific and get horribly confused when you invoke one
+of the inherited built-in methods on the derived type.
+JA: 組み込み型（Bool、Num、String、Range、List）を継承するクラスを作るべきではない点に注意してください。組み込み型は、内部のビット表現が非常に特定の形であることを前提とします。派生型で、継承した組み込みメソッドを呼び出すと、ひどく混乱してしまいます。
+
+82 [p]
+EN: The metaclass hierarchy does not parallel the regular class hierarchy. So, if
+Pegasus inherits from Unicorn, Pegasus’s metaclass does not inherit from
+Unicorn’s metaclass. In more prosaic terms, this means that static methods are
+not inherited.
+JA: メタクラスの階層は、通常のクラス階層と並行しません。したがって、PegasusがUnicornを継承していても、PegasusのメタクラスはUnicornのメタクラスを継承しません。より平易に言うと、静的メソッドは継承しません。
+
+UNCHANGED CODE 31
+
+class Unicorn {
+  // Unicorns cannot fly. :(
+  static canFly { false }
+}
+
+class Pegasus is Unicorn {}
+
+Pegasus.canFly //! Static methods are not inherited.
+
+
+83 [p]
+EN: This also means constructors are not inherited:
+JA: これは、コンストラクターも継承しないという意味です。
+
+UNCHANGED CODE 32
+
+class Unicorn {
+  construct new(name) {
+    System.print("My name is " + name + ".")
+  }
+}
+
+class Pegasus is Unicorn {}
+
+Pegasus.new("Fred") //! Pegasus does not define new().
+
+
+84 [p]
+EN: Each class gets to control how it may be constructed independently of its base
+classes. However, constructor initializers are inherited since those are
+instance methods on the new object.
+JA: 各クラスは、基底クラスから独立して、自分をどのように構築できるか制御します。ただし、コンストラクターの初期化メソッドは、新しいオブジェクトのインスタンスメソッドなので、継承します。
+
+85 [p]
+EN: This means you can do super calls inside a constructor:
+JA: つまり、コンストラクター内でsuperの呼び出しができます。
+
+UNCHANGED CODE 33
+
+class Unicorn {
+  construct new(name) {
+    System.print("My name is " + name + ".")
+  }
+}
+
+class Pegasus is Unicorn {
+  construct new(name) {
+    super(name)
+  }
+}
+
+Pegasus.new("Fred") //> My name is Fred
+
+
+86 [h2]
+EN: Super #
+JA: Super #
+
+87 [p]
+EN: TODO: Integrate better into page. Should explain this before mentioning
+super above.
+JA: TODO：ページによりよく組み込む。上でsuperに言及する前に、これを説明するべき。
+
+88 [p]
+EN: Sometimes you want to invoke a method on yourself, but using methods defined in
+one of your superclasses. You typically do this in
+an overridden method when you want to access the original method being
+overridden.
+JA: 自分自身のメソッドを呼び出しつつ、スーパークラスの一つで定義したメソッドを使いたい場合があります。通常は、オーバーライドしたメソッドから、オーバーライド元のメソッドにアクセスしたいときに行います。
+
+89 [p]
+EN: To do that, you can use the special super keyword as the receiver in a method
+call:
+JA: そのためには、メソッド呼び出しのレシーバーとして、特別なsuperキーワードを使えます。
+
+UNCHANGED CODE 34
+
+class Base {
+  method() {
+    System.print("base method")
+  }
+}
+
+class Derived is Base {
+  method() {
+    super.method() //> base method
+  }
+}
+
+
+90 [p]
+EN: You can also use super without a method name inside a constructor to invoke a
+base class constructor:
+JA: コンストラクター内では、メソッド名なしのsuperを使って、基底クラスのコンストラクターを呼び出すこともできます。
+
+UNCHANGED CODE 35
+
+class Base {
+  construct new(arg) {
+    System.print("base got " + arg)
+  }
+}
+
+class Derived is Base {
+  construct new() {
+    super("value") //> base got value
+  }
+}
+
+
+91 [h2]
+EN: Attributes #
+JA: 属性 #
+
+92 [p]
+EN: experimental stage: subject to minor changes
+JA: 実験段階：小さな変更が加わる可能性があります
+
+93 [p]
+EN: A class and methods within a class can be tagged with ‘meta attributes’.
+JA: クラスや、クラス内のメソッドには、「メタ属性」を付けられます。
+
+94 [p]
+EN: Like this:
+JA: 次のように書きます。
+
+UNCHANGED CODE 36
+
+#hidden = true
+class Example {}
+
+
+95 [p]
+EN: These attributes are metadata, they give you a way to annotate and store
+any additional information about a class, which you can optionally access at runtime.
+This information can also be used by external tools, to provide additional
+hints and information from code to the tool.
+JA: これらの属性はメタデータです。クラスについての任意の追加情報を注記し、保存する方法を提供し、必要に応じて実行時にアクセスできます。この情報は外部ツールでも利用でき、コードからツールへ追加のヒントや情報を提供できます。
+
+96 [p]
+EN: 
+Since this feature has just been introduced, take note.
+JA: この機能は導入されたばかりなので、注意してください。
+
+97 [p]
+EN: Currently there are no attributes with a built-in meaning. 
+Attributes are user-defined metadata. This may not remain 
+true as some may become well defined through convention or potentially
+through use by Wren itself. 
+
+JA: 現時点では、組み込みの意味を持つ属性はありません。属性は、ユーザーが定義するメタデータです。ただし、慣例や、Wren自身による利用によって明確に定義される属性が出てくる可能性があり、この状態が続くとは限りません。
+
+98 [p]
+EN: Attributes are placed before a class or method definition,
+and use the # hash/pound symbol. 
+JA: 属性は、クラスまたはメソッドの定義の前に置き、#のハッシュ記号を使います。
+
+99 [p]
+EN: They can be 
+JA: 次の形式を使えます。
+
+100 [li]
+EN: a #key on it’s own
+JA: #keyだけ
+
+101 [li]
+EN: a #key = value
+JA: #key = value
+
+102 [li]
+EN: a #group(with, multiple = true, keys = "value")
+JA: #group(with, multiple = true, keys = "value")
+
+103 [p]
+EN: An attribute key can only be a Name. This is the same type of name 
+as a method name, a class name or variable name, an identifier that matches
+the Wren identifier rules. A name results in a String value at runtime.
+JA: 属性のキーに使えるのは、Nameだけです。これは、メソッド名、クラス名、変数名と同じ種類の名前で、Wrenの識別子の規則に従う識別子です。名前は、実行時にはStringの値になります。
+
+104 [p]
+EN: An attribute value can be any of these literal values: Name, String, Bool, Num.
+Values cannot contain expressions, just a value, there is no compile time 
+evaluation.
+JA: 属性の値には、Name, String, Bool, Numというリテラル値のいずれかを使えます。値には式を含められず、値だけを指定します。コンパイル時の評価はありません。
+
+105 [p]
+EN: Groups can span multiple lines, methods have their own attributes, and duplicate
+keys are valid.
+JA: グループは複数行にまたがれます。メソッドには独自の属性があり、キーの重複も有効です。
+
+UNCHANGED CODE 37
+
+#key
+#key = value
+#group(
+  multiple,
+  lines = true,
+  lines = 0
+)
+class Example {
+  #test(skip = true, iterations = 32)
+  doStuff() {}
+}
+
+
+106 [h3]
+EN: Accessing attributes at runtime #
+JA: 実行時に属性へアクセスする #
+
+107 [p]
+EN: By default, attributes are compiled out and ignored.
+JA: 既定では、属性はコンパイル時に除外して無視します。
+
+108 [p]
+EN: For an attribute to be visible at runtime, mark it for runtime
+access using an exclamation:
+JA: 属性を実行時に見えるようにするには、感嘆符を使って、実行時アクセスの対象として指定します。
+
+UNCHANGED CODE 38
+
+#doc = "not runtime data"
+#!runtimeAccess = true
+#!maxIterations = 16
+
+
+109 [p]
+EN: Attributes at runtime are stored on the class. You can access them via 
+YourClass.attributes. The attributes field on a class will 
+be null if a class has no attributes or if it’s attributes aren’t marked.
+JA: 実行時の属性は、クラスに保存します。YourClass.attributesでアクセスできます。クラスに属性がない場合、または実行時アクセスの指定がない場合、そのクラスのattributesフィールドはnullになります。
+
+110 [p]
+EN: If the class contains class or method attributes, it will be an object with
+two getters:
+JA: クラスにクラス属性またはメソッド属性があれば、これは二つのゲッターを持つオブジェクトになります。
+
+111 [li]
+EN: YourClass.attributes.self for the class attributes
+JA: クラス属性のためのYourClass.attributes.self
+
+112 [li]
+EN: YourClass.attributes.methods for the method attributes
+JA: メソッド属性のためのYourClass.attributes.methods
+
+113 [p]
+EN: Attributes are stored by group in a regular Wren Map. 
+Keys that are not grouped, use null as the group key.
+JA: 属性は、通常のWren Map内に、グループごとに保存します。グループに属さないキーでは、グループのキーとしてnullを使います。
+
+114 [p]
+EN: Values are stored in a list, since duplicate keys are allowed, multiple
+values need to be stored. They’re stored in order of definition.
+JA: キーの重複が許されるため、複数の値を保存する必要があり、値はリストに保存します。保存順は、定義した順です。
+
+115 [p]
+EN: Method attributes are stored in a map by method signature, and each method
+has it’s own attributes that match the above structure. The method signature
+is prefixed by static or foreign static as needed.
+JA: メソッド属性は、メソッドのシグネチャをキーとするマップに保存します。各メソッドには、上の構造に合う独自の属性があります。必要に応じて、メソッドのシグネチャの前にstaticまたはforeign staticを付けます。
+
+116 [p]
+EN: Let’s see what that looks like:
+JA: どのような形になるか、見てみましょう。
+
+UNCHANGED CODE 39
+
+// Example.attributes.self = 
+// { 
+//   null: { "key":[null] }, 
+//   group: { "key":[value, 32, false] }
+// }
+
+#!key
+#ignored //compiled out
+#!group(key=value, key=32, key=false)
+class Example {
+  #!getter
+  getter {}
+
+  // { regular(_,_): { regular:[null] } }
+  #!regular
+  regular(arg0, arg1) {}
+
+  // { static other(): { isStatic:[true] } }
+  #!isStatic = true
+  static other()
+  
+  // { foreign static example(): { isForeignStatic:[32] } }
+  #!isForeignStatic=32
+  foreign static example()
+}
+
+
+117 [p]
+EN: 
+Concurrency →
+← Functions
+JA: 並行処理 →← 関数

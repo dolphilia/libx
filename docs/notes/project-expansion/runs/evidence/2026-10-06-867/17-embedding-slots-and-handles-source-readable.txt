@@ -1,0 +1,201 @@
+1 [h1] Slots and Handles
+
+2 [p] With ⟦CODE0⟧, we can execute code, but that code can’t do anything
+particularly interesting. By default, the VM is isolated from the rest of the
+world, so pretty much all it can do is turn your laptop into a lap warmer.
+
+3 [p] To make our Wren code <em>useful</em>, the VM needs to communicate with the outside
+world. Wren uses a single unified set of functions for passing data into and out
+of the VM. These functions are based on two fundamental concepts: <strong>slots</strong> and
+<strong>handles</strong>.
+
+4 [h2] The Slot Array <a class="header-anchor" href="#the-slot-array" name="the-slot-array">#</a>
+
+5 [p] When you want to send data to Wren, read data from it, or generally monkey
+around with Wren objects from C, you do so by going through an array of slots.
+Think of it as a shared message board that both the VM and your C code leave
+notes on for the other side to process.
+
+6 [p] The array is zero-based, and each slot can hold a value of any type. It is
+dynamically sized, but it’s your responsibility to ensure there are enough slots
+<em>before</em> you use them. You do this by calling:
+
+7 [p] This grows the slot array if needed to ensure that many slots are available. If
+it’s already big enough, this does nothing. You’ll typically call this once
+before populating the slots with data that you want to send to Wren.
+
+8 [p] After you ensure an array of slots, you can only rely on them being there until
+you pass control back to Wren. That includes calling ⟦CODE0⟧ or
+⟦CODE1⟧, or returning from a <a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">foreign method</a>.
+
+9 [p] If you read or write from a slot that you haven’t ensured is valid, Wren makes
+no guarantees about what will happen. I’ve heard rumors of smoke and feathers
+flying out of a user’s computer.
+
+10 [p] If you want to see how big the slot array is, use:
+
+11 [p] It returns the number of slots in the array. Note that this may be higher than
+the size you’ve ensured. Wren reuses the memory for this array when possible,
+so you may get one bigger than you need if it happened to be laying around.
+
+12 [p] When Wren <a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">calls your C code</a> and passes data to you, it ensures there are
+enough slots for the objects it is sending you.
+
+13 [h3] Writing slots <a class="header-anchor" href="#writing-slots" name="writing-slots">#</a>
+
+14 [p] Once you have some slots, you store data in them using a number of functions all
+named ⟦CODE0⟧ where ⟦CODE1⟧ is the kind of data. We’ll start with
+the simple ones:
+
+15 [p] Each of these takes a primitive C value and converts it to the corresponding
+<a href="/docs/wren/v0-4-0/en/01-guide/04-values/">Wren value</a>. (Since Wren’s <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#numbers">native number type</a> <em>is</em> a double, there’s not
+really much <em>conversion</em> going on, but you get the idea.)
+
+16 [p] You can also pass string data to Wren:
+
+17 [p] Both of these copy the bytes into a new <a href="/docs/wren/v0-4-0/en/01-guide/04-values/#strings">String</a> object managed by Wren’s
+garbage collector, so you can free your copy of it after you call this. The
+difference between the two is that ⟦CODE0⟧ takes an explicit
+length. Since Wren strings may contain arbitrary byte values, including the null
+byte, this lets you pass those in. It’s also a little faster to use this for
+regular strings if you happen to know the length. The latter calculates the
+length of the string using ⟦CODE1⟧.
+
+18 [h3] Reading slots <a class="header-anchor" href="#reading-slots" name="reading-slots">#</a>
+
+19 [p] You can, of course, also pull data out of slots. Here are the simple ones:
+
+20 [p] These take a Wren value of the corresponding type and convert it to its raw C
+representation. For strings, we have:
+
+21 [p] These return a pointer to the first byte of the string. If you want to know the
+length, the latter stores it in the variable pointed to by ⟦CODE0⟧. Both of
+these return a direct pointer to the bytes managed by Wren. You should not hold
+on to this pointer for long. Wren does not promise that it won’t move or free
+the data.
+
+22 [p] With these functions, you are going from dynamically typed Wren data to
+statically typed C. It’s up to <em>you</em> to ensure that you read a value as the
+correct type. If you read a number from a slot that currently holds a string,
+you’re gonna have a bad time.
+
+23 [p] Fortunately, you usually know what type of data you have in a slot. If not, you
+can ask:
+
+24 [p] This returns an enum defining what type of value is in the slot. It only covers
+the primitive values that are supported by the C API. Things like ranges and
+instances of classes come back as ⟦CODE0⟧. If you want to move that
+kind of data between Wren and C, you’ll have to pull the object apart into
+simple primitive values first or use a <a href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">foreign class</a>.
+
+25 [h3] Looking up variables <a class="header-anchor" href="#looking-up-variables" name="looking-up-variables">#</a>
+
+26 [p] There are a few other utility functions that move data into and out of slots.
+Here’s the first:
+
+27 [p] This looks up a top level variable with the given name in the module with the
+given name and stores its value in the given slot. Note that classes are just
+objects stored in variables too, so you can use this to look up a class by its
+name. Handy for calling static methods on it.
+
+28 [p] Like any method that works with strings, this one is a bit slow. It has to hash
+the name and look it up in the module’s string table. You might want to avoid
+calling this in the middle of a hot loop where performance is critical. Instead,
+it’s faster to look up the variable once outside the loop and store a reference
+to the object using a <a href="#handles">handle</a>.
+
+29 [h3] Working with lists <a class="header-anchor" href="#working-with-lists" name="working-with-lists">#</a>
+
+30 [p] The slot array is fine for moving a fixed number of objects between Wren and
+C, but sometimes you need to shuttle a larger or dynamically-sized ball of
+stuff. <a href="/docs/wren/v0-4-0/en/01-guide/05-lists/">List objects</a> work well for that, so the C API lets you work
+with them directly.
+
+31 [p] You can create a new empty list from C using:
+
+32 [p] It stores the resulting list in the given slot. If you have a list in a
+slot—either one you created from C or from Wren—you can add elements
+to it using:
+
+33 [p] That’s a lot of int parameters:
+
+34 [li] 
+<p>⟦CODE0⟧ is the slot where the list object is stored. That’s the list you’ll
+  be modifying. If you created the list from C, it will be the slot you passed
+  to ⟦CODE1⟧.</p>
+
+
+35 [li] 
+<p>⟦CODE0⟧ is the index within the list where you want to insert the element.
+  Just like from within Wren, you can use a negative number to count back from
+  the end, so ⟦CODE1⟧ appends to the list.</p>
+
+
+36 [li] 
+<p>⟦CODE0⟧ identifies the slot where the value you want to insert in the
+  list can be found.</p>
+
+
+37 [p] This API means getting a value from C into a list is a two step operation. First
+you move the value into a slot, then you take it from the slot and insert it in
+the list. This is kind of tedious, but it lets us use the same set of functions
+for moving values into slots of each primitive type. Otherwise, we’d need
+⟦CODE0⟧, ⟦CODE1⟧, etc.
+
+38 [h2] Handles <a class="header-anchor" href="#handles" name="handles">#</a>
+
+39 [p] Slots are pretty good for shuttling primitive data between C and Wren, but they
+have two limitations:
+
+40 [li] 
+<p><strong>They are short-lived.</strong> As soon as you execute some more Wren code, the
+    slot array is invalidated. You can’t use a slot to persistently keep track
+    of some object.</p>
+
+
+41 [li] 
+<p><strong>They only support primitive types.</strong> A slot can hold a value of any type,
+    but the C API we’ve seen so far doesn’t let you <em>do</em> anything with values
+    that aren’t simple primitive ones. If you want to grab a reference to,
+    say, an instance of some class, how do you do it?</p>
+
+
+42 [p] To address those, we have handles. A handle wraps a reference to an object of
+any kind—strings, numbers, instances of classes, collections, whatever.
+You create a handle using this:
+
+43 [p] This takes the object stored in the given slot, creates a new WrenHandle to wrap
+it, and returns a pointer to it back to you. You can send that wrapped object
+back to Wren by calling:
+
+44 [p] Note that this doesn’t invalidate your WrenHandle. You can still keep using it.
+
+45 [h3] Retaining and releasing handles <a class="header-anchor" href="#retaining-and-releasing-handles" name="retaining-and-releasing-handles">#</a>
+
+46 [p] A handle is an opaque wrapper around an object of any type, but just as
+important, it’s a <em>persistent</em> one. When Wren gives you a pointer to a
+WrenHandle, it guarantees that that pointer remains valid. You can keep it
+around as long as you want. Even if a garbage collection occurs, Wren will
+ensure the handle and the object it wraps are kept safely in memory.
+
+47 [p] Internally, Wren keeps a list of all of the WrenHandles that have been created.
+That way, during garbage collection, it can find them all and make sure their
+objects aren’t freed. But what if you don’t want it to be kept around any more?
+Since C relies on manual memory management, WrenHandle does too. When you are
+done with one, you must explicitly release it by calling:
+
+48 [p] This does not immediately delete the wrapped object—after all, there may
+be other references to the same object in the program. It just invalidates the
+WrenHandle wrapper itself. After you call this, you cannot use that pointer
+again.
+
+49 [p] You must release every WrenHandle you’ve created before shutting down the VM.
+Wren warns you if you don’t, since it implies you’ve probably leaked a resource
+somewhere.
+
+50 [p] Now we know how to pass values between Wren and C, but we don’t know how to
+actually <em>do</em> anything with them. Next, we’ll learn how to use slots to pass
+parameters to a Wren method from C…
+
+51 [p] <a class="right" href="/docs/wren/v0-4-0/en/01-guide/19-embedding-calling-wren-from-c/">Calling Wren from C →</a>
+<a href="/docs/wren/v0-4-0/en/01-guide/16-embedding/">← Introduction</a>

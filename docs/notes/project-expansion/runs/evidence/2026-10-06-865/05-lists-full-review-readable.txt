@@ -1,0 +1,219 @@
+1 [h1]
+EN: Lists
+JA: リスト
+
+2 [p]
+EN: A list is a compound object that holds a collection of elements identified by
+integer index. You can create a list by placing a sequence of comma-separated
+expressions inside square brackets:
+JA: リストは、整数のインデックスで識別する要素の集まりを格納する複合オブジェクトです。コンマで区切った一連の式を角括弧で囲むと、リストを作成できます。
+
+UNCHANGED CODE 1
+
+[1, "banana", true]
+
+
+3 [p]
+EN: Here, we’ve created a list of three elements. Notice that the elements don’t
+have to be the same type.
+JA: ここでは、要素が三つのリストを作りました。要素の型をそろえる必要はない点に注意してください。
+
+4 [h2]
+EN: Accessing elements #
+JA: 要素へのアクセス #
+
+5 [p]
+EN: You can access an element from a list by calling the subscript
+operator on it with the index of the
+element you want. Like most languages, indexes start at zero:
+JA: 目的の要素のインデックスを渡して、リストの添字演算子を呼び出すと、要素にアクセスできます。多くの言語と同様、インデックスはゼロから始まります。
+
+UNCHANGED CODE 2
+
+var trees = ["cedar", "birch", "oak", "willow"]
+System.print(trees[0]) //> cedar
+System.print(trees[1]) //> birch
+
+
+6 [p]
+EN: Negative indices counts backwards from the end:
+JA: 負のインデックスは、末尾から逆向きに数えます。
+
+UNCHANGED CODE 3
+
+System.print(trees[-1]) //> willow
+System.print(trees[-2]) //> oak
+
+
+7 [p]
+EN: It’s a runtime error to pass an index outside of the bounds of the list. If you
+don’t know what those bounds are, you can find out using count:
+JA: リストの範囲外のインデックスを渡すと、実行時エラーになります。範囲が分からない場合は、countで調べられます。
+
+UNCHANGED CODE 4
+
+System.print(trees.count) //> 4
+
+
+8 [h2]
+EN: Slices and ranges #
+JA: スライスと範囲 #
+
+9 [p]
+EN: Sometimes you want to copy a chunk of elements from a list. You can do that by
+passing a range to the subscript operator, like so:
+JA: リストから、まとまった要素をコピーしたいことがあります。次のように、添字演算子に範囲を渡すと、それができます。
+
+UNCHANGED CODE 5
+
+System.print(trees[1..2]) //> [birch, oak]
+
+
+10 [p]
+EN: This returns a new list containing the elements of the original list whose
+indices are within the given range. Both inclusive and exclusive ranges work
+and do what you expect.
+JA: 指定した範囲内のインデックスを持つ元のリストの要素を含んだ、新しいリストが返ります。終点を含む範囲でも、含まない範囲でも、予想どおりに動作します。
+
+11 [p]
+EN: Negative bounds also work like they do when passing a single number, so to copy
+a list, you can just do:
+JA: 単一の数値を渡す場合と同様、範囲の端点にも負の値を使えます。したがって、リストをコピーするには次のように書くだけです。
+
+UNCHANGED CODE 6
+
+trees[0..-1]
+
+
+12 [h2]
+EN: Adding elements #
+JA: 要素の追加 #
+
+13 [p]
+EN: Lists are mutable, meaning their contents can be changed. You can swap out an
+existing element in the list using the subscript setter:
+JA: リストは可変で、内容を変更できます。添字セッターを使うと、リスト内の既存の要素を置き換えられます。
+
+UNCHANGED CODE 7
+
+trees[1] = "spruce"
+System.print(trees[1]) //> spruce
+
+
+14 [p]
+EN: It’s an error to set an element that’s out of bounds. To grow a list, you can
+use add to append a single item to the end:
+JA: 範囲外の要素を設定しようとすると、エラーになります。リストを大きくするには、addで一つの項目を末尾に追加できます。
+
+UNCHANGED CODE 8
+
+trees.add("maple")
+System.print(trees.count) //> 5
+
+
+15 [p]
+EN: You can insert a new element at a specific position using insert:
+JA: insertを使うと、指定した位置に新しい要素を挿入できます。
+
+UNCHANGED CODE 9
+
+trees.insert(2, "hickory")
+
+
+16 [p]
+EN: The first argument is the index to insert at, and the second is the value to
+insert. All elements following the inserted one will be pushed down to
+make room for it.
+JA: 最初の引数は挿入先のインデックス、二番目の引数は挿入する値です。場所を空けるため、挿入した要素以降のすべての要素を後ろへずらします。
+
+17 [p]
+EN: It’s valid to “insert” after the last element in the list, but only right
+after it. Like other methods, you can use a negative index to count from the
+back. Doing so counts back from the size of the list after it’s grown by one:
+JA: リストの最後の要素の後に「挿入」することもできますが、その直後に限ります。ほかのメソッドと同様、負のインデックスで末尾から数えることもできます。この場合、一つ要素が増えた後のリストの大きさを基準に、後ろから数えます。
+
+UNCHANGED CODE 10
+
+var letters = ["a", "b", "c"]
+letters.insert(3, "d")   // OK: inserts at end.
+System.print(letters)    //> [a, b, c, d]
+letters.insert(-2, "e")  // Counts back from size after insert.
+System.print(letters)    //> [a, b, c, e, d]
+
+
+18 [h2]
+EN: Adding lists together #
+JA: リストの連結 #
+
+19 [p]
+EN: Lists have the ability to be added together via the + operator. This is often known as concatenation.
+JA: リスト同士は+演算子で足し合わせられます。この操作は、一般に連結と呼ばれます。
+
+UNCHANGED CODE 11
+
+var letters = ["a", "b", "c"]
+var other = ["d", "e", "f"]
+var combined = letters + other
+System.print(combined)  //> [a, b, c, d, e, f]
+
+
+20 [h2]
+EN: Removing elements #
+JA: 要素の削除 #
+
+21 [p]
+EN: The opposite of insert is removeAt. It removes a single element from a
+given position in the list. 
+JA: insertの反対の操作はremoveAtです。リスト内の指定した位置から、一つの要素を削除します。
+
+22 [p]
+EN: To remove a specific value instead, use remove. The first value that 
+matches using regular equality will be removed.
+JA: 代わりに特定の値を削除するには、removeを使います。通常の等価比較で最初に一致する値を削除します。
+
+23 [p]
+EN: In both cases, all following items are shifted up to fill in the gap.
+JA: どちらの場合も、後続のすべての項目を前へずらし、空いた場所を埋めます。
+
+UNCHANGED CODE 12
+
+var letters = ["a", "b", "c", "d"]
+letters.removeAt(1)
+System.print(letters) //> [a, c, d]
+letters.remove("a")
+System.print(letters) //> [c, d]
+
+
+24 [p]
+EN: Both the remove and removeAt method return the removed item:
+JA: removeとremoveAtのメソッドは、どちらも削除した項目を返します。
+
+UNCHANGED CODE 13
+
+System.print(letters.removeAt(1)) //> c
+
+
+25 [p]
+EN: If remove couldn’t find the value in the list, it returns null:
+JA: removeがリスト内で値を見つけられなかった場合は、nullを返します。
+
+UNCHANGED CODE 14
+
+System.print(letters.remove("not found")) //> null
+
+
+26 [p]
+EN: If you want to remove everything from the list, you can clear it:
+JA: リストからすべてを削除したい場合は、clearで空にできます。
+
+UNCHANGED CODE 15
+
+trees.clear()
+System.print(trees) //> []
+
+
+27 [p]
+EN: 
+Maps →
+← Values
+JA: マップ →← 値

@@ -1,0 +1,151 @@
+1 [h1] Configuring the VM
+
+2 [p] When you create a Wren VM, you tweak it by passing in a pointer to a
+WrenConfiguration structure. Since Wren has no global state, you can configure
+each VM differently if your application happens to run multiple.
+
+3 [p] The struct looks like:
+
+4 [p] Most fields have useful defaults, which you can (and should) initialize by
+calling:
+
+5 [p] Calling this ensures that your VM doesn’t get uninitialized configuration when
+new fields are added to WrenConfiguration. Here is what each field does, roughly
+categorized:
+
+6 [h2] Binding <a class="header-anchor" href="#binding" name="binding">#</a>
+
+7 [p] The VM is isolated from the outside world. These callbacks let the VM request
+access to imported code and foreign functionality.
+
+8 [h3] <strong>⟦CODE0⟧</strong> <a class="header-anchor" href="#loadmodulefn" name="loadmodulefn">#</a>
+
+9 [p] This is the callback Wren uses to load an imported module. The VM itself does
+not know how to talk to the file system, so when an ⟦CODE0⟧ statement is
+executed, it relies on the host application to locate and read the source code
+for a module.
+
+10 [p] The signature of this function is:
+
+11 [p] When a module is imported, Wren calls this and passes in the module’s name. The
+host should return the source code for that module in a ⟦CODE0⟧ struct.
+
+12 [p] The module loader is only be called once for any given module name. Wren caches
+the result internally so subsequent imports of the same module use the
+previously loaded code.
+
+13 [p] If your host application isn’t able to load a module with some name, it should
+make sure the ⟦CODE0⟧ value is ⟦CODE1⟧ when returned. Wren will then report that as a runtime error.
+
+14 [p] If you don’t use any ⟦CODE0⟧ statements, you can leave the ⟦CODE1⟧ field in
+the configuration set to ⟦CODE2⟧ (the default).
+
+15 [p] Additionally, the ⟦CODE0⟧ allows us to add a callback for when Wren is 
+done with the ⟦CODE1⟧, so we can free the memory if needed.
+
+16 [h3] <strong>⟦CODE0⟧</strong> <a class="header-anchor" href="#bindforeignmethodfn" name="bindforeignmethodfn">#</a>
+
+17 [p] The callback Wren uses to find a foreign method and bind it to a class. See
+<a href="/docs/wren/v0-4-0/en/01-guide/18-embedding-calling-c-from-wren/">this page</a> for details. If your application defines no foreign
+methods, you can leave this ⟦CODE0⟧.
+
+18 [h3] <strong>⟦CODE0⟧</strong> <a class="header-anchor" href="#bindforeignclassfn" name="bindforeignclassfn">#</a>
+
+19 [p] The callback Wren uses to find a foreign class and get its foreign methods. See
+<a href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">this page</a> for details. If your application defines no foreign
+classes, you can leave this ⟦CODE0⟧.
+
+20 [h2] Diagnostics <a class="header-anchor" href="#diagnostics" name="diagnostics">#</a>
+
+21 [p] These let you wire up some minimal output so you can tell if your code is doing
+what you expect.
+
+22 [h3] <strong>⟦CODE0⟧</strong> <a class="header-anchor" href="#writefn" name="writefn">#</a>
+
+23 [p] This is the callback Wren uses to output text when ⟦CODE0⟧ or the other
+related functions are called. This is the minimal connection the VM has with the
+outside world and lets you do rudimentary “printf debugging”. Its signature is:
+
+24 [p] Wren does <em>not</em> have a default implementation for this. It’s up to you to wire
+it up to ⟦CODE0⟧ or some other way to show the text. If you leave it ⟦CODE1⟧,
+calls to ⟦CODE2⟧ and others silently do nothing.
+
+25 [h3] <strong>⟦CODE0⟧</strong> <a class="header-anchor" href="#errorfn" name="errorfn">#</a>
+
+26 [p] Wren uses this callback to report compile time and runtime errors. Its signature
+is:
+
+27 [p] The ⟦CODE0⟧ parameter is one of:
+
+28 [p] When a compile error occurs, ⟦CODE0⟧ is called once with type
+⟦CODE1⟧, the name of the module and line where the error occurs,
+and the error message.
+
+29 [p] Runtime errors include stack traces. To handle this, Wren first calls ⟦CODE0⟧
+with ⟦CODE1⟧, no module or line, and the runtime error’s message.
+After that, it calls ⟦CODE2⟧ again using type ⟦CODE3⟧, once
+for each line in the stack trace. Each of those calls has the module and line
+where the method or function is defined and ⟦CODE4⟧ is the name of the method
+or function.
+
+30 [p] If you leave this ⟦CODE0⟧, Wren does not report any errors.
+
+31 [h2] Memory Management <a class="header-anchor" href="#memory-management" name="memory-management">#</a>
+
+32 [p] These fields control how the VM allocates and manages memory.
+
+33 [h3] <strong>⟦CODE0⟧</strong> <a class="header-anchor" href="#reallocatefn" name="reallocatefn">#</a>
+
+34 [p] This lets you provide a custom memory allocation function. Its signature is:
+
+35 [p] Wren uses this one function to allocate, grow, shrink, and deallocate memory.
+When called, ⟦CODE0⟧ is the existing pointer to the block of memory if an
+allocation is being changed or freed. If Wren is requesting new memory, then
+⟦CODE1⟧ is ⟦CODE2⟧.
+
+36 [p] ⟦CODE0⟧ is the number of bytes of memory being requested. If memory is being
+freed, this is zero. Your callback should allocate the proper amount of memory
+and return it.
+
+37 [p] If you don’t provide a custom allocator, the VM uses a default one that relies
+on ⟦CODE0⟧ and ⟦CODE1⟧.
+
+38 [h3] <strong>⟦CODE0⟧</strong> <a class="header-anchor" href="#initialheapsize" name="initialheapsize">#</a>
+
+39 [p] This defines the total number of bytes of memory the VM will allocate before
+triggering the first garbage collection. Setting this to a smaller number
+reduces the amount of memory Wren will have allocated at one time, but causes it
+to collect garbage more frequently.
+
+40 [p] If you set this to zero, Wren uses a default size of 10MB.
+
+41 [h3] <strong>⟦CODE0⟧</strong> <a class="header-anchor" href="#minheapsize" name="minheapsize">#</a>
+
+42 [p] After a garbage collection occurs, the threshold for the <em>next</em> collection is
+determined based on the number of bytes remaining in use. This allows Wren to
+grow or shrink its memory usage automatically based on how much memory is
+actually needed.
+
+43 [p] This can be used to ensure that the heap does not get <em>too</em> small, which can
+in turn lead to a large number of collections afterwards as the heap grows
+back to a usable size.
+
+44 [p] If zero, this defaults to 1MB.
+
+45 [h3] <strong>⟦CODE0⟧</strong> <a class="header-anchor" href="#heapgrowthpercent" name="heapgrowthpercent">#</a>
+
+46 [p] Wren tunes the rate of garbage collection based on how much memory is still in
+use after a collection. This number controls that. It determines the amount of
+additional memory Wren will use after a collection, as a percentage of the
+current heap size.
+
+47 [p] For example, say that this is 50. After a garbage collection, there are 400
+bytes of memory still in use. That means the next collection will be triggered
+after a total of 600 bytes are allocated (including the 400 already in use.)
+
+48 [p] Setting this to a smaller number wastes less memory, but triggers more
+frequent garbage collections.
+
+49 [p] If set to zero, the VM uses a default of 50.
+
+50 [p] <a href="/docs/wren/v0-4-0/en/01-guide/20-embedding-storing-c-data/">← Storing C Data</a>
