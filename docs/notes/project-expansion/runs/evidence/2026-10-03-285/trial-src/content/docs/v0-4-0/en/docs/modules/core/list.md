@@ -1,0 +1,174 @@
+---
+title: "List Class"
+licenseSource: wren-0-4-0
+toc:
+  maxLevel: 6
+---
+
+<h1 id="page-title">List Class</h1>
+<p>Extends <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/sequence/">Sequence</a>.</p>
+<p>An indexable contiguous collection of elements. More details <a href="/docs/wren-trial/v0-4-0/en/docs/lists/">here</a>.</p>
+<h2>Static Methods <a href="#static-methods" name="static-methods" class="header-anchor">#</a></h2>
+<h3>List.<strong>filled</strong>(size, element) <a href="#list.filled(size,-element)" name="list.filled(size,-element)" class="header-anchor">#</a></h3>
+<p>Creates a new list with <code>size</code> elements, all set to <code>element</code>.</p>
+<p>It is a runtime error if <code>size</code> is not a non-negative integer.</p>
+<h3>List.<strong>new</strong>() <a href="#list.new()" name="list.new()" class="header-anchor">#</a></h3>
+<p>Creates a new empty list. Equivalent to <code>[]</code>.</p>
+<h2>Methods <a href="#methods" name="methods" class="header-anchor">#</a></h2>
+<h3><strong>add</strong>(item) <a href="#add(item)" name="add(item)" class="header-anchor">#</a></h3>
+<p>Appends <code>item</code> to the end of the list. Returns the added item.</p>
+<h3><strong>addAll</strong>(other) <a href="#addall(other)" name="addall(other)" class="header-anchor">#</a></h3>
+<p>Appends each element of <code>other</code> in the same order to the end of the list. <code>other</code> must be <a href="/docs/wren-trial/v0-4-0/en/docs/control-flow/#the-iterator-protocol">an iterable</a>.</p>
+<pre class="snippet">
+var list = [0, 1, 2, 3, 4]
+list.addAll([5, 6])
+System.print(list) //> [0, 1, 2, 3, 4, 5, 6]
+</pre>
+
+<p>Returns the added items.</p>
+<h3><strong>clear</strong>() <a href="#clear()" name="clear()" class="header-anchor">#</a></h3>
+<p>Removes all elements from the list.</p>
+<h3><strong>count</strong> <a href="#count" name="count" class="header-anchor">#</a></h3>
+<p>The number of elements in the list.</p>
+<h3><strong>indexOf</strong>(value) <a href="#indexof(value)" name="indexof(value)" class="header-anchor">#</a></h3>
+<p>Returns the index of <code>value</code> in the list, if found. If not found, returns -1.</p>
+<pre class="snippet">
+var list = [0, 1, 2, 3, 4]
+System.print(list.indexOf(3)) //> 3
+System.print(list.indexOf(20)) //> -1
+</pre>
+
+<h3><strong>insert</strong>(index, item) <a href="#insert(index,-item)" name="insert(index,-item)" class="header-anchor">#</a></h3>
+<p>Inserts the <code>item</code> at <code>index</code> in the list.</p>
+<pre class="snippet">
+var list = ["a", "b", "c", "d"]
+list.insert(1, "e")
+System.print(list) //> [a, e, b, c, d]
+</pre>
+
+<p>The <code>index</code> may be one past the last index in the list to append an element.</p>
+<pre class="snippet">
+var list = ["a", "b", "c"]
+list.insert(3, "d")
+System.print(list) //> [a, b, c, d]
+</pre>
+
+<p>If <code>index</code> is negative, it counts backwards from the end of the list. It bases this on the length of the list <em>after</em> inserted the element, so that <code>-1</code> will append the element, not insert it before the last element.</p>
+<pre class="snippet">
+var list = ["a", "b"]
+list.insert(-1, "d")
+list.insert(-2, "c")
+System.print(list) //> [a, b, c, d]
+</pre>
+
+<p>Returns the inserted item.</p>
+<pre class="snippet">
+System.print(["a", "c"].insert(1, "b")) //> b
+</pre>
+
+<p>It is a runtime error if the index is not an integer or is out of bounds.</p>
+<h3><strong>iterate</strong>(iterator), <strong>iteratorValue</strong>(iterator) <a href="#iterate(iterator),-iteratorvalue(iterator)" name="iterate(iterator),-iteratorvalue(iterator)" class="header-anchor">#</a></h3>
+<p>Implements the <a href="/docs/wren-trial/v0-4-0/en/docs/control-flow/#the-iterator-protocol">iterator protocol</a> for iterating over the elements in the
+list.</p>
+<h3><strong>remove</strong>(value) <a href="#remove(value)" name="remove(value)" class="header-anchor">#</a></h3>
+<p>Removes the first value found in the list that matches the given <code>value</code>, 
+using regular equality to compare them. All trailing elements
+are shifted up to fill in where the removed element was.</p>
+<pre class="snippet">
+var list = ["a", "b", "c", "d"]
+list.remove("b")
+System.print(list) //> [a, c, d]
+</pre>
+
+<p>Returns the removed value, if found.
+If the value is not found in the list, returns null.</p>
+<pre class="snippet">
+System.print(["a", "b", "c"].remove("b")) //> b
+System.print(["a", "b", "c"].remove("not found")) //> null
+</pre>
+
+<h3><strong>removeAt</strong>(index) <a href="#removeat(index)" name="removeat(index)" class="header-anchor">#</a></h3>
+<p>Removes the element at <code>index</code>. If <code>index</code> is negative, it counts backwards
+from the end of the list where <code>-1</code> is the last element. All trailing elements
+are shifted up to fill in where the removed element was.</p>
+<pre class="snippet">
+var list = ["a", "b", "c", "d"]
+list.removeAt(1)
+System.print(list) //> [a, c, d]
+</pre>
+
+<p>Returns the removed item.</p>
+<pre class="snippet">
+System.print(["a", "b", "c"].removeAt(1)) //> b
+</pre>
+
+<p>It is a runtime error if the index is not an integer or is out of bounds.</p>
+<h3><strong>sort</strong>(), <strong>sort</strong>(comparer) <a href="#sort(),-sort(comparer)" name="sort(),-sort(comparer)" class="header-anchor">#</a></h3>
+<p>Sorts the elements of a list in-place; altering the list. The default sort is implemented using the quicksort algorithm.</p>
+<pre class="snippet">
+var list = [4, 1, 3, 2].sort()
+System.print(list) //> [1, 2, 3, 4]
+</pre>
+
+<p>A comparison function <code>comparer</code> can be provided to customise the element sorting. The comparison function must return a boolean value specifying the order in which elements should appear in the list.</p>
+<p>The comparison function accepts two arguments <code>a</code> and <code>b</code>, two values to compare, and must return a boolean indicating the inequality between the arguments. If the function returns true, the first argument <code>a</code> will appear before the second <code>b</code> in the sorted results.</p>
+<p>A compare function like <code>{|a, b| true }</code> will always put <code>a</code> before <code>b</code>. The default compare function is <code>{|a, b| a &lt; b }</code>.</p>
+<pre class="snippet">
+var list = [9, 6, 8, 7]
+list.sort {|a, b| a < b}
+System.print(list) //> [6, 7, 8, 9]
+</pre>
+
+<p>It is a runtime error if <code>comparer</code> is not a function.</p>
+<h3><strong>swap</strong>(index0, index1) <a href="#swap(index0,-index1)" name="swap(index0,-index1)" class="header-anchor">#</a></h3>
+<p>Swaps values inside the list around. Puts the value from <code>index0</code> in <code>index1</code>,
+and the value from <code>index1</code> at <code>index0</code> in the list.</p>
+<pre class="snippet">
+var list = [0, 1, 2, 3, 4]
+list.swap(0, 3)
+System.print(list) //> [3, 1, 2, 0, 4]
+</pre>
+
+<h3><strong>[</strong>index<strong>]</strong> operator <a href="#[index]-operator" name="[index]-operator" class="header-anchor">#</a></h3>
+<p>Gets the element at <code>index</code>. If <code>index</code> is negative, it counts backwards from
+the end of the list where <code>-1</code> is the last element.</p>
+<pre class="snippet">
+var list = ["a", "b", "c"]
+System.print(list[1]) //> b
+</pre>
+
+<p>If <code>index</code> is a <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/range/">Range</a>, a new list is populated from the elements
+in the range.</p>
+<pre class="snippet">
+var list = ["a", "b", "c"]
+System.print(list[0..1]) //> [a, b]
+</pre>
+
+<p>You can use <code>list[0..-1]</code> to shallow-copy a list.</p>
+<p>It is a runtime error if the index is not an integer or range, or is out of bounds.</p>
+<h3><strong>[</strong>index<strong>]=</strong>(item) operator <a href="#[index]=(item)-operator" name="[index]=(item)-operator" class="header-anchor">#</a></h3>
+<p>Replaces the element at <code>index</code> with <code>item</code>. If <code>index</code> is negative, it counts
+backwards from the end of the list where <code>-1</code> is the last element.</p>
+<pre class="snippet">
+var list = ["a", "b", "c"]
+list[1] = "new"
+System.print(list) //> [a, new, c]
+</pre>
+
+<p>It is a runtime error if the index is not an integer or is out of bounds.</p>
+<h3><strong>+</strong>(other) operator <a href="#+(other)-operator" name="+(other)-operator" class="header-anchor">#</a></h3>
+<p>Appends a list to the end of the list (concatenation). <code>other</code> must be <a href="/docs/wren-trial/v0-4-0/en/docs/control-flow/#the-iterator-protocol">an iterable</a>.</p>
+<pre class="snippet">
+var letters = ["a", "b", "c"]
+var other = ["d", "e", "f"]
+var combined = letters + other
+System.print(combined)  //> [a, b, c, d, e, f]
+</pre>
+
+<h3><strong>*</strong>(count) operator <a href="#\(count)-operator" name="\(count)-operator" class="header-anchor">#</a></h3>
+<p>Creates a new list by repeating this one <code>count</code> times. It is a runtime error if <code>count</code> is not a non-negative integer.</p>
+<pre class="snippet">
+var digits = [1, 2]
+var tripleDigits = digits * 3
+System.print(tripleDigits) //> [1, 2, 1, 2, 1, 2] 
+</pre>

@@ -1,0 +1,149 @@
+---
+title: "Q & A"
+licenseSource: wren-0-4-0
+toc:
+  maxLevel: 6
+---
+
+<h1 id="page-title">Q &amp; A</h1>
+<h2>Why did you create Wren? <a href="#why-did-you-create-wren" name="why-did-you-create-wren" class="header-anchor">#</a></h2>
+<p>Other creative endeavors aren&rsquo;t immediately met with existential crises, but
+for some reason programmers don&rsquo;t seem to like new languages. Here&rsquo;s the niche
+I&rsquo;m trying to fill:</p>
+<p>There are a few scripting languages used for embedding in applications. Lua is
+the main one. TCL used to be. There&rsquo;s also Guile, increasingly JavaScript, and
+some applications embed Python. I&rsquo;m an ex-game developer, so when I think
+&ldquo;scripting&rdquo;, I tend to think &ldquo;game scripting&rdquo;.</p>
+<p>Lua is nice: it&rsquo;s small, simple, and fast. But&mdash;and I don&rsquo;t mean this as a
+criticism&mdash;it&rsquo;s also weird if you&rsquo;re used to languages like C++ and Java.
+The syntax is different. The semantics, especially the object model are
+unusual. Anyone can get used to 1-based indexing, but things like metatables
+really show that objects were bolted onto Lua after the fact.</p>
+<p>I think there&rsquo;s room for a language as simple as Lua, but that feels natural to
+someone with an OOP background. Wren is my attempt at that.</p>
+<h2>Why classes? <a href="#why-classes" name="why-classes" class="header-anchor">#</a></h2>
+<p>Thanks to JavaScript&rsquo;s popularity, lots of people are discovering prototypes
+right now, and the paradigm is experiencing a popularity boom. I think
+prototypes are interesting, but after <a href="http://finch.stuffwithstuff.com/">several years playing with them</a>,
+I concluded (like many people on the original Self project that invented
+prototypes) that classes are more usable.</p>
+<p>Here&rsquo;s an example of that kind of object-oriented programming in Lua:</p>
+<pre class="snippet">
+-- account.lua
+
+Account = {}
+Account.__index = Account
+
+function Account.create(balance)
+   local acnt = {}             -- our new object
+   setmetatable(acnt,Account)  -- make Account handle lookup
+   acnt.balance = balance      -- initialize our object
+   return acnt
+end
+
+function Account:withdraw(amount)
+   self.balance = self.balance - amount
+end
+
+-- create and use an Account
+account = Account.create(1000)
+account:withdraw(100)
+</pre>
+
+<p>Here&rsquo;s the same example in Wren:</p>
+<pre class="snippet">
+//account.wren
+
+class Account {
+  construct new(balance) { _balance = balance }
+  withdraw(amount) { _balance = _balance - amount }
+}
+
+// create and use an Account
+var account = Account.new(1000)
+account.withdraw(100)
+</pre>
+
+<p>Classes have a reputation for complexity because most of the widely used
+languages with them are quite complex: C++, Java, C#, Ruby, and Python. I hope
+to show with Wren that it is those languages that are complex, and not classes
+themselves.</p>
+<p>Smalltalk, the language that inspired most of those languages, is famously
+simple. Its syntax <a href="http://www.jarober.com/blog/blogView?showComments=true&amp;title=Readability+is+Key&amp;entry=3506312690">fits on an index card</a>. My aim is to keep Wren that
+minimal while still having the expressive power of <a href="/docs/wren-trial/v0-4-0/en/docs/classes/">classes</a>.</p>
+<h2>Why compile to bytecode? <a href="#why-compile-to-bytecode" name="why-compile-to-bytecode" class="header-anchor">#</a></h2>
+<p>The <a href="/docs/wren-trial/v0-4-0/en/docs/performance/">performance page</a> has more details, but the short answer
+is that bytecode is a nice trade-off between performance and simplicity. Also:</p>
+<ul>
+<li>
+<p>Many devices like iPhones and game consoles don&rsquo;t allow executing code
+    generated at runtime, which rules out just-in-time compilation.</p>
+</li>
+<li>
+<p>I think <a href="/docs/wren-trial/v0-4-0/en/docs/concurrency/">fibers</a> are a really powerful tool, and implementing them is
+    straightforward in a bytecode VM that doesn&rsquo;t use the native stack.</p>
+</li>
+</ul>
+<h2>Why is the VM stack-based instead of register-based? <a href="#why-is-the-vm-stack-based-instead-of-register-based" name="why-is-the-vm-stack-based-instead-of-register-based" class="header-anchor">#</a></h2>
+<p>Bytecode VMs come in two flavors. Stack-based VMs have short (usually one byte)
+instructions whose operands are implicitly understood to be at the top of the
+stack. That means you often have a couple of instructions to push some stuff on
+the stack and then an instruction to do something.</p>
+<p>Register-based VMs have big instructions (usually 32 bits) that contain both an
+opcode and a couple of numbers indicating where in the stack the operands can
+be found. This is cool because it means, that, for example, this Lua statement:</p>
+<pre class="snippet">
+a = b + c
+</pre>
+
+<p>Can be a single bytecode instruction. In a stack-based language, it would be
+four&mdash;push <code>b</code>, push <code>c</code>, add, store <code>a</code>. (Though note that in both cases
+you&rsquo;ve got 32 total bits of code.)</p>
+<p>Lua used to be stack-based and switched to register-based and got a speed
+boost. Why not use registers for Wren?</p>
+<p>I&rsquo;ve implemented a <a href="http://finch.stuffwithstuff.com/">register-based VM
+before</a>. I think it&rsquo;s a cool model, but I
+don&rsquo;t think it would bring much benefit for Wren. It&rsquo;s more effort to compile,
+and I&rsquo;m trying to keep Wren&rsquo;s implementation as simple as possible.</p>
+<p>In return for that complexity, you can generate fewer instructions. However, I
+don&rsquo;t think Wren would be able to take advantage of that. Wren doesn&rsquo;t
+currently have any dedicated instructions for arithmetic. Operators are just
+regular method calls and can call user-defined procedures.</p>
+<p>The calling convention for methods requires all of their parameters to be at
+the top of the caller&rsquo;s stack so that they can become bottom of the callee&rsquo;s
+stack frame window. To call <code>+</code> in Wren, we still have to push the arguments on
+top of the stack. Likewise, the method calling convention places the return
+value where the first argument was, so we&rsquo;d have to move it back down to the
+destination slot after the call.</p>
+<p>It may be worth having dedicated instructions for arithmetic that special case
+the built-in types before falling back to user-defined operator methods (which
+I assume is what Lua does since they added operator overloading late in the
+language&rsquo;s development). If that happens, it may be possible to switch to
+register-based.</p>
+<p>But I&rsquo;m not convinced it would be an actual performance win. A lot of details
+of the language affect whether a register-based VM is better. For example,
+assignments are statements in Lua but expressions in Wren, which would make
+them harder to compile to efficient register-based code.</p>
+<h2>What about your other languages? <a href="#what-about-your-other-languages" name="what-about-your-other-languages" class="header-anchor">#</a></h2>
+<p>This is a strange question if you don&rsquo;t happen to know <a href="http://journal.stuffwithstuff.com">who I am</a>. In the
+past, I&rsquo;ve hacked on and blogged about a couple of other hobby languages like
+<a href="http://finch.stuffwithstuff.com/">Finch</a> and <a href="http://magpie-lang.org/">Magpie</a>.</p>
+<p>I started Finch to learn more about implementing an interpreter and also about
+the prototype paradigm. I learned a ton about both. Critically, I learned that
+I really prefer classes over prototypes. I started retrofitting classes into
+Finch but realized it was too big of a change, and thus Wren was born.</p>
+<p>Wren is a replacement for Finch to me. I gave it a new name mainly so that I
+can keep Finch around in case other people want to take it and do something
+with it. I don&rsquo;t have any intention to work on it anymore.</p>
+<p>Magpie is a trickier one. I really like the ideas behind Magpie. It&rsquo;s the
+general-purpose language I wish I had much of the time. I love pattern matching
+and multiple dispatch. I like how it integrates the event-based IO of <a href="https://github.com/joyent/libuv">libuv</a>
+with the simplicity of fibers.</p>
+<p>But it&rsquo;s also a much more challenging project. As a general-purpose language,
+there&rsquo;s a ton of library work to do before Magpie is useful for anything. It
+has some unresolved GC issues. And I&rsquo;m frankly not skilled enough right now to
+implement multiple dispatch efficiently.</p>
+<p>Meanwhile, since I started working on Magpie, <a href="http://julialang.org/">Julia</a>
+appeared and <a href="http://opendylan.org/">Dylan</a> <em>re</em>appeared. I created Magpie
+partially to carry the torch of multiple dispatch, but others are starting to
+spread that light now.</p>
