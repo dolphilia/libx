@@ -1,3 +1,30 @@
 # The historical Awesome snapshot is preserved byte-for-byte from its verified
 # source commit, including upstream Markdown whitespace.
 apps/awesome/src/awesome-content/v2026-08-20/** -whitespace
+
+# libuvの固定原資料・レビュー済み本文は元のバイト列を保持する。
+docs/notes/document-import/libuv/** -text -whitespace
+apps/libuv/public/source/** -text -whitespace
+apps/libuv/src/content/docs/** -text -whitespace
+apps/libuv/public/notices/** -text -whitespace
+# 原RSTの見出し下線はマージ競合ではない。
+apps/libuv/public/source/**/*.rst conflict-marker-size=1000
+docs/notes/document-import/libuv/1.53.0/sources/**/*.rst conflict-marker-size=1000
+
+# Zstandard original source snapshots retain their fixed bytes and blank lines.
+docs/notes/document-import/zstd/v1-5-7/source/** -text -whitespace
+apps/zstd/public/source/** -text -whitespace
+
+# Fixed mdBook documents, renderer inputs and notices preserve upstream bytes.
+apps/mdbook/public/source/** -text -whitespace
+docs/notes/document-import/mdbook/** -text -whitespace
+apps/mdbook/src/content/docs/** -text -whitespace
+
+# RapidJSON fixed original inputs and reviewed documents preserve their bytes.
+docs/notes/document-import/rapidjson/** -text -whitespace
+apps/rapidjson/src/content/docs/** -text -whitespace
+apps/rapidjson/public/source/** -text -whitespace
+apps/rapidjson/public/notices/** -text -whitespace
+
+# Wren fixed redirect input retains its upstream CRLF bytes.
+docs/notes/document-import/wren/v0-4-0/source/original/doc/site/modules/index.markdown -text -whitespace

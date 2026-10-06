@@ -1,11 +1,11 @@
 ---
 title: "Awesome Clojure"
-description: "An index entry for the Awesome Clojure list. The upstream content is not reproduced in this snapshot."
+description: "A reference to Awesome Clojure for Clojure programming resources. The original list’s body is not reproduced here."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Clojure
 
-An index entry for the Awesome Clojure list. The upstream content is not reproduced in this snapshot.
+Follow the link to Awesome Clojure for resources on the Clojure programming language. The list’s body is not reproduced in this snapshot.
 
-- [Open the original repository](https://github.com/razum2um/awesome-clojure/blob/828016667600a9f7a16907289fc4952426149a3e/README.md)
+- [Read the original list](https://github.com/razum2um/awesome-clojure/blob/828016667600a9f7a16907289fc4952426149a3e/README.md)

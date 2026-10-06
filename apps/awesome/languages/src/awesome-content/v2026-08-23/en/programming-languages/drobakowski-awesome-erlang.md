@@ -1,11 +1,11 @@
 ---
 title: "Awesome Erlang"
-description: "An index entry for the Awesome Erlang list. The upstream content is not reproduced in this snapshot."
+description: "A reference to Awesome Erlang for Erlang programming resources. The original list’s body is not reproduced in this snapshot."
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Erlang
 
-An index entry for the Awesome Erlang list. The upstream content is not reproduced in this snapshot.
+Follow the link to Awesome Erlang for resources on the Erlang programming language. The list’s body is not reproduced in this snapshot.
 
-- [Open the original repository](https://github.com/drobakowski/awesome-erlang/blob/e7bd186be08ca8ad4c9803cae13d643510d7c2e2/README.md)
+- [Read the original list](https://github.com/drobakowski/awesome-erlang/blob/e7bd186be08ca8ad4c9803cae13d643510d7c2e2/README.md)
