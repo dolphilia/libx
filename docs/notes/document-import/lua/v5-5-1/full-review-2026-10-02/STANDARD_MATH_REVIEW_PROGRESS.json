@@ -1,0 +1,140 @@
+{
+  "id": "05-standard-library/09-mathematical-functions.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T23:46:34.062Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/standard-math-source-initial.html",
+      "sha256": "8468a1ae493a77d6b4001d91b1bd2b08612f0493df091e9cf3c301a5a689c29c"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/standard-math-en-initial.md",
+      "sha256": "fcfdaeb4315ed3d77e285a4ce25e3204132dfebf6364a5f817aa2427aa1cf048"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/standard-math-ja-initial.md",
+      "sha256": "dbe2a431b0d8aa4617cfcf9b908344c09fd0fde744f0144bcf043d8326e492f6"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          379
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          194
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          194
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual10617〜10995全379行/英日194行を初回と修正後別工程で省略なし全実読。25関数/4定数/36本文段落の意味/例外/自然さを照合。JA数式/区間5強調とrandomseed/ultを修正。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/standard-math.html",
+      "sha256": "8468a1ae493a77d6b4001d91b1bd2b08612f0493df091e9cf3c301a5a689c29c"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/05-standard-library/09-mathematical-functions.md",
+      "sha256": "fcfdaeb4315ed3d77e285a4ce25e3204132dfebf6364a5f817aa2427aa1cf048"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/05-standard-library/09-mathematical-functions.md",
+      "sha256": "2c169e9b205d0f9ba98bbaf168903f0167b45d987167afd304d2dd6793709719"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          379
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          194
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          194
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "mathテーブルとinteger/float注記、整数引数→整数/非整数→float、ceil/floor/modfは結果整数範囲内なら整数/他floatを照合。abs公式max(x,-x)定義を保持。acos/asinのラジアン、atan y/xと両符号の象限/ゼロx/defaultx1、ceil最小≥x/floor最大≤x、cos/sin/tanのラジアン、deg/rad単位変換、exp e^x/log指定baseと既定自然底eを照合。",
+    "fmod商を0へ丸めた剰余、frexp x=m2^e/e整数/x0・NaN・±infならm=x/その他abs m[.5,1)、huge公式HUGE_VAL定義、ldexp m2^e/e整数、max/min標準Lua<、maxinteger/mininteger最大最小整数、modf整数部と小数部/第二常にfloat、pi円周率を照合。",
+    "random無引数float[0,1)/m,n整数[m,n]/正n→1,n/0全ビット擬似ランダム、xoshiro256**64bit0呼出結果と他結果の偏りなし抽出、初期化無引数seed同等/毎回異なるはshouldを照合。randomseed最低1引数整数x/y結合/同seed同列/defaulty0/無引数弱いランダム性の試み/有効2成分返却と再設定再現/必要なランダム性又は決定列のため明示引数はshouldを照合。不自然な弱いランダム性表現と義務化を修正。",
+    "sqrt x^.5、tointeger変換可能→整数/その他fail、type整数→integer/float→float/非数値→fail、ult符号なし比較でm<nのIFF trueを照合。ult重複説明を整理して原文同inline2保持。数式/区間5箇所の誤強調をHTMLemで限定し周囲文章/未処理starを解消。原文EN全prose一致、36p/92inline/29見出し31ID5links3bold9em3sup。random/type節の自然語順例外のみmultiset保持。数値関数の実行挙動は未検証。",
+    "初回と修正後別工程で固定原文/英日全文実読。新規機械5検査exit0/117pagebuild、7code同SHA第69の11tests/lint再利用。英日PCmobile4画像とJA seed/ult追加画像で修正表示を実見。48→49/55、残り6未確認。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/repairs.json",
+    "sha256": "a164e18fa143357aab9588ed0a7caae73cb4ace6528273b809d525f5aea2cd00"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/validation-reuse.json",
+      "sha256": "3e652022f54397feeaf42c16c2c3312a86b36fb07cbafba2ac6ee0b39bc70815"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/selective-build.txt",
+      "sha256": "9ac6c1e9feb5883923e35b1b9f36c2e7bb9e7c7cc9acea9ff4e3d5682623ada4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-095/browser-review.json",
+    "sha256": "505a12e78d85a53788c9127536f8ed352d6a2dfde72840c13955bed94eb0aeb4"
+  },
+  "nextAction": "第96は05-standard-library/10-input-and-output.mdを固定page-map/manual全範囲と英日全文で初回レビュー、別工程全文/機械/英日4viewへ。全検証時のみ49→50/55、残り6未確認。新bug権利とaddgsub宣言不一致は公式根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り6ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "luaL_addgsub宣言は固定マニュアルconst voidと同固定tarヘッダー/実装voidで異なる。定本保持、宣言実行未検証。次回公式上流巡回で訂正根拠を確認。"
+  ]
+}

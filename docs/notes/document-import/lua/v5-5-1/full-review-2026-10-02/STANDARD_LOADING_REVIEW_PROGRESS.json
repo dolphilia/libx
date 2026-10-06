@@ -1,0 +1,140 @@
+{
+  "id": "05-standard-library/02-loading-libraries-in-c.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T23:23:16.491Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/standard-loading-source-initial.html",
+      "sha256": "f562b1a677f328a1e85610aa5e59a0ddef999617250fcb8158d6e8d12b5d9226"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/standard-loading-en-initial.md",
+      "sha256": "2796072d4967013f620cee87a831ffaf28c79aa8ef0d4c3e69a1e38b38f6e2c5"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/standard-loading-ja-initial.md",
+      "sha256": "1c68ca8355a04d81f45c54cd0f997706f45f209afba78615356701bb788d44f5"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          70
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          47
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          47
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual8269〜8338全70行/英日47行を初回と修正後の別工程で省略なし全実読。2関数/5prose2effectsと10定数の意味/例外/自然さを照合。JA andをまたはとした誤訳1文修正。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/standard-loading.html",
+      "sha256": "f562b1a677f328a1e85610aa5e59a0ddef999617250fcb8158d6e8d12b5d9226"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/05-standard-library/02-loading-libraries-in-c.md",
+      "sha256": "2796072d4967013f620cee87a831ffaf28c79aa8ef0d4c3e69a1e38b38f6e2c5"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/05-standard-library/02-loading-libraries-in-c.md",
+      "sha256": "4be7c04d897e510055538ffde9e87adf0df99e294737204f80abc41836d25311"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          70
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          47
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          47
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "Cホストはscriptで使うために標準libraryをstateへ明示load MUST、openlibs全libraryまたはopenselectedlibs選択、両関数lualib.h宣言、standalone luaは全library既にopenを照合。openlibs指定stateの全標準library/効果[-0,+0,e]と宣言原文字句を確認。",
+    "openselectedlibs Opens(loads) AND preloadsをまたはとした日本語誤訳を修正。preloadはloaderをpackage.preloadへ追加し後からrequireできる意味、require自体package提供でpackage未loadなら何もrequireできない条件を照合。",
+    "loadはロードするlibraryを選ぶmask/preloadはロードされていないlibraryから選ぶmask/双方定数ビットORを照合。10定数GLIBK=basic/LOADLIBK=package/COLIBK=coroutine/STRLIBK=string/UTF8LIBK=UTF8/TABLIBK=table/MATHLIBK=math/IOLIBK=IO/OSLIBK=os/DBLIBK=debugの対応と全IDを照合。",
+    "原文ENprose全一致、5prose2effects=7p/21inline2pre(各1行宣言未実行)/2head13ID5links10bold4em/10list各1para。初回と修正後別工程で原文ENJA全実読、機械5検査全exit0/117pagebuild、7code同SHA第69の11tests/lint再利用。",
+    "英日PCmobile4画像実見、JApcホスト/standalone/openlibs、JAmobile修正and/require条件、ENpcmobile選択mask/10定数を確認。overflow0console0/locale同page/package.preloadEnter最終見出しtop-1.133px確認。44→45/55、残り10未確認。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/repairs.json",
+    "sha256": "3955813c2e11b1c7539ed7dd3627d4e7a5d2c9d914dd75988360549f61df3f7a"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/validation-reuse.json",
+      "sha256": "499a28b68c07745be3a206a6c0b1116953a8b317e988d6638264854f9de9856d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/selective-build.txt",
+      "sha256": "632d4d88b3e3f6fe00ef9abf1ea9623b297fa0df59f095b67880df80b0cae0b1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/browser-review.json",
+    "sha256": "778d2203c10ca99d8d64c1b84aa437b072fbeee8bd4c93dff5d2a67fb1f90725"
+  },
+  "nextAction": "第92は05-standard-library/04-coroutine-manipulation.mdを固定page-map/manual全範囲と英日全文で初回レビュー、別工程全文/機械/英日4viewへ。全検証時のみ45→46/55、残り10未確認。基本関数は第75で検証済みのため再着手不要。新bug権利とaddgsub宣言不一致は公式根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り10ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "luaL_addgsub宣言は固定マニュアルconst voidと同固定tarヘッダー/実装voidで異なる。定本保持、宣言実行未検証。次回公式上流巡回で訂正根拠を確認。"
+  ]
+}

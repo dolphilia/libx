@@ -1,0 +1,140 @@
+{
+  "id": "03-c-api/17-debug-interface.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T22:52:11.432Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/debug-interface-source-initial.html",
+      "sha256": "c2a13a48e0333a98da2954470b6eb4c77e19884180a8027adb1a9c03f7995c1c"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/debug-interface-en-initial.md",
+      "sha256": "25a9528e78d03bbb8cd0ceaedfeb14ce47bd83f93167bf879efb8f88a4ed7615"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/debug-interface-ja-initial.md",
+      "sha256": "a3d1a5aa6b0c5f066cb3f7410b23dd1678b4ee3df7e3f486d1157ad8e566a8c8"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          555
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          279
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          279
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual6302〜6856全555行/英日279行を初回実読。JA仮引数2明示後、別工程で原文・EN・JAを各独立省略なし出力で全文再読。51rootp+3lists全意味/規範/自然さ/15preを照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/debug-interface.html",
+      "sha256": "c2a13a48e0333a98da2954470b6eb4c77e19884180a8027adb1a9c03f7995c1c"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/17-debug-interface.md",
+      "sha256": "25a9528e78d03bbb8cd0ceaedfeb14ce47bd83f93167bf879efb8f88a4ed7615"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/17-debug-interface.md",
+      "sha256": "a3d2f596db5a8ef923aec756d47a12076dc9dd6c1486740fa49c28970ee73504"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          555
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          279
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          279
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "Debug16fieldを照合。getstack privateonly/getinfo MUSTwhat文字。source@file/=user依存/else文字列、srclen/shortsrc/定義開始終了/whatLuaCmain/currentline-1、第一級name不固定NULL/namewhat5例+other、tailcaller不在、extraargs各__call対象1連鎖/nups/nparamsformalC0/isvarargCtrue/ftransfer連続・callretフックonly/call1/ntransferLua=nparams。nparamsとgetlocal arNULLのparametersを仮引数と2箇所明示。",
+    "gethook/count/mask、getinfo ar MUST有効getstackorHook/関数push what>pop/4行例/what8letters全fields、Lコード有行table空行comment除外/f後push/LのみMEM/invalid0でもvalid処理を照合。getlocal activationorfunction/localtemp/index/name/push/arNULL MUSTtopfunc/仮引数only/noactive情報/nopush/範囲外NULLnopush。",
+    "getstack activationlevel0現在/n+1caller/tail除外/深さ超0else1。getupfuncindex n/pushname/範囲外NULLnopush。Hook型/event5/linecurrentline/other MUSTgetinfo/tailnoRET/hook中再帰フック無効/非NULL継続k禁止/yield countorlineのみMUSTyield nresults0終結。",
+    "sethook4maskOR/count条件/call入直後/ret出直前/line新行前or後方sameでもLuaonly/count命令ごとLuaonly/mask0disable。setlocal/ setupvalue代入name/pop/範囲外NULLNOPOP/arNULL不可。upid共有外側local同id/n範囲must/upjoin f1n1をf2n2へ方向を確認。",
+    "原文ENprose全文一致、51rootp(39prose12effects)/3lists16,8,4/167inline/15pre/14head24ID/25links/28bold5em。7節inline自然語順は節内multiset保持。15pre字句一致、Debug private other fieldsのem→code字体変換のみ。宣言/例4行は未実行。別工程全文と機械token独立。",
+    "新規機械5検査exit0（content6789/integrity56475/build14257、links/diff0）、定本56再現/ENJA56/1164内部links0/WT整合性/122相対links/117pagebuild。112本文+7code rootWT SHA一致、7code第69同一で11tests/lint再利用。英日4実画像overflow0console0/locale同page/debug.getlocal Enter最終0.242pxを確認。37→38/55、17未確認。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/repairs.json",
+    "sha256": "a3c154b2b754801ed120ca487b77e290c7b0f5d42b1389d2aa45f81d0016462d"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/validation-reuse.json",
+      "sha256": "0b0152b656465d3baa1c23aa4cc1928dd2f89aba3d0aa4fe82d5e1694f7a0b35"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/selective-build.txt",
+      "sha256": "4975241a1d113d2e83055ab86b4d3cd947a1e53205a917502bf0bedf3bb4d811"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-084/browser-review.json",
+    "sha256": "730b3c00d43e0a5817c0253e9687e788ad2320f1e177a843f410c56d97eb72ff"
+  },
+  "nextAction": "第85は04-auxiliary-library/01-overview.mdを固定page-map/manual境界と英日全文で初回内容レビュー、必要修正後に別工程全文/機械/英日4viewへ。全確認時のみ38→39/55。残り17未確認、新bug権利は公式根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り17ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

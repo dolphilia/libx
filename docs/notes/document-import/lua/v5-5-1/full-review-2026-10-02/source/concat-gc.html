@@ -1,0 +1,194 @@
+<hr><h3><a name="lua_concat"><code>lua_concat</code></a></h3><p>
+<span class="apii">[-n, +1, <em>e</em>]</span>
+<pre class="api">void lua_concat (lua_State *L, int n);</pre>
+
+<p>
+Concatenates the <code>n</code> values at the top of the stack,
+pops them, and leaves the result on the top.
+If <code>n</code>&nbsp;is&nbsp;1, the result is the single value on the stack
+(that is, the function does nothing);
+if <code>n</code> is 0, the result is the empty string.
+Concatenation is performed following the usual semantics of Lua
+(see <a href="#3.4.6">&sect;3.4.6</a>).
+
+
+
+
+
+<hr><h3><a name="lua_copy"><code>lua_copy</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">void lua_copy (lua_State *L, int fromidx, int toidx);</pre>
+
+<p>
+Copies the element at index <code>fromidx</code>
+into the valid index <code>toidx</code>,
+replacing the value at that position.
+Values at other positions are not affected.
+
+
+
+
+
+<hr><h3><a name="lua_createtable"><code>lua_createtable</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">void lua_createtable (lua_State *L, int nseq, int nrec);</pre>
+
+<p>
+Creates a new empty table and pushes it onto the stack.
+Parameter <code>nseq</code> is a hint for how many elements the table
+will have as a sequence;
+parameter <code>nrec</code> is a hint for how many other elements
+the table will have.
+Lua may use these hints to preallocate memory for the new table.
+This preallocation may help performance when you know in advance
+how many elements the table will have.
+Otherwise you should use the function <a href="#lua_newtable"><code>lua_newtable</code></a>.
+
+
+
+
+
+<hr><h3><a name="lua_dump"><code>lua_dump</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_dump (lua_State *L,
+                        lua_Writer writer,
+                        void *data,
+                        int strip);</pre>
+
+<p>
+Dumps a function as a binary chunk.
+Receives a Lua function on the top of the stack
+and produces a binary chunk that,
+if loaded again,
+results in a function equivalent to the one dumped.
+As it produces parts of the chunk,
+<a href="#lua_dump"><code>lua_dump</code></a> calls function <code>writer</code> (see <a href="#lua_Writer"><code>lua_Writer</code></a>)
+with the given <code>data</code>
+to write them.
+
+
+<p>
+The function <a href="#lua_dump"><code>lua_dump</code></a> fully preserves the Lua stack
+through the calls to the writer function,
+except that it may push some values for internal use
+before the first call,
+and it restores the stack size to its original size
+after the last call.
+
+
+<p>
+If <code>strip</code> is true,
+the binary representation may not include all debug information
+about the function,
+to save space.
+
+
+<p>
+The value returned is the error code returned by the last
+call to the writer;
+0&nbsp;means no errors.
+
+
+
+
+
+<hr><h3><a name="lua_error"><code>lua_error</code></a></h3><p>
+<span class="apii">[-1, +0, <em>v</em>]</span>
+<pre class="api">int lua_error (lua_State *L);</pre>
+
+<p>
+Raises a Lua error,
+using the value on the top of the stack as the error object.
+This function does a long jump,
+and therefore never returns
+(see <a href="#luaL_error"><code>luaL_error</code></a>).
+
+
+
+
+
+<hr><h3><a name="lua_gc"><code>lua_gc</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_gc (lua_State *L, int what, ...);</pre>
+
+<p>
+Controls the garbage collector.
+
+
+<p>
+This function performs several tasks,
+according to the value of the parameter <code>what</code>.
+For options that need extra arguments,
+they are listed after the option.
+
+<ul>
+
+<li><b><a name="pdf-LUA_GCCOLLECT"><code>LUA_GCCOLLECT</code></a></b>: 
+Performs a full garbage-collection cycle.
+</li>
+
+<li><b><a name="pdf-LUA_GCSTOP"><code>LUA_GCSTOP</code></a></b>: 
+Stops the garbage collector.
+</li>
+
+<li><b><a name="pdf-LUA_GCRESTART"><code>LUA_GCRESTART</code></a></b>: 
+Restarts the garbage collector.
+</li>
+
+<li><b><a name="pdf-LUA_GCCOUNT"><code>LUA_GCCOUNT</code></a></b>: 
+Returns the current amount of memory (in Kbytes) in use by Lua.
+</li>
+
+<li><b><a name="pdf-LUA_GCCOUNTB"><code>LUA_GCCOUNTB</code></a></b>: 
+Returns the remainder of dividing the current amount of bytes of
+memory in use by Lua by 1024.
+</li>
+
+<li><b><a name="pdf-LUA_GCSTEP"><code>LUA_GCSTEP</code></a> (size_t n)</b>: 
+Performs a step of garbage collection.
+</li>
+
+<li><b><a name="pdf-LUA_GCISRUNNING"><code>LUA_GCISRUNNING</code></a></b>: 
+Returns a boolean that tells whether the collector is running
+(i.e., not stopped).
+</li>
+
+<li><b><a name="pdf-LUA_GCINC"><code>LUA_GCINC</code></a></b>: 
+Changes the collector to incremental mode.
+Returns the previous mode (<code>LUA_GCGEN</code> or <code>LUA_GCINC</code>).
+</li>
+
+<li><b><a name="pdf-LUA_GCGEN"><code>LUA_GCGEN</code></a></b>: 
+Changes the collector to generational mode.
+Returns the previous mode (<code>LUA_GCGEN</code> or <code>LUA_GCINC</code>).
+</li>
+
+<li><b><a name="pdf-LUA_GCPARAM"><code>LUA_GCPARAM</code></a> (int param, int val)</b>: 
+Changes and/or returns the value of a parameter of the collector.
+If <code>val</code> is -1, the call only returns the current value.
+The argument <code>param</code> must have one of the following values:
+
+<ul>
+<li><b><a name="pdf-LUA_GCPMINORMUL"><code>LUA_GCPMINORMUL</code></a></b>:  The minor multiplier. </li>
+<li><b><a name="pdf-LUA_GCPMAJORMINOR"><code>LUA_GCPMAJORMINOR</code></a></b>:  The major-minor multiplier. </li>
+<li><b><a name="pdf-LUA_GCPMINORMAJOR"><code>LUA_GCPMINORMAJOR</code></a></b>:  The minor-major multiplier. </li>
+<li><b><a name="pdf-LUA_GCPPAUSE"><code>LUA_GCPPAUSE</code></a></b>:  The garbage-collector pause. </li>
+<li><b><a name="pdf-LUA_GCPSTEPMUL"><code>LUA_GCPSTEPMUL</code></a></b>:  The step multiplier. </li>
+<li><b><a name="pdf-LUA_GCPSTEPSIZE"><code>LUA_GCPSTEPSIZE</code></a></b>:  The step size. </li>
+</ul><p>
+</li>
+
+</ul>
+
+<p>
+For more details about these options,
+see <a href="#pdf-collectgarbage"><code>collectgarbage</code></a>.
+
+
+<p>
+This function should not be called by a finalizer.
+
+
+
+
+

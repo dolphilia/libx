@@ -1,0 +1,140 @@
+{
+  "id": "03-c-api/15-functions-and-types-to-type.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T22:42:40.808Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/to-type-source-initial.html",
+      "sha256": "dd8671d2b00170bc9264286d8a422df8a37278e437f2febf989e74523a398c4b"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/to-type-en-initial.md",
+      "sha256": "f5f55f2b10b9014aaa9bbd69b8e7c2f9d6cefa39550f65b7e78a5caf528871bd"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/to-type-ja-initial.md",
+      "sha256": "73b6f5ce80361b2e8b35fc0853333e406c320c02a77ea05d9636aced7e856a99"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          271
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          192
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          192
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual5835〜6105全271行/英日各192行を初回実読、JA2SHOULD NOT修正後に別工程で省略なし全文再読。14関数/23prose/14effects/37p/14decl、全意味・規範・自然さ照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/c-api-to-type.html",
+      "sha256": "dd8671d2b00170bc9264286d8a422df8a37278e437f2febf989e74523a398c4b"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/15-functions-and-types-to-type.md",
+      "sha256": "f5f55f2b10b9014aaa9bbd69b8e7c2f9d6cefa39550f65b7e78a5caf528871bd"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/15-functions-and-types-to-type.md",
+      "sha256": "1cb8b138285ade45169eef37a972ef1acf1244338c2e7a4ed2c7a1c85606af45"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          271
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          192
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          192
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "toboolean0OR1/false nil以外true/実boolonly isboolean、tocfunction MUSTC elseNULL、toclose slot印/スコープ終了4条件Luaへreturn ORerror ORsettop/pop除去 ORcloseslot、他API除去SHOULD NOT exceptsettop/pop UNLESScloseslotdeactivate、neitherclose NORfalse error、active slotと同じか下SHOULD NOTcallを照合。2SHOULD NOTが禁止表現だったのでべきではありませんへ修正。",
+    "toclose error正常returnともclose実行時Cstack既巻戻し/自動変数scope外を保持。tointeger等価x(isnumNULL)/x signedInteger整数OR変換可number/string MUST else0/isnum非NULL成功bool、tonumber等価x/isnumNULL/x Number数OR変換可string MUSTelse0/非NULLboolを照合。",
+    "tolstring MUSTstringORnumber elseNULL、数ならstack値をstringへ変えるem/keys適用時next混乱、len非NULL*len/string末zero常に・内部zero可、GC MAYinvalidate値stack除去時、MEMonlynumber→stringを照合。topointerud/table/thread/string/function可elseNULL/各別pointer/元値不可/hashdebug通常only、tostringtolstring lenNULL、tothreadMUSTthread elseNULL、touserdatafullrawaddress vs lightpointer elseNULLを照合。",
+    "type validtype/nonvalidacceptable TNONE/9定数順とnativeID、typename tp MUST lua_type返すいずれかを照合。JA5節inline順（close/tointeger/tolstring/tonumber/tostring）とリンク順は自然語順・意味一致、節内multiset対応保持。",
+    "原文ENprose全文一致、英日37p/72inline/14pre/14head23IDs/22links/2bold4em/14effects。14宣言字句空白完全一致、未実行。英日PCmobile4実画像でclose修正2規範・例外・巻戻しとtolstringを確認、overflow0console0、locale同page、§4.1.3Enter移動後画像と最終top-0.15625で確認。",
+    "fresh5機械検査exit0（content18728/integrity48371/build3625 exit0、links/diff0）、定本56再現/英日56/1164内部links0/WT整合性/122相対links/117pagebuild合格。112本文+7コード/CSS rootWT最終SHA一致、7code同一で第69の11tests/lint再利用。36→37/55、残り18未確認。新規0/新bug権利deferred維持。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/repairs.json",
+    "sha256": "0af428ba89f54ca1bbfdd4f34bf60dafdb485a34ce8fa4fbb04c9510e9725373"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/validation-reuse.json",
+      "sha256": "6bc5f304661ec1c2c19d3d534a857394426918fbdb59198a280834eb56a77879"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/selective-build.txt",
+      "sha256": "ed836ee20583aa6b095d36ac13fc8f14dc6bbc8ccfaa501f8bcfcb3cf4bb3213"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-083/browser-review.json",
+    "sha256": "5863251dfa5c847c2a21bfdb2078c669b0e93088e00dfaba08fa01ed557574bb"
+  },
+  "nextAction": "第84は03-c-api/17-debug-interface.mdを固定page-map/manual全範囲と英日本文で節単位の初回全文レビュー、必要修正後に別工程全文/機械/英日4viewへ進む。未確認なので全検証時のみ37→38/55。既知upvalue8ページ解消を維持、残り18scopeを順次確認、新bug権利は公式根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り18ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

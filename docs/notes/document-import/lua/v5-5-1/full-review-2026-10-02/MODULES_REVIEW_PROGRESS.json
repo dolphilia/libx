@@ -1,0 +1,141 @@
+{
+  "id": "05-standard-library/05-modules.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T19:46:17.328Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/modules-source-initial.html",
+      "sha256": "4ca97f05da0b52157c35327a88b0c6650cb1c2c5ecbb227de070b1fe3d07ebd4"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/modules-en-initial.md",
+      "sha256": "d45949e2b178539dc26b83dfa6cc475cfc4dbedc9d328fbdae286e8a995f11b4"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/modules-ja-initial.md",
+      "sha256": "1b574709f222af4a22cf292aee8028c1fe3bd972ce1e60de4fadc0fdb98a218e"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          386
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          126
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          154
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "初回fixedmanual9099〜9300/9301〜9484の全386行、英語126行・日本語154行を無省略出力で全文実読。修正後は独立した2出力でsource1〜202/203〜386、英語1〜74/75〜126、日本語1〜74/75〜126を再読。原文→定本→日本語・日本語単独の全35段落、5リスト項目、9API見出し、2コード例を照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/modules.html",
+      "sha256": "4ca97f05da0b52157c35327a88b0c6650cb1c2c5ecbb227de070b1fe3d07ebd4"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/05-standard-library/05-modules.md",
+      "sha256": "d45949e2b178539dc26b83dfa6cc475cfc4dbedc9d328fbdae286e8a995f11b4"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/05-standard-library/05-modules.md",
+      "sha256": "fc2e137f517f456fe352521c4e861fb01c472f6aac73ec25e0e5cf0e2ba96bda"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          386
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          126
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          126
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "導入はrequireをglobalに直接、他はpackage tableにexportする。requireはloaded table既存値返却と第2結果なし、searchers依存/default preload→Lua path→C path→all-in-one順、loader2引数/loaderdata、非nil返却値登録・未代入かつ非nil未返却時true、最終loaded値+searcherdataの第2結果、読み込み/実行error・loader欠落errorを全段落確認。",
+    "package.configはコンパイル時の5行文字列。Windows\\/他OS/、テンプレート区切り;、置換?、実行ファイルdir!、luaopen_後続を無視する-を保持。各項目が3〜5pに分断されたJAリストを改行/余白のみで5連続項目に修正。全ファイル非空白文字一致を確認し本文/API名/記号を保持。",
+    "cpathはCloaderパス、LUA_CPATH_5_5/LUA_CPATH/default luaconf.h、pathと同じ初期化方式。loadedはmodnameの値がfalseでない場合返却、変数はreal table参照のみで代入してもrequire table非変更、C registry LUA_LOADED_TABLE文字列キー。preloadもreal table参照/registry LUA_PRELOAD_TABLE区別を保持。",
+    "loadlibはhost dynamiclink、funcname *はlinkのみ他dynamiclibsにsymbol利用可、その他C関数返却・CFunction契約、module/package迂回・検索/拡張子追加なし・完整libname/正確funcname、ISO C未対応/列挙platform6群、任意functionのprototype/protocol仮定によるaccess violation説明と危険性を保持。",
+    "pathはLua loaderパス、versioned/unversioned env優先/default条件、;;がdefaultpathに置換。searchersはrequireが昇順にmodule名だけを引数に呼ぶ、成功loader+data・失敗理由string/何もなければnil、4検索関数。",
+    "searchersの第1preload、第2Lua path、第3C pathと例./?.so;./?.dll;/usr/local/?/init.so、fooの3file順、dynamiclink→Cfunction名luaopen_+dots→underscores、最初hyphen以降除去a.b.c-v2.1→luaopen_a_b_c、第4rootaのlibからsubmodulea.b.cを探すall-in-oneを全例照合。第1以外filepath追加data、第1は:preload:固定、Lua error/side-effectを避けCside-effects可能という規範/例外を保持。",
+    "searchpathはname/path、semicolonテンプレート順、各?にname内sep（default dot）全置換→rep（default OS directoryseparator）のcopyを代入しopen、./?.lua;./?.lc;/usr/local/?/init.luaとfoo.aの3path順、最初readmodeopen成功filename・close後返却、全失敗fail+全試行filename列挙errorを全読。2codeblock各1行byte一致、実ファイルの動的ロードは実行対象外。",
+    "機械検査source→EN全35段落text/5listitems/106inlinecode/9見出し/17ID/32link対応/2codeblock/8emphasis/true,nil,fail強調を確認。JA語順差はcpath/searchpathの同一code multisetで意味対応を別工程確認。機械検査で41未確認ページの内容を合格にしない。",
+    "英日desktop/mobile4view実読、console0/文書横overflow0。JA list子p数5,3,3,3,5→全0、mobile折返し正常、2codeframesはpre保持/横scroll可能。searchpathリンクEnter→nativeanchor、JA→EN同一modulepage切替確認。",
+    "第56content56再現/内部リンク1164エラー0、専用WTintegrity/relative122/117page selectedbuild/diff全exit0。112body+6コード/CSS rootWT一致。formatter/test SHA不変に基づき第51tests8/lint証拠再利用。",
+    "前回nextActionのsource6.3を訂正。actual manual/header/pageMap/manifestは6.4 Modules→6.5 String Manipulationで、第56は全6.4をレビュー。履歴の誤記と訂正根拠をsource-check.jsonに保存。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/validation-reuse.json",
+      "sha256": "35fc360d79e37ec497b710549c47632efc7151f1753db5868bcf219802592394"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/selective-build.txt",
+      "sha256": "08dcf4a813d4e428fe41a08bacc164d1ee80387a0c12d05516e4e32d2c3e4191"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/tests.txt",
+      "sha256": "a4f094a37236479c44dd284241cc55357709edda2109a2cf90d0a24d542f40bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-056/browser-review.json",
+    "sha256": "1623e90b0cb466884e2f75da76297100b32d29f31f2c37295516189103c6455d"
+  },
+  "nextAction": "第57は02-language/07-lexical-conventions.mdのfixedmanual3.1全文と英日全文を初回実読し、条件・数値・literal例・escape・括弧長などを照合して修正する。別工程全文レビューと英日表示・機械検査を実施、全55scope維持（14/55確認済み、41未確認）。新bug文書権利適用範囲はdeferred継続。",
+  "unresolved": [
+    "全55review scope残り41ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

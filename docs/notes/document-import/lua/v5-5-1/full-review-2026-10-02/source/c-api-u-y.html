@@ -1,0 +1,196 @@
+<hr><h3><a name="lua_Unsigned"><code>lua_Unsigned</code></a></h3>
+<pre class="api">typedef ... lua_Unsigned;</pre>
+
+<p>
+The unsigned version of <a href="#lua_Integer"><code>lua_Integer</code></a>.
+
+
+
+
+
+<hr><h3><a name="lua_upvalueindex"><code>lua_upvalueindex</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_upvalueindex (int i);</pre>
+
+<p>
+Returns the pseudo-index that represents the <code>i</code>-th upvalue of
+the running function (see <a href="#4.2">&sect;4.2</a>).
+<code>i</code> must be in the range <em>[1,256]</em>.
+
+
+
+
+
+<hr><h3><a name="lua_version"><code>lua_version</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_Number lua_version (lua_State *L);</pre>
+
+<p>
+Returns the version number of this core.
+
+
+
+
+
+<hr><h3><a name="lua_WarnFunction"><code>lua_WarnFunction</code></a></h3>
+<pre class="api">typedef void (*lua_WarnFunction) (void *ud, const char *msg, int tocont);</pre>
+
+<p>
+The type of warning functions, called by Lua to emit warnings.
+The first parameter is an opaque pointer
+set by <a href="#lua_setwarnf"><code>lua_setwarnf</code></a>.
+The second parameter is the warning message.
+The third parameter is a boolean that
+indicates whether the message is
+to be continued by the message in the next call.
+
+
+<p>
+See <a href="#pdf-warn"><code>warn</code></a> for more details about warnings.
+
+
+
+
+
+<hr><h3><a name="lua_warning"><code>lua_warning</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">void lua_warning (lua_State *L, const char *msg, int tocont);</pre>
+
+<p>
+Emits a warning with the given message.
+A message in a call with <code>tocont</code> true should be
+continued in another call to this function.
+
+
+<p>
+See <a href="#pdf-warn"><code>warn</code></a> for more details about warnings.
+
+
+
+
+
+<hr><h3><a name="lua_Writer"><code>lua_Writer</code></a></h3>
+<pre class="api">typedef int (*lua_Writer) (lua_State *L,
+                           const void* p,
+                           size_t sz,
+                           void* ud);</pre>
+
+<p>
+The type of the writer function used by <a href="#lua_dump"><code>lua_dump</code></a>.
+Every time <a href="#lua_dump"><code>lua_dump</code></a> produces another piece of chunk,
+it calls the writer,
+passing along the buffer to be written (<code>p</code>),
+its size (<code>sz</code>),
+and the <code>ud</code> parameter supplied to <a href="#lua_dump"><code>lua_dump</code></a>.
+
+
+<p>
+After <a href="#lua_dump"><code>lua_dump</code></a> writes its last piece,
+it will signal that by calling the writer function one more time,
+with a <code>NULL</code> buffer (and size 0).
+
+
+<p>
+The writer returns an error code:
+0&nbsp;means no errors;
+any other value means an error and stops <a href="#lua_dump"><code>lua_dump</code></a> from
+calling the writer again.
+
+
+
+
+
+<hr><h3><a name="lua_xmove"><code>lua_xmove</code></a></h3><p>
+<span class="apii">[-?, +?, &ndash;]</span>
+<pre class="api">void lua_xmove (lua_State *from, lua_State *to, int n);</pre>
+
+<p>
+Exchange values between different threads of the same state.
+
+
+<p>
+This function pops <code>n</code> values from the stack <code>from</code>,
+and pushes them onto the stack <code>to</code>.
+
+
+
+
+
+<hr><h3><a name="lua_yield"><code>lua_yield</code></a></h3><p>
+<span class="apii">[-?, +?, <em>v</em>]</span>
+<pre class="api">int lua_yield (lua_State *L, int nresults);</pre>
+
+<p>
+This function is equivalent to <a href="#lua_yieldk"><code>lua_yieldk</code></a>,
+but it has no continuation (see <a href="#4.5">&sect;4.5</a>).
+Therefore, when the thread resumes,
+it continues the function that called
+the function calling <code>lua_yield</code>.
+To avoid surprises,
+this function should be called only in a tail call.
+
+
+
+
+
+<hr><h3><a name="lua_yieldk"><code>lua_yieldk</code></a></h3><p>
+<span class="apii">[-?, +?, <em>v</em>]</span>
+<pre class="api">int lua_yieldk (lua_State *L,
+                int nresults,
+                lua_KContext ctx,
+                lua_KFunction k);</pre>
+
+<p>
+Yields a coroutine (thread).
+
+
+<p>
+When a C&nbsp;function calls <a href="#lua_yieldk"><code>lua_yieldk</code></a>,
+the running coroutine suspends its execution,
+and the call to <a href="#lua_resume"><code>lua_resume</code></a> that started this coroutine returns.
+The parameter <code>nresults</code> is the number of values from the stack
+that will be passed as results to <a href="#lua_resume"><code>lua_resume</code></a>.
+
+
+<p>
+When the coroutine is resumed again,
+Lua calls the given continuation function <code>k</code> to continue
+the execution of the C&nbsp;function that yielded (see <a href="#4.5">&sect;4.5</a>).
+This continuation function receives the same stack
+from the previous function,
+with all the results (<code>nresults</code>) removed and
+replaced by the arguments passed to <a href="#lua_resume"><code>lua_resume</code></a>.
+Moreover,
+the continuation function receives the value <code>ctx</code>
+that was passed to <a href="#lua_yieldk"><code>lua_yieldk</code></a>.
+
+
+<p>
+Usually, this function does not return;
+when the coroutine eventually resumes,
+it continues executing the continuation function.
+However, there is one special case,
+which is when this function is called
+from inside a line or a count hook (see <a href="#4.7">&sect;4.7</a>).
+In that case, <code>lua_yieldk</code> should be called with no continuation
+(probably in the form of <a href="#lua_yield"><code>lua_yield</code></a>) and no results,
+and the hook should return immediately after the call.
+Lua will yield and,
+when the coroutine resumes again,
+it will continue the normal execution
+of the (Lua) function that triggered the hook.
+
+
+<p>
+This function can raise an error if it is called from a thread
+with a pending C call with no continuation function
+(what is called a <em>C-call boundary</em>),
+or it is called from a thread that is not running inside a resume
+(typically the main thread).
+
+
+
+
+
+
+

@@ -1,0 +1,136 @@
+{
+  "id": "05-standard-library/07-utf8-support.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T23:32:18.209Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-093/standard-utf8-source-initial.html",
+      "sha256": "0f406690eb63484dcfb0abc9c4eb8fc6eaad4628316145b76345abbf793983dc"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-093/standard-utf8-en-initial.md",
+      "sha256": "2d5477a65ffe7d6177cab7c6984028bb5fc800dd55931695d82c9f0abe20c44e"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-093/standard-utf8-ja-initial.md",
+      "sha256": "664df509f946cea28d5925b5ae6f5472f7bb3ed59bbca3f49367c09c73144bc4"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          152
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          64
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          64
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual10293〜10444全152行/英日64行を初回と別工程で省略なし全実読。5関数+1pattern/15本文段落の意味/例外/自然さを照合。修正不要。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/standard-utf8.html",
+      "sha256": "0f406690eb63484dcfb0abc9c4eb8fc6eaad4628316145b76345abbf793983dc"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/05-standard-library/07-utf8-support.md",
+      "sha256": "2d5477a65ffe7d6177cab7c6984028bb5fc800dd55931695d82c9f0abe20c44e"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/05-standard-library/07-utf8-support.md",
+      "sha256": "664df509f946cea28d5925b5ae6f5472f7bb3ed59bbca3f49367c09c73144bc4"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          152
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          64
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          64
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "utf8table/encodingのみ・文字分類等対象外、特記なければbyte位置は列先頭OR文字列長+1/負index末尾から、生成側0x7FFFFFFF最大6bytes/解釈側wellformed非overlong/既定Unicode10FFFF上限+surrogates拒否、laxで値チェック解除もmalformed/overlong拒否保持を照合。",
+    "char zero以上整数→UTF8列連結、charpattern文字列NOTfunction/validUTF8仮定/1列exactmatch/escape全字句と§6.5.1、codes for p,c模式例/byte位置とcodepoint/invalidならerror、codepoint開始位置i〜j両端含む/既定i1ji/invaliderror、len開始i〜j両端/既定i1j-1/invalid fail+firstinvalidbyteを照合。",
+    "offset2整数でencodingstart/end byteindex返却、末尾直後は零文字相当/対象内OR末尾直後でなければfail、負n i前/既定非負n1他#s+1/末尾からn番、n0 i番byteを含む文字のstartend/validUTF8仮定全条件を照合。",
+    "原文ENprose全一致、15p/42inline1pre(1行模式例)/6head8ID1link2bold0em。offset節inline自然語順multiset保持。pre内body原文emはコード文字body保持とbyte完全一致で対応を検査。例は未実行。初回と別工程原文ENJA全実読、112本文+7code rootWT同SHA確認、第91機械5検査/117pagebuild・第69の11tests/lint再利用。",
+    "英日PCmobile4画像実見で導入4段落/lax例外/offset5段落/charpatternとコード模式例を確認。overflow0console0/locale同page/§6.5.1Enter最終見出しtop-0.867px。46→47/55、残り8未確認。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-093/validation-reuse.json",
+      "sha256": "55812cf46e9d33f20bcaae76f050644d91f477872f21d21984c459e134fd8871"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/selective-build.txt",
+      "sha256": "632d4d88b3e3f6fe00ef9abf1ea9623b297fa0df59f095b67880df80b0cae0b1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-091/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-093/browser-review.json",
+    "sha256": "4662e03d31716619542117a8cb82437e1190bd2a8f06ea2effa1a41f7703184a"
+  },
+  "nextAction": "第94は05-standard-library/08-table-manipulation.mdを固定page-map/manual全範囲と英日全文で初回レビュー、別工程全文/機械/英日4viewへ。全検証時のみ47→48/55、残り8未確認。新bug権利とaddgsub宣言不一致は公式根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り8ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "luaL_addgsub宣言は固定マニュアルconst voidと同固定tarヘッダー/実装voidで異なる。定本保持、宣言実行未検証。次回公式上流巡回で訂正根拠を確認。"
+  ]
+}

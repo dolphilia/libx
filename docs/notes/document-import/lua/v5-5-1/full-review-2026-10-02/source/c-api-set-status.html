@@ -1,0 +1,214 @@
+<hr><h3><a name="lua_setallocf"><code>lua_setallocf</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">void lua_setallocf (lua_State *L, lua_Alloc f, void *ud);</pre>
+
+<p>
+Changes the allocator function of a given state to <code>f</code>
+with user data <code>ud</code>.
+
+
+
+
+
+<hr><h3><a name="lua_setfield"><code>lua_setfield</code></a></h3><p>
+<span class="apii">[-1, +0, <em>e</em>]</span>
+<pre class="api">void lua_setfield (lua_State *L, int index, const char *k);</pre>
+
+<p>
+Does the equivalent to <code>t[k] = v</code>,
+where <code>t</code> is the value at the given index
+and <code>v</code> is the value on the top of the stack.
+
+
+<p>
+This function pops the value from the stack.
+As in Lua, this function may trigger a metamethod
+for the "newindex" event (see <a href="#2.4">&sect;2.4</a>).
+
+
+
+
+
+<hr><h3><a name="lua_setglobal"><code>lua_setglobal</code></a></h3><p>
+<span class="apii">[-1, +0, <em>e</em>]</span>
+<pre class="api">void lua_setglobal (lua_State *L, const char *name);</pre>
+
+<p>
+Pops a value from the stack and
+sets it as the new value of global <code>name</code>.
+
+
+
+
+
+<hr><h3><a name="lua_seti"><code>lua_seti</code></a></h3><p>
+<span class="apii">[-1, +0, <em>e</em>]</span>
+<pre class="api">void lua_seti (lua_State *L, int index, lua_Integer n);</pre>
+
+<p>
+Does the equivalent to <code>t[n] = v</code>,
+where <code>t</code> is the value at the given index
+and <code>v</code> is the value on the top of the stack.
+
+
+<p>
+This function pops the value from the stack.
+As in Lua, this function may trigger a metamethod
+for the "newindex" event (see <a href="#2.4">&sect;2.4</a>).
+
+
+
+
+
+<hr><h3><a name="lua_setiuservalue"><code>lua_setiuservalue</code></a></h3><p>
+<span class="apii">[-1, +0, &ndash;]</span>
+<pre class="api">int lua_setiuservalue (lua_State *L, int index, int n);</pre>
+
+<p>
+Pops a value from the stack and sets it as
+the new <code>n</code>-th user value associated to the
+full userdata at the given index.
+Returns 0 if the userdata does not have that value.
+
+
+
+
+
+<hr><h3><a name="lua_setmetatable"><code>lua_setmetatable</code></a></h3><p>
+<span class="apii">[-1, +0, &ndash;]</span>
+<pre class="api">int lua_setmetatable (lua_State *L, int index);</pre>
+
+<p>
+Pops a table or <b>nil</b> from the stack and
+sets that value as the new metatable for the value at the given index.
+(<b>nil</b> means no metatable.)
+
+
+<p>
+(For historical reasons, this function returns an <code>int</code>,
+which now is always 1.)
+
+
+
+
+
+<hr><h3><a name="lua_settable"><code>lua_settable</code></a></h3><p>
+<span class="apii">[-2, +0, <em>e</em>]</span>
+<pre class="api">void lua_settable (lua_State *L, int index);</pre>
+
+<p>
+Does the equivalent to <code>t[k] = v</code>,
+where <code>t</code> is the value at the given index,
+<code>v</code> is the value on the top of the stack,
+and <code>k</code> is the value just below the top.
+
+
+<p>
+This function pops both the key and the value from the stack.
+As in Lua, this function may trigger a metamethod
+for the "newindex" event (see <a href="#2.4">&sect;2.4</a>).
+
+
+
+
+
+<hr><h3><a name="lua_settop"><code>lua_settop</code></a></h3><p>
+<span class="apii">[-?, +?, <em>e</em>]</span>
+<pre class="api">void lua_settop (lua_State *L, int index);</pre>
+
+<p>
+Receives any acceptable stack index, or&nbsp;0,
+and sets the stack top to this index.
+If the new top is greater than the old one,
+then the new elements are filled with <b>nil</b>.
+If <code>index</code> is&nbsp;0, then all stack elements are removed.
+
+
+<p>
+This function can run arbitrary code when removing an index
+marked as to-be-closed from the stack.
+
+
+
+
+
+<hr><h3><a name="lua_setwarnf"><code>lua_setwarnf</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">void lua_setwarnf (lua_State *L, lua_WarnFunction f, void *ud);</pre>
+
+<p>
+Sets the warning function to be used by Lua to emit warnings
+(see <a href="#lua_WarnFunction"><code>lua_WarnFunction</code></a>).
+The <code>ud</code> parameter sets the value <code>ud</code> passed to
+the warning function.
+
+
+
+
+
+<hr><h3><a name="lua_State"><code>lua_State</code></a></h3>
+<pre class="api">typedef struct lua_State lua_State;</pre>
+
+<p>
+An opaque structure that points to a thread and indirectly
+(through the thread) to the whole state of a Lua interpreter.
+The Lua library is fully reentrant:
+it has no global variables.
+All information about a state is accessible through this structure.
+
+
+<p>
+A pointer to this structure must be passed as the first argument to
+every function in the library, except to <a href="#lua_newstate"><code>lua_newstate</code></a>,
+which creates a Lua state from scratch.
+
+
+
+
+
+<hr><h3><a name="lua_status"><code>lua_status</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_status (lua_State *L);</pre>
+
+<p>
+Returns the status of the thread <code>L</code>.
+
+
+<p>
+The status can be <a href="#pdf-LUA_OK"><code>LUA_OK</code></a> for a normal thread,
+an error code if the thread finished the execution
+of a <a href="#lua_resume"><code>lua_resume</code></a> with an error,
+or <a href="#pdf-LUA_YIELD"><code>LUA_YIELD</code></a> if the thread is suspended.
+
+
+<p>
+You can call functions only in threads with status <a href="#pdf-LUA_OK"><code>LUA_OK</code></a>.
+You can resume threads with status <a href="#pdf-LUA_OK"><code>LUA_OK</code></a>
+(to start a new coroutine) or <a href="#pdf-LUA_YIELD"><code>LUA_YIELD</code></a>
+(to resume a coroutine).
+
+
+
+
+
+<hr><h3><a name="lua_stringtonumber"><code>lua_stringtonumber</code></a></h3><p>
+<span class="apii">[-0, +(0|1), &ndash;]</span>
+<pre class="api">size_t lua_stringtonumber (lua_State *L, const char *s);</pre>
+
+<p>
+Converts the zero-terminated string <code>s</code> to a number,
+pushes that number into the stack,
+and returns the total size of the string,
+that is, its length plus one.
+The conversion can result in an integer or a float,
+according to the lexical conventions of Lua (see <a href="#3.1">&sect;3.1</a>).
+The string may have leading and trailing whitespaces and a sign.
+If the string is not a valid numeral,
+returns 0 and pushes nothing.
+(Note that the result can be used as a boolean,
+true if the conversion succeeds.)
+
+
+
+
+

@@ -1,0 +1,146 @@
+{
+  "id": "03-c-api/12-functions-and-types-pop-push.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T22:09:48.205Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/pop-push-source-initial.html",
+      "sha256": "1f2a5f461ce03c0956bf2f44a02a2c24cbe23efac4671f8645407db1f416b22e"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/pop-push-en-initial.md",
+      "sha256": "253cfb54e4437b5c03af2a43e419b31838569aaadac34f6170e382b7f6280007"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/pop-push-ja-initial.md",
+      "sha256": "470ce1c71111518910fefd353717869405e6dc0546297ccc204b8570bc4efba2"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          329
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          241
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          241
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual5023〜5351全329行/EN241JA241の編集前全文実読。訳語6/should強度3修正後、別工程source全329/EN全241/最終JA全241を省略なし再読。17関数/31prose/17effectsの意味・例外・規範・自然さを全照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/c-api-pop-push.html",
+      "sha256": "1f2a5f461ce03c0956bf2f44a02a2c24cbe23efac4671f8645407db1f416b22e"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/12-functions-and-types-pop-push.md",
+      "sha256": "253cfb54e4437b5c03af2a43e419b31838569aaadac34f6170e382b7f6280007"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/12-functions-and-types-pop-push.md",
+      "sha256": "fa3fd0e1fc6c6c6ea32baec1d4a71d304c390c371418cfe4ac10093393e1030a"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          329
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          241
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          241
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "pop n/settop macro、boolean b、cclosure function型対応C関数/nアップバリュー/呼出protocol MUST/初期値を先にpush・複数firstfirst/createandpush+pop/n最大255/n0lightCpointer NEVERmemoryerror、cfunctionアップバリュー無し等価を照合。訳語6修正。",
+    "externalstring Lua非管理外部buffer s,len/末尾zero SHOULD・s[len]==zero SHOULD/長さ整数fit MUSTを照合。旧JAはshould2箇所を必須化、buffer SHOULDNOTも禁止化していたので3箇所修正。falloc非NULL時buffer不要時call/ud,s,len+1,0/header必要/allocationerror前callback/return s保持。",
+    "pushfstring fmtcopy/conversion各%%,%s無サイズ制限,%fLua_Number,%ILua_Integer,%pvoid*,%dint,%cintonebyte,%UunsignedlongUTF8を照合。全%有効specifier MUST、memory以外toolarge MAYerror保持。globalenv/integer n/lightuserdata pointer void*・number様value・uncreated/noindividualmetatable/uncollected/sameCaddress equality、literal SHOULDonlyliteral・MAYoptimizeを照合。",
+    "lstring internalcopy作成ORreuse→return後直ちにsfreeORreuse/embeddedzeros任意binary/内部pointer4.1.3/toolarge MAYerror、nil、numberfloat n、stringzeroterm/copyORreuse/return後解放可/internalpointer/sNULLpushnil+returnNULLを照合。thread L/main時1（他時の値は補筆無し）、valueindexcopy、vfstring va_list/NEVERerror・エラー時msgpush+NULLを確認。",
+    "機械検査は内容レビューと分離。原文EN全prose exact、31prose+17effects=48p、17関数17ID/17Cblocksbyteexact/72inline/14links/1bold/11em一致。JA fstringはspecifier列挙を後置、vfstringはva_listを先行する自然語順だが全意味保持。宣言未実行。",
+    "英日PC/mobile4画像実読、externalstring should/mustとcallback条件保持。48p/72inline/17head17ID/14links/11em/17pre確認、overflow0/console0。PCコード幅収容/mobilepre内部横スクロール。§4.1.3Enter nativeID到達top-0.15625・JA→EN同page成功。",
+    "fresh5検査exit0（build session78604含む）、定本再現56/英日56/1164内部links0/WT整合性/122相対links/117pagebuild/diff成功。7code同SHAで第69の11test/lint再利用。29→30/55、25未確認。訳語4→3未修正、new0/新bug権利deferred維持。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/repairs.json",
+    "sha256": "43473d06df3dfed6b0b19357acdd91051061366da5db5ab2af8f633a00770a4f"
+  },
+  "terminologyAudit": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/terminology-audit.json",
+    "sha256": "e7c4d2101615113904d02f2810b5e47e03acd9443cd272ba0563e2b5b3853b82"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/validation-reuse.json",
+      "sha256": "10de29acc3ddb3dec4d6ca373d70481e36e0434b42a3ed50bfcea338f9e42d62"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/selective-build.txt",
+      "sha256": "3d476b30f650cd019031cb961cd198df798bc7c4f5220eace8af49b76911db69"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-076/browser-review.json",
+    "sha256": "0577e30f2e5a67e36c88423aab15c4debee8277f01996fdeb603d937af874418"
+  },
+  "nextAction": "第77は既知訳語課題を優先し03-c-api/16-functions-and-types-u-y.mdを固定page-map/manual全範囲で初回全文レビューし、上位値1箇所など必要な修正、別工程全文/機械/英日4viewへ進む。未確認なので全検証時のみ30→31/55。残り2訳語/25scopeを継続、newbug権利根拠確定時のみ。",
+  "unresolved": [
+    "全55review scope残り25ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "upvalue訳語の未修正3ページ（既内容/表示合格0、未確認3）。用語適合は未完として各修正後に再検証。"
+  ]
+}

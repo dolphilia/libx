@@ -1,0 +1,131 @@
+{
+  "id": "02-language/01-values-and-types.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T18:36:20.266Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/values-source-initial.html",
+      "sha256": "3a7d32abe3d6426cf2b4e4312891345ec56b7ddfa3518b7cbcbcd35060cb4223"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/values-en-initial.md",
+      "sha256": "406c017e6774d611d0968128bd8cc848448f14b180162ad10ff5beaa789db058"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/values-ja-initial.md",
+      "sha256": "d83f057cbbabcb39bacbd001b67f62e5fcf18a8ccf21bd23aea07c123ee49223"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          192
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          42
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          42
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual 2 Basic Conceptsから2.2直前のsource192行、英語42行、日本語42行を初回・別工程・修正後別工程のツール出力で全文実読。原文→定本、定本→日本語、日本語単独を確認。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/values-and-types.html",
+      "sha256": "3a7d32abe3d6426cf2b4e4312891345ec56b7ddfa3518b7cbcbcd35060cb4223"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/02-language/01-values-and-types.md",
+      "sha256": "406c017e6774d611d0968128bd8cc848448f14b180162ad10ff5beaa789db058"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/02-language/01-values-and-types.md",
+      "sha256": "a4d288551b95e44eb61a0220b21a2906c09096b94b3a3c0a2f8fcb87205c4b7e"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          192
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          42
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          42
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "17段落全文を照合。変数には型がなく値にある、型定義なし、全値first-classと8基本型を保持。nil単一値、boolean false/true、nilとfalseのみ偽、table内false通常値とnil欠落keyの区別を確認。",
+    "numberのinteger/float、標準64bit整数と倍精度64bit float、32bit整数および/または単精度32bit float、小型/組込み向け双方32bitを保持。LUA_32BITS/luaconf.hはJAの順序のみ異なる。",
+    "原文のunless stated otherwise、二の補数overflowラップ、2^nを法として合同で一意な表現可能整数を確認。日本語*2<sup>n</sup>*が画面にliteral asteriskとして残る不具合を発見し<em>表記1箇所へ修正、DOM em30→31/sup1を確認。仕様や数値を変更しない。",
+    "サブタイプ自動変換と表現全制御の選択、immutable byte string/8bitclean/embedded zero/encoding agnostic、lengthはLua整数・header込みsize_tの双方に収まる制限を保持。",
+    "Lua/C函数のfunction型、full userdata managedmemoryとlight Cpointer、代入・同一性以外のpredefined opsなし、fullのみmetatable ops、C APIだけでcreate/modifyの制限を保持。threadはOS threadとは無関係、非native thread systemでもcoroutine対応を保持。",
+    "table keyはnil/NaN除く任意Lua値、IEEE754未定義0/0、value nil除外、nil関連key欠落とその逆を保持。唯一datastructureとfield sugar a.name/a[\"name\"]、任意型fields/functions/methodsを確認。",
+    "raw equalityのif and only ifとmetamethod未使用、integral float==integer、1.0==1とa[2.0]=true実key2を保持。table/function/thread/fulluserdataはobjects、assign/args/returnsは参照操作・コピーなし、typeは型説明string返却を保持。",
+    "英語17段落textがsource一致。inlinecode16、bold13、emphasis31、sup n1、links8とid2個を機械照合。JAのファイル/マクロ・糖衣/展開形・n定義/法の語順差は全文で意味照合。",
+    "JA1箇所変更のため第48content/links/integrity/diff/117page Lua限定buildを新規実行し成功。root/WT112body現SHA一致、他5合格ページは不変。英日desktop/mobile4view横overflowなし、JA§2.4 Enter往復・locale同一page・EN TOC Enterを新規確認。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/validation-reuse.json",
+      "sha256": "3a9b1a4919359e98d54cbf4ff8af3fda3f21aa70e415f204715156c806cc409b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/selective-build.txt",
+      "sha256": "ce507660794bc094d49ecf629bde31e0f9517ba0333142d3e8bef8a17c439a44"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-048/browser-review.json",
+    "sha256": "c2c2d793a1e46a585f9729db458dc50d3c5a9f4ca1f010ad417ddc5625a7735e"
+  },
+  "nextAction": "固定manual 2.2 Environmentsから2.3 Error Handling前までを保存し02-language/02-scopes-variables-and-environments.mdのsource/英日全文を照合、別工程レビューと英日desktop/mobile表示検証を行う。",
+  "unresolved": [
+    "全55review scope残り49ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

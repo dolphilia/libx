@@ -1,0 +1,253 @@
+<hr><h3><a name="lua_newstate"><code>lua_newstate</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_State *lua_newstate (lua_Alloc f, void *ud,
+                                   unsigned int seed);</pre>
+
+<p>
+Creates a new independent state and returns its main thread.
+Returns <code>NULL</code> if it cannot create the state
+(due to lack of memory).
+The argument <code>f</code> is the allocator function;
+Lua will do all memory allocation for this state
+through this function (see <a href="#lua_Alloc"><code>lua_Alloc</code></a>).
+The second argument, <code>ud</code>, is an opaque pointer that Lua
+passes to the allocator in every call.
+The third argument, <code>seed</code>,
+is a seed for the hashing of strings.
+
+
+
+
+
+<hr><h3><a name="lua_newtable"><code>lua_newtable</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">void lua_newtable (lua_State *L);</pre>
+
+<p>
+Creates a new empty table and pushes it onto the stack.
+It is equivalent to <code>lua_createtable(L,0,0)</code>.
+
+
+
+
+
+<hr><h3><a name="lua_newthread"><code>lua_newthread</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">lua_State *lua_newthread (lua_State *L);</pre>
+
+<p>
+Creates a new thread, pushes it on the stack,
+and returns a pointer to a <a href="#lua_State"><code>lua_State</code></a> that represents this new thread.
+The new thread returned by this function shares with the original thread
+its global environment,
+but has an independent execution stack.
+
+
+<p>
+Threads are subject to garbage collection,
+like any Lua object.
+
+
+
+
+
+<hr><h3><a name="lua_newuserdatauv"><code>lua_newuserdatauv</code></a></h3><p>
+<span class="apii">[-0, +1, <em>m</em>]</span>
+<pre class="api">void *lua_newuserdatauv (lua_State *L, size_t size, int nuvalue);</pre>
+
+<p>
+This function creates and pushes on the stack a new full userdata,
+with <code>nuvalue</code> associated Lua values, called <code>user values</code>,
+plus an associated block of raw memory with <code>size</code> bytes.
+
+
+<p>
+The user values can be set and read with the functions
+<a href="#lua_setiuservalue"><code>lua_setiuservalue</code></a> and <a href="#lua_getiuservalue"><code>lua_getiuservalue</code></a>.
+The block of memory is suitably aligned for any ISO&nbsp;C object.
+(See macro <code>LUAI_MAXALIGN</code> in file <code>luaconf.h</code> for other
+alignment requirements.)
+
+
+<p>
+The function returns the address of the block of memory.
+Lua ensures that this address is valid as long as
+the corresponding userdata is alive (see <a href="#2.5">&sect;2.5</a>).
+Moreover, if the userdata is marked for finalization (see <a href="#2.5.3">&sect;2.5.3</a>),
+its address is valid at least until the call to its finalizer.
+
+
+
+
+
+<hr><h3><a name="lua_next"><code>lua_next</code></a></h3><p>
+<span class="apii">[-1, +(2|0), <em>v</em>]</span>
+<pre class="api">int lua_next (lua_State *L, int index);</pre>
+
+<p>
+Pops a key from the stack,
+and pushes a key&ndash;value pair from the table at the given index,
+the "next" pair after the given key.
+If there are no more elements in the table,
+then <a href="#lua_next"><code>lua_next</code></a> returns&nbsp;0 and pushes nothing.
+
+
+<p>
+A typical table traversal looks like this:
+
+<pre>
+     /* table is in the stack at index 't' */
+     lua_pushnil(L);  /* first key */
+     while (lua_next(L, t) != 0) {
+       /* uses 'key' (at index -2) and 'value' (at index -1) */
+       printf("%s - %s\n",
+              lua_typename(L, lua_type(L, -2)),
+              lua_typename(L, lua_type(L, -1)));
+       /* removes 'value'; keeps 'key' for next iteration */
+       lua_pop(L, 1);
+     }
+</pre>
+
+<p>
+While traversing a table,
+avoid calling <a href="#lua_tolstring"><code>lua_tolstring</code></a> directly on a key,
+unless you know that the key is actually a string.
+Recall that <a href="#lua_tolstring"><code>lua_tolstring</code></a> may change
+the value at the given index;
+this confuses the next call to <a href="#lua_next"><code>lua_next</code></a>.
+
+
+<p>
+This function may raise an error if the given key
+is neither <b>nil</b> nor present in the table.
+
+
+<p>
+See function <a href="#pdf-next"><code>next</code></a> for more details about the traversal.
+
+
+
+
+
+<hr><h3><a name="lua_Number"><code>lua_Number</code></a></h3>
+<pre class="api">typedef ... lua_Number;</pre>
+
+<p>
+The type of floats in Lua.
+
+
+<p>
+By default this type is double,
+but that can be changed to a single float or a long double.
+(See <code>LUA_FLOAT_TYPE</code> in <code>luaconf.h</code>.)
+
+
+
+
+
+<hr><h3><a name="lua_numbertointeger"><code>lua_numbertointeger</code></a></h3>
+<pre class="api">int lua_numbertointeger (lua_Number n, lua_Integer *p);</pre>
+
+<p>
+Tries to convert a Lua float to a Lua integer;
+the float <code>n</code> must have an integral value.
+If that value is within the range of Lua integers,
+it is converted to an integer and assigned to <code>*p</code>.
+The macro results in a boolean indicating whether the
+conversion was successful.
+(Note that this range test can be tricky to do
+correctly without this macro, due to rounding.)
+
+
+<p>
+This macro may evaluate its arguments more than once.
+
+
+
+
+
+<hr><h3><a name="lua_numbertocstring"><code>lua_numbertocstring</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">unsigned lua_numbertocstring (lua_State *L, int idx,
+                                        char *buff);</pre>
+
+<p>
+Converts the number at acceptable index <code>idx</code> to a string
+and puts the result in <code>buff</code>.
+The buffer must have a size of at least <a name="pdf-LUA_N2SBUFFSZ"><code>LUA_N2SBUFFSZ</code></a> bytes.
+The conversion follows a non-specified format (see <a href="#3.4.3">&sect;3.4.3</a>).
+The function returns the number of bytes written to the buffer
+(including the final zero),
+or zero if the value at <code>idx</code> is not a number.
+
+
+
+
+
+<hr><h3><a name="lua_pcall"><code>lua_pcall</code></a></h3><p>
+<span class="apii">[-(nargs + 1), +(nresults|1), &ndash;]</span>
+<pre class="api">int lua_pcall (lua_State *L, int nargs, int nresults, int msgh);</pre>
+
+<p>
+Calls a function (or a callable object) in protected mode.
+
+
+<p>
+Both <code>nargs</code> and <code>nresults</code> have the same meaning as
+in <a href="#lua_call"><code>lua_call</code></a>.
+If there are no errors during the call,
+<a href="#lua_pcall"><code>lua_pcall</code></a> behaves exactly like <a href="#lua_call"><code>lua_call</code></a>.
+However, if there is any error,
+<a href="#lua_pcall"><code>lua_pcall</code></a> catches it,
+pushes a single value on the stack (the error object),
+and returns an error code.
+Like <a href="#lua_call"><code>lua_call</code></a>,
+<a href="#lua_pcall"><code>lua_pcall</code></a> always removes the function
+and its arguments from the stack.
+
+
+<p>
+If <code>msgh</code> is 0,
+then the error object returned on the stack
+is exactly the original error object.
+Otherwise, <code>msgh</code> is the stack index of a
+<em>message handler</em>.
+(This index cannot be a pseudo-index.)
+In case of runtime errors,
+this handler will be called with the error object
+and its return value will be the object
+returned on the stack by <a href="#lua_pcall"><code>lua_pcall</code></a>.
+
+
+<p>
+Typically, the message handler is used to add more debug
+information to the error object, such as a stack traceback.
+Such information cannot be gathered after the return of <a href="#lua_pcall"><code>lua_pcall</code></a>,
+since by then the stack has unwound.
+
+
+<p>
+The <a href="#lua_pcall"><code>lua_pcall</code></a> function returns one of the following status codes:
+<a href="#pdf-LUA_OK"><code>LUA_OK</code></a>, <a href="#pdf-LUA_ERRRUN"><code>LUA_ERRRUN</code></a>, <a href="#pdf-LUA_ERRMEM"><code>LUA_ERRMEM</code></a>, or <a href="#pdf-LUA_ERRERR"><code>LUA_ERRERR</code></a>.
+
+
+
+
+
+<hr><h3><a name="lua_pcallk"><code>lua_pcallk</code></a></h3><p>
+<span class="apii">[-(nargs + 1), +(nresults|1), &ndash;]</span>
+<pre class="api">int lua_pcallk (lua_State *L,
+                int nargs,
+                int nresults,
+                int msgh,
+                lua_KContext ctx,
+                lua_KFunction k);</pre>
+
+<p>
+This function behaves exactly like <a href="#lua_pcall"><code>lua_pcall</code></a>,
+except that it allows the called function to yield (see <a href="#4.5">&sect;4.5</a>).
+
+
+
+
+

@@ -1,0 +1,343 @@
+<h2>2.5 &ndash; <a name="2.5">Garbage Collection</a></h2>
+
+
+
+<p>
+Lua performs automatic memory management.
+This means that
+you do not have to worry about allocating memory for new objects
+or freeing it when the objects are no longer needed.
+Lua manages memory automatically by running
+a <em>garbage collector</em> to collect all <em>dead</em> objects.
+All memory used by Lua is subject to automatic management:
+strings, tables, userdata, functions, threads, internal structures, etc.
+
+
+<p>
+An object is considered <em>dead</em>
+as soon as the collector can be sure the object
+will not be accessed again in the normal execution of the program.
+("Normal execution" here excludes finalizers,
+which resurrect dead objects (see <a href="#2.5.3">&sect;2.5.3</a>),
+and it excludes also some operations using the debug library.)
+Note that the time when the collector can be sure that an object
+is dead may not coincide with the programmer's expectations.
+The only guarantees are that Lua will not collect an object
+that may still be accessed in the normal execution of the program,
+and it will eventually collect an object
+that is inaccessible from Lua.
+(Here,
+<em>inaccessible from Lua</em> means that neither a variable nor
+another live object refer to the object.)
+Because Lua has no knowledge about C&nbsp;code,
+it never collects objects accessible through the registry (see <a href="#4.3">&sect;4.3</a>),
+which includes the global environment (see <a href="#2.2">&sect;2.2</a>) and
+the main thread.
+
+
+<p>
+The garbage collector (GC) in Lua can work in two modes:
+incremental and generational.
+
+
+<p>
+The default GC mode with the default parameters
+are adequate for most uses.
+However, programs that waste a large proportion of their time
+allocating and freeing memory can benefit from other settings.
+Keep in mind that the GC behavior is non-portable
+both across platforms and across different Lua releases;
+therefore, optimal settings are also non-portable.
+
+
+<p>
+You can change the GC mode and parameters by calling
+<a href="#lua_gc"><code>lua_gc</code></a> in&nbsp;C
+or <a href="#pdf-collectgarbage"><code>collectgarbage</code></a> in Lua.
+You can also use these functions to control the collector directly,
+for instance to stop or restart it.
+
+
+
+
+
+<h3>2.5.1 &ndash; <a name="2.5.1">Incremental Garbage Collection</a></h3>
+
+<p>
+In incremental mode,
+each GC cycle performs a mark-and-sweep collection in small steps
+interleaved with the program's execution.
+In this mode,
+the collector uses three numbers to control its garbage-collection cycles:
+the <em>garbage-collector pause</em>,
+the <em>garbage-collector step multiplier</em>,
+and the <em>garbage-collector step size</em>.
+
+
+<p>
+The garbage-collector pause
+controls how long the collector waits before starting a new cycle.
+The collector starts a new cycle when the number of bytes
+hits <em>n%</em> of the total after the previous collection.
+Larger values make the collector less aggressive.
+Values equal to or less than 100 mean the collector will not wait to
+start a new cycle.
+A value of 200 means that the collector waits for
+the total number of bytes to double before starting a new cycle.
+
+
+<p>
+The garbage-collector step size controls the
+size of each incremental step,
+specifically how many bytes the interpreter allocates
+before performing a step:
+A value of <em>n</em> means the interpreter will allocate
+approximately <em>n</em> bytes between steps.
+
+
+<p>
+The garbage-collector step multiplier
+controls how much work each incremental step does.
+A value of <em>n</em> means the interpreter will execute
+<em>n%</em> <em>units of work</em> for each word allocated.
+A unit of work corresponds roughly to traversing one slot
+or sweeping one object.
+Larger values make the collector more aggressive.
+Beware that values too small can
+make the collector too slow to ever finish a cycle.
+As a special case, a zero value means unlimited work,
+effectively producing a non-incremental, stop-the-world collector.
+
+
+
+
+
+<h3>2.5.2 &ndash; <a name="2.5.2">Generational Garbage Collection</a></h3>
+
+<p>
+In generational mode,
+the collector does frequent <em>minor</em> collections,
+which traverses only objects recently created.
+If after a minor collection the number of bytes is above a limit,
+the collector shifts to a <em>major</em> collection,
+which traverses all objects.
+The collector will then stay doing major collections until
+it detects that the program is generating enough garbage to justify
+going back to minor collections.
+
+
+<p>
+The generational mode uses three parameters:
+the <em>minor multiplier</em>, the <em>minor-major multiplier</em>,
+and the <em>major-minor multiplier</em>.
+
+
+<p>
+The minor multiplier controls the frequency of minor collections.
+For a minor multiplier <em>x</em>,
+a new minor collection will be done when the number of bytes
+grows <em>x%</em> larger than the number in use just
+after the last major collection.
+For instance, for a multiplier of 20,
+the collector will do a minor collection when the number of bytes
+gets 20% larger than the total after the last major collection.
+
+
+<p>
+The minor-major multiplier controls the shift to major collections.
+For a multiplier <em>x</em>,
+the collector will shift to a major collection
+when the number of bytes from old objects grows <em>x%</em> larger
+than the total after the previous major collection.
+For instance, for a multiplier of 100,
+the collector will do a major collection when the number of old bytes
+gets larger than twice the total after the previous major collection.
+As a special case,
+a value of 0 stops the collector from doing major collections.
+
+
+<p>
+The major-minor multiplier controls the shift back to minor collections.
+For a multiplier <em>x</em>,
+the collector will shift back to minor collections
+after a major collection collects at least <em>x%</em>
+of the bytes allocated during the last cycle.
+In particular, for a multiplier of 0,
+the collector will immediately shift back to minor collections
+after doing one major collection.
+
+
+
+
+
+<h3>2.5.3 &ndash; <a name="2.5.3">Garbage-Collection Metamethods</a></h3>
+
+<p>
+You can set garbage-collector metamethods for tables
+and, using the C&nbsp;API,
+for full userdata (see <a href="#2.4">&sect;2.4</a>).
+These metamethods, called <em>finalizers</em>,
+are called when the garbage collector detects that the
+corresponding table or userdata is dead.
+Finalizers allow you to coordinate Lua's garbage collection
+with external resource management such as closing files,
+network or database connections,
+or freeing your own memory.
+
+
+<p>
+For an object (table or userdata) to be finalized when collected,
+you must <em>mark</em> it for finalization.
+
+You mark an object for finalization when you set its metatable
+and the metatable has a <code>__gc</code> metamethod.
+Note that if you set a metatable without a <code>__gc</code> field
+and later create that field in the metatable,
+the object will not be marked for finalization.
+
+
+<p>
+When a marked object becomes dead,
+it is not collected immediately by the garbage collector.
+Instead, Lua puts it in a list.
+After the collection,
+Lua goes through that list.
+For each object in the list,
+it checks the object's <code>__gc</code> metamethod:
+If it is present,
+Lua calls it with the object as its single argument.
+
+
+<p>
+At the end of each garbage-collection cycle,
+the finalizers are called in
+the reverse order that the objects were marked for finalization,
+among those collected in that cycle;
+that is, the first finalizer to be called is the one associated
+with the object marked last in the program.
+The execution of each finalizer may occur at any point during
+the execution of the regular code.
+
+
+<p>
+Because the object being collected must still be used by the finalizer,
+that object (and other objects accessible only through it)
+must be <em>resurrected</em> by Lua.
+Usually, this resurrection is transient,
+and the object memory is freed in the next garbage-collection cycle.
+However, if the finalizer stores the object in some global place
+(e.g., a global variable),
+then the resurrection is permanent.
+Moreover, if the finalizer marks a finalizing object for finalization again,
+its finalizer will be called again in the next cycle where the
+object is dead.
+In any case,
+the object memory is freed only in a GC cycle where
+the object is dead and not marked for finalization.
+
+
+<p>
+When you close a state (see <a href="#lua_close"><code>lua_close</code></a>),
+Lua calls the finalizers of all objects marked for finalization,
+following the reverse order that they were marked.
+If any finalizer marks objects for collection during that phase,
+these marks have no effect.
+
+
+<p>
+Finalizers cannot yield nor run the garbage collector.
+Because they can run in unpredictable times,
+it is good practice to restrict each finalizer
+to the minimum necessary to properly release
+its associated resource.
+
+
+<p>
+Any error while running a finalizer generates a warning;
+the error is not propagated.
+
+
+
+
+
+<h3>2.5.4 &ndash; <a name="2.5.4">Weak Tables</a></h3>
+
+<p>
+A <em>weak table</em> is a table whose elements are
+<em>weak references</em>.
+A weak reference is ignored by the garbage collector.
+In other words,
+if the only references to an object are weak references,
+then the garbage collector will collect that object.
+
+
+<p>
+A weak table can have weak keys, weak values, or both.
+A table with weak values allows the collection of its values,
+but prevents the collection of its keys.
+A table with both weak keys and weak values allows the collection of
+both keys and values.
+In any case, if either the key or the value is collected,
+the whole pair is removed from the table.
+The weakness of a table is controlled by the
+<code>__mode</code> field of its metatable.
+This metavalue, if present, must be one of the following strings:
+"<code>k</code>", for a table with weak keys;
+"<code>v</code>", for a table with weak values;
+or "<code>kv</code>", for a table with both weak keys and values.
+
+
+<p>
+A table with weak keys and strong values
+is also called an <em>ephemeron table</em>.
+In an ephemeron table,
+a value is considered reachable only if its key is reachable.
+In particular,
+if the only reference to a key comes through its value,
+the pair is removed.
+
+
+<p>
+Any change in the weakness of a table may take effect only
+at the next collect cycle.
+In particular, if you change the weakness to a stronger mode,
+Lua may still collect some items from that table
+before the change takes effect.
+
+
+<p>
+Only objects that have an explicit construction
+are removed from weak tables.
+Values, such as numbers and light C&nbsp;functions,
+are not subject to garbage collection,
+and therefore are not removed from weak tables
+(unless their associated values are collected).
+Although strings are subject to garbage collection,
+they do not have an explicit construction and
+their equality is by value;
+they behave more like values than like objects.
+Therefore, they are not removed from weak tables.
+
+
+<p>
+Resurrected objects
+(that is, objects being finalized
+and objects accessible only through objects being finalized)
+have a special behavior in weak tables.
+They are removed from weak values before running their finalizers,
+but are removed from weak keys only in the next collection
+after running their finalizers, when such objects are actually freed.
+This behavior allows the finalizer to access properties
+associated with the object through weak tables.
+
+
+<p>
+If a weak table is among the resurrected objects in a collection cycle,
+it may not be properly cleared until the next cycle.
+
+
+
+
+
+
+

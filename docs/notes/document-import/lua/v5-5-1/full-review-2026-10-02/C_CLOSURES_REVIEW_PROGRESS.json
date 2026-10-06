@@ -1,0 +1,135 @@
+{
+  "id": "03-c-api/03-c-closures.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T20:37:45.724Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-064/c-closures-source-initial.html",
+      "sha256": "f7d4da92f734f2dcb1b8213765cff76a67f6bacc9bc4f422228c1fc82d4d3adf"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-064/c-closures-en-initial.md",
+      "sha256": "090070900d8e317c195933242a79807ad085ee0e1dad21dfab31b34bb5d62871"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-064/c-closures-ja-initial.md",
+      "sha256": "5331871e897ef2286003c11e366d12f58b77aab7f01dea9649b7d176b01e6170"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          34
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          12
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          12
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "初回fixedmanual3322〜3372で4.2全34行と4.3境界、英日各1〜12を全文無省略実読。別工程では固定抜粋source1〜34（manual3322〜3355）と英日各1〜12を再出力して全3段落の意味/数値境界/例外/用語を原文→定本→日本語と日本語単独で確認。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/c-closures.html",
+      "sha256": "f7d4da92f734f2dcb1b8213765cff76a67f6bacc9bc4f422228c1fc82d4d3adf"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/03-c-closures.md",
+      "sha256": "090070900d8e317c195933242a79807ad085ee0e1dad21dfab31b34bb5d62871"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/03-c-closures.md",
+      "sha256": "5331871e897ef2286003c11e366d12f58b77aab7f01dea9649b7d176b01e6170"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          34
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          12
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          12
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "Cfunction作成時値を関連付けCclosure、値はupvaluesでcall時常にaccess可能。各callでspecificpseudoindicesにありlua_upvalueindex macroで生成、最初はindex(1)/以下同様、associated upvalueの値変更可を全3段落照合。",
+    "現在functionのupvalue数よりnが大きく、かつn≤256（closure最大数+1）の場合はacceptableだがinvalid。上位値数の上限そのものを256と誤読せず括弧の比較関係・条件ANDを保持。原文にない共有条件や範囲保証を足さない。",
+    "機械source→EN3段落exact、4inlinecode/2links/nativeID4.2/JAparagraphcodeorder一致。説明em3保持、inlinecode内nのem1は既存平文化で表示字体のみ差、コード文字は一致。コード実例なし、本文修正なし。",
+    "英日desktop/mobile4viewで3p/4inline/3em/ID4.2、文書横overflow0/console0。両言語のn上限256条件と最終変更可能段落を画像確認。lua_upvalueindex Enter→native target、JA→EN同一pageを確認。",
+    "112本文+6コード/CSSのroot/専用WTは第63検査時SHA一致、第63content56再現/1164内部links0/integrity/相対122links/117pagebuild/diff、第51tests8/lintを不変入力で再利用。第64新規実行とは数えず、残り33未確認を全文/表示合格にしない。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-064/validation-reuse.json",
+      "sha256": "6563c67ce8c08cec1e570bc4dbccc841b0ffcad281d83d3ba69aed30ad67a005"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/integrity.txt",
+      "sha256": "36f3eaddc2569ca3a24fceaed8007cd6273d5775ec9c5ef9f7f05be399ebca53"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/selective-build.txt",
+      "sha256": "f6d81d0fb9f93dcd8ca868a7f076765802cea760dd462588765a5c103def5e81"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/tests.txt",
+      "sha256": "a4f094a37236479c44dd284241cc55357709edda2109a2cf90d0a24d542f40bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-064/browser-review.json",
+    "sha256": "1c9b30f2d44505aa79b621e78321a6646e7e85601586502a46e49452266f8caf"
+  },
+  "nextAction": "第65は03-c-api/04-registry.mdとfixedmanual4.3全体（3356〜3404）を全文照合し、librarykey衝突回避/予約integer/RIDX/主threadとglobalenvを確認。別工程全文・英日desktop/mobile表示・機械照合へ進む。全55scope維持、22/55確認済み33未確認、newbug権利適用deferred継続。",
+  "unresolved": [
+    "全55review scope残り33ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

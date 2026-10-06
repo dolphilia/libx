@@ -1,0 +1,141 @@
+{
+  "id": "02-language/07-lexical-conventions.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T19:54:15.378Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/lexical-source-initial.html",
+      "sha256": "a4ce72a9780d9917009fea8d81a080d411127d3c88220ece92a32bee738e0f98"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/lexical-en-initial.md",
+      "sha256": "34d99996f6959895babfb1dcae5beb5409dc2a518b6f292f95dbefdfee2453b6"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/lexical-ja-initial.md",
+      "sha256": "ab62423fffc4b825d4ff594957e64e99e93bde6cccecccf6b2438aa996b2f405"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          242
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          79
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          79
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "初回manual1295〜1410/1411〜1536の全242行（3導入と3.1全体）と英日各79行を無省略実読。修正後別工程ではsource1〜130/131〜242・英日1〜48/49〜79を独立2出力で再読、全18段落/5codeblock/escape数字・規範・説明を原文→定本→日本語、日本語単独で確認。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/lexical.html",
+      "sha256": "a4ce72a9780d9917009fea8d81a080d411127d3c88220ece92a32bee738e0f98"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/02-language/07-lexical-conventions.md",
+      "sha256": "34d99996f6959895babfb1dcae5beb5409dc2a518b6f292f95dbefdfee2453b6"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/02-language/07-lexical-conventions.md",
+      "sha256": "523760b61a2930c3d0d05fac16eed4f91c14689a1750b04a636d32838b9a7403"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          242
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          79
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          79
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "3章導入のlexis/syntax/semantics、extendedBNFの{a}=0以上/[a]=optional、non-terminal/kword/=の表示・完全構文§9を確認。3.1はfreeformと2token区切り除外、ASCII whitespace6種、Latin letters/Arabic-Indic digits/underscore・数字始まり/予約語禁止、識別子のvariables/fields/labels使用を保持。",
+    "予約語23語を4行コードとして照合、global追加・and/And/ANDのcase区別、_+uppercase1以上を避ける慣例・VERSION先を確認。他token記号5行を全byte比較し<<,>>, //,::, ..,...などを保持。",
+    "短い文字列はmatchingquotes、10C-likeescape（a,b,f,n,r,t,v,\\,\",\u0007postrophe）、backslash+linebreakはnewline、zはlinebreak含むwhitespace skip、非escaped改行/無効escape禁止を確認。任意byte/埋込zero、xXXはexact2hex・dddはup-to3decimal/次にdigitならexact3という条件を保持。",
+    "Unicodeu{XXX}はbraces必須・1以上hex・codepoint<2^31、validUnicodeに制約されないoriginal UTF8仕様の説明を確認。日本語で2^31強調のasterisk露出をHTMLemで修正、数値不変。",
+    "longbracketsのleveln=opening square+n equal+opening square、0[[/1[=[、closing4 ]====]、任意level始まり/同level最初closingで終了・同levelclosing以外text可・multiline/escape不解釈/他level無視、4種類EOLをnewlineへ正規化・直後newline除去を全条件確認。日本語だけn強調が外れていたため原文と同じouter/inneremへ修正。英語はDOM階層が元から正常で無変更。",
+    "ASCII a97/newline10/1=49、5string literalを8行codeとして原文/英日byte一致、97/10/049decimalやdouble/single quotes/longbracket2levelを確認。変換規則対象外byte自身、textmodeでsystem controlchar問題がありnontextはescapedquotedliteral推奨という説明を保持。",
+    "numeralのoptionalfractionとdecimalexponent e/E、hex0x/0Xもfraction可・binary exponent p/Pをdecimal記述、0x1.fp10=1984=0x1f/16×2^10を確認。日本語2^10強調の露出をHTMLemで修正。floatはpoint/exponent、他はfitintまたはhexならint、decimaloverflowならfloat、hexpoint/exponentなしは常にintでoverflowwrapを全例外照合。",
+    "integer例1行/float例2行すべてbyte一致、3/345/ff/BEBADA、3.0/314.16e-2/0.31416E1/34e1/hex浮動例の記号を保持。commentはstring外--、直後openinglongなしshort→EOL・ありlong→対応closingの条件を確認。",
+    "機械検査source→EN全18段落text exact、5codeblock4/5/8/1/2行byteexact、inlinecode32・2ID・2link・sup31/10・bold kword/=一致。code内XX/ddd/XXX emは既存定本inlinecode平文化で字句/隣接説明は保持。AI意味レビューと分離。初回checkerがJAcode順序例外1件と誤って仮定し失敗、実証で例外0へ訂正して再検査合格。",
+    "英日desktop/mobile4view p18/pre5/code32/em26、原文のcode外em数26一致、nestedchildn1箇所・2supの親EM・literalStarParagraphs0、文書横overflow0/console0。JA初期sup露出2/n未強調のDOMを保存。§9 Enter→完全構文9anchor、JA→EN同一page、5string例のmobile描画を確認。",
+    "第57content56再現/1164link0、専用WTintegrity/相対122/117page selectedbuild/diff全exit0。変更はJA1ページ強調3先のみ、112本文+6コード/CSS rootWT一致。第51tests8/lint証拠はコードSHA不変に基づき再利用。例の実行は未検証で、文書レビュー合格と混同しない。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/validation-reuse.json",
+      "sha256": "25363cbb1ea1618e092eb83a55a2d72d9f91a12d8d4660d00abdf639a36ab30d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/selective-build.txt",
+      "sha256": "83044c7db0c33469cde15013605dba5de1e23e0b0922f3cd513932b2c4e68095"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/tests.txt",
+      "sha256": "a4f094a37236479c44dd284241cc55357709edda2109a2cf90d0a24d542f40bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-057/browser-review.json",
+    "sha256": "857887f440af289086a5b68ebfd67815b9317df4b4bc0db8ef1003eb97ffab82"
+  },
+  "nextAction": "第58は02-language/08-variables.mdのfixedmanual3.2全体と英日全文を初回実読し、変数種別/初期値/indexing/環境/等価構文/例外を照合する。独立した別工程全文と英日desktop/mobile表示、機械検査を実施。全55scope維持（15/55確認済み、40未確認）、newbug権利適用はdeferred継続。",
+  "unresolved": [
+    "全55review scope残り40ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "id": "03-c-api/02-stack.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T21:56:56.987Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/stack-source-initial.html",
+      "sha256": "cba942ab5a27f0f1ba4e4000b219d481b8f913725c952fad922db0f4fdc88dc6"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/stack-en-initial.md",
+      "sha256": "2aecc91a9d78a9c6ee84cba2287d58ca34bb4fec37add9297624966ffb93bb5f"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/stack-ja-initial.md",
+      "sha256": "e7fd7577d43891e00a81255140f40c90bd801a752a3363f19b5a00f8d7df8308"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          192
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          44
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          44
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual3130〜3321全192行/ENJA各44行を初回全実読。上位値5箇所をガイドに合わせアップバリューへ修正後、別工程でsource192行/EN44行/最終JA44行全文再読。16prose/全3小節のmust/should/unless/AND/数値を照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/stack.html",
+      "sha256": "cba942ab5a27f0f1ba4e4000b219d481b8f913725c952fad922db0f4fdc88dc6"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/02-stack.md",
+      "sha256": "2aecc91a9d78a9c6ee84cba2287d58ca34bb4fec37add9297624966ffb93bb5f"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/02-stack.md",
+      "sha256": "75bee48a094e3738af144e82577647ac27d92d33f3bdd06eb305388612865127"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          192
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          44
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          44
+        ]
+      ]
+    }
+  },
+  "supersededReview": {
+    "id": "03-c-api/02-stack.md",
+    "status": "passed",
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "sourceMapping": {
+      "archiveMember": "lua-5.5.1/doc/manual.html",
+      "start": {
+        "anchor": "4.1"
+      },
+      "end": {
+        "anchor": "4.2"
+      },
+      "kind": "html"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/02-stack.md",
+      "sha256": "2aecc91a9d78a9c6ee84cba2287d58ca34bb4fec37add9297624966ffb93bb5f",
+      "coverage": [
+        [
+          1,
+          44
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/02-stack.md",
+      "sha256": "e7fd7577d43891e00a81255140f40c90bd801a752a3363f19b5a00f8d7df8308",
+      "coverage": [
+        [
+          1,
+          44
+        ]
+      ]
+    },
+    "findings": [
+      "4.1導入はvirtual stackのLua値/C往復、Lua state引数アクセス、各Lua→Ccallで以前とactive Cstackから独立した新stack、初期args/temporary/resultspush役割を照合。正index bottom1 absolute、負index relative top、n要素なら1/-n最初、n/-1最後。JA -nのMarkdown記号露出をactualDOM/em10対原文11と画像で確認しHTML emへ1箇所修正。",
+      "4.1.1 overflow制御/結果用roomは呼出側責任、可変結果数のLua callだけ全結果roomをLua保証するがextraなし、以後push前checkstackを保持。Lua→Cで最低LUA_MINSTACK追加空間、定数20・max20push、looppushならcheckstack必要条件を確認。",
+      "4.1.2 validはmodifiable値位置、1≤abs(index)≤topにpseudoindexを加える。pseudoはstack外registry/upvalueへのCaccess。acceptableはvalid全てとtop後のpositiveallocated roomまで、0はneveracceptable、upvalue実数超のindexもacceptableだがinvalid。API通常acceptable、3rdarg事前top検査省略例、nonvalid acceptableは仮想LUA_TNONE/nil動作を照合し無制限index安全性と誤読しない。",
+      "4.1.3 Cstringparameter const char*/size_t関連長さありならembedded0可、長さ0ならNULL可、長さなしzero終端、返るまで内容不変を保持。7stackstring pointer API参照と4debug API参照全てを原文/英日リンクに照合。",
+      "GC一般はfree/moveでpointer失効。stackstringは値をstackからremoveしない間保証（別indexmove可）、pseudo upvalueは対応callactiveかつupvalue未変更、debugreturnはcalleractiveかつgivenclosureがstack内（指定された場合）のAND条件。これ以外内部stringpointer失効自由を全段落照合。",
+      "機械source→EN16段落exact、24inlinecodeのJAparagraph順序一致/18links/6native ID/nilbold/説明em11を確認。コード実例なし。JA変更前後inlinecodeとリンク全一致、EN/importer/map/formatter/tests無編集。",
+      "英日desktop/mobile4view16p/24inline/11em/6IDs/3小節、doc横overflow0/console0。JA負index emの両幅画像・valid/acceptable説明・pointer寿命末尾3段落、EN数式とCstringparameter条件を実画像確認。luaL_tolstring Enter→補助API native targetとJA→EN同一page確認。",
+      "第63content56再現/内部1164links0、専用WTintegrity/相対122links/117pagebuild/diff実exit0。初回buildは専用WT生成先mkdir EPERMで停止、失敗ログを保存し対象Lua限定buildを必要権限で再実行して合格。automatic approval review拒否ではない。112本文+6コード/CSS rootWT SHA一致、第51tests8/lintはコード不変で再利用。未確認34ページを機械から合格にしない。"
+    ],
+    "displayStatus": "passed",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T20:34:40.009Z",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/stack.html",
+      "sha256": "cba942ab5a27f0f1ba4e4000b219d481b8f913725c952fad922db0f4fdc88dc6",
+      "coverage": [
+        [
+          1,
+          192
+        ]
+      ]
+    },
+    "initialReview": {
+      "progress": {
+        "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/STACK_REVIEW_PROGRESS.json",
+        "sha256": "9c2c19e81b3506caea6b00e5420475b517e6ffb5e40699ac99e166500feaa7ae"
+      }
+    },
+    "displayEvidence": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/browser-review.json",
+      "sha256": "df125ffb7466b594f6d56b8c402c6b661db7af1b6b4552eb1a277357cc15b6e0"
+    },
+    "terminologyStatus": "correction-pending"
+  },
+  "findings": [
+    "virtualstack/C呼出独立stack/初回args・結果MUSTpush、index1/n/-1/-nを全照合。stackoverflowはcaller責任、結果数未固定callのみ全results領域保証・extra保証なし、push前checkstack SHOULD、MINSTACK=20追加要素を確認。",
+    "validindexはmodifiable/abs1〜top＋pseudo、acceptableはvalidORtop後割当positive/0never、actualupvalue数超過はacceptablebutinvalid。query3例・LUA_TNONEはnilのように扱うを確認。",
+    "string関連length有りはembeddedzeros可/zeroならNULL可、無しはzeroterminatedMUST、returnsまでcontent不変SHOULD。stackvalue未削除時pointer有効・indexmove可、pseudoindexではcallactive AND upvalue未変更が必要、debug pointerはcalleractive AND givenclosureifanyinstack、その他GCinvalid自由を照合。",
+    "上位値5箇所のみアップバリューへガイド準拠。EN全prose原文exact、16p/24inline/18links/6ID/11em/1nilbold照合、JA HTMLem -n保持。コード例/宣言なし。",
+    "英日4viewsでpointerAND条件・ENvalid/acceptable0never/LUA_TNONEを画像実読、16p/24inline/6ID/11em/overflow0/console0。§4.3Enter native target、JA→EN同page成功。",
+    "fresh5検査exit0、content56再現/英日56/1164links0、WTintegrity/122links/117pagebuild/diff成功。7code同SHAで第69の11tests/lint再利用。29/55維持・added0/revalidated1、全26未確認。訳語未修正5（既確認1/未確認4）。",
+    "第73 audit.scope/currentGoalTurnClassificationの7ページという文章は行集合6件/manifest2+4と不一致の誤記。第73の数値/未解決6が正しく、実ファイル6を確認。第74からpending/corrected行集合で件数を算出し記録、旧証拠は改変しない。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/repairs.json",
+    "sha256": "b1aab3c236a2374a8eb2a48f9cb5f4fca988fbab25b74c420edfcbdd7b3b7f61"
+  },
+  "terminologyAudit": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/terminology-audit.json",
+    "sha256": "108e6d0eaa89df0c43e48ce4754a9db1eeceef3f83f4afa46d09eafec23a1898"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/validation-reuse.json",
+      "sha256": "57886f0de6be771331bee72ce6eb6ee750ac6d686a5c02e550e8a1a005d230a6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/selective-build.txt",
+      "sha256": "35b9589f8e917081b20f9049beb9633d385acbbb8ce08f639e122f2097bee1f7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-074/browser-review.json",
+    "sha256": "6bd3f290c88e755fa01e8b28d8e51f135c165efa0531cdbc9eae9d923272a2f6"
+  },
+  "nextAction": "第75は既合格05-standard-library/03-basic-functions.mdの固定manual8339〜8941全603行/EN241JA240行を初回全文照合、上位値8箇所をアップバリューに修正。別工程全文/機械/英日4view再検証し29/55件数に重複加算しない。その後03-c-api/11-functions-and-types-n-pcall.mdなど未確認26を再開、未確認4ページの訳語は各全レビューで修正。新bug権利根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り26ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "upvalue訳語の未修正5ページ（既内容/表示合格1、未確認4）。用語適合は未完として各修正後に再検証。"
+  ]
+}

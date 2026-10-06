@@ -1,0 +1,176 @@
+<hr><h3><a name="luaL_callmeta"><code>luaL_callmeta</code></a></h3><p>
+<span class="apii">[-0, +(0|1), <em>e</em>]</span>
+<pre class="api">int luaL_callmeta (lua_State *L, int obj, const char *e);</pre>
+
+<p>
+Calls a metamethod.
+
+
+<p>
+If the object at index <code>obj</code> has a metatable and this
+metatable has a field <code>e</code>,
+this function calls this field passing the object as its only argument.
+In this case this function returns true and pushes onto the
+stack the value returned by the call.
+If there is no metatable or no metamethod,
+this function returns false without pushing any value on the stack.
+
+
+
+
+
+<hr><h3><a name="luaL_checkany"><code>luaL_checkany</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">void luaL_checkany (lua_State *L, int arg);</pre>
+
+<p>
+Checks whether the function has an argument
+of any type (including <b>nil</b>) at position <code>arg</code>.
+
+
+
+
+
+<hr><h3><a name="luaL_checkinteger"><code>luaL_checkinteger</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">lua_Integer luaL_checkinteger (lua_State *L, int arg);</pre>
+
+<p>
+Checks whether the function argument <code>arg</code> is an integer
+(or can be converted to an integer)
+and returns this integer.
+
+
+
+
+
+<hr><h3><a name="luaL_checklstring"><code>luaL_checklstring</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">const char *luaL_checklstring (lua_State *L, int arg, size_t *l);</pre>
+
+<p>
+Checks whether the function argument <code>arg</code> is a string
+and returns this string;
+if <code>l</code> is not <code>NULL</code> fills its referent
+with the string's length.
+
+
+<p>
+This function uses <a href="#lua_tolstring"><code>lua_tolstring</code></a> to get its result,
+so all conversions and caveats of that function apply here.
+
+
+
+
+
+<hr><h3><a name="luaL_checknumber"><code>luaL_checknumber</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">lua_Number luaL_checknumber (lua_State *L, int arg);</pre>
+
+<p>
+Checks whether the function argument <code>arg</code> is a number
+and returns this number converted to a <code>lua_Number</code>.
+
+
+
+
+
+<hr><h3><a name="luaL_checkoption"><code>luaL_checkoption</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">int luaL_checkoption (lua_State *L,
+                      int arg,
+                      const char *def,
+                      const char *const lst[]);</pre>
+
+<p>
+Checks whether the function argument <code>arg</code> is a string and
+searches for this string in the array <code>lst</code>
+(which must be NULL-terminated).
+Returns the index in the array where the string was found.
+Raises an error if the argument is not a string or
+if the string cannot be found.
+
+
+<p>
+If <code>def</code> is not <code>NULL</code>,
+the function uses <code>def</code> as a default value when
+there is no argument <code>arg</code> or when this argument is <b>nil</b>.
+
+
+<p>
+This is a useful function for mapping strings to C&nbsp;enums.
+(The usual convention in Lua libraries is
+to use strings instead of numbers to select options.)
+
+
+
+
+
+<hr><h3><a name="luaL_checkstack"><code>luaL_checkstack</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">void luaL_checkstack (lua_State *L, int sz, const char *msg);</pre>
+
+<p>
+Grows the stack size to <code>top + sz</code> elements,
+raising an error if the stack cannot grow to that size.
+<code>msg</code> is an additional text to go into the error message
+(or <code>NULL</code> for no additional text).
+
+
+
+
+
+<hr><h3><a name="luaL_checkstring"><code>luaL_checkstring</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">const char *luaL_checkstring (lua_State *L, int arg);</pre>
+
+<p>
+Checks whether the function argument <code>arg</code> is a string
+and returns this string.
+
+
+<p>
+This function uses <a href="#lua_tolstring"><code>lua_tolstring</code></a> to get its result,
+so all conversions and caveats of that function apply here.
+
+
+
+
+
+<hr><h3><a name="luaL_checktype"><code>luaL_checktype</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">void luaL_checktype (lua_State *L, int arg, int t);</pre>
+
+<p>
+Checks whether the function argument <code>arg</code> has type <code>t</code>.
+See <a href="#lua_type"><code>lua_type</code></a> for the encoding of types for <code>t</code>.
+
+
+
+
+
+<hr><h3><a name="luaL_checkudata"><code>luaL_checkudata</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">void *luaL_checkudata (lua_State *L, int arg, const char *tname);</pre>
+
+<p>
+Checks whether the function argument <code>arg</code> is a userdata
+of the type <code>tname</code> (see <a href="#luaL_newmetatable"><code>luaL_newmetatable</code></a>) and
+returns the userdata's memory-block address (see <a href="#lua_touserdata"><code>lua_touserdata</code></a>).
+
+
+
+
+
+<hr><h3><a name="luaL_checkversion"><code>luaL_checkversion</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">void luaL_checkversion (lua_State *L);</pre>
+
+<p>
+Checks whether the code making the call and the Lua library being called
+are using the same version of Lua and the same numeric types.
+
+
+
+
+

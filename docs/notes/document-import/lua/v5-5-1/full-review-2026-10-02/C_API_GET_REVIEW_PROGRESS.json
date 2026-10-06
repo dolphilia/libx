@@ -1,0 +1,137 @@
+{
+  "id": "03-c-api/09-functions-and-types-get.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T21:31:22.828Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-070/c-api-get-source-initial.html",
+      "sha256": "04f252bec848a82f44da7d8fa06859185b8af13f7cad2d93ae686978afa8d4c0"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-070/c-api-get-en-initial.md",
+      "sha256": "26aaea6236781b673930041ae82eda64b385b98106447ac85f7b29bff4b50459"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-070/c-api-get-ja-initial.md",
+      "sha256": "042d4bf43f34cae764b08de1d6df636ebdaf41671999a725135a65c9a381ed99"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          156
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          128
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          128
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "初回固定manual4285〜4440の全156行とEN/JA各128行を独立出力で省略なし実読。保存source1〜156/EN1〜128/JA1〜128を別工程で全文再読。全9関数の9stackeffect・9C宣言・16proseとリンク/条件・日本語単独の自然さを照合、編集不要を確認。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/c-api-get.html",
+      "sha256": "04f252bec848a82f44da7d8fa06859185b8af13f7cad2d93ae686978afa8d4c0"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/09-functions-and-types-get.md",
+      "sha256": "26aaea6236781b673930041ae82eda64b385b98106447ac85f7b29bff4b50459"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/09-functions-and-types-get.md",
+      "sha256": "042d4bf43f34cae764b08de1d6df636ebdaf41671999a725135a65c9a381ed99"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          156
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          128
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          128
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "第69次操作の7関数という誤記とGC戻り型表現を訂正。固定page-map/manualはgetextraspace/gettopを含む全9関数で、範囲4285〜4440全156行を保持。返却は各pushed value typeなど個別原文通りでGC型という内容を追記しない。初期source-checkのENJA行数141誤記は実ファイル128行に検証訂正。",
+    "lua_getallocf [-0,+0,–]はstateのallocator返却、ud!=NULL時に設定時opaque pointerを*ud保存。getfield [-0,+1,e]はgivenindexのt/t[k]push、index metamethod MAYと2.4、pushedtype返却。getextraspace [-0,+0,–]はstate関連rawmemoryポインター、applicationanypurpose/Luaunused、newthreadmaincopy、defaultvoidpointerサイズ/再compile別size/LUA_EXTRASPACE luaconf.hを照合。",
+    "getglobal [-0,+1,e]はglobalname値push/値type。geti [-0,+1,e]はgivenindex t/t[i]push/indexmetamethod MAY/値type。getmetatable [-0,+(0|1),–]はmetatable有りpush+1返却/無しnothingpush+0返却。原文に無いvalidindex等の追加制約やmetamethod保証を推測で追記しない。",
+    "gettable [-1,+1,e]はgivenindex t/top kでt[k]push、keypop/resultsameplace、indexmetamethod MAY/値typeを確認。gettop [-0,+0,–]はtopindex=elementcount（1開始）/0emptystack。getiuservalue [-0,+1,–]はfulluserdata n-thvaluepush/type、無い場合nil push+LUA_TNONE返却を確認。nilとnoneを同一戻り型にしていない。",
+    "原文英語全prose+stackeffect exact、9Cdecl bytes/9effect/16prose（DOMp25）/24inline/9IDs/4links/1bold/4em照合。JA inline順例外はfield/extra/i/tableの4節でt定義先、luaconf.h先、t-k先の自然語順のみ。全節で内容同一、編集なし。",
+    "英日desktop1280/mobile390の4viewで25p/24inline/9pre/9IDs/4em。JAextraspace3p、ENmetatablepush有無と1/0、JAmobilenil/LUA_TNONE、ENmobiletopkey/pop/resultinplaceを画像実読。9Cdecl actualtext/positiveheight、document横overflow0、mobilepre横scroll、console0、LUA_TNONE Enterでstack/native target、JA→EN同一ページ成功。",
+    "第69最終機械検査・117pagebuild・11test/lintを112本文+7コード/CSS root専用WT実SHA一致で再利用。第70全文/4viewは新規確認。全55scope内容/表示28/55、残り27未確認、新bug権利deferredとnew0維持。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-070/validation-reuse.json",
+      "sha256": "a20bd4a76baa795f9ba59b1391e9c32db38ec8ac765b96ae24d51a90557c916b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/selective-build.txt",
+      "sha256": "56260daf37ed19e9cdcb5ee837a65c9acaaf065795bce36332e9c76ab29afdc0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-070/browser-review.json",
+    "sha256": "cceae2dee4bae043ae377848a81e23c8865ade17991b3133399d5c7226e2de99"
+  },
+  "nextAction": "第71は03-c-api/10-functions-and-types-i-l.md（固定manual4441〜4769、329行、lua_insert〜lua_load）の原文/EN/JAを初回全文確認。全APIの型/stack effect/否定例外/upvalue・GC・型判定・iterator・load callback条件を照合し必要な修正後に別工程全文/機械/英日4viewまで検証。28/55内容/表示合格を保持し27未確認、新bug権利根拠確定時のみ別update再開。",
+  "unresolved": [
+    "全55review scope残り27ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

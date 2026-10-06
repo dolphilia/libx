@@ -1,0 +1,135 @@
+{
+  "id": "03-c-api/04-registry.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T20:40:17.102Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-065/registry-source-initial.html",
+      "sha256": "bec6e938d4960dd39957b8676143058f096af29e23e6585a7c67eb2f2efe2a63"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-065/registry-en-initial.md",
+      "sha256": "5f7789dcf2d6c1c250fbc405a176b53799cc5b06df2aae31f75e9776de2a670c"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-065/registry-ja-initial.md",
+      "sha256": "c784b8385ba435687e66b20a41ae0a397cdef5a74aee0c1d6edfa61879a5192d"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          49
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          15
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          15
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "初回fixedmanual3356〜3404全49行と英日各1〜16を独立3出力で無省略実読。別工程では固定抜粋source1〜49と英日各1〜16を再出力して3段落と2一覧項目全文を原文→定本→日本語/日本語単独で意味・規範・例外・予約キー・定数説明を確認。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/registry.html",
+      "sha256": "bec6e938d4960dd39957b8676143058f096af29e23e6585a7c67eb2f2efe2a63"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/04-registry.md",
+      "sha256": "5f7789dcf2d6c1c250fbc405a176b53799cc5b06df2aae31f75e9776de2a670c"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/04-registry.md",
+      "sha256": "c784b8385ba435687e66b20a41ae0a397cdef5a74aee0c1d6edfa61879a5192d"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          49
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          15
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          15
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "registryは任意Cコードが必要Lua値を保存できる事前定義table、pseudo LUA_REGISTRYINDEXで常時access。どのClibraryも使用可能だが他libraryと異なるkeysを選んでcollision回避、推奨はlibrary名含むstring/Cobjectaddressのlightuserdata/自作Luaobject。_の後にuppercaseで始まるstringkeysはLua予約を照合。",
+    "整数keysはreference mechanism luaL_refとpredefinedvaluesに使用、他目的にはmust not規範を保持。newstateのregistryにpredefinedvalues、integerkeysはlua.h内constants。MAINTHREADはstateとともに作られたmainthread、GLOBALSはglobalenv、2項目補足を全て照合。",
+    "機械source→EN3段落と2li exact、5inlinecode/1link/4nativeIDs/2bold定数/1emとJAcodeorder一致。初回ENliのplain化後にcode検査しbacktick消失でassert停止、rawli比較へ訂正し全検査合格。本文無編集・検査失敗を記録。",
+    "英日desktop/mobile4viewで3p/2li/5inline/1em/4ID、doc横overflow0/console0。定数名称と強調、mainthread補足、globalenv説明を実画像確認。luaL_ref Enter→native target、JA→EN同一page確認。",
+    "無編集、112本文+6コード/CSSのroot/専用WTは第63SHA一致。第63content56再現/内部1164links0/integrity/相対122links/117pagebuild/diff、第51tests8/lintを不変入力で再利用。第65新規実行とは記載せず32未確認の内容/表示を機械で合格にしない。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-065/validation-reuse.json",
+      "sha256": "cca478a7c96a1cf2f265f291f4ac3855b48421facb10042f49d92b3ac9d8cede"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/integrity.txt",
+      "sha256": "36f3eaddc2569ca3a24fceaed8007cd6273d5775ec9c5ef9f7f05be399ebca53"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/selective-build.txt",
+      "sha256": "f6d81d0fb9f93dcd8ca868a7f076765802cea760dd462588765a5c103def5e81"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-063/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/tests.txt",
+      "sha256": "a4f094a37236479c44dd284241cc55357709edda2109a2cf90d0a24d542f40bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-065/browser-review.json",
+    "sha256": "0e92aa030fd885bf2d279bfbeb586dc56366f1d23fdb5608c17d57e761f8b74e"
+  },
+  "nextAction": "第66は03-c-api/05-error-handling-in-c.mdとfixedmanual4.4全体を初回実読し、longjump/例外、保護ありなし、panic/abort、stack spaceとthread間の保護条件を照合。別工程全文・英日desktop/mobile表示・機械照合へ進む。全55scope維持、23/55確認済み32未確認、newbug権利適用deferred継続。",
+  "unresolved": [
+    "全55review scope残り32ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

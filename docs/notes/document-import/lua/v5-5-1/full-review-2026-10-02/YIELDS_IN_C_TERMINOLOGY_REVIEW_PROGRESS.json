@@ -1,0 +1,216 @@
+{
+  "id": "03-c-api/06-handling-yields-in-c.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T21:51:36.931Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/yields-in-c-source-initial.html",
+      "sha256": "841bad96866f7df44c6819c29538e8e312239b9ac142fabaf40d9824d259c580"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/yields-in-c-en-initial.md",
+      "sha256": "f1bcabb12bb6151ae5a9e839faa29654631c0eb21af5df83f28389d3429df7b9"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/yields-in-c-ja-initial.md",
+      "sha256": "ce7c288de881b1e976e2a9824e49a5e52f36b9cc6cced59efaca74d7437afaef"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          137
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          52
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          52
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual3517〜3653全137行/ENJA52行を初回省略なし全文実読。末尾上位値1箇所をガイドのアップバリューへ修正後、別工程で全source137行/EN52行/最終JA52行再読。全10prose/3Cexamples/条件・否定・日本語自然さを照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/yields-in-c.html",
+      "sha256": "841bad96866f7df44c6819c29538e8e312239b9ac142fabaf40d9824d259c580"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/06-handling-yields-in-c.md",
+      "sha256": "f1bcabb12bb6151ae5a9e839faa29654631c0eb21af5df83f28389d3429df7b9"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/06-handling-yields-in-c.md",
+      "sha256": "21b2e38d01e8b721dcaec84f03fab8ad3540b9e0ebfc9f8dd6787047e8c36392"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          137
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          52
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          52
+        ]
+      ]
+    }
+  },
+  "supersededReview": {
+    "id": "03-c-api/06-handling-yields-in-c.md",
+    "status": "passed",
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "sourceMapping": {
+      "archiveMember": "lua-5.5.1/doc/manual.html",
+      "start": {
+        "anchor": "4.5"
+      },
+      "end": {
+        "anchor": "4.6"
+      },
+      "kind": "html"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/06-handling-yields-in-c.md",
+      "sha256": "f1bcabb12bb6151ae5a9e839faa29654631c0eb21af5df83f28389d3429df7b9",
+      "coverage": [
+        [
+          1,
+          52
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/06-handling-yields-in-c.md",
+      "sha256": "ce7c288de881b1e976e2a9824e49a5e52f36b9cc6cced59efaca74d7437afaef",
+      "coverage": [
+        [
+          1,
+          52
+        ]
+      ]
+    },
+    "findings": [
+      "C longjmpによるCフレーム喪失と非return、yieldk/callk/pcallkの3例外、original/callee関係とcontinuation呼出しを確認。3コード例5/8/4行はsource/英日すべてbyte一致。ctx1/ctx2の原文記号を保持し、例の実行は未実施。",
+      "continuation型・pcall後処理・明示k呼出しと自動callの条件を確認。pcallk yield後のみLUA_OKでなくLUA_YIELD、yieldk/callkの継続状態、error時handlerなし、自動/直接呼出しの違い、ctx未使用、Lua stack/upvalues/結果返却を全段落照合。",
+      "yield章のLUA_OK/LUA_YIELDリンク2先を修正。pcallk2先、toclose3先、luaL_newstate2先、string.unpack2先を固定sourceとENラベル意味に基づき修正、計11先/5ページ。JAの節内語順差によりリンク順がENと異なるためラベルとの対応を個別確認。その他本文・markup不変を証明。",
+      "他4節はpcallとyield許可、activeclose slot除去制限とC変数生存期間、allocator/seed/警告panic/NULL条件、fmt/開始位置/最初の未読byteを別工程照合。4ページ全文はpendingのまま。",
+      "機械検査はsource→EN段落text、全コードblock、inlinecode multiset・em・id・リンクlabel+locale mapped destinationを照合。yield p10/link27/pre3/em5を確認。これは内容レビューを代替しない。",
+      "第54 content56/内部リンク1164エラー0、専用WTintegrity/相対122/117page selectedbuild/diff全exit0。112本文と6コード/CSS rootWT SHA一致。第51の8tests/lintはコードSHA不変に基づき再利用。",
+      "yield英日desktop/mobile4view実確認、console0/文書横overflow0、JA OK/YIELDキー操作で正しいAPIanchorに遷移、JA→EN同一pageを確認。他4該当節はJA desktop/mobile8viewのみ確認、全文表示合格にしない。",
+      "ドット付き名まで参照監査を拡張。576件の一意対応中、修正前15疑義/7ページ、11修正後4疑義/2ページ（coroutine.create/resume、package.path/cpath）。残存4件はfixedsource実読前なので未修正・未合格。"
+    ],
+    "displayStatus": "passed",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T19:34:26.645Z",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/yields-in-c.html",
+      "sha256": "841bad96866f7df44c6819c29538e8e312239b9ac142fabaf40d9824d259c580",
+      "coverage": [
+        [
+          1,
+          137
+        ]
+      ]
+    },
+    "initialReview": {
+      "progress": {
+        "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/YIELDS_IN_C_REVIEW_PROGRESS.json",
+        "sha256": "b7cc9ab316574112695ac50cd336b54e8aba8f3a461917788a66fb649f5ce346"
+      }
+    },
+    "displayEvidence": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-054/browser-review.json",
+      "sha256": "651c979e462d188e51aac4ed02e110a24631b5368150683f728bc113e7466c21"
+    },
+    "terminologyStatus": "correction-pending"
+  },
+  "findings": [
+    "longjmpでCframeを除去しoriginalfunctionへ戻れない、APIyieldエラーの3例外、calleeがyield/再開後continuation実行の条件を照合。",
+    "明示的continuation callは正常終了時の処理、Luaによるcallはerror/yieldresume時onlyneeded。ctxはLuaunused・pcallkステータスyield時YIELDelsepcallk同値、yieldk/callk継続は常にYIELD・エラーでは呼ばない。callk正常明示callはOK、yieldkは通常戻らないを全3言語本文確認。",
+    "continuationは同じstack/callee戻り時と同じstate、function+argsを結果へ置換・同じupvalues・元のreturn扱い。末尾訳語1箇所を修正。第54旧JA SHAを第73全再検証証拠へ置換。",
+    "機械全ENprose原文exact、10p/3Cblocks byteexact lines5,8,4/35inline/27links/ID4.5/5em。JA段落0理由後置、6pcall/k通知順、8OK/YIELD否定語順の違いは内容同一を全文照合。checker初回closuresからの誤path/狭い順期待/JAlinks順要求を修正し最終pass。",
+    "英日4view/10p/35inline/3pre/5em/ID4.5/横overflow0/console0。JA同じアップバリューとstack、ENexplicitcall/正常return・mobileYIELDvsOKとerrorsを実画像確認。KFunction Enter native target、JA→EN同じpage。ENparagraphクリックで子linkに移動した測定を破棄し当該URLで取り直し。",
+    "fresh5検査exit0、content56再現/英日56/1164links0、WTintegrity/122links/117pagebuild/diff成功。7code同SHAで第69の11tests/lint再利用。placeholder C例3個はコンパイル/実行しない。",
+    "内容/表示29/55維持、再検証1ページadded0。訳語修正計2、未修正6ページ（既確認2/未確認4）。残り26全文未確認、新bug権利deferred/new0保持。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/repairs.json",
+    "sha256": "e3a263dbb4d88ab5e61801946c0df50be7860ef826ff6f613ae67697e16b933f"
+  },
+  "terminologyAudit": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/terminology-audit.json",
+    "sha256": "e8c8e49e83b3d846e2f111d1b59e26a561ea34ad15e0ebb7ed6d130174da8a46"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/validation-reuse.json",
+      "sha256": "fc9ba51d9d6597b238544013a1b820f13f2dc46e2b7a188e3b0e7913da71706c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/selective-build.txt",
+      "sha256": "09a606106aba9cd097544ce3e2ffd3449e5d90f34a9a36a3e761d237384fa47e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-073/browser-review.json",
+    "sha256": "5e4d18e0b96bffb136731ce7a6b260b96a274c54fa6ce2e9e84e807a987101ba"
+  },
+  "nextAction": "第74は既合格03-c-api/02-stack.mdの固定原文/EN/JA全範囲を初回全文照合、上位値5箇所をアップバリューに修正し別工程全文/機械/英日4view再検証。続いて05-standard-library/03-basic-functions.mdの8箇所を同様に修正。既合格の再検証はaddedThisCycle=0で29/55件数を重複加算しない。その後未確認26ページ（うち訳語4ページ）を再開、新bug権利根拠確定時のみ。",
+  "unresolved": [
+    "全55review scope残り26ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "upvalue訳語の未修正6ページ（既内容/表示合格2、未確認4）。意味/表示の既存証拠は保持し、用語適合は未完として各修正後に再検証。"
+  ]
+}

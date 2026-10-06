@@ -1,0 +1,137 @@
+{
+  "id": "03-c-api/08-functions-and-types-concat-gc.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T20:55:35.925Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/concat-gc-source-initial.html",
+      "sha256": "db62e2721664d035839273a1af5e553b9b6da034fcfc645a98d49ed932e3c317"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/concat-gc-en-initial.md",
+      "sha256": "ccdd7ead59960dc3d75579e94fc53776ea0ab1f2fbe90f35a643b745b560ca51"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/concat-gc-ja-initial.md",
+      "sha256": "43e0d1ca41103f90e9a82577d643778c447cdba0edd3f68d331ac87c6b03346b"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          194
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          111
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          133
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "初回fixedmanual4091〜4284の全194行、EN111/JA初期133行を独立出力で省略なし実読。JA修正後の別工程では保存した固定source1〜194/EN1〜111/JA1〜110を独立3出力で全文再読。6API各stack effect/6C宣言/12説明段落/GC親10と子6の全項目を原文→定本→日本語・日本語単独で照合。補足fixedmanual885〜955の2.5.1にGCPPAUSE数値パラメーターの意味を照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/concat-gc.html",
+      "sha256": "db62e2721664d035839273a1af5e553b9b6da034fcfc645a98d49ed932e3c317"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/08-functions-and-types-concat-gc.md",
+      "sha256": "ccdd7ead59960dc3d75579e94fc53776ea0ab1f2fbe90f35a643b745b560ca51"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/08-functions-and-types-concat-gc.md",
+      "sha256": "4d349b9a8e4b8f5fc4681276bf9215993f280fba2f70aea11fc496b32e455eec"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          194
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          111
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          110
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "lua_concat [-n,+1,e]はtop n値をconcat/pop/result、n1何もしない/n0空文字列/通常Lua意味論。lua_copy [-0,+0,–]はvalid toidxだけ置換し他不変。createtable [-0,+1,m]はemptytablepush、nseqsequence/nrecその他の数hint、MAY事前割当/MAY性能向上、else newtable SHOULDを確認。",
+    "lua_dump [-0,+0,–]4行宣言、top Lua functionをload時等価binarychunkにしwriter/dataを渡す。JAではdataを先に示す語順例外1件を内容照合。stack全保存はfirstwriter前の内部値push例外とlast後元サイズ復元、striptrueでall debuginfoを含めないMAY、lastwriter error code返却/0errorなしを保持。lua_error [-1,+0,v]toperrorobject/longjump/neverreturnsとluaL_error参照を照合。",
+    "GC6番目API [-0,+0,–]what varargs。GC親10options: fullcycle/stop/restart/memoryKbytes/bytes%1024/STEP size_t n/isrunning notstopped/INCとGENはpreviousmode返却/PARAM。PARAM int param,int valでparameter値変更and-or返却、val=-1ならcurrentのみ返却、param MUST子6choices MINORMUL/MAJORMINOR/MINORMAJOR/PAUSE/STEPMUL/STEPSIZE、collectgarbage参照/finalizer SHOULD NOTを確認。原文に記載ないGC default値・STEP n効果・他val時返却の詳細は推測追記しない。",
+    "JA GCPARAMでparameterを引数値、and/orをまたはだけとしていたためパラメーターと変更/返却両方を明示。説明6断片と子6各2段落はrawbefore/actualDOM/モバイル画像で確認し単一項目へ再結合、全inlinecode/links/IDs/数値・条件不変。GCPPAUSEは既存2.5.1の一時停止用語を保持、数値パラメーターでGCSTOPではないことを補足原文で確認。",
+    "機械12source prose→EN exact、6stack effect/6C宣言bytes/親10子6各1paragraph/45inlinecode/7links/22nativeIDs/16bold/3emを照合。JA inlinecode順例外はdump第1段落data先の1件だけ。新checker括弧2誤りを修正して最終全assert exit0、実行前失敗を合格記録しない。",
+    "英日desktop/mobile4viewは18p（12prose+6stackannotation）/6pre/45inline/22ID/6heading/GC親10子6。JA両幅の説明結合、mobile末尾子6とfinalizer制約、ENdump宣言/stack内部push復元/strip/lastreturn/errorを画像とactualDOMで確認。document横overflow0、mobileCpre横scroll、6C宣言text保持/positiveheight、console0、collectgarbage Enterでnative target、JA→English同一ページ成功。",
+    "第67content56再現/内部1164links0、専用WTintegrity/相対122links/117pagebuild/diff実exit0。112本文+6コード/CSS rootWT SHA一致、第51tests8/lintはコード不変により再利用。残り30ページは未確認。参照先の05-standard-library/03-basic-functions.md paramに引数訳語と説明分断をactualDOMで観測、未編集/未全文合格として次サイクルの固定原文照合と修正を優先。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/validation-reuse.json",
+      "sha256": "44e5a0aef449dc094e40a33d4e764716a2feebf1684222915a7a71ce99ae55a9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/selective-build.txt",
+      "sha256": "2274197ecea3bccc84e86e579624f789974000f366b521e34b117463e84efb51"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/tests.txt",
+      "sha256": "a4f094a37236479c44dd284241cc55357709edda2109a2cf90d0a24d542f40bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-067/browser-review.json",
+    "sha256": "55c3993bbcc05732c7d9520b931753eae5081f9cb69fc00ba9c5adb49fe95187"
+  },
+  "nextAction": "第68は参照先で観測した既存不備を優先し05-standard-library/03-basic-functions.md（固定manual8339〜8941、6.2全体603行）と英日を初回実読。collectgarbage paramのparameter訳語/and-orとnested一覧分断・以前値返却/圧縮値/追加引数条件を固定原文で確定して修正し、ページ全体の別工程全文/機械/英日4表示まで検証。次に03-c-api/09-functions-and-types-get.mdへ戻る。全55scope維持25/55確認済み30未確認、newbug権利deferred継続。",
+  "unresolved": [
+    "全55review scope残り30ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "id": "02-language/03-error-handling.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T18:45:52.975Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/error-source-initial.html",
+      "sha256": "754a7eb6506c1a98df0997ac6fa206535cd112845e633f2395ff50835754eeb3"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/error-en-initial.md",
+      "sha256": "3833c4ffce9c1589644e63a944109ee1f06a65e0d5a4c917964ae120896ca72d"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/error-ja-initial.md",
+      "sha256": "44e0709bb02fb71d64b810afcddca56fc1beaf38df12d0530f73ecceb7f6c02f"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          83
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          20
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          20
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual2.3から2.4直前のsource83行、英語20行、日本語20行を初回と修正後の別工程ツール出力で省略なく全読。原文→定本、定本→日本語、日本語単独を確認。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/error-handling.html",
+      "sha256": "754a7eb6506c1a98df0997ac6fa206535cd112845e633f2395ff50835754eeb3"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/02-language/03-error-handling.md",
+      "sha256": "3833c4ffce9c1589644e63a944109ee1f06a65e0d5a4c917964ae120896ca72d"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/02-language/03-error-handling.md",
+      "sha256": "b605491216382f3fd4d30a93f8081c5dd6e3787c68764c5d43f2622b664043a2"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          83
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          20
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          20
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "7段落全文を照合。raiseがnormalflow中断しcatchで続行、error明示発生/never returns、pcall/xpcall protected call、実行中errorで停止しpcallへ即座に制御・statuscodeを返す関係を保持。",
+    "host Ccode callがLua実行開始、standalone luaがhost、Usuallyそのcallがprotectedという限定を保持。旧JAはunprotectedがLuaチャンクにかかっていたため、他protected callで捕捉されないerrorがcompile/execute中発生するとhostへ戻るという関係へ1箇所修正。英語定本・API・仕様は不変。",
+    "error object情報伝播、Lua自身はstring生成、programはnil以外任意値、nilならLuaがstringmessageへ置換、host/programがhandle、歴史的呼称error messageでも非string可能を照合。",
+    "xpcall/C lua_pcallにmessagehandler指定、originalobject受け新object返す、stack unwind前に呼び情報/traceback取得、handlerもprotectedで再呼出しと長すぎるloop中断を照合。通常runtime only、memoryallocation/finalizer/othermessagehandler実行中errorsで呼ばれない3例外も原文保持。本文の説明を推測で書き換えない。",
+    "warningsはprogram executionへ一切干渉しない、typical usermessageだけという限定、C lua_setwarnfで動作adapt可能を保持。",
+    "英語7段落source text一致、inlinecode10/strongnil2/em8/link8/id2.3、JAのURLlocale対応とコード順を機械照合。英日4view DOMとも一致し横overflowなし。ENAPI Enter往復とEN→JA同一page切替を確認。",
+    "JA1箇所変更により第50content56再生成/1164internal links0/整合性/relative links1220/diff/117page限定buildを新規実行しexit0。112body/CSS/importer/mapのroot/WT現SHA一致、他7合格ページ不変。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/validation-reuse.json",
+      "sha256": "0e1eb978a80eea4cd0897c86b6bf0ccbb99f4b6c87e04100f08d3212e9f7dce8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/selective-build.txt",
+      "sha256": "2012fda576132f42cd929c779e40dd040cf63d1e07c286432674f5f271292eb7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-050/browser-review.json",
+    "sha256": "adb7d3c61f950e315e5c0ba8275b57ddaaf38ab25de21707cfea6ebdd2e30f97"
+  },
+  "nextAction": "固定manual2.4 Metatables and Metamethodsから2.5前までを保存し02-language/04-metatables-and-metamethods.mdの長文を導入と各metamethod項目に分け原文/英日を全範囲レビュー、機械検査と英日desktop/mobile表示を検証する。",
+  "unresolved": [
+    "全55review scope残り47ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

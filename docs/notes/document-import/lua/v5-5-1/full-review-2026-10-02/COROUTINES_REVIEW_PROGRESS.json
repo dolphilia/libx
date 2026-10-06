@@ -1,0 +1,139 @@
+{
+  "id": "02-language/06-coroutines.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T19:40:02.697Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/coroutines-source-initial.html",
+      "sha256": "c64d9e8a0acc74440128fba4adb5c86bde34b677a68b7ba5c6406bd001322f6e"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/coroutines-en-initial.md",
+      "sha256": "af9d277e8093ac1f41f411583e7a08afd0514795506308dd7f00ec8d5d400ada"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/coroutines-ja-initial.md",
+      "sha256": "4ad91b31d24044beba633355f162b48f4ba5c33cab51293e0c6b7fcfbcf8ecd5"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          125
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          56
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          56
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual1170〜1294の125行、英日coroutines各56行を初回全文実読。修正後独立した無省略出力でsource125行/EN56行/JA56行の全9段落・2例・参照を再読。原文→定本→訳、日本語単独、code18行/出力8行を照合。cpathは固定manual9211〜9229の19行と英日該当節だけを初回・別工程で実読（modules全体はpending）。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/coroutines.html",
+      "sha256": "c64d9e8a0acc74440128fba4adb5c86bde34b677a68b7ba5c6406bd001322f6e"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/02-language/06-coroutines.md",
+      "sha256": "af9d277e8093ac1f41f411583e7a08afd0514795506308dd7f00ec8d5d400ada"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/02-language/06-coroutines.md",
+      "sha256": "cc1a47a36af8fe38ccd9e003dbf1cd6cddc7bde61607b96f0b2298ee69e286e9"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          125
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          56
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          56
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "独立した実行threadと明示yieldのみ中断、create唯一mainfunction引数/handle返却/開始しない、resume初回main呼出しと追加引数・終了まで実行を全読。日本語のcreate/resume条件節語順がENと逆でも意味対応、2リンク先が逆だったため修正。",
+    "正常/異常終了、true+main全返値/false+errorobject、error後stackを巻戻さずdebug可能を保持。yieldはネスト呼出しでもresume直帰、true+yieldの返値、再resume追加引数がyield戻値となる双方向値受渡しを確認。",
+    "wrapはhandleの代わりに再開関数を返す、argをresumeへ渡す、最初booleanのみ除外、resumeと違いerror伝播とcloseを確認。最後C API3先も保持。",
+    "コード18行と出力8行は全byte保持。foo(a+1)=2、yield4、再開r、yield11/-9、再開x/y、return10/end、最後dead coroutine falseという流れを内容照合。コード実行は未検証として記録。",
+    "cpath該当節2段落はCloader、CpathとLuapath同じ初期化規則、LUA_CPATH_5_5/LUA_CPATH/default luaconf.hを確認、package.path/cpath逆リンク2先を修正。modules全体は未確認。",
+    "機械検査9段落ENtextexact/link24/2codeblock18+8byteexact/em3/id2.6/段落inlinecode一致。cpath2段落/link3/id3。576一意リンク監査の疑義は4→0、訳語・多義名・非link部分は監査対象外であり内容合格を広げない。",
+    "第55content56/1164リンク0、専用WTintegrity/相対122/117page build/diffすべてexit0。初回誤filter対象なしは未検査として保管しapps-luaで再実行。コードSHA不変で第51tests8/lint再利用。112本文+6コード/CSS rootWT一致。",
+    "coroutines英日desktop/mobile4view/console0/文書横overflow0、mobilecode2block横scroll/pre保持を視認。JA修正create/resumeリンクEnterで正しいanchorに移動、JA→EN同一page切替。cpath節JA2viewのみ実表示確認。",
+    "modulesのpackage.configリストは訳文が細かな段落に分断されていることを実表示で発見。次は同ページ全文を固定source/英日で照合し、書式の修正と別工程reviewを優先する。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/validation-reuse.json",
+      "sha256": "8728a2c71d12f3923375f1106f41ae39403b3d07a39f8a50ea9bfc2a063db9cd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/selective-build.txt",
+      "sha256": "da18f0898e61e55e571d6dc83a9f89c3541c1cd7856cd97f832895983fdc7744"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/tests.txt",
+      "sha256": "a4f094a37236479c44dd284241cc55357709edda2109a2cf90d0a24d542f40bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-055/browser-review.json",
+    "sha256": "b347aa9e8bdbdf7657848c1f82a7e0e7fd0edc940695363fd929c198dea97b19"
+  },
+  "nextAction": "第56は05-standard-library/05-modules.mdの固定manual6.3全文と英日全文を初回実読し、package.configの5行リスト分割を正規source/定本に沿って修正する。全ページ別工程内容・英日desktop/mobile表示・機械検査・専用WTbuildを実施し、内容13/55を保持して14/55へ進める。その後02-language/07-lexical-conventions.md。新bug権利案件はdeferred継続。",
+  "unresolved": [
+    "全55review scope残り42ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

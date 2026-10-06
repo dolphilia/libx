@@ -1,0 +1,136 @@
+{
+  "id": "04-auxiliary-library/03-functions-and-types-call-check.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T23:04:19.301Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-087/call-check-source-initial.html",
+      "sha256": "80790c8c005ef5c06764945c3202ee5512063533b38bbd6c95dba026937294fa"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-087/call-check-en-initial.md",
+      "sha256": "e6ed12d74c56c5fece5fcc90104ab969b2abc5ecd332110e2e5716510bc5b14e"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-087/call-check-ja-initial.md",
+      "sha256": "fff89be93a3d70b9f4608037ad36d1eee27c527aa2b645e4320e4dace067726d"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          176
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          151
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          149
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual7188〜7363全176行/EN151/JA149を初回と別工程で省略なし全実読。11関数の全16prose11effectsを意味/規範/自然さで照合。修正不要。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/auxiliary-call-check.html",
+      "sha256": "80790c8c005ef5c06764945c3202ee5512063533b38bbd6c95dba026937294fa"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/04-auxiliary-library/03-functions-and-types-call-check.md",
+      "sha256": "e6ed12d74c56c5fece5fcc90104ab969b2abc5ecd332110e2e5716510bc5b14e"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/04-auxiliary-library/03-functions-and-types-call-check.md",
+      "sha256": "fff89be93a3d70b9f4608037ad36d1eee27c527aa2b645e4320e4dace067726d"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          176
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          151
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          149
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "callmeta metatableANDfield eならobj唯一引数/true+返値push、無しfalse+nopush。checkany anytype incl nil/arg存在、checkinteger整数OR変換可/返す整数、checklstring文字列/長参照l非NULL条件/全tolstring変換caveats、checknumber数値/lua_Numberへ変換返すを照合。",
+    "checkoption lst MUST NULL終端/string検索index/非stringOR未発見error、def非NULLならarg無しORnil時default、Cenum/string選択の通常慣例を照合。checkstack top+sz/拡張不可error/msg追加orNULL、checkstring全tolstring変換caveatsを照合。",
+    "checktype t/type符号lua_type、checkudata tname/newmetatable/返すmemblockaddress/touserdata、checkversion callingcodeandcalledlibLua版ANDnumerictypes一致を照合。見出しはpage-map syntheticHeading、訳語・自然さ・否定例外保持、修正不要。",
+    "原文ENprose全文一致、27rootp(16prose11effects)/40inline/11宣言pre/11head11ID/5links2bold11em。JA2節inline自然順は節内multiset一致、別工程全文と機械token独立。英日4実画像でcheckoption条件とchecklstringを実見、overflow0console0/locale同page/newmetatable Enter最終0.179px確認。",
+    "112本文+7code rootWT SHA一致、第86新規機械5検査/117pagebuildと同SHA第69の11tests/lint再利用。40→41/55、14未確認。新規0/新bug権利保留/既知addgsub宣言不一致を維持。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-087/validation-reuse.json",
+      "sha256": "e213c7a17061e0f834415112987b5a1e36d9a17f67e65a06e237d06d3b687055"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-086/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-086/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-086/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-086/selective-build.txt",
+      "sha256": "ab38deaf43298704a117f21fe0aa6572f31f9b7df94fa5eff7c664733137a0cd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-086/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-087/browser-review.json",
+    "sha256": "9cf3665ce6f7f95add8a907a01d12411100e9e4983d7e21ba143c338f6067204"
+  },
+  "nextAction": "第88は04-auxiliary-library/04-functions-and-types-do-load.mdを固定page-map/manual全範囲と英日全文で初回レビュー、別工程全文/機械/英日4viewを確認する。全検証時のみ41→42/55、残り14未確認。新bug権利とaddgsub宣言不一致の根拠は公式巡回で再照合。",
+  "unresolved": [
+    "全55review scope残り14ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "luaL_addgsub宣言は固定マニュアルconst voidと同固定tarヘッダー/実装voidで異なる。定本保持、宣言実行未検証。次回公式上流巡回で訂正根拠を確認。"
+  ]
+}

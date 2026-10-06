@@ -1,0 +1,137 @@
+{
+  "id": "03-c-api/01-overview.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T20:29:14.204Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-062/c-api-overview-source-initial.html",
+      "sha256": "df1d0a42bd76b4c8a5af8c92f7742734b0f32494c9a9fa3e93771b257fc029fe"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-062/c-api-overview-en-initial.md",
+      "sha256": "e901531c5342f1bdb181fcf1d2c6a4200a4583465997f877cdb7fe6c5a016d38"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-062/c-api-overview-ja-initial.md",
+      "sha256": "2bc11ef7e892e141e22eb30d120d77b895cb38483af0b9520c5645258039c803"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          55
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          18
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          18
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "初回fixedmanual3075〜3225で第4章導入と4.1境界を実読、英日各1〜18全文実読。別工程では固定抜粋source1〜55（manual3075〜3129）・英日各1〜18を別の3出力で無省略再読。6説明段落を原文→定本→日本語、日本語単独で意味/例外/型と関数の参照先を確認。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/c-api-overview.html",
+      "sha256": "df1d0a42bd76b4c8a5af8c92f7742734b0f32494c9a9fa3e93771b257fc029fe"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/01-overview.md",
+      "sha256": "e901531c5342f1bdb181fcf1d2c6a4200a4583465997f877cdb7fe6c5a016d38"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/01-overview.md",
+      "sha256": "2bc11ef7e892e141e22eb30d120d77b895cb38483af0b9520c5645258039c803"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          55
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          18
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          18
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "前回nextActionはoverviewファイルと4.1 stack範囲を混同。lua-5.5.1-page-map.mjsでoverviewの4→4.1、stack4.1→4.2と実原文を照合し、当該第62は4章導入55行を全文確認、stack3小節は次の第63へ残す。既存ファイル分割は変更せず未確認範囲を除外しない。",
+    "C APIはhostとLua通信するC関数集合、全API/関連types/constantsはlua.h宣言。functionと呼んでもmacroあり、特記以外各argument1回だけ評価する規約は第1Lua state引数を除くことを保持。隠れた副作用なしの因果を照合。",
+    "既定では引数validity/consistency未検査、LUA_USE_APICHECKを定義してcompileすると変更可。ライブラリはfully reentrant/globalvariablesなし、dynamic Lua stateに全情報保持の主張を原文どおり翻訳。一般のLuaグローバル変数の否定と混同しない文脈。",
+    "各stateは独立かつ協調的executionの1以上thread、lua_State型はthreadを指しそのthread経由でassociated stateを参照。全libraryfunctionの第1引数threadpointer、例外lua_newstateだけstate新規作成してmainthreadpointerを返す。2原文em概念と両API参照先を照合。",
+    "機械照合source→EN6段落exact/4inlinecode/3nativeID/2links/2em、JAparagraphcodeorder完全一致。コード例なし。本文と変換コードに修正なし。",
+    "英日desktop/mobile4viewで6p/0pre/4inline/2em/3nativeID、文書横overflow0/console0。両言語で再入可能性・state/thread区別・lua_newstate例外の最終段落を画像確認。lua_newstate Enter→native target存在とJA→EN同一pageを確認。",
+    "112本文+6コード/CSSのroot/専用WTと第60SHA一致。第60content56再現/内部1164links0/integrity/相対122links/117pagebuild/diffの実合格、第51tests8/lintを不変入力で再利用。第62の新規実行として数えない。残り35内容/表示未確認を機械検査から完了にしない。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-062/validation-reuse.json",
+      "sha256": "85c2b25fb3e20e1cc338b738b340e9ac9b0d2d1beb9b9e6d352f20ace5582fcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/selective-build.txt",
+      "sha256": "8149642a221eb959e0c9e027aeae0e74487174f605deb4937e5d6b99e77d2e5e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-060/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/tests.txt",
+      "sha256": "a4f094a37236479c44dd284241cc55357709edda2109a2cf90d0a24d542f40bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-062/browser-review.json",
+    "sha256": "d61ce2829a46701f60906ae8364e18f4de28418186a9b4b407de4889b3431662"
+  },
+  "nextAction": "第63は03-c-api/02-stack.mdとfixedmanual4.1全3小節（3130〜3321）を初回実読し、virtual stack/各Ccall独立stack/positiveとnegative index/overflow例外/validとacceptable/0禁止/文字列pointer寿命条件を照合。別工程全文・英日desktop/mobile表示・機械照合へ進む。全55scope維持、20/55確認済み35未確認、newbug権利適用deferred継続。",
+  "unresolved": [
+    "全55review scope残り35ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

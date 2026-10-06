@@ -1,0 +1,140 @@
+{
+  "id": "04-auxiliary-library/05-functions-and-types-make-push.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T23:14:21.056Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/make-push-source-initial.html",
+      "sha256": "397eb227b8bc52911df691f18dc773cd2ed98e6ef67ac265910dbdac561a1052"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/make-push-en-initial.md",
+      "sha256": "c0ff97187c7843d82b0f2880ab385aaec1897363d2f1dc25ee174474d0e5c600"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/make-push-ja-initial.md",
+      "sha256": "8fe531ca47577c43b59a63856c3c3bb3562e38fa6e41dd2216ebbe5f996c5bba"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          274
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          219
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          219
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual7631〜7904全274行/英日219行を初回と修正後の別工程で省略なし全実読。15関数/24prose15effectsの意味/例外/自然さを照合。JA1文修正。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/auxiliary-make-push.html",
+      "sha256": "397eb227b8bc52911df691f18dc773cd2ed98e6ef67ac265910dbdac561a1052"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/04-auxiliary-library/05-functions-and-types-make-push.md",
+      "sha256": "c0ff97187c7843d82b0f2880ab385aaec1897363d2f1dc25ee174474d0e5c600"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/04-auxiliary-library/05-functions-and-types-make-push.md",
+      "sha256": "907419fa28f7f217fb9f334430ec0b092de565df189c340556e5679cb5bc9814"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          274
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          219
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          219
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "makeseed弱いランダム性生成の説明を自然な日本語へ1文修正。暗号用途等の保証は追加せず、L=NULLはstate利用不可時を保持。newlib/newlibtableのlは実際の配列でMUST NOTポインター、全登録数最適化/登録関数保存なし/setfuncs併用/マクロ完全字句を確認。",
+    "newmetatable既存キー0/新規テーブルと__name/registry追加1・両場合最終値push、条件付き初期化でエラーが起きると次回既存検出で未初期化のまま飛ばす注意を照合。newstate alloc=luaL_alloc/seed=makeseed(NULL)/stderr警告panic/メモリエラーNULLを照合。",
+    "opt noneornilならdflt/他func(L,arg)/dflt必要時のみ評価、optinteger/optnumber/optstring型または既定値/他errorを照合。optlstring l非NULL長さ設定、結果NULLはdを返しdNULLの場合のみで長さ0、tolstring全変換注意も適用を照合。",
+    "prepbuffer LUAL_BUFFERSIZE/prepbuffsize sz領域/copy後にactualsizeでaddsizeが必要、pushfail §6、pushresult最終stringトップ/pushresultsize addsize then pushresultを照合。24prose15effects=39p/61inline17pre(15decl2macro)/15head16ID12links5bold11em、4節自然語順multiset保持。C宣言/macroは実行未検証。",
+    "初回と修正後別工程で原文ENJA全文実読、機械5検査を新規実行して全exit0/117ページbuild、7code同SHAで第69の11tests/lint再利用。英日4view実画像overflow0console0/locale同page/§6Enter最終見出しtop-1.102pxを確認。42→43/55、残り12未確認。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/repairs.json",
+    "sha256": "de5e94ebaeea30c508d1269e4d2bea51d9d50b396a3768ca3337fadd2d617d94"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/validation-reuse.json",
+      "sha256": "f8dad3a28f3cfb01e4cf200946938bb26c26a068f974ecc62230117f12f622e8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/selective-build.txt",
+      "sha256": "cd73f1d02d27a8a7ded65d8d4b6ab75238525efc39953b6f93666e15f8e2e519"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-089/browser-review.json",
+    "sha256": "50e3a53a0f829bf671308762e7d91665e70cf5388f3ff0d01d7df9222612104a"
+  },
+  "nextAction": "第90は05-standard-library/01-overview.mdを固定page-map/manual全範囲と英日全文で初回レビュー、別工程全文/機械/英日4viewへ。全検証時のみ43→44/55、残り12未確認。新bug権利とaddgsub宣言不一致は公式根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り12ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "luaL_addgsub宣言は固定マニュアルconst voidと同固定tarヘッダー/実装voidで異なる。定本保持、宣言実行未検証。次回公式上流巡回で訂正根拠を確認。"
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "id": "03-c-api/13-functions-and-types-raw-resume.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T22:33:53.818Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-081/raw-resume-source-initial.html",
+      "sha256": "eb5351ffbc21ec9feff9415c93050306d6060117b15e5c2853a82676cfb51ebb"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-081/raw-resume-en-initial.md",
+      "sha256": "19f945db9cbd22fa09395858aee8a6386623abd2f4685323c52442dcd58d8314"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-081/raw-resume-ja-initial.md",
+      "sha256": "94b7a846f3fd59d94d3c32946837350d36245e5a545e33c600e2e60bb04d4628"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          269
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          194
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          194
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual5352〜5620全269行/英日各194行を初回と別工程で省略なし全文実読。13関数1型/21prose/13effects/34p/14declとregistermacro、全意味・規範・自然さ照合。修正不要。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/c-api-raw-resume.html",
+      "sha256": "eb5351ffbc21ec9feff9415c93050306d6060117b15e5c2853a82676cfb51ebb"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/03-c-api/13-functions-and-types-raw-resume.md",
+      "sha256": "19f945db9cbd22fa09395858aee8a6386623abd2f4685323c52442dcd58d8314"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/03-c-api/13-functions-and-types-raw-resume.md",
+      "sha256": "94b7a846f3fd59d94d3c32946837350d36245e5a545e33c600e2e60bb04d4628"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          269
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          194
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          194
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "rawequal原始等値/__eq無し/otherwise0/anyindex無効0、rawget MUSTtable/メタ無し、geti t[n]/getp t[k] k=lightudpointerp/型返却/__index無し、rawlen string長/table#nometa/udrawmemorysize/他0を照合。",
+    "rawset MUSTtable/rawnometa、rawseti/p t[i/p]=v stacktop/値pop/__newindex無し/pライトud符号化を照合。geti/p/seti/p JA順序違いは自然定義順で各意味一致。",
+    "Reader lua_load毎断片data引数、reader MUSTmemorypointer ANDsize設定、block MUST次呼び出しまで存在、EOF MUST NULL ORsize0、正の任意サイズ可。3MUST保持/3行typedef完全一致を照合。register f→globalname/2行macro順lua_pushcfunction次setglobal/空白改行完全一致。C未実行。",
+    "remove有効index/上位要素下shift/疑似不可、replace top→validindex/他shift無し/topPOP、resume L start/resume/emptythreadstack functionargs/nargs数/suspend ORend ORunprotectederror帰還、成功*nresults更新+yield/body結果stacktop/YIELD vsOK vserror、失敗errorobjecttop nresults非更新を照合。",
+    "resume再開時yield*nresults除去/yield結果push/resume/ fromはL再開側coroutineなしNULL可。rotate idxvalid→top/正n上方向/負n底方向-n/ABS(n) MUSTslice以下/疑似不可。JA resume/rotate inline順は自然語順で同一意味。",
+    "原文ENprose全文一致、英日34p/69inline/15pre/14head14ID/11links/0bold4em/13effects、コード字句空白一致。英日PCmobile4画像でReader/Resume/Rotate条件確認、overflow0console0、locale同page。§4.4.1初回mobile位置未確定を記録、追加PC Enter移動と実画像確認、最終targettop0.03125。",
+    "112本文+7code root専用WT同SHAで第79機械5検査/117pagebuild、第69の11tests/lint証拠再利用。今回全文/表示独立確認、34→35/55、残り20未確認。新規0/新bug権利deferred維持。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-081/validation-reuse.json",
+      "sha256": "bf73a8d73211c8b76d9df3d95edcf9dd586ab1cca6ee5a020d02ebb56d4e750f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-079/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-079/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-079/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-079/selective-build.txt",
+      "sha256": "cf632889d9d60c5f3038fa2255c1ee272516468ddf1ae4f55235937eb60d9b8a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-079/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-081/browser-review.json",
+    "sha256": "e403e348df70e0cf4515b91acb080eec5a7db8a58798fea0521d76695eb54f90"
+  },
+  "nextAction": "第82は03-c-api/14-functions-and-types-set-status.md（setallocf–stringtonumber）を固定page-map/manual全範囲で初回全文レビュー、必要修正後の別工程全文/機械/英日4viewへ。全検証時のみ35→36/55。残り20scopeを順次確認、新bug権利は公式根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り20ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "id": "05-standard-library/08-table-manipulation.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T23:36:24.506Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/standard-table-source-initial.html",
+      "sha256": "e17d5adf041f195131578d933e954a57bb4ed7f451104ea10f91b197d17c0692"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/standard-table-en-initial.md",
+      "sha256": "2dc01772c2b1c188eb1317415eb00d67a8a1b53fda8d1a8f71083a0e0a72c285"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/standard-table-ja-initial.md",
+      "sha256": "5e510b55759228defb6847478f4674d580878b24d3ce69ec0edf67047cad3d2b"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          172
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          74
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          74
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual10445〜10616全172行/英日74行を初回と修正後別工程で省略なし全実読。8関数/16本文段落の意味/例外/自然さを照合。JA remove条件の曖昧な1文修正。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/standard-table.html",
+      "sha256": "e17d5adf041f195131578d933e954a57bb4ed7f451104ea10f91b197d17c0692"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/05-standard-library/08-table-manipulation.md",
+      "sha256": "2dc01772c2b1c188eb1317415eb00d67a8a1b53fda8d1a8f71083a0e0a72c285"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/05-standard-library/08-table-manipulation.md",
+      "sha256": "feacfde49159d1b02bc52dced3ea701c807f2ccab68fd9906157e82ec92f5f6b"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          172
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          74
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          74
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "table汎用操作/lengthoperator全注意適用§3.4.7/非数値key無視、concat stringORnumber全要素/sep空i1j#list/igreaterj空、create空テーブルpreallocation MAY性能メモリ利点/nseq sequence数hint/nrecその他数hint既定0、insert posへvalue/upshift/既定#list+1/t末尾を照合。",
+    "move a1→a2多重代入等価/a2既定a1/宛先範囲元と重複可/移動数Lua integer MUSTfit/f>eなら何も移動なし/宛先a2返却、pack keys1〜/n全args数/nilあればnotsequence可能を照合。",
+    "remove pos要素の値return/1〜#listならdownshift+最終erase、#list=0時pos0と#list+1の許容条件を曖昧にしていた1文を明確化。pos既定#list/remove(l)最後を削除を照合。sortinplace range全/comp2element前ならtrue/後i<=j→notcomp(reverse)/未指定<標準/consistent strictweakorder MUST/不安定・等価要素の相対順可変を照合。",
+    "unpack値i〜j返却模式例字句/既定i1j#listを照合。原文ENprose全一致、16p/60inline1pre(1行模式例)/8head10ID1link1bold1em。insert/remove節inline自然語順multiset保持。例は未実行。初回と修正後別工程で原文ENJA全実読、新規機械5検査全exit0/117pagebuild、7code同SHA第69の11tests/lint再利用。",
+    "英日PCmobile4画像実見でJAremove修正、ENsort3段落/ENmobilemove2段落+packを確認。overflow0console0/locale同page/§3.4.7Enter最終見出しtop-0.789px。47→48/55、残り7未確認。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/repairs.json",
+    "sha256": "25b15d660fefa52ab85c17a6b80dd6f8349a0256d442883f9f584e44f7d69a7e"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/validation-reuse.json",
+      "sha256": "bc4e0154d8aa58b1039f36109182bf1d92e5552476ee4e872aa48402d78c6574"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/selective-build.txt",
+      "sha256": "1d5694615f8a53ba4051d59ac8307bb48ff8bd4b2ef23ea630ad06f5284304ce"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-094/browser-review.json",
+    "sha256": "9a1a0ff934805bdacd72fd683b51cf1fa8cbd95c773b661f47d6a2980e63c380"
+  },
+  "nextAction": "第95は05-standard-library/09-mathematical-functions.mdを固定page-map/manual全範囲と英日全文で初回レビュー、別工程全文/機械/英日4viewへ。全検証時のみ48→49/55、残り7未確認。新bug権利とaddgsub宣言不一致は公式根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り7ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "luaL_addgsub宣言は固定マニュアルconst voidと同固定tarヘッダー/実装voidで異なる。定本保持、宣言実行未検証。次回公式上流巡回で訂正根拠を確認。"
+  ]
+}

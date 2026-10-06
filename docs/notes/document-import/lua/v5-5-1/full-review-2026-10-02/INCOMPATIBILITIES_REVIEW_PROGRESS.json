@@ -1,0 +1,139 @@
+{
+  "id": "07-migration-and-known-issues/02-incompatibilities.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-02T00:07:06.930Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/incompatibilities-source-initial.html",
+      "sha256": "d2a7c579fcd0c99a597475a4d0bb7d8cd1bdff6f3dbb348e24323544d6cd0e26"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/incompatibilities-en-initial.md",
+      "sha256": "25e585bae149409ab30f3289038cea1a8b54ace76aab1ab509fd2f551280e71d"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/incompatibilities-ja-initial.md",
+      "sha256": "f4ad9ec1fb3b0660d59c802a529def3ff302fe548b57a142683462217bce074c"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          152
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          39
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          118
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual12292〜12443全152行/初回EN39JA118行を初回全実読。修正後の原文152/英日39行を別工程で省略なし全実読。5本文段落/3節全12項目の意味・例外・自然さを照合。JA断片化/GC用語/should推奨を修正。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/incompatibilities.html",
+      "sha256": "d2a7c579fcd0c99a597475a4d0bb7d8cd1bdff6f3dbb348e24323544d6cd0e26"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/07-migration-and-known-issues/02-incompatibilities.md",
+      "sha256": "25e585bae149409ab30f3289038cea1a8b54ace76aab1ab509fd2f551280e71d"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/07-migration-and-known-issues/02-incompatibilities.md",
+      "sha256": "4256feeddf76980319d71840fcb36d64e61a7176e3c7481b6e8315b35f959f03"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          152
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          39
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          39
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "5.4→5.5移行/一部互換optionで回避可luaconfh/将来全互換option削除/削除時しばしば互換問題/機会あればalloff版でcode試験shouldtry/新版移行容易、定数値やmacro等ソース変更なしC API変更可/版間binary互換neverassume/new版APIclient ALWAYS再compile、precompiledchunk内部変更可・版間互換なし、official標準paths版間変更可を照合。JA試験推奨を明示。",
+    "言語4項目全照合：globalreserved通常name禁止/LUA_COMPAT_GLOBAL luaconfhで通常word、for controlvar readonly必要ならbody同名local、__callchain最大15objects、errornilobject→stringmessage。global項目2段落を保持し全12項目の断片化を解消。",
+    "library GC parameters incremental/generationalで設定せず新param/parameter自体変更、API lua_call関連nresults最大250/大値LUA_MULTRET後stack調整/従来unspecified、newstate第3stringhashseed、resetthreaddeprecated→closethread fromNULL等価、setcstacklimitdeprecated呼出削除可、dump writercallsを通じstack維持方法変更従来unspecified+end通知extra1call、GCINC/GCGENでは設定せずnewGCPARAM/parameter自体変更、pushvfstring nowreport notraiseerrorsを全照合。GC parametersを引数からパラメーターへ4箇所統一。",
+    "初回と修正後別工程で原文ENJA全実読。原文EN全prose一致、5rootp/22inline/4nativeID/9links/3bold/0em/0pre、3lists4/1/7・global2pその他各1pを保持。翻訳見出しは8.1〜8.3の明示対応表で検査。コンパイル・移行の実行挙動は未検証。新規機械5検査exit0/117pagebuild、7code同SHA第69の11tests/lint再利用。英日PCmobile4画像とJA API末尾追加画像で全範囲の代表表示実見。52→53/55、残り2未確認。"
+  ],
+  "repairs": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/repairs.json",
+    "sha256": "30cfe26ed4a7dd09639ca4a1dfe09ff46a8a459810c016575dab5855713c42a7"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/validation-reuse.json",
+      "sha256": "3f9aa302ec269edf8c7b409cb5853900a6572a582735c861fd50db938451fb87"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/selective-build.txt",
+      "sha256": "c3e565bd97583ba75c333bcf18739bdffc5320a7ed048f7e2a27cc6ef87e6c4a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/tests.txt",
+      "sha256": "a92abe226fb6290f3a6250ccdc35d1c0f53eeca9a7be5f8604270aca66672bcc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-069/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-099/browser-review.json",
+    "sha256": "7e74cce39151f5f41d103558930a39a17441a3bb105d3279fa9decf9510b993f"
+  },
+  "nextAction": "第100は06-tools/02-lua-command.mdを固定tarのdoc/lua.1全文と英日全文で初回レビュー、別工程全文/機械/英日4viewへ。全検証時のみ53→54/55。その後luac man残り1ページ。新bug権利とaddgsub宣言不一致は公式根拠確定時のみ再開。",
+  "unresolved": [
+    "全55review scope残り2ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。",
+    "luaL_addgsub宣言は固定マニュアルconst voidと同固定tarヘッダー/実装voidで異なる。定本保持、宣言実行未検証。次回公式上流巡回で訂正根拠を確認。"
+  ]
+}

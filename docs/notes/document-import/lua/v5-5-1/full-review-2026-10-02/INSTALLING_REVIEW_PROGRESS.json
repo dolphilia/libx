@@ -1,0 +1,128 @@
+{
+  "id": "01-overview/02-installing.md",
+  "status": "page-reviewed-and-validated",
+  "updatedAt": "2026-10-01T18:04:20.533Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/installing-source-initial.html",
+      "sha256": "a3b5da213e4e6467c6dd48e63b418699e2cc4dba00462d505329a0bdf26bbb54"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/installing-en-initial.md",
+      "sha256": "86f8af00eeeffecd5eb0b0117c946339bbaf88a8acabca39c73d0f5d8ab583b8"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/installing-ja-initial.md",
+      "sha256": "bbff4e3499bb2be6097d84a005d62dedf052a1fca72a995034e0f4d76c63eea7"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          174
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          65
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          84
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "fixed readme install節174行と英日全文を初回・修正後の別工程で実読。省略された最終ENの出力は再取得して全行確認。",
+    "ISO C/C++無変更、対象Unix/Linux/macOS、LuaBinariesという代替を保持。全12プラットフォーム名/推測失敗時の順序、5ビルド手順を照合。",
+    "make testは版表示の検査、sudoは必要かもしれない条件、local/all install/INSTALL_TOPの構文と相対path注意を保持。各dir/file名はsourceと英日で照合。",
+    "定義7項目でENにコロン二重を発見、sourceに既存colonがあれば変換器は再付与しない。JAも7項目のリストでterm/value対応を明示。",
+    "2space継続字下げで第三項の後にolが閉じ4/5が普通の段落になる実HTMLを発見。marker幅+1spaceに修正し英日3space、空行は余分なspaceを生成しない。副作用は他5ENの空行12行のspace除去のみと機械比較、未レビュー53を合格にしない。",
+    "3カスタマイズ対象ファイルとbuild前編集/クライアント一貫性を保持。otherではlibrary/interpreter/compilerの全ソース、各動的libraryへLuaをlinkしない禁止、Unix static host+symbols export、WindowsDLL推奨、luac常にstaticという規範を保持。日本語の否定/条件/推奨を別工程確認。"
+  ],
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/installing.html",
+      "sha256": "a3b5da213e4e6467c6dd48e63b418699e2cc4dba00462d505329a0bdf26bbb54"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/01-overview/02-installing.md",
+      "sha256": "730b35acbf70c0a038ab40c218e1de46df3fa979ab8d3c7dd601cd29ad109aba"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/01-overview/02-installing.md",
+      "sha256": "4409cd9190f3951b146283244b18ddea1794eaa7264bfb8934e5523a407fbe2f"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          174
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          65
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          70
+        ]
+      ]
+    }
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "localLLMUsed": false
+  },
+  "nextAction": "次の固定readme changes節を保存、07-migration-and-known-issues/01-changes-since-5-4.mdのsource/英日全文を初回・別工程で照合し表示検証。",
+  "unresolved": [
+    "全55review scopeの残り53が内容/表示未確認。新bug投稿由来の権利適用範囲はdeferred。"
+  ],
+  "phase": "page-validated",
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/browser-review.json",
+    "sha256": "5b20357da2dc4a53b7eeaea1bff137468e351498c4bed2eed10011d391f561cd"
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/regenerate.txt",
+      "sha256": "f0f1d4a00b065c0184ed249222658887aaab102fe9be6659f64977ca024f2f08"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/selective-build.txt",
+      "sha256": "63353df7b3795b14dc46a19ff8b044d32bfec95acd3405e9bf6c59c356b62ef9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-044/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

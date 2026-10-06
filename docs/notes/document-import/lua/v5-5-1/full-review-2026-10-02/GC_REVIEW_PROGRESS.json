@@ -1,0 +1,140 @@
+{
+  "id": "02-language/05-garbage-collection.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T19:09:28.319Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/gc-source-initial.html",
+      "sha256": "cd5b7fb72296de3ac70a0a6cbf18474acb19a92ec24373a6525a298263c888c2"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/gc-en-initial.md",
+      "sha256": "22c2a479556a0dd5f25e0614d28ecaa7fd04ae1dbce0aca5a5ab7ad136f41f23"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/gc-ja-initial.md",
+      "sha256": "d2146b1191abd108bc8fc357a909a38a123647611b5104631d1f727730d0f586"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          343
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          72
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          72
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual2.5から2.6直前のsource343行、初回はsource1〜171/172〜343、英日1〜35/36〜72等の無省略出力で全文実読。百分率5箇所修正後の別工程ではsource1〜171/172〜343、英日1〜38/39〜72を全文読み直し。導入5段落と四節24段落、数値/制限/例外を原文→定本→日本語と日本語単独で照合。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/garbage-collection.html",
+      "sha256": "cd5b7fb72296de3ac70a0a6cbf18474acb19a92ec24373a6525a298263c888c2"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/02-language/05-garbage-collection.md",
+      "sha256": "22c2a479556a0dd5f25e0614d28ecaa7fd04ae1dbce0aca5a5ab7ad136f41f23"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/02-language/05-garbage-collection.md",
+      "sha256": "ea7d1bacb3e77fa4cab9234a56ed80130972bca9b20ca13fe0eaa1ef833182fb"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          343
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          72
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          72
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "導入5段落を全読。全メモリ管理、deadの通常アクセス定義（finalizer/debug除外）、生存可能な対象の非収集と変数/他liveから到達不能の最終収集保証、Cの知識を持たずregistry/globalenv/mainthread非収集を保持。default適性/GC挙動と最適設定の非移植性/C lua_gc・Lua collectgarbageによる直接制御を確認。",
+    "2.5.1全4段落を照合。mark-and-sweep小stepと実行交互、pause/stepmult/size3数値。pause n%前回収集後基準・<=100即開始/200倍増待機、stepsize n bytes概数、mult n% unit/allocatedword・1slotまたは1object程度・小さすぎると完了不能・0無制限stop-worldを保持。",
+    "2.5.2全5段落を照合。minor recentのみ・bytes超過major全対象・十分garbageまでmajor維持。minor x%最後major使用量基準/20%、minor-major oldbytes x%previousmajor total基準/100では倍より大/0major停止、major-minor前回cycle割当量少なくともx%回収/0はmajor1回後minorを保持。",
+    "2.5.3全8段落を照合。table/fulluserdata finalizerと外部resources、__gcありmetatable設定時mark・後追加は非mark、deadmarkedはlist経由singlearg __gc、当該cycle mark逆順/通常コード任意point。復活対象/一時とglobal保存恒久/再mark再呼出し/deadかつ非markcycleだけ解放、lua_close全marked逆順/そのphase追加mark無効、yield/GC禁止・最小処理推奨・エラー警告非伝播を保持。",
+    "2.5.4全7段落を照合。weakrefsのみ参照の対象収集、key/value/bothと片方収集時pair全削除、__mode厳密k/v/kv、ephemeronはkey到達可能時のみvalue到達/onlyvalue経由key pair削除。変更は次cycleまで遅延しstrengthen前一部収集可能、number/lightCfunction非GC・string value semanticsにより非weakremove、復活対象weakvalueはfinalizer前/weakkey次回実解放時、復活weaktableのclear遅延を保持。",
+    "JAの*n%*2箇所/*x%*3箇所が日本語に隣接して強調構造を崩しliteral*を表示していた。各々<em>n%</em>/<em>x%</em>に修正、数値と意味・段落本文は維持。修正後別工程全文照合完了。",
+    "機械照合は29本文段落source→EN一致、inlinecode10英日順序一致、強調30英日対応、本文7link fragment順一致/JA locale対応、節ID2.5と2.5.1〜4。source初回343行・英日72行ずつの保存証拠を保持。",
+    "修正後content56定本再現/1164内部リンク0、専用WT整合性/relative122問題0/117page build/diff exit0。112body/CSS/importer/map/formatter/test rootWT SHA同一、変更は当該JAのみ。formatter/test不変なので第51の8tests/lint証拠を再利用。",
+    "英日desktop/mobile4viewでp29/code10/em30/percentem5/節ID5、literalstarsなし/document横overflow0/console0を確認。日本語修正前後画像も視認保存。JA目次Enter/API lua_close Enter往復/JA→EN同一page切替確認。機械・全文レビュー・実表示を別証拠で保存。",
+    "API遷移先の未レビューC API 07で§4.5/lua_call参照対応に疑義を観測。現段階では合格にせず固定sourceとの対応を次の優先修正サイクルで照合する。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/validation-reuse.json",
+      "sha256": "f5c12cacecf5a92cf37e00b0fdb7a37c16813491ca46f521323d26854476e2df"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/selective-build.txt",
+      "sha256": "09d6fa3e6710d585408b039243c267dea1b90d30438e715afbe5579aa075e3fc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/tests.txt",
+      "sha256": "a4f094a37236479c44dd284241cc55357709edda2109a2cf90d0a24d542f40bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-051/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-052/browser-review.json",
+    "sha256": "9e0a1c7191f94820e5baaf954679fa84d34a8b14358c05878d40c9534535703e"
+  },
+  "nextAction": "未レビュー03-c-api/07-functions-and-types-a-c.mdのlua_callkにある§4.5/lua_callリンク対応疑義を固定manualと照合し、確認された誤りを先に修正・検証する。その後固定manual2.6 Coroutinesから3 The Language直前を保存し02-language/06-coroutines.mdの原文・英日全文、別工程、機械、英日desktop/mobileを検証する。",
+  "unresolved": [
+    "全55review scope残り45ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

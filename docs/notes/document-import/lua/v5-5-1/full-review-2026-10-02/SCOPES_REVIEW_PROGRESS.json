@@ -1,0 +1,109 @@
+{
+  "id": "02-language/02-scopes-variables-and-environments.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T18:40:30.581Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-049/scopes-source-initial.html",
+      "sha256": "700617562a75a06adeb6d0b5d7f27f6e53851e42077a8d0ddf6bed8d80385e76"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-049/scopes-en-initial.md",
+      "sha256": "3110cb6788844916a45ab2889c1761b93551d47315ebfb7e956ac63741a5d918"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-049/scopes-ja-initial.md",
+      "sha256": "645828f2d729cd1cf776de3dacb7166db659eeccd5aa15202607b7cbe7107081"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          148
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          69
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          69
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "details": "固定manual2.2から2.3直前のsource148行、英語69行、日本語69行を初回と別工程のツール出力で省略なく実読。原文→定本、定本→日本語、日本語単独を確認。",
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/scopes-variables-and-environments.html",
+      "sha256": "700617562a75a06adeb6d0b5d7f27f6e53851e42077a8d0ddf6bed8d80385e76"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/02-language/02-scopes-variables-and-environments.md",
+      "sha256": "3110cb6788844916a45ab2889c1761b93551d47315ebfb7e956ac63741a5d918"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/02-language/02-scopes-variables-and-environments.md",
+      "sha256": "645828f2d729cd1cf776de3dacb7166db659eeccd5aa15202607b7cbe7107081"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          148
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          69
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          69
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "14段落と3code例の全行を照合。変数参照はその位置の宣言、仮引数はlocal同等。全chunk冒頭のimplicit global *、別global宣言scope内でvoid、scope外ではglobal-by-default、内側では全変数宣言必要を保持。",
+    "lexicalscopeは宣言後firststatementから最内block最後のnonvoidまで、voidはlabel/empty。shadow中outer同名宣言void。local x=x右辺はまだ新xscope外のためouter。code output10/12/11/10、ERROR注釈も原文通り。",
+    "内部関数がlocalへアクセス、upvalue/external local/external variableの3名称を保持。local文毎に新変数、loop10closuresはyが各別でx共通。sourceのインデント/コメント/値をcode3枠7/13/6行すべて保存、実行なし。",
+    "global var参照は構文的に_ENV.varへ変換、chunkはexternal local _ENV scopeでcompileし_ENVはfree nameにならない。_ENVはregular name、同名変数/仮引数可能、global _ENVでは_ENV._ENV.varへの無限変換を生むため定義すべきでないという原文条件を保持。",
+    "_ENV値のtableをenvironmentと呼ぶ。distinguished global environmentはCregistry specialindex、_Gは同値初期化・内部で使わないので変更はown codeのみ影響。_ENVと_Gを同一変数として誤訳しない。",
+    "chunk loadで_ENV defaultglobal環境、standardlibraryもglobal環境、一部関数はそこでoperate。load/loadfileで別環境、Cではload後firstupvalue変更/lua_setupvalue、手順と参照先を保持。",
+    "英語14段落textがsource一致。code3枠/26行とinlinecode24/strong2/em6/links10/id1を機械照合し英日DOMとも一致。修正不要。",
+    "英日desktop/mobile4view doc横overflow0。code枠はwhite-space preを保持、mobileは枠内horizontal scroll、ArrowRightでfocusとscrollLeft移動を確認。JA API参照先Enter往復とJA→EN同一ページを確認。global tokenのhighlightは現grammar通常textだがコード原文一致、仕様を推測追加しない。",
+    "112body/CSS/importer/mapのroot/WT保存SHAが第48と一致したため第48新規機械/117pagebuildを有効証拠として再利用。次章を未確認のまま保持。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineReuse": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-049/validation-reuse.json",
+    "sha256": "0715e8666f53f241c2a91d9ad0dc1a01bfc441cf5895957a32e54db13e73715b"
+  },
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-049/browser-review.json",
+    "sha256": "c108bd8fc1bb0dd5033498b0cdc3f466abb3ee694305ebc906fdd2225094210e"
+  },
+  "nextAction": "固定manual2.3 Error Handlingから2.4前までを保存し02-language/03-error-handling.mdのsource/英日全文を照合、別工程レビュー・英日desktop/mobile表示を検証する。",
+  "unresolved": [
+    "全55review scope残り48ページの内容/表示未確認。",
+    "新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}

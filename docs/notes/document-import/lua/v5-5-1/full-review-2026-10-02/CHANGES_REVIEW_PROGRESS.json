@@ -1,0 +1,122 @@
+{
+  "id": "07-migration-and-known-issues/01-changes-since-5-4.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "page-validated",
+  "updatedAt": "2026-10-01T18:10:20.533Z",
+  "initialReview": {
+    "method": "ai-content-review",
+    "source": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-045/changes-source-initial.html",
+      "sha256": "56087afc82912d975e087881e5bf901ccdd439daa7085d2ff25e9998cefc9e45"
+    },
+    "canonical": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-045/changes-en-initial.md",
+      "sha256": "cef8f3e346cef56bd6b504af1e8f2468d900a58c046a8cfc646dd3dca72cc8aa"
+    },
+    "translation": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-045/changes-ja-initial.md",
+      "sha256": "3fbfa499ff30f555dc127c7f6a4ea8617919e6bac4bb37ee1fbc1a3bb5bc9ef1"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          27
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          26
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          26
+        ]
+      ]
+    }
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "separateReviewPass": true,
+    "source": {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/source/changes.html",
+      "sha256": "56087afc82912d975e087881e5bf901ccdd439daa7085d2ff25e9998cefc9e45"
+    },
+    "canonical": {
+      "path": "apps/lua/src/content/docs/v5-5-1/en/07-migration-and-known-issues/01-changes-since-5-4.md",
+      "sha256": "cef8f3e346cef56bd6b504af1e8f2468d900a58c046a8cfc646dd3dca72cc8aa"
+    },
+    "translation": {
+      "path": "apps/lua/src/content/docs/v5-5-1/ja/07-migration-and-known-issues/01-changes-since-5-4.md",
+      "sha256": "35f566eee442fc03f15c4e85c0e826924389a3b8fe1896468c00dc3f2e6a9c39"
+    },
+    "coverage": {
+      "source": [
+        [
+          1,
+          27
+        ]
+      ],
+      "canonical": [
+        [
+          1,
+          26
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          26
+        ]
+      ]
+    }
+  },
+  "findings": [
+    "固定readmeのchanges→license前27行、英日各26行を初回と編集後の別工程で全実読。原文の導入1段落/見出し/15項目を保持。",
+    "global変数decl/namedvararg/for readonly/constructor levels/table.create/utf8.offsetの終端も返す変更と管理外memoryを全項目照合。追加の仕様推測を混ぜない。",
+    "float文はsourceにあるprinted decimal/enough digits/correct readbackを明示する日本語へ変更。API名/値/順番は変更しない。",
+    "luaL_openselectedlibs/luaL_makeseed、新majorGC incremental、largearrays約60%lessmemory、lua.c readline dynamicを照合。approximateとlargeという条件をJAにも保持。",
+    "static fixed binariesではin memory binarychunkをloadする場合、some internal structuresでoriginal memoryを再利用できる可能表現を保持。dump/undumpのallstrings、auxbuffer finalstring時reuseも保持。",
+    "contents.htmlは既存変換規則で公式manual/5.5/contentsへ外部化。manual#8は当該locale incompatibilities/#8へ内部化、href整合/JA遷移を確認。"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "localLLMUsed": false
+  },
+  "machineEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-045/content-check.txt",
+      "sha256": "0019a569cf1be22269f90b885393d85f0be9bddfa4234355ac701622b45a3e46"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-045/integrity.txt",
+      "sha256": "116ae75550fd86d30723e05888898832b2c881f8bbc7146be148e03f048001b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-045/links.txt",
+      "sha256": "d6900f7cefd915bbe8948ad97c49e3b78b084fa57875150b5c61ba90acf37179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-045/selective-build.txt",
+      "sha256": "e30fa36d4da67fcce4f0e3618ee0b44eefaa3cd0ffac2dfa15a82002ddf133ac"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-045/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "displayEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-045/browser-review.json",
+    "sha256": "b987db96456a4ab8e19e042484605082a929cac7446da6d979d33999bc392fb4"
+  },
+  "nextAction": "固定readme license節を保存し01-overview/03-license.mdのsource/ENJAと採用画像の権利・帰属を確認、全文別工程レビュー・英日desktop/mobile検証を行う。",
+  "unresolved": [
+    "55review scope残り52の内容/表示未確認。新bug投稿由来部分は権利適用範囲deferred。"
+  ]
+}
