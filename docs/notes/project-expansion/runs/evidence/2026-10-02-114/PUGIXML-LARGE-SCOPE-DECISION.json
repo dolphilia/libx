@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-02T03:43:51.426Z",
+  "decision": "3万語超の総量を保守的に別枠判断したうえで、全文範囲を維持して作業中1件枠で扱う。通常枠として即着手した記録にはしない。",
+  "metrics": {
+    "proseWords": 28566,
+    "codeWords": 6128,
+    "conservativeTotal": 34694,
+    "headings": 112,
+    "codeBlocks": 158,
+    "tables": 32,
+    "images": 9,
+    "sourceAnchors": 409,
+    "sourceLinks": 889,
+    "uniqueAPIIndexTargets": 289,
+    "pages": 12,
+    "staticAssets": 42
+  },
+  "basis": [
+    "原文の非コード本文は28,566語、コード/API宣言を含む総量は34,694語。コードは原版を保持し、説明や見出し・表は全文を翻訳/別工程レビューする。",
+    "正式版タグに生成済み全文HTMLがあり、配布物の採用45ファイルとSHAがすべて一致。AsciiDocビルドを初回採用の必須依存にせず、タグHTMLを入力として固定できる。",
+    "最大節loading(4,034語)、通常quickstart(3,371語)、画像/結合表/脚注のinstall、DOM図、402個のAPIリンク出現を含むAPI索引を試験。10章+全文+quickstartがPandoc/Astroとも機械保全検査合格。",
+    "parse5/Pandocを既存Lua/GLFWから利用し、見出しID/リンク付きpre/リテラル実体参照/結合表の処理を同版全体で再利用。共通基盤へ未実証の汎用化は行わない。",
+    "固定目次10章とquickstart、9画像、33サンプルの45採用物で境界が閉じる。更新は正式タグと同範囲SHA/節を比較する。1.15→1.16の公開間隔は約17か月という観測であり、将来の更新頻度を保証しない。"
+  ],
+  "estimates": {
+    "initialHours": {
+      "canonicalAndMapping": [
+        3,
+        5
+      ],
+      "translation": [
+        14,
+        22
+      ],
+      "separateFullReview": [
+        7,
+        13
+      ],
+      "templateMechanicalBuildDisplay": [
+        2,
+        4
+      ],
+      "total": [
+        26,
+        44
+      ]
+    },
+    "updateHours": [
+      2,
+      8
+    ],
+    "assumptions": "時間は予定で実績ではない。本文1,300〜2,000英語語/時間の翻訳、2,200〜4,000語/時間の別レビューを仮置き。重大変換や大きな新版は見積りを失効して再判断。",
+    "owner": "このCodex。ローカルLLMや未指示の並列エージェントは使用しない。"
+  },
+  "conditions": "原文/定本/訳文の単位とSHA・全文AI確認範囲を記録し、未確認をverifiedにせず、未検証アプリは専用チェックアウトに維持する。"
+}

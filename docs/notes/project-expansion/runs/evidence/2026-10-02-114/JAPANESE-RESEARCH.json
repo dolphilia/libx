@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-02T03:43:51.426Z",
+  "method": "公式入口/固定ソース文書・言語/翻訳ディレクトリ一覧/公式案内コミュニティ訳/一般検索を調査。語の違うGo fmt等は対象外。検索対象範囲内の確認結果であって不存在証明ではない。",
+  "candidates": {
+    "pugixml": {
+      "queries": [
+        "pugixml 日本語 マニュアル 1.16 翻訳",
+        "\"pugixml\" \"マニュアル\" 日本語",
+        "pugixml 日本語 マニュアル 翻訳 -site:github.com -site:pugixml.org",
+        "\"pugixml\" \"日本語\" \"raia\"",
+        "\"pugixml\" \"日本語\" -翻訳する",
+        "\"pugixml\" \"翻訳\" \"マニュアル\""
+      ],
+      "status": "not-found-in-search",
+      "official": "固定READMEの文書リンクはquickstartとmanual。docs目録とHTML lang=enを確認し、ロケール/翻訳ディレクトリや公式案内の日本語訳を未発見。",
+      "found": [
+        {
+          "url": "https://pugixml.wordpress.com/documentation/",
+          "kind": "旧公式文書案内。日本語本文の根拠ではない。"
+        },
+        {
+          "url": "https://august295.github.io/posts/pugixml%E6%8C%87%E5%8D%97/",
+          "kind": "検索結果は中国語の旧1.11部分説明で、日本語1.16全文訳ではない。"
+        }
+      ],
+      "conclusion": "対象1.16のquickstart+全manual範囲のまとまった日本語訳は調査範囲で未発見。"
+    },
+    "uthash": {
+      "queries": [
+        "uthash 日本語 User Guide 2.4.0 翻訳",
+        "\"uthash\" \"2.4.0\" 日本語 翻訳",
+        "\"uthash\" \"ユーザーガイド\""
+      ],
+      "status": "older",
+      "official": "公式入口は6ガイド、固定doc/の6原稿は英語2.4.0。翻訳ディレクトリ/公式案内日本語訳は未発見。",
+      "found": [
+        {
+          "url": "https://raia.app/resource/uthash/uthash.html",
+          "version": "2.3.0, February 2021",
+          "coverage": "検索から取得したページ表示はuthashガイド・マクロリファレンスと5 companionガイドへのナビゲーション。全文品質/全節の確認は未実施。",
+          "acquisition": "web検索は版と見出しを返したが直接openはinternal error、Node直接取得はfetch failed。未取得のHTMLを保存済みと記録しない。"
+        }
+      ],
+      "value": "旧版ありを反映。2.3→2.4固定UserGuideの差分を保存し、例のgets→fgets等を確認。全文差分のAI評価は未完了なので追加価値は未採点。"
+    },
+    "fmt": {
+      "queries": [
+        "fmt C++ ライブラリ 12.2 日本語 ドキュメント 翻訳",
+        "\"fmtlib\" \"12.2\" 日本語 ドキュメント",
+        "\"fmt\" \"書式文字列\" \"ライブラリ\" 日本語 翻訳 ドキュメント",
+        "\"fmtlib\" 日本語 翻訳 ドキュメント",
+        "\"libfmt\" 日本語 マニュアル"
+      ],
+      "status": "not-found-in-search",
+      "official": "固定4本文は英語。MkDocsナビ4項目とversions.jsonは版のみ、ロケールなし。公式案内日本語全文訳を未発見。",
+      "found": [
+        {
+          "url": "https://packages.debian.org/ja/sid/amd64/doc/libfmt-doc",
+          "kind": "パッケージ説明ページの日本語UI。公式文書本文の日本語訳ではない。"
+        },
+        {
+          "url": "https://runebook.dev/ja/docs/cpp/utility/format/format",
+          "kind": "検索結果はstd::formatとfmtlib代替の部分記事。12.2公式4文書全文訳の根拠ではない。"
+        }
+      ],
+      "conclusion": "対象12.2.0の公式範囲全文訳は調査範囲で未発見。ただし生成/API展開の未確認を日本語不足点で相殺しない。"
+    }
+  },
+  "limitations": "既存訳は再利用しない。品質を印象で低評価せず、サイトの取得失敗を不存在の証拠にしない。"
+}

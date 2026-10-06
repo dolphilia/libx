@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-02T03:43:51.426Z",
+  "detailIds": [
+    "pugixml",
+    "uthash",
+    "fmt"
+  ],
+  "pugixml": {
+    "version": "1.16",
+    "tag": "v1.16",
+    "commit": "c8033ce9d039e7f9d134877c363397b3cfe20816",
+    "scope": "Quick Start+Complete Manual全文10章（履歴/API索引含む）+本文図/サンプル+MIT通知",
+    "rights": "LICENSE.mdとmanual/quickstart本文のLicense節にassociated documentation filesを含むMIT許諾。doc/原稿・サンプル・目録で別指定を調べ、採用物に別ライセンス指定なし。9図にはVSスクリーンショットもあるが、同版manualと原稿に含まれ、商標帰属脚注を保全する。サイト共通CSS/JSや外部画像は採用しない。",
+    "fulfillment": "MIT英語原通知を独立ページ/保存アセットに保持し、全ページの出典から参照。日本語は非公式訳と固定版/入力/変換・アンカー補正を表示。著作権/許諾/免責の原文を省略しない。",
+    "trial": "Pandoc 3.8.3/parse5 7.3.0/Astro markdown-remark6.3.1。全10章+全文+quickstartで本文/158pre/32表セル/画像9/原見出し/全元アンカー/全元リンクを比較し合格。AstroのGFM/共通callout,table,copyプラグインを使い、smartypants:falseを新アプリ固有設定とする。",
+    "trialFixes": [
+      "見出しが持つ公式IDを明示保持。Quickstartで自動IDと一致する見出しは重複を作らない。追加生成見出しIDは許容するが元IDの集合/順序/重複を検査。",
+      "リンクを含むAPIのpreはraw HTMLで保持。コードのURL/型/API内容は改変しない。",
+      "&amp;#9;等のリテラル文字参照をMarkdownの二重デコードから保護。",
+      "bareクラスのHTMLリンクをMarkdownリンクへ対応し、GFMによる入れ子リンクを防ぐ。",
+      "結合表はHTMLで保持し、code-langをpygmentsからcpp等へ正規化。Pandocが追加するコード行リンクは無効化。",
+      "元manualの#emailリンクは上流にIDがない。既存の同著者への連絡先説明段落へemail別名を加える。本文/連絡先を書き足す補筆ではない。"
+    ],
+    "metrics": {
+      "proseWords": 28566,
+      "codeWords": 6128,
+      "conservativeTotal": 34694,
+      "headings": 112,
+      "codeBlocks": 158,
+      "tables": 32,
+      "images": 9,
+      "sourceAnchors": 409,
+      "sourceLinks": 889,
+      "uniqueAPIIndexTargets": 289,
+      "pages": 12,
+      "staticAssets": 42
+    },
+    "separateAIReview": "候補の試験保全だけ。原文→定本/定本→日本語/日本語単独の全文AI内容レビュー・appビルド/ブラウザー表示検証は未実施で、案件verifiedではない。"
+  },
+  "uthash": {
+    "version": "2.4.0",
+    "tag": "v2.4.0",
+    "commit": "a49bed0b4abb7dff16c73906dcdc8a9718d582d2",
+    "scope": "公式6ガイド+ChangeLog+文書通知+本文図を候補とする。",
+    "fixedBasis": "GitHub Releases API404は「正式版なし」の推測に使わず、タグ・6文書v2.4.0ヘッダ・src/uthash.h版・ChangeLog2026-06-25で固定。",
+    "rights": "root LICENSE/doc/license.htmlはsoftware/sourceのBSD-1-Clause。6ガイドもThis softwareと案内し、documentationへの明示適用を見つけられない。本文/図/例への許諾はunknown、試験変換しない。",
+    "resume": "公式の公開済み根拠で6本文/図/例への適用許諾と通知方法を確定してから、旧日本語2.3との全文差分・追加価値・AsciiDoc代表試験を行う。連絡送信は未指示で行わない。"
+  },
+  "fmt": {
+    "version": "12.2.0",
+    "tag": "12.2.0",
+    "commit": "1be298e1bd68957e4cd352e1f676f00e07dcfb57",
+    "scope": "固定MkDocs設定のHome/Get Started/API/Syntax4文書（公式APIコメント展開を含む）+本文perf.svg+文書通知。",
+    "rights": "固定root LICENSEはassociated documentationを含むMIT。doc/LICENSE-exceptionにも同じMITと実行オブジェクト向け任意例外。文書・API原コメント・画像の別指定を確認し矛盾なし。文書配信では任意例外を使用せず原通知全文を保持。AwesomeのBSD表記は旧履歴と区別し採用根拠にしない。",
+    "boundary": "support/mkdocs.ymlは4本文、ChangeLog-old.mdは明示除外。API.mdに:::行があり、固定Cxx handlerは12ヘッダの明記コメントをDoxygen→XML→HTMLへ生成する。source Markdownだけを全API本文として扱わない。",
+    "versionCaution": "release12.2.0に対しsite homepageは12.0、versionsはdev/12.0/11.2/11.1。現行サイトHTMLを12.2固定の生成物と合格にしない。",
+    "unresolved": "DoxygenとMkDocsの文書依存がローカルPATHにない。固定12.2.0からの公式生成および通常/最大/API/表・コード試験は未実施でconversion/workload unknown。",
+    "resume": "権利/境界/固定入力は保存済み。専用環境で固定depsを整備しdoc buildだけ実行して生成APIと全scopeを試験/計測してから採点。support/mkdocs deployやrelease.pyは配信/上流変更を含むため実行しない。"
+  },
+  "decisions": [
+    "pugixmlを権利/全文境界/固定版/自立性/試験/工数で判定し、別パス照合後に選定する。",
+    "uthashとfmtはunknownを残してneeds-evidence。2件とも全得点nullで、採用件数のための推測加点はしない。",
+    "公開待ち1件で新規枠は空き。TOML公開や定期設定の未承認範囲へ進まない。"
+  ]
+}
