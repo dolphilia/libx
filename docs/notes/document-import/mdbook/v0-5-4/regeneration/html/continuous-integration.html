@@ -1,0 +1,77 @@
+<div class="mdbook-guide">
+<h1 id="running-mdbook-in-continuous-integration"><a class="header" href="#running-mdbook-in-continuous-integration">Running <code>mdbook</code> in continuous integration</a></h1>
+<p>There are a variety of services such as <a href="https://docs.github.com/en/actions">GitHub Actions</a> or <a href="https://docs.gitlab.com/ee/ci/">GitLab CI/CD</a> which can be used to test and deploy your book automatically.</p>
+<p>The following provides some general guidelines on how to configure your service to run mdBook.
+Specific recipes can be found at the <a href="https://github.com/rust-lang/mdBook/wiki/Automated-Deployment">Automated Deployment</a> wiki page.</p>
+<h2 id="installing-mdbook"><a class="header" href="#installing-mdbook">Installing mdBook</a></h2>
+<p>There are several different strategies for installing mdBook.
+The particular method depends on your needs and preferences.</p>
+<h3 id="pre-compiled-binaries"><a class="header" href="#pre-compiled-binaries">Pre-compiled binaries</a></h3>
+<p>Perhaps the easiest method is to use the pre-compiled binaries found on the <a href="https://github.com/rust-lang/mdBook/releases">GitHub Releases page</a>.
+A simple approach would be to use the popular <code>curl</code> CLI tool to download the executable:</p>
+<pre><code class="language-sh">mkdir bin
+curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.5.4/mdbook-v0.5.4-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
+bin/mdbook build
+</code></pre>
+<p>Some considerations for this approach:</p>
+<ul>
+<li>This is relatively fast, and does not necessarily require dealing with caching.</li>
+<li>This does not require installing Rust.</li>
+<li>Specifying a specific URL means you have to manually update your script to get a new version.
+This may be a benefit if you want to lock to a specific version.
+However, some users prefer to automatically get a newer version when they are published.</li>
+<li>You are reliant on the GitHub CDN being available.</li>
+</ul>
+<h3 id="building-from-source"><a class="header" href="#building-from-source">Building from source</a></h3>
+<p>Building from source will require having Rust installed.
+Some services have Rust pre-installed, but if your service does not, you will need to add a step to install it.</p>
+<p>After Rust is installed, <code>cargo install</code> can be used to build and install mdBook.
+We recommend using a SemVer version specifier so that you get the latest <strong>non-breaking</strong> version of mdBook.
+For example:</p>
+<pre><code class="language-sh">cargo install mdbook --no-default-features --features search --vers "^0.5.4" --locked
+</code></pre>
+<p>This includes several recommended options:</p>
+<ul>
+<li><code>--no-default-features</code> — Disables features like the HTTP server used by <code>mdbook serve</code> that is likely not needed on CI.
+This will speed up the build time significantly.</li>
+<li><code>--features search</code> — Disabling default features means you should then manually enable features that you want, such as the built-in <a href="guide/reading.html#search">search</a> capability.</li>
+<li><code>--vers "^0.5.4"</code> — This will install the most recent version of the <code>0.5</code> version series.
+However, semver-incompatible versions after like <code>0.6.0</code> won’t be installed, as they may break your build.
+Cargo will automatically upgrade mdBook if you have an older version already installed.
+If you want to stick to a specific version of mdBook, replace the <code>^</code> with an <code>=</code>.</li>
+<li><code>--locked</code> — This will use the dependencies that were used when mdBook was released.
+Without <code>--locked</code>, it will use the latest version of all dependencies, which may include some fixes since the last release, but may also (rarely) cause build problems.</li>
+</ul>
+<p>You will likely want to investigate caching options, as building mdBook can be somewhat slow.</p>
+<h2 id="running-tests"><a class="header" href="#running-tests">Running tests</a></h2>
+<p>You may want to run tests using <a href="cli/test.html"><code>mdbook test</code></a> every time you push a change or create a pull request.
+This can be used to validate Rust code examples in the book.</p>
+<p>This will require having Rust installed.
+Some services have Rust pre-installed, but if your service does not, you will need to add a step to install it.</p>
+<p>Other than making sure the appropriate version of Rust is installed, there’s not much more than just running <code>mdbook test</code> from the book directory.</p>
+<p>You may also want to consider running other kinds of tests, like <a href="https://github.com/marxin/mdbook-linkcheck2#continuous-integration">mdbook-linkcheck2</a> which will check for broken links.
+Or if you have your own style checks, spell checker, or any other tests it might be good to run them in CI.</p>
+<h2 id="deploying"><a class="header" href="#deploying">Deploying</a></h2>
+<p>You may want to automatically deploy your book.
+Some may want to do this every time a change is pushed, and others may want to only deploy when a specific release is tagged.</p>
+<p>You’ll also need to understand the specifics on how to push a change to your web service.
+For example, <a href="https://docs.github.com/en/pages">GitHub Pages</a> just requires committing the output onto a specific git branch.
+Other services may require using something like SSH to connect to a remote server.</p>
+<p>The basic outline is that you need to run <code>mdbook build</code> to generate the output, and then transfer the files (which are in the <code>book</code> directory) to the correct location.</p>
+<p>You may then want to consider if you need to invalidate any caches on your web service.</p>
+<p>See the <a href="https://github.com/rust-lang/mdBook/wiki/Automated-Deployment">Automated Deployment</a> wiki page for examples of various different services.</p>
+<h3 id="404-handling"><a class="header" href="#404-handling">404 handling</a></h3>
+<p>mdBook automatically generates a 404 page to be used for broken links.
+The default output is a file named <code>404.html</code> at the root of the book.
+Some services like <a href="https://docs.github.com/en/pages">GitHub Pages</a> will automatically use this page for broken links.
+For other services, you may want to consider configuring the web server to use this page as it will provide the reader navigation to get back to the book.</p>
+<p>If your book is not deployed at the root of the domain, then you should set the <a href="format/configuration/renderers.html#html-renderer-options"><code>output.html.site-url</code></a> setting so that the 404 page works correctly.
+It needs to know where the book is deployed in order to load the static files (like CSS) correctly.
+For example, this guide is deployed at <a href="https://rust-lang.github.io/mdBook/">https://rust-lang.github.io/mdBook/</a>, and the <code>site-url</code> setting is configured like this:</p>
+<pre><code class="language-toml"># book.toml
+[output.html]
+site-url = "/mdBook/"
+</code></pre>
+<p>You can customize the look of the 404 page by creating a file named <code>src/404.md</code> in your book.
+If you want to use a different filename, you can set <a href="format/configuration/renderers.html#html-renderer-options"><code>output.html.input-404</code></a> to a different filename.</p>
+</div>
