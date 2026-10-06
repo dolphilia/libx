@@ -1,0 +1,156 @@
+<hr><h3><a name="lua_getallocf"><code>lua_getallocf</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_Alloc lua_getallocf (lua_State *L, void **ud);</pre>
+
+<p>
+Returns the memory-allocator function of a given state.
+If <code>ud</code> is not <code>NULL</code>, Lua stores in <code>*ud</code> the
+opaque pointer given when the memory-allocator function was set.
+
+
+
+
+
+<hr><h3><a name="lua_getfield"><code>lua_getfield</code></a></h3><p>
+<span class="apii">[-0, +1, <em>e</em>]</span>
+<pre class="api">int lua_getfield (lua_State *L, int index, const char *k);</pre>
+
+<p>
+Pushes onto the stack the value <code>t[k]</code>,
+where <code>t</code> is the value at the given index.
+As in Lua, this function may trigger a metamethod
+for the "index" event (see <a href="#2.4">&sect;2.4</a>).
+
+
+<p>
+Returns the type of the pushed value.
+
+
+
+
+
+<hr><h3><a name="lua_getextraspace"><code>lua_getextraspace</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">void *lua_getextraspace (lua_State *L);</pre>
+
+<p>
+Returns a pointer to a raw memory area associated with the
+given Lua state.
+The application can use this area for any purpose;
+Lua does not use it for anything.
+
+
+<p>
+Each new thread has this area initialized with a copy
+of the area of the main thread.
+
+
+<p>
+By default, this area has the size of a pointer to void,
+but you can recompile Lua with a different size for this area.
+(See <code>LUA_EXTRASPACE</code> in <code>luaconf.h</code>.)
+
+
+
+
+
+<hr><h3><a name="lua_getglobal"><code>lua_getglobal</code></a></h3><p>
+<span class="apii">[-0, +1, <em>e</em>]</span>
+<pre class="api">int lua_getglobal (lua_State *L, const char *name);</pre>
+
+<p>
+Pushes onto the stack the value of the global <code>name</code>.
+Returns the type of that value.
+
+
+
+
+
+<hr><h3><a name="lua_geti"><code>lua_geti</code></a></h3><p>
+<span class="apii">[-0, +1, <em>e</em>]</span>
+<pre class="api">int lua_geti (lua_State *L, int index, lua_Integer i);</pre>
+
+<p>
+Pushes onto the stack the value <code>t[i]</code>,
+where <code>t</code> is the value at the given index.
+As in Lua, this function may trigger a metamethod
+for the "index" event (see <a href="#2.4">&sect;2.4</a>).
+
+
+<p>
+Returns the type of the pushed value.
+
+
+
+
+
+<hr><h3><a name="lua_getmetatable"><code>lua_getmetatable</code></a></h3><p>
+<span class="apii">[-0, +(0|1), &ndash;]</span>
+<pre class="api">int lua_getmetatable (lua_State *L, int index);</pre>
+
+<p>
+If the value at the given index has a metatable,
+the function pushes that metatable onto the stack and returns&nbsp;1.
+Otherwise,
+the function returns&nbsp;0 and pushes nothing on the stack.
+
+
+
+
+
+<hr><h3><a name="lua_gettable"><code>lua_gettable</code></a></h3><p>
+<span class="apii">[-1, +1, <em>e</em>]</span>
+<pre class="api">int lua_gettable (lua_State *L, int index);</pre>
+
+<p>
+Pushes onto the stack the value <code>t[k]</code>,
+where <code>t</code> is the value at the given index
+and <code>k</code> is the value on the top of the stack.
+
+
+<p>
+This function pops the key from the stack,
+pushing the resulting value in its place.
+As in Lua, this function may trigger a metamethod
+for the "index" event (see <a href="#2.4">&sect;2.4</a>).
+
+
+<p>
+Returns the type of the pushed value.
+
+
+
+
+
+<hr><h3><a name="lua_gettop"><code>lua_gettop</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_gettop (lua_State *L);</pre>
+
+<p>
+Returns the index of the top element in the stack.
+Because indices start at&nbsp;1,
+this result is equal to the number of elements in the stack;
+in particular, 0&nbsp;means an empty stack.
+
+
+
+
+
+<hr><h3><a name="lua_getiuservalue"><code>lua_getiuservalue</code></a></h3><p>
+<span class="apii">[-0, +1, &ndash;]</span>
+<pre class="api">int lua_getiuservalue (lua_State *L, int index, int n);</pre>
+
+<p>
+Pushes onto the stack the <code>n</code>-th user value associated with the
+full userdata at the given index and
+returns the type of the pushed value.
+
+
+<p>
+If the userdata does not have that value,
+pushes <b>nil</b> and returns <a href="#pdf-LUA_TNONE"><code>LUA_TNONE</code></a>.
+
+
+
+
+

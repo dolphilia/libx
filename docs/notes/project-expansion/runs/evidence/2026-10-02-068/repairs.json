@@ -1,0 +1,33 @@
+[
+  {
+    "path": "scripts/importers/import-lua-5.5.1.mjs",
+    "beforeSha256": "b393c07fa03952030cb5f5813791cc55f0ff495b951aea5dbbadf581347103a9",
+    "afterSha256": "a798066665d28c356622672ffbe3125913074b39f8fc9ed4944f063261da4717",
+    "reason": "見出し後のpで囲まれていない隣接inlineを1段落でrenderし、見出し/hr/pre/explicitp境界でflush。li処理は保存。"
+  },
+  {
+    "path": "apps/lua/src/content/docs/v5-5-1/en/05-standard-library/03-basic-functions.md",
+    "beforeSha256": "4b966ea46cec7f5092e0353ccc7f5e094b39df9f4b01d8b85677114ece267330",
+    "afterSha256": "c9a008b37beaa65be5c6bd784ec734126834b43eb5ca3a249b6000f04c43bcff",
+    "reason": "固定入力56再生成差分の2ページのみ反映。基本関数8節、文字列byte/gmatch/gsubのunwrapped proseを結合。文字列ページは全文pendingを維持。"
+  },
+  {
+    "path": "apps/lua/src/content/docs/v5-5-1/en/05-standard-library/06-string-manipulation.md",
+    "beforeSha256": "4c5737f0d64b8871216cf67d876acf857ff380e7787ed34dffcf4018a93dc328",
+    "afterSha256": "a58ad9ba1589310ec065a44a7b1eb4f4e15e574985ad6fbaca93e10846a7efd4",
+    "reason": "固定入力56再生成差分の2ページのみ反映。基本関数8節、文字列byte/gmatch/gsubのunwrapped proseを結合。文字列ページは全文pendingを維持。"
+  },
+  {
+    "path": "apps/lua/src/content/docs/v5-5-1/ja/05-standard-library/03-basic-functions.md",
+    "beforeSha256": "235ed5a09c6684bd00177a166a84ea654386ffe9b27c401b3a24ea09b41fca0c",
+    "afterSha256": "1c478b54f76d18c5e9eee1ff28c041a353ba21e8bb587df630c21bb0ccad7998",
+    "reason": "8API説明の断片段落を結合、GC step世代別のor条件を復元/3段落境界、param parameter/and-orと以前値を修正して子6説明を単一項目化。全code/link/IDs保持。 結合後のrange前後がCommonMark emを妨げるため原文emをHTML emで復元。",
+    "syncIntermediateSha256": "53228b06101c515921eae5be47999b73d83ec7d5603676a7a5c1b08275b211d3"
+  },
+  {
+    "path": "tests/runtime/lua-importer-rendering.test.js",
+    "beforeSha256": "8b4ee61926203a6246f1f7842717419d206bcc74aa162abe305a2f2a0398c19f",
+    "afterSha256": "fbd760278290f0b441e5586d8fd9737c0e2084d06013f4200300bcdc581897c5",
+    "reason": "原文のunwrapped見出し後説明を再現する回帰テスト、explicitp/pre/hr/headingを保つテスト2追加。旧3合格/新2失敗を先に実行済み。"
+  }
+]

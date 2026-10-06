@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-01T21:05:16.955Z",
+  "sourceEnglishProseFullTextExact": true,
+  "paragraphs": {
+    "en": 51,
+    "ja": 51
+  },
+  "functionOrGlobalHeadings": 25,
+  "listItems": [
+    9,
+    6
+  ],
+  "parentListParagraphCounts": [
+    1,
+    1,
+    1,
+    1,
+    3,
+    1,
+    1,
+    1,
+    3
+  ],
+  "nestedListParagraphCounts": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "codeBlocksByteExact": true,
+  "codeBlockLines": [
+    1,
+    1
+  ],
+  "inlineCode": 159,
+  "ids": [
+    "6.2",
+    "pdf-assert",
+    "pdf-collectgarbage",
+    "pdf-dofile",
+    "pdf-error",
+    "pdf-_G",
+    "pdf-getmetatable",
+    "pdf-ipairs",
+    "pdf-load",
+    "pdf-loadfile",
+    "pdf-next",
+    "pdf-pairs",
+    "pdf-pcall",
+    "pdf-print",
+    "pdf-rawequal",
+    "pdf-rawget",
+    "pdf-rawlen",
+    "pdf-rawset",
+    "pdf-select",
+    "pdf-setmetatable",
+    "pdf-tonumber",
+    "pdf-tostring",
+    "pdf-type",
+    "pdf-_VERSION",
+    "pdf-warn",
+    "pdf-xpcall"
+  ],
+  "links": 16,
+  "boldCount": 36,
+  "proseEmphasis": [
+    "[0,100000]",
+    "even for numeric indices",
+    "protected mode",
+    "control message"
+  ],
+  "japaneseInlineCodeOrderExceptionSections": [
+    "ipairs (t)",
+    "pairs (t)",
+    "print (···)",
+    "rawequal (v1, v2)",
+    "rawget (table, index)",
+    "rawlen (v)",
+    "rawset (table, index, value)"
+  ],
+  "limits": [
+    "AI全文意味レビューとは別検査。JPのipairs/pairsは例を先に示す語順、print/raw系はメタ値を先に示す語順を別工程全文で照合する。",
+    "原文2つのbodyは任意本文のプレースホルダーで例は完全な実行用プログラムでないため未実行。"
+  ],
+  "checkerCorrections": [
+    "初回全文比較用MD tree連結でlistItem内の段落境界を消していたため独立block間の空白を復元。初回assert出力は途中省略され全文レビューに用いず、短い差分診断に変更して最終全文一致を実確認。",
+    "JA rangeを結合した後のCommonMark強調が機械的に3/4と判明。HTML emで4/4へ修正し最終再検査合格。"
+  ]
+}

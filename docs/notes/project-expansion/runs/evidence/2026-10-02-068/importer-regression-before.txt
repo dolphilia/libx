@@ -1,0 +1,110 @@
+✔ Lua HTMLのインライン要素を一つの読みやすいリスト項目に保つ (3.293417ms)
+✔ Lua HTMLの定義リストを用語と説明が対応する項目へ変換する (0.91775ms)
+✔ Lua manのTPマクロを用語と説明が対応する項目へ変換する (0.514958ms)
+✖ Lua見出し直後のpで囲まれていない説明をインライン要素で分割しない (1.290917ms)
+✖ Lua説明のインライン要素を結合しても明示段落とコード境界を保つ (0.508875ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 84.61325
+
+✖ failing tests:
+
+test at tests/runtime/lua-importer-rendering.test.js:45:1
+✖ Lua見出し直後のpで囲まれていない説明をインライン要素で分割しない (1.290917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+    '---\n' +
+      '\n' +
+      '### <a id="pdf-dofile"></a>`dofile ([filename])`\n' +
+      '\n' +
+  +   'Opens the named file and executes its content as a Lua chunk. When called without arguments,\n' +
+  -   'Opens the named file and executes its content as a Lua chunk. When called without arguments, `dofile` executes the content of standard input (`stdin`).\n' +
+      '\n' +
+  +   '`dofile`\n' +
+  +   '\n' +
+  +   'executes the content of standard input (\n' +
+  +   '\n' +
+  +   '`stdin`\n' +
+  +   '\n' +
+  +   ').\n' +
+  +   '\n' +
+      'Errors propagate to the caller.'
+  
+      at TestContext.<anonymous> (file:///Users/dolphilia/github/libx/tests/runtime/lua-importer-rendering.test.js:53:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '---\n\n### <a id="pdf-dofile"></a>`dofile ([filename])`\n\nOpens the named file and executes its content as a Lua chunk. When called without arguments,\n\n`dofile`\n\nexecutes the content of standard input (\n\n`stdin`\n\n).\n\nErrors propagate to the caller.',
+    expected: '---\n\n### <a id="pdf-dofile"></a>`dofile ([filename])`\n\nOpens the named file and executes its content as a Lua chunk. When called without arguments, `dofile` executes the content of standard input (`stdin`).\n\nErrors propagate to the caller.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/runtime/lua-importer-rendering.test.js:61:1
+✖ Lua説明のインライン要素を結合しても明示段落とコード境界を保つ (0.508875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+    '### Values\n' +
+      '\n' +
+  +   'First\n' +
+  -   'First `x` and **nil**.\n' +
+      '\n' +
+  +   '`x`\n' +
+  +   '\n' +
+  +   'and\n' +
+  +   '\n' +
+  +   '**nil**\n' +
+  +   '\n' +
+  +   '.\n' +
+  +   '\n' +
+      'Second `y`.\n' +
+      '\n' +
+      '```lua\n' +
+      'print(x)\n' +
+      'print(y)\n' +
+      '```\n' +
+      '\n' +
+  +   'After\n' +
+  -   'After `z`.\n' +
+      '\n' +
+  +   '`z`\n' +
+  +   '\n' +
+  +   '.\n' +
+  +   '\n' +
+      '---\n' +
+      '\n' +
+      '### Next\n' +
+      '\n' +
+  +   'Last\n' +
+  +   '\n' +
+  +   '`w`\n' +
+  +   '\n' +
+  +   '.'
+  -   'Last `w`.'
+  
+      at TestContext.<anonymous> (file:///Users/dolphilia/github/libx/tests/runtime/lua-importer-rendering.test.js:66:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '### Values\n\nFirst\n\n`x`\n\nand\n\n**nil**\n\n.\n\nSecond `y`.\n\n```lua\nprint(x)\nprint(y)\n```\n\nAfter\n\n`z`\n\n.\n\n---\n\n### Next\n\nLast\n\n`w`\n\n.',
+    expected: '### Values\n\nFirst `x` and **nil**.\n\nSecond `y`.\n\n```lua\nprint(x)\nprint(y)\n```\n\nAfter `z`.\n\n---\n\n### Next\n\nLast `w`.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

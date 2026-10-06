@@ -1,0 +1,275 @@
+--- apps/lua/src/content/docs/v5-5-1/en/05-standard-library/03-basic-functions.md
++++ preview/05-standard-library/03-basic-functions.md
+@@ -52,37 +52,13 @@
+ 
+ ## <a id="pdf-dofile"></a>`dofile ([filename])`
+ 
+-Opens the named file and executes its content as a Lua chunk, returning all values returned by the chunk. When called without arguments,
+-
+-`dofile`
+-
+-executes the content of the standard input (
+-
+-`stdin`
+-
+-). In case of errors,
+-
+-`dofile`
+-
+-propagates the error to its caller. (That is,
+-
+-`dofile`
+-
+-does not run in protected mode.)
++Opens the named file and executes its content as a Lua chunk, returning all values returned by the chunk. When called without arguments, `dofile` executes the content of the standard input (`stdin`). In case of errors, `dofile` propagates the error to its caller. (That is, `dofile` does not run in protected mode.)
+ 
+ ---
+ 
+ ## <a id="pdf-error"></a>`error (message [, level])`
+ 
+-Raises an error (see
+-
+-[§2.3](/docs/lua/v5-5-1/en/02-language/03-error-handling/#2.3)
+-
+-) with
+-
+-`message`
+-
+-as the error object. This function never returns.
++Raises an error (see [§2.3](/docs/lua/v5-5-1/en/02-language/03-error-handling/#2.3)) with `message` as the error object. This function never returns.
+ 
+ Usually, `error` adds some information about the error position at the beginning of the message, if the message is a string. The `level` argument specifies how to get the error position. With level 1 (the default), the error position is where the `error` function was called. Level 2 points the error to where the function that called `error` was called; and so on. Passing a level 0 avoids the addition of error position information to the message.
+ 
+@@ -90,11 +66,7 @@
+ 
+ ## <a id="pdf-_G"></a>`_G`
+ 
+-A global variable (not a function) that holds the global environment (see
+-
+-[§2.2](/docs/lua/v5-5-1/en/02-language/02-scopes-variables-and-environments/#2.2)
+-
+-). Lua itself does not use this variable; changing its value does not affect any environment, nor vice versa.
++A global variable (not a function) that holds the global environment (see [§2.2](/docs/lua/v5-5-1/en/02-language/02-scopes-variables-and-environments/#2.2)). Lua itself does not use this variable; changing its value does not affect any environment, nor vice versa.
+ 
+ ---
+ 
+@@ -176,15 +148,7 @@
+ 
+ ## <a id="pdf-print"></a>`print (···)`
+ 
+-Receives any number of arguments and prints their values to
+-
+-`stdout`
+-
+-, converting each argument to a string following the same rules of
+-
+-[`tostring`](/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring)
+-
+-.
++Receives any number of arguments and prints their values to `stdout`, converting each argument to a string following the same rules of [`tostring`](/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-tostring).
+ 
+ The function `print` is not intended for formatted output, but only as a quick way to show a value, for instance for debugging. For complete control over the output, use [`string.format`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.format) and [`io.write`](/docs/lua/v5-5-1/en/05-standard-library/10-input-and-output/#pdf-io.write).
+ 
+@@ -192,89 +156,25 @@
+ 
+ ## <a id="pdf-rawequal"></a>`rawequal (v1, v2)`
+ 
+-Checks whether
+-
+-`v1`
+-
+-is equal to
+-
+-`v2`
+-
+-, without invoking the
+-
+-`__eq`
+-
+-metamethod. Returns a boolean.
++Checks whether `v1` is equal to `v2`, without invoking the `__eq` metamethod. Returns a boolean.
+ 
+ ---
+ 
+ ## <a id="pdf-rawget"></a>`rawget (table, index)`
+ 
+-Gets the real value of
+-
+-`table[index]`
+-
+-, without using the
+-
+-`__index`
+-
+-metavalue.
+-
+-`table`
+-
+-must be a table;
+-
+-`index`
+-
+-may be any value.
++Gets the real value of `table[index]`, without using the `__index` metavalue. `table` must be a table; `index` may be any value.
+ 
+ ---
+ 
+ ## <a id="pdf-rawlen"></a>`rawlen (v)`
+ 
+-Returns the length of the object
+-
+-`v`
+-
+-, which must be a table or a string, without invoking the
+-
+-`__len`
+-
+-metamethod. Returns an integer.
++Returns the length of the object `v`, which must be a table or a string, without invoking the `__len` metamethod. Returns an integer.
+ 
+ ---
+ 
+ ## <a id="pdf-rawset"></a>`rawset (table, index, value)`
+ 
+-Sets the real value of
+-
+-`table[index]`
+-
+-to
+-
+-`value`
+-
+-, without using the
+-
+-`__newindex`
+-
+-metavalue.
+-
+-`table`
+-
+-must be a table,
+-
+-`index`
+-
+-any value different from
+-
+-**nil**
+-
+-and NaN, and
+-
+-`value`
+-
+-any Lua value.
++Sets the real value of `table[index]` to `value`, without using the `__newindex` metavalue. `table` must be a table, `index` any value different from **nil** and NaN, and `value` any Lua value.
+ 
+ This function returns `table`.
+ 
+--- apps/lua/src/content/docs/v5-5-1/en/05-standard-library/06-string-manipulation.md
++++ preview/05-standard-library/06-string-manipulation.md
+@@ -15,35 +15,7 @@
+ 
+ ## <a id="pdf-string.byte"></a>`string.byte (s [, i [, j]])`
+ 
+-Returns the internal numeric codes of the characters
+-
+-`s[i]`
+-
+-,
+-
+-`s[i+1]`
+-
+-,...,
+-
+-`s[j]`
+-
+-. The default value for
+-
+-`i`
+-
+-is 1; the default value for
+-
+-`j`
+-
+-is
+-
+-`i`
+-
+-. These indices are corrected following the same rules of function
+-
+-[`string.sub`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.sub)
+-
+-.
++Returns the internal numeric codes of the characters `s[i]`, `s[i+1]`,..., `s[j]`. The default value for `i` is 1; the default value for `j` is `i`. These indices are corrected following the same rules of function [`string.sub`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.sub).
+ 
+ Numeric codes are not necessarily portable across platforms.
+ 
+@@ -102,27 +74,7 @@
+ 
+ ## <a id="pdf-string.gmatch"></a>`string.gmatch (s, pattern [, init])`
+ 
+-Returns an iterator function that, each time it is called, returns the next captures from
+-
+-`pattern`
+-
+-(see
+-
+-[§6.5.1](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5.1)
+-
+-) over the string
+-
+-`s`
+-
+-. If
+-
+-`pattern`
+-
+-specifies no captures, then the whole match is produced in each call. A third, optional numeric argument
+-
+-`init`
+-
+-specifies where to start the search; its default value is 1 and can be negative.
++Returns an iterator function that, each time it is called, returns the next captures from `pattern` (see [§6.5.1](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5.1)) over the string `s`. If `pattern` specifies no captures, then the whole match is produced in each call. A third, optional numeric argument `init` specifies where to start the search; its default value is 1 and can be negative.
+ 
+ As an example, the following loop will iterate over all the words from string `s`, printing one per line:
+ 
+@@ -149,39 +101,7 @@
+ 
+ ## <a id="pdf-string.gsub"></a>`string.gsub (s, pattern, repl [, n])`
+ 
+-Returns a copy of
+-
+-`s`
+-
+-in which all (or the first
+-
+-`n`
+-
+-, if given) occurrences of the
+-
+-`pattern`
+-
+-(see
+-
+-[§6.5.1](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5.1)
+-
+-) have been replaced by a replacement string specified by
+-
+-`repl`
+-
+-, which can be a string, a table, or a function.
+-
+-`gsub`
+-
+-also returns, as its second value, the total number of matches that occurred. The name
+-
+-`gsub`
+-
+-comes from
+-
+-*Global SUBstitution*
+-
+-.
++Returns a copy of `s` in which all (or the first `n`, if given) occurrences of the `pattern` (see [§6.5.1](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#6.5.1)) have been replaced by a replacement string specified by `repl`, which can be a string, a table, or a function. `gsub` also returns, as its second value, the total number of matches that occurred. The name `gsub` comes from *Global SUBstitution*.
+ 
+ If `repl` is a string, then its value is used for replacement. The character `%` works as an escape character: any sequence in `repl` of the form `%d`, with *d* between 1 and 9, stands for the value of the *d*-th captured substring; the sequence `%0` stands for the whole match; the sequence `%%` stands for a single `%`.
+ 

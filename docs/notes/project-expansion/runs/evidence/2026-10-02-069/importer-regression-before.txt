@@ -1,0 +1,39 @@
+✔ Lua HTMLのインライン要素を一つの読みやすいリスト項目に保つ (3.393791ms)
+✔ Lua HTMLの定義リストを用語と説明が対応する項目へ変換する (0.409ms)
+✔ Lua manのTPマクロを用語と説明が対応する項目へ変換する (0.41875ms)
+✔ Lua見出し直後のpで囲まれていない説明をインライン要素で分割しない (0.539ms)
+✔ Lua説明のインライン要素を結合しても明示段落とコード境界を保つ (0.410334ms)
+✖ Lua書式で意味を持つ空白コードを消さずに保持する (0.784625ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 88.71625
+
+✖ failing tests:
+
+test at tests/runtime/lua-importer-rendering.test.js:75:1
+✖ Lua書式で意味を持つ空白コードを消さずに保持する (0.784625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + "Flags: ``; ordinary `x`.\n\n- **'``'**: ignored"
+  - "Flags: ` `; ordinary `x`.\n\n- **'` `'**: ignored"
+  
+      at TestContext.<anonymous> (file:///Users/dolphilia/github/libx/tests/runtime/lua-importer-rendering.test.js:76:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "Flags: ``; ordinary `x`.\n\n- **'``'**: ignored",
+    expected: "Flags: ` `; ordinary `x`.\n\n- **'` `'**: ignored",
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

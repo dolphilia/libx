@@ -1,0 +1,20 @@
+--- apps/lua/src/content/docs/v5-5-1/en/05-standard-library/06-string-manipulation.md
++++ candidate/apps/lua/src/content/docs/v5-5-1/en/05-standard-library/06-string-manipulation.md
+@@ -47,7 +47,7 @@
+ 
+ ## <a id="pdf-string.format"></a>`string.format (formatstring, ···)`
+ 
+-Returns a formatted version of its variable number of arguments following the description given in its first argument, which must be a string. The format string follows the same rules as the ISO C function `sprintf`. The accepted conversion specifiers are `A`, `a`, `c`, `d`, `E`, `e`, `f`, `G`, `g`, `i`, `o`, `p`, `s`, `u`, `X`, `x`, and '`%`', plus a non-C specifier `q`. The accepted flags are '`-`', '`+`', '`#`', '`0`', and '``' (space). Both width and precision, when present, are limited to two digits.
++Returns a formatted version of its variable number of arguments following the description given in its first argument, which must be a string. The format string follows the same rules as the ISO C function `sprintf`. The accepted conversion specifiers are `A`, `a`, `c`, `d`, `E`, `e`, `f`, `G`, `g`, `i`, `o`, `p`, `s`, `u`, `X`, `x`, and '`%`', plus a non-C specifier `q`. The accepted flags are '`-`', '`+`', '`#`', '`0`', and '` `' (space). Both width and precision, when present, are limited to two digits.
+ 
+ The specifier `q` formats booleans, nil, numbers, and strings in a way that the result is a valid constant in Lua source code. Booleans and nil are written in the obvious way (`true`, `false`, `nil`). Floats are written in hexadecimal, to preserve full precision. A string is written between double quotes, using escape sequences when necessary to ensure that it can safely be read back by the Lua interpreter. For instance, the call
+ 
+@@ -299,7 +299,7 @@
+ - **`s[n]`**: a string preceded by its length coded as an unsigned integer with `n` bytes (default is a `size_t`)
+ - **`x`**: one byte of padding
+ - **`Xop`**: an empty item that aligns according to option `op` (which is otherwise ignored)
+-- **'``'**: (space) ignored
++- **'` `'**: (space) ignored
+ 
+ (A "`[n]`" means an optional integral numeral.) Except for padding, spaces, and configurations (options "`xX <=>!`"), each option corresponds to an argument in [`string.pack`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.pack) or a result in [`string.unpack`](/docs/lua/v5-5-1/en/05-standard-library/06-string-manipulation/#pdf-string.unpack).
+ 
