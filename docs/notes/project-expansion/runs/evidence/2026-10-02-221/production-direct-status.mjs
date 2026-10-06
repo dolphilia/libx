@@ -1,0 +1,7 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {spawnSync} from 'node:child_process';
+const infoDir='/Users/dolphilia/github/libx/docs/notes/project-expansion/runs/evidence/2026-10-02-218',ev="/Users/dolphilia/github/libx/docs/notes/project-expansion/runs/evidence/2026-10-02-221",info=JSON.parse(fs.readFileSync(infoDir+'/RELEASE_COMMIT.json'));
+const r=spawnSync('git',['credential','fill'],{input:'protocol=https\nhost=github.com\n\n',encoding:'utf8',env:{...process.env,GIT_TERMINAL_PROMPT:'0'}}),token=r.stdout?.split('\n').find(x=>x.startsWith('password='))?.slice(9);assert.ok(token);
+async function get(p){const res=await fetch('https://api.github.com/repos/dolphilia/libx'+p,{headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'},redirect:'error',signal:AbortSignal.timeout(30000)});assert.ok(res.ok,'GitHub HTTP '+res.status);return res.json();}
+const run=await get("/actions/runs/37017497161"),jobs=await get("/actions/runs/37017497161/jobs");assert.equal(run.head_sha,info.commit);
+const result={checkedAt:new Date().toISOString(),id:run.id,url:run.html_url,sha:run.head_sha,branch:run.head_branch,status:run.status,conclusion:run.conclusion,jobs:jobs.jobs.map(j=>({id:j.id,name:j.name,status:j.status,conclusion:j.conclusion,steps:j.steps.map(s=>({name:s.name,status:s.status,conclusion:s.conclusion}))})),externalWrites:0,production:'inspect-job-status'};
+fs.writeFileSync(ev+'/PRODUCTION_CI_DIRECT.json',JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(result));

@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-10-02T14:30:58.805Z",
+  "sourceCommit": "1be298e1bd68957e4cd352e1f676f00e07dcfb57",
+  "scope": "Only ID attributes and hrefs change; all prose/code retained. First overload ID retained for original references.",
+  "mappings": [
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "print",
+      "to": "print-overload-2",
+      "declaration": "\ntemplate <typename... T>\nvoid print(FILE* f, format_string<T...> fmt, T&&... args);\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "println",
+      "to": "println-overload-2",
+      "declaration": "\ntemplate <typename... T>\nvoid println(FILE* f, format_string<T...> fmt, T&&... args);\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "format",
+      "to": "format-overload-2",
+      "declaration": "\ntemplate <typename... T>\nstd::string format(format_string<T...> fmt, T&&... args);\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "operator",
+      "to": "operator-literal-a",
+      "declaration": "\ntemplate <detail::fixed_string S>\nauto operator\"\"_a();\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "format",
+      "to": "format-overload-3",
+      "declaration": "\ntemplate <typename... T>\nstd::string format(locale_ref loc, format_string<T...> fmt, T&&... args);\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "format_to",
+      "to": "format_to-overload-2",
+      "declaration": "\ntemplate <typename OutputIt, typename... T>\nOutputIt format_to(OutputIt out, locale_ref loc, format_string<T...> fmt, T&&... args);\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "formatted_size",
+      "to": "formatted_size-overload-2",
+      "declaration": "\ntemplate <typename... T>\nsize_t formatted_size(locale_ref loc, format_string<T...> fmt, T&&... args);\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "join",
+      "to": "join-overload-2",
+      "declaration": "\ntemplate <typename It, typename Sentinel>\njoin_view join(It begin, Sentinel end, string_view sep);\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "join",
+      "to": "join-overload-3",
+      "declaration": "\ntemplate <typename T>\njoin_view join(std::initializer_list<T> list, string_view sep);\n"
+    },
+    {
+      "page": "api",
+      "kind": "href",
+      "from": "../syntax/#chrono-format-specifications",
+      "to": "../syntax/#chrono-format-spec",
+      "reason": "Existing fixed syntax.md anchor at294"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "ptr",
+      "to": "ptr-overload-2",
+      "declaration": "\ntemplate <typename T, typename Deleter>\nconst void* ptr(const std::unique_ptr<T, Deleter>& p);\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "ptr",
+      "to": "ptr-overload-3",
+      "declaration": "\ntemplate <typename T>\nconst void* ptr(const std::shared_ptr<T>& p);\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "operator",
+      "to": "operator-literal-cf",
+      "declaration": "\ntemplate <detail::fixed_string Str>\nauto operator\"\"_cf();\n"
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "print",
+      "to": "print-overload-3",
+      "declaration": "\ntemplate <typename... T>\nvoid print(text_style ts, format_string<T...> fmt, T&&... args);\n"
+    },
+    {
+      "page": "api",
+      "kind": "href",
+      "from": "file::WRONLY",
+      "to": "https://github.com/fmtlib/fmt/blob/1be298e1bd68957e4cd352e1f676f00e07dcfb57/include/fmt/os.h#L235",
+      "reason": "Official fixed header enumerator",
+      "sourceLine": "    WRONLY = FMT_POSIX(O_WRONLY),  // Open for writing only."
+    },
+    {
+      "page": "api",
+      "kind": "href",
+      "from": "file::CREATE",
+      "to": "https://github.com/fmtlib/fmt/blob/1be298e1bd68957e4cd352e1f676f00e07dcfb57/include/fmt/os.h#L237",
+      "reason": "Official fixed header enumerator",
+      "sourceLine": "    CREATE = FMT_POSIX(O_CREAT),   // Create if the file doesn't exist."
+    },
+    {
+      "page": "api",
+      "kind": "href",
+      "from": "file::TRUNC",
+      "to": "https://github.com/fmtlib/fmt/blob/1be298e1bd68957e4cd352e1f676f00e07dcfb57/include/fmt/os.h#L239",
+      "reason": "Official fixed header enumerator",
+      "sourceLine": "    TRUNC = FMT_POSIX(O_TRUNC)     // Truncate the content of the file."
+    },
+    {
+      "page": "api",
+      "kind": "id",
+      "from": "print",
+      "to": "print-overload-4",
+      "declaration": "\ntemplate <typename... T>\nvoid print(std::ostream& os, format_string<T...> fmt, T&&... args);\n"
+    }
+  ]
+}

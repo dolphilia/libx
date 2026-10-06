@@ -1,0 +1,119 @@
+<h1 id="a-modern-formatting-library">A modern formatting library</h1>
+<div class="features-container">
+
+<div class="feature">
+
+<h2 id="safety">Safety</h2>
+<p>Inspired by Python's formatting facility, {fmt} provides a safe
+replacement for the <code>printf</code> family of functions. Errors in
+format strings, which are a common source of vulnerabilities in C, are
+<strong>reported at compile time</strong>. For example:</p>
+<pre><code class="language-cpp">fmt::format("{:d}", "I am not a number");</code></pre>
+
+<p>will give a compile-time error because <code>d</code> is not a valid
+format specifier for strings. APIs like <a
+href="api/#format"><code>fmt::format</code></a> <strong>prevent buffer
+overflow errors</strong> via automatic memory management.</p>
+<p><a href="api#compile-time-checks">→ Learn more</a></p>
+</div>
+
+<div class="feature">
+
+<h2 id="extensibility">Extensibility</h2>
+<p>Formatting of most <strong>standard types</strong>, including all
+containers, dates, and times is <strong>supported
+out-of-the-box</strong>. For example:</p>
+<pre><code class="language-cpp">fmt::print("{}", std::vector{1, 2, 3});</code></pre>
+
+<p>prints the vector in a JSON-like format:</p>
+<pre><code>[1, 2, 3]</code></pre>
+
+<p>You can <strong>make your own types formattable</strong> and even
+make compile-time checks work for them.</p>
+<p><a href="api#udt">→ Learn more</a></p>
+</div>
+
+<div class="feature">
+
+<h2 id="performance">Performance</h2>
+<p>{fmt} can be anywhere from <strong>tens of percent to 20-30 times
+faster</strong> than iostreams and <code>sprintf</code>, especially for
+numeric formatting. <a
+href="https://github.com/fmtlib/fmt?tab=readme-ov-file#benchmarks"><img
+src="perf.svg" /></a> The library <strong>minimizes dynamic memory
+allocations</strong> and can optionally <a
+href="api#compile-api">compile format strings</a> to optimal code.</p>
+</div>
+
+<div class="feature">
+
+<h2 id="unicode-support">Unicode support</h2>
+<p>{fmt} provides <strong>portable Unicode support</strong> on major
+operating systems with UTF-8 and <code>char</code> strings. For
+example:</p>
+<pre><code class="language-cpp">fmt::print("Слава Україні!");</code></pre>
+
+<p>will be printed correctly on Linux, macOS, and even Windows console,
+irrespective of the codepages.</p>
+<p>The default is <strong>locale-independent</strong>, but you can opt
+into localized formatting and {fmt} makes it work with Unicode,
+addressing issues in the standard library.</p>
+</div>
+
+<div class="feature">
+
+<h2 id="fast-compilation">Fast compilation</h2>
+<p>The library makes extensive use of <strong>type erasure</strong> to
+achieve fast compilation. <code>fmt/base.h</code> provides a subset of
+the API with <strong>minimal include dependencies</strong> and enough
+functionality to replace all uses of <code>*printf</code>.</p>
+<p>Code using {fmt} is usually several times faster to compile than the
+equivalent iostreams code, and while <code>printf</code> compiles faster
+still, the gap is narrowing.</p>
+<p><a
+href="https://github.com/fmtlib/fmt?tab=readme-ov-file#compile-time-and-code-bloat">→
+Learn more</a></p>
+</div>
+
+<div class="feature">
+
+<h2 id="small-binary-footprint">Small binary footprint</h2>
+<p>Type erasure is also used to prevent template bloat, resulting in
+<strong>compact per-call binary code</strong>. For example, a call to
+<code>fmt::print</code> with a single argument is just <a
+href="https://godbolt.org/g/TZU4KF">a few instructions</a>, comparable
+to <code>printf</code> despite adding runtime safety, and much smaller
+than the equivalent iostreams code.</p>
+<p>The library itself has small binary footprint and some components
+such as floating-point formatting can be disabled to make it even
+smaller for resource-constrained devices.</p>
+</div>
+
+<div class="feature">
+
+<h2 id="portability">Portability</h2>
+<p>{fmt} has a <strong>small self-contained codebase</strong> with the
+core consisting of just three headers and no external dependencies.</p>
+<p>The library is highly portable and requires only a minimal
+<strong>subset of C++11</strong> features which are available in GCC
+4.9, Clang 3.6, MSVC 19.10 (2017) and later. Newer compiler and standard
+library features are used if available, and enable additional
+functionality.</p>
+<p>Where possible, the output of formatting functions is
+<strong>consistent across platforms</strong>.</p>
+</div>
+
+<div class="feature">
+
+<h2 id="open-source">Open source</h2>
+<p>{fmt} is in the top hundred open-source C++ libraries on GitHub and
+has <a href="https://github.com/fmtlib/fmt/graphs/contributors">hundreds
+of all-time contributors</a>.</p>
+<p>The library is distributed under a permissive MIT <a
+href="https://github.com/fmtlib/fmt#license">license</a> and is
+<strong>relied upon by many open-source projects</strong>, including
+Blender, PyTorch, Apple's FoundationDB, Windows Terminal, MongoDB, and
+others.</p>
+</div>
+
+</div>
