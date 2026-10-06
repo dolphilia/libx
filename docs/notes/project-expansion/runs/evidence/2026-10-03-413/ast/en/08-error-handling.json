@@ -1,0 +1,568 @@
+{
+  "language": "en",
+  "source": {
+    "name": "Error-handling.md",
+    "slug": "08-error-handling",
+    "source": "/private/tmp/libx-spdlog-integration-20261003/docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Error-handling.md",
+    "sourceSHA256": "1357f3d73272b2d9665d106d5aa1dc5991308a19f3156f05492b3245898a3f5b",
+    "canonicalInput": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/meta/canonical-inputs/08-error-handling.md",
+    "canonicalInputSHA256": "1357f3d73272b2d9665d106d5aa1dc5991308a19f3156f05492b3245898a3f5b",
+    "trial": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/src/content/docs/v1-17-0/en/01-guide/08-error-handling.md",
+    "canonicalSHA256": "930510a5c10b6ea3a6bedce3530e7dfea8fa093ffd2fb0dd1c386a4f8766e0d5",
+    "title": "Error handling",
+    "excluded": [],
+    "sourceNote": null
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Spdlog ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 1018
+            },
+            "end": {
+              "line": 5,
+              "column": 8,
+              "offset": 1025
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "will not",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 10,
+                  "offset": 1027
+                },
+                "end": {
+                  "line": 5,
+                  "column": 18,
+                  "offset": 1035
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 8,
+              "offset": 1025
+            },
+            "end": {
+              "line": 5,
+              "column": 20,
+              "offset": 1037
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " throw exceptions while logging (since version ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 20,
+              "offset": 1037
+            },
+            "end": {
+              "line": 5,
+              "column": 67,
+              "offset": 1084
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/tree/39cdd08a5475c63959174747a140de86c24e4849",
+          "children": [
+            {
+              "type": "text",
+              "value": "39cdd08",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 68,
+                  "offset": 1085
+                },
+                "end": {
+                  "line": 5,
+                  "column": 75,
+                  "offset": 1092
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 67,
+              "offset": 1084
+            },
+            "end": {
+              "line": 5,
+              "column": 156,
+              "offset": 1173
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ").",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 156,
+              "offset": 1173
+            },
+            "end": {
+              "line": 5,
+              "column": 158,
+              "offset": 1175
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 1018
+        },
+        "end": {
+          "line": 5,
+          "column": 159,
+          "offset": 1176
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "It might throw during the construction of a logger or sink, because it is considered fatal.",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 1178
+            },
+            "end": {
+              "line": 7,
+              "column": 92,
+              "offset": 1269
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 1178
+        },
+        "end": {
+          "line": 7,
+          "column": 92,
+          "offset": 1269
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If an error happens during logging, the library will print an error message to stderr.\nTo avoid flooding the screen with error messages, the rate is limited per logger to 1 message/minute.",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1,
+              "offset": 1271
+            },
+            "end": {
+              "line": 10,
+              "column": 102,
+              "offset": 1459
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 1271
+        },
+        "end": {
+          "line": 10,
+          "column": 102,
+          "offset": 1459
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This behaviour can be changed by calling ",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 1,
+              "offset": 1461
+            },
+            "end": {
+              "line": 12,
+              "column": 42,
+              "offset": 1502
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::set_error_handler(new_handler_fun)",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 42,
+              "offset": 1502
+            },
+            "end": {
+              "line": 12,
+              "column": 90,
+              "offset": 1550
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " or ",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 90,
+              "offset": 1550
+            },
+            "end": {
+              "line": 12,
+              "column": 94,
+              "offset": 1554
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "logger->set_error_handler(new_handler_fun)",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 94,
+              "offset": 1554
+            },
+            "end": {
+              "line": 12,
+              "column": 142,
+              "offset": 1602
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 142,
+              "offset": 1602
+            },
+            "end": {
+              "line": 12,
+              "column": 143,
+              "offset": 1603
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 12,
+          "column": 1,
+          "offset": 1461
+        },
+        "end": {
+          "line": 12,
+          "column": 143,
+          "offset": 1603
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Globally change the error handler:",
+              "position": {
+                "start": {
+                  "line": 14,
+                  "column": 3,
+                  "offset": 1607
+                },
+                "end": {
+                  "line": 14,
+                  "column": 37,
+                  "offset": 1641
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 1,
+              "offset": 1605
+            },
+            "end": {
+              "line": 14,
+              "column": 39,
+              "offset": 1643
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 14,
+          "column": 1,
+          "offset": 1605
+        },
+        "end": {
+          "line": 14,
+          "column": 39,
+          "offset": 1643
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "    spdlog::set_error_handler([](const std::string& msg) {\n        std::cerr << \"my err handler: \" << msg << std::endl;\n    });",
+      "position": {
+        "start": {
+          "line": 16,
+          "column": 1,
+          "offset": 1645
+        },
+        "end": {
+          "line": 20,
+          "column": 4,
+          "offset": 1783
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "For a specific logger:",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 3,
+                  "offset": 1788
+                },
+                "end": {
+                  "line": 23,
+                  "column": 25,
+                  "offset": 1810
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 1,
+              "offset": 1786
+            },
+            "end": {
+              "line": 23,
+              "column": 27,
+              "offset": 1812
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 23,
+          "column": 1,
+          "offset": 1786
+        },
+        "end": {
+          "line": 23,
+          "column": 27,
+          "offset": 1812
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "    critical_logger->set_error_handler([](const std::string& msg) {\n        throw std::runtime_error(msg);\n    });\n",
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1,
+          "offset": 1814
+        },
+        "end": {
+          "line": 30,
+          "column": 4,
+          "offset": 1940
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "The default error handler",
+              "position": {
+                "start": {
+                  "line": 32,
+                  "column": 3,
+                  "offset": 1944
+                },
+                "end": {
+                  "line": 32,
+                  "column": 28,
+                  "offset": 1969
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 32,
+              "column": 1,
+              "offset": 1942
+            },
+            "end": {
+              "line": 32,
+              "column": 30,
+              "offset": 1971
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 32,
+          "column": 1,
+          "offset": 1942
+        },
+        "end": {
+          "line": 32,
+          "column": 30,
+          "offset": 1971
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "_default_err_handler",
+          "position": {
+            "start": {
+              "line": 34,
+              "column": 1,
+              "offset": 1973
+            },
+            "end": {
+              "line": 34,
+              "column": 23,
+              "offset": 1995
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " will use this to print error",
+          "position": {
+            "start": {
+              "line": 34,
+              "column": 23,
+              "offset": 1995
+            },
+            "end": {
+              "line": 34,
+              "column": 52,
+              "offset": 2024
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 34,
+          "column": 1,
+          "offset": 1973
+        },
+        "end": {
+          "line": 34,
+          "column": 52,
+          "offset": 2024
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "    fmt::print(stderr, \"[*** LOG ERROR ***] [{}] [{}] {}\\n\", date_buf, name(), msg);",
+      "position": {
+        "start": {
+          "line": 35,
+          "column": 1,
+          "offset": 2025
+        },
+        "end": {
+          "line": 37,
+          "column": 4,
+          "offset": 2120
+        }
+      }
+    }
+  ],
+  "changes": []
+}

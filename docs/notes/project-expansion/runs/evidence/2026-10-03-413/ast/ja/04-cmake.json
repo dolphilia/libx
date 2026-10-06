@@ -1,0 +1,1478 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "CMake.md",
+    "slug": "04-cmake",
+    "source": "/private/tmp/libx-spdlog-integration-20261003/docs/notes/document-import/spdlog/v1-17-0/sources/wiki/CMake.md",
+    "sourceSHA256": "74e4d8c650094155e121451378fa39dbc9527958f2ac0d4dccfa5e9913675668",
+    "canonicalInput": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/meta/canonical-inputs/04-cmake.md",
+    "canonicalInputSHA256": "74e4d8c650094155e121451378fa39dbc9527958f2ac0d4dccfa5e9913675668",
+    "trial": "/private/tmp/libx-spdlog-integration-20261003/apps/spdlog/src/content/docs/v1-17-0/en/01-guide/04-cmake.md",
+    "canonicalSHA256": "65cb5bbd52b5b1f398e2aa41abc03577f3f703b07c3b1abe4bb1ec1d8e9673d8",
+    "title": "CMake",
+    "excluded": [],
+    "sourceNote": "This dated Wiki states CMake 3.0+. The separately fixed spdlog 1.17.0 CMakeLists.txt declares cmake_minimum_required(VERSION 3.10...3.21): the minimum is 3.10 and 3.21 is the policy version, not an upper limit on the CMake version that may run. The original Wiki instructions are preserved."
+  },
+  "children": [
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "CMake",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 5,
+              "offset": 939
+            },
+            "end": {
+              "line": 5,
+              "column": 10,
+              "offset": 944
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 935
+        },
+        "end": {
+          "line": 5,
+          "column": 10,
+          "offset": 944
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "このライブラリは、",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 946
+            },
+            "end": {
+              "line": 7,
+              "column": 10,
+              "offset": 955
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://www.cmake.org/",
+          "children": [
+            {
+              "type": "text",
+              "value": "CMake",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 11,
+                  "offset": 956
+                },
+                "end": {
+                  "line": 7,
+                  "column": 16,
+                  "offset": 961
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 10,
+              "offset": 955
+            },
+            "end": {
+              "line": 7,
+              "column": 40,
+              "offset": 985
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "でもインストールできます。CMakeのバージョンは3.0以上が必要で、",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 40,
+              "offset": 985
+            },
+            "end": {
+              "line": 7,
+              "column": 75,
+              "offset": 1020
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "--version",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 75,
+              "offset": 1020
+            },
+            "end": {
+              "line": 7,
+              "column": 86,
+              "offset": 1031
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " で確認できます。",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 86,
+              "offset": 1031
+            },
+            "end": {
+              "line": 7,
+              "column": 95,
+              "offset": 1040
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 946
+        },
+        "end": {
+          "line": 7,
+          "column": 95,
+          "offset": 1040
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "> cmake --version\ncmake version 3.3.1\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+      "position": {
+        "start": {
+          "line": 8,
+          "column": 1,
+          "offset": 1041
+        },
+        "end": {
+          "line": 13,
+          "column": 4,
+          "offset": 1160
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "生成",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 5,
+              "offset": 1166
+            },
+            "end": {
+              "line": 15,
+              "column": 7,
+              "offset": 1168
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1,
+          "offset": 1162
+        },
+        "end": {
+          "line": 15,
+          "column": 7,
+          "offset": 1168
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "現在のディレクトリ（",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1,
+              "offset": 1170
+            },
+            "end": {
+              "line": 17,
+              "column": 11,
+              "offset": 1180
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 11,
+              "offset": 1180
+            },
+            "end": {
+              "line": 17,
+              "column": 14,
+              "offset": 1183
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "）にある ",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 14,
+              "offset": 1183
+            },
+            "end": {
+              "line": 17,
+              "column": 19,
+              "offset": 1188
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "CMakeLists.txt",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 19,
+              "offset": 1188
+            },
+            "end": {
+              "line": 17,
+              "column": 35,
+              "offset": 1204
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を使い、",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 35,
+              "offset": 1204
+            },
+            "end": {
+              "line": 17,
+              "column": 40,
+              "offset": 1209
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "_builds",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 40,
+              "offset": 1209
+            },
+            "end": {
+              "line": 17,
+              "column": 49,
+              "offset": 1218
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " ディレクトリにプロジェクトを生成します。OSと必要なジェネレーターに応じて、次のいずれかのコマンドを実行します。",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 49,
+              "offset": 1218
+            },
+            "end": {
+              "line": 17,
+              "column": 106,
+              "offset": 1275
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1,
+          "offset": 1170
+        },
+        "end": {
+          "line": 17,
+          "column": 106,
+          "offset": 1275
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "> cmake -H. -B_builds -DCMAKE_BUILD_TYPE=Release # Default generator is Makefile for *nix platform\n> cmake -H. -B_builds -GXcode # Xcode generator on OS X (multi-config, no need for CMAKE_BUILD_TYPE)\n> cmake -H. -B_builds -G\"Visual Studio 12 2013\" # Visual Studio IDE, Windows, multi-config",
+      "position": {
+        "start": {
+          "line": 18,
+          "column": 1,
+          "offset": 1276
+        },
+        "end": {
+          "line": 22,
+          "column": 4,
+          "offset": 1578
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "または、ツールチェーンを指定します。",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 1,
+              "offset": 1580
+            },
+            "end": {
+              "line": 24,
+              "column": 19,
+              "offset": 1598
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 24,
+          "column": 1,
+          "offset": 1580
+        },
+        "end": {
+          "line": 24,
+          "column": 19,
+          "offset": 1598
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "> cmake -H. -B_builds -DCMAKE_TOOLCHAIN_FILE=/path/to/iOS.cmake -GXcode\n> cmake -H. -B_builds -DCMAKE_TOOLCHAIN_FILE=/path/to/android.cmake -DCMAKE_BUILD_TYPE=Release",
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1,
+          "offset": 1599
+        },
+        "end": {
+          "line": 28,
+          "column": 4,
+          "offset": 1777
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "サンプルを追加するには、",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 1,
+              "offset": 1779
+            },
+            "end": {
+              "line": 30,
+              "column": 13,
+              "offset": 1791
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_BUILD_EXAMPLE=ON",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 13,
+              "offset": 1791
+            },
+            "end": {
+              "line": 30,
+              "column": 38,
+              "offset": 1816
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " オプションを使います。",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 38,
+              "offset": 1816
+            },
+            "end": {
+              "line": 30,
+              "column": 50,
+              "offset": 1828
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 30,
+          "column": 1,
+          "offset": 1779
+        },
+        "end": {
+          "line": 30,
+          "column": 50,
+          "offset": 1828
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "> cmake -H. -B_builds -DSPDLOG_BUILD_EXAMPLE=ON -DCMAKE_BUILD_TYPE=Release",
+      "position": {
+        "start": {
+          "line": 31,
+          "column": 1,
+          "offset": 1829
+        },
+        "end": {
+          "line": 33,
+          "column": 4,
+          "offset": 1916
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "ビルド・テスト",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 5,
+              "offset": 1922
+            },
+            "end": {
+              "line": 35,
+              "column": 12,
+              "offset": 1929
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 35,
+          "column": 1,
+          "offset": 1918
+        },
+        "end": {
+          "line": 35,
+          "column": 12,
+          "offset": 1929
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "生成されたプロジェクトを開き、ビルド・テストのターゲットを実行します。コマンドラインも使えます。",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 1,
+              "offset": 1931
+            },
+            "end": {
+              "line": 37,
+              "column": 49,
+              "offset": 1979
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 37,
+          "column": 1,
+          "offset": 1931
+        },
+        "end": {
+          "line": 37,
+          "column": 49,
+          "offset": 1979
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "meta": null,
+      "value": "> cmake --build _builds --config Release\n> cd _builds && ctest -VV -C Release",
+      "position": {
+        "start": {
+          "line": 38,
+          "column": 1,
+          "offset": 1980
+        },
+        "end": {
+          "line": 41,
+          "column": 4,
+          "offset": 2065
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "インストール",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 5,
+              "offset": 2071
+            },
+            "end": {
+              "line": 43,
+              "column": 11,
+              "offset": 2077
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 43,
+          "column": 1,
+          "offset": 2067
+        },
+        "end": {
+          "line": 43,
+          "column": 11,
+          "offset": 2077
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "ヘッダーは",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 1,
+              "offset": 2079
+            },
+            "end": {
+              "line": 45,
+              "column": 6,
+              "offset": 2084
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "http://www.cmake.org/cmake/help/v3.3/manual/cmake-packages.7.html#config-file-packages",
+          "children": [
+            {
+              "type": "text",
+              "value": "config",
+              "position": {
+                "start": {
+                  "line": 45,
+                  "column": 7,
+                  "offset": 2085
+                },
+                "end": {
+                  "line": 45,
+                  "column": 13,
+                  "offset": 2091
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 6,
+              "offset": 2084
+            },
+            "end": {
+              "line": 45,
+              "column": 102,
+              "offset": 2180
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "ファイルと一緒にインストールでき、",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 102,
+              "offset": 2180
+            },
+            "end": {
+              "line": 45,
+              "column": 119,
+              "offset": 2197
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "find_package(spdlog CONFIG REQUIRED)",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 119,
+              "offset": 2197
+            },
+            "end": {
+              "line": 45,
+              "column": 157,
+              "offset": 2235
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " でライブラリを見つけられるようになります。",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 157,
+              "offset": 2235
+            },
+            "end": {
+              "line": 45,
+              "column": 179,
+              "offset": 2257
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 45,
+          "column": 1,
+          "offset": 2079
+        },
+        "end": {
+          "line": 45,
+          "column": 179,
+          "offset": 2257
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "[spdlog]> cmake -H. -B_builds -DCMAKE_INSTALL_PREFIX=/path/to/install -DCMAKE_BUILD_TYPE=Release\n[spdlog]> cmake --build _builds --target install",
+      "position": {
+        "start": {
+          "line": 46,
+          "column": 1,
+          "offset": 2258
+        },
+        "end": {
+          "line": 49,
+          "column": 4,
+          "offset": 2416
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "examples",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 1,
+              "offset": 2418
+            },
+            "end": {
+              "line": 51,
+              "column": 11,
+              "offset": 2428
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を独立したプロジェクトとしてビルドすると、使用方法をテストできます。",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 11,
+              "offset": 2428
+            },
+            "end": {
+              "line": 51,
+              "column": 46,
+              "offset": 2463
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 51,
+          "column": 1,
+          "offset": 2418
+        },
+        "end": {
+          "line": 51,
+          "column": 46,
+          "offset": 2463
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "[spdlog/examples]> cmake -H. -B_builds -DCMAKE_PREFIX_PATH=/path/to/install -DCMAKE_BUILD_TYPE=Release\n[spdlog/examples]> cmake --build _builds",
+      "position": {
+        "start": {
+          "line": 52,
+          "column": 1,
+          "offset": 2464
+        },
+        "end": {
+          "line": 55,
+          "column": 4,
+          "offset": 2620
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "CMake 3.7でAndroid向けにクロスコンパイルする",
+          "position": {
+            "start": {
+              "line": 57,
+              "column": 5,
+              "offset": 2626
+            },
+            "end": {
+              "line": 57,
+              "column": 35,
+              "offset": 2656
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 57,
+          "column": 1,
+          "offset": 2622
+        },
+        "end": {
+          "line": 57,
+          "column": 35,
+          "offset": 2656
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Android NDKとSDKを使ったツールチェーン設定を標準でサポートするCMake 3.7で、クロスコンパイルが動作したと報告されています（",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 1,
+              "offset": 2658
+            },
+            "end": {
+              "line": 59,
+              "column": 73,
+              "offset": 2730
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://cmake.org/cmake/help/v3.7/manual/cmake-toolchains.7.html#cross-compiling-for-android）。spdlogは古いバージョンのCMakeを対象としており、この例はコミュニティーからの寄稿である点に注意してください。",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://cmake.org/cmake/help/v3.7/manual/cmake-toolchains.7.html#cross-compiling-for-android）。spdlogは古いバージョンのCMakeを対象としており、この例はコミュニティーからの寄稿である点に注意してください。",
+              "position": {
+                "start": {
+                  "line": 59,
+                  "column": 73,
+                  "offset": 2730
+                },
+                "end": {
+                  "line": 59,
+                  "column": 226,
+                  "offset": 2883
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 73,
+              "offset": 2730
+            },
+            "end": {
+              "line": 59,
+              "column": 226,
+              "offset": 2883
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 59,
+          "column": 1,
+          "offset": 2658
+        },
+        "end": {
+          "line": 59,
+          "column": 226,
+          "offset": 2883
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "以下は、Android NDKを使ってspdlogを設定・ビルドする例です。",
+          "position": {
+            "start": {
+              "line": 61,
+              "column": 1,
+              "offset": 2885
+            },
+            "end": {
+              "line": 61,
+              "column": 39,
+              "offset": 2923
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 61,
+          "column": 1,
+          "offset": 2885
+        },
+        "end": {
+          "line": 61,
+          "column": 39,
+          "offset": 2923
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "> git clone https://github.com/gabime/spdlog\n> mkdir build\n> cd build \n> cmake ../spdlog \\\n  -DCMAKE_SYSTEM_NAME=Android \\\n  -DCMAKE_SYSTEM_VERSION=21 \\\n  -DCMAKE_ANDROID_ARCH_ABI=\"armeabi-v7a\" \\\n  -DCMAKE_ANDROID_ARM_NEON=ON \\\n  -DCMAKE_ANDROID_NDK=$HOME/Android/Ndk/android-ndk-r13b/\n> cmake --build .",
+      "position": {
+        "start": {
+          "line": 62,
+          "column": 1,
+          "offset": 2924
+        },
+        "end": {
+          "line": 73,
+          "column": 4,
+          "offset": 3239
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "例で使うCMakeの設定オプションの意味については、上のリンク先のCMake文書を参照してください。",
+          "position": {
+            "start": {
+              "line": 75,
+              "column": 1,
+              "offset": 3241
+            },
+            "end": {
+              "line": 75,
+              "column": 51,
+              "offset": 3291
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 75,
+          "column": 1,
+          "offset": 3241
+        },
+        "end": {
+          "line": 75,
+          "column": 51,
+          "offset": 3291
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "git submoduleとしてExternalProject_Addで静的ライブラリを使う",
+          "position": {
+            "start": {
+              "line": 77,
+              "column": 4,
+              "offset": 3296
+            },
+            "end": {
+              "line": 77,
+              "column": 50,
+              "offset": 3342
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 77,
+          "column": 1,
+          "offset": 3293
+        },
+        "end": {
+          "line": 77,
+          "column": 50,
+          "offset": 3342
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "CMakeを使うプロジェクトで、実際にはlibspdlogd.aという名前の静的ライブラリを使いたい場合の短い例です。",
+          "position": {
+            "start": {
+              "line": 79,
+              "column": 1,
+              "offset": 3344
+            },
+            "end": {
+              "line": 79,
+              "column": 60,
+              "offset": 3403
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 79,
+          "column": 1,
+          "offset": 3344
+        },
+        "end": {
+          "line": 79,
+          "column": 60,
+          "offset": 3403
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "meta": null,
+      "value": "cd project_dir\\lib\ngit submodule add https://github.com/gabime/spdlog\ncd spdlog\ngit checkout v1.9.2\n...",
+      "position": {
+        "start": {
+          "line": 80,
+          "column": 1,
+          "offset": 3404
+        },
+        "end": {
+          "line": 86,
+          "column": 4,
+          "offset": 3519
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "ExternalProject_Add(spdlog\n    PREFIX spdlog\n    SOURCE_DIR ${PROJECT_SOURCE_DIR}/lib/spdlog\n    CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}\n    -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}\n    -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}\n    -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}\n    -DCMAKE_INSTALL_PREFIX=${STAGING_DIR}\n    -DSPDLOG_BUILD_SHARED=OFF\n)",
+      "position": {
+        "start": {
+          "line": 88,
+          "column": 1,
+          "offset": 3521
+        },
+        "end": {
+          "line": 99,
+          "column": 4,
+          "offset": 3895
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "後で、次も追加します。",
+          "position": {
+            "start": {
+              "line": 101,
+              "column": 1,
+              "offset": 3897
+            },
+            "end": {
+              "line": 101,
+              "column": 12,
+              "offset": 3908
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 101,
+          "column": 1,
+          "offset": 3897
+        },
+        "end": {
+          "line": 101,
+          "column": 12,
+          "offset": 3908
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "add_dependencies(${PROJECT_NAME} spdlog)",
+      "position": {
+        "start": {
+          "line": 102,
+          "column": 1,
+          "offset": 3909
+        },
+        "end": {
+          "line": 104,
+          "column": 4,
+          "offset": 3962
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "最後に、次のように使います。",
+          "position": {
+            "start": {
+              "line": 106,
+              "column": 1,
+              "offset": 3964
+            },
+            "end": {
+              "line": 106,
+              "column": 15,
+              "offset": 3978
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 106,
+          "column": 1,
+          "offset": 3964
+        },
+        "end": {
+          "line": 106,
+          "column": 15,
+          "offset": 3978
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "PUBLIC ${STAGING_DIR}/include/ # spdlog",
+      "position": {
+        "start": {
+          "line": 107,
+          "column": 1,
+          "offset": 3979
+        },
+        "end": {
+          "line": 109,
+          "column": 4,
+          "offset": 4031
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "C++/Hファイル内では、次のようにできます。",
+          "position": {
+            "start": {
+              "line": 111,
+              "column": 1,
+              "offset": 4033
+            },
+            "end": {
+              "line": 111,
+              "column": 24,
+              "offset": 4056
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 111,
+          "column": 1,
+          "offset": 4033
+        },
+        "end": {
+          "line": 111,
+          "column": 24,
+          "offset": 4056
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "C++",
+      "meta": null,
+      "value": "#include \"spdlog/spdlog.h\"",
+      "position": {
+        "start": {
+          "line": 112,
+          "column": 1,
+          "offset": 4057
+        },
+        "end": {
+          "line": 114,
+          "column": 4,
+          "offset": 4094
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "共有ライブラリでspdlogを使う",
+          "position": {
+            "start": {
+              "line": 116,
+              "column": 4,
+              "offset": 4099
+            },
+            "end": {
+              "line": 116,
+              "column": 21,
+              "offset": 4116
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 116,
+          "column": 1,
+          "offset": 4096
+        },
+        "end": {
+          "line": 116,
+          "column": 21,
+          "offset": 4116
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "共有ライブラリをビルドする場合、",
+          "position": {
+            "start": {
+              "line": 118,
+              "column": 1,
+              "offset": 4118
+            },
+            "end": {
+              "line": 118,
+              "column": 17,
+              "offset": 4134
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog",
+          "position": {
+            "start": {
+              "line": 118,
+              "column": 17,
+              "offset": 4134
+            },
+            "end": {
+              "line": 118,
+              "column": 25,
+              "offset": 4142
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " サブディレクトリを追加する前に、",
+          "position": {
+            "start": {
+              "line": 118,
+              "column": 25,
+              "offset": 4142
+            },
+            "end": {
+              "line": 118,
+              "column": 42,
+              "offset": 4159
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "CMAKE_POSITION_INDEPENDENT_CODE",
+          "position": {
+            "start": {
+              "line": 118,
+              "column": 42,
+              "offset": 4159
+            },
+            "end": {
+              "line": 118,
+              "column": 75,
+              "offset": 4192
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を ",
+          "position": {
+            "start": {
+              "line": 118,
+              "column": 75,
+              "offset": 4192
+            },
+            "end": {
+              "line": 118,
+              "column": 78,
+              "offset": 4195
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "TRUE",
+          "position": {
+            "start": {
+              "line": 118,
+              "column": 78,
+              "offset": 4195
+            },
+            "end": {
+              "line": 118,
+              "column": 84,
+              "offset": 4201
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " に設定する必要があります。",
+          "position": {
+            "start": {
+              "line": 118,
+              "column": 84,
+              "offset": 4201
+            },
+            "end": {
+              "line": 118,
+              "column": 98,
+              "offset": 4215
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 118,
+          "column": 1,
+          "offset": 4118
+        },
+        "end": {
+          "line": 118,
+          "column": 98,
+          "offset": 4215
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "完全な例：",
+          "position": {
+            "start": {
+              "line": 120,
+              "column": 1,
+              "offset": 4217
+            },
+            "end": {
+              "line": 120,
+              "column": 6,
+              "offset": 4222
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 120,
+          "column": 1,
+          "offset": 4217
+        },
+        "end": {
+          "line": 120,
+          "column": 6,
+          "offset": 4222
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cmake",
+      "meta": null,
+      "value": "cmake_minimum_required(VERSION 3.10)\n\nproject(cmake_test)\n\nset(CMAKE_CXX_STANDARD 17)\nset(CMAKE_CXX_STANDARD_REQUIRED TRUE)\nset(CMAKE_POSITION_INDEPENDENT_CODE TRUE)\n\nadd_subdirectory(\"${CMAKE_SOURCE_DIR}/spdlog\")\n\nfile(GLOB_RECURSE SOURCES \"${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp\")\nadd_library(test SHARED ${SOURCES})\ntarget_include_directories(test PRIVATE \"${CMAKE_CURRENT_SOURCE_DIR}/src\")\n\ntarget_link_libraries(test PRIVATE spdlog::spdlog)",
+      "position": {
+        "start": {
+          "line": 121,
+          "column": 1,
+          "offset": 4223
+        },
+        "end": {
+          "line": 137,
+          "column": 4,
+          "offset": 4680
+        }
+      }
+    }
+  ],
+  "changes": []
+}
