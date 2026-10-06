@@ -1,0 +1,256 @@
+<div class="gnu-grep-original-content" id="Environment-Variables">
+<h3 class="section" id="Environment-Variables-1"><span>2.2 Environment Variables</span></h3>
+<p>The behavior of <code class="command">grep</code> is affected by several environment
+variables, the most important of which control the locale, which
+specifies how <code class="command">grep</code> interprets characters in its patterns and
+data.
+</p>
+<a class="index-entry-id" id="index-LANGUAGE-environment-variable"></a>
+<a class="index-entry-id" id="index-LC_005fALL-environment-variable"></a>
+<a class="index-entry-id" id="index-LC_005fMESSAGES-environment-variable"></a>
+<a class="index-entry-id" id="index-LANG-environment-variable"></a>
+<p>The locale for category <code class="code">LC_<var class="var">foo</var></code><!-- /@w -->
+is specified by examining the three environment variables
+<code class="env">LC_ALL</code>, <code class="env">LC_<var class="var">foo</var></code><!-- /@w -->, and <code class="env">LANG</code>,
+in that order.
+The first of these variables that is set specifies the locale.
+For example, if <code class="env">LC_ALL</code> is not set,
+but <code class="env">LC_COLLATE</code> is set to ‘<samp class="samp">pt_BR.UTF-8</samp>’,
+then a Brazilian Portuguese locale is used
+for the <code class="env">LC_COLLATE</code> category.
+As a special case for <code class="env">LC_MESSAGES</code> only, the environment variable
+<code class="env">LANGUAGE</code> can contain a colon-separated list of languages that
+overrides the three environment variables that ordinarily specify
+the <code class="env">LC_MESSAGES</code> category.
+The ‘<samp class="samp">C</samp>’ locale is used if none of these environment variables are set,
+if the locale catalog is not installed,
+or if <code class="command">grep</code> was not compiled
+with national language support (NLS).
+The shell command <code class="code">locale -a</code> lists locales that are currently available.
+</p>
+<a class="index-entry-id" id="index-environment-variables"></a>
+<p>The following environment variables affect the behavior of <code class="command">grep</code>.
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-highlight-markers"></a>
+<a id="index-GREP_005fCOLOR-environment-variable"></a><span><code class="env">GREP_COLOR</code></span></dt>
+<dd><p>This obsolescent variable interacts with <code class="env">GREP_COLORS</code>
+confusingly, and <code class="command">grep</code> warns if it is set and is not
+overridden by <code class="env">GREP_COLORS</code>.  Instead of
+‘<samp class="samp">GREP_COLOR='<var class="var">color</var>'</samp>’, you can use
+‘<samp class="samp">GREP_COLORS='mt=<var class="var">color</var>'</samp>’.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-highlight-markers-1"></a>
+<a id="index-GREP_005fCOLORS-environment-variable"></a><span><code class="env">GREP_COLORS</code></span></dt>
+<dd><p>This variable controls how the <samp class="option">--color</samp> option highlights output.
+Its value is a colon-separated list of <code class="code">terminfo</code> capabilities
+that defaults to ‘<samp class="samp">ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36</samp>’
+with the ‘<samp class="samp">rv</samp>’ and ‘<samp class="samp">ne</samp>’ boolean capabilities omitted (i.e., false).
+The two-letter capability names
+refer to terminal “capabilities,” the ability
+of a terminal to highlight text, or change its color, and so on.
+These capabilities are stored in an online database and accessed by
+the <code class="code">terminfo</code> library.
+Non-empty capability values
+control highlighting using
+Select Graphic Rendition (SGR)
+commands interpreted by the terminal or terminal emulator.
+(See the
+section
+in the documentation of your text terminal
+for permitted values and their meanings as character attributes.)
+These substring values are integers in decimal representation
+and can be concatenated with semicolons.
+<code class="command">grep</code> takes care of assembling the result
+into a complete SGR sequence (‘<samp class="samp">\33[</samp>’…‘<samp class="samp">m</samp>’).
+Common values to concatenate include
+‘<samp class="samp">1</samp>’ for bold,
+‘<samp class="samp">4</samp>’ for underline,
+‘<samp class="samp">5</samp>’ for blink,
+‘<samp class="samp">7</samp>’ for inverse,
+‘<samp class="samp">39</samp>’ for default foreground color,
+‘<samp class="samp">30</samp>’ to ‘<samp class="samp">37</samp>’ for foreground colors,
+‘<samp class="samp">90</samp>’ to ‘<samp class="samp">97</samp>’ for 16-color mode foreground colors,
+‘<samp class="samp">38;5;0</samp>’ to ‘<samp class="samp">38;5;255</samp>’
+for 88-color and 256-color modes foreground colors,
+‘<samp class="samp">49</samp>’ for default background color,
+‘<samp class="samp">40</samp>’ to ‘<samp class="samp">47</samp>’ for background colors,
+‘<samp class="samp">100</samp>’ to ‘<samp class="samp">107</samp>’ for 16-color mode background colors,
+and ‘<samp class="samp">48;5;0</samp>’ to ‘<samp class="samp">48;5;255</samp>’
+for 88-color and 256-color modes background colors.
+</p>
+<p>Supported capabilities are as follows.
+</p>
+<dl class="table">
+<dt><a id="index-sl-GREP_005fCOLORS-capability"></a><span><code class="code">sl=</code></span></dt>
+<dd><p>SGR substring for whole selected lines
+(i.e.,
+matching lines when the <samp class="option">-v</samp> command-line option is omitted,
+or non-matching lines when <samp class="option">-v</samp> is specified).
+If however the boolean ‘<samp class="samp">rv</samp>’ capability
+and the <samp class="option">-v</samp> command-line option are both specified,
+it applies to context matching lines instead.
+The default is empty (i.e., the terminal’s default color pair).
+</p>
+</dd>
+<dt><a id="index-cx-GREP_005fCOLORS-capability"></a><span><code class="code">cx=</code></span></dt>
+<dd><p>SGR substring for whole context lines
+(i.e.,
+non-matching lines when the <samp class="option">-v</samp> command-line option is omitted,
+or matching lines when <samp class="option">-v</samp> is specified).
+If however the boolean ‘<samp class="samp">rv</samp>’ capability
+and the <samp class="option">-v</samp> command-line option are both specified,
+it applies to selected non-matching lines instead.
+The default is empty (i.e., the terminal’s default color pair).
+</p>
+</dd>
+<dt><a id="index-rv-GREP_005fCOLORS-capability"></a><span><code class="code">rv</code></span></dt>
+<dd><p>Boolean value that reverses (swaps) the meanings of
+the ‘<samp class="samp">sl=</samp>’ and ‘<samp class="samp">cx=</samp>’ capabilities
+when the <samp class="option">-v</samp> command-line option is specified.
+The default is false (i.e., the capability is omitted).
+</p>
+</dd>
+<dt><a id="index-mt-GREP_005fCOLORS-capability"></a><span><code class="code">mt=01;31</code></span></dt>
+<dd><p>SGR substring for matching non-empty text in any matching line
+(i.e.,
+a selected line when the <samp class="option">-v</samp> command-line option is omitted,
+or a context line when <samp class="option">-v</samp> is specified).
+Setting this is equivalent to setting both ‘<samp class="samp">ms=</samp>’ and ‘<samp class="samp">mc=</samp>’
+at once to the same value.
+The default is a bold red text foreground over the current line background.
+</p>
+</dd>
+<dt><a id="index-ms-GREP_005fCOLORS-capability"></a><span><code class="code">ms=01;31</code></span></dt>
+<dd><p>SGR substring for matching non-empty text in a selected line.
+(This is used only when the <samp class="option">-v</samp> command-line option is omitted.)
+The effect of the ‘<samp class="samp">sl=</samp>’ (or ‘<samp class="samp">cx=</samp>’ if ‘<samp class="samp">rv</samp>’) capability
+remains active when this takes effect.
+The default is a bold red text foreground over the current line background.
+</p>
+</dd>
+<dt><a id="index-mc-GREP_005fCOLORS-capability"></a><span><code class="code">mc=01;31</code></span></dt>
+<dd><p>SGR substring for matching non-empty text in a context line.
+(This is used only when the <samp class="option">-v</samp> command-line option is specified.)
+The effect of the ‘<samp class="samp">cx=</samp>’ (or ‘<samp class="samp">sl=</samp>’ if ‘<samp class="samp">rv</samp>’) capability
+remains active when this takes effect.
+The default is a bold red text foreground over the current line background.
+</p>
+</dd>
+<dt><a id="index-fn-GREP_005fCOLORS-capability"></a><span><code class="code">fn=35</code></span></dt>
+<dd><p>SGR substring for file names prefixing any content line.
+The default is a magenta text foreground over the terminal’s default background.
+</p>
+</dd>
+<dt><a id="index-ln-GREP_005fCOLORS-capability"></a><span><code class="code">ln=32</code></span></dt>
+<dd><p>SGR substring for line numbers prefixing any content line.
+The default is a green text foreground over the terminal’s default background.
+</p>
+</dd>
+<dt><a id="index-bn-GREP_005fCOLORS-capability"></a><span><code class="code">bn=32</code></span></dt>
+<dd><p>SGR substring for byte offsets prefixing any content line.
+The default is a green text foreground over the terminal’s default background.
+</p>
+</dd>
+<dt><a id="index-fn-GREP_005fCOLORS-capability-1"></a><span><code class="code">se=36</code></span></dt>
+<dd><p>SGR substring for separators that are inserted
+between selected line fields (‘<samp class="samp">:</samp>’),
+between context line fields (‘<samp class="samp">-</samp>’),
+and between groups of adjacent lines
+when nonzero context is specified (‘<samp class="samp">--</samp>’).
+The default is a cyan text foreground over the terminal’s default background.
+</p>
+</dd>
+<dt><a id="index-ne-GREP_005fCOLORS-capability"></a><span><code class="code">ne</code></span></dt>
+<dd><p>Boolean value that prevents clearing to the end of line
+using Erase in Line (EL) to Right (‘<samp class="samp">\33[K</samp>’)
+each time a colorized item ends.
+This is needed on terminals on which EL is not supported.
+It is otherwise useful on terminals
+for which the <code class="code">back_color_erase</code>
+(<code class="code">bce</code>) boolean <code class="code">terminfo</code> capability does not apply,
+when the chosen highlight colors do not affect the background,
+or when EL is too slow or causes too much flicker.
+The default is false (i.e., the capability is omitted).
+</p></dd>
+</dl>
+<p>Note that boolean capabilities have no ‘<samp class="samp">=</samp>’… part.
+They are omitted (i.e., false) by default and become true when specified.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-LC_005fCOLLATE-environment-variable"></a>
+<a class="index-entry-id" id="index-LANG-environment-variable-1"></a>
+<a class="index-entry-id" id="index-character-type"></a>
+<a class="index-entry-id" id="index-national-language-support"></a>
+<a class="index-entry-id" id="index-NLS"></a>
+<a id="index-LC_005fALL-environment-variable-1"></a><span><code class="env">LC_ALL</code></span></dt>
+<dt><code class="env">LC_COLLATE</code></dt>
+<dt><code class="env">LANG</code></dt>
+<dd><p>These variables specify the locale for the <code class="env">LC_COLLATE</code> category,
+which might affect how range expressions like ‘<samp class="samp">a-z</samp>’ are
+interpreted.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-LC_005fCTYPE-environment-variable"></a>
+<a class="index-entry-id" id="index-LANG-environment-variable-2"></a>
+<a class="index-entry-id" id="index-encoding-error"></a>
+<a class="index-entry-id" id="index-null-character"></a>
+<a id="index-LC_005fALL-environment-variable-2"></a><span><code class="env">LC_ALL</code></span></dt>
+<dt><code class="env">LC_CTYPE</code></dt>
+<dt><code class="env">LANG</code></dt>
+<dd><p>These variables specify the locale for the <code class="env">LC_CTYPE</code> category,
+which determines the type of characters,
+e.g., which characters are whitespace.
+This category also determines the character encoding.
+See <a class="xref" href="#Character-Encoding">Character Encoding</a>.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-LC_005fALL-environment-variable-3"></a>
+<a class="index-entry-id" id="index-LC_005fMESSAGES-environment-variable-1"></a>
+<a class="index-entry-id" id="index-LANG-environment-variable-3"></a>
+<a class="index-entry-id" id="index-language-of-messages"></a>
+<a class="index-entry-id" id="index-message-language"></a>
+<a class="index-entry-id" id="index-national-language-support-1"></a>
+<a class="index-entry-id" id="index-translation-of-message-language"></a>
+<a id="index-LANGUAGE-environment-variable-1"></a><span><code class="env">LANGUAGE</code></span></dt>
+<dt><code class="env">LC_ALL</code></dt>
+<dt><code class="env">LC_MESSAGES</code></dt>
+<dt><code class="env">LANG</code></dt>
+<dd><p>These variables specify the locale for the <code class="env">LC_MESSAGES</code> category,
+which determines the language that <code class="command">grep</code> uses for messages.
+The default ‘<samp class="samp">C</samp>’ locale uses American English messages.
+</p>
+</dd>
+<dt><a id="index-POSIXLY_005fCORRECT-environment-variable"></a><span><code class="env">POSIXLY_CORRECT</code></span></dt>
+<dd><p>If set, <code class="command">grep</code> behaves as POSIX requires; otherwise,
+<code class="command">grep</code> behaves more like other GNU programs.
+POSIX
+requires that options that
+follow file names must be treated as file names;
+by default,
+such options are permuted to the front of the operand list
+and are treated as options.
+</p>
+</dd>
+<dt><a id="index-TERM-environment-variable"></a><span><code class="env">TERM</code></span></dt>
+<dd><p>This variable specifies the output terminal type, which can affect
+what the <samp class="option">--color</samp> option does.  See <a class="xref" href="#General-Output-Control">General Output Control</a>.
+</p>
+</dd>
+</dl>
+<p>The <code class="env">GREP_OPTIONS</code> environment variable of <code class="command">grep</code> 2.20 and
+earlier is no longer supported, as it caused problems when writing
+portable scripts.  To make arbitrary changes to how <code class="command">grep</code>
+works, you can use an alias or script instead.  For example, if
+<code class="command">grep</code> is in the directory ‘<samp class="samp">/usr/bin</samp>’ you can prepend
+<samp class="file">$HOME/bin</samp> to your <code class="env">PATH</code> and create an executable script
+<samp class="file">$HOME/bin/grep</samp> containing the following:
+</p>
+<div class="example">
+<pre class="example-preformatted">#! /bin/sh
+export PATH=/usr/bin
+exec grep --color=auto --devices=skip "$@"
+</pre></div>
+<hr/>
+</div>

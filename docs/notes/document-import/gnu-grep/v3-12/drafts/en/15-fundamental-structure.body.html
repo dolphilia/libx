@@ -1,0 +1,88 @@
+<div class="gnu-grep-original-content" id="Fundamental-Structure">
+<h3 class="section" id="Fundamental-Structure-1"><span>3.1 Fundamental Structure</span></h3>
+<a class="index-entry-id" id="index-ordinary-characters"></a>
+<a class="index-entry-id" id="index-special-characters"></a>
+<p>In regular expressions, the characters ‘<samp class="samp">.?*+{|()[\^$</samp>’ are
+<em class="dfn">special characters</em> and have uses described below.  All other
+characters are <em class="dfn">ordinary characters</em>, and each ordinary character
+is a regular expression that matches itself.
+</p>
+<a class="index-entry-id" id="index-_002e"></a>
+<a class="index-entry-id" id="index-dot"></a>
+<a class="index-entry-id" id="index-period"></a>
+<p>The period ‘<samp class="samp">.</samp>’ matches any single character.
+It is unspecified whether ‘<samp class="samp">.</samp>’ matches an encoding error.
+</p>
+<a class="index-entry-id" id="index-interval-expressions"></a>
+<p>A regular expression may be followed by one of several
+repetition operators; the operators beginning with ‘<samp class="samp">{</samp>’
+are called <em class="dfn">interval expressions</em>.
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-question-mark"></a>
+<a class="index-entry-id" id="index-match-expression-at-most-once"></a>
+<a id="index-_003f"></a><span>‘<samp class="samp">?</samp>’</span></dt>
+<dd><p>The preceding item is optional and is matched at most once.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-asterisk"></a>
+<a class="index-entry-id" id="index-match-expression-zero-or-more-times"></a>
+<a id="index-_002a"></a><span>‘<samp class="samp">*</samp>’</span></dt>
+<dd><p>The preceding item is matched zero or more times.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-plus-sign"></a>
+<a class="index-entry-id" id="index-match-expression-one-or-more-times"></a>
+<a id="index-_002b"></a><span>‘<samp class="samp">+</samp>’</span></dt>
+<dd><p>The preceding item is matched one or more times.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-braces_002c-one-argument"></a>
+<a class="index-entry-id" id="index-match-expression-n-times"></a>
+<a id="index-_007bn_007d"></a><span>‘<samp class="samp">{<var class="var">n</var>}</samp>’</span></dt>
+<dd><p>The preceding item is matched exactly <var class="var">n</var> times.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-braces_002c-second-argument-omitted"></a>
+<a class="index-entry-id" id="index-match-expression-n-or-more-times"></a>
+<a id="index-_007bn_002c_007d"></a><span>‘<samp class="samp">{<var class="var">n</var>,}</samp>’</span></dt>
+<dd><p>The preceding item is matched <var class="var">n</var> or more times.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-braces_002c-first-argument-omitted"></a>
+<a class="index-entry-id" id="index-match-expression-at-most-m-times"></a>
+<a id="index-_007b_002cm_007d"></a><span>‘<samp class="samp">{,<var class="var">m</var>}</samp>’</span></dt>
+<dd><p>The preceding item is matched at most <var class="var">m</var> times.
+This is a GNU extension.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-braces_002c-two-arguments"></a>
+<a class="index-entry-id" id="index-match-expression-from-n-to-m-times"></a>
+<a id="index-_007bn_002cm_007d"></a><span>‘<samp class="samp">{<var class="var">n</var>,<var class="var">m</var>}</samp>’</span></dt>
+<dd><p>The preceding item is matched at least <var class="var">n</var> times, but not more than
+<var class="var">m</var> times.
+</p>
+</dd>
+</dl>
+<p>The empty regular expression matches the empty string.
+Two regular expressions may be concatenated;
+the resulting regular expression
+matches any string formed by concatenating two substrings
+that respectively match the concatenated expressions.
+</p>
+<a class="index-entry-id" id="index-alternatives-in-regular-expressions"></a>
+<p>Two regular expressions may be joined by the infix operator ‘<samp class="samp">|</samp>’.
+The resulting regular expression matches any string matching either of
+the two expressions, which are called <em class="dfn">alternatives</em>.
+</p>
+<p>Repetition takes precedence over concatenation,
+which in turn takes precedence over alternation.
+A whole expression may be enclosed in parentheses
+to override these precedence rules and form a subexpression.
+An unmatched ‘<samp class="samp">)</samp>’ matches just itself.
+</p>
+<p>Not every character string is a valid regular expression.
+See <a class="xref" href="/docs/gnu-grep/v3-12/en/01-guide/21-problematic-regular-expressions/#Problematic-Expressions">Problematic Regular Expressions</a>.
+</p>
+<hr/>
+</div>

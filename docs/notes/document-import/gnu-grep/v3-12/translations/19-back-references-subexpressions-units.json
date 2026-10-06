@@ -1,0 +1,47 @@
+{
+  "slug": "19-back-references-subexpressions",
+  "bodySHA256": "6b892827c028f41a1606ac3bb72ca797a3ac9172c00abfe8f1e493ec4e324020",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧3.5 Back-references and Subexpressions⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Back_002dreferences-and-Subexpressions-1\"><span>3.5 Back-references and Subexpressions</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The back-reference ‘⟦0⟧’, where ⟦1⟧ is a single nonzero digit, matches the substring previously matched by the ⟦2⟧th parenthesized subexpression of the regular expression. For example, ‘⟦3⟧’ matches ‘⟦4⟧’. If the parenthesized subexpression does not participate in the match, the back-reference makes the whole match fail; for example, ‘⟦5⟧’ fails to match ‘⟦6⟧’. If the parenthesized subexpression matches more than one substring, the back-reference refers to the last matched substring; for example, ‘⟦7⟧’ matches ‘⟦8⟧’ but not ‘⟦9⟧’. When multiple regular expressions are given with ⟦10⟧ or from a file (‘⟦11⟧’), back-references are local to each expression.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">\\<var class=\"var\">n</var></samp>",
+        "⟦1⟧": "<var class=\"var\">n</var>",
+        "⟦2⟧": "<var class=\"var\">n</var>",
+        "⟦3⟧": "<samp class=\"samp\">(a)\\1</samp>",
+        "⟦4⟧": "<samp class=\"samp\">aa</samp>",
+        "⟦5⟧": "<samp class=\"samp\">(a)*\\1</samp>",
+        "⟦6⟧": "<samp class=\"samp\">a</samp>",
+        "⟦7⟧": "<samp class=\"samp\">^(ab*)*\\1$</samp>",
+        "⟦8⟧": "<samp class=\"samp\">ababbabb</samp>",
+        "⟦9⟧": "<samp class=\"samp\">ababbab</samp>",
+        "⟦10⟧": "<samp class=\"option\">-e</samp>",
+        "⟦11⟧": "<samp class=\"samp\">-f <var class=\"var\">file</var></samp>"
+      },
+      "sourceHTML": "<p>The back-reference ‘<samp class=\"samp\">\\<var class=\"var\">n</var></samp>’,\nwhere <var class=\"var\">n</var> is a single nonzero digit, matches\nthe substring previously matched by the <var class=\"var\">n</var>th parenthesized subexpression\nof the regular expression.\nFor example, ‘<samp class=\"samp\">(a)\\1</samp>’ matches ‘<samp class=\"samp\">aa</samp>’.\nIf the parenthesized subexpression does not participate in the match,\nthe back-reference makes the whole match fail;\nfor example, ‘<samp class=\"samp\">(a)*\\1</samp>’ fails to match ‘<samp class=\"samp\">a</samp>’.\nIf the parenthesized subexpression matches more than one substring,\nthe back-reference refers to the last matched substring;\nfor example, ‘<samp class=\"samp\">^(ab*)*\\1$</samp>’ matches ‘<samp class=\"samp\">ababbabb</samp>’ but not ‘<samp class=\"samp\">ababbab</samp>’.\nWhen multiple regular expressions are given with\n<samp class=\"option\">-e</samp> or from a file (‘<samp class=\"samp\">-f <var class=\"var\">file</var></samp>’),\nback-references are local to each expression.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "See ⟦0⟧Known Bugs⟦1⟧, for some known problems with back-references.",
+      "tokens": {
+        "⟦0⟧": "<a class=\"xref\" href=\"/docs/gnu-grep/source/v3-12/manual.html#Known-Bugs\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<p>See <a class=\"xref\" href=\"/docs/gnu-grep/source/v3-12/manual.html#Known-Bugs\">Known Bugs</a>, for some known problems with back-references.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

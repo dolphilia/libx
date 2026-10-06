@@ -1,0 +1,77 @@
+<div class="gnu-grep-original-content" id="Context-Line-Control">
+<h4 class="subsection" id="Context-Line-Control-1"><span>2.1.5 Context Line Control</span></h4>
+<a class="index-entry-id" id="index-context-lines-1"></a>
+<p><em class="dfn">Context lines</em> are non-matching lines that are near a matching line.
+They are output only if one of the following options are used.
+Regardless of how these options are set,
+<code class="command">grep</code> never outputs any given line more than once.
+If the <samp class="option">-o</samp> (<samp class="option">--only-matching</samp>) option is specified,
+these options have no effect and a warning is given upon their use.
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-_002d_002dafter_002dcontext"></a>
+<a class="index-entry-id" id="index-after-context"></a>
+<a class="index-entry-id" id="index-context-lines_002c-after-match"></a>
+<a id="index-_002dA"></a><span><samp class="option">-A <var class="var">num</var></samp></span></dt>
+<dt><samp class="option">--after-context=<var class="var">num</var></samp></dt>
+<dd><p>Print <var class="var">num</var> lines of trailing context after matching lines.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dbefore_002dcontext"></a>
+<a class="index-entry-id" id="index-before-context"></a>
+<a class="index-entry-id" id="index-context-lines_002c-before-match"></a>
+<a id="index-_002dB"></a><span><samp class="option">-B <var class="var">num</var></samp></span></dt>
+<dt><samp class="option">--before-context=<var class="var">num</var></samp></dt>
+<dd><p>Print <var class="var">num</var> lines of leading context before matching lines.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dcontext"></a>
+<a class="index-entry-id" id="index-_002dnum"></a>
+<a class="index-entry-id" id="index-context-lines-2"></a>
+<a id="index-_002dC"></a><span><samp class="option">-C <var class="var">num</var></samp></span></dt>
+<dt><samp class="option">-<var class="var">num</var></samp></dt>
+<dt><samp class="option">--context=<var class="var">num</var></samp></dt>
+<dd><p>Print <var class="var">num</var> lines of leading and trailing output context.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-group-separator"></a>
+<a id="index-_002d_002dgroup_002dseparator"></a><span><samp class="option">--group-separator=<var class="var">string</var></samp></span></dt>
+<dd><p>When <samp class="option">-A</samp>, <samp class="option">-B</samp> or <samp class="option">-C</samp> are in use,
+print <var class="var">string</var> instead of ‘<samp class="samp">--</samp>’ between groups of lines.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-group-separator-1"></a>
+<a id="index-_002d_002dgroup_002dseparator-1"></a><span><samp class="option">--no-group-separator</samp></span></dt>
+<dd><p>When <samp class="option">-A</samp>, <samp class="option">-B</samp> or <samp class="option">-C</samp> are in use,
+do not print a separator between groups of lines.
+</p>
+</dd>
+</dl>
+<p>Here are some points about how <code class="command">grep</code> chooses
+the separator to print between prefix fields and line content:
+</p>
+<ul class="itemize mark-bullet">
+<li>Matching lines normally use ‘<samp class="samp">:</samp>’ as a separator
+between prefix fields and actual line content.
+
+</li><li>Context (i.e., non-matching) lines use ‘<samp class="samp">-</samp>’ instead.
+
+</li><li>When context is not specified,
+matching lines are simply output one right after another.
+
+</li><li>When context is specified,
+lines that are adjacent in the input form a group
+and are output one right after another, while
+by default a separator appears between non-adjacent groups.
+
+</li><li>The default separator
+is a ‘<samp class="samp">--</samp>’ line; its presence and appearance
+can be changed with the options above.
+
+</li><li>Each group may contain
+several matching lines when they are close enough to each other
+that two adjacent groups connect and can merge into a single
+contiguous one.
+</li></ul>
+<hr/>
+</div>

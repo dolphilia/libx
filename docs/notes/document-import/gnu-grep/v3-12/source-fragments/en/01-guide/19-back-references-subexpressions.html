@@ -1,0 +1,23 @@
+<div class="gnu-grep-original-content" id="Back_002dreferences-and-Subexpressions">
+<h3 class="section" id="Back_002dreferences-and-Subexpressions-1"><span>3.5 Back-references and Subexpressions</span></h3>
+<a class="index-entry-id" id="index-subexpression"></a>
+<a class="index-entry-id" id="index-back_002dreference"></a>
+<p>The back-reference ‘<samp class="samp">\<var class="var">n</var></samp>’,
+where <var class="var">n</var> is a single nonzero digit, matches
+the substring previously matched by the <var class="var">n</var>th parenthesized subexpression
+of the regular expression.
+For example, ‘<samp class="samp">(a)\1</samp>’ matches ‘<samp class="samp">aa</samp>’.
+If the parenthesized subexpression does not participate in the match,
+the back-reference makes the whole match fail;
+for example, ‘<samp class="samp">(a)*\1</samp>’ fails to match ‘<samp class="samp">a</samp>’.
+If the parenthesized subexpression matches more than one substring,
+the back-reference refers to the last matched substring;
+for example, ‘<samp class="samp">^(ab*)*\1$</samp>’ matches ‘<samp class="samp">ababbabb</samp>’ but not ‘<samp class="samp">ababbab</samp>’.
+When multiple regular expressions are given with
+<samp class="option">-e</samp> or from a file (‘<samp class="samp">-f <var class="var">file</var></samp>’),
+back-references are local to each expression.
+</p>
+<p>See <a class="xref" href="#Known-Bugs">Known Bugs</a>, for some known problems with back-references.
+</p>
+<hr/>
+</div>

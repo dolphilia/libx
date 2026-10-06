@@ -1,0 +1,262 @@
+<div class="gnu-grep-original-content" id="Usage">
+<h2 class="chapter" id="Usage-1"><span>4 Usage</span></h2>
+<a class="index-entry-id" id="index-usage_002c-examples"></a>
+<p>Here is an example command that invokes GNU <code class="command">grep</code>:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">grep -i 'hello.*world' menu.h main.c&#10;</pre></div>
+<p>This lists all lines in the files <samp class="file">menu.h</samp> and <samp class="file">main.c</samp> that
+contain the string ‘<samp class="samp">hello</samp>’ followed by the string ‘<samp class="samp">world</samp>’;
+this is because ‘<samp class="samp">.*</samp>’ matches zero or more characters within a line.
+See <a class="xref" href="/docs/gnu-grep/v3-12/en/01-guide/14-regular-expressions/#Regular-Expressions">Regular Expressions</a>.
+The <samp class="option">-i</samp> option causes <code class="command">grep</code>
+to ignore case, causing it to match the line ‘<samp class="samp">Hello, world!</samp>’, which
+it would not otherwise match.
+</p>
+<p>Here is a more complex example,
+showing the location and contents of any line
+containing ‘<samp class="samp">f</samp>’ and ending in ‘<samp class="samp">.c</samp>’,
+within all files in the current directory whose names
+start with non-‘<samp class="samp">.</samp>’, contain ‘<samp class="samp">g</samp>’, and end in ‘<samp class="samp">.h</samp>’.
+The <samp class="option">-n</samp> option outputs line numbers, the <samp class="option">--</samp> argument
+treats any later arguments as file names not options even if
+<code class="code">*g*.h</code> expands to a file name that starts with ‘<samp class="samp">-</samp>’,
+and the empty file <samp class="file">/dev/null</samp> causes file names to be output
+even if only one file name happens to be of the form ‘<samp class="samp">*g*.h</samp>’.
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">grep -n -- 'f.*\.c$' *g*.h /dev/null&#10;</pre></div>
+<p>Note that the regular expression syntax used in the pattern differs
+from the globbing syntax that the shell uses to match file names.
+</p>
+<p>See <a class="xref" href="/docs/gnu-grep/v3-12/en/01-guide/02-invoking/#Invoking">Invoking <code class="command">grep</code></a>, for more details about
+how to invoke <code class="command">grep</code>.
+</p>
+<a class="index-entry-id" id="index-using-grep_002c-Q_0026A"></a>
+<a class="index-entry-id" id="index-FAQ-about-grep-usage"></a>
+<p>Here are some common questions and answers about <code class="command">grep</code> usage.
+</p>
+<ol class="enumerate">
+<li> How can I list just the names of matching files?
+
+<div class="example">
+<pre class="gnu-grep-literal">grep -l 'main' test-*.c&#10;</pre></div>
+<p>lists names of ‘<samp class="samp">test-*.c</samp>’ files in the current directory whose contents
+mention ‘<samp class="samp">main</samp>’.
+</p>
+</li><li> How do I search directories recursively?
+
+<div class="example">
+<pre class="gnu-grep-literal">grep -r 'hello' /home/gigi&#10;</pre></div>
+<p>searches for ‘<samp class="samp">hello</samp>’ in all files
+under the <samp class="file">/home/gigi</samp> directory.
+For more control over which files are searched,
+use <code class="command">find</code> and <code class="command">grep</code>.
+For example, the following command searches only C files:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">find /home/gigi -name '*.c' ! -type d \&#10;  -exec grep -H 'hello' '{}' +&#10;</pre></div>
+<p>This differs from the command:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">grep -H 'hello' /home/gigi/*.c&#10;</pre></div>
+<p>which merely looks for ‘<samp class="samp">hello</samp>’ in non-hidden C files in
+<samp class="file">/home/gigi</samp> whose names end in ‘<samp class="samp">.c</samp>’.
+The <code class="command">find</code> command line above is more similar to the command:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">grep -r --include='*.c' 'hello' /home/gigi&#10;</pre></div>
+</li><li> What if a pattern or file has a leading ‘<samp class="samp">-</samp>’?
+For example:
+
+<div class="example">
+<pre class="gnu-grep-literal">grep "$pattern" *&#10;</pre></div>
+<p>can behave unexpectedly if the value of ‘<samp class="samp">pattern</samp>’ begins with ‘<samp class="samp">-</samp>’,
+or if the ‘<samp class="samp">*</samp>’ expands to a file name with leading ‘<samp class="samp">-</samp>’.
+To avoid the problem, you can use <samp class="option">-e</samp> for patterns and leading
+‘<samp class="samp">./</samp>’ for files:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">grep -e "$pattern" ./*&#10;</pre></div>
+<p>searches for all lines matching the pattern in all the working
+directory’s files whose names do not begin with ‘<samp class="samp">.</samp>’.
+Without the <samp class="option">-e</samp>, <code class="command">grep</code> might treat the pattern as an
+option if it begins with ‘<samp class="samp">-</samp>’.  Without the ‘<samp class="samp">./</samp>’, there might
+be similar problems with file names beginning with ‘<samp class="samp">-</samp>’.
+</p>
+<p>Alternatively, you can use ‘<samp class="samp">--</samp>’ before the pattern and file names:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">grep -- "$pattern" *&#10;</pre></div>
+<p>This also fixes the problem, except that if there is a file named ‘<samp class="samp">-</samp>’,
+<code class="command">grep</code> misinterprets the ‘<samp class="samp">-</samp>’ as standard input.
+</p>
+</li><li> Suppose I want to search for a whole word, not a part of a word?
+
+<div class="example">
+<pre class="gnu-grep-literal">grep -w 'hello' test*.log&#10;</pre></div>
+<p>searches only for instances of ‘<samp class="samp">hello</samp>’ that are entire words;
+it does not match ‘<samp class="samp">Othello</samp>’.
+For more control, use ‘<samp class="samp">\&lt;</samp>’ and
+‘<samp class="samp">\&gt;</samp>’ to match the start and end of words.
+For example:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">grep 'hello\>' test*.log&#10;</pre></div>
+<p>searches only for words ending in ‘<samp class="samp">hello</samp>’, so it matches the word
+‘<samp class="samp">Othello</samp>’.
+</p>
+</li><li> How do I output context around the matching lines?
+
+<div class="example">
+<pre class="gnu-grep-literal">grep -C 2 'hello' test*.log&#10;</pre></div>
+<p>prints two lines of context around each matching line.
+</p>
+</li><li> How do I force <code class="command">grep</code> to print the name of the file?
+
+<p>Append <samp class="file">/dev/null</samp>:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">grep 'eli' /etc/passwd /dev/null&#10;</pre></div>
+<p>gets you:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">/etc/passwd:eli:x:2098:1000:Eli Smith:/home/eli:/bin/bash&#10;</pre></div>
+<p>Alternatively, use <samp class="option">-H</samp>, which is a GNU extension:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">grep -H 'eli' /etc/passwd&#10;</pre></div>
+</li><li> Why do people use strange regular expressions on <code class="command">ps</code> output?
+
+<div class="example">
+<pre class="gnu-grep-literal">ps -ef | grep '[c]ron'&#10;</pre></div>
+<p>If the pattern had been written without the square brackets, it would
+have matched not only the <code class="command">ps</code> output line for <code class="command">cron</code>,
+but also the <code class="command">ps</code> output line for <code class="command">grep</code>.
+Note that on some platforms,
+<code class="command">ps</code> limits the output to the width of the screen;
+<code class="command">grep</code> does not have any limit on the length of a line
+except the available memory.
+</p>
+</li><li> Why does <code class="command">grep</code> report “binary file matches”?
+
+<p>If <code class="command">grep</code> listed all matching “lines” from a binary file, it
+would probably generate output that is not useful, and it might even
+muck up your display.
+So GNU <code class="command">grep</code> suppresses output from
+files that appear to be binary files.
+To force GNU <code class="command">grep</code>
+to output lines even from files that appear to be binary, use the
+<samp class="option">-a</samp> or ‘<samp class="samp">--binary-files=text</samp>’ option.
+To eliminate the
+“Binary file matches” messages, use the <samp class="option">-I</samp> or
+‘<samp class="samp">--binary-files=without-match</samp>’ option.
+</p>
+</li><li> Why doesn’t ‘<samp class="samp">grep -lv</samp>’ print non-matching file names?
+
+<p>‘<samp class="samp">grep -lv</samp>’ lists the names of all files containing one or more
+lines that do not match.
+To list the names of all files that contain no
+matching lines, use the <samp class="option">-L</samp> or <samp class="option">--files-without-match</samp>
+option.
+</p>
+</li><li> I can do “OR” with ‘<samp class="samp">|</samp>’, but what about “AND”?
+
+<div class="example">
+<pre class="gnu-grep-literal">grep 'paul' /etc/motd | grep 'franc,ois'&#10;</pre></div>
+<p>finds all lines that contain both ‘<samp class="samp">paul</samp>’ and ‘<samp class="samp">franc,ois</samp>’.
+</p>
+</li><li> Why does the empty pattern match every input line?
+
+<p>The <code class="command">grep</code> command searches for lines that contain strings
+that match a pattern.  Every line contains the empty string, so an
+empty pattern causes <code class="command">grep</code> to find a match on each line.  It
+is not the only such pattern: ‘<samp class="samp">^</samp>’, ‘<samp class="samp">$</samp>’, and many
+other patterns cause <code class="command">grep</code> to match every line.
+</p>
+<p>To match empty lines, use the pattern ‘<samp class="samp">^$</samp>’.  To match blank
+lines, use the pattern ‘<samp class="samp">^[[:blank:]]*$</samp>’.  To match no lines at
+all, use an extended regular expression like ‘<samp class="samp">a^</samp>’ or ‘<samp class="samp">$a</samp>’.
+To match every line, a portable script should use a pattern like
+‘<samp class="samp">^</samp>’ instead of the empty pattern, as POSIX does not specify the
+behavior of the empty pattern.
+</p>
+</li><li> How can I search in both standard input and in files?
+
+<p>Use the special file name ‘<samp class="samp">-</samp>’:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">cat /etc/passwd | grep 'alain' - /etc/motd&#10;</pre></div>
+</li><li> Why can’t I combine the shell’s ‘<samp class="samp">set -e</samp>’ with <code class="command">grep</code>?
+
+<p>The <code class="command">grep</code> command follows the convention of programs like
+<code class="command">cmp</code> and <code class="command">diff</code> where an exit status of 1 is not an
+error.  The shell command ‘<samp class="samp">set -e</samp>’ causes the shell to exit if
+any subcommand exits with nonzero status, and this will cause the
+shell to exit merely because <code class="command">grep</code> selected no lines,
+which is ordinarily not what you want.
+</p>
+<p>There is a related problem with Bash’s <code class="command">set -e -o pipefail</code>.
+Since <code class="command">grep</code> does not always read all its input, a command
+outputting to a pipe read by <code class="command">grep</code> can fail when
+<code class="command">grep</code> exits before reading all its input, and the command’s
+failure can cause Bash to exit.
+</p>
+</li><li> Why is this back-reference failing?
+
+<div class="example">
+<pre class="gnu-grep-literal">echo 'ba' | grep -E '(a)\1|b\1'&#10;</pre></div>
+<p>This outputs an error message, because the second ‘<samp class="samp">\1</samp>’
+has nothing to refer back to, meaning it will never match anything.
+</p>
+</li><li> How can I match across lines?
+
+<p>Standard grep cannot do this, as it is fundamentally line-based.
+Therefore, merely using the <code class="code">[:space:]</code> character class does not
+match newlines in the way you might expect.
+</p>
+<p>With the GNU <code class="command">grep</code> option <samp class="option">-z</samp> (<samp class="option">--null-data</samp>), each
+input and output “line” is null-terminated; see <a class="pxref" href="/docs/gnu-grep/v3-12/en/01-guide/10-other-options/#Other-Options">Other Options</a>.  Thus,
+you can match newlines in the input, but typically if there is a match
+the entire input is output, so this usage is often combined with
+output-suppressing options like <samp class="option">-q</samp>, e.g.:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">printf 'foo\nbar\n' | grep -z -q 'foo[[:space:]]\+bar'&#10;</pre></div>
+<p>If this does not suffice, you can transform the input
+before giving it to <code class="command">grep</code>, or turn to <code class="command">awk</code>,
+<code class="command">sed</code>, <code class="command">perl</code>, or many other utilities that are
+designed to operate across lines.
+</p>
+</li><li> What do <code class="command">grep</code>, <samp class="option">-E</samp>, and <samp class="option">-F</samp> stand for?
+
+<p>The name <code class="command">grep</code> comes from the way line editing was done on Unix.
+For example,
+<code class="command">ed</code> uses the following syntax
+to print a list of matching lines on the screen:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">global/regular expression/print&#10;g/re/p&#10;</pre></div>
+<p>The <samp class="option">-E</samp> option stands for Extended <code class="command">grep</code>.
+The <samp class="option">-F</samp> option stands for Fixed <code class="command">grep</code>;
+</p>
+</li><li> What happened to <code class="command">egrep</code> and <code class="command">fgrep</code>?
+
+<p>7th Edition Unix had commands <code class="command">egrep</code> and <code class="command">fgrep</code>
+that were the counterparts of the modern ‘<samp class="samp">grep -E</samp>’ and ‘<samp class="samp">grep -F</samp>’.
+Although breaking up <code class="command">grep</code> into three programs was perhaps
+useful on the small computers of the 1970s, <code class="command">egrep</code> and
+<code class="command">fgrep</code> were deemed obsolescent by POSIX in 1992,
+removed from POSIX in 2001, deprecated by GNU Grep 2.5.3 in 2007,
+and changed to issue obsolescence warnings by GNU Grep 3.8 in 2022;
+eventually, they are planned to be removed entirely.
+</p>
+<p>If you prefer the old names, you can use your own substitutes,
+such as a shell script named <code class="command">egrep</code> with the following
+contents:
+</p>
+<div class="example">
+<pre class="gnu-grep-literal">#!/bin/sh&#10;exec grep -E "$@"&#10;</pre></div>
+</li></ol>
+<hr/>
+</div>

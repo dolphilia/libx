@@ -1,0 +1,174 @@
+<div class="gnu-grep-original-content" id="File-and-Directory-Selection">
+<h4 class="subsection" id="File-and-Directory-Selection-1"><span>2.1.6 File and Directory Selection</span></h4>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-_002d_002dtext"></a>
+<a class="index-entry-id" id="index-suppress-binary-data"></a>
+<a class="index-entry-id" id="index-binary-files"></a>
+<a id="index-_002da"></a><span><samp class="option">-a</samp></span></dt>
+<dt><samp class="option">--text</samp></dt>
+<dd><p>Process a binary file as if it were text;
+this is equivalent to the ‘<samp class="samp">--binary-files=text</samp>’ option.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-binary-files-1"></a>
+<a id="index-_002d_002dbinary_002dfiles"></a><span><samp class="option">--binary-files=<var class="var">type</var></samp></span></dt>
+<dd><p>If a file’s data or metadata
+indicate that the file contains binary data,
+assume that the file is of type <var class="var">type</var>.
+Non-text bytes indicate binary data; these are either output bytes that are
+improperly encoded for the current locale (see <a class="pxref" href="#Environment-Variables">Environment Variables</a>), or null input bytes when the
+<samp class="option">-z</samp> (<samp class="option">--null-data</samp>) option is not given (see <a class="pxref" href="#Other-Options">Other Options</a>).
+</p>
+<p>By default, <var class="var">type</var> is ‘<samp class="samp">binary</samp>’, and <code class="command">grep</code>
+suppresses output after null input binary data is discovered,
+and suppresses output lines that contain improperly encoded data.
+When some output is suppressed, <code class="command">grep</code> follows any output
+with a message to standard error saying that a binary file matches.
+</p>
+<p>If <var class="var">type</var> is ‘<samp class="samp">without-match</samp>’,
+when <code class="command">grep</code> discovers null binary data in an input file
+it assumes that any unprocessed input does not match;
+this is equivalent to the <samp class="option">-I</samp> option.
+In this case the region of unprocessed input starts no later than the
+null binary data, and continues to end of file.
+</p>
+<p>If <var class="var">type</var> is ‘<samp class="samp">text</samp>’,
+<code class="command">grep</code> processes binary data as if it were text;
+this is equivalent to the <samp class="option">-a</samp> option.
+</p>
+<p>When <var class="var">type</var> is ‘<samp class="samp">binary</samp>’, <code class="command">grep</code> may treat non-text
+bytes as line terminators even without the <samp class="option">-z</samp>
+(<samp class="option">--null-data</samp>) option.  This means choosing ‘<samp class="samp">binary</samp>’
+versus ‘<samp class="samp">text</samp>’ can affect whether a pattern matches a file.  For
+example, when <var class="var">type</var> is ‘<samp class="samp">binary</samp>’ the pattern ‘<samp class="samp">q$</samp>’ might
+match ‘<samp class="samp">q</samp>’ immediately followed by a null byte, even though this
+is not matched when <var class="var">type</var> is ‘<samp class="samp">text</samp>’.  Conversely, when
+<var class="var">type</var> is ‘<samp class="samp">binary</samp>’ the pattern ‘<samp class="samp">.</samp>’ (period) might not
+match a null byte.
+</p>
+<p>The heuristic that <code class="command">grep</code> uses to intuit whether input is
+binary is specific to <code class="command">grep</code> and may well be unsuitable for
+other applications, as it depends on command-line options, on locale,
+and on hardware and operating system characteristics such as system
+page size and input buffering.  For example, if the input consists of
+a matching text line followed by nonmatching data that contains a null
+byte, <code class="command">grep</code> might either output the matching line or treat
+the file as binary, depending on whether the unprocessed input happens
+to include the matching text line.
+</p>
+<p><em class="emph">Warning:</em> The <samp class="option">-a</samp> (<samp class="option">--binary-files=text</samp>) option
+might output binary garbage, which can have nasty side effects if the
+output is a terminal and if the terminal driver interprets some of it
+as commands.  On the other hand, when reading files whose text
+encodings are unknown, it can be helpful to use <samp class="option">-a</samp> or to set
+‘<samp class="samp">LC_ALL='C'</samp>’ in the environment, in order to find more matches
+even if the matches are unsafe for direct display.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002ddevices"></a>
+<a class="index-entry-id" id="index-device-search"></a>
+<a id="index-_002dD"></a><span><samp class="option">-D <var class="var">action</var></samp></span></dt>
+<dt><samp class="option">--devices=<var class="var">action</var></samp></dt>
+<dd><p>If an input file is a device, FIFO, or socket, use <var class="var">action</var> to process it.
+If <var class="var">action</var> is ‘<samp class="samp">read</samp>’,
+all devices are read just as if they were ordinary files.
+If <var class="var">action</var> is ‘<samp class="samp">skip</samp>’,
+devices, FIFOs, and sockets are silently skipped.
+By default, devices are read if they are on the command line or if the
+<samp class="option">-R</samp> (<samp class="option">--dereference-recursive</samp>) option is used, and are
+skipped if they are encountered recursively and the <samp class="option">-r</samp>
+(<samp class="option">--recursive</samp>) option is used.
+This option has no effect on a file that is read via standard input.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002ddirectories"></a>
+<a class="index-entry-id" id="index-directory-search"></a>
+<a class="index-entry-id" id="index-symbolic-links"></a>
+<a id="index-_002dd"></a><span><samp class="option">-d <var class="var">action</var></samp></span></dt>
+<dt><samp class="option">--directories=<var class="var">action</var></samp></dt>
+<dd><p>If an input file is a directory, use <var class="var">action</var> to process it.
+By default, <var class="var">action</var> is ‘<samp class="samp">read</samp>’,
+which means that directories are read just as if they were ordinary files
+(some operating systems and file systems disallow this,
+and will cause <code class="command">grep</code>
+to print error messages for every directory or silently skip them).
+If <var class="var">action</var> is ‘<samp class="samp">skip</samp>’, directories are silently skipped.
+If <var class="var">action</var> is ‘<samp class="samp">recurse</samp>’,
+<code class="command">grep</code> reads all files under each directory, recursively,
+following command-line symbolic links and skipping other symlinks;
+this is equivalent to the <samp class="option">-r</samp> option.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-exclude-files"></a>
+<a class="index-entry-id" id="index-searching-directory-trees"></a>
+<a id="index-_002d_002dexclude"></a><span><samp class="option">--exclude=<var class="var">glob</var></samp></span></dt>
+<dd><p>Skip any command-line file with a name suffix that matches the pattern
+<var class="var">glob</var>, using wildcard matching; a name suffix is either the whole
+name, or a trailing part that starts with a non-slash character
+immediately after a slash (‘<samp class="samp">/</samp>’) in the name.
+When searching recursively, skip any subfile whose base
+name matches <var class="var">glob</var>; the base name is the part after the last
+slash.  A pattern can use
+‘<samp class="samp">*</samp>’, ‘<samp class="samp">?</samp>’, and ‘<samp class="samp">[</samp>’…‘<samp class="samp">]</samp>’ as wildcards,
+and <code class="code">\</code> to quote a wildcard or backslash character literally.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-exclude-files-1"></a>
+<a class="index-entry-id" id="index-searching-directory-trees-1"></a>
+<a id="index-_002d_002dexclude_002dfrom"></a><span><samp class="option">--exclude-from=<var class="var">file</var></samp></span></dt>
+<dd><p>Skip files whose name matches any of the patterns
+read from <var class="var">file</var> (using wildcard matching as described
+under <samp class="option">--exclude</samp>).
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-exclude-directories"></a>
+<a id="index-_002d_002dexclude_002ddir"></a><span><samp class="option">--exclude-dir=<var class="var">glob</var></samp></span></dt>
+<dd><p>Skip any command-line directory with a name suffix that matches the
+pattern <var class="var">glob</var>.  When searching recursively, skip any subdirectory
+whose base name matches <var class="var">glob</var>.  Ignore any redundant trailing
+slashes in <var class="var">glob</var>.
+</p>
+</dd>
+<dt><samp class="option">-I</samp></dt>
+<dd><p>Process a binary file as if it did not contain matching data;
+this is equivalent to the ‘<samp class="samp">--binary-files=without-match</samp>’ option.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-include-files"></a>
+<a class="index-entry-id" id="index-searching-directory-trees-2"></a>
+<a id="index-_002d_002dinclude"></a><span><samp class="option">--include=<var class="var">glob</var></samp></span></dt>
+<dd><p>Search only files whose name matches <var class="var">glob</var>,
+using wildcard matching as described under <samp class="option">--exclude</samp>.
+If contradictory <samp class="option">--include</samp> and <samp class="option">--exclude</samp> options are
+given, the last matching one wins.  If no <samp class="option">--include</samp> or
+<samp class="option">--exclude</samp> options match, a file is included unless the first
+such option is <samp class="option">--include</samp>.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002drecursive"></a>
+<a class="index-entry-id" id="index-recursive-search"></a>
+<a class="index-entry-id" id="index-searching-directory-trees-3"></a>
+<a class="index-entry-id" id="index-symbolic-links-1"></a>
+<a id="index-_002dr"></a><span><samp class="option">-r</samp></span></dt>
+<dt><samp class="option">--recursive</samp></dt>
+<dd><p>For each directory operand,
+read and process all files in that directory, recursively.
+Follow symbolic links on the command line, but skip symlinks
+that are encountered recursively.
+Note that if no file operand is given, grep searches the working directory.
+This is the same as the ‘<samp class="samp">--directories=recurse</samp>’ option.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002ddereference_002drecursive"></a>
+<a class="index-entry-id" id="index-recursive-search-1"></a>
+<a class="index-entry-id" id="index-searching-directory-trees-4"></a>
+<a class="index-entry-id" id="index-symbolic-links-2"></a>
+<a id="index-_002dR"></a><span><samp class="option">-R</samp></span></dt>
+<dt><samp class="option">--dereference-recursive</samp></dt>
+<dd><p>For each directory operand, read and process all files in that
+directory, recursively, following all symbolic links.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>

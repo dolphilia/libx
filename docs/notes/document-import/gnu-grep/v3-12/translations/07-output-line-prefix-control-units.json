@@ -1,0 +1,90 @@
+{
+  "slug": "07-output-line-prefix-control",
+  "bodySHA256": "19081ca8e953483a8e55f0939f83652e8021d2354f09569f331602d67f63b7ce",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧2.1.4 Output Line Prefix Control⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\" id=\"Output-Line-Prefix-Control-1\"><span>2.1.4 Output Line Prefix Control</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "When several prefix fields are to be output, the order is always file name, line number, and byte offset, regardless of the order in which these options were specified.",
+      "tokens": {},
+      "sourceHTML": "<p>When several prefix fields are to be output,\nthe order is always file name, line number, and byte offset,\nregardless of the order in which these options were specified.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Print the 0-based byte offset within the input file before each line of output. If ⟦0⟧ (⟦1⟧) is specified, print the offset of the matching part itself.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-o</samp>",
+        "⟦1⟧": "<samp class=\"option\">--only-matching</samp>"
+      },
+      "sourceHTML": "<p>Print the 0-based byte offset within the input file\nbefore each line of output.\nIf <samp class=\"option\">-o</samp> (<samp class=\"option\">--only-matching</samp>) is specified,\nprint the offset of the matching part itself.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Print the file name for each match. This is the default when there is more than one file to search.",
+      "tokens": {},
+      "sourceHTML": "<p>Print the file name for each match.\nThis is the default when there is more than one file to search.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Suppress the prefixing of file names on output. This is the default when there is only one file (or only standard input) to search.",
+      "tokens": {},
+      "sourceHTML": "<p>Suppress the prefixing of file names on output.\nThis is the default when there is only one file\n(or only standard input) to search.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Display input actually coming from standard input as input coming from file ⟦0⟧. This can be useful for commands that transform a file’s contents before searching; e.g.:",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">LABEL</var>"
+      },
+      "sourceHTML": "<p>Display input actually coming from standard input\nas input coming from file <var class=\"var\">LABEL</var>.\nThis can be useful for commands that transform a file’s contents\nbefore searching; e.g.:\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Prefix each line of output with the 1-based line number within its input file. (⟦0⟧ is specified by POSIX.)",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-n</samp>"
+      },
+      "sourceHTML": "<p>Prefix each line of output with the 1-based line number within its input file.\n(<samp class=\"option\">-n</samp> is specified by POSIX.)\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "Make sure that the first character of actual line content lies on a tab stop, so that the alignment of tabs looks normal. This is useful with options that prefix their output to the actual content: ⟦0⟧, ⟦1⟧, and ⟦2⟧. This may also prepend spaces to output line numbers and byte offsets so that lines from a single file all start at the same column.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-H</samp>",
+        "⟦1⟧": "<samp class=\"option\">-n</samp>",
+        "⟦2⟧": "<samp class=\"option\">-b</samp>"
+      },
+      "sourceHTML": "<p>Make sure that the first character of actual line content lies on a tab stop,\nso that the alignment of tabs looks normal.\nThis is useful with options that prefix their output to the actual content:\n<samp class=\"option\">-H</samp>, <samp class=\"option\">-n</samp>, and <samp class=\"option\">-b</samp>.\nThis may also prepend spaces to output line numbers and byte offsets\nso that lines from a single file all start at the same column.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "Output a zero byte (the ASCII NUL character) instead of the character that normally follows a file name. For example, ‘⟦0⟧’ outputs a zero byte after each file name instead of the usual newline. This option makes the output unambiguous, even in the presence of file names containing unusual characters like newlines. This option can be used with commands like ‘⟦1⟧’, ‘⟦2⟧’, ‘⟦3⟧’, and ‘⟦4⟧’ to process arbitrary file names, even those that contain newline characters.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">grep -lZ</samp>",
+        "⟦1⟧": "<samp class=\"samp\">find -print0</samp>",
+        "⟦2⟧": "<samp class=\"samp\">perl -0</samp>",
+        "⟦3⟧": "<samp class=\"samp\">sort -z</samp>",
+        "⟦4⟧": "<samp class=\"samp\">xargs -0</samp>"
+      },
+      "sourceHTML": "<p>Output a zero byte (the ASCII NUL character)\ninstead of the character that normally follows a file name.\nFor example,\n‘<samp class=\"samp\">grep -lZ</samp>’ outputs a zero byte after each file name\ninstead of the usual newline.\nThis option makes the output unambiguous,\neven in the presence of file names containing unusual characters like newlines.\nThis option can be used with commands like\n‘<samp class=\"samp\">find -print0</samp>’, ‘<samp class=\"samp\">perl -0</samp>’, ‘<samp class=\"samp\">sort -z</samp>’, and ‘<samp class=\"samp\">xargs -0</samp>’\nto process arbitrary file names,\neven those that contain newline characters.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

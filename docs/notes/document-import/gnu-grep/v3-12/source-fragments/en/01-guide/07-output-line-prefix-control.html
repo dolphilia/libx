@@ -1,0 +1,85 @@
+<div class="gnu-grep-original-content" id="Output-Line-Prefix-Control">
+<h4 class="subsection" id="Output-Line-Prefix-Control-1"><span>2.1.4 Output Line Prefix Control</span></h4>
+<p>When several prefix fields are to be output,
+the order is always file name, line number, and byte offset,
+regardless of the order in which these options were specified.
+</p>
+<dl class="table">
+<dt><a class="index-entry-id" id="index-_002d_002dbyte_002doffset"></a>
+<a class="index-entry-id" id="index-byte-offset"></a>
+<a id="index-_002db"></a><span><samp class="option">-b</samp></span></dt>
+<dt><samp class="option">--byte-offset</samp></dt>
+<dd><p>Print the 0-based byte offset within the input file
+before each line of output.
+If <samp class="option">-o</samp> (<samp class="option">--only-matching</samp>) is specified,
+print the offset of the matching part itself.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dwith_002dfilename"></a>
+<a class="index-entry-id" id="index-with-filename-prefix"></a>
+<a id="index-_002dH"></a><span><samp class="option">-H</samp></span></dt>
+<dt><samp class="option">--with-filename</samp></dt>
+<dd><p>Print the file name for each match.
+This is the default when there is more than one file to search.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dno_002dfilename"></a>
+<a class="index-entry-id" id="index-no-filename-prefix"></a>
+<a id="index-_002dh"></a><span><samp class="option">-h</samp></span></dt>
+<dt><samp class="option">--no-filename</samp></dt>
+<dd><p>Suppress the prefixing of file names on output.
+This is the default when there is only one file
+(or only standard input) to search.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-changing-name-of-standard-input"></a>
+<a id="index-_002d_002dlabel"></a><span><samp class="option">--label=<var class="var">LABEL</var></samp></span></dt>
+<dd><p>Display input actually coming from standard input
+as input coming from file <var class="var">LABEL</var>.
+This can be useful for commands that transform a file’s contents
+before searching; e.g.:
+</p>
+<div class="example">
+<pre class="example-preformatted">gzip -cd foo.gz | grep --label=foo -H 'some pattern'
+</pre></div>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dline_002dnumber"></a>
+<a class="index-entry-id" id="index-line-numbering"></a>
+<a id="index-_002dn"></a><span><samp class="option">-n</samp></span></dt>
+<dt><samp class="option">--line-number</samp></dt>
+<dd><p>Prefix each line of output with the 1-based line number within its input file.
+(<samp class="option">-n</samp> is specified by POSIX.)
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dinitial_002dtab"></a>
+<a class="index-entry-id" id="index-tab_002daligned-content-lines"></a>
+<a id="index-_002dT"></a><span><samp class="option">-T</samp></span></dt>
+<dt><samp class="option">--initial-tab</samp></dt>
+<dd><p>Make sure that the first character of actual line content lies on a tab stop,
+so that the alignment of tabs looks normal.
+This is useful with options that prefix their output to the actual content:
+<samp class="option">-H</samp>, <samp class="option">-n</samp>, and <samp class="option">-b</samp>.
+This may also prepend spaces to output line numbers and byte offsets
+so that lines from a single file all start at the same column.
+</p>
+</dd>
+<dt><a class="index-entry-id" id="index-_002d_002dnull"></a>
+<a class="index-entry-id" id="index-zero_002dterminated-file-names"></a>
+<a id="index-_002dZ"></a><span><samp class="option">-Z</samp></span></dt>
+<dt><samp class="option">--null</samp></dt>
+<dd><p>Output a zero byte (the ASCII NUL character)
+instead of the character that normally follows a file name.
+For example,
+‘<samp class="samp">grep -lZ</samp>’ outputs a zero byte after each file name
+instead of the usual newline.
+This option makes the output unambiguous,
+even in the presence of file names containing unusual characters like newlines.
+This option can be used with commands like
+‘<samp class="samp">find -print0</samp>’, ‘<samp class="samp">perl -0</samp>’, ‘<samp class="samp">sort -z</samp>’, and ‘<samp class="samp">xargs -0</samp>’
+to process arbitrary file names,
+even those that contain newline characters.
+</p>
+</dd>
+</dl>
+<hr/>
+</div>
