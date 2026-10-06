@@ -1,16 +1,18 @@
 ---
 title: "Awesome D3"
-description: "A curated collection of resources and projects focused on D3."
+description: "D3 libraries, plugins and utilities for charts, maps and data visualization."
 licenseSource: "github-wbkd-awesome-d3-readme-md"
 ---
 
 # Awesome D3
 
-A curated collection of resources and projects focused on D3.
+This list covers [D3.js](http://d3js.org) libraries, plugins and utilities for charts, maps and data visualization. Tutorials, learning resources and concepts are outside its scope; the original list instead points to a separate [collection of readings](https://github.com/mbostock/d3/wiki/Tutorials).
+
+You can also browse the list through the interactive [D3 Discovery](https://d3-discovery.net/) tool.
 
 ## Charts
 
-- [billboard.js](https://github.com/naver/billboard.js) - Re-usable chart library [bar, line, area, donut, pie, step, spline]
+- [billboard.js](https://github.com/naver/billboard.js) - Reusable chart library [bar, line, area, donut, pie, step, spline]
 - [britecharts](https://github.com/britecharts/britecharts) - Client-side reusable charting library [bar, line, donut, sparkline, step]
 - [chart-parts](https://github.com/Microsoft/chart-parts) - A flexible, React-friendly, Grammar of Graphics for data visualization
 - [cubism](https://github.com/square/cubism) - Time series visualization
@@ -22,7 +24,7 @@ A curated collection of resources and projects focused on D3.
 - [d3-beeswarm](https://github.com/Kcnarf/d3-beeswarm) - Plugin which computes a beeswarm arrangement
 - [d3-boxplot](https://github.com/akngs/d3-boxplot) - d3js box plot plugin
 - [d3-bumps-chart](https://github.com/johnwalley/d3-bumps-chart) - Plugin for visualizing bumps charts
-- [d3-dag](https://github.com/erikbrinkman/d3-dag) - Layout algorithms for visualizing directed acylic graphs
+- [d3-dag](https://github.com/erikbrinkman/d3-dag) - Layout algorithms for visualizing directed acyclic graphs
 - [d3-ez](https://github.com/jamesleesaunders/d3-ez) - Easy Reusable D3 Charts & Components [bar, donut, pie, bubble, rose, heatmap]
 - [d3-flame-graph](https://github.com/spiermar/d3-flame-graph) - Flame graphs from hierarchical data
 - [d3-funnel](https://github.com/jakezatecky/d3-funnel) - A funnel and pyramid chart library
@@ -30,20 +32,20 @@ A curated collection of resources and projects focused on D3.
 - [d3-heatmap](https://github.com/tj/d3-heatmap) - Heatmap
 - [d3-message-sequence](https://github.com/koudelka/d3-message-sequence) - A dynamic/static message sequence chart
 - [d3-upset](https://github.com/chuntul/d3-upset) - Functions for plotting an UpSet plot [upset, bar, intersections, venn, relationships]
-- [d3-x3d](https://github.com/jamesleesaunders/d3-x3d) - Data Driven 3D Charts with D3 and X3D [bubble, bar, surfacearea, scatterplot, area]
+- [d3-x3d](https://github.com/jamesleesaunders/d3-x3d) - Data-driven 3D charts with D3 and X3D [bubble, bar, surfacearea, scatterplot, area]
 - [d3fc](https://github.com/d3fc/d3fc) - A collection of interactive chart components [line, bar, stacked, scatter, candlestick, ohlc]
 - [d3plus](https://github.com/alexandersimoes/d3plus) - Extension library for easy creation of visualizations [scatter, stacked, line, bar, pie, network, bubble, box, map]
 - [d3panels](https://github.com/kbroman/d3panels) - Interactive charts with linked brushing [dot, scatter, line, heatmap, histogram]
 - [d3pie](https://github.com/benkeen/d3pie) - A configurable pie chart lib and generator
-- [D3xter](https://github.com/NathanEpstein/D3xter) - Straight forward plotting [plot, timeline, bar, histogram, pie]
-- [D4](https://github.com/heavysixer/d4) - Re-usable charts DSL [bar, donut, line, scatter, stacked, waterfall]
+- [D3xter](https://github.com/NathanEpstein/D3xter) - Straightforward plotting [plot, timeline, bar, histogram, pie]
+- [D4](https://github.com/heavysixer/d4) - Reusable charts DSL [bar, donut, line, scatter, stacked, waterfall]
 - [dTree](https://github.com/ErikGartner/dTree) - Family tree library
-- [EventDrops](https://github.com/marmelab/EventDrops) - A time based/event series interactive visualization
+- [EventDrops](https://github.com/marmelab/EventDrops) - A time-based event-series interactive visualization
 - [metrics-graphics](https://github.com/metricsgraphics/metrics-graphics) - Optimized for visualizing time-series data [line, scatter, area]
 - [micropolar](https://github.com/biovisualize/micropolar/) - A polar chart library
 - [mpld3](https://github.com/mpld3/mpld3) - Export matplotlib graphics to work in the Browser
 - [neo4jd3](https://github.com/eisman/neo4jd3) - Neo4j graph visualization
-- [nvd3](https://github.com/novus/nvd3) - Re-usable charts and chart components [box plot, buttlet, candlestick, line, bar, pie, scatter, sparkline]
+- [nvd3](https://github.com/novus/nvd3) - Reusable charts and chart components [box plot, bullet, candlestick, line, bar, pie, scatter, sparkline]
 - [oecd-simple-charts](https://github.com/oecd-cyc/oecd-simple-charts) - Simple charting library [box plot, stacked bar, pearl chart]
 - [plotly.js](https://github.com/plotly/plotly.js/) - High level charting library [scatter, line, bar, pie, box plot, histogram, heatmap]
 - [plottable](https://github.com/palantir/plottable) - Flexible, interactive charts for the web [area, bar, line, pie, scatter, stacked]
@@ -53,12 +55,12 @@ A curated collection of resources and projects focused on D3.
 - [vega-lite](https://github.com/vega/vega-lite) - A high-level grammar of interactive graphics
 - [vega-lite-api](https://github.com/vega/vega-lite-api) - A JavaScript API for Vega-Lite.
 - [venn.js](https://github.com/benfred/venn.js) - Area proportional Venn and Euler diagrams
-- [visavail](https://github.com/flrs/visavail) - Time data availability visualization
+- [visavail](https://github.com/flrs/visavail) - Visualization of data availability over time
 - [vizabi](https://github.com/vizabi/vizabi) - A framework for building visual data exploration tools [bubble, map, line, bar, sankey, donut]
 - [WebCola](https://github.com/tgdwyer/WebCola) - Layout for graph visualization and exploration
 - [xkcdgraphs](https://github.com/imkevinxu/xkcdgraphs) - Xkcd style graphs [line]
 
-##### Third Party
+### Third Party
 
 - [Layer Cake](https://github.com/mhkeller/layercake) - A graphics framework built on top of Svelte.
 - [nivo](https://github.com/plouc/nivo) - Dataviz components for React with isomorphic ability [bar, line, area, bubble, chord, heatmap]
@@ -95,7 +97,7 @@ A curated collection of resources and projects focused on D3.
 - [simple-map-d3](https://github.com/MinnPost/simple-map-d3) - Easy choropleth style maps
 - [spam](https://github.com/newsappsio/spam) - Create maps with D3 and Canvas, easily
 
-##### Third Party
+### Third Party
 
 - [leaflet-d3](https://github.com/Asymmetrik/leaflet-d3) - Collection of plugins for using D3 with Leaflet [map, geo]
 - [Wikimaps-D3js Atlas](https://github.com/WikimapsAtlas/WikimapsAtlas-generator) - CLI to generate raster, topojson and svg maps [map, geo]
@@ -120,14 +122,14 @@ A curated collection of resources and projects focused on D3.
 - [d3-lasso](https://github.com/skokenes/d3-lasso) - Tag elements by drawing a line over or around objects
 - [d3-legend](https://github.com/susielu/d3-legend) - Legend helper
 - [d3-loom](https://github.com/nbremer/d3-loom) - Plugin to create a "loom" visualization
-- [d3-nelson-rules](https://github.com/53seven/d3-nelson-rules) - Apply nelsons rules of process control to a set of data
+- [d3-nelson-rules](https://github.com/53seven/d3-nelson-rules) - Apply Nelson rules of process control to a set of data
 - [d3-peaks](https://github.com/efekarakus/d3-peaks) - Find peaks in a noisy signal
 - [d3-ring-note](https://github.com/armollica/d3-ring-note) - Plugin for placing circle and text annotations
 - [d3-scale-cluster](https://github.com/schnerd/d3-scale-cluster) - Scale that clusters data into discrete groups
 - [d3-sparql](https://github.com/zazuko/d3-sparql) - Utility for accessing data from SPARQL Endpoints
 - [d3-template](https://github.com/ErikOnBike/d3-template) - Plugin to create and render templates using D3's data binding mechanism
 - [d3-tooltip](https://github.com/bumbeishvili/d3-tooltip) - Arrow shaped tooltip with shadows and dynamic content
-- [d3-voronoi-treemap](https://github.com/Kcnarf/d3-voronoi-treemap) - Computes a treemap based on a Voronoi tesselation
+- [d3-voronoi-treemap](https://github.com/Kcnarf/d3-voronoi-treemap) - Computes a treemap based on a Voronoi tessellation
 - [d3-xray](https://github.com/vijithassar/d3-xray) - Bookmarklet that logs results of the data joins as you mouse over
 - [swoopyarrows](https://github.com/bizweekgraphics/swoopyarrows) - Plugin to create swoopy arrows
 - [swoopy-drag](https://github.com/1wheel/swoopy-drag) - Artisanal label placement for d3 graphics
@@ -148,11 +150,11 @@ A curated collection of resources and projects focused on D3.
 - [mermaid](https://github.com/knsv/mermaid) - Generation of diagrams and flowcharts from text in a markdown style
 - [netvis](https://github.com/dborzov/netvis) - Visualize network communication for arbitrary protocols
 - [treeviz](https://github.com/PierreCapo/treeviz) - Create customizable trees from json data
-- [twitter-sentiment-visualisation](https://github.com/Lissy93/twitter-sentiment-visualisation) - A series of D3.js charts showing realtime sentiment of Twitter data  
+- [twitter-sentiment-visualisation](https://github.com/Lissy93/twitter-sentiment-visualisation) - A series of D3.js charts showing realtime sentiment of Twitter data
 
 ## Server side
 - [d3-node](https://github.com/d3-node/d3-node) - Static chart and map generation
-- [Kyrix](https://github.com/tracyhenry/Kyrix) - Interactive pan/zoom Visualizations with automatic server-side scaling support. 
+- [Kyrix](https://github.com/tracyhenry/Kyrix) - Interactive pan/zoom Visualizations with automatic server-side scaling support.
 
 ## Bl.ocks.org Profiles
 

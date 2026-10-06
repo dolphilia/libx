@@ -1,41 +1,12 @@
 ---
 title: "Awesome Lit"
-description: "A curated collection of resources and projects focused on Lit."
+description: "Lit documentation, tutorials, starter templates, component libraries, design systems and development tools."
 licenseSource: "github-web-padawan-awesome-lit-readme-md"
 ---
 
 # Awesome Lit
 
-A curated collection of resources and projects focused on Lit.
-
-## Contents
-
-- [General resources](#general-resources)
-- [Community](#community)
-- [Overview](#overview)
-- [Starter Templates](#starter-templates)
-- [Codelabs](#codelabs)
-- [Tutorials](#tutorials)
-- [Examples](#examples)
-- [Lit Labs](#lit-labs)
-- [Extensions](#extensions)
-- [Design Systems](#design-systems)
-- [Component Libraries](#component-libraries)
-- [Standalone Components](#standalone-components)
-- [Meta Frameworks](#meta-frameworks)
-- [Tools](#tools)
-  - [Building](#building)
-  - [Linting](#linting)
-  - [IDE Plugins](#ide-plugins)
-  - [TypeScript Plugins](#typescript-plugins)
-  - [Other Tools](#other-tools)
-- [CDN](#cdn)
-- [Integrations](#integrations)
-- [Videos](#videos)
-- [Podcasts](#podcasts)
-- [Archive](#archive)
-- [Similar libraries](#similar-libraries)
-- [Other awesome resources](#other-awesome-resources)
+Find documentation, tutorials, starter templates and tools for [Lit](https://github.com/lit/lit), a library for building lightweight web components. Its component base class provides reactive state, scoped styles and declarative templates. The list also covers component libraries, design systems, integrations, videos and podcasts.
 
 ## General resources
 
@@ -67,14 +38,14 @@ A curated collection of resources and projects focused on Lit.
 - [hello-web-components](https://github.com/fernandopasik/hello-web-components) - Simple starter web component written in TypeScript using Lit.
 - [Lit Sass JavaScript Starter](https://github.com/e111077/lit-sass-js-starter) - Project that has a simple setup for SASS + JS + Lit, using Rollup.
 - [Lit Sass TypeScript Starter](https://github.com/e111077/lit-sass-ts-starter) - Project that has a simple setup for SASS + TS + Lit, using Rollup.
-- [Lit Webpack Starter](https://github.com/andrewlevada/webpack-lit-template) - Starter for multipage apps with Lit and Typescript, using Webpack.
+- [Lit Webpack Starter](https://github.com/andrewlevada/webpack-lit-template) - Starter for multipage apps with Lit and TypeScript, using Webpack.
 - [Open Web Components Generator](https://open-wc.org/docs/development/generator/) - Starter app based on Open Web Components Recommendations.
 - [pwa-starter](https://github.com/pwa-builder/pwa-starter) - LitElement edition of the PWABuilder pwa-starter.
 - [pwa-lit-template](https://github.com/IBM/pwa-lit-template) - Build Progressive Web Applications following the modern web standards.
-- [Vite Lit Element TS SASS](https://github.com/e111077/vite-lit-element-ts-sass) - Example Vite project using Lit 2, Typescript, and SASS.
-- [Vite Lit Starter](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-lit) - Lit based template preset for Vite.
-- [Vite Lit TS Starter](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-lit-ts) - Lit and TypeScript based template preset for Vite.
-- [Vite Lit + Intlayer](https://github.com/aymericzip/intlayer-vite-lit-template) - Per-component i18n solution for app and design-systems.
+- [Vite Lit Element TS SASS](https://github.com/e111077/vite-lit-element-ts-sass) - Example Vite project using Lit 2, TypeScript, and SASS.
+- [Vite Lit Starter](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-lit) - Lit-based template preset for Vite.
+- [Vite Lit TS Starter](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-lit-ts) - Lit and TypeScript-based template preset for Vite.
+- [Vite Lit + Intlayer](https://github.com/aymericzip/intlayer-vite-lit-template) - Per-component i18n solution for app and design systems.
 - [Vite Lit + Tailwind](https://github.com/lloydrichards/base_lit-with-tailwind) - Modified Vite + Lit starter to use Tailwind v4.
 
 ## Codelabs
@@ -160,7 +131,7 @@ A curated collection of resources and projects focused on Lit.
 - [Pharos Design System](https://github.com/ithaka/pharos) - JSTOR's design system to create cohesive, supportive, and beautiful experiences.
 - [Red Hat Design System](https://github.com/RedHat-UX/red-hat-design-system) - Web components for building uniform experiences with the Red Hat brand.
 - [Spectrum Web Components](https://github.com/adobe/spectrum-web-components) - Adobe Spectrum design language implementation built with LitElement.
-- [UI5 Web Components](https://github.com/SAP/ui5-webcomponents) - Enterprise-flavored sugar on top of native APIs!
+- [UI5 Web Components](https://github.com/SAP/ui5-webcomponents) - Enterprise-oriented conveniences built on native APIs.
 - [Vaadin web components](https://github.com/vaadin/web-components) - A set of high-quality web components for business web applications.
 - [Web Awesome](https://github.com/shoelace-style/webawesome) - The open source library of web components from Font Awesome
 
@@ -176,7 +147,7 @@ A curated collection of resources and projects focused on Lit.
 - [Dile Components](https://github.com/Polydile/dile-components) - General use Web Components for websites and applications.
 - [ESP Web Tools](https://github.com/esphome/esp-web-tools) - Allow flashing ESPHome or other ESP-based firmwares via the browser.
 - [Furo Webcomponents](https://github.com/eclipse/eclipsefuro-web) - Enterprise ready set of web components which work best with Eclipse Furo.
-- [Fusion Web Components](https://github.com/equinor/fusion-web-components) - Ser of web components used by Equinor Fusion.
+- [Fusion Web Components](https://github.com/equinor/fusion-web-components) - Set of web components used by Equinor Fusion.
 - [Ignite UI Web Components](https://github.com/IgniteUI/igniteui-webcomponents) - Complete library of UI components from Infragistics.
 - [LRNWebComponents](https://github.com/elmsln/lrnwebcomponents) - ELMS:LN produced web components for any project.
 - [M3E](https://github.com/matraic/m3e) - Web Components implementing Material 3 Expressive.
@@ -331,10 +302,4 @@ template literal, and leverage the benefits of the same [IDE Plugins](#ide-plugi
 
 ## Other awesome resources
 
-**If you want more awesome resources, check the [awesome](https://github.com/sindresorhus/awesome) list!**
-
----
-
-## License
-
-[![CC0](https://upload.wikimedia.org/wikipedia/commons/6/69/CC0_button.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+See the [Awesome list](https://github.com/sindresorhus/awesome) for more resources.

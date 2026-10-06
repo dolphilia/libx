@@ -1,44 +1,12 @@
 ---
 title: "Awesome Laravel Education"
-description: "A curated collection of resources and projects focused on Laravel Education."
+description: "Laravel learning resources: tutorials, reference material, development tools, PHP books and interview preparation, including Laravel 5.x material."
 licenseSource: "github-fukuball-Awesome-Laravel-Education-readme-md"
 ---
 
 # Awesome Laravel Education
 
-A curated collection of resources and projects focused on Laravel Education.
-
-## Index
-
-- [New to Laravel](#user-content-new-to-laravel)
-- [Quick References](#user-content-quick-references)
-- [Learn From Video / Posts](#user-content-learn-from-video--posts)
-  - [Composer / Homestead / Docker](#user-content-composer--homestead--docker)
-  - [Routing / Controllers / Requests / Responses](#user-content-routing--controllers--requests--responses)
-  - [Database](#user-content-database)
-  - [Models / Eloquent](#user-content-models--eloquent)
-  - [Views / Blade / Language](#user-content-views--blade--language)
-  - [Forms / Validation](#user-content-forms--validation)
-  - [Architecture Foundations / IoC](#user-content-architecture-foundations--ioc)
-  - [Auth / Security](#user-content-auth--security)
-  - [Middleware](#user-content-middleware)
-  - [Front End](#user-content-front-end)
-  - [Session](#user-content-session)
-  - [Filesystem / Cloud Storage](#user-content-filesystem--cloud-storage)
-  - [Cache](#user-content-cache)
-  - [Mail](#user-content-mail)
-  - [Testing and Coding Standard](#user-content-testing-and-coding-standard)
-  - [Case Study](#user-content-case-study)
-- [Tutorial](#user-content-tutorial)
-- [Blogs](#user-content-blogs)
-- [Newsletters](#user-content-newsletters)
-- [Open Source Laravel](#user-content-open-source-laravel)
-- [Coding Standard](#user-content-coding-standard)
-- [Dependency Management](#user-content-dependency-management)
-- [Develop Tools](#user-content-develop-tools)
-- [PHP Book List for Developer](#user-content-php-book-list-for-developer)
-- [Interview](#user-content-interview)
-- [Misc](#user-content-misc)
+Learning resources for beginner, intermediate and advanced Laravel developers, including tutorials, API references, videos, articles, development tools, PHP books and interview preparation. Many linked lessons and documentation pages cover Laravel 5.x; the version labels identify the material they describe.
 
 ## New to Laravel
 
@@ -48,8 +16,8 @@ A curated collection of resources and projects focused on Laravel Education.
   - [Laravel Homestead on Windows 8](http://sherriflemings.blogspot.ca/2015/03/laravel-homestead-on-windows-8.html)
   - [Laravel Homestead on Linux or Mac](http://laravel.com/docs/5.4/homestead) \#5.4
   - [Laracasts: Say Hello to Laravel Homestead 2.0](https://laracasts.com/lessons/say-hello-to-laravel-homestead-two)
-- [Setup Laravel excutable enviroment on AWS EC2 quickly](https://github.com/fukuball/ec2-laravel-evn-installer)
-- Learn from tutorial
+- [Quickly set up a Laravel execution environment on AWS EC2](https://github.com/fukuball/ec2-laravel-evn-installer)
+- Learn from tutorials
   - [Laravel Documentation: Basic Task List](http://laravel.com/docs/5.1/quickstart) \#5.1
   - [Laravel Documentation: Intermediate Task List](http://laravel.com/docs/5.1/quickstart-intermediate) \#5.1
 - [Laravel Documentation](http://laravel.com/docs/5.4) \#5.4
@@ -60,9 +28,9 @@ A curated collection of resources and projects focused on Laravel Education.
 - [Awesome PHP](https://github.com/ziadoz/awesome-php)
 - [Laravel API](http://laravel.com/api/5.4/) \#5.4
 - [Laravel Cheat Sheet](http://cheats.jesse-obrien.ca/)
-- [bestmomo/laravel5-3-example](https://github.com/bestmomo/laravel5-3-example) - A good example of how to use Laravel 5.3 to build an web application.
+- [bestmomo/laravel5-3-example](https://github.com/bestmomo/laravel5-3-example) - An example of building a web application with Laravel 5.3.
 
-## Learn From Awesome Video / Posts
+## Learn from Videos and Posts<a id="learn-from-awesome-video--posts"></a>
 
 ### Composer / Homestead / Docker
 
@@ -259,26 +227,26 @@ A curated collection of resources and projects focused on Laravel Education.
 
 - [Composer](http://getcomposer.org/)/[Packagist](http://packagist.org/) - A package and dependency manager
 
-## Develop Tools
+## Development Tools<a id="develop-tools"></a>
 
 - [Sublime Text](http://www.sublimetext.com/)
-  - [Alignment](https://github.com/wbond/sublime_alignment) - Easy alignment of multiple selections and multi-line selections
-  - [Blade Snippets](https://github.com/dev4dev/blade-snippets) - Provide snippets for blade template engine
+  - [Alignment](https://github.com/wbond/sublime_alignment) - Aligns multiple selections and multiline selections
+  - [Blade Snippets](https://github.com/dev4dev/blade-snippets) - Provides snippets for the Blade template engine
   - [BracketHighlighter](https://github.com/facelessuser/BracketHighlighter) - Bracket and tag highlighter
   - [DocBlockr](https://github.com/spadgos/sublime-jsdocs) - Simplifies writing DocBlock comments
   - [Emmet](https://github.com/sergeche/emmet-sublime) - Improves HTML & CSS workflow
   - [Laravel Blade Highlighter](https://github.com/Medalink/laravel-blade) - Adds syntax definitions for the Laravel 5 Blade engine
   - [phpfmt](https://github.com/phpfmt/sublime-phpfmt) - Plugin to format PHP code - supports also PSR1/2
   - [Sidebar Enhancements](https://github.com/titoBouzout/SideBarEnhancements) - Enhancements to Sublime Text sidebar
-  - [SublimeCodeIntel](https://github.com/SublimeCodeIntel/SublimeCodeIntel) - Full-featured code intelligence and smart autocomplete engine
+  - [SublimeCodeIntel](https://github.com/SublimeCodeIntel/SublimeCodeIntel) - Code intelligence and autocomplete engine
   - [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter3) - Interactive code linting framework, you have to install SublimeLinter-php too for coding in PHP
   - [SublimeLinter-php](https://github.com/SublimeLinter/SublimeLinter-php) - SublimeLinter plugin for PHP
   - [Syntax Highlighting for Sass](https://github.com/P233/Syntax-highlighting-for-Sass) - Syntax highlighting for both SCSS and Sass
   - [Trailing Spaces](https://github.com/SublimeText/TrailingSpaces) - Highlight trailing spaces and delete them
-- [PhpStorm IDE ](https://www.jetbrains.com/phpstorm/)
+- [PhpStorm IDE](https://www.jetbrains.com/phpstorm/)
   - [Laravel Plugin for PhpStorm](https://github.com/Haehnchen/idea-php-laravel-plugin)
 
-## PHP Book List for Developer
+## PHP Books for Developers<a id="php-book-list-for-developer"></a>
 
 - Getting Started
   - Learning PHP, MySQL & JavaScript With jQuery, CSS & HTML5, 4th edition ISBN:9781491918661
@@ -329,26 +297,7 @@ A curated collection of resources and projects focused on Laravel Education.
 - [LaravelCollections.com](https://laravelcollections.com)
 - [LaravelLinks Telegram Channel](https://telegram.me/laravellinks)
 
-# License
+## Other Language Versions
 
-The MIT License (MIT)
-
-Copyright (c) 2015 fukuball
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+- [Chinese](https://github.com/fukuball/Awesome-Laravel-Education/blob/master/langs/zh_TW.md)
+- [Portuguese](https://github.com/fukuball/Awesome-Laravel-Education/blob/master/langs/pt_BR.md)

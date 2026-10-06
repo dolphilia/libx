@@ -1,27 +1,12 @@
 ---
 title: "Awesome WebAssembly"
-description: "A curated collection of resources and projects focused on WebAssembly."
+description: "WebAssembly specifications and learning resources, compilers, runtimes, libraries, tools, frameworks, and communities."
 licenseSource: "github-idematos-awesome-webassembly-readme-md"
 ---
 
 # Awesome WebAssembly
 
-A curated collection of resources and projects focused on WebAssembly.
-
-## Contents
-
-- [Resources](#resources)
-  - [Basics](#basics)
-  - [Articles](#articles)
-  - [Books](#books)
-  - [Videos](#videos)
-- [Projects](#projects)
-  - [Compilers](#compilers)
-  - [Runtimes](#runtimes)
-  - [Libraries](#libraries)
-  - [Tools](#tools)
-  - [Frameworks](#frameworks)
-- [Communities](#communities)
+[WebAssembly](https://webassembly.org/) (Wasm) is a binary instruction format for a stack-based virtual machine. It is designed as a portable compilation target for programming languages, enabling deployment on the web for client and server applications. Find specifications, articles, books, videos, compilers, runtimes, libraries, tools, frameworks, and communities.
 
 ## Resources
 
@@ -70,9 +55,9 @@ A curated collection of resources and projects focused on WebAssembly.
 ### Runtimes
 
 - [Wasmtime](https://wasmtime.dev/) - Standalone WebAssembly runtime.
-- [WasmEdge](https://github.com/WasmEdge/WasmEdge) - High-performance WebAssembly runtime.
+- [WasmEdge](https://github.com/WasmEdge/WasmEdge) - WebAssembly runtime described by the source as high-performance.
 - [WAVM](https://github.com/WAVM/WAVM) - WebAssembly virtual machine.
-- [Wasm3](https://github.com/wasm3/wasm3) - Small, fast WebAssembly interpreter.
+- [Wasm3](https://github.com/wasm3/wasm3) - WebAssembly interpreter described by the source as small and fast.
 - [Wasmer](https://wasmer.io/) - WebAssembly runtime for desktop, cloud, and edge.
 
 ### Libraries
@@ -80,7 +65,7 @@ A curated collection of resources and projects focused on WebAssembly.
 - [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen) - Interoperability between Rust and JavaScript.
 - [wasmer-js](https://github.com/wasmerio/wasmer-js) - WebAssembly runtime for JavaScript.
 - [wasm-pack](https://github.com/rustwasm/wasm-pack) - Build, test, and publish Rust-generated Wasm.
-- [Wabt](https://github.com/WebAssembly/wabt) - WebAssembly binary tolkit.
+- [Wabt](https://github.com/WebAssembly/wabt) - WebAssembly binary toolkit.
 - [WASI](https://github.com/WebAssembly/WASI) - WebAssembly system interface.
 
 ### Tools
@@ -100,8 +85,3 @@ A curated collection of resources and projects focused on WebAssembly.
 - [WebAssembly GitHub Organization](https://github.com/WebAssembly)
 - [W3C WebAssembly Group](https://www.w3.org/wasm/)
 - [WebAssembly Subreddit](https://www.reddit.com/r/webassembly/)
-
-
-## Contributing
-
-Contributions are welcome. Please read the [contribution guidelines](https://github.com/idematos/awesome-webassembly/blob/main/contributing.md) before submitting your changes.

@@ -1,11 +1,11 @@
 ---
 title: "Awesome Digital History"
-description: "Awesome Digital Historyの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "コンピューターを用いた歴史の科学的研究に関する資料を元のリストへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Digital History
 
-Awesome Digital Historyの収録案内です。このスナップショットでは上流本文を転載していません。
+コンピューターを用いた歴史の科学的研究に関する資料を探せるAwesome Digital Historyへの案内です。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/maehr/awesome-digital-history/blob/35b59afefe721b070b6be704307248620e30c1b7/README.md)
+- [元のリストを読む](https://github.com/maehr/awesome-digital-history/blob/35b59afefe721b070b6be704307248620e30c1b7/README.md)

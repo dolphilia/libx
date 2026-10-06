@@ -1,11 +1,11 @@
 ---
 title: "Awesome Algorithm Visualizations"
-description: "Awesome Algorithm Visualizationsの収録案内です。このスナップショットでは上流本文を転載していません。"
+description: "アルゴリズムの可視化に関する資料を元のリストへ案内します。このスナップショットには本文を収録していません。"
 licenseSource: "sindresorhus-awesome-readme"
 ---
 
 # Awesome Algorithm Visualizations
 
-Awesome Algorithm Visualizationsの収録案内です。このスナップショットでは上流本文を転載していません。
+アルゴリズムの可視化に関する資料を探せるAlgorithm Visualizationsへ案内します。このスナップショットでは元のリストへのリンクを掲載し、本文は転載していません。
 
-- [元のリポジトリを開く](https://github.com/enjalot/algovis/blob/623d9989f429c1bc926ba9a3ca83428ceebefd55/README.md)
+- [元のリストを読む](https://github.com/enjalot/algovis/blob/623d9989f429c1bc926ba9a3ca83428ceebefd55/README.md)

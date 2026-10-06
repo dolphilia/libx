@@ -1,16 +1,16 @@
 ---
 title: "Awesome ECMAScript 6 Tools"
-description: "A curated collection of resources and projects focused on ECMAScript 6 Tools."
+description: "ECMAScript 6 transpilers, build integrations, module loaders, polyfills, editors, parsers, and development tools."
 licenseSource: "github-addyosmani-es6-tools-readme-md"
 ---
 
 # Awesome ECMAScript 6 Tools
 
-A curated collection of resources and projects focused on ECMAScript 6 Tools.
+Find tools for working with ECMAScript 6: transpilers and build integrations, module loaders, project generators, polyfills, editors, parsers, and related utilities. Descriptions of features, compatibility, and tool status reflect the fixed source; they are not current support guarantees.
 
 ## Transpilers
 
-* [Babel](https://github.com/babel/babel) - Turn ES6+ code into vanilla ES5 with no runtime
+* [Babel](https://github.com/babel/babel) - Convert ES6+ code to plain ES5 without a runtime, as described by the source.
 * [Traceur compiler](https://github.com/google/traceur-compiler) - ES6 features > ES5. Includes classes, generators, promises, destructuring patterns, default parameters & more.
 * [es6ify](https://github.com/thlorenz/es6ify) - Traceur compiler wrapped as a [Browserify](http://browserify.org/) v2 transform
 * [babelify](https://github.com/babel/babelify) - Babel transpiler wrapped as a [Browserify](http://browserify.org/) transform
@@ -38,7 +38,7 @@ A curated collection of resources and projects focused on ECMAScript 6 Tools.
 * TypeScript: [gulp-typescript](https://github.com/ivogabe/gulp-typescript)
 
 ### Grunt Tasks
-* Babel: [grunt-babel](https://github.com/babel/grunt-babel) - Turn ES6+ code into vanilla ES5 with no runtime
+* Babel: [grunt-babel](https://github.com/babel/grunt-babel) - Convert ES6+ code to plain ES5 without a runtime, as described by the source.
 * Traceur: [grunt-traceur](https://github.com/aaronfrost/grunt-traceur) ES6 > ES5 transpilation, [grunt-traceur-build](https://github.com/tarruda/grunt-traceur-build)
 * ES6 Module Transpiler: [grunt-es6-module-transpiler](https://github.com/joefiorini/grunt-es6-module-transpiler)
 * Regenerator: [grunt-regenerator](https://github.com/sindresorhus/grunt-regenerator) - ES6 generator functions to ES5
@@ -104,15 +104,15 @@ A curated collection of resources and projects focused on ECMAScript 6 Tools.
 
 ## Module Loaders
 
-* ES6 [Module Loader polyfill](https://github.com/ModuleLoader/es6-module-loader) (compat with latest spec and Traceur)
+* ES6 [Module Loader polyfill](https://github.com/ModuleLoader/es6-module-loader) (described by the source as compatible with the latest specification and Traceur)
 * [js-loaders](https://github.com/jorendorff/js-loaders) - Mozilla's spec-compliant loader prototype
 * [JSPM](http://jspm.io/) - ES6, AMD, CJS module loading/package management
 * [Babel Module Loader](https://github.com/babel/babel-loader)
 * [beck.js](https://github.com/unscriptable/beck) - toolkit for ES6 Module Loader pipelines, shim for legacy environments
 
 ## Boilerplates
-* [es6-boilerplate](https://github.com/davidjnelson/es6-boilerplate) - Tooling to allow the community to use es6 now via traceur in conjunction with amd and browser global modules, with source maps, concatenation, minification, compression, and unit testing in real browsers.
-* [es6-jspm-gulp-boilerplate](https://github.com/alexweber/es6-jspm-gulp-boilerplate) - Tooling to allow the community to use es6 now via babel in conjunction jspm, with source maps, concatenation, minification, compression, and unit testing in real browsers using es6.
+* [es6-boilerplate](https://github.com/davidjnelson/es6-boilerplate) - Tools for using ES6 through Traceur with AMD and browser global modules, source maps, concatenation, minification, compression, and unit testing in real browsers.
+* [es6-jspm-gulp-boilerplate](https://github.com/alexweber/es6-jspm-gulp-boilerplate) - Tools for using ES6 through Babel with JSPM, source maps, concatenation, minification, compression, and unit testing in real browsers using ES6.
 
 ## Code generation
 
@@ -126,7 +126,7 @@ A curated collection of resources and projects focused on ECMAScript 6 Tools.
 ## Polyfills
 
 * [core-js](https://github.com/zloirock/core-js) - Modular and compact polyfills for ES6 including Symbols, Map, Set, Iterators, Promises, setImmediate, Array generics, etc. The standard library used by [Babel](https://github.com/babel/babel).
-* [es6-shim](https://github.com/paulmillr/es6-shim) - almost all new ES6 methods — from Map, Set, String, Array, Object, Object.is and more.
+* [es6-shim](https://github.com/paulmillr/es6-shim) - almost all of the methods introduced in ES6 — from Map, Set, String, Array, Object, Object.is and more.
 * [WeakMap, Map, Set, HashMap - ES6 Collections](https://github.com/Benvie/harmony-collections)
 * Polymer's [WeakMap shim](https://github.com/Polymer/WeakMap)
 * [`String.prototype.startsWith`](https://github.com/mathiasbynens/String.prototype.startsWith)
@@ -146,7 +146,7 @@ A curated collection of resources and projects focused on ECMAScript 6 Tools.
 * [`RegExp.prototype.match`](https://github.com/mathiasbynens/RegExp.prototype.match)
 * [`RegExp.prototype.search`](https://github.com/mathiasbynens/RegExp.prototype.search)
 * [es6-promise](https://github.com/jakearchibald/es6-promise) - polyfill for Promises matching the ES6 API
-* [ES6 Map Shim](https://github.com/eriwen/es6-map-shim) - destructive shim that follows the latest specification as closely as possible.
+* [ES6 Map Shim](https://github.com/eriwen/es6-map-shim) - Destructive shim described by the source as following the latest specification as closely as possible.
 * [`Function.create`](https://github.com/walling/Function.create.js)
 * [ES6 shim](https://github.com/inexorabletash/polyfill/blob/master/es6.md)
 * [ES6 Symbol polyfill](https://github.com/medikoo/es6-symbol)
@@ -185,4 +185,4 @@ A curated collection of resources and projects focused on ECMAScript 6 Tools.
 * [babel-node](https://babeljs.io/docs/usage/cli/#babel-node) - Run node cli with ES6 transpiling using Babel.
 * [ES6 Lab setup](https://github.com/hemanth/es6-lab-setup) - A simple setup for transpiling ES6 to ES5 using `Babel` or `traceur` with `gulp` and `jasmine` support.
 * [TypeScript](http://www.typescriptlang.org/) - A superset of ECMAScript with strict typing that aims to align with ES6
-* [Rollup](http://rollupjs.org/) - Rollup is a next-generation JavaScript module bundler. Author your app or library using ES2015 modules, then efficiently bundle them up into a single file for use in browsers and Node.js
+* [Rollup](http://rollupjs.org/) - JavaScript module bundler. Write your app or library using ES2015 modules, then efficiently bundle them up into a single file for use in browsers and Node.js

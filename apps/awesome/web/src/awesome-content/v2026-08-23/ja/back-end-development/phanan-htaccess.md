@@ -1,100 +1,47 @@
 ---
 title: "Awesome .htaccess Snippets"
-description: ".htaccess Snippetsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "Apache 2.4の.htaccess設定例。URLの書き換え、アクセス制御、応答ヘッダー、キャッシュ、ファイル配信。"
 licenseSource: "github-phanan-htaccess-readme-md"
 ---
 
 # Awesome .htaccess Snippets
 
-.htaccess Snippetsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+Apache 2.4の.htaccess設定例を、URLの書き換えとリダイレクト、アクセス制御、応答ヘッダー、キャッシュ、ファイル配信の用途別にまとめています。
 
-## 目次
-- [書き換えとリダイレクト](#rewrite-and-redirection)
-    - [wwwを強制](#force-www)
-    - [汎用的にwwwを強制](#force-www-in-a-generic-way)
-    - [非wwwを強制](#force-non-www)
-    - [汎用的に非wwwを強制](#force-non-www-in-a-generic-way)
-    - [HTTPSを強制](#force-https)
-    - [プロキシ背後でHTTPSを強制](#force-https-behind-a-proxy)
-    - [末尾スラッシュを強制](#force-trailing-slash)
-    - [末尾スラッシュを削除](#remove-trailing-slash)
-    - [単一ページをリダイレクト](#redirect-a-single-page)
-    - [RedirectMatchでリダイレクト](#redirect-using-redirectmatch)
-    - [単一ディレクトリのエイリアス](#alias-a-single-directory)
-    - [パスをスクリプトへ割り当て](#alias-paths-to-script)
-    - [サイト全体をリダイレクト](#redirect-an-entire-site)
-    - [クリーンURLのエイリアス](#alias-clean-urls)
-    - [URLをリダイレクト対象から除外](#exclude-url-from-redirection)
-- [セキュリティ](#security)
-    - [すべてのアクセスを拒否](#deny-all-access)
-    - [自分以外のアクセスを拒否](#deny-all-access-except-yours)
-    - [スパマー以外のアクセスを許可](#allow-all-access-except-spammers)
-    - [隠しファイルとディレクトリへのアクセスを拒否](#deny-access-to-hidden-files-and-directories)
-    - [バックアップとソースファイルへのアクセスを拒否](#deny-access-to-backup-and-source-files)
-    - [ディレクトリ一覧を無効化](#disable-directory-browsing)
-    - [画像の直リンクを無効化](#disable-image-hotlinking)
-    - [特定ドメインの画像直リンクを無効化](#disable-image-hotlinking-for-specific-domains)
-    - [ディレクトリをパスワード保護](#password-protect-a-directory)
-    - [ファイルをパスワード保護](#password-protect-a-file-or-several-files)
-    - [リファラーで訪問者をブロック](#block-visitors-by-referrer)
-    - [特定のUser-Agentをブロック](#block-specific-user-agents)
-    - [サイトのフレーム表示を防止](#prevent-framing-the-site)
-    - [Content Security Policy（CSP）](#content-security-policy-csp)
-    - [MIMEタイプスニッフィングを防止](#prevent-mime-type-sniffing)
-    - [Referrer Policyを設定](#set-referrer-policy)
-    - [Permissions Policyを設定](#set-permissions-policy)
-    - [サーバー署名を削除](#remove-server-signature)
-- [パフォーマンス](#performance)
-    - [テキストファイルを圧縮](#compress-text-files)
-    - [Expiresヘッダーを設定](#set-expires-headers)
-    - [Cache-Controlヘッダーを設定](#set-cache-control-headers)
-    - [eTagを無効化](#turn-etags-off)
-- [その他](#miscellaneous)
-    - [PHP変数を設定](#set-php-variables)
-    - [カスタムエラーページ](#custom-error-pages)
-    - [カスタムメンテナンスページ](#custom-maintenance-page)
-    - [ダウンロードを強制](#force-downloading)
-    - [ダウンロードを防止](#prevent-downloading)
-    - [クロスドメインフォントを許可](#allow-cross-domain-fonts)
-    - [CORSを有効化](#enable-cors)
-    - [UTF-8を自動設定](#auto-utf-8-encode)
-    - [カスタムMIMEタイプを設定](#set-custom-mime-types)
-    - [別のPHPバージョンへ切り替え](#switch-to-another-php-version)
-    - [WebP/AVIF画像を配信](#serve-webpavif-images)
+> `.htaccess`ファイルは、主要なサーバー設定を編集できない場合に使います。主要な設定ファイルを使う方法より遅く、設定も複雑になります。詳しくは[httpdの使い方](https://httpd.apache.org/docs/current/howto/htaccess.html)を参照してください。
 
-<a id="rewrite-and-redirection"></a>
-## 書き換えとリダイレクト
-注: `mod_rewrite`がインストールされ、有効になっていることを前提とします。
+> 通常はスニペットを`.htaccess`ファイルへ追加すれば使えますが、状況によって変更が必要です。これらの例は自己責任で使用してください。
 
-<a id="force-www"></a>
-### wwwを強制
+> これらの例はApache 2.4向けです。Apache 2.2では[`2.2`ブランチ](https://github.com/phanan/htaccess/tree/2.2)を使用してください。[アップグレード文書](https://httpd.apache.org/docs/2.4/upgrading.html)と[互換性を失う変更についてのIssue](https://github.com/phanan/htaccess/issues/2)も参照してください。
+
+## 書き換えとリダイレクト <a id="rewrite-and-redirection"></a>
+注：`mod_rewrite`がインストールされ、有効になっていることを前提とします。
+
+### www付きURLへの統一 <a id="force-www"></a><a id="wwwを強制"></a>
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^example\.com [NC]
 RewriteRule ^(.*)$ https://www.example.com/$1 [L,R=301,NC]
 ```
 
-<a id="force-www-in-a-generic-way"></a>
-### 汎用的にwwwを強制
+### www付きURLへの統一（汎用版） <a id="force-www-in-a-generic-way"></a><a id="汎用的にwwwを強制"></a>
 ``` apacheconf
 RewriteCond %{HTTP_HOST} !^$
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteCond %{HTTPS}s ^on(s)|
 RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 ```
-これは_任意の_ドメインで機能します。[出典](https://stackoverflow.com/questions/4916222/htaccess-how-to-force-www-in-a-generic-way)
+任意のドメインで使える設定です。[出典](https://stackoverflow.com/questions/4916222/htaccess-how-to-force-www-in-a-generic-way)
 
-<a id="force-non-www"></a>
-### 非wwwを強制
-wwwと非wwwのどちらを使うべきかは[今も](https://www.sitepoint.com/domain-www-or-no-www/)[議論](https://devcenter.heroku.com/articles/apex-domains)が[続いて](https://yes-www.org/)[います](https://no-www.org/)。裸のドメインを好む場合は次の設定を使えます。
+### wwwなしURLへの統一 <a id="force-non-www"></a><a id="非wwwを強制"></a>
+記録された原文は、www付きドメインとwwwなしドメインについての議論として[SitePoint](https://www.sitepoint.com/domain-www-or-no-www/)、[Heroku](https://devcenter.heroku.com/articles/apex-domains)、[yes-www](https://yes-www.org/)、[no-www](https://no-www.org/)を挙げています。次の例はwwwなしのドメインを使います。
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www\.example\.com [NC]
 RewriteRule ^(.*)$ https://example.com/$1 [L,R=301]
 ```
 
-<a id="force-non-www-in-a-generic-way"></a>
-### 汎用的に非wwwを強制
+### wwwなしURLへの統一（汎用版） <a id="force-non-www-in-a-generic-way"></a><a id="汎用的に非wwwを強制"></a>
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www\.
@@ -103,8 +50,7 @@ RewriteCond http%1://%{HTTP_HOST} ^(https?://)(www\.)?(.+)$
 RewriteRule ^ %1%3%{REQUEST_URI} [R=301,L]
 ```
 
-<a id="force-https"></a>
-### HTTPSを強制
+### HTTPSへの統一 <a id="force-https"></a><a id="httpsを強制"></a>
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{HTTPS} !on
@@ -119,41 +65,36 @@ RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 </IfModule>
 ```
 
-<a id="force-https-behind-a-proxy"></a>
-### プロキシ背後でHTTPSを強制
-サーバーの前段にTLS終端を行うプロキシがある場合に便利です。
+### プロキシの背後でのHTTPSへの統一 <a id="force-https-behind-a-proxy"></a><a id="プロキシ背後でhttpsを強制"></a>
+サーバーの前段にTLS終端を行うプロキシがある場合の設定例です。
 ``` apacheconf
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 ```
 
-<a id="force-trailing-slash"></a>
-### 末尾スラッシュを強制
+### 末尾のスラッシュの追加 <a id="force-trailing-slash"></a><a id="末尾スラッシュを強制"></a>
 ``` apacheconf
 RewriteCond %{REQUEST_URI} /+[^\.]+$
 RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
 ```
 
-<a id="remove-trailing-slash"></a>
-### 末尾スラッシュを削除
-このスニペットは、実在するディレクトリを除き、末尾がスラッシュのパスをスラッシュなしのパスへリダイレクトします。たとえば `https://www.example.com/blog/` を `https://www.example.com/blog` へ変換します。各ページに正規URLを設けることが[推奨](https://overit.com/blog/canonical-urls)されるため、SEOでも重要です。
+### 末尾のスラッシュの削除 <a id="remove-trailing-slash"></a><a id="末尾スラッシュを削除"></a>
+実在するディレクトリを除き、末尾がスラッシュのパスをスラッシュなしのパスへリダイレクトします。たとえば`https://www.example.com/blog/`を`https://www.example.com/blog`へ変換します。各ページに正規URLを設けることが[推奨](https://overit.com/blog/canonical-urls)されるため、SEOでも重要です。
 ``` apacheconf
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} (.+)/$
 RewriteRule ^ %1 [R=301,L]
 ```
-[Source](https://stackoverflow.com/questions/21417263/htaccess-add-remove-trailing-slash-from-url#27264788)
+[出典](https://stackoverflow.com/questions/21417263/htaccess-add-remove-trailing-slash-from-url#27264788)
 
-<a id="redirect-a-single-page"></a>
-### 単一ページをリダイレクト
+### 単一ページのリダイレクト <a id="redirect-a-single-page"></a><a id="単一ページをリダイレクト"></a>
 ``` apacheconf
 Redirect 301 /oldpage.html https://www.example.com/newpage.html
 Redirect 301 /oldpage2.html https://www.example.com/folder/
 ```
-[Source](https://css-tricks.com/snippets/htaccess/301-redirects/)
+[出典](https://css-tricks.com/snippets/htaccess/301-redirects/)
 
-<a id="redirect-using-redirectmatch"></a>
-### RedirectMatchでリダイレクト
+### RedirectMatchによるリダイレクト <a id="redirect-using-redirectmatch"></a><a id="redirectmatchでリダイレクト"></a>
 ``` apacheconf
 RedirectMatch 301 /subdirectory(.*) https://www.newsite.com/newfolder/$1
 RedirectMatch 301 ^/(.*).htm$ /$1.html
@@ -165,21 +106,19 @@ RedirectMatch 301 ^/manual/(.*)$ https://www.php.net/manual/$1
 RedirectMatch 301 ^/old-directory/(.*)$ /new-directory/$1
 RedirectMatch 301 ^/z/(.*)$ https://static.askapache.com/$1
 ```
-[Source](https://www.askapache.com/htaccess/301-redirect-with-mod_rewrite-or-redirectmatch.html#301_Redirects_RedirectMatch)
+[出典](https://www.askapache.com/htaccess/301-redirect-with-mod_rewrite-or-redirectmatch.html#301_Redirects_RedirectMatch)
 
-<a id="alias-a-single-directory"></a>
-### 単一ディレクトリのエイリアス
+### 単一ディレクトリのリダイレクト <a id="alias-a-single-directory"></a><a id="単一ディレクトリのエイリアス"></a>
 ``` apacheconf
 RewriteEngine On
 RewriteRule ^source-directory/(.*) /target-directory/$1 [R=301,L]
 ```
 
-<a id="alias-paths-to-script"></a>
-### パスをスクリプトへ割り当て
+### パスからスクリプトへの割り当て <a id="alias-paths-to-script"></a><a id="パスをスクリプトへ割り当て"></a>
 ``` apacheconf
 FallbackResource /index.fcgi
 ```
-この例では、あるディレクトリに `index.fcgi` があり、そのディレクトリ内でファイル名やディレクトリ名として解決できないリクエストを `index.fcgi` へ送ります。`baz.foo/some/cool/path` を `baz.foo/index.fcgi`（`baz.foo` へのリクエストにも対応）で処理しながら、`baz.foo/css/style.css` などを維持したい場合に便利です。元のパスは、スクリプト環境に公開されるPATH_INFO環境変数から取得できます。
+この例では、あるディレクトリに`index.fcgi`ファイルがあり、そのディレクトリ内でファイル名やディレクトリ名として解決できないリクエストを`index.fcgi`スクリプトへ送ります。`baz.foo/some/cool/path`を`baz.foo/index.fcgi`（`baz.foo`へのリクエストにも対応）で処理しながら、`baz.foo/css/style.css`などを維持したい場合に使えます。元のパスは、スクリプト環境に公開されるPATH_INFO環境変数から取得できます。
 
 ``` apacheconf
 RewriteEngine On
@@ -188,64 +127,58 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.fcgi/$1 [QSA,L]
 ```
-これはFallbackResourceディレクティブより効率が劣ります（`mod_rewrite`は`FallbackResource`だけを扱うより複雑なため）が、より柔軟です。
+この方法はFallbackResourceディレクティブより効率が劣ります（`mod_rewrite`は`FallbackResource`だけを扱うより複雑なため）が、より柔軟です。
 
-<a id="redirect-an-entire-site"></a>
-### サイト全体をリダイレクト
+### サイト全体のリダイレクト <a id="redirect-an-entire-site"></a><a id="サイト全体をリダイレクト"></a>
 ``` apacheconf
 Redirect 301 / https://newsite.com/
 ```
-この方法ではリンクのパスを維持します。つまり`www.oldsite.com/some/crazy/link.html`は`www.newsite.com/some/crazy/link.html`になります。サイトを新しいドメインへ移転する場合に非常に便利です。[出典](https://css-tricks.com/snippets/htaccess/301-redirects/)
+サイトを新しいドメインへ移転するときにURLのパスを維持します。`www.oldsite.com/some/crazy/link.html`は`www.newsite.com/some/crazy/link.html`になります。[出典](https://css-tricks.com/snippets/htaccess/301-redirects/)
 
-<a id="alias-clean-urls"></a>
-### クリーンURLのエイリアス
-このスニペットを使うと、`example.com/users` のような、`example.com/users.php` に代わるPHP拡張子なしの「クリーン」URLを利用できます。
+### 「クリーン」URLの割り当て <a id="alias-clean-urls"></a><a id="クリーンurlのエイリアス"></a>
+PHP拡張子なしの「クリーン」URLを使う設定例です。たとえば`example.com/users`を`example.com/users.php`に代わるURLとして使います。
 ``` apacheconf
 RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteRule ^([^.]+)$ $1.php [NC,L]
 ```
-[Source](https://www.abeautifulsite.net/access-pages-without-the-php-extension-using-htaccess/)
+[出典](https://www.abeautifulsite.net/access-pages-without-the-php-extension-using-htaccess/)
 
-<a id="exclude-url-from-redirection"></a>
-### URLをリダイレクト対象から除外
-このスニペットはURLをリダイレクト対象から除外します。たとえばリダイレクト規則を設定しつつ、検索エンジンが想定どおりアクセスできるようrobots.txtだけを除外できます。
+### URLをリダイレクト対象から除外 <a id="exclude-url-from-redirection"></a>
+URLをリダイレクト対象から除外する設定例です。たとえばリダイレクト規則を設定しつつ、検索エンジンが想定どおりアクセスできるようrobots.txtだけを除外できます。
 ``` apacheconf
 RewriteEngine On
 RewriteRule ^robots.txt - [L]
 ```
 
-<a id="security"></a>
-## セキュリティ
-<a id="deny-all-access"></a>
-### すべてのアクセスを拒否
+## セキュリティ <a id="security"></a>
+### すべてのアクセスを拒否 <a id="deny-all-access"></a>
 ``` apacheconf
 Require all denied
 ```
 
-でも、これによりあなたのコンテンツからもアクセスが遮られます！したがって紹介するのは...
+この設定では自分自身もコンテンツへアクセスできなくなります。次のIPアドレスによる設定例を参照してください。
 
-<a id="deny-all-access-except-yours"></a>
-### 自分以外のアクセスを拒否
+### 自分以外のアクセスを拒否 <a id="deny-all-access-except-yours"></a>
 ``` apacheconf
 Require all denied
 Require ip xxx.xxx.xxx.xxx
 ```
-`xxx.xxx.xxx.xxx` is your IP. If you replace the last three digits with `0/12` for example, this will specify a range of IPs within the same network, thus saving you the trouble to list all allowed IPs separately. [Source](https://speckyboy.com/2013/01/08/useful-htaccess-snippets-and-hacks/)
+`xxx.xxx.xxx.xxx`は自分のIPアドレスを表します。記録された原文では、許可するアドレスを個別に列挙せずIPアドレスの範囲を指定する方法として、末尾の3桁を`0/12`へ置き換える例を挙げています。実際の範囲はCIDRのプレフィックス長で決まるため、自分のローカルネットワークと一致するとは限りません。[Require ip](https://httpd.apache.org/docs/2.4/mod/mod_authz_host.html#require)を参照してください。[出典](https://speckyboy.com/2013/01/08/useful-htaccess-snippets-and-hacks/)
 
-もちろん、逆のバージョンもあります：
+次の例は特定のIPアドレスを除外することを意図したものです。
 
-<a id="allow-all-access-except-spammers"></a>
-### スパマー以外のアクセスを許可
+### スパマー以外のアクセスを許可 <a id="allow-all-access-except-spammers"></a>
 ``` apacheconf
 Require all granted
 Require not ip xxx.xxx.xxx.xxx
 Require not ip xxx.xxx.xxx.xxy
 ```
 
-<a id="deny-access-to-hidden-files-and-directories"></a>
-### 隠しファイルとディレクトリへのアクセスを拒否
-名前がドット`.`で始まる隠しファイルとディレクトリ（`.htaccess`、`.htpasswd`、`.git`、`.hg`など）は、ほぼ常に保護すべきです。
+編集注記：記録された原文の例を変更せずに掲載しています。このままでは有効なApache 2.4の除外規則になりません。認可用コンテナなしで複数のRequireディレクティブを並べるとRequireAnyとして扱われ、そこで否定ディレクティブは許可されません。例を使用する前に、許可と除外の条件をRequireAll内へまとめてください。[Apacheの認可ドキュメント](https://httpd.apache.org/docs/2.4/mod/mod_authz_core.html#require)を参照してください。
+
+### 隠しファイルとディレクトリへのアクセスを拒否 <a id="deny-access-to-hidden-files-and-directories"></a>
+名前がドット`.`で始まる隠しファイルとディレクトリは、通常は保護すべきです。たとえば`.htaccess`、`.htpasswd`、`.git`、`.hg`などです。
 ``` apacheconf
 RewriteCond %{SCRIPT_FILENAME} -d [OR]
 RewriteCond %{SCRIPT_FILENAME} -f
@@ -257,24 +190,21 @@ RewriteRule "(^|/)\." - [F]
 RedirectMatch 404 /\..*$
 ```
 
-<a id="deny-access-to-backup-and-source-files"></a>
-### バックアップとソースファイルへのアクセスを拒否
-これらのファイルはVi/Vimなどのテキスト／HTMLエディターが残す場合があり、公開されると重大なセキュリティリスクになります。
+### バックアップファイルとソースファイルへのアクセスを拒否 <a id="deny-access-to-backup-and-source-files"></a><a id="バックアップとソースファイルへのアクセスを拒否"></a>
+Vi/Vimなどのテキスト／HTMLエディターがこれらのファイルを残すことがあり、公開されると重大なセキュリティリスクになります。
 ``` apacheconf
 <FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp)|~)$">
     Require all denied
 </FilesMatch>
 ```
-[Source](https://github.com/h5bp/server-configs-apache)
+[出典](https://github.com/h5bp/server-configs-apache)
 
-<a id="disable-directory-browsing"></a>
-### ディレクトリ一覧を無効化
+### ディレクトリ一覧の表示を無効化 <a id="disable-directory-browsing"></a><a id="ディレクトリ一覧を無効化"></a>
 ``` apacheconf
 Options All -Indexes
 ```
 
-<a id="disable-image-hotlinking"></a>
-### 画像の直リンクを無効化
+### 画像の直リンクを無効化 <a id="disable-image-hotlinking"></a>
 ``` apacheconf
 RewriteEngine on
 # Remove the following line if you want to block blank referrer too
@@ -288,9 +218,8 @@ RewriteRule \.(jpe?g|png|gif|bmp|webp|avif|svg|ico)$ - [NC,F,L]
 # RewriteRule \.(jpe?g|png|gif|bmp|webp|avif|svg|ico) https://example.com/blocked.png [R,L]
 ```
 
-<a id="disable-image-hotlinking-for-specific-domains"></a>
-### 特定ドメインの画像直リンクを無効化
-特定の悪質なサイトからの画像直リンクだけを無効にしたい場合があります。
+### 特定ドメインからの画像の直リンクを無効化 <a id="disable-image-hotlinking-for-specific-domains"></a><a id="特定ドメインの画像直リンクを無効化"></a>
+特定のドメインからの画像の直リンクをブロックします。
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{HTTP_REFERER} ^https?://(.+\.)?badsite\.com [NC,OR]
@@ -302,14 +231,13 @@ RewriteRule \.(jpe?g|png|gif|bmp|webp|avif|svg|ico)$ - [NC,F,L]
 # RewriteRule \.(jpe?g|png|gif|bmp|webp|avif|svg|ico) https://example.com/blocked.png [R,L]
 ```
 
-<a id="password-protect-a-directory"></a>
-### ディレクトリをパスワード保護
+### ディレクトリのパスワード保護 <a id="password-protect-a-directory"></a><a id="ディレクトリをパスワード保護"></a>
 まず、システム内の任意の場所に`.htpasswd`ファイルを作成します。
 ``` bash
 htpasswd -c /home/fellowship/.htpasswd boromir
 ```
 
-次に、それを認証へ使用します。
+次に、そのファイルを認証に使います。
 ``` apacheconf
 AuthType Basic
 AuthName "One does not simply"
@@ -317,8 +245,7 @@ AuthUserFile /home/fellowship/.htpasswd
 Require valid-user
 ```
 
-<a id="password-protect-a-file-or-several-files"></a>
-### ファイルをパスワード保護
+### 単一または複数ファイルのパスワード保護 <a id="password-protect-a-file-or-several-files"></a><a id="ファイルをパスワード保護"></a>
 ``` apacheconf
 AuthName "One still does not simply"
 AuthType Basic
@@ -333,10 +260,9 @@ Require valid-user
 </FilesMatch>
 ```
 
-<a id="block-visitors-by-referrer"></a>
-### リファラーで訪問者をブロック
+### リファラーによる訪問者のブロック <a id="block-visitors-by-referrer"></a><a id="リファラーで訪問者をブロック"></a>
 特定のドメインをリファラーとして訪れたすべてのユーザーのアクセスを拒否します。
-[Source](https://www.htaccess-guide.com/deny-visitors-by-referrer/)
+[出典](https://www.htaccess-guide.com/deny-visitors-by-referrer/)
 ``` apacheconf
 RewriteEngine on
 # Options +FollowSymlinks
@@ -345,9 +271,8 @@ RewriteCond %{HTTP_REFERER} anotherdomain\.com
 RewriteRule .* - [F]
 ```
 
-<a id="block-specific-user-agents"></a>
-### 特定のUser-Agentをブロック
-特定のUser-Agentによるサイトへのアクセスを遮断します。スクレイパーや悪質なボットのブロックに便利です。
+### 特定のUser-Agentのブロック <a id="block-specific-user-agents"></a><a id="特定のuser-agentをブロック"></a>
+特定のUser-Agentによるサイトへのアクセスをブロックします。スクレイパーや悪質なボットをブロックするために使えます。
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{HTTP_USER_AGENT} BadBot [NC,OR]
@@ -355,35 +280,31 @@ RewriteCond %{HTTP_USER_AGENT} EvilScraper [NC]
 RewriteRule .* - [F,L]
 ```
 
-<a id="prevent-framing-the-site"></a>
-### サイトのフレーム表示を防止
-特定のURIだけは許可しつつ、ウェブサイトが`iframe`タグ内へ埋め込まれることを防止します。
+### サイトのフレーム埋め込みを制限 <a id="prevent-framing-the-site"></a><a id="サイトのフレーム表示を防止"></a>
+`iframe`内への埋め込みを同一オリジンに制限します。この例では、指定したURIに対して制限を付けません。SAMEORIGINの挙動は[X-Frame-Optionsのリファレンス](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options)を参照してください。
 ``` apacheconf
 SetEnvIf Request_URI "/starry-night" allow_framing=true
 Header set X-Frame-Options SAMEORIGIN env=!allow_framing
 ```
 
-<a id="content-security-policy-csp"></a>
-### Content Security Policy（CSP）
+### Content Security Policy（CSP） <a id="content-security-policy-csp"></a>
 Content Security Policyヘッダーは、読み込みを許可する動的リソースを宣言し、クロスサイトスクリプティング（XSS）などのコードインジェクション攻撃を軽減します。
 ``` apacheconf
 <IfModule mod_headers.c>
     Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'"
 </IfModule>
 ```
-用途に合わせてディレクティブを調整してください。利用可能な全ディレクティブは[CSPリファレンス](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)を参照してください。
+用途に合わせてディレクティブを調整してください。利用可能な全ディレクティブは[CSPのリファレンス](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)を参照してください。
 
-<a id="prevent-mime-type-sniffing"></a>
-### MIMEタイプスニッフィングを防止
-ブラウザーがリソースのMIMEタイプを推測（スニッフィング）することを防ぎます。ブラウザーはサーバーの指定を信頼し、想定タイプと一致しないリソースをブロックします。
+### MIMEタイプの推測を防ぐ <a id="prevent-mime-type-sniffing"></a><a id="mimeタイプスニッフィングを防止"></a>
+サーバーが指定したコンテンツタイプを使い、MIMEタイプの推測を防ぎます。スクリプトやスタイルシートのリクエストでは、想定されたMIMEタイプと一致しない応答をブラウザーがブロックします。[X-Content-Type-Optionsのリファレンス](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Content-Type-Options)を参照してください。
 ``` apacheconf
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
 </IfModule>
 ```
 
-<a id="set-referrer-policy"></a>
-### Referrer Policyを設定
+### Referrer Policyの設定 <a id="set-referrer-policy"></a><a id="referrer-policyを設定"></a>
 リクエストに含めるリファラー情報の量を制御します。完全なURLが外部サイトへ漏れるのを防ぎ、ユーザーのプライバシーを保護します。
 ``` apacheconf
 <IfModule mod_headers.c>
@@ -391,8 +312,7 @@ Content Security Policyヘッダーは、読み込みを許可する動的リソ
 </IfModule>
 ```
 
-<a id="set-permissions-policy"></a>
-### Permissions Policyを設定
+### Permissions Policyの設定 <a id="set-permissions-policy"></a><a id="permissions-policyを設定"></a>
 カメラ、マイク、位置情報など、サイトが利用できるブラウザー機能を制限します。
 ``` apacheconf
 <IfModule mod_headers.c>
@@ -400,17 +320,14 @@ Content Security Policyヘッダーは、読み込みを許可する動的リソ
 </IfModule>
 ```
 
-<a id="remove-server-signature"></a>
-### サーバー署名を削除
-ApacheがHTTPヘッダーやエラーページでバージョン番号とOS情報を公開するのを防ぎます。
+### サーバー署名の非表示 <a id="remove-server-signature"></a><a id="サーバー署名を削除"></a>
+エラーページなど、サーバーが生成するページのサーバー署名を表示しない設定です。この設定はHTTP応答のServerヘッダーを制御しません。ServerヘッダーはServerTokensが別に制御します。[Apacheのディレクティブのドキュメント](https://httpd.apache.org/docs/2.4/mod/core.html#serversignature)を参照してください。
 ``` apacheconf
 ServerSignature Off
 ```
 
-<a id="performance"></a>
-## パフォーマンス
-<a id="compress-text-files"></a>
-### テキストファイルを圧縮
+## パフォーマンス <a id="performance"></a>
+### テキストファイルの圧縮 <a id="compress-text-files"></a><a id="テキストファイルを圧縮"></a>
 ``` apacheconf
 <IfModule mod_deflate.c>
 
@@ -445,14 +362,12 @@ ServerSignature Off
 
 </IfModule>
 ```
-[Source](https://github.com/h5bp/server-configs-apache)
+[出典](https://github.com/h5bp/server-configs-apache)
 
+### Expiresヘッダーの設定 <a id="set-expires-headers"></a><a id="expiresヘッダーを設定"></a>
+Expiresヘッダーは、特定のファイルをサーバーへ要求するか、キャッシュから取得するかをブラウザーへ伝えます。静的コンテンツの有効期限には、十分先の日付を設定することが推奨されます。
 
-<a id="set-expires-headers"></a>
-### Expiresヘッダーを設定
-_Expires headers_ tell the browser whether they should request a specific file from the server or just grab it from the cache. It is advisable to set static content's expires headers to something far in the future.
-
-ファイル名ベースのキャッシュバスティングでバージョンを管理していない場合は、CSSやJSなどのキャッシュ期間を1週間程度へ短縮することを検討してください。[出典](https://github.com/h5bp/server-configs-apache)
+ファイル名によるキャッシュバスティングでバージョンを管理していない場合は、CSSやJSなどのキャッシュ期間を1週間程度へ短縮することを検討してください。[出典](https://github.com/h5bp/server-configs-apache)
 ``` apacheconf
 <IfModule mod_expires.c>
     ExpiresActive on
@@ -500,9 +415,8 @@ _Expires headers_ tell the browser whether they should request a specific file f
 </IfModule>
 ```
 
-<a id="set-cache-control-headers"></a>
-### Cache-Controlヘッダーを設定
-`Cache-Control` headers provide more fine-grained control over browser caching than Expires headers. You can use both together for maximum compatibility.
+### Cache-Controlヘッダーの設定 <a id="set-cache-control-headers"></a><a id="cache-controlヘッダーを設定"></a>
+`Cache-Control`ヘッダーは、Expiresヘッダーより細かくブラウザーのキャッシュを制御できます。互換性を高めるために両方を併用できます。
 ``` apacheconf
 <IfModule mod_headers.c>
     # Cache CSS and JS for 1 year
@@ -527,9 +441,8 @@ _Expires headers_ tell the browser whether they should request a specific file f
 </IfModule>
 ```
 
-<a id="turn-etags-off"></a>
-### eTagを無効化
-`ETag`ヘッダーを削除すると、キャッシュとブラウザーはファイルを検証できなくなり、`Cache-Control`と`Expires`ヘッダーに依存します。[出典](https://www.askapache.com/htaccess/apache-speed-etags.html)
+### ETagを無効化 <a id="turn-etags-off"></a>
+`ETag`ヘッダーを削除すると、エンティティタグに基づく検証が無効になります。`Cache-Control`と`Expires`ヘッダーでキャッシュの挙動を設定してください。[出典](https://www.askapache.com/htaccess/apache-speed-etags.html)
 ``` apacheconf
 <IfModule mod_headers.c>
     Header unset ETag
@@ -537,11 +450,9 @@ _Expires headers_ tell the browser whether they should request a specific file f
 FileETag None
 ```
 
-<a id="miscellaneous"></a>
-## その他
+## その他 <a id="miscellaneous"></a>
 
-<a id="set-php-variables"></a>
-### PHP変数を設定
+### PHP変数の設定 <a id="set-php-variables"></a><a id="php変数を設定"></a>
 ``` apacheconf
 php_value <key> <val>
 
@@ -550,17 +461,15 @@ php_value upload_max_filesize 50M
 php_value max_execution_time 240
 ```
 
-<a id="custom-error-pages"></a>
-### カスタムエラーページ
+### 独自のエラーページ <a id="custom-error-pages"></a><a id="カスタムエラーページ"></a>
 ``` apacheconf
 ErrorDocument 500 "Houston, we have a problem."
 ErrorDocument 401 https://error.example.com/mordor.html
 ErrorDocument 404 /errors/halflife3.html
 ```
 
-<a id="custom-maintenance-page"></a>
-### カスタムメンテナンスページ
-特定のIPアドレスからのアクセスだけを許可し、その他すべてのトラフィックをメンテナンスページへリダイレクトします。
+### 独自のメンテナンスページ <a id="custom-maintenance-page"></a><a id="カスタムメンテナンスページ"></a>
+記録された原文は、特定のIPアドレスからのアクセスを許可するメンテナンスページの設定例として紹介しています。条件には、メンテナンスページと列挙された拡張子の配信ファイルを除外する指定もあります。編集注記：コードは変更せず掲載しています。R=503は503応答を返し、書き換え先を破棄するため、指定されたメンテナンスページへのリダイレクトやそのページの配信は行いません。独自の503ページを表示するには、ErrorDocumentなどでエラー応答を別途設定してください。[ApacheのRewriteRuleフラグのドキュメント](https://httpd.apache.org/docs/2.4/rewrite/flags.html#flag_r)を参照してください。
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{REMOTE_ADDR} !^xxx\.xxx\.xxx\.xxx
@@ -570,9 +479,8 @@ RewriteRule .* /maintenance.html [R=503,L]
 ```
 メンテナンス中もアクセスできるよう、`xxx.xxx.xxx.xxx`を自分のIPアドレスへ置き換えてください。
 
-<a id="force-downloading"></a>
-### ダウンロードを強制
-コンテンツを表示せず、ブラウザーにダウンロードさせたい場合があります。
+### ダウンロードを強制 <a id="force-downloading"></a>
+コンテンツを表示せず、ブラウザーにダウンロードさせたい場合の設定例です。
 ``` apacheconf
 <Files *.md>
     ForceType application/octet-stream
@@ -580,20 +488,18 @@ RewriteRule .* /maintenance.html [R=503,L]
 </Files>
 ```
 
-この陰には陽があるのです：
+次の例は、ダウンロードではなく表示を求める設定です。
 
-<a id="prevent-downloading"></a>
-### ダウンロードを防止
-コンテンツをダウンロードせず、ブラウザーに表示させたい場合があります。
+### ダウンロードを防ぐ <a id="prevent-downloading"></a><a id="ダウンロードを防止"></a>
+コンテンツをダウンロードせず、ブラウザーに表示させたい場合の設定例です。
 ``` apacheconf
 <FilesMatch "\.(tex|log|aux)$">
     Header set Content-Type text/plain
 </FilesMatch>
 ```
 
-<a id="allow-cross-domain-fonts"></a>
-### クロスドメインフォントを許可
-CDNから配信されるウェブフォントは、[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)のためFirefoxで動作しない場合があります。このスニペットで解決できます。
+### クロスドメインでのフォントの利用を許可 <a id="allow-cross-domain-fonts"></a><a id="クロスドメインフォントを許可"></a>
+記録された原文では、CDNから配信されるウェブフォントが[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)のためFirefoxで読み込めない場合があると説明しています。この例は、列挙したフォント形式へのクロスオリジンリクエストを許可します。
 ``` apacheconf
 <IfModule mod_headers.c>
     <FilesMatch "\.(otf|ttc|ttf|woff|woff2)$">
@@ -601,10 +507,9 @@ CDNから配信されるウェブフォントは、[CORS](https://en.wikipedia.o
     </FilesMatch>
 </IfModule>
 ```
-[Source](https://github.com/h5bp/server-configs-apache/issues/32)
+[出典](https://github.com/h5bp/server-configs-apache/issues/32)
 
-<a id="enable-cors"></a>
-### CORSを有効化
+### CORSの有効化 <a id="enable-cors"></a><a id="corsを有効化"></a>
 サイトでCross-Origin Resource Sharing（CORS）を有効にし、他のドメインからサーバーへのリクエストを許可します。
 ``` apacheconf
 <IfModule mod_headers.c>
@@ -613,11 +518,10 @@ CDNから配信されるウェブフォントは、[CORS](https://en.wikipedia.o
     Header set Access-Control-Allow-Headers "Content-Type, Authorization"
 </IfModule>
 ```
-特定のドメインに制限するには、`*` を `https://example.com` などのドメインへ置き換えます。
+特定のドメインに制限するには、`*`を`https://example.com`などのドメインへ置き換えます。
 
-<a id="auto-utf-8-encode"></a>
-### UTF-8を自動設定
-テキストコンテンツは常にUTF-8でエンコードすべきです。
+### UTF-8エンコーディングの設定 <a id="auto-utf-8-encode"></a><a id="utf-8を自動設定"></a>
+列挙したテキスト形式の文字エンコーディングをUTF-8に設定します。
 ``` apacheconf
 # Use UTF-8 encoding for anything served text/plain or text/html
 AddDefaultCharset utf-8
@@ -625,11 +529,10 @@ AddDefaultCharset utf-8
 # Force UTF-8 for a number of file formats
 AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 ```
-[Source](https://github.com/h5bp/server-configs-apache)
+[出典](https://github.com/h5bp/server-configs-apache)
 
-<a id="set-custom-mime-types"></a>
-### カスタムMIMEタイプを設定
-Apacheが標準では認識しないファイル形式にカスタムMIMEタイプを定義します。
+### 独自のMIMEタイプの設定 <a id="set-custom-mime-types"></a><a id="カスタムmimeタイプを設定"></a>
+Apacheが標準では認識しないファイル形式に、カスタムMIMEタイプを定義します。
 ``` apacheconf
 AddType application/manifest+json .webmanifest
 AddType application/wasm .wasm
@@ -637,9 +540,8 @@ AddType application/x-ndjson .ndjson
 AddType text/vtt .vtt
 ```
 
-<a id="switch-to-another-php-version"></a>
-### 別のPHPバージョンへ切り替え
-共有ホスティングでは複数のPHPバージョンがインストールされていることがあり、サイトごとに特定バージョンを使いたい場合があります。次のスニペットでPHPバージョンを切り替えます。
+### 別のPHPバージョンへの切り替え <a id="switch-to-another-php-version"></a><a id="別のphpバージョンへ切り替え"></a>
+共有ホスティングでは複数のPHPバージョンが用意されている場合があります。次の例では、ホスティングのハンドラー設定を使い、サイトのPHPバージョンを選択します。
 
 ``` apacheconf
 AddHandler application/x-httpd-php84 .php
@@ -648,8 +550,7 @@ AddHandler application/x-httpd-php84 .php
 AddType application/x-httpd-php84 .php
 ```
 
-<a id="serve-webpavif-images"></a>
-### WebP/AVIF画像を配信
+### WebP/AVIF画像の配信 <a id="serve-webpavif-images"></a><a id="webpavif画像を配信"></a>
 元のjpg/pngと同じ名前のモダン形式画像（AVIFまたはWebP）があれば、代わりに配信します。ブラウザーが両方に対応する場合はAVIFを優先します。
 
 ``` apacheconf

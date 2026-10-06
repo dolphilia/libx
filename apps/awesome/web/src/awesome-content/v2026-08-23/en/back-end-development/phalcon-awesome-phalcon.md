@@ -1,251 +1,197 @@
 ---
 title: "Awesome Phalcon"
-description: "A curated collection of resources and projects focused on Phalcon."
+description: "Phalcon libraries, application templates, development tools, deployment environments, community links, and learning resources."
 licenseSource: "github-phalcon-awesome-phalcon-readme-md"
+toc:
+  maxLevel: 4
 ---
 
 # Awesome Phalcon
 
-A curated collection of resources and projects focused on Phalcon.
-
-### Contents
-
-- [Awesome Phalcon](#awesome-phalcon)
-    - [ACL](#acl)
-    - [Application Skeleton](#application-skeleton)
-    - [Authentication & OAuth](#authentication--oauth)
-    - [CMS & Blogs](#cms--blogs)
-    - [Command Line](#command-line)
-    - [Dashboard](#dashboard)
-    - [Debug](#debug)
-    - [i18n](#i18n)
-    - [Integration](#integration)
-    - [IDE](#ide)
-    - [Miscellaneous](#miscellaneous)
-    - [ORM](#orm)
-    - [ODM](#odm)
-    - [Provisioning](#provisioning)
-    - [RESTful](#restful)
-    - [Routing](#routing)
-    - [Searching](#searching)
-    - [SEO](#seo)
-    - [Shop & Ecommerce](#shop--ecommerce)
-    - [Talks](#talks)
-    - [Templating](#templating)
-    - [Testing](#testing)
-
-- [Server Applications](#server-applications)
-
-- [Resources](#resources)
-    - [Conferences](#conferences)
-        - [Communities](#communities)
-    - [Books](#books)
-    - [E-Books](#e-books)
-    - [Magazines](#magazines)
-    - [Websites](#websites)
-        - [Tutorials](#tutorials)
+Libraries, application templates, and development tools for Phalcon, a PHP framework. Find authentication components, CMSs, database adapters, deployment environments, community links, and learning resources.
 
 ## ACL
 
-*Access control list.*
+Access control list.
 
 * [PhalconUserPlugin](https://github.com/calinrada/PhalconUserPlugin) - Plugin based on Vökuró ACL idea
 
-
 ## Application Skeleton
 
-*Various application skeletons.*
+Various application skeletons.
 
 * [Album O'Rama](https://github.com/phalcon/album-o-rama) - Sample modular application for the Phalcon Framework
 * [Base App](https://github.com/mruz/base-app) - The base application in Phalcon Framework
 * [INVO Application](https://github.com/phalcon/invo) - Sample application for the Phalcon Framework
 * [MVC](https://github.com/phalcon/mvc) - Examples of Phalcon MVC file structures
-* [Phalcon Composer](https://github.com/xxtime/phalcon) - Phalcon with Composer support MySql MongoDb Redis, clean + beauty
+* [Phalcon Composer](https://github.com/xxtime/phalcon) - Phalcon with Composer, MySQL, MongoDB, and Redis support.
 * [Vökuró](https://github.com/phalcon/vokuro) - Sample application for Phalcon Framework (Acl, Auth, Security)
-* [Webird](https://github.com/perchlabs/webird) - Webird was created to merge the latest PHP and Node.js innovations into a single application stack
-* [NovaMOOC](https://github.com/les-enovateurs/phalcon-nova-mooc) - Sample application with API/BackEnd and FrontEnd + Authentication with JWT + Cypress tests with GitHub Actions + Docker compose.
-* [PhalconTool](https://github.com/corentin-begne/phalconTool) - Alternative to Phalcon devtools with complete frontend stack without any framework but helpers system allowing to automaticaly bind HTML events using Phalcon 5, PHP 8, Apache, MYSQL, SASS, ES6 and jQuery.
-
+* [Webird](https://github.com/perchlabs/webird) - Created to combine PHP and Node.js in a single application stack.
+* [NovaMOOC](https://github.com/les-enovateurs/phalcon-nova-mooc) - Sample application with an API/backend, a frontend, JWT authentication, Cypress tests with GitHub Actions, and Docker Compose.
+* [PhalconTool](https://github.com/corentin-begne/phalconTool) - Alternative to Phalcon devtools with a frontend stack that uses helpers to bind HTML events automatically, without a frontend framework. Uses Phalcon 5, PHP 8, Apache, MySQL, Sass, ES6, and jQuery.
 
 ## Authentication & OAuth
 
-*Libraries for implementing authentications schemes.*
+Libraries for implementing authentication schemes.
 
-* [Padlock](https://github.com/tegaphilip/padlock) - A docker-based phalcon authentication server built on top of the PHP OAuth 2.0 Server
+* [Padlock](https://github.com/tegaphilip/padlock) - Docker-based Phalcon authentication server built on top of the PHP OAuth 2.0 Server.
 * [phalcon-authmiddleware](https://github.com/SidRoberts/phalcon-authmiddleware) - Add middleware events to the dispatcher. Generic design that's compatible with ACL or a custom auth library.
 * [Phalcon Auth](https://github.com/sinbadxiii/phalcon-auth) - Out-of-the-box authentication component based on guards and providers.
 
-
 ## CMS & Blogs
 
-*Content management systems & blogs.*
+Content management systems & blogs.
 
 * [giada-www](https://github.com/monocasual/giada-www) - Official website of [Giada Loop Machine](https://www.giadamusic.com/)
 * [KikCMS](https://github.com/krazzer/kikcms) - CMS built on Phalcon Framework
 * [Skopy Blog Engine](https://github.com/yuriygr/skopy) - A simple blog engine for those who want to start learning Phalcon
 * [Yona CMS](https://github.com/alexander-torosh/yona-cms) - CMS based on Phalcon Framework with modular structure
 * [PhalconCMS](https://github.com/KevinJay/PhalconCMS) - A blog built on Phalcon Framework
-* [Hummingbird CMS](https://github.com/mvanvu/hummingbird-cms) - A CMS based on Phalcon 4 with many powerful features
-* [Element CMF](https://github.com/odvapro/element) - Admin panel for everything [Demo](https://element-demo.odva.pro/element/) (admin | adminpass)
-
+* [Hummingbird CMS](https://github.com/mvanvu/hummingbird-cms) - CMS based on Phalcon 4.
+* [Element CMF](https://github.com/odvapro/element) - Admin panel. [Demo](https://element-demo.odva.pro/element/) (login: admin | adminpass).
 
 ## Command Line
 
-*Command line applications & tools.*
+Command line applications & tools.
 
-* [phalcon-console](https://github.com/viebig/phalcon-console) - Sample bootstraping application for command line applications using the outstanding Phalcon Framework
+* [phalcon-console](https://github.com/viebig/phalcon-console) - Sample bootstrap application for command-line applications using Phalcon.
 * [phalcon-cron](https://github.com/SidRoberts/phalcon-cron) - Cron component for Phalcon
-
 
 ## Config
 
 * [Phalcon Config Loader for Yaml](https://github.com/ienaga/PhalconConfig) - Loads all the yml in the directory of the app/config.
 
-
 ## Dashboard
 
-*Admin Panels & Dashboards.*
+Admin Panels & Dashboards.
 
-* [PhalconTime](https://github.com/Videles/PhalconTime) - TimeKeeping tool / Dashboard skeleton
-
+* [PhalconTime](https://github.com/Videles/PhalconTime) - Timekeeping tool and dashboard skeleton.
 
 ## Debug
 
-*Debug & profiling tools.*
+Debug & profiling tools.
 
 * [dd](https://github.com/phalcon/dd) - This package will add the `dd` and `dump` helpers to your Phalcon application
-* [Phalcon BB Debugger](https://github.com/ismail0234/Phalcon-BB-Debugger) - Phalcon BB Debugger Strong and easy install.
+* [Phalcon BB Debugger](https://github.com/ismail0234/Phalcon-BB-Debugger) - Debugger for Phalcon.
 * [Phalcon Debugbar](https://github.com/snowair/phalcon-debugbar) - Integrates [PHP Debug Bar](http://phpdebugbar.com) with Phalcon Framework
 * [Prophiler](https://github.com/fabfuel/prophiler) - PHP Profiler & Developer Toolbar (built for Phalcon)
 
-
 ## i18n
 
-*List of i18n and l10n libraries and services.*
+List of i18n and l10n libraries and services.
 
 * [xgettext-template](https://github.com/gmarty/xgettext) - Extract gettext messages from Volt templates using a command line program that is identical to the [xgettext invocation](http://www.gnu.org/software/gettext/manual/gettext.html#xgettext-Invocation).
 
-
 ## Integration
 
-*Integration with third party services*
+Integration with third party services
 
 * [phalcon-logentries](https://github.com/phalcon-orphanage/phalcon-logentries) - Sends log messages to the [Logentries](https://logentries.com/) log management service
 
- ## IDE
- *List of extensions for IDE*
- 
- * [volt-phalcon-language](https://marketplace.visualstudio.com/items?itemName=fbclol.volt-phalcon-language) - An extension for VS Code which provides support for the Phalcon Volt syntax and completion-auto
- 
+## IDE
+
+List of extensions for IDE
+
+* [volt-phalcon-language](https://marketplace.visualstudio.com/items?itemName=fbclol.volt-phalcon-language) - VS Code extension with Phalcon Volt syntax support and autocompletion.
 
 ## Miscellaneous
 
-*These libraries were placed here because none of the other categories seemed to fit*
+These libraries were placed here because none of the other categories seemed to fit
 
-* [Breadcrumbs](https://github.com/sergeyklay/breadcrumbs) - Powerful and flexible component for building site breadcrumbs in Phalcon 2+.
+* [Breadcrumbs](https://github.com/sergeyklay/breadcrumbs) - Component for building site breadcrumbs in Phalcon 2+.
 * [Feedback](https://quasipickle.github.io/feedback/) - Is intended to be used as a replacement for Phalcon's built-in Flash and Message functionality
 * [Incubator](https://github.com/phalcon/incubator) - Repository to publish/share/experiment with new adapters, prototypes or functionality that can potentially be incorporated into the Phalcon Framework
 * [Upgrade Adviser](https://github.com/diplopito/Phalcon-Upgrade-Adviser) - Command line tool to help upgrading Phalcon Applications from 3.4.x to 4.1.3, 3.4.x to 5.1.3, 4.1.3 to 5.1.3.
 * [yarak](https://github.com/zachleigh/yarak) - Laravel inspired Phalcon devtools
 * [phalcon-data-table](https://github.com/maslo2017/phalcon-data-table) - Allows you to simplify the interaction with the bootstrap-table in the Phalcon
 
-
 ## ORM
 
-*Libraries that implement Object-Relational Mapping or datamapping techniques.*
+Libraries that implement Object-Relational Mapping or datamapping techniques.
 
 * [phalcon-boundmodels](https://github.com/SidRoberts/phalcon-boundmodels) - Automatically get models based on dispatcher parameters within the Phalcon framework
-* [phalcon-repositories](https://github.com/micheleangioni/phalcon-repositories) - Easy Repository pattern for Phalcon
+* [phalcon-repositories](https://github.com/micheleangioni/phalcon-repositories) - Repository pattern for Phalcon.
 * [phalcon-seeder](https://github.com/SidRoberts/phalcon-seeder) - Database seeder component for Phalcon
-* [phalcon-redis-model](https://github.com/ienaga/RedisPlugin) - redis based ORM and Easy Criteria (The correspondence of MySQL sharding.)
+* [phalcon-redis-model](https://github.com/ienaga/RedisPlugin) - Redis-based ORM and Easy Criteria; the source describes support for MySQL sharding.
 
 ## ODM
 
-*Libraries that implement Object-Document Mapper techniques.*
+Libraries that implement Object-Document Mapper techniques.
 
 * [phalcon-collection-paginator](https://github.com/angelxmoreno/phalcon-collection-paginator) - A [pagination adapter](https://docs.phalcon.io/3.4/db-pagination#data-adapters) for classes that extend `Phalcon\Mvc\Collection`
 
 ## Provisioning
-*Tools for provisioning a system for a Phalcon application.*
- 
+
+Tools for provisioning a system for a Phalcon application.
+
 * [ansible-phalcon](https://github.com/HanXHX/ansible-phalcon) - Ansible Role to install Phalcon Framework in Debian (provides PHP 5.6 and PHP 7.0 packages)
-* [setupify](https://github.com/perchlabs/setupify) - A collection of bash scripts for provisioning a Zephir and Phalcon based system for deployement or development
+* [setupify](https://github.com/perchlabs/setupify) - A collection of bash scripts for provisioning a Zephir and Phalcon based system for deployment or development
 
 ## RESTful
 
-*Representational state transfer.*
+Representational state transfer.
 
 * [phalcon-json-api-package](https://github.com/gte451f/phalcon-json-api-package) - A composer package designed to help you create a JSON:API in Phalcon
 * [PhREST API](https://github.com/phrest/api) - Phalcon Framework REST API Package
 * [REST API](https://github.com/phalcon/rest-api) - Implementation of an API application using the Phalcon
 
-
 ## Routing
 
-*Various routing libraries & extensions.*
+Various routing libraries & extensions.
 
-* [Phalcon-autorouter](https://github.com/kahur/Phalcon-autorouter) - Simple way to auto load modules without complicate definition of routes
-* [Phalcon Routing for Yaml](https://github.com/ienaga/PhalconRouter) - Routing can be easily configured with yaml
-
+* [Phalcon-autorouter](https://github.com/kahur/Phalcon-autorouter) - Automatically loads modules without complex route definitions.
+* [Phalcon Routing for Yaml](https://github.com/ienaga/PhalconRouter) - Configure routing with YAML.
 
 ## Searching
 
-*Searching tools & libraries.*
+Searching tools & libraries.
 
 * [ElasticsearchIndexer](https://github.com/SidRoberts/phalcon-elasticsearchindexer) - Elasticsearch indexer component for Phalcon
 
-
 ## SEO
 
-*Seo tools.*
+SEO tools.
 
 * [Phalcon meta tags](https://github.com/izica/phalcon-meta-tags) - Tools for work with meta tags.
-
 
 ## Shop & Ecommerce
 
 * [Shopping Cart](https://github.com/sinbadxiii/phalcon-cart) - Simple cart for online store
 
+## Discussion Software <a id="talks"></a>
 
-## Talks
+Conference, chat, and forum software.
 
-*Conferences, Chats, Forums, etc..*
-
-* [Phanbook](https://github.com/phanbook/phanbook/) - The source for code phanbook.com website
-* [Phosphorum](https://github.com/phalcon/forum) - The source for official Phalcon Forum
-
+* [Phanbook](https://github.com/phanbook/phanbook/) - Source code for the phanbook.com website.
+* [Phosphorum](https://github.com/phalcon/forum) - Source code for the official Phalcon forum.
 
 ## Templating
 
-*Libraries and tools for templating.*
+Libraries and tools for templating.
 
 * [twig-phalcon](https://github.com/vinyvicente/phalcon-twig) - Twig Template Engine for Phalcon Framework
 
-
 ## Testing
 
-*Testing tools and solutions.*
+Testing tools and solutions.
 
 * [phalcon-demo](https://github.com/Codeception/phalcon-demo) - A modified Phalcon INVO Application to demonstrate basics of Codeception testing.
 
-
-# Server Applications
+## Server Applications
 
 * [phalcon-docker-nginx](https://github.com/viebig/phalcon-docker-nginx) - Phalcon 3, PHP7, Docker sample starter application
 * [phalcon-vm](https://github.com/eugene-manuilov/phalcon-vm) - Vagrant configuration for Phalcon 3.x and PHP7.0 development + MySQL/PostgreSQL/MongoDB, Redis/Memcached, Gearman/RabbitMQ, Elasticsearch/Sphinxsearch on your choice
 * [phalcon3-compose](https://github.com/linxlad/phalcon3-compose) - Docker Phalcon 3 development environment
 
+## Resources
 
-# Resources
+Where to discover new Phalcon libraries.
 
-*Where to discover new Phalcon libraries.*
+### Conferences
 
+Conference, IRC, and forum resources.
 
-## Conferences
-
-*Conferences, IRC, Forums, etc..*
-
-### Communities
+#### Communities
 
 * [Gab](https://gab.com/phalcon) - Phalcon on Gab
 * [MeWe](https://mewe.com/join-front/phalcon) - Phalcon on MeWe
@@ -255,27 +201,26 @@ A curated collection of resources and projects focused on Phalcon.
 * [Telegram](https://t.me/phalcon_news) - Phalcon on Telegram
 * [Twitter](https://twitter.com/phalconphp) - Phalcon on Twitter
 
-## Books
+### Books
 
-* [Phalcon Book (in French)](https://www.editions-eni.fr/livre/phalcon-3-developpez-des-applications-web-complexes-et-performantes-en-php-version-en-ligne-9782409022753) - Phalcon : Develop complex and powerful web applications in PHP
+* [Phalcon Book (in French)](https://www.editions-eni.fr/livre/phalcon-3-developpez-des-applications-web-complexes-et-performantes-en-php-version-en-ligne-9782409022753) - Book on developing complex web applications in PHP with Phalcon.
 
-## E-Books
+### E-Books
 
 * [Phalcon PDF Documentation](https://buildmedia.readthedocs.org/media/pdf/phalcon-php-framework-documentation/latest/phalcon-php-framework-documentation.pdf) - Phalcon Framework Documentation
 
-## Magazines
+### Magazines
 
-* [French magazine - Programmez n°239](https://www.programmez.com/magazine/article/les-10-commandements-de-lecoconception) - The 10 commandments of eco-design (article mentioning Phalcon as a light and ecological Framework)
-* [French magazine - Programmez n°241](https://www.programmez.com/magazine/article/phalcon-un-framework-performant-et-robuste-compile-en-c) - Phalcon : the new must-know PHP framework
+* [French magazine - Programmez n°239](https://www.programmez.com/magazine/article/les-10-commandements-de-lecoconception) - Article on the 10 commandments of eco-design, mentioning Phalcon as a lightweight, ecological framework.
+* [French magazine - Programmez n°241](https://www.programmez.com/magazine/article/phalcon-un-framework-performant-et-robuste-compile-en-c) - Article introducing Phalcon as a PHP framework.
 
-## Websites
+### Websites
 
 * [Built With](https://builtwith.phalcon.io/) - Gallery of applications, demos and projects built with Phalcon Framework
 * [Phalcon Blog](https://blog.phalcon.io/) - Phalcon Blog
 * [Phalconist](https://github.com/phalcon/phalconist) - Resources catalog for Phalcon Framework on Phalconist
 
-
-### Tutorials
+#### Tutorials
 
 * [Phalcon Documentation](https://docs.phalcon.io/4.0/en/introduction) - Phalcon Documentation
-* [Sitepoint](https://www.sitepoint.com/?s=phalcon) - Articles, tutorials and so more
+* [Sitepoint](https://www.sitepoint.com/?s=phalcon) - Articles, tutorials, and other resources.

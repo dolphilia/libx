@@ -1,156 +1,14 @@
 ---
-title: "Awesome logo of vue-awesome repository"
-description: "A curated collection of resources and projects focused on logo of vue-awesome repository."
+title: "Awesome Vue.js"
+description: "Vue.js learning resources, example applications, UI components, state management, integrations, testing tools, and application templates."
 licenseSource: "github-vuejs-awesome-vue-readme-md"
+toc:
+  maxLevel: 6
 ---
 
-# Awesome logo of vue-awesome repository
+# Awesome Vue.js<a id="awesome-logo-of-vue-awesome-repository"></a><a id="awesome-vuejs-"></a>
 
-A curated collection of resources and projects focused on logo of vue-awesome repository.
-
-## Awesome Vue.js [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@main/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/vuejs/awesome-vue)
-
-> A curated list of awesome things related to Vue.js
-
-
-
-**Table of Contents**
-
-- [Resources](#resources)
-  - [Official Resources](#official-resources)
-  - [Truly awesome projects](#truly-awesome-projects)
-  - [External Resources](#external-resources)
-  - [Newsletters](#newsletters)
-  - [Job Portal](#job-portal)
-  - [Community](#community)
-  - [Conferences](#conferences)
-  - [Podcasts](#podcasts)
-  - [Official Examples](#official-examples)
-  - [Tutorials](#tutorials)
-  - [Examples](#examples)
-  - [Books](#books)
-  - [Blog Posts](#blog-posts)
-  - [Courses](#courses)
-  - [Documentaries](#documentaries)
-- [Companies Using Vue.js](#companies-using-vuejs)
-- [Projects Using Vue.js](#projects-using-vuejs)
-  - [Open Source](#open-source)
-  - [Commercial Products](#commercial-products)
-  - [Apps/Websites](#appswebsites)
-  - [Interactive Experiences](#interactive-experiences)
-  - [Enterprise Usage](#enterprise-usage)
-  - [A11y](#a11y)
-- [Components & Libraries](#components--libraries)
-  - [Frameworks](#frameworks)
-    - [Responsive](#responsive)
-    - [Mobile](#mobile)
-    - [Component Collections](#component-collections)
-    - [Admin Template](#admin-template)
-    - [Server-side rendering](#server-side-rendering)
-    - [Static website generator](#static-website-generator)
-    - [Other](#other)
-  - [UI Layout](#ui-layout)
-  - [UI Components](#ui-components)
-    - [Table](#table)
-    - [Notification](#notification)
-    - [Loader](#loader)
-      - [Progress Bar](#progress-bar)
-    - [Tooltip](#tooltip)
-    - [Overlay](#overlay)
-    - [Marquee](#marquee)
-    - [Menu](#menu)
-    - [Carousel](#carousel)
-    - [Charts](#charts)
-    - [Time](#time)
-    - [Calendar](#calendar)
-    - [Map](#map)
-    - [Audio / Video](#audio--video)
-    - [Infinite Scroll](#infinite-scroll)
-    - [Markdown](#markdown)
-    - [PDF](#pdf)
-    - [Tree](#tree)
-    - [Graph](#graph)
-    - [Social Sharing](#social-sharing)
-    - [QR Code](#qr-code)
-    - [Search](#search)
-    - [Miscellaneous](#miscellaneous)
-    - [Tabs](#tabs)
-    - [Form](#form)
-      - [Phone Number Input Formatter](#phone-number-input-formatter)
-      - [Picker](#picker)
-      - [Generator](#generator)
-        - [Date Picker](#date-picker)
-      - [Select](#select)
-      - [Drag and Drop](#drag-and-drop)
-      - [Type Select](#type-select)
-      - [Color Picker](#color-picker)
-      - [Switch](#switch)
-      - [Masked Input](#masked-input)
-      - [Rich Text Editing](#rich-text-editing)
-      - [Image Manipulation](#image-manipulation)
-      - [File Upload](#file-upload)
-      - [Context Menu](#context-menu)
-      - [Miscellaneous](#miscellaneous-1)
-      - [Wizard](#wizard)
-    - [Canvas](#canvas)
-    - [Link Preview](#link-preview)
-    - [Tour](#tour)
-  - [UI Utilities](#ui-utilities)
-    - [Event Handling](#event-handling)
-    - [Responsive Design](#responsive-design)
-    - [Form](#form-1)
-      - [Validation](#validation)
-    - [Resize](#resize)
-    - [Scroll](#scroll)
-    - [Routing](#routing)
-    - [Lazy Load](#lazy-load)
-    - [Pagination](#pagination)
-    - [Animation](#animation)
-    - [Meta Tags](#meta-tags)
-    - [Portal](#portal)
-    - [SVG](#svg)
-    - [Miscellaneous](#miscellaneous-2)
-    - [WebGL](#webgl)
-    - [Fullscreen](#fullscreen)
-    - [Printing](#printing)
-  - [Utilities](#utilities)
-    - [Typescript](#typescript)
-    - [HTTP Requests](#http-requests)
-    - [i18n](#i18n)
-    - [Custom Events](#custom-events)
-    - [Persistence](#persistence)
-    - [State Management](#state-management)
-      - [Mobx](#mobx)
-      - [Pinia](#pinia)
-      - [Authentication/Authorization](#authenticationauthorization)
-      - [Vuex Utilities](#vuex-utilities)
-    - [GraphQL](#graphql)
-    - [Code Style](#code-style)
-    - [CSS](#css)
-    - [Asset Management](#asset-management)
-    - [Page Navigation](#page-navigation)
-    - [Miscellaneous](#miscellaneous-3)
-    - [Web Sockets](#web-sockets)
-    - [Payment](#payment)
-      - [Stripe](#stripe)
-  - [Integrations](#integrations)
-    - [Vue CLI Plugins](#vue-cli-plugins)
-      - [Google Analytics](#google-analytics)
-  - [Dev Tools](#dev-tools)
-    - [Inspect](#inspect)
-    - [Docs](#docs)
-    - [Test](#test)
-    - [Source Code Editing](#source-code-editing)
-      - [Vim](#vim)
-      - [Visual Studio Code](#visual-studio-code)
-      - [Intellij](#intellij)
-      - [Emacs](#emacs)
-  - [Scaffold](#scaffold)
-    - [Universal](#universal)
-    - [Desktop](#desktop)
-  - [Prerendering](#prerendering)
-
-
+Find Vue.js learning resources, example applications, UI frameworks and components, state management, integrations, testing tools, and application templates. Community links, books, courses, and production examples are also included. Version, performance, pricing, and maintenance descriptions reflect the recorded source.
 
 ## Resources
 
@@ -165,41 +23,39 @@ A curated collection of resources and projects focused on logo of vue-awesome re
 - [IDE Language Support](https://github.com/vuejs/language-tools?tab=readme-ov-file#vue-language-tools)
 - [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
-### Truly awesome projects
+### Tools and Plugins <a id="truly-awesome-projects"></a>
 
-These projects are exceptionally high quality, have a proven trackrecord, and are virtually indispensable.
-
- - [Vue DevTools](https://github.com/vuejs/devtools) - Browser devtools extension for debugging Vue.js applications.
- - [unplugin-icons](https://github.com/unplugin/unplugin-icons) - On-demand icon loader supporting all known popular icon sets
- - [vue-i18n](https://github.com/intlify/vue-i18n) - Internationalization plugin for Vue.js
+- [Vue DevTools](https://github.com/vuejs/devtools) - Browser devtools extension for debugging Vue.js applications.
+- [unplugin-icons](https://github.com/unplugin/unplugin-icons) - On-demand icon loader supporting all known popular icon sets.
+- [vue-i18n](https://github.com/intlify/vue-i18n) - Internationalization plugin for Vue.js.
 
 ### External Resources
 
-- [Vue.js 資料まとめ(for japanese)](https://gist.github.com/hashrock/f575928d0e109ace9ad0) by @hashrock
+- [Vue.js 資料まとめ (Japanese)](https://gist.github.com/hashrock/f575928d0e109ace9ad0) by @hashrock
 - [Vue.js Wikipedia](https://en.wikipedia.org/wiki/Vue.js)
 - [Vue Curated Resources](https://hackr.io/tutorials/learn-vue-js) - Recommended Vue.js courses and tutorials.
-- [Vue School](https://vueschool.io) - Learn Vue.js from video courses by core members and industry experts
-- [VueDose](https://vuedose.tips). Tips & tricks about the Vue ecosystem, for busy devs.
-- [Vue.js DEV Community](https://dev.to/t/vue) - Official tag for the Vue.js JavaScript Framework on DEV.to
-- [WebTechSurvey.com](https://webtechsurvey.com/technology/vue.js) - An extensive list of websites created with the Vue.js Javascript framework.
-- [Vue Mastery](https://www.vuemastery.com/) - The ultimate learning resource for Vue developers
-- [Vue 3 Video Playlist](https://www.youtube.com/playlist?list=PLMLZt4pr7Aq6AfC_ynfeDbEk2hbMFGpHO) - Amazing Vue 3 tutorials and experiments
-- [Vue.js Workshops](https://public.vuejsworkshops.com) - Learn Vue 2, in browser, by building 3 applications: Landing page, Todos App and Podcasts aggregator.( Vue.js, Vue-Router, Vuex, Vue-Axios, Vue-Apollo )
+- [Vue School](https://vueschool.io) - Vue.js video courses by core members and industry experts.
+- [VueDose](https://vuedose.tips) - Tips and techniques for the Vue ecosystem, aimed at busy developers.
+- [Vue.js DEV Community](https://dev.to/t/vue) - Official Vue.js JavaScript framework tag on DEV.to.
+- [WebTechSurvey.com](https://webtechsurvey.com/technology/vue.js) - An extensive list of websites created with the Vue.js JavaScript framework.
+- [Vue Mastery](https://www.vuemastery.com/) - Learning resources for Vue developers.
+- [Vue 3 Video Playlist](https://www.youtube.com/playlist?list=PLMLZt4pr7Aq6AfC_ynfeDbEk2hbMFGpHO) - Vue 3 tutorials and experiments.
+- [Vue.js Workshops](https://public.vuejsworkshops.com) - Learn Vue 2 in the browser by building 3 applications: a landing page, a todo app, and a podcast aggregator, using Vue.js, Vue-Router, Vuex, Vue-Axios, and Vue-Apollo.
 - [Vue.js Articles](https://thewebdev.info/category/javascript/vue/) - Assorted Vue 2 and 3 tutorials and articles.
-- [Best vue.js Courses On YouTube](https://www.nbshare.io/blog/best-vue-js-courses-on-youtube/) - Handpicked list of best Vue.js tutorials on YouTube
+- [Best vue.js Courses On YouTube](https://www.nbshare.io/blog/best-vue-js-courses-on-youtube/) - List of Vue.js tutorials on YouTube.
 - [Notes on Vue](https://notes-on-vue.ackzell.dev/) - A personal guide to Vue development.
 - [Vue-FAQ](https://vue-faq.org/) - FAQ about frontend in general and Vue.js in particular.
-- [State of Vue Report](https://www.monterail.com/stateofvue?utm_source=Github&utm_medium=awesomevue) - The 5th edition of the most comprehensive Vue publication. Co-created with Evan You, the Vue & Nuxt Core Teams
+- [State of Vue Report](https://www.monterail.com/stateofvue?utm_source=Github&utm_medium=awesomevue) - The 5th edition of a Vue publication, co-created with Evan You and the Vue and Nuxt core teams.
 - [TODOvue Blog](https://github.com/TODOvue/todo-vue) - Guides and tutorials on creating modern components with Vue.js. [Website](https://todovue.blog/)
 
 ### Newsletters
 
-- [Weekly Vue news](https://weekly-vue.news/) - A weekly newsletter with the most interesting Vue & Nuxt News, Tutorials, Projects, and Tools.
+- [Weekly Vue news](https://weekly-vue.news/) - Weekly Vue and Nuxt news, tutorials, projects, and tools.
 
 ### Job Portal
 
-- [Vue.js Jobs - VueJobs](https://vuejobs.com/) - A Vue.js job portal to hire or get hired for all your Vue.js jobs.
-- [Vue.js Interview Questions](https://github.com/sudheerj/vuejs-interview-questions) - A List of 300 VueJS Interview Questions and Answers
+- [Vue.js Jobs - VueJobs](https://vuejobs.com/) - Vue.js job portal for hiring and finding work.
+- [Vue.js Interview Questions](https://github.com/sudheerj/vuejs-interview-questions) - List of 300 VueJS interview questions and answers.
 
 ### Community
 
@@ -280,14 +136,14 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [Vuex introduction video - James Browne from London Vue.js Meetup #1](https://www.youtube.com/watch?v=l1KHL-TX3qs)
 - [Hybrid App Example with Laravel and Vue.js in Portuguese](https://www.youtube.com/watch?v=TGSJjDahlrQ) by @vedovelli
 - [Vue.js Screencast Series in Spanish](https://styde.net/curso-de-vue-js/) on Styde.net
-- [**讲解 Vue.js 官网 中文-含代码、百度云、youtube**](https://github.com/bhnddowinf/vuejs-learn) on bhnddowinf
+- [讲解 Vue.js 官网 中文-含代码、百度云、youtube](https://github.com/bhnddowinf/vuejs-learn) on bhnddowinf
 - [Exploring Real Time Apps with VueJS, ES2015 and Webpack](https://blog.pusher.com/exploring-real-time-apps-with-vuejs-es2016-and-webpack/) on Pusher
 - [Vue.js in Bahasa Indonesia](https://www.sekolahkoding.com/track/belajar-vue-js) on sekolahkoding.com
 - [Vue.js from Scratch Series in Russian](https://www.youtube.com/playlist?list=PL5r0NkdgM0UOxb4Hl81FV5UIgexwTf8h7) on YouTube by .dev
 - [Створення сервісу для зберігання файлів з Flask, RethinkDB та Vue.js, ч. 1](https://codeguida.com/post/526/) Ukraine
 - [VueJS 2 French tutorial](https://www.youtube.com/playlist?list=PLjwdMgw5TTLW-mAtlR46VajrKs4dep3y0) Français par Grafikart
 - [How to Create Great VueJS Applications Using Wijmo Controls](https://wijmo.com/blog/how-to-create-great-vuejs-applications-using-wijmo-controls/)
-- [**讲解 Vue.js 2 官网 中文-含代码、百度云、youtube**](https://github.com/bhnddowinf/vuejs2-learn) on bhnddowinf
+- [讲解 Vue.js 2 官网 中文-含代码、百度云、youtube](https://github.com/bhnddowinf/vuejs2-learn) on bhnddowinf
 - [Up and Running with the Vue.js 2.0 Framework](https://www.sitepoint.com/up-and-running-vue-js-2-0/) on SitePoint
 - [Vue.js 2.0 Fundamentals](https://www.youtube.com/playlist?list=PLwAKR305CRO_1yAao-8aZiQnBqJeyng4O) on YouTube by DevMarketer
 - [Vuex For The Clueless — The Missing Primer On Vue’s Application Data Store](https://medium.com/js-dojo/vuex-for-the-clueless-the-missing-primer-on-vues-application-data-store-33fa51ffc3af#.2j25xpfui)
@@ -335,7 +191,7 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [Vue2 ACL using CASL](https://medium.com/@sergiy.stotskiy/vue-acl-with-casl-781a374b987a) by Sergii Stotskyi
 - [Vuejs 2.5+ Authentication Tutorial using Auth0](https://www.storyblok.com/tp/how-to-auth0-vuejs-authentication) on Storyblok blog
 - [Hygraph introduction guide with Vue](https://hygraph.com/docs/introduction/) on Hygraph
-- [Vue.js debugging in Chrome and VS Code](https://github.com/Microsoft/vscode-recipes/tree/master/vuejs-cli) This recipe shows how to use the Debugger for Chrome extension with VS Code to debug Vue.js applications generated by the Vue CLI.
+- [Vue.js debugging in Chrome and VS Code](https://github.com/Microsoft/vscode-recipes/tree/master/vuejs-cli) - Use the Debugger for Chrome extension with VS Code to debug Vue.js applications generated by the Vue CLI.
 - [Building a movie app interface with Vue.js](https://hackernoon.com/building-a-movie-app-interface-with-vue-js-cdc8aeb5db0b)
 - [Let’s Build a Custom Vue.js Router](https://hackernoon.com/lets-build-a-custom-vue-js-router-7de634be87c4)
 - [Build a Vue.Js E-Commerce App with ButterCMS Headless Backend](https://snipcart.com/blog/vuejs-ecommerce-headless-buttercms)
@@ -412,17 +268,17 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 
 ### Examples
 
-- [Vue 2048 (Vue + Webpack)](https://pengfu.github.io/vue-2048/) by [@pengfu](https://github.com/pengfu): Popular 2048-Game implemented using Vue,Webpack,Sass,ES6
-- [**easy-vue**](https://github.com/TIGERB/easy-vue) a easy example using the vue to implement easy web with vue 2.0, vuex 2.0, vue-router 2.0, vue-infinite-scroll 2.0, vue-progressbar 2.0 by [TIGERB](https://github.com/tigerb)
+- [Vue 2048 (Vue + Webpack)](https://pengfu.github.io/vue-2048/) by [@pengfu](https://github.com/pengfu): 2048 game implemented using Vue, Webpack, Sass, and ES6.
+- [easy-vue](https://github.com/TIGERB/easy-vue) A web example using Vue 2.0, Vuex 2.0, vue-router 2.0, vue-infinite-scroll 2.0, and vue-progressbar 2.0 by [TIGERB](https://github.com/tigerb)
 - [Vue.js with Sails.js example project](https://github.com/ndabAP/vue-sails-example) - This project is for those who are new to single-page applications and want to learn through a real example.
-- [**Vue.js & Pyramid web framework app**](https://github.com/eddyekofo94/pyramidVue.git) - A boilerplate using Pylons Pyramid webframework backend Vuejs webpack2, vue-router, yarn(packet manager)
-- [vue-feathers-chat](https://github.com/ErickPetru/vue-feathers-chat) A sample realtime chat made with Vue in frontend and Feathers in backend, but using just Socket.IO-Client for the communication
-- [vue-xplan](https://github.com/JackGit/xplan/) A rotating earth demo page created with Vue and three.js
-- [**vueSocketChatRoom**](https://github.com/Chanran/vueSocketChatroom) A socket chat room using vue2.x,vuex2.x,vue-router2.x,vux2.x,socket.io
+- [Vue.js & Pyramid web framework app](https://github.com/eddyekofo94/pyramidVue.git) - Boilerplate using Pylons Pyramid as the backend, Vuejs, webpack2, vue-router, and Yarn as the package manager.
+- [vue-feathers-chat](https://github.com/ErickPetru/vue-feathers-chat) Sample realtime chat using Vue on the frontend and Feathers on the backend, with only Socket.IO-Client for communication.
+- [vue-xplan](https://github.com/JackGit/xplan/) Rotating-earth demo created with Vue and three.js.
+- [vueSocketChatRoom](https://github.com/Chanran/vueSocketChatroom) Socket chat room using Vue 2.x, Vuex 2.x, vue-router 2.x, Vux 2.x, and socket.io.
 - [vue-tetris (Use Vue, Vuex, Immutable to code Tetris)](https://binaryify.github.io/vue-tetris/) by [@Binaryify](https://github.com/Binaryify): Use Vue, Vuex, Immutable to code Tetris.
-- [route-planner-vue](https://kasheftin.github.io/route-planner-vue/) by [@Kasheftin](https://github.com/Kasheftin): The tool for planning routes with multiple sortable layers, draggable directions, markers and shapes on google map.
+- [route-planner-vue](https://kasheftin.github.io/route-planner-vue/) by [@Kasheftin](https://github.com/Kasheftin): Route-planning tool with multiple sortable layers, draggable directions, markers, and shapes on Google Maps.
 - [VueJS Example Projects](https://github.com/vue-project) on Github
-- [Vue Weather Notifier](https://github.com/sdras/vue-weather-notifier) A small sample animation app with SVG and Vuex
+- [Vue Weather Notifier](https://github.com/sdras/vue-weather-notifier) Small sample animation app with SVG and Vuex.
 - [X-Flowchart-Vue](https://github.com/OXOYO/X-Flowchart-Vue) - A flowchart editor with SVG and Vue
 - [koa-vue-notes-web](https://github.com/johndatserakis/koa-vue-notes-web) - A fleshed-out SPA using Koa 2.3 on the backend and Vue 2.4 on the frontend. Includes fully featured user-authentication components, CRUD actions for the user's notes, and Vuex store modules.
 - [vue-vuex-todomvc](https://github.com/bahmutov/vue-vuex-todomvc) - Example TodoMVC Vue.js app with Vuex store and server backend via REST and full set of E2E tests using [Cypress.io](https://www.cypress.io/) test runner.
@@ -431,15 +287,15 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [Vue Design System](https://github.com/viljamis/vue-design-system) - An open source boilerplate for building UI Design Systems with Vue.js.
 - [Vuejs Examples](https://vuejsexamples.com/)
 - [Laravel + Nuxt.js boilerplate](https://github.com/acidjazz/laranuxt) - by [@acidjazz](https://github.com/acidjazz)
-- [vue-stack-cesium](https://github.com/meschg/vue-stack-cesium) - A minimal sample configuration project with [CesiumJS](https://cesium.com/cesiumjs/) and all the awesome vue features. The project contains many examples how to combine and use certain packages to get started.
+- [vue-stack-cesium](https://github.com/meschg/vue-stack-cesium) - A minimal sample configuration project with [CesiumJS](https://cesium.com/cesiumjs/) and Vue features. Includes examples of combining and using the packages.
 - [vuemoji-picker](https://github.com/wobsoriano/vuemoji-picker) - Vue 2 and 3 lightweight emoji picker.
-- [Maxim Web Chat](https://github.com/maxim-top/maxim-web) - A chat demo using [MaximTop](https://www.maximtop.com)'s IM SDK (floo), 使用美信拓扑 IM SDK 实现的聊天 App 示例.
-- [umo editor](https://github.com/umodoc/editor) - Umo Editor is an open-source document editor, based on Vue3 and Tiptap. Visit [Playground](https://demo.umodoc.com/editor?lang=en-US) for a fast experience.
-- [Vitesse Starter](https://github.com/antfu/vitesse) ⛺️ Vue 3 starter inclode ( Layouts | i18n | UnoCSS | pinia | Markdown | Dark Mode | PWA | SSG | Component Auto-Importing | File-Based Router | Composition API | TypeScript)
-- [Vitesse-lite Starter](https://github.com/antfu/vitesse-lite) ⛺️ Lightweight version of Vitesse (Vue 3 Starter)
-- [Vue Tic Tac Toe | Cerito Cruz](https://github.com/EduardoProfe666/cerito-cruz-vue) by [@EduardoProfe666](https://github.com/EduardoProfe666): Popular Tic-Tac-Toe-Game with extra features using Vue 3, Vite, TypeScript, Tailwind, Gsap, Howler, Headless UI and Vue Use
+- [Maxim Web Chat](https://github.com/maxim-top/maxim-web) - Chat demo using [MaximTop](https://www.maximtop.com)'s IM SDK (floo).
+- [umo editor](https://github.com/umodoc/editor) - Umo Editor is an open-source document editor, based on Vue3 and Tiptap. Try the [playground](https://demo.umodoc.com/editor?lang=en-US).
+- [Vitesse Starter](https://github.com/antfu/vitesse) - Vue 3 starter with layouts, i18n, UnoCSS, Pinia, Markdown, dark mode, PWA, SSG, component auto-importing, file-based routing, Composition API, and TypeScript.
+- [Vitesse-lite Starter](https://github.com/antfu/vitesse-lite) - Lightweight version of the Vitesse Vue 3 starter.
+- [Vue Tic Tac Toe | Cerito Cruz](https://github.com/EduardoProfe666/cerito-cruz-vue) by [@EduardoProfe666](https://github.com/EduardoProfe666): Tic-tac-toe game with extra features using Vue 3, Vite, TypeScript, Tailwind, Gsap, Howler, Headless UI and Vue Use
 - [i18n boilerplate Intlayer + Vue 3 + Vite](https://github.com/aymericzip/intlayer-vite-vue-template)
-- [tab-toolkit](https://github.com/mioe/tab-toolkit) - very small app-tool for beginner guitarists 🎸 (PWA | Pinia | UnoCSS) by [@mioe](https://github.com/mioe)
+- [tab-toolkit](https://github.com/mioe/tab-toolkit) - very small app-tool for beginner guitarists (PWA | Pinia | UnoCSS) by [@mioe](https://github.com/mioe)
 
 ### Books
 
@@ -486,12 +342,12 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [Vue vs. React – Which Should You Pick For Your Next Web Project?](https://www.ideamotive.co/blog/vue-vs-react?utm_source=github.com&utm_medium=social&utm_campaign=vue-vs-react)
 - [Vue.js from scratch series](https://www.youtube.com/playlist?list=PLLhEJK7fQIxDWDJEyeT68wT8ZroODeRuw) on YouTube by Paris Nakita Kejser
 - [10 Quick-Fire Vue Interview Questions](https://medium.com/javascript-in-plain-english/10-quick-fire-vue-interview-questions-3c16d14a3b51)
-- [VueJS Admin Template](https://themeselection.com/vuejs-admin-template/) - Collection of awesome opens source and premium VueJS Admin Templates.
+- [VueJS Admin Template](https://themeselection.com/vuejs-admin-template/) - Collection of open-source and premium VueJS admin templates.
 
 ### Courses
 
 - [Learn Vue by Building and Deploying a CRUD App](https://testdriven.io/courses/learn-vue/) - This course is focused on teaching the fundamentals of Vue by building and testing a web application using Test-Driven Development (TDD).
-- [Advanced Vue.js Features from the Ground Up](https://frontendmasters.com/courses/advanced-vue/) - Learn how to build more accessible routing, state management, form validation and internationalization libraries from the ground up!
+- [Advanced Vue.js Features from the Ground Up](https://frontendmasters.com/courses/advanced-vue/) - Learn how to build more accessible routing, state management, form validation and internationalization libraries from the ground up.
 - [Become a Ninja with Vue 3](https://vue-exercises.ninja-squad.com) - This course teaches how to build a complete application with Vue 3, step by step, using Vue CLI, TypeScript and the Composition API. Each exercise comes with instructions and tests to check 100% of your code.
 
 ### Documentaries
@@ -507,55 +363,55 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 ### Open Source
 
 - [npmcharts.com](https://github.com/cheapsteak/npmcharts.com) - Compare npm packages and spot download trends.
-- [Koel](https://github.com/phanan/koel) - A personal music streaming server that works.
-- [astralapp](https://github.com/astralapp/astral) - Organize Your GitHub Stars With Ease.
+- [Koel](https://github.com/phanan/koel) - Personal music streaming server.
+- [astralapp](https://github.com/astralapp/astral) - Organize GitHub stars.
 - [PJ Blog](https://github.com/jcc/blog) - Open source blog built with Laravel and Vue.js.
 - [OpenAPI 3 viewer](https://github.com/koumoul-dev/openapi-viewer) - Browse and test a REST API described with the OpenAPI 3.0 Specification
 - [nativescript-vue](https://github.com/rigor789/nativescript-vue) - A Vue.js implementation of the NativeScript renderer.
-- [Paper-Dashboard](https://github.com/creativetimofficial/vue-paper-dashboard) -Creative Tim Paper Dashboard made for Vue
+- [Paper-Dashboard](https://github.com/creativetimofficial/vue-paper-dashboard) - Creative Tim Paper Dashboard for Vue.
 - [CoreUI Vue Admin Template](https://github.com/coreui/coreui-free-vue-admin-template) - Open Source Admin Template powered by Vue.js
-- [vuejs-extension-pack vscode](https://github.com/mubaidr/vuejs-extension-pack) - An extension packf or vscode with popular VS Code extensions for Vue.js development.
+- [vuejs-extension-pack vscode](https://github.com/mubaidr/vuejs-extension-pack) - Extension pack for VS Code with popular extensions for Vue.js development.
 - [Wiki.js](https://github.com/Requarks/wiki) - A modern, lightweight and powerful wiki app built on NodeJS, Git and Markdown
 - [peregrine-cms](https://github.com/headwirecom/peregrine-cms) - A Vue.js and Apache Sling based head-optional CMS
 - [Light Bootstrap Dashboard](https://github.com/creativetimofficial/vue-light-bootstrap-dashboard) - Creative Tim Light Bootstrap Dashboard made for Vue
 - [vue-storefront](https://github.com/DivanteLtd/vue-storefront) - Vue.js Storefront - PWA for eCommerce. 100% offline, platform agnostic, headless, Magento2 supported.
-- [Laravel Enso](https://github.com/laravel-enso/enso) - SPA Admin Panel built with Bulma, VueJS and Laravel, packing lots of features out of the box.
-- [Hubble](https://hubble.js.org) - :telescope: Travel through GitHub Stars' history.
+- [Laravel Enso](https://github.com/laravel-enso/enso) - SPA Admin Panel built with Bulma, VueJS and Laravel, with many features provided out of the box.
+- [Hubble](https://hubble.js.org) - Browse GitHub stars' history.
 - [Vuepress](https://vuepress.vuejs.org/) - Minimalistic Vue-powered static site generator
 - [Socialhome](https://github.com/jaywink/socialhome) - A federated rich profile builder with social networking features
 - [chrome-ribbon-reminder](https://github.com/johndatserakis/chrome-ribbon-reminder) - A Chrome extension written using Vue and Async/Await. Uses a popup display and changes badge counts.
 - [Faviator](https://www.faviator.xyz/) - A simple easy favicon generator.
-- [Minimal Notes](https://github.com/vladocar/Minimal-Notes) - Web app build with Vue.js
+- [Minimal Notes](https://github.com/vladocar/Minimal-Notes) - Web app built with Vue.js.
 - [Stack Edit](https://github.com/benweet/stackedit/) - In-browser Markdown editor
 - [Bael Blog Template](https://bael-theme.jake101.com/) - A static generated blog template that uses Netlify CMS for the backend and Netlify for hosting. Features a brutalist aesthetic, fuzzy search, serverless email signup, and more.
 - [Buefy Shop](https://github.com/14nrv/buefy-shop) - Sample shop, open source, built with Nuxt, Stripe, Firebase, Bulma and Serverless Functions.
 - [Carpoolear](https://github.com/STS-Rosario/carpoolear) - The open source Vue.js frontend (mobile and cordova app) for the argentinian carpooling application: [Carpoolear](https://carpoolear.com.ar)
-- [Vue E-Store Templet](https://github.com/rash0/Vue-Ecom) - An e-commerce template build with vue/vuex/vue-router and bootstrap4.
-- [Twill](https://twill.io) - An open source CMS toolkit for Laravel that helps developers rapidly create a custom admin console that is intuitive, powerful and flexible.
-- [Vue Org Chart](https://github.com/Hoogkamer/vue-org-chart) - Manage and publish your interactive organization chart (orgchart), free and no webserver required.
-- [Thermal](https://thermal.codecarrot.net) - One stop to all Git repository.
+- [Vue E-Store Templet](https://github.com/rash0/Vue-Ecom) - E-commerce template built with Vue, Vuex, vue-router, and Bootstrap 4.
+- [Twill](https://twill.io) - An open source CMS toolkit for Laravel that helps developers create a customizable admin console.
+- [Vue Org Chart](https://github.com/Hoogkamer/vue-org-chart) - Manage and publish your interactive organization chart (orgchart), free, with no web server required.
+- [Thermal](https://thermal.codecarrot.net) - Tool for working with Git repositories.
 - [QMK Configurator](https://github.com/qmk/qmk_configurator) - QMK Firmware Keyboard Configuration UI in Vue.js.
-- [Daily](https://github.com/dailynowco/daily) - Curated dev news delivered to your new tab 👩🏽‍💻
+- [Daily](https://github.com/dailynowco/daily) - Curated developer news delivered to your new tab.
 - [Laravel File Manager](https://github.com/alexusmai/laravel-file-manager) - Powerful file manager for Laravel
 - [Vue Crypto Dashboard](https://github.com/JayeshLab/vue-crypto-dashboard) - Cryptocurrency Dashboard made with Vue.js
 - [Vue Expenses](https://github.com/simplyvinay/vue-expenses) - Expense tracking app made with Vue.js, Vuetify and ASP.NET Core
 - [Akaunting](https://github.com/akaunting/akaunting) - A free and online accounting software for small businesses and freelancers based on Laravel and VueJS.
 - [MQTTX](https://github.com/emqx/MQTTX) - Cross-platform MQTT 5.0 desktop client built with Vue.js, Typescript and Electron.
 - [Pychat](https://github.com/akoidan/pychat) - Self-hosted webrtc video chat (an alternative to Slack)
-- [CodeceptJS UI](https://github.com/codecept-js/ui) - Cypress-liked UI for ✔️ CodeceptJS end 2 end tests ✔️.
+- [CodeceptJS UI](https://github.com/codecept-js/ui) - Cypress-like UI for CodeceptJS end-to-end tests.
 - [LeagueStats](https://github.com/vkaelin/LeagueStats) - Statistics website for players of the online game League of Legends.
-- [Savycart](https://github.com/itsalb3rt/savycart-app) - PWA to track personal purchases, No more paper and pencil to go to the supermarket 🏬 Vue and Vuetify
-- [Afterman](https://github.com/itsalb3rt/afterman) - 🌕 Create beautiful docs in markdown and HTML from postman collection. Using Quasar Framework
+- [Savycart](https://github.com/itsalb3rt/savycart-app) - PWA for tracking personal purchases for supermarket shopping, built with Vue and Vuetify.
+- [Afterman](https://github.com/itsalb3rt/afterman) - Generate Markdown and HTML documentation from Postman collections using Quasar Framework.
 - [LogChimp](https://github.com/logchimp/logchimp) - Open-source software to track your customer's feedback to build better products.
-- [Yacht](https://github.com/Selfhostedpro/Yacht) - A Docker container management webui using Vuetify for a hassle free way of managing docker containers and projects.
+- [Yacht](https://github.com/Selfhostedpro/Yacht) - A Docker container management webui using Vuetify for managing Docker containers and projects.
 - [Antares SQL](https://github.com/Fabio286/antares) - Cross platform SQL client made to be simple and complete.
-- [Bagisto](https://github.com/bagisto/bagisto) - A Free and Opensource Laravel eCommerce framework built for all to build and scale your business.
+- [Bagisto](https://github.com/bagisto/bagisto) - Free, open-source Laravel eCommerce framework for building and scaling a business.
 - [GrandNode 2.0](https://github.com/grandnode/grandnode2/) - Open Source Cross Platform E-Commerce Solution based on .NET Core 5.0 and MongoDB / Azure CosmosDB / Amazon DocumentDB / VueJS
-- [Aimeos](https://github.com/aimeos/aimeos) - Leading Laravel eCommerce framework to build ultra fast online shops, marketplaces and complex B2B applications scalable from 1 to 1,000,000,000+ items
+- [Aimeos](https://github.com/aimeos/aimeos) - Laravel eCommerce framework for online shops, marketplaces, and complex B2B applications. The source describes it as fast and scalable from 1 to 1,000,000,000+ items.
 - [XIV ToDo](https://github.com/bourgeoisor/xivtodo) - Dashboards, completion trackers, tailored weekly and daily checklists and tools for Final Fantasy XIV.
-- [Interface X](https://github.com/empathyco/x) - UI Search&Discovery components to rapidly build beautiful search experiences
+- [Interface X](https://github.com/empathyco/x) - UI search and discovery components for building search interfaces.
 - [Balancer](https://github.com/balancer-labs/frontend-v2) - A Decentralized Finance app that runs on Ethereum.
-- [Materio Free Vuetify VueJS Laravel Admin Template](https://github.com/themeselection/materio-vuetify-vuejs-laravel-admin-template-free) - Open-source & easy to use Vuetify Vuejs Laravel Admin Template with Elegant Design & Unique Layout.
+- [Materio Free Vuetify VueJS Laravel Admin Template](https://github.com/themeselection/materio-vuetify-vuejs-laravel-admin-template-free) - Open-source Vuetify, Vuejs, and Laravel admin template with a distinctive layout.
 - [Dashy](https://github.com/lissy93/dashy) - A self-hosted startpage, with an easy to use visual editor, status checking, themes, widgets and tons more
 - [FAIRshare](https://github.com/fairdataihub/FAIRshare) - Sharing biomedical research data and software according to applicable FAIR guidelines
 - [Snippets.Ninja](https://github.com/dd3v/snippets.ninja) - Progressive web application for code snippet management. Offline first. Open Source. App uses IndexedDB for local storage.
@@ -565,13 +421,13 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [Overlay](https://github.com/os-scar/overlay) - A browser extension helping developers evaluate open source packages before picking them.
 - [activist.org/](https://activist.org/) - Open-source, nonprofit activism platform.
 - [MYDY Dashboard](https://github.com/pyramide-agency/mydy-dashboard) - Self-hosted personal productivity and finance management dashboard with AI assistant, Kanban board, time tracking, and Telegram Mini App integration. Built with Nuxt 4 and Laravel 11.
-- [Sneat Free Vuetify VueJS Admin Template](https://themeselection.com/item/sneat-free-vuetify-vuejs-admin-template/) - The Ultimate Free VueJS Admin Template for building responsive web apps
+- [Sneat Free Vuetify VueJS Admin Template](https://themeselection.com/item/sneat-free-vuetify-vuejs-admin-template/) - Free VueJS admin template for building responsive web apps.
 - [slidev](https://github.com/slidevjs/slidev) - Presentation Slides for Developers
-- [YesPlayMusic](https://github.com/qier222/YesPlayMusic) - High-looking third-party NetEase cloud player, support Windows / macOS / Linux :electron:
-- [douyin](https://github.com/zyronon/douyin) - Imitate TikTok ，Vue Best practices on Mobile
+- [YesPlayMusic](https://github.com/qier222/YesPlayMusic) - Third-party NetEase cloud player for Windows, macOS, and Linux.
+- [douyin](https://github.com/zyronon/douyin) - TikTok-style application illustrating Vue practices on mobile.
 - [MyIP](https://github.com/jason5ng32/MyIP) - All in one IP Toolbox. Easy to check what's your IPs, IP geolocation, check for DNS leaks, examine WebRTC connections, speed test, ping test, MTR test, check website availability and more.
-- [fylepad](https://github.com/imrofayel/fylepad) - a notepad with powerful rich-text editing, built with Vue.
-- [fresfolio](https://github.com/dkioroglou/fresfolio) - a browser-based note-taking app for managing personal and research projects. The app uses Flask as backend and Vue.js as frontend leveraging the Quasar framework for UI components and responsive design.
+- [fylepad](https://github.com/imrofayel/fylepad) - Notepad with rich-text editing, built with Vue.
+- [fresfolio](https://github.com/dkioroglou/fresfolio) - Browser-based note-taking app for personal and research projects, with a Flask backend and Vue.js frontend using Quasar for UI components and responsive design.
 - [FavBox](https://github.com/dd3v/favbox) - Local-first browser extension for smarter bookmark management with tags, search, duplicate and broken link detection. Built with Vue 3, Vite and IndexedDB.
 
 - [JARVIS](https://github.com/hyhmrright/JARVIS) - Self-hosted AI assistant platform with Vue 3 frontend, Pinia state management, TypeScript, and real-time SSE streaming chat. FastAPI backend with LangGraph ReAct agents, RAG knowledge base, multi-LLM support (DeepSeek/OpenAI/Anthropic), and plugin SDK.
@@ -588,19 +444,18 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [Moonitor](https://moonitor.io/) - Cryptocurrency tracker for Desktop.
 - [Deskree](https://deskree.com/) - Online collaboration platform that combines Ideas, Tasks, and Issues in one place.
 - [ScaffoldHub](https://www.scaffoldhub.io) - Online Web App Generator for VueJS with NodeJS, and MongoDB or SQL.
-- [Commandeer](https://getcommandeer.com) - Cloud Management Reimagined. A Desktop cloud management app built with Vue.js and Electron.
-- [Leave Dates](https://leavedates.com) - A powerful new way to track your staff leave.
+- [Commandeer](https://getcommandeer.com) - Desktop cloud management app built with Vue.js and Electron.
+- [Leave Dates](https://leavedates.com) - Track staff leave.
 - [vREST NG](https://ng.vrest.io) - An enterprise application for Automated API Testing, built with VueJS and Element UI.
 - [Coloban](https://www.coloban.com) - All-in-one project management tool with chats, Kanban, Gantt, calls, screenshare and many more.
-- [NxShell](https://github.com/nxshell/nxshell) - An easy to use new terminal for SSH, which based on Electron and VueJS.
-- [Materio Vuetify VueJS Admin Template](https://themeselection.com/products/materio-vuetify-vuejs-admin-template/) - Most Powerful, Developer Friendly, Production ready & Comprehensive Vuetify VueJS Admin Template.
-- [NocoDB](https://github.com/nocodb/nocodb) - An opensource Airtable alternative.
+- [NxShell](https://github.com/nxshell/nxshell) - SSH terminal based on Electron and VueJS.
+- [Materio Vuetify VueJS Admin Template](https://themeselection.com/products/materio-vuetify-vuejs-admin-template/) - Vuetify VueJS admin template, described by the source as comprehensive, developer-friendly, and production-ready.
+- [NocoDB](https://github.com/nocodb/nocodb) - Open-source Airtable alternative.
 - [He3](https://he3.app) - Free and Modern Developer Utilities Toolbox.
 - [RunJS](https://runjs.app) - JavaScript playground that evaluates your code as you type and gives instant feedback. Ideal for prototyping ideas or trying out new libraries.
-- [Sneat Vuetify VueJS Admin Template](https://themeselection.com/item/sneat-vuetify-vuejs-admin-template/) - The Ultimate VueJS Admin Template for responsive web apps.
+- [Sneat Vuetify VueJS Admin Template](https://themeselection.com/item/sneat-vuetify-vuejs-admin-template/) - VueJS admin template for responsive web apps.
 - [Litlyx](https://litlyx.com) - AI-powered web analytics platform. Open-source alternative to Google Analytics 4 and Mixpanel.
 - [Fynk](https://fynk.com) - Contract creation, signing, and management platform.
-
 
 ### Apps/Websites
 
@@ -614,14 +469,14 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [Statamic](https://statamic.com)
 - [TravelMap](https://clem.travelmap.fr) - A simple way for travelers to create a blog based on a Map.
 - [Proper Cloth Shirt Builder](https://propercloth.com/design-a-shirt) - Custom shirt builder.
-- [vNotes](https://github.com/IgorHalfeld/v-notes) - Simple and beautiful notepad to Markdown with Vue.js and Local Storage API.
+- [vNotes](https://github.com/IgorHalfeld/v-notes) - Markdown notepad using Vue.js and the Local Storage API.
 - [Dermail](https://github.com/zllovesuki/dermail-webmail) - A webmail client written in Vue.js for Dermail, a mail system written in node.js.
 - [octimine](https://www.octimine.com/) - A patent search engine.
-- [Draxed](https://www.draxed.com/) - A web based MySQL and PostgreSQL data browser and dashboard manager.
-- [滚蛋吧！莆田系](https://putianxi.github.io/) - Show all Putian hospital information
+- [Draxed](https://www.draxed.com/) - Web-based MySQL and PostgreSQL data browser and dashboard manager.
+- [滚蛋吧！莆田系](https://putianxi.github.io/) - Show information on all Putian hospitals.
 - [Livestorm](https://livestorm.co) - Webinar / Live events app.
 - [Holden](https://www.holden.com.au)
-- [12BAY.VN](https://12bay.vn) - Applications online flight bookings.
+- [12BAY.VN](https://12bay.vn) - Online flight-booking application.
 - [PLAYCODE.IO](https://playcode.io) - Playground for Rapid Frontend Experiments.
 - [The Void Radio](https://thevoidrad.io) - Underground House Music Online Radio.
 - [Bitly Vue](https://alpixel.github.io/bitly-vuejs) - Shorten URLs with VueJS & Bitly API.
@@ -630,122 +485,122 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [WizzAir](https://wizzair.com/)
 - [Moving to HTTPS](https://movingtohttps.com/) - Guide to moving different platform/hosting sites to HTTPS
 - [Euronews](https://www.euronews.com) - Euronews is a multilingual news media service, headquartered in Lyon, France.
-- [Vue.js Feed](https://vuejsfeed.com/) - The latest Vue.js news, tutorials, plugins, and more. Made with Vue.js and Laravel.
+- [Vue.js Feed](https://vuejsfeed.com/) - Vue.js news, tutorials, plugins, and more. Made with Vue.js and Laravel.
 - [Guess Right](https://kdcinfo.com/guessright/) - A 'guess the word' game - Written with Vue/vuex/vue-router (front-end) and Laravel/MySQL (back-end). Code is [Open Source on GitHub](https://github.com/KDCinfo/guess-right) (although not the live files that run the game at kdcinfo).
 - [GRAP](https://grap.io) - Business communication service
 - [JSON Schema Editor](https://json-schema-editor.tangramjs.com) - An intuitive editor for JSON schema built with Vue.js and Firebase.
 - [Winsome Trivia](https://splode.github.io/trivia/) - A single or multiplayer trivia game featuring over 2,000 unique questions built with Vue.js and powered by the Open Trivia Database.
 - [Moon Organizer](https://moonorganizer.com/calendar/) - Lunar calendar app
-- [Kinderbesteck](https://www.kinderbesteck-gravur.de/) - A full Online Shop SPA with Vue2.0, Vuex, Vue Router
+- [Kinderbesteck](https://www.kinderbesteck-gravur.de/) - Online shop SPA using Vue 2.0, Vuex, and Vue Router.
 - [Power Thesaurus](https://www.powerthesaurus.org) - A crowdsourced online thesaurus
-- [PAIXIN](https://www.paixin.com/) - A genuine picture sale website
+- [PAIXIN](https://www.paixin.com/) - Picture sales website, described by the source as “genuine”.
 - [1XBET](https://1xbet.com) - A betting company operating since 2007
-- [CrowdCircus](https://crowdcircus.com) - Europe’s biggest crowdfunding- and crowdinvesting-aggregator
-- [PingBreak](https://pingbreak.com) - A free and simple website monitoring service using vuejs for real-time dashboard
+- [CrowdCircus](https://crowdcircus.com) - Crowdfunding and crowdinvesting aggregator, described by the source as Europe’s biggest.
+- [PingBreak](https://pingbreak.com) - Free website-monitoring service using Vue.js for its realtime dashboard.
 - [Todoist Tribute](https://github.com/rohitpaulk/todoist-tribute/) - Todoist clone, written in Rails + Vue
 - [JSON Editor](https://json-editor.tangramjs.com) - A schema-aware JSON editor built with Vue2 and firebase.
 - [Develteam](https://www.develteam.com) - A social network for indie game developers.
 - [Mixsii](https://www.mixsii.com) - A free video chat room site for teens, adults, family, and friends.
 - [PipQuest](https://pipquest.gregorterrill.com) - A retro-style puzzle game built in Vue
 - [Matryx](https://matryx.ai/) - A decentralized collaboration platform.
-- [iPrevYou - YouTube™ Player](https://chrome.google.com/webstore/detail/iprevyou-youtube-player/blijlgfnjhnhmnaldaiienmjggbjhbaa) - A chrome app for watching youtube videos on your desktop.
+- [iPrevYou - YouTube™ Player](https://chrome.google.com/webstore/detail/iprevyou-youtube-player/blijlgfnjhnhmnaldaiienmjggbjhbaa) - Chrome app for watching YouTube videos on the desktop.
 - [Item Manager](https://itemmanager.uk) - An application to transfer items for Destiny 2 game.
 - [Frontend Masters Intro to Vue](https://frontendmasters.com/courses/vue/) - Frontend Masters full day course
 - [TR-101](https://inverted3.gitlab.io/drum-machine/) - A drum synth / sequencer.
 - [Bazaar](https://bazaar.co) - Media sharing platform.
 - [Vectr](https://vectr.com/new) - A free vector graphics software
-- [Habitica](https://habitica.com/) - online task management application in the form of a role-playing game.
+- [Habitica](https://habitica.com/) - Online task-management application in the form of a role-playing game.
 - [MadeWithVueJs](https://madewithvuejs.com/) - A Gallery of Projects made with Vue.js (also the Site itself uses Vue.js)
-- [Thousand Ether Homepage](https://thousandetherhomepage.com) - The Million Dollar Homepage reimagined as an Ethereum DApp. Build on Vue.js and open source.
-- [Let's Enchance](https://letsenhance.io/) - free online image upscale and enhancement with neural networks.
+- [Thousand Ether Homepage](https://thousandetherhomepage.com) - The Million Dollar Homepage reimagined as an Ethereum DApp. Built with Vue.js and open-source.
+- [Let's Enchance](https://letsenhance.io/) - Free online image upscaling and enhancement using neural networks.
 - [Pi.TEAM - Online Invoicing and Accounting](https://pi.team) - Simple to use online accounting and invoicing, free for single users and freelancers.
-- [Tipe](https://tipe.io) - Next Generation API-first CMS. Create your content with powerful editing tools and access it from anywhere with a GraphQL or REST API. Stop letting your CMS decide how you build your apps.
-- [Bubbleflat](https://bubbleflat.com) - Online platform that helps students and young Professionals find their perfect roommates by searching for people with similar lifestyles, interests, or schools. Laravel & Vuejs
-- [sunpos](https://sunpos.ru) - Sun position, elevation, azimuth, ecliptic/equatorial coordinates and sunrise/sunset time (Julian day) calculation and conversion utilities. Web site is programmed using pure JS, Vuejs and i18n Vuejs localization plugin. Visualization is created using D3.js.
+- [Tipe](https://tipe.io) - API-first CMS with content-editing tools and access from anywhere through a GraphQL or REST API.
+- [Bubbleflat](https://bubbleflat.com) - Online platform helping students and young professionals find roommates with similar lifestyles, interests, or schools. Built with Laravel and Vue.js.
+- [sunpos](https://sunpos.ru) - Calculation and conversion utilities for the Sun’s position, elevation, azimuth, ecliptic/equatorial coordinates, and sunrise/sunset times (Julian day). Built with plain JavaScript, Vue.js, the i18n Vue.js localization plugin, and D3.js visualization.
 - [27.ua](https://27.ua) - Ukraine-based internet hypermarket
 - [Chess Guardian](https://vitomd.com/vue-chess-guardian/) - Answer chess positional questions from your own games.
 - [Blackjack Break](https://blackjackbreak.com) - A quick game of blackjack
 - [GameVix](https://www.gamevix.com/) - Swap your used video game discs with others, hassle free. PWA with Material Design.
-- [VivifyScrum](https://app.vivifyscrum.com) - Agile project management app for teams that deliver. Customizable Scrum and Kanban boards.
+- [VivifyScrum](https://app.vivifyscrum.com) - Agile project management app with customizable Scrum and Kanban boards.
 - [9GAG](https://9gag.com) - Popular online platform and social media website
 - [Kitchen Stories](https://kitchenstories.io) - Cooking platform
-- [Cronhub](https://cronhub.io) - Painless Cron Monitoring Tool
+- [Cronhub](https://cronhub.io) - Cron-monitoring tool.
 - [wrkprty](https://wrkprty.com) - Pop-up coworking events for freelancers, remote workers, and professionals looking to get out of the office.
-- [Broker Notes](https://broker-notes.com) - 'Study to become a Real Estate Agent' :house:
+- [Broker Notes](https://broker-notes.com) - Study material for becoming a real estate agent.
 - [SyncLounge](https://synclounge.tv) - SyncLounge is a tool to sync Plex content across multiple players in multiple locations.
 - [HCE.it](https://www.hce.it/) - The website of an Italian agency, entirely made with Vue using a Laravel-based headless CMS.
 - [Spektrum](https://spektrummedia.com/) - The website of Spektrum Media Agency
 - [SPK](https://www.spk.rocks/) The website of SPK Ecosystem
-- [IDDEF](https://www.iddef.org/) ☪️ The Federation of the Associations that Value Humanity's webpage, CMS, CRM and Donation and all e-commerce pages are designed with Vue.js, Vuex and pure JavaScript 🙏
+- [IDDEF](https://www.iddef.org/) The Federation of the Associations that Value Humanity: its website, CMS, CRM, donation pages, and all e-commerce pages use Vue.js, Vuex, and plain JavaScript.
 - [Roast](https://roastandbrew.coffee/) an app built to help coffee enthusiasts find their next cup of coffee while learning about Laravel + Vue.js.
 - [CryptoArte](https://www.cryptoarte.io) - An Ethereum art collection, non-fungible token, and Dapp.
 - [Scroll.in](https://scroll.in) - Scroll.in is an independent news, information, and entertainment venture.
-- [Brandy](https://getbrandy.io) - brand assets manager for your menu bar.
+- [Brandy](https://getbrandy.io) - Brand-assets manager for the menu bar.
 - [NBC Sports](https://www.nbcsports.com/) - NBC Sports is a sports news website.
-- [WITHIN](https://www.with.in/) - Extraordinary stories in Virtual Reality.
+- [WITHIN](https://www.with.in/) - Stories in virtual reality.
 - [beCamp](https://be.camp) - A community-organized tech conference in Charlottesville, VA. Website code is open-source.
-- [Trustpilot](https://www.trustpilot.com) - a free and open to all review platform.
+- [Trustpilot](https://www.trustpilot.com) - Free review platform open to everyone.
 - [Lagom](https://lagom.rsstudio.net/) - Simple, intuitive and fully responsive WHMCS theme
 - [ScoutMyTrip - Roadtrip Planner](https://scoutmytrip.com/roadtrip-planner/start) - Road trip planning app for India which helps travelers to build their itinerary, discover points of interest, find hotels, gas stations, food joints etc along the route.
-- [GamersClub](https://gamersclub.com.br/?lang=english) - Biggest company of eSport community development in Brazil
+- [GamersClub](https://gamersclub.com.br/?lang=english) - eSports community-development company, described by the source as the biggest in Brazil.
 - [MIT](https://www.mit.edu/) - Official Website of Massachusetts Institute of Technology.
 - [Elvenar](https://en.elvenar.com/) - Elvenar is a browser based fantasy city builder game.
-- [Beacon](https://beaconapp.in) - :blue_heart: A service that allows you to share your content across multiple websites.
+- [Beacon](https://beaconapp.in) - Service for sharing content across multiple websites.
 - [Artfinder](https://www.artfinder.com/) - Artfinder is a website for buying & selling art paintings.
 - [GitHubExplorer](https://kiinlam.github.io/GitHubExplorer/) - Pure static page webapp for exploring GitHub. Using `Vuejs` and `GitHub GraphQL API v4`.
-- [HappyPlants](https://github.com/morkro/happy-plants) - A progressive web app for organizing your plants 🌱.
-- [Pocket Lists](https://pocketlists.com) - World's friendliest to-do list app.
+- [HappyPlants](https://github.com/morkro/happy-plants) - A progressive web app for organizing your plants.
+- [Pocket Lists](https://pocketlists.com) - To-do list app.
 - [Padlet](https://padlet.com) - Collaborative bulletin boards
 - [Glovo](https://glovoapp.com/en/) - On-demand delivery
-- [MySigMail](https://mysigmail.com) - MySigMail is a free, in browser, email signature generator without creating account
+- [MySigMail](https://mysigmail.com) - Free browser-based email-signature generator that does not require an account.
 - [Wordguru](https://wordguru.netguru.com) - A simple verbal game where you split into teams and try to guess as many keywords as you can.
-- [ApiFlash](https://apiflash.com) - A Chrome based screenshot API built on top of AWS Lambda for Developers
+- [ApiFlash](https://apiflash.com) - Chrome-based screenshot API built on AWS Lambda for developers.
 - [Git Superstar](https://git-superstar.firebaseapp.com) - Count your git stars and top repositories.
 - [Tapestri Designer](https://tapestridesigner.com) - Free tool to design PCR primers for genome sequencing experiments (NGS)
 - [Geenes](https://geenes.app) - Generate and apply color palettes to your UI, then export it to sketch or code.
-- [ExifShot](https://exifshot.com/) - What and how on photography, beautifully.
-- [Studolog](https://studolog.com/) - Online file sharing platform for students, including tester and reviews. Currently in Czech 🇨🇿 only.
+- [ExifShot](https://exifshot.com/) - Photography resource described by the source as covering “what and how”.
+- [Studolog](https://studolog.com/) - Online file sharing platform for students, including “tester” (the source’s term) and reviews. The recorded source describes it as Czech-only.
 - [Gamebrary](https://gamebrary.com) - Open source tool to organize video game collections.
 - [Premium Poker Tools](https://premiumpokertools.com/) - What poker players use to study.
 - [QMK Configurator](https://config.qmk.fm/) - Configure, Build, and Download Custom QMK Firmware from your browser.
-- [Worksome](https://www.worksome.com/) - Marketplace/platform for qualified it professionals and freelancers and companies looking to hire them.
+- [Worksome](https://www.worksome.com/) - Marketplace/platform for qualified IT professionals and freelancers and companies looking to hire them.
 - [Translator-vuejs](https://manuel-suarez-abascal.github.io/translator-vuejs/) - Translation App built with Vuejs, Yandex API & ResponsiveVoice.js API.
 - [Big Timer](https://www.bigtimer.net/) - Fullscreen countdown timer for workshops, meetings and presentations. Big Timer helps workshop facilitators, meeting chairs, design sprinters, presenters and aspiring game show hosts stick to their program.
 - [Kvalitetskontroll](https://www.kvalitetskontroll.no/) - Norwegian management system tailored for the construction industry.
 - [Poolside FM](https://poolside.fm/) - A retro-style music player
-- [Inoreader.com](https://inoreader.com/) - One of the biggest RSS readers and news aggregators out there.
+- [Inoreader.com](https://inoreader.com/) - RSS reader and news aggregator, described by the source as one of the biggest.
 - [AwesomeTechStack](https://awesometechstack.com) - Website Tech Stack Analyzer
-- [massCode](https://github.com/antonreshetov/massCode) - An open source code snippets manager for developers. Build with Electron, Vue and Monaco editor.
+- [massCode](https://github.com/antonreshetov/massCode) - An open source code snippets manager for developers. Built with Electron, Vue, and Monaco editor.
 - [ClipLeap](https://www.clipleap.com/) - Platform for posting and sharing moments in long videos.
-- [RSVP Keeper](https://www.rsvpkeeper.com/) - Online reservations made easy. Get your event up and running in no time. Made with Vue and Go.
-- [PNGK](https://pngk.org/) - Official website for a consultancy company working to find solutions for humanitarian, human rights and other like minded organizations.
+- [RSVP Keeper](https://www.rsvpkeeper.com/) - Online event reservations, built with Vue and Go.
+- [PNGK](https://pngk.org/) - Official website for a consultancy company working to find solutions for humanitarian, human rights and other like-minded organizations.
 - [BMWUSA Vehicle Configurator](https://www.bmwusa.com/build-your-own.html) - Vehicle Configurator for BMWUSA
 - [Fanmio](https://fanmio.com) - Meet your favorite celebrities through personal video experiences on Fanmio
 - [AtomicWallet](https://atomicwallet.io) - Multi-asset cryptocurrency wallet. Desktop and [mobile](https://play.google.com/store/apps/details?id=io.atomicwallet) apps both were built with Vue.
 - [Helpninja](https://dashboard.helpninja.com/) - Simple & fast help desk
-- [Todo DEV](https://github.com/IanLuan/TodoDev) - A simple Todo App made for developers with Vuejs, Vuetify and the powerful Firebase.
+- [Todo DEV](https://github.com/IanLuan/TodoDev) - Todo app for developers, built with Vuejs, Vuetify, and Firebase.
 - [36 Pixels](https://www.36pixels.fr/) - French agency website made with vue.js
 - [temp-mail.io](https://temp-mail.io/) - Disposable temporary email service.
 - [Narrandum](https://narrandum.com) - Customer journey mapping tool built using Vue.js, Vuetify, and Feathersjs
 - [goonlinetools.com](https://goonlinetools.com/) - 100% Free Online Tools site.
 - [Portfolio Site](https://olaolu.dev/) - Olaolu Olawuyi, A Frontend developer and UX Engineer's portfolio site.
-- [d-patterns.js.org](https://d-patterns.js.org) - FOSS Discord templates listing website 💬
+- [d-patterns.js.org](https://d-patterns.js.org) - FOSS Discord-template listing website.
 - [linksift.com](https://linksift.com) - LinkSift lets you explore what a website links to.
 - [postmake.io](https://postmake.io) - A curated directory of 300+ tools and resources used by companies and startups all over the web. Built using Vue.js and Nuxt.
-- [screenshotapi.net](https://screenshotapi.net) - A website screenshot API, capture pixel-perfect website screenshots.
+- [screenshotapi.net](https://screenshotapi.net) - Website screenshot API for capturing pixel-perfect screenshots.
 - [FontGet](https://www.fontget.com/) - Download Free Fonts.
 - [Travel_Smart](https://travelsmart.netlify.app/) - A tour-based web app that uses Vue + Vue Router + Vuex.
 - [National Institutes of Health (NIH): FEVS Survey Results](https://hr.nih.gov/workforce/fevs/2019-fevs-survey-results) - National Institutes of Health (NIH) data visualization of Federal Viewpoints Survey (FEVS) survey results.
-- [Nipashe](https://nipashe.netlify.app/) -"Nipashe" is a Swahili word that means "Inform me". Nipashe is a web app built in Vue + Vuex(state management) + Vue-Router(navigation) that gives a tally/statistics on the current COVID19 infections across the world based on the WHO
+- [Nipashe](https://nipashe.netlify.app/) - "Nipashe" is Swahili for "Inform me". Vue app using Vuex for state management and Vue-Router for navigation. The source describes it as tallying worldwide COVID-19 infections using WHO data.
 - [DevSnap.me](https://devsnap.me) - A website that helps web developers find tons of free and open source HTML, CSS, and JavaScript assets.
-- [Back Home/回家](https://flights.vincentc.us/) - A flight searching engine for the flights from oversea to China Mainland (and China to oversea) that still fly during COVID-19.
+- [Back Home/回家](https://flights.vincentc.us/) - Flight-search engine described by the source as finding flights operating during COVID-19 between mainland China and overseas destinations in both directions.
 - [Deadlines](https://deadlines.vercel.app) - An offline, simple deadline tracker made with Vue.js and localForage.
 - [Darwin Analytics](https://www.darwin.so) - Tool for measuring and optimizing your site. Built with Vue3 and Vite.
-- [Scrumfast](https://www.scrumfast.com) - Extremely intuitive project management scrum tool.
+- [Scrumfast](https://www.scrumfast.com) - Scrum project-management tool.
 - [Gradientos](https://www.gradientos.app) - Gradientos makes finding gradients easy.
 - [httptools.dev](https://httptools.dev/) - Collection of many online checks and tools for web developers, like a JSON formatter, redirect check or URL encoder. Built with Vue3 and vue-router, backend API uses Laravel.
 - [FontBolt](https://www.fontbolt.com/) - Discover and generate your favorite fonts from pop culture
-- [Portfolio Site](https://monayemislam.me) - Monayem Islam, A full-stack web application developer's portfolio site. Made with Love and Vue 3.
+- [Portfolio Site](https://monayemislam.me) - Monayem Islam, A full-stack web application developer's portfolio site. Made with Vue 3.
 - [MapperMate](https://mappermate.com) - Free-to-use tilemap editor used to create, edit, and manage tilemaps for 2D games
 - [Chris Courses](https://chriscourses.com) - JavaScript and 2D game dev learning platform with interactive videos, quizzes, and code challenges
 - [BulkPicTools](https://bulkpictools.com) - Privacy-first bulk image processor built with Vue 3 and WebAssembly.
@@ -757,11 +612,11 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [Louis Ansa Website (portfolio)](https://louisansa.com)
 - [Djeco.com](https://www.djeco.com/en)
 - [TR-101 Synth Drum Machine](https://inverted3.gitlab.io/drum-machine)
-- [CSS ColorVars](https://csscolorvars.github.io/) - Interactive tool code generation ([source code](https://github.com/CSSColorVars/csscolorvars))
+- [CSS ColorVars](https://csscolorvars.github.io/) - Interactive code-generation tool ([source code](https://github.com/CSSColorVars/csscolorvars))
 - [Nightlight During Conflict](https://pngk.org/nightlight/) - Explore GIS data on nightlight output for countries in conflict.
 - [User Friendly Justice Data](https://justicemoroccoprototype.hiil.org/) - Explore justice data from Morocco.
 - [Vue Play](https://www.vueplay.com) - Create Vue components and applications in an interactive / visual drag & drop designer.
-- [Yahya J. Aifit's Portfolio Site](https://yja.me) - Portfolio site that inspired by the appearance of desktop operating system.
+- [Yahya J. Aifit's Portfolio Site](https://yja.me) - Portfolio site inspired by the appearance of a desktop operating system.
 
 ### Enterprise Usage
 
@@ -790,7 +645,7 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - Adobe
 - IBM
 - [Cotabox](https://cotabox.com.br)
-- [Aromajoin](https://aromajoin.com) - Develop the finest digital scent products based on the harmony of hardware, software and material technology.
+- [Aromajoin](https://aromajoin.com) - Digital scent products combining hardware, software, and material technology.
 - [Carrefour](https://www.carrefour.fr)
 - [Staples Canada](https://www.staples.ca/)
 - [Blibli](https://www.blibli.com)
@@ -802,8 +657,8 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 - [Vue A11y project](https://github.com/vue-a11y) - Vue.js community project to improve web accessibility.
 - [vue-axe](https://github.com/vue-a11y/vue-axe) - Accessibility auditing for Vue.js applications.
 - [vue-announcer](https://github.com/vue-a11y/vue-announcer) - A simple way with Vue to announce any useful information for screen readers.
-- [vue-focus-lock](https://github.com/theKashey/vue-focus-lock) - It is a trap! A lock for a Focus. A11y util for scoping a focus.
-- [eslint-plugin-vuejs-accessibility](https://github.com/vue-a11y/eslint-plugin-vuejs-accessibility) - Vue.js accessibility eslint-plugin managed by @vue-a11y .
+- [vue-focus-lock](https://github.com/theKashey/vue-focus-lock) - Accessibility utility for keeping focus within a scope.
+- [eslint-plugin-vuejs-accessibility](https://github.com/vue-a11y/eslint-plugin-vuejs-accessibility) - Vue.js accessibility eslint-plugin managed by @vue-a11y.
 
 ## Components & Libraries
 
@@ -811,36 +666,36 @@ These projects are exceptionally high quality, have a proven trackrecord, and ar
 
 #### Responsive
 
-_Set of components + responsive layout system_
+Components and responsive layout systems.
 
-- [quasar-framework](https://github.com/quasarframework/quasar) - Quasar Framework. Build responsive websites, hybrid mobile Apps and Electron apps using same code, with Vue.js 3.
+- [quasar-framework](https://github.com/quasarframework/quasar) - Quasar Framework. Build responsive websites, hybrid mobile Apps and Electron apps using the same code with Vue.js 3.
 - [vuetify](https://github.com/vuetifyjs/vuetify) - Material Component Framework for Vue.js 2.
 - [buefy](https://github.com/rafaelpimpa/buefy) - Components based on Bulma framework.
 - [iview-ui](https://www.iviewui.com) - A Vue.js 2.0 UI Framework for web.
-- [AT-UI](https://at.aotu.io) - A fresh and flat UI-Kit specially for desktop application, made with ♥ by Vue.js 2.0
+- [AT-UI](https://at.aotu.io) - Flat UI kit for desktop applications, built with Vue.js 2.0.
 - [BootstrapVue](https://github.com/bootstrap-vue/bootstrap-vue) - Bootstrap v4 components and grid system for Vue.js.
 - [fish-ui](https://myliang.github.io/fish-ui) - A Vue.js 2.0 UI Toolkit for Web
 - [zircle-ui](https://github.com/zircleUI/zircleUI) - A frontend library to develop zoomable user interfaces.
-- [ant-design-vue](https://github.com/vueComponent/ant-design-vue) - An enterprise-class UI components based on Ant Design and Vue 3.2.0
+- [ant-design-vue](https://github.com/vueComponent/ant-design-vue) - Enterprise-class UI components based on Ant Design and Vue 3.2.0.
 - [heyui](https://github.com/heyui/heyui) - (https://www.heyui.top/en) - A Vue.js 2.0 UI Toolkit for Web.
 - [Carvue.js](https://carvuejs.github.io/) - IBM's Carbon Design System for Vue.js
 - [BalmUI](https://github.com/balmjs/balm-ui) - A modular and customizable UI library based on Material Design and Vue 3.0
-- [Osiris UI](https://osiris-ui.github.io/osiris) - :art: A Vue.js 2.0 universal responsive UI component library
+- [Osiris UI](https://osiris-ui.github.io/osiris) - Vue.js 2.0 universal responsive UI component library.
 - [@Carbon/vue](https://github.com/carbon-design-system/carbon-components-vue) - Carbon Design System components from the @carbon team.
-- [Inkline](https://github.com/inkline/inkline/) - Inkline is the intuitive UI Components library that gives you a developer-friendly foundation for building Vue.js 3 Design Systems.
-- [MDBootstrap](https://github.com/mdbootstrap/Vue-Bootstrap-with-Material-Design) - Powerful UI toolkit based on the latest Bootstrap 4 and Vue 2.6.10, providing a set of slick, responsive page templates, layouts, components and widgets to rapidly build responsive, mobile-first websites and apps.
+- [Inkline](https://github.com/inkline/inkline/) - UI component library providing a foundation for building Vue.js 3 design systems.
+- [MDBootstrap](https://github.com/mdbootstrap/Vue-Bootstrap-with-Material-Design) - UI toolkit based on Bootstrap 4 and Vue 2.6.10, with responsive page templates, layouts, components, and widgets for mobile-first websites and apps.
 - [vue-material-adapter](https://github.com/pgbross/vue-material-adapter) - Integration of Material Components for Vue.js which follows the best practices recommended by Google: Using Foundations and Adapters
-- [PrimeVue](https://primefaces.org/primevue) - The Most Complete UI Component Library for Vue
+- [PrimeVue](https://primefaces.org/primevue) - UI component library for Vue.
 - [CoreUI for Vue.js](https://github.com/coreui/coreui-vue) - CoreUI for Vue.js is a UI Component Library that offers a bunch of cross-browser, responsive, and lightweight Vue.js UI components.
 - [oruga](https://github.com/oruga-ui/oruga) - UI components for Vue.js without CSS framework dependency.
-- [Wave UI](https://github.com/antoniandre/wave-ui) - An emerging UI framework for Vue.js with only the bright side. ☀️
-- [element3](https://github.com/kkbjs/element3) - A Vue.js 3.0 UI Toolkit for Web is based on element-ui
-- [vuestic-ui](https://github.com/epicmaxco/vuestic-ui) - A Vue.js 3.0 UI customizable UI Framework.
+- [Wave UI](https://github.com/antoniandre/wave-ui) - UI framework for Vue.js.
+- [element3](https://github.com/kkbjs/element3) - Vue.js 3.0 web UI toolkit based on element-ui.
+- [vuestic-ui](https://github.com/epicmaxco/vuestic-ui) - Customizable UI framework for Vue.js 3.0.
 - [Qui-max](https://github.com/Qvant-lab/qui-max) - A Vue 3.x Design System for Web
-- [Naive UI](https://github.com/TuSimple/naive-ui) - A Vue 3 Component Library Fairly Complete, Customizable Themes, Uses TypeScript, Not Too Slow Kinda Interesting
+- [Naive UI](https://github.com/TuSimple/naive-ui) - Vue 3 component library with customizable themes and TypeScript. The source describes its performance as not too slow.
 - [Element Plus](https://github.com/element-plus/element-plus) - A Vue 3 UI Framework.
-- [AgnosticUI](https://www.agnosticui.com/) - Accessible Vue 3 Component Primitives that also work with React, Svelte, and Angular!
-- [Vexip UI](https://github.com/qmhc/vexip-ui) - A Vue 3 UI Library, Highly customizable property values, Full TypeScript, Performance should be good.
+- [AgnosticUI](https://www.agnosticui.com/) - Accessible Vue 3 component primitives that also work with React, Svelte, and Angular.
+- [Vexip UI](https://github.com/qmhc/vexip-ui) - Vue 3 UI library with highly customizable property values and full TypeScript support. The source anticipates good performance.
 - [Vue USWDS](https://github.com/patrickcate/vue-uswds) - A Vue.js implementation of the USWDS (U.S. Web Design System)
 - [Vuersatile Components](https://www.andres-brugarolas.com/vuersatile-components/) - A Vue 3 component library, with form self-validation and an SCSS framework integrated.
 - [Prefect Design](https://prefect-design.netlify.app/) - Component library using Vue 3, Typescript & Tailwind.
@@ -848,7 +703,7 @@ _Set of components + responsive layout system_
 - [Reka UI](https://github.com/unovue/reka-ui) - An open-source library of unstyled, accessible UI primitives for building high-quality design systems and web apps in Vue 3 (formerly Radix Vue).
 - [shadcn-vue](https://github.com/unovue/shadcn-vue) - An unofficial, community-led Vue port of [shadcn/ui](https://github.com/shadcn-ui/ui) (re-usable components built with Reka UI and Tailwind CSS).
 - [BoldKit](https://boldkit.dev) - A neubrutalism component library for Vue 3 & Nuxt with 55+ components, 10 chart types, 64 SVG shapes, and 17 animated ASCII shapes. Built on Reka UI, compatible with shadcn-vue CLI.
-- [Inspira UI](https://inspira-ui.com/) - Open Source components to build stunning animated interfaces effortlessly using Vue, Nuxt and Tailwind CSS.
+- [Inspira UI](https://inspira-ui.com/) - Open-source components for animated interfaces using Vue, Nuxt, and Tailwind CSS.
 - [flowbite-vue](https://github.com/themesberg/flowbite-vue) - Vue component library based on Tailwind CSS
 - [Maz-UI](https://github.com/LouisMazel/maz-ui) - Lightweight and efficient library for Vue 3 & Nuxt 3 & 4 with 50+ components, theming, i18n and useful plugins and composables.
 - [@oneflowui/ui](https://github.com/qixi54/oneui) - Vue 3 + TypeScript component library for task management views, featuring Table, Kanban, Gantt timeline, Gallery, AI Chat, Dashboard charts, Rich Text Editor, MermaidChart and more. 75+ components out of the box.
@@ -856,57 +711,57 @@ _Set of components + responsive layout system_
 
 #### Mobile
 
-_UI frameworks for mobile_
+UI frameworks for mobile.
 
 - [Framework7-Vue](https://github.com/framework7io/framework7) - Build full-featured iOS & Android apps using Framework7 & Vue.
-- [vue-onsenui](https://github.com/OnsenUI/OnsenUI) - Mobile app development framework and SDK using HTML5 and JavaScript. Create beautiful and performant cross-platform mobile apps. Based on Web Components, and provides bindings for Angular 1, 2, React and Vue.js.
+- [vue-onsenui](https://github.com/OnsenUI/OnsenUI) - Mobile app development framework and SDK using HTML5 and JavaScript. Create cross-platform mobile apps, described by the source as performant. Based on Web Components, and provides bindings for Angular 1, 2, React and Vue.js.
 - [Ionic](https://github.com/ionic-team/ionic-framework) - Mobile app development framework
 - [Native script](https://github.com/nativescript-vue/nativescript-vue) - Native mobile applications using NativeScript
 - [uni-app](https://github.com/dcloudio/uni-app) - A cross-platform framework using Vue.js
 
-_Set of components for mobile_
+Components for mobile.
 
 - [vant](https://github.com/youzan/vant) - A Vue.js 2.0 Mobile UI From YouZan.
-- [cube-ui](https://didi.github.io/cube-ui) - A fantastic mobile ui lib implement by Vue.js 2.
+- [cube-ui](https://didi.github.io/cube-ui) - Mobile UI library implemented with Vue.js 2.
 - [mand-mobile](https://didi.github.io/mand-mobile) - A mobile UI toolkit, based on Vue.js 2, designed for financial scenes.
 - [NutUI](https://github.com/jdf2e/nutui/) - A Vue.js 2.0 UI Toolkit for Mobile Web
 
 #### Component Collections
 
-_Set of components without layout system_
-- [Naive UI](https://www.naiveui.com/) - A Vue 3 Component Library. Fairly Complete, Theme Customizable, Uses TypeScript, Fast.
+Components without a layout system.
+- [Naive UI](https://www.naiveui.com/) - Vue 3 component library with customizable themes and TypeScript, described by the source as fast.
 - [keen-ui](https://github.com/JosephusPaye/Keen-UI) - A lightweight collection of essential UI components written with Vue and inspired by Material Design.
 - [uiv](https://github.com/uiv-lib/uiv) - Bootstrap3 components implemented by Vue2.
-- [Essential JS 2 for Vue](https://www.syncfusion.com/products/vue) - Full-featured 45+ Vue.js components which includes Data Grid, Chart, Scheduler and Diagram components etc.
+- [Essential JS 2 for Vue](https://www.syncfusion.com/products/vue) - Full-featured 45+ Vue.js components including Data Grid, Chart, Scheduler, and Diagram components.
 - [jqwidgets](https://www.jqwidgets.com/vue/) - 70+ Vue.js 2.0 UI Components with Material Design themes.
 - [Kendo UI for Vue](https://www.telerik.com/kendo-vue-ui/components/) – Over 70 UI components, including a Grid, built for business applications. Fully responsive with support for several Design Languages including Material Design and Bootstrap.
-- [element-pro-components](https://github.com/tolking/element-pro-components) A component library for Vue 3 base on element-plus
+- [element-pro-components](https://github.com/tolking/element-pro-components) Component library for Vue 3 based on element-plus.
 - [TW Elemetns for Vue](https://tw-elements.com/docs/standard/integrations/vue-integration/) - Vue integration with Tailwind CSS - a free, open-source UI Kit
-- [Origin UI Vue](https://originui-vue.pages.dev/) - Beautiful UI components built with Tailwind CSS and Vue
+- [Origin UI Vue](https://originui-vue.pages.dev/) - UI components built with Tailwind CSS and Vue.
 - [@todovue/tv-ui](https://github.com/TODOvue/tv-ui) - A customizable, accessibility-first UI component library for Vue 3. [Docs](https://ui.todovue.blog/)
 
 #### Admin Template
 
-_Set of admin template_
+Admin templates.
 
 - [Vue Material Admin](https://github.com/tookit/vue-material-admin) - A vue material design admin template [Online Demo](https://vma.isocked.com/#/dashboard)
 - [dashboard](https://github.com/zce/dashboard) - A dashboard scaffolding based on vue.js created by vuejs/vue-cli 4.x. [Online Demo](https://dashboard.zce.me)
 - [vue-pro-sidebar](https://github.com/boussadjra/vue-pro-sidebar) : A responsive template starter with the ecosystem configuration (vue-router, vuex), this boilerplate allows you to choose your preferred colors. [Live demo](https://boussadjra.github.io/vue-pro-sidebar)
 - [vuestic-admin](https://github.com/epicmaxco/vuestic-admin) - Vue Admin Dashboard built with Vue 3 and `vuestic-ui`.
-- [Materio-vuetify-vuejs-admin-template-free](https://github.com/themeselection/materio-vuetify-vuejs-admin-template-free) - A Production ready, carefully crafted, most comprehensive Vuetify Vuejs admin template. [Live demo](https://themeselection.com/demo/materio-vuetify-vuejs-admin-template-free/demo/dashboard)
+- [Materio-vuetify-vuejs-admin-template-free](https://github.com/themeselection/materio-vuetify-vuejs-admin-template-free) - Vuetify Vuejs admin template, described by the source as comprehensive and production-ready. [Live demo](https://themeselection.com/demo/materio-vuetify-vuejs-admin-template-free/demo/dashboard)
 - [Tailmin](https://github.com/otezz/tailmin) - Admin dashboard built with Vue.js and Tailwind CSS. [Live demo](https://tailmin.vercel.app/)
 - [Admin One Vue 3 Tailwind dashboard](https://github.com/justboil/admin-one-vue-tailwind) - Vue.js 3 Tailwind CSS admin template with dark mode.
 - [Mosaic - Vue Admin TailwindCSS template](https://github.com/cruip/vuejs-admin-dashboard-template) - The All-in-one Tailwind CSS Admin Dashboard Template.
 - [vue-admin-box](https://github.com/cmdparkour/vue-admin-box) - The admin template based on vue3 and element-plus. [Live demo](https://cmdparkour.github.io/vue-admin-box/dist/)
 - [argon-dashboard-vue3](https://github.com/ltv/argon-dashboard-vue3) - Template, Element Plus & TailwindCSS 3, Vue3.
 - [Dolphin Admin](https://github.com/bit-ocean-studio/dolphin-admin-vue) - An open source, free, lightweight, out-of-the-box, internationalized admin template based on Vue 3 + Vite + Naive UI + TypeScript + TailwindCSS. [Live demo](https://dolphin-admin-vue.bit-ocean.studio/)
-- [vue-vben-admin](https://github.com/vbenjs/vue-vben-admin) - A modern vue admin. It is based on Vue3, vite and TypeScript. It's fast！ [Live demo](https://vben.vvbin.cn/)
-- [Geeker-Admin](https://github.com/HalseySpicy/Geeker-Admin) - A set of open source backend management framework based on Vue3 + TypeScript + Element Plus. [Live demo](https://admin.spicyboy.cn)
-- [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) - 🚀Vite+Vue3+Gin development basic platform. [Live demo](https://demo.gin-vue-admin.com)
+- [vue-vben-admin](https://github.com/vbenjs/vue-vben-admin) - Vue admin interface based on Vue 3, Vite, and TypeScript, described by the source as fast. [Live demo](https://vben.vvbin.cn/)
+- [Geeker-Admin](https://github.com/HalseySpicy/Geeker-Admin) - Open-source backend-management framework based on Vue 3, TypeScript, and Element Plus. [Live demo](https://admin.spicyboy.cn)
+- [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) - Development platform based on Vite, Vue 3, and Gin. [Live demo](https://demo.gin-vue-admin.com)
 - [adminforth](https://adminforth.dev) - Vue + Node + Tailwind admin framework. [Live Demo](https://demo.adminforth.dev)
-- [soybean-admin](https://github.com/soybeanjs/soybean-admin/blob/main/README.en_US.md) - A clean, elegant, beautiful and powerful admin template, based on Vue3, Vite5, TypeScript, Pinia, NaiveUI and UnoCSS.
-- [AirPower4T](https://github.com/AirPowerTeam/AirPower4T) - A development library based on Vue3, TypeScript, Element Plus, Vite which provides lots of Backend-Platform features such as `OOP` `Decoration` to make your development more efficient.
-- [YummyAdmin](https://github.com/doroudi/YummyAdmin) - 📈 Free Vue Admin Panel based on Naive UI and TailwindCSS. fairly completed with beautiful design, RTL support, and multilingual. (MSW, Pinia, TS, UnoCss, Vite)
+- [soybean-admin](https://github.com/soybeanjs/soybean-admin/blob/main/README.en_US.md) - Admin template based on Vue 3, Vite 5, TypeScript, Pinia, NaiveUI, and UnoCSS.
+- [AirPower4T](https://github.com/AirPowerTeam/AirPower4T) - A development library based on Vue3, TypeScript, Element Plus, Vite with backend-platform features such as `OOP` and `Decoration`.
+- [YummyAdmin](https://github.com/doroudi/YummyAdmin) - Free Vue admin panel based on Naive UI and TailwindCSS, with RTL and multilingual support. Uses MSW, Pinia, TS, UnoCss, and Vite.
 
 #### Server-side rendering
 
@@ -915,12 +770,12 @@ _Set of admin template_
 #### Static website generator
 
 - [VuePress](https://github.com/vuejs/vuepress) - Minimalistic Vue-powered static site generator.
-- [îles](https://github.com/ElMassimo/iles) - Islands of interactivity, the joyful site generator
+- [îles](https://github.com/ElMassimo/iles) - Site generator with islands of interactivity.
 - [VitePress](https://github.com/vuejs/vitepress) - Vite & Vue powered static site generator.
 
 #### Other
 
-- [CabloyJS](https://github.com/zhennann/cabloy) The Ultimate NodeJS Full Stack Business Development Platform, based on KoaJS & EggJS & VueJS & Framework7
+- [CabloyJS](https://github.com/zhennann/cabloy) NodeJS full-stack business-development platform based on KoaJS, EggJS, VueJS, and Framework7.
 - [DataFormsJS](https://github.com/dataformsjs/dataformsjs) - A minimal routing and web service framework that uses Vue as a templating engine.
 - [Vue-Low-Code](https://github.com/KlausSchaefers/vue-low-code) - Low Code toolkit that can generate VUE apps from Quant-UX prototypes
 - [vue-notion](https://github.com/janniks/vue-notion) - An unofficial Notion renderer – Use Notion as a CMS for Vue (e.g. Nuxt)
@@ -928,79 +783,79 @@ _Set of admin template_
 
 ### UI Layout
 
-_Layout for the overall / main view_
+Layouts for the overall or main view.
 
 - [vue-grid-layout](https://github.com/jbaysolutions/vue-grid-layout) - A draggable and resizable grid layout, for Vue.js.
-- [vue-masonry](https://github.com/shershen08/vue-masonry) - Vue.js directive for masonry blocks layouting.
-- [vue-virtual-scroll-list](https://github.com/tangbc/vue-virtual-scroll-list) - A vue (2.x) component support big data by using virtual scroll list.
+- [vue-masonry](https://github.com/shershen08/vue-masonry) - Vue.js directive for masonry block layouts.
+- [vue-virtual-scroll-list](https://github.com/tangbc/vue-virtual-scroll-list) - Vue 2.x component for large datasets using a virtual scroll list.
 - [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller) - Component to scroll a large amount of elements efficiently (Vue 2.x).
 - [dnd-grid](https://github.com/dattn/dnd-grid) - A vuejs grid with draggable and resizable boxes
 - [vue-fullpage.js](https://github.com/alvarotrigo/vue-fullpage.js) - Official fullPage.js component for Vue.js.
 - [splitpanes](https://github.com/antoniandre/splitpanes) - A Vue JS reliable, simple and touch-ready panes splitter / resizer.
-- [vue-simple-drawer](https://github.com/dreambo8563/vue-simple-drawer) - A tiny drawer panel with bounced animation, nest supported and theme customized. directions: left/right/up/down
-- [fit-screen](https://github.com/jp-liu/fit-screen) - A vue component based on the scale large screen adaptive solution.
+- [vue-simple-drawer](https://github.com/dreambo8563/vue-simple-drawer) - Small drawer panel with bounce animation, nesting support, customizable themes, and left/right/up/down directions.
+- [fit-screen](https://github.com/jp-liu/fit-screen) - Vue component for adapting large-screen layouts through scaling.
 - [vue-virtual-waterfall](https://github.com/lhlyu/vue-virtual-waterfall) - A virtual waterfall component for Vue 3.x.
 - [vue-stack-grid](https://github.com/chiribuc/vue-stack-grid) - A Vue 3 component designed to make creating dynamic, responsive grid layouts easy and efficient.
-- [virtual-scroll](https://github.com/pdanpdan/virtual-scroll) - High-performance Vue 3 virtual scroll library designed to handle massive lists with ease. Supports vertical, horizontal, and bidirectional (grid) scrolling, dynamic item sizes using ResizeObserver, full support for Right-to-Left (RTL) layouts, build in a11y.
+- [virtual-scroll](https://github.com/pdanpdan/virtual-scroll) - High-performance Vue 3 virtual scroll library designed to handle massive lists with ease. Supports vertical, horizontal, and bidirectional grid scrolling, dynamic item sizes using ResizeObserver, full Right-to-Left (RTL) layout support, and built-in accessibility.
 
 ### UI Components
 
 #### Table
 
-_Tables / data grids_
+Tables / data grids
 
 - [ag-grid-vue](https://github.com/ag-grid/ag-grid) - Vue adaptor for ag-Grid.
 - [vue-grid](https://github.com/dzwillia/vue-grid) - A flexible grid component for Vue.js
-- [vue-crud-x](https://github.com/ais-one/cookbook) - Extensible crud component using Vuetify layout, other than the usual page, sort, filter, it is able to do nested CRUD, custom forms, filters, operations.
+- [vue-crud-x](https://github.com/ais-one/cookbook) - Extensible CRUD component using Vuetify layouts. Supports pagination, sorting, filtering, nested CRUD, custom forms, filters, and operations.
 - [Vue Datatable](https://github.com/laravel-enso/vuedatatable) - VueJS powered Datatable with Laravel server-side loading and JSON template setup
-- [vue-cheetah-grid](https://github.com/future-architect/cheetah-grid) - A high-performance grid engine that work on a canvas for Vue.js.
+- [vue-cheetah-grid](https://github.com/future-architect/cheetah-grid) - Canvas-based grid engine for Vue.js, described by the source as high-performance.
 - [vue-table-component](https://vue-table-component.spatie.be/) - A straight to the point Vue component to display tables.
 - [@ioi-dev/vue-table](https://github.com/Rawand-Hawez/ioi-vue-table) - Performance-first Vue 3 datatable with virtualization, selection, editing, and CSV export.
 - [@lossendae/vue-table](https://lossendae.github.io/vue-table) - Simple table component for Vue.js 2.x with pagination and sortable columns.
-- [vueye-datatable](https://github.com/boussadjra/vueye-table) - Vueye data table is a responsive data table component based on Vue.js 2, it organizes your data per pages in order to navigate easily.
+- [vueye-datatable](https://github.com/boussadjra/vueye-table) - Responsive Vue.js 2 data-table component that organizes data into pages for navigation.
 - [fancy-grid-vue](https://github.com/FancyGrid/FancyGrid) - Vue adaptor for FancyGrid.
 - [vue-quintable](https://github.com/Quintetio/vue-quintable) - A responsive and highly configurable table based on Vue 2.x and Bootstrap 4.x
-- [vue-datagrid](https://github.com/revolist/vue-datagrid) - Vue grid wrapper for powerful webcomponent revo-grid with excel like rich edit and behavior.
+- [vue-datagrid](https://github.com/revolist/vue-datagrid) - Vue grid wrapper for the revo-grid web component, with Excel-like editing and behavior.
 - [vue-dataset](https://github.com/kouts/vue-dataset) - A set of Vue.js components to display datasets with filtering, paging, and sorting capabilities!
-- [jz-gantt](https://github.com/jeremyjone/jz-gantt) - A high-performance Vue gantt component, which includes highly customizable table columns, dynamic update data, freely drag the progress bar, switch header, etc.
-- [vue3-easy-data-table](https://github.com/HC200ok/vue3-easy-data-table) - A easy-to-use data table component made with Vue.js 3.x, referring to the API and UI of data table component in Vuetify 2.
+- [jz-gantt](https://github.com/jeremyjone/jz-gantt) - A high-performance Vue gantt component, with highly customizable table columns, dynamic data updates, draggable progress bars, and switchable headers.
+- [vue3-easy-data-table](https://github.com/HC200ok/vue3-easy-data-table) - Vue.js 3.x data-table component based on the API and UI of the Vuetify 2 data-table component.
 - [tanstack-table](https://github.com/tanstack/table) - Headless UI for building powerful tables & datagrids.
 - [vuetify-drilldown-table](https://github.com/webdevnerdstuff/vuetify-drilldown-table) - The Vuetify Drilldown Table is a powerful component that enhances the functionality of the Vuetify framework's v-data-table and v-data-table-server. It provides a recursive table structure, allowing you to display hierarchical data in a nested format.
 - [vxe-table](https://github.com/x-extends/vxe-table) - Vue form/table solution.
 - [hy-vue-gantt](https://github.com/Xeyos88/HyVueGantt) - A powerful and flexible Gantt chart component for Vue 3 applications.
 - [Vue3 Pivottable](https://github.com/vue-pivottable/vue3-pivottable) – A Vue 3 port of the jQuery-based PivotTable.js.
 - [GridSheet](https://github.com/walkframe/gridsheet) - Highly customizable spreadsheet engine with formula support, multi-sheet references, and a Vue3 wrapper built on a Preact core.
-- [@witqq/spreadsheet](https://github.com/witqq/spreadsheet) - A canvas-based spreadsheet engine with zero dependencies, rendering 100K+ rows at 60fps with sorting, filtering, formulas, and collaboration.
+- [@witqq/spreadsheet](https://github.com/witqq/spreadsheet) - Canvas-based spreadsheet engine with zero dependencies, sorting, filtering, formulas, and collaboration. The source reports rendering 100K+ rows at 60fps.
 - [Jordium Gantt Vue3](https://github.com/nelson820125/jordium-gantt-vue3) - Vue3 Gantt chart component with Resource View, task dependencies, and project scheduling capabilities.
-- [gp-grid](https://www.gp-grid.io) - TypeScript Vue3 data grid featuring slot-based virtual scrolling, no features paywalls, and zero runtime dependencies. 
+- [gp-grid](https://www.gp-grid.io) - TypeScript Vue3 data grid featuring slot-based virtual scrolling, no feature paywalls, and zero runtime dependencies.
 - [TinyPivot](https://tiny-pivot.com) - Lightweight Vue 3 data grid with pivot tables, charts, CSV/Excel export, and an optional AI data analyst.
 
 #### Notification
 
-_Toaster / snackbar — Notify the user with a modeless temporary little popup_
+Toasts and snackbars: modeless, temporary popups for notifying users.
 
 - [VueToastify](https://github.com/nandi95/vue-toastify) - A fuss free notification component.
 - [@kyvg/vue3-notification](https://github.com/kyvg/vue3-notification) - Vue 3 notification library
 - [notivue](https://github.com/smastrom/notivue) - Fully-featured notification system for Vue 3 and Nuxt 3.
-- [Toastflow](https://github.com/adrianjanocko/toastflow) - 💡 Headless toast (notification) engine + Vue 3 renderer (TS-first, CSS-first theming, highly customizable).
+- [Toastflow](https://github.com/adrianjanocko/toastflow) - Headless toast (notification) engine + Vue 3 renderer (TS-first, CSS-first theming, highly customizable).
 
 #### Loader
 
-_Loaders / spinners / progress bars — Let the user know that something is loading_
+Loaders, spinners, and progress bars to indicate loading.
 
-- [epic-spinners](https://github.com/epicmaxco/epic-spinners) - Easy to use css spinners collection with vue.js integration.
-- [vue-ellipse-progress](https://github.com/setaman/vue-ellipse-progress) - A flexible Vue.js component to create beautiful animated circular progress bars and loaders
+- [epic-spinners](https://github.com/epicmaxco/epic-spinners) - CSS spinner collection with Vue.js integration.
+- [vue-ellipse-progress](https://github.com/setaman/vue-ellipse-progress) - Flexible Vue.js component for animated circular progress bars and loaders.
 - [vue-default-page](https://github.com/zero-one-code/vue-default-page) - A Vue 3.0 plugin with built-in v-loading, v-skeleton, v-error and v-empty custom directives.
-- [vue-skeleton-content-loader](https://github.com/willmendesneto/vue-skeleton-content-loader) - Lightweight and accessible library to make beautiful, animated loading skeletons that automatically adapt to your Vue app
+- [vue-skeleton-content-loader](https://github.com/willmendesneto/vue-skeleton-content-loader) - Lightweight, accessible library for animated loading skeletons that automatically adapt to a Vue app.
 - [phantom-ui](https://github.com/Aejkatappaja/phantom-ui) - Structure-aware skeleton loader web component that measures your real DOM, supports Vue, React, Svelte and plain HTML.
 
 ##### Progress Bar
 
-_A slim progress bar at the top of the page_
+Slim progress bars at the top of the page.
 
 - [vue-scroll-progress](https://github.com/spemer/vue-scroll-progress) - Simple Vue.js plugin for page scroll progress bar
-- [vue-ins-progress-bar](https://github.com/meloalright/vue-ins-progress-bar) - A Vue component of ins-style progress bar 一款 ins 风格的 vue 进度条组件
-- [vue-next-progressbar](https://github.com/jambonn/vue-next-progressbar) - Slim progress bars(1KB gzipped) for Vue 3.
+- [vue-ins-progress-bar](https://github.com/meloalright/vue-ins-progress-bar) - Vue component for an ins-style progress bar.
+- [vue-next-progressbar](https://github.com/jambonn/vue-next-progressbar) - Slim progress bars for Vue 3, 1KB gzipped.
 - [css-3d-progress](https://github.com/rofixro/css-3d-progress) - A 3D progress bar component written using web Components, supports Vue, React and Svelte.
 
 #### Tooltip
@@ -1008,22 +863,22 @@ _A slim progress bar at the top of the page_
 Tooltips / popovers
 
 - [v-tooltip](https://github.com/Akryum/vue-tooltip) - Easy tooltips with Vue 2.x.
-- [vue-popper-lite](https://github.com/jambonn/vue-popper-lite) - A popover component based on [popper.js tree shaking](https://popper.js.org/docs/v2/#popper-lite-tree-shaking) for Vue 3 written by TypeScript.
+- [vue-popper-lite](https://github.com/jambonn/vue-popper-lite) - A popover component based on [popper.js tree shaking](https://popper.js.org/docs/v2/#popper-lite-tree-shaking) for Vue 3, written in TypeScript.
 
 #### Overlay
 
-_Overlay / modal / alert / dialog / lightbox / popup_
+Overlay / modal / alert / dialog / lightbox / popup
 
 - [vodal](https://github.com/chenjiahan/vodal) - A vue modal with animations.
 - [v-viewer](https://github.com/mirari/v-viewer) - Image viewer component for vue2 and vue3, supports rotation, scale, zoom and so on, based on [viewer.js](https://github.com/fengyuanchen/viewerjs)
-- [vuejs-dialog](https://github.com/Godofbrowser/vuejs-dialog) - A lightweight, promise based alert, prompt and confirm dialog.
+- [vuejs-dialog](https://github.com/Godofbrowser/vuejs-dialog) - Lightweight, promise-based alert, prompt, and confirmation dialog.
 - [v-dialogs](https://github.com/TerryZ/v-dialogs) - A simple and powerful dialog, including Modal, Alert, Mask and Toast modes, based on Vue2.x
-- [vue-sweetalert2](https://github.com/avil13/vue-sweetalert2) - wrapper for sweatlaert2 with support for TypeScript, Nuxt and SSR
+- [vue-sweetalert2](https://github.com/avil13/vue-sweetalert2) - Wrapper for sweetalert2 with TypeScript, Nuxt, and SSR support.
 - [@kouts/vue-modal](https://github.com/kouts/vue-modal) - A customizable, stackable and lightweight modal component that adheres to the guidelines set in WAI-ARIA Dialog (Modal) section of W3C.
 - [vue-final-modal](https://github.com/hunterliu1003/vue-final-modal) Tailwind-friendly, highly customizable, stackable modal component.
 - [vue-it-bigger](https://github.com/haiafara/vue-it-bigger) - A simple image / (YouTube) video lightbox component for Vue.js.
-- [vuejs-confirm-dialog](https://github.com/harmyderoman/vuejs-confirm-dialog) - :speech_balloon: a simple way to create, reuse, promisify and build chains of modal dialogs in Vue.js.
-- [@kolirt/vue-modal](https://github.com/kolirt/vue-modal) - ⚡️ Simple Vue3 modal package
+- [vuejs-confirm-dialog](https://github.com/harmyderoman/vuejs-confirm-dialog) - Create, reuse, promisify, and chain modal dialogs in Vue.js.
+- [@kolirt/vue-modal](https://github.com/kolirt/vue-modal) - Vue 3 modal package.
 - [vuetify-resize-drawer](https://github.com/webdevnerdstuff/vuetify-resize-drawer) - The vuetify-resize-drawer component extends the functionality of the v-navigation-drawer so that it is resizable by the user.
 
 #### Marquee
@@ -1033,30 +888,30 @@ _Overlay / modal / alert / dialog / lightbox / popup_
 #### Menu
 
 - [vue-tree-navigation](https://github.com/MisRob/vue-tree-navigation) - Vue.js 2 tree navigation with vue-router support
-- [v-selectmenu](https://github.com/TerryZ/v-selectmenu) - A simple, easier and highly customized menu solution for Vue2.
-- [vue-navigation-bar](https://github.com/johndatserakis/vue-navigation-bar) - A simple, pretty navbar for your Vue projects.
+- [v-selectmenu](https://github.com/TerryZ/v-selectmenu) - Highly customizable menu solution for Vue 2.
+- [vue-navigation-bar](https://github.com/johndatserakis/vue-navigation-bar) - Navigation bar for Vue projects.
 - [vue-file-toolbar-menu](https://github.com/motla/vue-file-toolbar-menu) - UI file/toolbar menus for Vue apps
 - [v-dropdown-menu](https://github.com/RadKod/v-dropdown-menu) - Customizable dropdown menu plugin for vuejs. SSR supported.
 - [vue-bottom-sheet](https://github.com/webzlodimir/vue-bottom-sheet) - A swipeable bottom sheet component for Vue.js created with Hammer.js
-- [vue-awesome-sidebar](https://github.com/amirkian007/vue-awesome-sidebar) - A modern and fast sidebar menu component for vue(3x) capable with vue-router.
-- [vue-use-fixed-header](https://github.com/smastrom/vue-use-fixed-header) - Turn your boring fixed header into a smart one.
+- [vue-awesome-sidebar](https://github.com/amirkian007/vue-awesome-sidebar) - Vue 3.x sidebar menu component compatible with vue-router, described by the source as fast.
+- [vue-use-fixed-header](https://github.com/smastrom/vue-use-fixed-header) - Utility for fixed headers.
 - [navpress](https://github.com/aaronlamz/navpress) - NavPress is a CLI tool for generating static navigation websites. It allows you to quickly build a navigation site through a configuration file.
 - [vue-my-dropdown](https://github.com/david-cm-dev/vue-my-dropdown) - A customizable dropdown component for Vue 3 with TypeScript support.
 
 #### Carousel
 
 - [vue-easy-slider](https://github.com/shhdgit/vue-easy-slider) - Slider Component of Vue.js.
-- [vue-flux](https://github.com/deulos/vue-flux) - Image slider which comes with 20 cool transitions.
-- [@egjs/vue-flicking](https://github.com/naver/egjs-flicking/blob/master/packages/vue3-flicking/README.md) - It's reliable, flexible and extendable carousel for Vue.js 2 & 3.
-- [swiper](https://github.com/nolimits4web/swiper) - Official Swiper component for Vue 3. Tree shakable, SSR support, typing, a11y and a lot more
+- [vue-flux](https://github.com/deulos/vue-flux) - Image slider with 20 transitions.
+- [@egjs/vue-flicking](https://github.com/naver/egjs-flicking/blob/master/packages/vue3-flicking/README.md) - Flexible, extensible carousel for Vue.js 2 and 3.
+- [swiper](https://github.com/nolimits4web/swiper) - Official Swiper component for Vue 3. Tree shakable, SSR support, type support, accessibility, and more.
 - [vue-concise-carousel](https://github.com/jambonn/vue-concise-carousel) - Vue Concise Carousel with True SSR. Works for Vue 2 & 3.
-- [vue3-carousel](https://github.com/ismail9k/vue3-carousel) - A highly customizable, lightweight Vue 3 carousel component for your next awesome project.
-- [vue-snap](https://github.com/bartdominiak/vue-snap) - 🌿 Modern and lightweight Vue 3 Carousel powered by CSS Scroll Snap.
+- [vue3-carousel](https://github.com/ismail9k/vue3-carousel) - Highly customizable, lightweight Vue 3 carousel component.
+- [vue-snap](https://github.com/bartdominiak/vue-snap) - Lightweight Vue 3 carousel powered by CSS Scroll Snap.
 
 #### Charts
 
 - [vue-chartjs](https://github.com/apertureless/vue-chartjs) - Vue.js wrapper for Chart.js.
-- [vue-chartkick](https://github.com/ankane/vue-chartkick) - Create beautiful JavaScript charts with one line of Vue
+- [vue-chartkick](https://github.com/ankane/vue-chartkick) - Create JavaScript charts with one line of Vue.
 - [vue-apexcharts](https://github.com/apexcharts/vue-apexcharts) - Vue.js component for [ApexCharts](https://github.com/apexcharts/apexcharts.js).
 - [vue-css-donut-chart](https://github.com/dumptyd/vue-css-donut-chart) - Lightweight Vue component for drawing pure CSS donut charts.
 - [ZingChart-Vue](https://github.com/zingchart/zingchart-vue) - Vue component made by ZingChart with 35+ chart types.
@@ -1067,23 +922,23 @@ _Overlay / modal / alert / dialog / lightbox / popup_
 
 #### Time
 
-_Display time / date / age_
+Display time, dates, or ages.
 
 - [v-idle](https://github.com/malekim/v-idle) - A Vue.js plugin to detect idle/non-active users.
 - [vue-timer-hook](https://github.com/riderx/vue-timer-hook) - Vue 3 Timer module inspired by react-timer-hook
 
 #### Calendar
 
-_Display non-editable events in a Calendar_
+Display non-editable events in a calendar.
 
 - [vue-simple-calendar](https://github.com/richardtallent/vue-simple-calendar) - Flexbox-based Vue month calendar component; supports multi-day events, localization, holiday emoji, drag/drop. No dependencies.
 - [vue-functional-calendar](https://github.com/ManukMinasyan/vue-functional-calendar) - Lightweight, high performance calendar component(Date Picker, Date Range) based on Vue.
-- [vue-cal](https://github.com/antoniandre/vue-cal) - A Vue JS full calendar, no dependency, no BS. 🤘.
-- [vue-spring-calendar](https://github.com/boussadjra/vue-spring-calendar) - It's a Vue based component which provides the functionality of a full-calendar that shows daily events. the [`demo`](https://boussadjra.github.io/vue-spring-calendar/).
+- [vue-cal](https://github.com/antoniandre/vue-cal) - Vue JS full calendar with no dependencies.
+- [vue-spring-calendar](https://github.com/boussadjra/vue-spring-calendar) - Vue-based full calendar for daily events. [`demo`](https://boussadjra.github.io/vue-spring-calendar/).
 - [vue-tailwind-datepicker](https://github.com/elreco/vue-tailwind-datepicker) - A Vue 3 Datepicker using Tailwind CSS 3
 - [qalendar](https://github.com/tomosterlund/qalendar) - An event calendar and datepicker for Vue 3
 - [schedule-x](https://github.com/schedule-x/schedule-x) - A material design event calendar. Customizable, light- and dark modes & multilingual.
-- [vue-calendar](https://github.com/Kodeglot/vue-calendar) - A fully-featured, customizable calendar date picker component for Vue 3 with built-in Tailwind CSS support. Perfect for building scheduling applications, event calendars, and date pickers.
+- [vue-calendar](https://github.com/Kodeglot/vue-calendar) - A fully-featured, customizable calendar date picker component for Vue 3 with built-in Tailwind CSS support. For scheduling applications, event calendars, and date pickers.
 
 #### Map
 
@@ -1112,7 +967,7 @@ _Display non-editable events in a Calendar_
 #### Markdown
 
 - [@f3ve/vue-markdown-it](https://github.com/f3ve/vue-markdown-it) - A markdown-it component for Vue3. Easy to use and fully typed.
-- [Vue Markdown](https://github.com/litingyes/vue-markdown) - The vue component for render Markdown string, supports custom rendering of specific node types and better adapts to AI Chat Stream.
+- [Vue Markdown](https://github.com/litingyes/vue-markdown) - Vue component for rendering Markdown strings, with custom rendering of specific node types and support for AI chat streams.
 - [markdown-design](https://github.com/ZeroOneJs/markdown-design) - An out-of-the-box Vue 3 Markdown component with real-time rendering, featuring TOC generation, full-text search, and more.
 - [markstream-vue](https://github.com/Simon-He95/markstream-vue) - Streaming Markdown renderer for Vue 3, Nuxt, and VitePress AI chat UIs, with support for incomplete Markdown, Mermaid, KaTeX, long responses, and streaming code blocks.
 
@@ -1129,21 +984,21 @@ _Display non-editable events in a Calendar_
 
 #### Graph
 
-- [vnodes](https://github.com/txlabs/vnodes) - General purpose components to create svg interactive graphs, diagrams or node based visual tools.
+- [vnodes](https://github.com/txlabs/vnodes) - General-purpose components for interactive SVG graphs, diagrams, and node-based visual tools.
 - [v-network-graph](https://github.com/dash14/v-network-graph) - An interactive SVG based network-graph visualization component for Vue 3.
 - [coya](https://github.com/AlexanderMykulych/coya) - Diagram drawing library (vue3 only)
-- [vue-skia](https://github.com/rustq/vue-skia) - Skia based 2d graphics vue3 rendering library. It is based on Rust to implement software rasterization to perform rendering.
-- [vue-flow](https://github.com/bcakmakoglu/vue-flow) - Interactive, customizeabe, graph & flowchart editor for Vue3
+- [vue-skia](https://github.com/rustq/vue-skia) - Skia-based 2D graphics-rendering library for Vue 3, using Rust to implement software rasterization.
+- [vue-flow](https://github.com/bcakmakoglu/vue-flow) - Interactive, customizable graph and flowchart editor for Vue 3.
 
 #### Social Sharing
 
-- [vue-share-modal](https://github.com/sttatusx/vue-share-modal) - A pure, lightweight, and beautiful share modal for Vue 3.
+- [vue-share-modal](https://github.com/sttatusx/vue-share-modal) - Lightweight sharing modal for Vue 3.
 - [vue3-social-sharing](https://github.com/hedint/vue3-social-sharing) - Style agnostic Vue 3 plugin for social sharing your links on major social networks.
 
 #### QR Code
 
 - [vue-qrcode-reader](https://github.com/gruhn/vue-qrcode-reader) - A set of Vue.js components for detecting and decoding QR codes.
-- [vue3-qr-reader](https://github.com/HJ29/vue3-qr-reader) - A Vue 3 QR reader component. Refactor vue-qrcode-reader for vue 3 compatibility.
+- [vue3-qr-reader](https://github.com/HJ29/vue3-qr-reader) - A Vue 3 QR reader component. Refactor of vue-qrcode-reader for Vue 3 compatibility.
 - [qrcode.vue](https://github.com/scopewu/qrcode.vue) - A Vue.js component to generate qrcode. Supports both Vue 2 and Vue 3.
 
 #### Search
@@ -1154,21 +1009,21 @@ _Display non-editable events in a Calendar_
 #### Miscellaneous
 
 - [vue-kanban](https://github.com/BrockReece/vue-kanban) - A flexible drag and drop kanban board component
-- [v-offline](https://github.com/vinayakkulkarni/v-offline) - Simple, tiny and easy to use detection of offline & online events for your Vue app (less than 390b minified)
+- [v-offline](https://github.com/vinayakkulkarni/v-offline) - Detect offline and online events in Vue apps; less than 390b minified.
 - [vue-connection-listener](https://github.com/Botre/vue-connection-listener) - Vue event bus plugin listening for online/offline changes.
 - [vue-prom](https://github.com/Botre/vue-prom) - Vue promise wrapper component.
-- [vue-identify-network](https://github.com/vinayakkulkarni/vue-identify-network) - ⚡️Identify what kinda internet your users are using!
+- [vue-identify-network](https://github.com/vinayakkulkarni/vue-identify-network) - Identify the type of internet connection users are using.
 - [vue-command](https://github.com/ndabAP/vue-command) - A fully working Vue.js terminal emulator
-- [vue-fixed-header](https://github.com/potato4d/vue-fixed-header) - Simple and cross-browser friendly fixed header component for Vue.js written by TypeScript.
+- [vue-fixed-header](https://github.com/potato4d/vue-fixed-header) - Simple and cross-browser friendly fixed header component for Vue.js written in TypeScript.
 - [tsParticles](https://github.com/matteobruni/tsparticles) - A lightweight Javascript library to easily create highly configurable and interactive particle animations
 - [vue-image-zoomer](https://github.com/samjonesigd/vue-image-zoomer) - image zoom component for Vue.js 2 & 3, that also works on touch devices.
 - [vue-advanced-chat](https://github.com/antoine92190/vue-advanced-chat) - Feature-rich and fully customizable chat rooms component. Support files, images, videos, audio, emojis, customised actions, etc.
 - [vue-word-highlighter](https://github.com/kawamataryo/vue-word-highlighter) - The word highlighter library for Vue 2 and Vue 3.
 - [vue3-emoji-picker](https://github.com/delowardev/vue3-emoji-picker) - Simple and Powerful Emoji Picker for Vue3.
-- [vue-web-terminal](https://github.com/tzfun/vue-web-terminal) - 💻 A feature-rich and powerful web terminal plugin for vue2 & vue3.(功能强大的网页命令行终端插件)
-- [vite-plugin-vue-preview](https://github.com/liting-yes/vite-plugin-vue-preview) - a vite plugin for code preview, of course you can also use the component separately
-- [@kolirt/vue-web3-auth](https://github.com/kolirt/vue-web3-auth) - 💎 Web3 authentication for Vue3 apps based on WalletConnect v2 and wagmi
-- [zoom-image](https://willnguyen1312.github.io/zoom-image/) - A little yet powerful framework agnostic library to zoom image on the web
+- [vue-web-terminal](https://github.com/tzfun/vue-web-terminal) - Feature-rich web terminal plugin for Vue 2 and Vue 3.
+- [vite-plugin-vue-preview](https://github.com/liting-yes/vite-plugin-vue-preview) - Vite plugin for code previews; the component can also be used separately.
+- [@kolirt/vue-web3-auth](https://github.com/kolirt/vue-web3-auth) - Web3 authentication for Vue 3 apps based on WalletConnect v2 and wagmi.
+- [zoom-image](https://willnguyen1312.github.io/zoom-image/) - Small, framework-agnostic library for zooming images on the web.
 - [vue-wheel-spinner](https://github.com/ilyasozkurt/vue-wheel-spinner) - A simple, customizable wheel of fortune component. [See Demo](https://vue-wheel-spinner-demo.vercel.app/)
 - [vue-progress-circle](https://github.com/keiwen/vue-progress-circle) - Circle progress bar component for vue3
 - [vue-awesome-button](https://github.com/rcaferati/vue-awesome-button) - Vue 3D button components with progress states, social sharing, themes, and animated transitions.
@@ -1181,9 +1036,9 @@ _Display non-editable events in a Calendar_
 - [vue-lumino](https://github.com/tupilabs/vue-lumino) - A component to use Vue.js with Jupyter Lumino (PhosphorJS), integrating DOM & VDOM through event listeners and Vue reactivity system.
 - [vue3-tabor](https://github.com/daylenjeez/vue3-tabor) - A versatile Vue 3 tabs component with rich API, supporting keep-alive and iframe integration.
 
-#### Form
+#### Form <a id="context-menu"></a>
 
-_Let the user create & edit data_
+Create and edit data.
 
 ##### Phone Number Input Formatter
 
@@ -1191,23 +1046,23 @@ _Let the user create & edit data_
 
 ##### Picker
 
-- [vue-scroll-picker](https://github.com/wan2land/vue-scroll-picker) - A scroll picker component for Vue 2.x. Support all gestures of mouse(also wheel) and touch.
-- [vue-roller-picker](https://github.com/keiwen/vue-roller-picker) - Roll-designed selector component for vue3
+- [vue-scroll-picker](https://github.com/wan2land/vue-scroll-picker) - Vue 2.x scroll-picker component supporting all mouse gestures, including the wheel, and touch gestures.
+- [vue-roller-picker](https://github.com/keiwen/vue-roller-picker) - Roll-style selector component for Vue 3.
 - [vue-smooth-picker](https://github.com/hiyali/vue-smooth-picker) - A SmoothPicker for Vue 3 (like native datetime picker of iOS)
 
 ##### Generator
 
 - [form-create](https://github.com/xaboy/form-create) - Form builder with dynamic rendering, data collection, validation, and submission capabilities, supporting json data
 - [vue3-otp-input](https://github.com/ejirocodes/vue3-otp-input) - A fully customizable, OTP (one-time-password) input component built with Vue 3.x and Vue Composition API.
-- [Vueform](https://vueform.com) - (probably) the most comprehensive form builder for Vue.js [Online Demo](https://vueform.com/examples)
+- [Vueform](https://vueform.com) - Form builder for Vue.js. [Online Demo](https://vueform.com/examples)
 - [Everright-formEditor](https://github.com/Liberty-liu/Everright-formEditor) - A visual drag-and-drop low-code form editor
 
 ###### Date Picker
 
-_Date / datetime / time Picker_
+Date, date-time, and time pickers.
 
-- [VCalendar](https://vcalendar.io/) Very customizable and powerful calendar/datepicker component with many features and good documentation.
-- [vue-datepicker](https://github.com/mathieustan/vue-datepicker) - A clean & responsive datepicker with Material Design style for Vuejs 2.x. (date/month/quarter && date range picker) :new:
+- [VCalendar](https://vcalendar.io/) Customizable calendar and datepicker component with documentation.
+- [vue-datepicker](https://github.com/mathieustan/vue-datepicker) - Responsive Material Design datepicker for Vuejs 2.x, with date, month, quarter, and date-range selection.
 - [vue-timepicker](https://github.com/manos02/vue3-time-picker) - A lightweight, customizable timepicker component for Vue 3 with TypeScript support. Supports single/range selection, multiple formats, easy styling, validation and more.
 - [vue-month-spinner-picker](https://github.com/jlc488/vue-month-spinner-picker) - iOS-style drum-roll month picker for Vue 3. Inertia scrolling, bottom sheet modal, min/max constraints, i18n and theming via CSS variables. Zero dependencies.
 
@@ -1215,28 +1070,28 @@ _Date / datetime / time Picker_
 
 - [vue-select](https://github.com/sagalbot/vue-select) - A native Vue.js component that provides similar functionality to Select2 without the overhead of jQuery.
 - [vue-multiselect](https://github.com/monterail/vue-multiselect) - Universal select/multiselect/tagging component for Vue.js.
-- [v-region](https://github.com/TerryZ/v-region) - A simple region selector, provide Chinese administrative division data.
-- [v-selectpage](https://github.com/TerryZ/v-selectpage) - A powerful selector for Vue2, list or table view of pagination, use tags for multiple selection, i18n and server-side resources supports.
+- [v-region](https://github.com/TerryZ/v-region) - Region selector providing Chinese administrative-division data.
+- [v-selectpage](https://github.com/TerryZ/v-selectpage) - Vue 2 selector with paginated list or table views, tags for multiple selection, i18n, and server-side resource support.
 - [vue-cool-select](https://github.com/iliyaZelenko/vue-cool-select) - Bootstrap / Material Design theme, support slots, autocomplete, events, validation and more.
 - [vue-select-sides](https://github.com/juliorosseti/vue-select-sides) - A component for Vue.js to select double-sided data (2-sides).
 - [@vueform/multiselect](https://github.com/vueform/multiselect) - Vue 3 multiselect component with single select, multiselect and tagging options.
-- [vue3-select-component](https://github.com/TotomInc/vue3-select-component) - Vue 3 Select Component, single & multi-select, best-in-class DX support with TypeScript end-to-end typesafe, easy styling, slots and more ~4.4KB
+- [vue3-select-component](https://github.com/TotomInc/vue3-select-component) - Vue 3 select component with single and multiple selection, end-to-end TypeScript type safety, styling, and slots. Approximately 4.4KB, with an emphasis on developer experience.
 - [vue-superselect](https://github.com/nemanjamalesija/vue-superselect) - Headless, accessible, TypeScript-first select/combobox for Vue 3 with dual compound component and composable APIs.
 
 ##### Drag and Drop
 
-- [Vue DnD Kit](https://github.com/zizigy/vue-dnd-kit) - A lightweight, performant drag and drop toolkit for Vue 3 with composable API, keyboard navigation, accessibility support, and advanced customization options. Supports any cases, and touch devices. Inspired by React DnD Kit
+- [Vue DnD Kit](https://github.com/zizigy/vue-dnd-kit) - A lightweight, performant drag and drop toolkit for Vue 3 with composable API, keyboard navigation, accessibility support, and advanced customization options. The source describes support for any use case and touch devices. Inspired by React DnD Kit.
 - [vuedraggable-plus](https://github.com/Alfred-Skyblue/vue-draggable-plus) - Vue component allowing drag-and-drop sorting module, support Vue>=v3 or Vue>=2.7. Based on Sortable.js.
 - [vue-draggable-resizable](https://github.com/mauricius/vue-draggable-resizable) - Vue2 component for draggable and resizable elements.
-- [vue3-dnd](https://github.com/hcg1023/vue3-dnd) - React DnD in Composition API implementation, Use the Composition API for sortable and free draggable, Supported Vue2, Vue3.
+- [vue3-dnd](https://github.com/hcg1023/vue3-dnd) - React DnD implementation using the Composition API, with sorting and free dragging for Vue 2 and 3.
 - [sortablejs-vue3](https://github.com/MaxLeiter/sortablejs-vue3) - A Vue 3 component acting as a thin wrapper around SortableJS
-- [vue-fluid-dnd](https://github.com/carlosjorger/vue-fluid-dnd) - A Vue 3 drag and drop, sortable, dependency-free library with cool animations, a easy to use api using vue composables.
+- [vue-fluid-dnd](https://github.com/carlosjorger/vue-fluid-dnd) - A Vue 3 drag and drop, sortable, dependency-free library with animations and an API using Vue composables.
 
 ##### Type Select
 
-_Let the user select a tag / something while typing_
+Select tags or other values while typing.
 
-- [v-image](https://github.com/vinayakkulkarni/v-image) :camera: Tiny little component for input type=file (< 1kb, gzipped)
+- [v-image](https://github.com/vinayakkulkarni/v-image) - Small component for input type=file; < 1kb gzipped.
 
 ##### Color Picker
 
@@ -1246,7 +1101,7 @@ _Let the user select a tag / something while typing_
 
 ##### Switch
 
-_Switch / on/off toggle / checkbox_
+Switch / on/off toggle / checkbox
 
 - [vue-toggles](https://github.com/juliandreas/vue-toggles) - A highly customizable and accessible toggle component
 - [vue-collapsed](https://github.com/smastrom/vue-collapsed) - Vue 3 CSS height transition from any to auto and vice versa. Accordion ready.
@@ -1254,63 +1109,60 @@ _Switch / on/off toggle / checkbox_
 
 ##### Masked Input
 
-- [vue-r-mask](https://github.com/raidan00/vue-r-mask) - Directive with template similar to javascript regular expression.
+- [vue-r-mask](https://github.com/raidan00/vue-r-mask) - Directive with templates similar to JavaScript regular expressions.
 - [vue-currency-input](https://github.com/dm4t2/vue-currency-input) - Easy input of currency formatted numbers for Vue.js.
-- [vue-input-facade](https://github.com/RonaldJerez/vue-input-facade) - A lightweight and dependency free input masking library created specific for Vue, originally a fork of the famous _vue-text-mask_ but actively maintained and with lots of improvements after there.
+- [vue-input-facade](https://github.com/RonaldJerez/vue-input-facade) - Lightweight, dependency-free input-masking library specifically for Vue. Originally a fork of vue-text-mask, described by the source as actively maintained with many subsequent improvements.
 
 ##### Rich Text Editing
 
-- [vue-froala-wysiwyg](https://github.com/froala/vue-froala-wysiwyg) - Official VueJS plugin for Froala WYSIWIG HTML Editor.
+- [vue-froala-wysiwyg](https://github.com/froala/vue-froala-wysiwyg) - Official VueJS plugin for Froala WYSIWYG HTML Editor.
 - [vue-trix](https://github.com/hanhdt/vue-trix) - Simple and lightweight Trix rich-text editor for Vue.js
-- [tiptap](https://github.com/heyscrumpy/tiptap) - A renderless and extendable rich-text editor for Vue.js
+- [tiptap](https://github.com/heyscrumpy/tiptap) - Renderless, extensible rich-text editor for Vue.js.
 - [ckeditor5-vue](https://github.com/ckeditor/ckeditor5-vue) - An official CKEditor 5 rich text editor component for Vue.js.
-- [vue-quilly](https://github.com/alekswebnet/vue-quilly) - 🪶 Tiny Vue 3 component, that helps to create Quill v2 based WYSIWYG editors.
+- [vue-quilly](https://github.com/alekswebnet/vue-quilly) - Small Vue 3 component for creating Quill v2-based WYSIWYG editors.
 
 ##### Image Manipulation
 
-_Edit images_
+Edit images
 
-- [vue-cropper](https://github.com/xyxiao001/vue-cropper) - A picture clipping plugin for vue2.0
+- [vue-cropper](https://github.com/xyxiao001/vue-cropper) - Image-cropping plugin for Vue 2.0.
 - [vue-croppie](https://github.com/jofftiquez/vue-croppie) - Yet another image cropper
-- [vue-advanced-cropper](https://github.com/Norserium/vue-advanced-cropper) - An advanced cropper that gives you opportunity to create almost any cropper that you desire
-- [vue-img-cutter](https://github.com/acccccccb/vue-img-cutter) - A vue plugin for image cutting tool,it's very convenient to use.
+- [vue-advanced-cropper](https://github.com/Norserium/vue-advanced-cropper) - Customizable image cropper intended to support almost any cropping interface.
+- [vue-img-cutter](https://github.com/acccccccb/vue-img-cutter) - Vue image-cropping plugin.
 - [vue-picture-cropper](https://github.com/chengpeiquan/vue-picture-cropper) - A simple and easy-to-use picture cropping component for Vue 3.
 - [vue-polygon-cropper](https://github.com/TaTo30/vue-polygon-cropper) - A simple component to crop images in polygon shapes. [Demo](https://stackblitz.com/edit/vitejs-vite-urtqie?file=src%2FApp.vue)
 
-_Display images_
+Display images
 
 - [TwicPics](https://github.com/TwicPics/components) - Components replacing img and video tags with lazy loading, CLS optimization, and progressive loading out-of-the-box and enabling media optimization and manipulation.
 - [hevue-img-preview](https://github.com/heyongsheng/hevue-img-preview) - Image preview for Vue 2 & 3, supports mobile and desktop. [(demo)](https://heyongsheng.github.io/en/guide/profile.html)
 
 ##### File Upload
 
-- [vue-upload-component](https://github.com/lian-yue/vue-upload-component) - Vue upload component, Multi-file upload, Upload directory, Drag upload, Drag the directory. Supports Vue >= 2.0
-
-##### Context Menu
-
+- [vue-upload-component](https://github.com/lian-yue/vue-upload-component) - Vue upload component with multiple-file and directory uploads, including drag-and-drop files and directories. Supports Vue >= 2.0.
 
 ##### Miscellaneous
 
 - [vue-poll](https://github.com/ppietris/vue-poll) - A Vue.js component for voting
 - [vue-diagrams](https://github.com/gwenaelp/vue-diagrams) - Diagram component for vue.js, inspired by react-diagrams
 - [vue-simple-password-meter](https://github.com/miladd3/vue-simple-password-meter) - Lightweight password strength meter with no dependency
-- [v-use-places-autocomplete](https://github.com/wobsoriano/v-use-places-autocomplete) - 📍 Vue composable for Google Maps Places Autocomplete.
-- [vuetify-inline-fields](https://github.com/webdevnerdstuff/vuetify-inline-fields) - Vuetify Inline Fields Component Library offers a comprehensive collection of reusable UI components to create elegant and efficient inline form fields within your applications.
-- [vue-integer-plusminus](https://github.com/keiwen/vue-integer-plusminus) - Integer input component for vue3 with increment and decrement buttons, fitting as spinbutton, allowing keyboard functionalities
+- [v-use-places-autocomplete](https://github.com/wobsoriano/v-use-places-autocomplete) - Vue composable for Google Maps Places Autocomplete.
+- [vuetify-inline-fields](https://github.com/webdevnerdstuff/vuetify-inline-fields) - Reusable Vuetify UI components for inline form fields.
+- [vue-integer-plusminus](https://github.com/keiwen/vue-integer-plusminus) - Vue 3 integer-input component with increment and decrement buttons, spinbutton behavior, and keyboard support.
 
 ##### Wizard
 
 - [vue-stepper-component](https://github.com/adi518/vue-stepper-component) - A fully customizable Stepper component with Vuex support and Zero dependencies.
-- [vue3-form-wizard](https://github.com/parsajiravand/vue3-form-wizard) - Vue3-form-wizard is a vue based component with no external depenendcies which simplifies tab wizard management.
+- [vue3-form-wizard](https://github.com/parsajiravand/vue3-form-wizard) - Vue-based component for managing tab wizards, with no external dependencies.
 
 #### Canvas
 
 - [vue-konva](https://github.com/rafaesc/vue-konva) - Vue & Canvas - JavaScript library for drawing complex canvas graphics using Vue.
-- [vue3-signature](https://github.com/WangShayne/vue3-signature) - A electronic signature component for Vue 3
+- [vue3-signature](https://github.com/WangShayne/vue3-signature) - Electronic-signature component for Vue 3.
 
 #### Link Preview
 
-- [link-prevue](https://github.com/nivaldomartinez/link-prevue) - Flexible component for generate a link preview.
+- [link-prevue](https://github.com/nivaldomartinez/link-prevue) - Flexible component for generating link previews.
 
 #### Tour
 
@@ -1320,27 +1172,27 @@ _Display images_
 
 #### Event Handling
 
-_Handling of user events (scroll, click, key strike, ...)_
+Handle user events such as scrolling, clicks, and keystrokes.
 
 - [vue-global-events](https://github.com/shentao/vue-global-events/) – A component to handle global events (like shortcuts) using Vue’s event modifiers
-- [vue-tabevents](https://github.com/Almoullim/vue-tabevents) – Easy communication between other opened tabs
-- [vue-exit-intent](https://github.com/nickap/vue-exit-intent) - ✨ Vue Composable to handle user's Exit Intent.
+- [vue-tabevents](https://github.com/Almoullim/vue-tabevents) – Communication between open tabs.
+- [vue-exit-intent](https://github.com/nickap/vue-exit-intent) - Vue composable for handling a user's exit intent.
 
 #### Responsive Design
 
-- [vue-responsive](https://github.com/reinerBa/Vue-Responsive): Vue.js(2.x) directive to hide/show HTML-elements with the Bootstrap 4, 3 or self defined breakpoints.
+- [vue-responsive](https://github.com/reinerBa/Vue-Responsive): Vue.js 2.x directive for hiding and showing HTML elements using Bootstrap 4, Bootstrap 3, or custom breakpoints.
 
-#### Form
+#### Form <a id="form-1"></a>
 
-- [Form Builder](https://github.com/laravel-enso/formbuilder) - Json template based form builder, based on Vue and Laravel.
+- [Form Builder](https://github.com/laravel-enso/formbuilder) - JSON-template-based form builder using Vue and Laravel.
 - [vue-autofocus-directive](https://github.com/Botre/vue-autofocus-directive) - Vue autofocus directive.
-- [FormKit](https://github.com/formkit/formkit) - Vue 3 form development. 10x faster. Form inputs, validation, submission, error handling, generation, accessibility, theming, and more.
-- [vrf](https://github.com/dimailn/vrf) - Declarative scalable ui-agnostic markup-based Vue forms.
+- [FormKit](https://github.com/formkit/formkit) - Vue 3 form-development tools for inputs, validation, submission, error handling, generation, accessibility, and theming. The source claims 10x faster development.
+- [vrf](https://github.com/dimailn/vrf) - Declarative, scalable, UI-agnostic, markup-based Vue forms.
 - [tracked-instance](https://github.com/rudnik275/tracked-instance) - Build large forms and track all changes.
 - [Vorm](https://github.com/Flo0806/vorm) - A dynamic, schema-driven and fully validated form engine for Vue 3 with zero dependencies and full slot control.
 - [VueFormify](https://github.com/mateenagy/vue-formify) - Build powerful, type-safe forms in Vue 3.
 - [Enforma](https://encolajs.com/enforma/) - UI agnostic, schema-ready form library for Vue 3. 30+ built-in validation rules. UI presets for Vuetify, PrimeVue and Quasar
-- [piying-view](https://github.com/piying-org/piying-view) - Frontend Form Solution; strongly typed; Vue 3
+- [piying-view](https://github.com/piying-org/piying-view) - Strongly typed frontend form solution for Vue 3.
 - [Formisch](https://formisch.dev/vue/guides/introduction/) - A form library with focus on performance, type safety and bundle size
 
 ##### Validation
@@ -1348,36 +1200,36 @@ _Handling of user events (scroll, click, key strike, ...)_
 - [vee-validate](https://github.com/logaretm/vee-validate) - Simple Vue.js input validation plugin.
 - [vuelidate](https://github.com/monterail/vuelidate) - Simple, lightweight model-based validation for Vue.js.
 - [FormVuelar](https://github.com/janiskelemen/formvuelar) - Vue form components with server-side validation in mind
-- [vue-final-validate](https://phphe.github.io/vue-final-validate/) - Vue validation solution from my development experience, support nested, async.
+- [vue-final-validate](https://phphe.github.io/vue-final-validate/) - Vue validation solution supporting nested and asynchronous validation.
 - [@vuito/vue](https://github.com/mathix420/vuito) - Simple, lightweight, isomorphic, and template-based validation library.
-- [vest](https://github.com/ealush/vest) - 🦺 Declarative form validation framework inspired by unit testing.
-- [vorms](https://github.com/Mini-ghost/vorms) - Vue Form Validate with Composition API.
-- [regle](https://github.com/victorgarciaesgi/regle) - ✅ Headless form validation library for Vue.js.
-- [validation-composable](https://github.com/nexxtmove/validation-composable) - ✅ Lightweight validation for Vue — just 40 lines of code.
-- [vue-uform](https://github.com/tu6ge/vue-uform) - an component-first, unstyled, flexible form validation library for Vue 3
+- [vest](https://github.com/ealush/vest) - Declarative form-validation framework inspired by unit testing.
+- [vorms](https://github.com/Mini-ghost/vorms) - Vue form validation with the Composition API.
+- [regle](https://github.com/victorgarciaesgi/regle) - Headless form-validation library for Vue.js.
+- [validation-composable](https://github.com/nexxtmove/validation-composable) - Lightweight validation for Vue in 40 lines of code.
+- [vue-uform](https://github.com/tu6ge/vue-uform) - Component-first, unstyled, flexible form-validation library for Vue 3.
 - [validup](https://github.com/tada5hi/validup) - Composable, path-based validation with a Vue 3 composable (`@validup/vue`) for reactive forms, groups, and structured issues.
 - [NotForm](https://github.com/favorodera/notform) - Headless, composable form validation for Vue.js. Bring your own UI and schema (Zod, Valibot, ArkType, or any Standard-Schema compliant validator).
 
 #### Resize
 
-- [vue-not-visible](https://github.com/PxyUp/vue-not-visible) - Vue directive for removing from dom (like v-if) element on screen smaller than breakpoints.
+- [vue-not-visible](https://github.com/PxyUp/vue-not-visible) - Vue directive for removing elements from the DOM, like v-if, when the screen is smaller than a breakpoint.
 
 #### Scroll
 
-_Virtual scrollbar_
+Virtual scrollbar
 
-- [vuescroll](https://github.com/YvesCoding/vuescroll) - A scrolling plugin based on Vue.js for uniforming the scrolling in PC and mobile.
+- [vuescroll](https://github.com/YvesCoding/vuescroll) - Vue.js scrolling plugin for uniform scrolling on PCs and mobile devices.
 
-_Detect when components enter viewport_
+Detect when components enter viewport
 
-- [vue-use-active-scroll](https://github.com/smastrom/vue-use-active-scroll) - Highlight Vue 3 menu/sidebar links without compromises.
+- [vue-use-active-scroll](https://github.com/smastrom/vue-use-active-scroll) - Highlight Vue 3 menu and sidebar links.
 
 #### Routing
 
 - [vue-router](https://github.com/vuejs/vue-router) - The official router for Vue.js.
 - [v-route-generate](https://github.com/weiquanju/v-route-generate) - A tool to generate routes for vue-router 4.x.
 - [kitbag/router](https://github.com/kitbagjs/router) - A type safe router for vuejs
-- [unplugin-vue-router](https://github.com/posva/unplugin-vue-router) - Next Generation file based typed routing for Vue Router.
+- [unplugin-vue-router](https://github.com/posva/unplugin-vue-router) - File-based typed routing for Vue Router.
 - [vite-plugin-vue-middleware](https://github.com/awdr74100/vite-plugin-vue-middleware) - File-based navigation guards for Vue Router
 - [vue-router-citadel](https://github.com/Kassaila/vue-router-citadel) - A middleware-driven navigation control system for Vue Router.
 
@@ -1388,54 +1240,54 @@ _Detect when components enter viewport_
 
 #### Pagination
 
-- [vue-paginate-al](https://github.com/alziqziq/vue-paginate-al) - Vue paginate with return your data.
-- [vue-tiny-pagination](https://github.com/coderdiaz/vue-tiny-pagination) - A Vue component for create a tiny pagination.
+- [vue-paginate-al](https://github.com/alziqziq/vue-paginate-al) - Vue pagination returning your data.
+- [vue-tiny-pagination](https://github.com/coderdiaz/vue-tiny-pagination) - Small Vue pagination component.
 - [laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination) - A Vue.js pagination component for Laravel paginators that works with Bootstrap.
 - [vue-lpage](https://github.com/Botre/vue-lpage) - Low-level Vue pagination component.
 - [v-page](https://github.com/TerryZ/v-page) - A simple pagination bar, including length Menu, i18n support, based on Vue2.x.
 - [vue-use-paginator](https://github.com/Sun0fABeach/vue-use-paginator) - Vue 3 use-hook to reactively paginate data and arrange paginator buttons. Completely renderless.
 - [vueginate](https://github.com/lombervid/vueginate) - A simple pagination component for Vue 3
-- [vue-pagination](https://github.com/asika32764/vue-pagination/) - A non-style pagination with composable that can integrate with any frameworks.
+- [vue-pagination](https://github.com/asika32764/vue-pagination/) - Unstyled pagination with a composable that can integrate with any framework.
 - [@nabaraj/vue-pagination](https://github.com/nabaraj/vue-pagination-npm-package) - A lightweight Vue 3 pagination component with TypeScript types and customizable slots.
 
 #### Animation
 
 - [vue-animate](https://github.com/asika32764/vue-animate) - A Vue.js port of Animate.css. For use with Vue's built-in transitions.
-- [v-odometer](https://github.com/JefferyHus/v-odometer) - Smoothly transitions numbers with ease. Use this library to give your application a smooth animation, only applicable on numbers.
-- [vue-slide-up-down](https://github.com/danieldiekmeier/vue-slide-up-down) Like jQuery's `slideUp` / `slideDown`, but for Vue!
+- [v-odometer](https://github.com/JefferyHus/v-odometer) - Smooth animated transitions for numbers only.
+- [vue-slide-up-down](https://github.com/danieldiekmeier/vue-slide-up-down) Like jQuery's `slideUp` / `slideDown`, but for Vue.
 - [vue-kinesis](https://github.com/Aminerman/vue-kinesis) A set of components to create interactive animations
 - [vue3-lottie](https://github.com/megasanjay/vue3-lottie) A component for importing and displaying Lottie animations in Vue 3
 - [@morev/vue-transitions](https://github.com/morevm/vue-transitions) Transitions library for Vue 2 and 3 with no CSS needed
 - [@formkit/auto-animate](https://github.com/formkit/auto-animate) Add motion to your apps with a single line of code
 - [blottie](https://github.com/Applelo/blottie) Lottie component for Vue 3
-- [@lottiefiles/dotlottie-vue](https://github.com/LottieFiles/dotlottie-web) Official LottieFiles Vue component supporting the .lottie format (75% smaller files); convert and preview with [IconKing](https://iconking.net)
+- [@lottiefiles/dotlottie-vue](https://github.com/LottieFiles/dotlottie-web) Official LottieFiles Vue component supporting the .lottie format, described by the source as producing 75% smaller files; convert and preview with [IconKing](https://iconking.net)
 - [vue-countup-v3](https://github.com/jizai1125/vue-countup-v3) A Vue 3 Component for animation counting.
 - [timered-counter](https://github.com/siaikin/timered-counter) A counter web component with smooth animations
-- [ssgoi](https://github.com/meursyphus/ssgoi) - Native app-like page transitions with spring physics, 60fps on mobile, SSR-ready, and all modern browser support
+- [ssgoi](https://github.com/meursyphus/ssgoi) - Native-app-like page transitions with spring physics and SSR support. The source reports 60fps on mobile and support for all modern browsers.
 
 #### Meta Tags
 
-_Manage meta information in the document head_
+Manage meta information in the document head
 
 - [Unhead](https://github.com/unjs/unhead)
 
 #### Portal
 
-_Move a DOM node to a target DOM node_
+Move a DOM node to a target DOM node
 
 - [Official: Vue Teleport](https://vuejs.org/guide/built-ins/teleport)
-- [portal-vue](https://portal-vue.linusb.org/) - A Vue Plugin to render your component's template anywhere in the DOM (Works on the virtualDOM level, doesn't move nodes within the DOM)
+- [portal-vue](https://portal-vue.linusb.org/) - Vue plugin for rendering a component's template anywhere in the DOM. Works at the virtual DOM level and does not move nodes within the DOM.
 
 #### SVG
 
 - [vue-svgicon](https://github.com/MMF-FE/vue-svgicon) - A tool to create svg icon components. (vue 2.x).
-- [vue-inline-svg](https://github.com/shrpne/vue-inline-svg) - Vue component loads an SVG source dynamically and inline `<svg>` so you can manipulate the style of it with CSS or JS. (vue 2.x, vue 3.x)
+- [vue-inline-svg](https://github.com/shrpne/vue-inline-svg) - Vue component for dynamically loading and inlining an SVG source as `<svg>`, allowing CSS or JavaScript styling. Supports Vue 2.x and 3.x.
 - [lucide-motion-vue](https://github.com/respeak-io/lucide-motion-vue) - 516 animated Lucide icons for Vue 3 with ergonomic hover/tap/viewport triggers and a composable `<AnimateIcon>` wrapper. Tree-shakable, one chunk per icon, TypeScript-first. (vue 3.x)
 - [GeoIcons](https://geoicons.io) - Geographic map icons for every country, territory, and world region, as tree-shakable Vue 3 components.
 
 #### Miscellaneous
 
-- [v-github-icon](https://github.com/vinayakkulkarni/v-github-icon) - easily add "that" tiny GitHub icon on the right/left corner of your Vue components/libraries demos' 🤙
+- [v-github-icon](https://github.com/vinayakkulkarni/v-github-icon) - Add a small GitHub icon to the right or left corner of demos for Vue components and libraries.
 
 #### WebGL
 
@@ -1448,79 +1300,71 @@ _Move a DOM node to a target DOM node_
 
 #### Printing
 
-- [vue-to-print](https://github.com/siaikin/vue-to-print) - Print Vue 3 components in the browser. Supports Chrome, Safari, Firefox and EDGE.
+- [vue-to-print](https://github.com/siaikin/vue-to-print) - Print Vue 3 components in the browser. Supports Chrome, Safari, Firefox, and Edge.
 
-### Utilities
+### Utilities <a id="custom-events"></a><a id="persistence"></a><a id="web-sockets"></a>
 
-_Utilities not directly related to the UI_
+Utilities not directly related to the UI. Persistence covers LocalStorage and similar storage.
 
-- [vueuse](https://github.com/vueuse/vueuse) - Collection of essential Vue Composition API utils works for Vue 2.x and 3.x.
-- [vue-concurrency](https://github.com/MartinMalinda/vue-concurrency) - library for encapsulating asynchronous operations and managing concurrency for Vue and Composition API.
+- [vueuse](https://github.com/vueuse/vueuse) - Collection of Vue Composition API utilities for Vue 2.x and 3.x.
+- [vue-concurrency](https://github.com/MartinMalinda/vue-concurrency) - Library for encapsulating asynchronous operations and managing concurrency with Vue and the Composition API.
 - [vue-macros](https://vue-macros.dev) - Explore and extend more macros and syntax sugar to Vue.
-- [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) - 📲 On-demand components auto importing for Vue.
+- [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) - On-demand component auto-importing for Vue.
 - [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import) - Auto import Vue APIs on-demand for Vite, Webpack and Rollup.
 - [vue3-websocket](https://github.com/muzychenka/vue3-websocket) - Validate incoming WebSocket data with Zod.
 
-#### Typescript
+#### TypeScript
 
-- [vue-facing-decorator](https://github.com/facing-dev/vue-facing-decorator) - Vue 3 typescript class component decorators, like `vue-property-decorator` in Vue 2.
+- [vue-facing-decorator](https://github.com/facing-dev/vue-facing-decorator) - Vue 3 TypeScript class-component decorators, like `vue-property-decorator` in Vue 2.
 
 #### HTTP Requests
 
-_Retrieve data over HTTP_
+Retrieve data over HTTP
 
-- [vue-api-query](https://github.com/robsontenorio/vue-api-query) - Elegant and simple way to build requests for REST API.
-- [vue-request](https://github.com/Attojs/vue-request) - ⚡️ Vue 3 Composable for data fetching, supports SWR, polling, error retry, cache request, pagination, and other cool features.
+- [vue-api-query](https://github.com/robsontenorio/vue-api-query) - Build requests for REST APIs.
+- [vue-request](https://github.com/Attojs/vue-request) - Vue 3 composable for data fetching, with SWR, polling, error retries, request caching, pagination, and more.
 - [swrv](https://github.com/Kong/swrv) - Stale-while-revalidate data fetching for Vue.
-- [vue-vroom](https://github.com/frederikbache/vue-vroom) - A plugin for REST APIs, that lets you quickly generate type safe stores and a mock API with minimal config.
+- [vue-vroom](https://github.com/frederikbache/vue-vroom) - REST API plugin for generating type-safe stores and a mock API with minimal configuration.
 - [tanstack-query](https://github.com/tanstack/query) - Powerful asynchronous state management.
 - [@stitchapi/vue](https://github.com/rejifald/StitchAPI/tree/main/packages/vue) - Streaming-first StitchAPI bindings: typed, validated `useStitch` / `useStitchStream` composables that re-render as response deltas arrive.
 
 #### i18n
 
-_Internationalization / L10n / localization / translation_
+Internationalization / L10n / localization / translation
 
 - [vscode-vue-i18n-ally](https://github.com/antfu/vue-i18n-ally) - VSCode extension for better Vue-i18n experiences.
-- [v-intl](https://github.com/vinayakkulkarni/v-intl) - Global Intl wrapper for your awesome Vue 3 app 🔉
-- [v-google-translate](https://github.com/i7eo/v-google-translate) - A component that use google translate to internationalize your Vue.js app.
+- [v-intl](https://github.com/vinayakkulkarni/v-intl) - Global Intl wrapper for Vue 3 apps.
+- [v-google-translate](https://github.com/i7eo/v-google-translate) - Component using Google Translate to internationalize a Vue.js app.
 - [fluent-vue](https://github.com/Demivan/fluent-vue) - Internationalization plugin for Vue.js (2 and 3). Vue.js integration for Fluent.js - JavaScript implementation of Project Fluent
 - [vue-next-i18n](https://github.com/Aaronlamz/vue-next-i18n) - A lightweight internationalization plugin for Vue 3.
 - [tolgee/vue](https://github.com/tolgee/tolgee-js/tree/main/packages/vue) - Web-based localization tool enabling users to translate directly in the Vue 3 app they develop.
 - [intlify/vue-i18n-next](https://github.com/intlify/vue-i18n-next) - Vue I18n for Vue 3.
 - [vue-intlayer](https://github.com/aymericzip/intlayer) - Intlayer i18n solution for vue 3.
 - [vue-tiny-translation](https://github.com/makio64/vue-tiny-translation) - Super lightweight (0.32KB) reactive translation plugin for Vue 3. [Demo](https://vue-tiny-translation.netlify.app/)
-- [Loccy](https://loccy.dev) - Effortless Vue-i18n management in VS Code-based editors, featuring smart AI translations and key suggestions.
-
-#### Custom Events
-
-
-#### Persistence
-
-_LocalStorage etc._
-
+- [Loccy](https://loccy.dev) - Vue-i18n management in VS Code-based editors, with AI translations and key suggestions.
 
 #### State Management
 
-- [pinia](https://github.com/posva/pinia) - 🍍 Intuitive, type safe, light and flexible Store for Vue using the composition api with DevTools support.
+- [pinia](https://github.com/posva/pinia) - Type-safe, lightweight, flexible store for Vue using the Composition API, with DevTools support.
 - [effector](https://github.com/zerobias/effector) — Fast and powerful reactive state manager. Effector lets you write simple, fast and type safe code and manage reactive state with ease.
-- [v-bucket](https://github.com/mediv0/v-bucket) - 📦 Fast, Simple, and Lightweight State Management for Vue 3.0 built with composition API, inspired by Vuex.
+- [v-bucket](https://github.com/mediv0/v-bucket) - Lightweight Vue 3.0 state management using the Composition API, inspired by Vuex and described by the source as fast.
 - [vue-datatable-url-sync](https://github.com/socotecio/vue-datatable-url-sync) - Synchronize datatable options and filters with the url to keep user preference even after refresh or navigation
 - [harlem](https://github.com/andrewcourtice/harlem) - Simple, unopinionated, lightweight and extensible state management for Vue 3
 - [exome](https://github.com/Marcisbee/exome) - Simple proxy based state manager for deeply nested states.
-- [Stan](https://stan.party) - a minimal, atomic state manager (framework-agnostic, with Vue bindings).
+- [Stan](https://stan.party) - Minimal atomic state manager, independent of frameworks, with Vue bindings.
 
-##### Mobx
+##### MobX
 
 - [mobx-vue-lite](https://github.com/mobxjs/mobx-vue-lite) - Lightweight Vue 3 bindings for MobX based on Composition API.
 
 ##### Pinia
 
 - [pinia-xstate](https://github.com/wobsoriano/pinia-xstate) - Put your xstate state machines into a global pinia store.
-- [pinia-orm](https://github.com/CodeDredd/pinia-orm) - The Pinia plugin to enable Object-Relational Mapping access to the Pinia Store. 🍍
+- [pinia-orm](https://github.com/CodeDredd/pinia-orm) - Pinia plugin enabling object-relational mapping access to the Pinia store.
 - [pinia-persistedstate-2](https://github.com/iendeavor/pinia-plugin-persistedstate-2) - Persist and rehydrate your Pinia state between page reloads.
 - [@tauri-store/pinia](https://github.com/ferreira-tb/tauri-store/tree/main/packages/plugin-pinia) - Persistent Pinia stores for Tauri.
-- [pinia-plugin-unstorage](https://github.com/litingyes/pinia-plugin-unstorage) - The best persistence plugin with unjs/unstorage for pinia.
-- [@erlihs/pinia-plugin-storage](https://github.com/erlihs/pinia-plugin-storage) - A comprehensive state persistence and synchronization, yet as simple as it can be.
+- [pinia-plugin-unstorage](https://github.com/litingyes/pinia-plugin-unstorage) - Pinia persistence plugin using unjs/unstorage.
+- [@erlihs/pinia-plugin-storage](https://github.com/erlihs/pinia-plugin-storage) - State persistence and synchronization.
 
 ##### Authentication/Authorization
 
@@ -1528,8 +1372,8 @@ _LocalStorage etc._
 
 ##### Vuex Utilities
 
-- [jsonapi-vuex](https://github.com/mrichar1/jsonapi-vuex) - Use a JSONAPI api with a Vuex store, with client-side restructuring/normalization of records.
-- [vuex-masked-modules](https://github.com/Silksofthesoul/vuex-masked-modules) - A Vuex plugin put data structure of the module in localStorage, with the ability to mask or encrypt the data to make it difficult to explore. Designed for Vue 3 and Vuex 4.
+- [jsonapi-vuex](https://github.com/mrichar1/jsonapi-vuex) - Use a JSONAPI API with a Vuex store, with client-side restructuring and normalization of records.
+- [vuex-masked-modules](https://github.com/Silksofthesoul/vuex-masked-modules) - Vuex plugin storing module data structures in localStorage, with masking or encryption to make the data harder to inspect. Designed for Vue 3 and Vuex 4.
 
 #### GraphQL
 
@@ -1537,10 +1381,10 @@ _LocalStorage etc._
 
 #### Code Style
 
-_Improve readability of code_
+Improve readability of code
 
 - [vue-types](https://github.com/dwightjack/vue-types) - Vue Prop Types definitions.
-- [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) - Eslint plugin for Vue.js projects.
+- [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) - ESLint plugin for Vue.js projects.
 - [vue-ts-types](https://github.com/FloEdelmann/vue-ts-types) - Lightweight TypeScript-first Vue prop type definitions.
 
 #### CSS
@@ -1549,25 +1393,22 @@ _Improve readability of code_
 
 #### Asset Management
 
-_Utilities for building / compiling / bundling / loading assets_
+Utilities for building / compiling / bundling / loading assets
 
 - [vue-loader](https://github.com/vuejs/vue-loader) - Webpack loader for Vue.js components.
 - [vue-jsx-hot-loader](https://github.com/skyrpex/vue-jsx-hot-loader) - Enable HMR for Vue.js components with JSX render functions.
 - [vite-svg-loader](https://github.com/jpkleemans/vite-svg-loader) - Vite plugin to load SVG files as Vue components
-- [vite-plugin-svg-sfc](https://github.com/Kaciras/vite-plugin-svg-sfc) Vite plugin to load SVG file as vue SFC, supports HMR & <style> block.
+- [vite-plugin-svg-sfc](https://github.com/Kaciras/vite-plugin-svg-sfc) Vite plugin for loading SVG files as Vue SFCs, with HMR and `<style>` block support.
 
 #### Page Navigation
 
-- [vue-page-stack](https://github.com/hezhongfeng/vue-page-stack) - Routing and navigation for your Vue SPA. Vue 单页应用导航管理器
+- [vue-page-stack](https://github.com/hezhongfeng/vue-page-stack) - Routing and navigation manager for Vue SPAs.
 
 #### Miscellaneous
 
 - [vue-live](https://github.com/vue-styleguidist/vue-live) - A component to demo components, inspired by react-live.
 - [vue-safe-html](https://github.com/ecosia/vue-safe-html) - Vue.js directive which renders sanitised HTML dynamically.
 - [@skirtle/vue-vnode-utils](https://github.com/skirtles-code/vue-vnode-utils) - Helper functions for working with slot VNodes inside render functions in Vue 3
-
-#### Web Sockets
-
 
 #### Payment
 
@@ -1580,19 +1421,19 @@ Payment utilities.
 
 ### Integrations
 
-_Integrate with services or other frameworks_
+Integrate with services or other frameworks
 
 - [vue-recaptcha](https://github.com/DanSnow/vue-recaptcha) - Google reCAPTCHA component for Vue.js
 - [vuefire](https://github.com/vuejs/vuefire) - Official Firebase bindings for Vue.js
 - [vue-postgrest](https://github.com/technowledgy/vue-postgrest) - Vue.js integration for postgREST: flexible, powerful and easy to use.
-- [vue-tweet](https://github.com/DannyFeliz/vue-tweet) - Vue 3 component that let you embed tweets in your App by only giving the tweet id
+- [vue-tweet](https://github.com/DannyFeliz/vue-tweet) - Vue 3 component for embedding tweets in an app by specifying only the tweet ID.
 - [vue-tg](https://github.com/deptyped/vue-telegram) - Telegram Web Apps integration for Vue 3.
 - [@rollgate/sdk-vue](https://github.com/rollgate/sdks/tree/main/packages/sdk-vue) - Vue 3 feature flag SDK with composables, gradual rollouts, A/B testing and real-time updates. Backend: [Rollgate](https://rollgate.io)
 - [@agentskit/vue](https://github.com/AgentsKit-io/agentskit) - Vue 3 composable and headless chat components for building AI agents, with streaming, tools, memory and RAG.
 
 #### Vue CLI Plugins
 
-- [vue-cli-plugin-chrome-extension-cli](https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli) - Vue CLI Plugin generate chrome extension template
+- [vue-cli-plugin-chrome-extension-cli](https://github.com/sanyu1225/vue-cli-plugin-chrome-extension-cli) - Vue CLI plugin for generating Chrome extension templates.
 
 ##### Google Analytics
 
@@ -1600,44 +1441,44 @@ _Integrate with services or other frameworks_
 
 ### Dev Tools
 
-- [Storybook](https://storybook.js.org) - The UI Development Environment. works with v3.2+ later.
+- [Storybook](https://storybook.js.org) - UI development environment; the source states it works with v3.2 and later.
 - [Font Awesome Finder](https://chrome.google.com/webstore/detail/font-awesome-icon-finder/kjejboahkcobalmgldloeinebmbomgog) - Chrome extension to search, preview and choose Font Awesome icons and copy the selected icon HTML code & Unicode to clipboard.
 - [Roundtable](https://github.com/askbudi/roundtable) - Zero-configuration MCP server that unifies multiple AI assistants (Claude Code, Cursor, GPT-4, etc.) into a single development workflow for Vue.js projects.
 - [Bit](https://github.com/teambit/bit) - Manage and reuse `vue` components between projects. Easily isolate and share components from any project without changing its source code, organize curated collections and install in different projects.
-- [Vue Mess Detector](https://github.com/rrd108/vue-mess-detector) - A static code analysis tool for 👉 detecting code smells and best practice violations in Vue.js and Nuxt.js projects
+- [Vue Mess Detector](https://github.com/rrd108/vue-mess-detector) - A static code analysis tool for detecting code smells and best practice violations in Vue.js and Nuxt.js projects
 - [Vue Log Arsenal](https://github.com/MvdZon/Vue3-log-arsenal) - Lightweight Vue 3 plugin providing logging directives for easier debugging
-- [PocketMocker](https://github.com/tianchangNorth/pocket-mocker) - Visual, browser-based HTTP mocking tool for front-end apps. Intercepts fetch/XHR, supports SmartMock rules, delay/error simulation and works great when developing Vue apps.
+- [PocketMocker](https://github.com/tianchangNorth/pocket-mocker) - Visual, browser-based HTTP mocking tool for front-end apps. Intercepts fetch/XHR, supports SmartMock rules and delay/error simulation for Vue-app development.
 
 #### Inspect
 
-_Inspecting & debugging_
+Inspecting & debugging
 
-- [vite-plugin-vue-inspector](https://github.com/webfansplz/vite-plugin-vue-inspector) - jump to editor source code while click the element of browser automatically.
-- [vue-flow-vis](https://github.com/MiloradFilipovic/vue-flow-vis) - real-time monitoring of component renders and reactive dependency tracking
+- [vite-plugin-vue-inspector](https://github.com/webfansplz/vite-plugin-vue-inspector) - Automatically jump to source code in the editor by clicking an element in the browser.
+- [vue-flow-vis](https://github.com/MiloradFilipovic/vue-flow-vis) - Real-time component-render monitoring and reactive-dependency tracking.
 
 #### Docs
 
-_Create documentation_
+Create documentation
 
 - [Vuex CheatSheet](https://vuejs-tips.github.io/vuex-cheatsheet) - Complete Interactive Vuex API.
 - [vue-styleguidist](https://github.com/vue-styleguidist/vue-styleguidist) - A style guide generator for Vue components with a living style guide.
-- [Vue Cheatsheet](https://vue-cheatsheet.themeselection.com/) - The only Vue cheatsheet you will ever need
+- [Vue Cheatsheet](https://vue-cheatsheet.themeselection.com/) - Vue cheatsheet.
 - [Heroshot](https://github.com/omachala/heroshot) - Automate documentation screenshots with Vue component integration and theme-aware output.
 
-_Browse documentation_
+Browse documentation
 
 - [Dash](https://kapeli.com/dash) - Offline API documentation browser for macOS with instant search access to Vue.js docs and 200+ other frameworks.
 
 #### Test
 
-- [vue-hubble](https://github.com/crishellco/vue-hubble) - A better way to select elements for UI testing in Vue.
+- [vue-hubble](https://github.com/crishellco/vue-hubble) - Select elements for UI testing in Vue.
 - [Vue Testing Library](https://github.com/testing-library/vue-testing-library) - Simple and complete testing utilities that encourage good testing practices. Based on DOM Testing Library and built upon the official Vue Test Utils.
 - [jest-serializer-vue-tjw](https://github.com/tjw-lint/vue3-snapshot-serializer) - Improved formatting of Jest Snapshots
 - [vitest](https://github.com/vitest-dev/vitest) - Next generation testing framework powered by Vite.
 
-#### Source Code Editing
+#### Source Code Editing <a id="emacs"></a>
 
-_Text editor plugins_
+Text editor plugins
 
 ##### Vim
 
@@ -1645,43 +1486,40 @@ _Text editor plugins_
 
 ##### Visual Studio Code
 
-- [Vue Language Tools (Volar)](https://github.com/vuejs/language-tools) - ⚡The Fastest Vue Language Support Extension
-- [Vue VSCode Snippets](https://github.com/sdras/vue-vscode-snippets) - Snippets that will supercharge your Vue workflow.
+- [Vue Language Tools (Volar)](https://github.com/vuejs/language-tools) - Vue language-support extension, described by the source as the fastest.
+- [Vue VSCode Snippets](https://github.com/sdras/vue-vscode-snippets) - Snippets for Vue development.
 
-##### Intellij
+##### IntelliJ
 
 - [Vue.js support for WebStorm](https://github.com/JetBrains/intellij-plugins/tree/master/vuejs), IntelliJ IDEA, PhpStorm, PyCharm & RubyMine – official Vue.js support by JetBrains
 
-##### Emacs
-
-
 ### Scaffold
 
-_Scaffold / boilerplate / seed / starter kits / stack ensemble / Yeoman generator_
+Scaffold / boilerplate / seed / starter kits / stack ensemble / Yeoman generator
 
 - [ILUMINATY](https://github.com/LuynoxRD/ILUMINATY) - Vue 3 + Vite SSG template for editorial sites, directories, events and blogs with Sanity CMS integration.
-- [Vite](https://github.com/vitejs/vite) - Next generation frontend tooling. It's fast!
+- [Vite](https://github.com/vitejs/vite) - Frontend tooling, described by the source as fast.
 - [Create Vue](https://github.com/vuejs/create-vue)
-- [vuesion](https://github.com/vuesion/vuesion) - Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.
+- [vuesion](https://github.com/vuesion/vuesion) - Boilerplate for product teams, using engineering and design practices intended to speed development.
 - [ScaffoldHub.io](https://scaffoldhub.io) - Generate full Vue applications with SQL, MongoDB or Firebase Firestore databases.
 - [VuePlay](https://christiankienle.github.io/vueplay/) - Generate disposable Vue playgrounds in seconds. Allows you to test things quickly.
-- [Mevn-CLI](https://github.com/madlabsinc/mevn-cli) - Light speed setup for MEVN stack based apps.
+- [Mevn-CLI](https://github.com/madlabsinc/mevn-cli) - Setup tool for MEVN-stack apps.
 - [vue-enterprise-boilerplate](https://github.com/bencodezen/vue-enterprise-boilerplate) - An ever-evolving, very opinionated architecture and dev environment for new Vue SPA projects using Vue CLI 3.
-- [vue-starters-directory](https://shershen08.github.io/vue-starters-directory/) - Search for available scaffold projects and starter kits for VueJS. Features search and github stats are available.
+- [vue-starters-directory](https://shershen08.github.io/vue-starters-directory/) - Search for available scaffold projects and starter kits for VueJS. Includes search and GitHub statistics.
 - [Vue3-SPA-starter-template](https://github.com/M-Media-Group/Vue3-SPA-starter-template) - A starter kit with Router, Pinia, i18n, Stripe, Event Bus, SEO meta and schema tag handling, and more.
 - [vue-x-platforms](https://github.com/NativeScript/vue-x-platforms) - Vue running on Web, iOS, Android and Vision Pro.
-- [mevn-boilerplate](https://github.com/mustafacagri/mevn-boilerplate) - ⭐️ the most comprehensive mevn stack boilerplate. ⭐️ mongodb - express - vue 3 (admin dashboard) - nodejs - nuxt 3 (client) boilerplate (pinia, tiptap, slug, vuetify and vuexy and more...) 🎉
-- [monorepo-template](https://github.com/Nagell/monorepo_template) - 🗂️ Vue 3 monorepo template with pnpm, Nx, Vite, Tailwind CSS, Storybook, TypeScript, and ready-to-use shared libraries.
+- [mevn-boilerplate](https://github.com/mustafacagri/mevn-boilerplate) - MEVN-stack boilerplate using MongoDB, Express, Vue 3 for the admin dashboard, Node.js, and Nuxt 3 for the client. Includes Pinia, Tiptap, slug, Vuetify, Vuexy, and more.
+- [monorepo-template](https://github.com/Nagell/monorepo_template) - Vue 3 monorepo template with pnpm, Nx, Vite, Tailwind CSS, Storybook, TypeScript, and ready-to-use shared libraries.
 
 #### Universal
 
-_Render Vue application to HTML on the server and to the DOM in the browser_
+Render Vue application to HTML on the server and to the DOM in the browser
 
-- [Vue.js/Nuxt.js full-featured boilerplate](https://github.com/GrabarzUndPartner/gp-vue-boilerplate) - professional agency frontend template for building fast, robust, and adaptable web apps or sites by vuejs/nuxtjs.
+- [Vue.js/Nuxt.js full-featured boilerplate](https://github.com/GrabarzUndPartner/gp-vue-boilerplate) - Professional-agency frontend template for building web apps and sites with Vue.js/Nuxt.js, described by the source as fast, robust, and adaptable.
 
 #### Desktop
 
-- [electron-vite-template](https://github.com/umbrella22/electron-vite-template) - A modern desktop application project template with Vue 3, Vite & Electron. **It's fast!**
+- [electron-vite-template](https://github.com/umbrella22/electron-vite-template) - A modern desktop application project template with Vue 3, Vite, and Electron, described by the source as fast.
 - [Vutron](https://github.com/jooy2/vutron) - Quick start templates for Vite + Electron + Vue 3 + Vuetify + TypeScript.
 - [electron-vite-vue](https://github.com/electron-vite/electron-vite-vue) - Really simple Electron + Vite + Vue boilerplate.
 - [MōBrowser](https://teamdev.com/mobrowser) - A framework for building desktop apps with web technologies. Templates and plumbing for Vite + Vue + Quasar are included.
@@ -1689,12 +1527,4 @@ _Render Vue application to HTML on the server and to the DOM in the browser_
 
 ### Prerendering
 
-- [vue-genesis](https://github.com/fmfe/genesis) - 🔥Micro front end, micro service and lightweight solution based on Vue SSR🔥
-
-  
-
-  <br/>
-  <br/>
-  <br/>
-
-[![CC0](https://i.creativecommons.org/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+- [vue-genesis](https://github.com/fmfe/genesis) - Lightweight microfrontend and microservice solution based on Vue SSR.

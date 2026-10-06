@@ -1,291 +1,274 @@
 ---
-title: "Awesome Pcaptools"
-description: "Pcaptoolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+title: "Awesome PCAPTools"
+description: "Linuxの帯域監視、パケット取得・解析、DNSトレース、ファイル抽出、USB取得のツールと関連研究。"
 licenseSource: "github-caesar0301-awesome-pcaptools-readme-md"
 ---
 
-# Awesome Pcaptools
+# Awesome PCAPTools
 
-Pcaptoolsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
+Linuxの帯域監視、ネットワークトラフィックの取得・解析、DNSトレースの処理、キャプチャからのファイル抽出に使うツールを紹介します。USBの取得・解析、パケットフィルター、トラフィック合成、研究論文も扱うリンク集であり、ツールのコードやファイル自体は提供しません。
 
-* **Bmon**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/bmon-640x480.png>
+## Linuxコマンド<a id="linuxcmds"></a>
 
-* **Bwm-ng**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://a.fsdn.com/con/app/proj/bwmng/screenshots/10965.jpg/245/183/1>
+* Bmon: Bandwidth Monitor。nloadに似たツールで、システム上の全ネットワークインターフェースのトラフィック負荷を表示。グラフとパケット単位の詳細欄も備える。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/bmon-640x480.png)
 
-* **CBM**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/cbm.png>
+* Bwm-ng: Bandwidth Monitor Next Generation。利用可能な全ネットワークインターフェースについて、送受信データの速度をリアルタイムで簡潔に表示する負荷モニター。 [画面例](https://a.fsdn.com/con/app/proj/bwmng/screenshots/10965.jpg/245/183/1)
 
-* **Collectl**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.cse.wustl.edu/~jain/cse567-08/ftp/hw/collectl.png>
+* CBM: Color Bandwidth Meter。ネットワークインターフェースのトラフィック量を表示する小さな帯域モニター。追加オプションはなく、トラフィック統計をリアルタイムで更新。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/cbm.png)
 
-* **Dstat**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.tecmint.com/wp-content/uploads/2016/09/Dstat-Linux-Monitoring.png>
+* Collectl: dstatに似た形式でシステム統計を表示し、CPU、メモリ、ネットワークなど各種資源の統計を収集。リンク先の画面例はネットワーク使用量と帯域の表示を示す。 [画面例](https://www.cse.wustl.edu/~jain/cse567-08/ftp/hw/collectl.png)
 
-* **Ifstat**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://community.linuxmint.com/img/screenshots/ifstat.png>
+* Dstat: Python製のツールで、各種システム統計をバッチ形式で表示し、CSVなどのファイルに記録。リンク先の画面例はネットワーク帯域の表示を示す。 [画面例](https://www.tecmint.com/wp-content/uploads/2016/09/Dstat-Linux-Monitoring.png)
 
-* **Iftop**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/iftop.png>
+* Ifstat: ネットワーク帯域をバッチ形式で表示。出力は記録しやすく、他のプログラムやユーティリティで解析しやすい形式。 [画面例](https://community.linuxmint.com/img/screenshots/ifstat.png)
 
-* **Iptraf-ng**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://wiki.ipfire.org/addons/iptraf-ng/iptraf-ng_monitor.png>
+* Iftop: 個々のソケット接続で流れるデータを計測し、Nloadとは異なる方式で動作。pcapライブラリでネットワークアダプターの送受信パケットを取得し、サイズと個数から使用帯域を算出。接続ごとの帯域を表示できる一方、対応するプロセス名やIDは表示できない。pcapフィルターで指定したホスト接続だけに絞って帯域使用量を表示可能。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/iftop.png)
 
-* **Jnettop**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://sourceforge.net/projects/jnettop/>、<https://web.archive.org/web/20130509072433if_/http://jnettop.kubs.info/wiki/?binary=internal%3A%2F%2F76195466cc3bca92f8de7b404e240844.gif>
+* Iptraf-ng: 対話式で色分け表示するIP LANモニター。個々の接続とホスト間のデータ量を表示。固定原文では、開発が終了したiptrafから派生し、保守が続くフォークとして紹介。 [画面例](https://wiki.ipfire.org/addons/iptraf-ng/iptraf-ng_monitor.png)
 
-* **Nethogs**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/nethogs.png>
+* Jnettop: [Jnettop](https://sourceforge.net/projects/jnettop/) — 実行ホストを通過するトラフィックを取得し、使用帯域順にストリームを表示するトラフィック可視化ツール。 [画面例](https://web.archive.org/web/20130509072433if_/http://jnettop.kubs.info/wiki/?binary=internal%3A%2F%2F76195466cc3bca92f8de7b404e240844.gif)
 
-* **Netload**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/netload.png>
+* Nethogs: プロセスごとの帯域使用量を表示し、使用量の多い順に並べる小さな「net top」ツール。帯域が急増した際の原因プロセスの特定に利用でき、PID、ユーザー、プログラムのパスを表示。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/nethogs.png)
 
-* **Netwatch**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/netwatch.png>
+* Netload: 現在のトラフィック負荷と、プログラム起動後の総転送バイト数を簡潔に表示。その他の機能はなく、netdiagに含まれる。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/netload.png)
 
-* **Nload**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/nload.png>
+* Netwatch: netdiagに含まれるツールで、ローカルホストとリモートホスト間の接続、および各接続のデータ転送速度を表示。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/netwatch.png)
 
-* **Pktstat**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/pktstat.png>
+* Nload: 受信と送信のトラフィックを別々に監視するコマンドラインツール。スケールを調整できるグラフも表示。使い方は簡単で、多数のオプションは備えない。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/nload.png)
 
-* **Slurm**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/slurm.png>
+* Pktstat: 有効な全接続と各接続のデータ転送速度をリアルタイムで表示。TCPやUDPなど接続の種類に加え、HTTPリクエストがある場合はその詳細も表示。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/pktstat.png)
 
-* **Speedometer**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/speedometer.png>
+* Slurm: デバイスの統計とASCIIグラフを表示するネットワーク負荷モニター。c、s、lキーで切り替える3種類のグラフに対応。機能は簡潔で、それ以外の負荷の詳細は表示しない。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/slurm.png)
 
-* **Tcptrack**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/tcptrack.png>
+* Speedometer: 指定インターフェースの受信・送信トラフィックをグラフで表示する小さなツール。原文ではグラフの見た目がよいと紹介。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/speedometer.png)
 
-* **Trafshow**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.binarytides.com/blog/wp-content/uploads/2014/03/trafshow.png>
+* Tcptrack: iftopに似たツールで、pcapライブラリでパケットを取得し、接続ごとの使用帯域などの統計を算出。標準的なpcapフィルターで特定の接続を監視可能。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/tcptrack.png)
 
-* **Vnstat**: Linux上でネットワーク帯域や接続状況を監視するコマンドです。 参照: <https://www.howtoforge.com/images/vnstat/big/vnstat9.png>
+* Trafshow: 現在有効な接続、プロトコル、各接続の転送速度を表示。pcap形式のフィルターで接続を絞り込み可能。 [画面例](https://www.binarytides.com/blog/wp-content/uploads/2014/03/trafshow.png)
 
+* Vnstat: 他の多くのツールと異なり、バックグラウンドのサービス／デーモンで転送データ量を継続的に記録。その記録からネットワーク使用量の履歴レポートを作成可能。 [画面例](https://www.howtoforge.com/images/vnstat/big/vnstat9.png)
 
+## トラフィックキャプチャ<a id="capture"></a>
 
-トラフィックキャプチャ<a name="capture"></a>
----------------
+* [Libpcap/Tcpdump](https://www.tcpdump.org/): コマンドラインのパケット解析ツールtcpdumpと、ネットワークトラフィックを取得する移植性のあるC/C++ライブラリlibpcapの公式サイト。
 
-* [Libpcap/Tcpdump](https://www.tcpdump.org/): tcpdumpの公式サイト、強力なコマンドラインパケット分析ツールであり、libpcapはネットワークトラフィックキャプチャ用のポータブルC/C++ライブラリである。
+* [Deepfence PacketStreamer](https://github.com/deepfence/PacketStreamer): クラウドネイティブ環境向けのリモートパケット取得・収集ツール。固定原文では高性能な分散型tcpdumpと紹介。
 
-* [Deepfence PacketStreamer](https://github.com/deepfence/PacketStreamer): 高パフォーマンスのリモートパケットキャプチャおよび収集ツール。クラウドネイティブ環境向けのdistributed tcpdump。
+* [Ngrep](https://github.com/jpr5/ngrep/): GNU grepの一般的な機能の多くをネットワーク層に適用。pcapに対応し、拡張正規表現や16進数の表現でパケットのデータペイロードを照合。固定原文ではEthernet、PPP、SLIP、FDDI、Token Ring、nullインターフェース上のTCP、UDP、ICMPに対応すると説明。tcpdumpやsnoopと同様のBPFフィルター論理にも対応。 [画面例](https://www.cyberciti.biz/media/new/cms/2012/12/ngrep.png)
 
-* [Ngrep](https://github.com/jpr5/ngrep/): ngrepはGNU grepの主要な機能を提供し、ネットワーク層に適用するツールです。pcapを認識したツールで、パケットのデータペイロードに拡張された正規表現やヘキサデシマル表現を指定してマッチングできます。現在、Ethernet、PPP、SLIP、FDDI、Token RingおよびnullインターフェースでのTCP、UDP、ICMPを認識しており、tcpdumpやsnoopなどの一般的なパケットスヌーピングツールと同様にbpfフィルタ論理を理解しています。 [Screenshot](https://www.cyberciti.biz/media/new/cms/2012/12/ngrep.png)
+* [clj-net-pcap](https://github.com/ruedigergad/clj-net-pcap): Clojure用のパケット取得ライブラリ。`clj-net-pcap`はjNetPcapを利用し、使いやすくする補助機能を追加。[clj-net-pcapに関する論文](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=6903107)はCOMPSACW 2014で発表。
 
-* [clj-net-pcap](https://github.com/ruedigergad/clj-net-pcap): `clj-net-pcap`はClojure用のパケットキャプチャライブラリです。clj-net-pcapはjNetPcapを用い、jNetPcapの使いやすさを向上させるための補助機能を追加しています。2014年のCOMPSACWにおいて、[paper on clj-net-pcap](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=6903107)が公開されました。
+* [jNetPcap](https://sourceforge.net/projects/jnetpcap/): LinuxとWindowsで利用できるJava用パケット取得ライブラリ。libpcapまたはWinPcapの機能をJava Native Interface（JNI）経由で利用。
 
-* [jNetPcap](https://sourceforge.net/projects/jnetpcap/): jNetPcapはLinuxおよびWindowsで利用可能なJava用パケットキャプチャライブラリ。jNetPcapはlibpcapおよびWinPcapをそれぞれ活用し、Java Native Interface（JNI）を用いてlibpcap/WinPcapの機能を活用する。
+* [Arkime](https://arkime.com/): 旧称Moloch。大規模でオープンソースの、インデックス付きパケット取得・検索ツール。
 
-* [Arkime](https://arkime.com/): Arkime（以前はMoloch）は、大規模でオープンソースであり、インデックスされたパケットキャプチャと検索ツールである。
+* [n2disk](https://www.ntop.org/products/traffic-recording-replay/n2disk/): 商用の、インデックス機能を備えたマルチギガビットのネットワークトラフィック記録ツール。ライブのネットワークインターフェースから完全長のパケットを取得してファイルに書き込み。固定原文では、適切なハードウェアで10 Gigabit/sを超える速度でもパケット損失なしで取得できると説明。
 
-* [n2disk](https://www.ntop.org/products/traffic-recording-replay/n2disk/): （商用）：多ギガビットネットワークトラフィック記録装置でインデックス機能を備えたもの。n2diskはネットワークトラフィック記録アプリケーションである。n2diskでは、適切なハードウェア上で10ギガビット/秒を超える速度でライブネットワークインターフェースからフルサイズのネットワークパケットをキャプチャし、ファイルに書き込み、パケットの損失なしで実行できる。
+* [Netis Packet Agent](https://github.com/Netis/packet-agent): GREトンネルを利用するリモートデータ取得ツール。NICからパケットを取得し、GREでカプセル化して、監視・解析用のリモートマシンへ送信。
 
-* [Netis Packet Agent](https://github.com/Netis/packet-agent): GREトンネルを介したリモートデータキャプチャユーティリティであり、NICインターフェースからパケットをキャプチャし、GREでエンカプセル化してリモートマシンに送信し、監視および分析を行うことができる。
+* [OpenFPC](https://github.com/leonward/OpenFPC): 軽量なフルパケットのトラフィック記録・バッファリングを提供するスクリプト群。専門知識のない利用者が市販の汎用ハードウェア（COTS）で分散型トラフィック記録を導入し、既存のアラート・ログツールと統合できることを目指す。
 
-* [OpenFPC](https://github.com/leonward/OpenFPC): OpenFPCは、軽量なフルパケットネットワークトラフィック記録およびバッファリングツールを提供するスクリプトセットである。設計目標は、専門知識のないユーザーがCOTSハードウェア上で分散型ネットワークトラフィック記録を導入し、既存のアラートおよびログツールと統合できるようにすることである。
+* [PCAPdroid](https://github.com/emanuele-f/PCAPdroid): root権限なしで端末のネットワークトラフィックを監視・エクスポートするAndroidアプリ。PCAP形式に出力し、Wiresharkなどでリアルタイムにも解析可能。内蔵モニターでユーザーアプリやシステムアプリによる疑わしい接続を検出。
 
-* [PCAPdroid](https://github.com/emanuele-f/PCAPdroid): PCAPdroidは、rootなしでデバイスのネットワークトラフィックを監視およびエクスポートできるAndroidアプリである。トラフィックはPCAPフォーマットでダンプされ、Wiresharkなどの人気ツールで分析可能であり、リアルタイムでも可能である。組み込みのトラフィックモニタは、ユーザーおよびシステムアプリが作成した疑わしい接続を検知できる。
+* [PF_RING](https://www.ntop.org/products/packet-capture/pf_ring/): 固定原文でパケット取得速度を大幅に向上させると紹介されるネットワークソケットの実装。Linuxカーネル2.6.32以降に対応し、カーネルへのパッチは不要。PF_RING対応ドライバーで取得をさらに高速化。
 
-* [PF_RING](https://www.ntop.org/products/packet-capture/pf_ring/): PF_RINGは、パケットキャプチャ速度を劇的に向上させる新しいタイプのネットワークソケットである。Linux 2.6.32以降のカーネルで利用可能。カーネルをパッチする必要なし。PF_RING対応ドライバーによりパケットキャプチャ速度が向上する。
+* [pmacct](https://github.com/pmacct/pmacct): 多目的のパッシブネットワーク監視ツール群。IPv4/IPv6トラフィックなど転送プレーンのデータを計数・分類・集計・複製・エクスポート。BGP/BMP経由で制御プレーンのデータを収集して相関付け、RPKIデータも収集・相関付け。Streaming Telemetry経由でインフラのデータを収集。
 
-* [pmacct](https://github.com/pmacct/pmacct): マルチ用途のパッシブネットワークモニタリングツールの小さなセット。IPV4およびIPV6トラフィックをカウント、分類、集計、複製、エクスポートし、フォワーディングプレーンデータを処理する。BGPおよびBMPを介してコントロールプレーンデータを収集および相関。RPKIデータを収集および相関。ストリーミングテレメトリを介してインフラデータを収集する。
+* [softflowd](https://github.com/irino/softflowd): libpcapを使い、ネットワークインターフェースをプロミスキャスモードで監視してNetFlowデータを出力する、フロー単位のネットワークモニター。
 
-* [softflowd](https://github.com/irino/softflowd): libpcapを使用してネットワークインターフェースにプロミスキュアスにリスニングし、NetFlowデータをエクスポートするフローベースのネットワークモニタ。
+* [TTT](https://www2.sonycsl.co.jp/person/kjc/kjc/software.html#ttt): Tele Traffic Tapper。tcpdumpの派生で、リアルタイムのグラフィカルなリモートトラフィック監視に対応。tcpdumpの代替ではなく、tcpdumpで調べる対象を見つけるための補助。時間窓内でトラフィック量の大きい対象を自動抽出し、既定では1秒ごとにグラフを更新。
 
-* [TTT](https://www2.sonycsl.co.jp/person/kjc/kjc/software.html#ttt): （Tele Traffic Tapper）はtcpdumpの別の派生だが、リアルタイム、グラフィカル、リモートトラフィック監視が可能。tttはtcpdumpを置き換えるものではなく、tcpdumpで何を調べるべきかを助けるものである。tttはネットワークを監視し、時間帯内のトラフィックの主な貢献者を自動的に特定する。グラフはデフォルトで1秒ごとに更新される。
+* [Yaf](https://tools.netsa.cert.org/yaf/yaf.html): 固定原文で信頼性が高いと紹介される、pcapからフローレコードを生成するソフトウェア。大きなpcapの索引付けやパケット取得に利用。原文が最近の版として説明する版では、ペイロードの抽出とフローレコードへの格納にも対応。
 
-* [Yaf](https://tools.netsa.cert.org/yaf/yaf.html): 信頼性の高いソフトウェアであり、非常にしっかりしており、pcapからフロー記録を生成できる。これは、大きなpcapファイルをインデックス化するか、あるいはパケットキャプチャを行う際に非常に便利である。最新バージョンでは、ペイロードを抽出し、フロー記録に埋め込むことができる。
+* [sharppcap](https://github.com/dotpcap/sharppcap): Windows、Mac、Linuxに対応する完全マネージドの.NETライブラリ。ライブのデバイスとファイルベースのデバイスからパケットを取得。libpcapとnpcapのラッパーで、固定原文では信頼性と堅牢性を評価。
 
-* [sharppcap](https://github.com/dotpcap/sharppcap): 完全に管理された、クロスプラットフォーム（Windows、Mac、Linux）の.NETライブラリで、ライブおよびファイルベースのデバイスからのパケットをキャプチャできる。libpcapおよびnpcapの信頼性と堅牢性を備えたラッパーである。
+## トラフィック分析・検査<a id="analysis"></a>
+* [Brim](https://www.brimsecurity.com/): Zeekログの豊富な情報と、パケットの詳細を組み合わせるツール。固定原文では両方の利点を備えると紹介。Zeekログで多くの疑問を素早く調べ、詳細が必要な際にはパケットへすぐアクセスし、Wiresharkを1クリックで開ける。
 
-トラフィック分析・検査<a name="analysis"></a>
---------------------------------------------------
-* [Brim](https://www.brimsecurity.com/): Brimは、Zeekログの豊かさとパケットの詳細を融合したツールである。Zeekログがほとんどの質問に迅速に答えられる一方で、詳細を掘り下げたいときに、パケットに即座にアクセスできる。Wiresharkは常に1クリックで利用可能である。
+* [BruteShark](https://github.com/odedshimon/BruteShark): オープンソースでクロスプラットフォームのネットワークフォレンジック解析ツール。パスワード抽出、視覚的なネットワークマップ、TCPセッションの復元、暗号化パスワードのハッシュ抽出に対応。ハッシュをHashcat形式に変換してオフラインの総当たり攻撃にも利用可能。
 
-* [BruteShark](https://github.com/odedshimon/BruteShark): オープンソースでクロスプラットンのネットワークフォレンジック分析ツールであり、多くの機能を備えている。パスワード抽出、視覚的なネットワークマップ表示、TCPセッションの再構築、暗号化パスワードのハッシュ抽出、さらにはハッシュキャットフォーマットに変換してオフラインブートフォース攻撃を行うことができる。
+* [AIEngine](https://bitbucket.org/camp0/aiengine): 固定原文で次世代と紹介される対話式・プログラム制御可能なパケット検査エンジン。人の介入なしでの学習、NIDS機能、DNSドメイン分類、ネットワーク収集などに対応。ネットワーク・セキュリティの専門家によるトラフィックの識別と、NIDS、ファイアウォール、トラフィック分類器などのシグネチャ作成を支援。
 
-* [AIEngine](https://bitbucket.org/camp0/aiengine): 次世代のインタラクティブ／プログラマブルパケット検査エンジンであり、人間の介入なしで学習可能、NIDS機能、DNSドメイン分類、ネットワークコレクタなど、多くの機能を備えている。AIEngineはネットワーク／セキュリティプロフェッショナルがトラフィックを識別し、NIDS、ファイアウォール、トラフィック分類などに使用するシグネチャを開発する際に支援する。
+* [CapAnalysis](http://www.capanalysis.net/ca/): 情報セキュリティの専門家、システム管理者など、大量の取得済みネットワークトラフィックを解析する人向けのWeb可視化ツール。[実行デモ](http://pcap.capanalysis.net/)で試用可能。
 
-* [CapAnalysis](http://www.capanalysis.net/ca/): CapAnalysisは情報セキュリティ専門家、システム管理者、大量のキャプチャされたネットワークトラフィックを分析する必要があるすべての人々向けのウェブ可視化ツールです。ライブデモは[available](http://pcap.capanalysis.net/)で確認できます。
+* [CapTipper](https://github.com/omriher/CapTipper): 悪意のあるHTTPトラフィックを調べるツール。
 
-* [CapTipper](https://github.com/omriher/CapTipper): 悪意あるHTTPトラフィック探索
+* [Chopshop](https://github.com/MITRECND/chopshop): MITRE製のフレームワーク。APTの攻撃手法を扱うpynidsベースのデコーダー・検出器の作成と実行を支援。
 
-* [Chopshop](https://github.com/MITRECND/chopshop): MITREが開発したフレームワークで、アナリストがpynidsベースのデコーダおよび検出器の作成および実行を支援する。
+* [CoralReef](https://www.caida.org/tools/measurement/coralreef/): CAIDA製の、パッシブなインターネットトラフィック監視で収集したデータを解析するソフトウェア群。libpcapに似て、ATMなど他のネットワーク形式へ拡張したlibcoralライブラリを提供。CとPerlから利用可能。
 
-* [CoralReef](https://www.caida.org/tools/measurement/coralreef/): CAIDAが開発したソフトウェアセットで、パッシブインターネットトラフィックモニタが収集したデータを分析する。libcoralというプログラミングライブラリを提供しており、libpcapに類似したもので、ATMおよび他のネットワークタイプに拡張されたものであり、CおよびPerlから利用可能。
+* [DPDK](https://www.dpdk.org/): 高速なパケット処理のためのライブラリとドライバー群。任意のプロセッサーで動作するよう設計され、最初の対応CPUはIntel x86。固定原文ではIBM Power 8、EZchip TILE-Gx、ARMへの対応も記載。主にLinuxのユーザー空間で動作し、一部の機能はFreeBSDへ移植。
 
-* [DPDK](https://www.dpdk.org/): は、パケット処理を高速に実行するためのライブラリとドライバーのセットです。任意のプロセッサ上で動作できるように設計されています。最初にサポートされたCPUはインテルx86であり、現在はIBM Power 8、EZchip TILE-GxおよびARMにも拡張されています。主にLinuxユーザランドで動作します。FreeBSD向けのポートも提供されています。
+* [DPKT](https://github.com/kbandla/dpkt): Python用のパケット生成・解析ライブラリ。
 
-* [DPKT](https://github.com/kbandla/dpkt): Pythonによるパケット生成・解析用のライブラリ
+* [ECap](https://web.archive.org/web/20170715080351/https://bitbucket.org/nathanj/ecap/wiki/Home): External Capture。Webフロントエンドを備えた分散型ネットワークスニファー。2005年に作成され、tcpdump-workersメーリングリストでの要望に応えて紹介。原文の作者は、需要があれば開発を再開したいと述べている。
 
-* [ECap](https://web.archive.org/web/20170715080351/https://bitbucket.org/nathanj/ecap/wiki/Home): (外部キャプチャ)は、ウェブフロントエンドを備えた分散型ネットワークスニファーです。2005年に以前に書かれたEcapですが、tcpdump-workersのメールリストに投稿された要望により、ここに登場します。興味があるなら、再開して更新してみるのも楽しいでしょう。
+* [EtherApe](https://etherape.sourceforge.io/): ethermanをモデルにしたUnix用のグラフィカルネットワークモニター。リンク層、IP、TCPの各モードを備え、通信量に応じてホストとリンクの大きさを変え、プロトコルを色分け表示。Ethernet、FDDI、Token Ring、ISDN、PPP、SLIPデバイスに対応。トラフィックを絞り込み、ファイルからもライブのネットワークからも読み込み可能。
 
-* [EtherApe](https://etherape.sourceforge.io/): は、ethermanをモデルにしたUnix用のグラフィカルネットワークモニタ。リンク層、IP、TCPモードを備え、ネットワーク活動をグラフィカルに表示します。ホストやリンクのサイズはトラフィックに応じて変化し、色分けされたプロトコルを表示します。Ethernet、FDDI、Token Ring、ISDN、PPPおよびSLIPデバイスをサポートしています。トラフィックのフィルタリングが可能で、ファイルからもネットワークからもトラフィックを読み取れます。
+* [Ettercap](https://github.com/Ettercap/ettercap): ARPポイズニング（中間者攻撃の一種）を用いたトラフィック取得・解析ツール群。自分で管理するネットワークでのみ使用すること。
 
-* [Ettercap](https://github.com/Ettercap/ettercap): は、ARPポイズニング（MITM攻撃の一種）を使用してトラフィックをキャプチャおよび解析するツールセットです（ネットワークを制御しているもののみで使用してください）
+* [HttpSniffer](https://github.com/caesar0301/http-sniffer): PCAPファイルからTCPフローの統計とHTTPヘッダーを取得するマルチスレッドのツール。HTTPを運ぶ各TCPフローをJSON形式のテキストファイルへ出力。
 
-* [HttpSniffer](https://github.com/caesar0301/http-sniffer): マルチスレッドツールで、PCAPファイルからTCPフローの統計および埋め込まれたHTTPヘッダーをスニッフィングし、各TCPフローにHTTPが含まれている場合、JSON形式のテキストファイルにエクスポートします。
+* [Ipsumdump](https://github.com/kohler/ipsumdump): TCP/IPダンプファイルを、人やプログラムが読みやすい自己記述型のASCII形式に要約。ネットワークインターフェース、tcpdumpファイル、既存のipsumdumpファイルからパケットを読み込み、必要なら自動的に展開。無作為抽出、内容による絞り込み、IPアドレスの匿名化、複数ダンプの時刻順の並べ替えに対応。実際のパケットデータを含むtcpdumpファイルの作成や、CLICKへのモジュールとしての組み込みも可能。
 
-* [Ipsumdump](https://github.com/kohler/ipsumdump): TCP/IPダンプファイルを人間やプログラムが簡単に読み取れる自己説明型のASCIIフォーマットに要約します。ipsumdumpはネットワークインターフェースから、tcpdumpファイルから、既存のipsumdumpファイルからパケットを読み取ることができます。必要に応じて、tcpdumpまたはipsumdumpファイルを透明に圧縮解除します。また、トラフィックをランダムにサンプリングし、内容に基づいてフィルタリングし、IPアドレスを匿名化し、複数のダンプファイルのパケットをタイムスタンプで並べ替えます。さらに、実際のパケットデータを含むtcpdumpファイルを作成することも可能です。CLICKとして挿入モジュールを使用する場合も便利です。
+* [ITA](https://web.archive.org/web/20181016104652/http://ita.ee.lbl.gov/html/traces.html): ACM SIGCOMMが支援する、管理者が内容を審査するInternet Traffic Archive。インターネットトラフィックのトレースを広く提供し、ネットワークの動態・使用特性・成長パターンの研究やトレース駆動シミュレーションに利用。生トレースを扱いやすくするプログラム、合成トレース生成やトレース解析のプログラムも受け入れる。
 
-* [ITA](https://web.archive.org/web/20181016104652/http://ita.ee.lbl.gov/html/traces.html): インターネットトラフィックアーカイブは、ACM SIGCOMMがスポンサリーする、インターネットネットワークトラフィックのトレースを広くアクセスできるようにする、モダレートなリポジトリです。これらのトレースは、ネットワークの動的性、使用特徴、成長パターンを研究するため、またトレース駆動シミュレーションの材料として利用できます。アーカイブは、原始的なトレースデータをより管理しやすい形式に変換するプログラム、合成トレースを生成するプログラム、およびトレースを分析するプログラムにも開放されています。
+* [Joy](https://github.com/cisco/joy): HTTPSなど暗号化された通信の分類を支援するために開発された、トラフィック解析・構文解析ツール。pcapを、取得統計や特徴の詳細を含むJSONファイルへ変換。
 
-* [Joy](https://github.com/cisco/joy): joyは、暗号化されたトラフィック（例：HTTPSトラフィック）の分類を支援するために開発されたトラフィック分析およびパースツールです。pcapファイルを、キャプチャ統計や特徴に関する詳細を含むJSONファイルにパースできます。
+* [Libcrafter](https://github.com/pellegre/libcrafter): ネットワークパケットの生成・デコードを容易にするC++用の高水準ライブラリ。一般的なプロトコルのパケットを生成・デコードし、ネットワークへ送信、取得、要求と応答の照合が可能。
 
-* [Libcrafter](https://github.com/pellegre/libcrafter): C++用の高度なライブラリで、ネットワークパケットの作成とデコードを容易にします。ほとんどの一般的なネットワークプロトコルのパケットを作成またはデコードし、ネットワークに送信し、キャプチャし、リクエストとレスポンスをマッチングできます。
+* [Libnet](https://github.com/libnet/libnet): ネットワークパケットの組み立てと処理を支援するルーチン群。低水準のパケット整形・処理・注入に移植性のある枠組みを提供。IP層とリンク層のパケット生成インターフェースに加え、補助・補完機能を備え、簡単なパケット組み立てアプリを短時間で作成可能。
 
-* [Libnet](https://github.com/libnet/libnet): ネットワークパケットの構成と処理を支援するルーチンのコレクションです。低レベルのネットワークパケットの整形、処理、注入に向けたポータブルなフレームワークを提供します。libnetはIP層およびリンク層でのポータブルパケット作成インターフェースを提供し、さらに多くの補助および補完機能を備えています。libnetを使用することで、迅速かつ簡単なパケットアセンブリアプリケーションを短時間で作成できます。
+* [Libnids](http://libnids.sourceforge.net/): Rafal Wojtczukが設計したネットワーク侵入検知システムのEコンポーネントの実装。Linux 2.0.xのIPスタックを模倣し、IPの断片再構成、TCPストリームの組み立て、TCPポートスキャン検出に対応。固定原文では信頼性を重視し、保護対象のLinuxホストの挙動をできる限り正確に予測することをテストで確認したと説明。
 
-* [Libnids](http://libnids.sourceforge.net/): ラファル・ヴォイトズクが設計した、ネットワークインシデント検知システムのEコンポーネントの実装です。Linux 2.0.xのIPスタックをエミュレートしています。libnidsはIPデフラグメント、TCPストリームのアセンブリ、TCPポートスキャン検知を提供します。libnidsの最も価値のある特徴は信頼性です。複数のテストが行われ、libnidsが保護されたLinuxホストの動作を可能な限り正確に予測できることが証明されています。
+* [Multitail](https://www.vanheusden.com/multitail/): tcpdump出力の監視用カラースキームを含むツール。フィルタリングや、タイムスタンプから時刻文字列への変換などにも対応。
 
-* [Multitail](https://www.vanheusden.com/multitail/): 現在、tcpdump出力のカラーリングスケームが含まれており、フィルタリング、タイムスタンプをタイム文字列に変換するなど、多くの機能を提供しています。
+* [Netsniff-ng](https://www.github.com/borkmann/netsniff-ng): 自由に利用できるLinux用ネットワークユーティリティのツールキット。日常のLinuxネットワーク作業を幅広く扱う。
 
-* [Netsniff-ng](https://www.github.com/borkmann/netsniff-ng): Netsniff-ngは、無料のLinuxネットワークユーティリティのツールキットであり、あなたの日常的なLinuxネットワーク設定に便利なスイス軍刀です。
+* [NetDude](http://netdude.sourceforge.net/): NETwork DUmp data Displayer and Editor。元のWebページでは、tcpdumpのトレースファイル内のパケットを詳細に変更できるGUIツールと説明。
 
-* [NetDude](http://netdude.sourceforge.net/): (ネットワークダンプデータディスプレイおよびエディタ)。ウェブページによると、「これは、tcpdumpトレースファイル内のパケットに対して詳細な変更を施すためのGUIベースのツールです。」
+* [Network Expect](https://www.netexpect.org/): ネットワークトラフィックとやり取りするツールを作るフレームワーク。スクリプトに従ってトラフィックを注入し、受信内容に基づいて判断・実行。インタープリター型言語の分岐と高水準の制御構造でやり取りを制御。取得にはlibpcap、パケットの詳細解析にはWiresharkのlibwiresharkを利用。GPL、BSD/Linux/OSX対応。
 
-* [Network Expect](https://www.netexpect.org/): は、ネットワークトラフィックと相互作用できるツールを簡単に構築できるフレームワークです。スクリプトに従い、ネットワークにトラフィックを注入し、受信したネットワークトラフィックに基づいて決定を行い、それに応じた行動をとります。解釈可能な言語により分岐と高レベルの制御構造が提供され、ネットワークとの相互作用を制御します。Network Expectはパケットキャプチャにはlibpcap、パケット解析にはlibwireshark（Wiresharkプロジェクトから）を使用しています。（GPL、BSD/Linux/OSX）。
+* [nfdump](https://github.com/phaag/nfdump): ネットワークデバイスからフローデータを収集・処理・解析するツール群。
 
-* [nfdump](https://github.com/phaag/nfdump): は、ネットワークデバイスからフローデータを収集・処理・分析するための強力なツールセットです。
+* [NFStream](https://github.com/nfstream/nfstream): オンライン・オフラインのネットワークデータを簡単かつ直感的に扱うため、高速で柔軟、表現力のあるデータ構造を提供するPythonフレームワーク。実用的なPythonネットワークデータ解析の高水準の基盤を目指し、研究者が実験間でデータを再現できる共通の解析フレームワークも目標とする。
 
-* [NFStream](https://github.com/nfstream/nfstream): は、オンラインまたはオフラインのネットワークデータを扱う際に、簡単で直感的なデータ構造を提供するPythonフレームワークです。これは、実用的な現実世界のネットワークデータ分析においてPythonの基本的な高レベル構成ブロックとなることを目的としています。さらに、実験間のデータ再現性を確保するための一般的なネットワークデータ分析フレームワークとしての目標を持っています。
+* [Ntop](http://www.ntop.org/): Unixのtopコマンドに似た方法でネットワーク使用量を表示するトラフィックプローブ。libpcapを基盤とし、ほぼすべてのUnix環境とWin32で動作することを目指した移植性のある実装。
 
-* [Ntop](http://www.ntop.org/): Ntopは、ネットワーク使用量を表示するネットワークトラフィックプローブで、人気のあるtop Unixコマンドと類似しています。Ntopはlibpcapに基づいており、UnixプラットフォームおよびWin32上でほぼすべてのプラットフォームで実行できるように設計されています。
+* [Ntopng](https://www.ntop.org/products/traffic-analysis/ntop/): 元のntopの次世代版で、Unixのtopコマンドに似た方法でネットワーク使用量を表示するトラフィックプローブ。固定原文ではntopをlibpcapベースの移植性のある実装とし、ほぼすべてのUnix環境、MacOSX、Win32での動作を目指すと説明。
 
-* [Ntopng](https://www.ntop.org/products/traffic-analysis/ntop/): Ntopngは、オリジナルのNtopの次世代バージョンであり、ネットワーク使用量を表示するネットワークトラフィックプローブです。Ntopはlibpcapに基づいており、Unixプラットフォーム、MacOSXおよびWin32上でほぼすべてのプラットフォームで実行できるように設計されています。
+* [Ostinato](https://ostinato.org/): 直感的なGUIを備えたパケット生成、pcap編集・再生、トラフィック生成ツール。追加機能には10/25/40Gの高速トラフィック生成と、スクリプト・自動化用Python APIがある。Windows、MacOS、Linuxに加え、CML、EVE-NG、GNS3の実験環境でも動作。
 
-* [Ostinato](https://ostinato.org/): Ostinatoは、パケットの作成・編集・再生およびトラフィック生成を行う、使いやすいGUIを備えたマルチプラットフォームツールです。拡張機能には、高速10G/25G/40Gトラフィック生成およびスクリプト・自動化用PythonAPIが含まれています。Windows、MacOS、LinuxおよびCML、EVE-NG、GNS3といったラボ環境でも動作します。
+* [packemon](https://github.com/ddddddO/packemon): 任意の入力からパケットを送信し、任意のネットワークインターフェース上でパケットを監視するTUIツール。既定のインターフェースはeth0。
 
-* [packemon](https://github.com/ddddddO/packemon): パケットモンスター（っ‘-’)╮=͟͟͞͞◒ ヽ( '-'ヽ) 任意の入力パケットを送信し、ネットワークインターフェース（デフォルト：eth0）上でパケットを監視するTUIツールです。
+* [PacketQ](https://github.com/dotse/PacketQ): PCAPファイルへの基本的なSQLフロントエンドを提供。JSON、CSV、XMLを出力し、JSON API付きの内蔵WebサーバーとAJAX GUIも備え、原文ではGUIの見た目がよいと紹介。
 
-* [PacketQ](https://github.com/dotse/PacketQ): PCAPファイルに対して基本的なSQLフロントエンドを提供するツール。出力はJSON、CSV、XMLであり、組み込みのウェブサーバーとJSON-API、そして見やすいAJAXGUIを備えています。
+* [Pcap2har](https://github.com/andrewf/pcap2har): dpktライブラリで.pcapのネットワークキャプチャファイルをHTTP Archiveファイルへ変換するプログラム。
 
-* [Pcap2har](https://github.com/andrewf/pcap2har): dpktライブラリを使用して.PCAPネットワークキャプチャファイルをHTTPアーカイブファイルに変換するプログラムです。
+* [PcapPlusPlus](https://github.com/seladb/PcapPlusPlus): 軽量で効率的に使いやすくすることを目指した、複数環境対応のC++ネットワーク取得・パケット解析・操作フレームワーク。libpcap、WinPcap、DPDK、PF_RINGのC++ラッパー。Ethernet、IPv4、IPv6、ARP、VLAN、MPLS、PPPoE、GRE、TCP、UDP、ICMP、DNS、およびHTTPやSSL/TLSなど第7層プロトコルの解析・編集に対応。
 
-* [PcapPlusPlus](https://github.com/seladb/PcapPlusPlus): PcapPlusPlusは、マルチプラットフォームのC++ネットワークスヌーピングおよびパケット解析・操作フレームワークです。軽量で効率的かつ使いやすいように設計されています。libpcap、WinPcap、DPDKおよびPF_RINGといった人気エンジンにC++ラッパーとして提供されています。また、Ethernet、IPv4、IPv6、ARP、VLAN、MPLS、PPPoE、GRE、TCP、UDP、ICMP、DNSおよびHTTPやSSL/TLSといったレイヤ7プロトコルを含む多くのプロトコルの解析・編集機能を備えています。
+* [pcaptoparquet](https://github.com/nokia/pcaptoparquet): PCAP/PCAPNGを主にApache Parquetなどの構造化データへ変換するPythonパッケージ。パケットを抽出・デコード・変換し、解析や可視化に適した問い合わせ可能なデータセットを作成。コマンドラインとプログラムからの利用に対応し、各種ネットワーク解析の作業へ組み込み可能。
 
-* [pcaptoparquet](https://github.com/nokia/pcaptoparquet): pcaptoparquetは、PCAPまたはPCAPNGファイルを構造化データ形式（主にApache Parquet）に変換するためのPythonパッケージです。このツールは、パケットデータを抽出・解読・変換し、分析および可視化に適したクエリ可能なデータセットに変換することを目的としています。ツールはコマンドラインおよびプログラムインターフェースをサポートしており、さまざまなネットワーク分析ワークフローへの統合が可能です。
+* [pkt2flow](https://github.com/caesar0301/pkt2flow): 追加の処理をせず、パケットをフローに分類することだけを目的とした簡潔なツール。DPIやフロー分類で特定フローの特徴を調べるために利用。原文の作者はtcpflows、tcpslice、tcpsplitを試したが、トレース量を減らす処理では要件を満たさず、フローのペイロードへ再構成する処理では要件を超え、単純に分類する既成ツールを見つけられなかったと説明。
 
-* [pkt2flow](https://github.com/caesar0301/pkt2flow): パケットをフローに分類するためのシンプルなユーティリティです。非常にシンプルであり、一つのタスクしか目的としていません。深層パケットインスペクションやフロー分類において、特定のフローの特徴を分析することが一般的です。tcpflows、tcpslice、tcpsplitといった既存ツールを使用したが、これらはすべてトレースの量を減らす（要件に従う）か、パケットをフローのペイロードに類似させる（要件を超える）ように試みています。このようなツールは、さらに処理を加えることなくパケットをフローに分類するシンプルなツールは見つかりませんでした。
+* [potiron](https://github.com/CIRCL/potiron): ネットワークキャプチャを正規化、索引付け、情報補完、可視化するツール。
 
-* [potiron](https://github.com/CIRCL/potiron): ネットワークキャプチャを標準化し、インデックス化し、豊かにし、可視化します。
+* [pyshark](https://kiminewt.github.io/pyshark/): Wiresharkのディセクターを使うtsharkのPythonラッパー。自らパケットを解析するPythonモジュールとは異なり、Wiresharkのコマンドラインツールtsharkが解析結果をXMLで出力する機能を利用。
 
-* [pyshark](https://kiminewt.github.io/pyshark/): tsharkのPythonラッパーであり、wiresharkのディスカイセータを使用してPythonでのパケット解析を可能にします。多くのPythonパケット解析モジュールがありますが、このモジュールは実際にパケットを解析するのではなく、tshark（wiresharkのコマンドラインツール）がXMLをエクスポートできる機能を単に利用しています。
+* [Sanitize](https://web.archive.org/web/20190210101529/http://ita.ee.lbl.gov/html/contrib/sanitize.html): セキュリティとプライバシーへの配慮のため、ホストの番号を振り直し、パケット内容を除いてtcpdumpトレースを縮約する5つのBourneシェルスクリプト。各スクリプトはトレースファイルを入力し、固定列形式の縮約したASCIIファイルを標準出力へ出力。
 
-* [Sanitize](https://web.archive.org/web/20190210101529/http://ita.ee.lbl.gov/html/contrib/sanitize.html): Sanitizeは、tcpdumpトレースをセキュリティおよびプライバシーの懸念を軽減するために、ホストをリナンバーし、パケットのコンテンツを削除するための5つのBourneシェルスクリプトのコレクションです。各スクリプトはtcpdumpトレースファイルを入力として受け取り、標準出力に固定列形式の簡略化されたASCIIファイルを生成します。
+* [Scapy](http://www.secdev.org/projects/scapy/): 対話式のパケット操作プログラム。多数のプロトコルのパケットを生成・デコードし、送信、取得、要求・応答の照合などに対応。スキャン、traceroute、プローブ、ユニットテスト、攻撃、ネットワーク探索を扱う。固定原文ではhping、nmapの85%、arpspoof、arp-sk、arping、tcpdump、tethereal、p0fなどを代替できると説明。無効フレームの送信、独自802.11フレームの注入、VLANホッピングとARPキャッシュポイズニングの組合せ、WEP暗号化チャネル上のVoIPデコードなどにも対応すると紹介。
 
-* [Scapy](http://www.secdev.org/projects/scapy/): Scapyは、強力なインタラクティブパケット操作プログラムです。多くのプロトコルのパケットを生成または解読し、ネットワークに送信し、キャプチャし、リクエストとレスポンスをマッチングし、さらに多くの機能を提供できます。スキャン、トラッサート、プローブ、ユニットテスト、攻撃、ネットワーク発見（hping、nmapの85％、arpspoof、arp-sk、arping、tcpdump、tethereal、p0fなどに置き換えることができます）といった古典的なタスクを簡単に処理できます。また、他のツールが処理できない多くの特定タスク（無効なフレームの送信、自作802.11フレームの注入、技術の組み合わせ（VLANホップ＋ARPキャッシュポイズニング、WEP暗号化チャネルでのVOIP解読、…）など）においても非常に優れたパフォーマンスを発揮します。
+* [SiLK](https://tools.netsa.cert.org/silk/): System for Internet-Level Knowledge。大規模ネットワークのセキュリティ解析を支援するトラフィック解析ツール群。フローデータの効率的な収集・保存・解析に対応。
 
-* [SiLK](https://tools.netsa.cert.org/silk/): SiLK（インターネットレベル知識システム）は、大規模ネットワークのセキュリティ分析を支援するためのトラフィック分析ツールのコレクションです。SiLKツールセットは、ネットワークフローデータの効率的な収集、保存、および分析をサポートしています。
+* [Sniff](http://www.thedumbterminal.co.uk/software/sniff.html): tcpdumpの出力を読みやすく、解析しやすくするツール。
 
-* [Sniff](http://www.thedumbterminal.co.uk/software/sniff.html): tcpdumpプログラムの出力を読みやすく、解析しやすいようにします。
+* [Snort](https://www.snort.org/): Sourcefire製のオープンソースの侵入検知・防止システム（IDS/IPS）。固定原文ではSourcefireはCisco傘下と説明。シグネチャ、プロトコル、異常に基づく検査を組み合わせる。原文では世界で最も広く導入されたIDS/IPSで、ダウンロード数は数百万、登録利用者は約500,000人、IPSの事実上の標準と紹介。
 
-* [Snort](https://www.snort.org/): Snortは、Sourcefire（現在はCiscoが所有）が開発したオープンソースネットワークインシデント防止および検出システム（IDS/IPS）です。署名、プロトコル、異常検出による検査の利点を組み合わせることで、Snortは世界中で最も広く導入されたIDS/IPS技術となっています。ダウンロード数は数百万件、登録ユーザーは約50万人とされ、SnortはIPSの標準として確立されています。
+* [Socket Sentry](https://github.com/rhasselbaum/socket-sentry): iftopやnetstatと同様の考え方に基づく、KDE Plasma用のリアルタイムネットワークトラフィックモニター。
 
-* [Socket Sentry](https://github.com/rhasselbaum/socket-sentry): Socket Sentryは、KDE Plasmaに組み込まれたリアルタイムネットワークトラフィックモニタリングツールで、iftopやnetstatといったツールの精神を反映しています。
+* [Squey](https://squey.org): 大きなPCAPを対話的に可視化し、異常や微弱な兆候を探るソフトウェア。
 
-* [Squey](https://squey.org): 大規模PCAPファイルを探索し、異常や弱い信号を検出するためのインタラクティブ可視化ソフトウェアです。
+* [Suricata](https://suricata-ids.org): 無料でオープンソースのネットワーク脅威検知エンジン。固定原文では成熟度、速度、堅牢性を評価。リアルタイムの侵入検知（IDS）、インラインの侵入防止（IPS）、ネットワークセキュリティ監視（NSM）、オフラインpcap処理に対応。
 
-* [Suricata](https://suricata-ids.org): Suricataは、無料でオープンソースであり、成熟し、高速かつ堅牢なネットワーク脅威検出エンジンです。Suricataエンジンはリアルタイムインシデント検出（IDS）、インラインインシデント防止（IPS）、ネットワークセキュリティモニタリング（NSM）およびオフラインpcap処理を可能にします。
+* [TCP-Reduce](http://ita.ee.lbl.gov/html/contrib/tcp-reduce.html): tcpdumpトレース内のTCP接続を1接続1行に要約するBourneシェルスクリプト群。TCP SYN/FIN/RSTパケットだけを調べるため、トレース開始時に既に継続中の接続など、SYNが記録されていない接続は要約に含まれない。内容が欠けたパケットはbogonとして標準エラー出力へ報告し、破棄。シーケンス番号が変わる再送で、誤って非常に大きい接続サイズを報告する場合があるため、100 MB以上など大きな接続は必ず妥当性を確認すること。
 
-* [TCP-Reduce](http://ita.ee.lbl.gov/html/contrib/tcp-reduce.html): TCP-Reduceは、tcpdumpトレースを1行の要約に簡略化するためのBourneシェルスクリプトのコレクションです。スクリプトはTCP SYN/FIN/RSTパケットのみを確認します。トレース中にSYNパケットが含まれていない接続（トレースの初期部分にある接続など）は、要約に表示されません。内容が欠落しているパケット（ガベージパケット）はstderrに「bogon」として報告され、削除されます。場合によっては、シーケンス番号が変更されたリトランスミッションによって誤った大きな接続サイズが報告され、常に大きな接続（100MB以上）の妥当性を確認してください。
+* [Tcpdpriv](http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html): ネットワークインターフェース、またはtcpdumpの-w引数で保存したトレース内のパケットから、利用者データやアドレスなどの機密情報を除去。TCP/UDPではペイロードを、それ以外のプロトコルではIPペイロード全体を除去。順次番号付けとその派生手法、アドレスのプレフィックスを維持するハッシュ法など、複数のアドレス攪乱手法を実装。
 
-* [Tcpdpriv](http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html): Tcpdprivは、ネットワークインターフェース（またはtcpdumpの-wオプションで作成されたトレースファイル）上で収集されたパケットから、ユーザーのデータやアドレスなどの機密情報を除去するためのプログラムです。TcpdprivはTCPおよびUDPのペイロードを削除し、他のプロトコルのすべてのIPペイロードを削除します。複数のアドレスシャッフル手法を実装しており、順次番号法およびその変種、アドレスプレフィックスを保持するハッシュ法を含みます。
+* [Tcpflow](https://github.com/simsong/tcpflow): TCP接続のデータを取得し、プロトコル解析・デバッグ用に保存。通常は実データを保存せずパケットの要約を示すtcpdumpと異なり、データストリームを復元し、各フローを別ファイルへ保存。必要ならpcapをTCPフローごとに分離して詳細な検査にも利用可能。[元のリンク](http://www.circlemud.org/jelson/software/tcpflow/)。
 
-* [Tcpflow](https://github.com/simsong/tcpflow): TCP接続（フロー）の送信データをキャプチャし、プロトコル分析やデバッグに適した形で保存するプログラムです。'tcpdump'のようなプログラムは、ワイヤー上で見られるパケットの概要を表示しますが、実際に送信されているデータを保存しません。一方、tcpflowは実際のデータストリームを再構成し、各フローを別ファイルに保存して後で分析できます。また、必要に応じて、各TCPフローごとにpcapフローを分離し、詳細な検証が可能です。[Original link](http://www.circlemud.org/jelson/software/tcpflow/)。
+* [Tcplook](http://ita.ee.lbl.gov/html/contrib/tracelook.html): tcpdumpの-w引数で作成したトレースをグラフィカルに表示するTcl/TkプログラムTracelook。全プロトコルを調べる構想だが、固定原文ではTCP接続だけに対応。動作は遅く、システム資源を大量に使用すると記載。
 
-* [Tcplook](http://ita.ee.lbl.gov/html/contrib/tracelook.html): Tracelookは、tcpdumpの-wオプションで作成されたトレースファイルの内容をグラフィカルに閲覧するためのTcl/TKプログラムです。Tracelookはすべてのプロトコルを確認すべきですが、現在はTCP接続のみを確認しています。このプログラムは遅く、システムリソースを大量に消費します。
+* [Tcpreplay](https://github.com/appneta/tcpreplay): libnetを使い、インターフェース上でpcapファイルを再生。
 
-* [Tcpreplay](https://github.com/appneta/tcpreplay): libnet を使ってインターフェース上で pcap ファイルを再放送する.
+* [Tcpslice](https://github.com/pyke369/tcpsplice): tcpdumpの-wフラグで取得したパケットトレースから一部を抽出。複数のトレースを結合し、1つ以上のトレースから時刻に基づいて一部を抽出可能。
 
-* [Tcpslice](https://github.com/pyke369/tcpsplice): Tcpslice は tcpdump の -w フラグで生成されたパケットトレースファイルの一部を抽出するツールであり、複数のトレースファイルを結合し、あるいは時間に基づいて1つ以上のトレースファイルの一部を抽出できる.
+* [Tcpsplit](https://github.com/pmcgleenon/tcpsplit): 単一のlibpcapトレースをTCP接続の境界で複数に分割し、1接続が2つのサブトレースに分かれないようにするツール。大きなトレースを詳細に調べやすくし、一部だけを解析するための部分集合を作成可能。
 
-* [Tcpsplit](https://github.com/pmcgleenon/tcpsplit): 1つの libpcap パケットトレースを、TCP接続の境界で分割して、TCP接続が2つのサブトレースに渡って分割されないようにするツール。これは、大規模なトレースファイルを詳細分析に適した形にし、トレースの一部にのみ分析を行うためのサブセットを作成する際に有用である.
+* [Tcpstat](https://frenchfries.net/paul/tcpstat/): vmstatがシステム統計を表示するのと同様に、ネットワークインターフェースの統計を表示。特定インターフェースを監視するか、保存済みのtcpdumpデータをファイルから読み込んで情報を取得。
 
-* [Tcpstat](https://frenchfries.net/paul/tcpstat/): tcpstat は、vmstat がシステム統計を報告するように、ネットワークインターフェースの統計を報告するツール。tcpstat は特定のインターフェースを監視するか、あるいは以前に保存された tcpdump データをファイルから読み込むことで情報を取得する.
+* [Tcptrace](https://github.com/blitz/tcptrace): Ohio UniversityのShawn OstermannによるTCPダンプ解析ツール。tcpdump、snoop、etherpeek、HP Net Metrix、WinDumpなどの取得ファイルを読み込み、接続ごとの経過時間、送受信バイト数・セグメント数、再送、往復時間、ウィンドウ広告、スループットなど各種出力を生成。詳細解析用のグラフも作成可能。
 
-* [Tcptrace](https://github.com/blitz/tcptrace): オハイオ大学のシャウン・オステルマンが開発した、TCPダンプファイルの分析用ツール。入力として、tcpdump、snoop、etherpeek、HP Net Metrix、WinDump などの人気パケットキャプチャプログラムが生成するファイルを受け取ることができる。tcptrace は、各接続についてelapsed time、送受信されたバイトおよびセグメント、リトランスミッション、リターンタイム、ウィンドウアドバタイズ、スループットなど、さまざまな情報を持つ出力タイプを生成できる。また、さらに分析に必要なグラフも生成できる.
+* [TraceWrangler](https://www.tracewrangler.com/): Windows、またはWINEを使うLinuxで動作するネットワークキャプチャファイル用ツール群。PCAPと、固定原文でWiresharkの新しい標準形式と説明されるPCAPngに対応。主な用途は、PCAP/PCAPngの機密データを簡単な操作で除去・置換し、匿名化すること。これらはトレースファイル、キャプチャファイル、パケットキャプチャとも呼ばれる。
 
-* [TraceWrangler](https://www.tracewrangler.com/): TraceWrangler は、Windows（またはWINEを使用してLinux）上で動作するネットワークキャプチャファイルツールキットであり、PCAPおよび新しいPCAPngファイルフォーマットをサポートしている。PCAPおよびPCAPngファイル（「トレースファイル」「キャプチャファイル」「パケットキャプチャ」とも呼ばれる）のセキュリティ上の情報の削除や匿名化を容易に実行できる。敏感なデータを削除または置き換えながら、使いやすさを確保している.
+* [Tstat](http://tstat.tlc.polito.it/): ネットワーク層とトランスポート層のトラフィックパターンを把握するため、多数のフロー特性を提供するパッシブスニファー。
 
-* [Tstat](http://tstat.tlc.polito.it/): ネットワークおよびトランスポートレベルのトラフィックパターンに関するいくつかの洞察を提供できる、パッシブなスニファー。非常に豊かなフロー機能を備えている.
+* [WAND](https://research.wand.net.nz/): University of Waikatoによる、libtraceを基盤としたネットワークトラフィック処理ツール群。原文の作者が推奨するプロジェクト。
 
-* [WAND](https://research.wand.net.nz/): ウェイカト大学から開発された、libtrace をベースにしたネットワークトラフィック処理用のツールの素晴らしいコレクション。このプロジェクトに私は大いに好意を抱いている.
+* [WinDivert](https://github.com/basil00/WinDivert): Windowsのユーザーモードでパケットを傍受するライブラリ。
 
-* [WinDivert](https://github.com/basil00/WinDivert): Windows用のユーザモードパケットインターセプション用のライブラリ.
+* [WinDump](https://www.winpcap.org/windump/): WinPcapを使う、Windows用のtcpdump相当のツール。
 
-* [WinDump](https://www.winpcap.org/windump/): Windows用のtcpdumpに相当するツールであり、WinPcapを使用する.
+* [WinPcap](https://www.winpcap.org/): WinPcapとWinDumpの状況についてのGuy Harrisによるメッセージの抜粋。
 
-* [WinPcap](https://www.winpcap.org/): Guy Harris によるWinPcapおよびWinDumpの状態に関するメッセージの抜粋.
+* [WireEdit](https://wireedit.com/): 無料のデスクトップ用WYSIWYGパケットエディター。パケットの構文や符号化規則の知識がなくても、任意のスタック層をリッチテキストのように編集。入出力のファイル形式はPcap。
 
-* [WireEdit](https://wireedit.com/): WireEdit は、ネットワークパケットの自由なデスクトップWYSIWYGエディタ。パケットの構造やエンコーディングルールを理解しなくても、任意のスタック層を「豊かなテキスト」として編集できる。入出力ファイルフォーマットは Pcap である.
+* [Wireshark suite](https://wiki.wireshark.org/Tools): パケット解析とプロトコルのデコードを支援するツール群。一般的な用途向けの実用ツールやスクリプトも含む。
 
-* [Wireshark suit](https://wiki.wireshark.org/Tools): パケットアナライザおよびプロトコルデコーダをサポートする、よく知られたツールセット。また、一般的な使用に必要ないくつかの実用ツールおよびスクリプトも含まれている.
+* [Xplot](http://www.xplot.org/): TCPパケットトレースの解析を支援するため、1980年代後半に作成されたxplot。
 
-* [Xplot](http://www.xplot.org/): 1980年代後半に書かれた、TCPパケットトレースの分析を支援するプログラムxplot.
+* [yaraPcap](https://github.com/kevthehermit/YaraPcap): YARAでHTTPのPCAPを処理。
 
-* [yaraPcap](https://github.com/kevthehermit/YaraPcap): HTTP PCAPをYARAで処理
+* [yaraprocessor](https://github.com/MITRECND/yaraprocessor): YARAを個々のパケットペイロードや、その一部または全部を連結したデータに適用。元はChopshop向けだが、Chopshopなしでも利用可能。
 
-* [yaraprocessor](https://github.com/MITRECND/yaraprocessor): yaraprocessor により、YARAは個別のパケットペイロードおよびそれらのペイロードの結合に対して実行可能。元々はChopshopで使用されたが、それなしでも使用できる.
+* [Zeek](https://zeek.org/): 旧称Bro。小規模なホームオフィスから大規模で高速な研究・商用ネットワークまで、解析担当者に簡潔で忠実度の高いトランザクションログ、ファイル内容、自由に調整した出力を提供するオープンソース基盤。固定原文のFAQでは、大規模環境での通信の意味に着目したセキュリティ監視を重視すると説明。従来の侵入検知・防止システムと比較されるが、柔軟な枠組みにより、従来システムの範囲を超える詳細な監視を利用者が構成できるとしている。原文は1990年代半ばからの実運用と20年以上の研究に言及し、詳細資料としてZeek OverviewとWhy Choose Zeek?を挙げている。
 
-* [Zeek](https://zeek.org/): pcapやネットワークトラフィックの分析・検査を支援するツールです。
-「Zeekは、大規模環境での意味的なセキュリティ監視に重点を置いた、包括的なネットワークトラフィック分析基盤です。従来型の侵入検知・防止システムとは異なり、柔軟な枠組みによって詳細でカスタマイズ可能な監視を実現します。1990年代半ばから実運用され、20年以上の研究に支えられています。」
+## DNSユーティリティ<a id="dnstools"></a>
 
-DNSユーティリティ <a name="dnstools"></a>
---------------------------------------------
+* [dnsgram](https://doc.powerdns.com/authoritative/manpages/dnsgram.1.html): 断続的なリゾルバー障害を調べるデバッグツール。1つ以上のPCAPファイルを読み込み、5秒区間ごとの統計で障害を調査。
 
-* [dnsgram](https://doc.powerdns.com/authoritative/manpages/dnsgram.1.html): dnsgram は、間歇的なリゾルバーの失敗をデバッグするためのツール。1つ以上の入力PCAPファイルを受け取り、5秒ごとのセグメントの統計を生成し、間歇的なリゾルバー問題を研究できる.
+* [dnsreplay](https://doc.powerdns.com/authoritative/manpages/dnsreplay.1.html): 記録済みの問い合わせと応答を指定ネームサーバーで再生し、一致した応答、悪化した応答、改善した応答の割合を報告。実際の応答や他の指標をダンプファイルの記録と比較。
 
-* [dnsreplay](https://doc.powerdns.com/authoritative/manpages/dnsreplay.1.html): Dnsreplay は、記録された質問と回答を指定された名前サーバーに再実行し、その後、どの回答が一致したか、悪化または改善したかを報告する。そして、ダンプファイルに記録されたものと、実際のものとの回答およびその他のメトリクスを比較する.
+* [dnsscan](https://doc.powerdns.com/authoritative/manpages/dnsscan.1.html): 1つ以上のPCAP形式のINFILEを読み込み、問い合わせ種別ごとのクエリ数を一覧にするツール。
 
-* [dnsscan](https://doc.powerdns.com/authoritative/manpages/dnsscan.1.html): dnsscan は、1つ以上のPCAP形式のINFILEを受け取り、各クエリタイプごとのクエリ数のリストを生成する.
+* [dnsscope](https://doc.powerdns.com/authoritative/manpages/dnsscope.1.html): PCAPを読み込み、簡単な統計を生成してコンソールへ出力。
 
-* [dnsscope](https://doc.powerdns.com/authoritative/manpages/dnsscope.1.html): dnsscope は、入力PCAPを受け取り、いくつかの簡単な統計を生成し、コンソールに出力する。
+* [dnswasher](https://doc.powerdns.com/authoritative/manpages/dnswasher.1.html): PCAPファイルを読み込み、エンドユーザーのIPアドレスを難読化したPCAPを出力。利用者のプライバシー保護を図りながら第三者とデータを共有するためのツール。
 
-* [dnswasher](https://doc.powerdns.com/authoritative/manpages/dnswasher.1.html): dnswasherはPCAP形式の入力ファイルを受け取り、IPアドレスを暗号化しながらPCAPファイルとして出力します。これは、ユーザーのプライバシーを保護しつつ第三者とデータを共有する際に有用です。
+## ファイル抽出<a id="fileextraction"></a>
 
+* [Chaosreader](https://github.com/brendangregg/Chaosreader): snoopやtcpdumpのログからTCP/UDPなどのセッションを追跡し、アプリケーションデータを取り出す無料ツール。取得ログからtelnetセッション、FTPファイル、HTTP転送のHTML/GIF/JPEG、SMTPメールなど各種データを抽出する「any-snarf」型のプログラム。全セッションの詳細へのリンク付きHTML索引を作成し、telnet、rlogin、IRC、X11、VNCセッションのリアルタイム再生プログラムや、画像・HTTP GET/POST内容のレポートを提供。
 
-ファイル抽出<a name="fileextraction"></a>
---------------------------------------------
+* [Dsniff](https://www.monkey.org/~dugsong/dsniff/): ネットワーク監査と侵入テストのツール群。dsniff、filesnarf、mailsnarf、msgsnarf、urlsnarf、webspyは、パスワード、メール、ファイルなどをパッシブに監視。arpspoof、dnsspoof、macofは、レイヤー2スイッチングなどで通常は攻撃者が取得できないトラフィックの傍受を支援。sshmitmとwebmitmは、アドホックPKIの弱い結び付けを悪用し、リダイレクトされたSSH/HTTPSセッションへの能動的な中間者攻撃を実装。
 
-* [Chaosreader](https://github.com/brendangregg/Chaosreader): snoopやtcpdumpログからTCP/UDP/...セッションをトレースし、アプリケーションデータを取得するための無料ツールです。これは「any-snarf」タイプのプログラムであり、ネットワークトラフィックログ内のキャプチャデータからtelnetセッション、FTPファイル、HTTP転送（HTML、GIF、JPEG、...）、SMTPメール、...などを取得します。すべてのセッションの詳細をリンクするHTMLインデックスファイルが作成され、telnet、rlogin、IRC、X11およびVNCセッションのリアルタイム再生プログラムや、画像報告、HTTP GET/POSTコンテンツ報告などのレポートが提供されます。
+* [Foremost](https://github.com/jonstewart/foremost): ヘッダー、フッター、内部データ構造からファイルを復元するコンソールツール。この手法はデータカービングと呼ばれる。dd、Safeback、Encaseなどが作成するイメージファイルや、ドライブそのものを対象にできる。ヘッダーとフッターを設定ファイルで指定するほか、コマンドラインのスイッチで組み込みのファイル形式を指定可能。組み込み形式ではデータ構造を調べ、復元の信頼性と速度を高める。
 
-* [Dsniff](https://www.monkey.org/~dugsong/dsniff/): Dsniffはネットワーク監視およびパッチテストに使用されるツールの集合です。dsniff、filesnarf、mailsnarf、msgsnarf、urlsnarf、webspyは、興味深いデータ（パスワード、メール、ファイルなど）を無作為に監視します。arpspoof、dnsspoof、macofは、通常は攻撃者にアクセスできないネットワークトラフィック（例：レイヤー2スイッチングによるもの）を中継するためのツールです。sshmitmおよびwebmitmは、SSHおよびHTTPSセッションに対して、アドホックPKIにおける脆弱なバインディングを活用して、アクティブな「モンキーインザミッド」攻撃を実行します。
+* [Justniffer](https://onotelli.github.io/justniffer/): ネットワークトラフィックを取得し、形式を調整したログを生成するプロトコル解析ツール。ApacheのWebサーバーログを再現し、応答時間を追跡し、HTTPトラフィックから傍受した全ファイルを抽出。
 
-* [Foremost](https://github.com/jonstewart/foremost): ヘッダー、フッター、および内部データ構造に基づいてファイルを回復するためのコンソールプログラムです。このプロセスは一般的に「データカーリング」と呼ばれます。Foremostはdd、Safeback、Encaseなどによって生成されたイメージファイル、または直接ドライブに適用できます。ヘッダーおよびフッターは設定ファイルで指定できますが、あるいはコマンドラインスイッチを使用して、組み込みファイルタイプを指定できます。これらの組み込みタイプは、特定のファイルフォーマットのデータ構造を確認することで、より信頼性高く、速くファイルを回復できます。
+* [NetworkMiner](https://www.netresec.com/index.ashx?page=NetworkMiner): Windows用のネットワークフォレンジック解析ツール（NFAT）で、Linux/Mac OS X/FreeBSDでも動作。パッシブなスニファー・パケット取得ツールとして、ネットワークへトラフィックを送信せずOS、セッション、ホスト名、開いているポートなどを検出。PCAPのオフライン解析や、送信されたファイル・証明書の再構成にも対応。
 
-* [Justniffer](https://onotelli.github.io/justniffer/): Justnifferはネットワークプロトコルアナライザーであり、ネットワークトラフィックをキャプチャし、カスタマイズされたログを生成できます。Apacheウェブサーバーログファイルをエミュレートし、応答時間のトレースを行い、HTTPトラフィックからすべての「インターセプトされた」ファイルを抽出できます。
+* [pcapfex](https://github.com/vikwin/pcapfex): Packet CAPture Forensic Evidence eXtractor。パケットキャプチャからファイルを見つけて抽出するツール。原文では使いやすさを特徴とし、pcapを渡すだけで全ファイルの抽出を試みると説明。拡張可能な設計で、認識・抽出するファイル形式を追加可能。
 
-* [NetworkMiner](https://www.netresec.com/index.ashx?page=NetworkMiner): NetworkMinerはWindows用のネットワークフォレンジック分析ツール（NFAT）ですが、Linux／Mac OS X／FreeBSDでも動作します。NetworkMinerは、ネットワークにトラフィックを送らないで、オペレーティングシステム、セッション、ホスト名、開いているポートなど、ネットワークの情報を検出するためのパッシブなネットワークスニファー／パケットキャプチャツールとして使用できます。また、PCAPファイルをパースし、オフライン分析を行うとともに、PCAPファイルから送信されたファイルおよび証明書を再生成・再構成できます。
+* [scalpel](https://github.com/sleuthkit/scalpel): オープンソースのデータカービングツール。
 
-* [pcapfex](https://github.com/vikwin/pcapfex): パケットキャプチャフォレンジック証拠エクストラクタ（pcapfex）は、パケットキャプチャファイルからファイルを検出し、抽出するツールです。その強みは、使いやすさにあります。PCAPファイルを提供するだけで、すべてのファイルを抽出しようとします。これは拡張可能なプラットフォームであり、追加のファイルタイプを認識・抽出できるように簡単に追加できます。
+* [Snort](https://www.snort.org/): Sourcefire製のオープンソースの侵入検知・防止システム（IDS/IPS）。固定原文ではSourcefireはCisco傘下と説明。シグネチャ、プロトコル、異常に基づく検査を組み合わせ、原文では世界で最も広く導入されたIDS/IPSと紹介。
 
-* [scalpel](https://github.com/sleuthkit/scalpel): Scalpelはオープンソースのデータカーリングツールです。
+* [Tcpick](http://tcpick.sourceforge.net/): libpcapベースのテキストモードのスニファー。TCPストリームを追跡・再構成・並べ替えし、フローを別々のファイルへ保存するか端末へ表示。FTPやHTTPで転送されるファイルの取得に利用。接続終了時にはストリーム全体を、16進ダンプ、16進ダンプ＋ASCII、印字可能文字のみ、rawモードなどで表示可能。
 
-* [Snort](https://www.snort.org/): Sourcefireによって開発されたオープンソースネットワークインシデント防止および検知システム（IDS/IPS）で、現在はCiscoが所有しています。シグネチャ、プロトコル、異常検知に基づく検査の利点を組み合わせることで、Snortは世界中で最も広く導入されているIDS/IPS技術です。
+* [Tcpxtract](http://tcpxtract.sourceforge.net/): ファイルのシグネチャに基づき、ネットワークトラフィックからファイルを抽出するツール。形式固有のヘッダーとフッターで抽出するカービングは、以前から使われるデータ復元手法。
 
-* [Tcpick](http://tcpick.sourceforge.net/): テキストモードのスニファーであり、libpcapベースでTCPストリームを追跡、再構成、並び替えできます。Tcpickはキャプチャされたフローを異なるファイルに保存したり、ターミナルに表示したりでき、FTPやHTTP経由で送信されるファイルをスニファリングする際に有用です。ターミナルにすべてのストリームを表示でき、接続が終了した場合、ヘキサダンプ、ヘキサダンプ＋アスキー、印刷可能な文字のみ、rawモードなど、さまざまな表示モードで表示できます。
+* [Xplico](http://www.xplico.org/about): ネットワークプロトコル解析ツールではなく、オープンソースのネットワークフォレンジック解析ツール（NFAT）。インターネットトラフィックのキャプチャから、POP/IMAP/SMTPの各メール、全HTTPコンテンツ、SIPの各VoIP通話、FTP、TFTPなどのアプリケーションデータを抽出。GNU General Public Licenseで提供され、一部のスクリプトはCreative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported（CC BY-NC-SA 3.0）で提供。
 
-* [Tcpxtract](http://tcpxtract.sourceforge.net/): ファイルタイプのヘッダーおよびフッター（「カーリング」とも呼ばれる）に基づいてネットワークトラフィックからファイルを抽出するためのツールです。ファイルタイプのヘッダーおよびフッターに基づいてファイルを抽出することは、長年にわたるデータ回復技術です。
-
-* [Xplico](http://www.xplico.org/about): Xplicoの目的は、インターネットトラフィックキャプチャからアプリケーションデータを抽出することです。たとえば、PCAPファイルからPOP、IMAP、SMTPプロトコルのメール、すべてのHTTPコンテンツ、SIPによるVoIP通話、FTP、TFTPなど、すべてのデータを抽出します。Xplicoはネットワークプロトコルアナライザーではありません。Xplicoはオープンソースのネットワークフォレンジック分析ツール（NFAT）です。XplicoはGNU一般公衆利用許諾（GPL）に基づいてリリースされ、一部のスクリプトはCreative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported（CC BY-NC-SA 3.0）ライセンスで提供されています。
-
-USB
----
+## USB
 ### キャプチャツール
-* [usbmon](https://www.kernel.org/doc/Documentation/usb/usbmon.txt): LinuxカーネルのUSBパケットキャプチャを実行するためのサブシステムです。
-* [USBPcap](https://github.com/desowin/usbpcap): Windows向けのソリューションです。
+* [usbmon](https://www.kernel.org/doc/Documentation/usb/usbmon.txt): USBパケットを取得するLinuxカーネルのサブシステム。
+* [USBPcap](https://github.com/desowin/usbpcap): Windows向けのUSB取得ソリューション。
 
 ### 分析
-* [USBPcapOdinDumper](https://github.com/KOLANICH/USBPcapOdinDumper): USBキャプチャを解析・変換するツールです。 参照: `usbmon`、`USBPcap`、<https://gitlab.com/BenjaminDobell/Heimdall>
+* [USBPcapOdinDumper](https://github.com/KOLANICH/USBPcapOdinDumper): Odinや[Heimdall](https://gitlab.com/BenjaminDobell/Heimdall)でAndroid端末へ書き込む際に取得した、`usbmon`や`USBPcap`のフレーム形式を含む.pcapを、フレームのペイロードを格納したファイル群へ変換。リバースエンジニアリングに利用でき、モジュール構造により他のアプリケーション形式へも容易に転用可能。
 
+## 関連プロジェクト<a id="others"></a>
 
-関連プロジェクト<a name="others"></a>
---------------------------------------
+* [BPF for Ultrix](https://www.tcpdump.org/other/bpfext42.tar.Z): Ultrix 4.2用のBPF配布物。ソースコードとバイナリモジュールを含む。
 
-* [BPF for Ultrix](https://www.tcpdump.org/other/bpfext42.tar.Z): Ultrix 4.2向けのBPFのディストリビューションで、ソースコードおよびバイナリモジュールが含まれています。
+* [BPF+](https://andrewbegel.com/papers/bpf.pdf): Andrew Begel、Steven McCanne、Susan Grahamによる、汎用パケットフィルターのアーキテクチャで大域的なデータフロー最適化を利用する研究。
 
-* [BPF+](https://andrewbegel.com/papers/bpf.pdf): Andrew Begel、Steven McCanne、およびSusan Grahamによる「一般化パケットフィルタアーキテクチャにおけるグローバルデータフロー最適化」に関する研究。
+* [FFT-FGN-C](ftp://ita.ee.lbl.gov/html/contrib/fft_fgn_c.html): 自己相似過程の一種である分数ガウス雑音を合成するプログラム。高速だが近似的。分数ガウス雑音は自己相似過程の一つにすぎず、ネットワークトラフィックを合成する場合、対象を別の過程でモデル化する方が適切な可能性がある点に注意。
 
-* [FFT-FGN-C](https://github.com/caesar0301/awesome-pcaptools/blob/d6f8b267e4359e693815bf6c331c4951577c6b6a/ftp:/ita.ee.lbl.gov/html/contrib/fft_fgn_c.html): 自己類似プロセスの一種である分数ガウシアンノイズを合成するためのプログラムです。このプログラムは高速ですが、近似値です。分数ガウシアンノイズは自己類似プロセスの一種にすぎません。このプログラムをネットワークトラフィックの合成に使用する際は、求めているトラフィックが他のプロセスでモデル化される方が適切である可能性があることに注意する必要があります。
+* [Haka](http://www.haka-security.org/): 取得中のトラフィックに対してプロトコルを記述し、セキュリティポリシーを適用するオープンソース言語。不要なパケットの絞り込み・変更・破棄、悪意のある活動の記録・報告を行うルールを記述可能。ネットワークプロトコルと、その基礎となる状態機械を定義する文法も提供。
 
-* [Haka](http://www.haka-security.org/): セキュリティを目的としたオープンソース言語で、プロトコルを記述し、（リアルタイムでキャプチャされた）トラフィックにセキュリティポリシーを適用できます。Haka言語の範囲は二つあります。まず、不要なパケットをフィルタリング・変更・削除し、悪意ある活動をログ記録・報告するためのセキュリティルールを書くことができます。第二に、Hakaはネットワークプロトコルおよびその下位状態マシンを指定するための文法を備えています。
+* [RIPE-NCC Hadoop for PCAP](https://github.com/RIPE-NCC/hadoop-pcap): PCAPを読み込むHadoopライブラリで、読み込み用コードを同梱。MapReduceジョブ内でPCAPを直接読み込める。SQLのようなコマンドでPCAPを問い合わせるためのHive Serializer/Deserializer（SerDe）も提供。
 
-* [RIPE-NCC Hadoop for PCAP](https://github.com/RIPE-NCC/hadoop-pcap): Hadoop用のパケットキャプチャ（PCAP）ファイルを読み取るライブラリです。PCAPを読み取るコードをバンドルしています。MapReduceジョブ内でPCAPファイルをネイティブに読み取る用途があります。また、SQLのようなコマンドでPCAPをクエリできるHiveのシリアル化／デシリアライズ（SerDe）機能も備えています。
+* [Traffic Data Repository at the WIDE Project](https://www2.sonycsl.co.jp/person/kjc/papers/freenix2000/): WIDEプロジェクトで、バックボーントラフィックの詳細を収録するリポジトリの構築に向け、無料のツール群を集めた取組を扱う論文。研究者・運用者による傾向把握と異常発見を背景に、tcpdumpで取得したトレースからプライバシーに関わる情報を除いて公開。利用者のプライバシー問題と構築に使ったツールを検討し、IPv6導入の初期段階での状況と知見を報告。
 
-* [Traffic Data Repository at the WIDE Project](https://www2.sonycsl.co.jp/person/kjc/papers/freenix2000/): ネットワーク研究者および運用者にとって、ネットワークトラフィックのトレンドを把握し、その中にある異常を検出することがますます重要になっています。本論文は、WIDEプロジェクトにおける、バックボーントラフィックの詳細情報を含むトラフィックデータリポジトリを構築するための無料ツールセットを収集する継続的な努力について説明しています。トラフィックトレースはtcpdumpで収集され、プライバシー情報が削除された後、公開されます。ユーザーのプライバシーに関する問題を検討し、WIDEトラフィックリポジトリを構築するために使用されたツールについて述べ、IPv6導入初期段階における現在の状況と発見について報告します。
-
-* [Usenix93 Paper on BPF](https://www.tcpdump.org/papers/bpf-usenix93.pdf): libpcapのインターフェースは、BSDパケットフィルタのアーキテクチャに基づいたフィルタリングメカニズムをサポートしています。BPFについては、1993年のWinter Usenix論文『The BSD Packet Filter: A New Architecture for User-level Packet Capture』に記述されています。
-
-
-コントリビューター
-------------
-
-すべてのコントリビューターに感謝します ❤
-
-[![awesome-pcaptools contributors](https://contrib.rocks/image?repo=caesar0301/awesome-pcaptools "awesome-pcaptools contributors")](https://github.com/caesar0301/awesome-pcaptools/graphs/contributors)
+* [Usenix93 Paper on BPF](https://www.tcpdump.org/papers/bpf-usenix93.pdf): libpcapのフィルタリングはBSD Packet Filterのアーキテクチャに基づく。BPFを説明する1993年Winter Usenixの論文The BSD Packet Filter: A New Architecture for User-level Packet Capture。

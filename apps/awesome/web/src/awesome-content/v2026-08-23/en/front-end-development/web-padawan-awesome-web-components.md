@@ -1,69 +1,15 @@
 ---
 title: "Awesome Web Components"
-description: "A curated collection of resources and projects focused on Web Components."
+description: "Resources on Web Components standards, guides, reusable components, libraries, tooling, and historical proposals."
+toc:
+  minLevel: 2
+  maxLevel: 4
 licenseSource: "github-web-padawan-awesome-web-components-readme-md"
 ---
 
 # Awesome Web Components
 
-A curated collection of resources and projects focused on Web Components.
-
-## Contents
-
-- [Introduction](#introduction)
-- [Standards](#standards)
-  - [Custom Elements](#custom-elements)
-  - [Shadow DOM](#shadow-dom)
-  - [HTML Templates](#html-templates)
-  - [CSS Shadow Parts](#css-shadow-parts)
-- [Guides](#guides)
-  - [Accessibility](#accessibility)
-  - [Best Practices](#best-practices)
-  - [Codelabs](#codelabs)
-  - [Examples](#examples)
-- [Articles](#articles)
-  - [Architecture](#architecture)
-  - [Interoperability](#interoperability)
-  - [Limitations](#limitations)
-  - [Styling](#styling)
-- [Real World](#real-world)
-  - [Case Studies](#case-studies)
-  - [Components](#components)
-  - [Component Libraries](#component-libraries)
-  - [Design Systems](#design-systems)
-  - [Use Cases](#use-cases)
-- [Libraries](#libraries)
-  - [Class Based](#class-based)
-  - [Functional](#functional)
-  - [Integrations](#integrations)
-  - [Benchmarks](#benchmarks)
-- [Frameworks](#frameworks)
-  - [Angular](#angular)
-  - [React](#react)
-  - [Vue](#vue)
-  - [Svelte](#svelte)
-- [Ecosystem](#ecosystem)
-  - [Meta Frameworks](#meta-frameworks)
-  - [Starter Kits](#starter-kits)
-  - [Testing Solutions](#testing-solutions)
-  - [Tools](#tools)
-- [Books](#books)
-- [Tutorials](#tutorials)
-- [Insights](#insights)
-  - [Podcasts](#podcasts)
-  - [Presentations](#presentations)
-  - [Talks](#talks)
-- [Usage Metrics](#usage-metrics)
-- [Proposals](#proposals)
-  - [Form-associated Custom Elements](#form-associated-custom-elements)
-  - [Constructable Stylesheet Objects](#constructable-stylesheet-objects)
-  - [Custom State Pseudo Class](#custom-state-pseudo-class)
-- [Miscellaneous](#miscellaneous)
-- [Archive](#archive)
-  - [Polyfills](#polyfills)
-  - [History](#history)
-- [Who To Follow](#who-to-follow)
-- [Maintainers](#maintainers)
+[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) are technologies for creating reusable custom elements whose functionality is encapsulated from the rest of the code, for use in web applications. This list covers standards, guides, reusable components, libraries, and tooling, with an archive of polyfills and historical resources. It was previously titled “Web Components the Right Way”.
 
 ## Introduction
 
@@ -117,7 +63,7 @@ Shadow DOM describes a method of combining multiple DOM trees into one hierarchy
 
 ### HTML Templates
 
-`<template>` element is used to declare fragments of HTML that can be cloned and inserted in the document by script.
+The `<template>` element is used to declare fragments of HTML that can be cloned and inserted in the document by script.
 
 - [Crafting Reusable HTML Templates](https://css-tricks.com/crafting-reusable-html-templates/)
 - [HTML Living Standard: The `template` element](https://html.spec.whatwg.org/multipage/scripting.html#the-template-element)
@@ -259,7 +205,7 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 - [`<api-viewer>`](https://github.com/web-padawan/api-viewer-element) - API documentation and live playground for Web Components.
 - [`<chess-board>`](https://github.com/justinfagnani/chessboard-element) - Standalone chess board web component.
 - [`<css-doodle>`](https://github.com/css-doodle/css-doodle) - Web component for drawing patterns with CSS.
-- [`<dark-mode-toggle>`](https://github.com/GoogleChromeLabs/dark-mode-toggle) - Custom element that allows to create a dark mode toggle or switch.
+- [`<dark-mode-toggle>`](https://github.com/GoogleChromeLabs/dark-mode-toggle) - Custom element for creating a dark mode toggle or switch.
 - [`<deep-chat>`](https://github.com/OvidijusParsiunas/deep-chat) - Web component for chat with AI capabilities.
 - [`<emoji-picker>`](https://github.com/nolanlawson/emoji-picker-element) - Lightweight emoji picker, distributed as a web component.
 - [`<fg-modal>`](https://github.com/filamentgroup/fg-modal) - Accessible modal dialog web component.
@@ -269,13 +215,13 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 - [`<midi-player>`](https://github.com/cifkao/html-midi-player) - MIDI file player and visualizer web components.
 - [`<model-viewer>`](https://github.com/google/model-viewer) - Web component for rendering interactive 3D models.
 - [`<notectl-editor>`](https://github.com/Samyssmile/notectl) - Modern rich text editor with plugin architecture, immutable state, and zero-config framework-agnostic deployment.
-- [`<pdfjs-viewer-element>`](https://github.com/alekswebnet/pdfjs-viewer-element) - Custom element that embeds PDF.js default viewer.
+- [`<pdfjs-viewer-element>`](https://github.com/alekswebnet/pdfjs-viewer-element) - Custom element that embeds the default PDF.js viewer.
 - [`<phantom-ui>`](https://github.com/Aejkatappaja/phantom-ui) - Skeleton loader that measures your real DOM to render matching shimmer placeholders.
 - [`<player-x>`](https://github.com/playerxo/playerx) - Media player web component.
 - [`<progressive-image>`](https://github.com/andreruffert/progressive-image-element) - Custom element to progressively enhance image placeholders.
-- [`<qr-code>`](https://github.com/bitjson/qr-code) – Web component for rendering customizable, animate-able, SVG-based QR codes.
+- [`<qr-code>`](https://github.com/bitjson/qr-code) – Web component for rendering customizable, animatable, SVG-based QR codes.
 - [`<range-slider>`](https://github.com/andreruffert/range-slider-element) - Accessible range slider custom element with keyboard support.
-- [`<rapi-doc>`](https://github.com/mrin9/RapiDoc) - Web component for creating documentation from OpenAPI Specification.
+- [`<rapi-doc>`](https://github.com/mrin9/RapiDoc) - Web component for creating documentation from an OpenAPI specification.
 - [`<shader-doodle>`](https://github.com/halvves/shader-doodle) - Web component for writing and rendering shaders.
 - [`<theme-switch>`](https://github.com/mahozad/theme-switch) - Animated toggle button to switch between light, dark, and system theme.
 - [`<trix-editor>`](https://github.com/basecamp/trix) - Rich text editor custom element for everyday writing.
@@ -284,7 +230,7 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 
 ### Component Libraries
 
-- [AgnosticUI](https://github.com/AgnosticUI/agnosticui) - A CLI-based UI component library that copies Lit web components directly into your project. Full React and Vue wrappers for native framework experience.
+- [AgnosticUI](https://github.com/AgnosticUI/agnosticui) - A CLI-based UI component library that copies Lit web components directly into your project. Full React and Vue wrappers for a native framework experience.
 - [AMP](https://github.com/ampproject/amphtml) - Web component framework for easily creating user-first websites, stories, ads, emails and more.
 - [AnywhereUI](https://github.com/adaleks/anywhere-ui) - Collection of rich web components that includes framework bindings. Created with StencilJS.
 - [Apollo Elements](https://github.com/apollo-elements/apollo-elements) - Custom elements for using Apollo GraphQL with various web components libraries.
@@ -300,19 +246,19 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 - [elements-sk](https://github.com/google/elements-sk) - Collection of custom elements for "a la carte" web development.
 - [github-elements](https://github.com/github/github-elements) - GitHub's Web Component collection.
 - [Elix](https://github.com/elix/elix) - High-quality, customizable web components for common user interface patterns.
-- [Furo Webcomponents](https://github.com/eclipse/eclipsefuro-web) - Enterprise ready set of web components which work best with Eclipse Furo.
-- [Fusion Web Components](https://github.com/equinor/fusion-web-components) - Ser of web components used by Equinor Fusion.
+- [Furo Webcomponents](https://github.com/eclipse/eclipsefuro-web) - Enterprise-ready set of web components that work best with Eclipse Furo.
+- [Fusion Web Components](https://github.com/equinor/fusion-web-components) - Set of web components used by Equinor Fusion.
 - [Ignite UI Web Components](https://github.com/IgniteUI/igniteui-webcomponents) - Complete library of UI components from Infragistics.
 - [Immersive Custom Elements](https://github.com/MozillaReality/immersive-custom-elements) - Set of web components for embedding immersive (VR & AR) content.
 - [Joomla UI custom elements](https://github.com/joomla-projects/custom-elements) - Compilation of Joomla 4 Custom Elements.
 - [Ketch.UP](https://github.com/smeup/ketchup) - Web components library for Sme.UP.
 - [LDRS](https://github.com/GriffinJohnston/ldrs) - Lightweight, customizable loading animations/spinners.
 - [Lion Web Components](https://github.com/ing-bank/lion) - Set of highly performant, accessible and flexible Web Components.
-- [LRNWebComponents](https://github.com/elmsln/lrnwebcomponents/) - ELMS:LN produced web components for any project.
+- [LRNWebComponents](https://github.com/elmsln/lrnwebcomponents/) - Web components produced by ELMS:LN for any project.
 - [Lume](https://github.com/lume/lume) - Custom elements for 3D graphics. Built with Three.js for WebGL/WebGPU rendering, and Solid.js for reactivity and templating.
 - [Medblocks UI](https://github.com/medblocks/medblocks-ui) - Web Components for rapid development of openEHR and FHIR systems.
 - [Microsoft Graph Toolkit](https://github.com/microsoftgraph/microsoft-graph-toolkit) - Collection of web components for the Microsoft Graph.
-- [Mutation testing elements](https://github.com/stryker-mutator/mutation-testing-elements) - A schema for mutation testing results with the web components to visualize it.
+- [Mutation testing elements](https://github.com/stryker-mutator/mutation-testing-elements) - A schema for mutation testing results, with web components to visualize those results.
 - [Nightingale](https://github.com/ebi-webcomponents/nightingale) - Data visualisation web components for the life sciences.
 - [Nuxeo Elements](https://github.com/nuxeo/nuxeo-elements) - Components for building web applications with Nuxeo using Web Components.
 - [One Platform Components](https://github.com/1-Platform/op-components) - Set of web components for Red Hat One Platform.
@@ -358,7 +304,7 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 - [Nord](https://nordhealth.design) - Nordhealth’s design system for products, digital experiences and brand.
 - [NuML | NUDE Elements](https://github.com/tenphi/numl) - HTML Framework and Design System based on Web Components and runtime CSS generation.
 - [NVIDIA Elements](https://github.com/nvidia/elements) - The Design Language and UI Agent Harness for AI/ML Factories, Robotics, and Autonomous Vehicles.
-- [OutlineJS](https://github.com/phase2/outline) - Web component based design system starter kit.
+- [OutlineJS](https://github.com/phase2/outline) - Web component-based design system starter kit.
 - [PatternFly Elements](https://github.com/patternfly/patternfly-elements) - Collection of flexible and lightweight Web Components based on the Unified Design Kit.
 - [Pharos Design System](https://github.com/ithaka/pharos) - JSTOR's design system to create cohesive, supportive, and beautiful experiences.
 - [Red Hat Design System](https://github.com/RedHat-UX/red-hat-design-system) - Web components for building uniform experiences with the Red Hat brand.
@@ -391,14 +337,14 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 - [Forge Core](https://github.com/tyler-technologies-oss/forge-core) - Building blocks and utilities that are used when building Forge Web Components.
 - [Joist](https://github.com/joist-framework/joist) - Set of small libraries designed to add the bare minimum to web components to make you productive.
 - [Lit](https://lit.dev) - Simple library for building fast, lightweight web components.
-- [Lightning Web Components](https://github.com/salesforce/lwc) - blazing fast, enterprise-grade Web Components foundation.
+- [Lightning Web Components](https://github.com/salesforce/lwc) - Blazing-fast, enterprise-grade Web Components foundation.
 - [Lume Element](https://github.com/lume/element) - Write custom elements with reactivity and templating powered by Solid.js signals and effects.
 - [Omi](https://github.com/Tencent/omi) - Next generation web framework in 4kb JavaScript (Web Components + JSX + Proxy + Store + Path Updating).
 - [Panel](https://github.com/mixpanel/panel) - Web Components + Virtual DOM: web standards for powerful UIs.
 - [ReadyMade](https://github.com/readymade-ui/readymade/tree/main/src/modules/core) - Write custom element classes with decorators. No dependencies.
 - [slim.js](https://github.com/slimjs/slim.js) - Fast & Robust Front-End Micro-framework based on modern standards.
 - [Stencil](https://github.com/ionic-team/stencil) - Compiler for generating Web Components.
-- [Tonic](https://github.com/optoolco/tonic) - Minimalist, stable, audit friendly component framework.
+- [Tonic](https://github.com/optoolco/tonic) - Minimalist, stable, audit-friendly component framework.
 - [WebCell](https://github.com/EasyWebApp/WebCell) - Web Components engine based on VDOM, JSX, MobX & TypeScript.
 
 ### Functional
@@ -412,7 +358,7 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 ### Integrations
 
 - [ember-custom-elements](https://github.com/Ravenstine/ember-custom-elements) - Render Ember and Glimmer components using custom elements.
-- [preact-custom-element](https://github.com/preactjs/preact-custom-element) - Generate/register a custom element from a preact component.
+- [preact-custom-element](https://github.com/preactjs/preact-custom-element) - Generate/register a custom element from a Preact component.
 - [@adobe/react-webcomponent](https://github.com/adobe/react-webcomponent) - Automate the wrapping of a React component in a custom element.
 - [nuxt-custom-elements](https://github.com/GrabarzUndPartner/nuxt-custom-elements) - Export your project components as custom elements for integration into external pages.
 - [react-shadow](https://github.com/Wildhoney/ReactShadow) - Utilise Shadow DOM in React with all the benefits of style encapsulation.
@@ -424,7 +370,7 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 
 - [All the Ways to Make a Web Component](https://webcomponents.dev/blog/all-the-ways-to-make-a-web-component/)
 - [web-components-benchmark](https://vogloblinsky.github.io/web-components-benchmark/) - Benchmark Web Components technologies with various examples.
-- [web-components-todo](https://wc-todo.firebaseapp.com/) - The same todo application built in different Web Components libraries for benchmark purpose.
+- [web-components-todo](https://wc-todo.firebaseapp.com/) - The same todo application built in different Web Components libraries for benchmarking.
 
 ## Frameworks
 
@@ -456,7 +402,7 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 
 ## Ecosystem
 
-## Meta Frameworks
+### Meta Frameworks
 
 - [AMP](https://github.com/ampproject/amphtml) - Web component framework to easily create user-first experiences for the web.
 - [Enhance](https://enhance.dev/docs/) - Web standards-based HTML framework for building lightweight web applications.
@@ -498,8 +444,8 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 
 ## Books
 
-- [Web Components in Action](https://www.manning.com/books/web-components-in-action) - Book by Ben Farrell, available at Manning early release program.
-- [Web Component Development with Modern Libraries and Tooling](https://www.manning.com/books/web-component-development-with-modern-libraries-and-tooling) - Book by Mark Volkmann, available at Manning early access program.
+- [Web Components in Action](https://www.manning.com/books/web-components-in-action) - Book by Ben Farrell, available through Manning’s early release program.
+- [Web Component Development with Modern Libraries and Tooling](https://www.manning.com/books/web-component-development-with-modern-libraries-and-tooling) - Book by Mark Volkmann, available through Manning’s early access program.
 - [Web Component Essentials](https://leanpub.com/web-component-essentials) - Book by Cory Rylan, early preview edition available at Leanpub.
 
 ## Tutorials
@@ -569,8 +515,8 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 
 ### Form-associated Custom Elements
 
-- [Form Participation API Explained](https://docs.google.com/document/d/1JO8puctCSpW-ZYGU8lF-h4FWRIDQNDVexzHoOQ2iQmY/edit?usp=sharing) - Document by Google Chrome team.
-- [Form-associated custom elements](https://www.chromestatus.com/features/4708990554472448) - Feature in Chrome platform status.
+- [Form Participation API Explained](https://docs.google.com/document/d/1JO8puctCSpW-ZYGU8lF-h4FWRIDQNDVexzHoOQ2iQmY/edit?usp=sharing) - Document by the Google Chrome team.
+- [Form-associated custom elements](https://www.chromestatus.com/features/4708990554472448) - Feature in Chrome Platform Status.
 - [web-platform-tests](https://github.com/web-platform-tests/wpt/tree/master/custom-elements/form-associated)
 
 ### Constructable Stylesheet Objects
@@ -578,7 +524,7 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 - [Specification Draft](https://wicg.github.io/construct-stylesheets/)
 - [web-platform-tests](https://github.com/web-platform-tests/wpt/blob/master/css/cssom/CSSStyleSheet-constructable.html)
 - [Explainer](https://github.com/WICG/construct-stylesheets/blob/gh-pages/explainer.md)
-- [Constructable Stylesheets](https://www.chromestatus.com/feature/5394843094220800) - Feature in Chrome platform status.
+- [Constructable Stylesheets](https://www.chromestatus.com/feature/5394843094220800) - Feature in Chrome Platform Status.
 
 ### Custom State Pseudo Class
 
@@ -588,14 +534,14 @@ CSS Shadow Parts allow developers to expose certain elements inside Shadow DOM f
 ## Miscellaneous
 
 - [bruck](https://github.com/Heydon/bruck) - Prototyping system built with web components and the Houdini Paint API.
-- [Vaadin Directory](https://vaadin.com/directory) - Publish, discuss and rate web components
+- [Vaadin Directory](https://vaadin.com/directory) - Publish, discuss, and rate web components.
 - [webcomponents.org](http://webcomponents.org/) - Discuss &amp; share web components.
 
 ## Archive
 
 ### Polyfills
 
-Modern browsers supports web components standards without any of the polyfills listed below.
+Modern browsers support web components standards without any of the polyfills listed below.
 The only notable exception is that customized built-in elements are rejected by WebKit (Safari).
 
 #### Custom Elements polyfills
@@ -610,8 +556,8 @@ The only notable exception is that customized built-in elements are rejected by 
 
 #### Shadow DOM shims
 
-- [@webcomponents/shadydom](https://github.com/webcomponents/polyfills/tree/master/packages/shadydom) - ShadowDOM v1 shim.
-- [@webcomponents/shadycss](https://github.com/webcomponents/polyfills/tree/master/packages/shadycss) - ShadowDOM style encapsulation shim.
+- [@webcomponents/shadydom](https://github.com/webcomponents/polyfills/tree/master/packages/shadydom) - Shadow DOM v1 shim.
+- [@webcomponents/shadycss](https://github.com/webcomponents/polyfills/tree/master/packages/shadycss) - Shadow DOM style encapsulation shim.
 - [@lwc/synthetic-shadow](https://github.com/salesforce/lwc/blob/master/packages/@lwc/synthetic-shadow) - Shadow DOM polyfill by [LWC](https://lwc.dev).
 
 #### HTML Templates polyfills
@@ -621,9 +567,9 @@ The only notable exception is that customized built-in elements are rejected by 
 
 ### History
 
-The articles below represent a long story of the Web Components specifications on the way towards the standardization.
-Some of them refer to earlier, so-called "v0" Shadow DOM and Custom Elements specs, and abandoned HTML Imports spec.
-These materials are here for historical reasons only, they are grouped by years and listed in chronological order.
+The articles below document the history of Web Components specifications on the path to standardization.
+Some refer to the earlier, so-called "v0" Shadow DOM and Custom Elements specifications, and the abandoned HTML Imports specification.
+These materials are retained only for historical context. They are grouped by year and retain the source list’s order.
 
 #### 2019
 
@@ -769,64 +715,11 @@ These materials are here for historical reasons only, they are grouped by years 
 
 ## Who To Follow
 
-<table>
-  <tbody>
-    <tr>
-      <td align="center">
-        <a href="https://twitter.com/polymer">
-          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/1063502058337136640/RmlG_bbW_80x80.jpg">
-          <div>Polymer</div>
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://twitter.com/stenciljs">
-          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/1135534552137510914/5ZzvOFFp_80x80.png">
-          <div>Stencil</div>
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://twitter.com/openwc">
-          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/1101188623930662912/YKlBD7n6_80x80.png">
-          <div>open-wc.org</div>
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://twitter.com/webcomp_dev">
-          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/1169270943371407360/U-90Bxn0_80x80.jpg">
-          <div>webcomponents.dev</div>
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <a href="https://twitter.com/justinfagnani">
-          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/378800000808710206/2dbdaa1cb7b0db02f997aea5b40f29b8_80x80.jpeg">
-          <div>Justin Fagnani</div>
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://twitter.com/viljamis">
-          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/671595827740086273/wCUWq-1S_80x80.png">
-          <div>Viljami Salminen</div>
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://twitter.com/JanMiksovsky">
-          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/675000078055051264/u1ZEQfeE_80x80.jpg">
-          <div>Jan Miksovsky</div>
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://twitter.com/serhiikulykov">
-          <img width="80" height="80" src="https://pbs.twimg.com/profile_images/1028197887329685504/cM6nOHlp_80x80.jpg">
-          <div>Serhii Kulykov</div>
-        </a>
-      </td>
-    </tr>
-  <tbody>
-</table>
-
-## Maintainers
-
-- Created by [@mateusortiz](https://github.com/mateusortiz) in 2014.
-- Maintained by [@web-padawan](https://github.com/web-padawan) since 2018.
+- [Polymer](https://twitter.com/polymer)
+- [Stencil](https://twitter.com/stenciljs)
+- [open-wc.org](https://twitter.com/openwc)
+- [webcomponents.dev](https://twitter.com/webcomp_dev)
+- [Justin Fagnani](https://twitter.com/justinfagnani)
+- [Viljami Salminen](https://twitter.com/viljamis)
+- [Jan Miksovsky](https://twitter.com/JanMiksovsky)
+- [Serhii Kulykov](https://twitter.com/serhiikulykov)

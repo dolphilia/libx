@@ -1,43 +1,12 @@
 ---
 title: "Awesome WPO"
-description: "A curated collection of resources and projects focused on WPO."
+description: "Learning resources and tools for Web Performance Optimization (WPO), including measurement, monitoring, asset optimization, CDNs, and specifications."
 licenseSource: "github-davidsonfellipe-awesome-wpo-readme-md"
 ---
 
 # Awesome WPO
 
-A curated collection of resources and projects focused on WPO.
-
-## Table of Contents
-
-Here's a quick overview of the categories covered in this collection:
-
-- [Agent Skills](#agent-skills)
-- [Analyzers](https://github.com/davidsonfellipe/awesome-wpo/blob/84f32948a6298456d6a94cff64551f39f2666e6f/README.md#analyzers)
-- [Analyzers API](https://github.com/davidsonfellipe/awesome-wpo/blob/84f32948a6298456d6a94cff64551f39f2666e6f/README.md#analyzers---api)
-- [Application Performance Monitoring](#application-performance-monitoring)
-- [Bundle Analyzer](#bundle-analyzer)
-- [Benchmarks](#benchmarks)
-- [Bookmarklets](#bookmarklets)
-- [CDN](#cdn)
-- [Core Web Vitals](#core-web-vitals)
-- [Extensions](#extensions)
-- [Image Optimizers](#image-optimizers)
-- [Generators](#generators)
-- [Lazyloaders](#lazyloaders)
-- [Loaders](#loaders)
-- [Metrics Monitor](#metrics-monitor)
-- [Minifiers](#minifiers)
-- [Miscellaneous](#miscellaneous)
-- [Real User Monitoring](#real-user-monitoring)
-- [SVG](#svg)
-- [Web Components](#web-components)
-- [Web server Benchmarks](#web-server-benchmarks)
-- [Web server Modules](#web-server-modules)
-- [Specs](#specs)
-- [Stats](#stats)
-- [Other Awesome Lists](#other-awesome-lists)
-- [Contributing](#contributing)
+Web Performance Optimization (WPO) covers how websites load, render, and respond to users. This list includes learning resources, case studies and events, analysis and monitoring tools, CDNs, asset optimizers, benchmarks, and browser performance specifications; the source also provides an [online resource directory](https://awesome-wpo.dev/). Capabilities, prices, compatibility, and event or deprecation details reflect the recorded source.
 
 ## Agent Skills
 
@@ -55,7 +24,7 @@ Here's a quick overview of the categories covered in this collection:
 
 ## Books
 
-> Best books about WPO
+> Books about WPO
 
 - [HTTP/2 in Action by Barry Pollard](https://www.manning.com/books/http2-in-action) - Barry Pollard.
 - [Web Performance in Action by Jeremy Wagner](https://www.manning.com/books/web-performance-in-action) - Jeremy L. Wagner.
@@ -78,15 +47,15 @@ Here's a quick overview of the categories covered in this collection:
 - [Performance Engineering in Practice](https://www.manning.com/books/performance-engineering-in-practice) - Den Odell.
 - [Web Performance Engineering in the Age of AI](https://www.oreilly.com/library/view/web-performance-engineering/9798341660182/) - Addy Osmani.
 
-## Case studies
+## Case Studies
 
 - [WPOStats](https://wpostats.com/) - Case studies and experiments demonstrating the impact of web performance optimization (WPO) on user experience and business metrics.
-- [Google Developers Case Studies](https://web.dev/case-studies) - Learn why and how other developers have used the web to create amazing web experiences for their users.
+- [Google Developers Case Studies](https://web.dev/case-studies) - Learn why and how other developers have used the web to create web experiences for their users.
 
 ## Documentation
 
 - [PageSpeed Insights Rules](https://developers.google.com/speed/docs/insights/v5/get-started) - A guide created by PageSpeed Team.
-  Deprecated. This is deprecated and will be shut down in May 2019. Version 5 is the latest and provides both real-world data from the Chrome User Experience Report and lab data from Lighthouse.
+  The source marks this as deprecated with a May 2019 shutdown planned, and identifies Version 5 as the latest, providing real-world data from the Chrome User Experience Report and lab data from Lighthouse.
 - [Best Practices for Speeding Up Your site](https://developer.yahoo.com/performance/rules.html) - The list includes 35 best practices divided into 7 categories, created by Yahoo! Exceptional Performance team.
 - [Chrome Developers: Performance](https://developer.chrome.com/docs/performance/) - Deep guides on rendering, loading, and runtime performance.
 - [Lighthouse Docs](https://developer.chrome.com/docs/lighthouse/) - Audit methodology, scoring details, and usage guidance.
@@ -101,14 +70,12 @@ Here's a quick overview of the categories covered in this collection:
 
 ## Events
 
-> Because community matters!
-
 ### Conferences
 
 - [We Love Speed](https://www.welovespeed.com/2024/) - Born from the desire to share knowledge and experiences in web performance as widely as possible.
 - [PWA Summit](https://pwasummit.org/) - A free, online, single-track conference focused on helping everyone succeed with Progressive Web Apps.
-- [performance.now()](https://perfnow.nl/) - The performance.now() conference will return to Amsterdam! We're a single-track conference with fourteen world-class speakers, covering today’s most important web performance insights.
-- [PerfMatters](https://perfmattersconf.com/) - Conference is the ONLINE web performance conference by internationally renowned performance developers.
+- [performance.now()](https://perfnow.nl/) - The source announces a return to Amsterdam: a single-track web performance conference with fourteen speakers.
+- [PerfMatters](https://perfmattersconf.com/) - An online web performance conference by internationally known performance developers.
 
 ### Meetups
 
@@ -138,27 +105,27 @@ Here's a quick overview of the categories covered in this collection:
 - [Grunt-WebPageTest](https://github.com/sideroad/grunt-wpt) - Grunt plugin for continuous measurement of WebPageTest. ([Demo](http://sideroad.github.io/sample-wpt-page/))
 - [Grunt-perfbudget](https://github.com/tkadlec/grunt-perfbudget) - A Grunt.js task for enforcing a performance budget ([more on performance budgets](https://timkadlec.com/2013/01/setting-a-performance-budget/)).
 - [Web Tracing Framework](https://github.com/google/tracing-framework) - Libraries, tools, and visualizers for tracing and investigating complex web applications.
-- [Yandex.Tank](https://github.com/yandex/yandex-tank) - An extensible open-source load testing tool for advanced Linux users which is especially good as a part of an automated load testing suite.
-- [Yellow Lab Tools](https://yellowlab.tools/) - Online quick and easy tool that audits frontend bad practices, reveals performance issues, and profiles JavaScript.
+- [Yandex.Tank](https://github.com/yandex/yandex-tank) - An extensible open-source load testing tool for advanced Linux users, suitable for automated load testing suites.
+- [Yellow Lab Tools](https://yellowlab.tools/) - An online tool that audits frontend practices, reveals performance issues, and profiles JavaScript.
 - [Pagelocity](https://pagelocity.com/) - A web performance optimization and analysis tool.
 - [Speed Racer](https://github.com/speedracer/speedracer) - Collect performance metrics for your library/application using Chrome headless.
-- [Lightest App](https://lightest.app/) - Webpage load time is extremely important for conversion and revenue. Visualize web performance against competitors.
+- [Lightest App](https://lightest.app/) - Visualizes web performance against competitors; the source emphasizes the importance of load time to conversion and revenue.
 - [Redirect Checker](https://github.com/brancogao/redirect-checker) - Analyze HTTP redirect chains, detect loops, and measure performance impact on page load times.
 - [Third Party Analysis Tool](https://tools.paulcalvano.com/wpt-third-party-analysis/) - Analyze third-party request risk, render-blocking impact, and potential single points of failure from WebPageTest runs.
 - [Web Font Analyzer](https://tools.paulcalvano.com/wpt-font-analysis/) - Inspect font loading timing, payload, and glyph usage using WebPageTest data.
 - [Webfont Usage Analyzer](https://github.com/paulcalvano/webfont-usage-analyzer) - Bookmarklet script to map loaded web fonts to visible DOM usage and help spot font optimization opportunities.
 - [Waterfall Tools](https://waterfall-tools.com/) - Advanced client-side network request waterfall viewer for HAR, WPT JSON, Chrome traces/netlogs, and tcpdump captures.
 
-## Analyzers - API
+## Analyzer API<a id="analyzers---api"></a>
 
 - [PSI](https://github.com/GoogleChromeLabs/psi) - PageSpeed Insights for Node.js - with reporting.
 
 ## Application Performance Monitoring
 
 - [Datadog APM](https://www.datadoghq.com/product/apm/) - End-to-end distributed tracing and APM at scale, correlated to all telemetry.
-- [BetterUptime](https://betteruptime.com) - A good website monitoring tool (bundling status page, incident notification).
+- [BetterUptime](https://betteruptime.com) - A website monitoring tool (bundling status page, incident notification).
 - [Pingdom](https://www.pingdom.com/) - A tool to get the uptime of your website (with probes from different locations).
-- [UptimeRobot](https://uptimerobot.com) - Another uptime monitoring tool (with a generous free plan).
+- [UptimeRobot](https://uptimerobot.com) - Another uptime monitoring tool (with a free plan described by the source as generous).
 - [StatusList](https://statuslist.app) - Uptime, performance monitoring with debug details, and hosted status page in one simple dashboard.
 
 ## Real User Monitoring
@@ -187,9 +154,9 @@ Here's a quick overview of the categories covered in this collection:
 
 > A set of tools for creating test cases and comparing different implementations in CSS, JavaScript, and PHP.
 
-- [CSS-perf](https://github.com/mdo/css-perf) - Completely unscientific way of testing CSS performance. Most of these tests will revolve around methodologies and techniques for determining effective CSS architecture. Put another way, I want to know what works best given a particular comparison of CSS strategies.
+- [CSS-perf](https://github.com/mdo/css-perf) - Exploratory CSS performance tests comparing strategies, methodologies, and techniques for effective CSS architecture; the source describes the approach as unscientific.
 - [JSBench](https://jsbench.me/) - A modern browser-based JavaScript benchmarking tool for quickly creating and sharing performance tests.
-- [Benchmark.js](https://benchmarkjs.com/) - A robust benchmarking library that works on nearly all JavaScript platforms, supports high-resolution timers, and returns statistically significant results.
+- [Benchmark.js](https://benchmarkjs.com/) - A benchmarking library that works on nearly all JavaScript platforms, supports high-resolution timers, and returns statistically significant results.
 - [JSlitmus](https://github.com/broofa/jslitmus) - Lightweight tool for creating ad-hoc JavaScript benchmark tests.
 - [Matcha](https://github.com/logicalparadox/matcha) - Lets you design experiments that measure the performance of your code. Each bench should focus on a specific point of impact in your application.
 - [Timing.js](https://github.com/addyosmani/timing.js) - Small helpers for working with the Navigation Timing API to identify where your application is spending its time. Useful as a standalone script, DevTools snippet, or bookmarklet.
@@ -212,17 +179,17 @@ Here's a quick overview of the categories covered in this collection:
 
 > A content delivery network or content distribution network (CDN) is a large distributed system of servers deployed in multiple data centers across the Internet. The goal of a CDN is to serve content to end-users with high availability and high performance. See a large list of CDN in [Wikipedia](http://en.wikipedia.org/wiki/Content_delivery_network#Notable_content_delivery_service_providers).
 
-- [Cloudflare CDN](https://www.cloudflare.com/products/cdn/) - A content delivery network that uses next-gen tech to deliver fast, reliable, CDN services.
-- [PageCDN](https://pagecdn.com/lib) - A state-of-the-art opensource CDN with aggressive content optimization using brotli-11 compression, HTTP/2 server push, better HTTP/2 multiplexing, and more. Supports 100s of libraries and 2000+ WordPress themes already. Easy to use, easy to link, and very fast.
+- [Cloudflare CDN](https://www.cloudflare.com/products/cdn/) - A content delivery network; the source highlights next-generation technology, speed, and reliability.
+- [PageCDN](https://pagecdn.com/lib) - An open-source CDN using brotli-11 compression, HTTP/2 server push, and improved HTTP/2 multiplexing for content optimization. The source reports support for hundreds of libraries and 2000+ WordPress themes.
 - [jsDelivr](https://github.com/jsdelivr/jsdelivr) - Similar to Google Hosted Libraries, jsDelivr is an open-source CDN that allows developers to host their own projects and anyone to link to our hosted files on their sites.
-- [Google Hosted Libraries](https://developers.google.com/speed/libraries/) - Google-run CDN for the most popular open-source JavaScript libraries.
+- [Google Hosted Libraries](https://developers.google.com/speed/libraries/) - A Google-run CDN for popular open-source JavaScript libraries.
 - [CDNjs](https://cdnjs.com/) - An open-source CDN for JavaScript and CSS sponsored by Cloudflare that hosts everything from jQuery and Modernizr to Bootstrap.
 - [Amazon CloudFront](https://aws.amazon.com/cloudfront/) - A content delivery network by Amazon that integrates nicely with other Amazon services or can be used standalone.
-- [jQuery](https://releases.jquery.com/) - Official CDN for the latest stable releases, powered by MaxCDN.
-- :cn: [UpYun CDN](http://jscdn.upai.com/) - CDN provided by upyun.
-- :cn: [Bootstrap 中文网开放 CDN 服务](https://www.bootcdn.cn/) - Bootstrap Chinese net open CDN service (only HTTP).
-- :ru: [Yandex CDN](https://yandex.ru/dev/jslibs/) - Yandex Content Delivery Network hosts popular third-party JavaScript and CSS libraries (best for use in Russia).
-- [CDNperf](https://www.cdnperf.com/) - Finds you fast and reliable JavaScript CDNs that make your sites snappy and happy.
+- [jQuery](https://releases.jquery.com/) - Official CDN for stable jQuery releases, powered by MaxCDN; the source describes these as the latest stable releases.
+- [UpYun CDN](http://jscdn.upai.com/) - CDN provided by upyun (China).
+- [Bootstrap 中文网开放 CDN 服务](https://www.bootcdn.cn/) - Bootstrap Chinese open CDN service (China; HTTP only).
+- [Yandex CDN](https://yandex.ru/dev/jslibs/) - Hosts popular third-party JavaScript and CSS libraries; the source recommends it for use in Russia.
+- [CDNperf](https://www.cdnperf.com/) - Finds JavaScript CDNs; the source highlights speed and reliability.
 - [Gulp-google-cdn](https://github.com/sindresorhus/gulp-google-cdn) - Replaces script references with Google CDN ones.
 
 > To find useful more information for you to make the right choice between paid CDNs, please visit [CDNPlanet](http://www.cdnplanet.com/).
@@ -235,11 +202,11 @@ Here's a quick overview of the categories covered in this collection:
 
 ## Extensions
 
-- [Browser Calories](https://github.com/zenorocha/browser-calories) - The easiest way to measure your performance budget.
+- [Browser Calories](https://github.com/zenorocha/browser-calories) - Measures your performance budget.
 
 ## Generators
 
-- [AtBuild](https://github.com/jarred-sumner/atbuild) - JavaScript code generation tool that lets you write JavaScript that outputs JavaScript. Good for unrolling loops and writing libraries that compile away the runtime.
+- [AtBuild](https://github.com/jarred-sumner/atbuild) - JavaScript code generation for writing JavaScript that outputs JavaScript, including loop unrolling and libraries that compile away the runtime.
 - [Glue](https://github.com/jorgebastida/glue) - A simple command-line tool to generate CSS sprites.
 - [Pitomba-spriter](https://github.com/pitomba/spriter) - Spriter is a simple and flexible dynamic sprite generator for CSS, using Python. It can process CSS both synchronous and asynchronous as it provides classes to be used in your Python code and also a watcher that listens to your filesystem and changes CSS and sprite as soon as a static is changed.
 - [Grunt-spritesmith](https://github.com/twolfson/grunt-spritesmith) - Grunt task for converting a set of images into a sprite sheet and corresponding CSS variables.
@@ -256,9 +223,9 @@ Here's a quick overview of the categories covered in this collection:
 
 ## Image Optimizers
 
-> How to remove all this unnecessary data and give you a file without degrading quality.
+> Tools for removing unnecessary image data. Individual entries distinguish lossy and lossless compression.
 
-- [Shortpixel](https://shortpixel.com/online-image-compression) - Compress Your Image by removing unnecessary bytes of the image and Convert it into WebP/AVIF.
+- [Shortpixel](https://shortpixel.com/online-image-compression) - Compresses images by removing unnecessary bytes and converts them to WebP/AVIF.
 - [Grunt-smushit](https://github.com/heldr/grunt-smushit) - Grunt plugin to remove unnecessary bytes of PNG and JPG using Yahoo Smushit.
 - [Gulp-smushit](https://github.com/heldr/gulp-smushit) - Gulp plugin to optimize PNG and JPG using Yahoo Smushit. Made on top of smosh.
 - [Smush it](https://www.imgopt.com/) - Uses format-specific optimization to remove unnecessary bytes from image files. Lossless: optimizes images without changing their look or visual quality.
@@ -275,16 +242,16 @@ Here's a quick overview of the categories covered in this collection:
 - [Imager](http://github.com/imager-io/imager) - Automated image compression for efficiently distributing images on the web.
 - [Grunt-imageoptim](https://github.com/JamieMason/grunt-imageoptim) - Make ImageOptim, ImageAlpha, and JPEGmini part of your automated build process.
 - [ImageOptim-CLI](https://github.com/JamieMason/ImageOptim-CLI) - Automates ImageOptim, ImageAlpha, and JPEGmini for Mac to make batch optimization of images part of your automated build process.
-- [Tapnesh-CLI](https://github.com/JafarAkhondali/Tapnesh) - Tapnesh is a CLI tool that will optimize all your images in parallel easily and efficiently!
+- [Tapnesh-CLI](https://github.com/JafarAkhondali/Tapnesh) - CLI tool that optimizes images in parallel.
 - [Tinypng](https://tinypng.com/) - Advanced lossy compression for PNG images that preserves full alpha transparency.
-- [Kraken Web-interface](https://kraken.io/web-interface) - Optimize your images and will be available for download for 12 hours.
+- [Kraken Web-interface](https://kraken.io/web-interface) - Web interface that optimizes images and makes them available for download for 12 hours.
 - [Compressor](https://compressor.io/) - Online image compressor for JPG, PNG, SVG and GIF.
 - [mozjpeg](https://github.com/mozilla/mozjpeg) - Improved JPEG encoder.
 - [Jpegoptim](https://github.com/tjko/jpegoptim) - Utility to optimize/compress JPEG files.
 - [AdvPNG](http://www.advancemame.it/doc-advpng.html) - Recompress PNG files to get the smallest possible size.
 - [Leanify](https://github.com/JayXon/Leanify) - Lightweight lossless file minifier/optimizer.
 - [Trimage](https://trimage.org/) - A cross-platform tool for losslessly optimizing PNG and JPG files.
-- [ImageEngine](https://imageengine.io) - Cloud service for optimizing, resizing and caching images on the fly with great mobile support.
+- [ImageEngine](https://imageengine.io) - Cloud service for on-the-fly image optimization, resizing, and caching, with mobile support.
 - [ImageKit.io](https://imagekit.io) - Intelligent real-time image optimizations, image transformations with a global delivery network and storage.
 - [Optimizt](https://github.com/343dev/optimizt) - CLI image optimization tool. It can compress PNG, JPEG, GIF and SVG lossy and lossless, and also create AVIF and WebP versions for raster images.
 - [ResponsiveImage](https://responsive-image.dev/) - Generate optimized images (WebP, AVIF) and LQIP placeholders using Vite or Webpack plugins and render responsive image markup with an image component for multiple frameworks.
@@ -293,15 +260,15 @@ Here's a quick overview of the categories covered in this collection:
 ## Lazyloaders
 
 - [lazyload](https://github.com/vvo/lazyload) - Defer images, iframes, and widgets with a standalone JavaScript lazyloader (~1kb).
-- [lozad.js](https://github.com/ApoorvSaxena/lozad.js) - Highly performant, light ~0.9kb, and configurable lazy loader in pure JS with no dependencies for responsive images, iframes, and more.
+- [lozad.js](https://github.com/ApoorvSaxena/lozad.js) - A configurable, dependency-free JavaScript lazyloader for responsive images, iframes, and more (~0.9kb); the source highlights its performance.
 - [quicklink](https://github.com/GoogleChromeLabs/quicklink) - Prefetch links in the viewport (via Intersection Observer) to make future navigations faster.
 
 ## Loaders
 
-- [HeadJS](https://github.com/headjs/headjs) - The only script in your HEAD. for Responsive Design, Feature Detections, and Resource Loading.
+- [HeadJS](https://github.com/headjs/headjs) - A script for the HEAD supporting responsive design, feature detection, and resource loading.
 - [RequireJS](https://requirejs.org/) - JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments, like Rhino and Node.js.
 - [Labjs](https://github.com/getify/LABjs) - An open-source (MIT license) project supported by Getify Solutions. The core purpose of LABjs is to be an all-purpose, on-demand JavaScript loader, capable of loading any JavaScript resource, from any location, into any page, at any time.
-- [Defer.js](https://github.com/wessman/defer.js) - Async Everything: Make the meat of your pages load faster with this JS morsel.
+- [Defer.js](https://github.com/wessman/defer.js) - Asynchronous loading to speed up page content.
 - [InstantClick](https://github.com/dieulot/instantclick) - Preloads pages on hover so in-site links feel instant.
 - [prerender.js](https://github.com/genderev/prerender.js) - Preloads pages and assets ahead of navigation for faster page transitions.
 - [JIT](https://github.com/shootaroo/jit-grunt) - A JIT (Just In Time) plugin loader for Grunt. The load time of Grunt does not slow down even if there are many plugins.
@@ -316,7 +283,7 @@ Here's a quick overview of the categories covered in this collection:
 - [Pingbreak.com](https://pingbreak.com/) - Free site and SSL Monitoring with response time alerting (on Slack, Twitter, Mattermost, Discord or custom Webhook).
 - [Pingdom site Speed Test](https://tools.pingdom.com/) - Test the load time of that page, analyze it, and find bottlenecks.
 - [Dotcom-tools](https://www.dotcom-tools.com/website-speed-test) - Analyze your website's speed in real browsers from 20 locations worldwide.
-- [WebPageTest](https://www.catchpoint.com/webpagetest) - Run a free site speed test from multiple locations around the globe using real browsers (IE and Chrome) and at real consumer connection speeds. You can run simple tests or perform advanced testing including multi-step transactions, video capture, content blocking and much more. Your results will provide rich diagnostic information including resource-loading waterfall charts, Page Speed optimization checks and suggestions for improvements.
+- [WebPageTest](https://www.catchpoint.com/webpagetest) - Run a free site speed test from multiple locations around the globe using real browsers (IE and Chrome) and at real consumer connection speeds. You can run simple tests or perform advanced testing including multi-step transactions, video capture, content blocking and much more. Your results will provide rich diagnostic information including resource-loading waterfall charts, PageSpeed optimization checks and suggestions for improvements.
 - [Sitespeed.io](https://www.sitespeed.io/) - Open-source tool that checks your site against web performance best practices and uses the Navigation Timing API to collect metrics. Outputs XML and HTML reports.
 - [Grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas) - Grunt plugin wrapping phantomas to measure frontend performance.
 - [Perfjankie](https://www.npmjs.com/package/perfjankie) - Runtime Browser Performance regression suite ([Demo](https://github.com/asciidisco/perfjankie-test)).
@@ -330,9 +297,9 @@ Here's a quick overview of the categories covered in this collection:
 
 ## Minifiers
 
-- [HTMLCompressor](https://code.google.com/archive/p/htmlcompressor/) - Small, fast Java library that minifies HTML or XML by removing extra whitespace, comments, and unneeded characters without breaking structure. Includes a command-line build.
+- [HTMLCompressor](https://code.google.com/archive/p/htmlcompressor/) - Small Java library that minifies HTML or XML by removing extra whitespace, comments, and unneeded characters without breaking structure. Includes a command-line build.
 - [Django-htmlmin](https://github.com/cobrateam/django-htmlmin) - HTML minifier for Python with full support for HTML 5. Supports Django, Flask, and any other Python web framework, plus a command-line tool for static sites or deployment scripts.
-- [HTMLMinifier](https://github.com/kangax/html-minifier) - Highly configurable, well-tested, JavaScript-based HTML minifier with lint-like capabilities.
+- [HTMLMinifier](https://github.com/kangax/html-minifier) - Configurable JavaScript-based HTML minifier with lint-like capabilities.
 - [Grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - A grunt plugin to minify HTML that uses HTMLMinifier.
 - [Gulp-htmlmin](https://github.com/jonschlinkert/gulp-htmlmin) - A gulp plugin to minify HTML that uses HTMLMinifier.
 - [Grunt-htmlcompressor](https://github.com/jney/grunt-htmlcompressor) - Grunt plugin for HTML compression, using htmlcompressor.
@@ -340,20 +307,20 @@ Here's a quick overview of the categories covered in this collection:
 - [HTML_press](https://github.com/stereobooster/html_press) - Ruby gem for compressing html, that removes all whitespace junk, and leaves only HTML.
 - [Koa HTML Minifier](https://github.com/koajs/html-minifier) - Middleware that minifies your HTML responses using html-minifier. It uses html-minifier's default options which are all turned off by default, so you have to set the options otherwise it's not going to do anything.
 - [HTML Minifier Online](http://kangax.github.io/html-minifier/) - A HTML min tool by kangax (HTMLMinifier Creator).
-- [Minimize](https://github.com/Swaagie/minimize) - HTML minifier based on node-htmlparser; currently server-side only. Client-side minification is planned.
+- [Minimize](https://github.com/Swaagie/minimize) - HTML minifier based on node-htmlparser. The source describes server-side support only and plans for client-side minification.
 - [Html-minifier](https://github.com/deanhume/html-minifier) - A simple Windows command-line tool to minify your HTML, Razor views & Web Forms views.
 - [UglifyJS2](https://github.com/mishoo/UglifyJS) - UglifyJS is a JavaScript parser, minifier, compressor or beautifier toolkit, written in JavaScript.
 - [Terser](https://github.com/terser/terser) - Modern JavaScript minifier and compressor; successor to UglifyJS with ES6+ support.
-- [SWC](https://swc.rs/) - Fast JavaScript and TypeScript compiler and minifier; significantly faster than Babel/Terser for transpilation.
-- [CSSO](https://github.com/css/csso) - CSS minimizer unlike others. In addition to usual minification techniques, it can perform structural optimization of CSS files, resulting in smaller file size compared to other minifiers.
+- [SWC](https://swc.rs/) - JavaScript and TypeScript compiler and minifier; the source describes its transpilation as significantly faster than Babel/Terser.
+- [CSSO](https://github.com/css/csso) - CSS minifier that adds structural optimization to usual minification techniques; the source describes smaller output compared with other minifiers.
 - [Grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat) - A Grunt plugin to concatenate files.
 - [Grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) - A Grunt plugin to concatenate and minify JavaScript files.
-- [Clean-css](https://github.com/clean-css/clean-css) - A fast, efficient, and well-tested CSS minifier for node.js.
+- [Clean-css](https://github.com/clean-css/clean-css) - A CSS minifier for Node.js.
 - [Django-compressor](https://github.com/django-compressor/django-compressor) - Compresses linked and inline JavaScript or CSS into a single cached file.
 - [Django-pipeline](https://github.com/jazzband/django-pipeline) - Pipeline is an asset packaging library for Django, providing both CSS and JavaScript concatenation and compression, built-in JavaScript template support, and optional data-URI image and font embedding.
 - [JShrink](https://github.com/tedious/JShrink) - PHP class that minifies JavaScript for faster delivery to the client.
-- [JSCompress](http://jscompress.com/) - The most minimalistic online JS Compress tool.
-- [CSSshrink](https://github.com/stoyan/cssshrink) - Because CSS is ospon the critical path to rendering pages. It must be small! Or else!
+- [JSCompress](http://jscompress.com/) - An online JavaScript compression tool.
+- [CSSshrink](https://github.com/stoyan/cssshrink) - Shrinks CSS on the critical rendering path.
 - [Grunt-cssshrink](https://github.com/JohnCashmore/grunt-cssshrink) - This is just a grunt wrapper for CSS Shrink.
 - [Gulp-cssshrink](https://github.com/torrottum/gulp-cssshrink) - Shrinks CSS files using cssshrink for Gulp.
 - [Prettyugly](https://github.com/stoyan/prettyugly) - Uglify (strip spaces) or prettify (add consistent spaces) CSS code.
@@ -364,12 +331,12 @@ Here's a quick overview of the categories covered in this collection:
 ## Miscellaneous
 
 - [Fontaine](https://github.com/unjs/fontaine) - Automatic font fallback based on font metrics to reduce Cumulative Layout Shift (CLS) caused by web font loading.
-- [Socialite.js](http://socialitejs.com/) - Socialite provides a very easy way to implement and activate a plethora of social sharing buttons — any time you wish. On document load, on article hover, on any event.
+- [Socialite.js](http://socialitejs.com/) - Implements and activates social sharing buttons on document load, article hover, or other events.
 - [uCSS](https://github.com/oyvindeh/ucss) - Crawls large sites to find unused CSS selectors (does not remove unused CSS).
 - [HTTPinvoke](https://github.com/jakutis/httpinvoke) - A no-dependencies HTTP client library for browsers and Node.js with a promise-based or Node.js-style callback-based API to progress events, text, and binary file upload and download, partial response body, request and response headers, status code.
 - [Critical](https://github.com/addyosmani/critical) - Extract & Inline Critical-path CSS in HTML pages (alpha).
 - [Csscolormin](https://github.com/stoyan/csscolormin) - Utility that minifies CSS colors, example: min("white"); // minifies to "#fff".
-- [Lazysizes](https://github.com/aFarkas/lazysizes) - High-performance lazy loader for images (responsive and normal), iframes, and scripts, that detects any visibility changes triggered through user interaction, CSS or JavaScript without configuration.
+- [Lazysizes](https://github.com/aFarkas/lazysizes) - A lazyloader for responsive and normal images, iframes, and scripts. Detects visibility changes caused by user interaction, CSS, or JavaScript without configuration.
 - [react-virtualized](https://github.com/bvaughn/react-virtualized) - React components for efficiently rendering large lists and tabular data by virtualizing visible rows.
 - [TMI](https://github.com/addyosmani/tmi) - Too Many Images: discover your image weight on the web.
 
@@ -387,7 +354,7 @@ Here's a quick overview of the categories covered in this collection:
 - [Polymer Bundler](https://github.com/Polymer/tools/tree/master/packages/bundler) - Polymer-bundler is a library for packaging project assets for production to minimize network round-trips.
 - [Gulp-vulcanize](https://github.com/sindresorhus/gulp-vulcanize) - Concatenate a set of Web Components into one file that use Vulcanize.
 
-## Web server Benchmarks
+## Web Server Benchmarks
 
 - [HTTPerf](https://github.com/httperf/httperf) - Measures web server performance with flexible generation of HTTP workloads and server metrics.
 - [Apache JMeter](https://jmeter.apache.org/download_jmeter.cgi) - Open source load testing tool: It is a Java platform application.
@@ -399,10 +366,10 @@ Here's a quick overview of the categories covered in this collection:
 - [HTTPerf.py](https://github.com/jmervine/httperfpy) - Python Port of HTTPerf.rb.
 - [Gohttperf](https://github.com/jmervine/gohttperf) - Go Port of HTTPerf.rb.
 - [wrk](https://github.com/wg/wrk) - A HTTP benchmarking tool (with optional Lua scripting for request generation, response processing, and custom reporting).
-- [beeswithmachineguns](https://github.com/newsapps/beeswithmachineguns) - A utility for arming (creating) many bees (micro EC2 instances) to attack (load test) targets (web applications).
+- [beeswithmachineguns](https://github.com/newsapps/beeswithmachineguns) - Creates multiple micro EC2 instances to load-test web applications.
 - [k6](https://k6.io/) - An open-source load testing tool built for developers. Easy to integrate into CI pipelines. Tests are written in ES6 JS and you can test APIs, microservices and sites using HTTP/1.1, HTTP/2 and WebSocket.
 
-## Web server Modules
+## Web Server Modules
 
 - [PageSpeed Module](https://modpagespeed.com/docs/getting-started/) - PageSpeed speeds up your site and reduces page load time. This open-source web server module automatically applies web performance best practices to pages and associated assets (CSS, JavaScript, images) without requiring that you modify your existing content or workflow. PageSpeed is available as a module for Apache 2.x and Nginx 1.x.
 - [WebP-detect](https://github.com/igrigorik/webp-detect) - WebP with Accept negotiation.
@@ -428,7 +395,3 @@ Here's a quick overview of the categories covered in this collection:
 
 - [iamakulov/awesome-webpack-perf](https://github.com/iamakulov/awesome-webpack-perf) - A curated list of Webpack tools for web performance.
 - [imteekay/web-performance-research](https://github.com/imteekay/web-performance-research) - Research in Web Performance.
-
-## Contributing
-
-For contributing, please check [contributing.md](https://github.com/davidsonfellipe/awesome-wpo/blob/84f32948a6298456d6a94cff64551f39f2666e6f/contributing.md), then [open an issue](https://github.com/davidsonfellipe/awesome-wpo/issues) and/or a [pull request](https://github.com/davidsonfellipe/awesome-wpo/pulls).

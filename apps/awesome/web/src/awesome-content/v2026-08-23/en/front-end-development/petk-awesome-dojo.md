@@ -1,43 +1,23 @@
 ---
 title: "Awesome Dojo"
-description: "A curated collection of resources and projects focused on Dojo."
+description: "Dojo Toolkit documentation, tutorials, UI libraries, server integrations, testing tools, applications, themes, and TypeScript resources."
 licenseSource: "github-petk-awesome-dojo-readme-md"
 ---
 
 # Awesome Dojo
 
-A curated collection of resources and projects focused on Dojo.
-
-## Index
-
-* [DojoToolkit.org resources and documentation](#dojotoolkitorg-resources-and-documentation)
-* [Tutorials](#tutorials)
-* [Bootstraps and boilerplates](#bootstraps-and-boilerplates)
-* [Packages, libraries and scripts](#packages-libraries-and-scripts)
-* [Serverside integrations](#serverside-integrations)
-* [Testing](#testing)
-* [Applications](#applications)
-* [Themes](#themes)
-* [TypeScript](#typescript)
-* [Community](#community)
-* [Other Awesome Lists](#other-awesome-lists)
-* [Contributing and License](#contributing-and-license)
-
+[Dojo Toolkit](http://dojotoolkit.org) provides JavaScript language utilities and UI components for web applications. This list covers documentation and tutorials, libraries, server integrations, testing tools, applications, themes, and TypeScript resources, with a separate group of Dojo 2 packages. Community links and related Awesome lists provide further places to find resources.
 
 ## DojoToolkit.org resources and documentation
 
 * [API](http://dojotoolkit.org/api/) - API reference for Dojo Toolkit
-* [Roadmap](https://github.com/dojo/meta/wiki/Roadmap) Dojo Roadmap (all versions)
+* [Roadmap](https://github.com/dojo/meta/wiki/Roadmap) - Dojo roadmap for all versions
 * [Blog](http://dojotoolkit.org/blog/) - Dojo Toolkit Blog
 * [Demos](http://demos.dojotoolkit.org/demos/) - Dojo Toolkit Demos
 * [Reference guide](https://github.com/dojo/docs) - [http://dojotoolkit.org/reference-guide/1.10/](http://dojotoolkit.org/reference-guide/1.10/)
-* [Tutorials](http://dojotoolkit.org/documentation/) - authorized and updated tutorials for Dojo Toolkit
+* [Tutorials](http://dojotoolkit.org/documentation/) - Official Dojo Toolkit tutorials, described as updated in the recorded source
 * [Dojo Meta](https://github.com/dojo/meta) - Dojo 2 contribution and coding guidelines
 * [Dojo Website](https://github.com/dojo/dojo-website) - Website for Dojo Toolkit 1.x to 2.x transition
-
-
-[Back to top](#awesome-dojo)
-
 
 ## Tutorials
 
@@ -46,9 +26,6 @@ A curated collection of resources and projects focused on Dojo.
 * [Dojo the Good parts](https://github.com/DavidSpriggs/Dojo--The-Good-Parts) - ESRI Developer Summit Presentation held March 10-13th 2014 in Palm Springs.
 * [Pluralsight's Dojo tutorial](https://www.pluralsight.com/courses/dojo-fundamentals) - Video tutorials for learning Dojo Toolkit
 
-[Back to top](#awesome-dojo)
-
-
 ## Bootstraps and boilerplates
 
 * [dboostrap](https://github.com/atoha/dbootstrap) - Bootstrap theme for Dojo
@@ -56,9 +33,6 @@ A curated collection of resources and projects focused on Dojo.
 * [Dojo Twitter bootstrap](https://github.com/xsokev/Dojo-Bootstrap) - An implementation of the Twitter Bootstrap framework using Dojo
 * [dojo.js](https://github.com/gpedro/dojo.js) - Minimalistic boilerplate to start your dojo with Jasmine and Gulp.
 * [dojo-node-boilerplate](https://github.com/kitsonk/dojo-node-boilerplate) - A quickstart "template" for using Dojo Toolkit on NodeJS
-
-[Back to top](#awesome-dojo)
-
 
 ## Packages, libraries and scripts
 
@@ -69,8 +43,8 @@ A curated collection of resources and projects focused on Dojo.
 * [dojo-smore](https://github.com/kfranqueiro/dojo-smore) - package with Dojo/Store implementation
 * [generator-dojo](https://github.com/bryanforbes/generator-dojo) - A yeoman generator for Dojo projects
 * Grids
-    * [dgrid](http://dgrid.io/) - next-generation grid component that takes full advantage of modern browsers and object stores.
-    * [gridx](http://oria.github.io/gridx/) - A fast rendering, well modularized and plugin architecture based Grid.
+    * [dgrid](http://dgrid.io/) - Grid component designed for modern browsers and object stores.
+    * [gridx](http://oria.github.io/gridx/) - Grid with a modular, plugin-based architecture.
     * [xgrid](https://github.com/xblox/xgrid) - dgrid extensions.
 * [grunt-dojo](https://github.com/phated/grunt-dojo) - Build Dojo inside a Grunt task
 * [grunt-dojo2](https://github.com/dojo/grunt-dojo2) - Build Dojo2 inside a Grunt task
@@ -79,7 +53,7 @@ A curated collection of resources and projects focused on Dojo.
 * [Sitepen dstore](https://github.com/SitePen/dstore) - Data infrastructure framework, providing the tools for modelling and interacting with data collections and objects.
 * [xaction](https://github.com/xblox/xaction) - Component providing UI and logic for user actions.
 
-#### Dojo 2
+### Dojo 2
 
 * [Dojo core](https://github.com/dojo/core) - Dojo 2 package containing TypeScript and JavaScript core utilities
 * [DOM Utilities](https://github.com/dojo/dom) - Dojo2 DOM Utilities
@@ -92,11 +66,6 @@ A curated collection of resources and projects focused on Dojo.
 * [Dojo shim](https://github.com/dojo/shim) - Modules that provide modular fills of ES6+ functionality
 * [Dojo parse](https://github.com/dojo/parser) - A package for declaratively instantiating widgets.
 * [Dojo2 App](https://github.com/dojo/app) - An application framework for Dojo 2 (example)
-
-
-
-[Back to top](#awesome-dojo)
-
 
 ## Serverside integrations
 
@@ -115,7 +84,7 @@ A curated collection of resources and projects focused on Dojo.
     * [Spring](https://www.sitepen.com/blog/2011/08/11/how-do-you-use-the-dojo-store-jsonrest-api-with-spring/) - How to integrate Spring and Dojo
     * [Websphere](http://www-03.ibm.com/software/products/en/appserv-was) - Application server has Dojo integrated
 * Node.js
-    * [dojo-node](https://github.com/agebrock/dojo-node) - Lightwave Dojo wrapper for Node.js
+    * [dojo-node](https://github.com/agebrock/dojo-node) - Dojo wrapper for Node.js
     * [Dojos](https://github.com/supnate/dojos) - Server side dojo on NodeJS
     * [Node.js integration](http://dojotoolkit.org/documentation/tutorials/1.10/node/) - Tutorial how to use Dojo and Node.js
 * PHP
@@ -123,18 +92,12 @@ A curated collection of resources and projects focused on Dojo.
     * [Dojo & Symfony PHP framework](https://www.sitepen.com/blog/2011/09/06/what-is-the-best-way-to-use-dojo-with-a-symfony-backend/) - integrating Dojo Toolkit with Symfony PHP framework
     * [Dojo & Zend PHP framework](https://github.com/superdweebie/DojoModule) - integrating Dojo Toolkit with Zend Framework through DojoModule
 
-[Back to top](#awesome-dojo)
-
-
 ## Testing
 
-* [Intern](https://github.com/theintern/) - A next-generation code testing stack for JavaScript.
-* [Intern User guide](https://theintern.github.io/intern/#what-is-intern) - A quite complete manual about how to use The Intern
+* [Intern](https://github.com/theintern/) - Code testing stack for JavaScript.
+* [Intern User guide](https://theintern.github.io/intern/#what-is-intern) - User guide for Intern
 * [Intern Yeoman page objects](https://github.com/glamb/generator-internjs-pageobjects/) - A Yeoman generator to create unit test and suites
 * [Intern Yeoman generator](https://github.com/naglalakk/generator-intern) - Yeoman generator - Intern
-
-[Back to top](#awesome-dojo)
-
 
 ## Applications
 
@@ -146,23 +109,17 @@ A curated collection of resources and projects focused on Dojo.
 * [Dojox application](https://github.com/dmachi/dojox_application) - Dojox Application Framework for mobile, tablets, and desktops
 * [js-doc-parse](https://github.com/dojo/js-doc-parse) - Library for parsing dojo JavaScript files and extracting inline documentation
 * [rstwiki](https://github.com/phiggins42/rstwiki) - Simple reST/wiki system built with Python and Dojo Toolkit
-* [Scripted](https://github.com/scripted-editor) - Scripted is a fast and lightweight code editor with an initial focus on JavaScript editing
+* [Scripted](https://github.com/scripted-editor) - Code editor with an initial focus on JavaScript editing
 * [todomvc](https://github.com/tastejs/todomvc) - Helping you select an MV\* framework - todo app examples
 * [Dojo2 Example](https://github.com/dojo/examples) - Dojo 2 Examples
 * [xamiro](https://github.com/xblox/xamiro) - IDE alike file manager in PHP and JavaScript with minimal dependencies.
-* [Windows-dist](https://github.com/flysurfer28/windows-dist) - Full automation suite for IoT and prototyping.
-
-[Back to top](#awesome-dojo)
-
+* [Windows-dist](https://github.com/flysurfer28/windows-dist) - Automation suite for IoT and prototyping.
 
 ## Themes
 
 * [dijit-claro-stylus](https://github.com/kfranqueiro/dijit-claro-stylus) - A straight conversion of Dijit's Claro theme from LESS to Stylus.
 * [Flat Dojo Theme](http://yiweima.github.io/flatdojo/) - Esri Flat Dijit Design
-* [Semantic Dojo Theme](http://websemantics.github.io/semantic-dojo/) - A responsive Dojo theme that harnesses the style awesomeness of [Semantic UI](http://semantic-ui.com/) Framework.
-
-[Back to top](#awesome-dojo)
-
+* [Semantic Dojo Theme](http://websemantics.github.io/semantic-dojo/) - Responsive Dojo theme using styles from the [Semantic UI](http://semantic-ui.com/) framework.
 
 ## TypeScript
 
@@ -170,9 +127,6 @@ A curated collection of resources and projects focused on Dojo.
 * [Dojo to Typescript Converter](https://github.com/stopyoukid/DojoToTypescriptConverter) - A typescript script which creates typescript compatible declarations from a dojo api.json file.
 * [Dojo-TypeScript](https://github.com/schungx/Dojo-TypeScript) - Using Dojo 1.9 AMD-style with Microsoft TypeScript 0.9.5
 * [Dojo Typings](https://github.com/dojo/typings) - A repository of Dojo 1 TypeScript Typings (including Dijit and DojoX)
-
-[Back to top](#awesome-dojo)
-
 
 ## Community
 
@@ -184,35 +138,19 @@ A curated collection of resources and projects focused on Dojo.
 * [Google Plus Community](https://plus.google.com/communities/107837593684207188221) - Dojo community on Google Plus
 * [Linked In Dojo Ajax Toolkit Developers Group](https://www.linkedin.com/groups/Dojo-Ajax-Toolkit-Developers-71399) - Dojo Community on LinkedIn
 * [Linked In Dojo Toolkit Group](https://www.linkedin.com/groups/dojo-toolkit-81926) - Dojo Community on LinkedIn
-* [Reddit Community](https://www.reddit.com/r/dojo/) - growing community discussing Dojo on Reddit (invitation-only).
+* [Reddit Community](https://www.reddit.com/r/dojo/) - Community discussing Dojo on Reddit (invitation-only).
 * [SensioLabs Connect Club](https://connect.sensiolabs.com/club/dojo-toolkit) - Sensiolabs Connect Dojo Toolkit Club for PHP and Symfony developers
-* [IRC](http://irc.lc/freenode/dojo) - Large and active IRC support channel.
+* [IRC](http://irc.lc/freenode/dojo) - IRC support channel.
 * [Meetup](https://www.meetup.com/topics/dojo/) - Get involved locally and find local user groups.
-
-[Back to top](#awesome-dojo)
-
 
 ## Other Awesome Lists
 
-* [awesome-javascript](https://github.com/sorrycc/awesome-javascript) - awesome JavaScript list
-* [awesome-javascript-books](https://github.com/heatroom/awesome-javascript-books) - awesome JavaScript books
-* awesome lists:
-    * [awesome](https://github.com/sindresorhus/awesome) - awesome list
-    * [awesome-awesome](https://github.com/emijrp/awesome-awesome) - awesome list
-    * [GetAwesomeness](https://getawesomeness.herokuapp.com/) - awesome lists
-    * [lists](https://github.com/jnv/lists) - awesome lists
-    * [awesome-all](https://github.com/bradoyler/awesome-all) - awesome lists
-    * [awesome-awesome](https://github.com/erichs/awesome-awesome) - awesome lists
-
-[Back to top](#awesome-dojo)
-
-
-## Contributing and License
-
-You are most welcome to [contribute](https://github.com/petk/awesome-dojo/blob/9527cc7586561f0d5744062902620757dd7daccf/CONTRIBUTING.md) to this awesome Dojo Toolkit list as well. Big thanks to all [contributors](https://github.com/petk/awesome-dojo/graphs/contributors) who have helped to build this list.
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Peter Kokot](https://github.com/petk) has waived all copyright and related or neighboring rights to this work.
-
-[Back to top](#awesome-dojo)
+* [awesome-javascript](https://github.com/sorrycc/awesome-javascript) - Awesome list of JavaScript resources
+* [awesome-javascript-books](https://github.com/heatroom/awesome-javascript-books) - Awesome list of JavaScript books
+* Awesome list directories:
+    * [awesome](https://github.com/sindresorhus/awesome) - Directory of Awesome lists
+    * [awesome-awesome](https://github.com/emijrp/awesome-awesome) - Directory of Awesome lists
+    * [GetAwesomeness](https://getawesomeness.herokuapp.com/) - Directory of Awesome lists
+    * [lists](https://github.com/jnv/lists) - Directory of Awesome lists
+    * [awesome-all](https://github.com/bradoyler/awesome-all) - Directory of Awesome lists
+    * [awesome-awesome](https://github.com/erichs/awesome-awesome) - Directory of Awesome lists

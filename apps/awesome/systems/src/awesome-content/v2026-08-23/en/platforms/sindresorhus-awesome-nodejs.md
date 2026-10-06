@@ -1,81 +1,12 @@
 ---
 title: "Awesome Node.js"
-description: "A curated collection of resources and projects focused on Node.js."
+description: "Node.js packages, command-line tools, web frameworks, database libraries, and learning resources organized by use case."
 licenseSource: "github-sindresorhus-awesome-nodejs-readme-md"
 ---
 
 # Awesome Node.js
 
-A curated collection of resources and projects focused on Node.js.
-
-## Contents
-
-- [Official](#official)
-- [Packages](#packages)
-	- [Mad science](#mad-science)
-	- [Command-line apps](#command-line-apps)
-	- [Functional programming](#functional-programming)
-	- [HTTP](#http)
-	- [Debugging / Profiling](#debugging--profiling)
-	- [Logging](#logging)
-	- [Command-line utilities](#command-line-utilities)
-	- [Build tools](#build-tools)
-	- [Hardware](#hardware)
-	- [Templating](#templating)
-	- [Web frameworks](#web-frameworks)
-	- [Documentation](#documentation)
-	- [Filesystem](#filesystem)
-	- [Control flow](#control-flow)
-	- [Streams](#streams)
-	- [Real-time](#real-time)
-	- [Image](#image)
-	- [Text](#text)
-	- [Number](#number)
-	- [Math](#math)
-	- [Date](#date)
-	- [URL](#url)
-	- [Data validation](#data-validation)
-	- [Parsing](#parsing)
-	- [Humanize](#humanize)
-	- [Compression](#compression)
-	- [Network](#network)
-	- [Database](#database)
-	- [Testing](#testing)
-	- [Security](#security)
-	- [Benchmarking](#benchmarking)
-	- [Minifiers](#minifiers)
-	- [Authentication](#authentication)
-	- [Authorization](#authorization)
-	- [Email](#email)
-	- [Job queues](#job-queues)
-	- [Node.js management](#nodejs-management)
-	- [Cross-platform integration](#cross-platform-integration)
-	- [Natural language processing](#natural-language-processing)
-	- [Process management](#process-management)
-	- [Automation](#automation)
-	- [AST](#ast)
-	- [Static site generators](#static-site-generators)
-	- [Content management systems](#content-management-systems)
-	- [Forum](#forum)
-	- [Blogging](#blogging)
-	- [Weird](#weird)
-	- [Serialization](#serialization)
-	- [Miscellaneous](#miscellaneous)
-- [Package Manager](#package-manager)
-- [Resources](#resources)
-	- [Tutorials](#tutorials)
-	- [Discovery](#discovery)
-	- [Articles](#articles)
-	- [Newsletters](#newsletters)
-	- [Videos](#videos)
-	- [Books](#books)
-	- [Blogs](#blogs)
-	- [Courses](#courses)
-	- [Cheatsheets](#cheatsheets)
-	- [Tools](#tools)
-	- [Community](#community)
-	- [Miscellaneous](#miscellaneous-1)
-- [Related lists](#related-lists)
+[Node.js](https://en.wikipedia.org/wiki/Node.js) is an open-source, cross-platform JavaScript runtime for servers and command-line tools. This list groups packages by use case and includes official references, tutorials, books, and development tools.
 
 ## Official
 
@@ -93,12 +24,12 @@ A curated collection of resources and projects focused on Node.js.
 - [stackgl](https://github.com/stackgl) - Open software ecosystem for WebGL, built on top of browserify and npm.
 - [peerwiki](https://github.com/mafintosh/peerwiki) - All of Wikipedia on BitTorrent.
 - [peercast](https://github.com/mafintosh/peercast) - Stream a torrent video to Chromecast.
-- [BitcoinJS](https://github.com/bitcoinjs/bitcoinjs-lib) - Clean, readable, proven Bitcoin library.
-- [Bitcore](https://github.com/bitpay/bitcore) - Pure and powerful Bitcoin library.
+- [BitcoinJS](https://github.com/bitcoinjs/bitcoinjs-lib) - Bitcoin library described in the source as clean, readable, and proven.
+- [Bitcore](https://github.com/bitpay/bitcore) - Pure Bitcoin library with capabilities described in the source as powerful.
 - [PDFKit](https://github.com/foliojs/pdfkit) - PDF generation library.
 - [turf](https://github.com/Turfjs/turf) - Modular geospatial processing and analysis engine.
 - [webcat](https://github.com/mafintosh/webcat) - p2p pipe across the web using WebRTC that uses your GitHub private/public key for authentication.
-- [NodeOS](https://github.com/NodeOS/NodeOS) - The first operating system powered by npm.
+- [NodeOS](https://github.com/NodeOS/NodeOS) - Operating system powered by npm, described in the source as the first of its kind.
 - [YodaOS](https://github.com/yodaos-project/yodaos) - AI operating system.
 - [Brain.js](https://github.com/BrainJS/brain.js) - Machine-learning framework.
 - [Pipcook](https://github.com/alibaba/pipcook) - Front-end algorithm framework to create a machine learning pipeline.
@@ -117,7 +48,7 @@ A curated collection of resources and projects focused on Node.js.
 - [speed-test](https://github.com/sindresorhus/speed-test) - Test your internet connection speed and ping.
 - [pageres](https://github.com/sindresorhus/pageres) - Capture website screenshots.
 - [cpy](https://github.com/sindresorhus/cpy) - Copy files.
-- [vtop](https://github.com/MrRio/vtop) - More better top, with nice charts.
+- [vtop](https://github.com/MrRio/vtop) - An improved version of top with charts.
 - [empty-trash](https://github.com/sindresorhus/empty-trash) - Empty the trash.
 - [is-up](https://github.com/sindresorhus/is-up) - Check whether a website is up or down.
 - [is-online](https://github.com/sindresorhus/is-online) - Check if the internet connection is up.
@@ -130,7 +61,7 @@ A curated collection of resources and projects focused on Node.js.
 - [Live Server](https://github.com/tapio/live-server) - Development HTTP-server with livereload capability.
 - [bcat](https://github.com/kessler/node-bcat) - Pipe command output to web browsers.
 - [normit](https://github.com/pawurb/normit) - Google Translate with speech synthesis in your terminal.
-- [fkill](https://github.com/sindresorhus/fkill-cli) - Fabulously kill processes. Cross-platform.
+- [fkill](https://github.com/sindresorhus/fkill-cli) - Cross-platform process termination tool.
 - [pjs](https://github.com/danielstjules/pjs) - Pipeable JavaScript. Quickly filter, map, and reduce from the terminal.
 - [license-checker](https://github.com/davglass/license-checker) - Check licenses of your app's dependencies.
 - [browser-run](https://github.com/juliangruber/browser-run) - Easily run code in a browser environment.
@@ -138,10 +69,10 @@ A curated collection of resources and projects focused on Node.js.
 - [wallpaper](https://github.com/sindresorhus/wallpaper) - Change the desktop wallpaper.
 - [pen](https://github.com/hatashiro/pen) - Live Markdown preview in the browser from your favorite editor.
 - [dark-mode](https://github.com/sindresorhus/dark-mode) - Toggle the macOS Dark Mode.
-- [Jsome](https://github.com/Javascipt/Jsome) - Pretty prints JSON with configurable colors and indentation.
+- [Jsome](https://github.com/Javascipt/Jsome) - Pretty-print JSON with configurable colors and indentation.
 - [mobicon](https://github.com/samverschueren/mobicon-cli) - Mobile app icon generator.
 - [mobisplash](https://github.com/samverschueren/mobisplash-cli) - Mobile app splash screen generator.
-- [diff2html-cli](https://github.com/rtfpessoa/diff2html-cli) - Pretty git diff to HTML generator.
+- [diff2html-cli](https://github.com/rtfpessoa/diff2html-cli) - Generate formatted HTML from Git diffs.
 - [trymodule](https://github.com/victorb/trymodule) - Try out npm packages in the terminal.
 - [jscpd](https://github.com/kucherenko/jscpd) - Copy/paste detector for source code.
 - [atmo](https://github.com/Raathigesh/Atmo) - Server-side API mocking.
@@ -151,7 +82,7 @@ A curated collection of resources and projects focused on Node.js.
 - [svg-term-cli](https://github.com/marionebl/svg-term-cli) - Share terminal sessions via SVG.
 - [gtop](https://github.com/aksakalli/gtop) - System monitoring dashboard for the terminal.
 - [themer](https://github.com/themerdev/themer) - Generate themes for your editor, terminal, wallpaper, Slack, and more.
-- [carbon-now-cli](https://github.com/mixn/carbon-now-cli) - Beautiful images of your code — from right inside your terminal.
+- [carbon-now-cli](https://github.com/mixn/carbon-now-cli) - Generate images of code from the terminal.
 - [cash-cli](https://github.com/xxczaki/cash-cli) - Convert between 170 currencies.
 - [taskbook](https://github.com/klaussinani/taskbook) - Tasks, boards & notes for the command-line habitat.
 - [discharge](https://github.com/brandonweiss/discharge) - Easily deploy static websites to Amazon S3.
@@ -159,10 +90,10 @@ A curated collection of resources and projects focused on Node.js.
 
 ### Functional programming
 
-- [lodash](https://github.com/lodash/lodash) - Utility library delivering consistency, customization, performance, & extras. A better and faster Underscore.js.
+- [lodash](https://github.com/lodash/lodash) - Utility library offering consistency, customization, performance, and additional features. The source describes it as a better and faster alternative to Underscore.js.
 - [immutable](https://github.com/immutable-js/immutable-js) - Immutable data collections.
 - [Ramda](https://github.com/ramda/ramda) - Utility library with a focus on flexible functional composition enabled by automatic currying and reversed argument order. Avoids mutating data.
-- [Mout](https://github.com/mout/mout) - Utility library with the biggest difference between other existing solutions is that you can choose to load only the modules/functions that you need, no extra overhead.
+- [Mout](https://github.com/mout/mout) - Utility library that lets you load only the modules or functions you need, avoiding extra overhead.
 - [RxJS](https://github.com/reactivex/rxjs) - Functional reactive library for transforming, composing, and querying various kinds of data.
 - [Kefir.js](https://github.com/kefirjs/kefir) - Reactive library with focus on high performance and low memory usage.
 
@@ -172,10 +103,10 @@ A curated collection of resources and projects focused on Node.js.
 - [undici](https://github.com/nodejs/undici) - High performance HTTP client written from scratch with zero dependencies.
 - [ky-universal](https://github.com/sindresorhus/ky-universal) - Universal HTTP client based on Fetch.
 - [node-fetch](https://github.com/node-fetch/node-fetch) - `window.fetch` for Node.js.
-- [axios](https://github.com/axios/axios) - Promise based HTTP client (works in the browser too).
+- [axios](https://github.com/axios/axios) - Promise-based HTTP client that also works in the browser.
 - [superagent](https://github.com/visionmedia/superagent) - HTTP request library.
 - [http-fake-backend](https://github.com/micromata/http-fake-backend) - Build a fake backend by providing the content of JSON files or JavaScript objects through configurable routes.
-- [cacheable-request](https://github.com/lukechilds/cacheable-request) - Wrap native HTTP requests with RFC compliant cache support.
+- [cacheable-request](https://github.com/lukechilds/cacheable-request) - Wrap native HTTP requests with RFC-compliant cache support.
 - [gotql](https://github.com/khaosdoctor/gotql) - GraphQL request library built on [got](https://github.com/sindresorhus/got).
 - [global-agent](https://github.com/gajus/global-agent) - Global HTTP/HTTPS proxy agent that is configurable using environment variables.
 - [smoke](https://github.com/sinedied/smoke) - File-based HTTP mock server with recording abilities.
@@ -184,35 +115,35 @@ A curated collection of resources and projects focused on Node.js.
 ### Debugging / Profiling
 
 - [debug](https://github.com/debug-js/debug) - Tiny debugging utility.
-- [why-is-node-running](https://github.com/mafintosh/why-is-node-running) - Node.js is running but you don't know why?
+- [why-is-node-running](https://github.com/mafintosh/why-is-node-running) - Inspect why a Node.js process is still running.
 - [njsTrace](https://github.com/valyouw/njstrace) - Instrument and trace your code, see all function calls, arguments, return values, as well as the time spent in each function.
 - [vstream](https://github.com/joyent/node-vstream) - Instrumentable streams mix-ins to inspect a pipeline of streams.
-- [stackman](https://github.com/watson/stackman) - Enhance an error stacktrace with code excerpts and other goodies.
+- [stackman](https://github.com/watson/stackman) - Enhance error stack traces with code excerpts and additional information.
 - [locus](https://github.com/alidavut/locus) - Starts a REPL at runtime that has access to all variables.
 - [0x](https://github.com/davidmarkclements/0x) - Flamegraph profiling.
-- [ctrace](https://github.com/automation-stack/ctrace) - Well-formatted and improved trace system calls and signals.
+- [ctrace](https://github.com/automation-stack/ctrace) - Trace system calls and signals with formatted output.
 - [leakage](https://github.com/andywer/leakage) - Write memory leak tests.
 - [llnode](https://github.com/nodejs/llnode) - Post-mortem analysis tool which allows you to inspect objects and get insights from a crashed Node.js process.
 - [thetool](https://github.com/sfninja/thetool) - Capture different CPU, memory, and other profiles for your app in Chrome DevTools friendly format.
 - [swagger-stats](https://github.com/slanatech/swagger-stats) - Trace API calls and monitor API performance, health, and usage metrics.
 - [NiM](https://github.com/june07/nim) - Manages DevTools debugging workflow.
-- [dats](https://github.com/immobiliare/dats) - Minimalistic and zero-dependencies [StatsD](https://github.com/statsd/statsd) client.
+- [dats](https://github.com/immobiliare/dats) - Minimal [StatsD](https://github.com/statsd/statsd) client with no dependencies.
 
 ### Logging
 
 - [pino](https://github.com/pinojs/pino) - Extremely fast logger inspired by Bunyan.
 - [winston](https://github.com/winstonjs/winston) - Multi-transport async logging library.
-- [console-log-level](https://github.com/watson/console-log-level) - The most simple logger imaginable with support for log levels and custom prefixes.
+- [console-log-level](https://github.com/watson/console-log-level) - Logger with support for log levels and custom prefixes.
 - [storyboard](https://github.com/guigrpa/storyboard) - End-to-end, hierarchical, real-time, colorful logs and stories.
 - [consola](https://github.com/unjs/consola) - Console logger.
 
 ### Command-line utilities
 
-- [chalk](https://github.com/chalk/chalk) - Terminal string styling done right.
+- [chalk](https://github.com/chalk/chalk) - Style strings for the terminal.
 - [meow](https://github.com/sindresorhus/meow) - CLI app helper.
-- [yargs](https://github.com/yargs/yargs) - Command-line parser that automatically generates an elegant user-interface.
-- [ora](https://github.com/sindresorhus/ora) - Elegant terminal spinner.
-- [get-stdin](https://github.com/sindresorhus/get-stdin) - Easier stdin.
+- [yargs](https://github.com/yargs/yargs) - Command-line parser that automatically generates a user interface.
+- [ora](https://github.com/sindresorhus/ora) - Terminal spinner.
+- [get-stdin](https://github.com/sindresorhus/get-stdin) - Read standard input through a simpler interface.
 - [log-update](https://github.com/sindresorhus/log-update) - Log by overwriting the previous output in the terminal. Useful for rendering progress bars, animations, etc.
 - [Ink](https://github.com/vadimdemedes/ink) - React for interactive command-line apps.
 - [listr2](https://github.com/listr2/listr2) - Terminal task list.
@@ -228,14 +159,14 @@ A curated collection of resources and projects focused on Node.js.
 - [blessed](https://github.com/chjj/blessed) - Curses-like library.
 - [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) - Interactive command-line prompt.
 - [yn](https://github.com/sindresorhus/yn) - Parse yes/no like values.
-- [cli-table3](https://github.com/cli-table/cli-table3) - Pretty unicode tables.
-- [drawille](https://github.com/madbence/node-drawille) - Draw on the terminal with unicode braille characters.
+- [cli-table3](https://github.com/cli-table/cli-table3) - Format Unicode tables.
+- [drawille](https://github.com/madbence/node-drawille) - Draw on the terminal with Unicode braille characters.
 - [ascii-charts](https://github.com/jstrace/chart) - ASCII bar chart in the terminal.
-- [progress](https://github.com/visionmedia/node-progress) - Flexible ascii progress bar.
+- [progress](https://github.com/visionmedia/node-progress) - Flexible ASCII progress bar.
 - [insight](https://github.com/yeoman/insight) - Helps you understand how your tool is being used by anonymously reporting usage metrics to Google Analytics.
 - [cli-cursor](https://github.com/sindresorhus/cli-cursor) - Toggle the CLI cursor.
-- [cli-columns](https://github.com/shannonmoeller/cli-columns) - Columnated unicode and ansi-safe text lists.
-- [cfonts](https://github.com/dominikwilkowski/cfonts) - Sexy ASCII fonts for the console.
+- [cli-columns](https://github.com/shannonmoeller/cli-columns) - Display Unicode and ANSI-safe text lists in columns.
+- [cfonts](https://github.com/dominikwilkowski/cfonts) - ASCII fonts for the console.
 - [multispinner](https://github.com/codekirei/node-multispinner) - Multiple, simultaneous, individually controllable CLI spinners.
 - [omelette](https://github.com/f/omelette) - Shell autocompletion helper.
 - [cross-env](https://github.com/kentcdodds/cross-env) - Set environment variables cross-platform.
@@ -243,7 +174,7 @@ A curated collection of resources and projects focused on Node.js.
 - [sudo-block](https://github.com/sindresorhus/sudo-block) - Block users from running your app with root permissions.
 - [sparkly](https://github.com/sindresorhus/sparkly) - Generate sparklines `▁▂▃▅▂▇`.
 - [Bit](https://github.com/teambit/bit) - Create, maintain, find and use small modules and components across repositories.
-- [gradient-string](https://github.com/bokub/gradient-string) - Beautiful color gradients in terminal output.
+- [gradient-string](https://github.com/bokub/gradient-string) - Apply color gradients to terminal output.
 - [oclif](https://github.com/oclif/oclif) - CLI framework complete with parser, automatic documentation, testing, and plugins.
 - [terminal-size](https://github.com/sindresorhus/terminal-size) - Reliably get the terminal window size.
 - [Cliffy](https://github.com/drew-y/cliffy) - Framework for interactive CLIs.
@@ -251,11 +182,11 @@ A curated collection of resources and projects focused on Node.js.
 
 ### Build tools
 
-- [parcel](https://github.com/parcel-bundler/parcel) - Blazing fast, zero config web app bundler.
+- [parcel](https://github.com/parcel-bundler/parcel) - Web app bundler with zero configuration, described in the source as very fast.
 - [webpack](https://github.com/webpack/webpack) - Packs modules and assets for the browser.
-- [rollup](https://github.com/rollup/rollup) - Next-generation ES2015 module bundler.
+- [rollup](https://github.com/rollup/rollup) - ES2015 module bundler, described in the source as next-generation.
 - [gulp](https://github.com/gulpjs/gulp) - Streaming and fast build system that favors code over config.
-- [Broccoli](https://github.com/broccolijs/broccoli) - Fast, reliable asset pipeline, supporting constant-time rebuilds and compact build definitions.
+- [Broccoli](https://github.com/broccolijs/broccoli) - Asset pipeline with compact build definitions, described in the source as fast and reliable with constant-time rebuilds.
 - [Brunch](https://github.com/brunch/brunch) - Front-end web app build tool with simple declarative config, fast incremental compilation, and an opinionated workflow.
 - [FuseBox](https://github.com/fuse-box/fuse-box) - Fast build system that combines the power of webpack, JSPM and SystemJS, with first-class TypeScript support.
 - [pkg](https://github.com/vercel/pkg) - Package your Node.js project into an executable.
@@ -263,7 +194,7 @@ A curated collection of resources and projects focused on Node.js.
 
 ### Hardware
 
-- [johnny-five](https://github.com/rwaldron/johnny-five) - Firmata based Arduino Framework.
+- [johnny-five](https://github.com/rwaldron/johnny-five) - Firmata-based Arduino framework.
 - [serialport](https://github.com/serialport/node-serialport) - Access serial ports for reading and writing.
 - [usb](https://github.com/node-usb/node-usb) - USB library.
 - [i2c-bus](https://github.com/fivdi/i2c-bus) - I2C serial bus access.
@@ -276,7 +207,7 @@ A curated collection of resources and projects focused on Node.js.
 ### Templating
 
 - [marko](https://github.com/marko-js/marko) - HTML-based templating engine that compiles templates to CommonJS modules and supports streaming, async rendering and custom tags.
-- [nunjucks](https://github.com/mozilla/nunjucks) - Templating engine with inheritance, asynchronous control, and more (jinja2 inspired).
+- [nunjucks](https://github.com/mozilla/nunjucks) - Templating engine with inheritance, asynchronous control, and more, inspired by Jinja2.
 - [handlebars.js](https://github.com/handlebars-lang/handlebars.js) - Superset of Mustache templates which adds powerful features like helpers and more advanced blocks.
 - [EJS](https://github.com/mde/ejs) - Simple unopinionated templating language.
 - [Pug](https://github.com/pugjs/pug) - High-performance template engine heavily influenced by Haml.
@@ -297,22 +228,22 @@ A curated collection of resources and projects focused on Node.js.
 - [ThinkJS](https://github.com/thinkjs/thinkjs) - Framework with ES2015+ support, WebSockets, REST API.
 - [ActionHero](https://github.com/actionhero/actionhero) - Framework for making reusable & scalable APIs for TCP sockets, WebSockets, and HTTP clients.
 - [seneca](https://github.com/senecajs/seneca) - Toolkit for writing microservices.
-- [AdonisJs](https://github.com/adonisjs/core) - A true MVC framework for Node.js built on solid foundations of Dependency Injection and IoC container.
+- [AdonisJs](https://github.com/adonisjs/core) - MVC framework for Node.js built on dependency injection and an IoC container.
 - [Moleculer](https://github.com/moleculerjs/moleculer) - Fast & powerful microservices framework.
 - [Nest](https://github.com/nestjs/nest) - Angular-inspired framework for building efficient and scalable server-side apps.
 - [TypeGraphQL](https://github.com/MichalLytek/type-graphql) - Modern framework for creating GraphQL APIs with TypeScript, using classes and decorators.
 - [Tinyhttp](https://github.com/tinyhttp/tinyhttp) - Modern and fast Express-like web framework.
 - [Marble.js](https://github.com/marblejs/marble) - Functional reactive framework for building server-side apps, based on TypeScript and RxJS.
 - [Lad](https://github.com/ladjs/lad) - Framework made by a former Express TC and Koa member that bundles web, API, job, and proxy servers.
-- [Ts.ED](https://github.com/tsedio/tsed) - Intuitive  TypeScript framework for building server-side apps on top of Express.js or Koa.js.
+- [Ts.ED](https://github.com/tsedio/tsed) - TypeScript framework for building server-side apps on Express.js or Koa.js.
 - [Hono](https://github.com/honojs/hono) - Small and fast web framework.
 
 ### Documentation
 
-- [documentation.js](https://github.com/documentationjs/documentation) - API documentation generator with support for ES2015+ and flow annotation.
+- [documentation.js](https://github.com/documentationjs/documentation) - API documentation generator with support for ES2015+ and Flow annotations.
 - [Docco](https://github.com/jashkenas/docco) - Documentation generator which produces an HTML document that displays your comments intermingled with your code.
 - [JSDoc](https://github.com/jsdoc/jsdoc) - API documentation generator similar to JavaDoc or PHPDoc.
-- [Docusaurus](https://github.com/facebook/docusaurus) - Documentation website generator that leverages React and Markdown, and comes with translation and versioning features.
+- [Docusaurus](https://github.com/facebook/docusaurus) - Documentation website generator that uses React and Markdown and includes translation and versioning features.
 
 ### Filesystem
 
@@ -330,7 +261,7 @@ A curated collection of resources and projects focused on Node.js.
 - [fs-extra](https://github.com/jprichardson/node-fs-extra) - Extra methods for the `fs` module.
 - [package-directory](https://github.com/sindresorhus/package-directory) - Find the root directory of an npm package.
 - [filehound](https://github.com/nspragg/filehound) - Flexible and fluent interface for searching the file system.
-- [move-file](https://github.com/sindresorhus/move-file) - Move a file, even works across devices.
+- [move-file](https://github.com/sindresorhus/move-file) - Move a file, including across devices.
 - [tempy](https://github.com/sindresorhus/tempy) - Get a random temporary file or directory path.
 
 ### Control flow
@@ -338,7 +269,7 @@ A curated collection of resources and projects focused on Node.js.
 - Promises
 	- [pify](https://github.com/sindresorhus/pify) - Promisify a callback-style function.
 	- [delay](https://github.com/sindresorhus/delay) - Delay a promise a specified amount of time.
-	- [promise-memoize](https://github.com/nodeca/promise-memoize) - Memoize promise-returning functions, with expire and prefetch.
+	- [promise-memoize](https://github.com/nodeca/promise-memoize) - Memoize promise-returning functions, with expiration and prefetching.
 	- [valvelet](https://github.com/lpinca/valvelet) - Limit the execution rate of a promise-returning function.
 	- [p-map](https://github.com/sindresorhus/p-map) - Map over promises concurrently.
 	- [More…](https://github.com/sindresorhus/promise-fun)
@@ -354,11 +285,11 @@ A curated collection of resources and projects focused on Node.js.
 - [get-stream](https://github.com/sindresorhus/get-stream) - Get a stream as a string or buffer.
 - [from2](https://github.com/hughsk/from2) - Convenience wrapper for ReadableStream, inspired by `through2`.
 - [into-stream](https://github.com/sindresorhus/into-stream) - Convert a buffer/string/array/object into a stream.
-- [duplexify](https://github.com/mafintosh/duplexify) - Turn a writeable and readable stream into a single streams2 duplex stream.
+- [duplexify](https://github.com/mafintosh/duplexify) - Turn a writable and readable stream into a single streams2 duplex stream.
 - [pumpify](https://github.com/mafintosh/pumpify) - Combine an array of streams into a single duplex stream.
 - [peek-stream](https://github.com/mafintosh/peek-stream) - Transform stream that lets you peek the first line before deciding how to parse it.
 - [binary-split](https://github.com/maxogden/binary-split) - Newline (or any delimiter) splitter stream.
-- [byline](https://github.com/jahewson/node-byline) - Super-simple line-by-line Stream reader.
+- [byline](https://github.com/jahewson/node-byline) - Simple line-by-line stream reader.
 - [first-chunk-stream](https://github.com/sindresorhus/first-chunk-stream) - Transform the first chunk in a stream.
 - [pad-stream](https://github.com/sindresorhus/pad-stream) - Pad each line in a stream.
 - [multistream](https://github.com/feross/multistream) - Combine multiple streams into a single stream.
@@ -374,17 +305,17 @@ A curated collection of resources and projects focused on Node.js.
 - [Primus](https://github.com/primus/primus) - An abstraction layer for real-time frameworks to prevent module lock-in.
 - [deepstream.io](https://github.com/deepstreamIO/deepstream.io-client-js) - Scalable real-time microservice framework.
 - [Kalm](https://github.com/kalm/kalm.js) - Low-level socket router and middleware framework.
-- [MQTT.js](https://github.com/mqttjs/MQTT.js) - Client for MQTT - Pub-sub based messaging protocol for use on top of TCP/IP.
+- [MQTT.js](https://github.com/mqttjs/MQTT.js) - Client for MQTT, a publish/subscribe messaging protocol used over TCP/IP.
 - [rpc-websockets](https://github.com/elpheria/rpc-websockets) - JSON-RPC 2.0 implementation over WebSockets.
 - [Aedes](https://github.com/moscajs/aedes) - Barebone MQTT server that can run on any stream server.
 
 ### Image
 
-- [sharp](https://github.com/lovell/sharp) - The fastest module for resizing JPEG, PNG, WebP and TIFF images.
+- [sharp](https://github.com/lovell/sharp) - Module for resizing JPEG, PNG, WebP, and TIFF images, described in the source as the fastest.
 - [image-type](https://github.com/sindresorhus/image-type) - Detect the type of an image.
 - [image-dimensions](https://github.com/sindresorhus/image-dimensions) - Get the dimensions of an image.
 - [lwip](https://github.com/EyalAr/lwip) - Lightweight image processor which does not require ImageMagick.
-- [pica](https://github.com/nodeca/pica) - High quality & fast resize (lanczos3) in pure JS. Alternative to canvas drawImage(), when no pixelation allowed.
+- [pica](https://github.com/nodeca/pica) - High-quality, fast Lanczos3 resizing in pure JavaScript. An alternative to canvas drawImage() when avoiding pixelation.
 - [jimp](https://github.com/oliver-moran/jimp) - Image processing in pure JavaScript.
 - [qrcode](https://github.com/soldair/node-qrcode) - QR code and bar code generator.
 - [ImageScript](https://github.com/matmen/ImageScript) - Image processing in JavaScript, utilizing WebAssembly for performance.
@@ -392,7 +323,7 @@ A curated collection of resources and projects focused on Node.js.
 ### Text
 
 - [iconv-lite](https://github.com/ashtuchkin/iconv-lite) - Convert character encodings.
-- [string-length](https://github.com/sindresorhus/string-length) - Get the real length of a string - by correctly counting astral symbols and ignoring ansi escape codes.
+- [string-length](https://github.com/sindresorhus/string-length) - Measure string length by counting astral symbols correctly and ignoring ANSI escape codes.
 - [camelcase](https://github.com/sindresorhus/camelcase) - Convert a dash/dot/underscore/space separated string to camelCase: foo-bar → fooBar.
 - [escape-string-regexp](https://github.com/sindresorhus/escape-string-regexp) - Escape RegExp special characters.
 - [splice-string](https://github.com/sindresorhus/splice-string) - Remove or replace part of a string like `Array#splice`.
@@ -403,7 +334,7 @@ A curated collection of resources and projects focused on Node.js.
 - [i18n-node](https://github.com/mashpie/i18n-node) - Simple translation module with dynamic JSON storage.
 - [babelfish](https://github.com/nodeca/babelfish) - i18n with very easy syntax for plurals.
 - [matcher](https://github.com/sindresorhus/matcher) - Simple wildcard matching.
-- [unhomoglyph](https://github.com/nodeca/unhomoglyph) - Normalize visually similar unicode characters.
+- [unhomoglyph](https://github.com/nodeca/unhomoglyph) - Normalize visually similar Unicode characters.
 - [i18next](https://github.com/i18next/i18next) - Internationalization framework.
 - [nanoid](https://github.com/ai/nanoid) - Tiny, secure, URL-friendly, unique string ID generator.
 - [StegCloak](https://github.com/kurolabs/stegcloak) - Conceal secrets within strings, in plain sight.
@@ -438,7 +369,7 @@ A curated collection of resources and projects focused on Node.js.
 - [humanize-url](https://github.com/sindresorhus/humanize-url) - Humanize a URL: https://sindresorhus.com → sindresorhus.com.
 - [url-unshort](https://github.com/nodeca/url-unshort) - Expand shortened URLs.
 - [speakingurl](https://github.com/pid/speakingurl) - Generate a slug from a string with transliteration.
-- [linkify-it](https://github.com/markdown-it/linkify-it) - Link patterns detector with full unicode support.
+- [linkify-it](https://github.com/markdown-it/linkify-it) - Link-pattern detector with full Unicode support.
 - [url-pattern](https://github.com/snd/url-pattern) - Easier than regex string matching patterns for URLs and other strings.
 - [embedza](https://github.com/nodeca/embedza) - Create HTML snippets/embeds from URLs using info from oEmbed, Open Graph, meta tags.
 
@@ -448,7 +379,7 @@ A curated collection of resources and projects focused on Node.js.
 - [is-my-json-valid](https://github.com/mafintosh/is-my-json-valid) - JSON Schema validator that uses code generation to be extremely fast.
 - [property-validator](https://github.com/nettofarah/property-validator) - Easy property validation for Express.
 - [schema-inspector](https://github.com/schema-inspector/schema-inspector) - JSON API sanitization and validation.
-- [ajv](https://github.com/ajv-validator/ajv) - The fastest JSON Schema validator. Supports v5, v6 and v7 proposals.
+- [ajv](https://github.com/ajv-validator/ajv) - JSON Schema validator supporting v5, v6, and v7 proposals, described in the source as the fastest.
 - [Superstruct](https://github.com/ianstormtaylor/superstruct) - Simple and composable way to validate data in JavaScript (and TypeScript).
 - [yup](https://github.com/jquense/yup) - Object schema validation.
 - [zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation with static type inference.
@@ -457,20 +388,20 @@ A curated collection of resources and projects focused on Node.js.
 
 - [remark](https://github.com/remarkjs/remark) - Markdown processor powered by plugins.
 - [markdown-it](https://github.com/markdown-it/markdown-it) - Markdown parser with 100% CommonMark support, extensions and syntax plugins.
-- [parse5](https://github.com/inikulin/parse5) - Fast full-featured spec compliant HTML parser.
+- [parse5](https://github.com/inikulin/parse5) - Fast, full-featured, specification-compliant HTML parser.
 - [@parcel/css](https://github.com/parcel-bundler/parcel-css) - A CSS parser, transformer, and minifier written in Rust.
 - [strip-json-comments](https://github.com/sindresorhus/strip-json-comments) - Strip comments from JSON.
 - [strip-css-comments](https://github.com/sindresorhus/strip-css-comments) - Strip comments from CSS.
 - [parse-json](https://github.com/sindresorhus/parse-json) - Parse JSON with more helpful errors.
 - [URI.js](https://github.com/medialize/URI.js) - URL mutation.
 - [JSONStream](https://github.com/dominictarr/JSONStream) - Streaming JSON.parse and stringify.
-- [neat-csv](https://github.com/sindresorhus/neat-csv) - Fast CSV parser. Callback interface for the above.
+- [neat-csv](https://github.com/sindresorhus/neat-csv) - Fast CSV parser, described in the fixed source as providing a callback interface.
 - [csv-parser](https://github.com/mafintosh/csv-parser) - Streaming CSV parser that aims to be faster than everyone else.
 - [PEG.js](https://github.com/pegjs/pegjs) - Simple parser generator that produces fast parsers with excellent error reporting.
 - [x-ray](https://github.com/matthewmueller/x-ray) - Web scraping utility.
 - [nearley](https://github.com/kach/nearley) - Simple, fast, powerful parsing for JavaScript.
 - [binary-extract](https://github.com/juliangruber/binary-extract) - Extract a value from a buffer of JSON without parsing the whole thing.
-- [Stylecow](https://github.com/stylecow/stylecow) - Parse, manipulate and convert modern CSS to make it compatible with all browsers. Extensible with plugins.
+- [Stylecow](https://github.com/stylecow/stylecow) - Parse, manipulate, and convert modern CSS, with plugin extensibility. The source describes the result as compatible with all browsers.
 - [js-yaml](https://github.com/nodeca/js-yaml) - Very fast YAML parser.
 - [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js) - XML to JavaScript object converter.
 - [Jison](https://github.com/zaach/jison) - Friendly JavaScript parser generator. It shares genes with Bison, Yacc and family.
@@ -490,10 +421,10 @@ A curated collection of resources and projects focused on Node.js.
 
 ### Compression
 
-- [yazl](https://github.com/thejoshwolfe/yazl) - Zip.
-- [yauzl](https://github.com/thejoshwolfe/yauzl) - Unzip.
+- [yazl](https://github.com/thejoshwolfe/yazl) - Create ZIP archives.
+- [yauzl](https://github.com/thejoshwolfe/yauzl) - Extract ZIP archives.
 - [Archiver](https://github.com/archiverjs/node-archiver) - Streaming interface for archive generation, supporting ZIP and TAR.
-- [pako](https://github.com/nodeca/pako) - High speed zlib port to pure js (deflate, inflate, gzip).
+- [pako](https://github.com/nodeca/pako) - High-speed zlib port to pure JavaScript (deflate, inflate, gzip).
 - [tar-stream](https://github.com/mafintosh/tar-stream) - Streaming tar parser and generator. Also see [tar-fs](https://github.com/mafintosh/tar-fs).
 
 ### Network
@@ -527,7 +458,7 @@ A curated collection of resources and projects focused on Node.js.
 	- [TypeORM](https://github.com/typeorm/typeorm) - ORM for PostgreSQL, MariaDB, MySQL, SQLite, and more.
 	- [MikroORM](https://github.com/mikro-orm/mikro-orm) - TypeScript ORM based on Data Mapper, Unit of Work and Identity Map patterns. Supports MongoDB, PostgreSQL, MySQL and SQLite.
 	- [Prisma](https://github.com/prisma/prisma) - Modern database access (ORM alternative). Auto-generated and type-safe query builder in TypeScript. Supports PostgreSQL, MySQL & SQLite.
- 	- [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) - TypeScript ORM that supports various databases such as PostgreSQL.
+	- [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) - TypeScript ORM that supports various databases such as PostgreSQL.
 - Query builder
 	- [Knex](https://github.com/knex/knex) - Query builder for PostgreSQL, MySQL and SQLite3, designed to be flexible, portable, and fun to use.
 - Other
@@ -542,8 +473,8 @@ A curated collection of resources and projects focused on Node.js.
 
 ### Testing
 
-- [AVA](https://github.com/avajs/ava) - Futuristic test runner.
-- [Mocha](https://github.com/mochajs/mocha) - Feature-rich test framework making asynchronous testing simple and fun.
+- [AVA](https://github.com/avajs/ava) - Test runner described in the source as futuristic.
+- [Mocha](https://github.com/mochajs/mocha) - Feature-rich test framework that simplifies asynchronous testing.
 - [nyc](https://github.com/istanbuljs/nyc) - Code coverage tool built on istanbul that works with subprocesses.
 - [tap](https://github.com/tapjs/node-tap) - TAP test framework.
 - [tape](https://github.com/substack/tape) - TAP-producing test harness.
@@ -573,7 +504,7 @@ A curated collection of resources and projects focused on Node.js.
 
 ### Security
 
-- [upash](https://github.com/simonepri/upash) - Unified API for all password hashing algorithms.
+- [upash](https://github.com/simonepri/upash) - Unified API described in the source as covering all password hashing algorithms.
 - [themis](https://github.com/cossacklabs/themis) - Multilanguage framework for making typical encryption schemes easy to use: data at rest, authenticated data exchange, transport protection, authentication, and so on.
 - [GuardRails](https://github.com/apps/guardrails) - GitHub app that provides security feedback in pull requests.
 - [rate-limiter-flexible](https://github.com/animir/node-rate-limiter-flexible) - Brute-force and DDoS attack protection.
@@ -604,7 +535,7 @@ A curated collection of resources and projects focused on Node.js.
 
 ### Email
 
-- [Nodemailer](https://github.com/nodemailer/nodemailer) - The fastest way to handle email.
+- [Nodemailer](https://github.com/nodemailer/nodemailer) - Email-handling tool described in the source as the fastest way to handle email.
 - [emailjs](https://github.com/eleith/emailjs) - Send text/HTML emails with attachments to any SMTP server.
 - [email-templates](https://github.com/forwardemail/email-templates) - Create, preview, and send custom email templates.
 - [MJML](https://github.com/mjmlio/mjml) - Markup language designed to reduce the pain of creating responsive emails.
@@ -622,7 +553,7 @@ A curated collection of resources and projects focused on Node.js.
 - [sqs-consumer](https://github.com/bbc/sqs-consumer) - Build Amazon Simple Queue Service (SQS) based apps without the boilerplate.
 - [better-queue](https://github.com/diamondio/better-queue) - Simple and efficient job queue when you cannot use Redis.
 - [bullmq](https://github.com/taskforcesh/bullmq) - Persistent job and message queue.
-- [bree](https://github.com/breejs/bree) - Job task scheduler with worker threads, cron, date, and human syntax support.
+- [bree](https://github.com/breejs/bree) - Job scheduler supporting worker threads, cron, dates, and human-readable syntax.
 - [graphile-worker](https://github.com/graphile/worker) - High performance PostgreSQL job queue.
 
 ### Node.js management
@@ -639,7 +570,7 @@ A curated collection of resources and projects focused on Node.js.
 - [napi-rs](https://github.com/napi-rs/napi-rs) - Framework for building compiled Node.js add-ons in Rust via Node-API.
 - [Neon](https://github.com/neon-bindings/neon) - Rust bindings for writing safe and fast native Node.js modules.
 - [Edge.js](https://github.com/agracio/edge-js) - Run .NET and Node.js code in the same process on Windows, macOS, and Linux.
-- [DotNetJS](https://github.com/Elringus/DotNetJS) - Consume .NET libraries in Node.js using this .NET interoperability layer.
+- [DotNetJS](https://github.com/Elringus/DotNetJS) - Use .NET libraries in Node.js through a .NET interoperability layer.
 
 ### Natural language processing
 
@@ -654,14 +585,14 @@ A curated collection of resources and projects focused on Node.js.
 - [PM2](https://github.com/Unitech/pm2) - Advanced Process Manager.
 - [nodemon](https://github.com/remy/nodemon) - Monitor for changes in your app and automatically restart the server.
 - [node-mac](https://github.com/coreybutler/node-mac) - Run scripts as a native Mac daemon and log to the console app.
-- [node-linux](https://github.com/coreybutler/node-linux) - Run scripts as native system service and log to syslog.
+- [node-linux](https://github.com/coreybutler/node-linux) - Run scripts as native system services and log to syslog.
 - [node-windows](https://github.com/coreybutler/node-windows) - Run scripts as a native Windows service and log to the Event viewer.
 - [supervisor](https://github.com/petruisfan/node-supervisor) - Restart scripts when they crash or restart when a `*.js` file changes.
 - [Phusion Passenger](https://github.com/phusion/passenger) - Friendly process manager that integrates directly into Nginx.
 
 ### Automation
 
-- [robotjs](https://github.com/octalmage/robotjs) - Desktop Automation: control the mouse, keyboard and read the screen.
+- [robotjs](https://github.com/octalmage/robotjs) - Desktop automation: control the mouse and keyboard, and read the screen.
 - [nut.js](https://github.com/nut-tree/nut.js) - Cross-platform native GUI automation / testing framework with image matching capabilities which integrates with Jest.
 
 ### AST
@@ -696,12 +627,12 @@ A curated collection of resources and projects focused on Node.js.
 ### Weird
 
 - [cows](https://github.com/sindresorhus/cows) - ASCII cows.
-- [superb](https://github.com/sindresorhus/superb) - Get superb like words.
+- [superb](https://github.com/sindresorhus/superb) - Get words similar to "superb".
 - [cat-names](https://github.com/sindresorhus/cat-names) - Get popular cat names.
 - [dog-names](https://github.com/sindresorhus/dog-names) - Get popular dog names.
 - [superheroes](https://github.com/sindresorhus/superheroes) - Get superhero names.
 - [supervillains](https://github.com/sindresorhus/supervillains) - Get supervillain names.
-- [cool-ascii-faces](https://github.com/maxogden/cool-ascii-faces) - Get some cool ascii faces.
+- [cool-ascii-faces](https://github.com/maxogden/cool-ascii-faces) - Get ASCII faces.
 - [cat-ascii-faces](https://github.com/melaniecebula/cat-ascii-faces) - `₍˄·͈༝·͈˄₎◞ ̑̑ෆ⃛ (=ↀωↀ=)✧ (^･o･^)ﾉ”`.
 - [nerds](https://github.com/SkyHacks/nerds) - Get data from nerdy topics like Harry Potter, Star Wars, and Pokémon.
 
@@ -729,7 +660,7 @@ A curated collection of resources and projects focused on Node.js.
 - [webworker-threads](https://github.com/audreyt/node-webworker-threads) - Lightweight Web Worker API implementation with native threads.
 - [clipboardy](https://github.com/sindresorhus/clipboardy) - Access the system clipboard (copy/paste).
 - [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) - Makes it easy to publish and install Node.js C++ addons from binaries.
-- [opencv](https://github.com/peterbraden/node-opencv) - Bindings for OpenCV. The defacto computer vision library.
+- [opencv](https://github.com/peterbraden/node-opencv) - Bindings for OpenCV, described in the source as the de facto computer vision library.
 - [dotenv](https://github.com/motdotla/dotenv) - Load environment variables from .env file.
 - [semver](https://github.com/npm/node-semver) - Semantic version parser.
 - [nodegit](https://github.com/nodegit/nodegit) - Native bindings to Git.
@@ -762,15 +693,15 @@ A curated collection of resources and projects focused on Node.js.
 - [Nodeschool](https://github.com/nodeschool) - Learn Node.js with interactive lessons.
 - [The Art of Node](https://github.com/maxogden/art-of-node/#the-art-of-node) - An introduction to Node.js.
 - [module-best-practices](https://github.com/mattdesl/module-best-practices) - Some good practices when writing new npm modules.
-- [The Node Way](https://github.com/FredKSchott/the-node-way) - An entire philosophy of Node.js best practices and guiding principles exists for writing maintainable modules, scalable applications, and code that is actually pleasant to read.
+- [The Node Way](https://github.com/FredKSchott/the-node-way) - Node.js best practices and guiding principles for writing maintainable modules, scalable applications, and readable code.
 - [You Don't Know Node.js](https://github.com/azat-co/you-dont-know-node) - Introduction to Node.js core features and asynchronous JavaScript.
 - [Portable Node.js guide](https://github.com/ehmicky/cross-platform-node-guide) - Practical guide on how to write portable/cross-platform Node.js code.
 - [Build a real web app with no frameworks](https://frameworkless.js.org/course) - A set of video tutorials/livestreams to help you build and deploy a real, live web app using a handful of simple libraries and the core Node.js modules.
 
 ### Discovery
 
-- [npms](https://npms.io) - Superb package search with deep analysis of package quality using a [myriad of metrics](https://npms.io/about).
-- [npm addict](https://npmaddict.com) - Your daily injection of npm packages.
+- [npms](https://npms.io) - Package search with in-depth quality analysis using [many metrics](https://npms.io/about).
+- [npm addict](https://npmaddict.com) - Discover npm packages daily.
 
 ### Articles
 
@@ -793,7 +724,7 @@ A curated collection of resources and projects focused on Node.js.
 - [Introduction to Node.js with Ryan Dahl](https://www.youtube.com/watch?v=jo_B4LTHi3I)
 - [Hands on with Node.js](https://learn.bevry.me/hands-on-with-node.js/preface)
 - [V8 Garbage Collector](https://v8.dev/blog/trash-talk) - Trash talk about the V8 garbage collector.
-- [10 Things I Regret About Node.js by Ryan Dahl](https://www.youtube.com/watch?v=M3BM9TB-8yA) - Insightful talk by the creator of Node.js about some of its limitations.
+- [10 Things I Regret About Node.js by Ryan Dahl](https://www.youtube.com/watch?v=M3BM9TB-8yA) - Talk by the creator of Node.js about some of its limitations.
 - [Mastering REST APIs in Node.js: Zero-To-Hero](https://www.manning.com/livevideo/mastering-rest-apis-in-nodejs) - Video course on how to make REST APIs using Node.js.
 - [Make a vanilla Node.js REST API](https://www.youtube.com/watch?v=_1xa8Bsho6A) - Building a REST API without using a framework like Express.
 - [Google I/O 2009 - V8: High Performance JavaScript Engine](https://www.youtube.com/watch?v=FrufJFBSoQY) - The basics of V8 architecture and how it optimizes JavaScript execution.
@@ -822,7 +753,7 @@ A curated collection of resources and projects focused on Node.js.
 ### Blogs
 
 - [Node.js blog](https://nodejs.org/en/blog/)
-- [webapplog.com](https://webapplog.com/tag/node-js/) - Blog posts on Node.js and JavaScript from the author of Practical Node.js and Pro Express.js Azat Mardan.
+- [webapplog.com](https://webapplog.com/tag/node-js/) - Node.js and JavaScript posts by Azat Mardan, author of Practical Node.js and Pro Express.js.
 
 ### Courses
 

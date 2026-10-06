@@ -1,22 +1,12 @@
 ---
 title: "Awesome Storybook"
-description: "A curated collection of resources and projects focused on Storybook."
+description: "Storybook official and community resources, design system examples, and tutorials, talks, and blog posts grouped by year."
 licenseSource: "github-lauthieb-awesome-storybook-readme-md"
 ---
 
 # Awesome Storybook
 
-A curated collection of resources and projects focused on Storybook.
-
-## Contents
-
-- [Official resources](#official-resources)
-- [Community resources](#community-resources)
-- [Examples](#examples)
-- [Tutorials](#tutorials)
-- [Talks](#talks)
-- [Blog posts](#blog-posts)
-- [Contributing](#contributing)
+[Storybook](https://storybook.js.org) is a frontend tool for building UI components. Find official and community resources, design system examples, tutorials, talks, and blog posts; dated resources are grouped by the years given in the source.
 
 ## Official resources
 
@@ -53,71 +43,49 @@ A curated collection of resources and projects focused on Storybook.
 
 ## Tutorials
 
-<details>
-<summary>2022</summary>
+### 2022
 
 - [Storybook React: A Beginner's Tutorial to UI Components](https://snipcart.com/blog/storybook-react-tutorial-example)
-</details>
 
-<details>
-<summary>2020</summary>
+### 2020
 
 - [Simple Storybook React Setup with Dark Mode Integration](https://davidyeiser.com/tutorials/storybook-react-with-dark-mode)
-</details>
 
-<details>
-<summary>2018</summary>
+### 2018
 
 - [Adding Storybook Style Guide to a Create React App](https://www.youtube.com/watch?v=va-JzrmaiUM)
 - [Build your components with Storybook](https://www.youtube.com/watch?v=_jttw14T52o)
-</details>
 
 ## Talks
 
-<details>
-<summary>2019</summary>
+### 2019
 
 - [Storybook, le playground qu'il vous faut pour vos composants UI! (FR)](https://www.youtube.com/watch?v=zMpSwo03aKo)
-</details>
 
-<details>
-<summary>2018</summary>
+### 2018
 
 - [VueNYC - Learn Storybook](https://www.youtube.com/watch?v=XN398jfTwQI)
-</details>
 
-<details>
-<summary>2017</summary>
+### 2017
 
 - [React Storybook Tutorial with Examples - Getting Started with React Storybook](https://www.youtube.com/watch?v=E2c183LS4lA)
 - [React Storybook: Design, Dev, Doc, Debug Components - React Conf 2017](https://www.youtube.com/watch?v=PF0Vi-iIyoo)
-</details>
 
 ## Blog posts
 
-<details>
-<summary>2019</summary>
+### 2019
 
 - [How I manage to make my Storybook project the most efficient possible](https://dev.to/loicgoyet/how-i-manage-to-make-my-storybook-project-the-most-efficient-possible-2d8o)
 - [Real-time accessibility testing with Storybook](https://medium.com/storybookjs/instant-accessibility-qa-linting-in-storybook-4a474b0f5347)
-</details>
 
-<details>
-<summary>2018</summary>
+### 2018
 
 - [Using Storybook with VueJS](https://auth0.com/blog/using-storybook-with-vuejs/)
 - [Setting up Storybook for Preact](https://www.nickyt.co/blog/setting-up-storybook-for-preact-p5a/)
 - [Setting Up a Component Library with React and Storybook](https://auth0.com/blog/setting-up-a-component-library-with-react-and-storybook/)
 - [Storybook - UI component development tool for React, Vue, and Angular (Article focusing on React)](https://dev.to/madhu/storybook---ui-component-development-tool-for-react-vue-and-angular-article-focusing-on-react-29od)
 - [Storybook vs Styleguidist](https://www.chromatic.com/blog/storybook-vs-styleguidist/)
-</details>
 
-<details>
-<summary>2017</summary>
+### 2017
 
 - [Five Reasons to Use Storybook Tests](https://spin.atomicobject.com/storybook-tests-react/)
-</details>
-
-## Contributing
-
-Contributions welcome! Read the [contribution guidelines](https://github.com/lauthieb/awesome-storybook/blob/4426659a18d744f3bf54fda2da38d2b7c6cae52e/CONTRIBUTING.md) first.

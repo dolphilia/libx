@@ -1,87 +1,18 @@
 ---
 title: "Awesome Node.js"
-description: "Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。"
+description: "用途別にNode.jsのパッケージ、CLIツール、Webフレームワーク、データベースライブラリ、学習資料を紹介します。"
 licenseSource: "github-sindresorhus-awesome-nodejs-readme-md"
 ---
 
 # Awesome Node.js
 
-Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリストです。
-
-## 目次 <a id="contents"></a>
-
-- [公式](#official)
-- [パッケージ](#packages)
-	- [実験的](#mad-science)
-	- [コマンドラインアプリ](#command-line-apps)
-	- [関数型プログラミング](#functional-programming)
-	- [HTTP](#http)
-	- [デバッグ／プロファイリング](#debugging--profiling)
-	- [ログ](#logging)
-	- [コマンドラインユーティリティ](#command-line-utilities)
-	- [ビルドツール](#build-tools)
-	- [ハードウェア](#hardware)
-	- [テンプレート](#templating)
-	- [Webフレームワーク](#web-frameworks)
-	- [文書](#documentation)
-	- [ファイルシステム](#filesystem)
-	- [制御フロー](#control-flow)
-	- [ストリーム](#streams)
-	- [リアルタイム](#real-time)
-	- [画像](#image)
-	- [テキスト](#text)
-	- [数値](#number)
-	- [数学](#math)
-	- [日付](#date)
-	- [URL](#url)
-	- [データ検証](#data-validation)
-	- [解析](#parsing)
-	- [人間向け表現](#humanize)
-	- [圧縮](#compression)
-	- [ネットワーク](#network)
-	- [データベース](#database)
-	- [テスト](#testing)
-	- [セキュリティ](#security)
-	- [ベンチマーク](#benchmarking)
-	- [縮小ツール](#minifiers)
-	- [認証](#authentication)
-	- [認可](#authorization)
-	- [メール](#email)
-	- [ジョブキュー](#job-queues)
-	- [Node.js管理](#nodejs-management)
-	- [クロスプラットフォーム統合](#cross-platform-integration)
-	- [自然言語処理](#natural-language-processing)
-	- [プロセス管理](#process-management)
-	- [自動化](#automation)
-	- [AST](#ast)
-	- [静的サイトジェネレーター](#static-site-generators)
-	- [コンテンツ管理システム](#content-management-systems)
-	- [フォーラム](#forum)
-	- [ブログ](#blogging)
-	- [ユニーク](#weird)
-	- [シリアライズ](#serialization)
-	- [その他](#miscellaneous)
-- [パッケージマネージャー](#package-manager)
-- [資料](#resources)
-	- [チュートリアル](#tutorials)
-	- [検索](#discovery)
-	- [記事](#articles)
-	- [ニュースレター](#newsletters)
-	- [動画](#videos)
-	- [書籍](#books)
-	- [ブログ](#blogs)
-	- [講座](#courses)
-	- [チートシート](#cheatsheets)
-	- [ツール](#tools)
-	- [コミュニティ](#community)
-	- [その他](#miscellaneous-1)
-- [関連リスト](#related-lists)
+[Node.js](https://en.wikipedia.org/wiki/Node.js)は、サーバーやコマンドラインツールを作成するための、オープンソースでクロスプラットフォームのJavaScript実行環境です。このリストでは、用途別のパッケージに加え、公式資料、チュートリアル、書籍、開発ツールを紹介します。
 
 ## 公式 <a id="official"></a>
 
-- [Website](https://nodejs.org)
-- [Documentation](https://nodejs.org/dist/latest/docs/api/)
-- [Repository](https://github.com/nodejs/node)
+- [公式Webサイト](https://nodejs.org)
+- [公式ドキュメント](https://nodejs.org/dist/latest/docs/api/)
+- [公式リポジトリ](https://github.com/nodejs/node)
 
 ## パッケージ <a id="packages"></a>
 
@@ -93,12 +24,12 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [stackgl](https://github.com/stackgl) - browserifyとnpm上に構築された、WebGL向けのオープンなソフトウェアエコシステムです。
 - [peerwiki](https://github.com/mafintosh/peerwiki) - Wikipedia全体をBitTorrentで配信します。
 - [peercast](https://github.com/mafintosh/peercast) - Torrent動画をChromecastへストリーミングします。
-- [BitcoinJS](https://github.com/bitcoinjs/bitcoinjs-lib) - 明快で読みやすく、実績のあるBitcoinライブラリです。
-- [Bitcore](https://github.com/bitpay/bitcore) - 純粋かつ高機能なBitcoinライブラリです。
+- [BitcoinJS](https://github.com/bitcoinjs/bitcoinjs-lib) - Bitcoinライブラリ。原文では明快で読みやすく、実績があると紹介されています。
+- [Bitcore](https://github.com/bitpay/bitcore) - 純粋なBitcoinライブラリ。原文では高機能と紹介されています。
 - [PDFKit](https://github.com/foliojs/pdfkit) - PDF生成ライブラリです。
 - [turf](https://github.com/Turfjs/turf) - モジュール式の地理空間処理・解析エンジンです。
 - [webcat](https://github.com/mafintosh/webcat) - GitHubの秘密鍵・公開鍵による認証を使い、WebRTC経由でWeb上にP2Pパイプを構築します。
-- [NodeOS](https://github.com/NodeOS/NodeOS) - npmを基盤とする最初のオペレーティングシステムです。
+- [NodeOS](https://github.com/NodeOS/NodeOS) - npmを基盤とするオペレーティングシステム。原文ではこの種の最初のシステムと紹介されています。
 - [YodaOS](https://github.com/yodaos-project/yodaos) - AIオペレーティングシステムです。
 - [Brain.js](https://github.com/BrainJS/brain.js) - 機械学習フレームワークです。
 - [Pipcook](https://github.com/alibaba/pipcook) - 機械学習パイプラインを構築するためのフロントエンドアルゴリズムフレームワークです。
@@ -159,19 +90,19 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 ### 関数型プログラミング <a id="functional-programming"></a>
 
-- [lodash](https://github.com/lodash/lodash) - 一貫性、カスタマイズ性、性能、豊富な機能を備えたユーティリティライブラリで、Underscore.jsをより高速に改良しています。
+- [lodash](https://github.com/lodash/lodash) - 一貫性、カスタマイズ性、性能、豊富な機能を備えたユーティリティライブラリです。原文ではUnderscore.jsより優れ、高速な代替と紹介されています。
 - [immutable](https://github.com/immutable-js/immutable-js) - イミュータブルなデータコレクションです。
 - [Ramda](https://github.com/ramda/ramda) - 自動カリー化と引数順の反転による柔軟な関数合成を重視し、データを変更しないユーティリティライブラリです。
 - [Mout](https://github.com/mout/mout) - 必要なモジュールや関数だけを読み込めるため、余分なオーバーヘッドを避けられるユーティリティライブラリです。
 - [RxJS](https://github.com/reactivex/rxjs) - さまざまな種類のデータを変換、合成、照会するための関数型リアクティブライブラリです。
 - [Kefir.js](https://github.com/kefirjs/kefir) - 高性能かつ少ないメモリ使用量を重視したリアクティブライブラリです。
 
-### HTTP <a id="http"></a>
+### HTTP
 
 - [got](https://github.com/sindresorhus/got) - 組み込みの`http`モジュールを使いやすくするインターフェースです。
 - [undici](https://github.com/nodejs/undici) - 依存関係なしで一から実装された高性能HTTPクライアントです。
 - [ky-universal](https://github.com/sindresorhus/ky-universal) - Fetchを基盤とするユニバーサルHTTPクライアントです。
-- [node-fetch](https://github.com/node-fetch/node-fetch) - Node.jsで`window.fetch`を利用できるようにします。
+- [node-fetch](https://github.com/node-fetch/node-fetch) - Node.js向けの`window.fetch`実装です。
 - [axios](https://github.com/axios/axios) - ブラウザーでも動作するPromiseベースのHTTPクライアントです。
 - [superagent](https://github.com/visionmedia/superagent) - HTTPリクエストライブラリです。
 - [http-fake-backend](https://github.com/micromata/http-fake-backend) - JSONファイルやJavaScriptオブジェクトの内容を設定可能なルートで提供し、偽のバックエンドを構築します。
@@ -189,7 +120,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [vstream](https://github.com/joyent/node-vstream) - ストリームのパイプラインを検査できる、計測可能なストリーム用ミックスインです。
 - [stackman](https://github.com/watson/stackman) - エラーのスタックトレースへコード抜粋などの情報を追加します。
 - [locus](https://github.com/alidavut/locus) - 実行時にすべての変数へアクセスできるREPLを起動します。
-- [0x](https://github.com/davidmarkclements/0x) - フレームグラフを使ったプロファイリングを行います。
+- [0x](https://github.com/davidmarkclements/0x) - フレームグラフ（Flame graph）によるプロファイリングを行います。
 - [ctrace](https://github.com/automation-stack/ctrace) - システムコールとシグナルを整形して詳しくトレースします。
 - [leakage](https://github.com/andywer/leakage) - メモリリークのテストを記述できます。
 - [llnode](https://github.com/nodejs/llnode) - クラッシュしたNode.jsプロセスのオブジェクトを検査・分析する事後解析ツールです。
@@ -202,16 +133,16 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 - [pino](https://github.com/pinojs/pino) - Bunyanに着想を得た非常に高速なロガーです。
 - [winston](https://github.com/winstonjs/winston) - 複数の出力先に対応する非同期ログライブラリです。
-- [console-log-level](https://github.com/watson/console-log-level) - ログレベルと独自プレフィックスに対応した、極めてシンプルなロガーです。
+- [console-log-level](https://github.com/watson/console-log-level) - ログレベルと独自プレフィックスに対応したシンプルなロガーです。
 - [storyboard](https://github.com/guigrpa/storyboard) - エンドツーエンドで階層的かつリアルタイムに色付きログとストーリーを表示します。
 - [consola](https://github.com/unjs/consola) - コンソールロガーです。
 
 ### コマンドラインユーティリティ <a id="command-line-utilities"></a>
 
-- [chalk](https://github.com/chalk/chalk) - ターミナル文字列を適切に装飾します。
+- [chalk](https://github.com/chalk/chalk) - ターミナル文字列を装飾します。
 - [meow](https://github.com/sindresorhus/meow) - CLIアプリの作成を支援します。
-- [yargs](https://github.com/yargs/yargs) - 洗練されたユーザーインターフェースを自動生成するコマンドラインパーサーです。
-- [ora](https://github.com/sindresorhus/ora) - 洗練されたターミナル用スピナーです。
+- [yargs](https://github.com/yargs/yargs) - ユーザーインターフェースを自動生成するコマンドラインパーサーです。
+- [ora](https://github.com/sindresorhus/ora) - ターミナル用スピナーです。
 - [get-stdin](https://github.com/sindresorhus/get-stdin) - 標準入力を簡単に扱えます。
 - [log-update](https://github.com/sindresorhus/log-update) - ターミナルの直前の出力を上書きしてログを更新し、進捗バーやアニメーションなどを描画できます。
 - [Ink](https://github.com/vadimdemedes/ink) - Reactを使って対話型コマンドラインアプリを構築します。
@@ -235,7 +166,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [insight](https://github.com/yeoman/insight) - 利用状況をGoogle Analyticsへ匿名送信し、ツールの使われ方を把握できるようにします。
 - [cli-cursor](https://github.com/sindresorhus/cli-cursor) - CLIカーソルの表示を切り替えます。
 - [cli-columns](https://github.com/shannonmoeller/cli-columns) - UnicodeとANSIに対応したテキスト一覧を列形式で表示します。
-- [cfonts](https://github.com/dominikwilkowski/cfonts) - コンソール向けの魅力的なASCIIフォントです。
+- [cfonts](https://github.com/dominikwilkowski/cfonts) - コンソール向けのASCIIフォントです。
 - [multispinner](https://github.com/codekirei/node-multispinner) - 複数のスピナーを同時かつ個別に制御します。
 - [omelette](https://github.com/f/omelette) - シェルの自動補完を支援します。
 - [cross-env](https://github.com/kentcdodds/cross-env) - クロスプラットフォームで環境変数を設定します。
@@ -243,7 +174,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [sudo-block](https://github.com/sindresorhus/sudo-block) - アプリがroot権限で実行されるのを防ぎます。
 - [sparkly](https://github.com/sindresorhus/sparkly) - `▁▂▃▅▂▇`形式のスパークラインを生成します。
 - [Bit](https://github.com/teambit/bit) - リポジトリ間で小さなモジュールやコンポーネントを作成、保守、検索、利用します。
-- [gradient-string](https://github.com/bokub/gradient-string) - ターミナル出力へ美しい色のグラデーションを適用します。
+- [gradient-string](https://github.com/bokub/gradient-string) - ターミナル出力へ色のグラデーションを適用します。
 - [oclif](https://github.com/oclif/oclif) - パーサー、自動文書生成、テスト、プラグインを備えたCLIフレームワークです。
 - [terminal-size](https://github.com/sindresorhus/terminal-size) - ターミナルウィンドウのサイズを確実に取得します。
 - [Cliffy](https://github.com/drew-y/cliffy) - 対話型CLIを構築するためのフレームワークです。
@@ -251,12 +182,12 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 ### ビルドツール <a id="build-tools"></a>
 
-- [parcel](https://github.com/parcel-bundler/parcel) - 非常に高速で設定不要のWebアプリバンドラーです。
+- [parcel](https://github.com/parcel-bundler/parcel) - 設定不要のWebアプリバンドラーです。原文では非常に高速と紹介されています。
 - [webpack](https://github.com/webpack/webpack) - ブラウザー向けにモジュールとアセットをまとめます。
-- [rollup](https://github.com/rollup/rollup) - 次世代のES2015モジュールバンドラーです。
+- [rollup](https://github.com/rollup/rollup) - ES2015モジュールバンドラーです。原文では次世代のバンドラーと紹介されています。
 - [gulp](https://github.com/gulpjs/gulp) - 設定よりコードを重視する、高速なストリーミングビルドシステムです。
-- [Broccoli](https://github.com/broccolijs/broccoli) - 定数時間での再ビルドと簡潔なビルド定義に対応する、高速で信頼性の高いアセットパイプラインです。
-- [Brunch](https://github.com/brunch/brunch) - シンプルな宣言的設定、高速な増分コンパイル、明確なワークフローを備えたフロントエンドWebアプリ用ビルドツールです。
+- [Broccoli](https://github.com/broccolijs/broccoli) - 簡潔なビルド定義を備えたアセットパイプラインです。原文では高速で信頼性が高く、定数時間で再ビルドできると紹介されています。
+- [Brunch](https://github.com/brunch/brunch) - シンプルな宣言的設定、高速な増分コンパイル、設計方針が明確なワークフローを備えたフロントエンドWebアプリ用ビルドツールです。
 - [FuseBox](https://github.com/fuse-box/fuse-box) - webpack、JSPM、SystemJSの能力を組み合わせ、TypeScriptを標準でサポートする高速ビルドシステムです。
 - [pkg](https://github.com/vercel/pkg) - Node.jsプロジェクトを実行可能ファイルとしてパッケージ化します。
 - [Vite](https://github.com/vitejs/vite) - ホットモジュール置換と静的アセットのバンドルに対応するフロントエンドビルドツールです。
@@ -276,7 +207,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 ### テンプレート <a id="templating"></a>
 
 - [marko](https://github.com/marko-js/marko) - テンプレートをCommonJSモジュールへコンパイルし、ストリーミング、非同期レンダリング、独自タグに対応するHTMLベースのテンプレートエンジンです。
-- [nunjucks](https://github.com/mozilla/nunjucks) - 継承や非同期制御などに対応する、jinja2に着想を得たテンプレートエンジンです。
+- [nunjucks](https://github.com/mozilla/nunjucks) - 継承や非同期制御などに対応する、Jinja2に着想を得たテンプレートエンジンです。
 - [handlebars.js](https://github.com/handlebars-lang/handlebars.js) - ヘルパーや高度なブロックなどの強力な機能を追加したMustacheテンプレートの上位互換です。
 - [EJS](https://github.com/mde/ejs) - シンプルで方針を押し付けないテンプレート言語です。
 - [Pug](https://github.com/pugjs/pug) - Hamlの影響を強く受けた高性能テンプレートエンジンです。
@@ -329,7 +260,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [fs-jetpack](https://github.com/szwacz/fs-jetpack) - 日常的な利用のしやすさを重視して再設計されたファイルシステムAPIです。
 - [fs-extra](https://github.com/jprichardson/node-fs-extra) - `fs`モジュールへ追加メソッドを提供します。
 - [package-directory](https://github.com/sindresorhus/package-directory) - npmパッケージのルートディレクトリを検索します。
-- [filehound](https://github.com/nspragg/filehound) - ファイルシステム検索向けの柔軟で流暢なインターフェースです。
+- [filehound](https://github.com/nspragg/filehound) - 柔軟に処理を連鎖できる、ファイルシステム検索用インターフェースです。
 - [move-file](https://github.com/sindresorhus/move-file) - デバイスをまたぐ場合もファイルを移動できます。
 - [tempy](https://github.com/sindresorhus/tempy) - ランダムな一時ファイルまたは一時ディレクトリのパスを取得します。
 
@@ -341,12 +272,12 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 	- [promise-memoize](https://github.com/nodeca/promise-memoize) - Promiseを返す関数を、有効期限とプリフェッチ付きでメモ化します。
 	- [valvelet](https://github.com/lpinca/valvelet) - Promiseを返す関数の実行頻度を制限します。
 	- [p-map](https://github.com/sindresorhus/p-map) - 複数のPromiseを並行してマップ処理します。
-	- [More…](https://github.com/sindresorhus/promise-fun)
+	- [その他の関連資料](https://github.com/sindresorhus/promise-fun)
 - Observables
 	- [RxJS](https://github.com/ReactiveX/RxJS) - リアクティブプログラミングを提供します。
 	- [observable-to-promise](https://github.com/sindresorhus/observable-to-promise) - ObservableをPromiseへ変換します。
-	- [More…](https://github.com/sindresorhus/awesome-observables)
-- Streams
+	- [その他の関連資料](https://github.com/sindresorhus/awesome-observables)
+- ストリーム
 	- [Highland.js](https://github.com/caolan/highland) - 標準JavaScriptとNode風ストリームだけを使い、同期・非同期コードを簡単に管理します。
 
 ### ストリーム <a id="streams"></a>
@@ -380,7 +311,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 ### 画像 <a id="image"></a>
 
-- [sharp](https://github.com/lovell/sharp) - JPEG、PNG、WebP、TIFF画像をリサイズする最速のモジュールです。
+- [sharp](https://github.com/lovell/sharp) - JPEG、PNG、WebP、TIFF画像をリサイズするモジュールです。原文では最速と紹介されています。
 - [image-type](https://github.com/sindresorhus/image-type) - 画像の種類を検出します。
 - [image-dimensions](https://github.com/sindresorhus/image-dimensions) - 画像の寸法を取得します。
 - [lwip](https://github.com/EyalAr/lwip) - ImageMagickを必要としない軽量な画像処理ツールです。
@@ -432,7 +363,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [tz-format](https://github.com/samverschueren/tz-format) - タイムゾーン付きで日付を整形します（`2015-11-30T10:40:35+01:00`）。
 - [cctz](https://github.com/floatdrop/node-cctz) - 日付の高速な解析、整形、タイムゾーン変換を提供します。
 
-### URL <a id="url"></a>
+### URL
 
 - [normalize-url](https://github.com/sindresorhus/normalize-url) - URLを正規化します。
 - [humanize-url](https://github.com/sindresorhus/humanize-url) - URLを人が読みやすい表記へ変換します（https://sindresorhus.com → sindresorhus.com）。
@@ -448,7 +379,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [is-my-json-valid](https://github.com/mafintosh/is-my-json-valid) - コード生成によって非常に高速に動作するJSON Schemaバリデーターです。
 - [property-validator](https://github.com/nettofarah/property-validator) - Expressでプロパティを簡単に検証します。
 - [schema-inspector](https://github.com/schema-inspector/schema-inspector) - JSON APIのサニタイズと検証を行います。
-- [ajv](https://github.com/ajv-validator/ajv) - v5、v6、v7提案に対応する高速なJSON Schemaバリデーターです。
+- [ajv](https://github.com/ajv-validator/ajv) - v5、v6、v7提案に対応するJSON Schemaバリデーターです。原文では最速と紹介されています。
 - [Superstruct](https://github.com/ianstormtaylor/superstruct) - JavaScriptとTypeScriptでデータを検証するための、シンプルで合成可能な仕組みです。
 - [yup](https://github.com/jquense/yup) - オブジェクトスキーマを検証します。
 - [zod](https://github.com/colinhacks/zod) - 静的型推論を備えたTypeScriptファーストのスキーマ検証ライブラリです。
@@ -458,19 +389,19 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [remark](https://github.com/remarkjs/remark) - プラグインで機能を拡張できるMarkdownプロセッサーです。
 - [markdown-it](https://github.com/markdown-it/markdown-it) - CommonMarkへ完全対応し、拡張と構文プラグインを備えたMarkdownパーサーです。
 - [parse5](https://github.com/inikulin/parse5) - 高速で多機能かつ仕様準拠のHTMLパーサーです。
-- [@parcel/css](https://github.com/parcel-bundler/parcel-css) - Rustで実装されたCSSパーサー、変換器、縮小ツールです。
+- [@parcel/css](https://github.com/parcel-bundler/parcel-css) - Rustで実装されたCSSパーサー、変換器、圧縮ツールです。
 - [strip-json-comments](https://github.com/sindresorhus/strip-json-comments) - JSONからコメントを除去します。
 - [strip-css-comments](https://github.com/sindresorhus/strip-css-comments) - CSSからコメントを除去します。
 - [parse-json](https://github.com/sindresorhus/parse-json) - より分かりやすいエラーを表示してJSONを解析します。
 - [URI.js](https://github.com/medialize/URI.js) - URLを変更・操作します。
 - [JSONStream](https://github.com/dominictarr/JSONStream) - JSON.parseとstringifyをストリーミング処理します。
-- [neat-csv](https://github.com/sindresorhus/neat-csv) - 高速なCSVパーサーで、上記ライブラリ向けのコールバックインターフェースを提供します。
+- [neat-csv](https://github.com/sindresorhus/neat-csv) - 高速なCSVパーサーです。固定原文ではコールバック形式のインターフェースとして紹介されています。
 - [csv-parser](https://github.com/mafintosh/csv-parser) - 他の実装より高速であることを目指すストリーミングCSVパーサーです。
 - [PEG.js](https://github.com/pegjs/pegjs) - 優れたエラー報告を備えた高速パーサーを生成するシンプルなパーサージェネレーターです。
 - [x-ray](https://github.com/matthewmueller/x-ray) - Webスクレイピングユーティリティです。
 - [nearley](https://github.com/kach/nearley) - JavaScript向けのシンプルで高速かつ高機能な解析ツールです。
 - [binary-extract](https://github.com/juliangruber/binary-extract) - JSON全体を解析せず、バッファーから値を抽出します。
-- [Stylecow](https://github.com/stylecow/stylecow) - モダンCSSを解析・操作・変換して全ブラウザーへ対応させます。プラグインで拡張できます。
+- [Stylecow](https://github.com/stylecow/stylecow) - モダンCSSを解析・操作・変換し、プラグインで拡張できます。原文では変換後のCSSが全ブラウザーに対応すると説明されています。
 - [js-yaml](https://github.com/nodeca/js-yaml) - 非常に高速なYAMLパーサーです。
 - [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js) - XMLをJavaScriptオブジェクトへ変換します。
 - [Jison](https://github.com/zaach/jison) - BisonやYaccの系譜を持つ、扱いやすいJavaScriptパーサージェネレーターです。
@@ -493,7 +424,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [yazl](https://github.com/thejoshwolfe/yazl) - ZIPファイルを作成します。
 - [yauzl](https://github.com/thejoshwolfe/yauzl) - ZIPファイルを展開します。
 - [Archiver](https://github.com/archiverjs/node-archiver) - ZIPとTARに対応する、アーカイブ生成用のストリーミングインターフェースです。
-- [pako](https://github.com/nodeca/pako) - zlib（deflate、inflate、gzip）を純粋なJavaScriptへ高速に移植した実装です。
+- [pako](https://github.com/nodeca/pako) - zlib（deflate、inflate、gzip）を純粋なJavaScriptへ移植した高速な実装です。
 - [tar-stream](https://github.com/mafintosh/tar-stream) - ストリーミングtarパーサー兼ジェネレーターです。[tar-fs](https://github.com/mafintosh/tar-fs)も参照してください。
 
 ### ネットワーク <a id="network"></a>
@@ -506,7 +437,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 ### データベース <a id="database"></a>
 
-- Drivers
+- ドライバー
 	- [PostgreSQL](https://github.com/brianc/node-postgres) - 純粋なJavaScript実装とネイティブlibpqバインディングを備えたPostgreSQLクライアントです。
 	- [Redis](https://github.com/luin/ioredis) - Redisクライアントです。
 	- [LevelUP](https://github.com/Level/levelup) - LevelDBクライアントです。
@@ -526,11 +457,11 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 	- [Objection.js](https://github.com/Vincit/objection.js) - SQLクエリビルダーKnex上に構築された軽量ORMです。
 	- [TypeORM](https://github.com/typeorm/typeorm) - PostgreSQL、MariaDB、MySQL、SQLiteなどに対応するORMです。
 	- [MikroORM](https://github.com/mikro-orm/mikro-orm) - Data Mapper、Unit of Work、Identity Mapパターンを採用し、MongoDB、PostgreSQL、MySQL、SQLiteに対応するTypeScript ORMです。
-	- [Prisma](https://github.com/prisma/prisma) - PostgreSQL、MySQL、SQLiteに対応し、自動生成される型安全なTypeScriptクエリビルダーを提供するモダンなデータベースアクセス手段です。
- 	- [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) - PostgreSQLなど各種データベースに対応するTypeScript ORMです。
-- Query builder
+	- [Prisma](https://github.com/prisma/prisma) - PostgreSQL、MySQL、SQLiteに対応し、自動生成される型安全なTypeScriptクエリビルダーを提供するデータベースアクセス手段です。原文ではORMの代替と紹介されています。
+	- [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) - PostgreSQLなど各種データベースに対応するTypeScript ORMです。
+- クエリビルダー
 	- [Knex](https://github.com/knex/knex) - 柔軟性、移植性、使いやすさを重視したPostgreSQL、MySQL、SQLite3向けクエリビルダーです。
-- Other
+- その他
 	- [NeDB](https://github.com/louischatriot/nedb) - JavaScriptで実装された組み込み永続データベースです。
 	- [Lowdb](https://github.com/typicode/lowdb) - Lodashを利用する小型JavaScriptデータベースです。
 	- [Keyv](https://github.com/jaredwray/keyv) - 複数のバックエンドに対応するシンプルなキーバリューストレージです。
@@ -542,8 +473,8 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 ### テスト <a id="testing"></a>
 
-- [AVA](https://github.com/avajs/ava) - 先進的なテストランナーです。
-- [Mocha](https://github.com/mochajs/mocha) - 非同期テストを簡単かつ楽しくする多機能テストフレームワークです。
+- [AVA](https://github.com/avajs/ava) - テストランナーです。原文では先進的なものとして紹介されています。
+- [Mocha](https://github.com/mochajs/mocha) - 非同期テストを簡素化する多機能テストフレームワークです。
 - [nyc](https://github.com/istanbuljs/nyc) - Istanbulを基盤とし、サブプロセスにも対応するコードカバレッジツールです。
 - [tap](https://github.com/tapjs/node-tap) - TAPテストフレームワークです。
 - [tape](https://github.com/substack/tape) - TAPを出力するテストハーネスです。
@@ -573,7 +504,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 ### セキュリティ <a id="security"></a>
 
-- [upash](https://github.com/simonepri/upash) - あらゆるパスワードハッシュアルゴリズムを統一APIで扱います。
+- [upash](https://github.com/simonepri/upash) - パスワードハッシュアルゴリズムを統一APIで扱います。原文ではあらゆるアルゴリズムに対応すると説明されています。
 - [themis](https://github.com/cossacklabs/themis) - 保存データ、認証付きデータ交換、通信保護、認証など、一般的な暗号化方式を使いやすくする多言語フレームワークです。
 - [GuardRails](https://github.com/apps/guardrails) - プルリクエストへセキュリティ上のフィードバックを提供するGitHubアプリです。
 - [rate-limiter-flexible](https://github.com/animir/node-rate-limiter-flexible) - ブルートフォース攻撃とDDoS攻撃から保護します。
@@ -584,13 +515,13 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 - [Benchmark.js](https://github.com/bestiejs/benchmark.js) - 高分解能タイマーに対応し、統計的に有意な結果を返すベンチマークライブラリです。
 
-### 縮小ツール <a id="minifiers"></a>
+### コード・画像の圧縮 <a id="minifiers"></a><a id="縮小ツール"></a>
 
-- [babel-minify](https://github.com/babel/minify) - Babelツールチェーンを基盤とし、ES2015以降を認識する縮小ツールです。
-- [UglifyJS2](https://github.com/mishoo/UglifyJS) - JavaScript縮小ツールです。
-- [clean-css](https://github.com/clean-css/clean-css) - CSS縮小ツールです。
-- [minimize](https://github.com/Swaagie/minimize) - HTML縮小ツールです。
-- [imagemin](https://github.com/imagemin/imagemin) - 画像縮小ツールです。
+- [babel-minify](https://github.com/babel/minify) - Babelツールチェーンを基盤とし、ES2015以降の構文に対応するコード圧縮ツールです。
+- [UglifyJS2](https://github.com/mishoo/UglifyJS) - JavaScriptコードの圧縮ツールです。
+- [clean-css](https://github.com/clean-css/clean-css) - CSSコードの圧縮ツールです。
+- [minimize](https://github.com/Swaagie/minimize) - HTMLの圧縮ツールです。
+- [imagemin](https://github.com/imagemin/imagemin) - 画像の圧縮ツールです。
 
 ### 認証 <a id="authentication"></a>
 
@@ -599,12 +530,12 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 
 ### 認可 <a id="authorization"></a>
 
-- [CASL](https://github.com/stalniy/casl) - UIとAPIの両方で利用できる同型の認可ライブラリです。
+- [CASL](https://github.com/stalniy/casl) - UIとAPIの両方で同じ仕組みを利用できる認可ライブラリです。
 - [node-casbin](https://github.com/casbin/node-casbin) - ACL、RBAC、ABACなどのアクセス制御モデルに対応する認可ライブラリです。
 
 ### メール <a id="email"></a>
 
-- [Nodemailer](https://github.com/nodemailer/nodemailer) - メール処理を素早く実装できます。
+- [Nodemailer](https://github.com/nodemailer/nodemailer) - メール処理用ツールです。原文ではメールを扱う最速の方法と紹介されています。
 - [emailjs](https://github.com/eleith/emailjs) - 任意のSMTPサーバーを使い、添付ファイル付きのテキスト／HTMLメールを送信します。
 - [email-templates](https://github.com/forwardemail/email-templates) - 独自のメールテンプレートを作成、プレビュー、送信します。
 - [MJML](https://github.com/mjmlio/mjml) - レスポンシブメール作成の負担を減らすために設計されたマークアップ言語です。
@@ -622,7 +553,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [sqs-consumer](https://github.com/bbc/sqs-consumer) - 定型コードなしでAmazon Simple Queue Service（SQS）ベースのアプリを構築します。
 - [better-queue](https://github.com/diamondio/better-queue) - Redisを利用できない場合に適した、シンプルで効率的なジョブキューです。
 - [bullmq](https://github.com/taskforcesh/bullmq) - 永続的なジョブ・メッセージキューです。
-- [bree](https://github.com/breejs/bree) - Worker Thread、cron、日付、人が読みやすい構文に対応するジョブスケジューラーです。
+- [bree](https://github.com/breejs/bree) - ワーカースレッド、cron、日付、人が読みやすい構文に対応するジョブスケジューラーです。
 - [graphile-worker](https://github.com/graphile/worker) - 高性能なPostgreSQLジョブキューです。
 
 ### Node.js管理 <a id="nodejs-management"></a>
@@ -664,7 +595,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [robotjs](https://github.com/octalmage/robotjs) - マウスとキーボードを制御し、画面を読み取るデスクトップ自動化ツールです。
 - [nut.js](https://github.com/nut-tree/nut.js) - 画像照合機能とJest連携を備えた、クロスプラットフォームのネイティブGUI自動化・テストフレームワークです。
 
-### AST <a id="ast"></a>
+### AST
 
 - [Acorn](https://github.com/acornjs/acorn) - 小型で高速なJavaScriptパーサーです。
 - [babel-parser](https://github.com/babel/babel/tree/master/packages/babel-parser) - Babelで使用されているJavaScriptパーサーです。
@@ -693,7 +624,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [Ghost](https://github.com/TryGhost/Ghost) - シンプルで高機能なパブリッシングプラットフォームです。
 - [Hexo](https://github.com/hexojs/hexo) - 高速でシンプルかつ高機能なブログフレームワークです。
 
-### ユニーク <a id="weird"></a>
+### 風変わりなパッケージ <a id="weird"></a><a id="ユニーク"></a>
 
 - [cows](https://github.com/sindresorhus/cows) - ASCIIアートの牛を取得します。
 - [superb](https://github.com/sindresorhus/superb) - 「素晴らしい」に類する単語を取得します。
@@ -729,7 +660,7 @@ Node.jsを扱う資料や関連プロジェクトをまとめたAwesomeリスト
 - [webworker-threads](https://github.com/audreyt/node-webworker-threads) - ネイティブスレッドを使う軽量なWeb Worker API実装です。
 - [clipboardy](https://github.com/sindresorhus/clipboardy) - システムクリップボードへアクセスしてコピーと貼り付けを行います。
 - [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) - Node.js C++アドオンをバイナリとして公開・インストールしやすくします。
-- [opencv](https://github.com/peterbraden/node-opencv) - デファクトスタンダードのコンピュータービジョンライブラリOpenCV向けバインディングです。
+- [opencv](https://github.com/peterbraden/node-opencv) - OpenCV向けバインディングです。原文ではOpenCVをコンピュータービジョンライブラリのデファクトスタンダードと紹介しています。
 - [dotenv](https://github.com/motdotla/dotenv) - .envファイルから環境変数を読み込みます。
 - [semver](https://github.com/npm/node-semver) - セマンティックバージョンを解析します。
 - [nodegit](https://github.com/nodegit/nodegit) - Git向けネイティブバインディングです。

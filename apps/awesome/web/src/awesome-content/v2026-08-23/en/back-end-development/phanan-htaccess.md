@@ -1,66 +1,18 @@
 ---
 title: "Awesome .htaccess Snippets"
-description: "A curated collection of resources and projects focused on .htaccess Snippets."
+description: "Apache 2.4 .htaccess examples for URL rewriting, access control, response headers, caching, and file delivery."
 licenseSource: "github-phanan-htaccess-readme-md"
 ---
 
 # Awesome .htaccess Snippets
 
-A curated collection of resources and projects focused on .htaccess Snippets.
+Apache 2.4 .htaccess configuration examples for URL rewriting and redirection, access control, response headers, caching, and file delivery.
 
-## Table of Contents
-- [Rewrite and Redirection](#rewrite-and-redirection)
-    - [Force www](#force-www)
-    - [Force www in a Generic Way](#force-www-in-a-generic-way)
-    - [Force non-www](#force-non-www)
-    - [Force non-www in a Generic Way](#force-non-www-in-a-generic-way)
-    - [Force HTTPS](#force-https)
-    - [Force HTTPS Behind a Proxy](#force-https-behind-a-proxy)
-    - [Force Trailing Slash](#force-trailing-slash)
-    - [Remove Trailing Slash](#remove-trailing-slash)
-    - [Redirect a Single Page](#redirect-a-single-page)
-    - [Redirect Using RedirectMatch](#redirect-using-redirectmatch)
-    - [Alias a Single Directory](#alias-a-single-directory)
-    - [Alias Paths to Script](#alias-paths-to-script)
-    - [Redirect an Entire Site](#redirect-an-entire-site)
-    - [Alias "Clean" URLs](#alias-clean-urls)
-    - [Exclude a URL from Redirection](#exclude-url-from-redirection)
-- [Security](#security)
-    - [Deny All Access](#deny-all-access)
-    - [Deny All Access Except Yours](#deny-all-access-except-yours)
-    - [Allow All Access Except Spammers'](#allow-all-access-except-spammers)
-    - [Deny Access to Hidden Files and Directories](#deny-access-to-hidden-files-and-directories)
-    - [Deny Access to Backup and Source Files](#deny-access-to-backup-and-source-files)
-    - [Disable Directory Browsing](#disable-directory-browsing)
-    - [Disable Image Hotlinking](#disable-image-hotlinking)
-    - [Disable Image Hotlinking for Specific Domains](#disable-image-hotlinking-for-specific-domains)
-    - [Password Protect a Directory](#password-protect-a-directory)
-    - [Password Protect a File or Several Files](#password-protect-a-file-or-several-files)
-    - [Block Visitors by Referrer](#block-visitors-by-referrer)
-    - [Block Specific User Agents](#block-specific-user-agents)
-    - [Prevent Framing the Site](#prevent-framing-the-site)
-    - [Content Security Policy (CSP)](#content-security-policy-csp)
-    - [Prevent MIME Type Sniffing](#prevent-mime-type-sniffing)
-    - [Set Referrer Policy](#set-referrer-policy)
-    - [Set Permissions Policy](#set-permissions-policy)
-    - [Remove Server Signature](#remove-server-signature)
-- [Performance](#performance)
-    - [Compress Text Files](#compress-text-files)
-    - [Set Expires Headers](#set-expires-headers)
-    - [Set Cache-Control Headers](#set-cache-control-headers)
-    - [Turn eTags Off](#turn-etags-off)
-- [Miscellaneous](#miscellaneous)
-    - [Set PHP Variables](#set-php-variables)
-    - [Custom Error Pages](#custom-error-pages)
-    - [Custom Maintenance Page](#custom-maintenance-page)
-    - [Force Downloading](#force-downloading)
-    - [Prevent Downloading](#prevent-downloading)
-    - [Allow Cross-Domain Fonts](#allow-cross-domain-fonts)
-    - [Enable CORS](#enable-cors)
-    - [Auto UTF-8 Encode](#auto-utf-8-encode)
-    - [Set Custom MIME Types](#set-custom-mime-types)
-    - [Switch to Another PHP Version](#switch-to-another-php-version)
-    - [Serve WebP/AVIF Images](#serve-webpavif-images)
+> `.htaccess` files are intended for situations where you cannot edit the main server configuration. They are slower and more complex than using the main configuration. See the [httpd how-to](https://httpd.apache.org/docs/current/howto/htaccess.html).
+
+> Adding a snippet to an `.htaccess` file is often sufficient, but some cases require changes. Use the examples at your own risk.
+
+> These examples are for Apache 2.4. For Apache 2.2, use the [`2.2` branch](https://github.com/phanan/htaccess/tree/2.2). See the [upgrade documentation](https://httpd.apache.org/docs/2.4/upgrading.html) and [issue about breaking changes](https://github.com/phanan/htaccess/issues/2).
 
 ## Rewrite and Redirection
 Note: It is assumed that you have `mod_rewrite` installed and enabled.
@@ -82,7 +34,7 @@ RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 This works for _any_ domain. [Source](https://stackoverflow.com/questions/4916222/htaccess-how-to-force-www-in-a-generic-way)
 
 ### Force non-www
-It’s [still](https://www.sitepoint.com/domain-www-or-no-www/) [open](https://devcenter.heroku.com/articles/apex-domains) [for](https://yes-www.org/) [debate](https://no-www.org/) whether www or non-www is the way to go, so if you happen to be a fan of bare domains, here you go:
+The recorded source links to a discussion of www versus bare domains: [SitePoint](https://www.sitepoint.com/domain-www-or-no-www/), [Heroku](https://devcenter.heroku.com/articles/apex-domains), [yes-www](https://yes-www.org/), and [no-www](https://no-www.org/). The following example uses a bare domain.
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www\.example\.com [NC]
@@ -156,7 +108,7 @@ RedirectMatch 301 ^/z/(.*)$ https://static.askapache.com/$1
 ```
 [Source](https://www.askapache.com/htaccess/301-redirect-with-mod_rewrite-or-redirectmatch.html#301_Redirects_RedirectMatch)
 
-### Alias a Single Directory
+### Redirect a Single Directory <a id="alias-a-single-directory"></a>
 ``` apacheconf
 RewriteEngine On
 RewriteRule ^source-directory/(.*) /target-directory/$1 [R=301,L]
@@ -181,7 +133,7 @@ This is a less efficient version of the FallbackResource directive (because usin
 ``` apacheconf
 Redirect 301 / https://newsite.com/
 ```
-This way does it with links intact. That is `www.oldsite.com/some/crazy/link.html` will become `www.newsite.com/some/crazy/link.html`. This is extremely helpful when you are just “moving” a site to a new domain. [Source](https://css-tricks.com/snippets/htaccess/301-redirects/)
+Preserve URL paths when moving a site to a new domain: `www.oldsite.com/some/crazy/link.html` becomes `www.newsite.com/some/crazy/link.html`. [Source](https://css-tricks.com/snippets/htaccess/301-redirects/)
 
 ### Alias “Clean” URLs
 This snippet lets you use “clean” URLs -- those without a PHP extension, e.g. `example.com/users` instead of `example.com/users.php`.
@@ -205,23 +157,25 @@ RewriteRule ^robots.txt - [L]
 Require all denied
 ```
 
-But wait, this will lock you out from your content as well! Thus introducing...
+This also denies your own access to the content. See the following IP-based example.
 
 ### Deny All Access Except Yours
 ``` apacheconf
 Require all denied
 Require ip xxx.xxx.xxx.xxx
 ```
-`xxx.xxx.xxx.xxx` is your IP. If you replace the last three digits with `0/12` for example, this will specify a range of IPs within the same network, thus saving you the trouble to list all allowed IPs separately. [Source](https://speckyboy.com/2013/01/08/useful-htaccess-snippets-and-hacks/)
+`xxx.xxx.xxx.xxx` represents your IP address. The recorded source gives `0/12` as an example of replacing the final three digits to specify an IP range rather than listing each allowed address. The actual range is determined by the CIDR prefix length; it should not be assumed to match your local network. See [Require ip](https://httpd.apache.org/docs/2.4/mod/mod_authz_host.html#require). [Source](https://speckyboy.com/2013/01/08/useful-htaccess-snippets-and-hacks/)
 
-Now of course there's a reversed version:
+The following example is intended to exclude specific IP addresses.
 
-### Allow All Access Except Spammers'
+### Allow All Access Except Spammers
 ``` apacheconf
 Require all granted
 Require not ip xxx.xxx.xxx.xxx
 Require not ip xxx.xxx.xxx.xxy
 ```
+
+Editorial note: This is the unchanged example from the recorded source. As written, it does not form a valid Apache 2.4 exclusion rule: multiple Require directives without an authorization container imply RequireAny, which does not permit negated directives. Combine the grant and exclusions inside RequireAll before using the example. See the [Apache authorization documentation](https://httpd.apache.org/docs/2.4/mod/mod_authz_core.html#require).
 
 ### Deny Access to Hidden Files and Directories
 Hidden files and directories (those whose names start with a dot `.`) should most, if not all, of the time be secured. For example: `.htaccess`, `.htpasswd`, `.git`, `.hg`...
@@ -265,7 +219,7 @@ RewriteRule \.(jpe?g|png|gif|bmp|webp|avif|svg|ico)$ - [NC,F,L]
 ```
 
 ### Disable Image Hotlinking for Specific Domains
-Sometimes you want to disable image hotlinking from some bad guys only.
+Block image hotlinking from specific domains.
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{HTTP_REFERER} ^https?://(.+\.)?badsite\.com [NC,OR]
@@ -327,7 +281,7 @@ RewriteRule .* - [F,L]
 ```
 
 ### Prevent Framing the Site
-This prevents the website to be framed (i.e. put into an `iframe` tag), when still allows framing for a specific URI.
+Restrict embedding in an `iframe` to the same origin. The example omits the restriction for the specified URI. The SAMEORIGIN behavior is described in the [X-Frame-Options reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options).
 ``` apacheconf
 SetEnvIf Request_URI "/starry-night" allow_framing=true
 Header set X-Frame-Options SAMEORIGIN env=!allow_framing
@@ -343,7 +297,7 @@ A Content Security Policy header helps mitigate cross-site scripting (XSS) and o
 Adjust the directives to fit your needs. See the [CSP reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) for all available directives.
 
 ### Prevent MIME Type Sniffing
-This prevents browsers from trying to guess ("sniff") the MIME type of a resource, which can have security implications. The browser will trust what the server says and block the resource if it doesn't match the expected type.
+Prevent MIME type sniffing by using the server-supplied content type. For script and stylesheet requests, browsers block responses whose MIME type does not match the expected type. See the [X-Content-Type-Options reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Content-Type-Options).
 ``` apacheconf
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
@@ -367,7 +321,7 @@ Restrict which browser features your site can use, such as camera, microphone, g
 ```
 
 ### Remove Server Signature
-Prevent Apache from exposing its version number and OS information in HTTP headers and error pages.
+Suppress the server signature on server-generated pages, such as error pages. This setting does not control the Server HTTP response header; that is controlled separately by ServerTokens. See the [Apache directive documentation](https://httpd.apache.org/docs/2.4/mod/core.html#serversignature).
 ``` apacheconf
 ServerSignature Off
 ```
@@ -409,7 +363,6 @@ ServerSignature Off
 </IfModule>
 ```
 [Source](https://github.com/h5bp/server-configs-apache)
-
 
 ### Set Expires Headers
 _Expires headers_ tell the browser whether they should request a specific file from the server or just grab it from the cache. It is advisable to set static content's expires headers to something far in the future.
@@ -489,7 +442,7 @@ If you don’t control versioning with filename-based cache busting, consider lo
 ```
 
 ### Turn eTags Off
-By removing the `ETag` header, you disable caches and browsers from being able to validate files, so they are forced to rely on your `Cache-Control` and `Expires` header. [Source](https://www.askapache.com/htaccess/apache-speed-etags.html)
+Removing the `ETag` header disables entity-tag-based validation. Configure caching behavior with your `Cache-Control` and `Expires` headers. [Source](https://www.askapache.com/htaccess/apache-speed-etags.html)
 ``` apacheconf
 <IfModule mod_headers.c>
     Header unset ETag
@@ -516,7 +469,7 @@ ErrorDocument 404 /errors/halflife3.html
 ```
 
 ### Custom Maintenance Page
-Redirect all traffic to a maintenance page while still allowing access from a specific IP address.
+The recorded source presents this as a maintenance-page example that allows access from a specific IP address. Its conditions also exclude the maintenance page and the listed asset extensions. Editorial note: the code is preserved unchanged. R=503 returns a 503 response and discards the substitution target; it does not redirect to or serve the named maintenance page. To display a custom 503 page, configure the error response separately, such as with ErrorDocument. See the [Apache RewriteRule flag documentation](https://httpd.apache.org/docs/2.4/rewrite/flags.html#flag_r).
 ``` apacheconf
 RewriteEngine on
 RewriteCond %{REMOTE_ADDR} !^xxx\.xxx\.xxx\.xxx
@@ -535,7 +488,7 @@ Sometimes you want to force the browser to download some content instead of disp
 </Files>
 ```
 
-Now there is a yang to this yin:
+The next example requests display rather than download.
 
 ### Prevent Downloading
 Sometimes you want to force the browser to display some content instead of downloading it.
@@ -546,7 +499,7 @@ Sometimes you want to force the browser to display some content instead of downl
 ```
 
 ### Allow Cross-Domain Fonts
-CDN-served webfonts might not work in Firefox due to [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). This snippet solves the problem.
+The recorded source notes that CDN-served webfonts may fail to load in Firefox because of [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). The example permits cross-origin requests for the listed font formats.
 ``` apacheconf
 <IfModule mod_headers.c>
     <FilesMatch "\.(otf|ttc|ttf|woff|woff2)$">
@@ -568,7 +521,7 @@ Enable Cross-Origin Resource Sharing (CORS) for your site, allowing other domain
 To restrict access to specific domains, replace `*` with the domain, e.g. `https://example.com`.
 
 ### Auto UTF-8 Encode
-Your text content should always be UTF-8 encoded, no?
+Set UTF-8 as the character encoding for the listed text formats.
 ``` apacheconf
 # Use UTF-8 encoding for anything served text/plain or text/html
 AddDefaultCharset utf-8
@@ -588,7 +541,7 @@ AddType text/vtt .vtt
 ```
 
 ### Switch to Another PHP Version
-If you’re on a shared host, chances are there are more than one version of PHP installed, and sometimes you want a specific version for your website. The following snippet should switch the PHP version for you.
+A shared host may provide multiple PHP versions. The following example selects a PHP version for your website using the host’s handler configuration.
 
 ``` apacheconf
 AddHandler application/x-httpd-php84 .php

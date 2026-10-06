@@ -1,58 +1,15 @@
 ---
 title: "Awesome Ionic"
-description: "A curated collection of resources and projects focused on Ionic."
+description: "Official documentation, tutorials, plugins, tools, components, and app examples for Ionic and Capacitor."
 licenseSource: "github-candelibas-awesome-ionic-readme-md"
 ---
 
 # Awesome Ionic
 
-A curated collection of resources and projects focused on Ionic.
+Ionic is an open-source framework for building cross-platform mobile apps with web technologies. This list brings together official documentation, tutorials, Capacitor and Cordova plugins, tools, starter apps, UI components, and examples of apps built with Ionic.
 
-## Contents
-
-- [Current Ionic version](#current-ionic-version)
-- [Official Resources](#official-resources)
-- [Capacitor](#capacitor)
-- [Ionic Fundamentals](#ionic-fundamentals)
-- [Theming](#theming)
-- [Components tutorials](#components-tutorials)
-- [Authentication](#authentication)
-- [Unit Testing](#unit-testing)
-- [Ionic Native / Cordova Plugins](#ionic-native--cordova-plugins)
-- [Capgo Capacitor Plugins](#capgo-capacitor-plugins)
-- [Payment Gateway Integrations](#payment-gateway-integrations)
-- [Backend as a Service](#backend-as-a-service)
-- [i18n & l10n](#i18n--l10n)
-- [Tools](#tools)
-- [Video Tutorials](#video-tutorials)
-- [Convert a web app](#convert-a-web-app)
-- [Books](#books)
-- [Boilerplate/Demo Apps](#boilerplatedemo-apps)
-- [Components](#components)
-  - [Libraries](#libraries)
-  - [Animations](#animations)
-  - [UI Library](#ui-library)
-  - [Menu, Tabs](#menu-tabs)
-  - [Form / Input](#form--input)
-  - [Input - Date/Calendar](#input---datecalendar)
-  - [Lists/Table](#liststable)
-  - [Images](#images)
-  - [Charts/Diagram](#chartsdiagram)
-  - [Video/Audio](#videoaudio)
-  - [Keyboards](#keyboards)
-  - [Icons](#icons)
-  - [Dialog](#dialog)
-  - [Frames](#frames)
-- [Open Source Projects](#open-source-projects)
-- [Apps built with Ionic](#apps-built-with-ionic)
-- [Community](#community)
-- [Freelancers](#freelancers)
-- [Contribute](#contribute)
-- [Author](#author)
-
-## Current Ionic version
-[![npm version](https://img.shields.io/npm/v/@ionic/angular)](https://www.npmjs.com/package/@ionic/angular)
-
+## Ionic Package Version <a id="current-ionic-version"></a>
+[@ionic/angular on npm](https://www.npmjs.com/package/@ionic/angular) lists the published package versions.
 
 ## Official Resources
 - [Site](http://ionicframework.com/)
@@ -106,7 +63,6 @@ Ionic apps can use Capacitor as a native runtime.
 - [Automatic build and release](https://capgo.app/blog/automatic-build-and-release-with-github-actions) - Create a CI/CD pipeline with GitHub Actions.
 - [Google Vision in Ionic 4 apps](https://enappd.com/blog/implement-google-vision-in-ionic-4/43)
 - [Add headless ButterCMS to your Ionic App by Mike Hartington](https://buttercms.com/blog/integrating-buttercms-with-ionic)
-
 
 ## Theming
 - [A Guide to Styling an Ionic Application](http://www.joshmorony.com/a-guide-to-styling-an-ionic-2-application/)
@@ -166,44 +122,44 @@ Ionic apps can use Capacitor as a native runtime.
 - [capacitor-alarm](https://github.com/Cap-go/capacitor-alarm) - Capacitor Plugin to set and open the native alarms.
 - [capacitor-android-age-signals](https://github.com/Cap-go/capacitor-android-age-signals) - Capacitor plugin to use the Play Age Signals API to retrieve age-related signals for users.
 - [capacitor-android-inline-install](https://github.com/Cap-go/capacitor-android-inline-install) - Capacitor plugin to trigger Android inline install feature.
-- [capacitor-android-kiosk](https://github.com/Cap-go/capacitor-android-kiosk) - Capacitor plugin to create application with "kiosk mode". An app with this plugin can be set as an Android launcher.
+- [capacitor-android-kiosk](https://github.com/Cap-go/capacitor-android-kiosk) - Capacitor plugin for creating an app with kiosk mode. An app with this plugin can be set as an Android launcher.
 - [capacitor-android-sms-retriever](https://github.com/Cap-go/capacitor-android-sms-retriever) - Capacitor plugin for Android SMS Retriever and Phone Number Hint APIs.
 - [capacitor-android-usagestatsmanager](https://github.com/Cap-go/capacitor-android-usagestatsmanager) - Capacitor plugin to get Android app usage stats natively.
 - [capacitor-app-attest](https://github.com/Cap-go/capacitor-app-attest) - Capacitor plugin for App Attest on iOS and Play Integrity attestation on Android.
 - [capacitor-app-tracking-transparency](https://github.com/Cap-go/capacitor-app-tracking-transparency) - Capacitor plugin for iOS App Tracking Transparency.
-- [capacitor-appinsights](https://github.com/Cap-go/capacitor-appinsights) - Capacitor plugin to allow interact with App insights SDK.
+- [capacitor-appinsights](https://github.com/Cap-go/capacitor-appinsights) - Capacitor plugin for interacting with the App Insights SDK.
 - [capacitor-appsflyer](https://github.com/Cap-go/capacitor-appsflyer) - Capacitor plugin for AppsFlyer attribution, analytics, and deep links.
 - [capacitor-asset-cache](https://github.com/Cap-go/capacitor-asset-cache) - Capacitor plugin for transparent local caching of large images and videos.
-- [capacitor-audio-recorder](https://github.com/Cap-go/capacitor-audio-recorder) - Capacitor plugin to record audio on iOS and Android, keep active in background.
+- [capacitor-audio-recorder](https://github.com/Cap-go/capacitor-audio-recorder) - Capacitor plugin for recording audio on iOS and Android, including in the background.
 - [capacitor-audiosession](https://github.com/Cap-go/capacitor-audiosession) - Capacitor plugin to manage audio session.
 - [capacitor-auto](https://github.com/Cap-go/capacitor-auto) - Capacitor plugin for CarPlay and Android Auto communication.
-- [capacitor-autofill-save-password](https://github.com/Cap-go/capacitor-autofill-save-password) - Capacitor plugin to prompt to display dialog for saving password to keychain for iOS webview app.
-- [capacitor-background-geolocation](https://github.com/Cap-go/capacitor-background-geolocation) - Capacitor plugin that sends you accurate geolocation updates, even while the app is in the background.
+- [capacitor-autofill-save-password](https://github.com/Cap-go/capacitor-autofill-save-password) - Capacitor plugin that prompts users to save passwords to the keychain in an iOS WebView app.
+- [capacitor-background-geolocation](https://github.com/Cap-go/capacitor-background-geolocation) - Capacitor plugin for geolocation updates, including while the app is in the background.
 - [capacitor-background-task](https://github.com/Cap-go/capacitor-background-task) - Capacitor plugin for periodic background fetch tasks on iOS and Android.
 - [capacitor-barometer](https://github.com/Cap-go/capacitor-barometer) - Capacitor plugin to read device barometer.
-- [capacitor-bluetooth-low-energy](https://github.com/Cap-go/capacitor-bluetooth-low-energy) - Capacitor plugin Bluetooth Low Energy.
+- [capacitor-bluetooth-low-energy](https://github.com/Cap-go/capacitor-bluetooth-low-energy) - Capacitor plugin for Bluetooth Low Energy.
 - [capacitor-brightness](https://github.com/Cap-go/capacitor-brightness) - Capacitor plugin for controlling screen brightness on iOS and Android.
 - [capacitor-calendar](https://github.com/Cap-go/capacitor-calendar) - Capacitor plugin for managing calendar events on iOS and Android, with reminders support on iOS.
 - [capacitor-camera-preview](https://github.com/Cap-go/capacitor-camera-preview) - Capacitor plugin that allows camera interaction from JavaScript and HTML.
 - [capacitor-compass](https://github.com/Cap-go/capacitor-compass) - Capacitor plugin to access native compass.
-- [capacitor-contacts](https://github.com/Cap-go/capacitor-contacts) - Capacitor plugin to interact with native contact iOS and Android.
+- [capacitor-contacts](https://github.com/Cap-go/capacitor-contacts) - Capacitor plugin for accessing native contacts on iOS and Android.
 - [capacitor-contentsquare](https://github.com/Cap-go/capacitor-contentsquare) - Capacitor plugin for the Contentsquare mobile analytics SDK.
 - [capacitor-crisp](https://github.com/Cap-go/capacitor-crisp) - Capacitor plugin to use Crisp native SDK.
 - [capacitor-data-storage-sqlite](https://github.com/Cap-go/capacitor-data-storage-sqlite) - Capacitor Plugin for Data Storage SQLite for iOS and Android.
 - [capacitor-date-picker](https://github.com/Cap-go/capacitor-date-picker) - Capacitor plugin for native date, time, date-time, year-month, and range pickers.
 - [capacitor-device-info](https://github.com/Cap-go/capacitor-device-info) - Capacitor plugin for reading CPU, memory, GPU, storage, and onboard sensor metrics.
 - [capacitor-device-integrity](https://github.com/Cap-go/capacitor-device-integrity) - Capacitor plugin for device integrity, Android Widevine fingerprints, Play Integrity, iOS App Attest, and DeviceCheck.
-- [capacitor-document-scanner](https://github.com/Cap-go/capacitor-document-scanner) - Capacitor plugin to scan document iOS and Android.
-- [capacitor-downloader](https://github.com/Cap-go/capacitor-downloader) - Capacitor plugin to download file in background or foreground.
-- [capacitor-env](https://github.com/Cap-go/capacitor-env) - Capacitor plugin to store and read env var in capacitor config, helpful for multitenant app.
+- [capacitor-document-scanner](https://github.com/Cap-go/capacitor-document-scanner) - Capacitor plugin for scanning documents on iOS and Android.
+- [capacitor-downloader](https://github.com/Cap-go/capacitor-downloader) - Capacitor plugin for downloading files in the background or foreground.
+- [capacitor-env](https://github.com/Cap-go/capacitor-env) - Capacitor plugin for storing and reading environment variables in Capacitor configuration for multitenant apps.
 - [capacitor-facebook-analytics](https://github.com/Cap-go/capacitor-facebook-analytics) - Capacitor plugin for Meta/Facebook App Events analytics.
 - [capacitor-fast-sql](https://github.com/Cap-go/capacitor-fast-sql) - Capacitor plugin to connect to local SQL with fast protocol.
 - [capacitor-ffmpeg](https://github.com/Cap-go/capacitor-ffmpeg) - Capacitor plugin to run FFmpeg locally on device.
 - [capacitor-file](https://github.com/Cap-go/capacitor-file) - Capacitor plugin for file system operations. A modern replacement for cordova-plugin-file with a compatible API.
 - [capacitor-file-compressor](https://github.com/Cap-go/capacitor-file-compressor) - Capacitor plugin for efficient image compression supporting PNG, JPEG, and WebP formats across iOS, Android, and Web platforms.
-- [capacitor-file-picker](https://github.com/Cap-go/capacitor-file-picker) - Capacitor plugin File picker - Pick files, images, videos, and directories.
+- [capacitor-file-picker](https://github.com/Cap-go/capacitor-file-picker) - Capacitor plugin for picking files, images, videos, and directories.
 - [capacitor-file-sharer](https://github.com/Cap-go/capacitor-file-sharer) - Capacitor plugin for sharing and saving files on Android, iOS, and Web.
-- [capacitor-firebase](https://github.com/Cap-go/capacitor-firebase) - Firebase plugins for Capacitor with Android, iOS, and Web support using current Firebase SDKs.
+- [capacitor-firebase](https://github.com/Cap-go/capacitor-firebase) - Firebase plugins for Capacitor with Android, iOS, and Web support. The source describes them as using current Firebase SDKs.
 - [capacitor-flash](https://github.com/Cap-go/capacitor-flash) - Capacitor plugin to switch the Flashlight / Torch of your device.
 - [capacitor-gtm](https://github.com/Cap-go/capacitor-gtm) - Capacitor plugin to use Google Tag Manager (GTM) natively.
 - [capacitor-health](https://github.com/Cap-go/capacitor-health) - Capacitor plugin to interact with data from Apple HealthKit and Google Fit.
@@ -235,7 +191,7 @@ Ionic apps can use Capacitor as a native runtime.
 - [capacitor-native-loader](https://github.com/Cap-go/capacitor-native-loader) - Native animated loaders, transparent overlays, Lottie assets, and WebView resizing for Capacitor apps.
 - [capacitor-native-market](https://github.com/Cap-go/capacitor-native-market) - Capacitor plugin to open native Play Store/App Store.
 - [capacitor-native-navigation](https://github.com/Cap-go/capacitor-native-navigation) - Capacitor plugin for Liquid glass native navigation tabs.
-- [capacitor-native-purchases](https://github.com/Cap-go/capacitor-native-purchases) - Capacitor plugin to manage IAP on Capacitor with the latest Android and iOS libraries.
+- [capacitor-native-purchases](https://github.com/Cap-go/capacitor-native-purchases) - Capacitor plugin for managing IAP, described by the source as using the latest Android and iOS libraries.
 - [capacitor-nativegeocoder](https://github.com/Cap-go/capacitor-nativegeocoder) - Capacitor plugin for native forward and reverse geocoding.
 - [capacitor-navigation-bar](https://github.com/Cap-go/capacitor-navigation-bar) - Capacitor plugin to set the navigation bar color for Android Lollipop and higher.
 - [capacitor-network-diagnostics](https://github.com/Cap-go/capacitor-network-diagnostics) - Capacitor plugin for native network diagnostics.
@@ -243,29 +199,29 @@ Ionic apps can use Capacitor as a native runtime.
 - [capacitor-notifications](https://github.com/Cap-go/capgo.app/tree/main/packages/capacitor-notifications) - Send native iOS and Android push notifications with user lookup, badges, and stats.
 - [capacitor-passkey](https://github.com/Cap-go/capacitor-passkey) - Capacitor passkey plugin with a WebAuthn-compatible shim for native apps.
 - [capacitor-patch](https://github.com/Cap-go/capacitor-patch) - Apply vetted Capgo patches during cap sync and cap update.
-- [capacitor-pay](https://github.com/Cap-go/capacitor-pay) - Capacitor plugin to trigger native payment for iOS(Apple pay) and Android(Google Pay).
+- [capacitor-pay](https://github.com/Cap-go/capacitor-pay) - Capacitor plugin for native payments with Apple Pay on iOS and Google Pay on Android.
 - [capacitor-pdf-generator](https://github.com/Cap-go/capacitor-pdf-generator) - Capacitor plugin to generate PDF files from HTML strings or URLs on iOS and Android.
 - [capacitor-pedometer](https://github.com/Cap-go/capacitor-pedometer) - Capacitor plugin for accessing pedometer data including steps, distance, pace, cadence, and floors.
 - [capacitor-persistent-account](https://github.com/Cap-go/capacitor-persistent-account) - Capacitor plugin to persist account data between app install.
 - [capacitor-persistent-uuid](https://github.com/Cap-go/capacitor-persistent-uuid) - Capacitor plugin for a persistent app UUID that survives reinstalls and updates.
 - [capacitor-persona](https://github.com/Cap-go/capacitor-persona) - Capacitor plugin for launching Persona Inquiry flows on iOS and Android.
-- [capacitor-photo-library](https://github.com/Cap-go/capacitor-photo-library) - Capacitor plugin Displays photo gallery as web page, or boring native screen which you cannot modify but require no authorization.
-- [capacitor-plus](https://github.com/Cap-go/capacitor-plus) - Capacitor+ is an always-synced Capacitor fork with community fixes and faster releases.
-- [capacitor-pretty-toast](https://github.com/Cap-go/capacitor-pretty-toast) - Native-first pretty toast notifications for Capacitor and the web.
+- [capacitor-photo-library](https://github.com/Cap-go/capacitor-photo-library) - Capacitor plugin that displays a photo gallery as a web page or a native screen. The source describes the native screen as requiring no authorization and not allowing customization.
+- [capacitor-plus](https://github.com/Cap-go/capacitor-plus) - Capacitor+ is a Capacitor fork described by the source as staying synchronized with Capacitor and providing community fixes and faster releases.
+- [capacitor-pretty-toast](https://github.com/Cap-go/capacitor-pretty-toast) - Native-first toast notifications for Capacitor and the web.
 - [capacitor-printer](https://github.com/Cap-go/capacitor-printer) - Capacitor plugin for printing documents, HTML, PDFs, images and web views.
 - [capacitor-privacy-screen](https://github.com/Cap-go/capacitor-privacy-screen) - Capacitor plugin for hiding app content in Android screenshots and iOS app switcher previews.
 - [capacitor-proximity](https://github.com/Cap-go/capacitor-proximity) - Capacitor plugin for enabling proximity monitoring in mobile apps.
 - [capacitor-realtimekit](https://github.com/Cap-go/capacitor-realtimekit) - Capacitor plugin to use Cloudflare realtime kit.
 - [capacitor-recaptcha](https://github.com/Cap-go/capacitor-recaptcha) - Capacitor plugin for generating reCAPTCHA and reCAPTCHA Enterprise tokens.
-- [capacitor-ricoh360-camera-plugin](https://github.com/Cap-go/capacitor-ricoh360-camera-plugin) - Capacitor Plugin for ricoh camera 360.
+- [capacitor-ricoh360-camera-plugin](https://github.com/Cap-go/capacitor-ricoh360-camera-plugin) - Capacitor plugin for Ricoh 360 cameras.
 - [capacitor-rudderstack](https://github.com/Cap-go/capacitor-rudderstack) - Capacitor plugin for RudderStack analytics, identity, and event tracking.
 - [capacitor-screen-orientation](https://github.com/Cap-go/capacitor-screen-orientation) - Capacitor plugin for screen orientation with support for detecting true physical device orientation.
-- [capacitor-screen-recorder](https://github.com/Cap-go/capacitor-screen-recorder) - Capacitor plugin to record the screen of the phone in native.
+- [capacitor-screen-recorder](https://github.com/Cap-go/capacitor-screen-recorder) - Capacitor plugin for native screen recording.
 - [capacitor-shake](https://github.com/Cap-go/capacitor-shake) - Capacitor Plugin to detect when a physical device performs a shake gesture.
 - [capacitor-share-target](https://github.com/Cap-go/capacitor-share-target) - Capacitor plugin to receive share target intent in app.
 - [capacitor-sheets](https://github.com/Cap-go/capacitor-sheets) - Capacitor plugin for framework-agnostic sheets, drawers, dialogs, and overlay primitives.
-- [capacitor-sim](https://github.com/Cap-go/capacitor-sim) - Capacitor plugin to get information from device's sim cards.
-- [capacitor-social-login](https://github.com/Cap-go/capacitor-social-login) - Capacitor plugin to make login with Google,Apple,Facebook and so on, simple and fast to implement.
+- [capacitor-sim](https://github.com/Cap-go/capacitor-sim) - Capacitor plugin for reading information from a device's SIM cards.
+- [capacitor-social-login](https://github.com/Cap-go/capacitor-social-login) - Capacitor plugin for implementing login with Google, Apple, Facebook, and other providers.
 - [capacitor-speech-recognition](https://github.com/Cap-go/capacitor-speech-recognition) - Capacitor plugin for speech recognition.
 - [capacitor-speech-synthesis](https://github.com/Cap-go/capacitor-speech-synthesis) - Capacitor plugin to synthesize speech from text with full control over language, voice, pitch, rate, and volume.
 - [capacitor-ssl-pinning](https://github.com/Cap-go/capacitor-ssl-pinning) - Capacitor SSL pinning plugin for Android and iOS that integrates with CapacitorHttp.
@@ -275,10 +231,10 @@ Ionic apps can use Capacitor as a native runtime.
 - [capacitor-stripe-terminal](https://github.com/Cap-go/capacitor-stripe-terminal) - Capacitor plugin for Stripe Terminal in-person payments.
 - [capacitor-supabase](https://github.com/Cap-go/capacitor-supabase) - Native Supabase authentication, JWT access, and basic database helpers for Capacitor.
 - [capacitor-textinteraction](https://github.com/Cap-go/capacitor-textinteraction) - Capacitor plugin to toggle text interaction in iOS apps.
-- [capacitor-transitions](https://github.com/Cap-go/capacitor-transitions) - Framework-agnostic page transitions for Capacitor apps. iOS-style navigation without opinions.
+- [capacitor-transitions](https://github.com/Cap-go/capacitor-transitions) - Framework-agnostic page transitions for Capacitor apps, providing iOS-style navigation without imposing a design approach.
 - [capacitor-twilio-video](https://capgo.app/plugins/capacitor-twilio-video/) - Join Twilio Video rooms with native audio, camera, and room lifecycle events.
 - [capacitor-twilio-voice](https://github.com/Cap-go/capacitor-twilio-voice) - Capacitor plugin to create and answer calls with Twilio Voice SDK.
-- [capacitor-updater](https://github.com/Cap-go/capacitor-updater) - Capacitor plugin for Instant updates: Ship updates, fixes, changes, and features within minutes.
+- [capacitor-updater](https://github.com/Cap-go/capacitor-updater) - Capacitor plugin for delivering live updates, fixes, changes, and features. The source describes delivery within minutes.
 - [capacitor-uploader](https://github.com/Cap-go/capacitor-uploader) - Capacitor plugin to upload file in native layer.
 - [capacitor-uwb](https://github.com/Cap-go/capacitor-uwb) - Capacitor plugin for Ultra-Wideband (UWB) ranging on iOS and Android.
 - [capacitor-verisoul](https://github.com/Cap-go/capacitor-verisoul) - Capacitor plugin for Verisoul fraud prevention sessions.
@@ -287,12 +243,12 @@ Ionic apps can use Capacitor as a native runtime.
 - [capacitor-volume-buttons](https://github.com/Cap-go/capacitor-volume-buttons) - Capacitor plugin to listen to volume button presses.
 - [capacitor-watch](https://github.com/Cap-go/capacitor-watch) - Capacitor plugin for Apple Watch communication with bidirectional messaging support.
 - [capacitor-webview-crash](https://github.com/Cap-go/capacitor-webview-crash) - Capacitor plugin for detecting recovered WebView crashes.
-- [capacitor-webview-guardian](https://github.com/Cap-go/capacitor-webview-guardian) - Capacitor plugin to Detect when the WebView was killed in the background and relaunch it on foreground.
+- [capacitor-webview-guardian](https://github.com/Cap-go/capacitor-webview-guardian) - Capacitor plugin that detects when the WebView was terminated in the background and relaunches it when the app returns to the foreground.
 - [capacitor-webview-version-checker](https://github.com/Cap-go/capacitor-webview-version-checker) - Capacitor plugin for checking outdated Android WebView engines with native update prompts and runtime status events.
 - [capacitor-wechat](https://github.com/Cap-go/capacitor-wechat) - Capacitor plugin to interact with WeChat SDK.
 - [capacitor-widget-kit](https://github.com/Cap-go/capacitor-widget-kit) - Capgo WidgetKit plugin with workout Live Activity example and Maestro smoke test.
 - [capacitor-wifi](https://github.com/Cap-go/capacitor-wifi) - Capacitor plugin to manage WiFi connectivity for your Capacitor app.
-- [capacitor-youtube-player](https://github.com/Cap-go/capacitor-youtube-player) - Capacitor plugin player to embed YouTube player controls in Capacitor apps.
+- [capacitor-youtube-player](https://github.com/Cap-go/capacitor-youtube-player) - Capacitor plugin for embedding YouTube player controls in apps.
 - [capacitor-zebra-datawedge](https://github.com/Cap-go/capacitor-zebra-datawedge) - Capacitor plugin for Zebra DataWedge profile management, notifications, queries, and soft scanning on Zebra Android devices.
 - [capacitor-zip](https://github.com/Cap-go/capacitor-zip) - Capacitor plugin for zipping and unzipping files on iOS, Android, and Web.
 - [cordova-updater](https://github.com/Cap-go/cordova-updater) - OTA live updates for Cordova iOS and Android with the same API as the updater plugin.
@@ -305,7 +261,7 @@ Ionic apps can use Capacitor as a native runtime.
 - [Ionic 4 Apple Pay Payment Integration](https://enappd.com/blog/how-to-integrate-apple-pay-in-ionic-4-apps/21)
 - [Ionic 4 Razorpay Payment Integration](https://enappd.com/blog/how-to-integrate-razorpay-in-ionic-4-apps-and-pwa/20)
 
-## Backend as a Service
+## Backend Integration <a id="backend-as-a-service"></a>
 - [10 Minutes with Ionic: Calling an API](http://blog.ionic.io/10-minutes-with-ionic-2-calling-an-api/)
 - [Using Http to Fetch Remote Data from a Server in Ionic](http://www.joshmorony.com/using-http-to-fetch-remote-data-from-a-server-in-ionic-2/)
 - [Posting data from Ionic app to a PHP server](http://www.nikola-breznjak.com/blog/ionic2/posting-data-from-ionic-2-app/)
@@ -318,7 +274,7 @@ Ionic apps can use Capacitor as a native runtime.
 ## Tools
 - [Ionic2-vscode](https://marketplace.visualstudio.com/items?itemName=jgw9617.ionic2-vscode)
 - [Vim-ionic2](https://github.com/akz92/vim-ionic2)
-- [Capacitor safe area simulator](https://chromewebstore.google.com/detail/capacitor-safe-area-simul/ddaaodgcccedhjbjeollookhompnlfhi) - Chrome extension to simulate safe area in the browser, it support Ionic, Knsta UI and Tailwind Capacitor.
+- [Capacitor safe area simulator](https://chromewebstore.google.com/detail/capacitor-safe-area-simul/ddaaodgcccedhjbjeollookhompnlfhi) - Chrome extension for simulating safe areas in the browser, with support for Ionic, Knsta UI, and Tailwind Capacitor.
 - [Capstart](https://github.com/AdrienADV/capstart) - CLI and starter toolkit for creating Capacitor apps with React, Supabase, and shadcn/ui, or adding Capacitor to existing web framework projects.
 - [Capgo Skills](https://capgo.app/skills/) - Test your Ionic/Capacitor skills with interactive challenges.
 - [Capgo Security Scanner](https://capgo.app/security-scanner/) - Scan your Capacitor app for security vulnerabilities.
@@ -343,7 +299,7 @@ Ionic apps can use Capacitor as a native runtime.
 - [Build a Custom Flash Card Component in Ionic](https://www.youtube.com/watch?v=BKFQKywl_GM)
 - [Hacking CSS in Ionic](https://www.youtube.com/watch?v=sXFmkdhOEVc)
 - [Learn Ionic 3 From Scratch](https://www.youtube.com/watch?v=JcEGTektejA&list=PLYxzS__5yYQng-XnJhB21Jc7NW1OIaqct)
-- [TutorialSearch](https://tutorialsearch.io/browse/mobile-development/ionic-framework) - Free cross-platform search engine indexing 50,000+ tutorials from Udemy, Skillshare, Pluralsight, and other major learning platforms across 45+ categories.
+- [TutorialSearch](https://tutorialsearch.io/browse/mobile-development/ionic-framework) - Cross-platform search engine described by the source as free and indexing 50,000+ tutorials across 45+ categories from Udemy, Skillshare, Pluralsight, and other major learning platforms.
 - [Ionic & Capacitor for Building Native Mobile Apps](https://www.youtube.com/watch?v=K7ghUiXLef8) - Full beginner course by freeCodeCamp.
 - [From React Web to Native Mobile App](https://www.youtube.com/watch?v=IwHt_QpIa8A) - Simon Grimm.
 - [How to Build a Native App from Angular Projects](https://www.youtube.com/watch?v=V2Wn2JROUEo) - Simon Grimm.
@@ -363,8 +319,6 @@ Tutorials that cover the path from an existing web app to a published mobile app
 
 ## Books
 - [Building Mobile Apps with Ionic](https://www.joshmorony.com/building-mobile-apps-with-ionic-2/)
-
-
 
 ## Boilerplate/Demo Apps
 - [Ionic Official Starter Templates](https://github.com/ionic-team/starters)
@@ -399,77 +353,77 @@ Tutorials that cover the path from an existing web app to a published mobile app
 - [Ionic Blocks](https://ionicblocks.com/) - A collection of free and premium Ionic components.
 
 ### Animations
-- [Lottie Animation](https://github.com/chenqingspring/ng-lottie) 
-- [Lottie Animation](https://github.com/fivethree-team/lottie) 
+- [Lottie Animation](https://github.com/chenqingspring/ng-lottie)
+- [Lottie Animation](https://github.com/fivethree-team/lottie)
 
 ### UI Library
-- [Ionic 4 UI Component Library](https://github.com/fivethree-team/ionic-4-components) 
+- [Ionic 4 UI Component Library](https://github.com/fivethree-team/ionic-4-components)
 
 ### Menu, Tabs
-- [Scrollabel Tabs](https://github.com/SinoThomas/Ionic2-ScrollableTabs) 
-- [Circular Tabs](https://github.com/SinoThomas/Ionic2-CircularTabs) 
-- [Fab Toolbar](https://github.com/ekhmoi/fab-toolbar) 
-- [Multi Level Sidemenu](https://github.com/sebaferreras/Ionic2-MultiLevelSideMenu) 
-- [Popover Sidemenu](https://github.com/philipbrack/ionic2-menu-alternative-popover) 
-- [Drop down Title](https://github.com/Mohd-PH/ionic-drop-down-title) 
+- [Scrollable Tabs](https://github.com/SinoThomas/Ionic2-ScrollableTabs)
+- [Circular Tabs](https://github.com/SinoThomas/Ionic2-CircularTabs)
+- [Fab Toolbar](https://github.com/ekhmoi/fab-toolbar)
+- [Multi Level Sidemenu](https://github.com/sebaferreras/Ionic2-MultiLevelSideMenu)
+- [Popover Sidemenu](https://github.com/philipbrack/ionic2-menu-alternative-popover)
+- [Drop down Title](https://github.com/Mohd-PH/ionic-drop-down-title)
 
 ### Form / Input
-- [Autocomplete](https://github.com/kadoshms/ionic2-autocomplete) 
-- [Form Generator based on JSON](https://github.com/makinacorpus/angular2-schema-form) 
-- [Dynamic Forms](https://github.com/udos86/ng2-dynamic-forms/) 
-- [Form Builder](https://github.com/rohitg7/ionic2-form-builder) 
+- [Autocomplete](https://github.com/kadoshms/ionic2-autocomplete)
+- [Form Generator based on JSON](https://github.com/makinacorpus/angular2-schema-form)
+- [Dynamic Forms](https://github.com/udos86/ng2-dynamic-forms/)
+- [Form Builder](https://github.com/rohitg7/ionic2-form-builder)
 - [Sidemenu tabs](https://github.com/seanmavley/ionic2-sidemenu-tabs)
 - [Selectable](https://github.com/eakoriakin/ionic-selectable)
 - [Masks](https://github.com/amarkes/br-mask)
 
 ### Input - Date/Calendar
-- [Calendar](https://github.com/twinssbc/Ionic2-Calendar) 
-- [Calendar](https://github.com/alexandretok/easy-ionic2-calendar) 
-- [Calendar](https://github.com/redpandatronicsuk/ionic2calendar) 
-- [Calendar](https://github.com/mattlewis92/angular-calendar)  (very powerful)
-- [Calendar - Fullcalendar](https://github.com/nekken/ng2-fullcalendar) 
-- [Datepicker](https://github.com/misha130/datepicker-ionic2) 
-- [Datepicker (selectable range dates calendar)](https://github.com/HsuanXyz/ion2-calendar) 
-- [Datepicker](https://github.com/rajeshwarpatlolla/ionic2-datepicker) 
-- [Rating](https://github.com/andrucz/ionic2-rating) 
+- [Calendar](https://github.com/twinssbc/Ionic2-Calendar)
+- [Calendar](https://github.com/alexandretok/easy-ionic2-calendar)
+- [Calendar](https://github.com/redpandatronicsuk/ionic2calendar)
+- [Calendar](https://github.com/mattlewis92/angular-calendar)
+- [Calendar - Fullcalendar](https://github.com/nekken/ng2-fullcalendar)
+- [Datepicker](https://github.com/misha130/datepicker-ionic2)
+- [Datepicker (selectable range dates calendar)](https://github.com/HsuanXyz/ion2-calendar)
+- [Datepicker](https://github.com/rajeshwarpatlolla/ionic2-datepicker)
+- [Rating](https://github.com/andrucz/ionic2-rating)
 - [Inputfield Mask](https://github.com/text-mask/text-mask)
 
 ### Lists/Table
-- [Sortable/Filter Tables](https://github.com/valor-software/ng2-table) 
-- [Smart table (sorting, filtering)](https://github.com/akveo/ng2-smart-table) 
-- [Flexible and Light Table](https://github.com/swimlane/ngx-datatable) 
+- [Sortable/Filter Tables](https://github.com/valor-software/ng2-table)
+- [Smart table (sorting, filtering)](https://github.com/akveo/ng2-smart-table)
+- [Flexible and Light Table](https://github.com/swimlane/ngx-datatable)
 
 ### Images
-- [Signatur](https://github.com/wulfsolter/angular2-signaturepad) - Works perfect with Ionic. 
-- [Image Fallback](https://github.com/VadimDez/ng2-img-fallback) 
-- [Lazy Load](https://github.com/tjoskar/ng2-lazyload-image)  
-- [Image Loader](https://github.com/zyramedia/ionic-image-loader) 
-- [Facebook Gallery](https://github.com/skyfloyd/ionic2-fb-gallery) 
-- [Image Viewer](https://github.com/Riron/ionic-img-viewer) 
-- [Gallery Modal](https://github.com/nikini/ionic-gallery-modal) 
-- [Image Zoom](https://github.com/brtnshrdr/angular2-image-zoom) 
+- [Signature](https://github.com/wulfsolter/angular2-signaturepad) - Signature pad described by the source as working with Ionic.
+- [Image Fallback](https://github.com/VadimDez/ng2-img-fallback)
+- [Lazy Load](https://github.com/tjoskar/ng2-lazyload-image)
+- [Image Loader](https://github.com/zyramedia/ionic-image-loader)
+- [Facebook Gallery](https://github.com/skyfloyd/ionic2-fb-gallery)
+- [Image Viewer](https://github.com/Riron/ionic-img-viewer)
+- [Gallery Modal](https://github.com/nikini/ionic-gallery-modal)
+- [Image Zoom](https://github.com/brtnshrdr/angular2-image-zoom)
 
 ### Charts/Diagram
-- [Charts](https://github.com/valor-software/ng2-charts) 
-- [D3 Service](https://github.com/tomwanzek/d3-ng2-service) 
-- [D3 Angular Examples](https://github.com/datencia/d3js-angular-examples) 
-- [D3 Line/Bar/Pie Charts](https://github.com/datencia/d3js-angular2-example) 
+- [Charts](https://github.com/valor-software/ng2-charts)
+- [D3 Service](https://github.com/tomwanzek/d3-ng2-service)
+- [D3 Angular Examples](https://github.com/datencia/d3js-angular-examples)
+- [D3 Line/Bar/Pie Charts](https://github.com/datencia/d3js-angular2-example)
 
 ### Video/Audio
-- [Video Editor](https://github.com/rossmartin/video-editor-ionic2) 
-- [Simple Audioplayer](https://github.com/arielfaur/ionic-audio) 
+- [Video Editor](https://github.com/rossmartin/video-editor-ionic2)
+- [Simple Audioplayer](https://github.com/arielfaur/ionic-audio)
 
 ### Keyboards
-- [Digit Keyboard](https://github.com/skol-pro/ion-digit-keyboard-v2) 
+- [Digit Keyboard](https://github.com/skol-pro/ion-digit-keyboard-v2)
 
 ### Icons
 - [@robsonos/ionic-mdi](https://www.npmjs.com/package/@robsonos/ionic-mdi) - Material Design Icons for the Ionic `addIcons` function.
 
 ### Dialog
-- [Dialogbox with Counter](https://github.com/HsuanXyz/ionic2-extend-alert) 
+- [Dialogbox with Counter](https://github.com/HsuanXyz/ionic2-extend-alert)
 
 ### Frames
-- [ng Lightning (for Salesforce Apps)](https://github.com/ng-lightning/ng-lightning) 
+- [ng Lightning (for Salesforce Apps)](https://github.com/ng-lightning/ng-lightning)
 
 ## Open Source Projects
 - [Ionic Conference App](https://github.com/driftyco/ionic-conference-app)
@@ -499,7 +453,7 @@ Tutorials that cover the path from an existing web app to a published mobile app
 
 ## Apps built with Ionic
 
-Production apps whose use of Ionic is publicly documented.
+Apps whose use of Ionic is documented in the linked case studies and articles.
 
 - [AAA](https://ionic.io/resources/case-studies/american-automobile-association) - Member services app of the American Automobile Association.
 - [BBC Games](https://ionic.io/resources/case-studies/bbc-games) - Children's games from the BBC.
@@ -523,10 +477,3 @@ Production apps whose use of Ionic is publicly documented.
 - [Adrien](https://book.capgo.app/adrien/) - Creator of Capstart and a part-time developer at Capgo.
 - [Jordan](https://book.capgo.app/jordan/) - Creator of multiple mobile apps and a part-time developer at Capgo.
 - [Capgo consulting](https://capgo.app/consulting/) - Live updates, native plugins, and Ionic/Capacitor consulting.
-
-## Contribute
-Contributions welcome! Read the [contribution guidelines](https://github.com/candelibas/awesome-ionic/blob/199ba2489f47442c821ea46b1890e4aa0f0f5d86/CONTRIBUTING.md) first.
-
-## Author
-
-<a href="https://capgo.app/">Capgo — Live updates for capacitor</a>

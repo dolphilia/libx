@@ -1,12 +1,12 @@
 ---
 title: "Awesome Web Typography"
-description: "A curated collection of resources and projects focused on Web Typography."
+description: "Articles, tools, books, font combinations, and talks about web typography, including font loading and performance."
 licenseSource: "github-deanhume-typography-readme-md"
 ---
 
 # Awesome Web Typography
 
-A curated collection of resources and projects focused on Web Typography.
+Explore web typography through articles on typefaces, text sizing and spacing, font loading, and performance. The list also includes tools, books, font combinations, and talks.
 
 ## Articles
 
@@ -64,24 +64,24 @@ A curated collection of resources and projects focused on Web Typography.
 - [Performance and Web Typography](https://www.youtube.com/watch?v=emLfXChvVPQ)
 
 ## Tools
-- [The State of Web Type - Up-to-date data on support for type and typographic features on the web](http://stateofwebtype.com/)
-- [A simple plugin to keep font-size in proportion with it's containers size](https://github.com/jkroso/flowtype)
+- [The State of Web Type](http://stateofwebtype.com/) - Data on support for type and typographic features on the web; the source describes it as up to date.
+- [flowtype](https://github.com/jkroso/flowtype) - A simple plugin that keeps font-size proportional to its container size.
 - [Type Rendering Mix](http://typerendering.com/)
 - [Web Font Loader](https://developers.google.com/fonts/docs/webfont_loader)
 - [Preventing the Performance Hit from Custom Fonts](https://css-tricks.com/preventing-the-performance-hit-from-custom-fonts/)
 - [Web Font Optimization](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=en)
 - [Font Face and Performance](http://www.stevesouders.com/blog/2009/10/13/font-face-and-performance/)
-- [Normalize-Opentype.css - Adds OpenType features—ligatures, kerning, and more—to Normalize.css.](https://github.com/kennethormandy/normalize-opentype.css)
-- [Type­set.js - A typographic pre-processor for your html which uses zero client-side JavaScript](https://blot.im/typeset/)
+- [Normalize-Opentype.css](https://github.com/kennethormandy/normalize-opentype.css) - Adds OpenType features, including ligatures and kerning, to Normalize.css.
+- [Typeset.js](https://blot.im/typeset/) - A typographic preprocessor for HTML that uses no client-side JavaScript.
 - [brick.im](https://github.com/alfredxing/brick)
 - [Typebase.css](http://devinhunt.github.io/typebase.css/)
 - [Google WebFonts Helper](https://google-webfonts-helper.herokuapp.com/fonts/aguafina-script?subsets=latin)
-- [FontsWiki - Searchable font catalog with free alternatives and Fonts-in-Use references for designers and developers.](https://fontswiki.com)
-- [What Font Finder - Identify a font from an image in the browser, with a confidence score and no upload.](https://whatfontfinder.com/font-identifier/)
+- [FontsWiki](https://fontswiki.com) - A searchable font catalog with free alternatives and Fonts-in-Use references for designers and developers.
+- [What Font Finder](https://whatfontfinder.com/font-identifier/) - Identifies a font from an image in the browser, with a confidence score and no upload.
 - [Using Custom Fonts in Emails](https://github.com/ladjs/custom-fonts-in-emails)
-- [Typographist — Modular scale calculator API with config validation](https://github.com/typographist)
-- [Font Face Observer is a fast and simple web font loader](https://fontfaceobserver.com/)
-- [MixFont A Modern Font Generator](https://www.mixfont.com/)
+- [Typographist](https://github.com/typographist) - A modular scale calculator API with configuration validation.
+- [Font Face Observer](https://fontfaceobserver.com/) - A web font loader described by the source as fast and simple.
+- [MixFont](https://www.mixfont.com/) - A font generator described by the source as modern.
 - [How to use custom fonts in emails](https://github.com/forwardemail/custom-fonts-in-emails)
 
 ## Books
@@ -89,7 +89,7 @@ A curated collection of resources and projects focused on Web Typography.
 - [The Elements of Typographic Style](https://www.amazon.co.uk/Elements-Typographic-Style-Robert-Bringhurst/dp/0881792063)
 - [The Elements of Typographic Style - Online Version](http://webtypography.net/)
 - [Practical Typography](https://practicaltypography.com/)
-- [Combining Typefaces: Free guide to great typography](https://blog.typekit.com/2016/04/29/combining-typefaces-free-guide-to-great-typography/)
+- [Combining Typefaces](https://blog.typekit.com/2016/04/29/combining-typefaces-free-guide-to-great-typography/) - A free guide to typography.
 - [The Typography Handbook](http://typographyhandbook.com/)
 
 ## Font Combinations
@@ -107,12 +107,3 @@ A curated collection of resources and projects focused on Web Typography.
 ## Talks
 - [Web Fonts are Rocket Science](https://www.filamentgroup.com/lab/rocket-science.html)
 - [Video Screencast - Font Loading with Zach Leatherman](https://css-tricks.com/video-screencasts/152-font-loading-zach-leatherman/)
-
-## Featured
-- This [site](https://deanhume.github.io/typography/) was featured on the [Device Wall](https://twitter.com/gauntface/status/604029887414829057/photo/1) at Google I/O 2015.
-
-![Google I/O Device Wall](https://raw.githubusercontent.com/deanhume/typography/master/images/device-wall-small.jpg)
-
-## License
-
-[![CC0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)

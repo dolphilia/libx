@@ -1,16 +1,14 @@
 ---
 title: "Awesome Web Tools"
-description: "A curated collection of resources and projects focused on Web Tools."
+description: "Hosted web development tools for layouts, images, CSS, JavaScript, fonts, forms, APIs, Git, code playgrounds, and UI building."
 licenseSource: "github-lvwzhen-tools-readme-md"
 ---
 
 # Awesome Web Tools
 
-A curated collection of resources and projects focused on Web Tools.
+Hosted tools for web development, grouped by responsive layouts, placeholder images, favicons, CDNs, CSS, image compression, JavaScript, page speed, colors, fonts, forms, APIs, Git hosting, webpack, code playgrounds, cheat sheets, UI builders, and tool collections.
 
-## Contents
-
-### Response
+## Responsive layouts<a id="response"></a>
 
 * [Responsinator](http://www.responsinator.com/)
 * [viewport-resizer](http://lab.maltewassermann.com/viewport-resizer/)
@@ -19,7 +17,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [Sizzy](http://sizzy.co)
 * [Polypane](http://polypane.rocks)
 
-### Placeholder
+## Placeholder
 
 * [placehold.it](https://place-hold.it/)
 * [temp.im](http://temp.im/)
@@ -29,7 +27,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [unsplash](https://source.unsplash.com/)
 * [smalldev.tools - placeholder](https://smalldev.tools/placeholder-image-generator-online)
 
-### Favicon
+## Favicon
 
 * [favicon-generator](http://www.favicon-generator.org/)
 * [favicon.cc](http://www.favicon.cc/)
@@ -40,7 +38,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [RealFaviconGenerator](https://realfavicongenerator.net/)
 * [favicon.io](https://favicon.io/)
 
-### CDN
+## CDN
 
 * [staticfile](http://www.staticfile.org/)
 * [bootcss cdn](http://www.bootcdn.cn/)
@@ -55,7 +53,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [statically](https://statically.io/)
 * [pagecdn](https://pagecdn.com/lib)
 
-### CSS
+## CSS
 
 * [neumorphism css generator](https://neumorphism.io/)
 * [css-triangle-generator](http://apps.eky.hk/css-triangle-generator/zh-hant)
@@ -69,7 +67,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [CSS Unit Converter](https://cssunitconverter.com/)
 
 
-### Image compression
+## Image compression
 
 * [webresizer](http://webresizer.com/resizer/)
 * [TinyPNG](https://tinypng.com)
@@ -79,7 +77,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [Trimage](https://trimage.org)
 * [Compress-Or-Die](https://compress-or-die.com/)
 
-### JavaScript
+## JavaScript
 
 * [jsBeutify](http://tool.lu/js/)
 * [jsbeautifier](http://jsbeautifier.org/)
@@ -89,7 +87,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [Flatlogic CRUD Apps Generator](https://flatlogic)
 * [dhtmlx javascript components](https://dhtmlx.com/docs/products/)
 
-### Pagespeed
+## Pagespeed
 
 * [PageSpeed](https://developers.google.com/speed/pagespeed/insights/)
 * [Alibench](http://alibench.com/)
@@ -97,7 +95,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [Modern IE Reporting tool](https://www.modern.ie/en-us/report)
 * [GTmetrix](https://gtmetrix.com/)
 
-### Color
+## Color
 
 * [nipponcolors](http://nipponcolors.com/)
 * [flatuicolors](http://flatuicolors.com/)
@@ -112,7 +110,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [Respresso](https://respresso.io/)
 * [Branding Colors](https://branition.com/colors)
 
-### Font
+## Font
 
 * [Google Fonts](https://www.google.com/fonts)
 * [Adobe Fonts](https://fonts.adobe.com/)
@@ -129,18 +127,18 @@ A curated collection of resources and projects focused on Web Tools.
 * [Respresso](https://respresso.io/)
 * [Brick](https://brick.im/)
 
-### Forms
+## Forms
 
 * [Form.taxi](https://form.taxi/)
 * [SmarkForm](https://smarkform.bitifet.net)
 
-### API Debugging
+## API Debugging
 
 * [ExtendsClass.com](https://extendsclass.com/rest-client-online.html)
 * [RequestBin.com](https://requestbin.com/)
 * [Beeceptor.com](https://beeceptor.com/)
 
-### API Doc
+## API Doc
 
 * [Jquery API](http://www.jquery123.com/)
 * [OverAPI](http://overapi.com/)
@@ -148,7 +146,7 @@ A curated collection of resources and projects focused on Web Tools.
 * [oschina apidoc](http://tool.oschina.net/apidocs)
 * [Easing functions](http://easings.net/en)
 
-### Git Host
+## Git Host
 
 * [GitHub](https://github.com/)
 * [Bitbucket](https://bitbucket.org/)
@@ -156,11 +154,11 @@ A curated collection of resources and projects focused on Web Tools.
 * [GitCafe](https://gitcafe.com/)
 * [Git@OSC](http://git.oschina.net/)
 
-### webpack
+## webpack
 
 * [Visual webpack config tool](https://webpack.jakoblind.no/)
 
-### Code Playgrounds
+## Code Playgrounds
 
 * [CodePen](https://codepen.io/)
 * [CodeSandbox](https://codesandbox.io/)
@@ -176,16 +174,16 @@ A curated collection of resources and projects focused on Web Tools.
 * [DataFormsJS](https://www.dataformsjs.com/en/playground)
 * [AnyChart Playground](https://playground.anychart.com/)
 
-### CheatSheet
+## CheatSheet
 * [Bootstrap CheatSheet](https://bootstrap-cheatsheet.themeselection.com/)
 * [Regex CheatSheet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Cheatsheet)
 
-### UI Builders
+## UI Builders
 * [Windframe](https://www.devwares.com/windframe/)
 
-### Tools collection
+## Tools collection
 * [SmallDev.tools](https://smalldev.tools/)
-* * [TryDocsy](https://trydocsy.com/) - Free, 100% browser-based PDF editing, image processing, and document conversion suite.
+* [TryDocsy](https://trydocsy.com/) - Free, 100% browser-based PDF editing, image processing, and document conversion suite.
 * [WebToolkit Pro](https://wtkpro.site/)
 * [FreeToolBox](https://www.freetoolbox.site/)
 * [Hreflang checker](https://localizely.com/hreflang-checker/)
