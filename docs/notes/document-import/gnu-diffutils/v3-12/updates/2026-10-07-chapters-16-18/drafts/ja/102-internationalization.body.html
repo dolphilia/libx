@@ -1,0 +1,10 @@
+<div class="gnu-diffutils-original-content" id="Internationalization">
+<h4 class="subsection" id="Handling-Multi_002dbyte-and-Varying_002dWidth-Characters"><span>18.1.1 マルチバイトおよび表示幅が異なる文字の処理</span></h4>
+<a class="index-entry-id" id="index-multi_002dbyte-characters"></a>
+<a class="index-entry-id" id="index-varying_002dwidth-characters"></a>
+<p><code class="command">diff</code>、<code class="command">diff3</code>、<code class="command">sdiff</code> は、入力の各行を文字と符号化エラーの列として扱います。ここで <em class="dfn">符号化エラー</em> とは、どの文字にも属さない入力バイトです。UTF-8 などの一般的な文字符号化方式とともに、シングルバイト文字とマルチバイト文字をサポートします。文字符号化はオペレーティングシステムのロケールで指定され、<code class="env">LC_ALL</code> 環境変数で指定できます。シェルコマンド「<samp class="samp">locale -a</samp>」を実行すると、システムでサポートされているロケールを確認できます。</p>
+<p><samp class="option">--expand-tabs</samp>（<samp class="option">-t</samp>）などのオプションで列数を数えるとき、<code class="command">diff</code> は各文字の表示幅をロケールに問い合わせ、各符号化エラーは1列を占めるものと仮定します。</p>
+<p><samp class="option">--ignore-case</samp>（<samp class="option">-i</samp>）で大文字・小文字を無視するとき、<code class="command">diff</code> はマルチバイトかどうかにかかわらず、比較前に各文字を小文字に変換します。<a class="xref" href="#Case-Folding">大文字・小文字の差分を抑制する</a>を参照してください。</p>
+<hr/>
+</div>
+

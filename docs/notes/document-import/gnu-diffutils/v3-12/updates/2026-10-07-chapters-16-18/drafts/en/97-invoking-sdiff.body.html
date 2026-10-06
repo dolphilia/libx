@@ -1,0 +1,31 @@
+<div class="gnu-diffutils-original-content" id="Invoking-sdiff">
+<h2 class="chapter" id="Invoking-sdiff-1"><span>16 Invoking <code class="command">sdiff</code></span></h2>
+<a class="index-entry-id" id="index-invoking-sdiff"></a>
+<a class="index-entry-id" id="index-sdiff-invocation"></a>
+<p>The <code class="command">sdiff</code> command merges two files and interactively outputs the
+results.  Its arguments are as follows:
+</p>
+<div class="example">
+<pre class="example-preformatted">sdiff -o <var class="var">outfile</var> <var class="var">options</var>... <var class="var">from-file</var> <var class="var">to-file</var>
+</pre></div>
+<p>This merges <var class="var">from-file</var> with <var class="var">to-file</var>, with output to <var class="var">outfile</var>.
+If <var class="var">from-file</var> is a directory and <var class="var">to-file</var> is not, <code class="command">sdiff</code>
+compares the file in <var class="var">from-file</var> whose file name is that of <var class="var">to-file</var>,
+and vice versa.  <var class="var">from-file</var> and <var class="var">to-file</var> may not both be
+directories.
+</p>
+<p><code class="command">sdiff</code> options begin with ‘<samp class="samp">-</samp>’, so normally <var class="var">from-file</var>
+and <var class="var">to-file</var> may not begin with ‘<samp class="samp">-</samp>’.  However, <samp class="option">--</samp> as an
+argument by itself treats the remaining arguments as file names even if
+they begin with ‘<samp class="samp">-</samp>’.  You may not use <samp class="file">-</samp> as an input file.
+</p>
+<p><code class="command">sdiff</code> without <samp class="option">--output</samp> (<samp class="option">-o</samp>) produces a
+side-by-side difference.  This usage is obsolete; use the
+<samp class="option">--side-by-side</samp> (<samp class="option">-y</samp>) option of <code class="command">diff</code> instead.
+</p>
+<p>An exit status of 0 means no differences were found, 1 means some
+differences were found, and 2 means trouble.
+</p>
+<hr/>
+
+</div>

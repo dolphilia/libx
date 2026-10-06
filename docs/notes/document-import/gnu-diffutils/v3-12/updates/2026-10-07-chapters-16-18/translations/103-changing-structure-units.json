@@ -1,0 +1,52 @@
+{
+  "slug": "103-changing-structure",
+  "bodySHA256": "2260acb1b8ac1c4a63e39fa020f438d9c846e093b1376738e71ec282c5433fe3",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧18.1.2 Handling Changes to the Directory Structure⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\" id=\"Handling-Changes-to-the-Directory-Structure\"><span>18.1.2 Handling Changes to the Directory Structure</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "⟦0⟧ and ⟦1⟧ do not handle some changes to directory structure. For example, suppose one directory tree contains a directory named ‘⟦2⟧’ with some subsidiary files, and another contains a file with the same name ‘⟦3⟧’. ‘⟦4⟧’ does not output enough information for ⟦5⟧ to transform the directory subtree into the file.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>",
+        "⟦2⟧": "<samp class=\"samp\">D</samp>",
+        "⟦3⟧": "<samp class=\"samp\">D</samp>",
+        "⟦4⟧": "<samp class=\"samp\">diff -r</samp>",
+        "⟦5⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">diff</code> and <code class=\"command\">patch</code> do not handle some changes to directory\nstructure.  For example, suppose one directory tree contains a directory\nnamed ‘<samp class=\"samp\">D</samp>’ with some subsidiary files, and another contains a file\nwith the same name ‘<samp class=\"samp\">D</samp>’.  ‘<samp class=\"samp\">diff -r</samp>’ does not output enough\ninformation for <code class=\"command\">patch</code> to transform the directory subtree into\nthe file.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "There should be a way to specify that a file has been removed without having to include its entire contents in the patch file. There should also be a way to tell ⟦0⟧ that a file was renamed, even if there is no way for ⟦1⟧ to generate such information. There should be a way to tell ⟦2⟧ that a file’s timestamp has changed, even if its contents have not changed.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">patch</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>There should be a way to specify that a file has been removed without\nhaving to include its entire contents in the patch file.  There should\nalso be a way to tell <code class=\"command\">patch</code> that a file was renamed, even if\nthere is no way for <code class=\"command\">diff</code> to generate such information.\nThere should be a way to tell <code class=\"command\">patch</code> that a file’s timestamp\nhas changed, even if its contents have not changed.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "These problems can be fixed by extending the ⟦0⟧ output format to represent changes in directory structure, and extending ⟦1⟧ to understand these extensions.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p>These problems can be fixed by extending the <code class=\"command\">diff</code> output format\nto represent changes in directory structure, and extending <code class=\"command\">patch</code>\nto understand these extensions.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

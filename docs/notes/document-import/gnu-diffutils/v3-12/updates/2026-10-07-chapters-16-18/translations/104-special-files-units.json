@@ -1,0 +1,41 @@
+{
+  "slug": "104-special-files",
+  "bodySHA256": "eea87f264965f80a2924fef454ffd383893b0e496a48cd31ee04a1a63b2a1590",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧18.1.3 Files that are Neither Directories Nor Regular Files⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\" id=\"Files-that-are-Neither-Directories-Nor-Regular-Files\"><span>18.1.3 Files that are Neither Directories Nor Regular Files</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Some files are neither directories nor regular files: they are unusual files like symbolic links, device special files, named pipes, and sockets. Currently, ⟦0⟧ treats symbolic links as if they were the pointed-to files, except that a recursive ⟦1⟧ reports an error if it detects infinite loops of symbolic links (e.g., symbolic links to ⟦2⟧). ⟦3⟧ treats other special files like regular files if they are specified at the top level, but simply reports their presence when comparing directories. This means that ⟦4⟧ cannot represent changes to such files. For example, if you change which file a symbolic link points to, ⟦5⟧ outputs the difference between the two files, instead of the change to the symbolic link.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<samp class=\"file\">..</samp>",
+        "⟦3⟧": "<code class=\"command\">diff</code>",
+        "⟦4⟧": "<code class=\"command\">patch</code>",
+        "⟦5⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>Some files are neither directories nor regular files: they are unusual\nfiles like symbolic links, device special files, named pipes, and\nsockets.  Currently, <code class=\"command\">diff</code> treats symbolic links as if they\nwere the pointed-to files, except that a recursive <code class=\"command\">diff</code>\nreports an error if it detects infinite loops of symbolic links (e.g.,\nsymbolic links to <samp class=\"file\">..</samp>).  <code class=\"command\">diff</code> treats other special\nfiles like regular files if they are specified at the top level, but\nsimply reports their presence when comparing directories.  This means\nthat <code class=\"command\">patch</code> cannot represent changes to such files.  For\nexample, if you change which file a symbolic link points to,\n<code class=\"command\">diff</code> outputs the difference between the two files, instead\nof the change to the symbolic link.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "⟦0⟧ should optionally report changes to special files specially, and ⟦1⟧ should be extended to understand these extensions.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">patch</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">diff</code> should optionally report changes to special files specially,\nand <code class=\"command\">patch</code> should be extended to understand these extensions.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

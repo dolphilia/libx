@@ -3,7 +3,7 @@
 POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済みサイト数と今回のverified件数は別集計。
 
 - 検証済み: 39件 / 今回の公開済み: 38件 / 公開待ち: 1件
-- 作業中: 0件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
+- 作業中: 1件（新規0件） / 長期保留作業: 0件 / 候補保留: 1件
 - eligible待機: 0件 / 新規着手: 可能
 - 作業方針: 保守優先
 - 表示保守の対応証拠: 2件。旧全文レビューを保持し、現行本文の復元・配置・表現を別に検査。
@@ -52,6 +52,7 @@ POLICY・CANDIDATES・OPERATIONSと実ファイルから生成。既存公開済
 | gnu-grep / v3-12 / update | verified | verified | 942:GNU grep3.12第5〜6章3英日/21単位を限定24382f21dで統合Pages本番公開・公開後確認完了。55定本/762kit/3034参照/公開HTTP・404・CAS・対訳表示合格、未説明差分0。944:GNU Diffutils第10章21英日/120単位、旧125保持/167独立/1359kit/18594参照/172target/代表表示合格。Grep実公開artifactを統合基準として限定root登録→verified限定commit/push/Pages公開へ。 942:GNU grep3.12第5〜6章3英日/21単位を限定24382f21dで統合Pages本番公開・公開後確認完了。55定本/762kit/3034参照/公開HTTP・404・CAS・対訳表示合格、未説明差分0。944:GNU Diffutils第10章21英日/120単位、旧125保持/167独立/1359kit/18594参照/172target/代表表示合格。Grep実公開artifactを統合基準として限定root登録→verified限定commit/push/Pages公開へ。 |
 | gnu-diffutils / v3-12 / update | verified | verified | 944:GNU Diffutils3.12第10章21英日/120単位を限定3d55ca37で統合Pages本番公開・公開後確認完了。167定本/1359kit/本文参照・公開HTTP・404・CAS・対訳合格、未説明差分0。946第11〜15章13英日/207単位・193定本・1503kit・独立再生成/対象198ルート/代表表示合格。本番第10章artifactを統合基準に限定root登録・verified限定commit/push/Pages公開へ。 944:GNU Diffutils3.12第10章21英日/120単位を限定3d55ca37で統合Pages本番公開・公開後確認完了。167定本/1359kit/本文参照・公開HTTP・404・CAS・対訳合格、未説明差分0。946第11〜15章13英日/207単位・193定本・1503kit・独立再生成/対象198ルート/代表表示合格。本番第10章artifactを統合基準に限定root登録・verified限定commit/push/Pages公開へ。 |
 | gnu-diffutils / v3-12 / update | verified | verified | 946:GNU Diffutils第11〜15章13英日/207単位、193独立/1503kit/198target/5969統合/24184参照/421localHTTP/404/数式・静的競合例・対訳・検索合格。実第10章3d55/00c82cbf基準、限定60filesをb13435425/codex/expand-gnu-diffutils-chapters11-15-20261007へcommit/push成功。PagesPreview37546495341→artifact/HTTP/404/代表表示→CAS3d55 Production→公開後確認・記録・保存へ。944第10章公開後記録09fc8b494push成功。残る第16〜18章は次バッチ。 946:GNU Diffutils第11〜15章13英日/207単位、193独立/1503kit/198target/5969統合/24184参照/421localHTTP/404/数式・静的競合例・対訳・検索合格。実第10章3d55/00c82cbf基準、限定60filesをb13435425/codex/expand-gnu-diffutils-chapters11-15-20261007へcommit/push成功。PagesPreview37546495341→artifact/HTTP/404/代表表示→CAS3d55 Production→公開後確認・記録・保存へ。944第10章公開後記録09fc8b494push成功。残る第16〜18章は次バッチ。 |
+| gnu-diffutils / v3-12 / update | source-locked | source-locked | 947:GNU Diffutils第16〜18章13英日/62単位・2原preを別パスで全文レビュー済み、意味の欠落・誤訳なし。旧96releaseinputs保持。第11〜15章Preview37546495341→CAS3d55本番・公開後確認優先。正式26原稿/全219独立/notice/GFDL/ソースキット/対象検証を進め、実b134本番artifactを統合基準にする。節番号97〜109は全桁で扱い、既存本文を保持。草稿は配信除外保存branchのみ。 947:GNU Diffutils第16〜18章13英日/62単位・2原preを別パスで全文レビュー済み、意味の欠落・誤訳なし。旧96releaseinputs保持。第11〜15章Preview37546495341→CAS3d55本番・公開後確認優先。正式26原稿/全219独立/notice/GFDL/ソースキット/対象検証を進め、実b134本番artifactを統合基準にする。節番号97〜109は全桁で扱い、既存本文を保持。草稿は配信除外保存branchのみ。 |
 
 ## 登録済みの既存文書
 

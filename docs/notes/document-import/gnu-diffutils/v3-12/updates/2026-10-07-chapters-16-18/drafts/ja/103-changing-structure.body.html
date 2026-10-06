@@ -1,0 +1,9 @@
+<div class="gnu-diffutils-original-content" id="Changing-Structure">
+<h4 class="subsection" id="Handling-Changes-to-the-Directory-Structure"><span>18.1.2 ディレクトリ構造の変化の処理</span></h4>
+<a class="index-entry-id" id="index-directory-structure-changes"></a>
+<p><code class="command">diff</code> と <code class="command">patch</code> は、ディレクトリ構造の一部の変化を扱えません。たとえば、一方のディレクトリツリーに「<samp class="samp">D</samp>」というディレクトリとその配下のファイルがあり、もう一方には同じ「<samp class="samp">D</samp>」という名前のファイルがあるとします。「<samp class="samp">diff -r</samp>」は、<code class="command">patch</code> がそのディレクトリの部分ツリーをファイルへ変換するために必要な情報を十分に出力しません。</p>
+<p>パッチファイルにファイルの内容全体を含めずに、そのファイルが削除されたことを指定する方法が必要です。また、<code class="command">patch</code> にファイル名が変更されたことを伝える方法も必要です。<code class="command">diff</code> がその情報を生成できなくても構いません。内容が変わっていなくても、<code class="command">patch</code> にファイルのタイムスタンプが変わったことを伝える方法が必要です。</p>
+<p>これらの問題は、<code class="command">diff</code> の出力形式を拡張してディレクトリ構造の変化を表し、<code class="command">patch</code> もその拡張を理解するように拡張することで解決できます。</p>
+<hr/>
+</div>
+
