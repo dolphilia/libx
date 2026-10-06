@@ -1,0 +1,408 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Lua: version history</TITLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="lua.css">
+<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
+</HEAD>
+
+<BODY>
+
+<H1>
+<A HREF="home.html"><IMG SRC="images/logo.png" ALT="Lua"></A>
+Version history
+</H1>
+
+<DIV CLASS="menubar">
+<A HREF="#5.5">5.5</A>
+&middot;
+<A HREF="#5.4">5.4</A>
+&middot;
+<A HREF="#5.3">5.3</A>
+&middot;
+<A HREF="#5.2">5.2</A>
+&middot;
+<A HREF="#5.1">5.1</A>
+&middot;
+<A HREF="#5.0">5.0</A>
+&middot;
+<A HREF="#4.0">4.0</A>
+&middot;
+<A HREF="#3.2">3.2</A>
+&middot;
+<A HREF="#3.1">3.1</A>
+&middot;
+<A HREF="#3.0">3.0</A>
+&middot;
+<A HREF="#2.5">2.5</A>
+&middot;
+<A HREF="#2.4">2.4</A>
+&middot;
+<A HREF="#2.2">2.2</A>
+&middot;
+<A HREF="#2.1">2.1</A>
+&middot;
+<A HREF="#1.1">1.1</A>
+&middot;
+<A HREF="#1.0">1.0</A>
+</DIV>
+
+<P>
+Here is a chronology of the versions of Lua.
+<A HREF="doc/hopl.pdf">The evolution of Lua</A>
+is documented in a
+<A HREF="docs.html#papers">paper</A>
+presented at
+<A HREF="https://en.wikipedia.org/wiki/History_of_Programming_Languages#HOPL_III">HOPL&nbsp;III,
+the Third ACM SIGPLAN History of Programming Languages Conference</A>,
+in 2007.
+See also its
+<A HREF="doc/cola.pdf">continuation</A> published in 2025 in a
+<A HREF="https://doi.org/10.1016/j.cola.2025.101326">journal</A>.
+The source code and documentation for all releases of Lua are available in the
+<A HREF="ftp/">download area</A>.
+The source code of recent releases is also available for
+<A HREF="source/">browsing</A>.
+
+<DIV STYLE="margin: 1em 0 2em 0">
+<IMG SRC="images/timeline.png" ALT="" WIDTH="100%">
+</DIV>
+
+<H2><A NAME="numbering">Numbering scheme</A></H2>
+<P>
+The releases of Lua are numbered <EM>x.y.z</EM>,
+where
+<EM>x</EM> is the series, <EM>x.y</EM> is the version, and <EM>z</EM> is the release.
+
+This scheme superficially resembles the popular
+<A HREF="https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning">semantic versioning</A> scheme
+but is not the same, especially regarding compatibility.
+Here are the details.
+
+<P>
+Different releases of the same version correspond to
+<A HREF="bugs.html">bug fixes</A>;
+they have the same
+<A HREF="manual/">reference manual</A>,
+the same virtual machine, and are binary compatible (ABI compatible).
+
+<P>
+Different versions are really different.
+The API is likely to be slightly different
+(but with compatibility switches),
+and there is no ABI compatibility:
+applications that embed Lua and C&nbsp;libraries for Lua must be recompiled.
+The virtual machine is also very likely to be different in a new version:
+Lua programs that have been precompiled for one version will not load in a different version.
+
+<P>
+Different series signal major changes in the character of the language.
+They happened in the early stages of the evolution of Lua.
+The first versions were short-lived (see the timeline above)
+because Lua was changing fast,
+reflecting our improving understanding of the demands on a scripting language.
+This initial evolution of Lua is discussed at length in the
+<A HREF="doc/hopl.pdf">HOPL paper</A>.
+
+<!--
+We are getting ready to release
+<A HREF="work/">Lua 5.5</A>,
+the next version of Lua.
+Try the
+<A HREF="work/">latest release candidate</A>.
+-->
+
+<H2><A NAME="5.5">Lua 5.5</A></H2>
+<P>
+Lua 5.5
+was released on 22 Dec 2025.
+Its
+<A HREF="manual/5.5/readme.html#changes">main new features</A>
+are
+declarations for global variables,
+named vararg tables,
+more compact arrays,
+and
+major garbage collections done incrementally.
+
+<P>
+The current release is
+<A HREF="ftp/lua-5.5.1.tar.gz">Lua 5.5.1</A>,
+released on 03 Aug 2026.
+
+<!--
+We are getting ready to release
+<A HREF="work/">Lua 5.5.2</A>.
+-->
+
+<H2><A NAME="5.4">Lua 5.4</A></H2>
+<P>
+Lua 5.4
+was released on 29 Jun 2020.
+Its
+<A HREF="manual/5.4/readme.html#changes">main new features</A>
+were
+a new generational mode for garbage collection and
+const and to-be-closed variables.
+
+<P>
+The last release was
+<A HREF="ftp/lua-5.4.9.tar.gz">5.4.9</A>,
+released on 25 Aug 2026.
+There will be no further releases of Lua 5.4.
+
+<H2><A NAME="5.3">Lua 5.3</A></H2>
+<P>
+Lua 5.3
+was released on 12 Jan 2015.
+Its
+<A HREF="manual/5.3/readme.html#changes">main new features</A>
+were
+integers,
+bitwise operators,
+a basic utf-8 library,
+and support for both 64-bit and 32-bit platforms.
+
+<P>
+The last release was
+<A HREF="ftp/lua-5.3.6.tar.gz">Lua 5.3.6</A>,
+released on 25 Sep 2020.
+There will be no further releases of Lua 5.3.
+
+<H2><A NAME="5.2">Lua 5.2</A></H2>
+<P>
+Lua 5.2
+was released on 16 Dec 2011.
+Its
+<A HREF="manual/5.2/readme.html#changes">main new features</A>
+were
+yieldable pcall and metamethods,
+new lexical scheme for globals,
+ephemeron tables,
+new library for bitwise operations,
+light C functions,
+emergency garbage collector,
+goto statement,
+and
+finalizers for tables.
+
+<P>
+The last release was
+<A HREF="ftp/lua-5.2.4.tar.gz">Lua 5.2.4</A>,
+released on 7 Mar 2015.
+There will be no further releases of Lua 5.2.
+
+<H2><A NAME="5.1">Lua 5.1</A></H2>
+<P>
+Lua 5.1
+was released on 21 Feb 2006.
+Its main new features were
+a new module system,
+incremental garbage collection,
+new mechanism for varargs,
+new syntax for long strings and comments,
+mod and length operators,
+metatables for all types,
+new configuration scheme via luaconf.h,
+and a
+fully reentrant parser.
+
+<P>
+The last release was
+<A HREF="ftp/lua-5.1.5.tar.gz">Lua 5.1.5</A>,
+released on 17 Feb 2012.
+There will be no further releases of Lua 5.1.
+
+<H2><A NAME="5.0">Lua 5.0</A></H2>
+<P>
+Lua 5.0
+was released on 11 Apr 2003.
+<!--
+<A HREF="http://compilers.iecc.com/comparch/article/03-04-041">More...</A>
+-->
+Its main new features were
+collaborative multithreading via Lua coroutines,
+full lexical scoping instead of upvalues,
+and
+metatables instead of tags and tag methods.
+Lua 5.0 also introduced
+booleans,
+proper tail calls,
+and weak tables.
+Other features were
+better support for packages,
+new API for loading Lua chunks,
+new error handling protocol,
+better error messages,
+and much more.
+Lua 5.0 was the first version to be released under the
+<A HREF="license.html">new license</A>.
+
+<P>
+The last release was
+<A HREF="ftp/lua-5.0.3.tar.gz">Lua 5.0.3</A>,
+released on 26 Jun 2006.
+There will be no further releases of Lua 5.0.
+
+<H2><A NAME="4.0">Lua 4.0</A></H2>
+<P>
+Lua 4.0
+was released on 6 Nov 2000.
+Its main new features were
+multiple states,
+a new API,
+"for" statements,
+and full speed execution with full debug information.
+Also,
+Lua 4.0 no longer had built-in functions:
+all functions in the standard library are written using the official API.
+
+<P>
+The last release was
+<A HREF="ftp/lua-4.0.1.tar.gz">Lua 4.0.1</A>,
+released on 4 Jul 2002.
+There will be no further releases of Lua 4.0.
+<!--
+<A HREF="http://compilers.iecc.com/comparch/article/00-11-147">More...</A>
+-->
+
+<H2><A NAME="3.2">Lua 3.2</A></H2>
+<P>
+Lua 3.2
+was released on 8 Jul 1999.
+Its main new features were
+a debug library
+and
+new table functions.
+
+<P>
+The last release was
+<A HREF="ftp/lua-3.2.2.tar.gz">Lua 3.2.2</A>,
+released on 22 Feb 2000.
+There will be no further releases of Lua 3.2.
+<!--
+<A HREF="http://compilers.iecc.com/comparch/article/99-07-033">More...</A>
+-->
+
+<H2><A NAME="3.1">Lua 3.1</A></H2>
+<P>
+<A HREF="ftp/lua-3.1.tar.gz">Lua 3.1</A>
+was released on 11 Jul 1998.
+Its main new features were
+anonymous functions and
+function closures via "upvalues".
+(<A HREF="#5.0">Lua 5.0</A> brought full lexical scoping and dropped upvalues.)
+This brought a flavor of functional programming to Lua.
+There was also support for multiple global contexts;
+however, the API was not fully reentrant
+(this had to wait until <A HREF="#4.0">Lua 4.0</A>).
+Lua 3.1 also saw a
+major code re-organization and clean-up,
+with much reduced module interdependencies.
+Lua 3.1 also adopted double precision for the internal representation of numbers.
+<!--
+<A HREF="http://compilers.iecc.com/comparch/article/98-07-106">More...</A>
+-->
+
+<H2><A NAME="3.0">Lua 3.0</A></H2>
+<P>
+<A HREF="ftp/lua-3.0.tar.gz">Lua 3.0</A>
+was released on 1 Jul 1997.
+Its main new feature was
+tag methods as a powerful replacement for fallbacks.
+Lua 3.0 also introduced auxlib,
+a library for helping writing Lua libraries in C,
+and support for conditional compilation
+(dropped in <A HREF="#4.0">Lua 4.0</A>).
+<!--
+<A HREF="http://compilers.iecc.com/comparch/article/97-07-021">More...</A>
+-->
+
+<H2><A NAME="2.5">Lua 2.5</A></H2>
+<P>
+<A HREF="ftp/lua-2.5.tar.gz">Lua 2.5</A>
+was released on 19 Nov 1996.
+Its main new features were
+pattern matching and vararg functions.
+<!--
+<A HREF="http://compilers.iecc.com/comparch/article/96-11-120">More...</A>
+-->
+
+<H2><A NAME="2.4">Lua 2.4</A></H2>
+<P>
+<A HREF="ftp/lua-2.4.tar.gz">Lua 2.4</A>
+was released on 14 May 1996.
+Its main new features were
+the external compiler <EM>luac</EM>,
+an extended debug interface with hooks,
+and the "getglobal" fallback.
+<!--
+<A HREF="http://compilers.iecc.com/comparch/article/96-05-101">More...</A>
+-->
+
+<H2><A NAME="2.3">Lua 2.3</A></H2>
+<P>
+Lua 2.3 was never released publicly; it only existed as a beta version.
+
+<H2><A NAME="2.2">Lua 2.2</A></H2>
+<P>
+<A HREF="ftp/lua-2.2.tar.gz">Lua 2.2</A>
+was released on 28 Nov 1995.
+Its main new features were
+long strings,
+the debug interface,
+improved stack tracebacks,
+extended syntax for function definition,
+garbage collection of functions,
+and support for pipes.
+
+<H2><A NAME="2.1">Lua 2.1</A></H2>
+<P>
+<A HREF="ftp/lua-2.1.tar.gz">Lua 2.1</A>
+was released on 7 Feb 1995.
+Its main new features were
+extensible semantics via fallbacks
+and support for object-oriented programming.
+It was described in a
+<A HREF="spe.html">journal paper</A>
+which was awarded the
+II&nbsp;Compaq Award for Research and Development in Computer Science in 1997.
+Starting with Lua 2.1,
+Lua became freely available for all purposes,
+including commercial uses.
+<!--
+<A HREF="http://compilers.iecc.com/comparch/article/95-02-083">More...</A>
+-->
+
+<H2><A NAME="1.1">Lua 1.1</A></H2>
+<P>
+<A HREF="ftp/lua-1.1.tar.gz">Lua 1.1</A>
+was released on 8 Jul 1994.
+It was the
+<A HREF="https://compilers.iecc.com/comparch/article/94-07-051">first public release of Lua</A> and was described in a
+<A HREF="semish94.html">conference paper</A>.
+Lua 1.1 already featured
+powerful data description constructs,
+simple syntax,
+and a bytecode virtual machine.
+Lua 1.1 was freely available for academic purposes;
+commercial uses had to be negotiated, but none ever were.
+
+<H2><A NAME="1.0">Lua 1.0</A></H2>
+<P>
+<A HREF="ftp/lua-1.0.tar.gz">Lua 1.0</A>
+was never released publicly.
+It was up and running on
+<A HREF="http://lua-users.org/lists/lua-l/2023-07/msg00130.html">28 Jul 1993</A>
+and most probably a couple of months before that.
+
+<P CLASS="footer">
+Last update:
+Fri Sep 18 16:52:15 UTC 2026
+</P>
+<!--
+Last change: minor edit
+-->
+
+</BODY>
+</HTML>

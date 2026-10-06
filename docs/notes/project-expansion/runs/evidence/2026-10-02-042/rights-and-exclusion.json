@@ -1,0 +1,53 @@
+{
+  "method": "evidence-based-rights-scope-review",
+  "checkedAt": "2026-10-01T17:39:21.841Z",
+  "status": "needs-evidence",
+  "sources": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/lua/copyright.html",
+      "sha256": "9fa02db000d8178643a592032fab2e1d2ba6d9e2f609f149fc113d30d32dbea2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/lua/bugs.html",
+      "sha256": "b7b5a38d3cc32cd5b627a0e073948152e26f1382e21441d08db6c827e9596b6e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/lua/known-issues-5.5.1.html",
+      "sha256": "46d471c4c6c3cb700bef45de6da435497df88b79c03ec522d08f19e5bbc135fa"
+    }
+  ],
+  "officialReferences": [
+    "https://www.lua.org/copyright.html",
+    "https://www.lua.org/bugs.html#5.5.1",
+    "https://www.lua.org/faq.html"
+  ],
+  "facts": [
+    "MIT表示はsoftware and associated documentation filesを対象としLua.org/PUC-Rioの通知保持を要求。",
+    "現在公式bugs 5.5.1はSergey Bronnikov報告の1件、説明文・再現例・修正commitリンクを含む。固定5.5.1 tar内doc4件とは別取得物。",
+    "公式bugsページに当該新しい投稿由来再現例の個別許諾・著作者情報とMIT適用範囲の明示を見つけていない。報告者という表示だけでコードの権利者を断定しない。"
+  ],
+  "decision": "MITの文言のみから新取得bugs節と投稿由来例まで適用済みと推測しない。許諾がないと断定する判定でもない。説明・例の確定根拠を保持した別取得版全体の取り込みはdeferred。旧報告0件の取得日固定ページと55固定tar本文をそのまま維持する。",
+  "resumeCondition": "公式の公開済み資料などにより、このbugs節の説明/再現例への適用許諾と通知/帰属方法を確定できたとき。外部問い合わせはユーザーの送信指示なしには行わない。",
+  "deploymentExclusion": {
+    "method": "予定scopeのENJAページが共有rootと専用worktreeの両方に不存在。公開content/config/page-mapへ未追加。取得証拠はdocs/notesにのみ保存、apps自動配信の本文に入らない。",
+    "paths": [
+      {
+        "path": "/Users/dolphilia/github/libx/apps/lua/src/content/docs/v5-5-1/en/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+        "exists": false
+      },
+      {
+        "path": "/Users/dolphilia/.codex/worktrees/official-docs-maintenance/libx/apps/lua/src/content/docs/v5-5-1/en/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+        "exists": false
+      },
+      {
+        "path": "/Users/dolphilia/github/libx/apps/lua/src/content/docs/v5-5-1/ja/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+        "exists": false
+      },
+      {
+        "path": "/Users/dolphilia/.codex/worktrees/official-docs-maintenance/libx/apps/lua/src/content/docs/v5-5-1/ja/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+        "exists": false
+      }
+    ]
+  },
+  "independentWork": "固定tarで権利・境界が確定している残り55ページのsource/ENJAレビューを進める。"
+}
