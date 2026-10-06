@@ -1,0 +1,31 @@
+<div class="gnu-diffutils-original-content" id="Context">
+<h3 class="section" id="Showing-Differences-in-Their-Context"><span>2.2 Showing Differences in Their Context</span></h3>
+<a class="index-entry-id" id="index-context-output-format"></a>
+<a class="index-entry-id" id="index-_0021-output-format"></a>
+<p>Usually, when you are looking at the differences between files, you will
+also want to see the parts of the files near the lines that differ, to
+help you understand exactly what has changed.  These nearby parts of the
+files are called the <em class="dfn">context</em>.
+</p>
+<p>GNU <code class="command">diff</code> provides two output formats that show context
+around the differing lines: <em class="dfn">context format</em> and <em class="dfn">unified
+format</em>.  It can optionally show in which function or section of the
+file the differing lines are found.
+</p>
+<p>If you are distributing new versions of files to other people in the
+form of <code class="command">diff</code> output, you should use one of the output formats
+that show context so that they can apply the diffs even if they have
+made small changes of their own to the files.  <code class="command">patch</code> can apply
+the diffs in this case by searching in the files for the lines of
+context around the differing lines; if those lines are actually a few
+lines away from where the diff says they are, <code class="command">patch</code> can adjust
+the line numbers accordingly and still apply the diff correctly.
+See <a class="xref" href="/docs/gnu-diffutils/source/v3-12/manual.html#Imperfect">Applying Imperfect Patches</a>, for more information on using <code class="command">patch</code> to apply
+imperfect diffs.
+</p>
+<hr/>
+
+
+
+
+</div>

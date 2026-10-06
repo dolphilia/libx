@@ -1,0 +1,65 @@
+<div class="gnu-diffutils-original-content" id="Side-by-Side">
+<h3 class="section" id="Showing-Differences-Side-by-Side"><span>2.3 Showing Differences Side by Side</span></h3>
+<a class="index-entry-id" id="index-side-by-side"></a>
+<a class="index-entry-id" id="index-two_002dcolumn-output"></a>
+<a class="index-entry-id" id="index-columnar-output"></a>
+<p><code class="command">diff</code> can produce a side by side difference listing of two files.
+The files are listed in two columns with a gutter between them.  The
+gutter contains one of the following markers:
+</p>
+<dl class="table">
+<dt>white space</dt>
+<dd><p>The corresponding lines are in common.  That is, either the lines are
+identical, or the difference is ignored because of one of the
+<samp class="option">--ignore</samp> options (see <a class="pxref" href="/docs/gnu-diffutils/v3-12/en/01-guide/04-white-space/#White-Space">Suppressing Differences in Blank and Tab Spacing</a>).
+</p>
+</dd>
+<dt>‘<samp class="samp">|</samp>’</dt>
+<dd><p>The corresponding lines differ, and they are either both complete
+or both incomplete.
+</p>
+</dd>
+<dt>‘<samp class="samp">&lt;</samp>’</dt>
+<dd><p>The files differ and only the first file contains the line.
+</p>
+</dd>
+<dt>‘<samp class="samp">&gt;</samp>’</dt>
+<dd><p>The files differ and only the second file contains the line.
+</p>
+</dd>
+<dt>‘<samp class="samp">(</samp>’</dt>
+<dd><p>Only the first file contains the line, but the difference is ignored.
+</p>
+</dd>
+<dt>‘<samp class="samp">)</samp>’</dt>
+<dd><p>Only the second file contains the line, but the difference is ignored.
+</p>
+</dd>
+<dt>‘<samp class="samp">\</samp>’</dt>
+<dd><p>The corresponding lines differ, and only the first line is incomplete.
+</p>
+</dd>
+<dt>‘<samp class="samp">/</samp>’</dt>
+<dd><p>The corresponding lines differ, and only the second line is incomplete.
+</p></dd>
+</dl>
+<p>Normally, an output line is incomplete if and only if the lines that it
+contains are incomplete.  See <a class="xref" href="/docs/gnu-diffutils/v3-12/en/01-guide/42-incomplete-lines/#Incomplete-Lines">Incomplete Lines</a>.  However, when an
+output line represents two differing lines, one might be incomplete
+while the other is not.  In this case, the output line is complete,
+but its the gutter is marked ‘<samp class="samp">\</samp>’ if the first line is incomplete,
+‘<samp class="samp">/</samp>’ if the second line is.
+</p>
+<p>Side by side format is sometimes easiest to read, but it has limitations.
+It generates much wider output than usual, and truncates lines that are
+too long to fit.  Also, it relies on lining up output more heavily than
+usual, so its output looks particularly bad if you use varying
+width fonts, nonstandard tab stops, or nonprinting characters.
+</p>
+<p>You can use the <code class="command">sdiff</code> command to interactively merge side by side
+differences.  See <a class="xref" href="/docs/gnu-diffutils/source/v3-12/manual.html#Interactive-Merging">Interactive Merging with <code class="command">sdiff</code></a>, for more information on merging files.
+</p>
+<hr/>
+
+
+</div>

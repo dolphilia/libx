@@ -1,0 +1,42 @@
+<div class="gnu-diffutils-original-content" id="Specified-Headings">
+<h4 class="subsubsection" id="Showing-Lines-That-Match-Regular-Expressions"><span>2.2.3.1 Showing Lines That Match Regular Expressions</span></h4>
+<a class="index-entry-id" id="index-specified-headings"></a>
+<a class="index-entry-id" id="index-regular-expression-matching-headings"></a>
+<p>To show in which sections differences occur for files that are not
+source code for C or similar languages, use the
+<samp class="option">--show-function-line=<var class="var">regexp</var></samp> (<samp class="option">-F <var class="var">regexp</var></samp>) option.
+<code class="command">diff</code>
+considers lines that match the <code class="command">grep</code>-style regular expression
+<var class="var">regexp</var> to be the beginning
+of a section of the file.  Here are suggested regular expressions for
+some common languages:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">^[[:alpha:]$_]</samp>’</dt>
+<dd><p>C, C++, Prolog
+</p></dd>
+<dt>‘<samp class="samp">^(</samp>’</dt>
+<dd><p>Lisp
+</p></dd>
+<dt>‘<samp class="samp">^@node</samp>’</dt>
+<dd><p>Texinfo
+</p></dd>
+</dl>
+<p>This option does not automatically select an output format; in order to
+use it, you must select the context format (see <a class="pxref" href="/docs/gnu-diffutils/v3-12/en/01-guide/14-context-format/#Context-Format">Context Format</a>) or
+unified format (see <a class="pxref" href="/docs/gnu-diffutils/v3-12/en/01-guide/18-unified-format/#Unified-Format">Unified Format</a>).  In other output formats it
+has no effect.
+</p>
+<p>The <samp class="option">--show-function-line</samp> (<samp class="option">-F</samp>) option finds the nearest
+unchanged line that precedes each hunk of differences and matches the
+given regular expression.  Then it adds that line to the end of the
+line of asterisks in the context format, or to the ‘<samp class="samp">@@</samp>’ line in
+unified format.  If no matching line exists, this option leaves the output for
+that hunk unchanged.  If that line is more than 40 characters long, it
+outputs only the first 40 characters.  You can specify more than one
+regular expression for such lines; <code class="command">diff</code> tries to match each line
+against each regular expression, starting with the last one given.  This
+means that you can use <samp class="option">-p</samp> and <samp class="option">-F</samp> together, if you wish.
+</p>
+<hr/>
+</div>

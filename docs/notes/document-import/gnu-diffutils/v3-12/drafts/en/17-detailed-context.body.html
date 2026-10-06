@@ -1,0 +1,57 @@
+<div class="gnu-diffutils-original-content" id="Detailed-Context">
+<h4 class="subsubsection" id="Detailed-Description-of-Context-Format"><span>2.2.1.3 Detailed Description of Context Format</span></h4>
+<p>The context output format starts with a two-line header, which looks
+like this:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">*** <var class="var">from-file</var> <var class="var">from-file-modification-time</var>&#10;--- <var class="var">to-file</var> <var class="var">to-file-modification time</var>&#10;</pre></div>
+<a class="index-entry-id" id="index-LC_005fTIME"></a>
+<a class="index-entry-id" id="index-timestamp-format_002c-context-diffs"></a>
+<p>The timestamp normally looks like ‘<samp class="samp">2002-02-21 23:30:39.942229878
+-0800</samp>’ to indicate the date, time with fractional seconds, and time
+zone in <a class="uref" href="ftp://ftp.isi.edu/in-notes/rfc2822.txt">Internet RFC
+2822 format</a>.  (The fractional seconds are omitted on hosts that do
+not support fractional timestamps.)  However, a traditional timestamp
+like ‘<samp class="samp">Thu Feb 21 23:30:39 2002</samp>’ is used if the
+<code class="env">LC_TIME</code> locale category is either ‘<samp class="samp">C</samp>’ or ‘<samp class="samp">POSIX</samp>’.
+</p>
+<p>You can change the header’s content with the
+<samp class="option">--label=<var class="var">label</var></samp> option; see <a class="ref" href="/docs/gnu-diffutils/v3-12/en/01-guide/24-alternate-names/#Alternate-Names">Showing Alternate File Names</a>.
+</p>
+<p>Next come one or more hunks of differences; each hunk shows one area
+where the files differ.  Context format hunks look like this:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">***************&#10;*** <var class="var">from-file-line-numbers</var> ****&#10;  <var class="var">from-file-line</var>&#10;  <var class="var">from-file-line</var>...&#10;--- <var class="var">to-file-line-numbers</var> ----&#10;  <var class="var">to-file-line</var>&#10;  <var class="var">to-file-line</var>...&#10;</pre></div>
+<p>If a hunk contains two or more lines, its line numbers look like
+‘<samp class="samp"><var class="var">start</var>,<var class="var">end</var></samp>’.  Otherwise only its end line number
+appears.  An empty hunk is considered to end at the line that precedes
+the hunk.
+</p>
+<p>The lines of context around the lines that differ start with two space
+characters.  The lines that differ between the two files start with one
+of the following indicator characters, followed by a space character:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">!</samp>’</dt>
+<dd><p>A line that is part of a group of one or more lines that changed between
+the two files.  There is a corresponding group of lines marked with
+‘<samp class="samp">!</samp>’ in the part of this hunk for the other file.
+</p>
+</dd>
+<dt>‘<samp class="samp">+</samp>’</dt>
+<dd><p>An “inserted” line in the second file that corresponds to nothing in
+the first file.
+</p>
+</dd>
+<dt>‘<samp class="samp">-</samp>’</dt>
+<dd><p>A “deleted” line in the first file that corresponds to nothing in the
+second file.
+</p></dd>
+</dl>
+<p>If all of the changes in a hunk are insertions, the lines of
+<var class="var">from-file</var> are omitted.  If all of the changes are deletions, the
+lines of <var class="var">to-file</var> are omitted.
+</p>
+<hr/>
+</div>

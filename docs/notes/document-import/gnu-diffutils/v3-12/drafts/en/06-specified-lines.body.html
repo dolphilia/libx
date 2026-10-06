@@ -1,0 +1,23 @@
+<div class="gnu-diffutils-original-content" id="Specified-Lines">
+<h3 class="section" id="Suppressing-Differences-Whose-Lines-All-Match-a-Regular-Expression"><span>1.4 Suppressing Differences Whose Lines All Match a Regular Expression</span></h3>
+<a class="index-entry-id" id="index-regular-expression-suppression"></a>
+<p>To ignore insertions and deletions of lines that match a
+<code class="command">grep</code>-style regular expression, use the
+<samp class="option">--ignore-matching-lines=<var class="var">regexp</var></samp> (<samp class="option">-I <var class="var">regexp</var></samp>) option.
+You should escape
+regular expressions that contain shell metacharacters to prevent the
+shell from expanding them.  For example, ‘<samp class="samp">diff -I '^[[:digit:]]'</samp>’ ignores
+all changes to lines beginning with a digit.
+</p>
+<p>However, <samp class="option">-I</samp> only ignores the insertion or deletion of lines that
+contain the regular expression if every changed line in the hunk—every
+insertion and every deletion—matches the regular expression.  In other
+words, for each nonignorable change, <code class="command">diff</code> prints the complete set
+of changes in its vicinity, including the ignorable ones.
+</p>
+<p>You can specify more than one regular expression for lines to ignore by
+using more than one <samp class="option">-I</samp> option.  <code class="command">diff</code> tries to match each
+line against each regular expression.
+</p>
+<hr/>
+</div>

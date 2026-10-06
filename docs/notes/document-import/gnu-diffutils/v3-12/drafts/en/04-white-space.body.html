@@ -1,0 +1,39 @@
+<div class="gnu-diffutils-original-content" id="White-Space">
+<h3 class="section" id="Suppressing-Differences-in-Blank-and-Tab-Spacing"><span>1.2 Suppressing Differences in Blank and Tab Spacing</span></h3>
+<a class="index-entry-id" id="index-blank-and-tab-difference-suppression"></a>
+<a class="index-entry-id" id="index-tab-and-blank-difference-suppression"></a>
+<p>The <samp class="option">--ignore-tab-expansion</samp> (<samp class="option">-E</samp>) option ignores the
+distinction between tabs and spaces on input.  A tab is considered to be
+equivalent to the number of spaces to the next tab stop (see <a class="pxref" href="/docs/gnu-diffutils/source/v3-12/manual.html#Tabs">Preserving Tab Stop Alignment</a>).
+</p>
+<p>The <samp class="option">--ignore-trailing-space</samp> (<samp class="option">-Z</samp>) option ignores white
+space at line end.
+</p>
+<p>The <samp class="option">--ignore-space-change</samp> (<samp class="option">-b</samp>) option is stronger than
+<samp class="option">-E</samp> and <samp class="option">-Z</samp> combined.
+It ignores white space at line end, and considers all other sequences of
+one or more white space characters within a line to be equivalent.  With this
+option, <code class="command">diff</code> considers the following two lines to be equivalent,
+where ‘<samp class="samp">$</samp>’ denotes the line end:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">Here lyeth  muche rychnesse  in lytell space.   -- John Heywood$&#10;Here lyeth muche rychnesse in lytell space. -- John Heywood   $&#10;</pre></div>
+<p>The <samp class="option">--ignore-all-space</samp> (<samp class="option">-w</samp>) option is stronger still.
+It ignores differences even if one line has white space where
+the other line has none.  <em class="dfn">White space</em> characters include
+tab, vertical tab, form feed, carriage return, and space;
+some locales may define additional characters to be white space.
+With this option, <code class="command">diff</code> considers the
+following two lines to be equivalent, where ‘<samp class="samp">$</samp>’ denotes the line
+end and ‘<samp class="samp">^M</samp>’ denotes a carriage return:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">Here lyeth  muche  rychnesse in lytell space.--  John Heywood$&#10;  He relyeth much erychnes  seinly tells pace.  --John Heywood   ^M$&#10;</pre></div>
+<p>For many other programs newline is also a white space character, but
+<code class="command">diff</code> is a line-oriented program and a newline character
+always ends a line.  Hence the <samp class="option">-w</samp> or
+<samp class="option">--ignore-all-space</samp> option does not ignore newline-related
+changes; it ignores only other white space changes.
+</p>
+<hr/>
+</div>

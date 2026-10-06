@@ -1,0 +1,74 @@
+<div class="gnu-diffutils-original-content" id="Binary">
+<h3 class="section" id="Binary-Files-and-Forcing-Text-Comparisons"><span>1.7 Binary Files and Forcing Text Comparisons</span></h3>
+<a class="index-entry-id" id="index-binary-file-diff"></a>
+<a class="index-entry-id" id="index-text-versus-binary-diff"></a>
+<p>If <code class="command">diff</code> thinks that either of the two files it is comparing is
+binary (a non-text file), it normally treats that pair of files much as
+if the summary output format had been selected (see <a class="pxref" href="/docs/gnu-diffutils/v3-12/en/01-guide/08-brief/#Brief">Summarizing Which Files Differ</a>), and
+reports only that the binary files are different.  This is because line
+by line comparisons are usually not meaningful for binary files.
+This does not count as trouble, even though the resulting output does
+not capture all the differences.
+</p>
+<p><code class="command">diff</code> determines whether a file is text or binary by checking the
+first few bytes in the file; the exact number of bytes is system
+dependent, but it is typically several thousand.  If every byte in
+that part of the file is non-null, <code class="command">diff</code> considers the file to be
+text; otherwise it considers the file to be binary.
+</p>
+<p>Sometimes you might want to force <code class="command">diff</code> to consider files to be
+text.  For example, you might be comparing text files that contain
+null characters; <code class="command">diff</code> would erroneously decide that those are
+non-text files.  Or you might be comparing documents that are in a
+format used by a word processing system that uses null characters to
+indicate special formatting.  You can force <code class="command">diff</code> to consider all
+files to be text files, and compare them line by line, by using the
+<samp class="option">--text</samp> (<samp class="option">-a</samp>) option.  If the files you compare using this
+option do not in fact contain text, they will probably contain few
+newline characters, and the <code class="command">diff</code> output will consist of hunks
+showing differences between long lines of whatever characters the files
+contain.
+</p>
+<p>You can also force <code class="command">diff</code> to report only whether files differ
+(but not how).  Use the <samp class="option">--brief</samp> (<samp class="option">-q</samp>) option for
+this.
+</p>
+<p>In operating systems that distinguish between text and binary files,
+<code class="command">diff</code> normally reads and writes all data as text.  Use the
+<samp class="option">--binary</samp> option to force <code class="command">diff</code> to read and write binary
+data instead.  This option has no effect on a POSIX-compliant system
+like GNU or traditional Unix.  However, many personal computer
+operating systems represent the end of a line with a carriage return
+followed by a newline.  On such systems, <code class="command">diff</code> normally ignores
+these carriage returns on input and generates them at the end of each
+output line, but with the <samp class="option">--binary</samp> option <code class="command">diff</code> treats
+each carriage return as just another input character, and does not
+generate a carriage return at the end of each output line.  This can be
+useful when dealing with non-text files that are meant to be
+interchanged with POSIX-compliant systems.
+</p>
+<p>The <samp class="option">--strip-trailing-cr</samp> causes <code class="command">diff</code> to treat input
+lines that end in carriage return followed by newline as if they end
+in plain newline.  This can be useful when comparing text that is
+imperfectly imported from many personal computer operating systems.
+This option affects how lines are read, which in turn affects how they
+are compared and output.
+</p>
+<p>If you want to compare two files byte by byte, you can use the
+<code class="command">cmp</code> program with the <samp class="option">--verbose</samp> (<samp class="option">-l</samp>)
+option to show the values of each differing byte in the two files.
+With GNU <code class="command">cmp</code>, you can also use the <samp class="option">-b</samp> or
+<samp class="option">--print-bytes</samp> option to show the ASCII representation of
+those bytes.  See <a class="xref" href="/docs/gnu-diffutils/source/v3-12/manual.html#Invoking-cmp">Invoking <code class="command">cmp</code></a>, for more information.
+</p>
+<p>If <code class="command">diff3</code> thinks that any of the files it is comparing is binary
+(a non-text file), it normally reports an error, because such
+comparisons are usually not useful.  <code class="command">diff3</code> uses the same test as
+<code class="command">diff</code> to decide whether a file is binary.  As with <code class="command">diff</code>, if
+the input files contain a few non-text bytes but otherwise are like
+text files, you can force <code class="command">diff3</code> to consider all files to be text
+files and compare them line by line by using the <samp class="option">-a</samp> or
+<samp class="option">--text</samp> option.
+</p>
+<hr/>
+</div>

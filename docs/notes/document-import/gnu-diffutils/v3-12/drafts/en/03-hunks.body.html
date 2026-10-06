@@ -1,0 +1,34 @@
+<div class="gnu-diffutils-original-content" id="Hunks">
+<h3 class="section" id="Hunks-1"><span>1.1 Hunks</span></h3>
+<a class="index-entry-id" id="index-hunks"></a>
+<p>When comparing two files, <code class="command">diff</code> finds sequences of lines common to
+both files, interspersed with groups of differing lines called
+<em class="dfn">hunks</em>.  Comparing two identical files yields one sequence of
+common lines and no hunks, because no lines differ.  Comparing two
+entirely different files yields no common lines and one large hunk that
+contains all lines of both files.  In general, there are many ways to
+match up lines between two given files.  <code class="command">diff</code> tries to minimize
+the total hunk size by finding large sequences of common lines
+interspersed with small hunks of differing lines.
+</p>
+<p>For example, suppose the file <samp class="file">F</samp> contains the three lines
+‘<samp class="samp">a</samp>’, ‘<samp class="samp">b</samp>’, ‘<samp class="samp">c</samp>’, and the file <samp class="file">G</samp> contains the same
+three lines in reverse order ‘<samp class="samp">c</samp>’, ‘<samp class="samp">b</samp>’, ‘<samp class="samp">a</samp>’.  If
+<code class="command">diff</code> finds the line ‘<samp class="samp">c</samp>’ as common, then the command
+‘<samp class="samp">diff F G</samp>’ produces this output:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">1,2d0&#10;< a&#10;< b&#10;3a2,3&#10;> b&#10;> a&#10;</pre></div>
+<p>But if <code class="command">diff</code> notices the common line ‘<samp class="samp">b</samp>’ instead, it produces
+this output:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">1c1&#10;< a&#10;---&#10;> c&#10;3c3&#10;< c&#10;---&#10;> a&#10;</pre></div>
+<p>It is also possible to find ‘<samp class="samp">a</samp>’ as the common line.  <code class="command">diff</code>
+does not always find an optimal matching between the files; it takes
+shortcuts to run faster.  But its output is usually close to the
+shortest possible.  You can adjust this tradeoff with the
+<samp class="option">--minimal</samp> (<samp class="option">-d</samp>) option (see <a class="pxref" href="/docs/gnu-diffutils/source/v3-12/manual.html#diff-Performance"><code class="command">diff</code> Performance Tradeoffs</a>).
+</p>
+<hr/>
+</div>

@@ -1,0 +1,34 @@
+<div class="gnu-diffutils-original-content" id="Case-Folding">
+<h3 class="section" id="Suppressing-Case-Differences"><span>1.5 Suppressing Case Differences</span></h3>
+<a class="index-entry-id" id="index-case-difference-suppression"></a>
+<p>GNU <code class="command">diff</code> can treat capital letters as
+equivalent to their small counterparts, so that, for example, it
+considers ‘<samp class="samp">Funky Stuff</samp>’, ‘<samp class="samp">funky STUFF</samp>’, and ‘<samp class="samp">fUNKy
+stuFf</samp>’ to all be the same.  To request this, use the <samp class="option">-i</samp> or
+<samp class="option">--ignore-case</samp> option.
+</p>
+<p>When ignoring case <code class="command">diff</code> downcases each character before comparing it.
+For example, ‘<samp class="samp">diff -i</samp>’ downcases Greek capital “Δ” to small
+“δ” before comparison.  Although this works for many cases, it may
+have problems in some.  For example:
+</p>
+<ul class="itemize mark-bullet">
+<li>The German word “Straße” is not treated like “STRASSE” as
+many Germans might expect, because the two words downcase to
+“straße” and “strasse” respectively.
+
+</li><li>The Greek name “Κως” is not treated like “ΚΩΣ”
+even though they both end in sigma,
+because the latter’s trailing “Σ” (U+03A3 GREEK CAPITAL LETTER SIGMA)
+downcases to “σ” (U+03C3 GREEK SMALL LETTER SIGMA) instead
+of to “ς” (U+03C2 GREEK SMALL LETTER FINAL SIGMA).
+
+</li><li>The ancient Greek phrase “Πάντα ῥεῖ” is not treated like “ΠΆΝΤΑ ῬΕΙ͂”,
+as the former’s trailing “ῖ” is the single character U+1FD6 (GREEK
+SMALL LETTER IOTA WITH PERISPOMENI) whereas the latter’s trailing
+“Ι͂” has two characters, U+0399 (GREEK CAPITAL LETTER IOTA) and
+U+0342 (COMBINING GREEK PERISPOMENI).
+
+</li></ul>
+<hr/>
+</div>
