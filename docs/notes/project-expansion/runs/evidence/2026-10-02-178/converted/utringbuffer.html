@@ -1,0 +1,441 @@
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here’s a link back to the <a href="https://github.com/troydhanson/uthash">GitHub project page</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The functions in <code>utringbuffer.h</code> are based on the general-purpose array macros provided in <code>utarray.h</code>, so before reading this page you should read <a href="utarray.html">that page</a> first.</p>
+</div>
+<div class="paragraph">
+<p>To use these macros in your own C program, copy both <code>utarray.h</code> and <code>utringbuffer.h</code> into your source directory and use <code>utringbuffer.h</code> in your program.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include "utringbuffer.h"</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The provided <a href="#operations">operations</a> are based loosely on the C++ STL vector methods. The ring-buffer data type supports construction (with a specified capacity), destruction, iteration, and push, but not pop; once the ring-buffer reaches full capacity, pushing a new element automatically pops and destroys the oldest element. The elements contained in the ring-buffer can be any simple datatype or structure.</p>
+</div>
+<div class="paragraph">
+<p>Internally the ring-buffer contains a pre-allocated memory region into which the elements are copied, starting at position 0. When the ring-buffer reaches full capacity, the next element to be pushed is pushed at position 0, overwriting the oldest element, and the internal index representing the "start" of the ring-buffer is incremented. A ring-buffer, once full, can never become un-full.</p>
+</div>
+<div class="sect2">
+<h3 id="_download">Download</h3>
+<div class="paragraph">
+<p>To download the <code>utringbuffer.h</code> header file, follow the links on <a href="https://github.com/troydhanson/uthash">https://github.com/troydhanson/uthash</a> to clone uthash or get a zip file, then look in the src/ sub-directory.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bsd_licensed">BSD licensed</h3>
+<div class="paragraph">
+<p>This software is made available under the <a href="license.html">revised BSD license</a>. It is free and open source.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_platforms">Platforms</h3>
+<div class="paragraph">
+<p>The <em>utringbuffer</em> macros have been tested on:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Linux,</p>
+</li>
+<li>
+<p>Mac OS X,</p>
+</li>
+<li>
+<p>Windows, using Visual Studio 2008 and Visual Studio 2010</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage">Usage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_declaration">Declaration</h3>
+<div class="paragraph">
+<p>The ring-buffer itself has the data type <code>UT_ringbuffer</code>, regardless of the type of elements to be stored in it. It is declared like,</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>UT_ringbuffer *history;</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_and_free">New and free</h3>
+<div class="paragraph">
+<p>The next step is to create the ring-buffer using <code>utringbuffer_new</code>. Later when you’re done with the ring-buffer, <code>utringbuffer_free</code> will free it and all its elements.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_push_etc">Push, etc</h3>
+<div class="paragraph">
+<p>The central features of the ring-buffer involve putting elements into it and iterating over them. There are several <a href="#operations">operations</a> that deal with either single elements or ranges of elements at a time. In the examples below we will use only the push operation to insert elements.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_elements">Elements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Support for dynamic arrays of integers or strings is especially easy. These are best shown by example:</p>
+</div>
+<div class="sect2">
+<h3 id="_integers">Integers</h3>
+<div class="paragraph">
+<p>This example makes a ring-buffer of integers, pushes 0-9 into it, then prints it two different ways. Lastly it frees it.</p>
+</div>
+<div class="listingblock">
+<div class="title">
+<p>Integer elements</p>
+</div>
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;stdio.h></span></span>
+<span class="line"><span>#include "utringbuffer.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>  UT_ringbuffer *history;</span></span>
+<span class="line"><span>  int i, *p;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  utringbuffer_new(history, 7, &#x26;ut_int_icd);</span></span>
+<span class="line"><span>  for(i=0; i &#x3C; 10; i++) utringbuffer_push_back(history, &#x26;i);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  for (p = (int*)utringbuffer_front(history);</span></span>
+<span class="line"><span>       p != NULL;</span></span>
+<span class="line"><span>       p = (int*)utringbuffer_next(history, p)) {</span></span>
+<span class="line"><span>    printf("%d\n", *p);  /* prints "3 4 5 6 7 8 9" */</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  for (i=0; i &#x3C; utringbuffer_len(history); i++) {</span></span>
+<span class="line"><span>    p = utringbuffer_eltptr(history, i);</span></span>
+<span class="line"><span>    printf("%d\n", *p);  /* prints "3 4 5 6 7 8 9" */</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  utringbuffer_free(history);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  return 0;</span></span>
+<span class="line"><span>}</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The second argument to <code>utringbuffer_push_back</code> is always a <em>pointer</em> to the type (so a literal cannot be used). So for integers, it is an <code>int*</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_strings">Strings</h3>
+<div class="paragraph">
+<p>In this example we make a ring-buffer of strings, push two strings into it, print it and free it.</p>
+</div>
+<div class="listingblock">
+<div class="title">
+<p>String elements</p>
+</div>
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;stdio.h></span></span>
+<span class="line"><span>#include "utringbuffer.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>  UT_ringbuffer *strs;</span></span>
+<span class="line"><span>  char *s, **p;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  utringbuffer_new(strs, 7, &#x26;ut_str_icd);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  s = "hello"; utringbuffer_push_back(strs, &#x26;s);</span></span>
+<span class="line"><span>  s = "world"; utringbuffer_push_back(strs, &#x26;s);</span></span>
+<span class="line"><span>  p = NULL;</span></span>
+<span class="line"><span>  while ( (p=(char**)utringbuffer_next(strs,p))) {</span></span>
+<span class="line"><span>    printf("%s\n",*p);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  utringbuffer_free(strs);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  return 0;</span></span>
+<span class="line"><span>}</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, since the element is a <code>char*</code>, we pass a pointer to it (<code>char**</code>) as the second argument to <code>utringbuffer_push_back</code>. Note that "push" makes a copy of the source string and pushes that copy into the array.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_about_ut_icd">About UT_icd</h3>
+<div class="paragraph">
+<p>Arrays can be made of any type of element, not just integers and strings. The elements can be basic types or structures. Unless you’re dealing with integers and strings (which use pre-defined <code>ut_int_icd</code> and <code>ut_str_icd</code>), you’ll need to define a <code>UT_icd</code> helper structure. This structure contains everything that utringbuffer (or utarray) needs to initialize, copy or destruct elements.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>typedef struct {</span></span>
+<span class="line"><span>    size_t sz;</span></span>
+<span class="line"><span>    init_f *init;</span></span>
+<span class="line"><span>    ctor_f *copy;</span></span>
+<span class="line"><span>    dtor_f *dtor;</span></span>
+<span class="line"><span>} UT_icd;</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The three function pointers <code>init</code>, <code>copy</code>, and <code>dtor</code> have these prototypes:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>typedef void (ctor_f)(void *dst, const void *src);</span></span>
+<span class="line"><span>typedef void (dtor_f)(void *elt);</span></span>
+<span class="line"><span>typedef void (init_f)(void *elt);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>sz</code> is just the size of the element being stored in the array.</p>
+</div>
+<div class="paragraph">
+<p>The <code>init</code> function is used by utarray but is never used by utringbuffer; you may safely set it to any value you want.</p>
+</div>
+<div class="paragraph">
+<p>The <code>copy</code> function is used whenever an element is copied into the buffer. It is invoked during <code>utringbuffer_push_back</code>. If <code>copy</code> is <code>NULL</code>, it defaults to a bitwise copy using memcpy.</p>
+</div>
+<div class="paragraph">
+<p>The <code>dtor</code> function is used to clean up an element that is being removed from the buffer. It may be invoked due to <code>utringbuffer_push_back</code> (on the oldest element in the buffer), <code>utringbuffer_clear</code>, <code>utringbuffer_done</code>, or <code>utringbuffer_free</code>. If the elements need no cleanup upon destruction, <code>dtor</code> may be <code>NULL</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scalar_types">Scalar types</h3>
+<div class="paragraph">
+<p>The next example uses <code>UT_icd</code> with all its defaults to make a ring-buffer of <code>long</code> elements. This example pushes two longs into a buffer of capacity 1, prints the contents of the buffer (which is to say, the most recent value pushed), and then frees the buffer.</p>
+</div>
+<div class="listingblock">
+<div class="title">
+<p>long elements</p>
+</div>
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;stdio.h></span></span>
+<span class="line"><span>#include "utringbuffer.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>UT_icd long_icd = {sizeof(long), NULL, NULL, NULL };</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>  UT_ringbuffer *nums;</span></span>
+<span class="line"><span>  long l, *p;</span></span>
+<span class="line"><span>  utringbuffer_new(nums, 1, &#x26;long_icd);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  l=1; utringbuffer_push_back(nums, &#x26;l);</span></span>
+<span class="line"><span>  l=2; utringbuffer_push_back(nums, &#x26;l);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  p=NULL;</span></span>
+<span class="line"><span>  while((p = (long*)utringbuffer_next(nums,p))) printf("%ld\n", *p);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  utringbuffer_free(nums);</span></span>
+<span class="line"><span>  return 0;</span></span>
+<span class="line"><span>}</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_structures">Structures</h3>
+<div class="paragraph">
+<p>Structures can be used as utringbuffer elements. If the structure requires no special effort to initialize, copy or destruct, we can use <code>UT_icd</code> with all its defaults. This example shows a structure that consists of two integers. Here we push two values, print them and free the buffer.</p>
+</div>
+<div class="listingblock">
+<div class="title">
+<p>Structure (simple)</p>
+</div>
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;stdio.h></span></span>
+<span class="line"><span>#include "utringbuffer.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>typedef struct {</span></span>
+<span class="line"><span>    int a;</span></span>
+<span class="line"><span>    int b;</span></span>
+<span class="line"><span>} intpair_t;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>UT_icd intpair_icd = {sizeof(intpair_t), NULL, NULL, NULL};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  UT_ringbuffer *pairs;</span></span>
+<span class="line"><span>  intpair_t ip, *p;</span></span>
+<span class="line"><span>  utringbuffer_new(pairs, 7, &#x26;intpair_icd);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  ip.a=1;  ip.b=2;  utringbuffer_push_back(pairs, &#x26;ip);</span></span>
+<span class="line"><span>  ip.a=10; ip.b=20; utringbuffer_push_back(pairs, &#x26;ip);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  for(p=(intpair_t*)utringbuffer_front(pairs);</span></span>
+<span class="line"><span>      p!=NULL;</span></span>
+<span class="line"><span>      p=(intpair_t*)utringbuffer_next(pairs,p)) {</span></span>
+<span class="line"><span>    printf("%d %d\n", p->a, p->b);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  utringbuffer_free(pairs);</span></span>
+<span class="line"><span>  return 0;</span></span>
+<span class="line"><span>}</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The real utility of <code>UT_icd</code> is apparent when the elements stored in the ring-buffer are structures that require special work to initialize, copy or destruct.</p>
+</div>
+<div class="paragraph">
+<p>For example, when a structure contains pointers to related memory areas that need to be copied when the structure is copied (and freed when the structure is freed), we can use custom <code>init</code>, <code>copy</code>, and <code>dtor</code> members in the <code>UT_icd</code>.</p>
+</div>
+<div class="paragraph">
+<p>Here we take an example of a structure that contains an integer and a string. When this element is copied (such as when an element is pushed), we want to "deep copy" the <code>s</code> pointer (so the original element and the new element point to their own copies of <code>s</code>). When an element is destructed, we want to "deep free" its copy of <code>s</code>. Lastly, this example is written to work even if <code>s</code> has the value <code>NULL</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">
+<p>Structure (complex)</p>
+</div>
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;stdio.h></span></span>
+<span class="line"><span>#include &#x3C;stdlib.h></span></span>
+<span class="line"><span>#include "utringbuffer.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>typedef struct {</span></span>
+<span class="line"><span>    int a;</span></span>
+<span class="line"><span>    char *s;</span></span>
+<span class="line"><span>} intchar_t;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>void intchar_copy(void *_dst, const void *_src) {</span></span>
+<span class="line"><span>  intchar_t *dst = (intchar_t*)_dst, *src = (intchar_t*)_src;</span></span>
+<span class="line"><span>  dst->a = src->a;</span></span>
+<span class="line"><span>  dst->s = src->s ? strdup(src->s) : NULL;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>void intchar_dtor(void *_elt) {</span></span>
+<span class="line"><span>  intchar_t *elt = (intchar_t*)_elt;</span></span>
+<span class="line"><span>  free(elt->s);</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>UT_icd intchar_icd = {sizeof(intchar_t), NULL, intchar_copy, intchar_dtor};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>  UT_ringbuffer *intchars;</span></span>
+<span class="line"><span>  intchar_t ic, *p;</span></span>
+<span class="line"><span>  utringbuffer_new(intchars, 2, &#x26;intchar_icd);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  ic.a=1; ic.s="hello"; utringbuffer_push_back(intchars, &#x26;ic);</span></span>
+<span class="line"><span>  ic.a=2; ic.s="world"; utringbuffer_push_back(intchars, &#x26;ic);</span></span>
+<span class="line"><span>  ic.a=3; ic.s="peace"; utringbuffer_push_back(intchars, &#x26;ic);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  p=NULL;</span></span>
+<span class="line"><span>  while( (p=(intchar_t*)utringbuffer_next(intchars,p))) {</span></span>
+<span class="line"><span>    printf("%d %s\n", p->a, (p->s ? p->s : "null"));</span></span>
+<span class="line"><span>    /* prints "2 world 3 peace" */</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  utringbuffer_free(intchars);</span></span>
+<span class="line"><span>  return 0;</span></span>
+<span class="line"><span>}</span></span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="operations">Reference</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This table lists all the utringbuffer operations. These are loosely based on the C++ vector class.</p>
+</div>
+<div class="sect2">
+<h3 id="_operations">Operations</h3>
+<div class="tableblock">
+<table rules="none" width="100%" frame="border" cellspacing="0" cellpadding="4">
+<colgroup><col width="55%">
+<col width="44%">
+</colgroup><tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_new(UT_ringbuffer *a, int n, UT_icd *icd)</code></p></td>
+<td align="left" valign="top"><p class="table">allocate a new ringbuffer</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_free(UT_ringbuffer *a)</code></p></td>
+<td align="left" valign="top"><p class="table">free an allocated ringbuffer</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_init(UT_ringbuffer *a, int n, UT_icd *icd)</code></p></td>
+<td align="left" valign="top"><p class="table">init a ringbuffer (non-alloc)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_done(UT_ringbuffer *a)</code></p></td>
+<td align="left" valign="top"><p class="table">dispose of a ringbuffer (non-alloc)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_clear(UT_ringbuffer *a)</code></p></td>
+<td align="left" valign="top"><p class="table">clear all elements from a, making it empty</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_push_back(UT_ringbuffer *a, element *p)</code></p></td>
+<td align="left" valign="top"><p class="table">push element p onto a</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_len(UT_ringbuffer *a)</code></p></td>
+<td align="left" valign="top"><p class="table">get length of a</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_empty(UT_ringbuffer *a)</code></p></td>
+<td align="left" valign="top"><p class="table">get whether a is empty</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_full(UT_ringbuffer *a)</code></p></td>
+<td align="left" valign="top"><p class="table">get whether a is full</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_eltptr(UT_ringbuffer *a, int j)</code></p></td>
+<td align="left" valign="top"><p class="table">get pointer of element from index</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_eltidx(UT_ringbuffer *a, element *e)</code></p></td>
+<td align="left" valign="top"><p class="table">get index of element from pointer</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_front(UT_ringbuffer *a)</code></p></td>
+<td align="left" valign="top"><p class="table">get oldest element of a</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_next(UT_ringbuffer *a, element *e)</code></p></td>
+<td align="left" valign="top"><p class="table">get element of a following e (front if e is NULL)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_prev(UT_ringbuffer *a, element *e)</code></p></td>
+<td align="left" valign="top"><p class="table">get element of a before e (back if e is NULL)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utringbuffer_back(UT_ringbuffer *a)</code></p></td>
+<td align="left" valign="top"><p class="table">get newest element of a</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_notes">Notes</h3>
+<div class="olist arabic">
+<ol>
+<li>
+<p><code>utringbuffer_new</code> and <code>utringbuffer_free</code> are used to allocate a new ring-buffer and to free it, while <code>utringbuffer_init</code> and <code>utringbuffer_done</code> can be used if the UT_ringbuffer is already allocated and just needs to be initialized or have its internal resources freed.</p>
+</li>
+<li>
+<p>Both <code>utringbuffer_new</code> and <code>utringbuffer_init</code> take a second parameter <code>n</code> indicating the capacity of the ring-buffer, that is, the size at which the ring-buffer is considered "full" and begins to overwrite old elements with newly pushed ones.</p>
+</li>
+<li>
+<p>Once a ring-buffer has become full, it will never again become un-full except by means of <code>utringbuffer_clear</code>. There is no way to "pop" a single old item from the front of the ring-buffer. You can simulate this ability by maintaining a separate integer count of the number of "logically popped elements", and starting your iteration with <code>utringbuffer_eltptr(a, popped_count)</code> instead of with <code>utringbuffer_front(a)</code>.</p>
+</li>
+<li>
+<p>Pointers to elements (obtained using <code>utringbuffer_eltptr</code>, <code>utringbuffer_front</code>, <code>utringbuffer_next</code>, etc.) are not generally invalidated by <code>utringbuffer_push_back</code>, because utringbuffer does not perform reallocation; however, a pointer to the oldest element may suddenly turn into a pointer to the <em>newest</em> element if <code>utringbuffer_push_back</code> is called while the buffer is full.</p>
+</li>
+<li>
+<p>The elements of a ring-buffer are stored in contiguous memory, but once the ring-buffer has become full, it is no longer true that the elements are contiguously in order from oldest to newest; i.e., <code>(element *)utringbuffer_front(a) + utringbuffer_len(a)-1</code> is not generally equal to <code>(element *)utringbuffer_back(a)</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div><script type="module">document.addEventListener('click',async e=>{const b=e.target.closest?.('.docs-code-copy');if(!b)return;const c=b.closest('.docs-code-frame')?.querySelector('code');if(!c)return;await navigator.clipboard.writeText(c.textContent??'');b.textContent=b.dataset.copiedLabel;setTimeout(()=>b.textContent=b.dataset.copyLabel,1500)});</script>

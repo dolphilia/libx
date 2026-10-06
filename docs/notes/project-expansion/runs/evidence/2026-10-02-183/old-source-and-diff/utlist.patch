@@ -1,0 +1,34 @@
+--- v2.3.0/doc/utlist.txt
++++ v2.4.0/doc/utlist.txt
+@@ -1,7 +1,8 @@
+ utlist: linked list macros for C structures
+ ===========================================
+ Troy D. Hanson <tdh@tkhanson.net>
+-v2.3.0, February 2021
++Arthur O'Dwyer <arthur.j.odwyer@gmail.com>
++v2.4.0, June 2026
+ 
+ Here's a link back to the https://github.com/troydhanson/uthash[GitHub project page].
+ 
+@@ -106,8 +107,9 @@
+ |LL_REPLACE_ELEM(head,del,add); | DL_REPLACE_ELEM(head,del,add); | CDL_REPLACE_ELEM(head,del,add);
+ |LL_APPEND(head,add);      | DL_APPEND(head,add);       | CDL_APPEND(head,add);
+ |LL_INSERT_INORDER(head,add,cmp); | DL_INSERT_INORDER(head,add,cmp); | CDL_INSERT_INORDER(head,add,cmp);
+-|LL_CONCAT(head1,head2);   | DL_CONCAT(head1,head2);    |
++|LL_CONCAT(head1,head2);   | DL_CONCAT(head1,head2);    | CDL_CONCAT(head1,head2);
+ |LL_DELETE(head,del);      | DL_DELETE(head,del);       | CDL_DELETE(head,del);
++|LL_REVERSE(head);         | DL_REVERSE(head);          | CDL_REVERSE(head);
+ |LL_SORT(head,cmp);        | DL_SORT(head,cmp);         | CDL_SORT(head,cmp);
+ |LL_FOREACH(head,elt) {...}| DL_FOREACH(head,elt) {...} | CDL_FOREACH(head,elt) {...}
+ |LL_FOREACH_SAFE(head,elt,tmp) {...}| DL_FOREACH_SAFE(head,elt,tmp) {...} | CDL_FOREACH_SAFE(head,elt,tmp1,tmp2) {...}
+@@ -279,8 +281,9 @@
+ |LL_REPLACE_ELEM2(head,del,add,next);      | DL_REPLACE_ELEM2(head,del,add,prev,next);   | CDL_REPLACE_ELEM2(head,del,add,prev,next);
+ |LL_APPEND2(head,add,next);                | DL_APPEND2(head,add,prev,next);             | CDL_APPEND2(head,add,prev,next);
+ |LL_INSERT_INORDER2(head,add,cmp,next);    | DL_INSERT_INORDER2(head,add,cmp,prev,next); | CDL_INSERT_INORDER2(head,add,cmp,prev,next);
+-|LL_CONCAT2(head1,head2,next);             | DL_CONCAT2(head1,head2,prev,next);          |
++|LL_CONCAT2(head1,head2,next);             | DL_CONCAT2(head1,head2,prev,next);          | CDL_CONCAT2(head1,head2,prev,next);
+ |LL_DELETE2(head,del,next);                | DL_DELETE2(head,del,prev,next);             | CDL_DELETE2(head,del,prev,next);
++|LL_REVERSE2(head,next);                   | DL_REVERSE2(head,prev,next);                | CDL_REVERSE2(head,prev,next);
+ |LL_SORT2(head,cmp,next);                  | DL_SORT2(head,cmp,prev,next);               | CDL_SORT2(head,cmp,prev,next);
+ |LL_FOREACH2(head,elt,next) {...}          | DL_FOREACH2(head,elt,next) {...}            | CDL_FOREACH2(head,elt,next) {...}
+ |LL_FOREACH_SAFE2(head,elt,tmp,next) {...} | DL_FOREACH_SAFE2(head,elt,tmp,next) {...}   | CDL_FOREACH_SAFE2(head,elt,tmp1,tmp2,prev,next) {...}

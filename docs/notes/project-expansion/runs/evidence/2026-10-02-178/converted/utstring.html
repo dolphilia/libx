@@ -1,0 +1,325 @@
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>v2.4.0, June 2026</p>
+</div>
+<div class="paragraph">
+<p>Here’s a link back to the <a href="https://github.com/troydhanson/uthash">GitHub project page</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A set of basic dynamic string macros for C programs are included with uthash in <code>utstring.h</code>. To use these in your own C program, just copy <code>utstring.h</code> into your source directory and use it in your programs.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include "utstring.h"</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The dynamic string supports operations such as inserting data, concatenation, getting the length and content, substring search, and clear. It’s ok to put binary data into a utstring too. The string <a href="#operations">operations</a> are listed below.</p>
+</div>
+<div class="paragraph">
+<p>Some utstring operations are implemented as functions rather than macros.</p>
+</div>
+<div class="sect2">
+<h3 id="_download">Download</h3>
+<div class="paragraph">
+<p>To download the <code>utstring.h</code> header file, follow the links on <a href="https://github.com/troydhanson/uthash">https://github.com/troydhanson/uthash</a> to clone uthash or get a zip file, then look in the src/ sub-directory.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bsd_licensed">BSD licensed</h3>
+<div class="paragraph">
+<p>This software is made available under the <a href="license.html">revised BSD license</a>. It is free and open source.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_platforms">Platforms</h3>
+<div class="paragraph">
+<p>The <em>utstring</em> macros have been tested on:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Linux,</p>
+</li>
+<li>
+<p>Windows, using Visual Studio 2008 and Visual Studio 2010</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage">Usage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_declaration">Declaration</h3>
+<div class="paragraph">
+<p>The dynamic string itself has the data type <code>UT_string</code>. It is declared like,</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>UT_string *str;</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_and_free">New and free</h3>
+<div class="paragraph">
+<p>The next step is to create the string using <code>utstring_new</code>. Later when you’re done with it, <code>utstring_free</code> will free it and all its content.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manipulation">Manipulation</h3>
+<div class="paragraph">
+<p>The <code>utstring_printf</code> or <code>utstring_bincpy</code> operations insert (copy) data into the string. To concatenate one utstring to another, use <code>utstring_concat</code>. To clear the content of the string, use <code>utstring_clear</code>. The length of the string is available from <code>utstring_len</code>, and its content from <code>utstring_body</code>. This evaluates to a <code>char*</code>. The buffer it points to is always null-terminated. So, it can be used directly with external functions that expect a string. This automatic null terminator is not counted in the length of the string.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_samples">Samples</h3>
+<div class="paragraph">
+<p>These examples show how to use utstring.</p>
+</div>
+<div class="listingblock">
+<div class="title">
+<p>Sample 1</p>
+</div>
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;stdio.h></span></span>
+<span class="line"><span>#include "utstring.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>    UT_string *s;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_new(s);</span></span>
+<span class="line"><span>    utstring_printf(s, "hello world!" );</span></span>
+<span class="line"><span>    printf("%s\n", utstring_body(s));</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_free(s);</span></span>
+<span class="line"><span>    return 0;</span></span>
+<span class="line"><span>}</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The next example demonstrates that <code>utstring_printf</code> <em>appends</em> to the string. It also shows concatenation.</p>
+</div>
+<div class="listingblock">
+<div class="title">
+<p>Sample 2</p>
+</div>
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;stdio.h></span></span>
+<span class="line"><span>#include "utstring.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>    UT_string *s, *t;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_new(s);</span></span>
+<span class="line"><span>    utstring_new(t);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_printf(s, "hello " );</span></span>
+<span class="line"><span>    utstring_printf(s, "world " );</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_printf(t, "hi " );</span></span>
+<span class="line"><span>    utstring_printf(t, "there " );</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_concat(s, t);</span></span>
+<span class="line"><span>    printf("length: %u\n", utstring_len(s));</span></span>
+<span class="line"><span>    printf("%s\n", utstring_body(s));</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_free(s);</span></span>
+<span class="line"><span>    utstring_free(t);</span></span>
+<span class="line"><span>    return 0;</span></span>
+<span class="line"><span>}</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>The next example shows how binary data can be inserted into the string. It also clears the string and prints new data into it.</p>
+</div>
+<div class="listingblock">
+<div class="title">
+<p>Sample 3</p>
+</div>
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;stdio.h></span></span>
+<span class="line"><span>#include "utstring.h"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>    UT_string *s;</span></span>
+<span class="line"><span>    char binary[] = "\xff\xff";</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_new(s);</span></span>
+<span class="line"><span>    utstring_bincpy(s, binary, sizeof(binary));</span></span>
+<span class="line"><span>    printf("length is %u\n", utstring_len(s));</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_clear(s);</span></span>
+<span class="line"><span>    utstring_printf(s,"number %d", 10);</span></span>
+<span class="line"><span>    printf("%s\n", utstring_body(s));</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    utstring_free(s);</span></span>
+<span class="line"><span>    return 0;</span></span>
+<span class="line"><span>}</span></span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="operations">Reference</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These are the utstring operations.</p>
+</div>
+<div class="sect2">
+<h3 id="_operations">Operations</h3>
+<div class="tableblock">
+<table rules="none" width="100%" frame="border" cellspacing="0" cellpadding="4">
+<colgroup><col width="55%">
+<col width="44%">
+</colgroup><tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_new(s)</code></p></td>
+<td align="left" valign="top"><p class="table">allocate a new utstring</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_renew(s)</code></p></td>
+<td align="left" valign="top"><p class="table">allocate a new utstring (if s is <code>NULL</code>) otherwise clears it</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_free(s)</code></p></td>
+<td align="left" valign="top"><p class="table">free an allocated utstring</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_init(s)</code></p></td>
+<td align="left" valign="top"><p class="table">init a utstring (non-alloc)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_done(s)</code></p></td>
+<td align="left" valign="top"><p class="table">dispose of a utstring (non-alloc)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_printf(s,fmt,…)</code></p></td>
+<td align="left" valign="top"><p class="table">printf into a utstring (appends)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_bincpy(s,bin,len)</code></p></td>
+<td align="left" valign="top"><p class="table">insert binary data of length len (appends)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_concat(dst,src)</code></p></td>
+<td align="left" valign="top"><p class="table">concatenate src utstring to end of dst utstring</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_clear(s)</code></p></td>
+<td align="left" valign="top"><p class="table">clear the content of s (setting its length to 0)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_len(s)</code></p></td>
+<td align="left" valign="top"><p class="table">obtain the length of s as an unsigned integer</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_body(s)</code></p></td>
+<td align="left" valign="top"><p class="table">get <code>char*</code> to body of s (buffer is always null-terminated)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_find(s,pos,str,len)</code></p></td>
+<td align="left" valign="top"><p class="table">forward search from pos for a substring</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>utstring_findR(s,pos,str,len)</code></p></td>
+<td align="left" valign="top"><p class="table">reverse search from pos for a substring</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_free_vs_init_done">New/free vs. init/done</h3>
+<div class="paragraph">
+<p>Use <code>utstring_new</code> and <code>utstring_free</code> to allocate a new string or free it. If the UT_string is statically allocated, use <code>utstring_init</code> and <code>utstring_done</code> to initialize or free its internal memory.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_substring_search">Substring search</h3>
+<div class="paragraph">
+<p>Use <code>utstring_find</code> and <code>utstring_findR</code> to search for a substring in a utstring. It comes in forward and reverse varieties. The reverse search scans from the end of the string backward. These take a position to start searching from, measured from 0 (the start of the utstring). A negative position is counted from the end of the string, so, -1 is the last position. Note that in the reverse search, the initial position anchors to the <em>end</em> of the substring being searched for; e.g., the <em>t</em> in <em>cat</em>. The return value always refers to the offset where the substring <em>starts</em> in the utstring. When no substring match is found, -1 is returned.</p>
+</div>
+<div class="paragraph">
+<p>For example if a utstring called <code>s</code> contains:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ABC ABCDAB ABCDABCDABDE</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>Then these forward and reverse substring searches for <code>ABC</code> produce these results:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>utstring_find(  s, -9, "ABC", 3 ) = 15</span></span>
+<span class="line"><span>utstring_find(  s,  3, "ABC", 3 ) =  4</span></span>
+<span class="line"><span>utstring_find(  s, 16, "ABC", 3 ) = -1</span></span>
+<span class="line"><span>utstring_findR( s, -9, "ABC", 3 ) = 11</span></span>
+<span class="line"><span>utstring_findR( s, 12, "ABC", 3 ) =  4</span></span>
+<span class="line"><span>utstring_findR( s,  2, "ABC", 3 ) =  0</span></span></code></pre></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_multiple_use_substring_search">"Multiple use" substring search</h4>
+<div class="paragraph">
+<p>The preceding examples show "single use" versions of substring matching, where the internal Knuth-Morris-Pratt (KMP) table is internally built and then freed after the search. If your program needs to run many searches for a given substring, it is more efficient to save the KMP table and reuse it.</p>
+</div>
+<div class="paragraph">
+<p>To reuse the KMP table, build it manually and then pass it into the internal search functions. The functions involved are:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>_utstring_BuildTable  (build the KMP table for a forward search)</span></span>
+<span class="line"><span>_utstring_BuildTableR (build the KMP table for a reverse search)</span></span>
+<span class="line"><span>_utstring_find        (forward search using a prebuilt KMP table)</span></span>
+<span class="line"><span>_utstring_findR       (reverse search using a prebuilt KMP table)</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>This is an example of building a forward KMP table for the substring "ABC", and then using it in a search:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>long *KPM_TABLE, offset;</span></span>
+<span class="line"><span>KPM_TABLE = (long *)malloc( sizeof(long) * (strlen("ABC")) + 1));</span></span>
+<span class="line"><span>_utstring_BuildTable("ABC", 3, KPM_TABLE);</span></span>
+<span class="line"><span>offset = _utstring_find(utstring_body(s), utstring_len(s), "ABC", 3, KPM_TABLE );</span></span>
+<span class="line"><span>free(KPM_TABLE);</span></span></code></pre></div>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the internal <code>_utstring_find</code> has the length of the UT_string as its second argument, rather than the start position. You can emulate the position parameter by adding to the string start address and subtracting from its length.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_notes">Notes</h3>
+<div class="olist arabic">
+<ol>
+<li>
+<p>To override the default out-of-memory handling behavior (which calls <code>exit(-1)</code>), override the <code>utstring_oom()</code> macro before including <code>utstring.h</code>. For example,</p>
+<div class="literalblock">
+<div class="content">
+<div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#define utstring_oom() do { longjmp(error_handling_location); } while (0)</span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span>#include "utstring.h"</span></span></code></pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div><script type="module">document.addEventListener('click',async e=>{const b=e.target.closest?.('.docs-code-copy');if(!b)return;const c=b.closest('.docs-code-frame')?.querySelector('code');if(!c)return;await navigator.clipboard.writeText(c.textContent??'');b.textContent=b.dataset.copiedLabel;setTimeout(()=>b.textContent=b.dataset.copyLabel,1500)});</script>
