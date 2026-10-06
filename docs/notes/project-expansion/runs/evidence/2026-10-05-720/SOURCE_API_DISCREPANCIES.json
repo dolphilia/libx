@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-04T21:23:02.416879+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/utilities.rst",
+      "sha256": "50ff039f3411668b250df843df196bef7a96329c370af73952b98ab6bedde359"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/include/uv.h",
+      "sha256": "565b25538707aa7244eb197af397e566be591b26cb66b5742ed095063946a558"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/timer.rst",
+      "sha256": "cb3fa085f7c7ef97da074ad5a0e0637fb93127cb69edc2aeaf6e253d490a8951"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/threadpool.rst",
+      "sha256": "6e99b4a0e98185bcd424c677def5f29796fb223f123e582cb8e89ec4ba9ee2c3"
+    }
+  ],
+  "findings": [
+    {
+      "guide": "uv_timer_set_repeat uses int64_t repeat",
+      "fixed": "header and timer API use uint64_t repeat"
+    },
+    {
+      "guide": "uv_timer_again returns -1 when never started, code UV_EINVAL",
+      "fixed": "timer API returns UV_EINVAL"
+    },
+    {
+      "guide": "ftp_cleanup(uv_work_t *req) passed to uv_queue_work after_work callback",
+      "fixed": "header and threadpool API require uv_after_work_cb(uv_work_t* req,int status)"
+    }
+  ],
+  "action": "721: preserve original EN/JA bodies and code; annotate original-vs-fixed differences only footer with fixed timer/threadpool APIs and original header/source links. Review remains pending.",
+  "originalSourceUnchanged": true,
+  "fullContentReview": "pending"
+}

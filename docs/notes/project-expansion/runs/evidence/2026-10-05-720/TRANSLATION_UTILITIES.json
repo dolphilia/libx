@@ -1,0 +1,1039 @@
+{
+  "page": "guide/utilities",
+  "at": "2026-10-04T21:20:58.301169+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/utilities.rst",
+      "sha256": "50ff039f3411668b250df843df196bef7a96329c370af73952b98ab6bedde359"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/utilities.md",
+      "sha256": "a93cb7fa250f5316d5e395747c2babbc91b15c67d55ffdbaa07aa2ea8ab1552c"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/utilities.md",
+      "sha256": "92516603d189f4adaa12384e2296f0670913c067d2cc3965b743e9fce33f6ebb"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 24 code blocks, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Utilities",
+      "ja": "ユーティリティ"
+    },
+    {
+      "index": 1,
+      "en": "This chapter catalogues tools and techniques which are useful for common tasks.\nThe ",
+      "ja": "この章では、一般的な作業に役立つツールと手法を紹介します。"
+    },
+    {
+      "index": 2,
+      "en": "libev man page",
+      "ja": "libevのマニュアルページ"
+    },
+    {
+      "index": 3,
+      "en": " already covers some patterns which can be adopted to\nlibuv through simple API changes. It also covers parts of the libuv API that\ndon’t require entire chapters dedicated to them.",
+      "ja": "には、APIを少し変更するだけでlibuvにも適用できるパターンが説明されています。この章では、章を丸ごと割り当てるほどではないlibuvのAPIも扱います。"
+    },
+    {
+      "index": 4,
+      "en": "Timers",
+      "ja": "タイマー"
+    },
+    {
+      "index": 5,
+      "en": "Timers invoke the callback after a certain time has elapsed since the timer was\nstarted. libuv timers can also be set to invoke at regular intervals instead of\njust once.",
+      "ja": "タイマーは、開始から一定の時間が経過するとコールバックを呼び出します。libuvのタイマーは、1回だけでなく、一定の間隔で呼び出すようにも設定できます。"
+    },
+    {
+      "index": 6,
+      "en": "Simple use is to init a watcher and start it with a ",
+      "ja": "基本的な使い方は、ウォッチャーを初期化し、"
+    },
+    {
+      "index": 7,
+      "en": ", and optional ",
+      "ja": "と、必要に応じて、"
+    },
+    {
+      "index": 8,
+      "en": ".\nTimers can be stopped at any time.",
+      "ja": "を指定して開始することです。タイマーはいつでも停止できます。"
+    },
+    {
+      "index": 9,
+      "en": "will start a repeating timer, which first starts 5 seconds (the ",
+      "ja": "この例では、繰り返しタイマーを開始します。最初の実行は、"
+    },
+    {
+      "index": 10,
+      "en": ") after the execution\nof ",
+      "ja": "として指定した5秒が、"
+    },
+    {
+      "index": 11,
+      "en": ", then repeats every 2 seconds (the ",
+      "ja": "の実行から経過したときで、その後は、"
+    },
+    {
+      "index": 12,
+      "en": "). Use:",
+      "ja": "として指定した2秒ごとに繰り返します。停止には、次を使います。"
+    },
+    {
+      "index": 13,
+      "en": "to stop the timer. This can be used safely from within the callback as well.",
+      "ja": "これでタイマーを停止できます。コールバック内からも安全に使えます。"
+    },
+    {
+      "index": 14,
+      "en": "The repeat interval can be modified at any time with:",
+      "ja": "繰り返し間隔は、次を使っていつでも変更できます。"
+    },
+    {
+      "index": 15,
+      "en": "which will take effect ",
+      "ja": "変更が反映されるのは、"
+    },
+    {
+      "index": 16,
+      "en": "when possible",
+      "ja": "可能になった時点"
+    },
+    {
+      "index": 17,
+      "en": ". If this function is called from\na timer callback, it means:",
+      "ja": "です。タイマーのコールバックからこの関数を呼び出した場合は、次のようになります。"
+    },
+    {
+      "index": 18,
+      "en": "If the timer was non-repeating, the timer has already been stopped. Use\n",
+      "ja": "繰り返さないタイマーなら、すでに停止しています。"
+    },
+    {
+      "index": 19,
+      "en": " again.",
+      "ja": "をもう一度使ってください。"
+    },
+    {
+      "index": 20,
+      "en": "If the timer is repeating, the next timeout has already been scheduled, so\nthe old repeat interval will be used once more before the timer switches to\nthe new interval.",
+      "ja": "繰り返すタイマーなら、次のタイムアウトはすでに予定されています。そのため、以前の繰り返し間隔がもう1回使われてから、新しい間隔に切り替わります。"
+    },
+    {
+      "index": 21,
+      "en": "The utility function:",
+      "ja": "次のユーティリティ関数は、"
+    },
+    {
+      "index": 22,
+      "en": "applies ",
+      "ja": "適用対象が、"
+    },
+    {
+      "index": 23,
+      "en": "only to repeating timers",
+      "ja": "繰り返すタイマーに限られます"
+    },
+    {
+      "index": 24,
+      "en": " and is equivalent to stopping the timer\nand then starting it with both initial ",
+      "ja": "。タイマーを停止し、最初の、"
+    },
+    {
+      "index": 25,
+      "en": " and ",
+      "ja": "と、"
+    },
+    {
+      "index": 26,
+      "en": " set to the\nold ",
+      "ja": "の両方に、以前の、"
+    },
+    {
+      "index": 27,
+      "en": " value. If the timer hasn’t been started it fails (error code\n",
+      "ja": "の値を設定して開始するのと同じです。まだ開始していないタイマーでは失敗し、エラーコードは、"
+    },
+    {
+      "index": 28,
+      "en": ") and returns -1.",
+      "ja": "で、戻り値は-1になります。"
+    },
+    {
+      "index": 29,
+      "en": "An actual timer example is in the ",
+      "ja": "実際のタイマーの例は、"
+    },
+    {
+      "index": 30,
+      "en": "reference count section",
+      "ja": "参照カウントの節"
+    },
+    {
+      "index": 31,
+      "en": ".",
+      "ja": "にあります。"
+    },
+    {
+      "index": 32,
+      "en": "Event loop reference count",
+      "ja": "イベントループの参照カウント"
+    },
+    {
+      "index": 33,
+      "en": "The event loop only runs as long as there are active handles. This system\nworks by having every handle increase the reference count of the event loop\nwhen it is started and decreasing the reference count when stopped. It is also\npossible to manually change the reference count of handles using:",
+      "ja": "イベントループは、アクティブなハンドルがある間だけ実行されます。この仕組みでは、各ハンドルが開始時にイベントループの参照カウントを増やし、停止時に減らします。次を使って、ハンドルの参照カウントを手動で変更することもできます。"
+    },
+    {
+      "index": 34,
+      "en": "These functions can be used to allow a loop to exit even when a watcher is\nactive or to use custom objects to keep the loop alive.",
+      "ja": "これらの関数を使えば、ウォッチャーがアクティブでもループを終了でき、独自のオブジェクトでループの実行を維持することもできます。"
+    },
+    {
+      "index": 35,
+      "en": "The latter can be used with interval timers. You might have a garbage collector\nwhich runs every X seconds, or your network service might send a heartbeat to\nothers periodically, but you don’t want to have to stop them along all clean\nexit paths or error scenarios. Or you want the program to exit when all your\nother watchers are done. In that case just unref the timer immediately after\ncreation so that if it is the only watcher running then ",
+      "ja": "この使い方は、定期的なタイマーにも役立ちます。X秒ごとに動くガベージコレクターや、他のサービスへ定期的にハートビートを送るネットワークサービスがあっても、正常終了のすべての経路やエラー時にそれらを停止したくない場合があります。また、他のウォッチャーがすべて終了したときにプログラムを終了させたい場合もあります。その場合は、タイマーを作成した直後に参照を外してください。そうすると、実行中のウォッチャーがそのタイマーだけになったときにも、"
+    },
+    {
+      "index": 36,
+      "en": " will still\nexit.",
+      "ja": "は終了します。"
+    },
+    {
+      "index": 37,
+      "en": "This is also used in node.js where some libuv methods are being bubbled up to\nthe JS API. A ",
+      "ja": "これはnode.jsでも使われており、libuvの一部のメソッドがJSのAPIとして公開されています。JSの各オブジェクトに対して、"
+    },
+    {
+      "index": 38,
+      "en": " (the superclass of all watchers) is created per\nJS object and can be ref/unrefed.",
+      "ja": "という、すべてのウォッチャーのスーパークラスが作成され、参照の追加と解除ができます。"
+    },
+    {
+      "index": 39,
+      "en": "ref-timer/main.c",
+      "ja": "ref-timer/main.c"
+    },
+    {
+      "index": 40,
+      "en": "We initialize the garbage collector timer, then immediately ",
+      "ja": "ガベージコレクターのタイマーを初期化し、すぐに、"
+    },
+    {
+      "index": 41,
+      "en": " it.\nObserve how after 9 seconds, when the fake job is done, the program\nautomatically exits, even though the garbage collector is still running.",
+      "ja": "で参照を外します。9秒後に模擬のジョブが終了すると、ガベージコレクターは動作中でも、プログラムが自動的に終了することに注目してください。"
+    },
+    {
+      "index": 42,
+      "en": "Idler pattern",
+      "ja": "アイドル処理のパターン"
+    },
+    {
+      "index": 43,
+      "en": "The callbacks of idle handles are invoked once per event loop. The idle\ncallback can be used to perform some very low priority activity. For example,\nyou could dispatch a summary of the daily application performance to the\ndevelopers for analysis during periods of idleness, or use the application’s\nCPU time to perform SETI calculations :) An idle watcher is also useful in\na GUI application. Say you are using an event loop for a file download. If the\nTCP socket is still being established and no other events are present your\nevent loop will pause (",
+      "ja": "idleハンドルのコールバックは、イベントループの反復ごとに1回呼び出されます。idleコールバックは、優先度の非常に低い処理にも使えます。たとえば、処理のない時間帯に、アプリケーションの1日の性能の要約を開発者へ送って分析してもらったり、アプリケーションのCPU時間でSETIの計算を行ったりできます :) idleウォッチャーはGUIアプリケーションにも役立ちます。イベントループでファイルをダウンロードしているとしましょう。TCPソケットをまだ確立している途中で、他にイベントがなければ、イベントループは一時停止、つまり、"
+    },
+    {
+      "index": 44,
+      "en": "block",
+      "ja": "ブロック"
+    },
+    {
+      "index": 45,
+      "en": "), which means your progress bar will freeze\nand the user will face an unresponsive application. In such a case queue up and\nidle watcher to keep the UI operational.",
+      "ja": "します。その結果、進捗バーが止まり、アプリケーションが応答しなくなります。そのような場合は、idleウォッチャーを登録してUIの動作を維持します。"
+    },
+    {
+      "index": 46,
+      "en": "idle-compute/main.c",
+      "ja": "idle-compute/main.c"
+    },
+    {
+      "index": 47,
+      "en": "Here we initialize the idle watcher and queue it up along with the actual\nevents we are interested in. ",
+      "ja": "ここではidleウォッチャーを初期化し、処理したい実際のイベントとともに登録します。"
+    },
+    {
+      "index": 48,
+      "en": " will now be called repeatedly\nuntil the user types something and presses Return. Then it will be interrupted\nfor a brief amount as the loop deals with the input data, after which it will\nkeep calling the idle callback again.",
+      "ja": "は、ユーザーが何か入力してReturnキーを押すまで繰り返し呼び出されます。その後、ループが入力データを扱う間は短時間中断し、それから再びidleコールバックを呼び続けます。"
+    },
+    {
+      "index": 49,
+      "en": "idle-compute/main.c",
+      "ja": "idle-compute/main.c"
+    },
+    {
+      "index": 50,
+      "en": "Passing data to worker thread",
+      "ja": "ワーカースレッドへのデータの受け渡し"
+    },
+    {
+      "index": 51,
+      "en": "When using ",
+      "ja": "通常、"
+    },
+    {
+      "index": 52,
+      "en": " you’ll usually need to pass complex data through\nto the worker thread. The solution is to use a ",
+      "ja": "を使うときには、複雑なデータをワーカースレッドへ渡す必要があります。解決策は、"
+    },
+    {
+      "index": 53,
+      "en": " and set\n",
+      "ja": "を使い、"
+    },
+    {
+      "index": 54,
+      "en": " to point to it. A slight variation is to have the\n",
+      "ja": "がそれを指すようにすることです。少し異なる方法として、その構造体の最初のメンバーに、"
+    },
+    {
+      "index": 55,
+      "en": " itself as the first member of this struct (called a baton ",
+      "ja": "自体を置く方法があります。この構造体をバトンと呼びます、"
+    },
+    {
+      "index": 56,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 57,
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "index": 58,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 59,
+      "en": ").\nThis allows cleaning up the work request and all the data in one free call.",
+      "ja": "。この方法では、1回のfree呼び出しで、作業リクエストとすべてのデータを解放できます。"
+    },
+    {
+      "index": 60,
+      "en": "Here we create the baton and queue the task.",
+      "ja": "ここではバトンを作成し、タスクをキューに入れます。"
+    },
+    {
+      "index": 61,
+      "en": "Now the task function can extract the data it needs:",
+      "ja": "タスク関数は、必要なデータを取り出せます。"
+    },
+    {
+      "index": 62,
+      "en": "We then free the baton which also frees the watcher.",
+      "ja": "最後にバトンを解放すると、ウォッチャーも解放されます。"
+    },
+    {
+      "index": 63,
+      "en": "External I/O with polling",
+      "ja": "ポーリングによる外部I/O"
+    },
+    {
+      "index": 64,
+      "en": "Usually third-party libraries will handle their own I/O, and keep track of\ntheir sockets and other files internally. In this case it isn’t possible to use\nthe standard stream I/O operations, but the library can still be integrated\ninto the libuv event loop. All that is required is that the library allow you\nto access the underlying file descriptors and provide functions that process\ntasks in small increments as decided by your application. Some libraries though\nwill not allow such access, providing only a standard blocking function which\nwill perform the entire I/O transaction and only then return. It is unwise to\nuse these in the event loop thread, use the ",
+      "ja": "通常、サードパーティーのライブラリは、自身のI/Oを扱い、ソケットや他のファイルを内部で管理します。その場合は標準のストリームI/O操作を使えませんが、libuvのイベントループにライブラリを組み込むことはできます。必要なのは、基になるファイルディスクリプターへアクセスできることと、アプリケーションの判断に従ってタスクを少しずつ進める関数があることだけです。ただし、このようなアクセスを許さず、I/Oの処理全体を行ってから戻る標準的なブロッキング関数だけを提供するライブラリもあります。それをイベントループのスレッドで使うのは適切ではないので、代わりに、"
+    },
+    {
+      "index": 65,
+      "en": "Thread pool work scheduling",
+      "ja": "スレッドプールでの作業のスケジューリング"
+    },
+    {
+      "index": 66,
+      "en": " instead. Of\ncourse, this will also mean losing granular control on the library.",
+      "ja": "を使ってください。ただし、その場合は、ライブラリを細かく制御できなくなります。"
+    },
+    {
+      "index": 67,
+      "en": "The ",
+      "ja": "libuvの、"
+    },
+    {
+      "index": 68,
+      "en": " section of libuv simply watches file descriptors using the\noperating system notification mechanism. In some sense, all the I/O operations\nthat libuv implements itself are also backed by ",
+      "ja": "の部分は、OSの通知機構を使ってファイルディスクリプターを監視します。ある意味では、libuv自身が実装するI/O操作もすべて、"
+    },
+    {
+      "index": 69,
+      "en": " like code. Whenever\nthe OS notices a change of state in file descriptors being polled, libuv will\ninvoke the associated callback.",
+      "ja": "と同様のコードを基にしています。ポーリング中のファイルディスクリプターの状態変化をOSが検知すると、libuvが対応するコールバックを呼び出します。"
+    },
+    {
+      "index": 70,
+      "en": "Here we will walk through a simple download manager that will use ",
+      "ja": "ここでは、"
+    },
+    {
+      "index": 71,
+      "en": "libcurl",
+      "ja": "libcurl"
+    },
+    {
+      "index": 72,
+      "en": " to\ndownload files. Rather than give all control to libcurl, we’ll instead be\nusing the libuv event loop, and use the non-blocking, async ",
+      "ja": "を使ってファイルをダウンロードする単純なダウンロードマネージャーを見ていきます。libcurlにすべての制御を任せる代わりに、libuvのイベントループと、非ブロッキングで非同期の、"
+    },
+    {
+      "index": 73,
+      "en": "multi",
+      "ja": "multi"
+    },
+    {
+      "index": 74,
+      "en": " interface to\nprogress with the download whenever libuv notifies of I/O readiness.",
+      "ja": "インターフェイスを使い、libuvがI/Oの準備完了を通知するたびにダウンロードを進めます。"
+    },
+    {
+      "index": 75,
+      "en": "uvwget/main.c - The setup",
+      "ja": "uvwget/main.c - 初期設定"
+    },
+    {
+      "index": 76,
+      "en": "The way each library is integrated with libuv will vary. In the case of\nlibcurl, we can register two callbacks. The socket callback ",
+      "ja": "libuvへ組み込む方法はライブラリによって異なります。libcurlでは、2つのコールバックを登録できます。ソケットのコールバック、"
+    },
+    {
+      "index": 77,
+      "en": "\nis invoked whenever the state of a socket changes and we have to start polling\nit. ",
+      "ja": "は、ソケットの状態が変わり、ポーリングを開始する必要が生じるたびに呼び出されます。"
+    },
+    {
+      "index": 78,
+      "en": " is called by libcurl to notify us of the next timeout\ninterval, after which we should drive libcurl forward regardless of I/O status.\nThis is so that libcurl can handle errors or do whatever else is required to\nget the download moving.",
+      "ja": "はlibcurlから呼び出され、次のタイムアウトまでの間隔を通知します。その時間が経過したら、I/Oの状態にかかわらずlibcurlを進めます。これにより、libcurlはエラーを処理したり、ダウンロードを進めるために必要な処理を行ったりできます。"
+    },
+    {
+      "index": 79,
+      "en": "Our downloader is to be invoked as:",
+      "ja": "このダウンローダーは、次のように起動します。"
+    },
+    {
+      "index": 80,
+      "en": "So we add each argument as a URL",
+      "ja": "各引数をURLとして追加します。"
+    },
+    {
+      "index": 81,
+      "en": "uvwget/main.c - Adding urls",
+      "ja": "uvwget/main.c - URLの追加"
+    },
+    {
+      "index": 82,
+      "en": "We let libcurl directly write the data to a file, but much more is possible if\nyou so desire.",
+      "ja": "データはlibcurlからファイルへ直接書き込むようにしていますが、必要であれば、さらに多様な処理もできます。"
+    },
+    {
+      "index": 83,
+      "en": " will be called immediately the first time by libcurl, so\nthings are set in motion. This simply starts a libuv ",
+      "ja": "は、最初はlibcurlから即座に呼び出され、処理が動き始めます。この関数は、libuvの、"
+    },
+    {
+      "index": 84,
+      "en": "timer",
+      "ja": "タイマー"
+    },
+    {
+      "index": 85,
+      "en": " which\ndrives ",
+      "ja": "を開始するだけです。タイマーが期限に達するたびに、"
+    },
+    {
+      "index": 86,
+      "en": " with ",
+      "ja": "に、"
+    },
+    {
+      "index": 87,
+      "en": " whenever it\ntimes out. ",
+      "ja": "を指定して実行します。"
+    },
+    {
+      "index": 88,
+      "en": " is what drives libcurl, and what we\ncall whenever sockets change state. But before we go into that, we need to poll\non sockets whenever ",
+      "ja": "はlibcurlの処理を進める関数であり、ソケットの状態が変わるたびに呼び出します。ただし、その説明の前に、"
+    },
+    {
+      "index": 89,
+      "en": " is called.",
+      "ja": "が呼び出されるたびに、ソケットのポーリングを行う必要があります。"
+    },
+    {
+      "index": 90,
+      "en": "uvwget/main.c - Setting up polling",
+      "ja": "uvwget/main.c - ポーリングの設定"
+    },
+    {
+      "index": 91,
+      "en": "We are interested in the socket fd ",
+      "ja": "対象は、ソケットのファイルディスクリプター、"
+    },
+    {
+      "index": 92,
+      "en": ", and the ",
+      "ja": "と、"
+    },
+    {
+      "index": 93,
+      "en": ". For every socket\nwe create a ",
+      "ja": "です。ソケットごとに、まだ存在していなければ、"
+    },
+    {
+      "index": 94,
+      "en": " handle if it doesn’t exist, and associate it with the\nsocket using ",
+      "ja": "ハンドルを作成し、"
+    },
+    {
+      "index": 95,
+      "en": ". This way ",
+      "ja": "を使ってソケットに関連付けます。これにより、コールバックが呼び出されるたびに、"
+    },
+    {
+      "index": 96,
+      "en": " points to it whenever\nthe callback is invoked.",
+      "ja": "がそのハンドルを指します。"
+    },
+    {
+      "index": 97,
+      "en": "In the case that the download is done or fails, libcurl requests removal of the\npoll. So we stop and free the poll handle.",
+      "ja": "ダウンロードが完了または失敗すると、libcurlがポーリングの解除を要求します。そこで、ポーリングのハンドルを停止し、解放します。"
+    },
+    {
+      "index": 98,
+      "en": "Depending on what events libcurl wishes to watch for, we start polling with\n",
+      "ja": "libcurlが監視したいイベントに応じて、"
+    },
+    {
+      "index": 99,
+      "en": " or ",
+      "ja": "または、"
+    },
+    {
+      "index": 100,
+      "en": ". Now libuv will invoke the poll callback\nwhenever the socket is ready for reading or writing. Calling ",
+      "ja": "でポーリングを開始します。ソケットが読み書き可能になるたびに、libuvがポーリングのコールバックを呼び出します。同じハンドルで、"
+    },
+    {
+      "index": 101,
+      "en": "\nmultiple times on the same handle is acceptable, it will just update the events\nmask with the new value. ",
+      "ja": "を複数回呼び出してもかまいません。イベントマスクが新しい値に更新されるだけです。"
+    },
+    {
+      "index": 102,
+      "en": " is the crux of this program.",
+      "ja": "がこのプログラムの中核です。"
+    },
+    {
+      "index": 103,
+      "en": "uvwget/main.c - Driving libcurl.",
+      "ja": "uvwget/main.c - libcurlの処理を進める"
+    },
+    {
+      "index": 104,
+      "en": "The first thing we do is to stop the timer, since there has been some progress\nin the interval. Then depending on what event triggered the callback, we set\nthe correct flags. Then we call ",
+      "ja": "最初にタイマーを停止します。その間に処理が進んだからです。次に、コールバックを引き起こしたイベントに応じて正しいフラグを設定します。それから、処理が進んだソケットと、発生したイベントを示すフラグを指定して、"
+    },
+    {
+      "index": 105,
+      "en": " with the socket\nthat progressed and the flags informing about what events happened. At this\npoint libcurl does all of its internal tasks in small increments, and will\nattempt to return as fast as possible, which is exactly what an evented program\nwants in its main thread. libcurl keeps queueing messages into its own queue\nabout transfer progress. In our case we are only interested in transfers that\nare completed. So we extract these messages, and clean up handles whose\ntransfers are done.",
+      "ja": "を呼び出します。この時点で、libcurlは内部のすべてのタスクを少しずつ処理し、できるだけ早く戻ろうとします。これはイベント駆動のプログラムがメインスレッドに求める動作そのものです。libcurlは、転送の進捗についてのメッセージを自身のキューへ入れ続けます。今回は、完了した転送だけが対象です。そのため、それらのメッセージを取り出し、転送が終了したハンドルを片付けます。"
+    },
+    {
+      "index": 106,
+      "en": "uvwget/main.c - Reading transfer status.",
+      "ja": "uvwget/main.c - 転送状態の読み取り"
+    },
+    {
+      "index": 107,
+      "en": "Check & Prepare watchers",
+      "ja": "check・prepareウォッチャー"
+    },
+    {
+      "index": 108,
+      "en": "TODO",
+      "ja": "TODO"
+    },
+    {
+      "index": 109,
+      "en": "Loading libraries",
+      "ja": "ライブラリの読み込み"
+    },
+    {
+      "index": 110,
+      "en": "libuv provides a cross platform API to dynamically load ",
+      "ja": "libuvは、動的に、"
+    },
+    {
+      "index": 111,
+      "en": "shared libraries",
+      "ja": "共有ライブラリ"
+    },
+    {
+      "index": 112,
+      "en": ".\nThis can be used to implement your own plugin/extension/module system and is\nused by node.js to implement ",
+      "ja": "を読み込むためのクロスプラットフォームAPIを提供します。これを使って、独自のプラグイン・拡張・モジュールの仕組みを実装できます。node.jsでも、バインディングでの、"
+    },
+    {
+      "index": 113,
+      "en": " support for bindings. The usage is\nquite simple as long as your library exports the right symbols. Be careful with\nsanity and security checks when loading third party code, otherwise your\nprogram will behave unpredictably. This example implements a very simple\nplugin system which does nothing except print the name of the plugin.",
+      "ja": "のサポートに使われています。ライブラリが正しいシンボルを公開していれば、使い方は簡単です。サードパーティーのコードを読み込むときは、整合性と安全性のチェックに注意してください。そうしないと、プログラムの動作が予測できなくなります。この例では、プラグインの名前を表示するだけの非常に単純なプラグインの仕組みを実装します。"
+    },
+    {
+      "index": 114,
+      "en": "Let us first look at the interface provided to plugin authors.",
+      "ja": "まず、プラグインの作成者に提供するインターフェイスを見てみましょう。"
+    },
+    {
+      "index": 115,
+      "en": "plugin/plugin.h",
+      "ja": "plugin/plugin.h"
+    },
+    {
+      "index": 116,
+      "en": "You can similarly add more functions that plugin authors can use to do useful\nthings in your application ",
+      "ja": "同様に、プラグインの作成者がアプリケーションで役立つ処理を行えるよう、関数をさらに追加できます、"
+    },
+    {
+      "index": 117,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 118,
+      "en": "2",
+      "ja": "2"
+    },
+    {
+      "index": 119,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 120,
+      "en": ". A sample plugin using this API is:",
+      "ja": "。このAPIを使うプラグインの例は次のとおりです。"
+    },
+    {
+      "index": 121,
+      "en": "plugin/hello.c",
+      "ja": "plugin/hello.c"
+    },
+    {
+      "index": 122,
+      "en": "Our interface defines that all plugins should have an ",
+      "ja": "このインターフェイスでは、すべてのプラグインに、アプリケーションから呼び出される、"
+    },
+    {
+      "index": 123,
+      "en": " function\nwhich will be called by the application. This plugin is compiled as a shared\nlibrary and can be loaded by running our application:",
+      "ja": "関数が必要と定めています。このプラグインは共有ライブラリとしてコンパイルされ、次のようにアプリケーションを起動すると読み込めます。"
+    },
+    {
+      "index": 124,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 125,
+      "en": "The shared library filename will be different depending on platforms. On\nLinux it is ",
+      "ja": "共有ライブラリのファイル名はプラットフォームによって異なります。Linuxでは、"
+    },
+    {
+      "index": 126,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 127,
+      "en": "This is done by using ",
+      "ja": "まず、"
+    },
+    {
+      "index": 128,
+      "en": " to first load the shared library\n",
+      "ja": "を使って共有ライブラリ、"
+    },
+    {
+      "index": 129,
+      "en": ". Then we get access to the ",
+      "ja": "を読み込みます。その後、"
+    },
+    {
+      "index": 130,
+      "en": " function using\n",
+      "ja": "関数を、"
+    },
+    {
+      "index": 131,
+      "en": " and invoke it.",
+      "ja": "を使って取得し、呼び出します。"
+    },
+    {
+      "index": 132,
+      "en": "plugin/main.c",
+      "ja": "plugin/main.c"
+    },
+    {
+      "index": 133,
+      "en": " expects a path to the shared library and sets the opaque\n",
+      "ja": "は共有ライブラリのパスを受け取り、不透明な、"
+    },
+    {
+      "index": 134,
+      "en": " pointer. It returns 0 on success, -1 on error. Use ",
+      "ja": "ポインターを設定します。成功時は0、エラー時は-1を返します。エラーメッセージの取得には、"
+    },
+    {
+      "index": 135,
+      "en": "\nto get the error message.",
+      "ja": "を使います。"
+    },
+    {
+      "index": 136,
+      "en": " stores a pointer to the symbol in the second argument in the third\nargument. ",
+      "ja": "は、第2引数で指定したシンボルへのポインターを、第3引数へ格納します。"
+    },
+    {
+      "index": 137,
+      "en": " is a function pointer to the sort of\nfunction we are looking for in the application’s plugins.",
+      "ja": "は、アプリケーションのプラグインで必要とする種類の関数を指す関数ポインターです。"
+    },
+    {
+      "index": 138,
+      "en": "TTY",
+      "ja": "TTY"
+    },
+    {
+      "index": 139,
+      "en": "Text terminals have supported basic formatting for a long time, with a ",
+      "ja": "テキスト端末は古くから、"
+    },
+    {
+      "index": 140,
+      "en": "pretty\nstandardised",
+      "ja": "おおむね標準化された"
+    },
+    {
+      "index": 141,
+      "en": " command set. This formatting is often used by programs to\nimprove the readability of terminal output. For example ",
+      "ja": "コマンド群による基本的な書式設定をサポートしています。この書式設定は、端末出力の読みやすさを改善するために、よく使われます。たとえば、"
+    },
+    {
+      "index": 142,
+      "en": ".\nlibuv provides the ",
+      "ja": "です。libuvは、"
+    },
+    {
+      "index": 143,
+      "en": " abstraction (a stream) and related functions to\nimplement the ANSI escape codes across all platforms. By this I mean that libuv\nconverts ANSI codes to the Windows equivalent, and provides functions to get\nterminal information.",
+      "ja": "というストリームの抽象化と関連関数を提供し、すべてのプラットフォームでANSIエスケープコードを実装します。つまり、libuvはANSIコードをWindowsでの対応する処理に変換し、端末情報を取得する関数も提供します。"
+    },
+    {
+      "index": 144,
+      "en": "The first thing to do is to initialize a ",
+      "ja": "最初に、読み書きするファイルディスクリプターを使って、"
+    },
+    {
+      "index": 145,
+      "en": " with the file descriptor\nit reads/writes from. This is achieved with:",
+      "ja": "を初期化します。次の関数を使います。"
+    },
+    {
+      "index": 146,
+      "en": "The ",
+      "ja": "現在、"
+    },
+    {
+      "index": 147,
+      "en": " parameter is now auto-detected and ignored. It previously needed\nto be set to use ",
+      "ja": "パラメーターは自動検出され、無視されます。以前は、そのストリームで、"
+    },
+    {
+      "index": 148,
+      "en": " on the stream.",
+      "ja": "を使うために設定する必要がありました。"
+    },
+    {
+      "index": 149,
+      "en": "It is then best to use ",
+      "ja": "その後、"
+    },
+    {
+      "index": 150,
+      "en": " to set the mode to ",
+      "ja": "を使い、モードを、"
+    },
+    {
+      "index": 151,
+      "en": "normal",
+      "ja": "通常"
+    },
+    {
+      "index": 152,
+      "en": "\nwhich enables most TTY formatting, flow-control and other settings. ",
+      "ja": "に設定するとよいでしょう。これにより、TTYの多くの書式設定、フロー制御、その他の設定が有効になります。"
+    },
+    {
+      "index": 153,
+      "en": "Other",
+      "ja": "他の"
+    },
+    {
+      "index": 154,
+      "en": " modes\nare also available.",
+      "ja": "モードもあります。"
+    },
+    {
+      "index": 155,
+      "en": "Remember to call ",
+      "ja": "プログラムを終了するときは、"
+    },
+    {
+      "index": 156,
+      "en": " when your program exits to restore the\nstate of the terminal. Just good manners. Another set of good manners is to be\naware of redirection. If the user redirects the output of your command to\na file, control sequences should not be written as they impede readability and\n",
+      "ja": "を呼び出して端末の状態を復元してください。これは基本的な配慮です。リダイレクトへの配慮も必要です。ユーザーがコマンドの出力をファイルにリダイレクトした場合、制御シーケンスを書き込むと読みやすさや、"
+    },
+    {
+      "index": 157,
+      "en": ". To check if the file descriptor is indeed a TTY, call\n",
+      "ja": "の処理を妨げるので、書き込まないようにします。ファイルディスクリプターが実際にTTYかどうかを確認するには、それを指定して、"
+    },
+    {
+      "index": 158,
+      "en": " with the file descriptor and compare the return value with\n",
+      "ja": "を呼び出し、戻り値を、"
+    },
+    {
+      "index": 159,
+      "en": ".",
+      "ja": "と比較します。"
+    },
+    {
+      "index": 160,
+      "en": "Here is a simple example which prints white text on a red background:",
+      "ja": "赤い背景に白い文字を表示する単純な例を示します。"
+    },
+    {
+      "index": 161,
+      "en": "tty/main.c",
+      "ja": "tty/main.c"
+    },
+    {
+      "index": 162,
+      "en": "The final TTY helper is ",
+      "ja": "最後のTTY補助関数は、"
+    },
+    {
+      "index": 163,
+      "en": " which is used to get the\nwidth and height of the terminal and returns ",
+      "ja": "です。端末の幅と高さを取得し、成功時は、"
+    },
+    {
+      "index": 164,
+      "en": " on success. Here is a small\nprogram which does some animation using the function and character position\nescape codes.",
+      "ja": "を返します。この関数と、文字位置のエスケープコードを使ってアニメーションを行う、小さなプログラムを示します。"
+    },
+    {
+      "index": 165,
+      "en": "tty-gravity/main.c",
+      "ja": "tty-gravity/main.c"
+    },
+    {
+      "index": 166,
+      "en": "The escape codes are:",
+      "ja": "エスケープコードは次のとおりです。"
+    },
+    {
+      "index": 167,
+      "en": "Code",
+      "ja": "コード"
+    },
+    {
+      "index": 168,
+      "en": "Meaning",
+      "ja": "意味"
+    },
+    {
+      "index": 169,
+      "en": "2",
+      "ja": "2"
+    },
+    {
+      "index": 170,
+      "en": " J",
+      "ja": " J"
+    },
+    {
+      "index": 171,
+      "en": "Clear part of the screen, 2 is entire screen",
+      "ja": "画面の一部を消去します。2では画面全体を消去します。"
+    },
+    {
+      "index": 172,
+      "en": "H",
+      "ja": "H"
+    },
+    {
+      "index": 173,
+      "en": "Moves cursor to certain position, default top-left",
+      "ja": "カーソルを指定位置へ移動します。既定は左上です。"
+    },
+    {
+      "index": 174,
+      "en": "n",
+      "ja": "n"
+    },
+    {
+      "index": 175,
+      "en": " B",
+      "ja": " B"
+    },
+    {
+      "index": 176,
+      "en": "Moves cursor down by n lines",
+      "ja": "カーソルをn行下へ移動します。"
+    },
+    {
+      "index": 177,
+      "en": "n",
+      "ja": "n"
+    },
+    {
+      "index": 178,
+      "en": " C",
+      "ja": " C"
+    },
+    {
+      "index": 179,
+      "en": "Moves cursor right by n columns",
+      "ja": "カーソルをn列右へ移動します。"
+    },
+    {
+      "index": 180,
+      "en": "m",
+      "ja": "m"
+    },
+    {
+      "index": 181,
+      "en": "Obeys string of display settings, in this case green background (40+2), white text (30+7)",
+      "ja": "表示設定の文字列に従います。この例では、背景を緑（40+2）、文字を白（30+7）にします。"
+    },
+    {
+      "index": 182,
+      "en": "As you can see this is very useful to produce nicely formatted output, or even\nconsole based arcade games if that tickles your fancy. For fancier control you\ncan try ",
+      "ja": "このように、見やすく整えた出力を作るのに便利で、好みであれば、コンソールのアーケードゲームにも使えます。より高度な制御には、"
+    },
+    {
+      "index": 183,
+      "en": "ncurses",
+      "ja": "ncurses"
+    },
+    {
+      "index": 184,
+      "en": ".",
+      "ja": "も試せます。"
+    },
+    {
+      "index": 185,
+      "en": "Changed in version 1.23.1:: ",
+      "ja": "バージョン1.23.1での変更: "
+    },
+    {
+      "index": 186,
+      "en": "the ",
+      "ja": "現在、"
+    },
+    {
+      "index": 187,
+      "en": "readable",
+      "ja": "readable"
+    },
+    {
+      "index": 188,
+      "en": " parameter is now unused and ignored.\nThe appropriate value will now be auto-detected from the kernel.",
+      "ja": "パラメーターは未使用で、無視されます。適切な値がカーネルから自動検出されます。"
+    },
+    {
+      "index": 189,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 190,
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "index": 191,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 192,
+      "en": "I was first introduced to the term baton in this context, in Konstantin\nKäfer’s excellent slides on writing node.js bindings –\n",
+      "ja": "この文脈でバトンという用語に初めて触れたのは、Konstantin Käferによるnode.jsのバインディングの書き方についての優れたスライドです。"
+    },
+    {
+      "index": 193,
+      "en": "https://kkaefer.github.io/node-cpp-modules/#baton",
+      "ja": "https://kkaefer.github.io/node-cpp-modules/#baton"
+    },
+    {
+      "index": 194,
+      "en": "\n(",
+      "ja": "（"
+    },
+    {
+      "index": 195,
+      "en": "video",
+      "ja": "動画"
+    },
+    {
+      "index": 196,
+      "en": ")",
+      "ja": "）"
+    },
+    {
+      "index": 197,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 198,
+      "en": "2",
+      "ja": "2"
+    },
+    {
+      "index": 199,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 200,
+      "en": "mfp is My Fancy Plugin",
+      "ja": "mfpはMy Fancy Pluginの略です。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 24,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "page": "guide/eventloops",
+  "at": "2026-10-04T21:10:55.986058+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/eventloops.rst",
+      "sha256": "00d4b0ec25bbf56753d5e6881aca5a7f2b0a0543ff96638351d14cf803794b82"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/eventloops.md",
+      "sha256": "c634161133cb5e7ffe9329272ccbc7376c9b0f9b272651414c1fe4ce99db3ad3"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/eventloops.md",
+      "sha256": "32e0d7ef47e65637344dc48f503442cc96d4eb0022e9d53cf8a7bd2ae8cac36b"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, 2 code blocks, warnings, footnotes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Advanced event loops",
+      "ja": "イベントループの高度な使い方"
+    },
+    {
+      "index": 1,
+      "en": "libuv provides considerable user control over event loops, and you can achieve\ninteresting results by juggling multiple loops. You can also embed libuv’s\nevent loop into another event loop based library – imagine a Qt based UI, and\nQt’s event loop driving a libuv backend which does intensive system level\ntasks.",
+      "ja": "libuvはイベントループを細かく制御する機能を提供し、複数のループを組み合わせて興味深い結果を得られます。また、libuvのイベントループを、別のイベントループを使うライブラリに組み込むこともできます。たとえば、QtベースのUIで、Qtのイベントループが、負荷の高いシステムレベルのタスクを行うlibuvバックエンドを動かす場合です。"
+    },
+    {
+      "index": 2,
+      "en": "Stopping an event loop",
+      "ja": "イベントループの停止"
+    },
+    {
+      "index": 3,
+      "en": " can be used to stop an event loop. The earliest the loop will\nstop running is ",
+      "ja": "は、イベントループの停止に使えます。ループの実行が停止するのは、最も早くても、"
+    },
+    {
+      "index": 4,
+      "en": "on the next iteration",
+      "ja": "次の反復時"
+    },
+    {
+      "index": 5,
+      "en": ", possibly later. This means that events\nthat are ready to be processed in this iteration of the loop will still be\nprocessed, so ",
+      "ja": "で、それより後になることもあります。つまり、ループの現在の反復で処理可能になっているイベントは、引き続き処理されます。そのため、"
+    },
+    {
+      "index": 6,
+      "en": " can’t be used as a kill switch. When ",
+      "ja": "を即時停止スイッチとして使うことはできません。"
+    },
+    {
+      "index": 7,
+      "en": "\nis called, the loop ",
+      "ja": "を呼び出すと、この反復では、ループは、"
+    },
+    {
+      "index": 8,
+      "en": "won’t",
+      "ja": "ブロックせず"
+    },
+    {
+      "index": 9,
+      "en": " block for i/o on this iteration. The semantics of\nthese things can be a bit difficult to understand, so let’s look at\n",
+      "ja": "にI/Oを扱います。これらの意味は少しわかりにくいので、制御の流れ全体を処理する、"
+    },
+    {
+      "index": 10,
+      "en": " where all the control flow occurs.",
+      "ja": "を見てみましょう。"
+    },
+    {
+      "index": 11,
+      "en": "src/unix/core.c - uv_run",
+      "ja": "src/unix/core.c - uv_run"
+    },
+    {
+      "index": 12,
+      "en": " is set by ",
+      "ja": "は、"
+    },
+    {
+      "index": 13,
+      "en": ". Now all libuv callbacks are invoked\nwithin the event loop, which is why invoking ",
+      "ja": "が設定します。libuvのコールバックはすべてイベントループ内で呼び出されるため、コールバックから、"
+    },
+    {
+      "index": 14,
+      "en": " in them will still\nlead to this iteration of the loop occurring. First libuv updates timers, then\nruns pending timer, idle and prepare callbacks, and invokes any pending I/O\ncallbacks. If you were to call ",
+      "ja": "を呼び出しても、ループの現在の反復は進みます。まずlibuvがタイマーを更新し、その後、保留中のタイマー・idle・prepareコールバックを実行し、保留中のI/Oコールバックを呼び出します。これらのいずれかで、"
+    },
+    {
+      "index": 15,
+      "en": " in any of them, ",
+      "ja": "を呼び出すと、"
+    },
+    {
+      "index": 16,
+      "en": "\nwould be set. This causes ",
+      "ja": "が設定されます。その結果、"
+    },
+    {
+      "index": 17,
+      "en": " to return ",
+      "ja": "が、"
+    },
+    {
+      "index": 18,
+      "en": ", which is\nwhy the loop does not block on I/O. If on the other hand, you called\n",
+      "ja": "を返すため、ループはI/Oでブロックしません。一方、checkハンドラのいずれかで、"
+    },
+    {
+      "index": 19,
+      "en": " in one of the check handlers, I/O has already finished and is not\naffected.",
+      "ja": "を呼び出した場合は、I/Oはすでに終了しているので、影響を受けません。"
+    },
+    {
+      "index": 20,
+      "en": " is useful to shutdown a loop when a result has been computed or\nthere is an error, without having to ensure that all handlers are stopped one\nby one.",
+      "ja": "は、結果が計算できたときやエラーが起きたときに、各ハンドラを1つずつ停止させることなく、ループを停止するために役立ちます。"
+    },
+    {
+      "index": 21,
+      "en": "Here is a simple example that stops the loop and demonstrates how the current\niteration of the loop still takes places.",
+      "ja": "ループを停止しつつ、現在の反復の処理が引き続き行われることを示す単純な例を挙げます。"
+    },
+    {
+      "index": 22,
+      "en": "uvstop/main.c",
+      "ja": "uvstop/main.c"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 2,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}
