@@ -1,0 +1,73 @@
+{
+  "slug": "03-hunks",
+  "bodySHA256": "3999ab13fea6c80fd197f21b131acfbca84bd64bef8c33b4a75a29653efaaa44",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧1.1 Hunks⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Hunks-1\"><span>1.1 Hunks</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "When comparing two files, ⟦0⟧ finds sequences of lines common to both files, interspersed with groups of differing lines called ⟦1⟧hunks⟦2⟧. Comparing two identical files yields one sequence of common lines and no hunks, because no lines differ. Comparing two entirely different files yields no common lines and one large hunk that contains all lines of both files. In general, there are many ways to match up lines between two given files. ⟦3⟧ tries to minimize the total hunk size by finding large sequences of common lines interspersed with small hunks of differing lines.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<em class=\"dfn\">",
+        "⟦2⟧": "</em>",
+        "⟦3⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>When comparing two files, <code class=\"command\">diff</code> finds sequences of lines common to\nboth files, interspersed with groups of differing lines called\n<em class=\"dfn\">hunks</em>.  Comparing two identical files yields one sequence of\ncommon lines and no hunks, because no lines differ.  Comparing two\nentirely different files yields no common lines and one large hunk that\ncontains all lines of both files.  In general, there are many ways to\nmatch up lines between two given files.  <code class=\"command\">diff</code> tries to minimize\nthe total hunk size by finding large sequences of common lines\ninterspersed with small hunks of differing lines.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "For example, suppose the file ⟦0⟧ contains the three lines ‘⟦1⟧’, ‘⟦2⟧’, ‘⟦3⟧’, and the file ⟦4⟧ contains the same three lines in reverse order ‘⟦5⟧’, ‘⟦6⟧’, ‘⟦7⟧’. If ⟦8⟧ finds the line ‘⟦9⟧’ as common, then the command ‘⟦10⟧’ produces this output:",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">F</samp>",
+        "⟦1⟧": "<samp class=\"samp\">a</samp>",
+        "⟦2⟧": "<samp class=\"samp\">b</samp>",
+        "⟦3⟧": "<samp class=\"samp\">c</samp>",
+        "⟦4⟧": "<samp class=\"file\">G</samp>",
+        "⟦5⟧": "<samp class=\"samp\">c</samp>",
+        "⟦6⟧": "<samp class=\"samp\">b</samp>",
+        "⟦7⟧": "<samp class=\"samp\">a</samp>",
+        "⟦8⟧": "<code class=\"command\">diff</code>",
+        "⟦9⟧": "<samp class=\"samp\">c</samp>",
+        "⟦10⟧": "<samp class=\"samp\">diff F G</samp>"
+      },
+      "sourceHTML": "<p>For example, suppose the file <samp class=\"file\">F</samp> contains the three lines\n‘<samp class=\"samp\">a</samp>’, ‘<samp class=\"samp\">b</samp>’, ‘<samp class=\"samp\">c</samp>’, and the file <samp class=\"file\">G</samp> contains the same\nthree lines in reverse order ‘<samp class=\"samp\">c</samp>’, ‘<samp class=\"samp\">b</samp>’, ‘<samp class=\"samp\">a</samp>’.  If\n<code class=\"command\">diff</code> finds the line ‘<samp class=\"samp\">c</samp>’ as common, then the command\n‘<samp class=\"samp\">diff F G</samp>’ produces this output:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "But if ⟦0⟧ notices the common line ‘⟦1⟧’ instead, it produces this output:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"samp\">b</samp>"
+      },
+      "sourceHTML": "<p>But if <code class=\"command\">diff</code> notices the common line ‘<samp class=\"samp\">b</samp>’ instead, it produces\nthis output:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "It is also possible to find ‘⟦0⟧’ as the common line. ⟦1⟧ does not always find an optimal matching between the files; it takes shortcuts to run faster. But its output is usually close to the shortest possible. You can adjust this tradeoff with the ⟦2⟧ (⟦3⟧) option (see ⟦4⟧⟦5⟧ Performance Tradeoffs⟦6⟧).",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"samp\">a</samp>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<samp class=\"option\">--minimal</samp>",
+        "⟦3⟧": "<samp class=\"option\">-d</samp>",
+        "⟦4⟧": "<a class=\"pxref\" href=\"/docs/gnu-diffutils/source/v3-12/manual.html#diff-Performance\">",
+        "⟦5⟧": "<code class=\"command\">diff</code>",
+        "⟦6⟧": "</a>"
+      },
+      "sourceHTML": "<p>It is also possible to find ‘<samp class=\"samp\">a</samp>’ as the common line.  <code class=\"command\">diff</code>\ndoes not always find an optimal matching between the files; it takes\nshortcuts to run faster.  But its output is usually close to the\nshortest possible.  You can adjust this tradeoff with the\n<samp class=\"option\">--minimal</samp> (<samp class=\"option\">-d</samp>) option (see <a class=\"pxref\" href=\"/docs/gnu-diffutils/source/v3-12/manual.html#diff-Performance\"><code class=\"command\">diff</code> Performance Tradeoffs</a>).\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

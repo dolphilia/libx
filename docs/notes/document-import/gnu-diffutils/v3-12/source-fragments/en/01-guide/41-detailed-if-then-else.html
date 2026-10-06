@@ -1,0 +1,46 @@
+<div class="gnu-diffutils-original-content" id="Detailed-If_002dthen_002delse">
+<h4 class="subsection" id="Detailed-Description-of-If_002dthen_002delse-Format"><span>2.6.4 Detailed Description of If-then-else Format</span></h4>
+<p>For lines common to both files, <code class="command">diff</code> uses the unchanged line
+group format.  For each hunk of differences in the merged output
+format, if the hunk contains only lines from the first file,
+<code class="command">diff</code> uses the old line group format; if the hunk contains only
+lines from the second file, <code class="command">diff</code> uses the new group format;
+otherwise, <code class="command">diff</code> uses the changed group format.
+</p>
+<p>The old, new, and unchanged line formats specify the output format of
+lines from the first file, lines from the second file, and lines common
+to both files, respectively.
+</p>
+<p>The option <samp class="option">--ifdef=<var class="var">name</var></samp> is equivalent to
+the following sequence of options using shell syntax:
+</p>
+<div class="example">
+<pre class="example-preformatted">--old-group-format='#ifndef <var class="var">name</var>
+%&lt;#endif /* ! <var class="var">name</var> */
+' \
+--new-group-format='#ifdef <var class="var">name</var>
+%&gt;#endif /* <var class="var">name</var> */
+' \
+--unchanged-group-format='%=' \
+--changed-group-format='#ifndef <var class="var">name</var>
+%&lt;#else /* <var class="var">name</var> */
+%&gt;#endif /* <var class="var">name</var> */
+'
+</pre></div>
+<p>You should carefully check the <code class="command">diff</code> output for proper nesting.
+For example, when using the <samp class="option">-D <var class="var">name</var></samp> or
+<samp class="option">--ifdef=<var class="var">name</var></samp> option, you should check that if the
+differing lines contain any of the C preprocessor directives
+‘<samp class="samp">#ifdef</samp>’, ‘<samp class="samp">#ifndef</samp>’, ‘<samp class="samp">#else</samp>’, ‘<samp class="samp">#elif</samp>’, or
+‘<samp class="samp">#endif</samp>’, they are nested properly and match.  If they don’t, you
+must make corrections manually.  It is a good idea to carefully check
+the resulting code anyway to make sure that it really does what you
+want it to; depending on how the input files were produced, the output
+might contain duplicate or otherwise incorrect code.
+</p>
+<p>The <code class="command">patch</code> <samp class="option">-D <var class="var">name</var></samp> option behaves like
+the <code class="command">diff</code> <samp class="option">-D <var class="var">name</var></samp> option, except it operates on
+a file and a diff to produce a merged file.  See <a class="xref" href="#patch-Options">Options to <code class="command">patch</code></a>.
+</p>
+<hr/>
+</div>

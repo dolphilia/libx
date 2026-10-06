@@ -1,0 +1,30 @@
+<div class="gnu-diffutils-original-content" id="Brief">
+<h3 class="section" id="Summarizing-Which-Files-Differ"><span>1.6 Summarizing Which Files Differ</span></h3>
+<a class="index-entry-id" id="index-summarizing-which-files-differ"></a>
+<a class="index-entry-id" id="index-brief-difference-reports"></a>
+<p>When you only want to find out whether files are different, and you
+don’t care what the differences are, you can use the summary output
+format.  In this format, instead of showing the differences between the
+files, <code class="command">diff</code> simply reports whether files differ.  The
+<samp class="option">--brief</samp> (<samp class="option">-q</samp>) option selects this output format.
+</p>
+<p>This format is especially useful when comparing the contents of two
+directories.  It is also much faster than doing the normal line by line
+comparisons, because <code class="command">diff</code> can stop analyzing the files as soon as
+it knows that there are any differences.
+</p>
+<p>You can also get a brief indication of whether two files differ by using
+<code class="command">cmp</code>.  For files that are identical, <code class="command">cmp</code> produces no
+output.  When the files differ, by default, <code class="command">cmp</code> outputs the byte
+and line number where the first difference occurs, or reports that one
+file is a prefix of the other.  You can use
+the <samp class="option">-s</samp>, <samp class="option">--quiet</samp>, or <samp class="option">--silent</samp> option to
+suppress that information, so that <code class="command">cmp</code>
+produces no output and reports whether the files differ using only its
+exit status (see <a class="pxref" href="/docs/gnu-diffutils/source/v3-12/manual.html#Invoking-cmp">Invoking <code class="command">cmp</code></a>).
+</p>
+<p>Unlike <code class="command">diff</code>, <code class="command">cmp</code> cannot compare directories; it can only
+compare two files.
+</p>
+<hr/>
+</div>

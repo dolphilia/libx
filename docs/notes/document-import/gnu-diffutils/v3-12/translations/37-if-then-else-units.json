@@ -1,0 +1,64 @@
+{
+  "slug": "37-if-then-else",
+  "bodySHA256": "f7b5084d013207dca8546bb11044e179ffab1e2e855f5a6bb49a926571cef05e",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧2.6 Merging Files with If-then-else⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Merging-Files-with-If_002dthen_002delse\"><span>2.6 Merging Files with If-then-else</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "You can use ⟦0⟧ to merge two files of C source code. The output of ⟦1⟧ in this format contains all the lines of both files. Lines common to both files are output just once; the differing parts are separated by the C preprocessor directives ⟦2⟧ or ⟦3⟧, ⟦4⟧, and ⟦5⟧. When compiling the output, you select which version to use by either defining or leaving undefined the macro ⟦6⟧.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<code class=\"code\">#ifdef <var class=\"var\">name</var></code>",
+        "⟦3⟧": "<code class=\"code\">#ifndef <var class=\"var\">name</var></code>",
+        "⟦4⟧": "<code class=\"code\">#else</code>",
+        "⟦5⟧": "<code class=\"code\">#endif</code>",
+        "⟦6⟧": "<var class=\"var\">name</var>"
+      },
+      "sourceHTML": "<p>You can use <code class=\"command\">diff</code> to merge two files of C source code.  The output\nof <code class=\"command\">diff</code> in this format contains all the lines of both files.\nLines common to both files are output just once; the differing parts are\nseparated by the C preprocessor directives <code class=\"code\">#ifdef <var class=\"var\">name</var></code> or\n<code class=\"code\">#ifndef <var class=\"var\">name</var></code>, <code class=\"code\">#else</code>, and <code class=\"code\">#endif</code>.  When\ncompiling the output, you select which version to use by either defining\nor leaving undefined the macro <var class=\"var\">name</var>.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "To merge two files, use ⟦0⟧ with the ⟦1⟧ or ⟦2⟧ option. The argument ⟦3⟧ is the C preprocessor identifier to use in the ⟦4⟧ and ⟦5⟧ directives.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"option\">-D <var class=\"var\">name</var></samp>",
+        "⟦2⟧": "<samp class=\"option\">--ifdef=<var class=\"var\">name</var></samp>",
+        "⟦3⟧": "<var class=\"var\">name</var>",
+        "⟦4⟧": "<code class=\"code\">#ifdef</code>",
+        "⟦5⟧": "<code class=\"code\">#ifndef</code>"
+      },
+      "sourceHTML": "<p>To merge two files, use <code class=\"command\">diff</code> with the <samp class=\"option\">-D <var class=\"var\">name</var></samp> or\n<samp class=\"option\">--ifdef=<var class=\"var\">name</var></samp> option.  The argument <var class=\"var\">name</var> is the C\npreprocessor identifier to use in the <code class=\"code\">#ifdef</code> and <code class=\"code\">#ifndef</code>\ndirectives.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "For example, if you change an instance of ⟦0⟧ to ⟦1⟧ and then merge the old and new files with the ⟦2⟧ option, then the affected part of your code might look like this:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"code\">wait (&amp;s)</code>",
+        "⟦1⟧": "<code class=\"code\">waitpid (-1, &amp;s, 0)</code>",
+        "⟦2⟧": "<samp class=\"option\">--ifdef=HAVE_WAITPID</samp>"
+      },
+      "sourceHTML": "<p>For example, if you change an instance of <code class=\"code\">wait (&amp;s)</code> to\n<code class=\"code\">waitpid (-1, &amp;s, 0)</code> and then merge the old and new files with\nthe <samp class=\"option\">--ifdef=HAVE_WAITPID</samp> option, then the affected part of your code\nmight look like this:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "You can specify formats for languages other than C by using line group formats and line formats, as described in the next sections.",
+      "tokens": {},
+      "sourceHTML": "<p>You can specify formats for languages other than C by using line group\nformats and line formats, as described in the next sections.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

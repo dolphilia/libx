@@ -1,0 +1,115 @@
+<div class="gnu-diffutils-original-content" id="Line-Formats">
+<h4 class="subsection" id="Line-Formats-1"><span>2.6.2 Line Formats</span></h4>
+<a class="index-entry-id" id="index-line-formats"></a>
+<p>Line formats control how each line taken from an input file is
+output as part of a line group in if-then-else format.
+</p>
+<p>For example, the following command outputs text with a one-character
+change indicator to the left of the text.  The first character of output
+is ‘<samp class="samp">-</samp>’ for deleted lines, ‘<samp class="samp">|</samp>’ for added lines, and a space for
+unchanged lines.  The formats contain newline characters where newlines
+are desired on output.
+</p>
+<div class="example">
+<pre class="example-preformatted">diff \
+   --old-line-format='-%l
+' \
+   --new-line-format='|%l
+' \
+   --unchanged-line-format=' %l
+' \
+   old new
+</pre></div>
+<p>To specify a line format, use one of the following options.  You should
+quote <var class="var">format</var>, since it often contains shell metacharacters.
+</p>
+<dl class="table">
+<dt><samp class="option">--old-line-format=<var class="var">format</var></samp></dt>
+<dd><p>formats lines just from the first file.
+</p>
+</dd>
+<dt><samp class="option">--new-line-format=<var class="var">format</var></samp></dt>
+<dd><p>formats lines just from the second file.
+</p>
+</dd>
+<dt><samp class="option">--unchanged-line-format=<var class="var">format</var></samp></dt>
+<dd><p>formats lines common to both files.
+</p>
+</dd>
+<dt><samp class="option">--line-format=<var class="var">format</var></samp></dt>
+<dd><p>formats all lines; in effect, it sets all three above options simultaneously.
+</p></dd>
+</dl>
+<p>In a line format, ordinary characters represent themselves;
+conversion specifications start with ‘<samp class="samp">%</samp>’ and have one of the
+following forms.
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">%l</samp>’</dt>
+<dd><p>stands for the contents of the line, not counting its trailing
+newline (if any).  This format ignores whether the line is incomplete;
+See <a class="xref" href="#Incomplete-Lines">Incomplete Lines</a>.
+</p>
+</dd>
+<dt>‘<samp class="samp">%L</samp>’</dt>
+<dd><p>stands for the contents of the line, including its trailing newline
+(if any).  If a line is incomplete, this format preserves its
+incompleteness.
+</p>
+</dd>
+<dt>‘<samp class="samp">%%</samp>’</dt>
+<dd><p>stands for ‘<samp class="samp">%</samp>’.
+</p>
+</dd>
+<dt>‘<samp class="samp">%c'<var class="var">C</var>'</samp>’</dt>
+<dd><p>where <var class="var">C</var> is a single character, stands for <var class="var">C</var>.
+<var class="var">C</var> may not be a backslash or an apostrophe.
+For example, ‘<samp class="samp">%c':'</samp>’ stands for a colon.
+</p>
+</dd>
+<dt>‘<samp class="samp">%c'\<var class="var">O</var>'</samp>’</dt>
+<dd><p>where <var class="var">O</var> is a string of 1, 2, or 3 octal digits,
+stands for the character with octal code <var class="var">O</var>.
+For example, ‘<samp class="samp">%c'\0'</samp>’ stands for a null character.
+</p>
+</dd>
+<dt>‘<samp class="samp"><var class="var">F</var>n</samp>’</dt>
+<dd><p>where <var class="var">F</var> is a <code class="code">printf</code> conversion specification,
+stands for the line number formatted with <var class="var">F</var>.
+For example, ‘<samp class="samp">%.5dn</samp>’ prints the line number using the
+<code class="code">printf</code> format <code class="code">"%.5d"</code>.  See <a class="xref" href="#Line-Group-Formats">Line Group Formats</a>, for
+more about printf conversion specifications.
+</p>
+</dd>
+</dl>
+<p>The default line format is ‘<samp class="samp">%l</samp>’ followed by a newline character.
+</p>
+<p>If the input contains tab characters and it is important that they line
+up on output, you should ensure that ‘<samp class="samp">%l</samp>’ or ‘<samp class="samp">%L</samp>’ in a line
+format is just after a tab stop (e.g. by preceding ‘<samp class="samp">%l</samp>’ or
+‘<samp class="samp">%L</samp>’ with a tab character), or you should use the <samp class="option">-t</samp> or
+<samp class="option">--expand-tabs</samp> option.
+</p>
+<p>Taken together, the line and line group formats let you specify many
+different formats.  For example, the following command uses a format
+similar to normal <code class="command">diff</code> format.  You can tailor this command
+to get fine control over <code class="command">diff</code> output.
+</p>
+<div class="example">
+<pre class="example-preformatted">diff \
+   --old-line-format='&lt; %l
+' \
+   --new-line-format='&gt; %l
+' \
+   --old-group-format='%df%(f=l?:,%dl)d%dE
+%&lt;' \
+   --new-group-format='%dea%dF%(F=L?:,%dL)
+%&gt;' \
+   --changed-group-format='%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)
+%&lt;---
+%&gt;' \
+   --unchanged-group-format='' \
+   old new
+</pre></div>
+<hr/>
+</div>

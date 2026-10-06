@@ -1,0 +1,79 @@
+{
+  "slug": "34-detailed-ed",
+  "bodySHA256": "7e0f6d668bef7bc34b977ea1129846444aff5f59e3460dc1002081142d201781",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧2.5.1.2 Detailed Description of ⟦1⟧ Format⟦2⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<code class=\"command\">ed</code>",
+        "⟦2⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsubsection\" id=\"Detailed-Description-of-ed-Format\"><span>2.5.1.2 Detailed Description of <code class=\"command\">ed</code> Format</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "The ⟦0⟧ output format consists of one or more hunks of differences. The changes closest to the ends of the files come first so that commands that change the number of lines do not affect how ⟦1⟧ interprets line numbers in succeeding commands. ⟦2⟧ format hunks look like this:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<code class=\"command\">ed</code>",
+        "⟦2⟧": "<code class=\"command\">ed</code>"
+      },
+      "sourceHTML": "<p>The <code class=\"command\">ed</code> output format consists of one or more hunks of\ndifferences.  The changes closest to the ends of the files come first so\nthat commands that change the number of lines do not affect how\n<code class=\"command\">ed</code> interprets line numbers in succeeding commands.  <code class=\"command\">ed</code>\nformat hunks look like this:\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Because ⟦0⟧ uses a single period on a line to indicate the end of input, GNU ⟦1⟧ protects lines of changes that contain a single period on a line by writing two periods instead, then writing a subsequent ⟦2⟧ command to change the two periods into one. The ⟦3⟧ format cannot represent an incomplete line, so if the second file ends in a changed incomplete line, ⟦4⟧ reports an error and then pretends that a newline was appended.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">ed</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<code class=\"command\">ed</code>",
+        "⟦3⟧": "<code class=\"command\">ed</code>",
+        "⟦4⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>Because <code class=\"command\">ed</code> uses a single period on a line to indicate the\nend of input, GNU <code class=\"command\">diff</code> protects lines of changes\nthat contain a single period on a line by writing two periods instead,\nthen writing a subsequent <code class=\"command\">ed</code> command to change the two\nperiods into one.  The <code class=\"command\">ed</code> format cannot represent an\nincomplete line, so if the second file ends in a changed incomplete\nline, <code class=\"command\">diff</code> reports an error and then pretends that a newline\nwas appended.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "There are three types of change commands. Each consists of a line number or comma-separated range of lines in the first file and a single character indicating the kind of change to make. All line numbers are the original line numbers in the file. The types of change commands are:",
+      "tokens": {},
+      "sourceHTML": "<p>There are three types of change commands.  Each consists of a line\nnumber or comma-separated range of lines in the first file and a single\ncharacter indicating the kind of change to make.  All line numbers are\nthe original line numbers in the file.  The types of change commands\nare:\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "Add text from the second file after line ⟦0⟧ in the first file. For example, ‘⟦1⟧’ means to add the following lines after line 8 of file 1.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">l</var>",
+        "⟦1⟧": "<samp class=\"samp\">8a</samp>"
+      },
+      "sourceHTML": "<p>Add text from the second file after line <var class=\"var\">l</var> in the first file.  For\nexample, ‘<samp class=\"samp\">8a</samp>’ means to add the following lines after line 8 of file\n1.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "Replace the lines in range ⟦0⟧ in the first file with the following lines. Like a combined add and delete, but more compact. For example, ‘⟦1⟧’ means change lines 5–7 of file 1 to read as the text file 2.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">r</var>",
+        "⟦1⟧": "<samp class=\"samp\">5,7c</samp>"
+      },
+      "sourceHTML": "<p>Replace the lines in range <var class=\"var\">r</var> in the first file with the following\nlines.  Like a combined add and delete, but more compact.  For example,\n‘<samp class=\"samp\">5,7c</samp>’ means change lines 5–7 of file 1 to read as the text file\n2.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "Delete the lines in range ⟦0⟧ from the first file. For example, ‘⟦1⟧’ means delete lines 5–7 of file 1.",
+      "tokens": {
+        "⟦0⟧": "<var class=\"var\">r</var>",
+        "⟦1⟧": "<samp class=\"samp\">5,7d</samp>"
+      },
+      "sourceHTML": "<p>Delete the lines in range <var class=\"var\">r</var> from the first file.  For example,\n‘<samp class=\"samp\">5,7d</samp>’ means delete lines 5–7 of file 1.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

@@ -1,0 +1,22 @@
+<div class="gnu-diffutils-original-content" id="Alternate-Names">
+<h4 class="subsection" id="Showing-Alternate-File-Names"><span>2.2.4 Showing Alternate File Names</span></h4>
+<a class="index-entry-id" id="index-alternate-file-names"></a>
+<a class="index-entry-id" id="index-file-name-alternates"></a>
+<p>If you are comparing two files that have meaningless or uninformative
+names, you might want <code class="command">diff</code> to show alternate names in the header
+of the context and unified output formats.  To do this, use the
+<samp class="option">--label=<var class="var">label</var></samp> option.  The first time
+you give this option, its argument replaces the name and date of the
+first file in the header; the second time, its argument replaces the
+name and date of the second file.  If you give this option more than
+twice, <code class="command">diff</code> reports an error.  The <samp class="option">--label</samp> option does not
+affect the file names in the <code class="command">pr</code> header when the <samp class="option">-l</samp> or
+<samp class="option">--paginate</samp> option is used (see <a class="pxref" href="/docs/gnu-diffutils/source/v3-12/manual.html#Pagination">Paginating <code class="command">diff</code> Output</a>).
+</p>
+<p>Here are the first two lines of the output from ‘<samp class="samp">diff -C 2
+--label=original --label=modified lao tzu</samp>’:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">*** original&#10;--- modified&#10;</pre></div>
+<hr/>
+</div>

@@ -1,0 +1,63 @@
+{
+  "slug": "32-ed-scripts",
+  "bodySHA256": "db73fcbd75ece7f6d4b4bd45899152dac5508b180d5c410274dd4992628b22a8",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h4",
+      "text": "⟦0⟧2.5.1 ⟦1⟧ Scripts⟦2⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "<code class=\"command\">ed</code>",
+        "⟦2⟧": "</span>"
+      },
+      "sourceHTML": "<h4 class=\"subsection\" id=\"ed-Scripts-1\"><span>2.5.1 <code class=\"command\">ed</code> Scripts</span></h4>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "⟦0⟧ can produce commands that direct the ⟦1⟧ text editor to change the first file into the second file. Long ago, this was the only output mode that was suitable for editing one file into another automatically; today, with ⟦2⟧, it is almost obsolete. Use the ⟦3⟧ (⟦4⟧) option to select this output format.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">ed</code>",
+        "⟦2⟧": "<code class=\"command\">patch</code>",
+        "⟦3⟧": "<samp class=\"option\">--ed</samp>",
+        "⟦4⟧": "<samp class=\"option\">-e</samp>"
+      },
+      "sourceHTML": "<p><code class=\"command\">diff</code> can produce commands that direct the <code class=\"command\">ed</code> text editor\nto change the first file into the second file.  Long ago, this was the\nonly output mode that was suitable for editing one file into another\nautomatically; today, with <code class=\"command\">patch</code>, it is almost obsolete.  Use the\n<samp class=\"option\">--ed</samp> (<samp class=\"option\">-e</samp>) option to select this output format.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "Like the normal format (see ⟦0⟧Showing Differences Without Context⟦1⟧), this output format does not show any context; unlike the normal format, it does not include the information necessary to apply the diff in reverse (to produce the first file if all you have is the second file and the diff).",
+      "tokens": {
+        "⟦0⟧": "<a class=\"pxref\" href=\"/docs/gnu-diffutils/v3-12/en/01-guide/28-normal/#Normal\">",
+        "⟦1⟧": "</a>"
+      },
+      "sourceHTML": "<p>Like the normal format (see <a class=\"pxref\" href=\"/docs/gnu-diffutils/v3-12/en/01-guide/28-normal/#Normal\">Showing Differences Without Context</a>), this output format does not\nshow any context; unlike the normal format, it does not include the\ninformation necessary to apply the diff in reverse (to produce the first\nfile if all you have is the second file and the diff).\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "If the file ⟦0⟧ contains the output of ‘⟦1⟧’, then the command ‘⟦2⟧’ edits ⟦3⟧ to make it a copy of ⟦4⟧. More generally, if ⟦5⟧, ⟦6⟧, …, ⟦7⟧ contain the outputs of ‘⟦8⟧’, ‘⟦9⟧’, …, ‘⟦10⟧’, respectively, then the command ‘⟦11⟧’ edits ⟦12⟧ to make it a copy of ⟦13⟧.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"file\">d</samp>",
+        "⟦1⟧": "<samp class=\"samp\">diff -e old new</samp>",
+        "⟦2⟧": "<samp class=\"samp\">(cat d &amp;&amp; echo w) | ed - old</samp>",
+        "⟦3⟧": "<samp class=\"file\">old</samp>",
+        "⟦4⟧": "<samp class=\"file\">new</samp>",
+        "⟦5⟧": "<samp class=\"file\">d1</samp>",
+        "⟦6⟧": "<samp class=\"file\">d2</samp>",
+        "⟦7⟧": "<samp class=\"file\">dN</samp>",
+        "⟦8⟧": "<samp class=\"samp\">diff -e old new1</samp>",
+        "⟦9⟧": "<samp class=\"samp\">diff -e new1 new2</samp>",
+        "⟦10⟧": "<samp class=\"samp\">diff -e newN-1 newN</samp>",
+        "⟦11⟧": "<samp class=\"samp\">(cat d1 d2 … dN &amp;&amp; echo w) |\ned - old</samp>",
+        "⟦12⟧": "<samp class=\"file\">old</samp>",
+        "⟦13⟧": "<samp class=\"file\">newN</samp>"
+      },
+      "sourceHTML": "<p>If the file <samp class=\"file\">d</samp> contains the output of ‘<samp class=\"samp\">diff -e old new</samp>’, then\nthe command ‘<samp class=\"samp\">(cat d &amp;&amp; echo w) | ed - old</samp>’ edits <samp class=\"file\">old</samp> to make\nit a copy of <samp class=\"file\">new</samp>.  More generally, if <samp class=\"file\">d1</samp>, <samp class=\"file\">d2</samp>,\n…, <samp class=\"file\">dN</samp> contain the outputs of ‘<samp class=\"samp\">diff -e old new1</samp>’,\n‘<samp class=\"samp\">diff -e new1 new2</samp>’, …, ‘<samp class=\"samp\">diff -e newN-1 newN</samp>’,\nrespectively, then the command ‘<samp class=\"samp\">(cat d1 d2 … dN &amp;&amp; echo w) |\ned - old</samp>’ edits <samp class=\"file\">old</samp> to make it a copy of <samp class=\"file\">newN</samp>.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

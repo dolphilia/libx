@@ -1,0 +1,23 @@
+<div class="gnu-diffutils-original-content" id="RCS">
+<h4 class="subsection" id="RCS-Scripts"><span>2.5.3 RCS Scripts</span></h4>
+<a class="index-entry-id" id="index-RCS-script-output-format"></a>
+<p>The RCS output format is designed specifically for use by
+the Revision Control System, which is a set of free programs used for
+organizing different versions and systems of files.  Use the
+<samp class="option">--rcs</samp> (<samp class="option">-n</samp>) option to select this output format.  It
+is like the forward <code class="command">ed</code> format (see <a class="pxref" href="/docs/gnu-diffutils/v3-12/en/01-guide/35-forward-ed/#Forward-ed">Forward <code class="command">ed</code> Scripts</a>), but it
+can represent arbitrary changes to the contents of a file because it
+avoids the forward <code class="command">ed</code> format’s problems with lines
+consisting of a single period and with incomplete lines.  Instead of
+ending text sections with a line consisting of a single period, each
+command specifies the number of lines it affects; a combination of the
+‘<samp class="samp">a</samp>’ and ‘<samp class="samp">d</samp>’ commands are used instead of ‘<samp class="samp">c</samp>’.  Also, if
+the second file ends in a changed incomplete line, then the output
+also ends in an incomplete line.
+</p>
+<p>Here is the output of ‘<samp class="samp">diff -n lao tzu</samp>’ (see <a class="pxref" href="/docs/gnu-diffutils/v3-12/en/01-guide/12-sample-diff-input/#Sample-diff-Input">Two Sample Input Files</a>, for the complete contents of the two files):
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">d1 2&#10;d4 1&#10;a4 2&#10;The named is the mother of all things.&#10;&#10;a11 3&#10;They both may be called deep and profound.&#10;Deeper and more profound,&#10;The door of all subtleties!&#10;</pre></div>
+<hr/>
+</div>

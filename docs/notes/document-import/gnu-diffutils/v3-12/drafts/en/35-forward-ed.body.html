@@ -1,0 +1,18 @@
+<div class="gnu-diffutils-original-content" id="Forward-ed">
+<h4 class="subsection" id="Forward-ed-Scripts"><span>2.5.2 Forward <code class="command">ed</code> Scripts</span></h4>
+<a class="index-entry-id" id="index-forward-ed-script-output-format"></a>
+<p><code class="command">diff</code> can produce output that is like an <code class="command">ed</code> script, but
+with hunks in forward (front to back) order.  The format of the commands
+is also changed slightly: command characters precede the lines they
+modify, spaces separate line numbers in ranges, and no attempt is made
+to disambiguate hunk lines consisting of a single period.  Like
+<code class="command">ed</code> format, forward <code class="command">ed</code> format cannot represent incomplete
+lines.
+</p>
+<p>Forward <code class="command">ed</code> format is not very useful, because neither <code class="command">ed</code>
+nor <code class="command">patch</code> can apply diffs in this format.  It exists mainly for
+compatibility with older versions of <code class="command">diff</code>.  Use the <samp class="option">-f</samp> or
+<samp class="option">--forward-ed</samp> option to select it.
+</p>
+<hr/>
+</div>

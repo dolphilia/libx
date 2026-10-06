@@ -1,0 +1,45 @@
+<div class="gnu-diffutils-original-content" id="Detailed-Unified">
+<h4 class="subsubsection" id="Detailed-Description-of-Unified-Format"><span>2.2.2.2 Detailed Description of Unified Format</span></h4>
+<p>The unified output format starts with a two-line header, which looks
+like this:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">--- <var class="var">from-file</var> <var class="var">from-file-modification-time</var>&#10;+++ <var class="var">to-file</var> <var class="var">to-file-modification-time</var>&#10;</pre></div>
+<a class="index-entry-id" id="index-timestamp-format_002c-unified-diffs"></a>
+<p>The timestamp looks like ‘<samp class="samp">2002-02-21 23:30:39.942229878 -0800</samp>’
+to indicate the date, time with fractional seconds, and time zone.
+The fractional seconds are omitted on hosts that do not support
+fractional timestamps.
+</p>
+<p>You can change the header’s content with the
+<samp class="option">--label=<var class="var">label</var></samp> option. See <a class="xref" href="/docs/gnu-diffutils/v3-12/en/01-guide/24-alternate-names/#Alternate-Names">Showing Alternate File Names</a>.
+</p>
+<p>Next come one or more hunks of differences; each hunk shows one area
+where the files differ.  Unified format hunks look like this:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">@@ <var class="var">from-file-line-numbers</var> <var class="var">to-file-line-numbers</var> @@&#10; <var class="var">line-from-either-file</var>&#10; <var class="var">line-from-either-file</var>...&#10;</pre></div>
+<p>If a hunk contains just one line, only its start line number appears.
+Otherwise its line numbers look like ‘<samp class="samp"><var class="var">start</var>,<var class="var">count</var></samp>’.
+An empty hunk is considered to start at the line that follows the hunk.
+</p>
+<p>If a hunk and its context contain two or more lines, its
+line numbers look like ‘<samp class="samp"><var class="var">start</var>,<var class="var">count</var></samp>’.  Otherwise only
+its end line number appears.  An empty hunk is considered to end at
+the line that precedes the hunk.
+</p>
+<p>The lines common to both files begin with a space character.  The lines
+that actually differ between the two files have one of the following
+indicator characters in the left print column:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">+</samp>’</dt>
+<dd><p>A line was added here to the first file.
+</p>
+</dd>
+<dt>‘<samp class="samp">-</samp>’</dt>
+<dd><p>A line was removed here from the first file.
+</p></dd>
+</dl>
+<hr/>
+</div>

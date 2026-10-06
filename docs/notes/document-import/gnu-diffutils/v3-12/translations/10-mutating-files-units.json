@@ -1,0 +1,49 @@
+{
+  "slug": "10-mutating-files",
+  "bodySHA256": "7412f60461f58e37a712876fd237cdc5a24ff65272b5daa328a272c0c2475878",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧1.8 Comparing Files While They Are Changing⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Comparing-Files-While-They-Are-Changing\"><span>1.8 Comparing Files While They Are Changing</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "Commands like ⟦0⟧ read files and directories by using a series of system calls, as operating systems typically do not give a program a way to snapshot all its input before processing it. If input files change while being read, ⟦1⟧ and related commands can generate output that does not correspond to any state of the input file system.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>Commands like <code class=\"command\">diff</code> read files and directories by using a\nseries of system calls, as operating systems typically do not give a\nprogram a way to snapshot all its input before processing it.\nIf input files change while being read, <code class=\"command\">diff</code> and related\ncommands can generate output that does not correspond to any state of\nthe input file system.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "For example, if some other process truncates a file to zero size when ⟦0⟧ has read just half the file, ⟦1⟧ will use the half that it read as its input data. As another example, if a recursive ⟦2⟧ determines that a file is a directory, and then some other process replaces the directory with a regular file, and then ⟦3⟧ attempts to descend into the directory, ⟦4⟧ will issue a diagnostic and fail.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<code class=\"command\">diff</code>",
+        "⟦3⟧": "<code class=\"command\">diff</code>",
+        "⟦4⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>For example, if some other process truncates a file to zero size when\n<code class=\"command\">diff</code> has read just half the file, <code class=\"command\">diff</code> will use\nthe half that it read as its input data.  As another example, if a\nrecursive <code class=\"command\">diff</code> determines that a file is a directory, and\nthen some other process replaces the directory with a regular file,\nand then <code class=\"command\">diff</code> attempts to descend into the directory,\n<code class=\"command\">diff</code> will issue a diagnostic and fail.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "In these situations the output of ⟦0⟧ and related programs should be interpreted with some care.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>In these situations the output of <code class=\"command\">diff</code> and related programs\nshould be interpreted with some care.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

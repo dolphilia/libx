@@ -1,0 +1,23 @@
+<div class="gnu-diffutils-original-content" id="Mutating-Files">
+<h3 class="section" id="Comparing-Files-While-They-Are-Changing"><span>1.8 Comparing Files While They Are Changing</span></h3>
+<a class="index-entry-id" id="index-mutating-files"></a>
+<p>Commands like <code class="command">diff</code> read files and directories by using a
+series of system calls, as operating systems typically do not give a
+program a way to snapshot all its input before processing it.
+If input files change while being read, <code class="command">diff</code> and related
+commands can generate output that does not correspond to any state of
+the input file system.
+</p>
+<p>For example, if some other process truncates a file to zero size when
+<code class="command">diff</code> has read just half the file, <code class="command">diff</code> will use
+the half that it read as its input data.  As another example, if a
+recursive <code class="command">diff</code> determines that a file is a directory, and
+then some other process replaces the directory with a regular file,
+and then <code class="command">diff</code> attempts to descend into the directory,
+<code class="command">diff</code> will issue a diagnostic and fail.
+</p>
+<p>In these situations the output of <code class="command">diff</code> and related programs
+should be interpreted with some care.
+</p>
+<hr/>
+</div>

@@ -1,0 +1,35 @@
+<div class="gnu-diffutils-original-content" id="If_002dthen_002delse">
+<h3 class="section" id="Merging-Files-with-If_002dthen_002delse"><span>2.6 Merging Files with If-then-else</span></h3>
+<a class="index-entry-id" id="index-merged-output-format"></a>
+<a class="index-entry-id" id="index-if_002dthen_002delse-output-format"></a>
+<a class="index-entry-id" id="index-C-if_002dthen_002delse-output-format"></a>
+<a class="index-entry-id" id="index-ifdef-output-format"></a>
+<p>You can use <code class="command">diff</code> to merge two files of C source code.  The output
+of <code class="command">diff</code> in this format contains all the lines of both files.
+Lines common to both files are output just once; the differing parts are
+separated by the C preprocessor directives <code class="code">#ifdef <var class="var">name</var></code> or
+<code class="code">#ifndef <var class="var">name</var></code>, <code class="code">#else</code>, and <code class="code">#endif</code>.  When
+compiling the output, you select which version to use by either defining
+or leaving undefined the macro <var class="var">name</var>.
+</p>
+<p>To merge two files, use <code class="command">diff</code> with the <samp class="option">-D <var class="var">name</var></samp> or
+<samp class="option">--ifdef=<var class="var">name</var></samp> option.  The argument <var class="var">name</var> is the C
+preprocessor identifier to use in the <code class="code">#ifdef</code> and <code class="code">#ifndef</code>
+directives.
+</p>
+<p>For example, if you change an instance of <code class="code">wait (&amp;s)</code> to
+<code class="code">waitpid (-1, &amp;s, 0)</code> and then merge the old and new files with
+the <samp class="option">--ifdef=HAVE_WAITPID</samp> option, then the affected part of your code
+might look like this:
+</p>
+<div class="example">
+<pre class="gnu-diffutils-literal">    do {&#10;#ifndef HAVE_WAITPID&#10;        if ((w = wait (&s)) < 0  &&  errno != EINTR)&#10;#else /* HAVE_WAITPID */&#10;        if ((w = waitpid (-1, &s, 0)) < 0  &&  errno != EINTR)&#10;#endif /* HAVE_WAITPID */&#10;            return w;&#10;    } while (w != child);&#10;</pre></div>
+<p>You can specify formats for languages other than C by using line group
+formats and line formats, as described in the next sections.
+</p>
+<hr/>
+
+
+
+
+</div>
