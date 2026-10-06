@@ -1,0 +1,20 @@
+from pathlib import Path
+import hashlib,json,tarfile,re,base64,datetime
+from bs4 import BeautifulSoup
+E=Path(__file__).resolve().parent;D=E.parent/'2026-10-06-901/next-candidate';H=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();ref=lambda p:{'path':str(p.resolve().relative_to(Path.cwd())),'sha256':H(p)};at=datetime.datetime.now(datetime.timezone.utc).isoformat()
+def save(n,v):
+ if (E/n).exists():
+  old=json.loads((E/n).read_text());assert {k:x for k,x in old.items() if k!='at'}=={k:x for k,x in v.items() if k!='at'};return
+ with (E/n).open('x') as f:json.dump(v,f,ensure_ascii=False,indent=2);f.write('\n')
+bind=json.loads((D/'RELEASE_CHECKSUM_BINDING.json').read_text());archive=D/'grep-3.12.tar.gz';assert H(archive)==bind['archiveSHA256']==base64.b64decode(bind['quotedChecksum']).hex();rows=[]
+with tarfile.open(archive) as t:
+ for p in sorted((D/'grep-3.12').rglob('*')):
+  if not p.is_file():continue
+  member=t.getmember(str(p.relative_to(D)));assert member.isfile();assert t.extractfile(member).read()==p.read_bytes();rows.append(ref(p))
+save('FIXED_INPUTS.json',{'status':'passed','at':at,'version':'3.12','archive':ref(archive),'memberFiles':rows,'releaseBinding':ref(D/'RELEASE_CHECKSUM_BINDING.json'),'announcementRawHTMLAcquired':False,'signatureVerified':False,'originalDocRevision':'2 January 2025','releaseDate':'10 April 2025','acquiredDate':'6 October 2026','derivedManual':ref(D/'grep-3.12-derived.html')})
+raw=(D/'grep-3.12/doc/grep.texi').read_text();notice=raw.split('@copying\n')[1].split('@end copying')[0];assert 'Version 1.3' in notice and 'Invariant Sections, with no Front-Cover Texts, and with no Back-Cover\nTexts.' in notice;assert '@author Alain Magloire et al.' in raw
+old=Path('docs/notes/document-import/gnu-make/v4-4-1/source/original/doc/fdl.texi');new=D/'grep-3.12/doc/fdl.texi';pattern=r'Copyright @copyright\{\} .*?Foundation, Inc\.';a,n=re.subn(pattern,'COPYRIGHT_NOTICE',old.read_text(),count=1,flags=re.S);b,m=re.subn(pattern,'COPYRIGHT_NOTICE',new.read_text(),count=1,flags=re.S);assert n==m==1;assert a==b
+save('RIGHTS.json',{'status':'passed-adoption-conditions-fulfillment-pending','at':at,'documentNotice':notice,'originalTitle':'GNU Grep: Print lines that match patterns','originalAuthors':'Alain Magloire et al.','publisher':'Free Software Foundation','license':'GFDL-1.3-or-later','invariantSections':[],'frontCoverTexts':[],'backCoverTexts':[],'evidence':[ref(D/'grep-3.12/doc/grep.texi'),ref(new)],'reuse':{'publishedLicense':ref(old),'termsExceptOriginalCopyrightExact':True,'copyrightDifference':'2000,2001,2002,2007,2008 → 2000–2002,2007–2008,2023–2025; preserve unmodified current notice.'},'fulfillmentPlan':['原著通知・原著者・発行者・原題と版を共通フッターと編集用原稿へ保持。','翻訳・再構成の責任主体Libx、独立非公式訳、異なる題名と変更日・Historyを記録。','原英文GFDL全文を英語参照ページと固定全原文で提供。通知・ライセンスは勝手に翻訳置換しない。','原Texinfo/Info/archive/全HTMLと編集可能英日Markdown・再生成器・固定設定依存を再構築可能ZIPで提供。','原著紹介・提供範囲はフッターへ配置。図/元サイトJS再現ではなく静的全文と原典リンクを提供。'],'formalFulfillmentChecked':False})
+s=BeautifulSoup((D/'grep-3.12-derived.html').read_text(),'html.parser');cs=s.select('.chapter-level-extent');assert len(cs)==7;selected=cs[:4];heads=[h for c in selected for h in c.find_all(re.compile('^h[234]$'))];assert len(heads)==24;assert len([p for c in selected for p in c.find_all('pre')])==29;assert '@footnote' not in raw
+work=json.loads((D/'SCOPE_WORKLOAD_DRAFT.json').read_text());save('SCOPE.json',{'status':'passed-adoption-boundary','at':at,'version':'3.12','scope':'原著第1〜4章の全本文、24英日ページ。親章/節preambleも独立ページとして保持。残る第5〜7章と索引は全原文英語HTML/Info/Texinfo/archiveで補う。GFDL全文は英語参照。','chapterTitles':[c.find('h2').get_text(' ',strip=True).removesuffix(' ¶') for c in selected],'canonicalPages':24,'originalPre':29,'footnotes':0,'nonPreWords':8722,'headingTitles':[h.get_text(' ',strip=True).removesuffix(' ¶') for h in heads],'batches':work['batches'],'formalPageMappingChecked':False,'originalExamplesOrProgramExecuted':False})
+print('902 fixed archive/current document conditions/unchangedGFDL terms/four completechapters checked; adoption draft only')

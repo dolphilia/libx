@@ -1,0 +1,10 @@
+from pathlib import Path
+import json,hashlib,datetime
+N=Path('/private/tmp/libx-gnu-grep-formal-903/docs/notes/document-import/gnu-grep/v3-12');E=Path(__file__).resolve().parent;h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();write=lambda p,d:p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+write(E/'BEFORE_BINDING.json',{'files':{str(p.relative_to(N)):h(p) for base in ['canonical','source-fragments','drafts/en'] for p in (N/base).rglob('*') if p.is_file()}})
+tf=N/'translations/23-non-ascii-non-printable-ja.json';v=json.loads(tf.read_text());write(E/'23_INITIAL_JA_UNITS.json',v);old='正規表現では、改行以外のASCII以外の文字や表示できない文字は特殊文字ではなく、その文字自身を表します。';new='正規表現では、ASCII以外の文字や表示できない文字は、改行を除き、特殊文字ではなく、その文字自身を表します。';assert old in v[1];v[1]=v[1].replace(old,new);write(tf,v)
+p=N/'regenerate-en.py';s=p.read_text();(E/'REGENERATE_EN_INITIAL.py').write_text(s)
+needle=" route='01-guide/'+row['slug']+'.md';front="
+replacement=" pagecontext=copy.deepcopy(context)\n if row['slug']=='23-non-ascii-non-printable':\n  pagecontext[0]['html']+='<p>Libx display note / 表示注記: The fixed Texinfo uses @tie{} in the Λ–ω example, rendered as U+00A0. The original describes a tab; use the ANSI-C \\t examples on this page to express it explicitly. 固定TexinfoのΛとωの間は@tie{}で、表示はU+00A0の結合空白です。原文はタブを説明しています。明示的なタブ入力は、同ページのANSI-C引用（バックスラッシュt）の例を参照してください。原文表記を保持しています。</p>'\n route='01-guide/'+row['slug']+'.md';front="
+assert s.count(needle)==1;s=s.replace(needle,replacement).replace("'documentContext':context};page=","'documentContext':pagecontext};page=");p.write_text(s)
+write(E/'MEANING_DELTA_REVIEW.json',{'status':'passed-scoped-repair','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'page':'23-non-ascii-non-printable','unit':1,'before':old,'after':new,'basis':'Same exclusion of newline, rephrased to avoid stacked以外. Adjacent Unicode character/tab identities checked. Fixed raw @tie{}1831/1845 is retained; footer note directs explicitANSI-C backslash-t examples, no sourceaudit/example execution.'})

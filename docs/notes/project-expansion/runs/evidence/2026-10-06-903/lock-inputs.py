@@ -1,0 +1,13 @@
+from pathlib import Path
+import json,hashlib,shutil,datetime,subprocess
+R=Path.cwd();E=R/'docs/notes/project-expansion/runs/evidence/2026-10-06-903';S=E.parent/'2026-10-06-902';D=E.parent/'2026-10-06-901/next-candidate';W=Path('/private/tmp/libx-gnu-grep-formal-903');rel=Path('docs/notes/document-import/gnu-grep/v3-12');N=W/rel;N.mkdir(parents=True,exist_ok=True);h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();fixed=json.loads((S/'FIXED_INPUTS.json').read_text());rows=[];at=datetime.datetime.now(datetime.timezone.utc).isoformat()
+assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=W,text=True).strip()=='2151cecac964a5227a763e1179e3bca5294d0395'
+for x in [fixed['archive']]+fixed['memberFiles']:
+ p=R/x['path'];assert h(p)==x['sha256'];r='source/original/'+(p.name if p.name=='grep-3.12.tar.gz' else str(p.relative_to(D/'grep-3.12')));dest=N/r;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,dest);rows.append({'path':r,'sha256':h(dest),'bytes':dest.stat().st_size,'sourceEvidence':x})
+assert len(rows)==12
+manifest={'schemaVersion':1,'status':'source-locked','version':'3.12','lockedAt':at,'originalDocumentRevision':'2 January 2025','releaseDate':'10 April 2025','archiveSHA256':fixed['archive']['sha256'],'archiveURL':'https://mirrors.ibiblio.org/gnu/grep/grep-3.12.tar.gz','officialReleaseURL':'https://lists.gnu.org/archive/html/info-gnu/2025-04/msg00008.html','announcementAcquisition':'primaryweb read;directrawHTMLtimedout;signature notverified','files':rows,'license':'GFDL-1.3-or-later/noInvariant/noCoverTexts','originalProgramOrExamplesExecuted':False}
+(N/'SOURCE_MANIFEST.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n');shutil.copyfile(S/'PAGE_PLAN.json',N/'PAGE_PLAN.json')
+for src,dest in [('regenerate-en-draft.py','regenerate-en.py'),('extract-units-draft.py','extract-units.py'),('regenerate-ja-draft.py','regenerate-ja.py'),('translation_nodes.py','translation_nodes.py')]:shutil.copyfile(S/src,N/dest)
+shutil.copytree(N,R/rel,dirs_exist_ok=True)
+with (E/'SOURCE_LOCK.json').open('x') as f:json.dump({'status':'passed-fixed-archive-and-member-sha256','at':at,'workspace':str(W),'sourceInputs':12,'archiveSHA256':manifest['archiveSHA256'],'originalFilesExact':True,'rootAppAbsent':not (R/'apps/gnu-grep').exists(),'reusedEvidence':'902/FIXED_INPUTS.json/SELECTION_REVIEW.json','sourceManifest':{'path':str(rel/'SOURCE_MANIFEST.json'),'sha256':h(N/'SOURCE_MANIFEST.json')}},f,ensure_ascii=False,indent=2);f.write('\n')
+print('903 copied twelve fixedoriginalinputs andcanonical-generation drafthelpers toisolatedworkspace;rootapp absent')
