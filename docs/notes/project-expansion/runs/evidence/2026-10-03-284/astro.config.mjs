@@ -1,0 +1,21 @@
+// @ts-check
+import wrenSource from './src/plugins/remark-wren-source.mjs';
+import wrenHtml from './src/plugins/rehype-wren-html.mjs';
+import { defineDocsConfig } from '@docs/config';
+import { loadProjectConfig } from '@docs/project-config';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectConfig = await loadProjectConfig(__dirname);
+const fallbackSite = 'https://libx.dev';
+
+// https://astro.build/config
+const config=defineDocsConfig({
+  site: projectConfig.paths.siteUrl ?? fallbackSite,
+  base: projectConfig.paths.baseUrl,
+  rootDir: __dirname,
+});
+
+export default {...config,markdown:{...config.markdown,smartypants:false,remarkPlugins:[wrenSource,...(config.markdown?.remarkPlugins??[])],rehypePlugins:[wrenHtml,...(config.markdown?.rehypePlugins??[])]}};

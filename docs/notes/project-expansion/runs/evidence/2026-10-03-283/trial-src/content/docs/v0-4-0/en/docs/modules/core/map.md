@@ -1,0 +1,60 @@
+---
+title: "Map Class"
+licenseSource: wren-0-4-0
+toc:
+  maxLevel: 6
+---
+
+<p>Extends <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/sequence/">Sequence</a>.</p>
+<p>An associative collection that maps keys to values. More details <a href="/docs/wren-trial/v0-4-0/en/docs/maps/">here</a>.</p>
+<h2>Static Method <a href="#static-method" name="static-method" class="header-anchor">#</a></h2>
+<h3>Map.<strong>new</strong>() <a href="#map.new()" name="map.new()" class="header-anchor">#</a></h3>
+<p>Creates a new empty map. Equivalent to <code>{}</code>.</p>
+<h2>Methods <a href="#methods" name="methods" class="header-anchor">#</a></h2>
+<h3><strong>clear</strong>() <a href="#clear()" name="clear()" class="header-anchor">#</a></h3>
+<p>Removes all entries from the map.</p>
+<h3><strong>containsKey</strong>(key) <a href="#containskey(key)" name="containskey(key)" class="header-anchor">#</a></h3>
+<p>Returns <code>true</code> if the map contains <code>key</code> or <code>false</code> otherwise.</p>
+<h3><strong>count</strong> <a href="#count" name="count" class="header-anchor">#</a></h3>
+<p>The number of entries in the map.</p>
+<h3><strong>keys</strong> <a href="#keys" name="keys" class="header-anchor">#</a></h3>
+<p>A <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/sequence/">Sequence</a> that can be used to iterate over the keys in the
+map. Note that iteration order is undefined. All keys will be iterated over,
+but may be in any order, and may even change between invocations of Wren.</p>
+<h3><strong>remove</strong>(key) <a href="#remove(key)" name="remove(key)" class="header-anchor">#</a></h3>
+<p>Removes <code>key</code> and the value associated with it from the map. Returns the value.</p>
+<p>If the key was not present, returns <code>null</code>.</p>
+<h3><strong>values</strong> <a href="#values" name="values" class="header-anchor">#</a></h3>
+<p>A <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/sequence/">Sequence</a> that can be used to iterate over the values in the
+map. Note that iteration order is undefined. All values will be iterated over,
+but may be in any order, and may even change between invocations of Wren.</p>
+<p>If multiple keys are associated with the same value, the value will appear
+multiple times in the sequence.</p>
+<h3><strong>[</strong>key<strong>]</strong> operator <a href="#[key]-operator" name="[key]-operator" class="header-anchor">#</a></h3>
+<p>Gets the value associated with <code>key</code> in the map. If <code>key</code> is not present in the
+map, returns <code>null</code>.</p>
+<pre class="snippet">
+var map = {"george": "harrison", "ringo": "starr"}
+System.print(map["ringo"]) //> starr
+System.print(map["pete"])  //> null
+</pre>
+
+<h3><strong>[</strong>key<strong>]=</strong>(value) operator <a href="#[key]=(value)-operator" name="[key]=(value)-operator" class="header-anchor">#</a></h3>
+<p>Associates <code>value</code> with <code>key</code> in the map. If <code>key</code> was already in the map, this
+replaces the previous association.</p>
+<p>It is a runtime error if the key is not a <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/bool/">Bool</a>,
+<a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/class/">Class</a>, <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/null/">Null</a>, <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/num/">Num</a>, <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/range/">Range</a>,
+or <a href="/docs/wren-trial/v0-4-0/en/docs/modules/core/string/">String</a>.</p>
+<h3><strong>iterate</strong>(iterator), <strong>iteratorValue</strong>(iterator) <a href="#iterate(iterator),-iteratorvalue(iterator)" name="iterate(iterator),-iteratorvalue(iterator)" class="header-anchor">#</a></h3>
+<p>Implements the <a href="/docs/wren-trial/v0-4-0/en/docs/control-flow/#the-iterator-protocol">iterator protocol</a> for iterating over the keys and values of a map at the same time.</p>
+<p>When a map (as opposed to its keys or values separately) is iterated over, each key/value pair is wrapped in a <code>MapEntry</code> object. <code>MapEntry</code> is a small helper class which has read-only <code>key</code> and <code>value</code> properties and a familiar <code>toString</code> representation.</p>
+<pre class="snippet">
+var map = {"paul": "mccartney"}
+for (entry in map) {
+  System.print(entry.type)                    // MapEntry
+  System.print(entry.key + " " + entry.value) // paul mccartney
+  System.print(entry)                         // paul:mccartney
+}
+</pre>
+
+<p>All map entries will be iterated over, but may be in any order, and may even change between invocations of Wren.</p>

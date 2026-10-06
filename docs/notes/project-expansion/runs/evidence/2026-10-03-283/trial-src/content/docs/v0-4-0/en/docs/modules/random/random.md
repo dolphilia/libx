@@ -1,0 +1,110 @@
+---
+title: "Random Class"
+licenseSource: wren-0-4-0
+toc:
+  maxLevel: 6
+---
+
+<p>A simple, fast pseudo-random number generator. Internally, it uses the <a href="https://en.wikipedia.org/wiki/Well_equidistributed_long-period_linear">well
+equidistributed long-period linear PRNG</a> (WELL512a).</p>
+<p>Each instance of the class generates a sequence of randomly distributed numbers
+based on the internal state of the object. The state is initialized from a
+<em>seed</em>. Two instances with the same seed generate the exact same sequence of
+numbers.</p>
+<p>It must be imported from the <a href="/docs/wren-trial/v0-4-0/en/docs/modules/">random</a> module:</p>
+<pre class="snippet">
+    import "random" for Random
+</pre>
+
+<h2>Constructors <a href="#constructors" name="constructors" class="header-anchor">#</a></h2>
+<h3>Random.<strong>new</strong>() <a href="#random.new()" name="random.new()" class="header-anchor">#</a></h3>
+<p>Creates a new generator whose state is seeded based on the current time.</p>
+<pre class="snippet">
+var random = Random.new()
+</pre>
+
+<h3>Random.<strong>new</strong>(seed) <a href="#random.new(seed)" name="random.new(seed)" class="header-anchor">#</a></h3>
+<p>Creates a new generator initialized with [seed]. The seed can either be a
+number, or a non-empty sequence of numbers. If the sequnce has more than 16
+elements, only the first 16 are used. If it has fewer, the elements are cycled
+to generate 16 seed values.</p>
+<pre class="snippet">
+Random.new(12345)
+Random.new("appleseed".codePoints)
+</pre>
+
+<h2>Methods <a href="#methods" name="methods" class="header-anchor">#</a></h2>
+<h3><strong>float</strong>() <a href="#float()" name="float()" class="header-anchor">#</a></h3>
+<p>Returns a floating point value between 0.0 and 1.0, including 0.0, but excluding
+1.0.</p>
+<pre class="snippet">
+var random = Random.new(12345)
+System.print(random.float()) //> 0.53178795980617
+System.print(random.float()) //> 0.20180515043262
+System.print(random.float()) //> 0.43371948658705
+</pre>
+
+<h3><strong>float</strong>(end) <a href="#float(end)" name="float(end)" class="header-anchor">#</a></h3>
+<p>Returns a floating point value between 0.0 and <code>end</code>, including 0.0 but
+excluding <code>end</code>.</p>
+<pre class="snippet">
+var random = Random.new(12345)
+System.print(random.float(0))     //> 0
+System.print(random.float(100))   //> 20.180515043262
+System.print(random.float(-100))  //> -43.371948658705
+</pre>
+
+<h3><strong>float</strong>(start, end) <a href="#float(start,-end)" name="float(start,-end)" class="header-anchor">#</a></h3>
+<p>Returns a floating point value between <code>start</code> and <code>end</code>, including <code>start</code> but
+excluding <code>end</code>.</p>
+<pre class="snippet">
+var random = Random.new(12345)
+System.print(random.float(3, 4))    //> 3.5317879598062
+System.print(random.float(-10, 10)) //> -5.9638969913476
+System.print(random.float(-4, 2))   //> -1.3976830804777
+</pre>
+
+<h3><strong>int</strong>(end) <a href="#int(end)" name="int(end)" class="header-anchor">#</a></h3>
+<p>Returns an integer between 0 and <code>end</code>, including 0 but excluding <code>end</code>.</p>
+<pre class="snippet">
+var random = Random.new(12345)
+System.print(random.int(1))    //> 0
+System.print(random.int(10))   //> 2
+System.print(random.int(-50))  //> -22
+</pre>
+
+<h3><strong>int</strong>(start, end) <a href="#int(start,-end)" name="int(start,-end)" class="header-anchor">#</a></h3>
+<p>Returns an integer between <code>start</code> and <code>end</code>, including <code>start</code> but excluding
+<code>end</code>.</p>
+<pre class="snippet">
+var random = Random.new(12345)
+System.print(random.int(3, 4))    //> 3
+System.print(random.int(-10, 10)) //> -6
+System.print(random.int(-4, 2))   //> -2
+</pre>
+
+<h3><strong>sample</strong>(list) <a href="#sample(list)" name="sample(list)" class="header-anchor">#</a></h3>
+<p>Selects a random element from <code>list</code>.</p>
+<h3><strong>sample</strong>(list, count) <a href="#sample(list,-count)" name="sample(list,-count)" class="header-anchor">#</a></h3>
+<p>Samples <code>count</code> randomly chosen unique elements from <code>list</code>.</p>
+<p>This uses &ldquo;random without replacement&rdquo; sampling&mdash;no index in the list will
+be selected more than once.</p>
+<p>Returns a new list of the selected elements.</p>
+<p>It is an error if <code>count</code> is greater than the number of elements in the list.</p>
+<h3><strong>shuffle</strong>(list) <a href="#shuffle(list)" name="shuffle(list)" class="header-anchor">#</a></h3>
+<p>Randomly shuffles the elements in <code>list</code>. The items are randomly re-ordered in
+place.</p>
+<pre class="snippet">
+var random = Random.new(12345)
+var list = (1..5).toList
+random.shuffle(list)
+System.print(list) //> [3, 2, 4, 1, 5]
+</pre>
+
+<p>Uses the Fisher-Yates algorithm to ensure that all permutations are chosen
+with equal probability.</p>
+<p>Keep in mind that a list with even a modestly large number of elements has an
+astronomically large number of permutations. For example, there are about 10^74
+ways a deck of 56 cards can be shuffled. The random number generator&rsquo;s internal
+state is not that large, which means there are many permutations it will never
+generate.</p>

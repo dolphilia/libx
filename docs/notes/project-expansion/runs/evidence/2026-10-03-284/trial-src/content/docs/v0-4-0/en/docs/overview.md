@@ -1,0 +1,60 @@
+---
+title: "Wren"
+licenseSource: wren-0-4-0
+toc:
+  maxLevel: 6
+---
+
+<h1 id="page-title">Wren</h1>
+<h2>Wren is a small, fast, class-based concurrent scripting language <a href="#wren-is-a-small,-fast,-class-based-concurrent-scripting-language" name="wren-is-a-small,-fast,-class-based-concurrent-scripting-language" class="header-anchor">#</a></h2>
+<hr />
+<p>Think Smalltalk in a Lua-sized package with a dash of Erlang and wrapped up in
+a familiar, modern <a href="/docs/wren-trial/v0-4-0/en/docs/syntax/">syntax</a>.</p>
+<pre class="snippet">
+System.print("Hello, world!")
+
+class Wren {
+  flyTo(city) {
+    System.print("Flying to %(city)")
+  }
+}
+
+var adjectives = Fiber.new {
+  ["small", "clean", "fast"].each {|word| Fiber.yield(word) }
+}
+
+while (!adjectives.isDone) System.print(adjectives.call())
+</pre>
+
+<ul>
+<li>
+<p><strong>Wren is small.</strong> The VM implementation is under <a href="https://github.com/wren-lang/wren/tree/main/src">4,000 semicolons</a>.
+    You can skim the whole thing in an afternoon. It&rsquo;s <em>small</em>, but not
+    <em>dense</em>. It is readable and <a href="https://github.com/wren-lang/wren/blob/46c1ba92492e9257aba6418403161072d640cb29/src/wren_value.h#L378-L433">lovingly-commented</a>.</p>
+</li>
+<li>
+<p><strong>Wren is fast.</strong> A fast single-pass compiler to tight bytecode, and a
+    compact object representation help Wren <a href="/docs/wren-trial/v0-4-0/en/docs/performance/">compete with other dynamic
+    languages</a>.</p>
+</li>
+<li>
+<p><strong>Wren is class-based.</strong> There are lots of scripting languages out there,
+    but many have unusual or non-existent object models. Wren places
+    <a href="/docs/wren-trial/v0-4-0/en/docs/classes/">classes</a> front and center.</p>
+</li>
+<li>
+<p><strong>Wren is concurrent.</strong> Lightweight <a href="/docs/wren-trial/v0-4-0/en/docs/concurrency/">fibers</a> are core to the execution
+    model and let you organize your program into a flock of communicating
+    coroutines.</p>
+</li>
+<li>
+<p><strong>Wren is a scripting language.</strong> Wren is intended for embedding in
+    applications. It has no dependencies, a small standard library,
+    and <a href="/docs/wren-trial/v0-4-0/en/docs/embedding/">an easy-to-use C API</a>. It compiles cleanly as C99, C++98
+    or anything later.</p>
+</li>
+</ul>
+<hr />
+<p>You can try it <a href="https://wren.io/try">in your browser</a>! <br />
+If you like the sound of this, <a href="/docs/wren-trial/v0-4-0/en/docs/getting-started/">let&rsquo;s get started</a>.  <br />
+Excited? You&rsquo;re also welcome to <a href="/docs/wren-trial/v0-4-0/en/docs/contributing/">get involved</a>!</p>
