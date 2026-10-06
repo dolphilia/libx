@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-321-cjson-production-cas-dispatch",
+  "cycle": 321,
+  "startedAt": "2026-10-03T00:05:00.000Z",
+  "endedAt": "2026-10-03T00:06:47.550Z",
+  "result": "partial",
+  "phase": "cjson-production-cas-dispatch",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Privateclean samecommit/remoteSHA/Preview andledger audit",
+    "LatestGitHub production indirectbaseline check",
+    "Secure Pages Production CAS intent/dispatch",
+    "Actualsamecommit liveCI/job verification",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ae081ec77b0ed1137b11cac069e62c4ec7b97c00ce56ba87403ab50f065d56cf"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "165df6f22ee2c940ecf144c565875e586f6be930bfd47825fe910ff6701e660d"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-321/PRODUCTION_CI_1790985920720.json",
+      "sha256": "409d492715531b94bb5e47f7416e7df8187a1cec0477b57a4237676b960bb07a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-321/PRODUCTION_CI_1790985965494.json",
+      "sha256": "fd1726cd8a61417d3ff4290f55035b25c6df29306d59eba941eb3f41c90b9ec6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-321/PRODUCTION_DISPATCH_HELPER.mjs",
+      "sha256": "114aabb7e4c292c4c9ea7971d85fa0e89ab25836c2285f402617a61c460456c4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-321/PRODUCTION_DISPATCH_INTENT.json",
+      "sha256": "4d99427a43cc2448a9ffa98a96f474b69edbbd9f2626923c0d829536c8e0d808"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-321/PRODUCTION_DISPATCH_RESPONSE.json",
+      "sha256": "58fbac409a2002e0ee6a14f3bb81c375869ef816cddfe2ae93b4aa330dbe59c9"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "bec8d11af28f269ebb9c566239fc69188d6be4c3708bf21d558b839ec90e73a8"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Production actualCloudflare CAS/CI/artifact/delivery",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-321/PRODUCTION_DISPATCH_INTENT.json",
+          "sha256": "4d99427a43cc2448a9ffa98a96f474b69edbbd9f2626923c0d829536c8e0d808"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-321/PRODUCTION_DISPATCH_RESPONSE.json",
+          "sha256": "58fbac409a2002e0ee6a14f3bb81c375869ef816cddfe2ae93b4aa330dbe59c9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-321/PRODUCTION_CI_1790985965494.json",
+          "sha256": "fd1726cd8a61417d3ff4290f55035b25c6df29306d59eba941eb3f41c90b9ec6"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "321:Preview全検証320とcurrent cleanprivateadbe8b8d/remote同SHA・verified preview-verified台帳を再確認。最新GitHubproduction id6817659251/068bfeb（間接証拠）一致、actualCloudflare workflow expectedcommit068bfeb before/prepublishCAS/rollbackbefore保存/after検証を伴うProductionをintent付きdispatchHTTP204。実run37080542356/head一致in_progress Setup段階。公開完了扱いにしない。",
+    "GitHubdeploymentはactualCloudflareの代用ではなくworkflowが公開前/直前/後の実状態を検査。rollbackbeforeを先に保存。root未完了変更を公開しない。"
+  ],
+  "unresolved": [
+    "cJSON Production CAS/CI/artifact/delivery/domain",
+    "SDS full qualification"
+  ],
+  "nextAction": "起動済みProduction run37080542356 headadbe8b8dを次cycle新immutable証拠へpollし再dispatchしない。成功時production verifiedartifactZIPdigest/manifest全2756/全6本文/全11HTML/既存2373保持、pages-production-before rollback原記録とstate before/prepublish/after actualcommit/id一致を確認。固定配信全bytes/libx.dev変換限定・native主要URL確認後publishedへ。SDS trial注釈/guide全保持/JP比較/工数/採点を独立継続。",
+  "resumeCondition": "321:Preview全検証320とcurrent cleanprivateadbe8b8d/remote同SHA・verified preview-verified台帳を再確認。最新GitHubproduction id6817659251/068bfeb（間接証拠）一致、actualCloudflare workflow expectedcommit068bfeb before/prepublishCAS/rollbackbefore保存/after検証を伴うProductionをintent付きdispatchHTTP204。実run37080542356/head一致in_progress Setup段階。公開完了扱いにしない。",
+  "counts": {
+    "verified": 11,
+    "published": 10,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

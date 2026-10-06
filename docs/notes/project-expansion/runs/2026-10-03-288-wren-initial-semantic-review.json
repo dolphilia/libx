@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-288-wren-initial-semantic-review",
+  "cycle": 288,
+  "startedAt": "2026-10-02T21:33:40.000Z",
+  "endedAt": "2026-10-02T21:34:43.265Z",
+  "result": "partial",
+  "phase": "wren-source-self-contained-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Untruncated3fixedsource reads",
+    "AI semantic page review",
+    "SHA256/linecoverage records",
+    "Ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "b812cea17bc6d2b78f9a540d902362a1190bd67d9b8342393945644a46164b7f"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "ec25737a74c9b8822293900d92f61b1df343a847887cf8038cd7a7ecad992348"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-288/SELF_CONTAINED_REVIEW.json",
+      "sha256": "2c3a91f096a54a0477b138514272b72e39c6797f2a8d7f0da1c376da7073a83f"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "299b964218c5a10b11d49e0c07cd2f8eecdb4aedd31f3ac89e06a8633ab8c40e"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7d7a6b256e3ff39349c32646dcc04e36d224047f545ffdaf2798326b37068dc7"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "wren"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "3/41 complete source semantic reads andrecordedcoverage",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-288/SELF_CONTAINED_REVIEW.json",
+          "sha256": "2c3a91f096a54a0477b138514272b72e39c6797f2a8d7f0da1c376da7073a83f"
+        }
+      ]
+    },
+    {
+      "name": "Full41 selfContained review/workload/selection",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-288/SELF_CONTAINED_REVIEW.json",
+          "sha256": "2c3a91f096a54a0477b138514272b72e39c6797f2a8d7f0da1c376da7073a83f"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "288:overview/gettingstarted/contributingの全sourceをAI内容確認し3/41記録。VM埋め込み/言語と別CLIの範囲区別、OS build出力、docs/test貢献手順を確認。この3pageに自立性の重大不足未発見だが、残38未確認のためselfContainedunknown維持。",
+    "開始日時は直前287検査終了後の概算。ユーザー/Awesome変更・外部公開・定期設定は変更なし。"
+  ],
+  "unresolved": [
+    "38source pages semantic review",
+    "Over30000 workload/score/selection"
+  ],
+  "nextAction": "Wren全文自立性レビュー3/41完了。次は12languageguidesを省略なしで読みページ別ハッシュ/全行範囲/指摘を288記録へ継続する（旧証拠は不変、次cycle新証拠）。残38ページ後にscope判断、31750語初回/更新工数別枠判断、採点/独立selectionreview。",
+  "resumeCondition": "Wren全文自立性レビュー3/41完了。次は12languageguidesを省略なしで読みページ別ハッシュ/全行範囲/指摘を288記録へ継続する（旧証拠は不変、次cycle新証拠）。残38ページ後にscope判断、31750語初回/更新工数別枠判断、採点/独立selectionreview。",
+  "counts": {
+    "verified": 10,
+    "published": 10,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

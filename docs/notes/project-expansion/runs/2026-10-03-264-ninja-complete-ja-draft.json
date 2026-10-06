@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-264-ninja-complete-ja-draft",
+  "cycle": 264,
+  "startedAt": "2026-10-02T19:06:00.000Z",
+  "endedAt": "2026-10-02T19:16:45.643Z",
+  "result": "partial",
+  "phase": "ninja-complete-ja-draft-unreviewed",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Direct complete Japanese translation",
+    "Deterministic atomic translation assembler",
+    "Unit/literal/link/code/ID checks and failure safety",
+    "Private workspace exact --check",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "aeb36e6eee7b9d8ef18ca2483cecf5268d90896c112b60c49d30df4961563515"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-263/EN_CONTENT_REVIEW.json",
+      "sha256": "c9a59a7fbf06d363389340cfd3d2f296a041e2b244509dcce947f2ac4be33fef"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-264/TRANSLATION_CHECKS.json",
+      "sha256": "2899de48f9cc4189ac2380df98d6abaa2bd74c23445b90cc5941a8d8bcf88386"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/JA_BLOCKS.tsv",
+      "sha256": "34837afa62a8cea5669955a6f351569eeabbe2320362b39e2434267b128a0465"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/SOURCE_BLOCKS.json",
+      "sha256": "141dcc3b258ffdeeafdf76b49f028d1d5ec3d95b9fb3392c772ac3dd5eb2c3f6"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/UNCHANGED_BLOCKS.json",
+      "sha256": "e4cb5fb74b1dd8d60691ddfd9ce663da5fc13b40ec3cebe7319f090e2e397694"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/generated/01-docs/01-manual.md",
+      "sha256": "bc0cde3338a1db26fbc2c5d2c99c1fc72d0b7d8f5e722b2e4cd3c619f8958024"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/generated/02-license/01-license.md",
+      "sha256": "917673e8114534c30371e9f9d25c2fefe3c4454adb27bea23610084f8db7610e"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/generated/GENERATION.json",
+      "sha256": "b4c49460265f7511deea0003488e6ac633730b02da65f0b9d3372c2e841d54f9"
+    },
+    {
+      "path": "scripts/importers/assemble-ninja-translation.mjs",
+      "sha256": "6a2ef2e735bfa22c79433045c4ab35504feff40bac740f1e74485a79ad891467"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "718c511b3e5832a85809ad63544af97d91a10087ad2c3def9650ad59b6834875"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "4fdb6da5e884d44d203f243eeafccb735c27f00aa9d8100ee1f75a24a6508d28"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Full JA draft accounted for and mechanical preservation/regeneration",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-264/TRANSLATION_CHECKS.json",
+          "sha256": "2899de48f9cc4189ac2380df98d6abaa2bd74c23445b90cc5941a8d8bcf88386"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-264/TRANSLATION_GENERATION.json",
+          "sha256": "b4c49460265f7511deea0003488e6ac633730b02da65f0b9d3372c2e841d54f9"
+        }
+      ]
+    },
+    {
+      "name": "Separate full Japanese content review and complete release verification",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "全8047語/41節scopeを縮めず全文日本語初稿を作成。識別子54単位のみ明示理由付き保持。",
+    "31codeと原COPYINGは一字も翻訳せず原文を保全。",
+    "訳文の初稿作成と内容レビューを分離、機械検査合格だけでverifiedにしない。",
+    "新規作成優先を維持、共有Awesome/ユーザーの変更を保護。外部公開・定期設定は今回未実施。"
+  ],
+  "unresolved": [
+    "全2JA別工程内容レビュー",
+    "正式JA配線と全ENJA機械/UI/copy/CI検証",
+    "条件達成後の統合Pages公開"
+  ],
+  "nextAction": "translation/generated全2JAページを固定EN定本/原文と別工程で全文内容レビュー。全291訳文＋54識別子ラベル＋Important、全41節と31code、原COPYING掲載とJA説明を確認、必要修正後レビューhashを更新。正式appにJAを配線→ENJA構造/links/整合/build/browser/copy→統合CI/Pages公開。",
+  "resumeCondition": "264: 全2JA初稿完成（345単位中291翻訳54識別子保持、Important→重要、31code/41ID/41節/2表保持）。COPYINGは原通知全文を改変せず掲載、JA説明だけ翻訳。Assembler再生成2回/--check一致、欠落/識別子改変/link改変拒否と原出力保護・rollback試験合格。正式workspaceにも同一成果物を保存し--check合格。全文JAレビュー前、appJA未配線/対応言語enのみ、rootappなし、未公開。",
+  "counts": {
+    "verified": 9,
+    "published": 9,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

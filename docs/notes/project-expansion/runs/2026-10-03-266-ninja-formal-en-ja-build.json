@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-266-ninja-formal-en-ja-build",
+  "cycle": 266,
+  "startedAt": "2026-10-02T19:21:00.000Z",
+  "endedAt": "2026-10-02T19:24:24.574Z",
+  "result": "partial",
+  "phase": "ninja-full-en-ja-mechanical-build",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Formal private JA app wiring",
+    "Fresh pnpm build",
+    "Full ENJA rendered preservation",
+    "Full private repository/category validators",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "b71a39a38a1d277bc7ae464758aa016fdc4f70f420892af86071476f5947d91a"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/REVIEW_MANIFEST.json",
+      "sha256": "20e12bffe303a026270f76a3f3a5e02f14071b74694e8f630a3b623c44307988"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/BUILD.log",
+      "sha256": "63d793eab7f28e7b2fba9f518f8ad67da17305718ffedbeb13f2ad1105d61e70"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/BUILT_PRESERVATION.json",
+      "sha256": "832aa6e5fa2807e3eb7f5dca435ed4fd442ae51dc48c1609dbbda56facbed3e8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/CATEGORY_STRUCTURE.log",
+      "sha256": "e88b0717865b273273a762a8529aa141ca2264b37ef9e289887a29ba92c382a7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/PROJECT_CONFIG.json",
+      "sha256": "58e807be589271f4607f3926eaf2a2c879091de6d0e2d243f33f28b057751245"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/REPOSITORY_INTEGRITY.log",
+      "sha256": "0e28c69173635771918297d6fb30bfd0fdea55c2d1eb652f7d97a4514e6f8401"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/SIDEBAR_EN.json",
+      "sha256": "c456387ef946ea4350222727c20567c18dd676fbc86632380dbbfbbe8c772076"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/SIDEBAR_JA.json",
+      "sha256": "b71b781fc1d5dfbe572478bacc8a55abd20de66fe30bb3e0f04ad80b1f16a2d4"
+    },
+    {
+      "path": "scripts/importers/check-ninja-rendered.mjs",
+      "sha256": "07d7b6411b2fec2ab633c19e48bb4e965c7d8f84d37572f5aaa69a16c3fc4bc9"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ba49af9c6b2f8ad82c3f7f536118fd5e0e2146a2a479f53821eeaee3ef905ae9"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "569a3e9c76fc515bb8d517301f67f7b15eed3253dd567e555bd7c54fff033f49"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Full formal ENJA rendered preservation, structure/integrity and app build",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/BUILT_PRESERVATION.json",
+          "sha256": "832aa6e5fa2807e3eb7f5dca435ed4fd442ae51dc48c1609dbbda56facbed3e8"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/BUILD.log",
+          "sha256": "63d793eab7f28e7b2fba9f518f8ad67da17305718ffedbeb13f2ad1105d61e70"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/REPOSITORY_INTEGRITY.log",
+          "sha256": "0e28c69173635771918297d6fb30bfd0fdea55c2d1eb652f7d97a4514e6f8401"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-266/CATEGORY_STRUCTURE.log",
+          "sha256": "e88b0717865b273273a762a8529aa141ca2264b37ef9e289887a29ba92c382a7"
+        }
+      ]
+    },
+    {
+      "name": "Browser/copy/current external refs/full integrated release",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "全2pairedpage内容レビューに対応したapp実ファイルの完全一致を検査。",
+    "全範囲を保持してen/jaと9routesをビルド、各言語で41節と31codeを照合。",
+    "app build成功は全quality/統合releaseの完了を意味しない。rootAwesome/ユーザー変更は未取込み。",
+    "過去trialのclipboard観測不一致は実機再確認対象として残し、今回passedに変更しない。"
+  ],
+  "unresolved": [
+    "Local browserdesktop/mobile/copy操作",
+    "現在内部外部リンク到達性",
+    "rootapp限定同期と全quality/統合回帰/CI/Pages"
+  ],
+  "nextAction": "専用正式Ninja appのAstro previewをlocal起動し、desktop/mobile390でENJA言語切替・全節TOC/横scroll/検索/注釈・license本文/コピー操作を実機確認。内部/外部リンクの現在到達性と欠落分類を記録。rootapps/ninjaへの限定同期とレビューhash再照合、全quality/統合build・既存公開記事回帰検査→verified/正規公開待ち→GitHub CI/統合Pages公開。",
+  "resumeCondition": "266: 全レビュー済みJA2ページを正式appへ配線、en/ja有効・非公式日本語翻訳と変更注釈追加。fresh依存で9routes build成功、全4ENJA記事の全文/31code/41IDs/41見出し/2表/33refs/両TOC/言語metadata/注釈/COPYINGassetとreviewed app完全bytes一致。private全repo整合/category検査合格。UI/copy・現在外部到達性/統合quality/公開未完了、rootapps/ninja absent。",
+  "counts": {
+    "verified": 9,
+    "published": 9,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

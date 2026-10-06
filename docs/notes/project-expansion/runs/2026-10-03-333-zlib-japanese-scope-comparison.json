@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-333-zlib-japanese-scope-comparison",
+  "cycle": 333,
+  "startedAt": "2026-10-03T01:37:25.086Z",
+  "endedAt": "2026-10-03T01:39:08.866Z",
+  "result": "partial",
+  "phase": "zlib-japanese-scope-comparison",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Bounded web search",
+    "Author/official primary source reads",
+    "Fixed-version scope comparison",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "0803ad28bc5cbdefeb8f50e0fddbc1557c788f8d0645b0b6fb44f986d0955bef"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a40d81eb060f40f78fe1d232410a72bf6e86b3dd630b882756a0e2367b920afa"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-329/ZLIB_JAPANESE_OBSERVATION_CONTINUED.json",
+      "sha256": "78d362ce4f97877f3ec52e5c1c85f852db41f23fbbbce92ada2a078f01b572a5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-332/v3/API_CLASSIFICATION.json",
+      "sha256": "83132feea4a7146c15ceb43dc48d48a32b57ed1ea285b1307bb20aaa529d076b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-333/JAPANESE_SCOPE_COMPARISON.json",
+      "sha256": "60e8e546069bdee0cb1dd90a663d49d7b2f77bfacfdcaed7edac04de03f0c329"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-333/WEB_OPEN_INITIAL.json",
+      "sha256": "934e1aba0a5bc5c805e4399da9376f9d5a9e3882b5bb83d4198b117c3e0280a7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-333/WEB_OPEN_MIDDLE.json",
+      "sha256": "e425c5ab5342d1d0e35fa8e0dc6c1456c51ff0812f2711db1aa856f0a982dd87"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-333/WEB_OPEN_TAIL.json",
+      "sha256": "466562062b19d2de7b93961aadcaae9248603e8821a9eca897575bb640d89531"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "d67360b5dd999ab6fa31d07f86cbf9f37f9dbefe25842eaadba56bffaeb8c252"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6519ac453f6e6ed507e71a113188d658e033a5a3a0ff7436044fed3f7c6278d3"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "zlib"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "bounded Japanese scope and version comparison",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-333/JAPANESE_SCOPE_COMPARISON.json",
+          "sha256": "60e8e546069bdee0cb1dd90a663d49d7b2f77bfacfdcaed7edac04de03f0c329"
+        }
+      ]
+    },
+    {
+      "name": "unread SRA Libof and conversion/selection",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-333/JAPANESE_SCOPE_COMPARISON.json",
+          "sha256": "60e8e546069bdee0cb1dd90a663d49d7b2f77bfacfdcaed7edac04de03f0c329"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "332は工数測定/分類/見積もりと台帳CAS更新でprogress。次の新規候補JP比較を継続。",
+    "旧版入門の有用性を否定せず、原公式1.3.2追加機能と全範囲の違いを確認。未取得頁を不存在/低品質と推測しない。",
+    "採用0件/正式app0件。変換と点数/別選定未完了を維持。",
+    "Astra設定/runtime確認不能、localLLM/Workers/外部公開/定期実行なし。共有変更保護。"
+  ],
+  "unresolved": [
+    "fragment位置/正式構成/manURL/範囲外参照",
+    "official repo translation path limited check/採点/別選定review",
+    "SRA/Libof本文未取得（選定根拠として不用意に使用しない）"
+  ],
+  "nextAction": "zlib333:固定版全量のworkload pass（332）、日本語資料2件全本文の旧版/入門scopeを比較、公式homeの1.3.2追加APIと差を記録。旧SRA訳/Libofは取得不能で未読を維持。次はconversion残課題fragment位置/manURL/範囲外file参照と正式テンプレート構成を確認し、公式repoの翻訳範囲を限定確認。全gate根拠と日本語追加価値/実用性等を採点して別選定review後に正式zlib作成へ。",
+  "resumeCondition": "zlib333:固定版全量のworkload pass（332）、日本語資料2件全本文の旧版/入門scopeを比較、公式homeの1.3.2追加APIと差を記録。旧SRA訳/Libofは取得不能で未読を維持。次はconversion残課題fragment位置/manURL/範囲外file参照と正式テンプレート構成を確認し、公式repoの翻訳範囲を限定確認。全gate根拠と日本語追加価値/実用性等を採点して別選定review後に正式zlib作成へ。",
+  "counts": {
+    "verified": 11,
+    "published": 11,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

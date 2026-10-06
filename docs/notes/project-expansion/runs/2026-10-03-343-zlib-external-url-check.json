@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-343-zlib-external-url-check",
+  "cycle": 343,
+  "startedAt": "2026-10-03T02:34:35.909Z",
+  "endedAt": "2026-10-03T02:36:07.771Z",
+  "result": "partial",
+  "phase": "zlib-external-url-check",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Bounded read-only GET of21 unique external URLs",
+    "Runtime config observation",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "31837933564ee59e076fa828f4eae7e9259b92b10545d6215a89d7d5a80f2bca"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f589de661dd35a0becbb89513d83ae0d6c46d7ee7e452e8477d1478118636249"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-342/ENGLISH_REVIEW_PROGRESS.json",
+      "sha256": "9cf8294d462eb0de0fe9514fd102b25c03c75de1adad70370d5a67d79624e392"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-340/RENDERED_MACHINE_CHECK.json",
+      "sha256": "3743df840965b8d2b8318788467b49fcf775cb11e4e78274177a565122251770"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-343/EXTERNAL_URL_CHECK.json",
+      "sha256": "88d0a38d38cce33636a1a44fcfd6e11ca2fda36804deb9dc8e2eb6c42b88b961"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-343/RUNTIME_OBSERVATION.json",
+      "sha256": "8cd2e5609005c48ca228d0bfd7b2eba8aa6be1cc4c6bde359654f68a226bcd4a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-343/check-external-urls.py",
+      "sha256": "125b933fdc04cba70dfd85a615be835ef46b18223fdd7982073e33a0e5d9ba25"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7b24dd0bd6c7e8eb45eadbbfa0adfc81f3236895fc5f931d71c1bad0bfc15206"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "zlib"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "21unique external URL HTTP reachability",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-343/EXTERNAL_URL_CHECK.json",
+          "sha256": "88d0a38d38cce33636a1a44fcfd6e11ca2fda36804deb9dc8e2eb6c42b88b961"
+        }
+      ]
+    },
+    {
+      "name": "native/fragments/translation/fullreview/integration",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-343/EXTERNAL_URL_CHECK.json",
+          "sha256": "88d0a38d38cce33636a1a44fcfd6e11ca2fda36804deb9dc8e2eb6c42b88b961"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "342残3頁全文reviewで14/14。343は次工程の外部URL接続確認。",
+    "200/206全21件、Sunfreewareはintroduction.htmlへredirect。宛先意味・fragment実在とは区別。",
+    "設定Astra/実runtime非露出の制約を再観測し記録。Sol使用の推測記載なし、localLLMなし。",
+    "共有/Awesome保護、Workers/定期設定なし。"
+  ],
+  "unresolved": [
+    "native全14/keyboard/fragments/mobileheader/sidebar",
+    "Wayback #faq11 fragment",
+    "日本語全14全文翻訳と別レビュー",
+    "統合Pages公開"
+  ],
+  "nextAction": "344:英語原典→定本内容review14/14完了。native全14/keyboard/fragments/mobileheader-sidebar、Wayback #faq11 fragmentを確認後、日本語翻訳・別全文review・統合Pages公開へ。",
+  "resumeCondition": "344:英語原典→定本内容review14/14完了。native全14/keyboard/fragments/mobileheader-sidebar、Wayback #faq11 fragmentを確認後、日本語翻訳・別全文review・統合Pages公開へ。",
+  "counts": {
+    "verified": 11,
+    "published": 11,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-296-cjson-conversion-workload",
+  "cycle": 296,
+  "startedAt": "2026-10-02T22:00:00.000Z",
+  "endedAt": "2026-10-02T22:00:19.096Z",
+  "result": "partial",
+  "phase": "cjson-conversion-workload",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "CUA desktop and raw license native",
+    "Decoded HTML workload and fixed header API inventory",
+    "Ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "bfb41bac8d5248282a23f69674e0c20a2d0073ff2360698c7d0482cb28b6f079"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "0710a76fc2b6fe84c94a3d20106455128d32f4647ef83eb9ef534ebd9b034b47"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-296/MEASUREMENT_WORKLOAD.json",
+      "sha256": "48012a5c358a93883c222811733b9fc9d6660ca68dbebabdc366b79a2f929586"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-296/NATIVE_CONVERSION.json",
+      "sha256": "c37f3336a12209e5e4aba3d5b46cb95be9ceb7257f080fb5d031f5f9f59ef1e4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-296/measure.py",
+      "sha256": "4464bb00152b5d64edc9ac50bfcbb83efab54e6ac98027647cd9f20427e03a50"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "9ae87849939ce98bdb7333aad71db71fa29faa32be5932cf838faeaaaf659bdd"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "3c5078d76e4cb6ca3db0ae52903f84103ddd79ee285d03842bd5a6bf786562d3"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "wren"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "ActualAstro3page exact and internal targets",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-296/NATIVE_CONVERSION.json",
+          "sha256": "c37f3336a12209e5e4aba3d5b46cb95be9ceb7257f080fb5d031f5f9f59ef1e4"
+        }
+      ]
+    },
+    {
+      "name": "Japanese additional value, score and independent selection",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-296/NATIVE_CONVERSION.json",
+          "sha256": "c37f3336a12209e5e4aba3d5b46cb95be9ceb7257f080fb5d031f5f9f59ef1e4"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前cycle295はactualAstro/native検証でprogress。296は残る変換条件と工数測定を完了。",
+    "296:cJSON294–295全3ページ保全試験とnative残件（desktop難例静止表示・原MITリンク）合格。conversionpass。全範囲4083英語/コードword tokens、図表0、guide32見出し/15codeとAPI言及の実測、初回7–14h/通常更新1–4hの見積りと担当を保存しworkloadpass。日本語追加価値・採点・別確認は未完了のため未採用。",
+    "設定はgpt-6-astra、runtime未公開、localLLMなし。開始時刻は初回検査時の概算。共有ユーザー/Awesome変更と外部公開/定期設定なし。"
+  ],
+  "unresolved": [
+    "Japanese additional value assessment",
+    "Score/independentselectionreview"
+  ],
+  "nextAction": "cJSON1.7.19全公式README利用ガイド/通知/帰属の日本語調査293を確認して追加価値を根拠付き評価。全5項目採点後、原資料と試験証拠へ別確認パスで照合して採用を判断。合格なら新規1件を台帳登録し隔離の正式テンプレート生成/定本化/全訳/全文レビュー/検証/Pages公開へ。",
+  "resumeCondition": "cJSON1.7.19全公式README利用ガイド/通知/帰属の日本語調査293を確認して追加価値を根拠付き評価。全5項目採点後、原資料と試験証拠へ別確認パスで照合して採用を判断。合格なら新規1件を台帳登録し隔離の正式テンプレート生成/定本化/全訳/全文レビュー/検証/Pages公開へ。",
+  "counts": {
+    "verified": 10,
+    "published": 10,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

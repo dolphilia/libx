@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-292-cjson-fixed-discovery",
+  "cycle": 292,
+  "startedAt": "2026-10-02T21:44:00.000Z",
+  "endedAt": "2026-10-02T21:44:03.442Z",
+  "result": "partial",
+  "phase": "cjson-fixed-candidate-discovery",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "OfficialGitHub websearch",
+    "Read-onlyofficialrelease/commit/tree/rawrequests",
+    "Fixedinputblob/sha256checks",
+    "Ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ac7e4315d92b27b4f4acb60e79674dfd4792ab8dd75b3ab7f51ab1705ccf9b6a"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "a260de86344c750a17ceeec2b5bdfae8b3363db323fa9fcf5942c7a0a5e06c6c"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/CHANGELOG.md",
+      "sha256": "adec9eeee3c855842a770e75f2b4538a3bb21cc998d832395fff361dbd21d316"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/FIXED_COMMIT.json",
+      "sha256": "98542626eeb5768fc570a5b3a9fa50f6997d9723efde9878eb3fcce73f607c2e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/FIXED_INPUTS.json",
+      "sha256": "f340e4dbf71f35fb8953a6e4b9a3f3430871b60e0d61780cdf4df736ef64c83c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/FIXED_TREE.json",
+      "sha256": "970c0f70e30782c9043e48dbda4f96a23a03bba3a3aa772b4c59602dd210191e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/LATEST_RELEASE.json",
+      "sha256": "155ae075b0cf1c9546ae7c373c215290c7cc9f8db3f48fd466c32affbee937d5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/LICENSE",
+      "sha256": "a36dda207c36db5818729c54e7ad4e8b0c6fba847491ba64f372c1a2037b6d5c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/README.md",
+      "sha256": "c588125722bcd6e91e7e322fe9ce90252a5eca5c9fdf81ec967a3d45102010d6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/cJSON.h",
+      "sha256": "25b0145150d500498e4d209cec69c18c42cf818bffcc54690be3b895a2a16dee"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/fetch-fixed.py",
+      "sha256": "a9d8a1ac0e142e22899ee5ed9f6fb1c5fb72331615158d93f72110a34c9f3620"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "fbedfa282264d171753b6756ac27030a83087eb088c87462509c80c33d8f0a79"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "13b592e2979a8c8321a66ee181242c68f69149e8e8b9cf762a45ec2b9979095a"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "wren"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Officialstablerelease/fixedcommit/complete267tree/4blobs",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/FIXED_INPUTS.json",
+          "sha256": "f340e4dbf71f35fb8953a6e4b9a3f3430871b60e0d61780cdf4df736ef64c83c"
+        }
+      ]
+    },
+    {
+      "name": "Boundary/rights/fullsource/Japanese/trial/workload/selection",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-292/FIXED_INPUTS.json",
+          "sha256": "f340e4dbf71f35fb8953a6e4b9a3f3430871b60e0d61780cdf4df736ef64c83c"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "292:cJSON公式latest stable v1.7.19をcommitc859b25da02955fef659d658b8f324b5cde87be3へ固定。非truncated全267tree、README/LICENSE/CHANGELOG/cJSON.hのbytes/SHA256/Gitblobを確認。README590行約3894英単語tokenは暫定markup込み計数。範囲/権利/全文自立性/Japanese/変換/工数は未判定。採用0。",
+    "Wren不合格を残して別登録済み候補へ継続。新規候補補充0件、詳細対象cjson1件。開始時刻は検索前の概算。ユーザー/Awesome変更と外部公開/定期設定なし。"
+  ],
+  "unresolved": [
+    "cjsonqualification pending"
+  ],
+  "nextAction": "cJSON v1.7.19の全tree267ファイル分類とREADME590行/固定MIT通知を全文確認し、公式利用ガイド全体という範囲と権利履行を確定。日本語資料を対象版/範囲で調査し、許諾/境界後に隔離変換試験と工数、採点/別selectionreview。",
+  "resumeCondition": "cJSON v1.7.19の全tree267ファイル分類とREADME590行/固定MIT通知を全文確認し、公式利用ガイド全体という範囲と権利履行を確定。日本語資料を対象版/範囲で調査し、許諾/境界後に隔離変換試験と工数、採点/別selectionreview。",
+  "counts": {
+    "verified": 10,
+    "published": 10,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

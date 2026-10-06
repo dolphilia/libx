@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-272-ninja-local-verified-registration",
+  "cycle": 272,
+  "startedAt": "2026-10-02T20:00:00.000Z",
+  "endedAt": "2026-10-02T20:01:56.172Z",
+  "result": "partial",
+  "phase": "ninja-local-verified-registration",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Current fullarticle regression",
+    "UpdatedHTTP/native source link",
+    "Root complete contentchecker",
+    "Allsixgates audit",
+    "Originregistered project/verified ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "b4da3830ed31a4cfaadf7a28b19140b888cc003a72ef1eb7fbdba4187d3f19f1"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/REVIEW_MANIFEST.json",
+      "sha256": "20e12bffe303a026270f76a3f3a5e02f14071b74694e8f630a3b623c44307988"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/EXISTING_INTEGRATED_PRESERVATION.json",
+      "sha256": "c4b33c97e5ff95a5a4fb51184c80d22632de7abf958bce1ed170b8d578f2a726"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/FINAL_CONTENT.log",
+      "sha256": "7b9e90baea3a44ff191bb48c443ccc1a522c4bf2b31d0067cd9ecdb292967fb8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/FINAL_HTTP.json",
+      "sha256": "cd11b342613cc90760032d445b8048e883791a76e54b2ca4fc3c6c2a2b90dd89"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/SOURCE_LINK_UI.json",
+      "sha256": "45bc7dd81b20d92eec9b9ec82e0c2b243ee37cc739028b19164daa4affcf6dd0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/VERIFICATION_AUDIT.json",
+      "sha256": "440fc219d284bd49398402fb91140bc7ef31d523f1296791544de299dbf1f21c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/check-existing-integrated.mjs",
+      "sha256": "92ddef7e8d315f08ce397a9c7bde0198050d0c700fe23ad6f040d927140cb738"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "5ab9608c5db38c32c00763b2209ed008aa9920ad0e484bf5e3bd82c32c9469cb"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "0d3a762344e3983d8343fb2b34f85656b7719b190ff83439f6a328a01cfdf50e"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Ninja local verified six gates",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/VERIFICATION_AUDIT.json",
+          "sha256": "440fc219d284bd49398402fb91140bc7ef31d523f1296791544de299dbf1f21c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/FINAL_CONTENT.log",
+          "sha256": "7b9e90baea3a44ff191bb48c443ccc1a522c4bf2b31d0067cd9ecdb292967fb8"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/FINAL_HTTP.json",
+          "sha256": "cd11b342613cc90760032d445b8048e883791a76e54b2ca4fc3c6c2a2b90dd89"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/SOURCE_LINK_UI.json",
+          "sha256": "45bc7dd81b20d92eec9b9ec82e0c2b243ee37cc739028b19164daa4affcf6dd0"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-272/EXISTING_INTEGRATED_PRESERVATION.json",
+          "sha256": "c4b33c97e5ff95a5a4fb51184c80d22632de7abf958bce1ed170b8d578f2a726"
+        }
+      ]
+    },
+    {
+      "name": "GitHub CI/Pages publication",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "全六gate根拠とcurrentfullreview/app bytesを照合しlocalverified登録。",
+    "originOperationId付きNinja project登録、公開状態not-requestedを維持して公開待ち1件に算入。",
+    "ユーザー承認方針により次のcleancandidate公開工程は追加承認待ちにしない。"
+  ],
+  "unresolved": [
+    "clean release差分/remoteCI",
+    "Previewartifact/実配信比較",
+    "Production公開"
+  ],
+  "nextAction": "専用/ private/tmp/libx-ninja-import-20261003のclean release候補差分(.prettierignore/lock/linkchecker/landing/Ninjaapp/sourceレビュー/importersのみ)を全一覧・hashで精査しコミット。rootAwesome/ユーザー変更未取込みを保証。currentProduction commit5dda902a7dc5a4c8e71540da8b565e2c5a40f225を照合し、既存GitHub workflowでPreview CI、artifact SHA/fullarticle/配信bytes/actualUI照合後Production CAS公開。追加承認不要、Workers/定期設定不可。",
+  "resumeCondition": "272:現行統合19localrefs資産完全byte一致/2scoped404、rawsource native36到達、原/訳/全review/app hash一致、修復後も既存2369記事完全保持。全六検証gateaudit合格、Ninja state/lastValidverified、origin付きproject登録、公開待ち1。remoteCI/Preview/Production未実施。",
+  "counts": {
+    "verified": 10,
+    "published": 9,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

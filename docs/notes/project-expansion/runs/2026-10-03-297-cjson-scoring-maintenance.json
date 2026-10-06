@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-297-cjson-scoring-maintenance",
+  "cycle": 297,
+  "startedAt": "2026-10-02T22:00:32.000Z",
+  "endedAt": "2026-10-02T22:03:23.842Z",
+  "result": "partial",
+  "phase": "cjson-scoring-maintenance",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "OfficialGithub fixed older input fetch and full scope diff",
+    "Web boundedJapanese/officialvendorresearch",
+    "Evidencebased5item scoring",
+    "Ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "3c5078d76e4cb6ca3db0ae52903f84103ddd79ee285d03842bd5a6bf786562d3"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "9ae87849939ce98bdb7333aad71db71fa29faa32be5932cf838faeaaaf659bdd"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/CONTRIBUTORS.md.diff",
+      "sha256": "5d9b3bc07d20b2f3c140ce3fbf3d1d365c7bfaaa0723456909cc669f2be30756"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/JAPANESE_RESEARCH.json",
+      "sha256": "c549cef4065eba25b2a49d3fa6564d9c9e964c64afdfc9674cc5f57121010384"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/LICENSE.diff",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/MAINTENANCE.json",
+      "sha256": "6453b23d8c013067847587992b2665a075a4508b5f896a48602c51f298cbb9d5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/OLD_COMMIT.json",
+      "sha256": "d4ca23e7065caf41ecaba1684019083524d1b1a99a6ed77760104b993ac4cbcf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/README.md.diff",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/SCORING.json",
+      "sha256": "63fc3460172af63c4ff82997c7f21f4818e2a45a4c85fe58e9dd3656540124d1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/fetch-maintenance.py",
+      "sha256": "4043d4a99178d8ff6e0f37481183d2708f6171d00e548ba84ea6982feecafd30"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/old-CONTRIBUTORS.md",
+      "sha256": "0ac383df537b44e737c1b35d4a236e4753be588ce3cd8c4092d6b7c8a60216b8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/old-LICENSE",
+      "sha256": "a36dda207c36db5818729c54e7ad4e8b0c6fba847491ba64f372c1a2037b6d5c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/old-README.md",
+      "sha256": "c588125722bcd6e91e7e322fe9ce90252a5eca5c9fdf81ec967a3d45102010d6"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "9064bb4ba3ea319ca663528e29f2d4c9bade0d3fcf8d933a37c30fcb44ecaf77"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d819972efe33e82a350b1f1cbaab4dc607509c621e5b9f2b1c0b9367c4116695"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "wren"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Fixed older/current3input maintenance diff and5score reasoning",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/SCORING.json",
+          "sha256": "63fc3460172af63c4ff82997c7f21f4818e2a45a4c85fe58e9dd3656540124d1"
+        }
+      ]
+    },
+    {
+      "name": "Independent selection audit",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-297/SCORING.json",
+          "sha256": "63fc3460172af63c4ff82997c7f21f4818e2a45a4c85fe58e9dd3656540124d1"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前cycle296はconversion/workload資格判断でprogress。297は日本語調査と実差分/採点を保存。",
+    "297:cJSON bounded日本語調査を追加、全ガイド訳未発見だが有料記事未読を維持。固定1.7.18→1.7.19全3入力を取得比較、README/LICENSE同一・CONTRIBUTORS3名追加。版差分の追加価値は加点せず3/4/3/4/4の70点で推薦。別selection照合未完了のためneeds-evidence/採用0を維持。",
+    "設定はgpt-6-astra、runtime未公開、localLLMなし。開始時刻は初回検査時の概算。共有ユーザー/Awesome変更と外部公開/定期設定なし。"
+  ],
+  "unresolved": [
+    "Japanese additional value assessment",
+    "Score/independentselectionreview"
+  ],
+  "nextAction": "cJSON297全6必須条件と5採点を推薦文とは別に、固定原資料/実測/変換/native/日本語調査の現物へ辿る確認パスで照合。合格ならeligible→新規1件正式着手を台帳登録し専用cleanテンプレート生成/定本化へ。原文3問題は注記・コード実行未検証を明示して全訳/全文review/検証/Pages公開へ。",
+  "resumeCondition": "cJSON297全6必須条件と5採点を推薦文とは別に、固定原資料/実測/変換/native/日本語調査の現物へ辿る確認パスで照合。合格ならeligible→新規1件正式着手を台帳登録し専用cleanテンプレート生成/定本化へ。原文3問題は注記・コード実行未検証を明示して全訳/全文review/検証/Pages公開へ。",
+  "counts": {
+    "verified": 10,
+    "published": 10,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

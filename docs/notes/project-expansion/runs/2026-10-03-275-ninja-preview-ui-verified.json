@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-275-ninja-preview-ui-verified",
+  "cycle": 275,
+  "startedAt": "2026-10-02T20:20:00.000Z",
+  "endedAt": "2026-10-02T20:24:08.118Z",
+  "result": "partial",
+  "phase": "ninja-preview-ui-verified",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Current ledger and exact clean checkout audit",
+    "Native fixed Preview browser controls",
+    "Read-only DOM/clipboard comparison",
+    "Desktop/mobile visual checks",
+    "Ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e5266dbe986432a05a91e2761209331cf53e4c912a5717a8c63f938779fb8105"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-275/PREVIEW_UI.json",
+      "sha256": "ae679e100f03bf4447a27abfee76cbad017e9c91ac92330bb0d59bd72a4185e3"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "bb19b4a23b45713bae0d3581682d83368dc271a3c37147e18df078b220be8b3d"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "4188a331647d22eeb75f6412924ef6030bfff3a3e4d0f9ab86490fd4ad54f83e"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "FixedPreview representative real UI",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-275/PREVIEW_UI.json",
+          "sha256": "ae679e100f03bf4447a27abfee76cbad017e9c91ac92330bb0d59bd72a4185e3"
+        }
+      ]
+    },
+    {
+      "name": "Production CAS/CI/delivery",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "前cycleは実CI/fullartifact/delivery証拠を更新したprogress。今回残るPreviewUIを完了しpreview-verified登録。",
+    "全31copyをクリックしたとは扱わず機械全件とactual代表を区別。",
+    "Productionworkflowは実Cloudflare commit CASとrollbackbefore保存を備える専用commit版を使用。rootdirtyworkflowを使用しない。"
+  ],
+  "unresolved": [
+    "Production CAS/CI/artifact/delivery/domain"
+  ],
+  "nextAction": "Preview全artifact/fullNinja/既存2369/全2730配信bytes/actual英日copy/language/search/desktopmobileTOC/visual合格。専用cleanSHA068bfeb18b81f5098c669c04bd186605bc3a3834のProductiondispatchをcurrent GitHub deploymentとCloudflare workflowCAS expectedcommit5dda902a7dc5a4c8e71540da8b565e2c5a40f225で起動。intentを先に保存し不明結果で再dispatchしない。ProductionCIartifact/Cloudflare state/full delivery/domain/主要URLを確認してpublishedへ。",
+  "resumeCondition": "275:正規固定Previewで代表操作12項目合格。英日manualインデントcopy/両方向言語切替、英dyndep/JA依存関係検索、desktopTOCtop0.1875/mobile390depfiletop-0.125/page375、両license原文11357charscopy、desktop/mobilevisual通過。操作selector指定ミスを修正して記録。viewportreset。Preview検証済み、Production未起動。root他変更は保護。",
+  "counts": {
+    "verified": 10,
+    "published": 9,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

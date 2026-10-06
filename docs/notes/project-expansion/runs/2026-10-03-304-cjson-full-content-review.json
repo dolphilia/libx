@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-304-cjson-full-content-review",
+  "cycle": 304,
+  "startedAt": "2026-10-02T22:30:00.000Z",
+  "endedAt": "2026-10-02T22:34:18.518Z",
+  "result": "partial",
+  "phase": "cjson-full-content-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "WholeEnglishJapanese paired content reading",
+    "All15 code examples and licensing/attribution reading",
+    "Current301source/canonical hashes verification",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "9ce3cd1bd4181c3b4e40ef724e8f6be9e9e40bcda827c55e70cb30b0b014f28e"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "be228b721e6ff9651ba382959ddc25687739182116ede016db93050bef7e4600"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-304/CONTENT_REVIEW.json",
+      "sha256": "2ce9f3b6e71719f64e005fdd5652a86d372c4e48964aa1f85195133acfd895c8"
+    },
+    {
+      "path": "docs/notes/document-import/cjson/v1-7-19/REVIEW_MANIFEST.json",
+      "sha256": "2bd20c0b492dcfb5a950a9e7c505c41c67893d26a9088cbb33cb3458917c543c"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f12ff07444379231a2ff64f4fca45321e5fd6188d656fd3d83d8ef957d6e60e7"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "All3pages separate semantic review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-304/CONTENT_REVIEW.json",
+          "sha256": "2ce9f3b6e71719f64e005fdd5652a86d372c4e48964aa1f85195133acfd895c8"
+        },
+        {
+          "path": "docs/notes/document-import/cjson/v1-7-19/REVIEW_MANIFEST.json",
+          "sha256": "2bd20c0b492dcfb5a950a9e7c505c41c67893d26a9088cbb33cb3458917c543c"
+        }
+      ]
+    },
+    {
+      "name": "Finalmechanical/native/integration/publication",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "前turnは方針/台帳確認のみno-progress。現在新規cJSONの全文内容レビューを進めた。",
+    "304:全3scopeのsource→ENは301現行SHA一致で継承、JA全174guideブロックと15コード例・追加通知/目次・LICENSE全文参考訳・CONTRIBUTORS全85氏名/全段落を別工程対照実読。本文修正なし、content-reviewed。機械全検査/正式native/統合/公開はpending、原例は実行未検証。"
+  ],
+  "unresolved": [
+    "Content checker and allstructure/linkfragment/integrity checks",
+    "Formal native display/interaction",
+    "Integration regression/Pages publication"
+  ],
+  "nextAction": "全3ENJA別工程内容レビュー合格。read-only check:contentを実装し固定入力・全構造・内部リンク全fragment・内容reviewSHA/コード/通知を検査。正式native英日desktop/mobile/keyboard/copy/404と統合回帰を別工程で完了後、検証済み公開待ちへ登録し統合Pages公開。",
+  "resumeCondition": "304:全3scopeのsource→ENは301現行SHA一致で継承、JA全174guideブロックと15コード例・追加通知/目次・LICENSE全文参考訳・CONTRIBUTORS全85氏名/全段落を別工程対照実読。本文修正なし、content-reviewed。機械全検査/正式native/統合/公開はpending、原例は実行未検証。",
+  "counts": {
+    "verified": 10,
+    "published": 10,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

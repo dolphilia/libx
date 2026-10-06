@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-335-zlib-selection",
+  "cycle": 335,
+  "startedAt": "2026-10-03T01:45:08.145Z",
+  "endedAt": "2026-10-03T01:50:48.353Z",
+  "result": "partial",
+  "phase": "zlib-selection",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Official web limited repository observation",
+    "Frozen scoring input",
+    "Separate selection evidence pass",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "93da544fdfd119bf3837990f2a480b9f93d70ef752d5bc77e49f60fe2ca90377"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "af26aa28cc1775144efdb0725a4659b165498e51b7a79d80f0a9f0e5161cce57"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-335/JAPANESE_REPOSITORY_OBSERVATION.json",
+      "sha256": "148e4683b9b08ea919caa3b1e41bbfdae00ba85b51721cbeed6021fa4f5318b3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-335/OFFICIAL_DOC_DIRECTORY.json",
+      "sha256": "7cafa01b037239a71dd9ca7deb0165517f6f33f3c88ffa55a6e96019ed0d85cc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-335/OFFICIAL_REPOSITORY.json",
+      "sha256": "2048595859fa3b056a17c382bfd8c1355eb93fa72bbc47fa40ddc279b49cd0b6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-335/SCORING.json",
+      "sha256": "11b3282fdd242b97026bb749841a40d7cd89de4918a5047c4283668535bf43c3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-335/SELECTION_INPUT.json",
+      "sha256": "7143ed1f94e19deb1b39f0bf79af6fc64ff49b5a7fa756e6aad6110ad93938e4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-335/SELECTION_REVIEW.json",
+      "sha256": "5d75f037392c1f478f5b9c3067e8f76b7f469b2fb8017dbf03ba6dcd96d7280c"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "31837933564ee59e076fa828f4eae7e9259b92b10545d6215a89d7d5a80f2bca"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "72bd1d8bfa37eed69ee47e8c97df90e7022f63752bf978549b4a08a17d0cef93"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "zlib"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "selection score/evidence",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-335/SELECTION_REVIEW.json",
+          "sha256": "5d75f037392c1f478f5b9c3067e8f76b7f469b2fb8017dbf03ba6dcd96d7280c"
+        }
+      ]
+    },
+    {
+      "name": "formal app/translation/content review/publication",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-335/SELECTION_REVIEW.json",
+          "sha256": "5d75f037392c1f478f5b9c3067e8f76b7f469b2fb8017dbf03ba6dcd96d7280c"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "新規優先方針に従いzlibを74点で採用、planned1件登録。",
+    "日本語資料調査は部分確認、未取得から不存在を推定しない。",
+    "全文訳/別レビュー/正式機械検査/公開は未了として別管理。",
+    "localLLM/Workers/外部公開/定期設定なし、共有変更保持。Astra設定でruntime未露出、Sol実行と偽らない。"
+  ],
+  "unresolved": [
+    "正式app/定本化/訳/全文レビュー/正式検証/公開"
+  ],
+  "nextAction": "336: /private/tmp/libx-zlib-import-20261003 を共有作業から隔離して正規templateからzlib app作成。固定1.3.2 root6のみを原典/provenance保存、API原8節+導入を9頁と付録5頁へ全量分割しgeneralized rawHTML plugin/importerへ移す。原通知/FAQ fallback/誤記注釈、archive外部参照を明記して全量再生成・hash/block/linkチェック。以降全文訳→別全文review→正式機械/表示/統合検査→正規公開待ち→統合Pages公開。未検証を公開対象へ入れない。",
+  "resumeCondition": "336: /private/tmp/libx-zlib-import-20261003 を共有作業から隔離して正規templateからzlib app作成。固定1.3.2 root6のみを原典/provenance保存、API原8節+導入を9頁と付録5頁へ全量分割しgeneralized rawHTML plugin/importerへ移す。原通知/FAQ fallback/誤記注釈、archive外部参照を明記して全量再生成・hash/block/linkチェック。以降全文訳→別全文review→正式機械/表示/統合検査→正規公開待ち→統合Pages公開。未検証を公開対象へ入れない。",
+  "counts": {
+    "verified": 11,
+    "published": 11,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

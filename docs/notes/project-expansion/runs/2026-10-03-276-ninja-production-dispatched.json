@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-276-ninja-production-dispatched",
+  "cycle": 276,
+  "startedAt": "2026-10-02T20:24:00.000Z",
+  "endedAt": "2026-10-02T20:25:49.020Z",
+  "result": "partial",
+  "phase": "ninja-production-dispatched",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Private clean release and SHA audit",
+    "GitHub secure structured dispatch",
+    "Indirect GitHub predecessor check",
+    "Cloudflare commit and deployment CAS workflow",
+    "Exact Production run poll",
+    "Ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "bb19b4a23b45713bae0d3581682d83368dc271a3c37147e18df078b220be8b3d"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-275/PREVIEW_UI.json",
+      "sha256": "ae679e100f03bf4447a27abfee76cbad017e9c91ac92330bb0d59bd72a4185e3"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-276/PRODUCTION_CI_1790972680066.json",
+      "sha256": "002dbb0b0f8feb2cb76745d18ebe410f76ba98acfcf88bc58a95e6b03f6a6acd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-276/PRODUCTION_CI_1790972702210.json",
+      "sha256": "29dfba6235c64b30f100a7eeea73ba481789185801ec23b30648dbc57111d78d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-276/PRODUCTION_DISPATCH_INTENT.json",
+      "sha256": "6afa56361538613ddd6b60fc11f115778de8dd0c647c4d44c42ae4c9aee1204b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-276/PRODUCTION_DISPATCH_RESPONSE.json",
+      "sha256": "8433730467b50b2207b9ab6082c2ded0dfe0d9675b866aafb420ed77b1138fd4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-276/production-dispatch-and-poll.mjs",
+      "sha256": "e69f0cfe4ca4f4d5f815640a8721e72e19afe39bd5efdfbb839d6cebe8310003"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "169d667f4b2f2e99bff5049412c324562d5d9357467d41607dd49cc996690776"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "61f91afacb38d6f5c650b0e6973588ba4f6536d729ac554a294a74e8f05cde99"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Production dispatch accepted/exact live run",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-276/PRODUCTION_DISPATCH_INTENT.json",
+          "sha256": "6afa56361538613ddd6b60fc11f115778de8dd0c647c4d44c42ae4c9aee1204b"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-276/PRODUCTION_DISPATCH_RESPONSE.json",
+          "sha256": "8433730467b50b2207b9ab6082c2ded0dfe0d9675b866aafb420ed77b1138fd4"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-276/PRODUCTION_CI_1790972702210.json",
+          "sha256": "29dfba6235c64b30f100a7eeea73ba481789185801ec23b30648dbc57111d78d"
+        }
+      ]
+    },
+    {
+      "name": "Production CI/Cloudflarestate/artifact/delivery",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-276/PRODUCTION_CI_1790972702210.json",
+          "sha256": "29dfba6235c64b30f100a7eeea73ba481789185801ec23b30648dbc57111d78d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "user継続公開承認に従いpreview-verified専用commitだけProduction起動。",
+    "GitHubproduction predecessorは間接観測。ActualCloudflare CASはcommittedworkflowで公開直前に履行。",
+    "dispatchintent先保存とrun37060392684確認済み。再dispatchなし。",
+    "本番CI liveを完了/publicationpublishedへ変更しない。"
+  ],
+  "unresolved": [
+    "Production run37060392684 inprogress",
+    "Cloudflare before/prepublish/after state",
+    "Actual production artifact/full delivery/customdomain/主要URL"
+  ],
+  "nextAction": "Production run37060392684/head068bfeb18b81f5098c669c04bd186605bc3a3834をbounded poll。/private/tmp/libx-ninja-production-276.mjsは--dispatchを付けず同run追跡可だが次cycle新immutable証拠directoryへ記録する専用read-only pollを作る。276intent/response/既存CI証拠は変更せず再dispatchしない。quality/deploy terminal後Actual CIartifactzipdigest/commit/fullNinja4/既存2369/Cloudflare before(predecessor5dda)/prepublish/after(actual068bfeb1)を確認。固定Production全配信bytes/customdomain変換/主要英日URL/nativeUI確認後published。失敗は原因段階から修復。",
+  "resumeCondition": "276:専用clean068bfeb1/PreviewUIpassed/ledgerpreview-verified/remotebranchSHA一致確認。本番GitHubdeployment predecessor5dda一致は間接証拠。ActualCloudflareは専用workflow beforeでexpected5dda、prepublishdeploymentidCAS、after候補SHAを確認する。dispatchHTTP204、同SHA本番run37060392684 quality-check111015331171 livein_progress。Production未完了、再dispatch不要。",
+  "counts": {
+    "verified": 10,
+    "published": 9,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

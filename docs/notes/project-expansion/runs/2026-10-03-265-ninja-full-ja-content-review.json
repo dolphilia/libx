@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-265-ninja-full-ja-content-review",
+  "cycle": 265,
+  "startedAt": "2026-10-02T19:15:00.000Z",
+  "endedAt": "2026-10-02T19:21:11.411Z",
+  "result": "partial",
+  "phase": "ninja-full-ja-content-reviewed",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Separate full source/JA reading",
+    "Five translation clarifications",
+    "Postcorrection deterministic reassembly/check",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "718c511b3e5832a85809ad63544af97d91a10087ad2c3def9650ad59b6834875"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-263/EN_CONTENT_REVIEW.json",
+      "sha256": "c9a59a7fbf06d363389340cfd3d2f296a041e2b244509dcce947f2ac4be33fef"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-265/CONTENT_REVIEW.json",
+      "sha256": "186bda888a03eec6ae64a07423d71f52517c98ade68be60da5a279ddd6dd858b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-265/CORRECTIONS.json",
+      "sha256": "6febf71c3485acc241ba3df79d3a5f13c1ad2c9a1d0c4c3db0bc94d6ba2ef9aa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-265/PRE_REVIEW_JA_BLOCKS.tsv",
+      "sha256": "34837afa62a8cea5669955a6f351569eeabbe2320362b39e2434267b128a0465"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-265/PROOF_REFERENCE_REPAIR.json",
+      "sha256": "026961a21dfcf57164652694ccddde813d7ecbbc3f4dfe34f37da430d8beb78c"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/JA_BLOCKS.tsv",
+      "sha256": "0e8a4d4abc121309edd33e40d42f8a1ff85f91d0575ec1a3ac15a77750b50339"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/SOURCE_BLOCKS.json",
+      "sha256": "141dcc3b258ffdeeafdf76b49f028d1d5ec3d95b9fb3392c772ac3dd5eb2c3f6"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/UNCHANGED_BLOCKS.json",
+      "sha256": "e4cb5fb74b1dd8d60691ddfd9ce663da5fc13b40ec3cebe7319f090e2e397694"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/generated/01-docs/01-manual.md",
+      "sha256": "e5063a22c9f8bf9e8b84544fa2c12949e5d91ea11e5348dc137ec10a5ced97a6"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/generated/02-license/01-license.md",
+      "sha256": "917673e8114534c30371e9f9d25c2fefe3c4454adb27bea23610084f8db7610e"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/generated/GENERATION.json",
+      "sha256": "4a1079fbd4e57ab7f80e7085e2214924154f93ee34beafbc4846e816f96ed386"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/REVIEW_MANIFEST.json",
+      "sha256": "20e12bffe303a026270f76a3f3a5e02f14071b74694e8f630a3b623c44307988"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "b71a39a38a1d277bc7ae464758aa016fdc4f70f420892af86071476f5947d91a"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "2eab5f231a63def915e495378ac4395612e537be302214fd6425f05a68fd8d41"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Full paired two-page content review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-265/CONTENT_REVIEW.json",
+          "sha256": "186bda888a03eec6ae64a07423d71f52517c98ade68be60da5a279ddd6dd858b"
+        },
+        {
+          "path": "docs/notes/document-import/ninja/v1-13-2/REVIEW_MANIFEST.json",
+          "sha256": "20e12bffe303a026270f76a3f3a5e02f14071b74694e8f630a3b623c44307988"
+        }
+      ]
+    },
+    {
+      "name": "Full ENJA app mechanical/UI/copy/release verification",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "全文内容レビューと機械検査を分離し、全範囲hash付きで記録。",
+    "修正前draftを保存。5件の語義明確化後に再生成と該当箇所の再レビューを実施。",
+    "公開済み通常巡回を低優先に維持し、新規Ninjaを優先。共有Awesome/ユーザー変更は保護。"
+  ],
+  "unresolved": [
+    "正式JA配線",
+    "全ENJA機械検査とdesktop/mobile/copy",
+    "統合CI/Pages公開"
+  ],
+  "nextAction": "正式privateappへレビュー済みJA2ページを配線し、supported en/jaと変更・非公式翻訳の出典注釈を設定。全4ENJA記事のbuild/sidebar/構造/内外リンク/metadata/整合とbrowserdesktop/mobile、copy機能を検証。全証拠を現行hash照合後verified登録→正規公開待ちとして統合CI/Pagesへ公開。",
+  "resumeCondition": "265: 別工程の全2JA内容レビュー完了。全345unitと31code、41節を再照合、5訳文明確化を修正後再確認。全2ENレビュー263は固定hash一致で継承、全2pairedpageREVIEW_MANIFEST保存。JAは正式app未配線、内容レビュー済みは公開/機械UI検証済みを意味しない。rootNinjaappなし/privateのみ、publicationnot-requested。",
+  "counts": {
+    "verified": 9,
+    "published": 9,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

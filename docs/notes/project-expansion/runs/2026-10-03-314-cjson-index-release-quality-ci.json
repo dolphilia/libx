@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-314-cjson-index-release-quality-ci",
+  "cycle": 314,
+  "startedAt": "2026-10-02T23:36:40.000Z",
+  "endedAt": "2026-10-02T23:38:59.782Z",
+  "result": "partial",
+  "phase": "cjson-index-release-quality-ci",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Scoped clean1file GitHub branch push",
+    "Secure quality-only intent/dispatch",
+    "Actualsamecommit live CI run/job verification",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ac367663f21a55a66c322c282b8a7c12d62bbdc8e31a60e3e36eeb13e306119c"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "2e027ea3e2997030857c4ca858bff23fadfc82d5ad8907526b446d9ebc73d925"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-314/NEXT_RELEASE_COMMIT.json",
+      "sha256": "58bbd5707a74e688f72345bbacdc46247c6af622153efac8bfe104f0f6ecdb53"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-314/PUSH_SUCCESS.json",
+      "sha256": "d6219a3164157dac671472e17d71be080b1539da9db287f530345807ab6cdb1a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-314/QUALITY_CI_1790984246399.json",
+      "sha256": "1af4410f7b21806456a0afd028f8655a0505750139d0880097743ebfc502bdd9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-314/QUALITY_CI_1790984293084.json",
+      "sha256": "4f68e5665f0be5e261ef730324119ef1b5c129358c1c9ff97ea89f084b687a66"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-314/QUALITY_DISPATCH_INTENT.json",
+      "sha256": "b0f55f5bb935a89bad175140a3c01ea47e60daabb85ce52891d1c84e9039317c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-314/QUALITY_DISPATCH_RESPONSE.json",
+      "sha256": "3b0889ad0ee571039d26acfa8432ef2fc44070afd8ea20624401031a25583ebe"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4b4ee8869a42fbf1baa2ffef7e51408cb44a249e49fda3a0bd1e7c0eb3155356"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Newcommit CI/artifact/Pages",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-314/QUALITY_DISPATCH_INTENT.json",
+          "sha256": "b0f55f5bb935a89bad175140a3c01ea47e60daabb85ce52891d1c84e9039317c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-314/QUALITY_DISPATCH_RESPONSE.json",
+          "sha256": "3b0889ad0ee571039d26acfa8432ef2fc44070afd8ea20624401031a25583ebe"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-314/QUALITY_CI_1790984293084.json",
+          "sha256": "4f68e5665f0be5e261ef730324119ef1b5c129358c1c9ff97ea89f084b687a66"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "314:一覧カテゴリと同orderカードの順をcJSON1fileで固定したadbe8b8d cleancommitを同専用branchへpush成功。quality-only dispatchHTTP204/run37078450678 head一致 in_progress、静的解析段階。初回3cfCI成功と6全文/2373保持は313証拠、新commit CI/11HTML/Preview/Productionは未検証。",
+    "前turn分類はprogress（CI terminal証拠/候補固定/実際のindex修正と検証/台帳更新）。今回はpush/CI新run確認と再開条件保存。初回runは終了済み、未知の新runを再起動しない。"
+  ],
+  "unresolved": [
+    "Newcommit CI/artifact all11 comparison/Preview/Production",
+    "SDS full qualification"
+  ],
+  "nextAction": "起動済みquality-only run37078450678 headadbe8b8d8698a406734a5e7466ae1e589a5190d4を新cycleの証拠へbounded poll（再dispatchしない）。成功後ZIPdigest/manifest全件・修正local対CI全11HTML（全CSSscopedCID整合のみ変換）・全6内容と既存2373保持を確認。Preview実配信全件/native→最新Production前後CASで公開。SDSは公開API範囲/注釈/JP/変換/工数/採点を並行ではなく独立に継続。",
+  "resumeCondition": "314:一覧カテゴリと同orderカードの順をcJSON1fileで固定したadbe8b8d cleancommitを同専用branchへpush成功。quality-only dispatchHTTP204/run37078450678 head一致 in_progress、静的解析段階。初回3cfCI成功と6全文/2373保持は313証拠、新commit CI/11HTML/Preview/Productionは未検証。",
+  "counts": {
+    "verified": 11,
+    "published": 10,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

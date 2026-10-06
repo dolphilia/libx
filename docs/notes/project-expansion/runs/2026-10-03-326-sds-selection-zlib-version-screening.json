@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-326-sds-selection-zlib-version-screening",
+  "cycle": 326,
+  "startedAt": "2026-10-03T00:36:00.000Z",
+  "endedAt": "2026-10-03T00:38:38.276Z",
+  "result": "partial",
+  "phase": "sds-selection-zlib-version-screening",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Currentledger and gates validation",
+    "Publisher Japanese body continuous read",
+    "Official SDS repo/fixed source separate qualification reading",
+    "Version-qualified general search",
+    "Source selfContained/negativequality/scoring",
+    "Separate evidence hash and primary-source review",
+    "Official zlib release/manual/license/JP-link observation",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "940a7febfd7c4e863e0f451dfe51d160d788dffb220ed0f6eda2e00a3842b0c6"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "132e81dd31da69c0ad165facd5ac45035f9973ff99da3cbc3bbfdd4a88dd59a5"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/SDS_JAPANESE_SCOPE_COMPARISON.json",
+      "sha256": "d7bdf51765126460c88e5d9d1af433243040ec25389d9ae2662879c6117262eb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/SDS_SCORING.json",
+      "sha256": "275fa3f4d94fdb17ba48c4dac154149ca627b5b4acdaee0d6cacda15e36914c3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/SDS_SELF_CONTAINED_ASSESSMENT.json",
+      "sha256": "0f2e137be3147e0027dc8cabdc90796d893055b0b6d83fb6505ddcef0ba5fdbb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/SDS_SEPARATE_SELECTION_REVIEW.json",
+      "sha256": "b390818b243c552de85eb923f10249a5ad7b6c2c5fbaefdf4f77e602b21f23cb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/ZLIB_INITIAL_VERSION_OBSERVATION.json",
+      "sha256": "e8d2a947f50aac618dfb2993a21a591ed6d23b4b3d35147ac83a554061ec0d0f"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "956d18de2183085853498b14096a6a3e4cb3c43f10ed61e2f4340559fafdd685"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "56442177c463042bcb634e24045f10e0bfe4efb89e8e8eb66b9d70ddd3a51337"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "sds",
+    "zlib"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "SDS boundedJP/selfContained/source selection review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/SDS_SEPARATE_SELECTION_REVIEW.json",
+          "sha256": "b390818b243c552de85eb923f10249a5ad7b6c2c5fbaefdf4f77e602b21f23cb"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/SDS_JAPANESE_SCOPE_COMPARISON.json",
+          "sha256": "d7bdf51765126460c88e5d9d1af433243040ec25389d9ae2662879c6117262eb"
+        }
+      ]
+    },
+    {
+      "name": "zlib fixedversion/source qualification",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-326/ZLIB_INITIAL_VERSION_OBSERVATION.json",
+          "sha256": "e8d2a947f50aac618dfb2993a21a591ed6d23b4b3d35147ac83a554061ec0d0f"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前turnprogress:325全変換実表示/保持検証を保存してconversionをpass。今回326は残る自立性・限定日本語比較と採点/別確認を完了しSDSをrejectedへ変更。",
+    "SDSの原文品質は具体的な主要API/構造不整合により2点、全体63点。新規数を増やすための基準調整なし。",
+    "着手可能な独立新規zlib調査へ切替。公式最新1.3.2とmanual1.3.1の不一致があり、対象文書版を推測せず配布物確認へ。"
+  ],
+  "unresolved": [
+    "zlib fixedsource/manualversion/boundary/rights/JP/conversion/workload/score"
+  ],
+  "nextAction": "SDS2.0.0は326全必須条件/別原典照合完了、63点で通常採用見送り。次の新規候補zlibを優先。最新ソフトウェア1.3.2と公式manual1.3.1の版不一致を解決するため、公式配布物をサイト掲示SHA256で取得し、1.3.2固定header/全文manual生成元/原通知/全入力境界を確認。公式案内の日本語資料は取得失敗で未読、対象版範囲を再評価して変換・工数・採点へ。",
+  "resumeCondition": "SDS2.0.0は326全必須条件/別原典照合完了、63点で通常採用見送り。次の新規候補zlibを優先。最新ソフトウェア1.3.2と公式manual1.3.1の版不一致を解決するため、公式配布物をサイト掲示SHA256で取得し、1.3.2固定header/全文manual生成元/原通知/全入力境界を確認。公式案内の日本語資料は取得失敗で未読、対象版範囲を再評価して変換・工数・採点へ。",
+  "counts": {
+    "verified": 11,
+    "published": 11,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

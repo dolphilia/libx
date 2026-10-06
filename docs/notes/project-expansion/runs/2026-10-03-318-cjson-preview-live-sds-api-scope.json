@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-318-cjson-preview-live-sds-api-scope",
+  "cycle": 318,
+  "startedAt": "2026-10-02T23:50:30.000Z",
+  "endedAt": "2026-10-02T23:53:41.762Z",
+  "result": "partial",
+  "phase": "cjson-preview-live-sds-api-scope",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Currentledger validation/AGENTS/privateclean audit",
+    "Samecommit Preview live CI/job/artifact read",
+    "Fixedwholeheader API symbol/comment boundary comparison",
+    "Actualfixedimplementation discrepancy reads",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e4ee5f03bdc8289632730139846a9b06968c786a1828823d5385fdebe37c435d"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "23be4b75342eda3dd5987813643622f6358fa9b568e0bab492e84401e180625c"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-318/CI_1790985164.json",
+      "sha256": "cbcbbab65bd66a7dd61bd12969a8814f9413af67ae3b1fa98e6438371a7f9b4f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-318/SDS_FIXED_API_DISCREPANCIES.json",
+      "sha256": "877911135e686c613328a359ceb81eb70ccf40261f5727ebf3710a9c3673dd37"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-318/SDS_PUBLIC_API_SCOPE_MAP.json",
+      "sha256": "522d5f43ff759dec70fd3b9bb2530aa1ac9da372cd0e13ef73265c132317d85f"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "1f604e9a2ad4d98bc4f4151b1a6848fd9d02859f1e77658be20c57afc58789f2"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6f975f29af94bb1ee265ad298086b7627a4da6cae0d249cb5044d88997f0a2f3"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "sds"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "cJSON Preview/Production and SDS qualification",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-318/CI_1790985164.json",
+          "sha256": "cbcbbab65bd66a7dd61bd12969a8814f9413af67ae3b1fa98e6438371a7f9b4f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-318/SDS_PUBLIC_API_SCOPE_MAP.json",
+          "sha256": "522d5f43ff759dec70fd3b9bb2530aa1ac9da372cd0e13ef73265c132317d85f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-318/SDS_FIXED_API_DISCREPANCIES.json",
+          "sha256": "877911135e686c613328a359ceb81eb70ccf40261f5727ebf3710a9c3673dd37"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "318:前turnprogress（修正後CI/artifact全検証とPreviewdispatch/実run確認/台帳更新）。現run37079360273/head一致in_progress、Repository and content checks段階、artifact0をlive確認。SDS固定全header再読・追加実装箇所読解により公開headerの41関数を全名前集合と照合、直後の定義に対応するコメント34/APIinline6/test1を区別。sdssplitlen空文字列/参照API、sdstrim/例出力、join/test宣言の不一致を別注釈対象として保存。採用0件。",
+    "記事・注釈の候補調査は公開最終全文レビューの代替としない。新規公開優先、定期巡回は低優先。"
+  ],
+  "unresolved": [
+    "cJSON Preview CI/artifact/delivery/native and Production",
+    "SDS full qualification"
+  ],
+  "nextAction": "実行中Preview run37079360273 sameadbe8b8dを次cycle新immutable証拠へpollし再dispatchしない。成功時artifactdigest/manifest/全6本文/全11HTML/既存2373保持・全Preview配信/native確認→preview-verified、実Production CASで公開。SDSは41関数mapの6inline/34非test/1test境界と全型macro・注釈を確定、JP全文比較/試験変換/工数/採点を続ける。",
+  "resumeCondition": "318:前turnprogress（修正後CI/artifact全検証とPreviewdispatch/実run確認/台帳更新）。現run37079360273/head一致in_progress、Repository and content checks段階、artifact0をlive確認。SDS固定全header再読・追加実装箇所読解により公開headerの41関数を全名前集合と照合、直後の定義に対応するコメント34/APIinline6/test1を区別。sdssplitlen空文字列/参照API、sdstrim/例出力、join/test宣言の不一致を別注釈対象として保存。採用0件。",
+  "counts": {
+    "verified": 11,
+    "published": 10,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

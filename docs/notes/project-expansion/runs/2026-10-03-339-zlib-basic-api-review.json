@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-339-zlib-basic-api-review",
+  "cycle": 339,
+  "startedAt": "2026-10-03T02:20:38.788Z",
+  "endedAt": "2026-10-03T02:20:41.548Z",
+  "result": "partial",
+  "phase": "zlib-basic-api-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Separate whole source/canonical reading",
+    "Section duplicate repair",
+    "Isolated Astro build/321block check",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "31837933564ee59e076fa828f4eae7e9259b92b10545d6215a89d7d5a80f2bca"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "17d16697a0e5d0c01670492f51f8cfef585709593a32fc25ea3fb5d470845b1b"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-338/ENGLISH_REVIEW_PROGRESS.json",
+      "sha256": "c9abf7e720c1d33bdd413af45f61ad7fab434e6c79f3f878f6e5c613aeca288e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/ASTRO_BUILD.log",
+      "sha256": "6fb9f12b214ca7f9d94a40bceaf48bd94d30975b569e0fa69922c46b27c16f8f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/ENGLISH_REVIEW_PROGRESS.json",
+      "sha256": "436b2ae0829f29843bde934b92a9e271991f6afc661853288c2a4c4d9461e62f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/RENDERED_MACHINE_CHECK.json",
+      "sha256": "e7cbd65e0a0612fce951145d2dd654d93241252b9c1f0cbfb5eefb0e35fe0396"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/.gitignore",
+      "sha256": "12dc4676e70590a75488b85502453e80ceb15c200ea5eee70d69458719c7a44c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/README.md",
+      "sha256": "6c54424fc7559c4ca260c1040edf9622c8f82f264a1450ec38575e1bacec93e9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/astro.config.mjs",
+      "sha256": "ef8d6fd7f4c954cbceaafb7bcc0cb916332eab56471bc028f9bed5c9dc42ed89"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/meta/canonical-map.json",
+      "sha256": "7b50d587eae2ad8eb53bc31fb4d1efe823869121fe6a816f274ca3e373d69265"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/meta/english-review-progress.json",
+      "sha256": "436b2ae0829f29843bde934b92a9e271991f6afc661853288c2a4c4d9461e62f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/meta/expected-blocks.json",
+      "sha256": "b1cacf3ecc8d7f388a231dfe450b8494afe43e408ab99c8ffb844051545d6ec6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/meta/page-plan.json",
+      "sha256": "750695fb9cce500fc73cadb1091f0841b1ed3db88b569b5472e0eb6be4dc50c6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/meta/rights-decision.json",
+      "sha256": "e22d76b7357b824a50d9a38b711ddd1abf127b7414117eab4df6f111c23bf239"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/meta/source-boundary.json",
+      "sha256": "7657c2822978b4d4dfb63dc8a5222def8f9cc305fb5d01ff80a0468455637ae1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/meta/source-content-assessment.json",
+      "sha256": "b9fe812e44c1d0ac4c5684e78b76f0863c5fa856e4be46da1f7c147525813827"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/meta/source-manifest.json",
+      "sha256": "66038ad464609015a4aec8651dcac090b5981dc01623d5be4e397502e3c995e7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/package.json",
+      "sha256": "805544a013b9eb1e073905b741e302dad88af8b7b29b369ac8321e77ba4ac654"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/public/favicon.svg",
+      "sha256": "2d7a310283d6f9cc753210d83224cd6db6348cb82a5536348884e5831d46203f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/public/search/v1-3-2/en.json",
+      "sha256": "195f1b10a78f9b4b00d0abbd313aaf001a0efe3cd57a9a196ed42f3db211e205"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/public/sidebar/sidebar-en-v1-3-2.json",
+      "sha256": "9b45f6e850345e91beebef77a7041a93184d6ecfa15ff133dad21d11d1bf2105"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/public/sw.js",
+      "sha256": "329e259740a7a48b93ea6d00bbc8f8d7c1d086d84f60b9265ceeb888f5a6ad4d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/scripts/check-content.mjs",
+      "sha256": "863ac13ae22ffde06b123dc219edfb9696038eba67fd9f037787398ef5d84bbf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/scripts/import-canonical.py",
+      "sha256": "b2d15077a37917116edbff5b7229f63eff76714dc3b89d3418eb89c5e55ad937"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/config/project.config.jsonc",
+      "sha256": "d176650427df9979b268d65131733eec54aec83eb04f1f1c68ada93417c76eb4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/config.ts",
+      "sha256": "608522d07640ae4ca74bbe5c6910d5f1d151ba86301ed56f8dc55ab3600e81d3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/01-api/01-overview.md",
+      "sha256": "73661fcfd61930c33f692e1a31bdee4a7c1c3c066abd9b6fb62a1c0d79dbd4f3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/01-api/02-constants.md",
+      "sha256": "90ee176b92af1475668ceaf3f453f3dd2948525e19adc9aa75b444b117f160a3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/01-api/03-basic.md",
+      "sha256": "9b553ae56fb469131c0f085dbdfc5a8884b5f2ba8b1cfe995558ba5f750b16a7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/01-api/04-advanced.md",
+      "sha256": "8dfc4da04ad75c5a00d79244b65296547af9eb01f0d2dfef133d8e7a835a9cfd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/01-api/05-utility.md",
+      "sha256": "12a7af8e497f64c859aa28f2ee8698eb8955a39776bbddae21b0d6beecc43a45"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/01-api/06-gzip.md",
+      "sha256": "090f5f87f49c379eba1df4922743422543d442c1351dd426c9cafaa8aa21c414"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/01-api/07-checksum.md",
+      "sha256": "3a5cc8ac5e30397e5e881703862eced9afeef22bc72c4167c5c22593f335c502"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/01-api/08-hacks.md",
+      "sha256": "652d340095fb1254a0ba5f4d5824ff48bc4a2d8a9525567e9134f99882e9d7bd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/01-api/09-undocumented.md",
+      "sha256": "823914d0362488fda064c0589f0f914c1f085fe2f7cbf10c9e8ce893eb55ccaf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/02-appendix/01-zconf.md",
+      "sha256": "8138edf282a6136ddcf7072559f0efbbd95ba677e51c1d6b51a9bf74646f7f7e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/02-appendix/02-readme.md",
+      "sha256": "d1c1be69f70e75f2cb2b5d71b311f7cf662f05b6cf9391e43a6e573b162d09ec"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/02-appendix/03-faq.md",
+      "sha256": "079eff1e76a93ce3ba629fef70d9543b1cc81bef5fa0e59800e2695e0d4c82ef"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/02-appendix/04-manual.md",
+      "sha256": "bdec2606dbce5bae1dcda1994536deb810e99fbced9de4075f4422250bfa3c09"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/content/docs/v1-3-2/en/02-appendix/05-license.md",
+      "sha256": "b444ea27f1bf1fb23070eed3cd1b99a04f710bf6f4d082bc2cbbf0537ce4c68a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/layouts/DocLayout.astro",
+      "sha256": "560ffd196d9c2d280437a2d38219c02566423c921d6e824af1d722d4cdc0ae71"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/layouts/MainLayout.astro",
+      "sha256": "96dd11ddf8031b6703671b528ab884776200f8a6cf31bc62b23bcfff56cf28c0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/lib/navigation.ts",
+      "sha256": "b10ed67d5a3a48ab928a18be45aeb6e1dd130ef1365af8259fc90cbd1d5d6171"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/pages/404.astro",
+      "sha256": "f819c23fd504e15635630d9a94f4df441dedd5ef52aaf73ee7bfd523418362c1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/pages/[version]/[lang]/[...slug].astro",
+      "sha256": "9f74333d2579aea388ab1c43cecad006a2c8c18cc8a0be9dfe5a87e262074201"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/pages/[version]/[lang]/index.astro",
+      "sha256": "b55529970b233d8878d653f2d0596a23cacb9ddcd9d17b988f9746078de1d907"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/pages/[version]/index.astro",
+      "sha256": "791a1651bf8038667cf95cb9a31b2a2fd1aa292a5c9b02f5cca557815042d31c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/pages/index.astro",
+      "sha256": "f54088a5e93dff48532c77d3d0733a08804055b4b8a5003fa2fb931f2d2ac5b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/plugins/rehype-zlib-html.mjs",
+      "sha256": "ab9a51159676fc5215275dd50e6f57f6b723e6d6a3bb0669f4a8b2677b0de382"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/plugins/remark-zlib-source.mjs",
+      "sha256": "6ec93da3fbd58f698a4aca8e136b07bf5bc4e006678585452488f68c0ed0e586"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/src/styles/global.css",
+      "sha256": "53d710242aa881731e5378215f236a2419732c35543be6ce697b074f4891947e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/tsconfig.json",
+      "sha256": "081b3ac3937ad333264d233b02ccee91a932ac6dd94444dee86c361805afd969"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/upstream/v1.3.2/FAQ",
+      "sha256": "8f64fd44e4773233f22a07c9d7a8cd83646d78c1e7c9bb79c43a9876e6ddb0d5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/upstream/v1.3.2/LICENSE",
+      "sha256": "e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/upstream/v1.3.2/README",
+      "sha256": "4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/upstream/v1.3.2/zconf.h",
+      "sha256": "cb7c2c84211473b4699223edd363d3207b43b9578e739b5bf638f42204ea6e0f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/upstream/v1.3.2/zlib-1.3.2.tar.gz",
+      "sha256": "bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/upstream/v1.3.2/zlib.3",
+      "sha256": "5eebcb61a9c1ef91ff6c8e6d37b32554f5eefff825b190b1b5e5982f35d87534"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/workspace/apps/zlib/upstream/v1.3.2/zlib.h",
+      "sha256": "818667d6ab6a37fe7469cb06a7f0cb2c2cb2f2c948a03e5accf1a4a74bf3020a"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "73d12255f41ec5a09c6bf7253d6b1d55623726c05ba65613973b844cb8456b6c"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "zlib"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "7of14 canonical content review including3 new",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/ENGLISH_REVIEW_PROGRESS.json",
+          "sha256": "436b2ae0829f29843bde934b92a9e271991f6afc661853288c2a4c4d9461e62f"
+        }
+      ]
+    },
+    {
+      "name": "all14English rendered321block/link check",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/RENDERED_MACHINE_CHECK.json",
+          "sha256": "e7cbd65e0a0612fce951145d2dd654d93241252b9c1f0cbfb5eefb0e35fe0396"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/ASTRO_BUILD.log",
+          "sha256": "6fb9f12b214ca7f9d94a40bceaf48bd94d30975b569e0fa69922c46b27c16f8f"
+        }
+      ]
+    },
+    {
+      "name": "remaining7/native/external/translation/fullreview",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-339/ENGLISH_REVIEW_PROGRESS.json",
+          "sha256": "436b2ae0829f29843bde934b92a9e271991f6afc661853288c2a4c4d9461e62f"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "3384companionreview/欠落修正はprogress。339overview/constants/basic3頁全内容reviewで7/14へ。",
+    "API節名二重表示を原文blockそのもののh2化で修正、元文字列/sectionanchor保持。",
+    "既読4companionhash不変、未読7頁/日本語全14を完了扱いにしない。",
+    "共有/Awesome保護、localLLM/Workers/公開/定期設定なし。runtime未露出、Sol実行確認済みとは記録しない。"
+  ],
+  "unresolved": [
+    "Advanced/utility/gzip/checksum/hacks/undocumentedのAPI6章とzconf.h全原典→定本review",
+    "正式全14native表示/keyboard/fragmentsとmobileheader/sidebar精査",
+    "外部URL状態",
+    "日本語全14頁訳と別全文review",
+    "統合/公開"
+  ],
+  "nextAction": "340:339で英語原典→定本reviewは7/14頁まで。次はAPIadvanced536–1260（長文は複数範囲で全coverage）、utility1260–1345、gzip1345–1801等の未確認6章とzconf.hを別reviewしhash/規範/署名/原注釈を記録。全14内容review後、native全14表示/keyboard/fragments/mobileheader/sidebar精査・外部URL状態を検証しcanonical-readyへ。全日本語14頁訳/別全文review/英日完全検査/統合/正規公開待ち/Pages公開は未了。新規作業1枠内で継続し共有root appへの未検証統合は行わない。",
+  "resumeCondition": "340:339で英語原典→定本reviewは7/14頁まで。次はAPIadvanced536–1260（長文は複数範囲で全coverage）、utility1260–1345、gzip1345–1801等の未確認6章とzconf.hを別reviewしhash/規範/署名/原注釈を記録。全14内容review後、native全14表示/keyboard/fragments/mobileheader/sidebar精査・外部URL状態を検証しcanonical-readyへ。全日本語14頁訳/別全文review/英日完全検査/統合/正規公開待ち/Pages公開は未了。新規作業1枠内で継続し共有root appへの未検証統合は行わない。",
+  "counts": {
+    "verified": 11,
+    "published": 11,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

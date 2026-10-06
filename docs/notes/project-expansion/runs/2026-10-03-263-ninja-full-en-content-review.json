@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-263-ninja-full-en-content-review",
+  "cycle": 263,
+  "startedAt": "2026-10-02T19:03:00.000Z",
+  "endedAt": "2026-10-02T19:03:27.650Z",
+  "result": "partial",
+  "phase": "ninja-full-en-content-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Full fixed source reading",
+    "Formal canonical/rendered fidelity evidence review",
+    "Translation block inventory",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0480900d18e9dc19bd820f1b304820131bee563a697c63251d842a9a6149cf0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-263/EN_CONTENT_REVIEW.json",
+      "sha256": "c9a59a7fbf06d363389340cfd3d2f296a041e2b244509dcce947f2ac4be33fef"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-263/TRANSLATION_PREPARATION.json",
+      "sha256": "fbc81ce7c00209fe5f3b5155a235be9497cbb38e3970e0735f177b7edc38e424"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/translation/SOURCE_BLOCKS.json",
+      "sha256": "141dcc3b258ffdeeafdf76b49f028d1d5ec3d95b9fb3392c772ac3dd5eb2c3f6"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "aeb36e6eee7b9d8ef18ca2483cecf5268d90896c112b60c49d30df4961563515"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "67c4d2b9b60a7e55141199d4d20a142ba14c71fa6963dcbab59f095b716ce222"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Both formal English pages full content review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-263/EN_CONTENT_REVIEW.json",
+          "sha256": "c9a59a7fbf06d363389340cfd3d2f296a041e2b244509dcce947f2ac4be33fef"
+        }
+      ]
+    },
+    {
+      "name": "Full Japanese translation/review and complete release checks",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "全文内容レビューを機械検査と分離し、source全文と正式定本の照合根拠を記録。",
+    "コードとlicense原通知を固定、JAでは原文の意味を変えず軽微誤記の意味を明確にする。"
+  ],
+  "unresolved": [
+    "全345文章blockの日本語翻訳",
+    "全JA別工程内容レビュー",
+    "ENJA機械/UI/copy/CI/Pages検証と公開"
+  ],
+  "nextAction": "全345HTML文章・見出し・定義blockとImportantを固定原文から全文日本語化。識別子/コード/固有名詞のみ変更せず明示記録。完訳後にJAの別工程全文レビュー、ENJA整合/build/UI/copy/CI/Pagesへ。",
+  "resumeCondition": "263: 全2EN定本の全文内容レビュー合格。機械保全261/262と分離したレビュー記録、41節/31code/COPYING全条項と付録を確認。原軽微誤記3件はEN保持、JA意味明確化判断。翻訳単位345blocks+Importantを固定、JAまだ未着手、公開条件未達。",
+  "counts": {
+    "verified": 9,
+    "published": 9,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

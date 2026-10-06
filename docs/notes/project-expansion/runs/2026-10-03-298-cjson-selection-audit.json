@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-298-cjson-selection-audit",
+  "cycle": 298,
+  "startedAt": "2026-10-02T22:03:00.000Z",
+  "endedAt": "2026-10-02T22:05:25.923Z",
+  "result": "partial",
+  "phase": "cjson-selection-audit",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Separate fixed evidence/hash/blob/build qualification audit",
+    "Scope and5score evidence review",
+    "Ledger CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d819972efe33e82a350b1f1cbaab4dc607509c621e5b9f2b1c0b9367c4116695"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "9064bb4ba3ea319ca663528e29f2d4c9bade0d3fcf8d933a37c30fcb44ecaf77"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-298/SELECTION_REVIEW.json",
+      "sha256": "6d3b1e859d177c5ebb57f8e347168e34b858e232412be09d9c591797ab9fa257"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-298/audit.py",
+      "sha256": "ea944e33a893a52bc67d8613ef3d92fdae923d9e0ce5b380ef56faf2ae92c89d"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "b04c08e53e04e36466bc8d975193f5ed4bc099cffc5b6ce1608e15200d144baa"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "94a56b9f726f74957148b1ffd8948a61ed7c934fb0b6aa23b6182c4857dfc776"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "wren"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Separate sixconditions and70score audit",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-298/SELECTION_REVIEW.json",
+          "sha256": "6d3b1e859d177c5ebb57f8e347168e34b858e232412be09d9c591797ab9fa257"
+        }
+      ]
+    },
+    {
+      "name": "Formal newoperation/source/canonical/translation/review/validation/publication",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-298/SELECTION_REVIEW.json",
+          "sha256": "6d3b1e859d177c5ebb57f8e347168e34b858e232412be09d9c591797ab9fa257"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前cycle297は限定日本語調査/全入力差分/採点でprogress。298は別selectionaudit完了。",
+    "298:cJSON別確認パスで全6条件の固定入力hash/tree267分類/Gitblob/actualAstro3build/原通知/実差分を再照合。限定日本語調査と原文問題・工数見積りの制約を保持し5採点70点を確認、selectionpassed、eligible登録。正式新規作成は次工程、今回採用着手0。",
+    "設定はgpt-6-astra、runtime未公開、localLLMなし。開始時刻は初回検査時の概算。共有ユーザー/Awesome変更と外部公開/定期設定なし。"
+  ],
+  "unresolved": [
+    "Japanese additional value assessment",
+    "Score/independentselectionreview"
+  ],
+  "nextAction": "cJSON eligible70点を正式新規1件として台帳planned登録。最新公開baselineから専用cleancheckoutで正規テンプレート生成し全3固定入力/定本/原文3注記/英日全訳へ進む。試験appは未配信のまま保持し、sharedAwesome/user差分を保護。",
+  "resumeCondition": "cJSON eligible70点を正式新規1件として台帳planned登録。最新公開baselineから専用cleancheckoutで正規テンプレート生成し全3固定入力/定本/原文3注記/英日全訳へ進む。試験appは未配信のまま保持し、sharedAwesome/user差分を保護。",
+  "counts": {
+    "verified": 10,
+    "published": 10,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 1
+  }
+}

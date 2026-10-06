@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-317-cjson-preview-dispatch",
+  "cycle": 317,
+  "startedAt": "2026-10-02T23:49:00.000Z",
+  "endedAt": "2026-10-02T23:50:23.910Z",
+  "result": "partial",
+  "phase": "cjson-preview-dispatch",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Cleancommit/remoteSHA/verifiedledger audit",
+    "Secure Pages Preview intent/dispatch",
+    "Actualsamecommit liveCI/job verification",
+    "Newpriority plan/POLICY/canStartNew consistency audit",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0a82ecdf399d255157a62b9d953a86580c4765fc01032111e7fa62cfbbccec26"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "23be4b75342eda3dd5987813643622f6358fa9b568e0bab492e84401e180625c"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-317/PREVIEW_CI_1790984964176.json",
+      "sha256": "38127fd1efae2b9e569b81f9898e1413a7ef56f1942fbc37602e9339bd570ef7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-317/PREVIEW_CI_1790984984829.json",
+      "sha256": "f760b6401db764d86aeb5dc3db542906fe8a95bc527031564e2c5a3e0be57695"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-317/PREVIEW_DISPATCH_INTENT.json",
+      "sha256": "dde52dda658cf10c43d22b54c862fc8ae2c7198e6b0204b2a1cf492a63d3a1a2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-317/PREVIEW_DISPATCH_RESPONSE.json",
+      "sha256": "b73bf742444f3c0dc48452ecc985080fef49faad7cb4b635f6fabe142955bf37"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e4ee5f03bdc8289632730139846a9b06968c786a1828823d5385fdebe37c435d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Pages Preview/Production",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-317/PREVIEW_DISPATCH_INTENT.json",
+          "sha256": "dde52dda658cf10c43d22b54c862fc8ae2c7198e6b0204b2a1cf492a63d3a1a2"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-317/PREVIEW_DISPATCH_RESPONSE.json",
+          "sha256": "b73bf742444f3c0dc48452ecc985080fef49faad7cb4b635f6fabe142955bf37"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-317/PREVIEW_CI_1790984984829.json",
+          "sha256": "f760b6401db764d86aeb5dc3db542906fe8a95bc527031564e2c5a3e0be57695"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "317:316の修正後samecommit CI/artifact完全検査成功を確認し、承認済み正規公開待ち方針で統合Pages Previewをintent付きdispatchHTTP204。実run37079360273/head一致in_progressを確認。Preview配信/native/Productionは未確認、公開済みにしない。新規優先計画・POLICY・実canStartNew分岐整合を再確認。",
+    "既存ユーザー/Awesome未完了変更は専用公開commitに含めず、Workers/定期実行は使用しない。"
+  ],
+  "unresolved": [
+    "cJSON Preview CI/artifact/delivery/native and Production",
+    "SDS full qualification"
+  ],
+  "nextAction": "既に起動済みPreview run37079360273 headadbe8b8d8698a406734a5e7466ae1e589a5190d4を次cycleへ新immutable証拠でpoll。再dispatchしない。完了後新artifactdigest/全manifest/6全文/11HTML/2373保持、全Preview配信・native検証を実施。合格後最新Production baselineのactualCAS条件で同SHA公開。SDS API境界/注釈/JP比較/変換/工数/採点を独立継続。",
+  "resumeCondition": "317:316の修正後samecommit CI/artifact完全検査成功を確認し、承認済み正規公開待ち方針で統合Pages Previewをintent付きdispatchHTTP204。実run37079360273/head一致in_progressを確認。Preview配信/native/Productionは未確認、公開済みにしない。新規優先計画・POLICY・実canStartNew分岐整合を再確認。",
+  "counts": {
+    "verified": 11,
+    "published": 10,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-302-cjson-japanese-first-draft",
+  "cycle": 302,
+  "startedAt": "2026-10-02T22:16:00.000Z",
+  "endedAt": "2026-10-02T22:24:55.650Z",
+  "result": "partial",
+  "phase": "cjson-japanese-first-draft",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "CurrentCodex sourcealigned3page translation",
+    "Saved TSV deterministic assembly andinitial code/ID checks",
+    "Scopeddependencyoffline failure/online continuation",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "01fed493dfe48d6231b4131c414c17eba9f8f8738832c0085e732596934c226c"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "be228b721e6ff9651ba382959ddc25687739182116ede016db93050bef7e4600"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-302/OFFLINE_DEPENDENCY_FAILURE.log",
+      "sha256": "7c68cf8a3318213939e30e41b7caf2e1e418189d944baab544e0a798f51a75d8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-302/REGENERATION_CHECK.log",
+      "sha256": "c9da94e90ad748b421f4047cfb961ea38d248e55a3528dec447a6e9eb4100e6a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-302/SHARED_FILTER_NO_MATCH.log",
+      "sha256": "586129d0b2cc2809fef306782e370ee4774b7a8a31c10d4a0bd2f51dd5cc3e78"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-302/TRANSLATION_FIRST_DRAFT.json",
+      "sha256": "ba6e15aa8de8d681cb870452910c5d0fc2c6465bff10148a33ee070c793e62a6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-302/extract-blocks.py",
+      "sha256": "8e5a38dbecf0fd3d09e562f2999c8945fd91dbdbdf3974e0b8f1e0341d1a7a38"
+    },
+    {
+      "path": "docs/notes/document-import/cjson/v1-7-19/translation/JA_BLOCKS.tsv",
+      "sha256": "7b1f9a26dfc11315642a1bfb455b219402777d96a12a758b63e469fd727fb314"
+    },
+    {
+      "path": "docs/notes/document-import/cjson/v1-7-19/translation/SOURCE_BLOCKS.json",
+      "sha256": "f054285ca55c9afcc3fb85eaf719cf04b317a914febf73363f42cd6969997e85"
+    },
+    {
+      "path": "docs/notes/document-import/cjson/v1-7-19/translation/generated/01-guide/01-usage.md",
+      "sha256": "f837144aa148d10524de20eb30b8dee86968c7c63f6966a9c620c6a83b721385"
+    },
+    {
+      "path": "docs/notes/document-import/cjson/v1-7-19/translation/generated/02-license/01-license.md",
+      "sha256": "38a0fdfe5c005a905f48e978056c6b2ff30acaf895f907642ad1f2c3dc9dbe77"
+    },
+    {
+      "path": "docs/notes/document-import/cjson/v1-7-19/translation/generated/02-license/02-contributors.md",
+      "sha256": "1b3df8b6f5cf90849fa7e80c6dfa65b3b437e0de33463b68f0f8d350513c1da8"
+    },
+    {
+      "path": "docs/notes/document-import/cjson/v1-7-19/translation/generated/GENERATION.json",
+      "sha256": "7bb78f4931a68d0547959dd2265fd112e02d6b2e9f4b8510f68ebcc1c34c818e"
+    },
+    {
+      "path": "scripts/importers/assemble-cjson-translation.py",
+      "sha256": "4348337f799684d3b485f43fc014948500cb2ded02331750842b0a81509dfd4e"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "30e68b0a20164fb143c76eb4cedf72c7a581864693101211e3ba2681f83e10d3"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Full3Japanese firstdraft regeneration/code/ID initial checks",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-302/TRANSLATION_FIRST_DRAFT.json",
+          "sha256": "ba6e15aa8de8d681cb870452910c5d0fc2c6465bff10148a33ee070c793e62a6"
+        }
+      ]
+    },
+    {
+      "name": "FullENJA semantic review and formal mechanical/display/publication",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "前cycle301は全ENreview/一覧構造修復でprogress。302は全3JA初稿・保存翻訳から再生成検査でprogress。",
+    "302:全3JA初稿をCodexで作成。guide174blocks（元MIT4保持）、license全原通知+非公式全参考訳、contributors91blocks（85氏名保持）。原文注記/32見出しとTOCラベル・リンク日本語化。savedTSVからLLMなし再生成一致、codeと識別子/ID保持の初期検査合格。別工程内容reviewと正式build/displayは未完。scopedinstall offlinecache不足→公式registryonline実行中を確認後に続ける。",
+    "共有側install実行先を誤ったがfiltersnomatchで導入なし。root既存package/lock変更を保持。専用scopedinstallのみ実作業。原コード実行/公開/定期設定なし。"
+  ],
+  "unresolved": [
+    "Separate wholeENJA content review",
+    "Fresh scopedpnpm dependencies and content/build/native/integration/publication"
+  ],
+  "nextAction": "cJSON全3JA初稿を別工程でEN定本と全文内容レビューし、修正と全currentENJAhash/範囲を記録する。オンライン依存導入session45706を同handleで確認後、読み取り専用check:contentと全構造/links/integrity/Astro/native/回帰/統合/Pages公開へ。",
+  "resumeCondition": "302:全3JA初稿をCodexで作成。guide174blocks（元MIT4保持）、license全原通知+非公式全参考訳、contributors91blocks（85氏名保持）。原文注記/32見出しとTOCラベル・リンク日本語化。savedTSVからLLMなし再生成一致、codeと識別子/ID保持の初期検査合格。別工程内容reviewと正式build/displayは未完。scopedinstall offlinecache不足→公式registryonline実行中を確認後に続ける。",
+  "counts": {
+    "verified": 10,
+    "published": 10,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-268-ninja-search-responsive-and-integrated-quality",
+  "cycle": 268,
+  "startedAt": "2026-10-02T19:42:00.000Z",
+  "endedAt": "2026-10-02T19:44:36.595Z",
+  "result": "partial",
+  "phase": "ninja-search-responsive-integrated-quality",
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false,
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1"
+  },
+  "tools": [
+    "Actual browser ENJA body search",
+    "Native mobile table scroll",
+    "Standalone HTTP checks",
+    "Private prettier and full pnpm quality",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a48c3da0807eb2349d58c2a24cad97cc533cf48906510c311a238679206cd52e"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/HEADING_CODE_PLUGIN_FORMATTED.mjs",
+      "sha256": "c986647f7245221295290a948533ec7699cd5dd6e0830609def384a1e0238a85"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/LOCAL_HTTP_AND_SEARCH.json",
+      "sha256": "0d20c3b31d1444c27d51152345b595caa87ec9c7d483b6cf878b5bca7bfb0ad2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/PRETTIERIGNORE",
+      "sha256": "52c9f1ce75f178719ed3721e5ec4ea8715383a99a8755efc60563b7be86016b6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/QUALITY_FIRST.log",
+      "sha256": "c6c38e05e25c5c6b9802d3b3c9c0b3b3b1f28004dc6f76c91e3987187db3ce64"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/QUALITY_LIVE_SNAPSHOT.log",
+      "sha256": "32f8b44b23bb72e15d66afb0a9376cb4ecb40fc493972cd587dc3ad53cb13e5f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/QUALITY_SANDBOX_RETRY.log",
+      "sha256": "beccfd0a1339b65ac7407aa06a0439c3f67c2769696493900b0b8e69ad7c3155"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/UI_CHECKS.json",
+      "sha256": "21c3038ed2dd403fa9abb0732dfac34f9f330ec003b449de9506554248be133d"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f874e3d5b00e02f15b711e2f337b9eef9cc72f073635dac603a5cbca4df7f66e"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "a0b0c60861897c732549aa8b49bef6682d5fc6f092139b3a4b2b7e47eb2841bb"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Formal native ENJA search and mobile table",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/UI_CHECKS.json",
+          "sha256": "21c3038ed2dd403fa9abb0732dfac34f9f330ec003b449de9506554248be133d"
+        }
+      ]
+    },
+    {
+      "name": "Standalone HTTP/search metadata",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/LOCAL_HTTP_AND_SEARCH.json",
+          "sha256": "0d20c3b31d1444c27d51152345b595caa87ec9c7d483b6cf878b5bca7bfb0ad2"
+        }
+      ]
+    },
+    {
+      "name": "Integrated full quality",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/QUALITY_FIRST.log",
+          "sha256": "c6c38e05e25c5c6b9802d3b3c9c0b3b3b1f28004dc6f76c91e3987187db3ce64"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/QUALITY_SANDBOX_RETRY.log",
+          "sha256": "beccfd0a1339b65ac7407aa06a0439c3f67c2769696493900b0b8e69ad7c3155"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-268/QUALITY_LIVE_SNAPSHOT.log",
+          "sha256": "32f8b44b23bb72e15d66afb0a9376cb4ecb40fc493972cd587dc3ad53cb13e5f"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "固定原資料/定本/翻訳/レビューはSHA保全のため既存案件と同様prettier除外、実行code/app設定/lock/landingはprivateで整形。root共有設定とAwesomeを未編集。",
+    "runtime1failureはlistenEPERM、ソフトウェア不具合として推測せず許可済みlocalport環境で再実行。",
+    "全体qualityはformat/lint/type/unit/runtime232件まで合格。check:linksで保存上流READMEの未収録CONTRIBUTING.md参照により終了code1。以降のゲートは未実施。"
+  ],
+  "unresolved": [
+    "取得証拠READMEのリンク検査対象分類とcheck:links以降の全体ゲート",
+    "rootapp限定同期/統合回帰/navigation",
+    "GitHub CI/Pages公開"
+  ],
+  "nextAction": "private check-markdown-linksの対象から非公開取得証拠Ninja source/README.mdのみを分類付きで除外し、公開ENJA全リンク検査は維持する。修正を整形しcheck:links以降の全quality/統合build/smokeを実行。rootapps/ninja限定同期、reviewhash/既存公開記事回帰、正規公開待ち→承認済みGitHub CI/統合Pages公開。",
+  "resumeCondition": "268: ENJA本文検索→記事遷移、JA390px hdlist内native横scroll(0→375px)とページoverflowなしを確認。独立HTTPでENJAmanual200/未知route404、検索各2entry/41anchor。全体check初回format15files不一致→固定証拠除外・app/code設定整形、retry runtime1listenEPERM。port許可環境session41736終了code1、format/lint/type/unit/runtime232passed後、取得証拠source/README.mdの未収録CONTRIBUTING.md参照で停止。公開本文リンクではない。",
+  "counts": {
+    "verified": 9,
+    "published": 9,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}
