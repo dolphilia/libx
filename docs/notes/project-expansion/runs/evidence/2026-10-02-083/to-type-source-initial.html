@@ -1,0 +1,271 @@
+<hr><h3><a name="lua_toboolean"><code>lua_toboolean</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_toboolean (lua_State *L, int index);</pre>
+
+<p>
+Converts the Lua value at the given index to a C&nbsp;boolean
+value (0&nbsp;or&nbsp;1).
+Like all tests in Lua,
+<a href="#lua_toboolean"><code>lua_toboolean</code></a> returns true for any Lua value
+different from <b>false</b> and <b>nil</b>;
+otherwise it returns false.
+(If you want to accept only actual boolean values,
+use <a href="#lua_isboolean"><code>lua_isboolean</code></a> to test the value's type.)
+
+
+
+
+
+<hr><h3><a name="lua_tocfunction"><code>lua_tocfunction</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_CFunction lua_tocfunction (lua_State *L, int index);</pre>
+
+<p>
+Converts a value at the given index to a C&nbsp;function.
+That value must be a C&nbsp;function;
+otherwise, returns <code>NULL</code>.
+
+
+
+
+
+<hr><h3><a name="lua_toclose"><code>lua_toclose</code></a></h3><p>
+<span class="apii">[-0, +0, <em>v</em>]</span>
+<pre class="api">void lua_toclose (lua_State *L, int index);</pre>
+
+<p>
+Marks the given index in the stack as a
+to-be-closed slot (see <a href="#3.3.8">&sect;3.3.8</a>).
+Like a to-be-closed variable in Lua,
+the value at that slot in the stack will be closed
+when it goes out of scope.
+Here, in the context of a C function,
+to go out of scope means that the running function returns to Lua,
+or there is an error,
+or the slot is removed from the stack through
+<a href="#lua_settop"><code>lua_settop</code></a> or <a href="#lua_pop"><code>lua_pop</code></a>,
+or there is a call to <a href="#lua_closeslot"><code>lua_closeslot</code></a>.
+A slot marked as to-be-closed should not be removed from the stack
+by any other function in the API except <a href="#lua_settop"><code>lua_settop</code></a> or <a href="#lua_pop"><code>lua_pop</code></a>,
+unless previously deactivated by <a href="#lua_closeslot"><code>lua_closeslot</code></a>.
+
+
+<p>
+This function raises an error if the value at the given slot
+neither has a <code>__close</code> metamethod nor is a false value.
+
+
+<p>
+This function should not be called for an index
+that is equal to or below an active to-be-closed slot.
+
+
+<p>
+Note that, both in case of errors and of a regular return,
+by the time the <code>__close</code> metamethod runs,
+the C&nbsp;stack was already unwound,
+so that any automatic C&nbsp;variable declared in the calling function
+(e.g., a buffer) will be out of scope.
+
+
+
+
+
+<hr><h3><a name="lua_tointeger"><code>lua_tointeger</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_Integer lua_tointeger (lua_State *L, int index);</pre>
+
+<p>
+Equivalent to <a href="#lua_tointegerx"><code>lua_tointegerx</code></a> with <code>isnum</code> equal to <code>NULL</code>.
+
+
+
+
+
+<hr><h3><a name="lua_tointegerx"><code>lua_tointegerx</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_Integer lua_tointegerx (lua_State *L, int index, int *isnum);</pre>
+
+<p>
+Converts the Lua value at the given index
+to the signed integral type <a href="#lua_Integer"><code>lua_Integer</code></a>.
+The Lua value must be an integer,
+or a number or string convertible to an integer (see <a href="#3.4.3">&sect;3.4.3</a>);
+otherwise, <code>lua_tointegerx</code> returns&nbsp;0.
+
+
+<p>
+If <code>isnum</code> is not <code>NULL</code>,
+its referent is assigned a boolean value that
+indicates whether the operation succeeded.
+
+
+
+
+
+<hr><h3><a name="lua_tolstring"><code>lua_tolstring</code></a></h3><p>
+<span class="apii">[-0, +0, <em>m</em>]</span>
+<pre class="api">const char *lua_tolstring (lua_State *L, int index, size_t *len);</pre>
+
+<p>
+Converts the Lua value at the given index to a C&nbsp;string.
+The Lua value must be a string or a number;
+otherwise, the function returns <code>NULL</code>.
+If the value is a number,
+then <code>lua_tolstring</code> also
+<em>changes the actual value in the stack to a string</em>.
+(This change confuses <a href="#lua_next"><code>lua_next</code></a>
+when <code>lua_tolstring</code> is applied to keys during a table traversal.)
+
+
+<p>
+If <code>len</code> is not <code>NULL</code>,
+the function sets <code>*len</code> with the string length.
+The returned C&nbsp;string always has a zero ('<code>\0</code>')
+after its last character,
+but can contain other zeros in its body.
+
+
+<p>
+The pointer returned by <code>lua_tolstring</code>
+may be invalidated by the garbage collector if the
+corresponding Lua value is removed from the stack (see <a href="#4.1.3">&sect;4.1.3</a>).
+
+
+<p>
+This function can raise memory errors only
+when converting a number to a string
+(as then it may create a new string).
+
+
+
+
+
+<hr><h3><a name="lua_tonumber"><code>lua_tonumber</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_Number lua_tonumber (lua_State *L, int index);</pre>
+
+<p>
+Equivalent to <a href="#lua_tonumberx"><code>lua_tonumberx</code></a> with <code>isnum</code> equal to <code>NULL</code>.
+
+
+
+
+
+<hr><h3><a name="lua_tonumberx"><code>lua_tonumberx</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_Number lua_tonumberx (lua_State *L, int index, int *isnum);</pre>
+
+<p>
+Converts the Lua value at the given index
+to the C&nbsp;type <a href="#lua_Number"><code>lua_Number</code></a> (see <a href="#lua_Number"><code>lua_Number</code></a>).
+The Lua value must be a number or a string convertible to a number
+(see <a href="#3.4.3">&sect;3.4.3</a>);
+otherwise, <a href="#lua_tonumberx"><code>lua_tonumberx</code></a> returns&nbsp;0.
+
+
+<p>
+If <code>isnum</code> is not <code>NULL</code>,
+its referent is assigned a boolean value that
+indicates whether the operation succeeded.
+
+
+
+
+
+<hr><h3><a name="lua_topointer"><code>lua_topointer</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">const void *lua_topointer (lua_State *L, int index);</pre>
+
+<p>
+Converts the value at the given index to a generic
+C&nbsp;pointer (<code>void*</code>).
+The value can be a userdata, a table, a thread, a string, or a function;
+otherwise, <code>lua_topointer</code> returns <code>NULL</code>.
+Different objects will give different pointers.
+There is no way to convert the pointer back to its original value.
+
+
+<p>
+Typically this function is used only for hashing and debug information.
+
+
+
+
+
+<hr><h3><a name="lua_tostring"><code>lua_tostring</code></a></h3><p>
+<span class="apii">[-0, +0, <em>m</em>]</span>
+<pre class="api">const char *lua_tostring (lua_State *L, int index);</pre>
+
+<p>
+Equivalent to <a href="#lua_tolstring"><code>lua_tolstring</code></a> with <code>len</code> equal to <code>NULL</code>.
+
+
+
+
+
+<hr><h3><a name="lua_tothread"><code>lua_tothread</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">lua_State *lua_tothread (lua_State *L, int index);</pre>
+
+<p>
+Converts the value at the given index to a Lua thread
+(represented as <code>lua_State*</code>).
+This value must be a thread;
+otherwise, the function returns <code>NULL</code>.
+
+
+
+
+
+<hr><h3><a name="lua_touserdata"><code>lua_touserdata</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">void *lua_touserdata (lua_State *L, int index);</pre>
+
+<p>
+If the value at the given index is a full userdata,
+returns its memory-block address.
+If the value is a light userdata,
+returns its value (a pointer).
+Otherwise, returns <code>NULL</code>.
+
+
+
+
+
+<hr><h3><a name="lua_type"><code>lua_type</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">int lua_type (lua_State *L, int index);</pre>
+
+<p>
+Returns the type of the value in the given valid index,
+or <code>LUA_TNONE</code> for a non-valid but acceptable index.
+The types returned by <a href="#lua_type"><code>lua_type</code></a> are coded by the following constants
+defined in <code>lua.h</code>:
+<a name="pdf-LUA_TNIL"><code>LUA_TNIL</code></a>,
+<a name="pdf-LUA_TNUMBER"><code>LUA_TNUMBER</code></a>,
+<a name="pdf-LUA_TBOOLEAN"><code>LUA_TBOOLEAN</code></a>,
+<a name="pdf-LUA_TSTRING"><code>LUA_TSTRING</code></a>,
+<a name="pdf-LUA_TTABLE"><code>LUA_TTABLE</code></a>,
+<a name="pdf-LUA_TFUNCTION"><code>LUA_TFUNCTION</code></a>,
+<a name="pdf-LUA_TUSERDATA"><code>LUA_TUSERDATA</code></a>,
+<a name="pdf-LUA_TTHREAD"><code>LUA_TTHREAD</code></a>,
+and
+<a name="pdf-LUA_TLIGHTUSERDATA"><code>LUA_TLIGHTUSERDATA</code></a>.
+
+
+
+
+
+<hr><h3><a name="lua_typename"><code>lua_typename</code></a></h3><p>
+<span class="apii">[-0, +0, &ndash;]</span>
+<pre class="api">const char *lua_typename (lua_State *L, int tp);</pre>
+
+<p>
+Returns the name of the type encoded by the value <code>tp</code>,
+which must be one the values returned by <a href="#lua_type"><code>lua_type</code></a>.
+
+
+
+
+
