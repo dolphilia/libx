@@ -1,0 +1,145 @@
+
+### doxygen/html/group__dispatch.html
+ORIGINAL full .contents text with every link:
+
+|
+[](undefined)
+Macros
+| #define  | [XXH_DISPATCH_SCALAR](#gab81e416548f2b86412f670dc435a979b)   1
+|   | Enables/dispatching the scalar code path.
+| #define  | [XXH_DISPATCH_AVX2](#ga3f9ae9edb0b15907592a18f74996f523)   0
+|   | Enables/disables dispatching for AVX2.
+| #define  | [XXH_DISPATCH_AVX512](#gae0ba94e5d5bf66251a96f86b3cd7e08a)   0
+|   | Enables/disables dispatching for AVX512.
+| #define  | [XXH_TARGET_SSE2](#ga13e5de884479e06fa52a7cf484158e2e)   /* disable attribute target */
+|   | Allows a function to be compiled with SSE2 intrinsics.
+| [](undefined)
+#define  | XXH_TARGET_AVX2   /* disable attribute target */
+|   | Like [XXH_TARGET_SSE2](#ga13e5de884479e06fa52a7cf484158e2e), but for AVX2.
+| [](undefined)
+#define  | XXH_TARGET_AVX512   /* disable attribute target */
+|   | Like [XXH_TARGET_SSE2](#ga13e5de884479e06fa52a7cf484158e2e), but for AVX512.
+[](undefined)
+Detailed Description
+[](undefined)
+Macro Definition Documentation
+[](undefined)
+[◆ ](#gab81e416548f2b86412f670dc435a979b)XXH_DISPATCH_SCALAR
+| #define XXH_DISPATCH_SCALAR   1
+Enables/dispatching the scalar code path.
+If this is defined to 0, SSE2 support is assumed. This reduces code size when the scalar path is not needed.
+This is automatically defined to 0 when...
+SSE2 support is enabled in the compiler
+Targeting x86_64
+Targeting Android x86
+Targeting macOS
+[](undefined)
+[◆ ](#ga3f9ae9edb0b15907592a18f74996f523)XXH_DISPATCH_AVX2
+| #define XXH_DISPATCH_AVX2   0
+Enables/disables dispatching for AVX2.
+This is automatically detected if it is not defined.
+GCC 4.7 and later are known to support AVX2, but >4.9 is required for to get the AVX2 intrinsics and typedefs without -mavx -mavx2.
+Visual Studio 2013 Update 2 and later are known to support AVX2.
+The GCC/Clang internal header <avx2intrin.h> is detected. While this is not allowed to be included directly, it still appears in the builtin include path and is detectable with __has_include.
+See also
+[XXH_AVX2](group___x_x_h3__family.html#gaf47a10685143573ae686cb24a6b12180)
+[](undefined)
+[◆ ](#gae0ba94e5d5bf66251a96f86b3cd7e08a)XXH_DISPATCH_AVX512
+| #define XXH_DISPATCH_AVX512   0
+Enables/disables dispatching for AVX512.
+Automatically detected if one of the following conditions is met:
+GCC 4.9 and later are known to support AVX512.
+Visual Studio 2017 and later are known to support AVX2.
+The GCC/Clang internal header <avx512fintrin.h> is detected. While this is not allowed to be included directly, it still appears in the builtin include path and is detectable with __has_include.
+See also
+[XXH_AVX512](group___x_x_h3__family.html#gac99b74047afbf5d887014e8bd8a4311e)
+[](undefined)
+[◆ ](#ga13e5de884479e06fa52a7cf484158e2e)XXH_TARGET_SSE2
+| #define XXH_TARGET_SSE2   /* disable attribute target */
+Allows a function to be compiled with SSE2 intrinsics.
+Uses __attribute__((__target__("sse2"))) on GCC to allow SSE2 to be used even with -mno-sse2.
+
+All IDs: header-define-members, define-members, r_gab81e416548f2b86412f670dc435a979b, r_ga3f9ae9edb0b15907592a18f74996f523, r_gae0ba94e5d5bf66251a96f86b3cd7e08a, r_ga13e5de884479e06fa52a7cf484158e2e, r_gad2a40b306e49c6e6240acd43484ed5e0, gad2a40b306e49c6e6240acd43484ed5e0, r_ga94d06a353acaa62bbd9fbf65e865a282, ga94d06a353acaa62bbd9fbf65e865a282, details, header-details, doc-define-members, header-doc-define-members, gab81e416548f2b86412f670dc435a979b, ga3f9ae9edb0b15907592a18f74996f523, gae0ba94e5d5bf66251a96f86b3cd7e08a, ga13e5de884479e06fa52a7cf484158e2e
+All element types: div, table, tbody, tr, td, h2, a, br, b, span, p, ul, li, dl, dt, dd
+CANONICAL full .contents text with every link:
+
+|
+[](undefined)
+Macros
+| #define  | [XXH_DISPATCH_SCALAR](#gab81e416548f2b86412f670dc435a979b)   1
+|   | Enables/dispatching the scalar code path.
+| #define  | [XXH_DISPATCH_AVX2](#ga3f9ae9edb0b15907592a18f74996f523)   0
+|   | Enables/disables dispatching for AVX2.
+| #define  | [XXH_DISPATCH_AVX512](#gae0ba94e5d5bf66251a96f86b3cd7e08a)   0
+|   | Enables/disables dispatching for AVX512.
+| #define  | [XXH_TARGET_SSE2](#ga13e5de884479e06fa52a7cf484158e2e)   /* disable attribute target */
+|   | Allows a function to be compiled with SSE2 intrinsics.
+| [](undefined)
+#define  | XXH_TARGET_AVX2   /* disable attribute target */
+|   | Like [XXH_TARGET_SSE2](#ga13e5de884479e06fa52a7cf484158e2e), but for AVX2.
+| [](undefined)
+#define  | XXH_TARGET_AVX512   /* disable attribute target */
+|   | Like [XXH_TARGET_SSE2](#ga13e5de884479e06fa52a7cf484158e2e), but for AVX512.
+[](undefined)
+Detailed Description
+[](undefined)
+Macro Definition Documentation
+[](undefined)
+[◆ ](#gab81e416548f2b86412f670dc435a979b)XXH_DISPATCH_SCALAR
+| #define XXH_DISPATCH_SCALAR   1
+Enables/dispatching the scalar code path.
+If this is defined to 0, SSE2 support is assumed. This reduces code size when the scalar path is not needed.
+This is automatically defined to 0 when...
+SSE2 support is enabled in the compiler
+Targeting x86_64
+Targeting Android x86
+Targeting macOS
+[](undefined)
+[◆ ](#ga3f9ae9edb0b15907592a18f74996f523)XXH_DISPATCH_AVX2
+| #define XXH_DISPATCH_AVX2   0
+Enables/disables dispatching for AVX2.
+This is automatically detected if it is not defined.
+GCC 4.7 and later are known to support AVX2, but >4.9 is required for to get the AVX2 intrinsics and typedefs without -mavx -mavx2.
+Visual Studio 2013 Update 2 and later are known to support AVX2.
+The GCC/Clang internal header <avx2intrin.h> is detected. While this is not allowed to be included directly, it still appears in the builtin include path and is detectable with __has_include.
+See also
+[XXH_AVX2](/docs/xxhash/v0-8-4/en/02-api/14-group___x_x_h3__family/#gaf47a10685143573ae686cb24a6b12180)
+[](undefined)
+[◆ ](#gae0ba94e5d5bf66251a96f86b3cd7e08a)XXH_DISPATCH_AVX512
+| #define XXH_DISPATCH_AVX512   0
+Enables/disables dispatching for AVX512.
+Automatically detected if one of the following conditions is met:
+GCC 4.9 and later are known to support AVX512.
+Visual Studio 2017 and later are known to support AVX2.
+The GCC/Clang internal header <avx512fintrin.h> is detected. While this is not allowed to be included directly, it still appears in the builtin include path and is detectable with __has_include.
+See also
+[XXH_AVX512](/docs/xxhash/v0-8-4/en/02-api/14-group___x_x_h3__family/#gac99b74047afbf5d887014e8bd8a4311e)
+[](undefined)
+[◆ ](#ga13e5de884479e06fa52a7cf484158e2e)XXH_TARGET_SSE2
+| #define XXH_TARGET_SSE2   /* disable attribute target */
+Allows a function to be compiled with SSE2 intrinsics.
+Uses __attribute__((__target__("sse2"))) on GCC to allow SSE2 to be used even with -mno-sse2.
+
+All IDs: header-define-members, define-members, r_gab81e416548f2b86412f670dc435a979b, r_ga3f9ae9edb0b15907592a18f74996f523, r_gae0ba94e5d5bf66251a96f86b3cd7e08a, r_ga13e5de884479e06fa52a7cf484158e2e, r_gad2a40b306e49c6e6240acd43484ed5e0, gad2a40b306e49c6e6240acd43484ed5e0, r_ga94d06a353acaa62bbd9fbf65e865a282, ga94d06a353acaa62bbd9fbf65e865a282, details, header-details, doc-define-members, header-doc-define-members, gab81e416548f2b86412f670dc435a979b, ga3f9ae9edb0b15907592a18f74996f523, gae0ba94e5d5bf66251a96f86b3cd7e08a, ga13e5de884479e06fa52a7cf484158e2e
+All element types: div, table, tbody, tr, td, h2, a, br, b, span, p, ul, li, dl, dt, dd
+FRONTMATTER: ---
+title: "x86 Dispatcher "
+licenseSource: "xxhash-api"
+---
+
+
+APPENDED: ## Source and notices
+
+No documentation-specific license statement was found in the recorded checks. Under the user-approved operating policy, the software component’s BSD-2-Clause license is applied to this documentation with this annotation. This is an operational decision, not a newly obtained permission.
+
+Fixed software version: **0.8.4**. Source commit: `c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`. This is an unofficial presentation; formatting, internal links and clearly marked editorial notes are Libx changes. The Japanese translation is provided separately when completed.
+
+[api-header](/docs/xxhash/v0-8-4/en/03-notices/api-header/) · [dispatch-c](/docs/xxhash/v0-8-4/en/03-notices/dispatch-c/) · [dispatch-h](/docs/xxhash/v0-8-4/en/03-notices/dispatch-h/)
+
+Generated from the fixed public [Doxyfile](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/Doxyfile) using its `xxhash.h` and `xxh_x86dispatch.c` file patterns.
+
+[xxhash.h — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h) · [xxhash.h — original text download](/docs/xxhash/source/v0-8-4/xxhash.h.txt)
+
+[xxh_x86dispatch.c — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxh_x86dispatch.c) · [xxh_x86dispatch.c — original text download](/docs/xxhash/source/v0-8-4/xxh_x86dispatch.c.txt)
+
+

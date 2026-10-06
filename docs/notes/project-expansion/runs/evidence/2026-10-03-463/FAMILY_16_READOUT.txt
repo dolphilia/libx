@@ -1,0 +1,447 @@
+
+### doxygen/html/group___x_x_h64__family.html
+ORIGINAL full .contents text with every link:
+
+|
+[](undefined)
+Data Structures
+| struct   | [XXH64_canonical_t](struct_x_x_h64__canonical__t.html)
+|   | Canonical (big endian) representation of [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603).  [More...](struct_x_x_h64__canonical__t.html#details)
+|
+[](undefined)
+Typedefs
+| typedef struct [XXH64_state_s](struct_x_x_h64__state__s.html)  | [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c)
+|   | The opaque state struct for the XXH64 streaming API.
+|
+[](undefined)
+Functions
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)  | [XXH64](#ga9651d864dea7e0755ae3935bf6bf7082) (const void *input, size_t length, [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) seed)
+|   | Calculates the 64-bit hash of input using xxHash64.
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *  | [XXH64_createState](#gadcfc7fb0e3382dc0b13afb125a0fea5c) (void)
+|   | Allocates an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+| [XXH_errorcode](group__public.html#ga5020905455674b8c83c1dbc73f0d3534)  | [XXH64_freeState](#gac03f9ec46a29db6f6a999c832cf759de) ([XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *statePtr)
+|   | Frees an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+| void  | [XXH64_copyState](#ga3088b416eee8dcdb09804f722535761e) ([XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *dst_state, const [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *src_state)
+|   | Copies one [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) to another.
+| [XXH_errorcode](group__public.html#ga5020905455674b8c83c1dbc73f0d3534)  | [XXH64_reset](#gafa0153665b1194c656dce7c29c0193c5) ([XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *statePtr, [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) seed)
+|   | Resets an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) to begin a new hash.
+| [XXH_errorcode](group__public.html#ga5020905455674b8c83c1dbc73f0d3534)  | [XXH64_update](#gaeffe8da4eab0d74a741548bb7c895619) ([XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *statePtr, const void *input, size_t length)
+|   | Consumes a block of input to an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)  | [XXH64_digest](#gaf5c7d2afed088ede4ff37fa6b6a02412) (const [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *statePtr)
+|   | Returns the calculated hash value from an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+| void  | [XXH64_canonicalFromHash](#ga1b88114ccd49685ab9acf02aabbbdd7b) ([XXH64_canonical_t](struct_x_x_h64__canonical__t.html) *dst, [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) hash)
+|   | Converts an [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) to a big endian [XXH64_canonical_t](struct_x_x_h64__canonical__t.html).
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)  | [XXH64_hashFromCanonical](#ga8f1b5423301ea5ebbd9e4e01681446e9) (const [XXH64_canonical_t](struct_x_x_h64__canonical__t.html) *src)
+|   | Converts an [XXH64_canonical_t](struct_x_x_h64__canonical__t.html) to a native [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603).
+[](undefined)
+Detailed Description
+Contains functions used in the classic 64-bit xxHash algorithm.
+Note
+XXH3 provides competitive speed for both 32-bit and 64-bit systems, and offers true 64/128 bit hash results. It provides better speed for systems with vector processing capabilities.
+[](undefined)
+Typedef Documentation
+[](undefined)
+[◆ ](#ga0702bdbc80b0cf9e94f2379f7d839b8c)XXH64_state_t
+| typedef struct [XXH64_state_s](struct_x_x_h64__state__s.html) [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c)
+The opaque state struct for the XXH64 streaming API.
+See also
+[XXH64_state_s](struct_x_x_h64__state__s.html) for details.
+[Streaming Example](index.html#streaming_example)
+[](undefined)
+Function Documentation
+[](undefined)
+[◆ ](#ga9651d864dea7e0755ae3935bf6bf7082)XXH64()
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) XXH64
+| (
+| const void *           | input,
+|
+|
+| size_t           | length,
+|
+|
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)           | seed )
+Calculates the 64-bit hash of input using xxHash64.
+Parameters
+| input | The block of data to be hashed, at least length bytes in size.
+| length | The length of input, in bytes.
+| seed | The 64-bit seed to alter the hash's output predictably.
+Precondition
+The memory between input and input + length must be valid, readable, contiguous memory. However, if length is 0, input may be NULL. In C++, this also must be TriviallyCopyable.
+Returns
+The calculated 64-bit xxHash64 value.
+See also
+[Single Shot Example](index.html#single_shot_example) for an example.
+[](undefined)
+[◆ ](#gadcfc7fb0e3382dc0b13afb125a0fea5c)XXH64_createState()
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) * XXH64_createState
+| (
+| void           |  | )
+|
+Allocates an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+Returns
+An allocated pointer of [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) on success.
+NULL on failure.
+Note
+Must be freed with [XXH64_freeState()](#gac03f9ec46a29db6f6a999c832cf759de).
+See also
+[Streaming Example](index.html#streaming_example)
+[](undefined)
+[◆ ](#gac03f9ec46a29db6f6a999c832cf759de)XXH64_freeState()
+| [XXH_errorcode](group__public.html#ga5020905455674b8c83c1dbc73f0d3534) XXH64_freeState
+| (
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | statePtr | )
+|
+Frees an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+Parameters
+| statePtr | A pointer to an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) allocated with [XXH64_createState()](#gadcfc7fb0e3382dc0b13afb125a0fea5c).
+Returns
+[XXH_OK](group__public.html#gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6).
+Note
+statePtr must be allocated with [XXH64_createState()](#gadcfc7fb0e3382dc0b13afb125a0fea5c).
+See also
+[Streaming Example](index.html#streaming_example)
+[](undefined)
+[◆ ](#ga3088b416eee8dcdb09804f722535761e)XXH64_copyState()
+| void XXH64_copyState
+| (
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | dst_state,
+|
+|
+| const [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | src_state )
+Copies one [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) to another.
+Parameters
+| dst_state | The state to copy to.
+| src_state | The state to copy from.
+Precondition
+dst_state and src_state must not be NULL and must not overlap.
+[](undefined)
+[◆ ](#gafa0153665b1194c656dce7c29c0193c5)XXH64_reset()
+| [XXH_errorcode](group__public.html#ga5020905455674b8c83c1dbc73f0d3534) XXH64_reset
+| (
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | statePtr,
+|
+|
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)           | seed )
+Resets an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) to begin a new hash.
+Parameters
+| statePtr | The state struct to reset.
+| seed | The 64-bit seed to alter the hash result predictably.
+Precondition
+statePtr must not be NULL.
+Returns
+[XXH_OK](group__public.html#gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6) on success.
+[XXH_ERROR](group__public.html#gga5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f) on failure.
+Note
+This function resets and seeds a state. Call it before [XXH64_update()](#gaeffe8da4eab0d74a741548bb7c895619).
+See also
+[Streaming Example](index.html#streaming_example)
+[](undefined)
+[◆ ](#gaeffe8da4eab0d74a741548bb7c895619)XXH64_update()
+| [XXH_errorcode](group__public.html#ga5020905455674b8c83c1dbc73f0d3534) XXH64_update
+| (
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | statePtr,
+|
+|
+| const void *           | input,
+|
+|
+| size_t           | length )
+Consumes a block of input to an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+Parameters
+| statePtr | The state struct to update.
+| input | The block of data to be hashed, at least length bytes in size.
+| length | The length of input, in bytes.
+Precondition
+statePtr must not be NULL.
+The memory between input and input + length must be valid, readable, contiguous memory. However, if length is 0, input may be NULL. In C++, this also must be TriviallyCopyable.
+Returns
+[XXH_OK](group__public.html#gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6) on success.
+[XXH_ERROR](group__public.html#gga5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f) on failure.
+Note
+Call this to incrementally consume blocks of data.
+See also
+[Streaming Example](index.html#streaming_example)
+[](undefined)
+[◆ ](#gaf5c7d2afed088ede4ff37fa6b6a02412)XXH64_digest()
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) XXH64_digest
+| (
+| const [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | statePtr | )
+|
+Returns the calculated hash value from an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+Parameters
+| statePtr | The state struct to calculate the hash from.
+Precondition
+statePtr must not be NULL.
+Returns
+The calculated 64-bit xxHash64 value from that state.
+Note
+Calling [XXH64_digest()](#gaf5c7d2afed088ede4ff37fa6b6a02412) will not affect statePtr, so you can update, digest, and update again.
+See also
+[Streaming Example](index.html#streaming_example)
+[](undefined)
+[◆ ](#ga1b88114ccd49685ab9acf02aabbbdd7b)XXH64_canonicalFromHash()
+| void XXH64_canonicalFromHash
+| (
+| [XXH64_canonical_t](struct_x_x_h64__canonical__t.html) *           | dst,
+|
+|
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)           | hash )
+Converts an [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) to a big endian [XXH64_canonical_t](struct_x_x_h64__canonical__t.html).
+Parameters
+| dst | The [XXH64_canonical_t](struct_x_x_h64__canonical__t.html) pointer to be stored to.
+| hash | The [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) to be converted.
+Precondition
+dst must not be NULL.
+See also
+[Canonical Representation Example](index.html#canonical_representation_example)
+[](undefined)
+[◆ ](#ga8f1b5423301ea5ebbd9e4e01681446e9)XXH64_hashFromCanonical()
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) XXH64_hashFromCanonical
+| (
+| const [XXH64_canonical_t](struct_x_x_h64__canonical__t.html) *           | src | )
+|
+Converts an [XXH64_canonical_t](struct_x_x_h64__canonical__t.html) to a native [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603).
+Parameters
+| src | The [XXH64_canonical_t](struct_x_x_h64__canonical__t.html) to convert.
+Precondition
+src must not be NULL.
+Returns
+The converted hash.
+See also
+[Canonical Representation Example](index.html#canonical_representation_example)
+
+All IDs: header-nested-classes, nested-classes, r_XXH64_5Fcanonical_5Ft, header-typedef-members, typedef-members, r_ga0702bdbc80b0cf9e94f2379f7d839b8c, header-func-members, func-members, r_ga9651d864dea7e0755ae3935bf6bf7082, r_gadcfc7fb0e3382dc0b13afb125a0fea5c, r_gac03f9ec46a29db6f6a999c832cf759de, r_ga3088b416eee8dcdb09804f722535761e, r_gafa0153665b1194c656dce7c29c0193c5, r_gaeffe8da4eab0d74a741548bb7c895619, r_gaf5c7d2afed088ede4ff37fa6b6a02412, r_ga1b88114ccd49685ab9acf02aabbbdd7b, r_ga8f1b5423301ea5ebbd9e4e01681446e9, details, header-details, doc-typedef-members, header-doc-typedef-members, ga0702bdbc80b0cf9e94f2379f7d839b8c, doc-func-members, header-doc-func-members, ga9651d864dea7e0755ae3935bf6bf7082, gadcfc7fb0e3382dc0b13afb125a0fea5c, gac03f9ec46a29db6f6a999c832cf759de, ga3088b416eee8dcdb09804f722535761e, gafa0153665b1194c656dce7c29c0193c5, gaeffe8da4eab0d74a741548bb7c895619, gaf5c7d2afed088ede4ff37fa6b6a02412, ga1b88114ccd49685ab9acf02aabbbdd7b, ga8f1b5423301ea5ebbd9e4e01681446e9
+All element types: div, table, tbody, tr, td, h2, a, br, code, p, dl, dt, dd, span, em
+CANONICAL full .contents text with every link:
+
+|
+[](undefined)
+Data Structures
+| struct   | [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/)
+|   | Canonical (big endian) representation of [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603).  [More...](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/#details)
+|
+[](undefined)
+Typedefs
+| typedef struct [XXH64_state_s](/docs/xxhash/v0-8-4/en/02-api/29-struct_x_x_h64__state__s/)  | [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c)
+|   | The opaque state struct for the XXH64 streaming API.
+|
+[](undefined)
+Functions
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)  | [XXH64](#ga9651d864dea7e0755ae3935bf6bf7082) (const void *input, size_t length, [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) seed)
+|   | Calculates the 64-bit hash of input using xxHash64.
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *  | [XXH64_createState](#gadcfc7fb0e3382dc0b13afb125a0fea5c) (void)
+|   | Allocates an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+| [XXH_errorcode](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5020905455674b8c83c1dbc73f0d3534)  | [XXH64_freeState](#gac03f9ec46a29db6f6a999c832cf759de) ([XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *statePtr)
+|   | Frees an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+| void  | [XXH64_copyState](#ga3088b416eee8dcdb09804f722535761e) ([XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *dst_state, const [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *src_state)
+|   | Copies one [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) to another.
+| [XXH_errorcode](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5020905455674b8c83c1dbc73f0d3534)  | [XXH64_reset](#gafa0153665b1194c656dce7c29c0193c5) ([XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *statePtr, [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) seed)
+|   | Resets an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) to begin a new hash.
+| [XXH_errorcode](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5020905455674b8c83c1dbc73f0d3534)  | [XXH64_update](#gaeffe8da4eab0d74a741548bb7c895619) ([XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *statePtr, const void *input, size_t length)
+|   | Consumes a block of input to an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)  | [XXH64_digest](#gaf5c7d2afed088ede4ff37fa6b6a02412) (const [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *statePtr)
+|   | Returns the calculated hash value from an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+| void  | [XXH64_canonicalFromHash](#ga1b88114ccd49685ab9acf02aabbbdd7b) ([XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/) *dst, [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) hash)
+|   | Converts an [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) to a big endian [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/).
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)  | [XXH64_hashFromCanonical](#ga8f1b5423301ea5ebbd9e4e01681446e9) (const [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/) *src)
+|   | Converts an [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/) to a native [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603).
+[](undefined)
+Detailed Description
+Contains functions used in the classic 64-bit xxHash algorithm.
+Note
+XXH3 provides competitive speed for both 32-bit and 64-bit systems, and offers true 64/128 bit hash results. It provides better speed for systems with vector processing capabilities.
+[](undefined)
+Typedef Documentation
+[](undefined)
+[◆ ](#ga0702bdbc80b0cf9e94f2379f7d839b8c)XXH64_state_t
+| typedef struct [XXH64_state_s](/docs/xxhash/v0-8-4/en/02-api/29-struct_x_x_h64__state__s/) [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c)
+The opaque state struct for the XXH64 streaming API.
+See also
+[XXH64_state_s](/docs/xxhash/v0-8-4/en/02-api/29-struct_x_x_h64__state__s/) for details.
+[Streaming Example](/docs/xxhash/v0-8-4/en/02-api/22-index/#streaming_example)
+[](undefined)
+Function Documentation
+[](undefined)
+[◆ ](#ga9651d864dea7e0755ae3935bf6bf7082)XXH64()
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) XXH64
+| (
+| const void *           | input,
+|
+|
+| size_t           | length,
+|
+|
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)           | seed )
+Calculates the 64-bit hash of input using xxHash64.
+Parameters
+| input | The block of data to be hashed, at least length bytes in size.
+| length | The length of input, in bytes.
+| seed | The 64-bit seed to alter the hash's output predictably.
+Precondition
+The memory between input and input + length must be valid, readable, contiguous memory. However, if length is 0, input may be NULL. In C++, this also must be TriviallyCopyable.
+Returns
+The calculated 64-bit xxHash64 value.
+See also
+[Single Shot Example](/docs/xxhash/v0-8-4/en/02-api/22-index/#single_shot_example) for an example.
+[](undefined)
+[◆ ](#gadcfc7fb0e3382dc0b13afb125a0fea5c)XXH64_createState()
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) * XXH64_createState
+| (
+| void           |  | )
+|
+Allocates an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+Returns
+An allocated pointer of [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) on success.
+NULL on failure.
+Note
+Must be freed with [XXH64_freeState()](#gac03f9ec46a29db6f6a999c832cf759de).
+See also
+[Streaming Example](/docs/xxhash/v0-8-4/en/02-api/22-index/#streaming_example)
+[](undefined)
+[◆ ](#gac03f9ec46a29db6f6a999c832cf759de)XXH64_freeState()
+| [XXH_errorcode](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5020905455674b8c83c1dbc73f0d3534) XXH64_freeState
+| (
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | statePtr | )
+|
+Frees an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+Parameters
+| statePtr | A pointer to an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) allocated with [XXH64_createState()](#gadcfc7fb0e3382dc0b13afb125a0fea5c).
+Returns
+[XXH_OK](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6).
+Note
+statePtr must be allocated with [XXH64_createState()](#gadcfc7fb0e3382dc0b13afb125a0fea5c).
+See also
+[Streaming Example](/docs/xxhash/v0-8-4/en/02-api/22-index/#streaming_example)
+[](undefined)
+[◆ ](#ga3088b416eee8dcdb09804f722535761e)XXH64_copyState()
+| void XXH64_copyState
+| (
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | dst_state,
+|
+|
+| const [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | src_state )
+Copies one [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) to another.
+Parameters
+| dst_state | The state to copy to.
+| src_state | The state to copy from.
+Precondition
+dst_state and src_state must not be NULL and must not overlap.
+[](undefined)
+[◆ ](#gafa0153665b1194c656dce7c29c0193c5)XXH64_reset()
+| [XXH_errorcode](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5020905455674b8c83c1dbc73f0d3534) XXH64_reset
+| (
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | statePtr,
+|
+|
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)           | seed )
+Resets an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) to begin a new hash.
+Parameters
+| statePtr | The state struct to reset.
+| seed | The 64-bit seed to alter the hash result predictably.
+Precondition
+statePtr must not be NULL.
+Returns
+[XXH_OK](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6) on success.
+[XXH_ERROR](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#gga5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f) on failure.
+Note
+This function resets and seeds a state. Call it before [XXH64_update()](#gaeffe8da4eab0d74a741548bb7c895619).
+See also
+[Streaming Example](/docs/xxhash/v0-8-4/en/02-api/22-index/#streaming_example)
+[](undefined)
+[◆ ](#gaeffe8da4eab0d74a741548bb7c895619)XXH64_update()
+| [XXH_errorcode](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5020905455674b8c83c1dbc73f0d3534) XXH64_update
+| (
+| [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | statePtr,
+|
+|
+| const void *           | input,
+|
+|
+| size_t           | length )
+Consumes a block of input to an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+Parameters
+| statePtr | The state struct to update.
+| input | The block of data to be hashed, at least length bytes in size.
+| length | The length of input, in bytes.
+Precondition
+statePtr must not be NULL.
+The memory between input and input + length must be valid, readable, contiguous memory. However, if length is 0, input may be NULL. In C++, this also must be TriviallyCopyable.
+Returns
+[XXH_OK](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6) on success.
+[XXH_ERROR](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#gga5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f) on failure.
+Note
+Call this to incrementally consume blocks of data.
+See also
+[Streaming Example](/docs/xxhash/v0-8-4/en/02-api/22-index/#streaming_example)
+[](undefined)
+[◆ ](#gaf5c7d2afed088ede4ff37fa6b6a02412)XXH64_digest()
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) XXH64_digest
+| (
+| const [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c) *           | statePtr | )
+|
+Returns the calculated hash value from an [XXH64_state_t](#ga0702bdbc80b0cf9e94f2379f7d839b8c).
+Parameters
+| statePtr | The state struct to calculate the hash from.
+Precondition
+statePtr must not be NULL.
+Returns
+The calculated 64-bit xxHash64 value from that state.
+Note
+Calling [XXH64_digest()](#gaf5c7d2afed088ede4ff37fa6b6a02412) will not affect statePtr, so you can update, digest, and update again.
+See also
+[Streaming Example](/docs/xxhash/v0-8-4/en/02-api/22-index/#streaming_example)
+[](undefined)
+[◆ ](#ga1b88114ccd49685ab9acf02aabbbdd7b)XXH64_canonicalFromHash()
+| void XXH64_canonicalFromHash
+| (
+| [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/) *           | dst,
+|
+|
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)           | hash )
+Converts an [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) to a big endian [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/).
+Parameters
+| dst | The [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/) pointer to be stored to.
+| hash | The [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) to be converted.
+Precondition
+dst must not be NULL.
+See also
+[Canonical Representation Example](/docs/xxhash/v0-8-4/en/02-api/22-index/#canonical_representation_example)
+[](undefined)
+[◆ ](#ga8f1b5423301ea5ebbd9e4e01681446e9)XXH64_hashFromCanonical()
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) XXH64_hashFromCanonical
+| (
+| const [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/) *           | src | )
+|
+Converts an [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/) to a native [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603).
+Parameters
+| src | The [XXH64_canonical_t](/docs/xxhash/v0-8-4/en/02-api/28-struct_x_x_h64__canonical__t/) to convert.
+Precondition
+src must not be NULL.
+Returns
+The converted hash.
+See also
+[Canonical Representation Example](/docs/xxhash/v0-8-4/en/02-api/22-index/#canonical_representation_example)
+
+All IDs: header-nested-classes, nested-classes, r_XXH64_5Fcanonical_5Ft, header-typedef-members, typedef-members, r_ga0702bdbc80b0cf9e94f2379f7d839b8c, header-func-members, func-members, r_ga9651d864dea7e0755ae3935bf6bf7082, r_gadcfc7fb0e3382dc0b13afb125a0fea5c, r_gac03f9ec46a29db6f6a999c832cf759de, r_ga3088b416eee8dcdb09804f722535761e, r_gafa0153665b1194c656dce7c29c0193c5, r_gaeffe8da4eab0d74a741548bb7c895619, r_gaf5c7d2afed088ede4ff37fa6b6a02412, r_ga1b88114ccd49685ab9acf02aabbbdd7b, r_ga8f1b5423301ea5ebbd9e4e01681446e9, details, header-details, doc-typedef-members, header-doc-typedef-members, ga0702bdbc80b0cf9e94f2379f7d839b8c, doc-func-members, header-doc-func-members, ga9651d864dea7e0755ae3935bf6bf7082, gadcfc7fb0e3382dc0b13afb125a0fea5c, gac03f9ec46a29db6f6a999c832cf759de, ga3088b416eee8dcdb09804f722535761e, gafa0153665b1194c656dce7c29c0193c5, gaeffe8da4eab0d74a741548bb7c895619, gaf5c7d2afed088ede4ff37fa6b6a02412, ga1b88114ccd49685ab9acf02aabbbdd7b, ga8f1b5423301ea5ebbd9e4e01681446e9
+All element types: div, table, tbody, tr, td, h2, a, br, code, p, dl, dt, dd, span, em
+FRONTMATTER: ---
+title: "XXH64 family Public API"
+licenseSource: "xxhash-api"
+---
+
+
+APPENDED: ## Source and notices
+
+No documentation-specific license statement was found in the recorded checks. Under the user-approved operating policy, the software component’s BSD-2-Clause license is applied to this documentation with this annotation. This is an operational decision, not a newly obtained permission.
+
+Fixed software version: **0.8.4**. Source commit: `c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`. This is an unofficial presentation; formatting, internal links and clearly marked editorial notes are Libx changes. The Japanese translation is provided separately when completed.
+
+[api-header](/docs/xxhash/v0-8-4/en/03-notices/api-header/) · [dispatch-c](/docs/xxhash/v0-8-4/en/03-notices/dispatch-c/) · [dispatch-h](/docs/xxhash/v0-8-4/en/03-notices/dispatch-h/)
+
+Generated from the fixed public [Doxyfile](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/Doxyfile) using its `xxhash.h` and `xxh_x86dispatch.c` file patterns.
+
+[xxhash.h — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h) · [xxhash.h — original text download](/docs/xxhash/source/v0-8-4/xxhash.h.txt)
+
+[xxh_x86dispatch.c — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxh_x86dispatch.c) · [xxh_x86dispatch.c — original text download](/docs/xxhash/source/v0-8-4/xxh_x86dispatch.c.txt)
+
+

@@ -1,0 +1,763 @@
+
+### doxygen/html/group___x_x_h3__impl.html
+ORIGINAL full .contents text with every link:
+
+|
+[](undefined)
+Macros
+| #define  | [XXH_likely](#gae58aed4a1b2358a085da6cdfb796c9b5)(x)
+| #define  | [XXH_unlikely](#ga9692175c758324823b99cf3c44fd34e4)(x)
+| #define  | [XXH_HAS_INCLUDE](#ga2a1eaa224ecac307fa52bc0dc3f8aafd)(x)
+| [](undefined)
+#define  | XXH_SEC_ALIGN   [XXH_ACC_ALIGN](group__tuning.html#ga15f2f40c9206c691f66cf260841f8ad1)
+| [](undefined)
+#define  | XXH_ALIASING   /* nothing */
+| [](undefined)
+#define  | XXH_VSX_BE   0
+| #define  | [ACCRND](#gab28d99014a5b1d2f3d669b6a85d44bad)(acc,  offset)
+| #define  | [XXH_PREFETCH](#ga31cc0a4198f6d7ac73d2c4a7d44fc864)(ptr)
+| [](undefined)
+#define  | XXH_SECRET_DEFAULT_SIZE   192   /* minimum [XXH3_SECRET_SIZE_MIN](group___x_x_h3__family.html#gaeb79a9111c58af32599f8e5cd71d67d2) */
+| [](undefined)
+#define  | XXH_STRIPE_LEN   64
+| [](undefined)
+#define  | XXH_SECRET_CONSUME_RATE   8   /* nb of secret bytes consumed at each accumulation */
+| [](undefined)
+#define  | XXH_ACC_NB   (XXH_STRIPE_LEN / sizeof(xxh_u64))
+| [](undefined)
+#define  | XXH_PREFETCH_DIST   512
+| #define  | [XXH3_ACCUMULATE_TEMPLATE](#gad6fe18b05630922bddf3be9b231dbd47)(name)
+| #define  | [_LSX_SHUFFLE](#ga0222034bed3f2da391877f48183961cd)(z,  y,  x,  w)
+| #define  | [_LASX_SHUFFLE](#ga04fca6b9a6b6224cc1d313b697aa39a2)(z,  y,  x,  w)
+| #define  | [XXH_CONCAT2](#ga41066d2dfab74d8a9f8b5af308f69b81)(X,  Y)
+| #define  | [XXH_CONCAT](#ga10a70f15a5dddf7c805244b0e022ecdc)(X,  Y)
+| #define  | [XXH_RVOP](#gabb7685ae744f8569c57c9083f2ba14a6)(op)
+| #define  | [XXH_RVCAST](#gaee5574109eba683c4320e2e93fb162f6)(op)
+| [](undefined)
+#define  | XXH3_accumulate_512   XXH3_accumulate_512_avx512
+| [](undefined)
+#define  | XXH3_accumulate   XXH3_accumulate_avx512
+| [](undefined)
+#define  | XXH3_scrambleAcc   XXH3_scrambleAcc_avx512
+| [](undefined)
+#define  | XXH3_initCustomSecret   XXH3_initCustomSecret_avx512
+| [](undefined)
+#define  | XXH_SECRET_MERGEACCS_START   11
+| #define  | [XXH3_INIT_ACC](#ga3053d8dff7f8bfe6a3c30b381837d8f6)
+| [](undefined)
+#define  | XXH3_STREAM_USE_STACK   1
+| #define  | [XXH_MIN](#gae263c556998a5c354f2e4062b2398b3e)(x,  y)
+|
+[](undefined)
+Typedefs
+| [](undefined)
+typedef uint64x2_t xxh_aliasing_uint64x2_t  | XXH_ALIASING
+| [](undefined)
+typedef __vector unsigned long long  | xxh_u64x2
+| [](undefined)
+typedef __vector unsigned char  | xxh_u8x16
+| [](undefined)
+typedef __vector unsigned  | xxh_u32x4
+| [](undefined)
+typedef long long  | xxh_i64
+| [](undefined)
+typedef void(*  | XXH3_f_accumulate) (xxh_u64 *restrict, const xxh_u8 *restrict, const xxh_u8 *restrict, size_t)
+| [](undefined)
+typedef void(*  | XXH3_f_scrambleAcc) (void *restrict, const void *)
+| [](undefined)
+typedef void(*  | XXH3_f_initCustomSecret) (void *restrict, xxh_u64)
+| [](undefined)
+typedef [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)(*  | XXH3_hashLong64_f) (const void *restrict, size_t, [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603), const xxh_u8 *restrict, size_t)
+| [](undefined)
+typedef [XXH128_hash_t](struct_x_x_h128__hash__t.html)(*  | XXH3_hashLong128_f) (const void *restrict, size_t, [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603), const void *restrict, size_t)
+|
+[](undefined)
+Functions
+| [](undefined)
+| XXH_STATIC_ASSERT (XXH_STRIPE_LEN==sizeof(__m512i))
+| [](undefined)
+| for (i=0;i< XXH_STRIPE_LEN/sizeof(__m256i);i++)
+| [](undefined)
+| for (;count > 0;count -=vl, xacc+=vl, xsecret+=vl *8)
+| [](undefined)
+| XXH_ASSERT ((((size_t) acc) &([XXH_ACC_ALIGN](group__tuning.html#ga15f2f40c9206c691f66cf260841f8ad1)-1))==0)
+| [](undefined)
+| XXH_ASSERT (lane< XXH_ACC_NB)
+| [](undefined)
+XXH3_WITH_SECRET_INLINE [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)  | XXH3_hashLong_64b_withSecret (const void *restrict input, size_t len, [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) seed64, const xxh_u8 *restrict secret, size_t secretLen)
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)  | [XXH3_64bits_withSecretandSeed](#ga7c61723080fb6c64f186c419832d5521) (const void *data, size_t len, const void *secret, size_t secretSize, [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) seed)
+|   | Calculates 64/128-bit seeded variant of XXH3 hash of data.
+| [](undefined)
+XXH3_WITH_SECRET_INLINE [XXH128_hash_t](struct_x_x_h128__hash__t.html)  | XXH3_hashLong_128b_withSecret (const void *restrict input, size_t len, [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) seed64, const void *restrict secret, size_t secretLen)
+|
+[](undefined)
+Variables
+| static [XXH_TARGET_AVX512](group__dispatch.html#ga94d06a353acaa62bbd9fbf65e865a282) const void *restrict  | [secret](#gaf67c1383f63f5a0308ea7d4dee38d386)
+| [](undefined)
+const __m512i  | prime32 = _mm512_set1_epi32((int)[XXH_PRIME32_1](group___x_x_h32__impl.html#ga29fede2b86ee758448c55edf6171e11f))
+| [](undefined)
+__m512i const  | acc_vec = *xacc
+| [](undefined)
+__m512i const  | shifted = _mm512_srli_epi64 (acc_vec, 47)
+| [](undefined)
+__m512i const  | key_vec = _mm512_loadu_si512 (secret)
+| [](undefined)
+__m512i const  | data_key = _mm512_ternarylogic_epi32(key_vec, acc_vec, shifted, 0x96 )
+| [](undefined)
+__m512i const  | data_key_hi = _mm512_srli_epi64 (data_key, 32)
+| [](undefined)
+__m512i const  | prod_lo = _mm512_mul_epu32 (data_key, prime32)
+| [](undefined)
+__m512i const  | prod_hi = _mm512_mul_epu32 (data_key_hi, prime32)
+| [](undefined)
+*  | xacc = _mm512_add_epi64(prod_lo, _mm512_slli_epi64(prod_hi, 32))
+| [](undefined)
+const __m256i *const  | xsecret = (const __m256i *) secret
+| [](undefined)
+size_t  | i
+| [](undefined)
+uint32x2_t const  | kPrimeLo = vdup_n_u32([XXH_PRIME32_1](group___x_x_h32__impl.html#ga29fede2b86ee758448c55edf6171e11f))
+| [](undefined)
+uint32x4_t const  | kPrimeHi = vreinterpretq_u32_u64(vdupq_n_u64((xxh_u64)[XXH_PRIME32_1](group___x_x_h32__impl.html#ga29fede2b86ee758448c55edf6171e11f) << 32))
+| [](undefined)
+xxh_u64x2 const  | v32 = { 32, 32 }
+| [](undefined)
+xxh_u64x2 const  | v47 = { 47, 47 }
+| [](undefined)
+xxh_u32x4 const  | prime = { [XXH_PRIME32_1](group___x_x_h32__impl.html#ga29fede2b86ee758448c55edf6171e11f), [XXH_PRIME32_1](group___x_x_h32__impl.html#ga29fede2b86ee758448c55edf6171e11f), [XXH_PRIME32_1](group___x_x_h32__impl.html#ga29fede2b86ee758448c55edf6171e11f), [XXH_PRIME32_1](group___x_x_h32__impl.html#ga29fede2b86ee758448c55edf6171e11f) }
+| [](undefined)
+size_t  | vl
+| static void const  *restrict size_t  | [lane](#ga1ba93bce4ce017d8c933bd0e6c349ac7)
+| [](undefined)
+xxh_u64  | acc64 = xacc[lane]
+[](undefined)
+Detailed Description
+[](undefined)
+Macro Definition Documentation
+[](undefined)
+[◆ ](#gae58aed4a1b2358a085da6cdfb796c9b5)XXH_likely
+| #define XXH_likely
+| (
+|            | x | )
+|
+Value:
+(x)
+[](undefined)
+[◆ ](#ga9692175c758324823b99cf3c44fd34e4)XXH_unlikely
+| #define XXH_unlikely
+| (
+|            | x | )
+|
+Value:
+(x)
+[](undefined)
+[◆ ](#ga2a1eaa224ecac307fa52bc0dc3f8aafd)XXH_HAS_INCLUDE
+| #define XXH_HAS_INCLUDE
+| (
+|            | x | )
+|
+Value:
+0
+[](undefined)
+[◆ ](#gab28d99014a5b1d2f3d669b6a85d44bad)ACCRND
+| #define ACCRND
+| (
+|            | acc,
+|
+|
+|            | offset )
+Value:
+do { \
+svuint64_t input_vec = svld1_u64(mask, xinput + offset);         \
+svuint64_t secret_vec = svld1_u64(mask, xsecret + offset);       \
+svuint64_t mixed = sveor_u64_x(mask, secret_vec, input_vec);     \
+svuint64_t swapped = svtbl_u64(input_vec, kSwap);                \
+svuint64_t mixed_lo = svextw_u64_x(mask, mixed);                 \
+svuint64_t mixed_hi = svlsr_n_u64_x(mask, mixed, 32);            \
+svuint64_t mul = svmad_u64_x(mask, mixed_lo, mixed_hi, swapped); \
+acc = svadd_u64_x(mask, acc, mul);                               \
+} while (0)
+[](undefined)
+[◆ ](#ga31cc0a4198f6d7ac73d2c4a7d44fc864)XXH_PREFETCH
+| #define XXH_PREFETCH
+| (
+|            | ptr | )
+|
+Value:
+(void)(ptr)  /* disabled */
+[](undefined)
+[◆ ](#gad6fe18b05630922bddf3be9b231dbd47)XXH3_ACCUMULATE_TEMPLATE
+| #define XXH3_ACCUMULATE_TEMPLATE
+| (
+|            | name | )
+|
+Value:
+void                                                        \
+XXH3_accumulate_##name(xxh_u64* XXH_RESTRICT acc,           \
+const xxh_u8* XXH_RESTRICT input,    \
+const xxh_u8* XXH_RESTRICT secret,   \
+size_t nbStripes)                    \
+{                                                           \
+size_t n;                                               \
+for (n = 0; n < nbStripes; n++ ) {                      \
+const xxh_u8* const in = input + n*XXH_STRIPE_LEN;  \
+XXH_PREFETCH(in + XXH_PREFETCH_DIST);               \
+XXH3_accumulate_512_##name(                         \
+acc,                                       \
+in,                                        \
+secret + n*XXH_SECRET_CONSUME_RATE);       \
+}                                                       \
+}
+[](undefined)
+[◆ ](#ga0222034bed3f2da391877f48183961cd)_LSX_SHUFFLE
+| #define _LSX_SHUFFLE
+| (
+|            | z,
+|
+|
+|            | y,
+|
+|
+|            | x,
+|
+|
+|            | w )
+Value:
+(((z) << 6) | ((y) << 4) | ((x) << 2) | (w))
+[](undefined)
+[◆ ](#ga04fca6b9a6b6224cc1d313b697aa39a2)_LASX_SHUFFLE
+| #define _LASX_SHUFFLE
+| (
+|            | z,
+|
+|
+|            | y,
+|
+|
+|            | x,
+|
+|
+|            | w )
+Value:
+(((z) << 6) | ((y) << 4) | ((x) << 2) | (w))
+[](undefined)
+[◆ ](#ga41066d2dfab74d8a9f8b5af308f69b81)XXH_CONCAT2
+| #define XXH_CONCAT2
+| (
+|            | X,
+|
+|
+|            | Y )
+Value:
+X ## Y
+[](undefined)
+[◆ ](#ga10a70f15a5dddf7c805244b0e022ecdc)XXH_CONCAT
+| #define XXH_CONCAT
+| (
+|            | X,
+|
+|
+|            | Y )
+Value:
+XXH_CONCAT2(X, Y)
+[](undefined)
+[◆ ](#gabb7685ae744f8569c57c9083f2ba14a6)XXH_RVOP
+| #define XXH_RVOP
+| (
+|            | op | )
+|
+Value:
+XXH_CONCAT(__riscv_, op)
+[](undefined)
+[◆ ](#gaee5574109eba683c4320e2e93fb162f6)XXH_RVCAST
+| #define XXH_RVCAST
+| (
+|            | op | )
+|
+Value:
+XXH_CONCAT(__riscv_vreinterpret_v_, op)
+[](undefined)
+[◆ ](#ga3053d8dff7f8bfe6a3c30b381837d8f6)XXH3_INIT_ACC
+| #define XXH3_INIT_ACC
+Value:
+{ [XXH_PRIME32_3](group___x_x_h32__impl.html#gacdda6ef95561d39cf2f9b7f2cd5c6693), [XXH_PRIME64_1](group___x_x_h64__impl.html#ga20651a9ad53cae6f0a4feb1393d5a716), [XXH_PRIME64_2](group___x_x_h64__impl.html#ga33a01ca165b68cef76da009a54e3ba54), [XXH_PRIME64_3](group___x_x_h64__impl.html#gad18b925ab3b4ad25ae26eb4fb00ebcb8), \
+[XXH_PRIME64_4](group___x_x_h64__impl.html#ga6326d9c3883242a3b5602fae1507afc5), [XXH_PRIME32_2](group___x_x_h32__impl.html#ga23d49e684c0551afaed8e4ff40940c79), [XXH_PRIME64_5](group___x_x_h64__impl.html#gae44b2a496b0a4184699e7d11ec2d70c6), [XXH_PRIME32_1](group___x_x_h32__impl.html#ga29fede2b86ee758448c55edf6171e11f) }
+[XXH_PRIME32_2](group___x_x_h32__impl.html#ga23d49e684c0551afaed8e4ff40940c79)
+#define XXH_PRIME32_2
+Definition xxhash.h:2923
+[XXH_PRIME32_1](group___x_x_h32__impl.html#ga29fede2b86ee758448c55edf6171e11f)
+#define XXH_PRIME32_1
+Definition xxhash.h:2922
+[XXH_PRIME32_3](group___x_x_h32__impl.html#gacdda6ef95561d39cf2f9b7f2cd5c6693)
+#define XXH_PRIME32_3
+Definition xxhash.h:2924
+[XXH_PRIME64_1](group___x_x_h64__impl.html#ga20651a9ad53cae6f0a4feb1393d5a716)
+#define XXH_PRIME64_1
+Definition xxhash.h:3481
+[XXH_PRIME64_2](group___x_x_h64__impl.html#ga33a01ca165b68cef76da009a54e3ba54)
+#define XXH_PRIME64_2
+Definition xxhash.h:3482
+[XXH_PRIME64_4](group___x_x_h64__impl.html#ga6326d9c3883242a3b5602fae1507afc5)
+#define XXH_PRIME64_4
+Definition xxhash.h:3484
+[XXH_PRIME64_3](group___x_x_h64__impl.html#gad18b925ab3b4ad25ae26eb4fb00ebcb8)
+#define XXH_PRIME64_3
+Definition xxhash.h:3483
+[XXH_PRIME64_5](group___x_x_h64__impl.html#gae44b2a496b0a4184699e7d11ec2d70c6)
+#define XXH_PRIME64_5
+Definition xxhash.h:3485
+[](undefined)
+[◆ ](#gae263c556998a5c354f2e4062b2398b3e)XXH_MIN
+| #define XXH_MIN
+| (
+|            | x,
+|
+|
+|            | y )
+Value:
+(((x) > (y)) ? (y) : (x))
+[](undefined)
+Function Documentation
+[](undefined)
+[◆ ](#ga7c61723080fb6c64f186c419832d5521)XXH3_64bits_withSecretandSeed()
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) XXH3_64bits_withSecretandSeed
+| (
+| const void *           | data,
+|
+|
+| size_t           | len,
+|
+|
+| const void *           | secret,
+|
+|
+| size_t           | secretSize,
+|
+|
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)           | seed )
+Calculates 64/128-bit seeded variant of XXH3 hash of data.
+Parameters
+| data | The block of data to be hashed, at least len bytes in size.
+| len | The length of data, in bytes.
+| secret | The secret data.
+| secretSize | The length of secret, in bytes.
+| seed | The 64-bit seed to alter the hash result predictably.
+These variants generate hash values using either:
+seed for "short" keys (< [XXH3_MIDSIZE_MAX](xxhash_8h.html#add6603b0469aa41bf291ae15a8f65fc6) = 240 bytes)
+secret for "large" keys (>= [XXH3_MIDSIZE_MAX](xxhash_8h.html#add6603b0469aa41bf291ae15a8f65fc6)).
+This generally benefits speed, compared to _withSeed() or _withSecret(). _withSeed() has to generate the secret on the fly for "large" keys. It's fast, but can be perceptible for "not so large" keys (< 1 KB). _withSecret() has to generate the masks on the fly for "small" keys, which requires more instructions than _withSeed() variants. Therefore, _withSecretandSeed variant combines the best of both worlds.
+When secret has been generated by [XXH3_generateSecret_fromSeed()](group___x_x_h3__family.html#ga0888d6959efe3982fcafe516c22ef5a8), this variant produces exactly the same results as _withSeed() variant, hence offering only a pure speed benefit on "large" input, by skipping the need to regenerate the secret for every large input.
+Another usage scenario is to hash the secret to a 64-bit hash value, for example with [XXH3_64bits()](group___x_x_h3__family.html#gacc4473b9d9953adcbfcc51b32cb887ef), which then becomes the seed, and then employ both the seed and the secret in _withSecretandSeed(). On top of speed, an added benefit is that each bit in the secret has a 50% chance to swap each bit in the output, via its impact to the seed.
+This is not guaranteed when using the secret directly in "small data" scenarios, because only portions of the secret are employed for small data.
+[](undefined)
+Variable Documentation
+[](undefined)
+[◆ ](#gaf67c1383f63f5a0308ea7d4dee38d386)secret
+| void const  *restrict secret
+Initial value:
+{
+XXH_ASSERT((((size_t)acc) & 63) == 0)
+[](undefined)
+[◆ ](#ga1ba93bce4ce017d8c933bd0e6c349ac7)lane
+| void const* restrict size_t lane
+Initial value:
+{
+xxh_u64* const xacc = (xxh_u64*) acc
+
+All IDs: header-define-members, define-members, r_gae58aed4a1b2358a085da6cdfb796c9b5, r_ga9692175c758324823b99cf3c44fd34e4, r_ga2a1eaa224ecac307fa52bc0dc3f8aafd, r_ga3043b203ed1c7d1879894a905b274ea5, ga3043b203ed1c7d1879894a905b274ea5, r_gacf3a7d0af9fce7b878a672db2432945f, gacf3a7d0af9fce7b878a672db2432945f, r_gadf7b05430f2e68bd204ea8bf4c99ffbc, gadf7b05430f2e68bd204ea8bf4c99ffbc, r_gab28d99014a5b1d2f3d669b6a85d44bad, r_ga31cc0a4198f6d7ac73d2c4a7d44fc864, r_gaba305af89b970fb6f4fda315f50eb77a, gaba305af89b970fb6f4fda315f50eb77a, r_ga83492458a52c0fd40d7044a3a8055696, ga83492458a52c0fd40d7044a3a8055696, r_ga35d1f625f5673535b05a5078d17ffa59, ga35d1f625f5673535b05a5078d17ffa59, r_ga03aeb7fed50cb7a5a321ba6cc60553fb, ga03aeb7fed50cb7a5a321ba6cc60553fb, r_gaa26a7f3673266f5b6350d84f2e51c658, gaa26a7f3673266f5b6350d84f2e51c658, r_gad6fe18b05630922bddf3be9b231dbd47, r_ga0222034bed3f2da391877f48183961cd, r_ga04fca6b9a6b6224cc1d313b697aa39a2, r_ga41066d2dfab74d8a9f8b5af308f69b81, r_ga10a70f15a5dddf7c805244b0e022ecdc, r_gabb7685ae744f8569c57c9083f2ba14a6, r_gaee5574109eba683c4320e2e93fb162f6, r_ga5ffe3391e408f75f726da56c67701f8f, ga5ffe3391e408f75f726da56c67701f8f, r_ga5653b466f50212fb61f9e78ea452935c, ga5653b466f50212fb61f9e78ea452935c, r_ga90fcb30d61f3d5fc00e56081205f4a30, ga90fcb30d61f3d5fc00e56081205f4a30, r_ga8a16da45d180833178dbd419ceb7d5d6, ga8a16da45d180833178dbd419ceb7d5d6, r_ga4a07f82b33058add7f4d205986cc664a, ga4a07f82b33058add7f4d205986cc664a, r_ga3053d8dff7f8bfe6a3c30b381837d8f6, r_gaf5856cc10610cc46c37897acf6ae3798, gaf5856cc10610cc46c37897acf6ae3798, r_gae263c556998a5c354f2e4062b2398b3e, header-typedef-members, typedef-members, r_gacf3a7d0af9fce7b878a672db2432945f, gacf3a7d0af9fce7b878a672db2432945f, r_ga2730e2e145b26fbc7c453a2bd33bd1e8, ga2730e2e145b26fbc7c453a2bd33bd1e8, r_gac617ca34d4f470f34371b5ecea5955be, gac617ca34d4f470f34371b5ecea5955be, r_gaf220d67507390631d3d508ecdc3e69b6, gaf220d67507390631d3d508ecdc3e69b6, r_ga48cfd1d2f7681d8a524dbe0a4f27678f, ga48cfd1d2f7681d8a524dbe0a4f27678f, r_gae2deb7b193972bd43d7e4687cd008f55, gae2deb7b193972bd43d7e4687cd008f55, r_ga6dbf2e154dc12f4b4de871930e5ffbc0, ga6dbf2e154dc12f4b4de871930e5ffbc0, r_gafd287447e14c3190a5458fbad8cd854a, gafd287447e14c3190a5458fbad8cd854a, r_gaa543cb7ebd528e57556f773dc4ccad4e, gaa543cb7ebd528e57556f773dc4ccad4e, r_ga009f500435be313fd7dd0c60a22d6ee7, ga009f500435be313fd7dd0c60a22d6ee7, header-func-members, func-members, r_ga2a12dda0cf5b2a95a24a2b542ccbe714, ga2a12dda0cf5b2a95a24a2b542ccbe714, r_ga0ae701927101f996cc8e228800c96c3c, ga0ae701927101f996cc8e228800c96c3c, r_ga9b0c27f43c07a962617f72220c18f6a6, ga9b0c27f43c07a962617f72220c18f6a6, r_ga6e2ac97aaa9455dc07cb44c3c5cd3b8a, ga6e2ac97aaa9455dc07cb44c3c5cd3b8a, r_gafdd3f9b83c507808a4d717e5997422b4, gafdd3f9b83c507808a4d717e5997422b4, r_gadd00bfabaa12089794e4756c1b15d5aa, gadd00bfabaa12089794e4756c1b15d5aa, r_ga7c61723080fb6c64f186c419832d5521, r_gae6dcee81ab05c6d76db620368c02dbd9, gae6dcee81ab05c6d76db620368c02dbd9, header-var-members, var-members, r_gaf67c1383f63f5a0308ea7d4dee38d386, r_gaf5a075e5f0a32a6e7786126b3636d2f6, gaf5a075e5f0a32a6e7786126b3636d2f6, r_ga860d92b40c36558022c9ddb067000b6d, ga860d92b40c36558022c9ddb067000b6d, r_gaccf034da24481c335585cd2484cb9f81, gaccf034da24481c335585cd2484cb9f81, r_ga0a8f55752242fcf42cefdb96983ce607, ga0a8f55752242fcf42cefdb96983ce607, r_gab14eebbaf1d57aa8b1a66407a1695ce6, gab14eebbaf1d57aa8b1a66407a1695ce6, r_ga8b56ba523112fe44d03531155f10c85c, ga8b56ba523112fe44d03531155f10c85c, r_gafca5acda643220f55752a4ca2d3241cc, gafca5acda643220f55752a4ca2d3241cc, r_ga30ec8d8fd58783b3b667b34d93be98b0, ga30ec8d8fd58783b3b667b34d93be98b0, r_ga37b12b1a3f909dea84323b321334a589, ga37b12b1a3f909dea84323b321334a589, r_ga28a00e68aa5ac89dc350db4aba54dc2b, ga28a00e68aa5ac89dc350db4aba54dc2b, r_gae46bd26d7133dfe98f8cec7c5ac5c7a1, gae46bd26d7133dfe98f8cec7c5ac5c7a1, r_ga0333044b82d05fe92efc82e047246b4e, ga0333044b82d05fe92efc82e047246b4e, r_ga2edb128b1473fdaf05ad5f4d2c423cfa, ga2edb128b1473fdaf05ad5f4d2c423cfa, r_gaf2b577afec8ccbb5edb236fb0383de2f, gaf2b577afec8ccbb5edb236fb0383de2f, r_ga6dc0f05689660515d73592cd04414e91, ga6dc0f05689660515d73592cd04414e91, r_ga69fdea12d63ce080b707c3a951e811b1, ga69fdea12d63ce080b707c3a951e811b1, r_gad9246eaf17955d86b5e5c1eab2a6dc8d, gad9246eaf17955d86b5e5c1eab2a6dc8d, r_ga1ba93bce4ce017d8c933bd0e6c349ac7, r_ga34a432f1f2a4b5b94b907059c7e0dc92, ga34a432f1f2a4b5b94b907059c7e0dc92, details, header-details, doc-define-members, header-doc-define-members, gae58aed4a1b2358a085da6cdfb796c9b5, ga9692175c758324823b99cf3c44fd34e4, ga2a1eaa224ecac307fa52bc0dc3f8aafd, gab28d99014a5b1d2f3d669b6a85d44bad, ga31cc0a4198f6d7ac73d2c4a7d44fc864, gad6fe18b05630922bddf3be9b231dbd47, ga0222034bed3f2da391877f48183961cd, ga04fca6b9a6b6224cc1d313b697aa39a2, ga41066d2dfab74d8a9f8b5af308f69b81, ga10a70f15a5dddf7c805244b0e022ecdc, gabb7685ae744f8569c57c9083f2ba14a6, gaee5574109eba683c4320e2e93fb162f6, ga3053d8dff7f8bfe6a3c30b381837d8f6, agroup___x_x_h32__impl_html_ga23d49e684c0551afaed8e4ff40940c79, agroup___x_x_h32__impl_html_ga29fede2b86ee758448c55edf6171e11f, agroup___x_x_h32__impl_html_gacdda6ef95561d39cf2f9b7f2cd5c6693, agroup___x_x_h64__impl_html_ga20651a9ad53cae6f0a4feb1393d5a716, agroup___x_x_h64__impl_html_ga33a01ca165b68cef76da009a54e3ba54, agroup___x_x_h64__impl_html_ga6326d9c3883242a3b5602fae1507afc5, agroup___x_x_h64__impl_html_gad18b925ab3b4ad25ae26eb4fb00ebcb8, agroup___x_x_h64__impl_html_gae44b2a496b0a4184699e7d11ec2d70c6, gae263c556998a5c354f2e4062b2398b3e, doc-func-members, header-doc-func-members, ga7c61723080fb6c64f186c419832d5521, doc-var-members, header-doc-var-members, gaf67c1383f63f5a0308ea7d4dee38d386, ga1ba93bce4ce017d8c933bd0e6c349ac7
+All element types: div, table, tbody, tr, td, h2, a, b, code, br, span, em, p, dl, dt, dd, ul, li
+CANONICAL full .contents text with every link:
+
+|
+[](undefined)
+Macros
+| #define  | [XXH_likely](#gae58aed4a1b2358a085da6cdfb796c9b5)(x)
+| #define  | [XXH_unlikely](#ga9692175c758324823b99cf3c44fd34e4)(x)
+| #define  | [XXH_HAS_INCLUDE](#ga2a1eaa224ecac307fa52bc0dc3f8aafd)(x)
+| [](undefined)
+#define  | XXH_SEC_ALIGN   [XXH_ACC_ALIGN](/docs/xxhash/v0-8-4/en/02-api/21-group__tuning/#ga15f2f40c9206c691f66cf260841f8ad1)
+| [](undefined)
+#define  | XXH_ALIASING   /* nothing */
+| [](undefined)
+#define  | XXH_VSX_BE   0
+| #define  | [ACCRND](#gab28d99014a5b1d2f3d669b6a85d44bad)(acc,  offset)
+| #define  | [XXH_PREFETCH](#ga31cc0a4198f6d7ac73d2c4a7d44fc864)(ptr)
+| [](undefined)
+#define  | XXH_SECRET_DEFAULT_SIZE   192   /* minimum [XXH3_SECRET_SIZE_MIN](/docs/xxhash/v0-8-4/en/02-api/14-group___x_x_h3__family/#gaeb79a9111c58af32599f8e5cd71d67d2) */
+| [](undefined)
+#define  | XXH_STRIPE_LEN   64
+| [](undefined)
+#define  | XXH_SECRET_CONSUME_RATE   8   /* nb of secret bytes consumed at each accumulation */
+| [](undefined)
+#define  | XXH_ACC_NB   (XXH_STRIPE_LEN / sizeof(xxh_u64))
+| [](undefined)
+#define  | XXH_PREFETCH_DIST   512
+| #define  | [XXH3_ACCUMULATE_TEMPLATE](#gad6fe18b05630922bddf3be9b231dbd47)(name)
+| #define  | [_LSX_SHUFFLE](#ga0222034bed3f2da391877f48183961cd)(z,  y,  x,  w)
+| #define  | [_LASX_SHUFFLE](#ga04fca6b9a6b6224cc1d313b697aa39a2)(z,  y,  x,  w)
+| #define  | [XXH_CONCAT2](#ga41066d2dfab74d8a9f8b5af308f69b81)(X,  Y)
+| #define  | [XXH_CONCAT](#ga10a70f15a5dddf7c805244b0e022ecdc)(X,  Y)
+| #define  | [XXH_RVOP](#gabb7685ae744f8569c57c9083f2ba14a6)(op)
+| #define  | [XXH_RVCAST](#gaee5574109eba683c4320e2e93fb162f6)(op)
+| [](undefined)
+#define  | XXH3_accumulate_512   XXH3_accumulate_512_avx512
+| [](undefined)
+#define  | XXH3_accumulate   XXH3_accumulate_avx512
+| [](undefined)
+#define  | XXH3_scrambleAcc   XXH3_scrambleAcc_avx512
+| [](undefined)
+#define  | XXH3_initCustomSecret   XXH3_initCustomSecret_avx512
+| [](undefined)
+#define  | XXH_SECRET_MERGEACCS_START   11
+| #define  | [XXH3_INIT_ACC](#ga3053d8dff7f8bfe6a3c30b381837d8f6)
+| [](undefined)
+#define  | XXH3_STREAM_USE_STACK   1
+| #define  | [XXH_MIN](#gae263c556998a5c354f2e4062b2398b3e)(x,  y)
+|
+[](undefined)
+Typedefs
+| [](undefined)
+typedef uint64x2_t xxh_aliasing_uint64x2_t  | XXH_ALIASING
+| [](undefined)
+typedef __vector unsigned long long  | xxh_u64x2
+| [](undefined)
+typedef __vector unsigned char  | xxh_u8x16
+| [](undefined)
+typedef __vector unsigned  | xxh_u32x4
+| [](undefined)
+typedef long long  | xxh_i64
+| [](undefined)
+typedef void(*  | XXH3_f_accumulate) (xxh_u64 *restrict, const xxh_u8 *restrict, const xxh_u8 *restrict, size_t)
+| [](undefined)
+typedef void(*  | XXH3_f_scrambleAcc) (void *restrict, const void *)
+| [](undefined)
+typedef void(*  | XXH3_f_initCustomSecret) (void *restrict, xxh_u64)
+| [](undefined)
+typedef [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)(*  | XXH3_hashLong64_f) (const void *restrict, size_t, [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603), const xxh_u8 *restrict, size_t)
+| [](undefined)
+typedef [XXH128_hash_t](/docs/xxhash/v0-8-4/en/02-api/24-struct_x_x_h128__hash__t/)(*  | XXH3_hashLong128_f) (const void *restrict, size_t, [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603), const void *restrict, size_t)
+|
+[](undefined)
+Functions
+| [](undefined)
+| XXH_STATIC_ASSERT (XXH_STRIPE_LEN==sizeof(__m512i))
+| [](undefined)
+| for (i=0;i< XXH_STRIPE_LEN/sizeof(__m256i);i++)
+| [](undefined)
+| for (;count > 0;count -=vl, xacc+=vl, xsecret+=vl *8)
+| [](undefined)
+| XXH_ASSERT ((((size_t) acc) &([XXH_ACC_ALIGN](/docs/xxhash/v0-8-4/en/02-api/21-group__tuning/#ga15f2f40c9206c691f66cf260841f8ad1)-1))==0)
+| [](undefined)
+| XXH_ASSERT (lane< XXH_ACC_NB)
+| [](undefined)
+XXH3_WITH_SECRET_INLINE [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)  | XXH3_hashLong_64b_withSecret (const void *restrict input, size_t len, [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) seed64, const xxh_u8 *restrict secret, size_t secretLen)
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)  | [XXH3_64bits_withSecretandSeed](#ga7c61723080fb6c64f186c419832d5521) (const void *data, size_t len, const void *secret, size_t secretSize, [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) seed)
+|   | Calculates 64/128-bit seeded variant of XXH3 hash of data.
+| [](undefined)
+XXH3_WITH_SECRET_INLINE [XXH128_hash_t](/docs/xxhash/v0-8-4/en/02-api/24-struct_x_x_h128__hash__t/)  | XXH3_hashLong_128b_withSecret (const void *restrict input, size_t len, [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) seed64, const void *restrict secret, size_t secretLen)
+|
+[](undefined)
+Variables
+| static [XXH_TARGET_AVX512](/docs/xxhash/v0-8-4/en/02-api/18-group__dispatch/#ga94d06a353acaa62bbd9fbf65e865a282) const void *restrict  | [secret](#gaf67c1383f63f5a0308ea7d4dee38d386)
+| [](undefined)
+const __m512i  | prime32 = _mm512_set1_epi32((int)[XXH_PRIME32_1](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga29fede2b86ee758448c55edf6171e11f))
+| [](undefined)
+__m512i const  | acc_vec = *xacc
+| [](undefined)
+__m512i const  | shifted = _mm512_srli_epi64 (acc_vec, 47)
+| [](undefined)
+__m512i const  | key_vec = _mm512_loadu_si512 (secret)
+| [](undefined)
+__m512i const  | data_key = _mm512_ternarylogic_epi32(key_vec, acc_vec, shifted, 0x96 )
+| [](undefined)
+__m512i const  | data_key_hi = _mm512_srli_epi64 (data_key, 32)
+| [](undefined)
+__m512i const  | prod_lo = _mm512_mul_epu32 (data_key, prime32)
+| [](undefined)
+__m512i const  | prod_hi = _mm512_mul_epu32 (data_key_hi, prime32)
+| [](undefined)
+*  | xacc = _mm512_add_epi64(prod_lo, _mm512_slli_epi64(prod_hi, 32))
+| [](undefined)
+const __m256i *const  | xsecret = (const __m256i *) secret
+| [](undefined)
+size_t  | i
+| [](undefined)
+uint32x2_t const  | kPrimeLo = vdup_n_u32([XXH_PRIME32_1](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga29fede2b86ee758448c55edf6171e11f))
+| [](undefined)
+uint32x4_t const  | kPrimeHi = vreinterpretq_u32_u64(vdupq_n_u64((xxh_u64)[XXH_PRIME32_1](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga29fede2b86ee758448c55edf6171e11f) << 32))
+| [](undefined)
+xxh_u64x2 const  | v32 = { 32, 32 }
+| [](undefined)
+xxh_u64x2 const  | v47 = { 47, 47 }
+| [](undefined)
+xxh_u32x4 const  | prime = { [XXH_PRIME32_1](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga29fede2b86ee758448c55edf6171e11f), [XXH_PRIME32_1](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga29fede2b86ee758448c55edf6171e11f), [XXH_PRIME32_1](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga29fede2b86ee758448c55edf6171e11f), [XXH_PRIME32_1](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga29fede2b86ee758448c55edf6171e11f) }
+| [](undefined)
+size_t  | vl
+| static void const  *restrict size_t  | [lane](#ga1ba93bce4ce017d8c933bd0e6c349ac7)
+| [](undefined)
+xxh_u64  | acc64 = xacc[lane]
+[](undefined)
+Detailed Description
+[](undefined)
+Macro Definition Documentation
+[](undefined)
+[◆ ](#gae58aed4a1b2358a085da6cdfb796c9b5)XXH_likely
+| #define XXH_likely
+| (
+|            | x | )
+|
+Value:
+(x)
+[](undefined)
+[◆ ](#ga9692175c758324823b99cf3c44fd34e4)XXH_unlikely
+| #define XXH_unlikely
+| (
+|            | x | )
+|
+Value:
+(x)
+[](undefined)
+[◆ ](#ga2a1eaa224ecac307fa52bc0dc3f8aafd)XXH_HAS_INCLUDE
+| #define XXH_HAS_INCLUDE
+| (
+|            | x | )
+|
+Value:
+0
+[](undefined)
+[◆ ](#gab28d99014a5b1d2f3d669b6a85d44bad)ACCRND
+| #define ACCRND
+| (
+|            | acc,
+|
+|
+|            | offset )
+Value:
+do { \
+svuint64_t input_vec = svld1_u64(mask, xinput + offset);         \
+svuint64_t secret_vec = svld1_u64(mask, xsecret + offset);       \
+svuint64_t mixed = sveor_u64_x(mask, secret_vec, input_vec);     \
+svuint64_t swapped = svtbl_u64(input_vec, kSwap);                \
+svuint64_t mixed_lo = svextw_u64_x(mask, mixed);                 \
+svuint64_t mixed_hi = svlsr_n_u64_x(mask, mixed, 32);            \
+svuint64_t mul = svmad_u64_x(mask, mixed_lo, mixed_hi, swapped); \
+acc = svadd_u64_x(mask, acc, mul);                               \
+} while (0)
+[](undefined)
+[◆ ](#ga31cc0a4198f6d7ac73d2c4a7d44fc864)XXH_PREFETCH
+| #define XXH_PREFETCH
+| (
+|            | ptr | )
+|
+Value:
+(void)(ptr)  /* disabled */
+[](undefined)
+[◆ ](#gad6fe18b05630922bddf3be9b231dbd47)XXH3_ACCUMULATE_TEMPLATE
+| #define XXH3_ACCUMULATE_TEMPLATE
+| (
+|            | name | )
+|
+Value:
+void                                                        \
+XXH3_accumulate_##name(xxh_u64* XXH_RESTRICT acc,           \
+const xxh_u8* XXH_RESTRICT input,    \
+const xxh_u8* XXH_RESTRICT secret,   \
+size_t nbStripes)                    \
+{                                                           \
+size_t n;                                               \
+for (n = 0; n < nbStripes; n++ ) {                      \
+const xxh_u8* const in = input + n*XXH_STRIPE_LEN;  \
+XXH_PREFETCH(in + XXH_PREFETCH_DIST);               \
+XXH3_accumulate_512_##name(                         \
+acc,                                       \
+in,                                        \
+secret + n*XXH_SECRET_CONSUME_RATE);       \
+}                                                       \
+}
+[](undefined)
+[◆ ](#ga0222034bed3f2da391877f48183961cd)_LSX_SHUFFLE
+| #define _LSX_SHUFFLE
+| (
+|            | z,
+|
+|
+|            | y,
+|
+|
+|            | x,
+|
+|
+|            | w )
+Value:
+(((z) << 6) | ((y) << 4) | ((x) << 2) | (w))
+[](undefined)
+[◆ ](#ga04fca6b9a6b6224cc1d313b697aa39a2)_LASX_SHUFFLE
+| #define _LASX_SHUFFLE
+| (
+|            | z,
+|
+|
+|            | y,
+|
+|
+|            | x,
+|
+|
+|            | w )
+Value:
+(((z) << 6) | ((y) << 4) | ((x) << 2) | (w))
+[](undefined)
+[◆ ](#ga41066d2dfab74d8a9f8b5af308f69b81)XXH_CONCAT2
+| #define XXH_CONCAT2
+| (
+|            | X,
+|
+|
+|            | Y )
+Value:
+X ## Y
+[](undefined)
+[◆ ](#ga10a70f15a5dddf7c805244b0e022ecdc)XXH_CONCAT
+| #define XXH_CONCAT
+| (
+|            | X,
+|
+|
+|            | Y )
+Value:
+XXH_CONCAT2(X, Y)
+[](undefined)
+[◆ ](#gabb7685ae744f8569c57c9083f2ba14a6)XXH_RVOP
+| #define XXH_RVOP
+| (
+|            | op | )
+|
+Value:
+XXH_CONCAT(__riscv_, op)
+[](undefined)
+[◆ ](#gaee5574109eba683c4320e2e93fb162f6)XXH_RVCAST
+| #define XXH_RVCAST
+| (
+|            | op | )
+|
+Value:
+XXH_CONCAT(__riscv_vreinterpret_v_, op)
+[](undefined)
+[◆ ](#ga3053d8dff7f8bfe6a3c30b381837d8f6)XXH3_INIT_ACC
+| #define XXH3_INIT_ACC
+Value:
+{ [XXH_PRIME32_3](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#gacdda6ef95561d39cf2f9b7f2cd5c6693), [XXH_PRIME64_1](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#ga20651a9ad53cae6f0a4feb1393d5a716), [XXH_PRIME64_2](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#ga33a01ca165b68cef76da009a54e3ba54), [XXH_PRIME64_3](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#gad18b925ab3b4ad25ae26eb4fb00ebcb8), \
+[XXH_PRIME64_4](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#ga6326d9c3883242a3b5602fae1507afc5), [XXH_PRIME32_2](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga23d49e684c0551afaed8e4ff40940c79), [XXH_PRIME64_5](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#gae44b2a496b0a4184699e7d11ec2d70c6), [XXH_PRIME32_1](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga29fede2b86ee758448c55edf6171e11f) }
+[XXH_PRIME32_2](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga23d49e684c0551afaed8e4ff40940c79)
+#define XXH_PRIME32_2
+Definition xxhash.h:2923
+[XXH_PRIME32_1](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#ga29fede2b86ee758448c55edf6171e11f)
+#define XXH_PRIME32_1
+Definition xxhash.h:2922
+[XXH_PRIME32_3](/docs/xxhash/v0-8-4/en/02-api/13-group___x_x_h32__impl/#gacdda6ef95561d39cf2f9b7f2cd5c6693)
+#define XXH_PRIME32_3
+Definition xxhash.h:2924
+[XXH_PRIME64_1](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#ga20651a9ad53cae6f0a4feb1393d5a716)
+#define XXH_PRIME64_1
+Definition xxhash.h:3481
+[XXH_PRIME64_2](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#ga33a01ca165b68cef76da009a54e3ba54)
+#define XXH_PRIME64_2
+Definition xxhash.h:3482
+[XXH_PRIME64_4](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#ga6326d9c3883242a3b5602fae1507afc5)
+#define XXH_PRIME64_4
+Definition xxhash.h:3484
+[XXH_PRIME64_3](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#gad18b925ab3b4ad25ae26eb4fb00ebcb8)
+#define XXH_PRIME64_3
+Definition xxhash.h:3483
+[XXH_PRIME64_5](/docs/xxhash/v0-8-4/en/02-api/17-group___x_x_h64__impl/#gae44b2a496b0a4184699e7d11ec2d70c6)
+#define XXH_PRIME64_5
+Definition xxhash.h:3485
+[](undefined)
+[◆ ](#gae263c556998a5c354f2e4062b2398b3e)XXH_MIN
+| #define XXH_MIN
+| (
+|            | x,
+|
+|
+|            | y )
+Value:
+(((x) > (y)) ? (y) : (x))
+[](undefined)
+Function Documentation
+[](undefined)
+[◆ ](#ga7c61723080fb6c64f186c419832d5521)XXH3_64bits_withSecretandSeed()
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) XXH3_64bits_withSecretandSeed
+| (
+| const void *           | data,
+|
+|
+| size_t           | len,
+|
+|
+| const void *           | secret,
+|
+|
+| size_t           | secretSize,
+|
+|
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)           | seed )
+Calculates 64/128-bit seeded variant of XXH3 hash of data.
+Parameters
+| data | The block of data to be hashed, at least len bytes in size.
+| len | The length of data, in bytes.
+| secret | The secret data.
+| secretSize | The length of secret, in bytes.
+| seed | The 64-bit seed to alter the hash result predictably.
+These variants generate hash values using either:
+seed for "short" keys (< [XXH3_MIDSIZE_MAX](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/#add6603b0469aa41bf291ae15a8f65fc6) = 240 bytes)
+secret for "large" keys (>= [XXH3_MIDSIZE_MAX](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/#add6603b0469aa41bf291ae15a8f65fc6)).
+This generally benefits speed, compared to _withSeed() or _withSecret(). _withSeed() has to generate the secret on the fly for "large" keys. It's fast, but can be perceptible for "not so large" keys (< 1 KB). _withSecret() has to generate the masks on the fly for "small" keys, which requires more instructions than _withSeed() variants. Therefore, _withSecretandSeed variant combines the best of both worlds.
+When secret has been generated by [XXH3_generateSecret_fromSeed()](/docs/xxhash/v0-8-4/en/02-api/14-group___x_x_h3__family/#ga0888d6959efe3982fcafe516c22ef5a8), this variant produces exactly the same results as _withSeed() variant, hence offering only a pure speed benefit on "large" input, by skipping the need to regenerate the secret for every large input.
+Another usage scenario is to hash the secret to a 64-bit hash value, for example with [XXH3_64bits()](/docs/xxhash/v0-8-4/en/02-api/14-group___x_x_h3__family/#gacc4473b9d9953adcbfcc51b32cb887ef), which then becomes the seed, and then employ both the seed and the secret in _withSecretandSeed(). On top of speed, an added benefit is that each bit in the secret has a 50% chance to swap each bit in the output, via its impact to the seed.
+This is not guaranteed when using the secret directly in "small data" scenarios, because only portions of the secret are employed for small data.
+[](undefined)
+Variable Documentation
+[](undefined)
+[◆ ](#gaf67c1383f63f5a0308ea7d4dee38d386)secret
+| void const  *restrict secret
+Initial value:
+{
+XXH_ASSERT((((size_t)acc) & 63) == 0)
+[](undefined)
+[◆ ](#ga1ba93bce4ce017d8c933bd0e6c349ac7)lane
+| void const* restrict size_t lane
+Initial value:
+{
+xxh_u64* const xacc = (xxh_u64*) acc
+
+All IDs: header-define-members, define-members, r_gae58aed4a1b2358a085da6cdfb796c9b5, r_ga9692175c758324823b99cf3c44fd34e4, r_ga2a1eaa224ecac307fa52bc0dc3f8aafd, r_ga3043b203ed1c7d1879894a905b274ea5, ga3043b203ed1c7d1879894a905b274ea5, r_gacf3a7d0af9fce7b878a672db2432945f, gacf3a7d0af9fce7b878a672db2432945f, r_gadf7b05430f2e68bd204ea8bf4c99ffbc, gadf7b05430f2e68bd204ea8bf4c99ffbc, r_gab28d99014a5b1d2f3d669b6a85d44bad, r_ga31cc0a4198f6d7ac73d2c4a7d44fc864, r_gaba305af89b970fb6f4fda315f50eb77a, gaba305af89b970fb6f4fda315f50eb77a, r_ga83492458a52c0fd40d7044a3a8055696, ga83492458a52c0fd40d7044a3a8055696, r_ga35d1f625f5673535b05a5078d17ffa59, ga35d1f625f5673535b05a5078d17ffa59, r_ga03aeb7fed50cb7a5a321ba6cc60553fb, ga03aeb7fed50cb7a5a321ba6cc60553fb, r_gaa26a7f3673266f5b6350d84f2e51c658, gaa26a7f3673266f5b6350d84f2e51c658, r_gad6fe18b05630922bddf3be9b231dbd47, r_ga0222034bed3f2da391877f48183961cd, r_ga04fca6b9a6b6224cc1d313b697aa39a2, r_ga41066d2dfab74d8a9f8b5af308f69b81, r_ga10a70f15a5dddf7c805244b0e022ecdc, r_gabb7685ae744f8569c57c9083f2ba14a6, r_gaee5574109eba683c4320e2e93fb162f6, r_ga5ffe3391e408f75f726da56c67701f8f, ga5ffe3391e408f75f726da56c67701f8f, r_ga5653b466f50212fb61f9e78ea452935c, ga5653b466f50212fb61f9e78ea452935c, r_ga90fcb30d61f3d5fc00e56081205f4a30, ga90fcb30d61f3d5fc00e56081205f4a30, r_ga8a16da45d180833178dbd419ceb7d5d6, ga8a16da45d180833178dbd419ceb7d5d6, r_ga4a07f82b33058add7f4d205986cc664a, ga4a07f82b33058add7f4d205986cc664a, r_ga3053d8dff7f8bfe6a3c30b381837d8f6, r_gaf5856cc10610cc46c37897acf6ae3798, gaf5856cc10610cc46c37897acf6ae3798, r_gae263c556998a5c354f2e4062b2398b3e, header-typedef-members, typedef-members, r_gacf3a7d0af9fce7b878a672db2432945f, gacf3a7d0af9fce7b878a672db2432945f, r_ga2730e2e145b26fbc7c453a2bd33bd1e8, ga2730e2e145b26fbc7c453a2bd33bd1e8, r_gac617ca34d4f470f34371b5ecea5955be, gac617ca34d4f470f34371b5ecea5955be, r_gaf220d67507390631d3d508ecdc3e69b6, gaf220d67507390631d3d508ecdc3e69b6, r_ga48cfd1d2f7681d8a524dbe0a4f27678f, ga48cfd1d2f7681d8a524dbe0a4f27678f, r_gae2deb7b193972bd43d7e4687cd008f55, gae2deb7b193972bd43d7e4687cd008f55, r_ga6dbf2e154dc12f4b4de871930e5ffbc0, ga6dbf2e154dc12f4b4de871930e5ffbc0, r_gafd287447e14c3190a5458fbad8cd854a, gafd287447e14c3190a5458fbad8cd854a, r_gaa543cb7ebd528e57556f773dc4ccad4e, gaa543cb7ebd528e57556f773dc4ccad4e, r_ga009f500435be313fd7dd0c60a22d6ee7, ga009f500435be313fd7dd0c60a22d6ee7, header-func-members, func-members, r_ga2a12dda0cf5b2a95a24a2b542ccbe714, ga2a12dda0cf5b2a95a24a2b542ccbe714, r_ga0ae701927101f996cc8e228800c96c3c, ga0ae701927101f996cc8e228800c96c3c, r_ga9b0c27f43c07a962617f72220c18f6a6, ga9b0c27f43c07a962617f72220c18f6a6, r_ga6e2ac97aaa9455dc07cb44c3c5cd3b8a, ga6e2ac97aaa9455dc07cb44c3c5cd3b8a, r_gafdd3f9b83c507808a4d717e5997422b4, gafdd3f9b83c507808a4d717e5997422b4, r_gadd00bfabaa12089794e4756c1b15d5aa, gadd00bfabaa12089794e4756c1b15d5aa, r_ga7c61723080fb6c64f186c419832d5521, r_gae6dcee81ab05c6d76db620368c02dbd9, gae6dcee81ab05c6d76db620368c02dbd9, header-var-members, var-members, r_gaf67c1383f63f5a0308ea7d4dee38d386, r_gaf5a075e5f0a32a6e7786126b3636d2f6, gaf5a075e5f0a32a6e7786126b3636d2f6, r_ga860d92b40c36558022c9ddb067000b6d, ga860d92b40c36558022c9ddb067000b6d, r_gaccf034da24481c335585cd2484cb9f81, gaccf034da24481c335585cd2484cb9f81, r_ga0a8f55752242fcf42cefdb96983ce607, ga0a8f55752242fcf42cefdb96983ce607, r_gab14eebbaf1d57aa8b1a66407a1695ce6, gab14eebbaf1d57aa8b1a66407a1695ce6, r_ga8b56ba523112fe44d03531155f10c85c, ga8b56ba523112fe44d03531155f10c85c, r_gafca5acda643220f55752a4ca2d3241cc, gafca5acda643220f55752a4ca2d3241cc, r_ga30ec8d8fd58783b3b667b34d93be98b0, ga30ec8d8fd58783b3b667b34d93be98b0, r_ga37b12b1a3f909dea84323b321334a589, ga37b12b1a3f909dea84323b321334a589, r_ga28a00e68aa5ac89dc350db4aba54dc2b, ga28a00e68aa5ac89dc350db4aba54dc2b, r_gae46bd26d7133dfe98f8cec7c5ac5c7a1, gae46bd26d7133dfe98f8cec7c5ac5c7a1, r_ga0333044b82d05fe92efc82e047246b4e, ga0333044b82d05fe92efc82e047246b4e, r_ga2edb128b1473fdaf05ad5f4d2c423cfa, ga2edb128b1473fdaf05ad5f4d2c423cfa, r_gaf2b577afec8ccbb5edb236fb0383de2f, gaf2b577afec8ccbb5edb236fb0383de2f, r_ga6dc0f05689660515d73592cd04414e91, ga6dc0f05689660515d73592cd04414e91, r_ga69fdea12d63ce080b707c3a951e811b1, ga69fdea12d63ce080b707c3a951e811b1, r_gad9246eaf17955d86b5e5c1eab2a6dc8d, gad9246eaf17955d86b5e5c1eab2a6dc8d, r_ga1ba93bce4ce017d8c933bd0e6c349ac7, r_ga34a432f1f2a4b5b94b907059c7e0dc92, ga34a432f1f2a4b5b94b907059c7e0dc92, details, header-details, doc-define-members, header-doc-define-members, gae58aed4a1b2358a085da6cdfb796c9b5, ga9692175c758324823b99cf3c44fd34e4, ga2a1eaa224ecac307fa52bc0dc3f8aafd, gab28d99014a5b1d2f3d669b6a85d44bad, ga31cc0a4198f6d7ac73d2c4a7d44fc864, gad6fe18b05630922bddf3be9b231dbd47, ga0222034bed3f2da391877f48183961cd, ga04fca6b9a6b6224cc1d313b697aa39a2, ga41066d2dfab74d8a9f8b5af308f69b81, ga10a70f15a5dddf7c805244b0e022ecdc, gabb7685ae744f8569c57c9083f2ba14a6, gaee5574109eba683c4320e2e93fb162f6, ga3053d8dff7f8bfe6a3c30b381837d8f6, agroup___x_x_h32__impl_html_ga23d49e684c0551afaed8e4ff40940c79, agroup___x_x_h32__impl_html_ga29fede2b86ee758448c55edf6171e11f, agroup___x_x_h32__impl_html_gacdda6ef95561d39cf2f9b7f2cd5c6693, agroup___x_x_h64__impl_html_ga20651a9ad53cae6f0a4feb1393d5a716, agroup___x_x_h64__impl_html_ga33a01ca165b68cef76da009a54e3ba54, agroup___x_x_h64__impl_html_ga6326d9c3883242a3b5602fae1507afc5, agroup___x_x_h64__impl_html_gad18b925ab3b4ad25ae26eb4fb00ebcb8, agroup___x_x_h64__impl_html_gae44b2a496b0a4184699e7d11ec2d70c6, gae263c556998a5c354f2e4062b2398b3e, doc-func-members, header-doc-func-members, ga7c61723080fb6c64f186c419832d5521, doc-var-members, header-doc-var-members, gaf67c1383f63f5a0308ea7d4dee38d386, ga1ba93bce4ce017d8c933bd0e6c349ac7
+All element types: div, table, tbody, tr, td, h2, a, b, code, br, span, em, p, dl, dt, dd, ul, li
+FRONTMATTER: ---
+title: "XXH3 implementation Implementation"
+licenseSource: "xxhash-api"
+---
+
+## Editorial notes on fixed upstream text
+
+The original generated body below is retained. This note is an editorial addition based on static comparison with the fixed 0.8.4 header implementation, not an upstream correction.
+
+- **secret-seed-240-boundary**: For XXH3_64bits_withSecretandSeed and XXH3_128bits_withSecretandSeed, the fixed implementation uses the seed and default secret for lengths up to and including 240 bytes, and the supplied secret above 240 bytes. The original prose uses a different boundary. This observation comes from static implementation and specification comparison; numerical hash tests have not been run.
+
+[Fixed upstream header](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h)
+
+
+APPENDED: ## Source and notices
+
+No documentation-specific license statement was found in the recorded checks. Under the user-approved operating policy, the software component’s BSD-2-Clause license is applied to this documentation with this annotation. This is an operational decision, not a newly obtained permission.
+
+Fixed software version: **0.8.4**. Source commit: `c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`. This is an unofficial presentation; formatting, internal links and clearly marked editorial notes are Libx changes. The Japanese translation is provided separately when completed.
+
+[api-header](/docs/xxhash/v0-8-4/en/03-notices/api-header/) · [dispatch-c](/docs/xxhash/v0-8-4/en/03-notices/dispatch-c/) · [dispatch-h](/docs/xxhash/v0-8-4/en/03-notices/dispatch-h/)
+
+Generated from the fixed public [Doxyfile](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/Doxyfile) using its `xxhash.h` and `xxh_x86dispatch.c` file patterns.
+
+[xxhash.h — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h) · [xxhash.h — original text download](/docs/xxhash/source/v0-8-4/xxhash.h.txt)
+
+[xxh_x86dispatch.c — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxh_x86dispatch.c) · [xxh_x86dispatch.c — original text download](/docs/xxhash/source/v0-8-4/xxh_x86dispatch.c.txt)
+
+

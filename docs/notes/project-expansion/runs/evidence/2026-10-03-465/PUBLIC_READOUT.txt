@@ -1,0 +1,375 @@
+
+### doxygen/html/group__public.html
+ORIGINAL full .contents text with every link:
+
+|
+[](undefined)
+Topics
+|   | [XXH32 family](group___x_x_h32__family.html)
+|   | [XXH64 family](group___x_x_h64__family.html)
+|   | [XXH3 family](group___x_x_h3__family.html)
+|
+[](undefined)
+Macros
+| #define  | [XXH_STATIC_LINKING_ONLY](#ga546f2633ae1036f49bdc5582971d7f1e)
+|   | Gives access to internal state declaration, required for static allocation.
+| #define  | [XXH_IMPLEMENTATION](#gaa40be3a031b9a5bd9afc800b0959a0c9)
+|   | Gives access to internal definitions.
+| #define  | [XXH_INLINE_ALL](#ga5a61b869708b770ad75e3e063a2f9273)
+|   | Exposes the implementation and marks all functions as inline.
+| [](undefined)
+#define  | XXH_PRIVATE_API
+|   | Exposes the implementation without marking functions as inline.
+| #define  | [XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7)   /* YOUR NAME HERE */
+|   | Emulate a namespace by transparently prefixing all symbols.
+| #define  | [XXH_CAT](#ga0349c2d8893878f5ff327129e9612d3b)(A,  B)
+| #define  | [XXH_NAME2](#ga9f162d60f438196576459af6135a3c1e)(A,  B)
+| #define  | [XXH_IPREF](#ga38abe71b45636f49518f8765ce4d984d)(Id)
+| [](undefined)
+#define  | XXHASH_H_5627135585666179   1
+| [](undefined)
+#define  | XXH_PUBLIC_API   /* do nothing */
+|   | Marks a global symbol.
+| [](undefined)
+#define  | XXH_PUBLIC_API   /* do nothing */
+|   | Marks a global symbol.
+| [](undefined)
+#define  | XXH_CONSTF   /* disable */
+| [](undefined)
+#define  | XXH_PUREF
+| [](undefined)
+#define  | XXH_MALLOCF
+| [](undefined)
+#define  | XXH_VERSION_MAJOR   0
+| [](undefined)
+#define  | XXH_VERSION_MINOR   8
+| [](undefined)
+#define  | XXH_VERSION_RELEASE   4
+| [](undefined)
+#define  | XXH_VERSION_NUMBER   (XXH_VERSION_MAJOR *100*100 + XXH_VERSION_MINOR *100 + XXH_VERSION_RELEASE)
+|   | Version number, encoded as two digits each.
+|
+[](undefined)
+Typedefs
+| typedef uint32_t  | [XXH32_hash_t](#ga469df6c7273f15924de58143ef1afe14)
+|   | An unsigned 32-bit integer.
+|
+[](undefined)
+Enumerations
+| enum   | [XXH_errorcode](#ga5020905455674b8c83c1dbc73f0d3534) { [XXH_OK](#gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6) = 0
+, [XXH_ERROR](#gga5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f)
+}
+|   | Exit code for the streaming API.  [More...](#ga5020905455674b8c83c1dbc73f0d3534)
+|
+[](undefined)
+Functions
+| unsigned  | [XXH_versionNumber](#gabc57fd428d4d33906b3830c746bc4ac9) (void)
+|   | Obtains the xxHash version.
+| typedef uint64_t  | [XXH64_hash_t](#ga5406b285b18dfcefa93efed489e3b603)
+|   | An unsigned 64-bit integer.
+[](undefined)
+Detailed Description
+Contains details on the public xxHash functions.
+[](undefined)
+Macro Definition Documentation
+[](undefined)
+[◆ ](#ga546f2633ae1036f49bdc5582971d7f1e)XXH_STATIC_LINKING_ONLY
+| #define XXH_STATIC_LINKING_ONLY
+Gives access to internal state declaration, required for static allocation.
+Incompatible with dynamic linking, due to risks of ABI changes.
+Usage:
+#define XXH_STATIC_LINKING_ONLY
+#include "[xxhash.h](xxhash_8h.html)"
+[xxhash.h](xxhash_8h.html)
+[](undefined)
+[◆ ](#gaa40be3a031b9a5bd9afc800b0959a0c9)XXH_IMPLEMENTATION
+| #define XXH_IMPLEMENTATION
+Gives access to internal definitions.
+Usage:
+#define XXH_STATIC_LINKING_ONLY
+#define XXH_IMPLEMENTATION
+#include "[xxhash.h](xxhash_8h.html)"
+[](undefined)
+[◆ ](#ga5a61b869708b770ad75e3e063a2f9273)XXH_INLINE_ALL
+| #define XXH_INLINE_ALL
+Exposes the implementation and marks all functions as inline.
+Use these build macros to inline xxhash into the target unit. Inlining improves performance on small inputs, especially when the length is expressed as a compile-time constant:
+[https://fastcompression.blogspot.com/2018/03/xxhash-for-small-keys-impressive-power.html](https://fastcompression.blogspot.com/2018/03/xxhash-for-small-keys-impressive-power.html)
+It also keeps xxHash symbols private to the unit, so they are not exported.
+Usage:
+#define XXH_INLINE_ALL
+#include "[xxhash.h](xxhash_8h.html)"
+Do not compile and link xxhash.o as a separate object, as it is not useful.
+[](undefined)
+[◆ ](#gacde9dad44d3e0e432474bef93e12f9e7)XXH_NAMESPACE
+| #define XXH_NAMESPACE   /* YOUR NAME HERE */
+Emulate a namespace by transparently prefixing all symbols.
+If you want to include and expose xxHash functions from within your own library, but also want to avoid symbol collisions with other libraries which may also include xxHash, you can use [XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7) to automatically prefix any public symbol from xxhash library with the value of [XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7) (therefore, avoid empty or numeric values).
+Note that no change is required within the calling program as long as it includes [xxhash.h](xxhash_8h.html): Regular symbol names will be automatically translated by this header.
+[](undefined)
+[◆ ](#ga0349c2d8893878f5ff327129e9612d3b)XXH_CAT
+| #define XXH_CAT
+| (
+|            | A,
+|
+|
+|            | B )
+Value:
+A##B
+[](undefined)
+[◆ ](#ga9f162d60f438196576459af6135a3c1e)XXH_NAME2
+| #define XXH_NAME2
+| (
+|            | A,
+|
+|
+|            | B )
+Value:
+XXH_CAT(A,B)
+[](undefined)
+[◆ ](#ga38abe71b45636f49518f8765ce4d984d)XXH_IPREF
+| #define XXH_IPREF
+| (
+|            | Id | )
+|
+Value:
+XXH_NAME2([XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7), Id)
+[XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7)
+#define XXH_NAMESPACE
+Emulate a namespace by transparently prefixing all symbols.
+Definition xxhash.h:322
+[](undefined)
+Typedef Documentation
+[](undefined)
+[◆ ](#ga469df6c7273f15924de58143ef1afe14)XXH32_hash_t
+| typedef uint32_t [XXH32_hash_t](#ga469df6c7273f15924de58143ef1afe14)
+An unsigned 32-bit integer.
+Not necessarily defined to uint32_t but functionally equivalent.
+[](undefined)
+[◆ ](#ga5406b285b18dfcefa93efed489e3b603)XXH64_hash_t
+| typedef uint64_t [XXH64_hash_t](#ga5406b285b18dfcefa93efed489e3b603)
+An unsigned 64-bit integer.
+Not necessarily defined to uint64_t but functionally equivalent.
+[](undefined)
+Enumeration Type Documentation
+[](undefined)
+[◆ ](#ga5020905455674b8c83c1dbc73f0d3534)XXH_errorcode
+| enum [XXH_errorcode](#ga5020905455674b8c83c1dbc73f0d3534)
+Exit code for the streaming API.
+| Enumerator
+| [](undefined)XXH_OK  |
+OK
+| [](undefined)XXH_ERROR  |
+Error
+[](undefined)
+Function Documentation
+[](undefined)
+[◆ ](#gabc57fd428d4d33906b3830c746bc4ac9)XXH_versionNumber()
+| unsigned XXH_versionNumber
+| (
+| void           |  | )
+|
+Obtains the xxHash version.
+This is mostly useful when xxHash is compiled as a shared library, since the returned value comes from the library, as opposed to header file.
+Returns
+[XXH_VERSION_NUMBER](#gacc66393fff091acefc0e2a00ec5462c4) of the invoked library.
+
+All IDs: header-groups, groups, r_XXH32_5Ffamily, r_XXH64_5Ffamily, r_XXH3_5Ffamily, header-define-members, define-members, r_ga546f2633ae1036f49bdc5582971d7f1e, r_gaa40be3a031b9a5bd9afc800b0959a0c9, r_ga5a61b869708b770ad75e3e063a2f9273, r_ga6589b6ea961ec073de006a47282c9a41, ga6589b6ea961ec073de006a47282c9a41, r_gacde9dad44d3e0e432474bef93e12f9e7, r_ga0349c2d8893878f5ff327129e9612d3b, r_ga9f162d60f438196576459af6135a3c1e, r_ga38abe71b45636f49518f8765ce4d984d, r_ga233a9a49fa654f51214c38fb3874d35b, ga233a9a49fa654f51214c38fb3874d35b, r_ga5832897ed49938aefa629a76034b36b1, ga5832897ed49938aefa629a76034b36b1, r_ga2ce342e5f21306d9e8d86c8974753f1e, ga2ce342e5f21306d9e8d86c8974753f1e, r_gadb7e321a2d619584344314285b0789e0, gadb7e321a2d619584344314285b0789e0, r_ga42b5b015d58d9778c3e37de38f174fe2, ga42b5b015d58d9778c3e37de38f174fe2, r_gaa29ba2352de774253d35eef1cb9728ab, gaa29ba2352de774253d35eef1cb9728ab, r_ga8a2b7aee9a2ac8bfad126165c4369fab, ga8a2b7aee9a2ac8bfad126165c4369fab, r_ga0087600ba3cbfdbb78b83e13d54a1849, ga0087600ba3cbfdbb78b83e13d54a1849, r_ga67fe7f51710d15efa3aeeefbb446f434, ga67fe7f51710d15efa3aeeefbb446f434, r_gacc66393fff091acefc0e2a00ec5462c4, gacc66393fff091acefc0e2a00ec5462c4, header-typedef-members, typedef-members, r_ga469df6c7273f15924de58143ef1afe14, header-enum-members, enum-members, r_ga5020905455674b8c83c1dbc73f0d3534, header-func-members, func-members, r_gabc57fd428d4d33906b3830c746bc4ac9, r_ga5406b285b18dfcefa93efed489e3b603, details, header-details, doc-define-members, header-doc-define-members, ga546f2633ae1036f49bdc5582971d7f1e, axxhash_8h_html, gaa40be3a031b9a5bd9afc800b0959a0c9, ga5a61b869708b770ad75e3e063a2f9273, gacde9dad44d3e0e432474bef93e12f9e7, ga0349c2d8893878f5ff327129e9612d3b, ga9f162d60f438196576459af6135a3c1e, ga38abe71b45636f49518f8765ce4d984d, agroup__public_html_gacde9dad44d3e0e432474bef93e12f9e7, doc-typedef-members, header-doc-typedef-members, ga469df6c7273f15924de58143ef1afe14, ga5406b285b18dfcefa93efed489e3b603, doc-enum-members, header-doc-enum-members, ga5020905455674b8c83c1dbc73f0d3534, gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6, gga5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f, doc-func-members, header-doc-func-members, gabc57fd428d4d33906b3830c746bc4ac9
+All element types: div, table, tbody, tr, td, h2, a, br, span, b, p, em, th, dl, dt, dd
+CANONICAL full .contents text with every link:
+
+|
+[](undefined)
+Topics
+|   | [XXH32 family](/docs/xxhash/v0-8-4/en/02-api/12-group___x_x_h32__family/)
+|   | [XXH64 family](/docs/xxhash/v0-8-4/en/02-api/16-group___x_x_h64__family/)
+|   | [XXH3 family](/docs/xxhash/v0-8-4/en/02-api/14-group___x_x_h3__family/)
+|
+[](undefined)
+Macros
+| #define  | [XXH_STATIC_LINKING_ONLY](#ga546f2633ae1036f49bdc5582971d7f1e)
+|   | Gives access to internal state declaration, required for static allocation.
+| #define  | [XXH_IMPLEMENTATION](#gaa40be3a031b9a5bd9afc800b0959a0c9)
+|   | Gives access to internal definitions.
+| #define  | [XXH_INLINE_ALL](#ga5a61b869708b770ad75e3e063a2f9273)
+|   | Exposes the implementation and marks all functions as inline.
+| [](undefined)
+#define  | XXH_PRIVATE_API
+|   | Exposes the implementation without marking functions as inline.
+| #define  | [XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7)   /* YOUR NAME HERE */
+|   | Emulate a namespace by transparently prefixing all symbols.
+| #define  | [XXH_CAT](#ga0349c2d8893878f5ff327129e9612d3b)(A,  B)
+| #define  | [XXH_NAME2](#ga9f162d60f438196576459af6135a3c1e)(A,  B)
+| #define  | [XXH_IPREF](#ga38abe71b45636f49518f8765ce4d984d)(Id)
+| [](undefined)
+#define  | XXHASH_H_5627135585666179   1
+| [](undefined)
+#define  | XXH_PUBLIC_API   /* do nothing */
+|   | Marks a global symbol.
+| [](undefined)
+#define  | XXH_PUBLIC_API   /* do nothing */
+|   | Marks a global symbol.
+| [](undefined)
+#define  | XXH_CONSTF   /* disable */
+| [](undefined)
+#define  | XXH_PUREF
+| [](undefined)
+#define  | XXH_MALLOCF
+| [](undefined)
+#define  | XXH_VERSION_MAJOR   0
+| [](undefined)
+#define  | XXH_VERSION_MINOR   8
+| [](undefined)
+#define  | XXH_VERSION_RELEASE   4
+| [](undefined)
+#define  | XXH_VERSION_NUMBER   (XXH_VERSION_MAJOR *100*100 + XXH_VERSION_MINOR *100 + XXH_VERSION_RELEASE)
+|   | Version number, encoded as two digits each.
+|
+[](undefined)
+Typedefs
+| typedef uint32_t  | [XXH32_hash_t](#ga469df6c7273f15924de58143ef1afe14)
+|   | An unsigned 32-bit integer.
+|
+[](undefined)
+Enumerations
+| enum   | [XXH_errorcode](#ga5020905455674b8c83c1dbc73f0d3534) { [XXH_OK](#gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6) = 0
+, [XXH_ERROR](#gga5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f)
+}
+|   | Exit code for the streaming API.  [More...](#ga5020905455674b8c83c1dbc73f0d3534)
+|
+[](undefined)
+Functions
+| unsigned  | [XXH_versionNumber](#gabc57fd428d4d33906b3830c746bc4ac9) (void)
+|   | Obtains the xxHash version.
+| typedef uint64_t  | [XXH64_hash_t](#ga5406b285b18dfcefa93efed489e3b603)
+|   | An unsigned 64-bit integer.
+[](undefined)
+Detailed Description
+Contains details on the public xxHash functions.
+[](undefined)
+Macro Definition Documentation
+[](undefined)
+[◆ ](#ga546f2633ae1036f49bdc5582971d7f1e)XXH_STATIC_LINKING_ONLY
+| #define XXH_STATIC_LINKING_ONLY
+Gives access to internal state declaration, required for static allocation.
+Incompatible with dynamic linking, due to risks of ABI changes.
+Usage:
+#define XXH_STATIC_LINKING_ONLY
+#include "[xxhash.h](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/)"
+[xxhash.h](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/)
+[](undefined)
+[◆ ](#gaa40be3a031b9a5bd9afc800b0959a0c9)XXH_IMPLEMENTATION
+| #define XXH_IMPLEMENTATION
+Gives access to internal definitions.
+Usage:
+#define XXH_STATIC_LINKING_ONLY
+#define XXH_IMPLEMENTATION
+#include "[xxhash.h](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/)"
+[](undefined)
+[◆ ](#ga5a61b869708b770ad75e3e063a2f9273)XXH_INLINE_ALL
+| #define XXH_INLINE_ALL
+Exposes the implementation and marks all functions as inline.
+Use these build macros to inline xxhash into the target unit. Inlining improves performance on small inputs, especially when the length is expressed as a compile-time constant:
+[https://fastcompression.blogspot.com/2018/03/xxhash-for-small-keys-impressive-power.html](https://fastcompression.blogspot.com/2018/03/xxhash-for-small-keys-impressive-power.html)
+It also keeps xxHash symbols private to the unit, so they are not exported.
+Usage:
+#define XXH_INLINE_ALL
+#include "[xxhash.h](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/)"
+Do not compile and link xxhash.o as a separate object, as it is not useful.
+[](undefined)
+[◆ ](#gacde9dad44d3e0e432474bef93e12f9e7)XXH_NAMESPACE
+| #define XXH_NAMESPACE   /* YOUR NAME HERE */
+Emulate a namespace by transparently prefixing all symbols.
+If you want to include and expose xxHash functions from within your own library, but also want to avoid symbol collisions with other libraries which may also include xxHash, you can use [XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7) to automatically prefix any public symbol from xxhash library with the value of [XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7) (therefore, avoid empty or numeric values).
+Note that no change is required within the calling program as long as it includes [xxhash.h](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/): Regular symbol names will be automatically translated by this header.
+[](undefined)
+[◆ ](#ga0349c2d8893878f5ff327129e9612d3b)XXH_CAT
+| #define XXH_CAT
+| (
+|            | A,
+|
+|
+|            | B )
+Value:
+A##B
+[](undefined)
+[◆ ](#ga9f162d60f438196576459af6135a3c1e)XXH_NAME2
+| #define XXH_NAME2
+| (
+|            | A,
+|
+|
+|            | B )
+Value:
+XXH_CAT(A,B)
+[](undefined)
+[◆ ](#ga38abe71b45636f49518f8765ce4d984d)XXH_IPREF
+| #define XXH_IPREF
+| (
+|            | Id | )
+|
+Value:
+XXH_NAME2([XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7), Id)
+[XXH_NAMESPACE](#gacde9dad44d3e0e432474bef93e12f9e7)
+#define XXH_NAMESPACE
+Emulate a namespace by transparently prefixing all symbols.
+Definition xxhash.h:322
+[](undefined)
+Typedef Documentation
+[](undefined)
+[◆ ](#ga469df6c7273f15924de58143ef1afe14)XXH32_hash_t
+| typedef uint32_t [XXH32_hash_t](#ga469df6c7273f15924de58143ef1afe14)
+An unsigned 32-bit integer.
+Not necessarily defined to uint32_t but functionally equivalent.
+[](undefined)
+[◆ ](#ga5406b285b18dfcefa93efed489e3b603)XXH64_hash_t
+| typedef uint64_t [XXH64_hash_t](#ga5406b285b18dfcefa93efed489e3b603)
+An unsigned 64-bit integer.
+Not necessarily defined to uint64_t but functionally equivalent.
+[](undefined)
+Enumeration Type Documentation
+[](undefined)
+[◆ ](#ga5020905455674b8c83c1dbc73f0d3534)XXH_errorcode
+| enum [XXH_errorcode](#ga5020905455674b8c83c1dbc73f0d3534)
+Exit code for the streaming API.
+| Enumerator
+| [](undefined)XXH_OK  |
+OK
+| [](undefined)XXH_ERROR  |
+Error
+[](undefined)
+Function Documentation
+[](undefined)
+[◆ ](#gabc57fd428d4d33906b3830c746bc4ac9)XXH_versionNumber()
+| unsigned XXH_versionNumber
+| (
+| void           |  | )
+|
+Obtains the xxHash version.
+This is mostly useful when xxHash is compiled as a shared library, since the returned value comes from the library, as opposed to header file.
+Returns
+[XXH_VERSION_NUMBER](#gacc66393fff091acefc0e2a00ec5462c4) of the invoked library.
+
+All IDs: header-groups, groups, r_XXH32_5Ffamily, r_XXH64_5Ffamily, r_XXH3_5Ffamily, header-define-members, define-members, r_ga546f2633ae1036f49bdc5582971d7f1e, r_gaa40be3a031b9a5bd9afc800b0959a0c9, r_ga5a61b869708b770ad75e3e063a2f9273, r_ga6589b6ea961ec073de006a47282c9a41, ga6589b6ea961ec073de006a47282c9a41, r_gacde9dad44d3e0e432474bef93e12f9e7, r_ga0349c2d8893878f5ff327129e9612d3b, r_ga9f162d60f438196576459af6135a3c1e, r_ga38abe71b45636f49518f8765ce4d984d, r_ga233a9a49fa654f51214c38fb3874d35b, ga233a9a49fa654f51214c38fb3874d35b, r_ga5832897ed49938aefa629a76034b36b1, ga5832897ed49938aefa629a76034b36b1, r_ga2ce342e5f21306d9e8d86c8974753f1e, ga2ce342e5f21306d9e8d86c8974753f1e, r_gadb7e321a2d619584344314285b0789e0, gadb7e321a2d619584344314285b0789e0, r_ga42b5b015d58d9778c3e37de38f174fe2, ga42b5b015d58d9778c3e37de38f174fe2, r_gaa29ba2352de774253d35eef1cb9728ab, gaa29ba2352de774253d35eef1cb9728ab, r_ga8a2b7aee9a2ac8bfad126165c4369fab, ga8a2b7aee9a2ac8bfad126165c4369fab, r_ga0087600ba3cbfdbb78b83e13d54a1849, ga0087600ba3cbfdbb78b83e13d54a1849, r_ga67fe7f51710d15efa3aeeefbb446f434, ga67fe7f51710d15efa3aeeefbb446f434, r_gacc66393fff091acefc0e2a00ec5462c4, gacc66393fff091acefc0e2a00ec5462c4, header-typedef-members, typedef-members, r_ga469df6c7273f15924de58143ef1afe14, header-enum-members, enum-members, r_ga5020905455674b8c83c1dbc73f0d3534, header-func-members, func-members, r_gabc57fd428d4d33906b3830c746bc4ac9, r_ga5406b285b18dfcefa93efed489e3b603, details, header-details, doc-define-members, header-doc-define-members, ga546f2633ae1036f49bdc5582971d7f1e, axxhash_8h_html, gaa40be3a031b9a5bd9afc800b0959a0c9, ga5a61b869708b770ad75e3e063a2f9273, gacde9dad44d3e0e432474bef93e12f9e7, ga0349c2d8893878f5ff327129e9612d3b, ga9f162d60f438196576459af6135a3c1e, ga38abe71b45636f49518f8765ce4d984d, agroup__public_html_gacde9dad44d3e0e432474bef93e12f9e7, doc-typedef-members, header-doc-typedef-members, ga469df6c7273f15924de58143ef1afe14, ga5406b285b18dfcefa93efed489e3b603, doc-enum-members, header-doc-enum-members, ga5020905455674b8c83c1dbc73f0d3534, gga5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6, gga5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f, doc-func-members, header-doc-func-members, gabc57fd428d4d33906b3830c746bc4ac9
+All element types: div, table, tbody, tr, td, h2, a, br, span, b, p, em, th, dl, dt, dd
+FRONTMATTER: ---
+title: "Public API "
+licenseSource: "xxhash-api"
+---
+
+
+APPENDED: ## Source and notices
+
+No documentation-specific license statement was found in the recorded checks. Under the user-approved operating policy, the software component’s BSD-2-Clause license is applied to this documentation with this annotation. This is an operational decision, not a newly obtained permission.
+
+Fixed software version: **0.8.4**. Source commit: `c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`. This is an unofficial presentation; formatting, internal links and clearly marked editorial notes are Libx changes. The Japanese translation is provided separately when completed.
+
+[api-header](/docs/xxhash/v0-8-4/en/03-notices/api-header/) · [dispatch-c](/docs/xxhash/v0-8-4/en/03-notices/dispatch-c/) · [dispatch-h](/docs/xxhash/v0-8-4/en/03-notices/dispatch-h/)
+
+Generated from the fixed public [Doxyfile](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/Doxyfile) using its `xxhash.h` and `xxh_x86dispatch.c` file patterns.
+
+[xxhash.h — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h) · [xxhash.h — original text download](/docs/xxhash/source/v0-8-4/xxhash.h.txt)
+
+[xxh_x86dispatch.c — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxh_x86dispatch.c) · [xxh_x86dispatch.c — original text download](/docs/xxhash/source/v0-8-4/xxh_x86dispatch.c.txt)
+
+

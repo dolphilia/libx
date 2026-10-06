@@ -1,0 +1,187 @@
+
+### doxygen/html/struct_x_x_h3__state__s.html
+ORIGINAL full .contents text with every link:
+
+|
+[](undefined)
+Data Fields
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)  | [acc](#ad46e292aaa3931ffcceb961ee129ccd5) [8]
+| unsigned char  | [customSecret](#ac81c90a4d992f21a0dd00649b386b20f) [[XXH3_SECRET_DEFAULT_SIZE](xxhash_8h.html#ae30274eeda9ae2faa2eda08deff9696f)]
+| unsigned char  | [buffer](#ab2a8c0eba9804ece6442a6ab3ff49f7e) [XXH3_INTERNALBUFFER_SIZE]
+| [XXH32_hash_t](group__public.html#ga469df6c7273f15924de58143ef1afe14)  | [bufferedSize](#a19ba097c74cfa101eaabfd66b3801464)
+| [XXH32_hash_t](group__public.html#ga469df6c7273f15924de58143ef1afe14)  | [useSeed](#a5c54b1fb1396a7382c4352db7901654e)
+| size_t  | [nbStripesSoFar](#a4ab6b32aaa2b0a1187468db8349eaf9d)
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)  | [totalLen](#a2fa3f4b9482a5f1b4bf3aeb01cafbea4)
+| size_t  | [nbStripesPerBlock](#a976838a44d86b618f5421aa79f871e85)
+| size_t  | [secretLimit](#a63a552ad1efda44641d1b80a9d23a505)
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)  | [seed](#aa402cadf01743cb1a9acbcbb24211bfb)
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603)  | [reserved64](#a2986863b2aaf90025f05cb581dcba481)
+| const unsigned char *  | [extSecret](#a14d42adf2a0fe05d8d1d5a8845dfe5df)
+[](undefined)
+Field Documentation
+[](undefined)
+[◆ ](#ad46e292aaa3931ffcceb961ee129ccd5)acc
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) XXH3_state_s::acc[8]
+The 8 accumulators. See [XXH32_state_s::acc](struct_x_x_h32__state__s.html#aec9b2929a5731e45e70bb477b7038fae) and [XXH64_state_s::acc](struct_x_x_h64__state__s.html#a6b0b9f4f81a229112db01253ee52fa8f)
+[](undefined)
+[◆ ](#ac81c90a4d992f21a0dd00649b386b20f)customSecret
+| unsigned char XXH3_state_s::customSecret[[XXH3_SECRET_DEFAULT_SIZE](xxhash_8h.html#ae30274eeda9ae2faa2eda08deff9696f)]
+Used to store a custom secret generated from a seed.
+[](undefined)
+[◆ ](#ab2a8c0eba9804ece6442a6ab3ff49f7e)buffer
+| unsigned char XXH3_state_s::buffer[XXH3_INTERNALBUFFER_SIZE]
+The internal buffer.
+See also
+XXH32_state_s::mem32
+[](undefined)
+[◆ ](#a19ba097c74cfa101eaabfd66b3801464)bufferedSize
+| [XXH32_hash_t](group__public.html#ga469df6c7273f15924de58143ef1afe14) XXH3_state_s::bufferedSize
+The amount of memory in [buffer](#ab2a8c0eba9804ece6442a6ab3ff49f7e),
+See also
+XXH32_state_s::memsize
+[](undefined)
+[◆ ](#a5c54b1fb1396a7382c4352db7901654e)useSeed
+| [XXH32_hash_t](group__public.html#ga469df6c7273f15924de58143ef1afe14) XXH3_state_s::useSeed
+Reserved field. Needed for padding on 64-bit.
+[](undefined)
+[◆ ](#a4ab6b32aaa2b0a1187468db8349eaf9d)nbStripesSoFar
+| size_t XXH3_state_s::nbStripesSoFar
+Number or stripes processed.
+[](undefined)
+[◆ ](#a2fa3f4b9482a5f1b4bf3aeb01cafbea4)totalLen
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) XXH3_state_s::totalLen
+Total length hashed. 64-bit even on 32-bit targets.
+[](undefined)
+[◆ ](#a976838a44d86b618f5421aa79f871e85)nbStripesPerBlock
+| size_t XXH3_state_s::nbStripesPerBlock
+Number of stripes per block.
+[](undefined)
+[◆ ](#a63a552ad1efda44641d1b80a9d23a505)secretLimit
+| size_t XXH3_state_s::secretLimit
+Size of [customSecret](#ac81c90a4d992f21a0dd00649b386b20f) or [extSecret](#a14d42adf2a0fe05d8d1d5a8845dfe5df)
+[](undefined)
+[◆ ](#aa402cadf01743cb1a9acbcbb24211bfb)seed
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) XXH3_state_s::seed
+Seed for _withSeed variants. Must be zero otherwise,
+See also
+[XXH3_INITSTATE()](xxhash_8h.html#afc79de39f0cf7e8d395f131c0d9d568e)
+[](undefined)
+[◆ ](#a2986863b2aaf90025f05cb581dcba481)reserved64
+| [XXH64_hash_t](group__public.html#ga5406b285b18dfcefa93efed489e3b603) XXH3_state_s::reserved64
+Reserved field.
+[](undefined)
+[◆ ](#a14d42adf2a0fe05d8d1d5a8845dfe5df)extSecret
+| const unsigned char* XXH3_state_s::extSecret
+Reference to an external secret for the _withSecret variants, NULL for other variants.
+The documentation for this struct was generated from the following file:
+[xxhash.h](xxhash_8h_source.html)
+
+All IDs: header-pub-attribs, pub-attribs, r_ad46e292aaa3931ffcceb961ee129ccd5, r_ac81c90a4d992f21a0dd00649b386b20f, r_ab2a8c0eba9804ece6442a6ab3ff49f7e, r_a19ba097c74cfa101eaabfd66b3801464, r_a5c54b1fb1396a7382c4352db7901654e, r_a4ab6b32aaa2b0a1187468db8349eaf9d, r_a2fa3f4b9482a5f1b4bf3aeb01cafbea4, r_a976838a44d86b618f5421aa79f871e85, r_a63a552ad1efda44641d1b80a9d23a505, r_aa402cadf01743cb1a9acbcbb24211bfb, r_a2986863b2aaf90025f05cb581dcba481, r_a14d42adf2a0fe05d8d1d5a8845dfe5df, doc-variable-members, header-doc-variable-members, ad46e292aaa3931ffcceb961ee129ccd5, ac81c90a4d992f21a0dd00649b386b20f, ab2a8c0eba9804ece6442a6ab3ff49f7e, a19ba097c74cfa101eaabfd66b3801464, a5c54b1fb1396a7382c4352db7901654e, a4ab6b32aaa2b0a1187468db8349eaf9d, a2fa3f4b9482a5f1b4bf3aeb01cafbea4, a976838a44d86b618f5421aa79f871e85, a63a552ad1efda44641d1b80a9d23a505, aa402cadf01743cb1a9acbcbb24211bfb, a2986863b2aaf90025f05cb581dcba481, a14d42adf2a0fe05d8d1d5a8845dfe5df
+All element types: div, table, tbody, tr, td, h2, a, span, p, dl, dt, dd, hr, ul, li
+CANONICAL full .contents text with every link:
+
+|
+[](undefined)
+Data Fields
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)  | [acc](#ad46e292aaa3931ffcceb961ee129ccd5) [8]
+| unsigned char  | [customSecret](#ac81c90a4d992f21a0dd00649b386b20f) [[XXH3_SECRET_DEFAULT_SIZE](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/#ae30274eeda9ae2faa2eda08deff9696f)]
+| unsigned char  | [buffer](#ab2a8c0eba9804ece6442a6ab3ff49f7e) [XXH3_INTERNALBUFFER_SIZE]
+| [XXH32_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga469df6c7273f15924de58143ef1afe14)  | [bufferedSize](#a19ba097c74cfa101eaabfd66b3801464)
+| [XXH32_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga469df6c7273f15924de58143ef1afe14)  | [useSeed](#a5c54b1fb1396a7382c4352db7901654e)
+| size_t  | [nbStripesSoFar](#a4ab6b32aaa2b0a1187468db8349eaf9d)
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)  | [totalLen](#a2fa3f4b9482a5f1b4bf3aeb01cafbea4)
+| size_t  | [nbStripesPerBlock](#a976838a44d86b618f5421aa79f871e85)
+| size_t  | [secretLimit](#a63a552ad1efda44641d1b80a9d23a505)
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)  | [seed](#aa402cadf01743cb1a9acbcbb24211bfb)
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603)  | [reserved64](#a2986863b2aaf90025f05cb581dcba481)
+| const unsigned char *  | [extSecret](#a14d42adf2a0fe05d8d1d5a8845dfe5df)
+[](undefined)
+Field Documentation
+[](undefined)
+[◆ ](#ad46e292aaa3931ffcceb961ee129ccd5)acc
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) XXH3_state_s::acc[8]
+The 8 accumulators. See [XXH32_state_s::acc](/docs/xxhash/v0-8-4/en/02-api/26-struct_x_x_h32__state__s/#aec9b2929a5731e45e70bb477b7038fae) and [XXH64_state_s::acc](/docs/xxhash/v0-8-4/en/02-api/29-struct_x_x_h64__state__s/#a6b0b9f4f81a229112db01253ee52fa8f)
+[](undefined)
+[◆ ](#ac81c90a4d992f21a0dd00649b386b20f)customSecret
+| unsigned char XXH3_state_s::customSecret[[XXH3_SECRET_DEFAULT_SIZE](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/#ae30274eeda9ae2faa2eda08deff9696f)]
+Used to store a custom secret generated from a seed.
+[](undefined)
+[◆ ](#ab2a8c0eba9804ece6442a6ab3ff49f7e)buffer
+| unsigned char XXH3_state_s::buffer[XXH3_INTERNALBUFFER_SIZE]
+The internal buffer.
+See also
+XXH32_state_s::mem32
+[](undefined)
+[◆ ](#a19ba097c74cfa101eaabfd66b3801464)bufferedSize
+| [XXH32_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga469df6c7273f15924de58143ef1afe14) XXH3_state_s::bufferedSize
+The amount of memory in [buffer](#ab2a8c0eba9804ece6442a6ab3ff49f7e),
+See also
+XXH32_state_s::memsize
+[](undefined)
+[◆ ](#a5c54b1fb1396a7382c4352db7901654e)useSeed
+| [XXH32_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga469df6c7273f15924de58143ef1afe14) XXH3_state_s::useSeed
+Reserved field. Needed for padding on 64-bit.
+[](undefined)
+[◆ ](#a4ab6b32aaa2b0a1187468db8349eaf9d)nbStripesSoFar
+| size_t XXH3_state_s::nbStripesSoFar
+Number or stripes processed.
+[](undefined)
+[◆ ](#a2fa3f4b9482a5f1b4bf3aeb01cafbea4)totalLen
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) XXH3_state_s::totalLen
+Total length hashed. 64-bit even on 32-bit targets.
+[](undefined)
+[◆ ](#a976838a44d86b618f5421aa79f871e85)nbStripesPerBlock
+| size_t XXH3_state_s::nbStripesPerBlock
+Number of stripes per block.
+[](undefined)
+[◆ ](#a63a552ad1efda44641d1b80a9d23a505)secretLimit
+| size_t XXH3_state_s::secretLimit
+Size of [customSecret](#ac81c90a4d992f21a0dd00649b386b20f) or [extSecret](#a14d42adf2a0fe05d8d1d5a8845dfe5df)
+[](undefined)
+[◆ ](#aa402cadf01743cb1a9acbcbb24211bfb)seed
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) XXH3_state_s::seed
+Seed for _withSeed variants. Must be zero otherwise,
+See also
+[XXH3_INITSTATE()](/docs/xxhash/v0-8-4/en/02-api/32-xxhash_8h/#afc79de39f0cf7e8d395f131c0d9d568e)
+[](undefined)
+[◆ ](#a2986863b2aaf90025f05cb581dcba481)reserved64
+| [XXH64_hash_t](/docs/xxhash/v0-8-4/en/02-api/20-group__public/#ga5406b285b18dfcefa93efed489e3b603) XXH3_state_s::reserved64
+Reserved field.
+[](undefined)
+[◆ ](#a14d42adf2a0fe05d8d1d5a8845dfe5df)extSecret
+| const unsigned char* XXH3_state_s::extSecret
+Reference to an external secret for the _withSecret variants, NULL for other variants.
+The documentation for this struct was generated from the following file:
+[xxhash.h](/docs/xxhash/v0-8-4/en/02-api/33-xxhash_8h_source/)
+
+All IDs: header-pub-attribs, pub-attribs, r_ad46e292aaa3931ffcceb961ee129ccd5, r_ac81c90a4d992f21a0dd00649b386b20f, r_ab2a8c0eba9804ece6442a6ab3ff49f7e, r_a19ba097c74cfa101eaabfd66b3801464, r_a5c54b1fb1396a7382c4352db7901654e, r_a4ab6b32aaa2b0a1187468db8349eaf9d, r_a2fa3f4b9482a5f1b4bf3aeb01cafbea4, r_a976838a44d86b618f5421aa79f871e85, r_a63a552ad1efda44641d1b80a9d23a505, r_aa402cadf01743cb1a9acbcbb24211bfb, r_a2986863b2aaf90025f05cb581dcba481, r_a14d42adf2a0fe05d8d1d5a8845dfe5df, doc-variable-members, header-doc-variable-members, ad46e292aaa3931ffcceb961ee129ccd5, ac81c90a4d992f21a0dd00649b386b20f, ab2a8c0eba9804ece6442a6ab3ff49f7e, a19ba097c74cfa101eaabfd66b3801464, a5c54b1fb1396a7382c4352db7901654e, a4ab6b32aaa2b0a1187468db8349eaf9d, a2fa3f4b9482a5f1b4bf3aeb01cafbea4, a976838a44d86b618f5421aa79f871e85, a63a552ad1efda44641d1b80a9d23a505, aa402cadf01743cb1a9acbcbb24211bfb, a2986863b2aaf90025f05cb581dcba481, a14d42adf2a0fe05d8d1d5a8845dfe5df
+All element types: div, table, tbody, tr, td, h2, a, span, p, dl, dt, dd, hr, ul, li
+FRONTMATTER: ---
+title: "XXH3_state_s Struct Reference"
+licenseSource: "xxhash-api"
+---
+
+## Editorial notes on fixed upstream text
+
+The original generated body below is retained. These notes identify discrepancies found by comparing the fixed 0.8.4 header, its implementation, and the scoped specification. They are editorial additions, not upstream corrections.
+
+- **stale-state-field-reference**: Some state comments refer to XXH32_state_s::mem32 and ::memsize. The fixed XXH32 state fields are buffer and bufferedSize. These old reference names are preserved rather than treated as valid field links.
+
+[Fixed upstream header](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h)
+
+
+APPENDED: ## Source and notices
+
+No documentation-specific license statement was found in the recorded checks. Under the user-approved operating policy, the software component’s BSD-2-Clause license is applied to this documentation with this annotation. This is an operational decision, not a newly obtained permission.
+
+Fixed software version: **0.8.4**. Source commit: `c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0`. This is an unofficial presentation; formatting, internal links and clearly marked editorial notes are Libx changes. The Japanese translation is provided separately when completed.
+
+[api-header](/docs/xxhash/v0-8-4/en/03-notices/api-header/) · [dispatch-c](/docs/xxhash/v0-8-4/en/03-notices/dispatch-c/) · [dispatch-h](/docs/xxhash/v0-8-4/en/03-notices/dispatch-h/)
+
+Generated from the fixed public [Doxyfile](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/Doxyfile) using its `xxhash.h` and `xxh_x86dispatch.c` file patterns.
+
+[xxhash.h — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxhash.h) · [xxhash.h — original text download](/docs/xxhash/source/v0-8-4/xxhash.h.txt)
+
+[xxh_x86dispatch.c — fixed source](https://github.com/Cyan4973/xxHash/blob/c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0/xxh_x86dispatch.c) · [xxh_x86dispatch.c — original text download](/docs/xxhash/source/v0-8-4/xxh_x86dispatch.c.txt)
+
+
