@@ -1,0 +1,184 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "Default-logger.md",
+    "slug": "07-default-logger",
+    "source": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Default-logger.md",
+    "sourceSHA256": "eb56a2bfbb54a847b359b6431279a23d3b861972e8ef3925d4adcba977d50dee",
+    "canonicalInput": "apps/spdlog/meta/canonical-inputs/07-default-logger.md",
+    "canonicalInputSHA256": "eb56a2bfbb54a847b359b6431279a23d3b861972e8ef3925d4adcba977d50dee",
+    "trial": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/07-default-logger.md",
+    "canonicalSHA256": "b8c1875dc458cbed8b8d1b18949a21a0493f233118f7f9069e5d9e466a57495b",
+    "title": "Default logger",
+    "excluded": [],
+    "sourceNote": null
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlogは、手軽に使えるように、デフォルトのグローバルロガー（stdoutへの出力、色付き、マルチスレッド対応）を作成します。",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 706
+            },
+            "end": {
+              "line": 5,
+              "column": 66,
+              "offset": 771
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 706
+        },
+        "end": {
+          "line": 5,
+          "column": 66,
+          "offset": 771
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "spdlog::info(..)",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 773
+            },
+            "end": {
+              "line": 7,
+              "column": 19,
+              "offset": 791
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " や ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 19,
+              "offset": 791
+            },
+            "end": {
+              "line": 7,
+              "column": 22,
+              "offset": 794
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::debug(..)",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 22,
+              "offset": 794
+            },
+            "end": {
+              "line": 7,
+              "column": 41,
+              "offset": 813
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " などを直接呼び出すことで、簡単に利用できます。",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 41,
+              "offset": 813
+            },
+            "end": {
+              "line": 7,
+              "column": 65,
+              "offset": 837
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 773
+        },
+        "end": {
+          "line": 7,
+          "column": 65,
+          "offset": 837
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "そのインスタンスは、任意の別のロガー（shared_ptr）に置き換えられます。",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1,
+              "offset": 839
+            },
+            "end": {
+              "line": 9,
+              "column": 41,
+              "offset": 879
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 839
+        },
+        "end": {
+          "line": 9,
+          "column": 41,
+          "offset": 879
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::set_default_logger(some_other_logger);\nspdlog::info(\"Use the new default logger\");",
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1,
+          "offset": 880
+        },
+        "end": {
+          "line": 13,
+          "column": 4,
+          "offset": 981
+        }
+      }
+    }
+  ],
+  "changes": []
+}

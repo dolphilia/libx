@@ -1,0 +1,3054 @@
+{
+  "language": "ja",
+  "source": {
+    "name": "FAQ.md",
+    "slug": "09-faq",
+    "source": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/FAQ.md",
+    "sourceSHA256": "01d50982fbc9dd49f285ec67a2147bc5155979979c69f8da96093b7f74e7fc87",
+    "canonicalInput": "apps/spdlog/meta/canonical-inputs/09-faq.md",
+    "canonicalInputSHA256": "01d50982fbc9dd49f285ec67a2147bc5155979979c69f8da96093b7f74e7fc87",
+    "trial": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/09-faq.md",
+    "canonicalSHA256": "d47f63b47a59b55863fb2da91662051677f4d112d59355d0ee9dce607f8651a6",
+    "title": "FAQ",
+    "excluded": [],
+    "sourceNote": null
+  },
+  "children": [
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "ログファイルが空のままになる",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 4,
+              "offset": 687
+            },
+            "end": {
+              "line": 5,
+              "column": 18,
+              "offset": 701
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 684
+        },
+        "end": {
+          "line": 5,
+          "column": 18,
+          "offset": 701
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "性能上の理由により、ログエントリーはファイルへ即座にフラッシュされず、libcで定義されるBUFSIZバイトが記録された後にフラッシュされます。",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 703
+            },
+            "end": {
+              "line": 7,
+              "column": 73,
+              "offset": 775
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 703
+        },
+        "end": {
+          "line": 7,
+          "column": 73,
+          "offset": 775
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "次のいずれかの方法で、強制的にフラッシュできます。",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1,
+              "offset": 777
+            },
+            "end": {
+              "line": 9,
+              "column": 26,
+              "offset": 802
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 777
+        },
+        "end": {
+          "line": 9,
+          "column": 26,
+          "offset": 802
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "my_logger->flush();                            // flush now\nmy_logger->flush_on(spdlog::level::info);      // auto flush when \"info\" or higher message is logged\nspdlog::flush_on(spdlog::level::info);         // auto flush when \"info\" or higher message is logged on all loggers\nspdlog::flush_every(std::chrono::seconds(5));  // flush periodically every 5 seconds (caution: must be _mt logger)",
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1,
+          "offset": 803
+        },
+        "end": {
+          "line": 15,
+          "column": 4,
+          "offset": 1205
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "詳細は",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 1,
+              "offset": 1206
+            },
+            "end": {
+              "line": 16,
+              "column": 4,
+              "offset": 1209
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "/docs/spdlog/v1-17-0/ja/01-guide/10-flush-policy/",
+          "children": [
+            {
+              "type": "text",
+              "value": "フラッシュ方針",
+              "position": {
+                "start": {
+                  "line": 16,
+                  "column": 5,
+                  "offset": 1210
+                },
+                "end": {
+                  "line": 16,
+                  "column": 12,
+                  "offset": 1217
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 4,
+              "offset": 1209
+            },
+            "end": {
+              "line": 16,
+              "column": 68,
+              "offset": 1273
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "を参照してください。",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 68,
+              "offset": 1273
+            },
+            "end": {
+              "line": 16,
+              "column": 78,
+              "offset": 1283
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 16,
+          "column": 1,
+          "offset": 1206
+        },
+        "end": {
+          "line": 16,
+          "column": 78,
+          "offset": 1283
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "コンパイル時にすべてのdebug文を削除するには？",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 4,
+              "offset": 1288
+            },
+            "end": {
+              "line": 18,
+              "column": 29,
+              "offset": 1313
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 18,
+          "column": 1,
+          "offset": 1285
+        },
+        "end": {
+          "line": 18,
+          "column": 29,
+          "offset": 1313
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "spdlog.hをインクルードする前に、",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 1,
+              "offset": 1314
+            },
+            "end": {
+              "line": 19,
+              "column": 21,
+              "offset": 1334
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_ACTIVE_LEVEL",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 21,
+              "offset": 1334
+            },
+            "end": {
+              "line": 19,
+              "column": 42,
+              "offset": 1355
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を必要なログレベルに定義し、SPDLOG_マクロを使います。",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 42,
+              "offset": 1355
+            },
+            "end": {
+              "line": 19,
+              "column": 73,
+              "offset": 1386
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1,
+          "offset": 1314
+        },
+        "end": {
+          "line": 19,
+          "column": 73,
+          "offset": 1386
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO // All DEBUG/TRACE statements will be removed by the pre-processor\n#include \"spdlog/spdlog.h\"\n...\nSPDLOG_DEBUG(\"debug message to default logger\"); // removed at compile time\nSPDLOG_LOGGER_TRACE(my_logger, \"trace message\"); // removed at compile time\nSPDLOG_INFO(\"info message to default logger\");   // included",
+      "position": {
+        "start": {
+          "line": 20,
+          "column": 1,
+          "offset": 1387
+        },
+        "end": {
+          "line": 27,
+          "column": 4,
+          "offset": 1754
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "これはコンパイル時にdebug文を削除する設定ですが、ログを表示するには、実行時にも必要なログレベルを設定する必要があります。",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 1,
+              "offset": 1756
+            },
+            "end": {
+              "line": 29,
+              "column": 64,
+              "offset": 1819
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 29,
+          "column": 1,
+          "offset": 1756
+        },
+        "end": {
+          "line": 29,
+          "column": 64,
+          "offset": 1819
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "同梱版ではなく外部のfmtライブラリを使うには？",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 4,
+              "offset": 1824
+            },
+            "end": {
+              "line": 31,
+              "column": 28,
+              "offset": 1848
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 31,
+          "column": 1,
+          "offset": 1821
+        },
+        "end": {
+          "line": 31,
+          "column": 28,
+          "offset": 1848
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "外部のfmtライブラリを使うには、",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 1,
+              "offset": 1850
+            },
+            "end": {
+              "line": 33,
+              "column": 18,
+              "offset": 1867
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_FMT_EXTERNAL",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 18,
+              "offset": 1867
+            },
+            "end": {
+              "line": 33,
+              "column": 39,
+              "offset": 1888
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " マクロを定義する必要があります。",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 39,
+              "offset": 1888
+            },
+            "end": {
+              "line": 33,
+              "column": 56,
+              "offset": 1905
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 33,
+          "column": 1,
+          "offset": 1850
+        },
+        "end": {
+          "line": 33,
+          "column": 56,
+          "offset": 1905
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "CMakeでspdlogをビルドする場合は、CMake変数 ",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 1,
+              "offset": 1907
+            },
+            "end": {
+              "line": 35,
+              "column": 31,
+              "offset": 1937
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_FMT_EXTERNAL",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 31,
+              "offset": 1937
+            },
+            "end": {
+              "line": 35,
+              "column": 52,
+              "offset": 1958
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " または ",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 52,
+              "offset": 1958
+            },
+            "end": {
+              "line": 35,
+              "column": 57,
+              "offset": 1963
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_FMT_EXTERNAL_HO",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 57,
+              "offset": 1963
+            },
+            "end": {
+              "line": 35,
+              "column": 81,
+              "offset": 1987
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "（ヘッダーオンリーのfmt）を定義する必要があります。CMakeで追加されたspdlogでは、",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 81,
+              "offset": 1987
+            },
+            "end": {
+              "line": 35,
+              "column": 128,
+              "offset": 2034
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "SPDLOG_FMT_EXTERNAL",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 128,
+              "offset": 2034
+            },
+            "end": {
+              "line": 35,
+              "column": 149,
+              "offset": 2055
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " マクロが自動的に定義されます。",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 149,
+              "offset": 2055
+            },
+            "end": {
+              "line": 35,
+              "column": 165,
+              "offset": 2071
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 35,
+          "column": 1,
+          "offset": 1907
+        },
+        "end": {
+          "line": 35,
+          "column": 165,
+          "offset": 2071
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "引数がないと書式文字列のコンパイル時検査が働かない",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 4,
+              "offset": 2076
+            },
+            "end": {
+              "line": 37,
+              "column": 29,
+              "offset": 2101
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 37,
+          "column": 1,
+          "offset": 2073
+        },
+        "end": {
+          "line": 37,
+          "column": 29,
+          "offset": 2101
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "書式文字列だけを渡した場合、コンパイル時検査は働きません。この場合は性能のためにformatterを使わない設計になっているためです（",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 1,
+              "offset": 2103
+            },
+            "end": {
+              "line": 39,
+              "column": 68,
+              "offset": 2170
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/issues/3056",
+          "children": [
+            {
+              "type": "text",
+              "value": "#3056",
+              "position": {
+                "start": {
+                  "line": 39,
+                  "column": 69,
+                  "offset": 2171
+                },
+                "end": {
+                  "line": 39,
+                  "column": 74,
+                  "offset": 2176
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 68,
+              "offset": 2170
+            },
+            "end": {
+              "line": 39,
+              "column": 121,
+              "offset": 2223
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "）。",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 121,
+              "offset": 2223
+            },
+            "end": {
+              "line": 39,
+              "column": 123,
+              "offset": 2225
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 39,
+          "column": 1,
+          "offset": 2103
+        },
+        "end": {
+          "line": 39,
+          "column": 123,
+          "offset": 2225
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "spdlog::info(\"{}{}\", 1, 2); // OK\nspdlog::info(\"{}{}{}\", 1, 2); // Compile error.\n\nspdlog::info(\"{}\"); // OK.",
+      "position": {
+        "start": {
+          "line": 40,
+          "column": 1,
+          "offset": 2226
+        },
+        "end": {
+          "line": 45,
+          "column": 4,
+          "offset": 2346
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Windowsでアプリケーション終了時に非同期ログがハングする",
+          "position": {
+            "start": {
+              "line": 47,
+              "column": 4,
+              "offset": 2351
+            },
+            "end": {
+              "line": 47,
+              "column": 35,
+              "offset": 2382
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 47,
+          "column": 1,
+          "offset": 2348
+        },
+        "end": {
+          "line": 47,
+          "column": 35,
+          "offset": 2382
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "mainの最後で ",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 1,
+              "offset": 2384
+            },
+            "end": {
+              "line": 49,
+              "column": 10,
+              "offset": 2393
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::shutdown();",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 10,
+              "offset": 2393
+            },
+            "end": {
+              "line": 49,
+              "column": 31,
+              "offset": 2414
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を呼び出してください。",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 31,
+              "offset": 2414
+            },
+            "end": {
+              "line": 49,
+              "column": 43,
+              "offset": 2426
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 49,
+          "column": 1,
+          "offset": 2384
+        },
+        "end": {
+          "line": 49,
+          "column": 43,
+          "offset": 2426
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "WindowsのDLL内で非同期ログがハングする",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 4,
+              "offset": 2431
+            },
+            "end": {
+              "line": 51,
+              "column": 28,
+              "offset": 2455
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 51,
+          "column": 1,
+          "offset": 2428
+        },
+        "end": {
+          "line": 51,
+          "column": 28,
+          "offset": 2455
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "DllMain",
+              "position": {
+                "start": {
+                  "line": 53,
+                  "column": 3,
+                  "offset": 2459
+                },
+                "end": {
+                  "line": 53,
+                  "column": 10,
+                  "offset": 2466
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 1,
+              "offset": 2457
+            },
+            "end": {
+              "line": 53,
+              "column": 12,
+              "offset": 2468
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " 内で非同期ロガーやスレッドプールを作成しないでください。たとえば、DLL内のstaticロガー変数を使って作成することも避けてください。",
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 12,
+              "offset": 2468
+            },
+            "end": {
+              "line": 53,
+              "column": 81,
+              "offset": 2537
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 53,
+          "column": 1,
+          "offset": 2457
+        },
+        "end": {
+          "line": 53,
+          "column": 81,
+          "offset": 2537
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "共有ライブラリでspdlogを使うには？",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 4,
+              "offset": 2542
+            },
+            "end": {
+              "line": 55,
+              "column": 24,
+              "offset": 2562
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 55,
+          "column": 1,
+          "offset": 2539
+        },
+        "end": {
+          "line": 55,
+          "column": 24,
+          "offset": 2562
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "詳細は",
+          "position": {
+            "start": {
+              "line": 57,
+              "column": 1,
+              "offset": 2564
+            },
+            "end": {
+              "line": 57,
+              "column": 4,
+              "offset": 2567
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "/docs/spdlog/v1-17-0/ja/01-guide/12-how-to-use-spdlog-in-dlls/",
+          "children": [
+            {
+              "type": "text",
+              "value": "DLLでspdlogを使う方法",
+              "position": {
+                "start": {
+                  "line": 57,
+                  "column": 5,
+                  "offset": 2568
+                },
+                "end": {
+                  "line": 57,
+                  "column": 20,
+                  "offset": 2583
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 57,
+              "column": 4,
+              "offset": 2567
+            },
+            "end": {
+              "line": 57,
+              "column": 86,
+              "offset": 2649
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "を参照してください。",
+          "position": {
+            "start": {
+              "line": 57,
+              "column": 86,
+              "offset": 2649
+            },
+            "end": {
+              "line": 57,
+              "column": 96,
+              "offset": 2659
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 57,
+          "column": 1,
+          "offset": 2564
+        },
+        "end": {
+          "line": 57,
+          "column": 96,
+          "offset": 2659
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "共有ライブラリ内で使うとメモリーリークが検出される",
+          "position": {
+            "start": {
+              "line": 59,
+              "column": 4,
+              "offset": 2664
+            },
+            "end": {
+              "line": 59,
+              "column": 29,
+              "offset": 2689
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 59,
+          "column": 1,
+          "offset": 2661
+        },
+        "end": {
+          "line": 59,
+          "column": 29,
+          "offset": 2689
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "非同期ロガーと ",
+          "position": {
+            "start": {
+              "line": 61,
+              "column": 1,
+              "offset": 2691
+            },
+            "end": {
+              "line": 61,
+              "column": 9,
+              "offset": 2699
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::flush_every()",
+          "position": {
+            "start": {
+              "line": 61,
+              "column": 9,
+              "offset": 2699
+            },
+            "end": {
+              "line": 61,
+              "column": 32,
+              "offset": 2722
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " は、ワーカースレッドを作成します。",
+          "position": {
+            "start": {
+              "line": 61,
+              "column": 32,
+              "offset": 2722
+            },
+            "end": {
+              "line": 61,
+              "column": 50,
+              "offset": 2740
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 61,
+          "column": 1,
+          "offset": 2691
+        },
+        "end": {
+          "line": 61,
+          "column": 50,
+          "offset": 2740
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "共有ライブラリでこれらを使う場合、共有ライブラリがメモリーからアンロードされる前に ",
+          "position": {
+            "start": {
+              "line": 63,
+              "column": 1,
+              "offset": 2742
+            },
+            "end": {
+              "line": 63,
+              "column": 43,
+              "offset": 2784
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::shutdown();",
+          "position": {
+            "start": {
+              "line": 63,
+              "column": 43,
+              "offset": 2784
+            },
+            "end": {
+              "line": 63,
+              "column": 64,
+              "offset": 2805
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を呼び出す必要があります。そうしないと、スレッドに関連するオブジェクトが解放されない場合があります。",
+          "position": {
+            "start": {
+              "line": 63,
+              "column": 64,
+              "offset": 2805
+            },
+            "end": {
+              "line": 63,
+              "column": 115,
+              "offset": 2856
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 63,
+          "column": 1,
+          "offset": 2742
+        },
+        "end": {
+          "line": 63,
+          "column": 115,
+          "offset": 2856
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "カスタム書式を使うと色が表示されない",
+          "position": {
+            "start": {
+              "line": 65,
+              "column": 4,
+              "offset": 2861
+            },
+            "end": {
+              "line": 65,
+              "column": 22,
+              "offset": 2879
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 65,
+          "column": 1,
+          "offset": 2858
+        },
+        "end": {
+          "line": 65,
+          "column": 22,
+          "offset": 2879
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "色を付けたい部分を ",
+          "position": {
+            "start": {
+              "line": 67,
+              "column": 1,
+              "offset": 2881
+            },
+            "end": {
+              "line": 67,
+              "column": 11,
+              "offset": 2891
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%^ ",
+          "position": {
+            "start": {
+              "line": 67,
+              "column": 11,
+              "offset": 2891
+            },
+            "end": {
+              "line": 67,
+              "column": 16,
+              "offset": 2896
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " と ",
+          "position": {
+            "start": {
+              "line": 67,
+              "column": 16,
+              "offset": 2896
+            },
+            "end": {
+              "line": 67,
+              "column": 19,
+              "offset": 2899
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%$",
+          "position": {
+            "start": {
+              "line": 67,
+              "column": 19,
+              "offset": 2899
+            },
+            "end": {
+              "line": 67,
+              "column": 23,
+              "offset": 2903
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " で囲む必要があります。",
+          "position": {
+            "start": {
+              "line": 67,
+              "column": 23,
+              "offset": 2903
+            },
+            "end": {
+              "line": 67,
+              "column": 35,
+              "offset": 2915
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 67,
+          "column": 1,
+          "offset": 2881
+        },
+        "end": {
+          "line": 67,
+          "column": 35,
+          "offset": 2915
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "例：",
+          "position": {
+            "start": {
+              "line": 69,
+              "column": 1,
+              "offset": 2917
+            },
+            "end": {
+              "line": 69,
+              "column": 3,
+              "offset": 2919
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "spdlog::set_pattern(“%^[%l]%$ %v”);",
+          "position": {
+            "start": {
+              "line": 69,
+              "column": 3,
+              "offset": 2919
+            },
+            "end": {
+              "line": 69,
+              "column": 40,
+              "offset": 2956
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 69,
+          "column": 1,
+          "offset": 2917
+        },
+        "end": {
+          "line": 69,
+          "column": 40,
+          "offset": 2956
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "カスタム書式を使うとソース情報が表示されない",
+          "position": {
+            "start": {
+              "line": 71,
+              "column": 4,
+              "offset": 2961
+            },
+            "end": {
+              "line": 71,
+              "column": 26,
+              "offset": 2983
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 71,
+          "column": 1,
+          "offset": 2958
+        },
+        "end": {
+          "line": 71,
+          "column": 26,
+          "offset": 2983
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "%@",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 1,
+              "offset": 2985
+            },
+            "end": {
+              "line": 73,
+              "column": 5,
+              "offset": 2989
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "、",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 5,
+              "offset": 2989
+            },
+            "end": {
+              "line": 73,
+              "column": 6,
+              "offset": 2990
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%s",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 6,
+              "offset": 2990
+            },
+            "end": {
+              "line": 73,
+              "column": 10,
+              "offset": 2994
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "、",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 10,
+              "offset": 2994
+            },
+            "end": {
+              "line": 73,
+              "column": 11,
+              "offset": 2995
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%g",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 11,
+              "offset": 2995
+            },
+            "end": {
+              "line": 73,
+              "column": 15,
+              "offset": 2999
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "、",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 15,
+              "offset": 2999
+            },
+            "end": {
+              "line": 73,
+              "column": 16,
+              "offset": 3000
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%#",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 16,
+              "offset": 3000
+            },
+            "end": {
+              "line": 73,
+              "column": 20,
+              "offset": 3004
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "、",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 20,
+              "offset": 3004
+            },
+            "end": {
+              "line": 73,
+              "column": 21,
+              "offset": 3005
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "%!",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 21,
+              "offset": 3005
+            },
+            "end": {
+              "line": 73,
+              "column": 25,
+              "offset": 3009
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " などのカスタム書式パターンは、ソース情報を表示します。",
+          "position": {
+            "start": {
+              "line": 73,
+              "column": 25,
+              "offset": 3009
+            },
+            "end": {
+              "line": 73,
+              "column": 53,
+              "offset": 3037
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 73,
+          "column": 1,
+          "offset": 2985
+        },
+        "end": {
+          "line": 73,
+          "column": 53,
+          "offset": 3037
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "これらを動作させるには、コンパイル時のログレベルマクロを使う必要があります。",
+          "position": {
+            "start": {
+              "line": 75,
+              "column": 1,
+              "offset": 3039
+            },
+            "end": {
+              "line": 75,
+              "column": 39,
+              "offset": 3077
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 75,
+          "column": 1,
+          "offset": 3039
+        },
+        "end": {
+          "line": 75,
+          "column": 39,
+          "offset": 3077
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "例：",
+          "position": {
+            "start": {
+              "line": 77,
+              "column": 1,
+              "offset": 3079
+            },
+            "end": {
+              "line": 77,
+              "column": 3,
+              "offset": 3081
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 77,
+          "column": 1,
+          "offset": 3079
+        },
+        "end": {
+          "line": 77,
+          "column": 3,
+          "offset": 3081
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cpp",
+      "meta": null,
+      "value": "\n#define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO \n#include \"spdlog/spdlog.h\"\n#include \"spdlog/sinks/stdout_sinks.h\"\n\nvoid source_info_example()\n{\n    auto console = spdlog::stdout_logger_mt(\"console\");\n    spdlog::set_default_logger(console);\n    spdlog::set_pattern(\"[source %s] [function %!] [line %#] %v\");\n\n    SPDLOG_LOGGER_INFO(console, \"log with source info\"); // Console: \"[source example.cpp] [function source_info_example] [line 10] log with source info\"\n    SPDLOG_INFO(\"global log with source info\"); // Console: \"[source example.cpp] [function source_info_example] [line 11] global logger with source info\"\n\n    console->info(\"source info is not printed\"); // Console: \"[source ] [function ] [line ] source info is not printed\"\n}",
+      "position": {
+        "start": {
+          "line": 78,
+          "column": 1,
+          "offset": 3082
+        },
+        "end": {
+          "line": 95,
+          "column": 4,
+          "offset": 3833
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "WinAPIのmin/maxマクロ定義",
+          "position": {
+            "start": {
+              "line": 97,
+              "column": 4,
+              "offset": 3838
+            },
+            "end": {
+              "line": 97,
+              "column": 23,
+              "offset": 3857
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 97,
+          "column": 1,
+          "offset": 3835
+        },
+        "end": {
+          "line": 97,
+          "column": 23,
+          "offset": 3857
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Windowsでspdlogのヘッダーオンリー版を同梱のfmtライブラリと併用すると、fmtライブラリ経由で ",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 1,
+              "offset": 3859
+            },
+            "end": {
+              "line": 99,
+              "column": 56,
+              "offset": 3914
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "Windows.h",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 56,
+              "offset": 3914
+            },
+            "end": {
+              "line": 99,
+              "column": 67,
+              "offset": 3925
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " がインクルードされます。WinAPIの ",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 67,
+              "offset": 3925
+            },
+            "end": {
+              "line": 99,
+              "column": 88,
+              "offset": 3946
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "min",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 88,
+              "offset": 3946
+            },
+            "end": {
+              "line": 99,
+              "column": 93,
+              "offset": 3951
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "/",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 93,
+              "offset": 3951
+            },
+            "end": {
+              "line": 99,
+              "column": 94,
+              "offset": 3952
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "max",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 94,
+              "offset": 3952
+            },
+            "end": {
+              "line": 99,
+              "column": 99,
+              "offset": 3957
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " マクロ定義によるエラーを防ぐには、次のいずれかの方法を使えます。",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 99,
+              "offset": 3957
+            },
+            "end": {
+              "line": 99,
+              "column": 132,
+              "offset": 3990
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 99,
+          "column": 1,
+          "offset": 3859
+        },
+        "end": {
+          "line": 99,
+          "column": 132,
+          "offset": 3990
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "start": null,
+      "spread": false,
+      "children": [
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "inlineCode",
+                  "value": "min()",
+                  "position": {
+                    "start": {
+                      "line": 101,
+                      "column": 3,
+                      "offset": 3994
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 10,
+                      "offset": 4001
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " や ",
+                  "position": {
+                    "start": {
+                      "line": 101,
+                      "column": 10,
+                      "offset": 4001
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 13,
+                      "offset": 4004
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "max()",
+                  "position": {
+                    "start": {
+                      "line": 101,
+                      "column": 13,
+                      "offset": 4004
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 20,
+                      "offset": 4011
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " の呼び出しを括弧で囲む：",
+                  "position": {
+                    "start": {
+                      "line": 101,
+                      "column": 20,
+                      "offset": 4011
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 33,
+                      "offset": 4024
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "(std::max)(n1, n2)",
+                  "position": {
+                    "start": {
+                      "line": 101,
+                      "column": 33,
+                      "offset": 4024
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 53,
+                      "offset": 4044
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "。",
+                  "position": {
+                    "start": {
+                      "line": 101,
+                      "column": 53,
+                      "offset": 4044
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 54,
+                      "offset": 4045
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 101,
+                  "column": 3,
+                  "offset": 3994
+                },
+                "end": {
+                  "line": 101,
+                  "column": 54,
+                  "offset": 4045
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 101,
+              "column": 1,
+              "offset": 3992
+            },
+            "end": {
+              "line": 101,
+              "column": 54,
+              "offset": 4045
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "spdlog.hをインクルードする前に、",
+                  "position": {
+                    "start": {
+                      "line": 102,
+                      "column": 3,
+                      "offset": 4048
+                    },
+                    "end": {
+                      "line": 102,
+                      "column": 23,
+                      "offset": 4068
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "NOMINMAX",
+                  "position": {
+                    "start": {
+                      "line": 102,
+                      "column": 23,
+                      "offset": 4068
+                    },
+                    "end": {
+                      "line": 102,
+                      "column": 33,
+                      "offset": 4078
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " マクロを定義する。",
+                  "position": {
+                    "start": {
+                      "line": 102,
+                      "column": 33,
+                      "offset": 4078
+                    },
+                    "end": {
+                      "line": 102,
+                      "column": 43,
+                      "offset": 4088
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 102,
+                  "column": 3,
+                  "offset": 4048
+                },
+                "end": {
+                  "line": 102,
+                  "column": 43,
+                  "offset": 4088
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 102,
+              "column": 1,
+              "offset": 4046
+            },
+            "end": {
+              "line": 102,
+              "column": 43,
+              "offset": 4088
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "外部のfmtライブラリを使う（spdlogのビルド時に ",
+                  "position": {
+                    "start": {
+                      "line": 103,
+                      "column": 3,
+                      "offset": 4091
+                    },
+                    "end": {
+                      "line": 103,
+                      "column": 31,
+                      "offset": 4119
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "-DSPDLOG_FMT_EXTERNAL=ON",
+                  "position": {
+                    "start": {
+                      "line": 103,
+                      "column": 31,
+                      "offset": 4119
+                    },
+                    "end": {
+                      "line": 103,
+                      "column": 57,
+                      "offset": 4145
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "）。",
+                  "position": {
+                    "start": {
+                      "line": 103,
+                      "column": 57,
+                      "offset": 4145
+                    },
+                    "end": {
+                      "line": 103,
+                      "column": 59,
+                      "offset": 4147
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 103,
+                  "column": 3,
+                  "offset": 4091
+                },
+                "end": {
+                  "line": 103,
+                  "column": 59,
+                  "offset": 4147
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 103,
+              "column": 1,
+              "offset": 4089
+            },
+            "end": {
+              "line": 103,
+              "column": 59,
+              "offset": 4147
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 101,
+          "column": 1,
+          "offset": 3992
+        },
+        "end": {
+          "line": 103,
+          "column": 59,
+          "offset": 4147
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "詳細は",
+          "position": {
+            "start": {
+              "line": 105,
+              "column": 1,
+              "offset": 4149
+            },
+            "end": {
+              "line": 105,
+              "column": 4,
+              "offset": 4152
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/issues/1553",
+          "children": [
+            {
+              "type": "text",
+              "value": "#1553",
+              "position": {
+                "start": {
+                  "line": 105,
+                  "column": 5,
+                  "offset": 4153
+                },
+                "end": {
+                  "line": 105,
+                  "column": 10,
+                  "offset": 4158
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 105,
+              "column": 4,
+              "offset": 4152
+            },
+            "end": {
+              "line": 105,
+              "column": 57,
+              "offset": 4205
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "または",
+          "position": {
+            "start": {
+              "line": 105,
+              "column": 57,
+              "offset": 4205
+            },
+            "end": {
+              "line": 105,
+              "column": 60,
+              "offset": 4208
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/fmtlib/fmt/issues/1508",
+          "children": [
+            {
+              "type": "text",
+              "value": "fmt#1508",
+              "position": {
+                "start": {
+                  "line": 105,
+                  "column": 61,
+                  "offset": 4209
+                },
+                "end": {
+                  "line": 105,
+                  "column": 69,
+                  "offset": 4217
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 105,
+              "column": 60,
+              "offset": 4208
+            },
+            "end": {
+              "line": 105,
+              "column": 113,
+              "offset": 4261
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "を参照してください。",
+          "position": {
+            "start": {
+              "line": 105,
+              "column": 113,
+              "offset": 4261
+            },
+            "end": {
+              "line": 105,
+              "column": 123,
+              "offset": 4271
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 105,
+          "column": 1,
+          "offset": 4149
+        },
+        "end": {
+          "line": 105,
+          "column": 123,
+          "offset": 4271
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "デフォルトロガーをstderrへ切り替える",
+          "position": {
+            "start": {
+              "line": 107,
+              "column": 4,
+              "offset": 4276
+            },
+            "end": {
+              "line": 107,
+              "column": 25,
+              "offset": 4297
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 107,
+          "column": 1,
+          "offset": 4273
+        },
+        "end": {
+          "line": 107,
+          "column": 25,
+          "offset": 4297
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "新しい ",
+          "position": {
+            "start": {
+              "line": 109,
+              "column": 1,
+              "offset": 4299
+            },
+            "end": {
+              "line": 109,
+              "column": 5,
+              "offset": 4303
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "stderr",
+          "position": {
+            "start": {
+              "line": 109,
+              "column": 5,
+              "offset": 4303
+            },
+            "end": {
+              "line": 109,
+              "column": 13,
+              "offset": 4311
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " ロガーを渡して ",
+          "position": {
+            "start": {
+              "line": 109,
+              "column": 13,
+              "offset": 4311
+            },
+            "end": {
+              "line": 109,
+              "column": 22,
+              "offset": 4320
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "set_default_logger()",
+          "position": {
+            "start": {
+              "line": 109,
+              "column": 22,
+              "offset": 4320
+            },
+            "end": {
+              "line": 109,
+              "column": 44,
+              "offset": 4342
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を呼び出せます。ログ書式を変えたくない場合、名前には空文字列を指定するべきですが、既にその名前を使っている初期デフォルトロガーと衝突します。解決するには、まずデフォルトロガーを、別の任意の名前を持つロガーに置き換えます…",
+          "position": {
+            "start": {
+              "line": 109,
+              "column": 44,
+              "offset": 4342
+            },
+            "end": {
+              "line": 109,
+              "column": 155,
+              "offset": 4453
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 109,
+          "column": 1,
+          "offset": 4299
+        },
+        "end": {
+          "line": 109,
+          "column": 155,
+          "offset": 4453
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "c++",
+      "meta": null,
+      "value": "#include \"spdlog/sinks/stdout_color_sinks.h\"\n#include \"spdlog/spdlog.h\"\nint main()\n{\n    // Replace the default logger with a (color, single-threaded) stderr logger\n    // (but first replace it with an arbitrarily-named logger to prevent a name clash)\n    spdlog::set_default_logger( spdlog::stderr_color_st( \"some_arbitrary_name\" ) );\n    spdlog::set_default_logger( spdlog::stderr_color_st( \"\" ) );\n    spdlog::info(\"This message will go to stderr\");\n}",
+      "position": {
+        "start": {
+          "line": 110,
+          "column": 1,
+          "offset": 4454
+        },
+        "end": {
+          "line": 121,
+          "column": 4,
+          "offset": 4919
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "ログレベルフィルターを無視してログメッセージを強制的に出力するには？",
+          "position": {
+            "start": {
+              "line": 123,
+              "column": 4,
+              "offset": 4924
+            },
+            "end": {
+              "line": 123,
+              "column": 38,
+              "offset": 4958
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 123,
+          "column": 1,
+          "offset": 4921
+        },
+        "end": {
+          "line": 123,
+          "column": 38,
+          "offset": 4958
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "spdlog::level::off",
+          "position": {
+            "start": {
+              "line": 125,
+              "column": 1,
+              "offset": 4960
+            },
+            "end": {
+              "line": 125,
+              "column": 21,
+              "offset": 4980
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " を使うと、ログメッセージを強制的に出力できます（",
+          "position": {
+            "start": {
+              "line": 125,
+              "column": 21,
+              "offset": 4980
+            },
+            "end": {
+              "line": 125,
+              "column": 46,
+              "offset": 5005
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/discussions/2640",
+          "children": [
+            {
+              "type": "text",
+              "value": "議論",
+              "position": {
+                "start": {
+                  "line": 125,
+                  "column": 47,
+                  "offset": 5006
+                },
+                "end": {
+                  "line": 125,
+                  "column": 49,
+                  "offset": 5008
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 125,
+              "column": 46,
+              "offset": 5005
+            },
+            "end": {
+              "line": 125,
+              "column": 83,
+              "offset": 5042
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "）。",
+          "position": {
+            "start": {
+              "line": 125,
+              "column": 83,
+              "offset": 5042
+            },
+            "end": {
+              "line": 125,
+              "column": 85,
+              "offset": 5044
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 125,
+          "column": 1,
+          "offset": 4960
+        },
+        "end": {
+          "line": 125,
+          "column": 85,
+          "offset": 5044
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cpp",
+      "meta": null,
+      "value": "logger.set_level(spdlog::level::error);\n\nlogger.warn(\"This message is not output.\");\n\nlogger.log(spdlog::level::off, \"This message is output.\");",
+      "position": {
+        "start": {
+          "line": 126,
+          "column": 1,
+          "offset": 5045
+        },
+        "end": {
+          "line": 132,
+          "column": 4,
+          "offset": 5200
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "この方法では、ログレベルに基づくフラッシュ（",
+          "position": {
+            "start": {
+              "line": 134,
+              "column": 1,
+              "offset": 5202
+            },
+            "end": {
+              "line": 134,
+              "column": 23,
+              "offset": 5224
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "logger.flush_on(spdlog::level)",
+          "position": {
+            "start": {
+              "line": 134,
+              "column": 23,
+              "offset": 5224
+            },
+            "end": {
+              "line": 134,
+              "column": 55,
+              "offset": 5256
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "）は起動しない点に注意してください。",
+          "position": {
+            "start": {
+              "line": 134,
+              "column": 55,
+              "offset": 5256
+            },
+            "end": {
+              "line": 134,
+              "column": 73,
+              "offset": 5274
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 134,
+          "column": 1,
+          "offset": 5202
+        },
+        "end": {
+          "line": 134,
+          "column": 73,
+          "offset": 5274
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "GCC標準ライブラリの互換性問題",
+          "position": {
+            "start": {
+              "line": 136,
+              "column": 4,
+              "offset": 5279
+            },
+            "end": {
+              "line": 136,
+              "column": 20,
+              "offset": 5295
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 136,
+          "column": 1,
+          "offset": 5276
+        },
+        "end": {
+          "line": 136,
+          "column": 20,
+          "offset": 5295
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "GCCコンパイラーで次のような簡単なコードをビルドして ",
+          "position": {
+            "start": {
+              "line": 138,
+              "column": 1,
+              "offset": 5297
+            },
+            "end": {
+              "line": 138,
+              "column": 29,
+              "offset": 5325
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "std::bad_alloc",
+          "position": {
+            "start": {
+              "line": 138,
+              "column": 29,
+              "offset": 5325
+            },
+            "end": {
+              "line": 138,
+              "column": 45,
+              "offset": 5341
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " が発生した場合、互換性のない標準ライブラリを使っている可能性があります。",
+          "position": {
+            "start": {
+              "line": 138,
+              "column": 45,
+              "offset": 5341
+            },
+            "end": {
+              "line": 138,
+              "column": 82,
+              "offset": 5378
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 138,
+          "column": 1,
+          "offset": 5297
+        },
+        "end": {
+          "line": 138,
+          "column": 82,
+          "offset": 5378
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "cpp",
+      "meta": null,
+      "value": "#include \"spdlog/spdlog.h\"\n\nint main(int argc, char *argv[])\n{\n    spdlog::info(\"Test message.\");\n\n    return 0;\n}",
+      "position": {
+        "start": {
+          "line": 139,
+          "column": 1,
+          "offset": 5379
+        },
+        "end": {
+          "line": 148,
+          "column": 4,
+          "offset": 5504
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "std::bad_alloc",
+          "position": {
+            "start": {
+              "line": 150,
+              "column": 1,
+              "offset": 5506
+            },
+            "end": {
+              "line": 150,
+              "column": 17,
+              "offset": 5522
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " は、多くの場合、ダングリングポインターやヌル終端されていない文字列を渡したときに発生します。しかしGCCでは、spdlogとアプリケーションで異なる標準ライブラリ（例：",
+          "position": {
+            "start": {
+              "line": 150,
+              "column": 17,
+              "offset": 5522
+            },
+            "end": {
+              "line": 150,
+              "column": 102,
+              "offset": 5607
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "libstdc++",
+          "position": {
+            "start": {
+              "line": 150,
+              "column": 102,
+              "offset": 5607
+            },
+            "end": {
+              "line": 150,
+              "column": 113,
+              "offset": 5618
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " と ",
+          "position": {
+            "start": {
+              "line": 150,
+              "column": 113,
+              "offset": 5618
+            },
+            "end": {
+              "line": 150,
+              "column": 116,
+              "offset": 5621
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "libstdc++11",
+          "position": {
+            "start": {
+              "line": 150,
+              "column": 116,
+              "offset": 5621
+            },
+            "end": {
+              "line": 150,
+              "column": 129,
+              "offset": 5634
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "）を使っている場合にも、このエラーが報告されることがあります。パッケージマネージャーを使う場合に、この問題の報告がより多く見られます。パッケージマネージャーを使っている場合は、ABI設定を確認してください。",
+          "position": {
+            "start": {
+              "line": 150,
+              "column": 129,
+              "offset": 5634
+            },
+            "end": {
+              "line": 150,
+              "column": 232,
+              "offset": 5737
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 150,
+          "column": 1,
+          "offset": 5506
+        },
+        "end": {
+          "line": 150,
+          "column": 232,
+          "offset": 5737
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "詳細は",
+          "position": {
+            "start": {
+              "line": 152,
+              "column": 1,
+              "offset": 5739
+            },
+            "end": {
+              "line": 152,
+              "column": 4,
+              "offset": 5742
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/issues/2286",
+          "children": [
+            {
+              "type": "text",
+              "value": "#2286",
+              "position": {
+                "start": {
+                  "line": 152,
+                  "column": 5,
+                  "offset": 5743
+                },
+                "end": {
+                  "line": 152,
+                  "column": 10,
+                  "offset": 5748
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 152,
+              "column": 4,
+              "offset": 5742
+            },
+            "end": {
+              "line": 152,
+              "column": 57,
+              "offset": 5795
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "または",
+          "position": {
+            "start": {
+              "line": 152,
+              "column": 57,
+              "offset": 5795
+            },
+            "end": {
+              "line": 152,
+              "column": 60,
+              "offset": 5798
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/gabime/spdlog/issues/2290",
+          "children": [
+            {
+              "type": "text",
+              "value": "#2290",
+              "position": {
+                "start": {
+                  "line": 152,
+                  "column": 61,
+                  "offset": 5799
+                },
+                "end": {
+                  "line": 152,
+                  "column": 66,
+                  "offset": 5804
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 152,
+              "column": 60,
+              "offset": 5798
+            },
+            "end": {
+              "line": 152,
+              "column": 113,
+              "offset": 5851
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "を参照してください。",
+          "position": {
+            "start": {
+              "line": 152,
+              "column": 113,
+              "offset": 5851
+            },
+            "end": {
+              "line": 152,
+              "column": 123,
+              "offset": 5861
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 152,
+          "column": 1,
+          "offset": 5739
+        },
+        "end": {
+          "line": 152,
+          "column": 123,
+          "offset": 5861
+        }
+      }
+    }
+  ],
+  "changes": [
+    {
+      "from": "https://github.com/gabime/spdlog/wiki/7.-Flush-policy",
+      "to": "/docs/spdlog/v1-17-0/ja/01-guide/10-flush-policy/"
+    },
+    {
+      "from": "https://github.com/gabime/spdlog/wiki/How-to-use-spdlog-in-DLLs",
+      "to": "/docs/spdlog/v1-17-0/ja/01-guide/12-how-to-use-spdlog-in-dlls/"
+    },
+    {
+      "from": "/gabime/spdlog/discussions/2640",
+      "to": "https://github.com/gabime/spdlog/discussions/2640",
+      "reason": "Original GitHub-origin absolute path"
+    }
+  ]
+}

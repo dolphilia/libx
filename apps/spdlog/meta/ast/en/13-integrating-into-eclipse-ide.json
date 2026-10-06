@@ -1,0 +1,985 @@
+{
+  "language": "en",
+  "source": {
+    "name": "Integrating-into-Eclipse-IDE.md",
+    "slug": "13-integrating-into-eclipse-ide",
+    "source": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Integrating-into-Eclipse-IDE.md",
+    "sourceSHA256": "643339b22d8e1a5b7464db1126348fdd869f870d4d30d76face16fd1768f2bc8",
+    "canonicalInput": "apps/spdlog/meta/canonical-inputs/13-integrating-into-eclipse-ide.md",
+    "canonicalInputSHA256": "643339b22d8e1a5b7464db1126348fdd869f870d4d30d76face16fd1768f2bc8",
+    "trial": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/13-integrating-into-eclipse-ide.md",
+    "canonicalSHA256": "ad255ce88d1e5539cdf441c7563660b855b0fd27a49a216fc6ad9483febb9b6a",
+    "title": "Integrating into Eclipse IDE",
+    "excluded": [],
+    "sourceNote": null
+  },
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This short guide can help you get started with integrating the C++ ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 1046
+            },
+            "end": {
+              "line": 5,
+              "column": 68,
+              "offset": 1113
+            }
+          }
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "spdlog",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 70,
+                  "offset": 1115
+                },
+                "end": {
+                  "line": 5,
+                  "column": 76,
+                  "offset": 1121
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 68,
+              "offset": 1113
+            },
+            "end": {
+              "line": 5,
+              "column": 78,
+              "offset": 1123
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " library into the Eclipse IDE.\nThe whole configuration consists of 5 simple steps.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 78,
+              "offset": 1123
+            },
+            "end": {
+              "line": 6,
+              "column": 52,
+              "offset": 1205
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 1046
+        },
+        "end": {
+          "line": 6,
+          "column": 52,
+          "offset": 1205
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Note: We can use git clone. Of course :)",
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 1,
+              "offset": 1207
+            },
+            "end": {
+              "line": 8,
+              "column": 41,
+              "offset": 1247
+            }
+          }
+        },
+        {
+          "type": "html",
+          "value": "<br>",
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 41,
+              "offset": 1247
+            },
+            "end": {
+              "line": 8,
+              "column": 45,
+              "offset": 1251
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "\nNote: In many cases, it is advisable to choose a parent folder named '",
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 45,
+              "offset": 1251
+            },
+            "end": {
+              "line": 9,
+              "column": 71,
+              "offset": 1322
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "ThirdParty",
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 72,
+                  "offset": 1323
+                },
+                "end": {
+                  "line": 9,
+                  "column": 82,
+                  "offset": 1333
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 71,
+              "offset": 1322
+            },
+            "end": {
+              "line": 9,
+              "column": 83,
+              "offset": 1334
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "' or '",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 83,
+              "offset": 1334
+            },
+            "end": {
+              "line": 9,
+              "column": 89,
+              "offset": 1340
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "libs",
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 90,
+                  "offset": 1341
+                },
+                "end": {
+                  "line": 9,
+                  "column": 94,
+                  "offset": 1345
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 89,
+              "offset": 1340
+            },
+            "end": {
+              "line": 9,
+              "column": 95,
+              "offset": 1346
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "' or any other name that immediately tells us that it is a folder with third-party files. I chose as the parent folder, a folder called '",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 95,
+              "offset": 1346
+            },
+            "end": {
+              "line": 9,
+              "column": 232,
+              "offset": 1483
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "ThirdParty",
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 233,
+                  "offset": 1484
+                },
+                "end": {
+                  "line": 9,
+                  "column": 243,
+                  "offset": 1494
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 232,
+              "offset": 1483
+            },
+            "end": {
+              "line": 9,
+              "column": 244,
+              "offset": 1495
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "'...",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 244,
+              "offset": 1495
+            },
+            "end": {
+              "line": 9,
+              "column": 248,
+              "offset": 1499
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 8,
+          "column": 1,
+          "offset": 1207
+        },
+        "end": {
+          "line": 9,
+          "column": 248,
+          "offset": 1499
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "spread": true,
+      "children": [
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "We will copy/unpack the content of the archive, which we previously downloaded from ",
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 4,
+                      "offset": 1504
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 88,
+                      "offset": 1588
+                    }
+                  }
+                },
+                {
+                  "type": "link",
+                  "title": null,
+                  "url": "https://github.com/gabime/spdlog",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "the project pages",
+                      "position": {
+                        "start": {
+                          "line": 11,
+                          "column": 89,
+                          "offset": 1589
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 106,
+                          "offset": 1606
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 88,
+                      "offset": 1588
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 141,
+                      "offset": 1641
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ", into the newly created or already existing project. Or you can clone it from ",
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 141,
+                      "offset": 1641
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 220,
+                      "offset": 1720
+                    }
+                  }
+                },
+                {
+                  "type": "link",
+                  "title": null,
+                  "url": "https://github.com/gabime/spdlog",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "github",
+                      "position": {
+                        "start": {
+                          "line": 11,
+                          "column": 221,
+                          "offset": 1721
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 227,
+                          "offset": 1727
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 220,
+                      "offset": 1720
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 262,
+                      "offset": 1762
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 4,
+                  "offset": 1504
+                },
+                "end": {
+                  "line": 11,
+                  "column": 262,
+                  "offset": 1762
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1,
+              "offset": 1501
+            },
+            "end": {
+              "line": 11,
+              "column": 262,
+              "offset": 1762
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "From the menu bar choose ",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 4,
+                      "offset": 1767
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 29,
+                      "offset": 1792
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "Project > Properties > C/C+ Build > GCC C++ Compiler > Preprocessor",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 29,
+                      "offset": 1792
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 98,
+                      "offset": 1861
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ", and here you have to add a definition by clicking the Add button (define symbol ",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 98,
+                      "offset": 1861
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 180,
+                      "offset": 1943
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "-D",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 180,
+                      "offset": 1943
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 184,
+                      "offset": 1947
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ") and add the following definition ",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 184,
+                      "offset": 1947
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 219,
+                      "offset": 1982
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SPDLOG_COMPILED_LIB",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 219,
+                      "offset": 1982
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 240,
+                      "offset": 2003
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ". Attention, keep the size of the letters!",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 240,
+                      "offset": 2003
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 282,
+                      "offset": 2045
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 4,
+                  "offset": 1767
+                },
+                "end": {
+                  "line": 13,
+                  "column": 282,
+                  "offset": 2045
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1,
+              "offset": 1764
+            },
+            "end": {
+              "line": 13,
+              "column": 282,
+              "offset": 2045
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Then click ",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 4,
+                      "offset": 2050
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 15,
+                      "offset": 2061
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "Includes",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 15,
+                      "offset": 2061
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 25,
+                      "offset": 2071
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " (We are still here:",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 25,
+                      "offset": 2071
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 45,
+                      "offset": 2091
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": " Project > Properties > C/C++ Build > GCC C++ Compiler",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 45,
+                      "offset": 2091
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 101,
+                      "offset": 2147
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ") and add the path to the folder with headers for the library ",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 101,
+                      "offset": 2147
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 163,
+                      "offset": 2209
+                    }
+                  }
+                },
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "spdlog",
+                      "position": {
+                        "start": {
+                          "line": 15,
+                          "column": 165,
+                          "offset": 2211
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 171,
+                          "offset": 2217
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 163,
+                      "offset": 2209
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 173,
+                      "offset": 2219
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ".\nFor example: ",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 173,
+                      "offset": 2219
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 14,
+                      "offset": 2234
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "thirdParty/spdlog/include",
+                  "position": {
+                    "start": {
+                      "line": 16,
+                      "column": 14,
+                      "offset": 2234
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 41,
+                      "offset": 2261
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 4,
+                  "offset": 2050
+                },
+                "end": {
+                  "line": 16,
+                  "column": 41,
+                  "offset": 2261
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1,
+              "offset": 2047
+            },
+            "end": {
+              "line": 16,
+              "column": 41,
+              "offset": 2261
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Click on ",
+                  "position": {
+                    "start": {
+                      "line": 18,
+                      "column": 4,
+                      "offset": 2266
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 13,
+                      "offset": 2275
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "apply and close",
+                  "position": {
+                    "start": {
+                      "line": 18,
+                      "column": 13,
+                      "offset": 2275
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 30,
+                      "offset": 2292
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ".",
+                  "position": {
+                    "start": {
+                      "line": 18,
+                      "column": 30,
+                      "offset": 2292
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 31,
+                      "offset": 2293
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 18,
+                  "column": 4,
+                  "offset": 2266
+                },
+                "end": {
+                  "line": 18,
+                  "column": 31,
+                  "offset": 2293
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 1,
+              "offset": 2263
+            },
+            "end": {
+              "line": 18,
+              "column": 31,
+              "offset": 2293
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Click ",
+                  "position": {
+                    "start": {
+                      "line": 20,
+                      "column": 4,
+                      "offset": 2298
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 10,
+                      "offset": 2304
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "Project > Indexer > rebuild",
+                  "position": {
+                    "start": {
+                      "line": 20,
+                      "column": 10,
+                      "offset": 2304
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 39,
+                      "offset": 2333
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 20,
+                  "column": 4,
+                  "offset": 2298
+                },
+                "end": {
+                  "line": 20,
+                  "column": 39,
+                  "offset": 2333
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 1,
+              "offset": 2295
+            },
+            "end": {
+              "line": 20,
+              "column": 39,
+              "offset": 2333
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 1501
+        },
+        "end": {
+          "line": 20,
+          "column": 39,
+          "offset": 2333
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Happy Coding ;)",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 1,
+              "offset": 2336
+            },
+            "end": {
+              "line": 23,
+              "column": 16,
+              "offset": 2351
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 23,
+          "column": 1,
+          "offset": 2336
+        },
+        "end": {
+          "line": 23,
+          "column": 17,
+          "offset": 2352
+        }
+      }
+    }
+  ],
+  "changes": []
+}
