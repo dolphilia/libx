@@ -1,0 +1,213 @@
+<h2 class="definition" id="tabs">
+<span class="number">2.2</span>Tabs
+</h2>
+<p>Tabs in lines are not expanded to <a href="#space">spaces</a>.  However,
+in contexts where spaces help to define block structure,
+tabs behave as if they were replaced by spaces with a tab stop
+of 4 characters.</p>
+<p>Thus, for example, a tab can be used instead of four spaces
+in an indented code block.  (Note, however, that internal
+tabs are passed through as literal tabs, not expanded to
+spaces.)</p>
+<div class="example" id="example-1">
+<div class="examplenum">
+<a href="#example-1">Example 1</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">→foo→baz→→bim
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;foo→baz→→bim
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-2">
+<div class="examplenum">
+<a href="#example-2">Example 2</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span>→foo→baz→→bim
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;foo→baz→→bim
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-3">
+<div class="examplenum">
+<a href="#example-3">Example 3</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>a→a
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>ὐ→a
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;a→a
+ὐ→a
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<p>In the following example, a continuation paragraph of a list
+item is indented with a tab; this has exactly the same effect
+as indentation with four spaces would:</p>
+<div class="example" id="example-4">
+<div class="examplenum">
+<a href="#example-4">Example 4</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span>-<span class="space"> </span>foo
+
+→bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;foo&lt;/p&gt;
+&lt;p&gt;bar&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-5">
+<div class="examplenum">
+<a href="#example-5">Example 5</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">-<span class="space"> </span>foo
+
+→→bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;foo&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;<span class="space"> </span><span class="space"> </span>bar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</div>
+</div>
+<p>Normally the <code>&gt;</code> that begins a block quote may be followed
+optionally by a space, which is not considered part of the
+content.  In the following case <code>&gt;</code> is followed by a tab,
+which is treated as if it were expanded into three spaces.
+Since one of these spaces is considered part of the
+delimiter, <code>foo</code> is considered to be indented six spaces
+inside the block quote context, so we get an indented
+code block starting with two spaces.</p>
+<div class="example" id="example-6">
+<div class="examplenum">
+<a href="#example-6">Example 6</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&gt;→→foo
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;<span class="space"> </span><span class="space"> </span>foo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-7">
+<div class="examplenum">
+<a href="#example-7">Example 7</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">-→→foo
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;ul&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code&gt;<span class="space"> </span><span class="space"> </span>foo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-8">
+<div class="examplenum">
+<a href="#example-8">Example 8</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>foo
+→bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;foo
+bar
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-9">
+<div class="examplenum">
+<a href="#example-9">Example 9</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span>-<span class="space"> </span>foo
+<span class="space"> </span><span class="space"> </span><span class="space"> </span>-<span class="space"> </span>bar
+→<span class="space"> </span>-<span class="space"> </span>baz
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;ul&gt;
+&lt;li&gt;foo
+&lt;ul&gt;
+&lt;li&gt;bar
+&lt;ul&gt;
+&lt;li&gt;baz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-10">
+<div class="examplenum">
+<a href="#example-10">Example 10</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">#→Foo
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;h1&gt;Foo&lt;/h1&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-11">
+<div class="examplenum">
+<a href="#example-11">Example 11</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">*→*→*→
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;hr<span class="space"> </span>/&gt;
+</code></pre>
+</div>
+</div>
+<h2 class="definition" id="insecure-characters">
+<span class="number">2.3</span>Insecure characters
+</h2>
+<p>For security reasons, the Unicode character <code>U+0000</code> must be replaced
+with the REPLACEMENT CHARACTER (<code>U+FFFD</code>).</p>

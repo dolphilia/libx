@@ -1,0 +1,179 @@
+<h2 class="definition" id="paragraphs">
+<span class="number">4.8</span>Paragraphs
+</h2>
+<p>A sequence of non-blank lines that cannot be interpreted as other
+kinds of blocks forms a <a class="definition" href="#paragraph" id="paragraph">paragraph</a>.
+The contents of the paragraph are the result of parsing the
+paragraph’s raw content as inlines.  The paragraph’s raw content
+is formed by concatenating the lines and removing initial and final
+spaces or tabs.</p>
+<p>A simple example with two paragraphs:</p>
+<div class="example" id="example-219">
+<div class="examplenum">
+<a href="#example-219">Example 219</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">aaa
+
+bbb
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;aaa&lt;/p&gt;
+&lt;p&gt;bbb&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Paragraphs can contain multiple lines, but no blank lines:</p>
+<div class="example" id="example-220">
+<div class="examplenum">
+<a href="#example-220">Example 220</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">aaa
+bbb
+
+ccc
+ddd
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;aaa
+bbb&lt;/p&gt;
+&lt;p&gt;ccc
+ddd&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Multiple blank lines between paragraphs have no effect:</p>
+<div class="example" id="example-221">
+<div class="examplenum">
+<a href="#example-221">Example 221</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">aaa
+
+
+bbb
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;aaa&lt;/p&gt;
+&lt;p&gt;bbb&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Leading spaces or tabs are skipped:</p>
+<div class="example" id="example-222">
+<div class="examplenum">
+<a href="#example-222">Example 222</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span>aaa
+<span class="space"> </span>bbb
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;aaa
+bbb&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Lines after the first may be indented any amount, since indented
+code blocks cannot interrupt paragraphs.</p>
+<div class="example" id="example-223">
+<div class="examplenum">
+<a href="#example-223">Example 223</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">aaa
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>bbb
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>ccc
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;aaa
+bbb
+ccc&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>However, the first line may be preceded by up to three spaces of indentation.
+Four spaces of indentation is too many:</p>
+<div class="example" id="example-224">
+<div class="examplenum">
+<a href="#example-224">Example 224</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span>aaa
+bbb
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;aaa
+bbb&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-225">
+<div class="examplenum">
+<a href="#example-225">Example 225</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>aaa
+bbb
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;aaa
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;bbb&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Final spaces or tabs are stripped before inline parsing, so a paragraph
+that ends with two or more spaces will not end with a <a href="#hard-line-break">hard line
+break</a>:</p>
+<div class="example" id="example-226">
+<div class="examplenum">
+<a href="#example-226">Example 226</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">aaa<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>
+bbb<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;aaa&lt;br<span class="space"> </span>/&gt;
+bbb&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<h2 class="definition" id="blank-lines">
+<span class="number">4.9</span>Blank lines
+</h2>
+<p><a href="#blank-lines">Blank lines</a> between block-level elements are ignored,
+except for the role they play in determining whether a <a href="#list">list</a>
+is <a href="#tight">tight</a> or <a href="#loose">loose</a>.</p>
+<p>Blank lines at the beginning and end of the document are also ignored.</p>
+<div class="example" id="example-227">
+<div class="examplenum">
+<a href="#example-227">Example 227</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span>
+
+aaa
+<span class="space"> </span><span class="space"> </span>
+
+#<span class="space"> </span>aaa
+
+<span class="space"> </span><span class="space"> </span>
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;aaa&lt;/p&gt;
+&lt;h1&gt;aaa&lt;/h1&gt;
+</code></pre>
+</div>
+</div>

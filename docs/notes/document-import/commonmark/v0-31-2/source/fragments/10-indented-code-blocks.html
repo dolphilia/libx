@@ -1,0 +1,257 @@
+<h2 class="definition" id="indented-code-blocks">
+<span class="number">4.4</span>Indented code blocks
+</h2>
+<p>An <a class="definition" href="#indented-code-block" id="indented-code-block">indented code block</a> is composed of one or more
+<a href="#indented-chunk">indented chunks</a> separated by blank lines.
+An <a class="definition" href="#indented-chunk" id="indented-chunk">indented chunk</a> is a sequence of non-blank lines,
+each preceded by four or more spaces of indentation. The contents of the code
+block are the literal contents of the lines, including trailing
+<a href="#line-ending">line endings</a>, minus four spaces of indentation.
+An indented code block has no <a href="#info-string">info string</a>.</p>
+<p>An indented code block cannot interrupt a paragraph, so there must be
+a blank line between a paragraph and a following indented code block.
+(A blank line is not needed, however, between a code block and a following
+paragraph.)</p>
+<div class="example" id="example-107">
+<div class="examplenum">
+<a href="#example-107">Example 107</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>a<span class="space"> </span>simple
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>indented<span class="space"> </span>code<span class="space"> </span>block
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;a<span class="space"> </span>simple
+<span class="space"> </span><span class="space"> </span>indented<span class="space"> </span>code<span class="space"> </span>block
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<p>If there is any ambiguity between an interpretation of indentation
+as a code block and as indicating that material belongs to a <a href="#list-items">list
+item</a>, the list item interpretation takes precedence:</p>
+<div class="example" id="example-108">
+<div class="examplenum">
+<a href="#example-108">Example 108</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span>-<span class="space"> </span>foo
+
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;foo&lt;/p&gt;
+&lt;p&gt;bar&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-109">
+<div class="examplenum">
+<a href="#example-109">Example 109</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">1.<span class="space"> </span><span class="space"> </span>foo
+
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>-<span class="space"> </span>bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;foo&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+</div>
+</div>
+<p>The contents of a code block are literal text, and do not get parsed
+as Markdown:</p>
+<div class="example" id="example-110">
+<div class="examplenum">
+<a href="#example-110">Example 110</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>&lt;a/&gt;
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>*hi*
+
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>-<span class="space"> </span>one
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;&amp;lt;a/&amp;gt;
+*hi*
+
+-<span class="space"> </span>one
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<p>Here we have three chunks separated by blank lines:</p>
+<div class="example" id="example-111">
+<div class="examplenum">
+<a href="#example-111">Example 111</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>chunk1
+
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>chunk2
+<span class="space"> </span><span class="space"> </span>
+<span class="space"> </span>
+<span class="space"> </span>
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>chunk3
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;chunk1
+
+chunk2
+
+
+
+chunk3
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<p>Any initial spaces or tabs beyond four spaces of indentation will be included in
+the content, even in interior blank lines:</p>
+<div class="example" id="example-112">
+<div class="examplenum">
+<a href="#example-112">Example 112</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>chunk1
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>chunk2
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;chunk1
+<span class="space"> </span><span class="space"> </span>
+<span class="space"> </span><span class="space"> </span>chunk2
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<p>An indented code block cannot interrupt a paragraph.  (This
+allows hanging indents and the like.)</p>
+<div class="example" id="example-113">
+<div class="examplenum">
+<a href="#example-113">Example 113</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">Foo
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;Foo
+bar&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>However, any non-blank line with fewer than four spaces of indentation ends
+the code block immediately.  So a paragraph may occur immediately
+after indented code:</p>
+<div class="example" id="example-114">
+<div class="examplenum">
+<a href="#example-114">Example 114</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>foo
+bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;bar&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>And indented code can occur immediately before and after other kinds of
+blocks:</p>
+<div class="example" id="example-115">
+<div class="examplenum">
+<a href="#example-115">Example 115</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">#<span class="space"> </span>Heading
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>foo
+Heading
+------
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>foo
+----
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;h1&gt;Heading&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Heading&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr<span class="space"> </span>/&gt;
+</code></pre>
+</div>
+</div>
+<p>The first line can be preceded by more than four spaces of indentation:</p>
+<div class="example" id="example-116">
+<div class="examplenum">
+<a href="#example-116">Example 116</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>foo
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>foo
+bar
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<p>Blank lines preceding or following an indented code block
+are not included in it:</p>
+<div class="example" id="example-117">
+<div class="examplenum">
+<a href="#example-117">Example 117</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>foo
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<p>Trailing spaces or tabs are included in the code block’s content:</p>
+<div class="example" id="example-118">
+<div class="examplenum">
+<a href="#example-118">Example 118</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>foo<span class="space"> </span><span class="space"> </span>
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;foo<span class="space"> </span><span class="space"> </span>
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
