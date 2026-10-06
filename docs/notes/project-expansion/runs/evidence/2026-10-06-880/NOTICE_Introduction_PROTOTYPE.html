@@ -1,0 +1,704 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Libx GNU Make4.4.1 Introduction prototype</title><style>body{max-width:78ch;margin:2rem auto;padding:0 1rem;font:18px/1.65 system-ui,sans-serif;overflow-wrap:anywhere}pre{max-width:100%;overflow-x:auto;padding:1rem;background:#f4f4f4;font:15px/1.55 monospace;overflow-wrap:normal}pre.astro-code{background:#f4f4f4!important;color:#222!important}pre.astro-code span{color:inherit!important}header,footer{border:1px solid #ccc;padding:1rem}a{color:#176da1}h1,h2,h3{line-height:1.35}</style></head><body><header><h1>Libx GNU Make 4.4.1 Getting Started Guide — Chapters 1–3</h1><p>原著者 / Original authors: Richard M. Stallman, Roland McGrath, Paul D. Smith. 編集・翻訳者と発行者 / Modification author and publisher: Libx.</p><p>Copyright © 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995,
+1996, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2006, 2007,
+2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+2020, 2021, 2022, 2023 Free Software Foundation, Inc.
+</p><p>Copyright © 2026 Libx, for the editing and translation modifications.</p><blockquote class="quotation">
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being “A GNU Manual,”
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled “GNU Free Documentation
+License.”
+</p>
+<p>(a) The FSF’s Back-Cover Text is: “You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom.”
+</p></blockquote><p>This Libx edited guide is licensed under the GNU Free Documentation License, version 1.3 or later, with no Invariant Sections and with the original Front-Cover Text and Back-Cover Text reproduced above. It is an unofficial chapter 1–3 excerpt; all later chapters are available in the fixed original source and the official manual. No new Cover Texts or Invariant Sections have been added.</p><p>入れ子のコード内装飾は通常のコード表記にし、内容とコマンドを保持しています。見出しの自己参照記号は省略しています。元の装飾・Info・印刷表示などは固定原稿と原典を参照してください。これは変換・通知設計の試作で、日本語全文訳と意味レビューは未実施です。</p></header><main><div id="Introduction" class="chapter-level-extent">
+<h2 id="2-an-introduction-to-makefiles">2 An Introduction to Makefiles</h2>
+<p>You need a file called a <em>makefile</em> to tell <code>make</code> what to do. Most often, the makefile tells <code>make</code> how to compile and link a program. <span id="index-makefile" class="index-entry-id"></span></p>
+<p>In this chapter, we will discuss a simple makefile that describes how to compile and link a text editor which consists of eight C source files and three header files. The makefile can also tell <code>make</code> how to run miscellaneous commands when explicitly asked (for example, to remove certain files as a clean-up operation). To see a more complex example of a makefile, see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Complex-Makefile" class="ref">Complex Makefile Example</a>.</p>
+<p>When <code>make</code> recompiles the editor, each changed C source file must be recompiled. If a header file has changed, each C source file that includes the header file must be recompiled to be safe. Each compilation produces an object file corresponding to the source file. Finally, if any source file has been recompiled, all the object files, whether newly made or saved from previous compilations, must be linked together to produce the new executable editor. <span id="index-recompilation" class="index-entry-id"></span> <span id="index-editor" class="index-entry-id"></span></p>
+<hr>
+<div id="Rule-Introduction" class="section-level-extent">
+<h3 id="21-what-a-rule-looks-like">2.1 What a Rule Looks Like</h3>
+<p><span id="index-rule_002c-introduction-to" class="index-entry-id"></span> <span id="index-makefile-rule-parts" class="index-entry-id"></span> <span id="index-parts-of-makefile-rule" class="index-entry-id"></span></p>
+<p>A simple makefile consists of “rules” with the following shape:</p>
+<p><span id="index-targets_002c-introduction-to" class="index-entry-id"></span> <span id="index-prerequisites_002c-introduction-to" class="index-entry-id"></span> <span id="index-recipes_002c-introduction-to" class="index-entry-id"></span></p>
+<div class="example">
+<div class="group">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>target ... : prerequisites ...</span></span>
+<span class="line"><span>        recipe</span></span>
+<span class="line"><span>        ...</span></span>
+<span class="line"><span>        ...</span></span></code></pre>
+</div>
+</div>
+<p>A <em>target</em> is usually the name of a file that is generated by a program; examples of targets are executable or object files. A target can also be the name of an action to carry out, such as ‘<code>clean</code>’ (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Phony-Targets" class="pxref">Phony Targets</a>).</p>
+<p>A <em>prerequisite</em> is a file that is used as input to create the target. A target often depends on several files.</p>
+<p><span id="index-tabs-in-rules" class="index-entry-id"></span></p>
+<p>A <em>recipe</em> is an action that <code>make</code> carries out. A recipe may have more than one command, either on the same line or each on its own line. <strong>Please note:</strong> you need to put a tab character at the beginning of every recipe line! This is an obscurity that catches the unwary. If you prefer to prefix your recipes with a character other than tab, you can set the <code>.RECIPEPREFIX</code> variable to an alternate character (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables" class="pxref">Other Special Variables</a>).</p>
+<p>Usually a recipe is in a rule with prerequisites and serves to create a target file if any of the prerequisites change. However, the rule that specifies a recipe for the target need not have prerequisites. For example, the rule containing the delete command associated with the target ‘<code>clean</code>’ does not have prerequisites.</p>
+<p>A <em>rule</em>, then, explains how and when to remake certain files which are the targets of the particular rule. <code>make</code> carries out the recipe on the prerequisites to create or update the target. A rule can also explain how and when to carry out an action. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Rules" class="xref">Writing Rules</a>.</p>
+<p>A makefile may contain other text besides rules, but a simple makefile need only contain rules. Rules may look somewhat more complicated than shown in this template, but all fit the pattern more or less.</p>
+<hr>
+</div>
+<div id="Simple-Makefile" class="section-level-extent">
+<h3 id="22-a-simple-makefile">2.2 A Simple Makefile</h3>
+<p><span id="index-simple-makefile" class="index-entry-id"></span> <span id="index-makefile_002c-simple" class="index-entry-id"></span></p>
+<p>Here is a straightforward makefile that describes the way an executable file called <code>edit</code> depends on eight object files which, in turn, depend on eight C source and three header files.</p>
+<p>In this example, all the C files include <code>defs.h</code>, but only those defining editing commands include <code>command.h</code>, and only low level files that change the editor buffer include <code>buffer.h</code>.</p>
+<div class="example">
+<div class="group">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>edit : main.o kbd.o command.o display.o \</span></span>
+<span class="line"><span>       insert.o search.o files.o utils.o</span></span>
+<span class="line"><span>        cc -o edit main.o kbd.o command.o display.o \</span></span>
+<span class="line"><span>                   insert.o search.o files.o utils.o</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>main.o : main.c defs.h</span></span>
+<span class="line"><span>        cc -c main.c</span></span>
+<span class="line"><span>kbd.o : kbd.c defs.h command.h</span></span>
+<span class="line"><span>        cc -c kbd.c</span></span>
+<span class="line"><span>command.o : command.c defs.h command.h</span></span>
+<span class="line"><span>        cc -c command.c</span></span>
+<span class="line"><span>display.o : display.c defs.h buffer.h</span></span>
+<span class="line"><span>        cc -c display.c</span></span>
+<span class="line"><span>insert.o : insert.c defs.h buffer.h</span></span>
+<span class="line"><span>        cc -c insert.c</span></span>
+<span class="line"><span>search.o : search.c defs.h buffer.h</span></span>
+<span class="line"><span>        cc -c search.c</span></span>
+<span class="line"><span>files.o : files.c defs.h buffer.h command.h</span></span>
+<span class="line"><span>        cc -c files.c</span></span>
+<span class="line"><span>utils.o : utils.c defs.h</span></span>
+<span class="line"><span>        cc -c utils.c</span></span>
+<span class="line"><span>clean :</span></span>
+<span class="line"><span>        rm edit main.o kbd.o command.o display.o \</span></span>
+<span class="line"><span>           insert.o search.o files.o utils.o</span></span></code></pre>
+</div>
+</div>
+<p>We split each long line into two lines using backslash/newline; this is like using one long line, but is easier to read. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Splitting-Lines" class="xref">Splitting Long Lines</a>. <span id="index-continuation-lines" class="index-entry-id"></span> <span id="index-_005c-_0028backslash_0029_002c-for-continuation-lines" class="index-entry-id"></span> <span id="index-backslash-_0028_005c_0029_002c-for-continuation-lines" class="index-entry-id"></span> <span id="index-quoting-newline_002c-in-makefile" class="index-entry-id"></span> <span id="index-newline_002c-quoting_002c-in-makefile" class="index-entry-id"></span></p>
+<p>To use this makefile to create the executable file called <code>edit</code>, type:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>make</span></span></code></pre>
+</div>
+<p>To use this makefile to delete the executable file and all the object files from the directory, type:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>make clean</span></span></code></pre>
+</div>
+<p>In the example makefile, the targets include the executable file ‘<code>edit</code>’, and the object files ‘<code>main.o</code>’ and ‘<code>kbd.o</code>’. The prerequisites are files such as ‘<code>main.c</code>’ and ‘<code>defs.h</code>’. In fact, each ‘<code>.o</code>’ file is both a target and a prerequisite. Recipes include ‘<code>cc -c main.c</code>’ and ‘<code>cc -c kbd.c</code>’.</p>
+<p>When a target is a file, it needs to be recompiled or relinked if any of its prerequisites change. In addition, any prerequisites that are themselves automatically generated should be updated first. In this example, <code>edit</code> depends on each of the eight object files; the object file <code>main.o</code> depends on the source file <code>main.c</code> and on the header file <code>defs.h</code>.</p>
+<p>A recipe may follow each line that contains a target and prerequisites. These recipes say how to update the target file. A tab character (or whatever character is specified by the <code>.RECIPEPREFIX</code> variable; see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables" class="pxref">Other Special Variables</a>) must come at the beginning of every line in the recipe to distinguish recipes from other lines in the makefile. (Bear in mind that <code>make</code> does not know anything about how the recipes work. It is up to you to supply recipes that will update the target file properly. All <code>make</code> does is execute the recipe you have specified when the target file needs to be updated.) <span id="index-recipe" class="index-entry-id"></span></p>
+<p>The target ‘<code>clean</code>’ is not a file, but merely the name of an action. Since you normally do not want to carry out the actions in this rule, ‘<code>clean</code>’ is not a prerequisite of any other rule. Consequently, <code>make</code> never does anything with it unless you tell it specifically. Note that this rule not only is not a prerequisite, it also does not have any prerequisites, so the only purpose of the rule is to run the specified recipe. Targets that do not refer to files but are just actions are called <em>phony targets</em>. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Phony-Targets" class="xref">Phony Targets</a>, for information about this kind of target. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Errors" class="xref">Errors in Recipes</a>, to see how to cause <code>make</code> to ignore errors from <code>rm</code> or any other command. <span id="index-clean-target" class="index-entry-id"></span> <span id="index-rm-_0028shell-command_0029" class="index-entry-id"></span></p>
+<hr>
+</div>
+<div id="How-Make-Works" class="section-level-extent">
+<h3 id="23-how-make-processes-a-makefile">2.3 How <code>make</code> Processes a Makefile</h3>
+<p><span id="index-processing-a-makefile" class="index-entry-id"></span> <span id="index-makefile_002c-how-make-processes" class="index-entry-id"></span></p>
+<p>By default, <code>make</code> starts with the first target (not targets whose names start with ‘<code>.</code>’ unless they also contain one or more ‘<code>/</code>’). This is called the <em>default goal</em>. (<em>Goals</em> are the targets that <code>make</code> strives ultimately to update. You can override this behavior using the command line (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Goals" class="pxref">Arguments to Specify the Goals</a>) or with the <code>.DEFAULT_GOAL</code> special variable (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Special-Variables" class="pxref">Other Special Variables</a>). <span id="index-default-goal" class="index-entry-id"></span> <span id="index-goal_002c-default" class="index-entry-id"></span> <span id="index-goal" class="index-entry-id"></span></p>
+<p>In the simple example of the previous section, the default goal is to update the executable program <code>edit</code>; therefore, we put that rule first.</p>
+<p>Thus, when you give the command:</p>
+<div class="example">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>make</span></span></code></pre>
+</div>
+<p><code>make</code> reads the makefile in the current directory and begins by processing the first rule. In the example, this rule is for relinking <code>edit</code>; but before <code>make</code> can fully process this rule, it must process the rules for the files that <code>edit</code> depends on, which in this case are the object files. Each of these files is processed according to its own rule. These rules say to update each ‘<code>.o</code>’ file by compiling its source file. The recompilation must be done if the source file, or any of the header files named as prerequisites, is more recent than the object file, or if the object file does not exist.</p>
+<p>The other rules are processed because their targets appear as prerequisites of the goal. If some other rule is not depended on by the goal (or anything it depends on, etc.), that rule is not processed, unless you tell <code>make</code> to do so (with a command such as <code>make clean</code>).</p>
+<p>Before recompiling an object file, <code>make</code> considers updating its prerequisites, the source file and header files. This makefile does not specify anything to be done for them—the ‘<code>.c</code>’ and ‘<code>.h</code>’ files are not the targets of any rules—so <code>make</code> does nothing for these files. But <code>make</code> would update automatically generated C programs, such as those made by Bison or Yacc, by their own rules at this time.</p>
+<p>After recompiling whichever object files need it, <code>make</code> decides whether to relink <code>edit</code>. This must be done if the file <code>edit</code> does not exist, or if any of the object files are newer than it. If an object file was just recompiled, it is now newer than <code>edit</code>, so <code>edit</code> is relinked. <span id="index-relinking" class="index-entry-id"></span></p>
+<p>Thus, if we change the file <code>insert.c</code> and run <code>make</code>, <code>make</code> will compile that file to update <code>insert.o</code>, and then link <code>edit</code>. If we change the file <code>command.h</code> and run <code>make</code>, <code>make</code> will recompile the object files <code>kbd.o</code>, <code>command.o</code> and <code>files.o</code> and then link the file <code>edit</code>.</p>
+<hr>
+</div>
+<div id="Variables-Simplify" class="section-level-extent">
+<h3 id="24-variables-make-makefiles-simpler">2.4 Variables Make Makefiles Simpler</h3>
+<p><span id="index-variables" class="index-entry-id"></span> <span id="index-simplifying-with-variables" class="index-entry-id"></span></p>
+<p>In our example, we had to list all the object files twice in the rule for <code>edit</code> (repeated here):</p>
+<div class="example">
+<div class="group">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>edit : main.o kbd.o command.o display.o \</span></span>
+<span class="line"><span>              insert.o search.o files.o utils.o</span></span>
+<span class="line"><span>        cc -o edit main.o kbd.o command.o display.o \</span></span>
+<span class="line"><span>                   insert.o search.o files.o utils.o</span></span></code></pre>
+</div>
+</div>
+<p><span id="index-objects" class="index-entry-id"></span></p>
+<p>Such duplication is error-prone; if a new object file is added to the system, we might add it to one list and forget the other. We can eliminate the risk and simplify the makefile by using a variable. <em>Variables</em> allow a text string to be defined once and substituted in multiple places later (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Using-Variables" class="pxref">How to Use Variables</a>).</p>
+<p><span id="index-OBJECTS" class="index-entry-id"></span> <span id="index-objs" class="index-entry-id"></span> <span id="index-OBJS" class="index-entry-id"></span> <span id="index-obj" class="index-entry-id"></span> <span id="index-OBJ" class="index-entry-id"></span></p>
+<p>It is standard practice for every makefile to have a variable named <code>objects</code>, <code>OBJECTS</code>, <code>objs</code>, <code>OBJS</code>, <code>obj</code>, or <code>OBJ</code> which is a list of all object file names. We would define such a variable <code>objects</code> with a line like this in the makefile:</p>
+<div class="example">
+<div class="group">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>objects = main.o kbd.o command.o display.o \</span></span>
+<span class="line"><span>          insert.o search.o files.o utils.o</span></span></code></pre>
+</div>
+</div>
+<p>Then, each place we want to put a list of the object file names, we can substitute the variable’s value by writing ‘<code>$(objects)</code>’ (see <a href="/docs/gnu-make/source/v4-4-1/manual.html#Using-Variables" class="pxref">How to Use Variables</a>).</p>
+<p>Here is how the complete simple makefile looks when you use a variable for the object files:</p>
+<div class="example">
+<div class="group">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>objects = main.o kbd.o command.o display.o \</span></span>
+<span class="line"><span>          insert.o search.o files.o utils.o</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>edit : $(objects)</span></span>
+<span class="line"><span>        cc -o edit $(objects)</span></span>
+<span class="line"><span>main.o : main.c defs.h</span></span>
+<span class="line"><span>        cc -c main.c</span></span>
+<span class="line"><span>kbd.o : kbd.c defs.h command.h</span></span>
+<span class="line"><span>        cc -c kbd.c</span></span>
+<span class="line"><span>command.o : command.c defs.h command.h</span></span>
+<span class="line"><span>        cc -c command.c</span></span>
+<span class="line"><span>display.o : display.c defs.h buffer.h</span></span>
+<span class="line"><span>        cc -c display.c</span></span>
+<span class="line"><span>insert.o : insert.c defs.h buffer.h</span></span>
+<span class="line"><span>        cc -c insert.c</span></span>
+<span class="line"><span>search.o : search.c defs.h buffer.h</span></span>
+<span class="line"><span>        cc -c search.c</span></span>
+<span class="line"><span>files.o : files.c defs.h buffer.h command.h</span></span>
+<span class="line"><span>        cc -c files.c</span></span>
+<span class="line"><span>utils.o : utils.c defs.h</span></span>
+<span class="line"><span>        cc -c utils.c</span></span>
+<span class="line"><span>clean :</span></span>
+<span class="line"><span>        rm edit $(objects)</span></span></code></pre>
+</div>
+</div>
+<hr>
+</div>
+<div id="make-Deduces" class="section-level-extent">
+<h3 id="25-letting-make-deduce-the-recipes">2.5 Letting <code>make</code> Deduce the Recipes</h3>
+<p><span id="index-deducing-recipes-_0028implicit-rules_0029" class="index-entry-id"></span> <span id="index-implicit-rule_002c-introduction-to" class="index-entry-id"></span> <span id="index-rule_002c-implicit_002c-introduction-to" class="index-entry-id"></span></p>
+<p>It is not necessary to spell out the recipes for compiling the individual C source files, because <code>make</code> can figure them out: it has an <em>implicit rule</em> for updating a ‘<code>.o</code>’ file from a correspondingly named ‘<code>.c</code>’ file using a ‘<code>cc -c</code>’ command. For example, it will use the recipe ‘<code>cc -c main.c -o main.o</code>’ to compile <code>main.c</code> into <code>main.o</code>. We can therefore omit the recipes from the rules for the object files. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Implicit-Rules" class="xref">Using Implicit Rules</a>.</p>
+<p>When a ‘<code>.c</code>’ file is used automatically in this way, it is also automatically added to the list of prerequisites. We can therefore omit the ‘<code>.c</code>’ files from the prerequisites, provided we omit the recipe.</p>
+<p>Here is the entire example, with both of these changes, and a variable <code>objects</code> as suggested above:</p>
+<div class="example">
+<div class="group">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>objects = main.o kbd.o command.o display.o \</span></span>
+<span class="line"><span>          insert.o search.o files.o utils.o</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>edit : $(objects)</span></span>
+<span class="line"><span>        cc -o edit $(objects)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>main.o : defs.h</span></span>
+<span class="line"><span>kbd.o : defs.h command.h</span></span>
+<span class="line"><span>command.o : defs.h command.h</span></span>
+<span class="line"><span>display.o : defs.h buffer.h</span></span>
+<span class="line"><span>insert.o : defs.h buffer.h</span></span>
+<span class="line"><span>search.o : defs.h buffer.h</span></span>
+<span class="line"><span>files.o : defs.h buffer.h command.h</span></span>
+<span class="line"><span>utils.o : defs.h</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>.PHONY : clean</span></span>
+<span class="line"><span>clean :</span></span>
+<span class="line"><span>        rm edit $(objects)</span></span></code></pre>
+</div>
+</div>
+<p>This is how we would write the makefile in actual practice. (The complications associated with ‘<code>clean</code>’ are described elsewhere. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Phony-Targets" class="ref">Phony Targets</a>, and <a href="/docs/gnu-make/source/v4-4-1/manual.html#Errors" class="ref">Errors in Recipes</a>.)</p>
+<p>Because implicit rules are so convenient, they are important. You will see them used frequently.</p>
+<hr>
+</div>
+<div id="Combine-By-Prerequisite" class="section-level-extent">
+<h3 id="26-another-style-of-makefile">2.6 Another Style of Makefile</h3>
+<p><span id="index-combining-rules-by-prerequisite" class="index-entry-id"></span></p>
+<p>When the objects of a makefile are created only by implicit rules, an alternative style of makefile is possible. In this style of makefile, you group entries by their prerequisites instead of by their targets. Here is what one looks like:</p>
+<div class="example">
+<div class="group">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>objects = main.o kbd.o command.o display.o \</span></span>
+<span class="line"><span>          insert.o search.o files.o utils.o</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>edit : $(objects)</span></span>
+<span class="line"><span>        cc -o edit $(objects)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>$(objects) : defs.h</span></span>
+<span class="line"><span>kbd.o command.o files.o : command.h</span></span>
+<span class="line"><span>display.o insert.o search.o files.o : buffer.h</span></span></code></pre>
+</div>
+</div>
+<p>Here <code>defs.h</code> is given as a prerequisite of all the object files; <code>command.h</code> and <code>buffer.h</code> are prerequisites of the specific object files listed for them.</p>
+<p>Whether this is better is a matter of taste: it is more compact, but some people dislike it because they find it clearer to put all the information about each target in one place.</p>
+<hr>
+</div>
+<div id="Cleanup" class="section-level-extent">
+<h3 id="27-rules-for-cleaning-the-directory">2.7 Rules for Cleaning the Directory</h3>
+<p><span id="index-cleaning-up" class="index-entry-id"></span> <span id="index-removing_002c-to-clean-up" class="index-entry-id"></span></p>
+<p>Compiling a program is not the only thing you might want to write rules for. Makefiles commonly tell how to do a few other things besides compiling a program: for example, how to delete all the object files and executables so that the directory is ‘<code>clean</code>’.</p>
+<p><span id="index-clean-target-1" class="index-entry-id"></span></p>
+<p>Here is how we could write a <code>make</code> rule for cleaning our example editor:</p>
+<div class="example">
+<div class="group">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>clean:</span></span>
+<span class="line"><span>        rm edit $(objects)</span></span></code></pre>
+</div>
+</div>
+<p>In practice, we might want to write the rule in a somewhat more complicated manner to handle unanticipated situations. We would do this:</p>
+<div class="example">
+<div class="group">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.PHONY : clean</span></span>
+<span class="line"><span>clean :</span></span>
+<span class="line"><span>        -rm edit $(objects)</span></span></code></pre>
+</div>
+</div>
+<p>This prevents <code>make</code> from getting confused by an actual file called <code>clean</code> and causes it to continue in spite of errors from <code>rm</code>. (See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Phony-Targets" class="ref">Phony Targets</a>, and <a href="/docs/gnu-make/source/v4-4-1/manual.html#Errors" class="ref">Errors in Recipes</a>.)</p>
+<p>A rule such as this should not be placed at the beginning of the makefile, because we do not want it to run by default! Thus, in the example makefile, we want the rule for <code>edit</code>, which recompiles the editor, to remain the default goal.</p>
+<p>Since <code>clean</code> is not a prerequisite of <code>edit</code>, this rule will not run at all if we give the command ‘<code>make</code>’ with no arguments. In order to make the rule run, we have to type ‘<code>make clean</code>’. See <a href="/docs/gnu-make/source/v4-4-1/manual.html#Running" class="xref">How to Run <code class="code">make</code></a>.</p>
+<hr>
+</div>
+</div></main><footer><section id="Libx-History"><h2>History</h2><p>Original: GNU Make (The GNU Make Manual), Edition 0.77, GNU make 4.4.1, 2023; Richard M. Stallman, Roland McGrath, Paul D. Smith; publisher Free Software Foundation. Fixed source: <a href="https://ftp.gnu.org/gnu/make/make-4.4.1.tar.gz">Official make-4.4.1.tar.gz</a>.</p><p>2026: Libx GNU Make 4.4.1 Getting Started Guide — Chapters 1–3 / Libx GNU Make 4.4.1 入門ガイド — 第1〜3章; modification author and publisher Libx; static Markdown conversion, scoped editing and forthcoming unofficial Japanese translation. Original licence notices preserved. Chapter 1 acknowledgements preserved in the scoped content; remaining original material and source includes retained in the original archive.</p></section><h2>Original English GNU Free Documentation License</h2><div class="appendix-level-extent" id="GNU-Free-Documentation-License">
+<h2 class="appendix" id="GNU-Free-Documentation-License-1"><span>Appendix D GNU Free Documentation License<a class="copiable-link" href="#GNU-Free-Documentation-License-1"> ¶</a></span></h2>
+<a class="index-entry-id" id="index-FDL_002c-GNU-Free-Documentation-License"></a>
+<div class="center">Version 1.3, 3 November 2008
+</div>
+<div class="display">
+<pre class="display-preformatted">Copyright © 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+<a class="uref" href="https://fsf.org/">https://fsf.org/</a>
+
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+</pre></div>
+<ol class="enumerate" start="0">
+<li> PREAMBLE
+
+<p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <em class="dfn">free</em> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially.
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+</p>
+<p>This License is a kind of “copyleft”, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+</p>
+<p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+</p>
+</li><li> APPLICABILITY AND DEFINITIONS
+
+<p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The “Document”, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as “you”.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+</p>
+<p>A “Modified Version” of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+</p>
+<p>A “Secondary Section” is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document’s overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+</p>
+<p>The “Invariant Sections” are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+</p>
+<p>The “Cover Texts” are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+</p>
+<p>A “Transparent” copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent.
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not “Transparent” is called “Opaque”.
+</p>
+<p>Examples of suitable formats for Transparent copies include plain
+ASCII without markup, Texinfo input format, LaTeX input
+format, SGML or XML using a publicly available
+DTD, and standard-conforming simple HTML,
+PostScript or PDF designed for human modification.  Examples
+of transparent image formats include PNG, XCF and
+JPG.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, SGML or
+XML for which the DTD and/or processing tools are
+not generally available, and the machine-generated HTML,
+PostScript or PDF produced by some word processors for
+output purposes only.
+</p>
+<p>The “Title Page” means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, “Title Page” means
+the text near the most prominent appearance of the work’s title,
+preceding the beginning of the body of the text.
+</p>
+<p>The “publisher” means any person or entity that distributes copies
+of the Document to the public.
+</p>
+<p>A section “Entitled XYZ” means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as “Acknowledgements”,
+“Dedications”, “Endorsements”, or “History”.)  To “Preserve the Title”
+of such a section when you modify the Document means that it remains a
+section “Entitled XYZ” according to this definition.
+</p>
+<p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+</p>
+</li><li> VERBATIM COPYING
+
+<p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+</p>
+<p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+</p>
+</li><li> COPYING IN QUANTITY
+
+<p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document’s license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition.
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+</p>
+<p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+</p>
+<p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material.
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+</p>
+<p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+</p>
+</li><li> MODIFICATIONS
+
+<p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+</p>
+<ol class="enumerate" start="1" type="A">
+<li> Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+
+</li><li> List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+</li><li> State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+
+</li><li> Preserve all the copyright notices of the Document.
+
+</li><li> Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+
+</li><li> Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+</li><li> Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document’s license notice.
+
+</li><li> Include an unaltered copy of this License.
+
+</li><li> Preserve the section Entitled “History”, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled “History” in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+</li><li> Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the “History” section.
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+
+</li><li> For any section Entitled “Acknowledgements” or “Dedications”, Preserve
+the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+</li><li> Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+
+</li><li> Delete any section Entitled “Endorsements”.  Such a section
+may not be included in the Modified Version.
+
+</li><li> Do not retitle any existing section to be Entitled “Endorsements” or
+to conflict in title with any Invariant Section.
+
+</li><li> Preserve any Warranty Disclaimers.
+</li></ol>
+<p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version’s license notice.
+These titles must be distinct from any other section titles.
+</p>
+<p>You may add a section Entitled “Endorsements”, provided it contains
+nothing but endorsements of your Modified Version by various
+parties—for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+</p>
+<p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+</p>
+<p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+</p>
+</li><li> COMBINING DOCUMENTS
+
+<p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+</p>
+<p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number.
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+</p>
+<p>In the combination, you must combine any sections Entitled “History”
+in the various original documents, forming one section Entitled
+“History”; likewise combine any sections Entitled “Acknowledgements”,
+and any sections Entitled “Dedications”.  You must delete all
+sections Entitled “Endorsements.”
+</p>
+</li><li> COLLECTIONS OF DOCUMENTS
+
+<p>You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+</p>
+<p>You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+</p>
+</li><li> AGGREGATION WITH INDEPENDENT WORKS
+
+<p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an “aggregate” if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation’s users beyond what the individual works permit.
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+</p>
+<p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document’s Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form.
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+</p>
+</li><li> TRANSLATION
+
+<p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4.
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+</p>
+<p>If a section in the Document is Entitled “Acknowledgements”,
+“Dedications”, or “History”, the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+</p>
+</li><li> TERMINATION
+
+<p>You may not copy, modify, sublicense, or distribute the Document
+except as expressly provided under this License.  Any attempt
+otherwise to copy, modify, sublicense, or distribute it is void, and
+will automatically terminate your rights under this License.
+</p>
+<p>However, if you cease all violation of this License, then your license
+from a particular copyright holder is reinstated (a) provisionally,
+unless and until the copyright holder explicitly and finally
+terminates your license, and (b) permanently, if the copyright holder
+fails to notify you of the violation by some reasonable means prior to
+60 days after the cessation.
+</p>
+<p>Moreover, your license from a particular copyright holder is
+reinstated permanently if the copyright holder notifies you of the
+violation by some reasonable means, this is the first time you have
+received notice of violation of this License (for any work) from that
+copyright holder, and you cure the violation prior to 30 days after
+your receipt of the notice.
+</p>
+<p>Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License.  If your rights have been terminated and not permanently
+reinstated, receipt of a copy of some or all of the same material does
+not give you any rights to use it.
+</p>
+</li><li> FUTURE REVISIONS OF THIS LICENSE
+
+<p>The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a class="uref" href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.
+</p>
+<p>Each version of the License is given a distinguishing version number.
+If the Document specifies that a particular numbered version of this
+License “or any later version” applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.  If the Document
+specifies that a proxy can decide which future versions of this
+License can be used, that proxy’s public statement of acceptance of a
+version permanently authorizes you to choose that version for the
+Document.
+</p>
+</li><li> RELICENSING
+
+<p>“Massive Multiauthor Collaboration Site” (or “MMC Site”) means any
+World Wide Web server that publishes copyrightable works and also
+provides prominent facilities for anybody to edit those works.  A
+public wiki that anybody can edit is an example of such a server.  A
+“Massive Multiauthor Collaboration” (or “MMC”) contained in the
+site means any set of copyrightable works thus published on the MMC
+site.
+</p>
+<p>“CC-BY-SA” means the Creative Commons Attribution-Share Alike 3.0
+license published by Creative Commons Corporation, a not-for-profit
+corporation with a principal place of business in San Francisco,
+California, as well as future copyleft versions of that license
+published by that same organization.
+</p>
+<p>“Incorporate” means to publish or republish a Document, in whole or
+in part, as part of another Document.
+</p>
+<p>An MMC is “eligible for relicensing” if it is licensed under this
+License, and if all works that were first published under this License
+somewhere other than this MMC, and subsequently incorporated in whole
+or in part into the MMC, (1) had no cover texts or invariant sections,
+and (2) were thus incorporated prior to November 1, 2008.
+</p>
+<p>The operator of an MMC Site may republish an MMC contained in the site
+under CC-BY-SA on the same site at any time before August 1, 2009,
+provided the MMC is eligible for relicensing.
+</p>
+</li></ol>
+<h3 class="heading" id="ADDENDUM_003a-How-to-use-this-License-for-your-documents"><span>ADDENDUM: How to use this License for your documents<a class="copiable-link" href="#ADDENDUM_003a-How-to-use-this-License-for-your-documents"> ¶</a></span></h3>
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+</p>
+<div class="example smallexample">
+<div class="group"><pre class="example-preformatted">  Copyright (C)  <var class="var">year</var>  <var class="var">your name</var>.
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.3
+  or any later version published by the Free Software Foundation;
+  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+  Texts.  A copy of the license is included in the section entitled ``GNU
+  Free Documentation License''.
+</pre></div></div>
+<p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the “with…Texts.” line with this:
+</p>
+<div class="example smallexample">
+<div class="group"><pre class="example-preformatted">    with the Invariant Sections being <var class="var">list their titles</var>, with
+    the Front-Cover Texts being <var class="var">list</var>, and with the Back-Cover Texts
+    being <var class="var">list</var>.
+</pre></div></div>
+<p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+</p>
+<p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+</p>
+<hr/>
+</div></footer></body></html>
