@@ -1,0 +1,17 @@
+/* プロジェクトテンプレート共通スタイル */
+@import '@docs/theme/css/starlight-overrides.css';
+
+/* プロジェクト固有の追加スタイルは必要に応じて記述 */
+
+.rapidjson-document .fragment{overflow-x:auto;font-family:monospace;}
+.rapidjson-document .fragment .line{white-space:pre;}
+.rapidjson-document .ttc{display:none;}
+
+/* Keep generated API tables scrollable within the document on narrow screens. */
+.rapidjson-document table{display:block;max-width:100%;overflow-x:auto;}
+.rapidjson-document td table{display:table;}
+.rapidjson-document .memproto{max-width:100%;overflow-x:auto;}
+
+/* App-owned presentation of the original generated source tooltip records. */
+.rapidjson-source-tooltip{position:fixed;z-index:10000;box-sizing:border-box;width:max-content;max-width:min(32rem,calc(100vw - 16px));max-height:50vh;overflow:auto;padding:.75rem;border:1px solid GrayText;border-radius:.4rem;background:Canvas;color:CanvasText;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 3px 12px #0003;font-size:.875rem;line-height:1.5;}
+.rapidjson-source-tooltip[hidden]{display:none;}

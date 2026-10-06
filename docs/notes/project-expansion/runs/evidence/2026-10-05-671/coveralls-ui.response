@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-ZJSVSHZC2X"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-ZJSVSHZC2X');
+  </script>
+  <script src="https://use.typekit.net/ngz2htl.js"></script>
+  <script>
+    try {
+      Typekit.load({ async: true });
+    } catch (e) {}
+  </script>
+
+  
+  <title>Coveralls Web UI | Coveralls Docs</title>
+   
+  <meta name="description" content="Coveralls documention." />
+  
+
+  <link href="/favicon.png" rel="icon" />
+  <link href="/css/syntax.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="https://use.fontawesome.com/9d8f6d1bb4.js"></script>
+</head>
+
+  <body>
+    <div class="header">
+  <nav class="header-nav">
+    <ul>
+      <li class="current">
+        <a href="https://docs.coveralls.io"><i class="fa fa-th-list"></i>
+          Docs Home
+        </a>
+      </li>
+      <li>
+        <a target="_blank" href="https://coveralls.io/"><i class="fa fa-star"></i>
+        Coveralls Cloud
+        </a>
+      </li>
+      <li>
+        <a target="_blank" href="https://enterprise.coveralls.io/"><i class="fa fa-ship"></i>
+          Coveralls Enterprise
+        </a>
+      </li>
+      <li class="">
+        <a target="_blank" href="https://calendly.com/coveralls-support"><i class="fa fa-question-circle"></i>
+        Get Help
+        </a>
+      </li>
+      <li class="">
+        <a target="_blank" href="https://calendly.com/coveralls-support/demo"><i class="fa fa-calendar"></i>
+          Schedule a Demo
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <a href="/">
+    <div class="svg logo">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 510 100" style="enable-background:new 0 0 510 100;" xml:space="preserve">
+<style type="text/css">
+  .st0{fill:rgba(0,0,0,0.4);}
+  .st1{fill:#FDF9EF;}
+</style>
+<path class="st0" d="M59.3,35.1c-1.4-1.5-2.7-2.7-4.1-3.5c-1.3-0.8-3.2-1.3-5.5-1.3c-2.9,0-5.4,0.7-7.5,2.1s-3.8,3.2-5.2,5.4c-1.4,2.2-2.5,4.5-3.4,7.1c-0.8,2.5-1.4,4.9-1.8,7.2c-0.1,1.1-0.3,2.2-0.4,3.3c-0.1,1.1-0.2,2.2-0.2,3.4c0,2,0.2,3.9,0.5,5.7c0.4,1.8,1,3.4,1.8,4.9c0.8,1.4,2,2.5,3.4,3.4c1.4,0.8,3.2,1.3,5.4,1.3c2.5,0,4.8-0.5,6.6-1.4c1.9-0.9,3.9-2.2,6-3.9l-4.9,23c-2.4,1-4.7,1.8-6.9,2.2c-2.2,0.5-4.6,0.7-7,0.7c-3.9,0-7.6-0.7-11-2c-3.4-1.3-6.4-3.3-8.9-5.9c-2.5-2.6-4.5-5.9-5.9-9.9C9,72.9,8.3,68.3,8.3,63c0-1.7,0.1-3.3,0.2-5c0.1-1.7,0.4-3.5,0.7-5.3c0.9-6.1,2.4-11.4,4.4-16c2-4.5,4.3-8.4,6.8-11.6c2.5-3.2,5.3-5.8,8.2-7.8c2.9-2,5.8-3.6,8.7-4.7c2.8-1.1,5.5-1.9,8.1-2.3c2.5-0.4,4.7-0.7,6.5-0.7c2,0,3.9,0.1,5.8,0.4c1.9,0.3,3.7,0.8,5.3,1.5L59.3,35.1z"/>
+<path class="st0" d="M62.4,52.1c0.8-5,2.2-10,4.1-15.1c1.9-5,4.5-9.6,7.6-13.7c3.2-4.1,6.9-7.4,11.3-9.9c4.4-2.5,9.4-3.8,15-3.8c4.6,0,8.6,0.9,11.9,2.7c3.3,1.8,5.9,4.2,8,7.1c2,3,3.5,6.4,4.4,10.3c0.9,3.9,1.4,7.9,1.4,12c0,1.7-0.1,3.5-0.2,5.2c-0.1,1.7-0.4,3.5-0.7,5.1c-0.8,5-2.2,10-4.1,15.1c-1.9,5.1-4.5,9.6-7.6,13.7c-3.2,4.1-6.9,7.4-11.3,9.9c-4.4,2.5-9.4,3.8-15,3.8c-4.7,0-8.7-0.9-11.9-2.7c-3.2-1.8-5.8-4.2-7.8-7.1c-2-3-3.5-6.4-4.4-10.3c-0.9-3.9-1.4-7.9-1.4-12.2c0-1.7,0.1-3.4,0.2-5.1C61.9,55.4,62.1,53.7,62.4,52.1z M85.1,52.1c-0.1,1-0.3,2.4-0.5,4.3c-0.2,1.8-0.3,3.7-0.3,5.8c0,1.5,0.1,2.9,0.3,4.3c0.2,1.4,0.5,2.7,1,3.8c0.5,1.1,1.1,2,1.9,2.7c0.8,0.7,1.8,1,3.1,1c1.4,0,2.6-0.4,3.8-1.3c1.1-0.8,2.1-1.9,2.9-3.3c0.8-1.3,1.6-2.8,2.2-4.5c0.6-1.6,1.1-3.3,1.6-4.9c0.4-1.6,0.8-3.1,1-4.5c0.3-1.4,0.5-2.6,0.6-3.4c0.1-1,0.3-2.5,0.6-4.3c0.3-1.9,0.4-3.8,0.4-5.8c0-1.5-0.1-2.9-0.3-4.3c-0.2-1.4-0.5-2.6-1-3.7c-0.5-1.1-1.1-2-1.9-2.7c-0.8-0.7-1.8-1-3.1-1c-1.4,0-2.6,0.4-3.8,1.3c-1.1,0.8-2.1,1.9-2.9,3.3c-0.8,1.3-1.6,2.8-2.2,4.5c-0.6,1.6-1.2,3.3-1.6,4.9c-0.5,1.6-0.8,3.1-1.1,4.5C85.4,50,85.2,51.2,85.1,52.1z"/>
+<path class="st0" d="M137.1,93.1L131,11h23.3v33.8c-0.1,3.3-0.2,6.6-0.3,9.9c-0.1,3.3-0.3,6.6-0.4,9.9h0.2c1-3.3,1.9-6.6,2.7-9.9c0.8-3.3,1.8-6.6,2.9-9.9L170.8,11h24.1l-35.1,82.2H137.1z"/>
+<path class="st0" d="M198,11h41.3l-2.9,19.4h-19.1l-1.9,11.4h17.1l-3.1,19.4h-17.1l-2,12.5h19.1l-2.9,19.4h-41.3L198,11z"/>
+<path class="st0" d="M271,93.1l-7-34.2l-0.3,0.2c-0.2,2-0.4,4.1-0.7,6c-0.2,2-0.5,4-0.9,6l-3.4,21.9h-22.2L249.3,11h21.5c4.3,0,8.2,0.3,11.9,1c3.6,0.7,6.8,1.8,9.4,3.3c2.6,1.6,4.6,3.7,6.1,6.4c1.5,2.7,2.2,6.1,2.2,10.2c0,1-0.1,2.1-0.2,3.1c-0.1,1.1-0.2,2.2-0.4,3.3c-0.7,4.6-2.4,8.7-5,12.4c-2.6,3.7-6.2,6.4-11,8.2L295,93.1H271z M267,49c1.5,0,2.8-0.3,4-0.9c1.2-0.6,2.3-1.4,3.2-2.3c0.9-1,1.7-2.1,2.2-3.4c0.6-1.3,1-2.6,1.2-3.9c0.1-0.4,0.1-0.8,0.2-1.2c0-0.4,0.1-0.7,0.1-1.1c0-2.6-0.7-4.5-2.2-5.8c-1.5-1.2-3.5-1.9-6-1.9h-0.9l-3.2,20.3L267,49z"/>
+<path class="st0" d="M337.1,93.1V82.6h-14.9l-3.5,10.6h-22.9L328.2,11h27.1l4.7,82.2H337.1z M337.2,65.1l0.5-19.1c0.1-2.5,0.2-5.1,0.3-7.7c0.1-2.6,0.3-5.2,0.4-7.7h-0.2c-0.7,2.5-1.5,5.1-2.2,7.7c-0.7,2.6-1.5,5.2-2.3,7.7l-6,19.1H337.2z"/>
+<path class="st0" d="M364,93.1L376.8,11H399l-9.8,62.8h16.7l-2.9,19.4H364z"/>
+<path class="st0" d="M407.2,93.1L420,11h22.2l-9.8,62.8h16.7l-2.9,19.4H407.2z"/>
+<path class="st0" d="M453.8,65.5c0.6,1.2,1.3,2.3,2.2,3.4s1.9,2.1,2.9,2.9s2.3,1.6,3.5,2.1c1.2,0.5,2.6,0.8,4,0.8c1.5,0,3.1-0.5,4.6-1.4c1.6-0.9,2.5-2.3,2.8-4.1c0.1-0.3,0.1-0.7,0.1-1.2c0-1.2-0.4-2.4-1.2-3.4c-0.4-0.6-0.8-1.1-1.4-1.6c-0.5-0.5-1.1-1-1.8-1.5c-1.9-1.7-3.7-3.3-5.3-5c-1.6-1.7-3-3.5-4.1-5.5c-0.8-1.5-1.4-3-1.9-4.7c-0.4-1.7-0.7-3.5-0.7-5.4c0-1.3,0.1-2.7,0.3-4.3c0.4-2.4,1.2-5.2,2.5-8.3c1.3-3.1,3.1-6.1,5.5-8.8c2.4-2.8,5.3-5.1,8.8-7c3.5-1.9,7.6-2.9,12.4-2.9c2.7,0,5.4,0.4,8,1.1c2.7,0.8,5.1,1.8,7.2,3l-3.9,25c-0.5-1-1.2-2.1-2-3.1c-0.8-1.1-1.7-2-2.7-2.8c-1-0.8-2.1-1.5-3.3-2.1s-2.5-0.8-3.8-0.8c-1.3,0-2.7,0.4-4,1.3c-1.4,0.9-2.2,2.1-2.5,3.7v0.7c0,1.5,0.5,2.8,1.5,3.9c0.5,0.7,1.1,1.3,1.7,1.8c0.6,0.5,1.2,1.1,1.8,1.6c2.1,1.7,3.9,3.3,5.5,4.9c1.6,1.6,2.8,3.3,3.8,5.2c0.7,1.3,1.3,2.7,1.7,4.2c0.4,1.5,0.6,3.2,0.6,5.1c0,1.7-0.1,3.3-0.4,5c-0.6,3.9-1.8,7.4-3.6,10.7c-1.8,3.3-4.1,6.2-6.8,8.7c-2.7,2.5-5.8,4.5-9.2,5.9c-3.5,1.4-7.1,2.1-11,2.1c-5.7,0-11-1.1-16.1-3.4L453.8,65.5z"/>
+<path class="st1" d="M56.1,30.9c-1.4-1.5-2.7-2.7-4.1-3.5c-1.3-0.8-3.2-1.3-5.5-1.3c-2.9,0-5.4,0.7-7.5,2.1s-3.8,3.2-5.2,5.4c-1.4,2.2-2.5,4.5-3.4,7.1c-0.8,2.5-1.4,4.9-1.8,7.2c-0.1,1.1-0.3,2.2-0.4,3.3c-0.1,1.1-0.2,2.2-0.2,3.4c0,2,0.2,3.9,0.5,5.7c0.4,1.8,1,3.4,1.8,4.9c0.8,1.4,2,2.5,3.4,3.4c1.4,0.8,3.2,1.3,5.4,1.3c2.5,0,4.8-0.5,6.6-1.4c1.9-0.9,3.9-2.2,6-3.9l-4.9,23c-2.4,1-4.7,1.8-6.9,2.2c-2.2,0.5-4.6,0.7-7,0.7c-3.9,0-7.6-0.7-11-2c-3.4-1.3-6.4-3.3-8.9-5.9c-2.5-2.6-4.5-5.9-5.9-9.9c-1.4-4-2.1-8.6-2.1-13.9c0-1.7,0.1-3.3,0.2-5c0.1-1.7,0.4-3.5,0.7-5.3c0.9-6.1,2.4-11.4,4.4-16c2-4.5,4.3-8.4,6.8-11.6c2.5-3.2,5.3-5.8,8.2-7.8c2.9-2,5.8-3.6,8.7-4.7c2.8-1.1,5.5-1.9,8.1-2.3c2.5-0.4,4.7-0.7,6.5-0.7c2,0,3.9,0.1,5.8,0.4c1.9,0.3,3.7,0.8,5.3,1.5L56.1,30.9z"/>
+<path class="st1" d="M59.2,47.9c0.8-5,2.2-10,4.1-15.1c1.9-5,4.5-9.6,7.6-13.7c3.2-4.1,6.9-7.4,11.3-9.9c4.4-2.5,9.4-3.8,15-3.8c4.6,0,8.6,0.9,11.9,2.7c3.3,1.8,5.9,4.2,8,7.1c2,3,3.5,6.4,4.4,10.3c0.9,3.9,1.4,7.9,1.4,12c0,1.7-0.1,3.5-0.2,5.2c-0.1,1.7-0.4,3.5-0.7,5.1c-0.8,5-2.2,10-4.1,15.1c-1.9,5.1-4.5,9.6-7.6,13.7c-3.2,4.1-6.9,7.4-11.3,9.9c-4.4,2.5-9.4,3.8-15,3.8c-4.7,0-8.7-0.9-11.9-2.7c-3.2-1.8-5.8-4.2-7.8-7.1c-2-3-3.5-6.4-4.4-10.3c-0.9-3.9-1.4-7.9-1.4-12.2c0-1.7,0.1-3.4,0.2-5.1C58.7,51.3,58.9,49.6,59.2,47.9z M81.9,47.9c-0.1,1-0.3,2.4-0.5,4.3C81.1,54,81,55.9,81,57.9c0,1.5,0.1,2.9,0.3,4.3c0.2,1.4,0.5,2.7,1,3.8c0.5,1.1,1.1,2,1.9,2.7c0.8,0.7,1.8,1,3.1,1c1.4,0,2.6-0.4,3.8-1.3c1.1-0.8,2.1-1.9,2.9-3.3c0.8-1.3,1.6-2.8,2.2-4.5c0.6-1.6,1.1-3.3,1.6-4.9c0.4-1.6,0.8-3.1,1-4.5c0.3-1.4,0.5-2.6,0.6-3.4c0.1-1,0.3-2.5,0.6-4.3c0.3-1.9,0.4-3.8,0.4-5.8c0-1.5-0.1-2.9-0.3-4.3c-0.2-1.4-0.5-2.6-1-3.7c-0.5-1.1-1.1-2-1.9-2.7c-0.8-0.7-1.8-1-3.1-1c-1.4,0-2.6,0.4-3.8,1.3c-1.1,0.8-2.1,1.9-2.9,3.3c-0.8,1.3-1.6,2.8-2.2,4.5c-0.6,1.6-1.2,3.3-1.6,4.9c-0.5,1.6-0.8,3.1-1.1,4.5C82.2,45.9,82,47,81.9,47.9z"/>
+<path class="st1" d="M133.9,89l-6.1-82.2h23.3v33.8c-0.1,3.3-0.2,6.6-0.3,9.9c-0.1,3.3-0.3,6.6-0.4,9.9h0.2c1-3.3,1.9-6.6,2.7-9.9c0.8-3.3,1.8-6.6,2.9-9.9l11.3-33.8h24.1L156.6,89H133.9z"/>
+<path class="st1" d="M194.8,6.8h41.3l-2.9,19.4h-19.1l-1.9,11.4h17.1l-3.1,19.4h-17.1l-2,12.5h19.1L223.3,89H182L194.8,6.8z"/>
+<path class="st1" d="M267.7,89l-7-34.2l-0.3,0.2c-0.2,2-0.4,4.1-0.7,6c-0.2,2-0.5,4-0.9,6L255.5,89h-22.2l12.8-82.2h21.5c4.3,0,8.2,0.3,11.9,1c3.6,0.7,6.8,1.8,9.4,3.3c2.6,1.6,4.6,3.7,6.1,6.4c1.5,2.7,2.2,6.1,2.2,10.2c0,1-0.1,2.1-0.2,3.1c-0.1,1.1-0.2,2.2-0.4,3.3c-0.7,4.6-2.4,8.7-5,12.4c-2.6,3.7-6.2,6.4-11,8.2L291.8,89H267.7z M263.8,44.9c1.5,0,2.8-0.3,4-0.9c1.2-0.6,2.3-1.4,3.2-2.3c0.9-1,1.7-2.1,2.2-3.4c0.6-1.3,1-2.6,1.2-3.9c0.1-0.4,0.1-0.8,0.2-1.2c0-0.4,0.1-0.7,0.1-1.1c0-2.6-0.7-4.5-2.2-5.8c-1.5-1.2-3.5-1.9-6-1.9h-0.9l-3.2,20.3L263.8,44.9z"/>
+<path class="st1" d="M333.9,89V78.4h-14.9L315.4,89h-22.9L325,6.8h27.1l4.7,82.2H333.9z M334,61l0.5-19.1c0.1-2.5,0.2-5.1,0.3-7.7c0.1-2.6,0.3-5.2,0.4-7.7h-0.2c-0.7,2.5-1.5,5.1-2.2,7.7c-0.7,2.6-1.5,5.2-2.3,7.7l-6,19.1H334z"/>
+<path class="st1" d="M360.8,89l12.8-82.2h22.2L386,69.6h16.7L399.7,89H360.8z"/>
+<path class="st1" d="M404,89l12.8-82.2H439l-9.8,62.8h16.7L442.9,89H404z"/>
+<path class="st1" d="M450.6,61.3c0.6,1.2,1.3,2.3,2.2,3.4s1.9,2.1,2.9,2.9s2.3,1.6,3.5,2.1c1.2,0.5,2.6,0.8,4,0.8c1.5,0,3.1-0.5,4.6-1.4c1.6-0.9,2.5-2.3,2.8-4.1c0.1-0.3,0.1-0.7,0.1-1.2c0-1.2-0.4-2.4-1.2-3.4c-0.4-0.6-0.8-1.1-1.4-1.6c-0.5-0.5-1.1-1-1.8-1.5c-1.9-1.7-3.7-3.3-5.3-5c-1.6-1.7-3-3.5-4.1-5.5c-0.8-1.5-1.4-3-1.9-4.7c-0.4-1.7-0.7-3.5-0.7-5.4c0-1.3,0.1-2.7,0.3-4.3c0.4-2.4,1.2-5.2,2.5-8.3c1.3-3.1,3.1-6.1,5.5-8.8c2.4-2.8,5.3-5.1,8.8-7c3.5-1.9,7.6-2.9,12.4-2.9c2.7,0,5.4,0.4,8,1.1c2.7,0.8,5.1,1.8,7.2,3l-3.9,25c-0.5-1-1.2-2.1-2-3.1c-0.8-1.1-1.7-2-2.7-2.8c-1-0.8-2.1-1.5-3.3-2.1s-2.5-0.8-3.8-0.8c-1.3,0-2.7,0.4-4,1.3c-1.4,0.9-2.2,2.1-2.5,3.7v0.7c0,1.5,0.5,2.8,1.5,3.9c0.5,0.7,1.1,1.3,1.7,1.8c0.6,0.5,1.2,1.1,1.8,1.6c2.1,1.7,3.9,3.3,5.5,4.9c1.6,1.6,2.8,3.3,3.8,5.2c0.7,1.3,1.3,2.7,1.7,4.2c0.4,1.5,0.6,3.2,0.6,5.1c0,1.7-0.1,3.3-0.4,5c-0.6,3.9-1.8,7.4-3.6,10.7c-1.8,3.3-4.1,6.2-6.8,8.7c-2.7,2.5-5.8,4.5-9.2,5.9c-3.5,1.4-7.1,2.1-11,2.1c-5.7,0-11-1.1-16.1-3.4L450.6,61.3z"/>
+</svg>
+
+    </div>
+  </a>
+</div>
+    
+    <div class="site-container">
+      
+      <div class="sidemenu">
+
+  <h3>Get Started</h3>
+  <ul class="sidemenu-links">
+    <li><a href="index">Getting Started</a></li>
+    <li><a href="common-issues-and-troubleshooting">Common Issues & Troubleshooting</a></li>
+    <li><a href="faq">FAQ</a></li>
+  </ul>
+
+  <h3>Integrating with Coveralls</h3>
+  <ul class="sidemenu-links">
+    <li><a href="integrations">Coveralls Integrations</a></li>
+    <ul>
+      <li>&nbsp;&nbsp;&nbsp;<a href="integrations#official-integrations">Official Integrations</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="integrations#language-integrations">Language Integrations</a></li>
+    </ul>
+    <li><a href="ci-services">Supported CI Services</a></li>
+  </ul>
+
+  <h3>Coveralls Builds</h3>
+  <ul class="sidemenu-links">
+    <li><a href="build-types">Build Types</a></li>
+    <ul>
+      <li>&nbsp;&nbsp;&nbsp;<a href="build-types#push-builds">Push Builds</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="build-types#pull-request-builds">Pull Request Builds</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="build-types#parallel-builds">Parallel Builds</a></li>
+    </ul>
+    <li><a href="build-types#recommended-ci-configurations">Recommended Configurations</a></li>
+    <ul>
+      <li>&nbsp;&nbsp;&nbsp;<a href="build-types#ideal-ci-configuration">Ideal</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="build-types#minimum-ci-configuration">Minimum</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="build-types#by-build-type">By Build Type</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="parallel-builds">Parallel Builds</a></li>
+    </ul>
+  </ul>
+
+  <h3>The Web App</h3>
+  <ul class="sidemenu-links">
+    <li><a href="app-ui">Coveralls Web UI</a></li>
+    <li><a href="app-notifications">Coveralls Notifications</a></li>
+  </ul>
+
+  <h3>The API</h3>
+  <ul class="sidemenu-links">
+    <li><a href="api-introduction">API Introduction</a></li>
+    <li><a href="api-introduction#api-endpoints">Endpoints</a></li>
+    <ul>
+      <li>&nbsp;&nbsp;&nbsp;<a href="api-repos-endpoint">The /repos Endpoint</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="api-jobs-endpoint">The /jobs Endpoint</a></li>
+    </ul>
+    <li><a href="api-introduction#webhooks">Webhooks</a></li>
+    <ul>
+      <li>&nbsp;&nbsp;&nbsp;<a href="api-parallel-build-webhook">Parallel Build Webhook</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="api-introduction#rerun-build-webhook">Rerun Build Webhook</a></li>
+    </ul>
+    <li><a href="api-introduction#json-format-web-data">JSON-Format Web Data</a></li>
+    <ul>
+      <li>&nbsp;&nbsp;&nbsp;<a href="api-introduction#repos">Repos</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="api-introduction#jobs">Jobs (Subprojects)</a></li>
+      <li>&nbsp;&nbsp;&nbsp;<a href="api-introduction#source-files">Source Files</a></li>
+    </ul>
+  </ul>
+
+  <h3>Get Help</h3>
+  <ul class="sidemenu-links">
+    <li><a target="_blank" href="https://github.com/lemurheavy/coveralls-public/issues">Open a Community Issue</a></li>
+    <li><a target="_blank" href="mailto:support@coveralls.io?subject=Need some help">Email Support</a></li>
+    <li><a target="_blank" href="https://calendly.com/coveralls-support/demo">Schedule a Demo</a></li>
+    <li><a target="_blank" href="https://calendly.com/coveralls-support">Schedule a Support Call</a></li>
+    <!--li><a href="/support-bot">Chat with Support Bot (<span class="fa fa-alpha"></span>)</a></li-->
+  </ul>
+
+</div>
+
+      <div class="content-panel">
+        <div class="docs-content">
+          <h1>Coveralls Web UI</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This section is an overview of each page of the Coveralls Web App UI, along with the available information and actions to be found there.</p>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<ul>
+  <li><a href="#sign-in">Sign In</a></li>
+  <li><a href="#sign-up">Sign Up</a></li>
+  <li><a href="#sign-up--choose-plan">Sign Up &gt; Choose Plan</a></li>
+  <li><a href="#sign-up--last-step">Sign up &gt; Last Step</a></li>
+  <li><a href="#welcome-new-subscription">Welcome (New Subscription)</a></li>
+</ul>
+
+<h3 id="managing-your-repos">Managing Your Repos</h3>
+
+<ul>
+  <li><a href="#the-dashboard">The Dashboard</a></li>
+  <li><a href="#the-add-repos-page">The Add Repos Page</a></li>
+  <li><a href="#repo-start-page">Repo Start Page</a></li>
+  <li><a href="#repo-page">Repo Page</a></li>
+  <li><a href="#repo-settings">Repo Settings</a></li>
+  <li><a href="#repo-notifications">Repo Notifications</a></li>
+  <li><a href="#build-history">Build History</a></li>
+  <li><a href="#build-page">Build Page</a></li>
+  <li><a href="#job-page">Job Page</a></li>
+  <li><a href="#source-file-page">Source File Page</a></li>
+</ul>
+
+<h3 id="managing-your-subscriptions">Managing Your Subscriptions</h3>
+
+<ul>
+  <li><a href="#subscriptions-page">Subscriptions</a></li>
+  <li><a href="#subscription-details">Subscription Details</a></li>
+  <li><a href="#subscription--invoices">Subscription &gt; Invoices</a></li>
+  <li><a href="#subscription--remove-repos">Subscription &gt; Remove Repos</a></li>
+</ul>
+
+<h3 id="managing-your-user-account">Managing Your User Account</h3>
+
+<ul>
+  <li><a href="#account-page">Account Page</a></li>
+</ul>
+
+<h3 id="product-updates">Product Updates</h3>
+
+<ul>
+  <li><a href="#announcements">Announcements</a></li>
+</ul>
+
+<p></p>
+
+<h2 id="sign-in">Sign In</h2>
+
+<p><img src="/images/ui-sign-in.png" alt="Coveralls Sign In" height="100%" width="100%" /></p>
+
+<p>The <strong>Sign In Page</strong> is where you’ll go to log in to your Coveralls account. Using Coveralls is free without a subscription for public repos, and creating an account is easy; all you need to do is log in through your git repo host. If you need a subscription, you can <a href="#sign-up">sign up</a> for one.</p>
+
+<h3 id="sign-in-page-info--actions">Sign In Page Info &amp; Actions</h3>
+
+<ul>
+  <li><strong>Sign In via Github</strong> — Click to sign in with your Github account</li>
+  <li><strong>Sign In via Gitlab</strong> — Click to sign in with your Gitlab account</li>
+  <li><strong>Sign In via Bitbucket</strong> — Click to sign in with your Bitbucket account</li>
+</ul>
+
+<h2 id="sign-up">Sign Up</h2>
+
+<p><img src="/images/ui-sign-up.png" alt="Coveralls Sign Up" height="100%" width="100%" /></p>
+
+<p>The <strong>Sign Up Page</strong> is where you’ll go to create a new Coveralls subscription. You only need a subscription to use Coveralls with private repos. Otherwise, you can just <a href="#sign-in">sign in</a> to start using Coveralls for free with your public repos.</p>
+
+<h3 id="sign-up-page-info--actions">Sign Up Page Info &amp; Actions</h3>
+
+<ul>
+  <li><strong>Add Subscription</strong> — Click to create a new subscription for any of your orgs</li>
+  <li><strong>See Pricing</strong> — Click to view pricing info for Coveralls Cloud plans</li>
+  <li><strong>Resync</strong> — Click to refresh available orgs from connected services</li>
+</ul>
+
+<h2 id="sign-up--choose-plan">Sign Up &gt; Choose Plan</h2>
+
+<p><img src="/images/ui-sign-up-choose-plan.png" alt="Coveralls Choose Plan" height="100%" width="100%" /></p>
+
+<p>After choosing your org, you’ll need to choose a plan for your new Coveralls subscription. You can choose between plans based on the number of private repos you need to track coverage for, and choose from plans paid monthly, or annually with a 10% discount.</p>
+
+<h3 id="sign-up--choose-plan-info--actions">Sign Up &gt; Choose Plan Info &amp; Actions</h3>
+
+<ul>
+  <li><strong>Select Plan</strong> — Click to select a plan</li>
+  <li><strong>Show Yearly/Monthly</strong> — Click to change plan durations &amp; pricing</li>
+  <li><strong>Billing Info</strong> — Enter an email and billing info for your subscription</li>
+  <li><strong>Coupn Code?</strong> — Enter a coupon code to apply a discount to your subscription</li>
+  <li><strong>Create Subscription</strong> — Click to create your new subscription</li>
+</ul>
+
+<h2 id="sign-up--last-step">Sign up &gt; Last Step</h2>
+
+<p><img src="/images/ui-sign-up-last-step.png" alt="Coveralls Last Step" height="100%" width="100%" /></p>
+
+<p>After creating your new subscription, you’ll see the <strong>Last Step</strong> page, where you can refresh your list of available repos after changing your access scope to private with your new subscription.</p>
+
+<h3 id="sign-up--last-step-info--actions">Sign up &gt; Last Step Info &amp; Actions</h3>
+
+<ul>
+  <li><strong>Sync Private Repos</strong> — Click to make all private repos available to your subscription</li>
+</ul>
+
+<h2 id="welcome-new-subscription">Welcome (New Subscription)</h2>
+
+<p><img src="/images/ui-welcome-new-subscription.png" alt="Coveralls Welcome (New Subscription)" height="100%" width="100%" /></p>
+
+<p>After creating your new subscription, you’ll see the <strong>Welcome</strong> page, where you can choose where to go next, based on your level of experience with Coveralls.</p>
+
+<h3 id="welcome-page-info--actions">Welcome Page Info &amp; Actions</h3>
+
+<ul>
+  <li><strong>Go to Dashboard</strong> — Click to see repos already added to Coveralls</li>
+  <li><strong>Add Repos</strong> — Click to start adding new repos to Coveralls</li>
+  <li><strong>View Docs</strong> — Click to visit <a href="/">Coveralls Docs &gt; Getting Started</a></li>
+</ul>
+
+<h2 id="the-dashboard">The Dashboard</h2>
+
+<p><img src="/images/ui-dashboard.png" alt="Coveralls Dashboard" height="100%" width="100%" /></p>
+
+<p>The <strong>Coveralls Dashboard</strong> (aka. <strong>All Repos Page</strong>) is the first page you’ll see when you log in to <a target="_blank" href="https://coveralls.io">Coveralls</a>. It’s a good place to start if you’re looking for a quick overview of coverage across all of your projects.</p>
+
+<h3 id="dashboard-info--actions">Dashboard Info &amp; Actions</h3>
+
+<ul>
+  <li><strong>Project Name</strong> — Click on the project name to go to the <strong>Repo Page</strong> for that project</li>
+  <li><strong>Project Coverage</strong> — Coverage % for the project’s main branch</li>
+  <li><strong>Last Build</strong> — The project’s last build; click to go to the <strong>Build Page</strong> for that build</li>
+  <li><strong>Build Coverage</strong> — Coverage % for the last build’s branch</li>
+</ul>
+
+<h2 id="the-add-repos-page">The Add Repos Page</h2>
+
+<p><img src="/images/ui-add-repos.png" alt="Coveralls Add Repos" height="100%" width="100%" /></p>
+
+<p>The <strong>Add Repos Page</strong> is where you can add repos from your git hosting services to Coveralls—each creating a new Coveralls Repo. You can add repos from GitHub, GitLab or Bitbucket.</p>
+
+<h3 id="add-repos-page-info--actions">Add Repos Page Info &amp; Actions</h3>
+
+<h4 id="left-nav-connect-services">Left Nav (Connect Services)</h4>
+
+<ul>
+  <li><strong><icon class="fa fa-github"></icon> Link Github</strong> — If not already linked</li>
+  <li><strong><icon class="fa fa-gitlab"></icon> Link GitLab</strong> — If not already linked</li>
+  <li><strong><icon class="fa fa-bitbucket"></icon> Link Bitbucket</strong> — If not already linked</li>
+</ul>
+
+<h4 id="header-search--sync">Header (Search &amp; Sync)</h4>
+
+<ul>
+  <li><strong>Instructions</strong> — How to add repos to Coveralls</li>
+  <li><strong>Search</strong> — Search for a repo by name</li>
+  <li><strong>Sync</strong> — Click <strong>Sync Repos</strong> to sync repos from all connected services</li>
+</ul>
+
+<h4 id="main-section-repo-list">Main Section (Repo List)</h4>
+
+<ul>
+  <li><strong>Add Repo</strong> — Click <strong>ON/OFF toggle</strong> to add a repo to your Coveralls account</li>
+  <li><strong>Set up Repo</strong> — Click <strong>Start Uploading Coverage</strong> to set up coverage reports for repo</li>
+  <li><strong>View Details</strong> — Click <strong>Details</strong> to view existing coverage reports for a repo</li>
+  <li><strong>Visit Git Home</strong> — Click <strong>Github/Gitlab/Bitbucket</strong> to visit repo at git service</li>
+  <li><strong>Pagination</strong> — Page through current list of repos</li>
+</ul>
+
+<h4 id="right-nav-orgs--subscriptions">Right Nav (Orgs &amp; Subscriptions)</h4>
+
+<ul>
+  <li><strong>Subscriptions</strong> — Click subscription name to filter repos by subscription</li>
+  <li><strong>Orgs</strong> — Your orgs, listed by service; click org name to filter repos by org</li>
+  <li><strong>Add Subscription</strong> — Click <strong>Add Pro</strong> to add a subscription for an org</li>
+</ul>
+
+<h2 id="repo-start-page">Repo Start Page</h2>
+
+<p><img src="/images/ui-repo-start-page-scala.png" alt="Coveralls Repo Start Page" height="100%" width="100%" /></p>
+
+<p>The <strong>Repo Start Page</strong> is the page you’ll see after you add a repo to Coveralls, but before Coveralls has received any coverage reports for it. It provides instructions for setting up coverage reports for the repo.</p>
+
+<h3 id="repo-start-page-info--actions">Repo Start Page Info &amp; Actions</h3>
+
+<h4 id="left-nav">Left Nav</h4>
+
+<ul>
+  <li><strong>Settings</strong> — Click to access the <strong>Repo Settings Page</strong> for the repo</li>
+  <li><strong>Repo on Github/Gitlab/Bitbucket</strong> — Click to visit the repo at your git service</li>
+</ul>
+
+<h4 id="main-section-setup-help">Main Section (Setup Help)</h4>
+
+<ul>
+  <li><strong>Start Uploading Coverage</strong> — Instructions for integrating this repo with Coveralls</li>
+  <li><strong>Choose an Integration</strong> — Integration options based on project’s main language</li>
+  <li><strong>Configure Your Project</strong> — Steps to configure the project for coverage reporting</li>
+  <li><strong>Coveralls Repo Token</strong> — First opportunity to copy the repo token to clipboard</li>
+  <li><strong>Commit Code &amp; View Coverage</strong> — Steps to create your first coverage report</li>
+  <li><strong>Questions? Problems?</strong> — Support links for issues and next steps</li>
+  <li><strong>Badge Your Repo</strong> — First opportunity to add coverage badge to your README</li>
+</ul>
+
+<h2 id="repo-page">Repo Page</h2>
+
+<p><img src="/images/ui-repo-page.png" alt="Coveralls Repo Page" height="100%" width="100%" /></p>
+
+<h3 id="repo-page-info--actions">Repo Page Info &amp; Actions</h3>
+
+<h4 id="left-nav-1">Left Nav</h4>
+
+<ul>
+  <li><strong>Settings</strong> — Click to access the <strong>Repo Settings Page</strong> for the repo</li>
+  <li><strong>Repo on Github/Gitlab/Bitbucket</strong> — Click to visit the repo at your git service</li>
+</ul>
+
+<h4 id="main-section-coverage-details">Main Section (Coverage Details)</h4>
+
+<ul>
+  <li><strong>Repo Name</strong> — Repo name, with breadcrumb link to parent org</li>
+  <li><strong>Coverage %</strong> — Coverage % for the repo’s default branch</li>
+  <li><strong>Coverage Graph</strong> — Coverage trend graph for the repo’s main branch</li>
+  <li><strong>Repo Details</strong> — Date added, Repo token, # builds, # files, Badge</li>
+  <li><strong>Last Build</strong> — Last build on default branch; click to visit <strong>Build Page</strong></li>
+  <li><strong>Build Info Table</strong> — Details for last build: #, Type, Commit, Coverage breakdown</li>
+  <li><strong>Line Coverage Graph</strong> — Graph comparing covered lines to relevant lines</li>
+  <li><strong>Source Files</strong> — Name, Coverage % &amp; details; click to visit <strong>Source File Pages</strong></li>
+  <li><strong>Recent Builds</strong> — Last five builds in build history; click to <strong>See All Builds</strong></li>
+</ul>
+
+<h2 id="build-page">Build Page</h2>
+
+<p><img src="/images/ui-build-page.png" alt="Coveralls Build Page" height="100%" width="100%" /></p>
+
+<h3 id="build-page-info--actions">Build Page Info &amp; Actions</h3>
+
+<h4 id="left-nav-2">Left Nav</h4>
+
+<ul>
+  <li><strong>Back to Repo</strong> — Click to return to <strong>Repo Page</strong></li>
+  <li><strong>Commit <icon class="fa fa-external-link"></icon></strong> — Click to visit commit at your git service (push builds only)</li>
+  <li><strong>Pull Request <icon class="fa fa-external-link"></icon></strong> — Click to visit pull request at your git service (PR builds only)</li>
+  <li><strong>Previous Build</strong> — Click to access previous build on came branch (push builds only)</li>
+  <li><strong>Base Build</strong> — Click to access base build (PR builds only)</li>
+  <li><strong>Delete</strong> — Click to delete the build</li>
+</ul>
+
+<h4 id="main-section-coverage-details-1">Main Section (Coverage Details)</h4>
+
+<ul>
+  <li><strong>Build Name</strong> — Build name, with breadcrumb link to parent repo</li>
+  <li><strong>Build Coverage</strong> — Coverage % for this build</li>
+  <li><strong>Coverage Graph</strong> — Coverage trend graph for repo’s default branch</li>
+  <li><strong>Build Details</strong> — Run date, # jobs, # files, Run time, Badge</li>
+  <li><strong>Build Info Table</strong> — #, Type, Commit, PR title (PR only), Run details, Coverage %</li>
+  <li><strong>Jobs List</strong> — All jobs / subprojects w/ run details, coverage % &amp; links to <strong>Job Pages</strong></li>
+  <li><strong>Source Files</strong> — In build; Name, Coverage % &amp; details; link to <strong>Source File Pages</strong></li>
+</ul>
+
+<h2 id="job-page">Job Page</h2>
+
+<p><img src="/images/ui-job-page-better.png" alt="Coveralls Job Page" height="100%" width="100%" /></p>
+
+<h3 id="job-page-info--actions">Job Page Info &amp; Actions</h3>
+
+<h4 id="left-nav-3">Left Nav</h4>
+
+<ul>
+  <li><strong>Back to Build</strong> — Click to return to <strong>Build Page</strong></li>
+  <li><strong>Commit <icon class="fa fa-external-link"></icon></strong> — Click to visit commit at your git service</li>
+  <li><strong>Delete</strong> — Click to delete the job</li>
+</ul>
+
+<h4 id="main-section-coverage-details-2">Main Section (Coverage Details)</h4>
+
+<ul>
+  <li><strong>Job Name</strong> — Job name, with breadcrumb links to parent build and repo</li>
+  <li><strong>Job Coverage</strong> — Coverage % for this job</li>
+  <li><strong>Coverage Graph</strong> — Coverage trend graph for repo’s default branch</li>
+  <li><strong>Job Details</strong> — Run date, # files, Run time, Badge</li>
+  <li><strong>Job Info Table</strong> — #, Type, Commit, PR title (PR only), Run details, Coverage %</li>
+  <li><strong>Source Files Table</strong> — Name, Coverage details &amp; changes; link to <strong>Source File Pages</strong></li>
+</ul>
+
+<h2 id="source-file-page">Source File Page</h2>
+
+<p><img src="/images/ui-source-file-page.png" alt="Coveralls Source File Page" height="100%" width="100%" /></p>
+
+<h3 id="source-file-page-info--actions">Source File Page Info &amp; Actions</h3>
+
+<ul>
+  <li><strong>Build/Job</strong> — Build or job name, with breadcrumb links back to parent repo</li>
+  <li><strong>Build/Job Info</strong> — #, Type, Commit, PR title (PR only), Run details, Coverage %</li>
+  <li><strong>Source File</strong> — Coverage %, Color-coded line-by-line coverage hits/misses</li>
+</ul>
+
+<h2 id="repo-settings">Repo Settings</h2>
+
+<p><img src="/images/ui-repo-settings.png" alt="Coveralls Repo Settings Page" height="100%" width="100%" /></p>
+
+<h3 id="repo-settings-info--actions">Repo Settings Info &amp; Actions</h3>
+
+<h4 id="left-nav-4">Left Nav</h4>
+
+<ul>
+  <li><strong>Back to Repo</strong> — Click to return to <strong>Repo Page</strong></li>
+  <li><strong>Notifications</strong> — Click to visit <strong>Notifications</strong></li>
+  <li><strong>PR Alerts</strong> — Jump to Pull Request Alerts section</li>
+  <li><strong>Info Sync</strong> — Jump to Repo Sync section</li>
+</ul>
+
+<h4 id="main-section-settings">Main Section (Settings)</h4>
+
+<ul>
+  <li><strong>General</strong> — Repo layout type; regular or monorepo</li>
+  <li><strong>Badge &amp; Token</strong> — Badge, Repo token, Branch coverage, Recache, Admin info</li>
+  <li><strong>Pull Requests</strong> — Enable PR comments, format; compact or detailed</li>
+  <li><strong>Status Updates</strong> — Enable status updates, Coverage threshold, Decrease threshold</li>
+  <li><strong>Repo Changes</strong> — Resync with git service</li>
+  <li><strong>Delete Repo</strong> — Delete repo from Coveralls (cannot be undone)</li>
+</ul>
+
+<h2 id="repo-notifications">Repo Notifications</h2>
+
+<p><img src="/images/ui-notifications-email.png" alt="Coveralls Notifications Page" height="100%" width="100%" /></p>
+
+<h3 id="repo-notifications-info--actions">Repo Notifications Info &amp; Actions</h3>
+
+<h4 id="left-nav-5">Left Nav</h4>
+
+<ul>
+  <li><strong>Back to Repo</strong> — Click to return to <strong>Repo Page</strong></li>
+  <li><strong>Back to Settings</strong> — Click to return to <strong>Repo Settings</strong></li>
+</ul>
+
+<h4 id="main-section-notifications">Main Section (Notifications)</h4>
+
+<ul>
+  <li><strong>Email</strong> — Set up email notifications</li>
+  <li><strong>Slack</strong> — Set up Slack notifications</li>
+  <li><strong>HipChat</strong> — Set up HipChat notifications</li>
+  <li><strong>Gitter</strong> — Set up Gitter notifications</li>
+  <li><strong>Webhook</strong> — Set up general webhook notifications</li>
+</ul>
+
+<h2 id="build-history">Build History</h2>
+
+<p><img src="/images/ui-build-history.png" alt="Coveralls Build History Page" height="100%" width="100%" /></p>
+
+<h3 id="build-history-info--actions">Build History Info &amp; Actions</h3>
+
+<h4 id="left-nav-6">Left Nav</h4>
+
+<ul>
+  <li><strong>Back to Repo</strong> — Click to return to <strong>Repo Page</strong></li>
+</ul>
+
+<h4 id="main-section-build-history">Main Section (Build History)</h4>
+
+<ul>
+  <li><strong>Build History</strong> — List of all builds for the repo</li>
+  <li><strong>Builds Table</strong> — Build #, Branch, Commit, Type, Run date, Service, Coverage %</li>
+  <li><strong>Pagination</strong> — Click to access prev, next or specific page of builds (15 per pg)</li>
+</ul>
+
+<h2 id="subscriptions-page">Subscriptions Page</h2>
+
+<p><img src="/images/ui-subscriptions.png" alt="Coveralls Subscriptions Page" height="100%" width="100%" /></p>
+
+<h3 id="subscriptions-page-info--actions">Subscriptions Page Info &amp; Actions</h3>
+
+<h4 id="left-nav-7">Left Nav</h4>
+
+<ul>
+  <li><strong>All Invoices</strong> — Click to see <strong>Invoices</strong> for all subscriptions</li>
+</ul>
+
+<h4 id="main-section-subscriptions">Main Section (Subscriptions)</h4>
+
+<ul>
+  <li><strong>Subscriptions</strong> — All active subscriptions, by org name, owner and plan</li>
+  <li><strong>Settings</strong> — Click to manage settings for each subscription (owner only)</li>
+</ul>
+
+<h2 id="subscription-details">Subscription Details</h2>
+
+<p><img src="/images/ui-subscription-detail.png" alt="Coveralls Subscription Details Page" height="100%" width="100%" /></p>
+
+<h3 id="subscription-details-info--actions">Subscription Details Info &amp; Actions</h3>
+
+<h4 id="left-nav-8">Left Nav</h4>
+
+<ul>
+  <li><strong>Back to Subscriptions</strong> — Click to return to <strong>Subscriptions Page</strong></li>
+  <li><strong>Invoices</strong> — Click to see <strong>Invoices</strong> for this subscription</li>
+  <li><strong>Remove Repos</strong> — Click to remove repos from this subscription</li>
+  <li><strong>Cancel Subscription</strong> — Click to cancel this subscription</li>
+</ul>
+
+<h4 id="main-section-subscription-details">Main Section (Subscription Details)</h4>
+
+<ul>
+  <li><strong>Current Plan</strong> — Current plan details</li>
+  <li><strong>Change Plan</strong> — Click to change plan for this subscription</li>
+  <li><strong>Update Billing Info</strong> — Change billing info for this subscription</li>
+  <li><strong>Update Invoice Info</strong> — Change info that should appear on invoices</li>
+  <li><strong>Transfer Subscription</strong> — Transfer ownership of subscription to another user</li>
+</ul>
+
+<h2 id="subscription--invoices">Subscription &gt; Invoices</h2>
+
+<p><img src="/images/ui-subscription-detail-invoices.png" alt="Coveralls Subscription Invoices Page" height="100%" width="100%" /></p>
+
+<h3 id="subscription--invoices-info--actions">Subscription &gt; Invoices Info &amp; Actions</h3>
+
+<h4 id="left-nav-9">Left Nav</h4>
+
+<ul>
+  <li><strong>Back to Subscription</strong> — Click to return to <a href="#subscription-details">Subscription Details</a> page</li>
+</ul>
+
+<h4 id="main-section-invoices">Main Section (Invoices)</h4>
+
+<ul>
+  <li><strong>Payment History</strong> — List of all invoices by date, amount, status</li>
+  <li><strong>PDF</strong> — Download a PDF of this invoice</li>
+</ul>
+
+<h2 id="subscription--remove-repos">Subscription &gt; Remove Repos</h2>
+
+<p><img src="/images/ui-subscription-detail-remove-repos.png" alt="Coveralls Subscription Remove Repos Page" height="100%" width="100%" /></p>
+
+<h3 id="subscription--remove-repos-info--actions">Subscription &gt; Remove Repos Info &amp; Actions</h3>
+
+<h4 id="left-nav-10">Left Nav</h4>
+
+<ul>
+  <li><strong>Back to Subscription</strong> — Click to return to <a href="#subscription-details">Subscription Details</a> page</li>
+</ul>
+
+<h4 id="main-section-remove-repos">Main Section (Remove Repos)</h4>
+
+<ul>
+  <li><strong>Repos</strong> — List of all private repos in this subscription by name, status</li>
+  <li><strong>Select Repo</strong> — Check to select repo for removal</li>
+  <li><strong>Select All</strong> — Check to select all repos for removal</li>
+  <li><strong>Remove Selected</strong> — Click to remove selected repos from subscription</li>
+</ul>
+
+<h2 id="account-page">Account Page</h2>
+
+<p><img src="/images/ui-account-page-with-token.png" alt="Coveralls Account Page" height="100%" width="100%" /></p>
+
+<h3 id="account-page-info--actions">Account Page Info &amp; Actions</h3>
+
+<ul>
+  <li><strong>Linked Services</strong> — Click to link or unlink repo hosting services</li>
+  <li><strong>Personal API Tokens</strong> — Name and create new tokens to use the Coveralls API</li>
+  <li><strong>Delete Account</strong> — Click to delete your Coveralls <em>user</em> account <sup>*</sup></li>
+</ul>
+
+<p><sup>*</sup> <em>Deleting your user account will not delete any of your Coveralls subscriptions. To cancel a subscription, visit the <a href="#subscription-details">Subscription Details</a> page for your subscription and click <strong>Cancel Subscription</strong>.</em></p>
+
+<h2 id="announcements">Announcements</h2>
+
+<p><img src="/images/ui-announcements.png" alt="Coveralls Announcements Page" height="100%" width="100%" /></p>
+
+<p>The <a href="https://coveralls.io/announcements" target="_blank">Announcements Page</a> is where we post important updates and news about Coveralls. You can also subscribe for the same updates delivered to your inbox.</p>
+
+<h3 id="announcements-page-info--actions">Announcements Page Info &amp; Actions</h3>
+
+<ul>
+  <li><strong>Announcements</strong> — List of all announcements by date, title, and description</li>
+  <li><strong>Subscribe</strong> — Enter your email address to subscribe to Coveralls announcements</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<hr />
+
+<p><em>Any problems, questions or comments about this doc? <a target="_blank" href="mailto:support@coveralls.io?subject=Feedback%20on%20Docs%20%3E%20Coveralls%20Web%20UI">Let us know</a>.</em></p>
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+  <ul class="footer-main">
+    <li><a target="_blank" href="https://status.coveralls.io/">Status</a></li>
+    <li><a href="/common-issues-and-troubleshooting">Troubleshooting</a></li>
+    <li><a target="_blank" href="https://github.com/lemurheavy/coveralls-public/issues">Open an Issue</a></li>
+    <li><a target="_blank" href="mailto:sales@coveralls.io" rel="nofollow">Sales</a></li>
+    <li><a target="_blank" href="mailto:support@coveralls.io" rel="nofollow">Support</a></li>
+    <li><a target="_blank" href="https://twitter.com/CoverallsApp" target="_blank">Twitter</a></li>
+    <li><a target="_blank" href="https://coveralls.io/">Cloud</a></li>
+    <li><a target="_blank" href="https://enterprise.coveralls.io/">Enterprise</a></li>
+    <li><a target="_blank" href="https://coveralls.io/sign-up">Start Free</a></li>
+    <li><a target="_blank" href="https://calendly.com/coveralls-support/demo">Schedule Demo</a></li>
+  </ul>
+  <ul class="footer-sub">
+    <li><a target="_blank" href="https://www.coveralls.io/legal">TOS & SLA</a></li>
+    <li><a target="_blank" href="https://www.coveralls.io/supported-continuous-integration">Supported CI Services</a></li>
+    <li><a target="_blank" href="https://www.coveralls.io/continuous-integration">What's a CI service?</a></li>
+    <li><a target="_blank" href="https://www.coveralls.io/code-coverage">Automated Testing</a></li>
+    <li><a target="_blank" href="https://www.coveralls.io/about">About Us</a></li>
+  </ul>
+  <div class="footer-copy">
+      © 2026 Coveralls, LLC
+  </div>
+</footer>
+  </body>
+</html>

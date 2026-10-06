@@ -1,0 +1,8 @@
+{
+  "action": "One pnpm exec astro build was run from repository root rather than isolated app while editing footer notes.",
+  "evidence": "ASTRO_BUILD_FINAL.log",
+  "result": "exit0,0pages; root dist directory empty and .astro contains generated modules/types. Root has no astro.config.mjs. No package prebuild/install/script was invoked.",
+  "scope": "No intended root app/shared/source edits; ignored root generated state was touched. Prior contents of dist/.astro not inventoried, so preservation of those caches cannot be certified. Do not delete/reset them or guess restoration; normal root generation can reproduce them if needed.",
+  "correction": "All subsequent build calls explicitly set absolute isolated app workdir. Isolated221page build and217body checks are independent of empty root output.",
+  "rootTrackedGeneratedFiles": []
+}

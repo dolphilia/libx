@@ -1,0 +1,140 @@
+{
+  "status": "13-original-guides-read-for-selection-assessment",
+  "method": "All fixed thirteen guide source texts, code snippets and tables read in this cycle. Six syntax mismatches and four runtime semantics were checked with fixed header probes; source originals untouched.",
+  "scope": [
+    {
+      "file": "readme.md",
+      "sha256": "ac1612175441cca1241174db73c9fcbe763c1280a3aad84ed4944efcfd55ac0e",
+      "lines": 160,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "設置・生成手順と最小DOM編集/Writer出力、v1.1変更点を収録。簡易例のエラー処理省略は明示。"
+      ]
+    },
+    {
+      "file": "CHANGELOG.md",
+      "sha256": "4acf2ada9d6bb83934f7c66c2ebfbab4f6e9b0856683f28671b481d7711e8f60",
+      "lines": 158,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "v1.1.0追加/修正と過去版境界を収録。comments/trailing comma/NaN対応とpointer/schema追加の固定根拠。"
+      ]
+    },
+    {
+      "file": "doc/features.md",
+      "sha256": "60fb3499df7c61ca50d892535ea03178a14d0f930ef0f1ec4c16fdc1fec58f42",
+      "lines": 104,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "機能全体、DOM/SAX、stream/encoding/allocatorの対象範囲を提示。文書の標準名/メモリ数値は別章との年代差を確認事項へ。"
+      ]
+    },
+    {
+      "file": "doc/tutorial.md",
+      "sha256": "52f902207c0846dba960dacfabce870fcaf48e80ab6a9fc8f952cc8938260b6b",
+      "lines": 536,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "型判定/array/object参照と変更、move、copy-string/const-string寿命、allocator、deep-copy、swapを説明。",
+        "kObjectの例、x/y変数取り違え、object比較順序の記述を確認事項へ。"
+      ]
+    },
+    {
+      "file": "doc/pointer.md",
+      "sha256": "26b1867343fe9712cb1712828aef556e0e35875c34c3ca09123a352995237949",
+      "lines": 234,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "tokenのobject/array解決、親作成の破壊的挙動、minus、allocator、IsValid/error、URI/stringify/user-tokenを収録。",
+        "1/aに先頭slashなし、Erase後stars10は実測11、Person例にAllocator/addresses綴りの照合事項。"
+      ]
+    },
+    {
+      "file": "doc/stream.md",
+      "sha256": "e3029e9167c3e5358c6a9f8cbaa4545629c18990784457f955c253abfa9755cd",
+      "lines": 426,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "memory/file/iostream、BOMとencoded/AutoUTF、custom input/output概念と例を収録。",
+        "WriterのSource/Target逆転、AutoUTF例の出力stream未接続、output wrapperのinput記述と空Tellを確認事項へ。"
+      ]
+    },
+    {
+      "file": "doc/encoding.md",
+      "sha256": "94854fd70e39e3581023eb6c3e574818b5a2951e407629125e68c09cbaea3dc5",
+      "lines": 146,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "UTF各形式とcodeunit、DOM/IOの違い、ASCII、validation/transcodingを収録。",
+        "AutoUTFとEncodedStreamの記述はstream章のAutoUTFStream案内と照合要。DOM Encodingへのリンク表示とstream先の食違いあり。"
+      ]
+    },
+    {
+      "file": "doc/dom.md",
+      "sha256": "b9df02c0d1a0d49930f24c51878f6b39cd37cbc58aebe266f75a69deaca61022",
+      "lines": 280,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "template/encoding/allocator、parseFlags全11項目、parseエラー、in-situの変更/寿命/制約、transcoding/validation、userbufferを収録。",
+        "GetParseOffsetは固定APIGetErrorOffsetと不一致。"
+      ]
+    },
+    {
+      "file": "doc/sax.md",
+      "sha256": "b7763a105c86e15c2ceebadc9130bdc14a9d77e38b3eb15b48f89f3e8741ac18",
+      "lines": 486,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "Reader/Handlerの全イベントとbool中断/encoding、Writertemplate/flags/Reset、customdata/filterを収録。",
+        "冒頭GenericWriter説明は同章Template節で明示否定。HasParseEror、BeginArary、kParseNumbersAsStrings等を確認事項へ。"
+      ]
+    },
+    {
+      "file": "doc/schema.md",
+      "sha256": "f8f00af1bc9dcf33f4488914021c84e478996a8d870f3916598a495def0f3321",
+      "lines": 237,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "Draftv4限定、DOM/SAX/serialization validation、outputHandler、remote provider、format/id制約、regex/performanceを収録。",
+        "Basic Usage parseエラー条件の反転、remoteSizeTyp誤記を確認。benchmarkを現行性能と扱わない。"
+      ]
+    },
+    {
+      "file": "doc/performance.md",
+      "sha256": "4130384d3609a4cb9220903d9d62a40e1680e6b43c18a4185fe940e60c1b8773",
+      "lines": 26,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "外部benchmarkと旧0.1記事の参照集。使い方の必須説明とは分け、実測性能を新規に作成しない。"
+      ]
+    },
+    {
+      "file": "doc/internals.md",
+      "sha256": "53bd886a93f6d718be181ce1225499fdd13f828958c3449bb0485a65306a2d77",
+      "lines": 365,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "architecture/utility diagrams、Valuevariant/flags/shortstring、allocator、SIMD/streamcopy/numericconversion、iterativegrammar/table/stateを収録。",
+        "Value layout/flags/shortstringの旧説明、tabU+000B、S->array/objectのみは固定header/tutorialv1.1と照合事項。"
+      ]
+    },
+    {
+      "file": "doc/faq.md",
+      "sha256": "7fc8c5aa614f50e4ef8c61a2eaabad6a38fc4232223519bb1ad01f9ae7a74f74",
+      "lines": 289,
+      "review": "read-complete-original-guide-for-selection-quality",
+      "findings": [
+        "基本/DOM/SAX/Unicode/stream/performance各問答で主要概念を補足。",
+        "relaxed syntax未対応は同版readme/features/DOM/changelogと矛盾。Documnet誤記、memory記述はarchitecture/config条件を伴う注記が必要。"
+      ]
+    }
+  ],
+  "positive": "導入からDOM/SAX、stream/encoding、pointer/schemaの主要手順と寿命/allocator/エラー制約は収録範囲内にある。外部Issueやchatの新規本文を作らずに主要説明を提供できる見込み。",
+  "negative": "複数の基本例・API名・同版の説明に不一致。単なる綴りではなくschema誤条件/Writerencoding/invalidpointer等の実用影響を確認。単純翻訳で解消せず原文注記/意味確認の追加工数を含める。",
+  "remaining": [
+    "184API/index reader pages全体の原文意味レビューは未完。",
+    "630警告の主要public/private/既存overload/guide対応分類は未完。",
+    "採用時の日本語全文レビューは未着手。"
+  ],
+  "limits": "This is original guide selection review, not all217 pages semantic approval. No claims of all snippet compilation, benchmark reproduction, platform conformance or standards validation."
+}

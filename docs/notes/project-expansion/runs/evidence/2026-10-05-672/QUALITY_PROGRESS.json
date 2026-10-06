@@ -1,0 +1,53 @@
+{
+  "status": "partial-semantic-assessment",
+  "inventory": "UNDOCUMENTED_SOURCE_INVENTORY.json",
+  "warnings": 630,
+  "breakdown": {
+    "memberOrCompound": 628,
+    "parameter": 2
+  },
+  "examples": [
+    {
+      "file": "include/rapidjson/pointer.h",
+      "sha256": "c0f4bf66f0ae482c240aed4a22708da0c4e90f2944b47f8d22688c5fcbaf039c",
+      "lines": [
+        459,
+        514
+      ],
+      "source": "\n    //@}\n\n    //!@name Query value\n    //@{\n\n    //! Query a value in a subtree.\n    /*!\n        \\param root Root value of a DOM sub-tree to be resolved. It can be any value other than document root.\n        \\param unresolvedTokenIndex If the pointer cannot resolve a token in the pointer, this parameter can obtain the index of unresolved token.\n        \\return Pointer to the value if it can be resolved. Otherwise null.\n\n        \\note\n        There are only 3 situations when a value cannot be resolved:\n        1. A value in the path is not an array nor object.\n        2. An object value does not contain the token.\n        3. A token is out of range of an array value.\n\n        Use unresolvedTokenIndex to retrieve the token index.\n    */\n    ValueType* Get(ValueType& root, size_t* unresolvedTokenIndex = 0) const {\n        RAPIDJSON_ASSERT(IsValid());\n        ValueType* v = &root;\n        for (const Token *t = tokens_; t != tokens_ + tokenCount_; ++t) {\n            switch (v->GetType()) {\n            case kObjectType:\n                {\n                    typename ValueType::MemberIterator m = v->FindMember(GenericStringRef<Ch>(t->name, t->length));\n                    if (m == v->MemberEnd())\n                        break;\n                    v = &m->value;\n                }\n                continue;\n            case kArrayType:\n                if (t->index == kPointerInvalidIndex || t->index >= v->Size())\n                    break;\n                v = &((*v)[t->index]);\n                continue;\n            default:\n                break;\n            }\n\n            // Error: unresolved token\n            if (unresolvedTokenIndex)\n                *unresolvedTokenIndex = static_cast<size_t>(t - tokens_);\n            return 0;\n        }\n        return v;\n    }\n\n    //! Query a const value in a const subtree.\n    /*!\n        \\param root Root value of a DOM sub-tree to be resolved. It can be any value other than document root.\n        \\return Pointer to the value if it can be resolved. Otherwise null.\n    */\n    const ValueType* Get(const ValueType& root, size_t* unresolvedTokenIndex = 0) const { ",
+      "finding": "const Getのparameter警告。隣接mutable overload原文にunresolvedTokenIndexの用途と失敗3状況がある。"
+    },
+    {
+      "file": "include/rapidjson/schema.h",
+      "sha256": "f3ff069ab5af883371919642d06af4831798ca16028380947404d3d8cda6a6a6",
+      "lines": [
+        1293,
+        1308
+      ],
+      "source": "} // namespace internal\n\n///////////////////////////////////////////////////////////////////////////////\n// IGenericRemoteSchemaDocumentProvider\n\ntemplate <typename SchemaDocumentType>\nclass IGenericRemoteSchemaDocumentProvider {\npublic:\n    typedef typename SchemaDocumentType::Ch Ch;\n\n    virtual ~IGenericRemoteSchemaDocumentProvider() {}\n    virtual const SchemaDocumentType* GetRemoteDocument(const Ch* uri, SizeType length) = 0;\n};\n\n///////////////////////////////////////////////////////////////////////////////\n// GenericSchemaDocument",
+      "finding": "provider classのbriefなし。ただしdoc/schema.mdのRemote Schema節に利用説明と例がある。"
+    },
+    {
+      "file": "doc/schema.md",
+      "sha256": "f8f00af1bc9dcf33f4488914021c84e478996a8d870f3916598a495def0f3321",
+      "lines": [
+        147,
+        174
+      ],
+      "source": "## Remote Schema\n\nJSON Schema supports [`$ref` keyword](http://spacetelescope.github.io/understanding-json-schema/structuring.html), which is a [JSON pointer](doc/pointer.md) referencing to a local or remote schema. Local pointer is prefixed with `#`, while remote pointer is an relative or absolute URI. For example:\n\n~~~js\n{ \"$ref\": \"definitions.json#/address\" }\n~~~\n\nAs `SchemaDocument` does not know how to resolve such URI, it needs a user-provided `IRemoteSchemaDocumentProvider` instance to do so.\n\n~~~\nclass MyRemoteSchemaDocumentProvider : public IRemoteSchemaDocumentProvider {\npublic:\n    virtual const SchemaDocument* GetRemoteDocument(const char* uri, SizeTyp length) {\n        // Resolve the uri and returns a pointer to that schema.\n    }\n};\n\n// ...\n\nMyRemoteSchemaDocumentProvider provider;\nSchemaDocument schema(sd, &provider);\n~~~\n\n## Conformance\n\nRapidJSON passed 262 out of 263 tests in [JSON Schema Test Suite](https://github.com/json-schema/JSON-Schema-Test-Suite) (Json Schema draft 4).\n",
+      "finding": "利用例のSizeTypはinclude/rapidjson/schema.hのSizeTypeと不一致。原文誤記、固定本文は保持し修正注記を今後検討。"
+    },
+    {
+      "file": "include/rapidjson/schema.h",
+      "sha256": "f3ff069ab5af883371919642d06af4831798ca16028380947404d3d8cda6a6a6",
+      "lines": [
+        1585,
+        1601
+      ],
+      "source": "        , depth_(0)\n#endif\n    {\n    }\n\n    //! Constructor with output handler.\n    /*!\n        \\param schemaDocument The schema document to conform to.\n        \\param allocator Optional allocator for storing internal validation states.\n        \\param schemaStackCapacity Optional initial capacity of schema path stack.\n        \\param documentStackCapacity Optional initial capacity of document path stack.\n    */\n    GenericSchemaValidator(\n        const SchemaDocumentType& schemaDocument,\n        OutputHandler& outputHandler,\n        StateAllocator* allocator = 0, \n        size_t schemaStackCapacity = kDefaultSchemaStackCapacity,",
+      "finding": "outputHandler param説明がないconstructor警告。主要説明の充足はガイド/隣接APIとの追加照合が必要。"
+    }
+  ],
+  "limits": "4原文位置の限定照合。全13guide/APIの原文品質評価、628memberの実用影響判定、全文レビューは未完。",
+  "next": "630一覧をpublic essential API/内部privateや別overload説明/guideで説明済み/不足未解決へ分類。SizeTyp誤記は原文と現配信変換の保持を確認し、原文編集注記をfooterに実装する場合だけ限定検査する。"
+}

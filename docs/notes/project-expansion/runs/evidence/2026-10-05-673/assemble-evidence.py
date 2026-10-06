@@ -1,0 +1,44 @@
+import pathlib,json,hashlib,collections
+p=pathlib.Path(__file__).resolve().parent;src=pathlib.Path('/private/tmp/libx-rapidjson-screening-664/source');gen=pathlib.Path('/private/tmp/libx-rapidjson-screening-664/generated/html');base=p.parent
+def digest(f):return hashlib.sha256(f.read_bytes()).hexdigest()
+def save(n,x):(p/n).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+inputs=json.load(open(base/'2026-10-05-664/INPUT_CLASSIFICATION.json'));conversion=json.load(open(base/'2026-10-05-667/CONVERSION_MAP.json'));records={r['generated']:r for r in conversion['records']};assets={r['file']:r for r in conversion['assets']};rows=[]
+for f in sorted(gen.rglob('*')):
+ if not f.is_file():continue
+ rel=str(f.relative_to(gen));r={'file':rel,'sha256':digest(f),'bytes':f.stat().st_size}
+ if rel in records:
+  assert r['sha256']==records[rel]['sourceSha256'];r.update(role='reference-source-listing' if records[rel]['referenceSourceListing'] else 'adopt-reader-document',reason='Original .contents body converted in full with fixed reference mapping.',route=records[rel]['slug'])
+ elif rel in assets:
+  assert r['sha256']==assets[rel]['sha256'];r.update(role='adopt-illustration',reason='Original/generated illustration; byte preserved and provenance footer recorded in670.')
+ elif rel=='doxygen_crawl.html':r.update(role='generation-reference',reason='Machine crawler helper; no human .contents. Retained in frozen generated archive; scope correction666.')
+ elif rel.startswith('search/'):r.update(role='exclude-generator-ui',reason='Doxygen search implementation/data derived from original documented pages; Libx own search/index replaces navigation. Original human pages all retained.')
+ elif f.suffix in ['.js','.css'] or rel=='doxygen.svg':r.update(role='exclude-generator-ui',reason='Doxygen navigation/runtime/style/icon. Libx UI replaces these, original body/API listings preserved. Source .ttc tooltip text preserved and served via Libx owned runtime669; no Doxygen runtime licence relabel.')
+ else:raise ValueError(rel)
+ rows.append(r)
+assert len(rows)==417 and sum(r['role']=='adopt-reader-document' for r in rows)==184 and sum(r['role']=='reference-source-listing' for r in rows)==33
+save('GENERATED_BOUNDARY.json',{'status':'complete-output-classification','inputClassification':{'path':str(base/'2026-10-05-664/INPUT_CLASSIFICATION.json'),'sha256':digest(base/'2026-10-05-664/INPUT_CLASSIFICATION.json')},'scope':'v1.1.0 official EN13 guide Markdown inputs + public API Doxyfile33 header inputs;184 reader bodies+33 reference-source listings+20 illustrations+original4 external badges','counts':dict(collections.Counter(r['role'] for r in rows)),'rows':rows,'externalMaterials':{'evidence':'2026-10-05-671/BADGE_METHOD_DECISION.json','count':4,'method':'original URL embedding; no local public copy'},'limits':'Boundary completion is not semantic review or adoption; underlying sources full archive and source listing retained.'})
+coverage={
+'readme.md':['設置・生成手順と最小DOM編集/Writer出力、v1.1変更点を収録。簡易例のエラー処理省略は明示。'],
+'CHANGELOG.md':['v1.1.0追加/修正と過去版境界を収録。comments/trailing comma/NaN対応とpointer/schema追加の固定根拠。'],
+'doc/features.md':['機能全体、DOM/SAX、stream/encoding/allocatorの対象範囲を提示。文書の標準名/メモリ数値は別章との年代差を確認事項へ。'],
+'doc/tutorial.md':['型判定/array/object参照と変更、move、copy-string/const-string寿命、allocator、deep-copy、swapを説明。','kObjectの例、x/y変数取り違え、object比較順序の記述を確認事項へ。'],
+'doc/dom.md':['template/encoding/allocator、parseFlags全11項目、parseエラー、in-situの変更/寿命/制約、transcoding/validation、userbufferを収録。','GetParseOffsetは固定APIGetErrorOffsetと不一致。'],
+'doc/stream.md':['memory/file/iostream、BOMとencoded/AutoUTF、custom input/output概念と例を収録。','WriterのSource/Target逆転、AutoUTF例の出力stream未接続、output wrapperのinput記述と空Tellを確認事項へ。'],
+'doc/encoding.md':['UTF各形式とcodeunit、DOM/IOの違い、ASCII、validation/transcodingを収録。','AutoUTFとEncodedStreamの記述はstream章のAutoUTFStream案内と照合要。DOM Encodingへのリンク表示とstream先の食違いあり。'],
+'doc/pointer.md':['tokenのobject/array解決、親作成の破壊的挙動、minus、allocator、IsValid/error、URI/stringify/user-tokenを収録。','1/aに先頭slashなし、Erase後stars10は実測11、Person例にAllocator/addresses綴りの照合事項。'],
+'doc/schema.md':['Draftv4限定、DOM/SAX/serialization validation、outputHandler、remote provider、format/id制約、regex/performanceを収録。','Basic Usage parseエラー条件の反転、remoteSizeTyp誤記を確認。benchmarkを現行性能と扱わない。'],
+'doc/sax.md':['Reader/Handlerの全イベントとbool中断/encoding、Writertemplate/flags/Reset、customdata/filterを収録。','冒頭GenericWriter説明は同章Template節で明示否定。HasParseEror、BeginArary、kParseNumbersAsStrings等を確認事項へ。'],
+'doc/performance.md':['外部benchmarkと旧0.1記事の参照集。使い方の必須説明とは分け、実測性能を新規に作成しない。'],
+'doc/internals.md':['architecture/utility diagrams、Valuevariant/flags/shortstring、allocator、SIMD/streamcopy/numericconversion、iterativegrammar/table/stateを収録。','Value layout/flags/shortstringの旧説明、tabU+000B、S->array/objectのみは固定header/tutorialv1.1と照合事項。'],
+'doc/faq.md':['基本/DOM/SAX/Unicode/stream/performance各問答で主要概念を補足。','relaxed syntax未対応は同版readme/features/DOM/changelogと矛盾。Documnet誤記、memory記述はarchitecture/config条件を伴う注記が必要。']}
+items=[]
+for f in inputs['guideInputs']:
+ data=(src/f).read_text();items.append({'file':f,'sha256':digest(src/f),'lines':len(data.splitlines()),'review':'read-complete-original-guide-for-selection-quality','findings':coverage[f]})
+save('GUIDE_CONTENT_REVIEW.json',{'status':'13-original-guides-read-for-selection-assessment','method':'All fixed thirteen guide source texts, code snippets and tables read in this cycle. Six syntax mismatches and four runtime semantics were checked with fixed header probes; source originals untouched.','scope':items,'positive':'導入からDOM/SAX、stream/encoding、pointer/schemaの主要手順と寿命/allocator/エラー制約は収録範囲内にある。外部Issueやchatの新規本文を作らずに主要説明を提供できる見込み。','negative':'複数の基本例・API名・同版の説明に不一致。単なる綴りではなくschema誤条件/Writerencoding/invalidpointer等の実用影響を確認。単純翻訳で解消せず原文注記/意味確認の追加工数を含める。','remaining':['184API/index reader pages全体の原文意味レビューは未完。','630警告の主要public/private/既存overload/guide対応分類は未完。','採用時の日本語全文レビューは未着手。'],'limits':'This is original guide selection review, not all217 pages semantic approval. No claims of all snippet compilation, benchmark reproduction, platform conformance or standards validation.'})
+issues=[('tutorial-kObject','doc/tutorial.md','Value contact(kObject);','syntax','EXAMPLE_CHECK.json'),('dom-offset-name','doc/dom.md','size_t GetParseOffset()','syntax','EXAMPLE_CHECK.json'),('faq-document-spelling','doc/faq.md','Documnet address','syntax','EXAMPLE_CHECK.json'),('sax-error-name','doc/sax.md','HasParseEror','syntax','EXAMPLE_CHECK.json'),('stream-writer-encoding-order','doc/stream.md','Writer<OutputStream, UTF32LE<>, UTF8<>>','syntax/encoding','EXAMPLE_CHECK.json'),('schema-remote-type','doc/schema.md','SizeTyp length','syntax','EXAMPLE_CHECK.json'),('schema-parse-error-inverted','doc/schema.md','if (!sd.Parse(schemaJson).HasParseError())','runtime-semantics','semantic-probe-output.json'),('pointer-missing-slash','doc/pointer.md','SetValueByPointer(d, "1/a", 789)','runtime-semantics','semantic-probe-output.json'),('pointer-erase-result','doc/pointer.md','// { "project" : "RapidJSON", "stars" : 10 }','runtime-semantics','semantic-probe-output.json'),('tutorial-object-order','doc/tutorial.md','Array/object compares their elements/members in order.','runtime-semantics','semantic-probe-output.json'),('faq-relaxed-outdated','doc/faq.md','Currently no. RapidJSON only support the strict standardized format.','same-version-document-contradiction','readme.md/doc/features.md/doc/dom.md/CHANGELOG.md'),('stream-output-unbound','doc/stream.md','Writer<OutputStream, UTF8<>, AutoUTF<> > writer;','source-constructor-inspection','include/rapidjson/writer.h:103-108 (os_=0), stream contains eos but writer not connected')]
+rs=[]
+for id,f,needle,kind,evidence in issues:
+ lines=(src/f).read_text().splitlines();loc=[i+1 for i,l in enumerate(lines) if needle in l];assert loc,(id,needle);rs.append({'id':id,'file':f,'sha256':digest(src/f),'lines':loc,'original':needle,'kind':kind,'evidence':evidence,'resolution':'Fixed body retained; adoption requires scoped source editorial footer notes with evidence, followed by full translation/review. No published correction made in this cycle.'})
+save('ORIGINAL_ISSUE_REGISTER.json',{'status':'confirmed-limited-register','issues':rs,'limitations':'12 selected substantial/confirmed findings. Other guide review findings still need source/compiled confirmation; not counted confirmed.'})
+save('CYCLE_RESULT.json',{'status':'partial-not-adopted','completed':['13原文guide選定向け内容通読（API全体意味レビューとは別）。','6原文API/型/encoding例の失敗と対応probe成功、4runtime意味照合、12問題原文行付記。','全417生成fileの採用/参照/UI除外分類、全217原body/20素材hash一致。'],'remaining':['630未説明警告のpublic essential影響分類。','日本語資料探索、52729語の別枠工数・採点・独立採用評価。','原文issue注記の履行と日本語翻訳/全文レビュー/公開未着手。'],'next':'673GUIDE_CONTENT_REVIEWと12issueを工数/原文品質評価へ反映し、630一覧の主要公開API説明充足を生成memberのaccess/原文guideと照合する。採用必須条件を固めてから日本語調査・全量工数・採点へ進む。body保持/注記対応を確認し、既存表示検査は必要な変更時だけ行う。'})
+print('output roles',dict(collections.Counter(r['role'] for r in rows)))
