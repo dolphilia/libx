@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "scope": "XPath章全971行、原text全113ブロック、6小節、全87翻訳単位を初稿保存後の別工程で全文照合。",
+  "aiContentReview": {
+    "separatePass": true,
+    "sourceToCanonical": "固定原text0–112の全文を実読。全宣言・コード例・注意・非互換5項目を照合。固定再生成と原pre同一性は機械検査で別確認。",
+    "canonicalToJapanese": "全文初稿保存後に87翻訳単位を別工程で全読。選択/評価/変数/例外の条件とW3C差異を照合。",
+    "findings": [
+      "XPath4型とxml_node/xml_attributeの判別、null/parent/暗黙変換と3コンストラクターの属性所属条件を保持。",
+      "ノード集合のランダムアクセス/範囲外未定義、文書順と集合内順の違い、firstの結果と計算量、手動集合の重複禁止と整列責任を保持。",
+      "select_nodesとselect_nodeの文書順、null/未一致、コンパイル済み選択と結果型例外を保持。",
+      "問い合わせの不変/非コピー、型変換の制約、evaluate_stringのSTL制約と容量/ゼロ終端/終端込み返却サイズ/2回評価を保持。",
+      "原文C11は固定アーカイブ内ヘッダーのC++11判定とムーブ宣言に基づきC++11と訳し、原文表記を訳注で明示。",
+      "変数集合が問い合わせより長寿命、問い合わせ生存中の集合への代入/ムーブ代入禁止、addの既存型チェック/確保失敗、既定値とset/getの型不一致結果を保持。",
+      "値のコピー後の元値の変更/破棄可と変数型の固定を保持。",
+      "例外有効時のxpath_exception/bad_alloc、無効時の無効問い合わせとfalse/NaN/空の結果、ノード集合型不一致を保持。",
+      "ASCIIのerror/description、wide modeでもchar、offsetのchar_t単位と最後の解析成功文字の原文説明を保持。source streamは入力ストリームへ明確化。",
+      "連続テキスト非結合、id常時空、名前空間ノード非対応、QNameと展開名の差、char/wchar_t単位のUnicode制限の5項目を保持。"
+    ],
+    "japaneseReadability": "問い合わせ/変数/ノード集合/文書順の用語を統一。原文のC11表記は証拠付き訳注、source streamの用語は入力ストリームに修正。",
+    "changes": [
+      {
+        "line": 358,
+        "before": "問い合わせオブジェクトは`xpath_query`型に対応します。不変で、コピーできません。作成時に式へ結び付けられ、複製できません。コンテナーに格納したい場合は、`new`演算子でヒープ上に確保し、`xpath_query`へのポインターをコンテナーへ格納するか、C11コンパイラーを使用してください（問い合わせオブジェクトはC11でムーブ可能です）。",
+        "after": "問い合わせオブジェクトは`xpath_query`型に対応します。不変で、コピーできません。作成時に式へ結び付けられ、複製できません。コンテナーに格納したい場合は、`new`演算子でヒープ上に確保し、`xpath_query`へのポインターをコンテナーへ格納するか、C++11コンパイラーを使用してください（問い合わせオブジェクトはC++11でムーブ可能です）。 訳注：原文は「C11」と表記しています。固定版のヘッダーでは、C++11以降または対応するMSVCでムーブコンストラクターとムーブ代入演算子が有効になることを確認できます。",
+        "reason": "固定アーカイブ内pugixml.hppの88–95行および1337–1341行でC++11判定とムーブ宣言を確認。原文表記を訳注で明示。"
+      },
+      {
+        "line": 846,
+        "before": "解析結果の情報は、`xpath_parse_result`オブジェクトで返されます。解析の状態と、原資料のストリームの先頭から、最後に解析に成功した文字までのオフセットを含みます。",
+        "after": "解析結果の情報は、`xpath_parse_result`オブジェクトで返されます。解析の状態と、入力ストリームの先頭から、最後に解析に成功した文字までのオフセットを含みます。",
+        "reason": "source streamは文書原資料ではなくXPath解析対象の入力を指すため用語を明確化。"
+      }
+    ]
+  },
+  "projectVerified": false,
+  "reviewedPages": 11,
+  "totalPages": 12,
+  "reviewedAt": "2026-10-02T08:30:06.081Z",
+  "source": {
+    "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/08-xpath.html",
+    "sha256": "1ea5e3c49b7df53038cc8e7d63c9335718e174286446ec10da0013e34d3ad7e9"
+  },
+  "canonical": {
+    "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/08-xpath.md",
+    "sha256": "fb4c3469d60e250da1c41853a85a16f7cfb30b0a46268b652bb0acec725a24a4"
+  },
+  "initial": {
+    "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-153/ja/02-manual/08-xpath.md",
+    "sha256": "e226cba0c092d978dae3af567227e5972480eaad71749182a463abb2c417acde"
+  },
+  "final": {
+    "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-156/ja/02-manual/08-xpath.md",
+    "sha256": "27f3a08c96a0ecf18131b92031ad29107c953b2b027c9e4934f8d95072a2a316"
+  },
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        550
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        971
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        971
+      ]
+    ]
+  },
+  "mechanicalEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/MECHANICAL.json",
+    "sha256": "96003f6651c4210cb25f6896067d6c543cb776fb22911aec0e1cda95af2e2e44"
+  },
+  "headerEvidence": {
+    "archive": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-114/pugixml-fixed-source.tar.gz",
+      "sha256": "4ae8941bc2c19e176c13153e5f53cefa8498aacab0063823b1efdebc719797d9"
+    },
+    "header": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/pugixml.hpp",
+      "sha256": "0b7c94701df3d50981ffafe57f177c77b940e347c6e5d01073e4161f61299212"
+    },
+    "macroLines": [
+      88,
+      95
+    ],
+    "queryMoveLines": [
+      1337,
+      1341
+    ]
+  }
+}

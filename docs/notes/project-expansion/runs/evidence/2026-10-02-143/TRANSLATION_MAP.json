@@ -1,0 +1,222 @@
+[
+  {
+    "line": 2,
+    "source": "title: \"Accessing Document Data\"",
+    "translation": "title: \"文書データへのアクセス\""
+  },
+  {
+    "line": 3,
+    "source": "description: \"pugixml 1.16 Accessing Document Data complete official text.\"",
+    "translation": "description: \"pugixml 1.16の公式文書データアクセス説明全文。\""
+  },
+  {
+    "line": 11,
+    "source": "## <a href=\"#source-access\" class=\"anchor\"></a><a href=\"#source-access\" class=\"link\">5. Accessing document data</a>",
+    "translation": "## <a href=\"#source-access\" class=\"anchor\"></a><a href=\"#source-access\" class=\"link\">5. 文書データへのアクセス</a>"
+  },
+  {
+    "line": 17,
+    "source": "pugixml features an extensive interface for getting various types of data from the document and for traversing the document. This section provides documentation for all such functions that do not modify the tree except for XPath-related functions; see [XPath](/docs/pugixml/v1-16/en/02-manual/08-xpath/#source-xpath) for XPath reference. As discussed in [C++ interface](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-dom.cpp), there are two types of handles to tree data - [xml_node](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-xml_node) and [xml_attribute](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-xml_attribute). The handles have special null (empty) values which propagate through various functions and thus are useful for writing more concise code; see [this description](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_null) for details. The documentation in this section will explicitly state the results of all function in case of null inputs.",
+    "translation": "pugixmlには、文書からさまざまな型のデータを取得し、文書を走査するための幅広いインターフェースがあります。この節では、ツリーを変更しない関数をすべて説明します。ただし、XPath関連の関数は除きます。XPathのリファレンスは[XPath](/docs/pugixml/v1-16/ja/02-manual/08-xpath/#source-xpath)を参照してください。[C++インターフェース](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-dom.cpp)で説明したとおり、ツリーのデータへのハンドルには[xml_node](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-xml_node)と[xml_attribute](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-xml_attribute)の2種類があります。ハンドルには特別なnull（空）の値があり、各種関数を通じて伝播するため、より簡潔なコードを書くのに役立ちます。詳細は[この説明](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_null)を参照してください。この節では、nullを入力した場合の各関数の結果を明示します。"
+  },
+  {
+    "line": 25,
+    "source": "### <a href=\"#source-access.basic\" class=\"anchor\"></a><a href=\"#source-access.basic\" class=\"link\">5.1. Basic traversal functions</a>",
+    "translation": "### <a href=\"#source-access.basic\" class=\"anchor\"></a><a href=\"#source-access.basic\" class=\"link\">5.1. 基本的な走査関数</a>"
+  },
+  {
+    "line": 31,
+    "source": "</div>",
+    "translation": "</div> 文書の内部表現はツリーで、各ノードは子ノードのリストを持ちます。子の順序はXML表現での順序と一致します。また、要素ノードは属性のリストも持ち、これにも順序があります。ツリー内のあるノードから別のノードへ移るために、いくつかの関数が用意されています。これらの関数は内部表現におおむね対応しているため、通常はほかの走査方法の構成要素になります。たとえば、XPathによる走査はこれらの関数に基づいています。"
+  },
+  {
+    "line": 56,
+    "source": "`parent` function returns the node’s parent; all non-null nodes except the document have non-null parent. `first_child` and `last_child` return the first and last child of the node, respectively; note that only document nodes and element nodes can have non-empty child node list. If node has no children, both functions return null nodes. `next_sibling` and `previous_sibling` return the node that’s immediately to the right/left of this node in the children list, respectively - for example, in `<a/><b/><c/>`, calling `next_sibling` for a handle that points to `<b/>` results in a handle pointing to `<c/>`, and calling `previous_sibling` results in handle pointing to `<a/>`. If node does not have next/previous sibling (this happens if it is the last/first node in the list, respectively), the functions return null nodes. `first_attribute`, `last_attribute`, `next_attribute` and `previous_attribute` functions behave similarly to the corresponding child node functions and allow to iterate through attribute list in the same way.",
+    "translation": "`parent`はノードの親を返します。文書以外のnullでないノードは、すべてnullでない親を持ちます。`first_child`と`last_child`は、それぞれ最初と最後の子を返します。空でない子ノードリストを持てるのは、文書ノードと要素ノードだけです。子がない場合、どちらもnullノードを返します。`next_sibling`と`previous_sibling`は、子リストでこのノードのすぐ右と左にあるノードを、それぞれ返します。たとえば`<a/><b/><c/>`で、`<b/>`を指すハンドルの`next_sibling`を呼ぶと`<c/>`を指すハンドルになり、`previous_sibling`を呼ぶと`<a/>`を指すハンドルになります。次または前の兄弟がない場合（リストの最後または最初のノードの場合）、これらの関数はnullノードを返します。`first_attribute`、`last_attribute`、`next_attribute`、`previous_attribute`も、対応する子ノード関数と同様に動作し、同じ方法で属性リストを反復処理できます。"
+  },
+  {
+    "line": 70,
+    "source": "Note",
+    "translation": "注記"
+  },
+  {
+    "line": 72,
+    "source": "<td class=\"content\">Because of memory consumption reasons, attributes do not have a link to their parent nodes. Thus there is no <code>xml_attribute::parent()</code> function.</td>",
+    "translation": "<td class=\"content\">メモリー消費を抑えるため、属性は親ノードへのリンクを持ちません。そのため、<code>xml_attribute::parent()</code>関数はありません。</td>"
+  },
+  {
+    "line": 81,
+    "source": "Calling any of the functions above on the null handle results in a null handle - i.e. `node.first_child().next_sibling()` returns the second child of `node`, and null handle if `node` is null, has no children at all or if it has only one child node.",
+    "translation": "上記の関数のいずれも、nullハンドルに対して呼び出すとnullハンドルを返します。たとえば`node.first_child().next_sibling()`は`node`の2番目の子を返しますが、`node`がnull、子がまったくない、または子ノードが1個だけの場合にはnullハンドルを返します。"
+  },
+  {
+    "line": 87,
+    "source": "With these functions, you can iterate through all child nodes and display all attributes like this ([samples/traverse_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/traverse_base.cpp)):",
+    "translation": "これらの関数を使うと、次のようにすべての子ノードを反復処理し、すべての属性を表示できます（[samples/traverse_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/traverse_base.cpp)）。"
+  },
+  {
+    "line": 119,
+    "source": "### <a href=\"#source-access.nodedata\" class=\"anchor\"></a><a href=\"#source-access.nodedata\" class=\"link\">5.2. Getting node data</a>",
+    "translation": "### <a href=\"#source-access.nodedata\" class=\"anchor\"></a><a href=\"#source-access.nodedata\" class=\"link\">5.2. ノードデータの取得</a>"
+  },
+  {
+    "line": 123,
+    "source": "<span id=\"source-xml_node::name\"></span><span id=\"source-xml_node::value\"></span> Apart from structural information (parent, child nodes, attributes), nodes can have name and value, both of which are strings. Depending on node type, name or value may be absent. [node_document](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_document) nodes do not have a name or value, [node_element](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_element) and [node_declaration](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_declaration) nodes always have a name but never have a value, [node_pcdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pcdata), [node_cdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_cdata), [node_comment](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_comment) and [node_doctype](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_doctype) nodes never have a name but always have a value (it may be empty though), [node_pi](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pi) nodes always have a name and a value (again, value may be empty). In order to get node’s name or value, you can use the following functions:",
+    "translation": "<span id=\"source-xml_node::name\"></span><span id=\"source-xml_node::value\"></span> 構造情報（親、子ノード、属性）に加えて、ノードは名前と値を持つことがあり、どちらも文字列です。ノード型によっては、名前や値がありません。[node_document](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_document)ノードは名前も値も持ちません。[node_element](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_element)と[node_declaration](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_declaration)ノードは常に名前を持ちますが、値は持ちません。[node_pcdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pcdata)、[node_cdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_cdata)、[node_comment](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_comment)、[node_doctype](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_doctype)ノードは名前を持たず、常に値を持ちます。ただし、値は空の場合もあります。[node_pi](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pi)ノードは常に名前と値を持ちますが、やはり値は空の場合があります。ノードの名前や値を取得するには、次の関数を使えます。"
+  },
+  {
+    "line": 142,
+    "source": "In case node does not have a name or value or if the node handle is null, both functions return empty strings - they never return null pointers.",
+    "translation": "ノードが名前や値を持たない場合や、ノードハンドルがnullの場合、これらの関数は空文字列を返します。nullポインターは返しません。"
+  },
+  {
+    "line": 148,
+    "source": "It is common to store data as text contents of some node - i.e. `<node><description>This is a node</description></node>`. In this case, `<description>` node does not have a value, but instead has a child of type [node_pcdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pcdata) with value `\"This is a node\"`. pugixml provides several helper functions to parse such data:",
+    "translation": "データをノードのテキスト内容として保存することは一般的です。たとえば`<node><description>This is a node</description></node>`です。この場合、`<description>`ノード自体は値を持ちませんが、値が`\"This is a node\"`の[node_pcdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pcdata)型の子を持ちます。pugixmlには、このようなデータを解析するための補助関数があります。"
+  },
+  {
+    "line": 168,
+    "source": "`child_value()` returns the value of the first child with type [node_pcdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pcdata) or [node_cdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_cdata); `child_value(name)` is a simple wrapper for `child(name).child_value()`. For the above example, calling `node.child_value(\"description\")` and `description.child_value()` will both produce string `\"This is a node\"`. If there is no child with relevant type, or if the handle is null, `child_value` functions return empty string.",
+    "translation": "`child_value()`は、[node_pcdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pcdata)または[node_cdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_cdata)型の最初の子の値を返します。`child_value(name)`は`child(name).child_value()`の単純なラッパーです。上の例では、`node.child_value(\"description\")`と`description.child_value()`のどちらも`\"This is a node\"`という文字列を返します。該当する型の子がない場合や、ハンドルがnullの場合、`child_value`関数は空文字列を返します。"
+  },
+  {
+    "line": 174,
+    "source": "`text()` returns a special object that can be used for working with PCDATA contents in more complex cases than just retrieving the value; it is described in [Working with text contents](#source-access.text) sections.",
+    "translation": "`text()`は、値の取得より複雑な場合にPCDATAの内容を扱うための特別なオブジェクトを返します。[テキスト内容の操作](#source-access.text)で説明します。"
+  },
+  {
+    "line": 180,
+    "source": "There is an example of using some of these functions [at the end of the next section](#source-code_traverse_base_data).",
+    "translation": "これらの関数の一部を使う例が、[次の節の末尾](#source-code_traverse_base_data)にあります。"
+  },
+  {
+    "line": 190,
+    "source": "### <a href=\"#source-access.attrdata\" class=\"anchor\"></a><a href=\"#source-access.attrdata\" class=\"link\">5.3. Getting attribute data</a>",
+    "translation": "### <a href=\"#source-access.attrdata\" class=\"anchor\"></a><a href=\"#source-access.attrdata\" class=\"link\">5.3. 属性データの取得</a>"
+  },
+  {
+    "line": 194,
+    "source": "<span id=\"source-xml_attribute::name\"></span><span id=\"source-xml_attribute::value\"></span> All attributes have name and value, both of which are strings (value may be empty). There are two corresponding accessors, like for `xml_node`:",
+    "translation": "<span id=\"source-xml_attribute::name\"></span><span id=\"source-xml_attribute::value\"></span> すべての属性は名前と値を持ち、どちらも文字列です。値は空の場合もあります。`xml_node`と同様に、対応するアクセサーが2つあります。"
+  },
+  {
+    "line": 213,
+    "source": "In case the attribute handle is null, both functions return empty strings - they never return null pointers.",
+    "translation": "属性ハンドルがnullの場合、これらの関数は空文字列を返します。nullポインターは返しません。"
+  },
+  {
+    "line": 219,
+    "source": "If you need a non-empty string if the attribute handle is null (for example, you need to get the option value from XML attribute, but if it is not specified, you need it to default to `\"sorted\"` instead of `\"\"`), you can use `as_string` accessor:",
+    "translation": "属性ハンドルがnullのときに空でない文字列が必要なら、`as_string`アクセサーを使えます。たとえば、XML属性からオプション値を取得し、指定されていない場合には`\"\"`ではなく`\"sorted\"`を既定値にしたい場合です。"
+  },
+  {
+    "line": 237,
+    "source": "It returns `def` argument if the attribute handle is null. If you do not specify the argument, the function is equivalent to `value()`.",
+    "translation": "属性ハンドルがnullの場合は、`def`引数を返します。引数を指定しなければ、この関数は`value()`と同じです。"
+  },
+  {
+    "line": 243,
+    "source": "<span id=\"source-xml_attribute::as_int\"></span><span id=\"source-xml_attribute::as_uint\"></span><span id=\"source-xml_attribute::as_double\"></span><span id=\"source-xml_attribute::as_float\"></span><span id=\"source-xml_attribute::as_bool\"></span><span id=\"source-xml_attribute::as_llong\"></span><span id=\"source-xml_attribute::as_ullong\"></span> In many cases attribute values have types that are not strings - i.e. an attribute may always contain values that should be treated as integers, despite the fact that they are represented as strings in XML. pugixml provides several accessors that convert attribute value to some other type:",
+    "translation": "<span id=\"source-xml_attribute::as_int\"></span><span id=\"source-xml_attribute::as_uint\"></span><span id=\"source-xml_attribute::as_double\"></span><span id=\"source-xml_attribute::as_float\"></span><span id=\"source-xml_attribute::as_bool\"></span><span id=\"source-xml_attribute::as_llong\"></span><span id=\"source-xml_attribute::as_ullong\"></span> 多くの場合、属性値には文字列以外の型があります。たとえば、XMLでは文字列として表されていても、常に整数として扱うべき値を含む属性があります。pugixmlには、属性値を別の型へ変換するアクセサーがいくつかあります。"
+  },
+  {
+    "line": 267,
+    "source": "`as_int`, `as_uint`, `as_llong`, `as_ullong`, `as_double` and `as_float` convert attribute values to numbers. If attribute handle is null `def` argument is returned (which is 0 by default). Otherwise, all leading whitespace characters are truncated, and the remaining string is parsed as an integer number in either decimal or hexadecimal form (applicable to `as_int`, `as_uint`, `as_llong` and `as_ullong`; hexadecimal format is used if the number has `0x` or `0X` prefix) or as a floating point number in either decimal or scientific form (`as_double` or `as_float`).",
+    "translation": "`as_int`、`as_uint`、`as_llong`、`as_ullong`、`as_double`、`as_float`は、属性値を数値へ変換します。属性ハンドルがnullの場合は、`def`引数（既定値は0）を返します。それ以外の場合は、先頭の空白文字をすべて取り除き、残りの文字列を解析します。整数の場合は10進数または16進数です。これは`as_int`、`as_uint`、`as_llong`、`as_ullong`に適用され、数値に`0x`または`0X`の接頭辞があれば16進数として扱います。浮動小数点数の場合は、10進表記または科学的記数法で解析します（`as_double`または`as_float`）。"
+  },
+  {
+    "line": 273,
+    "source": "For integer conversions, non-numeric character sequences return 0 and out of range values are clamped to the closest representable value; for floating-point conversions, the result depends on implementation (CRT or STL depending on whether `PUGIXML_CHARCONV_FLOAT` is used).",
+    "translation": "整数変換では、数値でない文字列に対して0を返し、範囲外の値は表現可能な最も近い値に制限されます。浮動小数点変換の結果は実装に依存します（`PUGIXML_CHARCONV_FLOAT`を使うかどうかに応じて、CRTまたはSTL）。"
+  },
+  {
+    "line": 287,
+    "source": "Caution",
+    "translation": "注意"
+  },
+  {
+    "line": 289,
+    "source": "<td class=\"content\">Floating-point conversion functions depend on the current C locale as set with <code>setlocale</code>, so may return unexpected results if the locale is different from <code>\"C\"</code>. This does not apply when pugixml is built with <code>PUGIXML_CHARCONV_FLOAT</code>.</td>",
+    "translation": "<td class=\"content\">浮動小数点変換関数は、<code>setlocale</code>で設定された現在のCロケールに依存するため、ロケールが<code>\"C\"</code>以外の場合、予想外の結果を返すことがあります。<code>PUGIXML_CHARCONV_FLOAT</code>を指定してpugixmlをビルドした場合には、この制約は当てはまりません。</td>"
+  },
+  {
+    "line": 298,
+    "source": "`as_bool` converts attribute value to boolean as follows: if attribute handle is null, `def` argument is returned (which is `false` by default). If attribute value is empty, `false` is returned. Otherwise, `true` is returned if the first character is one of `'1', 't', 'T', 'y', 'Y'`. This means that strings like `\"true\"` and `\"yes\"` are recognized as `true`, while strings like `\"false\"` and `\"no\"` are recognized as `false`. For more complex matching you’ll have to write your own function.",
+    "translation": "`as_bool`は、次の方法で属性値を真偽値へ変換します。属性ハンドルがnullの場合は、`def`引数（既定値は`false`）を返します。属性値が空の場合は`false`を返します。それ以外の場合は、最初の文字が`'1', 't', 'T', 'y', 'Y'`のいずれかであれば`true`を返します。このため、`\"true\"`や`\"yes\"`などの文字列は`true`、`\"false\"`や`\"no\"`などの文字列は`false`と認識されます。より複雑な照合が必要なら、独自の関数を書く必要があります。"
+  },
+  {
+    "line": 312,
+    "source": "Note",
+    "translation": "注記"
+  },
+  {
+    "line": 314,
+    "source": "<td class=\"content\"><code>as_llong</code> and <code>as_ullong</code> are only available if your platform has support for the <code>long long</code> type.</td>",
+    "translation": "<td class=\"content\"><code>as_llong</code>と<code>as_ullong</code>は、プラットフォームが<code>long long</code>型に対応している場合にだけ使えます。</td>"
+  },
+  {
+    "line": 323,
+    "source": "This is an example of using these functions, along with node data retrieval ones ([samples/traverse_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/traverse_base.cpp)):",
+    "translation": "これらの関数とノードデータ取得関数を使う例です（[samples/traverse_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/traverse_base.cpp)）。"
+  },
+  {
+    "line": 351,
+    "source": "### <a href=\"#source-access.contents\" class=\"anchor\"></a><a href=\"#source-access.contents\" class=\"link\">5.4. Contents-based traversal functions</a>",
+    "translation": "### <a href=\"#source-access.contents\" class=\"anchor\"></a><a href=\"#source-access.contents\" class=\"link\">5.4. 内容に基づく走査関数</a>"
+  },
+  {
+    "line": 355,
+    "source": "<span id=\"source-xml_node::child\"></span><span id=\"source-xml_node::attribute\"></span><span id=\"source-xml_node::next_sibling_name\"></span><span id=\"source-xml_node::previous_sibling_name\"></span> Since a lot of document traversal consists of finding the node/attribute with the correct name, there are special functions for that purpose:",
+    "translation": "<span id=\"source-xml_node::child\"></span><span id=\"source-xml_node::attribute\"></span><span id=\"source-xml_node::next_sibling_name\"></span><span id=\"source-xml_node::previous_sibling_name\"></span> 文書の走査では、指定した名前のノードや属性を探すことが多いため、そのための専用の関数があります。"
+  },
+  {
+    "line": 380,
+    "source": "`child` and `attribute` return the first child/attribute with the specified name; `next_sibling` and `previous_sibling` return the first sibling in the corresponding direction with the specified name. All string comparisons are case-sensitive. In case the node handle is null or there is no node/attribute with the specified name, null handle is returned.",
+    "translation": "`child`と`attribute`は、指定した名前の最初の子または属性を返します。`next_sibling`と`previous_sibling`は、対応する方向で、指定した名前の最初の兄弟を返します。文字列の比較ではすべて、大文字と小文字を区別します。ノードハンドルがnullの場合や、指定した名前のノードや属性がない場合は、nullハンドルを返します。"
+  },
+  {
+    "line": 386,
+    "source": "`child` and `next_sibling` functions can be used together to loop through all child nodes with the desired name like this:",
+    "translation": "`child`と`next_sibling`を組み合わせると、次のように指定した名前のすべての子ノードをループで処理できます。"
+  },
+  {
+    "line": 404,
+    "source": "`attribute` function needs to look for the target attribute by name. If a node has many attributes, finding each by name can be time consuming. If you have an idea of how attributes are ordered in the node, you can use a faster function:",
+    "translation": "`attribute`は、目的の属性を名前で探す必要があります。ノードに多くの属性がある場合、名前で1つずつ探すと時間がかかることがあります。ノード内での属性の順序が分かっていれば、より高速な関数を使えます。"
+  },
+  {
+    "line": 423,
+    "source": "The extra `hint` argument is used to guess where the attribute might be, and is updated to the location of the next attribute so that if you search for multiple attributes in the right order, the performance is maximized. Note that `hint` has to be either null or has to belong to the node, otherwise the behavior is undefined.",
+    "translation": "追加の`hint`引数は、属性がありそうな位置の推定に使われ、次の属性の位置へ更新されます。そのため、複数の属性を正しい順序で探すと、性能を最大限に高められます。`hint`はnullか、そのノードに属する属性でなければなりません。それ以外の場合の動作は未定義です。"
+  },
+  {
+    "line": 429,
+    "source": "You can use this function as follows:",
+    "translation": "この関数は、次のように使えます。"
+  },
+  {
+    "line": 450,
+    "source": "This code is correct regardless of the order of the attributes, but it’s faster if `\"id\"`, `\"name\"` and `\"version\"` occur in that order.",
+    "translation": "このコードは属性の順序にかかわらず正しく動作しますが、`\"id\"`、`\"name\"`、`\"version\"`がこの順に並んでいれば、より高速になります。"
+  },
+  {
+    "line": 456,
+    "source": "Occasionally the needed node is specified not by the unique name but instead by the value of some attribute; for example, it is common to have node collections with each node having a unique id: `<group><item id=\"1\"/> <item id=\"2\"/></group>`. There are two functions for finding child nodes based on the attribute values:",
+    "translation": "必要なノードを、一意の名前ではなく、ある属性の値で指定することもあります。たとえば、各ノードが一意のIDを持つノードの集合は一般的です。`<group><item id=\"1\"/> <item id=\"2\"/></group>`のような場合です。属性値に基づいて子ノードを探す関数が2つあります。"
+  },
+  {
+    "line": 475,
+    "source": "The three-argument function returns the first child node with the specified name which has an attribute with the specified name/value; the two-argument function skips the name test for the node, which can be useful for searching in heterogeneous collections. If the node handle is null or if no node is found, null handle is returned. All string comparisons are case-sensitive.",
+    "translation": "引数が3つの関数は、指定した名前を持ち、指定した名前と値の属性を持つ、最初の子ノードを返します。引数が2つの関数はノード名の検査を省くため、異なる種類が混在する集合の検索に役立ちます。ノードハンドルがnullの場合や、ノードが見つからない場合は、nullハンドルを返します。文字列の比較ではすべて、大文字と小文字を区別します。"
+  },
+  {
+    "line": 481,
+    "source": "In all of the above functions, all arguments have to be valid strings; passing null pointers results in undefined behavior.",
+    "translation": "上記の関数では、すべての引数が有効な文字列でなければなりません。nullポインターを渡した場合の動作は未定義です。"
+  },
+  {
+    "line": 487,
+    "source": "This is an example of using these functions ([samples/traverse_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/traverse_base.cpp)):",
+    "translation": "これらの関数を使う例です（[samples/traverse_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/traverse_base.cpp)）。"
+  }
+]

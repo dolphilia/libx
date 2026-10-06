@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "scope": "変更履歴全1531行、固定原text全430ブロック、23版の履歴、全408翻訳単位を初稿完成後の別工程で全文照合。",
+  "aiContentReview": {
+    "separatePass": true,
+    "sourceToCanonical": "固定原文から生成した定本の全変更項目、版・日付を照合。全408翻訳単位の原文を読み、固定原textの見出し/日付24ブロックを別途確認。固定再生成でHTML原資料と定本の対応を機械検査。",
+    "canonicalToJapanese": "初稿完成後に408翻訳単位を3分割で原文・訳文を全読し、23版の順序と日付を照合。",
+    "findings": [
+      "v1.16の空PCDATA子の条件とformat例外、C++17/locale、32bit/wchar/crash条件、ensure/API追加を保持。",
+      "v1.15〜v1.9のstring_view、非null終端、メモリー/ディスク不足、CMake target互換条件、軸/和集合の安定順と文書順整列要否、非推奨APIを保持。",
+      "v1.8〜v1.5のPCDATA埋込み、コンパクトサイズ、整数負値のUINT_MAX→0、C++11ムーブ/コピー条件、強い例外保証、性能数値を保持。",
+      "v1.5のcross-document/inter-documentは文書間のまま数値を保持し、区別が原文で明確でないことを訳注に明示。",
+      "v1.4/v1.2の断片解析例外、16進/long long、single whitespace、header-only/STL/escape/シーク条件を保持。",
+      "v1.0の属性コンテキスト、STL/例外なしXPath、wide path、CDATA分割、offset/メモリー、削除APIと代替名を保持。",
+      "v0.9のUTFエンコーディング範囲、2の32乗-1、メモリーページ解放条件、1.0削除予定を当時の記録として保持。",
+      "v0.5の軸の旧挙動、文字列→数値の旧結果と新結果、traverseのdepth変更、無効UTF条件を保持。原文xpath_node::select_nodes表記は訳注付きで保持。",
+      "v0.42以下の独自確保/解放、空ノード、旧旗名PUGIXML_NO_EXCEPTION、寿命/所有権、最初の公開/非公開の区別を保持。",
+      "原文ASCII表後半の説明、Gb単位、SPARC64と32bit併記は原文の表記を保持し、現在の仕様に推測で書き換えない。"
+    ],
+    "japaneseReadability": "変更/追加/修正の用語、保存・再読み込み、問い合わせ、文書順を既訳と整合。原文の曖昧なコピー性能説明と関数名は明示的な訳注を追加。",
+    "changes": [
+      {
+        "line": 723,
+        "before": "  3.  ノードのコピーを最適化しました（文書間のコピーで10%、文書間のコピーで3倍高速化。使用するスタック領域も一定量になりました）。",
+        "after": "  3.  ノードのコピーを最適化しました（文書間のコピーで10%、文書間のコピーで3倍高速化。使用するスタック領域も一定量になりました）。 訳注：原文は「cross-document copies」と「inter-document copies」を併記しています。両者の区別はこの記述だけでは明確でないため、原文の数値と表記を保持しています。",
+        "reason": "原文の文書間コピー2表記を推測で文書内へ補正せず、曖昧さを読者へ明示。"
+      },
+      {
+        "line": 1219,
+        "before": "  1.  `xpath_node::select_nodes()`と関連関数は、式の戻り値の型がノード集合以外の場合、アサーションではなく例外を送出するようになりました。",
+        "after": "  1.  `xpath_node::select_nodes()`と関連関数は、式の戻り値の型がノード集合以外の場合、アサーションではなく例外を送出するようになりました。 訳注：関数名はこの履歴の原文表記です。固定版ヘッダーではselect_nodesはxml_nodeのメンバーとして宣言されています。",
+        "reason": "原文xpath_node::select_nodesを保持しつつ、固定ヘッダーのxml_nodeメンバー宣言との違いを明示。"
+      }
+    ]
+  },
+  "projectVerified": false,
+  "reviewedPages": 12,
+  "totalPages": 12,
+  "reviewedAt": "2026-10-02T08:39:55.914Z",
+  "source": {
+    "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/03-reference/01-changelog.html",
+    "sha256": "1c933c95bba45ed55f36ea795b4220247e6d208b8f538ecdd74469fdf9ba11c2"
+  },
+  "canonical": {
+    "path": "docs/notes/document-import/pugixml/v1-16/canonical/03-reference/01-changelog.md",
+    "sha256": "27e4084e1ba16fbc964e23d5f73a6e7d17104e18e119454793c77cf1e2196049"
+  },
+  "initial": {
+    "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-157/ja/03-reference/01-changelog.md",
+    "sha256": "e10c269dce9a50166e62bf5db67fa1d1846d87c1554469b57a9d5703cdd629d2"
+  },
+  "final": {
+    "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-162/ja/03-reference/01-changelog.md",
+    "sha256": "aaa66c4855ce19dfcde1fad68e27ba7425783ad186dc29db5a78c05d6abf01ca"
+  },
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        1708
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        1531
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        1531
+      ]
+    ]
+  },
+  "mechanicalEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-162/MECHANICAL.json",
+    "sha256": "c124cfa94e6590689b3fe767223a9798df623154f908028d0547e03856eda7d9"
+  },
+  "headerEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/pugixml.hpp",
+    "sha256": "0b7c94701df3d50981ffafe57f177c77b940e347c6e5d01073e4161f61299212"
+  }
+}

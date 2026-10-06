@@ -1,0 +1,402 @@
+[
+  {
+    "tag": "h2",
+    "text": "6. Modifying document data"
+  },
+  {
+    "tag": "p",
+    "text": "The document in pugixml is fully mutable: you can completely change the document structure and modify the data of nodes/attributes. This section provides documentation for the relevant functions. All functions take care of memory management and structural integrity themselves, so they always result in structurally valid tree - however, it is possible to create an invalid XML tree (for example, by adding two attributes with the same name or by setting attribute/node name to empty/invalid string). Tree modification is optimized for performance and for memory consumption, so if you have enough memory you can create documents from scratch with pugixml and later save them to file/stream instead of relying on error-prone manual text writing and without too much overhead."
+  },
+  {
+    "tag": "p",
+    "text": "All member functions that change node/attribute data or structure are non-constant and thus can not be called on constant handles. However, you can easily convert constant handle to non-constant one by simple assignment: void foo(const pugi::xml_node& n) { pugi::xml_node nc = n; }, so const-correctness here mainly provides additional documentation."
+  },
+  {
+    "tag": "h3",
+    "text": "6.1. Setting node data"
+  },
+  {
+    "tag": "p",
+    "text": "As discussed before, nodes can have name and value, both of which are strings. Depending on node type, name or value may be absent. node_document nodes do not have a name or value, node_element and node_declaration nodes always have a name but never have a value, node_pcdata, node_cdata, node_comment and node_doctype nodes never have a name but always have a value (it may be empty though), node_pi nodes always have a name and a value (again, value may be empty). In order to set node’s name or value, you can use the following functions:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool xml_node::set_name(const char_t* rhs);\nbool xml_node::set_name(const char_t* rhs, size_t sz);\nbool xml_node::set_name(string_view_t rhs);\nbool xml_node::set_value(const char_t* rhs);\nbool xml_node::set_value(const char_t* rhs, size_t size);\nbool xml_node::set_value(string_view_t rhs);"
+  },
+  {
+    "tag": "p",
+    "text": "Both functions try to set the name/value to the specified string, and return the operation result. The operation fails if the node can not have name or value (for instance, when trying to call set_name on a node_pcdata node), if the node handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to these functions). The name/value content is not verified, so take care to use only valid XML names, or the document may become malformed."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of setting node name and value (samples/modify_base.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "pugi::xml_node node = doc.child(\"node\");\n\n// change node name\nstd::cout << node.set_name(\"notnode\");\nstd::cout << \", new node name: \" << node.name() << std::endl;\n\n// change comment text\nstd::cout << doc.last_child().set_value(\"useless comment\");\nstd::cout << \", new comment text: \" << doc.last_child().value() << std::endl;\n\n// we can't change value of the element or name of the comment\nstd::cout << node.set_value(\"1\") << \", \" << doc.last_child().set_name(\"2\") << std::endl;"
+  },
+  {
+    "tag": "h3",
+    "text": "6.2. Setting attribute data"
+  },
+  {
+    "tag": "p",
+    "text": "All attributes have name and value, both of which are strings (value may be empty). You can set them with the following functions:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool xml_attribute::set_name(const char_t* rhs);\nbool xml_attribute::set_name(const char_t* rhs, size_t sz);\nbool xml_attribute::set_name(string_view_t rhs);\nbool xml_attribute::set_value(const char_t* rhs);\nbool xml_attribute::set_value(const char_t* rhs, size_t size);\nbool xml_attribute::set_value(string_view_t rhs);"
+  },
+  {
+    "tag": "p",
+    "text": "Both functions try to set the name/value to the specified string, and return the operation result. The operation fails if the attribute handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to these functions). The name/value content is not verified, so take care to use only valid XML names, or the document may become malformed."
+  },
+  {
+    "tag": "p",
+    "text": "In addition to string functions, several functions are provided for handling attributes with numbers and booleans as values:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool xml_attribute::set_value(int rhs);\nbool xml_attribute::set_value(unsigned int rhs);\nbool xml_attribute::set_value(long rhs);\nbool xml_attribute::set_value(unsigned long rhs);\nbool xml_attribute::set_value(double rhs);\nbool xml_attribute::set_value(double rhs, int precision);\nbool xml_attribute::set_value(float rhs);\nbool xml_attribute::set_value(float rhs, int precision);\nbool xml_attribute::set_value(bool rhs);\nbool xml_attribute::set_value(long long rhs);\nbool xml_attribute::set_value(unsigned long long rhs);"
+  },
+  {
+    "tag": "p",
+    "text": "The above functions convert the argument to string and then call the base set_value function. Integers are converted to a decimal form, floating-point numbers are converted to either decimal or scientific form, depending on the number magnitude, boolean values are converted to either \"true\" or \"false\"."
+  },
+  {
+    "tag": "td",
+    "text": "Caution"
+  },
+  {
+    "tag": "td",
+    "text": "Floating-point conversion functions depend on the current C locale as set with setlocale, so may generate unexpected results if the locale is different from \"C\". This does not apply when pugixml is built with PUGIXML_CHARCONV_FLOAT."
+  },
+  {
+    "tag": "td",
+    "text": "Note"
+  },
+  {
+    "tag": "td",
+    "text": "set_value overloads with long long type are only available if your platform has support for the type."
+  },
+  {
+    "tag": "p",
+    "text": "For convenience, all set_value functions have the corresponding assignment operators:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_attribute& xml_attribute::operator=(const char_t* rhs);\nxml_attribute& xml_attribute::operator=(string_view_t rhs);\nxml_attribute& xml_attribute::operator=(int rhs);\nxml_attribute& xml_attribute::operator=(unsigned int rhs);\nxml_attribute& xml_attribute::operator=(long rhs);\nxml_attribute& xml_attribute::operator=(unsigned long rhs);\nxml_attribute& xml_attribute::operator=(double rhs);\nxml_attribute& xml_attribute::operator=(float rhs);\nxml_attribute& xml_attribute::operator=(bool rhs);\nxml_attribute& xml_attribute::operator=(long long rhs);\nxml_attribute& xml_attribute::operator=(unsigned long long rhs);"
+  },
+  {
+    "tag": "p",
+    "text": "These operators simply call the right set_value function and return the attribute they’re called on; the return value of set_value is ignored, so errors are ignored."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of setting attribute name and value (samples/modify_base.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "pugi::xml_attribute attr = node.attribute(\"id\");\n\n// change attribute name/value\nstd::cout << attr.set_name(\"key\") << \", \" << attr.set_value(\"345\");\nstd::cout << \", new attribute: \" << attr.name() << \"=\" << attr.value() << std::endl;\n\n// we can use numbers or booleans\nattr.set_value(1.234);\nstd::cout << \"new attribute value: \" << attr.value() << std::endl;\n\n// we can also use assignment operators for more concise code\nattr = true;\nstd::cout << \"final attribute value: \" << attr.value() << std::endl;"
+  },
+  {
+    "tag": "h3",
+    "text": "6.3. Adding nodes/attributes"
+  },
+  {
+    "tag": "p",
+    "text": "Nodes and attributes do not exist without a document tree, so you can’t create them without adding them to some document. A node or attribute can be created at the end of node/attribute list or before/after some other node:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_attribute xml_node::append_attribute(const char_t* name);\nxml_attribute xml_node::append_attribute(string_view_t name);\nxml_attribute xml_node::prepend_attribute(const char_t* name);\nxml_attribute xml_node::prepend_attribute(string_view_t name);\nxml_attribute xml_node::insert_attribute_after(const char_t* name, const xml_attribute& attr);\nxml_attribute xml_node::insert_attribute_after(string_view_t name, const xml_attribute& attr);\nxml_attribute xml_node::insert_attribute_before(const char_t* name, const xml_attribute& attr);\nxml_attribute xml_node::insert_attribute_before(string_view_t name, const xml_attribute& attr);\n\nxml_node xml_node::append_child(xml_node_type type = node_element);\nxml_node xml_node::prepend_child(xml_node_type type = node_element);\nxml_node xml_node::insert_child_after(xml_node_type type, const xml_node& node);\nxml_node xml_node::insert_child_before(xml_node_type type, const xml_node& node);\n\nxml_node xml_node::append_child(const char_t* name);\nxml_node xml_node::append_child(string_view_t name);\nxml_node xml_node::prepend_child(const char_t* name);\nxml_node xml_node::prepend_child(string_view_t name);\nxml_node xml_node::insert_child_after(const char_t* name, const xml_node& node);\nxml_node xml_node::insert_child_after(string_view_t name, const xml_node& node);\nxml_node xml_node::insert_child_before(const char_t* name, const xml_node& node);\nxml_node xml_node::insert_child_before(string_view_t name, const xml_node& node);\n\nxml_attribute xml_node::ensure_attribute(const char_t* name);\nxml_attribute xml_node::ensure_attribute(string_view_t name);\nxml_node xml_node::ensure_child(const char_t* name);\nxml_node xml_node::ensure_child(string_view_t name);"
+  },
+  {
+    "tag": "p",
+    "text": "append_attribute and append_child create a new node/attribute at the end of the corresponding list of the node the method is called on; prepend_attribute and prepend_child create a new node/attribute at the beginning of the list; insert_attribute_after, insert_attribute_before, insert_child_after and insert_child_before add the node/attribute before or after the specified node/attribute. ensure_attribute and ensure_child return the existing attribute/child with the specified name, appending a new one only if no such attribute/child exists; this makes it convenient to write code like node.ensure_attribute(\"id\") = 123;."
+  },
+  {
+    "tag": "p",
+    "text": "Attribute functions create an attribute with the specified name; you can specify the empty name and change the name later if you want to. Node functions with the type argument create the node with the specified type; since node type can’t be changed, you have to know the desired type beforehand. Also note that not all types can be added as children; see below for clarification. Node functions with the name argument create the element node (node_element) with the specified name."
+  },
+  {
+    "tag": "p",
+    "text": "All functions return the handle to the created object on success, and null handle on failure. There are several reasons for failure:"
+  },
+  {
+    "tag": "p",
+    "text": "Adding fails if the target node is null;"
+  },
+  {
+    "tag": "p",
+    "text": "Only node_element and node_declaration nodes can contain attributes, so attribute adding fails if node is not an element or a declaration;"
+  },
+  {
+    "tag": "p",
+    "text": "Only node_document and node_element nodes can contain children, so child node adding fails if the target node is not an element or a document;"
+  },
+  {
+    "tag": "p",
+    "text": "node_document and node_null nodes can not be inserted as children, so passing node_document or node_null value as type results in operation failure;"
+  },
+  {
+    "tag": "p",
+    "text": "node_declaration and node_doctype nodes can only be added as children of the document node; attempt to insert them as children of an element node fails;"
+  },
+  {
+    "tag": "p",
+    "text": "Adding node/attribute results in memory allocation, which may fail;"
+  },
+  {
+    "tag": "p",
+    "text": "Insertion functions fail if the specified node or attribute is null or is not in the target node’s children/attribute list."
+  },
+  {
+    "tag": "p",
+    "text": "Even if the operation fails, the document remains in consistent state, but the requested node/attribute is not added."
+  },
+  {
+    "tag": "td",
+    "text": "Caution"
+  },
+  {
+    "tag": "td",
+    "text": "attribute() and child() functions do not add attributes or nodes to the tree, so code like node.attribute(\"id\") = 123; will not do anything if node does not have an attribute with name \"id\". Make sure you’re operating with existing attributes/nodes by adding them if necessary, or use ensure_attribute/ensure_child."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of adding new attributes/nodes to the document (samples/modify_add.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "// add node with some name\npugi::xml_node node = doc.append_child(\"node\");\n\n// add description node with text child\npugi::xml_node descr = node.append_child(\"description\");\ndescr.append_child(pugi::node_pcdata).set_value(\"Simple node\");\n\n// add param node before the description\npugi::xml_node param = node.insert_child_before(\"param\", descr);\n\n// add attributes to param node\nparam.append_attribute(\"name\") = \"version\";\nparam.append_attribute(\"value\") = 1.1;\nparam.insert_attribute_after(\"type\", param.attribute(\"name\")) = \"float\";"
+  },
+  {
+    "tag": "h3",
+    "text": "6.4. Removing nodes/attributes"
+  },
+  {
+    "tag": "p",
+    "text": "If you do not want your document to contain some node or attribute, you can remove it with one of the following functions:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool xml_node::remove_attribute(const xml_attribute& a);\nbool xml_node::remove_attributes();\nbool xml_node::remove_child(const xml_node& n);\nbool xml_node::remove_children();"
+  },
+  {
+    "tag": "p",
+    "text": "remove_attribute removes the attribute from the attribute list of the node, and returns the operation result. remove_child removes the child node with the entire subtree (including all descendant nodes and attributes) from the document, and returns the operation result. remove_attributes removes all the attributes of the node, and returns the operation result. remove_children removes all the child nodes of the node, and returns the operation result. Removing fails if one of the following is true:"
+  },
+  {
+    "tag": "p",
+    "text": "The node the function is called on is null;"
+  },
+  {
+    "tag": "p",
+    "text": "The attribute/node to be removed is null;"
+  },
+  {
+    "tag": "p",
+    "text": "The attribute/node to be removed is not in the node’s attribute/child list."
+  },
+  {
+    "tag": "p",
+    "text": "Removing the attribute or node invalidates all handles to the same underlying object, and also invalidates all iterators pointing to the same object. Removing node also invalidates all past-the-end iterators to its attribute or child node list. Be careful to ensure that all such handles and iterators either do not exist or are not used after the attribute/node is removed."
+  },
+  {
+    "tag": "p",
+    "text": "If you want to remove the attribute or child node by its name, two additional helper functions are available:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool xml_node::remove_attribute(const char_t* name);\nbool xml_node::remove_attribute(string_view_t name);\nbool xml_node::remove_child(const char_t* name);\nbool xml_node::remove_child(string_view_t name);"
+  },
+  {
+    "tag": "p",
+    "text": "These functions look for the first attribute or child with the specified name, and then remove it, returning the result. If there is no attribute or child with such name, the function returns false; if there are two nodes with the given name, only the first node is deleted. If you want to delete all nodes with the specified name, you can use code like this: while (node.remove_child(\"tool\")) ;."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of removing attributes/nodes from the document (samples/modify_remove.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "// remove description node with the whole subtree\npugi::xml_node node = doc.child(\"node\");\nnode.remove_child(\"description\");\n\n// remove value attribute\npugi::xml_node param = node.child(\"param\");\nparam.remove_attribute(\"value\");\n\n// we can also remove nodes/attributes by handles\npugi::xml_attribute id = param.attribute(\"name\");\nparam.remove_attribute(id);"
+  },
+  {
+    "tag": "h3",
+    "text": "6.5. Working with text contents"
+  },
+  {
+    "tag": "p",
+    "text": "pugixml provides a special class, xml_text, to work with text contents stored as a value of some node, i.e. <node><description>This is a node</description></node>. Working with text objects to retrieve data is described in the documentation for accessing document data; this section describes the modification interface of xml_text."
+  },
+  {
+    "tag": "p",
+    "text": "Once you have an xml_text object, you can set the text contents using the following function:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool xml_text::set(const char_t* rhs);\nbool xml_text::set(const char_t* rhs, size_t size);\nbool xml_text::set(string_view_t rhs);"
+  },
+  {
+    "tag": "p",
+    "text": "This function tries to set the contents to the specified string, and returns the operation result. The operation fails if the text object was retrieved from a node that can not have a value and is not an element node (i.e. it is a node_declaration node), if the node handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to this function). Note that if the text object was retrieved from an element node, this function creates the PCDATA child node if necessary (i.e. if the element node does not have a PCDATA/CDATA child already)."
+  },
+  {
+    "tag": "p",
+    "text": "In addition to a string function, several functions are provided for handling text with numbers and booleans as contents:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool xml_text::set(int rhs);\nbool xml_text::set(unsigned int rhs);\nbool xml_text::set(long rhs);\nbool xml_text::set(unsigned long rhs);\nbool xml_text::set(double rhs);\nbool xml_text::set(double rhs, int precision);\nbool xml_text::set(float rhs);\nbool xml_text::set(float rhs, int precision);\nbool xml_text::set(bool rhs);\nbool xml_text::set(long long rhs);\nbool xml_text::set(unsigned long long rhs);"
+  },
+  {
+    "tag": "p",
+    "text": "The above functions convert the argument to string and then call the base set function. These functions have the same semantics as similar xml_attribute functions. You can refer to documentation for the attribute functions for details."
+  },
+  {
+    "tag": "p",
+    "text": "For convenience, all set functions have the corresponding assignment operators:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_text& xml_text::operator=(const char_t* rhs);\nxml_text& xml_text::operator=(string_view_t rhs);\nxml_text& xml_text::operator=(int rhs);\nxml_text& xml_text::operator=(unsigned int rhs);\nxml_text& xml_text::operator=(long rhs);\nxml_text& xml_text::operator=(unsigned long rhs);\nxml_text& xml_text::operator=(double rhs);\nxml_text& xml_text::operator=(float rhs);\nxml_text& xml_text::operator=(bool rhs);\nxml_text& xml_text::operator=(long long rhs);\nxml_text& xml_text::operator=(unsigned long long rhs);"
+  },
+  {
+    "tag": "p",
+    "text": "These operators simply call the right set function and return the attribute they’re called on; the return value of set is ignored, so errors are ignored."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of using xml_text object to modify text contents (samples/text.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "// change project version\nproject.child(\"version\").text() = 1.2;\n\n// add description element and set the contents\n// note that we do not have to explicitly add the node_pcdata child\nproject.append_child(\"description\").text().set(\"a test project\");"
+  },
+  {
+    "tag": "h3",
+    "text": "6.6. Cloning nodes/attributes"
+  },
+  {
+    "tag": "p",
+    "text": "With the help of previously described functions, it is possible to create trees with any contents and structure, including cloning the existing data. However since this is an often needed operation, pugixml provides built-in node/attribute cloning facilities. Since nodes and attributes do not exist without a document tree, you can’t create a standalone copy - you have to immediately insert it somewhere in the tree. For this, you can use one of the following functions:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_attribute xml_node::append_copy(const xml_attribute& proto);\nxml_attribute xml_node::prepend_copy(const xml_attribute& proto);\nxml_attribute xml_node::insert_copy_after(const xml_attribute& proto, const xml_attribute& attr);\nxml_attribute xml_node::insert_copy_before(const xml_attribute& proto, const xml_attribute& attr);\n\nxml_node xml_node::append_copy(const xml_node& proto);\nxml_node xml_node::prepend_copy(const xml_node& proto);\nxml_node xml_node::insert_copy_after(const xml_node& proto, const xml_node& node);\nxml_node xml_node::insert_copy_before(const xml_node& proto, const xml_node& node);"
+  },
+  {
+    "tag": "p",
+    "text": "These functions mirror the structure of append_child, prepend_child, insert_child_before and related functions - they take the handle to the prototype object, which is to be cloned, insert a new attribute/node at the appropriate place, and then copy the attribute data or the whole node subtree to the new object. The functions return the handle to the resulting duplicate object, or null handle on failure."
+  },
+  {
+    "tag": "p",
+    "text": "The attribute is copied along with the name and value; the node is copied along with its type, name and value; additionally attribute list and all children are recursively cloned, resulting in the deep subtree clone. The prototype object can be a part of the same document, or a part of any other document."
+  },
+  {
+    "tag": "p",
+    "text": "The failure conditions resemble those of append_child, insert_child_before and related functions, consult their documentation for more information. There are additional caveats specific to cloning functions:"
+  },
+  {
+    "tag": "p",
+    "text": "Cloning null handles results in operation failure;"
+  },
+  {
+    "tag": "p",
+    "text": "Node cloning starts with insertion of the node of the same type as that of the prototype; for this reason, cloning functions can not be directly used to clone entire documents, since node_document is not a valid insertion type. The example below provides a workaround."
+  },
+  {
+    "tag": "p",
+    "text": "It is possible to copy a subtree as a child of some node inside this subtree, i.e. node.append_copy(node.parent().parent());. This is a valid operation, and it results in a clone of the subtree in the state before cloning started, i.e. no infinite recursion takes place."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example with one possible implementation of include tags in XML (samples/include.cpp). It illustrates node cloning and usage of other document modification functions:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool load_preprocess(pugi::xml_document& doc, const char* path);\n\nbool preprocess(pugi::xml_node node)\n{\n    for (pugi::xml_node child = node.first_child(); child; )\n    {\n        if (child.type() == pugi::node_pi && strcmp(child.name(), \"include\") == 0)\n        {\n            pugi::xml_node include = child;\n\n            // load new preprocessed document (note: ideally this should handle relative paths)\n            const char* path = include.value();\n\n            pugi::xml_document doc;\n            if (!load_preprocess(doc, path)) return false;\n\n            // insert the comment marker above include directive\n            node.insert_child_before(pugi::node_comment, include).set_value(path);\n\n            // copy the document above the include directive (this retains the original order!)\n            for (pugi::xml_node ic = doc.first_child(); ic; ic = ic.next_sibling())\n            {\n                node.insert_copy_before(ic, include);\n            }\n\n            // remove the include node and move to the next child\n            child = child.next_sibling();\n\n            node.remove_child(include);\n        }\n        else\n        {\n            if (!preprocess(child)) return false;\n\n            child = child.next_sibling();\n        }\n    }\n\n    return true;\n}\n\nbool load_preprocess(pugi::xml_document& doc, const char* path)\n{\n    pugi::xml_parse_result result = doc.load_file(path, pugi::parse_default | pugi::parse_pi); // for <?include?>\n\n    return result ? preprocess(doc) : false;\n}"
+  },
+  {
+    "tag": "h3",
+    "text": "6.7. Moving nodes"
+  },
+  {
+    "tag": "p",
+    "text": "Sometimes instead of cloning a node you need to move an existing node to a different position in a tree. This can be accomplished by copying the node and removing the original; however, this is expensive since it results in a lot of extra operations. For moving nodes within the same document tree, you can use of the following functions instead:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_node xml_node::append_move(const xml_node& moved);\nxml_node xml_node::prepend_move(const xml_node& moved);\nxml_node xml_node::insert_move_after(const xml_node& moved, const xml_node& node);\nxml_node xml_node::insert_move_before(const xml_node& moved, const xml_node& node);"
+  },
+  {
+    "tag": "p",
+    "text": "These functions mirror the structure of append_copy, prepend_copy, insert_copy_before and insert_copy_after - they take the handle to the moved object and move it to the appropriate place with all attributes and/or child nodes. The functions return the handle to the resulting object (which is the same as the moved object), or null handle on failure."
+  },
+  {
+    "tag": "p",
+    "text": "The failure conditions resemble those of append_child, insert_child_before and related functions, consult their documentation for more information. There are additional caveats specific to moving functions:"
+  },
+  {
+    "tag": "p",
+    "text": "Moving null handles results in operation failure;"
+  },
+  {
+    "tag": "p",
+    "text": "Moving is only possible for nodes that belong to the same document; attempting to move nodes between documents will fail."
+  },
+  {
+    "tag": "p",
+    "text": "insert_move_after and insert_move_before functions fail if the moved node is the same as the node argument (this operation would be a no-op otherwise)."
+  },
+  {
+    "tag": "p",
+    "text": "It is impossible to move a subtree to a child of some node inside this subtree, i.e. node.append_move(node.parent().parent()); will fail."
+  },
+  {
+    "tag": "h3",
+    "text": "6.8. Assembling document from fragments"
+  },
+  {
+    "tag": "p",
+    "text": "pugixml provides several ways to assemble an XML document from other XML documents. Assuming there is a set of document fragments, represented as in-memory buffers, the implementation choices are as follows:"
+  },
+  {
+    "tag": "p",
+    "text": "Use a temporary document to parse the data from a string, then clone the nodes to a destination node. For example:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool append_fragment(pugi::xml_node target, const char* buffer, size_t size)\n{\n    pugi::xml_document doc;\n    if (!doc.load_buffer(buffer, size)) return false;\n\n    for (pugi::xml_node child = doc.first_child(); child; child = child.next_sibling())\n        target.append_copy(child);\n\n    return true;\n}"
+  },
+  {
+    "tag": "p",
+    "text": "Cache the parsing step - instead of keeping in-memory buffers, keep document objects that already contain the parsed fragment:"
+  },
+  {
+    "tag": "pre",
+    "text": "void append_fragment(pugi::xml_node target, const pugi::xml_document& cached_fragment)\n{\n    for (pugi::xml_node child = cached_fragment.first_child(); child; child = child.next_sibling())\n        target.append_copy(child);\n}"
+  },
+  {
+    "tag": "p",
+    "text": "Use xml_node::append_buffer directly:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_parse_result xml_node::append_buffer(const void* contents, size_t size, unsigned int options = parse_default, xml_encoding encoding = encoding_auto);"
+  },
+  {
+    "tag": "p",
+    "text": "The first method is more convenient, but slower than the other two. The relative performance of append_copy and append_buffer depends on the buffer format - usually append_buffer is faster if the buffer is in native encoding (UTF-8 or wchar_t, depending on PUGIXML_WCHAR_MODE). At the same time it might be less efficient in terms of memory usage - the implementation makes a copy of the provided buffer, and the copy has the same lifetime as the document - the memory used by that copy will be reclaimed after the document is destroyed, but no sooner. Even deleting all nodes in the document, including the appended ones, won’t reclaim the memory."
+  },
+  {
+    "tag": "p",
+    "text": "append_buffer behaves in the same way as xml_document::load_buffer - the input buffer is a byte buffer, with size in bytes; the buffer is not modified and can be freed after the function returns."
+  },
+  {
+    "tag": "p",
+    "text": "Since append_buffer needs to append child nodes to the current node, it only works if the current node is either document or element node. Calling append_buffer on a node with any other type results in an error with status_append_invalid_root status."
+  }
+]

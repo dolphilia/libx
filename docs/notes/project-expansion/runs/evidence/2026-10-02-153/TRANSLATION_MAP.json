@@ -1,0 +1,152 @@
+[
+  {
+    "line": 2,
+    "source": "title: \"XPath\"",
+    "translation": "title: \"XPath\""
+  },
+  {
+    "line": 3,
+    "source": "description: \"pugixml 1.16 XPath complete official text.\"",
+    "translation": "description: \"pugixml 1.16の公式XPath説明全文。\""
+  },
+  {
+    "line": 11,
+    "source": "## <a href=\"#source-xpath\" class=\"anchor\"></a><a href=\"#source-xpath\" class=\"link\">8. XPath</a>",
+    "translation": "## <a href=\"#source-xpath\" class=\"anchor\"></a><a href=\"#source-xpath\" class=\"link\">8. XPath</a>"
+  },
+  {
+    "line": 17,
+    "source": "If the task at hand is to select a subset of document nodes that match some criteria, it is possible to code a function using the existing traversal functionality for any practical criteria. However, often either a data-driven approach is desirable, in case the criteria are not predefined and come from a file, or it is inconvenient to use traversal interfaces and a higher-level DSL is required. There is a standard language for XML processing, XPath, that can be useful for these cases. pugixml implements an almost complete subset of XPath 1.0. Because of differences in document object model and some performance implications, there are minor violations of the official specifications, which can be found in [Conformance to W3C specification](#source-xpath.w3c). The rest of this section describes the interface for XPath functionality. Please note that if you wish to learn to use XPath language, you have to look for other tutorials or manuals; for example, you can read [W3Schools XPath tutorial](https://www.w3schools.com/xml/xpath_intro.asp) or [the XPath 1.0 specification](https://www.w3.org/TR/xpath-10/).",
+    "translation": "条件に一致する文書ノードの部分集合を選ぶ場合、実用的な条件であれば、既存の走査機能を使って関数を書くことはできます。ただし、条件が事前に決まっておらずファイルから与えられる場合には、データに基づく方法が望ましいことがよくあります。また、走査インターフェースが使いにくく、より高水準のDSLが必要な場合もあります。XML処理の標準言語XPathは、こうした場合に役立ちます。pugixmlは、XPath 1.0のほぼ完全な部分集合を実装しています。文書オブジェクトモデルの違いや性能面の理由から、公式仕様にわずかな非準拠があります。[W3C仕様への準拠](#source-xpath.w3c)を参照してください。この節の残りでは、XPath機能のインターフェースを説明します。XPath言語の使い方を学ぶには、ほかのチュートリアルやマニュアルを参照してください。たとえば、[W3SchoolsのXPathチュートリアル](https://www.w3schools.com/xml/xpath_intro.asp)や[XPath 1.0仕様](https://www.w3.org/TR/xpath-10/)があります。"
+  },
+  {
+    "line": 25,
+    "source": "### <a href=\"#source-xpath.types\" class=\"anchor\"></a><a href=\"#source-xpath.types\" class=\"link\">8.1. XPath types</a>",
+    "translation": "### <a href=\"#source-xpath.types\" class=\"anchor\"></a><a href=\"#source-xpath.types\" class=\"link\">8.1. XPathの型</a>"
+  },
+  {
+    "line": 29,
+    "source": "<span id=\"source-xpath_value_type\"></span><span id=\"source-xpath_type_number\"></span><span id=\"source-xpath_type_string\"></span><span id=\"source-xpath_type_boolean\"></span><span id=\"source-xpath_type_node_set\"></span><span id=\"source-xpath_type_none\"></span> Each XPath expression can have one of the following types: boolean, number, string or node set. Boolean type corresponds to `bool` type, number type corresponds to `double` type, string type corresponds to either `std::string` or `std::wstring`, depending on whether [wide character interface is enabled](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-dom.unicode), and node set corresponds to [xpath_node_set](#source-xpath_node_set) type. There is an enumeration, `xpath_value_type`, which can take the values `xpath_type_boolean`, `xpath_type_number`, `xpath_type_string` or `xpath_type_node_set`, accordingly.",
+    "translation": "<span id=\"source-xpath_value_type\"></span><span id=\"source-xpath_type_number\"></span><span id=\"source-xpath_type_string\"></span><span id=\"source-xpath_type_boolean\"></span><span id=\"source-xpath_type_node_set\"></span><span id=\"source-xpath_type_none\"></span> 各XPath式の型は、真偽値、数値、文字列、ノード集合のいずれかです。真偽値は`bool`、数値は`double`に対応します。文字列は、[ワイド文字インターフェースが有効かどうか](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-dom.unicode)に応じて、`std::string`または`std::wstring`に対応します。ノード集合は[xpath_node_set](#source-xpath_node_set)型に対応します。列挙型`xpath_value_type`は、それぞれ`xpath_type_boolean`、`xpath_type_number`、`xpath_type_string`、`xpath_type_node_set`の値を取ります。"
+  },
+  {
+    "line": 35,
+    "source": "<span id=\"source-xpath_node\"></span><span id=\"source-xpath_node::node\"></span><span id=\"source-xpath_node::attribute\"></span><span id=\"source-xpath_node::parent\"></span> Because an XPath node can be either a node or an attribute, there is a special type, `xpath_node`, which is a discriminated union of these types. A value of this type contains two node handles, one of `xml_node` type, and another one of `xml_attribute` type; at most one of them can be non-null. The accessors to get these handles are available:",
+    "translation": "<span id=\"source-xpath_node\"></span><span id=\"source-xpath_node::node\"></span><span id=\"source-xpath_node::attribute\"></span><span id=\"source-xpath_node::parent\"></span> XPathノードはノードか属性のどちらかなので、これらの型の判別可能な共用体である専用の型`xpath_node`があります。この型の値には、`xml_node`型と`xml_attribute`型のハンドルが1つずつ含まれ、nullでないものは最大1つです。これらのハンドルを取得するアクセサーがあります。"
+  },
+  {
+    "line": 54,
+    "source": "XPath nodes can be null, in which case both accessors return null handles.",
+    "translation": "XPathノードはnullにもできます。その場合、どちらのアクセサーもnullハンドルを返します。"
+  },
+  {
+    "line": 60,
+    "source": "Note that as per XPath specification, each XPath node has a parent, which can be retrieved via this function:",
+    "translation": "XPath仕様では、各XPathノードには親があり、次の関数で取得できます。"
+  },
+  {
+    "line": 78,
+    "source": "`parent` function returns the node’s parent if the XPath node corresponds to `xml_node` handle (equivalent to `node().parent()`), or the node to which the attribute belongs to, if the XPath node corresponds to `xml_attribute` handle. For null nodes, `parent` returns null handle.",
+    "translation": "`parent`は、XPathノードが`xml_node`ハンドルに対応する場合には、そのノードの親を返します（`node().parent()`と同じです）。`xml_attribute`ハンドルに対応する場合には、属性が属するノードを返します。nullノードでは、`parent`はnullハンドルを返します。"
+  },
+  {
+    "line": 84,
+    "source": "<span id=\"source-xpath_node::unspecified_bool_type\"></span><span id=\"source-xpath_node::comparison\"></span> Like node and attribute handles, XPath node handles can be implicitly cast to boolean-like object to check if it is a null node, and also can be compared for equality with each other.",
+    "translation": "<span id=\"source-xpath_node::unspecified_bool_type\"></span><span id=\"source-xpath_node::comparison\"></span> ノードや属性のハンドルと同様に、XPathノードのハンドルは、真偽値のように扱えるオブジェクトへ暗黙に変換でき、nullノードかどうかを確認できます。また、互いに等しいかどうかを比較できます。"
+  },
+  {
+    "line": 90,
+    "source": "You can also create XPath nodes with one of the three constructors: the default constructor, the constructor that takes node argument, and the constructor that takes attribute and node arguments (in which case the attribute must belong to the attribute list of the node). The constructor from `xml_node` is implicit, so you can usually pass `xml_node` to functions that expect `xpath_node`. Apart from that you usually don’t need to create your own XPath node objects, since they are returned to you via selection functions.",
+    "translation": "XPathノードは、3つのコンストラクターのいずれかでも作成できます。既定のコンストラクター、ノードを引数に取るもの、属性とノードを引数に取るものです。最後の場合、属性は、そのノードの属性リストに属していなければなりません。`xml_node`からのコンストラクターは暗黙的なので、通常、`xpath_node`を受け取る関数には`xml_node`を渡せます。それ以外では、選択関数からXPathノードが返されるため、通常、自分でXPathノードオブジェクトを作成する必要はありません。"
+  },
+  {
+    "line": 96,
+    "source": "XPath expressions operate not on single nodes, but instead on node sets. A node set is a collection of nodes, which can be optionally ordered in either a forward document order or a reverse one. Document order is defined in XPath specification; an XPath node is before another node in document order if it appears before it in XML representation of the corresponding document.",
+    "translation": "XPath式は、単一のノードではなく、ノード集合に対して操作します。ノード集合はノードの集まりで、必要に応じて文書順かその逆順に並べられます。文書順はXPath仕様で定義されています。対応する文書のXML表現で、あるXPathノードが別のノードより前に現れる場合、文書順でも前になります。"
+  },
+  {
+    "line": 102,
+    "source": "<span id=\"source-xpath_node_set::const_iterator\"></span><span id=\"source-xpath_node_set::begin\"></span><span id=\"source-xpath_node_set::end\"></span> Node sets are represented by `xpath_node_set` object, which has an interface that resembles one of sequential random-access containers. It has an iterator type along with usual begin/past-the-end iterator accessors:",
+    "translation": "<span id=\"source-xpath_node_set::const_iterator\"></span><span id=\"source-xpath_node_set::begin\"></span><span id=\"source-xpath_node_set::end\"></span> ノード集合は、列として扱うランダムアクセスコンテナーに似たインターフェースを持つ`xpath_node_set`オブジェクトで表されます。イテレーター型と、通常の先頭・末尾の次を指すイテレーターのアクセサーがあります。"
+  },
+  {
+    "line": 122,
+    "source": "<span id=\"source-xpath_node_set::index\"></span><span id=\"source-xpath_node_set::size\"></span><span id=\"source-xpath_node_set::empty\"></span> And it also can be iterated via indices, just like `std::vector`:",
+    "translation": "<span id=\"source-xpath_node_set::index\"></span><span id=\"source-xpath_node_set::size\"></span><span id=\"source-xpath_node_set::empty\"></span> `std::vector`と同様に、インデックスでも反復処理できます。"
+  },
+  {
+    "line": 142,
+    "source": "All of the above operations have the same semantics as that of `std::vector`: the iterators are random-access, all of the above operations are constant time, and accessing the element at index that is greater or equal than the set size results in undefined behavior. You can use both iterator-based and index-based access for iteration, however the iterator-based one can be faster.",
+    "translation": "上記の操作の意味は、`std::vector`と同じです。イテレーターはランダムアクセスで、上記の操作はすべて定数時間です。集合のサイズ以上のインデックスで要素へアクセスした場合の動作は未定義です。反復処理にはイテレーターとインデックスのどちらも使えますが、イテレーターの方が高速な場合があります。"
+  },
+  {
+    "line": 148,
+    "source": "<span id=\"source-xpath_node_set::type\"></span><span id=\"source-xpath_node_set::type_unsorted\"></span><span id=\"source-xpath_node_set::type_sorted\"></span><span id=\"source-xpath_node_set::type_sorted_reverse\"></span><span id=\"source-xpath_node_set::sort\"></span> The order of iteration depends on the order of nodes inside the set; the order can be queried via the following function:",
+    "translation": "<span id=\"source-xpath_node_set::type\"></span><span id=\"source-xpath_node_set::type_unsorted\"></span><span id=\"source-xpath_node_set::type_sorted\"></span><span id=\"source-xpath_node_set::type_sorted_reverse\"></span><span id=\"source-xpath_node_set::sort\"></span> 反復処理の順序は集合内のノードの順序に依存し、次の関数で確認できます。"
+  },
+  {
+    "line": 167,
+    "source": "`type` function returns the current order of nodes; `type_sorted` means that the nodes are in forward document order, `type_sorted_reverse` means that the nodes are in reverse document order, and `type_unsorted` means that neither order is guaranteed (nodes can accidentally be in a sorted order even if `type()` returns `type_unsorted`). If you require a specific order of iteration, you can change it via `sort` function:",
+    "translation": "`type`は現在のノードの順序を返します。`type_sorted`は文書順、`type_sorted_reverse`は逆文書順、`type_unsorted`はどちらの順序も保証されないことを意味します。`type()`が`type_unsorted`を返しても、偶然整列している場合はあります。特定の順序で反復処理したい場合は、`sort`で変更できます。"
+  },
+  {
+    "line": 185,
+    "source": "Calling `sort` sorts the nodes in either forward or reverse document order, depending on the argument; after this call `type()` will return `type_sorted` or `type_sorted_reverse`.",
+    "translation": "`sort`を呼び出すと、引数に応じて、文書順か逆文書順にノードを並べ替えます。その後は、`type()`が`type_sorted`または`type_sorted_reverse`を返します。"
+  },
+  {
+    "line": 191,
+    "source": "Often the actual iteration is not needed; instead, only the first element in document order is required. For this, a special accessor is provided:",
+    "translation": "実際に反復処理する必要がなく、文書順で最初の要素だけが必要な場合もよくあります。そのための専用のアクセサーがあります。"
+  },
+  {
+    "line": 209,
+    "source": "This function returns the first node in forward document order from the set, or null node if the set is empty. Note that while the result of the node does not depend on the order of nodes in the set (i.e. on the result of `type()`), the complexity does - if the set is sorted, the complexity is constant, otherwise it is linear in the number of elements or worse.",
+    "translation": "この関数は、集合から文書順で最初のノードを返します。集合が空なら、nullノードを返します。返すノードは集合内の順序（`type()`の結果）に依存しませんが、計算量は依存します。集合が整列済みなら定数時間、それ以外なら要素数に対して線形時間か、それ以上になります。"
+  },
+  {
+    "line": 215,
+    "source": "While in the majority of cases the node set is returned by XPath functions, sometimes there is a need to manually construct a node set. For such cases, a constructor is provided which takes an iterator range (`const_iterator` is a typedef for `const xpath_node*`), and an optional type:",
+    "translation": "多くの場合、ノード集合はXPath関数から返されますが、手動で作成する必要がある場合もあります。そのため、イテレーター範囲と、省略可能な型を取るコンストラクターがあります。`const_iterator`は`const xpath_node*`のtypedefです。"
+  },
+  {
+    "line": 233,
+    "source": "The constructor copies the specified range and sets the specified type. The objects in the range are not checked in any way; you’ll have to ensure that the range contains no duplicates, and that the objects are sorted according to the `type` parameter. Otherwise XPath operations with this set may produce unexpected results.",
+    "translation": "コンストラクターは指定した範囲をコピーし、指定した型を設定します。範囲内のオブジェクトは一切検査しません。重複がなく、`type`パラメーターに従って整列していることを、自分で保証する必要があります。そうしないと、この集合を使うXPath操作は予想外の結果になる場合があります。"
+  },
+  {
+    "line": 243,
+    "source": "### <a href=\"#source-xpath.select\" class=\"anchor\"></a><a href=\"#source-xpath.select\" class=\"link\">8.2. Selecting nodes via XPath expression</a>",
+    "translation": "### <a href=\"#source-xpath.select\" class=\"anchor\"></a><a href=\"#source-xpath.select\" class=\"link\">8.2. XPath式によるノードの選択</a>"
+  },
+  {
+    "line": 247,
+    "source": "<span id=\"source-xml_node::select_node\"></span><span id=\"source-xml_node::select_nodes\"></span> If you want to select nodes that match some XPath expression, you can do it with the following functions:",
+    "translation": "<span id=\"source-xml_node::select_node\"></span><span id=\"source-xml_node::select_nodes\"></span> XPath式に一致するノードを選ぶには、次の関数を使えます。"
+  },
+  {
+    "line": 266,
+    "source": "`select_nodes` function compiles the expression and then executes it with the node as a context node, and returns the resulting node set. `select_node` returns only the first node in document order from the result, and is equivalent to calling `select_nodes(query).first()`. If the XPath expression does not match anything, or the node handle is null, `select_nodes` returns an empty set, and `select_node` returns null XPath node.",
+    "translation": "`select_nodes`は式をコンパイルし、ノードをコンテキストノードとして実行して、結果のノード集合を返します。`select_node`は、結果のうち文書順で最初のノードだけを返し、`select_nodes(query).first()`と同じです。XPath式に一致するものがない場合や、ノードハンドルがnullの場合、`select_nodes`は空の集合を返し、`select_node`はnullのXPathノードを返します。"
+  },
+  {
+    "line": 272,
+    "source": "If exception handling is not disabled, both functions throw [xpath_exception](#source-xpath_exception) if the query can not be compiled or if it returns a value with type other than node set; see [Error handling](#source-xpath.errors) for details.",
+    "translation": "例外処理が無効になっていなければ、問い合わせをコンパイルできない場合や、結果の型がノード集合以外の場合、どちらの関数も[xpath_exception](#source-xpath_exception)を送出します。詳細は[エラー処理](#source-xpath.errors)を参照してください。"
+  },
+  {
+    "line": 278,
+    "source": "<span id=\"source-xml_node::select_node_precomp\"></span><span id=\"source-xml_node::select_nodes_precomp\"></span> While compiling expressions is fast, the compilation time can introduce a significant overhead if the same expression is used many times on small subtrees. If you’re doing many similar queries, consider compiling them into query objects (see [Using query objects](#source-xpath.query) for further reference). Once you get a compiled query object, you can pass it to select functions instead of an expression string:",
+    "translation": "<span id=\"source-xml_node::select_node_precomp\"></span><span id=\"source-xml_node::select_nodes_precomp\"></span> 式のコンパイルは高速ですが、同じ式を小さい部分ツリーに対して何度も使う場合、コンパイル時間が大きなオーバーヘッドになることがあります。似た問い合わせを何度も行う場合は、問い合わせオブジェクトへコンパイルすることを検討してください（[問い合わせオブジェクトの使用](#source-xpath.query)を参照）。コンパイル済みの問い合わせオブジェクトがあれば、式の文字列の代わりに選択関数へ渡せます。"
+  },
+  {
+    "line": 297,
+    "source": "If exception handling is not disabled, both functions throw [xpath_exception](#source-xpath_exception) if the query returns a value with type other than node set.",
+    "translation": "例外処理が無効になっていなければ、問い合わせの結果の型がノード集合以外の場合、どちらの関数も[xpath_exception](#source-xpath_exception)を送出します。"
+  },
+  {
+    "line": 303,
+    "source": "This is an example of selecting nodes using XPath expressions ([samples/xpath_select.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/xpath_select.cpp)):",
+    "translation": "XPath式でノードを選ぶ例です（[samples/xpath_select.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/xpath_select.cpp)）。"
+  }
+]

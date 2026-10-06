@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "reviewedAt": "2026-10-02T08:07:45.148Z",
+  "scope": "アクセス章全1195行、原text全129ブロック、10小節、全96翻訳単位を初稿保存後の別工程で全文照合。",
+  "source": {
+    "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/05-accessing-document-data.html",
+    "sha256": "6cc53fd9381e499982106f5515aa12356e38caf7728ebe29518b663887af8af1"
+  },
+  "canonical": {
+    "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/05-accessing-document-data.md",
+    "sha256": "151442e47d0e6946dfaac9a600fe635fe4ede1f356a126ddd46011e1e3b45de1"
+  },
+  "initial": {
+    "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-142/ja/02-manual/05-accessing-document-data.md",
+    "sha256": "e0d77b363b69c33c4d3f75fa82dee62c2cf37f3d6d8f90e79977281385690dc5"
+  },
+  "final": {
+    "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-145/ja/02-manual/05-accessing-document-data.md",
+    "sha256": "575828d1eded158944fc6e2873b16a8527b67b6afe805e679d3ff1db9624358c"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        658
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        1195
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        1195
+      ]
+    ]
+  },
+  "aiContentReview": {
+    "separatePass": true,
+    "sourceToCanonical": "原text0–55と56–128を全文実読。全関数宣言・全35コード例の意味/対応と条件を照合。固定再生成を機械検査で別確認。",
+    "canonicalToJapanese": "保存済み初稿の1–512行と513–1195行の全96翻訳単位を別工程で全文再読。原文の基本走査段落29行が残存していることを発見し、31行の訳文を29行へ移し閉じdivを復元。",
+    "findings": [
+      "基本走査の説明が原文のまま残り、訳文が閉じdiv後に重複する配置誤りを修正。旧検査はHTMLで始まる行の英語散文を分類しなかったため見逃した。",
+      "全ノード型の名前/値、null時の空文字列と非nullポインター、PCDATA/CDATAの最初の子、as_stringの既定値条件を保持。",
+      "全数値変換の形式/先頭空白/範囲クランプ/CRT-STL依存、CロケールとCHARCONV例外、真偽値の先頭文字判定とlong long条件を保持。",
+      "名前検索の大文字小文字区別、hintの次属性への更新・nullか同一ノード所属・未定義動作、属性値検索の2/3引数と有効文字列必須を保持。",
+      "C++11/C++20とBoost互換性の条件、末尾イテレーター非参照外しと空でのデクリメント未定義、削除で無効化/追加では非無効化、代入はローカルハンドルを変える注意を保持。",
+      "walkerの根除外の深さ優先順/false即停止/depthの-1と子0、述語のnull非入力と直接の子/全子孫の区別を保持。",
+      "xml_textの対象と空/既定値変換、パスの絶対/相対/自身/親/曖昧時最初の選択、NO_STL、offsetの条件とchar_t単位を保持。"
+    ],
+    "changes": [
+      {
+        "line": 29,
+        "before": "<span id=\"source-xml_node::parent\"></span><span id=\"source-xml_node::first_child\"></span><span id=\"source-xml_node::last_child\"></span><span id=\"source-xml_node::next_sibling\"></span><span id=\"source-xml_node::previous_sibling\"></span><span id=\"source-xml_node::first_attribute\"></span><span id=\"source-xml_node::last_attribute\"></span><span id=\"source-xml_attribute::next_attribute\"></span><span id=\"source-xml_attribute::previous_attribute\"></span> The internal representation of the document is a tree, where each node has a list of child nodes (the order of children corresponds to their order in the XML representation), and additionally element nodes have a list of attributes, which is also ordered. Several functions are provided in order to let you get from one node in the tree to the other. These functions roughly correspond to the internal representation, and thus are usually building blocks for other methods of traversing (i.e. XPath traversals are based on these functions).",
+        "after": "<span id=\"source-xml_node::parent\"></span><span id=\"source-xml_node::first_child\"></span><span id=\"source-xml_node::last_child\"></span><span id=\"source-xml_node::next_sibling\"></span><span id=\"source-xml_node::previous_sibling\"></span><span id=\"source-xml_node::first_attribute\"></span><span id=\"source-xml_node::last_attribute\"></span><span id=\"source-xml_attribute::next_attribute\"></span><span id=\"source-xml_attribute::previous_attribute\"></span> 文書の内部表現はツリーで、各ノードは子ノードのリストを持ちます。子の順序はXML表現での順序と一致します。また、要素ノードは属性のリストも持ち、これにも順序があります。ツリー内のあるノードから別のノードへ移るために、いくつかの関数が用意されています。これらの関数は内部表現におおむね対応しているため、通常はほかの走査方法の構成要素になります。たとえば、XPathによる走査はこれらの関数に基づいています。",
+        "reason": "英語が残った基本走査段落へ訳文を正しく配置。原IDを保持。"
+      },
+      {
+        "line": 31,
+        "before": "</div> 文書の内部表現はツリーで、各ノードは子ノードのリストを持ちます。子の順序はXML表現での順序と一致します。また、要素ノードは属性のリストも持ち、これにも順序があります。ツリー内のあるノードから別のノードへ移るために、いくつかの関数が用意されています。これらの関数は内部表現におおむね対応しているため、通常はほかの走査方法の構成要素になります。たとえば、XPathによる走査はこれらの関数に基づいています。",
+        "after": "</div>",
+        "reason": "閉じdivの後に誤挿入された重複説明を除去し構造を復元。"
+      }
+    ],
+    "japaneseReadability": "配置誤り以外の意味の欠落や条件の逆転は認められない。走査・検索・空オブジェクトを区別する既訳用語は整合。",
+    "sourceLimitations": [
+      "原文の要素ノードは値を持たないという説明はloading章parse_embed_pcdataの特例を記載していない。固定原文を保全し、この節を特例なしの一般保証として追認しない。"
+    ]
+  },
+  "mechanicalEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-145/MECHANICAL.json",
+    "sha256": "953355f55e12d0ae4dc53953614cb8fa3560aa185684cc163c8aa9eea45e84de"
+  },
+  "projectVerified": false,
+  "reviewedPages": 8,
+  "totalPages": 12
+}

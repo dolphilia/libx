@@ -1,0 +1,1722 @@
+[
+  {
+    "tag": "h2",
+    "text": "9. Changelog"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.16 2026-06-16"
+  },
+  {
+    "tag": "p",
+    "text": "Anniversary release (pugixml turns 20 this year!). Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Behavior changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Elements that have a single empty PCDATA child are now printed as empty element tags (unless format_no_empty_element_tags is used)"
+  },
+  {
+    "tag": "p",
+    "text": "Improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "PUGIXML_CHARCONV_FLOAT option can be enabled to switch floating point conversions to <charconv>; this requires C++17, makes the conversions locale-independent and can improve performance"
+  },
+  {
+    "tag": "p",
+    "text": "Add xml_node::ensure_child and xml_node::ensure_attribute that return the child/attribute with the specified name, adding one if it does not exist"
+  },
+  {
+    "tag": "p",
+    "text": "Improve performance of searching for nodes and attributes by name"
+  },
+  {
+    "tag": "p",
+    "text": "Loading a document from an empty buffer no longer performs memory allocations"
+  },
+  {
+    "tag": "p",
+    "text": "XPath improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Improve performance of queries that evaluate or compare attribute values, like @attr > 5"
+  },
+  {
+    "tag": "p",
+    "text": "Improve performance of queries that select nodes and attributes by name"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix stack overflow when removing subtrees with extremely deep nesting"
+  },
+  {
+    "tag": "p",
+    "text": "Fix integer overflows that could lead to crashes when loading very large (1+ GB) documents on 32-bit platforms in PUGIXML_WCHAR_MODE"
+  },
+  {
+    "tag": "p",
+    "text": "Fix null pointer dereference when copying xpath_variable_set objects that contain string variables with unassigned values"
+  },
+  {
+    "tag": "p",
+    "text": "CMake improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Apple frameworks built with PUGIXML_BUILD_APPLE_FRAMEWORK now include framework headers"
+  },
+  {
+    "tag": "p",
+    "text": "PUGIXML_INSTALL_SOURCE option can be used to install pugixml.cpp (useful for header-only mode)"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Add project files and NuGet packages for Visual Studio 2026"
+  },
+  {
+    "tag": "p",
+    "text": "Fix compatibility with C++20 modules when including pugixml.hpp in the global module fragment"
+  },
+  {
+    "tag": "p",
+    "text": "Fix clang/gcc warnings -Wextra-semi-stmt, -Wsign-conversion, -Wuninitialized (GCC16)"
+  },
+  {
+    "tag": "p",
+    "text": "Fix compilation for Embarcadero C++ XE5"
+  },
+  {
+    "tag": "p",
+    "text": "Work around several static analysis false positives"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.15 2025-01-10"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Many xml_attribute:: and xml_node:: functions now transparently support std::string_view and std::string when C++17 support is detected."
+  },
+  {
+    "tag": "p",
+    "text": "CMake improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Improve pkg-config file generation for NixOS"
+  },
+  {
+    "tag": "p",
+    "text": "PUGIXML_BUILD_APPLE_FRAMEWORK CMake option can be used to build pugixml as .xcframework"
+  },
+  {
+    "tag": "p",
+    "text": "PUGIXML_INSTALL CMake option can be used to disable installation targets"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix clang/gcc warnings -Wzero-as-null-pointer-constant, -Wuseless-cast, -Wshorten-64-to-32"
+  },
+  {
+    "tag": "p",
+    "text": "Fix unreferenced function warnings in PUGIXML_NO_STL configuration"
+  },
+  {
+    "tag": "p",
+    "text": "Fix CMake 3.31 deprecation warnings"
+  },
+  {
+    "tag": "p",
+    "text": "Stop using deprecated throw() when noexcept is available"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.14 2023-10-01"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "xml_attribute::set_name and xml_node::set_name now have overloads that accept pointer to non-null-terminated string and size"
+  },
+  {
+    "tag": "p",
+    "text": "Implement parse_merge_pcdata parsing mode in which PCDATA contents is merged into a single node when original document had comments that were skipped during parsing"
+  },
+  {
+    "tag": "p",
+    "text": "xml_document::load_file now returns a more consistent error status when given a path to a folder"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix assertion in XPath number→string conversion when using non-English locales"
+  },
+  {
+    "tag": "p",
+    "text": "Fix PUGIXML_STATIC_CRT CMake option to correctly select static CRT when using MSVC and recent CMake"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix GCC 2.95/3.3 builds"
+  },
+  {
+    "tag": "p",
+    "text": "Fix CMake 3.27 deprecation warnings"
+  },
+  {
+    "tag": "p",
+    "text": "Fix XCode 14 sprintf deprecation warning when compiling in C++03 mode"
+  },
+  {
+    "tag": "p",
+    "text": "Fix clang/gcc warnings -Wweak-vtables, -Wreserved-macro-identifier"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.13 2022-11-01"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "xml_attribute::set_value, xml_node::set_value and xml_text::set now have overloads that accept pointer to non-null-terminated string and size"
+  },
+  {
+    "tag": "p",
+    "text": "Improve performance of tree traversal when using compact mode (PUGIXML_COMPACT)"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix error handling in xml_document::save_file that could result in the function succeeding while running out of disk space"
+  },
+  {
+    "tag": "p",
+    "text": "Fix memory leak during error handling of some out-of-memory conditions during xml_document::load"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix exported symbols in CMake DLL builds when using CMake"
+  },
+  {
+    "tag": "p",
+    "text": "Fix exported symbols in CMake shared object builds when using -fvisibility=hidden"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.12 2022-02-09"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix a bug in xml_document move construction when the source of the move is empty"
+  },
+  {
+    "tag": "p",
+    "text": "Fix const-correctness issues with iterator objects to support C++20 ranges"
+  },
+  {
+    "tag": "p",
+    "text": "XPath improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Improved detection of overly complex queries that may result in stack overflow during parsing"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix Cygwin support for DLL builds"
+  },
+  {
+    "tag": "p",
+    "text": "Fix Windows CE support"
+  },
+  {
+    "tag": "p",
+    "text": "Add NuGet builds and project files for VS2022"
+  },
+  {
+    "tag": "p",
+    "text": "Build system changes"
+  },
+  {
+    "tag": "p",
+    "text": "All CMake options now have the prefix PUGIXML_. This may require changing dependent build configurations."
+  },
+  {
+    "tag": "p",
+    "text": "Many build settings are now exposed via CMake settings, most notably PUGIXML_COMPACT and PUGIXML_WCHAR_MODE can be set without changing pugiconfig.hpp"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.11 2020-11-26"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Add xml_node::remove_attributes and xml_node::remove_children"
+  },
+  {
+    "tag": "p",
+    "text": "Add a way to customize floating point precision via xml_attribute::set and xml_text::set overloads"
+  },
+  {
+    "tag": "p",
+    "text": "XPath improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "XPath parser now limits recursion depth which prevents stack overflow on malicious queries"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix Visual Studio warnings when built using clang-cl compiler"
+  },
+  {
+    "tag": "p",
+    "text": "Fix Wconversion warnings in gcc"
+  },
+  {
+    "tag": "p",
+    "text": "Fix Wzero-as-null-pointer-constant warnings in pugixml.hpp"
+  },
+  {
+    "tag": "p",
+    "text": "Work around several static analysis false positives"
+  },
+  {
+    "tag": "p",
+    "text": "Build system changes"
+  },
+  {
+    "tag": "p",
+    "text": "The CMake package for pugixml now provides a pugixml::pugixml target rather than a pugixml target. A compatibility pugixml target is provided if at least version 1.11 is not requested."
+  },
+  {
+    "tag": "h3",
+    "text": "v1.10 2019-09-15"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Behavior changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Tab characters (ASCII 9) in attribute values are now encoded as '&#9;' to survive roundtripping"
+  },
+  {
+    "tag": "p",
+    "text": "> characters are no longer escaped in attribute values"
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Add Visual Studio .natvis files to improve debugging experience"
+  },
+  {
+    "tag": "p",
+    "text": "CMake improvements (USE_POSTFIX and BUILD_SHARED_AND_STATIC_LIBS options for building multiple versions and pkg-config tweaks)"
+  },
+  {
+    "tag": "p",
+    "text": "Add format_skip_control_chars formatting flag to skip non-printable ASCII characters that are invalid to use in well-formed XML files"
+  },
+  {
+    "tag": "p",
+    "text": "Add format_attribute_single_quote formatting flag to use single quotes for attribute values instead of default double quotes."
+  },
+  {
+    "tag": "p",
+    "text": "XPath improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "XPath union now results in a stable order that doesn’t depend on memory allocations; crucially, this may require sorting the output of XPath query operation if you rely on the document-ordered traversal"
+  },
+  {
+    "tag": "p",
+    "text": "Improve performance of XPath union operation, making it ~2x faster"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix Visual Studio warnings when built in a DLL configuration"
+  },
+  {
+    "tag": "p",
+    "text": "Fix static analysis false positives in Coverity and clang"
+  },
+  {
+    "tag": "p",
+    "text": "Fix Wdouble-promotion warnings in gcc"
+  },
+  {
+    "tag": "p",
+    "text": "Add Visual Studio 2019 support for NuGet packages"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.9 2018-04-04"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Specification changes:"
+  },
+  {
+    "tag": "p",
+    "text": "xml_document::load(const char*) (deprecated in 1.5) now has deprecated attribute; use xml_document::load_string instead"
+  },
+  {
+    "tag": "p",
+    "text": "xml_node::select_single_node (deprecated in 1.5) now has deprecated attribute; use xml_node::select_node instead"
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Add move semantics support for xml_document and improve move semantics support for other objects"
+  },
+  {
+    "tag": "p",
+    "text": "CMake build now exports include directories"
+  },
+  {
+    "tag": "p",
+    "text": "CMake build with BUILD_SHARED_LIBS=ON now uses dllexport attribute for MSVC"
+  },
+  {
+    "tag": "p",
+    "text": "XPath improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Rework parser/evaluator to not rely on exceptional control flow; longjmp is no longer used when exceptions are disabled"
+  },
+  {
+    "tag": "p",
+    "text": "Improve error messages for certain invalid expressions such as .[1] or (1"
+  },
+  {
+    "tag": "p",
+    "text": "Minor performance improvements"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix Texas Instruments compiler warnings"
+  },
+  {
+    "tag": "p",
+    "text": "Fix compilation issues with limits.h for some versions of gcc"
+  },
+  {
+    "tag": "p",
+    "text": "Fix compilation issues with Clang/C2"
+  },
+  {
+    "tag": "p",
+    "text": "Fix implicit fallthrough warnings in gcc 7"
+  },
+  {
+    "tag": "p",
+    "text": "Fix unknown attribute directive warnings in gcc 8"
+  },
+  {
+    "tag": "p",
+    "text": "Fix cray++ compiler errors"
+  },
+  {
+    "tag": "p",
+    "text": "Fix unsigned integer overflow errors with -fsanitize=integer"
+  },
+  {
+    "tag": "p",
+    "text": "Fix undefined behavior sanitizer issues in compact mode"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.8 2016-11-24"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Specification changes:"
+  },
+  {
+    "tag": "p",
+    "text": "When printing empty elements, a space is no longer added before / in format_raw mode"
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Added parse_embed_pcdata parsing mode in which PCDATA value is stored in the element node if possible (significantly reducing memory consumption for some documents)"
+  },
+  {
+    "tag": "p",
+    "text": "Added auto-detection support for Latin-1 (ISO-8859-1) encoding during parsing"
+  },
+  {
+    "tag": "p",
+    "text": "Added format_no_empty_element_tags formatting flag that outputs start/end tags instead of empty element tags for empty elements"
+  },
+  {
+    "tag": "p",
+    "text": "Performance improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Minor memory allocation improvements (yielding up to 1% memory savings in some cases)"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed compilation issues for Borland C++ 5.4"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed compilation issues for some distributions of MinGW 3.8"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed various Clang/GCC warnings"
+  },
+  {
+    "tag": "p",
+    "text": "Enabled move semantics support for XPath objects for MSVC 2010 and above"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.7 2015-10-19"
+  },
+  {
+    "tag": "p",
+    "text": "Major release, featuring performance and memory improvements along with some new features. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Compact mode:"
+  },
+  {
+    "tag": "p",
+    "text": "Introduced a new tree storage mode that takes significantly less memory (2-5x smaller DOM) at some performance cost."
+  },
+  {
+    "tag": "p",
+    "text": "The mode can be enabled using PUGIXML_COMPACT define."
+  },
+  {
+    "tag": "p",
+    "text": "New integer parsing/formatting implementation:"
+  },
+  {
+    "tag": "p",
+    "text": "Functions that convert from and to integers (e.g. as_int/set_value) do not rely on CRT any more."
+  },
+  {
+    "tag": "p",
+    "text": "New implementation is 3-5x faster and is always correct wrt overflow or underflow. This is a behavior change - where previously as_uint() would return UINT_MAX on a value \"-1\", it now returns 0."
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "XPath objects (xpath_query, xpath_node_set, xpath_variable_set) are now movable if your compiler supports C++11. Additionally, xpath_variable_set is copyable."
+  },
+  {
+    "tag": "p",
+    "text": "Added format_indent_attributes that makes the resulting XML friendlier to line diff/merge tools."
+  },
+  {
+    "tag": "p",
+    "text": "Added a variant of xml_node::attribute function with a hint that can improve lookup performance."
+  },
+  {
+    "tag": "p",
+    "text": "Custom allocation functions are now allowed (but not required) to throw instead of returning a null pointer."
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fix Clang 3.7 crashes in out-of-memory cases (C++ DR 1748)"
+  },
+  {
+    "tag": "p",
+    "text": "Fix XPath crashes on SPARC64 (and other 32-bit architectures where doubles have to be aligned to 8 bytes)"
+  },
+  {
+    "tag": "p",
+    "text": "Fix xpath_node_set assignment to provide strong exception guarantee"
+  },
+  {
+    "tag": "p",
+    "text": "Fix saving for custom xml_writer implementations that can throw from write()"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.6 2015-04-10"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Specification changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Attribute/text values now use more digits when printing floating point numbers to guarantee round-tripping."
+  },
+  {
+    "tag": "p",
+    "text": "Text nodes no longer get extra surrounding whitespace when pretty-printing nodes with mixed contents"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed translate and normalize-space XPath functions to no longer return internal NUL characters"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed buffer overrun on malformed comments inside DOCTYPE sections"
+  },
+  {
+    "tag": "p",
+    "text": "DOCTYPE parsing can no longer run out of stack space on malformed inputs (XML parsing is now using bounded stack space)"
+  },
+  {
+    "tag": "p",
+    "text": "Adjusted processing instruction output to avoid malformed documents if the PI value contains ?>"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.5 2014-11-27"
+  },
+  {
+    "tag": "p",
+    "text": "Major release, featuring a lot of performance improvements and some new features."
+  },
+  {
+    "tag": "p",
+    "text": "Specification changes:"
+  },
+  {
+    "tag": "p",
+    "text": "xml_document::load(const char_t*) was renamed to load_string; the old method is still available and will be deprecated in a future release"
+  },
+  {
+    "tag": "p",
+    "text": "xml_node::select_single_node was renamed to select_node; the old method is still available and will be deprecated in a future release."
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_node::append_move and other functions for moving nodes within a document"
+  },
+  {
+    "tag": "p",
+    "text": "Added xpath_query::evaluate_node for evaluating queries with a single node as a result"
+  },
+  {
+    "tag": "p",
+    "text": "Performance improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized XML parsing (10-40% faster with clang/gcc, up to 10% faster with MSVC)"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized memory consumption when copying nodes in the same document (string contents is now shared)"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized node copying (10% faster for cross-document copies, 3x faster for inter-document copies; also it now consumes a constant amount of stack space)"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized node output (60% faster; also it now consumes a constant amount of stack space)"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized XPath allocation (query evaluation now results in fewer temporary allocations)"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized XPath sorting (node set sorting is 2-3x faster in some cases)"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized XPath evaluation (XPathMark suite is 100x faster; some commonly used queries are 3-4x faster)"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed xml_node::offset_debug for corner cases"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed undefined behavior while calling memcpy in some cases"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed MSVC 2015 compilation warnings"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed contrib/foreach.hpp for Boost 1.56.0"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes"
+  },
+  {
+    "tag": "p",
+    "text": "Adjusted comment output to avoid malformed documents if the comment value contains --"
+  },
+  {
+    "tag": "p",
+    "text": "Fix XPath sorting for documents that were constructed using append_buffer"
+  },
+  {
+    "tag": "p",
+    "text": "Fix load_file for wide-character paths with non-ASCII characters in MinGW with C++11 mode enabled"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.4 2014-02-27"
+  },
+  {
+    "tag": "p",
+    "text": "Major release, featuring various new features, bug fixes and compatibility improvements."
+  },
+  {
+    "tag": "p",
+    "text": "Specification changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Documents without element nodes are now rejected with status_no_document_element error, unless parse_fragment option is used"
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Added XML fragment parsing (parse_fragment flag)"
+  },
+  {
+    "tag": "p",
+    "text": "Added PCDATA whitespace trimming (parse_trim_pcdata flag)"
+  },
+  {
+    "tag": "p",
+    "text": "Added long long support for xml_attribute and xml_text (as_llong, as_ullong and set_value/set overloads)"
+  },
+  {
+    "tag": "p",
+    "text": "Added hexadecimal integer parsing support for as_int/as_uint/as_llong/as_ullong"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_node::append_buffer to improve performance of assembling documents from fragments"
+  },
+  {
+    "tag": "p",
+    "text": "xml_named_node_iterator is now bidirectional"
+  },
+  {
+    "tag": "p",
+    "text": "Reduced XPath stack consumption during compilation and evaluation (useful for embedded systems)"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Improved support for platforms without wchar_t support"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed several false positives in clang static analysis"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed several compilation warnings for various GCC versions"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed undefined pointer arithmetic in XPath implementation"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed non-seekable iostream support for certain stream types, i.e. Boost file_source with pipe input"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed xpath_query::return_type for some expressions"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed dllexport issues with xml_named_node_iterator"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed find_child_by_attribute assertion for attributes with null name/value"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.2 2012-05-01"
+  },
+  {
+    "tag": "p",
+    "text": "Major release, featuring header-only mode, various interface enhancements (i.e. PCDATA manipulation and C++11 iteration), many other features and compatibility improvements."
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_text helper class for working with PCDATA/CDATA contents of an element node"
+  },
+  {
+    "tag": "p",
+    "text": "Added optional header-only mode (controlled by PUGIXML_HEADER_ONLY define)"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_node::children() and xml_node::attributes() for C++11 ranged for loop or BOOST_FOREACH"
+  },
+  {
+    "tag": "p",
+    "text": "Added support for Latin-1 (ISO-8859-1) encoding conversion during loading and saving"
+  },
+  {
+    "tag": "p",
+    "text": "Added custom default values for xml_attribute::as_* (they are returned if the attribute does not exist)"
+  },
+  {
+    "tag": "p",
+    "text": "Added parse_ws_pcdata_single flag for preserving whitespace-only PCDATA in case it’s the only child"
+  },
+  {
+    "tag": "p",
+    "text": "Added format_save_file_text for xml_document::save_file to open files as text instead of binary (changes newlines on Windows)"
+  },
+  {
+    "tag": "p",
+    "text": "Added format_no_escapes flag to disable special symbol escaping (complements ~parse_escapes)"
+  },
+  {
+    "tag": "p",
+    "text": "Added support for loading document from streams that do not support seeking"
+  },
+  {
+    "tag": "p",
+    "text": "Added PUGIXML_MEMORY_* constants for tweaking allocation behavior (useful for embedded systems)"
+  },
+  {
+    "tag": "p",
+    "text": "Added PUGIXML_VERSION preprocessor define"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Parser does not require setjmp support (improves compatibility with some embedded platforms, enables /clr:pure compilation)"
+  },
+  {
+    "tag": "p",
+    "text": "STL forward declarations are no longer used (fixes SunCC/RWSTL compilation, fixes clang compilation in C++11 mode)"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed AirPlay SDK, Android, Windows Mobile (WinCE) and C++/CLI compilation"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed several compilation warnings for various GCC versions, Intel C++ compiler and Clang"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed unsafe bool conversion to avoid problems on C++/CLI"
+  },
+  {
+    "tag": "p",
+    "text": "Iterator dereference operator is const now (fixes Boost filter_iterator support)"
+  },
+  {
+    "tag": "p",
+    "text": "xml_document::save_file now checks for file I/O errors during saving"
+  },
+  {
+    "tag": "h3",
+    "text": "v1.0 2010-11-01"
+  },
+  {
+    "tag": "p",
+    "text": "Major release, featuring many XPath enhancements, wide character filename support, miscellaneous performance improvements, bug fixes and more."
+  },
+  {
+    "tag": "p",
+    "text": "XPath:"
+  },
+  {
+    "tag": "p",
+    "text": "XPath implementation is moved to pugixml.cpp (which is the only source file now); use PUGIXML_NO_XPATH if you want to disable XPath to reduce code size"
+  },
+  {
+    "tag": "p",
+    "text": "XPath is now supported without exceptions (PUGIXML_NO_EXCEPTIONS); the error handling mechanism depends on the presence of exception support"
+  },
+  {
+    "tag": "p",
+    "text": "XPath is now supported without STL (PUGIXML_NO_STL)"
+  },
+  {
+    "tag": "p",
+    "text": "Introduced variable support"
+  },
+  {
+    "tag": "p",
+    "text": "Introduced new xpath_query::evaluate_string, which works without STL"
+  },
+  {
+    "tag": "p",
+    "text": "Introduced new xpath_node_set constructor (from an iterator range)"
+  },
+  {
+    "tag": "p",
+    "text": "Evaluation function now accept attribute context nodes"
+  },
+  {
+    "tag": "p",
+    "text": "All internal allocations use custom allocation functions"
+  },
+  {
+    "tag": "p",
+    "text": "Improved error reporting; now a last parsed offset is returned together with the parsing error"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed memory leak for loading from streams with stream exceptions turned on"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed custom deallocation function calling with null pointer in one case"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed missing attributes for iterator category functions; all functions/classes can now be DLL-exported"
+  },
+  {
+    "tag": "p",
+    "text": "Worked around Digital Mars compiler bug, which lead to minor read overfetches in several functions"
+  },
+  {
+    "tag": "p",
+    "text": "load_file now works with 2+ Gb files in MSVC/MinGW"
+  },
+  {
+    "tag": "p",
+    "text": "XPath: fixed memory leaks for incorrect queries"
+  },
+  {
+    "tag": "p",
+    "text": "XPath: fixed xpath_node() attribute constructor with empty attribute argument"
+  },
+  {
+    "tag": "p",
+    "text": "XPath: fixed lang() function for non-ASCII arguments"
+  },
+  {
+    "tag": "p",
+    "text": "Specification changes:"
+  },
+  {
+    "tag": "p",
+    "text": "CDATA nodes containing ]]> are printed as several nodes; while this changes the internal structure, this is the only way to escape CDATA contents"
+  },
+  {
+    "tag": "p",
+    "text": "Memory allocation errors during parsing now preserve last parsed offset (to give an idea about parsing progress)"
+  },
+  {
+    "tag": "p",
+    "text": "If an element node has the only child, and it is of CDATA type, then the extra indentation is omitted (previously this behavior only held for PCDATA children)"
+  },
+  {
+    "tag": "p",
+    "text": "Additional functionality:"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_parse_result default constructor"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_document::load_file and xml_document::save_file with wide character paths"
+  },
+  {
+    "tag": "p",
+    "text": "Added as_utf8 and as_wide overloads for std::wstring/std::string arguments"
+  },
+  {
+    "tag": "p",
+    "text": "Added DOCTYPE node type (node_doctype) and a special parse flag, parse_doctype, to add such nodes to the document during parsing"
+  },
+  {
+    "tag": "p",
+    "text": "Added parse_full parse flag mask, which extends parse_default with all node type parsing flags except parse_ws_pcdata"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_node::hash_value() and xml_attribute::hash_value() functions for use in hash-based containers"
+  },
+  {
+    "tag": "p",
+    "text": "Added internal_object() and additional constructor for both xml_node and xml_attribute for easier marshalling (useful for language bindings)"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_document::document_element() function"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_node::prepend_attribute, xml_node::prepend_child and xml_node::prepend_copy functions"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_node::append_child, xml_node::prepend_child, xml_node::insert_child_before and xml_node::insert_child_after overloads for element nodes (with name instead of type)"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_document::reset() function"
+  },
+  {
+    "tag": "p",
+    "text": "Performance improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "xml_node::root() and xml_node::offset_debug() are now O(1) instead of O(logN)"
+  },
+  {
+    "tag": "p",
+    "text": "Minor parsing optimizations"
+  },
+  {
+    "tag": "p",
+    "text": "Minor memory optimization for strings in DOM tree (set_name/set_value)"
+  },
+  {
+    "tag": "p",
+    "text": "Memory optimization for string memory reclaiming in DOM tree (set_name/set_value now reallocate the buffer if memory waste is too big)"
+  },
+  {
+    "tag": "p",
+    "text": "XPath: optimized document order sorting"
+  },
+  {
+    "tag": "p",
+    "text": "XPath: optimized child/attribute axis step"
+  },
+  {
+    "tag": "p",
+    "text": "XPath: optimized number-to-string conversions in MSVC"
+  },
+  {
+    "tag": "p",
+    "text": "XPath: optimized concat for many arguments"
+  },
+  {
+    "tag": "p",
+    "text": "XPath: optimized evaluation allocation mechanism: constant and document strings are not heap-allocated"
+  },
+  {
+    "tag": "p",
+    "text": "XPath: optimized evaluation allocation mechanism: all temporaries' allocations use fast stack-like allocator"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility:"
+  },
+  {
+    "tag": "p",
+    "text": "Removed wildcard functions (xml_node::child_w, xml_node::attribute_w, etc.)"
+  },
+  {
+    "tag": "p",
+    "text": "Removed xml_node::all_elements_by_name"
+  },
+  {
+    "tag": "p",
+    "text": "Removed xpath_type_t enumeration; use xpath_value_type instead"
+  },
+  {
+    "tag": "p",
+    "text": "Removed format_write_bom_utf8 enumeration; use format_write_bom instead"
+  },
+  {
+    "tag": "p",
+    "text": "Removed xml_document::precompute_document_order, xml_attribute::document_order and xml_node::document_order functions; document order sort optimization is now automatic"
+  },
+  {
+    "tag": "p",
+    "text": "Removed xml_document::parse functions and transfer_ownership struct; use xml_document::load_buffer_inplace and xml_document::load_buffer_inplace_own instead"
+  },
+  {
+    "tag": "p",
+    "text": "Removed as_utf16 function; use as_wide instead"
+  },
+  {
+    "tag": "h3",
+    "text": "v0.9 2010-07-01"
+  },
+  {
+    "tag": "p",
+    "text": "Major release, featuring extended and improved Unicode support, miscellaneous performance improvements, bug fixes and more."
+  },
+  {
+    "tag": "p",
+    "text": "Major Unicode improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Introduced encoding support (automatic/manual encoding detection on load, manual encoding selection on save, conversion from/to UTF8, UTF16 LE/BE, UTF32 LE/BE)"
+  },
+  {
+    "tag": "p",
+    "text": "Introduced wchar_t mode (you can set PUGIXML_WCHAR_MODE define to switch pugixml internal encoding from UTF8 to wchar_t; all functions are switched to their Unicode variants)"
+  },
+  {
+    "tag": "p",
+    "text": "Load/save functions now support wide streams"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed document corruption on failed parsing bug"
+  },
+  {
+    "tag": "p",
+    "text": "XPath string/number conversion improvements (increased precision, fixed crash for huge numbers)"
+  },
+  {
+    "tag": "p",
+    "text": "Improved DOCTYPE parsing: now parser recognizes all well-formed DOCTYPE declarations"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed xml_attribute::as_uint() for large numbers (i.e. 232-1)"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed xml_node::first_element_by_path for path components that are prefixes of node names, but are not exactly equal to them."
+  },
+  {
+    "tag": "p",
+    "text": "Specification changes:"
+  },
+  {
+    "tag": "p",
+    "text": "parse() API changed to load_buffer/load_buffer_inplace/load_buffer_inplace_own; load_buffer APIs do not require zero-terminated strings."
+  },
+  {
+    "tag": "p",
+    "text": "Renamed as_utf16 to as_wide"
+  },
+  {
+    "tag": "p",
+    "text": "Changed xml_node::offset_debug return type and xml_parse_result::offset type to ptrdiff_t"
+  },
+  {
+    "tag": "p",
+    "text": "Nodes/attributes with empty names are now printed as :anonymous"
+  },
+  {
+    "tag": "p",
+    "text": "Performance improvements:"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized document parsing and saving"
+  },
+  {
+    "tag": "p",
+    "text": "Changed internal memory management: internal allocator is used for both metadata and name/value data; allocated pages are deleted if all allocations from them are deleted"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized memory consumption: sizeof(xml_node_struct) reduced from 40 bytes to 32 bytes on x86"
+  },
+  {
+    "tag": "p",
+    "text": "Optimized debug mode parsing/saving by order of magnitude"
+  },
+  {
+    "tag": "p",
+    "text": "Miscellaneous:"
+  },
+  {
+    "tag": "p",
+    "text": "All STL includes except <exception> in pugixml.hpp are replaced with forward declarations"
+  },
+  {
+    "tag": "p",
+    "text": "xml_node::remove_child and xml_node::remove_attribute now return the operation result"
+  },
+  {
+    "tag": "p",
+    "text": "Compatibility:"
+  },
+  {
+    "tag": "p",
+    "text": "parse() and as_utf16 are left for compatibility (these functions are deprecated and will be removed in version 1.0)"
+  },
+  {
+    "tag": "p",
+    "text": "Wildcard functions, document_order/precompute_document_order functions, all_elements_by_name function and format_write_bom_utf8 flag are deprecated and will be removed in version 1.0"
+  },
+  {
+    "tag": "p",
+    "text": "xpath_type_t enumeration was renamed to xpath_value_type; xpath_type_t is deprecated and will be removed in version 1.0"
+  },
+  {
+    "tag": "h3",
+    "text": "v0.5 2009-11-08"
+  },
+  {
+    "tag": "p",
+    "text": "Major bugfix release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "XPath bugfixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed translate(), lang() and concat() functions (infinite loops/crashes)"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed compilation of queries with empty literal strings (\"\")"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed axis tests: they never add empty nodes/attributes to the resulting node set now"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed string-value evaluation for node-set (the result excluded some text descendants)"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed self:: axis (it behaved like ancestor-or-self::)"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed following:: and preceding:: axes (they included descendent and ancestor nodes, respectively)"
+  },
+  {
+    "tag": "p",
+    "text": "Minor fix for namespace-uri() function (namespace declaration scope includes the parent element of namespace declaration attribute)"
+  },
+  {
+    "tag": "p",
+    "text": "Some incorrect queries are no longer parsed now (i.e. foo: *)"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed text()/etc. node test parsing bug (i.e. foo[text()] failed to compile)"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed root step (/) - it now selects empty node set if query is evaluated on empty node"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed string to number conversion (\"123 \" converted to NaN, \"123 .456\" converted to 123.456 - now the results are 123 and NaN, respectively)"
+  },
+  {
+    "tag": "p",
+    "text": "Node set copying now preserves sorted type; leads to better performance on some queries"
+  },
+  {
+    "tag": "p",
+    "text": "Miscellaneous bugfixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed xml_node::offset_debug for PI nodes"
+  },
+  {
+    "tag": "p",
+    "text": "Added empty attribute checks to xml_node::remove_attribute"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed node_pi and node_declaration copying"
+  },
+  {
+    "tag": "p",
+    "text": "Const-correctness fixes"
+  },
+  {
+    "tag": "p",
+    "text": "Specification changes:"
+  },
+  {
+    "tag": "p",
+    "text": "xpath_node::select_nodes() and related functions now throw exception if expression return type is not node set (instead of assertion)"
+  },
+  {
+    "tag": "p",
+    "text": "xml_node::traverse() now sets depth to -1 for both begin() and end() callbacks (was 0 at begin() and -1 at end())"
+  },
+  {
+    "tag": "p",
+    "text": "In case of non-raw node printing a newline is output after PCDATA inside nodes if the PCDATA has siblings"
+  },
+  {
+    "tag": "p",
+    "text": "UTF8 → wchar_t conversion now considers 5-byte UTF8-like sequences as invalid"
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Added xpath_node_set::operator[] for index-based iteration"
+  },
+  {
+    "tag": "p",
+    "text": "Added xpath_query::return_type()"
+  },
+  {
+    "tag": "p",
+    "text": "Added getter accessors for memory-management functions"
+  },
+  {
+    "tag": "h3",
+    "text": "v0.42 2009-09-17"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed deallocation in case of custom allocation functions or if delete[] / free are incompatible"
+  },
+  {
+    "tag": "p",
+    "text": "XPath parser fixed for incorrect queries (i.e. incorrect XPath queries should now always fail to compile)"
+  },
+  {
+    "tag": "p",
+    "text": "Const-correctness fixes for find_child_by_attribute"
+  },
+  {
+    "tag": "p",
+    "text": "Improved compatibility (miscellaneous warning fixes, fixed <cstring> include dependency for GCC)"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed iterator begin/end and print function to work correctly for empty nodes"
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Added PUGIXML_API/PUGIXML_CLASS/PUGIXML_FUNCTION configuration macros to control class/function attributes"
+  },
+  {
+    "tag": "p",
+    "text": "Added xml_attribute::set_value overloads for different types"
+  },
+  {
+    "tag": "h3",
+    "text": "v0.41 2009-02-08"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed bug with node printing (occasionally some content was not written to output stream)"
+  },
+  {
+    "tag": "h3",
+    "text": "v0.4 2009-01-18"
+  },
+  {
+    "tag": "p",
+    "text": "Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Documentation fix in samples for parse() with manual lifetime control"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed document order sorting in XPath (it caused wrong order of nodes after xpath_node_set::sort and wrong results of some XPath queries)"
+  },
+  {
+    "tag": "p",
+    "text": "Node printing changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Single quotes are no longer escaped when printing nodes"
+  },
+  {
+    "tag": "p",
+    "text": "Symbols in second half of ASCII table are no longer escaped when printing nodes; because of this, format_utf8 flag is deleted as it’s no longer needed and format_write_bom is renamed to format_write_bom_utf8."
+  },
+  {
+    "tag": "p",
+    "text": "Reworked node printing - now it works via xml_writer interface; implementations for FILE* and std::ostream are available. As a side-effect, xml_document::save_file now works without STL."
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Added unsigned integer support for attributes (xml_attribute::as_uint, xml_attribute::operator=)"
+  },
+  {
+    "tag": "p",
+    "text": "Now document declaration (<?xml …​?>) is parsed as node with type node_declaration when parse_declaration flag is specified (access to encoding/version is performed as if they were attributes, i.e. doc.child(\"xml\").attribute(\"version\").as_float()); corresponding flags for node printing were also added"
+  },
+  {
+    "tag": "p",
+    "text": "Added support for custom memory management (see set_memory_management_functions for details)"
+  },
+  {
+    "tag": "p",
+    "text": "Implemented node/attribute copying (see xml_node::insert_copy_* and xml_node::append_copy for details)"
+  },
+  {
+    "tag": "p",
+    "text": "Added find_child_by_attribute and find_child_by_attribute_w to simplify parsing code in some cases (i.e. COLLADA files)"
+  },
+  {
+    "tag": "p",
+    "text": "Added file offset information querying for debugging purposes (now you’re able to determine exact location of any xml_node in parsed file, see xml_node::offset_debug for details)"
+  },
+  {
+    "tag": "p",
+    "text": "Improved error handling for parsing - now load(), load_file() and parse() return xml_parse_result, which contains error code and last parsed offset; this does not break old interface as xml_parse_result can be implicitly casted to bool."
+  },
+  {
+    "tag": "h3",
+    "text": "v0.34 2007-10-31"
+  },
+  {
+    "tag": "p",
+    "text": "Maintenance release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed bug with loading from text-mode iostreams"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed leak when transfer_ownership is true and parsing is failing"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed bug in saving (\\r and \\n are now escaped in attribute values)"
+  },
+  {
+    "tag": "p",
+    "text": "Renamed free() to destroy() - some macro conflicts were reported"
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Improved compatibility (supported Digital Mars C++, MSVC 6, CodeWarrior 8, PGI C++, Comeau, supported PS3 and XBox360)"
+  },
+  {
+    "tag": "p",
+    "text": "PUGIXML_NO_EXCEPTION flag for platforms without exception handling"
+  },
+  {
+    "tag": "h3",
+    "text": "v0.3 2007-02-21"
+  },
+  {
+    "tag": "p",
+    "text": "Refactored, reworked and improved version. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Interface:"
+  },
+  {
+    "tag": "p",
+    "text": "Added XPath"
+  },
+  {
+    "tag": "p",
+    "text": "Added tree modification functions"
+  },
+  {
+    "tag": "p",
+    "text": "Added no STL compilation mode"
+  },
+  {
+    "tag": "p",
+    "text": "Added saving document to file"
+  },
+  {
+    "tag": "p",
+    "text": "Refactored parsing flags"
+  },
+  {
+    "tag": "p",
+    "text": "Removed xml_parser class in favor of xml_document"
+  },
+  {
+    "tag": "p",
+    "text": "Added transfer ownership parsing mode"
+  },
+  {
+    "tag": "p",
+    "text": "Modified the way xml_tree_walker works"
+  },
+  {
+    "tag": "p",
+    "text": "Iterators are now non-constant"
+  },
+  {
+    "tag": "p",
+    "text": "Implementation:"
+  },
+  {
+    "tag": "p",
+    "text": "Support of several compilers and platforms"
+  },
+  {
+    "tag": "p",
+    "text": "Refactored and sped up parsing core"
+  },
+  {
+    "tag": "p",
+    "text": "Improved standard compliancy"
+  },
+  {
+    "tag": "p",
+    "text": "Added XPath implementation"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed several bugs"
+  },
+  {
+    "tag": "h3",
+    "text": "v0.2 2006-11-06"
+  },
+  {
+    "tag": "p",
+    "text": "First public release. Changes:"
+  },
+  {
+    "tag": "p",
+    "text": "Bug fixes:"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed child_value() (for empty nodes)"
+  },
+  {
+    "tag": "p",
+    "text": "Fixed xml_parser_impl warning at W4"
+  },
+  {
+    "tag": "p",
+    "text": "New features:"
+  },
+  {
+    "tag": "p",
+    "text": "Introduced child_value(name) and child_value_w(name)"
+  },
+  {
+    "tag": "p",
+    "text": "parse_eol_pcdata and parse_eol_attribute flags + parse_minimal optimizations"
+  },
+  {
+    "tag": "p",
+    "text": "Optimizations of strconv_t"
+  },
+  {
+    "tag": "h3",
+    "text": "v0.1 2006-07-15"
+  },
+  {
+    "tag": "p",
+    "text": "First private release for testing purposes"
+  }
+]

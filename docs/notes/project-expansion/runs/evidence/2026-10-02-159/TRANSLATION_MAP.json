@@ -1,0 +1,952 @@
+[
+  {
+    "line": 2,
+    "source": "title: \"Changelog\"",
+    "translation": "title: \"変更履歴\""
+  },
+  {
+    "line": 3,
+    "source": "description: \"pugixml 1.16 Changelog complete official text.\"",
+    "translation": "description: \"pugixml 1.16の公式変更履歴全文。\""
+  },
+  {
+    "line": 11,
+    "source": "## <a href=\"#source-changes\" class=\"anchor\"></a><a href=\"#source-changes\" class=\"link\">9. Changelog</a>",
+    "translation": "## <a href=\"#source-changes\" class=\"anchor\"></a><a href=\"#source-changes\" class=\"link\">9. 変更履歴</a>"
+  },
+  {
+    "line": 23,
+    "source": "Anniversary release (pugixml turns 20 this year!). Changes:",
+    "translation": "記念リリース（pugixmlは今年で20周年です！）。変更点："
+  },
+  {
+    "line": 29,
+    "source": "- Behavior changes:",
+    "translation": "- 動作の変更："
+  },
+  {
+    "line": 33,
+    "source": "  1.  Elements that have a single empty PCDATA child are now printed as empty element tags (unless `format_no_empty_element_tags` is used)",
+    "translation": "  1.  空のPCDATAの子を1つだけ持つ要素は、空要素タグとして出力されるようになりました（`format_no_empty_element_tags`を使う場合を除きます）。"
+  },
+  {
+    "line": 37,
+    "source": "- Improvements:",
+    "translation": "- 改善："
+  },
+  {
+    "line": 41,
+    "source": "  1.  `PUGIXML_CHARCONV_FLOAT` option can be enabled to switch floating point conversions to `<charconv>`; this requires C++17, makes the conversions locale-independent and can improve performance",
+    "translation": "  1.  `PUGIXML_CHARCONV_FLOAT`オプションを有効にすると、浮動小数点の変換を`<charconv>`へ切り替えられます。C++17が必要で、変換がロケールに依存しなくなり、性能が向上する場合があります。"
+  },
+  {
+    "line": 43,
+    "source": "  2.  Add `xml_node::ensure_child` and `xml_node::ensure_attribute` that return the child/attribute with the specified name, adding one if it does not exist",
+    "translation": "  2.  指定した名前の子/属性を返し、存在しなければ追加する`xml_node::ensure_child`と`xml_node::ensure_attribute`を追加しました。"
+  },
+  {
+    "line": 45,
+    "source": "  3.  Improve performance of searching for nodes and attributes by name",
+    "translation": "  3.  名前によるノードと属性の検索の性能を改善しました。"
+  },
+  {
+    "line": 47,
+    "source": "  4.  Loading a document from an empty buffer no longer performs memory allocations",
+    "translation": "  4.  空のバッファーから文書を読み込む場合、メモリーを確保しなくなりました。"
+  },
+  {
+    "line": 51,
+    "source": "- XPath improvements:",
+    "translation": "- XPathの改善："
+  },
+  {
+    "line": 55,
+    "source": "  1.  Improve performance of queries that evaluate or compare attribute values, like `@attr > 5`",
+    "translation": "  1.  `@attr > 5`のように、属性値を評価したり比較したりする問い合わせの性能を改善しました。"
+  },
+  {
+    "line": 57,
+    "source": "  2.  Improve performance of queries that select nodes and attributes by name",
+    "translation": "  2.  名前によってノードや属性を選択する問い合わせの性能を改善しました。"
+  },
+  {
+    "line": 61,
+    "source": "- Bug fixes:",
+    "translation": "- 不具合の修正："
+  },
+  {
+    "line": 65,
+    "source": "  1.  Fix stack overflow when removing subtrees with extremely deep nesting",
+    "translation": "  1.  非常に深く入れ子になった部分ツリーを削除する場合の、スタックオーバーフローを修正しました。"
+  },
+  {
+    "line": 67,
+    "source": "  2.  Fix integer overflows that could lead to crashes when loading very large (1+ GB) documents on 32-bit platforms in `PUGIXML_WCHAR_MODE`",
+    "translation": "  2.  32ビットプラットフォームの`PUGIXML_WCHAR_MODE`で非常に大きい文書（1 GB以上）を読み込む場合に、クラッシュを引き起こす可能性があった整数オーバーフローを修正しました。"
+  },
+  {
+    "line": 69,
+    "source": "  3.  Fix null pointer dereference when copying `xpath_variable_set` objects that contain string variables with unassigned values",
+    "translation": "  3.  値が未代入の文字列変数を含む`xpath_variable_set`オブジェクトをコピーする場合の、nullポインター参照を修正しました。"
+  },
+  {
+    "line": 73,
+    "source": "- CMake improvements:",
+    "translation": "- CMakeの改善："
+  },
+  {
+    "line": 77,
+    "source": "  1.  Apple frameworks built with `PUGIXML_BUILD_APPLE_FRAMEWORK` now include framework headers",
+    "translation": "  1.  `PUGIXML_BUILD_APPLE_FRAMEWORK`でビルドしたAppleフレームワークに、フレームワークのヘッダーが含まれるようになりました。"
+  },
+  {
+    "line": 79,
+    "source": "  2.  `PUGIXML_INSTALL_SOURCE` option can be used to install `pugixml.cpp` (useful for header-only mode)",
+    "translation": "  2.  `PUGIXML_INSTALL_SOURCE`オプションで、`pugixml.cpp`をインストールできます（ヘッダーのみのモードで役立ちます）。"
+  },
+  {
+    "line": 83,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 87,
+    "source": "  1.  Add project files and NuGet packages for Visual Studio 2026",
+    "translation": "  1.  Visual Studio 2026向けのプロジェクトファイルとNuGetパッケージを追加しました。"
+  },
+  {
+    "line": 89,
+    "source": "  2.  Fix compatibility with C++20 modules when including `pugixml.hpp` in the global module fragment",
+    "translation": "  2.  グローバルモジュールフラグメント内で`pugixml.hpp`をインクルードする場合の、C++20モジュールとの互換性を修正しました。"
+  },
+  {
+    "line": 91,
+    "source": "  3.  Fix clang/gcc warnings `-Wextra-semi-stmt`, `-Wsign-conversion`, `-Wuninitialized` (GCC16)",
+    "translation": "  3.  clang/gccの警告`-Wextra-semi-stmt`、`-Wsign-conversion`、`-Wuninitialized`（GCC16）を修正しました。"
+  },
+  {
+    "line": 93,
+    "source": "  4.  Fix compilation for Embarcadero C++ XE5",
+    "translation": "  4.  Embarcadero C++ XE5でのコンパイルを修正しました。"
+  },
+  {
+    "line": 95,
+    "source": "  5.  Work around several static analysis false positives",
+    "translation": "  5.  静的解析の複数の誤検出を回避しました。"
+  },
+  {
+    "line": 111,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 117,
+    "source": "- Improvements:",
+    "translation": "- 改善："
+  },
+  {
+    "line": 121,
+    "source": "  1.  Many `xml_attribute::` and `xml_node::` functions now transparently support `std::string_view` and `std::string` when C++17 support is detected.",
+    "translation": "  1.  C++17対応が検出された場合、多くの`xml_attribute::`と`xml_node::`の関数が、`std::string_view`と`std::string`を透過的に扱えるようになりました。"
+  },
+  {
+    "line": 125,
+    "source": "- CMake improvements:",
+    "translation": "- CMakeの改善："
+  },
+  {
+    "line": 129,
+    "source": "  1.  Improve `pkg-config` file generation for NixOS",
+    "translation": "  1.  NixOS向けの`pkg-config`ファイルの生成を改善しました。"
+  },
+  {
+    "line": 131,
+    "source": "  2.  `PUGIXML_BUILD_APPLE_FRAMEWORK` CMake option can be used to build pugixml as `.xcframework`",
+    "translation": "  2.  CMakeの`PUGIXML_BUILD_APPLE_FRAMEWORK`オプションで、pugixmlを`.xcframework`としてビルドできます。"
+  },
+  {
+    "line": 133,
+    "source": "  3.  `PUGIXML_INSTALL` CMake option can be used to disable installation targets",
+    "translation": "  3.  CMakeの`PUGIXML_INSTALL`オプションで、インストールターゲットを無効にできます。"
+  },
+  {
+    "line": 137,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 141,
+    "source": "  1.  Fix clang/gcc warnings `-Wzero-as-null-pointer-constant`, `-Wuseless-cast`, `-Wshorten-64-to-32`",
+    "translation": "  1.  clang/gccの警告`-Wzero-as-null-pointer-constant`、`-Wuseless-cast`、`-Wshorten-64-to-32`を修正しました。"
+  },
+  {
+    "line": 143,
+    "source": "  2.  Fix unreferenced function warnings in `PUGIXML_NO_STL` configuration",
+    "translation": "  2.  `PUGIXML_NO_STL`設定での未参照関数の警告を修正しました。"
+  },
+  {
+    "line": 145,
+    "source": "  3.  Fix CMake 3.31 deprecation warnings",
+    "translation": "  3.  CMake 3.31の非推奨警告を修正しました。"
+  },
+  {
+    "line": 147,
+    "source": "  4.  Stop using deprecated `throw()` when `noexcept` is available",
+    "translation": "  4.  `noexcept`が使える場合、非推奨の`throw()`を使わなくなりました。"
+  },
+  {
+    "line": 163,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 169,
+    "source": "- Improvements:",
+    "translation": "- 改善："
+  },
+  {
+    "line": 173,
+    "source": "  1.  `xml_attribute::set_name` and `xml_node::set_name` now have overloads that accept pointer to non-null-terminated string and size",
+    "translation": "  1.  `xml_attribute::set_name`と`xml_node::set_name`に、null終端されていない文字列へのポインターとサイズを受け取るオーバーロードを追加しました。"
+  },
+  {
+    "line": 175,
+    "source": "  2.  Implement `parse_merge_pcdata` parsing mode in which PCDATA contents is merged into a single node when original document had comments that were skipped during parsing",
+    "translation": "  2.  原文書に、解析時に読み飛ばされるコメントがある場合、PCDATAの内容を単一のノードへ結合する解析モード`parse_merge_pcdata`を実装しました。"
+  },
+  {
+    "line": 177,
+    "source": "  3.  `xml_document::load_file` now returns a more consistent error status when given a path to a folder",
+    "translation": "  3.  `xml_document::load_file`にフォルダーへのパスを渡す場合、より一貫したエラー状態を返すようになりました。"
+  },
+  {
+    "line": 181,
+    "source": "- Bug fixes:",
+    "translation": "- 不具合の修正："
+  },
+  {
+    "line": 185,
+    "source": "  1.  Fix assertion in XPath number→string conversion when using non-English locales",
+    "translation": "  1.  英語以外のロケールでXPathの数値から文字列への変換を行う場合のアサーションを修正しました。"
+  },
+  {
+    "line": 187,
+    "source": "  2.  Fix PUGIXML_STATIC_CRT CMake option to correctly select static CRT when using MSVC and recent CMake",
+    "translation": "  2.  MSVCと最近のCMakeを使う場合、静的CRTを正しく選択するように、CMakeのPUGIXML_STATIC_CRTオプションを修正しました。"
+  },
+  {
+    "line": 191,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 195,
+    "source": "  1.  Fix GCC 2.95/3.3 builds",
+    "translation": "  1.  GCC 2.95/3.3でのビルドを修正しました。"
+  },
+  {
+    "line": 197,
+    "source": "  2.  Fix CMake 3.27 deprecation warnings",
+    "translation": "  2.  CMake 3.27の非推奨警告を修正しました。"
+  },
+  {
+    "line": 199,
+    "source": "  3.  Fix XCode 14 sprintf deprecation warning when compiling in C++03 mode",
+    "translation": "  3.  C++03モードでコンパイルする場合の、XCode 14のsprintf非推奨警告を修正しました。"
+  },
+  {
+    "line": 201,
+    "source": "  4.  Fix clang/gcc warnings `-Wweak-vtables`, `-Wreserved-macro-identifier`",
+    "translation": "  4.  clang/gccの警告`-Wweak-vtables`、`-Wreserved-macro-identifier`を修正しました。"
+  },
+  {
+    "line": 217,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 223,
+    "source": "- Improvements:",
+    "translation": "- 改善："
+  },
+  {
+    "line": 227,
+    "source": "  1.  `xml_attribute::set_value`, `xml_node::set_value` and `xml_text::set` now have overloads that accept pointer to non-null-terminated string and size",
+    "translation": "  1.  `xml_attribute::set_value`、`xml_node::set_value`、`xml_text::set`に、null終端されていない文字列へのポインターとサイズを受け取るオーバーロードを追加しました。"
+  },
+  {
+    "line": 229,
+    "source": "  2.  Improve performance of tree traversal when using compact mode (`PUGIXML_COMPACT`)",
+    "translation": "  2.  コンパクトモード（`PUGIXML_COMPACT`）でのツリー走査の性能を改善しました。"
+  },
+  {
+    "line": 233,
+    "source": "- Bug fixes:",
+    "translation": "- 不具合の修正："
+  },
+  {
+    "line": 237,
+    "source": "  1.  Fix error handling in `xml_document::save_file` that could result in the function succeeding while running out of disk space",
+    "translation": "  1.  ディスクの空き容量が不足していても関数が成功する場合があった、`xml_document::save_file`のエラー処理を修正しました。"
+  },
+  {
+    "line": 239,
+    "source": "  2.  Fix memory leak during error handling of some out-of-memory conditions during `xml_document::load`",
+    "translation": "  2.  `xml_document::load`でメモリー不足となる一部の状況のエラー処理中に発生する、メモリーリークを修正しました。"
+  },
+  {
+    "line": 243,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 247,
+    "source": "  1.  Fix exported symbols in CMake DLL builds when using CMake",
+    "translation": "  1.  CMakeを使ったDLLビルドで、エクスポートするシンボルを修正しました。"
+  },
+  {
+    "line": 249,
+    "source": "  2.  Fix exported symbols in CMake shared object builds when using -fvisibility=hidden",
+    "translation": "  2.  -fvisibility=hiddenを使ったCMakeの共有オブジェクトビルドで、エクスポートするシンボルを修正しました。"
+  },
+  {
+    "line": 265,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 271,
+    "source": "- Bug fixes:",
+    "translation": "- 不具合の修正："
+  },
+  {
+    "line": 275,
+    "source": "  1.  Fix a bug in xml_document move construction when the source of the move is empty",
+    "translation": "  1.  ムーブ元が空の場合の、xml_documentのムーブ構築の不具合を修正しました。"
+  },
+  {
+    "line": 277,
+    "source": "  2.  Fix const-correctness issues with iterator objects to support C++20 ranges",
+    "translation": "  2.  C++20 rangesに対応するため、イテレーターオブジェクトのconstの整合性に関する問題を修正しました。"
+  },
+  {
+    "line": 281,
+    "source": "- XPath improvements:",
+    "translation": "- XPathの改善："
+  },
+  {
+    "line": 285,
+    "source": "  1.  Improved detection of overly complex queries that may result in stack overflow during parsing",
+    "translation": "  1.  解析中にスタックオーバーフローを引き起こす可能性のある、過度に複雑な問い合わせの検出を改善しました。"
+  },
+  {
+    "line": 289,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 293,
+    "source": "  1.  Fix Cygwin support for DLL builds",
+    "translation": "  1.  DLLビルドでのCygwin対応を修正しました。"
+  },
+  {
+    "line": 295,
+    "source": "  2.  Fix Windows CE support",
+    "translation": "  2.  Windows CE対応を修正しました。"
+  },
+  {
+    "line": 297,
+    "source": "  3.  Add NuGet builds and project files for VS2022",
+    "translation": "  3.  VS2022向けのNuGetビルドとプロジェクトファイルを追加しました。"
+  },
+  {
+    "line": 301,
+    "source": "- Build system changes",
+    "translation": "- ビルドシステムの変更"
+  },
+  {
+    "line": 305,
+    "source": "  1.  All CMake options now have the prefix `PUGIXML_`. This may require changing dependent build configurations.",
+    "translation": "  1.  すべてのCMakeオプションに`PUGIXML_`という接頭辞が付くようになりました。依存するビルド設定の変更が必要になる場合があります。"
+  },
+  {
+    "line": 307,
+    "source": "  2.  Many build settings are now exposed via CMake settings, most notably `PUGIXML_COMPACT` and `PUGIXML_WCHAR_MODE` can be set without changing `pugiconfig.hpp`",
+    "translation": "  2.  多くのビルド設定をCMakeの設定から指定できるようになりました。特に、`pugiconfig.hpp`を変更せずに、`PUGIXML_COMPACT`と`PUGIXML_WCHAR_MODE`を設定できます。"
+  },
+  {
+    "line": 323,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 329,
+    "source": "- New features:",
+    "translation": "- 新機能："
+  },
+  {
+    "line": 333,
+    "source": "  1.  Add xml_node::remove_attributes and xml_node::remove_children",
+    "translation": "  1.  xml_node::remove_attributesとxml_node::remove_childrenを追加しました。"
+  },
+  {
+    "line": 335,
+    "source": "  2.  Add a way to customize floating point precision via xml_attribute::set and xml_text::set overloads",
+    "translation": "  2.  xml_attribute::setとxml_text::setのオーバーロードで、浮動小数点の精度を調整する方法を追加しました。"
+  },
+  {
+    "line": 339,
+    "source": "- XPath improvements:",
+    "translation": "- XPathの改善："
+  },
+  {
+    "line": 343,
+    "source": "  1.  XPath parser now limits recursion depth which prevents stack overflow on malicious queries",
+    "translation": "  1.  XPathパーサーが再帰の深さを制限するようになり、悪意のある問い合わせによるスタックオーバーフローを防ぎます。"
+  },
+  {
+    "line": 347,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 351,
+    "source": "  1.  Fix Visual Studio warnings when built using clang-cl compiler",
+    "translation": "  1.  clang-clコンパイラーでビルドする場合の、Visual Studioの警告を修正しました。"
+  },
+  {
+    "line": 353,
+    "source": "  2.  Fix Wconversion warnings in gcc",
+    "translation": "  2.  gccのWconversion警告を修正しました。"
+  },
+  {
+    "line": 355,
+    "source": "  3.  Fix Wzero-as-null-pointer-constant warnings in pugixml.hpp",
+    "translation": "  3.  pugixml.hppのWzero-as-null-pointer-constant警告を修正しました。"
+  },
+  {
+    "line": 357,
+    "source": "  4.  Work around several static analysis false positives",
+    "translation": "  4.  静的解析の複数の誤検出を回避しました。"
+  },
+  {
+    "line": 361,
+    "source": "- Build system changes",
+    "translation": "- ビルドシステムの変更"
+  },
+  {
+    "line": 365,
+    "source": "  1.  The CMake package for pugixml now provides a `pugixml::pugixml` target rather than a `pugixml` target. A compatibility `pugixml` target is provided if at least version 1.11 is not requested.",
+    "translation": "  1.  pugixmlのCMakeパッケージは、`pugixml`ターゲットの代わりに`pugixml::pugixml`ターゲットを提供するようになりました。最低バージョン1.11を要求しない場合には、互換用の`pugixml`ターゲットを提供します。"
+  },
+  {
+    "line": 381,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 387,
+    "source": "- Behavior changes:",
+    "translation": "- 動作の変更："
+  },
+  {
+    "line": 391,
+    "source": "  1.  Tab characters (ASCII 9) in attribute values are now encoded as '&amp;#9;' to survive roundtripping",
+    "translation": "  1.  属性値のタブ文字（ASCII 9）は、保存・再読み込み後も保持するため、「&amp;#9;」として符号化するようになりました。"
+  },
+  {
+    "line": 393,
+    "source": "  2.  `>` characters are no longer escaped in attribute values",
+    "translation": "  2.  属性値の`>`文字をエスケープしなくなりました。"
+  },
+  {
+    "line": 397,
+    "source": "- New features:",
+    "translation": "- 新機能："
+  },
+  {
+    "line": 401,
+    "source": "  1.  Add Visual Studio .natvis files to improve debugging experience",
+    "translation": "  1.  デバッグを改善するVisual Studioの.natvisファイルを追加しました。"
+  },
+  {
+    "line": 403,
+    "source": "  2.  CMake improvements (USE_POSTFIX and BUILD_SHARED_AND_STATIC_LIBS options for building multiple versions and pkg-config tweaks)",
+    "translation": "  2.  CMakeを改善しました（複数のバージョンをビルドするUSE_POSTFIXとBUILD_SHARED_AND_STATIC_LIBSオプション、pkg-configの調整）。"
+  },
+  {
+    "line": 405,
+    "source": "  3.  Add format_skip_control_chars formatting flag to skip non-printable ASCII characters that are invalid to use in well-formed XML files",
+    "translation": "  3.  整形式XMLファイルで使用できない非表示ASCII文字を読み飛ばす整形フラグformat_skip_control_charsを追加しました。"
+  },
+  {
+    "line": 407,
+    "source": "  4.  Add format_attribute_single_quote formatting flag to use single quotes for attribute values instead of default double quotes.",
+    "translation": "  4.  属性値を既定の二重引用符の代わりに一重引用符で囲む整形フラグformat_attribute_single_quoteを追加しました。"
+  },
+  {
+    "line": 411,
+    "source": "- XPath improvements:",
+    "translation": "- XPathの改善："
+  },
+  {
+    "line": 415,
+    "source": "  1.  XPath union now results in a stable order that doesn’t depend on memory allocations; crucially, this may require sorting the output of XPath query operation if you rely on the document-ordered traversal",
+    "translation": "  1.  XPathの和集合の結果が、メモリー確保に依存しない安定した順序になりました。文書順の走査に依存する場合、XPath問い合わせの出力を整列する必要が生じることに注意してください。"
+  },
+  {
+    "line": 417,
+    "source": "  2.  Improve performance of XPath union operation, making it ~2x faster",
+    "translation": "  2.  XPathの和集合演算の性能を改善し、約2倍高速にしました。"
+  },
+  {
+    "line": 421,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 425,
+    "source": "  1.  Fix Visual Studio warnings when built in a DLL configuration",
+    "translation": "  1.  DLL設定でビルドする場合のVisual Studioの警告を修正しました。"
+  },
+  {
+    "line": 427,
+    "source": "  2.  Fix static analysis false positives in Coverity and clang",
+    "translation": "  2.  Coverityとclangの静的解析の誤検出を修正しました。"
+  },
+  {
+    "line": 429,
+    "source": "  3.  Fix Wdouble-promotion warnings in gcc",
+    "translation": "  3.  gccのWdouble-promotion警告を修正しました。"
+  },
+  {
+    "line": 431,
+    "source": "  4.  Add Visual Studio 2019 support for NuGet packages",
+    "translation": "  4.  NuGetパッケージにVisual Studio 2019対応を追加しました。"
+  },
+  {
+    "line": 447,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 453,
+    "source": "- Specification changes:",
+    "translation": "- 仕様の変更："
+  },
+  {
+    "line": 457,
+    "source": "  1.  `xml_document::load(const char*)` (deprecated in 1.5) now has `deprecated` attribute; use `xml_document::load_string` instead",
+    "translation": "  1.  `xml_document::load(const char*)`（1.5で非推奨化）に、`deprecated`属性が付くようになりました。代わりに`xml_document::load_string`を使ってください。"
+  },
+  {
+    "line": 459,
+    "source": "  2.  `xml_node::select_single_node` (deprecated in 1.5) now has `deprecated` attribute; use `xml_node::select_node` instead",
+    "translation": "  2.  `xml_node::select_single_node`（1.5で非推奨化）に、`deprecated`属性が付くようになりました。代わりに`xml_node::select_node`を使ってください。"
+  },
+  {
+    "line": 463,
+    "source": "- New features:",
+    "translation": "- 新機能："
+  },
+  {
+    "line": 467,
+    "source": "  1.  Add move semantics support for xml_document and improve move semantics support for other objects",
+    "translation": "  1.  xml_documentにムーブセマンティクス対応を追加し、ほかのオブジェクトのムーブセマンティクス対応を改善しました。"
+  },
+  {
+    "line": 469,
+    "source": "  2.  CMake build now exports include directories",
+    "translation": "  2.  CMakeビルドがインクルードディレクトリーをエクスポートするようになりました。"
+  },
+  {
+    "line": 471,
+    "source": "  3.  CMake build with BUILD_SHARED_LIBS=ON now uses dllexport attribute for MSVC",
+    "translation": "  3.  BUILD_SHARED_LIBS=ONのCMakeビルドで、MSVCのdllexport属性を使うようになりました。"
+  },
+  {
+    "line": 475,
+    "source": "- XPath improvements:",
+    "translation": "- XPathの改善："
+  },
+  {
+    "line": 479,
+    "source": "  1.  Rework parser/evaluator to not rely on exceptional control flow; longjmp is no longer used when exceptions are disabled",
+    "translation": "  1.  パーサー/評価器を、例外的な制御フローに依存しないように改めました。例外が無効な場合、longjmpを使わなくなりました。"
+  },
+  {
+    "line": 481,
+    "source": "  2.  Improve error messages for certain invalid expressions such as `.[1]` or `(1`",
+    "translation": "  2.  `.[1]`や`(1`など、一部の不正な式のエラーメッセージを改善しました。"
+  },
+  {
+    "line": 483,
+    "source": "  3.  Minor performance improvements",
+    "translation": "  3.  性能を小幅に改善しました。"
+  },
+  {
+    "line": 487,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 491,
+    "source": "  1.  Fix Texas Instruments compiler warnings",
+    "translation": "  1.  Texas Instrumentsコンパイラーの警告を修正しました。"
+  },
+  {
+    "line": 493,
+    "source": "  2.  Fix compilation issues with limits.h for some versions of gcc",
+    "translation": "  2.  一部のバージョンのgccで、limits.hに関するコンパイルの問題を修正しました。"
+  },
+  {
+    "line": 495,
+    "source": "  3.  Fix compilation issues with Clang/C2",
+    "translation": "  3.  Clang/C2でのコンパイルの問題を修正しました。"
+  },
+  {
+    "line": 497,
+    "source": "  4.  Fix implicit fallthrough warnings in gcc 7",
+    "translation": "  4.  gcc 7の暗黙のフォールスルー警告を修正しました。"
+  },
+  {
+    "line": 499,
+    "source": "  5.  Fix unknown attribute directive warnings in gcc 8",
+    "translation": "  5.  gcc 8の未知の属性指定に関する警告を修正しました。"
+  },
+  {
+    "line": 501,
+    "source": "  6.  Fix cray++ compiler errors",
+    "translation": "  6.  cray++コンパイラーのエラーを修正しました。"
+  },
+  {
+    "line": 503,
+    "source": "  7.  Fix unsigned integer overflow errors with -fsanitize=integer",
+    "translation": "  7.  -fsanitize=integerでの符号なし整数オーバーフローエラーを修正しました。"
+  },
+  {
+    "line": 505,
+    "source": "  8.  Fix undefined behavior sanitizer issues in compact mode",
+    "translation": "  8.  コンパクトモードの未定義動作検査器の問題を修正しました。"
+  },
+  {
+    "line": 521,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 527,
+    "source": "- Specification changes:",
+    "translation": "- 仕様の変更："
+  },
+  {
+    "line": 531,
+    "source": "  1.  When printing empty elements, a space is no longer added before / in format_raw mode",
+    "translation": "  1.  format_rawモードで空要素を出力する場合、/の前に空白を追加しなくなりました。"
+  },
+  {
+    "line": 535,
+    "source": "- New features:",
+    "translation": "- 新機能："
+  },
+  {
+    "line": 539,
+    "source": "  1.  Added parse_embed_pcdata parsing mode in which PCDATA value is stored in the element node if possible (significantly reducing memory consumption for some documents)",
+    "translation": "  1.  可能であればPCDATAの値を要素ノードに格納する解析モードparse_embed_pcdataを追加しました（一部の文書でメモリー消費を大幅に削減します）。"
+  },
+  {
+    "line": 541,
+    "source": "  2.  Added auto-detection support for Latin-1 (ISO-8859-1) encoding during parsing",
+    "translation": "  2.  解析時にLatin-1（ISO-8859-1）エンコーディングを自動検出する機能を追加しました。"
+  },
+  {
+    "line": 543,
+    "source": "  3.  Added format_no_empty_element_tags formatting flag that outputs start/end tags instead of empty element tags for empty elements",
+    "translation": "  3.  空要素を空要素タグではなく開始/終了タグで出力する整形フラグformat_no_empty_element_tagsを追加しました。"
+  },
+  {
+    "line": 547,
+    "source": "- Performance improvements:",
+    "translation": "- 性能の改善："
+  },
+  {
+    "line": 551,
+    "source": "  1.  Minor memory allocation improvements (yielding up to 1% memory savings in some cases)",
+    "translation": "  1.  メモリー確保を小幅に改善しました（一部の場合にメモリー消費を最大1%削減します）。"
+  },
+  {
+    "line": 555,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 559,
+    "source": "  1.  Fixed compilation issues for Borland C++ 5.4",
+    "translation": "  1.  Borland C++ 5.4でのコンパイルの問題を修正しました。"
+  },
+  {
+    "line": 561,
+    "source": "  2.  Fixed compilation issues for some distributions of MinGW 3.8",
+    "translation": "  2.  一部のMinGW 3.8ディストリビューションでのコンパイルの問題を修正しました。"
+  },
+  {
+    "line": 563,
+    "source": "  3.  Fixed various Clang/GCC warnings",
+    "translation": "  3.  Clang/GCCの各種警告を修正しました。"
+  },
+  {
+    "line": 565,
+    "source": "  4.  Enabled move semantics support for XPath objects for MSVC 2010 and above",
+    "translation": "  4.  MSVC 2010以降で、XPathオブジェクトのムーブセマンティクス対応を有効にしました。"
+  },
+  {
+    "line": 581,
+    "source": "Major release, featuring performance and memory improvements along with some new features. Changes:",
+    "translation": "性能とメモリーの改善に加え、新機能を含むメジャーリリースです。変更点："
+  },
+  {
+    "line": 587,
+    "source": "- Compact mode:",
+    "translation": "- コンパクトモード："
+  },
+  {
+    "line": 591,
+    "source": "  1.  Introduced a new tree storage mode that takes significantly less memory (2-5x smaller DOM) at some performance cost.",
+    "translation": "  1.  性能と引き換えにメモリー消費を大幅に削減する、新しいツリー格納モードを導入しました（DOMの大きさは1/2～1/5）。"
+  },
+  {
+    "line": 593,
+    "source": "  2.  The mode can be enabled using `PUGIXML_COMPACT` define.",
+    "translation": "  2.  `PUGIXML_COMPACT`を定義すると、このモードを有効にできます。"
+  },
+  {
+    "line": 597,
+    "source": "- New integer parsing/formatting implementation:",
+    "translation": "- 整数の解析/整形の新実装："
+  },
+  {
+    "line": 601,
+    "source": "  1.  Functions that convert from and to integers (e.g. `as_int`/`set_value`) do not rely on CRT any more.",
+    "translation": "  1.  整数への変換と整数からの変換を行う関数（例：`as_int`/`set_value`）が、CRTに依存しなくなりました。"
+  },
+  {
+    "line": 603,
+    "source": "  2.  New implementation is 3-5x faster and is always correct wrt overflow or underflow. This is a behavior change - where previously `as_uint()` would return UINT_MAX on a value \"-1\", it now returns 0.",
+    "translation": "  2.  新実装は3～5倍高速で、オーバーフローとアンダーフローに対して常に正しく動作します。これは動作の変更です。以前は値\"-1\"に対して`as_uint()`がUINT_MAXを返していましたが、現在は0を返します。"
+  },
+  {
+    "line": 607,
+    "source": "- New features:",
+    "translation": "- 新機能："
+  },
+  {
+    "line": 611,
+    "source": "  1.  XPath objects (`xpath_query`, `xpath_node_set`, `xpath_variable_set`) are now movable if your compiler supports C++11. Additionally, `xpath_variable_set` is copyable.",
+    "translation": "  1.  コンパイラーがC++11に対応していれば、XPathオブジェクト（`xpath_query`、`xpath_node_set`、`xpath_variable_set`）をムーブできるようになりました。さらに、`xpath_variable_set`はコピーも可能です。"
+  },
+  {
+    "line": 613,
+    "source": "  2.  Added `format_indent_attributes` that makes the resulting XML friendlier to line diff/merge tools.",
+    "translation": "  2.  出力XMLを行単位の差分/マージツールで扱いやすくする`format_indent_attributes`を追加しました。"
+  },
+  {
+    "line": 615,
+    "source": "  3.  Added a variant of `xml_node::attribute` function with a hint that can improve lookup performance.",
+    "translation": "  3.  検索性能を改善できるヒントを受け取る`xml_node::attribute`関数の別形式を追加しました。"
+  },
+  {
+    "line": 617,
+    "source": "  4.  Custom allocation functions are now allowed (but not required) to throw instead of returning a null pointer.",
+    "translation": "  4.  独自のメモリー確保関数は、nullポインターを返す代わりに例外を送出できるようになりました（必須ではありません）。"
+  },
+  {
+    "line": 621,
+    "source": "- Bug fixes:",
+    "translation": "- 不具合の修正："
+  },
+  {
+    "line": 625,
+    "source": "  1.  Fix Clang 3.7 crashes in out-of-memory cases (C++ DR 1748)",
+    "translation": "  1.  メモリー不足時のClang 3.7のクラッシュを修正しました（C++ DR 1748）。"
+  },
+  {
+    "line": 627,
+    "source": "  2.  Fix XPath crashes on SPARC64 (and other 32-bit architectures where doubles have to be aligned to 8 bytes)",
+    "translation": "  2.  SPARC64（およびdoubleを8バイト境界に配置する必要がある、ほかの32ビットアーキテクチャー）でのXPathのクラッシュを修正しました。"
+  },
+  {
+    "line": 629,
+    "source": "  3.  Fix xpath_node_set assignment to provide strong exception guarantee",
+    "translation": "  3.  強い例外保証を提供するよう、xpath_node_setの代入を修正しました。"
+  },
+  {
+    "line": 631,
+    "source": "  4.  Fix saving for custom xml_writer implementations that can throw from write()",
+    "translation": "  4.  write()から例外を送出できる独自のxml_writer実装での保存を修正しました。"
+  },
+  {
+    "line": 647,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 653,
+    "source": "- Specification changes:",
+    "translation": "- 仕様の変更："
+  },
+  {
+    "line": 657,
+    "source": "  1.  Attribute/text values now use more digits when printing floating point numbers to guarantee round-tripping.",
+    "translation": "  1.  保存・再読み込み時の値の保持を保証するため、属性/テキストの値で浮動小数点数を出力する場合、より多くの桁を使うようになりました。"
+  },
+  {
+    "line": 659,
+    "source": "  2.  Text nodes no longer get extra surrounding whitespace when pretty-printing nodes with mixed contents",
+    "translation": "  2.  混合内容を持つノードを整形出力する場合、テキストノードの前後に余分な空白を付けなくなりました。"
+  },
+  {
+    "line": 663,
+    "source": "- Bug fixes:",
+    "translation": "- 不具合の修正："
+  },
+  {
+    "line": 667,
+    "source": "  1.  Fixed translate and normalize-space XPath functions to no longer return internal NUL characters",
+    "translation": "  1.  XPathのtranslate関数とnormalize-space関数が、内部にNUL文字を含む文字列を返さないよう修正しました。"
+  },
+  {
+    "line": 669,
+    "source": "  2.  Fixed buffer overrun on malformed comments inside DOCTYPE sections",
+    "translation": "  2.  DOCTYPE節内の不正な形式のコメントによるバッファー超過を修正しました。"
+  },
+  {
+    "line": 671,
+    "source": "  3.  DOCTYPE parsing can no longer run out of stack space on malformed inputs (XML parsing is now using bounded stack space)",
+    "translation": "  3.  不正な形式の入力によってDOCTYPE解析のスタック領域が不足することがなくなりました（XML解析に使用するスタック領域は、現在は上限が決まっています）。"
+  },
+  {
+    "line": 673,
+    "source": "  4.  Adjusted processing instruction output to avoid malformed documents if the PI value contains `?>`",
+    "translation": "  4.  PIの値に`?>`が含まれる場合に、不正な形式の文書にならないよう、処理命令の出力を調整しました。"
+  },
+  {
+    "line": 689,
+    "source": "Major release, featuring a lot of performance improvements and some new features.",
+    "translation": "多くの性能改善と新機能を含むメジャーリリースです。"
+  },
+  {
+    "line": 695,
+    "source": "- Specification changes:",
+    "translation": "- 仕様の変更："
+  },
+  {
+    "line": 699,
+    "source": "  1.  `xml_document::load(const char_t*)` was renamed to `load_string`; the old method is still available and will be deprecated in a future release",
+    "translation": "  1.  `xml_document::load(const char_t*)`を`load_string`へ改名しました。旧メソッドも引き続き使えますが、今後のリリースで非推奨となる予定です。"
+  },
+  {
+    "line": 701,
+    "source": "  2.  `xml_node::select_single_node` was renamed to `select_node`; the old method is still available and will be deprecated in a future release.",
+    "translation": "  2.  `xml_node::select_single_node`を`select_node`へ改名しました。旧メソッドも引き続き使えますが、今後のリリースで非推奨となる予定です。"
+  },
+  {
+    "line": 705,
+    "source": "- New features:",
+    "translation": "- 新機能："
+  },
+  {
+    "line": 709,
+    "source": "  1.  Added `xml_node::append_move` and other functions for moving nodes within a document",
+    "translation": "  1.  文書内でノードを移動するための`xml_node::append_move`などの関数を追加しました。"
+  },
+  {
+    "line": 711,
+    "source": "  2.  Added `xpath_query::evaluate_node` for evaluating queries with a single node as a result",
+    "translation": "  2.  単一のノードを結果とする問い合わせを評価する`xpath_query::evaluate_node`を追加しました。"
+  },
+  {
+    "line": 715,
+    "source": "- Performance improvements:",
+    "translation": "- 性能の改善："
+  },
+  {
+    "line": 719,
+    "source": "  1.  Optimized XML parsing (10-40% faster with clang/gcc, up to 10% faster with MSVC)",
+    "translation": "  1.  XML解析を最適化しました（clang/gccで10～40%、MSVCで最大10%高速化）。"
+  },
+  {
+    "line": 721,
+    "source": "  2.  Optimized memory consumption when copying nodes in the same document (string contents is now shared)",
+    "translation": "  2.  同じ文書内でノードをコピーする場合のメモリー消費を最適化しました（文字列の内容を共有するようになりました）。"
+  },
+  {
+    "line": 723,
+    "source": "  3.  Optimized node copying (10% faster for cross-document copies, 3x faster for inter-document copies; also it now consumes a constant amount of stack space)",
+    "translation": "  3.  ノードのコピーを最適化しました（文書間のコピーで10%、文書間のコピーで3倍高速化。使用するスタック領域も一定量になりました）。"
+  },
+  {
+    "line": 725,
+    "source": "  4.  Optimized node output (60% faster; also it now consumes a constant amount of stack space)",
+    "translation": "  4.  ノードの出力を最適化しました（60%高速化。使用するスタック領域も一定量になりました）。"
+  },
+  {
+    "line": 727,
+    "source": "  5.  Optimized XPath allocation (query evaluation now results in fewer temporary allocations)",
+    "translation": "  5.  XPathのメモリー確保を最適化しました（問い合わせの評価に伴う一時的なメモリー確保が減りました）。"
+  },
+  {
+    "line": 729,
+    "source": "  6.  Optimized XPath sorting (node set sorting is 2-3x faster in some cases)",
+    "translation": "  6.  XPathの整列を最適化しました（一部の場合にノード集合の整列が2～3倍高速化）。"
+  },
+  {
+    "line": 731,
+    "source": "  7.  Optimized XPath evaluation (XPathMark suite is 100x faster; some commonly used queries are 3-4x faster)",
+    "translation": "  7.  XPathの評価を最適化しました（XPathMarkスイートで100倍、一部のよく使われる問い合わせで3～4倍高速化）。"
+  },
+  {
+    "line": 735,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 739,
+    "source": "  1.  Fixed `xml_node::offset_debug` for corner cases",
+    "translation": "  1.  `xml_node::offset_debug`の境界的な場合の動作を修正しました。"
+  },
+  {
+    "line": 741,
+    "source": "  2.  Fixed undefined behavior while calling memcpy in some cases",
+    "translation": "  2.  一部の場合にmemcpyの呼び出しで発生する未定義動作を修正しました。"
+  },
+  {
+    "line": 743,
+    "source": "  3.  Fixed MSVC 2015 compilation warnings",
+    "translation": "  3.  MSVC 2015のコンパイル警告を修正しました。"
+  },
+  {
+    "line": 745,
+    "source": "  4.  Fixed `contrib/foreach.hpp` for Boost 1.56.0",
+    "translation": "  4.  Boost 1.56.0に対する`contrib/foreach.hpp`を修正しました。"
+  },
+  {
+    "line": 749,
+    "source": "- Bug fixes",
+    "translation": "- 不具合の修正"
+  },
+  {
+    "line": 753,
+    "source": "  1.  Adjusted comment output to avoid malformed documents if the comment value contains `--`",
+    "translation": "  1.  コメントの値に`--`が含まれる場合に、不正な形式の文書にならないよう、コメントの出力を調整しました。"
+  },
+  {
+    "line": 755,
+    "source": "  2.  Fix XPath sorting for documents that were constructed using append_buffer",
+    "translation": "  2.  append_bufferで作成した文書のXPathの整列を修正しました。"
+  },
+  {
+    "line": 757,
+    "source": "  3.  Fix `load_file` for wide-character paths with non-ASCII characters in MinGW with C++11 mode enabled",
+    "translation": "  3.  C++11モードを有効にしたMinGWで、非ASCII文字を含むワイド文字のパスを使う場合の`load_file`を修正しました。"
+  }
+]

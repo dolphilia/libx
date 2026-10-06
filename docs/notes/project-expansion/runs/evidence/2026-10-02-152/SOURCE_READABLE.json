@@ -1,0 +1,262 @@
+[
+  {
+    "tag": "h2",
+    "text": "7. Saving document"
+  },
+  {
+    "tag": "p",
+    "text": "Often after creating a new document or loading the existing one and processing it, it is necessary to save the result back to file. Also it is occasionally useful to output the whole document or a subtree to some stream; use cases include debug printing, serialization via network or other text-oriented medium, etc. pugixml provides several functions to output any subtree of the document to a file, stream or another generic transport interface; these functions allow to customize the output format (see Output options), and also perform necessary encoding conversions (see Encodings). This section documents the relevant functionality."
+  },
+  {
+    "tag": "p",
+    "text": "Before writing to the destination the node/attribute data is properly formatted according to the node type; all special XML symbols, such as < and &, are properly escaped (unless format_no_escapes flag is set). In order to guard against forgotten node/attribute names, empty node/attribute names are printed as \":anonymous\". For well-formed output, make sure all node and attribute names are set to meaningful values."
+  },
+  {
+    "tag": "p",
+    "text": "CDATA sections with values that contain \"]]>\" are split into several sections as follows: section with value \"pre]]>post\" is written as <![CDATA[pre]]]]><![CDATA[>post]]>. While this alters the structure of the document (if you load the document after saving it, there will be two CDATA sections instead of one), this is the only way to escape CDATA contents."
+  },
+  {
+    "tag": "h3",
+    "text": "7.1. Saving document to a file"
+  },
+  {
+    "tag": "p",
+    "text": "If you want to save the whole document to a file, you can use one of the following functions:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool xml_document::save_file(const char* path, const char_t* indent = \"\\t\", unsigned int flags = format_default, xml_encoding encoding = encoding_auto) const;\nbool xml_document::save_file(const wchar_t* path, const char_t* indent = \"\\t\", unsigned int flags = format_default, xml_encoding encoding = encoding_auto) const;"
+  },
+  {
+    "tag": "p",
+    "text": "These functions accept file path as its first argument, and also three optional arguments, which specify indentation and other output options (see Output options) and output data encoding (see Encodings). The path has the target operating system format, so it can be a relative or absolute one, it should have the delimiters of the target system, it should have the exact case if the target file system is case-sensitive, etc. The functions return true on success and false if the file could not be opened or written to."
+  },
+  {
+    "tag": "p",
+    "text": "File path is passed to the system file opening function as is in case of the first function (which accepts const char* path); the second function either uses a special file opening function if it is provided by the runtime library or converts the path to UTF-8 and uses the system file opening function."
+  },
+  {
+    "tag": "p",
+    "text": "save_file opens the target file for writing, outputs the requested header (by default a document declaration is output, unless the document already has one), and then saves the document contents. Calling save_file is equivalent to creating an xml_writer_file object with FILE* handle as the only constructor argument and then calling save; see Saving document via writer interface for writer interface details."
+  },
+  {
+    "tag": "p",
+    "text": "This is a simple example of saving XML document to file (samples/save_file.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "// save document to file\nstd::cout << \"Saving result: \" << doc.save_file(\"save_file_output.xml\") << std::endl;"
+  },
+  {
+    "tag": "h3",
+    "text": "7.2. Saving document to C++ IOstreams"
+  },
+  {
+    "tag": "p",
+    "text": "To enhance interoperability pugixml provides functions for saving document to any object which implements C++ std::ostream interface. This allows you to save documents to any standard C++ stream (i.e. file stream) or any third-party compliant implementation (i.e. Boost Iostreams). Most notably, this allows for easy debug output, since you can use std::cout stream as saving target. There are two functions, one works with narrow character streams, another handles wide character ones:"
+  },
+  {
+    "tag": "pre",
+    "text": "void xml_document::save(std::ostream& stream, const char_t* indent = \"\\t\", unsigned int flags = format_default, xml_encoding encoding = encoding_auto) const;\nvoid xml_document::save(std::wostream& stream, const char_t* indent = \"\\t\", unsigned int flags = format_default) const;"
+  },
+  {
+    "tag": "p",
+    "text": "save with std::ostream argument saves the document to the stream in the same way as save_file (i.e. with requested header and with encoding conversions). On the other hand, save with std::wostream argument saves the document to the wide stream with encoding_wchar encoding.  Because of this, using save with wide character streams requires careful (usually platform-specific) stream setup (i.e. using the imbue function). Generally use of wide streams is discouraged, however it provides you with the ability to save documents to non-Unicode encodings, i.e. you can save Shift-JIS encoded data if you set the correct locale."
+  },
+  {
+    "tag": "p",
+    "text": "Calling save with stream target is equivalent to creating an xml_writer_stream object with stream as the only constructor argument and then calling save; see Saving document via writer interface for writer interface details. When using xml_writer_stream with wide-character streams, you must pass encoding_wchar explicitly, as the wide writer expects wide-character data."
+  },
+  {
+    "tag": "p",
+    "text": "This is a simple example of saving XML document to standard output (samples/save_stream.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "// save document to standard output\nstd::cout << \"Document:\\n\";\ndoc.save(std::cout);"
+  },
+  {
+    "tag": "h3",
+    "text": "7.3. Saving document via writer interface"
+  },
+  {
+    "tag": "p",
+    "text": "All of the above saving functions are implemented in terms of writer interface. This is a simple interface with a single function, which is called several times during output process with chunks of document data as input:"
+  },
+  {
+    "tag": "pre",
+    "text": "class xml_writer\n{\npublic:\n    virtual void write(const void* data, size_t size) = 0;\n};\n\nvoid xml_document::save(xml_writer& writer, const char_t* indent = \"\\t\", unsigned int flags = format_default, xml_encoding encoding = encoding_auto) const;"
+  },
+  {
+    "tag": "p",
+    "text": "In order to output the document via some custom transport, for example sockets, you should create an object which implements xml_writer interface and pass it to save function. xml_writer::write function is called with a buffer as an input, where data points to buffer start, and size is equal to the buffer size in bytes. write implementation must write the buffer to the transport; it can not save the passed buffer pointer, as the buffer contents will change after write returns. The buffer contains the chunk of document data in the desired encoding."
+  },
+  {
+    "tag": "p",
+    "text": "write function is called with relatively large blocks (size is usually several kilobytes, except for the last block that may be small), so there is often no need for additional buffering in the implementation."
+  },
+  {
+    "tag": "p",
+    "text": "This is a simple example of custom writer for saving document data to STL string (samples/save_custom_writer.cpp); read the sample code for more complex examples:"
+  },
+  {
+    "tag": "pre",
+    "text": "struct xml_string_writer: pugi::xml_writer\n{\n    std::string result;\n\n    virtual void write(const void* data, size_t size)\n    {\n        result.append(static_cast<const char*>(data), size);\n    }\n};"
+  },
+  {
+    "tag": "h3",
+    "text": "7.4. Saving a single subtree"
+  },
+  {
+    "tag": "p",
+    "text": "While the previously described functions save the whole document to the destination, it is easy to save a single subtree. The following functions are provided:"
+  },
+  {
+    "tag": "pre",
+    "text": "void xml_node::print(std::ostream& os, const char_t* indent = \"\\t\", unsigned int flags = format_default, xml_encoding encoding = encoding_auto, unsigned int depth = 0) const;\nvoid xml_node::print(std::wostream& os, const char_t* indent = \"\\t\", unsigned int flags = format_default, unsigned int depth = 0) const;\nvoid xml_node::print(xml_writer& writer, const char_t* indent = \"\\t\", unsigned int flags = format_default, xml_encoding encoding = encoding_auto, unsigned int depth = 0) const;"
+  },
+  {
+    "tag": "p",
+    "text": "These functions have the same arguments with the same meaning as the corresponding xml_document::save functions, and allow you to save the subtree to either a C++ IOstream or to any object that implements xml_writer interface."
+  },
+  {
+    "tag": "p",
+    "text": "Saving a subtree differs from saving the whole document: the process behaves as if format_write_bom is off, and format_no_declaration is on, even if actual values of the flags are different. This means that BOM is not written to the destination, and document declaration is only written if it is the node itself or is one of node’s children. Note that this also holds if you’re saving a document; this example (samples/save_subtree.cpp) illustrates the difference:"
+  },
+  {
+    "tag": "pre",
+    "text": "// get a test document\npugi::xml_document doc;\ndoc.load_string(\"<foo bar='baz'><call>hey</call></foo>\");\n\n// print document to standard output (prints <?xml version=\"1.0\"?><foo bar=\"baz\"><call>hey</call></foo>)\ndoc.save(std::cout, \"\", pugi::format_raw);\nstd::cout << std::endl;\n\n// print document to standard output as a regular node (prints <foo bar=\"baz\"><call>hey</call></foo>)\ndoc.print(std::cout, \"\", pugi::format_raw);\nstd::cout << std::endl;\n\n// print a subtree to standard output (prints <call>hey</call>)\ndoc.child(\"foo\").child(\"call\").print(std::cout, \"\", pugi::format_raw);\nstd::cout << std::endl;"
+  },
+  {
+    "tag": "h3",
+    "text": "7.5. Output options"
+  },
+  {
+    "tag": "p",
+    "text": "All saving functions accept the optional parameter flags. This is a bitmask that customizes the output format; you can select the way the document nodes are printed and select the needed additional information that is output before the document contents."
+  },
+  {
+    "tag": "td",
+    "text": "Note"
+  },
+  {
+    "tag": "td",
+    "text": "You should use the usual bitwise arithmetics to manipulate the bitmask: to enable a flag, use mask | flag; to disable a flag, use mask & ~flag."
+  },
+  {
+    "tag": "p",
+    "text": "These flags control the resulting tree contents:"
+  },
+  {
+    "tag": "p",
+    "text": "format_indent determines if all nodes should be indented with the indentation string (this is an additional parameter for all saving functions, and is \"\\t\" by default). If this flag is on, the indentation string is printed several times before every node, where the amount of indentation depends on the node’s depth relative to the output subtree. This flag has no effect if format_raw is enabled. This flag is on by default."
+  },
+  {
+    "tag": "p",
+    "text": "format_indent_attributes determines if all attributes should be printed on a new line, indented with the indentation string according to the attribute’s depth. This flag implies format_indent. This flag has no effect if format_raw is enabled. This flag is off by default."
+  },
+  {
+    "tag": "p",
+    "text": "format_raw switches between formatted and raw output. If this flag is on, the nodes are not indented in any way, and also no newlines that are not part of document text are printed. Raw mode can be used for serialization where the result is not intended to be read by humans; also it can be useful if the document was parsed with parse_ws_pcdata flag, to preserve the original document formatting as much as possible. This flag is off by default."
+  },
+  {
+    "tag": "p",
+    "text": "format_no_escapes disables output escaping for attribute values and PCDATA contents. If this flag is off, special symbols (\", &, <, >) and all non-printable characters (those with codepoint values less than 32) are converted to XML escape sequences (i.e. &amp;) during output. If this flag is on, no text processing is performed; therefore, output XML can be malformed if output contents contains invalid symbols (i.e. having a stray < in the PCDATA will make the output malformed). This flag is off by default."
+  },
+  {
+    "tag": "p",
+    "text": "format_no_empty_element_tags determines if start/end tags should be output instead of empty element tags for empty elements (that is, elements with no children). This flag is off by default."
+  },
+  {
+    "tag": "p",
+    "text": "format_skip_control_chars enables skipping characters belonging to range [0; 32) instead of \"&#xNN;\" encoding. This flag is off by default."
+  },
+  {
+    "tag": "p",
+    "text": "format_attribute_single_quote enables using single quotes ' instead of double quotes \" for enclosing attribute values. This flag is off by default."
+  },
+  {
+    "tag": "p",
+    "text": "These flags control the additional output information:"
+  },
+  {
+    "tag": "p",
+    "text": "format_no_declaration disables default node declaration output. By default, if the document is saved via save or save_file function, and it does not have any document declaration, a default declaration is output before the document contents. Enabling this flag disables this declaration. This flag has no effect in xml_node::print functions: they never output the default declaration. This flag is off by default."
+  },
+  {
+    "tag": "p",
+    "text": "format_write_bom enables Byte Order Mark (BOM) output. By default, no BOM is output, so in case of non UTF-8 encodings the resulting document’s encoding may not be recognized by some parsers and text editors, if they do not implement sophisticated encoding detection. Enabling this flag adds an encoding-specific BOM to the output. This flag has no effect in xml_node::print functions: they never output the BOM. This flag is off by default."
+  },
+  {
+    "tag": "p",
+    "text": "format_save_file_text changes the file mode when using save_file function. By default, file is opened in binary mode, which means that the output file will\ncontain platform-independent newline \\n (ASCII 10). If this flag is on, file is opened in text mode, which on some systems changes the newline format (i.e. on Windows you can use this flag to output XML documents with \\r\\n (ASCII 13 10) newlines). This flag is off by default."
+  },
+  {
+    "tag": "p",
+    "text": "Additionally, there is one predefined option mask:"
+  },
+  {
+    "tag": "p",
+    "text": "format_default is the default set of flags, i.e. it has all options set to their default values. It sets formatted output with indentation, without BOM and with default node declaration, if necessary."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example that shows the outputs of different output options (samples/save_options.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "// get a test document\npugi::xml_document doc;\ndoc.load_string(\"<foo bar='baz'><call>hey</call></foo>\");\n\n// default options; prints\n// <?xml version=\"1.0\"?>\n// <foo bar=\"baz\">\n//         <call>hey</call>\n// </foo>\ndoc.save(std::cout);\nstd::cout << std::endl;\n\n// default options with custom indentation string; prints\n// <?xml version=\"1.0\"?>\n// <foo bar=\"baz\">\n// --<call>hey</call>\n// </foo>\ndoc.save(std::cout, \"--\");\nstd::cout << std::endl;\n\n// default options without indentation; prints\n// <?xml version=\"1.0\"?>\n// <foo bar=\"baz\">\n// <call>hey</call>\n// </foo>\ndoc.save(std::cout, \"\\t\", pugi::format_default & ~pugi::format_indent); // can also pass \"\" instead of indentation string for the same effect\nstd::cout << std::endl;\n\n// raw output; prints\n// <?xml version=\"1.0\"?><foo bar=\"baz\"><call>hey</call></foo>\ndoc.save(std::cout, \"\\t\", pugi::format_raw);\nstd::cout << std::endl << std::endl;\n\n// raw output without declaration; prints\n// <foo bar=\"baz\"><call>hey</call></foo>\ndoc.save(std::cout, \"\\t\", pugi::format_raw | pugi::format_no_declaration);\nstd::cout << std::endl;"
+  },
+  {
+    "tag": "h3",
+    "text": "7.6. Encodings"
+  },
+  {
+    "tag": "p",
+    "text": "pugixml supports all popular Unicode encodings (UTF-8, UTF-16 (big and little endian), UTF-32 (big and little endian); UCS-2 is naturally supported since it’s a strict subset of UTF-16) and handles all encoding conversions during output. The output encoding is set via the encoding parameter of saving functions, which is of type xml_encoding. The possible values for the encoding are documented in Encodings; the only flag that has a different meaning is encoding_auto."
+  },
+  {
+    "tag": "p",
+    "text": "While all other flags set the exact encoding, encoding_auto is meant for automatic encoding detection. The automatic detection does not make sense for output encoding, since there is usually nothing to infer the actual encoding from, so here encoding_auto means UTF-8 encoding, which is the most popular encoding for XML data storage. This is also the default value of output encoding; specify another value if you do not want UTF-8 encoded output."
+  },
+  {
+    "tag": "p",
+    "text": "Also note that wide stream saving functions do not have encoding argument and always assume encoding_wchar encoding."
+  },
+  {
+    "tag": "td",
+    "text": "Note"
+  },
+  {
+    "tag": "td",
+    "text": "The current behavior for Unicode conversion is to skip all invalid UTF sequences during conversion. This behavior should not be relied upon; if your node/attribute names do not contain any valid UTF sequences, they may be output as if they are empty, which will result in malformed XML document."
+  },
+  {
+    "tag": "h3",
+    "text": "7.7. Customizing document declaration"
+  },
+  {
+    "tag": "p",
+    "text": "When you are saving the document using xml_document::save() or xml_document::save_file(), a default XML document declaration is output, if format_no_declaration is not specified and if the document does not have a declaration node. However, the default declaration is not customizable. If you want to customize the declaration output, you need to create the declaration node yourself."
+  },
+  {
+    "tag": "td",
+    "text": "Note"
+  },
+  {
+    "tag": "td",
+    "text": "By default the declaration node is not added to the document during parsing. If you just need to preserve the original declaration node, you have to add the flag parse_declaration to the parsing flags; the resulting document will contain the original declaration node, which will be output during saving."
+  },
+  {
+    "tag": "p",
+    "text": "Declaration node is a node with type node_declaration; it behaves like an element node in that it has attributes with values (but it does not have child nodes). Therefore setting custom version, encoding or standalone declaration involves adding attributes and setting attribute values."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example that shows how to create a custom declaration node (samples/save_declaration.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "// get a test document\npugi::xml_document doc;\ndoc.load_string(\"<foo bar='baz'><call>hey</call></foo>\");\n\n// add a custom declaration node\npugi::xml_node decl = doc.prepend_child(pugi::node_declaration);\ndecl.append_attribute(\"version\") = \"1.0\";\ndecl.append_attribute(\"encoding\") = \"UTF-8\";\ndecl.append_attribute(\"standalone\") = \"no\";\n\n// <?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n// <foo bar=\"baz\">\n//         <call>hey</call>\n// </foo>\ndoc.save(std::cout);\nstd::cout << std::endl;"
+  }
+]

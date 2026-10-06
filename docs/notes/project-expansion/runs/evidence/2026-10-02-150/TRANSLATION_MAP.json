@@ -1,0 +1,112 @@
+[
+  {
+    "line": 2,
+    "source": "title: \"Saving Document\"",
+    "translation": "title: \"文書の保存\""
+  },
+  {
+    "line": 3,
+    "source": "description: \"pugixml 1.16 Saving Document complete official text.\"",
+    "translation": "description: \"pugixml 1.16の公式文書保存説明全文。\""
+  },
+  {
+    "line": 11,
+    "source": "## <a href=\"#source-saving\" class=\"anchor\"></a><a href=\"#source-saving\" class=\"link\">7. Saving document</a>",
+    "translation": "## <a href=\"#source-saving\" class=\"anchor\"></a><a href=\"#source-saving\" class=\"link\">7. 文書の保存</a>"
+  },
+  {
+    "line": 17,
+    "source": "Often after creating a new document or loading the existing one and processing it, it is necessary to save the result back to file. Also it is occasionally useful to output the whole document or a subtree to some stream; use cases include debug printing, serialization via network or other text-oriented medium, etc. pugixml provides several functions to output any subtree of the document to a file, stream or another generic transport interface; these functions allow to customize the output format (see [Output options](#source-saving.options)), and also perform necessary encoding conversions (see [Encodings](#source-saving.encoding)). This section documents the relevant functionality.",
+    "translation": "新しい文書を作成したり、既存の文書を読み込んで処理したりした後は、結果をファイルへ保存する必要がよくあります。また、文書全体や部分ツリーをストリームへ出力すると便利な場合もあります。用途には、デバッグ表示、ネットワークやほかのテキスト用媒体を通じた直列化などがあります。pugixmlには、文書の任意の部分ツリーを、ファイル、ストリーム、汎用の転送インターフェースへ出力する関数があります。これらの関数は、出力形式を調整でき（[出力オプション](#source-saving.options)を参照）、必要なエンコーディング変換も行います（[エンコーディング](#source-saving.encoding)を参照）。この節では、関連する機能を説明します。"
+  },
+  {
+    "line": 23,
+    "source": "Before writing to the destination the node/attribute data is properly formatted according to the node type; all special XML symbols, such as `<` and `&`, are properly escaped (unless [format_no_escapes](#source-format_no_escapes) flag is set). In order to guard against forgotten node/attribute names, empty node/attribute names are printed as `\":anonymous\"`. For well-formed output, make sure all node and attribute names are set to meaningful values.",
+    "translation": "出力先へ書き込む前に、ノードや属性のデータは、ノード型に応じて適切に整形されます。`<`や`&`など、XMLの特殊記号はすべて適切にエスケープされます。ただし、[format_no_escapes](#source-format_no_escapes)フラグを設定した場合は除きます。ノードや属性の名前の設定忘れに備え、空の名前は`\":anonymous\"`として出力されます。整形式の出力を得るには、すべてのノードと属性の名前に意味のある値を設定してください。"
+  },
+  {
+    "line": 29,
+    "source": "CDATA sections with values that contain `\"]]>\"` are split into several sections as follows: section with value `\"pre]]>post\"` is written as `<![CDATA[pre]]]]><![CDATA[>post]]>`. While this alters the structure of the document (if you load the document after saving it, there will be two CDATA sections instead of one), this is the only way to escape CDATA contents.",
+    "translation": "値に`\"]]>\"`を含むCDATAセクションは、次のように複数のセクションへ分割されます。値が`\"pre]]>post\"`のセクションは、`<![CDATA[pre]]]]><![CDATA[>post]]>`として書き出されます。これは文書の構造を変えます。保存後に読み込むと、CDATAセクションが1つではなく2つになりますが、CDATAの内容をエスケープする唯一の方法です。"
+  },
+  {
+    "line": 37,
+    "source": "### <a href=\"#source-saving.file\" class=\"anchor\"></a><a href=\"#source-saving.file\" class=\"link\">7.1. Saving document to a file</a>",
+    "translation": "### <a href=\"#source-saving.file\" class=\"anchor\"></a><a href=\"#source-saving.file\" class=\"link\">7.1. ファイルへの文書の保存</a>"
+  },
+  {
+    "line": 41,
+    "source": "<span id=\"source-xml_document::save_file\"></span><span id=\"source-xml_document::save_file_wide\"></span> If you want to save the whole document to a file, you can use one of the following functions:",
+    "translation": "<span id=\"source-xml_document::save_file\"></span><span id=\"source-xml_document::save_file_wide\"></span> 文書全体をファイルへ保存するには、次の関数のいずれかを使えます。"
+  },
+  {
+    "line": 60,
+    "source": "These functions accept file path as its first argument, and also three optional arguments, which specify indentation and other output options (see [Output options](#source-saving.options)) and output data encoding (see [Encodings](#source-saving.encoding)). The path has the target operating system format, so it can be a relative or absolute one, it should have the delimiters of the target system, it should have the exact case if the target file system is case-sensitive, etc. The functions return `true` on success and `false` if the file could not be opened or written to.",
+    "translation": "これらの関数は、第1引数にファイルパスを取り、ほかに省略可能な引数が3つあります。インデントとほかの出力オプション（[出力オプション](#source-saving.options)を参照）、出力データのエンコーディング（[エンコーディング](#source-saving.encoding)を参照）を指定します。パスは対象OSの形式に従います。相対パスでも絶対パスでも構いませんが、対象システムの区切り文字を使い、ファイルシステムが大文字と小文字を区別する場合には正確な文字の大小を指定するなどの必要があります。成功時には`true`を返し、ファイルを開けない場合や書き込めない場合には`false`を返します。"
+  },
+  {
+    "line": 66,
+    "source": "File path is passed to the system file opening function as is in case of the first function (which accepts `const char* path`); the second function either uses a special file opening function if it is provided by the runtime library or converts the path to UTF-8 and uses the system file opening function.",
+    "translation": "最初の関数（`const char* path`を受け取るもの）は、システムのファイルオープン関数へパスをそのまま渡します。2番目の関数は、ランタイムライブラリが専用のファイルオープン関数を提供していればそれを使い、それ以外の場合はパスをUTF-8へ変換してシステムのファイルオープン関数を使います。"
+  },
+  {
+    "line": 72,
+    "source": "`save_file` opens the target file for writing, outputs the requested header (by default a document declaration is output, unless the document already has one), and then saves the document contents. Calling `save_file` is equivalent to creating an `xml_writer_file` object with `FILE*` handle as the only constructor argument and then calling `save`; see [Saving document via writer interface](#source-saving.writer) for writer interface details.",
+    "translation": "`save_file`は対象ファイルを書き込み用に開き、要求されたヘッダーを出力してから、文書の内容を保存します。既定では、文書に宣言がすでにない限り、文書宣言を出力します。`save_file`の呼び出しは、`FILE*`ハンドルだけをコンストラクターの引数として`xml_writer_file`オブジェクトを作成し、`save`を呼び出すことと同じです。writerインターフェースの詳細は、[writerインターフェースによる文書の保存](#source-saving.writer)を参照してください。"
+  },
+  {
+    "line": 78,
+    "source": "This is a simple example of saving XML document to file ([samples/save_file.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/save_file.cpp)):",
+    "translation": "XML文書をファイルへ保存する簡単な例です（[samples/save_file.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/save_file.cpp)）。"
+  },
+  {
+    "line": 101,
+    "source": "### <a href=\"#source-saving.stream\" class=\"anchor\"></a><a href=\"#source-saving.stream\" class=\"link\">7.2. Saving document to C++ IOstreams</a>",
+    "translation": "### <a href=\"#source-saving.stream\" class=\"anchor\"></a><a href=\"#source-saving.stream\" class=\"link\">7.2. C++ IOstreamへの文書の保存</a>"
+  },
+  {
+    "line": 105,
+    "source": "To enhance interoperability pugixml provides functions for saving document to any object which implements C++ `std::ostream` interface. This allows you to save documents to any standard C++ stream (i.e. file stream) or any third-party compliant implementation (i.e. Boost Iostreams). Most notably, this allows for easy debug output, since you can use `std::cout` stream as saving target. There are two functions, one works with narrow character streams, another handles wide character ones:",
+    "translation": "相互運用性を高めるため、pugixmlには、C++の`std::ostream`インターフェースを実装した任意のオブジェクトへ文書を保存する関数があります。これにより、標準のC++ストリーム（ファイルストリームなど）や、インターフェースに準拠した第三者の実装（Boost Iostreamsなど）へ文書を保存できます。特に、`std::cout`を保存先に使えるため、デバッグ出力が簡単になります。関数は2つあり、一方はナロー文字ストリーム、もう一方はワイド文字ストリームを扱います。"
+  },
+  {
+    "line": 124,
+    "source": "`save` with `std::ostream` argument saves the document to the stream in the same way as `save_file` (i.e. with requested header and with encoding conversions). On the other hand, `save` with `std::wostream` argument saves the document to the wide stream with [encoding_wchar](/docs/pugixml/v1-16/en/02-manual/04-loading-documents/#source-encoding_wchar) encoding. Because of this, using `save` with wide character streams requires careful (usually platform-specific) stream setup (i.e. using the `imbue` function). Generally use of wide streams is discouraged, however it provides you with the ability to save documents to non-Unicode encodings, i.e. you can save Shift-JIS encoded data if you set the correct locale.",
+    "translation": "`std::ostream`引数を取る`save`は、`save_file`と同じ方法で文書をストリームへ保存します。つまり、要求されたヘッダーを出力し、エンコーディング変換も行います。一方、`std::wostream`引数を取る`save`は、ワイド文字ストリームへ[encoding_wchar](/docs/pugixml/v1-16/ja/02-manual/04-loading-documents/#source-encoding_wchar)エンコーディングで文書を保存します。このため、ワイド文字ストリームで`save`を使う場合は、`imbue`関数の使用など、通常はプラットフォーム固有の慎重なストリーム設定が必要です。一般に、ワイド文字ストリームの使用は勧めませんが、Unicode以外のエンコーディングへ文書を保存できます。たとえば、適切なロケールを設定すれば、Shift-JISのデータを保存できます。"
+  },
+  {
+    "line": 130,
+    "source": "Calling `save` with stream target is equivalent to creating an `xml_writer_stream` object with stream as the only constructor argument and then calling `save`; see [Saving document via writer interface](#source-saving.writer) for writer interface details. When using `xml_writer_stream` with wide-character streams, you must pass `encoding_wchar` explicitly, as the wide writer expects wide-character data.",
+    "translation": "ストリームを出力先にして`save`を呼び出すことは、ストリームだけをコンストラクターの引数として`xml_writer_stream`オブジェクトを作成し、`save`を呼び出すことと同じです。writerインターフェースの詳細は、[writerインターフェースによる文書の保存](#source-saving.writer)を参照してください。ワイド文字ストリームで`xml_writer_stream`を使う場合は、ワイド文字データを想定するため、`encoding_wchar`を明示的に渡さなければなりません。"
+  },
+  {
+    "line": 136,
+    "source": "This is a simple example of saving XML document to standard output ([samples/save_stream.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/save_stream.cpp)):",
+    "translation": "XML文書を標準出力へ保存する簡単な例です（[samples/save_stream.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/save_stream.cpp)）。"
+  },
+  {
+    "line": 160,
+    "source": "### <a href=\"#source-saving.writer\" class=\"anchor\"></a><a href=\"#source-saving.writer\" class=\"link\">7.3. Saving document via writer interface</a>",
+    "translation": "### <a href=\"#source-saving.writer\" class=\"anchor\"></a><a href=\"#source-saving.writer\" class=\"link\">7.3. writerインターフェースによる文書の保存</a>"
+  },
+  {
+    "line": 164,
+    "source": "<span id=\"source-xml_document::save\"></span><span id=\"source-xml_writer\"></span><span id=\"source-xml_writer::write\"></span> All of the above saving functions are implemented in terms of writer interface. This is a simple interface with a single function, which is called several times during output process with chunks of document data as input:",
+    "translation": "<span id=\"source-xml_document::save\"></span><span id=\"source-xml_writer\"></span><span id=\"source-xml_writer::write\"></span> これまでに説明した保存関数は、すべてwriterインターフェースを使って実装されています。関数を1つだけ持つ単純なインターフェースで、出力処理中に、文書データの断片を入力として複数回呼び出されます。"
+  },
+  {
+    "line": 188,
+    "source": "In order to output the document via some custom transport, for example sockets, you should create an object which implements `xml_writer` interface and pass it to `save` function. `xml_writer::write` function is called with a buffer as an input, where `data` points to buffer start, and `size` is equal to the buffer size in bytes. `write` implementation must write the buffer to the transport; it can not save the passed buffer pointer, as the buffer contents will change after `write` returns. The buffer contains the chunk of document data in the desired encoding.",
+    "translation": "ソケットなど、独自の転送方法で文書を出力するには、`xml_writer`インターフェースを実装したオブジェクトを作成し、`save`へ渡してください。`xml_writer::write`はバッファを入力として呼び出されます。`data`はバッファの先頭を指し、`size`はバイト単位のバッファサイズです。`write`の実装は、バッファを転送先へ書き込まなければなりません。`write`が戻った後はバッファ内容が変わるため、渡されたバッファのポインターを保存しておくことはできません。バッファには、指定したエンコーディングの文書データの断片が含まれます。"
+  },
+  {
+    "line": 194,
+    "source": "`write` function is called with relatively large blocks (size is usually several kilobytes, except for the last block that may be small), so there is often no need for additional buffering in the implementation.",
+    "translation": "`write`は比較的大きなブロックで呼び出されます。通常は数キロバイトですが、最後のブロックは小さい場合があります。このため、多くの場合、実装内で追加のバッファリングを行う必要はありません。"
+  },
+  {
+    "line": 200,
+    "source": "This is a simple example of custom writer for saving document data to STL string ([samples/save_custom_writer.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/save_custom_writer.cpp)); read the sample code for more complex examples:",
+    "translation": "文書データをSTL文字列へ保存する独自writerの簡単な例です（[samples/save_custom_writer.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/save_custom_writer.cpp)）。より複雑な例は、サンプルコードを読んでください。"
+  }
+]

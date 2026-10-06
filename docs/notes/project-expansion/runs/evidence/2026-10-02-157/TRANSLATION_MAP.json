@@ -1,0 +1,262 @@
+[
+  {
+    "line": 2,
+    "source": "title: \"Changelog\"",
+    "translation": "title: \"変更履歴\""
+  },
+  {
+    "line": 3,
+    "source": "description: \"pugixml 1.16 Changelog complete official text.\"",
+    "translation": "description: \"pugixml 1.16の公式変更履歴全文。\""
+  },
+  {
+    "line": 11,
+    "source": "## <a href=\"#source-changes\" class=\"anchor\"></a><a href=\"#source-changes\" class=\"link\">9. Changelog</a>",
+    "translation": "## <a href=\"#source-changes\" class=\"anchor\"></a><a href=\"#source-changes\" class=\"link\">9. 変更履歴</a>"
+  },
+  {
+    "line": 23,
+    "source": "Anniversary release (pugixml turns 20 this year!). Changes:",
+    "translation": "記念リリース（pugixmlは今年で20周年です！）。変更点："
+  },
+  {
+    "line": 29,
+    "source": "- Behavior changes:",
+    "translation": "- 動作の変更："
+  },
+  {
+    "line": 33,
+    "source": "  1.  Elements that have a single empty PCDATA child are now printed as empty element tags (unless `format_no_empty_element_tags` is used)",
+    "translation": "  1.  空のPCDATAの子を1つだけ持つ要素は、空要素タグとして出力されるようになりました（`format_no_empty_element_tags`を使う場合を除きます）。"
+  },
+  {
+    "line": 37,
+    "source": "- Improvements:",
+    "translation": "- 改善："
+  },
+  {
+    "line": 41,
+    "source": "  1.  `PUGIXML_CHARCONV_FLOAT` option can be enabled to switch floating point conversions to `<charconv>`; this requires C++17, makes the conversions locale-independent and can improve performance",
+    "translation": "  1.  `PUGIXML_CHARCONV_FLOAT`オプションを有効にすると、浮動小数点の変換を`<charconv>`へ切り替えられます。C++17が必要で、変換がロケールに依存しなくなり、性能が向上する場合があります。"
+  },
+  {
+    "line": 43,
+    "source": "  2.  Add `xml_node::ensure_child` and `xml_node::ensure_attribute` that return the child/attribute with the specified name, adding one if it does not exist",
+    "translation": "  2.  指定した名前の子/属性を返し、存在しなければ追加する`xml_node::ensure_child`と`xml_node::ensure_attribute`を追加しました。"
+  },
+  {
+    "line": 45,
+    "source": "  3.  Improve performance of searching for nodes and attributes by name",
+    "translation": "  3.  名前によるノードと属性の検索の性能を改善しました。"
+  },
+  {
+    "line": 47,
+    "source": "  4.  Loading a document from an empty buffer no longer performs memory allocations",
+    "translation": "  4.  空のバッファーから文書を読み込む場合、メモリーを確保しなくなりました。"
+  },
+  {
+    "line": 51,
+    "source": "- XPath improvements:",
+    "translation": "- XPathの改善："
+  },
+  {
+    "line": 55,
+    "source": "  1.  Improve performance of queries that evaluate or compare attribute values, like `@attr > 5`",
+    "translation": "  1.  `@attr > 5`のように、属性値を評価したり比較したりする問い合わせの性能を改善しました。"
+  },
+  {
+    "line": 57,
+    "source": "  2.  Improve performance of queries that select nodes and attributes by name",
+    "translation": "  2.  名前によってノードや属性を選択する問い合わせの性能を改善しました。"
+  },
+  {
+    "line": 61,
+    "source": "- Bug fixes:",
+    "translation": "- 不具合の修正："
+  },
+  {
+    "line": 65,
+    "source": "  1.  Fix stack overflow when removing subtrees with extremely deep nesting",
+    "translation": "  1.  非常に深く入れ子になった部分ツリーを削除する場合の、スタックオーバーフローを修正しました。"
+  },
+  {
+    "line": 67,
+    "source": "  2.  Fix integer overflows that could lead to crashes when loading very large (1+ GB) documents on 32-bit platforms in `PUGIXML_WCHAR_MODE`",
+    "translation": "  2.  32ビットプラットフォームの`PUGIXML_WCHAR_MODE`で非常に大きい文書（1 GB以上）を読み込む場合に、クラッシュを引き起こす可能性があった整数オーバーフローを修正しました。"
+  },
+  {
+    "line": 69,
+    "source": "  3.  Fix null pointer dereference when copying `xpath_variable_set` objects that contain string variables with unassigned values",
+    "translation": "  3.  値が未代入の文字列変数を含む`xpath_variable_set`オブジェクトをコピーする場合の、nullポインター参照を修正しました。"
+  },
+  {
+    "line": 73,
+    "source": "- CMake improvements:",
+    "translation": "- CMakeの改善："
+  },
+  {
+    "line": 77,
+    "source": "  1.  Apple frameworks built with `PUGIXML_BUILD_APPLE_FRAMEWORK` now include framework headers",
+    "translation": "  1.  `PUGIXML_BUILD_APPLE_FRAMEWORK`でビルドしたAppleフレームワークに、フレームワークのヘッダーが含まれるようになりました。"
+  },
+  {
+    "line": 79,
+    "source": "  2.  `PUGIXML_INSTALL_SOURCE` option can be used to install `pugixml.cpp` (useful for header-only mode)",
+    "translation": "  2.  `PUGIXML_INSTALL_SOURCE`オプションで、`pugixml.cpp`をインストールできます（ヘッダーのみのモードで役立ちます）。"
+  },
+  {
+    "line": 83,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 87,
+    "source": "  1.  Add project files and NuGet packages for Visual Studio 2026",
+    "translation": "  1.  Visual Studio 2026向けのプロジェクトファイルとNuGetパッケージを追加しました。"
+  },
+  {
+    "line": 89,
+    "source": "  2.  Fix compatibility with C++20 modules when including `pugixml.hpp` in the global module fragment",
+    "translation": "  2.  グローバルモジュールフラグメント内で`pugixml.hpp`をインクルードする場合の、C++20モジュールとの互換性を修正しました。"
+  },
+  {
+    "line": 91,
+    "source": "  3.  Fix clang/gcc warnings `-Wextra-semi-stmt`, `-Wsign-conversion`, `-Wuninitialized` (GCC16)",
+    "translation": "  3.  clang/gccの警告`-Wextra-semi-stmt`、`-Wsign-conversion`、`-Wuninitialized`（GCC16）を修正しました。"
+  },
+  {
+    "line": 93,
+    "source": "  4.  Fix compilation for Embarcadero C++ XE5",
+    "translation": "  4.  Embarcadero C++ XE5でのコンパイルを修正しました。"
+  },
+  {
+    "line": 95,
+    "source": "  5.  Work around several static analysis false positives",
+    "translation": "  5.  静的解析の複数の誤検出を回避しました。"
+  },
+  {
+    "line": 111,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 117,
+    "source": "- Improvements:",
+    "translation": "- 改善："
+  },
+  {
+    "line": 121,
+    "source": "  1.  Many `xml_attribute::` and `xml_node::` functions now transparently support `std::string_view` and `std::string` when C++17 support is detected.",
+    "translation": "  1.  C++17対応が検出された場合、多くの`xml_attribute::`と`xml_node::`の関数が、`std::string_view`と`std::string`を透過的に扱えるようになりました。"
+  },
+  {
+    "line": 125,
+    "source": "- CMake improvements:",
+    "translation": "- CMakeの改善："
+  },
+  {
+    "line": 129,
+    "source": "  1.  Improve `pkg-config` file generation for NixOS",
+    "translation": "  1.  NixOS向けの`pkg-config`ファイルの生成を改善しました。"
+  },
+  {
+    "line": 131,
+    "source": "  2.  `PUGIXML_BUILD_APPLE_FRAMEWORK` CMake option can be used to build pugixml as `.xcframework`",
+    "translation": "  2.  CMakeの`PUGIXML_BUILD_APPLE_FRAMEWORK`オプションで、pugixmlを`.xcframework`としてビルドできます。"
+  },
+  {
+    "line": 133,
+    "source": "  3.  `PUGIXML_INSTALL` CMake option can be used to disable installation targets",
+    "translation": "  3.  CMakeの`PUGIXML_INSTALL`オプションで、インストールターゲットを無効にできます。"
+  },
+  {
+    "line": 137,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 141,
+    "source": "  1.  Fix clang/gcc warnings `-Wzero-as-null-pointer-constant`, `-Wuseless-cast`, `-Wshorten-64-to-32`",
+    "translation": "  1.  clang/gccの警告`-Wzero-as-null-pointer-constant`、`-Wuseless-cast`、`-Wshorten-64-to-32`を修正しました。"
+  },
+  {
+    "line": 143,
+    "source": "  2.  Fix unreferenced function warnings in `PUGIXML_NO_STL` configuration",
+    "translation": "  2.  `PUGIXML_NO_STL`設定での未参照関数の警告を修正しました。"
+  },
+  {
+    "line": 145,
+    "source": "  3.  Fix CMake 3.31 deprecation warnings",
+    "translation": "  3.  CMake 3.31の非推奨警告を修正しました。"
+  },
+  {
+    "line": 147,
+    "source": "  4.  Stop using deprecated `throw()` when `noexcept` is available",
+    "translation": "  4.  `noexcept`が使える場合、非推奨の`throw()`を使わなくなりました。"
+  },
+  {
+    "line": 163,
+    "source": "Maintenance release. Changes:",
+    "translation": "保守リリース。変更点："
+  },
+  {
+    "line": 169,
+    "source": "- Improvements:",
+    "translation": "- 改善："
+  },
+  {
+    "line": 173,
+    "source": "  1.  `xml_attribute::set_name` and `xml_node::set_name` now have overloads that accept pointer to non-null-terminated string and size",
+    "translation": "  1.  `xml_attribute::set_name`と`xml_node::set_name`に、null終端されていない文字列へのポインターとサイズを受け取るオーバーロードを追加しました。"
+  },
+  {
+    "line": 175,
+    "source": "  2.  Implement `parse_merge_pcdata` parsing mode in which PCDATA contents is merged into a single node when original document had comments that were skipped during parsing",
+    "translation": "  2.  原文書に、解析時に読み飛ばされるコメントがある場合、PCDATAの内容を単一のノードへ結合する解析モード`parse_merge_pcdata`を実装しました。"
+  },
+  {
+    "line": 177,
+    "source": "  3.  `xml_document::load_file` now returns a more consistent error status when given a path to a folder",
+    "translation": "  3.  `xml_document::load_file`にフォルダーへのパスを渡す場合、より一貫したエラー状態を返すようになりました。"
+  },
+  {
+    "line": 181,
+    "source": "- Bug fixes:",
+    "translation": "- 不具合の修正："
+  },
+  {
+    "line": 185,
+    "source": "  1.  Fix assertion in XPath number→string conversion when using non-English locales",
+    "translation": "  1.  英語以外のロケールでXPathの数値から文字列への変換を行う場合のアサーションを修正しました。"
+  },
+  {
+    "line": 187,
+    "source": "  2.  Fix PUGIXML_STATIC_CRT CMake option to correctly select static CRT when using MSVC and recent CMake",
+    "translation": "  2.  MSVCと最近のCMakeを使う場合、静的CRTを正しく選択するように、CMakeのPUGIXML_STATIC_CRTオプションを修正しました。"
+  },
+  {
+    "line": 191,
+    "source": "- Compatibility improvements:",
+    "translation": "- 互換性の改善："
+  },
+  {
+    "line": 195,
+    "source": "  1.  Fix GCC 2.95/3.3 builds",
+    "translation": "  1.  GCC 2.95/3.3でのビルドを修正しました。"
+  },
+  {
+    "line": 197,
+    "source": "  2.  Fix CMake 3.27 deprecation warnings",
+    "translation": "  2.  CMake 3.27の非推奨警告を修正しました。"
+  },
+  {
+    "line": 199,
+    "source": "  3.  Fix XCode 14 sprintf deprecation warning when compiling in C++03 mode",
+    "translation": "  3.  C++03モードでコンパイルする場合の、XCode 14のsprintf非推奨警告を修正しました。"
+  },
+  {
+    "line": 201,
+    "source": "  4.  Fix clang/gcc warnings `-Wweak-vtables`, `-Wreserved-macro-identifier`",
+    "translation": "  4.  clang/gccの警告`-Wweak-vtables`、`-Wreserved-macro-identifier`を修正しました。"
+  }
+]

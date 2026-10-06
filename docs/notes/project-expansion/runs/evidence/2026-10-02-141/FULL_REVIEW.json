@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "reviewedAt": "2026-10-02T08:00:07.463Z",
+  "scope": "読み込み章全738行、全118原textブロック、7小節、全106翻訳単位を初稿保存後の別工程で全文照合。",
+  "source": {
+    "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/04-loading-documents.html",
+    "sha256": "a45f67d968870e00077f120ef4fbc24c5e2bc6ee8cd064cb0881e4efb3f7b291"
+  },
+  "canonical": {
+    "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/04-loading-documents.md",
+    "sha256": "0b4e5cd1dbae5bb8ff3c9f41e6c8ba5a0fa621301519371503e3ec261df10c66"
+  },
+  "initial": {
+    "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-139/ja/02-manual/04-loading-documents.md",
+    "sha256": "eb0b6a49123d24250f80a14df4999eaf989d941b2b0eb653eee23809b513cb7c"
+  },
+  "final": {
+    "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-141/ja/02-manual/04-loading-documents.md",
+    "sha256": "eb0b6a49123d24250f80a14df4999eaf989d941b2b0eb653eee23809b513cb7c"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        504
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        738
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        738
+      ]
+    ]
+  },
+  "aiContentReview": {
+    "separatePass": true,
+    "sourceToCanonical": "SOURCE_READABLE全118ブロックを実読。固定原資料から定本の再生成を別に検査。",
+    "canonicalToJapanese": "初稿保存後に訳文1–454行と455–738行を全文再読し、全106翻訳単位の意味を照合。",
+    "findings": [
+      "ファイルパスのOS依存、既存ツリーの破棄、load_bufferのコピーとinplaceの寿命/所有権、ownのpugixml allocator必須条件を保持。",
+      "load_stringのnative encoding、strlen/wcslenサイズ、istreamの現在位置から末尾、wistreamのencoding_wcharとロケール設定条件を保持。",
+      "全エラー状態、descriptionの英語/版変更/wchar条件、失敗時部分ツリー、offsetの単位とエンコーディング変換後の位置追跡制限を保持。",
+      "全parseフラグの既定値、ws_pcdata_singleとws_pcdataの優先関係、mergeとembedの非互換、fragmentの末尾PCDATA欠損とnull終端回避例を保持。",
+      "escapes/EOL/属性正規化の対象と優先関係、3マスクの内容と空白PCDATA除外、全encoding値と推定順序を保持。",
+      "W3C非準拠全9項目とDOCTYPE非処理、invalid UTFの変換有無による扱いを保持。"
+    ],
+    "changes": [],
+    "japaneseReadability": "意味の欠落や条件の逆転は認められず、修正なし。",
+    "sourceLimitations": [
+      "原文parse_defaultのcomments/PIs are not parsedは、前段の解析・正しさ検査を行う説明と区別が曖昧。定本・訳文を保全し、実装確認済みとは扱わない。",
+      "原文encoding_autoの整形式文書は宣言で始まるという説明と末尾の宣言不要の説明は整合しない。固定原文どおり翻訳し、一般XML規則として追認しない。"
+    ]
+  },
+  "mechanicalEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-141/MECHANICAL.json",
+    "sha256": "8334551f72451951ed4103ee31dd50ca40edb5de5e931c5172d8ad89ccc09bf1"
+  },
+  "projectVerified": false,
+  "reviewedPages": 7,
+  "totalPages": 12
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "reviewedAt": "2026-10-02T08:21:04.308Z",
+  "scope": "保存章全550行、原text全65ブロック、7小節、全57翻訳単位を初稿保存後の別工程で全文照合。",
+  "source": {
+    "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/07-saving-documents.html",
+    "sha256": "94c491b64226a7c5663570a66cc6c13a86656f83fcd0adb6eaacd34c24f61f7a"
+  },
+  "canonical": {
+    "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/07-saving-documents.md",
+    "sha256": "8e367d88e598b68bbaa990ac2604d80a1d24eff378d2216e033858b19c912947"
+  },
+  "initial": {
+    "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-150/ja/02-manual/07-saving-documents.md",
+    "sha256": "a15a8f4bf30d0160853846a49217171e9e69d1bf277d160fa1b49a607117ae70"
+  },
+  "final": {
+    "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-152/ja/02-manual/07-saving-documents.md",
+    "sha256": "a15a8f4bf30d0160853846a49217171e9e69d1bf277d160fa1b49a607117ae70"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        337
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        550
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        550
+      ]
+    ]
+  },
+  "aiContentReview": {
+    "separatePass": true,
+    "sourceToCanonical": "固定原text0–64を全読。全関数宣言と10原pre、全出力例/注意を照合。固定再生成とコード同一性を機械検査で別確認。",
+    "canonicalToJapanese": "全文初稿保存後に全57翻訳単位を別工程で全読。全出力フラグの既定値と有効/無効条件、saveとprintとwriterの意味を照合。",
+    "findings": [
+      "escape例外、空名の:anonymous、CDATAの分割と再読時の構造変化を保持。",
+      "save_fileのOSパスとtrue/false、要求ヘッダーと宣言、FILE* writer等価性を保持。",
+      "ostream/wostreamのencodingとlocale設定、wide writerのencoding_wchar明示必須を保持。",
+      "writerのdata/sizeの単位、戻り後バッファ内容変更とポインター非保持、通常数KBと最終小ブロックを保持。",
+      "printはフラグ値にかかわらずBOM/既定宣言を出力しないが実ノードの宣言は出力する条件を保持。",
+      "format全10フラグの既定値、rawのindentに対する優先、indent_attributesがindentを伴う条件、非escapeの不正XMLリスク、空要素/制御文字/引用符/テキストモードを保持。",
+      "format_defaultはindent有効・BOM無効・必要時既定宣言、全出力例の順序と改行を保持。",
+      "encoding_autoは出力ではUTF8、wide streamはwchar、不正UTFの読み飛ばしに非依存と空名のリスクを保持。",
+      "既定宣言の条件/非調整、parse_declarationによる元宣言保持、宣言ノードは属性のみで子なしを保持。"
+    ],
+    "changes": [],
+    "japaneseReadability": "既訳の保存/出力/宣言/文字モードの用語は整合。意味の欠落や条件の逆転は認められず、修正なし。"
+  },
+  "mechanicalEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-152/MECHANICAL.json",
+    "sha256": "9fe39a2b7c0d6c1ae7a3a14019ca71e812eb76494e20c5b3bb238bdfa74f9e02"
+  },
+  "projectVerified": false,
+  "reviewedPages": 10,
+  "totalPages": 12
+}

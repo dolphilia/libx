@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-10-02T08:50:00.625Z",
+  "previousTurn": "progress:第164で単体ビルド証拠と台帳revision317を保存",
+  "workspace": "/private/tmp/libx-official-pugixml-20261002",
+  "defect": {
+    "query": "xpath_query",
+    "before": "日本語検索の結果0件。本文のアンダースコアを索引生成が除去。",
+    "fix": "語中アンダースコアを保持し、Markdown強調の外側アンダースコアだけ除去。共有ルートは変更せず隔離スクリプトのみ編集。",
+    "script": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-165/build-search-index.js",
+      "sha256": "3b4e79c2f9889fb1a19509420036efffab2702f05868a182de61bb148a1be2da"
+    },
+    "regressionTest": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-165/search-index.test.ts",
+      "sha256": "e49767060aea228cce91f200ea19fa5c7bd3bb12b632926f135bf6f0d92ad237"
+    }
+  },
+  "checks": {
+    "unit": {
+      "passed": 28,
+      "failed": 0,
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-165/unit.txt",
+        "sha256": "9b42a41cdce18833893dde6a323b68730fb8fa1dfdfc5192efb6bbbdff0ab1c9"
+      }
+    },
+    "runtime": {
+      "passed": 1,
+      "failed": 0,
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-165/runtime.txt",
+        "sha256": "f7f7d4cb3c159da394e5b17953c9b17f341b52fa3679337c049e8cc2f9cc5e3a"
+      }
+    },
+    "build": {
+      "pages": 29,
+      "status": "passed",
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-165/build.txt",
+        "sha256": "684da98e70eeccdf565502de2d05c9fcb06a0f8e09554d9f62b7a58f9535c582"
+      }
+    },
+    "diffCheck": "passed"
+  },
+  "ui": {
+    "apiSearch": {
+      "en": [
+        "API Reference",
+        "Changelog",
+        "XPath"
+      ],
+      "ja": [
+        "API リファレンス",
+        "XPath",
+        "変更履歴"
+      ],
+      "query": "xpath_query",
+      "status": "passed"
+    },
+    "languageSwitch": {
+      "enToJa": true,
+      "jaToEn": true,
+      "sameXPathRoutePreserved": true
+    },
+    "codeCopy": {
+      "status": "passed",
+      "scope": "XPath英語ページの最初のコード",
+      "expected": "xml_node xpath_node::node() const;\nxml_attribute xpath_node::attribute() const;",
+      "actualExact": true,
+      "clipboardRestored": true
+    },
+    "table": {
+      "scope": "XPath英語ページの最初のNote表",
+      "observed": "本文・Noteラベルを目視確認。長いコードは横スクロール。注記ラベルと内容の列幅は各半分程度。",
+      "status": "partial"
+    },
+    "console": {
+      "errorsObserved": 0,
+      "scope": "修正前XPathページの検索ダイアログ確認時"
+    }
+  },
+  "remaining": [
+    "全24文書の表示",
+    "モバイルとキーボード",
+    "入口/カテゴリ/404/版選択/前後移動",
+    "共有スクリプト変更を含む最新統合回帰",
+    "公開前証拠再検証"
+  ],
+  "publication": "not-performed"
+}

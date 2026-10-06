@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "reviewedAt": "2026-10-02T08:16:27.434Z",
+  "scope": "変更章全919行、原text全100ブロック、8小節、全81翻訳単位を初稿保存後の別工程で全文照合。",
+  "source": {
+    "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/06-modifying-document-data.html",
+    "sha256": "d9643488d4a04160a3aa88d57ce097470dba7489091964814f7e021f7ddbe930"
+  },
+  "canonical": {
+    "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/06-modifying-document-data.md",
+    "sha256": "17caa40b3c553e771c6fdce5b906cbc334c41b28793b2531e0f9b29524307922"
+  },
+  "initial": {
+    "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-146/ja/02-manual/06-modifying-document-data.md",
+    "sha256": "be21a815bf5ad8f569c5afd2a7ff73a410f9d8372d01bae01ef6b5dc8f46d739"
+  },
+  "final": {
+    "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-149/ja/02-manual/06-modifying-document-data.md",
+    "sha256": "47604f971e90294fd75937cfc4d6936c0a84bd89d6cedd3f17b01f00dacdac96"
+  },
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        593
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        919
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        919
+      ]
+    ]
+  },
+  "aiContentReview": {
+    "separatePass": true,
+    "sourceToCanonical": "原text0–99を全読。全関数宣言と21コード例、全失敗条件/注意を照合。固定再生成と原コードの機械保全は別検査。",
+    "canonicalToJapanese": "保存済み初稿の全81翻訳単位を全読。名前/値、メモリー所有権、追加/削除/コピー/移動/フラグメントの条件を照合。",
+    "findings": [
+      "構造上の整合性とXMLの有効性の違い、constハンドルの代入可能性、set_name/set_valueの型制約/null/メモリー失敗と文字列コピー/内容未検証を保持。",
+      "数値の表記、浮動小数点のロケール依存とCHARCONV例外、long longの条件、代入演算子の戻り値によるエラー無視を保持。",
+      "append/prepend/insert/ensureの位置と存在条件、追加全7失敗条件、失敗後整合性、attribute/childは追加しない注意を保持。",
+      "remove全失敗条件、部分ツリー削除、ハンドル/指すイテレーターと末尾イテレーターの無効化、名前削除は最初だけ/while全削除を保持。",
+      "xml_textのsetが必要時にPCDATA子を作る条件、値を持てない非要素/null/メモリーの失敗条件と文字列コピーを保持。",
+      "深い複製/文書間コピー/文書ノード直接不可/内部ノードへのコピーは開始前状態、移動は同一文書限定/自己と内部ノードへの移動禁止を保持。",
+      "append_bufferのnative encoding性能条件、バッファコピーは文書破棄まで存続し全ノード削除でも回収不可、入力不変/戻り後解放可、根型制約を保持。",
+      "テキスト代入説明のattributeは掲載xml_text&宣言と不一致。テキストオブジェクトと訳し、原文の誤記を訳注で明示。"
+    ],
+    "changes": [
+      {
+        "line": 618,
+        "before": "これらの演算子は、対応する`set`を呼び出し、呼び出し元の属性を返すだけです。`set`の戻り値を無視するため、エラーも無視されます。",
+        "after": "これらの演算子は、対応する`set`を呼び出し、呼び出し元のテキストオブジェクトを返すだけです。`set`の戻り値を無視するため、エラーも無視されます。（訳注：原文は戻り値を「属性」と記していますが、上の関数宣言ではテキストオブジェクトへの参照を返します。）",
+        "reason": "原文attributeとxml_text&の宣言の不一致を、宣言に基づく訳注で明示。原資料・定本は保持。"
+      }
+    ],
+    "japaneseReadability": "型・失敗条件・ハンドル寿命の区別は整合。原文の戻り値の誤記を明示し、読者の誤解を防ぐ。",
+    "sourceLimitations": [
+      "原文の要素ノードは値を持たない説明はparse_embed_pcdataの特例を記載していない。固定原文を保全し特例なしの保証として追認しない。",
+      "text代入のattribute誤記以外の原文補筆や実装の挙動保証は行わない。"
+    ]
+  },
+  "mechanicalEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-149/MECHANICAL.json",
+    "sha256": "a657814a2a2caf9d29598b9d7972c6a402e9f137d43b2cfe1166756d0cc1cbe8"
+  },
+  "projectVerified": false,
+  "reviewedPages": 9,
+  "totalPages": 12
+}

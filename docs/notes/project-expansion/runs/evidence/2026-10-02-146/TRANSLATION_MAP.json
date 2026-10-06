@@ -1,0 +1,107 @@
+[
+  {
+    "line": 2,
+    "source": "title: \"Modifying Document Data\"",
+    "translation": "title: \"文書データの変更\""
+  },
+  {
+    "line": 3,
+    "source": "description: \"pugixml 1.16 Modifying Document Data complete official text.\"",
+    "translation": "description: \"pugixml 1.16の公式文書データ変更説明全文。\""
+  },
+  {
+    "line": 11,
+    "source": "## <a href=\"#source-modify\" class=\"anchor\"></a><a href=\"#source-modify\" class=\"link\">6. Modifying document data</a>",
+    "translation": "## <a href=\"#source-modify\" class=\"anchor\"></a><a href=\"#source-modify\" class=\"link\">6. 文書データの変更</a>"
+  },
+  {
+    "line": 17,
+    "source": "The document in pugixml is fully mutable: you can completely change the document structure and modify the data of nodes/attributes. This section provides documentation for the relevant functions. All functions take care of memory management and structural integrity themselves, so they always result in structurally valid tree - however, it is possible to create an invalid XML tree (for example, by adding two attributes with the same name or by setting attribute/node name to empty/invalid string). Tree modification is optimized for performance and for memory consumption, so if you have enough memory you can create documents from scratch with pugixml and later save them to file/stream instead of relying on error-prone manual text writing and without too much overhead.",
+    "translation": "pugixmlの文書は完全に変更可能です。文書の構造を全面的に変えたり、ノードや属性のデータを変更したりできます。この節では、関連する関数を説明します。すべての関数はメモリー管理と構造の整合性を自ら処理するため、結果のツリーは常に構造上有効です。ただし、不正なXMLツリーを作ることはできます。たとえば、同じ名前の属性を2つ追加したり、属性やノードの名前を空文字列や不正な文字列に設定したりする場合です。ツリーの変更は性能とメモリー消費について最適化されているため、十分なメモリーがあれば、pugixmlで文書を一から作成し、後でファイルやストリームへ保存できます。誤りの生じやすい手動のテキスト書き出しに頼る必要がなく、過度のオーバーヘッドもありません。"
+  },
+  {
+    "line": 23,
+    "source": "All member functions that change node/attribute data or structure are non-constant and thus can not be called on constant handles. However, you can easily convert constant handle to non-constant one by simple assignment: `void foo(const pugi::xml_node& n) { pugi::xml_node nc = n; }`, so const-correctness here mainly provides additional documentation.",
+    "translation": "ノードや属性のデータまたは構造を変更するメンバー関数は、すべて非constであり、constハンドルでは呼び出せません。ただし、`void foo(const pugi::xml_node& n) { pugi::xml_node nc = n; }`のような単純な代入で、constハンドルを非constハンドルへ簡単に変換できます。このため、ここでのconstの正しい使用は、主に追加の説明として役立ちます。"
+  },
+  {
+    "line": 31,
+    "source": "### <a href=\"#source-modify.nodedata\" class=\"anchor\"></a><a href=\"#source-modify.nodedata\" class=\"link\">6.1. Setting node data</a>",
+    "translation": "### <a href=\"#source-modify.nodedata\" class=\"anchor\"></a><a href=\"#source-modify.nodedata\" class=\"link\">6.1. ノードデータの設定</a>"
+  },
+  {
+    "line": 35,
+    "source": "<span id=\"source-xml_node::set_name\"></span><span id=\"source-xml_node::set_value\"></span> As discussed before, nodes can have name and value, both of which are strings. Depending on node type, name or value may be absent. [node_document](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_document) nodes do not have a name or value, [node_element](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_element) and [node_declaration](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_declaration) nodes always have a name but never have a value, [node_pcdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pcdata), [node_cdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_cdata), [node_comment](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_comment) and [node_doctype](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_doctype) nodes never have a name but always have a value (it may be empty though), [node_pi](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pi) nodes always have a name and a value (again, value may be empty). In order to set node’s name or value, you can use the following functions:",
+    "translation": "<span id=\"source-xml_node::set_name\"></span><span id=\"source-xml_node::set_value\"></span> 前述のとおり、ノードは名前と値を持つことがあり、どちらも文字列です。ノード型によっては、名前や値がありません。[node_document](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_document)ノードは名前も値も持ちません。[node_element](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_element)と[node_declaration](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_declaration)ノードは常に名前を持ちますが、値は持ちません。[node_pcdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pcdata)、[node_cdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_cdata)、[node_comment](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_comment)、[node_doctype](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_doctype)ノードは名前を持たず、常に値を持ちます。ただし、値は空の場合もあります。[node_pi](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pi)ノードは常に名前と値を持ちますが、やはり値は空の場合があります。ノードの名前や値を設定するには、次の関数を使えます。"
+  },
+  {
+    "line": 58,
+    "source": "Both functions try to set the name/value to the specified string, and return the operation result. The operation fails if the node can not have name or value (for instance, when trying to call `set_name` on a [node_pcdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pcdata) node), if the node handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to these functions). The name/value content is not verified, so take care to use only valid XML names, or the document may become malformed.",
+    "translation": "これらの関数は、名前や値を指定した文字列へ設定することを試み、操作の結果を返します。ノードが名前や値を持てない場合（たとえば、[node_pcdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pcdata)ノードで`set_name`を呼び出す場合）、ノードハンドルがnullの場合、または処理に必要なメモリーが足りない場合、操作は失敗します。渡した文字列は文書が管理するメモリーへコピーされるため、関数が戻った後で破棄できます。たとえば、スタックに割り当てたバッファを安全に渡せます。名前や値の内容は検証されないため、有効なXML名だけを使うよう注意してください。そうしないと、文書が不正な形式になる場合があります。"
+  },
+  {
+    "line": 64,
+    "source": "This is an example of setting node name and value ([samples/modify_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_base.cpp)):",
+    "translation": "ノードの名前と値を設定する例です（[samples/modify_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_base.cpp)）。"
+  },
+  {
+    "line": 97,
+    "source": "### <a href=\"#source-modify.attrdata\" class=\"anchor\"></a><a href=\"#source-modify.attrdata\" class=\"link\">6.2. Setting attribute data</a>",
+    "translation": "### <a href=\"#source-modify.attrdata\" class=\"anchor\"></a><a href=\"#source-modify.attrdata\" class=\"link\">6.2. 属性データの設定</a>"
+  },
+  {
+    "line": 101,
+    "source": "<span id=\"source-xml_attribute::set_name\"></span><span id=\"source-xml_attribute::set_value\"></span> All attributes have name and value, both of which are strings (value may be empty). You can set them with the following functions:",
+    "translation": "<span id=\"source-xml_attribute::set_name\"></span><span id=\"source-xml_attribute::set_value\"></span> すべての属性は名前と値を持ち、どちらも文字列です。値は空の場合もあります。次の関数で設定できます。"
+  },
+  {
+    "line": 124,
+    "source": "Both functions try to set the name/value to the specified string, and return the operation result. The operation fails if the attribute handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to these functions). The name/value content is not verified, so take care to use only valid XML names, or the document may become malformed.",
+    "translation": "これらの関数は、名前や値を指定した文字列へ設定することを試み、操作の結果を返します。属性ハンドルがnullの場合、または処理に必要なメモリーが足りない場合、操作は失敗します。渡した文字列は文書が管理するメモリーへコピーされるため、関数が戻った後で破棄できます。たとえば、スタックに割り当てたバッファを安全に渡せます。名前や値の内容は検証されないため、有効なXML名だけを使うよう注意してください。そうしないと、文書が不正な形式になる場合があります。"
+  },
+  {
+    "line": 130,
+    "source": "In addition to string functions, several functions are provided for handling attributes with numbers and booleans as values:",
+    "translation": "文字列の関数に加えて、数値や真偽値を値とする属性を扱う関数もあります。"
+  },
+  {
+    "line": 158,
+    "source": "The above functions convert the argument to string and then call the base `set_value` function. Integers are converted to a decimal form, floating-point numbers are converted to either decimal or scientific form, depending on the number magnitude, boolean values are converted to either `\"true\"` or `\"false\"`.",
+    "translation": "上記の関数は引数を文字列へ変換し、基本の`set_value`を呼び出します。整数は10進表記へ、浮動小数点数は数値の大きさに応じて10進表記または科学的記数法へ、真偽値は`\"true\"`または`\"false\"`へ変換されます。"
+  },
+  {
+    "line": 172,
+    "source": "Caution",
+    "translation": "注意"
+  },
+  {
+    "line": 174,
+    "source": "<td class=\"content\">Floating-point conversion functions depend on the current C locale as set with <code>setlocale</code>, so may generate unexpected results if the locale is different from <code>\"C\"</code>. This does not apply when pugixml is built with <code>PUGIXML_CHARCONV_FLOAT</code>.</td>",
+    "translation": "<td class=\"content\">浮動小数点変換関数は、<code>setlocale</code>で設定された現在のCロケールに依存するため、ロケールが<code>\"C\"</code>以外の場合、予想外の結果を生成することがあります。<code>PUGIXML_CHARCONV_FLOAT</code>を指定してpugixmlをビルドした場合には、この制約は当てはまりません。</td>"
+  },
+  {
+    "line": 191,
+    "source": "Note",
+    "translation": "注記"
+  },
+  {
+    "line": 193,
+    "source": "<td class=\"content\"><code>set_value</code> overloads with <code>long long</code> type are only available if your platform has support for the type.</td>",
+    "translation": "<td class=\"content\"><code>set_value</code>のうち、<code>long long</code>型を取るオーバーロードは、プラットフォームがその型に対応している場合にだけ使えます。</td>"
+  },
+  {
+    "line": 202,
+    "source": "For convenience, all `set_value` functions have the corresponding assignment operators:",
+    "translation": "利便性のため、すべての`set_value`関数に対応する代入演算子があります。"
+  },
+  {
+    "line": 230,
+    "source": "These operators simply call the right `set_value` function and return the attribute they’re called on; the return value of `set_value` is ignored, so errors are ignored.",
+    "translation": "これらの演算子は、対応する`set_value`を呼び出し、呼び出し元の属性を返すだけです。`set_value`の戻り値を無視するため、エラーも無視されます。"
+  },
+  {
+    "line": 236,
+    "source": "This is an example of setting attribute name and value ([samples/modify_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_base.cpp)):",
+    "translation": "属性の名前と値を設定する例です（[samples/modify_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_base.cpp)）。"
+  }
+]

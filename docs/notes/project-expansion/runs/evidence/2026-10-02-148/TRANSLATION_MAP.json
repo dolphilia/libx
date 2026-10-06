@@ -1,0 +1,407 @@
+[
+  {
+    "line": 2,
+    "source": "title: \"Modifying Document Data\"",
+    "translation": "title: \"文書データの変更\""
+  },
+  {
+    "line": 3,
+    "source": "description: \"pugixml 1.16 Modifying Document Data complete official text.\"",
+    "translation": "description: \"pugixml 1.16の公式文書データ変更説明全文。\""
+  },
+  {
+    "line": 11,
+    "source": "## <a href=\"#source-modify\" class=\"anchor\"></a><a href=\"#source-modify\" class=\"link\">6. Modifying document data</a>",
+    "translation": "## <a href=\"#source-modify\" class=\"anchor\"></a><a href=\"#source-modify\" class=\"link\">6. 文書データの変更</a>"
+  },
+  {
+    "line": 17,
+    "source": "The document in pugixml is fully mutable: you can completely change the document structure and modify the data of nodes/attributes. This section provides documentation for the relevant functions. All functions take care of memory management and structural integrity themselves, so they always result in structurally valid tree - however, it is possible to create an invalid XML tree (for example, by adding two attributes with the same name or by setting attribute/node name to empty/invalid string). Tree modification is optimized for performance and for memory consumption, so if you have enough memory you can create documents from scratch with pugixml and later save them to file/stream instead of relying on error-prone manual text writing and without too much overhead.",
+    "translation": "pugixmlの文書は完全に変更可能です。文書の構造を全面的に変えたり、ノードや属性のデータを変更したりできます。この節では、関連する関数を説明します。すべての関数はメモリー管理と構造の整合性を自ら処理するため、結果のツリーは常に構造上有効です。ただし、不正なXMLツリーを作ることはできます。たとえば、同じ名前の属性を2つ追加したり、属性やノードの名前を空文字列や不正な文字列に設定したりする場合です。ツリーの変更は性能とメモリー消費について最適化されているため、十分なメモリーがあれば、pugixmlで文書を一から作成し、後でファイルやストリームへ保存できます。誤りの生じやすい手動のテキスト書き出しに頼る必要がなく、過度のオーバーヘッドもありません。"
+  },
+  {
+    "line": 23,
+    "source": "All member functions that change node/attribute data or structure are non-constant and thus can not be called on constant handles. However, you can easily convert constant handle to non-constant one by simple assignment: `void foo(const pugi::xml_node& n) { pugi::xml_node nc = n; }`, so const-correctness here mainly provides additional documentation.",
+    "translation": "ノードや属性のデータまたは構造を変更するメンバー関数は、すべて非constであり、constハンドルでは呼び出せません。ただし、`void foo(const pugi::xml_node& n) { pugi::xml_node nc = n; }`のような単純な代入で、constハンドルを非constハンドルへ簡単に変換できます。このため、ここでのconstの正しい使用は、主に追加の説明として役立ちます。"
+  },
+  {
+    "line": 31,
+    "source": "### <a href=\"#source-modify.nodedata\" class=\"anchor\"></a><a href=\"#source-modify.nodedata\" class=\"link\">6.1. Setting node data</a>",
+    "translation": "### <a href=\"#source-modify.nodedata\" class=\"anchor\"></a><a href=\"#source-modify.nodedata\" class=\"link\">6.1. ノードデータの設定</a>"
+  },
+  {
+    "line": 35,
+    "source": "<span id=\"source-xml_node::set_name\"></span><span id=\"source-xml_node::set_value\"></span> As discussed before, nodes can have name and value, both of which are strings. Depending on node type, name or value may be absent. [node_document](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_document) nodes do not have a name or value, [node_element](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_element) and [node_declaration](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_declaration) nodes always have a name but never have a value, [node_pcdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pcdata), [node_cdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_cdata), [node_comment](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_comment) and [node_doctype](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_doctype) nodes never have a name but always have a value (it may be empty though), [node_pi](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pi) nodes always have a name and a value (again, value may be empty). In order to set node’s name or value, you can use the following functions:",
+    "translation": "<span id=\"source-xml_node::set_name\"></span><span id=\"source-xml_node::set_value\"></span> 前述のとおり、ノードは名前と値を持つことがあり、どちらも文字列です。ノード型によっては、名前や値がありません。[node_document](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_document)ノードは名前も値も持ちません。[node_element](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_element)と[node_declaration](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_declaration)ノードは常に名前を持ちますが、値は持ちません。[node_pcdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pcdata)、[node_cdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_cdata)、[node_comment](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_comment)、[node_doctype](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_doctype)ノードは名前を持たず、常に値を持ちます。ただし、値は空の場合もあります。[node_pi](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pi)ノードは常に名前と値を持ちますが、やはり値は空の場合があります。ノードの名前や値を設定するには、次の関数を使えます。"
+  },
+  {
+    "line": 58,
+    "source": "Both functions try to set the name/value to the specified string, and return the operation result. The operation fails if the node can not have name or value (for instance, when trying to call `set_name` on a [node_pcdata](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_pcdata) node), if the node handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to these functions). The name/value content is not verified, so take care to use only valid XML names, or the document may become malformed.",
+    "translation": "これらの関数は、名前や値を指定した文字列へ設定することを試み、操作の結果を返します。ノードが名前や値を持てない場合（たとえば、[node_pcdata](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_pcdata)ノードで`set_name`を呼び出す場合）、ノードハンドルがnullの場合、または処理に必要なメモリーが足りない場合、操作は失敗します。渡した文字列は文書が管理するメモリーへコピーされるため、関数が戻った後で破棄できます。たとえば、スタックに割り当てたバッファを安全に渡せます。名前や値の内容は検証されないため、有効なXML名だけを使うよう注意してください。そうしないと、文書が不正な形式になる場合があります。"
+  },
+  {
+    "line": 64,
+    "source": "This is an example of setting node name and value ([samples/modify_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_base.cpp)):",
+    "translation": "ノードの名前と値を設定する例です（[samples/modify_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_base.cpp)）。"
+  },
+  {
+    "line": 97,
+    "source": "### <a href=\"#source-modify.attrdata\" class=\"anchor\"></a><a href=\"#source-modify.attrdata\" class=\"link\">6.2. Setting attribute data</a>",
+    "translation": "### <a href=\"#source-modify.attrdata\" class=\"anchor\"></a><a href=\"#source-modify.attrdata\" class=\"link\">6.2. 属性データの設定</a>"
+  },
+  {
+    "line": 101,
+    "source": "<span id=\"source-xml_attribute::set_name\"></span><span id=\"source-xml_attribute::set_value\"></span> All attributes have name and value, both of which are strings (value may be empty). You can set them with the following functions:",
+    "translation": "<span id=\"source-xml_attribute::set_name\"></span><span id=\"source-xml_attribute::set_value\"></span> すべての属性は名前と値を持ち、どちらも文字列です。値は空の場合もあります。次の関数で設定できます。"
+  },
+  {
+    "line": 124,
+    "source": "Both functions try to set the name/value to the specified string, and return the operation result. The operation fails if the attribute handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to these functions). The name/value content is not verified, so take care to use only valid XML names, or the document may become malformed.",
+    "translation": "これらの関数は、名前や値を指定した文字列へ設定することを試み、操作の結果を返します。属性ハンドルがnullの場合、または処理に必要なメモリーが足りない場合、操作は失敗します。渡した文字列は文書が管理するメモリーへコピーされるため、関数が戻った後で破棄できます。たとえば、スタックに割り当てたバッファを安全に渡せます。名前や値の内容は検証されないため、有効なXML名だけを使うよう注意してください。そうしないと、文書が不正な形式になる場合があります。"
+  },
+  {
+    "line": 130,
+    "source": "In addition to string functions, several functions are provided for handling attributes with numbers and booleans as values:",
+    "translation": "文字列の関数に加えて、数値や真偽値を値とする属性を扱う関数もあります。"
+  },
+  {
+    "line": 158,
+    "source": "The above functions convert the argument to string and then call the base `set_value` function. Integers are converted to a decimal form, floating-point numbers are converted to either decimal or scientific form, depending on the number magnitude, boolean values are converted to either `\"true\"` or `\"false\"`.",
+    "translation": "上記の関数は引数を文字列へ変換し、基本の`set_value`を呼び出します。整数は10進表記へ、浮動小数点数は数値の大きさに応じて10進表記または科学的記数法へ、真偽値は`\"true\"`または`\"false\"`へ変換されます。"
+  },
+  {
+    "line": 172,
+    "source": "Caution",
+    "translation": "注意"
+  },
+  {
+    "line": 174,
+    "source": "<td class=\"content\">Floating-point conversion functions depend on the current C locale as set with <code>setlocale</code>, so may generate unexpected results if the locale is different from <code>\"C\"</code>. This does not apply when pugixml is built with <code>PUGIXML_CHARCONV_FLOAT</code>.</td>",
+    "translation": "<td class=\"content\">浮動小数点変換関数は、<code>setlocale</code>で設定された現在のCロケールに依存するため、ロケールが<code>\"C\"</code>以外の場合、予想外の結果を生成することがあります。<code>PUGIXML_CHARCONV_FLOAT</code>を指定してpugixmlをビルドした場合には、この制約は当てはまりません。</td>"
+  },
+  {
+    "line": 191,
+    "source": "Note",
+    "translation": "注記"
+  },
+  {
+    "line": 193,
+    "source": "<td class=\"content\"><code>set_value</code> overloads with <code>long long</code> type are only available if your platform has support for the type.</td>",
+    "translation": "<td class=\"content\"><code>set_value</code>のうち、<code>long long</code>型を取るオーバーロードは、プラットフォームがその型に対応している場合にだけ使えます。</td>"
+  },
+  {
+    "line": 202,
+    "source": "For convenience, all `set_value` functions have the corresponding assignment operators:",
+    "translation": "利便性のため、すべての`set_value`関数に対応する代入演算子があります。"
+  },
+  {
+    "line": 230,
+    "source": "These operators simply call the right `set_value` function and return the attribute they’re called on; the return value of `set_value` is ignored, so errors are ignored.",
+    "translation": "これらの演算子は、対応する`set_value`を呼び出し、呼び出し元の属性を返すだけです。`set_value`の戻り値を無視するため、エラーも無視されます。"
+  },
+  {
+    "line": 236,
+    "source": "This is an example of setting attribute name and value ([samples/modify_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_base.cpp)):",
+    "translation": "属性の名前と値を設定する例です（[samples/modify_base.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_base.cpp)）。"
+  },
+  {
+    "line": 270,
+    "source": "### <a href=\"#source-modify.add\" class=\"anchor\"></a><a href=\"#source-modify.add\" class=\"link\">6.3. Adding nodes/attributes</a>",
+    "translation": "### <a href=\"#source-modify.add\" class=\"anchor\"></a><a href=\"#source-modify.add\" class=\"link\">6.3. ノード・属性の追加</a>"
+  },
+  {
+    "line": 274,
+    "source": "<span id=\"source-xml_node::prepend_attribute\"></span><span id=\"source-xml_node::append_attribute\"></span><span id=\"source-xml_node::insert_attribute_after\"></span><span id=\"source-xml_node::insert_attribute_before\"></span><span id=\"source-xml_node::ensure_attribute\"></span><span id=\"source-xml_node::prepend_child\"></span><span id=\"source-xml_node::append_child\"></span><span id=\"source-xml_node::insert_child_after\"></span><span id=\"source-xml_node::insert_child_before\"></span><span id=\"source-xml_node::ensure_child\"></span> Nodes and attributes do not exist without a document tree, so you can’t create them without adding them to some document. A node or attribute can be created at the end of node/attribute list or before/after some other node:",
+    "translation": "<span id=\"source-xml_node::prepend_attribute\"></span><span id=\"source-xml_node::append_attribute\"></span><span id=\"source-xml_node::insert_attribute_after\"></span><span id=\"source-xml_node::insert_attribute_before\"></span><span id=\"source-xml_node::ensure_attribute\"></span><span id=\"source-xml_node::prepend_child\"></span><span id=\"source-xml_node::append_child\"></span><span id=\"source-xml_node::insert_child_after\"></span><span id=\"source-xml_node::insert_child_before\"></span><span id=\"source-xml_node::ensure_child\"></span> ノードと属性は文書ツリーなしでは存在しないため、どこかの文書へ追加せずに作成することはできません。ノードや属性は、ノード・属性リストの末尾や、ほかのノードの前後に作成できます。"
+  },
+  {
+    "line": 318,
+    "source": "`append_attribute` and `append_child` create a new node/attribute at the end of the corresponding list of the node the method is called on; `prepend_attribute` and `prepend_child` create a new node/attribute at the beginning of the list; `insert_attribute_after`, `insert_attribute_before`, `insert_child_after` and `insert_child_before` add the node/attribute before or after the specified node/attribute. `ensure_attribute` and `ensure_child` return the existing attribute/child with the specified name, appending a new one only if no such attribute/child exists; this makes it convenient to write code like `node.ensure_attribute(\"id\") = 123;`.",
+    "translation": "`append_attribute`と`append_child`は、呼び出し元ノードの対応するリストの末尾に、新しいノードや属性を作成します。`prepend_attribute`と`prepend_child`はリストの先頭に作成します。`insert_attribute_after`、`insert_attribute_before`、`insert_child_after`、`insert_child_before`は、指定したノードや属性の前後に追加します。`ensure_attribute`と`ensure_child`は、指定した名前の既存の属性や子を返し、存在しない場合にだけ新しいものを末尾へ追加します。このため、`node.ensure_attribute(\"id\") = 123;`のようなコードを書くのに便利です。"
+  },
+  {
+    "line": 324,
+    "source": "Attribute functions create an attribute with the specified name; you can specify the empty name and change the name later if you want to. Node functions with the `type` argument create the node with the specified type; since node type can’t be changed, you have to know the desired type beforehand. Also note that not all types can be added as children; see below for clarification. Node functions with the `name` argument create the element node ([node_element](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_element)) with the specified name.",
+    "translation": "属性の関数は、指定した名前の属性を作成します。必要なら、空の名前を指定して後から変更することもできます。`type`引数を取るノードの関数は、指定した型のノードを作成します。ノードの型は変更できないため、必要な型を事前に決めておく必要があります。また、すべての型を子として追加できるわけではありません。詳細は後述します。`name`引数を取るノードの関数は、指定した名前の要素ノード（[node_element](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_element)）を作成します。"
+  },
+  {
+    "line": 330,
+    "source": "All functions return the handle to the created object on success, and null handle on failure. There are several reasons for failure:",
+    "translation": "すべての関数は、成功時には作成したオブジェクトへのハンドル、失敗時にはnullハンドルを返します。失敗する理由には次のものがあります。"
+  },
+  {
+    "line": 336,
+    "source": "- Adding fails if the target node is null;",
+    "translation": "- 対象ノードがnullの場合、追加は失敗します。"
+  },
+  {
+    "line": 338,
+    "source": "- Only [node_element](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_element) and [node_declaration](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_declaration) nodes can contain attributes, so attribute adding fails if node is not an element or a declaration;",
+    "translation": "- 属性を持てるのは[node_element](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_element)と[node_declaration](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_declaration)ノードだけなので、ノードが要素や宣言でない場合、属性の追加は失敗します。"
+  },
+  {
+    "line": 340,
+    "source": "- Only [node_document](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_document) and [node_element](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_element) nodes can contain children, so child node adding fails if the target node is not an element or a document;",
+    "translation": "- 子を持てるのは[node_document](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_document)と[node_element](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_element)ノードだけなので、対象ノードが要素や文書でない場合、子ノードの追加は失敗します。"
+  },
+  {
+    "line": 342,
+    "source": "- [node_document](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_document) and [node_null](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_null) nodes can not be inserted as children, so passing [node_document](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_document) or [node_null](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_null) value as `type` results in operation failure;",
+    "translation": "- [node_document](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_document)と[node_null](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_null)ノードは子として挿入できないため、`type`として[node_document](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_document)または[node_null](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_null)を渡すと、操作は失敗します。"
+  },
+  {
+    "line": 344,
+    "source": "- [node_declaration](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_declaration) and [node_doctype](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_doctype) nodes can only be added as children of the document node; attempt to insert them as children of an element node fails;",
+    "translation": "- [node_declaration](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_declaration)と[node_doctype](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_doctype)ノードは、文書ノードの子としてだけ追加できます。要素ノードの子として挿入しようとすると失敗します。"
+  },
+  {
+    "line": 346,
+    "source": "- Adding node/attribute results in memory allocation, which may fail;",
+    "translation": "- ノードや属性の追加ではメモリー割り当てが行われ、失敗する場合があります。"
+  },
+  {
+    "line": 348,
+    "source": "- Insertion functions fail if the specified node or attribute is null or is not in the target node’s children/attribute list.",
+    "translation": "- 挿入関数は、指定したノードや属性がnullの場合や、対象ノードの子・属性リストに属していない場合に失敗します。"
+  },
+  {
+    "line": 354,
+    "source": "Even if the operation fails, the document remains in consistent state, but the requested node/attribute is not added.",
+    "translation": "操作が失敗しても、文書は整合した状態を保ちます。ただし、要求したノードや属性は追加されません。"
+  },
+  {
+    "line": 368,
+    "source": "Caution",
+    "translation": "注意"
+  },
+  {
+    "line": 370,
+    "source": "<td class=\"content\"><code>attribute()</code> and <code>child()</code> functions do not add attributes or nodes to the tree, so code like <code>node.attribute(\"id\") = 123;</code> will not do anything if <code>node</code> does not have an attribute with name <code>\"id\"</code>. Make sure you’re operating with existing attributes/nodes by adding them if necessary, or use <code>ensure_attribute</code>/<code>ensure_child</code>.</td>",
+    "translation": "<td class=\"content\"><code>attribute()</code>と<code>child()</code>は、属性やノードをツリーへ追加しません。そのため、<code>node.attribute(\"id\") = 123;</code>のようなコードは、<code>node</code>に<code>\"id\"</code>という名前の属性がなければ、何も行いません。必要に応じて追加し、既存の属性やノードを操作していることを確認するか、<code>ensure_attribute</code>や<code>ensure_child</code>を使ってください。</td>"
+  },
+  {
+    "line": 379,
+    "source": "This is an example of adding new attributes/nodes to the document ([samples/modify_add.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_add.cpp)):",
+    "translation": "文書へ新しい属性やノードを追加する例です（[samples/modify_add.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_add.cpp)）。"
+  },
+  {
+    "line": 414,
+    "source": "### <a href=\"#source-modify.remove\" class=\"anchor\"></a><a href=\"#source-modify.remove\" class=\"link\">6.4. Removing nodes/attributes</a>",
+    "translation": "### <a href=\"#source-modify.remove\" class=\"anchor\"></a><a href=\"#source-modify.remove\" class=\"link\">6.4. ノード・属性の削除</a>"
+  },
+  {
+    "line": 418,
+    "source": "<span id=\"source-xml_node::remove_attribute\"></span><span id=\"source-xml_node::remove_attributes\"></span><span id=\"source-xml_node::remove_child\"></span><span id=\"source-xml_node::remove_children\"></span> If you do not want your document to contain some node or attribute, you can remove it with one of the following functions:",
+    "translation": "<span id=\"source-xml_node::remove_attribute\"></span><span id=\"source-xml_node::remove_attributes\"></span><span id=\"source-xml_node::remove_child\"></span><span id=\"source-xml_node::remove_children\"></span> 文書に特定のノードや属性を含めたくない場合は、次の関数のいずれかで削除できます。"
+  },
+  {
+    "line": 439,
+    "source": "`remove_attribute` removes the attribute from the attribute list of the node, and returns the operation result. `remove_child` removes the child node with the entire subtree (including all descendant nodes and attributes) from the document, and returns the operation result. `remove_attributes` removes all the attributes of the node, and returns the operation result. `remove_children` removes all the child nodes of the node, and returns the operation result. Removing fails if one of the following is true:",
+    "translation": "`remove_attribute`は、ノードの属性リストから属性を削除し、操作の結果を返します。`remove_child`は、すべての子孫ノードと属性を含む部分ツリー全体ごと、子ノードを文書から削除し、操作の結果を返します。`remove_attributes`はノードのすべての属性を削除し、操作の結果を返します。`remove_children`はノードのすべての子ノードを削除し、操作の結果を返します。次のいずれかに当てはまる場合、削除は失敗します。"
+  },
+  {
+    "line": 445,
+    "source": "- The node the function is called on is null;",
+    "translation": "- 呼び出し元ノードがnullである場合。"
+  },
+  {
+    "line": 447,
+    "source": "- The attribute/node to be removed is null;",
+    "translation": "- 削除する属性やノードがnullである場合。"
+  },
+  {
+    "line": 449,
+    "source": "- The attribute/node to be removed is not in the node’s attribute/child list.",
+    "translation": "- 削除する属性やノードが、ノードの属性・子リストに属していない場合。"
+  },
+  {
+    "line": 455,
+    "source": "Removing the attribute or node invalidates all handles to the same underlying object, and also invalidates all iterators pointing to the same object. Removing node also invalidates all past-the-end iterators to its attribute or child node list. Be careful to ensure that all such handles and iterators either do not exist or are not used after the attribute/node is removed.",
+    "translation": "属性やノードを削除すると、同じ内部オブジェクトへのすべてのハンドルと、そのオブジェクトを指すすべてのイテレーターが無効になります。ノードの削除では、その属性リストや子ノードリストの末尾の次を指すイテレーターも、すべて無効になります。このようなハンドルやイテレーターが存在しないか、属性やノードの削除後に使われないことを、慎重に確認してください。"
+  },
+  {
+    "line": 461,
+    "source": "If you want to remove the attribute or child node by its name, two additional helper functions are available:",
+    "translation": "属性や子ノードを名前で削除するための補助関数も2つあります。"
+  },
+  {
+    "line": 482,
+    "source": "These functions look for the first attribute or child with the specified name, and then remove it, returning the result. If there is no attribute or child with such name, the function returns `false`; if there are two nodes with the given name, only the first node is deleted. If you want to delete all nodes with the specified name, you can use code like this: `while (node.remove_child(\"tool\")) ;`.",
+    "translation": "これらの関数は、指定した名前の最初の属性や子を探して削除し、その結果を返します。その名前の属性や子がなければ、`false`を返します。同じ名前のノードが2つあれば、最初のノードだけを削除します。指定した名前のノードをすべて削除するには、`while (node.remove_child(\"tool\")) ;`のようなコードを使えます。"
+  },
+  {
+    "line": 488,
+    "source": "This is an example of removing attributes/nodes from the document ([samples/modify_remove.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_remove.cpp)):",
+    "translation": "文書から属性やノードを削除する例です（[samples/modify_remove.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/modify_remove.cpp)）。"
+  },
+  {
+    "line": 520,
+    "source": "### <a href=\"#source-modify.text\" class=\"anchor\"></a><a href=\"#source-modify.text\" class=\"link\">6.5. Working with text contents</a>",
+    "translation": "### <a href=\"#source-modify.text\" class=\"anchor\"></a><a href=\"#source-modify.text\" class=\"link\">6.5. テキスト内容の操作</a>"
+  },
+  {
+    "line": 524,
+    "source": "pugixml provides a special class, `xml_text`, to work with text contents stored as a value of some node, i.e. `<node><description>This is a node</description></node>`. Working with text objects to retrieve data is described in [the documentation for accessing document data](/docs/pugixml/v1-16/en/02-manual/05-accessing-document-data/#source-access.text); this section describes the modification interface of `xml_text`.",
+    "translation": "pugixmlには、ノードの値として保存されたテキスト内容を扱う専用のクラス`xml_text`があります。たとえば`<node><description>This is a node</description></node>`のような場合です。テキストオブジェクトを使ったデータ取得は、[文書データへのアクセスの説明](/docs/pugixml/v1-16/ja/02-manual/05-accessing-document-data/#source-access.text)で扱います。この節では、`xml_text`の変更インターフェースを説明します。"
+  },
+  {
+    "line": 530,
+    "source": "Once you have an `xml_text` object, you can set the text contents using the following function:",
+    "translation": "`xml_text`オブジェクトがあれば、次の関数でテキスト内容を設定できます。"
+  },
+  {
+    "line": 550,
+    "source": "This function tries to set the contents to the specified string, and returns the operation result. The operation fails if the text object was retrieved from a node that can not have a value and is not an element node (i.e. it is a [node_declaration](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_declaration) node), if the node handle is null, or if there is insufficient memory to handle the request. The provided string is copied into document managed memory and can be destroyed after the function returns (for example, you can safely pass stack-allocated buffers to this function). Note that if the text object was retrieved from an element node, this function creates the PCDATA child node if necessary (i.e. if the element node does not have a PCDATA/CDATA child already).",
+    "translation": "この関数は、内容を指定した文字列へ設定することを試み、操作の結果を返します。テキストオブジェクトの取得元ノードが、値を持てず、要素ノードでもない場合（たとえば[node_declaration](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_declaration)ノードの場合）、ノードハンドルがnullの場合、または処理に必要なメモリーが足りない場合、操作は失敗します。渡した文字列は文書が管理するメモリーへコピーされるため、関数が戻った後で破棄できます。たとえば、スタックに割り当てたバッファを安全に渡せます。要素ノードから取得したテキストオブジェクトの場合、必要ならPCDATAの子ノードを作成します。つまり、その要素ノードにPCDATA・CDATAの子がまだない場合です。"
+  },
+  {
+    "line": 556,
+    "source": "In addition to a string function, several functions are provided for handling text with numbers and booleans as contents:",
+    "translation": "文字列の関数に加えて、数値や真偽値を内容とするテキストを扱う関数もあります。"
+  },
+  {
+    "line": 584,
+    "source": "The above functions convert the argument to string and then call the base `set` function. These functions have the same semantics as similar `xml_attribute` functions. You can [refer to documentation for the attribute functions](#source-xml_attribute::set_value) for details.",
+    "translation": "上記の関数は引数を文字列へ変換し、基本の`set`を呼び出します。対応する`xml_attribute`関数と同じ意味を持ちます。詳細は[属性関数の説明](#source-xml_attribute::set_value)を参照してください。"
+  },
+  {
+    "line": 590,
+    "source": "For convenience, all `set` functions have the corresponding assignment operators:",
+    "translation": "利便性のため、すべての`set`関数に対応する代入演算子があります。"
+  },
+  {
+    "line": 618,
+    "source": "These operators simply call the right `set` function and return the attribute they’re called on; the return value of `set` is ignored, so errors are ignored.",
+    "translation": "これらの演算子は、対応する`set`を呼び出し、呼び出し元の属性を返すだけです。`set`の戻り値を無視するため、エラーも無視されます。"
+  },
+  {
+    "line": 624,
+    "source": "This is an example of using `xml_text` object to modify text contents ([samples/text.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/text.cpp)):",
+    "translation": "`xml_text`オブジェクトでテキスト内容を変更する例です（[samples/text.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/text.cpp)）。"
+  },
+  {
+    "line": 651,
+    "source": "### <a href=\"#source-modify.clone\" class=\"anchor\"></a><a href=\"#source-modify.clone\" class=\"link\">6.6. Cloning nodes/attributes</a>",
+    "translation": "### <a href=\"#source-modify.clone\" class=\"anchor\"></a><a href=\"#source-modify.clone\" class=\"link\">6.6. ノード・属性の複製</a>"
+  },
+  {
+    "line": 655,
+    "source": "<span id=\"source-xml_node::prepend_copy\"></span><span id=\"source-xml_node::append_copy\"></span><span id=\"source-xml_node::insert_copy_after\"></span><span id=\"source-xml_node::insert_copy_before\"></span> With the help of previously described functions, it is possible to create trees with any contents and structure, including cloning the existing data. However since this is an often needed operation, pugixml provides built-in node/attribute cloning facilities. Since nodes and attributes do not exist without a document tree, you can’t create a standalone copy - you have to immediately insert it somewhere in the tree. For this, you can use one of the following functions:",
+    "translation": "<span id=\"source-xml_node::prepend_copy\"></span><span id=\"source-xml_node::append_copy\"></span><span id=\"source-xml_node::insert_copy_after\"></span><span id=\"source-xml_node::insert_copy_before\"></span> これまでに説明した関数を使うと、既存データの複製を含め、任意の内容と構造のツリーを作成できます。ただし、複製はよく必要になる操作なので、pugixmlにはノードと属性の複製機能が組み込まれています。ノードと属性は文書ツリーなしでは存在しないため、単独のコピーは作成できません。直ちにツリーのどこかへ挿入する必要があります。そのために、次の関数のいずれかを使えます。"
+  },
+  {
+    "line": 681,
+    "source": "These functions mirror the structure of `append_child`, `prepend_child`, `insert_child_before` and related functions - they take the handle to the prototype object, which is to be cloned, insert a new attribute/node at the appropriate place, and then copy the attribute data or the whole node subtree to the new object. The functions return the handle to the resulting duplicate object, or null handle on failure.",
+    "translation": "これらの関数の構成は、`append_child`、`prepend_child`、`insert_child_before`などの関数に対応しています。複製元オブジェクトへのハンドルを受け取り、適切な場所に新しい属性やノードを挿入した後、属性のデータやノードの部分ツリー全体を、新しいオブジェクトへコピーします。結果の複製オブジェクトへのハンドルを返し、失敗時にはnullハンドルを返します。"
+  },
+  {
+    "line": 687,
+    "source": "The attribute is copied along with the name and value; the node is copied along with its type, name and value; additionally attribute list and all children are recursively cloned, resulting in the deep subtree clone. The prototype object can be a part of the same document, or a part of any other document.",
+    "translation": "属性は名前と値を含めてコピーされます。ノードは型、名前、値を含めてコピーされ、さらに属性リストとすべての子が再帰的に複製されるため、部分ツリーの深いコピーになります。複製元オブジェクトは、同じ文書の一部でも、ほかの文書の一部でも構いません。"
+  },
+  {
+    "line": 693,
+    "source": "The failure conditions resemble those of `append_child`, `insert_child_before` and related functions, [consult their documentation for more information](#source-xml_node::append_child). There are additional caveats specific to cloning functions:",
+    "translation": "失敗する条件は、`append_child`、`insert_child_before`などの関数と似ています。詳細は[それらの説明](#source-xml_node::append_child)を参照してください。複製関数に固有の注意点もあります。"
+  },
+  {
+    "line": 699,
+    "source": "- Cloning null handles results in operation failure;",
+    "translation": "- nullハンドルの複製は失敗します。"
+  },
+  {
+    "line": 701,
+    "source": "- Node cloning starts with insertion of the node of the same type as that of the prototype; for this reason, cloning functions can not be directly used to clone entire documents, since [node_document](/docs/pugixml/v1-16/en/02-manual/03-document-object-model/#source-node_document) is not a valid insertion type. The example below provides a workaround.",
+    "translation": "- ノードの複製では、最初に複製元と同じ型のノードを挿入します。このため、[node_document](/docs/pugixml/v1-16/ja/02-manual/03-document-object-model/#source-node_document)は有効な挿入型ではないので、複製関数で文書全体を直接複製することはできません。下の例に回避方法を示します。"
+  },
+  {
+    "line": 703,
+    "source": "- It is possible to copy a subtree as a child of some node inside this subtree, i.e. `node.append_copy(node.parent().parent());`. This is a valid operation, and it results in a clone of the subtree in the state before cloning started, i.e. no infinite recursion takes place.",
+    "translation": "- `node.append_copy(node.parent().parent());`のように、部分ツリーを、その内部のノードの子としてコピーできます。これは有効な操作であり、複製開始前の状態の部分ツリーが複製されます。無限の再帰にはなりません。"
+  },
+  {
+    "line": 709,
+    "source": "This is an example with one possible implementation of include tags in XML ([samples/include.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/include.cpp)). It illustrates node cloning and usage of other document modification functions:",
+    "translation": "XMLのincludeタグの実装方法の1つを示す例です（[samples/include.cpp](/docs/pugixml/assets/pugixml-v1-16/samples/include.cpp)）。ノードの複製と、ほかの文書変更関数の使い方を示します。"
+  },
+  {
+    "line": 777,
+    "source": "### <a href=\"#source-modify.move\" class=\"anchor\"></a><a href=\"#source-modify.move\" class=\"link\">6.7. Moving nodes</a>",
+    "translation": "### <a href=\"#source-modify.move\" class=\"anchor\"></a><a href=\"#source-modify.move\" class=\"link\">6.7. ノードの移動</a>"
+  },
+  {
+    "line": 781,
+    "source": "<span id=\"source-xml_node::prepend_move\"></span><span id=\"source-xml_node::append_move\"></span><span id=\"source-xml_node::insert_move_after\"></span><span id=\"source-xml_node::insert_move_before\"></span> Sometimes instead of cloning a node you need to move an existing node to a different position in a tree. This can be accomplished by copying the node and removing the original; however, this is expensive since it results in a lot of extra operations. For moving nodes within the same document tree, you can use of the following functions instead:",
+    "translation": "<span id=\"source-xml_node::prepend_move\"></span><span id=\"source-xml_node::append_move\"></span><span id=\"source-xml_node::insert_move_after\"></span><span id=\"source-xml_node::insert_move_before\"></span> ノードを複製する代わりに、既存のノードをツリー内の別の位置へ移動したい場合があります。ノードをコピーして元を削除することでも実現できますが、余分な操作が多くなるため高コストです。同じ文書ツリー内でノードを移動する場合は、代わりに次の関数を使えます。"
+  },
+  {
+    "line": 802,
+    "source": "These functions mirror the structure of `append_copy`, `prepend_copy`, `insert_copy_before` and `insert_copy_after` - they take the handle to the moved object and move it to the appropriate place with all attributes and/or child nodes. The functions return the handle to the resulting object (which is the same as the moved object), or null handle on failure.",
+    "translation": "これらの関数の構成は、`append_copy`、`prepend_copy`、`insert_copy_before`、`insert_copy_after`に対応しています。移動するオブジェクトへのハンドルを受け取り、すべての属性や子ノードとともに適切な場所へ移動します。結果のオブジェクト（移動したオブジェクトと同じもの）へのハンドルを返し、失敗時にはnullハンドルを返します。"
+  },
+  {
+    "line": 808,
+    "source": "The failure conditions resemble those of `append_child`, `insert_child_before` and related functions, [consult their documentation for more information](#source-xml_node::append_child). There are additional caveats specific to moving functions:",
+    "translation": "失敗する条件は、`append_child`、`insert_child_before`などの関数と似ています。詳細は[それらの説明](#source-xml_node::append_child)を参照してください。移動関数に固有の注意点もあります。"
+  },
+  {
+    "line": 814,
+    "source": "- Moving null handles results in operation failure;",
+    "translation": "- nullハンドルの移動は失敗します。"
+  },
+  {
+    "line": 816,
+    "source": "- Moving is only possible for nodes that belong to the same document; attempting to move nodes between documents will fail.",
+    "translation": "- 同じ文書に属するノードだけを移動できます。文書間でノードを移動しようとすると失敗します。"
+  },
+  {
+    "line": 818,
+    "source": "- `insert_move_after` and `insert_move_before` functions fail if the moved node is the same as the `node` argument (this operation would be a no-op otherwise).",
+    "translation": "- `insert_move_after`と`insert_move_before`は、移動するノードが`node`引数と同じ場合に失敗します。この場合、失敗として扱わなければ、何もしない操作になるためです。"
+  },
+  {
+    "line": 820,
+    "source": "- It is impossible to move a subtree to a child of some node inside this subtree, i.e. `node.append_move(node.parent().parent());` will fail.",
+    "translation": "- 部分ツリーを、その内部のノードの子へ移動することはできません。たとえば、`node.append_move(node.parent().parent());`は失敗します。"
+  },
+  {
+    "line": 830,
+    "source": "### <a href=\"#source-modify.fragments\" class=\"anchor\"></a><a href=\"#source-modify.fragments\" class=\"link\">6.8. Assembling document from fragments</a>",
+    "translation": "### <a href=\"#source-modify.fragments\" class=\"anchor\"></a><a href=\"#source-modify.fragments\" class=\"link\">6.8. フラグメントからの文書の組み立て</a>"
+  },
+  {
+    "line": 834,
+    "source": "pugixml provides several ways to assemble an XML document from other XML documents. Assuming there is a set of document fragments, represented as in-memory buffers, the implementation choices are as follows:",
+    "translation": "pugixmlには、ほかのXML文書からXML文書を組み立てる方法がいくつかあります。メモリー内のバッファとして表された文書フラグメントの集合があるとすると、実装方法には次の選択肢があります。"
+  },
+  {
+    "line": 840,
+    "source": "- Use a temporary document to parse the data from a string, then clone the nodes to a destination node. For example:",
+    "translation": "- 一時的な文書を使って文字列のデータを解析し、ノードを宛先ノードへ複製します。例を示します。"
+  },
+  {
+    "line": 863,
+    "source": "- Cache the parsing step - instead of keeping in-memory buffers, keep document objects that already contain the parsed fragment:",
+    "translation": "- 解析の結果をキャッシュします。メモリー内のバッファを保持する代わりに、解析済みのフラグメントを含む文書オブジェクトを保持します。"
+  },
+  {
+    "line": 881,
+    "source": "- Use `xml_node::append_buffer` directly:",
+    "translation": "- `xml_node::append_buffer`を直接使います。"
+  },
+  {
+    "line": 899,
+    "source": "The first method is more convenient, but slower than the other two. The relative performance of `append_copy` and `append_buffer` depends on the buffer format - usually `append_buffer` is faster if the buffer is in native encoding (UTF-8 or wchar_t, depending on `PUGIXML_WCHAR_MODE`). At the same time it might be less efficient in terms of memory usage - the implementation makes a copy of the provided buffer, and the copy has the same lifetime as the document - the memory used by that copy will be reclaimed after the document is destroyed, but no sooner. Even deleting all nodes in the document, including the appended ones, won’t reclaim the memory.",
+    "translation": "最初の方法は便利ですが、ほかの2つより低速です。`append_copy`と`append_buffer`の相対的な性能は、バッファの形式に依存します。通常、バッファがネイティブエンコーディング（`PUGIXML_WCHAR_MODE`に応じてUTF-8またはwchar_t）なら、`append_buffer`の方が高速です。一方、メモリー使用量の点では効率が低い場合があります。実装は渡されたバッファのコピーを作り、そのコピーは文書と同じ寿命を持ちます。このコピーが使うメモリーは、文書の破棄後に回収され、それより早くは回収されません。追加したノードも含め、文書内のすべてのノードを削除しても、このメモリーは回収されません。"
+  },
+  {
+    "line": 905,
+    "source": "`append_buffer` behaves in the same way as [xml_document::load_buffer](/docs/pugixml/v1-16/en/02-manual/04-loading-documents/#source-xml_document::load_buffer) - the input buffer is a byte buffer, with size in bytes; the buffer is not modified and can be freed after the function returns.",
+    "translation": "`append_buffer`は[xml_document::load_buffer](/docs/pugixml/v1-16/ja/02-manual/04-loading-documents/#source-xml_document::load_buffer)と同じように動作します。入力はバイトバッファで、サイズの単位はバイトです。バッファは変更されず、関数が戻った後で解放できます。"
+  },
+  {
+    "line": 911,
+    "source": "Since `append_buffer` needs to append child nodes to the current node, it only works if the current node is either document or element node. Calling `append_buffer` on a node with any other type results in an error with `status_append_invalid_root` status.",
+    "translation": "`append_buffer`は現在のノードへ子ノードを追加する必要があるため、現在のノードが文書ノードか要素ノードの場合にだけ使えます。ほかの型のノードで`append_buffer`を呼び出すと、`status_append_invalid_root`状態のエラーになります。"
+  }
+]

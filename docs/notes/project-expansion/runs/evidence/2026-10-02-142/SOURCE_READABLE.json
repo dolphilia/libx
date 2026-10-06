@@ -1,0 +1,518 @@
+[
+  {
+    "tag": "h2",
+    "text": "5. Accessing document data"
+  },
+  {
+    "tag": "p",
+    "text": "pugixml features an extensive interface for getting various types of data from the document and for traversing the document. This section provides documentation for all such functions that do not modify the tree except for XPath-related functions; see XPath for XPath reference. As discussed in C++ interface, there are two types of handles to tree data - xml_node and xml_attribute. The handles have special null (empty) values which propagate through various functions and thus are useful for writing more concise code; see this description for details. The documentation in this section will explicitly state the results of all function in case of null inputs."
+  },
+  {
+    "tag": "h3",
+    "text": "5.1. Basic traversal functions"
+  },
+  {
+    "tag": "p",
+    "text": "The internal representation of the document is a tree, where each node has a list of child nodes (the order of children corresponds to their order in the XML representation), and additionally element nodes have a list of attributes, which is also ordered. Several functions are provided in order to let you get from one node in the tree to the other. These functions roughly correspond to the internal representation, and thus are usually building blocks for other methods of traversing (i.e. XPath traversals are based on these functions)."
+  },
+  {
+    "tag": "pre",
+    "text": "xml_node xml_node::parent() const;\nxml_node xml_node::first_child() const;\nxml_node xml_node::last_child() const;\nxml_node xml_node::next_sibling() const;\nxml_node xml_node::previous_sibling() const;\n\nxml_attribute xml_node::first_attribute() const;\nxml_attribute xml_node::last_attribute() const;\nxml_attribute xml_attribute::next_attribute() const;\nxml_attribute xml_attribute::previous_attribute() const;"
+  },
+  {
+    "tag": "p",
+    "text": "parent function returns the node’s parent; all non-null nodes except the document have non-null parent. first_child and last_child return the first and last child of the node, respectively; note that only document nodes and element nodes can have non-empty child node list. If node has no children, both functions return null nodes. next_sibling and previous_sibling return the node that’s immediately to the right/left of this node in the children list, respectively - for example, in <a/><b/><c/>, calling next_sibling for a handle that points to <b/> results in a handle pointing to <c/>, and calling previous_sibling results in handle pointing to <a/>. If node does not have next/previous sibling (this happens if it is the last/first node in the list, respectively), the functions return null nodes. first_attribute, last_attribute, next_attribute and previous_attribute functions behave similarly to the corresponding child node functions and allow to iterate through attribute list in the same way."
+  },
+  {
+    "tag": "td",
+    "text": "Note"
+  },
+  {
+    "tag": "td",
+    "text": "Because of memory consumption reasons, attributes do not have a link to their parent nodes. Thus there is no xml_attribute::parent() function."
+  },
+  {
+    "tag": "p",
+    "text": "Calling any of the functions above on the null handle results in a null handle - i.e. node.first_child().next_sibling() returns the second child of node, and null handle if node is null, has no children at all or if it has only one child node."
+  },
+  {
+    "tag": "p",
+    "text": "With these functions, you can iterate through all child nodes and display all attributes like this (samples/traverse_base.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "for (pugi::xml_node tool = tools.first_child(); tool; tool = tool.next_sibling())\n{\n    std::cout << \"Tool:\";\n\n    for (pugi::xml_attribute attr = tool.first_attribute(); attr; attr = attr.next_attribute())\n    {\n        std::cout << \" \" << attr.name() << \"=\" << attr.value();\n    }\n\n    std::cout << std::endl;\n}"
+  },
+  {
+    "tag": "h3",
+    "text": "5.2. Getting node data"
+  },
+  {
+    "tag": "p",
+    "text": "Apart from structural information (parent, child nodes, attributes), nodes can have name and value, both of which are strings. Depending on node type, name or value may be absent. node_document nodes do not have a name or value, node_element and node_declaration nodes always have a name but never have a value, node_pcdata, node_cdata, node_comment and node_doctype nodes never have a name but always have a value (it may be empty though), node_pi nodes always have a name and a value (again, value may be empty). In order to get node’s name or value, you can use the following functions:"
+  },
+  {
+    "tag": "pre",
+    "text": "const char_t* xml_node::name() const;\nconst char_t* xml_node::value() const;"
+  },
+  {
+    "tag": "p",
+    "text": "In case node does not have a name or value or if the node handle is null, both functions return empty strings - they never return null pointers."
+  },
+  {
+    "tag": "p",
+    "text": "It is common to store data as text contents of some node - i.e. <node><description>This is a node</description></node>. In this case, <description> node does not have a value, but instead has a child of type node_pcdata with value \"This is a node\". pugixml provides several helper functions to parse such data:"
+  },
+  {
+    "tag": "pre",
+    "text": "const char_t* xml_node::child_value() const;\nconst char_t* xml_node::child_value(const char_t* name) const;\nxml_text xml_node::text() const;"
+  },
+  {
+    "tag": "p",
+    "text": "child_value() returns the value of the first child with type node_pcdata or node_cdata; child_value(name) is a simple wrapper for child(name).child_value(). For the above example, calling node.child_value(\"description\") and description.child_value() will both produce string \"This is a node\". If there is no child with relevant type, or if the handle is null, child_value functions return empty string."
+  },
+  {
+    "tag": "p",
+    "text": "text() returns a special object that can be used for working with PCDATA contents in more complex cases than just retrieving the value; it is described in Working with text contents sections."
+  },
+  {
+    "tag": "p",
+    "text": "There is an example of using some of these functions at the end of the next section."
+  },
+  {
+    "tag": "h3",
+    "text": "5.3. Getting attribute data"
+  },
+  {
+    "tag": "p",
+    "text": "All attributes have name and value, both of which are strings (value may be empty). There are two corresponding accessors, like for xml_node:"
+  },
+  {
+    "tag": "pre",
+    "text": "const char_t* xml_attribute::name() const;\nconst char_t* xml_attribute::value() const;"
+  },
+  {
+    "tag": "p",
+    "text": "In case the attribute handle is null, both functions return empty strings - they never return null pointers."
+  },
+  {
+    "tag": "p",
+    "text": "If you need a non-empty string if the attribute handle is null (for example, you need to get the option value from XML attribute, but if it is not specified, you need it to default to \"sorted\" instead of \"\"), you can use as_string accessor:"
+  },
+  {
+    "tag": "pre",
+    "text": "const char_t* xml_attribute::as_string(const char_t* def = \"\") const;"
+  },
+  {
+    "tag": "p",
+    "text": "It returns def argument if the attribute handle is null. If you do not specify the argument, the function is equivalent to value()."
+  },
+  {
+    "tag": "p",
+    "text": "In many cases attribute values have types that are not strings - i.e. an attribute may always contain values that should be treated as integers, despite the fact that they are represented as strings in XML. pugixml provides several accessors that convert attribute value to some other type:"
+  },
+  {
+    "tag": "pre",
+    "text": "int xml_attribute::as_int(int def = 0) const;\nunsigned int xml_attribute::as_uint(unsigned int def = 0) const;\ndouble xml_attribute::as_double(double def = 0) const;\nfloat xml_attribute::as_float(float def = 0) const;\nbool xml_attribute::as_bool(bool def = false) const;\nlong long xml_attribute::as_llong(long long def = 0) const;\nunsigned long long xml_attribute::as_ullong(unsigned long long def = 0) const;"
+  },
+  {
+    "tag": "p",
+    "text": "as_int, as_uint, as_llong, as_ullong, as_double and as_float convert attribute values to numbers. If attribute handle is null def argument is returned (which is 0 by default). Otherwise, all leading whitespace characters are truncated, and the remaining string is parsed as an integer number in either decimal or hexadecimal form (applicable to as_int, as_uint, as_llong and as_ullong; hexadecimal format is used if the number has 0x or 0X prefix) or as a floating point number in either decimal or scientific form (as_double or as_float)."
+  },
+  {
+    "tag": "p",
+    "text": "For integer conversions, non-numeric character sequences return 0 and out of range values are clamped to the closest representable value; for floating-point conversions, the result depends on implementation (CRT or STL depending on whether PUGIXML_CHARCONV_FLOAT is used)."
+  },
+  {
+    "tag": "td",
+    "text": "Caution"
+  },
+  {
+    "tag": "td",
+    "text": "Floating-point conversion functions depend on the current C locale as set with setlocale, so may return unexpected results if the locale is different from \"C\". This does not apply when pugixml is built with PUGIXML_CHARCONV_FLOAT."
+  },
+  {
+    "tag": "p",
+    "text": "as_bool converts attribute value to boolean as follows: if attribute handle is null, def argument is returned (which is false by default). If attribute value is empty, false is returned. Otherwise, true is returned if the first character is one of '1', 't', 'T', 'y', 'Y'. This means that strings like \"true\" and \"yes\" are recognized as true, while strings like \"false\" and \"no\" are recognized as false. For more complex matching you’ll have to write your own function."
+  },
+  {
+    "tag": "td",
+    "text": "Note"
+  },
+  {
+    "tag": "td",
+    "text": "as_llong and as_ullong are only available if your platform has support for the long long type."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of using these functions, along with node data retrieval ones (samples/traverse_base.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "for (pugi::xml_node tool = tools.child(\"Tool\"); tool; tool = tool.next_sibling(\"Tool\"))\n{\n    std::cout << \"Tool \" << tool.attribute(\"Filename\").value();\n    std::cout << \": AllowRemote \" << tool.attribute(\"AllowRemote\").as_bool();\n    std::cout << \", Timeout \" << tool.attribute(\"Timeout\").as_int();\n    std::cout << \", Description '\" << tool.child_value(\"Description\") << \"'\\n\";\n}"
+  },
+  {
+    "tag": "h3",
+    "text": "5.4. Contents-based traversal functions"
+  },
+  {
+    "tag": "p",
+    "text": "Since a lot of document traversal consists of finding the node/attribute with the correct name, there are special functions for that purpose:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_node xml_node::child(const char_t* name) const;\nxml_node xml_node::child(string_view_t name) const;\nxml_attribute xml_node::attribute(const char_t* name) const;\nxml_attribute xml_node::attribute(string_view_t name) const;\nxml_node xml_node::next_sibling(const char_t* name) const;\nxml_node xml_node::next_sibling(string_view_t name) const;\nxml_node xml_node::previous_sibling(const char_t* name) const;\nxml_node xml_node::previous_sibling(string_view_t name) const;"
+  },
+  {
+    "tag": "p",
+    "text": "child and attribute return the first child/attribute with the specified name; next_sibling and previous_sibling return the first sibling in the corresponding direction with the specified name. All string comparisons are case-sensitive. In case the node handle is null or there is no node/attribute with the specified name, null handle is returned."
+  },
+  {
+    "tag": "p",
+    "text": "child and next_sibling functions can be used together to loop through all child nodes with the desired name like this:"
+  },
+  {
+    "tag": "pre",
+    "text": "for (pugi::xml_node tool = tools.child(\"Tool\"); tool; tool = tool.next_sibling(\"Tool\"))"
+  },
+  {
+    "tag": "p",
+    "text": "attribute function needs to look for the target attribute by name. If a node has many attributes, finding each by name can be time consuming. If you have an idea of how attributes are ordered in the node, you can use a faster function:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_attribute xml_node::attribute(const char_t* name, xml_attribute& hint) const;\nxml_attribute xml_node::attribute(string_view_t name, xml_attribute& hint) const;"
+  },
+  {
+    "tag": "p",
+    "text": "The extra hint argument is used to guess where the attribute might be, and is updated to the location of the next attribute so that if you search for multiple attributes in the right order, the performance is maximized. Note that hint has to be either null or has to belong to the node, otherwise the behavior is undefined."
+  },
+  {
+    "tag": "p",
+    "text": "You can use this function as follows:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_attribute hint;\nxml_attribute id = node.attribute(\"id\", hint);\nxml_attribute name = node.attribute(\"name\", hint);\nxml_attribute version = node.attribute(\"version\", hint);"
+  },
+  {
+    "tag": "p",
+    "text": "This code is correct regardless of the order of the attributes, but it’s faster if \"id\", \"name\" and \"version\" occur in that order."
+  },
+  {
+    "tag": "p",
+    "text": "Occasionally the needed node is specified not by the unique name but instead by the value of some attribute; for example, it is common to have node collections with each node having a unique id: <group><item id=\"1\"/> <item id=\"2\"/></group>. There are two functions for finding child nodes based on the attribute values:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_node xml_node::find_child_by_attribute(const char_t* name, const char_t* attr_name, const char_t* attr_value) const;\nxml_node xml_node::find_child_by_attribute(const char_t* attr_name, const char_t* attr_value) const;"
+  },
+  {
+    "tag": "p",
+    "text": "The three-argument function returns the first child node with the specified name which has an attribute with the specified name/value; the two-argument function skips the name test for the node, which can be useful for searching in heterogeneous collections. If the node handle is null or if no node is found, null handle is returned. All string comparisons are case-sensitive."
+  },
+  {
+    "tag": "p",
+    "text": "In all of the above functions, all arguments have to be valid strings; passing null pointers results in undefined behavior."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of using these functions (samples/traverse_base.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "std::cout << \"Tool for *.dae generation: \" << tools.find_child_by_attribute(\"Tool\", \"OutputFileMasks\", \"*.dae\").attribute(\"Filename\").value() << \"\\n\";\n\nfor (pugi::xml_node tool = tools.child(\"Tool\"); tool; tool = tool.next_sibling(\"Tool\"))\n{\n    std::cout << \"Tool \" << tool.attribute(\"Filename\").value() << \"\\n\";\n}"
+  },
+  {
+    "tag": "h3",
+    "text": "5.5. Range-based for-loop support"
+  },
+  {
+    "tag": "p",
+    "text": "If your C++ compiler supports range-based for-loop (this is a C++11 feature, supported by Microsoft Visual Studio 2012+, GCC 4.6+ and Clang 3.0+), you can use it to enumerate nodes/attributes. Additional helpers are provided to support this; note that they are also compatible with Boost Foreach, and possibly other pre-C++11 foreach facilities."
+  },
+  {
+    "tag": "pre",
+    "text": "implementation-defined-type xml_node::children() const;\nimplementation-defined-type xml_node::children(const char_t* name) const;\nimplementation-defined-type xml_node::attributes() const;"
+  },
+  {
+    "tag": "p",
+    "text": "children function allows you to enumerate all child nodes; children function with name argument allows you to enumerate all child nodes with a specific name; attributes function allows you to enumerate all attributes of the node. Note that you can also use node object itself in a range-based for construct, which is equivalent to using children()."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of using these functions (samples/traverse_rangefor.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "for (pugi::xml_node tool: tools.children(\"Tool\"))\n{\n    std::cout << \"Tool:\";\n\n    for (pugi::xml_attribute attr: tool.attributes())\n    {\n        std::cout << \" \" << attr.name() << \"=\" << attr.value();\n    }\n\n    for (pugi::xml_node child: tool.children())\n    {\n        std::cout << \", child \" << child.name();\n    }\n\n    std::cout << std::endl;\n}"
+  },
+  {
+    "tag": "p",
+    "text": "While using children() makes the intent of the code clear, note that each node can be treated as a container of child nodes, since it provides begin()/end() member functions described in the next section. Because of this, you can iterate through node’s children simply by using the node itself:"
+  },
+  {
+    "tag": "pre",
+    "text": "for (pugi::xml_node child: tool) ..."
+  },
+  {
+    "tag": "p",
+    "text": "When using C++20, you can also use nodes as well as objects returned by children() and attributes() functions as ranges:"
+  },
+  {
+    "tag": "pre",
+    "text": "auto tf =\n    tools.children(\"Tool\")\n    | std::views::filter([](auto node) { return node.attribute(\"AllowRemote\").as_bool(); })\n    | std::views::reverse;\n\nfor (pugi::xml_node tool: tf) ..."
+  },
+  {
+    "tag": "h3",
+    "text": "5.6. Traversing node/attribute lists via iterators"
+  },
+  {
+    "tag": "p",
+    "text": "Child node lists and attribute lists are simply double-linked lists; while you can use previous_sibling/next_sibling and other such functions for iteration, pugixml additionally provides node and attribute iterators, so that you can treat nodes as containers of other nodes or attributes:"
+  },
+  {
+    "tag": "pre",
+    "text": "class xml_node_iterator;\nclass xml_attribute_iterator;\n\ntypedef xml_node_iterator xml_node::iterator;\niterator xml_node::begin() const;\niterator xml_node::end() const;\n\ntypedef xml_attribute_iterator xml_node::attribute_iterator;\nattribute_iterator xml_node::attributes_begin() const;\nattribute_iterator xml_node::attributes_end() const;"
+  },
+  {
+    "tag": "p",
+    "text": "begin and attributes_begin return iterators that point to the first node/attribute, respectively; end and attributes_end return past-the-end iterator for node/attribute list, respectively - this iterator can’t be dereferenced, but decrementing it results in an iterator pointing to the last element in the list (except for empty lists, where decrementing past-the-end iterator results in undefined behavior). Past-the-end iterator is commonly used as a termination value for iteration loops (see sample below). If you want to get an iterator that points to an existing handle, you can construct the iterator with the handle as a single constructor argument, like so: xml_node_iterator(node). For xml_attribute_iterator, you’ll have to provide both an attribute and its parent node."
+  },
+  {
+    "tag": "p",
+    "text": "begin and end return equal iterators if called on null node; such iterators can’t be dereferenced. attributes_begin and attributes_end behave the same way. For correct iterator usage this means that child node/attribute collections of null nodes appear to be empty."
+  },
+  {
+    "tag": "p",
+    "text": "Both types of iterators have bidirectional iterator semantics (i.e. they can be incremented and decremented, but efficient random access is not supported) and support all usual iterator operations - comparison, dereference, etc. The iterators are invalidated if the node/attribute objects they’re pointing to are removed from the tree; adding nodes/attributes does not invalidate any iterators."
+  },
+  {
+    "tag": "p",
+    "text": "Here is an example of using iterators for document traversal (samples/traverse_iter.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "for (pugi::xml_node_iterator it = tools.begin(); it != tools.end(); ++it)\n{\n    std::cout << \"Tool:\";\n\n    for (pugi::xml_attribute_iterator ait = it->attributes_begin(); ait != it->attributes_end(); ++ait)\n    {\n        std::cout << \" \" << ait->name() << \"=\" << ait->value();\n    }\n\n    std::cout << std::endl;\n}"
+  },
+  {
+    "tag": "td",
+    "text": "Caution"
+  },
+  {
+    "tag": "td",
+    "text": "Node and attribute iterators are somewhere in the middle between const and non-const iterators. While dereference operation yields a non-constant reference to the object, so that you can use it for tree modification operations, modifying this reference using assignment - i.e. passing iterators to a function like std::sort - will not give expected results, as assignment modifies local handle that’s stored in the iterator."
+  },
+  {
+    "tag": "h3",
+    "text": "5.7. Recursive traversal with xml_tree_walker"
+  },
+  {
+    "tag": "p",
+    "text": "The methods described above allow traversal of immediate children of some node; if you want to do a deep tree traversal, you’ll have to do it via a recursive function or some equivalent method. However, pugixml provides a helper for depth-first traversal of a subtree. In order to use it, you have to implement xml_tree_walker interface and to call traverse function:"
+  },
+  {
+    "tag": "pre",
+    "text": "class xml_tree_walker\n{\npublic:\n    virtual bool begin(xml_node& node);\n    virtual bool for_each(xml_node& node) = 0;\n    virtual bool end(xml_node& node);\n\n    int depth() const;\n};\n\nbool xml_node::traverse(xml_tree_walker& walker);"
+  },
+  {
+    "tag": "p",
+    "text": "The traversal is launched by calling traverse function on traversal root and proceeds as follows:"
+  },
+  {
+    "tag": "p",
+    "text": "First, begin function is called with traversal root as its argument."
+  },
+  {
+    "tag": "p",
+    "text": "Then, for_each function is called for all nodes in the traversal subtree in depth first order, excluding the traversal root. Node is passed as an argument."
+  },
+  {
+    "tag": "p",
+    "text": "Finally, end function is called with traversal root as its argument."
+  },
+  {
+    "tag": "p",
+    "text": "If begin, end or any of the for_each calls return false, the traversal is terminated and false is returned as the traversal result; otherwise, the traversal results in true. Note that you don’t have to override begin or end functions; their default implementations return true."
+  },
+  {
+    "tag": "p",
+    "text": "You can get the node’s depth relative to the traversal root at any point by calling depth function. It returns -1 if called from begin/end, and returns 0-based depth if called from for_each - depth is 0 for all children of the traversal root, 1 for all grandchildren and so on."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of traversing tree hierarchy with xml_tree_walker (samples/traverse_walker.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "struct simple_walker: pugi::xml_tree_walker\n{\n    virtual bool for_each(pugi::xml_node& node)\n    {\n        for (int i = 0; i < depth(); ++i) std::cout << \"  \"; // indentation\n\n        std::cout << node_types[node.type()] << \": name='\" << node.name() << \"', value='\" << node.value() << \"'\\n\";\n\n        return true; // continue traversal\n    }\n};"
+  },
+  {
+    "tag": "pre",
+    "text": "simple_walker walker;\ndoc.traverse(walker);"
+  },
+  {
+    "tag": "h3",
+    "text": "5.8. Searching for nodes/attributes with predicates"
+  },
+  {
+    "tag": "p",
+    "text": "While there are existing functions for getting a node/attribute with known contents, they are often not sufficient for simple queries. As an alternative for manual iteration through nodes/attributes until the needed one is found, you can make a predicate and call one of find_ functions:"
+  },
+  {
+    "tag": "pre",
+    "text": "template <typename Predicate> xml_attribute xml_node::find_attribute(Predicate pred) const;\ntemplate <typename Predicate> xml_node xml_node::find_child(Predicate pred) const;\ntemplate <typename Predicate> xml_node xml_node::find_node(Predicate pred) const;"
+  },
+  {
+    "tag": "p",
+    "text": "The predicate should be either a plain function or a function object which accepts one argument of type xml_attribute (for find_attribute) or xml_node (for find_child and find_node), and returns bool. The predicate is never called with null handle as an argument."
+  },
+  {
+    "tag": "p",
+    "text": "find_attribute function iterates through all attributes of the specified node, and returns the first attribute for which the predicate returned true. If the predicate returned false for all attributes or if there were no attributes (including the case where the node is null), null attribute is returned."
+  },
+  {
+    "tag": "p",
+    "text": "find_child function iterates through all child nodes of the specified node, and returns the first node for which the predicate returned true. If the predicate returned false for all nodes or if there were no child nodes (including the case where the node is null), null node is returned."
+  },
+  {
+    "tag": "p",
+    "text": "find_node function performs a depth-first traversal through the subtree of the specified node (excluding the node itself), and returns the first node for which the predicate returned true. If the predicate returned false for all nodes or if subtree was empty, null node is returned."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of using predicate-based functions (samples/traverse_predicate.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "bool small_timeout(pugi::xml_node node)\n{\n    return node.attribute(\"Timeout\").as_int() < 20;\n}\n\nstruct allow_remote_predicate\n{\n    bool operator()(pugi::xml_attribute attr) const\n    {\n        return strcmp(attr.name(), \"AllowRemote\") == 0;\n    }\n\n    bool operator()(pugi::xml_node node) const\n    {\n        return node.attribute(\"AllowRemote\").as_bool();\n    }\n};"
+  },
+  {
+    "tag": "pre",
+    "text": "// Find child via predicate (looks for direct children only)\nstd::cout << tools.find_child(allow_remote_predicate()).attribute(\"Filename\").value() << std::endl;\n\n// Find node via predicate (looks for all descendants in depth-first order)\nstd::cout << doc.find_node(allow_remote_predicate()).attribute(\"Filename\").value() << std::endl;\n\n// Find attribute via predicate\nstd::cout << tools.last_child().find_attribute(allow_remote_predicate()).value() << std::endl;\n\n// We can use simple functions instead of function objects\nstd::cout << tools.find_child(small_timeout).attribute(\"Filename\").value() << std::endl;"
+  },
+  {
+    "tag": "h3",
+    "text": "5.9. Working with text contents"
+  },
+  {
+    "tag": "p",
+    "text": "It is common to store data as text contents of some node - i.e. <node><description>This is a node</description></node>. In this case, <description> node does not have a value, but instead has a child of type node_pcdata with value \"This is a node\". pugixml provides a special class, xml_text, to work with such data. Working with text objects to modify data is described in the documentation for modifying document data; this section describes the access interface of xml_text."
+  },
+  {
+    "tag": "p",
+    "text": "You can get the text object from a node by using text() method:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_text xml_node::text() const;"
+  },
+  {
+    "tag": "p",
+    "text": "If the node has a type node_pcdata or node_cdata, then the node itself is used to return data; otherwise, a first child node of type node_pcdata or node_cdata is used."
+  },
+  {
+    "tag": "p",
+    "text": "You can check if the text object is bound to a valid PCDATA/CDATA node by using it as a boolean value, i.e. if (text) { …​ } or if (!text) { …​ }. Alternatively you can check it by using the empty() method:"
+  },
+  {
+    "tag": "pre",
+    "text": "bool xml_text::empty() const;"
+  },
+  {
+    "tag": "p",
+    "text": "Given a text object, you can get the contents (i.e. the value of PCDATA/CDATA node) by using the following function:"
+  },
+  {
+    "tag": "pre",
+    "text": "const char_t* xml_text::get() const;"
+  },
+  {
+    "tag": "p",
+    "text": "In case text object is empty, the function returns an empty string - it never returns a null pointer."
+  },
+  {
+    "tag": "p",
+    "text": "If you need a non-empty string if the text object is empty, or if the text contents is actually a number or a boolean that is stored as a string, you can use the following accessors:"
+  },
+  {
+    "tag": "pre",
+    "text": "const char_t* xml_text::as_string(const char_t* def = \"\") const;\nint xml_text::as_int(int def = 0) const;\nunsigned int xml_text::as_uint(unsigned int def = 0) const;\ndouble xml_text::as_double(double def = 0) const;\nfloat xml_text::as_float(float def = 0) const;\nbool xml_text::as_bool(bool def = false) const;\nlong long xml_text::as_llong(long long def = 0) const;\nunsigned long long xml_text::as_ullong(unsigned long long def = 0) const;"
+  },
+  {
+    "tag": "p",
+    "text": "All of the above functions have the same semantics as similar xml_attribute members: they return the default argument if the text object is empty, they convert the text contents to a target type using the same rules and restrictions. You can refer to documentation for the attribute functions for details."
+  },
+  {
+    "tag": "p",
+    "text": "xml_text is essentially a helper class that operates on xml_node values. It is bound to a node of type node_pcdata or node_cdata. You can use the following function to retrieve this node:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_node xml_text::data() const;"
+  },
+  {
+    "tag": "p",
+    "text": "Essentially, assuming text is an xml_text object, calling text.get() is equivalent to calling text.data().value()."
+  },
+  {
+    "tag": "p",
+    "text": "This is an example of using xml_text object (samples/text.cpp):"
+  },
+  {
+    "tag": "pre",
+    "text": "std::cout << \"Project name: \" << project.child(\"name\").text().get() << std::endl;\nstd::cout << \"Project version: \" << project.child(\"version\").text().as_double() << std::endl;\nstd::cout << \"Project visibility: \" << (project.child(\"public\").text().as_bool(/* def= */ true) ? \"public\" : \"private\") << std::endl;\nstd::cout << \"Project description: \" << project.child(\"description\").text().get() << std::endl;"
+  },
+  {
+    "tag": "h3",
+    "text": "5.10. Miscellaneous functions"
+  },
+  {
+    "tag": "p",
+    "text": "If you need to get the document root of some node, you can use the following function:"
+  },
+  {
+    "tag": "pre",
+    "text": "xml_node xml_node::root() const;"
+  },
+  {
+    "tag": "p",
+    "text": "This function returns the node with type node_document, which is the root node of the document the node belongs to (unless the node is null, in which case null node is returned)."
+  },
+  {
+    "tag": "p",
+    "text": "While pugixml supports complex XPath expressions, sometimes a simple path handling facility is needed. There are two functions, for getting node path and for converting path to a node:"
+  },
+  {
+    "tag": "pre",
+    "text": "string_t xml_node::path(char_t delimiter = '/') const;\nxml_node xml_node::first_element_by_path(const char_t* path, char_t delimiter = '/') const;"
+  },
+  {
+    "tag": "p",
+    "text": "Node paths consist of node names, separated with a delimiter (which is / by default); also paths can contain self (.) and parent (..) pseudo-names, so that this is a valid path: \"../../foo/./bar\". path returns the path to the node from the document root, first_element_by_path looks for a node represented by a given path; a path can be an absolute one (absolute paths start with the delimiter), in which case the rest of the path is treated as document root relative, and relative to the given node. For example, in the following document: <a><b><c/></b></a>, node <c/> has path \"a/b/c\"; calling first_element_by_path for document with path \"a/b\" results in node <b/>; calling first_element_by_path for node <a/> with path \"../a/./b/../.\" results in node <a/>; calling first_element_by_path with path \"/a\" results in node <a/> for any node."
+  },
+  {
+    "tag": "p",
+    "text": "In case path component is ambiguous (if there are two nodes with given name), the first one is selected; paths are not guaranteed to uniquely identify nodes in a document. If any component of a path is not found, the result of first_element_by_path is null node; also first_element_by_path returns null node for null nodes, in which case the path does not matter. path returns an empty string for null nodes."
+  },
+  {
+    "tag": "td",
+    "text": "Note"
+  },
+  {
+    "tag": "td",
+    "text": "path function returns the result as STL string, and thus is not available if PUGIXML_NO_STL is defined."
+  },
+  {
+    "tag": "p",
+    "text": "pugixml does not record row/column information for nodes upon parsing for efficiency reasons. However, if the node has not changed in a significant way since parsing (the name/value are not changed, and the node itself is the original one, i.e. it was not deleted from the tree and re-added later), it is possible to get the offset from the beginning of XML buffer:"
+  },
+  {
+    "tag": "pre",
+    "text": "ptrdiff_t xml_node::offset_debug() const;"
+  },
+  {
+    "tag": "p",
+    "text": "If the offset is not available (this happens if the node is null, was not originally parsed from a stream, or has changed in a significant way), the function returns -1. Otherwise it returns the offset to node’s data from the beginning of XML buffer in pugi::char_t units. For more information on parsing offsets, see parsing error handling documentation."
+  }
+]
