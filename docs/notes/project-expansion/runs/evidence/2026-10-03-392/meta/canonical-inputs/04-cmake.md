@@ -1,0 +1,138 @@
+### CMake
+
+The library can also be installed using [CMake](http://www.cmake.org/). Version of CMake must be 3.0+ and can be checked by `--version`:
+```bash
+> cmake --version
+cmake version 3.3.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+```
+
+### Generate
+
+Generate project in `_builds` directory using `CMakeLists.txt` from current (`.`) directory, run one of the commands depending on the OS and generator you need:
+```bash
+> cmake -H. -B_builds -DCMAKE_BUILD_TYPE=Release # Default generator is Makefile for *nix platform
+> cmake -H. -B_builds -GXcode # Xcode generator on OS X (multi-config, no need for CMAKE_BUILD_TYPE)
+> cmake -H. -B_builds -G"Visual Studio 12 2013" # Visual Studio IDE, Windows, multi-config
+```
+
+or toolchains:
+```bash
+> cmake -H. -B_builds -DCMAKE_TOOLCHAIN_FILE=/path/to/iOS.cmake -GXcode
+> cmake -H. -B_builds -DCMAKE_TOOLCHAIN_FILE=/path/to/android.cmake -DCMAKE_BUILD_TYPE=Release
+```
+
+To add examples use `SPDLOG_BUILD_EXAMPLE=ON` option:
+```cmake
+> cmake -H. -B_builds -DSPDLOG_BUILD_EXAMPLE=ON -DCMAKE_BUILD_TYPE=Release
+```
+
+### Build/test
+
+Open generated project and run build/test targets. Also command line can be used too:
+```
+> cmake --build _builds --config Release
+> cd _builds && ctest -VV -C Release
+```
+
+### Install
+
+Headers can be installed along with the [config](http://www.cmake.org/cmake/help/v3.3/manual/cmake-packages.7.html#config-file-packages) files so library can be found by `find_package(spdlog CONFIG REQUIRED)`:
+
+```cmake
+[spdlog]> cmake -H. -B_builds -DCMAKE_INSTALL_PREFIX=/path/to/install -DCMAKE_BUILD_TYPE=Release
+[spdlog]> cmake --build _builds --target install
+```
+
+Usage can be tested by building `examples` as a stand-alone project:
+```cmake
+[spdlog/examples]> cmake -H. -B_builds -DCMAKE_PREFIX_PATH=/path/to/install -DCMAKE_BUILD_TYPE=Release
+[spdlog/examples]> cmake --build _builds
+```
+
+### Cross-compiling for Android with CMake 3.7
+
+Cross-compiling with CMake is reported working using CMake version 3.7 which includes native support for configuring the toolchain with Android NDK and SDK (https://cmake.org/cmake/help/v3.7/manual/cmake-toolchains.7.html#cross-compiling-for-android). Please note that spdlog targets older versions of CMake and this example is a community contribution.
+
+Below is an example on to configure and build spdlog using the Android NDK:
+```bash
+> git clone https://github.com/gabime/spdlog
+> mkdir build
+> cd build 
+> cmake ../spdlog \
+  -DCMAKE_SYSTEM_NAME=Android \
+  -DCMAKE_SYSTEM_VERSION=21 \
+  -DCMAKE_ANDROID_ARCH_ABI="armeabi-v7a" \
+  -DCMAKE_ANDROID_ARM_NEON=ON \
+  -DCMAKE_ANDROID_NDK=$HOME/Android/Ndk/android-ndk-r13b/
+> cmake --build .
+```
+
+See the CMake documentation (link above) for the meaning of the CMake configuration options used in the example.
+
+## Use as static library with ExternalProject_Add as git submodule
+
+This is a short example if you want to use a static library, actually called libspdlogd.a, in your project using CMake.
+
+```bash
+cd project_dir\lib
+git submodule add https://github.com/gabime/spdlog
+cd spdlog
+git checkout v1.9.2
+...
+```
+
+```cmake
+ExternalProject_Add(spdlog
+    PREFIX spdlog
+    SOURCE_DIR ${PROJECT_SOURCE_DIR}/lib/spdlog
+    CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+    -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+    -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+    -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
+    -DCMAKE_INSTALL_PREFIX=${STAGING_DIR}
+    -DSPDLOG_BUILD_SHARED=OFF
+)
+```
+
+later also add:
+
+```cmake
+add_dependencies(${PROJECT_NAME} spdlog)
+```
+
+And finally use it like this:
+
+```cmake
+PUBLIC ${STAGING_DIR}/include/ # spdlog
+```
+
+Inside the C++/H files you can:
+
+```C++
+#include "spdlog/spdlog.h"
+```
+
+## Using spdlog in a shared library
+
+When building a shared library, `CMAKE_POSITION_INDEPENDENT_CODE` has to be set to `TRUE` before adding the `spdlog` subdirectory.
+
+Full example:
+```cmake
+cmake_minimum_required(VERSION 3.10)
+
+project(cmake_test)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+
+add_subdirectory("${CMAKE_SOURCE_DIR}/spdlog")
+
+file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+add_library(test SHARED ${SOURCES})
+target_include_directories(test PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
+
+target_link_libraries(test PRIVATE spdlog::spdlog)
+```
