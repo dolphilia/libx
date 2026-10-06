@@ -1,0 +1,32 @@
+{
+  "name": "apps-zlib",
+  "private": true,
+  "description": "Documentation site for zlib",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "prebuild": "libx-docs-prepare --projects=zlib",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "import:canonical": "python3 scripts/import-canonical.py",
+    "check:canonical": "python3 scripts/import-canonical.py --check",
+    "check:content": "node scripts/check-content.mjs",
+    "check:rendered": "node scripts/check-content.mjs --canonical-only --rendered"
+  },
+  "dependencies": {
+    "@docs/config": "workspace:*",
+    "@docs/content-utils": "workspace:*",
+    "@docs/i18n": "workspace:*",
+    "@docs/project-config": "workspace:*",
+    "@docs/theme": "workspace:*",
+    "@docs/ui": "workspace:*",
+    "@docs/versioning": "workspace:*",
+    "astro": "^5.7.12",
+    "shiki": "^3.4.0",
+    "unist-util-visit": "^5.0.0",
+    "hast-util-from-html": "2.0.3",
+    "parse5": "7.3.0"
+  }
+}
