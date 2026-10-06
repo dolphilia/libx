@@ -1,0 +1,17 @@
+<div class="gnu-findutils-original-content" id="Base-Name-Patterns">
+<h4 class="subsection" id="Base-Name-Patterns-1"><span>2.3.1 ベース名のパターン</span></h4>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dname"><span class="category-def">テスト: </span><span><strong class="def-name">-name</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002diname"><span class="category-def">テスト: </span><span><strong class="def-name">-iname</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>ファイル名のベース部分、つまりパスから先頭のディレクトリ部分を取り除いたものが、シェルパターン<var class="var">pattern</var>に一致すると真になります。「<samp class="samp">-iname</samp>」では大文字と小文字を区別しません。<a class="footnote" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/09-base-name-patterns/#FOOT1" id="DOCF1"><sup>1</sup></a> ディレクトリツリー全体を対象から外すには、「<samp class="samp">-prune</samp>」を使います（<a class="pxref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/24-directories/#Directories">ディレクトリ</a>を参照）。たとえば、<samp class="file">/usr/local/doc</samp>にあるTexinfoのソースファイルを検索するには、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">find /usr/local/doc -name '*.texi'&#10;</pre></div>
+<p>シェルによる展開を防ぐため、ワイルドカードは引用符で囲む必要があります。</p>
+<p>findutilsのバージョン4.2.2（2004年）以降、「<samp class="samp">-name</samp>」と「<samp class="samp">-iname</samp>」のパターンは、先頭が「<samp class="samp">.</samp>」のファイル名にも一致します。たとえば、コマンド「<samp class="samp">find /tmp -name \*bar</samp>」はファイル<samp class="file">/tmp/.foobar</samp>に一致します。パターン内の波括弧「<samp class="samp">{}</samp>」は特別なものとして扱いません。つまり、<code class="code">find . -name 'foo{1,2}'</code>は<samp class="file">foo{1,2}</samp>という名前のファイルに一致し、<samp class="file">foo1</samp>や<samp class="file">foo2</samp>というファイルには一致しません。</p>
+<p>先頭のディレクトリ部分を取り除くため、「<samp class="samp">-name</samp>」で一致を調べるファイル名にはスラッシュが含まれません。ただし、ルートディレクトリそのもの「<samp class="samp">/</samp>」は例外です。そのため、「<samp class="samp">-name /</samp>」はルートディレクトリに一致しますが、「<samp class="samp">-name a/b</samp>」が何かに一致することはありません。おそらく、代わりに「<samp class="samp">-path a/b</samp>」を使う必要があります。</p>
+<p>「<samp class="samp">-iname</samp>」オプションがPOSIXに初めて登場したのはIssue 8（IEEE Std 1003.1-2024）ですが、GNU <code class="code">find</code>ではバージョン3.8（1993年）から対応しています。</p></dd></dl>
+<hr/>
+<h5 class="footnote-body-heading"><a href="/docs/gnu-findutils/v4-11-0/ja/01-guide/09-base-name-patterns/#DOCF1" id="FOOT1">(1)</a></h5>
+<p>大文字と小文字を区別しない照合が必要なため、GNUのfnmatch実装を常に使います。CライブラリにGNUの実装が含まれていればそれを使い、含まれていなければgnulibの実装を使います。</p>
+</div>
+

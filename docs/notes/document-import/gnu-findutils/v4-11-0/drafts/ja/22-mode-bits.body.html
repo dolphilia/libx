@@ -1,0 +1,67 @@
+<div class="gnu-findutils-original-content" id="Mode-Bits">
+<h3 class="section" id="File-Mode-Bits"><span>2.9 ファイルのモードビット</span></h3>
+<p>ファイルのモードビットの構成と指定方法については、<a class="xref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#File-Permissions">ファイルの権限</a>を参照してください。</p>
+<p>ユーザーがファイルに対して何を行えるかを判断するテストは、「<samp class="samp">-readable</samp>」「<samp class="samp">-writable</samp>」「<samp class="samp">-executable</samp>」「<samp class="samp">-perm</samp>」の4つです。最初の3つは、現在のユーザーが該当する操作を行えるかどうかをOSに問い合わせますが、「<samp class="samp">-perm</samp>」はファイルのモードだけを調べます。ファイルにはアクセス制御リストがある場合や、読み取り専用のファイルシステム上にある場合などがあるため、モードから受ける印象と、実際にユーザーが行える操作とが食い違うことがあります。ただし、この4つのうちPOSIX標準で定められているのは「<samp class="samp">-perm</samp>」だけです。</p>
+<p>「<samp class="samp">-readable</samp>」「<samp class="samp">-writable</samp>」「<samp class="samp">-executable</samp>」は、<code class="code">access</code>システムコールを通して実装されています。これはOS自身が実装するものです。対象ファイルがNFSファイルシステム上にある場合、NFSクライアントでは考慮できない理由によって、リモートシステムが読み書きを許可または禁止することがあります。これには、一般的なユーザーIDの対応付けのほか、リモートのスーパーユーザーをNFSサーバー上のローカルユーザー「<samp class="samp">nobody</samp>」とみなす、より限定的な対応付けも含まれます。</p>
+<p>競合状態が発生する可能性があるため、この節のどのテストも、ユーザーが対象ファイルやほかのファイルに対して操作する権限を持つことの確認に使うべきではありません。テストを行った時点と、その結果に基づいて操作する時点の間に、状況が変わる可能性があるということです。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dreadable"><span class="category-def">テスト: </span><span><strong class="def-name">-readable</strong></span></dt>
+<dd><p>呼び出したユーザーがファイルを読み取れる場合に真になります。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dwritable"><span class="category-def">テスト: </span><span><strong class="def-name">-writable</strong></span></dt>
+<dd><p>呼び出したユーザーがファイルに書き込める場合に真になります。これは原理上の確認であり、ファイルシステムが満杯である場合など、別の要因で実際の書き込みが妨げられる可能性があります。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dexecutable"><span class="category-def">テスト: </span><span><strong class="def-name">-executable</strong></span></dt>
+<dd><p>呼び出したユーザーがファイルを実行できる、またはディレクトリを検索できる場合に真になります。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dperm"><span class="category-def">テスト: </span><span><strong class="def-name">-perm</strong> <var class="def-var-arguments">pmode</var></span></dt>
+<dd>
+<p>ファイルのモードビットが<var class="var">pmode</var>に一致すると真になります。これは記号形式または数値形式の<var class="var">mode</var>で、「<samp class="samp">-</samp>」または「<samp class="samp">/</samp>」を前置することもできます。<a class="pxref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#File-Permissions">ファイルの権限</a>を参照してください。</p>
+<p><var class="var">pmode</var>は、すべてのファイルモードビットがクリアされた状態から始まることに注意してください。つまり、プロセスのファイル作成マスクである<code class="command">umask</code>とは関係ありません。</p>
+<p>「<samp class="samp">-</samp>」でも「<samp class="samp">/</samp>」でも始まらない<var class="var">pmode</var>は、<var class="var">mode</var>がファイルのモードビットと完全に一致する場合に一致します。</p>
+<p>「<samp class="samp">-</samp>」で始まる<var class="var">pmode</var>は、<var class="var">mode</var>で設定されたモードビットの<em class="emph">すべて</em>がファイルにも設定されている場合に一致します。<var class="var">mode</var>で設定されていないビットは無視します。</p>
+<p>「<samp class="samp">/</samp>」で始まる<var class="var">pmode</var>は、<var class="var">mode</var>で設定されたモードビットの<em class="emph">いずれか</em>がファイルにも設定されている場合に一致します。<var class="var">mode</var>で設定されていないビットは無視します。これはGNUの拡張です。</p>
+<p>記号形式のモード文字列で「<samp class="samp">/</samp>」や「<samp class="samp">-</samp>」の形式を使わない場合、かなり複雑な文字列を指定する必要があるかもしれません。たとえば、「<samp class="samp">-perm g=w</samp>」は、モードが0020のファイルだけに一致します。つまり、グループの書き込み権限だけが設定されているものです。使いたいのは「<samp class="samp">/</samp>」や「<samp class="samp">-</samp>」の形式であることが多く、たとえば「<samp class="samp">-perm -g=w</samp>」は、グループの書き込み権限を持つ任意のファイルに一致します。</p>
+<p>GNU <code class="code">find</code>は以前、「<samp class="samp">-perm +mode</samp>」に対応していました。findutils 4.2.21（2005年）で非推奨となり、「<samp class="samp">-perm /mode</samp>」に置き換えられました。「<samp class="samp">-perm +mode</samp>」への対応は4.5.12（2013年）で完全に削除されました。この廃止されたGNU拡張との混同を避けるため、<var class="var">mode</var>を「<samp class="samp">+</samp>」と、その直後の8進数の数字で始めてはいけません。</p>
+<dl class="table">
+<dt>‘<samp class="samp">-perm 664</samp>’</dt>
+<dd><p>所有者とグループには読み書きの権限があり、それ以外のユーザーには読み取りだけが許可されたファイルに一致します。条件を満たしていても、ほかのモードビットが設定されているファイルには一致しません。たとえば、誰かが実行や検索できるファイルは一致しません。</p>
+</dd>
+<dt>‘<samp class="samp">-perm -664</samp>’</dt>
+<dd><p>所有者とグループには読み書きの権限があり、それ以外のユーザーには読み取りだけが許可されたファイルに一致します。実行ビットなど、追加のモードビットの有無は問いません。たとえば、モード0777のファイルにも一致します。</p>
+</dd>
+<dt>‘<samp class="samp">-perm /222</samp>’</dt>
+<dd><p>所有者、グループ、それ以外のユーザーのうち、誰かが書き込めるファイルに一致します。</p>
+</dd>
+<dt>‘<samp class="samp">-perm /022</samp>’</dt>
+<dd><p>グループまたはそれ以外のすべてのユーザーが書き込めるファイルに一致します。後者はしばしば<em class="dfn">other</em>と呼ばれます。グループとotherの両方が書き込める必要はなく、どちらか一方で構いません。</p>
+</dd>
+<dt>‘<samp class="samp">-perm /g+w,o+w</samp>’</dt>
+<dd><p>上記と同じです。</p>
+</dd>
+<dt>‘<samp class="samp">-perm /g=w,o=w</samp>’</dt>
+<dd><p>上記と同じです。</p>
+</dd>
+<dt>‘<samp class="samp">-perm -022</samp>’</dt>
+<dd><p>グループと、それ以外のすべてのユーザーの両方が書き込めるファイルに一致します。</p>
+</dd>
+<dt>‘<samp class="samp">-perm -g+w,o+w</samp>’</dt>
+<dd><p>上記と同じです。</p>
+</dd>
+<dt>‘<samp class="samp">-perm -444 -perm /222 ! -perm /111</samp>’</dt>
+<dd><p>誰でも読み取れ、少なくとも1つの書き込みビットが設定されていて誰かが書き込めるものの、誰も実行や検索できないファイルに一致します。一部のシェルでは「<samp class="samp">!</samp>」をエスケープする必要があります。</p>
+</dd>
+<dt>‘<samp class="samp">-perm -a+r -perm /a+w ! -perm /a+x</samp>’</dt>
+<dd><p>上記と同じです。</p>
+</dd>
+</dl>
+<blockquote class="quotation">
+<p><b class="b">注意:</b> 「<samp class="samp">-perm /000</samp>」を指定した場合や、記号形式のモード「<samp class="samp">mode</samp>」にビットが1つも設定されていない「<samp class="samp">-perm /mode</samp>」を指定した場合、テストはすべてのファイルに一致します。4.3.3（2007年）より前のGNU <code class="code">find</code>では、この状況で何にも一致しませんでした。</p></blockquote>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dcontext"><span class="category-def">テスト: </span><span><strong class="def-name">-context</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>ファイルのSELinuxコンテキストがパターン<var class="var">pattern</var>に一致する場合に真になります。パターンにはシェルのglob照合を使います。</p>
+<p>この述語は、SELinuxに対応するようにコンパイルされた<code class="code">find</code>で、かつSELinuxが有効な場合にだけ利用できます。</p></dd></dl>
+<hr/>
+</div>
+

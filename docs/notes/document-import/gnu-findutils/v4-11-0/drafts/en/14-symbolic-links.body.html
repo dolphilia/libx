@@ -1,0 +1,114 @@
+<div class="gnu-findutils-original-content" id="Symbolic-Links">
+<h4 class="subsection" id="Symbolic-Links-1"><span>2.4.1 Symbolic Links</span></h4>
+<p>Symbolic links are names that reference other files.  GNU <code class="code">find</code>
+will handle symbolic links in one of two ways; firstly, it can
+dereference the links for you - this means that if it comes across a
+symbolic link, it examines the file that the link points to, in order
+to see if it matches the criteria you have specified.  Secondly, it
+can check the link itself in case you might be looking for the actual
+link.  If the file that the symbolic link points to is also within the
+directory hierarchy you are searching with the <code class="code">find</code> command,
+you may not see a great deal of difference between these two
+alternatives.
+</p>
+<p>By default, <code class="code">find</code> examines symbolic links themselves when it
+finds them (and, if it later comes across the linked-to file, it will
+examine that, too).  If you would prefer <code class="code">find</code> to dereference
+the links and examine the file that each link points to, specify the
+‘<samp class="samp">-L</samp>’ option to <code class="code">find</code>.  You can explicitly specify the
+default behaviour by using the ‘<samp class="samp">-P</samp>’ option.  The ‘<samp class="samp">-H</samp>’
+option is a half-way-between option which ensures that any symbolic
+links listed on the command line (such as in the list of files to
+search or with tests like ‘<samp class="samp">-newer</samp>’) are dereferenced, but
+other symbolic links are not.
+</p>
+<p>Symbolic links are different from “hard links” in the sense that you
+need permission to search the directories
+in the linked-to file name to
+dereference the link.  This can mean that even if you specify the
+‘<samp class="samp">-L</samp>’ option, <code class="code">find</code> may not be able to determine the
+properties of the file that the link points to (because you don’t have
+sufficient permission).  In this situation, <code class="code">find</code> uses the
+properties of the link itself.  This also occurs if a symbolic link
+exists but points to a file that is missing, or where the symbolic
+link points to itself (directly or indirectly).
+</p>
+<p>The options controlling the behaviour of <code class="code">find</code> with respect to
+links are as follows:
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">-P</samp>’</dt>
+<dd><p><code class="code">find</code> does not dereference symbolic links at all.  This is the
+default behaviour.  This option must be specified before any of the
+file names on the command line.
+</p></dd>
+<dt>‘<samp class="samp">-H</samp>’</dt>
+<dd><p><code class="code">find</code> does not dereference symbolic links (except in the case of
+file names on the command line, which are dereferenced).  If a
+symbolic link cannot be dereferenced, the information for the symbolic
+link itself is used.  This option must be specified before any of the
+file names on the command line.
+</p></dd>
+<dt>‘<samp class="samp">-L</samp>’</dt>
+<dd><p><code class="code">find</code> dereferences symbolic links where possible, and where this
+is not possible it uses the properties of the symbolic link itself.
+This option must be specified before any of the file names on the
+command line.  Use of this option also implies the same behaviour as
+the ‘<samp class="samp">-noleaf</samp>’ option.  If you later use the ‘<samp class="samp">-H</samp>’ or
+‘<samp class="samp">-P</samp>’ options, this does not turn off ‘<samp class="samp">-noleaf</samp>’.
+</p>
+<p>Actions that can cause symbolic links to become broken while
+‘<samp class="samp">find</samp>’ is executing (for example ‘<samp class="samp">-delete</samp>’) can give rise to
+confusing behaviour.  Take for example the command line
+‘<samp class="samp">find -L . -type d -delete</samp>’.   This will delete empty
+directories.  If a subtree includes only directories and symbolic
+links to directories, this command may still not successfully delete
+it, since deletion of the target of the symbolic link will cause the
+symbolic link to become broken and ‘<samp class="samp">-type d</samp>’ is false for broken
+symbolic links.
+</p>
+</dd>
+<dt>‘<samp class="samp">-follow</samp>’</dt>
+<dd><p>This option forms part of the “expression” and must be specified
+after the file names, but it is otherwise equivalent to ‘<samp class="samp">-L</samp>’.
+The ‘<samp class="samp">-follow</samp>’ option affects only those tests which appear after
+it on the command line.  This option is deprecated.  Where possible,
+you should use ‘<samp class="samp">-L</samp>’ instead.
+</p></dd>
+</dl>
+<p>The following differences in behaviour occur when the ‘<samp class="samp">-L</samp>’ option
+is used:
+</p>
+<ul class="itemize mark-bullet">
+<li><code class="code">find</code> follows symbolic links to directories when searching
+directory trees.
+</li><li>‘<samp class="samp">-lname</samp>’ and ‘<samp class="samp">-ilname</samp>’ always return false (unless they
+happen to match broken symbolic links).
+</li><li>‘<samp class="samp">-type</samp>’ reports the types of the files that symbolic links point
+to.  This means that in combination with ‘<samp class="samp">-L</samp>’, ‘<samp class="samp">-type l</samp>’
+will be true only for broken symbolic links.  To check for symbolic
+links when ‘<samp class="samp">-L</samp>’ has been specified, use ‘<samp class="samp">-xtype l</samp>’.
+</li><li>Implies ‘<samp class="samp">-noleaf</samp>’ (see <a class="pxref" href="/docs/gnu-findutils/v4-11-0/en/01-guide/24-directories/#Directories">Directories</a>).
+</li></ul>
+<p>If the ‘<samp class="samp">-L</samp>’ option or the ‘<samp class="samp">-H</samp>’ option is used,
+the file names used as arguments to ‘<samp class="samp">-newer</samp>’, ‘<samp class="samp">-anewer</samp>’, and
+‘<samp class="samp">-cnewer</samp>’ are dereferenced and the timestamp from the pointed-to
+file is used instead (if possible – otherwise the timestamp from the
+symbolic link is used).
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dlname"><span class="category-def">Test: </span><span><strong class="def-name">-lname</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dilname"><span class="category-def">Test: </span><span><strong class="def-name">-ilname</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>True if the file is a symbolic link whose contents match shell pattern
+<var class="var">pattern</var>.  For ‘<samp class="samp">-ilname</samp>’, the match is case-insensitive.
+See <a class="xref" href="/docs/gnu-findutils/v4-11-0/en/01-guide/12-shell-pattern-matching/#Shell-Pattern-Matching">Shell Pattern Matching</a>, for details about the <var class="var">pattern</var>
+argument.  If the ‘<samp class="samp">-L</samp>’ option is in effect, this test will always
+return false for symbolic links unless they are broken.  So, to list
+any symbolic links to <samp class="file">sysdep.c</samp> in the current directory and its
+subdirectories, you can do:
+</p>
+<div class="example">
+<pre class="example-preformatted">find . -lname '*sysdep.c'&#10;</pre></div>
+</dd></dl>
+<hr/>
+</div>

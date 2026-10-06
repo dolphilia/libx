@@ -1,0 +1,97 @@
+<div class="gnu-findutils-original-content" id="Full-Name-Patterns">
+<h4 class="subsection" id="Full-Name-Patterns-1"><span>2.3.2 Full Name Patterns</span></h4>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dpath"><span class="category-def">Test: </span><span><strong class="def-name">-path</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dwholename"><span class="category-def">Test: </span><span><strong class="def-name">-wholename</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>True if the entire file name, starting with the command line argument
+under which the file was found, matches shell pattern <var class="var">pattern</var>.
+To ignore a whole directory tree, use ‘<samp class="samp">-prune</samp>’ rather than
+checking every file in the tree (see <a class="pxref" href="/docs/gnu-findutils/v4-11-0/en/01-guide/24-directories/#Directories">Directories</a>).  The “entire
+file name” as used by <code class="code">find</code> starts with the starting-point
+specified on the command line, and is not converted to an absolute
+pathname, so for example <code class="code">cd /; find tmp -wholename /tmp</code> will
+never match anything.
+</p>
+<p>Find compares the ‘<samp class="samp">-path</samp>’ argument with the concatenation of a
+directory name and the base name of the file it’s considering.
+Since the concatenation will never end with a slash, ‘<samp class="samp">-path</samp>’
+arguments ending in ‘<samp class="samp">/</samp>’ will match nothing (except perhaps a
+start point specified on the command line).
+</p>
+<p>The name ‘<samp class="samp">-wholename</samp>’ is GNU-specific, but ‘<samp class="samp">-path</samp>’ is more
+portable: the latter is supported by HP-UX <code class="code">find</code> and is part of the
+POSIX standard (since IEEE Std 1003.1-2008).
+</p>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dipath"><span class="category-def">Test: </span><span><strong class="def-name">-ipath</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002diwholename"><span class="category-def">Test: </span><span><strong class="def-name">-iwholename</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>These tests are like ‘<samp class="samp">-wholename</samp>’ and ‘<samp class="samp">-path</samp>’, but the match
+is case-insensitive.
+</p></dd></dl>
+<p>In the context of the tests ‘<samp class="samp">-path</samp>’, ‘<samp class="samp">-wholename</samp>’,
+‘<samp class="samp">-ipath</samp>’ and ‘<samp class="samp">-iwholename</samp>’, a “full path” is the name of
+all the directories traversed from <code class="code">find</code>’s start point to the
+file being tested, followed by the base name of the file itself.
+These paths are often not absolute paths; for example
+</p>
+<div class="example">
+<pre class="example-preformatted">$ cd /tmp&#10;$ mkdir -p foo/bar/baz&#10;$ find foo -path foo/bar -print&#10;foo/bar&#10;$ find foo -path /tmp/foo/bar -print&#10;$ find /tmp/foo -path /tmp/foo/bar -print&#10;/tmp/foo/bar&#10;</pre></div>
+<p>Notice that the second <code class="code">find</code> command prints nothing, even though
+<samp class="file">/tmp/foo/bar</samp> exists and was examined by <code class="code">find</code>.
+</p>
+<p>Unlike file name expansion on the command line, a ‘<samp class="samp">*</samp>’ in the pattern
+will match both ‘<samp class="samp">/</samp>’ and leading dots in file names:
+</p>
+<div class="example">
+<pre class="example-preformatted">$ find .  -path '*f'&#10;./quux/bar/baz/f&#10;$ find .  -path '*/*config'&#10;./quux/bar/baz/.config&#10;</pre></div>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dregex"><span class="category-def">Test: </span><span><strong class="def-name">-regex</strong> <var class="def-var-arguments">expr</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002diregex"><span class="category-def">Test: </span><span><strong class="def-name">-iregex</strong> <var class="def-var-arguments">expr</var></span></dt>
+<dd><p>True if the entire file name matches regular expression <var class="var">expr</var>.
+This is a match on the whole path, not a search.  For example, to
+match a file named <samp class="file">./fubar3</samp>, you can use the regular expression
+‘<samp class="samp">.*bar.</samp>’ or ‘<samp class="samp">.*b.*3</samp>’, but not ‘<samp class="samp">f.*r3</samp>’.
+For ‘<samp class="samp">-iregex</samp>’, the match is case-insensitive.
+</p>
+<p>As for ‘<samp class="samp">-path</samp>’, the candidate file name never ends with a slash,
+so regular expressions which only match something that ends in slash
+will always fail.
+</p>
+<p>There are several varieties of regular expressions; by default this
+test uses GNU Emacs regular expressions, but this can be changed with
+the option ‘<samp class="samp">-regextype</samp>’.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dregextype"><span class="category-def">Option: </span><span><strong class="def-name">-regextype</strong> <var class="def-var-arguments">name</var></span></dt>
+<dd><p>This option controls the variety of regular expression syntax
+understood by the ‘<samp class="samp">-regex</samp>’ and ‘<samp class="samp">-iregex</samp>’ tests.  This option
+is positional; that is, it only affects regular expressions which
+occur later in the command line.  If this option is not given, GNU
+Emacs regular expressions are assumed.  Currently-implemented types
+are
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">emacs</samp>’</dt>
+<dd><p>Regular expressions compatible with GNU Emacs; this is also the
+default behaviour if this option is not used.
+</p></dd>
+<dt>‘<samp class="samp">posix-awk</samp>’</dt>
+<dd><p>Regular expressions compatible with the POSIX awk command (not GNU awk)
+</p></dd>
+<dt>‘<samp class="samp">posix-basic</samp>’</dt>
+<dd><p>POSIX Basic Regular Expressions.
+</p></dd>
+<dt>‘<samp class="samp">posix-egrep</samp>’</dt>
+<dd><p>Regular expressions compatible with the POSIX egrep command
+</p></dd>
+<dt>‘<samp class="samp">posix-extended</samp>’</dt>
+<dd><p>POSIX Extended Regular Expressions
+</p></dd>
+</dl>
+<p><a class="ref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Regular-Expressions">Regular Expressions</a> for more information on the regular
+expression dialects understood by GNU findutils.
+</p>
+</dd></dl>
+<hr/>
+</div>

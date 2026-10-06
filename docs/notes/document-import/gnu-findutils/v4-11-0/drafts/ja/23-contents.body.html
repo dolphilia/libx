@@ -1,0 +1,15 @@
+<div class="gnu-findutils-original-content" id="Contents">
+<h3 class="section" id="Contents-1"><span>2.10 内容</span></h3>
+<p>ファイルの内容に基づいて検索するには、<code class="code">grep</code>を使えます。たとえば、現在のディレクトリにあるCのソースファイルのうち、文字列「<samp class="samp">thing</samp>」を含むものを調べるには、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">grep -l thing *.[ch]&#10;</pre></div>
+<p>サブディレクトリのファイルからも文字列を検索したい場合は、<code class="code">grep</code>、<code class="code">find</code>、<code class="code">xargs</code>を次のように組み合わせられます。</p>
+<div class="example">
+<pre class="example-preformatted">find . -name '*.[ch]' | xargs grep -l thing&#10;</pre></div>
+<p>「<samp class="samp">-l</samp>」を指定すると、<code class="code">grep</code>は文字列を含む行ではなく、そのファイルの名前だけを表示します。文字列の引数「<samp class="samp">thing</samp>」は、実際には正規表現なので、メタ文字を含められます。この方法を少し改善するには、「<samp class="samp">-r</samp>」で、<code class="code">find</code>が何も出力しない場合に<code class="code">xargs</code>が<code class="code">grep</code>を実行しないようにし、<code class="code">find</code>の「<samp class="samp">-print0</samp>」アクションと<code class="code">xargs</code>の「<samp class="samp">-0</samp>」オプションで、名前にスペースを含むファイルが誤解釈されるのを防ぎます。</p>
+<div class="example">
+<pre class="example-preformatted">find . -name '*.[ch]' -print0 | xargs -r -0 grep -l thing&#10;</pre></div>
+<p>内容がパターンに一致するファイルを検索する方法について、より詳しくは<code class="code">grep</code>のマニュアルページを参照してください。</p>
+<hr/>
+</div>
+

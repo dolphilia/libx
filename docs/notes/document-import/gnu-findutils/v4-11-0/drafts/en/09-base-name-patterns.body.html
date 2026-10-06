@@ -1,0 +1,41 @@
+<div class="gnu-findutils-original-content" id="Base-Name-Patterns">
+<h4 class="subsection" id="Base-Name-Patterns-1"><span>2.3.1 Base Name Patterns</span></h4>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dname"><span class="category-def">Test: </span><span><strong class="def-name">-name</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002diname"><span class="category-def">Test: </span><span><strong class="def-name">-iname</strong> <var class="def-var-arguments">pattern</var></span></dt>
+<dd><p>True if the base of the file name (the path with the leading
+directories removed) matches shell pattern <var class="var">pattern</var>.  For
+‘<samp class="samp">-iname</samp>’, the match is case-insensitive.<a class="footnote" href="/docs/gnu-findutils/v4-11-0/en/01-guide/09-base-name-patterns/#FOOT1" id="DOCF1"><sup>1</sup></a>
+To ignore a whole directory tree, use ‘<samp class="samp">-prune</samp>’
+(see <a class="pxref" href="/docs/gnu-findutils/v4-11-0/en/01-guide/24-directories/#Directories">Directories</a>).  As an example, to find Texinfo source files in
+<samp class="file">/usr/local/doc</samp>:
+</p>
+<div class="example">
+<pre class="example-preformatted">find /usr/local/doc -name '*.texi'&#10;</pre></div>
+<p>Notice that the wildcard must be enclosed in quotes in order to
+protect it from expansion by the shell.
+</p>
+<p>As of findutils version 4.2.2 (2004), patterns for ‘<samp class="samp">-name</samp>’ and
+‘<samp class="samp">-iname</samp>’ match a file name with a leading ‘<samp class="samp">.</samp>’.  For
+example the command ‘<samp class="samp">find /tmp -name \*bar</samp>’ match the file
+<samp class="file">/tmp/.foobar</samp>.  Braces within the pattern (‘<samp class="samp">{}</samp>’) are not
+considered to be special (that is, <code class="code">find . -name 'foo{1,2}'</code>
+matches a file named <samp class="file">foo{1,2}</samp>, not the files <samp class="file">foo1</samp> and
+<samp class="file">foo2</samp>.
+</p>
+<p>Because the leading directories are removed, the file names considered
+for a match with ‘<samp class="samp">-name</samp>’ will not include a slash (except for the
+root directory itself, ‘<samp class="samp">/</samp>’).  So, ‘<samp class="samp">-name /</samp>’ will match the
+root directory, while ‘<samp class="samp">-name a/b</samp>’ will never match anything (you
+probably need to use ‘<samp class="samp">-path a/b</samp>’ instead).
+</p>
+<p>The ‘<samp class="samp">-iname</samp>’ option appeared first in POSIX Issue 8 (IEEE Std 1003.1-2024)
+while GNU <code class="code">find</code> supports it since version 3.8 (1993).
+</p></dd></dl>
+<hr/>
+<h5 class="footnote-body-heading"><a href="/docs/gnu-findutils/v4-11-0/en/01-guide/09-base-name-patterns/#DOCF1" id="FOOT1">(1)</a></h5>
+<p>Because we
+need to perform case-insensitive matching, the GNU fnmatch
+implementation is always used; if the C library includes the GNU
+implementation, we use that and otherwise we use the one from gnulib</p>
+</div>

@@ -1,0 +1,54 @@
+<div class="gnu-findutils-original-content" id="Directories">
+<h3 class="section" id="Directories-1"><span>2.11 ディレクトリ</span></h3>
+<p><code class="code">find</code>が検索するディレクトリと検索方法を制御する方法を示します。次の2つのオプションを使うと、ディレクトリツリーの特定の深さの層を処理できます。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dmaxdepth"><span class="category-def">オプション: </span><span><strong class="def-name">-maxdepth</strong> <var class="def-var-arguments">levels</var></span></dt>
+<dd><p>コマンド行引数で指定した場所から、最大<var class="var">levels</var>階層までディレクトリを下ります。値は非負整数です。「<samp class="samp">-maxdepth 0</samp>」は、コマンド行引数だけにテストとアクションを適用することを意味します。</p>
+<div class="example">
+<pre class="example-preformatted">$ mkdir -p dir/d1/d2/d3/d4/d5/d6&#10;&#10;$ find dir -maxdepth 1&#10;dir&#10;dir/d1&#10;&#10;$ find dir -mindepth 5&#10;dir/d1/d2/d3/d4/d5&#10;dir/d1/d2/d3/d4/d5/d6&#10;&#10;$ find dir -mindepth 2 -maxdepth 4&#10;dir/d1/d2&#10;dir/d1/d2/d3&#10;dir/d1/d2/d3/d4&#10;</pre></div>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dmindepth"><span class="category-def">オプション: </span><span><strong class="def-name">-mindepth</strong> <var class="def-var-arguments">levels</var></span></dt>
+<dd><p><var class="var">levels</var>未満の階層では、テストもアクションも適用しません。値は非負整数です。「<samp class="samp">-mindepth 1</samp>」は、コマンド行引数を除くすべてのファイルを処理することを意味します。</p>
+<p>例については「<samp class="samp">-maxdepth</samp>」を参照してください。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002ddepth"><span class="category-def">オプション: </span><span><strong class="def-name">-depth</strong></span></dt>
+<dd><p>各ディレクトリそのものより先に、その内容を処理します。<code class="code">cpio</code>や<code class="code">tar</code>でアーカイブするファイルの一覧を作るときに適しています。ディレクトリの所有者に書き込み権限がなくても、権限をその内容より後に復元するため、内容をアーカイブから復元できます。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dd"><span class="category-def">オプション: </span><span><strong class="def-name">-d</strong></span></dt>
+<dd><p>Mac OS X、FreeBSD、OpenBSDとの互換性のために用意された、「<samp class="samp">-depth</samp>」の非推奨の別名です。「<samp class="samp">-depth</samp>」はPOSIXの機能なので、そちらを使うほうがよいでしょう。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dprune"><span class="category-def">アクション: </span><span><strong class="def-name">-prune</strong></span></dt>
+<dd><p>ファイルがディレクトリである場合、その内部へ進みません。結果は真になります。たとえば、ディレクトリ<samp class="file">src/emacs</samp>とその配下のすべてのファイルとディレクトリを省き、それ以外に見つかったものの名前を表示するには、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">find . -wholename './src/emacs' -prune -o -print&#10;</pre></div>
+<p>上のコマンドは、結果の一覧に<samp class="file">./src/emacs</samp>を表示しません。ただし、これは「<samp class="samp">-prune</samp>」アクションの効果ではありません。このアクションは、その先へ進むのを止めるだけで、項目そのものを無視することは保証しません。表示されないのは「<samp class="samp">-o</samp>」によるものです。<samp class="file">./src/emacs</samp>についてはor条件の左辺が成功したため、右辺の「<samp class="samp">-print</samp>」を評価する必要がないからです。そのディレクトリ名も表示したい場合は、「<samp class="samp">-print</samp>」アクションを追加するか、</p>
+<div class="example">
+<pre class="example-preformatted">find . -wholename './src/emacs' -prune -print -o -print&#10;</pre></div>
+<p>コンマ演算子を使えます。</p>
+<div class="example">
+<pre class="example-preformatted">find . -wholename './src/emacs' -prune , -print&#10;</pre></div>
+<p>「<samp class="samp">-depth</samp>」が有効な場合、いずれにしてもサブディレクトリはすでに訪問済みです。そのため、この場合「<samp class="samp">-prune</samp>」には効果がありません。</p>
+<p>「<samp class="samp">-delete</samp>」は「<samp class="samp">-depth</samp>」の動作も有効にするため、「<samp class="samp">-prune</samp>」と「<samp class="samp">-delete</samp>」を組み合わせると、意図した以上のファイルを削除する可能性があります。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dquit"><span class="category-def">アクション: </span><span><strong class="def-name">-quit</strong></span></dt>
+<dd><p>直ちに終了します。エラーがなければ終了値はゼロです。「<samp class="samp">-prune</samp>」が対象ディレクトリの内容だけに適用されるのに対し、「<samp class="samp">-quit</samp>」は<code class="code">find</code>を直ちに止めるため、「<samp class="samp">-prune</samp>」とは異なります。実行中の子プロセスを残すことはありません。「<samp class="samp">-exec
+... {} +</samp>」や「<samp class="samp">-execdir ... \+</samp>」で組み立てたコマンド行は、終了前に実行します。「<samp class="samp">-quit</samp>」の実行後は、コマンド行に指定した残りのファイルを処理しません。たとえば、「<samp class="samp">find /tmp/foo
+/tmp/bar -print -quit</samp>」は「<samp class="samp">/tmp/foo</samp>」だけを表示します。「<samp class="samp">-quit</samp>」のよくある用途は、目的のものが見つかったらファイルシステムの検索を止めることです。たとえば、1つだけファイルを見つけたい場合は、次のようにします。</p><div class="example">
+<pre class="example-preformatted">find / -name needle -print -quit&#10;</pre></div>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dnoleaf"><span class="category-def">オプション: </span><span><strong class="def-name">-noleaf</strong></span></dt>
+<dd><p>ディレクトリのサブディレクトリ数が、ハードリンク数より2つ少ないと仮定する最適化を行いません。このオプションは、CD-ROM、MS-DOS、AFSのボリュームマウントポイントなど、Unixのディレクトリリンクの慣習に従わないファイルシステムを検索するときに必要です。通常のUnixファイルシステムでは、各ディレクトリに、その名前と<samp class="file">.</samp>エントリという、少なくとも2つのハードリンクがあります。さらに、各サブディレクトリの<samp class="file">..</samp>エントリも、そのディレクトリにリンクしています。<code class="code">find</code>がディレクトリを調べるとき、リンク数より2つ少ない数のサブディレクトリをstatで調べ終えると、残りのエントリはディレクトリではないと判断できます。これらはツリーの<em class="dfn">葉</em>に当たるファイルです。ファイル名だけを調べればよい場合は、statで調べる必要がなくなり、検索速度が大幅に向上します。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dignore_005freaddir_005frace"><span class="category-def">オプション: </span><span><strong class="def-name">-ignore_readdir_race</strong></span></dt>
+<dd><p>ディレクトリから名前を読み取った後、<code class="code">find</code>が<code class="code">stat</code>で調べる前にファイルが消えた場合、エラーメッセージを出しません。このオプションを指定しない場合は、エラーメッセージを出します。</p>
+<p>さらに、「<samp class="samp">-ignore_readdir_race</samp>」を指定した<code class="code">find</code>は、親ディレクトリを読み取った後にファイルが消えた場合の「<samp class="samp">-delete</samp>」アクションのエラーも無視します。エラーの診断メッセージを出さず、「<samp class="samp">-delete</samp>」の戻り値は真になります。</p>
+<p>このオプションは、メールキューや一時ディレクトリなど、頻繁に変わる領域を調べるシステムスクリプト、たとえばcronスクリプトで役立ちます。そのようなディレクトリでは、よく起きる状況だからです。<code class="code">find</code>のエラーメッセージをすべて抑制するのは望ましくないため、このオプションで問題に適切に対処できます。ただし、ファイルシステムの一部では有効、別の部分では無効にして検索することはできません。有効にした状態で、コマンド行に指定した開始点のファイルが存在しない場合も、エラーメッセージは出しません。</p>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dnoignore_005freaddir_005frace"><span class="category-def">オプション: </span><span><strong class="def-name">-noignore_readdir_race</strong></span></dt>
+<dd><p>「<samp class="samp">-ignore_readdir_race</samp>」の効果を打ち消すオプションです。</p></dd></dl>
+<hr/>
+</div>
+

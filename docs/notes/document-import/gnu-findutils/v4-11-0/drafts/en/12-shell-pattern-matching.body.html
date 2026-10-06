@@ -1,0 +1,55 @@
+<div class="gnu-findutils-original-content" id="Shell-Pattern-Matching">
+<h4 class="subsection" id="Shell-Pattern-Matching-1"><span>2.3.4 Shell Pattern Matching</span></h4>
+<p><code class="code">find</code> and <code class="code">locate</code> can compare file names, or parts of file
+names, to shell patterns.  A <em class="dfn">shell pattern</em> is a string that may
+contain the following special characters, which are known as
+<em class="dfn">wildcards</em> or <em class="dfn">metacharacters</em>.
+</p>
+<p>You must quote patterns that contain metacharacters to prevent the
+shell from expanding them itself.  Double and single quotes both work;
+so does escaping with a backslash.
+</p>
+<dl class="table">
+<dt><code class="code">*</code></dt>
+<dd><p>Matches any zero or more characters.
+</p>
+</dd>
+<dt><code class="code">?</code></dt>
+<dd><p>Matches any one character.
+</p>
+</dd>
+<dt><code class="code">[<var class="var">string</var>]</code></dt>
+<dd><p>Matches exactly one character that is a member of the string
+<var class="var">string</var>.  This is called a <em class="dfn">character class</em>.  As a
+shorthand, <var class="var">string</var> may contain ranges, which consist of two
+characters with a dash between them.  For example, the class
+‘<samp class="samp">[a-z0-9_]</samp>’ matches a lowercase letter, a number, or an
+underscore.  You can negate a class by placing a ‘<samp class="samp">!</samp>’ or ‘<samp class="samp">^</samp>’
+immediately after the opening bracket.  Thus, ‘<samp class="samp">[^A-Z@]</samp>’ matches
+any character except an uppercase letter or an at sign.
+</p>
+</dd>
+<dt><code class="code">\</code></dt>
+<dd><p>Removes the special meaning of the character that follows it.  This
+works even in character classes.
+</p></dd>
+</dl>
+<p>In the <code class="code">find</code> tests that do shell pattern matching (‘<samp class="samp">-name</samp>’,
+‘<samp class="samp">-wholename</samp>’, etc.), wildcards in the pattern will match a
+‘<samp class="samp">.</samp>’  at the beginning of a file name.  This is also the case for
+<code class="code">locate</code>.  Thus, ‘<samp class="samp">find -name '*macs'</samp>’ will match a file
+named <samp class="file">.emacs</samp>, as will ‘<samp class="samp">locate '*macs'</samp>’.
+</p>
+<p>Slash characters have no special significance in the shell pattern
+matching that <code class="code">find</code> and <code class="code">locate</code> do, unlike in the shell,
+in which wildcards do not match them.  Therefore, a pattern
+‘<samp class="samp">foo*bar</samp>’ can match a file name ‘<samp class="samp">foo3/bar</samp>’, and a pattern
+‘<samp class="samp">./sr*sc</samp>’ can match a file name ‘<samp class="samp">./src/misc</samp>’.
+</p>
+<p>If you want to locate some files with the ‘<samp class="samp">locate</samp>’ command but
+don’t need to see the full list you can use the ‘<samp class="samp">--limit</samp>’ option
+to see just a small number of results, or the ‘<samp class="samp">--count</samp>’ option to
+display only the total number of matches.
+</p>
+<hr/>
+</div>

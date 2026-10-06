@@ -1,0 +1,28 @@
+<div class="gnu-findutils-original-content" id="find-Expressions">
+<h3 class="section" id="find-Expressions-1"><span>2.1 <code class="code">find</code>の式</span></h3>
+<p><code class="code">find</code>がファイルを選択するために使う式は、1つ以上の<em class="dfn">基本要素（primary）</em>から成り、それぞれが<code class="code">find</code>の独立したコマンド行引数になります。<code class="code">find</code>はファイルを処理するたびに式を評価します。式には、次の種類の基本要素を含められます。</p>
+<dl class="table">
+<dt><em class="dfn">オプション</em></dt>
+<dd><p>特定のファイルの処理ではなく、全体の動作に影響します。</p></dd>
+<dt><em class="dfn">テスト</em></dt>
+<dd><p>ファイルの属性に応じて真または偽を返します。</p></dd>
+<dt><em class="dfn">アクション</em></dt>
+<dd><p>副作用を持ち、真または偽を返します。</p></dd>
+<dt><em class="dfn">演算子</em></dt>
+<dd><p>ほかの引数を結び付け、その評価のタイミングと、評価するかどうかに影響します。</p></dd>
+</dl>
+<p>2つの基本要素の間の演算子は省略でき、既定値は「<samp class="samp">-and</samp>」です。基本要素を結び付けて、より複雑な式にする方法については、<a class="xref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/26-combining-primaries-with-operators/#Combining-Primaries-With-Operators">演算子で基本要素を組み合わせる</a>を参照してください。</p>
+<p>式に「<samp class="samp">-prune</samp>」または「<samp class="samp">-quit</samp>」以外のアクションが含まれていない限り、式全体が真になるすべてのファイルに「<samp class="samp">-print</samp>」アクションが実行されます（<a class="pxref" href="/docs/gnu-findutils/source/v4-11-0/manual.html#Print-File-Name">ファイル名を表示する</a>を参照）。既定の「<samp class="samp">-print</samp>」を抑制するアクションは、「<samp class="samp">-delete</samp>」「<samp class="samp">-execdir</samp>」「<samp class="samp">-exec</samp>」「<samp class="samp">-fls</samp>」「<samp class="samp">-fprint0</samp>」「<samp class="samp">-fprintf</samp>」「<samp class="samp">-fprint</samp>」「<samp class="samp">-ls</samp>」「<samp class="samp">-okdir</samp>」「<samp class="samp">-ok</samp>」「<samp class="samp">-print0</samp>」「<samp class="samp">-printf</samp>」「<samp class="samp">-print</samp>」です。</p>
+<p>オプションは、式中のその位置に到達したときにファイルごとに評価されるのではなく、直ちに効力を持ちます。そのため、分かりやすくするには式の先頭に置くのが最適です。ただし例外があり、「<samp class="samp">-regextype</samp>」「<samp class="samp">-daystart</samp>」「<samp class="samp">-follow</samp>」はコマンド行中の位置によって効果が異なります。紛らわしいため、これらも先頭に置くのが最適です。</p>
+<p>多くの基本要素は引数を取り、その引数は<code class="code">find</code>の次のコマンド行引数として直後に置きます。ファイル名、パターン、その他の文字列を取るものもあれば、数値を取るものもあります。数値引数は次のように指定できます。</p>
+<dl class="table">
+<dt><code class="code">+<var class="var">n</var></code></dt>
+<dd><p><var class="var">n</var>より大きい値</p></dd>
+<dt><code class="code">-<var class="var">n</var></code></dt>
+<dd><p><var class="var">n</var>より小さい値</p></dd>
+<dt><code class="code"><var class="var">n</var></code></dt>
+<dd><p><var class="var">n</var>と正確に等しい値</p></dd>
+</dl>
+<hr/>
+</div>
+

@@ -1,0 +1,33 @@
+<div class="gnu-findutils-original-content" id="Hard-Links">
+<h4 class="subsection" id="Hard-Links-1"><span>2.4.2 ハードリンク</span></h4>
+<p>ハードリンクによって、ファイルシステム上の同じファイル、つまり同じinodeを複数の名前から参照できます。<var class="var">name</var>と同じファイルを参照するすべての名前を検索するには、「<samp class="samp">-samefile <var class="var">name</var></samp>」を使います。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dsamefile"><span class="category-def">テスト: </span><span><strong class="def-name">-samefile</strong> <var class="def-var-arguments"><var class="var">name</var></var></span></dt>
+<dd><p>ファイルが<var class="var">name</var>と同じinodeへのハードリンクである場合に真になります。これは、<var class="var">name</var>とそのファイルが同じファイルシステム上にあり、同じデバイス番号を持つことを意味します。</p>
+<p>シンボリックリンクをたどる「<samp class="samp">-L</samp>」も指定している場合を除き、「<samp class="samp">-xdev</samp>」によって検索を1つのファイルシステムに限定できます。ハードリンクは1つのファイルシステムの外を指せないため、不要な検索を減らすのに役立ちます。</p>
+<p>「<samp class="samp">-L</samp>」が有効な場合、シンボリックリンクをたどる動作は、「<samp class="samp">-samefile</samp>」基本要素の<var class="var">name</var>引数にも、ディレクトリ階層の走査で調べる各ファイルにも適用されます。そのため、「<samp class="samp">find -L -samefile <var class="var">name</var></samp>」は、<var class="var">name</var>が参照するファイルへのハードリンクとシンボリックリンクの両方を見つけます。</p></dd></dl>
+<p><code class="command">find</code>では、inode番号によるファイル検索も行えます。</p>
+<p>これは、ファイルシステムの問題を診断するときに役立つ場合があります。たとえば、<code class="command">fsck</code>や<code class="command">lsof</code>はinode番号を表示する傾向があります。ソフトウェアの種類によっては、ログメッセージにinode番号が現れることもあります。</p>
+<p>「<samp class="samp">ls -li</samp>」「<samp class="samp">stat</samp>」「<samp class="samp">find -ls</samp>」を実行すると、ファイルのinode番号と、そのファイルへのリンク数を確認できます。</p>
+<p>「<samp class="samp">-inum
+NUM</samp>」を使うと、inode番号NUMへのハードリンクを検索できます。検索開始ディレクトリの下にファイルシステムのマウントポイントがある場合は、「<samp class="samp">-L</samp>」も使っている場合を除き、「<samp class="samp">-xdev</samp>」を使ってください。ファイルへのハードリンクは同じファイルシステムにある必要があるため、「<samp class="samp">-xdev</samp>」を使うと不要な検索を省けます。<a class="xref" href="/docs/gnu-findutils/v4-11-0/ja/01-guide/25-filesystems/#Filesystems">ファイルシステム</a>を参照してください。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dinum"><span class="category-def">テスト: </span><span><strong class="def-name">-inum</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>ファイルのinode番号が<var class="var">n</var>の場合に真になります。「<samp class="samp">+</samp>」と「<samp class="samp">-</samp>」の修飾子も使えますが、役立つことはまれです。</p>
+<p>「<samp class="samp">-inum</samp>」基本要素は、inode番号と指定した<var class="var">n</var>を単純に比較することに注意してください。そのため、複数のファイルシステムで特定のinode番号を検索すると、その番号を持つファイルが複数見つかる場合があります。しかし、ファイルシステムごとにデバイス番号が異なるため、それらが同じファイルへのハードリンクであるとは限りません。</p>
+<p>したがって、多くの場合は、このオプションより「<samp class="samp">-samefile</samp>」を使うほうが簡単です。</p></dd></dl>
+<p><code class="command">find</code>では、「<samp class="samp">-links</samp>」を使って、リンク数が特定の値であるファイルを検索することもできます。</p>
+<p>ディレクトリには通常、少なくとも2つのハードリンクがあります。親ディレクトリ内でその名前を持つエントリと、そのディレクトリ内の<samp class="file">.</samp>エントリです。サブディレクトリがある場合、それぞれにも親ディレクトリへの<samp class="file">..</samp>というハードリンクがあります。</p>
+<p><samp class="file">.</samp>と<samp class="file">..</samp>のディレクトリエントリは、<code class="code">find</code>のコマンド行に指定しない限り、通常は検索されません。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dlinks"><span class="category-def">テスト: </span><span><strong class="def-name">-links</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>ファイルに<var class="var">n</var>個のハードリンクがあります。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dlinks-1"><span class="category-def">テスト: </span><span><strong class="def-name">-links</strong> <var class="def-var-arguments">+n</var></span></dt>
+<dd><p>ファイルに<var class="var">n</var>個より多くのハードリンクがあります。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dlinks-2"><span class="category-def">テスト: </span><span><strong class="def-name">-links</strong> <var class="def-var-arguments">-n</var></span></dt>
+<dd><p>ファイルに<var class="var">n</var>個より少ないハードリンクがあります。</p></dd></dl>
+<hr/>
+</div>
+

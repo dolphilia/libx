@@ -1,0 +1,80 @@
+<div class="gnu-findutils-original-content" id="Hard-Links">
+<h4 class="subsection" id="Hard-Links-1"><span>2.4.2 Hard Links</span></h4>
+<p>Hard links allow more than one name to refer to the same file on a
+file system, i.e., to the same inode.  To find all the names which refer
+to the same file as <var class="var">name</var>, use ‘<samp class="samp">-samefile <var class="var">name</var></samp>’.
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dsamefile"><span class="category-def">Test: </span><span><strong class="def-name">-samefile</strong> <var class="def-var-arguments"><var class="var">name</var></var></span></dt>
+<dd><p>True if the file is a hard link to the same inode as <var class="var">name</var>.
+This implies that <var class="var">name</var> and the file reside on the same file system,
+i.e., they have the same device number.
+</p>
+<p>Unless the ‘<samp class="samp">-L</samp>’ option is also given to follow symbolic links, one may
+confine the search to one file system by using the ‘<samp class="samp">-xdev</samp>’ option.
+This is useful because hard links cannot point outside a single file system,
+so this can cut down on needless searching.
+</p>
+<p>If the ‘<samp class="samp">-L</samp>’ option is in effect, then dereferencing of symbolic links
+applies both to the <var class="var">name</var> argument of the ‘<samp class="samp">-samefile</samp>’ primary and
+to each file examined during the traversal of the directory hierarchy.
+Therefore, ‘<samp class="samp">find -L -samefile <var class="var">name</var></samp>’ will find both hard links and
+symbolic links pointing to the file referenced by <var class="var">name</var>.
+</p></dd></dl>
+<p><code class="command">find</code> also allows searching for files by inode number.
+</p>
+<p>This can occasionally be useful in diagnosing problems with file systems;
+for example, <code class="command">fsck</code> and <code class="command">lsof</code> tend to print inode numbers.
+Inode numbers also occasionally turn up in log messages for some types of
+software.
+</p>
+<p>You can learn a file’s inode number and the number of links to it by
+running ‘<samp class="samp">ls -li</samp>’, ‘<samp class="samp">stat</samp>’ or ‘<samp class="samp">find -ls</samp>’.
+</p>
+<p>You can search for hard links to inode number NUM by using ‘<samp class="samp">-inum
+NUM</samp>’. If there are any file system mount points below the directory
+where you are starting the search, use the ‘<samp class="samp">-xdev</samp>’ option unless
+you are also using the ‘<samp class="samp">-L</samp>’ option.  Using ‘<samp class="samp">-xdev</samp>’ saves
+needless searching, since hard links to a file must be on the
+same file system.  See <a class="xref" href="/docs/gnu-findutils/v4-11-0/en/01-guide/25-filesystems/#Filesystems">Filesystems</a>.
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dinum"><span class="category-def">Test: </span><span><strong class="def-name">-inum</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>True if the file has inode number <var class="var">n</var>.  The ‘<samp class="samp">+</samp>’ and ‘<samp class="samp">-</samp>’ qualifiers
+also work, though these are rarely useful.
+</p>
+<p>Please note that the ‘<samp class="samp">-inum</samp>’ primary simply compares the inode number
+against the given <var class="var">n</var>.
+This means that a search for a certain inode number in several file systems
+may return several files with that inode number, but as each file system has
+its own device number, those files are not necessarily hard links to the
+same file.
+</p>
+<p>Therefore, it is much of the time easier to use ‘<samp class="samp">-samefile</samp>’ rather than
+this option.
+</p></dd></dl>
+<p><code class="command">find</code> also allows searching for files that have a certain number of
+links, with ‘<samp class="samp">-links</samp>’.
+</p>
+<p>A directory normally has at least two hard links: the entry named in its parent
+directory, and the <samp class="file">.</samp> entry inside of the directory.
+If a directory has subdirectories, each of those also has a hard link called
+<samp class="file">..</samp> to its parent directory.
+</p>
+<p>The <samp class="file">.</samp> and <samp class="file">..</samp> directory entries are not normally searched unless
+they are mentioned on the <code class="code">find</code> command line.
+</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dlinks"><span class="category-def">Test: </span><span><strong class="def-name">-links</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>File has <var class="var">n</var> hard links.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dlinks-1"><span class="category-def">Test: </span><span><strong class="def-name">-links</strong> <var class="def-var-arguments">+n</var></span></dt>
+<dd><p>File has more than <var class="var">n</var> hard links.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dlinks-2"><span class="category-def">Test: </span><span><strong class="def-name">-links</strong> <var class="def-var-arguments">-n</var></span></dt>
+<dd><p>File has fewer than <var class="var">n</var> hard links.
+</p></dd></dl>
+<hr/>
+</div>

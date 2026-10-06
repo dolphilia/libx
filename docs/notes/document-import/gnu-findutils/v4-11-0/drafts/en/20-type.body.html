@@ -1,0 +1,77 @@
+<div class="gnu-findutils-original-content" id="Type">
+<h3 class="section" id="Type-1"><span>2.7 Type</span></h3>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dtype"><span class="category-def">Test: </span><span><strong class="def-name">-type</strong> <var class="def-var-arguments">c</var></span></dt>
+<dd><p>True if the file is of type <var class="var">c</var>:
+</p>
+<dl class="table">
+<dt><code class="code">b</code></dt>
+<dd><p>block (buffered) special
+</p></dd>
+<dt><code class="code">c</code></dt>
+<dd><p>character (unbuffered) special
+</p></dd>
+<dt><code class="code">d</code></dt>
+<dd><p>directory
+</p></dd>
+<dt><code class="code">p</code></dt>
+<dd><p>named pipe (FIFO)
+</p></dd>
+<dt><code class="code">f</code></dt>
+<dd><p>regular file
+</p></dd>
+<dt><code class="code">l</code></dt>
+<dd><p>symbolic link; if ‘<samp class="samp">-L</samp>’ is in effect, this is true only for broken
+symbolic links.  If you want to search for symbolic links when
+‘<samp class="samp">-L</samp>’ is in effect, use ‘<samp class="samp">-xtype</samp>’ instead of ‘<samp class="samp">-type</samp>’.
+</p></dd>
+<dt><code class="code">s</code></dt>
+<dd><p>socket
+</p></dd>
+<dt><code class="code">D</code></dt>
+<dd><p>door (Solaris)
+</p></dd>
+</dl>
+<p>As a GNU extension, multiple file types can be provided as a combined list
+separated by comma ‘<samp class="samp">,</samp>’. For example, ‘<samp class="samp">-type f,d,l</samp>’ is logically
+interpreted as ‘<samp class="samp">( -type f -o -type d -o -type l )</samp>’.
+</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002dxtype"><span class="category-def">Test: </span><span><strong class="def-name">-xtype</strong> <var class="def-var-arguments">c</var></span></dt>
+<dd><p>This test behaves the same as ‘<samp class="samp">-type</samp>’ unless the file is a
+symbolic link.  If the file is a symbolic link, the result is as
+follows (in the table below, ‘<samp class="samp">X</samp>’ should be understood to
+represent any letter except ‘<samp class="samp">l</samp>’):
+</p>
+<dl class="table">
+<dt>‘<samp class="samp">‘<samp class="samp">-P -xtype l</samp>’</samp>’</dt>
+<dd><p>True if the symbolic link is broken or has an infinite loop
+</p></dd>
+<dt>‘<samp class="samp">‘<samp class="samp">-P -xtype X</samp>’</samp>’</dt>
+<dd><p>True if the (ultimate) target file is of type ‘<samp class="samp">X</samp>’.
+</p></dd>
+<dt>‘<samp class="samp">‘<samp class="samp">-L -xtype l</samp>’</samp>’</dt>
+<dd><p>Always true
+</p></dd>
+<dt>‘<samp class="samp">‘<samp class="samp">-L -xtype X</samp>’</samp>’</dt>
+<dd><p>False unless the symbolic link is broken or has an infinite loop
+</p></dd>
+</dl>
+<p>In other words, for non-broken symbolic links, ‘<samp class="samp">-xtype</samp>’ checks
+the type of the file that ‘<samp class="samp">-type</samp>’ does not check.  For broken
+symbolic links (or loops), ‘<samp class="samp">-xtype</samp>’ behaves like ‘<samp class="samp">-type</samp>’
+does.  Symbolic links pointing to things the user has no access to are
+not considered to be broken.
+</p>
+<p>The ‘<samp class="samp">-H</samp>’ option also affects the behaviour of ‘<samp class="samp">-xtype</samp>’.
+When ‘<samp class="samp">-H</samp>’ is in effect, ‘<samp class="samp">-xtype</samp>’ behaves as if ‘<samp class="samp">-L</samp>’ had
+been specified when examining files listed on the command line, and as
+if ‘<samp class="samp">-P</samp>’ had been specified otherwise.  If neither ‘<samp class="samp">-H</samp>’ nor
+‘<samp class="samp">-L</samp>’ was specified, ‘<samp class="samp">-xtype</samp>’ behaves as if ‘<samp class="samp">-P</samp>’ had
+been specified.
+</p>
+<p>See <a class="xref" href="/docs/gnu-findutils/v4-11-0/en/01-guide/14-symbolic-links/#Symbolic-Links">Symbolic Links</a>, for more information on ‘<samp class="samp">-follow</samp>’ and
+‘<samp class="samp">-L</samp>’.
+</p></dd></dl>
+<hr/>
+</div>

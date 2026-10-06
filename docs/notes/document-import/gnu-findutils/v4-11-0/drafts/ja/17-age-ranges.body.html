@@ -1,0 +1,25 @@
+<div class="gnu-findutils-original-content" id="Age-Ranges">
+<h4 class="subsection" id="Age-Ranges-1"><span>2.5.1 経過時間の範囲</span></h4>
+<p>これらのテストは、主に範囲を指定する「<samp class="samp">+<var class="var">n</var></samp>」と「<samp class="samp">-<var class="var">n</var></samp>」で役立ちます。</p>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002datime"><span class="category-def">テスト: </span><span><strong class="def-name">-atime</strong> <var class="def-var-arguments">n</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dctime"><span class="category-def">テスト: </span><span><strong class="def-name">-ctime</strong> <var class="def-var-arguments">n</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dmtime"><span class="category-def">テスト: </span><span><strong class="def-name">-mtime</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>ファイルへの最後のアクセス、状態の変更、または内容の変更が、<var class="var">n</var>×24時間前に行われた場合に真になります。ファイルのタイムスタンプから経過した24時間単位の数は、常に切り捨てられます。そのため、0は「24時間未満前」、1は「24時間以上48時間未満前」を意味し、以降も同様です。小数にも対応していますが、実際に意味を持つのは、範囲を指定する「<samp class="samp">+<var class="var">n</var></samp>」と「<samp class="samp">-<var class="var">n</var></samp>」を使う場合です。</p></dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002damin"><span class="category-def">テスト: </span><span><strong class="def-name">-amin</strong> <var class="def-var-arguments">n</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dcmin"><span class="category-def">テスト: </span><span><strong class="def-name">-cmin</strong> <var class="def-var-arguments">n</var></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-_002dmmin"><span class="category-def">テスト: </span><span><strong class="def-name">-mmin</strong> <var class="def-var-arguments">n</var></span></dt>
+<dd><p>ファイルへの最後のアクセス、状態の変更、または内容の変更が、<var class="var">n</var>分前に行われた場合に真になります。「<samp class="samp">-atime</samp>」などより細かい単位で測定できますが、切り捨ては同様に行われます。こちらも小数に対応しています。たとえば、<samp class="file">/u/bill</samp>にある、最後に読み取られたのが2分前から6分前までのファイルを列挙するには、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">find /u/bill -amin +2 -amin -6&#10;</pre></div>
+</dd></dl>
+<dl class="first-deffn">
+<dt class="deffn" id="index-_002ddaystart"><span class="category-def">オプション: </span><span><strong class="def-name">-daystart</strong></span></dt>
+<dd><p>24時間前ではなく、今日の開始時点から時刻を測ります。そのため、ホームディレクトリ内の、昨日内容が変更された通常のファイルを列挙するには、次のようにします。</p>
+<div class="example">
+<pre class="example-preformatted">find ~/ -daystart -type f -mtime 1&#10;</pre></div>
+<p>「<samp class="samp">-daystart</samp>」は、ほかのテストの実行方法に影響する点で、大半のオプションと異なります。影響を受けるテストは、「<samp class="samp">-amin</samp>」「<samp class="samp">-cmin</samp>」「<samp class="samp">-mmin</samp>」「<samp class="samp">-atime</samp>」「<samp class="samp">-ctime</samp>」「<samp class="samp">-mtime</samp>」です。「<samp class="samp">-daystart</samp>」は、コマンド行でそれより後に現れるテストの動作だけに影響します。</p></dd></dl>
+<hr/>
+</div>
+
