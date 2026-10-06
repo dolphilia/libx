@@ -1,0 +1,35 @@
+/* プロジェクトテンプレート共通スタイル */
+@import '@docs/theme/css/starlight-overrides.css';
+
+/* プロジェクト固有の追加スタイルは必要に応じて記述 */
+
+/* Upstream image and inline SVG examples retain their original aspect ratio. */
+.mdbook-guide svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  max-width: 100%;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+.mdbook-guide pre {
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.mdbook-guide .hidden {
+  display: none;
+}
+
+/* Static edition shows the original image once; upstream zoom controls use its runtime. */
+.mdbook-guide .checkbox-img,
+.mdbook-guide .img-wrapper {
+  display: none;
+}
+
+/* Keep the upstream version label in document flow within the Libx layout. */
+.mdbook-guide .mdbook-version {
+  position: static;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
