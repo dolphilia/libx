@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-447-xxhash-editorial-errata-annotation",
+  "cycle": 447,
+  "startedAt": "2026-10-03T11:59:00.368Z",
+  "endedAt": "2026-10-03T11:59:02.849Z",
+  "result": "partial",
+  "phase": "candidate-conversion-editorial-annotation-trial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Isolated Astro fixture447; own node_modules cache",
+    "Static upstream errata annotations outside original body",
+    "Astro build/full33DOM and note presence checks",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f8cbf866ff0b03e3eb0bb3c60c183fbc02cb24ae25ae2b1e620b6aadf0b2b7ac"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-446/UPSTREAM_CONTENT_ERRATA.json",
+      "sha256": "f5845899d7476d11d98cfda153d8f9be62ad4941766354496377a0da458de152"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-443/EXPECTED_API_BODIES.json",
+      "sha256": "d0424719c6f5cd6aa536bcc4231dc425ce1148ca6a12749382526c543238628c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-447/BUILD_AND_RETAINED_BODY_CHECK.json",
+      "sha256": "4385475e879a5535d643026174772cd6c5854a7b33bdd5a1aea5459e7ca95607"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-447/CYCLE_FINDINGS.json",
+      "sha256": "69df0dffc27ba4743b41f2f878c12513c103cb147bfc017697b5f02c987e744b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-447/EDITORIAL_ERRATA_ANNOTATION.json",
+      "sha256": "725f099647d86212b7e8ca69f977de35d0544d1d531d9a84b2404c40727dd357"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-447/apply-errata.mjs",
+      "sha256": "a46d08dda9a6e5d95ab9c47f62b18d942a7ef420fbd426264e72b7819fa44bb1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-447/astro-build.log",
+      "sha256": "f395c4f7c93174bffc66f897d45cb6e79d996d5fbaeaac281c9c0c5b47367d2c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-447/save-errata.mjs",
+      "sha256": "a9e37743bf6ffae3daa0da7394f6835ab8b9217ee8edec41fb447e9359a2d907"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "fb03a1d82f288becd7ffab9f09802a660bbd169f3966f7cf962164b421f9a3a8"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "61ページbuildと33原文DOM維持、注記3ページの実HTML検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-447/BUILD_AND_RETAINED_BODY_CHECK.json",
+          "sha256": "4385475e879a5535d643026174772cd6c5854a7b33bdd5a1aea5459e7ca95607"
+        }
+      ]
+    },
+    {
+      "name": "native visual/APIUI/mobile/日本語/採点/選定",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-447/CYCLE_FINDINGS.json",
+          "sha256": "69df0dffc27ba4743b41f2f878c12513c103cb147bfc017697b5f02c987e744b"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "原文の誤記を黙って修正せず、独自注記として区別。",
+    "変換合格や翻訳レビューを機械検査だけで確定しない。"
+  ],
+  "unresolved": [
+    "注記native確認",
+    "APIUI/native mobile",
+    "既存日本語/採点/別パス選定"
+  ],
+  "nextAction": "試験447で6件の原文誤記注記を3関連ページへ追加、61ページbuildと33原文DOM不変を機械検証済み。次は447の注記を実ブラウザー確認し、API右目次/codecopy・mobile/コード/表/noticeを検証。既存日本語調査・採点・別パス選定は引き続き未完。",
+  "resumeCondition": "CANDIDATES100。独立試験447のlocal Astro previewから再開。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-435-xxhash-links-notices-failed-attempt",
+  "cycle": 435,
+  "startedAt": "2026-10-03T11:17:25.588Z",
+  "endedAt": "2026-10-03T11:17:29.759Z",
+  "result": "partial",
+  "phase": "candidate-link-notice-trial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Markdown AST URL限定変換/固定原通知ページ/原本txt提供",
+    "一時Libx Astro buildと全記事リンク/通知/API DOMの機械検査",
+    "台帳CAS、localLLM未使用"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "0f6448bc130dd320297ec5e4e873c43ba21acab56847208cc913b8c3978b932a"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-435/BUILD.log",
+      "sha256": "7defb1568183b08e6094392fca157dddd2522a127970006309bca4d9a67366cb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-435/BUILT_LINKS_AND_NOTICES_CHECK.json",
+      "sha256": "7e0ea0e3d5c90f8c1505880d9e362fecd11068fdc9394140f53b0c5e8c163858"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-435/CYCLE_FINDINGS.json",
+      "sha256": "f7e16df77c01db64b3946f0e72acf7b32413489428033e2a8e2070632a259410"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-435/LINK_AND_NOTICE_IMPLEMENTATION.json",
+      "sha256": "eada7dcffb1fe82c91c65ae26c26675b34d9946c0c9c9ed377f4ab5567cd601e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-435/link-check.mjs",
+      "sha256": "dbcc7504845c0471bbefca5dc1edf147e2edc45033015c1e96cbb0fafb914911"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-435/link-notice-converter.mjs",
+      "sha256": "37fbf76129f8fc26a2ccda2dc6d93241d7400bb60b79ac29603a0fd475132aab"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "11328bbdfaa945e901ae76d7e292fff6ccf422dc534fe26d893970c93e321597"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "失敗試行・検査器/変換修正は437へ",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-435/CYCLE_FINDINGS.json",
+          "sha256": "f7e16df77c01db64b3946f0e72acf7b32413489428033e2a8e2070632a259410"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "初回実ビルドにCLI slugのドット処理不一致、リンク文字列がURLと同じ場合の誤置換、公式索引の未定義anchorを検出。通知検査器もコードCSSクラスを誤って想定していた。failed原検査を保持。",
+    "失敗原証拠は不変、成功後に過去記録の検査結果を書き換えない。"
+  ],
+  "unresolved": [
+    "native desktop/mobile表示・操作",
+    "MD12本文保持と全文自立性",
+    "日本語調査/工数/採点"
+  ],
+  "nextAction": "xxHash試験437をローカルAstro previewで開き、通常/最大API・仕様・コード・表・画像・通知・ページ遷移をnative desktop/mobileで確認。Markdown全12本文の内容保持を検証し、全文自立性/日本語版調査/API項目・工数・採点を確定。",
+  "resumeCondition": "CANDIDATES88、rights/boundary/fixedInput pass。移植条件はnative/MD確認未了でunknown。最新fixture437、原証拠と失敗経緯保存済み。採用0。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

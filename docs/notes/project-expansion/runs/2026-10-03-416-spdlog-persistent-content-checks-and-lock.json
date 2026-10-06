@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-416-spdlog-persistent-content-checks-and-lock",
+  "cycle": 416,
+  "startedAt": "2026-10-03T08:32:05.005Z",
+  "endedAt": "2026-10-03T08:32:07.004Z",
+  "result": "partial",
+  "phase": "spdlog-persistent-content-checks-and-lock",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "pnpm check:content/check:rendered",
+    "Read-only hash before/after check",
+    "Separate fixture negative mutation check",
+    "pnpm offline lock-only/frozen validation and semantic YAML comparison",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "173d12415eae5a8019c91866684dd3fabb501f29df107681aa742da918fb59bc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-415/FULL_CONTENT_REVIEW_MANIFEST.json",
+      "sha256": "3e20c17a79afa25219e15b885ac8cfedaa24619c2972f7511268efef57020f4e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/CHECK_VALIDATOR.json",
+      "sha256": "e6fd03e89af937019c53d926170f2313a926c1c4ef36249c50f49713bcb40a7f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/CONTENT_CHECK.log",
+      "sha256": "a690ee898c86e5050dca257e2b6a2b0c7a4e73d8bd7b64b69b07b8d490249b70"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/FROZEN_LOCK.log",
+      "sha256": "c6a0816924c509ba3cd4d3c318ccfcccd030cb3925f1cd4595a91a6e964e8eee"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/LOCK_VALIDATION.json",
+      "sha256": "33ae33046aaae3027fbdf8f99d5fbf0b61c5224826d7fc697fcde73e8a3d7e15"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/RENDERED_CHECK.log",
+      "sha256": "2d6decdcc413f7d4f8e103bfc7cecd6ad3faf60cab8c9f799bb1950b024c45d8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/app/meta/pages.json",
+      "sha256": "fbc0fb200f6a06fc36a76321b15acb5fe0a1d25db132258b7893ff0ac6372a13"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/app/meta/reviewed-content.json",
+      "sha256": "2d201c9141364720f54c78a29984a175475cc7d209ebedcfacfe4949260580ae"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/app/package.json",
+      "sha256": "591a328408303c5c207f851b0edbeddc1979b8f35e2644882ba73df4b08d8f9a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/app/scripts/check-content.mjs",
+      "sha256": "d220e8f0a0fc9c022654fa3670f08ddd6dafe0cb17eee5f4984cb7120df14114"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/app/scripts/check-rendered.mjs",
+      "sha256": "f4a93495262aadd66c4bd811a94f9ad68af58d9f27441b9506c0b20e14a4d0e1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/app/scripts/import-canonical.mjs",
+      "sha256": "71098895c78f8bd4d031b993e372976d40736dd3b12fd92a1be073f48616b613"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/pnpm-lock.yaml",
+      "sha256": "8b0e0c7160c9b269279f96ce44dccaf07f19d26ed5568c0d6fcaa815b73d1ed9"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7208f70d61fbf854f807047e3231faa51d1c63ba344d26987619479e000bb891"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "spdlog"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Read-only30sources/27canonicalregeneration/54reviewhashes/code/notices/sidebar",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/CONTENT_CHECK.log",
+          "sha256": "a690ee898c86e5050dca257e2b6a2b0c7a4e73d8bd7b64b69b07b8d490249b70"
+        }
+      ]
+    },
+    {
+      "name": "All52guidesactualrendered prose/code/tables/links/images",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/RENDERED_CHECK.log",
+          "sha256": "2d6decdcc413f7d4f8e103bfc7cecd6ad3faf60cab8c9f799bb1950b024c45d8"
+        }
+      ]
+    },
+    {
+      "name": "No input mutations; independent FAQ mutation fixture rejected",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/CHECK_VALIDATOR.json",
+          "sha256": "e6fd03e89af937019c53d926170f2313a926c1c4ef36249c50f49713bcb40a7f"
+        }
+      ]
+    },
+    {
+      "name": "Frozen lock semantic match; onlyspdlog36lineimporter",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/LOCK_VALIDATION.json",
+          "sha256": "33ae33046aaae3027fbdf8f99d5fbf0b61c5224826d7fc697fcde73e8a3d7e15"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-416/FROZEN_LOCK.log",
+          "sha256": "c6a0816924c509ba3cd4d3c318ccfcccd030cb3925f1cd4595a91a6e964e8eee"
+        }
+      ]
+    },
+    {
+      "name": "Native/integration/release verification",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "全27頁の定本再生成checkと英日review hash拘束を公開可能なappscriptへ実装。meta内一時絶対pathをrepo相対pathに修正。検査は読取専用。",
+    "pnpm生成lockの大規模書式差分を除去し、baseline graphを保持。最終YAMLはoffline frozen検証結果と意味一致。",
+    "未画面検証・未統合検証・未公開をverifiedにしない。"
+  ],
+  "unresolved": [
+    "Native desktop/mobile/keyboard preview checks",
+    "Integrated build/links/integrity/regression checks",
+    "Pages publication"
+  ],
+  "nextAction": "全27頁内容review完了。読み取り専用check:content/check:rendered・全27canonical再生成check・変異検出合格。native画面（desktop/mobile/keyboard）と統合build/links/integrity/回帰検証を行い、Pages公開へ。",
+  "resumeCondition": "内容review415・machine413・検査実装416のhashと専用checkoutを照合。node_modules symlinkをstageしない。pnpm lockは新規spdlog importer36行だけ、offline frozen結果とYAML意味一致。native/integration/releaseから再開。",
+  "counts": {
+    "verified": 12,
+    "published": 12,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

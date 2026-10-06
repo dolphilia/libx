@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-468-xxhash-xxh3-family-full-review",
+  "cycle": 468,
+  "startedAt": "2026-10-03T13:45:48.521Z",
+  "endedAt": "2026-10-03T13:45:54.768Z",
+  "result": "partial",
+  "phase": "canonical-content-review-partial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Full XXH3family source/canonical reads",
+    "SHA-bound unchanged verification reuse",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0b1a75da0dc7c6739a8152fe801976b0cf5f617e30284a39675d78e07bd4cfbd"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-468/CYCLE_FINDINGS.json",
+      "sha256": "93d7d9b3c1392ab0a04a4062c8b4123530c7db58eb2bc4c24edd990318942565"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-468/UNCHANGED_BUILD_INPUTS.json",
+      "sha256": "007b3caaefc644529b184f69979c14cf304d5f926b36228b7c5a48f3aed9c8d6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-468/XXH3_FAMILY_READOUT.txt",
+      "sha256": "8868c107854ce9361535601bfb15f7a85b7c12b8c28d4271c1d67bd44e6f11ca"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-468/save-review.mjs",
+      "sha256": "541511b0f739d88e06efe4ab125b16de6e2cddb6db26319a17bf2f61caaeb0ab"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/468.json",
+      "sha256": "ef0b14829254b5ce8bd2cb286cc8c17098a84e28b8a5093fe15f5ff5063fe12b"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "aa87664a9e34198c1329c8028085cdd12f77fa8ea1fec4e0d5b1394d41d5ebc5"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+      "sha256": "faff465118e3449c9d1c91240a7089242ae5fd0e2c4d22e032326b02825844ec"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "349fe34f8fdcd05e193c38201ab73293ea3e5c885f86561aeb8448a2e787342f"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "XXH3family頁全文原文→英語照合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/468.json",
+          "sha256": "ef0b14829254b5ce8bd2cb286cc8c17098a84e28b8a5093fe15f5ff5063fe12b"
+        }
+      ]
+    },
+    {
+      "name": "機械/build/link既存入力SHA不変",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-468/UNCHANGED_BUILD_INPUTS.json",
+          "sha256": "007b3caaefc644529b184f69979c14cf304d5f926b36228b7c5a48f3aed9c8d6"
+        }
+      ]
+    },
+    {
+      "name": "残13内容/JA/native/integration",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+          "sha256": "faff465118e3449c9d1c91240a7089242ae5fd0e2c4d22e032326b02825844ec"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "累計43/56のみ、source-locked保持。",
+    "原API/前提条件等の定本保全であり実装テストは実施していない。"
+  ],
+  "unresolved": [
+    "残13英語全文レビュー",
+    "全文JA翻訳/別review",
+    "正式全機械/native/統合/公開"
+  ],
+  "nextAction": "xxHash原文→正式英語全文43/56review、残13(API1/原code1/通知11)未確認。次はheader全文を節分割照合し、原code/全通知へ。XXH3family1頁確認済み。AVX512節のVS2017/AVX2原文表記は疑義として保持、compiler実証なしで訂正しない。全app/importer/source SHA不変で467の全56機械・33title・61build・内部7329link破損0を再利用。JA0/native/integration未完、source-locked保持。",
+  "resumeCondition": "xxHash原文→正式英語全文43/56review、残13(API1/原code1/通知11)未確認。次はheader全文を節分割照合し、原code/全通知へ。XXH3family1頁確認済み。AVX512節のVS2017/AVX2原文表記は疑義として保持、compiler実証なしで訂正しない。全app/importer/source SHA不変で467の全56機械・33title・61build・内部7329link破損0を再利用。JA0/native/integration未完、source-locked保持。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

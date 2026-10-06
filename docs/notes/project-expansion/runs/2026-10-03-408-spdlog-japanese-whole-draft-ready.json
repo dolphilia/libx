@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-408-spdlog-japanese-whole-draft-ready",
+  "cycle": 408,
+  "startedAt": "2026-10-03T08:04:28.668Z",
+  "endedAt": "2026-10-03T08:04:30.794Z",
+  "result": "partial",
+  "phase": "spdlog-japanese-whole-draft-ready",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Whole English source read",
+    "Codex Japanese translation and same-page original comparison",
+    "Fencedcode/API/fixedsource notice preservation checks",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "9967bc0ae7c6318674c463b3fce8dbb6c07e1b2357a2bb784b8ccf3a80e843f5"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "2feeee650f5fe1d5cecbbadc52cd34200eb1713dbd77a4cdcab58e47e5d8ee88"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/document-import/spdlog/v1-17-0/CANONICAL_MAP_394.json",
+      "sha256": "660552854822d6bd13edaa944e948251003d16427cae94e6e333743e6883ae3c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-408/DRAFT_ORIGINAL_COMPARISON.json",
+      "sha256": "d0d87cdddf00d071961e5d01eab3811c8f2fe37869429ef1ebe58872eedb5d38"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-408/JAPANESE_TRANSLATION_PROGRESS.json",
+      "sha256": "c82be3d6c496855a7288bdb1d9c15e0523d8fce3ef2193df94ee7ae348db46ed"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-408/translation-drafts/01-license.md",
+      "sha256": "8c6473dbc9efada78a96890e2f8ef534ad56f093a8bb9c6fd78abf5d449885bf"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "b0c80bc171d30e0edfd31faa5c6fb9944623ac1f537970b2489f933414416a9c"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "spdlog"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Japanese license prose original comparison and full notices exact",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-408/DRAFT_ORIGINAL_COMPARISON.json",
+          "sha256": "d0d87cdddf00d071961e5d01eab3811c8f2fe37869429ef1ebe58872eedb5d38"
+        }
+      ]
+    },
+    {
+      "name": "Japanese independent whole content review and finalverification",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "ライセンス頁の説明全訳と原notice3全文一致。初稿原文照合27/27、独立日本語レビュー0/27。",
+    "state translating/lastValid canonical-readyを維持。"
+  ],
+  "unresolved": [
+    "Separate whole27 Japanese review",
+    "JA renderer metadata/links/sidebar and finalfullscope checks",
+    "Pages publication"
+  ],
+  "nextAction": "日本語初稿27/27の原文照合を保存。言語別AST/内部リンクとJA見出しfragment・sidebar整備後、日本語全27頁を独立内容レビュー。英日機械/build/native/統合検証後Pages公開。",
+  "resumeCondition": "CANONICAL_MAP394と日本語snapshot395〜408の全SHAを照合し、言語別renderer整備から再開。全初稿が揃っても独立日本語レビュー0/27・最終検証pendingを維持。",
+  "counts": {
+    "verified": 12,
+    "published": 12,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

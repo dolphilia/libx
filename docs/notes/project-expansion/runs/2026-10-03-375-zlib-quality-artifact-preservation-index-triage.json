@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-375-zlib-quality-artifact-preservation-index-triage",
+  "cycle": 375,
+  "startedAt": "2026-10-03T05:40:00.000Z",
+  "endedAt": "2026-10-03T05:43:10.315Z",
+  "result": "partial",
+  "phase": "zlib-quality-artifact-preservation-index-triage",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Successful quality-job read",
+    "GitHub ZIP digest and safe extraction",
+    "Full deployment manifest verification",
+    "All28 zlib source/rendered machine validation in isolated copied app",
+    "All2379 existing article preservation comparison",
+    "Byte-difference index triage",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a4cbfcdf7c8b7a6329521e224867b1b97f27a170e864a004fd22f7d1908c64ea"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "7673d1bd770f2c79a25a0ff96d693af30977b18c34bba606c93edd7965aa5a9c"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/ARTIFACT_COMPARISON.json",
+      "sha256": "1398f05dd2acd509f9589af93e1062f37753410c0d442308e634b37d7fc86ca1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/CI_RENDERED_CONTENT.log",
+      "sha256": "9176788528c81d636b142c84acb017caaf6128a90415ee94f9574601d9a61ec8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/EXISTING_ARTICLE_PRESERVATION.json",
+      "sha256": "2ce3b3162d779e70b3c0517bdb67ca4363f0183371228d92e4708a2c9ecc8b3a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/NEW_PROJECT_PRESERVATION.json",
+      "sha256": "2a7c7d251e9c1b791813d924aa6d4a4232d9f24a623298f1c52b83e2b91765a2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/PENDING_INDEX_DIFFERENCES.json",
+      "sha256": "fff3a8162c6598c9ded3dbaa2fe540ce960cdb5dae8fbb736685c9242b74ce13"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/QUALITY_DOWNLOAD.json",
+      "sha256": "158962594fdd4fd37d8b4c6f5b5bb05732a5818b1e7ce8ab49477ecf97f7dcda"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-373/QUALITY_CI_1791006001301.json",
+      "sha256": "98e7351bf27ed66d2dcccc4c8b5af47b713125ac2fe3698c1ad263936b6fa342"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0e02c2634ae88b7618657af2545dab7b3c1c95f4c460a5d37f66253b2196529f"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "zlib"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "CI ZIP/manifest and all new project content/routes",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/QUALITY_DOWNLOAD.json",
+          "sha256": "158962594fdd4fd37d8b4c6f5b5bb05732a5818b1e7ce8ab49477ecf97f7dcda"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/NEW_PROJECT_PRESERVATION.json",
+          "sha256": "2a7c7d251e9c1b791813d924aa6d4a4232d9f24a623298f1c52b83e2b91765a2"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/CI_RENDERED_CONTENT.log",
+          "sha256": "9176788528c81d636b142c84acb017caaf6128a90415ee94f9574601d9a61ec8"
+        }
+      ]
+    },
+    {
+      "name": "All existing article content and file retention",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/EXISTING_ARTICLE_PRESERVATION.json",
+          "sha256": "2ce3b3162d779e70b3c0517bdb67ca4363f0183371228d92e4708a2c9ecc8b3a"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/ARTIFACT_COMPARISON.json",
+          "sha256": "1398f05dd2acd509f9589af93e1062f37753410c0d442308e634b37d7fc86ca1"
+        }
+      ]
+    },
+    {
+      "name": "Changed index/landing surrounding HTML/order classification",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-375/PENDING_INDEX_DIFFERENCES.json",
+          "sha256": "fff3a8162c6598c9ded3dbaa2fe540ce960cdb5dae8fbb736685c9242b74ce13"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前turnはspdlog候補証拠保存progress。今回actualCI artifactを取得しwhole新旧本文を検証。",
+    "既存記事保全合格を非本文の全目次保全合格と混同せず、目次順序/landing差分は別工程pending。"
+  ],
+  "unresolved": [
+    "Changed existing index cards/order and16 landing surrounding HTML",
+    "All33 new project full HTML shell compare",
+    "Preview/Production CAS/rollback/delivery"
+  ],
+  "nextAction": "375:qualityCI run37100008240合格artifact2803取得済み。全existing2379articlesとzlib28本文/33routespassed/旧2756欠落0。公開前に28changedHTML（landing16、既存index/card順序・tabs）をDOM/生成コードへ照合し、旧カード全文/リンク/順序の差分理由を分類、必要なら限定修正とCI再検証。zlib全33HTMLのlocal/CI比較も完了してPreview→ProductionCAS/rollback/配信検証へ。spdlog全Wiki固定調査は独立継続。",
+  "resumeCondition": "375:quality-check全steps success、deploy両job skipped、ZIPdigest65cd1ab9/safeextract/manifest2803合格。all28zlibreviewed source and downloaded render machinecheckpassed、全existing2379article内容完全保全（生成tabIDのみ関連付け正規化）。非本文indexカード順序差分を発見しpendingとして保存。全Pages公開未実施。",
+  "counts": {
+    "verified": 12,
+    "published": 11,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

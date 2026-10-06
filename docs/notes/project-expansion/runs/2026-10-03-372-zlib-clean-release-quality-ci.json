@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-372-zlib-clean-release-quality-ci",
+  "cycle": 372,
+  "startedAt": "2026-10-03T05:28:00.000Z",
+  "endedAt": "2026-10-03T05:30:57.146Z",
+  "result": "partial",
+  "phase": "zlib-clean-release-quality-ci",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Exact93file SHA allowlist and stage comparison",
+    "Clean isolated scoped git commit/push",
+    "Secure quality-only dispatch and actual live job read",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "80a695d5ee671cf0dc988b84a59cfe9c6c0c4f39d4829b8072e157cf89a17e37"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "31837933564ee59e076fa828f4eae7e9259b92b10545d6215a89d7d5a80f2bca"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/DIFF_CHECK.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/QUALITY_CI_1791005397940.json",
+      "sha256": "3c10a06345132e4da4c77a3b5c70f165ed85a84af77ab01f8dc1466bf2cab685"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/QUALITY_CI_1791005417258.json",
+      "sha256": "f2310104d1d3efed8ac35c4a85d239c36e8f6f2fb76e2be9db031d0fa2e66086"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/QUALITY_DISPATCH_INTENT.json",
+      "sha256": "162e2a15eb9aab0a06049b20b8ad8f8892f18ddaf5309298f3c8353e1416510f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/QUALITY_DISPATCH_RESPONSE.json",
+      "sha256": "012f62abd88f52dcc4267c37bbeae420693e04924a7a7b90f0f26cca53d2e9a1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/RELEASE_COMMIT.json",
+      "sha256": "f5117e88e32fa2ec3c2dd6edf54a2617a9c78c83970001799f5a30cfff83dec4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/RELEASE_MANIFEST.json",
+      "sha256": "4e2435b4e3b7ed6275c5dec56ada045fb0ae6383e889aa46903457e4bdb14649"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a93b711122449fb5bd526eb47d62cb22401aef1f7f97dc2387522550afd37c20"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "zlib"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Clean release exact scope/commit/remote",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/RELEASE_MANIFEST.json",
+          "sha256": "4e2435b4e3b7ed6275c5dec56ada045fb0ae6383e889aa46903457e4bdb14649"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/RELEASE_COMMIT.json",
+          "sha256": "f5117e88e32fa2ec3c2dd6edf54a2617a9c78c83970001799f5a30cfff83dec4"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/DIFF_CHECK.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "Live quality CI",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/QUALITY_DISPATCH_INTENT.json",
+          "sha256": "162e2a15eb9aab0a06049b20b8ad8f8892f18ddaf5309298f3c8353e1416510f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/QUALITY_DISPATCH_RESPONSE.json",
+          "sha256": "012f62abd88f52dcc4267c37bbeae420693e04924a7a7b90f0f26cca53d2e9a1"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-372/QUALITY_CI_1791005417258.json",
+          "sha256": "f2310104d1d3efed8ac35c4a85d239c36e8f6f2fb76e2be9db031d0fa2e66086"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "372:限定93filesのallowlist/SHA/rootapp一致、stage範囲一致、commit9e3cd82c parentadbe/clean/diffcheck合格。専用branch push済み、quality-onlydispatch204と実run37100008240 in_progressを確認。外部Pages公開は未実施。",
+    "共有rootのuser/Awesome/workflow変更はcommit/pushに含めない。Deploymentを起動しないquality-only。"
+  ],
+  "unresolved": [
+    "QualityCI artifact and full existing/new project preservation",
+    "Pages Preview and Production CAS/delivery"
+  ],
+  "nextAction": "起動済みquality-only run37100008240/head9e3cd82cを新immutable証拠へpollし再dispatchしない。CI成功後artifact取得・manifestと全既存2756保持・zlib全28review本文/33routes/rendered checkerを検証。Preview配信全bytes/native、actualProductionCAS（expected adbe8b8d）/rollbackbeforeと全配信/代表UIを検証してpublishedへ。",
+  "resumeCondition": "372:限定93filesのallowlist/SHA/rootapp一致、stage範囲一致、commit9e3cd82c parentadbe/clean/diffcheck合格。専用branch push済み、quality-onlydispatch204と実run37100008240 in_progressを確認。外部Pages公開は未実施。",
+  "counts": {
+    "verified": 12,
+    "published": 11,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

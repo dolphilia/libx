@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-410-spdlog-japanese-content-review-first-five",
+  "cycle": 410,
+  "startedAt": "2026-10-03T08:11:02.652Z",
+  "endedAt": "2026-10-03T08:11:04.516Z",
+  "result": "partial",
+  "phase": "spdlog-japanese-content-review-first-five",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Whole English and Japanese files reread",
+    "Codex separate later content meaning review",
+    "Lockedsource/canonical/draftSHA checks",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "932e879527aded5deb52dbdd0fe7a67493b1d1e59a2688a0c3e839a724f6f9ad"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "2feeee650f5fe1d5cecbbadc52cd34200eb1713dbd77a4cdcab58e47e5d8ee88"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-408/JAPANESE_TRANSLATION_PROGRESS.json",
+      "sha256": "c82be3d6c496855a7288bdb1d9c15e0523d8fce3ef2193df94ee7ae348db46ed"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-409/RENDERED_FIDELITY.json",
+      "sha256": "901e86c2c237853ffae8b16cffa91259985412eeb723745327edf71d2b0e07f2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/JAPANESE_CONTENT_REVIEW_MANIFEST.json",
+      "sha256": "ce9fc04cc080a274df4be91edd43432a2e56462f536af4a82be942bf23818d2e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/03-asynchronous-logging.md",
+      "sha256": "6b343912a2526224ea32bacf04bc46deb388ab0a686621daee7c1907001f3fb4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/05-creating-loggers.md",
+      "sha256": "a0aab9bc7d8db280c57596cc59ed5f9c5e0b2c4b848d14867d5802442e580d1f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/07-default-logger.md",
+      "sha256": "4c8f35dcbb6131473eee297eef660224e94a68ed66d1275cec69ae24e6e627c9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/10-flush-policy.md",
+      "sha256": "7e3a7c34b7ee6608165ddaebcc5033f578c2c53b7c6879b95080547f9d6fbf94"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/reviewed-ja/24-thread-safety.md",
+      "sha256": "b0053b365f8e3e1005190886599983ec624e3fa00192990c0cbe71729973efa6"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "afa8f28e3d74aa64a299fdb9c4fb2ddb159fcf5e7b2a3da3d1cd55da944828f2"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "spdlog"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Five Japanese whole pages later content review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-410/JAPANESE_CONTENT_REVIEW_MANIFEST.json",
+          "sha256": "ce9fc04cc080a274df4be91edd43432a2e56462f536af4a82be942bf23818d2e"
+        }
+      ]
+    },
+    {
+      "name": "Remaining22Japanese/native/integration/release verification",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "初稿後の別内容レビュー5/27を記録。翻訳修正0、未review22頁。",
+    "原Wikiの終了処理説明差異を記録。現在動作の実証・翻訳欠落と混同しない。全工程は未完了。"
+  ],
+  "unresolved": [
+    "Remaining22 Japanese whole content reviews",
+    "Native and integrated fullscope checks",
+    "Pages publication"
+  ],
+  "nextAction": "日本語独立全文内容レビュー5/27（Async/Flush/Creating/Default/ThreadSafety）を保存。残り22頁からレビューを継続。全27review後native・統合build/回帰検証、公開準備からPages公開へ。",
+  "resumeCondition": "日本語初稿27のsnapshot395〜408、renderer409、reviewmanifest410のSHAを確認し残り22頁から再開。翻訳は無修正、機械409は有効。5頁reviewを全27レビュー済みと称さない。",
+  "counts": {
+    "verified": 12,
+    "published": 12,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-414-spdlog-tweaking-and-child-process-content-reviewed",
+  "cycle": 414,
+  "startedAt": "2026-10-03T08:22:40.792Z",
+  "endedAt": "2026-10-03T08:22:43.042Z",
+  "result": "partial",
+  "phase": "spdlog-tweaking-and-child-process-content-reviewed",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Whole English and Japanese files reread",
+    "Codex separate later content meaning review",
+    "Lockedsource/canonical/draftSHA checks",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f87f2794bf5ff64c1ff9ce35215047c674a525bae3120edc1d8bd5714344545f"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "2feeee650f5fe1d5cecbbadc52cd34200eb1713dbd77a4cdcab58e47e5d8ee88"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/JAPANESE_TRANSLATION_PROGRESS.json",
+      "sha256": "799b129d70bf23d436c82b4a856dea2f90c10b017fad3c77a8f23928fe6fb741"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-413/RENDERED_FIDELITY.json",
+      "sha256": "d8d37e7e518b770c21479a0dffdc1fb781e86249e2891866f47ea2fa3df739ef"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-412/JAPANESE_CONTENT_REVIEW_MANIFEST.json",
+      "sha256": "3dd1754b6f2840ee72997bd1f88fb30db802da5355115534b5d1fc5160931845"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-414/JAPANESE_CONTENT_REVIEW_MANIFEST.json",
+      "sha256": "b0d1826821e19762e520a85cad266e0891596e68c67d65d02edaf19bd791e522"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-414/reviewed-ja/18-preventing-child-processes-from-inheriting-open-log-files.md",
+      "sha256": "aeeaa25dbc168241dae82479e7e8c61e5f61d522b0370306cedfa6afd93f4fc4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-414/reviewed-ja/19-preventing-undefined-thread-ids-in-child-processes.md",
+      "sha256": "974c88d2cad50664d70bd8ea2793e398fb9bfcf3625d23503b99957ae9ebf54f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-414/reviewed-ja/25-tweaking.md",
+      "sha256": "5878befecb14df01715ee30f6529ce07b6c2e42c6a3cc682c4a5809eb909ca02"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "89d4faadd048eaa04314ba23aad3c11f8db55e8dc7dbdc05f60871e12c13d55d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "spdlog"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Three additional Japanese whole pages later content review; cumulative23/27",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-414/JAPANESE_CONTENT_REVIEW_MANIFEST.json",
+          "sha256": "b0d1826821e19762e520a85cad266e0891596e68c67d65d02edaf19bd791e522"
+        }
+      ]
+    },
+    {
+      "name": "Remaining4Japanese/native/integration/release verification",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "初稿後の別内容レビューを3頁追加、累計23/27を記録。今回翻訳修正0、未review4頁。",
+    "原Wikiの終了処理差異・sink型説明の曖昧さ・JSON例の問題を記録。現在動作の実証・翻訳欠落と混同しない。全工程は未完了。"
+  ],
+  "unresolved": [
+    "Remaining4 Japanese whole content reviews",
+    "Native and integrated fullscope checks",
+    "Pages publication"
+  ],
+  "nextAction": "日本語独立全文内容レビューを3頁追加し23/27を保存。残り4頁（README/QuickStart/Sinks/License）のレビューを継続。全27review後native・統合build/回帰検証、公開準備からPages公開へ。",
+  "resumeCondition": "progress412・reviewmanifest414・renderer413のSHAを確認し残り4頁から再開。今回3頁は無修正、機械413は有効。全27review/native/integration/release未完了。",
+  "counts": {
+    "verified": 12,
+    "published": 12,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

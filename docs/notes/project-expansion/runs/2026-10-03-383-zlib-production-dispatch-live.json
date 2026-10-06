@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-383-zlib-production-dispatch-live",
+  "cycle": 383,
+  "startedAt": "2026-10-03T06:19:38.619Z",
+  "endedAt": "2026-10-03T06:19:38.619Z",
+  "result": "partial",
+  "phase": "zlib-production-dispatch-live",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Clean private release/remoteSHA check",
+    "Existing user-authorized Pages production dispatch with expectedbaseline actualCF CAS/rollback workflow",
+    "Actual live queued run ID",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "2f1f1c9c8dc35ca6a8e26031bd922ea8ed6b155f0a7cba36092497563a33195f"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-382/NATIVE_PREVIEW.json",
+      "sha256": "567f9ec0d06c0cffe2f3d749230b9a427b95b06d85146215a6b7eba1f0efec1c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-383/PRODUCTION_CI_1791008315881.json",
+      "sha256": "9fff1ff72a717a0b4dca8b3cfd1b7031a732566f8f36791d42b64765d3f3313c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-383/PRODUCTION_DISPATCH_INTENT.json",
+      "sha256": "312308267412ef538d1573da705284dd32f247b9cbe6d56513131ed7084497c4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-383/PRODUCTION_DISPATCH_RESPONSE.json",
+      "sha256": "3c1c0db9351946a959022eee90f22949fde83b3af3eea861b621dc0703c62029"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "bcf8e353bebb5bc73ecc64515bcd6cdd0959f55814d191ef350d81469f213820"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "zlib"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Production authorized dispatch and actual live run",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-383/PRODUCTION_CI_1791008315881.json",
+          "sha256": "9fff1ff72a717a0b4dca8b3cfd1b7031a732566f8f36791d42b64765d3f3313c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-383/PRODUCTION_DISPATCH_INTENT.json",
+          "sha256": "312308267412ef538d1573da705284dd32f247b9cbe6d56513131ed7084497c4"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-383/PRODUCTION_DISPATCH_RESPONSE.json",
+          "sha256": "3c1c0db9351946a959022eee90f22949fde83b3af3eea861b621dc0703c62029"
+        }
+      ]
+    },
+    {
+      "name": "Production actual state/artifact/delivery/native",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-383/PRODUCTION_CI_1791008315881.json",
+          "sha256": "9fff1ff72a717a0b4dca8b3cfd1b7031a732566f8f36791d42b64765d3f3313c"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "本番基線GitHubadbeを照合。actualCloudflarebefore/prepublishCASはworkflowが実行するまで未検証。",
+    "公開済みの通常巡回より新規zlib公開を優先。共有未完了user/Awesomeは対象外。"
+  ],
+  "unresolved": [
+    "Live Production workflow",
+    "ActualCF CAS/rollback/artifact/HTTP/native",
+    "Spdlog remaining qualification/scoring"
+  ],
+  "nextAction": "起動済みProduction run37102622441/head10e21807を同IDで直接pollする。再dispatchしない。success後verified-deployment/rollbackbefore/stateのdigestとactualbefore/prepublish基線adbe/after10eを確認し、Preview対本番全2803等価性/既存保持/固定URL全HTTP/正式domain差分/nativeを実検証後published。待ち時間はspdlog資格。",
+  "resumeCondition": "383:Production dispatch HTTP204、実run37102622441queued。同cleanHEAD10e21807/remote同SHA、GitHub本番基線adbeを直前確認（actualCFはworkflow側CAS未検証）。Production完了/配信未確認なので公開済み11・待ち1維持。",
+  "counts": {
+    "verified": 12,
+    "published": 11,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

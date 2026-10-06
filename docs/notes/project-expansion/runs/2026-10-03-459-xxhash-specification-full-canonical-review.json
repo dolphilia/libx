@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-459-xxhash-specification-full-canonical-review",
+  "cycle": 459,
+  "startedAt": "2026-10-03T13:14:13.409Z",
+  "endedAt": "2026-10-03T13:14:17.563Z",
+  "result": "partial",
+  "phase": "canonical-content-review-partial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Full820line source and837line canonical split review",
+    "Fresh read-only canonical machine check",
+    "SHA-bound reuse of unchanged build/navigation inputs",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "5bc5709d4477eb5498fa291bad81abc043d81e328920908e0f119bce6cd366c4"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-459/CANONICAL_MACHINE_PRESERVATION.json",
+      "sha256": "cff4c7f97a38bbd2e77e6ff87ee4f6577e42eb2591526f3efeaedf9463581bef"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-459/CYCLE_FINDINGS.json",
+      "sha256": "78e34195447cfb5eb1818221e2711a2dcce385dd15146cca7d81a5fdb8b687ce"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-459/UNCHANGED_BUILD_INPUTS.json",
+      "sha256": "8db745a4d6cf3c01cafe34410c00eb828c790ffdcd24d24a2d9fc2beb95beab4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-459/save-review.mjs",
+      "sha256": "b22f4ec73700a681f9ff6ccdf47202fab3d77050fa6e6f168eeaf8d190c912d7"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/459.json",
+      "sha256": "9795a2d1f593428e33f51a891f9daeeb6365c62b6c1510a7c93b63132a70c331"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "5a9ce012316cfeeedfd097146a947959712ff3340b36da7c1b90eb3c422f35d4"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+      "sha256": "84cc8789e3fbed19fd80fe02051ee3c205cfdfe66bf7d92c17c8937e2a80a494"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "dbc8503dadf7ac2595c75ca78da2a23fdbeedf7affe348786fa825c5e74e3854"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "仕様全文原文→英語照合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/459.json",
+          "sha256": "9795a2d1f593428e33f51a891f9daeeb6365c62b6c1510a7c93b63132a70c331"
+        }
+      ]
+    },
+    {
+      "name": "全56機械保全・既存build入力不変",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-459/CANONICAL_MACHINE_PRESERVATION.json",
+          "sha256": "cff4c7f97a38bbd2e77e6ff87ee4f6577e42eb2591526f3efeaedf9463581bef"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-459/UNCHANGED_BUILD_INPUTS.json",
+          "sha256": "8db745a4d6cf3c01cafe34410c00eb828c790ffdcd24d24a2d9fc2beb95beab4"
+        }
+      ]
+    },
+    {
+      "name": "残44内容/JA/native/integration",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+          "sha256": "84cc8789e3fbed19fd80fe02051ee3c205cfdfe66bf7d92c17c8937e2a80a494"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "ガイド12全量定本保全レビュー完了、全案件は未完。",
+    "新規作成を継続、公開済み巡回は低優先。"
+  ],
+  "unresolved": [
+    "残44英語全文レビュー",
+    "全文JA翻訳/別review",
+    "正式全機械/native/統合/公開"
+  ],
+  "nextAction": "xxHash原文→正式英語全文12/56review、ガイド12全量済み、残44(API32/原code1/通知11)未確認。次はAPI navigation/index12を原DOM全文と定本・全href/ラベル/追加出典で照合し、その後primary API20/原code1/通知11。56機械保全新規合格、458の61build/内部7294link破損0は全app/importer SHA不変で再利用。JA0/native/integration未完、source-locked保持。",
+  "resumeCondition": "xxHash原文→正式英語全文12/56review、ガイド12全量済み、残44(API32/原code1/通知11)未確認。次はAPI navigation/index12を原DOM全文と定本・全href/ラベル/追加出典で照合し、その後primary API20/原code1/通知11。56機械保全新規合格、458の61build/内部7294link破損0は全app/importer SHA不変で再利用。JA0/native/integration未完、source-locked保持。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

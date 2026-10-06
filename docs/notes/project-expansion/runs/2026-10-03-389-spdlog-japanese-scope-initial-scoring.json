@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-389-spdlog-japanese-scope-initial-scoring",
+  "cycle": 389,
+  "startedAt": "2026-10-03T06:53:00.000Z",
+  "endedAt": "2026-10-03T07:01:00.213Z",
+  "result": "partial",
+  "phase": "spdlog-japanese-scope-initial-scoring",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Primary-author Japanese articles fullbody inspection",
+    "Public Qiita API actual200/404 recording",
+    "Scoped Japanese and exactversion searches",
+    "Initial evidence-based scoring",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "16a5c67ea6db937607f69207854ed9951b87cd1148841e7fdf642b3917551a02"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f24727c9e0c45cd6f5c18199efeb2ecb9c176c4e441d5bf7c9fc2a75d9c8d084"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-389/INITIAL_SCORING.json",
+      "sha256": "cf715bbe1c8ea6d6a466ce2c1468cb10d449e3d4a13b16b5818fb274bececa88"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-389/JAPANESE_SCOPE_RESEARCH.json",
+      "sha256": "7367182bf68f2fda441ca3a69220ecf3d39ccc616325e97e47d13b06d38d7548"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-389/QIITA_BODY_FETCH.json",
+      "sha256": "dd9b1e76647049bc05745599f362def8f12ae73ddc2ea3fb21bc681c7d4e1275"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c70eed17f563984715b8f9ece51df053cb5e15cb9a94c464c302c0c5e7a99de6"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "fb9c58087caf9a14482edecc9b7038e612ad9f1bc960dac82515181a24567a85"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "spdlog"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Japanese actualbody/scope research",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-389/JAPANESE_SCOPE_RESEARCH.json",
+          "sha256": "7367182bf68f2fda441ca3a69220ecf3d39ccc616325e97e47d13b06d38d7548"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-389/QIITA_BODY_FETCH.json",
+          "sha256": "dd9b1e76647049bc05745599f362def8f12ae73ddc2ea3fb21bc681c7d4e1275"
+        }
+      ]
+    },
+    {
+      "name": "Initial scoring 73 and separate selection review",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-389/INITIAL_SCORING.json",
+          "sha256": "cf715bbe1c8ea6d6a466ce2c1468cb10d449e3d4a13b16b5818fb274bececa88"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "日本語入門・部分記事を実読し同範囲全訳の不存在を断定しない。未取得本文は不明のまま。",
+    "旧API/例不備を品質・保守へ反映、4/4/3/3/4の初期73点。",
+    "採用0。別確認未完をeligible/selected扱いしない。"
+  ],
+  "unresolved": [
+    "Separate selection review before formal new project adoption"
+  ],
+  "nextAction": "spdlog初期73点/qualifying。次は別選定確認パスで全6条件・得点を原取得証拠へ遡って照合。合格時のみ新規1件枠で正規生成・定本化・翻訳・別全文review・検証・Pages公開へ。",
+  "resumeCondition": "原取得物と試験HTML/AST・版差・日本語本文範囲へ遡る別選定レビューで6pass/各得点/計算を確認する。食い違いは再採点し、70以上ならeligible/selected、未満なら見送り。",
+  "counts": {
+    "verified": 12,
+    "published": 12,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

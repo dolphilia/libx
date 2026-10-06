@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-441-xxhash-mobile-sidebar-failure",
+  "cycle": 441,
+  "startedAt": "2026-10-03T11:36:10.440Z",
+  "endedAt": "2026-10-03T11:36:13.048Z",
+  "result": "partial",
+  "phase": "candidate-navigation-conversion-trial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex IAB native mobile観察とsidebarクリック",
+    "Astro isolated cache build",
+    "parse5全画面href/AST全表セル/全API DOM/notice比較",
+    "CAS台帳、ローカルLLM未使用"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "9060c9bb5951de8da4661b355b5d465919b3b7e915258fba4706d0885c68d734"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-441/CYCLE_FINDINGS.json",
+      "sha256": "d2d17a4776bacf35c56a02b79ce56cb78a650860e6cc1d89bce303931762ff62"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-441/NATIVE_MOBILE_OBSERVATION.json",
+      "sha256": "74f9032957f6c2f29613e6e07d656ffb52ca1f1542686bc49441e25857106f19"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-441/PREVIEW.log",
+      "sha256": "cf9b3ee67117c26e3ba16b898557e53dc696a6e7da79ac06ad85f0b8e879db8b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-441/sidebar-cli-404-mobile.png",
+      "sha256": "219ca78f34150a73b3085798c57c6639891921c117ac25949cbd20c20ed0f33d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-441/spec-mobile.png",
+      "sha256": "329e4a46ebf080dbe0ab3afc20f66e7bca848da8ca3ffdba126c8b1a58549a0b"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "9788f67800b1e76be6fa3879261d7a8bba70c0ceab7dfc0e10441f3c40fa1c03"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "native mobile仕様上部/CLI sidebar実クリック",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-441/NATIVE_MOBILE_OBSERVATION.json",
+          "sha256": "74f9032957f6c2f29613e6e07d656ffb52ca1f1542686bc49441e25857106f19"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "390px native仕様ページ上部はviewport内に収まったがsidebarが記事前に展開され、CLI sidebar参照が旧ファイル名を指し実クリック404。440のarticle-only参照検査はsidebarを対象外としており、全画面合格ではない。共有node_modules/.astro/data-storeに旧IDが残存することを発見。",
+    "本文保持の機械検査とnative操作、全文内容レビューは別工程。新規優先方針を継続。"
+  ],
+  "unresolved": [
+    "代表native/mobile/UI/検索/sidebar資産",
+    "EN注釈是正とテンプレート表示",
+    "共通/en統合検証",
+    "全文自立性/JP/工数/採点"
+  ],
+  "nextAction": "fixture442の独立node_modules/cacheを継続使用。英語原文の翻訳注釈を形式変換注釈へ是正し、通常/最大API・仕様・通知・外部画像のnative desktop/mobileとコード/表横スクロールを確認。API目次・コードコピー導線、検索/sidebar資産を整える。全文自立性、日本語版調査、API項目・語数・初回/更新工数・採点を確定する。",
+  "resumeCondition": "CANDIDATES94、3条件pass、移植unknown。fixture442を使い、共有cacheを復活させない。採用0。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

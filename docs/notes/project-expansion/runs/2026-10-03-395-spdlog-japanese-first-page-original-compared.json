@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-395-spdlog-japanese-first-page-original-compared",
+  "cycle": 395,
+  "startedAt": "2026-10-03T07:29:29.415Z",
+  "endedAt": "2026-10-03T07:29:31.313Z",
+  "result": "partial",
+  "phase": "spdlog-japanese-first-page-original-compared",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Whole English source read",
+    "Codex Japanese translation and same-page original comparison",
+    "Fencedcode/API/fixedsource notice preservation checks",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "5579cbd34682f683986f1ad16cef12c4acf3e3afec6e8744a468932e8c02f7d0"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "2feeee650f5fe1d5cecbbadc52cd34200eb1713dbd77a4cdcab58e47e5d8ee88"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/document-import/spdlog/v1-17-0/CANONICAL_MAP_394.json",
+      "sha256": "660552854822d6bd13edaa944e948251003d16427cae94e6e333743e6883ae3c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-395/DRAFT_ORIGINAL_COMPARISON.json",
+      "sha256": "6c09c4cead8af1163a439b38e2a0ba654c53fe18e199c6670a225e2f909a7bd8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-395/JAPANESE_TRANSLATION_PROGRESS.json",
+      "sha256": "bd2436a747cdb9c78edb9a8c3e6773d5a7d71bf4bc682e12078352fe9f8e0e39"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-395/translation-drafts/07-default-logger.md",
+      "sha256": "4c8f35dcbb6131473eee297eef660224e94a68ed66d1275cec69ae24e6e627c9"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "efa4fea522374f05e5c4e5e627ef1dcec20f5c0ab2945a9ac4b7aea54f40cf30"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "spdlog"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "First Japanese draft original comparison",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-395/DRAFT_ORIGINAL_COMPARISON.json",
+          "sha256": "6c09c4cead8af1163a439b38e2a0ba654c53fe18e199c6670a225e2f909a7bd8"
+        }
+      ]
+    },
+    {
+      "name": "Remaining26 drafts/separatewhole Japanese review/finalverification",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "Defaultlogger全頁初稿と原文照合、最終validstage canonical-ready、state translatingへ。",
+    "独立日本語review0/27、初稿1/27を公開可能・検証済みと称さない。"
+  ],
+  "unresolved": [
+    "Remaining26 Japanese drafts",
+    "Separate whole27 Japanese review",
+    "JA renderer metadata/links/license/sidebar and finalfullscope checks",
+    "Pages publication"
+  ],
+  "nextAction": "日本語初稿1/27頁（Defaultlogger）を原文照合保存。残り26頁を1頁ずつ翻訳・原文照合し、別日本語全27reviewへ。JAlicense/sidebar/言語別AST・内部リンク整合を完了後、英日機械/build/native/統合検証・Pages公開。",
+  "resumeCondition": "英語全27ready/source30のSHAと日本語draft snapshot395一致を確認し残り26頁から再開。初稿原文照合と独立日本語contentreviewを区別し、未review/未renderを検証済みにしない。共有rootappへは未統合。",
+  "counts": {
+    "verified": 12,
+    "published": 12,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

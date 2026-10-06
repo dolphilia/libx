@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-436-xxhash-links-notices-failed-attempt",
+  "cycle": 436,
+  "startedAt": "2026-10-03T11:17:25.588Z",
+  "endedAt": "2026-10-03T11:17:31.822Z",
+  "result": "partial",
+  "phase": "candidate-link-notice-trial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Markdown AST URL限定変換/固定原通知ページ/原本txt提供",
+    "一時Libx Astro buildと全記事リンク/通知/API DOMの機械検査",
+    "台帳CAS、localLLM未使用"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "11328bbdfaa945e901ae76d7e292fff6ccf422dc534fe26d893970c93e321597"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-436/CYCLE_FINDINGS.json",
+      "sha256": "ae246e3f41bd1fa21b9ea5e2881c607c79e18568333804402ad59fd3d4077dfc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-436/EXPECTED_API_BODIES.json",
+      "sha256": "c4ccd4cf37d5e543e893a296592b3cedddcc5f89c02a520a4c5fdfa532b5fe10"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-436/INDEX_ANCHOR_REPAIR_MAP.json",
+      "sha256": "d2c86bb8f4107dff8b3413b286ffc942c2940388f5c6b8fc24bc16731b623673"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-436/index-repair.mjs",
+      "sha256": "d1653378cda571b1237c1ead82d11fe2c590cabed1a59a53782386b14d20dd6b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-436/link-notice-converter.mjs",
+      "sha256": "3c701709f4c6844ab731b1dfcd5cd4b802af2368d19010e090f20361eb73d074"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "4bd12c42b4b48438711580d420f2cd0f140d24a494ccf179c3adb17b95030bcd"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "失敗試行・検査器/変換修正は437へ",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-436/CYCLE_FINDINGS.json",
+          "sha256": "ae246e3f41bd1fa21b9ea5e2881c607c79e18568333804402ad59fd3d4077dfc"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "CLI slugを正規化したが対応元MDファイル名を変更せず変換がENOENTで中断。後続API索引修復は実行されたが全fixture完成/ビルド成功ではない。試行原証拠を保持し437で再生成。",
+    "失敗原証拠は不変、成功後に過去記録の検査結果を書き換えない。"
+  ],
+  "unresolved": [
+    "native desktop/mobile表示・操作",
+    "MD12本文保持と全文自立性",
+    "日本語調査/工数/採点"
+  ],
+  "nextAction": "xxHash試験437をローカルAstro previewで開き、通常/最大API・仕様・コード・表・画像・通知・ページ遷移をnative desktop/mobileで確認。Markdown全12本文の内容保持を検証し、全文自立性/日本語版調査/API項目・工数・採点を確定。",
+  "resumeCondition": "CANDIDATES89、rights/boundary/fixedInput pass。移植条件はnative/MD確認未了でunknown。最新fixture437、原証拠と失敗経緯保存済み。採用0。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

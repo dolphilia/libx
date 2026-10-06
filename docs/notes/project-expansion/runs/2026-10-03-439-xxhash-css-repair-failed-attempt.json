@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-439-xxhash-css-repair-failed-attempt",
+  "cycle": 439,
+  "startedAt": "2026-10-03T11:24:26.509Z",
+  "endedAt": "2026-10-03T11:24:30.456Z",
+  "result": "partial",
+  "phase": "candidate-markdown-native-trial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "全12原資料MarkdownASTと実コード比較",
+    "Codex IAB native screenshots/リンク操作とDOM読み取り",
+    "局所CSSクラス修復・Astro build/DOM/links/notices再検査",
+    "台帳CAS、localLLM未使用"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "3c3942be32228f8830c9b57dfeb27edddd0320aef1a2c2bbba0755ab2d35a2ce"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-439/BUILD.log",
+      "sha256": "9d23ea3f4401af5f48995a7815f05a7aaca1122ffb104a6bf890591ab483fb5c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-439/CYCLE_FINDINGS.json",
+      "sha256": "60a2d7c2d78898df097d6d406cfe342ca73995071851272a527aa41987767e1a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-439/css-repair.mjs",
+      "sha256": "85d7b8396dcaa15536d9864dcb83024b4961c2bbab2243ac9a3b5c04d36f4d01"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "d651a4a8c70030b3ce9fd03ecddaa6394e25edd403f47f2fbe1eb7b5332f2bba"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "CSSクラス修復",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-439/CYCLE_FINDINGS.json",
+          "sha256": "60a2d7c2d78898df097d6d406cfe342ca73995071851272a527aa41987767e1a"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "修復scriptが重複classを期待したが437fixtureは再parseで既にclass属性1個となっておりassert失敗。本文は変更されないまま。後続buildは旧fixture相当の成功であり、修復成功とは記録しない。440では現物の単一classへ追加。",
+    "機械的本文保持・native画面確認・全文内容レビューを分離。"
+  ],
+  "unresolved": [
+    "最新版fixture440の通常/最大/仕様/native mobile/notice/graph巡回",
+    "API見出し目次・コードコピーUI",
+    "MD表セルと全文自立性/日本語調査/工数/採点"
+  ],
+  "nextAction": "xxHash最新版試験440の通常/最大API・仕様・通知・外部画像をnativeで巡回し、390px mobileとコード/表の横スクロールを確認。API目次とコードコピー導線の扱いを整える。MD全表セル/本文保持、全文自立性、日本語版範囲、API項目・工数・採点を確定する。",
+  "resumeCondition": "CANDIDATES92、3条件pass。移植は最終native未完でunknown。fixture440と全本文/修復脚本/hashは証拠保存済み。採用0。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

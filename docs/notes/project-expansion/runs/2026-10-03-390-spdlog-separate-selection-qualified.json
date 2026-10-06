@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-390-spdlog-separate-selection-qualified",
+  "cycle": 390,
+  "startedAt": "2026-10-03T07:00:00.000Z",
+  "endedAt": "2026-10-03T07:04:41.572Z",
+  "result": "complete",
+  "phase": "spdlog-separate-selection-qualified",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Separate raw source and primary-author inspection",
+    "AllWiki originalGit blob and evidence hash revalidation",
+    "Whole26 renderedAST/HTML comparison rerun",
+    "Independent word count/scoring calculation",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "fb9c58087caf9a14482edecc9b7038e612ad9f1bc960dac82515181a24567a85"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c70eed17f563984715b8f9ece51df053cb5e15cb9a94c464c302c0c5e7a99de6"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-390/RENDERED_FIDELITY.json",
+      "sha256": "5b87c5f17399542a9a1db9672502f5947964e82878da3709e13205d4549c2d9d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-390/SELECTION_RENDERED_CHECKER.mjs",
+      "sha256": "eb2b185ce67837bcb7fa67ab7b1f39a44d10b09e58db099f9cfb142e56c257a7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-390/SELECTION_REVIEW.json",
+      "sha256": "50d35c90fd07f2fe2ea0d7d46a8785f805db2958b055d8ce1b5ef15530439c0e"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "cf54a1e9b2c07415317a0118901efae3ed6ac5b2287927a746f46ef23d8301cf"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "1b010150426eb3dbe80064b06fc2ab7ed0ebc1364772e4b7816c76e76f4a34c7"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "spdlog"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Separate selection conditions and score evidence",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-390/SELECTION_REVIEW.json",
+          "sha256": "50d35c90fd07f2fe2ea0d7d46a8785f805db2958b055d8ce1b5ef15530439c0e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-390/RENDERED_FIDELITY.json",
+          "sha256": "5b87c5f17399542a9a1db9672502f5947964e82878da3709e13205d4549c2d9d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全6条件と73点を原証拠へ照合しeligible。未翻訳・未検証を完成扱いしない。"
+  ],
+  "unresolved": [
+    "正式定本のUI除外/出典・原注意配置",
+    "全26日本語翻訳と独立全文レビュー",
+    "英日機械検証と実表示・統合回帰",
+    "正規公開待ち登録後Pages公開"
+  ],
+  "nextAction": "新規eligible spdlogを最大1件枠で選定・正式planned登録し、現本番10e21807基準の専用clean checkoutで正規template dry-run/生成。",
+  "resumeCondition": "新規1件枠が空いているため次サイクルでselected/正式planned登録、10e21807本番基準の専用checkoutに正規template生成。全scope定本/翻訳/別全文review/検証後Pages公開。",
+  "counts": {
+    "verified": 12,
+    "published": 12,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 1
+  }
+}

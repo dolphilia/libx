@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-465-xxhash-dispatch-impl-public-full-review",
+  "cycle": 465,
+  "startedAt": "2026-10-03T13:33:27.555Z",
+  "endedAt": "2026-10-03T13:33:29.909Z",
+  "result": "partial",
+  "phase": "canonical-content-review-partial",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Full3API source/canonical reads",
+    "SHA-bound unchanged verification reuse",
+    "CAS ledger"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4cda2dbfb05c3779018ba2e398077f1e564ce6742ba27b78752ec691a15bfa31"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "c595e8dc13432060cbaf3f067bfa00058d870cfaa7842600cc01222e41e2cfbc"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-465/CYCLE_FINDINGS.json",
+      "sha256": "3786d54422fb766e262aac8feacb041dbfceab91dfb9f86e3a55591437c9e89a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-465/DISPATCH_READOUT.txt",
+      "sha256": "82c5a4e70ebf4d3f74d24a580a41992b8c4bc98d6f1913914ab65ee2d060e41a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-465/IMPL_READOUT.txt",
+      "sha256": "f0f3e4b75e41eb42d89e509e4c14f3d133a448ace9f581f4fe5f0e247e9ab341"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-465/PUBLIC_READOUT.txt",
+      "sha256": "ed1404317ad709e6339c63ef9450caa44e4d31e7cdfda555049a244dc08cc215"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-465/UNCHANGED_BUILD_INPUTS.json",
+      "sha256": "b7d4912a9ef86b6877178261df8fc1bad6a30c851875db2b0fb12f1f9f07614e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-465/save-review.mjs",
+      "sha256": "7968e736a0e3a16541aa5def406357971ce718e23f2582cfe5a8aa40ce162ae3"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/465.json",
+      "sha256": "0a9cd09d376039d130cb98a47114e9770572d9ed3109099409e17df097dce703"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CONTENT_MAP.json",
+      "sha256": "0169e292024648b3ff0927a98cc3811508cca77cc2302f4af6191a45119a3636"
+    },
+    {
+      "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+      "sha256": "ca359703f52e7524e6f637d0444c933a009f5168b5eea3461cfd178046c566c9"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "984ed9e3620f691aa70b3792f73113b9d6704b740da4c4b9b53e473d3d947cda"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "xxhash"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "API3頁全文原文→英語照合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/reviews/canonical/465.json",
+          "sha256": "0a9cd09d376039d130cb98a47114e9770572d9ed3109099409e17df097dce703"
+        }
+      ]
+    },
+    {
+      "name": "機械/build/link既存入力SHA不変",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-465/UNCHANGED_BUILD_INPUTS.json",
+          "sha256": "b7d4912a9ef86b6877178261df8fc1bad6a30c851875db2b0fb12f1f9f07614e"
+        }
+      ]
+    },
+    {
+      "name": "残16内容/JA/native/integration",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/xxhash/v0-8-4/CANONICAL_REVIEW_MANIFEST.json",
+          "sha256": "ca359703f52e7524e6f637d0444c933a009f5168b5eea3461cfd178046c566c9"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "累計40/56のみ、source-locked保持。",
+    "原API/前提条件等の定本保全であり実装テストは実施していない。"
+  ],
+  "unresolved": [
+    "残16英語全文レビュー",
+    "全文JA翻訳/別review",
+    "正式全機械/native/統合/公開"
+  ],
+  "nextAction": "xxHash原文→正式英語全文40/56review、残16(API4/原code1/通知11)未確認。次はtuning全文を節分割照合、その後XXH3family/impl/header全文と原code/全通知へ。dispatch/impl/public3頁確認済み。AVX512節のVS2017/AVX2原文表記は疑義として保持、compiler実証なしで訂正しない。全app/importer/source SHA不変で461の全56機械・33title・61build・内部7327link破損0を再利用。JA0/native/integration未完、source-locked保持。",
+  "resumeCondition": "xxHash原文→正式英語全文40/56review、残16(API4/原code1/通知11)未確認。次はtuning全文を節分割照合、その後XXH3family/impl/header全文と原code/全通知へ。dispatch/impl/public3頁確認済み。AVX512節のVS2017/AVX2原文表記は疑義として保持、compiler実証なしで訂正しない。全app/importer/source SHA不変で461の全56機械・33title・61build・内部7327link破損0を再利用。JA0/native/integration未完、source-locked保持。",
+  "counts": {
+    "verified": 13,
+    "published": 13,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}
