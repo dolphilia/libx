@@ -6049,3 +6049,39 @@
 - 保存補助スクリプトはhelperProofキー未定義で一度失敗。保存前例外で台帳未変更、既存helpersキーに修正して再実行。検査の無効化なし。UI見出し取得/End操作の失敗も実表示証拠に記録し、実到達後のみ合格。
 - workflow送信対象main,codex/pages-preview/**,codex/quality/**外のorigin/codex/awesome-editorial-isolated-20261007へcommit/pushする。現時点は保存準備、送信成功を先取りしない。確認用tab/preview終了、viewport復元済み。timestampのみ生成差分はHEADへ戻した。元mainの別作業差分は保持。
 - 次164 github-friedger-awesome-stacks-chain-readme-md。分離worktree /private/tmp/libx-awesome-editorial-20261007で固定raw/旧EN/旧JA全文→編集→3全文review→生成/保全/build/UI/global。入力抽出のみ実施（raw171/旧EN166/旧JA166）、本文未変更・未読了。
+
+### バッチ163送信確認・164全文読了 (2026-10-06T20:09:11.981Z)
+
+- 163 EOSIO commit 4a2526e9c301517b8df7db757ea497c41a0f3b0e → origin/codex/awesome-editorial-isolated-20261007 push exit0(edefa3)、ls-remoteとHEAD同一(28055b)。配信対象外、外部公開なし。
+- 164 Stacks固定raw171/旧EN166/旧JA166、合計503単位を全行読了。hash台帳一致、出力省略なし。proof db0b5aa208e3512fa96ecf62137c9dba193a0ca73298eacc36e38d85ba8ddd64。原文のBitcoin/PoX/Clarity定義が旧本文から消失、復元とJA自然さ・条件/評価帰属を修正する。本文未変更、未検証対象はinventoried。
+
+- 2026-10-06T20:10:56.142Z batch164全文編集・3別パス全文レビュー完了（raw171/旧英日各166→英日各137単位、109list/27heading）。overlayと実英日本文を反映。proof 3362fd06e73b80d425099568d5d47a01a8ae3622159817cefaffdf93eb44a73f。まだtranslated-ja、生成/build/HTML/UI/global未確認。次 2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified222→commit/push。
+
+- 2026-10-06T20:13:17.295Z batch164-fresh-build-running-final-readonly-gates-running。221完了816残保留4。進捗86c7a2927b0577aae513c2e235b6b263f07736a0dfe000c76d57faed685d90db。次translation/publish-check/links-check終了→通常8gate証拠。fresh systems統合build終了→全7input hash/HTML27見出し109list/英日PCmobile実UI→global→verified222→commit/push→165 Golem。
+
+- 2026-10-06T20:14:31.232Z batch164-generation-gates-passed-build-pending。221完了816残保留4。進捗7bbbf4916f5faef09efffd03d0a8fd112d6c88beec54106700c9095379d89b1c。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML27見出し109list/英日PCmobile実UI→global→verified222/commit/push。
+
+- 2026-10-06T20:14:46.779Z batch164-generation-passed-fresh-build-running。221完了816残保留4。進捗fd15550c4d1ca6f989c57bee00a945edeaf813115e9c313d6539629554be9cbb。次build91787終了→全7input一致→HTMLgateを初めから実施→27見出し109項目/全旧有用ID→英日PCmobile実UI→global→verified222/commit/push→165 Golem。
+
+- 2026-10-06T20:18:47.986Z batch164-four-ui-content-reviewed-global-pending。221完了816残保留4。進捗9eec5f4d2f603a98b450fa06c4ca0014cfb91cb94f5f43dd779eb7b0431cbfb0。次全1037台帳global/全2074hash/diff→verified222→commit/push/hash照合→165 Golem fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T20:20:47.409Z batch164-EOF-correction-final-checks-pending。221完了816残保留4。進捗9a7910ffbd4b5fd2dafc6eb37143b8f9576c570c63e39bbe3acdc4950f5a30f5。次EOF除去後英日全文再読→review証拠hash更新→correspondence/replay/通常gate→fresh build/input/HTML/UI/global/diff→verified222→commit/push。
+
+- 2026-10-06T20:21:09.661Z batch164-EOF-correction-full-reread-gates-pending。221完了816残保留4。進捗4eb145b2d6e29ed852e6bb7a66b3053577ce55930e00508f7b3c63a0cf4f0905。次新hashのreplay/生成/guard→freshbuild/input/HTML同一→UI再利用可否判定→global/diff→verified222/commit/push。
+
+- 2026-10-06T20:22:54.614Z batch164-EOF-new-hash-fresh-build-running。221完了816残保留4。進捗c1bf92698d2de28416b3817b67a85f6b958f872bf2e63b665146a2ea19094d08。次6990生成検査/31753参照監査と96685 build終了を確認→gates-proof→input一致/HTML→旧実表示HTML完全一致ならUI証拠再利用→global/diff→verified222/commit/push。
+
+- 2026-10-06T20:23:52.507Z batch164-generation-gates-passed-build-pending。221完了816残保留4。進捗af25cd870e5169eadec310bd81e9f370d0d45bc73d309bec01a323effa21d4b1。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML27見出し109list/英日PCmobile実UI→global→verified222/commit/push。
+
+- 2026-10-06T20:25:03.193Z batch164-four-ui-content-reviewed-global-pending。221完了816残保留4。進捗7962c1963c21a56bd4a367298c9d670340db3331c9c5450faf3eaad7685ed560。次全1037台帳global/全2074hash/diff→verified222→commit/push/hash照合→165 Golem fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T20:26:28.777Z batch164-verified222-save-push-pending。222完了815残保留4。進捗39c6d3fc6761ba3a72e764f62eae41386f1c05eb9f4ba508f873b9777e909052。次222完了815残保留4。Stacks Chain全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次165 github-golemfactory-awesome-golem-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ164 Stacks Chain検証完了・保存準備 (2026-10-06T20:26:33.935Z)
+
+- 固定raw171/旧EN166/旧JA166を全文読み、英日編集→原文/EN・EN/JA・JA単独の3別パス全文レビュー完了。最終英日137単位/109項目/27見出しを保全。旧汎用序文で消失したBitcoin/PoX/Clarity定義と3URLを復元、L1/安全性/first professional/audited評価は固定原文帰属。手動TOC/投稿案内/画像を除去。JA trust minimized/リキッドスタッキング/カストディアン/グループ講座/教材名等修正、全機能・条件・数値を保持。Communityと書籍CC BY-SAリンクを保持。EN/JAhash 27f82d89e7daaab2d87c552ac92213ef55484d63704f2cbed6971ad6bbbac76c / bfd9889c14c0940f0d5c06147b714b0d32e3169c310b3077293608b7fcbd240e。使用モデルは現Codexセッション、APIモデル識別子取得不能、委任/ローカルLLMなし。
+- replay2回各1037組2074文書、正規8gate 新hash exit0(2d333b)、all2074hash/参照0(9642b3)、最初の対象統合全7 build exit0(d00e74)、EOF修正後systems fresh build exit0(67f050)、全7開始/現在/manifest一致とHTML27見出し109項目/26カテゴリ52目次/全旧有用ID/CC0/統合HTML一致(1a3773)、正規HTML2文書gate、英日PC1440×1000/mobile390×844実表示・TOC/言語/版往復/次Golem・出典全体、EOF修正後HTMLバイト完全一致により4実表示を再利用、global/diff合格。verified222/残815/保留4、完了後入力一致でglobal証拠再利用。
+- 編集補助スクリプトの序文置換がfrontmatterだけに当たりassert停止。保存前にreplaceAllへ修正して本文復元、全文レビューは修正後hashに対応。build終了前に誤って開始したHTMLgateは中止し不合格扱い、build/input一致後に初めから実施して実合格を得た。最後のdiff検査で末尾空行2件を検出しverified保存前assert停止。末尾だけ修正、英日新バイト列全文再読(8492ce)、AST全単位同一を確認、本文/overlay/reviewのhashを更新してtranslated-jaへ戻し生成/build/globalを再検証。検査無効化なし。失敗/中止証拠も台帳に保持。
+- 既存生成器を使用、原文定義リンク復元によりEXTERNAL_LINK_REPORTのStacks count115→117と全体138560→138562が更新されたため保存対象に含める。timestampだけのEXCLUSIONSはHEADへ戻した。元checkout mainの他作業変更は保持。確認tab3終了・viewport復元済み、preview session55413終了exit0 fe6b6c。修正後UI再利用のcleanup証拠はこの実終了記録に対応。
+- workflow push対象main,codex/pages-preview/**,codex/quality/**外のorigin/codex/awesome-editorial-isolated-20261007へこの検証済み差分のみcommit/pushする。現在は保存準備、送信成功を先取りしない。外部公開/dispatch/PR/定期設定なし。
+- 次165 github-golemfactory-awesome-golem-readme-md。/private/tmp/libx-awesome-editorial-20261007で固定raw/旧EN/旧JA hash照合→全文→編集/3全文review→生成/保全/build/UI/global。Stacks本文に未保存の未検証差分なし。

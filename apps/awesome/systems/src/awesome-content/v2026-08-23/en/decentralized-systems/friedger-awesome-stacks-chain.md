@@ -1,46 +1,12 @@
 ---
 title: "Awesome Stacks"
-description: "A curated collection of resources and projects focused on Stacks."
+description: "Stacks applications, Clarity resources, app development, learning materials, and community."
 licenseSource: "github-friedger-awesome-stacks-chain-readme-md"
 ---
 
 # Awesome Stacks
 
-A curated collection of resources and projects focused on Stacks.
-
-## Contents
-
-
-
-
-
-- [Apps](#apps)
-  - [Wallets](#wallets)
-  - [Stacks Web Applications](#stacks-web-applications)
-  - [Blockchain Name System](#blockchain-name-system)
-  - [DeFi](#defi)
-  - [Games](#games)
-  - [Stacking Apps](#stacking-apps)
-- [Clarity Resources](#clarity-resources)
-  - [Developer Tools](#developer-tools)
-  - [Example Contracts](#example-contracts)
-  - [Libraries & Protocols](#libraries--protocols)
-  - [Contracts](#contracts)
-  - [Non-Fungible Tokens](#non-fungible-tokens)
-  - [Fungible Tokens](#fungible-tokens)
-  - [Stacking](#stacking)
-- [App Development](#app-development)
-  - [Client Libraries](#client-libraries)
-  - [CLI](#cli)
-  - [Indexing and Querying APIs](#indexing-and-querying-apis)
-- [Learning Resources](#learning-resources)
-  - [Documentation](#documentation)
-  - [Videos](#videos)
-  - [Written Tutorials](#written-tutorials)
-  - [Books](#books)
-  - [Courses](#courses)
-- [Community](#community)
-
+The fixed source describes [Stacks](https://www.stacks.co/what-is-stacks) as a layer-1 blockchain anchored by Bitcoin, enabling apps, smart contracts, and digital assets. It connects to Bitcoin and implements smart contracts and decentralized applications through the [Clarity language](https://clarity-lang.org/). Through the [Proof of Transfer (PoX) consensus mechanism](https://docs.stacks.co/stacks-101/proof-of-transfer), its state is anchored against the Bitcoin blockchain; the source describes this as providing Bitcoin’s security and finality to Stacks. Stacks brings programmability to Bitcoin without modifying Bitcoin’s core consensus mechanism. This list covers applications, Clarity tools and contracts, app development, learning resources, and the Stacks community.
 
 
 ## Apps
@@ -72,14 +38,14 @@ A curated collection of resources and projects focused on Stacks.
 ### DeFi
 
 - [Bitflow](https://www.bitflow.finance/) - Decentralized Exchange.
-- [Velar](https://www.velar.co/) - Swapping, trading, launching assets on premier Bitcoin L2s.
+- [Velar](https://www.velar.co/) - Swapping, trading, launching assets on Bitcoin L2s described in the source as premier.
 - [Zest Protocol](https://www.zestprotocol.com/) - Decentralized borrowing and lending on Bitcoin and Stacks.
-- [FakFun](https://fak.fun) - Platform for exchange, launch, wrapping for memecoins build on Bitcoin.
+- [FakFun](https://fak.fun) - Platform for exchange, launch, wrapping for memecoins built on Bitcoin.
 - [Alex Lab](https://app.alexlab.co) - A service platform for DeFi.
 - [Arkadiko Protocol](https://arkadiko.finance) - Stable coin (USDA) based on self-repaying loans.
-- [Granite](https://granite.world/) - A Bitcoin liquidity protocol that provides the non-custodial, secure, and decentralized way to borrow against Bitcoin.
+- [Granite](https://granite.world/) - A Bitcoin liquidity protocol for non-custodial, decentralized borrowing against Bitcoin; described in the source as secure.
 - [BSD](https://www.bsd.money/) - A synthetic, digital dollar backed by Bitcoin using over-collateralized lending model.
-- [USDh](https://app.hermetica.fi) - A Bitcoin-baked, yield-bearing synthetic dollar using short perpetual futures position and institutional-grade custodians.
+- [USDh](https://app.hermetica.fi) - A Bitcoin-backed, yield-bearing synthetic dollar using short perpetual futures position and institutional-grade custodians.
 - [STXTools](https://stxtools.io/) - Charts, transactions, price alerts for DeFi on Stacks.
 - [Stacks Pulse](https://www.stackspulse.com/) - Real-time on-chain Stats for Stacks DeFi.
 - [Signal21](https://signal21.io/) - On-chain analysis for Bitcoin L1, L2 and Dapps.
@@ -116,7 +82,7 @@ A curated collection of resources and projects focused on Stacks.
 
 - [Source of Clarity](https://source-of-clarity.com) - Listing of all deployed Clarity contracts on mainnet with some comments.
 - [Example Contracts](https://github.com/hirosystems/clarity-examples) - A collection of sample smart contracts to serve as a starting point for writing your own.
-- [Audited Example Smart Contracts](https://github.com/clarity-lang/book/tree/main/projects) - Another collection of smart contract examples, these have been audited for security.
+- [Audited Example Smart Contracts](https://github.com/clarity-lang/book/tree/main/projects) - Another collection of smart contract examples, described in the source as audited for security.
 
 ### Libraries & Protocols
 
@@ -133,7 +99,7 @@ A curated collection of resources and projects focused on Stacks.
 - [ClarityDAO](https://github.com/friedger/clarity-dao) - A conversion of Moloch DAO in Clarity.
 - [NFT Marketplace](https://github.com/friedger/clarity-marketplace/blob/master/contracts/market.clar) - Clarity smart contract for a marketplace of tradable assets.
 - [StackStarter](https://github.com/MarvinJanssen/stackstarter/blob/master/contracts/stackstarter.clar) - Clarity smart contract for crowdfunding.
-- [Lightning Swaps](https://github.com/radicleart/clarity-rstack/blob/master/contracts/lightning-swaps-v1.clar) - Fraud-proof swaps using Lightning Network.
+- [Lightning Swaps](https://github.com/radicleart/clarity-rstack/blob/master/contracts/lightning-swaps-v1.clar) - Swaps using Lightning Network, described in the source as fraud-proof.
 - [Election Voting](https://github.com/elbaruni/clarity-election/blob/master/contracts/election.clar) - Basic voting for candidates using Clarity.
 - [DualX](https://github.com/westridgeblockchain/dualX) - A collection of Clarity contracts that implement a DeFi ecosystem for exchanges.
 - [ExecutorDAO](https://github.com/MarvinJanssen/executor-dao) - A Clarity framework for building DAO functionality into your smart contracts.
@@ -143,7 +109,7 @@ A curated collection of resources and projects focused on Stacks.
 
 ### Non-Fungible Tokens
 
-- [This is #1](https://www.thisisnumberone.com) - The first professional NFT built on Bitcoin and the Stacks Blockchain ([contract](https://explorer.hiro.so/txid/SP3QSAJQ4EA8WXEDSRRKMZZ29NH91VZ6C5X88FGZQ.thisisnumberone-v2?chain=mainnet)).
+- [This is #1](https://www.thisisnumberone.com) - An NFT built on Bitcoin and the Stacks blockchain, described in the source as the first professional NFT ([contract](https://explorer.hiro.so/txid/SP3QSAJQ4EA8WXEDSRRKMZZ29NH91VZ6C5X88FGZQ.thisisnumberone-v2?chain=mainnet)).
 - [Smart Contract GPT](https://github.com/Markeljan/stxgpt) - Chat bot trained to create SIP-009 contracts.
 
 ### Fungible Tokens
@@ -174,7 +140,7 @@ A curated collection of resources and projects focused on Stacks.
 ### Indexing and Querying APIs
 
 - [Stacks API](https://www.hiro.so/stacks-api) - Hosted API to interact directly with the Blockchain to query information, broadcast transactions, and scale your projects on Stacks.
-- [Quicknode](https://www.quicknode.com/chains/stx) - Hosted ednpoint to quickly and easily connect to Stacks using Quicknode.
+- [Quicknode](https://www.quicknode.com/chains/stx) - Hosted endpoint to quickly and easily connect to Stacks using Quicknode.
 - [Self-Hosted Render](https://github.com/stacksfoundation/render-stacks) - One-click deploy tool to self-host a Stacks node on Render.
 - [Self-Hosted Digital Ocean](https://marketplace.digitalocean.com/apps/stacks-blockchain) - Digital Ocean droplet for running a Stacks node.
 - [Self-Hosted Docker](https://github.com/stacks-network/stacks-blockchain-docker) - Tool to run a self-hosted Stacks node with Docker.
@@ -193,7 +159,7 @@ A curated collection of resources and projects focused on Stacks.
 
 - [Clarity 101](https://youtu.be/lXJutQqDq3w) - Learn the basics of Clarity's design principles.
 - [Developer Registry 101](https://www.crowdcast.io/e/clarity-program) - Learn how to build a Clarity smart contract from scratch.
-- [How Clarity Prevents Common Smart Contract Vulnerabilities](https://www.youtube.com/watch?v=VYXhrwPsBws) - Explanation of Clarity's security princples.
+- [How Clarity Prevents Common Smart Contract Vulnerabilities](https://www.youtube.com/watch?v=VYXhrwPsBws) - Explanation of Clarity's security principles.
 - [Proof of Transfer Whitepaper Reading with Muneeb Ali](https://www.youtube.com/watch?v=NY_eUrIcWOY&t=3s) - Overview of the Proof of Transfer (PoX) whitepaper from the author.
 - [Web3 for Bitcoin](https://www.crowdcast.io/e/web3-for-bitcoin/) - Overview of Stacks, the problem it solves, how it brings smart contract functionality to Bitcoin, and how to start building on it.
 - [Why Build on Stacks](https://www.youtube.com/watch?v=WaTMCremGwE) - An overview of why Web3 developers might want to build on Stacks over other Blockchain protocols.
@@ -225,7 +191,3 @@ A curated collection of resources and projects focused on Stacks.
 - [YouTube](https://www.youtube.com/c/Blockstack) - Stacks ecosystem YouTube.
 - [Official Stacks Forum](https://forum.stacks.org/) - Stacks community forum.
 - [r/stacks](https://www.reddit.com/r/stacks) - Stacks subreddit.
-
-## Contributing
-
-We welcome community contributions to this list. Please read the [contribution guidelines](https://github.com/friedger/awesome-stacks-chain/blob/fd4cbc5fa6116652e62b3b29ecf2f266e447e090/contributing.md) before contributing.
