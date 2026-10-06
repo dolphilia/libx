@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-127-lua-verification-and-sidebar-repair",
+  "cycle": 127,
+  "startedAt": "2026-10-02T05:36:00.000Z",
+  "endedAt": "2026-10-02T05:52:43.458Z",
+  "result": "partial",
+  "phase": "5",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "専用checkout全体/選択ビルド",
+    "実Astro成果物2317旧本文比較/新2表示コード照合",
+    "CUAブラウザー実英日/モバイル/キーボード/コピー/前後移動",
+    "共有UIの幅保存順序修正（専用コピー）"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/SOURCE_LOCK.json",
+      "sha256": "cdf301c7b6c09c514ca382f6ecdb25ca7d3a0c532c5e6edb02296deab06deef3"
+    },
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/REVIEW_MANIFEST.json",
+      "sha256": "5807e1d214b02b5385bc866127ccec03f7954220af0d4e9d52f3a0b35caeb11e"
+    },
+    {
+      "path": "packages/ui/src/components/SidebarResizer.astro",
+      "sha256": "9dbe41e6e4df56229423c9281c2a34d84452904e122a52239849ad6f3300bd4e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/REVIEW_MANIFEST_2026-10-02-127.json",
+      "sha256": "0d440875131e758037cd53b964356fc8e45a08f058418e68c656e230bf61b336"
+    },
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/reviewed-translation/2026-10-02-127/ja/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+      "sha256": "951e748eb577bdc590842cc5fa5d7dad929da90dba5865426da21765018ccf2c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-127/SIDEBAR_ISSUE.json",
+      "sha256": "0c181b42f016d678e872b0e4bb0230babac517e902845407deaab900387ff78a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-127/tooling/packages/ui/src/components/SidebarResizer.astro",
+      "sha256": "b19fc75fee775d0625933666fcc913ce899109f9289cb4e27105f746794c3f0d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-127/RENDERED_AUDIT.json",
+      "sha256": "f312278a5d345d83623a0d1a3ed3338569a1231becb2c29730b570a7a07b8ff8"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "65783b40a48dd7057a6d6867b3026284ed0f23676c4f70e4696b2fe2e4d2bdc3"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "60b28e3a4460341e5d923358109fc59d89fc4c38b2e32fe7dac1751e5bc785a9"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "新1ページ全文レビュー最終追記",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/REVIEW_MANIFEST_2026-10-02-127.json",
+          "sha256": "0d440875131e758037cd53b964356fc8e45a08f058418e68c656e230bf61b336"
+        },
+        {
+          "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/reviewed-translation/2026-10-02-127/ja/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+          "sha256": "951e748eb577bdc590842cc5fa5d7dad929da90dba5865426da21765018ccf2c"
+        }
+      ]
+    },
+    {
+      "name": "旧2317本文と新2HTML全コード/内部134リンク/共有179保護",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-127/RENDERED_AUDIT.json",
+          "sha256": "f312278a5d345d83623a0d1a3ed3338569a1231becb2c29730b570a7a07b8ff8"
+        }
+      ]
+    },
+    {
+      "name": "サイドバー表示修正後検証/共有統合",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-127/SIDEBAR_ISSUE.json",
+          "sha256": "0c181b42f016d678e872b0e4bb0230babac517e902845407deaab900387ff78a"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "既存の再展開不具合を発見したためverifiedへ進めず、Lua/GLFW確認を追加。",
+    "Awesome/ユーザーの共有変更はまだ一切編集せず、修正対象SidebarResizerの基準SHAも保持。"
+  ],
+  "unresolved": [
+    "共通UI修正後の複数アプリ確認・全体ビルド・共有統合未完了。"
+  ],
+  "nextAction": "既存サイドバー再展開の表示不具合を修正し、Lua/GLFW実ブラウザーと全体ビルドを検証。共有統合と現在本文SHA照合後にverified。",
+  "resumeCondition": "第120判断と固定元SHAが有効。投稿者表示を保持し、注釈とMIT原通知を英日表示。明示的な別条件を発見した場合は再評価する。既存取得版・Awesome・ユーザー変更は保持。",
+  "counts": {
+    "verified": 5,
+    "published": 5,
+    "awaitingRelease": 0,
+    "active": 2,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

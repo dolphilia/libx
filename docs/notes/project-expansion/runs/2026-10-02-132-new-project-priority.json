@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-132-new-project-priority",
+  "cycle": 132,
+  "startedAt": "2026-10-02T07:33:08.908Z",
+  "endedAt": "2026-10-02T07:35:05.303Z",
+  "result": "complete",
+  "phase": "policy-amendment",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "計画・運用設定・台帳・実判定の照合",
+    "Node runtime tests 15件",
+    "対象eslint",
+    "現行証拠・進捗・上限保持検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-132/before-0-CONTINUOUS_DOCUMENT_PROJECT_EXPANSION_PLAN.md",
+      "sha256": "6eee7c52f9f467076c05fefa2a3b300d2c0e66ef9cde56acfdc448766a0532ae"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-132/before-1-POLICY.json",
+      "sha256": "d5154c2c07331e02af06edd6f937e9a2f1c8a23866a6da9511f209496120c2b8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-132/before-2-OPERATIONS.json",
+      "sha256": "3b74fda933d7d2143eef79fabc5aa65ab588aff619dce1435e604e51e720e575"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-132/USER_INSTRUCTION.json",
+      "sha256": "5417ba00803619defc7e27dae3832e1ff54aaf401499f74e8ea3606f40dc55b1"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/plans/CONTINUOUS_DOCUMENT_PROJECT_EXPANSION_PLAN.md",
+      "sha256": "2fe60b586b02ae4fea3925e228a588938be77a5171849a4468a4251eb391a2cd"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/schemas/policy.schema.json",
+      "sha256": "e5d3833a2b293fb2920c04036cced40fb52b2a803d724c5962907f881e6fa138"
+    },
+    {
+      "path": "scripts/project-expansion/ledger.mjs",
+      "sha256": "ede2f68a513cc2e3976ed65f7a1315980eddf2f283819cb47e25d2846df95240"
+    },
+    {
+      "path": "tests/runtime/project-expansion-ledger.test.js",
+      "sha256": "aa97cd11f7652613dc6e448ee47a48592ff6bec2e9e3858f45b0f770c18360df"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7820ef76a13999d7d78f844a21aa5568eb25517c5f56662ee090e552d51d0a9c"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "e5e3a9748a4a71ed9e5c7cfecc0279c33244ab79dca4778e3e14d810ca056298"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "新規優先判定・旧方針互換・作業枠と公開待ち上限",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-132/TESTS.log",
+          "sha256": "3a367e27871f078e674f1a091f787d98ea748c9ba2afc8d8eaa553a73543ea65"
+        }
+      ]
+    },
+    {
+      "name": "対象lint",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-132/LINT.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "台帳照合・公開承認・件数上限・進捗・確認日時の保持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-132/POLICY_VALIDATION.json",
+          "sha256": "5221dd5d0a21417a51c5f65ce1aef09d2d59259fab5c028e20aa69907d8b223b"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "新規作成・公開を通常の保守・定期再確認より優先。重大な確認済み不具合は例外として対応。",
+    "通常更新の件数・日数による新規停止を解除。作業中/新規/公開待ちの件数上限は保持。",
+    "全文レビュー・公開前の現行証拠照合・回帰検査は維持。未確認の公開済み対象の確認日時は更新しない。"
+  ],
+  "unresolved": [
+    "pugixml残9ページの翻訳・全文レビュー、全体表示・統合検証は未完了。"
+  ],
+  "nextAction": "pugixml quickstartから残9ページを翻訳・別工程全文レビューし、検証済みの正規公開待ちへ登録後に公開する。新規枠解放後にuthash/fmtなどの候補を選定。",
+  "resumeCondition": "固定原資料とレビューSHAが有効。新規作業中1件・全作業中2件・公開待ち2件の上限、採点と全検証を維持。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

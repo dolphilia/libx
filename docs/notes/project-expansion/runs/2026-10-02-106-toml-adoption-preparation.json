@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-106-toml-adoption-preparation",
+  "cycle": 106,
+  "startedAt": "2026-10-02T01:49:24.247Z",
+  "endedAt": "2026-10-02T01:58:17.317Z",
+  "result": "partial",
+  "phase": "2",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "exec_command",
+    "apply_patch",
+    "web.run",
+    "create-project.js --dry-run",
+    "create-project.js"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "cd81e28a073f47f9d0391e0f262f2722d12161e603dc775d6ba669a1e1bc19d9"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/TOML_SELECTION_REVIEW.json",
+      "sha256": "b65ffcbb48f0c4245a2ba116fd54d2ef0a8610eeb73beb55660467b11f3b8bd9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "75a2156f483b7b77b8313f7a8313844a2c8538271cd07c891b0a9f5cc91439b1"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "95f0e19b1351c9c33fe5c4aad7111daf903d99eb459bbae67e388823bfa47c9d"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/SOURCE_LOCK.json",
+      "sha256": "d0311620b891e5eeac0b392bc14f870bddae9a199462ad601c65cbb98f32b18e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-106/template-preparation.json",
+      "sha256": "1d74d84f40dc711bd1c9cd23a61c50a533339ce6abf023438ea809edef364628"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "toml"
+  ],
+  "newOperationIds": [
+    "toml:v1-1-0:38534928840eceb96fcc703c5a168565579b7cba6a09e7326188db4f54157308"
+  ],
+  "checks": [
+    {
+      "name": "採用前固定入力・タグ・日本語公式一覧・両MIT・Git blob/.gitattributesの確認",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-106/PRE_ADOPTION_REVIEW.json",
+          "sha256": "5f0a842f1c909935a5c4d37b9ca01b5e82382bdafdaf7aa4bad2a6e703fc1001"
+        }
+      ]
+    },
+    {
+      "name": "テンプレートdry-runと隔離生成・サンプル本文/版除去・配信対象の除外",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-106/template-dry-run.txt",
+          "sha256": "8f37187ad24c287f91e9168430ad2c20cfe39c0b503f675548188acc84cc3094"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-106/template-create.txt",
+          "sha256": "f28b1b1ab09c9ee8012619c493f37ef35c62a353deb8de2b6068571cdfdede03"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-106/template-preparation.json",
+          "sha256": "1d74d84f40dc711bd1c9cd23a61c50a533339ce6abf023438ea809edef364628"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "公開待ち0件のためeligible TOML1.1.0を76点・6必須条件の有効根拠を維持してselectedへ。新規1件だけをsource-lockedで登録。",
+    "固定ABNFの保存CRLFとraw LFはbyte一致として扱わず、固定Git blob SHA1/sha256・.gitattributes eol=crlfで対応を実証。正式取得物はGit blobのLFを保全。",
+    "新規アプリは隔離clone内だけに生成。共有appsや本番配信へ入れず、テンプレートの例文・既定版・出典を除去して保存。",
+    "定本化・翻訳・全文内容レビュー・ビルド表示検証は未実施。source-lockedをverifiedへ進めない。",
+    "2026-10-02サイクル109で結果表記を訂正。案件が未完了のため計画263行に従いpartialとする。個別工程の合格はchecksで維持。"
+  ],
+  "unresolved": [
+    "TOML全仕様・ABNF・両MITの定本化、70コード・全文参照・日本語翻訳、別パス全文レビュー、機械/表示検証は次工程。",
+    "新規TOML公開は今回の承認範囲外。定期実行は未設定。",
+    "初期3件/異形式/実上流更新実証は未完了。"
+  ],
+  "nextAction": "専用workspaceでSOURCE_LOCKから原文忠実な3ページを生成し、許可した内部ABNFリンク対応と全70コード/全文AST/アンカー/両MITを照合。翻訳と独立した全文内容レビューを続ける。",
+  "resumeCondition": "SOURCE_LOCK・台帳・選定照合が有効。新規active1/上限1を維持し、他候補の新規作業は始めない。隔離workspaceが消えたら37f77d3から再生成し、staging/appだけ復元。",
+  "counts": {
+    "verified": 4,
+    "published": 4,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 1,
+    "candidateHolds": 5,
+    "eligible": 0
+  },
+  "workspace": "/private/tmp/libx-official-toml-20261002"
+}

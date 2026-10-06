@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-139-pugixml-loading-partial-draft",
+  "cycle": 139,
+  "startedAt": "2026-10-02T07:54:25.937Z",
+  "endedAt": "2026-10-02T07:55:04.006Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex文書読み込み4.1–4.4の翻訳",
+    "固定再生成・コード/原ID/リンク/未翻訳末尾検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/04-loading-documents.md",
+      "sha256": "0b4e5cd1dbae5bb8ff3c9f41e6c8ba5a0fa621301519371503e3ec261df10c66"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/04-loading-documents.html",
+      "sha256": "a45f67d968870e00077f120ef4fbc24c5e2bc6ee8cd064cb0881e4efb3f7b291"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e684178c71b3796deca4161d15538a0984408bec49aff2846e6bb373df0225a1"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-139/ja/02-manual/04-loading-documents.md",
+      "sha256": "067e2aba03c782eb860ff01c57217a694dd52ec221afe23bd818f6d4805977f7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-139/TRANSLATION_MAP.json",
+      "sha256": "75f0317789d1f45ea20cdd3d37e19bb6a5af4746bae76146c416353eb59935f6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-139/MECHANICAL.json",
+      "sha256": "81622e7aebf913b2d42323a5fe94859c64f7c58db602584e24da482ef3add809"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "22d3d87055a1f729a8c7be2177b95c18a5c57fdf82719e47558dc1b1d44e0699"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "15fa10209b783feac8252a00e0945d3470e9599755db65ab0244044f4ef9ae93"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "部分初稿の構造・コード・原ID・リンクと未翻訳末尾保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-139/MECHANICAL.json",
+          "sha256": "81622e7aebf913b2d42323a5fe94859c64f7c58db602584e24da482ef3add809"
+        }
+      ]
+    },
+    {
+      "name": "読み込み章全文翻訳・別工程レビュー",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全体表示・JA対象リンク・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "バッファの3種の所有権・寿命・割り当て関数条件、文字ストリームとbyte/encoding条件を保持。",
+    "全解析状態、失敗後の部分ツリー、offsetの単位と変換時の追跡制約を訳す。",
+    "原コードとコメントを保存。後半未翻訳のため全文初稿数と全文レビュー数は6/12のまま。"
+  ],
+  "unresolved": [
+    "loading455–738行未翻訳・全ページ別レビュー未実施。",
+    "残5ページ未翻訳・未レビュー。全体表示/統合/JA対象リンク未検証。"
+  ],
+  "nextAction": "新規優先。全文初稿6/12・別工程全文レビュー6/12。第139でloading導入/4.1–4.4（1–454行）を部分翻訳。同じ保存版の455行以降、4.5解析オプションから翻訳し、全ページ別工程レビューを完了する。その後残5ページと全JAリンク/UI/表示/統合を検証して公開する。",
+  "resumeCondition": "固定資料・定本・第139部分初稿SHA有効。同じ保存版から続きを進め、未確認を完了にしない。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

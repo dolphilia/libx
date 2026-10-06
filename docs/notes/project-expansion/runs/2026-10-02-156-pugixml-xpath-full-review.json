@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-156-pugixml-xpath-full-review",
+  "cycle": 156,
+  "startedAt": "2026-10-02T08:29:58.556Z",
+  "endedAt": "2026-10-02T08:30:09.173Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原文と訳文全意味単位の別工程実読",
+    "コード/ID/URLと固定再生成機械検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/08-xpath.html",
+      "sha256": "1ea5e3c49b7df53038cc8e7d63c9335718e174286446ec10da0013e34d3ad7e9"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/08-xpath.md",
+      "sha256": "fb4c3469d60e250da1c41853a85a16f7cfb30b0a46268b652bb0acec725a24a4"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-153/ja/02-manual/08-xpath.md",
+      "sha256": "e226cba0c092d978dae3af567227e5972480eaad71749182a463abb2c417acde"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0977ce10c3abc2a35dee20f68530c2918f1557bf3ab317c8a31db6df46211a28"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-156/ja/02-manual/08-xpath.md",
+      "sha256": "27f3a08c96a0ecf18131b92031ad29107c953b2b027c9e4934f8d95072a2a316"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/FULL_REVIEW.json",
+      "sha256": "a31c7beed6a466fcadb6a7e3ac53b4438050f5d204dc02595388f5eac4193369"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/MECHANICAL.json",
+      "sha256": "96003f6651c4210cb25f6896067d6c543cb776fb22911aec0e1cda95af2e2e44"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/SOURCE_READABLE.json",
+      "sha256": "066315443b161a8ce849b926b4611e2066c3b9e993783b326370b4c56e39b537"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/pugixml.hpp",
+      "sha256": "0b7c94701df3d50981ffafe57f177c77b940e347c6e5d01073e4161f61299212"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "eb1279a60caa1c29123f90752f73fcc8d5d79e6a0041573f9c4bd1a82095e902"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "1dbc3dff7d0813705550c568ed9803bf9d5c7ed137518174aa4693fb48627233"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "XPath章1ページ別工程全文内容レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/FULL_REVIEW.json",
+          "sha256": "a31c7beed6a466fcadb6a7e3ac53b4438050f5d204dc02595388f5eac4193369"
+        }
+      ]
+    },
+    {
+      "name": "固定再生成と原pre/コード/ID/URLの保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-156/MECHANICAL.json",
+          "sha256": "96003f6651c4210cb25f6896067d6c543cb776fb22911aec0e1cda95af2e2e44"
+        }
+      ]
+    },
+    {
+      "name": "全体翻訳/全文レビュー/JA対象リンク/UI/表示/統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "初稿を保持し、原文C11を固定ヘッダーに基づき訳注付き補正、source streamの用語を明確化した別レビュー版を保存。",
+    "全文内容レビューとコードの機械同一性を分離。",
+    "未検証アプリを共有公開対象へ統合しない。"
+  ],
+  "unresolved": [
+    "changelog未翻訳・未レビュー。",
+    "全JA対象リンク・rawHTML表/コードUI・全体表示/統合は未検証。"
+  ],
+  "nextAction": "新規優先。初稿11/12・別工程全文レビュー11/12。第156でXPath章全971行/113原text/87翻訳単位をレビュー。C11表記は固定ヘッダー確認後C++11へ訳注付き補正、source streamを入力ストリームへ明確化。残るchangelogを翻訳・別レビューし、全JAリンク/UI/表示/統合を検証して正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料・定本・レビュー保存版と証拠SHA有効。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

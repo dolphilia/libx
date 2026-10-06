@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-122-lua-bugs-source-lock",
+  "cycle": 122,
+  "startedAt": "2026-10-02T05:02:54.371Z",
+  "endedAt": "2026-10-02T05:02:55.385Z",
+  "result": "partial",
+  "phase": "2",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "保存済み公式取得証拠の再照合",
+    "HTML範囲一致/parse5原通知抽出",
+    "root notes/専用workspaceの固定保存",
+    "証拠SHA付き安全な台帳更新"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/fetch.json",
+      "sha256": "4d6e15a9845a38681c5797a76a386e382211151ad7233784b1b367a3ae4c4f5e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/lua/bugs.html",
+      "sha256": "b7b5a38d3cc32cd5b627a0e073948152e26f1382e21441d08db6c827e9596b6e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/lua/known-issues-5.5.1.html",
+      "sha256": "46d471c4c6c3cb700bef45de6da435497df88b79c03ec522d08f19e5bbc135fa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/lua/copyright.html",
+      "sha256": "9fa02db000d8178643a592032fab2e1d2ba6d9e2f609f149fc113d30d32dbea2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-120/LICENSE_REASSESSMENT.json",
+      "sha256": "1a0e346484e89015c01d33df334c10367de2cda7b51e70ed3a0d5a40d8f3234a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/SOURCE_LOCK.json",
+      "sha256": "cdf301c7b6c09c514ca382f6ecdb25ca7d3a0c532c5e6edb02296deab06deef3"
+    },
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/source/SOFTWARE-LICENSE.txt",
+      "sha256": "a23ad1f0b07e4e59009d8efaaf1f5ed1dcd06e5256c1743a58ca4f1cacad32e0"
+    },
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/source/copyright.html",
+      "sha256": "9fa02db000d8178643a592032fab2e1d2ba6d9e2f609f149fc113d30d32dbea2"
+    },
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/source/known-issues-5.5.1.html",
+      "sha256": "46d471c4c6c3cb700bef45de6da435497df88b79c03ec522d08f19e5bbc135fa"
+    },
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/source/official-bugs.html",
+      "sha256": "b7b5a38d3cc32cd5b627a0e073948152e26f1382e21441d08db6c827e9596b6e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-122/ACQUISITION_LOCK.json",
+      "sha256": "80a5b569dc0568e55bb2e888370321db9d3973f954e858d86c77c2482ac0c3a8"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "2a34542134bc7f64cc69fe7f0145a0aff6184e29db4e3439cec9a526ff206322"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "1060516168e199ea3dea0a90ffc1d54a69928360b55ac9affd5751e58de093ee"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "固定元の取得時刻/URL/全文範囲/本体MIT原通知/専用保存SHA",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-122/ACQUISITION_LOCK.json",
+          "sha256": "80a5b569dc0568e55bb2e888370321db9d3973f954e858d86c77c2482ac0c3a8"
+        }
+      ]
+    },
+    {
+      "name": "定本/翻訳/注釈表示/別工程レビュー/全検証",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "過去の同日取得を新取得と偽らず原取得時刻/監視証拠に束縛。",
+    "shared appを変更せず固定notesだけ保存。旧版の取得日を変更しない。"
+  ],
+  "unresolved": [
+    "新取得版本文、注釈表示、翻訳/レビュー/検証は未完了。"
+  ],
+  "nextAction": "第122で新bugs取得版のSOURCE_LOCK、元全ページ/5.5.1節/本体MITを固定保存し専用workspaceとSHA一致。注釈ENJA・原通知・全報告/例の無省略定本を作る。別取得版1ページに対応する既存参照/検査スクリプトも調整し、翻訳/別工程レビュー/全検証へ。",
+  "resumeCondition": "第120判断と固定元SHAが有効。投稿者表示を保持し、注釈とMIT原通知を英日表示。明示的な別条件を発見した場合は再評価する。既存取得版・Awesome・ユーザー変更は保持。",
+  "counts": {
+    "verified": 5,
+    "published": 4,
+    "awaitingRelease": 1,
+    "active": 2,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

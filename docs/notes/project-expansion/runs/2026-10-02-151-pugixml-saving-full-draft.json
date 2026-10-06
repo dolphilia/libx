@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-151-pugixml-saving-full-draft",
+  "cycle": 151,
+  "startedAt": "2026-10-02T08:19:46.630Z",
+  "endedAt": "2026-10-02T08:20:21.178Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原text26–64と定本226–550行の実読・翻訳",
+    "固定再生成・全コード/ID/URL保全検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/07-saving-documents.md",
+      "sha256": "8e367d88e598b68bbaa990ac2604d80a1d24eff378d2216e033858b19c912947"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/07-saving-documents.html",
+      "sha256": "94c491b64226a7c5663570a66cc6c13a86656f83fcd0adb6eaacd34c24f61f7a"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "491dea4a776e0c6f5156d77d78630784d4b5bea8b616e03689679939d9749ef5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-150/ja/02-manual/07-saving-documents.md",
+      "sha256": "a15a8f4bf30d0160853846a49217171e9e69d1bf277d160fa1b49a607117ae70"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-151/TRANSLATION_MAP.json",
+      "sha256": "9ebb1bc204c5b4057446e53c4dbf6df5c17850f0030297704bc75afb53e0ec10"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-151/MECHANICAL.json",
+      "sha256": "836642d1be2bb95ecae1adef1c5e20bb92308b3fa18a3f28c32354cbdacc4d77"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-151/PREPARATION.json",
+      "sha256": "d0f42fba31194a3097fa9b4020d78376790481617270d10197a5d6971af4177a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-151/BEFORE_SAVING_PARTIAL.md",
+      "sha256": "54de2ab68edfc2649e992d1721d9e8cef192e498c32aa00077b89c80bb4e6d81"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "62ef1cb0d4a9801b9b161b7d9f1f5eea4e41e12b9a5e452bfe0913b55b34256b"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "a44bcd4dfd6d8e76607abc0f7b2740c1a4e2bb6eb8c07fce356395e3e8ae35ef"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全文初稿550行と全コード/ID/URL保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-151/MECHANICAL.json",
+          "sha256": "836642d1be2bb95ecae1adef1c5e20bb92308b3fa18a3f28c32354cbdacc4d77"
+        }
+      ]
+    },
+    {
+      "name": "保存章別工程全文内容レビュー",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全JA対象リンク/UI/表示・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "先行1–225行を保持し、print/format/encoding/宣言調整の35単位を追加。",
+    "printはBOMと既定宣言を出力しない、rawがindent設定より優先、全format既定値と無効時条件を保持。",
+    "encoding_autoは出力ではUTF8、wide streamはwchar、invalid UTFと元宣言保持のparse_declaration条件を保持。",
+    "全文初稿完成と別工程全文内容レビューを分ける。"
+  ],
+  "unresolved": [
+    "保存章別工程全文内容レビュー未実施。",
+    "XPath/changelog未翻訳。全体表示/統合/全JAリンク未検証。"
+  ],
+  "nextAction": "新規優先。全文初稿10/12・別工程全文レビュー9/12。保存章の第150保存版を第151で全550行/57翻訳単位まで完成。原資料/定本/訳文を別工程で全文レビューし、save/print/writerの違い、全formatフラグの既定値/相互作用、出力encoding、宣言条件を照合する。その後XPath/changelogの残2ページと全JAリンク/UI/表示/統合を検証し正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料/定本/全文初稿のSHA有効。別工程全文レビューから続行。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

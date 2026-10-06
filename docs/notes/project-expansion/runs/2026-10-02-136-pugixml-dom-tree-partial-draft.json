@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-136-pugixml-dom-tree-partial-draft",
+  "cycle": 136,
+  "startedAt": "2026-10-02T07:46:13.920Z",
+  "endedAt": "2026-10-02T07:47:20.957Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex DOM導入/ツリー構造の翻訳",
+    "view_imageツリー図の内容確認",
+    "固定再生成と全コード・原ID・URL・未翻訳末尾の保持検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/03-document-object-model.md",
+      "sha256": "0c83713811cee1d8d9e9c415d3a107ec78da7224c24712da0458ff5db736a080"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/03-document-object-model.html",
+      "sha256": "9e398f80f108e153dc64811b59761983fd03f6a6ece46a9b3b849b130ae00ffe"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "8e00487e0a50bebf2405e455370a9ac14676e65d95c495af1a1dd0379e92fc3a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-136/ja/02-manual/03-document-object-model.md",
+      "sha256": "53ebea67d09f8ada46f148b8eac1122f0735bed917d61acf7102e097bc807321"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-136/TRANSLATION_MAP.json",
+      "sha256": "d1ba87c66b45508cb6f89cfb6886dc00bceb8d1c53efd1c5db281f5e3b21b922"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-136/MECHANICAL.json",
+      "sha256": "3621ce4d00b15a14a47e346a7938f5d28095d5eb9575aca4d9728e2d4781236a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-136/FIGURE_OBSERVATION.json",
+      "sha256": "f1115f34672b3f9dc511fc3919768d61c4a9e0d0179f5af974efe42a670343a8"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4c1f9f1ddbfd1978c112f6fb5bd3e25ff53a44b777a95352c4d2ac971f856b94"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "d8b17f7d05288b8ef61ab3200442364982aecc158c0016abd2af680b78405c5e"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "部分初稿の構造・識別子・コード・参照・未翻訳末尾の保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-136/MECHANICAL.json",
+          "sha256": "3621ce4d00b15a14a47e346a7938f5d28095d5eb9575aca4d9728e2d4781236a"
+        }
+      ]
+    },
+    {
+      "name": "DOM章全文翻訳・別工程全文レビュー",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全JA対象リンク/UI/全体表示・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "文書/要素/PCDATA/CDATA/comment/PI/declaration/doctype全種別を訳し、否定と既定での非取り込み、変更フラグと宣言出力条件を保持。",
+    "CDATA値に]]>を含められない制約、宣言/DOCTYPEは1個で親が文書であるべきという強さを保持。",
+    "DOMの1–228行だけ翻訳。229–774行は固定原文のまま保存し、全ページ初稿数・全文レビュー数は5/12のまま。"
+  ],
+  "unresolved": [
+    "DOMの3.2以降229–774行は未翻訳。全ページ別工程レビュー未実施。",
+    "残6ページ未翻訳・未レビュー。全体表示・統合・全JAリンク未検証。"
+  ],
+  "nextAction": "新規優先。全文初稿5/12・別工程全文レビュー5/12。DOMは第136の初稿に導入/3.1（1–228行）のみ翻訳済み、ページ完了には数えない。同じ初稿の229行以降、3.2 C++ interfaceから翻訳を再開し、Unicode/メモリー各節と全ページの別工程レビューを完了する。その後残6ページと全JAリンク/UI/表示/統合を検証して公開する。",
+  "resumeCondition": "固定定本・部分初稿・対応表SHA有効。DOM初稿を新たに複製せず有効な第136保存版から続きを進める。全検証前に公開待ちへ変更しない。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

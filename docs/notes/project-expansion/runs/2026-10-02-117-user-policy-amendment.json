@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-117-user-policy-amendment",
+  "cycle": 117,
+  "startedAt": "2026-10-02T04:22:04.293Z",
+  "endedAt": "2026-10-02T04:24:40.368Z",
+  "result": "complete",
+  "phase": "policy-amendment",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "計画/設定の編集",
+    "固定ライセンス原通知の照合",
+    "リビジョン/証拠SHA照合による台帳更新",
+    "node:test",
+    "ESLint",
+    "remarkのMarkdown解析",
+    "台帳/報告の検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/plans/CONTINUOUS_DOCUMENT_PROJECT_EXPANSION_PLAN.md",
+      "sha256": "a415dc1a6915425aec72875c23e855022ed3dac95aacf07ae1a5cd585d22363b"
+    },
+    {
+      "path": "docs/notes/project-expansion/schemas/policy.schema.json",
+      "sha256": "8a6872d073b72c6979fee75471e591a6ef703544f104edcf45635113a4229e2c"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "cd81e28a073f47f9d0391e0f262f2722d12161e603dc775d6ba669a1e1bc19d9"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "722760c95ea98647459b033048a8b48cd7ab2b857745c3ed1f339c0fbb96a38b"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f48b2b8f1dc5edccaddb6fc88cd6184ee0d0c6bcac27471b1ecb880687e1b983"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/plans/CONTINUOUS_DOCUMENT_PROJECT_EXPANSION_PLAN.md",
+      "sha256": "6eee7c52f9f467076c05fefa2a3b300d2c0e66ef9cde56acfdc448766a0532ae"
+    },
+    {
+      "path": "docs/notes/project-expansion/schemas/policy.schema.json",
+      "sha256": "58090404a252582de114ff436204af9f94b0974a2ed68dce9cd9259274a2c858"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "d5154c2c07331e02af06edd6f937e9a2f1c8a23866a6da9511f209496120c2b8"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "8b90b2564af86cc46ab7399211e6e656d9a1dce0d7c25944703d29f65fbeefdc"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4a60e491eddfea0939bc99f95334a890a4c6502610fd303b8ae4f291153dab86"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-117/USER_INSTRUCTION.json",
+      "sha256": "ec4f48f555a115abe7b07b06cc81cb51d0b44d126db640862f6d68a030b62dca"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-117/UTHASH_LICENSE_DECISION.json",
+      "sha256": "27ef070615fa88a999f0b417f224a3d4463ebff8271872249220193134a0f44a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-117/UPDATE_RESULT.json",
+      "sha256": "96499135740fa7fb806f857d769da0b857cdfb4988d30c49d0157e3b97802f4c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-117/VERIFICATION.json",
+      "sha256": "8fb06136b77ef14815d1d840e85204ba005d74f00af472e0e2a1e8949b1b445b"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "2dd17ae0f5bceb183cf2bc1894ba1c2d4be9aaac848a41db9a48f4693ebfc381"
+    },
+    {
+      "path": "scripts/project-expansion/ledger.mjs",
+      "sha256": "e4fb445abe0cb8625e8277c2e6c662dd66201775fd25eb24be6a8c8d0a74c91b"
+    },
+    {
+      "path": "tests/runtime/project-expansion-ledger.test.js",
+      "sha256": "ae8ffa3f0ac8d4c63f26836142e4ae7d930674a05a50963486cf55e9119d8dc0"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "運用設定/現行台帳・実ファイル・報告一致/候補重複なし/計画Markdownと参照リンク",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-117/VERIFICATION.json",
+          "sha256": "8fb06136b77ef14815d1d840e85204ba005d74f00af472e0e2a1e8949b1b445b"
+        }
+      ]
+    },
+    {
+      "name": "台帳14テストとESLint:承認証拠失効・欠落/未レビュー/未表示検証を合格にしない",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-117/ledger-tests-final.txt",
+          "sha256": "fe14b9f069b23603534dab0644cc6098131708da64243df6450e4bccc4719948"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-117/eslint.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "uthashの変換/工数/採点とfmt固定API生成/変換/工数",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "既存uthash2.4.0/fmt12.2.0を重複追加せず、ユーザー指定候補として登録と直近再調査条件を更新。",
+    "uthashの文書専用表記未発見は保存した注釈付き本体BSD適用の運用判断で解除。明示的許諾の発見とは記録しない。",
+    "正規verified公開待ちに継続的公開承認。TOMLも再開後に追加承認なしで限定候補を公開できる。",
+    "条件/採点/件数上限と全文レビュー/機械/表示検査は維持。未検証アプリ・Awesome・ユーザー変更を公開へ混ぜない。",
+    "継続目標は一時停止のまま。今回は方針変更に限定し公開/スケジュール/取り込み再開を実行しない。"
+  ],
+  "unresolved": [
+    "uthash/fmtの未検証工程はneeds-evidenceを維持。",
+    "Lua新bugsは新方針による投稿素材/本体ライセンス/通知の再評価が未実施。",
+    "TOML公開待ち1件、pugixml作業中1件は未処理。"
+  ],
+  "nextAction": "継続目標の再開後、既存保留の新方針照合と正規公開待ちTOMLの現行証拠/限定差分の照合を行い、Pages公開・配信確認へ。未完了pugixmlを最後の有効段階から続け、上限内でuthash/fmtの変換・工数評価を進める。",
+  "resumeCondition": "ユーザーによる継続目標の再開。固定入力/本文/レビュー/検査と台帳・限定候補の有効性を照合する。通常選定・工程切替・正規公開待ちの公開に追加承認は不要。定期実行は別途指示が必要。",
+  "counts": {
+    "verified": 5,
+    "published": 4,
+    "awaitingRelease": 1,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 1,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

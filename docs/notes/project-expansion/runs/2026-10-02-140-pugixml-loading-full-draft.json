@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-140-pugixml-loading-full-draft",
+  "cycle": 140,
+  "startedAt": "2026-10-02T07:56:44.297Z",
+  "endedAt": "2026-10-02T07:57:23.037Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex全解析オプション/encoding/W3C制約の翻訳",
+    "固定再生成・コード/ID/全URL/未分類散文検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/04-loading-documents.md",
+      "sha256": "0b4e5cd1dbae5bb8ff3c9f41e6c8ba5a0fa621301519371503e3ec261df10c66"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/04-loading-documents.html",
+      "sha256": "a45f67d968870e00077f120ef4fbc24c5e2bc6ee8cd064cb0881e4efb3f7b291"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-140/BEFORE_LOADING_PARTIAL.md",
+      "sha256": "067e2aba03c782eb860ff01c57217a694dd52ec221afe23bd818f6d4805977f7"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "22d3d87055a1f729a8c7be2177b95c18a5c57fdf82719e47558dc1b1d44e0699"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-139/ja/02-manual/04-loading-documents.md",
+      "sha256": "eb0b6a49123d24250f80a14df4999eaf989d941b2b0eb653eee23809b513cb7c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-140/TRANSLATION_MAP.json",
+      "sha256": "b75f827c2cefd55f63eac162728b5f48896366b294ed9014262e13388baa5416"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-140/MECHANICAL.json",
+      "sha256": "969a2e95da3a8afd641950cdb05c4ff21f8b6001e69159c5878f165fad2c0f8a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-140/BEFORE_LOADING_PARTIAL.md",
+      "sha256": "067e2aba03c782eb860ff01c57217a694dd52ec221afe23bd818f6d4805977f7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-140/PREPARATION.json",
+      "sha256": "76918ad43a7c5aee9bb5723911dc7d78bea5fddea402ca584c02b3dbd3fd80e5"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "190ef450fcc6674c8bd8475f78156ae29abb4db9decde86675a81c634b384887"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "940a11f3ec334bef990dc96f02dfa069c6c123debe626c847ea97bc781e8e02b"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全文初稿の再生成・コード/識別子/原ID/参照の保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-140/MECHANICAL.json",
+          "sha256": "969a2e95da3a8afd641950cdb05c4ff21f8b6001e69159c5878f165fad2c0f8a"
+        }
+      ]
+    },
+    {
+      "name": "読み込み章の別工程全文内容レビュー",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全JA対象リンク/UI/表示・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "全parseフラグの既定on/off、ws_single/wconv/wnormの優先・merge/embed非互換とfragment末尾文字の警告を保持。",
+    "encoding_autoのBOM/先頭/XML宣言/UTF8 fallback順、invalid UTFを変換時読み飛ばすが変換なしでは残る制約を保持。",
+    "W3C非準拠のDOCTYPE情報非利用と不正XMLの非拒否全9項目を訳す。",
+    "同じ第139保存版の前半を保持して続行。旧部分初稿を固定保存し、台帳の現行SHAを更新。全文レビューは未実施のまま。"
+  ],
+  "unresolved": [
+    "loading別工程全文内容レビューは未実施。",
+    "残5ページ未翻訳・未レビュー。全体表示/統合/全JAリンク未検証。"
+  ],
+  "nextAction": "新規優先。初稿7/12・別工程全文レビュー6/12。第139のloading保存版を第140で続行し全738行/106翻訳単位の初稿を完成。原資料/定本/訳文の別工程全文レビューで全parseフラグの既定値・優先関係、buffer所有権、encoding/errorとW3C制約を照合する。その後accessing/modifying/saving/XPath/changelogの残5ページと全JAリンク/UI/表示/統合を検証して公開する。",
+  "resumeCondition": "固定資料/定本/第139現行初稿/第140全対応表と証拠SHAが有効。全文レビュー・全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

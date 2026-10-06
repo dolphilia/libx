@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-129-lua-bugs-clean-release-preparation",
+  "cycle": 129,
+  "startedAt": "2026-10-02T06:55:29.950Z",
+  "endedAt": "2026-10-02T06:59:58.570Z",
+  "result": "partial",
+  "phase": "publication",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "隔離済み公開候補の全13品質工程",
+    "現本番alias全2551配信SHA照合",
+    "限定18差分/共有3除外/既存全文保全"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/REVIEW_MANIFEST_2026-10-02-127.json",
+      "sha256": "0d440875131e758037cd53b964356fc8e45a08f058418e68c656e230bf61b336"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "d5154c2c07331e02af06edd6f937e9a2f1c8a23866a6da9511f209496120c2b8"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-129/LOCAL_QUALITY.json",
+      "sha256": "3f2dbf42c3547dd4dc9898694f8190210de3e91063892c50ca36f717bd649df3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-129/RELEASE_SCOPE.json",
+      "sha256": "ba11036e785037f2d0616432ec8a7798ad4b3df219422b28be3fbe7e32b39e3e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-129/PRODUCTION_BASELINE_HTTP.json",
+      "sha256": "df5e993c360fe0eeed3d7137322ee8eae129fc330521f89c279ee11ef1c05e85"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-129/RENDERED_AUDIT.json",
+      "sha256": "5dc873a56e15dd2e9b22b1a5f55de1ea7f30edd2b0f6c6a7cfd5d5dc41574287"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-129/RELEASE_COMMIT.json",
+      "sha256": "e141a031f4c6d1357db40808d920ad02d790fd631ec7ffa536b43ef8949899bc"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "86e5a5bfe59aea83eecfbcf4c2f80a22f364a602525bb159844b7a057482de18"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "c27df1b4b9b3cd39df7b4a5d1470d5ce1fcfa7b09f8633791499288db0250615"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全ローカル品質と224テスト",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-129/LOCAL_QUALITY.json",
+          "sha256": "3f2dbf42c3547dd4dc9898694f8190210de3e91063892c50ca36f717bd649df3"
+        }
+      ]
+    },
+    {
+      "name": "既存本文保全/限定公開差分/本番2551配信SHA",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-129/RELEASE_SCOPE.json",
+          "sha256": "ba11036e785037f2d0616432ec8a7798ad4b3df219422b28be3fbe7e32b39e3e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-129/PRODUCTION_BASELINE_HTTP.json",
+          "sha256": "df5e993c360fe0eeed3d7137322ee8eae129fc330521f89c279ee11ef1c05e85"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-129/RENDERED_AUDIT.json",
+          "sha256": "5dc873a56e15dd2e9b22b1a5f55de1ea7f30edd2b0f6c6a7cfd5d5dc41574287"
+        }
+      ]
+    },
+    {
+      "name": "GitHub CI公開/Cloudflare Pages配信SHA/本番実表示",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "uthash/fmt登録と注釈付き本体ライセンス/正規公開待ち継続承認は第117の計画/設定を正本とし維持。",
+    "最初の1test失敗はsandboxのlocalhost listen EPERM。記録を残して実行権限付き再試験で224/224合格。",
+    "本番aliasの全2551SHA一致は配信内容の証拠。APIで現在のdeployment metadataを新取得したとは記録しない。最新GitHub公開run36966377803の成功も照合。",
+    "現在の公開再開操作に残っていた旧権利待ち/TOML開始の文言を現行工程へ修正。歴史記録は保存。",
+    "固定原資料はSOURCE_LOCK記録SHAと一致し、取得バイト保持のため整形しない。原資料以外の全限定差分はgit diff --cached --checkを合格。",
+    "第128 ROOT_INTEGRATIONの13own after SHAへ対象だけを更新して再照合。その他保護SHAは第124を維持。179件と旧2317記事の全照合に合格。"
+  ],
+  "unresolved": [
+    "外部CI/公開はこのサイクルでは未実行。Lua1IDはawaiting-releaseのまま。",
+    "pugixml初稿3/12、別工程レビュー2/12。",
+    "モデル設定Astra、runtime未公開。ローカルLLMなし。"
+  ],
+  "nextAction": "第129でclean公開候補の全13品質工程・224tests・既存2317記事保全・現Pages本番2551ファイルSHAを再照合。RELEASE_COMMITに保存した18ファイル限定commitをGitHub release branchへpushし、Production workflowを1回dispatch。CI before/prepublishが基準47980e/配信321eac69と一致すること、成功後の配信全SHA/主要経路/実表示を確認してpublishedへ変更する。pugixml API別工程レビューと残9翻訳を継続。",
+  "resumeCondition": "RELEASE_COMMITと現行本文/レビューSHA・current Productionを照合して再開。公開に追加承認不要。定期実行は未設定。",
+  "counts": {
+    "verified": 6,
+    "published": 5,
+    "awaitingRelease": 1,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

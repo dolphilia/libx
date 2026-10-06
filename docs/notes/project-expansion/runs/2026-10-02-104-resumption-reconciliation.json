@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-104-resumption-reconciliation",
+  "cycle": 104,
+  "startedAt": "2026-10-02T01:08:33.960Z",
+  "endedAt": "2026-10-02T01:08:35.506Z",
+  "result": "complete",
+  "phase": "resumption-state-reconciliation",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "exec_command",
+    "apply_patch"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d4bc26acafc3b9d0e26c00968f0970909b0a2340fb3a1377eb3c2b326c31b888"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "daedce1bcab80f6f51cd7bc735bd9648f239676135cdccb70f492d6f7f130f98"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "cd81e28a073f47f9d0391e0f262f2722d12161e603dc775d6ba669a1e1bc19d9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "29a82ec4587e638e9cdf2727e78c697ae785c8e93adf0e639e58b57f4c86919e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-104/next-action-repairs.json",
+      "sha256": "9ad18f91cbc7eda8ddff7d30596b879aff7b827f976c0407e89e4f4e68261c42"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-104/current-stage-audit.json",
+      "sha256": "d078b86e282a65ac21cb9662e81cf86d9e6bb4232702f0b2dc3784fa1bf65084"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-104/protected-observation.json",
+      "sha256": "697737ff154c4c929801814b2a8f4360a1bb61e422b11e45ca913395ea0c8bf9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-104/ledger-tests.txt",
+      "sha256": "21d28bceaf26c146e112b7f8ea775d5d9709ad841c37f373884dcece325ab285"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "現行台帳の異常系12既存テスト",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-104/ledger-tests.txt",
+          "sha256": "21d28bceaf26c146e112b7f8ea775d5d9709ad841c37f373884dcece325ab285"
+        }
+      ]
+    },
+    {
+      "name": "実ファイルSHAと古い再開指示5件の整合化",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-104/next-action-repairs.json",
+          "sha256": "9ad18f91cbc7eda8ddff7d30596b879aff7b827f976c0407e89e4f4e68261c42"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-104/current-stage-audit.json",
+          "sha256": "d078b86e282a65ac21cb9662e81cf86d9e6bb4232702f0b2dc3784fa1bf65084"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "5件のnextActionのみを更新し、完了済みLua55の重複再開始を防止。本文・状態・公開・上限を変更しない。",
+    "初期新規3件の実証と更新実証・通常移行を未完了と明記。既存verified4作業を新規件数へ算入しない。",
+    "TOML1が有効eligibleなので不要な新発見・同じ保留の再調査は行わず、外部条件と期限に応じる。"
+  ],
+  "unresolved": [
+    "新規取り込みは公開待ち4/上限2で停止。",
+    "保留は新許諾/別枠工数/需要等の根拠待ち。巡回は7日期限前。",
+    "新規3件・異形式2件・上流差分更新実証・正式初期評価は未完了。",
+    "設定Astra、実モデル未露出。Sol実行の確認はできない。"
+  ],
+  "nextAction": "現行のレビュー・検証SHAと公開待ち上限を保持。次回起動で着手条件・期限・新根拠を再確認し、可能な既存保守があれば優先。新規は枠が空いた時点でTOML採用直前照合→テンプレートdry-runから再開。",
+  "resumeCondition": "新しい許諾/工数/需要の公式根拠、上流巡回期限2026-10-08T17:35:24.643Zへの到達、または公開待ち枠の条件変化。公開・定期実行は別途明示指示。",
+  "counts": {
+    "verified": 4,
+    "published": 0,
+    "awaitingRelease": 4,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 1,
+    "candidateHolds": 5,
+    "eligible": 1
+  },
+  "currentGoalTurnClassification": {
+    "classification": "progress",
+    "basis": "正本の古い再開指示5件を修正し、完了範囲と未実施の初期実証を証拠付きで区別。本文の新規進捗は0。"
+  }
+}

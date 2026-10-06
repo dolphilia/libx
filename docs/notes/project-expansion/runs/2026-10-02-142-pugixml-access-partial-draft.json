@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-142-pugixml-access-partial-draft",
+  "cycle": 142,
+  "startedAt": "2026-10-02T08:00:30.028Z",
+  "endedAt": "2026-10-02T08:02:47.417Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原text0–26と定本1–240行の実読・翻訳",
+    "固定再生成・全コード/ID/URL保全検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/05-accessing-document-data.md",
+      "sha256": "151442e47d0e6946dfaac9a600fe635fe4ede1f356a126ddd46011e1e3b45de1"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/05-accessing-document-data.html",
+      "sha256": "6cc53fd9381e499982106f5515aa12356e38caf7728ebe29518b663887af8af1"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "5f06cb4fad6ca42f2034cd32197e1178005ddcc47f4f1bad3cc9de67ffaabc5a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-142/ja/02-manual/05-accessing-document-data.md",
+      "sha256": "9959452d975d3f220bf843dcf69c4d0231618205839e11c7d0ecd1215cd16d97"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-142/TRANSLATION_MAP.json",
+      "sha256": "391d922bd4d348dfb1f6fd14b1a98de4348911ee0f0d632f40e5e755a89e2012"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-142/MECHANICAL.json",
+      "sha256": "e1d409dd62a308cb85b04a63438174c0b8ea949d80bc16aad2a401f3d5788888"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-142/SOURCE_READABLE.json",
+      "sha256": "dcd7745662f95186d58586cb7b32837aa452c37323ed04820ae3980982226fc4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-142/DRAFT_REPAIR.json",
+      "sha256": "b51f128d4186c7b9724353c28e0978c53d8fc085ea3fc99b33c2894533733805"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-142/BEFORE_DRAFT_REPAIR.md",
+      "sha256": "faac3a5ad55b59e01ba9bcb78130933dc7e8f76fc1e8492828b17073f38f0fd6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-142/CHECK_SCOPE_CORRECTION.json",
+      "sha256": "6a60ea31c540a54d88eda02136c14365dec788df1e425631b433f8da50fa8ef9"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "2ef965774d7d562a90144526840462d85246807277e914e3059569f1a287f938"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "b4bc297d35f88e90be79b9d58dacd2f460a22fc8905d3479791329a6cb450357"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "部分初稿1–240行と全コード/ID/URL保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-142/MECHANICAL.json",
+          "sha256": "e1d409dd62a308cb85b04a63438174c0b8ea949d80bc16aad2a401f3d5788888"
+        }
+      ]
+    },
+    {
+      "name": "アクセス章全文初稿と別工程全文内容レビュー",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全JA対象リンク/UI/表示・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "ツリー走査、ノード名/値、child_value/text、属性名/値/as_stringの23単位を訳す。",
+    "null時の空文字列とnullポインターの違い、兄弟順序、属性にparentがない制約を保持。",
+    "241行以降は未翻訳として保存し、全文初稿や内容レビュー完了には計上しない。"
+  ],
+  "unresolved": [
+    "アクセス章241–1195行は未翻訳、全文内容レビュー未実施。",
+    "残4ページ未着手。全体表示/統合/全JAリンク未検証。"
+  ],
+  "nextAction": "新規優先。全文初稿7/12・別工程全文レビュー7/12。アクセス章は第142保存版で1–240行/23単位まで翻訳済み（全1195行、未完了）。241行から属性の型変換を続行し、全文初稿後に別レビューする。その後modifying/saving/XPath/changelogと全JAリンク/UI/表示/統合を検証し正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料/定本/部分初稿のSHA有効。241行から続行。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

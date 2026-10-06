@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-135-pugixml-installation-full-review",
+  "cycle": 135,
+  "startedAt": "2026-10-02T07:44:16.857Z",
+  "endedAt": "2026-10-02T07:45:15.281Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "原資料・定本・訳文全意味単位の別工程実読",
+    "view_image設定画面全8枚の視認",
+    "固定入力再生成・コード/アンカー/リンク/画像の機械検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/02-installation.html",
+      "sha256": "426e9af38208b30e68f854881a6d2f82a6f40e187aad4d1da744085fa20db03f"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/02-installation.md",
+      "sha256": "24c58dc41d166a4871d3ada7558c167ffa7ded3f586f6dc7598753104da7b091"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-134/ja/02-manual/02-installation.md",
+      "sha256": "45943001008cf17f92448eb1e6aea600d0d1f62436a3c71c3887ad14ea7a47ed"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d49cd3f6da6f0fac4c3438470dd6231d6e9a19d744eea1db708ae8e5bb1ac84b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-135/ja/02-manual/02-installation.md",
+      "sha256": "45943001008cf17f92448eb1e6aea600d0d1f62436a3c71c3887ad14ea7a47ed"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-135/FULL_REVIEW.json",
+      "sha256": "837753f3fa0c573ac0bc2a8103ca96d4b3c8b983ca84f7e9980cbefa2ce6eade"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-135/IMAGE_REVIEW.json",
+      "sha256": "53196e80c641b1d103a7c4f0f59097cde9d2c36a6731e215dcebbae96f0460a8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-135/MECHANICAL.json",
+      "sha256": "48b706cbb7617120ca15f81d8715b9a92d1d3b7aa5f59c510c0d59816b517c29"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-135/SOURCE_READABLE.json",
+      "sha256": "ea2f41571f462d0e4d9cd88a247d47114b23f59690e31988f3b1f861e8115dba"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "8e00487e0a50bebf2405e455370a9ac14676e65d95c495af1a1dd0379e92fc3a"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "099a47095d900743671453adefbe0c1c64ab896c561be75f75277c3ede069107"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "インストール章別工程全文内容レビューと8画像照合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-135/FULL_REVIEW.json",
+          "sha256": "837753f3fa0c573ac0bc2a8103ca96d4b3c8b983ca84f7e9980cbefa2ce6eade"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-135/IMAGE_REVIEW.json",
+          "sha256": "53196e80c641b1d103a7c4f0f59097cde9d2c36a6731e215dcebbae96f0460a8"
+        }
+      ]
+    },
+    {
+      "name": "定本再生成・コード4/アンカー30/リンク58/画像8の保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-135/MECHANICAL.json",
+          "sha256": "48b706cbb7617120ca15f81d8715b9a92d1d3b7aa5f59c510c0d59816b517c29"
+        }
+      ]
+    },
+    {
+      "name": "全体翻訳/全文レビュー/JA対象リンク/UI/表示/統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "本文の修正不要。初稿SHA不変の別工程レビュー保存版を作成。",
+    "上流画像は改変せず原UI表示と訳文操作記述を照合。サイト表示検証とは区別。"
+  ],
+  "unresolved": [
+    "残7ページ未翻訳・未レビュー。",
+    "rawHTML表/コードUI・全JAリンク・全体表示/統合は未検証。"
+  ],
+  "nextAction": "新規優先。初稿5/12・別工程全文レビュー5/12。installation全553行/設定画面8枚の内容照合を第135で完了。DOMから残7ページを翻訳・別レビューし、全JAリンク・rawHTML表/コードUI・表示・統合を検証して正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定資料・定本・訳文・レビューのSHAが有効。新規枠1件を維持。全検証完了後に正規公開待ちへ登録。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

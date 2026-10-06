@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-102-existing-lua-whole-scope-validation",
+  "cycle": 102,
+  "startedAt": "2026-10-02T00:31:58.404559+00:00",
+  "endedAt": "2026-10-02T00:39:53.304Z",
+  "result": "complete",
+  "phase": "existing-whole-scope-validation",
+  "tools": [
+    "exec_command",
+    "cua_repl"
+  ],
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false,
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1"
+  },
+  "workspace": "/Users/dolphilia/github/libx",
+  "validationWorkspace": "/Users/dolphilia/.codex/worktrees/official-docs-maintenance/libx",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/full-review-2026-10-02/CONTENT_REVIEW.json",
+      "sha256": "7d12a01a524c049e460fe0058ddaa7232625c0944a81a5373e678e4030189153"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-101/validation-reuse.json",
+      "sha256": "801ac3e67c2f150a017b7bdafa0c09bfd03352c586a8bfb393c5c0a165e7d159"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d4bc26acafc3b9d0e26c00968f0970909b0a2340fb3a1377eb3c2b326c31b888"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/whole-scope-audit.json",
+      "sha256": "bd789e76e10bd026ea374d60b393512ca330039ca23249f6227666146a2dc9c9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/metadata-repairs.json",
+      "sha256": "724864a59bac641e6310257231f6571e577a8c6384315de344b250fa4e4b1cf6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/whole-validation.json",
+      "sha256": "856753af79e3885321cc770c3f05e2e60f85935f5c5e9ff310918199c317db5e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/browser-review.json",
+      "sha256": "421a0519610d2c1e7eb2293e103beae4f81b3996e0e1df2798b7566177725747"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/local-http.json",
+      "sha256": "8b1594b75c76a0a4b0da5429602edbee0e4d00703e7968e017e9a1f606419681"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/protected-observation.json",
+      "sha256": "9d756df4ab580a87c7109af9f5bc9060f515085087a06a9f97393657044b0280"
+    }
+  ],
+  "operationIds": [
+    "lua:v5-5-1:e60abc2b098622f6432b85279f5bbf7dac268b69f44e2582bf7d0fda1873b8cb"
+  ],
+  "newOperationIds": [],
+  "discoveryIds": [],
+  "detailIds": [],
+  "pageProgress": {
+    "scope": 55,
+    "aiContentReviewed": 55,
+    "unreviewed": 0,
+    "addedThisCycle": 0
+  },
+  "checks": [
+    {
+      "name": "全55範囲・進捗・別工程・原文固定・英日現行SHA監査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/whole-scope-audit.json",
+          "sha256": "bd789e76e10bd026ea374d60b393512ca330039ca23249f6227666146a2dc9c9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/metadata-repairs.json",
+          "sha256": "724864a59bac641e6310257231f6571e577a8c6384315de344b250fa4e4b1cf6"
+        }
+      ]
+    },
+    {
+      "name": "最新機械5検査/117pagebuild/12tests-lintと全体表示/200-404",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/whole-validation.json",
+          "sha256": "856753af79e3885321cc770c3f05e2e60f85935f5c5e9ff310918199c317db5e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/browser-review.json",
+          "sha256": "421a0519610d2c1e7eb2293e103beae4f81b3996e0e1df2798b7566177725747"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-102/local-http.json",
+          "sha256": "8b1594b75c76a0a4b0da5429602edbee0e4d00703e7968e017e9a1f606419681"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "必要な既存修正として計画215の例外を適用。公開待ち4件は新規着手停止を維持し、上限を変更しない。",
+    "全scopeの内容レビューと機械・表示を分離して合格確認しcontent-reviewed→verified。新取得bugやC宣言実行未検証は完了範囲へ混ぜない。"
+  ],
+  "currentGoalTurnClassification": {
+    "classification": "progress",
+    "basis": "Lua55ページの全件有効性と全体UIを確認して既存review1案件をverifiedへ。"
+  },
+  "unresolved": [
+    "新bug投稿本文・再現例への権利範囲はdeferred。",
+    "上流addgsub const void対固定header/実装void、次回公式巡回で確認。",
+    "共通JA経路404は既定en表示。文書一覧カテゴリ見出しは識別子表示。",
+    "外部公開未指示、公開待ち4件で新規取り込み停止。"
+  ],
+  "nextAction": "固定55ページの全文・機械・表示検証を保持し、次のサイクルで公開待ち4件による新規停止を維持してeligible3件以内の候補調査を進める。期限に達した既存上流巡回を優先。新bug権利とaddgsub不一致は公式根拠が得られた場合のみ再開。",
+  "resumeCondition": "55scope原文/英日/234画像/機械コード・UI証拠のSHA一致。変更があれば影響ページと関連検証を失効して再レビュー。外部公開は別途明示指示。"
+}

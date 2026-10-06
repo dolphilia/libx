@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-119-pugixml-translation-start",
+  "cycle": 119,
+  "startedAt": "2026-10-02T04:56:00.000Z",
+  "endedAt": "2026-10-02T04:56:32.731Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原文・定本の全文読取",
+    "Codexによる日本語初稿",
+    "原文初期照合",
+    "Astro Markdown/parse5の2ページ保全検査",
+    "安全な専用出力とSHA付き台帳更新"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/SOURCE_LOCK.json",
+      "sha256": "fede5b69dc5d37013417b041d52480375c2d6d1f7cd927d4c96f4e07ee325572"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/01-overview.html",
+      "sha256": "1a46c1cc1201936939c50c53e94fc0ee229ad5da09ba2dddcbfc83fa99ab7d0e"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/01-overview.md",
+      "sha256": "f252b6c1db0148a4b22462da78402aeeeae2f90da08e6f8b74667afd287aac6b"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/04-license/01-license.md",
+      "sha256": "45b2e1d18c556ec37dca36cd39eb6073271dd4bac848883753f0d20585c48d97"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-119/ja/02-manual/01-overview.md",
+      "sha256": "d78fe7d8e91542a5e5b2a0c59f28b36083ae5faa33f5a0e8e4af73f7d2615e0f"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-119/ja/04-license/01-license.md",
+      "sha256": "9f329eb8956ef14da9a13de461ab73dade7c62bf01a764f2afddfdd13bf3b086"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-119/DRAFT_MECHANICAL.json",
+      "sha256": "a5d29d5ee3922aef519783fa6698cb3170c91e1039e128948952d7c9dd759757"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-119/TRANSLATION_PROGRESS.json",
+      "sha256": "0ca0a0b97e9d5295330cd9c3d81174c0df8c96bbb108a43f682645e5f1c19830"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f88ce4fd98cf50d18b4f7ef5f9bb50f5261c70a19a31eb66b042fd2b82023487"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "e58ccf66c4bbe1313445d2fbd8ad47dd5ea1a3f80065ee7eb220265ca36858c2"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "初稿2ページのコード/法的原通知/固定ID/リンク/画像/見出し・表数/保存一致",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-119/DRAFT_MECHANICAL.json",
+          "sha256": "a5d29d5ee3922aef519783fa6698cb3170c91e1039e128948952d7c9dd759757"
+        }
+      ]
+    },
+    {
+      "name": "全12初稿/別工程全文レビュー/全体構造・リンク・表示・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "未完了優先で概要とライセンスから翻訳開始。新規着手枠を増やさない。",
+    "MITの原法文・著作権/製品謝辞を英語のまま完全保持。",
+    "共有rootに未検証pugixml appを作らず、公開待ちへ登録しない。"
+  ],
+  "unresolved": [
+    "残り10ページ未翻訳、別工程全文レビュー未実施。rawHTMLの表・APIコードUIは未確認。"
+  ],
+  "nextAction": "第119で概要章/ライセンスの初稿2/12を保存し原文初期照合済み。残る10ページを専用環境で訳し、全12ページの別工程全文レビューをページ別記録する。初稿2ページの機械検査は部分のみ。rawHTML表/コード表示と全英日リンク/統合は未完了。",
+  "resumeCondition": "固定原資料49、canonical/source-fragments/map/tooling/snapshot SHAが有効。共有rootに未検証pugixml appは置かない。新規枠1件を占有。verifiedと正規公開待ちの登録後に継続的公開承認を適用。",
+  "counts": {
+    "verified": 5,
+    "published": 4,
+    "awaitingRelease": 1,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 1,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

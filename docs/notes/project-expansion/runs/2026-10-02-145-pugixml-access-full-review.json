@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-145-pugixml-access-full-review",
+  "cycle": 145,
+  "startedAt": "2026-10-02T08:07:43.376Z",
+  "endedAt": "2026-10-02T08:07:46.186Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原文と訳文全意味単位の別工程実読",
+    "コード/ID/URLと固定再生成機械検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/05-accessing-document-data.html",
+      "sha256": "6cc53fd9381e499982106f5515aa12356e38caf7728ebe29518b663887af8af1"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/05-accessing-document-data.md",
+      "sha256": "151442e47d0e6946dfaac9a600fe635fe4ede1f356a126ddd46011e1e3b45de1"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-142/ja/02-manual/05-accessing-document-data.md",
+      "sha256": "e0d77b363b69c33c4d3f75fa82dee62c2cf37f3d6d8f90e79977281385690dc5"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "2deb4974b875f40b80af085aa6b59e86048805b51173eaa60ebdecd58309a0ce"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-145/ja/02-manual/05-accessing-document-data.md",
+      "sha256": "575828d1eded158944fc6e2873b16a8527b67b6afe805e679d3ff1db9624358c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-145/FULL_REVIEW.json",
+      "sha256": "82f61f8b15c12892215cd659fe9fd893afd120dddd4ea1b4f912d6f4d8141420"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-145/MECHANICAL.json",
+      "sha256": "953355f55e12d0ae4dc53953614cb8fa3560aa185684cc163c8aa9eea45e84de"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-145/SOURCE_READABLE.json",
+      "sha256": "dcd7745662f95186d58586cb7b32837aa452c37323ed04820ae3980982226fc4"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "8b05e8de3dfd2e7b3904decd86a3358b59d6ba9ba6ed58cc08ce3081dd25c461"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "b5ed87a3e6e87de2fff10fd2f860478ed00dda71246acd6e399bc9f43f3938c4"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "アクセス章1ページ別工程全文内容レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-145/FULL_REVIEW.json",
+          "sha256": "82f61f8b15c12892215cd659fe9fd893afd120dddd4ea1b4f912d6f4d8141420"
+        }
+      ]
+    },
+    {
+      "name": "固定再生成と原pre/コード/ID/URLの保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-145/MECHANICAL.json",
+          "sha256": "953355f55e12d0ae4dc53953614cb8fa3560aa185684cc163c8aa9eea45e84de"
+        }
+      ]
+    },
+    {
+      "name": "全体翻訳/全文レビュー/JA対象リンク/UI/表示/統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "初稿を保持し、別レビュー保存版を保存。基本走査説明の未翻訳と重複配置を修正。",
+    "全文内容レビューとコードの機械同一性を分離。",
+    "未検証アプリを共有公開対象へ統合しない。"
+  ],
+  "unresolved": [
+    "残4ページ未翻訳・未レビュー。",
+    "全JA対象リンク・rawHTML表/コードUI・全体表示/統合は未検証。"
+  ],
+  "nextAction": "新規優先。初稿8/12・別工程全文レビュー8/12。第145でアクセス章全1195行/129原text/96翻訳単位をレビューし、基本走査1段落の未翻訳/重複配置をレビュー保存版で修正。残4ページmodifying/saving/XPath/changelogを翻訳・別レビューし、全JAリンク/UI/表示/統合を検証して正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料・定本・レビュー保存版と証拠SHA有効。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

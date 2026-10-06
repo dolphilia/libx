@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-125-lua-bugs-translation",
+  "cycle": 125,
+  "startedAt": "2026-10-02T05:28:13.607Z",
+  "endedAt": "2026-10-02T05:29:58.113Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codexによる全文日本語初稿",
+    "原文との初期照合",
+    "licenseSource新取得版の追加",
+    "pnpm check:content/旧55+新1定本再生成/全56英日検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/canonical/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+      "sha256": "78519f85f3f7e6da3dea95fa38b4fc017fb9b9cfa701aec68a1146876582f4a9"
+    },
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/source/known-issues-5.5.1.html",
+      "sha256": "46d471c4c6c3cb700bef45de6da435497df88b79c03ec522d08f19e5bbc135fa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/translation-draft/2026-10-02-125/ja/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+      "sha256": "a72bf19218003401695e257e6e53a05d43ddca39cd0fe732b77adf2b72d541ff"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-125/INITIAL_COMPARISON.json",
+      "sha256": "bfcffc1a6875e18c9f19d66f245af32d741b627c80e6a367629d957c6aecf33c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-125/all56-content-check.txt",
+      "sha256": "8959ca166014a5a330746b1b0f1ae2819b40896c3a7fa5725e9f076941e454d6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-125/config-format.txt",
+      "sha256": "096e1bfa85a47e31f84392f1a94dae49bfb15f07d41632a5103f828fd22ea225"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-125/configuration/apps/lua/src/config/project.config.jsonc",
+      "sha256": "4b533b47735ae6cc4d6c514f4aa783b793aa6009ec52524ffef84d2ce6e2f587"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "91f6521384cff2aba9f3f855d5ff0bbfa97dd151e423584d45c8ce14ba8cfa43"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "873487811b2c5b183655ce7f9dbe709ba20d70e602f394b6c1d1b04342b6b8fa"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "新1ページ初期照合・全56定本/英日構造/コード/URL/通知",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-125/INITIAL_COMPARISON.json",
+          "sha256": "bfcffc1a6875e18c9f19d66f245af32d741b627c80e6a367629d957c6aecf33c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-125/all56-content-check.txt",
+          "sha256": "8959ca166014a5a330746b1b0f1ae2819b40896c3a7fa5725e9f076941e454d6"
+        }
+      ]
+    },
+    {
+      "name": "別工程全内容レビュー/ビルド/表示/統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "再現例のコメントも含め英語のまま原コード完全保持。MIT原法文も翻訳しない。",
+    "旧0件取得版を無言置換せず、新取得日は別source IDとライセンス注釈付き表示。"
+  ],
+  "unresolved": [
+    "別工程全文レビューと環境検証未完了。"
+  ],
+  "nextAction": "第125で新取得版1日本語初稿・初期原文照合・英日全56構造/コード/URL/アンカー/出典検査を保存。別工程の全1ページ内容レビューを行い、必要修正を初稿と別に保存。新出典設定を含む専用ビルド/表示/整合性/共有統合は未完了。",
+  "resumeCondition": "第120判断と固定元SHAが有効。投稿者表示を保持し、注釈とMIT原通知を英日表示。明示的な別条件を発見した場合は再評価する。既存取得版・Awesome・ユーザー変更は保持。",
+  "counts": {
+    "verified": 5,
+    "published": 5,
+    "awaitingRelease": 0,
+    "active": 2,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

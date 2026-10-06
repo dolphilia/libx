@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-131-pugixml-api-full-review",
+  "cycle": 131,
+  "startedAt": "2026-10-02T07:06:32.810Z",
+  "endedAt": "2026-10-02T07:07:00.778Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原文の全意味単位実読",
+    "原fragment/定本/訳文の全宣言/全href/原anchor/全prose分類",
+    "専用再生成一致/EN全参照先検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/03-reference/02-api-reference.html",
+      "sha256": "fbb859b66aa4271caf38ecf769ce6e9ac9c03e1eec3b4e4a366cb6ddf11e7007"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/03-reference/02-api-reference.md",
+      "sha256": "b0f7b32f320b9ce3c360296ef8f4da863934b4293a5aa90ccebfefc22c58d183"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-123/ja/03-reference/02-api-reference.md",
+      "sha256": "5e3bb0ad24a2b80f47f0987e4f6a083a093d4c8f286b1c1a1b965b991fa37b84"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-131/ja/03-reference/02-api-reference.md",
+      "sha256": "5e3bb0ad24a2b80f47f0987e4f6a083a093d4c8f286b1c1a1b965b991fa37b84"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-131/API_FULL_REVIEW.json",
+      "sha256": "039f07735fe1c57ab8577e25bcf3de2204090486e2c2def6fadd8e9e0fcc248f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-131/SOURCE_READABLE.json",
+      "sha256": "9d1dad3d1105b011a9f755d461670410ad0470f79da05c44a6bb4544d1ba2b14"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ccc041d4b5d9f8c81c1ca20af9bad0094b817ea3dd17909560e69008266cf822"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "abd2946c3634874142b15f835129c9bb31eb4e22e569e235a3c15608c8604edf"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "API1ページの別工程全文内容レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-131/API_FULL_REVIEW.json",
+          "sha256": "039f07735fe1c57ab8577e25bcf3de2204090486e2c2def6fadd8e9e0fcc248f"
+        }
+      ]
+    },
+    {
+      "name": "全12ページ翻訳/全文レビュー/全JA参照先/UI/統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "原初稿を変更せずSHA不変の別レビュー保存版を作成。全API宣言を読了し、機械同一性の証拠とは区別。",
+    "原文の省略されたreference declarationはコンパイル対象と見なさず補筆しない。",
+    "Lua公開CI待機中に独立した未完了レビューを進める。"
+  ],
+  "unresolved": [
+    "残9ページ未翻訳/未レビュー。",
+    "rawHTML表/コードUIと全体表示未検証。"
+  ],
+  "nextAction": "第131でAPIリファレンス別工程全文レビューを完了（6宣言全491行/416リンク、source540/canonicalJA616）。初稿3/12、別工程全文レビュー3/12。残9ページをquickstartから順に翻訳/別レビューし、rawHTML表/コードUI・全JA対象リンク・全体表示/統合を検証する。",
+  "resumeCondition": "固定原資料49、canonical/source-fragments/map/tooling/snapshot SHAが有効。共有rootに未検証pugixml appは置かない。新規枠1件を占有。verifiedと正規公開待ちの登録後に継続的公開承認を適用。",
+  "counts": {
+    "verified": 6,
+    "published": 5,
+    "awaitingRelease": 1,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

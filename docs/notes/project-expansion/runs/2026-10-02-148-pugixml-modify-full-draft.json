@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-148-pugixml-modify-full-draft",
+  "cycle": 148,
+  "startedAt": "2026-10-02T08:12:18.447Z",
+  "endedAt": "2026-10-02T08:14:01.749Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原text25–99と定本266–919行の実読・翻訳",
+    "固定再生成・全コード/ID/URL保全検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/06-modifying-document-data.md",
+      "sha256": "17caa40b3c553e771c6fdce5b906cbc334c41b28793b2531e0f9b29524307922"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/06-modifying-document-data.html",
+      "sha256": "d9643488d4a04160a3aa88d57ce097470dba7489091964814f7e021f7ddbe930"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4a43ac30f0e46ce681632c466c1da707d86b7d3597f27830ce4b3367a9e18da5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-146/ja/02-manual/06-modifying-document-data.md",
+      "sha256": "be21a815bf5ad8f569c5afd2a7ff73a410f9d8372d01bae01ef6b5dc8f46d739"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-148/TRANSLATION_MAP.json",
+      "sha256": "8811bbeb15fe9609eb7cbb07b4d467210da99081eaff28b265f13f98bb8fc078"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-148/MECHANICAL.json",
+      "sha256": "09c60407a4736ded4463d42dec53e644488eb5f5e3edc4564ef0b9d545568d59"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-148/PREPARATION.json",
+      "sha256": "27db9003e6b798571753b76d2f0bf8dc900ba0b0c3607a0913fe4077b8920ab9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-148/BEFORE_MODIFY_PARTIAL.md",
+      "sha256": "d0b09512c6414beccbe694c265e654bf88b20143a3acf5fcf6d01144543969f5"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "1298e8ce38b5b0ae916bda6a25995bc5db73b1f2265553fe7aff6b9e6f7df419"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "a9ad1db8c29f8b0535ed98b691182bad83b14f29121eabdba71f55225347f022"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全文初稿919行と全コード/ID/URL保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-148/MECHANICAL.json",
+          "sha256": "09c60407a4736ded4463d42dec53e644488eb5f5e3edc4564ef0b9d545568d59"
+        }
+      ]
+    },
+    {
+      "name": "変更章別工程全文内容レビュー",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全JA対象リンク/UI/表示・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "先行1–265行を保持し、ノード/属性の追加と削除、text変更、複製、移動、フラグメントの60単位を追加。",
+    "ensureの条件、全追加失敗条件、削除後ハンドル/末尾イテレーター無効化、コピーの深さと循環防止、移動の同一文書/自己/内部禁止を保持。",
+    "append_bufferのnative encoding性能条件と文書破棄までコピーが保持される制限を保持。",
+    "全文初稿完成と内容レビューを分け、未確認の全文レビュー/UI/表示を完了にしない。"
+  ],
+  "unresolved": [
+    "変更章別工程全文内容レビュー未実施。",
+    "残3ページ未翻訳。全体表示/統合/全JAリンク未検証。"
+  ],
+  "nextAction": "新規優先。全文初稿9/12・別工程全文レビュー8/12。変更章の第146保存版を第148で全919行/81翻訳単位まで完成。原資料/定本/訳文を別工程で全文レビューし、追加の型/失敗条件、削除後ハンドル、text、コピー/移動、append_buffer寿命の制約を照合する。その後saving/XPath/changelogの残3ページと全JAリンク/UI/表示/統合を検証し正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料/定本/全文初稿のSHA有効。別工程全文レビューから続行。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

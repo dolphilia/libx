@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-113-official-candidate-discovery",
+  "cycle": 113,
+  "startedAt": "2026-10-02T03:11:25.066Z",
+  "endedAt": "2026-10-02T03:17:08.565Z",
+  "result": "partial",
+  "phase": "3",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "public source fetch",
+    "web",
+    "ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "cd81e28a073f47f9d0391e0f262f2722d12161e603dc775d6ba669a1e1bc19d9"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "34d1ae7dd27b8d0c5ce01251c0eb0ed3c2ee4b952de9c6ae16a8a7949d0388d7"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "e5e8a5d145cd5d9bde201408d7dc7e4eee3c294d9b67433990ecf5fdf355cf3b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/ACQUISITION.json",
+      "sha256": "664808256b32bf12b6920a6b68e559be10350ec58c2987aa419a6843647ebd34"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/DISCOVERY.json",
+      "sha256": "e1950507c65559294160aca17d5a6fb7e97eacba93581ac79c6f63facac6f93c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/awesome-cpp-discovery.md",
+      "sha256": "29e595113e125dcfce1ca130be78dc06125f287e8f2195237f84d1667da8119a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/cjson-port.json",
+      "sha256": "b4d1c9cb130ba482f45fde284549161fd257344b3f54c26bcb09401dda095ff9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/fmt-port.json",
+      "sha256": "1a82f63057d79eb46c1c743079baed6aa36015acc54798cf6a86ba62bf3276db"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/pugixml-port.json",
+      "sha256": "f5a499c9721fdf5c23b2dae03f830d33bfcc230fd0403b03b85cad6a7d69fa56"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/rapidjson-port.json",
+      "sha256": "9d217e7f19c78ffb509e17ba5c1a175fff4602658d3fe6b23a06049ff8219ba5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/spdlog-port.json",
+      "sha256": "ec878fe44c677902d48354428d09fc6fd994c33a30e3752cd2f53b6adfaf0e15"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/uthash-port.json",
+      "sha256": "9e9df6452d382f7ec4313336d38ca90a3d2bbcb5aa391b1d0b2b382db9236758"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/wren-official-home.html",
+      "sha256": "0632857482f3a4f4321fdb08f3b08ffd415174a721a171be7dd8528091aa6251"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/xxhash-port.json",
+      "sha256": "c4b0ebb0212773e13b1809f4e0bfec2eee2173eb99dae763f9b2dd9cb94d2ac9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/zlib-port.json",
+      "sha256": "e3101aa948dfaeb1b3045d4b8e229f65cae6e277f7a86cf77cea2323e9bb8c79"
+    }
+  ],
+  "discoveryIds": [
+    "fmt",
+    "spdlog",
+    "rapidjson",
+    "cjson",
+    "pugixml",
+    "uthash",
+    "xxhash",
+    "zlib",
+    "wren",
+    "sds"
+  ],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "候補最大10件・3経路/3分野以上・既存候補重複なし",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/DISCOVERY.json",
+          "sha256": "e1950507c65559294160aca17d5a6fb7e97eacba93581ac79c6f63facac6f93c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-113/ACQUISITION.json",
+          "sha256": "664808256b32bf12b6920a6b68e559be10350ec58c2987aa419a6843647ebd34"
+        }
+      ]
+    },
+    {
+      "name": "対象版/全文境界/権利/日本語/試験・採点",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "第112でTOML初回上流巡回no-change。保留5件とLua追加bugsは再開に必要な新証拠なし、指定再調査日より前なので同じ調査を反復せず新しい候補を補充。",
+    "package-registry/awesome/既存Lua関連の3経路、JSON/XML/書式/ログ/コンテナー/圧縮/ハッシュ/スクリプトの複数分野から10件を重複排除。",
+    "登録情報のlicenseと一覧掲載を採用の権利証拠にしない。全必須条件unknown、全得点null、日本語未調査。採用0件。",
+    "TOML公開待ち1/2、新規作業枠0/1で次調査を継続可能。調査順はpugixml→uthash→fmt、最大3件で固定入力/ライセンス/範囲と日本語を確認してから試験する。"
+  ],
+  "unresolved": [
+    "新候補10件は発見段階。対象版と全文範囲、公式適用許諾、試験・採点は未確認。",
+    "TOML公開は未承認。初期3件/異形式/実上流更新の実証は未完了。"
+  ],
+  "nextAction": "第114でpugixml/uthash/fmtの上位最大3件を詳細調査。公式固定版の全文/通知・文量・日本語版対応を調べ、unknownが残れば理由/再開条件を保存する。条件を満たす候補だけ試験変換→根拠付き採点→別パス照合へ進める。",
+  "resumeCondition": "POLICY/AGENTS・最新台帳と実SHAを確認。上限内で未完了保守を優先。第113は発見根拠だけで権利pass/eligibleにしない。",
+  "counts": {
+    "verified": 5,
+    "published": 4,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 1,
+    "candidateHolds": 5,
+    "eligible": 0
+  },
+  "workspace": "/Users/dolphilia/github/libx"
+}

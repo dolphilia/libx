@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-107-toml-canonical",
+  "cycle": 107,
+  "startedAt": "2026-10-02T01:58:17.317Z",
+  "endedAt": "2026-10-02T02:20:16.681Z",
+  "result": "partial",
+  "phase": "2",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "exec_command",
+    "apply_patch",
+    "pnpm install --frozen-lockfile",
+    "Astro build"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/SOURCE_LOCK.json",
+      "sha256": "d0311620b891e5eeac0b392bc14f870bddae9a199462ad601c65cbb98f32b18e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "5710d31a3230104296f34cc571d44d88869748ae7d1570dfd3471170b8846f39"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/CONTENT_MAP.json",
+      "sha256": "f777657dc9611ed4e917bc1ecd036810053ec79416d51f5f4046d9a8f523ebdd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/canonical-preparation.json",
+      "sha256": "734b8a4126afb84e32c9282b090d8a1182498ae0965dba7443d000c8da42e748"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/canonical-mechanical.json",
+      "sha256": "e2f8e62ab240b78c2f1d8bb0617d562e813438f1505bbeec20195f2395220737"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "toml"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全文AST・70コード・ABNF・両MITと二度の再生成一致",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/canonical-mechanical.json",
+          "sha256": "e2f8e62ab240b78c2f1d8bb0617d562e813438f1505bbeec20195f2395220737"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/regeneration-check.json",
+          "sha256": "309422955059aba0d84bd07bc0d4a5999b1f5729f39fdee65198a4458f3c8717"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/importer-tests.txt",
+          "sha256": "0b197c3498f06e6a421b7e3e8d8c31a253b49a95068bef59771c6ccf2821fd9e"
+        }
+      ]
+    },
+    {
+      "name": "英語3ページのAstroビルド・HTMLコード本文・97内部リンク・22互換アンカー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/english-build.txt",
+          "sha256": "79106281bf7f8d209dfeab6af6bf6cf9d5652407498387b796672da66b7e0cfe"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/rendered-english.json",
+          "sha256": "f40256c0c7947ec346fc6816af7ff1eced5922610c0f23fac59e798027bf2dd7"
+        }
+      ]
+    },
+    {
+      "name": "既存依存グラフ不変・TOML importerだけ追加・frozen install",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/dependency-check.json",
+          "sha256": "14d1a2ebf05c01a73e1c8a96d39ad7b135ca2bac674e28feda8b2af9f02a20c5"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/install-frozen.txt",
+          "sha256": "d7bf13c15d4d93ea96ff1f9015f0ef3849edc4459fc7714ff12318c4dd3cb07d"
+        }
+      ]
+    },
+    {
+      "name": "英日全件のcheck:content",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-107/content-check-untranslated.txt",
+          "sha256": "77c8e29d516eb1be2d6fb8c6e1a43e8e2569143a45cef7cbc6c22d052be5b185"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "TOMLの定本3ページをcanonical-readyへ。全文保全と英語レンダリングの機械検査を保存。AI全文内容レビューとは分離。",
+    "日本語見出しでも目次のリンクを保持するため原文に22固定互換アンカーを追加。原文native IDと衝突せず、許可差分の逆変換で全文ASTを比較。",
+    "共有apps/tomlは存在せず、未完成アプリを配信対象へ統合しない。",
+    "2026-10-02サイクル109で結果表記を訂正。案件が未完了のため計画263行に従いpartialとする。個別工程の合格はchecksで維持。"
+  ],
+  "unresolved": [
+    "日本語訳3ページと別工程の全文内容レビューは未実施。英日全件の構造・リンク・ビルド・表示検証も未完了。",
+    "初期3件/異形式/実上流更新実証は未完了。",
+    "TOML公開と定期実行は未承認。"
+  ],
+  "nextAction": "定本3ページの全文AST・全70コード・ABNF・両MIT・22互換アンカー・再生成一致・英語HTML97リンクを機械検査済み。仕様全文を節ごとに日本語へ訳し、1ページ全体の原文照合を完了してからABNF/許諾へ進む。別工程の全文レビューと英日検証は未完了。",
+  "resumeCondition": "SOURCE_LOCK・定本・CONTENT_MAP・台帳が有効。専用workspace消失時は37f77d3から隔離cloneを再作成し、staging/canonical-ready/appと保存した専用lockを復元する。新規TOML公開は未承認。",
+  "counts": {
+    "verified": 4,
+    "published": 4,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 1,
+    "candidateHolds": 5,
+    "eligible": 0
+  },
+  "workspace": "/private/tmp/libx-official-toml-20261002"
+}

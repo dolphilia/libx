@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-133-pugixml-quickstart-full-review",
+  "cycle": 133,
+  "startedAt": "2026-10-02T07:38:33.716Z",
+  "endedAt": "2026-10-02T07:40:31.971Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex全82単位の翻訳",
+    "固定原文全節・全コード・MIT通知・脚注と訳文の別工程実読",
+    "固定入力再生成・コード/識別子/リンク/アンカー検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/01-overview/01-quick-start.html",
+      "sha256": "2585443c03da1e77e02fc491bb3322e9a132396dc37d20b58eb9bc110f34f3ab"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/01-overview/01-quick-start.md",
+      "sha256": "980de18cbdf3873fbb4f0efe172bd07dff4c344477ebfe9859e78bc77334044b"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7820ef76a13999d7d78f844a21aa5568eb25517c5f56662ee090e552d51d0a9c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-133/ja/01-overview/01-quick-start.md",
+      "sha256": "a0d55f71291d9520918113cf447c7cbc35630dbfcefb4fe86e387c18ea320019"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-133/ja/01-overview/01-quick-start.md",
+      "sha256": "a0d55f71291d9520918113cf447c7cbc35630dbfcefb4fe86e387c18ea320019"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-133/FULL_REVIEW.json",
+      "sha256": "41965fec60625157053d03adee58ab252482bb011227acd0e8b92625f4a9e314"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-133/MECHANICAL.json",
+      "sha256": "0da27db16f7abd14deb573d7556ccc1c353ecb41dd022d5012834167961dd3be"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-133/SOURCE_READABLE.json",
+      "sha256": "84fb143b77ae250604b53b6d1d642e99a7381a835c73c75209002317d25cf28e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-133/TRANSLATION_MAP.json",
+      "sha256": "351e0ba945119a500414006e5aa82e82f9e36b8eb82fb330b620a6f1f7fc46ef"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "b003bd50d509a224ce0a370479a97e60910ab89f3dc535be8135620a64170bbe"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "e3186be5da2441242384f01f8cb8be5a8e23e3f2b1e9b88bac3cbf2fb26272b8"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "クイックスタート1ページ別工程全文内容レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-133/FULL_REVIEW.json",
+          "sha256": "41965fec60625157053d03adee58ab252482bb011227acd0e8b92625f4a9e314"
+        }
+      ]
+    },
+    {
+      "name": "固定入力再生成・コード19/通知2/リンク46/アンカー13/未分類散文0",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-133/MECHANICAL.json",
+          "sha256": "0da27db16f7abd14deb573d7556ccc1c353ecb41dd022d5012834167961dd3be"
+        }
+      ]
+    },
+    {
+      "name": "全体翻訳/全文レビュー/JA対象リンク/UI/表示/統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "日本語の語順変更は行ごとの全識別子と重複数を検査し、意味対応を内容レビューで確認。全体順序の完全一致のみを免除。",
+    "脚注水平線は構造として分類。英語のコードコメント・MIT通知・謝辞は原文を保持。",
+    "共有rootへ未検証pugixmlを置かず、専用作業場所へのみ訳文を配置。"
+  ],
+  "unresolved": [
+    "残8ページ未翻訳・未レビュー。",
+    "rawHTML表/コードUI、全JA対象リンクと全体表示・統合は未検証。"
+  ],
+  "nextAction": "新規優先。クイックスタート全976行の翻訳・別工程全文レビューを第133で完了。初稿4/12・全文レビュー4/12。installationから残8ページの翻訳・別レビューを進め、全JA対象リンク・rawHTML表/コードUI・表示・統合を検証して正規公開待ちへ登録後に公開する。",
+  "resumeCondition": "固定資料49と定本・訳文・レビューSHA有効。新規枠1件を維持。完全なレビューmanifestと全検査の合格後に正規公開待ち登録・公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

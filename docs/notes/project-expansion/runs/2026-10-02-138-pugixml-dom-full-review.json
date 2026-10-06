@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-138-pugixml-dom-full-review",
+  "cycle": 138,
+  "startedAt": "2026-10-02T07:51:22.663Z",
+  "endedAt": "2026-10-02T07:52:31.950Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原文と訳文全意味単位の別工程実読",
+    "DOM図既視認証拠・SHA照合",
+    "コード/ID/URLと固定再生成機械検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/03-document-object-model.html",
+      "sha256": "9e398f80f108e153dc64811b59761983fd03f6a6ece46a9b3b849b130ae00ffe"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/03-document-object-model.md",
+      "sha256": "0c83713811cee1d8d9e9c415d3a107ec78da7224c24712da0458ff5db736a080"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-136/ja/02-manual/03-document-object-model.md",
+      "sha256": "f57ef7e79c2b38ba8556d0bf9eb06d8305f317472e5ee2c9041f1d223c90b867"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-136/FIGURE_OBSERVATION.json",
+      "sha256": "f1115f34672b3f9dc511fc3919768d61c4a9e0d0179f5af974efe42a670343a8"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "104a95c2534b564354d3d9b6d91b53e57b8aed27327e0fb0c990f1d6ba234fa1"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-138/ja/02-manual/03-document-object-model.md",
+      "sha256": "e5aa294af65316afc3e7a66b721807ee4b40b70a3734b610458d128caadf15d5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-138/FULL_REVIEW.json",
+      "sha256": "85cf326f7e8315715f240399e79e586309ba84c8f44bfe38a46e48beb9f42e06"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-138/MECHANICAL.json",
+      "sha256": "1e2d99319c68a4988be01b8fd3a61274c237dff6fe7b7ace7325fc12acc3eef3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-138/SOURCE_READABLE.json",
+      "sha256": "eaf773655c2d3e309feffc72c3a32dbdd0ad1823d73aa5355c0a5232cf887128"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e684178c71b3796deca4161d15538a0984408bec49aff2846e6bb373df0225a1"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "2bf75899ef24c1e5cc0dea4097a0183c582fc3d40c052a07987cc2cf24437034"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "DOM1ページ別工程全文内容レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-138/FULL_REVIEW.json",
+          "sha256": "85cf326f7e8315715f240399e79e586309ba84c8f44bfe38a46e48beb9f42e06"
+        }
+      ]
+    },
+    {
+      "name": "固定再生成と原pre17/コード/ID/URLの保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-138/MECHANICAL.json",
+          "sha256": "1e2d99319c68a4988be01b8fd3a61274c237dff6fe7b7ace7325fc12acc3eef3"
+        }
+      ]
+    },
+    {
+      "name": "全体翻訳/全文レビュー/JA対象リンク/UI/表示/統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "初稿を保持し、別レビュー保存版に意味の明確化2件を反映。",
+    "全文内容レビューとコードの機械同一性を分離。",
+    "未検証アプリを共有公開対象へ統合しない。"
+  ],
+  "unresolved": [
+    "残6ページ未翻訳・未レビュー。",
+    "全JA対象リンク・rawHTML表/コードUI・全体表示/統合は未検証。"
+  ],
+  "nextAction": "新規優先。初稿6/12・別工程全文レビュー6/12。第138でDOM全774行/全106原text/図のレビューを完了し、意味を明確化する2表現をレビュー保存版へ修正。loadingから残6ページを翻訳・別レビューし、全JAリンク/UI/表示/統合を検証して正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料・定本・レビュー保存版と証拠SHA有効。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

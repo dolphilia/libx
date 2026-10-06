@@ -1,0 +1,645 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-116-pugixml-canonicalization",
+  "cycle": 116,
+  "startedAt": "2026-10-02T04:07:35.307Z",
+  "endedAt": "2026-10-02T04:40:40.593Z",
+  "result": "partial",
+  "phase": "3",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Pandoc3.8.3",
+    "parse5",
+    "Astro Markdown",
+    "専用pnpm固定依存",
+    "安全2対象一括出力",
+    "node:test",
+    "ESLint",
+    "専用selective build",
+    "ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/SOURCE_LOCK.json",
+      "sha256": "fede5b69dc5d37013417b041d52480375c2d6d1f7cd927d4c96f4e07ee325572"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "5fe322fed666e4821e086f4c5e69f97b315059dc9d4e903e4a2d24cb3e8cab3e"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/01-overview/01-quick-start.md",
+      "sha256": "980de18cbdf3873fbb4f0efe172bd07dff4c344477ebfe9859e78bc77334044b"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/01-overview.md",
+      "sha256": "f252b6c1db0148a4b22462da78402aeeeae2f90da08e6f8b74667afd287aac6b"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/02-installation.md",
+      "sha256": "24c58dc41d166a4871d3ada7558c167ffa7ded3f586f6dc7598753104da7b091"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/03-document-object-model.md",
+      "sha256": "0c83713811cee1d8d9e9c415d3a107ec78da7224c24712da0458ff5db736a080"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/04-loading-documents.md",
+      "sha256": "0b4e5cd1dbae5bb8ff3c9f41e6c8ba5a0fa621301519371503e3ec261df10c66"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/05-accessing-document-data.md",
+      "sha256": "151442e47d0e6946dfaac9a600fe635fe4ede1f356a126ddd46011e1e3b45de1"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/06-modifying-document-data.md",
+      "sha256": "17caa40b3c553e771c6fdce5b906cbc334c41b28793b2531e0f9b29524307922"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/07-saving-documents.md",
+      "sha256": "8e367d88e598b68bbaa990ac2604d80a1d24eff378d2216e033858b19c912947"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/08-xpath.md",
+      "sha256": "fb4c3469d60e250da1c41853a85a16f7cfb30b0a46268b652bb0acec725a24a4"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/03-reference/01-changelog.md",
+      "sha256": "27e4084e1ba16fbc964e23d5f73a6e7d17104e18e119454793c77cf1e2196049"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/03-reference/02-api-reference.md",
+      "sha256": "b0f7b32f320b9ce3c360296ef8f4da863934b4293a5aa90ccebfefc22c58d183"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/04-license/01-license.md",
+      "sha256": "45b2e1d18c556ec37dca36cd39eb6073271dd4bac848883753f0d20585c48d97"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/01-overview/01-quick-start.html",
+      "sha256": "2585443c03da1e77e02fc491bb3322e9a132396dc37d20b58eb9bc110f34f3ab"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/01-overview.html",
+      "sha256": "1a46c1cc1201936939c50c53e94fc0ee229ad5da09ba2dddcbfc83fa99ab7d0e"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/02-installation.html",
+      "sha256": "426e9af38208b30e68f854881a6d2f82a6f40e187aad4d1da744085fa20db03f"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/03-document-object-model.html",
+      "sha256": "9e398f80f108e153dc64811b59761983fd03f6a6ece46a9b3b849b130ae00ffe"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/04-loading-documents.html",
+      "sha256": "a45f67d968870e00077f120ef4fbc24c5e2bc6ee8cd064cb0881e4efb3f7b291"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/05-accessing-document-data.html",
+      "sha256": "6cc53fd9381e499982106f5515aa12356e38caf7728ebe29518b663887af8af1"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/06-modifying-document-data.html",
+      "sha256": "d9643488d4a04160a3aa88d57ce097470dba7489091964814f7e021f7ddbe930"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/07-saving-documents.html",
+      "sha256": "94c491b64226a7c5663570a66cc6c13a86656f83fcd0adb6eaacd34c24f61f7a"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/08-xpath.html",
+      "sha256": "1ea5e3c49b7df53038cc8e7d63c9335718e174286446ec10da0013e34d3ad7e9"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/03-reference/01-changelog.html",
+      "sha256": "1c933c95bba45ed55f36ea795b4220247e6d208b8f538ecdd74469fdf9ba11c2"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/03-reference/02-api-reference.html",
+      "sha256": "fbb859b66aa4271caf38ecf769ce6e9ac9c03e1eec3b4e4a366cb6ddf11e7007"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/04-license/01-license.txt",
+      "sha256": "90974fbb120e966b452654eaae3ba6ee55f3647db3b28918a7649733ee99da97"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/.gitignore",
+      "sha256": "12dc4676e70590a75488b85502453e80ceb15c200ea5eee70d69458719c7a44c"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/README.md",
+      "sha256": "510a011b6f7cd00b4be1d3db4ef585a4a2888e8203f4279e49dfc812e2edbe4f"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/astro.config.mjs",
+      "sha256": "d9be17e32d8c5d8835a66fcfe0107da9a1698f14015bed08ec9df6e9910a8689"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/check-content.mjs",
+      "sha256": "d486907b16cd55e792111f437ddc0489d853d4699ecfb8c18381ec68664e646d"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/package.json",
+      "sha256": "cb33e517556f2f140d1527c7c12a7eda2a0711d8b2f55f7f9b4b209418095446"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/LICENSE.txt",
+      "sha256": "90974fbb120e966b452654eaae3ba6ee55f3647db3b28918a7649733ee99da97"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/images/dom_tree.png",
+      "sha256": "aa85d5cc7620f2b7a67a8e94177ef5737dd00b17710e60c7e3569ae8e590c267"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/images/vs2005_link1.png",
+      "sha256": "b4742a6abf4b51c3bfe45c6d17e31d6c2a0f8faef70467f0421ae511fc49e460"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/images/vs2005_link2.png",
+      "sha256": "0d7fce10f11c38f02230bd0d1ea4b3a80e81865d337f39fe249a85265be885bf"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/images/vs2005_pch1.png",
+      "sha256": "46601a187847970bd3f3266afe6bc31d19b32ff97d4be7a2e67b157e9eac0c8e"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/images/vs2005_pch2.png",
+      "sha256": "3ccfbee28e099221d9f67f455a16922f17fabe6b89c62f727e7c1a85addfd1e9"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/images/vs2005_pch3.png",
+      "sha256": "e32d24f2e126a271d8df6c8361d915a048e02add6d55a0764d91156207df2b01"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/images/vs2005_pch4.png",
+      "sha256": "44c5c86b220528a0688805ce7e3d6997bd2ba327b1688e7b87c606a744a91d99"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/images/vs2010_link1.png",
+      "sha256": "9e873bcc8fca5a4be7a3ea9864d025b30e3ed59a044354a4b552594a944a52cf"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/images/vs2010_link2.png",
+      "sha256": "419719e598aeb544b089b480776d22de0a1da75da3c5c6a2366176256e6707d8"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/character.xml",
+      "sha256": "f1570df7ad6ee17dde2d8c5705bad3d542724b8e7f5882981ee3bcc96388353e"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/custom_memory_management.cpp",
+      "sha256": "e1e53379f6cbc5b371976052b6545a268547dec44ce294434b8f8cee9f2c8fae"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/include.cpp",
+      "sha256": "909f143a38f9f75bad7e941d69d6d523a66fd7606528477c550c89a33049d63a"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/load_error_handling.cpp",
+      "sha256": "27882e05339eb3c340390bad1072a96eb78afb9d178870377721a03df5ba5b12"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/load_file.cpp",
+      "sha256": "77bdf1c8515f681e815eddbe53c8c2b1e99f76571ced5ebff6f4b2dc0f0ffdb4"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/load_memory.cpp",
+      "sha256": "941205121204eeb74e487307b139518bfd3de26cb9b9724222114fe191c2bdd6"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/load_options.cpp",
+      "sha256": "bc8e51ef50ab8e692efffa7c46954c4b1194040c54fb12355ac4a9f3647f4c91"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/load_stream.cpp",
+      "sha256": "688ce1f2b872e870fa737535bdd7077b3744572d41a90444d63e1bb677f9a81d"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/modify_add.cpp",
+      "sha256": "caf69cc487d1efa28b7e47bb874018ca819eb67611987447832a0a412b4d61fa"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/modify_base.cpp",
+      "sha256": "5ddb5f183b0f422aa5cdf7d87032959cc598e9fedbb5c2460a0f36082a64a49e"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/modify_remove.cpp",
+      "sha256": "65443746a728ad552f76c4fa9277ae3b0f351cdc61d422d973bce8635dc750b3"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/save_custom_writer.cpp",
+      "sha256": "ba26c38b75fb9f5fac6cab58536a8975a925bade14b694cba3ba620dd34a7fc1"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/save_declaration.cpp",
+      "sha256": "8423633a6a5f2db628d4fd572c16a0f07dc2ba3c450bab479308c64fc2393f39"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/save_file.cpp",
+      "sha256": "f7416233fb3fcb0cdebc3ed57ae99a0b387ca90e882e744c17eb8dc486952255"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/save_options.cpp",
+      "sha256": "053c6930ae5adc175acaed861519e7f0bc6423bd64ef9d5c3db3ddd0c437789b"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/save_stream.cpp",
+      "sha256": "6fa6b653fd07ddb4e55530606491cb1d7fbda2c0ed2237fb56cc67f9fbd4906d"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/save_subtree.cpp",
+      "sha256": "6b62640ade5f4edfb2423073a1de5dcc9d30d8157ccfbaa26fc14c2f3dceb0a3"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/text.cpp",
+      "sha256": "1a9407fc0bc8857f98054069b320ad5e1d9054243d7242b817d7a7842051c05c"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/transitions.xml",
+      "sha256": "9b2de7288f6eb22fc3143414905183fd6d17f3d4e6e474416989bd8efc099a39"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/traverse_base.cpp",
+      "sha256": "08e90aa80eeac2c46e3fea60377dd5dafa5c08e5a3fe64127f6a23b8a1aa8f47"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/traverse_iter.cpp",
+      "sha256": "cacf887a185a131c3fcc374711df75d4953d2ee2c27e1c53e67bda87ceee1964"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/traverse_predicate.cpp",
+      "sha256": "dd2419e201f044660240d72baf3c09d6fa4f3a38c8e847081940db4ddacbad7d"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/traverse_rangefor.cpp",
+      "sha256": "df1029049d1af115da9944949609b2c5633c35e5a212d115b812b3d3166f337d"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/traverse_walker.cpp",
+      "sha256": "253c739c8e3f747421b5449a5b8aa4fb0c8e0215e69d9c2ba596ae814f23cd14"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/tree.xml",
+      "sha256": "062b93a4777b1b40d4c1ca06b6e4cd4c5662f94cedeaecd433e2242e0d584b55"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/weekly-shift_jis.xml",
+      "sha256": "287f5c7ea50a0639841e58a92d85630bf795599b8bc872b24f1637a82ee2bded"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/weekly-utf-16.xml",
+      "sha256": "e9436035d5ec403c16d3525234276bdc561d4a933e64bc2d4cb8d8c93da34a45"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/weekly-utf-8.xml",
+      "sha256": "20f65f0e7b978009cab379242e73a7d48ab6a146fb57da4819d104de12787082"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/xgconsole.xml",
+      "sha256": "3301ae86ca4f4b1323ff193d3357523109831ed86e610b4f44cc5fabae98b556"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/xpath_error.cpp",
+      "sha256": "49fdccb59ba86ac284f796e2cfe3b5b776e774d432df0719cb0a15f581e83b18"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/xpath_query.cpp",
+      "sha256": "542b3d64a7a8e7dba653a08dbbefd751f8fe09054b6ca47b3aadc2a2b02c7dc1"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/xpath_select.cpp",
+      "sha256": "70070c8593dcbacabf76e1d05ebcdf784385d2c5fdf99d901b2ea69e8ea9772c"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/assets/pugixml-v1-16/samples/xpath_variables.cpp",
+      "sha256": "cd3d29d2e3444757900f9b864c9cb2e56078ffb03f758fa4bb8af82ad4a3ac55"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/favicon.svg",
+      "sha256": "2d7a310283d6f9cc753210d83224cd6db6348cb82a5536348884e5831d46203f"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/search/v1-16/en.json",
+      "sha256": "169eb94401bc1422b41903795b23accac0cb1a1bacc5540cd2ca697492419a89"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/sidebar/sidebar-en-v1-16.json",
+      "sha256": "5447492e9120d138bfc14e46f0568118ca842ff11a249d2495771d0cf6ab99ff"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/sidebar/sidebar-ja-v1-16.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/public/sw.js",
+      "sha256": "329e259740a7a48b93ea6d00bbc8f8d7c1d086d84f60b9265ceeb888f5a6ad4d"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/config/project.config.jsonc",
+      "sha256": "5797fab3580ff6e348835739b373350f1c6db6aa8c6166c92f6c775d8fdae77e"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/config.ts",
+      "sha256": "608522d07640ae4ca74bbe5c6910d5f1d151ba86301ed56f8dc55ab3600e81d3"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/01-overview/01-quick-start.md",
+      "sha256": "980de18cbdf3873fbb4f0efe172bd07dff4c344477ebfe9859e78bc77334044b"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/02-manual/01-overview.md",
+      "sha256": "f252b6c1db0148a4b22462da78402aeeeae2f90da08e6f8b74667afd287aac6b"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/02-manual/02-installation.md",
+      "sha256": "24c58dc41d166a4871d3ada7558c167ffa7ded3f586f6dc7598753104da7b091"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/02-manual/03-document-object-model.md",
+      "sha256": "0c83713811cee1d8d9e9c415d3a107ec78da7224c24712da0458ff5db736a080"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/02-manual/04-loading-documents.md",
+      "sha256": "0b4e5cd1dbae5bb8ff3c9f41e6c8ba5a0fa621301519371503e3ec261df10c66"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/02-manual/05-accessing-document-data.md",
+      "sha256": "151442e47d0e6946dfaac9a600fe635fe4ede1f356a126ddd46011e1e3b45de1"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/02-manual/06-modifying-document-data.md",
+      "sha256": "17caa40b3c553e771c6fdce5b906cbc334c41b28793b2531e0f9b29524307922"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/02-manual/07-saving-documents.md",
+      "sha256": "8e367d88e598b68bbaa990ac2604d80a1d24eff378d2216e033858b19c912947"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/02-manual/08-xpath.md",
+      "sha256": "fb4c3469d60e250da1c41853a85a16f7cfb30b0a46268b652bb0acec725a24a4"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/03-reference/01-changelog.md",
+      "sha256": "27e4084e1ba16fbc964e23d5f73a6e7d17104e18e119454793c77cf1e2196049"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/03-reference/02-api-reference.md",
+      "sha256": "b0f7b32f320b9ce3c360296ef8f4da863934b4293a5aa90ccebfefc22c58d183"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/content/docs/v1-16/en/04-license/01-license.md",
+      "sha256": "45b2e1d18c556ec37dca36cd39eb6073271dd4bac848883753f0d20585c48d97"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/layouts/DocLayout.astro",
+      "sha256": "560ffd196d9c2d280437a2d38219c02566423c921d6e824af1d722d4cdc0ae71"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/layouts/MainLayout.astro",
+      "sha256": "96dd11ddf8031b6703671b528ab884776200f8a6cf31bc62b23bcfff56cf28c0"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/lib/navigation.ts",
+      "sha256": "b10ed67d5a3a48ab928a18be45aeb6e1dd130ef1365af8259fc90cbd1d5d6171"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/pages/404.astro",
+      "sha256": "f819c23fd504e15635630d9a94f4df441dedd5ef52aaf73ee7bfd523418362c1"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/pages/[version]/[lang]/[...slug].astro",
+      "sha256": "9f74333d2579aea388ab1c43cecad006a2c8c18cc8a0be9dfe5a87e262074201"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/pages/[version]/[lang]/index.astro",
+      "sha256": "b55529970b233d8878d653f2d0596a23cacb9ddcd9d17b988f9746078de1d907"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/pages/[version]/index.astro",
+      "sha256": "791a1651bf8038667cf95cb9a31b2a2fd1aa292a5c9b02f5cca557815042d31c"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/pages/index.astro",
+      "sha256": "f54088a5e93dff48532c77d3d0733a08804055b4b8a5003fa2fb931f2d2ac5b4"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/src/styles/global.css",
+      "sha256": "53d710242aa881731e5378215f236a2419732c35543be6ce697b074f4891947e"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/staging/canonical-ready/app/tsconfig.json",
+      "sha256": "081b3ac3937ad333264d233b02ccee91a932ac6dd94444dee86c361805afd969"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/CONTENT_MAP.json",
+      "sha256": "600cae3bf0f5c882ad2d6b77ce76bdf89077d6a5e9d697b30eb63388eeb47b92"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/CANONICAL_MECHANICAL.json",
+      "sha256": "7dde7559be1fd6395c5e535e94c18ba7d1ec6696966663f6c37096612ffff761"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/CANONICAL_PREPARATION.json",
+      "sha256": "a4dfb9ccbe8f3addd5eebf743b970d088a5922e1671dac33488695b101423038"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/CONTENT_CHECK_STATUS.json",
+      "sha256": "3885e207beae326276764e8c3036b91f60de4ff4de28e5db7dde58dab532ed78"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/SAVE_REPAIR.json",
+      "sha256": "59aa6f1b53f290be22c6e1812e975924853bc0f0c095240966700807238804ce"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/content-check-format.txt",
+      "sha256": "950060ac7f16170c858cc26912abc67fe5b6aae87918543833e4945263810ade"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/content-check-incomplete.txt",
+      "sha256": "b547a3fbff6f53e47e8b5120fa4f23bbbca250af3094ae0408e77897ce914d3e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/eslint-final.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/format.txt",
+      "sha256": "b916b2590be2f8d698ec732146d5b15fa868a81c08af9d9e5461b162fb778dee"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/importer-tests-fixed.txt",
+      "sha256": "56143ef2f081c4af7e32779786a1b32a28b1c37bad658026da509e9f8d28d228"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/importer-tests.txt",
+      "sha256": "84dca27ceba8eeae67c637173e39474d31f39f51f9913585eae4ccd0b037f31a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/private-frozen-install.txt",
+      "sha256": "945cf1428ab743d4a17213f50503cdc3a531f272412eb662596f537cf8b539d7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/regeneration-check.json",
+      "sha256": "2ebccc8f18d5f6c2525d9a5fae733c509699bb137b940e5f6351ec514963d6df"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/root-eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/root-importer-tests.txt",
+      "sha256": "d66373859174d6bd3806c51a75ee97b84e0dfa6fed0821e162efc141e6df5bf6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/selective-english-build.txt",
+      "sha256": "4c182589576651fb9cf771e3014bac692a432e33bd6e671fd6c7b933170524f8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/tooling/scripts/importers/import-pugixml-1.16.mjs",
+      "sha256": "0d05decdc9bcdc2c52b9b356951bff36a24abe9827c51bdb47454532c1d79184"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/tooling/scripts/importers/pugixml-1.16-page-map.mjs",
+      "sha256": "6ca4ecb33f5a598d29537ef7c88bbd16a8640b38094a85d17d9111571cdd86b8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/tooling/scripts/importers/pugixml-1.16-source-hashes.json",
+      "sha256": "28e151978b6ba9608ce2c8082e858e64d25ba543d0d4f639c2dd09a62dafa9b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/tooling/tests/runtime/pugixml-importer.test.js",
+      "sha256": "d02172610a997c0a6f4372f839171970ff9f977fcc98a66ca913b29b9d26cec3"
+    },
+    {
+      "path": "scripts/importers/import-pugixml-1.16.mjs",
+      "sha256": "0d05decdc9bcdc2c52b9b356951bff36a24abe9827c51bdb47454532c1d79184"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/tooling/scripts/importers/import-pugixml-1.16.mjs",
+      "sha256": "0d05decdc9bcdc2c52b9b356951bff36a24abe9827c51bdb47454532c1d79184"
+    },
+    {
+      "path": "scripts/importers/pugixml-1.16-page-map.mjs",
+      "sha256": "6ca4ecb33f5a598d29537ef7c88bbd16a8640b38094a85d17d9111571cdd86b8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/tooling/scripts/importers/pugixml-1.16-page-map.mjs",
+      "sha256": "6ca4ecb33f5a598d29537ef7c88bbd16a8640b38094a85d17d9111571cdd86b8"
+    },
+    {
+      "path": "scripts/importers/pugixml-1.16-source-hashes.json",
+      "sha256": "28e151978b6ba9608ce2c8082e858e64d25ba543d0d4f639c2dd09a62dafa9b4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/tooling/scripts/importers/pugixml-1.16-source-hashes.json",
+      "sha256": "28e151978b6ba9608ce2c8082e858e64d25ba543d0d4f639c2dd09a62dafa9b4"
+    },
+    {
+      "path": "tests/runtime/pugixml-importer.test.js",
+      "sha256": "d02172610a997c0a6f4372f839171970ff9f977fcc98a66ca913b29b9d26cec3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/tooling/tests/runtime/pugixml-importer.test.js",
+      "sha256": "d02172610a997c0a6f4372f839171970ff9f977fcc98a66ca913b29b9d26cec3"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全12定本/43アセット/全本文・158pre・32表・9画像・409元ID・889原リンク/両商標脚注の機械保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/CANONICAL_MECHANICAL.json",
+          "sha256": "7dde7559be1fd6395c5e535e94c18ba7d1ec6696966663f6c37096612ffff761"
+        },
+        {
+          "path": "docs/notes/document-import/pugixml/v1-16/CONTENT_MAP.json",
+          "sha256": "600cae3bf0f5c882ad2d6b77ce76bdf89077d6a5e9d697b30eb63388eeb47b92"
+        }
+      ]
+    },
+    {
+      "name": "二度生成一致/改変拒否/失敗rollback/symlink拒否/実Astro保全の5テストとlint",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/root-importer-tests.txt",
+          "sha256": "d66373859174d6bd3806c51a75ee97b84e0dfa6fed0821e162efc141e6df5bf6"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/root-eslint.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/regeneration-check.json",
+          "sha256": "2ebccc8f18d5f6c2525d9a5fae733c509699bb137b940e5f6351ec514963d6df"
+        }
+      ]
+    },
+    {
+      "name": "隔離固定lock依存と英語のみ17route build",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/private-frozen-install.txt",
+          "sha256": "945cf1428ab743d4a17213f50503cdc3a531f272412eb662596f537cf8b539d7"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/selective-english-build.txt",
+          "sha256": "4c182589576651fb9cf771e3014bac692a432e33bd6e671fd6c7b933170524f8"
+        }
+      ]
+    },
+    {
+      "name": "日本語/別工程全文内容レビュー/全英日構造・リンク・表示・統合",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-116/CONTENT_CHECK_STATUS.json",
+          "sha256": "3885e207beae326276764e8c3036b91f60de4ff4de28e5db7dde58dab532ed78"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全12英語定本をcanonical-readyへ。候補の保全試験・英語buildだけで案件verifiedにしない。",
+    "初回試験はmacOS /var symlink経由を拒否して3件失敗。テストfixtureのみrealpathへ修正して5件合格、symlink防御を緩めない。",
+    "Quickstartの商標脚注を初回生成で落とし、欠落ID検査で停止。原フッターを本文へ保持して再生成を合格にした。",
+    "BufferをJSONとして保存する不具合は台帳登録前に自己作成85ファイルを修復。原private sourceと全43固定アセットSHAを照合し、修復後のroot5テストを合格にした。",
+    "第117の方針更新と停止を挟んだため、未保存だった第116サイクルを再開後に証拠から確定。共有rootappは存在せず、新規作業枠は1件を維持。"
+  ],
+  "unresolved": [
+    "全12ページの日本語翻訳",
+    "原文→定本→日本語の別工程全文レビュー",
+    "英日構造/内部リンク/出典・通知/ビルド/ブラウザー表示/統合"
+  ],
+  "nextAction": "固定source-fragments/全12定本/対応表を読み、専用workspaceで日本語を1ページずつ翻訳して原文照合する。別工程全文レビューをページ別に記録。全英日機械/ビルド/表示/統合は未完了。raw HTMLのAPIコード/表のUIも表示工程で確認。",
+  "resumeCondition": "固定原資料49、canonical/source-fragments/map/tooling/snapshot SHAが有効。共有rootに未検証pugixml appは置かない。新規枠1件を占有。verifiedと正規公開待ちの登録後に継続的公開承認を適用。",
+  "counts": {
+    "verified": 5,
+    "published": 4,
+    "awaitingRelease": 1,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 1,
+    "candidateHolds": 7,
+    "eligible": 0
+  },
+  "workspace": "/private/tmp/libx-official-pugixml-20261002"
+}

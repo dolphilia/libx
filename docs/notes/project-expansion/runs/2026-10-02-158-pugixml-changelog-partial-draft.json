@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-158-pugixml-changelog-partial-draft",
+  "cycle": 158,
+  "startedAt": "2026-10-02T08:32:33.308Z",
+  "endedAt": "2026-10-02T08:32:56.768Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原text53–131と定本209–508行の実読・翻訳",
+    "固定再生成・コード/ID/URL/HTML保全検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/03-reference/01-changelog.md",
+      "sha256": "27e4084e1ba16fbc964e23d5f73a6e7d17104e18e119454793c77cf1e2196049"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/03-reference/01-changelog.html",
+      "sha256": "1c933c95bba45ed55f36ea795b4220247e6d208b8f538ecdd74469fdf9ba11c2"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e36d0877ea9b64aebb35f05d9f7d33a7a9699537e7e95e52ea5285c72cad4371"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-157/ja/03-reference/01-changelog.md",
+      "sha256": "468fb1ca74a790d07f936f5d705c9efda5bec8fab509bebd74575210fbe581d6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-158/TRANSLATION_MAP.json",
+      "sha256": "4624cccf129b1a4c103f3b3ef74dbdbb765af343a95d1aa9f62e62159d6154c6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-158/MECHANICAL.json",
+      "sha256": "b78a1d6ab3923e0be9e97c18b16afa781427047f64fb1e3d79f3e034d189c89b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-158/PREPARATION.json",
+      "sha256": "fdb87beefd1bb6632811e42e411df50f9db1cb91247bc8263fad4b5ec236cd73"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-158/BEFORE_CHANGELOG_PARTIAL.md",
+      "sha256": "8553a1f59a8409bd026edaf468a075bd31381e9136430e8fe1961dae1a693e0c"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "233c89099e467384f512d80e31a1facb00a1fadac3e750327f2a1d4c697056c7"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "6f8854d25eb3942341303e96e7823ad9682f11073542d3149e483d7e21fe8031"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "部分初稿1–508行とコード/ID/URL/HTML保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-158/MECHANICAL.json",
+          "sha256": "b78a1d6ab3923e0be9e97c18b16afa781427047f64fb1e3d79f3e034d189c89b"
+        }
+      ]
+    },
+    {
+      "name": "変更履歴全文初稿と別工程内容レビュー",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全JA対象リンク/UI/表示・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "先行1–208行を保持し、v1.13〜v1.9の74翻訳単位を追加。",
+    "null終端なしオーバーロード、disk/memory不足、CMakeターゲット互換条件、XPath和集合の文書順整列要否を保持。",
+    "日付・API名・警告名・オプション名を保持。全文レビューは別工程。"
+  ],
+  "unresolved": [
+    "変更履歴509–1531行未翻訳。全文内容レビュー未実施。",
+    "全体表示/統合/全JAリンク未検証。"
+  ],
+  "nextAction": "新規優先。全文初稿11/12・別工程全文レビュー11/12。変更履歴は第158で1–508行/126翻訳単位（v1.16〜v1.9）まで保存。509行のv1.8から翻訳し、全文初稿後に別レビューする。その後全JAリンク/UI/表示/統合を検証し正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料/定本/部分初稿のSHA有効。509行のv1.8から続行。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

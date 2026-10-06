@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-120-lua-bugs-license-reassessment",
+  "cycle": 120,
+  "startedAt": "2026-10-02T04:58:44.177Z",
+  "endedAt": "2026-10-02T04:58:44.825Z",
+  "result": "partial",
+  "phase": "1-2",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "保存済み公式資料と本体MIT全文照合",
+    "ユーザー新方針の注釈付き適用判断",
+    "クリーン専用Git checkout",
+    "リビジョン/証拠SHAを検査した台帳更新"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/lua/bugs.html",
+      "sha256": "b7b5a38d3cc32cd5b627a0e073948152e26f1382e21441d08db6c827e9596b6e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/lua/known-issues-5.5.1.html",
+      "sha256": "46d471c4c6c3cb700bef45de6da435497df88b79c03ec522d08f19e5bbc135fa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-041/lua/copyright.html",
+      "sha256": "9fa02db000d8178643a592032fab2e1d2ba6d9e2f609f149fc113d30d32dbea2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-120/LICENSE_REASSESSMENT.json",
+      "sha256": "1a0e346484e89015c01d33df334c10367de2cda7b51e70ed3a0d5a40d8f3234a"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "acde1ba8cfb15d2077a98edaf955033f4f56b59f16a9c6113e66968485d0544f"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "e08b55830f30e3f255dd387fec6d8b72227ff60f414c4c412fee121665d380af"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "本体MITと公式対象/別条件不在の記録/注釈原案/通知履行方法/件数枠",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-120/LICENSE_REASSESSMENT.json",
+          "sha256": "1a0e346484e89015c01d33df334c10367de2cda7b51e70ed3a0d5a40d8f3234a"
+        }
+      ]
+    },
+    {
+      "name": "新取得版定本/英日/全文レビュー/検証/公開",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "新方針により公式bugsの保留を解除しplannedへ戻す。明示的個別許諾の発見と偽らない。",
+    "新規pugixml1と既存Lua更新1で作業中2件の上限内。"
+  ],
+  "unresolved": [
+    "新取得版ページとライセンス注釈は未生成、公開未検証。"
+  ],
+  "nextAction": "第120の注釈付き本体MIT適用判断で専用表記未発見による保留を解除。専用workspaceで固定公式bugs節・本体MITを新SOURCE_LOCKへ束縛し、2026-10-02別取得版の無省略定本/翻訳/原通知と注釈/別工程全文レビュー/依存ページ/機械・表示・統合へ。",
+  "resumeCondition": "第120判断と固定元SHAが有効。投稿者表示を保持し、注釈とMIT原通知を英日表示。明示的な別条件を発見した場合は再評価する。既存取得版・Awesome・ユーザー変更は保持。",
+  "counts": {
+    "verified": 5,
+    "published": 4,
+    "awaitingRelease": 1,
+    "active": 2,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

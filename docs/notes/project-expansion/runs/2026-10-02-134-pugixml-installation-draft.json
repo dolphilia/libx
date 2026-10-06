@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-134-pugixml-installation-draft",
+  "cycle": 134,
+  "startedAt": "2026-10-02T07:42:21.892Z",
+  "endedAt": "2026-10-02T07:43:56.044Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codexインストール章の翻訳",
+    "固定入力定本再生成・コード/識別子/アンカー/リンク/画像保持検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/02-installation.md",
+      "sha256": "24c58dc41d166a4871d3ada7558c167ffa7ded3f586f6dc7598753104da7b091"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/02-installation.html",
+      "sha256": "426e9af38208b30e68f854881a6d2f82a6f40e187aad4d1da744085fa20db03f"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "b003bd50d509a224ce0a370479a97e60910ab89f3dc535be8135620a64170bbe"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-134/ja/02-manual/02-installation.md",
+      "sha256": "45943001008cf17f92448eb1e6aea600d0d1f62436a3c71c3887ad14ea7a47ed"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-134/TRANSLATION_MAP.json",
+      "sha256": "41bc8a0867e93812fcda40beabb59a6d599e928b9fbb8ae1a6efe7a78282c2ef"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-134/MECHANICAL.json",
+      "sha256": "57954a0f1719c863569ce6fcaa2d7cd663e70a5ca2eb307f83a5ca66867d9c11"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-134/DRAFT_REPAIR.json",
+      "sha256": "912324a3062e1f7eb8843f20ea3b5d607dbe3793fb9277e467be14b2df6d4201"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d49cd3f6da6f0fac4c3438470dd6231d6e9a19d744eea1db708ae8e5bb1ac84b"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "e9d17e344823882a6f36bd94f484cecf82148b1c7911dd3aa4f8c314d436da0f"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "定本再生成・コード/識別子/リンク/アンカー/画像保持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-134/MECHANICAL.json",
+          "sha256": "57954a0f1719c863569ce6fcaa2d7cd663e70a5ca2eb307f83a5ca66867d9c11"
+        }
+      ]
+    },
+    {
+      "name": "インストール章の別工程全文レビュー・画像内容照合",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全体表示・全JAリンク・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "設定オプション全節と全マクロを訳し、全コード・原UI操作文字列・版・数値を保持。",
+    "PUGIXML_APIの一致例外、ヘッダーオンリーの性能と時間の条件、charconvのC++17/UTF-8/ロケール条件を訳す。",
+    "コンパイラー・プラットフォーム一覧は固定版の公式記述として訳し、現行環境の検証結果とは扱わない。",
+    "全文内容レビューを機械検査で代替せず、まだ専用アプリにも初稿を統合しない。",
+    "初稿のmacro段落置換位置ずれを保存前検査で検出。原IDで位置を特定して再作成し、検査を緩和せず再検査合格。DRAFT_REPAIRへ記録。"
+  ],
+  "unresolved": [
+    "installation別工程全文レビューと8画像の内容照合は未実施。",
+    "残7ページ未翻訳。全体表示・統合・全JA対象リンク未検証。"
+  ],
+  "nextAction": "新規優先。初稿5/12・別工程全文レビュー4/12。第134のinstallation初稿553行・71翻訳単位を原資料・定本・訳文・設定画面8画像で別工程全文レビューする。次にDOMなど残7ページを翻訳・別レビューし、全JAリンク・rawHTML表/コードUI・表示・統合を検証して正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定資料・定本・初稿と機械証拠SHA有効。初稿5/12と全文レビュー4/12を区別。全検証前に正規公開待ちへ変更しない。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

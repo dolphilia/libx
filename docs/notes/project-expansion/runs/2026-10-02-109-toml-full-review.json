@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-109-toml-full-review",
+  "cycle": 109,
+  "startedAt": "2026-10-02T02:32:23.985Z",
+  "endedAt": "2026-10-02T02:40:54.162Z",
+  "result": "partial",
+  "phase": "2",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "exec_command",
+    "AI full content review",
+    "validateTranslatedContent",
+    "Astro build",
+    "check-toml-rendered"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/SOURCE_LOCK.json",
+      "sha256": "d0311620b891e5eeac0b392bc14f870bddae9a199462ad601c65cbb98f32b18e"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/review/initial-2026-10-02-108/REVIEW_MANIFEST.json",
+      "sha256": "09a7fb98e3de0130a6e65fc1823990af0a63040fb6fae25247cd0839b5e05a4f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "9303f2f1df97d73a4bfc3aadacf424ff4fd251ecefef6e85f4f6c44a0da7770f"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/review/2026-10-02-109/REVIEW_MANIFEST.json",
+      "sha256": "c16abd75a023bf2a129a94e0538508ebc596a70b8af2f4519fe5b553faa68f9c"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/review/2026-10-02-109/FULL_CONTENT_REVIEW.json",
+      "sha256": "08553d78c850fe45f7fcd4ffdc6c86fc3b10500ca220afb3605f24a8901145e2"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/reviewed-translation/01-specification/01-specification.md",
+      "sha256": "f37fedbaeef034eb2c4ba079c6f5484c40a28f67e574589b388ed31562caa1d4"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/reviewed-translation/02-reference/02-abnf.md",
+      "sha256": "8af64304904571397e41a337d4b944e1e41c54ba05693371f267723e6ca7fec0"
+    },
+    {
+      "path": "docs/notes/document-import/toml/v1-1-0/reviewed-translation/03-license/01-license.md",
+      "sha256": "78cfb8b45561b3758b4ca5dc77f19c077a362bd1695f9644ff2f550cb6649b85"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "toml"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "編集と別工程で全3ページの原文/定本/日本語全文を確認・全行coverage",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/toml/v1-1-0/review/2026-10-02-109/REVIEW_MANIFEST.json",
+          "sha256": "c16abd75a023bf2a129a94e0538508ebc596a70b8af2f4519fe5b553faa68f9c"
+        },
+        {
+          "path": "docs/notes/document-import/toml/v1-1-0/review/2026-10-02-109/FULL_CONTENT_REVIEW.json",
+          "sha256": "08553d78c850fe45f7fcd4ffdc6c86fc3b10500ca220afb3605f24a8901145e2"
+        }
+      ]
+    },
+    {
+      "name": "修正後check:contentと英日全ルートAstroビルド/HTMLコードとリンク",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-109/content-check.txt",
+          "sha256": "7e681fe53f871bbfcf3304a0922a51836cb0e6ce80643fe190e8861199569465"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-109/bilingual-build.txt",
+          "sha256": "7903a4a3fcbeebd991eb94bd63c53d19f2ad58f45e3827f9d94e1bf563828aeb"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-109/rendered-english.json",
+          "sha256": "1a58d6a80bae9aa7b51681943b13a0a378ebf88d904e0ff40b8a85c56ff3995d"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-109/rendered-japanese.json",
+          "sha256": "9dab1ac5452ac23f03ef1d441a5724fff2187329db06d61fa5a3b88c8e24a0ac"
+        }
+      ]
+    },
+    {
+      "name": "ブラウザー表示・整合性・共有状態への統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "前サイクルは定本化・訳稿作成・機械検査が進んだためprogressと判定。実ファイルと台帳を再照合してcontent-reviewedまで進めた。",
+    "全3ページの原文・定本・日本語を省略なしで再読。仕様127説明単位・70コード・22見出し、文法247行、両MIT全文を確認し、モデル確認可否と日時とハッシュを保存。",
+    "日本語単独の読みやすさ確認でout-of-orderの2箇所を明確化。初稿は不変で保存し、reviewed-translationを新しい本文候補として記録。",
+    "サイクル106〜108のcomplete表記は、案件未完了のため計画263行に合わせpartialへ訂正。訂正前の記録を証拠領域に保全。",
+    "台帳更新でartifact参照へcoverageを含めたためスキーマが拒否し、リビジョン259を保持。全文coverageはレビュー役割に、artifactはpath/sha256だけに分けて再登録。",
+    "content-reviewedをverifiedと混同しない。未確認の表示/整合性/統合検証を次工程へ残す。"
+  ],
+  "unresolved": [
+    "ブラウザー表示と整合性検査は未完了。共有配信対象への統合と最新差分を含む検証は未完了。",
+    "初期3件/異形式/実上流更新実証は未完了。",
+    "TOML公開と定期実行は未承認。"
+  ],
+  "nextAction": "英日全3ページの別工程AI全文レビュー完了。reviewed-translationを配信本文候補とし、初稿は保持。専用Astro previewで英日全ルート・目次/言語切替・出典/ライセンス・固定版・404・狭幅を確認し、integrityを検査。最新共有状態と衝突を照合して統合後に必要検査を再実行する。",
+  "resumeCondition": "SOURCE_LOCK・定本・reviewed-translation・別工程全文レビューのハッシュが有効。専用workspaceが消失したら37f77d3から隔離cloneを復元し、staging/canonical-ready/app、定本、reviewed-translation、専用lockを適用。内容/設定を変えた場合は影響レビュー・機械検査を失効させる。TOML公開は未承認。",
+  "counts": {
+    "verified": 4,
+    "published": 4,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 1,
+    "candidateHolds": 5,
+    "eligible": 0
+  },
+  "workspace": "/private/tmp/libx-official-toml-20261002"
+}

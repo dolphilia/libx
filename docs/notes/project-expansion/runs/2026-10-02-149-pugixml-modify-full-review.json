@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-149-pugixml-modify-full-review",
+  "cycle": 149,
+  "startedAt": "2026-10-02T08:15:37.447Z",
+  "endedAt": "2026-10-02T08:16:33.963Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原文と訳文全意味単位の別工程実読",
+    "コード/ID/URLと固定再生成機械検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/06-modifying-document-data.html",
+      "sha256": "d9643488d4a04160a3aa88d57ce097470dba7489091964814f7e021f7ddbe930"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/06-modifying-document-data.md",
+      "sha256": "17caa40b3c553e771c6fdce5b906cbc334c41b28793b2531e0f9b29524307922"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-146/ja/02-manual/06-modifying-document-data.md",
+      "sha256": "be21a815bf5ad8f569c5afd2a7ff73a410f9d8372d01bae01ef6b5dc8f46d739"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "1298e8ce38b5b0ae916bda6a25995bc5db73b1f2265553fe7aff6b9e6f7df419"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/reviewed/2026-10-02-149/ja/02-manual/06-modifying-document-data.md",
+      "sha256": "47604f971e90294fd75937cfc4d6936c0a84bd89d6cedd3f17b01f00dacdac96"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-149/FULL_REVIEW.json",
+      "sha256": "531b19765f82eee5c78ca6d3f8ec817e0cc8a296f044310dc763b587763f990e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-149/MECHANICAL.json",
+      "sha256": "a657814a2a2caf9d29598b9d7972c6a402e9f137d43b2cfe1166756d0cc1cbe8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-149/SOURCE_READABLE.json",
+      "sha256": "3d3624ff8cb72f12c2175cf2fbe09efc3f8052d26f353dba732ed1317d2add82"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-149/CHECK_SCOPE_CORRECTION.json",
+      "sha256": "64664c60ec7ed63f418ba979d8dd161071022c7b730ce11bb29116dd84cc6482"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "37be186ba330aa6536e957e10a3c5577955c5921ce43afcefc3b5dd3575d1d6e"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "a8f960dce923a61dc9eecee16a281c93d958e64c3f5de6aefef60610dd5d1285"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "変更章1ページ別工程全文内容レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-149/FULL_REVIEW.json",
+          "sha256": "531b19765f82eee5c78ca6d3f8ec817e0cc8a296f044310dc763b587763f990e"
+        }
+      ]
+    },
+    {
+      "name": "固定再生成と原pre/コード/ID/URLの保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-149/MECHANICAL.json",
+          "sha256": "a657814a2a2caf9d29598b9d7972c6a402e9f137d43b2cfe1166756d0cc1cbe8"
+        }
+      ]
+    },
+    {
+      "name": "全体翻訳/全文レビュー/JA対象リンク/UI/表示/統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "初稿を保持し、別レビュー保存版を保存。text代入の原文戻り値誤記を訳注付きで修正。",
+    "全文内容レビューとコードの機械同一性を分離。",
+    "未検証アプリを共有公開対象へ統合しない。"
+  ],
+  "unresolved": [
+    "残3ページ未翻訳・未レビュー。",
+    "全JA対象リンク・rawHTML表/コードUI・全体表示/統合は未検証。"
+  ],
+  "nextAction": "新規優先。初稿9/12・別工程全文レビュー9/12。第149で変更章全919行/100原text/81翻訳単位をレビューし、text代入の原文attribute誤記を関数宣言に基づく訳注で修正。saving/XPath/changelogの残3ページを翻訳・別レビューし、全JAリンク/UI/表示/統合を検証して正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料・定本・レビュー保存版と証拠SHA有効。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

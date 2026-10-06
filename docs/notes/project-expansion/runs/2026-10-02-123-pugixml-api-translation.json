@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-123-pugixml-api-translation",
+  "cycle": 123,
+  "startedAt": "2026-10-02T05:04:58.530Z",
+  "endedAt": "2026-10-02T05:04:59.812Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "全散文と見出しをCodex翻訳",
+    "原資料/定本の範囲確認",
+    "Astro Markdown/parse5による全宣言/href保全",
+    "専用保存とSHA付き台帳更新"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/03-reference/02-api-reference.html",
+      "sha256": "fbb859b66aa4271caf38ecf769ce6e9ac9c03e1eec3b4e4a366cb6ddf11e7007"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/03-reference/02-api-reference.md",
+      "sha256": "b0f7b32f320b9ce3c360296ef8f4da863934b4293a5aa90ccebfefc22c58d183"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-123/ja/03-reference/02-api-reference.md",
+      "sha256": "5e3bb0ad24a2b80f47f0987e4f6a083a093d4c8f286b1c1a1b965b991fa37b84"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-123/API_DRAFT_CHECK.json",
+      "sha256": "b057ba3446760953646eb435c5cd1f3ee7ce4227cf95a0fc5a20436ff74cfdda"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "64544e1ab9c350ec4ba271aa8617825f376a0fec352a60c7f33b6b1341cd453e"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "1cd2b967499de74c38e718396184bbbe6bfb2c69e0d099618804b3ffb7817313"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "API初稿1ページの初期原文照合・全6コード/416リンク保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-123/API_DRAFT_CHECK.json",
+          "sha256": "b057ba3446760953646eb435c5cd1f3ee7ce4227cf95a0fc5a20436ff74cfdda"
+        }
+      ]
+    },
+    {
+      "name": "API別工程全文レビュー・全12翻訳/レビュー/検証",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "識別子・全宣言は翻訳せず完全保持。リンクだけ同版日本語へ変更。既存初稿/レビュー保存版を上書きしない。"
+  ],
+  "unresolved": [
+    "初稿残9ページ。API宣言別工程レビュー未完了。全体の表示・リンク・統合未検証。"
+  ],
+  "nextAction": "第123でAPIリファレンス初稿と6宣言/416リンク保全を保存。初稿3/12、別工程全文レビュー2/12（概要/ライセンス）で残9ページ未翻訳。API宣言全文の別工程レビューを行い、残9ページを順に訳す。rawHTML表/コードUI・全対象リンク/全体表示/統合は未完了。",
+  "resumeCondition": "固定原資料49、canonical/source-fragments/map/tooling/snapshot SHAが有効。共有rootに未検証pugixml appは置かない。新規枠1件を占有。verifiedと正規公開待ちの登録後に継続的公開承認を適用。",
+  "counts": {
+    "verified": 5,
+    "published": 4,
+    "awaitingRelease": 1,
+    "active": 2,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

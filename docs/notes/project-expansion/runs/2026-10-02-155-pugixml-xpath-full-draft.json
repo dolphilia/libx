@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-155-pugixml-xpath-full-draft",
+  "cycle": 155,
+  "startedAt": "2026-10-02T08:26:52.810Z",
+  "endedAt": "2026-10-02T08:28:04.699Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原資料61–112と定本517–971行の実読・翻訳",
+    "固定再生成・コード/ID/URL/HTML保全検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/02-manual/08-xpath.md",
+      "sha256": "fb4c3469d60e250da1c41853a85a16f7cfb30b0a46268b652bb0acec725a24a4"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/02-manual/08-xpath.html",
+      "sha256": "1ea5e3c49b7df53038cc8e7d63c9335718e174286446ec10da0013e34d3ad7e9"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "af62f7ace8455d5f1930d737b1965d0a3e7c83a56408c33d94be077f52b635c0"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-153/ja/02-manual/08-xpath.md",
+      "sha256": "e226cba0c092d978dae3af567227e5972480eaad71749182a463abb2c417acde"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-155/TRANSLATION_MAP.json",
+      "sha256": "eb4684611f43e30006014eff63545ad5a9d014ebe1e38035dee070fc02427cdc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-155/MECHANICAL.json",
+      "sha256": "4337f88ed9ac62a93b6d14ffe9dbb932993d13d7ccb6c4d05d82299491dcdf66"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-155/PREPARATION.json",
+      "sha256": "ea6dff26d72ab82b165dceb0ef8a63409b8baa60c4210939c26a093191319e83"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-155/BEFORE_XPATH_PARTIAL.md",
+      "sha256": "55fad247db0116a5859efd0e6f62d5c81bbce61d8fc02e061be0bda8edebfe9a"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0977ce10c3abc2a35dee20f68530c2918f1557bf3ab317c8a31db6df46211a28"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "35c819705f73006f583de6d0e2142ae4a8b338021d54a73a2260ffc5f7914d2c"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全文初稿971行とコード/ID/URL/HTML保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-155/MECHANICAL.json",
+          "sha256": "4337f88ed9ac62a93b6d14ffe9dbb932993d13d7ccb6c4d05d82299491dcdf66"
+        }
+      ]
+    },
+    {
+      "name": "XPath章別工程全文内容レビュー",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全JA対象リンク/UI/表示・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "先行1–516行を保持し、変数/エラー処理/W3C準拠の40単位を追加。",
+    "変数集合の寿命と代入禁止、値のコピー、型不一致の戻り値を保持。",
+    "例外有効/無効の差、文字単位offset、W3C非互換5項目を保持。",
+    "全文初稿と別工程全文内容レビューを区別する。"
+  ],
+  "unresolved": [
+    "XPath全文内容レビュー未実施。changelog未翻訳。",
+    "原文C11表記の固定ヘッダー照合未実施。",
+    "全体表示/統合/全JAリンク未検証。"
+  ],
+  "nextAction": "新規優先。全文初稿11/12・別工程全文レビュー10/12。XPath章は第155で全971行/87翻訳単位の初稿を保存。固定原資料/定本/訳文を別工程で全文レビューし、C11表記を固定ヘッダーと照合する。その後changelogと全JAリンク/UI/表示/統合を検証し正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料/定本/全文初稿のSHA有効。XPath別工程全文内容レビューから続行。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}
