@@ -1,0 +1,97 @@
+{
+  "status": "partial-4-of-14",
+  "checkedAt": "2026-10-03T02:16:30.308Z",
+  "scope": "separate source-to-English-canonical full reading of README/FAQ44/man/LICENSE only",
+  "pages": [
+    {
+      "source": "upstream/v1.3.2/README",
+      "sourceSHA256": "4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f",
+      "sourceLines": [
+        [
+          1,
+          115
+        ]
+      ],
+      "canonical": "src/content/docs/v1-3-2/en/02-appendix/02-readme.md",
+      "canonicalSHA256": "d1c1be69f70e75f2cb2b5d71b311f7cf662f05b6cf9391e43a6e573b162d09ec",
+      "canonicalCoverage": "whole body/original blocks/editorial notices/headings",
+      "status": "passed-source-to-canonical-review",
+      "translationReview": "not-started"
+    },
+    {
+      "source": "upstream/v1.3.2/FAQ",
+      "sourceSHA256": "8f64fd44e4773233f22a07c9d7a8cd83646d78c1e7c9bb79c43a9876e6ddb0d5",
+      "sourceLines": [
+        [
+          1,
+          371
+        ]
+      ],
+      "canonical": "src/content/docs/v1-3-2/en/02-appendix/03-faq.md",
+      "canonicalSHA256": "079eff1e76a93ce3ba629fef70d9543b1cc81bef5fa0e59800e2695e0d4c82ef",
+      "canonicalCoverage": "whole body/original blocks/editorial notices/headings",
+      "status": "passed-source-to-canonical-review",
+      "translationReview": "not-started"
+    },
+    {
+      "source": "upstream/v1.3.2/zlib.3",
+      "sourceSHA256": "5eebcb61a9c1ef91ff6c8e6d37b32554f5eefff825b190b1b5e5982f35d87534",
+      "sourceLines": [
+        [
+          1,
+          149
+        ]
+      ],
+      "canonical": "src/content/docs/v1-3-2/en/02-appendix/04-manual.md",
+      "canonicalSHA256": "bdec2606dbce5bae1dcda1994536deb810e99fbced9de4075f4422250bfa3c09",
+      "canonicalCoverage": "whole body/original blocks/editorial notices/headings",
+      "status": "passed-source-to-canonical-review",
+      "translationReview": "not-started"
+    },
+    {
+      "source": "upstream/v1.3.2/LICENSE",
+      "sourceSHA256": "e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2",
+      "sourceLines": [
+        [
+          1,
+          22
+        ]
+      ],
+      "canonical": "src/content/docs/v1-3-2/en/02-appendix/05-license.md",
+      "canonicalSHA256": "b444ea27f1bf1fb23070eed3cd1b99a04f710bf6f4d082bc2cbbf0537ce4c68a",
+      "canonicalCoverage": "whole body/original blocks/editorial notices/headings",
+      "status": "passed-source-to-canonical-review",
+      "translationReview": "not-started"
+    }
+  ],
+  "model": {
+    "requested": "gpt-6.1-sol",
+    "runtime": null,
+    "recordedPriorSetting": "gpt-6-astra",
+    "actualModelNotClaimedAsVerified": true
+  },
+  "method": "338原典README115/LICENSE22/man149全文、FAQ1–205/206–371を全出力で読解。別工程で定本README/LICENSE全decodedtext、FAQ導入〜24と25〜44全decodedtext、man全decodedtext/原roffとnativeAX全文を照合。省略出力を読了扱いにしない。321機械一致は内容reviewの代替にしない。",
+  "judgments": [
+    "README:用途/規範/スレッド安全caveat/全参考・古いplatform/帰属・免責・3条件・最終再配布通知の全説明保持。原software build手順は文書として保持し実行しない。",
+    "FAQ:全44問/答えを保持、Z_BUF_ERROR非致命・format差・thread-safe条件・4GB型条件・改変配布の版変更・contrib別license等の否定/条件保持。旧security/legal/platform記述は固定版由来と注釈、現状断定を新規に補筆しない。",
+    "FAQ32 strm_total_outは構造体total_outと異なる原記述を保存し別注釈。software license fallback注釈/原LICENSE導線を確認。",
+    "man:原.TH title/section3/dateが以前manual-text外にあったためhead/foot全cell保持へ修正。原本文・返り値条件・各参照・AUTHOR/LICENSE3項/全credit/R.P.C.Rodgersを確認。",
+    "LICENSE:著者年・免責・全許可3条件・email・改変表示の文言を保存。翻訳/変換が非公式であることを原通知と別に示す。",
+    "FAQ見出しを原質問そのものへ配置し重複copyを廃止。原block文字列は同じで全量保持、44heading/anchorを確認。"
+  ],
+  "fixes": [
+    "man header/footerの欠落を修正、319→321block。head3cell/footer2cellの意味・文字列不変、intertag table whitespaceだけ除去（HTML foster-parentによる順序変更を防ぐ）を明示。",
+    "FAQ質問二重表示を修正、元質問をdata-source-role questionのh2へ包む。",
+    "出典欄の実装上の否定説明を削除し、固定archiveの参照方法に簡潔化。"
+  ],
+  "remaining": [
+    "API9章とzconf.h1頁の別原典→定本内容review",
+    "正式全14native表示/keyboard/fragments、モバイルheader/sidebarレイアウト精査",
+    "外部URL状態",
+    "日本語全14頁全文訳/別review",
+    "統合/公開"
+  ],
+  "nativeLimit": "338man desktop全DOMとmobile横overflow0、末尾著者/date実画面確認。FAQmobile全44heading/45blocks/横overflow0のみ。全14表示完了ではない。mobile topはsidebarが先に全表示・headerのtitleが狭い状態を観測、正式全体チェックで共有現行themeとの差も調査。",
+  "cleanup": "localhostpreview62566をCtrlC exit0、owned61close、viewportreset。MAN_FOOTER_MOBILE.png初回scrollは著者節近くでfooter未表示、日付可視の証拠はMAN_END_MOBILE.png。",
+  "localLLMUsed": false
+}
