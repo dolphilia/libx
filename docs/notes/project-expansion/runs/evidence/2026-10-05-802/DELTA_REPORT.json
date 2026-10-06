@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-05T05:17:40.610Z",
+  "status": "passed",
+  "errors": [],
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/examples/dictionaryRandomAccess.md",
+    "sha256": "013d1e25de9217ff6224d14522f2a562901c78216cafd832f77c1921175abfe7"
+  },
+  "referenceCode": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/examples/dictionaryRandomAccess.c",
+    "sha256": "c169b03e47269c445ce3adf028bd76ae8c011735a1322f51e2a13a792d7945e5"
+  },
+  "before": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/05-examples/05-dictionary-random-access.md",
+    "sha256": "d957f165ce21a592e8d4907f517821a8dff19eff5dacc2da75e5408513af3ee0"
+  },
+  "after": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-802/canonical/05-examples/05-dictionary-random-access.md",
+    "sha256": "2c90fb0fd16661b35fd82f0a7887a5e8dbd1919205ae145b15cce4d7da4b82a3"
+  },
+  "changes": [
+    "examples/dictionaryRandomAccess.md"
+  ],
+  "semanticReview": {
+    "method": "ai-content-review",
+    "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+    "separateReviewPass": true,
+    "scope": "only Libx editorial footer and its full source paragraph/diagram/decompression plus code lines60–158; no Japanese or full-page pass inferred",
+    "finding": "Old Libx N-offset claim false. Original already says N+1; actual discrepancy final integer block count vs offsets count. Fixed code writes count of offsets and reads numOffsets. Corrected footer preserves original discrepancy; body remains byte-identical."
+  },
+  "machine": {
+    "englishBodyUnchanged": true,
+    "other26PagesUnchanged": true,
+    "japaneseReviewed14Unchanged": true,
+    "atomicOutputsReplay3Match": true,
+    "renderedFooterCorrect": true,
+    "build": "passed",
+    "browser": "pending"
+  },
+  "finalGates": "pending"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "05-examples/04-line-by-line.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T05:13:56.570173+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/examples/blockStreaming_lineByLine.md",
+    "sha256": "ed6bf3a195f0aa55c710c9cb785da3247f0285e7269478cced0b320d4405b312",
+    "coverage": [
+      [
+        1,
+        122
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/05-examples/04-line-by-line.md",
+    "sha256": "4a11d3937ca1f8032c12d1ba8a1397e7e6fa55fa551c6431f2122f85d8e97ef6",
+    "coverage": [
+      [
+        1,
+        130
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-801/translation/04-line-by-line.md",
+    "sha256": "38b3b7a891fcfb10939c82a5e07b559d09b4b95d4d443db910ef65fe0387d8b6",
+    "coverage": [
+      [
+        1,
+        125
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "原文/定本/訳文全文・導入/ポイント",
+      "result": "初稿後source/EN/JA全文を別工程で再読。BOM除去のみの原文保全、著者Takayuki/filenamecode/line-by-line incremental圧縮展開、基礎先読/advanced/lz4frame非互換・platformdependent全3条件を保持。4pointsの逐次/少量mem巨大file/Generally betterratio（Alwaysとせず）/nonuniformsizeを保持。"
+    },
+    {
+      "scope": "圧縮全手順/ASCII図5段階",
+      "result": "inputringbuffer/outputcompressedbuffer、firstline/continue/依存なし/Out1buffer→file→offset前進、secondline/Line1prefixratio改善、LineXでring末尾/offsetresetshould、X+1非隣接でもmemory保持/外部辞書、X+2ではほぼ忘却だがX+1残りLine2相当、textEOFまで反復を全文照合。図の全5段階・各lineとOut対応・prefix矢印・reset位置と方向・X+1/2式/空白を保持。"
+    },
+    {
+      "scope": "展開全4手順/日本語・注記",
+      "result": "圧縮line file→buffer/read、ringへdecomp、plaintextline→file/output、offset前進/末尾超過ならreset、compressedEOFまで反復を保持。reverse orderは列挙通り逆の処理と訳し判断footer保存。旧continue名をbodyで改変せず固定header810のdeprecated/代替をfooter表示。memoryを維持/忘れる原表現とStreaming基礎の利用者memory保持をfooterで区別。数値/否定/依存/順序/一般にの強度/日本語単独を全文確認。"
+    }
+  ]
+}

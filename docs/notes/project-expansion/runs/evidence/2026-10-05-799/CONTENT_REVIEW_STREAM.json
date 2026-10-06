@@ -1,0 +1,52 @@
+{
+  "id": "05-examples/02-streaming-basics.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "Codex configured gpt-6.1-sol; runtime not independently exposed",
+  "reviewedAt": "2026-10-05T05:08:47.621284+00:00",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/examples/streaming_api_basics.md",
+    "sha256": "f5f623970b6f533586fe2cb6dd12bcd82f0852a35d1d3406eef2ab86323831e7",
+    "coverage": [
+      [
+        1,
+        87
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-787/canonical/05-examples/02-streaming-basics.md",
+    "sha256": "04b67a7f6013e2e445e86d8e69c34867913956e73e4057302d581cb58c5e2096",
+    "coverage": [
+      [
+        1,
+        95
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-799/translation/02-streaming-basics.md",
+    "sha256": "231bd9ddad873d9408f1085c45c647561cc20b88fcf7000d8ae68e58eb49a2f5",
+    "coverage": [
+      [
+        1,
+        81
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "scope": "原文→定本全量/帰属とAPI群",
+      "result": "定本は原文全文保持。初稿後にsource/EN/JA全文を別工程で再読。Takayuki Matsuokaの帰属・4見出し、AutoFraming通常最推奨/フレーム準拠他ツール相互運用保証とLZ4CLI/node-lz4例、Block単純用途/rawmemory↔LZ4block、Streaming複雑用途/制限memory巨大stream例をすべて保持。基本AutoFramingshould/advanced時Block又Streamingを保持。"
+    },
+    {
+      "scope": "Block/Streaming差・3例図と全説明",
+      "result": "単一contiguousからの冗長性 vs multipleadjacentcontiguous、couldより多い（断定しない）を保持。4KiBytesチャンクと図全量保持、例1no dependency全独立、例2 8KiBytes内部依存/blocks1と2独立、例3block2→1/3→2+1/4→3+2+1、B–C依存の差とratio改善を逐項照合。図中の英文を変えず4/8KiB・矢印配置・数字・空白を保持。"
+    },
+    {
+      "scope": "制約全文/日本語単独",
+      "result": "Streaming効率のため依存メモリmirrorcopyなし→利用者明示保持、通常previousadjacentcontiguous最大64KiBytes、furthermemoryへアクセスしないを保持。圧縮済みbuffer保持と誤読させないよう「圧縮・展開時に依存するメモリ」とした。否定/強度/数値単位/条件/図対応を日本語単独でも全文再読。注記はfooter。"
+    }
+  ]
+}
