@@ -3,6 +3,8 @@ title: "GLFWvidmode structure"
 description: "GLFW 3.5.1 GLFWvidmode structure"
 ---
 
+# GLFWvidmode structure
+
 Video mode type. [More...](/docs/glfw/v3-5-1/en/04-reference/21-glfwvidmode/#details)
 
 <table class="memberdecls">

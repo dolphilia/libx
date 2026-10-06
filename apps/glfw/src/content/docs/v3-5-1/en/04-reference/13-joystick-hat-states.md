@@ -3,6 +3,8 @@ title: "Joystick hat states"
 description: "GLFW 3.5.1 Joystick hat states"
 ---
 
+# Joystick hat states
+
 <span id="details"></span>
 
 ## Description

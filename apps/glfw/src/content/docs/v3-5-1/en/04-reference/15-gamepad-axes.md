@@ -3,6 +3,8 @@ title: "Gamepad axes"
 description: "GLFW 3.5.1 Gamepad axes"
 ---
 
+# Gamepad axes
+
 <span id="details"></span>
 
 ## Description

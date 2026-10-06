@@ -3,6 +3,8 @@ title: "GLFWvidmode 構造体"
 description: "GLFW 3.5.1 GLFWvidmode 構造体"
 ---
 
+# GLFWvidmode 構造体
+
 ビデオモード型。[詳細...](/docs/glfw/v3-5-1/ja/04-reference/21-glfwvidmode/#details)
 
 <table class="memberdecls">

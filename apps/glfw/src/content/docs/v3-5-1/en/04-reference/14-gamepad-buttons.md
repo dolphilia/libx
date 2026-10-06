@@ -3,6 +3,8 @@ title: "Gamepad buttons"
 description: "GLFW 3.5.1 Gamepad buttons"
 ---
 
+# Gamepad buttons
+
 <span id="details"></span>
 
 ## Description

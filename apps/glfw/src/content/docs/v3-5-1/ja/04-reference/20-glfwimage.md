@@ -3,6 +3,8 @@ title: "GLFWimage 構造体"
 description: "GLFW 3.5.1 GLFWimage 構造体"
 ---
 
+# GLFWimage 構造体
+
 画像データ。[詳細...](/docs/glfw/v3-5-1/ja/04-reference/20-glfwimage/#details)
 
 <table class="memberdecls">

@@ -7,7 +7,7 @@ description: "GLFWライブラリをソースからコンパイルする"
 
 # GLFWをコンパイルする
 
-このページでは、GLFW ライブラリ自体のコンパイルについて説明します。GLFW を使うアプリケーションのビルド方法については、[build_guide](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_guide)を参照してください。
+このページでは、GLFW ライブラリ自体のコンパイルについて説明します。GLFW を使うアプリケーションのビルド方法については、[アプリケーションのビルド](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_guide)を参照してください。
 
 GLFW は C99 の一部の機能を使うため、Visual Studio 2012 以前はサポートしていません。
 
@@ -16,7 +16,7 @@ GLFW は C99 の一部の機能を使うため、Visual Studio 2012 以前はサ
 
 ## CMakeを使う
 
-GLFW の扱い方は、CMake を使うほかの多くのライブラリと同様です。そのため、このガイドでは主に標準的な構成、生成、コンパイルの手順を説明します。ほかのプロジェクトですでにこの手順に慣れている場合は、GLFW 固有の情報を扱う [compile_deps](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_deps) と [compile_options](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_options) の節を重点的に読むとよいでしょう。
+GLFW の扱い方は、CMake を使うほかの多くのライブラリと同様です。そのため、このガイドでは主に標準的な構成、生成、コンパイルの手順を説明します。ほかのプロジェクトですでにこの手順に慣れている場合は、GLFW 固有の情報を扱う [依存関係をインストールする](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_deps) と [CMakeオプション](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_options) の節を重点的に読むとよいでしょう。
 
 GLFW は [CMake](https://cmake.org/) を使って、選択した開発環境向けのプロジェクトファイルまたは makefile を生成します。GLFW をコンパイルするには、まず CMake でこれらのファイルを生成し、それを使って GLFW ライブラリをコンパイルします。
 
@@ -64,7 +64,7 @@ pkg install wayland libxkbcommon evdev-proto xorgproto
 
 Cygwin では Wayland はサポートされていませんが、X11 向けのコンパイルに `libXcursor-devel`、`libXi-devel`、`libXinerama-devel`、`libXrandr-devel`、`libXrender-devel` パッケージが必要です。これらは GUI インストーラーの Libs セクションにあり、その他の依存関係もすべて導入されます。
 
-必要な依存関係を用意したら、[compile_generate](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_generate)へ進みます。
+必要な依存関係を用意したら、[CMakeでビルドファイルを生成する](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_generate)へ進みます。
 
 
 <a id="compile_generate"></a>
@@ -93,7 +93,7 @@ CMake GUI を起動し、前述したソースディレクトリとビルドデ�
 
 Linux および macOS 以外の Unix 系システムでは、GLFW はデフォルトで Wayland と X11 を使います。一方または両方のサポートを無効にするには、変数一覧の GLFW セクションで [GLFW_BUILD_WAYLAND](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#GLFW_BUILD_WAYLAND) や [GLFW_BUILD_X11](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#GLFW_BUILD_X11) オプションを設定し、前述の方法で新しい値を反映します。
 
-選択した開発環境向けのプロジェクトファイルまたは makefile を生成したら、[compile_compile](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_compile)へ進みます。
+選択した開発環境向けのプロジェクトファイルまたは makefile を生成したら、[ライブラリをコンパイルする](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_compile)へ進みます。
 
 
 <a id="compile_generate_cli"></a>
@@ -125,7 +125,7 @@ Linux および macOS 以外の Unix 系システムでは、GLFW はデフォ�
 cmake -S path/to/glfw -B path/to/build -D GLFW_BUILD_X11=0
 ```
 
-選択した開発環境向けのプロジェクトファイルまたは makefile を生成したら、[compile_compile](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_compile)へ進みます。
+選択した開発環境向けのプロジェクトファイルまたは makefile を生成したら、[ライブラリをコンパイルする](/docs/glfw/v3-5-1/ja/02-getting-started/02-compiling-glfw/#compile_compile)へ進みます。
 
 
 <a id="compile_compile"></a>
@@ -158,7 +158,7 @@ cmake --build path/to/build
 
 このコマンドは、そのディレクトリの生成対象となったプラットフォーム固有のビルドツールを実行します。
 
-GLFW ライブラリをコンパイルしたら、GLFW ライブラリをリンクしてアプリケーションをビルドできます。詳しくは [build_guide](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_guide)を参照してください。
+GLFW ライブラリをコンパイルしたら、GLFW ライブラリをリンクしてアプリケーションをビルドできます。詳しくは [アプリケーションのビルド](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_guide)を参照してください。
 
 
 <a id="compile_options"></a>
@@ -290,4 +290,4 @@ GLFW を共有ライブラリ／動的ライブラリ／DLL としてビルド�
 
 Vulkan、EGL、GLX、OSMesa、OpenGL、GLESv1、GLESv2 の各ライブラリに独自の名前を使う場合は、必要なものについて `_GLFW_VULKAN_LIBRARY`、`_GLFW_EGL_LIBRARY`、`_GLFW_GLX_LIBRARY`、`_GLFW_OSMESA_LIBRARY`、`_GLFW_OPENGL_LIBRARY`、`_GLFW_GLESV1_LIBRARY`、`_GLFW_GLESV2_LIBRARY` を定義すると、デフォルト名を上書きできます。それ以外の場合、GLFW は組み込みのデフォルト名を使います。
 
-> **注:** GLFW のコンパイル中は、[build_macros](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_macros)のマクロを1つも定義してはいけません。ビルドファイルでこれらを定義する場合は、GLFW のソースに適用されないようにしてください。
+> **注:** GLFW のコンパイル中は、[GLFWヘッダーのオプションマクロ](/docs/glfw/v3-5-1/ja/02-getting-started/03-building-applications/#build_macros)のマクロを1つも定義してはいけません。ビルドファイルでこれらを定義する場合は、GLFW のソースに適用されないようにしてください。

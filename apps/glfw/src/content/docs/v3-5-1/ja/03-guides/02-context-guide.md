@@ -7,26 +7,26 @@ description: "OpenGLとOpenGL ESのコンテキスト管理"
 
 # コンテキストガイド
 
-このガイドでは、OpenGL および OpenGL ES コンテキストに関連する GLFW の関数を紹介します。この分類の特定の関数について詳しくは、[context](/docs/glfw/v3-5-1/ja/04-reference/04-context-reference/)を参照してください。GLFW API のほかの領域についてもガイドがあります。
+このガイドでは、OpenGL および OpenGL ES コンテキストに関連する GLFW の関数を紹介します。この分類の特定の関数について詳しくは、[コンテキストリファレンス](/docs/glfw/v3-5-1/ja/04-reference/04-context-reference/)を参照してください。GLFW API のほかの領域についてもガイドがあります。
 
- - [intro_guide](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
- - [window_guide](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
- - [vulkan_guide](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)
- - [monitor_guide](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
- - [input_guide](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
+ - [API入門](/docs/glfw/v3-5-1/ja/03-guides/01-introduction-to-the-api/#intro_guide)
+ - [ウィンドウガイド](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_guide)
+ - [Vulkanガイド](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)
+ - [モニターガイド](/docs/glfw/v3-5-1/ja/03-guides/03-monitor-guide/#monitor_guide)
+ - [入力ガイド](/docs/glfw/v3-5-1/ja/03-guides/05-input-guide/#input_guide)
 
 
 <a id="context_object"></a>
 
 ## コンテキストオブジェクト
 
-ウィンドウオブジェクトは、トップレベルウィンドウと OpenGL または OpenGL ES コンテキストの両方を内包します。[glfwCreateWindow](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga3555a418df92ad53f917597fe2f64aeb) で作成し、[glfwDestroyWindow](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#gacdf43e51376051d2c091662e9fe3d7b2) または [glfwTerminate](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#gaaae48c0a18607ea4a4ba951d939f0901) で破棄します。詳しくは [window_creation](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_creation)を参照してください。
+ウィンドウオブジェクトは、トップレベルウィンドウと OpenGL または OpenGL ES コンテキストの両方を内包します。[glfwCreateWindow](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#ga3555a418df92ad53f917597fe2f64aeb) で作成し、[glfwDestroyWindow](/docs/glfw/v3-5-1/ja/04-reference/03-window-reference/#gacdf43e51376051d2c091662e9fe3d7b2) または [glfwTerminate](/docs/glfw/v3-5-1/ja/04-reference/01-initialization-version-error/#gaaae48c0a18607ea4a4ba951d939f0901) で破棄します。詳しくは [ウィンドウを作成する](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#window_creation)を参照してください。
 
 ウィンドウとコンテキストは分離できない形で結び付いているため、ウィンドウオブジェクトはコンテキストのハンドルとしても機能します。
 
 さまざまな種類のコンテキストの作成を試し、そのプロパティを確認するには、`glfwinfo` テストプログラムを実行してください。
 
-> **注:** Vulkan にはコンテキストがなく、Vulkan インスタンスは Vulkan API 自体を介して作成します。Vulkan を使ってウィンドウへ描画する場合は、[GLFW_CLIENT_API](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_CLIENT_API_hint) ヒントを `GLFW_NO_API` に設定し、コンテキストの作成を無効にしてください。詳しくは [vulkan_guide](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)を参照してください。
+> **注:** Vulkan にはコンテキストがなく、Vulkan インスタンスは Vulkan API 自体を介して作成します。Vulkan を使ってウィンドウへ描画する場合は、[GLFW_CLIENT_API](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#GLFW_CLIENT_API_hint) ヒントを `GLFW_NO_API` に設定し、コンテキストの作成を無効にしてください。詳しくは [Vulkanガイド](/docs/glfw/v3-5-1/ja/03-guides/06-vulkan-guide/#vulkan_guide)を参照してください。
 
 
 <a id="context_hints"></a>
@@ -110,7 +110,7 @@ GLFWwindow* window = glfwGetCurrentContext();
 
 ## バッファ交換
 
-ウィンドウガイドの [buffer_swap](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#buffer_swap)を参照してください。
+ウィンドウガイドの [バッファ交換](/docs/glfw/v3-5-1/ja/03-guides/04-window-guide/#buffer_swap)を参照してください。
 
 
 <a id="context_glext"></a>

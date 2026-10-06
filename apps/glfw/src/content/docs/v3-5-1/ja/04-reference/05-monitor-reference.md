@@ -1,7 +1,10 @@
 ---
 title: "モニターリファレンス"
 description: "GLFW 3.5.1 モニターリファレンス"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx参照注記（GLFW 3.5.1）:</strong> 上の有効期間の原文は「配列」と表記しています。<a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/monitor.c#L451-L461\">固定版の実装</a>は、モニター内に格納された単一の <code>GLFWvidmode</code> へのポインターを返します。配列を返す関数は <code>glfwGetVideoModes</code> です。上の原文表記に対応する訳文は保持しています。</p>\n</blockquote>","context":{"anchor":"functions","label":"関数"}}]
 ---
+
+# モニターリファレンス
 
 <span id="details"></span>
 
@@ -1116,6 +1119,8 @@ UTF-8 でエンコードされたモニター名。<a href="/docs/glfw/v3-5-1/ja
 
 ポインターの有効期間  
 返される配列は GLFW が割り当て、解放します。自分で解放しないでください。指定されたモニターが切断されるか、ライブラリが終了するまで有効です。
+
+
 
 <!-- -->
 

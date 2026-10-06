@@ -1,6 +1,7 @@
 ---
 title: "Moving from GLFW 2 to 3"
 description: "Migration guide for GLFW 2 users"
+documentContext: [{"kind":"editorial","html":"<blockquote>\n<p><strong>Libx reference note (GLFW 3.5.1):</strong> The comma inside <code>glfw3,</code> above is part of the upstream wording. The <a href=\"https://github.com/glfw/glfw/blob/3.5.1/src/CMakeLists.txt#L118-L126\">fixed library output-name configuration</a> uses <code>glfw</code> for a shared library on Unix-like systems and <code>glfw3</code> otherwise, without a comma. The upstream wording is preserved above.</p>\n</blockquote>","context":{"anchor":"renamed-library-and-header-file","label":"Renamed library and header file"}}]
 ---
 
 <a id="moving_guide"></a>
@@ -25,6 +26,8 @@ avoid collisions with the headers of other major versions.  Similarly, the GLFW
 Unix-like systems, where it uses the [soname][] `libglfw.so.3`.
 
 [soname]: https://en.wikipedia.org/wiki/soname
+
+
 
 __Old syntax__
 ```c
@@ -514,7 +517,7 @@ example [libtess2][].
 
 ### Renamed types
 | GLFW 2              | GLFW 3                | Notes |
-| ------------------- | --------------------- |       |
+| ------------------- | --------------------- | ----- |
 | `GLFWmousewheelfun` | [GLFWscrollfun](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gaf656112c33de3efdb227fa58f0134cf5)    |       |
 | `GLFWmouseposfun`   | [GLFWcursorposfun](/docs/glfw/v3-5-1/en/04-reference/06-input-reference/#gad6fae41b3ac2e4209aaa87b596c57f68) |       |
 

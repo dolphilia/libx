@@ -3,6 +3,8 @@ title: "Standard cursor shapes"
 description: "GLFW 3.5.1 Standard cursor shapes"
 ---
 
+# Standard cursor shapes
+
 <span id="details"></span>
 
 ## Description
