@@ -1,0 +1,195 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-01T20:25:35.572Z",
+  "views": [
+    {
+      "language": "ja",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bodyLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.8",
+          "text": "§3.4.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/07-lexical-conventions/#3.1",
+          "text": "§3.1"
+        }
+      ],
+      "clientWidth": 1265,
+      "codeBlocks": 1,
+      "codeFrames": [
+        {
+          "clientWidth": 919,
+          "scrollWidth": 919,
+          "whiteSpace": "pre"
+        }
+      ],
+      "emphasis": [],
+      "headingFunctions": [],
+      "images": 0,
+      "inlineCode": 0,
+      "lists": [],
+      "originalIds": [
+        "9"
+      ],
+      "paragraphs": 1,
+      "scrollWidth": 1265,
+      "tables": 0,
+      "title": "9 – Luaの完全な構文",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/11-complete-syntax/"
+    },
+    {
+      "language": "ja",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "bodyLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.8",
+          "text": "§3.4.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/07-lexical-conventions/#3.1",
+          "text": "§3.1"
+        }
+      ],
+      "clientWidth": 375,
+      "codeBlocks": 1,
+      "codeFrames": [
+        {
+          "clientWidth": 327,
+          "scrollWidth": 702,
+          "whiteSpace": "pre"
+        }
+      ],
+      "emphasis": [],
+      "headingFunctions": [],
+      "images": 0,
+      "inlineCode": 0,
+      "lists": [],
+      "originalIds": [
+        "9"
+      ],
+      "paragraphs": 1,
+      "scrollWidth": 375,
+      "tables": 0,
+      "title": "9 – Luaの完全な構文",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/11-complete-syntax/"
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bodyLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.8",
+          "text": "§3.4.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/07-lexical-conventions/#3.1",
+          "text": "§3.1"
+        }
+      ],
+      "clientWidth": 1265,
+      "codeBlocks": 1,
+      "codeFrames": [
+        {
+          "clientWidth": 919,
+          "scrollWidth": 919,
+          "whiteSpace": "pre"
+        }
+      ],
+      "emphasis": [],
+      "headingFunctions": [],
+      "images": 0,
+      "inlineCode": 0,
+      "lists": [],
+      "originalIds": [
+        "9"
+      ],
+      "paragraphs": 1,
+      "scrollWidth": 1265,
+      "tables": 0,
+      "title": "9 – The Complete Syntax of Lua",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/11-complete-syntax/"
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "bodyLinks": [
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/10-expressions/#3.4.8",
+          "text": "§3.4.8"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/07-lexical-conventions/#3.1",
+          "text": "§3.1"
+        }
+      ],
+      "clientWidth": 375,
+      "codeBlocks": 1,
+      "codeFrames": [
+        {
+          "clientWidth": 327,
+          "scrollWidth": 702,
+          "whiteSpace": "pre"
+        }
+      ],
+      "emphasis": [],
+      "headingFunctions": [],
+      "images": 0,
+      "inlineCode": 0,
+      "lists": [],
+      "originalIds": [
+        "9"
+      ],
+      "paragraphs": 1,
+      "scrollWidth": 375,
+      "tables": 0,
+      "title": "9 – The Complete Syntax of Lua",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/11-complete-syntax/"
+    }
+  ],
+  "console": [],
+  "renderedCode": {
+    "code": [
+      {
+        "height": 1760.375,
+        "text": "\tchunk ::= block\n\n\tblock ::= {stat} [retstat]\n\n\tstat ::=  ‘;’ | \n\t\t varlist ‘=’ explist | \n\t\t functioncall | \n\t\t label | \n\t\t break | \n\t\t goto Name | \n\t\t do block end | \n\t\t while exp do block end | \n\t\t repeat block until exp | \n\t\t if exp then block {elseif exp then block} [else block] end | \n\t\t for Name ‘=’ exp ‘,’ exp [‘,’ exp] do block end | \n\t\t for namelist in explist do block end | \n\t\t function funcname funcbody | \n\t\t local function Name funcbody | \n\t\t global function Name funcbody | \n\t\t local attnamelist [‘=’ explist] | \n\t\t global attnamelist [‘=’ explist] | \n\t\t global [attrib] ‘*’ \n\n\tattnamelist ::=  [attrib] Name [attrib] {‘,’ Name [attrib]}\n\n\tattrib ::= ‘<’ Name ‘>’\n\n\tretstat ::= return [explist] [‘;’]\n\n\tlabel ::= ‘::’ Name ‘::’\n\n\tfuncname ::= Name {‘.’ Name} [‘:’ Name]\n\n\tvarlist ::= var {‘,’ var}\n\n\tvar ::=  Name | prefixexp ‘[’ exp ‘]’ | prefixexp ‘.’ Name \n\n\tnamelist ::= Name {‘,’ Name}\n\n\texplist ::= exp {‘,’ exp}\n\n\texp ::=  nil | false | true | Numeral | LiteralString | ‘...’ | functiondef | \n\t\t prefixexp | tableconstructor | exp binop exp | unop exp \n\n\tprefixexp ::= var | functioncall | ‘(’ exp ‘)’\n\n\tfunctioncall ::=  prefixexp args | prefixexp ‘:’ Name args \n\n\targs ::=  ‘(’ [explist] ‘)’ | tableconstructor | LiteralString \n\n\tfunctiondef ::= function funcbody\n\n\tfuncbody ::= ‘(’ [parlist] ‘)’ block end\n\n\tparlist ::= namelist [‘,’ varargparam] | varargparam\n\n\tvarargparam ::= ‘...’ [Name]\n\n\ttableconstructor ::= ‘{’ [fieldlist] ‘}’\n\n\tfieldlist ::= field {fieldsep field} [fieldsep]\n\n\tfield ::= ‘[’ exp ‘]’ ‘=’ exp | Name ‘=’ exp | exp\n\n\tfieldsep ::= ‘,’ | ‘;’\n\n\tbinop ::=  ‘+’ | ‘-’ | ‘*’ | ‘/’ | ‘//’ | ‘^’ | ‘%’ | \n\t\t ‘&’ | ‘~’ | ‘|’ | ‘>>’ | ‘<<’ | ‘..’ | \n\t\t ‘<’ | ‘<=’ | ‘>’ | ‘>=’ | ‘==’ | ‘~=’ | \n\t\t and | or\n\n\tunop ::= ‘-’ | not | ‘#’ | ‘~’",
+        "whiteSpace": "pre"
+      }
+    ]
+  },
+  "keyboard": {
+    "targetExists": true,
+    "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/10-expressions/#3.4.8"
+  },
+  "locale": {
+    "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/11-complete-syntax/",
+    "samePage": true
+  },
+  "screenshots": [
+    "ja-desktop.png",
+    "ja-mobile.png",
+    "ja-mobile-content.png",
+    "ja-mobile-bnf-end.png",
+    "en-desktop.png",
+    "en-mobile.png"
+  ],
+  "reviewNotes": [
+    "英日desktop1280x720/mobile390x844で本文とBNF枠を実表示。文書全幅横overflowなし、長行はコード枠内横scroll。",
+    "JA末尾binop/unop・72行BNFのDOM全文/正の高さ/pre空白保持を確認。",
+    "mobileにはsidebar折畳buttonがないため同buttonへの操作がno_matchesで停止。実AXを再読し通常scrollで本文と末尾を確認、無効操作を成功としない。",
+    "§3.4.8をEnterで参照しnative target存在、戻ってJA→EN同一pageへ切替。BNF実行は対象外。"
+  ],
+  "renderedCodeByteExact": true
+}

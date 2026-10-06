@@ -1,0 +1,88 @@
+{
+  "ja": {
+    "emphasis": [
+      "<em>a</em>",
+      "<em>a</em>",
+      "<em>a</em>",
+      "<em>a</em>",
+      "<em>名前</em>",
+      "<em>識別子</em>",
+      "<em>キーワード</em>",
+      "<em>短いリテラル文字列</em>",
+      "<em>XX</em>",
+      "<em>ddd</em>",
+      "<em>XXX</em>",
+      "<em>長い括弧</em>",
+      "<em>レベル</em>",
+      "<em>の開始長括弧</em>",
+      "<em>n</em>",
+      "<em>終了長括弧</em>",
+      "<em>長いリテラル</em>",
+      "<em>数値定数</em>",
+      "<em>数値リテラル</em>",
+      "<em>0x1f / 16</em>",
+      "<em>ラップアラウンド</em>",
+      "<em>コメント</em>",
+      "<em>短いコメント</em>",
+      "<em>長いコメント</em>"
+    ],
+    "problems": [
+      {
+        "html": "Unicode文字のUTF-8エンコーディングは、エスケープシーケンス<code>\\u{XXX}</code>（波括弧は必須）を使用してリテラル文字列へ挿入できる。<em>XXX</em>は、その文字のコードポイントを表す1桁以上の16進数字である。このコードポイントには、*2<sup>31</sup>*未満の任意の値を指定できる。（ここでLuaは、有効なUnicodeコードポイントだけに制限されない、元のUTF-8仕様を使用する。）",
+        "text": "Unicode文字のUTF-8エンコーディングは、エスケープシーケンス\\u{XXX}（波括弧は必須）を使用してリテラル文字列へ挿入できる。XXXは、その文字のコードポイントを表す1桁以上の16進数字である。このコードポイントには、*231*未満の任意の値を指定できる。（ここでLuaは、有効なUnicodeコードポイントだけに制限されない、元のUTF-8仕様を使用する。）"
+      },
+      {
+        "html": "リテラル文字列は、<em>長い括弧</em>で囲む長い形式でも定義できる。<em>レベル</em>n<em>の開始長括弧</em>を、開き角括弧、<em>n</em>個の等号、もう1つの開き角括弧からなるものとして定義する。したがって、レベル0の開始長括弧は<code>[[</code>、レベル1は<code>[=[</code>と記述し、以下同様である。<em>終了長括弧</em>も同様に定義する。たとえば、レベル4の終了長括弧は<code>]====]</code>と記述する。<em>長いリテラル</em>は任意のレベルの開始長括弧で始まり、同じレベルで最初に現れる終了長括弧で終わる。同じレベルの終了括弧を除く任意のテキストを含められる。この括弧形式のリテラルは複数行にわたることができ、エスケープシーケンスを解釈せず、他のレベルの長い括弧を無視する。あらゆる行末シーケンス（キャリッジリターン、改行、キャリッジリターンに続く改行、改行に続くキャリッジリターン）は、単一の改行へ変換される。開始長括弧の直後に改行がある場合、その改行は文字列へ含まれない。",
+        "text": "リテラル文字列は、長い括弧で囲む長い形式でも定義できる。レベルnの開始長括弧を、開き角括弧、n個の等号、もう1つの開き角括弧からなるものとして定義する。したがって、レベル0の開始長括弧は[[、レベル1は[=[と記述し、以下同様である。終了長括弧も同様に定義する。たとえば、レベル4の終了長括弧は]====]と記述する。長いリテラルは任意のレベルの開始長括弧で始まり、同じレベルで最初に現れる終了長括弧で終わる。同じレベルの終了括弧を除く任意のテキストを含められる。この括弧形式のリテラルは複数行にわたることができ、エスケープシーケンスを解釈せず、他のレベルの長い括弧を無視する。あらゆる行末シーケンス（キャリッジリターン、改行、キャリッジリターンに続く改行、改行に続くキャリッジリターン）は、単一の改行へ変換される。開始長括弧の直後に改行がある場合、その改行は文字列へ含まれない。"
+      },
+      {
+        "html": "<em>数値定数</em>（または<em>数値リテラル</em>）は、省略可能な小数部と、文字’<code>e</code>’または’<code>E</code>’で示す省略可能な10進指数を付けて記述できる。Luaは、<code>0x</code>または<code>0X</code>で始まる16進定数も受け付ける。16進定数にも、省略可能な小数部と、文字’<code>p</code>’または’<code>P</code>’で示し10進数で記述する省略可能な2進指数を指定できる。（たとえば<code>0x1.fp10</code>は、<em>0x1f / 16</em>に*2<sup>10</sup>*を乗じた1984を表す。）",
+        "text": "数値定数（または数値リテラル）は、省略可能な小数部と、文字’e’または’E’で示す省略可能な10進指数を付けて記述できる。Luaは、0xまたは0Xで始まる16進定数も受け付ける。16進定数にも、省略可能な小数部と、文字’p’または’P’で示し10進数で記述する省略可能な2進指数を指定できる。（たとえば0x1.fp10は、0x1f / 16に*210*を乗じた1984を表す。）"
+      }
+    ]
+  },
+  "en": {
+    "emphasis": [
+      "<em>a</em>",
+      "<em>a</em>",
+      "<em>a</em>",
+      "<em>a</em>",
+      "<em>Names</em>",
+      "<em>identifiers</em>",
+      "<em>keywords</em>",
+      "<em>short literal string</em>",
+      "<em>XX</em>",
+      "<em>ddd</em>",
+      "<em>XXX</em>",
+      "<em>2<sup>31</sup></em>",
+      "<em>long brackets</em>",
+      "<em>opening long bracket of level <em>n</em></em>",
+      "<em>n</em>",
+      "<em>n</em>",
+      "<em>closing long bracket</em>",
+      "<em>long literal</em>",
+      "<em>numeric constant</em>",
+      "<em>numeral</em>",
+      "<em>0x1f / 16</em>",
+      "<em>2<sup>10</sup></em>",
+      "<em>wraps around</em>",
+      "<em>comment</em>",
+      "<em>short comment</em>",
+      "<em>long comment</em>"
+    ],
+    "problems": [
+      {
+        "html": "The UTF-8 encoding of a Unicode character can be inserted in a literal string with the escape sequence <code>\\u{XXX}</code> (with mandatory enclosing braces), where <em>XXX</em> is a sequence of one or more hexadecimal digits representing the character code point. This code point can be any value less than <em>2<sup>31</sup></em>. (Lua uses the original UTF-8 specification here, which is not restricted to valid Unicode code points.)",
+        "text": "The UTF-8 encoding of a Unicode character can be inserted in a literal string with the escape sequence \\u{XXX} (with mandatory enclosing braces), where XXX is a sequence of one or more hexadecimal digits representing the character code point. This code point can be any value less than 231. (Lua uses the original UTF-8 specification here, which is not restricted to valid Unicode code points.)"
+      },
+      {
+        "html": "Literal strings can also be defined using a long format enclosed by <em>long brackets</em>. We define an <em>opening long bracket of level <em>n</em></em> as an opening square bracket followed by <em>n</em> equal signs followed by another opening square bracket. So, an opening long bracket of level&nbsp;0 is written as <code>[[</code>, an opening long bracket of level&nbsp;1 is written as <code>[=[</code>, and so on. A <em>closing long bracket</em> is defined similarly; for instance, a closing long bracket of level&nbsp;4 is written as <code>]====]</code>. A <em>long literal</em> starts with an opening long bracket of any level and ends at the first closing long bracket of the same level. It can contain any text except a closing bracket of the same level. Literals in this bracketed form can run for several lines, do not interpret any escape sequences, and ignore long brackets of any other level. Any kind of end-of-line sequence (carriage return, newline, carriage return followed by newline, or newline followed by carriage return) is converted to a simple newline. When the opening long bracket is immediately followed by a newline, the newline is not included in the string.",
+        "text": "Literal strings can also be defined using a long format enclosed by long brackets. We define an opening long bracket of level n as an opening square bracket followed by n equal signs followed by another opening square bracket. So, an opening long bracket of level 0 is written as [[, an opening long bracket of level 1 is written as [=[, and so on. A closing long bracket is defined similarly; for instance, a closing long bracket of level 4 is written as ]====]. A long literal starts with an opening long bracket of any level and ends at the first closing long bracket of the same level. It can contain any text except a closing bracket of the same level. Literals in this bracketed form can run for several lines, do not interpret any escape sequences, and ignore long brackets of any other level. Any kind of end-of-line sequence (carriage return, newline, carriage return followed by newline, or newline followed by carriage return) is converted to a simple newline. When the opening long bracket is immediately followed by a newline, the newline is not included in the string."
+      },
+      {
+        "html": "A <em>numeric constant</em> (or <em>numeral</em>) can be written with an optional fractional part and an optional decimal exponent, marked by a letter ‘<code>e</code>’ or ‘<code>E</code>’. Lua also accepts hexadecimal constants, which start with <code>0x</code> or <code>0X</code>. Hexadecimal constants also accept an optional fractional part plus an optional binary exponent, marked by a letter ‘<code>p</code>’ or ‘<code>P</code>’ and written in decimal. (For instance, <code>0x1.fp10</code> denotes 1984, which is <em>0x1f / 16</em> multiplied by <em>2<sup>10</sup></em>.)",
+        "text": "A numeric constant (or numeral) can be written with an optional fractional part and an optional decimal exponent, marked by a letter ‘e’ or ‘E’. Lua also accepts hexadecimal constants, which start with 0x or 0X. Hexadecimal constants also accept an optional fractional part plus an optional binary exponent, marked by a letter ‘p’ or ‘P’ and written in decimal. (For instance, 0x1.fp10 denotes 1984, which is 0x1f / 16 multiplied by 210.)"
+      }
+    ]
+  }
+}
