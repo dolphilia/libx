@@ -1,0 +1,148 @@
+{
+  "slug": "43-comparing-directories",
+  "bodySHA256": "323726e27fc5a01576d804aebe21003696e813be3f86620d94992aca030f99c5",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h2",
+      "text": "⟦0⟧4 Comparing Directories⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h2 class=\"chapter\" id=\"Comparing-Directories-1\"><span>4 Comparing Directories</span></h2>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "You can use ⟦0⟧ to compare some or all of the files in two directory trees. When both file name arguments to ⟦1⟧ are directories, it compares each file that is contained in both directories, examining file names in alphabetical order as specified by the ⟦2⟧ locale category. Normally ⟦3⟧ is silent about pairs of files that contain no differences, but if you use the ⟦4⟧ (⟦5⟧) option, it reports pairs of identical files. Normally ⟦6⟧ reports subdirectories common to both directories without comparing subdirectories’ files, but if you use the ⟦7⟧ or ⟦8⟧ option, it compares every corresponding pair of files in the directory trees, as many levels deep as they go.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<code class=\"env\">LC_COLLATE</code>",
+        "⟦3⟧": "<code class=\"command\">diff</code>",
+        "⟦4⟧": "<samp class=\"option\">--report-identical-files</samp>",
+        "⟦5⟧": "<samp class=\"option\">-s</samp>",
+        "⟦6⟧": "<code class=\"command\">diff</code>",
+        "⟦7⟧": "<samp class=\"option\">-r</samp>",
+        "⟦8⟧": "<samp class=\"option\">--recursive</samp>"
+      },
+      "sourceHTML": "<p>You can use <code class=\"command\">diff</code> to compare some or all of the files in two\ndirectory trees.  When both file name arguments to <code class=\"command\">diff</code> are\ndirectories, it compares each file that is contained in both\ndirectories, examining file names in alphabetical order as specified by\nthe <code class=\"env\">LC_COLLATE</code> locale category.  Normally\n<code class=\"command\">diff</code> is silent about pairs of files that contain no differences,\nbut if you use the <samp class=\"option\">--report-identical-files</samp> (<samp class=\"option\">-s</samp>) option,\nit reports pairs of identical files.  Normally <code class=\"command\">diff</code> reports\nsubdirectories common to both directories without comparing\nsubdirectories’ files, but if you use the <samp class=\"option\">-r</samp> or\n<samp class=\"option\">--recursive</samp> option, it compares every corresponding pair of files\nin the directory trees, as many levels deep as they go.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "If only one file exists, ⟦0⟧ normally does not show its contents; it merely reports that one file exists but the other does not. You can make ⟦1⟧ act as though the missing file is empty, so that it outputs the entire contents of the file that actually exists. (It is output as either an insertion or a deletion, depending on whether the missing file is in the first or the second position.) To do this, use the ⟦2⟧ (⟦3⟧) option. This option affects command-line arguments as well as files found via directory traversal; for example, ‘⟦4⟧’ treats ⟦5⟧ as empty if ⟦6⟧ does not exist but ⟦7⟧ does.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<samp class=\"option\">--new-file</samp>",
+        "⟦3⟧": "<samp class=\"option\">-N</samp>",
+        "⟦4⟧": "<samp class=\"samp\">diff\n-N a b</samp>",
+        "⟦5⟧": "<samp class=\"file\">a</samp>",
+        "⟦6⟧": "<samp class=\"file\">a</samp>",
+        "⟦7⟧": "<samp class=\"file\">b</samp>"
+      },
+      "sourceHTML": "<p>If only one file exists, <code class=\"command\">diff</code> normally does not show its\ncontents; it merely reports that one file exists but the other does\nnot.  You can make <code class=\"command\">diff</code> act as though the missing file is\nempty, so that it outputs the entire contents of the file that\nactually exists.  (It is output as either an insertion or a\ndeletion, depending on whether the missing file is in the first or the\nsecond position.)  To do this, use the <samp class=\"option\">--new-file</samp>\n(<samp class=\"option\">-N</samp>) option.  This option affects command-line arguments as\nwell as files found via directory traversal; for example, ‘<samp class=\"samp\">diff\n-N a b</samp>’ treats <samp class=\"file\">a</samp> as empty if <samp class=\"file\">a</samp> does not exist but\n<samp class=\"file\">b</samp> does.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "If the older directory contains large files that are not in the newer directory, you can make the patch smaller by using the ⟦0⟧ option instead of ⟦1⟧. This option is like ⟦2⟧ except that it inserts the contents only of files that appear in the second directory but not the first (that is, files that were added). At the top of the patch, write instructions for the user applying the patch to remove the files that were deleted before applying the patch. See ⟦3⟧Tips for Making and Using Patches⟦4⟧, for more discussion of making patches for distribution.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--unidirectional-new-file</samp>",
+        "⟦1⟧": "<samp class=\"option\">-N</samp>",
+        "⟦2⟧": "<samp class=\"option\">-N</samp>",
+        "⟦3⟧": "<a class=\"xref\" href=\"/docs/gnu-diffutils/source/v3-12/manual.html#Making-Patches\">",
+        "⟦4⟧": "</a>"
+      },
+      "sourceHTML": "<p>If the older directory contains large files that are not in\nthe newer directory, you can make the patch smaller by using the\n<samp class=\"option\">--unidirectional-new-file</samp> option instead of <samp class=\"option\">-N</samp>.\nThis option is like <samp class=\"option\">-N</samp> except that it inserts the contents only\nof files that appear in the second directory but not the first (that is,\nfiles that were added).  At the top of the patch, write instructions for\nthe user applying the patch to remove the files that were deleted before\napplying the patch.  See <a class=\"xref\" href=\"/docs/gnu-diffutils/source/v3-12/manual.html#Making-Patches\">Tips for Making and Using Patches</a>, for more discussion of\nmaking patches for distribution.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "To ignore some files while comparing directories, use the ⟦0⟧ (⟦1⟧) option. This option ignores any files or subdirectories whose base names match the shell pattern ⟦2⟧. Unlike in the shell, a period at the start of the base of a file name matches a wildcard at the start of a pattern. You should enclose ⟦3⟧ in quotes so that the shell does not expand it. For example, the option ⟦4⟧ ignores any file whose name ends with ‘⟦5⟧’ or ‘⟦6⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--exclude=<var class=\"var\">pattern</var></samp>",
+        "⟦1⟧": "<samp class=\"option\">-x <var class=\"var\">pattern</var></samp>",
+        "⟦2⟧": "<var class=\"var\">pattern</var>",
+        "⟦3⟧": "<var class=\"var\">pattern</var>",
+        "⟦4⟧": "<samp class=\"option\">-x '*.[ao]'</samp>",
+        "⟦5⟧": "<samp class=\"samp\">.a</samp>",
+        "⟦6⟧": "<samp class=\"samp\">.o</samp>"
+      },
+      "sourceHTML": "<p>To ignore some files while comparing directories, use the\n<samp class=\"option\">--exclude=<var class=\"var\">pattern</var></samp> (<samp class=\"option\">-x <var class=\"var\">pattern</var></samp>) option.\nThis option\nignores any files or subdirectories whose base names match the shell\npattern <var class=\"var\">pattern</var>.  Unlike in the shell, a period at the start of\nthe base of a file name matches a wildcard at the start of a pattern.\nYou should enclose <var class=\"var\">pattern</var> in quotes so that the shell does not\nexpand it.  For example, the option <samp class=\"option\">-x '*.[ao]'</samp> ignores any file\nwhose name ends with ‘<samp class=\"samp\">.a</samp>’ or ‘<samp class=\"samp\">.o</samp>’.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "This option accumulates if you specify it more than once. For example, using the options ⟦0⟧ ignores any file or subdirectory whose base name is ‘⟦1⟧’ or ends with ‘⟦2⟧’.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">-x 'RCS' -x '*,v'</samp>",
+        "⟦1⟧": "<samp class=\"samp\">RCS</samp>",
+        "⟦2⟧": "<samp class=\"samp\">,v</samp>"
+      },
+      "sourceHTML": "<p>This option accumulates if you specify it more than once.  For example,\nusing the options <samp class=\"option\">-x 'RCS' -x '*,v'</samp> ignores any file or\nsubdirectory whose base name is ‘<samp class=\"samp\">RCS</samp>’ or ends with ‘<samp class=\"samp\">,v</samp>’.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "If you need to give this option many times, you can instead put the patterns in a file, one pattern per line, and use the ⟦0⟧ (⟦1⟧) option. Trailing white space and empty lines are ignored in the pattern file.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--exclude-from=<var class=\"var\">file</var></samp>",
+        "⟦1⟧": "<samp class=\"option\">-X <var class=\"var\">file</var></samp>"
+      },
+      "sourceHTML": "<p>If you need to give this option many times, you can instead put the\npatterns in a file, one pattern per line, and use the\n<samp class=\"option\">--exclude-from=<var class=\"var\">file</var></samp> (<samp class=\"option\">-X <var class=\"var\">file</var></samp>) option.\nTrailing white space and empty lines are ignored in the pattern file.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "If you have been comparing two directories and stopped partway through, later you might want to continue where you left off. You can do this by using the ⟦0⟧ (⟦1⟧) option. This compares only the file ⟦2⟧ and all alphabetically later files in the topmost directory level.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--starting-file=<var class=\"var\">file</var></samp>",
+        "⟦1⟧": "<samp class=\"option\">-S <var class=\"var\">file</var></samp>",
+        "⟦2⟧": "<var class=\"var\">file</var>"
+      },
+      "sourceHTML": "<p>If you have been comparing two directories and stopped partway through,\nlater you might want to continue where you left off.  You can do this by\nusing the <samp class=\"option\">--starting-file=<var class=\"var\">file</var></samp> (<samp class=\"option\">-S <var class=\"var\">file</var></samp>)\noption.  This compares only the file <var class=\"var\">file</var> and all alphabetically\nlater files in the topmost directory level.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "If two directories differ only in that file names are lower case in one directory and upper case in the upper, ⟦0⟧ normally reports many differences because it compares file names in a case sensitive way. With the ⟦1⟧ option, ⟦2⟧ ignores case differences in file names, so that for example the contents of the file ⟦3⟧ in one directory are compared to the contents of the file ⟦4⟧ in the other. The ⟦5⟧ option cancels the effect of the ⟦6⟧ option, reverting to the default behavior.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"option\">--ignore-file-name-case</samp>",
+        "⟦2⟧": "<code class=\"command\">diff</code>",
+        "⟦3⟧": "<samp class=\"file\">Tao</samp>",
+        "⟦4⟧": "<samp class=\"file\">TAO</samp>",
+        "⟦5⟧": "<samp class=\"option\">--no-ignore-file-name-case</samp>",
+        "⟦6⟧": "<samp class=\"option\">--ignore-file-name-case</samp>"
+      },
+      "sourceHTML": "<p>If two directories differ only in that file names are lower case in\none directory and upper case in the upper, <code class=\"command\">diff</code> normally\nreports many differences because it compares file names in a\ncase sensitive way.  With the <samp class=\"option\">--ignore-file-name-case</samp> option,\n<code class=\"command\">diff</code> ignores case differences in file names, so that for example\nthe contents of the file <samp class=\"file\">Tao</samp> in one directory are compared to\nthe contents of the file <samp class=\"file\">TAO</samp> in the other.  The\n<samp class=\"option\">--no-ignore-file-name-case</samp> option cancels the effect of the\n<samp class=\"option\">--ignore-file-name-case</samp> option, reverting to the default\nbehavior.\n</p>"
+    },
+    {
+      "index": 9,
+      "tag": "p",
+      "text": "If an ⟦0⟧ (⟦1⟧) option, or an ⟦2⟧ (⟦3⟧) option, is specified while the ⟦4⟧ option is in effect, case is ignored when excluding file names matching the specified patterns.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--exclude=<var class=\"var\">pattern</var></samp>",
+        "⟦1⟧": "<samp class=\"option\">-x <var class=\"var\">pattern</var></samp>",
+        "⟦2⟧": "<samp class=\"option\">--exclude-from=<var class=\"var\">file</var></samp>",
+        "⟦3⟧": "<samp class=\"option\">-X <var class=\"var\">file</var></samp>",
+        "⟦4⟧": "<samp class=\"option\">--ignore-file-name-case</samp>"
+      },
+      "sourceHTML": "<p>If an <samp class=\"option\">--exclude=<var class=\"var\">pattern</var></samp> (<samp class=\"option\">-x <var class=\"var\">pattern</var></samp>) option,\nor an <samp class=\"option\">--exclude-from=<var class=\"var\">file</var></samp> (<samp class=\"option\">-X <var class=\"var\">file</var></samp>) option,\nis specified while the <samp class=\"option\">--ignore-file-name-case</samp> option is in\neffect, case is ignored when excluding file names matching the\nspecified patterns.\n</p>"
+    },
+    {
+      "index": 10,
+      "tag": "p",
+      "text": "To tell ⟦0⟧ not to follow a symbolic link, use the ⟦1⟧ option.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"option\">--no-dereference</samp>"
+      },
+      "sourceHTML": "<p>To tell <code class=\"command\">diff</code> not to follow a symbolic link, use the\n<samp class=\"option\">--no-dereference</samp> option.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

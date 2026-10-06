@@ -1,0 +1,62 @@
+{
+  "slug": "07-case-folding",
+  "bodySHA256": "ef29e59918405aabc8d0ce7056f652131ee1666b577d5354152a0b1403bbbc73",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧1.5 Suppressing Case Differences⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Suppressing-Case-Differences\"><span>1.5 Suppressing Case Differences</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "GNU ⟦0⟧ can treat capital letters as equivalent to their small counterparts, so that, for example, it considers ‘⟦1⟧’, ‘⟦2⟧’, and ‘⟦3⟧’ to all be the same. To request this, use the ⟦4⟧ or ⟦5⟧ option.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"samp\">Funky Stuff</samp>",
+        "⟦2⟧": "<samp class=\"samp\">funky STUFF</samp>",
+        "⟦3⟧": "<samp class=\"samp\">fUNKy\nstuFf</samp>",
+        "⟦4⟧": "<samp class=\"option\">-i</samp>",
+        "⟦5⟧": "<samp class=\"option\">--ignore-case</samp>"
+      },
+      "sourceHTML": "<p>GNU <code class=\"command\">diff</code> can treat capital letters as\nequivalent to their small counterparts, so that, for example, it\nconsiders ‘<samp class=\"samp\">Funky Stuff</samp>’, ‘<samp class=\"samp\">funky STUFF</samp>’, and ‘<samp class=\"samp\">fUNKy\nstuFf</samp>’ to all be the same.  To request this, use the <samp class=\"option\">-i</samp> or\n<samp class=\"option\">--ignore-case</samp> option.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "When ignoring case ⟦0⟧ downcases each character before comparing it. For example, ‘⟦1⟧’ downcases Greek capital “Δ” to small “δ” before comparison. Although this works for many cases, it may have problems in some. For example:",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"samp\">diff -i</samp>"
+      },
+      "sourceHTML": "<p>When ignoring case <code class=\"command\">diff</code> downcases each character before comparing it.\nFor example, ‘<samp class=\"samp\">diff -i</samp>’ downcases Greek capital “Δ” to small\n“δ” before comparison.  Although this works for many cases, it may\nhave problems in some.  For example:\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "li",
+      "text": "The German word “Straße” is not treated like “STRASSE” as many Germans might expect, because the two words downcase to “straße” and “strasse” respectively.",
+      "tokens": {},
+      "sourceHTML": "<li>The German word “Straße” is not treated like “STRASSE” as\nmany Germans might expect, because the two words downcase to\n“straße” and “strasse” respectively.\n\n</li>"
+    },
+    {
+      "index": 4,
+      "tag": "li",
+      "text": "The Greek name “Κως” is not treated like “ΚΩΣ” even though they both end in sigma, because the latter’s trailing “Σ” (U+03A3 GREEK CAPITAL LETTER SIGMA) downcases to “σ” (U+03C3 GREEK SMALL LETTER SIGMA) instead of to “ς” (U+03C2 GREEK SMALL LETTER FINAL SIGMA).",
+      "tokens": {},
+      "sourceHTML": "<li>The Greek name “Κως” is not treated like “ΚΩΣ”\neven though they both end in sigma,\nbecause the latter’s trailing “Σ” (U+03A3 GREEK CAPITAL LETTER SIGMA)\ndowncases to “σ” (U+03C3 GREEK SMALL LETTER SIGMA) instead\nof to “ς” (U+03C2 GREEK SMALL LETTER FINAL SIGMA).\n\n</li>"
+    },
+    {
+      "index": 5,
+      "tag": "li",
+      "text": "The ancient Greek phrase “Πάντα ῥεῖ” is not treated like “ΠΆΝΤΑ ῬΕΙ͂”, as the former’s trailing “ῖ” is the single character U+1FD6 (GREEK SMALL LETTER IOTA WITH PERISPOMENI) whereas the latter’s trailing “Ι͂” has two characters, U+0399 (GREEK CAPITAL LETTER IOTA) and U+0342 (COMBINING GREEK PERISPOMENI).",
+      "tokens": {},
+      "sourceHTML": "<li>The ancient Greek phrase “Πάντα ῥεῖ” is not treated like “ΠΆΝΤΑ ῬΕΙ͂”,\nas the former’s trailing “ῖ” is the single character U+1FD6 (GREEK\nSMALL LETTER IOTA WITH PERISPOMENI) whereas the latter’s trailing\n“Ι͂” has two characters, U+0399 (GREEK CAPITAL LETTER IOTA) and\nU+0342 (COMBINING GREEK PERISPOMENI).\n\n</li>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}

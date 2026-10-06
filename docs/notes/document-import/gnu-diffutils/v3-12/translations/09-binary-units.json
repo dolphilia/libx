@@ -1,0 +1,119 @@
+{
+  "slug": "09-binary",
+  "bodySHA256": "686653f85b61041b339b573a5d7c5149e72b9c626070b41ccd8ee36362d4b4f0",
+  "units": [
+    {
+      "index": 0,
+      "tag": "h3",
+      "text": "⟦0⟧1.7 Binary Files and Forcing Text Comparisons⟦1⟧",
+      "tokens": {
+        "⟦0⟧": "<span>",
+        "⟦1⟧": "</span>"
+      },
+      "sourceHTML": "<h3 class=\"section\" id=\"Binary-Files-and-Forcing-Text-Comparisons\"><span>1.7 Binary Files and Forcing Text Comparisons</span></h3>"
+    },
+    {
+      "index": 1,
+      "tag": "p",
+      "text": "If ⟦0⟧ thinks that either of the two files it is comparing is binary (a non-text file), it normally treats that pair of files much as if the summary output format had been selected (see ⟦1⟧Summarizing Which Files Differ⟦2⟧), and reports only that the binary files are different. This is because line by line comparisons are usually not meaningful for binary files. This does not count as trouble, even though the resulting output does not capture all the differences.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<a class=\"pxref\" href=\"/docs/gnu-diffutils/v3-12/en/01-guide/08-brief/#Brief\">",
+        "⟦2⟧": "</a>"
+      },
+      "sourceHTML": "<p>If <code class=\"command\">diff</code> thinks that either of the two files it is comparing is\nbinary (a non-text file), it normally treats that pair of files much as\nif the summary output format had been selected (see <a class=\"pxref\" href=\"/docs/gnu-diffutils/v3-12/en/01-guide/08-brief/#Brief\">Summarizing Which Files Differ</a>), and\nreports only that the binary files are different.  This is because line\nby line comparisons are usually not meaningful for binary files.\nThis does not count as trouble, even though the resulting output does\nnot capture all the differences.\n</p>"
+    },
+    {
+      "index": 2,
+      "tag": "p",
+      "text": "⟦0⟧ determines whether a file is text or binary by checking the first few bytes in the file; the exact number of bytes is system dependent, but it is typically several thousand. If every byte in that part of the file is non-null, ⟦1⟧ considers the file to be text; otherwise it considers the file to be binary.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p><code class=\"command\">diff</code> determines whether a file is text or binary by checking the\nfirst few bytes in the file; the exact number of bytes is system\ndependent, but it is typically several thousand.  If every byte in\nthat part of the file is non-null, <code class=\"command\">diff</code> considers the file to be\ntext; otherwise it considers the file to be binary.\n</p>"
+    },
+    {
+      "index": 3,
+      "tag": "p",
+      "text": "Sometimes you might want to force ⟦0⟧ to consider files to be text. For example, you might be comparing text files that contain null characters; ⟦1⟧ would erroneously decide that those are non-text files. Or you might be comparing documents that are in a format used by a word processing system that uses null characters to indicate special formatting. You can force ⟦2⟧ to consider all files to be text files, and compare them line by line, by using the ⟦3⟧ (⟦4⟧) option. If the files you compare using this option do not in fact contain text, they will probably contain few newline characters, and the ⟦5⟧ output will consist of hunks showing differences between long lines of whatever characters the files contain.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<code class=\"command\">diff</code>",
+        "⟦2⟧": "<code class=\"command\">diff</code>",
+        "⟦3⟧": "<samp class=\"option\">--text</samp>",
+        "⟦4⟧": "<samp class=\"option\">-a</samp>",
+        "⟦5⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>Sometimes you might want to force <code class=\"command\">diff</code> to consider files to be\ntext.  For example, you might be comparing text files that contain\nnull characters; <code class=\"command\">diff</code> would erroneously decide that those are\nnon-text files.  Or you might be comparing documents that are in a\nformat used by a word processing system that uses null characters to\nindicate special formatting.  You can force <code class=\"command\">diff</code> to consider all\nfiles to be text files, and compare them line by line, by using the\n<samp class=\"option\">--text</samp> (<samp class=\"option\">-a</samp>) option.  If the files you compare using this\noption do not in fact contain text, they will probably contain few\nnewline characters, and the <code class=\"command\">diff</code> output will consist of hunks\nshowing differences between long lines of whatever characters the files\ncontain.\n</p>"
+    },
+    {
+      "index": 4,
+      "tag": "p",
+      "text": "You can also force ⟦0⟧ to report only whether files differ (but not how). Use the ⟦1⟧ (⟦2⟧) option for this.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"option\">--brief</samp>",
+        "⟦2⟧": "<samp class=\"option\">-q</samp>"
+      },
+      "sourceHTML": "<p>You can also force <code class=\"command\">diff</code> to report only whether files differ\n(but not how).  Use the <samp class=\"option\">--brief</samp> (<samp class=\"option\">-q</samp>) option for\nthis.\n</p>"
+    },
+    {
+      "index": 5,
+      "tag": "p",
+      "text": "In operating systems that distinguish between text and binary files, ⟦0⟧ normally reads and writes all data as text. Use the ⟦1⟧ option to force ⟦2⟧ to read and write binary data instead. This option has no effect on a POSIX-compliant system like GNU or traditional Unix. However, many personal computer operating systems represent the end of a line with a carriage return followed by a newline. On such systems, ⟦3⟧ normally ignores these carriage returns on input and generates them at the end of each output line, but with the ⟦4⟧ option ⟦5⟧ treats each carriage return as just another input character, and does not generate a carriage return at the end of each output line. This can be useful when dealing with non-text files that are meant to be interchanged with POSIX-compliant systems.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff</code>",
+        "⟦1⟧": "<samp class=\"option\">--binary</samp>",
+        "⟦2⟧": "<code class=\"command\">diff</code>",
+        "⟦3⟧": "<code class=\"command\">diff</code>",
+        "⟦4⟧": "<samp class=\"option\">--binary</samp>",
+        "⟦5⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>In operating systems that distinguish between text and binary files,\n<code class=\"command\">diff</code> normally reads and writes all data as text.  Use the\n<samp class=\"option\">--binary</samp> option to force <code class=\"command\">diff</code> to read and write binary\ndata instead.  This option has no effect on a POSIX-compliant system\nlike GNU or traditional Unix.  However, many personal computer\noperating systems represent the end of a line with a carriage return\nfollowed by a newline.  On such systems, <code class=\"command\">diff</code> normally ignores\nthese carriage returns on input and generates them at the end of each\noutput line, but with the <samp class=\"option\">--binary</samp> option <code class=\"command\">diff</code> treats\neach carriage return as just another input character, and does not\ngenerate a carriage return at the end of each output line.  This can be\nuseful when dealing with non-text files that are meant to be\ninterchanged with POSIX-compliant systems.\n</p>"
+    },
+    {
+      "index": 6,
+      "tag": "p",
+      "text": "The ⟦0⟧ causes ⟦1⟧ to treat input lines that end in carriage return followed by newline as if they end in plain newline. This can be useful when comparing text that is imperfectly imported from many personal computer operating systems. This option affects how lines are read, which in turn affects how they are compared and output.",
+      "tokens": {
+        "⟦0⟧": "<samp class=\"option\">--strip-trailing-cr</samp>",
+        "⟦1⟧": "<code class=\"command\">diff</code>"
+      },
+      "sourceHTML": "<p>The <samp class=\"option\">--strip-trailing-cr</samp> causes <code class=\"command\">diff</code> to treat input\nlines that end in carriage return followed by newline as if they end\nin plain newline.  This can be useful when comparing text that is\nimperfectly imported from many personal computer operating systems.\nThis option affects how lines are read, which in turn affects how they\nare compared and output.\n</p>"
+    },
+    {
+      "index": 7,
+      "tag": "p",
+      "text": "If you want to compare two files byte by byte, you can use the ⟦0⟧ program with the ⟦1⟧ (⟦2⟧) option to show the values of each differing byte in the two files. With GNU ⟦3⟧, you can also use the ⟦4⟧ or ⟦5⟧ option to show the ASCII representation of those bytes. See ⟦6⟧Invoking ⟦7⟧⟦8⟧, for more information.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">cmp</code>",
+        "⟦1⟧": "<samp class=\"option\">--verbose</samp>",
+        "⟦2⟧": "<samp class=\"option\">-l</samp>",
+        "⟦3⟧": "<code class=\"command\">cmp</code>",
+        "⟦4⟧": "<samp class=\"option\">-b</samp>",
+        "⟦5⟧": "<samp class=\"option\">--print-bytes</samp>",
+        "⟦6⟧": "<a class=\"xref\" href=\"/docs/gnu-diffutils/source/v3-12/manual.html#Invoking-cmp\">",
+        "⟦7⟧": "<code class=\"command\">cmp</code>",
+        "⟦8⟧": "</a>"
+      },
+      "sourceHTML": "<p>If you want to compare two files byte by byte, you can use the\n<code class=\"command\">cmp</code> program with the <samp class=\"option\">--verbose</samp> (<samp class=\"option\">-l</samp>)\noption to show the values of each differing byte in the two files.\nWith GNU <code class=\"command\">cmp</code>, you can also use the <samp class=\"option\">-b</samp> or\n<samp class=\"option\">--print-bytes</samp> option to show the ASCII representation of\nthose bytes.  See <a class=\"xref\" href=\"/docs/gnu-diffutils/source/v3-12/manual.html#Invoking-cmp\">Invoking <code class=\"command\">cmp</code></a>, for more information.\n</p>"
+    },
+    {
+      "index": 8,
+      "tag": "p",
+      "text": "If ⟦0⟧ thinks that any of the files it is comparing is binary (a non-text file), it normally reports an error, because such comparisons are usually not useful. ⟦1⟧ uses the same test as ⟦2⟧ to decide whether a file is binary. As with ⟦3⟧, if the input files contain a few non-text bytes but otherwise are like text files, you can force ⟦4⟧ to consider all files to be text files and compare them line by line by using the ⟦5⟧ or ⟦6⟧ option.",
+      "tokens": {
+        "⟦0⟧": "<code class=\"command\">diff3</code>",
+        "⟦1⟧": "<code class=\"command\">diff3</code>",
+        "⟦2⟧": "<code class=\"command\">diff</code>",
+        "⟦3⟧": "<code class=\"command\">diff</code>",
+        "⟦4⟧": "<code class=\"command\">diff3</code>",
+        "⟦5⟧": "<samp class=\"option\">-a</samp>",
+        "⟦6⟧": "<samp class=\"option\">--text</samp>"
+      },
+      "sourceHTML": "<p>If <code class=\"command\">diff3</code> thinks that any of the files it is comparing is binary\n(a non-text file), it normally reports an error, because such\ncomparisons are usually not useful.  <code class=\"command\">diff3</code> uses the same test as\n<code class=\"command\">diff</code> to decide whether a file is binary.  As with <code class=\"command\">diff</code>, if\nthe input files contain a few non-text bytes but otherwise are like\ntext files, you can force <code class=\"command\">diff3</code> to consider all files to be text\nfiles and compare them line by line by using the <samp class=\"option\">-a</samp> or\n<samp class=\"option\">--text</samp> option.\n</p>"
+    }
+  ],
+  "nonProse": "Command/flag literals and pure code/output examples retained; explanatory dt labels and italic pre descriptions extracted too; no unhandled prose text."
+}
