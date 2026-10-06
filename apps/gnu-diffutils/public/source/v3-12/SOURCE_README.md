@@ -1,9 +1,9 @@
-# Libx GNU diffutils 3.12 Comparison and Output Formats — Overview and Chapters 1–4
-# Libx GNU diffutils 3.12 比較と出力書式 — 概要・第1〜4章
+# Libx GNU diffutils 3.12 Comparison and Merging — Overview and Chapters 1–10
+# Libx GNU diffutils 3.12 比較とマージ — 概要・第1〜10章
 
-GNU diffutils 3.12の概要と第1〜4章全文を、43ページの英語原文と独立・非公式の日本語訳で提供します。残りの章・付録・索引は、固定した原英語マニュアル全文と原Texinfo・Infoで参照できます。GNU diffutils本体や掲載例は実行せず、静的なテキストとして提供します。
+GNU diffutils 3.12の概要と第1〜10章全文を、83ページの英語原文と独立・非公式の日本語訳で提供します。残りの章・付録・索引は、固定した原英語マニュアル全文と原Texinfo・Infoで参照できます。GNU diffutils本体や掲載例は実行せず、静的なテキストとして提供します。
 
-The complete Overview and chapters 1–4 are provided in 43 English pages and an independent, unofficial Japanese translation. Remaining chapters, appendices and indexes are available in the fixed complete English manual and original Texinfo/Info. GNU diffutils and its examples are not run.
+The complete Overview and chapters 1–10 are provided in 83 English pages and an independent, unofficial Japanese translation. Remaining chapters, appendices and indexes are available in the fixed complete English manual and original Texinfo/Info. GNU diffutils and its examples are not run.
 
 ## 原著と利用条件 / Original and terms
 
@@ -11,7 +11,7 @@ The complete Overview and chapters 1–4 are provided in 43 English pages and an
 - Original authors: David MacKenzie, Paul Eggert and Richard Stallman. Original publisher: Free Software Foundation.
 - Copyright © 1992–1994, 1998, 2001–2002, 2004, 2006, 2009–2025 Free Software Foundation, Inc.
 - Original documentation is available under the GNU Free Documentation License, Version 1.3 or any later version, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts.
-- Modified title: Libx GNU diffutils 3.12 Comparison and Output Formats — Overview and Chapters 1–4 / Libx GNU diffutils 3.12 比較と出力書式 — 概要・第1〜4章. Modification author and publisher: Libx; modified 6 October 2026.
+- Modified title: Libx GNU diffutils 3.12 Comparison and Merging — Overview and Chapters 1–10 / Libx GNU diffutils 3.12 比較とマージ — 概要・第1〜10章. Modification author and publisher: Libx; modified 7 October 2026.
 - Copyright © 2026 Libx, for editing and independent Japanese translation. Modified documentation is available under the same GFDL 1.3-or-later conditions. No new Invariant Sections or Cover Texts are added.
 - 原著の著作権・許諾・著作者・履歴・原英語GFDL全文を保持します。ライセンス自体の日本語訳は提供していません。ソフトウェアのGPL等の通知は未変更の原著配布物と原稿に保持します。共有Libxファイルには既存の通知・条件が適用されます。
 
@@ -33,9 +33,9 @@ Original sources: [GNU diffutils](https://www.gnu.org/software/diffutils/), [off
 - [原英語GFDL Texinfo / original GFDL Texinfo](https://libx.dev/docs/gnu-diffutils/source/v3-12/original/doc/fdl.texi)
 - [Libxの編集用原稿・再生成キット / editable source and rebuild kit](https://libx.dev/docs/gnu-diffutils/source/v3-12/source.zip)
 
-`edited/en/01-guide/`と`edited/ja/01-guide/`には配信に使用する原文・訳文のMarkdown原稿があり、`edited/en/02-reference/01-gfdl.md`には原英語GFDL参照ページがあります。同じ125原稿と優先編集入力を`source.zip`に収録しています。Markdown内のHTMLはテキストエディターで編集できます。改行・タブの数値文字参照はコードの空白と変数の斜体を保持します。
+`edited/en/01-guide/`と`edited/ja/01-guide/`には配信に使用する原文・訳文のMarkdown原稿があり、`edited/en/02-reference/01-gfdl.md`には原英語GFDL参照ページがあります。同じ167原稿と優先編集入力を`source.zip`に収録しています。Markdown内のHTMLはテキストエディターで編集できます。改行・タブの数値文字参照はコードの空白と変数の斜体を保持します。
 
-The kit contains the unchanged original Texinfo/Info/notices/archive, the fixed complete English manual, all 125 editable Markdown documents, translation units and independent Japanese translation JSON, conversion helpers, and app/shared files required to rebuild. It excludes installed dependencies, generated build output, host operation progress, and a recursive copy of `source.zip`. `SOURCE_COMPONENTS.json` records each member's SHA256 and byte length.
+The kit contains the unchanged original Texinfo/Info/notices/archive, the fixed complete English manual, all 167 editable Markdown documents, translation units and independent Japanese translation JSON, conversion helpers, and app/shared files required to rebuild. It excludes installed dependencies, generated build output, host operation progress, and a recursive copy of `source.zip`. `SOURCE_COMPONENTS.json` records each member's SHA256 and byte length.
 
 ## 再生成 / Regeneration
 
@@ -53,6 +53,11 @@ python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapte
 export LIBX_UPDATE_WORKSPACE="$PWD"
 python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/apply-update.py
 python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapters-5-9/prepare-context.py
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapter-10/prepare-drafts.py
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapter-10/extract-units.py
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapter-10/render-drafts.py
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapter-10/apply-update.py
+python3 docs/notes/document-import/gnu-diffutils/v3-12/updates/2026-10-07-chapter-10/prepare-context.py
 pnpm --filter=apps-gnu-diffutils build
 ```
 
@@ -72,4 +77,8 @@ The original Detailed-Unified section contains adjacent descriptions of single-l
 
 7 October 2026: Added complete chapters5–9 (19 paired sections), retaining previous43paired pages and English GFDL reference;125editable Markdown documents in total. Original15additional example blocks remain literal. Added paragraphs and original English were reviewed in a separate saved workspace; only1Japanese qualifier was clarified and rechecked. The original archive/revision is unchanged.
 
-2026年10月7日：第5〜9章の全19節を英日で追加し、既存43英日ページと英語GFDL参照を保持しました。定本は合計125原稿です。追加15ブロックの例は原文の静的表示です。追加分の日本語優先入力は `updates/2026-10-07-chapters-5-9/translations/*-ja.json`、既存分は従来の `translations/*-ja.json` です。保存後の別パスで19節全文を確認し、1箇所の日本語を明確化しました。意味レビューを機械検査で代替しません。第10〜18章・付録・索引は固定原文へのリンクで提供します。
+2026年10月7日：第5〜9章の全19節を英日で追加し、既存43英日ページと英語GFDL参照を保持しました。定本は合計125原稿です。追加15ブロックの例は原文の静的表示です。追加分の日本語優先入力は `updates/2026-10-07-chapters-5-9/translations/*-ja.json`、既存分は従来の `translations/*-ja.json` です。保存後の別パスで19節全文を確認し、1箇所の日本語を明確化しました。意味レビューを機械検査で代替しません。この追加時点では第10〜18章・付録・索引を固定原文へのリンクで提供しました。
+
+7 October 2026: Added complete chapter10 in21paired sections,120prose units and2literal example blocks. Retained all125previous preferred documents;167preferred Markdown documents total. Remainingchapters11–18/appendices/indexes are provided through the fixed complete original. Newpreferred translation input: `updates/2026-10-07-chapter-10/translations/*-ja.json`.
+
+2026年10月7日：第10章の全21節を英日で追加しました。120説明単位と2例を保持し、既存125原稿は変更していません。定本は合計167原稿です。第11〜18章・付録・索引は固定原文で参照できます。脚注は原文全文の該当箇所へリンクします。
