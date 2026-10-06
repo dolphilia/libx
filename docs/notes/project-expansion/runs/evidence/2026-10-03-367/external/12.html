@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='description' content='Tclers wiki'>
+    <meta name='author' content=''>
+    <link rel='icon' href='/img/favicon.ico'>
+
+    <title>zlib</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+
+    <link rel='stylesheet' href='/css/nikit.css' type='text/css'>
+    <link rel='stylesheet' href='/css/sh_style.css' type='text/css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.bootstrap_3.min.css' type='text/css'>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js'></script>
+</head>
+
+<body onload='sh_highlightDocument(); nikitUser();'>
+
+<nav class='navbar navbar-fixed-top navbar-inverse'>
+  <div class='container'>
+    <div class='navbar-header'>
+      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+      </button>
+      <ul class='nav navbar-nav'>
+            <li class='dropdown'>
+<a class='dropdown-toggle' data-toggle='dropdown' href='#'>&nbsp;Tcler&#39;s Wiki<span class='caret'></span></a>
+<ul class='dropdown-menu scrollable-menu' role='menu'><li><a href='/welcome'>Home</a></li>
+<li><a rel='nofollow' href='/recent'>Changes</a></li>
+<li><a rel='nofollow' href='/_random'>Random page</a></li>
+<li><a rel='nofollow' href='/_new'>New page</a></li>
+</ul>
+</li>
+
+      </ul>
+    </div>
+    <div class='collapse navbar-collapse' id='myNavbar'>
+      <ul class='nav navbar-nav'>
+            <li class='dropdown' id='li_idPageEdit' style='display:none'>
+<a class='dropdown-toggle' data-toggle='dropdown' href='#'><span id=name_idPageEdit>Page</span><span class='caret'></span></a>
+<ul class='dropdown-menu scrollable-menu' role='menu'><li><a rel='nofollow' href='/_edit/zlib?A=1'>Comment</a></li>
+<li><a rel='nofollow' hidden='true' href='/_edit/zlib'>Edit</a></li>
+<li><a rel='nofollow' href='/_upload/zlib'>Upload</a></li>
+<li><a rel='nofollow' href='/ref/zlib'>References</a></li>
+<li><a rel='nofollow' href='/history/zlib'>History</a></li>
+<li><hr></li>
+<li><a href='#c205924de0fe636ccdde4ed616fef66f75b78e98b03620637965c033fd161141'>Documentation</a>
+</li>
+<li><a href='#0f9a0230f2f1b6f51b291e4270ff210a45ea15e1dff5937dad7113a6f5a109d2'>Package (pre-8.6b1)</a>
+</li>
+<li><a href='#e68ee04dff59551b7d1ae07a2f8a00dc61d841628948da3d2781630706a05e92'>&nbsp;&nbsp;&nbsp;Examples</a>
+</li>
+<li><a href='#c910d474dcd724bff83ddedeb06bf1eceaf9fb3af7c76bb282be057f36e6dffa'>General</a>
+</li>
+</ul>
+</li>
+
+            <li class='dropdown' id='li_idPageNoEdit' style='display:none'>
+<a class='dropdown-toggle' data-toggle='dropdown' href='#'><span id=name_idPageNoEdit>Page</span><span class='caret'></span></a>
+<ul class='dropdown-menu scrollable-menu' role='menu'><li><a rel='nofollow' href='/ref/zlib'>References</a></li>
+<li><a rel='nofollow' href='/history/zlib'>History</a></li>
+<li><hr></li>
+<li><a href='#c205924de0fe636ccdde4ed616fef66f75b78e98b03620637965c033fd161141'>Documentation</a>
+</li>
+<li><a href='#0f9a0230f2f1b6f51b291e4270ff210a45ea15e1dff5937dad7113a6f5a109d2'>Package (pre-8.6b1)</a>
+</li>
+<li><a href='#e68ee04dff59551b7d1ae07a2f8a00dc61d841628948da3d2781630706a05e92'>&nbsp;&nbsp;&nbsp;Examples</a>
+</li>
+<li><a href='#c910d474dcd724bff83ddedeb06bf1eceaf9fb3af7c76bb282be057f36e6dffa'>General</a>
+</li>
+</ul>
+</li>
+
+			<li><a href="/page/Showcase">Showcase</a></li>
+            <li><a href="/page/Tcl+Tutorial+Lesson+0">Tutorial</a></li>
+            <li><a href="/page/Articles">Articles</a></li>
+            <li><a href="/page/Tcl+Playground">Playground</a></li>
+            <li class='dropdown'>
+<a class='dropdown-toggle' data-toggle='dropdown' href='#'>&nbsp;Help<span class='caret'></span></a>
+<ul class='dropdown-menu scrollable-menu' role='menu'><li><a rel='nofollow' href='/page/Help'>Page Markup</a></li>
+<li><a rel='nofollow' href='/page/How+do+Wiki+Categories+work'>Wiki Categories</a></li>
+<li><a rel='nofollow' href='/page/Contents'>Topics</a></li>
+<li><a rel='nofollow' target='_blank' href='https://chiselapp.com/user/stevel/repository/nikit/ticket'>Report Problems</a></li>
+<li><a rel='nofollow' href='/privacy'>Privacy</a></li>
+<li><a rel='nofollow' href='/license'>License</a></li>
+</ul>
+</li>
+
+      </ul>
+      <ul class='nav navbar-nav navbar-right'>
+		<li class='dropdown'>
+		  <a class='dropdown-toggle' data-toggle='dropdown' href='#'><span id=name_SMenu>User</span><span class='caret'></span></a>
+		  <ul class='dropdown-menu' id='ul_SMenu'>
+		  </ul>
+		</li>
+      </ul>
+      <form class='navbar-form navbar-right' method='post' action='/search' id='searchform'>
+         <input name='Q' type='text' class='form-control' placeholder='Search...'/>
+         <input type="hidden" name="sites" value="wiki.tcl-lang.org"/>
+      </form>
+   </div>
+  </div>
+</nav>
+
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-12'>
+      <h2>zlib</h2>
+      
+   </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-12'>
+      <h2 id='c205924de0fe636ccdde4ed616fef66f75b78e98b03620637965c033fd161141' class='mkup_h1'>Documentation</h2><UL class='mkup_UL'><li class='mkup_li'><a rel='nofollow' class='mkup_a' href='https://www.tcl-lang.org/man/tcl/TclCmd/zlib.html'>https://www.tcl-lang.org/man/tcl/TclCmd/zlib.html <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a></li></UL><p class='mkup_p'>Checksums:</p><UL class='mkup_UL'><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+adler32'>zlib adler32</a></li><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+crc32'>zlib crc32</a></li></UL><p class='mkup_p'>Compression:</p><UL class='mkup_UL'><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+compress'>zlib compress</a></li><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+decompress'>zlib decompress</a></li><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+deflate'>zlib deflate</a></li><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+inflate'>zlib inflate</a></li><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+gzip'>zlib gzip</a> &ndash; Not in zlib package, Tcl 8.6b1 required</li><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+gunzip'>zlib gunzip</a> &ndash; Not in zlib package, Tcl 8.6b1 required</li></UL><p class='mkup_p'>Advanced:</p><UL class='mkup_UL'><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+push'>zlib push</a> &ndash; Not in zlib package, Tcl 8.6b1 required</li><li class='mkup_li'><a class='mkup_a mkup_known' href='/page/zlib+stream'>zlib stream</a> &ndash; Not in zlib package, Tcl 8.6b1 required</li></UL><h2 id='0f9a0230f2f1b6f51b291e4270ff210a45ea15e1dff5937dad7113a6f5a109d2' class='mkup_h1'>Package (pre-8.6b1)</h2><p class='mkup_p'>Zlib was distributed as a <a class='mkup_a mkup_known' href='/page/package'>package</a> prior to 8.6b1 (particularly in <a class='mkup_a mkup_known' href='/page/Tclkit'>tclkit</a>s).  The package did not include the subcommands notated above.</p><h3 id='e68ee04dff59551b7d1ae07a2f8a00dc61d841628948da3d2781630706a05e92' class='mkup_h2'>Examples</h3><p class='mkup_p'>Creating a gzipped file:</p><div class='sh_sourceCode'><pre class='sh_tcl sh_sourceCode'>proc gzip {file} {
+
+    set fin <a class='mkup_a mkup_unknown' href='/_new?newpagename=open+%24file+rb'>open $file rb</a>
+    set header [dict create \
+        filename $file
+        time <a class='mkup_a mkup_unknown' href='/_new?newpagename=file+mtime+%24file'>file mtime $file</a>
+        comment &quot;Created by Tcl<a class='mkup_a mkup_known' href='/page/info+patchlevel'>info patchlevel</a>&quot;]
+    set fout <a class='mkup_a mkup_unknown' href='/_new?newpagename=open+%24file%2Egz+wb'>open $file.gz wb</a>
+    zlib push gzip $fout -header $header
+    fcopy $fin $fout
+    close $fin
+    close $fout
+}</pre></div><p class='mkup_p'>A trivial <a class='mkup_a mkup_known' href='/page/zcat'>zcat</a> for viewing gzipped files:</p><div class='sh_sourceCode'><pre class='sh_tcl sh_sourceCode'>#!/usr/bin/env tclsh
+zlib push gunzip stdin
+chan copy stdin stdout</pre></div><p class='mkup_p'>For using zlib to compress command-response protocols (or datagrams), see <a class='mkup_a mkup_known' href='/page/zlib+stream'>zlib stream</a>.</p><hr class='mkup_hr'><h2 id='c910d474dcd724bff83ddedeb06bf1eceaf9fb3af7c76bb282be057f36e6dffa' class='mkup_h1'>General</h2><p class='mkup_p'>Zlib is a data compression library found at <a rel='nofollow' class='mkup_a' href='http://www.zlib.net'>http://www.zlib.net <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>. Its specification &quot;achieved official Internet RFC status in 1996&quot;, and is part of standard <a class='mkup_a mkup_known' href='/page/Java'>Java</a>, used, moreover, by <a class='mkup_a mkup_known' href='/page/JAR'>JAR</a>s.</p><p class='mkup_p'>Apparently the only documentation available at the zlib home is the &quot;Compressed Data Format Specification version 3.3&quot;  [<a rel='nofollow' class='mkup_a' href='ftp://swrinde.nde.swri.edu/pub/png/documents/zlib/rfc-zlib.html#conventions'>L1 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>], also available as RFC 1950 [<a rel='nofollow' class='mkup_a' href='http://www.ietf.org/rfc/rfc1950.txt'>L2 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>].</p><p class='mkup_p'>The zlib c code is currently at version 1.2.5 .</p><p class='mkup_p'>The programming interface for the basic Tcl binding is simply</p><pre class='mkup_pre'>    zlib option data ?...?</pre><p class='mkup_p'><a rel='nofollow' class='mkup_a' href='http://www.equi4.com/critlib/zlib.README'>http://www.equi4.com/critlib/zlib.README <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a> provides a bit more detail, including these specifics:</p><pre class='mkup_pre'>    set checksum [zlib adler32 data ?startvalue?]
+        # adler32 calculates a quick &quot;Adler-32&quot; checksum
+
+    set checksum [zlib crc32 data ?startvalue?]
+        # crc32 calculates the standard &quot;CRC-32&quot; checksum
+
+    set cdata [zlib compress data ?level?]
+        # zlib-compress data with optional compression level
+
+    set ddata [zlib deflate data ?level?]
+        # headerless compression with optional compression level
+
+    set data [zlib decompress cdata ?bufsize?]
+        # zlib-decompress data with optional buffer size
+
+    set data [zlib inflate ddata ?level?]
+        # headerless decompression with optional buffer size</pre><p></p><button class='mkup_button' type='button' id='togglediscussionbutton0' onclick='toggleDiscussion(0);'>Show discussion</button><div class='mkup_discussion' id='discussion0'><p class='mkup_p'>Since zlib is being used in at least <a class='mkup_a mkup_known' href='/page/Tclkit'>Tclkit</a>, there must be a Tcl binding of it.  Is this (or some other) binding available as stand alone code for someone who was looking to use it?  Could someone point to some documentation regarding the binding?  At the very least, someone could download the sources to Tclkit (follow the link below and subsequent links to find that) and paw through the pieces...</p><hr class='mkup_hr'><p class='mkup_p'><a class='mkup_a mkup_unknown' href='/_new?newpagename=KY'>KY</a> A standalone source code is here:<a rel='nofollow' class='mkup_a' href='https://www.tcl-lang.org/cgi-bin/tct/tip/234'>https://www.tcl-lang.org/cgi-bin/tct/tip/234 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a> </p><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/ZB'>ZB</a> 2009-05-04 I made a test using Pat's script mkzip.tcl (taken from <a class='mkup_a mkup_known' href='/page/creating+zip+file+archives+from+tcl+with+zlib'>creating zip file archives from tcl with zlib</a>) - and I wanted to check it out in a bit more difficult conditions, than usual.</p><p class='mkup_p'>On the machine equipped with 64 MB RAM (Linux) I've turned off swap space to limit the available memory size. Then I tried to pack into one ZIP archive 4 files, of sizes (around): 33, 51, 55, 61 MB. The machine had about 44 MB free (&quot;htop&quot; utility's report), so - as you can see - 3 of the files had larger size than available memory (with no swapping possibility). Unfortunately: mkzip.tcl rather quickly gave up, answering &quot;Can't allocate *some_size* bytes&quot;. But the zip utility present in the system was able to pack that files into one large archive.</p><p class='mkup_p'>Of course, having the new package will make archives handling now much easier. But perhaps could be possible to make its algorithms even better, to make it (if it's possible at all) quite independent from the available memory size - as it was in case of zip utility?</p><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/LV'>LV</a> Have you submitted this suggestion to <a rel='nofollow' class='mkup_a' href='http://tcl.sf.net/'>http://tcl.sf.net/ <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a> as a feature request? I don't know that it could technically be called a bug, since it does tell you that it can't get enough memory. But it certainly would be worth a feature request.</p><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/ZB'>ZB</a> No, not yet; I thought, this is quite valid place. But of course, I'll send. Yes, I realize, it probably isn't a bug, but the problem caused by currently used algorithms rather. And because of this I wrote about replacing algorithms, not about &quot;fixing&quot;.</p><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/DKF'>DKF</a>: You'd have to use the streaming API (or rather APIs; <a class='mkup_a mkup_known' href='/page/zlib+stream'>command-based</a> or <a class='mkup_a mkup_known' href='/page/zlib+push'>channel-based</a>) rather than the &quot;slap all the data through at once&quot; API. That's a bug in that script really...</p><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/ZB'>ZB</a> Well, maybe my assumption, that it should count bytes on its own - while creating an archive - and read the data in &quot;chunks&quot;, wasn't quite proper (actually, I don't know the way ZIP algorithm works). OK, I'll try to check out the different way.</p><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/DKF'>DKF</a>: I believe it is possible to write things that way. It just isn't actually done in that script; right now it just does <a class='mkup_a mkup_known' href='/page/open'>open</a>;<a class='mkup_a mkup_known' href='/page/read'>read</a> everything;<a class='mkup_a mkup_known' href='/page/zlib'>zlib</a> blah...</p><hr class='mkup_hr'><p class='mkup_p'><b class='mkup_b'>18Aug2004 <a class='mkup_a mkup_known' href='/page/PS'>PS</a></b>: I created an extension that provides the [zlib] command from tclkit for non-tclkit Tcl. You can download the source at [<a rel='nofollow' class='mkup_a' href='http://pascal.scheffers.net/software/zlib-1.1.1.tar.bz2'>L3 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>]. For Msys+Mingw builds on win32, I suggest you download [<a rel='nofollow' class='mkup_a' href='http://pascal.scheffers.net/software/zlib-1.1.1-with-libz.tar.bz2'>L4 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>] instead, which has zlib bundled. I also have a <a class='mkup_a mkup_known' href='/page/Windows'>Windows</a> binary for your pleasure: [<a rel='nofollow' class='mkup_a' href='http://pascal.scheffers.net/software/zlib-1.1.1-win32.zip'>L5 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>] -- enjoy!</p><hr class='mkup_hr'><p class='mkup_p'>Examples</p><hr class='mkup_hr'>
+<p class='mkup_p'>Included in <a class='mkup_a mkup_known' href='/page/Tclkit'>Tclkit</a> (yes in 8.4.1, but not in 8.4a3).</p><p class='mkup_p'>Regarding <a class='mkup_a mkup_known' href='/page/ActiveTcl'>ActiveTcl</a>, this distribution comes with two different bindings. A low-level one is provided by <a class='mkup_a mkup_known' href='/page/Img'>Img</a> (1.3rc), basically just loading zlib and providing a stub table for it. A high-level binding is provided by <a class='mkup_a mkup_known' href='/page/Trf'>Trf</a>. This uses the low-level binding when available, and loads zlib directly if not.</p>
+
+
+
+<p class='mkup_p'>&quot;Grab the zlib source from <a rel='nofollow' class='mkup_a' href='http://www.equi4.com/pub/tk/tars'>http://www.equi4.com/pub/tk/tars <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>, look at what genkit does with it.&quot;</p>
+<p class='mkup_p'>&quot;Another source of the same zlib as in tclkit is <a rel='nofollow' class='mkup_a' href='http://www.equi4.com/critlib'>http://www.equi4.com/critlib <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a> - so you can use critcl to build a zlib which is equivalent to tclkit's.&quot;</p><hr class='mkup_hr'><p class='mkup_p'>mkZiplib is a wrapper for Zlib 1.1.3 and Minizip 0.15. With mkZiplib you can compress/decompress data on-the-fly and work with .gz and .zip files from within Tcl.  [<a rel='nofollow' class='mkup_a' href='http://mkextensions.sourceforge.net/mkZiplib10.htm'>L6 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>]</p><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/LES'>LES</a> <b class='mkup_b'>on 15 Apr 2005</b>: mkZiplib is very interesting, but I ran into a couple of bad issues with it. One specific command causes tclsh/wish to crash on my machine [<a rel='nofollow' class='mkup_a' href='http://sourceforge.net/tracker/index.php?func=detail&aid=1184018&group_id=30166&atid=398463'>L7 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>]. Besides, mkZiplib requires zlib 1.1.3. I could only find 1.1.4 on the Web, and the rest of Tcl doesn't seem to like it. mkZiplib also has its own copy of zlib.dll in its directory, while ActiveTcl already is shipped with a zlib.dll in its /bin directory, which is in the $PATH by default. I wonder which zlib.dll is used by ActiveTcl and which one is used by mkZiplib when either requires zlib.dll. Finally, I could read the contents of zip files remarkably easy, but could not write to them as per the instructions in the manual. Maybe I am doing something wrong, but I think I tried everything.</p><hr class='mkup_hr'><p class='mkup_p'>AMSN [<a rel='nofollow' class='mkup_a' href='http://amsn.sourceforge.net/'>L8 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>] contains a pure-Tcl zlib decompression procedure.</p><p class='mkup_p'><a class='mkup_a mkup_unknown' href='/_new?newpagename=CJU'>CJU</a> Where? I couldn't find it...</p><p class='mkup_p'>It was taken out after version 0.94.  A somewhat improved version can be found at: <a class='mkup_a mkup_known' href='/page/zlib+%2D+inflate+in+tcl'>zlib - inflate in tcl</a>.</p><hr class='mkup_hr'><p class='mkup_p'><b class='mkup_b'>July 08, 2005</b>: Beware of new security issues [<a rel='nofollow' class='mkup_a' href='http://www.eweek.com/article2/0,1895,1834632,00.asp'>L9 <span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>] in the zlib library.</p><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/DKF'>DKF</a> &ndash; <i class='mkup_i'>November 15, 2009</i>: This does not apply to zlib-in-Tcl (i.e. 8.6) which requires zlib 1.2 or later.</p><hr class='mkup_hr'><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/RLE'>RLE</a> (Aug 11, 2011): Is there a bug in the 8.6b1 implementation of zlib?  If I attempt the example at the top of this page, I get an invalid gzip file:</p><div class='sh_sourceCode'><button class='copybtn btn pull-right' data-clipboard-target='#mkup_code_0' title='Click to copy code snippet to clipboard'><span class='glyphicon glyphicon-copy' aria-hidden='true'></span></button><pre id='mkup_code_0' class='sh_tcl sh_sourceCode'>% set file critcl.kit
+critcl.kit
+% set fin [open $file rb]
+file6
+% set header [dict create \
+        filename $file time [file mtime $file] comment &quot;Created by Tcl[info patchlevel]&quot;]
+filename critcl.kit time 1306892638 comment {Created by Tcl8.6b1}
+% set fout [zlib push gzip [open $file.gz wb] -header $header]
+file7
+% fcopy $fin $fout
+161266
+% close $fin
+% close $fout
+% exit
+$ gunzip -tv critcl.kit.gz
+critcl.kit.gz:
+gzip: critcl.kit.gz: invalid compressed data--format violated</pre></div><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/DKF'>DKF</a>: Could be. Have you retried with 8.6b2?</p><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/RLE'>RLE</a>: Just did, same effect:</p><div class='sh_sourceCode'><button class='copybtn btn pull-right' data-clipboard-target='#mkup_code_1' title='Click to copy code snippet to clipboard'><span class='glyphicon glyphicon-copy' aria-hidden='true'></span></button><pre id='mkup_code_1' class='sh_tcl sh_sourceCode'>% set file critcl.kit 
+critcl.kit
+% set fin [open $file rb]
+file5
+% set header [dict create \
+        filename $file time [file mtime $file] comment &quot;Created by Tcl[info patchlevel]&quot;]
+filename critcl.kit time 1313070437 comment {Created by Tcl8.6b2}
+% set fout [zlib push gzip [open $file.gz wb] -header $header]
+file6
+% fcopy $fin $fout
+161266
+% close $fin
+% close $fout
+% exit
+rellis@d820:~/downloads/tcl86b2/inst/usr/local/bin$ gunzip -tv critcl.kit.gz 
+critcl.kit.gz:
+gzip: critcl.kit.gz: invalid compressed data--format violated</pre></div><p class='mkup_p'><a class='mkup_a mkup_known' href='/page/DKF'>DKF</a>: That's a bug. Please file a bug report.</p></div><p></p><button class='mkup_button' type='button' id='togglediscussionbutton1' onclick='toggleDiscussion(1);'>Show discussion</button><div class='mkup_discussion' id='discussion1'><hr class='mkup_hr'><p class='mkup_p'>see <a class='mkup_a mkup_known' href='/page/creating+zip+file+archives+from+tcl+with+zlib'>creating zip file archives from tcl with zlib</a></p></div><hr><div class='mkup_centered'><table class='mkup_categories'><tr><td class='mkup_td'><a class='mkup_a' href='/page/Category+Command'>Category Command</a></td><td class='mkup_td'><a class='mkup_a' href='/page/Category+Package'>Category Package</a></td><td class='mkup_td'><a class='mkup_a' href='/page/Category+Compression'>Category Compression</a></td></tr></table></div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-12'>
+      <div class='Footer'>Updated 2026-02-17 19:54:07</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- jQuery library -->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.combined.js'></script>
+
+<!-- Latest compiled JavaScript -->
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+<script type='text/javascript' src='/scripts/nikit.js'></script>
+<script type='text/javascript' src='/scripts/sh_main.js'></script>
+<script type='text/javascript' src='/scripts/sh_tcl.js'></script>
+<script type='text/javascript' src='/scripts/sh_c.js'></script>
+<script type='text/javascript' src='/scripts/sh_cpp.js'></script>
+<!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
+<script src='https://hcaptcha.com/1/api.js'></script>
+<script>var clipboard = new ClipboardJS('.copybtn', {
+  text: function(trigger) {
+    return document.querySelector(trigger.getAttribute('data-clipboard-target')).textContent + '\n';
+  }
+});
+sort_tables();
+</script>
+
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"5c1e63a71fc94f21b5b71c5a734e49db","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
+

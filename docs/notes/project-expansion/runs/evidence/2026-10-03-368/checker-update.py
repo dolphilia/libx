@@ -1,0 +1,28 @@
+from pathlib import Path
+import json
+app=Path('/private/tmp/libx-zlib-integration-20261003/apps/zlib')
+p=app/'scripts/check-translation-drafts.mjs';s=p.read_text()
+s=s.replace("const page=process.argv[2]??", "const sourceOnly=process.argv.includes('--source-only');const page=process.argv[2]??")
+s=s.replace("rendered=parse(fs.readFileSync(","rendered=sourceOnly?null:parse(fs.readFileSync(")
+s=s.replace("assert.deepEqual(blocks(ja).map(txt),blocks(rendered).map(txt));","if(!sourceOnly)assert.deepEqual(blocks(ja).map(txt),blocks(rendered).map(txt));")
+s=s.replace("for(const id of ids(ja))assert(ids(rendered).includes(id));","if(!sourceOnly)for(const id of ids(ja))assert(ids(rendered).includes(id));")
+s=s.replace("const renderedNotice=walk(rendered,n=>at(n,'data-editorial')==='original-notice')[0];assert.equal(txt(walk(renderedNotice,n=>n.nodeName==='pre')[0]),original);","if(!sourceOnly){const renderedNotice=walk(rendered,n=>at(n,'data-editorial')==='original-notice')[0];assert.equal(txt(walk(renderedNotice,n=>n.nodeName==='pre')[0]),original);}")
+s=s.replace("const renderedNotice=walk(rendered,n=>at(n,'data-editorial')==='original-notice')[0];assert.equal(txt(walk(renderedNotice,n=>n.nodeName==='pre')[0]),originalText);","if(!sourceOnly){const renderedNotice=walk(rendered,n=>at(n,'data-editorial')==='original-notice')[0];assert.equal(txt(walk(renderedNotice,n=>n.nodeName==='pre')[0]),originalText);}")
+s=s.replace("assert.deepEqual(tables(ja).map(txt),tables(rendered).map(txt));","if(!sourceOnly)assert.deepEqual(tables(ja).map(txt),tables(rendered).map(txt));")
+s=s.replace("status:'passed-translated-page-only',page,","status:'passed-translated-page-only',scope:sourceOnly?'source-only':'source-and-rendered',page,")
+s=s.replace("renderedTextExact:true","renderedTextExact:sourceOnly?null:true").replace("renderedTableTextExact:true","renderedTableTextExact:sourceOnly?null:true")
+p.write_text(s)
+p=app/'scripts/check-japanese.mjs';s=p.read_text()
+s=s.replace("const app=", "const sourceOnly=process.argv.includes('--source-only');\nconst app=")
+s=s.replace("['scripts/check-translation-drafts.mjs',p.page]","['scripts/check-translation-drafts.mjs',p.page,...(sourceOnly?['--source-only']:[])]")
+s=s.replace("const rendered=parse(read(","const rendered=sourceOnly?null:parse(read(")
+s=s.replace("[['source',source],['rendered',rendered]]","[['source',source],...(sourceOnly?[]:[['rendered',rendered]])]")
+s=s.replace("pages:14,renderedPages:14","scope:sourceOnly?'all fourteen Japanese sources':'all fourteen Japanese sources and rendered pages',pages:14,renderedPages:sourceOnly?0:14")
+p.write_text(s)
+p=app/'scripts/check-content.mjs';s=p.read_text();needle="const result = { status:"
+i=s.index(needle)
+s=s[:i]+"let japanese=null;\nif(!args.has('--canonical-only')){\n  const checked=spawnSync(process.execPath,[path.join(app,'scripts/check-japanese.mjs'),...(args.has('--rendered')?[]:['--source-only'])],{encoding:'utf8'});\n  if(checked.status!==0)errors.push({kind:'Japanese whole machine validation',stdout:checked.stdout,stderr:checked.stderr});\n  else japanese=JSON.parse(checked.stdout);\n}\n"+s[i:]
+s=s.replace("externalLinks, errors, pending };","externalLinks, japanese, errors, pending };")
+s=s.replace("status: errors.length ? 'failed' : 'passed-for-canonical-machine-scope'","status: errors.length ? 'failed' : args.has('--canonical-only')?'passed-for-canonical-machine-scope':'passed-for-english-japanese-machine-scope'")
+p.write_text(s)
+p=app/'package.json';j=json.loads(p.read_text());j['scripts']['check:rendered']='node scripts/check-content.mjs --rendered';p.write_text(json.dumps(j,indent=2)+'\n')

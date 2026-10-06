@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zlib - Looking the Gift Code in the Mouth | Mark Nelson</title>
+<meta name="generator" content="Jekyll v3.8.3">
+<meta property="og:title" content="zlib - Looking the Gift Code in the Mouth">
+<meta name="author" content="Mark Nelson">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This article takes a look at the zlib compression library, and demos some uses in both a simple command line C++ app and a Windows OCX. The demo program using the OCX is written in Delphi.">
+<meta property="og:description" content="This article takes a look at the zlib compression library, and demos some uses in both a simple command line C++ app and a Windows OCX. The demo program using the OCX is written in Delphi.">
+<meta property="og:site_name" content="Mark Nelson">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="1997-01-01T20:30:34+00:00">
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="main.css"></head>
+<body><header class="site-header">
+
+  <div class="wrapper"><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">zlib - Looking the Gift Code in the Mouth</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="1997-01-01T20:30:34+00:00" itemprop="datePublished">Jan 1, 1997
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <table border="0" width="500">
+ <tbody><tr>
+  <td width="300">
+   <img src="logo2_ddj.png" alt="The Dr. Dobb&#39;s logo using a sans serif font, yellow on green. This is here for decorative purposes only." title="">
+  </td>
+  <td>
+   <strong>Dr. Dobb's Journal</strong> January, 1997
+  </td>
+ </tr>
+</tbody></table>
+
+<p>Free software is like pizza - when it’s good, it’s very good. When it’s bad, it can still be 
+pretty good. This article takes a look at zlib, the free data compression library written by Mark 
+Adler and Jean-loup Gailly. Like the very finest pizza, zlib is exceptional.</p>
+
+<p>In this article I will first give a quick overview of what zlib is, and where it came from. I’ll 
+then discuss the existing interface, and look at the wrapper class I created for my own use. 
+Finally, I’ll talk about how I integrated zlib into a a command line test program and a general 
+purpose file compression OCX. After reading this article you should feel comfortable using zlib 
+for many, if not all, of your data compression needs.</p>
+
+<h4>Where there's a need...</h4>
+
+<p>I recently received an email message from Scott Steketee, a developer of The Geometer’s 
+Sketchpad, an educational/visualization tool:</p>
+
+<blockquote>
+  <p>Do you know of a product which can be used in place of the Windows files compress.exe and 
+expand.exe in such an installation? It’s obvious even to me that the compression achieved by the 
+standard Windows programs is not very good, and I imagine I could keep the current number of 
+disks just by improving the ratio somewhat.</p>
+</blockquote>
+
+<p>I frequently see messages similar to this in Internet newsgroups like comp.compression and 
+comp.lang.c, or on various CompuServe forums. It seems that the requirement to efficiently 
+compress or expand files is a fairly common one. Often, programmers find that their needs aren’t 
+being filled by the Windows API functions in LZEXPAND.DLL (no compression functions), and don’t 
+want to spend the money needed for third party solutions, such as Greenleaf’s ArchiveLib.</p>
+
+<p>Fortunately, I’m able to point Scott towards an excellent solution to his problem: zlib. zlib is 
+a library of C routines that can be used to compress or expand files using the same deflate 
+algorithm popularized by PKZIP 2.0. zlib is efficient, portable, and free.</p>
+
+<h4>A Brief History of zlib</h4>
+
+<p>The origins of zlib can be found in the history of Info-ZIP. Info-ZIP is a loosely organized group 
+of programmers who give the following reason for their existence:</p>
+
+<blockquote>
+  <p>Info-ZIP’s purpose is to provide free, portable, high-quality versions of the Zip and UnZip 
+compressor-archiver utilities that are compatible with the DOS-based PKZIP by PKWARE, Inc.</p>
+</blockquote>
+
+<p>These free versions of Zip and UnZip are world class programs, and are in wide use on platforms 
+ranging from the orphaned Amiga through MS-DOS PCs up to high powered RISC workstations. But 
+these programs are designed to be used as command line utilities, not as library routines. People 
+have found that porting the Info-ZIP source into an application could be a grueling exercise.</p>
+
+<p>Fortunately for all of us, two of the Info-ZIP gurus took it upon themselves to solve this 
+problem. Mark Adler and Jean-loup Gailly single-handedly created zlib, a set of library routines 
+that provide a safe, free, and non-patented implementation of the deflate compression algorithm.</p>
+
+<p>One of the driving reasons behind zlib’s creation was for use as the compressor for PNG format 
+graphics. After Unisys belatedly began asserting their patent rights to LZW compression, 
+programmers all over the world were thrown into a panic over the prospect of paying royalties on 
+their GIF decoding programs. The PNG standard was created to provide an unencumbered format for 
+graphics interchange. The zlib version of the deflate algorithm was embraced by PNG developers, 
+not only because it was free, but it also compressed better than the original LZW compressor used 
+in GIF files.</p>
+
+<p>zlib turns out to be good for more than graphics developers, however. The deflate algorithm makes 
+an excellent general purpose compressor, and as such can be incorporated into all sorts of 
+different software. For example, I use zlib as the compression engine in Greenleaf’s ArchiveLib, 
+a data compression library that work with ZIP archives. It’s performance and compatibility mean I 
+didn’t have to reinvent the wheel, saving precious months of development time.</p>
+
+<h4>zlib's interface</h4>
+
+<p>As a library developer, I know that interfaces make or break a library. Performance issues are 
+important, but if an awkward API makes it impossible to integrate a library into your program, 
+you’ve got a problem.</p>
+
+<p>zlib’s interface is confined to just a few simple function calls. The entire state of a given 
+compression or decompression session is encapsulated in a C structure of type <code class="highlighter-rouge">z_stream</code>, whose definition is shown in Figure 1.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">z_stream_s</span> <span class="p">{</span>
+  <span class="n">Bytef</span> <span class="o">*</span><span class="n">next_in</span><span class="p">;</span>    <span class="cm">/* next input byte */</span>
+  <span class="n">uInt</span> <span class="n">avail_in</span><span class="p">;</span>     <span class="cm">/* number of bytes available at next_in */</span>
+  <span class="n">uLong</span> <span class="n">total_in</span><span class="p">;</span>    <span class="cm">/* count of input bytes read so far */</span>
+  <span class="n">Bytef</span> <span class="o">*</span><span class="n">next_out</span><span class="p">;</span>   <span class="cm">/* next output byte should be put there */</span>
+  <span class="n">uInt</span> <span class="n">avail_out</span><span class="p">;</span>    <span class="cm">/* remaining free space at next_out */</span>
+  <span class="n">uLong</span> <span class="n">total_out</span><span class="p">;</span>   <span class="cm">/* count of bytes output so far */</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">msg</span><span class="p">;</span>         <span class="cm">/* last error message, NULL if no error */</span>
+  <span class="k">struct</span> <span class="n">internal_state</span> <span class="o">*</span><span class="n">state</span><span class="p">;</span> <span class="cm">/* not visible by applications*/</span>
+  <span class="n">alloc_func</span> <span class="n">zalloc</span><span class="p">;</span> <span class="cm">/* used to allocate the internal state*/</span>
+  <span class="n">free_func</span> <span class="n">zfree</span><span class="p">;</span>   <span class="cm">/* used to free the internal state */</span>
+  <span class="n">voidpf</span> <span class="n">opaque</span><span class="p">;</span>     <span class="cm">/* private data passed to zalloc and zfree*/</span>
+  <span class="kt">int</span> <span class="n">data_type</span><span class="p">;</span>     <span class="cm">/* best guess about the data: ascii or binary*/</span>
+  <span class="n">uLong</span> <span class="n">adler</span><span class="p">;</span>       <span class="cm">/* adler32 value of the uncompressed data */</span>
+  <span class="n">uLong</span> <span class="n">reserved</span><span class="p">;</span>    <span class="cm">/* reserved for future use */</span>
+<span class="p">}</span> <span class="n">z_stream</span><span class="p">;</span></code></pre></figure>
+
+<center>
+<b>Figure 1 — The z_stream object definition</b>
+</center>
+<p>
+
+</p><p>Using the library to compress or decompress a file or other data object consists of three main 
+steps:</p>
+
+<ol>
+  <li>Creating a <code class="highlighter-rouge">z_stream</code> object.</li>
+  <li>Processing input and output, using the z_stream object to communicate with zlib.</li>
+  <li>Destroying the <code class="highlighter-rouge">z_stream</code> object.</li>
+</ol>
+
+<p>An overview of the process is shown in Figure 2.</p>
+
+<center>
+ <img src="Figure2.png" alt="A flowchart showing the canonical flow of a zlib session, as described in the list above." title="">
+ <br>
+ <b>Figure 2 — The general flow of a zlib session</b>
+</center>
+<p>
+
+</p><p>Steps 1 and 3 of the compression process are done using conventional function calls. The zlib API, 
+documented in header file zlib.h, prototypes the following functions for initialization and 
+termination of the compression or decompression process:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">deflateInit()</code></li>
+  <li><code class="highlighter-rouge">inflateInit()</code></li>
+  <li><code class="highlighter-rouge">deflateEnd()</code></li>
+  <li><code class="highlighter-rouge">inflateEnd()</code></li>
+</ol>
+
+<p>Step 2 is done via repeated calls to either <code class="highlighter-rouge">inflate()</code> or <code class="highlighter-rouge">deflate()</code>, passing the 
+<code class="highlighter-rouge">z_stream</code> object as a parameter. The entire state of the process is contained in that object, so 
+there are no global flags or variables, which allows the library to be completely reentrant. 
+Storing the state of the process in a single object also cuts down on the number of parameters 
+that must be passed to the API functions.</p>
+
+<p>When performing compression or decompression, zlib doesn’t perform any I/O on its own. Instead, 
+it reads data from an input buffer pointer that you supply in the <code class="highlighter-rouge">z_stream</code> object. You simply 
+set up a pointer to the next block of input data in member <code class="highlighter-rouge">next_in</code>, and place the number of 
+available bytes in the <code class="highlighter-rouge">avail_in</code> member. Likewise, zlib writes its output data to a memory 
+buffer you set up in the <code class="highlighter-rouge">next_out</code> member. As it writes output bytes, zlib decrements the 
+<code class="highlighter-rouge">avail_out</code> member until it drops to 0.</p>
+
+<p>Given this interface, Step 2 of the compression process for an input file and an output file 
+might look something like this:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">z_stream</span> <span class="n">z</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">input_buffer</span><span class="p">[</span> <span class="mi">1024</span> <span class="p">];</span>
+<span class="kt">char</span> <span class="n">output_buffer</span><span class="p">[</span> <span class="mi">1024</span> <span class="p">];</span>
+<span class="kt">FILE</span> <span class="o">*</span><span class="n">fin</span><span class="p">;</span>
+<span class="kt">FILE</span> <span class="o">*</span><span class="n">fout</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+<span class="cm">/*
+ * Setup code for your specific problem
+ */</span>
+    <span class="n">z</span><span class="p">.</span><span class="n">avail_in</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">z</span><span class="p">.</span><span class="n">next_out</span> <span class="o">=</span> <span class="n">output_buffer</span><span class="p">;</span>
+    <span class="n">z</span><span class="p">.</span><span class="n">avail_out</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="p">;</span> <span class="p">;</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">z</span><span class="p">.</span><span class="n">avail_in</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="n">z</span><span class="p">.</span><span class="n">next_in</span> <span class="o">=</span> <span class="n">input_buffer</span><span class="p">;</span>
+            <span class="n">z</span><span class="p">.</span><span class="n">avail_in</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span> <span class="n">input_buffer</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">fin</span> <span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">z</span><span class="p">.</span><span class="n">avail_in</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span>
+             <span class="k">break</span><span class="p">;</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">deflate</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">z</span><span class="p">,</span> <span class="n">Z_NO_FLUSH</span> <span class="p">);</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">-</span> <span class="n">z</span><span class="p">.</span><span class="n">avail_out</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">count</span> <span class="p">)</span>
+            <span class="n">fwrite</span> <span class="p">(</span> <span class="n">output_buffer</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">fout</span> <span class="p">);</span>
+        <span class="n">z</span><span class="p">.</span><span class="n">next_out</span> <span class="o">=</span> <span class="n">output_buffer</span><span class="p">;</span>
+        <span class="n">z</span><span class="p">.</span><span class="n">avail_out</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<center>
+ <b>Figure 3 — The code to implement file compression</b>
+</center>
+
+<p>This method of handling I/O frees zlib from having to implement system dependent read and write 
+code, and it insures that you can use the library to compress any sort of input stream, not just 
+files. It’s simply a matter of replacing the wrapper code shown above with a version customized 
+for your data stream.</p>
+
+<h4>Wrapping it up</h4>
+
+<p><code class="highlighter-rouge">zlib's</code> versatility is one of its strengths, but I don’t always need all that flexibility. For 
+example, to perform the simple file compression task Scott asked about at the start of this 
+article, it would be nice to just be able to call a single function to compress a file, and 
+another function to decompress. To make this possible, I created a wrapper class called <code class="highlighter-rouge">zlibEngine</code>.</p>
+
+<p><code class="highlighter-rouge">ZlibEngine</code> provides a simple API that automates the compression and decompression of files and 
+uses virtual functions to let you customize your user interface to zlib. The class definition is 
+shown in its entirety in Figure 4. There are two different groups of members that are important 
+to you in <code class="highlighter-rouge">ZlibEngine</code>. The first is the set of functions providing the calling interface to the 
+engine. The second is the set of functions and data members used to create a user interface that 
+is active during the compression process.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">class</span> <span class="nc">ZlibEngine</span> <span class="o">:</span> <span class="k">public</span> <span class="n">z_stream</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="o">:</span>
+        <span class="n">ZlibEngine</span><span class="p">();</span>
+            <span class="kt">int</span> <span class="n">compress</span><span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">input</span><span class="p">,</span>
+                          <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">output</span><span class="p">,</span>
+                          <span class="kt">int</span> <span class="n">level</span> <span class="o">=</span> <span class="mi">6</span> <span class="p">);</span>
+        <span class="kt">int</span> <span class="n">decompress</span><span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">input</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">output</span> <span class="p">);</span>
+        <span class="kt">void</span> <span class="n">set_abort_flag</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="p">){</span> <span class="n">m_AbortFlag</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">protected</span> <span class="o">:</span>
+        <span class="kt">int</span> <span class="n">percent</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">load_input</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">flush_output</span><span class="p">();</span>
+    <span class="k">protected</span> <span class="o">:</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">progress</span><span class="p">(</span> <span class="kt">int</span> <span class="n">percent</span> <span class="p">){};</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">status</span><span class="p">(</span> <span class="kt">char</span> <span class="o">*</span><span class="n">message</span> <span class="p">){};</span>
+    <span class="k">protected</span> <span class="o">:</span>
+        <span class="kt">int</span> <span class="n">m_AbortFlag</span><span class="p">;</span>
+        <span class="kt">FILE</span> <span class="o">*</span><span class="n">fin</span><span class="p">;</span>
+        <span class="kt">FILE</span> <span class="o">*</span><span class="n">fout</span><span class="p">;</span>
+        <span class="kt">long</span> <span class="n">length</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+        <span class="k">enum</span> <span class="p">{</span> <span class="n">input_length</span> <span class="o">=</span> <span class="mi">4096</span> <span class="p">};</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">input_buffer</span><span class="p">[</span> <span class="n">input_length</span> <span class="p">];</span>
+        <span class="k">enum</span> <span class="p">{</span> <span class="n">output_length</span> <span class="o">=</span> <span class="mi">4096</span> <span class="p">};</span>
+        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">output_buffer</span><span class="p">[</span> <span class="n">output_length</span> <span class="p">];</span>
+<span class="p">};</span></code></pre></figure>
+
+<center>
+<b>Figure 4 — The ZlibEngine wrapper class</b>
+</center>
+<p>
+
+</p><h4>The Calling API</h4>
+
+<p>There are three C++ functions that implement the API needed to perform simple compression and 
+decompression. Before using the engine, you must call the constructor, the first function. Since 
+<code class="highlighter-rouge">ZlibEngine</code> is derived from the <code class="highlighter-rouge">z_stream</code> object used as the interface to zlib, the constructor 
+is in effect also creating a <code class="highlighter-rouge">z_stream</code> object that will be used to communicate with zlib. In 
+addition, the constructor initializes some of the <code class="highlighter-rouge">z_stream</code> member variables that will be used in either compression or decompression.</p>
+
+<p>The two remaining functions are nice and simple: <code class="highlighter-rouge">compress()</code> compresses a file using the deflate algorithm. An optional level parameter sets a compression factor between 9 (maximum compression) and 0 (no compression.) <code class="highlighter-rouge">decompress()</code> decompresses a file, as you would expect. The compression level parameter isn’t necessary when decompressing, due to the nature of the deflate algorithm. Both of these functions return an integer status code, defined in the zlib header file zlib.h. <code class="highlighter-rouge">Z_OK</code> is returned when everything works as expected. Note that I added an additional code, <code class="highlighter-rouge">Z_USER_ABORT</code>, used for an end user abort of the compression or decompression process.</p>
+
+<p>The wrapper class makes it much easier to compress or decompress files using zlib. You only need to remember three things:</p>
+
+<ol>
+  <li>Include the header file for the wrapper class, zlibengn.h.</li>
+  <li>Construct a <code class="highlighter-rouge">ZlibEngine</code> object.</li>
+  <li>Call the member functions <code class="highlighter-rouge">compress()</code> or <code class="highlighter-rouge">decompress()</code> to do the actual work.</li>
+</ol>
+
+<p>This means you can now perform compression with code this simple:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include &lt;zlibengn.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">foo</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">ZlibEngine</span> <span class="n">engine</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">engine</span><span class="p">.</span><span class="n">compress</span><span class="p">(</span> <span class="s">"INPUT.DAT"</span><span class="p">,</span> <span class="s">"INPUT.DA_"</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>That’s about as simple as you could ask for, isn’t it?</p>
+
+<h4>The User Interface API</h4>
+
+<p>The calling API doesn’t really make much of a case for creating the <code class="highlighter-rouge">ZlibEngine</code> class. Based on 
+what you’ve seen so far, the <code class="highlighter-rouge">compress()</code> and <code class="highlighter-rouge">decompress()</code> functions don’t really need to be 
+members of a class. In theory, a global <code class="highlighter-rouge">compress()</code> function could just instantiate a <code class="highlighter-rouge">z_stream</code> 
+object when called, without the caller even being aware of it.</p>
+
+<p>The reason for creating this engine class is found in a completely different area: the user 
+interface. It’s really nice to be able to track the progress of your compression job while it’s 
+running. Conventional C libraries have to make do with callback functions or inflexible 
+standardized routines in order to provide feedback, but C++ offers a better alternative through 
+the use of virtual functions.</p>
+
+<p>The <code class="highlighter-rouge">ZlibEngine </code>class has two virtual functions that are used to create a useful user interface: 
+<code class="highlighter-rouge">progress()</code> is called periodically during the compression or decompression process, with a 
+single integer argument that tells what percentage of the input file has been processed. 
+<code class="highlighter-rouge">status()</code> is called with status messages during processing.</p>
+
+<p>Both of these virtual functions have access to the <code class="highlighter-rouge">ZlibEngine</code> protected data element, 
+<code class="highlighter-rouge">m_AbortFlag</code>. Setting this flag to a non-zero value will cause the compression or decompression 
+routine to abort immediately. This easily takes care of another sticky user interface problem 
+found when using library code.</p>
+
+<p>Writing your own user interface then becomes a simple exercise. You simply derive a new class 
+from <code class="highlighter-rouge">ZlibEngine</code>, and define your own versions of one or both of these virtual functions. 
+Instantiate an object of your class instead of <code class="highlighter-rouge">ZlibEngine</code>, and your user interface can be as 
+spiffy and responsive as you like!</p>
+
+<h4>Command line compression</h4>
+
+<p>I wrote a simple command line test program to demonstrate the use of class ZlibEngine. 
+zlibtest.cpp does a simple compress/decompress cycle of the input file specified on the command 
+line. I implement a progress function that simply prints out the current percent towards 
+completion as the file is processed:</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="k">class</span> <span class="nc">MyZlibEngine</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ZlibEngine</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="o">:</span>
+        <span class="kt">void</span> <span class="n">progress</span><span class="p">(</span> <span class="kt">int</span> <span class="n">percent</span> <span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span> <span class="s">"%3d%%</span><span class="se">\b\b\b\b</span><span class="s">"</span><span class="p">,</span> <span class="n">percent</span> <span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="n">kbhit</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="n">getch</span><span class="p">();</span>
+                <span class="n">m_AbortFlag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> 
+<span class="p">};</span></code></pre></figure>
+
+<p>Since class <code class="highlighter-rouge">ZlibEngine </code>is so simple, the derived class doesn’t even have to implement a 
+constructor or destructor. The derived version of <code class="highlighter-rouge">progress()</code> is able to provide user feedback 
+as well as an abort function with just a few lines of code. zlibtest.cpp is in the zip file 
+linked to at the end of the article.</p>
+
+<h4>The OCX</h4>
+
+<p>To provide a slightly more complicated test of class <code class="highlighter-rouge">ZlibEngine</code>, I created a 32 bit OCX using 
+Visual C++ 4.1. The interface to an OCX is defined in terms of methods, events, and properties. 
+ZlibTool.ocx has the following interface:</p>
+
+<table>
+ <tbody><tr>
+  <td>
+   Properties:
+  </td>
+  <td>
+   <code>
+    InputFile
+    <br>
+    OutputFile
+    <br>
+    Level
+    <br>
+    Status
+   </code>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   Methods:
+  </td>
+  <td>
+   <code>
+    Compress()
+    <br>
+    Decompress()
+    <br>
+    Abort()
+   </code> 
+  </td>
+ </tr>
+ <tr>
+  <td>
+   Events:
+  </td>
+  <td>
+   <code>
+    Progress()
+   </code>
+  </td>
+ </tr>
+</tbody></table>
+
+<p>(Note that I chose to pass status information from the OCX using a property, not an event.)</p>
+
+<p><code class="highlighter-rouge">ZlibTool.ocx</code> is a control derived from a standard Win32 progress bar. The progress bar gets 
+updated automatically while compressing or decompressing, so you get some user interface 
+functionality for free. Using it with Visual Basic 4.0 or Delphi 2.0 becomes a real breeze. After 
+registering the OCX, you can drop a copy of it onto your form and use it with a minimal amount of 
+coding.</p>
+
+<p>Both the source code for the OCX and a sample Delphi 2.0 program are available from the links at 
+the end of this article. A screen shot of the Delphi program in action is shown in Figure 5.</p>
+
+<center>
+ <img src="Figure5.png" alt="A dialog box with the zlib ocx embedded, showing progress during a compression session." title="">
+ <br>
+ <b>Figure 5 — The Delphi 2.0 OCX test program</b>
+</center>
+<p>
+
+</p><h4>Reference material</h4>
+
+<p>The source code that accompanies this article can be downloaded from this Web page. It contains 
+the following source code collections:</p>
+
+<ul>
+  <li>The complete source for zlib</li>
+  <li>The Visual C++ 4.1 project for the ZlibTool OCX</li>
+  <li>The Delphi 2.0 project that exercises the OCX</li>
+  <li>The Console test program that exercises the <code class="highlighter-rouge">ZlibEngine </code>class</li>
+</ul>
+
+<p>Each of the subdirectories contains a README.TXT file with documentation describing how to build 
+and use the programs.</p>
+
+<p>The source is split into two archives: 
+<a href="zlibtool.zip">zlibtool.zip</a>
+which contains all the source code from this article, as well as he OCX file.
+<a href="zlibdll.zip">zlibdll.zip</a>
+contains the supporting MFC and VC++ DLLs. Many people will already have these files on their 
+systems: <code class="highlighter-rouge">MFC40.DLL</code>, <code class="highlighter-rouge">MSVCRT40.DLL</code>, and <code class="highlighter-rouge">OLEPRO32.DLL</code>.</p>
+
+<p>I haven’t discussed the zlib code itself in this article. The best place to start gathering 
+information about how to use zlib and the Info-ZIP products can be found on their home pages. 
+Both pages have links to the most current versions of their source code as well:</p>
+
+<p>Info-ZIP: <a href="http://infozip.sourceforge.net/" target="_blank">http://infozip.sourceforge.net/</a></p>
+
+<p>zlib: <a href="https://zlib.net/" target="_blank">https://zlib.net/</a></p>
+
+<p>Once you download the Info-ZIP code, the quick start documentation is found in source file 
+<code class="highlighter-rouge">zlib.h</code>. If you cook up any useful code that uses zlib, you might want to forward copies to 
+Greg Roelofs for inclusion on the zlib home page. Greg maintains the zlib pages, and you can 
+reach him via links found there.</p>
+
+<h4>Feel-good plug</h4>
+
+<p>zlib can do a lot more than just compress files. Its versatile interface can be used for 
+streaming I/O, in-memory compression, and more. Since Jean-loup Gailly and Mark Adler were good 
+enough to make this capable tool available to the public, it only makes sense that we take 
+advantage of it. I know I have, and I encourage you to do the same.</p>
+
+  </div>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <h2 class="footer-heading">&copy; 1997 Mark Nelson</h2>
+<!--
+        <ul class="contact-list">
+          <li class="p-name">Mark Nelson</li></ul>
+-->
+      </div>
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+      <div class="footer-col footer-col-3">
+        <!-- <p>Books, articles, and posts from 1989 to today.</p> -->
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
