@@ -1,0 +1,129 @@
+<p>A map is an <em>associative</em> collection. It holds a set of entries, each of which
+maps a <em>key</em> to a <em>value</em>. The same data structure has a variety of names in
+other languages: hash table, dictionary, association, table, etc.</p>
+<p>You can create a map by placing a series of comma-separated entries inside
+curly braces. Each entry is a key and a value separated by a colon:</p>
+<pre class="snippet">
+{
+  "maple":  "Sugar Maple (Acer Saccharum)",
+  "larch":  "Alpine Larch (Larix Lyallii)",
+  "oak":    "Red Oak (Quercus Rubra)",
+  "fir":    "Fraser Fir (Abies Fraseri)"
+}
+</pre>
+
+<p>This creates a map that associates a type of tree (key) to a specific 
+tree within that family (value). Syntactically, in a map literal, keys 
+can be any literal, a variable name, or a parenthesized expression. 
+Values can be any expression. Here, we&rsquo;re using string literals for both keys 
+and values.</p>
+<p><em>Semantically</em>, values can be any object, and multiple keys may map to the same
+value. </p>
+<p>Keys have a few limitations. They must be one of the immutable built-in
+<a href="values.html">value types</a> in Wren. That means a number, string, range, bool, or <code>null</code>.
+You can also use a <a href="classes.html">class object</a> as a key (not an instance of that class, 
+the actual class itself).</p>
+<p>The reason for this limitation&mdash;and the reason maps are called &ldquo;<em>hash</em>
+tables&rdquo; in other languages&mdash;is that each key is used to generate a numeric
+<em>hash code</em>. This lets a map locate the value associated with a key in constant
+time, even in very large maps. Since Wren only knows how to hash certain
+built-in types, only those can be used as keys.</p>
+<h2>Adding entries <a href="#adding-entries" name="adding-entries" class="header-anchor">#</a></h2>
+<p>You add new key-value pairs to the map using the <a href="method-calls.html#subscripts">subscript operator</a>:</p>
+<pre class="snippet">
+var capitals = {}
+    capitals["Georgia"] = "Atlanta"
+    capitals["Idaho"] = "Boise"
+    capitals["Maine"] = "Augusta"
+</pre>
+
+<p>If the key isn&rsquo;t already present, this adds it and associates it with the given
+value. If the key is already there, this just replaces its value.</p>
+<h2>Looking up values <a href="#looking-up-values" name="looking-up-values" class="header-anchor">#</a></h2>
+<p>To find the value associated with some key, again you use your friend the
+subscript operator:</p>
+<pre class="snippet">
+System.print(capitals["Idaho"]) //> Boise
+</pre>
+
+<p>If the key is present, this returns its value. Otherwise, it returns <code>null</code>. Of
+course, <code>null</code> itself can also be used as a value, so seeing <code>null</code> here
+doesn&rsquo;t necessarily mean the key wasn&rsquo;t found.</p>
+<p>To tell definitively if a key exists, you can call <code>containsKey()</code>:</p>
+<pre class="snippet">
+var capitals = {"Georgia": null}
+
+System.print(capitals["Georgia"]) //> null (though key exists)
+System.print(capitals["Idaho"])   //> null 
+System.print(capitals.containsKey("Georgia")) //> true
+System.print(capitals.containsKey("Idaho"))   //> false
+</pre>
+
+<p>You can see how many entries a map contains using <code>count</code>:</p>
+<pre class="snippet">
+System.print(capitals.count) //> 3
+</pre>
+
+<h2>Removing entries <a href="#removing-entries" name="removing-entries" class="header-anchor">#</a></h2>
+<p>To remove an entry from a map, call <code>remove()</code> and pass in the key for the
+entry you want to delete:</p>
+<pre class="snippet">
+capitals.remove("Maine")
+System.print(capitals.containsKey("Maine")) //> false
+</pre>
+
+<p>If the key was found, this returns the value that was associated with it:</p>
+<pre class="snippet">
+System.print(capitals.remove("Georgia")) //> Atlanta
+</pre>
+
+<p>If the key wasn&rsquo;t in the map to begin with, <code>remove()</code> just returns <code>null</code>.</p>
+<p>If you want to remove <em>everything</em> from the map, like with <a href="lists.html">lists</a>, you call
+<code>clear()</code>:</p>
+<pre class="snippet">
+capitals.clear()
+System.print(capitals.count) //> 0
+</pre>
+
+<h2>Iterating over the contents <a href="#iterating-over-the-contents" name="iterating-over-the-contents" class="header-anchor">#</a></h2>
+<p>The subscript operator works well for finding values when you know the key
+you&rsquo;re looking for, but sometimes you want to see everything that&rsquo;s in the map.
+You can use a regular for loop to iterate the contents, and map exposes two 
+additional methods to access the contents: <code>keys</code> and <code>values</code>. </p>
+<p>The <code>keys</code> method on a map returns a <a href="modules/core/sequence.html">Sequence</a> that <a href="control-flow.html#the-iterator-protocol">iterates</a> over all of
+the keys in the map, and the <code>values</code> method returns one that iterates over the values.</p>
+<p>Regardless of how you iterate, the <em>order</em> that things are iterated in 
+isn&rsquo;t defined. Wren makes no promises about what order keys and values are 
+iterated. All it promises is that every entry will appear exactly once.</p>
+<p><strong>Iterating with for(entry in map)</strong> <br />
+When you iterate a map with <code>for</code>, you&rsquo;ll be handed an <em>entry</em>, which contains
+a <code>key</code> and a <code>value</code> field. That gives you the info for each element in the map.</p>
+<pre class="snippet">
+var birds = {
+  "Arizona": "Cactus wren",
+  "Hawaii": "Nēnē",
+  "Ohio": "Northern Cardinal"
+}
+
+for (bird in birds) {
+  System.print("The state bird of %(bird.key) is %(bird.value)")
+}
+</pre>
+
+<p><strong>Iterating using the keys</strong>   </p>
+<p>You can also iterate over the keys and use each to look up its value:</p>
+<pre class="snippet">
+var birds = {
+  "Arizona": "Cactus wren",
+  "Hawaii": "Nēnē",
+  "Ohio": "Northern Cardinal"
+}
+
+for (state in birds.keys) {
+  System.print("The state bird of %(state) is " + birds[state])
+}
+</pre>
+
+<p><br><hr>
+<a class="right" href="method-calls.html">Method Calls &rarr;</a>
+<a href="lists.html">&larr; Lists</a></p>
