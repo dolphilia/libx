@@ -1,0 +1,5 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {api} from '../2026-10-04-645/github-api.mjs';
+const id=Number(process.argv[2]),role=process.argv[3];assert(Number.isSafeInteger(id));assert(['preview','production'].includes(role));
+const r=await api('/actions/runs/'+id);assert.equal(r.head_sha,'a8c5c59562e0d7e1240ab785f4807e0997c1e9d9');const response=await api('/actions/runs/'+id+'/jobs?per_page=100');
+const record={id:r.id,sha:r.head_sha,status:r.status,conclusion:r.conclusion,url:r.html_url,attempt:r.run_attempt,jobs:response.jobs.map(j=>({id:j.id,name:j.name,status:j.status,conclusion:j.conclusion,startedAt:j.started_at,steps:j.steps.map(s=>({name:s.name,status:s.status,conclusion:s.conclusion,startedAt:s.started_at,completedAt:s.completed_at}))}))};
+fs.writeFileSync(new URL(role.toUpperCase()+'_CI.json',import.meta.url),JSON.stringify({at:new Date().toISOString(),runs:[record]},null,2)+'\n');console.log(JSON.stringify({id:record.id,status:record.status,conclusion:record.conclusion,jobs:record.jobs.map(j=>({name:j.name,status:j.status,conclusion:j.conclusion,current:j.steps.find(s=>s.status==='in_progress')?.name}))}));
