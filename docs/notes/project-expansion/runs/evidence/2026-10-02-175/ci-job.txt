@@ -1,0 +1,1793 @@
+2026-10-02T09:36:36.1421780Z Current runner version: '2.337.0'
+2026-10-02T09:36:36.1440480Z ##[group]Runner Image Provisioner
+2026-10-02T09:36:36.1441060Z Hosted Compute Agent
+2026-10-02T09:36:36.1441530Z Version: 20260828.587
+2026-10-02T09:36:36.1441990Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-10-02T09:36:36.1442470Z Build Date: 2026-08-28T16:44:25Z
+2026-10-02T09:36:36.1442900Z Worker ID: {293f649e-e1b9-4848-89e5-bcc1785fb709}
+2026-10-02T09:36:36.1443370Z Azure Region: westus
+2026-10-02T09:36:36.1443740Z ##[endgroup]
+2026-10-02T09:36:36.1444850Z ##[group]Operating System
+2026-10-02T09:36:36.1445240Z macOS
+2026-10-02T09:36:36.1445620Z 26.6.2
+2026-10-02T09:36:36.1446020Z 25G83
+2026-10-02T09:36:36.1446470Z ##[endgroup]
+2026-10-02T09:36:36.1447000Z ##[group]Runner Image
+2026-10-02T09:36:36.1447420Z Image: macos-26-arm64
+2026-10-02T09:36:36.1447800Z Version: 20260907.0351.1
+2026-10-02T09:36:36.1448740Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20260907.0351/images/macos/macos-26-arm64-Readme.md
+2026-10-02T09:36:36.1449780Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20260907.0351
+2026-10-02T09:36:36.1450520Z ##[endgroup]
+2026-10-02T09:36:36.1451390Z ##[group]GITHUB_TOKEN Permissions
+2026-10-02T09:36:36.1452530Z Actions: read
+2026-10-02T09:36:36.1452900Z Contents: read
+2026-10-02T09:36:36.1453260Z Deployments: write
+2026-10-02T09:36:36.1453640Z Metadata: read
+2026-10-02T09:36:36.1454000Z ##[endgroup]
+2026-10-02T09:36:36.1455780Z Secret source: Actions
+2026-10-02T09:36:36.1456350Z Cache mode: write
+2026-10-02T09:36:36.1456830Z Prepare workflow directory
+2026-10-02T09:36:36.1762440Z Prepare all required actions
+2026-10-02T09:36:36.1810940Z Getting action download info
+2026-10-02T09:36:36.5179750Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-02T09:36:36.8402580Z Download action repository 'pnpm/action-setup@v4' (SHA:b906affcce14559ad1aafd4ab0e942779e9f58b1)
+2026-10-02T09:36:37.6877380Z Download action repository 'actions/setup-node@v6' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+2026-10-02T09:36:37.8348440Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2026-10-02T09:36:37.9721440Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-02T09:36:38.3125360Z Complete job name: quality-check
+2026-10-02T09:36:38.4056080Z ##[group]Run actions/checkout@v6
+2026-10-02T09:36:38.4056790Z with:
+2026-10-02T09:36:38.4057120Z   fetch-depth: 0
+2026-10-02T09:36:38.4057460Z   repository: dolphilia/libx
+2026-10-02T09:36:38.4060280Z   token: ***
+2026-10-02T09:36:38.4060600Z   ssh-strict: true
+2026-10-02T09:36:38.4060920Z   ssh-user: git
+2026-10-02T09:36:38.4061250Z   persist-credentials: true
+2026-10-02T09:36:38.4061610Z   clean: true
+2026-10-02T09:36:38.4061950Z   sparse-checkout-cone-mode: true
+2026-10-02T09:36:38.4062340Z   fetch-tags: false
+2026-10-02T09:36:38.4062680Z   show-progress: true
+2026-10-02T09:36:38.4063100Z   lfs: false
+2026-10-02T09:36:38.4063410Z   submodules: false
+2026-10-02T09:36:38.4063740Z   set-safe-directory: true
+2026-10-02T09:36:38.4064110Z   allow-unsafe-pr-checkout: false
+2026-10-02T09:36:38.4064620Z env:
+2026-10-02T09:36:38.4064990Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-02T09:36:38.4065400Z ##[endgroup]
+2026-10-02T09:36:38.9755440Z Syncing repository: dolphilia/libx
+2026-10-02T09:36:38.9757850Z ##[group]Getting Git version info
+2026-10-02T09:36:38.9758660Z Working directory is '/Users/runner/work/libx/libx'
+2026-10-02T09:36:38.9760070Z [command]/opt/homebrew/bin/git version
+2026-10-02T09:36:39.0607760Z git version 2.55.0
+2026-10-02T09:36:39.0627940Z ##[endgroup]
+2026-10-02T09:36:39.0636930Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/40ea28c7-47a9-4a6d-bd06-fc61819a625e/.gitconfig'
+2026-10-02T09:36:39.0650340Z Temporarily overriding HOME='/Users/runner/work/_temp/40ea28c7-47a9-4a6d-bd06-fc61819a625e' before making global git config changes
+2026-10-02T09:36:39.0655820Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-02T09:36:39.0662520Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/libx/libx
+2026-10-02T09:36:39.0825010Z Deleting the contents of '/Users/runner/work/libx/libx'
+2026-10-02T09:36:39.0829610Z ##[group]Determining repository object format
+2026-10-02T09:36:39.0833760Z ##[endgroup]
+2026-10-02T09:36:39.0841960Z ##[group]Initializing the repository
+2026-10-02T09:36:39.0846820Z [command]/opt/homebrew/bin/git init /Users/runner/work/libx/libx
+2026-10-02T09:36:39.1164310Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-02T09:36:39.1167290Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-02T09:36:39.1171140Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-02T09:36:39.1172910Z hint: call:
+2026-10-02T09:36:39.1173860Z hint:
+2026-10-02T09:36:39.1175400Z hint: 	git config --global init.defaultBranch <name>
+2026-10-02T09:36:39.1176940Z hint:
+2026-10-02T09:36:39.1182650Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-02T09:36:39.1184850Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-02T09:36:39.1187320Z hint:
+2026-10-02T09:36:39.1188320Z hint: 	git branch -m <name>
+2026-10-02T09:36:39.1189630Z hint:
+2026-10-02T09:36:39.1191020Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-02T09:36:39.1193180Z Initialized empty Git repository in /Users/runner/work/libx/libx/.git/
+2026-10-02T09:36:39.1197040Z [command]/opt/homebrew/bin/git remote add origin https://github.com/dolphilia/libx
+2026-10-02T09:36:39.1290750Z ##[endgroup]
+2026-10-02T09:36:39.1292880Z ##[group]Disabling automatic garbage collection
+2026-10-02T09:36:39.1294530Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-10-02T09:36:39.1441620Z ##[endgroup]
+2026-10-02T09:36:39.1443480Z ##[group]Setting up auth
+2026-10-02T09:36:39.1450580Z Removing SSH command configuration
+2026-10-02T09:36:39.1454500Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-02T09:36:39.1529370Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-02T09:36:39.3022820Z Removing HTTP extra header
+2026-10-02T09:36:39.3028060Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-02T09:36:39.3161850Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-02T09:36:39.4327690Z Removing includeIf entries pointing to credentials config files
+2026-10-02T09:36:39.4330180Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-02T09:36:39.4412870Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-02T09:36:39.6354580Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-02T09:36:39.6642830Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/libx/libx/.git.path /Users/runner/work/_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:36:39.6679810Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/libx/libx/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:36:39.6691140Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:36:39.6705420Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:36:39.6709520Z ##[endgroup]
+2026-10-02T09:36:39.6710870Z ##[group]Fetching the repository
+2026-10-02T09:36:39.6713360Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-10-02T09:36:41.7816040Z From https://github.com/dolphilia/libx
+2026-10-02T09:36:41.7819390Z  * [new branch]      codex/release/lua-bugs-20261002 -> origin/codex/release/lua-bugs-20261002
+2026-10-02T09:36:41.7820460Z  * [new branch]      codex/release/lua-glfw-20261002 -> origin/codex/release/lua-glfw-20261002
+2026-10-02T09:36:41.7821200Z  * [new branch]      codex/release/pugixml-20261002 -> origin/codex/release/pugixml-20261002
+2026-10-02T09:36:41.7847160Z  * [new branch]      codex/release/toml-20261002 -> origin/codex/release/toml-20261002
+2026-10-02T09:36:41.7875190Z  * [new branch]      main       -> origin/main
+2026-10-02T09:36:41.8032170Z [command]/opt/homebrew/bin/git branch --list --remote origin/codex/release/pugixml-20261002
+2026-10-02T09:36:41.8033050Z   origin/codex/release/pugixml-20261002
+2026-10-02T09:36:41.8038280Z [command]/opt/homebrew/bin/git rev-parse refs/remotes/origin/codex/release/pugixml-20261002
+2026-10-02T09:36:41.8108190Z e25407901b2f3743cc65b5773b02e9785fa1ae76
+2026-10-02T09:36:41.8112570Z ##[endgroup]
+2026-10-02T09:36:41.8112910Z ##[group]Determining the checkout info
+2026-10-02T09:36:41.8116170Z ##[endgroup]
+2026-10-02T09:36:41.8124580Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-10-02T09:36:41.8233960Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-02T09:36:41.8346590Z ##[group]Checking out the ref
+2026-10-02T09:36:41.8348670Z [command]/opt/homebrew/bin/git checkout --progress --force -B codex/release/pugixml-20261002 refs/remotes/origin/codex/release/pugixml-20261002
+2026-10-02T09:36:42.8688230Z Switched to a new branch 'codex/release/pugixml-20261002'
+2026-10-02T09:36:42.8704480Z branch 'codex/release/pugixml-20261002' set up to track 'origin/codex/release/pugixml-20261002'.
+2026-10-02T09:36:42.9117900Z ##[endgroup]
+2026-10-02T09:36:42.9254910Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-10-02T09:36:42.9336100Z e25407901b2f3743cc65b5773b02e9785fa1ae76
+2026-10-02T09:36:42.9602230Z ##[group]Run pnpm/action-setup@v4
+2026-10-02T09:36:42.9602500Z with:
+2026-10-02T09:36:42.9602670Z   dest: ~/setup-pnpm
+2026-10-02T09:36:42.9602880Z   run_install: null
+2026-10-02T09:36:42.9603040Z   cache: false
+2026-10-02T09:36:42.9603230Z   cache_dependency_path: pnpm-lock.yaml
+2026-10-02T09:36:42.9603550Z   package_json_file: package.json
+2026-10-02T09:36:42.9603810Z   standalone: false
+2026-10-02T09:36:42.9604020Z env:
+2026-10-02T09:36:42.9604200Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-02T09:36:42.9604450Z ##[endgroup]
+2026-10-02T09:36:43.1503560Z ##[group]Running self-installer...
+2026-10-02T09:36:43.5728720Z (node:1186) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-02T09:36:43.5731480Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-02T09:36:43.8359090Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-10-02T09:36:43.8459860Z Packages: +1
+2026-10-02T09:36:43.8460190Z +
+2026-10-02T09:36:44.8381610Z Progress: resolved 1, reused 0, downloaded 1, added 0
+2026-10-02T09:36:44.9705670Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2026-10-02T09:36:45.0652940Z 
+2026-10-02T09:36:45.0653890Z dependencies:
+2026-10-02T09:36:45.0654730Z + pnpm 10.10.0 (12.8.1 is available)
+2026-10-02T09:36:45.0655110Z 
+2026-10-02T09:36:45.3428280Z Done in 2s
+2026-10-02T09:36:45.3621170Z ##[endgroup]
+2026-10-02T09:36:45.3621510Z Installation Completed!
+2026-10-02T09:36:45.3794060Z ##[group]Run actions/setup-node@v6
+2026-10-02T09:36:45.3794390Z with:
+2026-10-02T09:36:45.3794620Z   node-version: 20
+2026-10-02T09:36:45.3794820Z   cache: pnpm
+2026-10-02T09:36:45.3795020Z   check-latest: false
+2026-10-02T09:36:45.3797130Z   token: ***
+2026-10-02T09:36:45.3797360Z   package-manager-cache: true
+2026-10-02T09:36:45.3797650Z env:
+2026-10-02T09:36:45.3797920Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-02T09:36:45.3798330Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-02T09:36:45.3798680Z ##[endgroup]
+2026-10-02T09:36:45.5805290Z Attempting to download 20...
+2026-10-02T09:36:46.6664520Z Acquiring 20.20.2 - arm64 from https://github.com/actions/node-versions/releases/download/20.20.2-23521894959/node-20.20.2-darwin-arm64.tar.gz
+2026-10-02T09:36:47.2058020Z Extracting ...
+2026-10-02T09:36:47.2231010Z [command]/usr/bin/tar xz --strip 1 -C /Users/runner/work/_temp/241f6c71-b494-4685-9ae8-01daf7e46e63 -f /Users/runner/work/_temp/37d0d00b-1d9a-4c9d-a5b9-8ef6d53909a2
+2026-10-02T09:36:48.7615450Z Adding to the cache ...
+2026-10-02T09:36:50.6904660Z ##[group]Environment details
+2026-10-02T09:36:51.1142590Z node: v20.20.2
+2026-10-02T09:36:51.1142880Z npm: 10.8.2
+2026-10-02T09:36:51.1143250Z yarn: 1.22.22
+2026-10-02T09:36:51.1143800Z ##[endgroup]
+2026-10-02T09:36:51.1159470Z [command]/Users/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+2026-10-02T09:36:51.4189270Z /Users/runner/setup-pnpm/node_modules/.bin/store/v10
+2026-10-02T09:36:51.5792290Z pnpm cache is not found
+2026-10-02T09:36:51.6038110Z ##[group]Run pnpm install --frozen-lockfile
+2026-10-02T09:36:51.6038540Z [36;1mpnpm install --frozen-lockfile[0m
+2026-10-02T09:36:51.6086750Z shell: /bin/bash -e {0}
+2026-10-02T09:36:51.6087040Z env:
+2026-10-02T09:36:51.6087300Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-02T09:36:51.6087630Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-02T09:36:51.6088140Z ##[endgroup]
+2026-10-02T09:36:51.9555420Z Scope: all 24 workspace projects
+2026-10-02T09:36:52.0088250Z Lockfile is up to date, resolution step is skipped
+2026-10-02T09:36:52.0615830Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-10-02T09:36:52.1057850Z Packages: +755
+2026-10-02T09:36:52.1120700Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-10-02T09:36:53.0799320Z Progress: resolved 755, reused 0, downloaded 136, added 70
+2026-10-02T09:36:54.0761190Z Progress: resolved 755, reused 0, downloaded 293, added 155
+2026-10-02T09:36:55.0758210Z Progress: resolved 755, reused 0, downloaded 397, added 198
+2026-10-02T09:36:56.0774900Z Progress: resolved 755, reused 0, downloaded 496, added 248
+2026-10-02T09:36:57.0836710Z Progress: resolved 755, reused 0, downloaded 520, added 256
+2026-10-02T09:36:58.0805980Z Progress: resolved 755, reused 0, downloaded 587, added 280
+2026-10-02T09:36:59.0875740Z Progress: resolved 755, reused 0, downloaded 624, added 292
+2026-10-02T09:37:00.0902540Z Progress: resolved 755, reused 0, downloaded 671, added 308
+2026-10-02T09:37:01.0970630Z Progress: resolved 755, reused 0, downloaded 693, added 315
+2026-10-02T09:37:02.0990130Z Progress: resolved 755, reused 0, downloaded 746, added 335
+2026-10-02T09:37:03.1139770Z Progress: resolved 755, reused 0, downloaded 750, added 517
+2026-10-02T09:37:04.1130800Z Progress: resolved 755, reused 0, downloaded 750, added 643
+2026-10-02T09:37:05.0108630Z Progress: resolved 755, reused 0, downloaded 750, added 755, done
+2026-10-02T09:37:05.5079910Z 
+2026-10-02T09:37:05.5080610Z dependencies:
+2026-10-02T09:37:05.5081360Z + ajv 8.17.1
+2026-10-02T09:37:05.5081890Z + ajv-formats 3.0.1
+2026-10-02T09:37:05.5082190Z + glob 11.0.2
+2026-10-02T09:37:05.5082490Z + gray-matter 4.0.3
+2026-10-02T09:37:05.5082660Z 
+2026-10-02T09:37:05.5082740Z devDependencies:
+2026-10-02T09:37:05.5083120Z + @astrojs/starlight 0.34.8
+2026-10-02T09:37:05.5083530Z + @types/node 20.19.25
+2026-10-02T09:37:05.5089700Z + @typescript-eslint/eslint-plugin 6.21.0
+2026-10-02T09:37:05.5090300Z + @typescript-eslint/parser 6.21.0
+2026-10-02T09:37:05.5090820Z + astro 5.7.12
+2026-10-02T09:37:05.5091280Z + astro-eslint-parser 0.16.3
+2026-10-02T09:37:05.5091710Z + chrome-launcher 1.2.1
+2026-10-02T09:37:05.5091960Z + eslint 8.57.1
+2026-10-02T09:37:05.5092330Z + eslint-config-prettier 9.1.2
+2026-10-02T09:37:05.5092670Z + eslint-plugin-astro 0.29.1
+2026-10-02T09:37:05.5093130Z + lighthouse 12.8.2
+2026-10-02T09:37:05.5093480Z + parse5 7.3.0
+2026-10-02T09:37:05.5093690Z + prettier 3.5.3
+2026-10-02T09:37:05.5094060Z + prettier-plugin-astro 0.14.1
+2026-10-02T09:37:05.5094390Z + remark-gfm 4.0.1
+2026-10-02T09:37:05.5094610Z + remark-mdx 3.1.0
+2026-10-02T09:37:05.5094890Z + remark-parse 11.0.0
+2026-10-02T09:37:05.5095120Z + typescript 5.8.3
+2026-10-02T09:37:05.5095400Z + unified 11.0.5
+2026-10-02T09:37:05.5096140Z + unist-util-visit 5.0.0
+2026-10-02T09:37:05.5096500Z + wrangler 4.60.0
+2026-10-02T09:37:05.5096700Z 
+2026-10-02T09:37:05.5100500Z ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+2026-10-02T09:37:05.5101100Z │                                                                              │
+2026-10-02T09:37:05.5101790Z │   Ignored build scripts: esbuild, sharp, workerd.                            │
+2026-10-02T09:37:05.5102520Z │   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+2026-10-02T09:37:05.5103250Z │   to run scripts.                                                            │
+2026-10-02T09:37:05.5103830Z │                                                                              │
+2026-10-02T09:37:05.5105170Z ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-10-02T09:37:05.5105410Z 
+2026-10-02T09:37:05.5772500Z Done in 13.8s using pnpm v10.10.0
+2026-10-02T09:37:05.6225020Z ##[group]Run pnpm sync:service-workers && pnpm build:sidebar
+2026-10-02T09:37:05.6225490Z [36;1mpnpm sync:service-workers && pnpm build:sidebar[0m
+2026-10-02T09:37:05.6561220Z shell: /bin/bash -e {0}
+2026-10-02T09:37:05.6561950Z env:
+2026-10-02T09:37:05.6562510Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-02T09:37:05.6563460Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-02T09:37:05.6564240Z ##[endgroup]
+2026-10-02T09:37:06.1738830Z 
+2026-10-02T09:37:06.1740410Z > libx@ sync:service-workers /Users/runner/work/libx/libx
+2026-10-02T09:37:06.1741660Z > node scripts/sync-service-workers.js
+2026-10-02T09:37:06.1742110Z 
+2026-10-02T09:37:06.9473600Z 
+2026-10-02T09:37:06.9475400Z > libx@ build:sidebar /Users/runner/work/libx/libx
+2026-10-02T09:37:06.9476740Z > node scripts/build-sidebar.js
+2026-10-02T09:37:06.9478440Z 
+2026-10-02T09:37:07.3975360Z 【情報】選択的サイドバー生成を開始します...
+2026-10-02T09:37:07.3982540Z 【情報】指定されたプロジェクト: glfw, lua, pugixml, sample-docs, test-verification, toml
+2026-10-02T09:37:07.4604350Z 【情報】プロジェクト glfw の処理を開始します...
+2026-10-02T09:37:07.4651870Z   - en/v3-5-1 のサイドバーを生成中...
+2026-10-02T09:37:07.6314980Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/glfw/public/sidebar.prepared-1507/sidebar-en-v3-5-1.json
+2026-10-02T09:37:07.6337620Z   - ja/v3-5-1 のサイドバーを生成中...
+2026-10-02T09:37:07.7774560Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/glfw/public/sidebar.prepared-1507/sidebar-ja-v3-5-1.json
+2026-10-02T09:37:07.7813030Z 【情報】プロジェクト lua の処理を開始します...
+2026-10-02T09:37:07.7838040Z   - en/v5-5-1 のサイドバーを生成中...
+2026-10-02T09:37:07.8613900Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/lua/public/sidebar.prepared-1507/sidebar-en-v5-5-1.json
+2026-10-02T09:37:07.8615990Z   - ja/v5-5-1 のサイドバーを生成中...
+2026-10-02T09:37:07.9260360Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/lua/public/sidebar.prepared-1507/sidebar-ja-v5-5-1.json
+2026-10-02T09:37:07.9293350Z 【情報】プロジェクト pugixml の処理を開始します...
+2026-10-02T09:37:07.9296070Z   - en/v1-16 のサイドバーを生成中...
+2026-10-02T09:37:07.9403780Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/pugixml/public/sidebar.prepared-1507/sidebar-en-v1-16.json
+2026-10-02T09:37:07.9407920Z   - ja/v1-16 のサイドバーを生成中...
+2026-10-02T09:37:07.9751720Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/pugixml/public/sidebar.prepared-1507/sidebar-ja-v1-16.json
+2026-10-02T09:37:07.9809960Z 【情報】プロジェクト sample-docs の処理を開始します...
+2026-10-02T09:37:07.9913550Z   - v1 では以下の言語ディレクトリが見つからなかったため出力対象から除外します: ar
+2026-10-02T09:37:07.9920820Z   - en/v1 のサイドバーを生成中...
+2026-10-02T09:37:07.9922310Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/sample-docs/public/sidebar.prepared-1507/sidebar-en-v1.json
+2026-10-02T09:37:07.9932550Z   - ja/v1 のサイドバーを生成中...
+2026-10-02T09:37:07.9961500Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/sample-docs/public/sidebar.prepared-1507/sidebar-ja-v1.json
+2026-10-02T09:37:07.9963900Z   - ar/v2 のサイドバーを生成中...
+2026-10-02T09:37:08.0051400Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/sample-docs/public/sidebar.prepared-1507/sidebar-ar-v2.json
+2026-10-02T09:37:08.0052450Z   - en/v2 のサイドバーを生成中...
+2026-10-02T09:37:08.0229320Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/sample-docs/public/sidebar.prepared-1507/sidebar-en-v2.json
+2026-10-02T09:37:08.0230010Z   - ja/v2 のサイドバーを生成中...
+2026-10-02T09:37:08.0437220Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/sample-docs/public/sidebar.prepared-1507/sidebar-ja-v2.json
+2026-10-02T09:37:08.0447900Z 【情報】プロジェクト test-verification の処理を開始します...
+2026-10-02T09:37:08.0458470Z   - en/v1 のサイドバーを生成中...
+2026-10-02T09:37:08.0495370Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/test-verification/public/sidebar.prepared-1507/sidebar-en-v1.json
+2026-10-02T09:37:08.0496510Z   - ja/v1 のサイドバーを生成中...
+2026-10-02T09:37:08.0534040Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/test-verification/public/sidebar.prepared-1507/sidebar-ja-v1.json
+2026-10-02T09:37:08.0536150Z   - ko/v1 のサイドバーを生成中...
+2026-10-02T09:37:08.0597450Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/test-verification/public/sidebar.prepared-1507/sidebar-ko-v1.json
+2026-10-02T09:37:08.0599760Z   - en/v2 のサイドバーを生成中...
+2026-10-02T09:37:08.0668600Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/test-verification/public/sidebar.prepared-1507/sidebar-en-v2.json
+2026-10-02T09:37:08.0669320Z   - ja/v2 のサイドバーを生成中...
+2026-10-02T09:37:08.0731700Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/test-verification/public/sidebar.prepared-1507/sidebar-ja-v2.json
+2026-10-02T09:37:08.0732660Z   - ko/v2 のサイドバーを生成中...
+2026-10-02T09:37:08.0777940Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/test-verification/public/sidebar.prepared-1507/sidebar-ko-v2.json
+2026-10-02T09:37:08.0791830Z 【情報】プロジェクト toml の処理を開始します...
+2026-10-02T09:37:08.0819760Z   - en/v1-1-0 のサイドバーを生成中...
+2026-10-02T09:37:08.0889560Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/toml/public/sidebar.prepared-1507/sidebar-en-v1-1-0.json
+2026-10-02T09:37:08.0890370Z   - ja/v1-1-0 のサイドバーを生成中...
+2026-10-02T09:37:08.0986760Z   - JSONファイルを保存しました: /Users/runner/work/libx/libx/apps/toml/public/sidebar.prepared-1507/sidebar-ja-v1-1-0.json
+2026-10-02T09:37:08.0998820Z 【情報】選択的サイドバー生成が完了しました
+2026-10-02T09:37:08.1004070Z 【情報】処理したプロジェクト: glfw, lua, pugixml, sample-docs, test-verification, toml
+2026-10-02T09:37:08.1284960Z ##[group]Run pnpm format:check && pnpm lint && pnpm typecheck
+2026-10-02T09:37:08.1285460Z [36;1mpnpm format:check && pnpm lint && pnpm typecheck[0m
+2026-10-02T09:37:08.1364050Z shell: /bin/bash -e {0}
+2026-10-02T09:37:08.1364310Z env:
+2026-10-02T09:37:08.1364600Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-02T09:37:08.1364890Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-02T09:37:08.1365280Z ##[endgroup]
+2026-10-02T09:37:08.9201060Z 
+2026-10-02T09:37:08.9202710Z > libx@ format:check /Users/runner/work/libx/libx
+2026-10-02T09:37:08.9203670Z > prettier --check .
+2026-10-02T09:37:08.9203990Z 
+2026-10-02T09:37:09.2248850Z Checking formatting...
+2026-10-02T09:37:23.7916700Z All matched files use Prettier code style!
+2026-10-02T09:37:24.5799990Z 
+2026-10-02T09:37:24.5808670Z > libx@ lint /Users/runner/work/libx/libx
+2026-10-02T09:37:24.5809870Z > eslint .
+2026-10-02T09:37:24.5814130Z 
+2026-10-02T09:37:34.8619870Z 
+2026-10-02T09:37:34.8622270Z > libx@ typecheck /Users/runner/work/libx/libx
+2026-10-02T09:37:34.8631500Z > tsc --noEmit -p packages/config/tsconfig.json && tsc --noEmit -p packages/i18n/tsconfig.json && tsc --noEmit -p packages/project-config/tsconfig.json && tsc --noEmit -p packages/content-utils/tsconfig.json && tsc --noEmit -p packages/landing/tsconfig.json && tsc --noEmit -p packages/theme/tsconfig.json && tsc --noEmit -p packages/versioning/tsconfig.typecheck.json
+2026-10-02T09:37:34.8635760Z 
+2026-10-02T09:37:46.9519200Z ##[group]Run pnpm test
+2026-10-02T09:37:46.9519740Z [36;1mpnpm test[0m
+2026-10-02T09:37:47.0875290Z shell: /bin/bash -e {0}
+2026-10-02T09:37:47.0875540Z env:
+2026-10-02T09:37:47.0875880Z   NODE_OPTIONS: --max-old-space-size=6144
+2026-10-02T09:37:47.0876360Z   PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+2026-10-02T09:37:47.0876760Z ##[endgroup]
+2026-10-02T09:37:47.5912310Z 
+2026-10-02T09:37:47.5913160Z > libx@ test /Users/runner/work/libx/libx
+2026-10-02T09:37:47.5913670Z > pnpm test:unit && pnpm test:runtime
+2026-10-02T09:37:47.5913880Z 
+2026-10-02T09:37:48.1466770Z 
+2026-10-02T09:37:48.1467430Z > libx@ test:unit /Users/runner/work/libx/libx
+2026-10-02T09:37:48.1468110Z > tsc -p config/tsconfig.tests.json && node --test .tmp/tests/tests/unit/*.test.js
+2026-10-02T09:37:48.1468460Z 
+2026-10-02T09:37:49.6072210Z TAP version 13
+2026-10-02T09:37:49.6828050Z # Subtest: shared content schema accepts bounded table-of-contents settings
+2026-10-02T09:37:49.6835310Z ok 1 - shared content schema accepts bounded table-of-contents settings
+2026-10-02T09:37:49.6837230Z   ---
+2026-10-02T09:37:49.6837590Z   duration_ms: 1.588708
+2026-10-02T09:37:49.6837980Z   ...
+2026-10-02T09:37:49.6838450Z # Subtest: shared content schema rejects inverted table-of-contents levels
+2026-10-02T09:37:49.6839120Z ok 2 - shared content schema rejects inverted table-of-contents levels
+2026-10-02T09:37:49.6839620Z   ---
+2026-10-02T09:37:49.6839900Z   duration_ms: 2.6715
+2026-10-02T09:37:49.6840260Z   ...
+2026-10-02T09:37:49.6841110Z # Subtest: shared content schema rejects category overrides because directories own navigation
+2026-10-02T09:37:49.6842000Z ok 3 - shared content schema rejects category overrides because directories own navigation
+2026-10-02T09:37:49.6842570Z   ---
+2026-10-02T09:37:49.6842990Z   duration_ms: 1.061709
+2026-10-02T09:37:49.6843260Z   ...
+2026-10-02T09:37:49.6843940Z # Subtest: document IDs are optional stable metadata and cannot be blank or multiline
+2026-10-02T09:37:49.6844760Z ok 4 - document IDs are optional stable metadata and cannot be blank or multiline
+2026-10-02T09:37:49.6845240Z   ---
+2026-10-02T09:37:49.6845640Z   duration_ms: 0.801625
+2026-10-02T09:37:49.6845990Z   ...
+2026-10-02T09:37:49.6885780Z # Subtest: code and table enhancements preserve semantic elements
+2026-10-02T09:37:49.6886570Z ok 5 - code and table enhancements preserve semantic elements
+2026-10-02T09:37:49.6887010Z   ---
+2026-10-02T09:37:49.6897560Z   duration_ms: 1.145333
+2026-10-02T09:37:49.6898300Z   ...
+2026-10-02T09:37:49.7345210Z # Subtest: URLからドキュメント言語を解決する
+2026-10-02T09:37:49.7345820Z ok 6 - URLからドキュメント言語を解決する
+2026-10-02T09:37:49.7346330Z   ---
+2026-10-02T09:37:49.7346610Z   duration_ms: 0.735208
+2026-10-02T09:37:49.7347020Z   ...
+2026-10-02T09:37:49.7351240Z # Subtest: 共通UIのvisible labelとaccessible labelをページ言語で取得できる
+2026-10-02T09:37:49.7352820Z ok 7 - 共通UIのvisible labelとaccessible labelをページ言語で取得できる
+2026-10-02T09:37:49.7353290Z   ---
+2026-10-02T09:37:49.7353560Z   duration_ms: 0.11825
+2026-10-02T09:37:49.7353910Z   ...
+2026-10-02T09:37:49.7431930Z # Subtest: KaTeX CSS keeps its WOFF2 source and removes legacy font fallbacks
+2026-10-02T09:37:49.7434470Z ok 8 - KaTeX CSS keeps its WOFF2 source and removes legacy font fallbacks
+2026-10-02T09:37:49.7434970Z   ---
+2026-10-02T09:37:49.7435560Z   duration_ms: 1.0525
+2026-10-02T09:37:49.7438280Z   ...
+2026-10-02T09:37:49.8003630Z # Subtest: buildDocumentPath builds version-first paths by default
+2026-10-02T09:37:49.8005910Z ok 9 - buildDocumentPath builds version-first paths by default
+2026-10-02T09:37:49.8006560Z   ---
+2026-10-02T09:37:49.8006940Z   duration_ms: 1.162709
+2026-10-02T09:37:49.8008660Z   ...
+2026-10-02T09:37:49.8011580Z # Subtest: version IDs expose only exact page counterparts
+2026-10-02T09:37:49.8012800Z ok 10 - version IDs expose only exact page counterparts
+2026-10-02T09:37:49.8034660Z   ---
+2026-10-02T09:37:49.8035070Z   duration_ms: 0.758959
+2026-10-02T09:37:49.8035690Z   ...
+2026-10-02T09:37:49.8037340Z # Subtest: selectLatestVersionId prefers available content, then the configured latest version
+2026-10-02T09:37:49.8038330Z ok 11 - selectLatestVersionId prefers available content, then the configured latest version
+2026-10-02T09:37:49.8038820Z   ---
+2026-10-02T09:37:49.8039210Z   duration_ms: 0.140083
+2026-10-02T09:37:49.8039490Z   ...
+2026-10-02T09:37:49.8040030Z # Subtest: buildDocumentPath supports locale-first paths and normalizes slashes
+2026-10-02T09:37:49.8040840Z ok 12 - buildDocumentPath supports locale-first paths and normalizes slashes
+2026-10-02T09:37:49.8041270Z   ---
+2026-10-02T09:37:49.8041570Z   duration_ms: 0.098042
+2026-10-02T09:37:49.8042460Z   ...
+2026-10-02T09:37:49.8043090Z # Subtest: language paths expose only exact counterparts for zero, partial, and complete translations
+2026-10-02T09:37:49.8044650Z ok 13 - language paths expose only exact counterparts for zero, partial, and complete translations
+2026-10-02T09:37:49.8045220Z   ---
+2026-10-02T09:37:49.8045910Z   duration_ms: 0.237584
+2026-10-02T09:37:49.8047010Z   ...
+2026-10-02T09:37:49.8134590Z # Subtest: project config validation accepts a valid config and converts dates
+2026-10-02T09:37:49.8149490Z ok 14 - project config validation accepts a valid config and converts dates
+2026-10-02T09:37:49.8150970Z   ---
+2026-10-02T09:37:49.8151490Z   duration_ms: 2.790583
+2026-10-02T09:37:49.8186000Z   ...
+2026-10-02T09:37:49.8187310Z # Subtest: project config validation rejects malformed languages and dates
+2026-10-02T09:37:49.8189000Z ok 15 - project config validation rejects malformed languages and dates
+2026-10-02T09:37:49.8190020Z   ---
+2026-10-02T09:37:49.8190930Z   duration_ms: 0.247667
+2026-10-02T09:37:49.8191780Z   ...
+2026-10-02T09:37:49.8193310Z # Subtest: project config validation rejects IDs that Astro would normalize or collide
+2026-10-02T09:37:49.8195540Z ok 16 - project config validation rejects IDs that Astro would normalize or collide
+2026-10-02T09:37:49.8197650Z   ---
+2026-10-02T09:37:49.8198500Z   duration_ms: 0.471583
+2026-10-02T09:37:49.8198940Z   ...
+2026-10-02T09:37:49.8199770Z # Subtest: project config validation rejects category IDs with directory order prefixes
+2026-10-02T09:37:49.8201370Z ok 17 - project config validation rejects category IDs with directory order prefixes
+2026-10-02T09:37:49.8202260Z   ---
+2026-10-02T09:37:49.8202650Z   duration_ms: 0.2055
+2026-10-02T09:37:49.8203000Z   ...
+2026-10-02T09:37:49.8203650Z # Subtest: stripJsonComments preserves comment-like content inside strings
+2026-10-02T09:37:49.8204920Z ok 18 - stripJsonComments preserves comment-like content inside strings
+2026-10-02T09:37:49.8206270Z   ---
+2026-10-02T09:37:49.8206610Z   duration_ms: 0.152083
+2026-10-02T09:37:49.8206960Z   ...
+2026-10-02T09:37:49.8207780Z # Subtest: provenance metadata preserves valid bilingual notices and rejects malformed links
+2026-10-02T09:37:49.8208600Z ok 19 - provenance metadata preserves valid bilingual notices and rejects malformed links
+2026-10-02T09:37:49.8209230Z   ---
+2026-10-02T09:37:49.8209560Z   duration_ms: 0.946042
+2026-10-02T09:37:49.8209930Z   ...
+2026-10-02T09:37:49.8829160Z # Subtest: callout marker becomes semantic, no-JS blockquote markup
+2026-10-02T09:37:49.8835240Z ok 20 - callout marker becomes semantic, no-JS blockquote markup
+2026-10-02T09:37:49.8837380Z   ---
+2026-10-02T09:37:49.8839820Z   duration_ms: 1.953708
+2026-10-02T09:37:49.8840250Z   ...
+2026-10-02T09:37:49.8840680Z # Subtest: unknown callout marker fails the build
+2026-10-02T09:37:49.8841270Z ok 21 - unknown callout marker fails the build
+2026-10-02T09:37:49.8841680Z   ---
+2026-10-02T09:37:49.8841940Z   duration_ms: 0.386791
+2026-10-02T09:37:49.8842280Z   ...
+2026-10-02T09:37:49.8842870Z # Subtest: callout label is required so each language supplies its own visible text
+2026-10-02T09:37:49.8843730Z ok 22 - callout label is required so each language supplies its own visible text
+2026-10-02T09:37:49.8844290Z   ---
+2026-10-02T09:37:49.8846070Z   duration_ms: 0.64225
+2026-10-02T09:37:49.8846960Z   ...
+2026-10-02T09:37:49.8847350Z # Subtest: ordinary quotations remain untouched
+2026-10-02T09:37:49.8848630Z ok 23 - ordinary quotations remain untouched
+2026-10-02T09:37:49.8849170Z   ---
+2026-10-02T09:37:49.8849460Z   duration_ms: 0.243916
+2026-10-02T09:37:49.8849860Z   ...
+2026-10-02T09:37:50.0557990Z # Subtest: search index extracts page, heading, explicit anchor, and API symbol
+2026-10-02T09:37:50.0566460Z ok 24 - search index extracts page, heading, explicit anchor, and API symbol
+2026-10-02T09:37:50.0567130Z   ---
+2026-10-02T09:37:50.0567480Z   duration_ms: 10.23275
+2026-10-02T09:37:50.0567880Z   ...
+2026-10-02T09:37:50.0568380Z # Subtest: exact API symbol ranks first and links to its real anchor
+2026-10-02T09:37:50.0569060Z ok 25 - exact API symbol ranks first and links to its real anchor
+2026-10-02T09:37:50.0569560Z   ---
+2026-10-02T09:37:50.0569860Z   duration_ms: 0.30875
+2026-10-02T09:37:50.0570220Z   ...
+2026-10-02T09:37:50.0570820Z # Subtest: snake case API identifiers remain searchable in prose and code
+2026-10-02T09:37:50.0571920Z ok 26 - snake case API identifiers remain searchable in prose and code
+2026-10-02T09:37:50.0572380Z   ---
+2026-10-02T09:37:50.0572590Z   duration_ms: 3.094375
+2026-10-02T09:37:50.0572930Z   ...
+2026-10-02T09:37:50.0573490Z # Subtest: GLFW Doxygen symbols target real local anchors and mentions cannot invent fragments
+2026-10-02T09:37:50.0574330Z ok 27 - GLFW Doxygen symbols target real local anchors and mentions cannot invent fragments
+2026-10-02T09:37:50.0574740Z   ---
+2026-10-02T09:37:50.0575020Z   duration_ms: 2.676541
+2026-10-02T09:37:50.0575290Z   ...
+2026-10-02T09:37:50.0575760Z # Subtest: pugixml API identifiers link to fixed source anchors
+2026-10-02T09:37:50.0576310Z ok 28 - pugixml API identifiers link to fixed source anchors
+2026-10-02T09:37:50.0576670Z   ---
+2026-10-02T09:37:50.0576930Z   duration_ms: 1.003291
+2026-10-02T09:37:50.0577180Z   ...
+2026-10-02T09:37:50.0577760Z # Subtest: search headings match Markdown emphasis, duplicate slugs, and exclude code comments
+2026-10-02T09:37:50.0578460Z ok 29 - search headings match Markdown emphasis, duplicate slugs, and exclude code comments
+2026-10-02T09:37:50.0589260Z   ---
+2026-10-02T09:37:50.0589540Z   duration_ms: 2.1275
+2026-10-02T09:37:50.0589710Z   ...
+2026-10-02T09:37:50.0629400Z # Subtest: H3を直前のH2の子項目として構築する
+2026-10-02T09:37:50.0629830Z ok 30 - H3を直前のH2の子項目として構築する
+2026-10-02T09:37:50.0630120Z   ---
+2026-10-02T09:37:50.0630330Z   duration_ms: 1.466583
+2026-10-02T09:37:50.0630610Z   ...
+2026-10-02T09:37:50.0631040Z # Subtest: 先頭の下位見出しと、見出しレベルの飛びを安全に扱う
+2026-10-02T09:37:50.0632060Z ok 31 - 先頭の下位見出しと、見出しレベルの飛びを安全に扱う
+2026-10-02T09:37:50.0632260Z   ---
+2026-10-02T09:37:50.0632410Z   duration_ms: 0.099791
+2026-10-02T09:37:50.0632590Z   ...
+2026-10-02T09:37:50.0633060Z # Subtest: 見出し範囲と項目数上限をツリー化前の文書順へ適用する
+2026-10-02T09:37:50.0633350Z ok 32 - 見出し範囲と項目数上限をツリー化前の文書順へ適用する
+2026-10-02T09:37:50.0633560Z   ---
+2026-10-02T09:37:50.0633710Z   duration_ms: 0.109334
+2026-10-02T09:37:50.0633860Z   ...
+2026-10-02T09:37:50.0634010Z 1..32
+2026-10-02T09:37:50.0634140Z # tests 32
+2026-10-02T09:37:50.0634270Z # suites 0
+2026-10-02T09:37:50.0634430Z # pass 32
+2026-10-02T09:37:50.0634570Z # fail 0
+2026-10-02T09:37:50.0634700Z # cancelled 0
+2026-10-02T09:37:50.0634840Z # skipped 0
+2026-10-02T09:37:50.0635000Z # todo 0
+2026-10-02T09:37:50.0635290Z # duration_ms 466.492083
+2026-10-02T09:37:50.3623070Z 
+2026-10-02T09:37:50.3623510Z > libx@ test:runtime /Users/runner/work/libx/libx
+2026-10-02T09:37:50.3623870Z > node --test tests/runtime/*.test.js
+2026-10-02T09:37:50.3624060Z 
+2026-10-02T09:37:50.4254530Z TAP version 13
+2026-10-02T09:37:50.6957500Z # Subtest: add-languageのdry-runは変更予定を表示し、プロジェクトとlandingを変更しない
+2026-10-02T09:37:50.6958700Z ok 1 - add-languageのdry-runは変更予定を表示し、プロジェクトとlandingを変更しない
+2026-10-02T09:37:50.6959170Z   ---
+2026-10-02T09:37:50.6959480Z   duration_ms: 217.921208
+2026-10-02T09:37:50.6960610Z   ...
+2026-10-02T09:37:50.7067360Z # Subtest: standalone and one-level groups share discovery with stable identities and ordering
+2026-10-02T09:37:50.7079970Z ok 2 - standalone and one-level groups share discovery with stable identities and ordering
+2026-10-02T09:37:50.7080560Z   ---
+2026-10-02T09:37:50.7080830Z   duration_ms: 48.937333
+2026-10-02T09:37:50.7081180Z   ...
+2026-10-02T09:37:50.7081530Z # Subtest: rejects missing entry
+2026-10-02T09:37:50.7081860Z ok 3 - rejects missing entry
+2026-10-02T09:37:50.7082140Z   ---
+2026-10-02T09:37:50.7082380Z   duration_ms: 2.618208
+2026-10-02T09:37:50.7082720Z   ...
+2026-10-02T09:37:50.7083030Z # Subtest: rejects duplicate order
+2026-10-02T09:37:50.7083390Z ok 4 - rejects duplicate order
+2026-10-02T09:37:50.7083650Z   ---
+2026-10-02T09:37:50.7083870Z   duration_ms: 2.298667
+2026-10-02T09:37:50.7084110Z   ...
+2026-10-02T09:37:50.7084430Z # Subtest: rejects unknown ordered member
+2026-10-02T09:37:50.7084800Z ok 5 - rejects unknown ordered member
+2026-10-02T09:37:50.7085130Z   ---
+2026-10-02T09:37:50.7085370Z   duration_ms: 2.735416
+2026-10-02T09:37:50.7085660Z   ...
+2026-10-02T09:37:50.7086000Z # Subtest: rejects nested group
+2026-10-02T09:37:50.7086360Z ok 6 - rejects nested group
+2026-10-02T09:37:50.7086660Z   ---
+2026-10-02T09:37:50.7086880Z   duration_ms: 2.862625
+2026-10-02T09:37:50.7087120Z   ...
+2026-10-02T09:37:50.7087440Z # Subtest: rejects app/group overlap
+2026-10-02T09:37:50.7087860Z ok 7 - rejects app/group overlap
+2026-10-02T09:37:50.7088130Z   ---
+2026-10-02T09:37:50.7088340Z   duration_ms: 1.631292
+2026-10-02T09:37:50.7088600Z   ...
+2026-10-02T09:37:50.7088950Z # Subtest: rejects incomplete child
+2026-10-02T09:37:50.7089300Z ok 8 - rejects incomplete child
+2026-10-02T09:37:50.7089560Z   ---
+2026-10-02T09:37:50.7089790Z   duration_ms: 1.552791
+2026-10-02T09:37:50.7090030Z   ...
+2026-10-02T09:37:50.7090310Z # Subtest: rejects duplicate package
+2026-10-02T09:37:50.7090650Z ok 9 - rejects duplicate package
+2026-10-02T09:37:50.7090910Z   ---
+2026-10-02T09:37:50.7091130Z   duration_ms: 2.985875
+2026-10-02T09:37:50.7091370Z   ...
+2026-10-02T09:37:50.7091610Z # Subtest: rejects symlink
+2026-10-02T09:37:50.7091890Z ok 10 - rejects symlink
+2026-10-02T09:37:50.7092130Z   ---
+2026-10-02T09:37:50.7092390Z   duration_ms: 1.929292
+2026-10-02T09:37:50.7092690Z   ...
+2026-10-02T09:37:50.7092980Z # Subtest: rejects unsupported schema
+2026-10-02T09:37:50.7093370Z ok 11 - rejects unsupported schema
+2026-10-02T09:37:50.7093700Z   ---
+2026-10-02T09:37:50.7093980Z   duration_ms: 1.5905
+2026-10-02T09:37:50.7094260Z   ...
+2026-10-02T09:37:50.7094570Z # Subtest: rejects duplicate membership source
+2026-10-02T09:37:50.7095060Z ok 12 - rejects duplicate membership source
+2026-10-02T09:37:50.7095630Z   ---
+2026-10-02T09:37:50.7095890Z   duration_ms: 1.173708
+2026-10-02T09:37:50.7096190Z   ...
+2026-10-02T09:37:50.7096690Z # Subtest: actual repository standalone applications resolve without changing package names
+2026-10-02T09:37:50.7097380Z ok 13 - actual repository standalone applications resolve without changing package names
+2026-10-02T09:37:50.7097900Z   ---
+2026-10-02T09:37:50.7098130Z   duration_ms: 24.915167
+2026-10-02T09:37:50.7098370Z   ...
+2026-10-02T09:37:50.7098840Z # Subtest: 複数パスの確定途中で失敗した場合はすべて変更前へ戻す
+2026-10-02T09:37:50.7099280Z ok 14 - 複数パスの確定途中で失敗した場合はすべて変更前へ戻す
+2026-10-02T09:37:50.7099580Z   ---
+2026-10-02T09:37:50.7099800Z   duration_ms: 7.845917
+2026-10-02T09:37:50.7100080Z   ...
+2026-10-02T09:37:50.7100520Z # Subtest: 複数パスを成功時にまとめて置換する
+2026-10-02T09:37:50.7100840Z ok 15 - 複数パスを成功時にまとめて置換する
+2026-10-02T09:37:50.7101160Z   ---
+2026-10-02T09:37:50.7101430Z   duration_ms: 2.914667
+2026-10-02T09:37:50.7101700Z   ...
+2026-10-02T09:37:53.5645690Z # Subtest: Awesome最終レビューキューは自動証拠レビュー済みの標本と証拠を固定する
+2026-10-02T09:37:53.5655880Z ok 16 - Awesome最終レビューキューは自動証拠レビュー済みの標本と証拠を固定する
+2026-10-02T09:37:53.5658090Z   ---
+2026-10-02T09:37:53.5659110Z   duration_ms: 1.321167
+2026-10-02T09:37:53.5659430Z   ...
+2026-10-02T09:37:53.5659970Z # Subtest: Awesome履歴レビュー同期は自動証拠レビュー後の完了状態を保持する
+2026-10-02T09:37:53.5660630Z ok 17 - Awesome履歴レビュー同期は自動証拠レビュー後の完了状態を保持する
+2026-10-02T09:37:53.5660990Z   ---
+2026-10-02T09:37:53.5661210Z   duration_ms: 128.746
+2026-10-02T09:37:53.5661450Z   ...
+2026-10-02T09:37:53.5662710Z # Subtest: 両snapshotの移行前レビュー計画は同一証拠だけを重複排除する
+2026-10-02T09:37:53.5663200Z ok 18 - 両snapshotの移行前レビュー計画は同一証拠だけを重複排除する
+2026-10-02T09:37:53.5664040Z   ---
+2026-10-02T09:37:53.5664490Z   duration_ms: 157.874584
+2026-10-02T09:37:53.5664780Z   ...
+2026-10-02T09:37:53.5665170Z # Subtest: Awesome最終レビュー署名は証拠変更時に失効する
+2026-10-02T09:37:53.5665560Z ok 19 - Awesome最終レビュー署名は証拠変更時に失効する
+2026-10-02T09:37:53.5665820Z   ---
+2026-10-02T09:37:53.5666100Z   duration_ms: 1450.092667
+2026-10-02T09:37:53.5666430Z   ...
+2026-10-02T09:37:53.5666820Z # Subtest: Awesome包括レビュー証明も証拠変更時に失効する
+2026-10-02T09:37:53.5667220Z ok 20 - Awesome包括レビュー証明も証拠変更時に失効する
+2026-10-02T09:37:53.5667480Z   ---
+2026-10-02T09:37:53.5667700Z   duration_ms: 1084.395333
+2026-10-02T09:37:53.5667950Z   ...
+2026-10-02T09:37:53.5779650Z # Subtest: Markdown、日本語、RSTの目次を序文境界として検出する
+2026-10-02T09:37:53.5781270Z ok 21 - Markdown、日本語、RSTの目次を序文境界として検出する
+2026-10-02T09:37:53.5811890Z   ---
+2026-10-02T09:37:53.5812160Z   duration_ms: 7.619292
+2026-10-02T09:37:53.5812390Z   ...
+2026-10-02T09:37:53.5812930Z # Subtest: H1欠損・HTML中央揃え・画像・長い序文を分類する
+2026-10-02T09:37:53.5813280Z ok 22 - H1欠損・HTML中央揃え・画像・長い序文を分類する
+2026-10-02T09:37:53.5813500Z   ---
+2026-10-02T09:37:53.5813690Z   duration_ms: 0.55225
+2026-10-02T09:37:53.5813890Z   ...
+2026-10-02T09:37:53.5814400Z # Subtest: 正規化はfrontmatterと序文だけを変え、境界以降のハッシュを保持して冪等である
+2026-10-02T09:37:53.5814880Z ok 23 - 正規化はfrontmatterと序文だけを変え、境界以降のハッシュを保持して冪等である
+2026-10-02T09:37:53.5815140Z   ---
+2026-10-02T09:37:53.5816180Z   duration_ms: 2.278375
+2026-10-02T09:37:53.5816380Z   ...
+2026-10-02T09:37:53.5816690Z # Subtest: 判断記録後に序文または保持本文が変わった入力を拒否する
+2026-10-02T09:37:53.5817020Z ok 24 - 判断記録後に序文または保持本文が変わった入力を拒否する
+2026-10-02T09:37:53.5817240Z   ---
+2026-10-02T09:37:53.5817420Z   duration_ms: 0.697292
+2026-10-02T09:37:53.5817620Z   ...
+2026-10-02T09:37:53.5817930Z # Subtest: 装飾H1や告知見出しを題名にせず、安全なリポジトリ名へフォールバックする
+2026-10-02T09:37:53.5818330Z ok 25 - 装飾H1や告知見出しを題名にせず、安全なリポジトリ名へフォールバックする
+2026-10-02T09:37:53.5818630Z   ---
+2026-10-02T09:37:53.5818810Z   duration_ms: 3.797625
+2026-10-02T09:37:53.5819030Z   ...
+2026-10-02T09:37:53.5819350Z # Subtest: 版別判断記録はschema、件数、パス、タイトル規則、継承条件を満たす
+2026-10-02T09:37:53.5819720Z ok 26 - 版別判断記録はschema、件数、パス、タイトル規則、継承条件を満たす
+2026-10-02T09:37:53.5819970Z   ---
+2026-10-02T09:37:53.5820150Z   duration_ms: 301.396458
+2026-10-02T09:37:53.5820360Z   ...
+2026-10-02T09:37:54.0927790Z # Subtest: Awesome所有先は版・言語・カテゴリから独立し、大文字小文字を保持する
+2026-10-02T09:37:54.1106160Z ok 27 - Awesome所有先は版・言語・カテゴリから独立し、大文字小文字を保持する
+2026-10-02T09:37:54.1200700Z   ---
+2026-10-02T09:37:54.1201190Z   duration_ms: 36.275708
+2026-10-02T09:37:54.1201510Z   ...
+2026-10-02T09:37:54.1202100Z # Subtest: Awesome所有APIは移行前の単独配置でも同じ全版・言語を返す
+2026-10-02T09:37:54.1202720Z ok 28 - Awesome所有APIは移行前の単独配置でも同じ全版・言語を返す
+2026-10-02T09:37:54.1203050Z   ---
+2026-10-02T09:37:54.1203310Z   duration_ms: 9.593583
+2026-10-02T09:37:54.1203600Z   ...
+2026-10-02T09:37:54.1204060Z # Subtest: 翻訳用の論理ファイル指定は子の配置を隠し、未知・逸脱・誤配置を拒否する
+2026-10-02T09:37:54.1204660Z ok 29 - 翻訳用の論理ファイル指定は子の配置を隠し、未知・逸脱・誤配置を拒否する
+2026-10-02T09:37:54.1205630Z   ---
+2026-10-02T09:37:54.1206030Z   duration_ms: 30.135
+2026-10-02T09:37:54.1206300Z   ...
+2026-10-02T09:37:54.1210790Z # Subtest: 分割した概要から他の子のリストへ、同じ版・言語の内部リンクを生成する
+2026-10-02T09:37:54.1238710Z ok 30 - 分割した概要から他の子のリストへ、同じ版・言語の内部リンクを生成する
+2026-10-02T09:37:54.1239270Z   ---
+2026-10-02T09:37:54.1239550Z   duration_ms: 7.225709
+2026-10-02T09:37:54.1239850Z   ...
+2026-10-02T09:37:54.1240250Z # Subtest: Awesomeは誤配置・重複・未知取得元・欠損所有子で停止する
+2026-10-02T09:37:54.1240890Z ok 31 - Awesomeは誤配置・重複・未知取得元・欠損所有子で停止する
+2026-10-02T09:37:54.1245740Z   ---
+2026-10-02T09:37:54.1246360Z   duration_ms: 9.749708
+2026-10-02T09:37:54.1246910Z   ...
+2026-10-02T09:37:54.1247960Z # Subtest: Awesome本文解決はパス逸脱を拒否し、所有設定の不正を診断する
+2026-10-02T09:37:54.1248990Z ok 32 - Awesome本文解決はパス逸脱を拒否し、所有設定の不正を診断する
+2026-10-02T09:37:54.1250000Z   ---
+2026-10-02T09:37:54.1250470Z   duration_ms: 10.080125
+2026-10-02T09:37:54.1251030Z   ...
+2026-10-02T09:37:54.1252030Z # Subtest: 実Awesomeの全取得元に所有割当があり、英日・履歴の経路を欠落させない
+2026-10-02T09:37:54.1253220Z ok 33 - 実Awesomeの全取得元に所有割当があり、英日・履歴の経路を欠落させない
+2026-10-02T09:37:54.1253790Z   ---
+2026-10-02T09:37:54.1254230Z   duration_ms: 155.301167
+2026-10-02T09:37:54.1254870Z   ...
+2026-10-02T09:37:54.1255880Z # Subtest: 現行Awesome出典レジストリのcheckは生成値を照合しファイルを変更しない
+2026-10-02T09:37:54.1257040Z ok 34 - 現行Awesome出典レジストリのcheckは生成値を照合しファイルを変更しない
+2026-10-02T09:37:54.1257840Z   ---
+2026-10-02T09:37:54.1258390Z   duration_ms: 388.140958
+2026-10-02T09:37:54.1258880Z   ...
+2026-10-02T09:37:54.1345930Z # Subtest: 案内ページ生成は記録済みの正規化を適用し、現行の日本語本文を再現する
+2026-10-02T09:37:54.1346390Z ok 35 - 案内ページ生成は記録済みの正規化を適用し、現行の日本語本文を再現する
+2026-10-02T09:37:54.1346800Z   ---
+2026-10-02T09:37:54.1347230Z   duration_ms: 434.681083
+2026-10-02T09:37:54.1347500Z   ...
+2026-10-02T09:37:54.1347960Z # Subtest: 現行の外部リンク報告は移動に依存しない取得元IDで本文を照合する
+2026-10-02T09:37:54.1348430Z ok 36 - 現行の外部リンク報告は移動に依存しない取得元IDで本文を照合する
+2026-10-02T09:37:54.1348730Z   ---
+2026-10-02T09:37:54.1350460Z   duration_ms: 795.157958
+2026-10-02T09:37:54.1350970Z   ...
+2026-10-02T09:37:54.1352000Z # Subtest: 入れ子の本文・asset検査は全子を検査し、他の子の出典登録で欠落を隠さない
+2026-10-02T09:37:54.1352960Z ok 37 - 入れ子の本文・asset検査は全子を検査し、他の子の出典登録で欠落を隠さない
+2026-10-02T09:37:54.1353540Z   ---
+2026-10-02T09:37:54.1353940Z   duration_ms: 718.297542
+2026-10-02T09:37:54.1354390Z   ...
+2026-10-02T09:37:54.1355170Z # Subtest: 入れ子出典生成は履歴版の出典と共通出典参照を保持し、古い版指定でも全子の新版を保持する
+2026-10-02T09:37:54.1358820Z ok 38 - 入れ子出典生成は履歴版の出典と共通出典参照を保持し、古い版指定でも全子の新版を保持する
+2026-10-02T09:37:54.1359410Z   ---
+2026-10-02T09:37:54.1361060Z   duration_ms: 179.823042
+2026-10-02T09:37:54.1361950Z   ...
+2026-10-02T09:37:59.1106990Z # Subtest: Awesomeコマンドはsnapshot省略時に暗黙の最新版を選ばない
+2026-10-02T09:37:59.1154130Z ok 39 - Awesomeコマンドはsnapshot省略時に暗黙の最新版を選ばない
+2026-10-02T09:37:59.1154820Z   ---
+2026-10-02T09:37:59.1155780Z   duration_ms: 130.517042
+2026-10-02T09:37:59.1156410Z   ...
+2026-10-02T09:37:59.1157770Z # Subtest: Awesome履歴版の公開再現性検査は日本語365ページを保持して通過する
+2026-10-02T09:37:59.1158870Z ok 40 - Awesome履歴版の公開再現性検査は日本語365ページを保持して通過する
+2026-10-02T09:37:59.1159490Z   ---
+2026-10-02T09:37:59.1161370Z   duration_ms: 2388.013917
+2026-10-02T09:37:59.1161740Z   ...
+2026-10-02T09:37:59.1187060Z # Subtest: Awesome検証は版ごとの成果物だけを対象にし、履歴版に新しいレビュー成果物を要求しない
+2026-10-02T09:37:59.1187740Z ok 41 - Awesome検証は版ごとの成果物だけを対象にし、履歴版に新しいレビュー成果物を要求しない
+2026-10-02T09:37:59.1188020Z   ---
+2026-10-02T09:37:59.1188290Z   duration_ms: 2221.47975
+2026-10-02T09:37:59.1188490Z   ...
+2026-10-02T09:37:59.1188930Z # Subtest: 全件翻訳ゲートは未翻訳ページを明示して停止する
+2026-10-02T09:37:59.1189240Z ok 42 - 全件翻訳ゲートは未翻訳ページを明示して停止する
+2026-10-02T09:37:59.1195630Z   ---
+2026-10-02T09:37:59.1195900Z   duration_ms: 184.520875
+2026-10-02T09:37:59.1196130Z   ...
+2026-10-02T09:37:59.1196590Z # Subtest: 翻訳ゲートは内部アンカーリンクの変更を検出する
+2026-10-02T09:37:59.1196930Z ok 43 - 翻訳ゲートは内部アンカーリンクの変更を検出する
+2026-10-02T09:37:59.1197220Z   ---
+2026-10-02T09:37:59.1197450Z   duration_ms: 199.8815
+2026-10-02T09:37:59.1197770Z   ...
+2026-10-02T09:37:59.1198450Z # Subtest: 機械検査済み日本語ページの説明に古い進捗表示を残さない
+2026-10-02T09:37:59.1198870Z ok 44 - 機械検査済み日本語ページの説明に古い進捗表示を残さない
+2026-10-02T09:37:59.1199210Z   ---
+2026-10-02T09:37:59.1199460Z   duration_ms: 179.628333
+2026-10-02T09:37:59.1199810Z   ...
+2026-10-02T09:37:59.1200630Z # Subtest: Awesome概要は簡潔な見出しと概要から始まり、スポンサー前置きを含まない
+2026-10-02T09:37:59.1202300Z ok 45 - Awesome概要は簡潔な見出しと概要から始まり、スポンサー前置きを含まない
+2026-10-02T09:37:59.1202700Z   ---
+2026-10-02T09:37:59.1202920Z   duration_ms: 1.710458
+2026-10-02T09:37:59.1203300Z   ...
+2026-10-02T09:37:59.1203810Z # Subtest: 自動証拠レビュー済みの公開メタデータは人手レビューと区別する
+2026-10-02T09:37:59.1204310Z ok 46 - 自動証拠レビュー済みの公開メタデータは人手レビューと区別する
+2026-10-02T09:37:59.1204730Z   ---
+2026-10-02T09:37:59.1204960Z   duration_ms: 55.636792
+2026-10-02T09:37:59.1205230Z   ...
+2026-10-02T09:37:59.1286110Z # Subtest: Awesome旧直下証拠は版別移行表へハッシュ付きで収録されている
+2026-10-02T09:37:59.1390840Z ok 47 - Awesome旧直下証拠は版別移行表へハッシュ付きで収録されている
+2026-10-02T09:37:59.1400370Z   ---
+2026-10-02T09:37:59.1400810Z   duration_ms: 118.393542
+2026-10-02T09:37:59.1401550Z   ...
+2026-10-02T09:37:59.1402320Z # Subtest: Awesomeの両snapshotは主要証拠を独立して保持する
+2026-10-02T09:37:59.1403580Z ok 48 - Awesomeの両snapshotは主要証拠を独立して保持する
+2026-10-02T09:37:59.1404090Z   ---
+2026-10-02T09:37:59.1404440Z   duration_ms: 0.602833
+2026-10-02T09:37:59.1405690Z   ...
+2026-10-02T09:37:59.1406250Z # Subtest: 履歴版レビューの公開時点証拠と失効後証拠を混同しない
+2026-10-02T09:37:59.1407020Z ok 49 - 履歴版レビューの公開時点証拠と失効後証拠を混同しない
+2026-10-02T09:37:59.1407560Z   ---
+2026-10-02T09:37:59.1407980Z   duration_ms: 114.74975
+2026-10-02T09:37:59.1408340Z   ...
+2026-10-02T09:37:59.1408910Z # Subtest: 履歴版定本の検証・正規化入力回復は新版snapshotを参照しない
+2026-10-02T09:37:59.1410820Z ok 50 - 履歴版定本の検証・正規化入力回復は新版snapshotを参照しない
+2026-10-02T09:37:59.1411300Z   ---
+2026-10-02T09:37:59.1411700Z   duration_ms: 192.176583
+2026-10-02T09:37:59.1412190Z   ...
+2026-10-02T09:37:59.1412820Z # Subtest: 移行ステージはbaseUrlPrefixから公開経路を解決し、各子の本文・検索・ナビを保存する
+2026-10-02T09:37:59.1413650Z ok 51 - 移行ステージはbaseUrlPrefixから公開経路を解決し、各子の本文・検索・ナビを保存する
+2026-10-02T09:37:59.1414190Z   ---
+2026-10-02T09:37:59.1414550Z   duration_ms: 147.475375
+2026-10-02T09:37:59.1415140Z   ...
+2026-10-02T09:37:59.1416690Z # Subtest: 検索索引が本文を欠落させる移行は公開前に停止し、元appを保持する
+2026-10-02T09:37:59.1417360Z ok 52 - 検索索引が本文を欠落させる移行は公開前に停止し、元appを保持する
+2026-10-02T09:37:59.1417820Z   ---
+2026-10-02T09:37:59.1418120Z   duration_ms: 15.524791
+2026-10-02T09:37:59.1418550Z   ...
+2026-10-02T09:37:59.1419070Z # Subtest: 複数子のgenerate途中失敗では先の子の本文・索引も元に戻す
+2026-10-02T09:37:59.1419590Z ok 53 - 複数子のgenerate途中失敗では先の子の本文・索引も元に戻す
+2026-10-02T09:37:59.1420120Z   ---
+2026-10-02T09:37:59.1420550Z   duration_ms: 21.609291
+2026-10-02T09:37:59.1421360Z   ...
+2026-10-02T09:37:59.1421840Z # Subtest: 複数子のvalidate途中失敗では先の子の本文・索引も元に戻す
+2026-10-02T09:37:59.1422490Z ok 54 - 複数子のvalidate途中失敗では先の子の本文・索引も元に戻す
+2026-10-02T09:37:59.1423010Z   ---
+2026-10-02T09:37:59.1423430Z   duration_ms: 9.803709
+2026-10-02T09:37:59.1423820Z   ...
+2026-10-02T09:37:59.1424380Z # Subtest: 複数子のcommit途中失敗では先の子の本文・索引も元に戻す
+2026-10-02T09:37:59.1424880Z ok 55 - 複数子のcommit途中失敗では先の子の本文・索引も元に戻す
+2026-10-02T09:37:59.1425490Z   ---
+2026-10-02T09:37:59.1425830Z   duration_ms: 8.67275
+2026-10-02T09:37:59.1426170Z   ...
+2026-10-02T09:37:59.1426680Z # Subtest: 一括生成のcheckは未作成対象を作らず、成功時は旧本文を残さず全子を置換する
+2026-10-02T09:37:59.1427280Z ok 56 - 一括生成のcheckは未作成対象を作らず、成功時は旧本文を残さず全子を置換する
+2026-10-02T09:37:59.1427750Z   ---
+2026-10-02T09:37:59.1433770Z   duration_ms: 15.246625
+2026-10-02T09:37:59.1434230Z   ...
+2026-10-02T09:37:59.1434860Z # Subtest: 親子または同一パスへの重複出力は生成前に拒否する
+2026-10-02T09:37:59.1436520Z ok 57 - 親子または同一パスへの重複出力は生成前に拒否する
+2026-10-02T09:37:59.1457350Z   ---
+2026-10-02T09:37:59.1460950Z   duration_ms: 3.036916
+2026-10-02T09:37:59.1461860Z   ...
+2026-10-02T09:37:59.1462580Z # Subtest: build-integrated.jsのhelpと未知引数はビルド・配信を開始せず終了する
+2026-10-02T09:37:59.1463220Z ok 58 - build-integrated.jsのhelpと未知引数はビルド・配信を開始せず終了する
+2026-10-02T09:37:59.1463590Z   ---
+2026-10-02T09:37:59.1463920Z   duration_ms: 184.737584
+2026-10-02T09:37:59.1464280Z   ...
+2026-10-02T09:37:59.1464810Z # Subtest: build-selective.jsのhelpと未知引数はビルド・配信を開始せず終了する
+2026-10-02T09:37:59.1482420Z ok 59 - build-selective.jsのhelpと未知引数はビルド・配信を開始せず終了する
+2026-10-02T09:37:59.1482850Z   ---
+2026-10-02T09:37:59.1483680Z   duration_ms: 192.093459
+2026-10-02T09:37:59.1484170Z   ...
+2026-10-02T09:37:59.1484650Z # Subtest: preview-integrated.jsのhelpと未知引数はビルド・配信を開始せず終了する
+2026-10-02T09:37:59.1485280Z ok 60 - preview-integrated.jsのhelpと未知引数はビルド・配信を開始せず終了する
+2026-10-02T09:37:59.1485650Z   ---
+2026-10-02T09:37:59.1485990Z   duration_ms: 172.155459
+2026-10-02T09:37:59.1486370Z   ...
+2026-10-02T09:37:59.1486860Z # Subtest: 公開制御・API読取・CLI出力・HTTP照合を結合し、一子更新と復旧で他の子を再配置しない
+2026-10-02T09:37:59.1487550Z ok 61 - 公開制御・API読取・CLI出力・HTTP照合を結合し、一子更新と復旧で他の子を再配置しない
+2026-10-02T09:37:59.1487900Z   ---
+2026-10-02T09:37:59.1492010Z   duration_ms: 231.037208
+2026-10-02T09:37:59.1492790Z   ...
+2026-10-02T09:37:59.1493290Z # Subtest: 配置記録を失った既存Workerと公開本文の改変を検出して入口を維持する
+2026-10-02T09:37:59.1493710Z ok 62 - 配置記録を失った既存Workerと公開本文の改変を検出して入口を維持する
+2026-10-02T09:37:59.1494030Z   ---
+2026-10-02T09:37:59.1494230Z   duration_ms: 121.112791
+2026-10-02T09:37:59.1494600Z   ...
+2026-10-02T09:37:59.1498130Z # Subtest: CLIが切替応答を失ってもAPIと保存した版記録で照合できる
+2026-10-02T09:37:59.1498580Z ok 63 - CLIが切替応答を失ってもAPIと保存した版記録で照合できる
+2026-10-02T09:37:59.1498930Z   ---
+2026-10-02T09:37:59.1499210Z   duration_ms: 108.118792
+2026-10-02T09:37:59.1499660Z   ...
+2026-10-02T09:37:59.1500180Z # Subtest: 初期作成後にアップロードが失敗しても503の初期版を照合して再開できる
+2026-10-02T09:37:59.1501260Z ok 64 - 初期作成後にアップロードが失敗しても503の初期版を照合して再開できる
+2026-10-02T09:37:59.1501660Z   ---
+2026-10-02T09:37:59.1501900Z   duration_ms: 100.648542
+2026-10-02T09:37:59.1507980Z   ...
+2026-10-02T09:37:59.1508950Z # Subtest: 現在deploymentから版を読み、識別子を取得する。API以外へ認証を渡さない
+2026-10-02T09:37:59.1509480Z ok 65 - 現在deploymentから版を読み、識別子を取得する。API以外へ認証を渡さない
+2026-10-02T09:37:59.1509880Z   ---
+2026-10-02T09:37:59.1510240Z   duration_ms: 36.37675
+2026-10-02T09:37:59.1510560Z   ...
+2026-10-02T09:37:59.1511040Z # Subtest: Worker不存在以外の認証・制限・サーバーエラーを未配置へ変換しない
+2026-10-02T09:37:59.1511480Z ok 66 - Worker不存在以外の認証・制限・サーバーエラーを未配置へ変換しない
+2026-10-02T09:37:59.1511870Z   ---
+2026-10-02T09:37:59.1512260Z   duration_ms: 1.657209
+2026-10-02T09:37:59.1527640Z   ...
+2026-10-02T09:37:59.1530620Z # Subtest: 複数版配信・不明な一覧・版IDの不一致を拒否する
+2026-10-02T09:37:59.1531130Z ok 67 - 複数版配信・不明な一覧・版IDの不一致を拒否する
+2026-10-02T09:37:59.1531490Z   ---
+2026-10-02T09:37:59.1531810Z   duration_ms: 1.335791
+2026-10-02T09:37:59.1532170Z   ...
+2026-10-02T09:37:59.1532650Z # Subtest: 互換設定・bindingの追加や変更・別service環境を拒否する
+2026-10-02T09:37:59.1533120Z ok 68 - 互換設定・bindingの追加や変更・別service環境を拒否する
+2026-10-02T09:37:59.1533540Z   ---
+2026-10-02T09:37:59.1533930Z   duration_ms: 0.250875
+2026-10-02T09:37:59.1534310Z   ...
+2026-10-02T09:37:59.1534850Z # Subtest: 巨大応答・JSON以外・ネットワーク障害を成功にしない
+2026-10-02T09:37:59.1536060Z ok 69 - 巨大応答・JSON以外・ネットワーク障害を成功にしない
+2026-10-02T09:37:59.1536530Z   ---
+2026-10-02T09:37:59.1536810Z   duration_ms: 1.333959
+2026-10-02T09:37:59.1537130Z   ...
+2026-10-02T09:37:59.4888690Z # Subtest: 実際の設定loaderとキャッシュは別グループの同名子を混同しない
+2026-10-02T09:37:59.4903650Z ok 70 - 実際の設定loaderとキャッシュは別グループの同名子を混同しない
+2026-10-02T09:37:59.4904110Z   ---
+2026-10-02T09:37:59.4904550Z   duration_ms: 2900.62375
+2026-10-02T09:37:59.4929230Z   ...
+2026-10-02T09:37:59.4981370Z # Subtest: 管理CLIはMarkdownを既定としMDXを明示的に選択できる
+2026-10-02T09:37:59.5082340Z ok 71 - 管理CLIはMarkdownを既定としMDXを明示的に選択できる
+2026-10-02T09:37:59.5083300Z   ---
+2026-10-02T09:37:59.5083670Z   duration_ms: 1.44925
+2026-10-02T09:37:59.5083990Z   ...
+2026-10-02T09:37:59.5084370Z # Subtest: 既存構造の解析はMarkdownとMDXの両方を数える
+2026-10-02T09:37:59.5084920Z ok 72 - 既存構造の解析はMarkdownとMDXの両方を数える
+2026-10-02T09:37:59.5085280Z   ---
+2026-10-02T09:37:59.5085590Z   duration_ms: 27.053666
+2026-10-02T09:37:59.5085930Z   ...
+2026-10-02T09:37:59.5086250Z # Subtest: 主要な発見処理にMDX専用の拡張子判定を残さない
+2026-10-02T09:37:59.5086930Z ok 73 - 主要な発見処理にMDX専用の拡張子判定を残さない
+2026-10-02T09:37:59.5087470Z   ---
+2026-10-02T09:37:59.5088040Z   duration_ms: 1.775333
+2026-10-02T09:37:59.5088310Z   ...
+2026-10-02T09:37:59.6109630Z # Subtest: 翻訳0件と部分翻訳を欠落許容モードで扱う
+2026-10-02T09:37:59.6111580Z ok 74 - 翻訳0件と部分翻訳を欠落許容モードで扱う
+2026-10-02T09:37:59.6112790Z   ---
+2026-10-02T09:37:59.6113380Z   duration_ms: 33.19975
+2026-10-02T09:37:59.6115310Z   ...
+2026-10-02T09:37:59.6115940Z # Subtest: 全件翻訳はMarkdown表記差を許容し、不変要素を比較する
+2026-10-02T09:37:59.6116520Z ok 75 - 全件翻訳はMarkdown表記差を許容し、不変要素を比較する
+2026-10-02T09:37:59.6116920Z   ---
+2026-10-02T09:37:59.6168660Z   duration_ms: 11.93075
+2026-10-02T09:37:59.6169270Z   ...
+2026-10-02T09:37:59.6169800Z # Subtest: 余分な翻訳と壊れたアンカーを検出する
+2026-10-02T09:37:59.6170260Z ok 76 - 余分な翻訳と壊れたアンカーを検出する
+2026-10-02T09:37:59.6170670Z   ---
+2026-10-02T09:37:59.6171020Z   duration_ms: 6.014833
+2026-10-02T09:37:59.6172070Z   ...
+2026-10-02T09:38:00.0582500Z # Subtest: create-documentのdry-runは文書と設定を変更しない
+2026-10-02T09:38:00.0583510Z ok 77 - create-documentのdry-runは文書と設定を変更しない
+2026-10-02T09:38:00.0584030Z   ---
+2026-10-02T09:38:00.0584540Z   duration_ms: 177.755167
+2026-10-02T09:38:00.0585540Z   ...
+2026-10-02T09:38:00.0589140Z # Subtest: create-documentはMDXを明示指定した場合だけmdxを作成予定にする
+2026-10-02T09:38:00.0591550Z ok 78 - create-documentはMDXを明示指定した場合だけmdxを作成予定にする
+2026-10-02T09:38:00.0592010Z   ---
+2026-10-02T09:38:00.0592410Z   duration_ms: 182.20025
+2026-10-02T09:38:00.0592790Z   ...
+2026-10-02T09:38:00.0611450Z # Subtest: create-documentはプロジェクト未対応のロケールを明示的に拒否する
+2026-10-02T09:38:00.0612150Z ok 79 - create-documentはプロジェクト未対応のロケールを明示的に拒否する
+2026-10-02T09:38:00.0612780Z   ---
+2026-10-02T09:38:00.0613110Z   duration_ms: 136.701375
+2026-10-02T09:38:00.0613470Z   ...
+2026-10-02T09:38:00.0742160Z #   - package.json更新完了
+2026-10-02T09:38:00.0754350Z #   - astro.config.mjs更新完了
+2026-10-02T09:38:00.0754860Z #   - project.config.jsonc更新完了
+2026-10-02T09:38:00.0755430Z #   - package.json更新完了
+2026-10-02T09:38:00.0755890Z #   - astro.config.mjs更新完了
+2026-10-02T09:38:00.0756640Z # Subtest: group scaffolding creates a complete entry and resolves paths without membership duplication
+2026-10-02T09:38:00.0757520Z ok 80 - group scaffolding creates a complete entry and resolves paths without membership duplication
+2026-10-02T09:38:00.0758080Z   ---
+2026-10-02T09:38:00.0758420Z   duration_ms: 126.54775
+2026-10-02T09:38:00.0758730Z   ...
+2026-10-02T09:38:00.0760620Z # Subtest: dry-run and invalid IDs cannot create partial groups
+2026-10-02T09:38:00.0761430Z ok 81 - dry-run and invalid IDs cannot create partial groups
+2026-10-02T09:38:00.0761940Z   ---
+2026-10-02T09:38:00.0762280Z   duration_ms: 20.102958
+2026-10-02T09:38:00.0762590Z   ...
+2026-10-02T09:38:00.0763100Z # Subtest: failed template preparation leaves no group marker or stage
+2026-10-02T09:38:00.0763740Z ok 82 - failed template preparation leaves no group marker or stage
+2026-10-02T09:38:00.0764270Z   ---
+2026-10-02T09:38:00.0764600Z   duration_ms: 23.965208
+2026-10-02T09:38:00.0764890Z   ...
+2026-10-02T09:38:00.1824990Z # Subtest: create-versionのdry-runは設定とコンテンツを変更しない
+2026-10-02T09:38:00.1826170Z ok 83 - create-versionのdry-runは設定とコンテンツを変更しない
+2026-10-02T09:38:00.1828910Z   ---
+2026-10-02T09:38:00.1829240Z   duration_ms: 160.80025
+2026-10-02T09:38:00.1829640Z   ...
+2026-10-02T09:38:00.1830110Z # Subtest: create-versionはAstroが正規化する小数点付きIDを事前に拒否する
+2026-10-02T09:38:00.1830650Z ok 84 - create-versionはAstroが正規化する小数点付きIDを事前に拒否する
+2026-10-02T09:38:00.1831010Z   ---
+2026-10-02T09:38:00.1831250Z   duration_ms: 70.842125
+2026-10-02T09:38:00.1831610Z   ...
+2026-10-02T09:38:00.1953310Z # Subtest: 検査済み公開物は別ジョブ相当のコピー後も設定ファイルを含め全バイトを照合する
+2026-10-02T09:38:00.1958250Z ok 85 - 検査済み公開物は別ジョブ相当のコピー後も設定ファイルを含め全バイトを照合する
+2026-10-02T09:38:00.1958630Z   ---
+2026-10-02T09:38:00.1958880Z   duration_ms: 23.557791
+2026-10-02T09:38:00.1959130Z   ...
+2026-10-02T09:38:00.1959460Z # Subtest: 成果物のmodifiedファイルは公開前に検出する
+2026-10-02T09:38:00.1960520Z ok 86 - 成果物のmodifiedファイルは公開前に検出する
+2026-10-02T09:38:00.1960800Z   ---
+2026-10-02T09:38:00.1961020Z   duration_ms: 3.243625
+2026-10-02T09:38:00.1968450Z   ...
+2026-10-02T09:38:00.1968800Z # Subtest: 成果物のdeletedファイルは公開前に検出する
+2026-10-02T09:38:00.1969170Z ok 87 - 成果物のdeletedファイルは公開前に検出する
+2026-10-02T09:38:00.1969440Z   ---
+2026-10-02T09:38:00.1969660Z   duration_ms: 3.05525
+2026-10-02T09:38:00.1969910Z   ...
+2026-10-02T09:38:00.1970210Z # Subtest: 成果物のaddedファイルは公開前に検出する
+2026-10-02T09:38:00.1970570Z ok 88 - 成果物のaddedファイルは公開前に検出する
+2026-10-02T09:38:00.1970850Z   ---
+2026-10-02T09:38:00.1971070Z   duration_ms: 3.325458
+2026-10-02T09:38:00.1971310Z   ...
+2026-10-02T09:38:00.1971650Z # Subtest: symlinkと梱包先の重複を拒否し、元の公開物を保持する
+2026-10-02T09:38:00.1972030Z ok 89 - symlinkと梱包先の重複を拒否し、元の公開物を保持する
+2026-10-02T09:38:00.1972290Z   ---
+2026-10-02T09:38:00.1972520Z   duration_ms: 3.131666
+2026-10-02T09:38:00.1972760Z   ...
+2026-10-02T09:38:00.2710400Z # Subtest: deployment assets are counted recursively and grouped by extension
+2026-10-02T09:38:00.2711420Z ok 90 - deployment assets are counted recursively and grouped by extension
+2026-10-02T09:38:00.2711990Z   ---
+2026-10-02T09:38:00.2712500Z   duration_ms: 14.464791
+2026-10-02T09:38:00.2712770Z   ...
+2026-10-02T09:38:00.2713340Z # Subtest: deployment budget warns and fails before the provider hard limit
+2026-10-02T09:38:00.2715170Z ok 91 - deployment budget warns and fails before the provider hard limit
+2026-10-02T09:38:00.2715940Z   ---
+2026-10-02T09:38:00.2716230Z   duration_ms: 0.333
+2026-10-02T09:38:00.2716480Z   ...
+2026-10-02T09:38:00.2717020Z # Subtest: obsolete compressed and duplicated sidebar artifacts fail the budget check
+2026-10-02T09:38:00.2717900Z ok 92 - obsolete compressed and duplicated sidebar artifacts fail the budget check
+2026-10-02T09:38:00.2718910Z   ---
+2026-10-02T09:38:00.2719230Z   duration_ms: 0.09175
+2026-10-02T09:38:00.2720110Z   ...
+2026-10-02T09:38:00.2819750Z # Subtest: canonical documentation template has the required structure
+2026-10-02T09:38:00.2820870Z ok 93 - canonical documentation template has the required structure
+2026-10-02T09:38:00.2821230Z   ---
+2026-10-02T09:38:00.2821440Z   duration_ms: 2.235708
+2026-10-02T09:38:00.2821650Z   ...
+2026-10-02T09:38:00.2822020Z #   - package.json更新完了
+2026-10-02T09:38:00.2822290Z #   - astro.config.mjs更新完了
+2026-10-02T09:38:00.2822640Z #   - project.config.jsonc更新完了
+2026-10-02T09:38:00.2882180Z # Subtest: canonical template can be copied and configured as an application
+2026-10-02T09:38:00.2885080Z ok 94 - canonical template can be copied and configured as an application
+2026-10-02T09:38:00.2885510Z   ---
+2026-10-02T09:38:00.2885720Z   duration_ms: 17.500458
+2026-10-02T09:38:00.2885930Z   ...
+2026-10-02T09:38:00.3430470Z # Subtest: 文書先頭のh1は先行する互換アンカーの有無にかかわらず上余白を持たない
+2026-10-02T09:38:00.3431160Z ok 95 - 文書先頭のh1は先行する互換アンカーの有無にかかわらず上余白を持たない
+2026-10-02T09:38:00.3431510Z   ---
+2026-10-02T09:38:00.3431730Z   duration_ms: 4.451917
+2026-10-02T09:38:00.3431940Z   ...
+2026-10-02T09:38:00.5607600Z # Subtest: 文書情報を単一の意味的パネルとして文書最下部へ配置する
+2026-10-02T09:38:00.5609230Z ok 96 - 文書情報を単一の意味的パネルとして文書最下部へ配置する
+2026-10-02T09:38:00.5609950Z   ---
+2026-10-02T09:38:00.5610290Z   duration_ms: 2.724667
+2026-10-02T09:38:00.5610520Z   ...
+2026-10-02T09:38:00.5610890Z # Subtest: 旧表示APIとページ単位の帰属非表示設定を残さない
+2026-10-02T09:38:00.5611230Z ok 97 - 旧表示APIとページ単位の帰属非表示設定を残さない
+2026-10-02T09:38:00.5611460Z   ---
+2026-10-02T09:38:00.5611660Z   duration_ms: 0.691583
+2026-10-02T09:38:00.5611880Z   ...
+2026-10-02T09:38:00.5612270Z # Subtest: GLFWとLuaは既定ソースをFrontmatterへ重複記述しない
+2026-10-02T09:38:00.5614840Z ok 98 - GLFWとLuaは既定ソースをFrontmatterへ重複記述しない
+2026-10-02T09:38:00.5620430Z   ---
+2026-10-02T09:38:00.5620650Z   duration_ms: 160.971833
+2026-10-02T09:38:00.5620870Z   ...
+2026-10-02T09:38:00.5621340Z # Subtest: Luaの既知問題は英日とも固定取得版の別出典を明示する
+2026-10-02T09:38:00.5623140Z ok 99 - Luaの既知問題は英日とも固定取得版の別出典を明示する
+2026-10-02T09:38:00.5623490Z   ---
+2026-10-02T09:38:00.5623690Z   duration_ms: 0.386417
+2026-10-02T09:38:00.5623890Z   ...
+2026-10-02T09:38:00.5735600Z # Subtest: 廃止した共有フッターと全配信レイアウトに貢献エリアを残さない
+2026-10-02T09:38:00.5745120Z ok 100 - 廃止した共有フッターと全配信レイアウトに貢献エリアを残さない
+2026-10-02T09:38:00.5745570Z   ---
+2026-10-02T09:38:00.5745860Z   duration_ms: 4.744875
+2026-10-02T09:38:00.5746110Z   ...
+2026-10-02T09:38:00.5746460Z # Subtest: ロケールに廃止した貢献エリア用翻訳を残さない
+2026-10-02T09:38:00.5746820Z ok 101 - ロケールに廃止した貢献エリア用翻訳を残さない
+2026-10-02T09:38:00.5747380Z   ---
+2026-10-02T09:38:00.5748120Z   duration_ms: 1.759041
+2026-10-02T09:38:00.5748430Z   ...
+2026-10-02T09:38:00.5749130Z # Subtest: group navigation accepts the matching locale/version and rejects unsafe or stale data
+2026-10-02T09:38:00.5749910Z ok 102 - group navigation accepts the matching locale/version and rejects unsafe or stale data
+2026-10-02T09:38:00.5750350Z   ---
+2026-10-02T09:38:00.5750580Z   duration_ms: 1.916541
+2026-10-02T09:38:00.5751030Z   ...
+2026-10-02T09:38:00.7709220Z # example/web: 入力と出力を照合し、検証済み成果物を再利用します
+2026-10-02T09:38:00.7768700Z # example/web: 再生成します (生成物が欠損・変更されています: example/web/v1/en/guide/web/index.html)
+2026-10-02T09:38:00.7812300Z # example/web: 再生成します (生成物が欠損・変更されています: example/web/assets/web/client.js)
+2026-10-02T09:38:00.7905460Z # example/web: 再生成します (入力が変更されています。再ビルドしてください: example/web)
+2026-10-02T09:38:00.8037360Z # example/web: 入力と出力を照合し、検証済み成果物を再利用します
+2026-10-02T09:38:00.8096710Z # example/web: 入力と出力を照合し、検証済み成果物を再利用します
+2026-10-02T09:38:00.8550170Z # Subtest: 出力集合の照合は入力で除外する名前のディレクトリ内も検査する
+2026-10-02T09:38:00.8555600Z ok 103 - 出力集合の照合は入力で除外する名前のディレクトリ内も検査する
+2026-10-02T09:38:00.8556430Z   ---
+2026-10-02T09:38:00.8557250Z   duration_ms: 50.044083
+2026-10-02T09:38:00.8557590Z   ...
+2026-10-02T09:38:00.8558350Z # Subtest: 別checkoutへ復元した成果物は同じ入力なら再利用し、欠損・改変・本文変更は再生成する
+2026-10-02T09:38:00.8559190Z ok 104 - 別checkoutへ復元した成果物は同じ入力なら再利用し、欠損・改変・本文変更は再生成する
+2026-10-02T09:38:00.8559680Z   ---
+2026-10-02T09:38:00.8559940Z   duration_ms: 127.015333
+2026-10-02T09:38:00.8560260Z   ...
+2026-10-02T09:38:00.9102190Z # Subtest: group composition merges indexes, preserves ownership and removes unreachable JS
+2026-10-02T09:38:00.9103530Z ok 105 - group composition merges indexes, preserves ownership and removes unreachable JS
+2026-10-02T09:38:00.9104030Z   ---
+2026-10-02T09:38:00.9104270Z   duration_ms: 63.132334
+2026-10-02T09:38:00.9104580Z   ...
+2026-10-02T09:38:00.9815090Z # Subtest: collision, incomplete members and broken index leave the published group untouched
+2026-10-02T09:38:00.9847910Z ok 106 - collision, incomplete members and broken index leave the published group untouched
+2026-10-02T09:38:00.9849210Z   ---
+2026-10-02T09:38:00.9849630Z   duration_ms: 43.323333
+2026-10-02T09:38:00.9849950Z   ...
+2026-10-02T09:38:00.9850690Z # Subtest: URL aliases and traversal cannot acquire distinct ownership
+2026-10-02T09:38:00.9852550Z ok 107 - URL aliases and traversal cannot acquire distinct ownership
+2026-10-02T09:38:00.9854220Z   ---
+2026-10-02T09:38:00.9854550Z   duration_ms: 0.357083
+2026-10-02T09:38:00.9855480Z   ...
+2026-10-02T09:38:00.9856690Z # Subtest: cached artifacts require matching source and output hashes including shared data
+2026-10-02T09:38:00.9857790Z ok 108 - cached artifacts require matching source and output hashes including shared data
+2026-10-02T09:38:00.9858690Z   ---
+2026-10-02T09:38:00.9859100Z   duration_ms: 23.173375
+2026-10-02T09:38:00.9859430Z   ...
+2026-10-02T09:38:01.0133330Z # Subtest: static navigation escapes labels and honors RTL without requiring JavaScript
+2026-10-02T09:38:01.0137050Z ok 109 - static navigation escapes labels and honors RTL without requiring JavaScript
+2026-10-02T09:38:01.0147560Z   ---
+2026-10-02T09:38:01.0148060Z   duration_ms: 36.313
+2026-10-02T09:38:01.0149270Z   ...
+2026-10-02T09:38:01.0493710Z # Subtest: a complete page output cannot publish with missing search or navigation records
+2026-10-02T09:38:01.0519040Z ok 110 - a complete page output cannot publish with missing search or navigation records
+2026-10-02T09:38:01.0520050Z   ---
+2026-10-02T09:38:01.0520480Z   duration_ms: 37.495291
+2026-10-02T09:38:01.0520890Z   ...
+2026-10-02T09:38:01.0723370Z # Subtest: category identity comes from document directories, not localized display titles
+2026-10-02T09:38:01.0726380Z ok 111 - category identity comes from document directories, not localized display titles
+2026-10-02T09:38:01.0727190Z   ---
+2026-10-02T09:38:01.0727540Z   duration_ms: 23.828125
+2026-10-02T09:38:01.0727950Z   ...
+2026-10-02T09:38:01.1102280Z # Subtest: conflicting labels and forged category IDs fail without replacing published navigation
+2026-10-02T09:38:01.1159490Z ok 112 - conflicting labels and forged category IDs fail without replacing published navigation
+2026-10-02T09:38:01.1177540Z   ---
+2026-10-02T09:38:01.1177900Z   duration_ms: 46.474
+2026-10-02T09:38:01.1178200Z   ...
+2026-10-02T09:38:01.1179060Z # Subtest: ナビの世代は入力順・本文だけの変更で変わらず、カテゴリ翻訳の変更で更新する
+2026-10-02T09:38:01.1179510Z ok 113 - ナビの世代は入力順・本文だけの変更で変わらず、カテゴリ翻訳の変更で更新する
+2026-10-02T09:38:01.1179810Z   ---
+2026-10-02T09:38:01.1180080Z   duration_ms: 72.397875
+2026-10-02T09:38:01.1180340Z   ...
+2026-10-02T09:38:01.1180940Z # Subtest: stable document IDs resolve renamed and cross-child counterparts with honest index fallbacks
+2026-10-02T09:38:01.1181790Z ok 114 - stable document IDs resolve renamed and cross-child counterparts with honest index fallbacks
+2026-10-02T09:38:01.1182240Z   ---
+2026-10-02T09:38:01.1182470Z   duration_ms: 12.372958
+2026-10-02T09:38:01.1182780Z   ...
+2026-10-02T09:38:01.1183340Z # Subtest: duplicate identity and incomplete shared-version declarations stop catalog publication
+2026-10-02T09:38:01.1184160Z ok 115 - duplicate identity and incomplete shared-version declarations stop catalog publication
+2026-10-02T09:38:01.1184590Z   ---
+2026-10-02T09:38:01.1184860Z   duration_ms: 10.000541
+2026-10-02T09:38:01.1185110Z   ...
+2026-10-02T09:38:01.1185660Z # Subtest: sibling body-only updates preserve cache keys while navigation metadata updates invalidate them
+2026-10-02T09:38:01.1186440Z ok 116 - sibling body-only updates preserve cache keys while navigation metadata updates invalidate them
+2026-10-02T09:38:01.1186900Z   ---
+2026-10-02T09:38:01.1187130Z   duration_ms: 24.011583
+2026-10-02T09:38:01.1187370Z   ...
+2026-10-02T09:38:01.1187900Z # Subtest: shared groups paginate across child boundaries while keeping categories and locales separate
+2026-10-02T09:38:01.1188670Z ok 117 - shared groups paginate across child boundaries while keeping categories and locales separate
+2026-10-02T09:38:01.1189110Z   ---
+2026-10-02T09:38:01.1189340Z   duration_ms: 14.700125
+2026-10-02T09:38:01.1189580Z   ...
+2026-10-02T09:38:01.1189960Z # Subtest: 版全体のページネーションはカテゴリ・子の境界を越え、元の文書順を保持する
+2026-10-02T09:38:01.1190450Z ok 118 - 版全体のページネーションはカテゴリ・子の境界を越え、元の文書順を保持する
+2026-10-02T09:38:01.1190760Z   ---
+2026-10-02T09:38:01.1190990Z   duration_ms: 15.282209
+2026-10-02T09:38:01.1191240Z   ...
+2026-10-02T09:38:01.1191650Z # Subtest: 別の子の取得元repository変更で、概要の内部リンク生成キャッシュを無効化する
+2026-10-02T09:38:01.1192150Z ok 119 - 別の子の取得元repository変更で、概要の内部リンク生成キャッシュを無効化する
+2026-10-02T09:38:01.1192460Z   ---
+2026-10-02T09:38:01.1192690Z   duration_ms: 16.351417
+2026-10-02T09:38:01.1193200Z   ...
+2026-10-02T09:38:01.2059860Z # Subtest: 生成したWorker設定で各所有先を参照し、URL・HEAD・404・障害を扱う
+2026-10-02T09:38:01.2132090Z ok 120 - 生成したWorker設定で各所有先を参照し、URL・HEAD・404・障害を扱う
+2026-10-02T09:38:01.2132460Z   ---
+2026-10-02T09:38:01.2132670Z   duration_ms: 89.856709
+2026-10-02T09:38:01.2132870Z   ...
+2026-10-02T09:38:01.2134630Z # Subtest: 資産Workerのコード・設定・CLI版の変更は配信先を更新する
+2026-10-02T09:38:01.2183620Z ok 121 - 資産Workerのコード・設定・CLI版の変更は配信先を更新する
+2026-10-02T09:38:01.2183920Z   ---
+2026-10-02T09:38:01.2184080Z   duration_ms: 2.854125
+2026-10-02T09:38:01.2184290Z   ...
+2026-10-02T09:38:01.2184640Z # Subtest: 入口Workerだけの変更は既存配信単位を再利用できる
+2026-10-02T09:38:01.2184960Z ok 122 - 入口Workerだけの変更は既存配信単位を再利用できる
+2026-10-02T09:38:01.2185890Z   ---
+2026-10-02T09:38:01.2186080Z   duration_ms: 0.619583
+2026-10-02T09:38:01.2186250Z   ...
+2026-10-02T09:38:01.2186560Z # Subtest: 配信単位はカテゴリでなく所有目録から生成し、順序に依存しない
+2026-10-02T09:38:01.2186870Z ok 123 - 配信単位はカテゴリでなく所有目録から生成し、順序に依存しない
+2026-10-02T09:38:01.2187070Z   ---
+2026-10-02T09:38:01.2187230Z   duration_ms: 0.71425
+2026-10-02T09:38:01.2187390Z   ...
+2026-10-02T09:38:01.2187640Z # Subtest: 一子の本文更新は他の配信先を変えず、全体リリースだけを更新する
+2026-10-02T09:38:01.2187950Z ok 124 - 一子の本文更新は他の配信先を変えず、全体リリースだけを更新する
+2026-10-02T09:38:01.2188140Z   ---
+2026-10-02T09:38:01.2188280Z   duration_ms: 0.656666
+2026-10-02T09:38:01.2188430Z   ...
+2026-10-02T09:38:01.2188680Z # Subtest: 未知所有者・重複・不正パス・欠けた子は配信先生成前に拒否する
+2026-10-02T09:38:01.2188980Z ok 125 - 未知所有者・重複・不正パス・欠けた子は配信先生成前に拒否する
+2026-10-02T09:38:01.2189170Z   ---
+2026-10-02T09:38:01.2189770Z   duration_ms: 0.837667
+2026-10-02T09:38:01.2190770Z   ...
+2026-10-02T09:38:01.2191170Z # Subtest: 配信元の全ファイルを照合し、変更・追加・欠損・symlinkを拒否する
+2026-10-02T09:38:01.2191610Z ok 126 - 配信元の全ファイルを照合し、変更・追加・欠損・symlinkを拒否する
+2026-10-02T09:38:01.2191860Z   ---
+2026-10-02T09:38:01.2192020Z   duration_ms: 4.42975
+2026-10-02T09:38:01.2192210Z   ...
+2026-10-02T09:38:01.2192500Z # Subtest: 旧アセットを複数世代保持し、削除した本文は復活させない
+2026-10-02T09:38:01.2193140Z ok 127 - 旧アセットを複数世代保持し、削除した本文は復活させない
+2026-10-02T09:38:01.2193430Z   ---
+2026-10-02T09:38:01.2193580Z   duration_ms: 62.261083
+2026-10-02T09:38:01.2195060Z   ...
+2026-10-02T09:38:01.2195460Z # Subtest: 同じアセットURLの内容差し替えと異なるグループの保持元を拒否する
+2026-10-02T09:38:01.2195850Z ok 128 - 同じアセットURLの内容差し替えと異なるグループの保持元を拒否する
+2026-10-02T09:38:01.2196080Z   ---
+2026-10-02T09:38:01.2196260Z   duration_ms: 1.514291
+2026-10-02T09:38:01.2196520Z   ...
+2026-10-02T09:38:01.2196910Z # Subtest: 呼出元の版選択ヘッダーを子へ渡さず、HEAD障害応答に本文を付けない
+2026-10-02T09:38:01.2197390Z ok 129 - 呼出元の版選択ヘッダーを子へ渡さず、HEAD障害応答に本文を付けない
+2026-10-02T09:38:01.2197640Z   ---
+2026-10-02T09:38:01.2197850Z   duration_ms: 1.48825
+2026-10-02T09:38:01.2198110Z   ...
+2026-10-02T09:38:01.2198480Z # Subtest: 復旧は旧本文・コードを戻し、復旧直前のHTMLが参照する新アセットも保持する
+2026-10-02T09:38:01.2199460Z ok 130 - 復旧は旧本文・コードを戻し、復旧直前のHTMLが参照する新アセットも保持する
+2026-10-02T09:38:01.2199930Z   ---
+2026-10-02T09:38:01.2200100Z   duration_ms: 53.323625
+2026-10-02T09:38:01.2200320Z   ...
+2026-10-02T09:38:01.6827720Z # Subtest: 子を先に配置・照合し、入口を最後に切り替え、一子更新では他を再配置しない
+2026-10-02T09:38:01.6842300Z ok 131 - 子を先に配置・照合し、入口を最後に切り替え、一子更新では他を再配置しない
+2026-10-02T09:38:01.6842650Z   ---
+2026-10-02T09:38:01.6851220Z   duration_ms: 47.303708
+2026-10-02T09:38:01.6851740Z   ...
+2026-10-02T09:38:01.6852280Z # Subtest: 子の配置失敗と入口検査失敗では既存入口を維持し、配置済み単位は再利用する
+2026-10-02T09:38:01.6852720Z ok 132 - 子の配置失敗と入口検査失敗では既存入口を維持し、配置済み単位は再利用する
+2026-10-02T09:38:01.6852970Z   ---
+2026-10-02T09:38:01.6853200Z   duration_ms: 48.116042
+2026-10-02T09:38:01.6853480Z   ...
+2026-10-02T09:38:01.6853830Z # Subtest: 同時公開をlockで拒否し、古い基点からの遅延公開も拒否する
+2026-10-02T09:38:01.6854260Z ok 133 - 同時公開をlockで拒否し、古い基点からの遅延公開も拒否する
+2026-10-02T09:38:01.6856790Z   ---
+2026-10-02T09:38:01.6857530Z   duration_ms: 157.361208
+2026-10-02T09:38:01.6857870Z   ...
+2026-10-02T09:38:01.6859100Z # Subtest: 照合中に別の公開が進んだ場合は入口を切り替えない
+2026-10-02T09:38:01.6859550Z ok 134 - 照合中に別の公開が進んだ場合は入口を切り替えない
+2026-10-02T09:38:01.6859980Z   ---
+2026-10-02T09:38:01.6860170Z   duration_ms: 36.591542
+2026-10-02T09:38:01.6860410Z   ...
+2026-10-02T09:38:01.6860800Z # Subtest: 切替後の応答喪失は再送せず未確定を保持し、配置先の肯定的な証拠で解消する
+2026-10-02T09:38:01.6861210Z ok 135 - 切替後の応答喪失は再送せず未確定を保持し、配置先の肯定的な証拠で解消する
+2026-10-02T09:38:01.6861470Z   ---
+2026-10-02T09:38:01.6861800Z   duration_ms: 30.671625
+2026-10-02T09:38:01.6862030Z   ...
+2026-10-02T09:38:01.6862330Z # Subtest: 配置済みserviceの内容不一致と梱包改変を入口切替前に拒否する
+2026-10-02T09:38:01.6863650Z ok 136 - 配置済みserviceの内容不一致と梱包改変を入口切替前に拒否する
+2026-10-02T09:38:01.6864400Z   ---
+2026-10-02T09:38:01.6864810Z   duration_ms: 28.299709
+2026-10-02T09:38:01.6865210Z   ...
+2026-10-02T09:38:01.6865530Z # Subtest: 復旧梱包も現在の基点を照合して入口を切り替え、旧単位を再利用する
+2026-10-02T09:38:01.6866500Z ok 137 - 復旧梱包も現在の基点を照合して入口を切り替え、旧単位を再利用する
+2026-10-02T09:38:01.6866930Z   ---
+2026-10-02T09:38:01.6867100Z   duration_ms: 101.902083
+2026-10-02T09:38:01.6867280Z   ...
+2026-10-02T09:38:01.6925500Z # Subtest: CIはグループ・基点・引継ぎID・復旧指定の矛盾を事前拒否する
+2026-10-02T09:38:01.6947940Z ok 138 - CIはグループ・基点・引継ぎID・復旧指定の矛盾を事前拒否する
+2026-10-02T09:38:01.6958570Z   ---
+2026-10-02T09:38:01.6959300Z   duration_ms: 49.123417
+2026-10-02T09:38:01.6959940Z   ...
+2026-10-02T09:38:01.6975190Z # Subtest: CIが実際の所有目録から梱包し、外部SHA不一致では公開へ進まない
+2026-10-02T09:38:01.6976450Z ok 139 - CIが実際の所有目録から梱包し、外部SHA不一致では公開へ進まない
+2026-10-02T09:38:01.6977250Z   ---
+2026-10-02T09:38:01.6977840Z   duration_ms: 44.727291
+2026-10-02T09:38:01.6978500Z   ...
+2026-10-02T09:38:01.6979360Z # Subtest: 未確定照合用CIは前回の梱包を再生成せず検証して引き継ぐ
+2026-10-02T09:38:01.6980350Z ok 140 - 未確定照合用CIは前回の梱包を再生成せず検証して引き継ぐ
+2026-10-02T09:38:01.6981060Z   ---
+2026-10-02T09:38:01.6981660Z   duration_ms: 74.753125
+2026-10-02T09:38:01.6982340Z   ...
+2026-10-02T09:38:01.6983310Z # Subtest: 確認済み梱包SHAと異なる再生成結果は外部操作前に破棄する
+2026-10-02T09:38:01.6984310Z ok 141 - 確認済み梱包SHAと異なる再生成結果は外部操作前に破棄する
+2026-10-02T09:38:01.6985010Z   ---
+2026-10-02T09:38:01.6985570Z   duration_ms: 31.523708
+2026-10-02T09:38:01.6986280Z   ...
+2026-10-02T09:38:01.8505100Z # Subtest: クリーン環境ではGLFW固定入力の再現性検査だけを明示的にスキップする
+2026-10-02T09:38:01.8507990Z ok 142 - クリーン環境ではGLFW固定入力の再現性検査だけを明示的にスキップする
+2026-10-02T09:38:01.8508420Z   ---
+2026-10-02T09:38:01.8508740Z   duration_ms: 85.851125
+2026-10-02T09:38:01.8509090Z   ...
+2026-10-02T09:38:01.8511920Z # Subtest: クリーン環境ではLua固定入力の再現性検査だけを明示的にスキップする
+2026-10-02T09:38:01.8512650Z ok 143 - クリーン環境ではLua固定入力の再現性検査だけを明示的にスキップする
+2026-10-02T09:38:01.8512990Z   ---
+2026-10-02T09:38:01.8513280Z   duration_ms: 132.940334
+2026-10-02T09:38:01.8513600Z   ...
+2026-10-02T09:38:01.8671620Z # Subtest: 同一要求内で重複せず、別要求の同じコンポーネント列を再現する
+2026-10-02T09:38:01.8684720Z ok 144 - 同一要求内で重複せず、別要求の同じコンポーネント列を再現する
+2026-10-02T09:38:01.8685260Z   ---
+2026-10-02T09:38:01.8686890Z   duration_ms: 1.928625
+2026-10-02T09:38:01.8688680Z   ...
+2026-10-02T09:38:01.8690120Z # Subtest: 別のコントロールや並行要求の描画順がIDを変えない
+2026-10-02T09:38:01.8693010Z ok 145 - 別のコントロールや並行要求の描画順がIDを変えない
+2026-10-02T09:38:01.8693470Z   ---
+2026-10-02T09:38:01.8693710Z   duration_ms: 0.222583
+2026-10-02T09:38:01.8693980Z   ...
+2026-10-02T09:38:01.9575270Z # Subtest: all distributed documentation layouts match the canonical template
+2026-10-02T09:38:01.9577100Z ok 146 - all distributed documentation layouts match the canonical template
+2026-10-02T09:38:01.9579060Z   ---
+2026-10-02T09:38:01.9579750Z   duration_ms: 57.602167
+2026-10-02T09:38:01.9580400Z   ...
+2026-10-02T09:38:01.9692440Z # Subtest: ローカル確認でも文書のindex.htmlを共通リダイレクトへ置き換えない
+2026-10-02T09:38:01.9803300Z ok 147 - ローカル確認でも文書のindex.htmlを共通リダイレクトへ置き換えない
+2026-10-02T09:38:01.9841090Z   ---
+2026-10-02T09:38:01.9841440Z   duration_ms: 1.053958
+2026-10-02T09:38:01.9841690Z   ...
+2026-10-02T09:38:01.9842150Z # Subtest: 共有ロケール検証はBCP 47形式の登録済みロケールを扱う
+2026-10-02T09:38:01.9842550Z ok 148 - 共有ロケール検証はBCP 47形式の登録済みロケールを扱う
+2026-10-02T09:38:01.9842870Z   ---
+2026-10-02T09:38:01.9843090Z   duration_ms: 1.258375
+2026-10-02T09:38:01.9843340Z   ...
+2026-10-02T09:38:01.9843790Z # Subtest: HTML URL補正はハイフン付きロケールと小数バージョンを保持する
+2026-10-02T09:38:01.9844440Z ok 149 - HTML URL補正はハイフン付きロケールと小数バージョンを保持する
+2026-10-02T09:38:01.9866830Z   ---
+2026-10-02T09:38:01.9867100Z   duration_ms: 0.339209
+2026-10-02T09:38:01.9867370Z   ...
+2026-10-02T09:38:02.7340050Z # Subtest: 固定4入力から全説明/報告者/修正先/再現コード/原MITを実Astroで保全する
+2026-10-02T09:38:02.7345010Z ok 150 - 固定4入力から全説明/報告者/修正先/再現コード/原MITを実Astroで保全する
+2026-10-02T09:38:02.7346770Z   ---
+2026-10-02T09:38:02.7347180Z   duration_ms: 608.657958
+2026-10-02T09:38:02.7347510Z   ...
+2026-10-02T09:38:02.7348130Z # Subtest: 追加1ページだけを再生成し、旧ページと日本語を保持する
+2026-10-02T09:38:02.7349330Z ok 151 - 追加1ページだけを再生成し、旧ページと日本語を保持する
+2026-10-02T09:38:02.7349750Z   ---
+2026-10-02T09:38:02.7350910Z   duration_ms: 19.078667
+2026-10-02T09:38:02.7351280Z   ...
+2026-10-02T09:38:02.7351970Z # Subtest: 改変原資料・symlinkを拒否し、確定失敗でも既存定本を戻す
+2026-10-02T09:38:02.7353720Z ok 152 - 改変原資料・symlinkを拒否し、確定失敗でも既存定本を戻す
+2026-10-02T09:38:02.7355210Z   ---
+2026-10-02T09:38:02.7355610Z   duration_ms: 15.030416
+2026-10-02T09:38:02.7359680Z   ...
+2026-10-02T09:38:02.7447290Z # Subtest: Lua HTMLのインライン要素を一つの読みやすいリスト項目に保つ
+2026-10-02T09:38:02.7454570Z ok 153 - Lua HTMLのインライン要素を一つの読みやすいリスト項目に保つ
+2026-10-02T09:38:02.7455060Z   ---
+2026-10-02T09:38:02.7455510Z   duration_ms: 12.904625
+2026-10-02T09:38:02.7456190Z   ...
+2026-10-02T09:38:02.7459060Z # Subtest: Lua HTMLの定義リストを用語と説明が対応する項目へ変換する
+2026-10-02T09:38:02.7461200Z ok 154 - Lua HTMLの定義リストを用語と説明が対応する項目へ変換する
+2026-10-02T09:38:02.7461680Z   ---
+2026-10-02T09:38:02.7462070Z   duration_ms: 1.859292
+2026-10-02T09:38:02.7462610Z   ...
+2026-10-02T09:38:02.7463110Z # Subtest: Lua manのTPマクロを用語と説明が対応する項目へ変換する
+2026-10-02T09:38:02.7463590Z ok 155 - Lua manのTPマクロを用語と説明が対応する項目へ変換する
+2026-10-02T09:38:02.7464030Z   ---
+2026-10-02T09:38:02.7464590Z   duration_ms: 0.888792
+2026-10-02T09:38:02.7464930Z   ...
+2026-10-02T09:38:02.7466790Z # Subtest: Lua見出し直後のpで囲まれていない説明をインライン要素で分割しない
+2026-10-02T09:38:02.7469870Z ok 156 - Lua見出し直後のpで囲まれていない説明をインライン要素で分割しない
+2026-10-02T09:38:02.7470310Z   ---
+2026-10-02T09:38:02.7470660Z   duration_ms: 2.700791
+2026-10-02T09:38:02.7471050Z   ...
+2026-10-02T09:38:02.7473800Z # Subtest: Lua説明のインライン要素を結合しても明示段落とコード境界を保つ
+2026-10-02T09:38:02.7474410Z ok 157 - Lua説明のインライン要素を結合しても明示段落とコード境界を保つ
+2026-10-02T09:38:02.7474860Z   ---
+2026-10-02T09:38:02.7480910Z   duration_ms: 2.663542
+2026-10-02T09:38:02.7483880Z   ...
+2026-10-02T09:38:02.7486950Z # Subtest: Lua書式で意味を持つ空白コードを消さずに保持する
+2026-10-02T09:38:02.7487420Z ok 158 - Lua書式で意味を持つ空白コードを消さずに保持する
+2026-10-02T09:38:02.7487990Z   ---
+2026-10-02T09:38:02.7504340Z   duration_ms: 1.533125
+2026-10-02T09:38:02.7504670Z   ...
+2026-10-02T09:38:02.7505150Z # Subtest: Lua manの標準出力記号のASCII引用符をコードで保持する
+2026-10-02T09:38:02.7506930Z ok 159 - Lua manの標準出力記号のASCII引用符をコードで保持する
+2026-10-02T09:38:02.7507420Z   ---
+2026-10-02T09:38:02.7507760Z   duration_ms: 0.432959
+2026-10-02T09:38:02.7508100Z   ...
+2026-10-02T09:38:02.7513560Z # Subtest: 日本語の定義的リスト項目を訳文を変えず一行へ正規化する
+2026-10-02T09:38:02.7513920Z ok 160 - 日本語の定義的リスト項目を訳文を変えず一行へ正規化する
+2026-10-02T09:38:02.7514150Z   ---
+2026-10-02T09:38:02.7514380Z   duration_ms: 1.429875
+2026-10-02T09:38:02.7514580Z   ...
+2026-10-02T09:38:02.7514840Z # Subtest: 通常の複数段落リストとネストしたリストは変更しない
+2026-10-02T09:38:02.7515140Z ok 161 - 通常の複数段落リストとネストしたリストは変更しない
+2026-10-02T09:38:02.7515320Z   ---
+2026-10-02T09:38:02.7515990Z   duration_ms: 0.861708
+2026-10-02T09:38:02.7516440Z   ...
+2026-10-02T09:38:02.7516830Z # Subtest: Frontmatter直後にある既知のLua出典通知だけを除去する
+2026-10-02T09:38:02.7517210Z ok 162 - Frontmatter直後にある既知のLua出典通知だけを除去する
+2026-10-02T09:38:02.7517430Z   ---
+2026-10-02T09:38:02.7517590Z   duration_ms: 0.26375
+2026-10-02T09:38:02.7517790Z   ...
+2026-10-02T09:38:02.7518050Z # Subtest: 説明のあるメタメソッド項目の複数段落と一覧後の本文を保つ
+2026-10-02T09:38:02.7518330Z ok 163 - 説明のあるメタメソッド項目の複数段落と一覧後の本文を保つ
+2026-10-02T09:38:02.7518520Z   ---
+2026-10-02T09:38:02.7518740Z   duration_ms: 0.106667
+2026-10-02T09:38:02.7518940Z   ...
+2026-10-02T09:38:02.7519190Z # Subtest: 定義の区切りを持たない通常の複数段落項目は変更しない
+2026-10-02T09:38:02.7519480Z ok 164 - 定義の区切りを持たない通常の複数段落項目は変更しない
+2026-10-02T09:38:02.7519660Z   ---
+2026-10-02T09:38:02.7519790Z   duration_ms: 0.105834
+2026-10-02T09:38:02.7519940Z   ...
+2026-10-02T09:38:02.7520380Z # Subtest: HTML id and named anchors are checked with exact case and duplicate headings remain valid
+2026-10-02T09:38:02.7521120Z ok 165 - HTML id and named anchors are checked with exact case and duplicate headings remain valid
+2026-10-02T09:38:02.7521470Z   ---
+2026-10-02T09:38:02.7521600Z   duration_ms: 12.870625
+2026-10-02T09:38:02.7521760Z   ...
+2026-10-02T09:38:02.7522310Z # Subtest: migration evidence permits physical movement and reports shell changes while protecting document invariants
+2026-10-02T09:38:02.7523160Z ok 166 - migration evidence permits physical movement and reports shell changes while protecting document invariants
+2026-10-02T09:38:02.7523560Z   ---
+2026-10-02T09:38:02.7523700Z   duration_ms: 30.648708
+2026-10-02T09:38:02.7524020Z   ...
+2026-10-02T09:38:02.7524460Z # Subtest: capture fails for missing search membership, output or source registry
+2026-10-02T09:38:02.7524990Z ok 167 - capture fails for missing search membership, output or source registry
+2026-10-02T09:38:02.7525280Z   ---
+2026-10-02T09:38:02.7525420Z   duration_ms: 10.831583
+2026-10-02T09:38:02.7525580Z   ...
+2026-10-02T09:38:02.7526070Z # Subtest: unreferenced template indexes are recorded separately from the document search contract
+2026-10-02T09:38:02.7526780Z ok 168 - unreferenced template indexes are recorded separately from the document search contract
+2026-10-02T09:38:02.7527260Z   ---
+2026-10-02T09:38:02.7527430Z   duration_ms: 29.758334
+2026-10-02T09:38:02.7527590Z   ...
+2026-10-02T09:38:03.9897220Z # Subtest: 入れ子appで文書・版・言語を追加し、索引を生成しても単独appを変更しない
+2026-10-02T09:38:03.9979040Z ok 169 - 入れ子appで文書・版・言語を追加し、索引を生成しても単独appを変更しない
+2026-10-02T09:38:04.0086460Z   ---
+2026-10-02T09:38:04.0200990Z   duration_ms: 1255.351458
+2026-10-02T09:38:04.0339150Z   ...
+2026-10-02T09:38:04.0445470Z # Subtest: all document layouts forward frontmatter descriptions
+2026-10-02T09:38:04.0547340Z ok 170 - all document layouts forward frontmatter descriptions
+2026-10-02T09:38:04.0650060Z   ---
+2026-10-02T09:38:04.0755110Z   duration_ms: 6.569708
+2026-10-02T09:38:04.0815350Z   ...
+2026-10-02T09:38:04.0817870Z # Subtest: all main layouts emit the static page metadata contract
+2026-10-02T09:38:04.0819010Z ok 171 - all main layouts emit the static page metadata contract
+2026-10-02T09:38:04.0821820Z   ---
+2026-10-02T09:38:04.0822060Z   duration_ms: 2.312167
+2026-10-02T09:38:04.0822290Z   ...
+2026-10-02T09:38:04.0822650Z # Subtest: index and 404 routes declare distinct metadata contracts
+2026-10-02T09:38:04.0823460Z ok 172 - index and 404 routes declare distinct metadata contracts
+2026-10-02T09:38:04.0823810Z   ---
+2026-10-02T09:38:04.0825760Z   duration_ms: 13.878458
+2026-10-02T09:38:04.0826020Z   ...
+2026-10-02T09:38:04.0826510Z # Subtest: 本番記録は環境変数を保存せず、想定commitと復旧先IDを照合する
+2026-10-02T09:38:04.0826990Z ok 173 - 本番記録は環境変数を保存せず、想定commitと復旧先IDを照合する
+2026-10-02T09:38:04.0827240Z   ---
+2026-10-02T09:38:04.0827460Z   duration_ms: 2.718
+2026-10-02T09:38:04.0827660Z   ...
+2026-10-02T09:38:04.0828050Z # Subtest: 認証付きPages取得は固定APIへGETし、redirectとAPI失敗を拒否する
+2026-10-02T09:38:04.0828750Z ok 174 - 認証付きPages取得は固定APIへGETし、redirectとAPI失敗を拒否する
+2026-10-02T09:38:04.0829020Z   ---
+2026-10-02T09:38:04.0829280Z   duration_ms: 39.753875
+2026-10-02T09:38:04.0829990Z   ...
+2026-10-02T09:38:04.0830340Z # Subtest: ページネーションはPrevを左列、Nextを右列に固定する
+2026-10-02T09:38:04.0830770Z ok 175 - ページネーションはPrevを左列、Nextを右列に固定する
+2026-10-02T09:38:04.0831100Z   ---
+2026-10-02T09:38:04.0831280Z   duration_ms: 1.221709
+2026-10-02T09:38:04.0831580Z   ...
+2026-10-02T09:38:04.0837120Z # Subtest: 狭い画面では両リンクを1列に戻す
+2026-10-02T09:38:04.0837610Z ok 176 - 狭い画面では両リンクを1列に戻す
+2026-10-02T09:38:04.0837990Z   ---
+2026-10-02T09:38:04.0838320Z   duration_ms: 0.183292
+2026-10-02T09:38:04.0838790Z   ...
+2026-10-02T09:38:04.0839530Z # Subtest: 統合プレビューは公開パス・本文・資産・JSON・404を保持し、root外を配信しない
+2026-10-02T09:38:04.0843030Z ok 177 - 統合プレビューは公開パス・本文・資産・JSON・404を保持し、root外を配信しない
+2026-10-02T09:38:04.0843490Z   ---
+2026-10-02T09:38:04.0844460Z   duration_ms: 38.40875
+2026-10-02T09:38:04.0844850Z   ...
+2026-10-02T09:38:04.0845290Z # Subtest: グループプレビューは他の子の未生成本文と未知のgroupを開始前に検出する
+2026-10-02T09:38:04.0845980Z ok 178 - グループプレビューは他の子の未生成本文と未知のgroupを開始前に検出する
+2026-10-02T09:38:04.0865700Z   ---
+2026-10-02T09:38:04.0866130Z   duration_ms: 35.386208
+2026-10-02T09:38:04.0866480Z   ...
+2026-10-02T09:38:04.0866990Z # Subtest: HTMLから到達できるJavaScript依存だけを配信成果物へ残す
+2026-10-02T09:38:04.0867470Z ok 179 - HTMLから到達できるJavaScript依存だけを配信成果物へ残す
+2026-10-02T09:38:04.0867890Z   ---
+2026-10-02T09:38:04.0868290Z   duration_ms: 20.282333
+2026-10-02T09:38:04.0868890Z   ...
+2026-10-02T09:38:04.2699900Z # Subtest: 12ページ/43アセットを再生成しても変化せず、日本語訳を保持する
+2026-10-02T09:38:04.2704920Z not ok 180 - 12ページ/43アセットを再生成しても変化せず、日本語訳を保持する
+2026-10-02T09:38:04.2706970Z   ---
+2026-10-02T09:38:04.2708520Z   duration_ms: 257.008125
+2026-10-02T09:38:04.2710550Z   location: '/Users/runner/work/libx/libx/tests/runtime/pugixml-importer.test.js:30:1'
+2026-10-02T09:38:04.2712640Z   failureType: 'testCodeFailure'
+2026-10-02T09:38:04.2713220Z   error: 'spawnSync pandoc ENOENT'
+2026-10-02T09:38:04.2713820Z   code: 'ENOENT'
+2026-10-02T09:38:04.2714260Z   stack: |-
+2026-10-02T09:38:04.2714810Z     Object.spawnSync (node:internal/child_process:1123:20)
+2026-10-02T09:38:04.2715340Z     spawnSync (node:child_process:877:24)
+2026-10-02T09:38:04.2715900Z     execFileSync (node:child_process:920:15)
+2026-10-02T09:38:04.2716680Z     convertHtml (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:176:18)
+2026-10-02T09:38:04.2717660Z     file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:203:11
+2026-10-02T09:38:04.2718310Z     Array.map (<anonymous>)
+2026-10-02T09:38:04.2721250Z     generateCanonicalPages (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:199:24)
+2026-10-02T09:38:04.2722550Z     importCanonical (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:337:17)
+2026-10-02T09:38:04.2723690Z     TestContext.<anonymous> (file:///Users/runner/work/libx/libx/tests/runtime/pugixml-importer.test.js:36:19)
+2026-10-02T09:38:04.2724470Z     Test.runInAsyncScope (node:async_hooks:206:9)
+2026-10-02T09:38:04.2724900Z   ...
+2026-10-02T09:38:04.2725480Z # Subtest: 改変入力・日本語や範囲外出力を拒否し、既存の本文とアセットを保持する
+2026-10-02T09:38:04.2728490Z not ok 181 - 改変入力・日本語や範囲外出力を拒否し、既存の本文とアセットを保持する
+2026-10-02T09:38:04.2729890Z   ---
+2026-10-02T09:38:04.2735700Z   duration_ms: 135.049208
+2026-10-02T09:38:04.2737720Z   location: '/Users/runner/work/libx/libx/tests/runtime/pugixml-importer.test.js:46:1'
+2026-10-02T09:38:04.2739120Z   failureType: 'testCodeFailure'
+2026-10-02T09:38:04.2740200Z   error: 'spawnSync pandoc ENOENT'
+2026-10-02T09:38:04.2741090Z   code: 'ENOENT'
+2026-10-02T09:38:04.2742410Z   stack: |-
+2026-10-02T09:38:04.2743010Z     Object.spawnSync (node:internal/child_process:1123:20)
+2026-10-02T09:38:04.2743590Z     spawnSync (node:child_process:877:24)
+2026-10-02T09:38:04.2744420Z     execFileSync (node:child_process:920:15)
+2026-10-02T09:38:04.2745210Z     convertHtml (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:176:18)
+2026-10-02T09:38:04.2745950Z     file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:203:11
+2026-10-02T09:38:04.2746510Z     Array.map (<anonymous>)
+2026-10-02T09:38:04.2747860Z     generateCanonicalPages (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:199:24)
+2026-10-02T09:38:04.2748680Z     importCanonical (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:337:17)
+2026-10-02T09:38:04.2749660Z     TestContext.<anonymous> (file:///Users/runner/work/libx/libx/tests/runtime/pugixml-importer.test.js:49:5)
+2026-10-02T09:38:04.2751520Z     Test.runInAsyncScope (node:async_hooks:206:9)
+2026-10-02T09:38:04.2752330Z   ...
+2026-10-02T09:38:04.2754790Z # Subtest: 2対象目の確定が失敗しても、本文とアセットを両方戻す
+2026-10-02T09:38:04.2756520Z not ok 182 - 2対象目の確定が失敗しても、本文とアセットを両方戻す
+2026-10-02T09:38:04.2756850Z   ---
+2026-10-02T09:38:04.2757010Z   duration_ms: 117.002041
+2026-10-02T09:38:04.2757650Z   location: '/Users/runner/work/libx/libx/tests/runtime/pugixml-importer.test.js:73:1'
+2026-10-02T09:38:04.2758240Z   failureType: 'testCodeFailure'
+2026-10-02T09:38:04.2758540Z   error: 'spawnSync pandoc ENOENT'
+2026-10-02T09:38:04.2758910Z   code: 'ENOENT'
+2026-10-02T09:38:04.2759160Z   stack: |-
+2026-10-02T09:38:04.2759520Z     Object.spawnSync (node:internal/child_process:1123:20)
+2026-10-02T09:38:04.2760710Z     spawnSync (node:child_process:877:24)
+2026-10-02T09:38:04.2761010Z     execFileSync (node:child_process:920:15)
+2026-10-02T09:38:04.2761690Z     convertHtml (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:176:18)
+2026-10-02T09:38:04.2762650Z     file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:203:11
+2026-10-02T09:38:04.2763140Z     Array.map (<anonymous>)
+2026-10-02T09:38:04.2763850Z     generateCanonicalPages (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:199:24)
+2026-10-02T09:38:04.2764880Z     importCanonical (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:337:17)
+2026-10-02T09:38:04.2765670Z     TestContext.<anonymous> (file:///Users/runner/work/libx/libx/tests/runtime/pugixml-importer.test.js:76:5)
+2026-10-02T09:38:04.2766620Z     Test.runInAsyncScope (node:async_hooks:206:9)
+2026-10-02T09:38:04.2768040Z   ...
+2026-10-02T09:38:04.2768620Z # Subtest: 通常と壊れたsymlinkを入力/出力/参照アセットに使わない
+2026-10-02T09:38:04.2769160Z ok 183 - 通常と壊れたsymlinkを入力/出力/参照アセットに使わない
+2026-10-02T09:38:04.2769460Z   ---
+2026-10-02T09:38:04.2769730Z   duration_ms: 44.021791
+2026-10-02T09:38:04.2770000Z   ...
+2026-10-02T09:38:04.2770580Z # Subtest: 実際のAstro Markdownで全文/158コード/32表/9画像/全元ID/APIリンク/脚注を保全する
+2026-10-02T09:38:04.2771210Z not ok 184 - 実際のAstro Markdownで全文/158コード/32表/9画像/全元ID/APIリンク/脚注を保全する
+2026-10-02T09:38:04.2771760Z   ---
+2026-10-02T09:38:04.2772020Z   duration_ms: 297.04325
+2026-10-02T09:38:04.2772550Z   location: '/Users/runner/work/libx/libx/tests/runtime/pugixml-importer.test.js:116:1'
+2026-10-02T09:38:04.2773070Z   failureType: 'testCodeFailure'
+2026-10-02T09:38:04.2773410Z   error: 'spawnSync pandoc ENOENT'
+2026-10-02T09:38:04.2773750Z   code: 'ENOENT'
+2026-10-02T09:38:04.2774020Z   stack: |-
+2026-10-02T09:38:04.2774820Z     Object.spawnSync (node:internal/child_process:1123:20)
+2026-10-02T09:38:04.2776010Z     spawnSync (node:child_process:877:24)
+2026-10-02T09:38:04.2776360Z     execFileSync (node:child_process:920:15)
+2026-10-02T09:38:04.2777180Z     convertHtml (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:176:18)
+2026-10-02T09:38:04.2777950Z     file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:203:11
+2026-10-02T09:38:04.2778460Z     Array.map (<anonymous>)
+2026-10-02T09:38:04.2779150Z     generateCanonicalPages (file:///Users/runner/work/libx/libx/scripts/importers/import-pugixml-1.16.mjs:199:24)
+2026-10-02T09:38:04.2781060Z     TestContext.<anonymous> (file:///Users/runner/work/libx/libx/tests/runtime/pugixml-importer.test.js:129:21)
+2026-10-02T09:38:04.2782900Z     async Test.run (node:internal/test_runner/test:797:9)
+2026-10-02T09:38:04.2783860Z     async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+2026-10-02T09:38:04.2784220Z   ...
+2026-10-02T09:38:04.2860860Z # Subtest: task-list checkbox uses the surrounding document text as its accessible name
+2026-10-02T09:38:04.2962340Z ok 185 - task-list checkbox uses the surrounding document text as its accessible name
+2026-10-02T09:38:04.2975800Z   ---
+2026-10-02T09:38:04.2976140Z   duration_ms: 1.074833
+2026-10-02T09:38:04.2976400Z   ...
+2026-10-02T09:38:04.2977090Z # Subtest: Awesome概要の収録済みGitHubリンクを同じ言語のlibxページへ変換する
+2026-10-02T09:38:04.2979330Z ok 186 - Awesome概要の収録済みGitHubリンクを同じ言語のlibxページへ変換する
+2026-10-02T09:38:04.3080960Z   ---
+2026-10-02T09:38:04.3183590Z   duration_ms: 1.647083
+2026-10-02T09:38:04.3284640Z   ...
+2026-10-02T09:38:04.3386690Z # Subtest: 対応言語のページがない場合はGitHubリンクを維持する
+2026-10-02T09:38:04.3492800Z ok 187 - 対応言語のページがない場合はGitHubリンクを維持する
+2026-10-02T09:38:04.3596390Z   ---
+2026-10-02T09:38:04.3697500Z   duration_ms: 0.535167
+2026-10-02T09:38:04.3799220Z   ...
+2026-10-02T09:38:04.3900700Z # Subtest: 概要以外のページではGitHubリンクを変更しない
+2026-10-02T09:38:04.3902770Z ok 188 - 概要以外のページではGitHubリンクを変更しない
+2026-10-02T09:38:04.3903490Z   ---
+2026-10-02T09:38:04.3904040Z   duration_ms: 0.11025
+2026-10-02T09:38:04.3936570Z   ...
+2026-10-02T09:38:04.3940500Z # Subtest: Awesome概要のリストでは外部リンクだけをアイコン表示対象にする
+2026-10-02T09:38:04.3941310Z ok 189 - Awesome概要のリストでは外部リンクだけをアイコン表示対象にする
+2026-10-02T09:38:04.3942270Z   ---
+2026-10-02T09:38:04.3951700Z   duration_ms: 0.877125
+2026-10-02T09:38:04.3954660Z   ...
+2026-10-02T09:38:05.6307550Z # Subtest: repository project, content, landing, and licensing references are consistent
+2026-10-02T09:38:05.6413220Z ok 190 - repository project, content, landing, and licensing references are consistent
+2026-10-02T09:38:05.6515520Z   ---
+2026-10-02T09:38:05.6625870Z   duration_ms: 1380.863834
+2026-10-02T09:38:05.6724920Z   ...
+2026-10-02T09:38:05.6770650Z # Subtest: invalid version and licensing references are rejected
+2026-10-02T09:38:05.6866510Z ok 191 - invalid version and licensing references are rejected
+2026-10-02T09:38:05.6867090Z   ---
+2026-10-02T09:38:05.6867330Z   duration_ms: 0.629292
+2026-10-02T09:38:05.6868050Z   ...
+2026-10-02T09:38:05.6868570Z # Subtest: unsafe version IDs and configured-directory mismatches are rejected
+2026-10-02T09:38:05.6869230Z ok 192 - unsafe version IDs and configured-directory mismatches are rejected
+2026-10-02T09:38:05.6869660Z   ---
+2026-10-02T09:38:05.6869940Z   duration_ms: 0.55575
+2026-10-02T09:38:05.6870180Z   ...
+2026-10-02T09:38:05.6870720Z # Subtest: インポータ生成途中の失敗では既存定本を変更しない
+2026-10-02T09:38:05.6871180Z ok 193 - インポータ生成途中の失敗では既存定本を変更しない
+2026-10-02T09:38:05.6871460Z   ---
+2026-10-02T09:38:05.6871710Z   duration_ms: 10.191917
+2026-10-02T09:38:05.6872000Z   ...
+2026-10-02T09:38:05.6872380Z # Subtest: check用生成は差分を報告して既存定本を書き換えない
+2026-10-02T09:38:05.6872760Z ok 194 - check用生成は差分を報告して既存定本を書き換えない
+2026-10-02T09:38:05.6873110Z   ---
+2026-10-02T09:38:05.6873420Z   duration_ms: 4.40225
+2026-10-02T09:38:05.6873950Z   ...
+2026-10-02T09:38:05.6874400Z # Subtest: インポータ出力は許可ルート内の定本言語だけを受け付ける
+2026-10-02T09:38:05.6874920Z ok 195 - インポータ出力は許可ルート内の定本言語だけを受け付ける
+2026-10-02T09:38:05.6875370Z   ---
+2026-10-02T09:38:05.6875640Z   duration_ms: 2.740125
+2026-10-02T09:38:05.6876030Z   ...
+2026-10-02T09:38:05.6876660Z # Subtest: search generation removes deleted locale indexes and preserves prior output on budget failure
+2026-10-02T09:38:05.6877540Z ok 196 - search generation removes deleted locale indexes and preserves prior output on budget failure
+2026-10-02T09:38:05.6878240Z   ---
+2026-10-02T09:38:05.6878500Z   duration_ms: 557.606416
+2026-10-02T09:38:05.6878850Z   ...
+2026-10-02T09:38:05.6879650Z # Subtest: landingだけの統合は文書サイトと他サイトを維持し、古いlanding出力を除去する
+2026-10-02T09:38:05.6880410Z ok 197 - landingだけの統合は文書サイトと他サイトを維持し、古いlanding出力を除去する
+2026-10-02T09:38:05.6880870Z   ---
+2026-10-02T09:38:05.6881130Z   duration_ms: 24.593917
+2026-10-02T09:38:05.6881460Z   ...
+2026-10-02T09:38:05.6881910Z # Subtest: 文書サイトだけの統合はlandingと他の文書サイトを変更しない
+2026-10-02T09:38:05.6882400Z ok 198 - 文書サイトだけの統合はlandingと他の文書サイトを変更しない
+2026-10-02T09:38:05.6882810Z   ---
+2026-10-02T09:38:05.6883070Z   duration_ms: 11.787709
+2026-10-02T09:38:05.6883430Z   ...
+2026-10-02T09:38:05.6883870Z # Subtest: ステージ準備中に失敗した場合は現在のdistを変更しない
+2026-10-02T09:38:05.6884360Z ok 199 - ステージ準備中に失敗した場合は現在のdistを変更しない
+2026-10-02T09:38:05.6884730Z   ---
+2026-10-02T09:38:05.6885000Z   duration_ms: 8.858875
+2026-10-02T09:38:05.6885370Z   ...
+2026-10-02T09:38:05.6885840Z # Subtest: landing出力が予約済みルートを含む場合は統合を拒否する
+2026-10-02T09:38:05.6886370Z ok 200 - landing出力が予約済みルートを含む場合は統合を拒否する
+2026-10-02T09:38:05.6886730Z   ---
+2026-10-02T09:38:05.6886990Z   duration_ms: 3.990709
+2026-10-02T09:38:05.6887360Z   ...
+2026-10-02T09:38:05.6887890Z # Subtest: all application service workers match the canonical source
+2026-10-02T09:38:05.6888550Z ok 201 - all application service workers match the canonical source
+2026-10-02T09:38:05.6889030Z   ---
+2026-10-02T09:38:05.6889370Z   duration_ms: 11.048875
+2026-10-02T09:38:05.6889770Z   ...
+2026-10-02T09:38:05.6890240Z # Subtest: sidebar worker caches online responses and falls back offline
+2026-10-02T09:38:05.6890900Z ok 202 - sidebar worker caches online responses and falls back offline
+2026-10-02T09:38:05.6891430Z   ---
+2026-10-02T09:38:05.6891760Z   duration_ms: 37.880958
+2026-10-02T09:38:05.6892100Z   ...
+2026-10-02T09:38:05.6892500Z # Subtest: キャッシュが利用できなくてもネットワークの正常応答を返す
+2026-10-02T09:38:05.6892980Z ok 203 - キャッシュが利用できなくてもネットワークの正常応答を返す
+2026-10-02T09:38:05.6893400Z   ---
+2026-10-02T09:38:05.6893680Z   duration_ms: 3.830708
+2026-10-02T09:38:05.6894010Z   ...
+2026-10-02T09:38:06.2142550Z # Subtest: 共有tsconfigは全appとテンプレートで局所・共有モジュールを正しく解決する
+2026-10-02T09:38:06.2188430Z ok 204 - 共有tsconfigは全appとテンプレートで局所・共有モジュールを正しく解決する
+2026-10-02T09:38:06.2188720Z   ---
+2026-10-02T09:38:06.2189000Z   duration_ms: 132.170125
+2026-10-02T09:38:06.2189250Z   ...
+2026-10-02T09:38:06.2325290Z # Subtest: カテゴリIDと表示名の解決規則を共有する
+2026-10-02T09:38:06.2383900Z ok 205 - カテゴリIDと表示名の解決規則を共有する
+2026-10-02T09:38:06.2433130Z   ---
+2026-10-02T09:38:06.2506920Z   duration_ms: 0.90175
+2026-10-02T09:38:06.2508290Z   ...
+2026-10-02T09:38:06.2509310Z # Subtest: GLFWのカテゴリ見出しが日本語設定から生成される
+2026-10-02T09:38:06.2511770Z ok 206 - GLFWのカテゴリ見出しが日本語設定から生成される
+2026-10-02T09:38:06.2535130Z   ---
+2026-10-02T09:38:06.2556870Z   duration_ms: 1.442458
+2026-10-02T09:38:06.2596940Z   ...
+2026-10-02T09:38:06.2604300Z # Subtest: Luaのカテゴリ見出しが日本語設定から生成される
+2026-10-02T09:38:06.2635620Z ok 207 - Luaのカテゴリ見出しが日本語設定から生成される
+2026-10-02T09:38:06.2637250Z   ---
+2026-10-02T09:38:06.2662450Z   duration_ms: 0.796
+2026-10-02T09:38:06.2662960Z   ...
+2026-10-02T09:38:06.5742870Z # Subtest: 全体と選択サイドバーCLIは入れ子appの同じ公開URLを生成する
+2026-10-02T09:38:06.5746610Z ok 208 - 全体と選択サイドバーCLIは入れ子appの同じ公開URLを生成する
+2026-10-02T09:38:06.5747370Z   ---
+2026-10-02T09:38:06.5749970Z   duration_ms: 364.114916
+2026-10-02T09:38:06.5752190Z   ...
+2026-10-02T09:38:06.5753170Z # Subtest: 検出失敗・空ID・壊れたMarkdownは失敗し既存サイドバーを保持する
+2026-10-02T09:38:06.5753680Z ok 209 - 検出失敗・空ID・壊れたMarkdownは失敗し既存サイドバーを保持する
+2026-10-02T09:38:06.5753970Z   ---
+2026-10-02T09:38:06.5754200Z   duration_ms: 432.694541
+2026-10-02T09:38:06.5754440Z   ...
+2026-10-02T09:38:06.5800920Z # Subtest: 全ドキュメントサイトが共通の目次ツリー生成を使用する
+2026-10-02T09:38:06.5802810Z ok 210 - 全ドキュメントサイトが共通の目次ツリー生成を使用する
+2026-10-02T09:38:06.5803130Z   ---
+2026-10-02T09:38:06.5803370Z   duration_ms: 1.4305
+2026-10-02T09:38:06.5803610Z   ...
+2026-10-02T09:38:06.5804040Z # Subtest: 目次はタイトルから続く一本の基準線と論理方向の字下げで見出し階層を表す
+2026-10-02T09:38:06.5804520Z ok 211 - 目次はタイトルから続く一本の基準線と論理方向の字下げで見出し階層を表す
+2026-10-02T09:38:06.5804830Z   ---
+2026-10-02T09:38:06.5805110Z   duration_ms: 1.993792
+2026-10-02T09:38:06.5805380Z   ...
+2026-10-02T09:38:06.5806050Z # Subtest: 目次のホバーと現在位置は控えめなナビゲーション表現を使用する
+2026-10-02T09:38:06.5806540Z ok 212 - 目次のホバーと現在位置は控えめなナビゲーション表現を使用する
+2026-10-02T09:38:06.5806840Z   ---
+2026-10-02T09:38:06.5813030Z   duration_ms: 0.560167
+2026-10-02T09:38:06.5813280Z   ...
+2026-10-02T09:38:15.2718500Z # Subtest: built Markdown and MDX share metadata and semantic HTML contracts
+2026-10-02T09:38:15.2723200Z ok 213 - built Markdown and MDX share metadata and semantic HTML contracts
+2026-10-02T09:38:15.2724010Z   ---
+2026-10-02T09:38:15.2733710Z   duration_ms: 8901.709042
+2026-10-02T09:38:15.2734210Z   ...
+2026-10-02T09:38:15.2827400Z # Subtest: 共通テーマは正式な本文ルートsl-markdown-contentを対象にする
+2026-10-02T09:38:15.2829730Z ok 214 - 共通テーマは正式な本文ルートsl-markdown-contentを対象にする
+2026-10-02T09:38:15.2836930Z   ---
+2026-10-02T09:38:15.2837790Z   duration_ms: 3.935292
+2026-10-02T09:38:15.2838680Z   ...
+2026-10-02T09:38:15.2840400Z # Subtest: 本文リンクのホバー下線はborderと重ねず一本だけ表示する
+2026-10-02T09:38:15.2841620Z ok 215 - 本文リンクのホバー下線はborderと重ねず一本だけ表示する
+2026-10-02T09:38:15.2842530Z   ---
+2026-10-02T09:38:15.2843320Z   duration_ms: 0.81575
+2026-10-02T09:38:15.2844230Z   ...
+2026-10-02T09:38:15.2845810Z # Subtest: 本文中の長いURLは狭い画面で折り返す
+2026-10-02T09:38:15.2846880Z ok 216 - 本文中の長いURLは狭い画面で折り返す
+2026-10-02T09:38:15.2847730Z   ---
+2026-10-02T09:38:15.2848470Z   duration_ms: 0.328125
+2026-10-02T09:38:15.2849270Z   ...
+2026-10-02T09:38:15.2850190Z # Subtest: 本文中の長いインラインコードは狭い画面で折り返す
+2026-10-02T09:38:15.2851400Z ok 217 - 本文中の長いインラインコードは狭い画面で折り返す
+2026-10-02T09:38:15.2876090Z   ---
+2026-10-02T09:38:15.2876360Z   duration_ms: 0.223417
+2026-10-02T09:38:15.2876590Z   ...
+2026-10-02T09:38:15.2877110Z # Subtest: 全配信レイアウトとテンプレートが正式な本文ルートを使用する
+2026-10-02T09:38:15.2877550Z ok 218 - 全配信レイアウトとテンプレートが正式な本文ルートを使用する
+2026-10-02T09:38:15.2877820Z   ---
+2026-10-02T09:38:15.2878050Z   duration_ms: 0.474334
+2026-10-02T09:38:15.2878300Z   ...
+2026-10-02T09:38:15.2878890Z # Subtest: TOML全文・70コード・ABNF・両MITを保全し、二度の生成が一致し訳文を変更しない
+2026-10-02T09:38:15.2879370Z ok 219 - TOML全文・70コード・ABNF・両MITを保全し、二度の生成が一致し訳文を変更しない
+2026-10-02T09:38:15.2879720Z   ---
+2026-10-02T09:38:15.2900960Z   duration_ms: 597.662959
+2026-10-02T09:38:15.2901580Z   ...
+2026-10-02T09:38:15.2902230Z # Subtest: 固定入力不一致と出力先の逸脱を拒否し、既存定本を壊さない
+2026-10-02T09:38:15.2902790Z ok 220 - 固定入力不一致と出力先の逸脱を拒否し、既存定本を壊さない
+2026-10-02T09:38:15.2903130Z   ---
+2026-10-02T09:38:15.2903510Z   duration_ms: 165.9435
+2026-10-02T09:38:15.2903780Z   ...
+2026-10-02T09:38:15.2904110Z # Subtest: 原文のsymlinkを拒否する
+2026-10-02T09:38:15.2904380Z ok 221 - 原文のsymlinkを拒否する
+2026-10-02T09:38:15.2904690Z   ---
+2026-10-02T09:38:15.2904870Z   duration_ms: 5.735875
+2026-10-02T09:38:15.2905130Z   ...
+2026-10-02T09:38:15.2905620Z # Subtest: MarkdownとMDXの基礎要素を同じ構造として解析する
+2026-10-02T09:38:15.2905980Z ok 222 - MarkdownとMDXの基礎要素を同じ構造として解析する
+2026-10-02T09:38:15.2906280Z   ---
+2026-10-02T09:38:15.2906520Z   duration_ms: 57.120666
+2026-10-02T09:38:15.2906780Z   ...
+2026-10-02T09:38:15.2907050Z # Subtest: 執筆ガイドが存在しないUI APIを例示しない
+2026-10-02T09:38:15.2907420Z ok 223 - 執筆ガイドが存在しないUI APIを例示しない
+2026-10-02T09:38:15.2907930Z   ---
+2026-10-02T09:38:15.2908210Z   duration_ms: 3.432875
+2026-10-02T09:38:15.2908420Z   ...
+2026-10-02T09:38:15.2909000Z # Subtest: 文書化した主要UI APIを実ビルド対象のMDX fixtureで使用する
+2026-10-02T09:38:15.2909490Z ok 224 - 文書化した主要UI APIを実ビルド対象のMDX fixtureで使用する
+2026-10-02T09:38:15.2909810Z   ---
+2026-10-02T09:38:15.2910100Z   duration_ms: 1.143916
+2026-10-02T09:38:15.2910340Z   ...
+2026-10-02T09:38:15.2911010Z # Subtest: Astroの反復ビルドは同一HTMLを生成し、同一ラベルのDropdownもID・ARIA参照が重複しない
+2026-10-02T09:38:15.2911550Z ok 225 - Astroの反復ビルドは同一HTMLを生成し、同一ラベルのDropdownもID・ARIA参照が重複しない
+2026-10-02T09:38:15.2912000Z   ---
+2026-10-02T09:38:15.2912310Z   duration_ms: 7083.141875
+2026-10-02T09:38:15.2912790Z   ...
+2026-10-02T09:38:15.3898840Z # Subtest: CLI出力の型・Worker名・版IDを照合し、ログの文面から成功を推測しない
+2026-10-02T09:38:15.3900210Z ok 226 - CLI出力の型・Worker名・版IDを照合し、ログの文面から成功を推測しない
+2026-10-02T09:38:15.3900800Z   ---
+2026-10-02T09:38:15.3901160Z   duration_ms: 1.570375
+2026-10-02T09:38:15.3901540Z   ...
+2026-10-02T09:38:15.3902770Z # Subtest: 固定CLI版と引数配列で操作し、認証を引数へ含めず、記録を梱包外へ保存する
+2026-10-02T09:38:15.3903390Z ok 227 - 固定CLI版と引数配列で操作し、認証を引数へ含めず、記録を梱包外へ保存する
+2026-10-02T09:38:15.3903830Z   ---
+2026-10-02T09:38:15.3904170Z   duration_ms: 8.886416
+2026-10-02T09:38:15.3904530Z   ...
+2026-10-02T09:38:15.3911260Z # Subtest: CLI失敗は再送せず、stdoutや認証情報を例外へ転記しない
+2026-10-02T09:38:15.3912200Z ok 228 - CLI失敗は再送せず、stdoutや認証情報を例外へ転記しない
+2026-10-02T09:38:15.3912630Z   ---
+2026-10-02T09:38:15.3913010Z   duration_ms: 28.651041
+2026-10-02T09:38:15.3914040Z   ...
+2026-10-02T09:38:15.4233790Z # Subtest: CLIは未知・重複引数と基点省略をCloudflare接続前に拒否する
+2026-10-02T09:38:15.4234760Z ok 229 - CLIは未知・重複引数と基点省略をCloudflare接続前に拒否する
+2026-10-02T09:38:15.4235200Z   ---
+2026-10-02T09:38:15.4235390Z   duration_ms: 35.098208
+2026-10-02T09:38:15.4235680Z   ...
+2026-10-02T09:38:15.4236080Z # Subtest: CLI診断は終了コードとエラーを保持し、認証情報を除去してサイズを制限する
+2026-10-02T09:38:15.4236460Z ok 230 - CLI診断は終了コードとエラーを保持し、認証情報を除去してサイズを制限する
+2026-10-02T09:38:15.4236760Z   ---
+2026-10-02T09:38:15.4236950Z   duration_ms: 0.277167
+2026-10-02T09:38:15.4237200Z   ...
+2026-10-02T09:38:15.4292130Z 1..230
+2026-10-02T09:38:15.4292480Z # tests 230
+2026-10-02T09:38:15.4292740Z # suites 0
+2026-10-02T09:38:15.4292940Z # pass 226
+2026-10-02T09:38:15.4293220Z # fail 4
+2026-10-02T09:38:15.4293440Z # cancelled 0
+2026-10-02T09:38:15.4293730Z # skipped 0
+2026-10-02T09:38:15.4293920Z # todo 0
+2026-10-02T09:38:15.4295330Z # duration_ms 25015.227709
+2026-10-02T09:38:15.4584530Z  ELIFECYCLE  Command failed with exit code 1.
+2026-10-02T09:38:15.5088450Z  ELIFECYCLE  Test failed. See above for more details.
+2026-10-02T09:38:15.5494670Z ##[error]Process completed with exit code 1.
+2026-10-02T09:38:15.5839040Z Post job cleanup.
+2026-10-02T09:38:16.0359280Z Pruning is unnecessary.
+2026-10-02T09:38:16.0574570Z Post job cleanup.
+2026-10-02T09:38:16.1935220Z [command]/opt/homebrew/bin/git version
+2026-10-02T09:38:16.2033570Z git version 2.55.0
+2026-10-02T09:38:16.2056310Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/d73c89f1-96fb-4b72-8bb4-2680f2c92f30/.gitconfig'
+2026-10-02T09:38:16.2064490Z Temporarily overriding HOME='/Users/runner/work/_temp/d73c89f1-96fb-4b72-8bb4-2680f2c92f30' before making global git config changes
+2026-10-02T09:38:16.2065340Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-02T09:38:16.2068010Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/libx/libx
+2026-10-02T09:38:16.2171200Z Removing SSH command configuration
+2026-10-02T09:38:16.2176090Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-02T09:38:16.2255790Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-02T09:38:16.3342130Z Removing HTTP extra header
+2026-10-02T09:38:16.3347130Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-02T09:38:16.3437930Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-02T09:38:16.4337730Z Removing includeIf entries pointing to credentials config files
+2026-10-02T09:38:16.4342500Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-02T09:38:16.4402730Z includeif.gitdir:/Users/runner/work/libx/libx/.git.path
+2026-10-02T09:38:16.4404050Z includeif.gitdir:/Users/runner/work/libx/libx/.git/worktrees/*.path
+2026-10-02T09:38:16.4404500Z includeif.gitdir:/github/workspace/.git.path
+2026-10-02T09:38:16.4404900Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-02T09:38:16.4423210Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/libx/libx/.git.path
+2026-10-02T09:38:16.4487860Z /Users/runner/work/_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:38:16.4496660Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/libx/libx/.git.path /Users/runner/work/_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:38:16.4580590Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/libx/libx/.git/worktrees/*.path
+2026-10-02T09:38:16.4639850Z /Users/runner/work/_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:38:16.4647460Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/libx/libx/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:38:16.4717800Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-02T09:38:16.4777630Z /github/runner_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:38:16.4783340Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:38:16.4885770Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-02T09:38:16.4953020Z /github/runner_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:38:16.4967050Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config
+2026-10-02T09:38:16.5059010Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-02T09:38:16.6026390Z Removing credentials config '/Users/runner/work/_temp/git-credentials-faa70cb9-647a-44e1-af7e-1e9ad6fbff9a.config'
+2026-10-02T09:38:16.6119590Z Evaluate and set job outputs
+2026-10-02T09:38:16.6124940Z Cleaning up orphan processes
+2026-10-02T09:38:17.2460630Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: pnpm/action-setup@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

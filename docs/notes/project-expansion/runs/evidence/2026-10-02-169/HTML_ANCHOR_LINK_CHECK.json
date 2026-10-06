@@ -1,0 +1,99 @@
+{
+  "checkedAt": "2026-10-02T09:06:19.514Z",
+  "previousTurn": "progress:第168で最新公開記録基点の統合環境と合格/失敗証拠、revision321を保存",
+  "workspace": "/private/tmp/libx-pugixml-integration-20261002",
+  "scope": "READMEおよびdocsの全177 Markdown。第168と同じ集合。途中翻訳記録も保持して除外しない。",
+  "rootCause": "共通collectAnchorsはMarkdown見出しだけを認識し、raw HTML span/id・a/nameを無視していた。",
+  "correctionTo168": "途中翻訳記録にも真の未完成参照があるという前サイクルの可能性は確認されなかった。HTMLアンカー対応だけで全177ファイル合格。",
+  "implementation": {
+    "parser": "parse5既存依存",
+    "ids": "HTML idとa/nameをアンカー集合へ追加",
+    "case": "HTMLアンカーの大文字小文字を保持。fragmentをlowercaseしない。",
+    "literalCode": "fenced/inline/pre/code内はアンカーと扱わず、HTMLコメントもparse5で除外。",
+    "cli": "import時に検査CLIを起動しないガードを追加し単独テスト可能にした。",
+    "file": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/check-markdown-links.js",
+      "sha256": "239fd967545c1c83a4355067d9ee8270d4a73f74b19e87dcaaa541db64577148"
+    },
+    "test": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/markdown-links.test.js",
+      "sha256": "032baef86161503aa06820570f071a81117b0b2799bcf3658dab508d9404d0d6"
+    }
+  },
+  "checks": {
+    "links": {
+      "status": "passed",
+      "files": 177,
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/links.txt",
+        "sha256": "e3eff7580b4005030aa4fde657016f38055425fa132259f5f5498023068afec2"
+      }
+    },
+    "anchorFixture": {
+      "status": "passed",
+      "checks": [
+        "span id",
+        "a name",
+        "duplicate heading",
+        "wrong case rejected",
+        "missing rejected",
+        "inline/fenced/pre code excluded",
+        "comment excluded"
+      ],
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/anchorTest.txt",
+        "sha256": "3ea6960b25deb44ae0d04001b39a7694f33782a907464d9a5423ee31a3d7fc22"
+      }
+    },
+    "unit": {
+      "pass": 28,
+      "fail": 0,
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/unit.txt",
+        "sha256": "7cb131d538966fb4b4ec401c2cc6f86f0206866f9c88da0a6f88cc4addd54083"
+      }
+    },
+    "runtime": {
+      "pass": 230,
+      "fail": 0,
+      "log": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/runtime.txt",
+        "sha256": "e3c1f8424639753fda623313420e76e9dab125f5b55c85f0ce5e8ead2c0ebb51"
+      }
+    },
+    "diff": "passed"
+  },
+  "protectedRootFiles": [
+    {
+      "path": "packages/project-config/src/config-schema.ts",
+      "sha256": "f1ca76590a7e23ff03bf35f744fc783dbf0b95a3c83e0b2555c2d1e12dcc82f0",
+      "action": "既存rootと同一の旧隔離コピーを新統合環境へ。rootには書き込まない。",
+      "currentSha256": "f1ca76590a7e23ff03bf35f744fc783dbf0b95a3c83e0b2555c2d1e12dcc82f0"
+    },
+    {
+      "path": "packages/ui/src/components/DocumentProvenance.astro",
+      "sha256": "bda5beefcf1ba3bfc52dad563ca322682bcff603dcc5b33e321a9ff97d2db40c",
+      "action": "既存rootと同一の旧隔離コピーを新統合環境へ。rootには書き込まない。",
+      "currentSha256": "bda5beefcf1ba3bfc52dad563ca322682bcff603dcc5b33e321a9ff97d2db40c"
+    },
+    {
+      "path": "packages/ui/src/components/LanguageSelector.astro",
+      "sha256": "0ecb9bec9c0998830518f3f6a3b9f4c29bbcf2a52d30d03ea323fde0ccd4e833",
+      "action": "既存rootと同一の旧隔離コピーを新統合環境へ。rootには書き込まない。",
+      "currentSha256": "0ecb9bec9c0998830518f3f6a3b9f4c29bbcf2a52d30d03ea323fde0ccd4e833"
+    }
+  ],
+  "testSideEffect": {
+    "path": "apps/test-verification/public/search/v2/ko.json",
+    "generatedSha256": "aaf410c9906c06c2c77fc05572aea933090c2fb27621efda7710a233f97b519b",
+    "action": "統合環境で今回の回帰テストにより生成された差分だけをHEADの内容へ戻した。共有rootは未変更。",
+    "restoredSha256": "c54c006b6dd07bb7a1895e9cb84ad7b7365fb2706e478833445cd297a44899a7"
+  },
+  "publication": "not-performed",
+  "remaining": [
+    "共有3ファイルの必要な依存変更と無関係変更の公開範囲整理",
+    "現在の外部Production基点照合",
+    "統合後の表示/既存文書回帰",
+    "公開前証拠再検証・正規公開待ち登録・公開"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-10-02T09:27:28.133Z",
+  "integration": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-172/LIMITED_INTEGRATION.json",
+    "sha256": "9cca952ef8ea75ae3c166720fe97a2afeafe5de27745604e83d0a974fd7571bd"
+  },
+  "rootActualReviewSHA": "all 24 passed",
+  "rootAppIsolatedSourceSHA": "all90 passed",
+  "fixedInputAndReviewAndChecks": "all ledger evidence references valid except exactly2 intentionally additive TOML settings repaired to immutable historical snapshots",
+  "historicalSharedInputs": [
+    {
+      "oldPath": "pnpm-lock.yaml",
+      "baseline": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-172/toml-baseline/pnpm-lock.yaml",
+        "sha256": "1ab53fb5c7caf8fef9936ae68c942207d5096f7a1e24f767722c26da318f9434"
+      },
+      "current": {
+        "path": "pnpm-lock.yaml",
+        "sha256": "d97af79e2f4714bb572c76567d1bd805a78d209fb0fc759c3ae407e2835f2084"
+      }
+    },
+    {
+      "oldPath": "sites/landing/src/config/projects.config.jsonc",
+      "baseline": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-172/toml-baseline/sites/landing/src/config/projects.config.jsonc",
+        "sha256": "cd2b54bed74c391c2c8b2dd371ccc5ca097dbad907a639b05e3816e1dd308cab"
+      },
+      "current": {
+        "path": "sites/landing/src/config/projects.config.jsonc",
+        "sha256": "24ccba6b94b28b3753f75793b9cfce0f6cf7014549b2e0f5b32c58c93982d027"
+      }
+    }
+  ],
+  "rootAnchorRuntime": "1 passed",
+  "rootDiffCheck": "passed",
+  "rootBuild": "not-run; isolated workspace tested; actual source SHA equals isolated source",
+  "failuresDuringPreparation": [
+    "git untracked inventory maxBuffer too small; no source mutation. Narrow source directories and 32MiB buffer corrected.",
+    "Existing untracked importer was compared against Git HEAD where not tracked; guard corrected to first accept exact private/root bytes. No source mutation before guard completion."
+  ],
+  "publication": "pending; verified source/build/display does not mean deployed",
+  "next": "隔離公開候補の全CI品質、現在Production照合とexpected_production_commit guard、Preview/Production artifactと配信検証"
+}
