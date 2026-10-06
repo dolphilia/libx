@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-03T17:27:14.988Z",
+  "source": {
+    "path": "docs/notes/document-import/xxhash/v0-8-4/sources/xxhash.h",
+    "sha256": "3dc8d161e867a62d3417f7885b55fdaded8b7b497e2f165d05c94f4fe24f2ca4"
+  },
+  "excerpts": [
+    {
+      "lines": "1765–1790",
+      "text": "struct XXH3_state_s {\n   XXH_ALIGN_MEMBER(64, XXH64_hash_t acc[8]);\n       /*!< The 8 accumulators. See @ref XXH32_state_s::acc and @ref XXH64_state_s::acc */\n   XXH_ALIGN_MEMBER(64, unsigned char customSecret[XXH3_SECRET_DEFAULT_SIZE]);\n       /*!< Used to store a custom secret generated from a seed. */\n   XXH_ALIGN_MEMBER(64, unsigned char buffer[XXH3_INTERNALBUFFER_SIZE]);\n       /*!< The internal buffer. @see XXH32_state_s::mem32 */\n   XXH32_hash_t bufferedSize;\n       /*!< The amount of memory in @ref buffer, @see XXH32_state_s::memsize */\n   XXH32_hash_t useSeed;\n       /*!< Reserved field. Needed for padding on 64-bit. */\n   size_t nbStripesSoFar;\n       /*!< Number or stripes processed. */\n   XXH64_hash_t totalLen;\n       /*!< Total length hashed. 64-bit even on 32-bit targets. */\n   size_t nbStripesPerBlock;\n       /*!< Number of stripes per block. */\n   size_t secretLimit;\n       /*!< Size of @ref customSecret or @ref extSecret */\n   XXH64_hash_t seed;\n       /*!< Seed for _withSeed variants. Must be zero otherwise, @see XXH3_INITSTATE() */\n   XXH64_hash_t reserved64;\n       /*!< Reserved field. */\n   const unsigned char* extSecret;\n       /*!< Reference to an external secret for the _withSecret variants, NULL\n        *   for other variants. */"
+    },
+    {
+      "lines": "4937–4937",
+      "text": "#define XXH_STRIPE_LEN 64"
+    },
+    {
+      "lines": "6627–6632",
+      "text": "    statePtr->seed = seed;\n    statePtr->useSeed = (seed != 0);\n    statePtr->extSecret = (const unsigned char*)secret;\n    XXH_ASSERT(secretSize >= XXH3_SECRET_SIZE_MIN);\n    statePtr->secretLimit = secretSize - XXH_STRIPE_LEN;\n    statePtr->nbStripesPerBlock = statePtr->secretLimit / XXH_SECRET_CONSUME_RATE;"
+    },
+    {
+      "lines": "6670–6677",
+      "text": "{\n    if (statePtr == NULL) return XXH_ERROR;\n    if (secret == NULL) return XXH_ERROR;\n    if (secretSize < XXH3_SECRET_SIZE_MIN) return XXH_ERROR;\n    XXH3_reset_internal(statePtr, seed64, secret, secretSize);\n    statePtr->useSeed = 1; /* always, even if seed64==0 */\n    return XXH_OK;\n}"
+    },
+    {
+      "lines": "6885–6890",
+      "text": "    /* totalLen <= XXH3_MIDSIZE_MAX: digesting a short input */\n    if (state->useSeed)\n        return XXH3_64bits_withSeed(state->buffer, (size_t)state->totalLen, state->seed);\n    return XXH3_64bits_withSecret(state->buffer, (size_t)(state->totalLen),\n                                  secret, state->secretLimit + XXH_STRIPE_LEN);\n}"
+    },
+    {
+      "lines": "7386–7391",
+      "text": "    /* len <= XXH3_MIDSIZE_MAX : short code */\n    if (state->useSeed)\n        return XXH3_128bits_withSeed(state->buffer, (size_t)state->totalLen, state->seed);\n    return XXH3_128bits_withSecret(state->buffer, (size_t)(state->totalLen),\n                                   secret, state->secretLimit + XXH_STRIPE_LEN);\n}"
+    }
+  ],
+  "findings": [
+    "useSeedの原文は予約フィールド。実装はseed/secretの短入力digest分岐に使用。reset_internalはseed!=0、reset_withSecretandSeedは常に1。",
+    "secretLimitの原文はsecretサイズ。実装はsecretSize-XXH_STRIPE_LEN（64）を設定。digestで必要時に加算。"
+  ],
+  "scope": "固定ソースの静的照合。今回実行試験なし。"
+}

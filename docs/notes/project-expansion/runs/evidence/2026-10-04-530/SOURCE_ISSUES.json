@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-03T17:24:33.401Z",
+  "source": {
+    "path": "docs/notes/document-import/xxhash/v0-8-4/sources/xxhash.h",
+    "sha256": "3dc8d161e867a62d3417f7885b55fdaded8b7b497e2f165d05c94f4fe24f2ca4"
+  },
+  "excerpts": [
+    {
+      "lines": "1666–1667",
+      "text": "   XXH32_hash_t total_len_32; /*!< Total length hashed, modulo 2^32 */\n   XXH32_hash_t large_len;    /*!< Whether the hash is >= 16 (handles @ref total_len_32 overflow) */"
+    },
+    {
+      "lines": "3266–3267",
+      "text": "    state->total_len_32 += (XXH32_hash_t)len;\n    state->large_len |= (XXH32_hash_t)((len>=16) | (state->total_len_32>=16));"
+    },
+    {
+      "lines": "3309–3315",
+      "text": "    if (state->large_len) {\n        h32 = XXH32_mergeAccs(state->acc);\n    } else {\n        h32 = state->acc[2] /* == seed */ + XXH_PRIME32_5;\n    }\n\n    h32 += state->total_len_32;"
+    }
+  ],
+  "finding": "large_lenの原文hash>=16は、固定コードでは入力長len/累積長total_len_32>=16で立てるフラグ。原文を保持し別注記。",
+  "scope": "固定ソースの静的照合。今回実行試験なし。"
+}
