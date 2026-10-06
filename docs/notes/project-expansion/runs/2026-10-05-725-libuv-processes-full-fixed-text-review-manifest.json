@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-725-libuv-processes-full-fixed-text-review-manifest",
+  "cycle": 725,
+  "startedAt": "2026-10-04T21:34:19.485Z",
+  "endedAt": "2026-10-04T21:34:19.613Z",
+  "result": "partial",
+  "phase": "about全量固定テキスト別review・43page部分manifest",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "Codex separate full-page content review",
+    "hash/range coverage inventory",
+    "CAS ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "594f3fb787099d584eee867dda1431b2b000788f56f1baab91b0bb08852f2542"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/about.rst",
+      "sha256": "f56016d30f31e1cc17bdae92b42ffea990ab5f8ed8494b55f7db11a510d293f0"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/about.md",
+      "sha256": "b5c37d8a2942b5462487b639a13be90999669bb6f680b4eecd5f3d9fa6d07ed2"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/about.md",
+      "sha256": "f1051fda4ae58cd052a477a3ef56c2317812390d759fc9b3938a9a5ea49b940d"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-725/CONTENT_REVIEW_ABOUT.json",
+      "sha256": "a5d877f8ecaa15f247560f9e5dce1513e5965109c4dafa3ee607eabc9f1e39b0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-725/register.mjs",
+      "sha256": "4280d45919a5b006d337552ea0df0357392376d821015fce3c2d716c18f52cd2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-725/save-review.py",
+      "sha256": "9114320a87c6ecace899ee5a330be616b1c9e49d90bba04fac01b67ffe60cf25"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/725/REVIEW_MANIFEST.json",
+      "sha256": "c63c3aeabb79b290e88c7b0bcca488fa0fc4bd172ba6addab30d36f8f789daaa"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/about.md",
+      "sha256": "f1051fda4ae58cd052a477a3ef56c2317812390d759fc9b3938a9a5ea49b940d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "about full fixed-text content review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-725/CONTENT_REVIEW_ABOUT.json",
+          "sha256": "a5d877f8ecaa15f247560f9e5dce1513e5965109c4dafa3ee607eabc9f1e39b0"
+        }
+      ]
+    },
+    {
+      "name": "partial review manifest21passed/22pending",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/725/REVIEW_MANIFEST.json",
+          "sha256": "c63c3aeabb79b290e88c7b0bcca488fa0fc4bd172ba6addab30d36f8f789daaa"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "21/43page全訳・別全文reviewをpartial manifestとして保存。残22はpending。",
+    "about固定RST/EN/JAのSHAと全行coverage、全15narrative/帰属/日付/リンク/footerを照合し合格。追加修正不要。",
+    "機械検査と内容reviewを分離し、既存20reviewed入力保持。全体content-reviewedではなく全最終ゲートは未完。"
+  ],
+  "unresolved": [
+    "残22page全量翻訳/別review",
+    "外部補助動画全内容review未実施",
+    "最終JA内部リンク/check:content/native/統合/公開"
+  ],
+  "nextAction": "726:725partial manifest21passed/22pendingとfixed入力を照合しreference/design.md（原docs/src/design.rst）を全量翻訳・対照、別工程全文review。canonical7段階維持。図/コード/API/脚注等を保持しactual render確認。最終全ゲート未完。",
+  "resumeCondition": "725partial manifest passed入力SHA一致時のみreview再利用。内容が変われば対応範囲を失効させ再review。"
+}

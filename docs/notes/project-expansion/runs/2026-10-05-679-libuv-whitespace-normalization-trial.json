@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-679-libuv-whitespace-normalization-trial",
+  "cycle": 679,
+  "startedAt": "2026-10-04T17:51:22.814Z",
+  "endedAt": "2026-10-04T17:53:12.234Z",
+  "result": "partial",
+  "phase": "libuv原字面保持の空白正規化試験",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "actual runtime model identifier not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "python3",
+    "beautifulsoup4"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "84331e2f20e9017d584b6f4c31a34e9220636c86c92240185887de64204fbafa"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "fa49b30bcf3d1710780140cde7535c7f00829e3b20a85b26a48adcac6f8a4631"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/GENERATOR_RESULT.json",
+      "sha256": "91ef1907c4544314fcb76693b9fea1769c79244a6775261d8adeeb204904a216"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/SPHINX_BUILD.log",
+      "sha256": "ed0fe1e09ed969fe681284d6c38fb94699bffee0b770033c6005fd2ce3e3de42"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/BUILD_RESULT.json",
+      "sha256": "0f19d64d7acafebeab02645a4799f93b190cd58fbecef15be5bf062577ab5fc5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/COMPARISON_RESULT.json",
+      "sha256": "aa65caff0b0d58395d96426094c4f3e0b0f544cd5a7f434572a545cc9a06a5b3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/CYCLE_RESULT.json",
+      "sha256": "abb86a76f6694c8a48d48307b4980fea99852b273d627a147cd89a6c286cb130"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/NORMALIZATION_MAP.json",
+      "sha256": "9678cce4583f3fb3375ce8a62f727eab08e00db745463746d32d0f2227d06860"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/SPHINX_BUILD.log",
+      "sha256": "64fd23382d43d57c8c848f1a04ec7c0a5e7d9eb25b2427d69616cbc0c8676f18"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/compare.py",
+      "sha256": "d25a0cd7df08e644d203fb8ec75a7eaf373e6dcb94f673e83dde0b18464429b9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/normalize.py",
+      "sha256": "4627aff39fb5b1ca5edab70fdd46ee83dce36c54ac0f952ae6298ca534a06c99"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/register.mjs",
+      "sha256": "78319e1edfe08068b4f2575b72b90f5df78c755492966cf5355f7e74ca567a78"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "original source unchanged and 3 whitespace-only stage fixes",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/NORMALIZATION_MAP.json",
+          "sha256": "9678cce4583f3fb3375ce8a62f727eab08e00db745463746d32d0f2227d06860"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/COMPARISON_RESULT.json",
+          "sha256": "aa65caff0b0d58395d96426094c4f3e0b0f544cd5a7f434572a545cc9a06a5b3"
+        }
+      ]
+    },
+    {
+      "name": "full conversion fidelity",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-679/SPHINX_BUILD.log",
+          "sha256": "64fd23382d43d57c8c848f1a04ec7c0a5e7d9eb25b2427d69616cbc0c8676f18"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "679:別stageの表示構文3箇所のみ空白正規化。固定原入力無改変、uv_sleep元コードexact復元、図option適用、40body同一/2復元。警告7と全scope保全は未完、採用0・conversionunknown。",
+    "rootapps/shared/Awesome/user変更なし。外部公開/Workers/ローカルLLM/定期実行なし。"
+  ],
+  "unresolved": [
+    "DNS2member id欠落/範囲超過2/UDP3fallbackの保全方法未検証。",
+    "全63literalinclude選択範囲・コード/宣言/画像原字面照合は未完。",
+    "権利最終区分/日本語資料/原文説明/工数/採点/JA全文reviewは未完。"
+  ],
+  "nextAction": "680:残7warningについてDNS原配列宣言の字面を変えずidを補えるか確認し、63literalincludeと実行選択範囲を生成codeへ全件対応付ける。原範囲超過は実ファイル末尾までの原挙動を記録し架空行を追加しない。",
+  "resumeCondition": "680:残7warningについてDNS原配列宣言の字面を変えずidを補えるか確認し、63literalincludeと実行選択範囲を生成codeへ全件対応付ける。原範囲超過は実ファイル末尾までの原挙動を記録し架空行を追加しない。"
+}

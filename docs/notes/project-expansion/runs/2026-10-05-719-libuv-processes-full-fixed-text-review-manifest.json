@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-719-libuv-processes-full-fixed-text-review-manifest",
+  "cycle": 719,
+  "startedAt": "2026-10-04T21:16:55.578Z",
+  "endedAt": "2026-10-04T21:17:23.088Z",
+  "result": "partial",
+  "phase": "eventloops全量固定テキスト別review・43page部分manifest",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "Codex separate full-page content review",
+    "hash/range coverage inventory",
+    "CAS ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "dce7f79013871e8679ada9baa02d1ea09d8fae58851f3c92546afe634911facf"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/eventloops.rst",
+      "sha256": "00d4b0ec25bbf56753d5e6881aca5a7f2b0a0543ff96638351d14cf803794b82"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/eventloops.md",
+      "sha256": "c634161133cb5e7ffe9329272ccbc7376c9b0f9b272651414c1fe4ce99db3ad3"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/eventloops.md",
+      "sha256": "32e0d7ef47e65637344dc48f503442cc96d4eb0022e9d53cf8a7bd2ae8cac36b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-719/CONTENT_REVIEW_EVENTLOOPS.json",
+      "sha256": "eb1b84f620d61d739b1b1de9122d245d527c653f35994b049a37779d33ea8201"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-719/register.mjs",
+      "sha256": "eaeb89ac22fcd33d88b2d2a4f717d091f3448c928c60d1f6f5f18c91db4c2773"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-719/save-review.py",
+      "sha256": "c24b74e419b92c3f12c209f000d984d1e592e0dc628e04abcb16104451407e35"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/719/REVIEW_MANIFEST.json",
+      "sha256": "2b8e3ea2e1e7cec9990e0db25a6c3ce6b89acd570e6ca64636ac439461cd6636"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/eventloops.md",
+      "sha256": "32e0d7ef47e65637344dc48f503442cc96d4eb0022e9d53cf8a7bd2ae8cac36b"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "eventloops full fixed-text content review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-719/CONTENT_REVIEW_EVENTLOOPS.json",
+          "sha256": "eb1b84f620d61d739b1b1de9122d245d527c653f35994b049a37779d33ea8201"
+        }
+      ]
+    },
+    {
+      "name": "partial review manifest19passed/24pending",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/719/REVIEW_MANIFEST.json",
+          "sha256": "2b8e3ea2e1e7cec9990e0db25a6c3ce6b89acd570e6ca64636ac439461cd6636"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "19/43page全訳・別全文reviewをpartial manifestとして正式記録。残24はpending、全体content-reviewedではない。",
+    "各passedページの固定RST/EN/JAのSHAと全行連続coverageを保存。機械検査・人手・nativeと分離。",
+    "eventloopsの全23narrativeと2code、原文引用の不一致とEN/JAfooterを全文照合し合格。内容修正は不要、原文と既存18reviewed入力を保持。"
+  ],
+  "unresolved": [
+    "残24page全量翻訳/別review",
+    "外部補助動画全内容review未実施",
+    "最終JA内部リンク/check:content/native/統合/公開"
+  ],
+  "nextAction": "720:719partial manifest19passed/24pendingとfixed入力を照合しguide/utilities.md（原docs/src/guide/utilities.rst）を全量翻訳・対照、別工程全文review。canonical生成はgenerate-canonical.py→apply-basics-editorial-note.py→apply-networking-declaration.py→apply-processes-editorial-note.py→apply-eventloops-editorial-note.pyの5段階。コード・図・注記を保持、actual render検証。最終全ゲートは未完了。",
+  "resumeCondition": "719partial manifest passed入力SHA一致時のみreview再利用。内容が変われば対応範囲を失効させ再review。"
+}

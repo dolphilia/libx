@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-775-libuv-native-ui-partial",
+  "cycle": 775,
+  "startedAt": "2026-10-05T00:32:53.949Z",
+  "endedAt": "2026-10-05T00:34:05.288Z",
+  "result": "partial",
+  "phase": "外部補助動画の収録境界照合・native UI部分検査",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "isolated prebuild/build",
+    "parse5 body search index",
+    "BS4 runtime checks",
+    "CAS ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "34bbae7347e251155dfaedcbbf6ac15791a83c5ae34e81c54e32832c53dbacce"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/771/REVIEW_MANIFEST.json",
+      "sha256": "96b4db8d7e1b80948e04ee489255601b8801172e94cb9f38850d675daf10a89f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-775/NATIVE_UI_PARTIAL.json",
+      "sha256": "81a396f26c6927d986e4d08ffa8ebecb3133ff0908d67bbef978c5a76603c26d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-775/VIDEO_BOUNDARY_RECONCILIATION.json",
+      "sha256": "f30f326bca19a58544e2df8f00a54716d118af8a72660e4cf3a94e73d8c851f0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-775/register.mjs",
+      "sha256": "ec20285655df756eca6febed552034b20f756bbc3cdd79b0fb66fe2814b591ee"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-775/save-evidence.py",
+      "sha256": "3ee4feef59d6636483a5a3ba546d8e41ff1ef0ac3e0329f4226ac2d51fc872b1"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "external video boundary reconciliation",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-775/VIDEO_BOUNDARY_RECONCILIATION.json",
+          "sha256": "f30f326bca19a58544e2df8f00a54716d118af8a72660e4cf3a94e73d8c851f0"
+        }
+      ]
+    },
+    {
+      "name": "native desktop/mobile/search keyboard and language counterpart subset",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-775/NATIVE_UI_PARTIAL.json",
+          "sha256": "81a396f26c6927d986e4d08ffa8ebecb3133ff0908d67bbef978c5a76603c26d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前774の正式check:contentと原/定本/訳43hash一致を確認。本文とレビュー証拠は変更しない。",
+    "固定basics.rst69-80と682権利区分・688選定を照合。外部videoは元から別host参照で、原iframe/付随本文/footerを保持。全文映像の転写/訳/再配信は範囲外で、映像内容未reviewを合格へ変更しない。self-contained design/APIは収録済み。",
+    "実CUAでJA概要/検索uv_async_send/Down+Enter→APIanchor/EN同slug切替、mobile390x844でdesign/category collapse/図2読込と327px幅/scrollWidth375を確認。画面inline視認とAX/DOM根拠を記録、未保存screenshotファイルを捏造しない。",
+    "localhost起動がsandbox EPERMで終了した後、明示許可された公開前ローカルpreviewをescalationで起動しsession61344 live。最初の接続拒否をUI不合格と混同しない。Workersや外部公開はしない。",
+    "mobileは既存stacked sidebar仕様でcategory collapseにより本文へ進める。英日切替は同文書へ移るがfragment保持は現在共通UIの範囲外。画面幅overrideは復元。",
+    "UI全ゲートは未完。入口/guide/code/最大page/表/残図/iframe/footerdetail/通知/version/pagination/404/mobilekeyboard/統合公開を次サイクルへ保存。"
+  ],
+  "unresolved": [
+    "native UI残項目/統合/公開",
+    "外部補助動画内容review未実施（元の外部参照範囲、確認済みとしない）"
+  ],
+  "nextAction": "776:775 current manifest43 hashes/外部動画境界/native subsetを照合。ローカルAstro preview session61344を現観測で確認（終了済みなら再起動）。CUAで入口redirect・guide/code scroll・最大misc/table/index・loop図・iframe再生/原文詳細/通知・版選択/pagination/404・mobile検索/keyboard Escape/focusを検証しUI全ゲート完了。最新本番基準との差分を隔離統合し全検査後公開待ち→Pages公開。",
+  "resumeCondition": "current43manifestと772runtime snapshotsのSHA一致を照合し隔離copyで未完ゲートを進める。未検証を公開しない。"
+}

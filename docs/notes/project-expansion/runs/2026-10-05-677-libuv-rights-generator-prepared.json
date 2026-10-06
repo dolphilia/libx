@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-677-libuv-rights-generator-prepared",
+  "cycle": 677,
+  "startedAt": "2026-10-04T17:45:47.559Z",
+  "endedAt": "2026-10-04T17:48:21.496Z",
+  "result": "partial",
+  "phase": "libuv権利区分と固定公式Sphinx生成準備",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "actual runtime model identifier not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "python3",
+    "pip-wheel-download",
+    "sphinx7.0.1",
+    "view_image"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "cfdccd98104c74c69abe081d7786bb4d0c287544c28bc49d87686b1d01fdd709"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "fa49b30bcf3d1710780140cde7535c7f00829e3b20a85b26a48adcac6f8a4631"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/INPUT_RECONCILIATION.json",
+      "sha256": "564c3f1d588c4edc75883338acbb63c5c6230a70f2af97854dca6e1d1905f110"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/REFERENCE_MAP.json",
+      "sha256": "83ffaaaa2fccc3d5c469100cba0ede9d7a03248ecd9050a679b1bfd020e29ec6"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/CYCLE_RESULT.json",
+      "sha256": "69f1f0d7838394cc9ab01f8c839458d92222a7163e8d72e7eb10ae2251b17cb4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/GENERATOR_RESULT.json",
+      "sha256": "91ef1907c4544314fcb76693b9fea1769c79244a6775261d8adeeb204904a216"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/PIP_DOWNLOAD.log",
+      "sha256": "b938522e985c636c949ed312a2fc8ad22ce80b4f95fda808d14ab40525458dd6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/PIP_INSTALL.log",
+      "sha256": "878686fed8f985109868e8fc61beb60a89180534055d15b72aa49cc283645319"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/RIGHTS_FILE_SCAN.json",
+      "sha256": "6d116a0d5ca0c50759b553b64c514d3bf77b8f7635118a1f44b32f28550a08cb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/RIGHTS_METHOD.json",
+      "sha256": "4a359720262818564614b94d9dbe92fcb88e1528558397033ec5edbe102731a8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/SPHINX_BUILD.log",
+      "sha256": "ed0fe1e09ed969fe681284d6c38fb94699bffee0b770033c6005fd2ce3e3de42"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/register.mjs",
+      "sha256": "9de00e3c6bfcdc04f48eaf88d07696211e98e6e88e8f1c5847ea3c4cc2465ac1"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "official pinned generator execution",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/GENERATOR_RESULT.json",
+          "sha256": "91ef1907c4544314fcb76693b9fea1769c79244a6775261d8adeeb204904a216"
+        }
+      ]
+    },
+    {
+      "name": "conversion fidelity and 10 warnings",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-677/SPHINX_BUILD.log",
+          "sha256": "ed0fe1e09ed969fe681284d6c38fb94699bffee0b770033c6005fd2ce3e3de42"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "677:専用文書CC/実装MIT/生成Apache条件を区分、676unique codeの名称を訂正。固定Sphinx7.0.1公式依存で42RST→HTML44を生成、warning10の影響未検証。採用0、未確認条件unknown保持。",
+    "wheel-only isolated/tmp install, source config reviewed before execution. Rootapps/deps/shared/Awesome/user変更なし。外部公開/Workers/ローカルLLM/定期実行なし。"
+  ],
+  "unresolved": [
+    "固定Sphinx生成10warningの本文/API/anchorへの影響未確認。exit0を忠実変換合格にしない。",
+    "生成runtime素材/個別通知と本文・参照asset分類の最終権利判断未完。",
+    "語数/日本語資料/自立性/採点/翻訳レビュー未完。"
+  ],
+  "nextAction": "678:生成全HTMLを42RSTと照合し、10warningの原行・生成DOM・C宣言/参照欠落を分類。図/63literalincludeの選択範囲とGraphical/Textual条件を原設定と照合して保全する。",
+  "resumeCondition": "678:生成全HTMLを42RSTと照合し、10warningの原行・生成DOM・C宣言/参照欠落を分類。図/63literalincludeの選択範囲とGraphical/Textual条件を原設定と照合して保全する。"
+}

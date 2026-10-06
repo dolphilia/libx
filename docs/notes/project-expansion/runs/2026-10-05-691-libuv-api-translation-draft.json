@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-691-libuv-api-translation-draft",
+  "cycle": 691,
+  "startedAt": "2026-10-04T19:10:55.765Z",
+  "endedAt": "2026-10-04T19:11:41.653Z",
+  "result": "partial",
+  "phase": "libuv逐次翻訳・API目次1page初稿",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "Codex translation",
+    "CAS ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "419ac2bf93a9e3f3ca46c2702d46feab083e57bc1956ce17431594f03021c905"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "0400aa5d8310e942bc2d28f446ec8283c03e9527704c6da983da21609eb7bf3c"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "fa49b30bcf3d1710780140cde7535c7f00829e3b20a85b26a48adcac6f8a4631"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/api.rst",
+      "sha256": "7d434a8621ae0dbfd83d143d5e3785289434022460ef6fce8e3a88128e0553b1"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/api.md",
+      "sha256": "08cc4ad049dae554fb9fe42e9c65638e0c7934b8e9e56deeec331404d9cd8754"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-691/TRANSLATION_API.json",
+      "sha256": "bf11c6105dd03fceb66e237d8fecdb4cd666f63a2c11fa110491e9dea7a83539"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-691/register.mjs",
+      "sha256": "a3fe5bc76c185aef3cb0bcc2289284ac1ce039d0f24b5c2bc9c44a643fde257e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-691/translate-api.py",
+      "sha256": "299a654da8520b7926b37d973f878f569ce1631472e46b7c881a588a3d02a030"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/api.md",
+      "sha256": "e5c76ce3d932c6b06a99187f3e7734d1fab5d93b9e4d08585de79271216fc50f"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "API translation draft hash/source alignment",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-691/TRANSLATION_API.json",
+          "sha256": "bf11c6105dd03fceb66e237d8fecdb4cd666f63a2c11fa110491e9dea7a83539"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "43ページ中1ページの全量初稿。別内容レビュー未実施で全訳・検証済みにしない。",
+    "内部参照は実在する英語を維持しJA各対象作成後に切替。未完了appを本番へ統合しない。",
+    "翻訳器のラベル置換でPoll部分一致を検出し出力前停止。長いラベル順へ修正して全文出力。"
+  ],
+  "unresolved": [
+    "残42page翻訳",
+    "43page別全文レビュー",
+    "長文の意味節区分全量対応表",
+    "JA内部リンク最終切替と機械/native/統合/公開検証"
+  ],
+  "nextAction": "692:reference/apiの固定RST→EN→JAの全見出し・27項目・型名・リンク・footerを別工程で内容レビューし記録。続いて次の短いページを翻訳し、長いページの意味節区分を全量対応表へ保存する。JA対象が存在する時のみ内部リンクをJAへ切替。43page全訳/review後に機械/native/統合/公開検証。",
+  "resumeCondition": "690EN定本と691初稿SHAを照合し別内容レビューから再開。"
+}

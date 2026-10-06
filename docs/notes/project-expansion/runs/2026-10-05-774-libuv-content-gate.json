@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-774-libuv-content-gate",
+  "cycle": 774,
+  "startedAt": "2026-10-05T00:23:05.406Z",
+  "endedAt": "2026-10-05T00:27:10.252Z",
+  "result": "partial",
+  "phase": "正式check:content・全範囲機械検査",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "isolated prebuild/build",
+    "parse5 body search index",
+    "BS4 runtime checks",
+    "CAS ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "558c230e292fd2255c3ca3751ef6745c7608328efa0f3c4b6e35937046c1b082"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/771/REVIEW_MANIFEST.json",
+      "sha256": "96b4db8d7e1b80948e04ee489255601b8801172e94cb9f38850d675daf10a89f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/CONTENT.log",
+      "sha256": "1491b086a50962f6a6b9a276780c844da1940af636be4e7e56dee7a58863723a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/CONTENT_VERIFICATION.json",
+      "sha256": "d6db5a45540c309691e11fd262b7061391c40988b3f9f77c6fbf5845dbb8211f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/INITIAL_CONTEXT_CHECK.log",
+      "sha256": "e37ba8c75e0311f8fdbe62c70f174d02085cea59ade8173d09d7365168a81ce3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/INITIAL_JA_CONTEXT_CHECK.log",
+      "sha256": "b8c9b07cfea33c715e9d54a9874672f44c49a8cec760a9634552ca6eb4cce30f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/INITIAL_NOTICE_MAPPING_CHECK.log",
+      "sha256": "a1d61c460928a77172d79a4bc4044162a1ca79946f78ce16ef76cc722b21fa8b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/NEGATIVE_VERIFICATION.json",
+      "sha256": "51f73a4d515454991aab483202422f33e2a01a3cffdabc1e1ff1907202ff05b8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/PACKAGE.json",
+      "sha256": "8515d177745a0ea57916cc05b420a0f010cd61a3fe4aa8fcad0500421a0c8432"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/PRIOR_VERIFY_REGENERATION.py",
+      "sha256": "d825cdd80580a62b476d5e8240de0b44d43fb3b3149d39616e1f09d6be36b8d8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/check-negative.py",
+      "sha256": "1d19def3c42d396837cf2dc2a2e1940f367af325734556b3ede6288639c3018f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/register.mjs",
+      "sha256": "50a6a2ac69920b49c57954a58da7a5ecd52aa5f4dc657a88745732998e5814b4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/verify-regeneration.py",
+      "sha256": "ffef3f0f7f5701143ee3025f8b2a1843a561ec23798105b2de35ab9e280bb25f"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/check-content.py",
+      "sha256": "cd1cd68338878c5266624de4cf6d55df42d898a28ab8357e7e9ede8baf0e55ea"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/prepare-content-gate.py",
+      "sha256": "daf8ce11b80f956fa17e76eec51c4b59e125cc609c10049f4c90d0f1ddfb60f1"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/CONTENT_CHECK.md",
+      "sha256": "ea3693ca2a7089e758138a93b39f945c116d3394fde26f68e5a9b36f4735b41f"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/requirements-content.txt",
+      "sha256": "ec590b81c0c78785c75df63312c944ca4e8caeeeae59b635d8ed66acd69e95d2"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "pnpm --filter=apps-libuv check:content",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/CONTENT_VERIFICATION.json",
+          "sha256": "d6db5a45540c309691e11fd262b7061391c40988b3f9f77c6fbf5845dbb8211f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/CONTENT.log",
+          "sha256": "1491b086a50962f6a6b9a276780c844da1940af636be4e7e56dee7a58863723a"
+        }
+      ]
+    },
+    {
+      "name": "negative damaged-copy gates",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-774/NEGATIVE_VERIFICATION.json",
+          "sha256": "51f73a4d515454991aab483202422f33e2a01a3cffdabc1e1ff1907202ff05b8"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "隔離apps-libuvに読み取り専用check:contentを設定しpnpm正式コマンドで実行。Python/BS4固定依存と分離repository引数を記録。既存本文とAI全文reviewは変更しない。",
+    "107原入力、英日43対の現review hash、構造/ID/API宣言586/コード152、内部参照5236、原通知3件と出典を照合。README/version header2件は固定取得証拠としてrepo保存、原通知3件はnotices、残102件はsource配信。",
+    "内部で固定9段階・JA保存訳再配置/href冪等性・runtime/content-gate準備・headings/prebuild/searchを一時copyへ再生成し、全43canonical/86app/7runtime bytes一致。check:contentはLLMを呼ばず元環境へ書込なし。",
+    "missing JA page/changed example code/missing licenseの3破損copyが全て不合格になることを確認。原appを変更しない。",
+    "初回作成コマンドのcwd指定ミスを修正。初期検査器の全pageeditorial必須と通知同一パス仮定を実構成へ訂正。否定試験のcodeないAPIpageを実codeのguideへ変更。失敗log保存、合格と偽記録しない。",
+    "native/UI/統合/公開と外部補助動画内容未確認の収録境界は残ゲート。"
+  ],
+  "unresolved": [
+    "native/UI/統合/公開",
+    "外部補助動画全内容review未実施の収録境界確認"
+  ],
+  "nextAction": "775:774 content検査/破損copy3件rejectと現43manifestのSHAを照合。外部補助動画の確定収録境界を元選定・scope証拠で確認し、ローカルAstro previewのnative desktop/mobile/keyboardで入口・各category・最大/API・図表/code・英日/版切替・sidebar/pagination/404/footerを検証。最新公開基準との差分を隔離統合後に全ゲート再実行し公開待ちへ。",
+  "resumeCondition": "current43manifestと772runtime snapshotsのSHA一致を照合し隔離copyで未完ゲートを進める。未検証を公開しない。"
+}

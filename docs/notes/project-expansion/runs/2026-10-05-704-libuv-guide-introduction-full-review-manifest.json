@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-704-libuv-guide-introduction-full-review-manifest",
+  "cycle": 704,
+  "startedAt": "2026-10-04T20:08:46.080Z",
+  "endedAt": "2026-10-04T20:10:07.906Z",
+  "result": "partial",
+  "phase": "guide目次/導入別全文review・43page部分manifest",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "Codex separate full-page content review",
+    "hash/range coverage inventory",
+    "CAS ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "1f66f4897d1e6849e7711f48fd36e4d4007ae8e54e15785585164a85f0c35313"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide.rst",
+      "sha256": "908d6344db9df73c4db1f17fac28f00fbb3db26a617e6c6977d909318443a9d2"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/guide.md",
+      "sha256": "5d2cc096b0057dbdad99db6621d53ce64bb22a05512528c8b0035d0f46b236e4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/guide.md",
+      "sha256": "a23a54d03340f5db96a1dc9e207f3049c1553f9e6ff7d1cb149e5738607c3a6b"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/introduction.rst",
+      "sha256": "b2a63998152ac1333f36ea6b8a7346475e707a13ee53635669814fb85da6f4ff"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/introduction.md",
+      "sha256": "a342f3f435c88af05513cfb1482a8ee10a18c0e7c0e4ad8bfc2d8df4321cd513"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/introduction.md",
+      "sha256": "5cf8c0d74745d5aa3d7851b9254ad4a0164d47c6d4bf6ff2f6cf423c2e7d1cfb"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-704/CONTENT_REVIEW_GUIDE.json",
+      "sha256": "7ba8ac1d6ae3221c2dbf9e0591d908decb2511e4652d5ae079def8bf87585789"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-704/CONTENT_REVIEW_INTRODUCTION.json",
+      "sha256": "c5c7cae1a4b0a15fafaf2ba630cf055c68ad902454cb9a6a0adf8807db67417c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-704/GUIDE_TARGET_LABEL_ALIGNMENT.json",
+      "sha256": "02d583167a8361359e11a2850d7b7b6041c432e2de1c290e144b0a8e102bbc4e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-704/register.mjs",
+      "sha256": "902ccbb78d29192501528081f0ed5323fdda31583b25eff0dd3ccc35cb40faa4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/704/REVIEW_MANIFEST.json",
+      "sha256": "a4851780240352fedf37d7d4a6b69ca6026da4b5bc3903a13af0fff48bef9c9d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "guide/introduction full content reviews",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-704/CONTENT_REVIEW_GUIDE.json",
+          "sha256": "7ba8ac1d6ae3221c2dbf9e0591d908decb2511e4652d5ae079def8bf87585789"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-704/CONTENT_REVIEW_INTRODUCTION.json",
+          "sha256": "c5c7cae1a4b0a15fafaf2ba630cf055c68ad902454cb9a6a0adf8807db67417c"
+        }
+      ]
+    },
+    {
+      "name": "partial review manifest13passed/30pending",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/704/REVIEW_MANIFEST.json",
+          "sha256": "a4851780240352fedf37d7d4a6b69ca6026da4b5bc3903a13af0fff48bef9c9d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "13/43page全訳・別全文reviewをpartial manifestとして正式記録。残30はpending、全体content-reviewedではない。",
+    "各passedページの固定RST/EN/JAのSHAと全行連続coverageを保存。機械検査/人手/native未実施を分離。"
+  ],
+  "unresolved": [
+    "残30page全量翻訳/別review",
+    "最終JA内部リンク/check:content/native/統合/公開"
+  ],
+  "nextAction": "705:704partial manifest13passed/30pendingの全current SHAを照合し、guide/basics.md（原docs/src/guide/basics.rst）から未訳長文を意味節で全量翻訳/原文対照/別reviewする。原著者注意は本文、Libx注記はfooter。html_preservation.pyでraw article/原preを保持しactual code whitespaceを検査。最終JA内部参照/check:content/native/統合/公開は未完了。",
+  "resumeCondition": "704partial manifest passed入力SHA一致時のみreview再利用。内容が変われば対応範囲を失効させ再review。"
+}

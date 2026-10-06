@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-723-libuv-processes-full-fixed-text-review-manifest",
+  "cycle": 723,
+  "startedAt": "2026-10-04T21:31:18.258Z",
+  "endedAt": "2026-10-04T21:31:51.891Z",
+  "result": "partial",
+  "phase": "utilities全量固定テキスト別review・43page部分manifest",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "Codex separate full-page content review",
+    "hash/range coverage inventory",
+    "CAS ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "1c7047d227ff4f798140f04168bb6c3d1f797334b0ee06f5e0b103acbaa1b3aa"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/utilities.rst",
+      "sha256": "50ff039f3411668b250df843df196bef7a96329c370af73952b98ab6bedde359"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/utilities.md",
+      "sha256": "f305a17e7c363d533afae05b9ac4e19c064586d18bd48bb01640f64744c522dd"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/utilities.md",
+      "sha256": "e5ff55496b2491ed28fc0f52598c7d5c35f6361ce7c388ca53bc185f7aa9b7b1"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-723/CONTENT_REVIEW_UTILITIES.json",
+      "sha256": "ef830df8c0c68468e3d443c4630ce97e7dd7d34642e8fd7c24b9872c43ae1581"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-723/register.mjs",
+      "sha256": "efffe08c08deadb2ddfdd80afb43073f2194e1f7303a72825695d25cdce88a2c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-723/save-review.py",
+      "sha256": "8e99776ffb1f6392e29c7ba4a858c4c8f449c4742268f27b4f13bd7cf3eed99b"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/723/REVIEW_MANIFEST.json",
+      "sha256": "8ba2f7333da976963068d041d38be2a806c33959afe8cc431f9d52fff1a27965"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/utilities.md",
+      "sha256": "e5ff55496b2491ed28fc0f52598c7d5c35f6361ce7c388ca53bc185f7aa9b7b1"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "utilities full fixed-text content review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-723/CONTENT_REVIEW_UTILITIES.json",
+          "sha256": "ef830df8c0c68468e3d443c4630ce97e7dd7d34642e8fd7c24b9872c43ae1581"
+        }
+      ]
+    },
+    {
+      "name": "partial review manifest20passed/23pending",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/723/REVIEW_MANIFEST.json",
+          "sha256": "8ba2f7333da976963068d041d38be2a806c33959afe8cc431f9d52fff1a27965"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "20/43page全訳・別全文reviewをpartial manifestとして正式記録。残23はpending、全体content-reviewedではない。",
+    "固定RST/EN/JAのSHAと全行連続coverageを保存。utilities全201narrative/24code/table/2footnotes/footerを照合し、途中の出力切り詰め箇所は別途読み直した。",
+    "原文API差3件とidle説明/code相違を本文保全・footer注記で確認。既存19reviewed入力保持。コンパイル/runtime/native/videoレビューは別。"
+  ],
+  "unresolved": [
+    "残23page全量翻訳/別review",
+    "外部補助動画全内容review未実施",
+    "最終JA内部リンク/check:content/native/統合/公開"
+  ],
+  "nextAction": "724:723partial manifest20passed/23pendingとfixed入力を照合しguide/about.md（原docs/src/guide/about.rst）を全量翻訳・対照、別工程全文review。canonical生成はgenerate-canonical.py→apply-basics-editorial-note.py→apply-networking-declaration.py→apply-processes-editorial-note.py→apply-eventloops-editorial-note.py→apply-utilities-editorial-note.py→apply-utilities-idle-note.pyの7段階。code/図/注記と外部リンクを保全しactual render確認。最終全ゲート未完。",
+  "resumeCondition": "723partial manifest passed入力SHA一致時のみreview再利用。内容が変われば対応範囲を失効させ再review。"
+}

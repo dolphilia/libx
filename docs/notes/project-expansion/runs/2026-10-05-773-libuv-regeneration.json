@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-773-libuv-regeneration",
+  "cycle": 773,
+  "startedAt": "2026-10-05T00:16:50.700Z",
+  "endedAt": "2026-10-05T00:18:44.432Z",
+  "result": "partial",
+  "phase": "定本・翻訳配置・runtime再生成検査",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "isolated prebuild/build",
+    "parse5 body search index",
+    "BS4 runtime checks",
+    "CAS ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0a647fc8fdcfa7e0f09624e1fda34ea800799f26b3e15d6673e61a76c5aa58e6"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/771/REVIEW_MANIFEST.json",
+      "sha256": "96b4db8d7e1b80948e04ee489255601b8801172e94cb9f38850d675daf10a89f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-773/INITIAL_MISSING_COPY.log",
+      "sha256": "65d6057e097250c76619bc26353ab4e87e217bc5b72d408f3887435e0a370dcb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-773/INITIAL_MISSING_RUNTIME_INPUTS.log",
+      "sha256": "4d92e9a258cc467f6fd53202ce30d0a7c894f22aade30953f6f0cbeaffc227fb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-773/REGENERATION.log",
+      "sha256": "6403c26055f026d8d51d87bed77cfeee84278c1dfc61fad55b9ca46e7d89e779"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-773/REGENERATION_VERIFICATION.json",
+      "sha256": "285a1d866d920434482ee3e5490d229d2319105b6f269fbd79122597127f67cc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-773/register.mjs",
+      "sha256": "c8b8f6eda745e5f298112bcc0954370c8a58325a60949bc4c66bc709ce9a93ed"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/verify-regeneration.py",
+      "sha256": "d825cdd80580a62b476d5e8240de0b44d43fb3b3149d39616e1f09d6be36b8d8"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "read-only isolated full regeneration",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-773/REGENERATION_VERIFICATION.json",
+          "sha256": "285a1d866d920434482ee3e5490d229d2319105b6f269fbd79122597127f67cc"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-773/REGENERATION.log",
+          "sha256": "6403c26055f026d8d51d87bed77cfeee84278c1dfc61fad55b9ca46e7d89e779"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "固定687変換archiveと107sourceからcanonical9段階を再実行し、定本43件と英日app86件の全bytesが現review manifestと一致。",
+    "JA保存訳再配置とhref overlay冪等性（新規変更0）、runtime準備、headings、prebuildと専用searchを実行。設定/package/headings/search/sidebar7filesも既存runtimeへ完全一致。",
+    "一時copyの生成済み本文・headings/sidebar/searchを削除してから再生成。元repositoryと隔離appへの書込なし、source/canonical/translation入力SHA不変。",
+    "一時copyの専用searchスクリプト、config/templates不足で2回停止。入力をcopy対象へ加えて再実行合格。失敗ログを保存し不合格を隠さない。",
+    "内容レビューは保存済み43全文+href差分を保持。本工程を全文読了/nativeUI/公開完了と記録しない。"
+  ],
+  "unresolved": [
+    "全体check:content・再生成",
+    "native/UI/統合/公開",
+    "外部補助動画全内容review未実施"
+  ],
+  "nextAction": "774:773 canonical9段階/英日86file/7runtime一致証拠と現行SHAを確認。appへ読み取り専用check:contentを設け、定本再生成差分/43対の構造・コード・API・リンク・license参照を正式コマンドで検証。続いて外部補助動画の収録境界/native UI/統合/公開を進める。",
+  "resumeCondition": "current43manifestと772runtime snapshotsのSHA一致を照合し隔離copyで未完ゲートを進める。未検証を公開しない。"
+}

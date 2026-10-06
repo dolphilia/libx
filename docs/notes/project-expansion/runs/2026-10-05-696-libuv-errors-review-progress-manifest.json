@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-696-libuv-errors-review-progress-manifest",
+  "cycle": 696,
+  "startedAt": "2026-10-04T19:31:55.760Z",
+  "endedAt": "2026-10-04T19:31:55.972Z",
+  "result": "partial",
+  "phase": "errors別全文review・全43page部分review manifest",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "Codex separate full-page content review",
+    "hash/range coverage inventory",
+    "CAS ledger update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ad30f01f2a4aec32b4e1db3f5581bc4fac7557baba7bd1698a5a4b6101b7dbc1"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/errors.rst",
+      "sha256": "e937e4e485c793bfb1f59c6bcc6e95937f8cf86bd7b8c835b632c94c70dae810"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/errors.md",
+      "sha256": "010be54945ff141a52576dd3d7063f9ae614e07abc5bc27c77390fa78d0769dd"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/errors.md",
+      "sha256": "21c5263c2cafa3972015c9c5c4ba0a94fe29c84c722d1c2c5663f700439ab05f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-696/CONTENT_REVIEW_ERRORS.json",
+      "sha256": "9d327f1d0f1a77076309d98c0c6ffdaa61a08092bae5abc087eb4d94ca6aa779"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-696/register.mjs",
+      "sha256": "7e85c4f7ca04719f2f568d8ea8add78fa3fb8339b689638c58fe86bef4f74390"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/696/REVIEW_MANIFEST.json",
+      "sha256": "0851c681e69b73467a7781113282a2b8d325e0beb032adf0b678f36ac165a546"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "errors full content review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-696/CONTENT_REVIEW_ERRORS.json",
+          "sha256": "9d327f1d0f1a77076309d98c0c6ffdaa61a08092bae5abc087eb4d94ca6aa779"
+        }
+      ]
+    },
+    {
+      "name": "partial review manifest4passed/39pending",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/libuv/1.53.0/reviews/revisions/696/REVIEW_MANIFEST.json",
+          "sha256": "0851c681e69b73467a7781113282a2b8d325e0beb032adf0b678f36ac165a546"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "4/43page全訳・別全文reviewをpartial manifestとして正式記録。残39はpending、全体content-reviewedではない。",
+    "各passedページの固定RST/EN/JAのSHAと全行連続coverageを保存。機械検査/人手/native未実施を分離。"
+  ],
+  "unresolved": [
+    "残39page全量翻訳/別review",
+    "最終JA内部リンク/check:content/native/統合/公開"
+  ],
+  "nextAction": "697:review manifest4passed/39pendingと固定入力を照合しreference/dll等の未訳ページを全文翻訳→原文対照→別review。新規JA見出しはgenerate-headings.pyで新証拠版に生成し旧証拠を上書きしない。remaining39全訳/レビュー/最終JA内部リンク/check:content/native/統合後に公開。",
+  "resumeCondition": "696partial manifest passed入力SHA一致時のみreview再利用。内容が変われば対応範囲を失効させ再review。"
+}

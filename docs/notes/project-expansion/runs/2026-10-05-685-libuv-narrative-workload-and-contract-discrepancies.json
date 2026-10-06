@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-685-libuv-narrative-workload-and-contract-discrepancies",
+  "cycle": 685,
+  "startedAt": "2026-10-04T18:35:46.541Z",
+  "endedAt": "2026-10-04T18:39:29.203Z",
+  "result": "partial",
+  "phase": "libuv本文実測・主要構成と原契約差の候補評価",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "actual runtime model identifier not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "python3",
+    "beautifulsoup4"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "763dacb78963963ad50cc2b685fc6a1e3f47fd68fc75f294f226679caac42c55"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "fa49b30bcf3d1710780140cde7535c7f00829e3b20a85b26a48adcac6f8a4631"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-684/TRIAL_SOURCE_MANIFEST.json",
+      "sha256": "b8f097f0b4a92cdbc770991135c2a50b9965c02aacca44212c4de9abd3062438"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/LIBUV_RESEARCH.md",
+      "sha256": "69a9c76851321ac2d51dcc2c08e71a67f5ef65321d151ee3953b514f082969d3"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/CYCLE_RESULT.json",
+      "sha256": "aa1ed0f2ac9058fb25d6efd4e60ad4f8d08de561bc6f4ae9eaafc42e5090711f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/GUIDE_PROSE_READING.txt",
+      "sha256": "abd04bebab2cb52d18aa5cc8eb995982c1401421f605c79af75b330c5c07503d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/NARRATIVE_WORD_COUNT.json",
+      "sha256": "7c013a1df7bf619f7c7b99ec8ff434f4e315ad16e552074045aa09094c731d65"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/QUALIFICATION_READING.json",
+      "sha256": "d73f54f24d37e34ec3d071dcbe05eee0eca65da3676fd409add7010716c9ff5e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/RECORDED_TRIAL_INTERVALS.json",
+      "sha256": "31e1486c32f6ea9c22724b1aabca5c2b723a1d9bdd6be42f886c51d361bf490a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/SOURCE_READING.txt",
+      "sha256": "d670867a635459b0229ad2542b225e0bddd4651f7b5368880ea6744ced42e15c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/WORKLOAD_MEASUREMENT.json",
+      "sha256": "fa288263632c378e958d3b1e3dec1178eeb6f0ff1300e5e7c4b9daf43b8050ae"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/measure.py",
+      "sha256": "b9e9a4e3a416bc55f9362236e9385fc299e2dbbc54cdfe94c230353e38814e98"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/register.mjs",
+      "sha256": "4bd960331ef5f5185901bc2eba477e77fe244e187b76c51d22904224fb5456e0"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "537 source hashes and 42 reader workload measured",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/WORKLOAD_MEASUREMENT.json",
+          "sha256": "fa288263632c378e958d3b1e3dec1178eeb6f0ff1300e5e7c4b9daf43b8050ae"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/NARRATIVE_WORD_COUNT.json",
+          "sha256": "7c013a1df7bf619f7c7b99ec8ff434f4e315ad16e552074045aa09094c731d65"
+        }
+      ]
+    },
+    {
+      "name": "self-contained and large scope workload acceptance",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-685/QUALIFICATION_READING.json",
+          "sha256": "d73f54f24d37e34ec3d071dcbe05eee0eca65da3676fd409add7010716c9ff5e"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "685:libuv本文33,056語を実測し通常3万語超を確認。原guideとAPI差2件も記録、selfContained/workload unknown。日本語比較/別枠判断/採点未完で採用0、needs-evidence維持。",
+    "rootapps/shared/Awesome/user変更なし。外部公開/Workers/ローカルLLM/定期実行なし。"
+  ],
+  "unresolved": [
+    "日本語資料の公式/コミュニティ/検索、対象版・範囲比較未完。",
+    "3万語超の別枠保守負荷判断・採点・別照合未完。",
+    "旧guide uv_fs_t.errornoと現行result、UV_RUN_ONCE one event表現の版差注記設計/主要契約評価未完。",
+    "正式採用/翻訳/全文内容レビュー未着手。"
+  ],
+  "nextAction": "686:日本語調査を公式翻訳案内/翻訳dir/コミュニティ案内/一般検索（libuv 1.53.0 日本語 翻訳、uvbook）で固定証拠化。685計測33,056語/151code/2,010行、旧guideとAPI差2件・原TODOを品質/保守評価へ。3万語超の別枠判断を具体的な保守負荷と全範囲保持根拠で決め、不適格/採点70未満ならdeferredにして次候補を発見。通常枠即採用や章削減をしない。",
+  "resumeCondition": "686:日本語調査を公式翻訳案内/翻訳dir/コミュニティ案内/一般検索（libuv 1.53.0 日本語 翻訳、uvbook）で固定証拠化。685計測33,056語/151code/2,010行、旧guideとAPI差2件・原TODOを品質/保守評価へ。3万語超の別枠判断を具体的な保守負荷と全範囲保持根拠で決め、不適格/採点70未満ならdeferredにして次候補を発見。通常枠即採用や章削減をしない。"
+}

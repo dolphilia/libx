@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-05-676-libuv-fixed-input-boundary-restarted",
+  "cycle": 676,
+  "startedAt": "2026-10-04T17:42:42.023Z",
+  "endedAt": "2026-10-04T17:44:15.178Z",
+  "result": "partial",
+  "phase": "libuv固定入力照合・全RST/参照境界調査再開",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "actual runtime model identifier not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "python3",
+    "node"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "a8cce518197814b3297572ccac2b16228b45c6e6375f8f3fc8c1f56cdc512c38"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "fa49b30bcf3d1710780140cde7535c7f00829e3b20a85b26a48adcac6f8a4631"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/libuv-source.tar.gz",
+      "sha256": "768e567dcabb9a55cb88b552b3e93c723aeca1ea6d8bb9fd8ff573c2623feac3"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/libuv-input-inventory.json",
+      "sha256": "a76e5b55bc2a214b7b518fabf636e381bcc66ab0298119a4e0df3533ffcf4325"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/CYCLE_RESULT.json",
+      "sha256": "36725795d4c7526f118bfdd12f23dfcdfadbb458739b4a04ba02bbf2d82a56d0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/DIRECTIVE_SCAN.json",
+      "sha256": "8863c66eee8a9c5cbbb206f356dab7e246cce1899ffc4799a1c70b9bb58b421b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/INPUT_RECONCILIATION.json",
+      "sha256": "564c3f1d588c4edc75883338acbb63c5c6230a70f2af97854dca6e1d1905f110"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/NOTICE_SCAN.json",
+      "sha256": "17e864e2abd2dd878eb8b052de41accf80a4b49ab88c6811bbfc503946d54fda"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/REFERENCE_MAP.json",
+      "sha256": "83ffaaaa2fccc3d5c469100cba0ede9d7a03248ecd9050a679b1bfd020e29ec6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/inventory.py",
+      "sha256": "e8c9a00c931756b39c9c0046d92b68189f2581844feb9138cd998d86560b523d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/register.mjs",
+      "sha256": "f7406bbd3b5a086be144e884d9fd5faa4f6839ed39a50a51406e1f132c71a932"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/resolve.py",
+      "sha256": "2625437ff826ed35b51c055fcde2412f2cc3a2101dba14472119e4d153d9b912"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "libuv"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "all saved source file SHA reconciliation and 42 RST reachability",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/INPUT_RECONCILIATION.json",
+          "sha256": "564c3f1d588c4edc75883338acbb63c5c6230a70f2af97854dca6e1d1905f110"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-676/REFERENCE_MAP.json",
+          "sha256": "83ffaaaa2fccc3d5c469100cba0ede9d7a03248ecd9050a679b1bfd020e29ec6"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "676:保存固定1.53.0全入力SHA照合と42RST/63code参照/2本文図の静的境界調査を再開。guide本文v1.42.0ベース表記を検出・原文保持してfooter注記対象とする。rights/boundaryほか未確認をpassにせず採用0。",
+    "ソースやビルドスクリプトを実行せず隔離/tmpへ展開。rootapps/shared/deps/Awesome/user変更なし。"
+  ],
+  "unresolved": [
+    "生成Sphinxページと全RST/取り込み範囲の対応は未検証。",
+    "全本文/例/図/Keynote構成物/logoの権利判断と通知方法が未確定。",
+    "日本語資料/自立性/変換/本文工数/採点は未完。"
+  ],
+  "nextAction": "固定docs42RSTと37取り込みcode/2本文図を全量読み、LICENSE-docs/個別通知/画像と編集原図・logo役割を分類する。Sphinx依存を既存隔離環境から探索し、未確認をrights/boundary passにしない。",
+  "resumeCondition": "676固定sourceとREFERENCE_MAPを使い、docs専用CC BY4.0、code/本文図/原図/logo条件の通知と全生成ページ対応を検証。guide基準版の差を保持。"
+}
