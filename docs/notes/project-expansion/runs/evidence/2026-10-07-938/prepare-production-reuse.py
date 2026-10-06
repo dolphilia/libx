@@ -3,12 +3,12 @@ from pathlib import Path
 import json,hashlib,datetime
 E=Path(__file__).parent
 read=lambda n:json.loads((E/n).read_text())
-ref=lambda n:{'path':n,'sha1256':hashlib.sha1256((E/n).read_bytes()).hexdigest()}
+ref=lambda n:{'path':n,'sha256':hashlib.sha256((E/n).read_bytes()).hexdigest()}
 p=read('PREVIEW_MANIFEST.json');q=read('PRODUCTION_MANIFEST.json')
 assert p['commit']==q['commit']==read('COMMIT_RESULT.json')['commit']
 a={x['path']:x for x in p['files']};b={x['path']:x for x in q['files']}
 assert set(a)==set(b)
-same=sorted(k for k in a if a[k]['sha1256']==b[k]['sha1256'] and a[k]['bytes']==b[k]['bytes'])
+same=sorted(k for k in a if a[k]['sha256']==b[k]['sha256'] and a[k]['bytes']==b[k]['bytes'])
 different=sorted(set(a)-set(same))
 articlePaths=[k for k in b if k.startswith('docs/gnu-diffutils/v3-12/') and k.endswith('/index.html') and len(Path(k).parts)==7]
 assert len(articlePaths)==125
