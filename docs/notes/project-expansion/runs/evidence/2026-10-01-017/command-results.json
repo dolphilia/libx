@@ -1,0 +1,60 @@
+{
+  "recordedAt": "2026-10-01T13:47:40.297Z",
+  "checks": [
+    {
+      "command": "python3 /private/tmp/libx-window-code-check.py",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/WINDOW_REFERENCE_CODE_CHECK.json",
+        "sha256": "24054569bdd414eca29e4ef97a991d146de42e7ee4df18659805981179320fa9"
+      }
+    },
+    {
+      "command": "pnpm --filter apps-glfw check:content",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/glfw-content-after-lint-fix.txt",
+        "sha256": "e42228058423d67c4f2d71113b78ba45d49bef55d006cbe3b70f76bd52793dd1"
+      }
+    },
+    {
+      "command": "node scripts/importers/import-glfw-3.5.1.mjs --check",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/glfw-regenerate2-root.txt",
+        "sha256": "4005c53023df42e4fa89ab6a8364079468d6d5c3fd9d067eb24f1b479473d58e"
+      }
+    },
+    {
+      "command": "pnpm exec eslint scripts/importers/import-glfw-3.5.1.mjs",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/eslint-after-whitespace-fix.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "command": "git diff --check (window reference英日/importer限定)",
+      "status": "passed",
+      "evidence": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-017/diff-check-after-lint-fix.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "correctedAttempts": [
+    "初回注記の完全一致検査でHTMLリンクを含む原文段落との相違を検知。書込み前に拒否してリンクを含む原文へ修正。",
+    "引数表途中の注記挿入を差分で検知し、3行表全体の後へ修正。",
+    "コードfragment比較にtooltip本文まで含まれていたため、全18 class=lineの署名と112 memproto/明示id/リンクを個別厳密照合。制約を外して合格にしない。",
+    "検査器のPython変数nextが組込み関数を隠したためreplacementへ修正。",
+    "@libx/glfwという誤ったpnpm filterは対象なしで検査未実施。package.jsonの実名apps-glfwで再実行して合格。",
+    "ESLintは新規template内のNBSPで失敗。生成出力を維持するUnicode escapeへ修正して再生成・ESLint合格。"
+  ],
+  "pending": [
+    "修正後別パス全文の残り",
+    "integrity",
+    "local build",
+    "代表表示",
+    "GLFW入口の再利用確認"
+  ]
+}

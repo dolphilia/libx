@@ -1,0 +1,155 @@
+{
+  "checkedAt": "2026-10-01T13:03:58.744Z",
+  "method": "impact-and-artifact-preservation-check",
+  "status": "passed",
+  "reason": "CSS追加はh2直下.permalinkに限定。検証済みLua/GLFW入口と既存11ガイドには一致構造なし。入口の固定原文/英日ハッシュ不変、GLFW他70本文不変。共有CSS変更後Lua/GLFW local buildと代表表示を再検証。元の全文レビューを保持し未確認referenceは未完了を維持。",
+  "retained": [
+    {
+      "app": "lua",
+      "review": {
+        "path": "docs/notes/document-import/lua/v5-5-1/maintenance-2026-10-01/CONTENT_REVIEW.json",
+        "sha256": "815494238071fa421ffda84a1c62dc37e830e12a66663814ae0039e3ebaca37a"
+      },
+      "pages": [
+        {
+          "id": "07-migration-and-known-issues/03-known-issues.md",
+          "status": "passed",
+          "method": "ai-content-review",
+          "model": "configured:gpt-6.1-sol;runtime:unavailable",
+          "reviewedAt": "2026-10-01T09:18:50.912608+00:00",
+          "separateReviewPass": true,
+          "source": {
+            "path": "docs/notes/document-import/lua/v5-5-1/maintenance-2026-10-01/source/known-issues-5.5.1.html",
+            "sha256": "c6ebff4d32651ad277903011dfc16c96b26b0baf82f7f546c677ed1b94707f0b",
+            "coverage": [
+              [
+                1,
+                4
+              ]
+            ]
+          },
+          "canonical": {
+            "path": "apps/lua/src/content/docs/v5-5-1/en/07-migration-and-known-issues/03-known-issues.md",
+            "sha256": "c81988f0b214dbad3751ab390394402644d63a381e5359e3548e253ccd5ed8ea",
+            "coverage": [
+              [
+                1,
+                11
+              ]
+            ]
+          },
+          "translation": {
+            "path": "apps/lua/src/content/docs/v5-5-1/ja/07-migration-and-known-issues/03-known-issues.md",
+            "sha256": "12daba27ad2b8b137cfbb03ee3cf056d345994b9ea164a115ce6c6a28e4d7eac",
+            "coverage": [
+              [
+                1,
+                11
+              ]
+            ]
+          },
+          "findings": [
+            "原文のLua 5.5.1見出しと「No bugs have been reported.」を削除・変更せず保全。HTMLのH2をページH1へ対応し、5.5.1アンカーを維持。",
+            "追加注記はLibx作成と明示。2026-08-11の固定取得日と現在の公式一覧の区別が、英語・日本語のタイトル、説明、本文注記に一致。",
+            "否定「does not describe the current list」を「現在の一覧を示すものではありません」へ保持。later reportsは以後の報告とし、未収録のバグ内容を補筆しない。",
+            "日本語単独で取得時点と現在の区別、最新情報への操作が読み取れる。今回の操作は原文の更新ではなく誤読防止。",
+            "表示検証で見つかった出典の誤参照を修正。英日両方のlicenseSourceをlua-bugs-2026-08-11へ揃え、名称に取得日、URLに公式bugsの5.5.1アンカーを設定。原文の再照合と注記・訳文の全文再レビューを実施。"
+          ]
+        }
+      ]
+    },
+    {
+      "app": "glfw",
+      "review": {
+        "path": "docs/notes/document-import/glfw/v3-5-1/maintenance-2026-10-01/CONTENT_REVIEW.json",
+        "sha256": "afb066cb10abc474acf7bef633bbc03993a5b47449f693da2c43cb1c76ecec37"
+      },
+      "pages": [
+        {
+          "id": "01-overview/01-introduction.md",
+          "status": "passed",
+          "method": "ai-content-review",
+          "model": "configured:gpt-6.1-sol;runtime:unavailable",
+          "reviewedAt": "2026-10-01T09:13:20.359969+00:00",
+          "separateReviewPass": true,
+          "source": {
+            "path": "docs/notes/document-import/glfw/v3-5-1/maintenance-2026-10-01/source/main.md",
+            "sha256": "50a438d9563f14d31bbc7ada9b6b2aab4c43086cd357000b004b25778bc94d46",
+            "coverage": [
+              [
+                1,
+                38
+              ]
+            ]
+          },
+          "canonical": {
+            "path": "apps/glfw/src/content/docs/v3-5-1/en/01-overview/01-introduction.md",
+            "sha256": "4ec3c096ad677581310536d756cde1279793513466ee82389405e7788f21da5d",
+            "coverage": [
+              [
+                1,
+                43
+              ]
+            ]
+          },
+          "translation": {
+            "path": "apps/glfw/src/content/docs/v3-5-1/ja/01-overview/01-introduction.md",
+            "sha256": "79e82da1e1c443cc1a8d2eedf15847105a846956ebc0e19b2bf7685ea94c456f",
+            "coverage": [
+              [
+                1,
+                35
+              ]
+            ]
+          },
+          "findings": [
+            "原文の全段落とAPI領域6項目を定本・日本語で照合。ウィンドウ、コンテキスト、サーフェス、入力、イベントの列挙を保持。",
+            "Doxygen参照名13件を当該固定版の見出しに対応する表示名へ変更。参照先URL、アンカー、掲載順序は全件維持。",
+            "新機能・注意事項・非推奨、各ガイドの説明、移行、ポインターの有効期間、再入可能性、スレッドセーフ性、イベント順序、前後互換性を英日で全件照合。",
+            "最終段落のDoxygen生成、ソース配布物とGitHubの両方で入手できる説明を保持。日本語は変更せず、全文再照合後に再利用。",
+            "APIリファレンスのmodules.htmlは従来どおり版入口へ内部化。入口から参照カテゴリへ進めることを表示検証で確認する。"
+          ]
+        }
+      ]
+    }
+  ],
+  "retainedGuideIds": [
+    "02-getting-started/01-getting-started.md",
+    "02-getting-started/02-compiling-glfw.md",
+    "02-getting-started/03-building-applications.md",
+    "03-guides/01-introduction-to-the-api.md",
+    "03-guides/02-context-guide.md",
+    "03-guides/03-monitor-guide.md",
+    "03-guides/04-window-guide.md",
+    "03-guides/05-input-guide.md",
+    "03-guides/06-vulkan-guide.md",
+    "03-guides/07-standards-conformance.md",
+    "03-guides/08-internal-structure.md"
+  ],
+  "css": {
+    "path": "packages/theme/src/css/starlight-overrides.css",
+    "sha256": "1b5cf583b78a10cbb30013f8c3998a4741354d44afbd1eaf9df60ccf0db0fda8"
+  },
+  "checks": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-015/css-sync.json",
+      "sha256": "de1695d5380c97394f20179b74f649035000280033cbf03a3964780a349553dc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-015/generation-scope.json",
+      "sha256": "963dd771c40d9ee1718eaa5c244cd3f214c60b85d373e695d1a142e73c4d6be7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-015/worktree-sync.json",
+      "sha256": "47119f675337a48aabe701d79b3e43fde5f0e9dfa8a4c21a70416b6d733a6452"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-015/selective-build-after-css.txt",
+      "sha256": "faafedc9b50c4548d4c3629f688832cf6adccd39e28ac84439b7d7cf82c6abf4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-015/browser-review.json",
+      "sha256": "e548f1e593215400571a54675eb171a0a95c76f87cfeb351adbcce427082ac9f"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-01T12:32:29.791Z",
+  "method": "browser-display-review",
+  "status": "passed",
+  "scope": [
+    "03-guides/08-internal-structure.md"
+  ],
+  "results": [
+    "JA desktop1280/document1265/page1265で7節、inline code25、sidebar/出典をAXと実画面で確認。本文pre/表/画像各0、該当機能copy/表スクロール/画像は対象なし。",
+    "native interface本文リンクをEnterキーで実行しJA native-accessへ遷移。期待したh1取得は失敗したが、titleネイティブアクセスと当該本文・公開macro内容をDOM確認し404でないことを確認。戻る操作で内部構造へ復帰。",
+    "JA mobile390×844/document375/page375でplatform責務と長いinline例の折り返しを実画面確認。",
+    "言語メニューEnglishを選択し同一internal-structure slugへ遷移、EN mobile375/inline25/7節確認。Configuration macros節と例を実画面保存。",
+    "viewport reset後EN desktop1280/page1265。Platform interface目次をクリック、hash一致とsmooth scroll完了後heading top-0.078125を確認し実画面保存。",
+    "console error/warn0。検証tab10を閉じviewport overrideなし。"
+  ],
+  "limits": [
+    "全35ページ表示・公開環境404・全リンク操作は未検証。GLFWコード実行/実装全体の検証ではない。",
+    "参照先native-accessはh1が存在しないことを観測。リンク先本文は表示したが当該referenceの内容/表示レビューは未完了。native-accessのレビュー時に見出し欠如を調査。"
+  ],
+  "artifacts": [
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/08-internal-structure.md",
+      "sha256": "b67defda386e6f7162537095e6ce72ea728617d6f9763eaf9853579d29192cc3"
+    },
+    {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/08-internal-structure.md",
+      "sha256": "0662bc8d911d526aeb9b63fc7fdaca269b737aada640f4986f7532f420522d13"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-014/internal-desktop.jpg",
+      "sha256": "26631d846455407d4b98c9b4d63200232f065005d208494d8f836ecbfdbc3aff"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-014/internal-mobile.jpg",
+      "sha256": "183e9bbbcc4660083fef8d4f41d4daa5358e40b66bde6023194acfdcc22fe1e5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-014/internal-en-mobile.jpg",
+      "sha256": "b6028f7686ee0376af3dfd230f94008346ab6192cd64f3fd2ba9d58beb6cc6d6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-014/internal-en-desktop.jpg",
+      "sha256": "44dd4057901d78515dc798b005a1fe6f8deb8b5312fe1e9ec25f46bfdab504a0"
+    }
+  ]
+}
