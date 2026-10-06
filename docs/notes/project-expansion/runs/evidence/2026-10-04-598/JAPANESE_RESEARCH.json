@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-04T04:26:14.393Z",
+  "scope": "jq-1.8.2 commit34f7186b86743a083a589741b6cea95293524108のManual1.8全14節+man補足",
+  "queries": [
+    "jq 1.8 マニュアル 日本語 翻訳",
+    "jqlang jq manual Japanese translation 1.8.2",
+    "jq manual 日本語 1.8 翻訳 skip trimstr have_decnum"
+  ],
+  "officialChecks": {
+    "pages": [
+      "https://jqlang.org/",
+      "https://jqlang.org/manual/",
+      "https://github.com/jqlang/jq/wiki"
+    ],
+    "source": "固定docs/content・templates・README、453-entry境界目録を照合。docs/contentの版枝はdev,1.3,1.4,1.5,1.6,1.7,1.8で、日本語入力や翻訳案内の一致なし。home/manualのリンクに日本語/l10n/translation案内未発見。wiki Home/Sidebarにも未発見。",
+    "limitation": "公式全Issue/Discord等を悉皆調査した主張ではない。wikiのshell取得は403、web閲覧では本文を確認。スコープ外のリンク先を無制限に辿らない。"
+  },
+  "existing": [
+    {
+      "url": "https://yujiorama.github.io/unofficial-translations/jq/l10n/jp/manual/",
+      "author": "Yuji Okazawa",
+      "versionDisplay": "開発バージョン、リリース版リンクは1.6/1.5/1.4/1.3。開発版の正確なcommitは未確認。",
+      "scope": "13主要章のまとまった訳。14章目Comments見出しなし。",
+      "confirmedGaps": [
+        "--raw-output0",
+        "--stream-errors",
+        "have_decnum",
+        "skip",
+        "toboolean",
+        "pick",
+        "独立trimstr/trim/ltrim/rtrim項目"
+      ],
+      "note": "ltrimstr/rtrimstrはあるのでtrimstr部分一致を不在根拠にしない。全訳の品質が低いとは評価せず版/範囲の具体的不足を評価。訳文を再利用しない。"
+    },
+    {
+      "url": "https://dev.classmethod.jp/articles/jq-manual-japanese-translation-roughly/",
+      "versionDisplay": "2013.07.10公開、対象版の明記は未確認。日付だけで1.3等に確定しない。",
+      "scope": "マニュアル訳記事。今のRegular expressions/Streaming/Modules/Commentsなど全範囲の章を含むものではない。全品質レビューは実施していない。"
+    },
+    {
+      "url": "https://www.issoh.co.jp/tech/details/17923/",
+      "versionDisplay": "1.8.2対応、2026.09.28",
+      "scope": "用途別の入門/実務例の記事。公式全136entry/250例の逐次訳ではない。記事が存在するため現行日本語ゼロとはしない。"
+    }
+  ],
+  "verdict": "partial",
+  "reason": "まとまった非公式開発版/旧版訳と現行入門記事を確認。対象1.8全範囲の逐次訳はこの探索範囲では未発見。版対応と不足するCLI/数値/新builtin/Commentsを一式提供する追加価値がある。不存在断定や既存訳の無根拠な品質減点は行わない。",
+  "translationReuse": false
+}

@@ -1,0 +1,1810 @@
+{
+  "japanese-dev-manual": {
+    "headings": [
+      {
+        "tag": "h1",
+        "id": null,
+        "text": "jq マニュアル (開発バージョン)"
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "jqの実行方法（Invoking jq）"
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "基本的なフィルター（Basic filters）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    アイデンティティ（Identity）: .\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    オブジェクト識別子インデックス（Object Identifier-Index）: .foo, .foo.bar\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    オプショナルオブジェクト識別子インデックス（Optional Object Identifier-Index）: .foo?\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    汎用オブジェクトインデックス（Generic Object Index）: .[<string>]\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    配列インデックス（Array Index）: .[2]\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    配列/文字列スライス（Array/String Slice）: .[10:15]\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    配列/オブジェクトイテレータ（Array/Object Value Iterator）: .[]\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    オプショナル配列/オブジェクトイテレータ: .[]?\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    カンマ（Comma）: ,\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    パイプ（Pipe）: |\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    括弧（Parenthesis）\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "型と値（Types and Values）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    配列構築子（Array construction）: []\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    オブジェクト構築子（Object Construction）: {}\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    再帰下降演算子（Recursive Descent）: ..\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "組み込み演算子と組み込み関数（Builtin operators and functions）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    加算（Addition）: +\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    減算（Subtraction）: -\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    乗算（Multiplication）、除算（division）、剰余（modulo）: *, /, and %\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    length\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    utf8bytelength\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    keys, keys_unsorted\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    has(key)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    in\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    map(x), map_values(x)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    path(path_expression)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    del(path_expression)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    getpath(PATHS)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    setpath(PATHS; VALUE)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    delpaths(PATHS)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    to_entries, from_entries, with_entries\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    select(boolean_expression)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    arrays, objects, iterables, booleans, numbers, normals, finites, strings, nulls, values, scalars\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    empty\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    error(message)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    halt\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    halt_error, halt_error(exit_code)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    $__loc__\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    paths, paths(node_filter), leaf_paths\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    add\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    any, any(condition), any(generator; condition)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    all, all(condition), all(generator; condition)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    flatten, flatten(depth)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    range(upto), range(from;upto) range(from;upto;by)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    floor\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    sqrt\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    tonumber\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    tostring\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    type\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    infinite, nan, isinfinite, isnan, isfinite, isnormal\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    sort, sort_by(path_expression)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    group_by(path_expression)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    min, max, min_by(path_exp), max_by(path_exp)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    unique, unique_by(path_exp)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    reverse\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    contains(element)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    indices(s)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    index(s), rindex(s)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    inside\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    startswith(str)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    endswith(str)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    combinations, combinations(n)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    ltrimstr(str)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    rtrimstr(str)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    explode\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    implode\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    split(str)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    join(str)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    ascii_downcase, ascii_upcase\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    while(cond; update)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    until(cond; next)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    recurse(f), recurse, recurse(f; condition), recurse_down\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    walk(f)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    $ENV, env\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    transpose\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    bsearch(x)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    文字列の内挿 - \\(foo)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    tojson, fromjson\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    文字列の書式化とエスケープ\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    日時関数\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    SQLスタイル演算子\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    builtins\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "条件演算子と比較演算子（Conditionals and Comparisions）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    ==, !=\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    if-then-else\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    >, >=, <=, <\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    and/or/not\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    代替演算子: //\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    try-catch\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    制御構造からの脱出\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    エラー抑制/オプショナル演算子: ?\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Perl互換の正規表現（PCRE）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    test(val), test(regex; flags)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    match(val), match(regex; flags)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    capture(val), capture(regex; flags)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    scan(regex), scan(regex; flags)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    split(regex; flags)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    splits(regex), splits(regex; flags)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    sub(regex; tostring) sub(regex; string; flags)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    gsub(regex; string), gsub(regex; string; flags)\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "高度な使い方（Advanced features）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    変数・記号の束縛演算子: ... as $identifier | ...\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    解体（代替）演算子: ?//\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    関数の定義\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    スコープ\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    還元\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    isempty(exp)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    limit(n; exp)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    first(expr), last(expr), nth(n; expr)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    first, last, nth(n)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    foreach\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    再帰\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    ジェネレータとイテレータ\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "数学機能（Math）"
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "入出力（I/O）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    input\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    inputs\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    debug\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    stderr\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    input_filename\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    input_line_number\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "ストリーム（Streaming）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    truncate_stream(stream_expression)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    fromstream(stream_expression)\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    tostream\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "代入（Assignment）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    自己代入演算子: |=\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    算術自己代入演算子: +=, -=, *=, /=, %=, //=\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    代入演算子: =\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    複雑な代入\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "モジュール（Modules）"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    import RelativePathString as NAME [<metadata>];\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    include RelativePathString [<metadata>];\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    import RelativePathString as $NAME [<metadata>];\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    module <metadata>;\n                    \n                  "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n                    modulemeta\n                    \n                  "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "色付け（Colors）"
+      }
+    ],
+    "languageLinks": [
+      "/unofficial-translations/jq/",
+      "/unofficial-translations/jq/l10n/jp/tutorial/",
+      "/unofficial-translations/jq/l10n/jp/manual/",
+      "/unofficial-translations/jq/l10n/jp/manual/v1.6",
+      "/unofficial-translations/jq/l10n/jp/manual/v1.5",
+      "/unofficial-translations/jq/l10n/jp/manual/v1.4",
+      "/unofficial-translations/jq/l10n/jp/manual/v1.3"
+    ],
+    "targetTokens": {
+      "--raw-output0": 0,
+      "--stream-errors": 0,
+      "have_decnum": 0,
+      "trimstr": 8,
+      "skip(": 0,
+      "toboolean": 0,
+      "pick(": 0
+    }
+  },
+  "official-manual": {
+    "headings": [
+      {
+        "tag": "h3",
+        "id": "navbar-title",
+        "text": "jq"
+      },
+      {
+        "tag": "h1",
+        "id": null,
+        "text": "jq 1.8 Manual"
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Invoking jq "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Basic filters "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Identity: .\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Object Identifier-Index: .foo, .foo.bar\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Optional Object Identifier-Index: .foo?\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Object Index: .[<string>]\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Array Index: .[<number>]\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Array/String Slice: .[<number>:<number>]\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Array/Object Value Iterator: .[]\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              .[]?\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Comma: ,\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Pipe: |\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Parenthesis\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Types and Values "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Array construction: []\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Object Construction: {}\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Recursive Descent: ..\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Builtin operators and functions "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Addition: +\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Subtraction: -\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Multiplication, division, modulo: *, /, %\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              abs\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              length\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              utf8bytelength\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              keys, keys_unsorted\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              has(key)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              in\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              map(f), map_values(f)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              pick(pathexps)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              path(path_expression)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              del(path_expression)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              getpath(PATHS)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              setpath(PATHS; VALUE)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              delpaths(PATHS)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              to_entries, from_entries, with_entries(f)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              select(boolean_expression)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              arrays, objects, iterables, booleans, numbers, normals, finites, strings, nulls, values, scalars\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              empty\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              error, error(message)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              halt\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              halt_error, halt_error(exit_code)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              $__loc__\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              paths, paths(node_filter)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              add, add(generator)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              any, any(condition), any(generator; condition)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              all, all(condition), all(generator; condition)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              flatten, flatten(depth)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              range(upto), range(from; upto), range(from; upto; by)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              floor\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              sqrt\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              tonumber\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              toboolean\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              tostring\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              type\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              infinite, nan, isinfinite, isnan, isfinite, isnormal\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              sort, sort_by(path_expression)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              group_by(path_expression)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              min, max, min_by(path_exp), max_by(path_exp)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              unique, unique_by(path_exp)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              reverse\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              contains(element)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              indices(s)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              index(s), rindex(s)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              inside\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              startswith(str)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              endswith(str)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              combinations, combinations(n)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              ltrimstr(str)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              rtrimstr(str)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              trimstr(str)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              trim, ltrim, rtrim\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              explode\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              implode\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              split(str)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              join(str)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              ascii_downcase, ascii_upcase\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              while(cond; update)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              repeat(exp)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              until(cond; next)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              recurse(f), recurse, recurse(f; condition)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              walk(f)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              have_literal_numbers\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              have_decnum\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              $JQ_BUILD_CONFIGURATION\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              $ENV, env\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              transpose\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              bsearch(x)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              String interpolation: \\(exp)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Convert to/from JSON\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Format strings and escaping\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Dates\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              SQL-Style Operators\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              builtins\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Conditionals and Comparisons "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              ==, !=\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              if-then-else-end\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              >, >=, <=, <\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              and, or, not\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Alternative operator: //\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              try-catch\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Breaking out of control structures\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Error Suppression / Optional Operator: ?\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Regular expressions "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              test(val), test(regex; flags)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              match(val), match(regex; flags)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              capture(val), capture(regex; flags)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              scan(regex), scan(regex; flags)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              split(regex; flags)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              splits(regex), splits(regex; flags)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              sub(regex; tostring), sub(regex; tostring; flags)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              gsub(regex; tostring), gsub(regex; tostring; flags)\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Advanced features "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Variable / Symbolic Binding Operator: ... as $identifier | ...\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Destructuring Alternative Operator: ?//\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Defining Functions\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Scoping\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              isempty(exp)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              limit(n; expr)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              skip(n; expr)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              first(expr), last(expr), nth(n; expr)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              first, last, nth(n)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              reduce\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              foreach\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Recursion\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Generators and iterators\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Math "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "I/O "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              input\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              inputs\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              debug, debug(msgs)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              stderr\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              input_filename\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              input_line_number\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Streaming "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              truncate_stream(stream_expression)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              fromstream(stream_expression)\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              tostream\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Assignment "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Update-assignment: |=\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Arithmetic update-assignment: +=, -=, *=, /=, %=, //=\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Plain assignment: =\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              Complex assignments\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Comments "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Modules "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              import RelativePathString as NAME [<metadata>];\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              include RelativePathString [<metadata>];\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              import RelativePathString as $NAME [<metadata>];\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              module <metadata>;\n              \n            "
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "\n              modulemeta\n              \n            "
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "Colors "
+      }
+    ],
+    "languageLinks": [
+      "/manual/v1.6/",
+      "/manual/v1.5/",
+      "/manual/v1.4/",
+      "/manual/v1.3/"
+    ],
+    "targetTokens": {
+      "--raw-output0": 1,
+      "--stream-errors": 2,
+      "have_decnum": 8,
+      "trimstr": 12,
+      "skip(": 3,
+      "toboolean": 5,
+      "pick(": 5
+    }
+  },
+  "japanese-article": {
+    "headings": [
+      {
+        "tag": "h1",
+        "id": null,
+        "text": "軽量JSONパーサー『jq』のドキュメント：『jq Manual』をざっくり日本語訳してみました"
+      },
+      {
+        "tag": "h2",
+        "id": "jq%20Manual(jq%E5%88%A9%E7%94%A8%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB)",
+        "text": "jq Manual(jq利用マニュアル)"
+      },
+      {
+        "tag": "h2",
+        "id": "jq%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99",
+        "text": "jqを呼び出す"
+      },
+      {
+        "tag": "h3",
+        "id": "--slurp%20%2F%20-s",
+        "text": "--slurp / -s"
+      },
+      {
+        "tag": "h3",
+        "id": "--raw-input%20%2F%20-R",
+        "text": "--raw-input / -R"
+      },
+      {
+        "tag": "h3",
+        "id": "--null-input%20%2F%20-n",
+        "text": "--null-input / -n"
+      },
+      {
+        "tag": "h3",
+        "id": "--compact-output%20%2F%20-c",
+        "text": "--compact-output / -c"
+      },
+      {
+        "tag": "h3",
+        "id": "--colour-output%20%2F%20-C%20and%20--monochrome-output%20%2F%20-M",
+        "text": "--colour-output / -C and --monochrome-output / -M"
+      },
+      {
+        "tag": "h3",
+        "id": "--ascii-output%20%2F%20-a",
+        "text": "--ascii-output / -a"
+      },
+      {
+        "tag": "h3",
+        "id": "--raw-output%20%2F%20-r",
+        "text": "--raw-output / -r"
+      },
+      {
+        "tag": "h3",
+        "id": "--arg%20name%20value",
+        "text": "--arg name value"
+      },
+      {
+        "tag": "h2",
+        "id": "%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF",
+        "text": "基本的なフィルタ"
+      },
+      {
+        "tag": "h3",
+        "id": ".",
+        "text": "."
+      },
+      {
+        "tag": "h3",
+        "id": ".foo",
+        "text": ".foo"
+      },
+      {
+        "tag": "h3",
+        "id": ".%5Bfoo%5D%2C%20.%5B2%5D%2C%20.%5B10%3A15%5D",
+        "text": ".[foo], .[2], .[10:15]"
+      },
+      {
+        "tag": "h3",
+        "id": "%5B%5D",
+        "text": "[]"
+      },
+      {
+        "tag": "h3",
+        "id": "%2C",
+        "text": ","
+      },
+      {
+        "tag": "h3",
+        "id": "%7C",
+        "text": "|"
+      },
+      {
+        "tag": "h2",
+        "id": "%E5%9E%8B%E3%81%A8%E5%80%A4",
+        "text": "型と値"
+      },
+      {
+        "tag": "h3",
+        "id": "%E9%85%8D%E5%88%97%20-%20%5B%5D",
+        "text": "配列 - []"
+      },
+      {
+        "tag": "h3",
+        "id": "%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%20-%20%7B%7D",
+        "text": "オブジェクト - {}"
+      },
+      {
+        "tag": "h2",
+        "id": "%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%A8%E9%96%A2%E6%95%B0",
+        "text": "組み込み演算子と関数"
+      },
+      {
+        "tag": "h3",
+        "id": "%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E6%BC%94%E7%AE%97%E5%AD%90",
+        "text": "組み込み演算子"
+      },
+      {
+        "tag": "h3",
+        "id": "%E9%96%A2%E6%95%B0",
+        "text": "関数"
+      },
+      {
+        "tag": "h3",
+        "id": "%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E8%A3%9C%E9%96%93(String%20interpolation)",
+        "text": "文字列の補間(String interpolation)"
+      },
+      {
+        "tag": "h3",
+        "id": "%E6%96%87%E5%AD%97%E5%88%97%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E3%81%A8%E3%82%A8%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%97(Format%20strings%20and%20escaping)",
+        "text": "文字列フォーマットとエスケープ(Format strings and escaping)"
+      },
+      {
+        "tag": "h3",
+        "id": "%E4%BB%A3%E6%9B%BF%E6%BC%94%E7%AE%97%E5%AD%90(Altenative%20Operator)%20-%20%2F%2F",
+        "text": "代替演算子(Altenative Operator) - //"
+      },
+      {
+        "tag": "h2",
+        "id": "%E9%AB%98%E5%BA%A6%E3%81%AA%E6%A9%9F%E8%83%BD",
+        "text": "高度な機能"
+      },
+      {
+        "tag": "h3",
+        "id": "%E5%A4%89%E6%95%B0",
+        "text": "変数"
+      },
+      {
+        "tag": "h3",
+        "id": "%E9%96%A2%E6%95%B0%E3%81%AE%E5%AE%9A%E7%BE%A9",
+        "text": "関数の定義"
+      },
+      {
+        "tag": "h3",
+        "id": "Reduce",
+        "text": "Reduce"
+      },
+      {
+        "tag": "h2",
+        "id": "%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6(Assignment)",
+        "text": "割り当て(Assignment)"
+      },
+      {
+        "tag": "h3",
+        "id": "%3D",
+        "text": "="
+      },
+      {
+        "tag": "h3",
+        "id": "%7C%3D",
+        "text": "|="
+      },
+      {
+        "tag": "h3",
+        "id": "%2B%3D%2C%20-%3D%2C%20*%3D%2C%20%2F%3D.%20%2F%2F%3D",
+        "text": "+=, -=, *=, /=. //="
+      },
+      {
+        "tag": "h3",
+        "id": "%E8%A4%87%E9%9B%91%E3%81%AA%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6",
+        "text": "複雑な割り当て"
+      },
+      {
+        "tag": "h2",
+        "id": "%E3%81%BE%E3%81%A8%E3%82%81",
+        "text": "まとめ"
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "EVENTS"
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "関連記事"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "主なカテゴリ"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "お問い合わせ"
+      },
+      {
+        "tag": "h3",
+        "id": null,
+        "text": "運営会社"
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "EVENTS"
+      }
+    ],
+    "languageLinks": [
+      "https://classmethod.jp/",
+      "https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2013/07/jq1.png",
+      "https://dev.classmethod.jp/tool/jq/",
+      "http://tech.basicinc.jp/JavaScript/2013/05/17/json_jq/",
+      "https://classmethod.jp/aws/services/invoice/?utm_source=dev.classmethod.jp&utm_medium=banner&utm_campaign=footer&utm_content=members",
+      "https://events.classmethod.jp/seminar/",
+      "https://events.classmethod.jp/meetup/",
+      "https://events.classmethod.jp/study-club/",
+      "https://classmethod.jp/?utm_source=dev.classmethod.jp&utm_medium=blog&utm_campaign=footer&utm_content=classmethod",
+      "https://classmethod.jp/inquiry/",
+      "https://classmethod.jp/seminar/aws-consultation/?utm_source=dev.classmethod.jp&utm_medium=blog&utm_campaign=footer&utm_content=consultation",
+      "https://classmethod.jp/download/company-overview/?utm_source=dev.classmethod.jp&utm_medium=blog&utm_campaign=footer&utm_content=download",
+      "https://classmethod.jp/mailmagazine/",
+      "https://events.classmethod.jp/seminar/",
+      "https://careers.classmethod.jp/?utm_source=dev.classmethod.jp&utm_medium=blog&utm_campaign=footer&utm_content=careers",
+      "https://events.classmethod.jp/meetup/",
+      "https://events.classmethod.jp/study-club/",
+      "https://classmethod.jp/company/overview/?utm_source=dev.classmethod.jp&utm_medium=blog&utm_campaign=footer&utm_content=overview",
+      "https://classmethod.jp/aws/services/members/?utm_source=dev.classmethod.jp&utm_medium=blog&utm_campaign=footer&utm_content=members",
+      "https://classmethod.jp/company/access/?utm_source=dev.classmethod.jp&utm_medium=blog&utm_campaign=footer&utm_content=access",
+      "https://classmethod.jp/privacy/",
+      "https://classmethod.jp/cookie-policy/",
+      "https://dev.classmethod.jp/trending/",
+      "https://dev.classmethod.jp/tags/aws/",
+      "https://dev.classmethod.jp/tags/claude/",
+      "https://dev.classmethod.jp/tags/amazon-bedrock/",
+      "https://dev.classmethod.jp/tags/google-cloud/",
+      "https://dev.classmethod.jp/tags/azure/",
+      "https://events.classmethod.jp/seminar/",
+      "https://events.classmethod.jp/meetup/",
+      "https://events.classmethod.jp/study-club/",
+      "https://classmethod.jp/cases/?utm_source=dev.classmethod.jp&utm_medium=blog&utm_campaign=nav&utm_content=cases",
+      "https://careers.classmethod.jp/?utm_source=dev.classmethod.jp&utm_medium=blog&utm_campaign=nav&utm_content=careers",
+      "https://classmethod.jp/aws/services/invoice/?utm_source=dev.classmethod.jp&utm_medium=banner&utm_campaign=sidebannerA&utm_content=members_2025",
+      "https://events.classmethod.jp/seminar/261007-bedrock-webinar/",
+      "https://events.classmethod.jp/seminar/261009-sendai-seminar/",
+      "https://events.classmethod.jp/seminar/261013-aws-reinvent-webinar/",
+      "https://events.classmethod.jp/seminar/261030-mssp-webinar/",
+      "https://events.classmethod.jp/seminar/261126-security-webinar/",
+      "https://events.classmethod.jp/seminar/261021-vs-summit/"
+    ],
+    "targetTokens": {
+      "--raw-output0": 0,
+      "--stream-errors": 0,
+      "have_decnum": 0,
+      "trimstr": 0,
+      "skip(": 0,
+      "toboolean": 0,
+      "pick(": 0
+    }
+  },
+  "official-home": {
+    "headings": [
+      {
+        "tag": "h3",
+        "id": "navbar-title",
+        "text": "jq"
+      },
+      {
+        "tag": "h1",
+        "id": null,
+        "text": ""
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "\njq is a lightweight and flexible command-line JSON processor.\n"
+      },
+      {
+        "tag": "h2",
+        "id": null,
+        "text": "News"
+      }
+    ],
+    "languageLinks": [
+      "https://github.com/jqlang/jq/releases/tag/jq-1.6",
+      "https://github.com/jqlang/jq/releases/tag/jq-1.5"
+    ],
+    "targetTokens": {
+      "--raw-output0": 0,
+      "--stream-errors": 0,
+      "have_decnum": 0,
+      "trimstr": 0,
+      "skip(": 0,
+      "toboolean": 0,
+      "pick(": 0
+    }
+  }
+}

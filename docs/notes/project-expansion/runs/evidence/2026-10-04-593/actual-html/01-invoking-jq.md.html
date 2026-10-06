@@ -1,0 +1,721 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar data-dir="ltr"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/docs/jq/favicon.svg"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- ダークモードフラッシュ防止スクリプト --><script>
+      (function () {
+        const STORAGE_KEY = 'theme-preference';
+
+        function getThemePreference() {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY)) {
+            return localStorage.getItem(STORAGE_KEY);
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        const theme = getThemePreference();
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script><meta name="generator" content="Astro v5.7.12"><meta name="description" content="Documentation for jq Documentation"><link rel="canonical" href="https://libx.dev/docs/jq/v1-8-2/en/01-guide/01-invoking-jq/"><link rel="alternate" hreflang="en" href="https://libx.dev/docs/jq/v1-8-2/en/01-guide/01-invoking-jq/"><link rel="alternate" hreflang="x-default" href="https://libx.dev/docs/jq/v1-8-2/en/01-guide/01-invoking-jq/"><meta property="og:type" content="article"><meta property="og:title" content="Invoking jq | jq Documentation"><meta property="og:description" content="Documentation for jq Documentation"><meta property="og:url" content="https://libx.dev/docs/jq/v1-8-2/en/01-guide/01-invoking-jq/"><title>Invoking jq | jq Documentation</title><script type="module" src="/docs/jq/assets/MainLayout.astro_astro_type_script_index_0_lang.CpkCDiGE.js"></script><link rel="stylesheet" href="/docs/jq/assets/style.Cez_Vy2X.css"></head> <body> <div class="page"> <header class="header" dir="ltr"> <div class="header-container"> <div class="header-content"> <div class="title-wrapper"><div class="breadcrumb-title"> <a href="/en" class="site-title">
+Libx
+</a> <svg class="breadcrumb-separator" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg> <a href="/docs/jq/v1-8-2/en/01-guide/00-introduction" class="doc-title"> jq Documentation </a> </div></div> <div class="print:hidden right-group"> <div class="docs-search" data-search-root data-index-url="/docs/jq/search/v1-8-2/en.json" data-no-results="No results found for '{query}'" data-error="Search error" data-astro-cid-wkb36tfj> <button type="button" class="search-trigger" data-search-trigger aria-haspopup="dialog" aria-label="Search" data-astro-cid-wkb36tfj> <span data-astro-cid-wkb36tfj>Search</span><kbd data-astro-cid-wkb36tfj>/</kbd> </button> <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" data-astro-cid-wkb36tfj> <form method="dialog" class="search-header" data-astro-cid-wkb36tfj> <label id="search-dialog-title" for="docs-search-input" data-astro-cid-wkb36tfj> Search Results </label> <button type="submit" aria-label="Close" data-astro-cid-wkb36tfj>×</button> </form> <input id="docs-search-input" type="search" autocomplete="off" placeholder="Search documentation..." data-search-input data-astro-cid-wkb36tfj> <p class="search-status" data-search-status aria-live="polite" data-astro-cid-wkb36tfj></p> <ol class="search-results" data-search-results data-astro-cid-wkb36tfj></ol> </dialog> </div> <script type="module" src="/docs/jq/assets/Search.astro_astro_type_script_index_0_lang.CelA6tAM.js"></script>  <div class="version-selector-container"> <div class="version-selector" dir="ltr" data-astro-cid-c5tqw5mv> <script>
+  class DocsDropdown extends HTMLElement {
+    constructor() {
+      super();
+    }
+  }
+  
+  // カスタム要素として登録
+  customElements.define('docs-dropdown', DocsDropdown);
+  </script><script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // すべてのドロップダウンコンポーネントを初期化
+    document.querySelectorAll('docs-dropdown').forEach(dropdown => {
+      if (dropdown._initialized) return;
+      dropdown._initialized = true;
+      
+      const button = dropdown.querySelector('[data-dropdown-button]');
+      const menu = dropdown.querySelector('[data-dropdown-menu]');
+      
+      if (button && menu) {
+        // ボタンクリックでメニューの表示/非表示を切り替え
+        button.addEventListener('click', function() {
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', (!expanded).toString());
+          menu.classList.toggle('hidden');
+        });
+        
+        const closeMenu = function(restoreFocus) {
+          button.setAttribute('aria-expanded', 'false');
+          menu.classList.add('hidden');
+          if (restoreFocus) button.focus();
+        };
+        const items = function() {
+          return Array.from(menu.querySelectorAll('[role="menuitem"]'))
+            .filter(item => item.getAttribute('aria-disabled') !== 'true');
+        };
+        const openAndFocus = function(last) {
+          button.setAttribute('aria-expanded', 'true');
+          menu.classList.remove('hidden');
+          const entries = items();
+          const entry = last ? entries[entries.length - 1] : entries[0];
+          if (entry) entry.focus();
+        };
+        button.addEventListener('keydown', function(event) {
+          if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key)) {
+            event.preventDefault();
+            if (['Enter', ' '].includes(event.key) && button.getAttribute('aria-expanded') === 'true') {
+              closeMenu(true);
+            } else {
+              openAndFocus(event.key === 'ArrowUp');
+            }
+          }
+        });
+        menu.addEventListener('keydown', function(event) {
+          if (event.key === 'Tab') {
+            closeMenu(false);
+            return;
+          }
+          const entries = items();
+          if (!entries.length) return;
+          const current = entries.indexOf(document.activeElement);
+          let next;
+          if (event.key === 'ArrowDown') next = (current + 1) % entries.length;
+          else if (event.key === 'ArrowUp') next = (current - 1 + entries.length) % entries.length;
+          else if (event.key === 'Home') next = 0;
+          else if (event.key === 'End') next = entries.length - 1;
+          else return;
+          event.preventDefault();
+          entries[next].focus();
+        });
+
+        // 外部クリックでメニューを閉じる
+        document.addEventListener('click', function(event) {
+          if (!dropdown.contains(event.target)) {
+            button.setAttribute('aria-expanded', 'false');
+            menu.classList.add('hidden');
+          }
+        });
+        
+        // ESCキーでメニューを閉じる
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            closeMenu(dropdown.contains(event.target));
+          }
+        });
+      }
+    });
+  });
+  </script><docs-dropdown dir="ltr" data-astro-cid-c5tqw5mv="true" data-astro-cid-6dzm6as6="true" class="dropdown version-dropdown">  <div data-astro-cid-6dzm6as6> <button type="button" class="dropdown-button" id="dropdown-button-29577d76b04fcdc1-0" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-menu-29577d76b04fcdc1-0" data-dropdown-button data-astro-cid-6dzm6as6> <span class="dropdown-label" data-astro-cid-6dzm6as6>jq 1.8.2 / Manual 1.8</span> <span class="dropdown-icon" data-astro-cid-6dzm6as6><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span> </button> </div>  <div class="dropdown-menu hidden" id="dropdown-menu-29577d76b04fcdc1-0" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button-29577d76b04fcdc1-0" tabindex="-1" data-dropdown-menu data-align="right" style="width: 14rem;" data-astro-cid-6dzm6as6> <div class="dropdown-content" role="none" data-astro-cid-6dzm6as6>   <a href="/docs/jq/v1-8-2/en/01-guide/01-invoking-jq" class="dropdown-item dropdown-item-active" role="menuitem" tabindex="-1" aria-current="page" data-version-link="true" data-astro-cid-c5tqw5mv="true" data-astro-cid-4gy76uzx><span class="dropdown-item-label" data-astro-cid-4gy76uzx>jq 1.8.2 / Manual 1.8</span><span class="version-badge version-badge-latest" data-astro-cid-c5tqw5mv> Latest </span><div class="version-meta" data-astro-cid-c5tqw5mv> <div class="version-date" data-astro-cid-c5tqw5mv> Jun 20, 2026 </div>  </div> </a>  </div> </div> </docs-dropdown>  <div class="version-info" data-astro-cid-c5tqw5mv>   </div> </div>  <script>(function(){const versionsLabel = "Versions";
+const collapseLabel = "Close";
+
+  // バージョン履歴の「すべてのバージョンを表示」リンクの処理
+  document.addEventListener('DOMContentLoaded', () => {
+    const moreLinks = document.querySelectorAll('.version-history-more');
+    moreLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const historyList = link
+          .closest('.version-history')
+          ?.querySelector('.version-history-list');
+        const historyItems = historyList?.querySelectorAll('.version-history-item');
+
+        if (historyItems) {
+          historyItems.forEach((item) => {
+            if (item.classList.contains('hidden')) {
+              item.classList.remove('hidden');
+            }
+          });
+
+          // 「すべて表示」リンクを「折りたたむ」に変更
+          link.textContent = collapseLabel;
+          link.classList.add('is-expanded');
+
+          // クリック時の動作を切り替え
+          link.addEventListener(
+            'click',
+            (e) => {
+              e.preventDefault();
+              if (link.classList.contains('is-expanded')) {
+                // 3つ目以降を非表示
+                Array.from(historyItems)
+                  .slice(3)
+                  .forEach((item) => {
+                    item.classList.add('hidden');
+                  });
+                link.textContent = versionsLabel;
+                link.classList.remove('is-expanded');
+              } else {
+                // すべて表示
+                historyItems.forEach((item) => {
+                  item.classList.remove('hidden');
+                });
+                link.textContent = collapseLabel;
+                link.classList.add('is-expanded');
+              }
+            },
+            { once: true }
+          );
+        }
+      });
+    });
+
+    // バージョンセレクターリンクの動的フォールバック処理
+    setupVersionSelectorFallback();
+  });
+
+  // バージョンセレクターリンクの動的フォールバック処理
+  function setupVersionSelectorFallback() {
+    const versionLinks = document.querySelectorAll('.version-dropdown [data-version-link]');
+
+    versionLinks.forEach((link) => {
+      const originalHref = link.getAttribute('href');
+      if (!originalHref) return;
+
+      link.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        // リンク先が存在するかチェック
+        const isValid = await checkLinkValidity(originalHref);
+
+        if (isValid) {
+          // 有効なリンクならそのまま遷移
+          window.location.href = originalHref;
+        } else {
+          // 無効なリンクならフォールバック先を計算
+          const fallbackUrl = await calculateFallbackUrl(originalHref);
+          window.location.href = fallbackUrl;
+        }
+      });
+    });
+  }
+
+  // リンク先の有効性をチェック
+  async function checkLinkValidity(url) {
+    try {
+      const response = await fetch(url, { method: 'HEAD' });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // フォールバック先URLを計算
+  async function calculateFallbackUrl(originalUrl) {
+    // URLを解析
+    const urlParts = originalUrl.split('/');
+    const baseIndex = urlParts.findIndex((part) => part === 'docs');
+
+    if (baseIndex === -1) return originalUrl;
+
+    // パス構造: /docs/sample-docs/lang/version/section/file
+    const basePath = urlParts.slice(0, baseIndex + 3).join('/'); // /docs/sample-docs/lang
+    const version = urlParts[baseIndex + 3]; // version
+    const section = urlParts[baseIndex + 4]; // section (guide など)
+
+    // フォールバック戦略
+    const fallbackCandidates = [
+      // 1. 同じセクションの最初のファイル（getting-started系）
+      basePath + '/' + version + '/' + section + '/01-getting-started',
+      basePath + '/' + version + '/' + section + '/getting-started',
+      // 2. デフォルトセクション（guide）の最初のファイル
+      basePath + '/' + version + '/guide/01-getting-started',
+      basePath + '/' + version + '/guide/getting-started',
+      // 3. バージョンのルートページ
+      basePath + '/' + version + '/',
+      basePath + '/' + version,
+    ];
+
+    // 各候補を順次チェック
+    for (const candidate of fallbackCandidates) {
+      const isValid = await checkLinkValidity(candidate);
+      if (isValid) {
+        return candidate;
+      }
+    }
+
+    // すべて失敗した場合は元のURLを返す
+    return originalUrl;
+  }
+})();</script> </div><div class="language-selector-container"> <div class="language-selector-container" dir="ltr" data-astro-cid-yxup6bwr> <docs-dropdown dir="ltr" data-astro-cid-yxup6bwr="true" data-astro-cid-6dzm6as6="true" class="dropdown language-dropdown ">  <div data-astro-cid-6dzm6as6> <button type="button" class="dropdown-button" id="dropdown-button-e1467c05715102d4-0" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-menu-e1467c05715102d4-0" data-dropdown-button data-astro-cid-6dzm6as6> <span class="dropdown-label" data-astro-cid-6dzm6as6>English</span> <span class="dropdown-icon" data-astro-cid-6dzm6as6><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span> </button> </div>  <div class="dropdown-menu hidden" id="dropdown-menu-e1467c05715102d4-0" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button-e1467c05715102d4-0" tabindex="-1" data-dropdown-menu data-align="right" style="width: 14rem;" data-astro-cid-6dzm6as6> <div class="dropdown-content" role="none" data-astro-cid-6dzm6as6>   <a href="/docs/jq/v1-8-2/en/01-guide/01-invoking-jq/" class="dropdown-item dropdown-item-active" role="menuitem" tabindex="-1" aria-current="page" data-astro-cid-yxup6bwr="true" data-astro-cid-4gy76uzx><span class="dropdown-item-label" data-astro-cid-4gy76uzx>English</span><span class="language-current-badge" data-astro-cid-yxup6bwr> Current </span></a> </div> </div> </docs-dropdown>  </div>  </div> <theme-toggle data-astro-cid-b2mimvjx="true"> <button class="theme-toggle" type="button" aria-label="Toggle theme" data-astro-cid-b2mimvjx> <span class="theme-toggle-icon" data-astro-cid-b2mimvjx> <!-- 太陽アイコン（ライトモード用） --> <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-b2mimvjx> <circle cx="12" cy="12" r="5" data-astro-cid-b2mimvjx></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-b2mimvjx></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-b2mimvjx></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-b2mimvjx></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-b2mimvjx></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-b2mimvjx></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-b2mimvjx></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-b2mimvjx></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-b2mimvjx></line> </svg> <!-- 月アイコン（ダークモード用） --> <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-b2mimvjx> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-b2mimvjx></path> </svg> </span> </button> </theme-toggle>  <script type="module" src="/docs/jq/assets/ThemeToggle.astro_astro_type_script_index_0_lang.BDHHZQnD.js"></script> </div> </div> </div> </header> <div class="main-frame"> <main id="main-content">  <div class="doc-layout-container" dir="ltr"> <aside class="sidebar-column print:hidden" dir="ltr"> <div class="sidebar-content"> <aside class="sidebar" role="complementary" aria-label="Documentation" id="sidebar" style="position: relative;" dir="ltr" data-astro-cid-5jauxtae> <div class="sidebar-resizer" data-astro-cid-cgrhon7b> <div class="resizer-handle" title="Resize sidebar" aria-hidden="true" data-astro-cid-cgrhon7b> <div class="handle-line" data-astro-cid-cgrhon7b></div> </div> <button type="button" class="collapse-button" title="Collapse or expand sidebar" aria-label="Collapse or expand sidebar" aria-expanded="true" aria-controls="sidebar" data-astro-cid-cgrhon7b> <span class="collapse-icon" data-astro-cid-cgrhon7b></span> </button> </div>  <script>(function(){const minWidth = 200;
+const maxWidth = 280;
+const initialWidth = 260;
+const collapsedWidth = 50;
+const storageKey = "sidebar-width";
+const dir = "ltr";
+
+  // CSSからの初期化を避けるため、DOMContentLoadedより早く実行
+  const initializeSidebar = () => {
+    const sidebar = document.getElementById('sidebar');
+
+    if (!sidebar) return;
+
+    // ローカルストレージから幅と折りたたみ状態を取得
+    const savedWidth = localStorage.getItem(storageKey);
+    const savedCollapsed = localStorage.getItem(`${storageKey}-collapsed`) === 'true';
+
+    // 初期幅を設定（保存された値がある場合のみ上書き）
+    if (savedWidth && !savedCollapsed) {
+      const sidebarWidth = parseInt(savedWidth);
+      sidebar.style.width = `${sidebarWidth}px`;
+    }
+
+    // 初期状態を設定
+    if (savedCollapsed) {
+      sidebar.classList.add('sidebar-collapsed');
+      sidebar.style.width = `${collapsedWidth}px`;
+    }
+
+    const collapseButton = document.querySelector('.collapse-button');
+    collapseButton?.setAttribute('aria-expanded', String(!savedCollapsed));
+  };
+
+  // できるだけ早く実行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSidebar);
+  } else {
+    initializeSidebar();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const resizer = document.querySelector('.sidebar-resizer');
+    const collapseButton = document.querySelector('.collapse-button');
+
+    if (!sidebar || !resizer || !collapseButton) return;
+
+    // リサイズ処理
+    let isResizing = false;
+    let startX = 0;
+    let startWidth = 0;
+
+    // リサイズ開始
+    const startResize = (e) => {
+      isResizing = true;
+      startX = e.clientX || e.touches[0].clientX;
+      startWidth = parseInt(sidebar.offsetWidth);
+      resizer.classList.add('resizing');
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+
+      // イベントリスナーを追加
+      document.addEventListener('mousemove', resize);
+      document.addEventListener('touchmove', resize, { passive: false });
+      document.addEventListener('mouseup', stopResize);
+      document.addEventListener('touchend', stopResize);
+    };
+
+    // リサイズ中
+    const resize = (e) => {
+      if (!isResizing) return;
+
+      e.preventDefault();
+
+      const clientX = e.clientX || e.touches[0].clientX;
+      const pointerDelta = dir === 'rtl' ? startX - clientX : clientX - startX;
+      let newWidth = startWidth + pointerDelta;
+
+      // 最小幅と最大幅の制限
+      newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+
+      // サイドバーの幅を更新
+      sidebar.style.width = `${newWidth}px`;
+
+      // 折りたたみ状態を解除
+      if (sidebar.classList.contains('sidebar-collapsed') && newWidth > collapsedWidth) {
+        sidebar.classList.remove('sidebar-collapsed');
+        localStorage.setItem(`${storageKey}-collapsed`, 'false');
+      }
+    };
+
+    // リサイズ終了
+    const stopResize = () => {
+      if (!isResizing) return;
+
+      isResizing = false;
+      resizer.classList.remove('resizing');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+
+      // 現在の幅をローカルストレージに保存
+      if (!sidebar.classList.contains('sidebar-collapsed')) {
+        localStorage.setItem(storageKey, sidebar.offsetWidth);
+      }
+
+      // イベントリスナーを削除
+      document.removeEventListener('mousemove', resize);
+      document.removeEventListener('touchmove', resize);
+      document.removeEventListener('mouseup', stopResize);
+      document.removeEventListener('touchend', stopResize);
+    };
+
+    // 折りたたみ/展開ボタンのクリックイベント
+    const toggleCollapse = () => {
+      const widthBeforeToggle = sidebar.offsetWidth;
+      const isCollapsed = sidebar.classList.toggle('sidebar-collapsed');
+
+      if (isCollapsed) {
+        // 現在の幅を一時保存
+        if (!localStorage.getItem(`${storageKey}-width-before-collapse`)) {
+          localStorage.setItem(`${storageKey}-width-before-collapse`, widthBeforeToggle);
+        }
+
+        // 折りたたみ幅に設定
+        sidebar.style.width = `${collapsedWidth}px`;
+      } else {
+        // 以前の幅に戻す
+        const widthBeforeCollapse =
+          localStorage.getItem(`${storageKey}-width-before-collapse`) || initialWidth;
+        const restoredWidth = Number(widthBeforeCollapse);
+        sidebar.style.width = `${Math.min(maxWidth, Math.max(minWidth, Number.isFinite(restoredWidth) ? restoredWidth : initialWidth))}px`;
+        localStorage.removeItem(`${storageKey}-width-before-collapse`);
+        sidebar.scrollLeft = 0;
+      }
+
+      // 折りたたみ状態をローカルストレージに保存
+      localStorage.setItem(`${storageKey}-collapsed`, isCollapsed);
+      collapseButton.setAttribute('aria-expanded', String(!isCollapsed));
+    };
+
+    // イベントリスナーを設定
+    resizer.addEventListener('mousedown', startResize);
+    resizer.addEventListener('touchstart', startResize, { passive: false });
+    collapseButton.addEventListener('click', toggleCollapse);
+  });
+})();</script> <h3 class="sidebar-title" id="sidebar-title" data-astro-cid-5jauxtae> Documentation </h3> <nav aria-labelledby="sidebar-title" data-astro-cid-5jauxtae> <sl-sidebar-state-persist data-hash="sidebar-hash" data-astro-cid-hrwkh5n3="true"> <script aria-hidden="true">
+    (() => {
+      try {
+        if (!matchMedia('(min-width: 50em)').matches) return;
+        /** @type {HTMLElement | null} */
+        const target = document.querySelector('sl-sidebar-state-persist');
+        const state = JSON.parse(sessionStorage.getItem('sidebar-state') || '0');
+        if (!target || !state || target.dataset.hash !== state.hash) return;
+        window._sidebarScrollRestore = state.scroll;
+        customElements.define(
+          'sl-sidebar-restore',
+          class SidebarRestore extends HTMLElement {
+            connectedCallback() {
+              try {
+                const idx = parseInt(this.dataset.index || '');
+                const details = this.closest('details');
+                if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+              } catch {
+                // 段階的な拡張機能のため、エラーは静かに無視
+              }
+            }
+          }
+        );
+      } catch {
+        // 段階的な拡張機能のため、エラーは静かに無視
+      }
+    })();
+  </script>  <ul class="top-level" data-astro-cid-5jauxtae> <li data-astro-cid-5jauxtae> <details open data-astro-cid-5jauxtae> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary data-astro-cid-5jauxtae> <div class="group-label" data-astro-cid-5jauxtae> <span class="large" data-astro-cid-5jauxtae>Manual</span>  </div> <span class="caret-container" data-astro-cid-5jauxtae> <span class="caret-wrapper" data-astro-cid-5jauxtae> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-dmkylxqa style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-5jauxtae> <li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/00-introduction" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>jq 1.8 Manual</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/01-invoking-jq" aria-current="page" class="active" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Invoking jq</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/02-basic-filters" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Basic filters</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/03-types-and-values" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Types and Values</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/04-builtin-operators-and-functions" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Builtin operators and functions</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/05-conditionals-and-comparisons" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Conditionals and Comparisons</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/06-regular-expressions" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Regular expressions</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/07-advanced-features" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Advanced features</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/08-math" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Math</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/09-io" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>I/O</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/10-streaming" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Streaming</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/11-assignment" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Assignment</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/12-comments" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Comments</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/13-modules" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Modules</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/14-colors" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Colors</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/15-manpage-appendix" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Manpage introduction and epilogue</span>  </a> </li> </ul> </details> </li><li data-astro-cid-5jauxtae> <details data-astro-cid-5jauxtae> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary data-astro-cid-5jauxtae> <div class="group-label" data-astro-cid-5jauxtae> <span class="large" data-astro-cid-5jauxtae>Original notices and license</span>  </div> <span class="caret-container" data-astro-cid-5jauxtae> <span class="caret-wrapper" data-astro-cid-5jauxtae> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-dmkylxqa style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-5jauxtae> <li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/02-license/01-original-notices" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Original jq COPYING</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>CC BY 3.0 Unported — Full legal code</span>  </a> </li> </ul> </details> </li> </ul>  <script aria-hidden="true">
+    (() => {
+      const scroller = document.getElementById('sidebar');
+      if (!window._sidebarScrollRestore || !scroller) return;
+      scroller.scrollTop = window._sidebarScrollRestore;
+      delete window._sidebarScrollRestore;
+    })();
+  </script> </sl-sidebar-state-persist> <script type="module" src="/docs/jq/assets/SidebarPersister.astro_astro_type_script_index_0_lang.1HBmR04Y.js"></script>  </nav> </aside>  <script type="module" src="/docs/jq/assets/Sidebar.astro_astro_type_script_index_0_lang.Dr4m1BH4.js"></script> </div> </aside> <div class="main-column" dir="ltr"> <details class="mobile-toc" dir="ltr" data-astro-cid-ohg5etmi> <summary data-astro-cid-ohg5etmi>On this page</summary> <starlight-toc data-min-h="2" data-max-h="3" dir="ltr" data-astro-cid-v5m4s76d="true" class="starlight-toc--mobile"><div class="starlight-toc-wrapper" data-astro-cid-v5m4s76d><nav aria-labelledby="starlight-toc-heading-mobile" data-astro-cid-v5m4s76d><h3 id="starlight-toc-heading-mobile" class="starlight-toc-heading" data-astro-cid-v5m4s76d>On this page</h3><div class="starlight-toc-list" data-astro-cid-v5m4s76d><ul class="starlight-toc__list starlight-toc__list--mobile" data-astro-cid-r52q3prn> <li class="starlight-toc__item" data-astro-cid-r52q3prn> <a class="starlight-toc__link" href="#invoking-jq" data-depth="0" data-heading-level="2" data-astro-cid-r52q3prn> <span data-astro-cid-r52q3prn>Invoking jq</span> </a>  </li><li class="starlight-toc__item" data-astro-cid-r52q3prn> <a class="starlight-toc__link" href="#source-and-notices" data-depth="0" data-heading-level="2" data-astro-cid-r52q3prn> <span data-astro-cid-r52q3prn>Source and notices</span> </a>  </li> </ul> </div></nav></div></starlight-toc><script type="module" src="/docs/jq/assets/TableOfContents.astro_astro_type_script_index_0_lang.ClgIWJ3a.js"></script> </details>  <div class="content-panel"> <article class="sl-markdown-content" dir="ltr">   <div class="jq-upstream-field" data-source-key="sections/0/title">
+<h2 id="invoking-jq">Invoking jq</h2>
+</div>
+<div class="jq-upstream-field" data-source-key="sections/0/body">
+<p>jq filters run on a stream of JSON data. The input to jq is
+parsed as a sequence of whitespace-separated JSON values which
+are passed through the provided filter one at a time. The
+output(s) of the filter are written to standard output, as a
+sequence of newline-separated JSON data.</p>
+<p>The simplest and most common filter (or jq program) is <code>.</code>,
+which is the identity operator, copying the inputs of the jq
+processor to the output stream.  Because the default behavior of
+the jq processor is to read JSON texts from the input stream,
+and to pretty-print outputs, the <code>.</code> program's main use is to
+validate and pretty-print the inputs.  The jq programming
+language is quite rich and allows for much more than just
+validation and pretty-printing.</p>
+<p>Note: it is important to mind the shell's quoting rules.  As a
+general rule it's best to always quote (with single-quote
+characters on Unix shells) the jq program, as too many characters with special
+meaning to jq are also shell meta-characters.  For example, <code>jq
+"foo"</code> will fail on most Unix shells because that will be the same
+as <code>jq foo</code>, which will generally fail because <code>foo is not
+defined</code>.  When using the Windows command shell (cmd.exe) it's
+best to use double quotes around your jq program when given on the
+command-line (instead of the <code>-f program-file</code> option), but then
+double-quotes in the jq program need backslash escaping. When using
+the Powershell (<code>powershell.exe</code>) or the Powershell Core
+(<code>pwsh</code>/<code>pwsh.exe</code>), use single-quote characters around the jq
+program and backslash-escaped double-quotes (<code>\"</code>) inside the jq
+program.</p>
+<ul>
+<li>Unix shells: <code>jq '.["foo"]'</code></li>
+<li>Powershell: <code>jq '.[\"foo\"]'</code></li>
+<li>Windows command shell: <code>jq ".[\"foo\"]"</code></li>
+</ul>
+<p>Note: jq allows user-defined functions, but every jq program
+must have a top-level expression.</p>
+<p>You can affect how jq reads and writes its input and output
+using some command-line options:</p>
+<ul>
+<li><code>--null-input</code> / <code>-n</code>:</li>
+</ul>
+<p>Don't read any input at all. Instead, the filter is run once
+  using <code>null</code> as the input. This is useful when using jq as a
+  simple calculator or to construct JSON data from scratch.</p>
+<ul>
+<li><code>--raw-input</code> / <code>-R</code>:</li>
+</ul>
+<p>Don't parse the input as JSON. Instead, each line of text is
+  passed to the filter as a string. If combined with <code>--slurp</code>,
+  then the entire input is passed to the filter as a single long
+  string.</p>
+<ul>
+<li><code>--slurp</code> / <code>-s</code>:</li>
+</ul>
+<p>Instead of running the filter for each JSON object in the
+  input, read the entire input stream into a large array and run
+  the filter just once.</p>
+<ul>
+<li><code>--compact-output</code> / <code>-c</code>:</li>
+</ul>
+<p>By default, jq pretty-prints JSON output. Using this option
+  will result in more compact output by instead putting each
+  JSON object on a single line.</p>
+<ul>
+<li><code>--raw-output</code> / <code>-r</code>:</li>
+</ul>
+<p>With this option, if the filter's result is a string then it
+  will be written directly to standard output rather than being
+  formatted as a JSON string with quotes. This can be useful for
+  making jq filters talk to non-JSON-based systems.</p>
+<ul>
+<li><code>--raw-output0</code>:</li>
+</ul>
+<p>Like <code>-r</code> but jq will print NUL instead of newline after each output.
+  This can be useful when the values being output can contain newlines.
+  When the output value contains NUL, jq exits with non-zero code.</p>
+<ul>
+<li><code>--join-output</code> / <code>-j</code>:</li>
+</ul>
+<p>Like <code>-r</code> but jq won't print a newline after each output.</p>
+<ul>
+<li><code>--ascii-output</code> / <code>-a</code>:</li>
+</ul>
+<p>jq usually outputs non-ASCII Unicode codepoints as UTF-8, even
+  if the input specified them as escape sequences (like
+  "\u03bc"). Using this option, you can force jq to produce pure
+  ASCII output with every non-ASCII character replaced with the
+  equivalent escape sequence.</p>
+<ul>
+<li><code>--sort-keys</code> / <code>-S</code>:</li>
+</ul>
+<p>Output the fields of each object with the keys in sorted order.</p>
+<ul>
+<li><code>--color-output</code> / <code>-C</code> and <code>--monochrome-output</code> / <code>-M</code>:</li>
+</ul>
+<p>By default, jq outputs colored JSON if writing to a
+  terminal. You can force it to produce color even if writing to
+  a pipe or a file using <code>-C</code>, and disable color with <code>-M</code>.
+  When the <code>NO_COLOR</code> environment variable is not empty, jq disables
+  colored output by default, but you can enable it by <code>-C</code>.</p>
+<p>Colors can be configured with the <code>JQ_COLORS</code> environment
+  variable (see below).</p>
+<ul>
+<li><code>--tab</code>:</li>
+</ul>
+<p>Use a tab for each indentation level instead of two spaces.</p>
+<ul>
+<li><code>--indent n</code>:</li>
+</ul>
+<p>Use the given number of spaces (no more than 7) for indentation.</p>
+<ul>
+<li><code>--unbuffered</code>:</li>
+</ul>
+<p>Flush the output after each JSON object is printed (useful if
+  you're piping a slow data source into jq and piping jq's
+  output elsewhere).</p>
+<ul>
+<li><code>--stream</code>:</li>
+</ul>
+<p>Parse the input in streaming fashion, outputting arrays of path
+  and leaf values (scalars and empty arrays or empty objects).
+  For example, <code>"a"</code> becomes <code>[[],"a"]</code>, and <code>[[],"a",["b"]]</code>
+  becomes <code>[[0],[]]</code>, <code>[[1],"a"]</code>, and <code>[[2,0],"b"]</code>.</p>
+<p>This is useful for processing very large inputs.  Use this in
+  conjunction with filtering and the <code>reduce</code> and <code>foreach</code> syntax
+  to reduce large inputs incrementally.</p>
+<ul>
+<li><code>--stream-errors</code>:</li>
+</ul>
+<p>Like <code>--stream</code>, but invalid JSON inputs yield array values
+  where the first element is the error and the second is a path.
+  For example, <code>["a",n]</code> produces <code>["Invalid literal at line 1,
+  column 7",[1]]</code>.</p>
+<p>Implies <code>--stream</code>.  Invalid JSON inputs produce no error values
+  when <code>--stream</code> without <code>--stream-errors</code>.</p>
+<ul>
+<li><code>--seq</code>:</li>
+</ul>
+<p>Use the <code>application/json-seq</code> MIME type scheme for separating
+  JSON texts in jq's input and output.  This means that an ASCII
+  RS (record separator) character is printed before each value on
+  output and an ASCII LF (line feed) is printed after every
+  output.  Input JSON texts that fail to parse are ignored (but
+  warned about), discarding all subsequent input until the next
+  RS.  This mode also parses the output of jq without the <code>--seq</code>
+  option.</p>
+<ul>
+<li><code>-f</code> / <code>--from-file</code>:</li>
+</ul>
+<p>Read the filter from a file rather than from a command line,
+  like awk's -f option. This changes the filter argument to be
+  interpreted as a filename, instead of the source of a program.</p>
+<ul>
+<li><code>-L directory</code> / <code>--library-path directory</code>:</li>
+</ul>
+<p>Prepend <code>directory</code> to the search list for modules.  If this
+  option is used then no builtin search list is used.  See the
+  section on modules below.</p>
+<ul>
+<li><code>--arg name value</code>:</li>
+</ul>
+<p>This option passes a value to the jq program as a predefined
+  variable. If you run jq with <code>--arg foo bar</code>, then <code>$foo</code> is
+  available in the program and has the value <code>"bar"</code>. Note that
+  <code>value</code> will be treated as a string, so <code>--arg foo 123</code> will
+  bind <code>$foo</code> to <code>"123"</code>.</p>
+<p>Named arguments are also available to the jq program as
+  <code>$ARGS.named</code>. When the name is not a valid identifier, this is
+  the only way to access it.</p>
+<ul>
+<li><code>--argjson name JSON-text</code>:</li>
+</ul>
+<p>This option passes a JSON-encoded value to the jq program as a
+  predefined variable. If you run jq with <code>--argjson foo 123</code>, then
+  <code>$foo</code> is available in the program and has the value <code>123</code>.</p>
+<ul>
+<li><code>--slurpfile variable-name filename</code>:</li>
+</ul>
+<p>This option reads all the JSON texts in the named file and binds
+  an array of the parsed JSON values to the given global variable.
+  If you run jq with <code>--slurpfile foo bar</code>, then <code>$foo</code> is available
+  in the program and has an array whose elements correspond to the
+  texts in the file named <code>bar</code>.</p>
+<ul>
+<li><code>--rawfile variable-name filename</code>:</li>
+</ul>
+<p>This option reads in the named file and binds its content to the given
+  global variable.  If you run jq with <code>--rawfile foo bar</code>, then <code>$foo</code> is
+  available in the program and has a string whose content is set to the
+  text in the file named <code>bar</code>.</p>
+<ul>
+<li><code>--args</code>:</li>
+</ul>
+<p>Remaining arguments are positional string arguments.  These are
+  available to the jq program as <code>$ARGS.positional[]</code>.</p>
+<ul>
+<li><code>--jsonargs</code>:</li>
+</ul>
+<p>Remaining arguments are positional JSON text arguments.  These
+  are available to the jq program as <code>$ARGS.positional[]</code>.</p>
+<ul>
+<li><code>--exit-status</code> / <code>-e</code>:</li>
+</ul>
+<p>Sets the exit status of jq to 0 if the last output value was
+  neither <code>false</code> nor <code>null</code>, 1 if the last output value was
+  either <code>false</code> or <code>null</code>, or 4 if no valid result was ever
+  produced.  Normally jq exits with 2 if there was any usage
+  problem or system error, 3 if there was a jq program compile
+  error, or 0 if the jq program ran.</p>
+<p>Another way to set the exit status is with the <code>halt_error</code>
+  builtin function.</p>
+<ul>
+<li><code>--binary</code> / <code>-b</code>:</li>
+</ul>
+<p>Windows users using WSL, MSYS2, or Cygwin, should use this option
+  when using a native jq.exe, otherwise jq will turn newlines (LFs)
+  into carriage-return-then-newline (CRLF).</p>
+<ul>
+<li><code>--version</code> / <code>-V</code>:</li>
+</ul>
+<p>Output the jq version and exit with zero.</p>
+<ul>
+<li><code>--build-configuration</code>:</li>
+</ul>
+<p>Output the build configuration of jq and exit with zero.
+  This output has no supported format or structure and may change
+  without notice in future releases.</p>
+<ul>
+<li><code>--help</code> / <code>-h</code>:</li>
+</ul>
+<p>Output the jq help and exit with zero.</p>
+<ul>
+<li><code>--</code>:</li>
+</ul>
+<p>Terminates argument processing.  Remaining arguments are not
+  interpreted as options.</p>
+<ul>
+<li><code>--run-tests [filename]</code>:</li>
+</ul>
+<p>Runs the tests in the given file or standard input.  This must
+  be the last option given and does not honor all preceding
+  options.  The input consists of comment lines, empty lines, and
+  program lines followed by one input line, as many lines of
+  output as are expected (one per output), and a terminating empty
+  line.  Compilation failure tests start with a line containing
+  only <code>%%FAIL</code>, then a line containing the program to compile,
+  then a line containing an error message to compare to the
+  actual.</p>
+<p>Be warned that this option can change backwards-incompatibly.</p>
+</div>
+<h2 id="source-and-notices">Source and notices</h2>
+<p>Source: jq 1.8 Manual by Stephen Dolan / jq project contributors. Original copyright notice: jq is copyright (C) 2012 Stephen Dolan. Fixed source: jq 1.8.2, commit 34f7186b86743a083a589741b6cea95293524108. Documentation is licensed under CC BY 3.0 Unported. This English edition is split and reformatted from the original; the Japanese edition is an unofficial translation from English. No upstream endorsement is implied.</p>
+<p><a href="https://jqlang.org/manual/v1.8/">Original manual</a> · <a href="https://github.com/jqlang/jq/blob/34f7186b86743a083a589741b6cea95293524108/docs/content/manual/v1.8/manual.yml">Fixed source</a> · <a href="https://creativecommons.org/licenses/by/3.0/">License</a> · <a href="/docs/jq/v1-8-2/en/02-license/01-original-notices/">Original notices</a> · <a href="/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0/">Full legal code</a></p> <div class="navigation-container" data-astro-cid-w75peyc3> <div class="pagination-links" dir="ltr" data-astro-cid-lxwikipw> <a href="/docs/jq/v1-8-2/en/01-guide/00-introduction" rel="prev" data-astro-cid-lxwikipw> <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" data-astro-cid-lxwikipw> <path fill="currentColor" d="M13.3 17.3L9.7 13.7c-.4-.4-.4-1 0-1.4l3.6-3.6c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4L11.4 13l3.3 3.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3z" data-astro-cid-lxwikipw></path> </svg> <span class="link-copy" data-astro-cid-lxwikipw> Previous <br data-astro-cid-lxwikipw> <span class="link-title" data-astro-cid-lxwikipw>jq 1.8 Manual</span> </span> </a> <a href="/docs/jq/v1-8-2/en/01-guide/02-basic-filters" rel="next" data-astro-cid-lxwikipw> <span class="link-copy" data-astro-cid-lxwikipw> Next <br data-astro-cid-lxwikipw> <span class="link-title" data-astro-cid-lxwikipw>Basic filters</span> </span> <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" data-astro-cid-lxwikipw> <path fill="currentColor" d="M10.7 17.3c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4L12.6 13 9.3 9.7c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l3.6 3.6c.4.4.4 1 0 1.4l-3.6 3.6z" data-astro-cid-lxwikipw></path> </svg> </a> </div>  </div>   <aside class="document-provenance" aria-labelledby="document-provenance-title" data-astro-cid-o25epk57><div class="provenance-header" data-astro-cid-o25epk57><h2 id="document-provenance-title" data-astro-cid-o25epk57>Document source</h2><span class="provenance-status" data-astro-cid-o25epk57>Canonical language</span></div><p class="attribution-text" data-astro-cid-o25epk57>This document is &quot;jq 1.8 Manual&quot; by Stephen Dolan / jq project contributors, formatted for libx.</p><dl class="provenance-metadata" data-astro-cid-o25epk57><div data-astro-cid-o25epk57><dt data-astro-cid-o25epk57>Source</dt><dd data-astro-cid-o25epk57>jq 1.8 Manual</dd></div><div data-astro-cid-o25epk57><dt data-astro-cid-o25epk57>Upstream version</dt><dd data-astro-cid-o25epk57>jq 1.8.2 / Manual 1.8</dd></div><div data-astro-cid-o25epk57><dt data-astro-cid-o25epk57>License</dt><dd data-astro-cid-o25epk57>CC BY 3.0 Unported</dd></div></dl><div class="provenance-links" data-astro-cid-o25epk57><a href="https://jqlang.org/manual/v1.8/" target="_blank" rel="noopener" data-astro-cid-o25epk57>Open original</a><a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener" data-astro-cid-o25epk57>CC BY 3.0 UnportedLicense</a></div></aside> </article> </div> </div> <aside class="toc-column print:hidden" dir="ltr"> <div class="toc-content"> <starlight-toc data-min-h="2" data-max-h="3" dir="ltr" data-astro-cid-v5m4s76d="true"><div class="starlight-toc-wrapper" data-astro-cid-v5m4s76d><nav aria-labelledby="starlight-toc-heading" data-astro-cid-v5m4s76d><h3 id="starlight-toc-heading" class="starlight-toc-heading" data-astro-cid-v5m4s76d>On this page</h3><div class="starlight-toc-list" data-astro-cid-v5m4s76d><ul class="starlight-toc__list" data-astro-cid-r52q3prn> <li class="starlight-toc__item" data-astro-cid-r52q3prn> <a class="starlight-toc__link" href="#invoking-jq" data-depth="0" data-heading-level="2" data-astro-cid-r52q3prn> <span data-astro-cid-r52q3prn>Invoking jq</span> </a>  </li><li class="starlight-toc__item" data-astro-cid-r52q3prn> <a class="starlight-toc__link" href="#source-and-notices" data-depth="0" data-heading-level="2" data-astro-cid-r52q3prn> <span data-astro-cid-r52q3prn>Source and notices</span> </a>  </li> </ul> </div></nav></div></starlight-toc> </div> </aside> </div>  </main> </div> </div> </body></html> <script>(function(){const baseUrl = "/docs/jq";
+const isGroup = false;
+
+  // サイドバーのプリフェッチ
+  function prefetchSidebar(lang, version) {
+    // バージョンが有効な形式（v1, v2など）かチェック
+    if (!version || !version.match(/^v\d+(?:-\d+)*$/)) {
+      version = 'v1'; // デフォルトバージョンを設定
+    }
+
+    const sidebarPath = `${baseUrl}/sidebar/sidebar-${lang}-${version}.json`;
+
+    // プリフェッチ用のlink要素を作成
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = sidebarPath;
+    document.head.appendChild(link);
+  }
+
+  // 現在のページの言語とバージョンを取得
+  const currentLang = document.documentElement.lang;
+
+  // URLパスからバージョン情報を正確に抽出
+  function extractVersionFromPath() {
+    const path = window.location.pathname;
+
+    // ベースパスを除去
+    const baseUrlPath = baseUrl.replace(/^\/|\/$/g, ''); // 先頭と末尾のスラッシュを削除
+    const pathWithoutBase = path.replace(new RegExp(`^/?${baseUrlPath}/?`), '');
+
+    // パスを分割
+    const segments = pathWithoutBase.split('/').filter((segment) => segment);
+
+    // version-first ルートの先頭セグメントがバージョン
+    if (segments.length >= 1) {
+      const potentialVersion = segments[0];
+      // バージョン形式をチェック (v1, v2, etc.)
+      if (potentialVersion.match(/^v\d+(?:-\d+)*$/)) {
+        return potentialVersion;
+      }
+    }
+
+    // バージョンが見つからない場合はデフォルトを返す
+    return 'v1';
+  }
+
+  const currentVersion = extractVersionFromPath();
+
+  // 現在のサイドバーをプリフェッチ
+  if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+})();</script> <script type="module" src="/docs/jq/assets/DocLayout.astro_astro_type_script_index_0_lang.SnA9FtQP.js"></script> 

@@ -1,0 +1,122 @@
+{
+  "at": "2026-10-04T04:14:21.312Z",
+  "kind": "candidate-self-contained-source-content-review-partial",
+  "source": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-593/upstream-reference/PARSED_MANUAL.json",
+    "sha256": "b25e032a5f49bd444c34c00ff2622fac46421306345ad8f2053c294ab56195b4"
+  },
+  "sourceYAMLSha256": "2309907188195edee4659ffcdd52d4a30c51d4ef3824a05bcdb9d5e259802a73",
+  "readKeys": [
+    "headline",
+    "body",
+    "sections[0].title",
+    "sections[0].body",
+    "sections[1].title",
+    "sections[1].entries[0].title",
+    "sections[1].entries[0].body",
+    "sections[1].entries[0].examples[0]",
+    "sections[1].entries[0].examples[1]",
+    "sections[1].entries[0].examples[2]",
+    "sections[1].entries[0].examples[3]",
+    "sections[1].entries[0].examples[4]",
+    "sections[1].entries[0].examples[5]",
+    "sections[1].entries[0].examples[6]",
+    "sections[1].entries[1].title",
+    "sections[1].entries[1].body",
+    "sections[1].entries[1].examples[0]",
+    "sections[1].entries[1].examples[1]",
+    "sections[1].entries[1].examples[2]",
+    "sections[1].entries[2].title",
+    "sections[1].entries[2].body",
+    "sections[1].entries[2].examples[0]",
+    "sections[1].entries[2].examples[1]",
+    "sections[1].entries[2].examples[2]",
+    "sections[1].entries[2].examples[3]",
+    "sections[1].entries[3].title",
+    "sections[1].entries[3].body",
+    "sections[1].entries[4].title",
+    "sections[1].entries[4].body",
+    "sections[1].entries[4].examples[0]",
+    "sections[1].entries[4].examples[1]",
+    "sections[1].entries[4].examples[2]",
+    "sections[1].entries[5].title",
+    "sections[1].entries[5].body",
+    "sections[1].entries[5].examples[0]",
+    "sections[1].entries[5].examples[1]",
+    "sections[1].entries[5].examples[2]",
+    "sections[1].entries[5].examples[3]",
+    "sections[1].entries[6].title",
+    "sections[1].entries[6].body",
+    "sections[1].entries[6].examples[0]",
+    "sections[1].entries[6].examples[1]",
+    "sections[1].entries[6].examples[2]",
+    "sections[1].entries[6].examples[3]",
+    "sections[1].entries[7].title",
+    "sections[1].entries[7].body",
+    "sections[1].entries[8].title",
+    "sections[1].entries[8].body",
+    "sections[1].entries[8].examples[0]",
+    "sections[1].entries[8].examples[1]",
+    "sections[1].entries[8].examples[2]",
+    "sections[1].entries[9].title",
+    "sections[1].entries[9].body",
+    "sections[1].entries[9].examples[0]",
+    "sections[1].entries[10].title",
+    "sections[1].entries[10].body",
+    "sections[1].entries[10].examples[0]",
+    "sections[2].title",
+    "sections[2].body",
+    "sections[2].entries[0].title",
+    "sections[2].entries[0].body",
+    "sections[2].entries[0].examples[0]",
+    "sections[2].entries[0].examples[1]",
+    "sections[2].entries[1].title",
+    "sections[2].entries[1].body",
+    "sections[2].entries[1].examples[0]",
+    "sections[2].entries[1].examples[1]",
+    "sections[2].entries[2].title",
+    "sections[2].entries[2].body",
+    "sections[2].entries[2].examples[0]"
+  ],
+  "readPages": [
+    "00-introduction",
+    "01-invoking-jq",
+    "02-basic-filters",
+    "03-types-and-values"
+  ],
+  "completeForThisSubset": true,
+  "entireManualReviewed": false,
+  "mechanicalVerificationSeparate": true,
+  "findings": [
+    {
+      "scope": "導入",
+      "result": "入力を共有するfilter、複数出力、pipe、集約add/lengthを導入する。後続章へ自然に接続し新規外部教材を組合せる必要は認めない。"
+    },
+    {
+      "scope": "Invoking jq",
+      "result": "JSON streamの入出力、Unix/cmd/PowerShell quoting、全CLI項目を通読。-n/-R/-s/-r/--raw-output0/-j、Unicode/NO_COLOR、stream/stream-errors/seq、引数読込、exit-status、binary、testsまで説明を含む。Modules/Colors/reduce/foreach参照の充足は後続レビュー待ち。PowerShell世代差を独自の検証済み保証へ広げない。"
+    },
+    {
+      "scope": "Basic filters",
+      "result": "11entries全本文と30examplesのprogram/input/outputを通読。空配列のzero output、optional index、負index/slice、comma stream順序、pipeの複数出力、括弧の説明を保持。数値比較にhave_decnumのビルド条件が明示。"
+    },
+    {
+      "scope": "Types and Values",
+      "result": "3entries全本文と5examplesを通読。arrayはstream全結果収集、object値の複数出力/動的key/variable shorthand、再帰下降の..a不可とoptional .a?を説明。"
+    },
+    {
+      "scope": "number representation",
+      "result": "Basic Identityの(3)では利用可能なら比較をbig decimalで行うと説明。一方Types bodyは内部表現をIEEE754 doubleと一律に記載。既にBuiltin導入でも類似の一律表現を観測。これは固定上流の説明差として保持し、訳文で独自に断定修正しない。",
+      "action": "残りMath/have_decnum/have_literal_numbersまで読んで、翻訳時にBasic Identityとbuild configurationへの参照注釈を追加する必要を判断。実行例検証は未実施。"
+    }
+  ],
+  "pending": [
+    "sections[3] Builtin全entry",
+    "sections[4..13]全本文とexamples",
+    "manpage_intro/epilogue",
+    "全範囲で必須参照が内在するか最終判定",
+    "日本語範囲調査・工数採点・別選定照合"
+  ],
+  "decision": "selfContained unknown維持。4/16頁の内容読了を全文レビュー完了へ広げない。翻訳レビューではない。",
+  "exampleCountRead": 35
+}

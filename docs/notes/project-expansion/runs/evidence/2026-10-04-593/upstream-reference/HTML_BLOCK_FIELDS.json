@@ -1,0 +1,1816 @@
+{
+  "status": "independent-upstream-python-markdown-reference",
+  "inputSha256": "2309907188195edee4659ffcdd52d4a30c51d4ef3824a05bcdb9d5e259802a73",
+  "versions": {
+    "pyyaml": "6.0.3",
+    "markdown": "3.10.2"
+  },
+  "fields": [
+    {
+      "key": "body",
+      "sourceSha256": "ad2f1be3e09b443eefe5bb6997eaa1bb2fe4da1dd470b1b5846548421a157e68",
+      "mode": "web-body",
+      "html": "<p>A jq program is a \"filter\": it takes an input, and produces an\noutput. There are a lot of builtin filters for extracting a\nparticular field of an object, or converting a number to a string,\nor various other standard tasks.</p>\n\n\n\n\n<p>Filters can be combined in various ways - you can pipe the output of\none filter into another filter, or collect the output of a filter\ninto an array.</p>\n\n\n\n\n<p>Some filters produce multiple results, for instance there's one that\nproduces all the elements of its input array. Piping that filter\ninto a second runs the second filter for each element of the\narray. Generally, things that would be done with loops and iteration\nin other languages are just done by gluing filters together in jq.</p>\n\n\n\n\n<p>It's important to remember that every filter has an input and an\noutput. Even literals like \"hello\" or 42 are filters - they take an\ninput but always produce the same literal as output. Operations that\ncombine two filters, like addition, generally feed the same input to\nboth and combine the results. So, you can implement an averaging\nfilter as <code>add / length</code> - feeding the input array both to the <code>add</code>\nfilter and the <code>length</code> filter and then performing the division.</p>\n\n\n\n\n<p>But that's getting ahead of ourselves. :) Let's start with something\nsimpler:</p>"
+    },
+    {
+      "key": "sections/0/title",
+      "sourceSha256": "351d0bfffb5f18aaeac965e738063dbac7b0ceb56a70a3ca6e4245560222b874",
+      "mode": "section-title",
+      "html": "<h2>Invoking jq</h2>"
+    },
+    {
+      "key": "sections/0/body",
+      "sourceSha256": "a7dd4abd103dbf34527565b32a4008d439796e7f58f5aaa3c657c211b36021cd",
+      "mode": "web-body",
+      "html": "<p>jq filters run on a stream of JSON data. The input to jq is\nparsed as a sequence of whitespace-separated JSON values which\nare passed through the provided filter one at a time. The\noutput(s) of the filter are written to standard output, as a\nsequence of newline-separated JSON data.</p>\n\n\n\n\n<p>The simplest and most common filter (or jq program) is <code>.</code>,\nwhich is the identity operator, copying the inputs of the jq\nprocessor to the output stream.  Because the default behavior of\nthe jq processor is to read JSON texts from the input stream,\nand to pretty-print outputs, the <code>.</code> program's main use is to\nvalidate and pretty-print the inputs.  The jq programming\nlanguage is quite rich and allows for much more than just\nvalidation and pretty-printing.</p>\n\n\n\n\n<p>Note: it is important to mind the shell's quoting rules.  As a\ngeneral rule it's best to always quote (with single-quote\ncharacters on Unix shells) the jq program, as too many characters with special\nmeaning to jq are also shell meta-characters.  For example, <code>jq\n\"foo\"</code> will fail on most Unix shells because that will be the same\nas <code>jq foo</code>, which will generally fail because <code>foo is not\ndefined</code>.  When using the Windows command shell (cmd.exe) it's\nbest to use double quotes around your jq program when given on the\ncommand-line (instead of the <code>-f program-file</code> option), but then\ndouble-quotes in the jq program need backslash escaping. When using\nthe Powershell (<code>powershell.exe</code>) or the Powershell Core\n(<code>pwsh</code>/<code>pwsh.exe</code>), use single-quote characters around the jq\nprogram and backslash-escaped double-quotes (<code>\\\"</code>) inside the jq\nprogram.</p>\n\n\n\n\n<ul>\n<li>Unix shells: <code>jq '.[\"foo\"]'</code></li>\n<li>Powershell: <code>jq '.[\\\"foo\\\"]'</code></li>\n<li>Windows command shell: <code>jq \".[\\\"foo\\\"]\"</code></li>\n</ul>\n\n\n\n\n<p>Note: jq allows user-defined functions, but every jq program\nmust have a top-level expression.</p>\n\n\n\n\n<p>You can affect how jq reads and writes its input and output\nusing some command-line options:</p>\n\n\n\n\n<ul>\n<li><code>--null-input</code> / <code>-n</code>:</li>\n</ul>\n\n\n\n\n<p>Don't read any input at all. Instead, the filter is run once\n  using <code>null</code> as the input. This is useful when using jq as a\n  simple calculator or to construct JSON data from scratch.</p>\n\n\n\n\n<ul>\n<li><code>--raw-input</code> / <code>-R</code>:</li>\n</ul>\n\n\n\n\n<p>Don't parse the input as JSON. Instead, each line of text is\n  passed to the filter as a string. If combined with <code>--slurp</code>,\n  then the entire input is passed to the filter as a single long\n  string.</p>\n\n\n\n\n<ul>\n<li><code>--slurp</code> / <code>-s</code>:</li>\n</ul>\n\n\n\n\n<p>Instead of running the filter for each JSON object in the\n  input, read the entire input stream into a large array and run\n  the filter just once.</p>\n\n\n\n\n<ul>\n<li><code>--compact-output</code> / <code>-c</code>:</li>\n</ul>\n\n\n\n\n<p>By default, jq pretty-prints JSON output. Using this option\n  will result in more compact output by instead putting each\n  JSON object on a single line.</p>\n\n\n\n\n<ul>\n<li><code>--raw-output</code> / <code>-r</code>:</li>\n</ul>\n\n\n\n\n<p>With this option, if the filter's result is a string then it\n  will be written directly to standard output rather than being\n  formatted as a JSON string with quotes. This can be useful for\n  making jq filters talk to non-JSON-based systems.</p>\n\n\n\n\n<ul>\n<li><code>--raw-output0</code>:</li>\n</ul>\n\n\n\n\n<p>Like <code>-r</code> but jq will print NUL instead of newline after each output.\n  This can be useful when the values being output can contain newlines.\n  When the output value contains NUL, jq exits with non-zero code.</p>\n\n\n\n\n<ul>\n<li><code>--join-output</code> / <code>-j</code>:</li>\n</ul>\n\n\n\n\n<p>Like <code>-r</code> but jq won't print a newline after each output.</p>\n\n\n\n\n<ul>\n<li><code>--ascii-output</code> / <code>-a</code>:</li>\n</ul>\n\n\n\n\n<p>jq usually outputs non-ASCII Unicode codepoints as UTF-8, even\n  if the input specified them as escape sequences (like\n  \"\\u03bc\"). Using this option, you can force jq to produce pure\n  ASCII output with every non-ASCII character replaced with the\n  equivalent escape sequence.</p>\n\n\n\n\n<ul>\n<li><code>--sort-keys</code> / <code>-S</code>:</li>\n</ul>\n\n\n\n\n<p>Output the fields of each object with the keys in sorted order.</p>\n\n\n\n\n<ul>\n<li><code>--color-output</code> / <code>-C</code> and <code>--monochrome-output</code> / <code>-M</code>:</li>\n</ul>\n\n\n\n\n<p>By default, jq outputs colored JSON if writing to a\n  terminal. You can force it to produce color even if writing to\n  a pipe or a file using <code>-C</code>, and disable color with <code>-M</code>.\n  When the <code>NO_COLOR</code> environment variable is not empty, jq disables\n  colored output by default, but you can enable it by <code>-C</code>.</p>\n\n\n\n\n<p>Colors can be configured with the <code>JQ_COLORS</code> environment\n  variable (see below).</p>\n\n\n\n\n<ul>\n<li><code>--tab</code>:</li>\n</ul>\n\n\n\n\n<p>Use a tab for each indentation level instead of two spaces.</p>\n\n\n\n\n<ul>\n<li><code>--indent n</code>:</li>\n</ul>\n\n\n\n\n<p>Use the given number of spaces (no more than 7) for indentation.</p>\n\n\n\n\n<ul>\n<li><code>--unbuffered</code>:</li>\n</ul>\n\n\n\n\n<p>Flush the output after each JSON object is printed (useful if\n  you're piping a slow data source into jq and piping jq's\n  output elsewhere).</p>\n\n\n\n\n<ul>\n<li><code>--stream</code>:</li>\n</ul>\n\n\n\n\n<p>Parse the input in streaming fashion, outputting arrays of path\n  and leaf values (scalars and empty arrays or empty objects).\n  For example, <code>\"a\"</code> becomes <code>[[],\"a\"]</code>, and <code>[[],\"a\",[\"b\"]]</code>\n  becomes <code>[[0],[]]</code>, <code>[[1],\"a\"]</code>, and <code>[[2,0],\"b\"]</code>.</p>\n\n\n\n\n<p>This is useful for processing very large inputs.  Use this in\n  conjunction with filtering and the <code>reduce</code> and <code>foreach</code> syntax\n  to reduce large inputs incrementally.</p>\n\n\n\n\n<ul>\n<li><code>--stream-errors</code>:</li>\n</ul>\n\n\n\n\n<p>Like <code>--stream</code>, but invalid JSON inputs yield array values\n  where the first element is the error and the second is a path.\n  For example, <code>[\"a\",n]</code> produces <code>[\"Invalid literal at line 1,\n  column 7\",[1]]</code>.</p>\n\n\n\n\n<p>Implies <code>--stream</code>.  Invalid JSON inputs produce no error values\n  when <code>--stream</code> without <code>--stream-errors</code>.</p>\n\n\n\n\n<ul>\n<li><code>--seq</code>:</li>\n</ul>\n\n\n\n\n<p>Use the <code>application/json-seq</code> MIME type scheme for separating\n  JSON texts in jq's input and output.  This means that an ASCII\n  RS (record separator) character is printed before each value on\n  output and an ASCII LF (line feed) is printed after every\n  output.  Input JSON texts that fail to parse are ignored (but\n  warned about), discarding all subsequent input until the next\n  RS.  This mode also parses the output of jq without the <code>--seq</code>\n  option.</p>\n\n\n\n\n<ul>\n<li><code>-f</code> / <code>--from-file</code>:</li>\n</ul>\n\n\n\n\n<p>Read the filter from a file rather than from a command line,\n  like awk's -f option. This changes the filter argument to be\n  interpreted as a filename, instead of the source of a program.</p>\n\n\n\n\n<ul>\n<li><code>-L directory</code> / <code>--library-path directory</code>:</li>\n</ul>\n\n\n\n\n<p>Prepend <code>directory</code> to the search list for modules.  If this\n  option is used then no builtin search list is used.  See the\n  section on modules below.</p>\n\n\n\n\n<ul>\n<li><code>--arg name value</code>:</li>\n</ul>\n\n\n\n\n<p>This option passes a value to the jq program as a predefined\n  variable. If you run jq with <code>--arg foo bar</code>, then <code>$foo</code> is\n  available in the program and has the value <code>\"bar\"</code>. Note that\n  <code>value</code> will be treated as a string, so <code>--arg foo 123</code> will\n  bind <code>$foo</code> to <code>\"123\"</code>.</p>\n\n\n\n\n<p>Named arguments are also available to the jq program as\n  <code>$ARGS.named</code>. When the name is not a valid identifier, this is\n  the only way to access it.</p>\n\n\n\n\n<ul>\n<li><code>--argjson name JSON-text</code>:</li>\n</ul>\n\n\n\n\n<p>This option passes a JSON-encoded value to the jq program as a\n  predefined variable. If you run jq with <code>--argjson foo 123</code>, then\n  <code>$foo</code> is available in the program and has the value <code>123</code>.</p>\n\n\n\n\n<ul>\n<li><code>--slurpfile variable-name filename</code>:</li>\n</ul>\n\n\n\n\n<p>This option reads all the JSON texts in the named file and binds\n  an array of the parsed JSON values to the given global variable.\n  If you run jq with <code>--slurpfile foo bar</code>, then <code>$foo</code> is available\n  in the program and has an array whose elements correspond to the\n  texts in the file named <code>bar</code>.</p>\n\n\n\n\n<ul>\n<li><code>--rawfile variable-name filename</code>:</li>\n</ul>\n\n\n\n\n<p>This option reads in the named file and binds its content to the given\n  global variable.  If you run jq with <code>--rawfile foo bar</code>, then <code>$foo</code> is\n  available in the program and has a string whose content is set to the\n  text in the file named <code>bar</code>.</p>\n\n\n\n\n<ul>\n<li><code>--args</code>:</li>\n</ul>\n\n\n\n\n<p>Remaining arguments are positional string arguments.  These are\n  available to the jq program as <code>$ARGS.positional[]</code>.</p>\n\n\n\n\n<ul>\n<li><code>--jsonargs</code>:</li>\n</ul>\n\n\n\n\n<p>Remaining arguments are positional JSON text arguments.  These\n  are available to the jq program as <code>$ARGS.positional[]</code>.</p>\n\n\n\n\n<ul>\n<li><code>--exit-status</code> / <code>-e</code>:</li>\n</ul>\n\n\n\n\n<p>Sets the exit status of jq to 0 if the last output value was\n  neither <code>false</code> nor <code>null</code>, 1 if the last output value was\n  either <code>false</code> or <code>null</code>, or 4 if no valid result was ever\n  produced.  Normally jq exits with 2 if there was any usage\n  problem or system error, 3 if there was a jq program compile\n  error, or 0 if the jq program ran.</p>\n\n\n\n\n<p>Another way to set the exit status is with the <code>halt_error</code>\n  builtin function.</p>\n\n\n\n\n<ul>\n<li><code>--binary</code> / <code>-b</code>:</li>\n</ul>\n\n\n\n\n<p>Windows users using WSL, MSYS2, or Cygwin, should use this option\n  when using a native jq.exe, otherwise jq will turn newlines (LFs)\n  into carriage-return-then-newline (CRLF).</p>\n\n\n\n\n<ul>\n<li><code>--version</code> / <code>-V</code>:</li>\n</ul>\n\n\n\n\n<p>Output the jq version and exit with zero.</p>\n\n\n\n\n<ul>\n<li><code>--build-configuration</code>:</li>\n</ul>\n\n\n\n\n<p>Output the build configuration of jq and exit with zero.\n  This output has no supported format or structure and may change\n  without notice in future releases.</p>\n\n\n\n\n<ul>\n<li><code>--help</code> / <code>-h</code>:</li>\n</ul>\n\n\n\n\n<p>Output the jq help and exit with zero.</p>\n\n\n\n\n<ul>\n<li><code>--</code>:</li>\n</ul>\n\n\n\n\n<p>Terminates argument processing.  Remaining arguments are not\n  interpreted as options.</p>\n\n\n\n\n<ul>\n<li><code>--run-tests [filename]</code>:</li>\n</ul>\n\n\n\n\n<p>Runs the tests in the given file or standard input.  This must\n  be the last option given and does not honor all preceding\n  options.  The input consists of comment lines, empty lines, and\n  program lines followed by one input line, as many lines of\n  output as are expected (one per output), and a terminating empty\n  line.  Compilation failure tests start with a line containing\n  only <code>%%FAIL</code>, then a line containing the program to compile,\n  then a line containing an error message to compare to the\n  actual.</p>\n\n\n\n\n<p>Be warned that this option can change backwards-incompatibly.</p>"
+    },
+    {
+      "key": "sections/1/title",
+      "sourceSha256": "60cac4263f7a19dfa5cc37be0456cbcc16948888b26b425253e6af02cddab8ef",
+      "mode": "section-title",
+      "html": "<h2>Basic filters</h2>"
+    },
+    {
+      "key": "sections/1/entries/0/title",
+      "sourceSha256": "3121d7a846204c2febee8e2e26b693289330707c40a582774530cf66dd012599",
+      "mode": "entry-title",
+      "html": "<h3>Identity: <code>.</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/0/body",
+      "sourceSha256": "38274b1239440dd6835fa6366fdc85b8f6b2cdbc36d63ef9b32078551b216122",
+      "mode": "web-body",
+      "html": "<p>The absolute simplest filter is <code>.</code> .  This filter takes its\ninput and produces the same value as output.  That is, this\nis the identity operator.</p>\n\n\n\n\n<p>Since jq by default pretty-prints all output, a trivial\nprogram consisting of nothing but <code>.</code> can be used to format\nJSON output from, say, <code>curl</code>.</p>\n\n\n\n\n<p>Although the identity filter never modifies the value of its\ninput, jq processing can sometimes make it appear as though\nit does.  For example, using the current implementation of\njq, we would see that the expression:</p>\n\n\n\n\n<pre><code>1E1234567890 | .\n</code></pre>\n\n\n\n\n<p>produces <code>1.7976931348623157e+308</code> on at least one platform.\nThis is because, in the process of parsing the number, this\nparticular version of jq has converted it to an IEEE754\ndouble-precision representation, losing precision.</p>\n\n\n\n\n<p>The way in which jq handles numbers has changed over time\nand further changes are likely within the parameters set by\nthe relevant JSON standards.  Moreover, build configuration\noptions can alter how jq processes numbers.</p>\n\n\n\n\n<p>The following remarks are therefore offered with the\nunderstanding that they are intended to be descriptive of the\ncurrent version of jq and should not be interpreted as being\nprescriptive:</p>\n\n\n\n\n<p>(1) Any arithmetic operation on a number that has not\nalready been converted to an IEEE754 double precision\nrepresentation will trigger a conversion to the IEEE754\nrepresentation.</p>\n\n\n\n\n<p>(2) jq will attempt to maintain the original decimal\nprecision of number literals (if the <code>--disable-decnum</code>\nbuild configuration option was not used), but in expressions\nsuch <code>1E1234567890</code>, precision will be lost if the exponent\nis too large.</p>\n\n\n\n\n<p>(3) Comparisons are carried out using the untruncated\nbig decimal representation of numbers if available, as\nillustrated in one of the following examples.</p>\n\n\n\n\n<p>The examples below use the builtin function <code>have_decnum</code> in\norder to demonstrate the expected effects of using / not\nusing the <code>--disable-decnum</code> build configuration option, and\nalso to allow automated tests derived from these examples to\npass regardless of whether that option is used.</p>"
+    },
+    {
+      "key": "sections/1/entries/1/title",
+      "sourceSha256": "d02bedcd681d7de440f37901e348c2a312daf974d4f93fbc05614a38e404ef66",
+      "mode": "entry-title",
+      "html": "<h3>Object Identifier-Index: <code>.foo</code>, <code>.foo.bar</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/1/body",
+      "sourceSha256": "fc5482debcf9421630e8d644b57ca767100a4505e1da8c38f73b34cfbeabf849",
+      "mode": "web-body",
+      "html": "<p>The simplest <em>useful</em> filter has the form <code>.foo</code>. When given a\nJSON object (aka dictionary or hash) as input, <code>.foo</code> produces\nthe value at the key \"foo\" if the key is present, or null otherwise.</p>\n\n\n\n\n<p>A filter of the form <code>.foo.bar</code> is equivalent to <code>.foo | .bar</code>.</p>\n\n\n\n\n<p>The <code>.foo</code> syntax only works for simple, identifier-like keys, that\nis, keys that are all made of alphanumeric characters and\nunderscore, and which do not start with a digit.</p>\n\n\n\n\n<p>If the key contains special characters or starts with a digit,\nyou need to surround it with double quotes like this:\n<code>.\"foo$\"</code>, or else <code>.[\"foo$\"]</code>.</p>\n\n\n\n\n<p>For example <code>.[\"foo::bar\"]</code> and <code>.[\"foo.bar\"]</code> work while\n<code>.foo::bar</code> does not.</p>"
+    },
+    {
+      "key": "sections/1/entries/2/title",
+      "sourceSha256": "eecb66aa812b8d2cbb58fc4bb311a36b337af1555fa72e664b58dc4044999ceb",
+      "mode": "entry-title",
+      "html": "<h3>Optional Object Identifier-Index: <code>.foo?</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/2/body",
+      "sourceSha256": "29efffb75031da66fa5a5074b3369790fb862015447ada4dc4c49a742993d05d",
+      "mode": "web-body",
+      "html": "<p>Just like <code>.foo</code>, but does not output an error when <code>.</code> is not an\nobject.</p>"
+    },
+    {
+      "key": "sections/1/entries/3/title",
+      "sourceSha256": "bbc8c0c5b60b04aa985f2373bf8f0c36c5787c57639f828529013cd43f402079",
+      "mode": "entry-title",
+      "html": "<h3>Object Index: <code>.[&lt;string&gt;]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/3/body",
+      "sourceSha256": "8fff5f39d8b1d84e43f34484b757ccc4e288c5e26b812c190a4cdeebb13395ad",
+      "mode": "web-body",
+      "html": "<p>You can also look up fields of an object using syntax like\n<code>.[\"foo\"]</code> (<code>.foo</code> above is a shorthand version of this, but\nonly for identifier-like strings).</p>"
+    },
+    {
+      "key": "sections/1/entries/4/title",
+      "sourceSha256": "2486bfae7395872092ecb81b74bfa31b2f1c58b5e66881821e6b91aa7d5aac6a",
+      "mode": "entry-title",
+      "html": "<h3>Array Index: <code>.[&lt;number&gt;]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/4/body",
+      "sourceSha256": "c3ac205c3c75bfd270daaac05d7b4b809f0819ae68881c6047eb5b71c6d328d4",
+      "mode": "web-body",
+      "html": "<p>When the index value is an integer, <code>.[&lt;number&gt;]</code> can index\narrays.  Arrays are zero-based, so <code>.[2]</code> returns the third\nelement.</p>\n\n\n\n\n<p>Negative indices are allowed, with -1 referring to the last\nelement, -2 referring to the next to last element, and so on.</p>"
+    },
+    {
+      "key": "sections/1/entries/5/title",
+      "sourceSha256": "07fce2d402a36f9ad39831aebf519107f46686b33ab2856a6f772223eb39a33b",
+      "mode": "entry-title",
+      "html": "<h3>Array/String Slice: <code>.[&lt;number&gt;:&lt;number&gt;]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/5/body",
+      "sourceSha256": "810c7e37958719662a2756e97c19ae5d9cb60bb2a8dc51a8651e04ae8a1e0c18",
+      "mode": "web-body",
+      "html": "<p>The <code>.[&lt;number&gt;:&lt;number&gt;]</code> syntax can be used to return a\nsubarray of an array or substring of a string. The array\nreturned by <code>.[10:15]</code> will be of length 5, containing the\nelements from index 10 (inclusive) to index 15 (exclusive).\nEither index may be negative (in which case it counts\nbackwards from the end of the array), or omitted (in which\ncase it refers to the start or end of the array).\nIndices are zero-based.</p>"
+    },
+    {
+      "key": "sections/1/entries/6/title",
+      "sourceSha256": "68078df0805f72954daf2a44ea91d19f24c70f766387b6566ab0022eafd30949",
+      "mode": "entry-title",
+      "html": "<h3>Array/Object Value Iterator: <code>.[]</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/6/body",
+      "sourceSha256": "bb14c94f84d8d3dc8e2fb6080ddfac322aae01f34cd94e645a701337f3b22717",
+      "mode": "web-body",
+      "html": "<p>If you use the <code>.[index]</code> syntax, but omit the index\nentirely, it will return <em>all</em> of the elements of an\narray. Running <code>.[]</code> with the input <code>[1,2,3]</code> will produce the\nnumbers as three separate results, rather than as a single\narray. A filter of the form <code>.foo[]</code> is equivalent to\n<code>.foo | .[]</code>.</p>\n\n\n\n\n<p>You can also use this on an object, and it will return all\nthe values of the object.</p>\n\n\n\n\n<p>Note that the iterator operator is a generator of values.</p>"
+    },
+    {
+      "key": "sections/1/entries/7/title",
+      "sourceSha256": "5c0d998724a9d55020c473e937c199a355e78745cd6ed66cbecf91b9d67f1566",
+      "mode": "entry-title",
+      "html": "<h3><code>.[]?</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/7/body",
+      "sourceSha256": "e52310a6207da127dfcc5e14a3d5866a21f8fb68d61c0f4e454160c51cf694db",
+      "mode": "web-body",
+      "html": "<p>Like <code>.[]</code>, but no errors will be output if . is not an array\nor object. A filter of the form <code>.foo[]?</code> is equivalent to\n<code>.foo | .[]?</code>.</p>"
+    },
+    {
+      "key": "sections/1/entries/8/title",
+      "sourceSha256": "a02b92c4788778480d0303ab13fd40803c351c5928eb4ee2ef1dad475d489991",
+      "mode": "entry-title",
+      "html": "<h3>Comma: <code>,</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/8/body",
+      "sourceSha256": "931120470c0faddf22675e4f2af9abec5c06d925cbc8173b34a827de3684c0e1",
+      "mode": "web-body",
+      "html": "<p>If two filters are separated by a comma, then the\nsame input will be fed into both and the two filters' output\nvalue streams will be concatenated in order: first, all of the\noutputs produced by the left expression, and then all of the\noutputs produced by the right. For instance, filter <code>.foo,\n.bar</code>, produces both the \"foo\" fields and \"bar\" fields as\nseparate outputs.</p>\n\n\n\n\n<p>The <code>,</code> operator is one way to construct generators.</p>"
+    },
+    {
+      "key": "sections/1/entries/9/title",
+      "sourceSha256": "6537a20612ae60226ad6e55d35a80096d3406bf6e12798aeb47787da72ed8fdd",
+      "mode": "entry-title",
+      "html": "<h3>Pipe: <code>|</code></h3>"
+    },
+    {
+      "key": "sections/1/entries/9/body",
+      "sourceSha256": "71b65cbbeb44785330837912d01cd230e99d694485e9030b4ef0c0f32bd87b32",
+      "mode": "web-body",
+      "html": "<p>The | operator combines two filters by feeding the output(s) of\nthe one on the left into the input of the one on the right. It's\nsimilar to the Unix shell's pipe, if you're used to that.</p>\n\n\n\n\n<p>If the one on the left produces multiple results, the one on\nthe right will be run for each of those results. So, the\nexpression <code>.[] | .foo</code> retrieves the \"foo\" field of each\nelement of the input array.  This is a cartesian product,\nwhich can be surprising.</p>\n\n\n\n\n<p>Note that <code>.a.b.c</code> is the same as <code>.a | .b | .c</code>.</p>\n\n\n\n\n<p>Note too that <code>.</code> is the input value at the particular stage\nin a \"pipeline\", specifically: where the <code>.</code> expression appears.\nThus <code>.a | . | .b</code> is the same as <code>.a.b</code>, as the <code>.</code> in the\nmiddle refers to whatever value <code>.a</code> produced.</p>"
+    },
+    {
+      "key": "sections/1/entries/10/title",
+      "sourceSha256": "79280f9b979532076907fcbc556cc2d779941c233c8319a763093ef39834be75",
+      "mode": "entry-title",
+      "html": "<h3>Parenthesis</h3>"
+    },
+    {
+      "key": "sections/1/entries/10/body",
+      "sourceSha256": "8bdaefc3154eeacbd63a9aa462ddd6124c82c1f7c400d4cb4120ed82a1f9938b",
+      "mode": "web-body",
+      "html": "<p>Parenthesis work as a grouping operator just as in any typical\nprogramming language.</p>"
+    },
+    {
+      "key": "sections/2/title",
+      "sourceSha256": "3cbd50a298bea10bc05254979fa6eb1756a7d9cd6e0076ae549c720ac76593c4",
+      "mode": "section-title",
+      "html": "<h2>Types and Values</h2>"
+    },
+    {
+      "key": "sections/2/body",
+      "sourceSha256": "dbae4d8d811f47d71933e237bdd453433efba8500deab3918cab5d2c84ba5716",
+      "mode": "web-body",
+      "html": "<p>jq supports the same set of datatypes as JSON - numbers,\nstrings, booleans, arrays, objects (which in JSON-speak are\nhashes with only string keys), and \"null\".</p>\n\n\n\n\n<p>Booleans, null, strings and numbers are written the same way as\nin JSON. Just like everything else in jq, these simple\nvalues take an input and produce an output - <code>42</code> is a valid jq\nexpression that takes an input, ignores it, and returns 42\ninstead.</p>\n\n\n\n\n<p>Numbers in jq are internally represented by their IEEE754 double\nprecision approximation. Any arithmetic operation with numbers,\nwhether they are literals or results of previous filters, will\nproduce a double precision floating point result.</p>\n\n\n\n\n<p>However, when parsing a literal jq will store the original literal\nstring. If no mutation is applied to this value then it will make\nto the output in its original form, even if conversion to double\nwould result in a loss.</p>"
+    },
+    {
+      "key": "sections/2/entries/0/title",
+      "sourceSha256": "07554e5ae8bfdcb872d8e58fc9ceb8b9d918143131f01c13eeaff8483084efd5",
+      "mode": "entry-title",
+      "html": "<h3>Array construction: <code>[]</code></h3>"
+    },
+    {
+      "key": "sections/2/entries/0/body",
+      "sourceSha256": "8c2c81385b8bfac4b7e09de0dc76d84bae9f31f23102f5118baa2b389a1201b3",
+      "mode": "web-body",
+      "html": "<p>As in JSON, <code>[]</code> is used to construct arrays, as in\n<code>[1,2,3]</code>. The elements of the arrays can be any jq\nexpression, including a pipeline. All of the results produced\nby all of the expressions are collected into one big array.\nYou can use it to construct an array out of a known quantity\nof values (as in <code>[.foo, .bar, .baz]</code>) or to \"collect\" all the\nresults of a filter into an array (as in <code>[.items[].name]</code>)</p>\n\n\n\n\n<p>Once you understand the \",\" operator, you can look at jq's array\nsyntax in a different light: the expression <code>[1,2,3]</code> is not using a\nbuilt-in syntax for comma-separated arrays, but is instead applying\nthe <code>[]</code> operator (collect results) to the expression 1,2,3 (which\nproduces three different results).</p>\n\n\n\n\n<p>If you have a filter <code>X</code> that produces four results,\nthen the expression <code>[X]</code> will produce a single result, an\narray of four elements.</p>"
+    },
+    {
+      "key": "sections/2/entries/1/title",
+      "sourceSha256": "41409b48dde9bb554c2ae4fcd92a5e3ab34c932bd89cd92394d679180e3b1ecc",
+      "mode": "entry-title",
+      "html": "<h3>Object Construction: <code>{}</code></h3>"
+    },
+    {
+      "key": "sections/2/entries/1/body",
+      "sourceSha256": "bbf77b48c2f684dc7342b473ca77994cea048076da005bf16c98de746b885333",
+      "mode": "web-body",
+      "html": "<p>Like JSON, <code>{}</code> is for constructing objects (aka\ndictionaries or hashes), as in: <code>{\"a\": 42, \"b\": 17}</code>.</p>\n\n\n\n\n<p>If the keys are \"identifier-like\", then the quotes can be left\noff, as in <code>{a:42, b:17}</code>.  Variable references as key\nexpressions use the value of the variable as the key.  Key\nexpressions other than constant literals, identifiers, or\nvariable references, need to be parenthesized, e.g.,\n<code>{(\"a\"+\"b\"):59}</code>.</p>\n\n\n\n\n<p>The value can be any expression (although you may need to wrap\nit in parentheses if, for example, it contains colons), which\ngets applied to the {} expression's input (remember, all\nfilters have an input and an output).</p>\n\n\n\n\n<pre><code>{foo: .bar}\n</code></pre>\n\n\n\n\n<p>will produce the JSON object <code>{\"foo\": 42}</code> if given the JSON\nobject <code>{\"bar\":42, \"baz\":43}</code> as its input. You can use this\nto select particular fields of an object: if the input is an\nobject with \"user\", \"title\", \"id\", and \"content\" fields and\nyou just want \"user\" and \"title\", you can write</p>\n\n\n\n\n<pre><code>{user: .user, title: .title}\n</code></pre>\n\n\n\n\n<p>Because that is so common, there's a shortcut syntax for it:\n<code>{user, title}</code>.</p>\n\n\n\n\n<p>If one of the expressions produces multiple results,\nmultiple dictionaries will be produced. If the input's</p>\n\n\n\n\n<pre><code>{\"user\":\"stedolan\",\"titles\":[\"JQ Primer\", \"More JQ\"]}\n</code></pre>\n\n\n\n\n<p>then the expression</p>\n\n\n\n\n<pre><code>{user, title: .titles[]}\n</code></pre>\n\n\n\n\n<p>will produce two outputs:</p>\n\n\n\n\n<pre><code>{\"user\":\"stedolan\", \"title\": \"JQ Primer\"}\n{\"user\":\"stedolan\", \"title\": \"More JQ\"}\n</code></pre>\n\n\n\n\n<p>Putting parentheses around the key means it will be evaluated as an\nexpression. With the same input as above,</p>\n\n\n\n\n<pre><code>{(.user): .titles}\n</code></pre>\n\n\n\n\n<p>produces</p>\n\n\n\n\n<pre><code>{\"stedolan\": [\"JQ Primer\", \"More JQ\"]}\n</code></pre>\n\n\n\n\n<p>Variable references as keys use the value of the variable as\nthe key.  Without a value then the variable's name becomes the\nkey and its value becomes the value,</p>\n\n\n\n\n<pre><code>\"f o o\" as $foo | \"b a r\" as $bar | {$foo, $bar:$foo}\n</code></pre>\n\n\n\n\n<p>produces</p>\n\n\n\n\n<pre><code>{\"foo\":\"f o o\",\"b a r\":\"f o o\"}\n</code></pre>"
+    },
+    {
+      "key": "sections/2/entries/2/title",
+      "sourceSha256": "be4c699677193c16cc7d890dcd7d058e78b6bcafacd51a02b04cce562f4ff34c",
+      "mode": "entry-title",
+      "html": "<h3>Recursive Descent: <code>..</code></h3>"
+    },
+    {
+      "key": "sections/2/entries/2/body",
+      "sourceSha256": "1b0270dc79318c362cb124ba0ab2f1e6cd5b67afebac641018bf42da5b405522",
+      "mode": "web-body",
+      "html": "<p>Recursively descends <code>.</code>, producing every value.  This is the\nsame as the zero-argument <code>recurse</code> builtin (see below).  This\nis intended to resemble the XPath <code>//</code> operator.  Note that\n<code>..a</code> does not work; use <code>.. | .a</code> instead.  In the example\nbelow we use <code>.. | .a?</code> to find all the values of object keys\n\"a\" in any object found \"below\" <code>.</code>.</p>\n\n\n\n\n<p>This is particularly useful in conjunction with <code>path(EXP)</code>\n(also see below) and the <code>?</code> operator.</p>"
+    },
+    {
+      "key": "sections/3/title",
+      "sourceSha256": "c0ce1d76acd3cefbedcf59be407ac7f8637b675a2d6b11c58bc5f07512cff6c6",
+      "mode": "section-title",
+      "html": "<h2>Builtin operators and functions</h2>"
+    },
+    {
+      "key": "sections/3/body",
+      "sourceSha256": "a6b5f7558a9de0dfd719f002ce959a00f3e1b9ea5db06cafb000c736ab2a06d8",
+      "mode": "web-body",
+      "html": "<p>Some jq operators (for instance, <code>+</code>) do different things\ndepending on the type of their arguments (arrays, numbers,\netc.). However, jq never does implicit type conversions. If you\ntry to add a string to an object you'll get an error message and\nno result.</p>\n\n\n\n\n<p>Please note that all numbers are converted to IEEE754 double precision\nfloating point representation. Arithmetic and logical operators are working\nwith these converted doubles. Results of all such operations are also limited\nto the double precision.</p>\n\n\n\n\n<p>The only exception to this behaviour of number is a snapshot of original number\nliteral. When a number which originally was provided as a literal is never\nmutated until the end of the program then it is printed to the output in its\noriginal literal form. This also includes cases when the original literal\nwould be truncated when converted to the IEEE754 double precision floating point\nnumber.</p>"
+    },
+    {
+      "key": "sections/3/entries/0/title",
+      "sourceSha256": "79b5e482631104bba69f4d34487562a5c495f24c41b93a4efbec6a6e4a09840f",
+      "mode": "entry-title",
+      "html": "<h3>Addition: <code>+</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/0/body",
+      "sourceSha256": "0e8ccadb3d1f6e36aa48a0c4b912e1083ba56b472a99440848a60b35a6a2e07e",
+      "mode": "web-body",
+      "html": "<p>The operator <code>+</code> takes two filters, applies them both\nto the same input, and adds the results together. What\n\"adding\" means depends on the types involved:</p>\n\n\n\n\n<ul>\n<li>\n<p><strong>Numbers</strong> are added by normal arithmetic.</p>\n</li>\n<li>\n<p><strong>Arrays</strong> are added by being concatenated into a larger array.</p>\n</li>\n<li>\n<p><strong>Strings</strong> are added by being joined into a larger string.</p>\n</li>\n<li>\n<p><strong>Objects</strong> are added by merging, that is, inserting all\n  the key-value pairs from both objects into a single\n  combined object. If both objects contain a value for the\n  same key, the object on the right of the <code>+</code> wins. (For\n  recursive merge use the <code>*</code> operator.)</p>\n</li>\n</ul>\n\n\n\n\n<p><code>null</code> can be added to any value, and returns the other\nvalue unchanged.</p>"
+    },
+    {
+      "key": "sections/3/entries/1/title",
+      "sourceSha256": "6a53736f5ea1bf26c3f40de2c400e877d08025132135134ae35ba07c06948287",
+      "mode": "entry-title",
+      "html": "<h3>Subtraction: <code>-</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/1/body",
+      "sourceSha256": "33418c4172831a8ee17e1a600498f1f43bde4c9b3a0f7c5eeaff533f107d3a86",
+      "mode": "web-body",
+      "html": "<p>As well as normal arithmetic subtraction on numbers, the <code>-</code>\noperator can be used on arrays to remove all occurrences of\nthe second array's elements from the first array.</p>"
+    },
+    {
+      "key": "sections/3/entries/2/title",
+      "sourceSha256": "85f0dbcacc5bcb6702e8f1f01fafa811092a3636463a2d4e77e0f898a91faa60",
+      "mode": "entry-title",
+      "html": "<h3>Multiplication, division, modulo: <code>*</code>, <code>/</code>, <code>%</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/2/body",
+      "sourceSha256": "dc1fd37c8c21bb4c2fe94cfb25678fb6cea7b4aa4712ff7519bd556911e47ecb",
+      "mode": "web-body",
+      "html": "<p>These infix operators behave as expected when given two numbers.\nDivision by zero raises an error. <code>x % y</code> computes x modulo y.</p>\n\n\n\n\n<p>Multiplying a string by a number produces the concatenation of\nthat string that many times. <code>\"x\" * 0</code> produces <code>\"\"</code>.</p>\n\n\n\n\n<p>Dividing a string by another splits the first using the second\nas separators.</p>\n\n\n\n\n<p>Multiplying two objects will merge them recursively: this works\nlike addition but if both objects contain a value for the\nsame key, and the values are objects, the two are merged with\nthe same strategy.</p>"
+    },
+    {
+      "key": "sections/3/entries/3/title",
+      "sourceSha256": "45dc9b24c773271035fd5b5b73e9b3a04568edc7f3f101524b3b440f9751a748",
+      "mode": "entry-title",
+      "html": "<h3><code>abs</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/3/body",
+      "sourceSha256": "6ed6bba5b32c4bca0acd519e7e361578fd866c5a55af52cba985793041a54187",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>abs</code> is defined naively as: <code>if . &lt; 0 then - . else . end</code>.</p>\n\n\n\n\n<p>For numeric input, this is the absolute value.  See the\nsection on the identity filter for the implications of this\ndefinition for numeric input.</p>\n\n\n\n\n<p>To compute the absolute value of a number as a floating point number, you may wish use <code>fabs</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/4/title",
+      "sourceSha256": "a146378dbd162237db4fe14e69c780d15aeed1d301eee2fa458000e5593fd62d",
+      "mode": "entry-title",
+      "html": "<h3><code>length</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/4/body",
+      "sourceSha256": "0b2c61daf36483574450802a5385e99b31bd92ad26db87fe9662e183a4ec75bf",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>length</code> gets the length of various\ndifferent types of value:</p>\n\n\n\n\n<ul>\n<li>\n<p>The length of a <strong>string</strong> is the number of Unicode\n  codepoints it contains (which will be the same as its\n  JSON-encoded length in bytes if it's pure ASCII).</p>\n</li>\n<li>\n<p>The length of a <strong>number</strong> is its absolute value.</p>\n</li>\n<li>\n<p>The length of an <strong>array</strong> is the number of elements.</p>\n</li>\n<li>\n<p>The length of an <strong>object</strong> is the number of key-value pairs.</p>\n</li>\n<li>\n<p>The length of <strong>null</strong> is zero.</p>\n</li>\n<li>\n<p>It is an error to use <code>length</code> on a <strong>boolean</strong>.</p>\n</li>\n</ul>"
+    },
+    {
+      "key": "sections/3/entries/5/title",
+      "sourceSha256": "34a41ba6cfb899f9f5b3cd8d9033dcfcfdce7253e1e251b3cc834cb0ccb82cdb",
+      "mode": "entry-title",
+      "html": "<h3><code>utf8bytelength</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/5/body",
+      "sourceSha256": "eefb97b736e6b89dabf56adc6e9c009d34ff4aec25783c01364f710f926f0984",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>utf8bytelength</code> outputs the number of\nbytes used to encode a string in UTF-8.</p>"
+    },
+    {
+      "key": "sections/3/entries/6/title",
+      "sourceSha256": "06ea8d5e28026720f0f0fddab6e399fe184dab90f3a0e64d5db2adb8cd8901d0",
+      "mode": "entry-title",
+      "html": "<h3><code>keys</code>, <code>keys_unsorted</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/6/body",
+      "sourceSha256": "ab89e0bfefb0395c74facfa4aad41962fb47eb3c4cfca70c2f8b41f205fc76ca",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>keys</code>, when given an object, returns\nits keys in an array.</p>\n\n\n\n\n<p>The keys are sorted \"alphabetically\", by unicode codepoint\norder. This is not an order that makes particular sense in\nany particular language, but you can count on it being the\nsame for any two objects with the same set of keys,\nregardless of locale settings.</p>\n\n\n\n\n<p>When <code>keys</code> is given an array, it returns the valid indices\nfor that array: the integers from 0 to length-1.</p>\n\n\n\n\n<p>The <code>keys_unsorted</code> function is just like <code>keys</code>, but if\nthe input is an object then the keys will not be sorted,\ninstead the keys will roughly be in insertion order.</p>"
+    },
+    {
+      "key": "sections/3/entries/7/title",
+      "sourceSha256": "91ea8fb459dbf00466774e0a3fac890588be0e66945f7704f5c33877383f6f93",
+      "mode": "entry-title",
+      "html": "<h3><code>has(key)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/7/body",
+      "sourceSha256": "efae4a24df2b16f0546c9fd458684493320813043c5cf36e9e9c40c508daf38d",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>has</code> returns whether the input object\nhas the given key, or the input array has an element at the\ngiven index.</p>\n\n\n\n\n<p><code>has($key)</code> has the same effect as checking whether <code>$key</code>\nis a member of the array returned by <code>keys</code>, although <code>has</code>\nwill be faster.</p>"
+    },
+    {
+      "key": "sections/3/entries/8/title",
+      "sourceSha256": "bb5c992b2e9aecc89853ad2f3444070eba35491d7f5ee835ccf0efb114267437",
+      "mode": "entry-title",
+      "html": "<h3><code>in</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/8/body",
+      "sourceSha256": "2c1b43c1394af016e9163b6e5075c224028ce736b395d86b93a5ce096f9e8dc9",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>in</code> returns whether or not the input key is in the\ngiven object, or the input index corresponds to an element\nin the given array. It is, essentially, an inversed version\nof <code>has</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/9/title",
+      "sourceSha256": "5d16825b047c12daffa9789f2606bbf4e02ff14bbc2fd78603e4b1377d7a77de",
+      "mode": "entry-title",
+      "html": "<h3><code>map(f)</code>, <code>map_values(f)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/9/body",
+      "sourceSha256": "a4d493a3bb6ad85adce8f7b6d9e6a9e9bd82ab56b3ee963986f1ea74a9512a84",
+      "mode": "web-body",
+      "html": "<p>For any filter <code>f</code>, <code>map(f)</code> and <code>map_values(f)</code> apply <code>f</code>\nto each of the values in the input array or object, that is,\nto the values of <code>.[]</code>.</p>\n\n\n\n\n<p>In the absence of errors, <code>map(f)</code> always outputs an array\nwhereas <code>map_values(f)</code> outputs an array if given an array,\nor an object if given an object.</p>\n\n\n\n\n<p>When the input to <code>map_values(f)</code> is an object, the output\nobject has the same keys as the input object except for\nthose keys whose values when piped to <code>f</code> produce no values\nat all.</p>\n\n\n\n\n<p>The key difference between <code>map(f)</code> and <code>map_values(f)</code> is\nthat the former simply forms an array from all the values of\n<code>($x|f)</code> for each value, <code>$x</code>, in the input array or object,\nbut <code>map_values(f)</code> only uses <code>first($x|f)</code>.</p>\n\n\n\n\n<p>Specifically, for object inputs, <code>map_values(f)</code> constructs\nthe output object by examining in turn the value of\n<code>first(.[$k]|f)</code> for each key, <code>$k</code>, of the input.  If this\nexpression produces no values, then the corresponding key\nwill be dropped; otherwise, the output object will have that\nvalue at the key, <code>$k</code>.</p>\n\n\n\n\n<p>Here are some examples to clarify the behavior of <code>map</code> and\n<code>map_values</code> when applied to arrays. These examples assume the\ninput is <code>[1]</code> in all cases:</p>\n\n\n\n\n<pre><code>map(.+1)          #=&gt;  [2]\nmap(., .)         #=&gt;  [1,1]\nmap(empty)        #=&gt;  []\n\nmap_values(.+1)   #=&gt;  [2]\nmap_values(., .)  #=&gt;  [1]\nmap_values(empty) #=&gt;  []\n</code></pre>\n\n\n\n\n<p><code>map(f)</code> is equivalent to <code>[.[] | f]</code> and\n<code>map_values(f)</code> is equivalent to <code>.[] |= f</code>.</p>\n\n\n\n\n<p>In fact, these are their implementations.</p>"
+    },
+    {
+      "key": "sections/3/entries/10/title",
+      "sourceSha256": "6884fd99f3d79e4918c9abfa2a253a8233514e6bda0cb1f96af4556dcaf43cd4",
+      "mode": "entry-title",
+      "html": "<h3><code>pick(pathexps)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/10/body",
+      "sourceSha256": "7038d83e904d7a6460e333c4be129e7ff3b1a5dfbe559bf229dcaec46ce9a8b4",
+      "mode": "web-body",
+      "html": "<p>Emit the projection of the input object or array defined by the\nspecified sequence of path expressions, such that if <code>p</code> is any\none of these specifications, then <code>(. | p)</code> will evaluate to the\nsame value as <code>(. | pick(pathexps) | p)</code>. For arrays, negative\nindices and <code>.[m:n]</code> specifications should not be used.</p>"
+    },
+    {
+      "key": "sections/3/entries/11/title",
+      "sourceSha256": "db392bf800b2d7f12d20d5d5f44e44018f9ef4344c5e05be6cfdfd749bb4043c",
+      "mode": "entry-title",
+      "html": "<h3><code>path(path_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/11/body",
+      "sourceSha256": "89ff3180abe67b38279bc2481537eef85b7257a24ea893a377c3690dd2ecd4c7",
+      "mode": "web-body",
+      "html": "<p>Outputs array representations of the given path expression\nin <code>.</code>.  The outputs are arrays of strings (object keys)\nand/or numbers (array indices).</p>\n\n\n\n\n<p>Path expressions are jq expressions like <code>.a</code>, but also <code>.[]</code>.\nThere are two types of path expressions: ones that can match\nexactly, and ones that cannot.  For example, <code>.a.b.c</code> is an\nexact match path expression, while <code>.a[].b</code> is not.</p>\n\n\n\n\n<p><code>path(exact_path_expression)</code> will produce the array\nrepresentation of the path expression even if it does not\nexist in <code>.</code>, if <code>.</code> is <code>null</code> or an array or an object.</p>\n\n\n\n\n<p><code>path(pattern)</code> will produce array representations of the\npaths matching <code>pattern</code> if the paths exist in <code>.</code>.</p>\n\n\n\n\n<p>Note that the path expressions are not different from normal\nexpressions.  The expression\n<code>path(..|select(type==\"boolean\"))</code> outputs all the paths to\nboolean values in <code>.</code>, and only those paths.</p>"
+    },
+    {
+      "key": "sections/3/entries/12/title",
+      "sourceSha256": "8549619bd6a5ece949599435c7ebe0aca9b444eccd86458d1fd8a16733af1c8c",
+      "mode": "entry-title",
+      "html": "<h3><code>del(path_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/12/body",
+      "sourceSha256": "bb30e9d06aa7be5c9456d193dab28071743ae47385f46bbe6a7e3c484d050587",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>del</code> removes a key and its corresponding\nvalue from an object.</p>"
+    },
+    {
+      "key": "sections/3/entries/13/title",
+      "sourceSha256": "618b36f8c643c50c5591806ae282492a7525aaed1321374a05ed0ca2f6396836",
+      "mode": "entry-title",
+      "html": "<h3><code>getpath(PATHS)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/13/body",
+      "sourceSha256": "20ed7c56cfcb9a04e644313e3141555c23538b76d0b5b4614a402f63364284c1",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>getpath</code> outputs the values in <code>.</code> found\nat each path in <code>PATHS</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/14/title",
+      "sourceSha256": "707c53b47bb525cde1b941375c71c1111b4796e5038cd7063908d11b6c02e7ba",
+      "mode": "entry-title",
+      "html": "<h3><code>setpath(PATHS; VALUE)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/14/body",
+      "sourceSha256": "34c38c55f1efc0db493bb9e75965717db50507c0568da46269b1ed3119c9f126",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>setpath</code> sets the <code>PATHS</code> in <code>.</code> to <code>VALUE</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/15/title",
+      "sourceSha256": "0ecb0ebf417d2d057618aea3d621e4f76af2c159c114e90656a825fe09004b63",
+      "mode": "entry-title",
+      "html": "<h3><code>delpaths(PATHS)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/15/body",
+      "sourceSha256": "b6bda5d8b38ccd093770548cb4e78f706f943168c3aed2717281f4f943f1015d",
+      "mode": "web-body",
+      "html": "<p>The builtin function <code>delpaths</code> deletes the <code>PATHS</code> in <code>.</code>.\n<code>PATHS</code> must be an array of paths, where each path is an array\nof strings and numbers.</p>"
+    },
+    {
+      "key": "sections/3/entries/16/title",
+      "sourceSha256": "1ee596fad3e038a9bfed452a5739f029f0979c87f51bf1e4044048eef15c2e9f",
+      "mode": "entry-title",
+      "html": "<h3><code>to_entries</code>, <code>from_entries</code>, <code>with_entries(f)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/16/body",
+      "sourceSha256": "eb34cd388f79fa871e9b71618234b834fa7dc520ac38c951be3358189ce01091",
+      "mode": "web-body",
+      "html": "<p>These functions convert between an object and an array of\nkey-value pairs. If <code>to_entries</code> is passed an object, then\nfor each <code>k: v</code> entry in the input, the output array\nincludes <code>{\"key\": k, \"value\": v}</code>.</p>\n\n\n\n\n<p><code>from_entries</code> does the opposite conversion, and <code>with_entries(f)</code>\nis a shorthand for <code>to_entries | map(f) | from_entries</code>, useful for\ndoing some operation to all keys and values of an object.\n<code>from_entries</code> accepts <code>\"key\"</code>, <code>\"Key\"</code>, <code>\"name\"</code>, <code>\"Name\"</code>,\n<code>\"value\"</code>, and <code>\"Value\"</code> as keys.</p>"
+    },
+    {
+      "key": "sections/3/entries/17/title",
+      "sourceSha256": "66e63068358cdc489de44b8417497ceaa339c2062b49c5ed8fd52109e8dbdda2",
+      "mode": "entry-title",
+      "html": "<h3><code>select(boolean_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/17/body",
+      "sourceSha256": "2a12323b26c98387226f7f2d233a41a8dfb2a120c8d1984faf102685dae272d3",
+      "mode": "web-body",
+      "html": "<p>The function <code>select(f)</code> produces its input unchanged if\n<code>f</code> returns true for that input, and produces no output\notherwise.</p>\n\n\n\n\n<p>It's useful for filtering lists: <code>[1,2,3] | map(select(. &gt;= 2))</code>\nwill give you <code>[2,3]</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/18/title",
+      "sourceSha256": "1afc015c430f852c499883d572bf432c248db7554a4053829a20d6adcbfca2ce",
+      "mode": "entry-title",
+      "html": "<h3><code>arrays</code>, <code>objects</code>, <code>iterables</code>, <code>booleans</code>, <code>numbers</code>, <code>normals</code>, <code>finites</code>, <code>strings</code>, <code>nulls</code>, <code>values</code>, <code>scalars</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/18/body",
+      "sourceSha256": "2967834895527c4c90af13fe4a934386316ed3ce4da4694dfbc4cbc62c5068cd",
+      "mode": "web-body",
+      "html": "<p>These built-ins select only inputs that are arrays, objects,\niterables (arrays or objects), booleans, numbers, normal\nnumbers, finite numbers, strings, null, non-null values, and\nnon-iterables, respectively.</p>"
+    },
+    {
+      "key": "sections/3/entries/19/title",
+      "sourceSha256": "52848189b1ca9061510e0d3849291e5c4ba43e169d56627f359ed972c8dee390",
+      "mode": "entry-title",
+      "html": "<h3><code>empty</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/19/body",
+      "sourceSha256": "5a9deb0ed625bbc05e13d7c41631dfdf8dc9124aa4cc4c403ce2b41112f91c22",
+      "mode": "web-body",
+      "html": "<p><code>empty</code> returns no results. None at all. Not even <code>null</code>.</p>\n\n\n\n\n<p>It's useful on occasion. You'll know if you need it :)</p>"
+    },
+    {
+      "key": "sections/3/entries/20/title",
+      "sourceSha256": "828e7dcdea66d9f035ca7d0dfa7fc56a1d4e870b2c61539282c335706bf607c2",
+      "mode": "entry-title",
+      "html": "<h3><code>error</code>, <code>error(message)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/20/body",
+      "sourceSha256": "7d899c79c8f55f6744f5c677bf4b5815afa5a1f4b8157fe9aa4b82a59bc6e2ab",
+      "mode": "web-body",
+      "html": "<p>Produces an error with the input value, or with the message\ngiven as the argument. Errors can be caught with try/catch;\nsee below.</p>"
+    },
+    {
+      "key": "sections/3/entries/21/title",
+      "sourceSha256": "da875f669da753961540ec029d43b03a06385f4a2c782e3c8142d385d77bdca9",
+      "mode": "entry-title",
+      "html": "<h3><code>halt</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/21/body",
+      "sourceSha256": "efedded669b7a0abbda690a4d33d5b01825dcbdaa16dc3664c70c08038a3eeef",
+      "mode": "web-body",
+      "html": "<p>Stops the jq program with no further outputs.  jq will exit\nwith exit status <code>0</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/22/title",
+      "sourceSha256": "e809fdaa4957d4ad0ce6ffaebae4a30effdfa2a1eadd9ffb3927fafa63b9c676",
+      "mode": "entry-title",
+      "html": "<h3><code>halt_error</code>, <code>halt_error(exit_code)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/22/body",
+      "sourceSha256": "6a9cea339ba370bf33e8e319f9811cfb2be72ec6cb422950a9fa987e48673a1c",
+      "mode": "web-body",
+      "html": "<p>Stops the jq program with no further outputs.  The input will\nbe printed on <code>stderr</code> as raw output (i.e., strings will not\nhave double quotes) with no decoration, not even a newline.</p>\n\n\n\n\n<p>The given <code>exit_code</code> (defaulting to <code>5</code>) will be jq's exit\nstatus.</p>\n\n\n\n\n<p>For example, <code>\"Error: something went wrong\\n\"|halt_error(1)</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/23/title",
+      "sourceSha256": "296798a77360540e08d1d8ddc913913c6c5a6adb97e4678f6f9c69440e70cabd",
+      "mode": "entry-title",
+      "html": "<h3><code>$__loc__</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/23/body",
+      "sourceSha256": "85f499d1bbff1551f4756be448b613e7a2c5a63ebe8d7def67c5e08950d96d07",
+      "mode": "web-body",
+      "html": "<p>Produces an object with a \"file\" key and a \"line\" key, with\nthe filename and line number where <code>$__loc__</code> occurs, as\nvalues.</p>"
+    },
+    {
+      "key": "sections/3/entries/24/title",
+      "sourceSha256": "fe66621c45c7f9467c75eb0569e9f6c26a68370fe3ccf099aeedad1e8ee169e4",
+      "mode": "entry-title",
+      "html": "<h3><code>paths</code>, <code>paths(node_filter)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/24/body",
+      "sourceSha256": "b8694accf94c89e11124bd671ea1875247cf992240f0870814481213290cfdd4",
+      "mode": "web-body",
+      "html": "<p><code>paths</code> outputs the paths to all the elements in its input\n(except it does not output the empty list, representing .\nitself).</p>\n\n\n\n\n<p><code>paths(f)</code> outputs the paths to any values for which <code>f</code> is <code>true</code>.\nThat is, <code>paths(type == \"number\")</code> outputs the paths to all numeric\nvalues.</p>"
+    },
+    {
+      "key": "sections/3/entries/25/title",
+      "sourceSha256": "6dd738c9d025b6e95ad7889717bf86723ed6b1ce646e0b849d68980a6adf870d",
+      "mode": "entry-title",
+      "html": "<h3><code>add</code>, <code>add(generator)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/25/body",
+      "sourceSha256": "f8772ca70e8d391e11cf3d69960aa5e050051929fc53e7e184d54dc105af5a6d",
+      "mode": "web-body",
+      "html": "<p>The filter <code>add</code> takes as input an array, and produces as\noutput the elements of the array added together. This might\nmean summed, concatenated or merged depending on the types\nof the elements of the input array - the rules are the same\nas those for the <code>+</code> operator (described above).</p>\n\n\n\n\n<p>If the input is an empty array, <code>add</code> returns <code>null</code>.</p>\n\n\n\n\n<p><code>add(generator)</code> operates on the given generator rather than\nthe input.</p>"
+    },
+    {
+      "key": "sections/3/entries/26/title",
+      "sourceSha256": "d058f96c54c408560f47aca22772895d794e3792bbffdca93006dc673819e22f",
+      "mode": "entry-title",
+      "html": "<h3><code>any</code>, <code>any(condition)</code>, <code>any(generator; condition)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/26/body",
+      "sourceSha256": "0fd2ace5991c434d70816121b465542fb72c48cfb6cc39dedfbd12f3b5b2ba64",
+      "mode": "web-body",
+      "html": "<p>The filter <code>any</code> takes as input an array of boolean values,\nand produces <code>true</code> as output if any of the elements of\nthe array are <code>true</code>.</p>\n\n\n\n\n<p>If the input is an empty array, <code>any</code> returns <code>false</code>.</p>\n\n\n\n\n<p>The <code>any(condition)</code> form applies the given condition to the\nelements of the input array.</p>\n\n\n\n\n<p>The <code>any(generator; condition)</code> form applies the given\ncondition to all the outputs of the given generator.</p>"
+    },
+    {
+      "key": "sections/3/entries/27/title",
+      "sourceSha256": "1b7bec02286d157fbbe6b4c93420b99c571921616956051174a8164fe5bd253a",
+      "mode": "entry-title",
+      "html": "<h3><code>all</code>, <code>all(condition)</code>, <code>all(generator; condition)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/27/body",
+      "sourceSha256": "8bce70d8cbfb0a419a25c66aef553dae20412a0a373ac36de4ee60776a52da33",
+      "mode": "web-body",
+      "html": "<p>The filter <code>all</code> takes as input an array of boolean values,\nand produces <code>true</code> as output if all of the elements of\nthe array are <code>true</code>.</p>\n\n\n\n\n<p>The <code>all(condition)</code> form applies the given condition to the\nelements of the input array.</p>\n\n\n\n\n<p>The <code>all(generator; condition)</code> form applies the given\ncondition to all the outputs of the given generator.</p>\n\n\n\n\n<p>If the input is an empty array, <code>all</code> returns <code>true</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/28/title",
+      "sourceSha256": "c330a914e116888c5e9ce4c3a903d6d23eb6f99c7f877bb372393cfec3d416b5",
+      "mode": "entry-title",
+      "html": "<h3><code>flatten</code>, <code>flatten(depth)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/28/body",
+      "sourceSha256": "b9c0daa676346e8206315dbf6675f7232c8809e861b2ace2416907dd63202182",
+      "mode": "web-body",
+      "html": "<p>The filter <code>flatten</code> takes as input an array of nested arrays,\nand produces a flat array in which all arrays inside the original\narray have been recursively replaced by their values. You can pass\nan argument to it to specify how many levels of nesting to flatten.</p>\n\n\n\n\n<p><code>flatten(2)</code> is like <code>flatten</code>, but going only up to two\nlevels deep.</p>"
+    },
+    {
+      "key": "sections/3/entries/29/title",
+      "sourceSha256": "4f3cec00a6cfdff5f1ca548c22b67b13dbf1d8299822521d043ce0026a7408b5",
+      "mode": "entry-title",
+      "html": "<h3><code>range(upto)</code>, <code>range(from; upto)</code>, <code>range(from; upto; by)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/29/body",
+      "sourceSha256": "78554cf58a8da33e2e6805c554f84fea6544db0e3363be51bcb74b683991e8cd",
+      "mode": "web-body",
+      "html": "<p>The <code>range</code> function produces a range of numbers. <code>range(4; 10)</code>\nproduces 6 numbers, from 4 (inclusive) to 10 (exclusive). The numbers\nare produced as separate outputs. Use <code>[range(4; 10)]</code> to get a range as\nan array.</p>\n\n\n\n\n<p>The one argument form generates numbers from 0 to the given\nnumber, with an increment of 1.</p>\n\n\n\n\n<p>The two argument form generates numbers from <code>from</code> to <code>upto</code>\nwith an increment of 1.</p>\n\n\n\n\n<p>The three argument form generates numbers <code>from</code> to <code>upto</code>\nwith an increment of <code>by</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/30/title",
+      "sourceSha256": "51bcfd15dc74f1e6e006f47de2ba67f31c95ebed58c0d925770161598c02935a",
+      "mode": "entry-title",
+      "html": "<h3><code>floor</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/30/body",
+      "sourceSha256": "9bae9012b7b8a403eb39fbc92cb69e7f47d74566803ef0759add074e2f9e863a",
+      "mode": "web-body",
+      "html": "<p>The <code>floor</code> function returns the floor of its numeric input.</p>"
+    },
+    {
+      "key": "sections/3/entries/31/title",
+      "sourceSha256": "6f4ea47f806a52f4046085046987b6c160f8d041ed593efc61c8401377a51f69",
+      "mode": "entry-title",
+      "html": "<h3><code>sqrt</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/31/body",
+      "sourceSha256": "ffc0785c7d2435266d3d6cd521d35246084a0177647c0cc7d479c4a424116bf8",
+      "mode": "web-body",
+      "html": "<p>The <code>sqrt</code> function returns the square root of its numeric input.</p>"
+    },
+    {
+      "key": "sections/3/entries/32/title",
+      "sourceSha256": "a1a955fd8181b702cedb8effc6ba15352b9a5508ac594b91711ccf1b76a6ca2f",
+      "mode": "entry-title",
+      "html": "<h3><code>tonumber</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/32/body",
+      "sourceSha256": "520eb42e6cf94c866c0cd2c7fd1d1a6d5131e55892347feed026cd6f27ffec74",
+      "mode": "web-body",
+      "html": "<p>The <code>tonumber</code> function parses its input as a number. It\nwill convert correctly-formatted strings to their numeric\nequivalent, leave numbers alone, and give an error on all other input.</p>"
+    },
+    {
+      "key": "sections/3/entries/33/title",
+      "sourceSha256": "a8690e44bb98fe6857a9b66250f34a8d48f21f66c891ef3da14ad7a76bea0d07",
+      "mode": "entry-title",
+      "html": "<h3><code>toboolean</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/33/body",
+      "sourceSha256": "5923216e1e2efc33292378663cbc86385e19fe10997229c64a3ab695abd44789",
+      "mode": "web-body",
+      "html": "<p>The <code>toboolean</code> function parses its input as a boolean. It\nwill convert correctly-formatted strings to their boolean\nequivalent, leave booleans alone, and give an error on all other input.</p>"
+    },
+    {
+      "key": "sections/3/entries/34/title",
+      "sourceSha256": "0703c24c49c451f9945ee5e80e72112cf101ec4a4ad8f62f462ba4df7c71a10a",
+      "mode": "entry-title",
+      "html": "<h3><code>tostring</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/34/body",
+      "sourceSha256": "382f3649143920616319d0bd5489d5f12b7e85773107db35702f932e6720af29",
+      "mode": "web-body",
+      "html": "<p>The <code>tostring</code> function prints its input as a\nstring. Strings are left unchanged, and all other values are\nJSON-encoded.</p>"
+    },
+    {
+      "key": "sections/3/entries/35/title",
+      "sourceSha256": "800fc75ca46860aee9ee2ddaa21d17b7699c81ad5339661eb8ddb74453f376c1",
+      "mode": "entry-title",
+      "html": "<h3><code>type</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/35/body",
+      "sourceSha256": "8db91a4bd52e63895d3d1dc079a73164ae9753786b9656efe335a15db6e9627d",
+      "mode": "web-body",
+      "html": "<p>The <code>type</code> function returns the type of its argument as a\nstring, which is one of null, boolean, number, string, array\nor object.</p>"
+    },
+    {
+      "key": "sections/3/entries/36/title",
+      "sourceSha256": "cd57b9ccb8084b00d23121a8b4bd23e4c6dfac62a07a3851fd5e3c29770926c9",
+      "mode": "entry-title",
+      "html": "<h3><code>infinite</code>, <code>nan</code>, <code>isinfinite</code>, <code>isnan</code>, <code>isfinite</code>, <code>isnormal</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/36/body",
+      "sourceSha256": "e5fad2eeec0a36a5f6d27cae469a40d3d0fe39d13f6445f22bc6d8477a04f481",
+      "mode": "web-body",
+      "html": "<p>Some arithmetic operations can yield infinities and \"not a\nnumber\" (NaN) values.  The <code>isinfinite</code> builtin returns <code>true</code>\nif its input is infinite.  The <code>isnan</code> builtin returns <code>true</code>\nif its input is a NaN.  The <code>infinite</code> builtin returns a\npositive infinite value.  The <code>nan</code> builtin returns a NaN.\nThe <code>isnormal</code> builtin returns true if its input is a normal\nnumber.</p>\n\n\n\n\n<p>Note that division by zero raises an error.</p>\n\n\n\n\n<p>Currently most arithmetic operations operating on infinities,\nNaNs, and sub-normals do not raise errors.</p>"
+    },
+    {
+      "key": "sections/3/entries/37/title",
+      "sourceSha256": "53af58a0fd1af6f5856da287374771950c8a6119dceb77ab312e1869a5c041c5",
+      "mode": "entry-title",
+      "html": "<h3><code>sort</code>, <code>sort_by(path_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/37/body",
+      "sourceSha256": "7e5045b253c251dcc19f02636a8ccdb630f65958e0aa234b8d26121b7b9a086d",
+      "mode": "web-body",
+      "html": "<p>The <code>sort</code> functions sorts its input, which must be an\narray. Values are sorted in the following order:</p>\n\n\n\n\n<ul>\n<li><code>null</code></li>\n<li><code>false</code></li>\n<li><code>true</code></li>\n<li>numbers</li>\n<li>strings, in alphabetical order (by unicode codepoint value)</li>\n<li>arrays, in lexical order</li>\n<li>objects</li>\n</ul>\n\n\n\n\n<p>The ordering for objects is a little complex: first they're\ncompared by comparing their sets of keys (as arrays in\nsorted order), and if their keys are equal then the values\nare compared key by key.</p>\n\n\n\n\n<p><code>sort_by</code> may be used to sort by a particular field of an\nobject, or by applying any jq filter. <code>sort_by(f)</code> compares\ntwo elements by comparing the result of <code>f</code> on each element.\nWhen <code>f</code> produces multiple values, it firstly compares the\nfirst values, and the second values if the first values are\nequal, and so on.</p>"
+    },
+    {
+      "key": "sections/3/entries/38/title",
+      "sourceSha256": "96671e996e0a1e0db8658401a59acbd9dd742ae7c5d434af0acddbe19e681240",
+      "mode": "entry-title",
+      "html": "<h3><code>group_by(path_expression)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/38/body",
+      "sourceSha256": "cab58a205bfd0a6124795a614a13d2ee0d47c46f561ffb6c2e41f88ed0de8cdb",
+      "mode": "web-body",
+      "html": "<p><code>group_by(.foo)</code> takes as input an array, groups the\nelements having the same <code>.foo</code> field into separate arrays,\nand produces all of these arrays as elements of a larger\narray, sorted by the value of the <code>.foo</code> field.</p>\n\n\n\n\n<p>Any jq expression, not just a field access, may be used in\nplace of <code>.foo</code>. The sorting order is the same as described\nin the <code>sort</code> function above.</p>"
+    },
+    {
+      "key": "sections/3/entries/39/title",
+      "sourceSha256": "f922de57ab35b155937ba48e077919bbd1cff93c808179eb187ae3461891eae4",
+      "mode": "entry-title",
+      "html": "<h3><code>min</code>, <code>max</code>, <code>min_by(path_exp)</code>, <code>max_by(path_exp)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/39/body",
+      "sourceSha256": "264d67888a572df5b04954c153634561b102907c0423896a3742f88d6cba479e",
+      "mode": "web-body",
+      "html": "<p>Find the minimum or maximum element of the input array.</p>\n\n\n\n\n<p>The <code>min_by(path_exp)</code> and <code>max_by(path_exp)</code> functions allow\nyou to specify a particular field or property to examine, e.g.\n<code>min_by(.foo)</code> finds the object with the smallest <code>foo</code> field.</p>"
+    },
+    {
+      "key": "sections/3/entries/40/title",
+      "sourceSha256": "f7ba413137da2dc1b4796c57b069ab00ab28ce092e110073d9d2d09f1688a1e3",
+      "mode": "entry-title",
+      "html": "<h3><code>unique</code>, <code>unique_by(path_exp)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/40/body",
+      "sourceSha256": "46be18932874fbd158d6df0560f3706abaafb359957bfd18379eac4b9a8aa002",
+      "mode": "web-body",
+      "html": "<p>The <code>unique</code> function takes as input an array and produces\nan array of the same elements, in sorted order, with\nduplicates removed.</p>\n\n\n\n\n<p>The <code>unique_by(path_exp)</code> function will keep only one element\nfor each value obtained by applying the argument. Think of it\nas making an array by taking one element out of every group\nproduced by <code>group</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/41/title",
+      "sourceSha256": "1749afdef67c964c766ae753242820edb068218ff364937b6c25027193f2c4fe",
+      "mode": "entry-title",
+      "html": "<h3><code>reverse</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/41/body",
+      "sourceSha256": "2193d2b39c2b69c4eb0a2fb286e65c30eeb76d9f2ff3c5f20c4557c6317a720c",
+      "mode": "web-body",
+      "html": "<p>This function reverses an array.</p>"
+    },
+    {
+      "key": "sections/3/entries/42/title",
+      "sourceSha256": "875cef565448a0400db3d41a4a4cd5e3aa84832df34b782b45ddeab9bb796042",
+      "mode": "entry-title",
+      "html": "<h3><code>contains(element)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/42/body",
+      "sourceSha256": "fb44fe5a0cdd1eabed451191c8260219c2cdb67210e01ef6faf4224d82ac14cd",
+      "mode": "web-body",
+      "html": "<p>The filter <code>contains(b)</code> will produce true if b is\ncompletely contained within the input. A string B is\ncontained in a string A if B is a substring of A. An array B\nis contained in an array A if all elements in B are\ncontained in any element in A. An object B is contained in\nobject A if all of the values in B are contained in the\nvalue in A with the same key. All other types are assumed to\nbe contained in each other if they are equal.</p>"
+    },
+    {
+      "key": "sections/3/entries/43/title",
+      "sourceSha256": "59ca959f06347907b5545bb2da60fffd75074bf1e18f76b2b43d5300a4d252f1",
+      "mode": "entry-title",
+      "html": "<h3><code>indices(s)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/43/body",
+      "sourceSha256": "6e4f77a6e199900ae882b1599ba8436491f74e42d0d6d495a32a1335afcb38a1",
+      "mode": "web-body",
+      "html": "<p>Outputs an array containing the indices in <code>.</code> where <code>s</code>\noccurs.  The input may be an array, in which case if <code>s</code> is an\narray then the indices output will be those where all elements\nin <code>.</code> match those of <code>s</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/44/title",
+      "sourceSha256": "18eb0f8e43cf210e7f477202eb6a6b707a182b5cf062d6ba2c9881ceb1c1b0e7",
+      "mode": "entry-title",
+      "html": "<h3><code>index(s)</code>, <code>rindex(s)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/44/body",
+      "sourceSha256": "1238866b0706ca4f9cf76d453ee9be1a0e39365712519e06a053ac2533209350",
+      "mode": "web-body",
+      "html": "<p>Outputs the index of the first (<code>index</code>) or last (<code>rindex</code>)\noccurrence of <code>s</code> in the input.</p>"
+    },
+    {
+      "key": "sections/3/entries/45/title",
+      "sourceSha256": "c2df1c210864be173d2aa8b8cb87d5591f88c6b90d5e488dc476d60165adb902",
+      "mode": "entry-title",
+      "html": "<h3><code>inside</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/45/body",
+      "sourceSha256": "8219197e3bc6f0fb9d7fb26351ca750300aeac461b3a20b92761ff974216fc1f",
+      "mode": "web-body",
+      "html": "<p>The filter <code>inside(b)</code> will produce true if the input is\ncompletely contained within b. It is, essentially, an\ninversed version of <code>contains</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/46/title",
+      "sourceSha256": "0dba5ce3afc29893142aeda1f83abd78679be27922bf6bd63e7bbb0319f052ab",
+      "mode": "entry-title",
+      "html": "<h3><code>startswith(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/46/body",
+      "sourceSha256": "e589d67be15b6b1cf1d06d44c0b76eb2bcaab0bbd8bd29ca9ab17d629205d169",
+      "mode": "web-body",
+      "html": "<p>Outputs <code>true</code> if . starts with the given string argument.</p>"
+    },
+    {
+      "key": "sections/3/entries/47/title",
+      "sourceSha256": "a510e66bd282d95698fa9d56ddbe3e7fc91229fba796b927b9a8f1b30e56f4c0",
+      "mode": "entry-title",
+      "html": "<h3><code>endswith(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/47/body",
+      "sourceSha256": "fb5d7d923c08a844c9de181229f1a6adf0e66e169161cfbb721b408a7deac7a7",
+      "mode": "web-body",
+      "html": "<p>Outputs <code>true</code> if . ends with the given string argument.</p>"
+    },
+    {
+      "key": "sections/3/entries/48/title",
+      "sourceSha256": "5b451242f2143d82f43f22087e01932f303d286dc58fdb8d8e225e9a69166631",
+      "mode": "entry-title",
+      "html": "<h3><code>combinations</code>, <code>combinations(n)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/48/body",
+      "sourceSha256": "4069af63f215d5270a376d4b222632ac4709adc2b9298c1602160d5a9a1e0479",
+      "mode": "web-body",
+      "html": "<p>Outputs all combinations of the elements of the arrays in the\ninput array. If given an argument <code>n</code>, it outputs all combinations\nof <code>n</code> repetitions of the input array.</p>"
+    },
+    {
+      "key": "sections/3/entries/49/title",
+      "sourceSha256": "f0fd7e7beb2dab255554b40e7235ed9c20f4c16fecd9414f14b29fcde51c7e1d",
+      "mode": "entry-title",
+      "html": "<h3><code>ltrimstr(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/49/body",
+      "sourceSha256": "5eba5cbc5dff8e3f680b3c10c839ed34f198342d8b8c482f31b4df8018c9ac4c",
+      "mode": "web-body",
+      "html": "<p>Outputs its input with the given prefix string removed, if it\nstarts with it.</p>"
+    },
+    {
+      "key": "sections/3/entries/50/title",
+      "sourceSha256": "2d3e392f50f5a0a1563547e617860360f319388ba0c7d8d46bd2a23ea83b6593",
+      "mode": "entry-title",
+      "html": "<h3><code>rtrimstr(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/50/body",
+      "sourceSha256": "a2ac630d1f666c5e29b79623b9119d84c293453395bf3c8aff576c32ee03da49",
+      "mode": "web-body",
+      "html": "<p>Outputs its input with the given suffix string removed, if it\nends with it.</p>"
+    },
+    {
+      "key": "sections/3/entries/51/title",
+      "sourceSha256": "9eb256dd825f8f67dd594eecb39dded3c4fac5f38ac2915a1bcf8715a2cfa39b",
+      "mode": "entry-title",
+      "html": "<h3><code>trimstr(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/51/body",
+      "sourceSha256": "3db7c9d5546b7f8f4ee175a7b461bfb90b107d5614e96a1d6c7f34b21f1d8d07",
+      "mode": "web-body",
+      "html": "<p>Outputs its input with the given string removed at both ends, if it\nstarts or ends with it.</p>"
+    },
+    {
+      "key": "sections/3/entries/52/title",
+      "sourceSha256": "b1df8d26ab2487a3d7b07b04ef22aa6350832ec943177feaf61ebc87d89b3102",
+      "mode": "entry-title",
+      "html": "<h3><code>trim</code>, <code>ltrim</code>, <code>rtrim</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/52/body",
+      "sourceSha256": "06d999a093f686400eb98290e4512b00050fb2b19a43063366e5c0f6a2d31bed",
+      "mode": "web-body",
+      "html": "<p><code>trim</code> trims both leading and trailing whitespace.</p>\n\n\n\n\n<p><code>ltrim</code> trims only leading (left side) whitespace.</p>\n\n\n\n\n<p><code>rtrim</code> trims only trailing (right side) whitespace.</p>\n\n\n\n\n<p>Whitespace characters are the usual <code>\" \"</code>, <code>\"\\n\"</code> <code>\"\\t\"</code>, <code>\"\\r\"</code>\nand also all characters in the Unicode character database with the\nwhitespace property. Note that what considers whitespace might\nchange in the future.</p>"
+    },
+    {
+      "key": "sections/3/entries/53/title",
+      "sourceSha256": "41ff2c895a3aed3b22f1482e31f438bb8b27dd2c24e183240e9ad5fa097886d3",
+      "mode": "entry-title",
+      "html": "<h3><code>explode</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/53/body",
+      "sourceSha256": "921f7b956193e62a228b81510469c4acf4509d3ddd6a87f1259032f335dbfe60",
+      "mode": "web-body",
+      "html": "<p>Converts an input string into an array of the string's\ncodepoint numbers.</p>"
+    },
+    {
+      "key": "sections/3/entries/54/title",
+      "sourceSha256": "ef07c6d96bffc96d7773d6ccf4ac967be692f91c901e5bb506a0dd1b65350829",
+      "mode": "entry-title",
+      "html": "<h3><code>implode</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/54/body",
+      "sourceSha256": "29407534c36c7dc7b29e9780e7c4d44058cffaa98c2823035d1d62b0140032e0",
+      "mode": "web-body",
+      "html": "<p>The inverse of explode.</p>"
+    },
+    {
+      "key": "sections/3/entries/55/title",
+      "sourceSha256": "da4325f945dd9925a373a3891f28029d45b082bac99e3e40d033da24a50f1f4a",
+      "mode": "entry-title",
+      "html": "<h3><code>split(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/55/body",
+      "sourceSha256": "a7317a654ee0338b467ef161abdbb30a54c53e4a1ac27c5d99cdd4c06b1d8c7a",
+      "mode": "web-body",
+      "html": "<p>Splits an input string on the separator argument.</p>\n\n\n\n\n<p><code>split</code> can also split on regex matches when called with\ntwo arguments (see the regular expressions section below).</p>"
+    },
+    {
+      "key": "sections/3/entries/56/title",
+      "sourceSha256": "b06fbaac639754156f29090d82567c9b8d82223d7d87fc59ccbabc02590fa3cd",
+      "mode": "entry-title",
+      "html": "<h3><code>join(str)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/56/body",
+      "sourceSha256": "f30c5e1659850d6b18beffb294e7947378b8861bf5b465eb295a642d3a1b0b55",
+      "mode": "web-body",
+      "html": "<p>Joins the array of elements given as input, using the\nargument as separator. It is the inverse of <code>split</code>: that is,\nrunning <code>split(\"foo\") | join(\"foo\")</code> over any input string\nreturns said input string.</p>\n\n\n\n\n<p>Numbers and booleans in the input are converted to strings.\nNull values are treated as empty strings. Arrays and objects\nin the input are not supported.</p>"
+    },
+    {
+      "key": "sections/3/entries/57/title",
+      "sourceSha256": "ad2e081bdb180fc8ac25f45dfca9126a94ba8d9ee432e30f3fdef4a8f79df428",
+      "mode": "entry-title",
+      "html": "<h3><code>ascii_downcase</code>, <code>ascii_upcase</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/57/body",
+      "sourceSha256": "64050f670c94f798f88f112b50aa3b32dbfa39d873a43492f6f88d24e1951922",
+      "mode": "web-body",
+      "html": "<p>Emit a copy of the input string with its alphabetic characters (a-z and A-Z)\nconverted to the specified case.</p>"
+    },
+    {
+      "key": "sections/3/entries/58/title",
+      "sourceSha256": "fb83549ad8476f477b78f80319a7ee23d64b7fb4ea81b78dd1f3a52ebc01e9dc",
+      "mode": "entry-title",
+      "html": "<h3><code>while(cond; update)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/58/body",
+      "sourceSha256": "ac77fc02b14d9ad0953e4ab7be82f556ba76a5b4c07dd0ee7a9f0c0ace7fc8e3",
+      "mode": "web-body",
+      "html": "<p>The <code>while(cond; update)</code> function allows you to repeatedly\napply an update to <code>.</code> until <code>cond</code> is false.</p>\n\n\n\n\n<p>Note that <code>while(cond; update)</code> is internally defined as a\nrecursive jq function.  Recursive calls within <code>while</code> will\nnot consume additional memory if <code>update</code> produces at most one\noutput for each input.  See advanced topics below.</p>"
+    },
+    {
+      "key": "sections/3/entries/59/title",
+      "sourceSha256": "85ea80778d00c64f41b1726f3d1c68352b9b45fbd8985d1116475621de8b68bc",
+      "mode": "entry-title",
+      "html": "<h3><code>repeat(exp)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/59/body",
+      "sourceSha256": "b4f2e377ae5f3a49dc3bb0712594a6f6ee51472dc27afb885b54666916c52fa1",
+      "mode": "web-body",
+      "html": "<p>The <code>repeat(exp)</code> function allows you to repeatedly\napply expression <code>exp</code> to <code>.</code> until an error is raised.</p>\n\n\n\n\n<p>Note that <code>repeat(exp)</code> is internally defined as a\nrecursive jq function.  Recursive calls within <code>repeat</code> will\nnot consume additional memory if <code>exp</code> produces at most one\noutput for each input.  See advanced topics below.</p>"
+    },
+    {
+      "key": "sections/3/entries/60/title",
+      "sourceSha256": "3a414969895b8669174ddad8bac7bfe9881ec41e91377ccabf0d804c676dd661",
+      "mode": "entry-title",
+      "html": "<h3><code>until(cond; next)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/60/body",
+      "sourceSha256": "1e9db7d4e60959a21cd09301f8e181ea3893ca4cb7feb6b7801fde27548fff14",
+      "mode": "web-body",
+      "html": "<p>The <code>until(cond; next)</code> function allows you to repeatedly\napply the expression <code>next</code>, initially to <code>.</code> then to its own\noutput, until <code>cond</code> is true.  For example, this can be used\nto implement a factorial function (see below).</p>\n\n\n\n\n<p>Note that <code>until(cond; next)</code> is internally defined as a\nrecursive jq function.  Recursive calls within <code>until()</code> will\nnot consume additional memory if <code>next</code> produces at most one\noutput for each input.  See advanced topics below.</p>"
+    },
+    {
+      "key": "sections/3/entries/61/title",
+      "sourceSha256": "f2ce3d8935a3a9b8c82f40bc07c10a6e4bf523aebe1953532fce9761bb46848d",
+      "mode": "entry-title",
+      "html": "<h3><code>recurse(f)</code>, <code>recurse</code>, <code>recurse(f; condition)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/61/body",
+      "sourceSha256": "5d37c83d500f29959ef457924782ed4fe8d8ff11b070d74abd55c24b9295a641",
+      "mode": "web-body",
+      "html": "<p>The <code>recurse(f)</code> function allows you to search through a\nrecursive structure, and extract interesting data from all\nlevels. Suppose your input represents a filesystem:</p>\n\n\n\n\n<pre><code>{\"name\": \"/\", \"children\": [\n  {\"name\": \"/bin\", \"children\": [\n    {\"name\": \"/bin/ls\", \"children\": []},\n    {\"name\": \"/bin/sh\", \"children\": []}]},\n  {\"name\": \"/home\", \"children\": [\n    {\"name\": \"/home/stephen\", \"children\": [\n      {\"name\": \"/home/stephen/jq\", \"children\": []}]}]}]}\n</code></pre>\n\n\n\n\n<p>Now suppose you want to extract all of the filenames\npresent. You need to retrieve <code>.name</code>, <code>.children[].name</code>,\n<code>.children[].children[].name</code>, and so on. You can do this\nwith:</p>\n\n\n\n\n<pre><code>recurse(.children[]) | .name\n</code></pre>\n\n\n\n\n<p>When called without an argument, <code>recurse</code> is equivalent to\n<code>recurse(.[]?)</code>.</p>\n\n\n\n\n<p><code>recurse(f)</code> is identical to <code>recurse(f; true)</code> and can be\nused without concerns about recursion depth.</p>\n\n\n\n\n<p><code>recurse(f; condition)</code> is a generator which begins by\nemitting . and then emits in turn .|f, .|f|f, .|f|f|f, ...  so long\nas the computed value satisfies the condition. For example,\nto generate all the integers, at least in principle, one\ncould write <code>recurse(.+1; true)</code>.</p>\n\n\n\n\n<p>The recursive calls in <code>recurse</code> will not consume additional\nmemory whenever <code>f</code> produces at most a single output for each\ninput.</p>"
+    },
+    {
+      "key": "sections/3/entries/62/title",
+      "sourceSha256": "1c055565d6c8805d05c2adf85583aeb4a6b14a46f89c6b88a2f016817a71d142",
+      "mode": "entry-title",
+      "html": "<h3><code>walk(f)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/62/body",
+      "sourceSha256": "b5c4937b10b4ca88cba9c69bf371f74d651af7b4f30e48b15929c2e314261b70",
+      "mode": "web-body",
+      "html": "<p>The <code>walk(f)</code> function applies f recursively to every\ncomponent of the input entity.  When an array is\nencountered, f is first applied to its elements and then to\nthe array itself; when an object is encountered, f is first\napplied to all the values and then to the object.  In\npractice, f will usually test the type of its input, as\nillustrated in the following examples.  The first example\nhighlights the usefulness of processing the elements of an\narray of arrays before processing the array itself.  The second\nexample shows how all the keys of all the objects within the\ninput can be considered for alteration.</p>"
+    },
+    {
+      "key": "sections/3/entries/63/title",
+      "sourceSha256": "aee854653d925f21a8cd82e60f9d96cb519e849f157d547228c3920d5d0fd65c",
+      "mode": "entry-title",
+      "html": "<h3><code>have_literal_numbers</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/63/body",
+      "sourceSha256": "bfaf29bb263a34a29b62cc761941dad9aca4bb5781c4855008e777567419766b",
+      "mode": "web-body",
+      "html": "<p>This builtin returns true if jq's build configuration\nincludes support for preservation of input number literals.</p>"
+    },
+    {
+      "key": "sections/3/entries/64/title",
+      "sourceSha256": "ad5d5b680a71809d0df734f42abd04d4f24d2c36dc6ab92c179d724ee5adea17",
+      "mode": "entry-title",
+      "html": "<h3><code>have_decnum</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/64/body",
+      "sourceSha256": "539df7f94495d987294838866fa30c2e57cce48b9bf2c508f265729209ba104f",
+      "mode": "web-body",
+      "html": "<p>This builtin returns true if jq was built with \"decnum\",\nwhich is the current literal number preserving numeric\nbackend implementation for jq.</p>"
+    },
+    {
+      "key": "sections/3/entries/65/title",
+      "sourceSha256": "0f846d9099a813d67ba77f61d64fe8d761afdd10541d3e348a8d4aad8441f986",
+      "mode": "entry-title",
+      "html": "<h3><code>$JQ_BUILD_CONFIGURATION</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/65/body",
+      "sourceSha256": "1f4edbc6a3976aa539f99a270bd59326d478697aeb3399b5578913dd12bd505e",
+      "mode": "web-body",
+      "html": "<p>This builtin binding shows the jq executable's build\nconfiguration.  Its value has no particular format, but\nit can be expected to be at least the <code>./configure</code>\ncommand-line arguments, and may be enriched in the\nfuture to include the version strings for the build\ntooling used.</p>\n\n\n\n\n<p>Note that this can be overridden in the command-line\nwith <code>--arg</code> and related options.</p>"
+    },
+    {
+      "key": "sections/3/entries/66/title",
+      "sourceSha256": "72e3aa38700ea5173564a13e32531cd3d54172c4f560f1c402e60460c18a2621",
+      "mode": "entry-title",
+      "html": "<h3><code>$ENV</code>, <code>env</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/66/body",
+      "sourceSha256": "4c7b9cd9d8fd6653c625217503094f85b6437498545dc44cc2f7e913cc9cec61",
+      "mode": "web-body",
+      "html": "<p><code>$ENV</code> is an object representing the environment variables as\nset when the jq program started.</p>\n\n\n\n\n<p><code>env</code> outputs an object representing jq's current environment.</p>\n\n\n\n\n<p>At the moment there is no builtin for setting environment\nvariables.</p>"
+    },
+    {
+      "key": "sections/3/entries/67/title",
+      "sourceSha256": "d4ea5ef30a8fa2b91211d1f883515a340300acc7e989e59227ec119574e72a1e",
+      "mode": "entry-title",
+      "html": "<h3><code>transpose</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/67/body",
+      "sourceSha256": "2c1d95ffe6e2e3f2960d3ef0272ce7aed20c531c7646b3c316f831de60bb87b8",
+      "mode": "web-body",
+      "html": "<p>Transpose a possibly jagged matrix (an array of arrays).\nRows are padded with nulls so the result is always rectangular.</p>"
+    },
+    {
+      "key": "sections/3/entries/68/title",
+      "sourceSha256": "663797cad2eb479adea7483691f2b4d79e9fcb264439a44534424d0b9f4f5933",
+      "mode": "entry-title",
+      "html": "<h3><code>bsearch(x)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/68/body",
+      "sourceSha256": "6a1ac5d0019e5693924aafaff9e11d599f52a6c1b525f1cabf2ed2cffa7707b1",
+      "mode": "web-body",
+      "html": "<p><code>bsearch(x)</code> conducts a binary search for x in the input\narray.  If the input is sorted and contains x, then\n<code>bsearch(x)</code> will return its index in the array; otherwise, if\nthe array is sorted, it will return (-1 - ix) where ix is an\ninsertion point such that the array would still be sorted\nafter the insertion of x at ix.  If the array is not sorted,\n<code>bsearch(x)</code> will return an integer that is probably of no\ninterest.</p>"
+    },
+    {
+      "key": "sections/3/entries/69/title",
+      "sourceSha256": "3cf17dc6b69a833d2c510816ba3dc2b676c54a136208cbc086e93ad17f042b52",
+      "mode": "entry-title",
+      "html": "<h3>String interpolation: <code>\\(exp)</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/69/body",
+      "sourceSha256": "962869cd798e137d3b21386b871dd1bef647355889b7440af5c8c0bd0364bf45",
+      "mode": "web-body",
+      "html": "<p>Inside a string, you can put an expression inside parens\nafter a backslash. Whatever the expression returns will be\ninterpolated into the string.</p>"
+    },
+    {
+      "key": "sections/3/entries/70/title",
+      "sourceSha256": "632ade9e2285a0d33eba6b7db3df4cdb4c124424832ca2e69e387df156ce51f1",
+      "mode": "entry-title",
+      "html": "<h3>Convert to/from JSON</h3>"
+    },
+    {
+      "key": "sections/3/entries/70/body",
+      "sourceSha256": "c6da9f9efaf6f4189057ac86b939af9fc766bba0addb70d058ae984ff6a21dca",
+      "mode": "web-body",
+      "html": "<p>The <code>tojson</code> and <code>fromjson</code> builtins dump values as JSON texts\nor parse JSON texts into values, respectively.  The <code>tojson</code>\nbuiltin differs from <code>tostring</code> in that <code>tostring</code> returns strings\nunmodified, while <code>tojson</code> encodes strings as JSON strings.</p>"
+    },
+    {
+      "key": "sections/3/entries/71/title",
+      "sourceSha256": "1726b99e1f6579be30d03a81a08f807ec8c90e88ee5a33d6f0c6144993b5e938",
+      "mode": "entry-title",
+      "html": "<h3>Format strings and escaping</h3>"
+    },
+    {
+      "key": "sections/3/entries/71/body",
+      "sourceSha256": "0b6be3fcb6e2ba6aa6649f2a05beceba68bbf6eb2d2f00a23ab972ec1962c89d",
+      "mode": "web-body",
+      "html": "<p>The <code>@foo</code> syntax is used to format and escape strings,\nwhich is useful for building URLs, documents in a language\nlike HTML or XML, and so forth. <code>@foo</code> can be used as a\nfilter on its own, the possible escapings are:</p>\n\n\n\n\n<ul>\n<li><code>@text</code>:</li>\n</ul>\n\n\n\n\n<p>Calls <code>tostring</code>, see that function for details.</p>\n\n\n\n\n<ul>\n<li><code>@json</code>:</li>\n</ul>\n\n\n\n\n<p>Serializes the input as JSON.</p>\n\n\n\n\n<ul>\n<li><code>@html</code>:</li>\n</ul>\n\n\n\n\n<p>Applies HTML/XML escaping, by mapping the characters\n  <code>&lt;&gt;&amp;'\"</code> to their entity equivalents <code>&amp;lt;</code>, <code>&amp;gt;</code>,\n  <code>&amp;amp;</code>, <code>&amp;apos;</code>, <code>&amp;quot;</code>.</p>\n\n\n\n\n<ul>\n<li><code>@uri</code>:</li>\n</ul>\n\n\n\n\n<p>Applies percent-encoding, by mapping all reserved URI\n  characters to a <code>%XX</code> sequence.</p>\n\n\n\n\n<ul>\n<li><code>@urid</code>:</li>\n</ul>\n\n\n\n\n<p>The inverse of <code>@uri</code>, applies percent-decoding, by mapping\n  all <code>%XX</code> sequences to their corresponding URI characters.</p>\n\n\n\n\n<ul>\n<li><code>@csv</code>:</li>\n</ul>\n\n\n\n\n<p>The input must be an array, and it is rendered as CSV\n  with double quotes for strings, and quotes escaped by\n  repetition.</p>\n\n\n\n\n<ul>\n<li><code>@tsv</code>:</li>\n</ul>\n\n\n\n\n<p>The input must be an array, and it is rendered as TSV\n  (tab-separated values). Each input array will be printed as\n  a single line. Fields are separated by a single\n  tab (ascii <code>0x09</code>). Input characters line-feed (ascii <code>0x0a</code>),\n  carriage-return (ascii <code>0x0d</code>), tab (ascii <code>0x09</code>) and\n  backslash (ascii <code>0x5c</code>) will be output as escape sequences\n  <code>\\n</code>, <code>\\r</code>, <code>\\t</code>, <code>\\\\</code> respectively.</p>\n\n\n\n\n<ul>\n<li><code>@sh</code>:</li>\n</ul>\n\n\n\n\n<p>The input is escaped suitable for use in a command-line\n  for a POSIX shell. If the input is an array, the output\n  will be a series of space-separated strings.</p>\n\n\n\n\n<ul>\n<li><code>@base64</code>:</li>\n</ul>\n\n\n\n\n<p>The input is converted to base64 as specified by RFC 4648.</p>\n\n\n\n\n<ul>\n<li><code>@base64d</code>:</li>\n</ul>\n\n\n\n\n<p>The inverse of <code>@base64</code>, input is decoded as specified by RFC 4648.\n  Note\\: If the decoded string is not UTF-8, the results are undefined.</p>\n\n\n\n\n<p>This syntax can be combined with string interpolation in a\nuseful way. You can follow a <code>@foo</code> token with a string\nliteral. The contents of the string literal will <em>not</em> be\nescaped. However, all interpolations made inside that string\nliteral will be escaped. For instance,</p>\n\n\n\n\n<pre><code>@uri \"https://www.google.com/search?q=\\(.search)\"\n</code></pre>\n\n\n\n\n<p>will produce the following output for the input\n<code>{\"search\":\"what is jq?\"}</code>:</p>\n\n\n\n\n<pre><code>\"https://www.google.com/search?q=what%20is%20jq%3F\"\n</code></pre>\n\n\n\n\n<p>Note that the slashes, question mark, etc. in the URL are\nnot escaped, as they were part of the string literal.</p>"
+    },
+    {
+      "key": "sections/3/entries/72/title",
+      "sourceSha256": "78963905f399ce6fe0e1b9ca063e591c314b3f5c944677a8bca89e3d3425c4b7",
+      "mode": "entry-title",
+      "html": "<h3>Dates</h3>"
+    },
+    {
+      "key": "sections/3/entries/72/body",
+      "sourceSha256": "8ad17e45bbde3441763618481a20866e885f00e219f14f5fcd41d3d71ff54c4a",
+      "mode": "web-body",
+      "html": "<p>jq provides some basic date handling functionality, with some\nhigh-level and low-level builtins.  In all cases these\nbuiltins deal exclusively with time in UTC.</p>\n\n\n\n\n<p>The <code>fromdateiso8601</code> builtin parses datetimes in the ISO 8601\nformat to a number of seconds since the Unix epoch\n(1970-01-01T00:00:00Z).  The <code>todateiso8601</code> builtin does the\ninverse.</p>\n\n\n\n\n<p>The <code>fromdate</code> builtin parses datetime strings.  Currently\n<code>fromdate</code> only supports ISO 8601 datetime strings, but in the\nfuture it will attempt to parse datetime strings in more\nformats.</p>\n\n\n\n\n<p>The <code>todate</code> builtin is an alias for <code>todateiso8601</code>.</p>\n\n\n\n\n<p>The <code>now</code> builtin outputs the current time, in seconds since\nthe Unix epoch.</p>\n\n\n\n\n<p>Low-level jq interfaces to the C-library time functions are\nalso provided: <code>strptime</code>, <code>strftime</code>, <code>strflocaltime</code>,\n<code>mktime</code>, <code>gmtime</code>, and <code>localtime</code>.  Refer to your host\noperating system's documentation for the format strings used\nby <code>strptime</code> and <code>strftime</code>.  Note: these are not necessarily\nstable interfaces in jq, particularly as to their localization\nfunctionality.</p>\n\n\n\n\n<p>The <code>gmtime</code> builtin consumes a number of seconds since the\nUnix epoch and outputs a \"broken down time\" representation of\nGreenwich Mean Time as an array of numbers representing\n(in this order): the year, the month (zero-based), the day of\nthe month (one-based), the hour of the day, the minute of the\nhour, the second of the minute, the day of the week, and the\nday of the year -- all one-based unless otherwise stated.  The\nday of the week number may be wrong on some systems for dates\nbefore March 1st 1900, or after December 31 2099.</p>\n\n\n\n\n<p>The <code>localtime</code> builtin works like the <code>gmtime</code> builtin, but\nusing the local timezone setting.</p>\n\n\n\n\n<p>The <code>mktime</code> builtin consumes \"broken down time\"\nrepresentations of time output by <code>gmtime</code> and <code>strptime</code>.</p>\n\n\n\n\n<p>The <code>strptime(fmt)</code> builtin parses input strings matching the\n<code>fmt</code> argument.  The output is in the \"broken down time\"\nrepresentation consumed by <code>mktime</code> and output by <code>gmtime</code>.</p>\n\n\n\n\n<p>The <code>strftime(fmt)</code> builtin formats a time (GMT) with the\ngiven format.  The <code>strflocaltime</code> does the same, but using\nthe local timezone setting.</p>\n\n\n\n\n<p>The format strings for <code>strptime</code> and <code>strftime</code> are described\nin typical C library documentation.  The format string for ISO\n8601 datetime is <code>\"%Y-%m-%dT%H:%M:%SZ\"</code>.</p>\n\n\n\n\n<p>jq may not support some or all of this date functionality on\nsome systems. In particular, the <code>%u</code> and <code>%j</code> specifiers for\n<code>strptime(fmt)</code> are not supported on macOS.</p>"
+    },
+    {
+      "key": "sections/3/entries/73/title",
+      "sourceSha256": "8ad1cec622e7bfd5d250f12b6cccad787d0648ef961dc5aaea67726bb2070c5d",
+      "mode": "entry-title",
+      "html": "<h3>SQL-Style Operators</h3>"
+    },
+    {
+      "key": "sections/3/entries/73/body",
+      "sourceSha256": "c0f083a4941b1df241ca33d21711c3567d869e1728418b3e9bab43964bf0f765",
+      "mode": "web-body",
+      "html": "<p>jq provides a few SQL-style operators.</p>\n\n\n\n\n<ul>\n<li><code>INDEX(stream; index_expression)</code>:</li>\n</ul>\n\n\n\n\n<p>This builtin produces an object whose keys are computed by\n  the given index expression applied to each value from the\n  given stream.</p>\n\n\n\n\n<ul>\n<li><code>JOIN($idx; stream; idx_expr; join_expr)</code>:</li>\n</ul>\n\n\n\n\n<p>This builtin joins the values from the given stream to the\n  given index.  The index's keys are computed by applying the\n  given index expression to each value from the given stream.\n  An array of the value in the stream and the corresponding\n  value from the index is fed to the given join expression to\n  produce each result.</p>\n\n\n\n\n<ul>\n<li><code>JOIN($idx; stream; idx_expr)</code>:</li>\n</ul>\n\n\n\n\n<p>Same as <code>JOIN($idx; stream; idx_expr; .)</code>.</p>\n\n\n\n\n<ul>\n<li><code>JOIN($idx; idx_expr)</code>:</li>\n</ul>\n\n\n\n\n<p>This builtin joins the input <code>.</code> to the given index, applying\n  the given index expression to <code>.</code> to compute the index key.\n  The join operation is as described above.</p>\n\n\n\n\n<ul>\n<li><code>IN(s)</code>:</li>\n</ul>\n\n\n\n\n<p>This builtin outputs <code>true</code> if <code>.</code> appears in the given\n  stream, otherwise it outputs <code>false</code>.</p>\n\n\n\n\n<ul>\n<li><code>IN(source; s)</code>:</li>\n</ul>\n\n\n\n\n<p>This builtin outputs <code>true</code> if any value in the source stream\n  appears in the second stream, otherwise it outputs <code>false</code>.</p>"
+    },
+    {
+      "key": "sections/3/entries/74/title",
+      "sourceSha256": "ed7889154c283b113837cbf5b4ddfda91e3bebc0b9e6120543ece3e09b6be8ec",
+      "mode": "entry-title",
+      "html": "<h3><code>builtins</code></h3>"
+    },
+    {
+      "key": "sections/3/entries/74/body",
+      "sourceSha256": "79ad956ef954fe7d1f7b59e706cba3a5615146b148acf57dc98039c5ca8a5ea5",
+      "mode": "web-body",
+      "html": "<p>Returns a list of all builtin functions in the format <code>name/arity</code>.\nSince functions with the same name but different arities are considered\nseparate functions, <code>all/0</code>, <code>all/1</code>, and <code>all/2</code> would all be present\nin the list.</p>"
+    },
+    {
+      "key": "sections/4/title",
+      "sourceSha256": "da5829de7ffde071089edcbe99a725575d686a35b99c7ce488b8551a75b8c772",
+      "mode": "section-title",
+      "html": "<h2>Conditionals and Comparisons</h2>"
+    },
+    {
+      "key": "sections/4/entries/0/title",
+      "sourceSha256": "9fb0f08d5539cf5600b387bd1156b0bc17a16666e34f3a5b43f9f0caa65e957f",
+      "mode": "entry-title",
+      "html": "<h3><code>==</code>, <code>!=</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/0/body",
+      "sourceSha256": "b82d629221f164166447a63b0fd33e7d48f7394a37329f2b7c4af476a958d879",
+      "mode": "web-body",
+      "html": "<p>The expression 'a == b' will produce 'true' if the results of evaluating\na and b are equal (that is, if they represent equivalent JSON values) and\n'false' otherwise. In particular, strings are never considered equal\nto numbers.  In checking for the equality of JSON objects, the ordering of keys\nis irrelevant.  If you're coming from JavaScript, please note that jq's <code>==</code> is like\nJavaScript's <code>===</code>, the \"strict equality\" operator.</p>\n\n\n\n\n<p>!= is \"not equal\", and 'a != b' returns the opposite value of 'a == b'</p>"
+    },
+    {
+      "key": "sections/4/entries/1/title",
+      "sourceSha256": "c7d062df3cd478f55fdfba3b065db38f90b3c653a5c33206d8f62205b103fd94",
+      "mode": "entry-title",
+      "html": "<h3>if-then-else-end</h3>"
+    },
+    {
+      "key": "sections/4/entries/1/body",
+      "sourceSha256": "9c0b5afd7758dbcd3072d7b925ef087cd058d3357035a31405bf8f0e4795dc6c",
+      "mode": "web-body",
+      "html": "<p><code>if A then B else C end</code> will act the same as <code>B</code> if <code>A</code>\nproduces a value other than false or null, but act the same\nas <code>C</code> otherwise.</p>\n\n\n\n\n<p><code>if A then B end</code> is the same as <code>if A then B else .  end</code>.\nThat is, the <code>else</code> branch is optional, and if absent is the\nsame as <code>.</code>. This also applies to <code>elif</code> with absent ending <code>else</code> branch.</p>\n\n\n\n\n<p>Checking for false or null is a simpler notion of\n\"truthiness\" than is found in JavaScript or Python, but it\nmeans that you'll sometimes have to be more explicit about\nthe condition you want.  You can't test whether, e.g. a\nstring is empty using <code>if .name then A else B end</code>; you'll\nneed something like <code>if .name == \"\" then A else B end</code> instead.</p>\n\n\n\n\n<p>If the condition <code>A</code> produces multiple results, then <code>B</code> is evaluated\nonce for each result that is not false or null, and <code>C</code> is evaluated\nonce for each false or null.</p>\n\n\n\n\n<p>More cases can be added to an if using <code>elif A then B</code> syntax.</p>"
+    },
+    {
+      "key": "sections/4/entries/2/title",
+      "sourceSha256": "7e2f373c72fcad4f2d7d77f0cffcc85b9c5c704afa054fc669125762bcff8aab",
+      "mode": "entry-title",
+      "html": "<h3><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/2/body",
+      "sourceSha256": "78dabda6edf120e7135d99cccbb6e872c2c9342cac23f557364517fc687cd56a",
+      "mode": "web-body",
+      "html": "<p>The comparison operators <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;</code> return whether\ntheir left argument is greater than, greater than or equal\nto, less than or equal to or less than their right argument\n(respectively).</p>\n\n\n\n\n<p>The ordering is the same as that described for <code>sort</code>, above.</p>"
+    },
+    {
+      "key": "sections/4/entries/3/title",
+      "sourceSha256": "b9a1b0207abe1e1d0c7de26fced3dd6860e37b6d8b387e4f193659bf51ee1982",
+      "mode": "entry-title",
+      "html": "<h3><code>and</code>, <code>or</code>, <code>not</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/3/body",
+      "sourceSha256": "179a39b221c9271567e4c5bae22422d417e3813fabea1ce7e5bcf2137982e019",
+      "mode": "web-body",
+      "html": "<p>jq supports the normal Boolean operators <code>and</code>, <code>or</code>, <code>not</code>.\nThey have the same standard of truth as if expressions -\n<code>false</code> and <code>null</code> are considered \"false values\", and\nanything else is a \"true value\".</p>\n\n\n\n\n<p>If an operand of one of these operators produces multiple\nresults, the operator itself will produce a result for each input.</p>\n\n\n\n\n<p><code>not</code> is in fact a builtin function rather than an operator,\nso it is called as a filter to which things can be piped\nrather than with special syntax, as in <code>.foo and .bar |\nnot</code>.</p>\n\n\n\n\n<p>These three only produce the values <code>true</code> and <code>false</code>, and\nso are only useful for genuine Boolean operations, rather\nthan the common Perl/Python/Ruby idiom of\n\"value_that_may_be_null or default\". If you want to use this\nform of \"or\", picking between two values rather than\nevaluating a condition, see the <code>//</code> operator below.</p>"
+    },
+    {
+      "key": "sections/4/entries/4/title",
+      "sourceSha256": "6ce3e770322a093e53b091a65dec9fde3d2be779cd360776ed0b67332a6e2ad8",
+      "mode": "entry-title",
+      "html": "<h3>Alternative operator: <code>//</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/4/body",
+      "sourceSha256": "a05dc18bd1af9b2ac6bf63178999b7d3d7277d99f3a113a3a5b35cc6b313d144",
+      "mode": "web-body",
+      "html": "<p>The <code>//</code> operator produces all the values of its left-hand\nside that are neither <code>false</code> nor <code>null</code>. If the\nleft-hand side produces no values other than <code>false</code> or\n<code>null</code>, then <code>//</code> produces all the values of its right-hand\nside.</p>\n\n\n\n\n<p>A filter of the form <code>a // b</code> produces all the results of\n<code>a</code> that are not <code>false</code> or <code>null</code>.  If <code>a</code> produces no\nresults, or no results other than <code>false</code> or <code>null</code>, then <code>a\n// b</code> produces the results of <code>b</code>.</p>\n\n\n\n\n<p>This is useful for providing defaults: <code>.foo // 1</code> will\nevaluate to <code>1</code> if there's no <code>.foo</code> element in the\ninput. It's similar to how <code>or</code> is sometimes used in Python\n(jq's <code>or</code> operator is reserved for strictly Boolean\noperations).</p>\n\n\n\n\n<p>Note: <code>some_generator // defaults_here</code> is not the same\nas <code>some_generator | . // defaults_here</code>.  The latter will\nproduce default values for all non-<code>false</code>, non-<code>null</code>\nvalues of the left-hand side, while the former will not.\nPrecedence rules can make this confusing.  For example, in\n<code>false, 1 // 2</code> the left-hand side of <code>//</code> is <code>1</code>, not\n<code>false, 1</code> -- <code>false, 1 // 2</code> parses the same way as <code>false,\n(1 // 2)</code>.  In <code>(false, null, 1) | . // 42</code> the left-hand\nside of <code>//</code> is <code>.</code>, which always produces just one value,\nwhile in <code>(false, null, 1) // 42</code> the left-hand side is a\ngenerator of three values, and since it produces a\nvalue other <code>false</code> and <code>null</code>, the default <code>42</code> is not\nproduced.</p>"
+    },
+    {
+      "key": "sections/4/entries/5/title",
+      "sourceSha256": "3e020118f10b7d1ea62f761f087d2cef0b8499ac50bcc92f61238fde5cf2e652",
+      "mode": "entry-title",
+      "html": "<h3>try-catch</h3>"
+    },
+    {
+      "key": "sections/4/entries/5/body",
+      "sourceSha256": "3d5aa5f89de69ddf1fec2a6fe5838c3508c03bb2c4d54927875545e03788d5bb",
+      "mode": "web-body",
+      "html": "<p>Errors can be caught by using <code>try EXP catch EXP</code>.  The first\nexpression is executed, and if it fails then the second is\nexecuted with the error message.  The output of the handler,\nif any, is output as if it had been the output of the\nexpression to try.</p>\n\n\n\n\n<p>The <code>try EXP</code> form uses <code>empty</code> as the exception handler.</p>"
+    },
+    {
+      "key": "sections/4/entries/6/title",
+      "sourceSha256": "d33f50ec48bd743afecfbf2aa9f8c4a5b0b7b9ae979b47b8e14716a3c7b69e20",
+      "mode": "entry-title",
+      "html": "<h3>Breaking out of control structures</h3>"
+    },
+    {
+      "key": "sections/4/entries/6/body",
+      "sourceSha256": "fbea308adcf2ab7dd0ac37a2f95962db58a79e763072e890cc590fd0fd0daf4b",
+      "mode": "web-body",
+      "html": "<p>A convenient use of try/catch is to break out of control\nstructures like <code>reduce</code>, <code>foreach</code>, <code>while</code>, and so on.</p>\n\n\n\n\n<p>For example:</p>\n\n\n\n\n<pre><code># Repeat an expression until it raises \"break\" as an\n# error, then stop repeating without re-raising the error.\n# But if the error caught is not \"break\" then re-raise it.\ntry repeat(exp) catch if .==\"break\" then empty else error\n</code></pre>\n\n\n\n\n<p>jq has a syntax for named lexical labels to \"break\" or \"go (back) to\":</p>\n\n\n\n\n<pre><code>label $out | ... break $out ...\n</code></pre>\n\n\n\n\n<p>The <code>break $label_name</code> expression will cause the program to\nact as though the nearest (to the left) <code>label $label_name</code>\nproduced <code>empty</code>.</p>\n\n\n\n\n<p>The relationship between the <code>break</code> and corresponding <code>label</code>\nis lexical: the label has to be \"visible\" from the break.</p>\n\n\n\n\n<p>To break out of a <code>reduce</code>, for example:</p>\n\n\n\n\n<pre><code>label $out | reduce .[] as $item (null; if .==false then break $out else ... end)\n</code></pre>\n\n\n\n\n<p>The following jq program produces a syntax error:</p>\n\n\n\n\n<pre><code>break $out\n</code></pre>\n\n\n\n\n<p>because no label <code>$out</code> is visible.</p>"
+    },
+    {
+      "key": "sections/4/entries/7/title",
+      "sourceSha256": "d23b8b6511bdf9539cb3b9150d9850094e62da79e466ff2fbe1024d824e38106",
+      "mode": "entry-title",
+      "html": "<h3>Error Suppression / Optional Operator: <code>?</code></h3>"
+    },
+    {
+      "key": "sections/4/entries/7/body",
+      "sourceSha256": "521222f45cabe3815485dce12694df0d97e9d852606b5f35e72938eccc5ab88e",
+      "mode": "web-body",
+      "html": "<p>The <code>?</code> operator, used as <code>EXP?</code>, is shorthand for <code>try EXP</code>.</p>"
+    },
+    {
+      "key": "sections/5/title",
+      "sourceSha256": "a04b7d1898d40bb897e37914195556f04d179bfd250cc9b8c8c49caae7999d0f",
+      "mode": "section-title",
+      "html": "<h2>Regular expressions</h2>"
+    },
+    {
+      "key": "sections/5/body",
+      "sourceSha256": "d1345042813f7e826c143bd4dfd9659d72954a743672e5911daa511a9c98f6b0",
+      "mode": "web-body",
+      "html": "<p>jq uses the\n<a href=\"https://github.com/kkos/oniguruma/blob/master/doc/RE\">Oniguruma regular expression library</a>,\nas do PHP, TextMate, Sublime Text, etc, so the\ndescription here will focus on jq specifics.</p>\n\n\n\n\n<p>Oniguruma supports several flavors of regular expression, so it is important to know\nthat jq uses the <a href=\"https://github.com/kkos/oniguruma/blob/master/doc/SYNTAX.md\">\"Perl NG\" (Perl with named groups)</a> flavor.</p>\n\n\n\n\n<p>The jq regex filters are defined so that they can be used using\none of these patterns:</p>\n\n\n\n\n<pre><code>STRING | FILTER(REGEX)\nSTRING | FILTER(REGEX; FLAGS)\nSTRING | FILTER([REGEX])\nSTRING | FILTER([REGEX, FLAGS])\n</code></pre>\n\n\n\n\n<p>where:</p>\n\n\n\n\n<ul>\n<li>STRING, REGEX, and FLAGS are jq strings and subject to jq string interpolation;</li>\n<li>REGEX, after string interpolation, should be a valid regular expression;</li>\n<li>FILTER is one of <code>test</code>, <code>match</code>, or <code>capture</code>, as described below.</li>\n</ul>\n\n\n\n\n<p>Since REGEX must evaluate to a JSON string, some characters that are needed\nto form a regular expression must be escaped. For example, the regular expression\n<code>\\s</code> signifying a whitespace character would be written as <code>\"\\\\s\"</code>.</p>\n\n\n\n\n<p>FLAGS is a string consisting of one of more of the supported flags:</p>\n\n\n\n\n<ul>\n<li><code>g</code> - Global search (find all matches, not just the first)</li>\n<li><code>i</code> - Case insensitive search</li>\n<li><code>m</code> - Multi line mode (<code>.</code> will match newlines)</li>\n<li><code>n</code> - Ignore empty matches</li>\n<li><code>p</code> - Both s and m modes are enabled</li>\n<li><code>s</code> - Single line mode (<code>^</code> -&gt; <code>\\A</code>, <code>$</code> -&gt; <code>\\Z</code>)</li>\n<li><code>l</code> - Find longest possible matches</li>\n<li><code>x</code> - Extended regex format (ignore whitespace and comments)</li>\n</ul>\n\n\n\n\n<p>To match a whitespace with the <code>x</code> flag, use <code>\\s</code>, e.g.</p>\n\n\n\n\n<pre><code>jq -n '\"a b\" | test(\"a\\\\sb\"; \"x\")'\n</code></pre>\n\n\n\n\n<p>Note that certain flags may also be specified within REGEX, e.g.</p>\n\n\n\n\n<pre><code>jq -n '(\"test\", \"TEst\", \"teST\", \"TEST\") | test(\"(?i)te(?-i)st\")'\n</code></pre>\n\n\n\n\n<p>evaluates to: <code>true</code>, <code>true</code>, <code>false</code>, <code>false</code>.</p>"
+    },
+    {
+      "key": "sections/5/entries/0/title",
+      "sourceSha256": "9e0a4c7cc965552876aef0fc5d1be04ce18890bdca41b2c75484ea8633d89f02",
+      "mode": "entry-title",
+      "html": "<h3><code>test(val)</code>, <code>test(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/0/body",
+      "sourceSha256": "9f675d3e90a962d8c80bf681ddc152cfe7f8e734d8b071fd074e91018bf915f1",
+      "mode": "web-body",
+      "html": "<p>Like <code>match</code>, but does not return match objects, only <code>true</code> or <code>false</code>\nfor whether or not the regex matches the input.</p>"
+    },
+    {
+      "key": "sections/5/entries/1/title",
+      "sourceSha256": "a334137866b0601ee1dd5f261955ff9b8b3bf13f0787e68452a29bcb77232fdd",
+      "mode": "entry-title",
+      "html": "<h3><code>match(val)</code>, <code>match(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/1/body",
+      "sourceSha256": "6d09923a736df4fa4a396fcd82e153c50c66c1f3134610092f7076f173a9fe4d",
+      "mode": "web-body",
+      "html": "<p><strong>match</strong> outputs an object for each match it finds.  Matches have\nthe following fields:</p>\n\n\n\n\n<ul>\n<li><code>offset</code> - offset in UTF-8 codepoints from the beginning of the input</li>\n<li><code>length</code> - length in UTF-8 codepoints of the match</li>\n<li><code>string</code> - the string that it matched</li>\n<li><code>captures</code> - an array of objects representing capturing groups.</li>\n</ul>\n\n\n\n\n<p>Capturing group objects have the following fields:</p>\n\n\n\n\n<ul>\n<li><code>offset</code> - offset in UTF-8 codepoints from the beginning of the input</li>\n<li><code>length</code> - length in UTF-8 codepoints of this capturing group</li>\n<li><code>string</code> - the string that was captured</li>\n<li><code>name</code> - the name of the capturing group (or <code>null</code> if it was unnamed)</li>\n</ul>\n\n\n\n\n<p>Capturing groups that did not match anything return an offset of -1</p>"
+    },
+    {
+      "key": "sections/5/entries/2/title",
+      "sourceSha256": "ad5affecf97a3779b4660cdd7a4d8125d6b748026c7bdf3e91e5f0f445a927d1",
+      "mode": "entry-title",
+      "html": "<h3><code>capture(val)</code>, <code>capture(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/2/body",
+      "sourceSha256": "3da56d4e26dafd9d85fdd3d8e4533a47feba06bec63dc4f0e9a4ce5980dc76e3",
+      "mode": "web-body",
+      "html": "<p>Collects the named captures in a JSON object, with the name\nof each capture as the key, and the matched string as the\ncorresponding value.</p>"
+    },
+    {
+      "key": "sections/5/entries/3/title",
+      "sourceSha256": "93eb9da913cfe81209814560c2a616a0645ff4773d874eee8b91b07c52720d88",
+      "mode": "entry-title",
+      "html": "<h3><code>scan(regex)</code>, <code>scan(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/3/body",
+      "sourceSha256": "d50a1faffef5e8b92f5a06875d4d88c1dd1d4562c0051911f6cc473b0e15a9e6",
+      "mode": "web-body",
+      "html": "<p>Emit a stream of the non-overlapping substrings of the input\nthat match the regex in accordance with the flags, if any\nhave been specified.  If there is no match, the stream is empty.\nTo capture all the matches for each input string, use the idiom\n<code>[ expr ]</code>, e.g. <code>[ scan(regex) ]</code>.  If the regex contains capturing\ngroups, the filter emits a stream of arrays, each of which contains\nthe captured strings.</p>"
+    },
+    {
+      "key": "sections/5/entries/4/title",
+      "sourceSha256": "217e59ae1898dfa42b7debe66cc635af2b9020268e0854c0b7b247d565357633",
+      "mode": "entry-title",
+      "html": "<h3><code>split(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/4/body",
+      "sourceSha256": "6a6b4471f6eebbe9a8c2ea42450ac5e7c4ce44e4ccf98ef4a9bbd3f50d565cec",
+      "mode": "web-body",
+      "html": "<p>Splits an input string on each regex match.</p>\n\n\n\n\n<p>For backwards compatibility, when called with a single argument,\n<code>split</code> splits on a string, not a regex.</p>"
+    },
+    {
+      "key": "sections/5/entries/5/title",
+      "sourceSha256": "8981b38d334ace16e88d8524275ec7a75e28308589c94c6168b82d7a435ef4fd",
+      "mode": "entry-title",
+      "html": "<h3><code>splits(regex)</code>, <code>splits(regex; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/5/body",
+      "sourceSha256": "00fe4c9728eaad4084699379728f27a7445749bc9b953a732adaa04b1a4a1c02",
+      "mode": "web-body",
+      "html": "<p>These provide the same results as their <code>split</code> counterparts,\nbut as a stream instead of an array.</p>"
+    },
+    {
+      "key": "sections/5/entries/6/title",
+      "sourceSha256": "cb24d0d5c4917a4c7912e33ee22e5b09a9eae51e0584f8c29997da935accaf76",
+      "mode": "entry-title",
+      "html": "<h3><code>sub(regex; tostring)</code>, <code>sub(regex; tostring; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/6/body",
+      "sourceSha256": "27af1223053d58169e99f855167ccf2720d492d3a0d8177de862faac1b41d05e",
+      "mode": "web-body",
+      "html": "<p>Emit the string obtained by replacing the first match of\nregex in the input string with <code>tostring</code>, after\ninterpolation.  <code>tostring</code> should be a jq string or a stream\nof such strings, each of which may contain references to\nnamed captures. The named captures are, in effect, presented\nas a JSON object (as constructed by <code>capture</code>) to\n<code>tostring</code>, so a reference to a captured variable named \"x\"\nwould take the form: <code>\"\\(.x)\"</code>.</p>"
+    },
+    {
+      "key": "sections/5/entries/7/title",
+      "sourceSha256": "d20852c4f57592ac866b0d57f8b7a9aca6af0287a5e695138aca3ae386b10554",
+      "mode": "entry-title",
+      "html": "<h3><code>gsub(regex; tostring)</code>, <code>gsub(regex; tostring; flags)</code></h3>"
+    },
+    {
+      "key": "sections/5/entries/7/body",
+      "sourceSha256": "5cb1df9b9fefc060e191f98b6ec1be59f7d4bfaf73d381b301ceddeaf2366957",
+      "mode": "web-body",
+      "html": "<p><code>gsub</code> is like <code>sub</code> but all the non-overlapping occurrences of the regex are\nreplaced by <code>tostring</code>, after interpolation. If the second argument is a stream\nof jq strings, then <code>gsub</code> will produce a corresponding stream of JSON strings.</p>"
+    },
+    {
+      "key": "sections/6/title",
+      "sourceSha256": "c998e76868f8afb02f6d641be4cc67aa4a508df32ba9d1c5011185271e57fe39",
+      "mode": "section-title",
+      "html": "<h2>Advanced features</h2>"
+    },
+    {
+      "key": "sections/6/body",
+      "sourceSha256": "eb9de060d63c22a0936dee7593c1146fea7ae7b02807bcb38dfcda186bfbdcfc",
+      "mode": "web-body",
+      "html": "<p>Variables are an absolute necessity in most programming languages, but\nthey're relegated to an \"advanced feature\" in jq.</p>\n\n\n\n\n<p>In most languages, variables are the only means of passing around\ndata. If you calculate a value, and you want to use it more than once,\nyou'll need to store it in a variable. To pass a value to another part\nof the program, you'll need that part of the program to define a\nvariable (as a function parameter, object member, or whatever) in\nwhich to place the data.</p>\n\n\n\n\n<p>It is also possible to define functions in jq, although this is\nis a feature whose biggest use is defining jq's standard library\n(many jq functions such as <code>map</code> and <code>select</code> are in fact written\nin jq).</p>\n\n\n\n\n<p>jq has reduction operators, which are very powerful but a bit\ntricky.  Again, these are mostly used internally, to define some\nuseful bits of jq's standard library.</p>\n\n\n\n\n<p>It may not be obvious at first, but jq is all about generators\n(yes, as often found in other languages).  Some utilities are\nprovided to help deal with generators.</p>\n\n\n\n\n<p>Some minimal I/O support (besides reading JSON from standard\ninput, and writing JSON to standard output) is available.</p>\n\n\n\n\n<p>Finally, there is a module/library system.</p>"
+    },
+    {
+      "key": "sections/6/entries/0/title",
+      "sourceSha256": "2ab8b9e41ab24e16f4ada6cf0589183994cdb16acff33fa1605dcc699b1235d5",
+      "mode": "entry-title",
+      "html": "<h3>Variable / Symbolic Binding Operator: <code>... as $identifier | ...</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/0/body",
+      "sourceSha256": "ff0b28ab7417f326194151c5691c71932856b3d33a715a3a5aec43372b5b2755",
+      "mode": "web-body",
+      "html": "<p>In jq, all filters have an input and an output, so manual\nplumbing is not necessary to pass a value from one part of a program\nto the next. Many expressions, for instance <code>a + b</code>, pass their input\nto two distinct subexpressions (here <code>a</code> and <code>b</code> are both passed the\nsame input), so variables aren't usually necessary in order to use a\nvalue twice.</p>\n\n\n\n\n<p>For instance, calculating the average value of an array of numbers\nrequires a few variables in most languages - at least one to hold the\narray, perhaps one for each element or for a loop counter. In jq, it's\nsimply <code>add / length</code> - the <code>add</code> expression is given the array and\nproduces its sum, and the <code>length</code> expression is given the array and\nproduces its length.</p>\n\n\n\n\n<p>So, there's generally a cleaner way to solve most problems in jq than\ndefining variables. Still, sometimes they do make things easier, so jq\nlets you define variables using <code>expression as $variable</code>. All\nvariable names start with <code>$</code>. Here's a slightly uglier version of the\narray-averaging example:</p>\n\n\n\n\n<pre><code>length as $array_length | add / $array_length\n</code></pre>\n\n\n\n\n<p>We'll need a more complicated problem to find a situation where using\nvariables actually makes our lives easier.</p>\n\n\n\n\n<p>Suppose we have an array of blog posts, with \"author\" and \"title\"\nfields, and another object which is used to map author usernames to\nreal names. Our input looks like:</p>\n\n\n\n\n<pre><code>{\"posts\": [{\"title\": \"First post\", \"author\": \"anon\"},\n           {\"title\": \"A well-written article\", \"author\": \"person1\"}],\n \"realnames\": {\"anon\": \"Anonymous Coward\",\n               \"person1\": \"Person McPherson\"}}\n</code></pre>\n\n\n\n\n<p>We want to produce the posts with the author field containing a real\nname, as in:</p>\n\n\n\n\n<pre><code>{\"title\": \"First post\", \"author\": \"Anonymous Coward\"}\n{\"title\": \"A well-written article\", \"author\": \"Person McPherson\"}\n</code></pre>\n\n\n\n\n<p>We use a variable, <code>$names</code>, to store the realnames object, so that we\ncan refer to it later when looking up author usernames:</p>\n\n\n\n\n<pre><code>.realnames as $names | .posts[] | {title, author: $names[.author]}\n</code></pre>\n\n\n\n\n<p>The expression <code>exp as $x | ...</code> means: for each value of expression\n<code>exp</code>, run the rest of the pipeline with the entire original input, and\nwith <code>$x</code> set to that value.  Thus <code>as</code> functions as something of a\nforeach loop.</p>\n\n\n\n\n<p>Just as <code>{foo}</code> is a handy way of writing <code>{foo: .foo}</code>, so\n<code>{$foo}</code> is a handy way of writing <code>{foo: $foo}</code>.</p>\n\n\n\n\n<p>Multiple variables may be declared using a single <code>as</code> expression by\nproviding a pattern that matches the structure of the input\n(this is known as \"destructuring\"):</p>\n\n\n\n\n<pre><code>. as {realnames: $names, posts: [$first, $second]} | ...\n</code></pre>\n\n\n\n\n<p>The variable declarations in array patterns (e.g., <code>. as\n[$first, $second]</code>) bind to the elements of the array in from\nthe element at index zero on up, in order.  When there is no\nvalue at the index for an array pattern element, <code>null</code> is\nbound to that variable.</p>\n\n\n\n\n<p>Variables are scoped over the rest of the expression that defines\nthem, so</p>\n\n\n\n\n<pre><code>.realnames as $names | (.posts[] | {title, author: $names[.author]})\n</code></pre>\n\n\n\n\n<p>will work, but</p>\n\n\n\n\n<pre><code>(.realnames as $names | .posts[]) | {title, author: $names[.author]}\n</code></pre>\n\n\n\n\n<p>won't.</p>\n\n\n\n\n<p>For programming language theorists, it's more accurate to\nsay that jq variables are lexically-scoped bindings.  In\nparticular there's no way to change the value of a binding;\none can only setup a new binding with the same name, but which\nwill not be visible where the old one was.</p>"
+    },
+    {
+      "key": "sections/6/entries/1/title",
+      "sourceSha256": "38011510a552c987f3239d2725e91cb483798857858e59d87a1e656ca7c2b305",
+      "mode": "entry-title",
+      "html": "<h3>Destructuring Alternative Operator: <code>?//</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/1/body",
+      "sourceSha256": "d7df59979f99b4ff955c7e643e7c7cdcf5f96173909262cb5578ab36b492b1aa",
+      "mode": "web-body",
+      "html": "<p>The destructuring alternative operator provides a concise mechanism\nfor destructuring an input that can take one of several forms.</p>\n\n\n\n\n<p>Suppose we have an API that returns a list of resources and events\nassociated with them, and we want to get the user_id and timestamp of\nthe first event for each resource. The API (having been clumsily\nconverted from XML) will only wrap the events in an array if the resource\nhas multiple events:</p>\n\n\n\n\n<pre><code>{\"resources\": [{\"id\": 1, \"kind\": \"widget\", \"events\": {\"action\": \"create\", \"user_id\": 1, \"ts\": 13}},\n               {\"id\": 2, \"kind\": \"widget\", \"events\": [{\"action\": \"create\", \"user_id\": 1, \"ts\": 14}, {\"action\": \"destroy\", \"user_id\": 1, \"ts\": 15}]}]}\n</code></pre>\n\n\n\n\n<p>We can use the destructuring alternative operator to handle this structural change simply:</p>\n\n\n\n\n<pre><code>.resources[] as {$id, $kind, events: {$user_id, $ts}} ?// {$id, $kind, events: [{$user_id, $ts}]} | {$user_id, $kind, $id, $ts}\n</code></pre>\n\n\n\n\n<p>Or, if we aren't sure if the input is an array of values or an object:</p>\n\n\n\n\n<pre><code>.[] as [$id, $kind, $user_id, $ts] ?// {$id, $kind, $user_id, $ts} | ...\n</code></pre>\n\n\n\n\n<p>Each alternative need not define all of the same variables, but all named\nvariables will be available to the subsequent expression. Variables not\nmatched in the alternative that succeeded will be <code>null</code>:</p>\n\n\n\n\n<pre><code>.resources[] as {$id, $kind, events: {$user_id, $ts}} ?// {$id, $kind, events: [{$first_user_id, $first_ts}]} | {$user_id, $first_user_id, $kind, $id, $ts, $first_ts}\n</code></pre>\n\n\n\n\n<p>Additionally, if the subsequent expression returns an error, the\nalternative operator will attempt to try the next binding. Errors\nthat occur during the final alternative are passed through.</p>\n\n\n\n\n<pre><code>[[3]] | .[] as [$a] ?// [$b] | if $a != null then error(\"err: \\($a)\") else {$a,$b} end\n</code></pre>"
+    },
+    {
+      "key": "sections/6/entries/2/title",
+      "sourceSha256": "d78e9d5471aa1e778245f97586f865ea49e52e92faa897ae063d87dd2f68fe2a",
+      "mode": "entry-title",
+      "html": "<h3>Defining Functions</h3>"
+    },
+    {
+      "key": "sections/6/entries/2/body",
+      "sourceSha256": "c17c384d8759e98bda0e9808ae0cb04283d6e19426df79d06908c083a50facfb",
+      "mode": "web-body",
+      "html": "<p>You can give a filter a name using \"def\" syntax:</p>\n\n\n\n\n<pre><code>def increment: . + 1;\n</code></pre>\n\n\n\n\n<p>From then on, <code>increment</code> is usable as a filter just like a\nbuiltin function (in fact, this is how many of the builtins\nare defined). A function may take arguments:</p>\n\n\n\n\n<pre><code>def map(f): [.[] | f];\n</code></pre>\n\n\n\n\n<p>Arguments are passed as <em>filters</em> (functions with no\narguments), <em>not</em> as values. The same argument may be\nreferenced multiple times with different inputs (here <code>f</code> is\nrun for each element of the input array).  Arguments to a\nfunction work more like callbacks than like value arguments.\nThis is important to understand.  Consider:</p>\n\n\n\n\n<pre><code>def foo(f): f|f;\n5|foo(.*2)\n</code></pre>\n\n\n\n\n<p>The result will be 20 because <code>f</code> is <code>.*2</code>, and during the\nfirst invocation of <code>f</code> <code>.</code> will be 5, and the second time it\nwill be 10 (5 * 2), so the result will be 20.  Function\narguments are filters, and filters expect an input when\ninvoked.</p>\n\n\n\n\n<p>If you want the value-argument behaviour for defining simple\nfunctions, you can just use a variable:</p>\n\n\n\n\n<pre><code>def addvalue(f): f as $f | map(. + $f);\n</code></pre>\n\n\n\n\n<p>Or use the short-hand:</p>\n\n\n\n\n<pre><code>def addvalue($f): ...;\n</code></pre>\n\n\n\n\n<p>With either definition, <code>addvalue(.foo)</code> will add the current\ninput's <code>.foo</code> field to each element of the array.  Do note\nthat calling <code>addvalue(.[])</code> will cause the <code>map(. + $f)</code> part\nto be evaluated once per value in the value of <code>.</code> at the call\nsite.</p>\n\n\n\n\n<p>Multiple definitions using the same function name are allowed.\nEach re-definition replaces the previous one for the same\nnumber of function arguments, but only for references from\nfunctions (or main program) subsequent to the re-definition.\nSee also the section below on scoping.</p>"
+    },
+    {
+      "key": "sections/6/entries/3/title",
+      "sourceSha256": "02ac7177a2d825a5e85e08449693cda58b8e66596eaf435f92c599a98241bbe5",
+      "mode": "entry-title",
+      "html": "<h3>Scoping</h3>"
+    },
+    {
+      "key": "sections/6/entries/3/body",
+      "sourceSha256": "da67b0fbb60d3dfdd7bc76cf2f814b1ee6dd9f14f7ce7c410d017ae70ec3a004",
+      "mode": "web-body",
+      "html": "<p>There are two types of symbols in jq: value bindings (a.k.a.,\n\"variables\"), and functions.  Both are scoped lexically,\nwith expressions being able to refer only to symbols that\nhave been defined \"to the left\" of them.  The only exception\nto this rule is that functions can refer to themselves so as\nto be able to create recursive functions.</p>\n\n\n\n\n<p>For example, in the following expression there is a binding\nwhich is visible \"to the right\" of it, <code>... | .*3 as\n$times_three | [. + $times_three] | ...</code>, but not \"to the\nleft\".  Consider this expression now, <code>... | (.*3 as\n$times_three | [. + $times_three]) | ...</code>: here the binding\n<code>$times_three</code> is <em>not</em> visible past the closing parenthesis.</p>"
+    },
+    {
+      "key": "sections/6/entries/4/title",
+      "sourceSha256": "e0bcaeb065b633bec029d9822e1194f24a6987e0545882dacc6cb13700ab0f95",
+      "mode": "entry-title",
+      "html": "<h3><code>isempty(exp)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/4/body",
+      "sourceSha256": "82e90498c5db0a6cf8d721a45bb63f1c1cb5332d65ced579c706a5ba9f43e6a2",
+      "mode": "web-body",
+      "html": "<p>Returns true if <code>exp</code> produces no outputs, false otherwise.</p>"
+    },
+    {
+      "key": "sections/6/entries/5/title",
+      "sourceSha256": "b196193797bb4da519a514c83e4fe8377f0c102d222332f77db4f2a9e9a14def",
+      "mode": "entry-title",
+      "html": "<h3><code>limit(n; expr)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/5/body",
+      "sourceSha256": "0ce3564c66de3632047e0b929ce5d2aae6c72d561e503ab4030cc92a4a788a00",
+      "mode": "web-body",
+      "html": "<p>The <code>limit</code> function extracts up to <code>n</code> outputs from <code>expr</code>.</p>"
+    },
+    {
+      "key": "sections/6/entries/6/title",
+      "sourceSha256": "ecd0bb34eb81558a23a16ce1b8fefd4dcf49dd3ffbdf849ed238319d4d032138",
+      "mode": "entry-title",
+      "html": "<h3><code>skip(n; expr)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/6/body",
+      "sourceSha256": "6f5ac3df322d4e9bb39be823b9197d9fa007a9e351e2b15b713cd276e3a95cbe",
+      "mode": "web-body",
+      "html": "<p>The <code>skip</code> function skips the first <code>n</code> outputs from <code>expr</code>.</p>"
+    },
+    {
+      "key": "sections/6/entries/7/title",
+      "sourceSha256": "3e31485b3fe07cc94ff9579e5c01613abaa2cdf16a0f65a6d07ed2c8b893c026",
+      "mode": "entry-title",
+      "html": "<h3><code>first(expr)</code>, <code>last(expr)</code>, <code>nth(n; expr)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/7/body",
+      "sourceSha256": "b1504b6b169fc58c1b8a32bfd1b99b9dae9d4b25a394853a8a6e90a5376a358c",
+      "mode": "web-body",
+      "html": "<p>The <code>first(expr)</code> and <code>last(expr)</code> functions extract the first\nand last values from <code>expr</code>, respectively.</p>\n\n\n\n\n<p>The <code>nth(n; expr)</code> function extracts the nth value output by <code>expr</code>.\nNote that <code>nth(n; expr)</code> doesn't support negative values of <code>n</code>.</p>"
+    },
+    {
+      "key": "sections/6/entries/8/title",
+      "sourceSha256": "ee84db677d9d1196fd08486c70f045b634b3c8823fbef936bacd51f8c90b03a3",
+      "mode": "entry-title",
+      "html": "<h3><code>first</code>, <code>last</code>, <code>nth(n)</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/8/body",
+      "sourceSha256": "8ee0e43f51bea47a22054b861865c684a52e1aaa8000a6a20269949a2bc6ec13",
+      "mode": "web-body",
+      "html": "<p>The <code>first</code> and <code>last</code> functions extract the first\nand last values from any array at <code>.</code>.</p>\n\n\n\n\n<p>The <code>nth(n)</code> function extracts the nth value of any array at <code>.</code>.</p>"
+    },
+    {
+      "key": "sections/6/entries/9/title",
+      "sourceSha256": "2f69e4728744ba651e4c60b2f905371e39b49ae8c6bfaef40284f68d6f6f25de",
+      "mode": "entry-title",
+      "html": "<h3><code>reduce</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/9/body",
+      "sourceSha256": "b46f50223ab32fed083461af8abb30b9757c13042e7b0eca7f2dc6b93cd62c9f",
+      "mode": "web-body",
+      "html": "<p>The <code>reduce</code> syntax allows you to combine all of the results of\nan expression by accumulating them into a single answer.\nThe form is <code>reduce EXP as $var (INIT; UPDATE)</code>.\nAs an example, we'll pass <code>[1,2,3]</code> to this expression:</p>\n\n\n\n\n<pre><code>reduce .[] as $item (0; . + $item)\n</code></pre>\n\n\n\n\n<p>For each result that <code>.[]</code> produces, <code>. + $item</code> is run to\naccumulate a running total, starting from 0 as the input value.\nIn this example, <code>.[]</code> produces the results <code>1</code>, <code>2</code>, and <code>3</code>,\nso the effect is similar to running something like this:</p>\n\n\n\n\n<pre><code>0 | 1 as $item | . + $item |\n    2 as $item | . + $item |\n    3 as $item | . + $item\n</code></pre>"
+    },
+    {
+      "key": "sections/6/entries/10/title",
+      "sourceSha256": "c5d90d63b46f5a88fa3dce75a73c52a489f4d06c5203fc2cba38f4c9f41d3c14",
+      "mode": "entry-title",
+      "html": "<h3><code>foreach</code></h3>"
+    },
+    {
+      "key": "sections/6/entries/10/body",
+      "sourceSha256": "2d0d4fec661ad3c49722d47949577ff741f68920abbcd83c9ce028a8606b75fd",
+      "mode": "web-body",
+      "html": "<p>The <code>foreach</code> syntax is similar to <code>reduce</code>, but intended to\nallow the construction of <code>limit</code> and reducers that produce\nintermediate results.</p>\n\n\n\n\n<p>The form is <code>foreach EXP as $var (INIT; UPDATE; EXTRACT)</code>.\nAs an example, we'll pass <code>[1,2,3]</code> to this expression:</p>\n\n\n\n\n<pre><code>foreach .[] as $item (0; . + $item; [$item, . * 2])\n</code></pre>\n\n\n\n\n<p>Like the <code>reduce</code> syntax, <code>. + $item</code> is run for each result\nthat <code>.[]</code> produces, but <code>[$item, . * 2]</code> is run for each\nintermediate values. In this example, since the intermediate\nvalues are <code>1</code>, <code>3</code>, and <code>6</code>, the <code>foreach</code> expression produces\n<code>[1,2]</code>, <code>[2,6]</code>, and <code>[3,12]</code>. So the effect is similar\nto running something like this:</p>\n\n\n\n\n<pre><code>0 | 1 as $item | . + $item | [$item, . * 2],\n    2 as $item | . + $item | [$item, . * 2],\n    3 as $item | . + $item | [$item, . * 2]\n</code></pre>\n\n\n\n\n<p>When <code>EXTRACT</code> is omitted, the identity filter is used.\nThat is, it outputs the intermediate values as they are.</p>"
+    },
+    {
+      "key": "sections/6/entries/11/title",
+      "sourceSha256": "37476e82bdaec0e074c03aeb0b79539eb4e4f4305fdc947c7c26eb93faa4c833",
+      "mode": "entry-title",
+      "html": "<h3>Recursion</h3>"
+    },
+    {
+      "key": "sections/6/entries/11/body",
+      "sourceSha256": "ef7710da08e5d60a591489a9e479944f442fb89545a303adc458e781fe103f41",
+      "mode": "web-body",
+      "html": "<p>As described above, <code>recurse</code> uses recursion, and any jq\nfunction can be recursive.  The <code>while</code> builtin is also\nimplemented in terms of recursion.</p>\n\n\n\n\n<p>Tail calls are optimized whenever the expression to the left of\nthe recursive call outputs its last value.  In practice this\nmeans that the expression to the left of the recursive call\nshould not produce more than one output for each input.</p>\n\n\n\n\n<p>For example:</p>\n\n\n\n\n<pre><code>def recurse(f): def r: ., (f | select(. != null) | r); r;\n\ndef while(cond; update):\n  def _while:\n    if cond then ., (update | _while) else empty end;\n  _while;\n\ndef repeat(exp):\n  def _repeat:\n    exp, _repeat;\n  _repeat;\n</code></pre>"
+    },
+    {
+      "key": "sections/6/entries/12/title",
+      "sourceSha256": "d41e196e5e5857703c39c4a5617909ad0b4559bb2d9dc5ed0a232ad5bf48dba0",
+      "mode": "entry-title",
+      "html": "<h3>Generators and iterators</h3>"
+    },
+    {
+      "key": "sections/6/entries/12/body",
+      "sourceSha256": "e6699d4b321dde66d5c7739939c9cfd86a398d5795da24d31863f7560a1ebc5e",
+      "mode": "web-body",
+      "html": "<p>Some jq operators and functions are actually generators in\nthat they can produce zero, one, or more values for each\ninput, just as one might expect in other programming\nlanguages that have generators.  For example, <code>.[]</code>\ngenerates all the values in its input (which must be an\narray or an object), <code>range(0; 10)</code> generates the integers\nbetween 0 and 10, and so on.</p>\n\n\n\n\n<p>Even the comma operator is a generator, generating first\nthe values generated by the expression to the left of the\ncomma, then the values generated by the expression on the\nright of the comma.</p>\n\n\n\n\n<p>The <code>empty</code> builtin is the generator that produces zero\noutputs.  The <code>empty</code> builtin backtracks to the preceding\ngenerator expression.</p>\n\n\n\n\n<p>All jq functions can be generators just by using builtin\ngenerators.  It is also possible to construct new generators\nusing only recursion and the comma operator.  If\nrecursive calls are \"in tail position\" then the\ngenerator will be efficient.  In the example below the\nrecursive call by <code>_range</code> to itself is in tail position.\nThe example shows off three advanced topics: tail recursion,\ngenerator construction, and sub-functions.</p>"
+    },
+    {
+      "key": "sections/7/title",
+      "sourceSha256": "d48500aea83254706245e7d20d430468b1c00cd84c96ac175044ffe4b514a6e3",
+      "mode": "section-title",
+      "html": "<h2>Math</h2>"
+    },
+    {
+      "key": "sections/7/body",
+      "sourceSha256": "75077e09f5ce69a3193f2638e7d781116026e40c47b93170e21b6f2cdbc9e072",
+      "mode": "web-body",
+      "html": "<p>jq currently only has IEEE754 double-precision (64-bit) floating\npoint number support.</p>\n\n\n\n\n<p>Besides simple arithmetic operators such as <code>+</code>, jq also has most\nstandard math functions from the C math library.  C math functions\nthat take a single input argument (e.g., <code>sin()</code>) are available as\nzero-argument jq functions.  C math functions that take two input\narguments (e.g., <code>pow()</code>) are available as two-argument jq\nfunctions that ignore <code>.</code>.  C math functions that take three input\narguments are available as three-argument jq functions that ignore\n<code>.</code>.</p>\n\n\n\n\n<p>Availability of standard math functions depends on the\navailability of the corresponding math functions in your operating\nsystem and C math library.  Unavailable math functions will be\ndefined but will raise an error.</p>\n\n\n\n\n<p>One-input C math functions: <code>acos</code> <code>acosh</code> <code>asin</code> <code>asinh</code> <code>atan</code>\n<code>atanh</code> <code>cbrt</code> <code>ceil</code> <code>cos</code> <code>cosh</code> <code>erf</code> <code>erfc</code> <code>exp</code> <code>exp10</code>\n<code>exp2</code> <code>expm1</code> <code>fabs</code> <code>floor</code> <code>gamma</code> <code>j0</code> <code>j1</code> <code>lgamma</code> <code>log</code>\n<code>log10</code> <code>log1p</code> <code>log2</code> <code>logb</code> <code>nearbyint</code> <code>rint</code> <code>round</code>\n<code>significand</code> <code>sin</code> <code>sinh</code> <code>sqrt</code> <code>tan</code> <code>tanh</code> <code>tgamma</code> <code>trunc</code>\n<code>y0</code> <code>y1</code>.</p>\n\n\n\n\n<p>Two-input C math functions: <code>atan2</code> <code>copysign</code> <code>drem</code> <code>fdim</code>\n<code>fmax</code> <code>fmin</code> <code>fmod</code> <code>frexp</code> <code>hypot</code> <code>jn</code> <code>ldexp</code> <code>modf</code>\n<code>nextafter</code> <code>nexttoward</code> <code>pow</code> <code>remainder</code> <code>scalb</code> <code>scalbln</code> <code>yn</code>.</p>\n\n\n\n\n<p>Three-input C math functions: <code>fma</code>.</p>\n\n\n\n\n<p>See your system's manual for more information on each of these.</p>"
+    },
+    {
+      "key": "sections/8/title",
+      "sourceSha256": "eb748e3e71e4bb3fe45e07d0e114e9399eaad56ad1ae7794f4659ba3bbc547b2",
+      "mode": "section-title",
+      "html": "<h2>I/O</h2>"
+    },
+    {
+      "key": "sections/8/body",
+      "sourceSha256": "b5771636e6514110c7665d25d10171c9131160e4d7dc0a4573de6e2fc1fe4918",
+      "mode": "web-body",
+      "html": "<p>At this time jq has minimal support for I/O, mostly in the\nform of control over when inputs are read.  Two builtins functions\nare provided for this, <code>input</code> and <code>inputs</code>, that read from the\nsame sources (e.g., <code>stdin</code>, files named on the command-line) as\njq itself.  These two builtins, and jq's own reading actions, can\nbe interleaved with each other.  They are commonly used in combination\nwith the null input option <code>-n</code> to prevent one input from being read\nimplicitly.</p>\n\n\n\n\n<p>Two builtins provide minimal output capabilities, <code>debug</code>, and\n<code>stderr</code>.  (Recall that a jq program's output values are always\noutput as JSON texts on <code>stdout</code>.) The <code>debug</code> builtin can have\napplication-specific behavior, such as for executables that use\nthe libjq C API but aren't the jq executable itself.  The <code>stderr</code>\nbuiltin outputs its input in raw mode to stderr with no additional\ndecoration, not even a newline.</p>\n\n\n\n\n<p>Most jq builtins are referentially transparent, and yield constant\nand repeatable value streams when applied to constant inputs.\nThis is not true of I/O builtins.</p>"
+    },
+    {
+      "key": "sections/8/entries/0/title",
+      "sourceSha256": "b7b18013b64897c4b43ca6110fb2eaa2a65b2cedbc48f67856272a56f927da62",
+      "mode": "entry-title",
+      "html": "<h3><code>input</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/0/body",
+      "sourceSha256": "90e1689d4b72d67b43da9f775db4d0e4f6187bef8fbee2afb765d292a681d15c",
+      "mode": "web-body",
+      "html": "<p>Outputs one new input.</p>\n\n\n\n\n<p>Note that when using <code>input</code> it is generally necessary to\ninvoke jq with the <code>-n</code> command-line option, otherwise\nthe first entity will be lost.</p>\n\n\n\n\n<pre><code>echo 1 2 3 4 | jq '[., input]' # [1,2] [3,4]\n</code></pre>"
+    },
+    {
+      "key": "sections/8/entries/1/title",
+      "sourceSha256": "568f848a6dc3046bf19fc7bb16a0f5d0055c00dc0e43accd26692d36628e6ca0",
+      "mode": "entry-title",
+      "html": "<h3><code>inputs</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/1/body",
+      "sourceSha256": "8cc8b7da17840bb689550f19675d016086e5b9e051b017e706f93c2c1c9e2118",
+      "mode": "web-body",
+      "html": "<p>Outputs all remaining inputs, one by one.</p>\n\n\n\n\n<p>This is primarily useful for reductions over a program's\ninputs.  Note that when using <code>inputs</code> it is generally necessary\nto invoke jq with the <code>-n</code> command-line option, otherwise\nthe first entity will be lost.</p>\n\n\n\n\n<pre><code>echo 1 2 3 | jq -n 'reduce inputs as $i (0; . + $i)' # 6\n</code></pre>"
+    },
+    {
+      "key": "sections/8/entries/2/title",
+      "sourceSha256": "cb56fc30100ac61fe0dcd81006f8c17214e10e7576d4e0c38be7f050c017aa52",
+      "mode": "entry-title",
+      "html": "<h3><code>debug</code>, <code>debug(msgs)</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/2/body",
+      "sourceSha256": "8725a9dc8c856ecd4c8c925843a3d4d94d97fcca7cf4b30c4b4ebe3a1c67e835",
+      "mode": "web-body",
+      "html": "<p>These two filters are like <code>.</code> but have as a side-effect the\nproduction of one or more messages on stderr.</p>\n\n\n\n\n<p>The message produced by the <code>debug</code> filter has the form</p>\n\n\n\n\n<pre><code>[\"DEBUG:\",&lt;input-value&gt;]\n</code></pre>\n\n\n\n\n<p>where <code>&lt;input-value&gt;</code> is a compact rendition of the input\nvalue.  This format may change in the future.</p>\n\n\n\n\n<p>The <code>debug(msgs)</code> filter is defined as <code>(msgs | debug | empty), .</code>\nthus allowing great flexibility in the content of the message,\nwhile also allowing multi-line debugging statements to be created.</p>\n\n\n\n\n<p>For example, the expression:</p>\n\n\n\n\n<pre><code>1 as $x | 2 | debug(\"Entering function foo with $x == \\($x)\", .) | (.+1)\n</code></pre>\n\n\n\n\n<p>would produce the value 3 but with the following two lines\nbeing written to stderr:</p>\n\n\n\n\n<pre><code>[\"DEBUG:\",\"Entering function foo with $x == 1\"]\n[\"DEBUG:\",2]\n</code></pre>"
+    },
+    {
+      "key": "sections/8/entries/3/title",
+      "sourceSha256": "efb4c12f97b474f7b095bfadc54d425cafb0afc5619040eecb924d7ac48a6be1",
+      "mode": "entry-title",
+      "html": "<h3><code>stderr</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/3/body",
+      "sourceSha256": "aa0e346aafa2a84b3e1bc0d7b3e51863361412cfbb90a0ce0f374e65b518d25f",
+      "mode": "web-body",
+      "html": "<p>Prints its input in raw and compact mode to stderr with no\nadditional decoration, not even a newline.</p>"
+    },
+    {
+      "key": "sections/8/entries/4/title",
+      "sourceSha256": "57e446582323d78a0341eb3d4d332ea61e69da1965bf788f2db09995eae6dd74",
+      "mode": "entry-title",
+      "html": "<h3><code>input_filename</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/4/body",
+      "sourceSha256": "87dbe347154c534476bb38c1d90daf611ee797efd4b3a08f548b400b4501d09e",
+      "mode": "web-body",
+      "html": "<p>Returns the name of the file whose input is currently being\nfiltered.  Note that this will not work well unless jq is\nrunning in a UTF-8 locale.</p>"
+    },
+    {
+      "key": "sections/8/entries/5/title",
+      "sourceSha256": "4586eb3f16b988c676eadd862abe016d9b13ec648edef21db5d6ad00cc72590f",
+      "mode": "entry-title",
+      "html": "<h3><code>input_line_number</code></h3>"
+    },
+    {
+      "key": "sections/8/entries/5/body",
+      "sourceSha256": "08d5545374bbdfb1072de9d00f5faf28fefa739c5cb47ed5609e043995de5b41",
+      "mode": "web-body",
+      "html": "<p>Returns the line number of the input currently being filtered.</p>"
+    },
+    {
+      "key": "sections/9/title",
+      "sourceSha256": "a951c5945635e2d32e944bf67ddf3101bc3c5c9b2e3087ef39c384dc0e61a0d0",
+      "mode": "section-title",
+      "html": "<h2>Streaming</h2>"
+    },
+    {
+      "key": "sections/9/body",
+      "sourceSha256": "ae4450c24f0bf5b254018be77ee399590ae9c44c17ca49b3c33607ac955657c8",
+      "mode": "web-body",
+      "html": "<p>With the <code>--stream</code> option jq can parse input texts in a streaming\nfashion, allowing jq programs to start processing large JSON texts\nimmediately rather than after the parse completes.  If you have a\nsingle JSON text that is 1GB in size, streaming it will allow you\nto process it much more quickly.</p>\n\n\n\n\n<p>However, streaming isn't easy to deal with as the jq program will\nhave <code>[&lt;path&gt;, &lt;leaf-value&gt;]</code> (and a few other forms) as inputs.</p>\n\n\n\n\n<p>Several builtins are provided to make handling streams easier.</p>\n\n\n\n\n<p>The examples below use the streamed form of <code>[\"a\",[\"b\"]]</code>, which is\n<code>[[0],\"a\"],[[1,0],\"b\"],[[1,0]],[[1]]</code>.</p>\n\n\n\n\n<p>Streaming forms include <code>[&lt;path&gt;, &lt;leaf-value&gt;]</code> (to indicate any\nscalar value, empty array, or empty object), and <code>[&lt;path&gt;]</code> (to\nindicate the end of an array or object).  Future versions of jq\nrun with <code>--stream</code> and <code>--seq</code> may output additional forms such\nas <code>[\"error message\"]</code> when an input text fails to parse.</p>"
+    },
+    {
+      "key": "sections/9/entries/0/title",
+      "sourceSha256": "34cd89eea83aa86076d5390c6b31b3285e7434632a5955704bc3a4c59832e283",
+      "mode": "entry-title",
+      "html": "<h3><code>truncate_stream(stream_expression)</code></h3>"
+    },
+    {
+      "key": "sections/9/entries/0/body",
+      "sourceSha256": "5403903fa42550ab81c4a8c2e3ba760fd187d95693eef507e393b546999999f9",
+      "mode": "web-body",
+      "html": "<p>Consumes a number as input and truncates the corresponding\nnumber of path elements from the left of the outputs of the\ngiven streaming expression.</p>"
+    },
+    {
+      "key": "sections/9/entries/1/title",
+      "sourceSha256": "57a8e8b0d14ceb52aaa5fa50053cc1845ff20a712eba03ba011bdfb6f1cad9fb",
+      "mode": "entry-title",
+      "html": "<h3><code>fromstream(stream_expression)</code></h3>"
+    },
+    {
+      "key": "sections/9/entries/1/body",
+      "sourceSha256": "d757e03010ed47727b8df937c7fda6de567c798290d46fddb18c3dda685e3186",
+      "mode": "web-body",
+      "html": "<p>Outputs values corresponding to the stream expression's\noutputs.</p>"
+    },
+    {
+      "key": "sections/9/entries/2/title",
+      "sourceSha256": "afd813d60c2eb161f2a40af8f19f216dfd4471dd6f759f3c253f384313a088af",
+      "mode": "entry-title",
+      "html": "<h3><code>tostream</code></h3>"
+    },
+    {
+      "key": "sections/9/entries/2/body",
+      "sourceSha256": "a31f820071160483989215a0cc2badf5f7c24373ab66ac694c85cffc3d846765",
+      "mode": "web-body",
+      "html": "<p>The <code>tostream</code> builtin outputs the streamed form of its input.</p>"
+    },
+    {
+      "key": "sections/10/title",
+      "sourceSha256": "153cdaaec56103da0c71f1ff5a0786849d190d369ece1e63940081d8b3ecbd8d",
+      "mode": "section-title",
+      "html": "<h2>Assignment</h2>"
+    },
+    {
+      "key": "sections/10/body",
+      "sourceSha256": "281233ce4cd2600af65aeaef2b29d5c4fd58c2511446b56b30f4ac553f82fa09",
+      "mode": "web-body",
+      "html": "<p>Assignment works a little differently in jq than in most\nprogramming languages. jq doesn't distinguish between references\nto and copies of something - two objects or arrays are either\nequal or not equal, without any further notion of being \"the\nsame object\" or \"not the same object\".</p>\n\n\n\n\n<p>If an object has two fields which are arrays, <code>.foo</code> and <code>.bar</code>,\nand you append something to <code>.foo</code>, then <code>.bar</code> will not get\nbigger, even if you've previously set <code>.bar = .foo</code>.  If you're\nused to programming in languages like Python, Java, Ruby,\nJavaScript, etc. then you can think of it as though jq does a full\ndeep copy of every object before it does the assignment (for\nperformance it doesn't actually do that, but that's the general\nidea).</p>\n\n\n\n\n<p>This means that it's impossible to build circular values in jq\n(such as an array whose first element is itself). This is quite\nintentional, and ensures that anything a jq program can produce\ncan be represented in JSON.</p>\n\n\n\n\n<p>All the assignment operators in jq have path expressions on the\nleft-hand side (LHS).  The right-hand side (RHS) provides values\nto set to the paths named by the LHS path expressions.</p>\n\n\n\n\n<p>Values in jq are always immutable.  Internally, assignment works\nby using a reduction to compute new, replacement values for <code>.</code> that\nhave had all the desired assignments applied to <code>.</code>, then\noutputting the modified value.  This might be made clear by this\nexample: <code>{a:{b:{c:1}}} | (.a.b|=3), .</code>.  This will output\n<code>{\"a\":{\"b\":3}}</code> and <code>{\"a\":{\"b\":{\"c\":1}}}</code> because the last\nsub-expression, <code>.</code>, sees the original value, not the modified\nvalue.</p>\n\n\n\n\n<p>Most users will want to use modification assignment operators,\nsuch as <code>|=</code> or <code>+=</code>, rather than <code>=</code>.</p>\n\n\n\n\n<p>Note that the LHS of assignment operators refers to a value in\n<code>.</code>.  Thus <code>$var.foo = 1</code> won't work as expected (<code>$var.foo</code> is\nnot a valid or useful path expression in <code>.</code>); use <code>$var | .foo =\n1</code> instead.</p>\n\n\n\n\n<p>Note too that <code>.a,.b=0</code> does not set <code>.a</code> and <code>.b</code>, but\n<code>(.a,.b)=0</code> sets both.</p>"
+    },
+    {
+      "key": "sections/10/entries/0/title",
+      "sourceSha256": "74d23781dd5b337a95d45a712a0e3cac848a37d6a3b000c601099c2ffc5e134b",
+      "mode": "entry-title",
+      "html": "<h3>Update-assignment: <code>|=</code></h3>"
+    },
+    {
+      "key": "sections/10/entries/0/body",
+      "sourceSha256": "f20fb2c9b89835a32d0b2e6f6179f6efb1ef579fe136bab3330d16cfa0c3446a",
+      "mode": "web-body",
+      "html": "<p>This is the \"update\" operator <code>|=</code>.  It takes a filter on the\nright-hand side and works out the new value for the property\nof <code>.</code> being assigned to by running the old value through this\nexpression. For instance, <code>(.foo, .bar) |= .+1</code> will build an\nobject with the <code>foo</code> field set to the input's <code>foo</code> plus 1,\nand the <code>bar</code> field set to the input's <code>bar</code> plus 1.</p>\n\n\n\n\n<p>The left-hand side can be any general path expression; see <code>path()</code>.</p>\n\n\n\n\n<p>Note that the left-hand side of <code>|=</code> refers to a value in <code>.</code>.\nThus <code>$var.foo |= . + 1</code> won't work as expected (<code>$var.foo</code> is\nnot a valid or useful path expression in <code>.</code>); use <code>$var |\n.foo |= . + 1</code> instead.</p>\n\n\n\n\n<p>If the right-hand side outputs no values (i.e., <code>empty</code>), then\nthe left-hand side path will be deleted, as with <code>del(path)</code>.</p>\n\n\n\n\n<p>If the right-hand side outputs multiple values, only the first\none will be used (COMPATIBILITY NOTE: in jq 1.5 and earlier\nreleases, it used to be that only the last one was used).</p>"
+    },
+    {
+      "key": "sections/10/entries/1/title",
+      "sourceSha256": "2b47480da54c7de3599f9c772e0a95e51cf140ae594aab0761a21d4aaf2ca917",
+      "mode": "entry-title",
+      "html": "<h3>Arithmetic update-assignment: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>, <code>//=</code></h3>"
+    },
+    {
+      "key": "sections/10/entries/1/body",
+      "sourceSha256": "5b8fe51262b6e4abcd2ae74b9e2d004883655493d4c2c23843a16655c54a4afb",
+      "mode": "web-body",
+      "html": "<p>jq has a few operators of the form <code>a op= b</code>, which are all\nequivalent to <code>a |= . op b</code>. So, <code>+= 1</code> can be used to\nincrement values, being the same as <code>|= . + 1</code>.</p>"
+    },
+    {
+      "key": "sections/10/entries/2/title",
+      "sourceSha256": "b7c59ca959dac0a14a99740065c7662a2627ca75fc35cf29799682f534bdac00",
+      "mode": "entry-title",
+      "html": "<h3>Plain assignment: <code>=</code></h3>"
+    },
+    {
+      "key": "sections/10/entries/2/body",
+      "sourceSha256": "4da01a1bdd7d90d6bb8a477828dd8577594c33275d3224b6c9c009ea773f7779",
+      "mode": "web-body",
+      "html": "<p>This is the plain assignment operator.  Unlike the others, the\ninput to the right-hand side (RHS) is the same as the input to\nthe left-hand side (LHS) rather than the value at the LHS\npath, and all values output by the RHS will be used (as shown\nbelow).</p>\n\n\n\n\n<p>If the RHS of <code>=</code> produces multiple values, then for each such\nvalue jq will set the paths on the left-hand side to the value\nand then it will output the modified <code>.</code>.  For example,\n<code>(.a,.b) = range(2)</code> outputs <code>{\"a\":0,\"b\":0}</code>, then\n<code>{\"a\":1,\"b\":1}</code>.  The \"update\" assignment forms (see above) do\nnot do this.</p>\n\n\n\n\n<p>This example should show the difference between <code>=</code> and <code>|=</code>:</p>\n\n\n\n\n<p>Provide input <code>{\"a\": {\"b\": 10}, \"b\": 20}</code> to the programs</p>\n\n\n\n\n<pre><code>.a = .b\n</code></pre>\n\n\n\n\n<p>and</p>\n\n\n\n\n<pre><code>.a |= .b\n</code></pre>\n\n\n\n\n<p>The former will set the <code>a</code> field of the input to the <code>b</code>\nfield of the input, and produce the output <code>{\"a\": 20, \"b\": 20}</code>.\nThe latter will set the <code>a</code> field of the input to the <code>a</code>\nfield's <code>b</code> field, producing <code>{\"a\": 10, \"b\": 20}</code>.</p>"
+    },
+    {
+      "key": "sections/10/entries/3/title",
+      "sourceSha256": "c22ea537123a4d224a7e3d016c863a923640b504529d62b09050392fda169a75",
+      "mode": "entry-title",
+      "html": "<h3>Complex assignments</h3>"
+    },
+    {
+      "key": "sections/10/entries/3/body",
+      "sourceSha256": "aaa39e47c0a714f6725fce54105eebb5fcbcacf7dade9ce7bd6cccb8445beff0",
+      "mode": "web-body",
+      "html": "<p>Lots more things are allowed on the left-hand side of a jq assignment\nthan in most languages. We've already seen simple field accesses on\nthe left hand side, and it's no surprise that array accesses work just\nas well:</p>\n\n\n\n\n<pre><code>.posts[0].title = \"JQ Manual\"\n</code></pre>\n\n\n\n\n<p>What may come as a surprise is that the expression on the left may\nproduce multiple results, referring to different points in the input\ndocument:</p>\n\n\n\n\n<pre><code>.posts[].comments |= . + [\"this is great\"]\n</code></pre>\n\n\n\n\n<p>That example appends the string \"this is great\" to the \"comments\"\narray of each post in the input (where the input is an object with a\nfield \"posts\" which is an array of posts).</p>\n\n\n\n\n<p>When jq encounters an assignment like 'a = b', it records the \"path\"\ntaken to select a part of the input document while executing a. This\npath is then used to find which part of the input to change while\nexecuting the assignment. Any filter may be used on the\nleft-hand side of an equals - whichever paths it selects from the\ninput will be where the assignment is performed.</p>\n\n\n\n\n<p>This is a very powerful operation. Suppose we wanted to add a comment\nto blog posts, using the same \"blog\" input above. This time, we only\nwant to comment on the posts written by \"stedolan\". We can find those\nposts using the \"select\" function described earlier:</p>\n\n\n\n\n<pre><code>.posts[] | select(.author == \"stedolan\")\n</code></pre>\n\n\n\n\n<p>The paths provided by this operation point to each of the posts that\n\"stedolan\" wrote, and we can comment on each of them in the same way\nthat we did before:</p>\n\n\n\n\n<pre><code>(.posts[] | select(.author == \"stedolan\") | .comments) |=\n    . + [\"terrible.\"]\n</code></pre>"
+    },
+    {
+      "key": "sections/11/title",
+      "sourceSha256": "355f79f29d7d3c2df917ad07f7441e3ce4b0ac48892b778076dbdca401851712",
+      "mode": "section-title",
+      "html": "<h2>Comments</h2>"
+    },
+    {
+      "key": "sections/11/body",
+      "sourceSha256": "92e341490b876d411ead537cf8d8177d54edec59c0fdb2b453adb12bc4a926b4",
+      "mode": "web-body",
+      "html": "<p>You can write comments in your jq filters using <code>#</code>.</p>\n\n\n\n\n<p>A <code>#</code> character (not part of a string) starts a comment.\nAll characters from <code>#</code> to the end of the line are ignored.</p>\n\n\n\n\n<p>If the end of the line is preceded by an odd number of backslash\ncharacters, the following line is also considered part of the\ncomment and is ignored.</p>\n\n\n\n\n<p>For example, the following code outputs <code>[1,3,4,7]</code></p>\n\n\n\n\n<pre><code>[\n  1,\n  # foo \\\n  2,\n  # bar \\\\\n  3,\n  4, # baz \\\\\\\n  5, \\\n  6,\n  7\n  # comment \\\n    comment \\\n    comment\n]\n</code></pre>\n\n\n\n\n<p>Backslash continuing the comment on the next line can be useful\nwhen writing the \"shebang\" for a jq script:</p>\n\n\n\n\n<pre><code>#!/bin/sh --\n# total - Output the sum of the given arguments (or stdin)\n# usage: total [numbers...]\n# \\\nexec jq --args -MRnf -- \"$0\" \"$@\"\n\n$ARGS.positional |\nreduce (\n  if . == []\n    then inputs\n    else .[]\n  end |\n  . as $dot |\n  try tonumber catch false |\n  if not or isnan then\n    @json \"total: Invalid number \\($dot).\\n\" | halt_error(1)\n  end\n) as $n (0; . + $n)\n</code></pre>\n\n\n\n\n<p>The <code>exec</code> line is considered a comment by jq, so it is ignored.\nBut it is not ignored by <code>sh</code>, since in <code>sh</code> a backslash at the\nend of the line does not continue the comment.\nWith this trick, when the script is invoked as <code>total 1 2</code>,\n<code>/bin/sh -- /path/to/total 1 2</code> will be run, and <code>sh</code> will then\nrun <code>exec jq --args -MRnf -- /path/to/total 1 2</code> replacing itself\nwith a <code>jq</code> interpreter invoked with the specified options (<code>-M</code>,\n<code>-R</code>, <code>-n</code>, <code>--args</code>), that evaluates the current file (<code>$0</code>),\nwith the arguments (<code>$@</code>) that were passed to <code>sh</code>.</p>"
+    },
+    {
+      "key": "sections/12/title",
+      "sourceSha256": "76c86c4c32432be30bdd4037aae3c816045cc2a34a0b41b2322bb2c37927323e",
+      "mode": "section-title",
+      "html": "<h2>Modules</h2>"
+    },
+    {
+      "key": "sections/12/body",
+      "sourceSha256": "16148477f5e5d2637d660b1b8ce84b1a80b9196f6882591991770c39c02c2002",
+      "mode": "web-body",
+      "html": "<p>jq has a library/module system.  Modules are files whose names end\nin <code>.jq</code>.</p>\n\n\n\n\n<p>Modules imported by a program are searched for in a default search\npath (see below).  The <code>import</code> and <code>include</code> directives allow the\nimporter to alter this path.</p>\n\n\n\n\n<p>Paths in the search path are subject to various substitutions.</p>\n\n\n\n\n<p>For paths starting with <code>~/</code>, the user's home directory is\nsubstituted for <code>~</code>.</p>\n\n\n\n\n<p>For paths starting with <code>$ORIGIN/</code>, the directory where the jq\nexecutable is located is substituted for <code>$ORIGIN</code>.</p>\n\n\n\n\n<p>For paths starting with <code>./</code> or paths that are <code>.</code>, the path of\nthe including file is substituted for <code>.</code>.  For top-level programs\ngiven on the command-line, the current directory is used.</p>\n\n\n\n\n<p>Import directives can optionally specify a search path to which\nthe default is appended.</p>\n\n\n\n\n<p>The default search path is the search path given to the <code>-L</code>\ncommand-line option, else <code>[\"~/.jq\", \"$ORIGIN/../lib/jq\",\n\"$ORIGIN/../lib\"]</code>.</p>\n\n\n\n\n<p>Null and empty string path elements terminate search path\nprocessing.</p>\n\n\n\n\n<p>A dependency with relative path <code>foo/bar</code> would be searched for in\n<code>foo/bar.jq</code> and <code>foo/bar/bar.jq</code> in the given search path. This\nis intended to allow modules to be placed in a directory along\nwith, for example, version control files, README files, and so on,\nbut also to allow for single-file modules.</p>\n\n\n\n\n<p>Consecutive components with the same name are not allowed to avoid\nambiguities (e.g., <code>foo/foo</code>).</p>\n\n\n\n\n<p>For example, with <code>-L$HOME/.jq</code> a module <code>foo</code> can be found in\n<code>$HOME/.jq/foo.jq</code> and <code>$HOME/.jq/foo/foo.jq</code>.</p>\n\n\n\n\n<p>If <code>.jq</code> exists in the user's home directory, and is a file (not a\ndirectory), it is automatically sourced into the main program.</p>"
+    },
+    {
+      "key": "sections/12/entries/0/title",
+      "sourceSha256": "06bde897efe9cc8c3fc18c27088381a5ddc40ed44a9180ed13ea6860ae16bdf6",
+      "mode": "entry-title",
+      "html": "<h3><code>import RelativePathString as NAME [&lt;metadata&gt;];</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/0/body",
+      "sourceSha256": "03468423bf5b7b2e7bc056fc28590f72bcc892f7b82219d76ab99530be65296b",
+      "mode": "web-body",
+      "html": "<p>Imports a module found at the given path relative to a\ndirectory in a search path.  A <code>.jq</code> suffix will be added to\nthe relative path string.  The module's symbols are prefixed\nwith <code>NAME::</code>.</p>\n\n\n\n\n<p>The optional metadata must be a constant jq expression.  It\nshould be an object with keys like <code>homepage</code> and so on.  At\nthis time jq only uses the <code>search</code> key/value of the metadata.\nThe metadata is also made available to users via the\n<code>modulemeta</code> builtin.</p>\n\n\n\n\n<p>The <code>search</code> key in the metadata, if present, should have a\nstring or array value (array of strings); this is the search\npath to be prefixed to the top-level search path.</p>"
+    },
+    {
+      "key": "sections/12/entries/1/title",
+      "sourceSha256": "9cc463bb1249f706b47a24d80a9966f051f41f92d9686c82051521fddc5a959f",
+      "mode": "entry-title",
+      "html": "<h3><code>include RelativePathString [&lt;metadata&gt;];</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/1/body",
+      "sourceSha256": "4ad182958bc2596fcd46e11a107f12da787cbf18da81a2a0b15af7a4af8a2928",
+      "mode": "web-body",
+      "html": "<p>Imports a module found at the given path relative to a\ndirectory in a search path as if it were included in place.  A\n<code>.jq</code> suffix will be added to the relative path string.  The\nmodule's symbols are imported into the caller's namespace as\nif the module's content had been included directly.</p>\n\n\n\n\n<p>The optional metadata must be a constant jq expression.  It\nshould be an object with keys like <code>homepage</code> and so on.  At\nthis time jq only uses the <code>search</code> key/value of the metadata.\nThe metadata is also made available to users via the\n<code>modulemeta</code> builtin.</p>"
+    },
+    {
+      "key": "sections/12/entries/2/title",
+      "sourceSha256": "7c316e91e5d429002e5e8a0ddcfa1b96bcf69efa27723015af3dd97d49a41a2c",
+      "mode": "entry-title",
+      "html": "<h3><code>import RelativePathString as $NAME [&lt;metadata&gt;];</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/2/body",
+      "sourceSha256": "81e54b40fd539074b0d27f6a9210ca58d705e29e4fa0a2b6c496e8429e4687da",
+      "mode": "web-body",
+      "html": "<p>Imports a JSON file found at the given path relative to a\ndirectory in a search path.  A <code>.json</code> suffix will be added to\nthe relative path string.  The file's data will be available\nas <code>$NAME::NAME</code>.</p>\n\n\n\n\n<p>The optional metadata must be a constant jq expression.  It\nshould be an object with keys like <code>homepage</code> and so on.  At\nthis time jq only uses the <code>search</code> key/value of the metadata.\nThe metadata is also made available to users via the\n<code>modulemeta</code> builtin.</p>\n\n\n\n\n<p>The <code>search</code> key in the metadata, if present, should have a\nstring or array value (array of strings); this is the search\npath to be prefixed to the top-level search path.</p>"
+    },
+    {
+      "key": "sections/12/entries/3/title",
+      "sourceSha256": "bea98c7c1d5b2a8046c4297e1560fbe4a6623668b4bdeb9a1677f93551e94f81",
+      "mode": "entry-title",
+      "html": "<h3><code>module &lt;metadata&gt;;</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/3/body",
+      "sourceSha256": "6d0381ec158e18f779ed97e7e1bcabd27f4b567c4d86a49264245d034c819750",
+      "mode": "web-body",
+      "html": "<p>This directive is entirely optional.  It's not required for\nproper operation.  It serves only the purpose of providing\nmetadata that can be read with the <code>modulemeta</code> builtin.</p>\n\n\n\n\n<p>The metadata must be a constant jq expression.  It should be\nan object with keys like <code>homepage</code>.  At this time jq doesn't\nuse this metadata, but it is made available to users via the\n<code>modulemeta</code> builtin.</p>"
+    },
+    {
+      "key": "sections/12/entries/4/title",
+      "sourceSha256": "82cfb77156dc17b8861261e5f9c17bb006b342d37098ab16923bfa34b269304e",
+      "mode": "entry-title",
+      "html": "<h3><code>modulemeta</code></h3>"
+    },
+    {
+      "key": "sections/12/entries/4/body",
+      "sourceSha256": "00d94ed6075e09e1a6cf96632c99354dcc7c0abebe4e4d48768c7f13c80a66b8",
+      "mode": "web-body",
+      "html": "<p>Takes a module name as input and outputs the module's metadata\nas an object, with the module's imports (including metadata)\nas an array value for the <code>deps</code> key and the module's defined\nfunctions as an array value for the <code>defs</code> key.</p>\n\n\n\n\n<p>Programs can use this to query a module's metadata, which they\ncould then use to, for example, search for, download, and\ninstall missing dependencies.</p>"
+    },
+    {
+      "key": "sections/13/title",
+      "sourceSha256": "88c45d9e526c08dd7f8b9d1d3ab96a72d68205232090be5da57e05251bfea650",
+      "mode": "section-title",
+      "html": "<h2>Colors</h2>"
+    },
+    {
+      "key": "sections/13/body",
+      "sourceSha256": "282eaae932feac61634fedb37dd757fc434e190e1ead80161acd1ed7cb87d150",
+      "mode": "web-body",
+      "html": "<p>To configure alternative colors just set the <code>JQ_COLORS</code>\nenvironment variable to colon-delimited list of partial terminal\nescape sequences like <code>\"1;31\"</code>, in this order:</p>\n\n\n\n\n<ul>\n<li>color for <code>null</code></li>\n<li>color for <code>false</code></li>\n<li>color for <code>true</code></li>\n<li>color for numbers</li>\n<li>color for strings</li>\n<li>color for arrays</li>\n<li>color for objects</li>\n<li>color for object keys</li>\n</ul>\n\n\n\n\n<p>The default color scheme is the same as setting\n<code>JQ_COLORS=\"0;90:0;39:0;39:0;39:0;32:1;39:1;39:1;34\"</code>.</p>\n\n\n\n\n<p>This is not a manual for VT100/ANSI escapes.  However, each of\nthese color specifications should consist of two numbers separated\nby a semi-colon, where the first number is one of these:</p>\n\n\n\n\n<ul>\n<li>1 (bright)</li>\n<li>2 (dim)</li>\n<li>4 (underscore)</li>\n<li>5 (blink)</li>\n<li>7 (reverse)</li>\n<li>8 (hidden)</li>\n</ul>\n\n\n\n\n<p>and the second is one of these:</p>\n\n\n\n\n<ul>\n<li>30 (black)</li>\n<li>31 (red)</li>\n<li>32 (green)</li>\n<li>33 (yellow)</li>\n<li>34 (blue)</li>\n<li>35 (magenta)</li>\n<li>36 (cyan)</li>\n<li>37 (white)</li>\n</ul>"
+    },
+    {
+      "key": "manpage_intro",
+      "sourceSha256": "4e1c07f1363dd0cfb268c89950c581567c073bb888b44cd8eec46aac31f5cff7",
+      "mode": "manpage-intro",
+      "html": "<h1>jq(1) -- Command-line JSON processor</h1>\n\n\n\n\n<h2>SYNOPSIS</h2>\n\n\n\n\n<p><code>jq</code> [&lt;options&gt;...] &lt;filter&gt; [&lt;files&gt;...]</p>\n\n\n\n\n<p><code>jq</code> can transform JSON in various ways, by selecting, iterating,\nreducing and otherwise mangling JSON documents. For instance,\nrunning the command <code>jq 'map(.price) | add'</code> will take an array of\nJSON objects as input and return the sum of their \"price\" fields.</p>\n\n\n\n\n<p><code>jq</code> can accept text input as well, but by default, <code>jq</code> reads a\nstream of JSON entities (including numbers and other literals) from\n<code>stdin</code>. Whitespace is only needed to separate entities such as 1\nand 2, and true and false.  One or more &lt;files&gt; may be specified, in\nwhich case <code>jq</code> will read input from those instead.</p>\n\n\n\n\n<p>The &lt;options&gt; are described in the [INVOKING JQ] section; they\nmostly concern input and output formatting. The &lt;filter&gt; is written\nin the jq language and specifies how to transform the input\nfile or document.</p>\n\n\n\n\n<h2>FILTERS</h2>"
+    },
+    {
+      "key": "manpage_epilogue",
+      "sourceSha256": "d2795dbd24c1fcb6a2ac32a116b76ae7fce9e636215837a992482a0f402f0d96",
+      "mode": "web-body",
+      "html": "<h2>BUGS</h2>\n\n\n\n\n<p>Presumably. Report them or discuss them at:</p>\n\n\n\n\n<pre><code>https://github.com/jqlang/jq/issues\n</code></pre>\n\n\n\n\n<h2>AUTHOR</h2>\n\n\n\n\n<p>Stephen Dolan <code>&lt;mu@netsoc.tcd.ie&gt;</code></p>"
+    }
+  ]
+}

@@ -1,0 +1,786 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-sidebar data-dir="ltr"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/docs/jq/favicon.svg"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- ダークモードフラッシュ防止スクリプト --><script>
+      (function () {
+        const STORAGE_KEY = 'theme-preference';
+
+        function getThemePreference() {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY)) {
+            return localStorage.getItem(STORAGE_KEY);
+          }
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        const theme = getThemePreference();
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script><meta name="generator" content="Astro v5.7.12"><meta name="description" content="Documentation for jq Documentation"><link rel="canonical" href="https://libx.dev/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0/"><link rel="alternate" hreflang="en" href="https://libx.dev/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0/"><link rel="alternate" hreflang="x-default" href="https://libx.dev/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0/"><meta property="og:type" content="article"><meta property="og:title" content="CC BY 3.0 Unported — Full legal code | jq Documentation"><meta property="og:description" content="Documentation for jq Documentation"><meta property="og:url" content="https://libx.dev/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0/"><title>CC BY 3.0 Unported — Full legal code | jq Documentation</title><script type="module" src="/docs/jq/assets/MainLayout.astro_astro_type_script_index_0_lang.CpkCDiGE.js"></script><link rel="stylesheet" href="/docs/jq/assets/style.Cez_Vy2X.css"></head> <body> <div class="page"> <header class="header" dir="ltr"> <div class="header-container"> <div class="header-content"> <div class="title-wrapper"><div class="breadcrumb-title"> <a href="/en" class="site-title">
+Libx
+</a> <svg class="breadcrumb-separator" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg> <a href="/docs/jq/v1-8-2/en/01-guide/00-introduction" class="doc-title"> jq Documentation </a> </div></div> <div class="print:hidden right-group"> <div class="docs-search" data-search-root data-index-url="/docs/jq/search/v1-8-2/en.json" data-no-results="No results found for '{query}'" data-error="Search error" data-astro-cid-wkb36tfj> <button type="button" class="search-trigger" data-search-trigger aria-haspopup="dialog" aria-label="Search" data-astro-cid-wkb36tfj> <span data-astro-cid-wkb36tfj>Search</span><kbd data-astro-cid-wkb36tfj>/</kbd> </button> <dialog class="search-dialog" data-search-dialog aria-labelledby="search-dialog-title" data-astro-cid-wkb36tfj> <form method="dialog" class="search-header" data-astro-cid-wkb36tfj> <label id="search-dialog-title" for="docs-search-input" data-astro-cid-wkb36tfj> Search Results </label> <button type="submit" aria-label="Close" data-astro-cid-wkb36tfj>×</button> </form> <input id="docs-search-input" type="search" autocomplete="off" placeholder="Search documentation..." data-search-input data-astro-cid-wkb36tfj> <p class="search-status" data-search-status aria-live="polite" data-astro-cid-wkb36tfj></p> <ol class="search-results" data-search-results data-astro-cid-wkb36tfj></ol> </dialog> </div> <script type="module" src="/docs/jq/assets/Search.astro_astro_type_script_index_0_lang.CelA6tAM.js"></script>  <div class="version-selector-container"> <div class="version-selector" dir="ltr" data-astro-cid-c5tqw5mv> <script>
+  class DocsDropdown extends HTMLElement {
+    constructor() {
+      super();
+    }
+  }
+  
+  // カスタム要素として登録
+  customElements.define('docs-dropdown', DocsDropdown);
+  </script><script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // すべてのドロップダウンコンポーネントを初期化
+    document.querySelectorAll('docs-dropdown').forEach(dropdown => {
+      if (dropdown._initialized) return;
+      dropdown._initialized = true;
+      
+      const button = dropdown.querySelector('[data-dropdown-button]');
+      const menu = dropdown.querySelector('[data-dropdown-menu]');
+      
+      if (button && menu) {
+        // ボタンクリックでメニューの表示/非表示を切り替え
+        button.addEventListener('click', function() {
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', (!expanded).toString());
+          menu.classList.toggle('hidden');
+        });
+        
+        const closeMenu = function(restoreFocus) {
+          button.setAttribute('aria-expanded', 'false');
+          menu.classList.add('hidden');
+          if (restoreFocus) button.focus();
+        };
+        const items = function() {
+          return Array.from(menu.querySelectorAll('[role="menuitem"]'))
+            .filter(item => item.getAttribute('aria-disabled') !== 'true');
+        };
+        const openAndFocus = function(last) {
+          button.setAttribute('aria-expanded', 'true');
+          menu.classList.remove('hidden');
+          const entries = items();
+          const entry = last ? entries[entries.length - 1] : entries[0];
+          if (entry) entry.focus();
+        };
+        button.addEventListener('keydown', function(event) {
+          if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key)) {
+            event.preventDefault();
+            if (['Enter', ' '].includes(event.key) && button.getAttribute('aria-expanded') === 'true') {
+              closeMenu(true);
+            } else {
+              openAndFocus(event.key === 'ArrowUp');
+            }
+          }
+        });
+        menu.addEventListener('keydown', function(event) {
+          if (event.key === 'Tab') {
+            closeMenu(false);
+            return;
+          }
+          const entries = items();
+          if (!entries.length) return;
+          const current = entries.indexOf(document.activeElement);
+          let next;
+          if (event.key === 'ArrowDown') next = (current + 1) % entries.length;
+          else if (event.key === 'ArrowUp') next = (current - 1 + entries.length) % entries.length;
+          else if (event.key === 'Home') next = 0;
+          else if (event.key === 'End') next = entries.length - 1;
+          else return;
+          event.preventDefault();
+          entries[next].focus();
+        });
+
+        // 外部クリックでメニューを閉じる
+        document.addEventListener('click', function(event) {
+          if (!dropdown.contains(event.target)) {
+            button.setAttribute('aria-expanded', 'false');
+            menu.classList.add('hidden');
+          }
+        });
+        
+        // ESCキーでメニューを閉じる
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            closeMenu(dropdown.contains(event.target));
+          }
+        });
+      }
+    });
+  });
+  </script><docs-dropdown dir="ltr" data-astro-cid-c5tqw5mv="true" data-astro-cid-6dzm6as6="true" class="dropdown version-dropdown">  <div data-astro-cid-6dzm6as6> <button type="button" class="dropdown-button" id="dropdown-button-29577d76b04fcdc1-0" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-menu-29577d76b04fcdc1-0" data-dropdown-button data-astro-cid-6dzm6as6> <span class="dropdown-label" data-astro-cid-6dzm6as6>jq 1.8.2 / Manual 1.8</span> <span class="dropdown-icon" data-astro-cid-6dzm6as6><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span> </button> </div>  <div class="dropdown-menu hidden" id="dropdown-menu-29577d76b04fcdc1-0" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button-29577d76b04fcdc1-0" tabindex="-1" data-dropdown-menu data-align="right" style="width: 14rem;" data-astro-cid-6dzm6as6> <div class="dropdown-content" role="none" data-astro-cid-6dzm6as6>   <a href="/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0" class="dropdown-item dropdown-item-active" role="menuitem" tabindex="-1" aria-current="page" data-version-link="true" data-astro-cid-c5tqw5mv="true" data-astro-cid-4gy76uzx><span class="dropdown-item-label" data-astro-cid-4gy76uzx>jq 1.8.2 / Manual 1.8</span><span class="version-badge version-badge-latest" data-astro-cid-c5tqw5mv> Latest </span><div class="version-meta" data-astro-cid-c5tqw5mv> <div class="version-date" data-astro-cid-c5tqw5mv> Jun 20, 2026 </div>  </div> </a>  </div> </div> </docs-dropdown>  <div class="version-info" data-astro-cid-c5tqw5mv>   </div> </div>  <script>(function(){const versionsLabel = "Versions";
+const collapseLabel = "Close";
+
+  // バージョン履歴の「すべてのバージョンを表示」リンクの処理
+  document.addEventListener('DOMContentLoaded', () => {
+    const moreLinks = document.querySelectorAll('.version-history-more');
+    moreLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const historyList = link
+          .closest('.version-history')
+          ?.querySelector('.version-history-list');
+        const historyItems = historyList?.querySelectorAll('.version-history-item');
+
+        if (historyItems) {
+          historyItems.forEach((item) => {
+            if (item.classList.contains('hidden')) {
+              item.classList.remove('hidden');
+            }
+          });
+
+          // 「すべて表示」リンクを「折りたたむ」に変更
+          link.textContent = collapseLabel;
+          link.classList.add('is-expanded');
+
+          // クリック時の動作を切り替え
+          link.addEventListener(
+            'click',
+            (e) => {
+              e.preventDefault();
+              if (link.classList.contains('is-expanded')) {
+                // 3つ目以降を非表示
+                Array.from(historyItems)
+                  .slice(3)
+                  .forEach((item) => {
+                    item.classList.add('hidden');
+                  });
+                link.textContent = versionsLabel;
+                link.classList.remove('is-expanded');
+              } else {
+                // すべて表示
+                historyItems.forEach((item) => {
+                  item.classList.remove('hidden');
+                });
+                link.textContent = collapseLabel;
+                link.classList.add('is-expanded');
+              }
+            },
+            { once: true }
+          );
+        }
+      });
+    });
+
+    // バージョンセレクターリンクの動的フォールバック処理
+    setupVersionSelectorFallback();
+  });
+
+  // バージョンセレクターリンクの動的フォールバック処理
+  function setupVersionSelectorFallback() {
+    const versionLinks = document.querySelectorAll('.version-dropdown [data-version-link]');
+
+    versionLinks.forEach((link) => {
+      const originalHref = link.getAttribute('href');
+      if (!originalHref) return;
+
+      link.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        // リンク先が存在するかチェック
+        const isValid = await checkLinkValidity(originalHref);
+
+        if (isValid) {
+          // 有効なリンクならそのまま遷移
+          window.location.href = originalHref;
+        } else {
+          // 無効なリンクならフォールバック先を計算
+          const fallbackUrl = await calculateFallbackUrl(originalHref);
+          window.location.href = fallbackUrl;
+        }
+      });
+    });
+  }
+
+  // リンク先の有効性をチェック
+  async function checkLinkValidity(url) {
+    try {
+      const response = await fetch(url, { method: 'HEAD' });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // フォールバック先URLを計算
+  async function calculateFallbackUrl(originalUrl) {
+    // URLを解析
+    const urlParts = originalUrl.split('/');
+    const baseIndex = urlParts.findIndex((part) => part === 'docs');
+
+    if (baseIndex === -1) return originalUrl;
+
+    // パス構造: /docs/sample-docs/lang/version/section/file
+    const basePath = urlParts.slice(0, baseIndex + 3).join('/'); // /docs/sample-docs/lang
+    const version = urlParts[baseIndex + 3]; // version
+    const section = urlParts[baseIndex + 4]; // section (guide など)
+
+    // フォールバック戦略
+    const fallbackCandidates = [
+      // 1. 同じセクションの最初のファイル（getting-started系）
+      basePath + '/' + version + '/' + section + '/01-getting-started',
+      basePath + '/' + version + '/' + section + '/getting-started',
+      // 2. デフォルトセクション（guide）の最初のファイル
+      basePath + '/' + version + '/guide/01-getting-started',
+      basePath + '/' + version + '/guide/getting-started',
+      // 3. バージョンのルートページ
+      basePath + '/' + version + '/',
+      basePath + '/' + version,
+    ];
+
+    // 各候補を順次チェック
+    for (const candidate of fallbackCandidates) {
+      const isValid = await checkLinkValidity(candidate);
+      if (isValid) {
+        return candidate;
+      }
+    }
+
+    // すべて失敗した場合は元のURLを返す
+    return originalUrl;
+  }
+})();</script> </div><div class="language-selector-container"> <div class="language-selector-container" dir="ltr" data-astro-cid-yxup6bwr> <docs-dropdown dir="ltr" data-astro-cid-yxup6bwr="true" data-astro-cid-6dzm6as6="true" class="dropdown language-dropdown ">  <div data-astro-cid-6dzm6as6> <button type="button" class="dropdown-button" id="dropdown-button-e1467c05715102d4-0" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-menu-e1467c05715102d4-0" data-dropdown-button data-astro-cid-6dzm6as6> <span class="dropdown-label" data-astro-cid-6dzm6as6>English</span> <span class="dropdown-icon" data-astro-cid-6dzm6as6><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></span> </button> </div>  <div class="dropdown-menu hidden" id="dropdown-menu-e1467c05715102d4-0" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-button-e1467c05715102d4-0" tabindex="-1" data-dropdown-menu data-align="right" style="width: 14rem;" data-astro-cid-6dzm6as6> <div class="dropdown-content" role="none" data-astro-cid-6dzm6as6>   <a href="/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0/" class="dropdown-item dropdown-item-active" role="menuitem" tabindex="-1" aria-current="page" data-astro-cid-yxup6bwr="true" data-astro-cid-4gy76uzx><span class="dropdown-item-label" data-astro-cid-4gy76uzx>English</span><span class="language-current-badge" data-astro-cid-yxup6bwr> Current </span></a> </div> </div> </docs-dropdown>  </div>  </div> <theme-toggle data-astro-cid-b2mimvjx="true"> <button class="theme-toggle" type="button" aria-label="Toggle theme" data-astro-cid-b2mimvjx> <span class="theme-toggle-icon" data-astro-cid-b2mimvjx> <!-- 太陽アイコン（ライトモード用） --> <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-b2mimvjx> <circle cx="12" cy="12" r="5" data-astro-cid-b2mimvjx></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-b2mimvjx></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-b2mimvjx></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-b2mimvjx></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-b2mimvjx></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-b2mimvjx></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-b2mimvjx></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-b2mimvjx></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-b2mimvjx></line> </svg> <!-- 月アイコン（ダークモード用） --> <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-b2mimvjx> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-b2mimvjx></path> </svg> </span> </button> </theme-toggle>  <script type="module" src="/docs/jq/assets/ThemeToggle.astro_astro_type_script_index_0_lang.BDHHZQnD.js"></script> </div> </div> </div> </header> <div class="main-frame"> <main id="main-content">  <div class="doc-layout-container" dir="ltr"> <aside class="sidebar-column print:hidden" dir="ltr"> <div class="sidebar-content"> <aside class="sidebar" role="complementary" aria-label="Documentation" id="sidebar" style="position: relative;" dir="ltr" data-astro-cid-5jauxtae> <div class="sidebar-resizer" data-astro-cid-cgrhon7b> <div class="resizer-handle" title="Resize sidebar" aria-hidden="true" data-astro-cid-cgrhon7b> <div class="handle-line" data-astro-cid-cgrhon7b></div> </div> <button type="button" class="collapse-button" title="Collapse or expand sidebar" aria-label="Collapse or expand sidebar" aria-expanded="true" aria-controls="sidebar" data-astro-cid-cgrhon7b> <span class="collapse-icon" data-astro-cid-cgrhon7b></span> </button> </div>  <script>(function(){const minWidth = 200;
+const maxWidth = 280;
+const initialWidth = 260;
+const collapsedWidth = 50;
+const storageKey = "sidebar-width";
+const dir = "ltr";
+
+  // CSSからの初期化を避けるため、DOMContentLoadedより早く実行
+  const initializeSidebar = () => {
+    const sidebar = document.getElementById('sidebar');
+
+    if (!sidebar) return;
+
+    // ローカルストレージから幅と折りたたみ状態を取得
+    const savedWidth = localStorage.getItem(storageKey);
+    const savedCollapsed = localStorage.getItem(`${storageKey}-collapsed`) === 'true';
+
+    // 初期幅を設定（保存された値がある場合のみ上書き）
+    if (savedWidth && !savedCollapsed) {
+      const sidebarWidth = parseInt(savedWidth);
+      sidebar.style.width = `${sidebarWidth}px`;
+    }
+
+    // 初期状態を設定
+    if (savedCollapsed) {
+      sidebar.classList.add('sidebar-collapsed');
+      sidebar.style.width = `${collapsedWidth}px`;
+    }
+
+    const collapseButton = document.querySelector('.collapse-button');
+    collapseButton?.setAttribute('aria-expanded', String(!savedCollapsed));
+  };
+
+  // できるだけ早く実行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeSidebar);
+  } else {
+    initializeSidebar();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const resizer = document.querySelector('.sidebar-resizer');
+    const collapseButton = document.querySelector('.collapse-button');
+
+    if (!sidebar || !resizer || !collapseButton) return;
+
+    // リサイズ処理
+    let isResizing = false;
+    let startX = 0;
+    let startWidth = 0;
+
+    // リサイズ開始
+    const startResize = (e) => {
+      isResizing = true;
+      startX = e.clientX || e.touches[0].clientX;
+      startWidth = parseInt(sidebar.offsetWidth);
+      resizer.classList.add('resizing');
+      document.body.style.cursor = 'col-resize';
+      document.body.style.userSelect = 'none';
+
+      // イベントリスナーを追加
+      document.addEventListener('mousemove', resize);
+      document.addEventListener('touchmove', resize, { passive: false });
+      document.addEventListener('mouseup', stopResize);
+      document.addEventListener('touchend', stopResize);
+    };
+
+    // リサイズ中
+    const resize = (e) => {
+      if (!isResizing) return;
+
+      e.preventDefault();
+
+      const clientX = e.clientX || e.touches[0].clientX;
+      const pointerDelta = dir === 'rtl' ? startX - clientX : clientX - startX;
+      let newWidth = startWidth + pointerDelta;
+
+      // 最小幅と最大幅の制限
+      newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+
+      // サイドバーの幅を更新
+      sidebar.style.width = `${newWidth}px`;
+
+      // 折りたたみ状態を解除
+      if (sidebar.classList.contains('sidebar-collapsed') && newWidth > collapsedWidth) {
+        sidebar.classList.remove('sidebar-collapsed');
+        localStorage.setItem(`${storageKey}-collapsed`, 'false');
+      }
+    };
+
+    // リサイズ終了
+    const stopResize = () => {
+      if (!isResizing) return;
+
+      isResizing = false;
+      resizer.classList.remove('resizing');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+
+      // 現在の幅をローカルストレージに保存
+      if (!sidebar.classList.contains('sidebar-collapsed')) {
+        localStorage.setItem(storageKey, sidebar.offsetWidth);
+      }
+
+      // イベントリスナーを削除
+      document.removeEventListener('mousemove', resize);
+      document.removeEventListener('touchmove', resize);
+      document.removeEventListener('mouseup', stopResize);
+      document.removeEventListener('touchend', stopResize);
+    };
+
+    // 折りたたみ/展開ボタンのクリックイベント
+    const toggleCollapse = () => {
+      const widthBeforeToggle = sidebar.offsetWidth;
+      const isCollapsed = sidebar.classList.toggle('sidebar-collapsed');
+
+      if (isCollapsed) {
+        // 現在の幅を一時保存
+        if (!localStorage.getItem(`${storageKey}-width-before-collapse`)) {
+          localStorage.setItem(`${storageKey}-width-before-collapse`, widthBeforeToggle);
+        }
+
+        // 折りたたみ幅に設定
+        sidebar.style.width = `${collapsedWidth}px`;
+      } else {
+        // 以前の幅に戻す
+        const widthBeforeCollapse =
+          localStorage.getItem(`${storageKey}-width-before-collapse`) || initialWidth;
+        const restoredWidth = Number(widthBeforeCollapse);
+        sidebar.style.width = `${Math.min(maxWidth, Math.max(minWidth, Number.isFinite(restoredWidth) ? restoredWidth : initialWidth))}px`;
+        localStorage.removeItem(`${storageKey}-width-before-collapse`);
+        sidebar.scrollLeft = 0;
+      }
+
+      // 折りたたみ状態をローカルストレージに保存
+      localStorage.setItem(`${storageKey}-collapsed`, isCollapsed);
+      collapseButton.setAttribute('aria-expanded', String(!isCollapsed));
+    };
+
+    // イベントリスナーを設定
+    resizer.addEventListener('mousedown', startResize);
+    resizer.addEventListener('touchstart', startResize, { passive: false });
+    collapseButton.addEventListener('click', toggleCollapse);
+  });
+})();</script> <h3 class="sidebar-title" id="sidebar-title" data-astro-cid-5jauxtae> Documentation </h3> <nav aria-labelledby="sidebar-title" data-astro-cid-5jauxtae> <sl-sidebar-state-persist data-hash="sidebar-hash" data-astro-cid-hrwkh5n3="true"> <script aria-hidden="true">
+    (() => {
+      try {
+        if (!matchMedia('(min-width: 50em)').matches) return;
+        /** @type {HTMLElement | null} */
+        const target = document.querySelector('sl-sidebar-state-persist');
+        const state = JSON.parse(sessionStorage.getItem('sidebar-state') || '0');
+        if (!target || !state || target.dataset.hash !== state.hash) return;
+        window._sidebarScrollRestore = state.scroll;
+        customElements.define(
+          'sl-sidebar-restore',
+          class SidebarRestore extends HTMLElement {
+            connectedCallback() {
+              try {
+                const idx = parseInt(this.dataset.index || '');
+                const details = this.closest('details');
+                if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+              } catch {
+                // 段階的な拡張機能のため、エラーは静かに無視
+              }
+            }
+          }
+        );
+      } catch {
+        // 段階的な拡張機能のため、エラーは静かに無視
+      }
+    })();
+  </script>  <ul class="top-level" data-astro-cid-5jauxtae> <li data-astro-cid-5jauxtae> <details data-astro-cid-5jauxtae> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary data-astro-cid-5jauxtae> <div class="group-label" data-astro-cid-5jauxtae> <span class="large" data-astro-cid-5jauxtae>Manual</span>  </div> <span class="caret-container" data-astro-cid-5jauxtae> <span class="caret-wrapper" data-astro-cid-5jauxtae> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-dmkylxqa style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-5jauxtae> <li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/00-introduction" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>jq 1.8 Manual</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/01-invoking-jq" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Invoking jq</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/02-basic-filters" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Basic filters</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/03-types-and-values" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Types and Values</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/04-builtin-operators-and-functions" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Builtin operators and functions</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/05-conditionals-and-comparisons" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Conditionals and Comparisons</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/06-regular-expressions" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Regular expressions</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/07-advanced-features" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Advanced features</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/08-math" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Math</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/09-io" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>I/O</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/10-streaming" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Streaming</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/11-assignment" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Assignment</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/12-comments" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Comments</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/13-modules" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Modules</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/14-colors" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Colors</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/01-guide/15-manpage-appendix" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Manpage introduction and epilogue</span>  </a> </li> </ul> </details> </li><li data-astro-cid-5jauxtae> <details open data-astro-cid-5jauxtae> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary data-astro-cid-5jauxtae> <div class="group-label" data-astro-cid-5jauxtae> <span class="large" data-astro-cid-5jauxtae>Original notices and license</span>  </div> <span class="caret-container" data-astro-cid-5jauxtae> <span class="caret-wrapper" data-astro-cid-5jauxtae> <svg aria-hidden="true" class="icon " width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-dmkylxqa style="--icon-size: 1.25rem;"><path d="m9 18 6-6-6-6"/></svg> </span> </span> </summary> <ul data-astro-cid-5jauxtae> <li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/02-license/01-original-notices" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>Original jq COPYING</span>  </a> </li><li data-astro-cid-5jauxtae> <a href="/docs/jq/v1-8-2/en/02-license/02-cc-by-3-0" aria-current="page" class="active" data-astro-cid-5jauxtae> <span data-astro-cid-5jauxtae>CC BY 3.0 Unported — Full legal code</span>  </a> </li> </ul> </details> </li> </ul>  <script aria-hidden="true">
+    (() => {
+      const scroller = document.getElementById('sidebar');
+      if (!window._sidebarScrollRestore || !scroller) return;
+      scroller.scrollTop = window._sidebarScrollRestore;
+      delete window._sidebarScrollRestore;
+    })();
+  </script> </sl-sidebar-state-persist> <script type="module" src="/docs/jq/assets/SidebarPersister.astro_astro_type_script_index_0_lang.1HBmR04Y.js"></script>  </nav> </aside>  <script type="module" src="/docs/jq/assets/Sidebar.astro_astro_type_script_index_0_lang.Dr4m1BH4.js"></script> </div> </aside> <div class="main-column" dir="ltr">  <div class="content-panel"> <article class="sl-markdown-content" dir="ltr">   <div class="docs-code-frame"><div class="docs-code-toolbar"><button type="button" class="docs-code-copy" data-copy-label="Copy code" data-copied-label="Copied" aria-label="Copy code">Copy code</button></div><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>Creative Commons Legal Code</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Attribution 3.0 Unported</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE</span></span>
+<span class="line"><span>    LEGAL SERVICES. DISTRIBUTION OF THIS LICENSE DOES NOT CREATE AN</span></span>
+<span class="line"><span>    ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS</span></span>
+<span class="line"><span>    INFORMATION ON AN "AS-IS" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES</span></span>
+<span class="line"><span>    REGARDING THE INFORMATION PROVIDED, AND DISCLAIMS LIABILITY FOR</span></span>
+<span class="line"><span>    DAMAGES RESULTING FROM ITS USE.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>License</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE</span></span>
+<span class="line"><span>COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY</span></span>
+<span class="line"><span>COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS</span></span>
+<span class="line"><span>AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE</span></span>
+<span class="line"><span>TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE MAY</span></span>
+<span class="line"><span>BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS</span></span>
+<span class="line"><span>CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND</span></span>
+<span class="line"><span>CONDITIONS.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. Definitions</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> a. "Adaptation" means a work based upon the Work, or upon the Work and</span></span>
+<span class="line"><span>    other pre-existing works, such as a translation, adaptation,</span></span>
+<span class="line"><span>    derivative work, arrangement of music or other alterations of a</span></span>
+<span class="line"><span>    literary or artistic work, or phonogram or performance and includes</span></span>
+<span class="line"><span>    cinematographic adaptations or any other form in which the Work may be</span></span>
+<span class="line"><span>    recast, transformed, or adapted including in any form recognizably</span></span>
+<span class="line"><span>    derived from the original, except that a work that constitutes a</span></span>
+<span class="line"><span>    Collection will not be considered an Adaptation for the purpose of</span></span>
+<span class="line"><span>    this License. For the avoidance of doubt, where the Work is a musical</span></span>
+<span class="line"><span>    work, performance or phonogram, the synchronization of the Work in</span></span>
+<span class="line"><span>    timed-relation with a moving image ("synching") will be considered an</span></span>
+<span class="line"><span>    Adaptation for the purpose of this License.</span></span>
+<span class="line"><span> b. "Collection" means a collection of literary or artistic works, such as</span></span>
+<span class="line"><span>    encyclopedias and anthologies, or performances, phonograms or</span></span>
+<span class="line"><span>    broadcasts, or other works or subject matter other than works listed</span></span>
+<span class="line"><span>    in Section 1(f) below, which, by reason of the selection and</span></span>
+<span class="line"><span>    arrangement of their contents, constitute intellectual creations, in</span></span>
+<span class="line"><span>    which the Work is included in its entirety in unmodified form along</span></span>
+<span class="line"><span>    with one or more other contributions, each constituting separate and</span></span>
+<span class="line"><span>    independent works in themselves, which together are assembled into a</span></span>
+<span class="line"><span>    collective whole. A work that constitutes a Collection will not be</span></span>
+<span class="line"><span>    considered an Adaptation (as defined above) for the purposes of this</span></span>
+<span class="line"><span>    License.</span></span>
+<span class="line"><span> c. "Distribute" means to make available to the public the original and</span></span>
+<span class="line"><span>    copies of the Work or Adaptation, as appropriate, through sale or</span></span>
+<span class="line"><span>    other transfer of ownership.</span></span>
+<span class="line"><span> d. "Licensor" means the individual, individuals, entity or entities that</span></span>
+<span class="line"><span>    offer(s) the Work under the terms of this License.</span></span>
+<span class="line"><span> e. "Original Author" means, in the case of a literary or artistic work,</span></span>
+<span class="line"><span>    the individual, individuals, entity or entities who created the Work</span></span>
+<span class="line"><span>    or if no individual or entity can be identified, the publisher; and in</span></span>
+<span class="line"><span>    addition (i) in the case of a performance the actors, singers,</span></span>
+<span class="line"><span>    musicians, dancers, and other persons who act, sing, deliver, declaim,</span></span>
+<span class="line"><span>    play in, interpret or otherwise perform literary or artistic works or</span></span>
+<span class="line"><span>    expressions of folklore; (ii) in the case of a phonogram the producer</span></span>
+<span class="line"><span>    being the person or legal entity who first fixes the sounds of a</span></span>
+<span class="line"><span>    performance or other sounds; and, (iii) in the case of broadcasts, the</span></span>
+<span class="line"><span>    organization that transmits the broadcast.</span></span>
+<span class="line"><span> f. "Work" means the literary and/or artistic work offered under the terms</span></span>
+<span class="line"><span>    of this License including without limitation any production in the</span></span>
+<span class="line"><span>    literary, scientific and artistic domain, whatever may be the mode or</span></span>
+<span class="line"><span>    form of its expression including digital form, such as a book,</span></span>
+<span class="line"><span>    pamphlet and other writing; a lecture, address, sermon or other work</span></span>
+<span class="line"><span>    of the same nature; a dramatic or dramatico-musical work; a</span></span>
+<span class="line"><span>    choreographic work or entertainment in dumb show; a musical</span></span>
+<span class="line"><span>    composition with or without words; a cinematographic work to which are</span></span>
+<span class="line"><span>    assimilated works expressed by a process analogous to cinematography;</span></span>
+<span class="line"><span>    a work of drawing, painting, architecture, sculpture, engraving or</span></span>
+<span class="line"><span>    lithography; a photographic work to which are assimilated works</span></span>
+<span class="line"><span>    expressed by a process analogous to photography; a work of applied</span></span>
+<span class="line"><span>    art; an illustration, map, plan, sketch or three-dimensional work</span></span>
+<span class="line"><span>    relative to geography, topography, architecture or science; a</span></span>
+<span class="line"><span>    performance; a broadcast; a phonogram; a compilation of data to the</span></span>
+<span class="line"><span>    extent it is protected as a copyrightable work; or a work performed by</span></span>
+<span class="line"><span>    a variety or circus performer to the extent it is not otherwise</span></span>
+<span class="line"><span>    considered a literary or artistic work.</span></span>
+<span class="line"><span> g. "You" means an individual or entity exercising rights under this</span></span>
+<span class="line"><span>    License who has not previously violated the terms of this License with</span></span>
+<span class="line"><span>    respect to the Work, or who has received express permission from the</span></span>
+<span class="line"><span>    Licensor to exercise rights under this License despite a previous</span></span>
+<span class="line"><span>    violation.</span></span>
+<span class="line"><span> h. "Publicly Perform" means to perform public recitations of the Work and</span></span>
+<span class="line"><span>    to communicate to the public those public recitations, by any means or</span></span>
+<span class="line"><span>    process, including by wire or wireless means or public digital</span></span>
+<span class="line"><span>    performances; to make available to the public Works in such a way that</span></span>
+<span class="line"><span>    members of the public may access these Works from a place and at a</span></span>
+<span class="line"><span>    place individually chosen by them; to perform the Work to the public</span></span>
+<span class="line"><span>    by any means or process and the communication to the public of the</span></span>
+<span class="line"><span>    performances of the Work, including by public digital performance; to</span></span>
+<span class="line"><span>    broadcast and rebroadcast the Work by any means including signs,</span></span>
+<span class="line"><span>    sounds or images.</span></span>
+<span class="line"><span> i. "Reproduce" means to make copies of the Work by any means including</span></span>
+<span class="line"><span>    without limitation by sound or visual recordings and the right of</span></span>
+<span class="line"><span>    fixation and reproducing fixations of the Work, including storage of a</span></span>
+<span class="line"><span>    protected performance or phonogram in digital form or other electronic</span></span>
+<span class="line"><span>    medium.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>2. Fair Dealing Rights. Nothing in this License is intended to reduce,</span></span>
+<span class="line"><span>limit, or restrict any uses free from copyright or rights arising from</span></span>
+<span class="line"><span>limitations or exceptions that are provided for in connection with the</span></span>
+<span class="line"><span>copyright protection under copyright law or other applicable laws.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>3. License Grant. Subject to the terms and conditions of this License,</span></span>
+<span class="line"><span>Licensor hereby grants You a worldwide, royalty-free, non-exclusive,</span></span>
+<span class="line"><span>perpetual (for the duration of the applicable copyright) license to</span></span>
+<span class="line"><span>exercise the rights in the Work as stated below:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> a. to Reproduce the Work, to incorporate the Work into one or more</span></span>
+<span class="line"><span>    Collections, and to Reproduce the Work as incorporated in the</span></span>
+<span class="line"><span>    Collections;</span></span>
+<span class="line"><span> b. to create and Reproduce Adaptations provided that any such Adaptation,</span></span>
+<span class="line"><span>    including any translation in any medium, takes reasonable steps to</span></span>
+<span class="line"><span>    clearly label, demarcate or otherwise identify that changes were made</span></span>
+<span class="line"><span>    to the original Work. For example, a translation could be marked "The</span></span>
+<span class="line"><span>    original work was translated from English to Spanish," or a</span></span>
+<span class="line"><span>    modification could indicate "The original work has been modified.";</span></span>
+<span class="line"><span> c. to Distribute and Publicly Perform the Work including as incorporated</span></span>
+<span class="line"><span>    in Collections; and,</span></span>
+<span class="line"><span> d. to Distribute and Publicly Perform Adaptations.</span></span>
+<span class="line"><span> e. For the avoidance of doubt:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>     i. Non-waivable Compulsory License Schemes. In those jurisdictions in</span></span>
+<span class="line"><span>        which the right to collect royalties through any statutory or</span></span>
+<span class="line"><span>        compulsory licensing scheme cannot be waived, the Licensor</span></span>
+<span class="line"><span>        reserves the exclusive right to collect such royalties for any</span></span>
+<span class="line"><span>        exercise by You of the rights granted under this License;</span></span>
+<span class="line"><span>    ii. Waivable Compulsory License Schemes. In those jurisdictions in</span></span>
+<span class="line"><span>        which the right to collect royalties through any statutory or</span></span>
+<span class="line"><span>        compulsory licensing scheme can be waived, the Licensor waives the</span></span>
+<span class="line"><span>        exclusive right to collect such royalties for any exercise by You</span></span>
+<span class="line"><span>        of the rights granted under this License; and,</span></span>
+<span class="line"><span>   iii. Voluntary License Schemes. The Licensor waives the right to</span></span>
+<span class="line"><span>        collect royalties, whether individually or, in the event that the</span></span>
+<span class="line"><span>        Licensor is a member of a collecting society that administers</span></span>
+<span class="line"><span>        voluntary licensing schemes, via that society, from any exercise</span></span>
+<span class="line"><span>        by You of the rights granted under this License.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>The above rights may be exercised in all media and formats whether now</span></span>
+<span class="line"><span>known or hereafter devised. The above rights include the right to make</span></span>
+<span class="line"><span>such modifications as are technically necessary to exercise the rights in</span></span>
+<span class="line"><span>other media and formats. Subject to Section 8(f), all rights not expressly</span></span>
+<span class="line"><span>granted by Licensor are hereby reserved.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>4. Restrictions. The license granted in Section 3 above is expressly made</span></span>
+<span class="line"><span>subject to and limited by the following restrictions:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> a. You may Distribute or Publicly Perform the Work only under the terms</span></span>
+<span class="line"><span>    of this License. You must include a copy of, or the Uniform Resource</span></span>
+<span class="line"><span>    Identifier (URI) for, this License with every copy of the Work You</span></span>
+<span class="line"><span>    Distribute or Publicly Perform. You may not offer or impose any terms</span></span>
+<span class="line"><span>    on the Work that restrict the terms of this License or the ability of</span></span>
+<span class="line"><span>    the recipient of the Work to exercise the rights granted to that</span></span>
+<span class="line"><span>    recipient under the terms of the License. You may not sublicense the</span></span>
+<span class="line"><span>    Work. You must keep intact all notices that refer to this License and</span></span>
+<span class="line"><span>    to the disclaimer of warranties with every copy of the Work You</span></span>
+<span class="line"><span>    Distribute or Publicly Perform. When You Distribute or Publicly</span></span>
+<span class="line"><span>    Perform the Work, You may not impose any effective technological</span></span>
+<span class="line"><span>    measures on the Work that restrict the ability of a recipient of the</span></span>
+<span class="line"><span>    Work from You to exercise the rights granted to that recipient under</span></span>
+<span class="line"><span>    the terms of the License. This Section 4(a) applies to the Work as</span></span>
+<span class="line"><span>    incorporated in a Collection, but this does not require the Collection</span></span>
+<span class="line"><span>    apart from the Work itself to be made subject to the terms of this</span></span>
+<span class="line"><span>    License. If You create a Collection, upon notice from any Licensor You</span></span>
+<span class="line"><span>    must, to the extent practicable, remove from the Collection any credit</span></span>
+<span class="line"><span>    as required by Section 4(b), as requested. If You create an</span></span>
+<span class="line"><span>    Adaptation, upon notice from any Licensor You must, to the extent</span></span>
+<span class="line"><span>    practicable, remove from the Adaptation any credit as required by</span></span>
+<span class="line"><span>    Section 4(b), as requested.</span></span>
+<span class="line"><span> b. If You Distribute, or Publicly Perform the Work or any Adaptations or</span></span>
+<span class="line"><span>    Collections, You must, unless a request has been made pursuant to</span></span>
+<span class="line"><span>    Section 4(a), keep intact all copyright notices for the Work and</span></span>
+<span class="line"><span>    provide, reasonable to the medium or means You are utilizing: (i) the</span></span>
+<span class="line"><span>    name of the Original Author (or pseudonym, if applicable) if supplied,</span></span>
+<span class="line"><span>    and/or if the Original Author and/or Licensor designate another party</span></span>
+<span class="line"><span>    or parties (e.g., a sponsor institute, publishing entity, journal) for</span></span>
+<span class="line"><span>    attribution ("Attribution Parties") in Licensor's copyright notice,</span></span>
+<span class="line"><span>    terms of service or by other reasonable means, the name of such party</span></span>
+<span class="line"><span>    or parties; (ii) the title of the Work if supplied; (iii) to the</span></span>
+<span class="line"><span>    extent reasonably practicable, the URI, if any, that Licensor</span></span>
+<span class="line"><span>    specifies to be associated with the Work, unless such URI does not</span></span>
+<span class="line"><span>    refer to the copyright notice or licensing information for the Work;</span></span>
+<span class="line"><span>    and (iv) , consistent with Section 3(b), in the case of an Adaptation,</span></span>
+<span class="line"><span>    a credit identifying the use of the Work in the Adaptation (e.g.,</span></span>
+<span class="line"><span>    "French translation of the Work by Original Author," or "Screenplay</span></span>
+<span class="line"><span>    based on original Work by Original Author"). The credit required by</span></span>
+<span class="line"><span>    this Section 4 (b) may be implemented in any reasonable manner;</span></span>
+<span class="line"><span>    provided, however, that in the case of a Adaptation or Collection, at</span></span>
+<span class="line"><span>    a minimum such credit will appear, if a credit for all contributing</span></span>
+<span class="line"><span>    authors of the Adaptation or Collection appears, then as part of these</span></span>
+<span class="line"><span>    credits and in a manner at least as prominent as the credits for the</span></span>
+<span class="line"><span>    other contributing authors. For the avoidance of doubt, You may only</span></span>
+<span class="line"><span>    use the credit required by this Section for the purpose of attribution</span></span>
+<span class="line"><span>    in the manner set out above and, by exercising Your rights under this</span></span>
+<span class="line"><span>    License, You may not implicitly or explicitly assert or imply any</span></span>
+<span class="line"><span>    connection with, sponsorship or endorsement by the Original Author,</span></span>
+<span class="line"><span>    Licensor and/or Attribution Parties, as appropriate, of You or Your</span></span>
+<span class="line"><span>    use of the Work, without the separate, express prior written</span></span>
+<span class="line"><span>    permission of the Original Author, Licensor and/or Attribution</span></span>
+<span class="line"><span>    Parties.</span></span>
+<span class="line"><span> c. Except as otherwise agreed in writing by the Licensor or as may be</span></span>
+<span class="line"><span>    otherwise permitted by applicable law, if You Reproduce, Distribute or</span></span>
+<span class="line"><span>    Publicly Perform the Work either by itself or as part of any</span></span>
+<span class="line"><span>    Adaptations or Collections, You must not distort, mutilate, modify or</span></span>
+<span class="line"><span>    take other derogatory action in relation to the Work which would be</span></span>
+<span class="line"><span>    prejudicial to the Original Author's honor or reputation. Licensor</span></span>
+<span class="line"><span>    agrees that in those jurisdictions (e.g. Japan), in which any exercise</span></span>
+<span class="line"><span>    of the right granted in Section 3(b) of this License (the right to</span></span>
+<span class="line"><span>    make Adaptations) would be deemed to be a distortion, mutilation,</span></span>
+<span class="line"><span>    modification or other derogatory action prejudicial to the Original</span></span>
+<span class="line"><span>    Author's honor and reputation, the Licensor will waive or not assert,</span></span>
+<span class="line"><span>    as appropriate, this Section, to the fullest extent permitted by the</span></span>
+<span class="line"><span>    applicable national law, to enable You to reasonably exercise Your</span></span>
+<span class="line"><span>    right under Section 3(b) of this License (right to make Adaptations)</span></span>
+<span class="line"><span>    but not otherwise.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>5. Representations, Warranties and Disclaimer</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>UNLESS OTHERWISE MUTUALLY AGREED TO BY THE PARTIES IN WRITING, LICENSOR</span></span>
+<span class="line"><span>OFFERS THE WORK AS-IS AND MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY</span></span>
+<span class="line"><span>KIND CONCERNING THE WORK, EXPRESS, IMPLIED, STATUTORY OR OTHERWISE,</span></span>
+<span class="line"><span>INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, MERCHANTIBILITY,</span></span>
+<span class="line"><span>FITNESS FOR A PARTICULAR PURPOSE, NONINFRINGEMENT, OR THE ABSENCE OF</span></span>
+<span class="line"><span>LATENT OR OTHER DEFECTS, ACCURACY, OR THE PRESENCE OF ABSENCE OF ERRORS,</span></span>
+<span class="line"><span>WHETHER OR NOT DISCOVERABLE. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION</span></span>
+<span class="line"><span>OF IMPLIED WARRANTIES, SO SUCH EXCLUSION MAY NOT APPLY TO YOU.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>6. Limitation on Liability. EXCEPT TO THE EXTENT REQUIRED BY APPLICABLE</span></span>
+<span class="line"><span>LAW, IN NO EVENT WILL LICENSOR BE LIABLE TO YOU ON ANY LEGAL THEORY FOR</span></span>
+<span class="line"><span>ANY SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR EXEMPLARY DAMAGES</span></span>
+<span class="line"><span>ARISING OUT OF THIS LICENSE OR THE USE OF THE WORK, EVEN IF LICENSOR HAS</span></span>
+<span class="line"><span>BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>7. Termination</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> a. This License and the rights granted hereunder will terminate</span></span>
+<span class="line"><span>    automatically upon any breach by You of the terms of this License.</span></span>
+<span class="line"><span>    Individuals or entities who have received Adaptations or Collections</span></span>
+<span class="line"><span>    from You under this License, however, will not have their licenses</span></span>
+<span class="line"><span>    terminated provided such individuals or entities remain in full</span></span>
+<span class="line"><span>    compliance with those licenses. Sections 1, 2, 5, 6, 7, and 8 will</span></span>
+<span class="line"><span>    survive any termination of this License.</span></span>
+<span class="line"><span> b. Subject to the above terms and conditions, the license granted here is</span></span>
+<span class="line"><span>    perpetual (for the duration of the applicable copyright in the Work).</span></span>
+<span class="line"><span>    Notwithstanding the above, Licensor reserves the right to release the</span></span>
+<span class="line"><span>    Work under different license terms or to stop distributing the Work at</span></span>
+<span class="line"><span>    any time; provided, however that any such election will not serve to</span></span>
+<span class="line"><span>    withdraw this License (or any other license that has been, or is</span></span>
+<span class="line"><span>    required to be, granted under the terms of this License), and this</span></span>
+<span class="line"><span>    License will continue in full force and effect unless terminated as</span></span>
+<span class="line"><span>    stated above.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>8. Miscellaneous</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span> a. Each time You Distribute or Publicly Perform the Work or a Collection,</span></span>
+<span class="line"><span>    the Licensor offers to the recipient a license to the Work on the same</span></span>
+<span class="line"><span>    terms and conditions as the license granted to You under this License.</span></span>
+<span class="line"><span> b. Each time You Distribute or Publicly Perform an Adaptation, Licensor</span></span>
+<span class="line"><span>    offers to the recipient a license to the original Work on the same</span></span>
+<span class="line"><span>    terms and conditions as the license granted to You under this License.</span></span>
+<span class="line"><span> c. If any provision of this License is invalid or unenforceable under</span></span>
+<span class="line"><span>    applicable law, it shall not affect the validity or enforceability of</span></span>
+<span class="line"><span>    the remainder of the terms of this License, and without further action</span></span>
+<span class="line"><span>    by the parties to this agreement, such provision shall be reformed to</span></span>
+<span class="line"><span>    the minimum extent necessary to make such provision valid and</span></span>
+<span class="line"><span>    enforceable.</span></span>
+<span class="line"><span> d. No term or provision of this License shall be deemed waived and no</span></span>
+<span class="line"><span>    breach consented to unless such waiver or consent shall be in writing</span></span>
+<span class="line"><span>    and signed by the party to be charged with such waiver or consent.</span></span>
+<span class="line"><span> e. This License constitutes the entire agreement between the parties with</span></span>
+<span class="line"><span>    respect to the Work licensed here. There are no understandings,</span></span>
+<span class="line"><span>    agreements or representations with respect to the Work not specified</span></span>
+<span class="line"><span>    here. Licensor shall not be bound by any additional provisions that</span></span>
+<span class="line"><span>    may appear in any communication from You. This License may not be</span></span>
+<span class="line"><span>    modified without the mutual written agreement of the Licensor and You.</span></span>
+<span class="line"><span> f. The rights granted under, and the subject matter referenced, in this</span></span>
+<span class="line"><span>    License were drafted utilizing the terminology of the Berne Convention</span></span>
+<span class="line"><span>    for the Protection of Literary and Artistic Works (as amended on</span></span>
+<span class="line"><span>    September 28, 1979), the Rome Convention of 1961, the WIPO Copyright</span></span>
+<span class="line"><span>    Treaty of 1996, the WIPO Performances and Phonograms Treaty of 1996</span></span>
+<span class="line"><span>    and the Universal Copyright Convention (as revised on July 24, 1971).</span></span>
+<span class="line"><span>    These rights and subject matter take effect in the relevant</span></span>
+<span class="line"><span>    jurisdiction in which the License terms are sought to be enforced</span></span>
+<span class="line"><span>    according to the corresponding provisions of the implementation of</span></span>
+<span class="line"><span>    those treaty provisions in the applicable national law. If the</span></span>
+<span class="line"><span>    standard suite of rights granted under applicable copyright law</span></span>
+<span class="line"><span>    includes additional rights not granted under this License, such</span></span>
+<span class="line"><span>    additional rights are deemed to be included in the License; this</span></span>
+<span class="line"><span>    License is not intended to restrict the license of any rights under</span></span>
+<span class="line"><span>    applicable law.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Creative Commons Notice</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Creative Commons is not a party to this License, and makes no warranty</span></span>
+<span class="line"><span>    whatsoever in connection with the Work. Creative Commons will not be</span></span>
+<span class="line"><span>    liable to You or any party on any legal theory for any damages</span></span>
+<span class="line"><span>    whatsoever, including without limitation any general, special,</span></span>
+<span class="line"><span>    incidental or consequential damages arising in connection to this</span></span>
+<span class="line"><span>    license. Notwithstanding the foregoing two (2) sentences, if Creative</span></span>
+<span class="line"><span>    Commons has expressly identified itself as the Licensor hereunder, it</span></span>
+<span class="line"><span>    shall have all rights and obligations of Licensor.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Except for the limited purpose of indicating to the public that the</span></span>
+<span class="line"><span>    Work is licensed under the CCPL, Creative Commons does not authorize</span></span>
+<span class="line"><span>    the use by either party of the trademark "Creative Commons" or any</span></span>
+<span class="line"><span>    related trademark or logo of Creative Commons without the prior</span></span>
+<span class="line"><span>    written consent of Creative Commons. Any permitted use will be in</span></span>
+<span class="line"><span>    compliance with Creative Commons' then-current trademark usage</span></span>
+<span class="line"><span>    guidelines, as may be published on its website or otherwise made</span></span>
+<span class="line"><span>    available upon request from time to time. For the avoidance of doubt,</span></span>
+<span class="line"><span>    this trademark restriction does not form part of this License.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    Creative Commons may be contacted at https://creativecommons.org/.</span></span>
+<span class="line"><span></span></span></code></pre></div><script type="module">document.addEventListener('click',async e=>{const b=e.target.closest?.('.docs-code-copy');if(!b)return;const c=b.closest('.docs-code-frame')?.querySelector('code');if(!c)return;await navigator.clipboard.writeText(c.textContent??'');b.textContent=b.dataset.copiedLabel;setTimeout(()=>b.textContent=b.dataset.copyLabel,1500)});</script> <div class="navigation-container" data-astro-cid-w75peyc3> <div class="pagination-links" dir="ltr" data-astro-cid-lxwikipw> <a href="/docs/jq/v1-8-2/en/02-license/01-original-notices" rel="prev" data-astro-cid-lxwikipw> <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" data-astro-cid-lxwikipw> <path fill="currentColor" d="M13.3 17.3L9.7 13.7c-.4-.4-.4-1 0-1.4l3.6-3.6c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4L11.4 13l3.3 3.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3z" data-astro-cid-lxwikipw></path> </svg> <span class="link-copy" data-astro-cid-lxwikipw> Previous <br data-astro-cid-lxwikipw> <span class="link-title" data-astro-cid-lxwikipw>Original jq COPYING</span> </span> </a>  </div>  </div>   <aside class="document-provenance" aria-labelledby="document-provenance-title" data-astro-cid-o25epk57><div class="provenance-header" data-astro-cid-o25epk57><h2 id="document-provenance-title" data-astro-cid-o25epk57>Document source</h2><span class="provenance-status" data-astro-cid-o25epk57>Canonical language</span></div><p class="attribution-text" data-astro-cid-o25epk57>This document is &quot;jq 1.8 Manual&quot; by Stephen Dolan / jq project contributors, formatted for libx.</p><dl class="provenance-metadata" data-astro-cid-o25epk57><div data-astro-cid-o25epk57><dt data-astro-cid-o25epk57>Source</dt><dd data-astro-cid-o25epk57>jq 1.8 Manual</dd></div><div data-astro-cid-o25epk57><dt data-astro-cid-o25epk57>Upstream version</dt><dd data-astro-cid-o25epk57>jq 1.8.2 / Manual 1.8</dd></div><div data-astro-cid-o25epk57><dt data-astro-cid-o25epk57>License</dt><dd data-astro-cid-o25epk57>CC BY 3.0 Unported</dd></div></dl><div class="provenance-links" data-astro-cid-o25epk57><a href="https://jqlang.org/manual/v1.8/" target="_blank" rel="noopener" data-astro-cid-o25epk57>Open original</a><a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener" data-astro-cid-o25epk57>CC BY 3.0 UnportedLicense</a></div></aside> </article> </div> </div>  </div>  </main> </div> </div> </body></html> <script>(function(){const baseUrl = "/docs/jq";
+const isGroup = false;
+
+  // サイドバーのプリフェッチ
+  function prefetchSidebar(lang, version) {
+    // バージョンが有効な形式（v1, v2など）かチェック
+    if (!version || !version.match(/^v\d+(?:-\d+)*$/)) {
+      version = 'v1'; // デフォルトバージョンを設定
+    }
+
+    const sidebarPath = `${baseUrl}/sidebar/sidebar-${lang}-${version}.json`;
+
+    // プリフェッチ用のlink要素を作成
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = sidebarPath;
+    document.head.appendChild(link);
+  }
+
+  // 現在のページの言語とバージョンを取得
+  const currentLang = document.documentElement.lang;
+
+  // URLパスからバージョン情報を正確に抽出
+  function extractVersionFromPath() {
+    const path = window.location.pathname;
+
+    // ベースパスを除去
+    const baseUrlPath = baseUrl.replace(/^\/|\/$/g, ''); // 先頭と末尾のスラッシュを削除
+    const pathWithoutBase = path.replace(new RegExp(`^/?${baseUrlPath}/?`), '');
+
+    // パスを分割
+    const segments = pathWithoutBase.split('/').filter((segment) => segment);
+
+    // version-first ルートの先頭セグメントがバージョン
+    if (segments.length >= 1) {
+      const potentialVersion = segments[0];
+      // バージョン形式をチェック (v1, v2, etc.)
+      if (potentialVersion.match(/^v\d+(?:-\d+)*$/)) {
+        return potentialVersion;
+      }
+    }
+
+    // バージョンが見つからない場合はデフォルトを返す
+    return 'v1';
+  }
+
+  const currentVersion = extractVersionFromPath();
+
+  // 現在のサイドバーをプリフェッチ
+  if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+})();</script> <script type="module" src="/docs/jq/assets/DocLayout.astro_astro_type_script_index_0_lang.SnA9FtQP.js"></script> 

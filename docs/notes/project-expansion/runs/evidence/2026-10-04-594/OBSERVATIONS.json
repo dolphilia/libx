@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-04T04:12:38.988Z",
+  "phase": "isolated-candidate-browser-trial",
+  "url": "http://127.0.0.1:4594/docs/jq/v1-8-2/en/01-guide/04-builtin-operators-and-functions/",
+  "copy": {
+    "initial": {
+      "method": "native AX click 80 then Search native super+v",
+      "expected": "jq '.a + 1'",
+      "actual": "declarations part 1%{verbatim code%}declarations part 2%%keywords%%functions",
+      "status": "failed",
+      "cause": "unconfirmed"
+    },
+    "corrected": [
+      {
+        "method": "Playwright semantic first Copy code then Search native super+a/super+v",
+        "expected": "jq '.a + 1'",
+        "actual": "jq '.a + 1'"
+      },
+      {
+        "method": "semantic second Copy code then native paste",
+        "expected": "{\"a\": 7}",
+        "actual": "{\"a\": 7}"
+      },
+      {
+        "method": "semantic third Copy code then native paste",
+        "expected": "8",
+        "actual": "8"
+      }
+    ],
+    "scope": "3代表コードのみ。250例全操作ではない。共有コピー実装修正なし。"
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "documentWidth": 375,
+    "bodyWidth": 375,
+    "wideHeadings": [],
+    "preCount": 472,
+    "longApiHeadingRect": {
+      "left": 24,
+      "right": 351,
+      "width": 327,
+      "height": 101.5
+    },
+    "visual": "最大ページの初期表示と長いAPI名をスクリーンショットで観察。見出しは折返し、長いJSONはコード領域内の横スクロール。画像はツール出力のみでファイル保存なし。",
+    "scope": "最大ページ2表示のみ。他15頁のUI合格を意味しない。"
+  },
+  "search": {
+    "initial": "Search error; public/searchに索引ファイルなし",
+    "action": "隔離checkoutの正規build-search-index.js --project=jqで18ページ169996bytes索引生成。Astro再build22routes成功。Promiseに旧取得エラーが保持されるのでreload後再検証。",
+    "query": "have_decnum",
+    "results": [
+      "Basic filters",
+      "Builtin operators and functions"
+    ],
+    "status": "passed-representative-query"
+  },
+  "cleanup": {
+    "tabClosed": true,
+    "viewportReset": true,
+    "previewStopped": true
+  },
+  "pending": [
+    "全文内容の自立性レビュー",
+    "対象版・範囲の日本語翻訳調査",
+    "工数見積りと採点・独立選定照合",
+    "正式採用時の全量source packetと翻訳レビュー"
+  ],
+  "decision": "copy代表3件/mobile最大頁/検索代表に前進。conversion unknownを維持し、全文内容レビューや選定合格に代用しない。",
+  "protection": "root apps/jqなし。公開・root共有ファイル変更なし。"
+}

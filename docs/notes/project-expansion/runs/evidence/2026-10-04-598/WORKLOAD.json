@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-04T04:26:14.393Z",
+  "measured": {
+    "syntaxInclusiveWords": 16993,
+    "stringFields": 1135,
+    "entries": 136,
+    "examples": 250,
+    "originalAnchors": 150,
+    "tocAnchors": 154,
+    "localLinkChecks": 738,
+    "bodyPages": 16,
+    "originalNoticePages": 2,
+    "images": 0,
+    "diagramDependencies": 0,
+    "independentRenderedFields": 301
+  },
+  "basis": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-590/JQ_BOUNDARY.json",
+      "sha256": "ae36f54a0162431cc03514a0b7cfb8ef855a3661055301b6bb9ba1c3ab474a4a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-593/trial/UPSTREAM_ASTRO_FIDELITY.json",
+      "sha256": "378925c3954eedab1d45b06a73702cdde84698e306aa1ad82169ceb9ef3b077d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-594/OBSERVATIONS.json",
+      "sha256": "8d2ec63eb605aa1cec6266de1a42de3ae0a5e13590a836eb259ef6cbc2c15d35"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-597/CONTENT_REVIEW.json",
+      "sha256": "fd3651c34f7cfa452b5eaa0b1f99441222afe309d07fbbf47650de079a8a1cbb"
+    }
+  ],
+  "scope": "全Manual+man補足を取り込む。数値/regex/stream/assignmentの章を工数短縮で除外しない。原文コードと例250件を翻訳せず保持し、説明/見出しを翻訳。2原通知全文を保持。",
+  "initialHoursEstimate": {
+    "sourcePacketImporter": 3,
+    "translation": [
+      15,
+      25
+    ],
+    "fullIndependentContentReview": [
+      12,
+      20
+    ],
+    "buildBrowserIntegration": [
+      4,
+      8
+    ],
+    "publication": [
+      2,
+      4
+    ],
+    "total": [
+      36,
+      60
+    ]
+  },
+  "estimateStatus": "見積り。人間の実時間/モデル実行時間の実測ではなく作業工程に基づく幅。変換試験で判明したPython/remark差・生HTML/コード保護を実装済みの隔離試作があるため変換方式を再探索しない。",
+  "updateHoursEstimate": {
+    "unchangedInputs": "1–2h:版/入力/通知・公開artifactの必要な検査",
+    "changedSubset": "3–8h:例を含む変更keyを分類し、対応訳とレビューを失効・再翻訳・本文照合・統合回帰。変更が全章なら初回相当の再見積り"
+  },
+  "ownership": "Codex GPT-6.1 Sol設定（実runtime非公開）、localLLM不使用。公開済み通常巡回より本候補を優先、正式新規枠1件内で順次処理。",
+  "risks": [
+    "16993語は構文/コード込みの保守的計測で全文の日本語訳と別内容レビューに時間を要する",
+    "最大Builtinは75entry。省略せずentry単位の読了/対応記録を保存",
+    "上流Python依存は固定hash、一時領域から再現。共有installを行わない",
+    "版更新時は原id/filter規則と生成器/Pipfile変更も確認"
+  ],
+  "verdict": "pass"
+}
