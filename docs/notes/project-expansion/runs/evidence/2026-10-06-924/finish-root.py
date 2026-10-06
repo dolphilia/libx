@@ -1,0 +1,19 @@
+from pathlib import Path
+import json,hashlib,datetime,re,shutil
+R=Path('/Users/dolphilia/github/libx');W=Path('/private/tmp/libx-gnu-gzip-formal-923');E=R/'docs/notes/project-expansion/runs/evidence/2026-10-06-924';h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();write=lambda p,d:p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n');before=json.loads((E/'ROOT_OTHER_INPUTS_BEFORE.json').read_text());exceptions=[]
+for rel,sha in before.items():
+ p=R/rel
+ if h(p)!=sha:exceptions.append({'path':rel,'beforeSHA256':sha,'afterSHA256':h(p),'mtime':p.stat().st_mtime,'handling':'Existing unrelated concurrent modifications retained; own registration script never writes this path'})
+assert all(x['path'].startswith(('docs/notes/document-import/awesome/','apps/awesome/')) for x in exceptions)
+allowed=['.prettierignore','pnpm-lock.yaml','sites/landing/src/config/projects.config.jsonc'];old={p:(E/'root-before'/p).read_text()for p in allowed};lock=(W/'pnpm-lock.yaml').read_text();block=re.search(r'(?m)^  apps/gnu-gzip:\n.*?(?=^  \S|\Z)',lock,re.S)[0];assert len(block.splitlines())==33;assert(R/'pnpm-lock.yaml').read_text().replace(block,'',1)==old['pnpm-lock.yaml'];ignore='\n# GNU gzip fixed source and generated hash-bound configuration retain bytes.\ndocs/notes/document-import/gnu-gzip/**\napps/gnu-gzip/src/content/docs/**\napps/gnu-gzip/public/source/**\napps/gnu-gzip/src/config/project.config.jsonc\n';assert(R/'.prettierignore').read_text().removesuffix(ignore)==old['.prettierignore'];card=re.search(r'(?m)^    "gnu-gzip": \{\n.*?^    \},?\n',(W/'sites/landing/src/config/projects.config.jsonc').read_text(),re.S)[0].rstrip('\n').rstrip(',')+',\n';assert(R/'sites/landing/src/config/projects.config.jsonc').read_text().replace(card,'',1)==old['sites/landing/src/config/projects.config.jsonc']
+proof=json.loads((E/'ROOT_TEMPLATE_FORMAT_EQUIVALENCE.json').read_text());bridges={x['path']:x for x in proof['rows']};rows=[]
+for p in sorted((W/'apps/gnu-gzip').rglob('*')):
+ if not p.is_file()or p.is_symlink()or any(x in ['node_modules','dist','.astro']for x in p.relative_to(W).parts):continue
+ rel=str(p.relative_to(W));q=R/rel;assert q.is_file();a=h(p);b=h(q);local=str(p.relative_to(W/'apps/gnu-gzip'))
+ if local in bridges:assert a==bridges[local]['isolatedFileSHA256']and b==bridges[local]['rootTemplateSHA256']
+ else:assert a==b,rel
+ rows.append({'path':rel,'isolatedSHA256':a,'rootSHA256':b,'templateEquivalent':local in bridges})
+write(E/'ROOT_SCOPED_REGISTRATION.json',{'status':'passed-scoped-root-registration','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'workspace':str(W),'rootAppCopiedFiles':len(rows),'existingChangedPaths':allowed,'protectedOtherFiles':len(before),'otherFilesByteUnchanged':len(before)-len(exceptions),'concurrentUnrelatedChanges':exceptions,'otherUserFilesOverwritten':False,'allPriorLockAndIgnoreAndLandingBytesRecoveredByInverse':True,'rootLayoutBridges':list(bridges.values()),'initialProtectionCheck':'failed because unrelated awesome files concurrently changed; no overwrite or rollback; all remaining original SHAs exact','initialExitCode':1})
+write(E/'ROOT_TARGET_EQUIVALENCE.json',{'status':'passed-scoped-root-equivalence','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'allOwnAppFiles':len(rows),'rows':rows,'sourceZIPSHA256':h(R/'apps/gnu-gzip/public/source/v1-15/source.zip'),'currentUserCSSExcluded':h(R/'packages/theme/src/css/starlight-overrides.css')=='8e3f03ac4428603ad7626f31dd63bccd9f5f496919e58d5b9a54963d69832e9c','rootNotBuiltOrPublished':True})
+shutil.copy2(W/'docs/notes/document-import/gnu-gzip/v1-15/SOURCE_OFFER_README.md',R/'docs/notes/document-import/gnu-gzip/v1-15/SOURCE_OFFER_README.md')
+print('Ownroot inputs/inverse append verified; other unchanged',len(before)-len(exceptions),'concurrentotherchanges retained',len(exceptions),'ownappfiles',len(rows))
