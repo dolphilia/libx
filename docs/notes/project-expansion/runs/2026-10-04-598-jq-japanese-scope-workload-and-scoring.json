@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-598-jq-japanese-scope-workload-and-scoring",
+  "cycle": 598,
+  "startedAt": "2026-10-04T04:26:14.393Z",
+  "endedAt": "2026-10-04T04:26:18.312Z",
+  "result": "partial",
+  "phase": "candidate-japanese-workload-scoring",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "official/repository language-path inspection",
+    "web search and primary translation/article scope review",
+    "isolated HTTP evidence fetch",
+    "source key/metric inspection",
+    "explicit workload estimate",
+    "CAS candidate update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "27c226024f8ea87669da93129d426f81f0c6752166da636d1d7ed78af1411625"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/FETCH-NETWORK.json",
+      "sha256": "27b1f0e590d060d051f45bd4245786796193bd91ad17812a3734b03720f08955"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/FETCH.json",
+      "sha256": "8425a792e519cff38610a5d29bba3691b7553f98e56a250b065634adafde37f7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/JAPANESE_RESEARCH.json",
+      "sha256": "b5fcf9ecbaa7e5c6334cf4ff5c124e75d722ea3494e60fa618492db9a32464e0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/PAGE_STRUCTURE.json",
+      "sha256": "2d610cc71c4a0f3cabe4b9591183fc19d4d5e7c5a24ec8c69f298063f3394447"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/WEB_SUPPLEMENT.json",
+      "sha256": "63f6eeecf28ec894c6c550ff23a02ea91ac33a5f35d90ea4058e6e6570b944a0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/WORKLOAD.json",
+      "sha256": "161cc84c4043f8456ccabb90df4a520faf4c5917054c04328ae601c628939f63"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/japanese-article.html",
+      "sha256": "40d276fc410130c6a3df22bfb28cdbf75f5bfb50aaab46d097eb90326eb5238c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/japanese-dev-manual.html",
+      "sha256": "79d9c48e04b6981ef5e075c3b96986fa96b0b4aac7137ff8396aa6696e51d487"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/official-home.html",
+      "sha256": "2d96e62f51b3248f07831d59a8cf3dc579c8b7a55b35464242dcdb4e602fd929"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/official-manual.html",
+      "sha256": "20fac47d9ce06dee1f5fa40490ab6de81d4b306d7bccbe193f653766145f5f6a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/official-wiki.html",
+      "sha256": "2197f7ed466b4b410462726cbbacc7a96d851321061f0c6f01df38894af3e496"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/register.mjs",
+      "sha256": "cf0fa2e9fbfffef585313b750787f5eb3857e4a327d26dc9416144b810c24238"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f9898b3f74fbea9a2f193c2c7f8e7b209dad9d023631a04db28f44e46e9cb7f1"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Japanese scope comparison and workload basis",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/JAPANESE_RESEARCH.json",
+          "sha256": "b5fcf9ecbaa7e5c6334cf4ff5c124e75d722ea3494e60fa618492db9a32464e0"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/WORKLOAD.json",
+          "sha256": "161cc84c4043f8456ccabb90df4a520faf4c5917054c04328ae601c628939f63"
+        }
+      ]
+    },
+    {
+      "name": "independent final selection review",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/JAPANESE_RESEARCH.json",
+          "sha256": "b5fcf9ecbaa7e5c6334cf4ff5c124e75d722ea3494e60fa618492db9a32464e0"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-598/WORKLOAD.json",
+          "sha256": "161cc84c4043f8456ccabb90df4a520faf4c5917054c04328ae601c628939f63"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "597は原典全量通読/selfContained passのprogress。次に日本語範囲と工数/採点を完結。",
+    "既存の日本語版/開発版訳を無視せず現行仕様の不足を確認。全6条件pass/74点だが選定別確認前はqualifying。",
+    "正式採用0/公開0。次の着手可能な作業は別選定照合。"
+  ],
+  "unresolved": [
+    "別確認パスの選定レビュー",
+    "正式採用後のsource packet/全量翻訳/別内容レビュー/統合公開検証"
+  ],
+  "nextAction": "固定artifactに基づく別選定レビューを実施しeligible判定。新規枠と公開待ち上限を確認してselectedへ進める。",
+  "resumeCondition": "598の根拠を実file/hashへ追跡する。限定検索を日本語訳不存在断定に変えない。共有CSS保留/Awesomeを保護。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

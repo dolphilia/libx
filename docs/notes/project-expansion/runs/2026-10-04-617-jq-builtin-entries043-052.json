@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-617-jq-builtin-entries043-052",
+  "cycle": 617,
+  "startedAt": "2026-10-04T05:39:01.864Z",
+  "endedAt": "2026-10-04T05:39:06.110Z",
+  "result": "complete",
+  "phase": "partial-page-translation-chunk",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex10entry translation",
+    "separate10entry22example content review",
+    "separate field/code/example mechanical checks",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "dbc9f8c4aacd3cb7dbcf75c066f4a884b76ebc471dcaa587240ab19406d59bdc"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-617/CONTENT_REVIEW.json",
+      "sha256": "56c039f0dea69a3cf837ad92796462ca53b9bf2914472e54d553d16b2fec0ce8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-617/MACHINE_CHECK.json",
+      "sha256": "eb767dfbd3a4083dc2d618b4400f709daf8f692ab6ab9427f1510a21c7398899"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-617/register.mjs",
+      "sha256": "c55b0cd6fff3bc7732897a57d3752ceab51919892f1a294afaaa6edca0d9b848"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-617/translate.py",
+      "sha256": "b590b2f231e73daf3e7475289b6a535dd72193be21f8763281b19941b27189f4"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/chunks/04-builtin/043-052.source.json",
+      "sha256": "42e6d7bfd0f703a761ea62bd56ad06226258c729b1625a4e5de6630f5a63f875"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/chunks/04-builtin/043-052.ja.json",
+      "sha256": "beccfaf091a97a10e54b631b23fce31d394fa2b84773c9fa8bbdc23ca27f26b1"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6823732e4efee98a07d188d7273e5416eeaf0208b833fbeed0fc1b76a40c7627"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "10項目の内容対照",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-617/CONTENT_REVIEW.json",
+          "sha256": "56c039f0dea69a3cf837ad92796462ca53b9bf2914472e54d553d16b2fec0ce8"
+        }
+      ]
+    },
+    {
+      "name": "固定原文・コード・22例の機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-617/MACHINE_CHECK.json",
+          "sha256": "eb767dfbd3a4083dc2d618b4400f709daf8f692ab6ab9427f1510a21c7398899"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "計画とPOLICYのnew-projects-first設定を再確認。重大な確認済み不具合以外の既存巡回よりjq新規作成を優先。",
+    "内容レビューと機械検査の証拠を分離。Builtin断片を全ページ完了・公開可にしない。"
+  ],
+  "unresolved": [
+    "Builtin残り22項目31例",
+    "他残り11本文ページの全量訳",
+    "mobile/言語切替・全量別review・正式統合検証"
+  ],
+  "nextAction": "新規優先を維持し、jq Builtin entry53以降の全文翻訳・原文対照を続ける。累計53/75項目・114/145例、残り22項目・31例。全16本文ページ中4ページのみ全訳済み。公開済み定期巡回は低優先。",
+  "resumeCondition": "Builtin entry53から同一page全量へ続行。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-601-jq-introduction-translation",
+  "cycle": 601,
+  "startedAt": "2026-10-04T04:37:59.795Z",
+  "endedAt": "2026-10-04T04:38:04.899Z",
+  "result": "complete",
+  "phase": "partial-translation-page",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex full-page translation",
+    "separate source comparison pass",
+    "field/paragraph/token mechanical check",
+    "CAS operation progress record"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "1badb227abfd6af36b060d6a349147018e9a9d2fbf2912108a17b561c4f21972"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6a10c7b1727ea41ae3f7cbc7629bb5811289177c005219f589c3232df43c5ee7"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-601/PAGE_CONTENT_REVIEW.json",
+      "sha256": "d3d3be34d63c1ec7a5863c3a9f05a55e4a78489890af06b4ff699cfa0d859beb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-601/PAGE_MECHANICAL_CHECK.json",
+      "sha256": "a28e1a68f2b634eb8b7c6bb960d841553fe8d8de8995233531983fdf9fa666a4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-601/register.mjs",
+      "sha256": "407f2e9db15a13b05977a39aca874af60a07f746e8a0b7d8cf1b76f2de9b2645"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-601/translate.py",
+      "sha256": "6a20f6a8900126b2a1fbd622fed84e55e773a655f7bda572d342fe4ffa04cb7c"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/00-introduction.ja.json",
+      "sha256": "beeca0dcc2396c1e7128b94ed84368b0c70c735ccc0cf270f3776f56ad56ed65"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/00-introduction.source.json",
+      "sha256": "6523ed3a301dbf165c23030b1e30e6fc05b536566865617bfc9cd00a2c7303f0"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "c4be59efe78d8483bde43fc1a81d9f235a3fc7df4fb72f48528300462f05e64e"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "intro content comparison",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-601/PAGE_CONTENT_REVIEW.json",
+          "sha256": "d3d3be34d63c1ec7a5863c3a9f05a55e4a78489890af06b4ff699cfa0d859beb"
+        }
+      ]
+    },
+    {
+      "name": "intro field/token checks",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-601/PAGE_MECHANICAL_CHECK.json",
+          "sha256": "a28e1a68f2b634eb8b7c6bb960d841553fe8d8de8995233531983fdf9fa666a4"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "導入1/16ページの全量翻訳・対照を保存。2法的通知の原文保持は別工程。",
+    "JSON訳稿のみでAstro正式成果物の完了ではない。全check pending。"
+  ],
+  "unresolved": [
+    "残り15本文ページ・通知案内の翻訳",
+    "可搬な再生成器と全量内容対応表",
+    "全体の別全文レビュー・正式機械/表示/統合検証"
+  ],
+  "nextAction": "可搬な再生成器と全量対応表を作成。導入の日本語JSONを正式描画へ接続し、続けてInvoking jq全ページを省略なく翻訳・原文対照。全量完了後に別全文レビューと正式機械/表示/統合検証を行う。",
+  "resumeCondition": "可搬な再生成器と全量対応表を作成。導入の日本語JSONを正式描画へ接続し、続けてInvoking jq全ページを省略なく翻訳・原文対照。全量完了後に別全文レビューと正式機械/表示/統合検証を行う。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

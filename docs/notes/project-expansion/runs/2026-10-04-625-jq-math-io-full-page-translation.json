@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-625-jq-math-io-full-page-translation",
+  "cycle": 625,
+  "startedAt": "2026-10-04T06:05:05.063Z",
+  "endedAt": "2026-10-04T06:05:13.692Z",
+  "result": "complete",
+  "phase": "two-full-page-translation-source-comparison",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex wholeMath/IO translation",
+    "separate full ENJA content comparison",
+    "allfield/code/name order mechanical checks",
+    "separate numeric build-condition translator note",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "354791a347ab787676a6f138ac5cc75742157dab797d0a997040e726dfa1e085"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-625/CONTENT_REVIEW.json",
+      "sha256": "19116ed588c64cbbbac936ad35fa4edff030bd2c7f2ae074034e5cc81f56aa85"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-625/MACHINE_CHECK.json",
+      "sha256": "6c7bd37c9298e11abe279f8fced26791e2bc6082331726e810f7a514b2409e78"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-625/register.mjs",
+      "sha256": "796754270f8bf9068dca7acd6d96b43c00e242a4b17e905c6a444558fdc86a85"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-625/translate.py",
+      "sha256": "6a5494e6a14a69c175480779b01a0af8454ebf75070e041ce99b6a6b481976ea"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/08-math.source.json",
+      "sha256": "a6bb5824209970c86270c64c53c78c2db348746061cb4154bb37f10738e56887"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/08-math.ja.json",
+      "sha256": "c5539d5e405e8d3f280c84731eff051633b09a1a67aca0ed9188ffd42cdd6dbb"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/09-io.source.json",
+      "sha256": "182626659b609c30ec1e5d84ed72cd65d783ab8a0a8047b55682d1fee4d1edb8"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/09-io.ja.json",
+      "sha256": "154f483dc78825685229f722eea310d14d09c2aafba36137da24fece1330316a"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/08-math.translator-note.json",
+      "sha256": "994f2018696873c3f25261248625776d6456b93c8b2de692ff14a70f9753e5aa"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ffa417eae0fb2c07a956696237de3f51d311581c4c1fd74378a04376f6aaaa83"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "数学・入出力全文内容対照",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-625/CONTENT_REVIEW.json",
+          "sha256": "19116ed588c64cbbbac936ad35fa4edff030bd2c7f2ae074034e5cc81f56aa85"
+        }
+      ]
+    },
+    {
+      "name": "固定原文・コード・関数名の機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-625/MACHINE_CHECK.json",
+          "sha256": "6c7bd37c9298e11abe279f8fced26791e2bc6082331726e810f7a514b2409e78"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全数学本文と入出力intro+6項目を翻訳・対照。正式examples配列は0、本文内コード6行保持。",
+    "訳稿10/16頁、新5頁は未レンダリング。source-locked維持。"
+  ],
+  "unresolved": [
+    "残り6本文頁の全量翻訳",
+    "新5頁レンダリング/表示と結合後内容再review",
+    "全量別review・正式統合検証"
+  ],
+  "nextAction": "jq数学と入出力を全文翻訳・対照済み、訳稿10/16本文頁。新頁は未レンダリング。次原文section9 Streamingを全文翻訳・対照し、残り6頁を省略しない。条件/regex/advanced/math/ioの新5頁とBuiltinの結合後review・実表示、正式全量検証も継続。",
+  "resumeCondition": "jq数学と入出力を全文翻訳・対照済み、訳稿10/16本文頁。新頁は未レンダリング。次原文section9 Streamingを全文翻訳・対照し、残り6頁を省略しない。条件/regex/advanced/math/ioの新5頁とBuiltinの結合後review・実表示、正式全量検証も継続。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

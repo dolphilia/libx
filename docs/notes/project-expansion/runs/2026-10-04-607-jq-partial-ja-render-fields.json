@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-607-jq-partial-ja-render-fields",
+  "cycle": 607,
+  "startedAt": "2026-10-04T05:01:31.711Z",
+  "endedAt": "2026-10-04T05:01:36.767Z",
+  "result": "complete",
+  "phase": "partial-ja-render-preparation",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "fixed Markdown3.10.2 saved-JA-draft renderer",
+    "two deterministic JA HTML field generations",
+    "all34field source and DOM code/link comparison",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "745d6bdd0a0ab609dd0ba85ffc7999756fe2e8a52079554c58ab5bb5bf9d07a0"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6a10c7b1727ea41ae3f7cbc7629bb5811289177c005219f589c3232df43c5ee7"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-607/RENDER_FIELD_VERIFICATION.json",
+      "sha256": "2a19c9a8465580cb7406badf64f209876c97161256d2ca642c252886ab0725e8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-607/python-locked-requirements.txt",
+      "sha256": "636a5f77f220aa5c86ae886cac6138d92f6d87462121cf2c5d8aa280ad55b214"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-607/register.mjs",
+      "sha256": "042f564b606a2258c40231f391ecf2b0af712e882f1e5600f6c677063b43eb3c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-607/verify-fields.py",
+      "sha256": "c5a7ca3a6800712e7ffc26dc0bcff1debfe385aee2341b9691422eba1e14e2c1"
+    },
+    {
+      "path": "scripts/document-import/jq/render-ja-fields.py",
+      "sha256": "1664fc4c3ebe26bd8a7c681be91cc83f949f293b8830fc8d43ca8f5bfd476cb8"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/JA_RENDER_FIELDS-607.json",
+      "sha256": "ae12c4b7f0cf6444b86dacd1b7ea848072861b6ba6bb8e064f27e43440e49f6d"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "cd8ef6e1bf6b5b5260663b78c94059b2b5c450cdd55736e66cdd0a06469748f2"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "partial JA rendering reproducibility and209codeDOM preservation",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-607/RENDER_FIELD_VERIFICATION.json",
+          "sha256": "2a19c9a8465580cb7406badf64f209876c97161256d2ca642c252886ab0725e8"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "4JAページ/34fieldの描画準備、原209codeDOMspanを保持。",
+    "残り12ページ267fieldは未翻訳でENfallbackなし。",
+    "appページ組込み/正式build/displayは未検証、source-locked維持。"
+  ],
+  "unresolved": [
+    "残り12本文ページの全量翻訳",
+    "JAページ組込み・通知/訳注/anchor/link/checker・全体別review",
+    "正式build/native/統合検証・公開"
+  ],
+  "nextAction": "607保存JA34fieldを原anchor/TOC・全35例・2別訳注・JA出典通知付き4本文ページへ組み込み、2法的通知は全文原文を保持してJA案内で配備。隔離app内のみでJA描画・code/例/heading/内部リンクを確認。その後Builtin全75entryの翻訳を開始。",
+  "resumeCondition": "607保存JA34fieldを原anchor/TOC・全35例・2別訳注・JA出典通知付き4本文ページへ組み込み、2法的通知は全文原文を保持してJA案内で配備。隔離app内のみでJA描画・code/例/heading/内部リンクを確認。その後Builtin全75entryの翻訳を開始。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

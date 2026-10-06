@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-651-mdbook-fixed-boundary-research",
+  "cycle": 651,
+  "startedAt": "2026-10-04T12:32:00Z",
+  "endedAt": "2026-10-04T12:36:09.913Z",
+  "result": "partial",
+  "phase": "jq公開CIと独立した次候補mdBookの固定境界調査",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "actual runtime model identifier not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "node",
+    "python3"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6a10c7b1727ea41ae3f7cbc7629bb5811289177c005219f589c3232df43c5ee7"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "fa49b30bcf3d1710780140cde7535c7f00829e3b20a85b26a48adcac6f8a4631"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-585/MDBOOK_TREE_AUDIT.json",
+      "sha256": "52d2ec8e2b2ffeddba81ae4efd89f83bffc488f53e320290e175714ceb5b7068"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-585/mdbook-2ea30c00f00647d2b3f4c0f79b3e0e1eabc0b66d.tar.gz",
+      "sha256": "9800afa8e565117ca70f2f4fd690fcc67fbf230dfea4587b3f60a61e7c2bdda9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-651/GUIDE_HELPER.rs",
+      "sha256": "8307c591f4c6ddcfb0970d3d75216dd655c9a840a389a527abfd7ac4b1aa9fc5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-651/GUIDE_README.md",
+      "sha256": "f3b6bc1ddd17d1c165a4de021f57ad662d471d93dd811737fe0804756be648f4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-651/MDBOOK_BOUNDARY.json",
+      "sha256": "e1ec7fb8340e4658c40c7878c3c0a3eb0b77b053c4fb7d93800a5ba8f74cea41"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-651/MPL_2_0.txt",
+      "sha256": "af175b9d96ee93c21a036152e1b905b0b95304d4ae8c2c921c7609100ba8df7e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-651/mdbook-boundary.py",
+      "sha256": "5d5545a47d8fc33aa8a5cb539daa4398cc878e6a13ab6c9471095669819f5c36"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-651/register.mjs",
+      "sha256": "69949bc1a1ddf707acd270b39e8c4a893d00efdd035c193dac1f3db93553d439"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "mdbook"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "固定644 blobs/archiveと全分類・生成参照棚卸し",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-651/MDBOOK_BOUNDARY.json",
+          "sha256": "e1ec7fb8340e4658c40c7878c3c0a3eb0b77b053c4fb7d93800a5ba8f74cea41"
+        }
+      ]
+    },
+    {
+      "name": "権利履行・日本語調査・変換試験・採点",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "jq CI37202125558のlive状態を確認し、再起動せず独立調査を進行。前回649は検証済み登録・公開CI開始のprogress。",
+    "文書自体のMPL-2.0指定を固定READMEで確認。589暫定記述は履歴保存し現行候補理由を訂正。",
+    "初回再照合は一時展開でsymlinkが省略されたため停止。固定archiveの7symlink target bytesと637実ファイルを照合し全644を確定。",
+    "31公式目次章を維持。開発者向け章を切り捨てない。採点・全文レビュー・変換合格は未実施。"
+  ],
+  "unresolved": [
+    "Rust logo素材の条件と保持方法",
+    "MPL通知・原文/source提供・非公式翻訳/変更表示の履行設計",
+    "リンク/アンカーと全コード/hidden linesを含む変換試験",
+    "日本語訳調査・工数実測・採点・別選定確認"
+  ],
+  "nextAction": "651の31全文章・6実directive・13エスケープ例・7版markerと明示的な文書MPL-2.0を基準に、通知/source提供/変更表示・Rust logo条件・日本語資料調査を確定。その後全例・hidden lines・表・数式・アンカーの隔離変換試験と工数実測/採点・別選定照合。未完をpassにしない。",
+  "resumeCondition": "固定0.5.4/2ea30c00と651全分類を維持。jq公開工程は独立の650として継続。"
+}

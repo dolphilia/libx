@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-613-jq-builtin-entries004-011",
+  "cycle": 613,
+  "startedAt": "2026-10-04T05:32:02.054Z",
+  "endedAt": "2026-10-04T05:32:07.032Z",
+  "result": "complete",
+  "phase": "partial-page-translation-chunk",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex8entry translation",
+    "separate8entry16example content review",
+    "separate field/code/example mechanical checks",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "abaa0d25c275e7af242ab98afbb199eb6520283fdc46971abb86d3e6cb12d34e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-613/CONTENT_REVIEW.json",
+      "sha256": "dbf95df5054fd9b618d3c5f2340a2bc1d7dda6469c9105b82e3add4758953bb5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-613/MACHINE_CHECK.json",
+      "sha256": "15424dd835f4e1f04b512abeaf50bd70c09a87ef720a558c18701236b29b6242"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-613/register.mjs",
+      "sha256": "495951e3528d5388fe0d8ccf96c4d4d99ddb596466c3e55722a74987c85a70e0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-613/translate.py",
+      "sha256": "8115b2fdfa73631c21cb78727ee17db90d4efebf389c48e75559bc394ce5d523"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/chunks/04-builtin/004-011.source.json",
+      "sha256": "3399d33233412831f77a90b66c34f6cabd6f53500d4c2a06e37d64af92a7c35d"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/chunks/04-builtin/004-011.ja.json",
+      "sha256": "4389e27ca4bb1ff27ecfe1d3022269306456c331f6ad5ec1bb3cc2f8bced81e0"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/chunks/04-builtin/LENGTH_TRANSLATOR_NOTE-613.json",
+      "sha256": "9f55aad2275043f4339acdefd1686ba1e9aad71869fc3df8cdf9d8faba8d1c8c"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7f5cee4ff3ec482da1fc341a9959db0b65c84e7310fedd1672f97ce1dee0b23e"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "8項目の内容対照",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-613/CONTENT_REVIEW.json",
+          "sha256": "dbf95df5054fd9b618d3c5f2340a2bc1d7dda6469c9105b82e3add4758953bb5"
+        }
+      ]
+    },
+    {
+      "name": "固定原文・コード・16例の機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-613/MACHINE_CHECK.json",
+          "sha256": "15424dd835f4e1f04b512abeaf50bd70c09a87ef720a558c18701236b29b6242"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "計画とPOLICYのnew-projects-first設定を再確認。重大な確認済み不具合以外の既存巡回よりjq新規作成を優先。",
+    "内容レビューと機械検査の証拠を分離。Builtin断片を全ページ完了・公開可にしない。"
+  ],
+  "unresolved": [
+    "Builtin残り63項目117例",
+    "他残り11本文ページの全量訳",
+    "mobile/言語切替・全量別review・正式統合検証"
+  ],
+  "nextAction": "新規優先を維持し、jq Builtin entry12以降の全文翻訳・原文対照を続ける。累計12/75項目・28/145例、残り63項目・117例。全16本文ページ中4ページのみ全訳済み。公開済み定期巡回は低優先。",
+  "resumeCondition": "Builtin entry12から同一page全量へ続行。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

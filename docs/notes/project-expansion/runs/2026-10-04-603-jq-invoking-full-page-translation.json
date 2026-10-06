@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-603-jq-invoking-full-page-translation",
+  "cycle": 603,
+  "startedAt": "2026-10-04T04:45:53.408Z",
+  "endedAt": "2026-10-04T04:45:58.551Z",
+  "result": "complete",
+  "phase": "partial-translation-page",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex whole Invoking jq page translation",
+    "full74paragraph separate EN/JA comparison pass",
+    "112 exactorderedcode/34bullet/31option heading checks",
+    "CAS pageprogress recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "22851f43bc6508e989a78b5979c04fdf2a9cf2d8996cb4b649ad177a21d32196"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6a10c7b1727ea41ae3f7cbc7629bb5811289177c005219f589c3232df43c5ee7"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-603/PAGE_CONTENT_REVIEW.json",
+      "sha256": "bcb05a7f6b16ccc59062384793ef2e3cee0417647f8fd10b10e0851ced091036"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-603/PAGE_MECHANICAL_CHECK.json",
+      "sha256": "12330ab50a71a25f317e62bdd22a32c4873896aba2437306f64656bc24b75170"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-603/register.mjs",
+      "sha256": "248792d48b371b49d34f9d978be26d92563671ce0543eee399e2d70af2c249eb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-603/translation-draft.md",
+      "sha256": "d5b373cfc8fb188edb66aae47c84c354ffde971488d22d98bf66a565657bf14d"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/01-invoking-jq.source.json",
+      "sha256": "b17703cdfe868f21cb053bb3dbc5cd8907fd4ac69418badc9bd2abcd432ed320"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/01-invoking-jq.ja.json",
+      "sha256": "39d19fad557a32791678d8b67b72a7cf18518d027d7bbddbbecccd8326796f5b"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e248602aa353566baf3addd185063b39b2fe2b380bd383872c5314132c0bd37b"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Invoking whole page content comparison",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-603/PAGE_CONTENT_REVIEW.json",
+          "sha256": "bcb05a7f6b16ccc59062384793ef2e3cee0417647f8fd10b10e0851ced091036"
+        }
+      ]
+    },
+    {
+      "name": "Invoking mechanical tokens and structure",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-603/PAGE_MECHANICAL_CHECK.json",
+          "sha256": "12330ab50a71a25f317e62bdd22a32c4873896aba2437306f64656bc24b75170"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "2/16本文ページ翻訳対照済み、原31オプション説明を省略しない。",
+    "全正式gateはpending、source-lockedを保持。"
+  ],
+  "unresolved": [
+    "残り14本文ページと通知案内の翻訳",
+    "隔離正式appへの接続とreadonlychecker",
+    "全体別全文review・正式機械/表示/統合検証・公開"
+  ],
+  "nextAction": "導入とInvoking jqの翻訳2/16ページを固定。再生成器・対応表を隔離正式jqへ接続しreadonly check:contentを整備し、Basic filters全量を次に翻訳・対照する。全量後の別全文reviewと正式機械/表示/統合検証は別工程で継続。",
+  "resumeCondition": "導入とInvoking jqの翻訳2/16ページを固定。再生成器・対応表を隔離正式jqへ接続しreadonly check:contentを整備し、Basic filters全量を次に翻訳・対照する。全量後の別全文reviewと正式機械/表示/統合検証は別工程で継続。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

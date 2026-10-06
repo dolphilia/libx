@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-588-gperf-run-schema-correction",
+  "cycle": 588,
+  "startedAt": "2026-10-04T03:18:46.219Z",
+  "endedAt": "2026-10-04T03:18:49.869Z",
+  "result": "complete",
+  "phase": "run-record-schema-correction",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "run schema enum read",
+    "preserve initial invalid record and correct result value",
+    "CAS evidence append"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "1ef0accbcc142c1d0d8fb80d247c255a0130d6c31aac3934e18966e86fbe4e7b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-588/CORRECTION.json",
+      "sha256": "f1a5ce43e5a5bac6264dc87901ff14ee9824ad7ae7ec1a5f5c5cf9a2241192e2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-588/RUN587_BEFORE.json",
+      "sha256": "e5905ef1bbf196fe198a425eaaa5d18e6d03ac8ff26784e9dd8642a37c56282f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-588/register.mjs",
+      "sha256": "0ea493f05af8a71f409a9562ee5aafd29b99309fd8ed0937aa63a5ee0da5e8d5"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "1cfaf3da054a75a9623416826a08aa6ff1addf3392a297cacdb986798d03dca1"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "run result enum correction",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-588/CORRECTION.json",
+          "sha256": "f1a5ce43e5a5bac6264dc87901ff14ee9824ad7ae7ec1a5f5c5cf9a2241192e2"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "587記録のresult completedはschema許可値ではないためcompleteへ修正。最終manage check実行前に修正済みと記録しない。",
+    "元記録を固定保存し差分はresult一箇所。公開本文・全文review・HTTP/native検査証拠は再利用。"
+  ],
+  "unresolved": [
+    "次候補mdBook/jqの未確認条件"
+  ],
+  "nextAction": "gperf3.3/guide3.2公開完了。次は新規優先で585固定mdBook0.5.4とjq1.8.2を詳細調査（最大3件内2件）。公式目次/生成断片・例・権利履行/日本語資料/試験変換/実測工数/採点/別照合を完了し、全条件pass・70点以上・上限確認後に最大1件正式着手。未知を推測でeligibleにしない。既存published定期再確認は低優先。",
+  "resumeCondition": "gperf3.3/guide3.2公開完了。次は新規優先で585固定mdBook0.5.4とjq1.8.2を詳細調査（最大3件内2件）。公式目次/生成断片・例・権利履行/日本語資料/試験変換/実測工数/採点/別照合を完了し、全条件pass・70点以上・上限確認後に最大1件正式着手。未知を推測でeligibleにしない。既存published定期再確認は低優先。",
+  "counts": {
+    "verified": 15,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

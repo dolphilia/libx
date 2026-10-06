@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-609-jq-next-scope-count-correction",
+  "cycle": 609,
+  "startedAt": "2026-10-04T05:09:19.208Z",
+  "endedAt": "2026-10-04T05:09:21.617Z",
+  "result": "complete",
+  "phase": "next-scope-count-correction",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "fixed source next chapter count audit",
+    "CAS nextAction correction"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "2afde8752a2a2bdcba890cbfaa84e48dee8b82b119e699c3d7cee4a51118224f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-609/NEXT_SCOPE_COUNT_CORRECTION.json",
+      "sha256": "417d4c7aee3d76ac6e98004c6a47bda842888d0b173ac144555fda06e51e215a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-609/register.mjs",
+      "sha256": "943d78182d1358b4434849e4b3b19e0ff2b6c2b5527fc68e7b27cce1f7aaae47"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "85b78757ad57e5dcc8183255b9601e17e46f1517399f966d2163ac074c650403"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "fixed Builtin full scope count",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-609/NEXT_SCOPE_COUNT_CORRECTION.json",
+          "sha256": "417d4c7aee3d76ac6e98004c6a47bda842888d0b173ac144555fda06e51e215a"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "次章Builtin範囲を固定原文の75entries/145examplesに修正。",
+    "608のJA35例・build検査結果は変わらない。"
+  ],
+  "unresolved": [
+    "ブラウザー/JA検索",
+    "Builtin全文訳と残り全量review/正式検証"
+  ],
+  "nextAction": "隔離jqの日本語4ページで実ブラウザーのコピー/モバイル/訳注/言語切替を確認し、JA検索インデックスを生成・検索動作を確認。完了後Builtin operators and functions全75entryを分割して翻訳し、全体75entry/145examplesのcoverageを欠かさず対照する。",
+  "resumeCondition": "隔離jqの日本語4ページで実ブラウザーのコピー/モバイル/訳注/言語切替を確認し、JA検索インデックスを生成・検索動作を確認。完了後Builtin operators and functions全75entryを分割して翻訳し、全体75entry/136examplesのcoverageを欠かさず対照する。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

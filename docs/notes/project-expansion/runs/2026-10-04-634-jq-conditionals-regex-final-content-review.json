@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-634-jq-conditionals-regex-final-content-review",
+  "cycle": 634,
+  "startedAt": "2026-10-04T06:32:19.650Z",
+  "endedAt": "2026-10-04T06:32:24.006Z",
+  "result": "complete",
+  "phase": "conditionals-regex-final-content-review",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex separate final whole ENJA content review",
+    "Japanese readability reread",
+    "review hash binding and canonical/rendered snapshot checks",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "8ad1a137c66fd0b00399de752f3326822a66a42487dffef37282836cae1bc144"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/PARSED_MANUAL.json",
+      "sha256": "b25e032a5f49bd444c34c00ff2622fac46421306345ad8f2053c294ab56195b4"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/JA_RENDER_FIELDS-630.json",
+      "sha256": "10fe80c5c7fd5d46977c39ae017071106ff9dbf370b9baea2014b95913c1f92a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-630/JA_RENDERED_CHECK.json",
+      "sha256": "15af0b949eabf910ba465d844c98af8f2a9575d8c3dfe59bda9bed014d50c4f5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-634/CONTENT_REVIEW.json",
+      "sha256": "356f0960edb7473e4fbc4ce9c340a0e09c78b0ab0b9c675372a39bc33d816e29"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-634/MACHINE_BINDING_CHECK.json",
+      "sha256": "d2f2bb19bad8ba6e5856445cf47978f68e00721f532af8aab69057dfe483cc68"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-634/register.mjs",
+      "sha256": "e8a7c7edd4855ef5b7f5aa5c68ef4f5ef1c9779ebe1d6775a6e20382aa03ace6"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e24457e88dd7c3ebdb4f6f034b9f77d5604cee546e90791595b07158dff4753d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "条件/比較・正規表現2頁最終全文内容review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-634/CONTENT_REVIEW.json",
+          "sha256": "356f0960edb7473e4fbc4ce9c340a0e09c78b0ab0b9c675372a39bc33d816e29"
+        }
+      ]
+    },
+    {
+      "name": "レビュー対象hashと生成物結合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-634/MACHINE_BINDING_CHECK.json",
+          "sha256": "d2f2bb19bad8ba6e5856445cf47978f68e00721f532af8aab69057dfe483cc68"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "2頁の最終内容review完了。累計7/16本文頁。指摘/編集なし。未確認9本文頁と通知2頁は未完了。",
+    "内容レビューと機械hash検査を分離し、UI未確認・source-locked状態を維持。"
+  ],
+  "unresolved": [
+    "残り9本文頁+2通知頁の最終全文内容review",
+    "実画面/mobile/言語/検索等",
+    "正式統合検証・公開"
+  ],
+  "nextAction": "jq最終内容reviewの条件/比較と正規表現2頁（16項目/36例）を全文再対照し合格。631/633と合わせて7/16本文頁の最終reviewが完了。次はAdvanced結合後全13項目/25例の全頁再review、続いて残り8本文頁と通知2頁。実画面・正式統合・公開は未完了。",
+  "resumeCondition": "jq最終内容reviewの条件/比較と正規表現2頁（16項目/36例）を全文再対照し合格。631/633と合わせて7/16本文頁の最終reviewが完了。次はAdvanced結合後全13項目/25例の全頁再review、続いて残り8本文頁と通知2頁。実画面・正式統合・公開は未完了。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

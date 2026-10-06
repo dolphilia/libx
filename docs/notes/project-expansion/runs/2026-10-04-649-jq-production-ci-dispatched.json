@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-649-jq-production-ci-dispatched",
+  "cycle": 649,
+  "startedAt": "2026-10-04T12:22:00Z",
+  "endedAt": "2026-10-04T12:28:10.037Z",
+  "result": "partial",
+  "phase": "jq公開候補commit・push・本番CI実行",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "actual runtime model identifier not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "node",
+    "python3",
+    "git",
+    "GitHub REST API"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "304c3e450f71adc234a565bdf52911b9f2d449c9bb98b6ed0c1bbaab208ec464"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "fa49b30bcf3d1710780140cde7535c7f00829e3b20a85b26a48adcac6f8a4631"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-648/RESULT.json",
+      "sha256": "686de81286f3fb5e5caf89c48ea5900f5684783537ad5e2d784df03fe66c2816"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/CI_1791116806220.json",
+      "sha256": "082ff46d97a764997d47e8ccb0a8958bd2b44e2f1073ae746036d17a724f5641"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/CI_1791116839692.json",
+      "sha256": "e32034554155279b1f56c29f07c2d28261196b6fe754f95e751aa510b5fd3728"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/COMMIT_PROOF.json",
+      "sha256": "3aa51110c8b0a79acae5f1869fff6e4e1a764fa0a9ef8e0bcc79b6b620b0eb0b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/DIFF_CHECK_NON_EOF.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/DIFF_CHECK_RAW.log",
+      "sha256": "f04aa82d3b2fe6f0909228af04d4703190399f75c0b7f2144682f080bfc1c35a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/PRODUCTION_DISPATCH_INTENT.json",
+      "sha256": "0a4deb1dd9b6048da0a41ecc3fdb2fd55bf1388a2e0ccffbd6acea417cdb1c0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/PRODUCTION_DISPATCH_RESPONSE.json",
+      "sha256": "5fb7a6b9c626842ca2a01391574a0f07c7ffdf625a7a0cc15ee00156ce9eaca3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/REMOTE_PREFLIGHT_1791116652089.json",
+      "sha256": "e04933904f9cc09182312c87af3dcff8f955239912caa9e0317c737f4570f0aa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/ci-observe.mjs",
+      "sha256": "16a78a57af18b40428b1987506529737c3a957fb0b06780b9c824a5c56c1fd24"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/preflight-remote.mjs",
+      "sha256": "d3cd526cc55f830852419f3d10cd10037b65e5a8c876a9a4e40c149147cbb2bd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/register.mjs",
+      "sha256": "ad1df2d5268a668e296316b9328cfc92bf42bbd7798ebe8574e09f52fd09c235"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/RESULT.json",
+      "sha256": "7ade9a47fed5276fceee3a6d8b49a7b4b960a30efef7f44678e587c7846eb8f9"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "隔離候補217 SHA一致・基準公開run確認",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/COMMIT_PROOF.json",
+          "sha256": "3aa51110c8b0a79acae5f1869fff6e4e1a764fa0a9ef8e0bcc79b6b620b0eb0b"
+        }
+      ]
+    },
+    {
+      "name": "本番CI実行と特定runの実状態",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/PRODUCTION_DISPATCH_RESPONSE.json",
+          "sha256": "5fb7a6b9c626842ca2a01391574a0f07c7ffdf625a7a0cc15ee00156ce9eaca3"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-649/CI_1791116839692.json",
+          "sha256": "e32034554155279b1f56c29f07c2d28261196b6fe754f95e751aa510b5fd3728"
+        }
+      ]
+    },
+    {
+      "name": "CI成功・公開配信確認",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "正規verified公開待ちのユーザー承認済み方針に従い追加承認なく本番CIを実行。",
+    "最新関連run37191406058/84f9815bのsuccessを確認。本番直前CASはCIにexpected84f9815bを渡し省略しない。",
+    "git diffの44件は固定原文・レビュー本文の末尾空行のみ。本文SHAを変えず保持し、それ以外のwhitespace異常0を独立確認。",
+    "main/root利用者変更/Awesome/Lua未完を公開候補に追加しない。goalはactiveのまま。"
+  ],
+  "unresolved": [
+    "CI37202125558実行中。公開成功・公開後SHA/表示操作は未検証。"
+  ],
+  "nextAction": "既存CI37202125558を同じhandleで観測する。成功時だけ同runのverified-deployment/production-state成果物を取得し、実際のCAS・公開commit・3152配信ファイルのSHA/変換を照合。jq公開先のフッター・言語切替・通知コピーを確認してpublished登録。未知の応答でも再dispatchしない。",
+  "resumeCondition": "6e0dbef2候補commit・217全SHA一致・648検証済み登録を維持。CI37202125558は12:27:19ZのGitHub APIでin_progressを実証。本番expected84f9815b。外部公開の成功はまだ未確認。"
+}

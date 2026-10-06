@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-622-jq-regex-full-page-translation",
+  "cycle": 622,
+  "startedAt": "2026-10-04T05:54:40.781Z",
+  "endedAt": "2026-10-04T05:54:45.578Z",
+  "result": "complete",
+  "phase": "full-page-translation-source-comparison",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex whole8entry translation",
+    "separate full ENJA content comparison",
+    "17examples/field/inline/indented code mechanical checks",
+    "source URL preservation",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "46c32ccc916cadc60c4480d54cbdf1bee5a682d91611bb053c84b6624b699bfd"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-622/CONTENT_REVIEW.json",
+      "sha256": "6622e9ae8c7b6b6ef0db5f34a08dd562712d03555ad4cb2000afaa8ac0e4376e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-622/FIRST_REGISTER_FAILURE.json",
+      "sha256": "e066469643c67c7c4097374e87420c65241e764742c4ae2d22fd36ae2b58b877"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-622/MACHINE_CHECK.json",
+      "sha256": "c780487f867f45f17602ab5c05786638d02650cd5b0872722909ef419c5e4b18"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-622/register-retry.mjs",
+      "sha256": "c37b838f586ec2bf367f7fd84d87c61b494fb059a75a43afc07145ff97160afc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-622/register.mjs",
+      "sha256": "02baff9d544462463abc71da41f43f72811a84b5b3ce05edc5fe4dfad494db0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-622/translate.py",
+      "sha256": "8eec3a757b712caf999051aea261fd98c6e5ca27975b3fd574b1d4654d3a3ce0"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/06-regular-expressions.source.json",
+      "sha256": "843d557d2ee4b176e1afa6e923ce134fa1cd8b6689ffdf5233d3818890556619"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/06-regular-expressions.ja.json",
+      "sha256": "49e84692bdc110076941e678f85cfb186fb1a94801460ef61a6aea2e23050929"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "79ed4f0628f7e42bedb755ff9f8dfd846db40e404393eefaf02c0d26d8d3190e"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "正規表現の導入・全項目内容対照",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-622/CONTENT_REVIEW.json",
+          "sha256": "6622e9ae8c7b6b6ef0db5f34a08dd562712d03555ad4cb2000afaa8ac0e4376e"
+        }
+      ]
+    },
+    {
+      "name": "原文・コード・17例の機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-622/MACHINE_CHECK.json",
+          "sha256": "c780487f867f45f17602ab5c05786638d02650cd5b0872722909ef419c5e4b18"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全8項目17例、7/16本文頁の訳稿が揃った。新頁は未レンダリング。",
+    "原文順では条件式と比較の次は正規表現。621の次作業名を訂正し、飛ばさず実施。"
+  ],
+  "unresolved": [
+    "残り9本文頁の全量翻訳",
+    "新頁レンダリング/表示・Builtin結合後内容再review",
+    "全量別review・正式統合検証"
+  ],
+  "nextAction": "jq正規表現の導入全文と8項目17例が翻訳・原文対照済み。7/16本文頁の訳稿が揃ったが、新2頁は未レンダリング。原文順に次のAdvanced features(section6)を全文翻訳・対照し、残り9頁を省略しない。Builtin結合後再レビュー・実表示、正式全量検証も未完了。",
+  "resumeCondition": "jq正規表現の導入全文と8項目17例が翻訳・原文対照済み。7/16本文頁の訳稿が揃ったが、新2頁は未レンダリング。原文順に次のAdvanced features(section6)を全文翻訳・対照し、残り9頁を省略しない。Builtin結合後再レビュー・実表示、正式全量検証も未完了。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

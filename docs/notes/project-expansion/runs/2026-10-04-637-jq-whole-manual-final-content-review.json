@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-637-jq-whole-manual-final-content-review",
+  "cycle": 637,
+  "startedAt": "2026-10-04T06:37:45.761Z",
+  "endedAt": "2026-10-04T06:37:51.254Z",
+  "result": "complete",
+  "phase": "whole-manual-final-content-review",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex separate final whole ENJA content review",
+    "Japanese readability reread",
+    "review hash binding and canonical/rendered snapshot checks",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6594d283d82742029bc6b294bc16a542f8db2586384e56740ea0d3f9375b3477"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/PARSED_MANUAL.json",
+      "sha256": "b25e032a5f49bd444c34c00ff2622fac46421306345ad8f2053c294ab56195b4"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/JA_RENDER_FIELDS-630.json",
+      "sha256": "10fe80c5c7fd5d46977c39ae017071106ff9dbf370b9baea2014b95913c1f92a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-630/JA_RENDERED_CHECK.json",
+      "sha256": "15af0b949eabf910ba465d844c98af8f2a9575d8c3dfe59bda9bed014d50c4f5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-637/CONTENT_REVIEW.json",
+      "sha256": "b1fdfea5d35a8b4c3416a632784dd78a94db3532706916fa91c7d5493f999c74"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-637/FINAL_BODY_REVIEW_MANIFEST.json",
+      "sha256": "e81fe3f396dc20236800fd74fd5a1b1992354cd04374c0b004a713ca8f5bff29"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-637/LEGAL_NOTICE_REVIEW.json",
+      "sha256": "8ff76af2e9f2eaab25776817e2bfcfcea0d2245386ced94d6647f9716ec02132"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-637/MACHINE_BINDING_CHECK.json",
+      "sha256": "72f6afa8a05b08ab89843b362d36b00f261942c24cab6bba3aa22e3af89f60ac"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-637/register.mjs",
+      "sha256": "2ef79da6c5a4de05519fc631e24908846ead5d6f767b362a9f3eef2242760aa4"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7f688a37c0ccd35bbee46871f63b4625336aaea1480a6b335b7c7526d2a67b59"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "モジュール/色/付録3頁最終全文review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-637/CONTENT_REVIEW.json",
+          "sha256": "b1fdfea5d35a8b4c3416a632784dd78a94db3532706916fa91c7d5493f999c74"
+        }
+      ]
+    },
+    {
+      "name": "レビュー対象hashと生成物結合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-637/MACHINE_BINDING_CHECK.json",
+          "sha256": "72f6afa8a05b08ab89843b362d36b00f261942c24cab6bba3aa22e3af89f60ac"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全16本文頁+2原通知頁の最終内容review完了。指摘/編集なし。実画面/正式統合は未完了。",
+    "内容レビューと機械hash検査を分離し、UI未確認・source-locked状態を維持。"
+  ],
+  "unresolved": [
+    "実画面/mobile/言語/検索等",
+    "正式統合検証・公開"
+  ],
+  "nextAction": "jq全16本文頁+2原通知頁の最終内容reviewが完了。全1135原文文字列/136項目/250例のreviewcoverageと現行hash一致を確認。次はローカルAstroの全量検索更新、入口/カテゴリ/最大頁/API/code/言語/版/サイドバー/前後/404/出典のdesktop/mobile/keyboard実表示確認、正式link/integrity/selectivebuildとクリーン統合・Pages公開へ進む。実表示・正式統合はpending。",
+  "resumeCondition": "jq全16本文頁+2原通知頁の最終内容reviewが完了。全1135原文文字列/136項目/250例のreviewcoverageと現行hash一致を確認。次はローカルAstroの全量検索更新、入口/カテゴリ/最大頁/API/code/言語/版/サイドバー/前後/404/出典のdesktop/mobile/keyboard実表示確認、正式link/integrity/selectivebuildとクリーン統合・Pages公開へ進む。実表示・正式統合はpending。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

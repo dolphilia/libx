@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-589-new-project-priority-candidate-research",
+  "cycle": 589,
+  "startedAt": "2026-10-04T03:25:54.514Z",
+  "endedAt": "2026-10-04T03:25:59.798Z",
+  "result": "partial",
+  "phase": "candidate-research",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "fixed source generation and license inspection",
+    "Japanese web search",
+    "read-only bundled Python dependency probe",
+    "CAS candidate update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "8097850124c1beab3d5638804cf4f876c8c7bd31a5f35e16acab511e15f65d64"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-589/RESEARCH_PROGRESS.json",
+      "sha256": "4c1643428b0cf8bd9b7d249ab1540f9601cd17dcb2f29b70adf6d8bfe16d9662"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-589/register.mjs",
+      "sha256": "6a4e61387cb26d0d7124913f2a7c7a475897ce85999ab43696ef7b5b08d7a652"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "3a78b03e3075547fc8c2f5dd25938301c635db5566aed497f132fa79bd3278a8"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "priority policy and plan correspondence",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/POLICY.json",
+          "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+        }
+      ]
+    },
+    {
+      "name": "remaining candidate eligibility",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-589/RESEARCH_PROGRESS.json",
+          "sha256": "4c1643428b0cf8bd9b7d249ab1540f9601cd17dcb2f29b70adf6d8bfe16d9662"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "公開済みの定期再確認より、新規mdBook・jqの詳細調査を優先。重大な確認済み不具合は引き続き優先。",
+    "公開済みgperfを再公開せず、検証15/公開15/公開待ち0を保持。",
+    "固定入力pass以外は未確認を合格にしない。研究の途中経過と次の操作を保存。",
+    "前turnはgperf本番検証・公開とschema訂正によるprogress。今回も候補生成要件・日本語資料の調査によりprogress。"
+  ],
+  "unresolved": [
+    "全ファイル分類と権利履行設計",
+    "公式日本語案内と既存訳の範囲照合",
+    "隔離変換・全例/アンカー/素材の保全試験",
+    "工数実測・採点・別選定照合"
+  ],
+  "nextAction": "mdBook・jqの全文境界/通知配置/既存日本語訳の範囲を確定後、一時領域でYAML等のparserを準備し忠実変換試験・工数実測・採点へ。",
+  "resumeCondition": "585固定原資料・treeauditと589調査証拠を保持。root共有依存/Awesome変更を保護し、未完ゲートを推測で合格にしない。",
+  "counts": {
+    "verified": 15,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

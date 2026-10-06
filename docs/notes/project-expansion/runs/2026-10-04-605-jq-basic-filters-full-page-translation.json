@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-605-jq-basic-filters-full-page-translation",
+  "cycle": 605,
+  "startedAt": "2026-10-04T04:54:48.391Z",
+  "endedAt": "2026-10-04T04:54:52.455Z",
+  "result": "complete",
+  "phase": "partial-translation-page",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex Basic filters whole page translation",
+    "separate full11entry EN/JA and30example review",
+    "original numbers backend caveat note",
+    "field/code/example mechanical checks",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "9d485cdd083c2914b15c4b05c9afffbce5b3af95c833fdcc9b95cfc08d22641f"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6a10c7b1727ea41ae3f7cbc7629bb5811289177c005219f589c3232df43c5ee7"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-605/PAGE_CONTENT_REVIEW.json",
+      "sha256": "62cb8a2aa9a1a0762c3df8a2b81cc60a7fe7cfc321c27869c500f39de0f529f7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-605/PAGE_MECHANICAL_CHECK.json",
+      "sha256": "46e89a5acf6744cb5a0cb91df6d6b6da40fb89d6115998ee2823ab92044e26b7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-605/register.mjs",
+      "sha256": "68025690e20fd35679d1bc40504e8039e309fce5c7c6978ae3c3bfaba7d1a623"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-605/translate.py",
+      "sha256": "deac7e906c9368e22d1f050d43e4627115f42b07c99dbacf0d7b7da8ef1ff6cb"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/02-basic-filters.source.json",
+      "sha256": "859c1554c90b9ebb331b26b85698d4cd33e018785193322ea76ab5ede2730983"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/02-basic-filters.ja.json",
+      "sha256": "957a6ed879fca1f6d6f30524a15cf5fa5544a502a5ddd86b51c3fc8b72dc5a26"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/02-basic-filters.translator-note.json",
+      "sha256": "9589c3d0b9f1b8f08194786db078941a18a916a93fe77ef32e2db8e61909dfad"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a255e85da9b10c7a44eac8be12f7aa86a4360aaecdd5842b96726f2e4164344e"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Basic full page content comparison",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-605/PAGE_CONTENT_REVIEW.json",
+          "sha256": "62cb8a2aa9a1a0762c3df8a2b81cc60a7fe7cfc321c27869c500f39de0f529f7"
+        }
+      ]
+    },
+    {
+      "name": "Basic fields and full30examples preservation",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-605/PAGE_MECHANICAL_CHECK.json",
+          "sha256": "46e89a5acf6744cb5a0cb91df6d6b6da40fb89d6115998ee2823ab92044e26b7"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "3/16本文ページ翻訳対照済み。",
+    "全11entry/30例を省略せず保持、数値精度訳注を別保存。",
+    "全正式gateはpending、source-lockedを維持。"
+  ],
+  "unresolved": [
+    "残り13本文ページと通知案内の翻訳",
+    "日本語描画・全量別review・正式検証"
+  ],
+  "nextAction": "翻訳・原文対照3/16ページを保存。導入/Invoking/Basicと独立訳注を日本語描画へ接続し、続いてTypes and values全文を翻訳・対照。readonlycheckの不足13ページを更新し、全量別review/正式build/native/統合検証を継続。",
+  "resumeCondition": "翻訳・原文対照3/16ページを保存。導入/Invoking/Basicと独立訳注を日本語描画へ接続し、続いてTypes and values全文を翻訳・対照。readonlycheckの不足13ページを更新し、全量別review/正式build/native/統合検証を継続。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

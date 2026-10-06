@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-597-jq-full-original-content-review",
+  "cycle": 597,
+  "startedAt": "2026-10-04T04:19:40.249Z",
+  "endedAt": "2026-10-04T04:19:43.092Z",
+  "result": "partial",
+  "phase": "candidate-full-original-content-review",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "full nontruncated fixed source reading",
+    "prior/current source-key coverage audit",
+    "CAS candidate update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "dff5f436f228afa132d60a0abd7dacebb048bab1eb9f80a7c0733d9951163544"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-593/upstream-reference/PARSED_MANUAL.json",
+      "sha256": "b25e032a5f49bd444c34c00ff2622fac46421306345ad8f2053c294ab56195b4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-597/CONTENT_REVIEW.json",
+      "sha256": "fd3651c34f7cfa452b5eaa0b1f99441222afe309d07fbbf47650de079a8a1cbb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-597/register.mjs",
+      "sha256": "b4b905311c9968ccce8086835ded7a7464875bb82d3cb512a7c6c17181d4ae01"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "27c226024f8ea87669da93129d426f81f0c6752166da636d1d7ed78af1411625"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "entire original manual self-contained content review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-597/CONTENT_REVIEW.json",
+          "sha256": "fd3651c34f7cfa452b5eaa0b1f99441222afe309d07fbbf47650de079a8a1cbb"
+        }
+      ]
+    },
+    {
+      "name": "Japanese translation content review",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-597/CONTENT_REVIEW.json",
+          "sha256": "fd3651c34f7cfa452b5eaa0b1f99441222afe309d07fbbf47650de079a8a1cbb"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前turn594-596はUI試験と段階的内容レビュー証拠保存によりprogress。",
+    "未読Builtin59entry/後続10節/man補足を省略なく通読し原典全範囲のselfContained pass。原典表現差5件を訳注対象として保存。",
+    "採用/翻訳レビューは未完。採用0/公開0。"
+  ],
+  "unresolved": [
+    "日本語対象版/範囲調査",
+    "初回/更新工数と採点・独立選定照合",
+    "正式採用後の全日本語翻訳レビュー・注釈実装・回帰検証"
+  ],
+  "nextAction": "日本語対象版/範囲調査を完結し、工数/採点・別選定照合へ進む。",
+  "resumeCondition": "595/596/597原典SHA/読了keyを保持。原文注意点を独立した日本語注釈として実装し全文日本語レビューを省略しない。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

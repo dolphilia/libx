@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-610-jq-ja-search-and-copy-failure",
+  "cycle": 610,
+  "startedAt": "2026-10-04T05:16:22.455Z",
+  "endedAt": "2026-10-04T05:16:28.826Z",
+  "result": "complete",
+  "phase": "partial-ja-browser-search-copy-check",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "isolated JA search index generation",
+    "isolated29pagebuild",
+    "localhost Astro preview only",
+    "CUA native/semantic browser search and copy/paste",
+    "browser clipboard/log observation",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "85b78757ad57e5dcc8183255b9601e17e46f1517399f966d2163ac074c650403"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/BUILD.log",
+      "sha256": "7608e42317e49e453409b314cbc74827b49976226e104758c95e4b5306639678"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/JA_SEARCH.json",
+      "sha256": "7f62905262b611892d89fa26c0c7d3030c5a83f53f3d6f70038bb3734c58837a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/OBSERVATIONS.json",
+      "sha256": "e69932236ad74d4217485221a8606a00840f02e9911a73b9f00d45d372e37eb4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/SEARCH_GENERATION.log",
+      "sha256": "cb90e89d5a53733735082316fba3838a5799898f352eff3f18679595d23f8c7c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/register.mjs",
+      "sha256": "58d1168622664db2f9479044673743c7ba8474ea7d1732bc756b455aafeb0ea6"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "564db9e27f70d43d5ab7e8a91d422f7a0b137853418256bf29c7bff5eb15e230"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "JA6page search index and representative UI search",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/SEARCH_GENERATION.log",
+          "sha256": "cb90e89d5a53733735082316fba3838a5799898f352eff3f18679595d23f8c7c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/JA_SEARCH.json",
+          "sha256": "7f62905262b611892d89fa26c0c7d3030c5a83f53f3d6f70038bb3734c58837a"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/OBSERVATIONS.json",
+          "sha256": "e69932236ad74d4217485221a8606a00840f02e9911a73b9f00d45d372e37eb4"
+        }
+      ]
+    },
+    {
+      "name": "JA rebuilt29pages",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/BUILD.log",
+          "sha256": "7608e42317e49e453409b314cbc74827b49976226e104758c95e4b5306639678"
+        }
+      ]
+    },
+    {
+      "name": "JA representative codecopy",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-610/OBSERVATIONS.json",
+          "sha256": "e69932236ad74d4217485221a8606a00840f02e9911a73b9f00d45d372e37eb4"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "日本語の恒等検索がjqの起動/基本フィルターを返すことを実UIで確認。",
+    "copy実値8はjq .と不一致、原因未確定・不合格として保持。",
+    "残り12未翻訳・mobile/言語切替/全量review未完、公開0。"
+  ],
+  "unresolved": [
+    "代表copy操作不合格/原因特定",
+    "mobile/言語切替",
+    "Builtin全量など残り12本文翻訳/全体別review/正式統合検証"
+  ],
+  "nextAction": "日本語6ページの索引・恒等の代表検索は成功。コピーは期待jq .に対し実8で不合格。ボタン/コードフレームとinline clickhandler/clipboard経路を原DOM・ログ・native操作で調べ、原因を特定して隔離修正・再検証する。mobile/言語切替は未実施。独立してBuiltin全75entry/145例の翻訳を節分割で続行できる。",
+  "resumeCondition": "保存JA検索/失敗clipboard観測を保持し隔離checkoutで続行。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-582-gperf-production-ci-started",
+  "cycle": 582,
+  "startedAt": "2026-10-04T02:22:18.190Z",
+  "endedAt": "2026-10-04T02:22:25.563Z",
+  "result": "partial",
+  "phase": "publication-ci",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "dedicated checkout allowlist130files commit/push",
+    "latest GitHub refs read",
+    "single immutable Pages production workflow dispatch",
+    "existing CI run observation",
+    "CAS checkpoint"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ae951fa01938934c325af9e013ff58bad4dcf384c5aaebf62e61e7feccb93fa1"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/CANDIDATE.json",
+      "sha256": "88e43e6850f699302e2ab760d9af2018168631dff1c288b3b4e44f372e1b8f10"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/CI_1791080457526.json",
+      "sha256": "b0540f1e738ecbc03e39ddc8274bd68258bd28a17be5467762188981ec0f9543"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/CI_1791080480983.json",
+      "sha256": "2b2fb4dd882ad187694faaf41d58ba4afbec2039e73b85b8bc9395c90af25e96"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/PRODUCTION_DISPATCH_INTENT.json",
+      "sha256": "e89c7d2f95f8a5c7762685ce5054095dd0eaf2e146bc1bcc5aeb2428839da84b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/PRODUCTION_DISPATCH_RESPONSE.json",
+      "sha256": "2ae9b7201c86f45fcb70a7d60a4f562f083c7d302f5679a4ec46048e9cd2ad83"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/RAW_SOURCE_WHITESPACE.log",
+      "sha256": "8779cff179504f3229cecd9ebaa21dfcff9ad02714b177d25171380e03fdd908"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/ci-observe.mjs",
+      "sha256": "5b1a8a07286fe85c2495ce2b5c463d2d83fffc24833d5ddb355d6bdc1ad3840e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/register.mjs",
+      "sha256": "639d23352953b81bc50bdde88c5d782bd2f8f274d60c86b3a3c1f7603709d328"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "88c03ab5680ada3e323bfb36ed336d659a2d2900a59699cc0012d614406139cb"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "clean verified publication candidate",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/CANDIDATE.json",
+          "sha256": "88e43e6850f699302e2ab760d9af2018168631dff1c288b3b4e44f372e1b8f10"
+        }
+      ]
+    },
+    {
+      "name": "CI deployment and external verification",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-582/CI_1791080480983.json",
+          "sha256": "2b2fb4dd882ad187694faaf41d58ba4afbec2039e73b85b8bc9395c90af25e96"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "既存publishedの巡回を後回しにし新規gperf公開へ進める。",
+    "公開承認は2026-10-02継続承認を適用。",
+    "root共有user/Awesome変更をcommit/pushせず専用候補のみに限定。",
+    "原資料末尾空白検出を隠さず保全理由を記録。",
+    "実CIが進行中で成功・公開済み扱いにしない。"
+  ],
+  "unresolved": [
+    "CI completion",
+    "same-run artifact and direct Pages CAS",
+    "external HTTP/native validation"
+  ],
+  "nextAction": "gperf clean公開候補5961d7b32447ca14c681c9201c031c45251e8052を専用branchへpush済み。既存Pages production workflow37170776184実行中（単一dispatch HTTP204）。追加dispatch禁止、ci-observe.mjsで既存runのみ照会。成功時は同runverified artifact SHA/直接Pages before/prepublish/after CASと全配信HTTP/主要native確認後published登録。失敗時は実log原因分類して必要なgateのみ修正。定期確認は低優先。",
+  "resumeCondition": "gperf clean公開候補5961d7b32447ca14c681c9201c031c45251e8052を専用branchへpush済み。既存Pages production workflow37170776184実行中（単一dispatch HTTP204）。追加dispatch禁止、ci-observe.mjsで既存runのみ照会。成功時は同runverified artifact SHA/直接Pages before/prepublish/after CASと全配信HTTP/主要native確認後published登録。失敗時は実log原因分類して必要なgateのみ修正。定期確認は低優先。",
+  "counts": {
+    "verified": 15,
+    "published": 14,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

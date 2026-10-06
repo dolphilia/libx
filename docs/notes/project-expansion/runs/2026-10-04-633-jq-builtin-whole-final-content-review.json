@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-633-jq-builtin-whole-final-content-review",
+  "cycle": 633,
+  "startedAt": "2026-10-04T06:30:38.289Z",
+  "endedAt": "2026-10-04T06:30:45.674Z",
+  "result": "complete",
+  "phase": "builtin-whole-joined-page-final-review",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex separate final whole ENJA content review",
+    "Japanese readability reread",
+    "review hash binding and canonical/rendered snapshot checks",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "279910d807591b36864d768041a788ed0d7b78c07f4ba381a9c03318a64a493b"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/04-builtin-operators-and-functions.source.json",
+      "sha256": "e4d9eb6fe5512d68adbd9fda97626bf0ebbf1a8febbe47fd6e86dc0980edbdca"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/04-builtin-operators-and-functions.ja.json",
+      "sha256": "d27b36f157b973adb9801f4bb5acaa8fd8b736a76feb5c761b0ee949bfd9e64d"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/ja-canonical-630/01-guide/04-builtin-operators-and-functions.md",
+      "sha256": "b445194d2b9a21bfb385cbc50f9a313e96f3b7a6d81d01dc2044d8507b96ab1b"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/canonical/markdown/04-builtin-operators-and-functions.md",
+      "sha256": "176f70086c01cc15921739a320fbf48e2798784f879969c9af4a8ab07cc20db4"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/04-builtin-operators-and-functions.translator-note.json",
+      "sha256": "29abbd3b3e22b676b52b65e1711415121afbe487cff9148e7cf82154ea9af971"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/JA_RENDER_FIELDS-630.json",
+      "sha256": "10fe80c5c7fd5d46977c39ae017071106ff9dbf370b9baea2014b95913c1f92a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-632/CONTENT_REVIEW.json",
+      "sha256": "5dcc11f5f94b082402f9fb57919db10b7c733204b0a30a1f1325d87bcad2e434"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-633/BUILTIN_WHOLE_PAGE_REVIEW.json",
+      "sha256": "f8031cd918f367cddc2cdb87de0bb16c345ab690a2d436e5a01c426db540f4fd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-633/CONTENT_REVIEW.json",
+      "sha256": "07c18835ec5381819ef3bd230a6213d26eeb73b0e96a132ac0b372b6f6af5aa1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-633/MACHINE_BINDING_CHECK.json",
+      "sha256": "e0631a64d429481cceaf82baf17904e9c5c20c5a9f2077f66a8d83c2c954c5a6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-633/register.mjs",
+      "sha256": "d9f6de0c4c990bfc54bc527f46add0a931ba897ba50856fe90182e9c0cd8434a"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "8ad1a137c66fd0b00399de752f3326822a66a42487dffef37282836cae1bc144"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Builtin残り63項目117例全文review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-633/CONTENT_REVIEW.json",
+          "sha256": "07c18835ec5381819ef3bd230a6213d26eeb73b0e96a132ac0b372b6f6af5aa1"
+        }
+      ]
+    },
+    {
+      "name": "Builtin全頁619文字列/75項目/145例review範囲検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-633/BUILTIN_WHOLE_PAGE_REVIEW.json",
+          "sha256": "f8031cd918f367cddc2cdb87de0bb16c345ab690a2d436e5a01c426db540f4fd"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-633/MACHINE_BINDING_CHECK.json",
+          "sha256": "e0631a64d429481cceaf82baf17904e9c5c20c5a9f2077f66a8d83c2c954c5a6"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "Builtin結合後全頁最終review合格。全体は5/16頁。指摘/編集なし。",
+    "length/group/UTC/添字の原文不整合は原文保持と独立訳注。未検証ホスト動作を補わない。"
+  ],
+  "unresolved": [
+    "残り11本文頁+通知2頁の最終review",
+    "実画面・正式統合・公開"
+  ],
+  "nextAction": "jq最終内容reviewはBuiltin結合後全75項目/145例/619文字列までcoverage一致を確認し、5/16本文頁が合格。次は05-conditionals-and-comparisonsから残り11本文頁と通知2頁を全文review。実画面/mobile/言語/全量検索・正式統合・公開は未完了。",
+  "resumeCondition": "jq最終内容reviewはBuiltin結合後全75項目/145例/619文字列までcoverage一致を確認し、5/16本文頁が合格。次は05-conditionals-and-comparisonsから残り11本文頁と通知2頁を全文review。実画面/mobile/言語/全量検索・正式統合・公開は未完了。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

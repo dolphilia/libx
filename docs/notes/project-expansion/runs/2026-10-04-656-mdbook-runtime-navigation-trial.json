@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-656-mdbook-runtime-navigation-trial",
+  "cycle": 656,
+  "startedAt": "2026-10-04T13:45:00Z",
+  "endedAt": "2026-10-04T14:22:50.696Z",
+  "result": "partial",
+  "phase": "mdBook隔離runtime・公式目次復元と全章機械/native操作検証",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "actual runtime model identifier not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "python3",
+    "node",
+    "pnpm exec astro build",
+    "pnpm exec astro preview",
+    "cua_repl"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "9c8db302eca581200eec61d645759fd6526ba9dfe00f358dd069d078fa2c57d3"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "fa49b30bcf3d1710780140cde7535c7f00829e3b20a85b26a48adcac6f8a4631"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-655/ASTRO_TRIAL_OUTPUTS.zip",
+      "sha256": "03fedf58a1dd70ea46195fd0863c2fd4acd08adae0acc1a78a0fd04ac95fb868"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-653/RIGHTS_DECISION.json",
+      "sha256": "32d50c6772fc1cd2fd53eb96fc2870824663073a9d0d9a9a8d9032b33d7c1f0e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/ADAPTER_REPAIRS.json",
+      "sha256": "34212b9e907abea167ea9c67bf1c13e43654635f7ba64c461863a29861b9bcce"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/ARIA_REPAIR_v2.json",
+      "sha256": "0cb0534c8c5aefa8f158887fb4dd957aba71a934a6cf453daaf9566a737f7f18"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/ASTRO_RUNTIME_TRIAL_OUTPUTS.zip",
+      "sha256": "0c2116079a8f2ac2b0f3c2617036463d3f4b7e85b98df185ed29ca4717b196e0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD.log",
+      "sha256": "7213ea65cd08fb2c6695c97d8f8d83e75d175b0d3789b32c160e5cd4e13aa59f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_CHECK.json",
+      "sha256": "6cbf3b13d2e6ecde2cb1f1f6405045367c83f06d080eb60de4408fd737b9463f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_CHECK.log",
+      "sha256": "b644c44224534ce0e7150a98ba92639b0df4e0bfe09f51cc8a46595d762c8cad"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_CHECK_FINAL.json",
+      "sha256": "f328206425d7f2d9255baf4c6db235619c1d951e692535d4f1020a0d11a02777"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_CHECK_v2.json",
+      "sha256": "44d21819f5ffba9144b715cfc98cc83773bdbc27b02af91d0c983655092ea1df"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_CHECK_v2.log",
+      "sha256": "b644c44224534ce0e7150a98ba92639b0df4e0bfe09f51cc8a46595d762c8cad"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_CHECK_v3.json",
+      "sha256": "234a94e82bcc6c972ef05ff3fb21cbf6512e4756830d76be6b1e598d6e63419b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_CHECK_v4.json",
+      "sha256": "f328206425d7f2d9255baf4c6db235619c1d951e692535d4f1020a0d11a02777"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_v2.log",
+      "sha256": "7d18e8cb64ac25217d52fd179c0aeb57545d557b216aa28083b95c04e5015e4a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_v3.log",
+      "sha256": "69741c78e6b58c35fb2892484ac6c4b8e87d061a19ba6e51a76c45f28ba74989"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_v4.log",
+      "sha256": "6a680cf2348855e7c08a9a66f0f56df34fbd562511fb8d2a4769fb4f52552b9b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_v5.log",
+      "sha256": "2a5755509eb499b20ad47e126f116cc33c6c31ee8d511dca4afec785e4ad1ebb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_v6.log",
+      "sha256": "6b9e5062b40ff6ec8b54c3b06aff498e9ac6be46a9b9c94f3beb00d14ae0cbb3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUTTON_STYLE_CORRECTION.json",
+      "sha256": "f3d06155f5cf17ab4f218a247908f9396a54140b3b0e30df514527256b70ac1f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/CLIPBOARD_LICENSE.txt",
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/CLIPBOARD_LICENSE_FETCH.json",
+      "sha256": "5eb8653af3a826322c79f3b855b6272bcb7efba93d4d4b026d209dc2354dff85"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/CLIPBOARD_LINKED_LICENSE.html",
+      "sha256": "284acbb49789365ccece8a3a6ca2bf6febcc66632667608f9afad94e6daae416"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/DIAGNOSTIC_RESULT.json",
+      "sha256": "9099935bf97fee2400da5cf74e7968ba76f1d6a7b43907cfc564966daa1506ef"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/DocLayout.before.astro",
+      "sha256": "f659f4a1b2cc0c58f931b2069e49d8340aa489cfcc4fb1e2751ed4ef53521056"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/FRONTEND_INPUTS.json",
+      "sha256": "3e4a846e9e8731ea2bb5a123e18b415f708d7586959e8790b1b2bb63ec1c61d6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/GLYPH_ADAPTATION.json",
+      "sha256": "543e81006989cf29f261242779b16662b34cc567a127e95fa251f158162ffa20"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/HIGHLIGHT_LICENSE.txt",
+      "sha256": "6c081431591d9df696c82dc598fe1423765b8a299b200ed00b281afd0f64c490"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/INLINE_STYLE_REPAIR.json",
+      "sha256": "139885009d0abf5539e2f68d861bf5af01157f3155136d14259f8f4cc0f23d3c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/LICENSE_FETCH.json",
+      "sha256": "68d909d68e3e06e4a0dfd1cc9148e5477019e2291eac097b9ac8785286b9d4c1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/MATHJAX_LICENSE.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_CONTROL_READ.json",
+      "sha256": "157a3417cd94f7aa41da17fe12516660a8160529c3cde0fea6c4865694a90ea9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_COPY_EDITOR_RESET.json",
+      "sha256": "2a05380930a1a3f0bc8f5c4ea4d1eb84deb796c0454851c2d32bdf7aa2d105b1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_EXECUTION.json",
+      "sha256": "2ae61f5f00fc896f1f2f21231830cb76a71bc05534cd6ef86d8143f357a4f6c6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_EXPAND.json",
+      "sha256": "f95f7622e52b96302e8bf2a3f5d698a86ac405d972d55012e7ab358794ed70c4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_HIDE_SHOW_FINAL.json",
+      "sha256": "d6bf56caae9c9ba99f0d4cd93065f2e71b7565b96de6a884bdebc61df9febe3f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_HIDE_SHOW_REPAIRED.json",
+      "sha256": "541288a0ab5f8bff69a901436fcadf5e5ab8b0030a77dcb75acdc68bf0566c06"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_MATH.json",
+      "sha256": "c57a733b3f85e226f580ff942ca0f8ee7bad6087a4c8f7a3c65ccc4700028957"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_MATH_AX.txt",
+      "sha256": "3ff6a1e7dca6af4508e1fe149954228ace54cc9840e6fcb396a23fa5006646a6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_MATH_FINAL.json",
+      "sha256": "71945ff6351cb913b3ac7a468164b8ee3e6d9e3bc04285e2cb5b3c186332e7f0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_MAX_AX.txt",
+      "sha256": "0ac90a43667086c1fb92125f139f743ac05cbfc8196821c733ef09a1663d9163"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_NORMAL_AX.txt",
+      "sha256": "cc5300bd54f88d1a17eaf6084729b472ce327a5853d620c06c289a14e283c2a0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_STYLE_MATH_FINAL.json",
+      "sha256": "88bf87a44656e4a9b9df4600cdd984aec529855e950f31d403a03ab1b30bf2e5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NAVIGATION_CHECK.json",
+      "sha256": "8d78688ad7a4ea1cd3ca3741f2c28e21bc1d5712d15bb48a47e335f3bdac2f72"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NAVIGATION_CHECK_FINAL.json",
+      "sha256": "8d78688ad7a4ea1cd3ca3741f2c28e21bc1d5712d15bb48a47e335f3bdac2f72"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NAVIGATION_PREPARED.json",
+      "sha256": "78001a39b4f40e0a873330d76d24c043a3a08123a4dca51ba71f9f620c838996"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/ORIGINAL_PREVIEW_MANIFEST.json",
+      "sha256": "6de333423db8c30dcfba3a1414e4d5223461c85fc311d74ad1df02ce669cd1ed"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/PAGINATION_CORRECTION.json",
+      "sha256": "96fe878b37478ca53f4e324ac6d06425ed3d163de2ffa84b93190cc5ed47805b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/PLAYGROUND_METADATA_METHODS.json",
+      "sha256": "3ff3fea7b32580a4ab86b5486b3a143ec5e6017945364db415375ab53c1fcb12"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/RUNTIME_PREPARED.json",
+      "sha256": "5b002acee66007ea1cd806bdc908d7821aa594d1a9bc9d37f4657b50f45ab128"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/TRIAL_OUTPUT_MANIFEST.json",
+      "sha256": "78197d79f3635e74e141f99fcf7088d03493c37c4f16d0b28f8775aae5c18e79"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/TRIAL_PREPARED.json",
+      "sha256": "6d6b6604c002b013c5c80ff38a84fee00f15145d6e4317621906bb05e269a634"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/TRIAL_PREPARED_v2.json",
+      "sha256": "bd1750e81af88ab3ffbad6458ae91001e2bdcd0e9e526f59de54376a4c522b7d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/TRIAL_PREPARED_v3.json",
+      "sha256": "7ea11b9a0ccb6fa680bf3ebdf882512d64c269c0614aed6761a2a8573a5272b7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/ace.js",
+      "sha256": "2a3cd908c9619862b52f621ce2a40f76b772eb51c17308b14bd26d1809af8f87"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/book.js",
+      "sha256": "609e4cb80f92aa954a3f48869c751f6f8848433604f1297bb70fde0e3e58a569"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/check-build-final.mjs",
+      "sha256": "97fea1fc839b3cf19ee81e0c0aae26ae6cd87f1c78d5b9fc4a3259684a61d346"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/check-build-v2.mjs",
+      "sha256": "e2aff24c8e1133caffcc857d1722f0d504c9fef75d9a3a230bc0a12c7fa384fa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/check-build-v3.mjs",
+      "sha256": "6f32a5b4b0e140df28f969afe7238f1440efe9e96a308673eaa21ed0395deccb"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/check-build-v4.mjs",
+      "sha256": "c8e3de25295f829aa301befbd302b6d470ba64b8516c92aba3ac1d289086842b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/check-build.mjs",
+      "sha256": "2afa00685573479f40d4623518bb68cdf83652ff6dd89231cf0ea746309becb5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/check-navigation-final.mjs",
+      "sha256": "5f9d3e24f8f3999ad9738390ded0917d10692c4273d0b2b7d9afa5b0f7fcaeec"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/check-navigation.mjs",
+      "sha256": "28ac39501eb133e89eaa910076acdd4de444181b12131139b2ba955af977c684"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/chrome.css",
+      "sha256": "d279d366359c0d588c9c10cb46afe2b543fc731dea722803639b4e45016d5fe2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/clipboard.min.js",
+      "sha256": "1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/editor-copy.png",
+      "sha256": "56cdd36d30c2e5f4b96ae42e2059c0f32899fd05fb2f36e5a784b8109255c8bc"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/editor.js",
+      "sha256": "16ca416ca77428fe23cb8e18afbd3626a6a86723d6b6e189c47da95d9e9bdc31"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/freeze-trial.py",
+      "sha256": "3c718c5fac70c7893a57cd353bce98aff95f2e2a082290a4ae472414bede79b2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/general.css",
+      "sha256": "e96d0476741bfcbe8cc0ac02db00187c45a63946834361d0eab846016787c646"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/hard-expanded.png",
+      "sha256": "5acf3d3c62f505357ff2d63d65f9b2dccd68081989348fe34280fc0ac2c49eb2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/highlight.js",
+      "sha256": "abc7f01d0ce8c64e4ba9e131d651e48ae1a567b2a1254fea8aab03502288de58"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/math-final.png",
+      "sha256": "2bb586398ac9737b7c30ec7b1cf9492fb9438b29ce1fc499d5881a7f76b3a579"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/math-rendered-final.png",
+      "sha256": "cbdaa8b020abb2d3ba100101013c0e681d3709039168a459369e5d31eb6e923e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/max-final.png",
+      "sha256": "f45a1563d00db1cee22aaebacdfca160f47d6c77aa01daf8d399321f3fe1855e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/navigation.before.ts",
+      "sha256": "b10ed67d5a3a48ab928a18be45aeb6e1dd130ef1365af8259fc90cbd1d5d6171"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/normal-final.png",
+      "sha256": "f214744946c82363e1e0aa59045e3e2dcce8a3a26ae2973f4f781b50431b36ad"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/prepare-navigation.py",
+      "sha256": "042cc2894d804462529e5471150f004eaf1742c09387411ba4b84fd03f27be32"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/prepare-runtime.mjs",
+      "sha256": "f5f94bd8fc3310347392c8dd0165b6c7d32c607159afca556ef8913b3e049ac4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/register.mjs",
+      "sha256": "0254feb598508ac87153f1827bb529aaffc4c0129e1e8531a10b92adc23134a3"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/repair-adapters.py",
+      "sha256": "e6b21d168b694b2c069ee0fd3e2b0b82151b8619741aa542e134296745ae0fbb"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "mdbook"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "31章DOM140code/内部links/画像bytes",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/BUILD_CHECK_FINAL.json",
+          "sha256": "f328206425d7f2d9255baf4c6db235619c1d951e692535d4f1020a0d11a02777"
+        }
+      ]
+    },
+    {
+      "name": "31目次/階層/parts/draft/前後章60/フッター素材注記",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NAVIGATION_CHECK_FINAL.json",
+          "sha256": "8d78688ad7a4ea1cd3ca3741f2c28e21bc1d5712d15bb48a47e335f3bdac2f72"
+        }
+      ]
+    },
+    {
+      "name": "nativeコピー編集Undo/hiddenSVGaria/icon/math",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_COPY_EDITOR_RESET.json",
+          "sha256": "2a05380930a1a3f0bc8f5c4ea4d1eb84deb796c0454851c2d32bdf7aa2d105b1"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_HIDE_SHOW_FINAL.json",
+          "sha256": "d6bf56caae9c9ba99f0d4cd93065f2e71b7565b96de6a884bdebc61df9febe3f"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_STYLE_MATH_FINAL.json",
+          "sha256": "88bf87a44656e4a9b9df4600cdd984aec529855e950f31d403a03ab1b30bf2e5"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/NATIVE_EXECUTION.json",
+          "sha256": "2ae61f5f00fc896f1f2f21231830cb76a71bc05534cd6ef86d8143f357a4f6c6"
+        }
+      ]
+    },
+    {
+      "name": "完全な変換成立/素材source提供/selfContained工数/採点/全文レビュー",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-656/DIAGNOSTIC_RESULT.json",
+          "sha256": "9099935bf97fee2400da5cf74e7968ba76f1d6a7b43907cfc564966daa1506ef"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "詳細候補1、新規採用0。root apps/共有UI/Awesome/依存/ユーザー変更は編集しない。隔離アプリと証拠のみ。",
+    "原版front-endの3関数/Ace bytesを保持。modern clipboard輸送/原選択関数とbutton aria補正だけLibx注記。初期失敗・非最終観測を保存して最終証拠と区別。",
+    "MathJax外部2.7.1は描画確認のみ。外部bytes固定・素材closure未確認を合格扱いしない。",
+    "フッター/本文位置は既存方針に従い注記をfooterへ。全文semanticレビューは未実施。",
+    "Astro localhostのみ、試験tab閉鎖/preview停止。Workers/外部preview/公開deployなし。"
+  ],
+  "unresolved": [
+    "MPL preferred editable source offer ZIP and complete provenance/notice closure; include original inputs, generator, modified derivatives and notices.",
+    "Original archive/CSS contains Octicons SVG data URI; served adapted CSS removed it, but source distribution notice still requires completion.",
+    "MathJax runtime version fixed but loaded externally; local byte/source closure and self-contained operating policy not decided.",
+    "Remaining original CSS selector contexts (content/main/hidden/image alignment), responsive and dark theme behavior need comparison against fixed original.",
+    "Self-contained gate, workload estimate, evidence-backed scoring and separate adoption decision not done.",
+    "No Japanese translation or full semantic review performed; candidate remains screening."
+  ],
+  "nextAction": "656 ASTRO_RUNTIME_TRIAL_OUTPUTS.zip/manifest/最終31DOM140code・目次60・native証拠から再開。原CSSのcontent/main/hidden/画像整列、responsive/darkを原版Astro mirrorと比較。MPLpreferred source ZIPと素材通知(元archive内Octicons含む)を閉じ、外部MathJax固定方法を決める。selfContained/workload/採点→別選定照合、全条件/70点/価値実用性各3以上を満たしてから新規着手。",
+  "resumeCondition": "固定入力・出力/ライセンス条件を維持。未確認のCSS/source closure/採点を解決して全6必須条件passまでscreeningを維持。"
+}

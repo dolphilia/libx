@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-629-jq-last-three-pages-translation",
+  "cycle": 629,
+  "startedAt": "2026-10-04T06:14:21.808Z",
+  "endedAt": "2026-10-04T06:14:26.860Z",
+  "result": "complete",
+  "phase": "last-three-full-page-translation-source-comparison",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex wholeModules/Colors/Appendix translation",
+    "separate full ENJA content comparison",
+    "allfield/code/name order mechanical checks",
+    "full16page rawdraft coverage audit",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "18ea68ed13f923afeee668b7a81c38fe06c9adc9c7142cb919a2101eb2da058f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-629/ALL_DRAFT_MACHINE_CHECK.json",
+      "sha256": "960d968716b58dea84a2ff5d9d87fc4140de6913cbb937a6a9ab8008cd7e2cbe"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-629/CONTENT_REVIEW.json",
+      "sha256": "ecb821cf98e70b35492f9a5314ff4549a5e94661fa16d00e5795bde74200c42b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-629/MACHINE_CHECK.json",
+      "sha256": "dccf1f57c804ad3ad638994cc6f3723969d904fb3026454638a36ff3e49fa56b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-629/register.mjs",
+      "sha256": "73afada5eafb01ee7ca66c2eb3a4690ea1235ddee6bd29316208be2526fca766"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-629/translate.py",
+      "sha256": "82ae666b87eac56bcc0b974c97779118b05e35216c7e5e87be2ef1d918a7cfc4"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/13-modules.source.json",
+      "sha256": "b41f7b4d453a5c634696629429d5dd5476eb8887618e50d3880472677b9c7fc5"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/13-modules.ja.json",
+      "sha256": "5f44b0ffe6b339b3622a3c53318e010e2e929b12ff5da3313878b3549aa528e5"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/14-colors.source.json",
+      "sha256": "22c3646ee93b37f59aa9a5939cc3da0e1b7f929b952b43be4e8860ee398af742"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/14-colors.ja.json",
+      "sha256": "3c8a75bd0ce1b62e40d7b35de7ae90cdcd2fbcebb0c316ec7282e7fdb0019ae9"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/15-manpage-appendix.source.json",
+      "sha256": "df72624acd47567047279a81d3d8bd6bc53ba331f4c842a2a3b85d1f1a766fe3"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/15-manpage-appendix.ja.json",
+      "sha256": "8a9c35d79e90f4a786bae82554ede6821373140c3b3bac8bb7ed7927a065719b"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "9be35ab23633d4f1f6bbe7177431cfcc032cdba57062994a6196d0875c69b930"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "モジュール・色・付録全文内容対照",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-629/CONTENT_REVIEW.json",
+          "sha256": "ecb821cf98e70b35492f9a5314ff4549a5e94661fa16d00e5795bde74200c42b"
+        }
+      ]
+    },
+    {
+      "name": "固定原文・コード・関数名の機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-629/MACHINE_CHECK.json",
+          "sha256": "dccf1f57c804ad3ad638994cc6f3723969d904fb3026454638a36ff3e49fa56b"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "モジュール5項目と色・manpage付録を全文翻訳・対照。正式examples配列は0。",
+    "訳稿16/16頁が揃ったが新11頁未レンダリング。manpage生成未実装、source-locked維持。"
+  ],
+  "unresolved": [
+    "manpage renderer/assemblerの実装と全量生成",
+    "全16頁表示/結合後内容再review",
+    "全量別review・正式統合検証"
+  ],
+  "nextAction": "jqモジュール/色/manpage付録まで全16/16本文頁の訳稿・原文対照が揃った。現行manpage intro rendererとassemblerは未実装で全量生成を拒否する。固定原典のEscapeHtml扱いと同じ角括弧保存を実装し、全16頁の表示生成・隔離build・全量DOM/例/通知/参照検査へ進む。結合後内容再review・全体別review・実表示/正式統合も未完了。",
+  "resumeCondition": "jqモジュール/色/manpage付録まで全16/16本文頁の訳稿・原文対照が揃った。現行manpage intro rendererとassemblerは未実装で全量生成を拒否する。固定原典のEscapeHtml扱いと同じ角括弧保存を実装し、全16頁の表示生成・隔離build・全量DOM/例/通知/参照検査へ進む。結合後内容再review・全体別review・実表示/正式統合も未完了。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-626-jq-streaming-full-page-translation",
+  "cycle": 626,
+  "startedAt": "2026-10-04T06:06:37.115Z",
+  "endedAt": "2026-10-04T06:06:42.099Z",
+  "result": "complete",
+  "phase": "full-page-translation-source-comparison",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex wholeStreaming translation",
+    "separate full ENJA content comparison",
+    "allfield/code/name order mechanical checks",
+    "all3example preservation",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ffa417eae0fb2c07a956696237de3f51d311581c4c1fd74378a04376f6aaaa83"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-626/CONTENT_REVIEW.json",
+      "sha256": "66fa701fec7abc42143583f322c82300fd3c4d132050904cc1e8293a3f53e167"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-626/MACHINE_CHECK.json",
+      "sha256": "679b8c0ffb982633d65b4d720bef6153cdd9874de7de335ee6a506ca3ea2e382"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-626/register.mjs",
+      "sha256": "622a244f1774a1ad04fa9209971056d46cda88ac0822ea81ce97b4ba5d75c237"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-626/translate.py",
+      "sha256": "e1af85e93f6a8ea45beb40159ff842819529a8b11ae77725a2eb9ebc7d2af556"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/10-streaming.source.json",
+      "sha256": "55a1c2254f1be2d3fef355c3fd06b666af9d073fd385ded14b58c47c9604740c"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/10-streaming.ja.json",
+      "sha256": "d654429e622c9964e73cabb459304073cbea154d3be9700a674a115496be7640"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "754a21a089884bc95d4dd42f76304b79330e56fb94bdd3925d997ccf98c778ec"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "ストリーミング全文内容対照",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-626/CONTENT_REVIEW.json",
+          "sha256": "66fa701fec7abc42143583f322c82300fd3c4d132050904cc1e8293a3f53e167"
+        }
+      ]
+    },
+    {
+      "name": "固定原文・コード・3例の機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-626/MACHINE_CHECK.json",
+          "sha256": "679b8c0ffb982633d65b4d720bef6153cdd9874de7de335ee6a506ca3ea2e382"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "ストリーミング導入と全3項目3例を翻訳・対照。",
+    "訳稿11/16頁、新6頁は未レンダリング。source-locked維持。"
+  ],
+  "unresolved": [
+    "残り5本文頁の全量翻訳",
+    "新6頁レンダリング/表示と結合後内容再review",
+    "全量別review・正式統合検証"
+  ],
+  "nextAction": "jqストリーミングintro+3項目3例の全文翻訳・対照済み、訳稿11/16本文頁。新頁は未レンダリング。次原文section10 Assignmentを全文翻訳・対照し、残り5頁の全範囲を維持。新6頁とBuiltin結合後再review・実表示、正式全量検証も継続。",
+  "resumeCondition": "jqストリーミングintro+3項目3例の全文翻訳・対照済み、訳稿11/16本文頁。新頁は未レンダリング。次原文section10 Assignmentを全文翻訳・対照し、残り5頁の全範囲を維持。新6頁とBuiltin結合後再review・実表示、正式全量検証も継続。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

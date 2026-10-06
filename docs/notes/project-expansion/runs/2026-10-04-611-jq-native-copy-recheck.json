@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-611-jq-native-copy-recheck",
+  "cycle": 611,
+  "startedAt": "2026-10-04T05:22:13.804Z",
+  "endedAt": "2026-10-04T05:22:19.613Z",
+  "result": "complete",
+  "phase": "partial-ja-copy-recheck",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "copybutton/codeframe/module DOM inspection",
+    "semantic label andclipboard observation",
+    "native3copy andpaste comparison",
+    "semantic retry after native input",
+    "shared plugin independent hash comparison",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "564db9e27f70d43d5ab7e8a91d422f7a0b137853418256bf29c7bff5eb15e230"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-611/COPY_RECHECK.json",
+      "sha256": "ddc351caead3afa5d77df4906fe607ff763a1df5137f122acc23ec1a7cc0ead2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-611/register.mjs",
+      "sha256": "263007b09335534093a46669aaa319abd28d1bc79df697b5f9f97fb434534a22"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0b4a250db1672b7e21889006524bcfb3e2816e24f06544bd3670bdd4e71717b9"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "JA native representative3copy andpaste",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-611/COPY_RECHECK.json",
+          "sha256": "ddc351caead3afa5d77df4906fe607ff763a1df5137f122acc23ec1a7cc0ead2"
+        }
+      ]
+    },
+    {
+      "name": "initial semantic clipboard consistency",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-611/COPY_RECHECK.json",
+          "sha256": "ddc351caead3afa5d77df4906fe607ff763a1df5137f122acc23ec1a7cc0ead2"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "Native Command/Input/Outputと実paste一致、native後semanticも成功。",
+    "初期不一致の根本原因は未確定。sharedpluginの変更なし。",
+    "一部操作成功を全量review/verifiedにしない。"
+  ],
+  "unresolved": [
+    "初期コピー不一致の原因未特定",
+    "mobile/言語切替",
+    "Builtin等残り12本文翻訳・全体別review・統合検証"
+  ],
+  "nextAction": "日本語Basicのnative代表3copy/実pasteとnative後semantic再試験は成功。610と611初回の不一致は原因未確定として履歴保持。共有plugin未変更。mobile/言語切替を独立して確認し、Builtin全75entry/145例を節分割で全文翻訳・対照する。",
+  "resumeCondition": "保存copy観測と固定定本を保持し隔離checkoutで続行。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

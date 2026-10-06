@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-628-jq-comments-full-page-translation",
+  "cycle": 628,
+  "startedAt": "2026-10-04T06:10:35.437Z",
+  "endedAt": "2026-10-04T06:10:39.986Z",
+  "result": "complete",
+  "phase": "full-page-translation-source-comparison",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex wholeComments translation",
+    "separate full ENJA content comparison",
+    "allfield/code/name order mechanical checks",
+    "wholeoriginal code preservation",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "53960c6f38a4f5bae02a8589e6821d6421e0c731a57065bd9ea7af7cf7bb6fd1"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-628/CONTENT_REVIEW.json",
+      "sha256": "c5ce39f21ddb5f35d135c0745a17ad91257b5f7a5ba6e30fcf46c3b57c0abe7a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-628/MACHINE_CHECK.json",
+      "sha256": "eec67304d3e2899af24b914808732edcaf8e06e8785a3594297cd6b27174ed1c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-628/register.mjs",
+      "sha256": "57361ad2b61d536df3749e2e75538240c140d52c037b4838cfe815d9e758cbad"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-628/translate.py",
+      "sha256": "669126dca288d6efb113068027de71a1f4185064fe37c006550ad0eb4917ae05"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/12-comments.source.json",
+      "sha256": "c86f5537be5519eb86f4676939c1aff7e54d29e666f13af5d0af3ccbdf75887c"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/12-comments.ja.json",
+      "sha256": "e9ff046844c8916b1cc3ab25e4a4fe3c7897032c7f3f4b6643f46a1ef4c011a0"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "18ea68ed13f923afeee668b7a81c38fe06c9adc9c7142cb919a2101eb2da058f"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "コメント全文内容対照",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-628/CONTENT_REVIEW.json",
+          "sha256": "c5ce39f21ddb5f35d135c0745a17ad91257b5f7a5ba6e30fcf46c3b57c0abe7a"
+        }
+      ]
+    },
+    {
+      "name": "固定原文・本文内コードの機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-628/MACHINE_CHECK.json",
+          "sha256": "eec67304d3e2899af24b914808732edcaf8e06e8785a3594297cd6b27174ed1c"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "コメント全文とshebangスクリプトを翻訳・対照。正式examples配列は0。",
+    "訳稿13/16頁、新8頁は未レンダリング。source-locked維持。"
+  ],
+  "unresolved": [
+    "残り3本文頁の全量翻訳",
+    "新8頁レンダリング/表示と結合後内容再review",
+    "全量別review・正式統合検証"
+  ],
+  "nextAction": "jqコメント全文翻訳・原文対照済み、訳稿13/16本文頁。新頁未レンダリング。次原文section12 Modulesを全文翻訳・対照し、残り3頁の全範囲を維持。新8頁とBuiltin/Advanced結合後再review・実表示、正式全量検証も継続。",
+  "resumeCondition": "jqコメント全文翻訳・原文対照済み、訳稿13/16本文頁。新頁未レンダリング。次原文section12 Modulesを全文翻訳・対照し、残り3頁の全範囲を維持。新8頁とBuiltin/Advanced結合後再review・実表示、正式全量検証も継続。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

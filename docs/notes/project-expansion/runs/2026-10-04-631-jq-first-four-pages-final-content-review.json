@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-631-jq-first-four-pages-final-content-review",
+  "cycle": 631,
+  "startedAt": "2026-10-04T06:25:29.238Z",
+  "endedAt": "2026-10-04T06:25:34.538Z",
+  "result": "complete",
+  "phase": "first-four-pages-final-content-review",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex separate final whole ENJA content review",
+    "Japanese readability reread",
+    "review hash binding and canonical/rendered snapshot checks",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7e606e06e072b1ea071e683835d52b13c657defe0ee79676a1367563cc3f5058"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/PARSED_MANUAL.json",
+      "sha256": "b25e032a5f49bd444c34c00ff2622fac46421306345ad8f2053c294ab56195b4"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/JA_RENDER_FIELDS-630.json",
+      "sha256": "10fe80c5c7fd5d46977c39ae017071106ff9dbf370b9baea2014b95913c1f92a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-630/JA_RENDERED_CHECK.json",
+      "sha256": "15af0b949eabf910ba465d844c98af8f2a9575d8c3dfe59bda9bed014d50c4f5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-631/CONTENT_REVIEW.json",
+      "sha256": "81d7bd9f0829fe943ef6b42db83b0e7cadf8355d266c5256075fda6839a043d2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-631/MACHINE_BINDING_CHECK.json",
+      "sha256": "301735f0282858e5e0b6927fdb4027563cd3da092c08d6d8f7249e0ceeb49013"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-631/register.mjs",
+      "sha256": "b80b1043efe84780288ba376dc3c16cd09b572cbba099d045154e3e27bf6e4af"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "55ede03dc51ad9286c1b90d36c758ae87bab3aa6262ae7fa6e9a398b406653e9"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "最初4頁最終全文内容review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-631/CONTENT_REVIEW.json",
+          "sha256": "81d7bd9f0829fe943ef6b42db83b0e7cadf8355d266c5256075fda6839a043d2"
+        }
+      ]
+    },
+    {
+      "name": "レビュー対象hashと生成物結合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-631/MACHINE_BINDING_CHECK.json",
+          "sha256": "301735f0282858e5e0b6927fdb4027563cd3da092c08d6d8f7249e0ceeb49013"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "4/16本文頁の最終内容reviewが完了。指摘/編集なし。未確認12頁と通知2頁は未完了。",
+    "内容レビューと機械hash検査を分離し、UI未確認・source-locked状態を維持。"
+  ],
+  "unresolved": [
+    "残り12本文頁+2通知頁の最終全文内容review",
+    "実画面/mobile/言語/検索等",
+    "正式統合検証・公開"
+  ],
+  "nextAction": "jq最終内容reviewの導入・起動方法・基本フィルター・型と値4/16本文頁は全文再対照・日本語再読が合格（35例含む）。次はBuiltin全75entries/145examplesを結合後の全頁として節順に再reviewし、全16頁と2通知の最終review coverageを完成する。実画面・統合・公開は未完了。",
+  "resumeCondition": "jq最終内容reviewの導入・起動方法・基本フィルター・型と値4/16本文頁は全文再対照・日本語再読が合格（35例含む）。次はBuiltin全75entries/145examplesを結合後の全頁として節順に再reviewし、全16頁と2通知の最終review coverageを完成する。実画面・統合・公開は未完了。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

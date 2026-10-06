@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-596-jq-builtin-content-review-first-sixteen",
+  "cycle": 596,
+  "startedAt": "2026-10-04T04:15:40.794Z",
+  "endedAt": "2026-10-04T04:15:44.294Z",
+  "result": "partial",
+  "phase": "candidate-self-contained-builtin-review",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "fixed parsed source full reading of first4pages",
+    "source-key coverage record",
+    "CAS candidate update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "4aff869880f7f1d085555220d209281929742eee861be7d0b894c7ad128d72d2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-593/upstream-reference/PARSED_MANUAL.json",
+      "sha256": "b25e032a5f49bd444c34c00ff2622fac46421306345ad8f2053c294ab56195b4"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-596/CONTENT_REVIEW.json",
+      "sha256": "f1d676b22412030288c58b796c60c7ea7d4563593a7bb89415dcd158ff08dffe"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-596/READ_SOURCE.json",
+      "sha256": "789483e8e5464e63dd0bbb312d5206e54f4c85d9eb3df954ec00c318a92f1fd9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-596/register.mjs",
+      "sha256": "563a3acfe0b8448eb88ff0de65f717a862e673db4dc05dda07fa87bda11f89d3"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "dff5f436f228afa132d60a0abd7dacebb048bab1eb9f80a7c0733d9951163544"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Builtin introduction and entries0..15 full source reading",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-596/CONTENT_REVIEW.json",
+          "sha256": "f1d676b22412030288c58b796c60c7ea7d4563593a7bb89415dcd158ff08dffe"
+        }
+      ]
+    },
+    {
+      "name": "entire manual self-contained verdict",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-596/CONTENT_REVIEW.json",
+          "sha256": "f1d676b22412030288c58b796c60c7ea7d4563593a7bb89415dcd158ff08dffe"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "595の4頁全文通読後、次の未読Builtin冒頭16entryを通読し追加証拠を保存。",
+    "上流本文の数値説明差とlength表現を原典由来の注意として残す。",
+    "正式採用0/公開0。全文判定は未完。"
+  ],
+  "unresolved": [
+    "Builtin entries[16..74]",
+    "sections[4..13]",
+    "manpage_intro/epilogue",
+    "数値精度/lengthの注釈判断と必須内部参照充足の最終判定",
+    "日本語対象版/範囲・工数採点"
+  ],
+  "nextAction": "Builtin entries[16..74]から本文と全examplesの内容レビューを続け、後続10sections/man appendix、日本語調査・工数採点へ進む。",
+  "resumeCondition": "固定sourceSHAと595/596 readKeysを照合し未読から再開。preview/tab終了済み、共有/Awesome変更保護。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

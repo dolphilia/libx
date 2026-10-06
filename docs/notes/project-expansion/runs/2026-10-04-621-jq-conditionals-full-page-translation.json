@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-621-jq-conditionals-full-page-translation",
+  "cycle": 621,
+  "startedAt": "2026-10-04T05:51:24.791Z",
+  "endedAt": "2026-10-04T05:51:28.420Z",
+  "result": "complete",
+  "phase": "full-page-translation-source-comparison",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex whole8entry translation",
+    "separate full ENJA content comparison",
+    "19examples/field/inline/indented code mechanical checks",
+    "separate original contradiction translator note",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ceacc93a8d687fa2b3dd027b75068f1331ead79cf1cc5d9c01e1f71bdcd8990a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-621/CONTENT_REVIEW.json",
+      "sha256": "6f5c7622c6c26718069c8cfa041ff571fe29d87b6f2155e339666285f69ba9f1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-621/MACHINE_CHECK.json",
+      "sha256": "93d4aac727dd2c9fc22f645a8c831464b2c6972a52f9828a4f314ad129423bf7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-621/register.mjs",
+      "sha256": "4e451925d8c760f5c5c5656423a9922d5b6e1923020259d9f93f617ced77d555"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-621/translate.py",
+      "sha256": "810750fd3ee24c5dcbb1651c54594bd27c26f4c03f6698eb164d4348b86d008b"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/05-conditionals-and-comparisons.source.json",
+      "sha256": "3c5284259f5f873f30332c6a3766bc7dfa3d5fdc5f50f8d24c0311a7258ed3d4"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/05-conditionals-and-comparisons.ja.json",
+      "sha256": "bce582d9a661fa437177824c59a72ba46a901c119501301ff8e09303dd3b4097"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/05-conditionals-and-comparisons.translator-note.json",
+      "sha256": "cf34ac58b9f613b67b25b5db6b9890b3dee6990670aa2aa266cc3cdf6a8a033a"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "46c32ccc916cadc60c4480d54cbdf1bee5a682d91611bb053c84b6624b699bfd"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "条件式と比較の全文内容対照",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-621/CONTENT_REVIEW.json",
+          "sha256": "6f5c7622c6c26718069c8cfa041ff571fe29d87b6f2155e339666285f69ba9f1"
+        }
+      ]
+    },
+    {
+      "name": "原文・コード・19例の機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-621/MACHINE_CHECK.json",
+          "sha256": "93d4aac727dd2c9fc22f645a8c831464b2c6972a52f9828a4f314ad129423bf7"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全8項目19例、6/16本文頁の訳稿が揃った。新頁は未レンダリング。",
+    "原文と例の食い違いを無言訂正せず、原文保持と別訳注に分離。"
+  ],
+  "unresolved": [
+    "残り10本文頁の全量翻訳",
+    "新頁レンダリング/表示・Builtin結合後内容再review",
+    "全量別review・正式統合検証"
+  ],
+  "nextAction": "jq条件式と比較全8項目19例の翻訳・原文対照済み。6/16本文頁の訳稿が揃ったが、新頁は未レンダリング。次Advanced featuresを全文翻訳・対照し、残り10頁を省略しない。Builtin結合後再レビュー・実表示、正式全量検証も未完了。",
+  "resumeCondition": "jq条件式と比較全8項目19例の翻訳・原文対照済み。6/16本文頁の訳稿が揃ったが、新頁は未レンダリング。次Advanced featuresを全文翻訳・対照し、残り10頁を省略しない。Builtin結合後再レビュー・実表示、正式全量検証も未完了。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

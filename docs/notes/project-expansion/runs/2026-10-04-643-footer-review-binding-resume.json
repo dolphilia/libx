@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-643-footer-review-binding-resume",
+  "cycle": 643,
+  "startedAt": "2026-10-04T08:34:52.661798Z",
+  "endedAt": "2026-10-04T08:41:27.796425Z",
+  "result": "complete",
+  "phase": "表示保守後の全文レビュー対応・台帳整合（継続追加は一時停止）",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "docs/notes/project-expansion/POLICY.json",
+    "runtime": null,
+    "runtimeStatus": "actual runtime model identifier not independently exposed; no local LLM",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "functions.exec",
+    "node",
+    "python3",
+    "get_goal"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-context-2026-10-04/MIGRATION.json",
+      "sha256": "81160bc38d2fe52733cea30ce09bfe669af6d1f4a83aabc182b3e9cf09905b29"
+    },
+    {
+      "path": "docs/notes/document-context-2026-10-04/VALIDATION.json",
+      "sha256": "3b5ff1e7ce97d9459ff3ad0be82e3426c8fa191074f9ea632ecfbb1c374e762d"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-643/PRESENTATION_BINDINGS.json",
+      "sha256": "8b50276023de2dc9734085948c543d4984b031f420f2e1dee5a1da826ba7f94d"
+    },
+    {
+      "path": "scripts/project-expansion/presentation-maintenance.mjs",
+      "sha256": "95aacf7e7a33fa6b513f27bd581c6875f761e78148e8b05f5dbaef54edcd218d"
+    },
+    {
+      "path": "tests/runtime/presentation-maintenance.test.js",
+      "sha256": "a30638a2e52fa00137cbbf24ba1b9d9a1692678dc0e6c486584eed58e969c420"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "footer migration old-review hash bridge and strict current ledger",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-643/LEDGER_CHECK.log",
+          "sha256": "647e68106133d639c409b88f2c4a47c1e0e1114cb76adf639579039f4faff54d"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-643/PRESENTATION_BINDINGS.json",
+          "sha256": "8b50276023de2dc9734085948c543d4984b031f420f2e1dee5a1da826ba7f94d"
+        }
+      ]
+    },
+    {
+      "name": "ledger and presentation tamper rejection regressions",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-643/REGRESSION_TESTS.log",
+          "sha256": "5599c23231b1d1ff705d19a08e01cee622840089793f57bff33561b00621b0ce"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "フッター修正227ページの旧レビューを上書きせず、347移動注記と変更前Frontmatterから元本文を復元して対応付けた。目標ツールのactive表示だけを再開指示として扱わず、ユーザーの一時停止指示を維持する。jqの追加工程と外部公開は実施していない。",
+    "旧チェック718エラーの全件が今回の配置変更または過去の計画・方針参照と照合できた。CAS期待入力を緩和せず、歴史参照だけを固定スナップショットに対応付けた。",
+    "登録済みレビューの件数は増やさない。公開なし、新規着手0件。"
+  ],
+  "unresolved": [
+    "jq候補は保存済み内容レビュー完了だが、本文末尾の出典・通知を新しいフッター方式へ変換し、元レビューとの可搬な対応証拠が必要。",
+    "jq候補のlanding/lock/統合/UI/CAS公開検証は未完。"
+  ],
+  "nextAction": "ユーザーの再開指示後、643の固定保守証拠と現行ファイルを照合し、対象差分だけをクリーンな公開候補へ反映する。その後jq専用候補にフッター対応を適用し、保存済み全文レビューとの対応検査、landing/lock/build/UI統合へ進む。",
+  "resumeCondition": "ユーザーの継続追加再開指示。OPERATIONS revision759、643固定保守証拠、jq saved CONTENT_REVIEW と専用候補を再照合し、不一致を合格としない。"
+}

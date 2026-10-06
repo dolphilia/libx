@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-624-jq-advanced-entries003-012-and-join",
+  "cycle": 624,
+  "startedAt": "2026-10-04T06:01:29.071Z",
+  "endedAt": "2026-10-04T06:01:34.080Z",
+  "result": "complete",
+  "phase": "translation-fragment-and-full-page-draft-join",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex10entry translation",
+    "separate full fragment ENJA comparison",
+    "16examples/code mechanical checks",
+    "13entry25example sourceorder join and reviewhash match",
+    "CAS recording"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "505b29fb0417387bdbe57d117cbc1fe300f78918f4c3e116833806be70eb4f4c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-624/CONTENT_REVIEW.json",
+      "sha256": "590ff963a27ca9b21754664aa3d83f992bcc6ae9157bf7714ae23e614045c3d2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-624/JOIN_CHECK.json",
+      "sha256": "0399adc6f9d487f5926ad31d335ccc69f7b19c131fd7977e327e57a710f3a5be"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-624/MACHINE_CHECK.json",
+      "sha256": "aab391a67788affce3ce84b34beb7965e893e5645ee347dbbb57f4cdd06b82e6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-624/register.mjs",
+      "sha256": "58d004f766f45a3a136afb37e731620b377e67d4a1f65d2afa016929f60490b2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-624/translate.py",
+      "sha256": "6046810b5690c01c849eb78be02fb0dce03e6851732fb926bdc4e88c9d653b2f"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/chunks/07-advanced-features/003-012.source.json",
+      "sha256": "d000ec0c7617fce4ad56cf18f4d8d43c672c3ad6f3ecd2fdaf0aa1640a5f94c2"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/chunks/07-advanced-features/003-012.ja.json",
+      "sha256": "86bccf059954c336a259d1aec741b9c408479b0147ad36d4e275ba0453d3600d"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/07-advanced-features.source.json",
+      "sha256": "b9533f2d1daf3ea9cea512e6f18d15a115427c8ddd0925d90c8a2abaa8cf023e"
+    },
+    {
+      "path": "docs/notes/document-import/jq/1.8.2/translations/07-advanced-features.ja.json",
+      "sha256": "de89ba63943fcaae09c891b786cea3b1e98ce00206fdc1e6bb42435ecd4a4c84"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "354791a347ab787676a6f138ac5cc75742157dab797d0a997040e726dfa1e085"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "jq"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "高度な機能の残り10項目内容対照",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-624/CONTENT_REVIEW.json",
+          "sha256": "590ff963a27ca9b21754664aa3d83f992bcc6ae9157bf7714ae23e614045c3d2"
+        }
+      ]
+    },
+    {
+      "name": "原文・コード・16例と全稿結合の機械検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-624/MACHINE_CHECK.json",
+          "sha256": "aab391a67788affce3ce84b34beb7965e893e5645ee347dbbb57f4cdd06b82e6"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-624/JOIN_CHECK.json",
+          "sha256": "0399adc6f9d487f5926ad31d335ccc69f7b19c131fd7977e327e57a710f3a5be"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全13項目25例の対照済み訳稿を結合。訳稿8/16本文頁。",
+    "結合後内容再review・rendering未実施、source-locked維持。"
+  ],
+  "unresolved": [
+    "残り8本文頁の全量翻訳",
+    "新3頁レンダリング/表示と結合後内容再review",
+    "全量別review・正式統合検証"
+  ],
+  "nextAction": "jq高度な機能全13項目25例の断片対照済み結合稿を保存、訳稿8/16頁。結合後全ページ再review/レンダリング未実施。次原文section7 Mathを全文翻訳・対照し、残り8頁の全範囲を維持する。条件/regex/advanced新3頁とBuiltinの実表示・全文最終reviewも進める。",
+  "resumeCondition": "jq高度な機能全13項目25例の断片対照済み結合稿を保存、訳稿8/16頁。結合後全ページ再review/レンダリング未実施。次原文section7 Mathを全文翻訳・対照し、残り8頁の全範囲を維持する。条件/regex/advanced新3頁とBuiltinの実表示・全文最終reviewも進める。",
+  "counts": {
+    "verified": 12,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 3,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-584-gperf-live-build-checkpoint",
+  "cycle": 584,
+  "startedAt": "2026-10-04T02:28:00.555Z",
+  "endedAt": "2026-10-04T02:28:04.218Z",
+  "result": "partial",
+  "phase": "publication-ci-verified-wait",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "actual existing CI handle status read",
+    "CAS checkpoint"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "88c03ab5680ada3e323bfb36ed336d659a2d2900a59699cc0012d614406139cb"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-584/LIVE_CI.json",
+      "sha256": "cd6369995e489171ed9161ebf6d1fb1cb40d934727b02c56c68f123affe5793d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-584/register.mjs",
+      "sha256": "b5655cffb30c2d121f0737338f955392618ff85aeef9e699bdd69bed0cc70af6"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d7faa61e3b11ac8d2b0359ce49a9a4fd4f01473df02735c0998efec28df6b3e2"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "live CI run confirmed",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-584/LIVE_CI.json",
+          "sha256": "cd6369995e489171ed9161ebf6d1fb1cb40d934727b02c56c68f123affe5793d"
+        }
+      ]
+    },
+    {
+      "name": "publication completion",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-584/LIVE_CI.json",
+          "sha256": "cd6369995e489171ed9161ebf6d1fb1cb40d934727b02c56c68f123affe5793d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前turnはverified登録/commit/push/単一CI開始によりprogress。今回は候補固定screeningのprogressと既存CIのverified wait。",
+    "完了証拠がないためpublication publishedへ変更しない。",
+    "未完CIを失敗・停止と扱って再起動しない。"
+  ],
+  "unresolved": [
+    "existing CI integrated build completion",
+    "artifact/CAS/publication validation",
+    "candidate2 eligibility unknown"
+  ],
+  "nextAction": "584:既存gperf CI37170776184稼働を実APIで確認。static/unit/runtime/repository-content/template全成功、統合build進行中。単一runの完了待ち→同runartifact/CAS/公開HTTP/native。二重dispatch禁止。候補mdBook0.5.4/jq1.8.2は583固定screeningまで進行、採用0・必須unknown維持。",
+  "resumeCondition": "584:既存gperf CI37170776184稼働を実APIで確認。static/unit/runtime/repository-content/template全成功、統合build進行中。単一runの完了待ち→同runartifact/CAS/公開HTTP/native。二重dispatch禁止。候補mdBook0.5.4/jq1.8.2は583固定screeningまで進行、採用0・必須unknown維持。",
+  "counts": {
+    "verified": 15,
+    "published": 14,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

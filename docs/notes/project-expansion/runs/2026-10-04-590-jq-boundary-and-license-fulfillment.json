@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-04-590-jq-boundary-and-license-fulfillment",
+  "cycle": 590,
+  "startedAt": "2026-10-04T03:30:11.993Z",
+  "endedAt": "2026-10-04T03:30:17.458Z",
+  "result": "partial",
+  "phase": "candidate-boundary-and-rights",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "fixed upstream license full-text inspection",
+    "dual existing YAML parsers without installation",
+    "full Git-tree and parsed string-field classification",
+    "CAS candidate update"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "3a78b03e3075547fc8c2f5dd25938301c635db5566aed497f132fa79bd3278a8"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-590/JQ_BOUNDARY.json",
+      "sha256": "ae36f54a0162431cc03514a0b7cfb8ef855a3661055301b6bb9ba1c3ab474a4a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-590/JQ_LICENSE_FULFILLMENT.json",
+      "sha256": "78a0f6275fd84e98a8647da8475748e04d615f98f24c759e7ceb2d74a1955799"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-590/STRUCTURE_DIAGNOSTICS.json",
+      "sha256": "c4b2c7598495c543d35dc74c5dd14052a0ea99e355723eaf48b7666f5bed3742"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-590/boundary.mjs",
+      "sha256": "0ba12352fe1a8bd1c989e4d3582c0db02a9a1c1928c9b923e18b8ff33da6d504"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-590/register.mjs",
+      "sha256": "c240d296fd10ae19a1395238257360360d00ef1ced5ab7cba9943ecdecbab51a"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "5b8522531bf467a424b31fd93d2e88ef6ef9ad513579c5eb95483aea9c6efa80"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "full file and field correspondence",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-590/JQ_BOUNDARY.json",
+          "sha256": "ae36f54a0162431cc03514a0b7cfb8ef855a3661055301b6bb9ba1c3ab474a4a"
+        }
+      ]
+    },
+    {
+      "name": "license fulfillment design",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-590/JQ_LICENSE_FULFILLMENT.json",
+          "sha256": "78a0f6275fd84e98a8647da8475748e04d615f98f24c759e7ceb2d74a1955799"
+        }
+      ]
+    },
+    {
+      "name": "conversion and remaining eligibility",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-04-590/JQ_BOUNDARY.json",
+          "sha256": "ae36f54a0162431cc03514a0b7cfb8ef855a3661055301b6bb9ba1c3ab474a4a"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前turn589は候補調査証拠/CAS保存によるprogress。今回590は全文境界・通知設計の新証拠で2ゲートpassへ進みprogress。",
+    "2つの既存YAML parserで同じ構造。共有依存install・候補コード実行なし。",
+    "全文内容レビュー/機械変換/採点/日本語範囲はまだ未完、採用0。",
+    "上流manpage生成器のdev固定参照を発見。今回のstable1.8入力からのみ移植する。"
+  ],
+  "unresolved": [
+    "jq full content self-contained review",
+    "conversion actual render fidelity",
+    "Japanese target scope research",
+    "initial and update workload scoring"
+  ],
+  "nextAction": "jq1.8 YAMLの全文字列/250例/150アンカーから隔離Markdown変換試験を作成。最大/通常/難しい節と本文全量のrender/リンクを照合。",
+  "resumeCondition": "590 rights/boundary入力hashと585固定sourceを保持。候補コード・dev manualは実行/混在しない。",
+  "counts": {
+    "verified": 15,
+    "published": 15,
+    "awaitingRelease": 0,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}
