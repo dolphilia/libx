@@ -1,0 +1,10 @@
+{
+  "reason": "Native dark observation showed white inline text on rgb246247246 background due undefined original --inline-code-color with shared UI specificity.",
+  "beforeSha256": "aa41838028a56f89f37d31d4ffee35c34b969581464772e077832fb615d4280a",
+  "afterSha256": "608e6d222a24bf18aac1dad8955847917e71c3a5bd5631111e36f3af42d7fb44",
+  "css": "\n/* Libx palette bridge: original light inline foreground #301900 and dark #c5c8c6.\n   Bundled light syntax palette remains unchanged and retains its readable background. */\n.mdbook-guide { --mdbook-inline-foreground: #301900; --mdbook-inline-background: #f6f7f6; --code-bg: #f6f7f6; }\nhtml.dark .mdbook-guide { --mdbook-inline-foreground: #c5c8c6; --mdbook-inline-background: #282a2e; --code-bg: #282a2e; }\n.mdbook-guide :not(pre) > code.hljs { color: var(--mdbook-inline-foreground); background: var(--mdbook-inline-background); }\n.mdbook-guide pre > code.hljs:not(.editable) { color: #000; background: #f6f7f6; }\n",
+  "scope": "trial app only; shared packages untouched",
+  "syntaxPalette": "original light syntax colours retained on original light background in both shared themes; Ace uses original separate theme switch",
+  "nativeVerified": false,
+  "fullContentReviewPerformed": false
+}
