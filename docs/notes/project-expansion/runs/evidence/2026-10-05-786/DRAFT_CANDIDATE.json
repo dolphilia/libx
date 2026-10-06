@@ -1,0 +1,274 @@
+{
+  "id": "lz4",
+  "officialUrl": "https://lz4.org/",
+  "repository": "https://github.com/lz4/lz4",
+  "version": "v1.10.0",
+  "scope": "LZ4 1.10.0の利用/導入/統合/CLI/Block・Frame仕様/全公式使用例・読者向けbuild/packaging説明、生成manual2と原著公開ヘッダー5全量。採用27、参照87、除外94。",
+  "field": "compression",
+  "discovery": [
+    {
+      "route": "web-search and primary source fetch",
+      "reference": "https://lz4.org/",
+      "date": "2026-10-05T02:20:30.775Z"
+    }
+  ],
+  "state": "qualifying",
+  "conditions": {
+    "rights": {
+      "status": "pass",
+      "reason": "27入力の固有Frame許諾/BSD/GPL親条件・例外を確認し固定全文・注釈・帰属/変更表示・GPL対応sourcekitと公開前検査を定めた。ソフトウェア条件の文書適用は承認済み運用判断と区別。通知配置/配布履行は採用後の検証ゲート。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/RIGHTS_AND_FULFILLMENT.json",
+          "sha256": "94e94165ec00cccbe368358cd2d2e63654997ed029046dd24e1653ee1b8f5885"
+        }
+      ]
+    },
+    "boundary": {
+      "status": "pass",
+      "reason": "784で全208分類を27採用/87参照/94除外へ修正。生成HTMLでは旧block API4とFrame API5識別子が欠けるので原ヘッダー2全量を正式範囲へ追加。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/BOUNDARY.json",
+          "sha256": "5497ce993ae68109286cea33393995b02fee0b6e4c5459bbd53b44dc2a4ac6ac"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+          "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+        }
+      ]
+    },
+    "fixedInput": {
+      "status": "pass",
+      "reason": "公式タグcommit ebb370ca・archive208全member SHA/bytesとheader1.10.0/manual2版を確認。785で固定原generator/headerからmanual2がbyte一致することも再現。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-783/FIXED_INPUT.json",
+          "sha256": "f6e516c414f7f65be96bd68e575f16a4ad0b574426b91262509bb9a2724beaa7"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-780/LZ4_TAG.json",
+          "sha256": "b68e308b2fab3ae5a9908cde7b8a2d5e4f869bd6b3fb335934b9ec77663c5002"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-780/LZ4_RELEASE.json",
+          "sha256": "6305e5488b8ad8eb555baeea924a4bfc8e862f6f7db11baf311f8c20bcc50978"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/GENERATOR_REPRODUCTION.json",
+          "sha256": "6f5b8e188fc115a4498fd88ba8723574b0c20011226bad4f3eff730557c1603e"
+        }
+      ]
+    },
+    "selfContained": {
+      "status": "pass",
+      "reason": "全27原著を読み、導入/利用/辞書/stream/CLI/HC/file/仕様/例の主要説明を範囲内へ確保。説明をIssue/動画/コードから補筆せず、原著の誤植/旧パス/歴史版を保持して注記。定本/訳文reviewではない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+          "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+        }
+      ]
+    },
+    "conversion": {
+      "status": "pass",
+      "reason": "27隔離trialで通常/最大/表/HTML API/ASCII図/help難例を移植。generator2byte一致、header ordered spans/fullDOMtext、manual2原text、Markdown19の全code・heading・tablecell、相対href検査/表示を確認。borrowedLua metadataは正式app検証に使わず原著の省略をheader全文で保全。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+          "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/STATIC_AUDIT.json",
+          "sha256": "0bb96abd185be0495fb0a5e6238eee4faa26177ff2d0d2ae9ef48fc848f38a53"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/MARKDOWN_AUDIT.json",
+          "sha256": "d215c550a521d59f38689aebf0debed1693413b2dad3061e3616d227607da604"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/DISPLAY_OBSERVATIONS.json",
+          "sha256": "921061e1f8d1e023cb9b13a4a3800e06f50076add95eccd7678df50335cccb13"
+        }
+      ]
+    },
+    "workload": {
+      "status": "pass",
+      "reason": "27本文の英字語27405、識別子込み28897、空白token31077。3万語超の可能性を保守的に別枠判断し、固定測定・限定再利用可能converter・毎版差分/再生成/翻訳review負荷・初回/更新工数と担当範囲を記録。通常枠即着手にしない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/WORKLOAD_ASSESSMENT.json",
+          "sha256": "92addea02a1cf2c3ef7618797a1f44b9305702355c9d0d12dcae006c2f84ee3e"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/ROBUST_WORD_MEASUREMENT.json",
+          "sha256": "e3ca8e52d321d4ee81fd9d4cf1e6351b789604eb3401393ac38dd7ff339e921d"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/LARGE_SCOPE_DECISION.json",
+          "sha256": "4061b88cff9cb207f46a55ba15d96f99be84ec0b5adf6c06c0c3dd0fe3a0bd65"
+        }
+      ]
+    }
+  },
+  "japaneseResearch": {
+    "status": "older",
+    "queries": [
+      "LZ4 1.10.0 日本語 API マニュアル 翻訳",
+      "LZ4 lz4.h lz4frame.h 日本語 翻訳 ドキュメント",
+      "LZ4 ブロック フレーム フォーマット 翻訳 日本語",
+      "site:github.com/lz4/lz4 translation Japanese 日本語"
+    ],
+    "checkedAt": "2026-10-05T03:34:51.788113+00:00",
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/JAPANESE_RESEARCH.json",
+        "sha256": "03ed6519812a183a17833f5bc2d56b1c558ffbb49fd3af179101a348bcf9c049"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/JAPANESE_SEARCH.json",
+        "sha256": "bfdb1a6ed3a6557429b35fdf0f7b6021c213dcb200a9db78bbe74d274912e6b7"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/JAPANESE_PRIMARY_OBSERVATIONS.json",
+        "sha256": "7d72cb4a1c35a4c5bfe570c083b2356723bccc637aa14455db75d2b881059824"
+      }
+    ]
+  },
+  "scores": {
+    "additionalValue": {
+      "value": 4,
+      "reason": "Frame旧訳の具体的DictID/仕様版不足と、1.10.0新辞書/CLI・HC/file/統合/API全文という複数の版/範囲差を確認。既存日本語資料を認め、今回探索で同版同範囲の一式は未発見として4。不存在・他訳の品質不良を推定しない。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/SCORECARD.json",
+          "sha256": "536cfb000af908858a8f530d5c9c83bc443fd7719c7319be44a3f8095656186c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/JAPANESE_RESEARCH.json",
+          "sha256": "03ed6519812a183a17833f5bc2d56b1c558ffbb49fd3af179101a348bcf9c049"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/LARGE_SCOPE_DECISION.json",
+          "sha256": "4061b88cff9cb207f46a55ba15d96f99be84ec0b5adf6c06c0c3dd0fe3a0bd65"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+          "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+          "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+        }
+      ]
+    },
+    "practicality": {
+      "value": 4,
+      "reason": "原著lib4levelと全例がC/C++実装者のblock/frame選択、stream辞書/メモリ寿命、HC/file/CLI利用に対応。FrameのxxHash32と既収録xxHash、圧縮APIと既収録zlibの読者用途が直接つながる。需要統計を得たとは主張せず4。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/SCORECARD.json",
+          "sha256": "536cfb000af908858a8f530d5c9c83bc443fd7719c7319be44a3f8095656186c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/JAPANESE_RESEARCH.json",
+          "sha256": "03ed6519812a183a17833f5bc2d56b1c558ffbb49fd3af179101a348bcf9c049"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/LARGE_SCOPE_DECISION.json",
+          "sha256": "4061b88cff9cb207f46a55ba15d96f99be84ec0b5adf6c06c0c3dd0fe3a0bd65"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+          "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+          "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+        }
+      ]
+    },
+    "quality": {
+      "value": 3,
+      "reason": "主要説明/仕様/CLI/例が範囲内に自立。生成manualに9API識別子欠落、旧build path、説明typo/図数値不整合があり、原著保持+注記/原header付録で補完。原著を高品質と過大評価せず3。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/SCORECARD.json",
+          "sha256": "536cfb000af908858a8f530d5c9c83bc443fd7719c7319be44a3f8095656186c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/JAPANESE_RESEARCH.json",
+          "sha256": "03ed6519812a183a17833f5bc2d56b1c558ffbb49fd3af179101a348bcf9c049"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/LARGE_SCOPE_DECISION.json",
+          "sha256": "4061b88cff9cb207f46a55ba15d96f99be84ec0b5adf6c06c0c3dd0fe3a0bd65"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+          "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+          "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+        }
+      ]
+    },
+    "maintenance": {
+      "value": 3,
+      "reason": "固定tag/SHA/NEWSとgenerator再現がある一方、複数license、ChapterN変動、原manualとheaderの省略照合が必要。再見積もりと差分レビュー方式を示せる3。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/SCORECARD.json",
+          "sha256": "536cfb000af908858a8f530d5c9c83bc443fd7719c7319be44a3f8095656186c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/JAPANESE_RESEARCH.json",
+          "sha256": "03ed6519812a183a17833f5bc2d56b1c558ffbb49fd3af179101a348bcf9c049"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/LARGE_SCOPE_DECISION.json",
+          "sha256": "4061b88cff9cb207f46a55ba15d96f99be84ec0b5adf6c06c0c3dd0fe3a0bd65"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+          "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+          "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+        }
+      ]
+    },
+    "reuse": {
+      "value": 3,
+      "reason": "既存Astro/Markdown/表コード/UIに27隔離変換が適合し、原AST/DOM監査方式を再利用可能。rawHTML特殊escape・sourcecomment分離・sourcekitが固有なので3。",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/SCORECARD.json",
+          "sha256": "536cfb000af908858a8f530d5c9c83bc443fd7719c7319be44a3f8095656186c"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/JAPANESE_RESEARCH.json",
+          "sha256": "03ed6519812a183a17833f5bc2d56b1c558ffbb49fd3af179101a348bcf9c049"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/LARGE_SCOPE_DECISION.json",
+          "sha256": "4061b88cff9cb207f46a55ba15d96f99be84ec0b5adf6c06c0c3dd0fe3a0bd65"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+          "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+          "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+        }
+      ]
+    }
+  },
+  "decision": "旧Frame仕様の確認できる版差と1.10.0の公式API/CLI/利用例の全量を、日本語で一貫して参照できる価値がある。原著の誤植と生成省略、複数licenseは注記・原header保全・sourcekit検査で扱い、意味を補筆しない。全6必須条件の根拠と別枠工数判断が揃い71点のため採用候補とする。",
+  "resumeCondition": "別選定の根拠照合後、上限内で隔離正規テンプレートappを生成し取得・定本化へ。",
+  "nextCheckAt": null,
+  "selectionReview": null
+}

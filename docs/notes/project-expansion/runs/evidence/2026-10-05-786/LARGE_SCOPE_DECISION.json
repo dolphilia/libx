@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-05T03:34:51.788113+00:00",
+  "decision": "3万語を超える可能性を保守的に扱い別枠で採用判定する。通常枠で即着手しない。",
+  "measurements": {
+    "initialEnglishWords": 27405,
+    "identifierAwareWords": 28897,
+    "whitespaceTokens": 31077,
+    "rawEnglishTokensIncludingCode": 30101
+  },
+  "definitionsEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/ROBUST_WORD_MEASUREMENT.json",
+      "sha256": "e3ca8e52d321d4ee81fd9d4cf1e6351b789604eb3401393ac38dd7ff339e921d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/WORKLOAD_ASSESSMENT.json",
+      "sha256": "92addea02a1cf2c3ef7618797a1f44b9305702355c9d0d12dcae006c2f84ee3e"
+    }
+  ],
+  "reason": "API識別子や原Cコメント区切りを含めると空白token31077。27原資料は生成manualと原headerが重複するが、生成で欠ける説明/宣言と原通知を保持するため原header全量を残す。必要な章は量に合わせて切り捨てない。",
+  "reusableConverter": {
+    "script": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/trial-convert.py",
+      "sha256": "a5bd9bb2bfe846e6054f604fc99b596c23365f09425b5f3d307254c31b15d9b6"
+    },
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+        "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/STATIC_AUDIT.json",
+        "sha256": "0bb96abd185be0495fb0a5e6238eee4faa26177ff2d0d2ae9ef48fc848f38a53"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/MARKDOWN_AUDIT.json",
+        "sha256": "d215c550a521d59f38689aebf0debed1693413b2dad3061e3616d227607da604"
+      }
+    ],
+    "boundedReuse": "Markdown19・rawHTML2・原header5・NEWS1の再実行方式を同じscopeで再利用。汎用変換器へ昇格したとは主張しない。正式safe出力/非Lua metadata実装は未完。"
+  },
+  "maintenanceLoad": "固定208差分と原27範囲、公式generator2再生成で変更入力を特定し、変更章/コメントだけ再翻訳・全文reviewする。ChapterN変動とheader/manual9識別子欠落照合を毎版必要とするためmaintenance3点。更新工数2–6h推定、実績ではない。",
+  "schedule": "新規active1/全体2/未公開verified2上限を維持。原27入力を順に独立変換/翻訳/レビューし大きなheaderは原章/コメントで作業単位を分ける。未レビューはpending。見積もりが外れれば成果物/条件を保存して再見積もりする。",
+  "userApproval": "通常選定判断は現在のユーザー指示で自律進行。計画の別枠判断は追加承認の明示要件ではない。外部公開/定期実行は実施しない。"
+}

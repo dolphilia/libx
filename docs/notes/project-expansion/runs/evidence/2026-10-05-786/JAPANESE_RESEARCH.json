@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-05T03:34:51.788113+00:00",
+  "status": "older-and-partial-found",
+  "version": "v1.10.0",
+  "scopeEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/BOUNDARY.json",
+    "sha256": "5497ce993ae68109286cea33393995b02fee0b6e4c5459bbd53b44dc2a4ac6ac"
+  },
+  "officialSources": {
+    "fixed208LanguageOrTranslationPaths": [],
+    "fixedReadmes": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/README.md",
+        "sha256": "ac443b7277c11613ffe1f80796bc5fcaaa32e5c746e8c77f689a501431d685be"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/lib/README.md",
+        "sha256": "a26e68719f64ebdef6ea1a9c0ca7bf76892a49d041e336364bcf91bbfb1875eb"
+      }
+    ],
+    "observation": "固定全208の翻訳言語/translation directoryパス未発見。README公式Documentation入口はBlock/Frame仕様・libの各header/APIへ案内し、日本語訳案内はこの範囲で未発見。原READMEのmultiple languagesは実装移植言語の案内であり翻訳言語一覧ではない。",
+    "homepage": "https://www.lz4.org/ のweb取得は失敗。公式Webサイトに日本語訳がないとは断定しない。GitHub公式READMEと固定treeを確認できた範囲と区別。"
+  },
+  "queries": [
+    "LZ4 1.10.0 日本語 API マニュアル 翻訳",
+    "LZ4 lz4.h lz4frame.h 日本語 翻訳 ドキュメント",
+    "LZ4 ブロック フレーム フォーマット 翻訳 日本語",
+    "site:github.com/lz4/lz4 translation Japanese 日本語"
+  ],
+  "searchEvidence": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/JAPANESE_SEARCH.json",
+    "sha256": "bfdb1a6ed3a6557429b35fdf0f7b6021c213dcb200a9db78bbe74d274912e6b7"
+  },
+  "primaryObservations": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/JAPANESE_PRIMARY_OBSERVATIONS.json",
+    "sha256": "7d72cb4a1c35a4c5bfe570c083b2356723bccc637aa14455db75d2b881059824"
+  },
+  "found": [
+    {
+      "url": "https://thinkingskeever.hatenablog.com/entry/2016/11/27/233000",
+      "kind": "原訳者が公開したFrame 1.5.1日本語訳",
+      "verifiedGap": "原訳版1.5.1、Frame Descriptor最大11bytesの表を確認。固定原著1.6.4にはDictIDを含む最大15bytesがある。固定Version changesで1.6.0のDictID復帰と1.6.2以降のEndMark等変更を確認。",
+      "quality": "訳者の全文品質を低評価していない。版差分だけを採点に用いる。",
+      "scope": "Frame仕様の旧版資料。1.10.0全API/CLI/HC/file/統合文書のまとまった訳として確認していない。"
+    },
+    {
+      "url": "https://www.amd.com/content/dam/amd/en/documents/developer/version-4-2-documents/aocl/ja-aocl-4-2-user-guide.pdf",
+      "kind": "AMD自身のAOCL4.2日本語ガイド",
+      "observedScope": "AOCL‐Compression章、pp128–141の機能/統一API/基本lz43宣言/AMD buildオプションを確認。上流1.10.0利用文書一式の翻訳ではなく別製品の部分資料。",
+      "limitation": "このPDFの全章を内容レビューしたわけではない。LZ4への日本語資料が一切ないという扱いをしない。"
+    }
+  ],
+  "additionalValueBasis": [
+    "旧Frame1.5.1にないDictID/1.6.4の規範説明を原著から提供する価値",
+    "1.10.0のstable辞書API、CLI multithread/環境変数、HC/file/メモリ管理を公式一式として参照できる価値（同版同範囲のまとまった訳は今回調査先で未発見）"
+  ],
+  "limits": [
+    "未発見は探索先/検索語/確認日に限定。日本語文書の不存在を断定しない。",
+    "既存訳を翻訳本文として再利用しない。",
+    "Webhomepage不可は未確認として残す。固定tree/READMEと一般検索/原訳者/AMD資料の複数経路で採点可能な具体的版/範囲差を判断。"
+  ]
+}

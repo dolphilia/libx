@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-05T03:34:51.788113+00:00",
+  "scores": {
+    "additionalValue": {
+      "value": 4,
+      "weight": 30,
+      "points": 24.0,
+      "reason": "Frame旧訳の具体的DictID/仕様版不足と、1.10.0新辞書/CLI・HC/file/統合/API全文という複数の版/範囲差を確認。既存日本語資料を認め、今回探索で同版同範囲の一式は未発見として4。不存在・他訳の品質不良を推定しない。"
+    },
+    "practicality": {
+      "value": 4,
+      "weight": 25,
+      "points": 20.0,
+      "reason": "原著lib4levelと全例がC/C++実装者のblock/frame選択、stream辞書/メモリ寿命、HC/file/CLI利用に対応。FrameのxxHash32と既収録xxHash、圧縮APIと既収録zlibの読者用途が直接つながる。需要統計を得たとは主張せず4。"
+    },
+    "quality": {
+      "value": 3,
+      "weight": 20,
+      "points": 12.0,
+      "reason": "主要説明/仕様/CLI/例が範囲内に自立。生成manualに9API識別子欠落、旧build path、説明typo/図数値不整合があり、原著保持+注記/原header付録で補完。原著を高品質と過大評価せず3。"
+    },
+    "maintenance": {
+      "value": 3,
+      "weight": 15,
+      "points": 9.0,
+      "reason": "固定tag/SHA/NEWSとgenerator再現がある一方、複数license、ChapterN変動、原manualとheaderの省略照合が必要。再見積もりと差分レビュー方式を示せる3。"
+    },
+    "reuse": {
+      "value": 3,
+      "weight": 10,
+      "points": 6.0,
+      "reason": "既存Astro/Markdown/表コード/UIに27隔離変換が適合し、原AST/DOM監査方式を再利用可能。rawHTML特殊escape・sourcecomment分離・sourcekitが固有なので3。"
+    }
+  },
+  "total": 71.0,
+  "minimumScore": 70,
+  "minimumAdditionalValueAndPracticality": 3,
+  "adoptionReason": "旧Frame仕様の確認できる版差と1.10.0の公式API/CLI/利用例の全量を、日本語で一貫して参照できる価値がある。原著の誤植と生成省略、複数licenseは注記・原header保全・sourcekit検査で扱い、意味を補筆しない。全6必須条件の根拠と別枠工数判断が揃い71点のため採用候補とする。",
+  "proofs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/JAPANESE_RESEARCH.json",
+      "sha256": "03ed6519812a183a17833f5bc2d56b1c558ffbb49fd3af179101a348bcf9c049"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-786/LARGE_SCOPE_DECISION.json",
+      "sha256": "4061b88cff9cb207f46a55ba15d96f99be84ec0b5adf6c06c0c3dd0fe3a0bd65"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-784/ORIGINAL_READ_AND_API_GAPS.json",
+      "sha256": "0e6768c803362a78bedacaec5b34ac57a1cc336c5bc23ccf8f2fe3539c756d17"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-785/CONVERSION_ASSESSMENT.json",
+      "sha256": "508d1e504f8198d0d1afaa2ed413a32d5a396ddcb3889df0823943d701d36874"
+    }
+  ],
+  "translationReview": "not performed",
+  "stage": "score draft; selection review separate"
+}
