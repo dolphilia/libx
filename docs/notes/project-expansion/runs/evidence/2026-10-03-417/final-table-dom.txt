@@ -1,0 +1,568 @@
+- banner:
+  - link "Libx":
+    - /url: /en
+  - link "spdlog":
+    - /url: /docs/spdlog/v1-17-0/en/01-guide/01-readme
+  - button "Search":
+    - generic: Search
+    - generic: /
+  - button "1.17.0 / Wiki 2025-10-15":
+    - generic: 1.17.0 / Wiki 2025-10-15
+  - button "English":
+    - generic: English
+  - button "Toggle theme":
+- main:
+  - complementary:
+    - complementary "Documentation":
+      - button "Collapse or expand sidebar" [expanded]
+      - heading "Documentation" [level=3]
+      - navigation "Documentation":
+        - list:
+          - generic "Guide":
+            - generic: Guide
+          - list:
+            - link "spdlog README":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/01-readme
+            - link "Additional log pattern (original Wiki file)":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/02-3-custom-formatting
+            - link "Asynchronous logging":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/03-asynchronous-logging
+            - link "CMake":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/04-cmake
+            - link "Creating loggers":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/05-creating-loggers
+            - link "Custom formatting":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/06-custom-formatting
+            - link "Default logger":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/07-default-logger
+            - link "Error handling":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/08-error-handling
+            - link "FAQ":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/09-faq
+            - link "Flush policy":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/10-flush-policy
+            - link "Home":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/11-home
+            - link "How to use spdlog in DLLs":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/12-how-to-use-spdlog-in-dlls
+            - link "Integrating into Eclipse IDE":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/13-integrating-into-eclipse-ide
+            - link "Language bindings":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/14-language-bindings
+            - link "Logger registry":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/15-logger-registry
+            - link "Makefile Only":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/16-makefile-only
+            - link "Note for adding sinks on the fly":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/17-note-for-adding-sinks-on-the-fly
+            - link "Preventing child processes from inheriting open log files":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/18-preventing-child-processes-from-inheriting-open-log-files
+            - link "Preventing undefined thread ids in child processes":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/19-preventing-undefined-thread-ids-in-child-processes
+            - link "QuickStart":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/20-quickstart
+            - link "Reference documentation using Doxygen":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/21-reference-documentation-using-doxygen
+            - link "Setting up JSON logging with spdlog":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/22-setting-up-json-logging-with-spdlog
+            - link "Sinks":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/23-sinks
+            - link "Thread Safety":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/24-thread-safety
+            - link "Tweaking":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/25-tweaking
+            - link "Windows unicode filenames":
+              - /url: /docs/spdlog/v1-17-0/en/01-guide/26-windows-unicode-filenames
+          - generic "Sources and license":
+            - generic: Sources and license
+  - article:
+    - complementary:
+      - paragraph:
+        - text: Unofficial presentation of the official spdlog Wiki snapshot of 2025-10-15.
+        - link "Original source":
+          - /url: https://github.com/gabime/spdlog/wiki/Custom-formatting
+        - text: ". Source SHA-256:"
+        - code: 7355e130376d1ee5df09eb36bdda36655248e1fd749ca30c07c5219b536fd142
+        - text: ". Software commit:"
+        - code: 79524ddd08a4ec981b7fea76afd08ee05f83755d
+        - text: ". Wiki commit:"
+        - code: d384272cd5320e27b041ae92625040aa6db71a1e
+        - text: . This independent Wiki snapshot is not a manual tagged for spdlog 1.17.0.
+        - link "Full original licenses and notices":
+          - /url: /docs/spdlog/v1-17-0/en/02-reference/01-license/
+        - text: . This presentation, translations and version annotations are unofficial Libx changes.
+      - paragraph: No separate documentation license was identified for this Wiki. Under the approved operating policy, the software MIT License is applied to the Wiki with this annotation. This is an operational judgment, not newly obtained permission from the rights holder.
+    - complementary:
+      - paragraph: This dated Wiki pattern table is not the complete spdlog 1.17.0 flag catalogue. The separately fixed README includes MDC and %&. Original flags and examples remain unchanged.
+    - paragraph: Each logger's sink has a formatter which formats the messages to its destination.
+    - paragraph: "spdlog's default logging format is in the form of:"
+    - paragraph:
+      - code: "[2014-10-31 23:46:59.678] [my_loggername] [info] Some message"
+    - paragraph: "There are 2 ways to customize a logger's format:"
+    - list:
+      - text: Set the pattern string (
+      - emphasis: recommended
+      - text: "):"
+    - button "Copy code"
+    - code:
+      - generic: set_pattern(pattern_string);
+    - list:
+      - text: Or implement custom formatter that implements the
+      - link "formatter":
+        - /url: https://github.com/gabime/spdlog/blob/v1.x/include/spdlog/formatter.h
+      - text: interface and call
+    - button "Copy code"
+    - code:
+      - generic: set_formatter(std::make_unique<my_custom_formatter>());
+    - heading "Customizing format using set_pattern(..)" [level=2]:
+      - text: Customizing format using
+      - code: set_pattern(..)
+    - paragraph:
+      - text: Format can be applied globally to
+      - strong: all registered
+      - text: "loggers:"
+    - button "Copy code"
+    - code:
+      - generic: spdlog::set_pattern("*** [%H:%M:%S %z] [thread %t] %v ***");
+    - paragraph:
+      - text: or to a specific
+      - strong: logger
+      - text: "object:"
+    - button "Copy code"
+    - code:
+      - generic: some_logger->set_pattern(">>>>>>>>> %H:%M:%S %z %v <<<<<<<<<");
+    - paragraph:
+      - text: or to a specific
+      - strong: sink
+      - text: "object:"
+    - button "Copy code"
+    - code:
+      - generic: some_logger->sinks()[0]->set_pattern(">>>>>>>>> %H:%M:%S %z %v <<<<<<<<<");
+      - generic: some_logger->sinks()[1]->set_pattern("..");
+    - heading "Efficiency" [level=2]
+    - paragraph:
+      - text: Whenever the user calls
+      - code: set_pattern("..")
+      - text: the library "compiles" the new pattern to an internal efficient representation - This way the performance stays excellent even with complex patterns (no re-parsing of the pattern on each log call).
+    - heading "Pattern flags" [level=2]
+    - paragraph:
+      - text: Pattern flags are in the form of
+      - code: "%flag"
+      - text: and resembles the
+      - link "strftime":
+        - /url: http://www.cplusplus.com/reference/ctime/strftime/
+      - text: "function:"
+    - table:
+      - rowgroup:
+        - row "flag meaning example":
+          - columnheader "flag"
+          - columnheader "meaning"
+          - columnheader "example"
+      - rowgroup:
+        - row "%v The actual text to log \"some user text\"":
+          - cell "%v":
+            - code: "%v"
+          - cell "The actual text to log"
+          - cell "\"some user text\""
+        - row "%t Thread id \"1232\"":
+          - cell "%t":
+            - code: "%t"
+          - cell "Thread id"
+          - cell "\"1232\""
+        - row "%P Process id \"3456\"":
+          - cell "%P":
+            - code: "%P"
+          - cell "Process id"
+          - cell "\"3456\""
+        - row "%n Logger's name \"some logger name\"":
+          - cell "%n":
+            - code: "%n"
+          - cell "Logger's name"
+          - cell "\"some logger name\""
+        - row "%l The log level of the message \"debug\", \"info\", etc":
+          - cell "%l":
+            - code: "%l"
+          - cell "The log level of the message"
+          - cell "\"debug\", \"info\", etc"
+        - row "%L Short log level of the message \"D\", \"I\", etc":
+          - cell "%L":
+            - code: "%L"
+          - cell "Short log level of the message"
+          - cell "\"D\", \"I\", etc"
+        - row "%a Abbreviated weekday name \"Thu\"":
+          - cell "%a":
+            - code: "%a"
+          - cell "Abbreviated weekday name"
+          - cell "\"Thu\""
+        - row "%A Full weekday name \"Thursday\"":
+          - cell "%A":
+            - code: "%A"
+          - cell "Full weekday name"
+          - cell "\"Thursday\""
+        - row "%b Abbreviated month name \"Aug\"":
+          - cell "%b":
+            - code: "%b"
+          - cell "Abbreviated month name"
+          - cell "\"Aug\""
+        - row "%B Full month name \"August\"":
+          - cell "%B":
+            - code: "%B"
+          - cell "Full month name"
+          - cell "\"August\""
+        - row "%c Date and time representation \"Thu Aug 23 15:35:46 2014\"":
+          - cell "%c":
+            - code: "%c"
+          - cell "Date and time representation"
+          - cell "\"Thu Aug 23 15:35:46 2014\""
+        - row "%C Year in 2 digits \"14\"":
+          - cell "%C":
+            - code: "%C"
+          - cell "Year in 2 digits"
+          - cell "\"14\""
+        - row "%Y Year in 4 digits \"2014\"":
+          - cell "%Y":
+            - code: "%Y"
+          - cell "Year in 4 digits"
+          - cell "\"2014\""
+        - row "%D or %x Short MM/DD/YY date \"08/23/14\"":
+          - cell "%D or %x":
+            - code: "%D"
+            - text: or
+            - code: "%x"
+          - cell "Short MM/DD/YY date"
+          - cell "\"08/23/14\""
+        - row "%m Month 01-12 \"11\"":
+          - cell "%m":
+            - code: "%m"
+          - cell "Month 01-12"
+          - cell "\"11\""
+        - row "%d Day of month 01-31 \"29\"":
+          - cell "%d":
+            - code: "%d"
+          - cell "Day of month 01-31"
+          - cell "\"29\""
+        - row "%H Hours in 24 format 00-23 \"23\"":
+          - cell "%H":
+            - code: "%H"
+          - cell "Hours in 24 format 00-23"
+          - cell "\"23\""
+        - row "%I Hours in 12 format 01-12 \"11\"":
+          - cell "%I":
+            - code: "%I"
+          - cell "Hours in 12 format 01-12"
+          - cell "\"11\""
+        - row "%M Minutes 00-59 \"59\"":
+          - cell "%M":
+            - code: "%M"
+          - cell "Minutes 00-59"
+          - cell "\"59\""
+        - row "%S Seconds 00-59 \"58\"":
+          - cell "%S":
+            - code: "%S"
+          - cell "Seconds 00-59"
+          - cell "\"58\""
+        - row "%e Millisecond part of the current second 000-999 \"678\"":
+          - cell "%e":
+            - code: "%e"
+          - cell "Millisecond part of the current second 000-999"
+          - cell "\"678\""
+        - row "%f Microsecond part of the current second 000000-999999 \"056789\"":
+          - cell "%f":
+            - code: "%f"
+          - cell "Microsecond part of the current second 000000-999999"
+          - cell "\"056789\""
+        - row "%F Nanosecond part of the current second 000000000-999999999 \"256789123\"":
+          - cell "%F":
+            - code: "%F"
+          - cell "Nanosecond part of the current second 000000000-999999999"
+          - cell "\"256789123\""
+        - row "%p AM/PM \"AM\"":
+          - cell "%p":
+            - code: "%p"
+          - cell "AM/PM"
+          - cell "\"AM\""
+        - row "%r 12 hour clock \"02:55:02 PM\"":
+          - cell "%r":
+            - code: "%r"
+          - cell "12 hour clock"
+          - cell "\"02:55:02 PM\""
+        - row "%R 24-hour HH:MM time, equivalent to %H:%M \"23:55\"":
+          - cell "%R":
+            - code: "%R"
+          - cell "24-hour HH:MM time, equivalent to %H:%M"
+          - cell "\"23:55\""
+        - row "%T or %X ISO 8601 time format (HH:MM:SS), equivalent to %H:%M:%S \"23:55:59\"":
+          - cell "%T or %X":
+            - code: "%T"
+            - text: or
+            - code: "%X"
+          - cell "ISO 8601 time format (HH:MM:SS), equivalent to %H:%M:%S"
+          - cell "\"23:55:59\""
+        - row "%z ISO 8601 offset from UTC in timezone ([+/-]HH:MM) \"+02:00\"":
+          - cell "%z":
+            - code: "%z"
+          - cell "ISO 8601 offset from UTC in timezone ([+/-]HH:MM)"
+          - cell "\"+02:00\""
+        - row "%E Seconds since the epoch \"1528834770\"":
+          - cell "%E":
+            - code: "%E"
+          - cell "Seconds since the epoch"
+          - cell "\"1528834770\""
+        - row "%% The % sign \"%\"":
+          - cell "%%":
+            - code: "%%"
+          - cell "The % sign"
+          - cell "\"%\""
+        - row "%+ spdlog's default format \"[2014-10-31 23:46:59.678] [mylogger] [info] Some message\"":
+          - cell "%+":
+            - code: "%+"
+          - cell "spdlog's default format"
+          - cell "\"[2014-10-31 23:46:59.678] [mylogger] [info] Some message\""
+        - row "%^ start color range (can be used only once) \"[mylogger] [info(green)] Some message\"":
+          - cell "%^":
+            - code: "%^"
+          - cell "start color range (can be used only once)"
+          - cell "\"[mylogger] [info(green)] Some message\""
+        - row "%$ end color range (for example %^[+++]%$ %v) (can be used only once) [+++] Some message":
+          - cell "%$":
+            - code: "%$"
+          - cell "end color range (for example %^[+++]%$ %v) (can be used only once)"
+          - cell "[+++] Some message"
+        - row "%@ Source file and line (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc. instead of spdlog::trace(...)) Same as %g:%# /some/dir/my_file.cpp:123":
+          - cell "%@":
+            - code: "%@"
+          - cell "Source file and line (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc. instead of spdlog::trace(...)) Same as %g:%#"
+          - cell "/some/dir/my_file.cpp:123"
+        - row "%s Basename of the source file (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc.) my_file.cpp":
+          - cell "%s":
+            - code: "%s"
+          - cell "Basename of the source file (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc.)"
+          - cell "my_file.cpp"
+        - row "%g Full or relative path of the source file as appears in spdlog::source_loc (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc.) /some/dir/my_file.cpp":
+          - cell "%g":
+            - code: "%g"
+          - cell "Full or relative path of the source file as appears in spdlog::source_loc (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc.)"
+          - cell "/some/dir/my_file.cpp"
+        - row "%# Source line (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc.) 123":
+          - cell "%#":
+            - code: "%#"
+          - cell "Source line (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc.)"
+          - cell "123"
+        - row "%! Source function (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc. see tweakme for pretty-print) my_func":
+          - cell "%!":
+            - code: "%!"
+          - cell "Source function (use SPDLOG_TRACE(..), SPDLOG_INFO(...) etc. see tweakme for pretty-print)"
+          - cell "my_func"
+        - row "%o Elapsed time in milliseconds since previous message 456":
+          - cell "%o":
+            - code: "%o"
+          - cell "Elapsed time in milliseconds since previous message"
+          - cell "456"
+        - row "%i Elapsed time in microseconds since previous message 456734":
+          - cell "%i":
+            - code: "%i"
+          - cell "Elapsed time in microseconds since previous message"
+          - cell "456734"
+        - row "%u Elapsed time in nanoseconds since previous message 456734789":
+          - cell "%u":
+            - code: "%u"
+          - cell "Elapsed time in nanoseconds since previous message"
+          - cell "456734789"
+        - row "%O Elapsed time in seconds since previous message 4":
+          - cell "%O":
+            - code: "%O"
+          - cell "Elapsed time in seconds since previous message"
+          - cell "4"
+    - heading "Aligning" [level=2]
+    - paragraph: Each pattern flag can be aligned by prepending a width number(up to 64).
+    - paragraph:
+      - text: Use
+      - code: "-"
+      - text: (left align) or
+      - code: =
+      - text: "(center align) to control the align side:"
+    - table:
+      - rowgroup:
+        - row "align meaning example result":
+          - columnheader "align"
+          - columnheader "meaning"
+          - columnheader "example"
+          - columnheader "result"
+      - rowgroup:
+        - row "%<width><flag> Right align %8l \" info\"":
+          - cell "%<width><flag>":
+            - code: "%<width><flag>"
+          - cell "Right align"
+          - cell "%8l":
+            - code: "%8l"
+          - cell "\" info\""
+        - row "%-<width><flag> Left align %-8l \"info \"":
+          - cell "%-<width><flag>":
+            - code: "%-<width><flag>"
+          - cell "Left align"
+          - cell "%-8l":
+            - code: "%-8l"
+          - cell "\"info \""
+        - row "%=<width><flag> Center align %=8l \" info \"":
+          - cell "%=<width><flag>":
+            - code: "%=<width><flag>"
+          - cell "Center align"
+          - cell "%=8l":
+            - code: "%=8l"
+          - cell "\" info \""
+    - paragraph:
+      - text: Optionally add
+      - code: "!"
+      - text: "to truncate the result if its size exceeds the specified width:"
+    - table:
+      - rowgroup:
+        - row "align meaning example result":
+          - columnheader "align"
+          - columnheader "meaning"
+          - columnheader "example"
+          - columnheader "result"
+      - rowgroup:
+        - row "%<width>!<flag> Right align or truncate %3!l \"inf\"":
+          - cell "%<width>!<flag>":
+            - code: "%<width>!<flag>"
+          - cell "Right align or truncate"
+          - cell "%3!l":
+            - code: "%3!l"
+          - cell "\"inf\""
+        - row "%-<width>!<flag> Left align or truncate %-2!l \"in\"":
+          - cell "%-<width>!<flag>":
+            - code: "%-<width>!<flag>"
+          - cell "Left align or truncate"
+          - cell "%-2!l":
+            - code: "%-2!l"
+          - cell "\"in\""
+        - row "%=<width>!<flag> Center align or truncate %=1!l \"i\"":
+          - cell "%=<width>!<flag>":
+            - code: "%=<width>!<flag>"
+          - cell "Center align or truncate"
+          - cell "%=1!l":
+            - code: "%=1!l"
+          - cell "\"i\""
+    - paragraph:
+      - strong: "Note:"
+      - text: To truncate function names use '!!'. For example
+      - code: "%10!!"
+      - text: will limit function names to 10 chars.
+    - heading "Extending spdlog with your own flags" [level=2]
+    - paragraph:
+      - text: You can define your own flags by inheriting the
+      - link "custom_flag_formatter":
+        - /url: https://github.com/gabime/spdlog/blob/v1.x/include/spdlog/pattern_formatter.h#L66,#L75
+      - text: class and implementing the
+      - code: clone()
+      - text: and
+      - code: format(...)
+      - text: abstract methods.
+    - paragraph:
+      - text: The following example adds a new flag
+      - strong: "%"
+      - text: "* - which will be bound to a <my_formatter_flag> instance."
+    - button "Copy code"
+    - code:
+      - generic: "#include \"spdlog/pattern_formatter.h\""
+      - generic: "class my_formatter_flag : public spdlog::custom_flag_formatter"
+      - generic: "{"
+      - generic: "public:"
+      - generic: void format(const spdlog::details::log_msg &, const std::tm &, spdlog::memory_buf_t &dest) override
+      - generic: "{"
+      - generic: std::string some_txt = "custom-flag";
+      - generic: dest.append(some_txt.data(), some_txt.data() + some_txt.size());
+      - generic: "}"
+      - generic: std::unique_ptr<custom_flag_formatter> clone() const override
+      - generic: "{"
+      - generic: return spdlog::details::make_unique<my_formatter_flag>();
+      - generic: "}"
+      - generic: "};"
+      - generic: void custom_flags_example()
+      - generic: "{"
+      - generic: auto formatter = std::make_unique<spdlog::pattern_formatter>();
+      - generic: formatter->add_flag<my_formatter_flag>('*').set_pattern("[%n] [%*] [%^%l%$] %v");
+      - generic: spdlog::set_formatter(std::move(formatter));
+      - generic: "}"
+    - paragraph:
+      - strong: "Note:"
+      - text: The
+      - code: clone()
+      - text: method should return a deep copy of the object and is required because spdlog passes a new copy of the object to each sink in use (for performance reasons as this enables to have a state in this object without worrying about race conditions or thread safety across sinks).
+    - paragraph:
+      - strong: "Note:"
+      - text: You can also override spdlog's built in flags in this way.
+    - heading "Source location flags" [level=2]
+    - paragraph:
+      - text: If you need to use source location flags like
+      - code: "%s"
+      - text: ","
+      - code: "%g"
+      - text: ","
+      - code: "%#"
+      - text: ","
+      - code: "%!"
+      - text: ", is necessary to define this compiler flag:"
+    - button "Copy code"
+    - code:
+      - generic: "#define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE"
+    - paragraph: "(change the log level according to your needs) and use these macros:"
+    - button "Copy code"
+    - code:
+      - generic: SPDLOG_LOGGER_TRACE(some_logger, "trace message");
+      - generic: SPDLOG_LOGGER_DEBUG(some_logger, "debug message");
+      - generic: SPDLOG_LOGGER_INFO(some_logger, "info message");
+      - generic: SPDLOG_LOGGER_WARN(some_logger, "warn message");
+      - generic: SPDLOG_LOGGER_ERROR(some_logger, "error message");
+      - generic: SPDLOG_LOGGER_CRITICAL(some_logger, "critical message");
+    - paragraph:
+      - strong: "NOTE:"
+      - text: if you've set the flag to
+      - code: SPDLOG_LEVEL_TRACE
+      - text: but you don't see any trace and/or debug messages, it's most likely something like this
+      - link "https://github.com/gabime/spdlog/issues/2764":
+        - /url: https://github.com/gabime/spdlog/issues/2764
+      - text: ". In that case define it directly as a compiler flag. For example, using cmake:"
+    - button "Copy code"
+    - code:
+      - generic: add_compile_definitions(SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE)
+    - complementary:
+      - paragraph: ©gabime 2023-2024 spdlog. All Rights Reserved.
+    - link "Previous Creating loggers":
+      - /url: /docs/spdlog/v1-17-0/en/01-guide/05-creating-loggers
+      - text: Previous
+      - text: Creating loggers
+    - link "Next Default logger":
+      - /url: /docs/spdlog/v1-17-0/en/01-guide/07-default-logger
+      - text: Next
+      - text: Default logger
+    - complementary "Document source":
+      - heading "Document source" [level=2]
+      - generic: Canonical language
+      - paragraph: This document is "Official spdlog Wiki snapshot 2025-10-15" by gabime and spdlog Wiki contributors, formatted for libx.
+      - term: Source
+      - definition: Official spdlog Wiki snapshot 2025-10-15
+      - term: Upstream version
+      - definition: 1.17.0 / Wiki 2025-10-15
+      - term: License
+      - definition: MIT (software license applied with annotation)
+      - link "Open original":
+        - /url: https://github.com/gabime/spdlog/wiki
+      - link "MIT (software license applied with annotation)License":
+        - /url: https://github.com/gabime/spdlog/blob/79524ddd08a4ec981b7fea76afd08ee05f83755d/LICENSE
+  - complementary:
+    - navigation "On this page":
+      - heading "On this page" [level=3]
+      - list:
+        - link "Customizing format using set_pattern(..)":
+          - /url: "#customizing-format-using-set_pattern"
+        - link "Efficiency":
+          - /url: "#efficiency"
+        - link "Pattern flags":
+          - /url: "#pattern-flags"
+        - link "Aligning":
+          - /url: "#aligning"
+        - link "Extending spdlog with your own flags":
+          - /url: "#extending-spdlog-with-your-own-flags"
+        - link "Source location flags":
+          - /url: "#source-location-flags"

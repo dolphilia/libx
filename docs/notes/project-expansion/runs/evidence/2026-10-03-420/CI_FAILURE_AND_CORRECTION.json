@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-03T09:26:45.365Z",
+  "status": "fixed-locally-new-ci-in-progress",
+  "failedRun": 37112504713,
+  "failedJob": 111173003266,
+  "failedCommit": "45a9d2f389f0a8855fb34812c6b9332e8f36e2fc",
+  "failure": "Static analysis Prettier: generated meta/ast/en/06-custom-formatting.json and ja/06-custom-formatting.json only. Remaining CI gates were skipped; no deploy.",
+  "cause": "remark-spdlog generator writes JSON.stringify AST. Earlier formatting before rebuild was overwritten by build output. Local explicit two-file diagnostic reproduces formatting warnings. No document text/review mismatch.",
+  "fix": "Add only apps/spdlog/meta/ast/** to .prettierignore. Generated AST retains deterministic generator format and is checked by content/rendered verification. No code/content/source changes; no failing content check disabled.",
+  "currentCommit": "d8c86874dfc8c46b644d7ba20d629fa6f6dd1619",
+  "changedSincePrevious": [
+    ".prettierignore:3lines"
+  ],
+  "committedScopeFiles": 225,
+  "reviewed54BlobsUnchanged": true,
+  "currentRun": 37112927009,
+  "currentJob": 111174188989,
+  "CI": "in-progress, not passed",
+  "publication": "awaiting-release",
+  "localChecks": "format/lint/content+rendered+git diff and full225 committed blob/root materialization equality passed. 418 integration and 419 fresh-checkout content evidence inherited for unchanged sources.",
+  "rootUserAwesome": "No root changes staged/committed/pushed"
+}

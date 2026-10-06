@@ -1,0 +1,36 @@
+/* プロジェクトテンプレート共通スタイル */
+@import '@docs/theme/css/starlight-overrides.css';
+
+/* プロジェクト固有の追加スタイルは必要に応じて記述 */
+
+/* Keep language controls readable beside the independent Wiki snapshot label. */
+@media (max-width: 49.999em) {
+  .version-selector-container {
+    min-width: 0;
+  }
+
+  .version-selector-container .dropdown {
+    max-width: 8rem;
+  }
+
+  .version-selector-container .dropdown-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .language-selector-container {
+    flex-shrink: 0;
+  }
+
+  .language-selector-container .dropdown-label {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .version-selector-container .dropdown {
+    max-width: 6rem;
+  }
+}
