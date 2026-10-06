@@ -1,0 +1,870 @@
+diff --git a/apps/awesome/community/src/layouts/DocLayout.astro b/apps/awesome/community/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/awesome/community/src/layouts/DocLayout.astro
++++ b/apps/awesome/community/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/awesome/creative/src/layouts/DocLayout.astro b/apps/awesome/creative/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/awesome/creative/src/layouts/DocLayout.astro
++++ b/apps/awesome/creative/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/awesome/languages/src/layouts/DocLayout.astro b/apps/awesome/languages/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/awesome/languages/src/layouts/DocLayout.astro
++++ b/apps/awesome/languages/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/awesome/overview/src/layouts/DocLayout.astro b/apps/awesome/overview/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/awesome/overview/src/layouts/DocLayout.astro
++++ b/apps/awesome/overview/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/awesome/science/src/layouts/DocLayout.astro b/apps/awesome/science/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/awesome/science/src/layouts/DocLayout.astro
++++ b/apps/awesome/science/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/awesome/systems/src/layouts/DocLayout.astro b/apps/awesome/systems/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/awesome/systems/src/layouts/DocLayout.astro
++++ b/apps/awesome/systems/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/awesome/web/src/layouts/DocLayout.astro b/apps/awesome/web/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/awesome/web/src/layouts/DocLayout.astro
++++ b/apps/awesome/web/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/cjson/src/layouts/DocLayout.astro b/apps/cjson/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/cjson/src/layouts/DocLayout.astro
++++ b/apps/cjson/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/cjson/src/pages/[version]/[lang]/[...slug].astro b/apps/cjson/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/cjson/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/cjson/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/fmt/src/layouts/DocLayout.astro b/apps/fmt/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/fmt/src/layouts/DocLayout.astro
++++ b/apps/fmt/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/fmt/src/pages/[version]/[lang]/[...slug].astro b/apps/fmt/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/fmt/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/fmt/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/glfw/src/layouts/DocLayout.astro b/apps/glfw/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/glfw/src/layouts/DocLayout.astro
++++ b/apps/glfw/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/glfw/src/pages/[version]/[lang]/[...slug].astro b/apps/glfw/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/glfw/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/glfw/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/lua/src/layouts/DocLayout.astro b/apps/lua/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/lua/src/layouts/DocLayout.astro
++++ b/apps/lua/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/lua/src/pages/[version]/[lang]/[...slug].astro b/apps/lua/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/lua/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/lua/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/ninja/src/layouts/DocLayout.astro b/apps/ninja/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/ninja/src/layouts/DocLayout.astro
++++ b/apps/ninja/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/ninja/src/pages/[version]/[lang]/[...slug].astro b/apps/ninja/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/ninja/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/ninja/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/pugixml/src/layouts/DocLayout.astro b/apps/pugixml/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/pugixml/src/layouts/DocLayout.astro
++++ b/apps/pugixml/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/pugixml/src/pages/[version]/[lang]/[...slug].astro b/apps/pugixml/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/pugixml/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/pugixml/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/sample-docs/src/layouts/DocLayout.astro b/apps/sample-docs/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/sample-docs/src/layouts/DocLayout.astro
++++ b/apps/sample-docs/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/sample-docs/src/pages/[version]/[lang]/[...slug].astro b/apps/sample-docs/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/sample-docs/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/sample-docs/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/spdlog/src/layouts/DocLayout.astro b/apps/spdlog/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/spdlog/src/layouts/DocLayout.astro
++++ b/apps/spdlog/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/spdlog/src/pages/[version]/[lang]/[...slug].astro b/apps/spdlog/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/spdlog/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/spdlog/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/test-verification/src/layouts/DocLayout.astro b/apps/test-verification/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/test-verification/src/layouts/DocLayout.astro
++++ b/apps/test-verification/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/test-verification/src/pages/[version]/[lang]/[...slug].astro b/apps/test-verification/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/test-verification/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/test-verification/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/toml/src/layouts/DocLayout.astro b/apps/toml/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/toml/src/layouts/DocLayout.astro
++++ b/apps/toml/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/toml/src/pages/[version]/[lang]/[...slug].astro b/apps/toml/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/toml/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/toml/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/uthash/src/layouts/DocLayout.astro b/apps/uthash/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/uthash/src/layouts/DocLayout.astro
++++ b/apps/uthash/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/uthash/src/pages/[version]/[lang]/[...slug].astro b/apps/uthash/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/uthash/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/uthash/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/apps/zlib/src/layouts/DocLayout.astro b/apps/zlib/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/apps/zlib/src/layouts/DocLayout.astro
++++ b/apps/zlib/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/apps/zlib/src/pages/[version]/[lang]/[...slug].astro b/apps/zlib/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/apps/zlib/src/pages/[version]/[lang]/[...slug].astro
++++ b/apps/zlib/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">
+diff --git a/packages/ui/src/components/Dropdown/utils.ts b/packages/ui/src/components/Dropdown/utils.ts
+index 75f3698a..64318d77 100644
+--- a/packages/ui/src/components/Dropdown/utils.ts
++++ b/packages/ui/src/components/Dropdown/utils.ts
+@@ -23,6 +23,50 @@ export function getDropdownScript(): string {
+           menu.classList.toggle('hidden');
+         });
+         
++        const closeMenu = function(restoreFocus) {
++          button.setAttribute('aria-expanded', 'false');
++          menu.classList.add('hidden');
++          if (restoreFocus) button.focus();
++        };
++        const items = function() {
++          return Array.from(menu.querySelectorAll('[role="menuitem"]'))
++            .filter(item => item.getAttribute('aria-disabled') !== 'true');
++        };
++        const openAndFocus = function(last) {
++          button.setAttribute('aria-expanded', 'true');
++          menu.classList.remove('hidden');
++          const entries = items();
++          const entry = last ? entries[entries.length - 1] : entries[0];
++          if (entry) entry.focus();
++        };
++        button.addEventListener('keydown', function(event) {
++          if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key)) {
++            event.preventDefault();
++            if (['Enter', ' '].includes(event.key) && button.getAttribute('aria-expanded') === 'true') {
++              closeMenu(true);
++            } else {
++              openAndFocus(event.key === 'ArrowUp');
++            }
++          }
++        });
++        menu.addEventListener('keydown', function(event) {
++          if (event.key === 'Tab') {
++            closeMenu(false);
++            return;
++          }
++          const entries = items();
++          if (!entries.length) return;
++          const current = entries.indexOf(document.activeElement);
++          let next;
++          if (event.key === 'ArrowDown') next = (current + 1) % entries.length;
++          else if (event.key === 'ArrowUp') next = (current - 1 + entries.length) % entries.length;
++          else if (event.key === 'Home') next = 0;
++          else if (event.key === 'End') next = entries.length - 1;
++          else return;
++          event.preventDefault();
++          entries[next].focus();
++        });
++
+         // 外部クリックでメニューを閉じる
+         document.addEventListener('click', function(event) {
+           if (!dropdown.contains(event.target)) {
+@@ -34,8 +78,7 @@ export function getDropdownScript(): string {
+         // ESCキーでメニューを閉じる
+         document.addEventListener('keydown', function(event) {
+           if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+-            button.setAttribute('aria-expanded', 'false');
+-            menu.classList.add('hidden');
++            closeMenu(dropdown.contains(event.target));
+           }
+         });
+       }
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 0466b01b..04919d30 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -912,6 +912,39 @@ importers:
+         specifier: ^5.0.0
+         version: 5.0.0
+ 
++  apps/xxhash:
++    dependencies:
++      '@docs/config':
++        specifier: workspace:*
++        version: link:../../packages/config
++      '@docs/content-utils':
++        specifier: workspace:*
++        version: link:../../packages/content-utils
++      '@docs/i18n':
++        specifier: workspace:*
++        version: link:../../packages/i18n
++      '@docs/project-config':
++        specifier: workspace:*
++        version: link:../../packages/project-config
++      '@docs/theme':
++        specifier: workspace:*
++        version: link:../../packages/theme
++      '@docs/ui':
++        specifier: workspace:*
++        version: link:../../packages/ui
++      '@docs/versioning':
++        specifier: workspace:*
++        version: link:../../packages/versioning
++      astro:
++        specifier: ^5.7.12
++        version: 5.7.12(@types/node@24.13.3)(jiti@1.21.7)(rollup@4.40.2)(typescript@5.8.3)(yaml@2.7.1)
++      shiki:
++        specifier: ^3.4.0
++        version: 3.4.0
++      unist-util-visit:
++        specifier: ^5.0.0
++        version: 5.0.0
++
+   apps/zlib:
+     dependencies:
+       '@docs/config':
+diff --git a/templates/docs-site/src/layouts/DocLayout.astro b/templates/docs-site/src/layouts/DocLayout.astro
+index d3406a9e..8408ecf3 100644
+--- a/templates/docs-site/src/layouts/DocLayout.astro
++++ b/templates/docs-site/src/layouts/DocLayout.astro
+@@ -201,3 +201,9 @@ const TRANSLATION_KEYS = {
+   // 現在のサイドバーをプリフェッチ
+   if (!isGroup) prefetchSidebar(currentLang, currentVersion);
+ </script>
++
++<script>
++  // An app may enhance its own document content without changing the shared layout.
++  const enhancements = import.meta.glob('../scripts/document-enhancements.ts');
++  for (const load of Object.values(enhancements)) void load();
++</script>
+diff --git a/templates/docs-site/src/pages/[version]/[lang]/[...slug].astro b/templates/docs-site/src/pages/[version]/[lang]/[...slug].astro
+index 97097c21..3368800a 100644
+--- a/templates/docs-site/src/pages/[version]/[lang]/[...slug].astro
++++ b/templates/docs-site/src/pages/[version]/[lang]/[...slug].astro
+@@ -57,7 +57,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+ }
+ 
+ const { entry } = Astro.props as { entry: CollectionEntry<'docs'> };
+-const { Content, headings } = await entry.render();
++const { Content, headings: markdownHeadings } = await entry.render();
++// Optional app metadata registers headings from preserved raw HTML.
++const headingModules = import.meta.glob('../../../data/document-headings.json', { eager: true, import: 'default' });
++const headingMap = (Object.values(headingModules)[0] ?? {}) as Record<string, typeof markdownHeadings>;
++const extraModules = import.meta.glob('../../../data/document-extras.json', { eager: true, import: 'default' });
++const documentExtras = (Object.values(extraModules)[0] ?? {}) as Record<string, {
++  downloads?: Array<{ url: string; labels: Record<string, string>; notices: Record<string, string> }>;
++}>;
++const rawHeadings = headingMap[entry.slug] ?? [];
++const trailingIndex = markdownHeadings.findIndex((heading) => ['source-and-notices', '出典と通知'].includes(heading.slug));
++const splitIndex = trailingIndex < 0 ? markdownHeadings.length : trailingIndex;
++const headings = [...markdownHeadings.slice(0, splitIndex), ...rawHeadings, ...markdownHeadings.slice(splitIndex)];
+ 
+ // バージョンと言語をパラメータから取得
+ const { version: versionParam, lang: langParam } = Astro.params;
+@@ -154,6 +165,12 @@ const hasToc = countTableOfContentsItems(tocItems) > 0;
+     slot="mobile-toc"
+   />
+   <Content />
++  {(documentExtras[version]?.downloads ?? []).map((download) => (
++    <aside aria-label={download.labels[lang] ?? download.labels.en}>
++      <p><a href={download.url}>{download.labels[lang] ?? download.labels.en}</a></p>
++      <p>{download.notices[lang] ?? download.notices.en}</p>
++    </aside>
++  ))}
+ 
+   {/* ページナビゲーション */}
+   <div class="navigation-container">

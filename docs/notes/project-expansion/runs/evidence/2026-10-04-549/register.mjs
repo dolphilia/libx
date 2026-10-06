@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { readLedger, validateLedger, updateLedger, report, counts, inventory, hashFile } from '/Users/dolphilia/github/libx/scripts/project-expansion/ledger.mjs';
+const root='/Users/dolphilia/github/libx', dir='docs/notes/project-expansion', ev=dir+'/runs/evidence/2026-10-04-549', at=new Date().toISOString();
+const ref=p=>({path:p,sha256:hashFile(root+'/'+p)});
+const before=readLedger(root); assert.equal(before.operations.revision,681); assert.deepEqual(validateLedger(root,before),[]); assert.equal(before.policy.workPriority,'new-projects-first');
+fs.mkdirSync(root+'/'+ev,{recursive:true});
+for(const [source,target] of [['/private/tmp/xxhash-smoke-549.log','SMOKE.log'],['/private/tmp/xxhash-format-549.log','FORMAT.log'],['/private/tmp/libx-save-xxhash-549.mjs','register.mjs']])fs.copyFileSync(source,root+'/'+ev+'/'+target,fs.constants.COPYFILE_EXCL);
+const next='専用 /private/tmp/libx-xxhash-integration-20261004 で公開前整形61指摘を分類。固定原文/生成入力/レビュー証拠は既存同種の方針でPrettier対象外としバイト列を保持、変更コードは整形する。原文・本文SHAと全文review照合、再生成/check:contentを確認。source束に含むimporter変更時は決定的束を再生成し新SHA/全memberを検証、必要なbuild/機械/表示gateを再更新する。format/lint/typecheck合格後、isolated source限定commit/push→既存Pages workflow expected_production_commit=4f0ee6d00b08e3fe7b39f7466a545c4c944d6b26→CI artifact/Pages canonical/HTTP/source.gz確認。root共通変更と別Awesome作業を保護し、公開済み定期巡回より新規公開を優先。';
+const inputs=[ref(dir+'/OPERATIONS.json'),ref(dir+'/POLICY.json'),ref('docs/plans/CONTINUOUS_DOCUMENT_PROJECT_EXPANSION_PLAN.md')], outputs=inventory(root,ev);
+updateLedger(root,dir,'OPERATIONS',681,[...inputs,...outputs],o=>{const x=o.operations.find(x=>x.candidateId==='xxhash'); x.artifacts.push(...outputs);x.nextAction=next;x.resumeCondition=next;return o;});
+const after=readLedger(root);assert.deepEqual(validateLedger(root,after),[]);
+const prev=JSON.parse(fs.readFileSync(root+'/'+dir+'/runs/2026-10-04-548-xxhash-verified-awaiting-release.json'));
+fs.writeFileSync(root+'/'+dir+'/runs/2026-10-04-549-xxhash-publication-style-preflight.json',JSON.stringify({...prev,id:'2026-10-04-549-xxhash-publication-style-preflight',cycle:549,startedAt:at,endedAt:new Date().toISOString(),inputs,outputs:[...outputs,ref(dir+'/OPERATIONS.json')],tools:['policy/plan priority readback','private final-dist smoke','private Prettier preflight','CAS ledger checkpoint'],checks:[{name:'new-projects-first plan and policy',status:'passed',evidence:[inputs[1],inputs[2]]},{name:'final integrated smoke 13/13',status:'passed',evidence:[ref(ev+'/SMOKE.log')]},{name:'publication style preflight',status:'failed',evidence:[ref(ev+'/FORMAT.log')]}],decisions:['計画とPOLICYの新規作成・公開優先が一致。重大な既知不具合以外の公開済み定期巡回は低優先。','13 smoke合格。61整形指摘があるためcommit/公開を未実施とし、固定原文を変更せず分類して修正する。','内容のverified判定と未完了の公開前CI準備を区別し、publishedへ変更しない。'],unresolved:['公開前整形61指摘の分類・コード修正','commit/push/CI/Production反映と外部検証'],nextAction:next,resumeCondition:next,counts:counts(after)},null,2)+'\n',{flag:'wx'});
+fs.writeFileSync(root+'/'+dir+'/REPORT.md',report(root,after));console.log({revision:after.operations.revision,...counts(after)});
