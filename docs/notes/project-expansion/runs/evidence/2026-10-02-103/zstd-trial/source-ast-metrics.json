@@ -1,0 +1,2914 @@
+{
+  "checkedAt": "2026-10-02T00:53:41.535Z",
+  "sourceSha256": "81d08d9af1e3011190cae694d1b775b46db4743728733522a4119a5cb7558bb5",
+  "canonicalSha256": "b3082c42a1199c7f92d861688777eea14aa6168a0e8d33b07c3bddd85be922be",
+  "identity": false,
+  "sourceEquivalence": true,
+  "linkRepairs": [
+    {
+      "line": 1531,
+      "from": "#the-format-of-compressed_block",
+      "to": "#compressed-blocks",
+      "reason": "上流内部参照の見出しが存在せず、405行のCompressed Blocksに対応。本文は変更せず、取り込み時も変更表示する。"
+    }
+  ],
+  "headings": [
+    {
+      "depth": 1,
+      "text": "Zstandard Compression Format",
+      "line": 1
+    },
+    {
+      "depth": 3,
+      "text": "Notices",
+      "line": 4
+    },
+    {
+      "depth": 3,
+      "text": "Version",
+      "line": 17
+    },
+    {
+      "depth": 2,
+      "text": "Introduction",
+      "line": 22
+    },
+    {
+      "depth": 3,
+      "text": "Overall conventions",
+      "line": 63
+    },
+    {
+      "depth": 3,
+      "text": "Definitions",
+      "line": 68
+    },
+    {
+      "depth": 2,
+      "text": "Overview",
+      "line": 81
+    },
+    {
+      "depth": 2,
+      "text": "Frames",
+      "line": 95
+    },
+    {
+      "depth": 2,
+      "text": "Zstandard frames",
+      "line": 107
+    },
+    {
+      "depth": 3,
+      "text": "Frame_Header",
+      "line": 141
+    },
+    {
+      "depth": 4,
+      "text": "Frame_Header_Descriptor",
+      "line": 151
+    },
+    {
+      "depth": 4,
+      "text": "Window_Descriptor",
+      "line": 235
+    },
+    {
+      "depth": 4,
+      "text": "Dictionary_ID",
+      "line": 277
+    },
+    {
+      "depth": 4,
+      "text": "Frame_Content_Size",
+      "line": 299
+    },
+    {
+      "depth": 2,
+      "text": "Blocks",
+      "line": 320
+    },
+    {
+      "depth": 2,
+      "text": "Compressed Blocks",
+      "line": 405
+    },
+    {
+      "depth": 4,
+      "text": "Prerequisites",
+      "line": 417
+    },
+    {
+      "depth": 2,
+      "text": "Literals Section",
+      "line": 431
+    },
+    {
+      "depth": 3,
+      "text": "Literals_Section_Header",
+      "line": 445
+    },
+    {
+      "depth": 4,
+      "text": "Raw Literals Block",
+      "line": 557
+    },
+    {
+      "depth": 4,
+      "text": "RLE Literals Block",
+      "line": 561
+    },
+    {
+      "depth": 4,
+      "text": "Compressed Literals Block and Treeless Literals Block",
+      "line": 565
+    },
+    {
+      "depth": 3,
+      "text": "Huffman_Tree_Description",
+      "line": 573
+    },
+    {
+      "depth": 3,
+      "text": "Jump Table",
+      "line": 582
+    },
+    {
+      "depth": 2,
+      "text": "Sequences Section",
+      "line": 613
+    },
+    {
+      "depth": 4,
+      "text": "Sequences_Section_Header",
+      "line": 643
+    },
+    {
+      "depth": 4,
+      "text": "The codes for literals lengths, match lengths, and offsets.",
+      "line": 702
+    },
+    {
+      "depth": 5,
+      "text": "Literals length codes",
+      "line": 709
+    },
+    {
+      "depth": 5,
+      "text": "Match length codes",
+      "line": 738
+    },
+    {
+      "depth": 5,
+      "text": "Offset codes",
+      "line": 766
+    },
+    {
+      "depth": 4,
+      "text": "Decoding Sequences",
+      "line": 789
+    },
+    {
+      "depth": 5,
+      "text": "Starting states",
+      "line": 816
+    },
+    {
+      "depth": 5,
+      "text": "Decoding a sequence",
+      "line": 836
+    },
+    {
+      "depth": 4,
+      "text": "Default Distributions",
+      "line": 859
+    },
+    {
+      "depth": 5,
+      "text": "Literals Length",
+      "line": 866
+    },
+    {
+      "depth": 5,
+      "text": "Match Length",
+      "line": 875
+    },
+    {
+      "depth": 5,
+      "text": "Offset Codes",
+      "line": 885
+    },
+    {
+      "depth": 2,
+      "text": "Sequence Execution",
+      "line": 898
+    },
+    {
+      "depth": 4,
+      "text": "Repeat offsets",
+      "line": 920
+    },
+    {
+      "depth": 6,
+      "text": "Offset updates rules",
+      "line": 946
+    },
+    {
+      "depth": 2,
+      "text": "Skippable Frames",
+      "line": 985
+    },
+    {
+      "depth": 2,
+      "text": "Entropy Encoding",
+      "line": 1028
+    },
+    {
+      "depth": 2,
+      "text": "FSE",
+      "line": 1038
+    },
+    {
+      "depth": 3,
+      "text": "FSE Table Description",
+      "line": 1063
+    },
+    {
+      "depth": 4,
+      "text": "From normalized distribution to decoding tables",
+      "line": 1147
+    },
+    {
+      "depth": 2,
+      "text": "Huffman Coding",
+      "line": 1233
+    },
+    {
+      "depth": 3,
+      "text": "Huffman Tree Description",
+      "line": 1253
+    },
+    {
+      "depth": 4,
+      "text": "Representation",
+      "line": 1271
+    },
+    {
+      "depth": 4,
+      "text": "Huffman Tree header",
+      "line": 1329
+    },
+    {
+      "depth": 4,
+      "text": "Finite State Entropy (FSE) compression of Huffman weights",
+      "line": 1358
+    },
+    {
+      "depth": 4,
+      "text": "Conversion from weights to Huffman prefix codes",
+      "line": 1396
+    },
+    {
+      "depth": 3,
+      "text": "Huffman-coded Streams",
+      "line": 1426
+    },
+    {
+      "depth": 2,
+      "text": "Dictionary Format",
+      "line": 1474
+    },
+    {
+      "depth": 2,
+      "text": "Appendix A - Decoding tables for predefined codes",
+      "line": 1538
+    },
+    {
+      "depth": 4,
+      "text": "Literal Length Code:",
+      "line": 1548
+    },
+    {
+      "depth": 4,
+      "text": "Match Length Code:",
+      "line": 1617
+    },
+    {
+      "depth": 4,
+      "text": "Offset Code:",
+      "line": 1686
+    },
+    {
+      "depth": 2,
+      "text": "Appendix B - Resources for implementers",
+      "line": 1725
+    },
+    {
+      "depth": 2,
+      "text": "Version changes",
+      "line": 1743
+    }
+  ],
+  "topSections": [
+    {
+      "depth": 2,
+      "text": "Sequences Section",
+      "line": 613,
+      "endLine": 897
+    },
+    {
+      "depth": 2,
+      "text": "Huffman Coding",
+      "line": 1233,
+      "endLine": 1473
+    },
+    {
+      "depth": 2,
+      "text": "Zstandard frames",
+      "line": 107,
+      "endLine": 319
+    },
+    {
+      "depth": 2,
+      "text": "FSE",
+      "line": 1038,
+      "endLine": 1232
+    },
+    {
+      "depth": 2,
+      "text": "Appendix A - Decoding tables for predefined codes",
+      "line": 1538,
+      "endLine": 1724
+    },
+    {
+      "depth": 2,
+      "text": "Literals Section",
+      "line": 431,
+      "endLine": 612
+    },
+    {
+      "depth": 2,
+      "text": "Sequence Execution",
+      "line": 898,
+      "endLine": 984
+    },
+    {
+      "depth": 2,
+      "text": "Blocks",
+      "line": 320,
+      "endLine": 404
+    },
+    {
+      "depth": 2,
+      "text": "Dictionary Format",
+      "line": 1474,
+      "endLine": 1537
+    },
+    {
+      "depth": 2,
+      "text": "Introduction",
+      "line": 22,
+      "endLine": 80
+    },
+    {
+      "depth": 2,
+      "text": "Skippable Frames",
+      "line": 985,
+      "endLine": 1027
+    },
+    {
+      "depth": 2,
+      "text": "Version changes",
+      "line": 1743,
+      "endLine": 1772
+    },
+    {
+      "depth": 2,
+      "text": "Compressed Blocks",
+      "line": 405,
+      "endLine": 430
+    },
+    {
+      "depth": 2,
+      "text": "Appendix B - Resources for implementers",
+      "line": 1725,
+      "endLine": 1742
+    },
+    {
+      "depth": 2,
+      "text": "Overview",
+      "line": 81,
+      "endLine": 94
+    },
+    {
+      "depth": 2,
+      "text": "Frames",
+      "line": 95,
+      "endLine": 106
+    },
+    {
+      "depth": 2,
+      "text": "Entropy Encoding",
+      "line": 1028,
+      "endLine": 1037
+    }
+  ],
+  "links": [
+    {
+      "url": "https://facebook.github.io/zstd/",
+      "label": "Zstandard algorithm",
+      "line": 29
+    },
+    {
+      "url": "https://cyan4973.github.io/xxHash/",
+      "label": "xxHash-64 checksum method",
+      "line": 38
+    },
+    {
+      "url": "https://github.com/facebook/zstd",
+      "label": "https://github.com/facebook/zstd",
+      "line": 60
+    },
+    {
+      "url": "#frames",
+      "label": "Frames",
+      "line": 83
+    },
+    {
+      "url": "#zstandard-frames",
+      "label": "Zstandard frames",
+      "line": 84
+    },
+    {
+      "url": "#blocks",
+      "label": "Blocks",
+      "line": 85
+    },
+    {
+      "url": "#literals-section",
+      "label": "Literals Section",
+      "line": 86
+    },
+    {
+      "url": "#sequences-section",
+      "label": "Sequences Section",
+      "line": 87
+    },
+    {
+      "url": "#sequence-execution",
+      "label": "Sequence Execution",
+      "line": 88
+    },
+    {
+      "url": "#skippable-frames",
+      "label": "Skippable frames",
+      "line": 89
+    },
+    {
+      "url": "#entropy-encoding",
+      "label": "Entropy Encoding",
+      "line": 90
+    },
+    {
+      "url": "#fse",
+      "label": "FSE",
+      "line": 91
+    },
+    {
+      "url": "#huffman-coding",
+      "label": "Huffman Coding",
+      "line": 92
+    },
+    {
+      "url": "#dictionary-format",
+      "label": "Dictionary Format",
+      "line": 93
+    },
+    {
+      "url": "#frame_header",
+      "label": "Frame_Header",
+      "line": 126
+    },
+    {
+      "url": "#blocks",
+      "label": "Blocks",
+      "line": 130
+    },
+    {
+      "url": "https://cyan4973.github.io/xxHash/",
+      "label": "xxh64() hash function",
+      "line": 137
+    },
+    {
+      "url": "#zstandard-frames",
+      "label": "Zstandard Frames",
+      "line": 347
+    },
+    {
+      "url": "#compressed-blocks",
+      "label": "Zstandard compressed block",
+      "line": 366
+    },
+    {
+      "url": "#literals-section",
+      "label": "Literals Section",
+      "line": 411
+    },
+    {
+      "url": "#sequences-section",
+      "label": "Sequences Section",
+      "line": 412
+    },
+    {
+      "url": "#sequence-execution",
+      "label": "Sequence Execution",
+      "line": 415
+    },
+    {
+      "url": "#dictionary-format",
+      "label": "dictionary",
+      "line": 479
+    },
+    {
+      "url": "#huffman-tree-description",
+      "label": "Huffman Tree description",
+      "line": 576
+    },
+    {
+      "url": "#huffman-coded-streams",
+      "label": "Huffman-Coded Streams",
+      "line": 589
+    },
+    {
+      "url": "#huffman-coded-streams",
+      "label": "Huffman-Coded Streams",
+      "line": 610
+    },
+    {
+      "url": "#sequence-execution",
+      "label": "Sequence Execution",
+      "line": 625
+    },
+    {
+      "url": "#default-distributions",
+      "label": "default distributions",
+      "line": 683
+    },
+    {
+      "url": "#fse-table-description",
+      "label": "FSE Table Description",
+      "line": 689
+    },
+    {
+      "url": "#dictionary-format",
+      "label": "dictionary",
+      "line": 700
+    },
+    {
+      "url": "#window_descriptor",
+      "label": "maximum back-reference distance",
+      "line": 784
+    },
+    {
+      "url": "#repeat-offsets",
+      "label": "Repeat Offsets",
+      "line": 787
+    },
+    {
+      "url": "#fse",
+      "label": "FSE section",
+      "line": 809
+    },
+    {
+      "url": "#fse",
+      "label": "FSE section",
+      "line": 814
+    },
+    {
+      "url": "#the-codes-for-literals-lengths-match-lengths-and-offsets",
+      "label": "description of the codes",
+      "line": 839
+    },
+    {
+      "url": "#sequence-execution",
+      "label": "sequence execution",
+      "line": 845
+    },
+    {
+      "url": "#fse",
+      "label": "FSE section",
+      "line": 853
+    },
+    {
+      "url": "#from-normalized-distribution-to-decoding-tables",
+      "label": "FSE section",
+      "line": 862
+    },
+    {
+      "url": "#sequences-section",
+      "label": "Sequences Section",
+      "line": 904
+    },
+    {
+      "url": "#repeat-offsets",
+      "label": "repeat offset",
+      "line": 912
+    },
+    {
+      "url": "#sequence-execution",
+      "label": "Sequence Execution",
+      "line": 921
+    },
+    {
+      "url": "https://lz4.github.io/lz4/",
+      "label": "LZ4",
+      "line": 995
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Asymmetric_Numeral_Systems",
+      "label": "ANS",
+      "line": 1040
+    },
+    {
+      "url": "https://github.com/Cyan4973/FiniteStateEntropy/",
+      "label": "Finite State Entropy",
+      "line": 1047
+    },
+    {
+      "url": "#from-normalized-distribution-to-decoding-tables",
+      "label": "next section",
+      "line": 1116
+    },
+    {
+      "url": "#appendix-a---decoding-tables-for-predefined-codes",
+      "label": "Appendix A",
+      "line": 1228
+    },
+    {
+      "url": "#fse-table-description",
+      "label": "FSE header description",
+      "line": 1373
+    },
+    {
+      "url": "#fse",
+      "label": "FSE section",
+      "line": 1381
+    },
+    {
+      "url": "#the-format-of-compressed_block",
+      "label": "compressed blocks",
+      "line": 1509
+    },
+    {
+      "url": "#fse-table-description",
+      "label": "FSE",
+      "line": 1510
+    },
+    {
+      "url": "#huffman-tree-description",
+      "label": "Huffman",
+      "line": 1511
+    },
+    {
+      "url": "https://github.com/facebook/zstd",
+      "label": "https://github.com/facebook/zstd",
+      "line": 1729
+    },
+    {
+      "url": "https://github.com/facebook/zstd/tree/v1.3.4/tests#decodecorpus---tool-to-generate-zstandard-frames-for-decoder-testing",
+      "label": "decodeCorpus",
+      "line": 1731
+    }
+  ],
+  "tables": [
+    {
+      "line": 110,
+      "align": [
+        "center",
+        "center",
+        "center",
+        null,
+        "center"
+      ],
+      "rows": [
+        [
+          "Magic_Number",
+          "Frame_Header",
+          "Data_Block",
+          "[More data blocks]",
+          "[Content_Checksum]"
+        ],
+        [
+          "4 bytes",
+          "2-14 bytes",
+          "n bytes",
+          "",
+          "0-4 bytes"
+        ]
+      ]
+    },
+    {
+      "line": 147,
+      "align": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Frame_Header_Descriptor",
+          "[Window_Descriptor]",
+          "[Dictionary_ID]",
+          "[Frame_Content_Size]"
+        ],
+        [
+          "1 byte",
+          "0-1 byte",
+          "0-4 bytes",
+          "0-8 bytes"
+        ]
+      ]
+    },
+    {
+      "line": 157,
+      "align": [
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Bit number",
+          "Field name"
+        ],
+        [
+          "7-6",
+          "Frame_Content_Size_flag"
+        ],
+        [
+          "5",
+          "Single_Segment_flag"
+        ],
+        [
+          "4",
+          "Unused_bit"
+        ],
+        [
+          "3",
+          "Reserved_bit"
+        ],
+        [
+          "2",
+          "Content_Checksum_flag"
+        ],
+        [
+          "1-0",
+          "Dictionary_ID_flag"
+        ]
+      ]
+    },
+    {
+      "line": 177,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Flag_Value",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        [
+          "FCS_Field_Size",
+          "0 or 1",
+          "2",
+          "4",
+          "8"
+        ]
+      ]
+    },
+    {
+      "line": 231,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Flag_Value",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        [
+          "DID_Field_Size",
+          "0",
+          "1",
+          "2",
+          "4"
+        ]
+      ]
+    },
+    {
+      "line": 245,
+      "align": [
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Bit numbers",
+          "7-3",
+          "2-0"
+        ],
+        [
+          "Field name",
+          "Exponent",
+          "Mantissa"
+        ]
+      ]
+    },
+    {
+      "line": 306,
+      "align": [
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "FCS_Field_Size",
+          "Range"
+        ],
+        [
+          "0",
+          "unknown"
+        ],
+        [
+          "1",
+          "0 - 255"
+        ],
+        [
+          "2",
+          "256 - 65791"
+        ],
+        [
+          "4",
+          "0 - 2^32-1"
+        ],
+        [
+          "8",
+          "0 - 2^64-1"
+        ]
+      ]
+    },
+    {
+      "line": 329,
+      "align": [
+        "center",
+        "center"
+      ],
+      "rows": [
+        [
+          "Block_Header",
+          "Block_Content"
+        ],
+        [
+          "3 bytes",
+          "n bytes"
+        ]
+      ]
+    },
+    {
+      "line": 338,
+      "align": [
+        "center",
+        "center",
+        "center"
+      ],
+      "rows": [
+        [
+          "Last_Block",
+          "Block_Type",
+          "Block_Size"
+        ],
+        [
+          "bit 0",
+          "bits 1-2",
+          "bits 3-23"
+        ]
+      ]
+    },
+    {
+      "line": 355,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Value",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        [
+          "Block_Type",
+          "Raw_Block",
+          "RLE_Block",
+          "Compressed_Block",
+          "Reserved"
+        ]
+      ]
+    },
+    {
+      "line": 441,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Literals_Section_Header",
+          "[Huffman_Tree_Description]",
+          "[jumpTable]",
+          "Stream1",
+          "[Stream2]",
+          "[Stream3]",
+          "[Stream4]"
+        ]
+      ]
+    },
+    {
+      "line": 451,
+      "align": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Literals_Block_Type",
+          "Size_Format",
+          "Regenerated_Size",
+          "[Compressed_Size]"
+        ],
+        [
+          "2 bits",
+          "1 - 2 bits",
+          "5 - 20 bits",
+          "0 - 18 bits"
+        ]
+      ]
+    },
+    {
+      "line": 461,
+      "align": [
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Literals_Block_Type",
+          "Value"
+        ],
+        [
+          "Raw_Literals_Block",
+          "0"
+        ],
+        [
+          "RLE_Literals_Block",
+          "1"
+        ],
+        [
+          "Compressed_Literals_Block",
+          "2"
+        ],
+        [
+          "Treeless_Literals_Block",
+          "3"
+        ]
+      ]
+    },
+    {
+      "line": 635,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Sequences_Section_Header",
+          "[Literals_Length_Table]",
+          "[Offset_Table]",
+          "[Match_Length_Table]",
+          "bitStream"
+        ]
+      ]
+    },
+    {
+      "line": 667,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Bit number",
+          "7-6",
+          "5-4",
+          "3-2",
+          "1-0"
+        ],
+        [
+          "Field name",
+          "Literals_Lengths_Mode",
+          "Offsets_Mode",
+          "Match_Lengths_Mode",
+          "Reserved"
+        ]
+      ]
+    },
+    {
+      "line": 678,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Value",
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        [
+          "Compression_Mode",
+          "Predefined_Mode",
+          "RLE_Mode",
+          "FSE_Compressed_Mode",
+          "Repeat_Mode"
+        ]
+      ]
+    },
+    {
+      "line": 717,
+      "align": [
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Literals_Length_Code",
+          "0-15"
+        ],
+        [
+          "length",
+          "Literals_Length_Code"
+        ],
+        [
+          "Number_of_Bits",
+          "0"
+        ]
+      ]
+    },
+    {
+      "line": 722,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Literals_Length_Code",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        [
+          "Baseline",
+          "16",
+          "18",
+          "20",
+          "22",
+          "24",
+          "28",
+          "32",
+          "40"
+        ],
+        [
+          "Number_of_Bits",
+          "1",
+          "1",
+          "1",
+          "1",
+          "2",
+          "2",
+          "3",
+          "3"
+        ]
+      ]
+    },
+    {
+      "line": 727,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Literals_Length_Code",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31"
+        ],
+        [
+          "Baseline",
+          "48",
+          "64",
+          "128",
+          "256",
+          "512",
+          "1024",
+          "2048",
+          "4096"
+        ],
+        [
+          "Number_of_Bits",
+          "4",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12"
+        ]
+      ]
+    },
+    {
+      "line": 732,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Literals_Length_Code",
+          "32",
+          "33",
+          "34",
+          "35"
+        ],
+        [
+          "Baseline",
+          "8192",
+          "16384",
+          "32768",
+          "65536"
+        ],
+        [
+          "Number_of_Bits",
+          "13",
+          "14",
+          "15",
+          "16"
+        ]
+      ]
+    },
+    {
+      "line": 746,
+      "align": [
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Match_Length_Code",
+          "0-31"
+        ],
+        [
+          "value",
+          "Match_Length_Code + 3"
+        ],
+        [
+          "Number_of_Bits",
+          "0"
+        ]
+      ]
+    },
+    {
+      "line": 751,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Match_Length_Code",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        [
+          "Baseline",
+          "35",
+          "37",
+          "39",
+          "41",
+          "43",
+          "47",
+          "51",
+          "59"
+        ],
+        [
+          "Number_of_Bits",
+          "1",
+          "1",
+          "1",
+          "1",
+          "2",
+          "2",
+          "3",
+          "3"
+        ]
+      ]
+    },
+    {
+      "line": 756,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Match_Length_Code",
+          "40",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47"
+        ],
+        [
+          "Baseline",
+          "67",
+          "83",
+          "99",
+          "131",
+          "259",
+          "515",
+          "1027",
+          "2051"
+        ],
+        [
+          "Number_of_Bits",
+          "4",
+          "4",
+          "5",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ]
+      ]
+    },
+    {
+      "line": 761,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Match_Length_Code",
+          "48",
+          "49",
+          "50",
+          "51",
+          "52"
+        ],
+        [
+          "Baseline",
+          "4099",
+          "8195",
+          "16387",
+          "32771",
+          "65539"
+        ],
+        [
+          "Number_of_Bits",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16"
+        ]
+      ]
+    },
+    {
+      "line": 971,
+      "align": [
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center"
+      ],
+      "rows": [
+        [
+          "offset_value",
+          "literals_length",
+          "Repeated_Offset1",
+          "Repeated_Offset2",
+          "Repeated_Offset3",
+          "Comment"
+        ],
+        [
+          "",
+          "",
+          "1",
+          "4",
+          "8",
+          "starting values"
+        ],
+        [
+          "1114",
+          "11",
+          "1111",
+          "1",
+          "4",
+          "non-repeat"
+        ],
+        [
+          "1",
+          "22",
+          "1111",
+          "1",
+          "4",
+          "repeat 1: no change"
+        ],
+        [
+          "2225",
+          "22",
+          "2222",
+          "1111",
+          "1",
+          "non-repeat"
+        ],
+        [
+          "1114",
+          "111",
+          "1111",
+          "2222",
+          "1111",
+          "non-repeat"
+        ],
+        [
+          "3336",
+          "33",
+          "3333",
+          "1111",
+          "2222",
+          "non-repeat"
+        ],
+        [
+          "2",
+          "22",
+          "1111",
+          "3333",
+          "2222",
+          "repeat 2: swap 1 & 2"
+        ],
+        [
+          "3",
+          "33",
+          "2222",
+          "1111",
+          "3333",
+          "repeat 3: rotate 3 to 1"
+        ],
+        [
+          "3",
+          "0",
+          "2221",
+          "2222",
+          "1111",
+          "special case : insert repeat1 - 1"
+        ],
+        [
+          "1",
+          "0",
+          "2222",
+          "2221",
+          "1111",
+          "== repeat 2"
+        ]
+      ]
+    },
+    {
+      "line": 988,
+      "align": [
+        "center",
+        "center",
+        "center"
+      ],
+      "rows": [
+        [
+          "Magic_Number",
+          "Frame_Size",
+          "User_Data"
+        ],
+        [
+          "4 bytes",
+          "4 bytes",
+          "n bytes"
+        ]
+      ]
+    },
+    {
+      "line": 1102,
+      "align": [
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "8-bit field read",
+          "Value decoded",
+          "Nb of bits consumed"
+        ],
+        [
+          "0 -  97",
+          "0 -  97",
+          "7"
+        ],
+        [
+          "98 - 127",
+          "98 - 127",
+          "8"
+        ],
+        [
+          "128 - 225",
+          "0 -  97",
+          "7"
+        ],
+        [
+          "226 - 255",
+          "128 - 157",
+          "8"
+        ]
+      ]
+    },
+    {
+      "line": 1212,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "state order",
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        [
+          "state value",
+          "1",
+          "39",
+          "77",
+          "84",
+          "122"
+        ],
+        [
+          "width",
+          "32",
+          "32",
+          "32",
+          "16",
+          "16"
+        ],
+        [
+          "Number_of_Bits",
+          "5",
+          "5",
+          "5",
+          "4",
+          "4"
+        ],
+        [
+          "allocation order",
+          "3",
+          "4",
+          "5",
+          "1",
+          "2"
+        ],
+        [
+          "Baseline",
+          "32",
+          "64",
+          "96",
+          "0",
+          "16"
+        ],
+        [
+          "range",
+          "32-63",
+          "64-95",
+          "96-127",
+          "0-15",
+          "16-31"
+        ]
+      ]
+    },
+    {
+      "line": 1296,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "literal symbol",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        [
+          "Number_of_Bits",
+          "1",
+          "2",
+          "3",
+          "0",
+          "4",
+          "4"
+        ]
+      ]
+    },
+    {
+      "line": 1310,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "literal symbol",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        [
+          "Weight",
+          "4",
+          "3",
+          "2",
+          "0",
+          "1",
+          "1"
+        ]
+      ]
+    },
+    {
+      "line": 1412,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Literal",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        [
+          "Weight",
+          "4",
+          "3",
+          "2",
+          "0",
+          "1",
+          "1"
+        ]
+      ]
+    },
+    {
+      "line": 1419,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Literal",
+          "D",
+          "E",
+          "F",
+          "C",
+          "B",
+          "A"
+        ],
+        [
+          "Weight",
+          "0",
+          "1",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        [
+          "Number_of_Bits",
+          "0",
+          "4",
+          "4",
+          "3",
+          "2",
+          "1"
+        ],
+        [
+          "prefix code",
+          "N/A",
+          "0000",
+          "0001",
+          "001",
+          "01",
+          "1"
+        ],
+        [
+          "ascending order",
+          "N/A",
+          "0000",
+          "0001",
+          "001x",
+          "01xx",
+          "1xxx"
+        ]
+      ]
+    },
+    {
+      "line": 1450,
+      "align": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Symbol",
+          "F",
+          "E",
+          "B",
+          "A",
+          "Padding"
+        ],
+        [
+          "Encoding",
+          "0000",
+          "0001",
+          "01",
+          "1",
+          "00001"
+        ]
+      ]
+    },
+    {
+      "line": 1487,
+      "align": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "Magic_Number",
+          "Dictionary_ID",
+          "Entropy_Tables",
+          "Content"
+        ]
+      ]
+    },
+    {
+      "line": 1550,
+      "align": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "State",
+          "Symbol",
+          "Number_Of_Bits",
+          "Base"
+        ],
+        [
+          "0",
+          "0",
+          "4",
+          "0"
+        ],
+        [
+          "1",
+          "0",
+          "4",
+          "16"
+        ],
+        [
+          "2",
+          "1",
+          "5",
+          "32"
+        ],
+        [
+          "3",
+          "3",
+          "5",
+          "0"
+        ],
+        [
+          "4",
+          "4",
+          "5",
+          "0"
+        ],
+        [
+          "5",
+          "6",
+          "5",
+          "0"
+        ],
+        [
+          "6",
+          "7",
+          "5",
+          "0"
+        ],
+        [
+          "7",
+          "9",
+          "5",
+          "0"
+        ],
+        [
+          "8",
+          "10",
+          "5",
+          "0"
+        ],
+        [
+          "9",
+          "12",
+          "5",
+          "0"
+        ],
+        [
+          "10",
+          "14",
+          "6",
+          "0"
+        ],
+        [
+          "11",
+          "16",
+          "5",
+          "0"
+        ],
+        [
+          "12",
+          "18",
+          "5",
+          "0"
+        ],
+        [
+          "13",
+          "19",
+          "5",
+          "0"
+        ],
+        [
+          "14",
+          "21",
+          "5",
+          "0"
+        ],
+        [
+          "15",
+          "22",
+          "5",
+          "0"
+        ],
+        [
+          "16",
+          "24",
+          "5",
+          "0"
+        ],
+        [
+          "17",
+          "25",
+          "5",
+          "32"
+        ],
+        [
+          "18",
+          "26",
+          "5",
+          "0"
+        ],
+        [
+          "19",
+          "27",
+          "6",
+          "0"
+        ],
+        [
+          "20",
+          "29",
+          "6",
+          "0"
+        ],
+        [
+          "21",
+          "31",
+          "6",
+          "0"
+        ],
+        [
+          "22",
+          "0",
+          "4",
+          "32"
+        ],
+        [
+          "23",
+          "1",
+          "4",
+          "0"
+        ],
+        [
+          "24",
+          "2",
+          "5",
+          "0"
+        ],
+        [
+          "25",
+          "4",
+          "5",
+          "32"
+        ],
+        [
+          "26",
+          "5",
+          "5",
+          "0"
+        ],
+        [
+          "27",
+          "7",
+          "5",
+          "32"
+        ],
+        [
+          "28",
+          "8",
+          "5",
+          "0"
+        ],
+        [
+          "29",
+          "10",
+          "5",
+          "32"
+        ],
+        [
+          "30",
+          "11",
+          "5",
+          "0"
+        ],
+        [
+          "31",
+          "13",
+          "6",
+          "0"
+        ],
+        [
+          "32",
+          "16",
+          "5",
+          "32"
+        ],
+        [
+          "33",
+          "17",
+          "5",
+          "0"
+        ],
+        [
+          "34",
+          "19",
+          "5",
+          "32"
+        ],
+        [
+          "35",
+          "20",
+          "5",
+          "0"
+        ],
+        [
+          "36",
+          "22",
+          "5",
+          "32"
+        ],
+        [
+          "37",
+          "23",
+          "5",
+          "0"
+        ],
+        [
+          "38",
+          "25",
+          "4",
+          "0"
+        ],
+        [
+          "39",
+          "25",
+          "4",
+          "16"
+        ],
+        [
+          "40",
+          "26",
+          "5",
+          "32"
+        ],
+        [
+          "41",
+          "28",
+          "6",
+          "0"
+        ],
+        [
+          "42",
+          "30",
+          "6",
+          "0"
+        ],
+        [
+          "43",
+          "0",
+          "4",
+          "48"
+        ],
+        [
+          "44",
+          "1",
+          "4",
+          "16"
+        ],
+        [
+          "45",
+          "2",
+          "5",
+          "32"
+        ],
+        [
+          "46",
+          "3",
+          "5",
+          "32"
+        ],
+        [
+          "47",
+          "5",
+          "5",
+          "32"
+        ],
+        [
+          "48",
+          "6",
+          "5",
+          "32"
+        ],
+        [
+          "49",
+          "8",
+          "5",
+          "32"
+        ],
+        [
+          "50",
+          "9",
+          "5",
+          "32"
+        ],
+        [
+          "51",
+          "11",
+          "5",
+          "32"
+        ],
+        [
+          "52",
+          "12",
+          "5",
+          "32"
+        ],
+        [
+          "53",
+          "15",
+          "6",
+          "0"
+        ],
+        [
+          "54",
+          "17",
+          "5",
+          "32"
+        ],
+        [
+          "55",
+          "18",
+          "5",
+          "32"
+        ],
+        [
+          "56",
+          "20",
+          "5",
+          "32"
+        ],
+        [
+          "57",
+          "21",
+          "5",
+          "32"
+        ],
+        [
+          "58",
+          "23",
+          "5",
+          "32"
+        ],
+        [
+          "59",
+          "24",
+          "5",
+          "32"
+        ],
+        [
+          "60",
+          "35",
+          "6",
+          "0"
+        ],
+        [
+          "61",
+          "34",
+          "6",
+          "0"
+        ],
+        [
+          "62",
+          "33",
+          "6",
+          "0"
+        ],
+        [
+          "63",
+          "32",
+          "6",
+          "0"
+        ]
+      ]
+    },
+    {
+      "line": 1619,
+      "align": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "State",
+          "Symbol",
+          "Number_Of_Bits",
+          "Base"
+        ],
+        [
+          "0",
+          "0",
+          "6",
+          "0"
+        ],
+        [
+          "1",
+          "1",
+          "4",
+          "0"
+        ],
+        [
+          "2",
+          "2",
+          "5",
+          "32"
+        ],
+        [
+          "3",
+          "3",
+          "5",
+          "0"
+        ],
+        [
+          "4",
+          "5",
+          "5",
+          "0"
+        ],
+        [
+          "5",
+          "6",
+          "5",
+          "0"
+        ],
+        [
+          "6",
+          "8",
+          "5",
+          "0"
+        ],
+        [
+          "7",
+          "10",
+          "6",
+          "0"
+        ],
+        [
+          "8",
+          "13",
+          "6",
+          "0"
+        ],
+        [
+          "9",
+          "16",
+          "6",
+          "0"
+        ],
+        [
+          "10",
+          "19",
+          "6",
+          "0"
+        ],
+        [
+          "11",
+          "22",
+          "6",
+          "0"
+        ],
+        [
+          "12",
+          "25",
+          "6",
+          "0"
+        ],
+        [
+          "13",
+          "28",
+          "6",
+          "0"
+        ],
+        [
+          "14",
+          "31",
+          "6",
+          "0"
+        ],
+        [
+          "15",
+          "33",
+          "6",
+          "0"
+        ],
+        [
+          "16",
+          "35",
+          "6",
+          "0"
+        ],
+        [
+          "17",
+          "37",
+          "6",
+          "0"
+        ],
+        [
+          "18",
+          "39",
+          "6",
+          "0"
+        ],
+        [
+          "19",
+          "41",
+          "6",
+          "0"
+        ],
+        [
+          "20",
+          "43",
+          "6",
+          "0"
+        ],
+        [
+          "21",
+          "45",
+          "6",
+          "0"
+        ],
+        [
+          "22",
+          "1",
+          "4",
+          "16"
+        ],
+        [
+          "23",
+          "2",
+          "4",
+          "0"
+        ],
+        [
+          "24",
+          "3",
+          "5",
+          "32"
+        ],
+        [
+          "25",
+          "4",
+          "5",
+          "0"
+        ],
+        [
+          "26",
+          "6",
+          "5",
+          "32"
+        ],
+        [
+          "27",
+          "7",
+          "5",
+          "0"
+        ],
+        [
+          "28",
+          "9",
+          "6",
+          "0"
+        ],
+        [
+          "29",
+          "12",
+          "6",
+          "0"
+        ],
+        [
+          "30",
+          "15",
+          "6",
+          "0"
+        ],
+        [
+          "31",
+          "18",
+          "6",
+          "0"
+        ],
+        [
+          "32",
+          "21",
+          "6",
+          "0"
+        ],
+        [
+          "33",
+          "24",
+          "6",
+          "0"
+        ],
+        [
+          "34",
+          "27",
+          "6",
+          "0"
+        ],
+        [
+          "35",
+          "30",
+          "6",
+          "0"
+        ],
+        [
+          "36",
+          "32",
+          "6",
+          "0"
+        ],
+        [
+          "37",
+          "34",
+          "6",
+          "0"
+        ],
+        [
+          "38",
+          "36",
+          "6",
+          "0"
+        ],
+        [
+          "39",
+          "38",
+          "6",
+          "0"
+        ],
+        [
+          "40",
+          "40",
+          "6",
+          "0"
+        ],
+        [
+          "41",
+          "42",
+          "6",
+          "0"
+        ],
+        [
+          "42",
+          "44",
+          "6",
+          "0"
+        ],
+        [
+          "43",
+          "1",
+          "4",
+          "32"
+        ],
+        [
+          "44",
+          "1",
+          "4",
+          "48"
+        ],
+        [
+          "45",
+          "2",
+          "4",
+          "16"
+        ],
+        [
+          "46",
+          "4",
+          "5",
+          "32"
+        ],
+        [
+          "47",
+          "5",
+          "5",
+          "32"
+        ],
+        [
+          "48",
+          "7",
+          "5",
+          "32"
+        ],
+        [
+          "49",
+          "8",
+          "5",
+          "32"
+        ],
+        [
+          "50",
+          "11",
+          "6",
+          "0"
+        ],
+        [
+          "51",
+          "14",
+          "6",
+          "0"
+        ],
+        [
+          "52",
+          "17",
+          "6",
+          "0"
+        ],
+        [
+          "53",
+          "20",
+          "6",
+          "0"
+        ],
+        [
+          "54",
+          "23",
+          "6",
+          "0"
+        ],
+        [
+          "55",
+          "26",
+          "6",
+          "0"
+        ],
+        [
+          "56",
+          "29",
+          "6",
+          "0"
+        ],
+        [
+          "57",
+          "52",
+          "6",
+          "0"
+        ],
+        [
+          "58",
+          "51",
+          "6",
+          "0"
+        ],
+        [
+          "59",
+          "50",
+          "6",
+          "0"
+        ],
+        [
+          "60",
+          "49",
+          "6",
+          "0"
+        ],
+        [
+          "61",
+          "48",
+          "6",
+          "0"
+        ],
+        [
+          "62",
+          "47",
+          "6",
+          "0"
+        ],
+        [
+          "63",
+          "46",
+          "6",
+          "0"
+        ]
+      ]
+    },
+    {
+      "line": 1688,
+      "align": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "rows": [
+        [
+          "State",
+          "Symbol",
+          "Number_Of_Bits",
+          "Base"
+        ],
+        [
+          "0",
+          "0",
+          "5",
+          "0"
+        ],
+        [
+          "1",
+          "6",
+          "4",
+          "0"
+        ],
+        [
+          "2",
+          "9",
+          "5",
+          "0"
+        ],
+        [
+          "3",
+          "15",
+          "5",
+          "0"
+        ],
+        [
+          "4",
+          "21",
+          "5",
+          "0"
+        ],
+        [
+          "5",
+          "3",
+          "5",
+          "0"
+        ],
+        [
+          "6",
+          "7",
+          "4",
+          "0"
+        ],
+        [
+          "7",
+          "12",
+          "5",
+          "0"
+        ],
+        [
+          "8",
+          "18",
+          "5",
+          "0"
+        ],
+        [
+          "9",
+          "23",
+          "5",
+          "0"
+        ],
+        [
+          "10",
+          "5",
+          "5",
+          "0"
+        ],
+        [
+          "11",
+          "8",
+          "4",
+          "0"
+        ],
+        [
+          "12",
+          "14",
+          "5",
+          "0"
+        ],
+        [
+          "13",
+          "20",
+          "5",
+          "0"
+        ],
+        [
+          "14",
+          "2",
+          "5",
+          "0"
+        ],
+        [
+          "15",
+          "7",
+          "4",
+          "16"
+        ],
+        [
+          "16",
+          "11",
+          "5",
+          "0"
+        ],
+        [
+          "17",
+          "17",
+          "5",
+          "0"
+        ],
+        [
+          "18",
+          "22",
+          "5",
+          "0"
+        ],
+        [
+          "19",
+          "4",
+          "5",
+          "0"
+        ],
+        [
+          "20",
+          "8",
+          "4",
+          "16"
+        ],
+        [
+          "21",
+          "13",
+          "5",
+          "0"
+        ],
+        [
+          "22",
+          "19",
+          "5",
+          "0"
+        ],
+        [
+          "23",
+          "1",
+          "5",
+          "0"
+        ],
+        [
+          "24",
+          "6",
+          "4",
+          "16"
+        ],
+        [
+          "25",
+          "10",
+          "5",
+          "0"
+        ],
+        [
+          "26",
+          "16",
+          "5",
+          "0"
+        ],
+        [
+          "27",
+          "28",
+          "5",
+          "0"
+        ],
+        [
+          "28",
+          "27",
+          "5",
+          "0"
+        ],
+        [
+          "29",
+          "26",
+          "5",
+          "0"
+        ],
+        [
+          "30",
+          "25",
+          "5",
+          "0"
+        ],
+        [
+          "31",
+          "24",
+          "5",
+          "0"
+        ]
+      ]
+    }
+  ],
+  "codeBlocks": [
+    {
+      "lang": null,
+      "value": "windowLog = 10 + Exponent;\nwindowBase = 1 << windowLog;\nwindowAdd = (windowBase / 8) * Mantissa;\nWindow_Size = windowBase + windowAdd;",
+      "line": 251
+    },
+    {
+      "lang": null,
+      "value": "Offset_Value = (1 << offsetCode) + readNBits(offsetCode);\nif (Offset_Value > 3) offset = Offset_Value - 3;",
+      "line": 778
+    },
+    {
+      "lang": null,
+      "value": "short literalsLength_defaultDistribution[36] =\n        { 4, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1,\n          2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 1, 1, 1, 1, 1,\n         -1,-1,-1,-1 };",
+      "line": 868
+    },
+    {
+      "lang": null,
+      "value": "short matchLengths_defaultDistribution[53] =\n        { 1, 4, 3, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1,\n          1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,\n          1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,-1,-1,\n         -1,-1,-1,-1,-1 };",
+      "line": 877
+    },
+    {
+      "lang": null,
+      "value": "short offsetCodes_defaultDistribution[29] =\n        { 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1,\n          1, 1, 1, 1, 1, 1, 1, 1,-1,-1,-1,-1,-1 };",
+      "line": 891
+    },
+    {
+      "lang": null,
+      "value": "position += (tableSize>>1) + (tableSize>>3) + 3;\nposition &= tableSize-1;",
+      "line": 1168
+    },
+    {
+      "lang": null,
+      "value": "Number_of_Bits = Weight ? (Max_Number_of_Bits + 1 - Weight) : 0",
+      "line": 1276
+    },
+    {
+      "lang": null,
+      "value": "Weight = Number_of_Bits ? (Max_Number_of_Bits + 1 - Number_of_Bits) : 0",
+      "line": 1305
+    },
+    {
+      "lang": null,
+      "value": "Number_of_Bits = (Weight>0) ? Max_Number_of_Bits + 1 - Weight : 0",
+      "line": 1400
+    },
+    {
+      "lang": null,
+      "value": "00010000 00001101",
+      "line": 1455
+    },
+    {
+      "lang": null,
+      "value": "0001_0000 00001_1_01",
+      "line": 1460
+    },
+    {
+      "lang": null,
+      "value": "- low range  : <= 32767\n- high range : >= (2^31)",
+      "line": 1501
+    }
+  ],
+  "images": [],
+  "rawHtml": [],
+  "counts": {
+    "headings": 59,
+    "tables": 37,
+    "tableRows": 268,
+    "codeBlocks": 12,
+    "inlineCode": 594,
+    "links": 53,
+    "images": 0,
+    "proseAsciiWords": 7666
+  },
+  "largestTopSection": {
+    "depth": 2,
+    "text": "Sequences Section",
+    "line": 613,
+    "endLine": 897
+  },
+  "limits": [
+    "候補適格性の変換試験。Astroアプリ・日本語翻訳・全文内容レビュー・公開の検証ではない。",
+    "外部リンクの到達性はこの試験では未検証。"
+  ]
+}

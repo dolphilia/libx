@@ -1,0 +1,1399 @@
+[
+  {
+    "id": 0,
+    "type": "heading",
+    "lines": [
+      4,
+      5
+    ],
+    "start": 32,
+    "end": 55,
+    "source": "TOML v1.1.0\n==========="
+  },
+  {
+    "id": 1,
+    "type": "paragraph",
+    "lines": [
+      7,
+      7
+    ],
+    "start": 57,
+    "end": 89,
+    "source": "Tom's Obvious, Minimal Language."
+  },
+  {
+    "id": 2,
+    "type": "paragraph",
+    "lines": [
+      9,
+      9
+    ],
+    "start": 91,
+    "end": 135,
+    "source": "By Tom Preston-Werner, Pradyun Gedam, et al."
+  },
+  {
+    "id": 3,
+    "type": "heading",
+    "lines": [
+      13,
+      13
+    ],
+    "start": 169,
+    "end": 182,
+    "source": "## Objectives"
+  },
+  {
+    "id": 4,
+    "type": "paragraph",
+    "lines": [
+      15,
+      17
+    ],
+    "start": 184,
+    "end": 418,
+    "source": "TOML aims to be a minimal configuration file format that's easy to read due to\nobvious semantics. TOML is designed to map unambiguously to a hash table. TOML\nshould be easy to parse into data structures in a wide variety of languages."
+  },
+  {
+    "id": 5,
+    "type": "heading",
+    "lines": [
+      21,
+      21
+    ],
+    "start": 459,
+    "end": 479,
+    "source": "## Table of contents"
+  },
+  {
+    "id": 6,
+    "type": "list",
+    "lines": [
+      23,
+      41
+    ],
+    "start": 481,
+    "end": 1144,
+    "source": "- [Preliminaries](#source-preliminaries)\n- [Comment](#source-comment)\n- [Key/Value Pair](#source-keyvalue-pair)\n- [Keys](#source-keys)\n- [String](#source-string)\n- [Integer](#source-integer)\n- [Float](#source-float)\n- [Boolean](#source-boolean)\n- [Offset Date-Time](#source-offset-date-time)\n- [Local Date-Time](#source-local-date-time)\n- [Local Date](#source-local-date)\n- [Local Time](#source-local-time)\n- [Array](#source-array)\n- [Table](#source-table)\n- [Inline Table](#source-inline-table)\n- [Array of Tables](#source-array-of-tables)\n- [Filename Extension](#source-filename-extension)\n- [MIME Type](#source-mime-type)\n- [ABNF Grammar](#source-abnf-grammar)"
+  },
+  {
+    "id": 7,
+    "type": "heading",
+    "lines": [
+      45,
+      45
+    ],
+    "start": 1181,
+    "end": 1197,
+    "source": "## Preliminaries"
+  },
+  {
+    "id": 8,
+    "type": "list",
+    "lines": [
+      47,
+      55
+    ],
+    "start": 1199,
+    "end": 1690,
+    "source": "- TOML is case-sensitive.\n- Whitespace means tab (U+0009) or space (U+0020).\n- Newline means LF (U+000A) or CRLF (U+000D U+000A).\n- A TOML file must be a valid UTF-8 encoded Unicode document.\n\n  Specifically this means that a file _as a whole_ must form a\n  [well-formed code-unit sequence](https://unicode.org/glossary/#well_formed_code_unit_sequence).\n  Otherwise, it must be rejected (preferably) or have ill-formed byte sequences\n  replaced with U+FFFD, as per the Unicode specification."
+  },
+  {
+    "id": 9,
+    "type": "heading",
+    "lines": [
+      59,
+      59
+    ],
+    "start": 1721,
+    "end": 1731,
+    "source": "## Comment"
+  },
+  {
+    "id": 10,
+    "type": "paragraph",
+    "lines": [
+      61,
+      62
+    ],
+    "start": 1733,
+    "end": 1816,
+    "source": "A hash symbol marks the rest of the line as a comment, except when inside a\nstring."
+  },
+  {
+    "id": 11,
+    "type": "paragraph",
+    "lines": [
+      70,
+      71
+    ],
+    "start": 1953,
+    "end": 2062,
+    "source": "Control characters other than tab (U+0000 to U+0008, U+000A to U+001F, U+007F)\nare not permitted in comments."
+  },
+  {
+    "id": 12,
+    "type": "paragraph",
+    "lines": [
+      73,
+      75
+    ],
+    "start": 2064,
+    "end": 2229,
+    "source": "Comments should be used to communicate between the human readers of a file.\nParsers must not modify keys or values, based on the presence (or contents) of a\ncomment."
+  },
+  {
+    "id": 13,
+    "type": "heading",
+    "lines": [
+      79,
+      79
+    ],
+    "start": 2266,
+    "end": 2283,
+    "source": "## Key/Value Pair"
+  },
+  {
+    "id": 14,
+    "type": "paragraph",
+    "lines": [
+      81,
+      81
+    ],
+    "start": 2285,
+    "end": 2353,
+    "source": "The primary building block of a TOML document is the key/value pair."
+  },
+  {
+    "id": 15,
+    "type": "paragraph",
+    "lines": [
+      83,
+      85
+    ],
+    "start": 2355,
+    "end": 2587,
+    "source": "Keys are on the left of the equals sign and values are on the right. Whitespace\nis ignored around key names and values. The key, equals sign, and value must be\non the same line (though some values can be broken over multiple lines)."
+  },
+  {
+    "id": 16,
+    "type": "paragraph",
+    "lines": [
+      91,
+      91
+    ],
+    "start": 2616,
+    "end": 2660,
+    "source": "Values must have one of the following types."
+  },
+  {
+    "id": 17,
+    "type": "list",
+    "lines": [
+      93,
+      102
+    ],
+    "start": 2662,
+    "end": 2997,
+    "source": "- [String](#source-string)\n- [Integer](#source-integer)\n- [Float](#source-float)\n- [Boolean](#source-boolean)\n- [Offset Date-Time](#source-offset-date-time)\n- [Local Date-Time](#source-local-date-time)\n- [Local Date](#source-local-date)\n- [Local Time](#source-local-time)\n- [Array](#source-array)\n- [Inline Table](#source-inline-table)"
+  },
+  {
+    "id": 18,
+    "type": "paragraph",
+    "lines": [
+      104,
+      104
+    ],
+    "start": 2999,
+    "end": 3030,
+    "source": "Unspecified values are invalid."
+  },
+  {
+    "id": 19,
+    "type": "paragraph",
+    "lines": [
+      110,
+      111
+    ],
+    "start": 3061,
+    "end": 3176,
+    "source": "There must be a newline (or EOF) after a key/value pair. (See\n[Inline Table](#source-inline-table) for exceptions.)"
+  },
+  {
+    "id": 20,
+    "type": "heading",
+    "lines": [
+      119,
+      119
+    ],
+    "start": 3261,
+    "end": 3268,
+    "source": "## Keys"
+  },
+  {
+    "id": 21,
+    "type": "paragraph",
+    "lines": [
+      121,
+      121
+    ],
+    "start": 3270,
+    "end": 3314,
+    "source": "A key may be either bare, quoted, or dotted."
+  },
+  {
+    "id": 22,
+    "type": "paragraph",
+    "lines": [
+      123,
+      125
+    ],
+    "start": 3316,
+    "end": 3537,
+    "source": "**Bare keys** may only contain ASCII letters, ASCII digits, underscores, and\ndashes (`A-Za-z0-9_-`). Note that bare keys are allowed to be composed of only\nASCII digits, e.g. `1234`, but are always interpreted as strings."
+  },
+  {
+    "id": 23,
+    "type": "paragraph",
+    "lines": [
+      134,
+      136
+    ],
+    "start": 3619,
+    "end": 3827,
+    "source": "**Quoted keys** follow the exact same rules as either basic strings or literal\nstrings and allow you to use a much broader set of key names. Best practice is\nto use bare keys except when absolutely necessary."
+  },
+  {
+    "id": 24,
+    "type": "paragraph",
+    "lines": [
+      146,
+      147
+    ],
+    "start": 3955,
+    "end": 4098,
+    "source": "A bare key must be non-empty, but an empty quoted key is allowed (though\ndiscouraged). You cannot use multi-line strings to define quoted keys."
+  },
+  {
+    "id": 25,
+    "type": "paragraph",
+    "lines": [
+      156,
+      157
+    ],
+    "start": 4285,
+    "end": 4411,
+    "source": "**Dotted keys** are a sequence of bare or quoted keys joined with a dot. This\nallows for grouping similar properties together:"
+  },
+  {
+    "id": 26,
+    "type": "paragraph",
+    "lines": [
+      166,
+      166
+    ],
+    "start": 4518,
+    "end": 4576,
+    "source": "In JSON land, that would give you the following structure:"
+  },
+  {
+    "id": 27,
+    "type": "paragraph",
+    "lines": [
+      181,
+      182
+    ],
+    "start": 4719,
+    "end": 4827,
+    "source": "For details regarding the tables that dotted keys define, refer to the\n[Table](#source-table) section below."
+  },
+  {
+    "id": 28,
+    "type": "paragraph",
+    "lines": [
+      184,
+      185
+    ],
+    "start": 4829,
+    "end": 4942,
+    "source": "Whitespace around dot-separated parts is ignored. However, best practice is to\nnot use any extraneous whitespace."
+  },
+  {
+    "id": 29,
+    "type": "paragraph",
+    "lines": [
+      193,
+      193
+    ],
+    "start": 5110,
+    "end": 5159,
+    "source": "Indentation is treated as whitespace and ignored."
+  },
+  {
+    "id": 30,
+    "type": "paragraph",
+    "lines": [
+      195,
+      195
+    ],
+    "start": 5161,
+    "end": 5202,
+    "source": "Defining a key multiple times is invalid."
+  },
+  {
+    "id": 31,
+    "type": "paragraph",
+    "lines": [
+      203,
+      203
+    ],
+    "start": 5260,
+    "end": 5311,
+    "source": "Note that bare keys and quoted keys are equivalent:"
+  },
+  {
+    "id": 32,
+    "type": "paragraph",
+    "lines": [
+      211,
+      212
+    ],
+    "start": 5390,
+    "end": 5486,
+    "source": "As long as a key hasn't been directly defined, you may still write to it and to\nnames within it."
+  },
+  {
+    "id": 33,
+    "type": "paragraph",
+    "lines": [
+      233,
+      233
+    ],
+    "start": 5874,
+    "end": 5923,
+    "source": "Defining dotted keys out-of-order is discouraged."
+  },
+  {
+    "id": 34,
+    "type": "paragraph",
+    "lines": [
+      260,
+      262
+    ],
+    "start": 6252,
+    "end": 6462,
+    "source": "Since bare keys can be composed of only ASCII integers, it is possible to write\ndotted keys that look like floats but are 2-part dotted keys. Don't do this\nunless you have a good reason to (you probably don't)."
+  },
+  {
+    "id": 35,
+    "type": "paragraph",
+    "lines": [
+      268,
+      268
+    ],
+    "start": 6492,
+    "end": 6534,
+    "source": "The above TOML maps to the following JSON."
+  },
+  {
+    "id": 36,
+    "type": "heading",
+    "lines": [
+      276,
+      276
+    ],
+    "start": 6604,
+    "end": 6613,
+    "source": "## String"
+  },
+  {
+    "id": 37,
+    "type": "paragraph",
+    "lines": [
+      278,
+      279
+    ],
+    "start": 6615,
+    "end": 6762,
+    "source": "There are four ways to express strings: basic, multi-line basic, literal, and\nmulti-line literal. All strings must contain only Unicode characters."
+  },
+  {
+    "id": 38,
+    "type": "paragraph",
+    "lines": [
+      281,
+      284
+    ],
+    "start": 6764,
+    "end": 7006,
+    "source": "**Basic strings** are surrounded by quotation marks (`\"`). Any Unicode character\nmay be used except those that must be escaped: quotation mark, backslash, and\nthe control characters other than tab (U+0000 to U+0008, U+000A to U+001F,\nU+007F)."
+  },
+  {
+    "id": 39,
+    "type": "paragraph",
+    "lines": [
+      290,
+      290
+    ],
+    "start": 7094,
+    "end": 7166,
+    "source": "For convenience, some popular characters have a compact escape sequence."
+  },
+  {
+    "id": 40,
+    "type": "paragraph",
+    "lines": [
+      306,
+      308
+    ],
+    "start": 7599,
+    "end": 7787,
+    "source": "Any Unicode character may be escaped with the `\\xHH`, `\\uHHHH`, or `\\UHHHHHHHH`\nforms. The escape codes must be Unicode\n[scalar values](https://unicode.org/glossary/#unicode_scalar_value)."
+  },
+  {
+    "id": 41,
+    "type": "paragraph",
+    "lines": [
+      310,
+      314
+    ],
+    "start": 7789,
+    "end": 8114,
+    "source": "Keep in mind that all TOML strings are sequences of Unicode characters, _not_\nbyte sequences. For binary data, avoid using these escape codes. Instead,\nexternal binary-to-text encoding strategies, like hexadecimal sequences or\n[Base64](https://www.base64decode.org/), are recommended for converting between\nbytes and strings."
+  },
+  {
+    "id": 42,
+    "type": "paragraph",
+    "lines": [
+      316,
+      317
+    ],
+    "start": 8116,
+    "end": 8221,
+    "source": "All other escape sequences not listed above are reserved; if they are used, TOML\nshould produce an error."
+  },
+  {
+    "id": 43,
+    "type": "paragraph",
+    "lines": [
+      319,
+      320
+    ],
+    "start": 8223,
+    "end": 8382,
+    "source": "Sometimes you need to express passages of text (e.g. translation files) or would\nlike to break up a very long string into multiple lines. TOML makes this easy."
+  },
+  {
+    "id": 44,
+    "type": "paragraph",
+    "lines": [
+      322,
+      324
+    ],
+    "start": 8384,
+    "end": 8615,
+    "source": "**Multi-line basic strings** are surrounded by three quotation marks on each\nside and allow newlines. A newline immediately following the opening delimiter\nwill be trimmed. All other whitespace and newline characters remain intact."
+  },
+  {
+    "id": 45,
+    "type": "paragraph",
+    "lines": [
+      332,
+      333
+    ],
+    "start": 8675,
+    "end": 8769,
+    "source": "TOML parsers should feel free to normalize newline to whatever makes sense for\ntheir platform."
+  },
+  {
+    "id": 46,
+    "type": "paragraph",
+    "lines": [
+      343,
+      348
+    ],
+    "start": 9011,
+    "end": 9413,
+    "source": "For writing long strings without introducing extraneous whitespace, use a \"line\nending backslash\". When the last non-whitespace character on a line is an\nunescaped `\\`, it will be trimmed along with all whitespace (including newlines)\nup to the next non-whitespace character or closing delimiter. All of the escape\nsequences that are valid for basic strings are also valid for multi-line basic\nstrings."
+  },
+  {
+    "id": 47,
+    "type": "paragraph",
+    "lines": [
+      368,
+      371
+    ],
+    "start": 9703,
+    "end": 9991,
+    "source": "Any Unicode character may be used except those that must be escaped: backslash\nand the control characters other than tab, line feed, and carriage return\n(U+0000 to U+0008, U+000B, U+000C, U+000E to U+001F, U+007F). Carriage returns\n(U+000D) are only allowed as part of a newline sequence."
+  },
+  {
+    "id": 48,
+    "type": "paragraph",
+    "lines": [
+      373,
+      374
+    ],
+    "start": 9993,
+    "end": 10153,
+    "source": "You can write a quotation mark, or two adjacent quotation marks, anywhere inside\na multi-line basic string. They can also be written just inside the delimiters."
+  },
+  {
+    "id": 49,
+    "type": "paragraph",
+    "lines": [
+      386,
+      388
+    ],
+    "start": 10531,
+    "end": 10752,
+    "source": "If you're a frequent specifier of Windows paths or regular expressions, then\nhaving to escape backslashes quickly becomes tedious and error-prone. To help,\nTOML supports literal strings which do not allow escaping at all."
+  },
+  {
+    "id": 50,
+    "type": "paragraph",
+    "lines": [
+      390,
+      391
+    ],
+    "start": 10754,
+    "end": 10861,
+    "source": "**Literal strings** are surrounded by single quotes. Like basic strings, they\nmust appear on a single line:"
+  },
+  {
+    "id": 51,
+    "type": "paragraph",
+    "lines": [
+      401,
+      403
+    ],
+    "start": 11050,
+    "end": 11257,
+    "source": "Since there is no escaping, there is no way to write a single quote inside a\nliteral string enclosed by single quotes. Luckily, TOML supports a multi-line\nversion of literal strings that solves this problem."
+  },
+  {
+    "id": 52,
+    "type": "paragraph",
+    "lines": [
+      405,
+      408
+    ],
+    "start": 11259,
+    "end": 11571,
+    "source": "**Multi-line literal strings** are surrounded by three single quotes on each\nside and allow newlines. Like literal strings, there is no escaping whatsoever.\nA newline immediately following the opening delimiter will be trimmed. TOML\nparsers must normalize newlines in the same manner as multi-line basic strings."
+  },
+  {
+    "id": 53,
+    "type": "paragraph",
+    "lines": [
+      410,
+      411
+    ],
+    "start": 11573,
+    "end": 11656,
+    "source": "All other content between the delimiters is interpreted as-is without\nmodification."
+  },
+  {
+    "id": 54,
+    "type": "paragraph",
+    "lines": [
+      423,
+      424
+    ],
+    "start": 11822,
+    "end": 11965,
+    "source": "You can write 1 or 2 single quotes anywhere within a multi-line literal string,\nbut sequences of three or more single quotes are not permitted."
+  },
+  {
+    "id": 55,
+    "type": "paragraph",
+    "lines": [
+      436,
+      436
+    ],
+    "start": 12272,
+    "end": 12344,
+    "source": "Control characters other than tab are not permitted in a literal string."
+  },
+  {
+    "id": 56,
+    "type": "heading",
+    "lines": [
+      440,
+      440
+    ],
+    "start": 12375,
+    "end": 12385,
+    "source": "## Integer"
+  },
+  {
+    "id": 57,
+    "type": "paragraph",
+    "lines": [
+      442,
+      443
+    ],
+    "start": 12387,
+    "end": 12514,
+    "source": "Integers are whole numbers. Positive numbers may be prefixed with a plus sign.\nNegative numbers are prefixed with a minus sign."
+  },
+  {
+    "id": 58,
+    "type": "paragraph",
+    "lines": [
+      452,
+      454
+    ],
+    "start": 12570,
+    "end": 12722,
+    "source": "For large numbers, you may use underscores between digits to enhance\nreadability. Each underscore must be surrounded by at least one digit on each\nside."
+  },
+  {
+    "id": 59,
+    "type": "paragraph",
+    "lines": [
+      463,
+      464
+    ],
+    "start": 12859,
+    "end": 12965,
+    "source": "Leading zeros are not allowed. Integer values `-0` and `+0` are valid and\nidentical to an unprefixed zero."
+  },
+  {
+    "id": 60,
+    "type": "paragraph",
+    "lines": [
+      466,
+      469
+    ],
+    "start": 12967,
+    "end": 13261,
+    "source": "Non-negative integer values may also be expressed in hexadecimal, octal, or\nbinary. In these formats, leading `+` is not allowed and leading zeros are\nallowed (after the prefix). Hex values are case-insensitive. Underscores are\nallowed between digits (but not between the prefix and the value)."
+  },
+  {
+    "id": 61,
+    "type": "paragraph",
+    "lines": [
+      485,
+      488
+    ],
+    "start": 13499,
+    "end": 13739,
+    "source": "Implementations are free to support any integer size. It's recommended that at\nleast 64-bit signed integers (from −2^63 to 2^63−1) are accepted and handled\nlosslessly. If an integer cannot be represented losslessly, an error must be\nthrown."
+  },
+  {
+    "id": 62,
+    "type": "heading",
+    "lines": [
+      492,
+      492
+    ],
+    "start": 13768,
+    "end": 13776,
+    "source": "## Float"
+  },
+  {
+    "id": 63,
+    "type": "paragraph",
+    "lines": [
+      494,
+      497
+    ],
+    "start": 13778,
+    "end": 14034,
+    "source": "A float consists of an integer part (which follows the same rules as decimal\ninteger values) followed by a fractional part and/or an exponent part. If both a\nfractional part and exponent part are present, the fractional part must precede\nthe exponent part."
+  },
+  {
+    "id": 64,
+    "type": "paragraph",
+    "lines": [
+      514,
+      514
+    ],
+    "start": 14176,
+    "end": 14244,
+    "source": "A fractional part is a decimal point followed by one or more digits."
+  },
+  {
+    "id": 65,
+    "type": "paragraph",
+    "lines": [
+      516,
+      518
+    ],
+    "start": 14246,
+    "end": 14408,
+    "source": "An exponent part is an E (upper or lower case) followed by an integer part\n(which follows the same rules as decimal integer values but may include leading\nzeros)."
+  },
+  {
+    "id": 66,
+    "type": "paragraph",
+    "lines": [
+      520,
+      521
+    ],
+    "start": 14410,
+    "end": 14492,
+    "source": "The decimal point, if used, must be surrounded by at least one digit on each\nside."
+  },
+  {
+    "id": 67,
+    "type": "paragraph",
+    "lines": [
+      530,
+      531
+    ],
+    "start": 14587,
+    "end": 14713,
+    "source": "Similar to integers, you may use underscores to enhance readability. Each\nunderscore must be surrounded by at least one digit."
+  },
+  {
+    "id": 68,
+    "type": "paragraph",
+    "lines": [
+      537,
+      537
+    ],
+    "start": 14755,
+    "end": 14833,
+    "source": "Float values `-0.0` and `+0.0` are valid and should map according to IEEE 754."
+  },
+  {
+    "id": 69,
+    "type": "paragraph",
+    "lines": [
+      539,
+      539
+    ],
+    "start": 14835,
+    "end": 14905,
+    "source": "Special float values can also be expressed. They are always lowercase."
+  },
+  {
+    "id": 70,
+    "type": "paragraph",
+    "lines": [
+      553,
+      554
+    ],
+    "start": 15196,
+    "end": 15323,
+    "source": "Implementations are free to support any precision level. It's recommended that\nat least IEEE 754 binary64 values are supported."
+  },
+  {
+    "id": 71,
+    "type": "heading",
+    "lines": [
+      558,
+      558
+    ],
+    "start": 15354,
+    "end": 15364,
+    "source": "## Boolean"
+  },
+  {
+    "id": 72,
+    "type": "paragraph",
+    "lines": [
+      560,
+      560
+    ],
+    "start": 15366,
+    "end": 15428,
+    "source": "Booleans are just the tokens you're used to. Always lowercase."
+  },
+  {
+    "id": 73,
+    "type": "heading",
+    "lines": [
+      569,
+      569
+    ],
+    "start": 15508,
+    "end": 15527,
+    "source": "## Offset Date-Time"
+  },
+  {
+    "id": 74,
+    "type": "paragraph",
+    "lines": [
+      571,
+      572
+    ],
+    "start": 15529,
+    "end": 15679,
+    "source": "To unambiguously represent a specific instant in time, you may use an\n[RFC 3339](https://tools.ietf.org/html/rfc3339) formatted date-time with offset."
+  },
+  {
+    "id": 75,
+    "type": "paragraph",
+    "lines": [
+      581,
+      582
+    ],
+    "start": 15830,
+    "end": 15975,
+    "source": "For the sake of readability, you may replace the T delimiter between date and\ntime with a space character (as permitted by RFC 3339 section 5.6)."
+  },
+  {
+    "id": 76,
+    "type": "paragraph",
+    "lines": [
+      588,
+      589
+    ],
+    "start": 16018,
+    "end": 16162,
+    "source": "One exception to RFC 3339 is permitted: seconds may be omitted, in which case\n`:00` will be assumed. The offset immediately follows the minutes."
+  },
+  {
+    "id": 77,
+    "type": "paragraph",
+    "lines": [
+      596,
+      598
+    ],
+    "start": 16232,
+    "end": 16449,
+    "source": "Implementations are required to support at least millisecond precision.\nAdditional digits of precision may be specified, but if they exceed the\nsupported precision then the extra digits must be truncated, not rounded."
+  },
+  {
+    "id": 78,
+    "type": "heading",
+    "lines": [
+      602,
+      602
+    ],
+    "start": 16488,
+    "end": 16506,
+    "source": "## Local Date-Time"
+  },
+  {
+    "id": 79,
+    "type": "paragraph",
+    "lines": [
+      604,
+      608
+    ],
+    "start": 16508,
+    "end": 16836,
+    "source": "If you omit the offset from an [RFC 3339](https://tools.ietf.org/html/rfc3339)\nformatted date-time, it will represent the given date-time without any relation\nto an offset or timezone. It cannot be converted to an instant in time without\nadditional information. Conversion to an instant, if required, is\nimplementation-specific."
+  },
+  {
+    "id": 80,
+    "type": "paragraph",
+    "lines": [
+      616,
+      616
+    ],
+    "start": 16941,
+    "end": 17001,
+    "source": "Seconds may be omitted, in which case `:00` will be assumed."
+  },
+  {
+    "id": 81,
+    "type": "paragraph",
+    "lines": [
+      622,
+      624
+    ],
+    "start": 17040,
+    "end": 17257,
+    "source": "Implementations are required to support at least millisecond precision.\nAdditional digits of precision may be specified, but if they exceed the\nsupported precision then the extra digits must be truncated, not rounded."
+  },
+  {
+    "id": 82,
+    "type": "heading",
+    "lines": [
+      628,
+      628
+    ],
+    "start": 17291,
+    "end": 17304,
+    "source": "## Local Date"
+  },
+  {
+    "id": 83,
+    "type": "paragraph",
+    "lines": [
+      630,
+      632
+    ],
+    "start": 17306,
+    "end": 17498,
+    "source": "If you include only the date portion of an\n[RFC 3339](https://tools.ietf.org/html/rfc3339) formatted date-time, it will\nrepresent that entire day without any relation to an offset or timezone."
+  },
+  {
+    "id": 84,
+    "type": "heading",
+    "lines": [
+      640,
+      640
+    ],
+    "start": 17562,
+    "end": 17575,
+    "source": "## Local Time"
+  },
+  {
+    "id": 85,
+    "type": "paragraph",
+    "lines": [
+      642,
+      645
+    ],
+    "start": 17577,
+    "end": 17789,
+    "source": "If you include only the time portion of an\n[RFC 3339](https://tools.ietf.org/html/rfc3339) formatted date-time, it will\nrepresent that time of day without any relation to a specific day or any offset\nor timezone."
+  },
+  {
+    "id": 86,
+    "type": "paragraph",
+    "lines": [
+      653,
+      653
+    ],
+    "start": 17858,
+    "end": 17918,
+    "source": "Seconds may be omitted, in which case `:00` will be assumed."
+  },
+  {
+    "id": 87,
+    "type": "paragraph",
+    "lines": [
+      659,
+      661
+    ],
+    "start": 17945,
+    "end": 18162,
+    "source": "Implementations are required to support at least millisecond precision.\nAdditional digits of precision may be specified, but if they exceed the\nsupported precision then the extra digits must be truncated, not rounded."
+  },
+  {
+    "id": 88,
+    "type": "heading",
+    "lines": [
+      665,
+      665
+    ],
+    "start": 18191,
+    "end": 18199,
+    "source": "## Array"
+  },
+  {
+    "id": 89,
+    "type": "paragraph",
+    "lines": [
+      667,
+      669
+    ],
+    "start": 18201,
+    "end": 18434,
+    "source": "Arrays are ordered values surrounded by square brackets. Whitespace is ignored.\nElements are separated by commas. Arrays can contain values of the same data\ntypes as allowed in key/value pairs. Values of different types may be mixed."
+  },
+  {
+    "id": 90,
+    "type": "paragraph",
+    "lines": [
+      686,
+      689
+    ],
+    "start": 18886,
+    "end": 19187,
+    "source": "Arrays can span multiple lines. A terminating comma (also called a trailing\ncomma) is permitted after the last value of the array. Any number of newlines\nand comments may precede values, commas, and the closing bracket. Indentation\nbetween array values and commas is treated as whitespace and ignored."
+  },
+  {
+    "id": 91,
+    "type": "heading",
+    "lines": [
+      704,
+      704
+    ],
+    "start": 19295,
+    "end": 19303,
+    "source": "## Table"
+  },
+  {
+    "id": 92,
+    "type": "paragraph",
+    "lines": [
+      706,
+      709
+    ],
+    "start": 19305,
+    "end": 19542,
+    "source": "Tables (also known as hash tables or dictionaries) are collections of key/value\npairs. They are defined by headers, with square brackets on a line by\nthemselves. You can tell headers apart from arrays because arrays are only ever\nvalues."
+  },
+  {
+    "id": 93,
+    "type": "paragraph",
+    "lines": [
+      715,
+      716
+    ],
+    "start": 19565,
+    "end": 19722,
+    "source": "Under that, and until the next header or EOF, are the key/values of that table.\nKey/value pairs within tables are not guaranteed to be in any specific order."
+  },
+  {
+    "id": 94,
+    "type": "paragraph",
+    "lines": [
+      728,
+      729
+    ],
+    "start": 19825,
+    "end": 19921,
+    "source": "Naming rules for tables are the same as for keys (see definition of\n[Keys](#source-keys) above)."
+  },
+  {
+    "id": 95,
+    "type": "paragraph",
+    "lines": [
+      736,
+      736
+    ],
+    "start": 19972,
+    "end": 20030,
+    "source": "In JSON land, that would give you the following structure:"
+  },
+  {
+    "id": 96,
+    "type": "paragraph",
+    "lines": [
+      742,
+      743
+    ],
+    "start": 20103,
+    "end": 20204,
+    "source": "Whitespace around the key is ignored. However, best practice is to not use any\nextraneous whitespace."
+  },
+  {
+    "id": 97,
+    "type": "paragraph",
+    "lines": [
+      752,
+      752
+    ],
+    "start": 20377,
+    "end": 20426,
+    "source": "Indentation is treated as whitespace and ignored."
+  },
+  {
+    "id": 98,
+    "type": "paragraph",
+    "lines": [
+      754,
+      755
+    ],
+    "start": 20428,
+    "end": 20529,
+    "source": "You don't need to specify all the super-tables if you don't want to. TOML knows\nhow to do it for you."
+  },
+  {
+    "id": 99,
+    "type": "paragraph",
+    "lines": [
+      766,
+      766
+    ],
+    "start": 20664,
+    "end": 20736,
+    "source": "Empty tables are allowed and simply have no key/value pairs within them."
+  },
+  {
+    "id": 100,
+    "type": "paragraph",
+    "lines": [
+      768,
+      768
+    ],
+    "start": 20738,
+    "end": 20811,
+    "source": "Like keys, you cannot define a table more than once. Doing so is invalid."
+  },
+  {
+    "id": 101,
+    "type": "paragraph",
+    "lines": [
+      790,
+      790
+    ],
+    "start": 20979,
+    "end": 21023,
+    "source": "Defining tables out-of-order is discouraged."
+  },
+  {
+    "id": 102,
+    "type": "paragraph",
+    "lines": [
+      806,
+      808
+    ],
+    "start": 21165,
+    "end": 21368,
+    "source": "The top-level table, also called the root table, starts at the beginning of the\ndocument and ends just before the first table header (or EOF). Unlike other\ntables, it is nameless and cannot be relocated."
+  },
+  {
+    "id": 103,
+    "type": "paragraph",
+    "lines": [
+      821,
+      824
+    ],
+    "start": 21519,
+    "end": 21764,
+    "source": "Dotted keys create and define a table for each key part before the last one. Any\nsuch table must have all its key/value pairs defined under the current `[table]`\nheader, or in the root table if defined before all headers, or in one inline\ntable."
+  },
+  {
+    "id": 104,
+    "type": "paragraph",
+    "lines": [
+      836,
+      839
+    ],
+    "start": 21990,
+    "end": 22298,
+    "source": "Since tables cannot be defined more than once, redefining such tables using a\n`[table]` header is not allowed. Likewise, using dotted keys to redefine tables\nalready defined in `[table]` form is not allowed. The `[table]` form can,\nhowever, be used to define sub-tables within tables defined via dotted keys."
+  },
+  {
+    "id": 105,
+    "type": "heading",
+    "lines": [
+      855,
+      855
+    ],
+    "start": 22524,
+    "end": 22539,
+    "source": "## Inline Table"
+  },
+  {
+    "id": 106,
+    "type": "paragraph",
+    "lines": [
+      857,
+      859
+    ],
+    "start": 22541,
+    "end": 22701,
+    "source": "Inline tables provide a more compact syntax for expressing tables. They are\nespecially useful for grouped nested data that can otherwise quickly become\nverbose."
+  },
+  {
+    "id": 107,
+    "type": "paragraph",
+    "lines": [
+      861,
+      864
+    ],
+    "start": 22703,
+    "end": 22972,
+    "source": "Inline tables are fully defined within curly braces: `{` and `}`. Within the\nbraces, zero or more comma-separated key/value pairs may appear. Key/value pairs\ntake the same form as key/value pairs in standard tables. All value types are\nallowed, including inline tables."
+  },
+  {
+    "id": 108,
+    "type": "paragraph",
+    "lines": [
+      866,
+      868
+    ],
+    "start": 22974,
+    "end": 23171,
+    "source": "Inline tables can have multiple key/value pairs on the same line, or they can be\nput on different lines. A terminating comma (also called trailing comma) is\npermitted after the last key/value pair."
+  },
+  {
+    "id": 109,
+    "type": "paragraph",
+    "lines": [
+      886,
+      887
+    ],
+    "start": 23486,
+    "end": 23568,
+    "source": "The inline tables above are identical to the following standard table\ndefinitions:"
+  },
+  {
+    "id": 110,
+    "type": "paragraph",
+    "lines": [
+      910,
+      911
+    ],
+    "start": 23819,
+    "end": 23961,
+    "source": "Inline tables are fully self-contained and define all keys and sub-tables within\nthem. Keys and sub-tables cannot be added outside the braces."
+  },
+  {
+    "id": 111,
+    "type": "paragraph",
+    "lines": [
+      919,
+      920
+    ],
+    "start": 24044,
+    "end": 24138,
+    "source": "Similarly, inline tables cannot be used to add keys or sub-tables to an\nalready-defined table."
+  },
+  {
+    "id": 112,
+    "type": "heading",
+    "lines": [
+      930,
+      930
+    ],
+    "start": 24258,
+    "end": 24276,
+    "source": "## Array of Tables"
+  },
+  {
+    "id": 113,
+    "type": "paragraph",
+    "lines": [
+      932,
+      936
+    ],
+    "start": 24278,
+    "end": 24661,
+    "source": "The last syntax that has not yet been described allows writing arrays of tables.\nThese can be expressed by using a header with a name in double brackets. The\nfirst instance of that header defines the array and its first table element, and\neach subsequent instance creates and defines a new table element in that array.\nThe tables are inserted into the array in the order encountered."
+  },
+  {
+    "id": 114,
+    "type": "paragraph",
+    "lines": [
+      952,
+      952
+    ],
+    "start": 24824,
+    "end": 24882,
+    "source": "In JSON land, that would give you the following structure."
+  },
+  {
+    "id": 115,
+    "type": "paragraph",
+    "lines": [
+      964,
+      966
+    ],
+    "start": 25030,
+    "end": 25228,
+    "source": "Any reference to an array of tables points to the most recently defined table\nelement of the array. This allows you to define sub-tables, and even sub-arrays\nof tables, inside the most recent table."
+  },
+  {
+    "id": 116,
+    "type": "paragraph",
+    "lines": [
+      990,
+      990
+    ],
+    "start": 25514,
+    "end": 25556,
+    "source": "The above TOML maps to the following JSON."
+  },
+  {
+    "id": 117,
+    "type": "paragraph",
+    "lines": [
+      1011,
+      1013
+    ],
+    "start": 25864,
+    "end": 26076,
+    "source": "If the parent of a table or array of tables is an array element, that element\nmust already have been defined before the child can be defined. Attempts to\nreverse that ordering must produce an error at parse time."
+  },
+  {
+    "id": 118,
+    "type": "paragraph",
+    "lines": [
+      1026,
+      1027
+    ],
+    "start": 26343,
+    "end": 26460,
+    "source": "Attempting to append to a statically defined array, even if that array is empty,\nmust produce an error at parse time."
+  },
+  {
+    "id": 119,
+    "type": "paragraph",
+    "lines": [
+      1036,
+      1038
+    ],
+    "start": 26528,
+    "end": 26743,
+    "source": "Attempting to define a normal table with the same name as an already established\narray must produce an error at parse time. Attempting to redefine a normal table\nas an array must likewise produce a parse-time error."
+  },
+  {
+    "id": 120,
+    "type": "paragraph",
+    "lines": [
+      1061,
+      1061
+    ],
+    "start": 27104,
+    "end": 27153,
+    "source": "You may also use inline tables where appropriate:"
+  },
+  {
+    "id": 121,
+    "type": "heading",
+    "lines": [
+      1071,
+      1071
+    ],
+    "start": 27317,
+    "end": 27338,
+    "source": "## Filename Extension"
+  },
+  {
+    "id": 122,
+    "type": "paragraph",
+    "lines": [
+      1073,
+      1073
+    ],
+    "start": 27340,
+    "end": 27384,
+    "source": "TOML files should use the extension `.toml`."
+  },
+  {
+    "id": 123,
+    "type": "heading",
+    "lines": [
+      1077,
+      1077
+    ],
+    "start": 27417,
+    "end": 27429,
+    "source": "## MIME Type"
+  },
+  {
+    "id": 124,
+    "type": "paragraph",
+    "lines": [
+      1079,
+      1080
+    ],
+    "start": 27431,
+    "end": 27527,
+    "source": "When transferring TOML files over the internet, the appropriate MIME type is\n`application/toml`."
+  },
+  {
+    "id": 125,
+    "type": "heading",
+    "lines": [
+      1084,
+      1084
+    ],
+    "start": 27563,
+    "end": 27578,
+    "source": "## ABNF Grammar"
+  },
+  {
+    "id": 126,
+    "type": "paragraph",
+    "lines": [
+      1086,
+      1087
+    ],
+    "start": 27580,
+    "end": 27664,
+    "source": "A formal description of TOML's syntax is available, as a separate [ABNF\nfile][abnf]."
+  }
+]

@@ -1,0 +1,242 @@
+✖ TOML全文・70コード・ABNF・両MITを保全し、二度の生成が一致し訳文を変更しない (94.035125ms)
+✖ 固定入力不一致と出力先の逸脱を拒否し、既存定本を壊さない (55.329541ms)
+✔ 原文のsymlinkを拒否する (2.909875ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 269.254792
+
+✖ failing tests:
+
+test at tests/runtime/toml-importer.test.js:17:1
+✖ TOML全文・70コード・ABNF・両MITを保全し、二度の生成が一致し訳文を変更しない (94.035125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '<a id="source-toml-v110">',
+  +   '</a>',
+  +   '<a id="source-objectives">',
+  +   '</a>',
+  +   '<a id="source-table-of-contents">',
+  +   '</a>',
+  +   '<a id="source-preliminaries">',
+  +   '</a>',
+  +   '<a id="source-comment">',
+  +   '</a>',
+  +   '<a id="source-keyvalue-pair">',
+  +   '</a>',
+  +   '<a id="source-keys">',
+  +   '</a>',
+  +   '<a id="source-string">',
+  +   '</a>',
+  +   '<a id="source-integer">',
+  +   '</a>',
+  +   '<a id="source-float">',
+  +   '</a>',
+  +   '<a id="source-boolean">',
+  +   '</a>',
+  +   '<a id="source-offset-date-time">',
+  +   '</a>',
+  +   '<a id="source-local-date-time">',
+  +   '</a>',
+  +   '<a id="source-local-date">',
+  +   '</a>',
+  +   '<a id="source-local-time">',
+  +   '</a>',
+  +   '<a id="source-array">',
+  +   '</a>',
+  +   '<a id="source-table">',
+  +   '</a>',
+  +   '<a id="source-inline-table">',
+  +   '</a>',
+  +   '<a id="source-array-of-tables">',
+  +   '</a>',
+  +   '<a id="source-filename-extension">',
+  +   '</a>',
+  +   '<a id="source-mime-type">',
+  +   '</a>',
+  +   '<a id="source-abnf-grammar">',
+  +   '</a>'
+  -   '<a id="source-toml-v110"></a>',
+  -   '<a id="source-objectives"></a>',
+  -   '<a id="source-table-of-contents"></a>',
+  -   '<a id="source-preliminaries"></a>',
+  -   '<a id="source-comment"></a>',
+  -   '<a id="source-keyvalue-pair"></a>',
+  -   '<a id="source-keys"></a>',
+  -   '<a id="source-string"></a>',
+  -   '<a id="source-integer"></a>',
+  -   '<a id="source-float"></a>',
+  -   '<a id="source-boolean"></a>',
+  -   '<a id="source-offset-date-time"></a>',
+  -   '<a id="source-local-date-time"></a>',
+  -   '<a id="source-local-date"></a>',
+  -   '<a id="source-local-time"></a>',
+  -   '<a id="source-array"></a>',
+  -   '<a id="source-table"></a>',
+  -   '<a id="source-inline-table"></a>',
+  -   '<a id="source-array-of-tables"></a>',
+  -   '<a id="source-filename-extension"></a>',
+  -   '<a id="source-mime-type"></a>',
+  -   '<a id="source-abnf-grammar"></a>'
+    ]
+  
+      at validateCanonicalDirectory (file:///Users/dolphilia/github/libx/scripts/importers/import-toml-1.1.0.mjs:140:10)
+      at validate (file:///Users/dolphilia/github/libx/scripts/importers/import-toml-1.1.0.mjs:179:35)
+      at prepareImportOutput (file:///Users/dolphilia/github/libx/scripts/importers/safe-import-output.js:68:5)
+      at importCanonical (file:///Users/dolphilia/github/libx/scripts/importers/import-toml-1.1.0.mjs:182:7)
+      at TestContext.<anonymous> (file:///Users/dolphilia/github/libx/tests/runtime/toml-importer.test.js:26:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [
+      '<a id="source-toml-v110">',          '</a>',
+      '<a id="source-objectives">',         '</a>',
+      '<a id="source-table-of-contents">',  '</a>',
+      '<a id="source-preliminaries">',      '</a>',
+      '<a id="source-comment">',            '</a>',
+      '<a id="source-keyvalue-pair">',      '</a>',
+      '<a id="source-keys">',               '</a>',
+      '<a id="source-string">',             '</a>',
+      '<a id="source-integer">',            '</a>',
+      '<a id="source-float">',              '</a>',
+      '<a id="source-boolean">',            '</a>',
+      '<a id="source-offset-date-time">',   '</a>',
+      '<a id="source-local-date-time">',    '</a>',
+      '<a id="source-local-date">',         '</a>',
+      '<a id="source-local-time">',         '</a>',
+      '<a id="source-array">',              '</a>',
+      '<a id="source-table">',              '</a>',
+      '<a id="source-inline-table">',       '</a>',
+      '<a id="source-array-of-tables">',    '</a>',
+      '<a id="source-filename-extension">', '</a>',
+      '<a id="source-mime-type">',          '</a>',
+      '<a id="source-abnf-grammar">',       '</a>'
+    ],
+    expected: [ '<a id="source-toml-v110"></a>', '<a id="source-objectives"></a>', '<a id="source-table-of-contents"></a>', '<a id="source-preliminaries"></a>', '<a id="source-comment"></a>', '<a id="source-keyvalue-pair"></a>', '<a id="source-keys"></a>', '<a id="source-string"></a>', '<a id="source-integer"></a>', '<a id="source-float"></a>', '<a id="source-boolean"></a>', '<a id="source-offset-date-time"></a>', '<a id="source-local-date-time"></a>', '<a id="source-local-date"></a>', '<a id="source-local-time"></a>', '<a id="source-array"></a>', '<a id="source-table"></a>', '<a id="source-inline-table"></a>', '<a id="source-array-of-tables"></a>', '<a id="source-filename-extension"></a>', '<a id="source-mime-type"></a>', '<a id="source-abnf-grammar"></a>' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/runtime/toml-importer.test.js:38:1
+✖ 固定入力不一致と出力先の逸脱を拒否し、既存定本を壊さない (55.329541ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '<a id="source-toml-v110">',
+  +   '</a>',
+  +   '<a id="source-objectives">',
+  +   '</a>',
+  +   '<a id="source-table-of-contents">',
+  +   '</a>',
+  +   '<a id="source-preliminaries">',
+  +   '</a>',
+  +   '<a id="source-comment">',
+  +   '</a>',
+  +   '<a id="source-keyvalue-pair">',
+  +   '</a>',
+  +   '<a id="source-keys">',
+  +   '</a>',
+  +   '<a id="source-string">',
+  +   '</a>',
+  +   '<a id="source-integer">',
+  +   '</a>',
+  +   '<a id="source-float">',
+  +   '</a>',
+  +   '<a id="source-boolean">',
+  +   '</a>',
+  +   '<a id="source-offset-date-time">',
+  +   '</a>',
+  +   '<a id="source-local-date-time">',
+  +   '</a>',
+  +   '<a id="source-local-date">',
+  +   '</a>',
+  +   '<a id="source-local-time">',
+  +   '</a>',
+  +   '<a id="source-array">',
+  +   '</a>',
+  +   '<a id="source-table">',
+  +   '</a>',
+  +   '<a id="source-inline-table">',
+  +   '</a>',
+  +   '<a id="source-array-of-tables">',
+  +   '</a>',
+  +   '<a id="source-filename-extension">',
+  +   '</a>',
+  +   '<a id="source-mime-type">',
+  +   '</a>',
+  +   '<a id="source-abnf-grammar">',
+  +   '</a>'
+  -   '<a id="source-toml-v110"></a>',
+  -   '<a id="source-objectives"></a>',
+  -   '<a id="source-table-of-contents"></a>',
+  -   '<a id="source-preliminaries"></a>',
+  -   '<a id="source-comment"></a>',
+  -   '<a id="source-keyvalue-pair"></a>',
+  -   '<a id="source-keys"></a>',
+  -   '<a id="source-string"></a>',
+  -   '<a id="source-integer"></a>',
+  -   '<a id="source-float"></a>',
+  -   '<a id="source-boolean"></a>',
+  -   '<a id="source-offset-date-time"></a>',
+  -   '<a id="source-local-date-time"></a>',
+  -   '<a id="source-local-date"></a>',
+  -   '<a id="source-local-time"></a>',
+  -   '<a id="source-array"></a>',
+  -   '<a id="source-table"></a>',
+  -   '<a id="source-inline-table"></a>',
+  -   '<a id="source-array-of-tables"></a>',
+  -   '<a id="source-filename-extension"></a>',
+  -   '<a id="source-mime-type"></a>',
+  -   '<a id="source-abnf-grammar"></a>'
+    ]
+  
+      at validateCanonicalDirectory (file:///Users/dolphilia/github/libx/scripts/importers/import-toml-1.1.0.mjs:140:10)
+      at validate (file:///Users/dolphilia/github/libx/scripts/importers/import-toml-1.1.0.mjs:179:35)
+      at prepareImportOutput (file:///Users/dolphilia/github/libx/scripts/importers/safe-import-output.js:68:5)
+      at importCanonical (file:///Users/dolphilia/github/libx/scripts/importers/import-toml-1.1.0.mjs:182:7)
+      at TestContext.<anonymous> (file:///Users/dolphilia/github/libx/tests/runtime/toml-importer.test.js:45:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [
+      '<a id="source-toml-v110">',          '</a>',
+      '<a id="source-objectives">',         '</a>',
+      '<a id="source-table-of-contents">',  '</a>',
+      '<a id="source-preliminaries">',      '</a>',
+      '<a id="source-comment">',            '</a>',
+      '<a id="source-keyvalue-pair">',      '</a>',
+      '<a id="source-keys">',               '</a>',
+      '<a id="source-string">',             '</a>',
+      '<a id="source-integer">',            '</a>',
+      '<a id="source-float">',              '</a>',
+      '<a id="source-boolean">',            '</a>',
+      '<a id="source-offset-date-time">',   '</a>',
+      '<a id="source-local-date-time">',    '</a>',
+      '<a id="source-local-date">',         '</a>',
+      '<a id="source-local-time">',         '</a>',
+      '<a id="source-array">',              '</a>',
+      '<a id="source-table">',              '</a>',
+      '<a id="source-inline-table">',       '</a>',
+      '<a id="source-array-of-tables">',    '</a>',
+      '<a id="source-filename-extension">', '</a>',
+      '<a id="source-mime-type">',          '</a>',
+      '<a id="source-abnf-grammar">',       '</a>'
+    ],
+    expected: [ '<a id="source-toml-v110"></a>', '<a id="source-objectives"></a>', '<a id="source-table-of-contents"></a>', '<a id="source-preliminaries"></a>', '<a id="source-comment"></a>', '<a id="source-keyvalue-pair"></a>', '<a id="source-keys"></a>', '<a id="source-string"></a>', '<a id="source-integer"></a>', '<a id="source-float"></a>', '<a id="source-boolean"></a>', '<a id="source-offset-date-time"></a>', '<a id="source-local-date-time"></a>', '<a id="source-local-date"></a>', '<a id="source-local-time"></a>', '<a id="source-array"></a>', '<a id="source-table"></a>', '<a id="source-inline-table"></a>', '<a id="source-array-of-tables"></a>', '<a id="source-filename-extension"></a>', '<a id="source-mime-type"></a>', '<a id="source-abnf-grammar"></a>' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
