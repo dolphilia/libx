@@ -1,0 +1,348 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-01T18:45:07.909Z",
+  "preview": "localhost:4324 own Astro preview polled live this goal turn",
+  "views": [
+    {
+      "bold": [
+        "nil",
+        "nil"
+      ],
+      "clientWidth": 1265,
+      "codes": [
+        "error",
+        "pcall",
+        "xpcall",
+        "pcall",
+        "pcall",
+        "lua",
+        "xpcall",
+        "lua_pcall",
+        "warn",
+        "lua_setwarnf"
+      ],
+      "emphasis": [
+        "発生させる",
+        "捕捉する",
+        "保護呼び出し",
+        "保護モード",
+        "エラーオブジェクト",
+        "エラーメッセージ",
+        "メッセージハンドラー",
+        "警告"
+      ],
+      "h1": "2.3 – エラー処理",
+      "headingAnchor": true,
+      "images": 0,
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-error",
+          "text": "error"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-pcall",
+          "text": "pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-xpcall",
+          "text": "xpcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-pcall",
+          "text": "pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-xpcall",
+          "text": "xpcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/03-c-api/11-functions-and-types-n-pcall/#lua_pcall",
+          "text": "lua_pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-warn",
+          "text": "warn"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/03-c-api/14-functions-and-types-set-status/#lua_setwarnf",
+          "text": "lua_setwarnf"
+        }
+      ],
+      "paragraphs": [
+        "Luaのいくつかの操作は、エラーを発生させることがある。エラーはプログラムの通常の流れを中断するが、エラーを捕捉することで処理を続行できる。",
+        "Luaコードは、error関数を呼び出すことで、明示的にエラーを発生させられる。（この関数が戻ることはない。）",
+        "Luaでエラーを捕捉するには、pcall（またはxpcall）を使って保護呼び出しを行える。pcall関数は、指定された関数を保護モードで呼び出す。その関数の実行中に発生したエラーは実行を停止させ、制御は直ちにpcallへ戻り、同関数がステータスコードを返す。",
+        "Luaは組み込み型の拡張言語であるため、Luaコードの実行は、ホストプログラム内のCコードからの呼び出しによって開始する。（Luaをスタンドアロンで使用する場合、luaアプリケーションがホストプログラムとなる。）通常、この呼び出しは保護されている。そのため、Luaチャンクのコンパイル中または実行中に、ほかの保護呼び出しで捕捉されないエラーが発生した場合、制御はホストへ戻り、ホストはエラーメッセージの表示など、適切な措置を取れる。",
+        "エラーが発生すると必ず、そのエラーに関する情報を持つエラーオブジェクトが伝播する。Lua自身が生成するエラーでは、エラーオブジェクトは文字列だけである。一方、プログラムはnil以外の任意の値をエラーオブジェクトとしてエラーを生成できる。（エラーオブジェクトがnilの場合、Luaはそれを文字列メッセージへ変更する。）このようなエラーオブジェクトを処理するのは、Luaプログラムまたはそのホストの責任である。歴史的な理由から、エラーオブジェクトは文字列である必要がないにもかかわらず、しばしばエラーメッセージと呼ばれる。",
+        "xpcall（Cではlua_pcall）を使用する場合、エラー発生時に呼び出されるメッセージハンドラーを指定できる。この関数は元のエラーオブジェクトを引数として呼び出され、新しいエラーオブジェクトを返す。エラーがスタックを巻き戻す前に呼び出されるため、スタックを調べてスタックトレースバックを作成するなど、エラーに関する追加情報を収集できる。このメッセージハンドラーも保護呼び出しによって保護されている。そのため、メッセージハンドラー内でエラーが発生すると、メッセージハンドラーが再び呼び出される。このループが長く続きすぎた場合、Luaはループを中断し、適切なメッセージを返す。メッセージハンドラーは通常の実行時エラーに対してだけ呼び出される。メモリ割り当てエラー、ファイナライザー実行中のエラー、別のメッセージハンドラー実行中のエラーに対しては呼び出されない。",
+        "Luaには警告の仕組みもある（warnを参照）。エラーと異なり、警告がプログラムの実行へ干渉することは一切ない。通常はユーザーへのメッセージを生成するだけだが、この動作はCから調整できる（lua_setwarnfを参照）。"
+      ],
+      "pre": 0,
+      "scrollWidth": 1265,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/03-error-handling/",
+      "locale": "ja",
+      "viewport": "desktop"
+    },
+    {
+      "bold": [
+        "nil",
+        "nil"
+      ],
+      "clientWidth": 375,
+      "codes": [
+        "error",
+        "pcall",
+        "xpcall",
+        "pcall",
+        "pcall",
+        "lua",
+        "xpcall",
+        "lua_pcall",
+        "warn",
+        "lua_setwarnf"
+      ],
+      "emphasis": [
+        "発生させる",
+        "捕捉する",
+        "保護呼び出し",
+        "保護モード",
+        "エラーオブジェクト",
+        "エラーメッセージ",
+        "メッセージハンドラー",
+        "警告"
+      ],
+      "h1": "2.3 – エラー処理",
+      "headingAnchor": true,
+      "images": 0,
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-error",
+          "text": "error"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-pcall",
+          "text": "pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-xpcall",
+          "text": "xpcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-pcall",
+          "text": "pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-xpcall",
+          "text": "xpcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/03-c-api/11-functions-and-types-n-pcall/#lua_pcall",
+          "text": "lua_pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-warn",
+          "text": "warn"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/03-c-api/14-functions-and-types-set-status/#lua_setwarnf",
+          "text": "lua_setwarnf"
+        }
+      ],
+      "paragraphs": [
+        "Luaのいくつかの操作は、エラーを発生させることがある。エラーはプログラムの通常の流れを中断するが、エラーを捕捉することで処理を続行できる。",
+        "Luaコードは、error関数を呼び出すことで、明示的にエラーを発生させられる。（この関数が戻ることはない。）",
+        "Luaでエラーを捕捉するには、pcall（またはxpcall）を使って保護呼び出しを行える。pcall関数は、指定された関数を保護モードで呼び出す。その関数の実行中に発生したエラーは実行を停止させ、制御は直ちにpcallへ戻り、同関数がステータスコードを返す。",
+        "Luaは組み込み型の拡張言語であるため、Luaコードの実行は、ホストプログラム内のCコードからの呼び出しによって開始する。（Luaをスタンドアロンで使用する場合、luaアプリケーションがホストプログラムとなる。）通常、この呼び出しは保護されている。そのため、Luaチャンクのコンパイル中または実行中に、ほかの保護呼び出しで捕捉されないエラーが発生した場合、制御はホストへ戻り、ホストはエラーメッセージの表示など、適切な措置を取れる。",
+        "エラーが発生すると必ず、そのエラーに関する情報を持つエラーオブジェクトが伝播する。Lua自身が生成するエラーでは、エラーオブジェクトは文字列だけである。一方、プログラムはnil以外の任意の値をエラーオブジェクトとしてエラーを生成できる。（エラーオブジェクトがnilの場合、Luaはそれを文字列メッセージへ変更する。）このようなエラーオブジェクトを処理するのは、Luaプログラムまたはそのホストの責任である。歴史的な理由から、エラーオブジェクトは文字列である必要がないにもかかわらず、しばしばエラーメッセージと呼ばれる。",
+        "xpcall（Cではlua_pcall）を使用する場合、エラー発生時に呼び出されるメッセージハンドラーを指定できる。この関数は元のエラーオブジェクトを引数として呼び出され、新しいエラーオブジェクトを返す。エラーがスタックを巻き戻す前に呼び出されるため、スタックを調べてスタックトレースバックを作成するなど、エラーに関する追加情報を収集できる。このメッセージハンドラーも保護呼び出しによって保護されている。そのため、メッセージハンドラー内でエラーが発生すると、メッセージハンドラーが再び呼び出される。このループが長く続きすぎた場合、Luaはループを中断し、適切なメッセージを返す。メッセージハンドラーは通常の実行時エラーに対してだけ呼び出される。メモリ割り当てエラー、ファイナライザー実行中のエラー、別のメッセージハンドラー実行中のエラーに対しては呼び出されない。",
+        "Luaには警告の仕組みもある（warnを参照）。エラーと異なり、警告がプログラムの実行へ干渉することは一切ない。通常はユーザーへのメッセージを生成するだけだが、この動作はCから調整できる（lua_setwarnfを参照）。"
+      ],
+      "pre": 0,
+      "scrollWidth": 375,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/03-error-handling/",
+      "locale": "ja",
+      "viewport": "mobile"
+    },
+    {
+      "bold": [
+        "nil",
+        "nil"
+      ],
+      "clientWidth": 1265,
+      "codes": [
+        "error",
+        "pcall",
+        "xpcall",
+        "pcall",
+        "pcall",
+        "lua",
+        "xpcall",
+        "lua_pcall",
+        "warn",
+        "lua_setwarnf"
+      ],
+      "emphasis": [
+        "raise",
+        "catching",
+        "protected call",
+        "protected mode",
+        "error object",
+        "error message",
+        "message handler",
+        "warnings"
+      ],
+      "h1": "2.3 – Error Handling",
+      "headingAnchor": true,
+      "images": 0,
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-error",
+          "text": "error"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-pcall",
+          "text": "pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-xpcall",
+          "text": "xpcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-pcall",
+          "text": "pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-xpcall",
+          "text": "xpcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/03-c-api/11-functions-and-types-n-pcall/#lua_pcall",
+          "text": "lua_pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-warn",
+          "text": "warn"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/03-c-api/14-functions-and-types-set-status/#lua_setwarnf",
+          "text": "lua_setwarnf"
+        }
+      ],
+      "paragraphs": [
+        "Several operations in Lua can raise an error. An error interrupts the normal flow of the program, which can continue by catching the error.",
+        "Lua code can explicitly raise an error by calling the error function. (This function never returns.)",
+        "To catch errors in Lua, you can do a protected call, using pcall (or xpcall). The function pcall calls a given function in protected mode. Any error while running the function stops its execution, and control returns immediately to pcall, which returns a status code.",
+        "Because Lua is an embedded extension language, Lua code starts running by a call from C code in the host program. (When you use Lua standalone, the lua application is the host program.) Usually, this call is protected; so, when an otherwise unprotected error occurs during the compilation or execution of a Lua chunk, control returns to the host, which can take appropriate measures, such as printing an error message.",
+        "Whenever there is an error, an error object is propagated with information about the error. Lua itself only generates errors whose error object is a string, but programs can generate errors with any value as the error object, except nil. (Lua will change a nil as error object to a string message.) It is up to the Lua program or its host to handle such error objects. For historical reasons, an error object is often called an error message, even though it does not have to be a string.",
+        "When you use xpcall (or lua_pcall, in C) you can give a message handler to be called in case of errors. This function is called with the original error object and returns a new error object. It is called before the error unwinds the stack, so that it can gather more information about the error, for instance by inspecting the stack and creating a stack traceback. This message handler is still protected by the protected call; so, an error inside the message handler will call the message handler again. If this loop goes on for too long, Lua breaks it and returns an appropriate message. The message handler is called only for regular runtime errors. It is not called for memory-allocation errors nor for errors while running finalizers or other message handlers.",
+        "Lua also offers a system of warnings (see warn). Unlike errors, warnings do not interfere in any way with program execution. They typically only generate a message to the user, although this behavior can be adapted from C (see lua_setwarnf)."
+      ],
+      "pre": 0,
+      "scrollWidth": 1265,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/03-error-handling/",
+      "locale": "en",
+      "viewport": "desktop"
+    },
+    {
+      "bold": [
+        "nil",
+        "nil"
+      ],
+      "clientWidth": 375,
+      "codes": [
+        "error",
+        "pcall",
+        "xpcall",
+        "pcall",
+        "pcall",
+        "lua",
+        "xpcall",
+        "lua_pcall",
+        "warn",
+        "lua_setwarnf"
+      ],
+      "emphasis": [
+        "raise",
+        "catching",
+        "protected call",
+        "protected mode",
+        "error object",
+        "error message",
+        "message handler",
+        "warnings"
+      ],
+      "h1": "2.3 – Error Handling",
+      "headingAnchor": true,
+      "images": 0,
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-error",
+          "text": "error"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-pcall",
+          "text": "pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-xpcall",
+          "text": "xpcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-pcall",
+          "text": "pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-xpcall",
+          "text": "xpcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/03-c-api/11-functions-and-types-n-pcall/#lua_pcall",
+          "text": "lua_pcall"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-warn",
+          "text": "warn"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/03-c-api/14-functions-and-types-set-status/#lua_setwarnf",
+          "text": "lua_setwarnf"
+        }
+      ],
+      "paragraphs": [
+        "Several operations in Lua can raise an error. An error interrupts the normal flow of the program, which can continue by catching the error.",
+        "Lua code can explicitly raise an error by calling the error function. (This function never returns.)",
+        "To catch errors in Lua, you can do a protected call, using pcall (or xpcall). The function pcall calls a given function in protected mode. Any error while running the function stops its execution, and control returns immediately to pcall, which returns a status code.",
+        "Because Lua is an embedded extension language, Lua code starts running by a call from C code in the host program. (When you use Lua standalone, the lua application is the host program.) Usually, this call is protected; so, when an otherwise unprotected error occurs during the compilation or execution of a Lua chunk, control returns to the host, which can take appropriate measures, such as printing an error message.",
+        "Whenever there is an error, an error object is propagated with information about the error. Lua itself only generates errors whose error object is a string, but programs can generate errors with any value as the error object, except nil. (Lua will change a nil as error object to a string message.) It is up to the Lua program or its host to handle such error objects. For historical reasons, an error object is often called an error message, even though it does not have to be a string.",
+        "When you use xpcall (or lua_pcall, in C) you can give a message handler to be called in case of errors. This function is called with the original error object and returns a new error object. It is called before the error unwinds the stack, so that it can gather more information about the error, for instance by inspecting the stack and creating a stack traceback. This message handler is still protected by the protected call; so, an error inside the message handler will call the message handler again. If this loop goes on for too long, Lua breaks it and returns an appropriate message. The message handler is called only for regular runtime errors. It is not called for memory-allocation errors nor for errors while running finalizers or other message handlers.",
+        "Lua also offers a system of warnings (see warn). Unlike errors, warnings do not interfere in any way with program execution. They typically only generate a message to the user, although this behavior can be adapted from C (see lua_setwarnf)."
+      ],
+      "pre": 0,
+      "scrollWidth": 375,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/03-error-handling/",
+      "locale": "en",
+      "viewport": "mobile"
+    }
+  ],
+  "console": [],
+  "interactions": [
+    {
+      "name": "EN lua_setwarnf Enter and back",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/03-c-api/14-functions-and-types-set-status/#lua_setwarnf",
+      "h1": "C API functions and types: setallocf–stringtonumber",
+      "returned": true
+    },
+    {
+      "name": "English→日本語 same page",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/03-error-handling/",
+      "h1": "2.3 – エラー処理"
+    }
+  ],
+  "limits": [
+    "参照先API本文は未レビュー。errorページの確認を他ページへ拡張しない。"
+  ]
+}

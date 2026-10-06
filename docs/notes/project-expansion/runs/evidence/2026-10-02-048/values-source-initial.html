@@ -1,0 +1,192 @@
+<h1>2 &ndash; <a name="2">Basic Concepts</a></h1>
+
+
+
+<p>
+This section describes the basic concepts of the language.
+
+
+
+
+
+<h2>2.1 &ndash; <a name="2.1">Values and Types</a></h2>
+
+<p>
+Lua is a dynamically typed language.
+This means that
+variables do not have types; only values do.
+There are no type definitions in the language.
+All values carry their own type.
+
+
+<p>
+All values in Lua are first-class values.
+This means that all values can be stored in variables,
+passed as arguments to other functions, and returned as results.
+
+
+<p>
+There are eight basic types in Lua:
+<em>nil</em>, <em>boolean</em>, <em>number</em>,
+<em>string</em>, <em>function</em>, <em>userdata</em>,
+<em>thread</em>, and <em>table</em>.
+The type <em>nil</em> has one single value, <b>nil</b>,
+whose main property is to be different from any other value;
+it often represents the absence of a useful value.
+The type <em>boolean</em> has two values, <b>false</b> and <b>true</b>.
+Both <b>nil</b> and <b>false</b> make a condition false;
+they are collectively called <em>false values</em>.
+Any other value makes a condition true.
+Despite its name,
+<b>false</b> is frequently used as an alternative to <b>nil</b>,
+with the key difference that <b>false</b> behaves
+like a regular value in a table,
+while a <b>nil</b> in a table represents an absent key.
+
+
+<p>
+The type <em>number</em> represents both
+integer numbers and real (floating-point) numbers,
+using two subtypes: <em>integer</em> and <em>float</em>.
+Standard Lua uses 64-bit integers and double-precision (64-bit) floats,
+but you can also compile Lua so that it
+uses 32-bit integers and/or single-precision (32-bit) floats.
+The option with 32 bits for both integers and floats
+is particularly attractive
+for small machines and embedded systems.
+(See macro <code>LUA_32BITS</code> in file <code>luaconf.h</code>.)
+
+
+<p>
+Unless stated otherwise,
+any overflow when manipulating integer values <em>wrap around</em>,
+according to the usual rules of two's complement arithmetic.
+(In other words,
+the actual result is the unique representable integer
+that is equal modulo <em>2<sup>n</sup></em> to the mathematical result,
+where <em>n</em> is the number of bits of the integer type.)
+
+
+<p>
+Lua has explicit rules about when each subtype is used,
+but it also converts between them automatically as needed (see <a href="#3.4.3">&sect;3.4.3</a>).
+Therefore,
+the programmer may choose to mostly ignore the difference
+between integers and floats
+or to assume complete control over the representation of each number.
+
+
+<p>
+The type <em>string</em> represents immutable sequences of bytes.
+
+Lua is 8-bit clean:
+strings can contain any 8-bit value,
+including embedded zeros ('<code>\0</code>').
+Lua is also encoding-agnostic;
+it makes no assumptions about the contents of a string.
+The length of any string in Lua must fit in a Lua integer,
+and the string plus a small header must fit in <code>size_t</code>.
+
+
+<p>
+Lua can call (and manipulate) functions written in Lua and
+functions written in C (see <a href="#3.4.10">&sect;3.4.10</a>).
+Both are represented by the type <em>function</em>.
+
+
+<p>
+The type <em>userdata</em> is provided to allow arbitrary C&nbsp;data to
+be stored in Lua variables.
+A userdata value represents a block of raw memory.
+There are two kinds of userdata:
+<em>full userdata</em>,
+which is an object with a block of memory managed by Lua,
+and <em>light userdata</em>,
+which is simply a C&nbsp;pointer value.
+Userdata has no predefined operations in Lua,
+except assignment and identity test.
+By using <em>metatables</em>,
+the programmer can define operations for full userdata values
+(see <a href="#2.4">&sect;2.4</a>).
+Userdata values cannot be created or modified in Lua,
+only through the C&nbsp;API.
+This guarantees the integrity of data owned by
+the host program and C&nbsp;libraries.
+
+
+<p>
+The type <em>thread</em> represents independent threads of execution
+and it is used to implement coroutines (see <a href="#2.6">&sect;2.6</a>).
+Lua threads are not related to operating-system threads.
+Lua supports coroutines on all systems,
+even those that do not support threads natively.
+
+
+<p>
+The type <em>table</em> implements associative arrays,
+that is, arrays that can have as indices not only numbers,
+but any Lua value except <b>nil</b> and NaN.
+(<em>Not a Number</em> is a special floating-point value
+used by the IEEE 754 standard to represent
+undefined numerical results, such as <code>0/0</code>.)
+Tables can be <em>heterogeneous</em>;
+that is, they can contain values of all types (except <b>nil</b>).
+Any key associated to the value <b>nil</b> is not considered part of the table.
+Conversely, any key that is not part of a table has
+an associated value <b>nil</b>.
+
+
+<p>
+Tables are the sole data-structuring mechanism in Lua;
+they can be used to represent ordinary arrays, lists,
+symbol tables, sets, records, graphs, trees, etc.
+To represent records, Lua uses the field name as an index.
+The language supports this representation by
+providing <code>a.name</code> as syntactic sugar for <code>a["name"]</code>.
+There are several convenient ways to create tables in Lua
+(see <a href="#3.4.9">&sect;3.4.9</a>).
+
+
+<p>
+Like indices,
+the values of table fields can be of any type.
+In particular,
+because functions are first-class values,
+table fields can contain functions.
+Thus tables can also carry <em>methods</em> (see <a href="#3.4.11">&sect;3.4.11</a>).
+
+
+<p>
+The indexing of tables follows
+the definition of raw equality in the language.
+The expressions <code>a[i]</code> and <code>a[j]</code>
+denote the same table element
+if and only if <code>i</code> and <code>j</code> are raw equal
+(that is, equal without metamethods).
+In particular, floats with integral values
+are equal to their respective integers
+(e.g., <code>1.0 == 1</code>).
+To avoid ambiguities,
+any float used as a key that is equal to an integer
+is converted to that integer.
+For instance, if you write <code>a[2.0] = true</code>,
+the actual key inserted into the table will be the integer <code>2</code>.
+
+
+<p>
+Tables, functions, threads, and (full) userdata values are <em>objects</em>:
+variables do not actually <em>contain</em> these values,
+only <em>references</em> to them.
+Assignment, parameter passing, and function returns
+always manipulate references to such values;
+these operations do not imply any kind of copy.
+
+
+<p>
+The library function <a href="#pdf-type"><code>type</code></a> returns a string describing the type
+of a given value (see <a href="#pdf-type"><code>type</code></a>).
+
+
+
+
+

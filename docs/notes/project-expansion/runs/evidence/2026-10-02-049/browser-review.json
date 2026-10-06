@@ -1,0 +1,481 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-10-01T18:39:43.995Z",
+  "preview": "localhost:4324 (own Astro preview)",
+  "views": [
+    {
+      "blocks": [
+        {
+          "clientWidth": 919,
+          "scrollWidth": 919,
+          "text": "     X = 1       -- Ok, global by default\n     do\n       global Y  -- voids the implicit initial declaration\n       Y = 1     -- Ok, Y declared as global\n       X = 1     -- ERROR, X not declared\n     end\n     X = 2       -- Ok, global by default again",
+          "whiteSpace": "pre"
+        },
+        {
+          "clientWidth": 919,
+          "scrollWidth": 919,
+          "text": "     global print, x\n     x = 10                -- global variable\n     do                    -- new block\n       local x = x         -- new 'x', with value 10\n       print(x)            --> 10\n       x = x+1\n       do                  -- another block\n         local x = x+1     -- another 'x'\n         print(x)          --> 12\n       end\n       print(x)            --> 11\n     end\n     print(x)              --> 10  (the global one)",
+          "whiteSpace": "pre"
+        },
+        {
+          "clientWidth": 919,
+          "scrollWidth": 919,
+          "text": "     a = {}\n     local x = 20\n     for i = 1, 10 do\n       local y = 0\n       a[i] = function () y = y + 1; return x + y end\n     end",
+          "whiteSpace": "pre"
+        }
+      ],
+      "bold": [
+        "global",
+        "local"
+      ],
+      "clientWidth": 1265,
+      "emphasis": [
+        "Void statements",
+        "upvalue",
+        "external local variable",
+        "external variable",
+        "environment",
+        "global environment"
+      ],
+      "h1": "2.2 – Scopes, Variables, and Environments",
+      "headingAnchor": true,
+      "images": 0,
+      "inlineCodes": [
+        "global *",
+        "local x = x",
+        "x",
+        "x",
+        "y",
+        "x",
+        "var",
+        "_ENV.var",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV.var",
+        "_ENV._ENV.var",
+        "_ENV",
+        "_ENV",
+        "_G",
+        "_G",
+        "_ENV",
+        "load",
+        "load",
+        "loadfile",
+        "lua_setupvalue"
+      ],
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/08-variables/#3.2",
+          "text": "§3.2"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/09-statements/#3.3.3",
+          "text": "§3.3.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/09-statements/#3.3.2",
+          "text": "§3.3.2"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/03-c-api/04-registry/#4.3",
+          "text": "§4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-_G",
+          "text": "_G"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-_G",
+          "text": "_G"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-load",
+          "text": "load"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-load",
+          "text": "load"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-loadfile",
+          "text": "loadfile"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_setupvalue",
+          "text": "lua_setupvalue"
+        }
+      ],
+      "paragraphs": 14,
+      "scrollWidth": 1265,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/02-scopes-variables-and-environments/",
+      "locale": "en",
+      "viewport": "desktop"
+    },
+    {
+      "blocks": [
+        {
+          "clientWidth": 327,
+          "scrollWidth": 478,
+          "text": "     X = 1       -- Ok, global by default\n     do\n       global Y  -- voids the implicit initial declaration\n       Y = 1     -- Ok, Y declared as global\n       X = 1     -- ERROR, X not declared\n     end\n     X = 2       -- Ok, global by default again",
+          "whiteSpace": "pre"
+        },
+        {
+          "clientWidth": 327,
+          "scrollWidth": 432,
+          "text": "     global print, x\n     x = 10                -- global variable\n     do                    -- new block\n       local x = x         -- new 'x', with value 10\n       print(x)            --> 10\n       x = x+1\n       do                  -- another block\n         local x = x+1     -- another 'x'\n         print(x)          --> 12\n       end\n       print(x)            --> 11\n     end\n     print(x)              --> 10  (the global one)",
+          "whiteSpace": "pre"
+        },
+        {
+          "clientWidth": 327,
+          "scrollWidth": 440,
+          "text": "     a = {}\n     local x = 20\n     for i = 1, 10 do\n       local y = 0\n       a[i] = function () y = y + 1; return x + y end\n     end",
+          "whiteSpace": "pre"
+        }
+      ],
+      "bold": [
+        "global",
+        "local"
+      ],
+      "clientWidth": 375,
+      "emphasis": [
+        "Void statements",
+        "upvalue",
+        "external local variable",
+        "external variable",
+        "environment",
+        "global environment"
+      ],
+      "h1": "2.2 – Scopes, Variables, and Environments",
+      "headingAnchor": true,
+      "images": 0,
+      "inlineCodes": [
+        "global *",
+        "local x = x",
+        "x",
+        "x",
+        "y",
+        "x",
+        "var",
+        "_ENV.var",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV.var",
+        "_ENV._ENV.var",
+        "_ENV",
+        "_ENV",
+        "_G",
+        "_G",
+        "_ENV",
+        "load",
+        "load",
+        "loadfile",
+        "lua_setupvalue"
+      ],
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/08-variables/#3.2",
+          "text": "§3.2"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/09-statements/#3.3.3",
+          "text": "§3.3.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/02-language/09-statements/#3.3.2",
+          "text": "§3.3.2"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/03-c-api/04-registry/#4.3",
+          "text": "§4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-_G",
+          "text": "_G"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-_G",
+          "text": "_G"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-load",
+          "text": "load"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-load",
+          "text": "load"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/05-standard-library/03-basic-functions/#pdf-loadfile",
+          "text": "loadfile"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/en/03-c-api/17-debug-interface/#lua_setupvalue",
+          "text": "lua_setupvalue"
+        }
+      ],
+      "paragraphs": 14,
+      "scrollWidth": 375,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/02-scopes-variables-and-environments/",
+      "locale": "en",
+      "viewport": "mobile"
+    },
+    {
+      "blocks": [
+        {
+          "clientWidth": 919,
+          "scrollWidth": 919,
+          "text": "     X = 1       -- Ok, global by default\n     do\n       global Y  -- voids the implicit initial declaration\n       Y = 1     -- Ok, Y declared as global\n       X = 1     -- ERROR, X not declared\n     end\n     X = 2       -- Ok, global by default again",
+          "whiteSpace": "pre"
+        },
+        {
+          "clientWidth": 919,
+          "scrollWidth": 919,
+          "text": "     global print, x\n     x = 10                -- global variable\n     do                    -- new block\n       local x = x         -- new 'x', with value 10\n       print(x)            --> 10\n       x = x+1\n       do                  -- another block\n         local x = x+1     -- another 'x'\n         print(x)          --> 12\n       end\n       print(x)            --> 11\n     end\n     print(x)              --> 10  (the global one)",
+          "whiteSpace": "pre"
+        },
+        {
+          "clientWidth": 919,
+          "scrollWidth": 919,
+          "text": "     a = {}\n     local x = 20\n     for i = 1, 10 do\n       local y = 0\n       a[i] = function () y = y + 1; return x + y end\n     end",
+          "whiteSpace": "pre"
+        }
+      ],
+      "bold": [
+        "global",
+        "local"
+      ],
+      "clientWidth": 1265,
+      "emphasis": [
+        "Void文",
+        "アップバリュー",
+        "外部ローカル変数",
+        "外部変数",
+        "環境",
+        "グローバル環境"
+      ],
+      "h1": "2.2 – スコープ、変数、環境",
+      "headingAnchor": true,
+      "images": 0,
+      "inlineCodes": [
+        "global *",
+        "local x = x",
+        "x",
+        "x",
+        "y",
+        "x",
+        "var",
+        "_ENV.var",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV.var",
+        "_ENV._ENV.var",
+        "_ENV",
+        "_ENV",
+        "_G",
+        "_G",
+        "_ENV",
+        "load",
+        "load",
+        "loadfile",
+        "lua_setupvalue"
+      ],
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/08-variables/#3.2",
+          "text": "§3.2"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/09-statements/#3.3.3",
+          "text": "§3.3.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/09-statements/#3.3.2",
+          "text": "§3.3.2"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/03-c-api/04-registry/#4.3",
+          "text": "§4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-_G",
+          "text": "_G"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-_G",
+          "text": "_G"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-load",
+          "text": "load"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-load",
+          "text": "load"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-loadfile",
+          "text": "loadfile"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/03-c-api/17-debug-interface/#lua_setupvalue",
+          "text": "lua_setupvalue"
+        }
+      ],
+      "paragraphs": 14,
+      "scrollWidth": 1265,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/02-scopes-variables-and-environments/",
+      "locale": "ja",
+      "viewport": "desktop"
+    },
+    {
+      "blocks": [
+        {
+          "clientWidth": 327,
+          "scrollWidth": 478,
+          "text": "     X = 1       -- Ok, global by default\n     do\n       global Y  -- voids the implicit initial declaration\n       Y = 1     -- Ok, Y declared as global\n       X = 1     -- ERROR, X not declared\n     end\n     X = 2       -- Ok, global by default again",
+          "whiteSpace": "pre"
+        },
+        {
+          "clientWidth": 327,
+          "scrollWidth": 432,
+          "text": "     global print, x\n     x = 10                -- global variable\n     do                    -- new block\n       local x = x         -- new 'x', with value 10\n       print(x)            --> 10\n       x = x+1\n       do                  -- another block\n         local x = x+1     -- another 'x'\n         print(x)          --> 12\n       end\n       print(x)            --> 11\n     end\n     print(x)              --> 10  (the global one)",
+          "whiteSpace": "pre"
+        },
+        {
+          "clientWidth": 327,
+          "scrollWidth": 440,
+          "text": "     a = {}\n     local x = 20\n     for i = 1, 10 do\n       local y = 0\n       a[i] = function () y = y + 1; return x + y end\n     end",
+          "whiteSpace": "pre"
+        }
+      ],
+      "bold": [
+        "global",
+        "local"
+      ],
+      "clientWidth": 375,
+      "emphasis": [
+        "Void文",
+        "アップバリュー",
+        "外部ローカル変数",
+        "外部変数",
+        "環境",
+        "グローバル環境"
+      ],
+      "h1": "2.2 – スコープ、変数、環境",
+      "headingAnchor": true,
+      "images": 0,
+      "inlineCodes": [
+        "global *",
+        "local x = x",
+        "x",
+        "x",
+        "y",
+        "x",
+        "var",
+        "_ENV.var",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV",
+        "_ENV.var",
+        "_ENV._ENV.var",
+        "_ENV",
+        "_ENV",
+        "_G",
+        "_G",
+        "_ENV",
+        "load",
+        "load",
+        "loadfile",
+        "lua_setupvalue"
+      ],
+      "links": [
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/08-variables/#3.2",
+          "text": "§3.2"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/09-statements/#3.3.3",
+          "text": "§3.3.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/02-language/09-statements/#3.3.2",
+          "text": "§3.3.2"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/03-c-api/04-registry/#4.3",
+          "text": "§4.3"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-_G",
+          "text": "_G"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-_G",
+          "text": "_G"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-load",
+          "text": "load"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-load",
+          "text": "load"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/05-standard-library/03-basic-functions/#pdf-loadfile",
+          "text": "loadfile"
+        },
+        {
+          "href": "/docs/lua/v5-5-1/ja/03-c-api/17-debug-interface/#lua_setupvalue",
+          "text": "lua_setupvalue"
+        }
+      ],
+      "paragraphs": 14,
+      "scrollWidth": 375,
+      "tables": 0,
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/02-language/02-scopes-variables-and-environments/",
+      "locale": "ja",
+      "viewport": "mobile"
+    }
+  ],
+  "console": [],
+  "interactions": [
+    {
+      "name": "JA lua_setupvalue Enterと戻る",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/ja/03-c-api/17-debug-interface/#lua_setupvalue",
+      "h1": "4.7 – デバッグインターフェース",
+      "returned": true
+    },
+    {
+      "name": "JA→English same page",
+      "url": "http://localhost:4324/docs/lua/v5-5-1/en/02-language/02-scopes-variables-and-environments/",
+      "h1": "2.2 – Scopes, Variables, and Environments"
+    },
+    {
+      "name": "mobile pre keyboard ArrowRight",
+      "clientWidth": 327,
+      "focused": true,
+      "scrollLeft": 40,
+      "scrollWidth": 440
+    }
+  ],
+  "limits": [
+    "モバイルcode3枠はpre改行を保存し枠内horizontal scrollbarで全文を閲覧。document全体のoverflowはない。",
+    "globalはsyntax highlight現grammarで通常textだがliteralコードがsourceと完全一致。keyword追加などの仕様推測をしない。",
+    "移動先debug interface本文は未レビュー。"
+  ]
+}
