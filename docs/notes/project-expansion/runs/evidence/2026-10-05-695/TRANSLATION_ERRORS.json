@@ -1,0 +1,535 @@
+{
+  "page": "reference/errors",
+  "at": "2026-10-04T19:27:12.130994+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/errors.rst",
+      "sha256": "e937e4e485c793bfb1f59c6bcc6e95937f8cf86bd7b8c835b632c94c70dae810"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/errors.md",
+      "sha256": "010be54945ff141a52576dd3d7063f9ae614e07abc5bc27c77390fa78d0769dd"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/errors.md",
+      "sha256": "21c5263c2cafa3972015c9c5c4ba0a94fe29c84c722d1c2c5663f700439ab05f"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire title/body/headings/all descriptions/version notes/admonitions/labels/footer",
+  "nodePairs": [
+    {
+      "en": "Error handling",
+      "ja": "エラー処理"
+    },
+    {
+      "en": "In libuv errors are negative numbered constants. As a rule of thumb, whenever\nthere is a status parameter, or an API functions returns an integer, a negative\nnumber will imply an error.",
+      "ja": "libuvでは、エラーは負の値を持つ定数で表されます。目安として、状態を表す引数がある場合や、API関数が整数を返す場合、負の値はエラーを意味します。"
+    },
+    {
+      "en": "When a function which takes a callback returns an error, the callback will never\nbe called.",
+      "ja": "コールバックを受け取る関数がエラーを返した場合、そのコールバックが呼び出されることはありません。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "Implementation detail: on Unix error codes are the negated ",
+      "ja": "実装の詳細: Unixでは、エラーコードは符号を反転した"
+    },
+    {
+      "en": "errno",
+      "ja": "errno"
+    },
+    {
+      "en": " (or ",
+      "ja": "（つまり"
+    },
+    {
+      "en": "-errno",
+      "ja": "-errno"
+    },
+    {
+      "en": "), while on\nWindows they are defined by libuv to arbitrary negative numbers.",
+      "ja": "）です。一方、Windowsではlibuvが任意の負の値として定義しています。"
+    },
+    {
+      "en": "Error constants",
+      "ja": "エラー定数"
+    },
+    {
+      "en": "argument list too long",
+      "ja": "引数リストが長すぎる"
+    },
+    {
+      "en": "permission denied",
+      "ja": "アクセスが拒否された"
+    },
+    {
+      "en": "address already in use",
+      "ja": "アドレスが既に使われている"
+    },
+    {
+      "en": "address not available",
+      "ja": "アドレスを利用できない"
+    },
+    {
+      "en": "address family not supported",
+      "ja": "アドレスファミリーがサポートされていない"
+    },
+    {
+      "en": "resource temporarily unavailable",
+      "ja": "リソースを一時的に利用できない"
+    },
+    {
+      "en": "address family not supported",
+      "ja": "アドレスファミリーがサポートされていない"
+    },
+    {
+      "en": "temporary failure",
+      "ja": "一時的な失敗"
+    },
+    {
+      "en": "bad ai_flags value",
+      "ja": "ai_flagsの値が不正"
+    },
+    {
+      "en": "invalid value for hints",
+      "ja": "hintsの値が不正"
+    },
+    {
+      "en": "request canceled",
+      "ja": "リクエストがキャンセルされた"
+    },
+    {
+      "en": "permanent failure",
+      "ja": "恒久的な失敗"
+    },
+    {
+      "en": "ai_family not supported",
+      "ja": "ai_familyがサポートされていない"
+    },
+    {
+      "en": "out of memory",
+      "ja": "メモリ不足"
+    },
+    {
+      "en": "no address",
+      "ja": "アドレスがない"
+    },
+    {
+      "en": "unknown node or service",
+      "ja": "不明なノードまたはサービス"
+    },
+    {
+      "en": "argument buffer overflow",
+      "ja": "引数バッファのオーバーフロー"
+    },
+    {
+      "en": "resolved protocol is unknown",
+      "ja": "解決されたプロトコルが不明"
+    },
+    {
+      "en": "service not available for socket type",
+      "ja": "このソケットの種類ではサービスを利用できない"
+    },
+    {
+      "en": "socket type not supported",
+      "ja": "ソケットの種類がサポートされていない"
+    },
+    {
+      "en": "connection already in progress",
+      "ja": "接続処理が既に進行中"
+    },
+    {
+      "en": "bad file descriptor",
+      "ja": "ファイル記述子が不正"
+    },
+    {
+      "en": "resource busy or locked",
+      "ja": "リソースが使用中またはロックされている"
+    },
+    {
+      "en": "operation canceled",
+      "ja": "操作がキャンセルされた"
+    },
+    {
+      "en": "invalid Unicode character",
+      "ja": "不正なUnicode文字"
+    },
+    {
+      "en": "software caused connection abort",
+      "ja": "ソフトウェアが接続を中断させた"
+    },
+    {
+      "en": "connection refused",
+      "ja": "接続が拒否された"
+    },
+    {
+      "en": "connection reset by peer",
+      "ja": "接続が相手側によってリセットされた"
+    },
+    {
+      "en": "destination address required",
+      "ja": "宛先アドレスが必要"
+    },
+    {
+      "en": "file already exists",
+      "ja": "ファイルが既に存在する"
+    },
+    {
+      "en": "bad address in system call argument",
+      "ja": "システムコールの引数のアドレスが不正"
+    },
+    {
+      "en": "file too large",
+      "ja": "ファイルが大きすぎる"
+    },
+    {
+      "en": "host is unreachable",
+      "ja": "ホストに到達できない"
+    },
+    {
+      "en": "interrupted system call",
+      "ja": "システムコールが中断された"
+    },
+    {
+      "en": "invalid argument",
+      "ja": "引数が不正"
+    },
+    {
+      "en": "i/o error",
+      "ja": "入出力エラー"
+    },
+    {
+      "en": "socket is already connected",
+      "ja": "ソケットは既に接続されている"
+    },
+    {
+      "en": "illegal operation on a directory",
+      "ja": "ディレクトリに対する不正な操作"
+    },
+    {
+      "en": "too many symbolic links encountered",
+      "ja": "シンボリックリンクが多すぎる"
+    },
+    {
+      "en": "too many open files",
+      "ja": "開いているファイルが多すぎる"
+    },
+    {
+      "en": "message too long",
+      "ja": "メッセージが長すぎる"
+    },
+    {
+      "en": "name too long",
+      "ja": "名前が長すぎる"
+    },
+    {
+      "en": "network is down",
+      "ja": "ネットワークが停止している"
+    },
+    {
+      "en": "network is unreachable",
+      "ja": "ネットワークに到達できない"
+    },
+    {
+      "en": "file table overflow",
+      "ja": "ファイルテーブルのオーバーフロー"
+    },
+    {
+      "en": "no buffer space available",
+      "ja": "利用できるバッファ領域がない"
+    },
+    {
+      "en": "no such device",
+      "ja": "該当するデバイスがない"
+    },
+    {
+      "en": "no such file or directory",
+      "ja": "該当するファイルまたはディレクトリがない"
+    },
+    {
+      "en": "not enough memory",
+      "ja": "メモリが不足している"
+    },
+    {
+      "en": "machine is not on the network",
+      "ja": "マシンがネットワーク上にない"
+    },
+    {
+      "en": "protocol not available",
+      "ja": "プロトコルを利用できない"
+    },
+    {
+      "en": "no space left on device",
+      "ja": "デバイスに空き領域がない"
+    },
+    {
+      "en": "function not implemented",
+      "ja": "関数が実装されていない"
+    },
+    {
+      "en": "socket is not connected",
+      "ja": "ソケットが接続されていない"
+    },
+    {
+      "en": "not a directory",
+      "ja": "ディレクトリではない"
+    },
+    {
+      "en": "directory not empty",
+      "ja": "ディレクトリが空ではない"
+    },
+    {
+      "en": "socket operation on non-socket",
+      "ja": "ソケットではないものに対するソケット操作"
+    },
+    {
+      "en": "operation not supported on socket",
+      "ja": "ソケットでサポートされていない操作"
+    },
+    {
+      "en": "value too large for defined data type",
+      "ja": "定義されたデータ型に対して値が大きすぎる"
+    },
+    {
+      "en": "operation not permitted",
+      "ja": "操作が許可されていない"
+    },
+    {
+      "en": "broken pipe",
+      "ja": "パイプが切断されている"
+    },
+    {
+      "en": "protocol error",
+      "ja": "プロトコルエラー"
+    },
+    {
+      "en": "protocol not supported",
+      "ja": "プロトコルがサポートされていない"
+    },
+    {
+      "en": "protocol wrong type for socket",
+      "ja": "ソケットに適合しない種類のプロトコル"
+    },
+    {
+      "en": "result too large",
+      "ja": "結果が大きすぎる"
+    },
+    {
+      "en": "read-only file system",
+      "ja": "読み取り専用のファイルシステム"
+    },
+    {
+      "en": "cannot send after transport endpoint shutdown",
+      "ja": "通信端点のシャットダウン後は送信できない"
+    },
+    {
+      "en": "invalid seek",
+      "ja": "シークが不正"
+    },
+    {
+      "en": "no such process",
+      "ja": "該当するプロセスがない"
+    },
+    {
+      "en": "connection timed out",
+      "ja": "接続がタイムアウトした"
+    },
+    {
+      "en": "text file is busy",
+      "ja": "テキストファイルが使用中"
+    },
+    {
+      "en": "cross-device link not permitted",
+      "ja": "デバイスをまたぐリンクは許可されていない"
+    },
+    {
+      "en": "unknown error",
+      "ja": "不明なエラー"
+    },
+    {
+      "en": "end of file",
+      "ja": "ファイルの終端"
+    },
+    {
+      "en": "no such device or address",
+      "ja": "該当するデバイスまたはアドレスがない"
+    },
+    {
+      "en": "too many links",
+      "ja": "リンクが多すぎる"
+    },
+    {
+      "en": "inappropriate ioctl for device",
+      "ja": "デバイスに適合しないioctl"
+    },
+    {
+      "en": "inappropriate file type or format",
+      "ja": "適合しないファイルの種類または形式"
+    },
+    {
+      "en": "illegal byte sequence",
+      "ja": "不正なバイト列"
+    },
+    {
+      "en": "socket type not supported",
+      "ja": "ソケットの種類がサポートされていない"
+    },
+    {
+      "en": "protocol driver not attached",
+      "ja": "プロトコルドライバーが接続されていない"
+    },
+    {
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "en": "Macro that expands to a series of invocations of ",
+      "ja": "上記の各エラー定数に対する"
+    },
+    {
+      "en": "iter_macro",
+      "ja": "iter_macro"
+    },
+    {
+      "en": " for\neach of the error constants above. ",
+      "ja": "の一連の呼び出しに展開されるマクロです。"
+    },
+    {
+      "en": "iter_macro",
+      "ja": "iter_macro"
+    },
+    {
+      "en": " is invoked with two\narguments: the name of the error constant without the ",
+      "ja": "は2つの引数で呼び出されます。1つ目は"
+    },
+    {
+      "en": "UV_",
+      "ja": "UV_"
+    },
+    {
+      "en": " prefix,\nand the error message string literal.",
+      "ja": "接頭辞を除いたエラー定数の名前、2つ目はエラーメッセージの文字列リテラルです。"
+    },
+    {
+      "en": "Returns the error message for the given error code.  Leaks a few bytes\nof memory when you call it with an unknown error code.",
+      "ja": "指定されたエラーコードのエラーメッセージを返します。不明なエラーコードで呼び出すと、数バイトのメモリがリークします。"
+    },
+    {
+      "en": "Returns the error message for the given error code. The zero-terminated\nmessage is stored in the user-supplied buffer ",
+      "ja": "指定されたエラーコードのエラーメッセージを返します。NUL終端のメッセージは、利用者が渡すバッファ"
+    },
+    {
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "en": " of at most ",
+      "ja": "に格納されます。バッファのサイズは最大"
+    },
+    {
+      "en": "buflen",
+      "ja": "buflen"
+    },
+    {
+      "en": " bytes.",
+      "ja": "バイトです。"
+    },
+    {
+      "en": "New in version 1.22.0.",
+      "ja": "バージョン1.22.0で追加。"
+    },
+    {
+      "en": "Returns the error name for the given error code.  Leaks a few bytes\nof memory when you call it with an unknown error code.",
+      "ja": "指定されたエラーコードのエラー名を返します。不明なエラーコードで呼び出すと、数バイトのメモリがリークします。"
+    },
+    {
+      "en": "Returns the error name for the given error code. The zero-terminated\nname is stored in the user-supplied buffer ",
+      "ja": "指定されたエラーコードのエラー名を返します。NUL終端の名前は、利用者が渡すバッファ"
+    },
+    {
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "en": " of at most ",
+      "ja": "に格納されます。バッファのサイズは最大"
+    },
+    {
+      "en": "buflen",
+      "ja": "buflen"
+    },
+    {
+      "en": " bytes.",
+      "ja": "バイトです。"
+    },
+    {
+      "en": "New in version 1.22.0.",
+      "ja": "バージョン1.22.0で追加。"
+    },
+    {
+      "en": "Returns the libuv error code equivalent to the given platform dependent error\ncode: POSIX error codes on Unix (the ones stored in ",
+      "ja": "指定されたプラットフォーム依存のエラーコードに対応するlibuvのエラーコードを返します。UnixではPOSIXエラーコード（"
+    },
+    {
+      "en": "errno",
+      "ja": "errno"
+    },
+    {
+      "en": "), and Win32 error\ncodes on Windows (those returned by ",
+      "ja": "に格納されるもの）、WindowsではWin32エラーコード（"
+    },
+    {
+      "en": "GetLastError()",
+      "ja": "GetLastError()"
+    },
+    {
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "en": "WSAGetLastError()",
+      "ja": "WSAGetLastError()"
+    },
+    {
+      "en": ").",
+      "ja": "が返すもの）が対象です。"
+    },
+    {
+      "en": "If ",
+      "ja": ""
+    },
+    {
+      "en": "sys_errno",
+      "ja": "sys_errno"
+    },
+    {
+      "en": " is already a libuv error, it is simply returned.",
+      "ja": "が既にlibuvのエラーであれば、その値をそのまま返します。"
+    },
+    {
+      "en": "Changed in version 1.10.0: ",
+      "ja": "バージョン1.10.0で変更: "
+    },
+    {
+      "en": "function declared public.",
+      "ja": "関数が公開APIとして宣言されました。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "apiDeclarationsExact": 87,
+    "preBlocksExact": 0,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

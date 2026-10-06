@@ -1,0 +1,223 @@
+{
+  "page": "reference/timer",
+  "at": "2026-10-04T19:41:24.866141+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/timer.rst",
+      "sha256": "cb3fa085f7c7ef97da074ad5a0e0637fb93127cb69edc2aeaf6e253d490a8951"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/timer.md",
+      "sha256": "45fcff586631a17391c82aa14d5c5ac2f96078adbf5db862f60a31c8e3875573"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/timer.md",
+      "sha256": "45f0a58f382f24999e28604ce0e4684b55e56e63e0ea898d587e45e1ce40f976"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire title/body/headings/all descriptions/version notes/admonitions/labels/footer",
+  "nodePairs": [
+    {
+      "en": " — Timer handle",
+      "ja": " — タイマーハンドル"
+    },
+    {
+      "en": "Timer handles are used to schedule callbacks to be called in the future.",
+      "ja": "タイマーハンドルは、将来呼び出すコールバックをスケジュールするために使います。"
+    },
+    {
+      "en": "Timers are either single-shot or repeating. Repeating timers do not adjust\nfor overhead but are rearmed relative to the event loop’s idea of “now”.",
+      "ja": "タイマーには、1回だけ実行するものと、繰り返し実行するものがあります。繰り返しタイマーはオーバーヘッドを補正せず、イベントループが認識する「現在時刻」を基準として再設定されます。"
+    },
+    {
+      "en": "Libuv updates its idea of “now” right before executing timer callbacks, and\nright after waking up from waiting for I/O. See also ",
+      "ja": "libuvは、タイマーのコールバックを実行する直前と、入出力待ちから復帰した直後に、認識している「現在時刻」を更新します。"
+    },
+    {
+      "en": ".",
+      "ja": "も参照してください。"
+    },
+    {
+      "en": "Example: a repeating timer with a 50 ms interval whose callback takes 17 ms\nto complete, runs again 33 ms later. If other tasks take longer than 33 ms,\nthe timer callback runs as soon as possible.",
+      "ja": "例: 間隔50 msの繰り返しタイマーで、コールバックの完了に17 msかかる場合、33 ms後に再び実行されます。他のタスクが33 msを超えて時間を使う場合、タイマーのコールバックは実行可能になり次第呼び出されます。"
+    },
+    {
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "en": "Timer handle type.",
+      "ja": "タイマーハンドルの型。"
+    },
+    {
+      "en": "Type definition for callback passed to ",
+      "ja": ""
+    },
+    {
+      "en": ".",
+      "ja": "に渡すコールバックの型定義です。"
+    },
+    {
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "en": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "en": " members also apply.",
+      "ja": "のメンバーも適用されます。"
+    },
+    {
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "en": "Initialize the handle.",
+      "ja": "ハンドルを初期化します。"
+    },
+    {
+      "en": "Start the timer. ",
+      "ja": "タイマーを開始します。"
+    },
+    {
+      "en": "timeout",
+      "ja": "timeout"
+    },
+    {
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "en": "repeat",
+      "ja": "repeat"
+    },
+    {
+      "en": " are in milliseconds.",
+      "ja": "の単位はミリ秒です。"
+    },
+    {
+      "en": "If ",
+      "ja": ""
+    },
+    {
+      "en": "timeout",
+      "ja": "timeout"
+    },
+    {
+      "en": " is zero, the callback fires on the next event loop iteration.\nIf ",
+      "ja": "が0なら、次のイベントループの反復でコールバックが呼び出されます。"
+    },
+    {
+      "en": "repeat",
+      "ja": "repeat"
+    },
+    {
+      "en": " is non-zero, the callback fires first after ",
+      "ja": "が0以外なら、最初のコールバックは"
+    },
+    {
+      "en": "timeout",
+      "ja": "timeout"
+    },
+    {
+      "en": "\nmilliseconds and then repeatedly after ",
+      "ja": "ミリ秒後に呼び出され、その後は"
+    },
+    {
+      "en": "repeat",
+      "ja": "repeat"
+    },
+    {
+      "en": " milliseconds.",
+      "ja": "ミリ秒ごとに繰り返し呼び出されます。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "Does not update the event loop’s concept of “now”. See ",
+      "ja": "イベントループが認識する「現在時刻」は更新しません。詳しくは"
+    },
+    {
+      "en": " for more information.",
+      "ja": "を参照してください。"
+    },
+    {
+      "en": "If the timer is already active, it is simply updated.",
+      "ja": "タイマーが既にアクティブなら、そのタイマーを更新します。"
+    },
+    {
+      "en": "Stop the timer, the callback will not be called anymore.",
+      "ja": "タイマーを停止します。以後、コールバックは呼び出されません。"
+    },
+    {
+      "en": "Stop the timer, and if it is repeating restart it using the repeat value\nas the timeout. If the timer has never been started before it returns\nUV_EINVAL.",
+      "ja": "タイマーを停止し、繰り返しタイマーであれば、繰り返しの値をタイムアウトとして再開します。タイマーを一度も開始したことがなければ、UV_EINVALを返します。"
+    },
+    {
+      "en": "Set the repeat interval value in milliseconds. The timer will be scheduled\nto run on the given interval, regardless of the callback execution\nduration, and will follow normal timer semantics in the case of a\ntime-slice overrun.",
+      "ja": "繰り返し間隔をミリ秒で設定します。コールバックの実行時間にかかわらず、指定された間隔で実行するようタイマーをスケジュールします。タイムスライスを超過した場合は、通常のタイマーの動作規則に従います。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "If the repeat value is set from a timer callback it does not immediately take effect.\nIf the timer was non-repeating before, it will have been stopped. If it was repeating,\nthen the old repeat value will have been used to schedule the next timeout.",
+      "ja": "タイマーのコールバックから繰り返しの値を設定しても、すぐには反映されません。それまで繰り返しを行っていなかったタイマーは、既に停止しています。繰り返しタイマーであった場合は、以前の繰り返しの値を使って次のタイムアウトがスケジュールされています。"
+    },
+    {
+      "en": "Get the timer repeat value.",
+      "ja": "タイマーの繰り返しの値を取得します。"
+    },
+    {
+      "en": "Get the timer due value or 0 if it has expired. The time is relative to\n",
+      "ja": "タイマーの期限までの時間を取得します。既に期限が切れていれば0を返します。この時間は"
+    },
+    {
+      "en": ".",
+      "ja": "を基準にした相対値です。"
+    },
+    {
+      "en": "New in version 1.40.0.",
+      "ja": "バージョン1.40.0で追加。"
+    },
+    {
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "en": " API functions also apply.",
+      "ja": "のAPI関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "apiDeclarationsExact": 9,
+    "preBlocksExact": 0,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "page": "reference/threadpool",
+  "at": "2026-10-04T19:41:24.881574+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/threadpool.rst",
+      "sha256": "6e99b4a0e98185bcd424c677def5f29796fb223f123e582cb8e89ec4ba9ee2c3"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/threadpool.md",
+      "sha256": "a497a103c0fc66248f5d84e9eca6d8e0741103bcf039f2cd7eeec7ba67157273"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/threadpool.md",
+      "sha256": "8aa797a5f62b45d92b9ef9ec720c8c31f77e1af0c40862a465e1eaebdb460520"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire title/body/headings/all descriptions/version notes/admonitions/labels/footer",
+  "nodePairs": [
+    {
+      "en": "Thread pool work scheduling",
+      "ja": "スレッドプールの作業スケジューリング"
+    },
+    {
+      "en": "libuv provides a threadpool which can be used to run user code and get notified\nin the loop thread. This thread pool is internally used to run all file system\noperations, as well as getaddrinfo and getnameinfo requests.",
+      "ja": "libuvは、利用者のコードを実行し、イベントループのスレッドで通知を受け取るために使えるスレッドプールを提供します。内部では、このスレッドプールを使って、すべてのファイルシステム操作と、getaddrinfoおよびgetnameinfoのリクエストを実行します。"
+    },
+    {
+      "en": "Its default size is 4, but it can be changed at startup time by setting the\n",
+      "ja": "既定のサイズは4ですが、起動時に環境変数"
+    },
+    {
+      "en": " environment variable to any value (the absolute maximum\nis 1024).",
+      "ja": "を任意の値に設定することで変更できます（絶対的な上限は1024です）。"
+    },
+    {
+      "en": "Changed in version 1.30.0: ",
+      "ja": "バージョン1.30.0で変更: "
+    },
+    {
+      "en": "the maximum UV_THREADPOOL_SIZE allowed was increased from 128 to 1024.",
+      "ja": "UV_THREADPOOL_SIZEで許可される最大値が128から1024に引き上げられました。"
+    },
+    {
+      "en": "Changed in version 1.45.0: ",
+      "ja": "バージョン1.45.0で変更: "
+    },
+    {
+      "en": "threads now have an 8 MB stack instead of the\n(sometimes too low) platform default.",
+      "ja": "スレッドのスタックは、プラットフォームの既定値（小さすぎる場合があります）ではなく、8 MBになりました。"
+    },
+    {
+      "en": "Changed in version 1.50.0: ",
+      "ja": "バージョン1.50.0で変更: "
+    },
+    {
+      "en": "threads now have a default name of libuv-worker.",
+      "ja": "スレッドの既定の名前がlibuv-workerになりました。"
+    },
+    {
+      "en": "The threadpool is global and shared across all event loops. When a particular\nfunction makes use of the threadpool (e.g. when using ",
+      "ja": "スレッドプールはグローバルであり、すべてのイベントループで共有されます。ある関数がスレッドプールを使うとき（たとえば、"
+    },
+    {
+      "en": ")\nlibuv preallocates and initializes the maximum number of threads allowed by\n",
+      "ja": "を使う場合など）、libuvは"
+    },
+    {
+      "en": ". More threads usually means more throughput but a higher\nmemory footprint. Thread stacks grow lazily on most platforms though.",
+      "ja": "で許可された最大数のスレッドを事前に割り当て、初期化します。通常、スレッドを増やすとスループットも上がりますが、メモリ使用量も増えます。ただし、ほとんどのプラットフォームでは、スレッドのスタックは必要になったときに拡張されます。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "Note that even though a global thread pool which is shared across all events\nloops is used, the functions are not thread safe.",
+      "ja": "すべてのイベントループで共有されるグローバルなスレッドプールを使っていても、これらの関数はスレッドセーフではないことに注意してください。"
+    },
+    {
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "en": "Work request type.",
+      "ja": "作業リクエストの型。"
+    },
+    {
+      "en": "Callback passed to ",
+      "ja": ""
+    },
+    {
+      "en": " which will be run on the thread\npool.",
+      "ja": "に渡すコールバックで、スレッドプール上で実行されます。"
+    },
+    {
+      "en": "Callback passed to ",
+      "ja": ""
+    },
+    {
+      "en": " which will be called on the loop\nthread after the work on the threadpool has been completed. If the work\nwas cancelled using ",
+      "ja": "に渡すコールバックで、スレッドプールでの作業が完了した後、イベントループのスレッドで呼び出されます。"
+    },
+    {
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "en": " will be ",
+      "ja": "は"
+    },
+    {
+      "en": ".",
+      "ja": "になります。"
+    },
+    {
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "en": "Loop that started this request and where completion will be reported.\nReadonly.",
+      "ja": "このリクエストを開始したイベントループであり、完了の報告先です。読み取り専用です。"
+    },
+    {
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "en": " members also apply.",
+      "ja": "のメンバーも適用されます。"
+    },
+    {
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "en": "Initializes a work request which will run the given ",
+      "ja": "指定された"
+    },
+    {
+      "en": "work_cb",
+      "ja": "work_cb"
+    },
+    {
+      "en": " in a thread\nfrom the threadpool. Once ",
+      "ja": "をスレッドプールのスレッドで実行する作業リクエストを初期化します。"
+    },
+    {
+      "en": "work_cb",
+      "ja": "work_cb"
+    },
+    {
+      "en": " is completed, ",
+      "ja": "が完了すると、"
+    },
+    {
+      "en": "after_work_cb",
+      "ja": "after_work_cb"
+    },
+    {
+      "en": " will be\ncalled on the loop thread.",
+      "ja": "がイベントループのスレッドで呼び出されます。"
+    },
+    {
+      "en": "This request can be cancelled with ",
+      "ja": "このリクエストは"
+    },
+    {
+      "en": ".",
+      "ja": "でキャンセルできます。"
+    },
+    {
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "en": " API functions also apply.",
+      "ja": "のAPI関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "apiDeclarationsExact": 5,
+    "preBlocksExact": 0,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

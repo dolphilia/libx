@@ -1,0 +1,47 @@
+{
+  "page": "reference/prepare",
+  "status": "passed",
+  "at": "2026-10-04T19:37:38.676Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page content review after697 draft and actual renderer checks. Read complete fixed RST, canonical narrative and declarations, complete Japanese page and source footer. Evaluated preservation, meaning, negative/exception/ordering and readability independently of machine assertions.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/prepare.rst",
+      "sha256": "ce154cd78622803a12ee50985a3a287076d40321ee2077497e0c20948e798736"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/prepare.md",
+      "sha256": "fd6f9ef3f2c44baeec12df6ee6f90ecbe2834ab8e2191a043fc4512fa79a9c75"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/prepare.md",
+      "sha256": "21569730b59eb884824e8b1fb2859c76069d3112da93214e7fef553bb9bd033f"
+    }
+  ],
+  "coverage": {
+    "original": "entire prepare.rst",
+    "canonical": "entire headings/types/API descriptions/return fields/admonitions/inherited references",
+    "translation": "entire page including footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "result": "Callback once per loop iteration immediately BEFORE I/O polling; not confused with Check after polling."
+    },
+    {
+      "result": "Both type declarations and all3 functions retained. Callback typedef points to uv_prepare_start."
+    },
+    {
+      "result": "init always succeeds and returns0. start always succeeds except cb NULL; success0 and cb==NULL ->UV_EINVAL retained."
+    },
+    {
+      "result": "stop guarantees no further callback, always succeeds, returns0. Base uv_handle_t members and API inheritances preserved."
+    }
+  ],
+  "readability": "Natural Japanese sentences and consistent handle labels; context-specific endings retain typedef, NULL exception and return condition. No technical content added.",
+  "footer": "Fixed1.53.0/commit/CC BY4.0 and all original software/component/generator licences linked outside body; editable RST correct per page, unofficial translation explicit. No approval-conversation language.",
+  "corrections": [],
+  "projectFullReviewComplete": false,
+  "remaining": "Other35pages translation/review, final JA link switch and all content/native/integration/publication gates."
+}

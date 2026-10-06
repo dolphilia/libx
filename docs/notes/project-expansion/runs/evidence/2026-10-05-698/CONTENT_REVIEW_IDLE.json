@@ -1,0 +1,47 @@
+{
+  "page": "reference/idle",
+  "status": "passed",
+  "at": "2026-10-04T19:37:38.676Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full-page content review after697 draft and actual renderer checks. Read complete fixed RST, canonical narrative and declarations, complete Japanese page and source footer. Evaluated preservation, meaning, negative/exception/ordering and readability independently of machine assertions.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/idle.rst",
+      "sha256": "b292d099199be6c65e344dde0bc32fb9ddd75d3e10c40d18e5ca5308e35b1c32"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/idle.md",
+      "sha256": "cd3cc11e079f156801fbfcc8613546a75c0a55fb55c59689b60f8a733f41ea44"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/idle.md",
+      "sha256": "dbed28054653fdd604673d5c521d6f2b7b01ab5e85f12bee710859ab4235444d"
+    }
+  ],
+  "coverage": {
+    "original": "entire idle.rst",
+    "canonical": "entire headings/types/API descriptions/return fields/admonitions/inherited references",
+    "translation": "entire page including footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "result": "Callback once per loop iteration immediately BEFORE uv_prepare_t handles, not directly rephrased as before/after I/O poll."
+    },
+    {
+      "result": "Active Idle forces zero-timeout polling instead of blocking for I/O. Warning keeps every-iteration callbacks even when loop not actually idle."
+    },
+    {
+      "result": "Both types and all3 APIs retained; callback typedef uv_idle_start, init always succeeds/0, start except NULL with0/UV_EINVAL, stop no further callback/always0 preserved."
+    },
+    {
+      "result": "Inherited base handle members/API apply. No misleading waiting-for-inactivity explanation introduced."
+    }
+  ],
+  "readability": "Natural Japanese sentences and consistent handle labels; context-specific endings retain typedef, NULL exception and return condition. No technical content added.",
+  "footer": "Fixed1.53.0/commit/CC BY4.0 and all original software/component/generator licences linked outside body; editable RST correct per page, unofficial translation explicit. No approval-conversation language.",
+  "corrections": [],
+  "projectFullReviewComplete": false,
+  "remaining": "Other35pages translation/review, final JA link switch and all content/native/integration/publication gates."
+}

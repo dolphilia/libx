@@ -1,0 +1,200 @@
+{
+  "page": "guide/introduction",
+  "at": "2026-10-04T20:04:26.999665+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/introduction.rst",
+      "sha256": "b2a63998152ac1333f36ea6b8a7346475e707a13ee53635669814fb85da6f4ff"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/introduction.md",
+      "sha256": "a342f3f435c88af05513cfb1482a8ee10a18c0e7c0e4ad8bfc2d8df4321cd513"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/introduction.md",
+      "sha256": "5cf8c0d74745d5aa3d7851b9254ad4a0164d47c6d4bf6ff2f6cf423c2e7d1cfb"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire title/body/headings/all descriptions/version notes/admonitions/labels/footer",
+  "nodePairs": [
+    {
+      "en": "Introduction",
+      "ja": "はじめに"
+    },
+    {
+      "en": "This ‘book’ is a small set of tutorials about using ",
+      "ja": "この「本」は、"
+    },
+    {
+      "en": "libuv",
+      "ja": "libuv"
+    },
+    {
+      "en": " as\na high performance evented I/O library which offers the same API on Windows and Unix.",
+      "ja": "を、WindowsとUnixで同じAPIを提供する高性能なイベント駆動型の入出力ライブラリとして使うための、小さなチュートリアル集です。"
+    },
+    {
+      "en": "It is meant to cover the main areas of libuv, but is not a comprehensive\nreference discussing every function and data structure. The ",
+      "ja": "libuvの主要な分野を扱うことを目的としており、すべての関数とデータ構造を説明する網羅的なリファレンスではありません。詳しい内容は"
+    },
+    {
+      "en": "official libuv\ndocumentation",
+      "ja": "libuvの公式文書"
+    },
+    {
+      "en": " may be consulted for full details.",
+      "ja": "を参照してください。"
+    },
+    {
+      "en": "This book is still a work in progress, so sections may be incomplete, but\nI hope you will enjoy it as it grows.",
+      "ja": "本書はまだ執筆途中のため、不完全な節があるかもしれませんが、充実していく過程も楽しんでいただければと思います。"
+    },
+    {
+      "en": "Who this book is for",
+      "ja": "本書の対象読者"
+    },
+    {
+      "en": "If you are reading this book, you are either:",
+      "ja": "本書を読む方は、次のいずれかに当てはまるでしょう:"
+    },
+    {
+      "en": "a systems programmer, creating low-level programs such as daemons or network\nservices and clients. You have found that the event loop approach is well\nsuited for your application and decided to use libuv.",
+      "ja": "デーモンやネットワークのサービス・クライアントなど、低水準のプログラムを作るシステムプログラマー。自分のアプリケーションにはイベントループの方式が適していると判断し、libuvを使うことにした方です。"
+    },
+    {
+      "en": "a node.js module writer, who wants to wrap platform APIs\nwritten in C or C++ with a set of (a)synchronous APIs that are exposed to\nJavaScript. You will use libuv purely in the context of node.js. For\nthis you will require some other resources as the book does not cover parts\nspecific to v8/node.js.",
+      "ja": "CやC++で書かれたプラットフォームのAPIを、JavaScriptに公開する同期・非同期APIで包みたいnode.jsモジュールの作成者。libuvはnode.jsの中でのみ使います。本書はv8/node.js固有の部分を扱わないため、その点については別の資料も必要です。"
+    },
+    {
+      "en": "This book assumes that you are comfortable with the C programming language.",
+      "ja": "本書は、C言語に慣れていることを前提としています。"
+    },
+    {
+      "en": "Background",
+      "ja": "背景"
+    },
+    {
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "en": "node.js",
+      "ja": "node.js"
+    },
+    {
+      "en": " project began in 2009 as a JavaScript environment decoupled\nfrom the browser. Using Google’s ",
+      "ja": "プロジェクトは、ブラウザーから切り離されたJavaScript環境として2009年に始まりました。Googleの"
+    },
+    {
+      "en": "V8",
+      "ja": "V8"
+    },
+    {
+      "en": " and Marc Lehmann’s ",
+      "ja": "とMarc Lehmannの"
+    },
+    {
+      "en": "libev",
+      "ja": "libev"
+    },
+    {
+      "en": ", node.js\ncombined a model of I/O – evented – with a language that was well suited to\nthe style of programming; due to the way it had been shaped by browsers. As\nnode.js grew in popularity, it was important to make it work on Windows, but\nlibev ran only on Unix. The Windows equivalent of kernel event notification\nmechanisms like kqueue or (e)poll is IOCP. libuv was an abstraction around libev\nor IOCP depending on the platform, providing users an API based on libev.\nIn the node-v0.9.0 version of libuv ",
+      "ja": "を使い、node.jsはイベント駆動という入出力モデルと、ブラウザーで形作られてきたことから、そのプログラミング方式に適した言語を組み合わせました。node.jsの人気が高まるにつれ、Windowsで動作させることが重要になりましたが、libevはUnixでしか動作しませんでした。kqueueや(e)pollのようなカーネルのイベント通知機構に相当するWindowsの機構はIOCPです。libuvは、プラットフォームに応じてlibevまたはIOCPを抽象化し、libevを基にしたAPIを利用者に提供していました。node-v0.9.0のlibuvでは"
+    },
+    {
+      "en": "libev was removed",
+      "ja": "libevが削除されました"
+    },
+    {
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "en": "Since then libuv has continued to mature and become a high quality standalone\nlibrary for system programming. Users outside of node.js include Mozilla’s\n",
+      "ja": "その後もlibuvは成熟を続け、システムプログラミングのための高品質な独立したライブラリになりました。node.js以外の利用例には、Mozillaのプログラミング言語"
+    },
+    {
+      "en": "Rust",
+      "ja": "Rust"
+    },
+    {
+      "en": " programming language, and a ",
+      "ja": "や、"
+    },
+    {
+      "en": "variety",
+      "ja": "さまざまな言語バインディング"
+    },
+    {
+      "en": " of language bindings.",
+      "ja": "があります。"
+    },
+    {
+      "en": "This book and the code is based on libuv version ",
+      "ja": "本書とコードは、libuvのバージョン"
+    },
+    {
+      "en": "v1.42.0",
+      "ja": "v1.42.0"
+    },
+    {
+      "en": ".",
+      "ja": "を基にしています。"
+    },
+    {
+      "en": "Code",
+      "ja": "コード"
+    },
+    {
+      "en": "All the example code and the source of the book is included as part of\nthe ",
+      "ja": "すべてのサンプルコードと本書のソースは、GitHubの"
+    },
+    {
+      "en": "libuv",
+      "ja": "libuv"
+    },
+    {
+      "en": " project on GitHub.\nClone or Download ",
+      "ja": "プロジェクトに含まれています。"
+    },
+    {
+      "en": "libuv",
+      "ja": "libuv"
+    },
+    {
+      "en": ", then build it:",
+      "ja": "をクローンまたはダウンロードしてから、ビルドしてください:"
+    },
+    {
+      "en": "There is no need to ",
+      "ja": ""
+    },
+    {
+      "en": ". To build the examples run ",
+      "ja": "を実行する必要はありません。例をビルドするには"
+    },
+    {
+      "en": " in the\n",
+      "ja": "を"
+    },
+    {
+      "en": " directory.",
+      "ja": "ディレクトリで実行してください。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "apiDeclarationsExact": 0,
+    "preBlocksExact": 1,
+    "idsAndLinksExact": true
+  },
+  "serializationPolicy": "html_preservation.py: actual article starts raw HTML block; original canonical pre HTML copied exactly; rendered DOM/code whitespace separately verified",
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

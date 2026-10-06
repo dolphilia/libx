@@ -1,0 +1,452 @@
+{
+  "page": "reference/loop",
+  "at": "2026-10-04T19:58:18.686841+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/loop.rst",
+      "sha256": "bbff439c8e84037d8e54b1129bf823fc056bc172d8c45662777c949a23930d48"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/loop.md",
+      "sha256": "1e60e5c6203e09efe33871189118a136b3e65b027942cb0189d3f502d3659bc0"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/loop.md",
+      "sha256": "a1ac7924b1892ca0eedbe3fdeb7b85bb8a401b00b84de31c3ae7c1bbeb9009b3"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire title/body/headings/all descriptions/version notes/admonitions/labels/footer",
+  "nodePairs": [
+    {
+      "en": " — Event loop",
+      "ja": " — イベントループ"
+    },
+    {
+      "en": "The event loop is the central part of libuv’s functionality. It takes care\nof polling for i/o and scheduling callbacks to be run based on different sources\nof events.",
+      "ja": "イベントループは、libuvの機能の中心となる部分です。入出力のポーリングと、さまざまな発生源からのイベントに応じたコールバックの実行スケジューリングを担当します。"
+    },
+    {
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "en": "Loop data type.",
+      "ja": "イベントループのデータ型。"
+    },
+    {
+      "en": "Additional loop options.\nSee ",
+      "ja": "追加のイベントループオプション。"
+    },
+    {
+      "en": ".",
+      "ja": "を参照してください。"
+    },
+    {
+      "en": "Mode used to run the loop with ",
+      "ja": ""
+    },
+    {
+      "en": ".",
+      "ja": "でイベントループを実行する際のモード。"
+    },
+    {
+      "en": "Type definition for callback passed to ",
+      "ja": ""
+    },
+    {
+      "en": ".",
+      "ja": "に渡すコールバックの型定義です。"
+    },
+    {
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "en": "Space for user-defined arbitrary data. libuv does not use and does not\ntouch this field.",
+      "ja": "利用者が定義する任意のデータのための領域です。libuvはこのフィールドを使わず、変更もしません。"
+    },
+    {
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "en": "Initializes the given ",
+      "ja": "指定された"
+    },
+    {
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "en": " structure.",
+      "ja": "構造体を初期化します。"
+    },
+    {
+      "en": "New in version 1.0.2.",
+      "ja": "バージョン1.0.2で追加。"
+    },
+    {
+      "en": "Set additional loop options.  You should normally call this before the\nfirst call to ",
+      "ja": "追加のイベントループオプションを設定します。特に記載がなければ、通常は"
+    },
+    {
+      "en": " unless mentioned otherwise.",
+      "ja": "を初めて呼び出す前に、この関数を呼び出すべきです。"
+    },
+    {
+      "en": "Returns 0 on success or a UV_E* error code on failure.  Be prepared to\nhandle UV_ENOSYS; it means the loop option is not supported by the platform.",
+      "ja": "成功した場合は0、失敗した場合はUV_E*のエラーコードを返します。UV_ENOSYSへの対応も用意してください。これは、そのプラットフォームでイベントループオプションがサポートされていないことを意味します。"
+    },
+    {
+      "en": "Supported options:",
+      "ja": "サポートされるオプション:"
+    },
+    {
+      "en": "UV_LOOP_BLOCK_SIGNAL: Block a signal when polling for new events.  The\nsecond argument to ",
+      "ja": "UV_LOOP_BLOCK_SIGNAL: 新しいイベントをポーリングするときにシグナルをブロックします。"
+    },
+    {
+      "en": " is the signal number.",
+      "ja": "の第2引数はシグナル番号です。"
+    },
+    {
+      "en": "This operation is currently only implemented for SIGPROF signals,\nto suppress unnecessary wakeups when using a sampling profiler.\nRequesting other signals will fail with UV_EINVAL.",
+      "ja": "この操作は、サンプリングプロファイラーを使うときの不要な復帰を抑えるため、現時点ではSIGPROFシグナルに対してのみ実装されています。他のシグナルを要求すると、UV_EINVALで失敗します。"
+    },
+    {
+      "en": "UV_METRICS_IDLE_TIME: Accumulate the amount of idle time the event loop\nspends in the event provider.",
+      "ja": "UV_METRICS_IDLE_TIME: イベントループがイベントプロバイダー内で費やすアイドル時間を積算します。"
+    },
+    {
+      "en": "This option is necessary to use ",
+      "ja": "このオプションは"
+    },
+    {
+      "en": ".",
+      "ja": "を使うために必要です。"
+    },
+    {
+      "en": "UV_LOOP_USE_IO_URING_SQPOLL: Enable SQPOLL io_uring instance to handle\nasynchronous file system operations.",
+      "ja": "UV_LOOP_USE_IO_URING_SQPOLL: 非同期ファイルシステム操作を処理するために、SQPOLLを使うio_uringインスタンスを有効にします。"
+    },
+    {
+      "en": "Changed in version 1.39.0: ",
+      "ja": "バージョン1.39.0で変更: "
+    },
+    {
+      "en": "added the UV_METRICS_IDLE_TIME option.",
+      "ja": "UV_METRICS_IDLE_TIMEオプションを追加。"
+    },
+    {
+      "en": "Changed in version 1.49.0: ",
+      "ja": "バージョン1.49.0で変更: "
+    },
+    {
+      "en": "added the UV_LOOP_USE_IO_URING_SQPOLL option.",
+      "ja": "UV_LOOP_USE_IO_URING_SQPOLLオプションを追加。"
+    },
+    {
+      "en": "Releases all internal loop resources. Call this function only when the loop\nhas finished executing and all open handles and requests have been closed,\nor it will return UV_EBUSY. After this function returns, the user can free\nthe memory allocated for the loop.",
+      "ja": "イベントループ内部のリソースをすべて解放します。イベントループの実行が終了し、開いているハンドルとリクエストをすべて閉じた後にのみ、この関数を呼び出してください。それ以外の場合はUV_EBUSYを返します。この関数が戻った後、利用者はイベントループに割り当てたメモリを解放できます。"
+    },
+    {
+      "en": "Returns the initialized default loop. It may return NULL in case of\nallocation failure.",
+      "ja": "初期化済みの既定のイベントループを返します。メモリ割り当てに失敗した場合は、NULLを返すことがあります。"
+    },
+    {
+      "en": "This function is just a convenient way for having a global loop throughout\nan application, the default loop is in no way different than the ones\ninitialized with ",
+      "ja": "この関数は、アプリケーション全体で使うグローバルなイベントループを用意するための便利な手段にすぎません。既定のイベントループは、"
+    },
+    {
+      "en": ". As such, the default loop can (and\nshould) be closed with ",
+      "ja": "で初期化したイベントループと何も違いません。そのため、既定のイベントループも"
+    },
+    {
+      "en": " so the resources associated\nwith it are freed.",
+      "ja": "で閉じることができ、関連するリソースを解放するために閉じるべきです。"
+    },
+    {
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "en": "This function is not thread safe.",
+      "ja": "この関数はスレッドセーフではありません。"
+    },
+    {
+      "en": "This function runs the event loop. It will act differently depending on the\nspecified mode:",
+      "ja": "この関数はイベントループを実行します。指定したモードによって動作が異なります:"
+    },
+    {
+      "en": "UV_RUN_DEFAULT: Runs the event loop until there are no more active and\nreferenced handles or requests. Returns non-zero if ",
+      "ja": "UV_RUN_DEFAULT: アクティブで参照されているハンドルやリクエストがなくなるまで、イベントループを実行します。"
+    },
+    {
+      "en": "\nwas called and there are still active handles or requests.  Returns\nzero in all other cases.",
+      "ja": "が呼び出され、アクティブなハンドルやリクエストがまだ残っている場合は、0以外を返します。それ以外の場合はすべて0を返します。"
+    },
+    {
+      "en": "UV_RUN_ONCE: Poll for i/o once. Note that this function blocks if\nthere are no pending callbacks. Returns zero when done (no active handles\nor requests left), or non-zero if more callbacks are expected (meaning\nyou should run the event loop again sometime in the future).",
+      "ja": "UV_RUN_ONCE: 入出力を1回ポーリングします。保留中のコールバックがなければ、この関数はブロックすることに注意してください。処理が完了した場合（アクティブなハンドルやリクエストが残っていない場合）は0を返し、今後もコールバックが見込まれる場合は0以外を返します（後でイベントループを再び実行すべきことを意味します）。"
+    },
+    {
+      "en": "UV_RUN_NOWAIT: Poll for i/o once but don’t block if there are no\npending callbacks. Returns zero if done (no active handles\nor requests left), or non-zero if more callbacks are expected (meaning\nyou should run the event loop again sometime in the future).",
+      "ja": "UV_RUN_NOWAIT: 入出力を1回ポーリングしますが、保留中のコールバックがなくてもブロックしません。処理が完了した場合（アクティブなハンドルやリクエストが残っていない場合）は0を返し、今後もコールバックが見込まれる場合は0以外を返します（後でイベントループを再び実行すべきことを意味します）。"
+    },
+    {
+      "en": " is not reentrant. It must not be called from a callback.",
+      "ja": "は再入可能ではありません。コールバック内から呼び出してはいけません。"
+    },
+    {
+      "en": "Returns non-zero if there are referenced active handles, active\nrequests or closing handles in the loop.",
+      "ja": "イベントループに、参照されているアクティブなハンドル、アクティブなリクエスト、または終了処理中のハンドルがある場合は、0以外を返します。"
+    },
+    {
+      "en": "Stop the event loop, causing ",
+      "ja": "イベントループを停止し、"
+    },
+    {
+      "en": " to end as soon as\npossible. This will happen not sooner than the next loop iteration.\nIf this function was called before blocking for i/o, the loop won’t block\nfor i/o on this iteration.",
+      "ja": "ができるだけ早く終了するようにします。ただし、終了するのは早くても次のイベントループの反復です。この関数を入出力待ちでブロックする前に呼び出した場合、その反復ではイベントループは入出力待ちでブロックしません。"
+    },
+    {
+      "en": "Returns the size of the ",
+      "ja": ""
+    },
+    {
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "en": " structure. Useful for FFI binding\nwriters who don’t want to know the structure layout.",
+      "ja": "構造体のサイズを返します。構造体のレイアウトを把握せずに済ませたいFFIバインディングの作成者に役立ちます。"
+    },
+    {
+      "en": "Get backend file descriptor. Only kqueue, epoll and event ports are\nsupported.",
+      "ja": "バックエンドのファイル記述子を取得します。サポートされるのは、kqueue、epoll、event portsのみです。"
+    },
+    {
+      "en": "This can be used in conjunction with ",
+      "ja": "この関数を"
+    },
+    {
+      "en": "uv_run(loop, UV_RUN_NOWAIT)",
+      "ja": "uv_run(loop, UV_RUN_NOWAIT)"
+    },
+    {
+      "en": " to\npoll in one thread and run the event loop’s callbacks in another see\ntest/test-embed.c for an example.",
+      "ja": "と組み合わせると、あるスレッドでポーリングし、別のスレッドでイベントループのコールバックを実行できます。例はtest/test-embed.cを参照してください。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "Embedding a kqueue fd in another kqueue pollset doesn’t work on all platforms. It’s not\nan error to add the fd but it never generates events.",
+      "ja": "kqueueのファイル記述子を別のkqueueのポーリング集合に組み込む方法は、すべてのプラットフォームで動作するわけではありません。ファイル記述子の追加はエラーにはなりませんが、イベントは一切発生しません。"
+    },
+    {
+      "en": "Get the poll timeout. The return value is in milliseconds, or -1 for no\ntimeout.",
+      "ja": "ポーリングのタイムアウトを取得します。戻り値の単位はミリ秒で、タイムアウトがない場合は-1です。"
+    },
+    {
+      "en": "Return the current timestamp in milliseconds. The timestamp is cached at\nthe start of the event loop tick, see ",
+      "ja": "現在のタイムスタンプをミリ秒で返します。このタイムスタンプは、イベントループのティックの開始時にキャッシュされます。詳しい説明と理由については"
+    },
+    {
+      "en": " for details\nand rationale.",
+      "ja": "を参照してください。"
+    },
+    {
+      "en": "The timestamp increases monotonically from some arbitrary point in time.\nDon’t make assumptions about the starting point, you will only get\ndisappointed.",
+      "ja": "タイムスタンプは、任意の時点を起点として単調に増加します。起点について何かを仮定してはいけません。そのような仮定は期待どおりにはなりません。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "Use ",
+      "ja": "ミリ秒より細かい精度が必要な場合は"
+    },
+    {
+      "en": " if you need sub-millisecond granularity.",
+      "ja": "を使ってください。"
+    },
+    {
+      "en": "Update the event loop’s concept of “now”. Libuv caches the current time\nat the start of the event loop tick in order to reduce the number of\ntime-related system calls.",
+      "ja": "イベントループが認識する「現在時刻」を更新します。libuvは、時刻に関するシステムコールの回数を減らすため、イベントループのティックの開始時に現在時刻をキャッシュします。"
+    },
+    {
+      "en": "You won’t normally need to call this function unless you have callbacks\nthat block the event loop for longer periods of time, where “longer” is\nsomewhat subjective but probably on the order of a millisecond or more.",
+      "ja": "通常、イベントループを長時間ブロックするコールバックがない限り、この関数を呼び出す必要はありません。ここでの「長時間」は多少主観的ですが、おそらく1ミリ秒以上の程度を指します。"
+    },
+    {
+      "en": "Walk the list of handles: ",
+      "ja": "ハンドルの一覧を走査し、"
+    },
+    {
+      "en": "walk_cb",
+      "ja": "walk_cb"
+    },
+    {
+      "en": " will be executed with the given ",
+      "ja": "に指定された"
+    },
+    {
+      "en": "arg",
+      "ja": "arg"
+    },
+    {
+      "en": ".",
+      "ja": "を渡して実行します。"
+    },
+    {
+      "en": "New in version 1.12.0.",
+      "ja": "バージョン1.12.0で追加。"
+    },
+    {
+      "en": "Reinitialize any kernel state necessary in the child process after\na ",
+      "ja": ""
+    },
+    {
+      "en": "fork(2)",
+      "ja": "fork(2)"
+    },
+    {
+      "en": " system call.",
+      "ja": "システムコールの後、子プロセスで必要になるカーネルの状態を再初期化します。"
+    },
+    {
+      "en": "Previously started watchers will continue to be started in the\nchild process.",
+      "ja": "既に開始されていた監視処理は、子プロセスでも開始された状態のまま継続します。"
+    },
+    {
+      "en": "It is necessary to explicitly call this function on every event\nloop created in the parent process that you plan to continue to\nuse in the child, including the default loop (even if you don’t\ncontinue to use it in the parent). This function must be called\nbefore calling ",
+      "ja": "親プロセスで作成し、子プロセスで引き続き使う予定のイベントループすべてに対して、既定のイベントループも含め、この関数を明示的に呼び出す必要があります（親プロセスで使い続けない場合も同様です）。子プロセスでは、"
+    },
+    {
+      "en": " or any other API function using\nthe loop in the child. Failure to do so will result in undefined\nbehaviour, possibly including duplicate events delivered to both\nparent and child or aborting the child process.",
+      "ja": "や、そのイベントループを使う他のAPI関数を呼び出す前に、必ずこの関数を呼び出してください。そうしないと動作が未定義となり、親と子の両方へのイベントの重複配信や、子プロセスの異常終了が起きる可能性があります。"
+    },
+    {
+      "en": "When possible, it is preferred to create a new loop in the child\nprocess instead of reusing a loop created in the parent. New loops\ncreated in the child process after the fork should not use this\nfunction.",
+      "ja": "可能であれば、親プロセスで作成したイベントループを再利用するよりも、子プロセスで新しいイベントループを作成することが望まれます。forkの後に子プロセスで新しく作成したイベントループには、この関数を使うべきではありません。"
+    },
+    {
+      "en": "This function is not implemented on Windows, where it returns ",
+      "ja": "この関数はWindowsでは実装されておらず、"
+    },
+    {
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "en": "Caution",
+      "ja": "注意"
+    },
+    {
+      "en": "This function is experimental. It may contain bugs, and is subject to\nchange or removal. API and ABI stability is not guaranteed.",
+      "ja": "この関数は実験的なものです。不具合を含む可能性があり、変更または削除されることもあります。APIとABIの安定性は保証されません。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "On Mac OS X, if directory FS event handles were in use in the\nparent process ",
+      "ja": "Mac OS Xでは、親プロセスの"
+    },
+    {
+      "en": "for any event loop",
+      "ja": "いずれかのイベントループ"
+    },
+    {
+      "en": ", the child process will no\nlonger be able to use the most efficient FSEvent\nimplementation. Instead, uses of directory FS event handles in\nthe child will fall back to the same implementation used for\nfiles and on other kqueue-based systems.",
+      "ja": "でディレクトリのFSイベントハンドルを使っていた場合、子プロセスでは最も効率的なFSEvent実装を使えなくなります。代わりに、子プロセスでのディレクトリのFSイベントハンドルは、ファイルの場合や他のkqueueベースのシステムで使われるものと同じ実装にフォールバックします。"
+    },
+    {
+      "en": "Caution",
+      "ja": "注意"
+    },
+    {
+      "en": "On AIX and SunOS, FS event handles that were already started in\nthe parent process at the time of forking will ",
+      "ja": "AIXとSunOSでは、fork時に親プロセスで既に開始されていたFSイベントハンドルは、子プロセスにイベントを"
+    },
+    {
+      "en": "not",
+      "ja": "配信しません"
+    },
+    {
+      "en": " deliver\nevents in the child process; they must be closed and restarted.\nOn all other platforms, they will continue to work normally\nwithout any further intervention.",
+      "ja": "。これらのハンドルを閉じてから、再び開始する必要があります。他のすべてのプラットフォームでは、追加の操作をしなくても通常どおり動作し続けます。"
+    },
+    {
+      "en": "Caution",
+      "ja": "注意"
+    },
+    {
+      "en": "Any previous value returned from ",
+      "ja": "以前に"
+    },
+    {
+      "en": " is now\ninvalid. That function must be called again to determine the\ncorrect backend file descriptor.",
+      "ja": "が返した値は、すべて無効になります。正しいバックエンドのファイル記述子を取得するには、その関数を再び呼び出す必要があります。"
+    },
+    {
+      "en": "Returns ",
+      "ja": "戻り値は"
+    },
+    {
+      "en": "loop->data",
+      "ja": "loop->data"
+    },
+    {
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "en": "Sets ",
+      "ja": ""
+    },
+    {
+      "en": "loop->data",
+      "ja": "loop->data"
+    },
+    {
+      "en": " to ",
+      "ja": "を"
+    },
+    {
+      "en": "data",
+      "ja": "data"
+    },
+    {
+      "en": ".",
+      "ja": "に設定します。"
+    },
+    {
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "apiDeclarationsExact": 21,
+    "preBlocksExact": 2,
+    "idsAndLinksExact": true
+  },
+  "serializationPolicy": "html_preservation.py: actual article starts raw HTML block; original canonical pre HTML copied exactly; rendered DOM/code whitespace separately verified",
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "page": "reference/version",
+  "status": "passed",
+  "at": "2026-10-04T19:21:27.186Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate content review after full-page drafts and rendered-preservation repair. Read complete fixed RST, complete canonical content, complete JA text and footer; evaluated source preservation, meaning and Japanese readability independently of machine assertions.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/version.rst",
+      "sha256": "261c8252401912241453d5d921c3f70dcd1e6c142dd520c4530aa4090d67f0ab"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/version.md",
+      "sha256": "502d88497d5bf2ab7a1f2d64a311ef48bb2b417f84bac45557f07a31bedf5e71"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/version.md",
+      "sha256": "30b5e6a63ce31b0d2e62ff1fd7b3c19f3924dcf52a80f2e198809c26568ba07f"
+    }
+  ],
+  "coverage": {
+    "original": "entire version.rst",
+    "canonical": "all heading/API/type/description/admonition/version-note/return fields",
+    "translation": "entire page and footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "result": "Intro retains 1.0.0 semantic versioning, permission to introduce new APIs across major-release lifetime, and conditional source/compilation across versions."
+    },
+    {
+      "result": "All6 macros retain distinct major/minor/patch, release1/development0, potential rc suffix, and packed integer semantics. Each component8bits, low8bits patch, example1.2.3=0x010203 and added1.7.0 retained."
+    },
+    {
+      "result": "Both function declarations preserved. uv_version returns UV_VERSION_HEX; uv_version_string includes suffix for non-release versions."
+    }
+  ],
+  "sourceToCanonical": "Complete source sections/types/macros/functions/admonitions/version notes preserved. Sphinx labels are formatting. No declarations/prose silently repaired.",
+  "readability": "Natural Japanese labels and complete sentences; identifier and technical handle naming retained. All source/license metadata outside body in common footer.",
+  "corrections": [
+    "The preliminary read detected untranslated Returns. Draft now translates the field labels and retains complete return descriptions.",
+    "Renderer interpreted decoded pointer asterisks as Markdown emphasis. Current escaped output preserves signatures and complete rendered DOM; no semantic text change."
+  ],
+  "projectFullReviewComplete": false,
+  "remaining": "Other40pages translation/review; JA route finalization, content check/native/integration/publication."
+}

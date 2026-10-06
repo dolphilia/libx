@@ -1,0 +1,53 @@
+{
+  "page": "reference/async",
+  "status": "passed",
+  "at": "2026-10-04T19:21:27.187Z",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate content review after full-page drafts and rendered-preservation repair. Read complete fixed RST, complete canonical content, complete JA text and footer; evaluated source preservation, meaning and Japanese readability independently of machine assertions.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/async.rst",
+      "sha256": "fb268602aebde93549923acd9d6f063d8f36ee02b95ba5ffb5245dc26ed6d761"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/async.md",
+      "sha256": "4dd37bce0305d2b72a43d6355add4cf683a8cd00f6046cd64b0f4b16475446f9"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/async.md",
+      "sha256": "8850c157942df15a85979a03c3191f990ea9c3505bb62f80a5d78f92df34c8ef"
+    }
+  ],
+  "coverage": {
+    "original": "entire async.rst",
+    "canonical": "all heading/API/type/description/admonition/version-note/return fields",
+    "translation": "entire page and footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "result": "Intro describes waking loop from another thread without falsely claiming callback executes on sending thread. Thread note explicitly says callback executes on loop thread."
+    },
+    {
+      "result": "seq_cst operations are scoped to the same async handle. Prior sends make all prior reads/writes visible. Coalescing is preserved:5 sends before callback ->1 call; after callback a new send invokes again; callback values same or newer."
+    },
+    {
+      "result": "Changed1.53.0 retained. Earlier versions probably require full seq_cst fence when coalescing possible; Japanese retains probability rather than unconditional must."
+    },
+    {
+      "result": "Types uv_async_t and uv_async_cb, all parameters, two APIs, NULL allowed, immediate start unlike other initialization, both success0/error<0 and inherited base members/APIs retained."
+    },
+    {
+      "result": "Any-thread safety, async-signal-safety/signal handler, and full-memory-fence ordering on sending/receiving threads retain scope and all operations."
+    }
+  ],
+  "sourceToCanonical": "Complete source sections/types/macros/functions/admonitions/version notes preserved. Sphinx labels are formatting. No declarations/prose silently repaired.",
+  "readability": "Natural Japanese labels and complete sentences; identifier and technical handle naming retained. All source/license metadata outside body in common footer.",
+  "corrections": [
+    "The preliminary read detected untranslated Returns. Draft now translates the field labels and retains complete return descriptions.",
+    "Renderer interpreted decoded pointer asterisks as Markdown emphasis. Current escaped output preserves signatures and complete rendered DOM; no semantic text change."
+  ],
+  "projectFullReviewComplete": false,
+  "remaining": "Other40pages translation/review; JA route finalization, content check/native/integration/publication."
+}

@@ -1,0 +1,47 @@
+{
+  "canonicalPages": 43,
+  "regeneratedFiles": 44,
+  "twoStepGenerationReproductionIdentical": true,
+  "generationSteps": [
+    "generate-canonical.py --repository ROOT --workspace WORKSPACE",
+    "apply-basics-editorial-note.py --repository ROOT --workspace WORKSPACE"
+  ],
+  "allCurrentMapCanonicalHashesMatch": true,
+  "basicsBodyAndAllCodesUnchanged": true,
+  "baselineCanonical": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-705/BASELINE_BASICS_EN.md",
+    "sha256": "875352f1f895295f8e249a65f5faa4041a2a4457c57965c285306f29acb54c38"
+  },
+  "sourceExamples": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/code/helloworld/main.c",
+      "originalPath": "docs/code/helloworld/main.c",
+      "sha256": "1752bce9782da54a7ea770e574ae7123a11c70d5c8ccec44395abd2dfee6652f",
+      "bytes": 266,
+      "uvLoopCloseLines": [
+        12
+      ]
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/code/default-loop/main.c",
+      "originalPath": "docs/code/default-loop/main.c",
+      "sha256": "177fa278ad5c4f8ff5d3931d6aa934cb363c9099b469d43f41d7c06a05c0c76f",
+      "bytes": 198,
+      "uvLoopCloseLines": [
+        10
+      ]
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/code/idle-basic/main.c",
+      "originalPath": "docs/code/idle-basic/main.c",
+      "sha256": "8656f0722eea23ce25bd66695b104fc8f04c723fe3056fa56319f89a4a91ab7c",
+      "bytes": 430,
+      "uvLoopCloseLines": [
+        22
+      ]
+    }
+  ],
+  "defect": "Original prose says examples never close loops, but all3 included fixed original examples call uv_loop_close. Original prose and code preserved; EN/JA footer-only editorial note identifies the mismatch.",
+  "translationComplete": false,
+  "fullSemanticReviewComplete": false
+}

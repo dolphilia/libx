@@ -1,0 +1,223 @@
+{
+  "page": "reference/async",
+  "at": "2026-10-04T19:20:20.185313+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/async.rst",
+      "sha256": "fb268602aebde93549923acd9d6f063d8f36ee02b95ba5ffb5245dc26ed6d761"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/async.md",
+      "sha256": "4dd37bce0305d2b72a43d6355add4cf683a8cd00f6046cd64b0f4b16475446f9"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/async.md",
+      "sha256": "8850c157942df15a85979a03c3191f990ea9c3505bb62f80a5d78f92df34c8ef"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire title/body/headings/all descriptions/version notes/admonitions/labels/footer",
+  "nodePairs": [
+    {
+      "en": " — Async handle",
+      "ja": " — Asyncハンドル"
+    },
+    {
+      "en": "Async handles allow the user to “wakeup” the event loop and get a callback\ncalled from another thread.",
+      "ja": "Asyncハンドルを使うと、別のスレッドからイベントループを「起こし」、コールバックを呼び出させることができます。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": " and the ",
+      "ja": "と"
+    },
+    {
+      "en": " invocation are\nsequentially consistent (seq_cst) operations for a given async handle: all\nmemory accesses (reads and writes) made before ",
+      "ja": "の呼び出しは、特定のAsyncハンドルについて逐次一貫性（seq_cst）を持つ操作です。"
+    },
+    {
+      "en": " are\nvisible to that callback.",
+      "ja": "より前に行われたすべてのメモリアクセス（読み取りと書き込み）は、そのコールバックから可視になります。"
+    },
+    {
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "en": "libuv will coalesce calls to ",
+      "ja": "libuvは"
+    },
+    {
+      "en": ", that is, not every\ncall to it will yield an execution of the callback. For example: if\n",
+      "ja": "の呼び出しをまとめます。つまり、呼び出すたびに必ずコールバックが実行されるわけではありません。たとえば、コールバックが呼び出される前に"
+    },
+    {
+      "en": " is called 5 times in a row before the callback is\ncalled, the callback will only be called once. If ",
+      "ja": "を続けて5回呼び出しても、コールバックは1回しか呼び出されません。コールバックが呼び出された後で"
+    },
+    {
+      "en": "\nis called again after the callback was called, it will be called again.\nHowever, since it is sequentially consistent, the values read or written in\nthat callback will always be the same (or newer) as those read or written\nby the other thread.",
+      "ja": "を再び呼び出すと、コールバックも再び呼び出されます。ただし、逐次一貫性があるため、そのコールバックで読み書きする値は、もう一方のスレッドが読み書きした値と常に同じか、それより新しい値になります。"
+    },
+    {
+      "en": "Changed in version 1.53.0: ",
+      "ja": "バージョン1.53.0で変更: "
+    },
+    {
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "en": " are sequentially\nconsistent. Prior to this version, any case where libuv might coalesce\ncalls probably requires a full ",
+      "ja": "は逐次一貫性を持ちます。これより前のバージョンでは、libuvが呼び出しをまとめる可能性のある場合、正しい動作のために、その前に完全な"
+    },
+    {
+      "en": "seq_cst",
+      "ja": "seq_cst"
+    },
+    {
+      "en": " fence before it for correctness.",
+      "ja": "フェンスが必要になると考えられます。"
+    },
+    {
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "en": "Async handle type.",
+      "ja": "Asyncハンドルの型。"
+    },
+    {
+      "en": "Type definition for callback passed to ",
+      "ja": ""
+    },
+    {
+      "en": ".",
+      "ja": "に渡すコールバックの型定義です。"
+    },
+    {
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "en": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "en": " members also apply.",
+      "ja": "のメンバーも適用されます。"
+    },
+    {
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "en": "Initialize the handle. A NULL callback is allowed.",
+      "ja": "ハンドルを初期化します。コールバックにNULLを指定してもかまいません。"
+    },
+    {
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功した場合は0、失敗した場合は0未満のエラーコード。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "Unlike other handle initialization  functions, it immediately starts the handle.",
+      "ja": "他のハンドル初期化関数とは異なり、この関数はハンドルを直ちに開始します。"
+    },
+    {
+      "en": "Wake up the event loop and call the async handle’s callback.",
+      "ja": "イベントループを起こし、Asyncハンドルのコールバックを呼び出します。"
+    },
+    {
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功した場合は0、失敗した場合は0未満のエラーコード。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "It’s safe to call this function from any thread. The callback will be called on the\nloop thread.",
+      "ja": "この関数はどのスレッドから呼び出しても安全です。コールバックはイベントループのスレッドで呼び出されます。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": " is ",
+      "ja": "は"
+    },
+    {
+      "en": "async-signal-safe",
+      "ja": "非同期シグナル安全"
+    },
+    {
+      "en": ".\nIt’s safe to call this function from a signal handler.",
+      "ja": "です。シグナルハンドラーからこの関数を呼び出しても安全です。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "This is a full memory fence with respect to other calls and callbacks\nusing this same async handle, and so it will order all operations\naround this call and the corresponding callback on the sending thread\nand receiving thread.",
+      "ja": "この関数は、同じAsyncハンドルを使う他の呼び出しやコールバックに対して、完全なメモリフェンスとして働きます。そのため、送信側スレッドと受信側スレッドにおいて、この呼び出しと対応するコールバックの前後にあるすべての操作の順序を定めます。"
+    },
+    {
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "en": "The ",
+      "ja": ""
+    },
+    {
+      "en": " API functions also apply.",
+      "ja": "のAPI関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "apiDeclarationsExact": 4,
+    "preBlocksExact": 0,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

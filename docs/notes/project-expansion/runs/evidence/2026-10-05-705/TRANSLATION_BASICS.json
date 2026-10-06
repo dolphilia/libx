@@ -1,0 +1,408 @@
+{
+  "page": "guide/basics",
+  "at": "2026-10-04T20:19:41.451703+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/guide/basics.rst",
+      "sha256": "55f9d3e8cb02c05ab4e082994496676a35988e835291bfaa9c8e042c6de24b53"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/guide/basics.md",
+      "sha256": "f79171bf2fa12ebd272c718c50b0f9dbb10670429935c5dcbdedb411bfbbd371"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/guide/basics.md",
+      "sha256": "aa9f55497aa82c625a8e88043d4284defaa53337f4ca6988558836f0ee494ba6"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire title/body/headings/all descriptions/version notes/admonitions/labels/footer",
+  "nodePairs": [
+    {
+      "en": "Basics of libuv",
+      "ja": "libuvの基礎"
+    },
+    {
+      "en": "libuv enforces an ",
+      "ja": "libuvは、"
+    },
+    {
+      "en": "asynchronous",
+      "ja": "非同期"
+    },
+    {
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "en": "event-driven",
+      "ja": "イベント駆動"
+    },
+    {
+      "en": " style of programming.  Its\ncore job is to provide an event loop and callback based notifications of I/O\nand other activities.  libuv offers core utilities like timers, non-blocking\nnetworking support, asynchronous file system access, child processes and more.",
+      "ja": "のプログラミング方式を要求します。中心となる役割は、イベントループと、コールバックによる入出力やその他の活動の通知を提供することです。libuvは、タイマー、ノンブロッキングのネットワーク対応、非同期ファイルシステムアクセス、子プロセスなどの基本的なユーティリティを提供します。"
+    },
+    {
+      "en": "Event loops",
+      "ja": "イベントループ"
+    },
+    {
+      "en": "In event-driven programming, an application expresses interest in certain events\nand respond to them when they occur. The responsibility of gathering events\nfrom the operating system or monitoring other sources of events is handled by\nlibuv, and the user can register callbacks to be invoked when an event occurs.\nThe event-loop usually keeps running ",
+      "ja": "イベント駆動プログラミングでは、アプリケーションは特定のイベントへの関心を表明し、そのイベントが起きたときに応答します。オペレーティングシステムからイベントを集めたり、他のイベント発生源を監視したりする役割はlibuvが担います。利用者は、イベント発生時に呼び出されるコールバックを登録できます。イベントループは通常、"
+    },
+    {
+      "en": "forever",
+      "ja": "ずっと"
+    },
+    {
+      "en": ". In pseudocode:",
+      "ja": "動き続けます。疑似コードで表すと、次のようになります:"
+    },
+    {
+      "en": "Some examples of events are:",
+      "ja": "イベントの例を挙げると、次のようなものがあります:"
+    },
+    {
+      "en": "File is ready for writing",
+      "ja": "ファイルに書き込む準備ができた"
+    },
+    {
+      "en": "A socket has data ready to be read",
+      "ja": "ソケットに読み取り可能なデータがある"
+    },
+    {
+      "en": "A timer has timed out",
+      "ja": "タイマーの時間が経過した"
+    },
+    {
+      "en": "This event loop is encapsulated by ",
+      "ja": "このイベントループは、"
+    },
+    {
+      "en": " – the end-all function when using\nlibuv.",
+      "ja": "にまとめられています。これはlibuvを使う際の中心となる関数です。"
+    },
+    {
+      "en": "The most common activity of systems programs is to deal with input and output,\nrather than a lot of number-crunching. The problem with using conventional\ninput/output functions (",
+      "ja": "システムプログラムで最もよく行うのは、大量の数値計算よりも、入力と出力の処理です。従来の入出力関数（"
+    },
+    {
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "en": ", etc.) is that they are\n",
+      "ja": "など）の問題は、これらが"
+    },
+    {
+      "en": "blocking",
+      "ja": "ブロッキング"
+    },
+    {
+      "en": ". The actual write to a hard disk or reading from a network, takes\na disproportionately long time compared to the speed of the processor. The\nfunctions don’t return until the task is done, so that your program is doing\nnothing. For programs which require high performance this is a major roadblock\nas other activities and other I/O operations are kept waiting.",
+      "ja": "であることです。ハードディスクへの実際の書き込みやネットワークからの読み取りは、プロセッサーの速度に比べて非常に長い時間がかかります。処理が終わるまで関数が戻らないため、その間、プログラムは何もしていません。高い性能が必要なプログラムでは、他の活動や入出力操作まで待たされることが大きな障害になります。"
+    },
+    {
+      "en": "One of the standard solutions is to use threads. Each blocking I/O operation is\nstarted in a separate thread (or in a thread pool). When the blocking function\ngets invoked in the thread, the operating system can schedule another thread to run,\nwhich actually needs the CPU.",
+      "ja": "標準的な解決策の1つは、スレッドを使うことです。それぞれのブロッキング入出力操作を、別のスレッド（またはスレッドプール）で開始します。そのスレッドでブロッキング関数が呼び出されると、オペレーティングシステムは、実際にCPUを必要とする別のスレッドを実行するようスケジュールできます。"
+    },
+    {
+      "en": "The approach followed by libuv uses another style, which is the ",
+      "ja": "libuvが採るのは、別の方式である"
+    },
+    {
+      "en": "asynchronous,\nnon-blocking",
+      "ja": "非同期・ノンブロッキング"
+    },
+    {
+      "en": " style. Most modern operating systems provide event notification\nsubsystems. For example, a normal ",
+      "ja": "方式です。現代のほとんどのオペレーティングシステムは、イベント通知の仕組みを提供しています。たとえば、ソケットに対する通常の"
+    },
+    {
+      "en": " call on a socket would block until\nthe sender actually sent something. Instead, the application can request the\noperating system to watch the socket and put an event notification in the\nqueue. The application can inspect the events at its convenience (perhaps doing\nsome number crunching before to use the processor to the maximum) and grab the\ndata. It is ",
+      "ja": "呼び出しは、送信側が実際に何かを送るまでブロックします。その代わりに、アプリケーションは、ソケットを監視してイベント通知をキューに入れるようオペレーティングシステムに要求できます。アプリケーションは、都合のよいときにイベントを調べ、データを取得できます（その前に数値計算を行って、プロセッサーを最大限に活用することもできます）。これが"
+    },
+    {
+      "en": "asynchronous",
+      "ja": "非同期"
+    },
+    {
+      "en": " because the application expressed interest at one\npoint, then used the data at another point (in time and space). It is\n",
+      "ja": "なのは、アプリケーションがある時点で関心を表明し、時間的・空間的に別の時点でデータを使うからです。また、"
+    },
+    {
+      "en": "non-blocking",
+      "ja": "ノンブロッキング"
+    },
+    {
+      "en": " because the application process was free to do other tasks.\nThis fits in well with libuv’s event-loop approach, since the operating system\nevents can be treated as just another libuv event. The non-blocking ensures\nthat other events can continue to be handled as fast as they come in ",
+      "ja": "なのは、アプリケーションのプロセスが自由に他の作業を行えたからです。オペレーティングシステムのイベントをlibuvのイベントの1つとして扱えるため、この方式はlibuvのイベントループ方式によく適合します。ノンブロッキングであることにより、他のイベントも到着する速さに合わせて処理し続けられます"
+    },
+    {
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "How the I/O is run in the background is not of our concern, but due to the\nway our computer hardware works, with the thread as the basic unit of the\nprocessor, libuv and OSes will usually run background/worker threads and/or\npolling to perform tasks in a non-blocking manner.",
+      "ja": "入出力をバックグラウンドでどのように実行するかは、ここでは問題にしません。ただし、スレッドをプロセッサーの基本単位とするハードウェアの動作方式により、libuvやオペレーティングシステムは通常、バックグラウンドのスレッド・作業スレッドやポーリングを使って、ノンブロッキングで作業を行います。"
+    },
+    {
+      "en": "Bert Belder, one of the libuv core developers, has a small video explaining the\narchitecture of libuv and its background. If you have no prior experience with\nlibuv, it is a quick, useful watch.",
+      "ja": "libuvの主要開発者の1人であるBert Belderが、libuvのアーキテクチャーとその背景を説明する短い動画を公開しています。libuvを使ったことがない方には、短時間で役立つ内容を見ることができます。"
+    },
+    {
+      "en": "libuv’s event loop is explained in more detail in the ",
+      "ja": "libuvのイベントループについては、"
+    },
+    {
+      "en": "documentation",
+      "ja": "文書"
+    },
+    {
+      "en": ".",
+      "ja": "で、より詳しく説明しています。"
+    },
+    {
+      "en": "Hello World",
+      "ja": "Hello World"
+    },
+    {
+      "en": "With the basics out of the way, let’s write our first libuv program. It does\nnothing, except start a loop which will exit immediately.",
+      "ja": "基本を確認したところで、最初のlibuvプログラムを書いてみましょう。イベントループを開始して直ちに終了するだけで、他には何もしません。"
+    },
+    {
+      "en": "helloworld/main.c",
+      "ja": "helloworld/main.c"
+    },
+    {
+      "en": "This program quits immediately because it has no events to process. A libuv\nevent loop has to be told to watch out for events using the various API\nfunctions.",
+      "ja": "処理するイベントがないため、このプログラムは直ちに終了します。libuvのイベントループには、各種API関数を使って、イベントを監視するよう指示する必要があります。"
+    },
+    {
+      "en": "Starting with libuv v1.0, users should allocate the memory for the loops before\ninitializing it with ",
+      "ja": "libuv v1.0以降では、利用者は、"
+    },
+    {
+      "en": ". This allows you to plug in\ncustom memory management. Remember to de-initialize the loop using\n",
+      "ja": "で初期化する前に、イベントループ用のメモリを割り当てるべきです。これにより、独自のメモリ管理を組み込めます。"
+    },
+    {
+      "en": " and then delete the storage. The examples never\nclose loops since the program quits after the loop ends and the system will\nreclaim memory. Production grade projects, especially long running systems\nprograms, should take care to release correctly.",
+      "ja": "でイベントループを終了処理してから、記憶領域を削除することを忘れないでください。これらの例では、ループの終了後にプログラムが終了し、システムがメモリを回収するため、イベントループを閉じていません。本番用途のプロジェクト、特に長時間動作するシステムプログラムでは、適切に解放するよう注意すべきです。"
+    },
+    {
+      "en": "Default loop",
+      "ja": "既定のイベントループ"
+    },
+    {
+      "en": "A default loop is provided by libuv and can be accessed using\n",
+      "ja": "libuvは既定のイベントループを提供しており、"
+    },
+    {
+      "en": ". You should use this loop if you only want a single\nloop.",
+      "ja": "でアクセスできます。イベントループが1つだけ必要なら、このループを使うべきです。"
+    },
+    {
+      "en": "default-loop/main.c",
+      "ja": "default-loop/main.c"
+    },
+    {
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "en": "node.js uses the default loop as its main loop. If you are writing bindings\nyou should be aware of this.",
+      "ja": "node.jsは、メインのイベントループとして既定のループを使っています。バインディングを書く際は、この点を認識しておいてください。"
+    },
+    {
+      "en": "Error handling",
+      "ja": "エラー処理"
+    },
+    {
+      "en": "Initialization functions or synchronous functions which may fail return a negative number on error. Async functions that may fail will pass a status parameter to their callbacks. The error messages are defined as ",
+      "ja": "失敗する可能性のある初期化関数や同期関数は、エラーの場合に負の値を返します。失敗する可能性のある非同期関数は、コールバックに状態を表す引数を渡します。エラーメッセージは、"
+    },
+    {
+      "en": "constants",
+      "ja": "定数"
+    },
+    {
+      "en": ".",
+      "ja": "として定義されています。"
+    },
+    {
+      "en": "You can use the ",
+      "ja": ""
+    },
+    {
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "en": " functions\nto get a ",
+      "ja": "を使うと、それぞれエラーの説明やエラー名を表す"
+    },
+    {
+      "en": " describing the error or the error name respectively.",
+      "ja": "を取得できます。"
+    },
+    {
+      "en": "I/O read callbacks (such as for files and sockets) are passed a parameter ",
+      "ja": "ファイルやソケットなどの入出力の読み取りコールバックには、引数"
+    },
+    {
+      "en": ". If ",
+      "ja": "が渡されます。"
+    },
+    {
+      "en": " is less than 0, there was an error (UV_EOF is the end of file error, which you may want to handle differently).",
+      "ja": "が0未満なら、エラーが発生しています（UV_EOFはファイル終端のエラーであり、他とは異なる扱いをしたい場合もあるでしょう）。"
+    },
+    {
+      "en": "Handles and Requests",
+      "ja": "ハンドルとリクエスト"
+    },
+    {
+      "en": "libuv works by the user expressing interest in particular events. This is\nusually done by creating a ",
+      "ja": "libuvは、利用者が特定のイベントへの関心を表明することで動作します。通常は、入出力デバイス、タイマー、プロセスに対する"
+    },
+    {
+      "en": "handle",
+      "ja": "ハンドル"
+    },
+    {
+      "en": " to an I/O device, timer or process.\nHandles are opaque structs named as ",
+      "ja": "を作成して関心を表明します。ハンドルは、"
+    },
+    {
+      "en": " where type signifies what the\nhandle is used for.",
+      "ja": "という名前の不透明な構造体であり、TYPEはハンドルの用途を表します。"
+    },
+    {
+      "en": "libuv watchers",
+      "ja": "libuvの監視処理"
+    },
+    {
+      "en": "Handles represent long-lived objects. Async operations on such handles are\nidentified using ",
+      "ja": "ハンドルは、長い寿命を持つオブジェクトを表します。そのようなハンドルに対する非同期操作は、"
+    },
+    {
+      "en": "requests",
+      "ja": "リクエスト"
+    },
+    {
+      "en": ". A request is short-lived (usually used across\nonly one callback) and usually indicates one I/O operation on a handle.\nRequests are used to preserve context between the initiation and the callback\nof individual actions. For example, an UDP socket is represented by\na ",
+      "ja": "を使って識別します。リクエストは短い寿命を持ち（通常、1つのコールバックにわたってのみ使われます）、一般にハンドル上の1つの入出力操作を表します。リクエストは、個々の操作の開始とコールバックの間でコンテキストを保持するために使います。たとえば、UDPソケットは"
+    },
+    {
+      "en": ", while individual writes to the socket use a ",
+      "ja": "で表し、ソケットへの個々の書き込みには、"
+    },
+    {
+      "en": "\nstructure that is passed to the callback after the write is done.",
+      "ja": "構造体を使います。この構造体は、書き込みが終わった後にコールバックへ渡されます。"
+    },
+    {
+      "en": "Handles are setup by a corresponding:",
+      "ja": "ハンドルは、対応する次の関数で設定します:"
+    },
+    {
+      "en": "function.",
+      "ja": ""
+    },
+    {
+      "en": "Callbacks are functions which are called by libuv whenever an event the watcher\nis interested in has taken place. Application specific logic will usually be\nimplemented in the callback. For example, an IO watcher’s callback will receive\nthe data read from a file, a timer callback will be triggered on timeout and so\non.",
+      "ja": "コールバックは、監視処理が対象とするイベントが起きるたびに、libuvが呼び出す関数です。アプリケーション固有の処理は、通常コールバック内に実装します。たとえば、入出力の監視処理のコールバックは、ファイルから読み取ったデータを受け取り、タイマーのコールバックは、時間が経過したときに呼び出されます。"
+    },
+    {
+      "en": "Idling",
+      "ja": "Idleハンドルの利用"
+    },
+    {
+      "en": "Here is an example of using an idle handle. The callback is called once on\nevery turn of the event loop. A use case for idle handles is discussed in\n",
+      "ja": "Idleハンドルを使う例を示します。コールバックは、イベントループの反復ごとに1回呼び出されます。Idleハンドルの利用例については、"
+    },
+    {
+      "en": "Utilities",
+      "ja": "ユーティリティ"
+    },
+    {
+      "en": ". Let us use an idle watcher to look at the watcher life cycle\nand see how ",
+      "ja": "で説明します。Idleの監視処理を使って、監視処理のライフサイクルと、監視処理が存在するために"
+    },
+    {
+      "en": " will now block because a watcher is present. The idle\nwatcher is stopped when the count is reached and ",
+      "ja": "がブロックする様子を見てみましょう。カウントが所定の値に達するとIdleの監視処理が停止し、アクティブなイベント監視処理がなくなるため、"
+    },
+    {
+      "en": " exits since no\nevent watchers are active.",
+      "ja": "が終了します。"
+    },
+    {
+      "en": "idle-basic/main.c",
+      "ja": "idle-basic/main.c"
+    },
+    {
+      "en": "Storing context",
+      "ja": "コンテキストの保存"
+    },
+    {
+      "en": "In callback based programming style you’ll often want to pass some ‘context’ –\napplication specific information – between the call site and the callback. All\nhandles and requests have a ",
+      "ja": "コールバックを使うプログラミング方式では、呼び出し元とコールバックの間で、アプリケーション固有の情報である「コンテキスト」を渡したくなることがよくあります。すべてのハンドルとリクエストには、"
+    },
+    {
+      "en": " member which you can set to the\ncontext and cast back in the callback. This is a common pattern used throughout\nthe C library ecosystem. In addition ",
+      "ja": "メンバーがあり、ここにコンテキストを設定して、コールバック内で元の型にキャストできます。これは、Cのライブラリ全般でよく使われるパターンです。また、"
+    },
+    {
+      "en": " also has a similar data\nmember.",
+      "ja": "にも同様のdataメンバーがあります。"
+    },
+    {
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "en": "1",
+      "ja": "1"
+    },
+    {
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "en": "Depending on the capacity of the hardware of course.",
+      "ja": "もちろん、ハードウェアの処理能力によります。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "apiDeclarationsExact": 0,
+    "preBlocksExact": 6,
+    "idsAndLinksExact": true
+  },
+  "serializationPolicy": "html_preservation.py: actual article starts raw HTML block; original canonical pre HTML copied exactly; rendered DOM/code whitespace separately verified",
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}
