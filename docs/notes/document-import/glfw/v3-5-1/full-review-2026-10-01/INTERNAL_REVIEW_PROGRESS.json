@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "id": "03-guides/08-internal-structure.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6-astra;runtime:unavailable",
+  "startedAt": "2026-10-01T12:26:52.120Z",
+  "updatedAt": "2026-10-01T12:32:29.791Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/internal.md",
+      "sha256": "29c6bb8bc77693c3623024141087ac18caf6730d4c34912069bd4e35e6d86052"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/08-internal-structure.md",
+      "sha256": "b67defda386e6f7162537095e6ce72ea728617d6f9763eaf9853579d29192cc3"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/08-internal-structure.md",
+      "sha256": "0662bc8d911d526aeb9b63fc7fdaca269b737aada640f4986f7532f420522d13"
+    }
+  },
+  "lineCounts": {
+    "source": 120,
+    "canonical": 130,
+    "translation": 101
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        120
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        130
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        101
+      ]
+    ]
+  },
+  "findings": [
+    "固定原文120行・EN130行・JA101行を全行確認。公開/ネイティブ/内部/プラットフォーム/イベント/静的関数/構成マクロの責務と命名例が全て対応。修正不要。",
+    "公開interfaceは共有ファイル/非platformcode、struct lowercamel、native公開platform固有とglfw3native.h/一部displayhandle、返値interface名の命名を照合。内部utilities/global _glfw/_GLFWlibrary/leadingunderscoreを照合。",
+    "platform interfaceのアプリからの直接call禁止、callback直接呼出禁止、共有struct部分変更禁止、event経由の責任を照合。_GLFWplatform関数pointerとruntimeplatform選択、window/context/input/event/monitor/Vulkan各scope、timer/thread/module plainfunction例を保持。",
+    "platform固有structsuffixとspecialmacro組込、イベントcallback/state双方とObjectEvent、static lowercamel/prefixなし、CMake compiletime選択/先頭underscoreのmacro例を照合。既存CMake定義に_GLFW_WIN32/_GLFW_BUILD_DLLが存在することを確認、CMakeオプションとmacroを取り違えない。",
+    "native access内部リンクはEN/JA同一ページに対応。本文codeblock/表/画像なし。原文との忠実性レビューであり実装全体や実行結果を検証済みとしない。"
+  ],
+  "plannedCorrections": [],
+  "unresolved": [
+    "GLFW24ページ、Lua55ページ、全ページ表示と上流確認は未完了。",
+    "native-accessページのh1なしを当該referenceレビュー時に調査。"
+  ],
+  "nextAction": "04-reference/01-initialization-version-error.mdの公式固定HTML入力・英日全文レビューへ進む。",
+  "finalReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T12:29:26.751Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/08-internal-structure.md",
+      "sha256": "b67defda386e6f7162537095e6ce72ea728617d6f9763eaf9853579d29192cc3",
+      "coverage": [
+        [
+          1,
+          130
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/08-internal-structure.md",
+      "sha256": "0662bc8d911d526aeb9b63fc7fdaca269b737aada640f4986f7532f420522d13",
+      "coverage": [
+        [
+          1,
+          101
+        ]
+      ]
+    },
+    "results": [
+      "英語130行、日本語101行を初回後の独立パスで全文再読。責務、公開性、platform条件、禁止事項、命名規則、全例と例外を照合し誤訳/欠落なし。",
+      "公開/内部/event共有実装、native platformhandle、platformのcall/callback/struct変更禁止、関数pointer runtime選択とwindow-independentタイマー等の区別、日本語単独の可読性を確認。変更不要。",
+      "機械検査のinline例とanchor一致は内容レビューを代替しない。GLFW実装全体や実機動作は未検証。"
+    ]
+  }
+}

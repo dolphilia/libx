@@ -1,0 +1,97 @@
+{
+  "id": "03-guides/01-introduction-to-the-api.md",
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6.1-sol;runtime:unavailable",
+  "reviewedAt": "2026-10-01T10:34:54.721Z",
+  "separateReviewPass": true,
+  "source": {
+    "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/intro.md",
+    "sha256": "a70d21af7776fb17844a462c280aa91c5bfdf6ff9ee97eea14e52ab1cec85165",
+    "coverage": [
+      [
+        1,
+        290
+      ],
+      [
+        291,
+        637
+      ]
+    ]
+  },
+  "canonical": {
+    "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/01-introduction-to-the-api.md",
+    "sha256": "77dfeb11131885e9634e2c46870a376bb94fea53bd812cf6dd5a7a7c4b8d7f36",
+    "coverage": [
+      [
+        1,
+        657
+      ]
+    ]
+  },
+  "translation": {
+    "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/translation-before-emphasis.md",
+    "sha256": "4029acde0cc3a3da7ae1ff8008fa2e8931fe5ff210aecbe0cd1072ef2b1899da",
+    "coverage": [
+      [
+        1,
+        266
+      ],
+      [
+        267,
+        521
+      ]
+    ]
+  },
+  "sourceDependencies": [
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/version-reference-excerpt.h",
+      "sha256": "4667dcbd7a8dafb1b6a16dc169c686aa395c6c0c7bdb48d3c68f8eeb34c3fe8e"
+    }
+  ],
+  "referenceCoverage": {
+    "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/version-reference-excerpt.h",
+    "sha256": "4667dcbd7a8dafb1b6a16dc169c686aa395c6c0c7bdb48d3c68f8eeb34c3fe8e",
+    "coverage": [
+      [
+        1,
+        60
+      ]
+    ],
+    "originalLines": [
+      2372,
+      2431
+    ]
+  },
+  "findings": [
+    "原文全637行→定本全657行、日本語全521行を照合。最終工程は内部リンクhrefを表示上のみ圧縮し、説明本文・API名・コード・表・注記・全行を読了。英語出力の省略区間294-357行は非圧縮で再読。リンク先自体は初回全体と機械検査で確認。",
+    "英日7件ずつの参照キー表示を意味のある見出しへ変更。上流本文の全段落・全列挙と全見出しを保持。",
+    "初期化前の10関数、失敗時の終了処理、再初期化、ヒント値の保持と次回初期化、共通/macOS/Wayland/X11の全7ヒントと既定値表を照合。ANGLEフォールバック、Null除外・明示要求・1080p、X11/Wayland両対応とnative関数の条件を確認。",
+    "アロケーターの反映時点・終了までの期間・C標準ライブラリ限定・3関数のシグネチャ/引数/返値/要件、終了時のウィンドウ/モニター/カーソル/ガンマ/スクリーンセーバー解放と未初期化時の即復帰を確認。",
+    "エラーコード0・戻る前のクリア・UTF-8/NULL・取得した文字列とコールバック引数の異なる寿命・保存後のコールバック・非致命性と将来の無効呼び出しの変更を照合。",
+    "座標の2原点、右向きX/下向きY、左上位置・フレーム、モニター物理mm/フレームバッファpixelの例外、1:1非保証・実行時変化とspaces.svgを保持。",
+    "ポインターの解放責任とコピー時点、再入禁止6関数と将来保証、メインスレッドの制約・エラーコールバック例外・全スレッド利用9分類と非同期3対象・アプリケーションの同期責任を照合。",
+    "マイナー/パッチの寿命保証・メジャーまでのシグネチャ/値・未文書化動作・リファレンス優先、合成解放イベントの順序例外、動的ロードとリンクの違い、バージョン3マクロ/数値と文字列解析禁止2条件・3.4形式変更・3.5.0例を照合。",
+    "原文の初期化前main限定と同版リファレンスの版取得2関数の任意スレッド許可は食い違う。固定ヘッダー60行を全読し、原文を消さずLibx名義の独立注記で出典差と原文の優先規則を明示した。注記の英日も全文照合。重大な欠落・誤訳なし。上流ガイド本文の食い違い自体はLibxから変更せず原資料で保持。"
+  ],
+  "initialReview": {
+    "id": "03-guides/01-introduction-to-the-api.md",
+    "status": "needs-final-review",
+    "initialFindings": [
+      "原文intro.md637行・英語655行・日本語519行を全件照合。初回英語出力の省略区間270-385行を別途再読し補完。",
+      "英日7件の参照キー表示を修正。ガイドと固定版リファレンスの初期化前スレッド制約の食い違いを確認し、原文を保全したLibx注記で区別した。"
+    ],
+    "nextAction": "修正後の全英日本文・固定リファレンス抜粋を別工程でレビュー。"
+  },
+  "mechanicalEvidence": [
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/INTRO_SOURCE_CHECK.json",
+      "sha256": "fec30bd6dc4c51d262dfd6cef74883321a7db7cdd165d014420762f211a15d4b"
+    },
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/INTRO_CODE_CHECK_BEFORE_EMPHASIS_FIX.json",
+      "sha256": "54e36a9979c63d3fce852e9522c175f2aabd4ff56e86c40b5d59d275c0989507"
+    }
+  ],
+  "displayStatus": "pending"
+}

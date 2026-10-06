@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "04-reference/01-initialization-version-error.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6-astra;runtime:unavailable",
+  "startedAt": "2026-10-01T12:34:45.709Z",
+  "updatedAt": "2026-10-01T13:03:58.744Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/group__init.html",
+      "sha256": "5c07200e29cae9e2dd5ec516af98c4a44775c41ea0d601b82eb5696d8b6edf57"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/01-initialization-version-error.md",
+      "sha256": "44482e6460b80a6f9eb7bf24a2fe4ae9be44630ceaa287c69b77205f1b527802"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/01-initialization-version-error.md",
+      "sha256": "b41b7abf5ae43268fa3e7a0c24d6e979a81d63cf4a441e0fd3384eab6f6e2406"
+    }
+  },
+  "lineCounts": {
+    "source": 1015,
+    "canonical": 1851,
+    "translation": 1851
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        1015
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        1839
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        1839
+      ]
+    ]
+  },
+  "findings": [
+    "原文1–245行、EN/JA1–488行を省略なしの分割出力で実読。全文の初回レビューは未完了。",
+    "Doxygenのページタイトルは原文76行でcontents外、定本と訳の本文にはh1がない。native-accessの実表示で観測した問題との関連を確認、本文全体の初回レビュー後に修正範囲を判断する。",
+    "初期化・終了・バージョン・エラーの説明、error codes参照、マクロ一覧、5typedefと11関数の一覧・署名・短い説明を原文/EN/JAで照合。allocation/reallocation/deallocationのuser引数、エラー取得が呼出threadの最後のerrorを取得して消去する説明、platform build supportと現在選択の区別を保持。各関数の詳細本文は未読。",
+    "major/minor/revision=3/5/1と、非互換API変更/後方互換機能追加/API不変修正の説明を照合。TRUE本文原文231–245行は読了、EN/JA対応箇所489行以降は未読。原文の_True表記は技術的根拠未確認のため合格としない。",
+    "原文246–1015行、EN/JA489–1839行を分割で実読。出力省略が発生したEN1176–1205行は別出力で再取得して全範囲を補完。初回全文照合を完了、最終確認は未完了。",
+    "17マクロの定義と5typedef、11関数の全説明を照合。allocatorの最小size/zero/null除外/初期化flag前後/同一allocator/alignment/再入禁止/各thread、error文字列の有効期間、init失敗時terminate、main threadとany threadの区別、platform選択とcompile supportを保持。macOS/Wayland/X11条件・版追加日・文字コード・初期化前呼出・警告も照合。",
+    "原文の不整合4種と未処理参照1件を確認: _True/_Falseは固定glfw3.hにコメントだけで宣言定義なし。deallocateはvoid戻り値なのにNULL返却の記述がある。allocatorのevery memberはuserまで関数pointerと読めるがstructは3callback+void*userで実装検査は3callbackのみ。GetErrorのdescriptionは[in]表記だが実装504–517は格納先へ書き込む。init_hintsは原文も平文で内部参照リンク欠如。",
+    "本文h1欠如はcontents外の原文タイトル抽出除外による。今回対象initに限定して英日h1を追加し、他の未レビューreferenceは対応待ちとして記録。4/6fragment codeはHTMLdivとして残るため代表表示でコードの読みやすさ・記号保全も確認する。",
+    "表示検査でmobile document375/page448の横はみ出しを確認。表は45の既存scroll wrapper内、原因は6つの長いDoxygen h2 API名。共有CSSにh2:has(> .permalink)のみoverflow-wrap:anywhereを追加。全文本文は不変。"
+  ],
+  "plannedCorrections": [
+    {
+      "type": "display",
+      "scope": "init referenceの英日h1タイトル追加。残るreferenceは後続サイクル。",
+      "status": "applied"
+    },
+    {
+      "type": "reference-note",
+      "scope": "真偽名のGLFW宣言不存在、void解放callback、3callbackとuser区分、error説明格納先、init_hints参照の5注記を英日に追加。原文は保持。",
+      "status": "applied"
+    }
+  ],
+  "unresolved": [
+    "GLFW残り23ページ・Lua55ページ、全ページ表示、上流更新確認は未完了。",
+    "他のreference本文h1は未対応。"
+  ],
+  "nextAction": "04-reference/02-error-codes.mdを固定原文・英語・日本語の全文でレビュー。",
+  "initialReviewedArtifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/group__init.html",
+      "sha256": "5c07200e29cae9e2dd5ec516af98c4a44775c41ea0d601b82eb5696d8b6edf57"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/01-initialization-version-error.md",
+      "sha256": "0496a50db4b59192c390ef98a29323df932407eb0eee131ff72547caa39b4dac"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/01-initialization-version-error.md",
+      "sha256": "ccce51f6d13991d68dfaf55b5d3fddead9b9fcbf0c2e8a4dc8ae66b0da79de37"
+    }
+  },
+  "finalReviewCoverage": {
+    "canonical": [
+      [
+        1,
+        1851
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        1851
+      ]
+    ]
+  },
+  "appliedCorrections": [
+    "原文を保った固定宣言/実装根拠5注記を英日に追加。",
+    "init reference英日のh1タイトルを追加。他referenceは後続対象。"
+  ],
+  "finalReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T12:48:48.053Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/01-initialization-version-error.md",
+      "sha256": "44482e6460b80a6f9eb7bf24a2fe4ae9be44630ceaa287c69b77205f1b527802",
+      "coverage": [
+        [
+          1,
+          1851
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/01-initialization-version-error.md",
+      "sha256": "b41b7abf5ae43268fa3e7a0c24d6e979a81d63cf4a441e0fd3384eab6f6e2406",
+      "coverage": [
+        [
+          1,
+          1851
+        ]
+      ]
+    },
+    "results": [
+      "修正後英日1851行を各1–650/651–1250/1251–1851で別工程全文再読。表示から空行のみを除外し全非空行・本文HTML・表・説明・署名・注記を省略なく確認。空行配置はh1/5注記除去後のbyte一致検査で保全を確認。",
+      "規範語/否定/例外/版/入力出力/ポインター有効期間/初期化前後/main・any threadを照合、日本語単独の読みやすさを確認。初回本文を保持し、5注記はLibx/固定版を明示し原文と区別。",
+      "_True/_Falseの説明はGLFW提供範囲だけを主張、規格一般を断定しない。void callbackとNULL返値検査不在、3callbackとuser、error説明格納先書込みを固定宣言/実装の該当行と照合。init_hintsの参照先は既存API入門の明示anchor。"
+    ]
+  }
+}

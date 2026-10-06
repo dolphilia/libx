@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "id": "03-guides/05-input-guide.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6.1-sol;runtime:unavailable",
+  "startedAt": "2026-10-01T11:35:53.356Z",
+  "updatedAt": "2026-10-01T11:58:25.883Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/input.md",
+      "sha256": "674acf43fa574b3c653a79c2c56faa563dff66510773c58966e3c2a9dd4cba61"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/05-input-guide.md",
+      "sha256": "a0fab769ccc17e5bbd2b7c26a442193351ac123a2ee4c0e96a6c4a5cd873aa3f"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/05-input-guide.md",
+      "sha256": "99d390c0ac8544e897870b97775a2d64d499c08a2af87ff04126af4c75ad7fc5"
+    }
+  },
+  "lineCounts": {
+    "source": 1000,
+    "canonical": 1022,
+    "translation": 808
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        1000
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        1016
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        802
+      ]
+    ]
+  },
+  "findings": [
+    "入力のpollのみtime/callbackのみscrollと負荷・取りこぼし、window user pointer、eventsテストの説明を照合。原文all input callbacksの断定は後述joystick例と整合しない。",
+    "無window時でもmonitor/joystickイベント処理必須、Pollは既受信だけ/即戻り、Waitは最低1eventまで休止、Timeout0.7秒/イベント先着、別threadからEmptyEventでwake、SetWindowSize途中にcallbackが呼ばれ得ることを照合。",
+    "physical key/character非1:1、keypress3actionsと多くのkey repeat、rollover、repeatはtext用で最大1key・押下状態/animationに依存禁止、cached GetKeyとphysical pollingとの差を確認。",
+    "scancodeはplatform固有で時間的安定/保存可・UNKNOWN例、GetKeyはPRESS/RELEASEだけ、stickyはpollまでPRESSでrelease処理済みならpoll後RELEASE、Caps/Num event時点のmodifier modeとKEY_LAST最大tokenを確認。",
+    "Unicode32bit/native endian UTF32、キー名UNKNOWN時のscan使用、スクリーン座標とsubpixel、4カーソルモードの制限・復帰、raw motionはDISABLEDのみを全行照合。",
+    "カーソル画像RGBA32little-endian/unpremultiplied/左上順、NULL時作成失敗・カーソル破棄とmode不変、enter/leave、unlimited buttonとcached pollの差、sticky解放条件、scroll二軸を照合。",
+    "joystick最大16台/IDは切断まで固定・空きあり、軸±1/ボタンPRESS-RELEASE/hat値0,1,2,4,8と斜めOR、backcompatボタン配列hat、UTF8名非一意/userpointer寿命/接続通知にevent処理必須を照合。",
+    "gamepad15buttons/6axesとCROSS-CIRCLE-SQUARE-TRIANGLE別名、固定配列・LAST最大・自動mapping更新、SDL2.0.5+GUID32hex・入力範囲/反転・platform3種・例は実際単一行・出力修飾未対応の範囲を照合。",
+    "timeは秒/基準変更後計時、rawtickは1/frequency秒とHz、clipboardUTF8または変換可能/NULL、path arrayと文字列はcallback復帰まででdeepcopy必要を照合。"
+  ],
+  "plannedCorrections": [
+    {
+      "type": "source-inconsistency",
+      "sourceLines": [
+        20,
+        22
+      ],
+      "referenceLines": [
+        2016,
+        2016
+      ],
+      "scope": "all input callbacks receive window handle",
+      "status": "applied",
+      "next": "全文読了後、固定原文と区別したLibx注記でjoystick callback例外を明示する必要を判断"
+    },
+    {
+      "type": "source-inconsistency",
+      "sourceLines": [
+        745,
+        747
+      ],
+      "scope": "joystick disconnect説明のmonitor callback表記・Name/UserPointer寿命",
+      "status": "applied",
+      "next": "原文は保持し、固定実装のName=NULLとUserPointer callback中取得可、名前の寿命を別Libx注記として明示。"
+    },
+    {
+      "type": "link-label",
+      "scope": "input/intro_guide/window_guide/context_guide等",
+      "status": "applied",
+      "next": "全文読了後に各表示キーと正しい見出しを数えURLを保持して修正"
+    },
+    {
+      "type": "emphasis",
+      "translationLines": [
+        61,
+        61
+      ],
+      "scope": "_のみ_",
+      "status": "applied",
+      "next": "全文で対象箇所を特定し修正・AST/表示確認"
+    },
+    {
+      "type": "source-inconsistency",
+      "sourceLines": [
+        881,
+        883
+      ],
+      "scope": "a7 for the eighth button",
+      "status": "applied",
+      "next": "原文を保持し、a7は8番目の軸であると固定パーサーに基づく別注記を追加。"
+    },
+    {
+      "type": "strong-emphasis",
+      "translationLines": [
+        691,
+        691
+      ],
+      "scope": "__この説明は正式な仕様ではない__",
+      "status": "applied",
+      "next": "CJK隣接強調を**へ修正しAST/表示確認。"
+    }
+  ],
+  "unresolved": [
+    "GLFW全35ページの残り27ページの内容・全ページ表示、上流更新確認は未完了。"
+  ],
+  "nextAction": "次は03-guides/06-vulkan-guide.mdの固定原文・英語・日本語の全文照合。",
+  "targetedInvestigation": {
+    "sourceCoverage": [
+      [
+        713,
+        749
+      ]
+    ],
+    "translationCoverage": [
+      [
+        588,
+        618
+      ]
+    ],
+    "reference": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/input-callback-reference.h",
+      "sha256": "c35e9bf227fab60aff20ab9a8cabe3a8de38a44a1723a209808669c23e8cb139"
+    },
+    "archive": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/maintenance-2026-10-01/source/glfw-3.5.1.zip",
+      "sha256": "ea79bc5feffc254c87291980c2d0bce9acebb68c4983b79f961dcd2cb8a611a0"
+    },
+    "results": [
+      "joystick callbackの引数はjid/eventだけ。固定header2016 typedefと固定input.md例が一致し、冒頭all window handle断定に例外がある根拠。",
+      "joystick_event末尾は原文にもmonitor callback returnsとあり日本語も忠実に同じ表現。誤訳と決めず、固定headerのjoystick user pointer callback可の記述と対照して原文不整合として次工程で扱う。",
+      "GetJoystickName固定headerはnot-present NULLと文字列disconnectまでの寿命を記載するため、入力ガイド末尾の全体寿命断定について名前・userpointerの差異も追加調査が必要。未確定の技術条件を補わない。",
+      "固定実装をarchive一致で確認。切断callback前にconnected=falseのためGetJoystickNameはNULL。GetUserPointerはallocatedを確認してcallback中は取得できる。Win32/Linux/Cocoaはいずれもcallback後に解放する。原文のmonitor表記だけ直すとName誤説明が残るため注記に両方記載。"
+    ],
+    "implementation": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/input-implementation-evidence.json",
+      "sha256": "7d1e0473d1b53a75402fa0a1399b93728749844985fb752fa9f45f490b82f837"
+    }
+  },
+  "initialReviewedArtifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/input.md",
+      "sha256": "674acf43fa574b3c653a79c2c56faa563dff66510773c58966e3c2a9dd4cba61"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/05-input-guide.md",
+      "sha256": "709798b5a88196a0f6698e36d3b6eb9488e21b69fb892f2f35de88afc6705b25"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/05-input-guide.md",
+      "sha256": "0155db145ac11edf6477c941bf0494e67677e48e372cb2d5754b94f2cfaadeb2"
+    }
+  },
+  "finalReviewCoverage": {
+    "canonical": [],
+    "translation": []
+  },
+  "appliedCorrections": [
+    "英日参照表示名7件ずつを改善。既存URLは不変、3注記のリンクは追加のみ。",
+    "JAのみ・正式な仕様ではないの2つの強調構文を修正。",
+    "固定原文のcallback例外、切断時のNameとUserPointer、a7の軸の3件を保持本文と区別したLibx注記で補足。"
+  ],
+  "finalReview": {
+    "method": "ai-content-review",
+    "reviewedAt": "2026-10-01T11:51:19.791Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/05-input-guide.md",
+      "sha256": "a0fab769ccc17e5bbd2b7c26a442193351ac123a2ee4c0e96a6c4a5cd873aa3f",
+      "coverage": [
+        [
+          1,
+          352
+        ],
+        [
+          353,
+          602
+        ],
+        [
+          603,
+          933
+        ],
+        [
+          934,
+          1022
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/05-input-guide.md",
+      "sha256": "99d390c0ac8544e897870b97775a2d64d499c08a2af87ff04126af4c75ad7fc5",
+      "coverage": [
+        [
+          1,
+          264
+        ],
+        [
+          265,
+          481
+        ],
+        [
+          482,
+          726
+        ],
+        [
+          727,
+          808
+        ]
+      ]
+    },
+    "results": [
+      "修正後の英語1022行・日本語808行を別パスで全行再読、表示省略なし。JA1-264でinput表示キーを見つけ行10を修正して再読。該当行以外のSHA変更なしを差分確認。",
+      "内部hrefのみ再読出力では短縮。77種類の英語ラベル→URLを別途非短縮で照合し、英日全リンク先は個数と対象が一致。joystick存在確認段落のみ既存JA語順による2リンク順序逆を確認。各localeの編集前後リンク順は保持。。SDLの参照形式URLも一致。",
+      "初回原文1000行と全英日照合に対し、固定原文と区別した3注記を追加。callbackのjid/event例外、GetNameは切断callback中NULL/UserPointer取得可・名前寿命、a7は8番目の軸を固定headerと実装に再照合。原文は保持。7ラベル、JA強調2件のみ修正、コード不変。"
+    ]
+  }
+}

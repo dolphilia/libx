@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "03-guides/07-standards-conformance.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6-astra;runtime:unavailable",
+  "startedAt": "2026-10-01T12:09:18.805Z",
+  "updatedAt": "2026-10-01T12:26:18.224Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/compat.md",
+      "sha256": "fdf8ce2acb2ead034410485609dce37d8aabcd3206b6d632197aa5361714f7a2"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/07-standards-conformance.md",
+      "sha256": "1500acee211e52d0746b3e20b8b68b9a15cd05ec569765180d7e2e99de38c46a"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/07-standards-conformance.md",
+      "sha256": "56b8a8727b82c1e681493fca6e3f6893429d492d523250bc3315e235891bde10"
+    }
+  },
+  "lineCounts": {
+    "source": 304,
+    "canonical": 319,
+    "translation": 178
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        304
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        311
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        170
+      ]
+    ]
+  },
+  "findings": [
+    "固定原文304行、定本311行、日本語170行を全行照合。結合出力の中間省略後、英日を1-165/166-311、1-94/95-170で再取得し全範囲を確認。",
+    "X11の装飾/close/ping/fullscreen/compositor/clipboard/XDND、XRandR1.3/Xkb/XInput2/XRender/Xcursor要件と未対応時fallback・例外を照合。ガンマ要件は原文が一方欠如も不動作と読める一方、固定x11_monitor.c540-574はRandR優先/vidmode代替。",
+    "Waylandのcore/helper/xkbcommon0.5.0、xdg-shell必須、cursor2protocol双方必須、idle-inhibit/libdecor/xdg-decoration/viewporter、focus/attention不支持、fractional-scale未対応時ceil整数を照合。",
+    "GLX1.3不支持時glfwInit失敗という原文に対し、固定x11_window.c1963-1985はnative context作成時のInitGLX失敗。NO_API/EGL別経路あり。glx_context.c355-359の1.3判定と全srcの呼出箇所を確認。",
+    "原文GLX_MESA_swap_control,にはtoken内commaがある。固定glx_context.c380はcommaなし。原文MESA→EXT→SGI優先に対しswapIntervalGLX188-205はEXT→MESA→SGI。",
+    "原文WGL_EXT_extension_string/WGL_ARB_extension_stringの単数名とEXT優先を保持しているが、固定wgl_context.c482-483はextensions複数名、363-379はARB関数を先に利用。未対応時・multisample/profile/flush/sRGB条件と否定は訳に欠落なし。",
+    "macOSはversion14時点、deprecated/Metal/thread安全性制限、stereo失敗、3.4以降forwardcompat無視、debug/noerror/robustness非対応、releaseNONE/glFlush先行を照合。現在のOS仕様を確認済みとしない。",
+    "Vulkan loader/ICD不在時false/API unavailableの日本語がat least oneを曖昧に表現。ローダー不在または稼働ICDが1つもないと明示する。WSI Windows/Wayland双方・macとX11のsurface AND alternativeの条件は忠実。"
+  ],
+  "plannedCorrections": [
+    {
+      "type": "translation",
+      "scope": "Vulkan loader/ICD不在条件の日本語1文",
+      "status": "applied"
+    },
+    {
+      "type": "reference-note",
+      "scope": "gamma/GLX初期化/GLX名と優先順/WGL名と優先順の原文・固定実装差異4件、英日注記",
+      "status": "applied"
+    }
+  ],
+  "unresolved": [
+    "GLFW残り25ページ・Lua55ページ、全ページ表示、上流更新確認は未完了。"
+  ],
+  "nextAction": "03-guides/08-internal-structure.mdを固定原文・英語・日本語の全体でレビュー。",
+  "modelObservation": {
+    "observedAt": "2026-10-01T12:13:50.063Z",
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "preferred": "gpt-6.1-sol",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false,
+    "note": "現在の設定はAstra。過去のSol設定観測を現在の設定と取り違えたため訂正。実行モデルもレビュー時点の設定も現在の設定から断定しない。原則Solとの運用差異を記録し、現在のCodexで継続。ユーザー設定は変更しない。"
+  },
+  "initialReviewedArtifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/compat.md",
+      "sha256": "fdf8ce2acb2ead034410485609dce37d8aabcd3206b6d632197aa5361714f7a2"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/07-standards-conformance.md",
+      "sha256": "ee98916479b39637eb1b15bca03c912258cc88f0aa2198196fe978c93819cc43"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/07-standards-conformance.md",
+      "sha256": "da8cbfc3963e40d1d9b7bcc7f3c61557fcb97f4810296fff43057987bb7ca923"
+    }
+  },
+  "finalReviewCoverage": {
+    "canonical": [],
+    "translation": []
+  },
+  "appliedCorrections": [
+    "原文を保った4つの固定実装根拠注記を英日に追加。",
+    "日本語Vulkan条件をローダー不在または稼働ICDが1つもない場合と明示。"
+  ],
+  "finalReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T12:21:11.269Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/03-guides/07-standards-conformance.md",
+      "sha256": "1500acee211e52d0746b3e20b8b68b9a15cd05ec569765180d7e2e99de38c46a",
+      "coverage": [
+        [
+          1,
+          319
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/03-guides/07-standards-conformance.md",
+      "sha256": "56b8a8727b82c1e681493fca6e3f6893429d492d523250bc3315e235891bde10",
+      "coverage": [
+        [
+          1,
+          178
+        ]
+      ]
+    },
+    "results": [
+      "修正後のEN1-167/168-319、JA1-96/97-178を非省略出力で別パス全文再読。原文との忠実な対応、日本語単独可読性、全否定/条件/例外、4注記の英日対応を確認。",
+      "注記はLibxと版を明記。ガンマの利用可/破損flag/代替、GLXのwindow作成段階・1.x判定・NO_API/EGL分岐、swap拡張comma/EXT→MESA→SGI、WGL複数名/ARB先行を保存固定実装の行範囲と照合。",
+      "Vulkanのローダー不在OR最小稼働ICDゼロ、macOS時点version14と3.4以降のhint例外、WSI各platform条件を保持。現行OS対応や実行結果を確認済みとしない。"
+    ]
+  }
+}

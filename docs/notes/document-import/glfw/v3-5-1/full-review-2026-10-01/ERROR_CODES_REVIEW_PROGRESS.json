@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "04-reference/02-error-codes.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6-astra;runtime:unavailable",
+  "startedAt": "2026-10-01T13:04:48.401Z",
+  "updatedAt": "2026-10-01T13:16:02.820Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/group__errors.html",
+      "sha256": "ae5057f34ebcdbab6e4509f8a8a2b661c8716ba0d59a4b9065056a27968faa00"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/02-error-codes.md",
+      "sha256": "f63afd0b38441a41f5c0df8616b14787a4b787831a599040b0ddc069b55d301f"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/02-error-codes.md",
+      "sha256": "6f8561435cc04af7b2f67b4812bafea2b710c1122df70f7978a0b069dde4afe3"
+    }
+  },
+  "lineCounts": {
+    "source": 384,
+    "canonical": 618,
+    "translation": 618
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        384
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        612
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        612
+      ]
+    ]
+  },
+  "findings": [
+    "固定原文1–384行、EN1–612行、日本語1–612行を初回全文照合。まとめ出力でEN/JA前半が省略されたためEN全体とJA1–205行を独立再取得、JA206–612は省略なし出力で読了。定本/訳は空行のみ除外して全非空行を実読。",
+    "15マクロ名と0/0x00010001–0x0001000E、短い一覧説明、全詳細/分析を照合。初期化要件、呼出元スレッド、列挙値と有効だが利用不可のversion区別、将来version例、hard constraints/clipboard分岐、cursor代替、unavailableとunimplementedの差、out params更新、ANY_PLATFORMのNull除外/native access/compiled supportを保持。",
+    "AMD only supports OpenGL ES via EGLを日本語ではEGL経由のOpenGL ESだけをサポートと訳しており、API自体の制限と読める。OpenGL ESのサポート経路がEGLに限られるという原文の意味に修正。",
+    "NO_WINDOW_CONTEXTの日本語が関数自体にcontextがあるように読めるため、関数が渡されるwindowにcontextを要求する意味を明確化。",
+    "OUT_OF_MEMORYの分析はバグと断定するが固定init.c261–267/278–284は割当/再割当callbackのNULLに対してerror設定。エラーだけからbug原因を確定できないという注記を原文保持で補足。",
+    "固定版driver例を現在の特定環境の互換検査と混同しない短い注記を補足。現行driver仕様を推測・合格にしない。本文h1欠如は原文73行titleがcontents外のため。"
+  ],
+  "plannedCorrections": [
+    {
+      "type": "translation",
+      "scope": "AMDのonlyの範囲、windowにcontextを要求する主体の2文",
+      "status": "applied"
+    },
+    {
+      "type": "reference-note",
+      "scope": "OUT_OF_MEMORYの固定実装とドライバー例の固定版範囲2注記",
+      "status": "applied"
+    },
+    {
+      "type": "display",
+      "scope": "対象エラーコード英日h1のみ追加",
+      "status": "applied"
+    }
+  ],
+  "unresolved": [
+    "GLFW22ページ・Lua55ページ、全ページ表示、上流更新確認は未完了。",
+    "他のreference本文h1は未対応。"
+  ],
+  "nextAction": "04-reference/03-window-reference.mdを固定原文・英語・日本語の全文でレビュー。13/35内容・当該代表表示合格、22ページ未確認。修正後は別パス全文・機械・代表表示を実施。",
+  "initialReviewedArtifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/group__errors.html",
+      "sha256": "ae5057f34ebcdbab6e4509f8a8a2b661c8716ba0d59a4b9065056a27968faa00"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/02-error-codes.md",
+      "sha256": "72a19820e025517f67b509304abb3cc36c5bdbb34343a56eae99a748bce0ffb8"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/02-error-codes.md",
+      "sha256": "740d5f0ad3dd7b7dbf23c2baeaf68af313ea8d56cfc3d474f6435e0469cbecf8"
+    }
+  },
+  "finalReviewCoverage": {
+    "canonical": [
+      [
+        1,
+        618
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        618
+      ]
+    ]
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T13:11:03.080Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/02-error-codes.md",
+      "sha256": "f63afd0b38441a41f5c0df8616b14787a4b787831a599040b0ddc069b55d301f",
+      "coverage": [
+        [
+          1,
+          618
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/02-error-codes.md",
+      "sha256": "6f8561435cc04af7b2f67b4812bafea2b710c1122df70f7978a0b069dde4afe3",
+      "coverage": [
+        [
+          1,
+          618
+        ]
+      ]
+    },
+    "results": [
+      "修正後EN/JA618行を別工程で全文再読。出力は空行のみ除外、全非空行/HTML/表/説明/分析/注記を実読。JA147–418行の出力省略は独立再取得で補完。",
+      "AMD/Nvidia/IntelのonlyはGLESのサポート経路に適用、NO_WINDOW_CONTEXTの要件対象はwindowであることを照合。その他の規範・条件・例外・分析・版・否定・out params更新を保持。",
+      "2注記はLibx固定3.5.1を明示して原文と区別。allocation/reallocationのNULL受信からエラー設定する固定実装、driver例の固定ヘッダー728–734行を照合。バグ原因・現在driver互換性は未確定であることを本文に明示。"
+    ]
+  }
+}

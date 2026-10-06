@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "id": "04-reference/05-monitor-reference.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6-astra;runtime:unavailable",
+  "startedAt": "2026-10-01T14:23:12.870Z",
+  "updatedAt": "2026-10-01T14:30:54.105Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/group__monitor.html",
+      "sha256": "a846bb7338845e2f0a7af1c71120db44a78b30ff25d7a8f2b05f4840332ecdd4"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/05-monitor-reference.md",
+      "sha256": "776e0f62c3a142c4ba58b2c89a70b0ebd386a2cb44ddd13b7ce4e6764748c808"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/05-monitor-reference.md",
+      "sha256": "bafe0ca9f439603754b84be1ad4309cd59a5a153a13848d6bccb5cede6b7558e"
+    }
+  },
+  "lineCounts": {
+    "source": 849,
+    "canonical": 1332,
+    "translation": 1332
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        849
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        1328
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        1328
+      ]
+    ]
+  },
+  "findings": [
+    {
+      "type": "display",
+      "id": "monitor-title",
+      "description": "原文title Monitor referenceに対して英日本文h1なし。追加する。",
+      "status": "applied"
+    },
+    {
+      "type": "upstream-wording",
+      "id": "video-mode-array",
+      "description": "glfwGetVideoModeのpointer lifetimeはreturned arrayと記載するが署名はconst GLFWvidmode*、固定monitor.c451–461は単一currentModeのアドレスを返す。原文/訳を保持して当該箇所へ英日別注記を追加。",
+      "sourceLines": [
+        693,
+        710
+      ],
+      "canonicalLines": [
+        1092,
+        1118
+      ],
+      "translationLines": [
+        1092,
+        1118
+      ],
+      "status": "applied"
+    }
+  ],
+  "plannedCorrections": [],
+  "unresolved": [
+    "GLFW19ページ・Lua55ページの全文、全ページ表示、上流確認は未完了。"
+  ],
+  "nextAction": "04-reference/06-input-reference.mdの固定原文・英日全文をレビュー。GLFW内容16/35合格、19未確認。Lua55ページ未確認。",
+  "coverageMeaning": "本文77–842の全非空semantic表示を実読。header1–76とfooter843–849はraw観測して配信用外UI/metadataと分類。raw HTML属性/タグの字面全文実読とは別。英日1328行の全非空本文を原行番号付き表示で実読。",
+  "excludedSourceRanges": [
+    {
+      "range": [
+        1,
+        76
+      ],
+      "reason": "Doxygenヘッダー/検索/ナビ/UI、titleはh1欠如の根拠として確認。"
+    },
+    {
+      "range": [
+        843,
+        849
+      ],
+      "reason": "Doxygen生成日/footer/閉じタグの配信用外メタデータ。"
+    }
+  ],
+  "initialReviewCompletedAt": "2026-10-01T14:24:55.739Z",
+  "reviewViewEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/review-view-method.json",
+      "sha256": "618acf2d7d9786c3358886b35aabadf8173d6c961f29b33f0e5d0c202981a179"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/monitor-source-initial-view.txt",
+      "sha256": "5e4bdcc422c7f5c1c18801d05aada2b6e0296201ec7229674095b4a9f06f2b91"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/monitor-canonical-initial-view.txt",
+      "sha256": "3ae1cc297340b0e4507a25924884f3e13abe7a437e7a8c1bd6542256fc664333"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/monitor-translation-initial-view.txt",
+      "sha256": "9b935fb0d04eb16b37b7722b651b15a55ac6a6bb43026e3e926655599d7bde85"
+    }
+  ],
+  "initialReviewSummary": [
+    "4typedef/15関数と2callback code、全引数/返値/error/thread/版/pointer lifetimeを照合。",
+    "モニター配列の先頭/構成変更での失効、NULL出力/zero on error、DPI/physical size/Win32/Wayland条件、ユーザーポインターanythread非同期/切断callback許可、video modesソートと再呼出失効、gamma有限正数/線形1.0/sRGB/Win32256/copied before returnを確認。翻訳の意味修正なし。",
+    "固定monitor.c433–464を実読しGetVideoModeは単一構造体currentModeのアドレスを返すことを確認。原文arrayを保持して注記予定。"
+  ],
+  "mechanicalEvidence": [
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/MONITOR_REFERENCE_CODE_CHECK.json",
+      "sha256": "4de99baa02766dfa7dd05d75c0e12c3274a753b5fbf1cdac1b66f94299c5f558"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/content-check.txt",
+      "sha256": "e42228058423d67c4f2d71113b78ba45d49bef55d006cbe3b70f76bd52793dd1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/eslint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "finalReviewCoverage": {
+    "canonical": [
+      [
+        1,
+        1332
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        1332
+      ]
+    ]
+  },
+  "finalReviewProgress": {
+    "status": "passed",
+    "reviewedAt": "2026-10-01T14:27:37.357Z",
+    "coverage": {
+      "canonical": [
+        [
+          1,
+          1332
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          1332
+        ]
+      ]
+    },
+    "results": [
+      "h1と1注記追加後の英日1–1332行の全非空本文を別工程で実読。4typedef/15関数/2callback codeと全引数・返値・条件・error・thread・版・pointer lifetimeを照合。",
+      "primary monitor先頭、NULL/zero on error、所有権・失効条件、DPI/Wayland/Win32、ユーザーポインター任意thread非同期、video modesソート/再呼出失効、gamma有限正数/linear1.0/sRGB/Win32256/copied before returnを照合。",
+      "原文GetVideoModeのarray表記を保持し単一GLFWvidmodeへのポインターという注記を英日で追加。固定monitor.c451–461と照合。翻訳の意味修正なし。",
+      "HTML属性/タグの全字面読解やOS/GPU実行を意味しない。機械検査・表示は独立記録。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/final-review-view-method.json",
+        "sha256": "f1deeae150a2e7ae94319487d86fcbbbcbd873573377eb5a0eb0347be305cac6"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/monitor-en-final-review-view.txt",
+        "sha256": "63c037fe1da530e3af2b6586a0eb10ebda5d1343a9095267579631019edb8c6a"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/monitor-ja-final-review-view.txt",
+        "sha256": "f3e636e74fcc8dd0feab98a1f3dfb21b54c601f1f6b41c3bb7e5b96565a7225c"
+      }
+    ]
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T14:27:37.357Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/04-reference/05-monitor-reference.md",
+      "sha256": "776e0f62c3a142c4ba58b2c89a70b0ebd386a2cb44ddd13b7ce4e6764748c808",
+      "coverage": [
+        [
+          1,
+          1332
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/04-reference/05-monitor-reference.md",
+      "sha256": "bafe0ca9f439603754b84be1ad4309cd59a5a153a13848d6bccb5cede6b7558e",
+      "coverage": [
+        [
+          1,
+          1332
+        ]
+      ]
+    },
+    "results": [
+      "h1と1注記追加後の英日1–1332行の全非空本文を別工程で実読。4typedef/15関数/2callback codeと全引数・返値・条件・error・thread・版・pointer lifetimeを照合。",
+      "primary monitor先頭、NULL/zero on error、所有権・失効条件、DPI/Wayland/Win32、ユーザーポインター任意thread非同期、video modesソート/再呼出失効、gamma有限正数/linear1.0/sRGB/Win32256/copied before returnを照合。",
+      "原文GetVideoModeのarray表記を保持し単一GLFWvidmodeへのポインターという注記を英日で追加。固定monitor.c451–461と照合。翻訳の意味修正なし。",
+      "HTML属性/タグの全字面読解やOS/GPU実行を意味しない。機械検査・表示は独立記録。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/final-review-view-method.json",
+        "sha256": "f1deeae150a2e7ae94319487d86fcbbbcbd873573377eb5a0eb0347be305cac6"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/monitor-en-final-review-view.txt",
+        "sha256": "63c037fe1da530e3af2b6586a0eb10ebda5d1343a9095267579631019edb8c6a"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-01-020/monitor-ja-final-review-view.txt",
+        "sha256": "f3e636e74fcc8dd0feab98a1f3dfb21b54c601f1f6b41c3bb7e5b96565a7225c"
+      }
+    ]
+  },
+  "separateReviewPass": true
+}

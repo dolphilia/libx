@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "id": "05-migration-and-history/01-moving-from-2-to-3.md",
+  "status": "page-reviewed-and-validated",
+  "phase": "complete-page-scope",
+  "method": "ai-content-review",
+  "model": "configured:gpt-6-astra;runtime:unavailable",
+  "startedAt": "2026-10-01T16:44:11.335Z",
+  "updatedAt": "2026-10-01T17:04:02.876Z",
+  "artifacts": {
+    "source": {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/moving.md",
+      "sha256": "2bee1d54f8260a131c4ca45c9e359149341cc52532e1eaef5b33165e6e37f03a"
+    },
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "99990d9f57f85f6c92848577329920daf89852e13f6ae436fe811e89a4463f39"
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "405ea4bf04b1f416315668ce88b994c7c5b17a7d382fb1633d05b0a6c43f3469"
+    }
+  },
+  "lineCounts": {
+    "source": 521,
+    "canonical": 547,
+    "translation": 415
+  },
+  "coverage": {
+    "source": [
+      [
+        1,
+        521
+      ]
+    ],
+    "canonical": [
+      [
+        1,
+        545
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        413
+      ]
+    ]
+  },
+  "coverageMeaning": "固定Markdown521行・EN545行・JA413行の全非空本文をraw全文実読。全説明・旧新コード・名称対応表を照合。[TOC]は配信用ナビゲーションとして除外。",
+  "excludedSourceRanges": [
+    {
+      "range": [
+        3,
+        3
+      ],
+      "reason": "上流[TOC]。配信側の目次で置換。内容説明の除外なし。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "library-name-comma",
+      "type": "upstream-ambiguity",
+      "description": "原文・定本・訳文のコード表記glfw3,にコンマが含まれる。固定src/CMakeLists.txt118–126ではglfw/glfw3がOUTPUT_NAMEでコンマなし。原文を保存し英日注記する。",
+      "status": "applied",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/source/moving-CMakeLists.txt",
+          "sha256": "887eec8ef40ef8a0a068cc5f73632b1ea5fd265e346893f266d01643399e13e5"
+        }
+      ]
+    },
+    {
+      "id": "untranslated-conjunction",
+      "type": "translation",
+      "description": "削除された関数の2一覧でandが日本語へ未翻訳。API名と順序を保持しておよびに変更。",
+      "status": "applied"
+    },
+    {
+      "id": "type-table-separator",
+      "type": "display",
+      "description": "英日型名表の第3見出し区切りセルが空で、実表示がraw記号となる。固定原文は維持し配信用区切りを補完。",
+      "status": "applied",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/initial-display-table-failure.json",
+          "sha256": "23a4861c9d7648fd43280e48a7bea56ba9cc23dd652944f11bf8998bc1c6b6c3"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/initial-display-table-failure.jpg",
+          "sha256": "aeafa85bfcbfd829e2c9c9a2728977054d0a5b352457b11552f82c1c0af905ed"
+        }
+      ]
+    },
+    {
+      "id": "ja-thread-emphasis",
+      "type": "display",
+      "description": "日本語の強調用underscoreが実画面でraw記号として露出。1箇所をasterisk区切りへ変更し原文の強調を復元。",
+      "status": "applied",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/initial-display-emphasis-failure.json",
+          "sha256": "7f39e868a8d3e0da928f934bdd937f0a22f5d7e3f33f6675ed782a158ff3780b"
+        }
+      ]
+    }
+  ],
+  "plannedCorrections": [
+    {
+      "type": "annotation-and-translation",
+      "scope": "原文保存、固定ビルド設定の根拠付き英日注記1件とJA接続詞2箇所だけ。",
+      "status": "applied"
+    }
+  ],
+  "reviewViewEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/review-view-method.json",
+      "sha256": "60b86add9575af041f6d8e5b9c1c967ecdd34f759b7e36eeb68985289aa9d46e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-source-initial-view.txt",
+      "sha256": "2bee1d54f8260a131c4ca45c9e359149341cc52532e1eaef5b33165e6e37f03a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-canonical-initial-view.txt",
+      "sha256": "81f38b22eea43a548047d158e425851894e78af1e41a2fa760b96b828eed36d4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-translation-initial-view.txt",
+      "sha256": "8e049a9aac8e9a44cc54931ebed21f039451766f03b7b5e15991fdc8fbe9506c"
+    }
+  ],
+  "initialReviewSummary": [
+    "原文→定本の全説明・旧新コード・3名称表を実読照合。コンテキスト・メインスレッド制約/終了・閉じるコールバックの禁止・座標とpixel・default反転・物理キー等の否定と条件は翻訳忠実。",
+    "glfw3,は原文自身の誤表記。固定ビルド設定118–126の実読で注記根拠を確定。API・コード・表行・リンクは別機械検査予定。"
+  ],
+  "initialReviewCompletedAt": "2026-10-01T16:44:11.335Z",
+  "separateReviewPass": true,
+  "nextAction": "05-migration-and-history/02-release-notes.mdの固定原文docs/news.md・英日全文をレビュー。GLFW内容34/35合格、1未確認。Lua55ページ・上流監視未確認。",
+  "unresolved": [
+    "残るGLFW1ページ・Lua55ページの全文、全ページ表示、上流確認は未完了。"
+  ],
+  "mechanicalEvidence": [
+    {
+      "path": "docs/notes/document-import/glfw/v3-5-1/full-review-2026-10-01/MOVING_CODE_CHECK3.json",
+      "sha256": "9a55544bd658951965790aed8f9bb78f90d3ec15e05539623d95e07cb59f4901"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/content-check3.txt",
+      "sha256": "e42228058423d67c4f2d71113b78ba45d49bef55d006cbe3b70f76bd52793dd1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/eslint3.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/diff-check3.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "finalReviewCoverage": {
+    "canonical": [
+      [
+        1,
+        547
+      ]
+    ],
+    "translation": [
+      [
+        1,
+        415
+      ]
+    ]
+  },
+  "finalReviewProgress": {
+    "status": "passed",
+    "reviewedAt": "2026-10-01T17:00:10.914Z",
+    "coverage": {
+      "canonical": [
+        [
+          1,
+          547
+        ]
+      ],
+      "translation": [
+        [
+          1,
+          415
+        ]
+      ]
+    },
+    "results": [
+      "第2別パス全文レビュー済みのEN547行・JA415行を再利用。第3修正はJA48行の強調区切り1箇所だけで、原文54–57行とJA48行を別パス実読した。差分以外の本文は保存した第2raw全文とbyte一致を検証。原文全説明・例・3名称表を照合。コンテキストをカレントにする順序、座標とpixel、閉じるcallbackからdestroy禁止、main-thread terminate、key-repeat/physical key、MBCSのscope、default反転、GLU禁止と例外を保持。",
+      "固定CMakeLists.txt118–126へ照合した英日注記がglfw3,の原文表記と実際のglfw/glfw3出力名を区別。JA2接続詞修正、空の表見出し区切りセルを英日/変換器で正規化。表の見出しと35名称行は保全し、実画面で見つけたraw pipe露出を修正。22コードblock・35名称行・29見出し/75URL/29id・本文byte保全は別機械検査。",
+      "カーソル位置はEN double instead of intに対しJA intではなくdoubleという自然な語順。この1箇所のinlineコード順序差は意味照合して機械正規化し、コードblockは原文byte一致。全pixel・実機API・code compileは未検証。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/second-final-review-view-method.json",
+        "sha256": "04737e9bff19e6c1cb04c85f47d6d2d74f2b8d2a9d6274ededd7c085c95866ee"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-en-second-readable-view.txt",
+        "sha256": "5685c51ace1284f685911736c992cfc216aea37c00d5a0d59ba0bce148566874"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-ja-second-readable-view.txt",
+        "sha256": "f1f0885d2dbbd9f318b5bdc9c7c0b1e8b102006521e7bb9706326a9c735b4f91"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/third-final-review-view-method.json",
+        "sha256": "9edea5ab8d0c321f33dab5b656618e418eae946cf15254b77586cfcdf4ebbfbd"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/content-review-reuse3.json",
+        "sha256": "59e4cd22812cbaf3d1149df8dbc0e75efeb51e4ace5d6418ccc0d3bcb1e6fb4f"
+      }
+    ]
+  },
+  "finalReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T17:00:10.914Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "99990d9f57f85f6c92848577329920daf89852e13f6ae436fe811e89a4463f39",
+      "coverage": [
+        [
+          1,
+          547
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "405ea4bf04b1f416315668ce88b994c7c5b17a7d382fb1633d05b0a6c43f3469",
+      "coverage": [
+        [
+          1,
+          415
+        ]
+      ]
+    },
+    "results": [
+      "第2別パス全文レビュー済みのEN547行・JA415行を再利用。第3修正はJA48行の強調区切り1箇所だけで、原文54–57行とJA48行を別パス実読した。差分以外の本文は保存した第2raw全文とbyte一致を検証。原文全説明・例・3名称表を照合。コンテキストをカレントにする順序、座標とpixel、閉じるcallbackからdestroy禁止、main-thread terminate、key-repeat/physical key、MBCSのscope、default反転、GLU禁止と例外を保持。",
+      "固定CMakeLists.txt118–126へ照合した英日注記がglfw3,の原文表記と実際のglfw/glfw3出力名を区別。JA2接続詞修正、空の表見出し区切りセルを英日/変換器で正規化。表の見出しと35名称行は保全し、実画面で見つけたraw pipe露出を修正。22コードblock・35名称行・29見出し/75URL/29id・本文byte保全は別機械検査。",
+      "カーソル位置はEN double instead of intに対しJA intではなくdoubleという自然な語順。この1箇所のinlineコード順序差は意味照合して機械正規化し、コードblockは原文byte一致。全pixel・実機API・code compileは未検証。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/second-final-review-view-method.json",
+        "sha256": "04737e9bff19e6c1cb04c85f47d6d2d74f2b8d2a9d6274ededd7c085c95866ee"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-en-second-readable-view.txt",
+        "sha256": "5685c51ace1284f685911736c992cfc216aea37c00d5a0d59ba0bce148566874"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-ja-second-readable-view.txt",
+        "sha256": "f1f0885d2dbbd9f318b5bdc9c7c0b1e8b102006521e7bb9706326a9c735b4f91"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/third-final-review-view-method.json",
+        "sha256": "9edea5ab8d0c321f33dab5b656618e418eae946cf15254b77586cfcdf4ebbfbd"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/content-review-reuse3.json",
+        "sha256": "59e4cd22812cbaf3d1149df8dbc0e75efeb51e4ace5d6418ccc0d3bcb1e6fb4f"
+      }
+    ]
+  },
+  "priorContentReview": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T16:47:41.044Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "d5dd0071fb22e5f7f60217c8bebf5077e9f1fbc6cf4969ba68da997b599df924",
+      "coverage": [
+        [
+          1,
+          547
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "d4ac6536cadafc53219eedb82471156b735358aa2f6623104b5411b139580dd8",
+      "coverage": [
+        [
+          1,
+          415
+        ]
+      ]
+    },
+    "results": [
+      "注記追加後のEN547行・JA415行の全非空本文を編集と別工程でraw全文実読。原文全説明・例・3名称表を照合。コンテキストをカレントにする順序、座標とpixel、閉じるcallbackからdestroy禁止、main-thread terminate、key-repeat/physical key、MBCSのscope、default反転、GLU禁止と例外を保持。",
+      "固定CMakeLists.txt118–126へ照合した英日注記がglfw3,の原文表記と実際のglfw/glfw3出力名を区別。JA2接続詞修正、その他の意味変更なし。22コードblock・35名称行・29見出し/75URL/29id・本文byte保全は別機械検査。",
+      "カーソル位置はEN double instead of intに対しJA intではなくdoubleという自然な語順。この1箇所のinlineコード順序差は意味照合して機械正規化し、コードblockは原文byte一致。全pixel・実機API・code compileは未検証。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/final-review-view-method.json",
+        "sha256": "45487e6158ff506c02656089bb3b0b27ae494c9122a2482b4ef44921764b0ebc"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-en-final-review-view.txt",
+        "sha256": "d5dd0071fb22e5f7f60217c8bebf5077e9f1fbc6cf4969ba68da997b599df924"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-ja-final-review-view.txt",
+        "sha256": "d4ac6536cadafc53219eedb82471156b735358aa2f6623104b5411b139580dd8"
+      }
+    ]
+  },
+  "priorContentReview2": {
+    "method": "ai-content-review",
+    "model": "configured:gpt-6-astra;runtime:unavailable",
+    "reviewedAt": "2026-10-01T16:56:03.346Z",
+    "separateReviewPass": true,
+    "canonical": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/en/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "99990d9f57f85f6c92848577329920daf89852e13f6ae436fe811e89a4463f39",
+      "coverage": [
+        [
+          1,
+          547
+        ]
+      ]
+    },
+    "translation": {
+      "path": "apps/glfw/src/content/docs/v3-5-1/ja/05-migration-and-history/01-moving-from-2-to-3.md",
+      "sha256": "8edcc9a7282a1e0e2e94c4f8ffcd706927f45820b8734c042cacec0d61a68ba6",
+      "coverage": [
+        [
+          1,
+          415
+        ]
+      ]
+    },
+    "results": [
+      "注記追加後のEN547行・JA415行の全非空本文を編集と別工程で派生全文実読（全非空semantic本文と原行番号保持。URL/空anchorのみ表示除去）。原文全説明・例・3名称表を照合。コンテキストをカレントにする順序、座標とpixel、閉じるcallbackからdestroy禁止、main-thread terminate、key-repeat/physical key、MBCSのscope、default反転、GLU禁止と例外を保持。",
+      "固定CMakeLists.txt118–126へ照合した英日注記がglfw3,の原文表記と実際のglfw/glfw3出力名を区別。JA2接続詞修正、空の表見出し区切りセルを英日/変換器で正規化。表の見出しと35名称行は保全し、実画面で見つけたraw pipe露出を修正。22コードblock・35名称行・29見出し/75URL/29id・本文byte保全は別機械検査。",
+      "カーソル位置はEN double instead of intに対しJA intではなくdoubleという自然な語順。この1箇所のinlineコード順序差は意味照合して機械正規化し、コードblockは原文byte一致。全pixel・実機API・code compileは未検証。"
+    ],
+    "evidence": [
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/second-final-review-view-method.json",
+        "sha256": "04737e9bff19e6c1cb04c85f47d6d2d74f2b8d2a9d6274ededd7c085c95866ee"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-en-second-readable-view.txt",
+        "sha256": "5685c51ace1284f685911736c992cfc216aea37c00d5a0d59ba0bce148566874"
+      },
+      {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-038/moving-ja-second-readable-view.txt",
+        "sha256": "f1f0885d2dbbd9f318b5bdc9c7c0b1e8b102006521e7bb9706326a9c735b4f91"
+      }
+    ]
+  }
+}
