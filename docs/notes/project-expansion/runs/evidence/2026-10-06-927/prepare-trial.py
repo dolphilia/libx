@@ -1,0 +1,25 @@
+from pathlib import Path
+from bs4 import BeautifulSoup,NavigableString
+import json,shutil,re,hashlib,datetime
+R=Path('/Users/dolphilia/github/libx');N=R/'docs/notes/document-import/gnu-time/v1-10';E=Path(__file__).parent;T=Path('/private/tmp/libx-gnu-time-trial-927');A=T/'apps/gnu-time-trial';M=json.loads((N/'CANDIDATE_DRAFT.json').read_text());h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+config=json.loads((R/'docs/notes/project-expansion/runs/evidence/2026-10-06-922/TRIAL_CONFIG.json').read_text())
+config['paths']['projectSlug']='gnu-time-trial';config['versioning']['versions'][0].update(id='v1-10',name='1.10')
+config['translations']['en'].update(displayName='GNU Time',displayDescription='Program resource measurement');config['translations']['ja'].update(displayName='GNU Time',displayDescription='プログラムのリソース使用量の測定')
+s=config['licensing']['sources'][0];s.update(id='time-manual-trial',name='GNU Time1.10 manual',author='David MacKenzie / Free Software Foundation',licenseUrl='/docs/gnu-time-trial/source/v1-10/manual.html#GNU-Free-Documentation-License',sourceUrl='https://www.gnu.org/software/time/manual/')
+config['licensing']['defaultSource']=s['id'];s['provenanceNotes']=[{'en':'Unpublished selection prototype. Complete Top and chapters1–2 of GNU Time1.10, fixed original archive; document13February2026/release14April2026/acquired6October2026. Original David MacKenzie/FSF1991–2021,2026/GFDL1.3-or-later/noInvariant/noCoverTexts retained. Examples and reported values are static original samples, not measured by Libx. Program output and the short shell comments are retained: the comments distinguish bash/ksh from csh/tcsh. Formal adoption/source offer/native gates pending.','ja':'未公開の選定用試作です。GNU Time1.10の概要と第1〜2章全文を固定原配布物から提供し、文書改訂2026年2月13日・リリース4月14日・取得10月6日を区別します。原著者David MacKenzie、FSF1991〜2021・2026年、GFDL1.3以降、不変節・表紙文言なしの通知を保持します。例と測定値は原著の静的な例で、Libxの実測値ではありません。プログラム出力と短いシェルコメントは原文保持です。例のコメントはbash/kshの場合とcsh/tcshの場合を区別しています。正式採用・配布資料・表示検証は未完。'}]
+s['attributionLinks']=[{'url':'/docs/gnu-time-trial/source/v1-10/manual.html','label':{'en':'Fixed complete original manual','ja':'固定原文マニュアル全文'}},{'url':'/docs/gnu-time-trial/source/v1-10/original/doc/time.texi','label':{'en':'Original Texinfo','ja':'原Texinfo'}},{'url':'/docs/gnu-time-trial/source/v1-10/original/time-1.10.tar.xz','label':{'en':'Unchanged original archive','ja':'未変更の原配布物'}}]
+(A/'src/config/project.config.jsonc').write_text(json.dumps(config,ensure_ascii=False,indent=2)+'\n');(E/'TRIAL_CONFIG.json').write_text(json.dumps(config,ensure_ascii=False,indent=2)+'\n');heads={};rows=[]
+shutil.rmtree(A/'src/content/docs/v1')
+for lang in ['en','ja']:
+ for row in M['proposedScope']['rows']:
+  src=N/'drafts'/lang/(row['slug']+'.body.html');body=src.read_text();v=BeautifulSoup(body,'html.parser')
+  if lang=='en':
+   placeholders={}
+   for i,pre in enumerate(v.select('pre')):
+    key=f'LIBX_TIME_TRIAL_PRE_{i}_END';placeholders[key]=str(pre).replace('\n','&#10;').replace('\t','&#9;');pre.replace_with(NavigableString(key))
+   body=str(v)
+   for key,literal in placeholders.items():body=body.replace(key,literal)
+  v=BeautifulSoup(body,'html.parser');title=v.find(re.compile('^h[1-6]$')).get_text(' ',strip=True);front={'title':title,'licenseSource':s['id'],'description':'GNU Time1.10 fixed-source unpublished candidate / 未公開候補','toc':{'maxLevel':4}};md='---\n'+''.join(k+': '+json.dumps(value,ensure_ascii=False)+'\n'for k,value in front.items())+'---\n\n<div class="gnu-time-original-content">'+body+'</div>\n';p=A/'src/content/docs/v1-10'/lang/'01-guide'/(row['slug']+'.md');p.parent.mkdir(parents=True,exist_ok=True);p.write_text(md);heads['v1-10/'+lang+'/01-guide/'+row['slug']]=[{'depth':int(x.name[1]),'slug':x['id'],'text':x.get_text(' ',strip=True)}for x in v.find_all(re.compile('^h[1-6]$'))if x.has_attr('id')];rows.append({'language':lang,'slug':row['slug'],'draftSHA256':h(src),'prototypeMD':str(p),'prototypeSHA256':h(p)})
+P=A/'public/source/v1-10';P.mkdir(parents=True,exist_ok=True);shutil.copy2(N/'source/derived-manual.html',P/'manual.html');shutil.copytree(N/'source/original',P/'original');shutil.copy2(N/'source/time-1.10.tar.xz',P/'original/time-1.10.tar.xz');(A/'src/data').mkdir(exist_ok=True);(A/'src/data/document-headings.json').write_text(json.dumps(heads,ensure_ascii=False,indent=2)+'\n');(A/'src/styles/global.css').write_text("@import '@docs/theme/css/starlight-overrides.css';\n.gnu-time-original-content pre { max-width: 100%; min-width: 0; overflow-x: auto; white-space: pre; tab-size: 4; }\n.gnu-time-original-content dd { min-width: 0; }\n.document-provenance .attribution-text { overflow-wrap: anywhere; }\n")
+(A/'node_modules').symlink_to('/private/tmp/libx-gnu-gzip-formal-923/apps/gnu-gzip/node_modules',target_is_directory=True)
+(E/'TRIAL_INPUTS.json').write_text(json.dumps({'status':'saved-unpublished-trial','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'workspace':str(T),'rows':rows,'formalOperation':False,'limits':'Pinned existing dependency symlinks used only for candidate test; formal independent rebuild/source offer not completed.'},indent=2)+'\n');print('GNU Time試作の英日6本文を保存')
