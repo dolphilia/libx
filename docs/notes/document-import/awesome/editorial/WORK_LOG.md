@@ -6162,3 +6162,24 @@
 - 既存生成器を使用。本文/overlay/判断・レビュー証拠/生成物/台帳対応。EXCLUSIONS timestampのみを同一内容照合後HEAD復元。EXTERNAL_LINK_REPORTはBitcoin159linkの件数維持・CC0文字リンク化に伴う集合hash変更を保存。元main他作業差分保持。所有UI/preview終了/viewport復元。未検証本文差分なし。
 - 配信workflow対象外origin/codex/awesome-editorial-isolated-20261007へ検証済み差分のみcommit/push。まだ保存準備、送信後remoteHEAD照合。外部公開/dispatch/PR/定期設定なし。
 - 次168 github-machinomy-awesome-non-financial-blockchain-readme-md。/private/tmp/libx-awesome-editorial-20261007で固定raw/旧英日hash→全文→編集→3別パスreview→生成/保全/build/HTML/UI/global。
+
+### バッチ167送信確認・168全文読了 (2026-10-06T21:20:40.775Z)
+
+- 167 commit 7640e8257259dabd5d67f252d7e03fcc9c8d7049 → origin/codex/awesome-editorial-isolated-20261007 push exit0 5e67c2、remote HEAD一致1a1f4b。外部公開なし。
+- 168固定raw61/旧EN58/旧JA58単位、各92行を全文読了（333bbd/fa27b3/37997a、省略なし、hash241d1f）。本文未変更。欠落分類基準と21/Earn.com例/Don Tapscott定義を復元、collateral訳修正、評価の帰属と権利通知を確認する。次 168全文編集→3別パスreview→overlay/生成/保全/anchor/build/HTML/UI/global→verified226→commit/push。
+
+- 2026-10-06T21:22:32.634Z batch168全文編集・3別パス全文レビュー完了（raw61/旧EN58/旧JA58→EN56/JA60単位、39list/11heading/2alias）。overlayと実英日本文を反映。proof a4bc9d56009faa8a8f6ba74c6401ff3afbedd497cf375ea04337e946c3ccab15。まだtranslated-ja、生成/build/HTML/UI/global未確認。次 2回replay/通常8gate/全2074hash/全参照→対象fresh build/input/HTML→英日PCmobile実UI→global→verified226→commit/push。
+
+- 2026-10-06T21:25:06.477Z batch168-generation-gates-passed-build-pending。225完了812残保留4。進捗4fd6437343c6fe286893a467cecc480dd2cfd038b2ea1a915560de5b594a1cf5。次全2074hash/全参照と通常生成8gate/2replay合格。対象systems fresh統合build→全7入力hash/HTML11見出し39list/2alias/英日PCmobile実UI→global→verified226/commit/push。
+
+- 2026-10-06T21:31:17.441Z batch168-four-ui-content-reviewed-global-pending。225完了812残保留4。進捗f639ddc340685f473ffe313566014b2b618cf9b2c3adc1434a1d36096bca4549。次全1037台帳global/全2074hash/diff→verified226→commit/push/hash照合→169 Waves fixedraw/旧EN/旧JA全文。
+
+- 2026-10-06T21:32:05.157Z batch168-verified226-save-push-pending。226完了811残保留4。進捗a14827a8c1574f839ce30eed47b6d3be815dec8fa642a6355f15f7caf974deb5。次226完了811残保留4。Non-Financial Blockchain全工程完了。現在の検証済み差分のみcommitしorigin/codex/awesome-editorial-isolated-20261007へpush/remote hash照合。次169 github-msmolyakov-awesome-waves-readme-md 固定raw/旧EN/旧JA全文から着手。
+
+### バッチ168 Non-Financial Blockchain検証完了・保存準備 (2026-10-06T21:32:13.120Z)
+
+- raw61/旧EN58/旧JA58全文読了→英日編集→raw61/EN56対応全文0f3c14、最終英日56主要単位/JA4空HTML全文85fe91、最終JA単独全文f45b98。39項目/11見出し・Identity4小分類、機能/数値/条件/URL保持。Don Tapscott定義/非金融用途の意義/分類基準と事業終了した21・原文のEarn.com例を復元し固定原文へ帰属。全3復元URLに原文根拠。
+- collateral証拠→担保、Unclear分類案内、TED定義、アルトコイン/lumo自然さを修正。原文1MWをMWhに推測変更せず、曖昧なImpactPPAを売上等に置換しない。Evernym等の原文分類/提案状態/評価/3年間/オランダ/Fintech Week 2016保持。旧日本語2見出しIDは空alias保持。手動4TOC除去、CC0同URL文字リンク、Sergey Ukustov/Machinomy両者の全権利放棄保持。最終hash EN cb1f668210fac4ad5d204d9e37b5e7e7d4d6a7878db42b751e359ab15f05ded9 / JA fdb4ab647b3f7dfc7af853aa5907c89e1d82801b0dc13122fc8c60bfedbdd5e9。
+- replay2回各1037組2074文書・2passes、通常8gate、全2074hash保全/全fragment incoming0、systems fresh統合build/全7開始・現在・manifest入力一致、HTML11見出し39項目20TOC/2alias/全旧有用ID・権利/復元導入/出典2URL/統合HTML一致/正規HTMLgate、英日PCmobile実表示と目次・言語・版・隣接操作、global/diff合格。verified226/残811/保留4。同じ検査入力照合で状態更新後のglobal証拠を再利用。使用モデル現Codexセッション/API識別子取得不能、委任/ローカルLLMなし。
+- 生成検査の完了前に先行したbuildを停止し、証拠には不採用。通常8gate終了後の入力を確定してfresh buildを実施。EXCLUSIONS timestampのみHEAD復元。EXTERNAL_LINK_REPORTは欠落原文URL3復元により対象50→53/全体138561→138564の実変更を保存。元main他作業差分保持。所有UI/preview終了/viewport復元。
+- 保存対象は本バッチ本文/overlay/判断・レビュー証拠/生成物/台帳。配信workflow対象外origin/codex/awesome-editorial-isolated-20261007へcommit/pushしremote HEAD照合。まだ送信準備、外部公開/PR/dispatch/定期設定なし。次169 github-msmolyakov-awesome-waves-readme-mdの固定raw/旧英日全文から進める。
