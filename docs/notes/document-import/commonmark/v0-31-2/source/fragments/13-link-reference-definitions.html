@@ -1,0 +1,500 @@
+<h2 class="definition" id="link-reference-definitions">
+<span class="number">4.7</span>Link reference definitions
+</h2>
+<p>A <a class="definition" href="#link-reference-definition" id="link-reference-definition">link reference definition</a>
+consists of a <a href="#link-label">link label</a>, optionally preceded by up to three spaces of
+indentation, followed
+by a colon (<code>:</code>), optional spaces or tabs (including up to one
+<a href="#line-ending">line ending</a>), a <a href="#link-destination">link destination</a>,
+optional spaces or tabs (including up to one
+<a href="#line-ending">line ending</a>), and an optional <a href="#link-title">link
+title</a>, which if it is present must be separated
+from the <a href="#link-destination">link destination</a> by spaces or tabs.
+No further character may occur.</p>
+<p>A <a href="#link-reference-definition">link reference definition</a>
+does not correspond to a structural element of a document.  Instead, it
+defines a label which can be used in <a href="#reference-link">reference links</a>
+and reference-style <a href="#images">images</a> elsewhere in the document.  <a href="#link-reference-definition">Link
+reference definitions</a> can come either before or after the links that use
+them.</p>
+<div class="example" id="example-192">
+<div class="examplenum">
+<a href="#example-192">Example 192</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/url<span class="space"> </span>"title"
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/url"<span class="space"> </span>title="title"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-193">
+<div class="examplenum">
+<a href="#example-193">Example 193</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span>[foo]:<span class="space"> </span>
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>/url<span class="space"> </span><span class="space"> </span>
+<span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>'the<span class="space"> </span>title'<span class="space"> </span><span class="space"> </span>
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/url"<span class="space"> </span>title="the<span class="space"> </span>title"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-194">
+<div class="examplenum">
+<a href="#example-194">Example 194</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[Foo*bar\]]:my_(url)<span class="space"> </span>'title<span class="space"> </span>(with<span class="space"> </span>parens)'
+
+[Foo*bar\]]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="my_(url)"<span class="space"> </span>title="title<span class="space"> </span>(with<span class="space"> </span>parens)"&gt;Foo*bar]&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-195">
+<div class="examplenum">
+<a href="#example-195">Example 195</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[Foo<span class="space"> </span>bar]:
+&lt;my<span class="space"> </span>url&gt;
+'title'
+
+[Foo<span class="space"> </span>bar]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="my%20url"<span class="space"> </span>title="title"&gt;Foo<span class="space"> </span>bar&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>The title may extend over multiple lines:</p>
+<div class="example" id="example-196">
+<div class="examplenum">
+<a href="#example-196">Example 196</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/url<span class="space"> </span>'
+title
+line1
+line2
+'
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/url"<span class="space"> </span>title="
+title
+line1
+line2
+"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>However, it may not contain a <a href="#blank-line">blank line</a>:</p>
+<div class="example" id="example-197">
+<div class="examplenum">
+<a href="#example-197">Example 197</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/url<span class="space"> </span>'title
+
+with<span class="space"> </span>blank<span class="space"> </span>line'
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;[foo]:<span class="space"> </span>/url<span class="space"> </span>'title&lt;/p&gt;
+&lt;p&gt;with<span class="space"> </span>blank<span class="space"> </span>line'&lt;/p&gt;
+&lt;p&gt;[foo]&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>The title may be omitted:</p>
+<div class="example" id="example-198">
+<div class="examplenum">
+<a href="#example-198">Example 198</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:
+/url
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/url"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>The link destination may not be omitted:</p>
+<div class="example" id="example-199">
+<div class="examplenum">
+<a href="#example-199">Example 199</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;[foo]:&lt;/p&gt;
+&lt;p&gt;[foo]&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>However, an empty link destination may be specified using
+angle brackets:</p>
+<div class="example" id="example-200">
+<div class="examplenum">
+<a href="#example-200">Example 200</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>&lt;&gt;
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href=""&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>The title must be separated from the link destination by
+spaces or tabs:</p>
+<div class="example" id="example-201">
+<div class="examplenum">
+<a href="#example-201">Example 201</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>&lt;bar&gt;(baz)
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;[foo]:<span class="space"> </span>&lt;bar&gt;(baz)&lt;/p&gt;
+&lt;p&gt;[foo]&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Both title and destination can contain backslash escapes
+and literal backslashes:</p>
+<div class="example" id="example-202">
+<div class="examplenum">
+<a href="#example-202">Example 202</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/url\bar\*baz<span class="space"> </span>"foo\"bar\baz"
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/url%5Cbar*baz"<span class="space"> </span>title="foo&amp;quot;bar\baz"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>A link can come before its corresponding definition:</p>
+<div class="example" id="example-203">
+<div class="examplenum">
+<a href="#example-203">Example 203</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]
+
+[foo]:<span class="space"> </span>url
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="url"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>If there are several matching definitions, the first one takes
+precedence:</p>
+<div class="example" id="example-204">
+<div class="examplenum">
+<a href="#example-204">Example 204</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]
+
+[foo]:<span class="space"> </span>first
+[foo]:<span class="space"> </span>second
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="first"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>As noted in the section on <a href="#links">Links</a>, matching of labels is
+case-insensitive (see <a href="#matches">matches</a>).</p>
+<div class="example" id="example-205">
+<div class="examplenum">
+<a href="#example-205">Example 205</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[FOO]:<span class="space"> </span>/url
+
+[Foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/url"&gt;Foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-206">
+<div class="examplenum">
+<a href="#example-206">Example 206</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[ΑΓΩ]:<span class="space"> </span>/φου
+
+[αγω]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/%CF%86%CE%BF%CF%85"&gt;αγω&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Whether something is a <a href="#link-reference-definition">link reference definition</a> is
+independent of whether the link reference it defines is
+used in the document.  Thus, for example, the following
+document contains just a link reference definition, and
+no visible content:</p>
+<div class="example" id="example-207">
+<div class="examplenum">
+<a href="#example-207">Example 207</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/url
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html"></code></pre>
+</div>
+</div>
+<p>Here is another one:</p>
+<div class="example" id="example-208">
+<div class="examplenum">
+<a href="#example-208">Example 208</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[
+foo
+]:<span class="space"> </span>/url
+bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;bar&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>This is not a link reference definition, because there are
+characters other than spaces or tabs after the title:</p>
+<div class="example" id="example-209">
+<div class="examplenum">
+<a href="#example-209">Example 209</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/url<span class="space"> </span>"title"<span class="space"> </span>ok
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;[foo]:<span class="space"> </span>/url<span class="space"> </span>&amp;quot;title&amp;quot;<span class="space"> </span>ok&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>This is a link reference definition, but it has no title:</p>
+<div class="example" id="example-210">
+<div class="examplenum">
+<a href="#example-210">Example 210</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/url
+"title"<span class="space"> </span>ok
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&amp;quot;title&amp;quot;<span class="space"> </span>ok&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>This is not a link reference definition, because it is indented
+four spaces:</p>
+<div class="example" id="example-211">
+<div class="examplenum">
+<a href="#example-211">Example 211</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>[foo]:<span class="space"> </span>/url<span class="space"> </span>"title"
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;[foo]:<span class="space"> </span>/url<span class="space"> </span>&amp;quot;title&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[foo]&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>This is not a link reference definition, because it occurs inside
+a code block:</p>
+<div class="example" id="example-212">
+<div class="examplenum">
+<a href="#example-212">Example 212</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">```
+[foo]:<span class="space"> </span>/url
+```
+
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;[foo]:<span class="space"> </span>/url
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[foo]&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>A <a href="#link-reference-definition">link reference definition</a> cannot interrupt a paragraph.</p>
+<div class="example" id="example-213">
+<div class="examplenum">
+<a href="#example-213">Example 213</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">Foo
+[bar]:<span class="space"> </span>/baz
+
+[bar]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;Foo
+[bar]:<span class="space"> </span>/baz&lt;/p&gt;
+&lt;p&gt;[bar]&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>However, it can directly follow other block elements, such as headings
+and thematic breaks, and it need not be followed by a blank line.</p>
+<div class="example" id="example-214">
+<div class="examplenum">
+<a href="#example-214">Example 214</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">#<span class="space"> </span>[Foo]
+[foo]:<span class="space"> </span>/url
+&gt;<span class="space"> </span>bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;h1&gt;&lt;a<span class="space"> </span>href="/url"&gt;Foo&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;bar&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-215">
+<div class="examplenum">
+<a href="#example-215">Example 215</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/url
+bar
+===
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;h1&gt;bar&lt;/h1&gt;
+&lt;p&gt;&lt;a<span class="space"> </span>href="/url"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-216">
+<div class="examplenum">
+<a href="#example-216">Example 216</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/url
+===
+[foo]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;===
+&lt;a<span class="space"> </span>href="/url"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Several <a href="#link-reference-definition">link reference definitions</a>
+can occur one after another, without intervening blank lines.</p>
+<div class="example" id="example-217">
+<div class="examplenum">
+<a href="#example-217">Example 217</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]:<span class="space"> </span>/foo-url<span class="space"> </span>"foo"
+[bar]:<span class="space"> </span>/bar-url
+<span class="space"> </span><span class="space"> </span>"bar"
+[baz]:<span class="space"> </span>/baz-url
+
+[foo],
+[bar],
+[baz]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/foo-url"<span class="space"> </span>title="foo"&gt;foo&lt;/a&gt;,
+&lt;a<span class="space"> </span>href="/bar-url"<span class="space"> </span>title="bar"&gt;bar&lt;/a&gt;,
+&lt;a<span class="space"> </span>href="/baz-url"&gt;baz&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p><a href="#link-reference-definition">Link reference definitions</a> can occur
+inside block containers, like lists and block quotations.  They
+affect the entire document, not just the container in which they
+are defined:</p>
+<div class="example" id="example-218">
+<div class="examplenum">
+<a href="#example-218">Example 218</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]
+
+&gt;<span class="space"> </span>[foo]:<span class="space"> </span>/url
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/url"&gt;foo&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+</code></pre>
+</div>
+</div>

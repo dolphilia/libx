@@ -1,0 +1,317 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+      - 'codex/pages-preview/**'
+      - 'codex/quality/**'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy_target:
+        description: '実行内容'
+        required: true
+        default: preview
+        type: choice
+        options:
+          - quality-only
+          - preview
+          - production
+      preview_branch:
+        description: 'Preview配置時のCloudflare Pages branch'
+        required: true
+        default: ci-preview
+        type: string
+      expected_production_commit:
+        description: 'Production公開前に照合する現在の配信commit（省略時は照合しない）'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+  deployments: write
+
+env:
+  NODE_OPTIONS: '--max-old-space-size=6144'
+
+concurrency:
+  group: cloudflare-pages-${{ github.event_name == 'workflow_dispatch' && inputs.deploy_target || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  quality-check:
+    outputs:
+      artifact-id: ${{ steps.upload-deployment.outputs.artifact-id }}
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Setup pinned Pandoc for importer tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "$(uname -m)" in
+            arm64) architecture=arm64; checksum=3eaeb3bd10982aecba5dd76158745a4f805afb39ab72a519bba2533c98ce002d ;;
+            x86_64) architecture=x86_64; checksum=922e35c0210d7ca20ee9327811361d6d7f0ef0adda089e0e74cb3756c3d713f9 ;;
+            *) echo "Unsupported macOS architecture" >&2; exit 1 ;;
+          esac
+          pandoc_directory="$RUNNER_TEMP/pandoc-3.8.3"
+          mkdir -p "$pandoc_directory"
+          pandoc_archive="$pandoc_directory/pandoc.zip"
+          curl --fail --location --proto '=https' --proto-redir '=https' \
+            "https://github.com/jgm/pandoc/releases/download/3.8.3/pandoc-3.8.3-$architecture-macOS.zip" \
+            --output "$pandoc_archive"
+          printf '%s  %s\n' "$checksum" "$pandoc_archive" | shasum -a 256 --check
+          unzip -q "$pandoc_archive" -d "$pandoc_directory"
+          pandoc_binary="$(find "$pandoc_directory" -type f -path '*/bin/pandoc' -print)"
+          test -x "$pandoc_binary"
+          "$pandoc_binary" --version
+          printf '%s\n' "$(dirname "$pandoc_binary")" >> "$GITHUB_PATH"
+          printf 'UTHASH_PANDOC=%s\n' "$pandoc_binary" >> "$GITHUB_ENV"
+          printf 'LIBX_FMT_PANDOC=%s\n' "$pandoc_binary" >> "$GITHUB_ENV"
+
+      - name: Setup Python for pinned AsciiDoc
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Setup pinned AsciiDoc for uthash content checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          asciidoc_environment="$RUNNER_TEMP/uthash-asciidoc-10.2.1"
+          python -m venv "$asciidoc_environment"
+          "$asciidoc_environment/bin/python" -m pip install 'asciidoc==10.2.1'
+          "$asciidoc_environment/bin/asciidoc" --version
+          printf 'UTHASH_ASCIIDOC=%s\n' "$asciidoc_environment/bin/asciidoc" >> "$GITHUB_ENV"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate shared artifacts
+        run: pnpm sync:service-workers && pnpm build:sidebar
+
+      - name: Static analysis
+        run: pnpm format:check && pnpm lint && pnpm typecheck
+
+      - name: Unit and runtime tests
+        run: pnpm test
+
+      - name: Repository and content checks
+        run: pnpm check:links && pnpm check:integrity && pnpm check:content
+
+      - name: Build template
+        run: pnpm build:template
+
+      - name: Restore app build candidates
+        continue-on-error: true
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            apps/*/dist
+            apps/*/*/dist
+            apps/*/.astro/libx-output.json
+            apps/*/*/.astro/libx-output.json
+            sites/*/dist
+            sites/*/.astro/libx-output.json
+          key: app-builds-v1-${{ runner.os }}-${{ runner.arch }}-node20-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            app-builds-v1-${{ runner.os }}-${{ runner.arch }}-node20-
+
+      - name: Build integrated deployment
+        run: pnpm build -- --confirm --reuse
+
+      - name: Verify fmt English and Japanese rendered content
+        run: pnpm --filter=apps-fmt check:rendered
+
+      - name: Check deployment asset budget
+        run: pnpm check:deployment-assets
+
+      - name: Smoke tests
+        run: pnpm test:smoke
+
+      - name: Verify tracked generated artifacts are current
+        run: git diff --exit-code -- 'apps/*/public/sidebar/**' 'apps/*/public/sw.js' 'apps/*/*/public/sidebar/**' 'apps/*/*/public/sw.js' 'templates/*/public/sidebar/**' 'templates/*/public/sw.js'
+
+      - name: Package verified deployment
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+        run: node scripts/deployment-artifact.js --directory=.tmp/verified-deployment --commit="$BUILD_COMMIT"
+
+      - name: Upload verified deployment
+        id: upload-deployment
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-deployment-${{ github.sha }}-${{ github.run_attempt }}
+          path: .tmp/verified-deployment/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Save verified app build candidates
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            apps/*/dist
+            apps/*/*/dist
+            apps/*/.astro/libx-output.json
+            apps/*/*/.astro/libx-output.json
+            sites/*/dist
+            sites/*/.astro/libx-output.json
+          key: app-builds-v1-${{ runner.os }}-${{ runner.arch }}-node20-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+  deploy-preview:
+    runs-on: macos-latest
+    timeout-minutes: 120
+    needs: quality-check
+    if: >-
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/codex/pages-preview/')) ||
+      (github.event_name == 'workflow_dispatch' && inputs.deploy_target == 'preview')
+    environment: preview
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download verified deployment
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ needs.quality-check.outputs.artifact-id }}
+          merge-multiple: true
+          path: .tmp/verified-deployment
+
+      - name: Verify deployment content and budget
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+        run: |
+          node scripts/deployment-artifact.js --verify --directory=.tmp/verified-deployment --commit="$BUILD_COMMIT"
+          node scripts/check-deployment-assets.js .tmp/verified-deployment/dist
+
+      - name: Deploy Preview to Cloudflare Pages
+        id: deploy
+        env:
+          DEPLOY_BRANCH: ${{ github.event_name == 'workflow_dispatch' && inputs.preview_branch || github.ref_name }}
+          BUILD_COMMIT: ${{ github.sha }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: >-
+          pnpm exec wrangler pages deploy .tmp/verified-deployment/dist --project-name libx
+          --branch="$DEPLOY_BRANCH"
+          --commit-hash="$BUILD_COMMIT" --commit-dirty=false
+
+  deploy-production:
+    runs-on: macos-latest
+    timeout-minutes: 120
+    needs: quality-check
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy_target == 'production'
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download verified deployment
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ needs.quality-check.outputs.artifact-id }}
+          merge-multiple: true
+          path: .tmp/verified-deployment
+
+      - name: Verify deployment content and budget
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+        run: |
+          node scripts/deployment-artifact.js --verify --directory=.tmp/verified-deployment --commit="$BUILD_COMMIT"
+          node scripts/check-deployment-assets.js .tmp/verified-deployment/dist
+
+      - name: Capture current production for rollback
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          EXPECTED_PRODUCTION_COMMIT: ${{ inputs.expected_production_commit }}
+        run: |
+          args=(--output=.tmp/pages-production/before.json)
+          if [[ -n "$EXPECTED_PRODUCTION_COMMIT" ]]; then
+            args+=(--commit="$EXPECTED_PRODUCTION_COMMIT")
+          fi
+          node scripts/pages-production-state.js "${args[@]}"
+
+      - name: Preserve rollback reference before publishing
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-production-before-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .tmp/pages-production/before.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Confirm production has not changed
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/pages-production-state.js --baseline=.tmp/pages-production/before.json --output=.tmp/pages-production/prepublish.json
+
+      - name: Deploy Production to Cloudflare Pages
+        id: deploy
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: >-
+          pnpm exec wrangler pages deploy .tmp/verified-deployment/dist --project-name libx --branch=main
+          --commit-hash="$BUILD_COMMIT" --commit-dirty=false
+
+      - name: Verify published production commit
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/pages-production-state.js --commit="$BUILD_COMMIT" --output=.tmp/pages-production/after.json
+
+      - name: Save production publication records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-production-state-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .tmp/pages-production/
+          if-no-files-found: warn
+          retention-days: 90

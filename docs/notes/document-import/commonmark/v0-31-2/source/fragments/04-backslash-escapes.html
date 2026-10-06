@@ -1,0 +1,210 @@
+<h2 class="definition" id="backslash-escapes">
+<span class="number">2.4</span>Backslash escapes
+</h2>
+<p>Any ASCII punctuation character may be backslash-escaped:</p>
+<div class="example" id="example-12">
+<div class="examplenum">
+<a href="#example-12">Example 12</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">\!\"\#\$\%\&amp;\'\(\)\*\+\,\-\.\/\:\;\&lt;\=\&gt;\?\@\[\\\]\^\_\`\{\|\}\~
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;!&amp;quot;#$%&amp;amp;'()*+,-./:;&amp;lt;=&amp;gt;?@[\]^_`{|}~&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Backslashes before other characters are treated as literal
+backslashes:</p>
+<div class="example" id="example-13">
+<div class="examplenum">
+<a href="#example-13">Example 13</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">\→\A\a\<span class="space"> </span>\3\φ\«
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;\→\A\a\<span class="space"> </span>\3\φ\«&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Escaped characters are treated as regular characters and do
+not have their usual Markdown meanings:</p>
+<div class="example" id="example-14">
+<div class="examplenum">
+<a href="#example-14">Example 14</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">\*not<span class="space"> </span>emphasized*
+\&lt;br/&gt;<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>tag
+\[not<span class="space"> </span>a<span class="space"> </span>link](/foo)
+\`not<span class="space"> </span>code`
+1\.<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>list
+\*<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>list
+\#<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>heading
+\[foo]:<span class="space"> </span>/url<span class="space"> </span>"not<span class="space"> </span>a<span class="space"> </span>reference"
+\&amp;ouml;<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>character<span class="space"> </span>entity
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;*not<span class="space"> </span>emphasized*
+&amp;lt;br/&amp;gt;<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>tag
+[not<span class="space"> </span>a<span class="space"> </span>link](/foo)
+`not<span class="space"> </span>code`
+1.<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>list
+*<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>list
+#<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>heading
+[foo]:<span class="space"> </span>/url<span class="space"> </span>&amp;quot;not<span class="space"> </span>a<span class="space"> </span>reference&amp;quot;
+&amp;amp;ouml;<span class="space"> </span>not<span class="space"> </span>a<span class="space"> </span>character<span class="space"> </span>entity&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>If a backslash is itself escaped, the following character is not:</p>
+<div class="example" id="example-15">
+<div class="examplenum">
+<a href="#example-15">Example 15</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">\\*emphasis*
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;\&lt;em&gt;emphasis&lt;/em&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>A backslash at the end of the line is a <a href="#hard-line-break">hard line break</a>:</p>
+<div class="example" id="example-16">
+<div class="examplenum">
+<a href="#example-16">Example 16</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">foo\
+bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;foo&lt;br<span class="space"> </span>/&gt;
+bar&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Backslash escapes do not work in code blocks, code spans, autolinks, or
+raw HTML:</p>
+<div class="example" id="example-17">
+<div class="examplenum">
+<a href="#example-17">Example 17</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">``<span class="space"> </span>\[\`<span class="space"> </span>``
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;code&gt;\[\`&lt;/code&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-18">
+<div class="examplenum">
+<a href="#example-18">Example 18</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>\[\]
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;\[\]
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-19">
+<div class="examplenum">
+<a href="#example-19">Example 19</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">~~~
+\[\]
+~~~
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;\[\]
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-20">
+<div class="examplenum">
+<a href="#example-20">Example 20</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&lt;https://example.com?find=\*&gt;
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="https://example.com?find=%5C*"&gt;https://example.com?find=\*&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-21">
+<div class="examplenum">
+<a href="#example-21">Example 21</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&lt;a<span class="space"> </span>href="/bar\/)"&gt;
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;a<span class="space"> </span>href="/bar\/)"&gt;
+</code></pre>
+</div>
+</div>
+<p>But they work in all other contexts, including URLs and link titles,
+link references, and <a href="#info-string">info strings</a> in <a href="#fenced-code-blocks">fenced code blocks</a>:</p>
+<div class="example" id="example-22">
+<div class="examplenum">
+<a href="#example-22">Example 22</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo](/bar\*<span class="space"> </span>"ti\*tle")
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/bar*"<span class="space"> </span>title="ti*tle"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-23">
+<div class="examplenum">
+<a href="#example-23">Example 23</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]
+
+[foo]:<span class="space"> </span>/bar\*<span class="space"> </span>"ti\*tle"
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/bar*"<span class="space"> </span>title="ti*tle"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-24">
+<div class="examplenum">
+<a href="#example-24">Example 24</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">```<span class="space"> </span>foo\+bar
+foo
+```
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code<span class="space"> </span>class="language-foo+bar"&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>

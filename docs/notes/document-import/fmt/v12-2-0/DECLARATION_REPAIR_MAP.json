@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "project": "fmt",
+  "version": "12.2.0",
+  "sourceCommit": "1be298e1bd68957e4cd352e1f676f00e07dcfb57",
+  "scope": "11known API declaration return-type HTML escape repairs; original142files and4generatedHTML remain unchanged",
+  "mappings": [
+    {
+      "declarationIndex": 4,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h",
+        "sha256": "888315df369b34360880a89998ce24191e7c1b2b0606666ec8fddb31f0cae2fb"
+      },
+      "sourceLines": {
+        "start": 2815,
+        "end": 2817
+      },
+      "sourceExcerpt": "FMT_INLINE auto format_to(OutputIt&& out, format_string<T...> fmt, T&&... args)\n    -> remove_cvref_t<OutputIt> {\n  return vformat_to(out, fmt.str, vargs<T...>{{args...}});",
+      "returnType": "remove_cvref_t<OutputIt>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename OutputIt, typename...&nbsp;T&gt;\n</div><div>remove_cvref_t<OutputIt> format_to(OutputIt&& out, format_string&lt;T...> fmt, T&&... args);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename OutputIt, typename...&nbsp;T&gt;\n</div><div>remove_cvref_t&lt;OutputIt&gt; format_to(OutputIt&& out, format_string&lt;T...> fmt, T&&... args);</div></code>",
+      "expectedDisplay": "template <typename OutputIt, typename... T>\nremove_cvref_t<OutputIt> format_to(OutputIt&& out, format_string<T...> fmt, T&&... args);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 5,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h",
+        "sha256": "888315df369b34360880a89998ce24191e7c1b2b0606666ec8fddb31f0cae2fb"
+      },
+      "sourceLines": {
+        "start": 2843,
+        "end": 2845
+      },
+      "sourceExcerpt": "FMT_INLINE auto format_to_n(OutputIt out, size_t n, format_string<T...> fmt,\n                            T&&... args) -> format_to_n_result<OutputIt> {\n  return vformat_to_n(out, n, fmt.str, vargs<T...>{{args...}});",
+      "returnType": "format_to_n_result<OutputIt>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename OutputIt, typename...&nbsp;T&gt;\n</div><div>format_to_n_result<OutputIt> format_to_n(OutputIt out, size_t n, format_string&lt;T...> fmt, T&&... args);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename OutputIt, typename...&nbsp;T&gt;\n</div><div>format_to_n_result&lt;OutputIt&gt; format_to_n(OutputIt out, size_t n, format_string&lt;T...> fmt, T&&... args);</div></code>",
+      "expectedDisplay": "template <typename OutputIt, typename... T>\nformat_to_n_result<OutputIt> format_to_n(OutputIt out, size_t n, format_string<T...> fmt, T&&... args);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 17,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h",
+        "sha256": "888315df369b34360880a89998ce24191e7c1b2b0606666ec8fddb31f0cae2fb"
+      },
+      "sourceLines": {
+        "start": 2758,
+        "end": 2764
+      },
+      "sourceExcerpt": "template <typename Context = context, typename... T,\n          int NUM_ARGS = int(sizeof...(T)),\n          int NUM_NAMED_ARGS = detail::count_named_args<T...>(),\n          ullong DESC = detail::make_descriptor<Context, T...>()>\nconstexpr FMT_ALWAYS_INLINE auto make_format_args(T&... args)\n    -> detail::format_arg_store<Context, NUM_ARGS, NUM_NAMED_ARGS, DESC> {\n  return {{args...}};",
+      "returnType": "detail::format_arg_store<Context, NUM_ARGS, NUM_NAMED_ARGS, DESC>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename Context, typename...&nbsp;T, int&nbsp;NUM_ARGS, int&nbsp;NUM_NAMED_ARGS, ullong&nbsp;DESC&gt;\n</div><div>detail::format_arg_store<Context, NUM_ARGS, NUM_NAMED_ARGS, DESC> make_format_args(T&... args);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename Context, typename...&nbsp;T, int&nbsp;NUM_ARGS, int&nbsp;NUM_NAMED_ARGS, ullong&nbsp;DESC&gt;\n</div><div>detail::format_arg_store&lt;Context, NUM_ARGS, NUM_NAMED_ARGS, DESC&gt; make_format_args(T&... args);</div></code>",
+      "expectedDisplay": "template <typename Context, typename... T, int NUM_ARGS, int NUM_NAMED_ARGS, ullong DESC>\ndetail::format_arg_store<Context, NUM_ARGS, NUM_NAMED_ARGS, DESC> make_format_args(T&... args);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 25,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/base.h",
+        "sha256": "888315df369b34360880a89998ce24191e7c1b2b0606666ec8fddb31f0cae2fb"
+      },
+      "sourceLines": {
+        "start": 2785,
+        "end": 2787
+      },
+      "sourceExcerpt": "template <typename T>\ninline auto arg(const char* name, const T& arg) -> named_arg<T> {\n  return {name, arg};",
+      "returnType": "named_arg<T>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>named_arg<T> arg(const char* name, const T& arg);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>named_arg&lt;T&gt; arg(const char* name, const T& arg);</div></code>",
+      "expectedDisplay": "template <typename T>\nnamed_arg<T> arg(const char* name, const T& arg);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 32,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/format.h",
+        "sha256": "b95f7c5b45d3d93e7cd8e691ae3040282ebcfe2d9c390f2c19d15ffcfae80a9c"
+      },
+      "sourceLines": {
+        "start": 4006,
+        "end": 4008
+      },
+      "sourceExcerpt": "template <typename Enum>\nconstexpr auto underlying(Enum e) noexcept -> underlying_t<Enum> {\n  return static_cast<underlying_t<Enum>>(e);",
+      "returnType": "underlying_t<Enum>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename Enum&gt;\n</div><div>underlying_t<Enum> underlying(Enum e);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename Enum&gt;\n</div><div>underlying_t&lt;Enum&gt; underlying(Enum e);</div></code>",
+      "expectedDisplay": "template <typename Enum>\nunderlying_t<Enum> underlying(Enum e);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 34,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/format.h",
+        "sha256": "b95f7c5b45d3d93e7cd8e691ae3040282ebcfe2d9c390f2c19d15ffcfae80a9c"
+      },
+      "sourceLines": {
+        "start": 4059,
+        "end": 4060
+      },
+      "sourceExcerpt": "template <typename T> auto group_digits(T value) -> group_digits_view<T> {\n  return {value};",
+      "returnType": "group_digits_view<T>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>group_digits_view<T> group_digits(T value);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>group_digits_view&lt;T&gt; group_digits(T value);</div></code>",
+      "expectedDisplay": "template <typename T>\ngroup_digits_view<T> group_digits(T value);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 52,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/ranges.h",
+        "sha256": "0a9297b2feb4443413807ff5bc03e82b4671c150fdfadc869b009ff90b6015a1"
+      },
+      "sourceLines": {
+        "start": 829,
+        "end": 833
+      },
+      "sourceExcerpt": "template <typename Range, FMT_ENABLE_IF(!is_tuple_like<Range>::value)>\nFMT_CONSTEXPR auto join(Range&& r, string_view sep)\n    -> join_view<decltype(detail::range_begin(r)),\n                 decltype(detail::range_end(r))> {\n  return {detail::range_begin(r), detail::range_end(r), sep};",
+      "returnType": "join_view<decltype(detail::range_begin(r)), decltype(detail::range_end(r))>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename Range&gt;\n</div><div>join_view<decltype(detail::range_begin(r)), decltype(detail::range_end(r))> join(Range&& r, string_view sep);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename Range&gt;\n</div><div>join_view&lt;decltype(detail::range_begin(r)), decltype(detail::range_end(r))&gt; join(Range&& r, string_view sep);</div></code>",
+      "expectedDisplay": "template <typename Range>\njoin_view<decltype(detail::range_begin(r)), decltype(detail::range_end(r))> join(Range&& r, string_view sep);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 53,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/ranges.h",
+        "sha256": "0a9297b2feb4443413807ff5bc03e82b4671c150fdfadc869b009ff90b6015a1"
+      },
+      "sourceLines": {
+        "start": 810,
+        "end": 812
+      },
+      "sourceExcerpt": "template <typename It, typename Sentinel>\nauto join(It begin, Sentinel end, string_view sep) -> join_view<It, Sentinel> {\n  return {std::move(begin), end, sep};",
+      "returnType": "join_view<It, Sentinel>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename It, typename Sentinel&gt;\n</div><div>join_view<It, Sentinel> join(It begin, Sentinel end, string_view sep);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename It, typename Sentinel&gt;\n</div><div>join_view&lt;It, Sentinel&gt; join(It begin, Sentinel end, string_view sep);</div></code>",
+      "expectedDisplay": "template <typename It, typename Sentinel>\njoin_view<It, Sentinel> join(It begin, Sentinel end, string_view sep);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 54,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/ranges.h",
+        "sha256": "0a9297b2feb4443413807ff5bc03e82b4671c150fdfadc869b009ff90b6015a1"
+      },
+      "sourceLines": {
+        "start": 860,
+        "end": 863
+      },
+      "sourceExcerpt": "template <typename T>\nFMT_DEPRECATED auto join(std::initializer_list<T> list, string_view sep)\n    -> join_view<const T*, const T*> {\n  return join(std::begin(list), std::end(list), sep);",
+      "returnType": "join_view<const T*, const T*>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>join_view<const T*, const T*> join(std::initializer_list&lt;T> list, string_view sep);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>join_view&lt;const T*, const T*&gt; join(std::initializer_list&lt;T> list, string_view sep);</div></code>",
+      "expectedDisplay": "template <typename T>\njoin_view<const T*, const T*> join(std::initializer_list<T> list, string_view sep);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 64,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/color.h",
+        "sha256": "80db3364b9f5b8247f4012d05d1353be1d0aed7c1b5bd65bdcd2817d50b64e7c"
+      },
+      "sourceLines": {
+        "start": 664,
+        "end": 667
+      },
+      "sourceExcerpt": "template <typename T>\nFMT_CONSTEXPR auto styled(const T& value, text_style ts)\n    -> detail::styled_arg<remove_cvref_t<T>> {\n  return detail::styled_arg<remove_cvref_t<T>>{value, ts};",
+      "returnType": "detail::styled_arg<remove_cvref_t<T>>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>detail::styled_arg<remove_cvref_t<T>> styled(const T& value, text_style ts);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>detail::styled_arg&lt;remove_cvref_t&lt;T&gt;&gt; styled(const T& value, text_style ts);</div></code>",
+      "expectedDisplay": "template <typename T>\ndetail::styled_arg<remove_cvref_t<T>> styled(const T& value, text_style ts);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    },
+    {
+      "declarationIndex": 69,
+      "header": {
+        "path": "docs/notes/document-import/fmt/v12-2-0/source/include/fmt/ostream.h",
+        "sha256": "663ab18a9c1cf8e7687d61ceb1acdcecd8c6484621855453fe83bc467c1b44c5"
+      },
+      "sourceLines": {
+        "start": 111,
+        "end": 113
+      },
+      "sourceExcerpt": "template <typename T>\nconstexpr auto streamed(const T& value) -> detail::streamed_view<T> {\n  return {value};",
+      "returnType": "detail::streamed_view<T>",
+      "from": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>detail::streamed_view<T> streamed(const T& value);</div></code>",
+      "to": "<code class=\"language-cpp decl\"><div>template &lt;typename T&gt;\n</div><div>detail::streamed_view&lt;T&gt; streamed(const T& value);</div></code>",
+      "expectedDisplay": "template <typename T>\ndetail::streamed_view<T> streamed(const T& value);",
+      "reason": "Official HTML return type emitted without angle-bracket escaping; fixed-header return type restored without changing original source."
+    }
+  ]
+}

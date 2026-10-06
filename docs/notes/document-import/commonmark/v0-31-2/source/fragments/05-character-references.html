@@ -1,0 +1,300 @@
+<h2 class="definition" id="entity-and-numeric-character-references">
+<span class="number">2.5</span>Entity and numeric character references
+</h2>
+<p>Valid HTML entity references and numeric character references
+can be used in place of the corresponding Unicode character,
+with the following exceptions:</p>
+<ul>
+<li>
+<p>Entity and character references are not recognized in code
+blocks and code spans.</p>
+</li>
+<li>
+<p>Entity and character references cannot stand in place of
+special characters that define structural elements in
+CommonMark.  For example, although <code>&amp;#42;</code> can be used
+in place of a literal <code>*</code> character, <code>&amp;#42;</code> cannot replace
+<code>*</code> in emphasis delimiters, bullet list markers, or thematic
+breaks.</p>
+</li>
+</ul>
+<p>Conforming CommonMark parsers need not store information about
+whether a particular character was represented in the source
+using a Unicode character or an entity reference.</p>
+<p><a class="definition" href="#entity-references" id="entity-references">Entity references</a> consist of <code>&amp;</code> + any of the valid
+HTML5 entity names + <code>;</code>. The
+document <a href="https://html.spec.whatwg.org/entities.json">https://html.spec.whatwg.org/entities.json</a>
+is used as an authoritative source for the valid entity
+references and their corresponding code points.</p>
+<div class="example" id="example-25">
+<div class="examplenum">
+<a href="#example-25">Example 25</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&amp;nbsp;<span class="space"> </span>&amp;amp;<span class="space"> </span>&amp;copy;<span class="space"> </span>&amp;AElig;<span class="space"> </span>&amp;Dcaron;
+&amp;frac34;<span class="space"> </span>&amp;HilbertSpace;<span class="space"> </span>&amp;DifferentialD;
+&amp;ClockwiseContourIntegral;<span class="space"> </span>&amp;ngE;
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt; <span class="space"> </span>&amp;amp;<span class="space"> </span>©<span class="space"> </span>Æ<span class="space"> </span>Ď
+¾<span class="space"> </span>ℋ<span class="space"> </span>ⅆ
+∲<span class="space"> </span>≧̸&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p><a class="definition" href="#decimal-numeric-character-references" id="decimal-numeric-character-references">Decimal numeric character
+references</a>
+consist of <code>&amp;#</code> + a string of 1–7 arabic digits + <code>;</code>. A
+numeric character reference is parsed as the corresponding
+Unicode character. Invalid Unicode code points will be replaced by
+the REPLACEMENT CHARACTER (<code>U+FFFD</code>).  For security reasons,
+the code point <code>U+0000</code> will also be replaced by <code>U+FFFD</code>.</p>
+<div class="example" id="example-26">
+<div class="examplenum">
+<a href="#example-26">Example 26</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&amp;#35;<span class="space"> </span>&amp;#1234;<span class="space"> </span>&amp;#992;<span class="space"> </span>&amp;#0;
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;#<span class="space"> </span>Ӓ<span class="space"> </span>Ϡ<span class="space"> </span>�&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p><a class="definition" href="#hexadecimal-numeric-character-references" id="hexadecimal-numeric-character-references">Hexadecimal numeric character
+references</a> consist of <code>&amp;#</code> +
+either <code>X</code> or <code>x</code> + a string of 1-6 hexadecimal digits + <code>;</code>.
+They too are parsed as the corresponding Unicode character (this
+time specified with a hexadecimal numeral instead of decimal).</p>
+<div class="example" id="example-27">
+<div class="examplenum">
+<a href="#example-27">Example 27</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&amp;#X22;<span class="space"> </span>&amp;#XD06;<span class="space"> </span>&amp;#xcab;
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&amp;quot;<span class="space"> </span>ആ<span class="space"> </span>ಫ&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Here are some nonentities:</p>
+<div class="example" id="example-28">
+<div class="examplenum">
+<a href="#example-28">Example 28</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&amp;nbsp<span class="space"> </span>&amp;x;<span class="space"> </span>&amp;#;<span class="space"> </span>&amp;#x;
+&amp;#87654321;
+&amp;#abcdef0;
+&amp;ThisIsNotDefined;<span class="space"> </span>&amp;hi?;
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&amp;amp;nbsp<span class="space"> </span>&amp;amp;x;<span class="space"> </span>&amp;amp;#;<span class="space"> </span>&amp;amp;#x;
+&amp;amp;#87654321;
+&amp;amp;#abcdef0;
+&amp;amp;ThisIsNotDefined;<span class="space"> </span>&amp;amp;hi?;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Although HTML5 does accept some entity references
+without a trailing semicolon (such as <code>&amp;copy</code>), these are not
+recognized here, because it makes the grammar too ambiguous:</p>
+<div class="example" id="example-29">
+<div class="examplenum">
+<a href="#example-29">Example 29</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&amp;copy
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&amp;amp;copy&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Strings that are not on the list of HTML5 named entities are not
+recognized as entity references either:</p>
+<div class="example" id="example-30">
+<div class="examplenum">
+<a href="#example-30">Example 30</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&amp;MadeUpEntity;
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&amp;amp;MadeUpEntity;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<p>Entity and numeric character references are recognized in any
+context besides code spans or code blocks, including
+URLs, <a href="#link-title">link titles</a>, and <a href="#fenced-code-block">fenced code block</a> <a href="#info-string">info strings</a>:</p>
+<div class="example" id="example-31">
+<div class="examplenum">
+<a href="#example-31">Example 31</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&lt;a<span class="space"> </span>href="&amp;ouml;&amp;ouml;.html"&gt;
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;a<span class="space"> </span>href="&amp;ouml;&amp;ouml;.html"&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-32">
+<div class="examplenum">
+<a href="#example-32">Example 32</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo](/f&amp;ouml;&amp;ouml;<span class="space"> </span>"f&amp;ouml;&amp;ouml;")
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/f%C3%B6%C3%B6"<span class="space"> </span>title="föö"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-33">
+<div class="examplenum">
+<a href="#example-33">Example 33</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[foo]
+
+[foo]:<span class="space"> </span>/f&amp;ouml;&amp;ouml;<span class="space"> </span>"f&amp;ouml;&amp;ouml;"
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;a<span class="space"> </span>href="/f%C3%B6%C3%B6"<span class="space"> </span>title="föö"&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-34">
+<div class="examplenum">
+<a href="#example-34">Example 34</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">```<span class="space"> </span>f&amp;ouml;&amp;ouml;
+foo
+```
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code<span class="space"> </span>class="language-föö"&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<p>Entity and numeric character references are treated as literal
+text in code spans and code blocks:</p>
+<div class="example" id="example-35">
+<div class="examplenum">
+<a href="#example-35">Example 35</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">`f&amp;ouml;&amp;ouml;`
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;&lt;code&gt;f&amp;amp;ouml;&amp;amp;ouml;&lt;/code&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-36">
+<div class="examplenum">
+<a href="#example-36">Example 36</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown"><span class="space"> </span><span class="space"> </span><span class="space"> </span><span class="space"> </span>f&amp;ouml;f&amp;ouml;
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;pre&gt;&lt;code&gt;f&amp;amp;ouml;f&amp;amp;ouml;
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+</div>
+</div>
+<p>Entity and numeric character references cannot be used
+in place of symbols indicating structure in CommonMark
+documents.</p>
+<div class="example" id="example-37">
+<div class="examplenum">
+<a href="#example-37">Example 37</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&amp;#42;foo&amp;#42;
+*foo*
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;*foo*
+&lt;em&gt;foo&lt;/em&gt;&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-38">
+<div class="examplenum">
+<a href="#example-38">Example 38</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&amp;#42;<span class="space"> </span>foo
+
+*<span class="space"> </span>foo
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;*<span class="space"> </span>foo&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;foo&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-39">
+<div class="examplenum">
+<a href="#example-39">Example 39</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">foo&amp;#10;&amp;#10;bar
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;foo
+
+bar&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-40">
+<div class="examplenum">
+<a href="#example-40">Example 40</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">&amp;#9;foo
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;→foo&lt;/p&gt;
+</code></pre>
+</div>
+</div>
+<div class="example" id="example-41">
+<div class="examplenum">
+<a href="#example-41">Example 41</a><a class="dingus" title="open in interactive dingus">Try It</a>
+</div>
+<div class="column">
+<pre><code class="language-markdown">[a](url<span class="space"> </span>&amp;quot;tit&amp;quot;)
+</code></pre>
+</div>
+<div class="column">
+<pre><code class="language-html">&lt;p&gt;[a](url<span class="space"> </span>&amp;quot;tit&amp;quot;)&lt;/p&gt;
+</code></pre>
+</div>
+</div>
