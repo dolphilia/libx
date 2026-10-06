@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "toml",
+  "status": "passed",
+  "inputHash": "99ee4fcb0101a1446f353a3bcc62c5c7f00fc4e49523bcd6cabf04ed51f0675c",
+  "reviewedAt": "2026-10-01T09:53:48.749Z",
+  "method": "ai-selection-review",
+  "separateReviewPass": true,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "conditions": {
+    "rights": "両MIT全文を別途読了。associated documentationへの適用、改変・配布許諾と全文通知保存義務を確認。採用本文・ABNFに別指定や画像なし。パッケージのライセンスを流用しない。",
+    "boundary": "公式公開版の19節・Objectives・著者表示・TOCおよびABNF全文を対象。取得一覧の分類と全文AST照合を確認。",
+    "fixedInput": "サイトsha b950d4929980ee66f2e77bfe421e725ddffbeb69と仕様sha bcbbd1c1f03473ffe97b8bf26a0fc945efe2b4a1は別々に固定。公開本文が1.1.0で、Release tagは正式版。サイト日付とRelease API日時を混同しない。",
+    "selfContained": "規範条件・不正例・全データ型・ABNFを範囲内で読むことができる。参照Unicode/RFCを削除せず保持。",
+    "conversion": "全文ASTの許可対応、70コード、ABNFの生保存一致とHTMLでの改行対応、フラグメント参照が試験で成立。正式アプリ検証と内容翻訳レビューは未実施。",
+    "workload": "行数・コード・見出し・画像を固定入力から確認。概算工数は実績でないことを記録。制限以内の全文仕様＋文法という明確な範囲。"
+  },
+  "scoreReview": {
+    "values": {
+      "additionalValue": 4,
+      "practicality": 3,
+      "quality": 5,
+      "maintenance": 3,
+      "reuse": 4
+    },
+    "weightedTotal": 76,
+    "minimumAdditionalValueAndPracticality": 3,
+    "findings": [
+      "公式ja一覧に対象1.1.0がないことと旧1.0.0の存在を確認。第三者全文訳の絶対不存在や旧訳品質の劣悪さは主張しない。",
+      "C++設定パーサーの原典用途は明確。利用実績・ユーザー要望は未収集なので実用性3を上限とした。",
+      "正式仕様の全TOCと規範例・文法が揃うことを品質の根拠とした。",
+      "二つのrepo入力の継続照合とABNF/link固有処理が必要なため保守3、再利用4。"
+    ]
+  },
+  "evidence": [
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/TOML_RESEARCH.md",
+      "sha256": "e42615501deb9030600dedff0fe172642e2bf52569b2e4b6371be3b38ecb51bc"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml-site-license.txt",
+      "sha256": "169ec8dbd3ad5d42b29d9d006ccb668414fe5b87b874e18feece8aa3e6d2b6fe"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml/LICENSE",
+      "sha256": "a9e276d27f1f71f0ca7601eac41bd1b94418d782119190a03f1d966de76065ce"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml-published-spec.txt",
+      "sha256": "cd36fd06f90cebec13aba35e7389b8ce099779270d5e913d6ec25c511761beb1"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml/toml.abnf",
+      "sha256": "e1a7d9f3a938f54868cdf3d15b84bd53bf0f8f5e95762efa8b797d022b984f8c"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml-input-inventory.json",
+      "sha256": "0be5d9342df23e77553e2631ddf1d37b6e9de8df66e83ff03b84ee6b97077b40"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/FETCH_MANIFEST.json",
+      "sha256": "7f1e3466fc11ebc62cb2170e32881917f02e835ca4d5523bf7097cc449bf402a"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml-tag.json",
+      "sha256": "fb7351dcdf661c8bb10b95de8cc64b221be6b66e834139277c3d3877c65a0900"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml-site-head.json",
+      "sha256": "2811764cc50e79c74026a99eec867a413c8c76af2ca85afc3a06b37c79ab16e4"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml-release.json",
+      "sha256": "7b1b58f1a6d1e47656cbd3c375c74771a73b094b86ca075e036251e3f2d1a277"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml-trial/RESULTS.json",
+      "sha256": "826cb6bdc85727c4ab62c57ad428799ec253e95662a088512bb984593706e04d"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml-trial/SOURCE_EQUIVALENCE.json",
+      "sha256": "9ad7ee1c11820d437aa53d8ee1549e3594b254b4e1a4b0f7526db47126c29c4e"
+    },
+    {
+      "path": "docs/notes/project-expansion/research/2026-10-01/toml-site-language.json",
+      "sha256": "ac3a2ab00c962fa54b7d05c5c301ebf60aa10f97b57c1408a4856679b5252fbf"
+    },
+    {
+      "path": "scripts/project-expansion/trial-toml.mjs",
+      "sha256": "098abbf051b88702887ff6c284b013d4e01074eb13c14ded978a9c382eda2e19"
+    }
+  ],
+  "unresolved": [
+    "Astroアダプター・英日翻訳・AI全文内容レビュー・正式表示検証は新規工程に未着手。",
+    "採用直前に版・日本語訳・権利・入力を再照合し、30日以上経過時は再調査。"
+  ],
+  "decision": "必須6条件と76点を別パスで照合。公開待ち2件により新規着手せずeligibleで待機。"
+}
