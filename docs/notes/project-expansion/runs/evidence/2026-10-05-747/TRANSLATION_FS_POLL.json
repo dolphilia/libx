@@ -1,0 +1,689 @@
+{
+  "page": "reference/fs_poll",
+  "at": "2026-10-04T22:39:52.256888+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/fs_poll.rst",
+      "sha256": "574ed180b6ebb50e7bf43b006357931e6867c41df2ecc52f8f6168cbfba5565c"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/fs_poll.md",
+      "sha256": "25a5240d8842983e34827dbf7cc5ccfbdee87f24f63e40b346b7c4be09c607a2"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/fs_poll.md",
+      "sha256": "c2d284722dd3031d3c842e5c91c80f691cf62ca500f93de981a87abf116d2276"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations; no code block, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — FS Poll handle",
+      "ja": " — FS Pollハンドル"
+    },
+    {
+      "index": 1,
+      "en": "FS Poll handles allow the user to monitor a given path for changes. Unlike\n",
+      "ja": "FS Pollハンドルは、指定したパスの変更を監視できます。"
+    },
+    {
+      "index": 2,
+      "en": ", fs poll handles use ",
+      "ja": "とは異なり、FS Pollハンドルは"
+    },
+    {
+      "index": 3,
+      "en": "stat",
+      "ja": "stat"
+    },
+    {
+      "index": 4,
+      "en": " to detect when a file has\nchanged so they can work on file systems where fs event handles can’t.",
+      "ja": "でファイルの変更を検出するため、FS Eventハンドルが動作しないファイルシステムでも使えます。"
+    },
+    {
+      "index": 5,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 6,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 7,
+      "en": "uv_fs_poll_t",
+      "ja": "uv_fs_poll_t"
+    },
+    {
+      "index": 8,
+      "en": "FS Poll handle type.",
+      "ja": "FS Pollハンドルの型です。"
+    },
+    {
+      "index": 9,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 10,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 11,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 12,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 13,
+      "en": "uv_fs_poll_cb",
+      "ja": "uv_fs_poll_cb"
+    },
+    {
+      "index": 14,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 15,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 16,
+      "en": "uv_fs_poll_t",
+      "ja": "uv_fs_poll_t"
+    },
+    {
+      "index": 17,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 18,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 19,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 20,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 21,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 22,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 23,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 24,
+      "en": "uv_stat_t",
+      "ja": "uv_stat_t"
+    },
+    {
+      "index": 25,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 26,
+      "en": "prev",
+      "ja": "prev"
+    },
+    {
+      "index": 27,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 28,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 29,
+      "en": "uv_stat_t",
+      "ja": "uv_stat_t"
+    },
+    {
+      "index": 30,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 31,
+      "en": "curr",
+      "ja": "curr"
+    },
+    {
+      "index": 32,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 33,
+      "en": "Callback passed to ",
+      "ja": "次の関数へ渡すコールバックです: "
+    },
+    {
+      "index": 34,
+      "en": " which will be called repeatedly\nafter the handle is started, when any change happens to the monitored path.",
+      "ja": "。ハンドルを開始した後、監視対象のパスに変更があるたびに呼び出します。"
+    },
+    {
+      "index": 35,
+      "en": "The callback is invoked with ",
+      "ja": "コールバックは、"
+    },
+    {
+      "index": 36,
+      "en": "status < 0",
+      "ja": "status < 0"
+    },
+    {
+      "index": 37,
+      "en": " if ",
+      "ja": "で呼び出されます。これは、"
+    },
+    {
+      "index": 38,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 39,
+      "en": " does not exist\nor is inaccessible. The watcher is ",
+      "ja": "が存在しない、またはアクセスできない場合です。監視は"
+    },
+    {
+      "index": 40,
+      "en": "not",
+      "ja": "停止しません"
+    },
+    {
+      "index": 41,
+      "en": " stopped but your callback is\nnot called again until something changes (e.g. when the file is created\nor the error reason changes).",
+      "ja": "が、ファイルの作成やエラーの原因が変わるなど、何か変化が起きるまではコールバックを再度呼び出しません。"
+    },
+    {
+      "index": 42,
+      "en": "When ",
+      "ja": "次の条件、"
+    },
+    {
+      "index": 43,
+      "en": "status == 0",
+      "ja": "status == 0"
+    },
+    {
+      "index": 44,
+      "en": ", the callback receives pointers to the old and new\n",
+      "ja": "の場合、コールバックは変更前と変更後の"
+    },
+    {
+      "index": 45,
+      "en": " structs. They are valid for the duration of the\ncallback only.",
+      "ja": "構造体へのポインターを受け取ります。これらはコールバックの実行中だけ有効です。"
+    },
+    {
+      "index": 46,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 47,
+      "en": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "index": 48,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 49,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 50,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 51,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 52,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 53,
+      "en": "uv_fs_poll_init",
+      "ja": "uv_fs_poll_init"
+    },
+    {
+      "index": 54,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 55,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 56,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 57,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 58,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 59,
+      "en": "uv_fs_poll_t",
+      "ja": "uv_fs_poll_t"
+    },
+    {
+      "index": 60,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 61,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 62,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 63,
+      "en": "Initialize the handle.",
+      "ja": "ハンドルを初期化します。"
+    },
+    {
+      "index": 64,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 65,
+      "en": "uv_fs_poll_start",
+      "ja": "uv_fs_poll_start"
+    },
+    {
+      "index": 66,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 67,
+      "en": "uv_fs_poll_t",
+      "ja": "uv_fs_poll_t"
+    },
+    {
+      "index": 68,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 69,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 70,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 71,
+      "en": "uv_fs_poll_cb",
+      "ja": "uv_fs_poll_cb"
+    },
+    {
+      "index": 72,
+      "en": "poll_cb",
+      "ja": "poll_cb"
+    },
+    {
+      "index": 73,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 74,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 75,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 76,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 77,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 78,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 79,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 80,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 81,
+      "en": "interval",
+      "ja": "interval"
+    },
+    {
+      "index": 82,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 83,
+      "en": "Check the file at ",
+      "ja": "次のパス、"
+    },
+    {
+      "index": 84,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 85,
+      "en": " for changes every ",
+      "ja": "のファイルに変更があるかを、"
+    },
+    {
+      "index": 86,
+      "en": "interval",
+      "ja": "interval"
+    },
+    {
+      "index": 87,
+      "en": " milliseconds.",
+      "ja": "ミリ秒ごとに検査します。"
+    },
+    {
+      "index": 88,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 89,
+      "en": "For maximum portability, use multi-second intervals. Sub-second intervals will not detect\nall changes on many file systems.",
+      "ja": "移植性を最大限に確保するには、数秒単位の間隔を使ってください。1秒未満の間隔では、多くのファイルシステムですべての変更を検出できません。"
+    },
+    {
+      "index": 90,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 91,
+      "en": "uv_fs_poll_stop",
+      "ja": "uv_fs_poll_stop"
+    },
+    {
+      "index": 92,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 93,
+      "en": "uv_fs_poll_t",
+      "ja": "uv_fs_poll_t"
+    },
+    {
+      "index": 94,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 95,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 96,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 97,
+      "en": "Stop the handle, the callback will no longer be called.",
+      "ja": "ハンドルを停止します。以後、コールバックを呼び出しません。"
+    },
+    {
+      "index": 98,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 99,
+      "en": "uv_fs_poll_getpath",
+      "ja": "uv_fs_poll_getpath"
+    },
+    {
+      "index": 100,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 101,
+      "en": "uv_fs_poll_t",
+      "ja": "uv_fs_poll_t"
+    },
+    {
+      "index": 102,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 103,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 104,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 105,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 106,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 107,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 108,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 109,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 110,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 111,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 112,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 113,
+      "en": "Get the path being monitored by the handle. The buffer must be preallocated\nby the user. Returns 0 on success or an error code < 0 in case of failure.\nOn success, ",
+      "ja": "ハンドルが監視しているパスを取得します。バッファはユーザーが事前に確保する必要があります。成功時は0、失敗時は0未満のエラーコードを返します。成功時は、"
+    },
+    {
+      "index": 114,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 115,
+      "en": " will contain the path and ",
+      "ja": "にパスが入り、"
+    },
+    {
+      "index": 116,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 117,
+      "en": " its length. If the buffer\nis not big enough ",
+      "ja": "にその長さが入ります。バッファが十分な大きさでない場合は、"
+    },
+    {
+      "index": 118,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 119,
+      "en": " will be returned and ",
+      "ja": "を返し、"
+    },
+    {
+      "index": 120,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 121,
+      "en": " will be set to\nthe required size.",
+      "ja": "を必要なサイズに設定します。"
+    },
+    {
+      "index": 122,
+      "en": "Changed in version 1.3.0: ",
+      "ja": "バージョン1.3.0での変更: "
+    },
+    {
+      "index": 123,
+      "en": "the returned length no longer includes the terminating null byte,\nand the buffer is not null terminated.",
+      "ja": "返す長さに終端ヌルバイトを含めなくなり、バッファもヌル終端しなくなりました。"
+    },
+    {
+      "index": 124,
+      "en": "Changed in version 1.9.0: ",
+      "ja": "バージョン1.9.0での変更: "
+    },
+    {
+      "index": 125,
+      "en": "the returned length includes the terminating null\nbyte on ",
+      "ja": "次のエラー、"
+    },
+    {
+      "index": 126,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 127,
+      "en": ", and the buffer is null terminated\non success.",
+      "ja": "の場合、返す長さに終端ヌルバイトを含めるようになりました。また、成功時にはバッファをヌル終端します。"
+    },
+    {
+      "index": 128,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 129,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 130,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 0,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

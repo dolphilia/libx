@@ -1,0 +1,629 @@
+{
+  "page": "reference/signal",
+  "at": "2026-10-04T22:29:40.377494+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/signal.rst",
+      "sha256": "72d322b2078aa3e1d6f2bc5c1ec6654775a1dc7083994df1341dddfb52f37a3d"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/signal.md",
+      "sha256": "a3b1a9aeb0b46e2f104596c410581844444935dea2bb0266e23ad2201a65ea05"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/signal.md",
+      "sha256": "3abf97eb481e7aad8a937ac65d0b85b47fec37881ee17bfc00973c32a9507499"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, API declarations; no code block, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — Signal handle",
+      "ja": " — シグナルハンドル"
+    },
+    {
+      "index": 1,
+      "en": "Signal handles implement Unix style signal handling on a per-event loop bases.",
+      "ja": "シグナルハンドルは、イベントループごとにUnix形式のシグナル処理を実装します。"
+    },
+    {
+      "index": 2,
+      "en": "Windows notes",
+      "ja": "Windowsに関する注記"
+    },
+    {
+      "index": 3,
+      "en": "Reception of some signals is emulated:",
+      "ja": "一部のシグナルの受信をエミュレートします。"
+    },
+    {
+      "index": 4,
+      "en": "SIGINT is normally delivered when the user presses CTRL+C. However, like\non Unix, it is not generated when terminal raw mode is enabled.",
+      "ja": "SIGINTは、通常、ユーザーがCTRL+Cを押したときに届きます。ただし、Unixと同様に、端末のrawモードが有効な場合は発生しません。"
+    },
+    {
+      "index": 5,
+      "en": "SIGBREAK is delivered when the user pressed CTRL + BREAK.",
+      "ja": "SIGBREAKは、ユーザーがCTRL+BREAKを押したときに届きます。"
+    },
+    {
+      "index": 6,
+      "en": "SIGHUP is generated when the user closes the console window. On SIGHUP the\nprogram is given approximately 10 seconds to perform cleanup. After that\nWindows will unconditionally terminate it.",
+      "ja": "SIGHUPは、ユーザーがコンソールウィンドウを閉じたときに発生します。SIGHUPを受けたプログラムには、後処理のために約10秒が与えられます。その後、Windowsは無条件にプログラムを終了します。"
+    },
+    {
+      "index": 7,
+      "en": "SIGWINCH is raised whenever libuv detects that the console has been\nresized. When a libuv app is running under a console emulator, or when a\n32-bit libuv app is running on 64-bit system, SIGWINCH will be emulated. In\nsuch cases SIGWINCH signals may not always be delivered in a timely manner.\nFor a writable ",
+      "ja": "SIGWINCHは、libuvがコンソールのサイズ変更を検出するたびに発生します。libuvアプリがコンソールエミュレーターで動作している場合や、32ビットのlibuvアプリが64ビットシステムで動作している場合は、SIGWINCHをエミュレートします。この場合、SIGWINCHが常に適時に届くとは限りません。書き込み可能な"
+    },
+    {
+      "index": 8,
+      "en": " handle libuv will only detect size changes\nwhen the cursor is moved. When a readable ",
+      "ja": "ハンドルでは、カーソルが移動したときだけサイズの変更を検出します。読み取り可能な"
+    },
+    {
+      "index": 9,
+      "en": " handle is used,\nresizing of the console buffer will be detected only if the handle is in raw\nmode and is being read.",
+      "ja": "ハンドルを使う場合は、ハンドルがrawモードであり、読み取り中の場合にだけ、コンソールバッファーのサイズ変更を検出します。"
+    },
+    {
+      "index": 10,
+      "en": "Watchers for other signals can be successfully created, but these signals\nare never received. These signals are: ",
+      "ja": "他のシグナルの監視ハンドルも作成できますが、これらのシグナルを受信することはありません。該当するシグナルは次のとおりです: "
+    },
+    {
+      "index": 11,
+      "en": "SIGILL",
+      "ja": "SIGILL"
+    },
+    {
+      "index": 12,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 13,
+      "en": "SIGABRT",
+      "ja": "SIGABRT"
+    },
+    {
+      "index": 14,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 15,
+      "en": "SIGFPE",
+      "ja": "SIGFPE"
+    },
+    {
+      "index": 16,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 17,
+      "en": "SIGSEGV",
+      "ja": "SIGSEGV"
+    },
+    {
+      "index": 18,
+      "en": ",\n",
+      "ja": "、"
+    },
+    {
+      "index": 19,
+      "en": "SIGTERM",
+      "ja": "SIGTERM"
+    },
+    {
+      "index": 20,
+      "en": " and ",
+      "ja": "、"
+    },
+    {
+      "index": 21,
+      "en": "SIGKILL.",
+      "ja": "SIGKILL."
+    },
+    {
+      "index": 22,
+      "en": "Calls to raise() or abort() to programmatically raise a signal are\nnot detected by libuv; these will not trigger a signal watcher.",
+      "ja": "raise()やabort()でプログラムからシグナルを発生させても、libuvは検出しません。そのため、シグナルの監視ハンドルは反応しません。"
+    },
+    {
+      "index": 23,
+      "en": "Changed in version 1.15.0: ",
+      "ja": "バージョン1.15.0での変更: "
+    },
+    {
+      "index": 24,
+      "en": "SIGWINCH support on Windows was improved.",
+      "ja": "WindowsのSIGWINCHサポートを改善しました。"
+    },
+    {
+      "index": 25,
+      "en": "Changed in version 1.31.0: ",
+      "ja": "バージョン1.31.0での変更: "
+    },
+    {
+      "index": 26,
+      "en": "32-bit libuv SIGWINCH support on 64-bit Windows was\nrolled back to old implementation.",
+      "ja": "64ビットWindows上の32ビットlibuvのSIGWINCHサポートを、以前の実装へ戻しました。"
+    },
+    {
+      "index": 27,
+      "en": "Unix notes",
+      "ja": "Unixに関する注記"
+    },
+    {
+      "index": 28,
+      "en": "SIGKILL and SIGSTOP are impossible to catch.",
+      "ja": "SIGKILLとSIGSTOPは捕捉できません。"
+    },
+    {
+      "index": 29,
+      "en": "Handling SIGBUS, SIGFPE, SIGILL or SIGSEGV via libuv results into undefined behavior.",
+      "ja": "SIGBUS、SIGFPE、SIGILL、SIGSEGVをlibuvで処理すると、未定義動作になります。"
+    },
+    {
+      "index": 30,
+      "en": "SIGABRT will not be caught by libuv if generated by ",
+      "ja": "SIGABRTを"
+    },
+    {
+      "index": 31,
+      "en": "abort()",
+      "ja": "abort()"
+    },
+    {
+      "index": 32,
+      "en": ", e.g. through ",
+      "ja": "が生成した場合、たとえば"
+    },
+    {
+      "index": 33,
+      "en": "assert()",
+      "ja": "assert()"
+    },
+    {
+      "index": 34,
+      "en": ".",
+      "ja": "経由の場合には、libuvで捕捉しません。"
+    },
+    {
+      "index": 35,
+      "en": "On Linux SIGRT0 and SIGRT1 (signals 32 and 33) are used by the NPTL pthreads library to\nmanage threads. Installing watchers for those signals will lead to unpredictable behavior\nand is strongly discouraged. Future versions of libuv may simply reject them.",
+      "ja": "Linuxでは、SIGRT0とSIGRT1（シグナル番号32と33）を、NPTLのpthreadsライブラリーがスレッド管理に使います。これらのシグナルの監視ハンドルを設定すると、予測不能な動作が生じるため、強く非推奨とします。将来のlibuvでは、これらを単に拒否する可能性があります。"
+    },
+    {
+      "index": 36,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 37,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 38,
+      "en": "uv_signal_t",
+      "ja": "uv_signal_t"
+    },
+    {
+      "index": 39,
+      "en": "Signal handle type.",
+      "ja": "シグナルハンドルの型です。"
+    },
+    {
+      "index": 40,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 41,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 42,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 43,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 44,
+      "en": "uv_signal_cb",
+      "ja": "uv_signal_cb"
+    },
+    {
+      "index": 45,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 46,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 47,
+      "en": "uv_signal_t",
+      "ja": "uv_signal_t"
+    },
+    {
+      "index": 48,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 49,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 50,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 51,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 52,
+      "en": "signum",
+      "ja": "signum"
+    },
+    {
+      "index": 53,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 54,
+      "en": "Type definition for callback passed to ",
+      "ja": "次の関数へ渡すコールバックの型定義です: "
+    },
+    {
+      "index": 55,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 56,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 57,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 58,
+      "en": "uv_signal_t",
+      "ja": "uv_signal_t"
+    },
+    {
+      "index": 59,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 60,
+      "en": "signum",
+      "ja": "signum"
+    },
+    {
+      "index": 61,
+      "en": "Signal being monitored by this handle. Readonly.",
+      "ja": "このハンドルが監視するシグナルです。読み取り専用です。"
+    },
+    {
+      "index": 62,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 63,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 64,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 65,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 66,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 67,
+      "en": "uv_signal_init",
+      "ja": "uv_signal_init"
+    },
+    {
+      "index": 68,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 69,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 70,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 71,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 72,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 73,
+      "en": "uv_signal_t",
+      "ja": "uv_signal_t"
+    },
+    {
+      "index": 74,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 75,
+      "en": "signal",
+      "ja": "signal"
+    },
+    {
+      "index": 76,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 77,
+      "en": "Initialize the handle.",
+      "ja": "ハンドルを初期化します。"
+    },
+    {
+      "index": 78,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 79,
+      "en": "uv_signal_start",
+      "ja": "uv_signal_start"
+    },
+    {
+      "index": 80,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 81,
+      "en": "uv_signal_t",
+      "ja": "uv_signal_t"
+    },
+    {
+      "index": 82,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 83,
+      "en": "signal",
+      "ja": "signal"
+    },
+    {
+      "index": 84,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 85,
+      "en": "uv_signal_cb",
+      "ja": "uv_signal_cb"
+    },
+    {
+      "index": 86,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 87,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 88,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 89,
+      "en": "signum",
+      "ja": "signum"
+    },
+    {
+      "index": 90,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 91,
+      "en": "Start the handle with the given callback, watching for the given signal.",
+      "ja": "指定したコールバックでハンドルを開始し、指定したシグナルを監視します。"
+    },
+    {
+      "index": 92,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 93,
+      "en": "uv_signal_start_oneshot",
+      "ja": "uv_signal_start_oneshot"
+    },
+    {
+      "index": 94,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 95,
+      "en": "uv_signal_t",
+      "ja": "uv_signal_t"
+    },
+    {
+      "index": 96,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 97,
+      "en": "signal",
+      "ja": "signal"
+    },
+    {
+      "index": 98,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 99,
+      "en": "uv_signal_cb",
+      "ja": "uv_signal_cb"
+    },
+    {
+      "index": 100,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 101,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 102,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 103,
+      "en": "signum",
+      "ja": "signum"
+    },
+    {
+      "index": 104,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 105,
+      "en": "New in version 1.12.0.",
+      "ja": "バージョン1.12.0で追加。"
+    },
+    {
+      "index": 106,
+      "en": "Same functionality as ",
+      "ja": "次の関数と同じ機能ですが、"
+    },
+    {
+      "index": 107,
+      "en": " but the signal handler is reset the moment\nthe signal is received.",
+      "ja": "とは異なり、シグナルを受信した時点でシグナルハンドラーをリセットします。"
+    },
+    {
+      "index": 108,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 109,
+      "en": "uv_signal_stop",
+      "ja": "uv_signal_stop"
+    },
+    {
+      "index": 110,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 111,
+      "en": "uv_signal_t",
+      "ja": "uv_signal_t"
+    },
+    {
+      "index": 112,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 113,
+      "en": "signal",
+      "ja": "signal"
+    },
+    {
+      "index": 114,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 115,
+      "en": "Stop the handle, the callback will no longer be called.",
+      "ja": "ハンドルを停止します。以後、コールバックを呼び出しません。"
+    },
+    {
+      "index": 116,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 117,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 118,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 0,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

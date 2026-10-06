@@ -1,0 +1,79 @@
+{
+  "page": "reference/signal",
+  "status": "passed",
+  "at": "2026-10-04T22:33:09.014217+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/footer reading after743 translation; no correction required. Mechanical tests distinct from semantic review.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/signal.rst",
+      "sha256": "72d322b2078aa3e1d6f2bc5c1ec6654775a1dc7083994df1341dddfb52f37a3d"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/signal.md",
+      "sha256": "a3b1a9aeb0b46e2f104596c410581844444935dea2bb0266e23ad2201a65ea05"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/signal.md",
+      "sha256": "3abf97eb481e7aad8a937ac65d0b85b47fec37881ee17bfc00973c32a9507499"
+    }
+  ],
+  "coverage": {
+    "original": "all signal.rst including every Windows/Unix note and all version conditions",
+    "canonical": "all current English article/API/footer",
+    "translation": "all current Japanese article/API/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "full fixed RST / EN / JA / footer",
+      "result": "Entire fixed signal.rst/current English/current Japanese/API/footer read separately after743 translation. All119mapped nodes/7declarations covered; no code block/no unread ranges. No correction necessary. Original cited SIGKILL punctuation retained as original, not mistaken for another signal."
+    },
+    {
+      "scope": "Windows delivery and emulation",
+      "result": "Per-event-loop Unix-style handling retained. CtrlC/SIGINT except raw mode, CtrlBreak/SIGBREAK, console-close SIGHUP approximate10second cleanup then unconditional termination retained. SIGWINCH emulator and32bit-on64bit emulation/not always timely, writable tty cursor movement only and readable tty raw AND reading buffer-resize condition retained."
+    },
+    {
+      "scope": "Windows non-reception and versions",
+      "result": "Watchers may be created but never receive all6listed signals; programmatic raise/abort not detected/no watcher trigger retained.1.15 improved Windows WINCH and1.31 reverted32bit64bit implementation retained."
+    },
+    {
+      "scope": "Unix restrictions",
+      "result": "Uncatchable KILL/STOP, BUS/FPE/ILL/SEGV undefined handling, abort-generated ABRT including assert not caught retained. Linux NPTL uses RT0/RT1=32/33; watchers unpredictable/strongly discouraged and future may reject retained as original, no broad platform guarantee inferred."
+    },
+    {
+      "scope": "types, member and functions",
+      "result": "Handle/callback signature and readonly signum, inherited handle members/API retained. Init/start supplied callback and signal, oneshot reset at receipt/1.12, stop prevents callback retained. Fixed sources/licences/notices/unofficial translation in footer. Separate mechanical API/current output/TOC checks and unchanged743 build reused; native/runtime/content/integration/release and external supplementary video not claimed."
+    }
+  ],
+  "corrections": [],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-744/API_VERIFICATION.json",
+      "sha256": "647cb23c3735c063a3cd6e393580d1d59bebfae45b552b0d49b8937fbeda1643"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-744/RENDER_VERIFICATION.json",
+      "sha256": "12854ac111d6ec7f60156ce87794a757dd746aedc4e859f65fb3fad4fdbeb7b9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-744/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "f0a856985d0a43527e64c11e73240bd654258e1f05a21099d9fd102ecae364f7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-743/PREBUILD.log",
+      "sha256": "76d4dbaf20bbb21848de66e7bc332aca604f95e7009adbaf57fd8f12a5654374"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-743/BUILD.log",
+      "sha256": "52fc96ccb7220fd82de76fc90a546e799b48618694711fd045d6b5eb97effcf6"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

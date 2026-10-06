@@ -1,0 +1,1029 @@
+{
+  "page": "reference/dns",
+  "at": "2026-10-04T22:35:04.065278+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/dns.rst",
+      "sha256": "8a35059186247951fa2274823414798cd1c5bd4e82d5837a1429b46c202bd3d4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/dns.md",
+      "sha256": "e651bb44a518075b8f792f765f0bd7c1fcf85449502b2643b486ebea09242afb"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/dns.md",
+      "sha256": "337ede52a597c3ef379fcf0849d36f071aa7deca12e3a8d60f1fb71242b7490e"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, notes, source and editorial footer; no code block",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "DNS utility functions",
+      "ja": "DNSユーティリティー関数"
+    },
+    {
+      "index": 1,
+      "en": "libuv provides asynchronous variants of ",
+      "ja": "libuvは、"
+    },
+    {
+      "index": 2,
+      "en": "getaddrinfo",
+      "ja": "getaddrinfo"
+    },
+    {
+      "index": 3,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 4,
+      "en": "getnameinfo",
+      "ja": "getnameinfo"
+    },
+    {
+      "index": 5,
+      "en": ".",
+      "ja": "の非同期版を提供します。"
+    },
+    {
+      "index": 6,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 7,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 8,
+      "en": "uv_getaddrinfo_t",
+      "ja": "uv_getaddrinfo_t"
+    },
+    {
+      "index": 9,
+      "en": "getaddrinfo",
+      "ja": "getaddrinfo"
+    },
+    {
+      "index": 10,
+      "en": " request type.",
+      "ja": "リクエストの型です。"
+    },
+    {
+      "index": 11,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 12,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 13,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 14,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 15,
+      "en": "uv_getaddrinfo_cb",
+      "ja": "uv_getaddrinfo_cb"
+    },
+    {
+      "index": 16,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 17,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 18,
+      "en": "uv_getaddrinfo_t",
+      "ja": "uv_getaddrinfo_t"
+    },
+    {
+      "index": 19,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 20,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 21,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 22,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 23,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 24,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 25,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 26,
+      "en": "addrinfo",
+      "ja": "addrinfo"
+    },
+    {
+      "index": 27,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 28,
+      "en": "res",
+      "ja": "res"
+    },
+    {
+      "index": 29,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 30,
+      "en": "Callback which will be called with the getaddrinfo request result once\ncomplete. In case it was cancelled, ",
+      "ja": "getaddrinfoリクエストが完了すると、その結果とともに呼び出されるコールバックです。キャンセルされた場合、"
+    },
+    {
+      "index": 31,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 32,
+      "en": " will have a value of\n",
+      "ja": "の値は"
+    },
+    {
+      "index": 33,
+      "en": ".",
+      "ja": "になります。"
+    },
+    {
+      "index": 34,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 35,
+      "en": "uv_getnameinfo_t",
+      "ja": "uv_getnameinfo_t"
+    },
+    {
+      "index": 36,
+      "en": "getnameinfo",
+      "ja": "getnameinfo"
+    },
+    {
+      "index": 37,
+      "en": " request type.",
+      "ja": "リクエストの型です。"
+    },
+    {
+      "index": 38,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 39,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 40,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 41,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 42,
+      "en": "uv_getnameinfo_cb",
+      "ja": "uv_getnameinfo_cb"
+    },
+    {
+      "index": 43,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 44,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 45,
+      "en": "uv_getnameinfo_t",
+      "ja": "uv_getnameinfo_t"
+    },
+    {
+      "index": 46,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 47,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 48,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 49,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 50,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 51,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 52,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 53,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 54,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 55,
+      "en": "hostname",
+      "ja": "hostname"
+    },
+    {
+      "index": 56,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 57,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 58,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 59,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 60,
+      "en": "service",
+      "ja": "service"
+    },
+    {
+      "index": 61,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 62,
+      "en": "Callback which will be called with the getnameinfo request result once\ncomplete. In case it was cancelled, ",
+      "ja": "getnameinfoリクエストが完了すると、その結果とともに呼び出されるコールバックです。キャンセルされた場合、"
+    },
+    {
+      "index": 63,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 64,
+      "en": " will have a value of\n",
+      "ja": "の値は"
+    },
+    {
+      "index": 65,
+      "en": ".",
+      "ja": "になります。"
+    },
+    {
+      "index": 66,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 67,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 68,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 69,
+      "en": "uv_getaddrinfo_t",
+      "ja": "uv_getaddrinfo_t"
+    },
+    {
+      "index": 70,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 71,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 72,
+      "en": "Loop that started this getaddrinfo request and where completion will be\nreported. Readonly.",
+      "ja": "このgetaddrinfoリクエストを開始したループであり、完了の報告先です。読み取り専用です。"
+    },
+    {
+      "index": 73,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 74,
+      "en": "addrinfo",
+      "ja": "addrinfo"
+    },
+    {
+      "index": 75,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 76,
+      "en": "uv_getaddrinfo_t",
+      "ja": "uv_getaddrinfo_t"
+    },
+    {
+      "index": 77,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 78,
+      "en": "addrinfo",
+      "ja": "addrinfo"
+    },
+    {
+      "index": 79,
+      "en": "Pointer to a ",
+      "ja": "結果を含む"
+    },
+    {
+      "index": 80,
+      "en": "struct addrinfo",
+      "ja": "struct addrinfo"
+    },
+    {
+      "index": 81,
+      "en": " containing the result. Must be freed by the user\nwith ",
+      "ja": "へのポインターです。ユーザーが"
+    },
+    {
+      "index": 82,
+      "en": ".",
+      "ja": "で解放する必要があります。"
+    },
+    {
+      "index": 83,
+      "en": "Changed in version 1.3.0: ",
+      "ja": "バージョン1.3.0での変更: "
+    },
+    {
+      "index": 84,
+      "en": "the field is declared as public.",
+      "ja": "このフィールドを公開メンバーとして宣言しました。"
+    },
+    {
+      "index": 85,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 86,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 87,
+      "en": "uv_getnameinfo_t",
+      "ja": "uv_getnameinfo_t"
+    },
+    {
+      "index": 88,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 89,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 90,
+      "en": "Loop that started this getnameinfo request and where completion will be\nreported. Readonly.",
+      "ja": "このgetnameinfoリクエストを開始したループであり、完了の報告先です。読み取り専用です。"
+    },
+    {
+      "index": 91,
+      "en": "char[NI_MAXHOST]",
+      "ja": "char[NI_MAXHOST]"
+    },
+    {
+      "index": 92,
+      "en": "uv_getnameinfo_t.host",
+      "ja": "uv_getnameinfo_t.host"
+    },
+    {
+      "index": 93,
+      "en": "Char array containing the resulting host. It’s null terminated.",
+      "ja": "結果のホストを含む文字配列です。ヌル終端します。"
+    },
+    {
+      "index": 94,
+      "en": "Changed in version 1.3.0: ",
+      "ja": "バージョン1.3.0での変更: "
+    },
+    {
+      "index": 95,
+      "en": "the field is declared as public.",
+      "ja": "このフィールドを公開メンバーとして宣言しました。"
+    },
+    {
+      "index": 96,
+      "en": "char[NI_MAXSERV]",
+      "ja": "char[NI_MAXSERV]"
+    },
+    {
+      "index": 97,
+      "en": "uv_getnameinfo_t.service",
+      "ja": "uv_getnameinfo_t.service"
+    },
+    {
+      "index": 98,
+      "en": "Char array containing the resulting service. It’s null terminated.",
+      "ja": "結果のサービスを含む文字配列です。ヌル終端します。"
+    },
+    {
+      "index": 99,
+      "en": "Changed in version 1.3.0: ",
+      "ja": "バージョン1.3.0での変更: "
+    },
+    {
+      "index": 100,
+      "en": "the field is declared as public.",
+      "ja": "このフィールドを公開メンバーとして宣言しました。"
+    },
+    {
+      "index": 101,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 102,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 103,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 104,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 105,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 106,
+      "en": "uv_getaddrinfo",
+      "ja": "uv_getaddrinfo"
+    },
+    {
+      "index": 107,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 108,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 109,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 110,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 111,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 112,
+      "en": "uv_getaddrinfo_t",
+      "ja": "uv_getaddrinfo_t"
+    },
+    {
+      "index": 113,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 114,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 115,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 116,
+      "en": "uv_getaddrinfo_cb",
+      "ja": "uv_getaddrinfo_cb"
+    },
+    {
+      "index": 117,
+      "en": "getaddrinfo_cb",
+      "ja": "getaddrinfo_cb"
+    },
+    {
+      "index": 118,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 119,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 120,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 121,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 122,
+      "en": "node",
+      "ja": "node"
+    },
+    {
+      "index": 123,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 124,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 125,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 126,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 127,
+      "en": "service",
+      "ja": "service"
+    },
+    {
+      "index": 128,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 129,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 130,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 131,
+      "en": "addrinfo",
+      "ja": "addrinfo"
+    },
+    {
+      "index": 132,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 133,
+      "en": "hints",
+      "ja": "hints"
+    },
+    {
+      "index": 134,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 135,
+      "en": "Asynchronous ",
+      "ja": "次の関数の非同期版です: "
+    },
+    {
+      "index": 136,
+      "en": "getaddrinfo(3)",
+      "ja": "getaddrinfo(3)"
+    },
+    {
+      "index": 137,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 138,
+      "en": "Either node or service may be NULL but not both.",
+      "ja": "nodeとserviceのどちらか一方はNULLでも構いませんが、両方をNULLにはできません。"
+    },
+    {
+      "index": 139,
+      "en": "hints",
+      "ja": "hints"
+    },
+    {
+      "index": 140,
+      "en": " is a pointer to a struct addrinfo with additional address type\nconstraints, or NULL. Consult ",
+      "ja": "は、アドレスの型に追加の制約を指定するstruct addrinfoへのポインター、またはNULLです。詳しくは、"
+    },
+    {
+      "index": 141,
+      "en": "man -s 3 getaddrinfo",
+      "ja": "man -s 3 getaddrinfo"
+    },
+    {
+      "index": 142,
+      "en": " for more details.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 143,
+      "en": "Returns 0 on success or an error code < 0 on failure. If successful, the\ncallback will get called sometime in the future with the lookup result,\nwhich is either:",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。成功した場合、後でコールバックを呼び出し、次のいずれかの検索結果を渡します。"
+    },
+    {
+      "index": 144,
+      "en": "status == 0, the res argument points to a valid ",
+      "ja": "status == 0の場合、res引数は有効な"
+    },
+    {
+      "index": 145,
+      "en": "struct addrinfo",
+      "ja": "struct addrinfo"
+    },
+    {
+      "index": 146,
+      "en": ", or",
+      "ja": "を指します。"
+    },
+    {
+      "index": 147,
+      "en": "status < 0, the res argument is NULL. See the UV_EAI_* constants.",
+      "ja": "status < 0の場合、res引数はNULLです。UV_EAI_*定数を参照してください。"
+    },
+    {
+      "index": 148,
+      "en": "Call ",
+      "ja": "addrinfo構造体を解放するには、"
+    },
+    {
+      "index": 149,
+      "en": " to free the addrinfo structure.",
+      "ja": "を呼び出してください。"
+    },
+    {
+      "index": 150,
+      "en": "Changed in version 1.3.0: ",
+      "ja": "バージョン1.3.0での変更: "
+    },
+    {
+      "index": 151,
+      "en": "the callback parameter is now allowed to be NULL,\nin which case the request will run ",
+      "ja": "コールバックパラメーターにNULLを指定できるようになりました。その場合、リクエストは"
+    },
+    {
+      "index": 152,
+      "en": "synchronously",
+      "ja": "同期的"
+    },
+    {
+      "index": 153,
+      "en": ".",
+      "ja": "に実行します。"
+    },
+    {
+      "index": 154,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 155,
+      "en": "uv_freeaddrinfo",
+      "ja": "uv_freeaddrinfo"
+    },
+    {
+      "index": 156,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 157,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 158,
+      "en": "addrinfo",
+      "ja": "addrinfo"
+    },
+    {
+      "index": 159,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 160,
+      "en": "ai",
+      "ja": "ai"
+    },
+    {
+      "index": 161,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 162,
+      "en": "Free the struct addrinfo. Passing NULL is allowed and is a no-op.",
+      "ja": "struct addrinfoを解放します。NULLを渡しても構いません。その場合は何もしません。"
+    },
+    {
+      "index": 163,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 164,
+      "en": "uv_getnameinfo",
+      "ja": "uv_getnameinfo"
+    },
+    {
+      "index": 165,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 166,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 167,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 168,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 169,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 170,
+      "en": "uv_getnameinfo_t",
+      "ja": "uv_getnameinfo_t"
+    },
+    {
+      "index": 171,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 172,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 173,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 174,
+      "en": "uv_getnameinfo_cb",
+      "ja": "uv_getnameinfo_cb"
+    },
+    {
+      "index": 175,
+      "en": "getnameinfo_cb",
+      "ja": "getnameinfo_cb"
+    },
+    {
+      "index": 176,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 177,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 178,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 179,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 180,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 181,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 182,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 183,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 184,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 185,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 186,
+      "en": "Asynchronous ",
+      "ja": "次の関数の非同期版です: "
+    },
+    {
+      "index": 187,
+      "en": "getnameinfo(3)",
+      "ja": "getnameinfo(3)"
+    },
+    {
+      "index": 188,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 189,
+      "en": "Returns 0 on success or an error code < 0 on failure. If successful, the\ncallback will get called sometime in the future with the lookup result.\nConsult ",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。成功した場合、後でコールバックを呼び出し、検索結果を渡します。詳しくは、"
+    },
+    {
+      "index": 190,
+      "en": "man -s 3 getnameinfo",
+      "ja": "man -s 3 getnameinfo"
+    },
+    {
+      "index": 191,
+      "en": " for more details.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 192,
+      "en": "Changed in version 1.3.0: ",
+      "ja": "バージョン1.3.0での変更: "
+    },
+    {
+      "index": 193,
+      "en": "the callback parameter is now allowed to be NULL,\nin which case the request will run ",
+      "ja": "コールバックパラメーターにNULLを指定できるようになりました。その場合、リクエストは"
+    },
+    {
+      "index": 194,
+      "en": "synchronously",
+      "ja": "同期的"
+    },
+    {
+      "index": 195,
+      "en": ".",
+      "ja": "に実行します。"
+    },
+    {
+      "index": 196,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 197,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 198,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 0,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

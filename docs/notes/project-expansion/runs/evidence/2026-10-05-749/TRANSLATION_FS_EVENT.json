@@ -1,0 +1,799 @@
+{
+  "page": "reference/fs_event",
+  "at": "2026-10-04T22:44:48.603367+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/fs_event.rst",
+      "sha256": "ddbaa33f0d2f71a471c6824cea4210689b15eb3e19ed321d3785d6f799bba5d4"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/fs_event.md",
+      "sha256": "43e7453dbb9c6093ee0d9b2852422d374a8d17757348a122b977ce523318b5e8"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/fs_event.md",
+      "sha256": "75fb0e067521b21e7517289387c032e1ef3c3b46601f4278ec92586595d25319"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, 2enum code blocks, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — FS Event handle",
+      "ja": " — FS Eventハンドル"
+    },
+    {
+      "index": 1,
+      "en": "FS Event handles allow the user to monitor a given path for changes, for example,\nif the file was renamed or there was a generic change in it. This handle uses\nthe best backend for the job on each platform.",
+      "ja": "FS Eventハンドルは、指定したパスの変更を監視できます。たとえば、ファイル名の変更や、ファイル内の一般的な変更を検出します。このハンドルは、プラットフォームごとに最適なバックエンドを使います。"
+    },
+    {
+      "index": 2,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 3,
+      "en": "For AIX, the non default IBM bos.ahafs package has to be installed.\nThe AIX Event Infrastructure file system (ahafs) has some limitations:",
+      "ja": "AIXでは、標準では導入されないIBM bos.ahafsパッケージをインストールする必要があります。AIX Event Infrastructureファイルシステム（ahafs）には、次の制限があります。"
+    },
+    {
+      "index": 4,
+      "en": "ahafs tracks monitoring per process and is not thread safe. A separate process\nmust be spawned for each monitor for the same event.",
+      "ja": "ahafsはプロセス単位で監視を管理しており、スレッドセーフではありません。同じイベントを監視する場合、監視ハンドルごとに別のプロセスを起動する必要があります。"
+    },
+    {
+      "index": 5,
+      "en": "Events for file modification (writing to a file) are not received if only the\ncontaining folder is watched.",
+      "ja": "ファイルを含むフォルダーだけを監視している場合、ファイルの変更（書き込み）イベントは受信しません。"
+    },
+    {
+      "index": 6,
+      "en": "See ",
+      "ja": "詳しくは、"
+    },
+    {
+      "index": 7,
+      "en": "documentation",
+      "ja": "文書"
+    },
+    {
+      "index": 8,
+      "en": " for more details.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 9,
+      "en": "The z/OS file system events monitoring infrastructure does not notify of file\ncreation/deletion within a directory that is being monitored.\nSee the ",
+      "ja": "z/OSのファイルシステムイベント監視基盤は、監視しているディレクトリー内でのファイルの作成や削除を通知しません。詳しくは、"
+    },
+    {
+      "index": 10,
+      "en": "IBM Knowledge centre",
+      "ja": "IBM Knowledge centre"
+    },
+    {
+      "index": 11,
+      "en": " for more details.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 12,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 13,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 14,
+      "en": "uv_fs_event_t",
+      "ja": "uv_fs_event_t"
+    },
+    {
+      "index": 15,
+      "en": "FS Event handle type.",
+      "ja": "FS Eventハンドルの型です。"
+    },
+    {
+      "index": 16,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 17,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 18,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 19,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 20,
+      "en": "uv_fs_event_cb",
+      "ja": "uv_fs_event_cb"
+    },
+    {
+      "index": 21,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 22,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 23,
+      "en": "uv_fs_event_t",
+      "ja": "uv_fs_event_t"
+    },
+    {
+      "index": 24,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 25,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 26,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 27,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 28,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 29,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 30,
+      "en": "filename",
+      "ja": "filename"
+    },
+    {
+      "index": 31,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 32,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 33,
+      "en": "events",
+      "ja": "events"
+    },
+    {
+      "index": 34,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 35,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 36,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 37,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 38,
+      "en": "Callback passed to ",
+      "ja": "次の関数へ渡すコールバックです: "
+    },
+    {
+      "index": 39,
+      "en": " which will be called repeatedly\nafter the handle is started.",
+      "ja": "。ハンドルを開始した後、繰り返し呼び出します。"
+    },
+    {
+      "index": 40,
+      "en": "If the handle was started with a directory the ",
+      "ja": "ディレクトリーを指定してハンドルを開始した場合、"
+    },
+    {
+      "index": 41,
+      "en": "filename",
+      "ja": "filename"
+    },
+    {
+      "index": 42,
+      "en": " parameter will\nbe a relative path to a file contained in the directory, or ",
+      "ja": "パラメーターは、そのディレクトリー内のファイルへの相対パスです。ファイル名を特定できない場合は、"
+    },
+    {
+      "index": 43,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 44,
+      "en": " if the\nfile name cannot be determined.",
+      "ja": "になります。"
+    },
+    {
+      "index": 45,
+      "en": "The ",
+      "ja": "次のパラメーター、"
+    },
+    {
+      "index": 46,
+      "en": "events",
+      "ja": "events"
+    },
+    {
+      "index": 47,
+      "en": " parameter is an ORed mask of ",
+      "ja": "は、次の列挙型の要素をORで組み合わせたマスクです: "
+    },
+    {
+      "index": 48,
+      "en": " elements.",
+      "ja": "。"
+    },
+    {
+      "index": 49,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 50,
+      "en": "For FreeBSD path could sometimes be ",
+      "ja": "FreeBSDでは、カーネルのバグにより、パスが"
+    },
+    {
+      "index": 51,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 52,
+      "en": " due to a kernel bug.",
+      "ja": "になる場合があります。"
+    },
+    {
+      "index": 53,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 54,
+      "en": "uv_fs_event",
+      "ja": "uv_fs_event"
+    },
+    {
+      "index": 55,
+      "en": "Event types that ",
+      "ja": "次の型のハンドルが監視するイベントの型です: "
+    },
+    {
+      "index": 56,
+      "en": " handles monitor.",
+      "ja": "。"
+    },
+    {
+      "index": 57,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 58,
+      "en": "uv_fs_event_flags",
+      "ja": "uv_fs_event_flags"
+    },
+    {
+      "index": 59,
+      "en": "Flags that can be passed to ",
+      "ja": "次の関数へ渡して動作を制御するフラグです: "
+    },
+    {
+      "index": 60,
+      "en": " to control its\nbehavior.",
+      "ja": "。"
+    },
+    {
+      "index": 61,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 62,
+      "en": "N/A",
+      "ja": "該当なし"
+    },
+    {
+      "index": 63,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 64,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 65,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 66,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 67,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 68,
+      "en": "uv_fs_event_init",
+      "ja": "uv_fs_event_init"
+    },
+    {
+      "index": 69,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 70,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 71,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 72,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 73,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 74,
+      "en": "uv_fs_event_t",
+      "ja": "uv_fs_event_t"
+    },
+    {
+      "index": 75,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 76,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 77,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 78,
+      "en": "Initialize the handle.",
+      "ja": "ハンドルを初期化します。"
+    },
+    {
+      "index": 79,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 80,
+      "en": "uv_fs_event_start",
+      "ja": "uv_fs_event_start"
+    },
+    {
+      "index": 81,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 82,
+      "en": "uv_fs_event_t",
+      "ja": "uv_fs_event_t"
+    },
+    {
+      "index": 83,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 84,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 85,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 86,
+      "en": "uv_fs_event_cb",
+      "ja": "uv_fs_event_cb"
+    },
+    {
+      "index": 87,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 88,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 89,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 90,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 91,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 92,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 93,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 94,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 95,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 96,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 97,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 98,
+      "en": "Start the handle with the given callback, which will watch the specified\n",
+      "ja": "指定したコールバックでハンドルを開始し、指定した"
+    },
+    {
+      "index": 99,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 100,
+      "en": " for changes. ",
+      "ja": "の変更を監視します。"
+    },
+    {
+      "index": 101,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 102,
+      "en": " can be an ORed mask of ",
+      "ja": "には、次の列挙型のフラグをORで組み合わせたマスクを指定できます: "
+    },
+    {
+      "index": 103,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 104,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 105,
+      "en": "Currently the only supported flag is ",
+      "ja": "現在サポートしているフラグは、"
+    },
+    {
+      "index": 106,
+      "en": " and\nonly on OSX and Windows.",
+      "ja": "だけであり、OSXとWindowsだけで利用できます。"
+    },
+    {
+      "index": 107,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 108,
+      "en": "On macOS, events collected by the OS immediately before calling\n",
+      "ja": "macOSでは、"
+    },
+    {
+      "index": 109,
+      "en": " might be reported to the ",
+      "ja": "を呼び出す直前にOSが収集したイベントを、"
+    },
+    {
+      "index": 110,
+      "en": "uv_fs_event_cb",
+      "ja": "uv_fs_event_cb"
+    },
+    {
+      "index": 111,
+      "en": "\ncallback.",
+      "ja": "コールバックへ通知する場合があります。"
+    },
+    {
+      "index": 112,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 113,
+      "en": "uv_fs_event_stop",
+      "ja": "uv_fs_event_stop"
+    },
+    {
+      "index": 114,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 115,
+      "en": "uv_fs_event_t",
+      "ja": "uv_fs_event_t"
+    },
+    {
+      "index": 116,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 117,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 118,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 119,
+      "en": "Stop the handle, the callback will no longer be called.",
+      "ja": "ハンドルを停止します。以後、コールバックを呼び出しません。"
+    },
+    {
+      "index": 120,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 121,
+      "en": "uv_fs_event_getpath",
+      "ja": "uv_fs_event_getpath"
+    },
+    {
+      "index": 122,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 123,
+      "en": "uv_fs_event_t",
+      "ja": "uv_fs_event_t"
+    },
+    {
+      "index": 124,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 125,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 126,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 127,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 128,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 129,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 130,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 131,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 132,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 133,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 134,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 135,
+      "en": "Get the path being monitored by the handle. The buffer must be preallocated\nby the user. Returns 0 on success or an error code < 0 in case of failure.\nOn success, ",
+      "ja": "ハンドルが監視しているパスを取得します。バッファはユーザーが事前に確保する必要があります。成功時は0、失敗時は0未満のエラーコードを返します。成功時は、"
+    },
+    {
+      "index": 136,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 137,
+      "en": " will contain the path and ",
+      "ja": "にパスが入り、"
+    },
+    {
+      "index": 138,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 139,
+      "en": " its length. If the buffer\nis not big enough ",
+      "ja": "にその長さが入ります。バッファが十分な大きさでない場合は、"
+    },
+    {
+      "index": 140,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 141,
+      "en": " will be returned and ",
+      "ja": "を返し、"
+    },
+    {
+      "index": 142,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 143,
+      "en": " will be set to\nthe required size, including the null terminator.",
+      "ja": "を、ヌル終端文字を含む必要なサイズに設定します。"
+    },
+    {
+      "index": 144,
+      "en": "Changed in version 1.3.0: ",
+      "ja": "バージョン1.3.0での変更: "
+    },
+    {
+      "index": 145,
+      "en": "the returned length no longer includes the terminating null byte,\nand the buffer is not null terminated.",
+      "ja": "返す長さに終端ヌルバイトを含めなくなり、バッファもヌル終端しなくなりました。"
+    },
+    {
+      "index": 146,
+      "en": "Changed in version 1.9.0: ",
+      "ja": "バージョン1.9.0での変更: "
+    },
+    {
+      "index": 147,
+      "en": "the returned length includes the terminating null\nbyte on ",
+      "ja": "次のエラー、"
+    },
+    {
+      "index": 148,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 149,
+      "en": ", and the buffer is null terminated\non success.",
+      "ja": "の場合、返す長さに終端ヌルバイトを含めるようになりました。また、成功時にはバッファをヌル終端します。"
+    },
+    {
+      "index": 150,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 151,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 152,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 2,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}
