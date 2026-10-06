@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "sourceLock": {
+    "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/SOURCE_LOCK.json",
+    "sha256": "cdf301c7b6c09c514ca382f6ecdb25ca7d3a0c532c5e6edb02296deab06deef3"
+  },
+  "pages": [
+    {
+      "id": "07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+      "source": {
+        "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/source/known-issues-5.5.1.html",
+        "sha256": "46d471c4c6c3cb700bef45de6da435497df88b79c03ec522d08f19e5bbc135fa"
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/canonical/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+        "sha256": "78519f85f3f7e6da3dea95fa38b4fc017fb9b9cfa701aec68a1146876582f4a9"
+      },
+      "description": "Lua5.5.1全1報告、原因/UB、報告者/日付/5.0以来/修正commit、全再現例を無省略変換。旧取得版への注記/リンクとライセンス注釈/原通知を明示的Libx追加として分離。",
+      "preservedAnchors": [
+        "5.5.1",
+        "5.5.1-1"
+      ],
+      "codeBlocks": 2
+    }
+  ],
+  "inputs": [
+    {
+      "path": "source/official-bugs.html",
+      "classification": "inspection-reference",
+      "reason": "節が元全体に一致することを検査。別Lua版の既知問題等はこの作業範囲外。"
+    },
+    {
+      "path": "source/known-issues-5.5.1.html",
+      "classification": "adopted-entire-section",
+      "reason": "全1報告、元見出し/リンク/説明/コード/帰属を保全。"
+    },
+    {
+      "path": "source/copyright.html",
+      "classification": "inspection-reference",
+      "reason": "本体MITと原通知を検査。CSS/画像/紹介文は取り込まない。"
+    },
+    {
+      "path": "source/SOFTWARE-LICENSE.txt",
+      "classification": "adopted-entire-notice",
+      "reason": "原DIV全通知を英語コードブロックに保存。"
+    }
+  ],
+  "normalizations": [
+    "HTML字参照の復号とMarkdown化、見出しH2→H1、名前アンカー→ID、内部1リンク同一節参照保持。",
+    "pre開始/終了境界改行だけをMarkdownフェンス境界へ移す。内容全文・空白/インデントを保持。",
+    "ASCII引用符・コメント・コードと原MITの全文を保持。散文の改行空白を正規化。"
+  ],
+  "extraLibxSections": [
+    "取得日/時刻/タイムゾーンと取得版区別の注記",
+    "旧取得版/現在公式参照",
+    "第120の注釈付き本体MIT運用判断と原MIT通知"
+  ],
+  "priorSnapshotKept": true
+}

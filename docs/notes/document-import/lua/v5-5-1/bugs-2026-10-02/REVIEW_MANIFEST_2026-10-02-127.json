@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "operationId": "lua:v5-5-1:cb6e645d5607ac0f8c962445af1b8d8dd6801f57bf10209545fcabadb77bcf4b",
+  "scope": [
+    "07-migration-and-known-issues/04-known-issues-2026-10-02.md"
+  ],
+  "completedPages": 1,
+  "unreviewedPages": 0,
+  "method": "ai-content-review",
+  "model": "設定 gpt-6-astra / 実行モデル非公開",
+  "modelEvidence": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "reviewedAt": "2026-10-02T05:52:42.421Z",
+  "fullAIContentReview": true,
+  "detail": "第125初稿から独立した全文レビュー。省略されていない原節・英語定本・日本語初稿・MIT通知を全文読み、原文→定本の保全、英日意味、日本語単独の可読性を確認。別工程の機械検査や表示検証を代替しない。 第127で表示要件を確認し、日本語取得版注記にLibxの非公式翻訳であることを追記。修正後78行の全本文を再読し、原説明・全コード・全法文・元リンクに変更なしと確認。固定原節/定本/通知SHA不変につき第126のsource/canonical全文レビューを継承。",
+  "sourceLicense": {
+    "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/source/SOFTWARE-LICENSE.txt",
+    "sha256": "a23ad1f0b07e4e59009d8efaaf1f5ed1dcd06e5256c1743a58ca4f1cacad32e0",
+    "coverage": [
+      [
+        1,
+        19
+      ]
+    ]
+  },
+  "initialComparison": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-125/INITIAL_COMPARISON.json",
+    "sha256": "bfcffc1a6875e18c9f19d66f245af32d741b627c80e6a367629d957c6aecf33c"
+  },
+  "draft": {
+    "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/translation-draft/2026-10-02-125/ja/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+    "sha256": "a72bf19218003401695e257e6e53a05d43ddca39cd0fe732b77adf2b72d541ff"
+  },
+  "pages": [
+    {
+      "id": "07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+      "status": "passed",
+      "method": "ai-content-review",
+      "model": "設定 gpt-6-astra / 実行モデル非公開",
+      "modelEvidence": {
+        "configured": "gpt-6-astra",
+        "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+        "runtime": null,
+        "runtimeStatus": "not-exposed-by-tools",
+        "localLLMUsed": false
+      },
+      "reviewedAt": "2026-10-02T05:52:42.421Z",
+      "separateReviewPass": true,
+      "source": {
+        "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/source/known-issues-5.5.1.html",
+        "sha256": "46d471c4c6c3cb700bef45de6da435497df88b79c03ec522d08f19e5bbc135fa",
+        "coverage": [
+          [
+            1,
+            53
+          ]
+        ]
+      },
+      "canonical": {
+        "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/canonical/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+        "sha256": "78519f85f3f7e6da3dea95fa38b4fc017fb9b9cfa701aec68a1146876582f4a9",
+        "coverage": [
+          [
+            1,
+            78
+          ]
+        ]
+      },
+      "translation": {
+        "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/reviewed-translation/2026-10-02-127/ja/07-migration-and-known-issues/04-known-issues-2026-10-02.md",
+        "sha256": "951e748eb577bdc590842cc5fa5d7dad929da90dba5865426da21765018ccf2c",
+        "coverage": [
+          [
+            1,
+            78
+          ]
+        ]
+      },
+      "findings": [
+        {
+          "severity": "minor",
+          "status": "resolved",
+          "detail": "「修正は github にあります」を該当コミットで修正された説明に変更。配布済み5.5.1で修正済みとは記述しない。URL保持。"
+        },
+        {
+          "severity": "administrative",
+          "status": "resolved",
+          "detail": "第125初期照合の32行という記録を原文PREから実測して再確認。再現例は32行（空行含む）で一致。全文のコード同一性と内容レビューは別に実施。"
+        },
+        {
+          "severity": "minor",
+          "status": "resolved",
+          "detail": "非公式翻訳表示をLibx取得版注記へ追加。英語原定本・公式説明・コードには加筆しない。"
+        }
+      ],
+      "fullContentObservations": [
+        "負のparameterで呼び出される可能性→負値左シフト→未定義動作の因果、Sergey Bronnikov/2026-08-26/5.0以来/固定commitを一致確認。",
+        "再現例の全コメント・文・順序・数値・条件を原コードのまま保持。fsanitize、stepmul0、majorminor2000、lim1e6、M、j/1024、genmajor、2*lim、M*5/4、最後のassert violationを確認。原例は実行しない。",
+        "取得日時は2026-10-01T17:29:12.280720Z、Asia/Tokyoの日付10月2日で整合。最新一覧案内・旧2026-08-11版保持リンク、原文アンカー2箇所、報告件数1を保持。",
+        "ライセンスの運用判断と投稿素材への明示的個別許諾を区別。報告者表示とMIT原通知全文、©1994–2026 Lua.org/PUC-Rio、許諾・条件・免責の全文を保持。新しい公式許諾を発見したとは記載しない。",
+        "日本語本文・タイトル・説明・見出し・注記・リンクラベルの全体を確認。原コードと法文は無翻訳で保持し、非公式訳の出典UIは後続表示検証で確認。"
+      ]
+    }
+  ],
+  "nextAction": "既存サイドバー再展開の表示不具合を修正し、Lua/GLFW実ブラウザーと全体ビルドを検証。共有統合と現在本文SHA照合後にverified。",
+  "previousReview": {
+    "path": "docs/notes/document-import/lua/v5-5-1/bugs-2026-10-02/REVIEW_MANIFEST.json",
+    "sha256": "5807e1d214b02b5385bc866127ccec03f7954220af0d4e9d52f3a0b35caeb11e"
+  }
+}
