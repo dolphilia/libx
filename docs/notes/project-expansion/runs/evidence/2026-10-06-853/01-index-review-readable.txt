@@ -1,0 +1,103 @@
+3	SAX/DOM両形式のAPIを備えた、C++用の高速なJSONパーサー・生成器
+4	Tencentは、RapidJSONの公開を通じてオープンソースコミュニティーを支援できることを嬉しく思います。
+5	Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
+6	RapidJSON GitHub
+7	RapidJSONドキュメント
+英語
+简体中文
+GitBookではPDF/EPUB/MOBIをダウンロードできます。APIリファレンスは含まれません。
+
+8	英語
+9	简体中文
+10	GitBookではPDF/EPUB/MOBIをダウンロードできます。APIリファレンスは含まれません。
+11	ビルド状況
+12	Linux
+13	Windows
+14	Coveralls
+18	はじめに
+19	RapidJSONは、C++用のJSONパーサー・生成器です。RapidXmlに着想を得ています。
+20	RapidJSONは小さいライブラリーですが、機能は完備しています。SAX形式とDOM形式の両方のAPIに対応し、SAXパーサーはわずか500行ほどのコードです。
+21	RapidJSONは高速です。性能はstrlen()に匹敵する場合があります。任意でSSE2/SSE4.2による高速化にも対応します。
+22	RapidJSONは自己完結で、ヘッダーファイルだけの構成です。BOOSTなどの外部ライブラリーにも、STLにも依存しません。
+23	RapidJSONはメモリー効率に優れた設計です。大半の32ビット・64ビット環境で、各JSON値は正確に16バイトを占めます（文字列のテキストを除く）。既定では高速なメモリーアロケーターを使い、解析中にパーサーがメモリーをコンパクトに確保します。
+24	RapidJSONはUnicodeを扱いやすい設計です。UTF-8、UTF-16、UTF-32（LEとBE）と、それらの検出・妥当性検証・エンコーディング変換を内部で処理します。たとえば、UTF-8ファイルを読み、DOM内のJSON文字列をRapidJSONでUTF-16へ変換できます。サロゲートと「\u0000」（ヌル文字）にも対応します。
+25	さらに詳しい機能は、こちらを参照してください。
+26	JSON（JavaScript Object Notation）は、軽量なデータ交換形式です。RapidJSONはRFC7159/ECMA-404に完全に準拠することを目指し、任意で緩和された構文にも対応します。JSONの詳しい情報は、次の資料で確認できます。
+27	JSONの紹介
+28	RFC7159: The JavaScript Object Notation (JSON) Data Interchange Format
+29	Standard ECMA-404: The JSON Data Interchange Format
+30	v1.1（2016年8月25日）の主な変更
+31	JSON Pointerを追加。
+32	JSON Schemaを追加。
+33	緩和されたJSON構文を追加（コメント、末尾のカンマ、NaN/Infinity）。
+34	C++11の範囲ベースのforループによる配列・オブジェクトの反復処理。
+35	x86-64アーキテクチャーで、各Valueのメモリーオーバーヘッドを24バイトから16バイトへ削減。
+36	その他の変更は、変更履歴を参照してください。
+37	互換性
+38	RapidJSONはクロスプラットフォームです。テスト済みのプラットフォームとコンパイラーの組み合わせの一部を以下に示します。
+39	Windows（32ビット・64ビット）上のVisual C++ 2008/2010/2013
+40	Cygwin上のGNU C++ 3.8.x
+41	Mac OS X（32ビット・64ビット）とiOS上のClang 3.4
+42	Android NDK上のClang 3.4
+43	利用するプラットフォーム・コンパイラーで、単体テストをビルドして実行できます。
+44	インストール
+45	RapidJSONは、ヘッダーファイルだけのC++ライブラリーです。include/rapidjsonフォルダーを、システムまたはプロジェクトのインクルードパスへコピーするだけで利用できます。
+46	RapidJSONは、依存ソフトウェアとして以下を使います。
+47	汎用ビルドツールとしてCMake。
+48	文書のビルドにDoxygen（任意）。
+49	単体テストと性能テストにgoogletest（任意）。
+50	利用者向け文書を生成してテストを実行するには、次の手順に従ってください。
+51	git submodule update --initを実行し、第三者サブモジュール（google test）のファイルを取得します。
+52	rapidjsonのソースディレクトリに、buildというディレクトリを作成します。
+53	buildディレクトリへ移動し、cmake ..コマンドでビルドを設定します。Windowsではcmake-guiアプリケーションでも同じ操作ができます。
+54	Windowsでは、ビルドディレクトリにあるソリューションをビルドします。Linuxでは、ビルドディレクトリでmakeを実行します。
+55	ビルドに成功すると、コンパイル済みのテストとサンプルの実行ファイルがbinディレクトリにできます。生成した文書は、ビルドツリーのdoc/htmlディレクトリにあります。ビルド後にテストを実行するには、ビルドツリーでmake
+testかctestを実行してください。ctest
+-Vコマンドで詳しい出力を取得できます。
+56	ビルドツリーで管理者権限によりmake installを実行すると、ライブラリーをシステム全体へインストールできます。システムの設定に従って、すべてのファイルがインストールされます。RapidJSONをインストールしたら、CMakeLists.txtにfind_package(RapidJSON)という行を追加することで、他のCMakeプロジェクトから利用できます。
+57	使い方の概要
+58	この簡単な例では、JSON文字列を文書（DOM）へ解析し、DOMに簡単な変更を加え、最後にDOMをJSON文字列へ変換します。
+59	読み取り専用文字列からJSONテキストを解析します（エンコーディング変換あり）。
+60	この値に対応するイベントをHandlerへ渡します。
+61	JSONライター。
+62	RapidJSONの主な名前空間。
+63	UTF8エンコーディングのGenericValue。
+64	UTF8エンコーディングの文字列バッファー。
+65	UTF8エンコーディングのGenericDocument。
+66	この例では、起こり得るエラーを処理していないことに注意してください。
+67	以下の図は、この処理を示しています。
+68	さらに次のサンプルがあります。
+69	DOM API
+tutorial：DOM APIの基本的な使い方。
+
+70	tutorial：DOM APIの基本的な使い方。
+71	SAX API
+simplereader：ReaderでJSONを解析しながら、すべてのSAXイベントを出力します。
+condense：空白をすべて取り除いてJSONを書き直すコマンドラインツール。
+pretty：PrettyWriterでインデントと改行を付け、JSONを書き直すコマンドラインツール。
+capitalize：JSON内の文字列を大文字にするコマンドラインツール。
+messagereader：SAX APIでJSONメッセージを解析します。
+serialize：SAX APIでC++オブジェクトをJSONへシリアライズします。
+jsonx：SAXイベントをJSONx（XMLの一種）形式へ文字列化するJsonxWriterを実装します。この例は、入力JSONをJSONx形式へ変換するコマンドラインツールです。
+
+72	simplereader：ReaderでJSONを解析しながら、すべてのSAXイベントを出力します。
+73	condense：空白をすべて取り除いてJSONを書き直すコマンドラインツール。
+74	pretty：PrettyWriterでインデントと改行を付け、JSONを書き直すコマンドラインツール。
+75	capitalize：JSON内の文字列を大文字にするコマンドラインツール。
+76	messagereader：SAX APIでJSONメッセージを解析します。
+77	serialize：SAX APIでC++オブジェクトをJSONへシリアライズします。
+78	jsonx：SAXイベントをJSONx（XMLの一種）形式へ文字列化するJsonxWriterを実装します。この例は、入力JSONをJSONx形式へ変換するコマンドラインツールです。
+79	スキーマ
+schemavalidator：JSON Schemaを用いてJSONを検証するコマンドラインツール。
+
+80	schemavalidator：JSON Schemaを用いてJSONを検証するコマンドラインツール。
+81	応用
+prettyauto：任意のUTFエンコーディングのJSONを自動的に扱えるよう、prettyを変更したものです。
+parsebyparts：C++11のスレッドを使い、JSONを分割して解析できるAsyncDocumentParserを実装します。
+filterkey：指定したキーを持つ値をすべて削除するコマンドラインツール。
+filterkeydom：上と同じ処理を行いますが、生成器を使ってDocumentに値を設定する方法を示します。
+
+82	prettyauto：任意のUTFエンコーディングのJSONを自動的に扱えるよう、prettyを変更したものです。
+83	parsebyparts：C++11のスレッドを使い、JSONを分割して解析できるAsyncDocumentParserを実装します。
+84	filterkey：指定したキーを持つ値をすべて削除するコマンドラインツール。
+85	filterkeydom：上と同じ処理を行いますが、生成器を使ってDocumentに値を設定する方法を示します。

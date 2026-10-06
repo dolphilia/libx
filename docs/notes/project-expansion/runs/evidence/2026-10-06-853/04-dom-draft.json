@@ -1,0 +1,683 @@
+{
+  "status": "draft-not-reviewed",
+  "sentences": [
+    {
+      "n": 1,
+      "source": "Document Object Model(DOM) is an in-memory representation of JSON for query and manipulation. The basic usage of DOM is described in {1}. This section will describe some details and more advanced usages.",
+      "ja": "Document Object Model（DOM）は、問い合わせや操作を行うための、JSONのメモリー内表現です。DOMの基本的な使い方は{1}で説明しています。この節では、詳しい内容と応用的な使い方を説明します。"
+    },
+    {
+      "n": 2,
+      "source": "Template",
+      "ja": "テンプレート"
+    },
+    {
+      "n": 3,
+      "source": "In the tutorial, {1} and {2} was used. Similarly to {3}, these are actually {4} of template classes:",
+      "ja": "チュートリアルでは{1}と{2}を使いました。{3}と同様、これらは実際にはテンプレートクラスの{4}です。"
+    },
+    {
+      "n": 4,
+      "source": "A document for parsing JSON text as DOM.",
+      "ja": "JSONテキストをDOMへ解析するための文書。"
+    },
+    {
+      "n": 5,
+      "source": "Represents a JSON value. Use Value for UTF8 encoding and default allocator.",
+      "ja": "JSON値を表します。UTF8エンコーディングと既定のアロケーターにはValueを使います。"
+    },
+    {
+      "n": 6,
+      "source": "main RapidJSON namespace",
+      "ja": "RapidJSONの主な名前空間。"
+    },
+    {
+      "n": 7,
+      "source": "GenericValue with UTF8 encoding.",
+      "ja": "UTF8エンコーディングのGenericValue。"
+    },
+    {
+      "n": 8,
+      "source": "GenericDocument with UTF8 encoding.",
+      "ja": "UTF8エンコーディングのGenericDocument。"
+    },
+    {
+      "n": 9,
+      "source": "User can customize these template parameters.",
+      "ja": "これらのテンプレート引数は、独自に指定できます。"
+    },
+    {
+      "n": 10,
+      "source": "Encoding",
+      "ja": "エンコーディング"
+    },
+    {
+      "n": 11,
+      "source": "The {1} parameter specifies the encoding of JSON String value in memory. Possible options are {2}, {3}, {4}. Note that, these 3 types are also template class. {5} is {6}, which means using char to store the characters. You may refer to {7} for details.",
+      "ja": "{1}引数は、メモリー内のJSON文字列値のエンコーディングを指定します。選択肢は{2}、{3}、{4}です。この3つの型もテンプレートクラスです。{5}は{6}で、文字の保存にcharを使うことを意味します。詳しくは{7}を参照してください。"
+    },
+    {
+      "n": 12,
+      "source": "Suppose a Windows application would query localization strings stored in JSON files. Unicode-enabled functions in Windows use UTF-16 (wide character) encoding. No matter what encoding was used in JSON files, we can store the strings in UTF-16 in memory.",
+      "ja": "Windowsアプリケーションで、JSONファイルに保存されたローカライズ用の文字列を問い合わせる場合を考えます。WindowsのUnicode対応関数は、UTF-16（ワイド文字）のエンコーディングを使います。JSONファイルのエンコーディングにかかわらず、メモリー内の文字列をUTF-16で保存できます。"
+    },
+    {
+      "n": 13,
+      "source": "Input stream wrapper with dynamically bound encoding and automatic encoding detection.",
+      "ja": "エンコーディングを動的に指定し、自動検出する入力ストリームのラッパー。"
+    },
+    {
+      "n": 14,
+      "source": "File byte stream for input using fread().",
+      "ja": "fread()を使う入力用のファイルバイトストリーム。"
+    },
+    {
+      "n": 15,
+      "source": "Dynamically select encoding according to stream's runtime-specified UTF encoding type.",
+      "ja": "ストリームの実行時指定のUTFエンコーディング型に応じ、エンコーディングを動的に選択します。"
+    },
+    {
+      "n": 16,
+      "source": "Allocator",
+      "ja": "アロケーター"
+    },
+    {
+      "n": 17,
+      "source": "The {1} defines which allocator class is used when allocating/deallocating memory for {2}/{3}. {4} owns, or references to an {5} instance. On the other hand, {6} does not do so, in order to reduce memory consumption.",
+      "ja": "{1}は、{2}/{3}のメモリーを確保・解放するときに使うアロケータークラスを定義します。{4}は{5}のインスタンスを所有するか参照します。一方、{6}はメモリー消費を減らすため、そうしません。"
+    },
+    {
+      "n": 18,
+      "source": "The default allocator used in {1} is {2}. This allocator actually allocate memory sequentially, and cannot deallocate one by one. This is very suitable when parsing a JSON into a DOM tree.",
+      "ja": "{1}で使う既定のアロケーターは{2}です。このアロケーターは、実際にはメモリーを順番に確保し、個別には解放できません。JSONをDOMツリーへ解析する場合に、とても適しています。"
+    },
+    {
+      "n": 19,
+      "source": "Another allocator is {1}, of which CRT is short for C RunTime library. This allocator simply calls the standard {2}/{3}/{4}. When there is a lot of add and remove operations, this allocator may be preferred. But this allocator is far less efficient than {5}.",
+      "ja": "別のアロケーターとして{1}があります。CRTはC RunTime libraryの略です。このアロケーターは、標準の{2}/{3}/{4}を呼び出すだけです。追加・削除が多い場合には、こちらが適している場合があります。ただし、効率は{5}より大幅に低くなります。"
+    },
+    {
+      "n": 20,
+      "source": "Parsing",
+      "ja": "解析"
+    },
+    {
+      "n": 21,
+      "source": "{1} provides several functions for parsing. In below, (1) is the fundamental function, while the others are helpers which call (1).",
+      "ja": "{1}は、解析用の関数を複数提供します。以下では（1）が基本となる関数で、他は（1）を呼び出す補助関数です。"
+    },
+    {
+      "n": 22,
+      "source": "Parse JSON text from an input stream (with Encoding conversion).",
+      "ja": "入力ストリームからJSONテキストを解析します（エンコーディング変換あり）。"
+    },
+    {
+      "n": 23,
+      "source": "Parse JSON text from a read-only string (with Encoding conversion).",
+      "ja": "読み取り専用文字列からJSONテキストを解析します（エンコーディング変換あり）。"
+    },
+    {
+      "n": 24,
+      "source": "Parse JSON text from a mutable string.",
+      "ja": "変更可能な文字列からJSONテキストを解析します。"
+    },
+    {
+      "n": 25,
+      "source": "The examples of {1} uses (8) for normal parsing of string. The examples of {2} uses the first three. {3} parsing will be described soon.",
+      "ja": "{1}の例は、通常の文字列解析に（8）を使います。{2}の例は、最初の3つを使います。{3}解析については、この後で説明します。"
+    },
+    {
+      "n": 26,
+      "source": "The {1} are combination of the following bit-flags:",
+      "ja": "{1}は、次のビットフラグの組み合わせです。"
+    },
+    {
+      "n": 27,
+      "source": "Parse flags",
+      "ja": "解析フラグ"
+    },
+    {
+      "n": 28,
+      "source": "Meaning",
+      "ja": "意味"
+    },
+    {
+      "n": 29,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 30,
+      "source": "No flag is set.",
+      "ja": "フラグを設定しません。"
+    },
+    {
+      "n": 31,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 32,
+      "source": "Default parse flags. It is equal to macro {1}, which is defined as {2}.",
+      "ja": "既定の解析フラグです。マクロ{1}と同じ値で、このマクロは{2}として定義されています。"
+    },
+    {
+      "n": 33,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 34,
+      "source": "In-situ(destructive) parsing.",
+      "ja": "in situ（破壊的）解析。"
+    },
+    {
+      "n": 35,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 36,
+      "source": "Validate encoding of JSON strings.",
+      "ja": "JSON文字列のエンコーディングの妥当性を検証します。"
+    },
+    {
+      "n": 37,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 38,
+      "source": "Iterative(constant complexity in terms of function call stack size) parsing.",
+      "ja": "反復型の解析（関数呼び出しスタックの大きさは一定）。"
+    },
+    {
+      "n": 39,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 40,
+      "source": "After parsing a complete JSON root from stream, stop further processing the rest of stream. When this flag is used, parser will not generate {1} error. Using this flag for parsing multiple JSONs in the same stream.",
+      "ja": "ストリームから完全なJSONのルートを解析したら、ストリームの残りの処理を停止します。このフラグを使うと、パーサーは{1}エラーを発生させません。同じストリームの複数のJSONの解析に使います。"
+    },
+    {
+      "n": 41,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 42,
+      "source": "Parse number in full precision (slower). If this flag is not set, the normal precision (faster) is used. Normal precision has maximum 3 {1} error.",
+      "ja": "完全な精度で数値を解析します（低速）。このフラグを設定しない場合は、通常の精度（高速）を使います。通常の精度では、誤差は最大3{1}です。"
+    },
+    {
+      "n": 43,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 44,
+      "source": "Allow one-line {1} and multi-line {2} comments (relaxed JSON syntax).",
+      "ja": "単一行の{1}と複数行の{2}のコメントを許可します（緩和されたJSON構文）。"
+    },
+    {
+      "n": 45,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 46,
+      "source": "Parse numerical type values as strings.",
+      "ja": "数値型の値を文字列として解析します。"
+    },
+    {
+      "n": 47,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 48,
+      "source": "Allow trailing commas at the end of objects and arrays (relaxed JSON syntax).",
+      "ja": "オブジェクトや配列の末尾のカンマを許可します（緩和されたJSON構文）。"
+    },
+    {
+      "n": 49,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 50,
+      "source": "Allow parsing {1}, {2}, {3}, {4} and {5} as {6} values (relaxed JSON syntax).",
+      "ja": "{1}、{2}、{3}、{4}、{5}を{6}値として解析することを許可します（緩和されたJSON構文）。"
+    },
+    {
+      "n": 51,
+      "source": "By using a non-type template parameter, instead of a function parameter, C++ compiler can generate code which is optimized for specified combinations, improving speed, and reducing code size (if only using a single specialization). The downside is the flags needed to be determined in compile-time.",
+      "ja": "関数の引数ではなく非型テンプレート引数を使うことで、C++コンパイラーは指定した組み合わせに最適化したコードを生成できます。これにより速度が向上し、単一の特殊化だけを使う場合にはコードサイズも減ります。一方、フラグをコンパイル時に決める必要があります。"
+    },
+    {
+      "n": 52,
+      "source": "The {1} parameter defines what encoding is in the stream. This can be differed to the {2} of the {3}. See {4}Transcoding and Validation section for details.",
+      "ja": "{1}引数は、ストリームのエンコーディングを定義します。これは{3}の{2}と異なっていても構いません。詳しくは{4}の節を参照してください。"
+    },
+    {
+      "n": 53,
+      "source": "And the {1} is type of input stream.",
+      "ja": "{1}は入力ストリームの型です。"
+    },
+    {
+      "n": 54,
+      "source": "Parse Error",
+      "ja": "解析エラー"
+    },
+    {
+      "n": 55,
+      "source": "When the parse processing succeeded, the {1} contains the parse results. When there is an error, the original DOM is {2}. And the error state of parsing can be obtained by {3}, {4} and {5}.",
+      "ja": "解析に成功すると、{1}に解析結果が入ります。エラーがある場合、元のDOMは{2}。解析のエラー状態は、{3}、{4}、{5}で取得できます。"
+    },
+    {
+      "n": 56,
+      "source": "Parse Error Code",
+      "ja": "解析エラーコード"
+    },
+    {
+      "n": 57,
+      "source": "Description",
+      "ja": "説明"
+    },
+    {
+      "n": 58,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 59,
+      "source": "No error.",
+      "ja": "エラーなし。"
+    },
+    {
+      "n": 60,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 61,
+      "source": "The document is empty.",
+      "ja": "文書が空です。"
+    },
+    {
+      "n": 62,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 63,
+      "source": "The document root must not follow by other values.",
+      "ja": "文書のルートの後に、他の値が続いてはいけません。"
+    },
+    {
+      "n": 64,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 65,
+      "source": "Invalid value.",
+      "ja": "不正な値です。"
+    },
+    {
+      "n": 66,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 67,
+      "source": "Missing a name for object member.",
+      "ja": "オブジェクトのメンバー名がありません。"
+    },
+    {
+      "n": 68,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 69,
+      "source": "Missing a colon after a name of object member.",
+      "ja": "オブジェクトのメンバー名の後に、コロンがありません。"
+    },
+    {
+      "n": 70,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 71,
+      "source": "Missing a comma or {1} after an object member.",
+      "ja": "オブジェクトのメンバーの後に、カンマか{1}がありません。"
+    },
+    {
+      "n": 72,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 73,
+      "source": "Missing a comma or {1} after an array element.",
+      "ja": "配列の要素の後に、カンマか{1}がありません。"
+    },
+    {
+      "n": 74,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 75,
+      "source": "Incorrect hex digit after {1} escape in string.",
+      "ja": "文字列内の{1}エスケープの後に、不正な16進数字があります。"
+    },
+    {
+      "n": 76,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 77,
+      "source": "The surrogate pair in string is invalid.",
+      "ja": "文字列内のサロゲートペアが不正です。"
+    },
+    {
+      "n": 78,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 79,
+      "source": "Invalid escape character in string.",
+      "ja": "文字列内のエスケープ文字が不正です。"
+    },
+    {
+      "n": 80,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 81,
+      "source": "Missing a closing quotation mark in string.",
+      "ja": "文字列を閉じる引用符がありません。"
+    },
+    {
+      "n": 82,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 83,
+      "source": "Invalid encoding in string.",
+      "ja": "文字列のエンコーディングが不正です。"
+    },
+    {
+      "n": 84,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 85,
+      "source": "Number too big to be stored in {1}.",
+      "ja": "数値が大きすぎて{1}に保存できません。"
+    },
+    {
+      "n": 86,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 87,
+      "source": "Miss fraction part in number.",
+      "ja": "数値の小数部がありません。"
+    },
+    {
+      "n": 88,
+      "source": "{1}",
+      "ja": "{1}"
+    },
+    {
+      "n": 89,
+      "source": "Miss exponent in number.",
+      "ja": "数値の指数部がありません。"
+    },
+    {
+      "n": 90,
+      "source": "The offset of error is defined as the character number from beginning of stream. Currently RapidJSON does not keep track of line number.",
+      "ja": "エラーのオフセットは、ストリームの先頭からの文字数として定義されます。現在のRapidJSONは、行番号を追跡しません。"
+    },
+    {
+      "n": 91,
+      "source": "To get an error message, RapidJSON provided a English messages in {1}. User can customize it for other locales, or use a custom localization system.",
+      "ja": "エラーメッセージを取得するために、RapidJSONは{1}に英語のメッセージを用意しています。他のロケール向けに変更するか、独自のローカライズシステムを使えます。"
+    },
+    {
+      "n": 92,
+      "source": "Here shows an example of parse error handling.",
+      "ja": "解析エラーを処理する例を示します。"
+    },
+    {
+      "n": 93,
+      "source": "Whether a parse error has occured in the last parsing.",
+      "ja": "直前の解析で解析エラーが発生したかどうか。"
+    },
+    {
+      "n": 94,
+      "source": "Get the ParseErrorCode of last parsing.",
+      "ja": "直前の解析のParseErrorCodeを取得します。"
+    },
+    {
+      "n": 95,
+      "source": "Get the position of last parsing error in input, 0 otherwise.",
+      "ja": "入力内の直前の解析エラーの位置を取得します。エラーがなければ0です。"
+    },
+    {
+      "n": 96,
+      "source": "Maps error code of parsing into error message.",
+      "ja": "解析のエラーコードをエラーメッセージへ対応付けます。"
+    },
+    {
+      "n": 97,
+      "source": "In Situ Parsing",
+      "ja": "in situ解析"
+    },
+    {
+      "n": 98,
+      "source": "From {1}:",
+      "ja": "{1}より："
+    },
+    {
+      "n": 99,
+      "source": "{1} ... is a Latin phrase that translates literally to \"on site\" or \"in position\". It means \"locally\", \"on site\", \"on the premises\" or \"in place\" to describe an event where it takes place, and is used in many different contexts. ... (In computer science) An algorithm is said to be an in situ algorithm, or in-place algorithm, if the extra amount of memory required to execute the algorithm is O(1), that is, does not exceed a constant no matter how large the input. For example, heapsort is an in situ sorting algorithm.",
+      "ja": "{1}は、「現場で」や「その位置で」と直訳されるラテン語の語句です。出来事が起こる場所を表す「局所的に」「現場で」「構内で」「その場で」などの意味で、さまざまな文脈に使われます。……（計算機科学では）実行に必要な追加メモリー量がO(1)、つまり入力がどれほど大きくなっても一定量を超えないアルゴリズムを、in situアルゴリズム、またはin-placeアルゴリズムと呼びます。たとえば、ヒープソートはin situのソートアルゴリズムです。"
+    },
+    {
+      "n": 100,
+      "source": "In normal parsing process, a large overhead is to decode JSON strings and copy them to other buffers. {1} parsing decodes those JSON string at the place where it is stored. It is possible in JSON because the length of decoded string is always shorter than or equal to the one in JSON. In this context, decoding a JSON string means to process the escapes, such as {2}, {3}, etc., and add a null terminator ({4})at the end of string.",
+      "ja": "通常の解析では、JSON文字列の復号と他のバッファーへのコピーに大きなオーバーヘッドがあります。{1}解析は、保存されている場所でJSON文字列を復号します。JSONでこれが可能なのは、復号後の文字列の長さが、元のJSON内の長さ以下に必ずなるためです。ここでのJSON文字列の復号とは、{2}や{3}などのエスケープを処理し、文字列の末尾にヌル終端文字（{4}）を加えることです。"
+    },
+    {
+      "n": 101,
+      "source": "The following diagrams compare normal and {1} parsing. The JSON string values contain pointers to the decoded string.",
+      "ja": "以下の図は、通常の解析と{1}解析を比較します。JSON文字列値は、復号した文字列へのポインターを保持します。"
+    },
+    {
+      "n": 102,
+      "source": "In normal parsing, the decoded string are copied to freshly allocated buffers. {1} (2 characters) is decoded as {2} (1 character). {3} (6 characters) is decoded as {4} (1 character).",
+      "ja": "通常の解析では、復号した文字列を新たに確保したバッファーへコピーします。{1}（2文字）は{2}（1文字）に、{3}（6文字）は{4}（1文字）に復号されます。"
+    },
+    {
+      "n": 103,
+      "source": "{1} parsing just modified the original JSON. Updated characters are highlighted in the diagram. If the JSON string does not contain escape character, such as {2}, the parsing process merely replace the closing double quotation mark with a null character.",
+      "ja": "{1}解析は、元のJSONを変更するだけです。変更した文字は図中で強調表示しています。{2}のようにJSON文字列がエスケープ文字を含まない場合、解析処理は末尾の二重引用符をヌル文字へ置き換えるだけです。"
+    },
+    {
+      "n": 104,
+      "source": "Since {1} parsing modify the input, the parsing API needs {2} instead of {3}.",
+      "ja": "{1}解析は入力を変更するため、解析APIは{3}ではなく{2}を必要とします。"
+    },
+    {
+      "n": 105,
+      "source": "The JSON strings are marked as const-string. But they may not be really \"constant\". The life cycle of it depends on the JSON buffer.",
+      "ja": "JSON文字列はconst-stringとして扱われますが、実際には「不変」とは限りません。その寿命はJSONバッファーに依存します。"
+    },
+    {
+      "n": 106,
+      "source": "In situ parsing minimizes allocation overheads and memory copying. Generally this improves cache coherence, which is an important factor of performance in modern computer.",
+      "ja": "in situ解析は、メモリー確保のオーバーヘッドとコピーを最小化します。一般に、これによりキャッシュの一貫性が改善します。これは、現代のコンピューターの性能で重要な要因です。"
+    },
+    {
+      "n": 107,
+      "source": "There are some limitations of {1} parsing:",
+      "ja": "{1}解析には、いくつかの制限があります。"
+    },
+    {
+      "n": 108,
+      "source": "The whole JSON is in memory.",
+      "ja": "JSON全体がメモリー内にある必要があります。"
+    },
+    {
+      "n": 109,
+      "source": "The source encoding in stream and target encoding in document must be the same.",
+      "ja": "ストリームの入力エンコーディングと文書の変換先エンコーディングが同じでなければなりません。"
+    },
+    {
+      "n": 110,
+      "source": "The buffer need to be retained until the document is no longer used.",
+      "ja": "文書を使わなくなるまで、バッファーを保持する必要があります。"
+    },
+    {
+      "n": 111,
+      "source": "If the DOM need to be used for long period after parsing, and there are few JSON strings in the DOM, retaining the buffer may be a memory waste.",
+      "ja": "解析後にDOMを長期間使い、DOM内のJSON文字列が少ない場合には、バッファーを保持することがメモリーの無駄になる場合があります。"
+    },
+    {
+      "n": 112,
+      "source": "{1} parsing is mostly suitable for short-term JSON that only need to be processed once, and then be released from memory. In practice, these situation is very common, for example, deserializing JSON to C++ objects, processing web requests represented in JSON, etc.",
+      "ja": "{1}解析は主に、一度だけ処理してメモリーから解放する、短期間使うJSONに適しています。実際には、このような場面はよくあります。たとえば、JSONからC++オブジェクトへのデシリアライズや、JSONで表されたウェブリクエストの処理などです。"
+    },
+    {
+      "n": 113,
+      "source": "Transcoding and Validation",
+      "ja": "エンコーディング変換と妥当性検証"
+    },
+    {
+      "n": 114,
+      "source": "RapidJSON supports conversion between Unicode formats (officially termed UCS Transformation Format) internally. During DOM parsing, the source encoding of the stream can be different from the encoding of the DOM. For example, the source stream contains a UTF-8 JSON, while the DOM is using UTF-16 encoding. There is an example code in {1}.",
+      "ja": "RapidJSONは、Unicode形式（正式にはUCS Transformation Format）間の変換を内部で処理します。DOMの解析中、ストリームの入力エンコーディングはDOMのエンコーディングと異なっていても構いません。たとえば、入力ストリームのJSONはUTF-8でも、DOMはUTF-16にできます。{1}にコード例があります。"
+    },
+    {
+      "n": 115,
+      "source": "When writing a JSON from DOM to output stream, transcoding can also be used. An example is in {1}.",
+      "ja": "DOMから出力ストリームへJSONを書き込む場合にも、エンコーディング変換を使えます。{1}に例があります。"
+    },
+    {
+      "n": 116,
+      "source": "During transcoding, the source string is decoded to into Unicode code points, and then the code points are encoded in the target format. During decoding, it will validate the byte sequence in the source string. If it is not a valid sequence, the parser will be stopped with {1} error.",
+      "ja": "エンコーディング変換では、まず入力文字列をUnicodeコードポイントへ復号し、次にコードポイントを変換先の形式へ符号化します。復号時には、入力文字列のバイト列の妥当性を検証します。不正な列であれば、パーサーは{1}エラーで停止します。"
+    },
+    {
+      "n": 117,
+      "source": "When the source encoding of stream is the same as encoding of DOM, by default, the parser will {1} validate the sequence. User may use {2} to force validation.",
+      "ja": "ストリームの入力エンコーディングがDOMのエンコーディングと同じ場合、既定ではパーサーは列の妥当性検証を{1}。{2}を使えば、強制的に検証できます。"
+    },
+    {
+      "n": 118,
+      "source": "Techniques",
+      "ja": "テクニック"
+    },
+    {
+      "n": 119,
+      "source": "Some techniques about using DOM API is discussed here.",
+      "ja": "DOM APIを使うためのテクニックを説明します。"
+    },
+    {
+      "n": 120,
+      "source": "DOM as SAX Event Publisher",
+      "ja": "SAXイベントの発行元としてのDOM"
+    },
+    {
+      "n": 121,
+      "source": "In RapidJSON, stringifying a DOM with {1} may be look a little bit weired.",
+      "ja": "RapidJSONで{1}を使ってDOMを文字列化する方法は、少し奇妙に見えるかもしれません。"
+    },
+    {
+      "n": 122,
+      "source": "Generate events of this value to a Handler.",
+      "ja": "この値に対応するイベントをHandlerへ渡します。"
+    },
+    {
+      "n": 123,
+      "source": "JSON writer.",
+      "ja": "JSONライター。"
+    },
+    {
+      "n": 124,
+      "source": "Actually, {1} is responsible for publishing SAX events about the value to the handler. With this design, {2} and {3} are decoupled. {4} can generate SAX events, and {5} can handle those events.",
+      "ja": "実際には、{1}が値に関するSAXイベントをハンドラーへ発行します。この設計により、{2}と{3}は切り離されています。{4}はSAXイベントを生成でき、{5}はそれらを処理できます。"
+    },
+    {
+      "n": 125,
+      "source": "User may create custom handlers for transforming the DOM into other formats. For example, a handler which converts the DOM into XML.",
+      "ja": "DOMを他の形式へ変換するための、独自のハンドラーを作れます。たとえば、DOMをXMLへ変換するハンドラーなどです。"
+    },
+    {
+      "n": 126,
+      "source": "For more about SAX events and handler, please refer to {1}.",
+      "ja": "SAXイベントとハンドラーの詳しい説明は、{1}を参照してください。"
+    },
+    {
+      "n": 127,
+      "source": "User Buffer",
+      "ja": "利用者のバッファー"
+    },
+    {
+      "n": 128,
+      "source": "Some applications may try to avoid memory allocations whenever possible.",
+      "ja": "メモリーの確保を、可能な限り避けたいアプリケーションもあります。"
+    },
+    {
+      "n": 129,
+      "source": "{1} can support this by letting user to provide a buffer. The buffer can be on the program stack, or a \"scratch buffer\" which is statically allocated (a static/global array) for storing temporary data.",
+      "ja": "{1}は、利用者がバッファーを指定することで、これに対応します。バッファーは、プログラムのスタック上に置いたり、一時データを保存するために静的に確保した「スクラッチバッファー」（static配列やグローバル配列）にしたりできます。"
+    },
+    {
+      "n": 130,
+      "source": "{1} will use the user buffer to satisfy allocations. When the user buffer is used up, it will allocate a chunk of memory from the base allocator (by default the {2}).",
+      "ja": "{1}は利用者のバッファーからメモリーを確保します。そのバッファーを使い切ると、基底アロケーター（既定では{2}）からメモリーの塊を確保します。"
+    },
+    {
+      "n": 131,
+      "source": "Here is an example of using stack memory. The first allocator is for storing values, while the second allocator is for storing temporary data during parsing.",
+      "ja": "スタックメモリーを使う例を示します。第1のアロケーターは値の保存用、第2のアロケーターは解析中の一時データの保存用です。"
+    },
+    {
+      "n": 132,
+      "source": "Default memory allocator used by the parser and DOM.",
+      "ja": "パーサーとDOMが使う既定のメモリーアロケーター。"
+    },
+    {
+      "n": 133,
+      "source": "If the total size of allocation is less than 4096+1024 bytes during parsing, this code does not invoke any heap allocation (via {1} or {2}) at all.",
+      "ja": "解析中に確保する合計量が4096+1024バイト未満なら、このコードは{1}や{2}によるヒープ上のメモリー確保を一度も行いません。"
+    },
+    {
+      "n": 134,
+      "source": "User can query the current memory consumption in bytes via {1}. And then user can determine a suitable size of user buffer.",
+      "ja": "{1}で、現在のメモリー消費量をバイト単位で問い合わせられます。それにより、利用者のバッファーに適した大きさを決められます。"
+    }
+  ],
+  "tokenTranslations": {
+    "Tutorial": "チュートリアル",
+    "tutorial": "チュートリアル",
+    "stream": "ストリーム",
+    "unchanged": "変更されません",
+    "Transcoding and Validation": "エンコーディング変換と妥当性検証",
+    "not": "行いません"
+  }
+}

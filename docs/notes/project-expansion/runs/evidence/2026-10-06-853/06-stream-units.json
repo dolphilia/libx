@@ -1,0 +1,1022 @@
+[
+  {
+    "n": 1,
+    "text": "In RapidJSON, "
+  },
+  {
+    "n": 2,
+    "text": "rapidjson::Stream"
+  },
+  {
+    "n": 3,
+    "text": " is a concept for reading/writing JSON. Here we first show how to use streams provided. And then see how to create a custom stream."
+  },
+  {
+    "n": 4,
+    "text": "\nMemory Streams"
+  },
+  {
+    "n": 5,
+    "text": "Memory streams store JSON in memory."
+  },
+  {
+    "n": 6,
+    "text": "\nStringStream (Input)"
+  },
+  {
+    "n": 7,
+    "text": "StringStream"
+  },
+  {
+    "n": 8,
+    "text": " is the most basic input stream. It represents a complete, read-only JSON stored in memory. It is defined in "
+  },
+  {
+    "n": 9,
+    "text": "rapidjson/rapidjson.h"
+  },
+  {
+    "n": 10,
+    "text": "."
+  },
+  {
+    "n": 11,
+    "text": "Parse JSON text from an input stream (with Encoding conversion)."
+  },
+  {
+    "n": 12,
+    "text": "main RapidJSON namespace"
+  },
+  {
+    "n": 13,
+    "text": "String stream with UTF8 encoding."
+  },
+  {
+    "n": 14,
+    "text": "GenericDocument with UTF8 encoding."
+  },
+  {
+    "n": 15,
+    "text": " fragment "
+  },
+  {
+    "n": 16,
+    "text": "Since this is very common usage, "
+  },
+  {
+    "n": 17,
+    "text": "Document::Parse(const char*)"
+  },
+  {
+    "n": 18,
+    "text": " is provided to do exactly the same as above:"
+  },
+  {
+    "n": 19,
+    "text": "Parse JSON text from a read-only string (with Encoding conversion)."
+  },
+  {
+    "n": 20,
+    "text": " fragment "
+  },
+  {
+    "n": 21,
+    "text": "Note that, "
+  },
+  {
+    "n": 22,
+    "text": "StringStream"
+  },
+  {
+    "n": 23,
+    "text": " is a typedef of "
+  },
+  {
+    "n": 24,
+    "text": "GenericStringStream<UTF8<> >"
+  },
+  {
+    "n": 25,
+    "text": ", user may use another encodings to represent the character set of the stream."
+  },
+  {
+    "n": 26,
+    "text": "\nStringBuffer (Output)"
+  },
+  {
+    "n": 27,
+    "text": "StringBuffer"
+  },
+  {
+    "n": 28,
+    "text": " is a simple output stream. It allocates a memory buffer for writing the whole JSON. Use "
+  },
+  {
+    "n": 29,
+    "text": "GetString()"
+  },
+  {
+    "n": 30,
+    "text": " to obtain the buffer."
+  },
+  {
+    "n": 31,
+    "text": "Generate events of this value to a Handler."
+  },
+  {
+    "n": 32,
+    "text": "JSON writer."
+  },
+  {
+    "n": 33,
+    "text": "String buffer with UTF8 encoding."
+  },
+  {
+    "n": 34,
+    "text": " fragment "
+  },
+  {
+    "n": 35,
+    "text": "When the buffer is full, it will increases the capacity automatically. The default capacity is 256 characters (256 bytes for UTF8, 512 bytes for UTF16, etc.). User can provide an allocator and a initial capacity."
+  },
+  {
+    "n": 36,
+    "text": " fragment "
+  },
+  {
+    "n": 37,
+    "text": "By default, "
+  },
+  {
+    "n": 38,
+    "text": "StringBuffer"
+  },
+  {
+    "n": 39,
+    "text": " will instantiate an internal allocator."
+  },
+  {
+    "n": 40,
+    "text": "Similarly, "
+  },
+  {
+    "n": 41,
+    "text": "StringBuffer"
+  },
+  {
+    "n": 42,
+    "text": " is a typedef of "
+  },
+  {
+    "n": 43,
+    "text": "GenericStringBuffer<UTF8<> >"
+  },
+  {
+    "n": 44,
+    "text": "."
+  },
+  {
+    "n": 45,
+    "text": "\nFile Streams"
+  },
+  {
+    "n": 46,
+    "text": "When parsing a JSON from file, you may read the whole JSON into memory and use "
+  },
+  {
+    "n": 47,
+    "text": "StringStream"
+  },
+  {
+    "n": 48,
+    "text": " above."
+  },
+  {
+    "n": 49,
+    "text": "However, if the JSON is big, or memory is limited, you can use "
+  },
+  {
+    "n": 50,
+    "text": "FileReadStream"
+  },
+  {
+    "n": 51,
+    "text": ". It only read a part of JSON from file into buffer, and then let the part be parsed. If it runs out of characters in the buffer, it will read the next part from file."
+  },
+  {
+    "n": 52,
+    "text": "\nFileReadStream (Input)"
+  },
+  {
+    "n": 53,
+    "text": "FileReadStream"
+  },
+  {
+    "n": 54,
+    "text": " reads the file via a "
+  },
+  {
+    "n": 55,
+    "text": "FILE"
+  },
+  {
+    "n": 56,
+    "text": " pointer. And user need to provide a buffer."
+  },
+  {
+    "n": 57,
+    "text": "File byte stream for input using fread()."
+  },
+  {
+    "n": 58,
+    "text": " fragment "
+  },
+  {
+    "n": 59,
+    "text": "Different from string streams, "
+  },
+  {
+    "n": 60,
+    "text": "FileReadStream"
+  },
+  {
+    "n": 61,
+    "text": " is byte stream. It does not handle encodings. If the file is not UTF-8, the byte stream can be wrapped in a "
+  },
+  {
+    "n": 62,
+    "text": "EncodedInputStream"
+  },
+  {
+    "n": 63,
+    "text": ". It will be discussed very soon."
+  },
+  {
+    "n": 64,
+    "text": "Apart from reading file, user can also use "
+  },
+  {
+    "n": 65,
+    "text": "FileReadStream"
+  },
+  {
+    "n": 66,
+    "text": " to read "
+  },
+  {
+    "n": 67,
+    "text": "stdin"
+  },
+  {
+    "n": 68,
+    "text": "."
+  },
+  {
+    "n": 69,
+    "text": "\nFileWriteStream (Output)"
+  },
+  {
+    "n": 70,
+    "text": "FileWriteStream"
+  },
+  {
+    "n": 71,
+    "text": " is buffered output stream. Its usage is very similar to "
+  },
+  {
+    "n": 72,
+    "text": "FileReadStream"
+  },
+  {
+    "n": 73,
+    "text": "."
+  },
+  {
+    "n": 74,
+    "text": "Wrapper of C file stream for input using fread()."
+  },
+  {
+    "n": 75,
+    "text": " fragment "
+  },
+  {
+    "n": 76,
+    "text": "It can also directs the output to "
+  },
+  {
+    "n": 77,
+    "text": "stdout"
+  },
+  {
+    "n": 78,
+    "text": "."
+  },
+  {
+    "n": 79,
+    "text": "\niostream Wrapper"
+  },
+  {
+    "n": 80,
+    "text": "Due to users' requests, RapidJSON provided official wrappers for "
+  },
+  {
+    "n": 81,
+    "text": "std::basic_istream"
+  },
+  {
+    "n": 82,
+    "text": " and "
+  },
+  {
+    "n": 83,
+    "text": "std::basic_ostream"
+  },
+  {
+    "n": 84,
+    "text": ". However, please note that the performance will be much lower than the other streams above."
+  },
+  {
+    "n": 85,
+    "text": "\nIStreamWrapper"
+  },
+  {
+    "n": 86,
+    "text": "IStreamWrapper"
+  },
+  {
+    "n": 87,
+    "text": " wraps any class drived from "
+  },
+  {
+    "n": 88,
+    "text": "std::istream"
+  },
+  {
+    "n": 89,
+    "text": ", such as "
+  },
+  {
+    "n": 90,
+    "text": "std::istringstream"
+  },
+  {
+    "n": 91,
+    "text": ", "
+  },
+  {
+    "n": 92,
+    "text": "std::stringstream"
+  },
+  {
+    "n": 93,
+    "text": ", "
+  },
+  {
+    "n": 94,
+    "text": "std::ifstream"
+  },
+  {
+    "n": 95,
+    "text": ", "
+  },
+  {
+    "n": 96,
+    "text": "std::fstream"
+  },
+  {
+    "n": 97,
+    "text": ", into RapidJSON's input stream."
+  },
+  {
+    "n": 98,
+    "text": " fragment "
+  },
+  {
+    "n": 99,
+    "text": "For classes derived from "
+  },
+  {
+    "n": 100,
+    "text": "std::wistream"
+  },
+  {
+    "n": 101,
+    "text": ", use "
+  },
+  {
+    "n": 102,
+    "text": "WIStreamWrapper"
+  },
+  {
+    "n": 103,
+    "text": "."
+  },
+  {
+    "n": 104,
+    "text": "\nOStreamWrapper"
+  },
+  {
+    "n": 105,
+    "text": "Similarly, "
+  },
+  {
+    "n": 106,
+    "text": "OStreamWrapper"
+  },
+  {
+    "n": 107,
+    "text": " wraps any class derived from "
+  },
+  {
+    "n": 108,
+    "text": "std::ostream"
+  },
+  {
+    "n": 109,
+    "text": ", such as "
+  },
+  {
+    "n": 110,
+    "text": "std::ostringstream"
+  },
+  {
+    "n": 111,
+    "text": ", "
+  },
+  {
+    "n": 112,
+    "text": "std::stringstream"
+  },
+  {
+    "n": 113,
+    "text": ", "
+  },
+  {
+    "n": 114,
+    "text": "std::ofstream"
+  },
+  {
+    "n": 115,
+    "text": ", "
+  },
+  {
+    "n": 116,
+    "text": "std::fstream"
+  },
+  {
+    "n": 117,
+    "text": ", into RapidJSON's input stream."
+  },
+  {
+    "n": 118,
+    "text": " fragment "
+  },
+  {
+    "n": 119,
+    "text": "For classes derived from "
+  },
+  {
+    "n": 120,
+    "text": "std::wostream"
+  },
+  {
+    "n": 121,
+    "text": ", use "
+  },
+  {
+    "n": 122,
+    "text": "WOStreamWrapper"
+  },
+  {
+    "n": 123,
+    "text": "."
+  },
+  {
+    "n": 124,
+    "text": "\nEncoded Streams"
+  },
+  {
+    "n": 125,
+    "text": "Encoded streams do not contain JSON itself, but they wrap byte streams to provide basic encoding/decoding function."
+  },
+  {
+    "n": 126,
+    "text": "As mentioned above, UTF-8 byte streams can be read directly. However, UTF-16 and UTF-32 have endian issue. To handle endian correctly, it needs to convert bytes into characters (e.g. "
+  },
+  {
+    "n": 127,
+    "text": "wchar_t"
+  },
+  {
+    "n": 128,
+    "text": " for UTF-16) while reading, and characters into bytes while writing."
+  },
+  {
+    "n": 129,
+    "text": "Besides, it also need to handle "
+  },
+  {
+    "n": 130,
+    "text": "byte order mark (BOM)"
+  },
+  {
+    "n": 131,
+    "text": ". When reading from a byte stream, it is needed to detect or just consume the BOM if exists. When writing to a byte stream, it can optionally write BOM."
+  },
+  {
+    "n": 132,
+    "text": "If the encoding of stream is known in compile-time, you may use "
+  },
+  {
+    "n": 133,
+    "text": "EncodedInputStream"
+  },
+  {
+    "n": 134,
+    "text": " and "
+  },
+  {
+    "n": 135,
+    "text": "EncodedOutputStream"
+  },
+  {
+    "n": 136,
+    "text": ". If the stream can be UTF-8, UTF-16LE, UTF-16BE, UTF-32LE, UTF-32BE JSON, and it is only known in runtime, you may use "
+  },
+  {
+    "n": 137,
+    "text": "AutoUTFInputStream"
+  },
+  {
+    "n": 138,
+    "text": " and "
+  },
+  {
+    "n": 139,
+    "text": "AutoUTFOutputStream"
+  },
+  {
+    "n": 140,
+    "text": ". These streams are defined in "
+  },
+  {
+    "n": 141,
+    "text": "rapidjson/encodedstream.h"
+  },
+  {
+    "n": 142,
+    "text": "."
+  },
+  {
+    "n": 143,
+    "text": "Note that, these encoded streams can be applied to streams other than file. For example, you may have a file in memory, or a custom byte stream, be wrapped in encoded streams."
+  },
+  {
+    "n": 144,
+    "text": "\nEncodedInputStream"
+  },
+  {
+    "n": 145,
+    "text": "EncodedInputStream"
+  },
+  {
+    "n": 146,
+    "text": " has two template parameters. The first one is a "
+  },
+  {
+    "n": 147,
+    "text": "Encoding"
+  },
+  {
+    "n": 148,
+    "text": " class, such as "
+  },
+  {
+    "n": 149,
+    "text": "UTF8"
+  },
+  {
+    "n": 150,
+    "text": ", "
+  },
+  {
+    "n": 151,
+    "text": "UTF16LE"
+  },
+  {
+    "n": 152,
+    "text": ", defined in "
+  },
+  {
+    "n": 153,
+    "text": "rapidjson/encodings.h"
+  },
+  {
+    "n": 154,
+    "text": ". The second one is the class of stream to be wrapped."
+  },
+  {
+    "n": 155,
+    "text": "Input byte stream wrapper with a statically bound encoding."
+  },
+  {
+    "n": 156,
+    "text": "UTF-16 little endian encoding."
+  },
+  {
+    "n": 157,
+    "text": " fragment "
+  },
+  {
+    "n": 158,
+    "text": "\nEncodedOutputStream"
+  },
+  {
+    "n": 159,
+    "text": "EncodedOutputStream"
+  },
+  {
+    "n": 160,
+    "text": " is similar but it has a "
+  },
+  {
+    "n": 161,
+    "text": "bool putBOM"
+  },
+  {
+    "n": 162,
+    "text": " parameter in the constructor, controlling whether to write BOM into output byte stream."
+  },
+  {
+    "n": 163,
+    "text": "Output byte stream wrapper with statically bound encoding."
+  },
+  {
+    "n": 164,
+    "text": "UTF-8 encoding."
+  },
+  {
+    "n": 165,
+    "text": " fragment "
+  },
+  {
+    "n": 166,
+    "text": "\nAutoUTFInputStream"
+  },
+  {
+    "n": 167,
+    "text": "Sometimes an application may want to handle all supported JSON encoding. "
+  },
+  {
+    "n": 168,
+    "text": "AutoUTFInputStream"
+  },
+  {
+    "n": 169,
+    "text": " will detection encoding by BOM first. If BOM is unavailable, it will use characteristics of valid JSON to make detection. If neither method success, it falls back to the UTF type provided in constructor."
+  },
+  {
+    "n": 170,
+    "text": "Since the characters (code units) may be 8-bit, 16-bit or 32-bit. "
+  },
+  {
+    "n": 171,
+    "text": "AutoUTFInputStream"
+  },
+  {
+    "n": 172,
+    "text": " requires a character type which can hold at least 32-bit. We may use "
+  },
+  {
+    "n": 173,
+    "text": "unsigned"
+  },
+  {
+    "n": 174,
+    "text": ", as in the template parameter:"
+  },
+  {
+    "n": 175,
+    "text": "Input stream wrapper with dynamically bound encoding and automatic encoding detection."
+  },
+  {
+    "n": 176,
+    "text": "Dynamically select encoding according to stream's runtime-specified UTF encoding type."
+  },
+  {
+    "n": 177,
+    "text": " fragment "
+  },
+  {
+    "n": 178,
+    "text": "When specifying the encoding of stream, uses "
+  },
+  {
+    "n": 179,
+    "text": "AutoUTF<CharType>"
+  },
+  {
+    "n": 180,
+    "text": " as in "
+  },
+  {
+    "n": 181,
+    "text": "ParseStream()"
+  },
+  {
+    "n": 182,
+    "text": " above."
+  },
+  {
+    "n": 183,
+    "text": "You can obtain the type of UTF via "
+  },
+  {
+    "n": 184,
+    "text": "UTFType GetType()"
+  },
+  {
+    "n": 185,
+    "text": ". And check whether a BOM is found by "
+  },
+  {
+    "n": 186,
+    "text": "HasBOM()"
+  },
+  {
+    "n": 187,
+    "text": "\nAutoUTFOutputStream"
+  },
+  {
+    "n": 188,
+    "text": "Similarly, to choose encoding for output during runtime, we can use "
+  },
+  {
+    "n": 189,
+    "text": "AutoUTFOutputStream"
+  },
+  {
+    "n": 190,
+    "text": ". This class is not automatic "
+  },
+  {
+    "n": 191,
+    "text": "per se"
+  },
+  {
+    "n": 192,
+    "text": ". You need to specify the UTF type and whether to write BOM in runtime."
+  },
+  {
+    "n": 193,
+    "text": "Output stream wrapper with dynamically bound encoding and automatic encoding detection."
+  },
+  {
+    "n": 194,
+    "text": "Runtime-specified UTF encoding type of a stream."
+  },
+  {
+    "n": 195,
+    "text": " fragment "
+  },
+  {
+    "n": 196,
+    "text": "AutoUTFInputStream"
+  },
+  {
+    "n": 197,
+    "text": " and "
+  },
+  {
+    "n": 198,
+    "text": "AutoUTFOutputStream"
+  },
+  {
+    "n": 199,
+    "text": " is more convenient than "
+  },
+  {
+    "n": 200,
+    "text": "EncodedInputStream"
+  },
+  {
+    "n": 201,
+    "text": " and "
+  },
+  {
+    "n": 202,
+    "text": "EncodedOutputStream"
+  },
+  {
+    "n": 203,
+    "text": ". They just incur a little bit runtime overheads."
+  },
+  {
+    "n": 204,
+    "text": "\nCustom Stream"
+  },
+  {
+    "n": 205,
+    "text": "In addition to memory/file streams, user can create their own stream classes which fits RapidJSON's API. For example, you may create network stream, stream from compressed file, etc."
+  },
+  {
+    "n": 206,
+    "text": "RapidJSON combines different types using templates. A class containing all required interface can be a stream. The "
+  },
+  {
+    "n": 207,
+    "text": "Stream"
+  },
+  {
+    "n": 208,
+    "text": " interface is defined in comments of "
+  },
+  {
+    "n": 209,
+    "text": "rapidjson/rapidjson.h"
+  },
+  {
+    "n": 210,
+    "text": ":"
+  },
+  {
+    "n": 211,
+    "text": "Concept for reading and writing characters."
+  },
+  {
+    "n": 212,
+    "text": " fragment "
+  },
+  {
+    "n": 213,
+    "text": "For input stream, they must implement "
+  },
+  {
+    "n": 214,
+    "text": "Peek()"
+  },
+  {
+    "n": 215,
+    "text": ", "
+  },
+  {
+    "n": 216,
+    "text": "Take()"
+  },
+  {
+    "n": 217,
+    "text": " and "
+  },
+  {
+    "n": 218,
+    "text": "Tell()"
+  },
+  {
+    "n": 219,
+    "text": ". For output stream, they must implement "
+  },
+  {
+    "n": 220,
+    "text": "Put()"
+  },
+  {
+    "n": 221,
+    "text": " and "
+  },
+  {
+    "n": 222,
+    "text": "Flush()"
+  },
+  {
+    "n": 223,
+    "text": ". There are two special interface, "
+  },
+  {
+    "n": 224,
+    "text": "PutBegin()"
+  },
+  {
+    "n": 225,
+    "text": " and "
+  },
+  {
+    "n": 226,
+    "text": "PutEnd()"
+  },
+  {
+    "n": 227,
+    "text": ", which are only for "
+  },
+  {
+    "n": 228,
+    "text": "in situ"
+  },
+  {
+    "n": 229,
+    "text": " parsing. Normal streams do not implement them. However, if the interface is not needed for a particular stream, it is still need to a dummy implementation, otherwise will generate compilation error."
+  },
+  {
+    "n": 230,
+    "text": "\nExample: istream wrapper"
+  },
+  {
+    "n": 231,
+    "text": "The following example is a simple wrapper of "
+  },
+  {
+    "n": 232,
+    "text": "std::istream"
+  },
+  {
+    "n": 233,
+    "text": ", which only implements 3 functions."
+  },
+  {
+    "n": 234,
+    "text": " fragment "
+  },
+  {
+    "n": 235,
+    "text": "User can use it to wrap instances of "
+  },
+  {
+    "n": 236,
+    "text": "std::stringstream"
+  },
+  {
+    "n": 237,
+    "text": ", "
+  },
+  {
+    "n": 238,
+    "text": "std::ifstream"
+  },
+  {
+    "n": 239,
+    "text": "."
+  },
+  {
+    "n": 240,
+    "text": " fragment "
+  },
+  {
+    "n": 241,
+    "text": "Note that, this implementation may not be as efficient as RapidJSON's memory or file streams, due to internal overheads of the standard library."
+  },
+  {
+    "n": 242,
+    "text": "\nExample: ostream wrapper"
+  },
+  {
+    "n": 243,
+    "text": "The following example is a simple wrapper of "
+  },
+  {
+    "n": 244,
+    "text": "std::istream"
+  },
+  {
+    "n": 245,
+    "text": ", which only implements 2 functions."
+  },
+  {
+    "n": 246,
+    "text": " fragment "
+  },
+  {
+    "n": 247,
+    "text": "User can use it to wrap instances of "
+  },
+  {
+    "n": 248,
+    "text": "std::stringstream"
+  },
+  {
+    "n": 249,
+    "text": ", "
+  },
+  {
+    "n": 250,
+    "text": "std::ofstream"
+  },
+  {
+    "n": 251,
+    "text": "."
+  },
+  {
+    "n": 252,
+    "text": " fragment "
+  },
+  {
+    "n": 253,
+    "text": "Note that, this implementation may not be as efficient as RapidJSON's memory or file streams, due to internal overheads of the standard library."
+  },
+  {
+    "n": 254,
+    "text": "\nSummary"
+  },
+  {
+    "n": 255,
+    "text": "This section describes stream classes available in RapidJSON. Memory streams are simple. File stream can reduce the memory required during JSON parsing and generation, if the JSON is stored in file system. Encoded streams converts between byte streams and character streams. Finally, user may create custom streams using a simple interface. "
+  }
+]

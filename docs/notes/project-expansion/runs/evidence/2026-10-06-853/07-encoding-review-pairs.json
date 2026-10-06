@@ -1,0 +1,367 @@
+[
+  {
+    "n": 1,
+    "source": "According to {1},",
+    "tokens": [
+      "<a href=\"http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf\">ECMA-404</a>"
+    ],
+    "ja": "{1}によると、"
+  },
+  {
+    "n": 2,
+    "source": "(in Introduction) JSON text is a sequence of Unicode code points.",
+    "tokens": [],
+    "ja": "（序文）JSONテキストは、Unicodeコードポイントの列です。"
+  },
+  {
+    "n": 3,
+    "source": "The earlier {1} stated that,",
+    "tokens": [
+      "<a href=\"http://www.ietf.org/rfc/rfc4627.txt\">RFC4627</a>"
+    ],
+    "ja": "それ以前の{1}には、次のように記されています。"
+  },
+  {
+    "n": 4,
+    "source": "(in §3) JSON text SHALL be encoded in Unicode. The default encoding is UTF-8.",
+    "tokens": [],
+    "ja": "（第3節）JSONテキストはUnicodeで符号化しなければなりません。既定のエンコーディングはUTF-8です。"
+  },
+  {
+    "n": 5,
+    "source": "(in §6) JSON may be represented using UTF-8, UTF-16, or UTF-32. When JSON is written in UTF-8, JSON is 8bit compatible. When JSON is written in UTF-16 or UTF-32, the binary content-transfer-encoding must be used.",
+    "tokens": [],
+    "ja": "（第6節）JSONはUTF-8、UTF-16、UTF-32で表現できます。UTF-8で記述する場合、JSONは8ビット互換です。UTF-16やUTF-32で記述する場合は、バイナリーのcontent-transfer-encodingを使わなければなりません。"
+  },
+  {
+    "n": 6,
+    "source": "RapidJSON supports various encodings. It can also validate the encodings of JSON, and transconding JSON among encodings. All these features are implemented internally, without the need for external libraries (e.g. {1}).",
+    "tokens": [
+      "<a href=\"http://site.icu-project.org/\">ICU</a>"
+    ],
+    "ja": "RapidJSONはさまざまなエンコーディングに対応します。JSONのエンコーディングの妥当性を検証し、エンコーディング間でJSONを変換することもできます。これらの機能はすべて内部に実装されているため、外部ライブラリー（{1}など）は不要です。"
+  },
+  {
+    "n": 7,
+    "source": "Unicode",
+    "tokens": [],
+    "ja": "Unicode"
+  },
+  {
+    "n": 8,
+    "source": "From {1}:",
+    "tokens": [
+      "<a href=\"http://www.unicode.org/standard/WhatIsUnicode.html\">Unicode's official website</a>"
+    ],
+    "ja": "{1}より："
+  },
+  {
+    "n": 9,
+    "source": "Unicode provides a unique number for every character, no matter what the platform, no matter what the program, no matter what the language.",
+    "tokens": [],
+    "ja": "Unicodeは、プラットフォーム、プログラム、言語を問わず、すべての文字に一意の番号を与えます。"
+  },
+  {
+    "n": 10,
+    "source": "Those unique numbers are called code points, which is in the range {1} to {2}.",
+    "tokens": [
+      "<span class=\"tt\">0x0</span>",
+      "<span class=\"tt\">0x10FFFF</span>"
+    ],
+    "ja": "この一意の番号をコードポイントと呼び、範囲は{1}から{2}です。"
+  },
+  {
+    "n": 11,
+    "source": "Unicode Transformation Format",
+    "tokens": [],
+    "ja": "Unicode Transformation Format"
+  },
+  {
+    "n": 12,
+    "source": "There are various encodings for storing Unicode code points. These are called Unicode Transformation Format (UTF). RapidJSON supports the most commonly used UTFs, including",
+    "tokens": [],
+    "ja": "Unicodeコードポイントを保存するエンコーディングは複数あります。これらをUnicode Transformation Format（UTF）と呼びます。RapidJSONは、広く使われる次のUTFに対応しています。"
+  },
+  {
+    "n": 13,
+    "source": "UTF-8: 8-bit variable-width encoding. It maps a code point to 1–4 bytes.",
+    "tokens": [],
+    "ja": "UTF-8：8ビットの可変長エンコーディング。コードポイントを1〜4バイトに対応付けます。"
+  },
+  {
+    "n": 14,
+    "source": "UTF-16: 16-bit variable-width encoding. It maps a code point to 1–2 16-bit code units (i.e., 2–4 bytes).",
+    "tokens": [],
+    "ja": "UTF-16：16ビットの可変長エンコーディング。コードポイントを1〜2個の16ビットコード単位（2〜4バイト）に対応付けます。"
+  },
+  {
+    "n": 15,
+    "source": "UTF-32: 32-bit fixed-width encoding. It directly maps a code point to a single 32-bit code unit (i.e. 4 bytes).",
+    "tokens": [],
+    "ja": "UTF-32：32ビットの固定長エンコーディング。コードポイントを1個の32ビットコード単位（4バイト）へ直接対応付けます。"
+  },
+  {
+    "n": 16,
+    "source": "For UTF-16 and UTF-32, the byte order (endianness) does matter. Within computer memory, they are often stored in the computer's endianness. However, when it is stored in file or transferred over network, we need to state the byte order of the byte sequence, either little-endian (LE) or big-endian (BE).",
+    "tokens": [],
+    "ja": "UTF-16とUTF-32では、バイト順（エンディアン）が重要です。コンピューターのメモリー内では、そのコンピューターのバイト順で保存するのが一般的です。しかし、ファイルに保存したりネットワークで転送したりする場合は、バイト列の順序をリトルエンディアン（LE）かビッグエンディアン（BE）として明示する必要があります。"
+  },
+  {
+    "n": 17,
+    "source": "RapidJSON provide these encodings via the structs in {1}:",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/070-encodings_8h_source/\">rapidjson/encodings.h</a></span>"
+    ],
+    "ja": "RapidJSONは、{1}の構造体を通じてこれらのエンコーディングを提供します。"
+  },
+  {
+    "n": 18,
+    "source": "main RapidJSON namespace",
+    "tokens": [],
+    "ja": "RapidJSONの主な名前空間"
+  },
+  {
+    "n": 19,
+    "source": "For processing text in memory, we normally use {1}, {2} or {3}. For processing text via I/O, we may use {4}, {5}, {6}, {7} or {8}.",
+    "tokens": [
+      "<span class=\"tt\">UTF8</span>",
+      "<span class=\"tt\">UTF16</span>",
+      "<span class=\"tt\">UTF32</span>",
+      "<span class=\"tt\">UTF8</span>",
+      "<span class=\"tt\">UTF16LE</span>",
+      "<span class=\"tt\">UTF16BE</span>",
+      "<span class=\"tt\">UTF32LE</span>",
+      "<span class=\"tt\">UTF32BE</span>"
+    ],
+    "ja": "メモリー内のテキスト処理には、通常{1}、{2}、{3}を使います。入出力によるテキスト処理には、{4}、{5}、{6}、{7}、{8}を使えます。"
+  },
+  {
+    "n": 20,
+    "source": "When using the DOM-style API, the {1} template parameter in {2} and {3} indicates the encoding to be used to represent JSON string in memory. So normally we will use {4}, {5} or {6} for this template parameter. The choice depends on operating systems and other libraries that the application is using. For example, Windows API represents Unicode characters in UTF-16, while most Linux distributions and applications prefer UTF-8.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a></span>",
+      "<span class=\"tt\">GenericValue&lt;<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a>&gt;</span>",
+      "<span class=\"tt\">GenericDocument&lt;<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a>&gt;</span>",
+      "<span class=\"tt\">UTF8</span>",
+      "<span class=\"tt\">UTF16</span>",
+      "<span class=\"tt\">UTF32</span>"
+    ],
+    "ja": "DOM形式のAPIを使う場合、{2}と{3}のテンプレート引数{1}は、メモリー内のJSON文字列を表現するエンコーディングを指定します。そのため、通常はこの引数に{4}、{5}、{6}を使います。選択は、OSやアプリケーションで使用する他のライブラリーによって異なります。たとえば、Windows APIはUnicode文字をUTF-16で表現しますが、大半のLinuxディストリビューションやアプリケーションはUTF-8を好みます。"
+  },
+  {
+    "n": 21,
+    "source": "Example of UTF-16 DOM declaration:",
+    "tokens": [],
+    "ja": "UTF-16のDOM宣言の例："
+  },
+  {
+    "n": 22,
+    "source": "For a detail example, please check the example in {1} section.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/06-stream/\" title=\"Stream\">DOM's Encoding</a>"
+    ],
+    "ja": "詳しい例は、{1}の節を参照してください。"
+  },
+  {
+    "n": 23,
+    "source": "Character Type",
+    "tokens": [],
+    "ja": "文字型"
+  },
+  {
+    "n": 24,
+    "source": "As shown in the declaration, each encoding has a {1} template parameter. Actually, it may be a little bit confusing, but each {2} stores a code unit, not a character (code point). As mentioned in previous section, a code point may be encoded to 1–4 code units for UTF-8.",
+    "tokens": [
+      "<span class=\"tt\">CharType</span>",
+      "<span class=\"tt\">CharType</span>"
+    ],
+    "ja": "宣言で示したように、各エンコーディングにはテンプレート引数{1}があります。少し紛らわしいのですが、各{2}が保存するのは文字（コードポイント）ではなく、コード単位です。前の節で述べたように、UTF-8では1つのコードポイントを1〜4個のコード単位へ符号化する場合があります。"
+  },
+  {
+    "n": 25,
+    "source": "For {1}, {2}, the {3} must be integer type of at least 2 and 4 bytes respectively.",
+    "tokens": [
+      "<span class=\"tt\">UTF16(LE|BE)</span>",
+      "<span class=\"tt\">UTF32(LE|BE)</span>",
+      "<span class=\"tt\">CharType</span>"
+    ],
+    "ja": "{1}と{2}では、{3}はそれぞれ最低2バイト、4バイトの整数型でなければなりません。"
+  },
+  {
+    "n": 26,
+    "source": "Note that C++11 introduces {1} and {2}, which can be used for {3} and {4} respectively.",
+    "tokens": [
+      "<span class=\"tt\">char16_t</span>",
+      "<span class=\"tt\">char32_t</span>",
+      "<span class=\"tt\">UTF16</span>",
+      "<span class=\"tt\">UTF32</span>"
+    ],
+    "ja": "C++11で導入された{1}と{2}は、それぞれ{3}と{4}に使えます。"
+  },
+  {
+    "n": 27,
+    "source": "AutoUTF",
+    "tokens": [],
+    "ja": "AutoUTF"
+  },
+  {
+    "n": 28,
+    "source": "Previous encodings are statically bound in compile-time. In other words, user must know exactly which encodings will be used in the memory or streams. However, sometimes we may need to read/write files of different encodings. The encoding needed to be decided in runtime.",
+    "tokens": [],
+    "ja": "これまでのエンコーディングは、コンパイル時に静的に決まります。つまり、メモリーやストリームで使うエンコーディングを正確に知っている必要があります。しかし、異なるエンコーディングのファイルを読み書きし、実行時にエンコーディングを決める必要がある場合もあります。"
+  },
+  {
+    "n": 29,
+    "source": "{1} is an encoding designed for this purpose. It chooses which encoding to be used according to the input or output stream. Currently, it should be used with {2} and {3}.",
+    "tokens": [
+      "<span class=\"tt\">AutoUTF</span>",
+      "<span class=\"tt\">EncodedInputStream</span>",
+      "<span class=\"tt\">EncodedOutputStream</span>"
+    ],
+    "ja": "{1}は、この目的のために設計されたエンコーディングです。入出力ストリームに応じて、使用するエンコーディングを選択します。現時点では、{2}と{3}とともに使う必要があります。"
+  },
+  {
+    "n": 30,
+    "source": "ASCII",
+    "tokens": [],
+    "ja": "ASCII"
+  },
+  {
+    "n": 31,
+    "source": "Although the JSON standards did not mention about {1}, sometimes we would like to write 7-bit ASCII JSON for applications that cannot handle UTF-8. Since any JSON can represent unicode characters in escaped sequence {2}, JSON can always be encoded in ASCII.",
+    "tokens": [
+      "<a href=\"http://en.wikipedia.org/wiki/ASCII\">ASCII</a>",
+      "<span class=\"tt\">\\uXXXX</span>"
+    ],
+    "ja": "JSON標準には{1}の記述がありませんが、UTF-8を扱えないアプリケーション向けに7ビットASCIIのJSONを出力したい場合があります。どのJSONでもエスケープ列{2}でUnicode文字を表現できるため、JSONは常にASCIIで符号化できます。"
+  },
+  {
+    "n": 32,
+    "source": "Here is an example for writing a UTF-8 DOM into ASCII:",
+    "tokens": [],
+    "ja": "UTF-8のDOMをASCIIで出力する例です。"
+  },
+  {
+    "n": 33,
+    "source": "Generate events of this value to a Handler.",
+    "tokens": [],
+    "ja": "この値に対応するイベントをHandlerへ渡します。"
+  },
+  {
+    "n": 34,
+    "source": "JSON writer.",
+    "tokens": [],
+    "ja": "JSONライター。"
+  },
+  {
+    "n": 35,
+    "source": "String buffer with UTF8 encoding.",
+    "tokens": [],
+    "ja": "UTF8エンコーディングの文字列バッファー。"
+  },
+  {
+    "n": 36,
+    "source": "GenericDocument with UTF8 encoding.",
+    "tokens": [],
+    "ja": "UTF8エンコーディングのGenericDocument。"
+  },
+  {
+    "n": 37,
+    "source": "ASCII can be used in input stream. If the input stream contains bytes with values above 127, it will cause {1} error.",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorStringInvalidEncoding</span>"
+    ],
+    "ja": "入力ストリームにもASCIIを使えます。入力ストリームに127を超える値のバイトがあると、{1}エラーになります。"
+  },
+  {
+    "n": 38,
+    "source": "ASCII {1} be used in memory (encoding of {2} or target encoding of {3}), as it cannot represent Unicode code points.",
+    "tokens": [
+      "<em>cannot</em>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Reader</span>"
+    ],
+    "ja": "ASCIIはUnicodeコードポイントを表現できないため、メモリー内（{2}のエンコーディングや{3}の変換先エンコーディング）では{1}。"
+  },
+  {
+    "n": 39,
+    "source": "Validation & Transcoding",
+    "tokens": [],
+    "ja": "妥当性検証とエンコーディング変換"
+  },
+  {
+    "n": 40,
+    "source": "When RapidJSON parses a JSON, it can validate the input JSON, whether it is a valid sequence of a specified encoding. This option can be turned on by adding {1} in {2} template parameter.",
+    "tokens": [
+      "<span class=\"tt\">kParseValidateEncodingFlag</span>",
+      "<span class=\"tt\">parseFlags</span>"
+    ],
+    "ja": "RapidJSONはJSONを解析するときに、入力JSONが指定したエンコーディングの妥当な列であるかどうかを検証できます。このオプションは、テンプレート引数{2}に{1}を追加すると有効になります。"
+  },
+  {
+    "n": 41,
+    "source": "If the input encoding and output encoding is different, {1} and {2} will automatically transcode (convert) the text. In this case, {3} is not necessary, as it must decode the input sequence. And if the sequence was unable to be decoded, it must be invalid.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">kParseValidateEncodingFlag</span>"
+    ],
+    "ja": "入力と出力のエンコーディングが異なる場合、{1}と{2}は自動的にテキストのエンコーディングを変換します。この場合は入力列を必ず復号するので、{3}は不要です。復号できない列は必然的に不正な列です。"
+  },
+  {
+    "n": 42,
+    "source": "Transcoder",
+    "tokens": [],
+    "ja": "Transcoder"
+  },
+  {
+    "n": 43,
+    "source": "Although the encoding functions in RapidJSON are designed for JSON parsing/generation, user may abuse them for transcoding of non-JSON strings.",
+    "tokens": [],
+    "ja": "RapidJSONのエンコーディング関数はJSONの解析・生成用に設計されていますが、JSON以外の文字列のエンコーディング変換にも流用できます。"
+  },
+  {
+    "n": 44,
+    "source": "Here is an example for transcoding a string from UTF-8 to UTF-16:",
+    "tokens": [],
+    "ja": "UTF-8からUTF-16へ文字列を変換する例です。"
+  },
+  {
+    "n": 45,
+    "source": "Represents an in-memory output stream.",
+    "tokens": [],
+    "ja": "メモリー内の出力ストリームを表します。"
+  },
+  {
+    "n": 46,
+    "source": "String stream with UTF8 encoding.",
+    "tokens": [],
+    "ja": "UTF8エンコーディングの文字列ストリーム。"
+  },
+  {
+    "n": 47,
+    "source": "Encoding conversion.",
+    "tokens": [],
+    "ja": "エンコーディング変換。"
+  },
+  {
+    "n": 48,
+    "source": "UTF-16 encoding.",
+    "tokens": [],
+    "ja": "UTF-16エンコーディング。"
+  },
+  {
+    "n": 49,
+    "source": "UTF-8 encoding.",
+    "tokens": [],
+    "ja": "UTF-8エンコーディング。"
+  },
+  {
+    "n": 50,
+    "source": "You may also use {1} and the associated streams for setting source/target encoding in runtime.",
+    "tokens": [
+      "<span class=\"tt\">AutoUTF</span>"
+    ],
+    "ja": "{1}と対応するストリームを使って、変換元・変換先のエンコーディングを実行時に設定することもできます。"
+  }
+]

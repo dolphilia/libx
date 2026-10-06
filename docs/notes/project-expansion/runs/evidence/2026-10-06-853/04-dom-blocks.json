@@ -1,0 +1,995 @@
+[
+  {
+    "n": 1,
+    "tag": "p",
+    "text": "Document Object Model(DOM) is an in-memory representation of JSON for query and manipulation. The basic usage of DOM is described in {1}. This section will describe some details and more advanced usages.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/03-tutorial/\" title=\"Tutorial\">Tutorial</a>"
+    ]
+  },
+  {
+    "n": 2,
+    "tag": "h1",
+    "text": "Template",
+    "tokens": []
+  },
+  {
+    "n": 3,
+    "tag": "p",
+    "text": "In the tutorial, {1} and {2} was used. Similarly to {3}, these are actually {4} of template classes:",
+    "tokens": [
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">std::string</span>",
+      "<span class=\"tt\">typedef</span>"
+    ]
+  },
+  {
+    "n": 4,
+    "tag": "div",
+    "text": "A document for parsing JSON text as DOM.",
+    "tokens": []
+  },
+  {
+    "n": 5,
+    "tag": "div",
+    "text": "Represents a JSON value. Use Value for UTF8 encoding and default allocator.",
+    "tokens": []
+  },
+  {
+    "n": 6,
+    "tag": "div",
+    "text": "main RapidJSON namespace",
+    "tokens": []
+  },
+  {
+    "n": 7,
+    "tag": "div",
+    "text": "GenericValue with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 8,
+    "tag": "div",
+    "text": "GenericDocument with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 9,
+    "tag": "p",
+    "text": "User can customize these template parameters.",
+    "tokens": []
+  },
+  {
+    "n": 10,
+    "tag": "h2",
+    "text": "Encoding",
+    "tokens": []
+  },
+  {
+    "n": 11,
+    "tag": "p",
+    "text": "The {1} parameter specifies the encoding of JSON String value in memory. Possible options are {2}, {3}, {4}. Note that, these 3 types are also template class. {5} is {6}, which means using char to store the characters. You may refer to {7} for details.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a></span>",
+      "<span class=\"tt\">UTF8</span>",
+      "<span class=\"tt\">UTF16</span>",
+      "<span class=\"tt\">UTF32</span>",
+      "<span class=\"tt\">UTF8&lt;&gt;</span>",
+      "<span class=\"tt\">UTF8&lt;char&gt;</span>",
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/07-encoding/\" title=\"Encoding\">Encoding</a>"
+    ]
+  },
+  {
+    "n": 12,
+    "tag": "p",
+    "text": "Suppose a Windows application would query localization strings stored in JSON files. Unicode-enabled functions in Windows use UTF-16 (wide character) encoding. No matter what encoding was used in JSON files, we can store the strings in UTF-16 in memory.",
+    "tokens": []
+  },
+  {
+    "n": 13,
+    "tag": "div",
+    "text": "Input stream wrapper with dynamically bound encoding and automatic encoding detection.",
+    "tokens": []
+  },
+  {
+    "n": 14,
+    "tag": "div",
+    "text": "File byte stream for input using fread().",
+    "tokens": []
+  },
+  {
+    "n": 15,
+    "tag": "div",
+    "text": "Dynamically select encoding according to stream's runtime-specified UTF encoding type.",
+    "tokens": []
+  },
+  {
+    "n": 16,
+    "tag": "h2",
+    "text": "Allocator",
+    "tokens": []
+  },
+  {
+    "n": 17,
+    "tag": "p",
+    "text": "The {1} defines which allocator class is used when allocating/deallocating memory for {2}/{3}. {4} owns, or references to an {5} instance. On the other hand, {6} does not do so, in order to reduce memory consumption.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a></span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/005-classrapidjson_1_1_allocator/\" title=\"Concept for allocating, resizing and freeing memory block.\">Allocator</a></span>",
+      "<span class=\"tt\">Value</span>"
+    ]
+  },
+  {
+    "n": 18,
+    "tag": "p",
+    "text": "The default allocator used in {1} is {2}. This allocator actually allocate memory sequentially, and cannot deallocate one by one. This is very suitable when parsing a JSON into a DOM tree.",
+    "tokens": [
+      "<span class=\"tt\">GenericDocument</span>",
+      "<span class=\"tt\">MemoryPoolAllocator</span>"
+    ]
+  },
+  {
+    "n": 19,
+    "tag": "p",
+    "text": "Another allocator is {1}, of which CRT is short for C RunTime library. This allocator simply calls the standard {2}/{3}/{4}. When there is a lot of add and remove operations, this allocator may be preferred. But this allocator is far less efficient than {5}.",
+    "tokens": [
+      "<span class=\"tt\">CrtAllocator</span>",
+      "<span class=\"tt\">malloc()</span>",
+      "<span class=\"tt\">realloc()</span>",
+      "<span class=\"tt\">free()</span>",
+      "<span class=\"tt\">MemoryPoolAllocator</span>"
+    ]
+  },
+  {
+    "n": 20,
+    "tag": "h1",
+    "text": "Parsing",
+    "tokens": []
+  },
+  {
+    "n": 21,
+    "tag": "p",
+    "text": "{1} provides several functions for parsing. In below, (1) is the fundamental function, while the others are helpers which call (1).",
+    "tokens": [
+      "<span class=\"tt\">Document</span>"
+    ]
+  },
+  {
+    "n": 22,
+    "tag": "div",
+    "text": "Parse JSON text from an input stream (with Encoding conversion).",
+    "tokens": []
+  },
+  {
+    "n": 23,
+    "tag": "div",
+    "text": "Parse JSON text from a read-only string (with Encoding conversion).",
+    "tokens": []
+  },
+  {
+    "n": 24,
+    "tag": "div",
+    "text": "Parse JSON text from a mutable string.",
+    "tokens": []
+  },
+  {
+    "n": 25,
+    "tag": "p",
+    "text": "The examples of {1} uses (8) for normal parsing of string. The examples of {2} uses the first three. {3} parsing will be described soon.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/03-tutorial/\" title=\"Tutorial\">tutorial</a>",
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/06-stream/\" title=\"Stream\">stream</a>",
+      "<em>In situ</em>"
+    ]
+  },
+  {
+    "n": 26,
+    "tag": "p",
+    "text": "The {1} are combination of the following bit-flags:",
+    "tokens": [
+      "<span class=\"tt\">parseFlags</span>"
+    ]
+  },
+  {
+    "n": 27,
+    "tag": "th",
+    "text": "Parse flags",
+    "tokens": []
+  },
+  {
+    "n": 28,
+    "tag": "th",
+    "text": "Meaning",
+    "tokens": []
+  },
+  {
+    "n": 29,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseNoFlags</span>"
+    ]
+  },
+  {
+    "n": 30,
+    "tag": "td",
+    "text": "No flag is set.",
+    "tokens": []
+  },
+  {
+    "n": 31,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseDefaultFlags</span>"
+    ]
+  },
+  {
+    "n": 32,
+    "tag": "td",
+    "text": "Default parse flags. It is equal to macro {1}, which is defined as {2}.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/121-group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g/#ga77005e892e6601599beaf421b0395c31\" title=\"User-defined kParseDefaultFlags definition.\">RAPIDJSON_PARSE_DEFAULT_FLAGS</a></span>",
+      "<span class=\"tt\">kParseNoFlags</span>"
+    ]
+  },
+  {
+    "n": 33,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseInsituFlag</span>"
+    ]
+  },
+  {
+    "n": 34,
+    "tag": "td",
+    "text": "In-situ(destructive) parsing.",
+    "tokens": []
+  },
+  {
+    "n": 35,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseValidateEncodingFlag</span>"
+    ]
+  },
+  {
+    "n": 36,
+    "tag": "td",
+    "text": "Validate encoding of JSON strings.",
+    "tokens": []
+  },
+  {
+    "n": 37,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseIterativeFlag</span>"
+    ]
+  },
+  {
+    "n": 38,
+    "tag": "td",
+    "text": "Iterative(constant complexity in terms of function call stack size) parsing.",
+    "tokens": []
+  },
+  {
+    "n": 39,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseStopWhenDoneFlag</span>"
+    ]
+  },
+  {
+    "n": 40,
+    "tag": "td",
+    "text": "After parsing a complete JSON root from stream, stop further processing the rest of stream. When this flag is used, parser will not generate {1} error. Using this flag for parsing multiple JSONs in the same stream.",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorDocumentRootNotSingular</span>"
+    ]
+  },
+  {
+    "n": 41,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseFullPrecisionFlag</span>"
+    ]
+  },
+  {
+    "n": 42,
+    "tag": "td",
+    "text": "Parse number in full precision (slower). If this flag is not set, the normal precision (faster) is used. Normal precision has maximum 3 {1} error.",
+    "tokens": [
+      "<a href=\"http://en.wikipedia.org/wiki/Unit_in_the_last_place\">ULP</a>"
+    ]
+  },
+  {
+    "n": 43,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseCommentsFlag</span>"
+    ]
+  },
+  {
+    "n": 44,
+    "tag": "td",
+    "text": "Allow one-line {1} and multi-line {2} comments (relaxed JSON syntax).",
+    "tokens": [
+      "<span class=\"tt\">// ...</span>",
+      "<span class=\"tt\">/* ... */</span>"
+    ]
+  },
+  {
+    "n": 45,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseNumbersAsStringsFlag</span>"
+    ]
+  },
+  {
+    "n": 46,
+    "tag": "td",
+    "text": "Parse numerical type values as strings.",
+    "tokens": []
+  },
+  {
+    "n": 47,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseTrailingCommasFlag</span>"
+    ]
+  },
+  {
+    "n": 48,
+    "tag": "td",
+    "text": "Allow trailing commas at the end of objects and arrays (relaxed JSON syntax).",
+    "tokens": []
+  },
+  {
+    "n": 49,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseNanAndInfFlag</span>"
+    ]
+  },
+  {
+    "n": 50,
+    "tag": "td",
+    "text": "Allow parsing {1}, {2}, {3}, {4} and {5} as {6} values (relaxed JSON syntax).",
+    "tokens": [
+      "<span class=\"tt\">NaN</span>",
+      "<span class=\"tt\">Inf</span>",
+      "<span class=\"tt\">Infinity</span>",
+      "<span class=\"tt\">-Inf</span>",
+      "<span class=\"tt\">-Infinity</span>",
+      "<span class=\"tt\">double</span>"
+    ]
+  },
+  {
+    "n": 51,
+    "tag": "p",
+    "text": "By using a non-type template parameter, instead of a function parameter, C++ compiler can generate code which is optimized for specified combinations, improving speed, and reducing code size (if only using a single specialization). The downside is the flags needed to be determined in compile-time.",
+    "tokens": []
+  },
+  {
+    "n": 52,
+    "tag": "p",
+    "text": "The {1} parameter defines what encoding is in the stream. This can be differed to the {2} of the {3}. See {4}Transcoding and Validation section for details.",
+    "tokens": [
+      "<span class=\"tt\">SourceEncoding</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a></span>",
+      "<span class=\"tt\">Document</span>",
+      "<a class=\"el\" href=\"#TranscodingAndValidation\" title=\"Transcoding and Validation\">Transcoding and Validation</a>"
+    ]
+  },
+  {
+    "n": 53,
+    "tag": "p",
+    "text": "And the {1} is type of input stream.",
+    "tokens": [
+      "<span class=\"tt\">InputStream</span>"
+    ]
+  },
+  {
+    "n": 54,
+    "tag": "h2",
+    "text": "Parse Error",
+    "tokens": []
+  },
+  {
+    "n": 55,
+    "tag": "p",
+    "text": "When the parse processing succeeded, the {1} contains the parse results. When there is an error, the original DOM is {2}. And the error state of parsing can be obtained by {3}, {4} and {5}.",
+    "tokens": [
+      "<span class=\"tt\">Document</span>",
+      "<em>unchanged</em>",
+      "<span class=\"tt\">bool HasParseError()</span>",
+      "<span class=\"tt\">ParseErrorCode GetParseError()</span>",
+      "<span class=\"tt\">size_t GetParseOffset()</span>"
+    ]
+  },
+  {
+    "n": 56,
+    "tag": "th",
+    "text": "Parse Error Code",
+    "tokens": []
+  },
+  {
+    "n": 57,
+    "tag": "th",
+    "text": "Description",
+    "tokens": []
+  },
+  {
+    "n": 58,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorNone</span>"
+    ]
+  },
+  {
+    "n": 59,
+    "tag": "td",
+    "text": "No error.",
+    "tokens": []
+  },
+  {
+    "n": 60,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorDocumentEmpty</span>"
+    ]
+  },
+  {
+    "n": 61,
+    "tag": "td",
+    "text": "The document is empty.",
+    "tokens": []
+  },
+  {
+    "n": 62,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorDocumentRootNotSingular</span>"
+    ]
+  },
+  {
+    "n": 63,
+    "tag": "td",
+    "text": "The document root must not follow by other values.",
+    "tokens": []
+  },
+  {
+    "n": 64,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorValueInvalid</span>"
+    ]
+  },
+  {
+    "n": 65,
+    "tag": "td",
+    "text": "Invalid value.",
+    "tokens": []
+  },
+  {
+    "n": 66,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorObjectMissName</span>"
+    ]
+  },
+  {
+    "n": 67,
+    "tag": "td",
+    "text": "Missing a name for object member.",
+    "tokens": []
+  },
+  {
+    "n": 68,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorObjectMissColon</span>"
+    ]
+  },
+  {
+    "n": 69,
+    "tag": "td",
+    "text": "Missing a colon after a name of object member.",
+    "tokens": []
+  },
+  {
+    "n": 70,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorObjectMissCommaOrCurlyBracket</span>"
+    ]
+  },
+  {
+    "n": 71,
+    "tag": "td",
+    "text": "Missing a comma or {1} after an object member.",
+    "tokens": [
+      "<span class=\"tt\">}</span>"
+    ]
+  },
+  {
+    "n": 72,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorArrayMissCommaOrSquareBracket</span>"
+    ]
+  },
+  {
+    "n": 73,
+    "tag": "td",
+    "text": "Missing a comma or {1} after an array element.",
+    "tokens": [
+      "<span class=\"tt\">]</span>"
+    ]
+  },
+  {
+    "n": 74,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorStringUnicodeEscapeInvalidHex</span>"
+    ]
+  },
+  {
+    "n": 75,
+    "tag": "td",
+    "text": "Incorrect hex digit after {1} escape in string.",
+    "tokens": [
+      "<span class=\"tt\">\\\\u</span>"
+    ]
+  },
+  {
+    "n": 76,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorStringUnicodeSurrogateInvalid</span>"
+    ]
+  },
+  {
+    "n": 77,
+    "tag": "td",
+    "text": "The surrogate pair in string is invalid.",
+    "tokens": []
+  },
+  {
+    "n": 78,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorStringEscapeInvalid</span>"
+    ]
+  },
+  {
+    "n": 79,
+    "tag": "td",
+    "text": "Invalid escape character in string.",
+    "tokens": []
+  },
+  {
+    "n": 80,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorStringMissQuotationMark</span>"
+    ]
+  },
+  {
+    "n": 81,
+    "tag": "td",
+    "text": "Missing a closing quotation mark in string.",
+    "tokens": []
+  },
+  {
+    "n": 82,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorStringInvalidEncoding</span>"
+    ]
+  },
+  {
+    "n": 83,
+    "tag": "td",
+    "text": "Invalid encoding in string.",
+    "tokens": []
+  },
+  {
+    "n": 84,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorNumberTooBig</span>"
+    ]
+  },
+  {
+    "n": 85,
+    "tag": "td",
+    "text": "Number too big to be stored in {1}.",
+    "tokens": [
+      "<span class=\"tt\">double</span>"
+    ]
+  },
+  {
+    "n": 86,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorNumberMissFraction</span>"
+    ]
+  },
+  {
+    "n": 87,
+    "tag": "td",
+    "text": "Miss fraction part in number.",
+    "tokens": []
+  },
+  {
+    "n": 88,
+    "tag": "td",
+    "text": "{1}",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorNumberMissExponent</span>"
+    ]
+  },
+  {
+    "n": 89,
+    "tag": "td",
+    "text": "Miss exponent in number.",
+    "tokens": []
+  },
+  {
+    "n": 90,
+    "tag": "p",
+    "text": "The offset of error is defined as the character number from beginning of stream. Currently RapidJSON does not keep track of line number.",
+    "tokens": []
+  },
+  {
+    "n": 91,
+    "tag": "p",
+    "text": "To get an error message, RapidJSON provided a English messages in {1}. User can customize it for other locales, or use a custom localization system.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/068-en_8h_source/\">rapidjson/error/en.h</a></span>"
+    ]
+  },
+  {
+    "n": 92,
+    "tag": "p",
+    "text": "Here shows an example of parse error handling.",
+    "tokens": []
+  },
+  {
+    "n": 93,
+    "tag": "div",
+    "text": "Whether a parse error has occured in the last parsing.",
+    "tokens": []
+  },
+  {
+    "n": 94,
+    "tag": "div",
+    "text": "Get the ParseErrorCode of last parsing.",
+    "tokens": []
+  },
+  {
+    "n": 95,
+    "tag": "div",
+    "text": "Get the position of last parsing error in input, 0 otherwise.",
+    "tokens": []
+  },
+  {
+    "n": 96,
+    "tag": "div",
+    "text": "Maps error code of parsing into error message.",
+    "tokens": []
+  },
+  {
+    "n": 97,
+    "tag": "h2",
+    "text": "In Situ Parsing",
+    "tokens": []
+  },
+  {
+    "n": 98,
+    "tag": "p",
+    "text": "From {1}:",
+    "tokens": [
+      "<a href=\"http://en.wikipedia.org/wiki/In_situ\">Wikipedia</a>"
+    ]
+  },
+  {
+    "n": 99,
+    "tag": "p",
+    "text": "{1} ... is a Latin phrase that translates literally to \"on site\" or \"in position\". It means \"locally\", \"on site\", \"on the premises\" or \"in place\" to describe an event where it takes place, and is used in many different contexts. ... (In computer science) An algorithm is said to be an in situ algorithm, or in-place algorithm, if the extra amount of memory required to execute the algorithm is O(1), that is, does not exceed a constant no matter how large the input. For example, heapsort is an in situ sorting algorithm.",
+    "tokens": [
+      "<em>In situ</em>"
+    ]
+  },
+  {
+    "n": 100,
+    "tag": "p",
+    "text": "In normal parsing process, a large overhead is to decode JSON strings and copy them to other buffers. {1} parsing decodes those JSON string at the place where it is stored. It is possible in JSON because the length of decoded string is always shorter than or equal to the one in JSON. In this context, decoding a JSON string means to process the escapes, such as {2}, {3}, etc., and add a null terminator ({4})at the end of string.",
+    "tokens": [
+      "<em>In situ</em>",
+      "<span class=\"tt\">\"\\n\"</span>",
+      "<span class=\"tt\">\"\\u1234\"</span>",
+      "<span class=\"tt\">'\\0'</span>"
+    ]
+  },
+  {
+    "n": 101,
+    "tag": "p",
+    "text": "The following diagrams compare normal and {1} parsing. The JSON string values contain pointers to the decoded string.",
+    "tokens": [
+      "<em>in situ</em>"
+    ]
+  },
+  {
+    "n": 102,
+    "tag": "p",
+    "text": "In normal parsing, the decoded string are copied to freshly allocated buffers. {1} (2 characters) is decoded as {2} (1 character). {3} (6 characters) is decoded as {4} (1 character).",
+    "tokens": [
+      "<span class=\"tt\">\"\\\\n\"</span>",
+      "<span class=\"tt\">\"\\n\"</span>",
+      "<span class=\"tt\">\"\\\\u0073\"</span>",
+      "<span class=\"tt\">\"s\"</span>"
+    ]
+  },
+  {
+    "n": 103,
+    "tag": "p",
+    "text": "{1} parsing just modified the original JSON. Updated characters are highlighted in the diagram. If the JSON string does not contain escape character, such as {2}, the parsing process merely replace the closing double quotation mark with a null character.",
+    "tokens": [
+      "<em>In situ</em>",
+      "<span class=\"tt\">\"msg\"</span>"
+    ]
+  },
+  {
+    "n": 104,
+    "tag": "p",
+    "text": "Since {1} parsing modify the input, the parsing API needs {2} instead of {3}.",
+    "tokens": [
+      "<em>in situ</em>",
+      "<span class=\"tt\">char*</span>",
+      "<span class=\"tt\">const char*</span>"
+    ]
+  },
+  {
+    "n": 105,
+    "tag": "p",
+    "text": "The JSON strings are marked as const-string. But they may not be really \"constant\". The life cycle of it depends on the JSON buffer.",
+    "tokens": []
+  },
+  {
+    "n": 106,
+    "tag": "p",
+    "text": "In situ parsing minimizes allocation overheads and memory copying. Generally this improves cache coherence, which is an important factor of performance in modern computer.",
+    "tokens": []
+  },
+  {
+    "n": 107,
+    "tag": "p",
+    "text": "There are some limitations of {1} parsing:",
+    "tokens": [
+      "<em>in situ</em>"
+    ]
+  },
+  {
+    "n": 108,
+    "tag": "li",
+    "text": "The whole JSON is in memory.",
+    "tokens": []
+  },
+  {
+    "n": 109,
+    "tag": "li",
+    "text": "The source encoding in stream and target encoding in document must be the same.",
+    "tokens": []
+  },
+  {
+    "n": 110,
+    "tag": "li",
+    "text": "The buffer need to be retained until the document is no longer used.",
+    "tokens": []
+  },
+  {
+    "n": 111,
+    "tag": "li",
+    "text": "If the DOM need to be used for long period after parsing, and there are few JSON strings in the DOM, retaining the buffer may be a memory waste.",
+    "tokens": []
+  },
+  {
+    "n": 112,
+    "tag": "p",
+    "text": "{1} parsing is mostly suitable for short-term JSON that only need to be processed once, and then be released from memory. In practice, these situation is very common, for example, deserializing JSON to C++ objects, processing web requests represented in JSON, etc.",
+    "tokens": [
+      "<em>In situ</em>"
+    ]
+  },
+  {
+    "n": 113,
+    "tag": "h2",
+    "text": "Transcoding and Validation",
+    "tokens": []
+  },
+  {
+    "n": 114,
+    "tag": "p",
+    "text": "RapidJSON supports conversion between Unicode formats (officially termed UCS Transformation Format) internally. During DOM parsing, the source encoding of the stream can be different from the encoding of the DOM. For example, the source stream contains a UTF-8 JSON, while the DOM is using UTF-16 encoding. There is an example code in {1}.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/06-stream/\" title=\"Stream\">EncodedInputStream</a>"
+    ]
+  },
+  {
+    "n": 115,
+    "tag": "p",
+    "text": "When writing a JSON from DOM to output stream, transcoding can also be used. An example is in {1}.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/06-stream/\" title=\"Stream\">EncodedOutputStream</a>"
+    ]
+  },
+  {
+    "n": 116,
+    "tag": "p",
+    "text": "During transcoding, the source string is decoded to into Unicode code points, and then the code points are encoded in the target format. During decoding, it will validate the byte sequence in the source string. If it is not a valid sequence, the parser will be stopped with {1} error.",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorStringInvalidEncoding</span>"
+    ]
+  },
+  {
+    "n": 117,
+    "tag": "p",
+    "text": "When the source encoding of stream is the same as encoding of DOM, by default, the parser will {1} validate the sequence. User may use {2} to force validation.",
+    "tokens": [
+      "<em>not</em>",
+      "<span class=\"tt\">kParseValidateEncodingFlag</span>"
+    ]
+  },
+  {
+    "n": 118,
+    "tag": "h1",
+    "text": "Techniques",
+    "tokens": []
+  },
+  {
+    "n": 119,
+    "tag": "p",
+    "text": "Some techniques about using DOM API is discussed here.",
+    "tokens": []
+  },
+  {
+    "n": 120,
+    "tag": "h2",
+    "text": "DOM as SAX Event Publisher",
+    "tokens": []
+  },
+  {
+    "n": 121,
+    "tag": "p",
+    "text": "In RapidJSON, stringifying a DOM with {1} may be look a little bit weired.",
+    "tokens": [
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 122,
+    "tag": "div",
+    "text": "Generate events of this value to a Handler.",
+    "tokens": []
+  },
+  {
+    "n": 123,
+    "tag": "div",
+    "text": "JSON writer.",
+    "tokens": []
+  },
+  {
+    "n": 124,
+    "tag": "p",
+    "text": "Actually, {1} is responsible for publishing SAX events about the value to the handler. With this design, {2} and {3} are decoupled. {4} can generate SAX events, and {5} can handle those events.",
+    "tokens": [
+      "<span class=\"tt\">Value::Accept()</span>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">Value</span>",
+      "<span class=\"tt\">Writer</span>"
+    ]
+  },
+  {
+    "n": 125,
+    "tag": "p",
+    "text": "User may create custom handlers for transforming the DOM into other formats. For example, a handler which converts the DOM into XML.",
+    "tokens": []
+  },
+  {
+    "n": 126,
+    "tag": "p",
+    "text": "For more about SAX events and handler, please refer to {1}.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/05-sax/\" title=\"SAX\">SAX</a>"
+    ]
+  },
+  {
+    "n": 127,
+    "tag": "h2",
+    "text": "User Buffer",
+    "tokens": []
+  },
+  {
+    "n": 128,
+    "tag": "p",
+    "text": "Some applications may try to avoid memory allocations whenever possible.",
+    "tokens": []
+  },
+  {
+    "n": 129,
+    "tag": "p",
+    "text": "{1} can support this by letting user to provide a buffer. The buffer can be on the program stack, or a \"scratch buffer\" which is statically allocated (a static/global array) for storing temporary data.",
+    "tokens": [
+      "<span class=\"tt\">MemoryPoolAllocator</span>"
+    ]
+  },
+  {
+    "n": 130,
+    "tag": "p",
+    "text": "{1} will use the user buffer to satisfy allocations. When the user buffer is used up, it will allocate a chunk of memory from the base allocator (by default the {2}).",
+    "tokens": [
+      "<span class=\"tt\">MemoryPoolAllocator</span>",
+      "<span class=\"tt\">CrtAllocator</span>"
+    ]
+  },
+  {
+    "n": 131,
+    "tag": "p",
+    "text": "Here is an example of using stack memory. The first allocator is for storing values, while the second allocator is for storing temporary data during parsing.",
+    "tokens": []
+  },
+  {
+    "n": 132,
+    "tag": "div",
+    "text": "Default memory allocator used by the parser and DOM.",
+    "tokens": []
+  },
+  {
+    "n": 133,
+    "tag": "p",
+    "text": "If the total size of allocation is less than 4096+1024 bytes during parsing, this code does not invoke any heap allocation (via {1} or {2}) at all.",
+    "tokens": [
+      "<span class=\"tt\">new</span>",
+      "<span class=\"tt\">malloc()</span>"
+    ]
+  },
+  {
+    "n": 134,
+    "tag": "p",
+    "text": "User can query the current memory consumption in bytes via {1}. And then user can determine a suitable size of user buffer.",
+    "tokens": [
+      "<span class=\"tt\">MemoryPoolAllocator::Size()</span>"
+    ]
+  }
+]

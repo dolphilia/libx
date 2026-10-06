@@ -1,0 +1,592 @@
+[
+  {
+    "n": 1,
+    "tag": "h2",
+    "text": "A fast JSON parser/generator for C++ with both SAX/DOM style API",
+    "tokens": []
+  },
+  {
+    "n": 2,
+    "tag": "p",
+    "text": "Tencent is pleased to support the open source community by making RapidJSON available.",
+    "tokens": []
+  },
+  {
+    "n": 3,
+    "tag": "p",
+    "text": "Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.",
+    "tokens": []
+  },
+  {
+    "n": 4,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/\">RapidJSON GitHub</a>"
+    ]
+  },
+  {
+    "n": 5,
+    "tag": "li",
+    "text": "RapidJSON Documentation",
+    "tokens": []
+  },
+  {
+    "n": 6,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"http://rapidjson.org/\">English</a>"
+    ]
+  },
+  {
+    "n": 7,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"http://rapidjson.org/zh-cn/\">简体中文</a>"
+    ]
+  },
+  {
+    "n": 8,
+    "tag": "li",
+    "text": "{1} with downloadable PDF/EPUB/MOBI, without API reference.",
+    "tokens": [
+      "<a href=\"https://www.gitbook.com/book/miloyip/rapidjson/\">GitBook</a>"
+    ]
+  },
+  {
+    "n": 9,
+    "tag": "h2",
+    "text": "Build status",
+    "tokens": []
+  },
+  {
+    "n": 10,
+    "tag": "th",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://travis-ci.org/miloyip/rapidjson\" title=\"Travis build status\">Linux</a>"
+    ]
+  },
+  {
+    "n": 11,
+    "tag": "th",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://ci.appveyor.com/project/miloyip/rapidjson/branch/master\" title=\"AppVeyor build status\">Windows</a>"
+    ]
+  },
+  {
+    "n": 12,
+    "tag": "th",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"https://coveralls.io/r/miloyip/rapidjson?branch=master\">Coveralls</a>"
+    ]
+  },
+  {
+    "n": 13,
+    "tag": "h2",
+    "text": "Introduction",
+    "tokens": []
+  },
+  {
+    "n": 14,
+    "tag": "p",
+    "text": "RapidJSON is a JSON parser and generator for C++. It was inspired by {1}.",
+    "tokens": [
+      "<a href=\"http://rapidxml.sourceforge.net/\">RapidXml</a>"
+    ]
+  },
+  {
+    "n": 15,
+    "tag": "li",
+    "text": "RapidJSON is {1} but {2}. It supports both SAX and DOM style API. The SAX parser is only a half thousand lines of code.",
+    "tokens": [
+      "<b>small</b>",
+      "<b>complete</b>"
+    ]
+  },
+  {
+    "n": 16,
+    "tag": "li",
+    "text": "RapidJSON is {1}. Its performance can be comparable to {2}. It also optionally supports SSE2/SSE4.2 for acceleration.",
+    "tokens": [
+      "<b>fast</b>",
+      "<span class=\"tt\">strlen()</span>"
+    ]
+  },
+  {
+    "n": 17,
+    "tag": "li",
+    "text": "RapidJSON is {1} and {2}. It does not depend on external libraries such as BOOST. It even does not depend on STL.",
+    "tokens": [
+      "<b>self-contained</b>",
+      "<b>header-only</b>"
+    ]
+  },
+  {
+    "n": 18,
+    "tag": "li",
+    "text": "RapidJSON is {1}. Each JSON value occupies exactly 16 bytes for most 32/64-bit machines (excluding text string). By default it uses a fast memory allocator, and the parser allocates memory compactly during parsing.",
+    "tokens": [
+      "<b>memory-friendly</b>"
+    ]
+  },
+  {
+    "n": 19,
+    "tag": "li",
+    "text": "RapidJSON is {1}. It supports UTF-8, UTF-16, UTF-32 (LE & BE), and their detection, validation and transcoding internally. For example, you can read a UTF-8 file and let RapidJSON transcode the JSON strings into UTF-16 in the DOM. It also supports surrogates and \"\\u0000\" (null character).",
+    "tokens": [
+      "<b>Unicode-friendly</b>"
+    ]
+  },
+  {
+    "n": 20,
+    "tag": "p",
+    "text": "More features can be read {1}.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/02-features/\" title=\"Features\">here</a>"
+    ]
+  },
+  {
+    "n": 21,
+    "tag": "p",
+    "text": "JSON(JavaScript Object Notation) is a light-weight data exchange format. RapidJSON should be in fully compliance with RFC7159/ECMA-404, with optional support of relaxed syntax. More information about JSON can be obtained at",
+    "tokens": []
+  },
+  {
+    "n": 22,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"http://json.org/\">Introducing JSON</a>"
+    ]
+  },
+  {
+    "n": 23,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"http://www.ietf.org/rfc/rfc7159.txt\">RFC7159: The JavaScript Object Notation (JSON) Data Interchange Format</a>"
+    ]
+  },
+  {
+    "n": 24,
+    "tag": "li",
+    "text": "{1}",
+    "tokens": [
+      "<a href=\"http://www.ecma-international.org/publications/standards/Ecma-404.htm\">Standard ECMA-404: The JSON Data Interchange Format</a>"
+    ]
+  },
+  {
+    "n": 25,
+    "tag": "h2",
+    "text": "Highlights in v1.1 (2016-8-25)",
+    "tokens": []
+  },
+  {
+    "n": 26,
+    "tag": "li",
+    "text": "Added {1}",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/08-pointer/\" title=\"Pointer\">JSON Pointer</a>"
+    ]
+  },
+  {
+    "n": 27,
+    "tag": "li",
+    "text": "Added {1}",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/09-schema/\" title=\"Schema\">JSON Schema</a>"
+    ]
+  },
+  {
+    "n": 28,
+    "tag": "li",
+    "text": "Added {1} (comment, trailing comma, NaN/Infinity)",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/04-dom/\" title=\"DOM\">relaxed JSON syntax</a>"
+    ]
+  },
+  {
+    "n": 29,
+    "tag": "li",
+    "text": "Iterating array/object with {1}",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/03-tutorial/\" title=\"Tutorial\">C++11 Range-based for loop</a>"
+    ]
+  },
+  {
+    "n": 30,
+    "tag": "li",
+    "text": "Reduce memory overhead of each {1} from 24 bytes to 16 bytes in x86-64 architecture.",
+    "tokens": [
+      "<span class=\"tt\">Value</span>"
+    ]
+  },
+  {
+    "n": 31,
+    "tag": "p",
+    "text": "For other changes please refer to {1}.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/128-md__c_h_a_n_g_e_l_o_g/\" title=\"Change Log\">change log</a>"
+    ]
+  },
+  {
+    "n": 32,
+    "tag": "h2",
+    "text": "Compatibility",
+    "tokens": []
+  },
+  {
+    "n": 33,
+    "tag": "p",
+    "text": "RapidJSON is cross-platform. Some platform/compiler combinations which have been tested are shown as follows.",
+    "tokens": []
+  },
+  {
+    "n": 34,
+    "tag": "li",
+    "text": "Visual C++ 2008/2010/2013 on Windows (32/64-bit)",
+    "tokens": []
+  },
+  {
+    "n": 35,
+    "tag": "li",
+    "text": "GNU C++ 3.8.x on Cygwin",
+    "tokens": []
+  },
+  {
+    "n": 36,
+    "tag": "li",
+    "text": "Clang 3.4 on Mac OS X (32/64-bit) and iOS",
+    "tokens": []
+  },
+  {
+    "n": 37,
+    "tag": "li",
+    "text": "Clang 3.4 on Android NDK",
+    "tokens": []
+  },
+  {
+    "n": 38,
+    "tag": "p",
+    "text": "Users can build and run the unit tests on their platform/compiler.",
+    "tokens": []
+  },
+  {
+    "n": 39,
+    "tag": "h2",
+    "text": "Installation",
+    "tokens": []
+  },
+  {
+    "n": 40,
+    "tag": "p",
+    "text": "RapidJSON is a header-only C++ library. Just copy the {1} folder to system or project's include path.",
+    "tokens": [
+      "<span class=\"tt\">include/rapidjson</span>"
+    ]
+  },
+  {
+    "n": 41,
+    "tag": "p",
+    "text": "RapidJSON uses following software as its dependencies:",
+    "tokens": []
+  },
+  {
+    "n": 42,
+    "tag": "li",
+    "text": "{1} as a general build tool",
+    "tokens": [
+      "<a href=\"https://cmake.org/\">CMake</a>"
+    ]
+  },
+  {
+    "n": 43,
+    "tag": "li",
+    "text": "(optional){1} to build documentation",
+    "tokens": [
+      "<a href=\"http://www.doxygen.org\">Doxygen</a>"
+    ]
+  },
+  {
+    "n": 44,
+    "tag": "li",
+    "text": "(optional){1} for unit and performance testing",
+    "tokens": [
+      "<a href=\"https://github.com/google/googletest\">googletest</a>"
+    ]
+  },
+  {
+    "n": 45,
+    "tag": "p",
+    "text": "To generate user documentation and run tests please proceed with the steps below:",
+    "tokens": []
+  },
+  {
+    "n": 46,
+    "tag": "li",
+    "text": "Execute {1} to get the files of thirdparty submodules (google test).",
+    "tokens": [
+      "<span class=\"tt\">git submodule update --init</span>"
+    ]
+  },
+  {
+    "n": 47,
+    "tag": "li",
+    "text": "Create directory called {1} in rapidjson source directory.",
+    "tokens": [
+      "<span class=\"tt\">build</span>"
+    ]
+  },
+  {
+    "n": 48,
+    "tag": "li",
+    "text": "Change to {1} directory and run {2} command to configure your build. Windows users can do the same with cmake-gui application.",
+    "tokens": [
+      "<span class=\"tt\">build</span>",
+      "<span class=\"tt\">cmake ..</span>"
+    ]
+  },
+  {
+    "n": 49,
+    "tag": "li",
+    "text": "On Windows, build the solution found in the build directory. On Linux, run {1} from the build directory.",
+    "tokens": [
+      "<span class=\"tt\">make</span>"
+    ]
+  },
+  {
+    "n": 50,
+    "tag": "p",
+    "text": "On successfull build you will find compiled test and example binaries in {1} directory. The generated documentation will be available in {2} directory of the build tree. To run tests after finished build please run {3} or {4} from your build tree. You can get detailed output using {5} command.",
+    "tokens": [
+      "<span class=\"tt\">bin</span>",
+      "<span class=\"tt\">doc/html</span>",
+      "<span class=\"tt\">make\ntest</span>",
+      "<span class=\"tt\">ctest</span>",
+      "<span class=\"tt\">ctest\n-V</span>"
+    ]
+  },
+  {
+    "n": 51,
+    "tag": "p",
+    "text": "It is possible to install library system-wide by running {1} command from the build tree with administrative privileges. This will install all files according to system preferences. Once RapidJSON is installed, it is possible to use it from other CMake projects by adding {2} line to your CMakeLists.txt.",
+    "tokens": [
+      "<span class=\"tt\">make install</span>",
+      "<span class=\"tt\">find_package(RapidJSON)</span>"
+    ]
+  },
+  {
+    "n": 52,
+    "tag": "h2",
+    "text": "Usage at a glance",
+    "tokens": []
+  },
+  {
+    "n": 53,
+    "tag": "p",
+    "text": "This simple example parses a JSON string into a document (DOM), make a simple modification of the DOM, and finally stringify the DOM to a JSON string.",
+    "tokens": []
+  },
+  {
+    "n": 54,
+    "tag": "div",
+    "text": "Parse JSON text from a read-only string (with Encoding conversion).",
+    "tokens": []
+  },
+  {
+    "n": 55,
+    "tag": "div",
+    "text": "Generate events of this value to a Handler.",
+    "tokens": []
+  },
+  {
+    "n": 56,
+    "tag": "div",
+    "text": "JSON writer.",
+    "tokens": []
+  },
+  {
+    "n": 57,
+    "tag": "div",
+    "text": "main RapidJSON namespace",
+    "tokens": []
+  },
+  {
+    "n": 58,
+    "tag": "div",
+    "text": "GenericValue with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 59,
+    "tag": "div",
+    "text": "String buffer with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 60,
+    "tag": "div",
+    "text": "GenericDocument with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 61,
+    "tag": "p",
+    "text": "Note that this example did not handle potential errors.",
+    "tokens": []
+  },
+  {
+    "n": 62,
+    "tag": "p",
+    "text": "The following diagram shows the process.",
+    "tokens": []
+  },
+  {
+    "n": 63,
+    "tag": "p",
+    "text": "More {1} are available:",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/tree/master/example\">examples</a>"
+    ]
+  },
+  {
+    "n": 64,
+    "tag": "li",
+    "text": "DOM API",
+    "tokens": []
+  },
+  {
+    "n": 65,
+    "tag": "li",
+    "text": "{1}: Basic usage of DOM API.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/tutorial/tutorial.cpp\">tutorial</a>"
+    ]
+  },
+  {
+    "n": 66,
+    "tag": "li",
+    "text": "SAX API",
+    "tokens": []
+  },
+  {
+    "n": 67,
+    "tag": "li",
+    "text": "{1}: Dumps all SAX events while parsing a JSON by {2}.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/simplereader/simplereader.cpp\">simplereader</a>",
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 68,
+    "tag": "li",
+    "text": "{1}: A command line tool to rewrite a JSON, with all whitespaces removed.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/condense/condense.cpp\">condense</a>"
+    ]
+  },
+  {
+    "n": 69,
+    "tag": "li",
+    "text": "{1}: A command line tool to rewrite a JSON with indents and newlines by {2}.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/pretty/pretty.cpp\">pretty</a>",
+      "<span class=\"tt\">PrettyWriter</span>"
+    ]
+  },
+  {
+    "n": 70,
+    "tag": "li",
+    "text": "{1}: A command line tool to capitalize strings in JSON.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/capitalize/capitalize.cpp\">capitalize</a>"
+    ]
+  },
+  {
+    "n": 71,
+    "tag": "li",
+    "text": "{1}: Parse a JSON message with SAX API.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/messagereader/messagereader.cpp\">messagereader</a>"
+    ]
+  },
+  {
+    "n": 72,
+    "tag": "li",
+    "text": "{1}: Serialize a C++ object into JSON with SAX API.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/serialize/serialize.cpp\">serialize</a>"
+    ]
+  },
+  {
+    "n": 73,
+    "tag": "li",
+    "text": "{1}: Implements a {2} which stringify SAX events into {3} (a kind of XML) format. The example is a command line tool which converts input JSON into JSONx format.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/jsonx/jsonx.cpp\">jsonx</a>",
+      "<span class=\"tt\">JsonxWriter</span>",
+      "<a href=\"https://www-01.ibm.com/support/knowledgecenter/SS9H2Y_7.1.0/com.ibm.dp.doc/json_jsonx.html\">JSONx</a>"
+    ]
+  },
+  {
+    "n": 74,
+    "tag": "li",
+    "text": "Schema",
+    "tokens": []
+  },
+  {
+    "n": 75,
+    "tag": "li",
+    "text": "{1} : A command line tool to validate a JSON with a JSON schema.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/schemavalidator/schemavalidator.cpp\">schemavalidator</a>"
+    ]
+  },
+  {
+    "n": 76,
+    "tag": "li",
+    "text": "Advanced",
+    "tokens": []
+  },
+  {
+    "n": 77,
+    "tag": "li",
+    "text": "{1}: A modified version of {2} to automatically handle JSON with any UTF encodings.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/prettyauto/prettyauto.cpp\">prettyauto</a>",
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/pretty/pretty.cpp\">pretty</a>"
+    ]
+  },
+  {
+    "n": 78,
+    "tag": "li",
+    "text": "{1}: Implements an {2} which can parse JSON in parts, using C++11 thread.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/parsebyparts/parsebyparts.cpp\">parsebyparts</a>",
+      "<span class=\"tt\">AsyncDocumentParser</span>"
+    ]
+  },
+  {
+    "n": 79,
+    "tag": "li",
+    "text": "{1}: A command line tool to remove all values with user-specified key.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/filterkey/filterkey.cpp\">filterkey</a>"
+    ]
+  },
+  {
+    "n": 80,
+    "tag": "li",
+    "text": "{1}: Same tool as above, but it demonstrates how to use a generator to populate a {2}.",
+    "tokens": [
+      "<a href=\"https://github.com/miloyip/rapidjson/blob/master/example/filterkeydom/filterkeydom.cpp\">filterkeydom</a>",
+      "<span class=\"tt\">Document</span>"
+    ]
+  }
+]

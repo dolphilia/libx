@@ -1,0 +1,428 @@
+{
+  "status": "draft-not-reviewed",
+  "sentences": [
+    {
+      "n": 1,
+      "source": "In RapidJSON, {1} is a concept for reading/writing JSON. Here we first show how to use streams provided. And then see how to create a custom stream.",
+      "ja": "RapidJSONでは、{1}はJSONを読み書きするための概念です。まず、用意されているストリームの使い方を示し、次に独自のストリームの作り方を説明します。"
+    },
+    {
+      "n": 2,
+      "source": "Memory Streams",
+      "ja": "メモリーストリーム"
+    },
+    {
+      "n": 3,
+      "source": "Memory streams store JSON in memory.",
+      "ja": "メモリーストリームは、JSONをメモリー内へ保存します。"
+    },
+    {
+      "n": 4,
+      "source": "StringStream (Input)",
+      "ja": "StringStream（入力）"
+    },
+    {
+      "n": 5,
+      "source": "{1} is the most basic input stream. It represents a complete, read-only JSON stored in memory. It is defined in {2}.",
+      "ja": "{1}は、最も基本的な入力ストリームです。メモリー内に保存された、完全な読み取り専用のJSONを表します。{2}に定義されています。"
+    },
+    {
+      "n": 6,
+      "source": "Parse JSON text from an input stream (with Encoding conversion).",
+      "ja": "入力ストリームからJSONテキストを解析します（エンコーディング変換あり）。"
+    },
+    {
+      "n": 7,
+      "source": "main RapidJSON namespace",
+      "ja": "RapidJSONの主な名前空間。"
+    },
+    {
+      "n": 8,
+      "source": "String stream with UTF8 encoding.",
+      "ja": "UTF8エンコーディングの文字列ストリーム。"
+    },
+    {
+      "n": 9,
+      "source": "GenericDocument with UTF8 encoding.",
+      "ja": "UTF8エンコーディングのGenericDocument。"
+    },
+    {
+      "n": 10,
+      "source": "Since this is very common usage, {1} is provided to do exactly the same as above:",
+      "ja": "これは非常によくある使い方なので、上とまったく同じ処理を行う{1}が用意されています。"
+    },
+    {
+      "n": 11,
+      "source": "Parse JSON text from a read-only string (with Encoding conversion).",
+      "ja": "読み取り専用文字列からJSONテキストを解析します（エンコーディング変換あり）。"
+    },
+    {
+      "n": 12,
+      "source": "Note that, {1} is a typedef of {2}, user may use another encodings to represent the character set of the stream.",
+      "ja": "{1}は{2}のtypedefです。ストリームの文字集合を表すために、別のエンコーディングを使うこともできます。"
+    },
+    {
+      "n": 13,
+      "source": "StringBuffer (Output)",
+      "ja": "StringBuffer（出力）"
+    },
+    {
+      "n": 14,
+      "source": "{1} is a simple output stream. It allocates a memory buffer for writing the whole JSON. Use {2} to obtain the buffer.",
+      "ja": "{1}は、簡単な出力ストリームです。JSON全体を書き込むためのメモリーバッファーを確保します。バッファーの取得には{2}を使います。"
+    },
+    {
+      "n": 15,
+      "source": "Generate events of this value to a Handler.",
+      "ja": "この値に対応するイベントをHandlerへ渡します。"
+    },
+    {
+      "n": 16,
+      "source": "JSON writer.",
+      "ja": "JSONライター。"
+    },
+    {
+      "n": 17,
+      "source": "String buffer with UTF8 encoding.",
+      "ja": "UTF8エンコーディングの文字列バッファー。"
+    },
+    {
+      "n": 18,
+      "source": "When the buffer is full, it will increases the capacity automatically. The default capacity is 256 characters (256 bytes for UTF8, 512 bytes for UTF16, etc.). User can provide an allocator and a initial capacity.",
+      "ja": "バッファーがいっぱいになると、容量を自動的に増やします。既定の容量は256文字です（UTF8では256バイト、UTF16では512バイトなど）。アロケーターと初期容量を指定できます。"
+    },
+    {
+      "n": 19,
+      "source": "By default, {1} will instantiate an internal allocator.",
+      "ja": "既定では、{1}は内部アロケーターのインスタンスを作成します。"
+    },
+    {
+      "n": 20,
+      "source": "Similarly, {1} is a typedef of {2}.",
+      "ja": "同様に、{1}は{2}のtypedefです。"
+    },
+    {
+      "n": 21,
+      "source": "File Streams",
+      "ja": "ファイルストリーム"
+    },
+    {
+      "n": 22,
+      "source": "When parsing a JSON from file, you may read the whole JSON into memory and use {1} above.",
+      "ja": "ファイルからJSONを解析する場合は、JSON全体をメモリーへ読み込み、上の{1}を使えます。"
+    },
+    {
+      "n": 23,
+      "source": "However, if the JSON is big, or memory is limited, you can use {1}. It only read a part of JSON from file into buffer, and then let the part be parsed. If it runs out of characters in the buffer, it will read the next part from file.",
+      "ja": "ただし、JSONが大きい場合やメモリーが限られる場合には、{1}を使えます。ファイルからJSONの一部だけをバッファーへ読み込み、その部分を解析します。バッファー内の文字を使い切ると、ファイルから次の部分を読み込みます。"
+    },
+    {
+      "n": 24,
+      "source": "FileReadStream (Input)",
+      "ja": "FileReadStream（入力）"
+    },
+    {
+      "n": 25,
+      "source": "{1} reads the file via a {2} pointer. And user need to provide a buffer.",
+      "ja": "{1}は、{2}ポインターを通じてファイルを読みます。バッファーは利用者が用意する必要があります。"
+    },
+    {
+      "n": 26,
+      "source": "File byte stream for input using fread().",
+      "ja": "fread()を使う入力用のファイルバイトストリーム。"
+    },
+    {
+      "n": 27,
+      "source": "Different from string streams, {1} is byte stream. It does not handle encodings. If the file is not UTF-8, the byte stream can be wrapped in a {2}. It will be discussed very soon.",
+      "ja": "文字列ストリームと異なり、{1}はバイトストリームなので、エンコーディングは扱いません。ファイルがUTF-8でなければ、バイトストリームを{2}で包めます。これはすぐ後で説明します。"
+    },
+    {
+      "n": 28,
+      "source": "Apart from reading file, user can also use {1} to read {2}.",
+      "ja": "ファイルだけでなく、{1}で{2}も読み取れます。"
+    },
+    {
+      "n": 29,
+      "source": "FileWriteStream (Output)",
+      "ja": "FileWriteStream（出力）"
+    },
+    {
+      "n": 30,
+      "source": "{1} is buffered output stream. Its usage is very similar to {2}.",
+      "ja": "{1}は、バッファー付きの出力ストリームです。使い方は{2}とよく似ています。"
+    },
+    {
+      "n": 31,
+      "source": "Wrapper of C file stream for input using fread().",
+      "ja": "fread()を使う入力用のCファイルストリームのラッパー。"
+    },
+    {
+      "n": 32,
+      "source": "It can also directs the output to {1}.",
+      "ja": "出力を{1}へ送ることもできます。"
+    },
+    {
+      "n": 33,
+      "source": "iostream Wrapper",
+      "ja": "iostreamラッパー"
+    },
+    {
+      "n": 34,
+      "source": "Due to users' requests, RapidJSON provided official wrappers for {1} and {2}. However, please note that the performance will be much lower than the other streams above.",
+      "ja": "利用者の要望に応え、RapidJSONは{1}と{2}の公式ラッパーを提供しています。ただし、上記の他のストリームより性能が大幅に低くなることに注意してください。"
+    },
+    {
+      "n": 35,
+      "source": "IStreamWrapper",
+      "ja": "IStreamWrapper"
+    },
+    {
+      "n": 36,
+      "source": "{1} wraps any class drived from {2}, such as {3}, {4}, {5}, {6}, into RapidJSON's input stream.",
+      "ja": "{1}は、{3}、{4}、{5}、{6}など、{2}から派生したクラスをRapidJSONの入力ストリームへ変換します。"
+    },
+    {
+      "n": 37,
+      "source": "For classes derived from {1}, use {2}.",
+      "ja": "{1}から派生したクラスには、{2}を使ってください。"
+    },
+    {
+      "n": 38,
+      "source": "OStreamWrapper",
+      "ja": "OStreamWrapper"
+    },
+    {
+      "n": 39,
+      "source": "Similarly, {1} wraps any class derived from {2}, such as {3}, {4}, {5}, {6}, into RapidJSON's input stream.",
+      "ja": "同様に、{1}は、{3}、{4}、{5}、{6}など、{2}から派生したクラスをRapidJSONの入力ストリームへ変換します。"
+    },
+    {
+      "n": 40,
+      "source": "For classes derived from {1}, use {2}.",
+      "ja": "{1}から派生したクラスには、{2}を使ってください。"
+    },
+    {
+      "n": 41,
+      "source": "Encoded Streams",
+      "ja": "エンコーディング付きストリーム"
+    },
+    {
+      "n": 42,
+      "source": "Encoded streams do not contain JSON itself, but they wrap byte streams to provide basic encoding/decoding function.",
+      "ja": "エンコーディング付きストリーム自体はJSONを保持せず、バイトストリームを包んで基本的な符号化・復号機能を提供します。"
+    },
+    {
+      "n": 43,
+      "source": "As mentioned above, UTF-8 byte streams can be read directly. However, UTF-16 and UTF-32 have endian issue. To handle endian correctly, it needs to convert bytes into characters (e.g. {1} for UTF-16) while reading, and characters into bytes while writing.",
+      "ja": "前述のように、UTF-8のバイトストリームは直接読み取れます。ただし、UTF-16とUTF-32にはバイト順の問題があります。バイト順を正しく扱うには、読み取り時にバイトを文字（UTF-16なら{1}など）へ変換し、書き込み時には文字をバイトへ変換する必要があります。"
+    },
+    {
+      "n": 44,
+      "source": "Besides, it also need to handle {1}. When reading from a byte stream, it is needed to detect or just consume the BOM if exists. When writing to a byte stream, it can optionally write BOM.",
+      "ja": "さらに、{1}も扱う必要があります。バイトストリームから読み取るときは、BOMがあれば検出するか読み飛ばします。バイトストリームへ書き込むときは、任意でBOMを出力できます。"
+    },
+    {
+      "n": 45,
+      "source": "If the encoding of stream is known in compile-time, you may use {1} and {2}. If the stream can be UTF-8, UTF-16LE, UTF-16BE, UTF-32LE, UTF-32BE JSON, and it is only known in runtime, you may use {3} and {4}. These streams are defined in {5}.",
+      "ja": "ストリームのエンコーディングがコンパイル時に分かる場合は、{1}と{2}を使えます。JSONストリームがUTF-8、UTF-16LE、UTF-16BE、UTF-32LE、UTF-32BEのいずれかで、それが実行時にしか分からない場合は、{3}と{4}を使えます。これらのストリームは{5}に定義されています。"
+    },
+    {
+      "n": 46,
+      "source": "Note that, these encoded streams can be applied to streams other than file. For example, you may have a file in memory, or a custom byte stream, be wrapped in encoded streams.",
+      "ja": "これらのエンコーディング付きストリームは、ファイル以外のストリームにも適用できます。たとえば、メモリー内のファイルや独自のバイトストリームを包めます。"
+    },
+    {
+      "n": 47,
+      "source": "EncodedInputStream",
+      "ja": "EncodedInputStream"
+    },
+    {
+      "n": 48,
+      "source": "{1} has two template parameters. The first one is a {2} class, such as {3}, {4}, defined in {5}. The second one is the class of stream to be wrapped.",
+      "ja": "{1}にはテンプレート引数が2つあります。第1引数は、{5}に定義された{3}や{4}などの{2}クラスです。第2引数は、包むストリームのクラスです。"
+    },
+    {
+      "n": 49,
+      "source": "Input byte stream wrapper with a statically bound encoding.",
+      "ja": "エンコーディングを静的に指定した、入力バイトストリームのラッパー。"
+    },
+    {
+      "n": 50,
+      "source": "UTF-16 little endian encoding.",
+      "ja": "UTF-16リトルエンディアンのエンコーディング。"
+    },
+    {
+      "n": 51,
+      "source": "EncodedOutputStream",
+      "ja": "EncodedOutputStream"
+    },
+    {
+      "n": 52,
+      "source": "{1} is similar but it has a {2} parameter in the constructor, controlling whether to write BOM into output byte stream.",
+      "ja": "{1}も同様ですが、コンストラクターに{2}引数があり、出力バイトストリームへBOMを書き込むかどうかを制御します。"
+    },
+    {
+      "n": 53,
+      "source": "Output byte stream wrapper with statically bound encoding.",
+      "ja": "エンコーディングを静的に指定した、出力バイトストリームのラッパー。"
+    },
+    {
+      "n": 54,
+      "source": "UTF-8 encoding.",
+      "ja": "UTF-8エンコーディング。"
+    },
+    {
+      "n": 55,
+      "source": "AutoUTFInputStream",
+      "ja": "AutoUTFInputStream"
+    },
+    {
+      "n": 56,
+      "source": "Sometimes an application may want to handle all supported JSON encoding. {1} will detection encoding by BOM first. If BOM is unavailable, it will use characteristics of valid JSON to make detection. If neither method success, it falls back to the UTF type provided in constructor.",
+      "ja": "対応するすべてのJSONエンコーディングを扱いたい場合があります。{1}は、まずBOMでエンコーディングを検出します。BOMがなければ、妥当なJSONの特徴を利用して検出します。どちらの方法でも検出できなければ、コンストラクターで指定したUTF型へフォールバックします。"
+    },
+    {
+      "n": 57,
+      "source": "Since the characters (code units) may be 8-bit, 16-bit or 32-bit. {1} requires a character type which can hold at least 32-bit. We may use {2}, as in the template parameter:",
+      "ja": "文字（コード単位）は8ビット、16ビット、32ビットのいずれかになり得るため、{1}は少なくとも32ビットを保持できる文字型を必要とします。次のテンプレート引数のように、{2}を使えます。"
+    },
+    {
+      "n": 58,
+      "source": "Input stream wrapper with dynamically bound encoding and automatic encoding detection.",
+      "ja": "エンコーディングを動的に指定し、自動検出する入力ストリームのラッパー。"
+    },
+    {
+      "n": 59,
+      "source": "Dynamically select encoding according to stream's runtime-specified UTF encoding type.",
+      "ja": "ストリームの実行時指定のUTFエンコーディング型に応じ、エンコーディングを動的に選択します。"
+    },
+    {
+      "n": 60,
+      "source": "When specifying the encoding of stream, uses {1} as in {2} above.",
+      "ja": "ストリームのエンコーディングを指定するときは、上の{2}のように{1}を使います。"
+    },
+    {
+      "n": 61,
+      "source": "You can obtain the type of UTF via {1}. And check whether a BOM is found by {2}",
+      "ja": "{1}でUTFの種類を取得できます。{2}でBOMが見つかったかどうかを確認できます。"
+    },
+    {
+      "n": 62,
+      "source": "AutoUTFOutputStream",
+      "ja": "AutoUTFOutputStream"
+    },
+    {
+      "n": 63,
+      "source": "Similarly, to choose encoding for output during runtime, we can use {1}. This class is not automatic {2}. You need to specify the UTF type and whether to write BOM in runtime.",
+      "ja": "同様に、実行時に出力エンコーディングを選ぶには、{1}を使えます。このクラスは{2}自動的というわけではありません。UTFの種類とBOMを出力するかどうかを、実行時に指定する必要があります。"
+    },
+    {
+      "n": 64,
+      "source": "Output stream wrapper with dynamically bound encoding and automatic encoding detection.",
+      "ja": "エンコーディングを動的に指定し、自動検出する出力ストリームのラッパー。"
+    },
+    {
+      "n": 65,
+      "source": "Runtime-specified UTF encoding type of a stream.",
+      "ja": "ストリームの実行時指定のUTFエンコーディング型。"
+    },
+    {
+      "n": 66,
+      "source": "{1} and {2} is more convenient than {3} and {4}. They just incur a little bit runtime overheads.",
+      "ja": "{1}と{2}は、{3}と{4}より便利で、実行時のオーバーヘッドも少量です。"
+    },
+    {
+      "n": 67,
+      "source": "Custom Stream",
+      "ja": "独自のストリーム"
+    },
+    {
+      "n": 68,
+      "source": "In addition to memory/file streams, user can create their own stream classes which fits RapidJSON's API. For example, you may create network stream, stream from compressed file, etc.",
+      "ja": "メモリーストリームやファイルストリーム以外にも、RapidJSONのAPIに適合する独自のストリームクラスを作れます。ネットワークストリームや圧縮ファイル用ストリームなどが例です。"
+    },
+    {
+      "n": 69,
+      "source": "RapidJSON combines different types using templates. A class containing all required interface can be a stream. The {1} interface is defined in comments of {2}:",
+      "ja": "RapidJSONはテンプレートでさまざまな型を組み合わせます。必要なインターフェースをすべて備えるクラスはストリームとして使えます。{1}のインターフェースは、{2}のコメントに定義されています。"
+    },
+    {
+      "n": 70,
+      "source": "Concept for reading and writing characters.",
+      "ja": "文字の読み書きの概念。"
+    },
+    {
+      "n": 71,
+      "source": "For input stream, they must implement {1}, {2} and {3}. For output stream, they must implement {4} and {5}. There are two special interface, {6} and {7}, which are only for {8} parsing. Normal streams do not implement them. However, if the interface is not needed for a particular stream, it is still need to a dummy implementation, otherwise will generate compilation error.",
+      "ja": "入力ストリームには{1}、{2}、{3}、出力ストリームには{4}と{5}の実装が必要です。{8}解析だけに使う特別なインターフェースとして、{6}と{7}があります。通常のストリームはこれらを実装しません。ただし、特定のストリームでそのインターフェースを使わなくても、ダミーの実装が必要です。そうしなければコンパイルエラーになります。"
+    },
+    {
+      "n": 72,
+      "source": "Example: istream wrapper",
+      "ja": "例：istreamラッパー"
+    },
+    {
+      "n": 73,
+      "source": "The following example is a simple wrapper of {1}, which only implements 3 functions.",
+      "ja": "以下は、3つの関数だけを実装する、簡単な{1}のラッパーの例です。"
+    },
+    {
+      "n": 74,
+      "source": "User can use it to wrap instances of {1}, {2}.",
+      "ja": "{1}や{2}のインスタンスを包むために使えます。"
+    },
+    {
+      "n": 75,
+      "source": "Note that, this implementation may not be as efficient as RapidJSON's memory or file streams, due to internal overheads of the standard library.",
+      "ja": "標準ライブラリー内部のオーバーヘッドにより、この実装はRapidJSONのメモリーストリームやファイルストリームほど効率的でない場合があります。"
+    },
+    {
+      "n": 76,
+      "source": "Example: ostream wrapper",
+      "ja": "例：ostreamラッパー"
+    },
+    {
+      "n": 77,
+      "source": "The following example is a simple wrapper of {1}, which only implements 2 functions.",
+      "ja": "以下は、2つの関数だけを実装する、簡単な{1}のラッパーの例です。"
+    },
+    {
+      "n": 78,
+      "source": "User can use it to wrap instances of {1}, {2}.",
+      "ja": "{1}や{2}のインスタンスを包むために使えます。"
+    },
+    {
+      "n": 79,
+      "source": "Note that, this implementation may not be as efficient as RapidJSON's memory or file streams, due to internal overheads of the standard library.",
+      "ja": "標準ライブラリー内部のオーバーヘッドにより、この実装はRapidJSONのメモリーストリームやファイルストリームほど効率的でない場合があります。"
+    },
+    {
+      "n": 80,
+      "source": "Summary",
+      "ja": "まとめ"
+    },
+    {
+      "n": 81,
+      "source": "This section describes stream classes available in RapidJSON. Memory streams are simple. File stream can reduce the memory required during JSON parsing and generation, if the JSON is stored in file system. Encoded streams converts between byte streams and character streams. Finally, user may create custom streams using a simple interface.",
+      "ja": "この節では、RapidJSONで利用できるストリームクラスを説明しました。メモリーストリームは単純です。JSONをファイルシステムに保存する場合、ファイルストリームによって解析・生成中に必要なメモリーを減らせます。エンコーディング付きストリームは、バイトストリームと文字ストリームの間で変換します。最後に、簡単なインターフェースで独自のストリームを作れます。"
+    }
+  ],
+  "tokenTranslations": {
+    "small": "小さく",
+    "complete": "機能が充実",
+    "fast": "高速",
+    "self-contained": "自己完結",
+    "header-only": "ヘッダーファイルだけの構成",
+    "memory-friendly": "メモリー効率に優れています",
+    "Unicode-friendly": "Unicodeを扱いやすい設計",
+    "here": "こちら",
+    "English": "英語",
+    "Introducing JSON": "JSONの紹介",
+    "relaxed JSON syntax": "緩和されたJSON構文",
+    "C++11 Range-based for loop": "C++11の範囲ベースのforループ",
+    "change log": "変更履歴",
+    "examples": "サンプル",
+    "byte order mark (BOM)": "バイト順マーク（BOM）",
+    "per se": "それ自体で"
+  }
+}

@@ -1,0 +1,1294 @@
+[
+  {
+    "n": 1,
+    "text": "Document Object Model(DOM) is an in-memory representation of JSON for query and manipulation. The basic usage of DOM is described in "
+  },
+  {
+    "n": 2,
+    "text": "Tutorial"
+  },
+  {
+    "n": 3,
+    "text": ". This section will describe some details and more advanced usages."
+  },
+  {
+    "n": 4,
+    "text": "\nTemplate"
+  },
+  {
+    "n": 5,
+    "text": "In the tutorial, "
+  },
+  {
+    "n": 6,
+    "text": "Value"
+  },
+  {
+    "n": 7,
+    "text": " and "
+  },
+  {
+    "n": 8,
+    "text": "Document"
+  },
+  {
+    "n": 9,
+    "text": " was used. Similarly to "
+  },
+  {
+    "n": 10,
+    "text": "std::string"
+  },
+  {
+    "n": 11,
+    "text": ", these are actually "
+  },
+  {
+    "n": 12,
+    "text": "typedef"
+  },
+  {
+    "n": 13,
+    "text": " of template classes:"
+  },
+  {
+    "n": 14,
+    "text": "A document for parsing JSON text as DOM."
+  },
+  {
+    "n": 15,
+    "text": "Represents a JSON value. Use Value for UTF8 encoding and default allocator."
+  },
+  {
+    "n": 16,
+    "text": "main RapidJSON namespace"
+  },
+  {
+    "n": 17,
+    "text": "GenericValue with UTF8 encoding."
+  },
+  {
+    "n": 18,
+    "text": "GenericDocument with UTF8 encoding."
+  },
+  {
+    "n": 19,
+    "text": " fragment "
+  },
+  {
+    "n": 20,
+    "text": "User can customize these template parameters."
+  },
+  {
+    "n": 21,
+    "text": "\nEncoding"
+  },
+  {
+    "n": 22,
+    "text": "The "
+  },
+  {
+    "n": 23,
+    "text": "Encoding"
+  },
+  {
+    "n": 24,
+    "text": " parameter specifies the encoding of JSON String value in memory. Possible options are "
+  },
+  {
+    "n": 25,
+    "text": "UTF8"
+  },
+  {
+    "n": 26,
+    "text": ", "
+  },
+  {
+    "n": 27,
+    "text": "UTF16"
+  },
+  {
+    "n": 28,
+    "text": ", "
+  },
+  {
+    "n": 29,
+    "text": "UTF32"
+  },
+  {
+    "n": 30,
+    "text": ". Note that, these 3 types are also template class. "
+  },
+  {
+    "n": 31,
+    "text": "UTF8<>"
+  },
+  {
+    "n": 32,
+    "text": " is "
+  },
+  {
+    "n": 33,
+    "text": "UTF8<char>"
+  },
+  {
+    "n": 34,
+    "text": ", which means using char to store the characters. You may refer to "
+  },
+  {
+    "n": 35,
+    "text": "Encoding"
+  },
+  {
+    "n": 36,
+    "text": " for details."
+  },
+  {
+    "n": 37,
+    "text": "Suppose a Windows application would query localization strings stored in JSON files. Unicode-enabled functions in Windows use UTF-16 (wide character) encoding. No matter what encoding was used in JSON files, we can store the strings in UTF-16 in memory."
+  },
+  {
+    "n": 38,
+    "text": "Input stream wrapper with dynamically bound encoding and automatic encoding detection."
+  },
+  {
+    "n": 39,
+    "text": "File byte stream for input using fread()."
+  },
+  {
+    "n": 40,
+    "text": "Dynamically select encoding according to stream's runtime-specified UTF encoding type."
+  },
+  {
+    "n": 41,
+    "text": " fragment "
+  },
+  {
+    "n": 42,
+    "text": "\nAllocator"
+  },
+  {
+    "n": 43,
+    "text": "The "
+  },
+  {
+    "n": 44,
+    "text": "Allocator"
+  },
+  {
+    "n": 45,
+    "text": " defines which allocator class is used when allocating/deallocating memory for "
+  },
+  {
+    "n": 46,
+    "text": "Document"
+  },
+  {
+    "n": 47,
+    "text": "/"
+  },
+  {
+    "n": 48,
+    "text": "Value"
+  },
+  {
+    "n": 49,
+    "text": ". "
+  },
+  {
+    "n": 50,
+    "text": "Document"
+  },
+  {
+    "n": 51,
+    "text": " owns, or references to an "
+  },
+  {
+    "n": 52,
+    "text": "Allocator"
+  },
+  {
+    "n": 53,
+    "text": " instance. On the other hand, "
+  },
+  {
+    "n": 54,
+    "text": "Value"
+  },
+  {
+    "n": 55,
+    "text": " does not do so, in order to reduce memory consumption."
+  },
+  {
+    "n": 56,
+    "text": "The default allocator used in "
+  },
+  {
+    "n": 57,
+    "text": "GenericDocument"
+  },
+  {
+    "n": 58,
+    "text": " is "
+  },
+  {
+    "n": 59,
+    "text": "MemoryPoolAllocator"
+  },
+  {
+    "n": 60,
+    "text": ". This allocator actually allocate memory sequentially, and cannot deallocate one by one. This is very suitable when parsing a JSON into a DOM tree."
+  },
+  {
+    "n": 61,
+    "text": "Another allocator is "
+  },
+  {
+    "n": 62,
+    "text": "CrtAllocator"
+  },
+  {
+    "n": 63,
+    "text": ", of which CRT is short for C RunTime library. This allocator simply calls the standard "
+  },
+  {
+    "n": 64,
+    "text": "malloc()"
+  },
+  {
+    "n": 65,
+    "text": "/"
+  },
+  {
+    "n": 66,
+    "text": "realloc()"
+  },
+  {
+    "n": 67,
+    "text": "/"
+  },
+  {
+    "n": 68,
+    "text": "free()"
+  },
+  {
+    "n": 69,
+    "text": ". When there is a lot of add and remove operations, this allocator may be preferred. But this allocator is far less efficient than "
+  },
+  {
+    "n": 70,
+    "text": "MemoryPoolAllocator"
+  },
+  {
+    "n": 71,
+    "text": "."
+  },
+  {
+    "n": 72,
+    "text": "\nParsing"
+  },
+  {
+    "n": 73,
+    "text": "Document"
+  },
+  {
+    "n": 74,
+    "text": " provides several functions for parsing. In below, (1) is the fundamental function, while the others are helpers which call (1)."
+  },
+  {
+    "n": 75,
+    "text": "Parse JSON text from an input stream (with Encoding conversion)."
+  },
+  {
+    "n": 76,
+    "text": "Parse JSON text from a read-only string (with Encoding conversion)."
+  },
+  {
+    "n": 77,
+    "text": "Parse JSON text from a mutable string."
+  },
+  {
+    "n": 78,
+    "text": " fragment "
+  },
+  {
+    "n": 79,
+    "text": "The examples of "
+  },
+  {
+    "n": 80,
+    "text": "tutorial"
+  },
+  {
+    "n": 81,
+    "text": " uses (8) for normal parsing of string. The examples of "
+  },
+  {
+    "n": 82,
+    "text": "stream"
+  },
+  {
+    "n": 83,
+    "text": " uses the first three. "
+  },
+  {
+    "n": 84,
+    "text": "In situ"
+  },
+  {
+    "n": 85,
+    "text": " parsing will be described soon."
+  },
+  {
+    "n": 86,
+    "text": "The "
+  },
+  {
+    "n": 87,
+    "text": "parseFlags"
+  },
+  {
+    "n": 88,
+    "text": " are combination of the following bit-flags:"
+  },
+  {
+    "n": 89,
+    "text": "Parse flags  "
+  },
+  {
+    "n": 90,
+    "text": "Meaning  "
+  },
+  {
+    "n": 91,
+    "text": "kParseNoFlags"
+  },
+  {
+    "n": 92,
+    "text": "No flag is set.  "
+  },
+  {
+    "n": 93,
+    "text": "kParseDefaultFlags"
+  },
+  {
+    "n": 94,
+    "text": "Default parse flags. It is equal to macro "
+  },
+  {
+    "n": 95,
+    "text": "RAPIDJSON_PARSE_DEFAULT_FLAGS"
+  },
+  {
+    "n": 96,
+    "text": ", which is defined as "
+  },
+  {
+    "n": 97,
+    "text": "kParseNoFlags"
+  },
+  {
+    "n": 98,
+    "text": ".  "
+  },
+  {
+    "n": 99,
+    "text": "kParseInsituFlag"
+  },
+  {
+    "n": 100,
+    "text": "In-situ(destructive) parsing.  "
+  },
+  {
+    "n": 101,
+    "text": "kParseValidateEncodingFlag"
+  },
+  {
+    "n": 102,
+    "text": "Validate encoding of JSON strings.  "
+  },
+  {
+    "n": 103,
+    "text": "kParseIterativeFlag"
+  },
+  {
+    "n": 104,
+    "text": "Iterative(constant complexity in terms of function call stack size) parsing.  "
+  },
+  {
+    "n": 105,
+    "text": "kParseStopWhenDoneFlag"
+  },
+  {
+    "n": 106,
+    "text": "After parsing a complete JSON root from stream, stop further processing the rest of stream. When this flag is used, parser will not generate "
+  },
+  {
+    "n": 107,
+    "text": "kParseErrorDocumentRootNotSingular"
+  },
+  {
+    "n": 108,
+    "text": " error. Using this flag for parsing multiple JSONs in the same stream.  "
+  },
+  {
+    "n": 109,
+    "text": "kParseFullPrecisionFlag"
+  },
+  {
+    "n": 110,
+    "text": "Parse number in full precision (slower). If this flag is not set, the normal precision (faster) is used. Normal precision has maximum 3 "
+  },
+  {
+    "n": 111,
+    "text": "ULP"
+  },
+  {
+    "n": 112,
+    "text": " error.  "
+  },
+  {
+    "n": 113,
+    "text": "kParseCommentsFlag"
+  },
+  {
+    "n": 114,
+    "text": "Allow one-line "
+  },
+  {
+    "n": 115,
+    "text": "// ..."
+  },
+  {
+    "n": 116,
+    "text": " and multi-line "
+  },
+  {
+    "n": 117,
+    "text": "/* ... */"
+  },
+  {
+    "n": 118,
+    "text": " comments (relaxed JSON syntax).  "
+  },
+  {
+    "n": 119,
+    "text": "kParseNumbersAsStringsFlag"
+  },
+  {
+    "n": 120,
+    "text": "Parse numerical type values as strings.  "
+  },
+  {
+    "n": 121,
+    "text": "kParseTrailingCommasFlag"
+  },
+  {
+    "n": 122,
+    "text": "Allow trailing commas at the end of objects and arrays (relaxed JSON syntax).  "
+  },
+  {
+    "n": 123,
+    "text": "kParseNanAndInfFlag"
+  },
+  {
+    "n": 124,
+    "text": "Allow parsing "
+  },
+  {
+    "n": 125,
+    "text": "NaN"
+  },
+  {
+    "n": 126,
+    "text": ", "
+  },
+  {
+    "n": 127,
+    "text": "Inf"
+  },
+  {
+    "n": 128,
+    "text": ", "
+  },
+  {
+    "n": 129,
+    "text": "Infinity"
+  },
+  {
+    "n": 130,
+    "text": ", "
+  },
+  {
+    "n": 131,
+    "text": "-Inf"
+  },
+  {
+    "n": 132,
+    "text": " and "
+  },
+  {
+    "n": 133,
+    "text": "-Infinity"
+  },
+  {
+    "n": 134,
+    "text": " as "
+  },
+  {
+    "n": 135,
+    "text": "double"
+  },
+  {
+    "n": 136,
+    "text": " values (relaxed JSON syntax).  "
+  },
+  {
+    "n": 137,
+    "text": "By using a non-type template parameter, instead of a function parameter, C++ compiler can generate code which is optimized for specified combinations, improving speed, and reducing code size (if only using a single specialization). The downside is the flags needed to be determined in compile-time."
+  },
+  {
+    "n": 138,
+    "text": "The "
+  },
+  {
+    "n": 139,
+    "text": "SourceEncoding"
+  },
+  {
+    "n": 140,
+    "text": " parameter defines what encoding is in the stream. This can be differed to the "
+  },
+  {
+    "n": 141,
+    "text": "Encoding"
+  },
+  {
+    "n": 142,
+    "text": " of the "
+  },
+  {
+    "n": 143,
+    "text": "Document"
+  },
+  {
+    "n": 144,
+    "text": ". See "
+  },
+  {
+    "n": 145,
+    "text": "Transcoding and Validation"
+  },
+  {
+    "n": 146,
+    "text": "Transcoding and Validation section for details."
+  },
+  {
+    "n": 147,
+    "text": "And the "
+  },
+  {
+    "n": 148,
+    "text": "InputStream"
+  },
+  {
+    "n": 149,
+    "text": " is type of input stream."
+  },
+  {
+    "n": 150,
+    "text": "\nParse Error"
+  },
+  {
+    "n": 151,
+    "text": "When the parse processing succeeded, the "
+  },
+  {
+    "n": 152,
+    "text": "Document"
+  },
+  {
+    "n": 153,
+    "text": " contains the parse results. When there is an error, the original DOM is "
+  },
+  {
+    "n": 154,
+    "text": "unchanged"
+  },
+  {
+    "n": 155,
+    "text": ". And the error state of parsing can be obtained by "
+  },
+  {
+    "n": 156,
+    "text": "bool HasParseError()"
+  },
+  {
+    "n": 157,
+    "text": ", "
+  },
+  {
+    "n": 158,
+    "text": "ParseErrorCode GetParseError()"
+  },
+  {
+    "n": 159,
+    "text": " and "
+  },
+  {
+    "n": 160,
+    "text": "size_t GetParseOffset()"
+  },
+  {
+    "n": 161,
+    "text": "."
+  },
+  {
+    "n": 162,
+    "text": "Parse Error Code  "
+  },
+  {
+    "n": 163,
+    "text": "Description  "
+  },
+  {
+    "n": 164,
+    "text": "kParseErrorNone"
+  },
+  {
+    "n": 165,
+    "text": "No error.  "
+  },
+  {
+    "n": 166,
+    "text": "kParseErrorDocumentEmpty"
+  },
+  {
+    "n": 167,
+    "text": "The document is empty.  "
+  },
+  {
+    "n": 168,
+    "text": "kParseErrorDocumentRootNotSingular"
+  },
+  {
+    "n": 169,
+    "text": "The document root must not follow by other values.  "
+  },
+  {
+    "n": 170,
+    "text": "kParseErrorValueInvalid"
+  },
+  {
+    "n": 171,
+    "text": "Invalid value.  "
+  },
+  {
+    "n": 172,
+    "text": "kParseErrorObjectMissName"
+  },
+  {
+    "n": 173,
+    "text": "Missing a name for object member.  "
+  },
+  {
+    "n": 174,
+    "text": "kParseErrorObjectMissColon"
+  },
+  {
+    "n": 175,
+    "text": "Missing a colon after a name of object member.  "
+  },
+  {
+    "n": 176,
+    "text": "kParseErrorObjectMissCommaOrCurlyBracket"
+  },
+  {
+    "n": 177,
+    "text": "Missing a comma or "
+  },
+  {
+    "n": 178,
+    "text": "}"
+  },
+  {
+    "n": 179,
+    "text": " after an object member.  "
+  },
+  {
+    "n": 180,
+    "text": "kParseErrorArrayMissCommaOrSquareBracket"
+  },
+  {
+    "n": 181,
+    "text": "Missing a comma or "
+  },
+  {
+    "n": 182,
+    "text": "]"
+  },
+  {
+    "n": 183,
+    "text": " after an array element.  "
+  },
+  {
+    "n": 184,
+    "text": "kParseErrorStringUnicodeEscapeInvalidHex"
+  },
+  {
+    "n": 185,
+    "text": "Incorrect hex digit after "
+  },
+  {
+    "n": 186,
+    "text": "\\\\u"
+  },
+  {
+    "n": 187,
+    "text": " escape in string.  "
+  },
+  {
+    "n": 188,
+    "text": "kParseErrorStringUnicodeSurrogateInvalid"
+  },
+  {
+    "n": 189,
+    "text": "The surrogate pair in string is invalid.  "
+  },
+  {
+    "n": 190,
+    "text": "kParseErrorStringEscapeInvalid"
+  },
+  {
+    "n": 191,
+    "text": "Invalid escape character in string.  "
+  },
+  {
+    "n": 192,
+    "text": "kParseErrorStringMissQuotationMark"
+  },
+  {
+    "n": 193,
+    "text": "Missing a closing quotation mark in string.  "
+  },
+  {
+    "n": 194,
+    "text": "kParseErrorStringInvalidEncoding"
+  },
+  {
+    "n": 195,
+    "text": "Invalid encoding in string.  "
+  },
+  {
+    "n": 196,
+    "text": "kParseErrorNumberTooBig"
+  },
+  {
+    "n": 197,
+    "text": "Number too big to be stored in "
+  },
+  {
+    "n": 198,
+    "text": "double"
+  },
+  {
+    "n": 199,
+    "text": ".  "
+  },
+  {
+    "n": 200,
+    "text": "kParseErrorNumberMissFraction"
+  },
+  {
+    "n": 201,
+    "text": "Miss fraction part in number.  "
+  },
+  {
+    "n": 202,
+    "text": "kParseErrorNumberMissExponent"
+  },
+  {
+    "n": 203,
+    "text": "Miss exponent in number.  "
+  },
+  {
+    "n": 204,
+    "text": "The offset of error is defined as the character number from beginning of stream. Currently RapidJSON does not keep track of line number."
+  },
+  {
+    "n": 205,
+    "text": "To get an error message, RapidJSON provided a English messages in "
+  },
+  {
+    "n": 206,
+    "text": "rapidjson/error/en.h"
+  },
+  {
+    "n": 207,
+    "text": ". User can customize it for other locales, or use a custom localization system."
+  },
+  {
+    "n": 208,
+    "text": "Here shows an example of parse error handling."
+  },
+  {
+    "n": 209,
+    "text": "Whether a parse error has occured in the last parsing."
+  },
+  {
+    "n": 210,
+    "text": "Get the ParseErrorCode of last parsing."
+  },
+  {
+    "n": 211,
+    "text": "Get the position of last parsing error in input, 0 otherwise."
+  },
+  {
+    "n": 212,
+    "text": "Maps error code of parsing into error message."
+  },
+  {
+    "n": 213,
+    "text": " fragment "
+  },
+  {
+    "n": 214,
+    "text": "\nIn Situ Parsing"
+  },
+  {
+    "n": 215,
+    "text": "From "
+  },
+  {
+    "n": 216,
+    "text": "Wikipedia"
+  },
+  {
+    "n": 217,
+    "text": ":"
+  },
+  {
+    "n": 218,
+    "text": "In situ"
+  },
+  {
+    "n": 219,
+    "text": " ... is a Latin phrase that translates literally to \"on site\" or \"in position\". It means \"locally\", \"on site\", \"on the premises\" or \"in place\" to describe an event where it takes place, and is used in many different contexts. ... (In computer science) An algorithm is said to be an in situ algorithm, or in-place algorithm, if the extra amount of memory required to execute the algorithm is O(1), that is, does not exceed a constant no matter how large the input. For example, heapsort is an in situ sorting algorithm. "
+  },
+  {
+    "n": 220,
+    "text": "In normal parsing process, a large overhead is to decode JSON strings and copy them to other buffers. "
+  },
+  {
+    "n": 221,
+    "text": "In situ"
+  },
+  {
+    "n": 222,
+    "text": " parsing decodes those JSON string at the place where it is stored. It is possible in JSON because the length of decoded string is always shorter than or equal to the one in JSON. In this context, decoding a JSON string means to process the escapes, such as "
+  },
+  {
+    "n": 223,
+    "text": "\"\\n\""
+  },
+  {
+    "n": 224,
+    "text": ", "
+  },
+  {
+    "n": 225,
+    "text": "\"\\u1234\""
+  },
+  {
+    "n": 226,
+    "text": ", etc., and add a null terminator ("
+  },
+  {
+    "n": 227,
+    "text": "'\\0'"
+  },
+  {
+    "n": 228,
+    "text": ")at the end of string."
+  },
+  {
+    "n": 229,
+    "text": "The following diagrams compare normal and "
+  },
+  {
+    "n": 230,
+    "text": "in situ"
+  },
+  {
+    "n": 231,
+    "text": " parsing. The JSON string values contain pointers to the decoded string."
+  },
+  {
+    "n": 232,
+    "text": "\nnormal parsing"
+  },
+  {
+    "n": 233,
+    "text": "In normal parsing, the decoded string are copied to freshly allocated buffers. "
+  },
+  {
+    "n": 234,
+    "text": "\"\\\\n\""
+  },
+  {
+    "n": 235,
+    "text": " (2 characters) is decoded as "
+  },
+  {
+    "n": 236,
+    "text": "\"\\n\""
+  },
+  {
+    "n": 237,
+    "text": " (1 character). "
+  },
+  {
+    "n": 238,
+    "text": "\"\\\\u0073\""
+  },
+  {
+    "n": 239,
+    "text": " (6 characters) is decoded as "
+  },
+  {
+    "n": 240,
+    "text": "\"s\""
+  },
+  {
+    "n": 241,
+    "text": " (1 character)."
+  },
+  {
+    "n": 242,
+    "text": "\ninstiu parsing"
+  },
+  {
+    "n": 243,
+    "text": "In situ"
+  },
+  {
+    "n": 244,
+    "text": " parsing just modified the original JSON. Updated characters are highlighted in the diagram. If the JSON string does not contain escape character, such as "
+  },
+  {
+    "n": 245,
+    "text": "\"msg\""
+  },
+  {
+    "n": 246,
+    "text": ", the parsing process merely replace the closing double quotation mark with a null character."
+  },
+  {
+    "n": 247,
+    "text": "Since "
+  },
+  {
+    "n": 248,
+    "text": "in situ"
+  },
+  {
+    "n": 249,
+    "text": " parsing modify the input, the parsing API needs "
+  },
+  {
+    "n": 250,
+    "text": "char*"
+  },
+  {
+    "n": 251,
+    "text": " instead of "
+  },
+  {
+    "n": 252,
+    "text": "const char*"
+  },
+  {
+    "n": 253,
+    "text": "."
+  },
+  {
+    "n": 254,
+    "text": " fragment "
+  },
+  {
+    "n": 255,
+    "text": "The JSON strings are marked as const-string. But they may not be really \"constant\". The life cycle of it depends on the JSON buffer."
+  },
+  {
+    "n": 256,
+    "text": "In situ parsing minimizes allocation overheads and memory copying. Generally this improves cache coherence, which is an important factor of performance in modern computer."
+  },
+  {
+    "n": 257,
+    "text": "There are some limitations of "
+  },
+  {
+    "n": 258,
+    "text": "in situ"
+  },
+  {
+    "n": 259,
+    "text": " parsing:"
+  },
+  {
+    "n": 260,
+    "text": "The whole JSON is in memory."
+  },
+  {
+    "n": 261,
+    "text": "The source encoding in stream and target encoding in document must be the same."
+  },
+  {
+    "n": 262,
+    "text": "The buffer need to be retained until the document is no longer used."
+  },
+  {
+    "n": 263,
+    "text": "If the DOM need to be used for long period after parsing, and there are few JSON strings in the DOM, retaining the buffer may be a memory waste."
+  },
+  {
+    "n": 264,
+    "text": "In situ"
+  },
+  {
+    "n": 265,
+    "text": " parsing is mostly suitable for short-term JSON that only need to be processed once, and then be released from memory. In practice, these situation is very common, for example, deserializing JSON to C++ objects, processing web requests represented in JSON, etc."
+  },
+  {
+    "n": 266,
+    "text": "\nTranscoding and Validation"
+  },
+  {
+    "n": 267,
+    "text": "RapidJSON supports conversion between Unicode formats (officially termed UCS Transformation Format) internally. During DOM parsing, the source encoding of the stream can be different from the encoding of the DOM. For example, the source stream contains a UTF-8 JSON, while the DOM is using UTF-16 encoding. There is an example code in "
+  },
+  {
+    "n": 268,
+    "text": "EncodedInputStream"
+  },
+  {
+    "n": 269,
+    "text": "."
+  },
+  {
+    "n": 270,
+    "text": "When writing a JSON from DOM to output stream, transcoding can also be used. An example is in "
+  },
+  {
+    "n": 271,
+    "text": "EncodedOutputStream"
+  },
+  {
+    "n": 272,
+    "text": "."
+  },
+  {
+    "n": 273,
+    "text": "During transcoding, the source string is decoded to into Unicode code points, and then the code points are encoded in the target format. During decoding, it will validate the byte sequence in the source string. If it is not a valid sequence, the parser will be stopped with "
+  },
+  {
+    "n": 274,
+    "text": "kParseErrorStringInvalidEncoding"
+  },
+  {
+    "n": 275,
+    "text": " error."
+  },
+  {
+    "n": 276,
+    "text": "When the source encoding of stream is the same as encoding of DOM, by default, the parser will "
+  },
+  {
+    "n": 277,
+    "text": "not"
+  },
+  {
+    "n": 278,
+    "text": " validate the sequence. User may use "
+  },
+  {
+    "n": 279,
+    "text": "kParseValidateEncodingFlag"
+  },
+  {
+    "n": 280,
+    "text": " to force validation."
+  },
+  {
+    "n": 281,
+    "text": "\nTechniques"
+  },
+  {
+    "n": 282,
+    "text": "Some techniques about using DOM API is discussed here."
+  },
+  {
+    "n": 283,
+    "text": "\nDOM as SAX Event Publisher"
+  },
+  {
+    "n": 284,
+    "text": "In RapidJSON, stringifying a DOM with "
+  },
+  {
+    "n": 285,
+    "text": "Writer"
+  },
+  {
+    "n": 286,
+    "text": " may be look a little bit weired."
+  },
+  {
+    "n": 287,
+    "text": "Generate events of this value to a Handler."
+  },
+  {
+    "n": 288,
+    "text": "JSON writer."
+  },
+  {
+    "n": 289,
+    "text": " fragment "
+  },
+  {
+    "n": 290,
+    "text": "Actually, "
+  },
+  {
+    "n": 291,
+    "text": "Value::Accept()"
+  },
+  {
+    "n": 292,
+    "text": " is responsible for publishing SAX events about the value to the handler. With this design, "
+  },
+  {
+    "n": 293,
+    "text": "Value"
+  },
+  {
+    "n": 294,
+    "text": " and "
+  },
+  {
+    "n": 295,
+    "text": "Writer"
+  },
+  {
+    "n": 296,
+    "text": " are decoupled. "
+  },
+  {
+    "n": 297,
+    "text": "Value"
+  },
+  {
+    "n": 298,
+    "text": " can generate SAX events, and "
+  },
+  {
+    "n": 299,
+    "text": "Writer"
+  },
+  {
+    "n": 300,
+    "text": " can handle those events."
+  },
+  {
+    "n": 301,
+    "text": "User may create custom handlers for transforming the DOM into other formats. For example, a handler which converts the DOM into XML."
+  },
+  {
+    "n": 302,
+    "text": "For more about SAX events and handler, please refer to "
+  },
+  {
+    "n": 303,
+    "text": "SAX"
+  },
+  {
+    "n": 304,
+    "text": "."
+  },
+  {
+    "n": 305,
+    "text": "\nUser Buffer"
+  },
+  {
+    "n": 306,
+    "text": "Some applications may try to avoid memory allocations whenever possible."
+  },
+  {
+    "n": 307,
+    "text": "MemoryPoolAllocator"
+  },
+  {
+    "n": 308,
+    "text": " can support this by letting user to provide a buffer. The buffer can be on the program stack, or a \"scratch buffer\" which is statically allocated (a static/global array) for storing temporary data."
+  },
+  {
+    "n": 309,
+    "text": "MemoryPoolAllocator"
+  },
+  {
+    "n": 310,
+    "text": " will use the user buffer to satisfy allocations. When the user buffer is used up, it will allocate a chunk of memory from the base allocator (by default the "
+  },
+  {
+    "n": 311,
+    "text": "CrtAllocator"
+  },
+  {
+    "n": 312,
+    "text": ")."
+  },
+  {
+    "n": 313,
+    "text": "Here is an example of using stack memory. The first allocator is for storing values, while the second allocator is for storing temporary data during parsing."
+  },
+  {
+    "n": 314,
+    "text": "Default memory allocator used by the parser and DOM."
+  },
+  {
+    "n": 315,
+    "text": " fragment "
+  },
+  {
+    "n": 316,
+    "text": "If the total size of allocation is less than 4096+1024 bytes during parsing, this code does not invoke any heap allocation (via "
+  },
+  {
+    "n": 317,
+    "text": "new"
+  },
+  {
+    "n": 318,
+    "text": " or "
+  },
+  {
+    "n": 319,
+    "text": "malloc()"
+  },
+  {
+    "n": 320,
+    "text": ") at all."
+  },
+  {
+    "n": 321,
+    "text": "User can query the current memory consumption in bytes via "
+  },
+  {
+    "n": 322,
+    "text": "MemoryPoolAllocator::Size()"
+  },
+  {
+    "n": 323,
+    "text": ". And then user can determine a suitable size of user buffer. "
+  }
+]

@@ -1,0 +1,690 @@
+[
+  {
+    "n": 1,
+    "text": "\nA fast JSON parser/generator for C++ with both SAX/DOM style API"
+  },
+  {
+    "n": 2,
+    "text": "Tencent is pleased to support the open source community by making RapidJSON available."
+  },
+  {
+    "n": 3,
+    "text": "Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved."
+  },
+  {
+    "n": 4,
+    "text": "RapidJSON GitHub"
+  },
+  {
+    "n": 5,
+    "text": "RapidJSON Documentation"
+  },
+  {
+    "n": 6,
+    "text": "English"
+  },
+  {
+    "n": 7,
+    "text": "简体中文"
+  },
+  {
+    "n": 8,
+    "text": "GitBook"
+  },
+  {
+    "n": 9,
+    "text": " with downloadable PDF/EPUB/MOBI, without API reference."
+  },
+  {
+    "n": 10,
+    "text": "\nBuild status"
+  },
+  {
+    "n": 11,
+    "text": "Linux"
+  },
+  {
+    "n": 12,
+    "text": "Windows"
+  },
+  {
+    "n": 13,
+    "text": "Coveralls"
+  },
+  {
+    "n": 14,
+    "text": "\nIntroduction"
+  },
+  {
+    "n": 15,
+    "text": "RapidJSON is a JSON parser and generator for C++. It was inspired by "
+  },
+  {
+    "n": 16,
+    "text": "RapidXml"
+  },
+  {
+    "n": 17,
+    "text": "."
+  },
+  {
+    "n": 18,
+    "text": "RapidJSON is "
+  },
+  {
+    "n": 19,
+    "text": "small"
+  },
+  {
+    "n": 20,
+    "text": " but "
+  },
+  {
+    "n": 21,
+    "text": "complete"
+  },
+  {
+    "n": 22,
+    "text": ". It supports both SAX and DOM style API. The SAX parser is only a half thousand lines of code."
+  },
+  {
+    "n": 23,
+    "text": "RapidJSON is "
+  },
+  {
+    "n": 24,
+    "text": "fast"
+  },
+  {
+    "n": 25,
+    "text": ". Its performance can be comparable to "
+  },
+  {
+    "n": 26,
+    "text": "strlen()"
+  },
+  {
+    "n": 27,
+    "text": ". It also optionally supports SSE2/SSE4.2 for acceleration."
+  },
+  {
+    "n": 28,
+    "text": "RapidJSON is "
+  },
+  {
+    "n": 29,
+    "text": "self-contained"
+  },
+  {
+    "n": 30,
+    "text": " and "
+  },
+  {
+    "n": 31,
+    "text": "header-only"
+  },
+  {
+    "n": 32,
+    "text": ". It does not depend on external libraries such as BOOST. It even does not depend on STL."
+  },
+  {
+    "n": 33,
+    "text": "RapidJSON is "
+  },
+  {
+    "n": 34,
+    "text": "memory-friendly"
+  },
+  {
+    "n": 35,
+    "text": ". Each JSON value occupies exactly 16 bytes for most 32/64-bit machines (excluding text string). By default it uses a fast memory allocator, and the parser allocates memory compactly during parsing."
+  },
+  {
+    "n": 36,
+    "text": "RapidJSON is "
+  },
+  {
+    "n": 37,
+    "text": "Unicode-friendly"
+  },
+  {
+    "n": 38,
+    "text": ". It supports UTF-8, UTF-16, UTF-32 (LE & BE), and their detection, validation and transcoding internally. For example, you can read a UTF-8 file and let RapidJSON transcode the JSON strings into UTF-16 in the DOM. It also supports surrogates and \"\\u0000\" (null character)."
+  },
+  {
+    "n": 39,
+    "text": "More features can be read "
+  },
+  {
+    "n": 40,
+    "text": "here"
+  },
+  {
+    "n": 41,
+    "text": "."
+  },
+  {
+    "n": 42,
+    "text": "JSON(JavaScript Object Notation) is a light-weight data exchange format. RapidJSON should be in fully compliance with RFC7159/ECMA-404, with optional support of relaxed syntax. More information about JSON can be obtained at"
+  },
+  {
+    "n": 43,
+    "text": "Introducing JSON"
+  },
+  {
+    "n": 44,
+    "text": "RFC7159: The JavaScript Object Notation (JSON) Data Interchange Format"
+  },
+  {
+    "n": 45,
+    "text": "Standard ECMA-404: The JSON Data Interchange Format"
+  },
+  {
+    "n": 46,
+    "text": "\nHighlights in v1.1 (2016-8-25)"
+  },
+  {
+    "n": 47,
+    "text": "Added "
+  },
+  {
+    "n": 48,
+    "text": "JSON Pointer"
+  },
+  {
+    "n": 49,
+    "text": "Added "
+  },
+  {
+    "n": 50,
+    "text": "JSON Schema"
+  },
+  {
+    "n": 51,
+    "text": "Added "
+  },
+  {
+    "n": 52,
+    "text": "relaxed JSON syntax"
+  },
+  {
+    "n": 53,
+    "text": " (comment, trailing comma, NaN/Infinity)"
+  },
+  {
+    "n": 54,
+    "text": "Iterating array/object with "
+  },
+  {
+    "n": 55,
+    "text": "C++11 Range-based for loop"
+  },
+  {
+    "n": 56,
+    "text": "Reduce memory overhead of each "
+  },
+  {
+    "n": 57,
+    "text": "Value"
+  },
+  {
+    "n": 58,
+    "text": " from 24 bytes to 16 bytes in x86-64 architecture."
+  },
+  {
+    "n": 59,
+    "text": "For other changes please refer to "
+  },
+  {
+    "n": 60,
+    "text": "change log"
+  },
+  {
+    "n": 61,
+    "text": "."
+  },
+  {
+    "n": 62,
+    "text": "\nCompatibility"
+  },
+  {
+    "n": 63,
+    "text": "RapidJSON is cross-platform. Some platform/compiler combinations which have been tested are shown as follows."
+  },
+  {
+    "n": 64,
+    "text": "Visual C++ 2008/2010/2013 on Windows (32/64-bit)"
+  },
+  {
+    "n": 65,
+    "text": "GNU C++ 3.8.x on Cygwin"
+  },
+  {
+    "n": 66,
+    "text": "Clang 3.4 on Mac OS X (32/64-bit) and iOS"
+  },
+  {
+    "n": 67,
+    "text": "Clang 3.4 on Android NDK"
+  },
+  {
+    "n": 68,
+    "text": "Users can build and run the unit tests on their platform/compiler."
+  },
+  {
+    "n": 69,
+    "text": "\nInstallation"
+  },
+  {
+    "n": 70,
+    "text": "RapidJSON is a header-only C++ library. Just copy the "
+  },
+  {
+    "n": 71,
+    "text": "include/rapidjson"
+  },
+  {
+    "n": 72,
+    "text": " folder to system or project's include path."
+  },
+  {
+    "n": 73,
+    "text": "RapidJSON uses following software as its dependencies:"
+  },
+  {
+    "n": 74,
+    "text": "CMake"
+  },
+  {
+    "n": 75,
+    "text": " as a general build tool"
+  },
+  {
+    "n": 76,
+    "text": "(optional)"
+  },
+  {
+    "n": 77,
+    "text": "Doxygen"
+  },
+  {
+    "n": 78,
+    "text": " to build documentation"
+  },
+  {
+    "n": 79,
+    "text": "(optional)"
+  },
+  {
+    "n": 80,
+    "text": "googletest"
+  },
+  {
+    "n": 81,
+    "text": " for unit and performance testing"
+  },
+  {
+    "n": 82,
+    "text": "To generate user documentation and run tests please proceed with the steps below:"
+  },
+  {
+    "n": 83,
+    "text": "Execute "
+  },
+  {
+    "n": 84,
+    "text": "git submodule update --init"
+  },
+  {
+    "n": 85,
+    "text": " to get the files of thirdparty submodules (google test)."
+  },
+  {
+    "n": 86,
+    "text": "Create directory called "
+  },
+  {
+    "n": 87,
+    "text": "build"
+  },
+  {
+    "n": 88,
+    "text": " in rapidjson source directory."
+  },
+  {
+    "n": 89,
+    "text": "Change to "
+  },
+  {
+    "n": 90,
+    "text": "build"
+  },
+  {
+    "n": 91,
+    "text": " directory and run "
+  },
+  {
+    "n": 92,
+    "text": "cmake .."
+  },
+  {
+    "n": 93,
+    "text": " command to configure your build. Windows users can do the same with cmake-gui application."
+  },
+  {
+    "n": 94,
+    "text": "On Windows, build the solution found in the build directory. On Linux, run "
+  },
+  {
+    "n": 95,
+    "text": "make"
+  },
+  {
+    "n": 96,
+    "text": " from the build directory."
+  },
+  {
+    "n": 97,
+    "text": "On successfull build you will find compiled test and example binaries in "
+  },
+  {
+    "n": 98,
+    "text": "bin"
+  },
+  {
+    "n": 99,
+    "text": " directory. The generated documentation will be available in "
+  },
+  {
+    "n": 100,
+    "text": "doc/html"
+  },
+  {
+    "n": 101,
+    "text": " directory of the build tree. To run tests after finished build please run "
+  },
+  {
+    "n": 102,
+    "text": "make\ntest"
+  },
+  {
+    "n": 103,
+    "text": " or "
+  },
+  {
+    "n": 104,
+    "text": "ctest"
+  },
+  {
+    "n": 105,
+    "text": " from your build tree. You can get detailed output using "
+  },
+  {
+    "n": 106,
+    "text": "ctest\n-V"
+  },
+  {
+    "n": 107,
+    "text": " command."
+  },
+  {
+    "n": 108,
+    "text": "It is possible to install library system-wide by running "
+  },
+  {
+    "n": 109,
+    "text": "make install"
+  },
+  {
+    "n": 110,
+    "text": " command from the build tree with administrative privileges. This will install all files according to system preferences. Once RapidJSON is installed, it is possible to use it from other CMake projects by adding "
+  },
+  {
+    "n": 111,
+    "text": "find_package(RapidJSON)"
+  },
+  {
+    "n": 112,
+    "text": " line to your CMakeLists.txt."
+  },
+  {
+    "n": 113,
+    "text": "\nUsage at a glance"
+  },
+  {
+    "n": 114,
+    "text": "This simple example parses a JSON string into a document (DOM), make a simple modification of the DOM, and finally stringify the DOM to a JSON string."
+  },
+  {
+    "n": 115,
+    "text": "Parse JSON text from a read-only string (with Encoding conversion)."
+  },
+  {
+    "n": 116,
+    "text": "Generate events of this value to a Handler."
+  },
+  {
+    "n": 117,
+    "text": "JSON writer."
+  },
+  {
+    "n": 118,
+    "text": "main RapidJSON namespace"
+  },
+  {
+    "n": 119,
+    "text": "GenericValue with UTF8 encoding."
+  },
+  {
+    "n": 120,
+    "text": "String buffer with UTF8 encoding."
+  },
+  {
+    "n": 121,
+    "text": "GenericDocument with UTF8 encoding."
+  },
+  {
+    "n": 122,
+    "text": " fragment "
+  },
+  {
+    "n": 123,
+    "text": "Note that this example did not handle potential errors."
+  },
+  {
+    "n": 124,
+    "text": "The following diagram shows the process."
+  },
+  {
+    "n": 125,
+    "text": "\nsimpledom"
+  },
+  {
+    "n": 126,
+    "text": "More "
+  },
+  {
+    "n": 127,
+    "text": "examples"
+  },
+  {
+    "n": 128,
+    "text": " are available:"
+  },
+  {
+    "n": 129,
+    "text": "DOM API"
+  },
+  {
+    "n": 130,
+    "text": "tutorial"
+  },
+  {
+    "n": 131,
+    "text": ": Basic usage of DOM API."
+  },
+  {
+    "n": 132,
+    "text": "SAX API"
+  },
+  {
+    "n": 133,
+    "text": "simplereader"
+  },
+  {
+    "n": 134,
+    "text": ": Dumps all SAX events while parsing a JSON by "
+  },
+  {
+    "n": 135,
+    "text": "Reader"
+  },
+  {
+    "n": 136,
+    "text": "."
+  },
+  {
+    "n": 137,
+    "text": "condense"
+  },
+  {
+    "n": 138,
+    "text": ": A command line tool to rewrite a JSON, with all whitespaces removed."
+  },
+  {
+    "n": 139,
+    "text": "pretty"
+  },
+  {
+    "n": 140,
+    "text": ": A command line tool to rewrite a JSON with indents and newlines by "
+  },
+  {
+    "n": 141,
+    "text": "PrettyWriter"
+  },
+  {
+    "n": 142,
+    "text": "."
+  },
+  {
+    "n": 143,
+    "text": "capitalize"
+  },
+  {
+    "n": 144,
+    "text": ": A command line tool to capitalize strings in JSON."
+  },
+  {
+    "n": 145,
+    "text": "messagereader"
+  },
+  {
+    "n": 146,
+    "text": ": Parse a JSON message with SAX API."
+  },
+  {
+    "n": 147,
+    "text": "serialize"
+  },
+  {
+    "n": 148,
+    "text": ": Serialize a C++ object into JSON with SAX API."
+  },
+  {
+    "n": 149,
+    "text": "jsonx"
+  },
+  {
+    "n": 150,
+    "text": ": Implements a "
+  },
+  {
+    "n": 151,
+    "text": "JsonxWriter"
+  },
+  {
+    "n": 152,
+    "text": " which stringify SAX events into "
+  },
+  {
+    "n": 153,
+    "text": "JSONx"
+  },
+  {
+    "n": 154,
+    "text": " (a kind of XML) format. The example is a command line tool which converts input JSON into JSONx format."
+  },
+  {
+    "n": 155,
+    "text": "Schema"
+  },
+  {
+    "n": 156,
+    "text": "schemavalidator"
+  },
+  {
+    "n": 157,
+    "text": " : A command line tool to validate a JSON with a JSON schema."
+  },
+  {
+    "n": 158,
+    "text": "Advanced"
+  },
+  {
+    "n": 159,
+    "text": "prettyauto"
+  },
+  {
+    "n": 160,
+    "text": ": A modified version of "
+  },
+  {
+    "n": 161,
+    "text": "pretty"
+  },
+  {
+    "n": 162,
+    "text": " to automatically handle JSON with any UTF encodings."
+  },
+  {
+    "n": 163,
+    "text": "parsebyparts"
+  },
+  {
+    "n": 164,
+    "text": ": Implements an "
+  },
+  {
+    "n": 165,
+    "text": "AsyncDocumentParser"
+  },
+  {
+    "n": 166,
+    "text": " which can parse JSON in parts, using C++11 thread."
+  },
+  {
+    "n": 167,
+    "text": "filterkey"
+  },
+  {
+    "n": 168,
+    "text": ": A command line tool to remove all values with user-specified key."
+  },
+  {
+    "n": 169,
+    "text": "filterkeydom"
+  },
+  {
+    "n": 170,
+    "text": ": Same tool as above, but it demonstrates how to use a generator to populate a "
+  },
+  {
+    "n": 171,
+    "text": "Document"
+  },
+  {
+    "n": 172,
+    "text": ". "
+  }
+]

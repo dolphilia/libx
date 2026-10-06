@@ -1,0 +1,607 @@
+[
+  {
+    "n": 1,
+    "tag": "p",
+    "text": "In RapidJSON, {1} is a concept for reading/writing JSON. Here we first show how to use streams provided. And then see how to create a custom stream.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/056-classrapidjson_1_1_stream/\" title=\"Concept for reading and writing characters.\">rapidjson::Stream</a></span>"
+    ]
+  },
+  {
+    "n": 2,
+    "tag": "h1",
+    "text": "Memory Streams",
+    "tokens": []
+  },
+  {
+    "n": 3,
+    "tag": "p",
+    "text": "Memory streams store JSON in memory.",
+    "tokens": []
+  },
+  {
+    "n": 4,
+    "tag": "h2",
+    "text": "StringStream (Input)",
+    "tokens": []
+  },
+  {
+    "n": 5,
+    "tag": "p",
+    "text": "{1} is the most basic input stream. It represents a complete, read-only JSON stored in memory. It is defined in {2}.",
+    "tokens": [
+      "<span class=\"tt\">StringStream</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/154-rapidjson_8h/\" title=\"common definitions and configuration\">rapidjson/rapidjson.h</a></span>"
+    ]
+  },
+  {
+    "n": 6,
+    "tag": "div",
+    "text": "Parse JSON text from an input stream (with Encoding conversion).",
+    "tokens": []
+  },
+  {
+    "n": 7,
+    "tag": "div",
+    "text": "main RapidJSON namespace",
+    "tokens": []
+  },
+  {
+    "n": 8,
+    "tag": "div",
+    "text": "String stream with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 9,
+    "tag": "div",
+    "text": "GenericDocument with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 10,
+    "tag": "p",
+    "text": "Since this is very common usage, {1} is provided to do exactly the same as above:",
+    "tokens": [
+      "<span class=\"tt\">Document::Parse(const char*)</span>"
+    ]
+  },
+  {
+    "n": 11,
+    "tag": "div",
+    "text": "Parse JSON text from a read-only string (with Encoding conversion).",
+    "tokens": []
+  },
+  {
+    "n": 12,
+    "tag": "p",
+    "text": "Note that, {1} is a typedef of {2}, user may use another encodings to represent the character set of the stream.",
+    "tokens": [
+      "<span class=\"tt\">StringStream</span>",
+      "<span class=\"tt\">GenericStringStream&lt;UTF8&lt;&gt; &gt;</span>"
+    ]
+  },
+  {
+    "n": 13,
+    "tag": "h2",
+    "text": "StringBuffer (Output)",
+    "tokens": []
+  },
+  {
+    "n": 14,
+    "tag": "p",
+    "text": "{1} is a simple output stream. It allocates a memory buffer for writing the whole JSON. Use {2} to obtain the buffer.",
+    "tokens": [
+      "<span class=\"tt\">StringBuffer</span>",
+      "<span class=\"tt\">GetString()</span>"
+    ]
+  },
+  {
+    "n": 15,
+    "tag": "div",
+    "text": "Generate events of this value to a Handler.",
+    "tokens": []
+  },
+  {
+    "n": 16,
+    "tag": "div",
+    "text": "JSON writer.",
+    "tokens": []
+  },
+  {
+    "n": 17,
+    "tag": "div",
+    "text": "String buffer with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 18,
+    "tag": "p",
+    "text": "When the buffer is full, it will increases the capacity automatically. The default capacity is 256 characters (256 bytes for UTF8, 512 bytes for UTF16, etc.). User can provide an allocator and a initial capacity.",
+    "tokens": []
+  },
+  {
+    "n": 19,
+    "tag": "p",
+    "text": "By default, {1} will instantiate an internal allocator.",
+    "tokens": [
+      "<span class=\"tt\">StringBuffer</span>"
+    ]
+  },
+  {
+    "n": 20,
+    "tag": "p",
+    "text": "Similarly, {1} is a typedef of {2}.",
+    "tokens": [
+      "<span class=\"tt\">StringBuffer</span>",
+      "<span class=\"tt\">GenericStringBuffer&lt;UTF8&lt;&gt; &gt;</span>"
+    ]
+  },
+  {
+    "n": 21,
+    "tag": "h1",
+    "text": "File Streams",
+    "tokens": []
+  },
+  {
+    "n": 22,
+    "tag": "p",
+    "text": "When parsing a JSON from file, you may read the whole JSON into memory and use {1} above.",
+    "tokens": [
+      "<span class=\"tt\">StringStream</span>"
+    ]
+  },
+  {
+    "n": 23,
+    "tag": "p",
+    "text": "However, if the JSON is big, or memory is limited, you can use {1}. It only read a part of JSON from file into buffer, and then let the part be parsed. If it runs out of characters in the buffer, it will read the next part from file.",
+    "tokens": [
+      "<span class=\"tt\">FileReadStream</span>"
+    ]
+  },
+  {
+    "n": 24,
+    "tag": "h2",
+    "text": "FileReadStream (Input)",
+    "tokens": []
+  },
+  {
+    "n": 25,
+    "tag": "p",
+    "text": "{1} reads the file via a {2} pointer. And user need to provide a buffer.",
+    "tokens": [
+      "<span class=\"tt\">FileReadStream</span>",
+      "<span class=\"tt\">FILE</span>"
+    ]
+  },
+  {
+    "n": 26,
+    "tag": "div",
+    "text": "File byte stream for input using fread().",
+    "tokens": []
+  },
+  {
+    "n": 27,
+    "tag": "p",
+    "text": "Different from string streams, {1} is byte stream. It does not handle encodings. If the file is not UTF-8, the byte stream can be wrapped in a {2}. It will be discussed very soon.",
+    "tokens": [
+      "<span class=\"tt\">FileReadStream</span>",
+      "<span class=\"tt\">EncodedInputStream</span>"
+    ]
+  },
+  {
+    "n": 28,
+    "tag": "p",
+    "text": "Apart from reading file, user can also use {1} to read {2}.",
+    "tokens": [
+      "<span class=\"tt\">FileReadStream</span>",
+      "<span class=\"tt\">stdin</span>"
+    ]
+  },
+  {
+    "n": 29,
+    "tag": "h2",
+    "text": "FileWriteStream (Output)",
+    "tokens": []
+  },
+  {
+    "n": 30,
+    "tag": "p",
+    "text": "{1} is buffered output stream. Its usage is very similar to {2}.",
+    "tokens": [
+      "<span class=\"tt\">FileWriteStream</span>",
+      "<span class=\"tt\">FileReadStream</span>"
+    ]
+  },
+  {
+    "n": 31,
+    "tag": "div",
+    "text": "Wrapper of C file stream for input using fread().",
+    "tokens": []
+  },
+  {
+    "n": 32,
+    "tag": "p",
+    "text": "It can also directs the output to {1}.",
+    "tokens": [
+      "<span class=\"tt\">stdout</span>"
+    ]
+  },
+  {
+    "n": 33,
+    "tag": "h1",
+    "text": "iostream Wrapper",
+    "tokens": []
+  },
+  {
+    "n": 34,
+    "tag": "p",
+    "text": "Due to users' requests, RapidJSON provided official wrappers for {1} and {2}. However, please note that the performance will be much lower than the other streams above.",
+    "tokens": [
+      "<span class=\"tt\">std::basic_istream</span>",
+      "<span class=\"tt\">std::basic_ostream</span>"
+    ]
+  },
+  {
+    "n": 35,
+    "tag": "h2",
+    "text": "IStreamWrapper",
+    "tokens": []
+  },
+  {
+    "n": 36,
+    "tag": "p",
+    "text": "{1} wraps any class drived from {2}, such as {3}, {4}, {5}, {6}, into RapidJSON's input stream.",
+    "tokens": [
+      "<span class=\"tt\">IStreamWrapper</span>",
+      "<span class=\"tt\">std::istream</span>",
+      "<span class=\"tt\">std::istringstream</span>",
+      "<span class=\"tt\">std::stringstream</span>",
+      "<span class=\"tt\">std::ifstream</span>",
+      "<span class=\"tt\">std::fstream</span>"
+    ]
+  },
+  {
+    "n": 37,
+    "tag": "p",
+    "text": "For classes derived from {1}, use {2}.",
+    "tokens": [
+      "<span class=\"tt\">std::wistream</span>",
+      "<span class=\"tt\">WIStreamWrapper</span>"
+    ]
+  },
+  {
+    "n": 38,
+    "tag": "h2",
+    "text": "OStreamWrapper",
+    "tokens": []
+  },
+  {
+    "n": 39,
+    "tag": "p",
+    "text": "Similarly, {1} wraps any class derived from {2}, such as {3}, {4}, {5}, {6}, into RapidJSON's input stream.",
+    "tokens": [
+      "<span class=\"tt\">OStreamWrapper</span>",
+      "<span class=\"tt\">std::ostream</span>",
+      "<span class=\"tt\">std::ostringstream</span>",
+      "<span class=\"tt\">std::stringstream</span>",
+      "<span class=\"tt\">std::ofstream</span>",
+      "<span class=\"tt\">std::fstream</span>"
+    ]
+  },
+  {
+    "n": 40,
+    "tag": "p",
+    "text": "For classes derived from {1}, use {2}.",
+    "tokens": [
+      "<span class=\"tt\">std::wostream</span>",
+      "<span class=\"tt\">WOStreamWrapper</span>"
+    ]
+  },
+  {
+    "n": 41,
+    "tag": "h1",
+    "text": "Encoded Streams",
+    "tokens": []
+  },
+  {
+    "n": 42,
+    "tag": "p",
+    "text": "Encoded streams do not contain JSON itself, but they wrap byte streams to provide basic encoding/decoding function.",
+    "tokens": []
+  },
+  {
+    "n": 43,
+    "tag": "p",
+    "text": "As mentioned above, UTF-8 byte streams can be read directly. However, UTF-16 and UTF-32 have endian issue. To handle endian correctly, it needs to convert bytes into characters (e.g. {1} for UTF-16) while reading, and characters into bytes while writing.",
+    "tokens": [
+      "<span class=\"tt\">wchar_t</span>"
+    ]
+  },
+  {
+    "n": 44,
+    "tag": "p",
+    "text": "Besides, it also need to handle {1}. When reading from a byte stream, it is needed to detect or just consume the BOM if exists. When writing to a byte stream, it can optionally write BOM.",
+    "tokens": [
+      "<a href=\"http://en.wikipedia.org/wiki/Byte_order_mark\">byte order mark (BOM)</a>"
+    ]
+  },
+  {
+    "n": 45,
+    "tag": "p",
+    "text": "If the encoding of stream is known in compile-time, you may use {1} and {2}. If the stream can be UTF-8, UTF-16LE, UTF-16BE, UTF-32LE, UTF-32BE JSON, and it is only known in runtime, you may use {3} and {4}. These streams are defined in {5}.",
+    "tokens": [
+      "<span class=\"tt\">EncodedInputStream</span>",
+      "<span class=\"tt\">EncodedOutputStream</span>",
+      "<span class=\"tt\">AutoUTFInputStream</span>",
+      "<span class=\"tt\">AutoUTFOutputStream</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/069-encodedstream_8h_source/\">rapidjson/encodedstream.h</a></span>"
+    ]
+  },
+  {
+    "n": 46,
+    "tag": "p",
+    "text": "Note that, these encoded streams can be applied to streams other than file. For example, you may have a file in memory, or a custom byte stream, be wrapped in encoded streams.",
+    "tokens": []
+  },
+  {
+    "n": 47,
+    "tag": "h2",
+    "text": "EncodedInputStream",
+    "tokens": []
+  },
+  {
+    "n": 48,
+    "tag": "p",
+    "text": "{1} has two template parameters. The first one is a {2} class, such as {3}, {4}, defined in {5}. The second one is the class of stream to be wrapped.",
+    "tokens": [
+      "<span class=\"tt\">EncodedInputStream</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a></span>",
+      "<span class=\"tt\">UTF8</span>",
+      "<span class=\"tt\">UTF16LE</span>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/070-encodings_8h_source/\">rapidjson/encodings.h</a></span>"
+    ]
+  },
+  {
+    "n": 49,
+    "tag": "div",
+    "text": "Input byte stream wrapper with a statically bound encoding.",
+    "tokens": []
+  },
+  {
+    "n": 50,
+    "tag": "div",
+    "text": "UTF-16 little endian encoding.",
+    "tokens": []
+  },
+  {
+    "n": 51,
+    "tag": "h2",
+    "text": "EncodedOutputStream",
+    "tokens": []
+  },
+  {
+    "n": 52,
+    "tag": "p",
+    "text": "{1} is similar but it has a {2} parameter in the constructor, controlling whether to write BOM into output byte stream.",
+    "tokens": [
+      "<span class=\"tt\">EncodedOutputStream</span>",
+      "<span class=\"tt\">bool putBOM</span>"
+    ]
+  },
+  {
+    "n": 53,
+    "tag": "div",
+    "text": "Output byte stream wrapper with statically bound encoding.",
+    "tokens": []
+  },
+  {
+    "n": 54,
+    "tag": "div",
+    "text": "UTF-8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 55,
+    "tag": "h2",
+    "text": "AutoUTFInputStream",
+    "tokens": []
+  },
+  {
+    "n": 56,
+    "tag": "p",
+    "text": "Sometimes an application may want to handle all supported JSON encoding. {1} will detection encoding by BOM first. If BOM is unavailable, it will use characteristics of valid JSON to make detection. If neither method success, it falls back to the UTF type provided in constructor.",
+    "tokens": [
+      "<span class=\"tt\">AutoUTFInputStream</span>"
+    ]
+  },
+  {
+    "n": 57,
+    "tag": "p",
+    "text": "Since the characters (code units) may be 8-bit, 16-bit or 32-bit. {1} requires a character type which can hold at least 32-bit. We may use {2}, as in the template parameter:",
+    "tokens": [
+      "<span class=\"tt\">AutoUTFInputStream</span>",
+      "<span class=\"tt\">unsigned</span>"
+    ]
+  },
+  {
+    "n": 58,
+    "tag": "div",
+    "text": "Input stream wrapper with dynamically bound encoding and automatic encoding detection.",
+    "tokens": []
+  },
+  {
+    "n": 59,
+    "tag": "div",
+    "text": "Dynamically select encoding according to stream's runtime-specified UTF encoding type.",
+    "tokens": []
+  },
+  {
+    "n": 60,
+    "tag": "p",
+    "text": "When specifying the encoding of stream, uses {1} as in {2} above.",
+    "tokens": [
+      "<span class=\"tt\">AutoUTF&lt;CharType&gt;</span>",
+      "<span class=\"tt\">ParseStream()</span>"
+    ]
+  },
+  {
+    "n": 61,
+    "tag": "p",
+    "text": "You can obtain the type of UTF via {1}. And check whether a BOM is found by {2}",
+    "tokens": [
+      "<span class=\"tt\">UTFType GetType()</span>",
+      "<span class=\"tt\">HasBOM()</span>"
+    ]
+  },
+  {
+    "n": 62,
+    "tag": "h2",
+    "text": "AutoUTFOutputStream",
+    "tokens": []
+  },
+  {
+    "n": 63,
+    "tag": "p",
+    "text": "Similarly, to choose encoding for output during runtime, we can use {1}. This class is not automatic {2}. You need to specify the UTF type and whether to write BOM in runtime.",
+    "tokens": [
+      "<span class=\"tt\">AutoUTFOutputStream</span>",
+      "<em>per se</em>"
+    ]
+  },
+  {
+    "n": 64,
+    "tag": "div",
+    "text": "Output stream wrapper with dynamically bound encoding and automatic encoding detection.",
+    "tokens": []
+  },
+  {
+    "n": 65,
+    "tag": "div",
+    "text": "Runtime-specified UTF encoding type of a stream.",
+    "tokens": []
+  },
+  {
+    "n": 66,
+    "tag": "p",
+    "text": "{1} and {2} is more convenient than {3} and {4}. They just incur a little bit runtime overheads.",
+    "tokens": [
+      "<span class=\"tt\">AutoUTFInputStream</span>",
+      "<span class=\"tt\">AutoUTFOutputStream</span>",
+      "<span class=\"tt\">EncodedInputStream</span>",
+      "<span class=\"tt\">EncodedOutputStream</span>"
+    ]
+  },
+  {
+    "n": 67,
+    "tag": "h1",
+    "text": "Custom Stream",
+    "tokens": []
+  },
+  {
+    "n": 68,
+    "tag": "p",
+    "text": "In addition to memory/file streams, user can create their own stream classes which fits RapidJSON's API. For example, you may create network stream, stream from compressed file, etc.",
+    "tokens": []
+  },
+  {
+    "n": 69,
+    "tag": "p",
+    "text": "RapidJSON combines different types using templates. A class containing all required interface can be a stream. The {1} interface is defined in comments of {2}:",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/056-classrapidjson_1_1_stream/\" title=\"Concept for reading and writing characters.\">Stream</a>",
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/154-rapidjson_8h/\" title=\"common definitions and configuration\">rapidjson/rapidjson.h</a></span>"
+    ]
+  },
+  {
+    "n": 70,
+    "tag": "div",
+    "text": "Concept for reading and writing characters.",
+    "tokens": []
+  },
+  {
+    "n": 71,
+    "tag": "p",
+    "text": "For input stream, they must implement {1}, {2} and {3}. For output stream, they must implement {4} and {5}. There are two special interface, {6} and {7}, which are only for {8} parsing. Normal streams do not implement them. However, if the interface is not needed for a particular stream, it is still need to a dummy implementation, otherwise will generate compilation error.",
+    "tokens": [
+      "<span class=\"tt\">Peek()</span>",
+      "<span class=\"tt\">Take()</span>",
+      "<span class=\"tt\">Tell()</span>",
+      "<span class=\"tt\">Put()</span>",
+      "<span class=\"tt\">Flush()</span>",
+      "<span class=\"tt\">PutBegin()</span>",
+      "<span class=\"tt\">PutEnd()</span>",
+      "<em>in situ</em>"
+    ]
+  },
+  {
+    "n": 72,
+    "tag": "h2",
+    "text": "Example: istream wrapper",
+    "tokens": []
+  },
+  {
+    "n": 73,
+    "tag": "p",
+    "text": "The following example is a simple wrapper of {1}, which only implements 3 functions.",
+    "tokens": [
+      "<span class=\"tt\">std::istream</span>"
+    ]
+  },
+  {
+    "n": 74,
+    "tag": "p",
+    "text": "User can use it to wrap instances of {1}, {2}.",
+    "tokens": [
+      "<span class=\"tt\">std::stringstream</span>",
+      "<span class=\"tt\">std::ifstream</span>"
+    ]
+  },
+  {
+    "n": 75,
+    "tag": "p",
+    "text": "Note that, this implementation may not be as efficient as RapidJSON's memory or file streams, due to internal overheads of the standard library.",
+    "tokens": []
+  },
+  {
+    "n": 76,
+    "tag": "h2",
+    "text": "Example: ostream wrapper",
+    "tokens": []
+  },
+  {
+    "n": 77,
+    "tag": "p",
+    "text": "The following example is a simple wrapper of {1}, which only implements 2 functions.",
+    "tokens": [
+      "<span class=\"tt\">std::istream</span>"
+    ]
+  },
+  {
+    "n": 78,
+    "tag": "p",
+    "text": "User can use it to wrap instances of {1}, {2}.",
+    "tokens": [
+      "<span class=\"tt\">std::stringstream</span>",
+      "<span class=\"tt\">std::ofstream</span>"
+    ]
+  },
+  {
+    "n": 79,
+    "tag": "p",
+    "text": "Note that, this implementation may not be as efficient as RapidJSON's memory or file streams, due to internal overheads of the standard library.",
+    "tokens": []
+  },
+  {
+    "n": 80,
+    "tag": "h1",
+    "text": "Summary",
+    "tokens": []
+  },
+  {
+    "n": 81,
+    "tag": "p",
+    "text": "This section describes stream classes available in RapidJSON. Memory streams are simple. File stream can reduce the memory required during JSON parsing and generation, if the JSON is stored in file system. Encoded streams converts between byte streams and character streams. Finally, user may create custom streams using a simple interface.",
+    "tokens": []
+  }
+]

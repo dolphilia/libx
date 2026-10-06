@@ -1,0 +1,367 @@
+[
+  {
+    "n": 1,
+    "tag": "p",
+    "text": "According to {1},",
+    "tokens": [
+      "<a href=\"http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf\">ECMA-404</a>"
+    ]
+  },
+  {
+    "n": 2,
+    "tag": "p",
+    "text": "(in Introduction) JSON text is a sequence of Unicode code points.",
+    "tokens": []
+  },
+  {
+    "n": 3,
+    "tag": "p",
+    "text": "The earlier {1} stated that,",
+    "tokens": [
+      "<a href=\"http://www.ietf.org/rfc/rfc4627.txt\">RFC4627</a>"
+    ]
+  },
+  {
+    "n": 4,
+    "tag": "p",
+    "text": "(in §3) JSON text SHALL be encoded in Unicode. The default encoding is UTF-8.",
+    "tokens": []
+  },
+  {
+    "n": 5,
+    "tag": "p",
+    "text": "(in §6) JSON may be represented using UTF-8, UTF-16, or UTF-32. When JSON is written in UTF-8, JSON is 8bit compatible. When JSON is written in UTF-16 or UTF-32, the binary content-transfer-encoding must be used.",
+    "tokens": []
+  },
+  {
+    "n": 6,
+    "tag": "p",
+    "text": "RapidJSON supports various encodings. It can also validate the encodings of JSON, and transconding JSON among encodings. All these features are implemented internally, without the need for external libraries (e.g. {1}).",
+    "tokens": [
+      "<a href=\"http://site.icu-project.org/\">ICU</a>"
+    ]
+  },
+  {
+    "n": 7,
+    "tag": "h1",
+    "text": "Unicode",
+    "tokens": []
+  },
+  {
+    "n": 8,
+    "tag": "p",
+    "text": "From {1}:",
+    "tokens": [
+      "<a href=\"http://www.unicode.org/standard/WhatIsUnicode.html\">Unicode's official website</a>"
+    ]
+  },
+  {
+    "n": 9,
+    "tag": "p",
+    "text": "Unicode provides a unique number for every character, no matter what the platform, no matter what the program, no matter what the language.",
+    "tokens": []
+  },
+  {
+    "n": 10,
+    "tag": "p",
+    "text": "Those unique numbers are called code points, which is in the range {1} to {2}.",
+    "tokens": [
+      "<span class=\"tt\">0x0</span>",
+      "<span class=\"tt\">0x10FFFF</span>"
+    ]
+  },
+  {
+    "n": 11,
+    "tag": "h2",
+    "text": "Unicode Transformation Format",
+    "tokens": []
+  },
+  {
+    "n": 12,
+    "tag": "p",
+    "text": "There are various encodings for storing Unicode code points. These are called Unicode Transformation Format (UTF). RapidJSON supports the most commonly used UTFs, including",
+    "tokens": []
+  },
+  {
+    "n": 13,
+    "tag": "li",
+    "text": "UTF-8: 8-bit variable-width encoding. It maps a code point to 1–4 bytes.",
+    "tokens": []
+  },
+  {
+    "n": 14,
+    "tag": "li",
+    "text": "UTF-16: 16-bit variable-width encoding. It maps a code point to 1–2 16-bit code units (i.e., 2–4 bytes).",
+    "tokens": []
+  },
+  {
+    "n": 15,
+    "tag": "li",
+    "text": "UTF-32: 32-bit fixed-width encoding. It directly maps a code point to a single 32-bit code unit (i.e. 4 bytes).",
+    "tokens": []
+  },
+  {
+    "n": 16,
+    "tag": "p",
+    "text": "For UTF-16 and UTF-32, the byte order (endianness) does matter. Within computer memory, they are often stored in the computer's endianness. However, when it is stored in file or transferred over network, we need to state the byte order of the byte sequence, either little-endian (LE) or big-endian (BE).",
+    "tokens": []
+  },
+  {
+    "n": 17,
+    "tag": "p",
+    "text": "RapidJSON provide these encodings via the structs in {1}:",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/070-encodings_8h_source/\">rapidjson/encodings.h</a></span>"
+    ]
+  },
+  {
+    "n": 18,
+    "tag": "div",
+    "text": "main RapidJSON namespace",
+    "tokens": []
+  },
+  {
+    "n": 19,
+    "tag": "p",
+    "text": "For processing text in memory, we normally use {1}, {2} or {3}. For processing text via I/O, we may use {4}, {5}, {6}, {7} or {8}.",
+    "tokens": [
+      "<span class=\"tt\">UTF8</span>",
+      "<span class=\"tt\">UTF16</span>",
+      "<span class=\"tt\">UTF32</span>",
+      "<span class=\"tt\">UTF8</span>",
+      "<span class=\"tt\">UTF16LE</span>",
+      "<span class=\"tt\">UTF16BE</span>",
+      "<span class=\"tt\">UTF32LE</span>",
+      "<span class=\"tt\">UTF32BE</span>"
+    ]
+  },
+  {
+    "n": 20,
+    "tag": "p",
+    "text": "When using the DOM-style API, the {1} template parameter in {2} and {3} indicates the encoding to be used to represent JSON string in memory. So normally we will use {4}, {5} or {6} for this template parameter. The choice depends on operating systems and other libraries that the application is using. For example, Windows API represents Unicode characters in UTF-16, while most Linux distributions and applications prefer UTF-8.",
+    "tokens": [
+      "<span class=\"tt\"><a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a></span>",
+      "<span class=\"tt\">GenericValue&lt;<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a>&gt;</span>",
+      "<span class=\"tt\">GenericDocument&lt;<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/02-reference/022-classrapidjson_1_1_encoding/\" title=\"Concept for encoding of Unicode characters.\">Encoding</a>&gt;</span>",
+      "<span class=\"tt\">UTF8</span>",
+      "<span class=\"tt\">UTF16</span>",
+      "<span class=\"tt\">UTF32</span>"
+    ]
+  },
+  {
+    "n": 21,
+    "tag": "p",
+    "text": "Example of UTF-16 DOM declaration:",
+    "tokens": []
+  },
+  {
+    "n": 22,
+    "tag": "p",
+    "text": "For a detail example, please check the example in {1} section.",
+    "tokens": [
+      "<a class=\"el\" href=\"/docs/rapidjson/v1-1-0/en/01-guide/06-stream/\" title=\"Stream\">DOM's Encoding</a>"
+    ]
+  },
+  {
+    "n": 23,
+    "tag": "h2",
+    "text": "Character Type",
+    "tokens": []
+  },
+  {
+    "n": 24,
+    "tag": "p",
+    "text": "As shown in the declaration, each encoding has a {1} template parameter. Actually, it may be a little bit confusing, but each {2} stores a code unit, not a character (code point). As mentioned in previous section, a code point may be encoded to 1–4 code units for UTF-8.",
+    "tokens": [
+      "<span class=\"tt\">CharType</span>",
+      "<span class=\"tt\">CharType</span>"
+    ]
+  },
+  {
+    "n": 25,
+    "tag": "p",
+    "text": "For {1}, {2}, the {3} must be integer type of at least 2 and 4 bytes respectively.",
+    "tokens": [
+      "<span class=\"tt\">UTF16(LE|BE)</span>",
+      "<span class=\"tt\">UTF32(LE|BE)</span>",
+      "<span class=\"tt\">CharType</span>"
+    ]
+  },
+  {
+    "n": 26,
+    "tag": "p",
+    "text": "Note that C++11 introduces {1} and {2}, which can be used for {3} and {4} respectively.",
+    "tokens": [
+      "<span class=\"tt\">char16_t</span>",
+      "<span class=\"tt\">char32_t</span>",
+      "<span class=\"tt\">UTF16</span>",
+      "<span class=\"tt\">UTF32</span>"
+    ]
+  },
+  {
+    "n": 27,
+    "tag": "h2",
+    "text": "AutoUTF",
+    "tokens": []
+  },
+  {
+    "n": 28,
+    "tag": "p",
+    "text": "Previous encodings are statically bound in compile-time. In other words, user must know exactly which encodings will be used in the memory or streams. However, sometimes we may need to read/write files of different encodings. The encoding needed to be decided in runtime.",
+    "tokens": []
+  },
+  {
+    "n": 29,
+    "tag": "p",
+    "text": "{1} is an encoding designed for this purpose. It chooses which encoding to be used according to the input or output stream. Currently, it should be used with {2} and {3}.",
+    "tokens": [
+      "<span class=\"tt\">AutoUTF</span>",
+      "<span class=\"tt\">EncodedInputStream</span>",
+      "<span class=\"tt\">EncodedOutputStream</span>"
+    ]
+  },
+  {
+    "n": 30,
+    "tag": "h2",
+    "text": "ASCII",
+    "tokens": []
+  },
+  {
+    "n": 31,
+    "tag": "p",
+    "text": "Although the JSON standards did not mention about {1}, sometimes we would like to write 7-bit ASCII JSON for applications that cannot handle UTF-8. Since any JSON can represent unicode characters in escaped sequence {2}, JSON can always be encoded in ASCII.",
+    "tokens": [
+      "<a href=\"http://en.wikipedia.org/wiki/ASCII\">ASCII</a>",
+      "<span class=\"tt\">\\uXXXX</span>"
+    ]
+  },
+  {
+    "n": 32,
+    "tag": "p",
+    "text": "Here is an example for writing a UTF-8 DOM into ASCII:",
+    "tokens": []
+  },
+  {
+    "n": 33,
+    "tag": "div",
+    "text": "Generate events of this value to a Handler.",
+    "tokens": []
+  },
+  {
+    "n": 34,
+    "tag": "div",
+    "text": "JSON writer.",
+    "tokens": []
+  },
+  {
+    "n": 35,
+    "tag": "div",
+    "text": "String buffer with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 36,
+    "tag": "div",
+    "text": "GenericDocument with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 37,
+    "tag": "p",
+    "text": "ASCII can be used in input stream. If the input stream contains bytes with values above 127, it will cause {1} error.",
+    "tokens": [
+      "<span class=\"tt\">kParseErrorStringInvalidEncoding</span>"
+    ]
+  },
+  {
+    "n": 38,
+    "tag": "p",
+    "text": "ASCII {1} be used in memory (encoding of {2} or target encoding of {3}), as it cannot represent Unicode code points.",
+    "tokens": [
+      "<em>cannot</em>",
+      "<span class=\"tt\">Document</span>",
+      "<span class=\"tt\">Reader</span>"
+    ]
+  },
+  {
+    "n": 39,
+    "tag": "h1",
+    "text": "Validation & Transcoding",
+    "tokens": []
+  },
+  {
+    "n": 40,
+    "tag": "p",
+    "text": "When RapidJSON parses a JSON, it can validate the input JSON, whether it is a valid sequence of a specified encoding. This option can be turned on by adding {1} in {2} template parameter.",
+    "tokens": [
+      "<span class=\"tt\">kParseValidateEncodingFlag</span>",
+      "<span class=\"tt\">parseFlags</span>"
+    ]
+  },
+  {
+    "n": 41,
+    "tag": "p",
+    "text": "If the input encoding and output encoding is different, {1} and {2} will automatically transcode (convert) the text. In this case, {3} is not necessary, as it must decode the input sequence. And if the sequence was unable to be decoded, it must be invalid.",
+    "tokens": [
+      "<span class=\"tt\">Reader</span>",
+      "<span class=\"tt\">Writer</span>",
+      "<span class=\"tt\">kParseValidateEncodingFlag</span>"
+    ]
+  },
+  {
+    "n": 42,
+    "tag": "h2",
+    "text": "Transcoder",
+    "tokens": []
+  },
+  {
+    "n": 43,
+    "tag": "p",
+    "text": "Although the encoding functions in RapidJSON are designed for JSON parsing/generation, user may abuse them for transcoding of non-JSON strings.",
+    "tokens": []
+  },
+  {
+    "n": 44,
+    "tag": "p",
+    "text": "Here is an example for transcoding a string from UTF-8 to UTF-16:",
+    "tokens": []
+  },
+  {
+    "n": 45,
+    "tag": "div",
+    "text": "Represents an in-memory output stream.",
+    "tokens": []
+  },
+  {
+    "n": 46,
+    "tag": "div",
+    "text": "String stream with UTF8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 47,
+    "tag": "div",
+    "text": "Encoding conversion.",
+    "tokens": []
+  },
+  {
+    "n": 48,
+    "tag": "div",
+    "text": "UTF-16 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 49,
+    "tag": "div",
+    "text": "UTF-8 encoding.",
+    "tokens": []
+  },
+  {
+    "n": 50,
+    "tag": "p",
+    "text": "You may also use {1} and the associated streams for setting source/target encoding in runtime.",
+    "tokens": [
+      "<span class=\"tt\">AutoUTF</span>"
+    ]
+  }
+]
