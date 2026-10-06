@@ -1,0 +1,87 @@
+<div class="chapter-level-extent" id="Regular-expressions">
+<h2 class="chapter" id="Regular-expressions-1"><span>6 正規表現<a class="copiable-link" href="#Regular-expressions-1"> ¶</a></span></h2>
+<p>正規表現は、テキストの選択に使うパターンです。たとえば、<code class="command">ed</code> のコマンド</p>
+<div class="example">
+<pre class="example-preformatted">g/<var class="var">string</var>/
+</pre></div>
+<p>は、<var class="var">string</var> を含むすべての行を表示します。正規表現は、「<samp class="samp">s</samp>」コマンドでも、新しいテキストで置き換える古いテキストの選択に使います。</p>
+<p>正規表現は、文字列リテラルの指定に加え、文字列の集合も表せます。そのように表される文字列は、対応する正規表現に一致するといいます。正規表現が行内の複数の文字列に一致できる場合、最も左の一致が選択されます。正規表現が可変個数の文字の一致を許す場合は、その位置から始まる最長の並びに一致します。</p>
+<p>空の正規表現は、最後に処理した正規表現と等価です。したがって「<samp class="samp">/<var class="var">re</var>/s//<var class="var">replacement</var>/</samp>」は <var class="var">re</var> を <var class="var">replacement</var> に置き換えます。ただし、グローバルコマンドの <var class="var">command-list</var> 内で正規表現を使う場合、「最後に処理した正規表現」は、<var class="var">command-list</var> の最初の実行とその後の実行とで異なることがあります。<a class="xref" href="#global-command">グローバルコマンド</a>を参照してください。</p>
+<p>GNU 拡張として、正規表現 /<var class="var">re</var>/ の後に接尾辞「<samp class="samp">I</samp>」を付けられます。これにより、<code class="command">ed</code> は <var class="var">re</var> に大文字と小文字を区別せずに一致します。この接尾辞は正規表現のコンパイル時に評価されるため、空の正規表現とともに指定することは無効です。</p>
+<p>POSIX 基本正規表現の構文で正規表現を作るには、次の記号を使います。</p>
+<dl class="table">
+<dt><code class="code"><var class="var">c</var></code></dt>
+<dd><p>以下に挙げていない文字 <var class="var">c</var> は、それ自身に一致します。「<samp class="samp">{</samp>」「<samp class="samp">}</samp>」「<samp class="samp">(</samp>」「<samp class="samp">)</samp>」「<samp class="samp">&lt;</samp>」「<samp class="samp">&gt;</samp>」も含まれます。</p>
+</dd>
+<dt><code class="code">\<var class="var">c</var></code></dt>
+<dd><p>バックスラッシュでエスケープした文字 <var class="var">c</var> は、「<samp class="samp">{</samp>」「<samp class="samp">}</samp>」「<samp class="samp">(</samp>」「<samp class="samp">)</samp>」「<samp class="samp">&lt;</samp>」「<samp class="samp">&gt;</samp>」「<samp class="samp">b</samp>」「<samp class="samp">B</samp>」「<samp class="samp">w</samp>」「<samp class="samp">W</samp>」「<samp class="samp">+</samp>」「<samp class="samp">?</samp>」を除き、それ自身に一致します。</p>
+</dd>
+<dt><code class="code">.</code></dt>
+<dd><p>任意の1文字に一致します。</p>
+</dd>
+<dt><code class="code">[<var class="var">char-class</var>]</code></dt>
+<dd><p><var class="var">char-class</var> 内の任意の1文字に一致します。「<samp class="samp">]</samp>」を <var class="var">char-class</var> に含めるには、最初の文字にする必要があります。文字の範囲は、その両端の文字を「<samp class="samp">-</samp>」で区切って指定できます。たとえば「<samp class="samp">a-z</samp>」は小文字を指定します。<var class="var">char-class</var> では、次のリテラル表現でも文字の集合を指定できます。</p>
+<div class="example">
+<pre class="example-preformatted">[:alnum:] [:cntrl:] [:lower:] [:space:]
+[:alpha:] [:digit:] [:print:] [:upper:]
+[:blank:] [:graph:] [:punct:] [:xdigit:]
+</pre></div>
+<p>「<samp class="samp">-</samp>」が <var class="var">char-class</var> の最初または最後の文字であれば、それ自身に一致します。<var class="var">char-class</var> 内のその他すべての文字は、それ自身に一致します。</p>
+<p><var class="var">char-class</var> 内の、次の形式のパターン：</p><div class="example">
+<pre class="example-preformatted">[.<var class="var">col-elm</var>.]
+[=<var class="var">col-elm</var>=]
+</pre></div>
+<p>ここで <var class="var">col-elm</var> は<em class="dfn">照合要素</em>であり、これらは「<samp class="samp">locale</samp>」(5) に従って解釈されます。これらの構文の説明は「<samp class="samp">regex</samp>」(7) を参照してください。</p>
+</dd>
+<dt><code class="code">[^<var class="var">char-class</var>]</code></dt>
+<dd><p>改行以外で、<var class="var">char-class</var> に含まれない任意の1文字に一致します。<var class="var">char-class</var> の定義は上記と同じです。</p>
+</dd>
+<dt><code class="code">^</code></dt>
+<dd><p>「<samp class="samp">^</samp>」が正規表現の最初の文字であれば、正規表現を行頭に固定します。それ以外の場合は、それ自身に一致します。</p>
+</dd>
+<dt><code class="code">$</code></dt>
+<dd><p>「<samp class="samp">$</samp>」が正規表現の最後の文字であれば、正規表現を行末に固定します。それ以外の場合は、それ自身に一致します。</p>
+</dd>
+<dt><code class="code">\(<var class="var">re</var>\)</code></dt>
+<dd><p>（空でもよい）部分式 <var class="var">re</var> を定義します。部分式は入れ子にできます。後に続く「<samp class="samp">\<var class="var">n</var></samp>」という形式の後方参照は、<var class="var">n</var> 番目の部分式に一致したテキストに展開されます。<var class="var">n</var> は [1,9] の範囲の数値です。たとえば正規表現「<samp class="samp">\(a.c\)\1</samp>」は文字列「<samp class="samp">abcabc</samp>」に一致しますが、「<samp class="samp">abcadc</samp>」には一致しません。部分式の順序は、左側の区切りの位置で決まります。</p>
+</dd>
+<dt><code class="code">*</code></dt>
+<dd><p>直前の正規表現の0回以上の繰り返しに一致します。その正規表現は、1文字の正規表現か部分式です。「<samp class="samp">*</samp>」が正規表現や部分式の最初の文字であれば、それ自身に一致します。「<samp class="samp">*</samp>」演算子は、予期しない結果になることがあります。たとえば正規表現「<samp class="samp">b*</samp>」は、部分文字列「<samp class="samp">bbb</samp>」ではなく、文字列「<samp class="samp">abbb</samp>」の先頭に一致します。空文字列が唯一の最も左の一致となるためです。</p>
+</dd>
+<dt><code class="code">\{<var class="var">n</var>,<var class="var">m</var>\}</code></dt>
+<dt><code class="code">\{<var class="var">n</var>,\}</code></dt>
+<dt><code class="code">\{<var class="var">n</var>\}</code></dt>
+<dd><p>直前の1文字の正規表現または部分式の、少なくとも <var class="var">n</var> 回、多くても <var class="var">m</var> 回の繰り返しに一致します。<var class="var">m</var> を省略すると、少なくとも <var class="var">n</var> 回に一致します。コンマも省略すると、ちょうど <var class="var">n</var> 回に一致します。これらの形式が正規表現や部分式の先頭に現れた場合は、文字どおりに解釈されます（つまり、正規表現「<samp class="samp">\{2\}</samp>」は文字列「<samp class="samp">{2}</samp>」に一致する、などです）。</p>
+</dd>
+</dl>
+<p>基本正規表現の演算子に対する次の拡張には、従来の <code class="command">ed</code> の構文と区別するため、バックスラッシュ「<samp class="samp">\</samp>」を前置します。システムの正規表現の実装によっては利用できない場合があります。</p>
+<dl class="table">
+<dt><code class="code">\&lt;</code></dt>
+<dt><code class="code">\&gt;</code></dt>
+<dd><p>直後の1文字の正規表現または部分式を、<em class="dfn">単語</em>の先頭（「<samp class="samp">\&lt;</samp>」の場合）または末尾（「<samp class="samp">\&gt;</samp>」の場合）に固定します。ASCII では、単語とは、アンダースコア（_）を含む英数字が続く最長の文字列です。</p>
+</dd>
+<dt><code class="code">\`</code></dt>
+<dt><code class="code">\'</code></dt>
+<dd><p>行頭「<samp class="samp">\`</samp>」または行末「<samp class="samp">\'</samp>」に無条件で一致します。</p>
+</dd>
+<dt><code class="code">\?</code></dt>
+<dd><p>直前の1文字の正規表現または部分式があってもなくても一致します。たとえば正規表現「<samp class="samp">a[bd]\?c</samp>」は、文字列「<samp class="samp">abc</samp>」「<samp class="samp">adc</samp>」「<samp class="samp">ac</samp>」に一致します。「<samp class="samp">\?</samp>」が正規表現や部分式の先頭に現れた場合は、リテラルの「<samp class="samp">?</samp>」に一致します。</p>
+</dd>
+<dt><code class="code">\+</code></dt>
+<dd><p>直前の1文字の正規表現または部分式の1回以上の繰り返しに一致します。したがって正規表現「<samp class="samp">a\+</samp>」は「<samp class="samp">aa*</samp>」の略記です。「<samp class="samp">\+</samp>」が正規表現や部分式の先頭に現れた場合は、リテラルの「<samp class="samp">+</samp>」に一致します。</p>
+</dd>
+<dt><code class="code">\b</code></dt>
+<dd><p>単語の先頭または末尾（空文字列）に一致します。したがって正規表現「<samp class="samp">\bhello\b</samp>」は「<samp class="samp">\&lt;hello\&gt;</samp>」と等価です。ただし、「<samp class="samp">\b\b</samp>」は有効な正規表現ですが、「<samp class="samp">\&lt;\&gt;</samp>」は無効です。</p>
+</dd>
+<dt><code class="code">\B</code></dt>
+<dd><p>単語の内部の空文字列に一致します。</p>
+</dd>
+<dt><code class="code">\w</code></dt>
+<dd><p>単語を構成する任意の文字（英字、数字、アンダースコア）に一致します。</p>
+</dd>
+<dt><code class="code">\W</code></dt>
+<dd><p>単語を構成しない任意の文字に一致します。</p>
+</dd>
+</dl>
+<hr/>
+</div>

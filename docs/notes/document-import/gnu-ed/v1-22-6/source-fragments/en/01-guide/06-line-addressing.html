@@ -1,0 +1,119 @@
+<div class="chapter-level-extent" id="Line-addressing">
+<h2 class="chapter" id="Line-addressing-1"><span>5 Line addressing<a class="copiable-link" href="#Line-addressing-1"> ¶</a></span></h2>
+<p>An address represents the number of a line in the buffer. <code class="command">ed</code>
+maintains a <em class="dfn">current address</em> which is typically supplied to commands as
+the default address when none is specified. When a file is first read, the
+current address is set to the address of the last line of the file. In
+general, the current address is set to the address of the last line affected
+by a command.
+</p>
+<p>One exception to the rule that addresses represent line numbers is the
+address ‘<samp class="samp">0</samp>’ (zero). This means "at the beginning of the buffer", and is
+valid wherever it makes sense.
+</p>
+<p>An address range is two addresses separated either by a comma (‘<samp class="samp">,</samp>’) or
+a semicolon (‘<samp class="samp">;</samp>’). The value of the first address in a range cannot
+exceed the value of the second.
+</p>
+<p>In a semicolon-delimited range, the current address (‘<samp class="samp">.</samp>’) is set to the
+first address before the second address is calculated. This feature can be
+used to set the starting line for searches if the second address contains a
+regular expression. The address ‘<samp class="samp">0</samp>’ (zero) is valid as a starting point
+so that ‘<samp class="samp">0;/<var class="var">re</var>/</samp>’ can match <var class="var">re</var> in the first line of the buffer.
+</p>
+<p>Addresses can be omitted on either side of the comma or semicolon separator.
+If only the first address is given in a range, then the second address is
+set to the given address. If only the second address is given, the resulting
+address pairs are ‘<samp class="samp">1,addr</samp>’ and ‘<samp class="samp">.;addr</samp>’ respectively. If a
+<var class="var">n</var>-tuple of addresses is given where <var class="var">n</var> &gt; 2<!-- /@w -->, then the
+corresponding range is determined by the last two addresses in the
+<var class="var">n</var>-tuple. If only one address is expected, then the last address is
+used. It is an error to give any number of addresses to a command that
+requires zero addresses.
+</p>
+<p>A line address is constructed as follows:
+</p>
+<dl class="table">
+<dt><code class="code">.</code></dt>
+<dd><p>The current line (address) in the buffer.
+</p>
+</dd>
+<dt><code class="code">$</code></dt>
+<dd><p>The last line in the buffer.
+</p>
+</dd>
+<dt><code class="code"><var class="var">n</var></code></dt>
+<dd><p>The <var class="var">n</var>th line in the buffer, where <var class="var">n</var> is a number in the range
+‘<samp class="samp">0,$</samp>’.
+</p>
+</dd>
+<dt><code class="code">+<var class="var">n</var></code></dt>
+<dd><p>The <var class="var">n</var>th next line, where <var class="var">n</var> is a non-negative number.
+</p>
+</dd>
+<dt><code class="code">-<var class="var">n</var></code></dt>
+<dd><p>The <var class="var">n</var>th previous line, where <var class="var">n</var> is a non-negative number.
+</p>
+</dd>
+<dt><code class="code">+</code></dt>
+<dd><p>The next line. This is equivalent to ‘<samp class="samp">+1</samp>’ and may be repeated with
+cumulative effect.
+</p>
+</dd>
+<dt><code class="code">-</code></dt>
+<dd><p>The previous line. This is equivalent to ‘<samp class="samp">-1</samp>’ and may be repeated with
+cumulative effect.
+</p>
+</dd>
+<dt><code class="code">,</code></dt>
+<dd><p>The first through last lines in the buffer. This is equivalent to the
+address range ‘<samp class="samp">1,$</samp>’.
+</p>
+</dd>
+<dt><code class="code">;</code></dt>
+<dd><p>The current through last lines in the buffer. This is equivalent to the
+address range ‘<samp class="samp">.;$</samp>’.
+</p>
+</dd>
+<dt><code class="code">/<var class="var">re</var>/[I]</code></dt>
+<dd><p>The next line containing the regular expression <var class="var">re</var>. The search wraps
+to the beginning of the buffer and continues down to the current line, if
+necessary. The suffix ‘<samp class="samp">I</samp>’ is a GNU extension which makes <code class="command">ed</code>
+match <var class="var">re</var> in a case-insensitive manner.
+</p>
+</dd>
+<dt><code class="code">?<var class="var">re</var>?[I]</code></dt>
+<dd><p>The previous line containing the regular expression <var class="var">re</var>. The search
+wraps to the end of the buffer and continues up to the current line, if
+necessary. The suffix ‘<samp class="samp">I</samp>’ is a GNU extension which makes <code class="command">ed</code>
+match <var class="var">re</var> in a case-insensitive manner.
+</p>
+</dd>
+<dt><code class="code">'x</code></dt>
+<dd><p>The apostrophe-x character pair addresses the line previously marked by a
+‘<samp class="samp">k</samp>’ (mark) command, where ‘<samp class="samp">x</samp>’ is a lower case letter from the
+portable character set ‘<samp class="samp">[a-z]</samp>’.
+</p>
+</dd>
+</dl>
+<p>Addresses can be followed by one or more address offsets, optionally
+separated by whitespace. Offsets are constructed as follows:
+</p>
+<ul class="itemize mark-bullet">
+<li>‘<samp class="samp">+</samp>’ or ‘<samp class="samp">-</samp>’ followed by a number adds or subtracts the indicated
+number of lines to or from the address.
+
+</li><li>‘<samp class="samp">+</samp>’ or ‘<samp class="samp">-</samp>’ not followed by a number adds or subtracts 1 to or from
+the address.
+
+</li><li>A number adds the indicated number of lines to the address.
+
+</li></ul>
+<p>It is not an error if an intermediate address value is negative or greater
+than the address of the last line in the buffer. It is an error if the final
+address value is negative or greater than the address of the last line in
+the buffer. It is an error if a search for a regular expression fails to
+find a matching line.
+</p>
+<hr/>
+</div>

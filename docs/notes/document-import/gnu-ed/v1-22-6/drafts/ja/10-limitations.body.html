@@ -1,0 +1,7 @@
+<div class="chapter-level-extent" id="Limitations">
+<h2 class="chapter" id="Limitations-1"><span>9 制限事項<a class="copiable-link" href="#Limitations-1"> ¶</a></span></h2>
+<p>端末が切断され、バッファーが変更済みで空でない場合、<code class="command">ed</code> はバッファーをファイル <samp class="file">ed.hup</samp> に書き込もうとします。それが失敗すると、<samp class="file">$HOME/ed.hup</samp> に書き込もうとします。</p>
+<p>テキスト（非バイナリー）ファイルが改行文字で終わっていない場合、<code class="command">ed</code> は読み込み／書き込み時に改行を追加します。バイナリーファイルの場合、<code class="command">ed</code> は読み込み／書き込み時に改行を追加しません。バイナリーファイルとは、少なくとも1つの ASCII NUL 文字を含むファイルです。最終行を変更した場合は、書き込みの前に空のファイルを読み込む（たとえば <samp class="file">/dev/null</samp>）ことで、バイナリーファイルへの改行追加を防げます。</p>
+<p>バッファー内のテキスト行を管理するため、<code class="command">ed</code> は、各行の位置とサイズを含む構造体の双方向リンクリストを使います。その結果、行ごとの管理領域は、<!-- /@w -->「<samp class="samp">pointer</samp>」2つ、<!-- /@w -->「<samp class="samp">long int</samp>」1つ、<!-- /@w -->「<samp class="samp">int</samp>」1つです。最大行長は INT_MAX - 1<!-- /@w --> バイトです。最大行数は INT_MAX - 2<!-- /@w --> 行です。</p>
+<hr/>
+</div>

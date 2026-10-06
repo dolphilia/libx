@@ -1,0 +1,124 @@
+<div class="chapter-level-extent" id="Commands">
+<h2 class="chapter" id="Commands-1"><span>7 コマンド<a class="copiable-link" href="#Commands-1"> ¶</a></span></h2>
+<p><code class="command">ed</code> のすべてのコマンドは1文字ですが、追加のパラメーターが必要なものもあります。コマンドのパラメーターが複数行にわたる場合、最後の行以外は、各行をバックスラッシュ（「<samp class="samp">\</samp>」）で終える必要があります。</p>
+<a class="anchor" id="print-suffixes"></a><p>一般に、1行に許されるコマンドは多くても1つです。ただし、ほとんどのコマンドは、コマンドが作用した最後の行を表示するため、表示接尾辞として「<samp class="samp">p</samp>」（print）、「<samp class="samp">l</samp>」（list）、「<samp class="samp">n</samp>」（enumerate）のいずれかを受け付けます。複数の表示接尾辞の指定は移植性がありませんが、<code class="command">ed</code> は、同じものを繰り返さない任意の組み合わせを許し、その効果を組み合わせます。接尾辞の文字を指定する場合は、コマンドの直後に置く必要があります。</p>
+<p>「<samp class="samp">e</samp>」「<samp class="samp">E</samp>」「<samp class="samp">f</samp>」「<samp class="samp">r</samp>」「<samp class="samp">w</samp>」コマンドは、コマンドの文字から1つ以上の空白文字で区切った、省略可能な <var class="var">file</var> パラメーターを取ります。</p>
+<p>割り込み（通常は <kbd class="key">Control-C</kbd>）は、現在のコマンドを中止し、エディターをコマンドモードに戻します。</p>
+<p><code class="command">ed</code> は次のコマンドを認識します。コマンドとともに、指定を省略した場合に使う既定のアドレスまたはアドレス範囲を、丸括弧内に示します。</p>
+<dl class="table">
+<dt><code class="code">(.)a</code></dt>
+<dd><p>指定行の後にテキストを追加します。このコマンドではアドレス「<samp class="samp">0</samp>」（ゼロ）が有効で、入力したテキストをバッファーの先頭に置きます。テキストは入力モードで入力します。現在アドレスは入力した最後の行のアドレスに、入力行がなければ指定行に設定されます。</p>
+</dd>
+<dt><code class="code">(.,.)c</code></dt>
+<dd><p>バッファー内の行を変更します。指定行をバッファーから削除し、その位置にテキストを挿入します。テキストは入力モードで入力します。現在アドレスは、入力した最後の行のアドレスに設定されます。入力行がなければ、削除した最後の行の次の行の新しいアドレスに設定されます。削除行がもともとバッファーの末尾にあった場合は、新しい最終行のアドレスに設定されます。バッファーに行が残らなければゼロに設定されます。削除した行はカットバッファーにコピーされます。</p>
+</dd>
+<dt><code class="code">(.,.)d</code></dt>
+<dd><p>指定行をバッファーから削除します。現在アドレスは、削除した最後の行の次の行の新しいアドレスに設定されます。削除行がもともとバッファーの末尾にあった場合は、新しい最終行のアドレスに設定されます。バッファーに行が残らなければゼロに設定されます。削除した行はカットバッファーにコピーされます。</p>
+</dd>
+<dt><code class="code">e <var class="var">file</var></code></dt>
+<dd><p><var class="var">file</var> を編集し、既定のファイル名を設定します。<var class="var">file</var> を指定しない場合は既定のファイル名を使います。新しいファイルを読み込む前に、バッファー内のすべての行を削除します。<var class="var">file</var> が存在しない場合は、バイト数の代わりに警告を表示し、バッファーは空のままになります。現在アドレスはバッファーの最終行のアドレスに設定されます。</p>
+<p><var class="var">file</var> の前に感嘆符（!）がある場合は、その出力を読み込むシェルコマンドとして解釈されます（下の<a class="pxref" href="#shell-escape-command">シェルエスケープコマンド</a>「<samp class="samp">!</samp>」を参照）。この場合、既定のファイル名は変わりません。感嘆符で始まる名前のファイルを編集するには、名前の前に <samp class="file">./</samp> を付けます。</p>
+<p>バッファーの変更済みフラグが設定されていると、警告を表示します。その後、エラーやバッファーを変更するコマンドを挟まずに、もう一度「<samp class="samp">e</samp>」または「<samp class="samp">q</samp>」コマンドを与えると、警告なしで実行され、バッファーの変更は失われます。</p>
+</dd>
+<dt><code class="code">E <var class="var">file</var></code></dt>
+<dd><p><var class="var">file</var> を無条件に編集します。「<samp class="samp">e</samp>」コマンドと同様ですが、書き込んでいない変更を警告なしで破棄します。</p>
+</dd>
+<dt><code class="code">f <var class="var">file</var></code></dt>
+<dd><p><var class="var">file</var> が既存ファイルの名前であるかどうかにかかわらず、既定のファイル名を <var class="var">file</var> に設定します。<var class="var">file</var> を指定しない場合は既定のファイル名を表示します。<var class="var">file</var> にはチルダ展開を行います。<var class="var">file</var> が <samp class="file">~/</samp> で始まる場合、<samp class="file">~</samp> はホームディレクトリ <samp class="file">$HOME</samp> を指定するように展開されます。</p>
+<a class="anchor" id="global-command"></a></dd>
+<dt><code class="code">(1,$)g/<var class="var">re</var>/[I]<var class="var">command-list</var></code></dt>
+<dd><p>グローバルコマンド。ファイルに対して2回の処理を行います。最初の処理で、指定行のうち正規表現 <var class="var">re</var> に一致するすべての行に印を付けます。接尾辞「<samp class="samp">I</samp>」は GNU 拡張で、<code class="command">ed</code> を <var class="var">re</var> に大文字と小文字を区別せずに一致させます。次に、ファイルの先頭から末尾へ順に進み、印の付いた各行について、現在アドレスをその行のアドレスに設定して、指定した <var class="var">command-list</var> を実行します。<var class="var">command-list</var> が変更した行の印は解除されます。現在アドレスの最終値は、最後に実行した <var class="var">command-list</var> の最後のコマンドが設定した値です。一致する行がなければ、現在アドレスは変わりません。<var class="var">command-list</var> の実行は最初のエラーで停止します。</p>
+<p><var class="var">command-list</var> の最初のコマンドは「<samp class="samp">g</samp>」コマンドと同じ行に置く必要があります。<var class="var">command-list</var> のほかのコマンドは、別々の行に置く必要があります。複数行の <var class="var">command-list</var> では、最後の行以外をすべてバックスラッシュ（「<samp class="samp">\</samp>」）で終える必要があります。「<samp class="samp">g</samp>」「<samp class="samp">G</samp>」「<samp class="samp">v</samp>」「<samp class="samp">V</samp>」以外の任意のコマンドが使えます。「<samp class="samp">a</samp>」「<samp class="samp">c</samp>」「<samp class="samp">i</samp>」コマンドの入力モードを終了する「<samp class="samp">.</samp>」は、<var class="var">command-list</var> の最終行になる場合は省略できます。既定では、<var class="var">command-list</var> 内の改行だけの行は「<samp class="samp">p</samp>」コマンドと等価です。<code class="command">ed</code> をコマンドラインオプション <samp class="option">-G</samp> で起動した場合、<var class="var">command-list</var> 内の改行は「<samp class="samp">.+1p</samp>」コマンドと等価になります。</p>
+</dd>
+<dt><code class="code">(1,$)G/<var class="var">re</var>/[I]</code></dt>
+<dd><p>対話的グローバルコマンド。指定行のうち正規表現 <var class="var">re</var> に一致する行を対話的に編集します。接尾辞「<samp class="samp">I</samp>」は GNU 拡張で、<code class="command">ed</code> を <var class="var">re</var> に大文字と小文字を区別せずに一致させます。一致する各行について、その行を表示し、現在アドレスを設定し、ユーザーに <var class="var">command-list</var> の入力を求めます。現在アドレスの最終値は、最後に実行したコマンドが設定した値です。一致する行がなければ現在アドレスは変わりません。</p>
+<p><var class="var">command-list</var> の形式は「<samp class="samp">g</samp>」コマンドと同じです。改行だけの行は空のコマンドリストとして働きます。「<samp class="samp">&amp;</samp>」1文字で、直前の空でないコマンドリストを繰り返します。</p>
+</dd>
+<dt><code class="code">h</code></dt>
+<dd><p>直近の「<samp class="samp">?</samp>」通知の理由を説明するヘルプメッセージを表示します。</p>
+</dd>
+<dt><code class="code">H</code></dt>
+<dd><p>ヘルプメッセージの表示を切り替えます（上の「<samp class="samp">h</samp>」コマンドを参照）。ヘルプモードを有効にするときは、直近の「<samp class="samp">?</samp>」通知に対応するヘルプメッセージも表示します。既定ではヘルプメッセージを表示しません。</p>
+</dd>
+<dt><code class="code">(.)i</code></dt>
+<dd><p>指定行の前にテキストを挿入します。このコマンドではアドレス「<samp class="samp">0</samp>」（ゼロ）が有効で、入力したテキストをバッファーの先頭に置きます。テキストは入力モードで入力します。現在アドレスは入力した最後の行のアドレスに、入力行がなければ指定行に設定されます。</p>
+</dd>
+<dt><code class="code">(.,.+1)j</code></dt>
+<dd><p>指定行を結合し、結合したテキストを含む1行で置き換えます。アドレスを1つだけ指定した場合は何もしません。行を結合した場合は、置き換えた行をカットバッファーにコピーし、現在アドレスを結合した行のアドレスに設定します。それ以外の場合、現在アドレスは変わりません。</p>
+</dd>
+<dt><code class="code">(.)kx</code></dt>
+<dd><p>指定行に小文字「<samp class="samp">x</samp>」で印を付けます。以後のコマンドでは、その行を「<samp class="samp">'x</samp>」（単一引用符の後に「<samp class="samp">x</samp>」）で指定できます。印は、その行が削除されるか、ほかの変更を受けるまで消えません。現在アドレスは変わりません。</p>
+</dd>
+<dt><code class="code">(.,.)l</code></dt>
+<dd><p>リストコマンド。指定行を曖昧さのない形式で表示します。各行の末尾を「<samp class="samp">$</samp>」で示し、テキスト内の各「<samp class="samp">$</samp>」文字は、前にバックスラッシュを付けて表示します。特殊文字はエスケープシーケンスとして表示します。現在アドレスは表示した最後の行のアドレスに設定されます。</p>
+</dd>
+<dt><code class="code">(.,.)m(.)</code></dt>
+<dd><p>バッファー内の行を移動します。指定行を、右側で指定した移動先アドレスの後に移動します。このコマンドでは移動先アドレス「<samp class="samp">0</samp>」（ゼロ）が有効で、指定行をバッファーの先頭に移動します。移動先アドレスが移動対象の行の範囲に入るとエラーになります。現在アドレスは移動した最後の行の新しいアドレスに設定されます。</p>
+</dd>
+<dt><code class="code">(.,.)n</code></dt>
+<dd><p>番号表示コマンド。指定行を、各行の前に行番号と<kbd class="key">タブ</kbd>を付けて表示します。現在アドレスは表示した最後の行のアドレスに設定されます。</p>
+</dd>
+<dt><code class="code">(.,.)p</code></dt>
+<dd><p>指定行を表示します。現在アドレスは表示した最後の行のアドレスに設定されます。</p>
+</dd>
+<dt><code class="code">P</code></dt>
+<dd><p>コマンドプロンプトのオンまたはオフを切り替えます。コマンドラインオプション <samp class="option">-p</samp> でプロンプト文字列を指定しない限り、コマンドプロンプトは既定でオフです。既定のプロンプト文字列はアスタリスク（「<samp class="samp">*</samp>」）です。</p>
+</dd>
+<dt><code class="code">q</code></dt>
+<dd><p><code class="command">ed</code> を終了します。バッファーの変更済みフラグが設定されていると警告を表示します。その後、エラーやバッファーを変更するコマンドを挟まずに、もう一度「<samp class="samp">e</samp>」または「<samp class="samp">q</samp>」コマンドを与えると、警告なしで実行され、バッファーの変更は失われます。</p>
+</dd>
+<dt><code class="code">Q</code></dt>
+<dd><p><code class="command">ed</code> を無条件に終了します。「<samp class="samp">q</samp>」コマンドと同様ですが、書き込んでいない変更を警告なしで破棄します。</p>
+</dd>
+<dt><code class="code">($)r <var class="var">file</var></code></dt>
+<dd><p><var class="var">file</var> を読み込み、指定行の後に追加します。<var class="var">file</var> を指定しない場合は既定のファイル名を使います。コマンド実行前に既定のファイル名がなければ、<var class="var">file</var> に設定します。それ以外の場合、既定のファイル名は変わりません。このコマンドではアドレス「<samp class="samp">0</samp>」（ゼロ）が有効で、バッファーの先頭にファイルを読み込みます。現在アドレスは読み込んだ最後の行のアドレスに、読み込んだ行がなければ指定行に設定されます。</p>
+<p><var class="var">file</var> の前に感嘆符（!）がある場合は、その出力を読み込むシェルコマンドとして解釈されます（下の<a class="pxref" href="#shell-escape-command">シェルエスケープコマンド</a>「<samp class="samp">!</samp>」を参照）。この場合、既定のファイル名は変わりません。感嘆符で始まる名前のファイルを読み込むには、名前の前に <samp class="file">./</samp> を付けます。</p>
+</dd>
+<dt><code class="code">(.,.)t(.)</code></dt>
+<dd><p>指定行を、右側で指定したコピー先アドレスの後にコピー（転送）します。コピー先アドレスが「<samp class="samp">0</samp>」（ゼロ）の場合は、バッファーの先頭にコピーします。現在アドレスはコピーした最後の行のアドレスに設定されます。</p>
+</dd>
+<dt><code class="code">u</code></dt>
+<dd><p>バッファーを変更した最後のコマンドの効果を取り消し、現在アドレスをそのコマンドの前の値に戻します。取り消しでは、グローバルコマンド「<samp class="samp">g</samp>」「<samp class="samp">G</samp>」「<samp class="samp">v</samp>」「<samp class="samp">V</samp>」を単一のコマンドとして扱います。「<samp class="samp">u</samp>」は自身の逆操作であり、最後のコマンドだけを取り消せます。</p>
+</dd>
+<dt><code class="code">(1,$)v/<var class="var">re</var>/[I]<var class="var">command-list</var></code></dt>
+<dd><p>「<samp class="samp">g</samp>」コマンドと同様ですが、指定行のうち正規表現 <var class="var">re</var> に一致しない各行に <var class="var">command-list</var> を適用します。</p>
+</dd>
+<dt><code class="code">(1,$)V/<var class="var">re</var>/[I]</code></dt>
+<dd><p>「<samp class="samp">G</samp>」コマンドと同様ですが、指定行のうち正規表現 <var class="var">re</var> に一致しない行を対話的に編集します。</p>
+</dd>
+<dt><code class="code">(1,$)w <var class="var">file</var></code></dt>
+<dd><p>指定行を <var class="var">file</var> に書き込みます。<var class="var">file</var> の以前の内容は警告なしで失われます。既定のファイル名がなければ <var class="var">file</var> に設定し、それ以外の場合は変更しません。ファイル名を指定しない場合は既定のファイル名を使います。バッファー全体を書き込むと、バッファーの変更済みフラグを解除します。現在アドレスは変わりません。</p>
+<p><var class="var">file</var> の前に感嘆符（!）がある場合は、シェルコマンドとして解釈され、指定行をその標準入力に書き込みます（下の<a class="pxref" href="#shell-escape-command">シェルエスケープコマンド</a>「<samp class="samp">!</samp>」を参照）。この場合、既定のファイル名は変わりません。バッファーをシェルコマンドに書き込んでも、バッファーの変更済みフラグは解除されません。感嘆符で始まる名前のファイルに書き込むには、名前の前に <samp class="file">./</samp> を付けます。</p>
+</dd>
+<dt><code class="code">(1,$)wq <var class="var">file</var></code></dt>
+<dd><p>指定行を <var class="var">file</var> に書き込み、続いて「<samp class="samp">q</samp>」コマンドを実行します。</p>
+</dd>
+<dt><code class="code">(1,$)W <var class="var">file</var></code></dt>
+<dd><p>指定行を <var class="var">file</var> の末尾に追記します。「<samp class="samp">w</samp>」コマンドと同様ですが、<var class="var">file</var> の以前の内容を上書きしません。現在アドレスは変わりません。</p>
+</dd>
+<dt><code class="code">(.)x</code></dt>
+<dd><p>カットバッファーの内容を、指定行の後にコピー（put）します。現在アドレスはコピーした最後の行のアドレスに設定されます。</p>
+</dd>
+<dt><code class="code">(.,.)y</code></dt>
+<dd><p>指定行をカットバッファーにコピー（yank）します。現在アドレスは変わりません。カットバッファーは、その後の「<samp class="samp">c</samp>」「<samp class="samp">d</samp>」「<samp class="samp">j</samp>」「<samp class="samp">s</samp>」「<samp class="samp">y</samp>」コマンドで上書きされます。「<samp class="samp">e</samp>」または「<samp class="samp">E</samp>」で新しいファイルを読み込むと、カットバッファーは削除されます。</p>
+</dd>
+<dt><code class="code">(.+1)z<var class="var">n</var></code></dt>
+<dd><p>スクロール。指定行から一度に <var class="var">n</var> 行を表示し、ウィンドウサイズを <var class="var">n</var> に設定します。<var class="var">n</var> を指定しない場合は現在のウィンドウサイズを使います。既定のウィンドウサイズは、画面の行数から2行を引いた値で、画面サイズを判定できない場合は 22 です。環境変数 <var class="var">LINES</var> で初期ウィンドウサイズを設定できます。<var class="var">LINES</var> と <var class="var">n</var> は画面サイズによって制限されません。現在アドレスは表示した最後の行のアドレスに設定されます。</p>
+<a class="anchor" id="shell-escape-command"></a></dd>
+<dt><code class="code">!<var class="var">command</var></code></dt>
+<dt><code class="code">[2addr]!<var class="var">command</var></code></dt>
+<dd><p>シェルエスケープコマンド。<var class="var">command</var> を <code class="command">sh</code> 経由で実行します。<var class="var">command</var> の最初の文字が「<samp class="samp">!</samp>」の場合、直前の「<samp class="samp">!<var class="var">command</var></samp>」のテキストで置き換えます。したがって、「<samp class="samp">!!</samp>」は直前の「<samp class="samp">!<var class="var">command</var></samp>」を繰り返します。<code class="command">ed</code> は、<var class="var">command</var> のバックスラッシュ（「<samp class="samp">\</samp>」）によるエスケープを処理しません。ただし、エスケープされていない各「<samp class="samp">%</samp>」を既定のファイル名で置き換え、エスケープされた各「<samp class="samp">%</samp>」からバックスラッシュを取り除きます。シェルの実行から戻ると、標準出力に「<samp class="samp">!</samp>」を表示します。現在アドレスは変わりません。</p>
+<p>1つ以上のアドレスを指定すると、指定行を <var class="var">command</var> の標準入力に書き込み、その後、<var class="var">command</var> の標準出力と標準エラーから読み込んだ行で置き換えます。2つのバイト数を表示します。1つは <var class="var">command</var> に書き込んだバイト数、もう1つは <var class="var">command</var> から読み込んだバイト数です。現在アドレスは読み込んだ最後の行のアドレスに、読み込んだ行がなければ最初の指定行の直前の行に設定されます。</p>
+</dd>
+<dt><code class="code">(.,.)#</code></dt>
+<dd><p>コメントを開始します。その行の改行までの残りの部分は無視されます。行アドレスの後にセミコロンを指定した場合は、現在アドレスをそのアドレスに設定します。それ以外の場合、現在アドレスは変わりません。</p>
+</dd>
+<dt><code class="code">($)=</code></dt>
+<dd><p>指定行の行番号を表示します。現在アドレスは変わりません。</p>
+</dd>
+<dt><code class="code">(.+1)<kbd class="key">newline</kbd></code></dt>
+<dd><p>空コマンド。アドレスだけを指定すると、指定行を表示します。<kbd class="key">改行</kbd>だけの行は「<samp class="samp">+1p</samp>」と等価です。現在アドレスは表示した行のアドレスに設定されます。</p>
+</dd>
+</dl>
+<hr/>
+</div>

@@ -1,0 +1,20 @@
+<div class="chapter-level-extent" id="Overview">
+<h2 class="chapter" id="Overview-1"><span>1 概要<a class="copiable-link" href="#Overview-1"> ¶</a></span></h2>
+<p><a class="uref" href="http://www.gnu.org/software/ed/ed.html">GNU ed</a> は行指向のテキストエディターです。対話的にもシェルスクリプトからも、テキストファイルの作成、表示、変更などの操作に使えます。制限付きの ed である red は、現在のディレクトリ内のファイルだけを編集でき、シェルコマンドを実行できません。Ed は Unix の最初のエディターで広く利用できるという意味で「標準」のテキストエディターです。ただし、ほとんどの用途では全画面エディターに取って代わられています。</p>
+<p>GNU ed は Brian W. Kernighan と P. J. Plauger の著書『Software Tools in Pascal』（Addison-Wesley、1981年）に記述されたエディターのアルゴリズムに基づいています。</p>
+<p><var class="var">file</var> 引数を指定して起動すると、<var class="var">file</var> のコピーがエディターのバッファーに読み込まれます。変更はこのコピーに対して行われ、<var class="var">file</var> 自体には直接行われません。<code class="command">ed</code> の終了時に「<samp class="samp">w</samp>」コマンドで明示的に保存していない変更は失われます。対話モードでは、存在しない <var class="var">file</var> は報告されますが、終了ステータスには影響しません。</p>
+<p>編集には<em class="dfn">コマンド</em>モードと<em class="dfn">入力</em>モードという2つの異なるモードがあります。起動直後の <code class="command">ed</code> はコマンドモードです。このモードでは、標準入力からコマンドを読み取り、エディターのバッファーの内容を操作するために実行します。典型的なコマンドは次のようになります。</p>
+<div class="example">
+<pre class="example-preformatted">,s/<var class="var">old</var>/<var class="var">new</var>/g
+</pre></div>
+<p>これは文字列 <var class="var">old</var> のすべての出現箇所を <var class="var">new</var> に置き換えます。</p>
+<p>「<samp class="samp">a</samp>」（追加）、「<samp class="samp">i</samp>」（挿入）、「<samp class="samp">c</samp>」（変更）などの入力コマンドを与えると、<code class="command">ed</code> は入力モードに入ります。これがファイルにテキストを追加する主な方法です。このモードではコマンドを使えず、代わりに標準入力がエディターのバッファーに直接書き込まれます。<em class="dfn">行</em>とは、<kbd class="key">改行</kbd>文字までの、その文字を含むテキストです。1行にピリオド（「<samp class="samp">.</samp>」）を1つだけ入力すると入力モードを終了します。</p>
+<p>バッファーに対する変更は、その内容が実際には変わらない場合でも、変更済みフラグを設定します。たとえば「<samp class="samp">s/a/a/</samp>」がその例です。空のファイルを読み込む（「<samp class="samp">r <var class="var">file</var></samp>」）場合や、バッファーを変更する前にコマンドを終了する（「<samp class="samp">a<kbd class="key">newline</kbd>.<kbd class="key">newline</kbd></samp>」）場合はバッファーが変わらないため、変更済みフラグも設定されません。</p>
+<p><code class="command">ed</code> のすべてのコマンドは、行全体または行の範囲に対して働きます。たとえば「<samp class="samp">d</samp>」コマンドは行を削除し、「<samp class="samp">m</samp>」コマンドは行を移動します。上の例のように、置換によって行の一部だけを変更することもできます。ただしこの場合も、「<samp class="samp">s</samp>」コマンドは一度に行全体に適用されます。</p>
+<p>一般に、<code class="command">ed</code> のコマンドは、0個以上の行アドレス、1文字のコマンド、必要に応じて追加のパラメーターから構成されます。つまり、コマンドの構造は次のとおりです。</p>
+<div class="example">
+<pre class="example-preformatted">[<var class="var">address</var>[,<var class="var">address</var>]]<var class="var">command</var>[<var class="var">parameters</var>]
+</pre></div>
+<p><var class="var">address</var> は、コマンドの対象となる行または行の範囲を示します。コマンドが受け付ける数より少ないアドレスを指定した場合は、既定のアドレスが補われます。</p>
+<hr/>
+</div>

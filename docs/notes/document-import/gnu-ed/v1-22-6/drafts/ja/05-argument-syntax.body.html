@@ -1,0 +1,11 @@
+<div class="chapter-level-extent" id="Argument-syntax">
+<h2 class="chapter" id="Syntax-of-command_002dline-arguments"><span>4 コマンドライン引数の構文<a class="copiable-link" href="#Syntax-of-command_002dline-arguments"> ¶</a></span></h2>
+<a class="index-entry-id" id="index-argument-syntax"></a>
+<p>POSIX は、コマンドライン引数について次の規約を推奨しています。</p>
+<ul class="itemize mark-bullet">
+<li>ハイフン（「<samp class="samp">-</samp>」）で始まるコマンドライン引数はオプションです。</li><li>オプション名は英数字1文字です。</li><li>引数を必要とするオプションもあります。</li><li>オプションとその引数は、別々のトークンにしても、しなくてもかまいません。（つまり、間の空白は任意です。）したがって、<samp class="option">-o foo</samp><!-- /@w --> と <samp class="option">-ofoo</samp> は等価です。</li><li>1つのトークンのハイフンの後に、引数を取らないオプションを1つ以上並べ、その後に引数を取るオプションを多くても1つ続けられます。したがって、<samp class="option">-abc</samp> は <samp class="option">-a -b -c</samp><!-- /@w --> と等価です。</li><li>通常、オプションは、オプション以外の引数より前に置きます。</li><li>引数「<samp class="samp">--</samp>」は、すべてのオプションを終了します。その後の引数は、ハイフンで始まっていてもオプション以外の引数として扱われます。</li><li>ハイフン1文字だけからなるトークンは、通常の、オプション以外の引数として解釈されます。慣例では、標準入力、標準出力、または「<samp class="samp">-</samp>」という名前のファイルを指定するために使います。</li></ul>
+<p>GNU は、これらの規約に<em class="dfn">長いオプション</em>を追加しています。</p>
+<ul class="itemize mark-bullet">
+<li>長いオプションは、2つのハイフン（「<samp class="samp">--</samp>」）と、その後に続く英数字とハイフンからなる名前で構成されます。オプション名は通常1〜3語で、語をハイフンで区切ります。長いオプション名は、一意になる限り省略形を使えます。</li><li>長いオプションとその引数は、別々のトークンにしても、しなくてもかまいません。別々にしない場合は、等号「<samp class="samp">=</samp>」で区切る必要があります。したがって、<samp class="option">--foo bar</samp><!-- /@w --> と <samp class="option">--foo=bar</samp> は等価です。</li></ul>
+<hr/>
+</div>
