@@ -1,0 +1,24 @@
+/Users/dolphilia/github/libx/node_modules/.pnpm/vite@6.3.5_@types+node@18.19.100_jiti@1.21.7_yaml@2.7.1/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js
+installed SHA256 7db70b137efba89367315d8fe58c82eb8f1b6462e272e09de756cec724ff5ad3
+35249: const ENCODING = {
+35250: 	'.br': 'br',
+35251: 	'.gz': 'gzip',
+35252: };
+35253: 
+35254: function toHeaders(name, stats, isEtag) {
+35255: 	let enc = ENCODING[name.slice(-3)];
+35256: 
+35257: 	let ctype = lookup(name.slice(0, enc && -3)) || '';
+35258: 	if (ctype === 'text/html') ctype += ';charset=utf-8';
+35259: 
+35260: 	let headers = {
+35261: 		'Content-Length': stats.size,
+35262: 		'Content-Type': ctype,
+35263: 		'Last-Modified': stats.mtime.toUTCString(),
+35264: 	};
+35265: 
+35266: 	if (enc) headers['Content-Encoding'] = enc;
+35267: 	if (isEtag) headers['ETag'] = `W/"${stats.size}-${stats.mtime.getTime()}"`;
+35268: 
+35269: 	return headers;
+35270: }

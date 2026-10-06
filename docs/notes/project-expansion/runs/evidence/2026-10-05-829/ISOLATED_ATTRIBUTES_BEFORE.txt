@@ -1,0 +1,24 @@
+# The historical Awesome snapshot is preserved byte-for-byte from its verified
+# source commit, including upstream Markdown whitespace.
+apps/awesome/src/awesome-content/v2026-08-20/** -whitespace
+
+# Reviewed uthash articles retain Pandoc hard breaks and their exact review SHA.
+apps/uthash/src/content/docs/** -text -whitespace
+# Fixed upstream inputs and historical evidence retain original bytes and EOLs.
+docs/notes/document-import/uthash/** -text -whitespace
+docs/notes/project-expansion/runs/evidence/** -text -whitespace
+
+# Reviewed spdlog source/canonical/translated text retains exact EOLs and
+# upstream code whitespace; the content checks verify the locked review SHA.
+apps/spdlog/src/content/docs/** -text -whitespace
+apps/spdlog/meta/canonical-inputs/** -text -whitespace
+docs/notes/document-import/spdlog/** -text -whitespace
+
+# libuv fixed inputs, sample code and reviewed language bodies retain exact bytes.
+docs/notes/document-import/libuv/** -text -whitespace
+apps/libuv/public/source/** -text -whitespace
+apps/libuv/src/content/docs/** -text -whitespace
+apps/libuv/public/notices/** -text -whitespace
+# RST heading underline "=======" is upstream text, not a merge conflict.
+apps/libuv/public/source/**/*.rst conflict-marker-size=1000
+docs/notes/document-import/libuv/1.53.0/sources/**/*.rst conflict-marker-size=1000

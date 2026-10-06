@@ -1,0 +1,55 @@
+{
+  "status": "partial",
+  "commands": [
+    {
+      "command": "pnpm build:selective --projects=lz4",
+      "cwd": "/private/tmp/libx-lz4-formal-786",
+      "exit": 0,
+      "scope": "selected isolated lz4 integrated build; no external publish"
+    },
+    {
+      "command": "pnpm check:links",
+      "exit": 0,
+      "checkedMarkdownFiles": 556,
+      "scope": "relative/local Markdown links; external HTTP not tested"
+    },
+    {
+      "command": "pnpm check:integrity",
+      "exit": 1,
+      "repositoryIntegrity": "passed",
+      "categoryStructure": "passed",
+      "layoutSyncDifferences": 31,
+      "lz4LayoutDifferences": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "limitation": "LZ4 is untracked, so this command alone does not check its new files"
+    },
+    {
+      "command": "per-file git diff --no-index --check /dev/null <file>",
+      "files": 109,
+      "filesWithFindings": 10,
+      "scope": "every untracked LZ4 text input excluding dependencies/cache/dist; original bytes kept"
+    },
+    {
+      "command": "LIBX_EVIDENCE_ROOT=/Users/dolphilia/github/libx pnpm --filter apps-lz4 check:content",
+      "exit": 0
+    },
+    {
+      "command": "shared root node scripts/sync-docs-layouts.js --check",
+      "exit": 1,
+      "differences": [
+        "apps/jq/src/layouts/DocLayout.astro",
+        "apps/jq/src/pages/[version]/[lang]/[...slug].astro",
+        "apps/libuv/src/layouts/DocLayout.astro"
+      ],
+      "scope": "read-only classification; shared user files untouched"
+    }
+  ],
+  "pending": [
+    "untracked source-preserving whitespace policy (10 files) not yet encoded; no blanket suppression",
+    "31 isolated stale/special layout differences; shared has3 non-LZ4 differences; integrity not passed",
+    "browser/sourcekit/shared integration/external HTTP and images"
+  ]
+}

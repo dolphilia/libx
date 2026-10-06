@@ -1,0 +1,146 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/fixed.tar.gz",
+      "handled": true,
+      "status": 200,
+      "bytes": 32,
+      "headers": {
+        "content-type": "application/gzip",
+        "content-disposition": "attachment; filename=\"fixed.tar.gz\"",
+        "content-length": 32,
+        "cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "method": "HEAD",
+      "url": "/docs/lz4/source/fixed.tar.gz",
+      "handled": true,
+      "status": 200,
+      "bytes": 0,
+      "headers": {
+        "content-type": "application/gzip",
+        "content-disposition": "attachment; filename=\"fixed.tar.gz\"",
+        "content-length": 32,
+        "cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/fixed.tar.gz?download=1",
+      "handled": true,
+      "status": 200,
+      "bytes": 32,
+      "headers": {
+        "content-type": "application/gzip",
+        "content-disposition": "attachment; filename=\"fixed.tar.gz\"",
+        "content-length": 32,
+        "cache-control": "no-store",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/docs/lz4/source/fixed.tar.gz",
+      "handled": true,
+      "status": 405,
+      "bytes": 0,
+      "headers": {
+        "allow": "GET, HEAD"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/missing.tar.gz",
+      "handled": true,
+      "status": 404,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/%2e%2e/outside.tar.gz",
+      "handled": true,
+      "status": 400,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/%2f..%2foutside.tar.gz",
+      "handled": true,
+      "status": 400,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/%5coutside.tar.gz",
+      "handled": true,
+      "status": 400,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/%00outside.tar.gz",
+      "handled": true,
+      "status": 400,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/%ZZ.tar.gz",
+      "handled": true,
+      "status": 400,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/alias.tar.gz",
+      "handled": true,
+      "status": 400,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/folder.tar.gz",
+      "handled": true,
+      "status": 404,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/other/source/fixed.tar.gz",
+      "handled": false,
+      "status": null,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/assets/site.css",
+      "handled": false,
+      "status": null,
+      "bytes": 0,
+      "headers": {}
+    },
+    {
+      "method": "GET",
+      "url": "/docs/lz4/source/license.txt",
+      "handled": false,
+      "status": null,
+      "bytes": 0,
+      "headers": {}
+    }
+  ],
+  "scope": "Exact gzip bytes/GET/HEAD/query; negative traversal, null/backslash/invalid encoding/symlink/directory; unrelated resources passed to Astro"
+}

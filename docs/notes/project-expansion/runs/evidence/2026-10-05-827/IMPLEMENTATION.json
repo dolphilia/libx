@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "command": "LIBX_EVIDENCE_ROOT=/Users/dolphilia/github/libx pnpm --filter apps-lz4 check:content",
+  "exit": 0,
+  "appScript": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/check-content.mjs",
+    "sha256": "e73454cb40570312c1ef495d87f90ceea18a448d3f84509c74075e903428c7d8"
+  },
+  "appPackage": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-827/package.json",
+    "sha256": "047667a98718c5bacb5dc995c4476ba9d66ce204778e4afdd1d19ce49982015a"
+  },
+  "initialFailures": [
+    "初回evidence準備は隔離cwd内だったためbaselineコピー/共有log redirectが検査実行前に停止。共有rootで証拠保存先を準備して再実行。",
+    "初回checkerはframework共通ライセンス情報をsource本文の先頭と誤認。footer内の実source context要素の完全一致へ修正。初回失敗logを保持。"
+  ],
+  "semanticReview": "existing27 preserved; this is machine-only",
+  "readonly": "temporary OS staging only; successful and every failed fixture kept checked inputs byte-identical",
+  "limits": [
+    "既存固定208入力/27pages対象、追加上流版を自動認可しない",
+    "default証拠rootはrepository、隔離のみ明示ENV/CLI。共有統合・sourcekitで証拠を同梱して可搬にする",
+    "browser/sourcekit/共有統合/外部HTTPと画像ロードは未完"
+  ]
+}

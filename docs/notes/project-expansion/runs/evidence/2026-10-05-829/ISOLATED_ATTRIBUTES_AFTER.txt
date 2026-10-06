@@ -1,0 +1,38 @@
+# The historical Awesome snapshot is preserved byte-for-byte from its verified
+# source commit, including upstream Markdown whitespace.
+apps/awesome/src/awesome-content/v2026-08-20/** -whitespace
+
+# Reviewed uthash articles retain Pandoc hard breaks and their exact review SHA.
+apps/uthash/src/content/docs/** -text -whitespace
+# Fixed upstream inputs and historical evidence retain original bytes and EOLs.
+docs/notes/document-import/uthash/** -text -whitespace
+docs/notes/project-expansion/runs/evidence/** -text -whitespace
+
+# Reviewed spdlog source/canonical/translated text retains exact EOLs and
+# upstream code whitespace; the content checks verify the locked review SHA.
+apps/spdlog/src/content/docs/** -text -whitespace
+apps/spdlog/meta/canonical-inputs/** -text -whitespace
+docs/notes/document-import/spdlog/** -text -whitespace
+
+# libuv fixed inputs, sample code and reviewed language bodies retain exact bytes.
+docs/notes/document-import/libuv/** -text -whitespace
+apps/libuv/public/source/** -text -whitespace
+apps/libuv/src/content/docs/** -text -whitespace
+apps/libuv/public/notices/** -text -whitespace
+# RST heading underline "=======" is upstream text, not a merge conflict.
+apps/libuv/public/source/**/*.rst conflict-marker-size=1000
+docs/notes/document-import/libuv/1.53.0/sources/**/*.rst conflict-marker-size=1000
+
+# LZ4: these exact locked upstream/reviewed files retain their original bytes.
+# check:content independently rejects changes to their source/review SHA.
+# Code/config and all other document paths retain normal whitespace checks.
+apps/lz4/public/source/v1-10-0/licenses/djgpp-BSD-2-Clause.txt -text -whitespace
+apps/lz4/public/source/v1-10-0/originals/contrib/djgpp/README.MD.txt -text -whitespace
+apps/lz4/public/source/v1-10-0/originals/doc/lz4_manual.html.txt -text -whitespace
+apps/lz4/public/source/v1-10-0/originals/doc/lz4frame_manual.html.txt -text -whitespace
+apps/lz4/src/content/docs/v1-10-0/en/02-building/04-djgpp.md -text -whitespace
+apps/lz4/src/content/docs/v1-10-0/en/04-api/01-block-api.md -text -whitespace
+apps/lz4/src/content/docs/v1-10-0/en/04-api/02-frame-api.md -text -whitespace
+apps/lz4/src/content/docs/v1-10-0/ja/02-building/04-djgpp.md -text -whitespace
+apps/lz4/src/content/docs/v1-10-0/ja/04-api/01-block-api.md -text -whitespace
+apps/lz4/src/content/docs/v1-10-0/ja/04-api/02-frame-api.md -text -whitespace

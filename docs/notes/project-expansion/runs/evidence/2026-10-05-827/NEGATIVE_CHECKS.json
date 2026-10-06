@@ -1,0 +1,126 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "name": "valid cloned corpus",
+      "expected": "passed",
+      "actual": "passed",
+      "errors": [],
+      "readonly": true
+    },
+    {
+      "name": "missing Japanese page",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "missing/extra content: ja\n+ actual - expected\n\n  [\n    '01-overview/01-about.md',\n-   '01-overview/02-installing.md',\n    '01-overview/03-history.md',\n    '01-overview/04-security.md',\n    '02-building/01-building.md',\n    '02-building/02-meson.md',\n    '02-building/03-visual.md',\n"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "changed API in reviewed Japanese",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "reviewed protected bytes drift: 04-api/01-block-api.md\n+ actual - expected\n\n+ 'ff479179f2f511812ccdfc21d157239cc602504d0cea720186667be81b3e2a3f'\n- 'fa6d8aeedadcd7b2e9f845c83ed0248563c6603b8801b20015b6d2ac0bbcb9ee'\n"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "changed canonical prose",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "canonical replay drift: 01-overview/02-installing.md\n+ actual - expected\n\n+ 'e7b5752030dda45c5e74e0808e575bc550c2fab7bcf11e280044efffb022dea2'\n- '350cb9d40a69780ede56b19701acf89cd75b9bd0c96af475808c6e6dc6828b37'\n"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "extra Japanese page",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "missing/extra content: ja\n+ actual - expected\n\n  [\n    '01-overview/01-about.md',\n    '01-overview/02-installing.md',\n    '01-overview/03-history.md',\n    '01-overview/04-security.md',\n+   '01-overview/99-extra.md',\n    '02-building/01-building.md',\n    '02-building/02-meson.md',\n    '02-building/03-visual.md',\n    '02-building/04-djgpp.md',\n    '02-building/05-snap.md',\n"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "missing license notice",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "ENOENT: no such file or directory, open '/var/folders/ff/3mkkd9nd3zq7lxyzbrsbr_800000gn/T/libx-lz4-gate-negative-Fr73GD/app/public/source/v1-10-0/licenses/GPL-2.0-or-later.txt'"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "corrupt original download",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "original/notice/archive drift: originals/NEWS.txt\n+ actual - expected\n\n+ '0091196c79907baccd55c61665a96a718a4b170d4f69fcfe03ecd8a1f7372d13'\n- '8fe6e56a9c40846fdf47caa045bef1e0db7c7f020164fd127de0fa1222c2f7f8'\n"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "missing rendered page",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "rendered page missing; build first: /docs/lz4/v1-10-0/ja/03-format/02-frame-format/"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "broken Japanese real anchor",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "Japanese actual ID: notices\n\n0 !== 1\n"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "wrong license registry value",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'unknown'\n- 'GPL-2.0-or-later（本掲載はversion2条件を履行）'\n"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "missing saved review",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "ENOENT: no such file or directory, open '/var/folders/ff/3mkkd9nd3zq7lxyzbrsbr_800000gn/T/libx-lz4-gate-negative-Fr73GD/evidence/docs/notes/project-expansion/runs/evidence/2026-10-05-788/CONTENT_REVIEW_INSTALL.json'"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "coherent but truncated full review coverage",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "review coverage incomplete: docs/notes/project-expansion/runs/evidence/2026-10-05-781/lz4-fixed/INSTALL"
+      ],
+      "readonly": true
+    },
+    {
+      "name": "stale rendered source footer",
+      "expected": "failed",
+      "actual": "failed",
+      "errors": [
+        "rendered source footer drift"
+      ],
+      "readonly": true
+    }
+  ],
+  "counts": {
+    "valid": 1,
+    "negative": 12
+  },
+  "realAppUnchanged": true,
+  "scope": "real checker on disposable corpus/evidence; independently altered inputs, every result readonly; no AI semantic review"
+}
