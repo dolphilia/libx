@@ -1,0 +1,56 @@
+<H3><A NAME="SEC11" HREF="gperf.html#TOC11">4.1.2  Format for Keyword Entries</A></H3>
+
+<P>
+The second input file format section contains lines of keywords and any
+associated attributes you might supply.  A line beginning with <SAMP>&lsquo;#&rsquo;</SAMP>
+in the first column is considered a comment.  Everything following the
+<SAMP>&lsquo;#&rsquo;</SAMP> is ignored, up to and including the following newline.  A line
+beginning with <SAMP>&lsquo;%&rsquo;</SAMP> in the first column is an option declaration and
+must not occur within the keywords section.
+
+</P>
+<P>
+The first field of each non-comment line is always the keyword itself.  It
+can be given in two ways: as a simple name, i.e., without surrounding
+string quotation marks, or as a string enclosed in double-quotes, in
+C syntax, possibly with backslash escapes like <CODE>\"</CODE> or <CODE>\234</CODE>
+or <CODE>\xa8</CODE>.  In either case, it must start right at the beginning
+of the line, without leading whitespace.
+In this context, a “field” is considered to extend up to, but
+not include, the first blank, comma, or newline.  Here is a simple
+example taken from a partial list of C reserved words:
+
+</P>
+
+<PRE>
+# These are a few C reserved words, see the c.gperf file 
+# for a complete list of ANSI C reserved words.
+unsigned
+sizeof
+switch
+signed
+if
+default
+for
+while
+return
+</PRE>
+
+<P>
+Note that unlike <CODE>flex</CODE> or <CODE>bison</CODE> the first <SAMP>&lsquo;%%&rsquo;</SAMP> marker
+may be elided if the declaration section is empty.
+
+</P>
+<P>
+Additional fields may optionally follow the leading keyword.  Fields
+should be separated by commas, and terminate at the end of line.  What
+these fields mean is entirely up to you; they are used to initialize the
+elements of the user-defined <CODE>struct</CODE> provided by you in the
+declaration section.  If the <SAMP>&lsquo;-t&rsquo;</SAMP> option (or, equivalently, the
+<SAMP>&lsquo;%struct-type&rsquo;</SAMP> declaration) is <EM>not</EM> enabled
+these fields are simply ignored.  All previous examples except the last
+one contain keyword attributes.
+
+</P>
+
+

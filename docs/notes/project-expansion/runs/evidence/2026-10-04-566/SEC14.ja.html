@@ -1,0 +1,20 @@
+<H2><A NAME="SEC14" HREF="#TOC14">4.2 <CODE>gperf</CODE>が生成するCコードの出力形式</A></H2>
+<P><A NAME="IDX35"></A></P>
+<P>標準出力に生成するCコードの形式を制御するオプションがいくつかあります。2つのC関数が生成されます。名前は<CODE>hash</CODE>と<CODE>in_word_set</CODE>ですが、コマンドラインオプションで変更できます。どちらの関数にも、文字列<CODE>char *</CODE> <VAR>str</VAR>と、長さのパラメーター<CODE>int</CODE> <VAR>len</VAR>の2つの引数が必要です。デフォルトの関数プロトタイプは次のとおりです。</P>
+<P><DL>
+<DT><U>関数:</U> unsigned int <B>hash</B> <I>(const char * <VAR>str</VAR>, size_t <VAR>len</VAR>)</I>
+<DD><A NAME="IDX36"></A>デフォルトでは、生成する<CODE>hash</CODE>関数は、利用者が指定する<VAR>str</VAR>内の複数のバイト位置を使って<EM>関連値</EM>テーブルを参照し、その値と<VAR>len</VAR>を加算して得られる整数値を返します。関連値テーブルはローカルな静的配列に格納されます。このテーブルは<CODE>gperf</CODE>内部で構築され、後で<SAMP>&lsquo;hash_table&rsquo;</SAMP>という名前の静的なローカルC配列として出力されます。使用する位置、つまり<VAR>str</VAR>へのインデックスは、<CODE>gperf</CODE>の実行時に<SAMP>&lsquo;-k&rsquo;</SAMP>オプションで指定します。詳細は後述の<EM>オプション</EM>の節（<A HREF="#SEC18">5 <CODE>gperf</CODE>の実行</A>）を参照してください。
+</DL></P>
+<P><DL>
+<DT><U>関数:</U> <B>in_word_set</B> <I>(const char * <VAR>str</VAR>, size_t <VAR>len</VAR>)</I>
+<DD><A NAME="IDX37"></A><VAR>str</VAR>がキーワード集合に含まれていれば、そのキーワードへのポインターを返します。より正確には、<SAMP>&lsquo;-t&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%struct-type&rsquo;</SAMP>宣言を指定した場合は、一致するキーワードの構造体へのポインターを返します。それ以外の場合は<CODE>NULL</CODE>を返します。
+</DL></P>
+<P><SAMP>&lsquo;-c&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%compare-strncmp&rsquo;</SAMP>宣言を使わない場合、<VAR>str</VAR>は長さがちょうど<VAR>len</VAR>のNUL終端文字列でなければなりません。<SAMP>&lsquo;-c&rsquo;</SAMP>、または同じ働きをする<SAMP>&lsquo;%compare-strncmp&rsquo;</SAMP>を使う場合は、<VAR>str</VAR>は単に<VAR>len</VAR>バイトの配列であればよく、NUL終端は不要です。</P>
+<P>この2つの関数の生成コードには、次のオプションが影響します。</P>
+<DL COMPACT>
+<DT><SAMP>&lsquo;-t&rsquo;</SAMP><DD>
+<DT><SAMP>&lsquo;--struct-type&rsquo;</SAMP><DD>利用者が定義する<CODE>struct</CODE>を使います。
+<DT><SAMP>&lsquo;-S <VAR>total-switch-statements</VAR>&rsquo;</SAMP><DD>
+<DT><SAMP>&lsquo;--switch=<VAR>total-switch-statements</VAR>&rsquo;</SAMP><DD><A NAME="IDX38"></A>大きな静的配列（疎な配列になる可能性もあります）を使う代わりに、1つ以上のCの<CODE>switch</CODE>文を生成します。実行時間と記憶領域の節約量はCコンパイラの最適化の程度によって異なりますが、この方法ではコードが小さくなり、速くなることがよくあります。
+</DL>
+<P><SAMP>&lsquo;-t&rsquo;</SAMP>と<SAMP>&lsquo;-S&rsquo;</SAMP>のオプション、または同じ働きをする<SAMP>&lsquo;%struct-type&rsquo;</SAMP>と<SAMP>&lsquo;%switch&rsquo;</SAMP>の宣言を省略すると、デフォルトでは、キーワードを格納する<CODE>char *</CODE>配列と、その配列の空きを埋める追加の空文字列が生成されます。さまざまな入力・出力オプションを試し、生成されたCコードの実行時間を測定することで、キーワード集合の特性に応じた最適なオプションの選び方を判断できます。</P>

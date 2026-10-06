@@ -1,0 +1,36 @@
+<H1><A NAME="SEC5" HREF="gperf.html#TOC5">4  High-Level Description of GNU <CODE>gperf</CODE></A></H1>
+
+<P>
+The perfect hash function generator <CODE>gperf</CODE> reads a set of
+“keywords” from an input file (or from the standard input by
+default).  It attempts to derive a perfect hashing function that
+recognizes a member of the <EM>static keyword set</EM> with at most a
+single probe into the lookup table.  If <CODE>gperf</CODE> succeeds in
+generating such a function it produces a pair of C source code routines
+that perform hashing and table lookup recognition.  All generated C code
+is directed to the standard output.  Command-line options described
+below allow you to modify the input and output format to <CODE>gperf</CODE>.
+
+</P>
+<P>
+By default, <CODE>gperf</CODE> attempts to produce time-efficient code, with
+less emphasis on efficient space utilization.  However, several options
+exist that permit trading-off execution time for storage space and vice
+versa.  In particular, expanding the generated table size produces a
+sparse search structure, generally yielding faster searches.
+Conversely, you can direct <CODE>gperf</CODE> to utilize a C <CODE>switch</CODE>
+statement scheme that minimizes data space storage size.  Furthermore,
+using a C <CODE>switch</CODE> may actually speed up the keyword retrieval time
+somewhat.  Actual results depend on your C compiler, of course.
+
+</P>
+<P>
+In general, <CODE>gperf</CODE> assigns values to the bytes it is using
+for hashing until some set of values gives each keyword a unique value.
+A helpful heuristic is that the larger the hash value range, the easier
+it is for <CODE>gperf</CODE> to find and generate a perfect hash function.
+Experimentation is the key to getting the most from <CODE>gperf</CODE>.
+
+</P>
+
+

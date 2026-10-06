@@ -1,0 +1,25 @@
+<H2><A NAME="SEC6" HREF="#TOC6">4.1 <CODE>gperf</CODE>への入力形式</A></H2>
+<P><A NAME="IDX4"></A><A NAME="IDX5"></A><A NAME="IDX6"></A><A NAME="IDX7"></A>
+コマンドライン引数の一部、特に<SAMP>&lsquo;-t&rsquo;</SAMP>オプションを変えることで、入力ファイルの形式を制御できます。入力の見た目は、GNUユーティリティの<CODE>flex</CODE>や<CODE>bison</CODE>、またはUNIXユーティリティの<CODE>lex</CODE>や<CODE>yacc</CODE>に似ています。一般的な形式の概要は次のとおりです。
+</P>
+<PRE>
+declarations
+%%
+keywords
+%%
+functions
+</PRE>
+<P>
+<CODE>flex</CODE>や<CODE>bison</CODE>とは<EM>異なり</EM>、宣言セクションと関数セクションは省略できます。以下では、各セクションの入力形式を説明します。
+</P>
+<P>
+<SAMP>&lsquo;-t&rsquo;</SAMP>オプションを指定しない場合、宣言セクション全体を省略できます。その場合、入力ファイルは最初のキーワードの行から直接始まります。たとえば、次のようになります。
+</P>
+<PRE>
+january
+february
+march
+april
+...
+</PRE>
+

@@ -1,0 +1,15 @@
+<H4><A NAME="SEC10" HREF="#TOC10">4.1.1.3 Cコードの取り込み</A></H4>
+<P><A NAME="IDX33"></A><A NAME="IDX34"></A>GNUユーティリティの<CODE>flex</CODE>や<CODE>bison</CODE>と似た構文を使い、Cのソースコードとコメントをそのまま生成する出力ファイルに直接取り込めます。取り込みたい範囲を、左詰めの<SAMP>&lsquo;%{&rsquo;</SAMP>と<SAMP>&lsquo;%}&rsquo;</SAMP>の組で囲みます。この機能を示すため、前の例を基にした入力の一部を次に示します。</P>
+<PRE>
+%{
+#include &#60;assert.h&#62;
+/* This section of code is inserted directly into the output. */
+int return_month_days (struct month *months, int is_leap_year);
+%}
+struct month { char *name; int number; int days; int leap_days; };
+%%
+january,   1, 31, 31
+february,  2, 28, 29
+march,     3, 31, 31
+...
+</PRE>

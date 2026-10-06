@@ -1,0 +1,5 @@
+<H2><A NAME="SEC15" HREF="#TOC15">4.3 NULバイトの使用</A></H2>
+<P><A NAME="IDX39"></A></P>
+<P>デフォルトでは、<CODE>gperf</CODE>の生成コードは、Cで通常使われるゼロ終端文字列を扱います。そのため、入力ファイルのキーワードにはNULバイトを含められません。また、<CODE>hash</CODE>または<CODE>in_word_set</CODE>に渡す<VAR>str</VAR>引数は、NUL終端され、長さがちょうど<VAR>len</VAR>でなければなりません。</P>
+<P><SAMP>&lsquo;-c&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%compare-strncmp&rsquo;</SAMP>宣言を使う場合、<VAR>str</VAR>引数にNUL終端は不要です。<CODE>gperf</CODE>の生成コードは、<VAR>str</VAR>から始まる最初の<VAR>len</VAR>バイトだけにアクセスし、<VAR>len+1</VAR>バイトにはアクセスしません。ただし、入力ファイルのキーワードには、引き続きNULバイトを含められません。</P>
+<P><SAMP>&lsquo;-l&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%compare-lengths&rsquo;</SAMP>宣言を使う場合、ハッシュテーブルはバイナリ比較を行います。入力ファイルのキーワードにNULバイトを含めることができ、文字列構文では<CODE>\000</CODE>または<CODE>\x00</CODE>と記述します。<CODE>gperf</CODE>の生成コードは、NULをほかのバイトと同様に扱います。また、この場合、<SAMP>&lsquo;-c&rsquo;</SAMP>オプション、または同じ働きをする<SAMP>&lsquo;%compare-strncmp&rsquo;</SAMP>宣言は無視されます。</P>

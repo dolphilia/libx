@@ -1,0 +1,29 @@
+<H3><A NAME="SEC13" HREF="#TOC13">4.1.4 GNU <CODE>indent</CODE>向けの指示を置く場所</A></H3>
+<P><CODE>gperf</CODE>の入力ファイルにGNU <CODE>indent</CODE>を実行しようとすると、入力ファイルの解釈を制御する<SAMP>&lsquo;%%&rsquo;</SAMP>、<SAMP>&lsquo;%{&rsquo;</SAMP>、<SAMP>&lsquo;%}&rsquo;</SAMP>という<CODE>gperf</CODE>の指示を、GNU <CODE>indent</CODE>が理解しないことがわかります。そのため、GNU <CODE>indent</CODE>向けの指示を挿入する必要があります。具体的には、最も一般的な入力ファイルの構造を次のように仮定します。</P>
+<PRE>
+declarations part 1
+%{
+verbatim code
+%}
+declarations part 2
+%%
+keywords
+%%
+functions
+</PRE>
+<P><SAMP>&lsquo;*INDENT-OFF*&rsquo;</SAMP>と<SAMP>&lsquo;*INDENT-ON*&rsquo;</SAMP>のコメントは、次のように挿入します。</P>
+<PRE>
+/* *INDENT-OFF* */
+declarations part 1
+%{
+/* *INDENT-ON* */
+verbatim code
+/* *INDENT-OFF* */
+%}
+declarations part 2
+%%
+keywords
+%%
+/* *INDENT-ON* */
+functions
+</PRE>
