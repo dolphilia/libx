@@ -1,0 +1,84 @@
+{
+  "page": "reference/threading",
+  "status": "passed",
+  "at": "2026-10-04T23:15:08.530253+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/footer reading after759 translation; six Japanese narrative paragraphs clarified; current corrected paragraphs reread. Mechanical checks distinct from semantic review.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/threading.rst",
+      "sha256": "7f7e197066a10a4039cae5c4aa1adc35e41726c9b7b37a23e66509c1d6b205c2"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/threading.md",
+      "sha256": "dcb747d662544fcaf125457306218e6a221687c85b385c2d0d978703bde705b9"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/threading.md",
+      "sha256": "3535e81c669aaaad8c7cbbbde019f201d03acc04f787b16b07987ec93dfdeeff"
+    }
+  ],
+  "coverage": {
+    "original": "all threading.rst including56 declarations/2 original code blocks/threads/TLS/once/locks/semaphores/conditions/barriers",
+    "canonical": "all current English article/footer",
+    "translation": "all current Japanese article/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "full fixed RST / EN / JA / footer",
+      "result": "Entire threading.rst/current English/current Japanese/API/code/frontmatter/footer read separately after759 translation. All551 mapped nodes/56 declarations/2 code blocks covered. Six Japanese paragraphs clarified around function links and reread; no unread ranges."
+    },
+    {
+      "scope": "thread creation/affinity",
+      "result": "Callback arg equality, all types, options layout extensibility, detach resource release/no join, stack flag/default0/page rounding and version changes retained. Affinity byte mapping Unix getters/setters vs Windows bitmask, oldmask optional, mask_size >= uv_cpumask_size, Windows non-atomic/macOS unsupported and getcpu platform restrictions retained."
+    },
+    {
+      "scope": "thread names/priorities",
+      "result": "Current thread name and original platform character maxima16/64/32767/32 and truncation retained. Getname includes trailing NUL and truncates to fit with NUL, input size; terminated-thread undefined behavior and WindowsServer2016 ENOSYS retained. Priority success0/failure negative, privilege limitation, all5 constants, platform-dependent get and Linux SCHED_OTHER0 retained. All version-added labels retained."
+    },
+    {
+      "scope": "TLS/once/locks/semaphores/conditions/barriers",
+      "result": "TLS capacity limitation retained. Once-only execution/same-guard blocking except unspecified one and static UV_ONCE_INIT retained. Lock/semaphore/condition/barrier declarations and general return rules retained. Spurious wakeups for wait/timedwait, relative call time, zOS conversion to absolute time/ETIMEDOUT if time passes before signal and no wait-time clock change after wait begins retained. Arbitrary serializer positive barrier result and cleanup example exact."
+    },
+    {
+      "scope": "footer and review boundary",
+      "result": "Fixed source/licences/notices/unofficial Japanese context remains footer outside body. Correction changes only narrative argument order/particles; API/code/links/IDs exact, current760 rebuilt actual output checks distinct from semantic review. Runtime/native/final full-project content/integration/publication and external supplementary video full review pending."
+    }
+  ],
+  "corrections": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-760/CORRECTIONS.json",
+      "sha256": "7d497471c9a535b4c91aec3d352ef6c04ecbd88b9a0e516c58f918fd15ef4c78"
+    }
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-760/API_VERIFICATION.json",
+      "sha256": "ae000fc1d1ecd194452217037d0b6660f0f2ed0fd15bcf4c19f801289b786e32"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-760/RENDER_VERIFICATION.json",
+      "sha256": "282c948face73dbb575e9d2751e86463d3f41cd80875da737d5e059aad51f384"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-760/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "439f17b3d11cb0b08bd9bb46deed683955a9f78fdb515e748645972aff7c832c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-760/PREBUILD.log",
+      "sha256": "09fcd6ce78aa4f30ba2aaffd46c62a9122c3300da74e0746c0c31eccd889df74"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-760/BUILD.log",
+      "sha256": "5a38fa2b43d51ae1699f64369b44fcb8ca89fbc47a32d1a3997190603a954e87"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

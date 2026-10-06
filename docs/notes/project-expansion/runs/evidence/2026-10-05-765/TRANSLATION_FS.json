@@ -1,0 +1,7139 @@
+{
+  "page": "reference/fs",
+  "at": "2026-10-04T23:34:28.000005+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/fs.rst",
+      "sha256": "04ecb374338f08d18ecc3828c19da90f92ec9f7d987e204e051d0c05ca49578d"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/fs.md",
+      "sha256": "59013093f90d3d2018d2a08c4a24034cddd1b9b06d5bfb08305072ceaa47342c"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/fs.md",
+      "sha256": "24cb9e14110140355c7b2f76a99426a96b9c0951350894f7bef91e686611f4ee"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, seven original code blocks, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "File system operations",
+      "ja": "ファイルシステム操作"
+    },
+    {
+      "index": 1,
+      "en": "libuv provides a wide variety of cross-platform sync and async file system\noperations. All functions defined in this document take a callback, which is\nallowed to be NULL. If the callback is NULL the request is completed synchronously,\notherwise it will be performed asynchronously.",
+      "ja": "libuvは、プラットフォーム間で使える多様な同期・非同期のファイルシステム操作を提供します。この文書のすべての関数はコールバックを受け取り、NULLも指定できます。コールバックがNULLなら要求を同期的に完了し、それ以外なら非同期的に実行します。"
+    },
+    {
+      "index": 2,
+      "en": "All file operations are run on the threadpool. See ",
+      "ja": "すべてのファイル操作はスレッドプール上で実行します。スレッドプールのサイズについては、"
+    },
+    {
+      "index": 3,
+      "en": "Thread pool work scheduling",
+      "ja": "スレッドプールの作業スケジューリング"
+    },
+    {
+      "index": 4,
+      "en": " for information\non the threadpool size.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 5,
+      "en": "Starting with libuv v1.45.0, some file operations on Linux are handed off to\n",
+      "ja": "libuv v1.45.0以降、Linuxの一部のファイル操作は、可能な場合、"
+    },
+    {
+      "index": 6,
+      "en": "io_uring <https://en.wikipedia.org/wiki/Io_uring>",
+      "ja": "io_uring <https://en.wikipedia.org/wiki/Io_uring>"
+    },
+    {
+      "index": 7,
+      "en": " when possible. Apart from\na (sometimes significant) increase in throughput there should be no change in\nobservable behavior. Libuv reverts to using its threadpool when the necessary\nkernel features are unavailable or unsuitable. Starting with libuv v1.49.0 this\nbehavior was reverted and Libuv on Linux by default will be using the threadpool\nagain. In order to enable io_uring the ",
+      "ja": "へ委譲します。スループットが（場合によっては大幅に）向上する以外、観察できる動作は変わらないはずです。必要なカーネル機能が利用できない場合や適していない場合は、スレッドプールへ戻します。libuv v1.49.0以降、この動作を元に戻し、Linuxでも再びデフォルトでスレッドプールを使います。io_uringを有効にするには、"
+    },
+    {
+      "index": 8,
+      "en": " instance must be\nconfigured with the ",
+      "ja": "のインスタンスを、"
+    },
+    {
+      "index": 9,
+      "en": " option.",
+      "ja": "オプションで設定する必要があります。"
+    },
+    {
+      "index": 10,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 11,
+      "en": "On Windows ",
+      "ja": "Windowsでは、"
+    },
+    {
+      "index": 12,
+      "en": "uv_fs_*",
+      "ja": "uv_fs_*"
+    },
+    {
+      "index": 13,
+      "en": " functions use utf-8 encoding.",
+      "ja": "関数はUTF-8エンコーディングを使います。"
+    },
+    {
+      "index": 14,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 15,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 16,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 17,
+      "en": "File system request type.",
+      "ja": "ファイルシステム要求の型です。"
+    },
+    {
+      "index": 18,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 19,
+      "en": "uv_timespec_t",
+      "ja": "uv_timespec_t"
+    },
+    {
+      "index": 20,
+      "en": "Y2K38-unsafe data type for storing times with nanosecond resolution.\nWill be replaced with ",
+      "ja": "ナノ秒分解能の時刻を格納する、2038年問題に対応していないデータ型です。libuv v2.0では、"
+    },
+    {
+      "index": 21,
+      "en": " in libuv v2.0.",
+      "ja": "に置き換えます。"
+    },
+    {
+      "index": 22,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 23,
+      "en": "uv_stat_t",
+      "ja": "uv_stat_t"
+    },
+    {
+      "index": 24,
+      "en": "Portable equivalent of ",
+      "ja": "次の構造体に相当する、可搬な型です: "
+    },
+    {
+      "index": 25,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 26,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 27,
+      "en": "uv_fs_type",
+      "ja": "uv_fs_type"
+    },
+    {
+      "index": 28,
+      "en": "File system request type.",
+      "ja": "ファイルシステム要求の型です。"
+    },
+    {
+      "index": 29,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 30,
+      "en": "uv_statfs_t",
+      "ja": "uv_statfs_t"
+    },
+    {
+      "index": 31,
+      "en": "Reduced cross platform equivalent of ",
+      "ja": "次の構造体に相当する、プラットフォーム間で使える簡略化した型です: "
+    },
+    {
+      "index": 32,
+      "en": ".\nUsed in ",
+      "ja": "。次の関数で使います: "
+    },
+    {
+      "index": 33,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 34,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 35,
+      "en": "uv_dirent_type_t",
+      "ja": "uv_dirent_type_t"
+    },
+    {
+      "index": 36,
+      "en": "Type of dirent.",
+      "ja": "ディレクトリーエントリーの型です。"
+    },
+    {
+      "index": 37,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 38,
+      "en": "uv_dirent_t",
+      "ja": "uv_dirent_t"
+    },
+    {
+      "index": 39,
+      "en": "Cross platform (reduced) equivalent of ",
+      "ja": "次の構造体に相当する、プラットフォーム間で使える簡略化した型です: "
+    },
+    {
+      "index": 40,
+      "en": ".\nUsed in ",
+      "ja": "。次の関数で使います: "
+    },
+    {
+      "index": 41,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 42,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 43,
+      "en": "uv_dir_t",
+      "ja": "uv_dir_t"
+    },
+    {
+      "index": 44,
+      "en": "Data type used for streaming directory iteration.\nUsed by ",
+      "ja": "ディレクトリーをストリームとして反復処理するためのデータ型です。次の関数で使います: "
+    },
+    {
+      "index": 45,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 46,
+      "en": ", and\n",
+      "ja": "および"
+    },
+    {
+      "index": 47,
+      "en": ". ",
+      "ja": "。"
+    },
+    {
+      "index": 48,
+      "en": "dirents",
+      "ja": "dirents"
+    },
+    {
+      "index": 49,
+      "en": " represents a user provided array of\n",
+      "ja": "は、結果を格納するためにユーザーが用意する、"
+    },
+    {
+      "index": 50,
+      "en": "uv_dirent_t`s used to hold results. `nentries",
+      "ja": "uv_dirent_t`sの配列を表します。`nentries"
+    },
+    {
+      "index": 51,
+      "en": " is the user provided maximum\narray size of ",
+      "ja": "は、ユーザーが指定する、"
+    },
+    {
+      "index": 52,
+      "en": "dirents",
+      "ja": "dirents"
+    },
+    {
+      "index": 53,
+      "en": ".",
+      "ja": "配列の最大サイズです。"
+    },
+    {
+      "index": 54,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 55,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 56,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 57,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 58,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 59,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 60,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 61,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 62,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 63,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 64,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 65,
+      "en": "Callback called when a request is completed asynchronously.",
+      "ja": "要求を非同期的に完了したときに呼び出すコールバックです。"
+    },
+    {
+      "index": 66,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 67,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 68,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 69,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 70,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 71,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 72,
+      "en": "Loop that started this request and where completion will be reported.\nReadonly.",
+      "ja": "この要求を開始し、完了を通知するループです。読み取り専用です。"
+    },
+    {
+      "index": 73,
+      "en": "uv_fs_type",
+      "ja": "uv_fs_type"
+    },
+    {
+      "index": 74,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 75,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 76,
+      "en": "fs_type",
+      "ja": "fs_type"
+    },
+    {
+      "index": 77,
+      "en": "FS request type.",
+      "ja": "ファイルシステム要求の型です。"
+    },
+    {
+      "index": 78,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 79,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 80,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 81,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 82,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 83,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 84,
+      "en": "Path affecting the request.",
+      "ja": "要求に関係するパスです。"
+    },
+    {
+      "index": 85,
+      "en": "ssize_t",
+      "ja": "ssize_t"
+    },
+    {
+      "index": 86,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 87,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 88,
+      "en": "result",
+      "ja": "result"
+    },
+    {
+      "index": 89,
+      "en": "Result of the request. < 0 means error, success otherwise. On requests such\nas ",
+      "ja": "要求の結果です。0未満ならエラー、それ以外なら成功です。次の関数のような要求では、"
+    },
+    {
+      "index": 90,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 91,
+      "en": " it indicates the amount of\ndata that was read or written, respectively.",
+      "ja": "、それぞれ読み書きしたデータ量を示します。"
+    },
+    {
+      "index": 92,
+      "en": "uv_stat_t",
+      "ja": "uv_stat_t"
+    },
+    {
+      "index": 93,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 94,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 95,
+      "en": "statbuf",
+      "ja": "statbuf"
+    },
+    {
+      "index": 96,
+      "en": "Stores the result of ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 97,
+      "en": " and other stat requests.",
+      "ja": "やその他のstat要求の結果を格納します。"
+    },
+    {
+      "index": 98,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 99,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 100,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 101,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 102,
+      "en": "ptr",
+      "ja": "ptr"
+    },
+    {
+      "index": 103,
+      "en": "Stores the result of ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 104,
+      "en": " and\n",
+      "ja": "と"
+    },
+    {
+      "index": 105,
+      "en": " and serves as an alias to ",
+      "ja": "の結果を格納し、"
+    },
+    {
+      "index": 106,
+      "en": "statbuf",
+      "ja": "statbuf"
+    },
+    {
+      "index": 107,
+      "en": ".",
+      "ja": "の別名としても使います。"
+    },
+    {
+      "index": 108,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 109,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 110,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 111,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 112,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 113,
+      "en": "uv_fs_req_cleanup",
+      "ja": "uv_fs_req_cleanup"
+    },
+    {
+      "index": 114,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 115,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 116,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 117,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 118,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 119,
+      "en": "Cleanup request. Must be called after a request is finished to deallocate\nany memory libuv might have allocated.",
+      "ja": "要求を後始末します。libuvが確保した可能性のあるメモリーを解放するため、要求の完了後に呼び出す必要があります。"
+    },
+    {
+      "index": 120,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 121,
+      "en": "uv_fs_close",
+      "ja": "uv_fs_close"
+    },
+    {
+      "index": 122,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 123,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 124,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 125,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 126,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 127,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 128,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 129,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 130,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 131,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 132,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 133,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 134,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 135,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 136,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 137,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 138,
+      "en": "close(2)",
+      "ja": "close(2)"
+    },
+    {
+      "index": 139,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 140,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 141,
+      "en": "uv_fs_open",
+      "ja": "uv_fs_open"
+    },
+    {
+      "index": 142,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 143,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 144,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 145,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 146,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 147,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 148,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 149,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 150,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 151,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 152,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 153,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 154,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 155,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 156,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 157,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 158,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 159,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 160,
+      "en": "mode",
+      "ja": "mode"
+    },
+    {
+      "index": 161,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 162,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 163,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 164,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 165,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 166,
+      "en": "open(2)",
+      "ja": "open(2)"
+    },
+    {
+      "index": 167,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 168,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 169,
+      "en": "On Windows libuv uses ",
+      "ja": "Windowsでは、libuvは"
+    },
+    {
+      "index": 170,
+      "en": "CreateFileW",
+      "ja": "CreateFileW"
+    },
+    {
+      "index": 171,
+      "en": " and thus the file is always opened\nin binary mode. Because of this the O_BINARY and O_TEXT flags are not\nsupported.",
+      "ja": "を使うため、常にバイナリーモードでファイルを開きます。このため、O_BINARYとO_TEXTフラグはサポートしていません。"
+    },
+    {
+      "index": 172,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 173,
+      "en": "uv_fs_read",
+      "ja": "uv_fs_read"
+    },
+    {
+      "index": 174,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 175,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 176,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 177,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 178,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 179,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 180,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 181,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 182,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 183,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 184,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 185,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 186,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 187,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 188,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 189,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 190,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 191,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 192,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 193,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 194,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 195,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 196,
+      "en": "int64_t",
+      "ja": "int64_t"
+    },
+    {
+      "index": 197,
+      "en": "offset",
+      "ja": "offset"
+    },
+    {
+      "index": 198,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 199,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 200,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 201,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 202,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 203,
+      "en": "preadv(2)",
+      "ja": "preadv(2)"
+    },
+    {
+      "index": 204,
+      "en": ". If the ",
+      "ja": "と同等です。"
+    },
+    {
+      "index": 205,
+      "en": "offset",
+      "ja": "offset"
+    },
+    {
+      "index": 206,
+      "en": " argument is ",
+      "ja": "引数が"
+    },
+    {
+      "index": 207,
+      "en": "-1",
+      "ja": "-1"
+    },
+    {
+      "index": 208,
+      "en": ", then\nthe current file offset is used and updated.",
+      "ja": "なら、現在のファイルオフセットを使い、更新します。"
+    },
+    {
+      "index": 209,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 210,
+      "en": "On Windows, under non-MSVC environments (e.g. when GCC or Clang is used\nto build libuv), files opened using ",
+      "ja": "WindowsでMSVC以外の環境（GCCやClangでlibuvをビルドする場合など）では、"
+    },
+    {
+      "index": 211,
+      "en": " may cause a fatal\ncrash if the memory mapped read operation fails.",
+      "ja": "で開いたファイルのメモリーマップ読み取り操作に失敗すると、致命的なクラッシュが起きる場合があります。"
+    },
+    {
+      "index": 212,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 213,
+      "en": "uv_fs_unlink",
+      "ja": "uv_fs_unlink"
+    },
+    {
+      "index": 214,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 215,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 216,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 217,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 218,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 219,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 220,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 221,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 222,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 223,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 224,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 225,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 226,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 227,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 228,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 229,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 230,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 231,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 232,
+      "en": "unlink(2)",
+      "ja": "unlink(2)"
+    },
+    {
+      "index": 233,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 234,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 235,
+      "en": "uv_fs_write",
+      "ja": "uv_fs_write"
+    },
+    {
+      "index": 236,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 237,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 238,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 239,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 240,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 241,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 242,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 243,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 244,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 245,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 246,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 247,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 248,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 249,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 250,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 251,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 252,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 253,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 254,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 255,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 256,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 257,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 258,
+      "en": "int64_t",
+      "ja": "int64_t"
+    },
+    {
+      "index": 259,
+      "en": "offset",
+      "ja": "offset"
+    },
+    {
+      "index": 260,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 261,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 262,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 263,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 264,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 265,
+      "en": "pwritev(2)",
+      "ja": "pwritev(2)"
+    },
+    {
+      "index": 266,
+      "en": ". If the ",
+      "ja": "と同等です。"
+    },
+    {
+      "index": 267,
+      "en": "offset",
+      "ja": "offset"
+    },
+    {
+      "index": 268,
+      "en": " argument is ",
+      "ja": "引数が"
+    },
+    {
+      "index": 269,
+      "en": "-1",
+      "ja": "-1"
+    },
+    {
+      "index": 270,
+      "en": ", then\nthe current file offset is used and updated.",
+      "ja": "なら、現在のファイルオフセットを使い、更新します。"
+    },
+    {
+      "index": 271,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 272,
+      "en": "On Windows, under non-MSVC environments (e.g. when GCC or Clang is used\nto build libuv), files opened using ",
+      "ja": "WindowsでMSVC以外の環境（GCCやClangでlibuvをビルドする場合など）では、"
+    },
+    {
+      "index": 273,
+      "en": " may cause a fatal\ncrash if the memory mapped write operation fails.",
+      "ja": "で開いたファイルのメモリーマップ書き込み操作に失敗すると、致命的なクラッシュが起きる場合があります。"
+    },
+    {
+      "index": 274,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 275,
+      "en": "uv_fs_mkdir",
+      "ja": "uv_fs_mkdir"
+    },
+    {
+      "index": 276,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 277,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 278,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 279,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 280,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 281,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 282,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 283,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 284,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 285,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 286,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 287,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 288,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 289,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 290,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 291,
+      "en": "mode",
+      "ja": "mode"
+    },
+    {
+      "index": 292,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 293,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 294,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 295,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 296,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 297,
+      "en": "mkdir(2)",
+      "ja": "mkdir(2)"
+    },
+    {
+      "index": 298,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 299,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 300,
+      "en": "mode",
+      "ja": "mode"
+    },
+    {
+      "index": 301,
+      "en": " is currently not implemented on Windows.",
+      "ja": "は、現在、Windowsでは実装していません。"
+    },
+    {
+      "index": 302,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 303,
+      "en": "uv_fs_mkdtemp",
+      "ja": "uv_fs_mkdtemp"
+    },
+    {
+      "index": 304,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 305,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 306,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 307,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 308,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 309,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 310,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 311,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 312,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 313,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 314,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 315,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 316,
+      "en": "tpl",
+      "ja": "tpl"
+    },
+    {
+      "index": 317,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 318,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 319,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 320,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 321,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 322,
+      "en": "mkdtemp(3)",
+      "ja": "mkdtemp(3)"
+    },
+    {
+      "index": 323,
+      "en": ". The result can be found as a null terminated string at ",
+      "ja": "と同等です。結果は、次のフィールドのヌル終端文字列として取得できます: "
+    },
+    {
+      "index": 324,
+      "en": "req->path",
+      "ja": "req->path"
+    },
+    {
+      "index": 325,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 326,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 327,
+      "en": "uv_fs_mkstemp",
+      "ja": "uv_fs_mkstemp"
+    },
+    {
+      "index": 328,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 329,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 330,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 331,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 332,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 333,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 334,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 335,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 336,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 337,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 338,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 339,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 340,
+      "en": "tpl",
+      "ja": "tpl"
+    },
+    {
+      "index": 341,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 342,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 343,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 344,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 345,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 346,
+      "en": "mkstemp(3)",
+      "ja": "mkstemp(3)"
+    },
+    {
+      "index": 347,
+      "en": ". The created file path can be found as a null terminated string at ",
+      "ja": "と同等です。作成したファイルのパスは、次のフィールドのヌル終端文字列として取得できます: "
+    },
+    {
+      "index": 348,
+      "en": "req->path",
+      "ja": "req->path"
+    },
+    {
+      "index": 349,
+      "en": ".\nThe file descriptor can be found as an integer at ",
+      "ja": "。ファイルディスクリプターは、次のフィールドの整数値として取得できます: "
+    },
+    {
+      "index": 350,
+      "en": "req->result",
+      "ja": "req->result"
+    },
+    {
+      "index": 351,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 352,
+      "en": "New in version 1.34.0.",
+      "ja": "バージョン1.34.0で追加。"
+    },
+    {
+      "index": 353,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 354,
+      "en": "uv_fs_rmdir",
+      "ja": "uv_fs_rmdir"
+    },
+    {
+      "index": 355,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 356,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 357,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 358,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 359,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 360,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 361,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 362,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 363,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 364,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 365,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 366,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 367,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 368,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 369,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 370,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 371,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 372,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 373,
+      "en": "rmdir(2)",
+      "ja": "rmdir(2)"
+    },
+    {
+      "index": 374,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 375,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 376,
+      "en": "uv_fs_opendir",
+      "ja": "uv_fs_opendir"
+    },
+    {
+      "index": 377,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 378,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 379,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 380,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 381,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 382,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 383,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 384,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 385,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 386,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 387,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 388,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 389,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 390,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 391,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 392,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 393,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 394,
+      "en": "Opens ",
+      "ja": "次のパス、"
+    },
+    {
+      "index": 395,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 396,
+      "en": " as a directory stream. On success, a ",
+      "ja": "をディレクトリーストリームとして開きます。成功時は、"
+    },
+    {
+      "index": 397,
+      "en": "uv_dir_t",
+      "ja": "uv_dir_t"
+    },
+    {
+      "index": 398,
+      "en": " is allocated\nand returned via ",
+      "ja": "を確保し、"
+    },
+    {
+      "index": 399,
+      "en": "req->ptr",
+      "ja": "req->ptr"
+    },
+    {
+      "index": 400,
+      "en": ". This memory is not freed by\n",
+      "ja": "経由で返します。このメモリーは、"
+    },
+    {
+      "index": 401,
+      "en": "uv_fs_req_cleanup()",
+      "ja": "uv_fs_req_cleanup()"
+    },
+    {
+      "index": 402,
+      "en": ", although ",
+      "ja": "では解放しません。ただし、"
+    },
+    {
+      "index": 403,
+      "en": "req->ptr",
+      "ja": "req->ptr"
+    },
+    {
+      "index": 404,
+      "en": " is set to ",
+      "ja": "は"
+    },
+    {
+      "index": 405,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 406,
+      "en": ". The allocated\nmemory must be freed by calling ",
+      "ja": "に設定されます。確保したメモリーは、"
+    },
+    {
+      "index": 407,
+      "en": "uv_fs_closedir()",
+      "ja": "uv_fs_closedir()"
+    },
+    {
+      "index": 408,
+      "en": ". On failure, no memory\nis allocated.",
+      "ja": "を呼び出して解放する必要があります。失敗時はメモリーを確保しません。"
+    },
+    {
+      "index": 409,
+      "en": "The contents of the directory can be iterated over by passing the resulting\n",
+      "ja": "取得した"
+    },
+    {
+      "index": 410,
+      "en": "uv_dir_t",
+      "ja": "uv_dir_t"
+    },
+    {
+      "index": 411,
+      "en": " to ",
+      "ja": "を"
+    },
+    {
+      "index": 412,
+      "en": "uv_fs_readdir()",
+      "ja": "uv_fs_readdir()"
+    },
+    {
+      "index": 413,
+      "en": ".",
+      "ja": "へ渡すと、ディレクトリーの内容を反復処理できます。"
+    },
+    {
+      "index": 414,
+      "en": "New in version 1.28.0.",
+      "ja": "バージョン1.28.0で追加。"
+    },
+    {
+      "index": 415,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 416,
+      "en": "uv_fs_closedir",
+      "ja": "uv_fs_closedir"
+    },
+    {
+      "index": 417,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 418,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 419,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 420,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 421,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 422,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 423,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 424,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 425,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 426,
+      "en": "uv_dir_t",
+      "ja": "uv_dir_t"
+    },
+    {
+      "index": 427,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 428,
+      "en": "dir",
+      "ja": "dir"
+    },
+    {
+      "index": 429,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 430,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 431,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 432,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 433,
+      "en": "Closes the directory stream represented by ",
+      "ja": "次の値で表すディレクトリーストリーム、"
+    },
+    {
+      "index": 434,
+      "en": "dir",
+      "ja": "dir"
+    },
+    {
+      "index": 435,
+      "en": " and frees the memory\nallocated by ",
+      "ja": "を閉じ、"
+    },
+    {
+      "index": 436,
+      "en": "uv_fs_opendir()",
+      "ja": "uv_fs_opendir()"
+    },
+    {
+      "index": 437,
+      "en": ".",
+      "ja": "が確保したメモリーを解放します。"
+    },
+    {
+      "index": 438,
+      "en": "New in version 1.28.0.",
+      "ja": "バージョン1.28.0で追加。"
+    },
+    {
+      "index": 439,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 440,
+      "en": "uv_fs_readdir",
+      "ja": "uv_fs_readdir"
+    },
+    {
+      "index": 441,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 442,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 443,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 444,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 445,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 446,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 447,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 448,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 449,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 450,
+      "en": "uv_dir_t",
+      "ja": "uv_dir_t"
+    },
+    {
+      "index": 451,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 452,
+      "en": "dir",
+      "ja": "dir"
+    },
+    {
+      "index": 453,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 454,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 455,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 456,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 457,
+      "en": "Iterates over the directory stream, ",
+      "ja": "次のディレクトリーストリーム、"
+    },
+    {
+      "index": 458,
+      "en": "dir",
+      "ja": "dir"
+    },
+    {
+      "index": 459,
+      "en": ", returned by a successful\n",
+      "ja": "を反復処理します。これは"
+    },
+    {
+      "index": 460,
+      "en": "uv_fs_opendir()",
+      "ja": "uv_fs_opendir()"
+    },
+    {
+      "index": 461,
+      "en": " call. Prior to invoking ",
+      "ja": "の成功時に返したものです。"
+    },
+    {
+      "index": 462,
+      "en": "uv_fs_readdir()",
+      "ja": "uv_fs_readdir()"
+    },
+    {
+      "index": 463,
+      "en": ", the caller\nmust set ",
+      "ja": "を呼び出す前に、呼び出し元は"
+    },
+    {
+      "index": 464,
+      "en": "dir->dirents",
+      "ja": "dir->dirents"
+    },
+    {
+      "index": 465,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 466,
+      "en": "dir->nentries",
+      "ja": "dir->nentries"
+    },
+    {
+      "index": 467,
+      "en": ", representing the array of\n",
+      "ja": "を設定する必要があります。これらは、読み取ったディレクトリーエントリーを格納する、"
+    },
+    {
+      "index": 468,
+      "en": " elements used to hold the read directory entries and\nits size.",
+      "ja": "要素の配列と、そのサイズを表します。"
+    },
+    {
+      "index": 469,
+      "en": "On success, the result is an integer >= 0 representing the number of entries\nread from the stream.",
+      "ja": "成功時の結果は、ストリームから読み取ったエントリー数を表す0以上の整数です。"
+    },
+    {
+      "index": 470,
+      "en": "New in version 1.28.0.",
+      "ja": "バージョン1.28.0で追加。"
+    },
+    {
+      "index": 471,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 472,
+      "en": "uv_fs_readdir()",
+      "ja": "uv_fs_readdir()"
+    },
+    {
+      "index": 473,
+      "en": " is not thread safe.",
+      "ja": "はスレッドセーフではありません。"
+    },
+    {
+      "index": 474,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 475,
+      "en": "This function does not return the “.” and “..” entries.",
+      "ja": "この関数は「.」と「..」のエントリーを返しません。"
+    },
+    {
+      "index": 476,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 477,
+      "en": "On success this function allocates memory that must be freed using\n",
+      "ja": "成功時、この関数はメモリーを確保します。次の関数で解放する必要があります: "
+    },
+    {
+      "index": 478,
+      "en": "uv_fs_req_cleanup()",
+      "ja": "uv_fs_req_cleanup()"
+    },
+    {
+      "index": 479,
+      "en": ". ",
+      "ja": "。"
+    },
+    {
+      "index": 480,
+      "en": "uv_fs_req_cleanup()",
+      "ja": "uv_fs_req_cleanup()"
+    },
+    {
+      "index": 481,
+      "en": " must be called before\nclosing the directory with ",
+      "ja": "は、"
+    },
+    {
+      "index": 482,
+      "en": "uv_fs_closedir()",
+      "ja": "uv_fs_closedir()"
+    },
+    {
+      "index": 483,
+      "en": ".",
+      "ja": "でディレクトリーを閉じる前に呼び出してください。"
+    },
+    {
+      "index": 484,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 485,
+      "en": "uv_fs_scandir",
+      "ja": "uv_fs_scandir"
+    },
+    {
+      "index": 486,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 487,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 488,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 489,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 490,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 491,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 492,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 493,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 494,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 495,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 496,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 497,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 498,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 499,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 500,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 501,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 502,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 503,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 504,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 505,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 506,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 507,
+      "en": "uv_fs_scandir_next",
+      "ja": "uv_fs_scandir_next"
+    },
+    {
+      "index": 508,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 509,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 510,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 511,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 512,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 513,
+      "en": "uv_dirent_t",
+      "ja": "uv_dirent_t"
+    },
+    {
+      "index": 514,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 515,
+      "en": "ent",
+      "ja": "ent"
+    },
+    {
+      "index": 516,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 517,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 518,
+      "en": "scandir(3)",
+      "ja": "scandir(3)"
+    },
+    {
+      "index": 519,
+      "en": ", with a slightly different API. Once the callback\nfor the request is called, the user can use ",
+      "ja": "と同等ですが、APIは少し異なります。要求のコールバックを呼び出した後、ユーザーは"
+    },
+    {
+      "index": 520,
+      "en": " to\nget ",
+      "ja": "を使い、"
+    },
+    {
+      "index": 521,
+      "en": "ent",
+      "ja": "ent"
+    },
+    {
+      "index": 522,
+      "en": " populated with the next directory entry data. When there are no\nmore entries ",
+      "ja": "に次のディレクトリーエントリーのデータを格納できます。エントリーがなくなると、"
+    },
+    {
+      "index": 523,
+      "en": " will be returned.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 524,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 525,
+      "en": "Unlike ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 526,
+      "en": "scandir(3)",
+      "ja": "scandir(3)"
+    },
+    {
+      "index": 527,
+      "en": ", this function does not return the “.” and “..” entries.",
+      "ja": "と異なり、この関数は「.」と「..」のエントリーを返しません。"
+    },
+    {
+      "index": 528,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 529,
+      "en": "On Linux, getting the type of an entry is only supported by some file systems (btrfs, ext2,\next3 and ext4 at the time of this writing), check the ",
+      "ja": "Linuxでエントリーの型を取得できるのは、一部のファイルシステムだけです（執筆時点ではbtrfs、ext2、ext3、ext4）。次のmanページを確認してください: "
+    },
+    {
+      "index": 530,
+      "en": "getdents(2)",
+      "ja": "getdents(2)"
+    },
+    {
+      "index": 531,
+      "en": " man page.",
+      "ja": "。"
+    },
+    {
+      "index": 532,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 533,
+      "en": "uv_fs_stat",
+      "ja": "uv_fs_stat"
+    },
+    {
+      "index": 534,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 535,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 536,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 537,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 538,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 539,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 540,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 541,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 542,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 543,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 544,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 545,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 546,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 547,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 548,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 549,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 550,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 551,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 552,
+      "en": "uv_fs_fstat",
+      "ja": "uv_fs_fstat"
+    },
+    {
+      "index": 553,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 554,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 555,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 556,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 557,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 558,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 559,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 560,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 561,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 562,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 563,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 564,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 565,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 566,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 567,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 568,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 569,
+      "en": "uv_fs_lstat",
+      "ja": "uv_fs_lstat"
+    },
+    {
+      "index": 570,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 571,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 572,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 573,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 574,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 575,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 576,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 577,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 578,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 579,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 580,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 581,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 582,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 583,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 584,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 585,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 586,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 587,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 588,
+      "en": "stat(2)",
+      "ja": "stat(2)"
+    },
+    {
+      "index": 589,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 590,
+      "en": "fstat(2)",
+      "ja": "fstat(2)"
+    },
+    {
+      "index": 591,
+      "en": " and ",
+      "ja": "および"
+    },
+    {
+      "index": 592,
+      "en": "lstat(2)",
+      "ja": "lstat(2)"
+    },
+    {
+      "index": 593,
+      "en": " respectively.",
+      "ja": "と、それぞれ同等です。"
+    },
+    {
+      "index": 594,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 595,
+      "en": "uv_fs_statfs",
+      "ja": "uv_fs_statfs"
+    },
+    {
+      "index": 596,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 597,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 598,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 599,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 600,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 601,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 602,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 603,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 604,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 605,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 606,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 607,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 608,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 609,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 610,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 611,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 612,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 613,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 614,
+      "en": "statfs(2)",
+      "ja": "statfs(2)"
+    },
+    {
+      "index": 615,
+      "en": ". On success, a ",
+      "ja": "と同等です。成功時は、"
+    },
+    {
+      "index": 616,
+      "en": "uv_statfs_t",
+      "ja": "uv_statfs_t"
+    },
+    {
+      "index": 617,
+      "en": " is allocated\nand returned via ",
+      "ja": "を確保し、"
+    },
+    {
+      "index": 618,
+      "en": "req->ptr",
+      "ja": "req->ptr"
+    },
+    {
+      "index": 619,
+      "en": ". This memory is freed by ",
+      "ja": "経由で返します。このメモリーは、"
+    },
+    {
+      "index": 620,
+      "en": "uv_fs_req_cleanup()",
+      "ja": "uv_fs_req_cleanup()"
+    },
+    {
+      "index": 621,
+      "en": ".",
+      "ja": "で解放します。"
+    },
+    {
+      "index": 622,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 623,
+      "en": "Any fields in the resulting ",
+      "ja": "結果の"
+    },
+    {
+      "index": 624,
+      "en": "uv_statfs_t",
+      "ja": "uv_statfs_t"
+    },
+    {
+      "index": 625,
+      "en": " that are not supported by the\nunderlying operating system are set to zero.",
+      "ja": "で、基盤となるOSがサポートしていないフィールドは0に設定されます。"
+    },
+    {
+      "index": 626,
+      "en": "New in version 1.31.0.",
+      "ja": "バージョン1.31.0で追加。"
+    },
+    {
+      "index": 627,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 628,
+      "en": "uv_fs_rename",
+      "ja": "uv_fs_rename"
+    },
+    {
+      "index": 629,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 630,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 631,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 632,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 633,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 634,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 635,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 636,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 637,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 638,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 639,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 640,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 641,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 642,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 643,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 644,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 645,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 646,
+      "en": "new_path",
+      "ja": "new_path"
+    },
+    {
+      "index": 647,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 648,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 649,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 650,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 651,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 652,
+      "en": "rename(2)",
+      "ja": "rename(2)"
+    },
+    {
+      "index": 653,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 654,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 655,
+      "en": "uv_fs_fsync",
+      "ja": "uv_fs_fsync"
+    },
+    {
+      "index": 656,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 657,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 658,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 659,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 660,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 661,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 662,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 663,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 664,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 665,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 666,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 667,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 668,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 669,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 670,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 671,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 672,
+      "en": "fsync(2)",
+      "ja": "fsync(2)"
+    },
+    {
+      "index": 673,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 674,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 675,
+      "en": "For AIX, ",
+      "ja": "AIXでは、"
+    },
+    {
+      "index": 676,
+      "en": "uv_fs_fsync",
+      "ja": "uv_fs_fsync"
+    },
+    {
+      "index": 677,
+      "en": " returns ",
+      "ja": "は、通常ファイル以外を参照するファイルディスクリプターに対して、"
+    },
+    {
+      "index": 678,
+      "en": "UV_EBADF",
+      "ja": "UV_EBADF"
+    },
+    {
+      "index": 679,
+      "en": " on file descriptors referencing\nnon regular files.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 680,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 681,
+      "en": "uv_fs_fdatasync",
+      "ja": "uv_fs_fdatasync"
+    },
+    {
+      "index": 682,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 683,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 684,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 685,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 686,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 687,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 688,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 689,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 690,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 691,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 692,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 693,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 694,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 695,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 696,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 697,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 698,
+      "en": "fdatasync(2)",
+      "ja": "fdatasync(2)"
+    },
+    {
+      "index": 699,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 700,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 701,
+      "en": "uv_fs_ftruncate",
+      "ja": "uv_fs_ftruncate"
+    },
+    {
+      "index": 702,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 703,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 704,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 705,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 706,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 707,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 708,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 709,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 710,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 711,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 712,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 713,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 714,
+      "en": "int64_t",
+      "ja": "int64_t"
+    },
+    {
+      "index": 715,
+      "en": "offset",
+      "ja": "offset"
+    },
+    {
+      "index": 716,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 717,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 718,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 719,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 720,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 721,
+      "en": "ftruncate(2)",
+      "ja": "ftruncate(2)"
+    },
+    {
+      "index": 722,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 723,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 724,
+      "en": "uv_fs_copyfile",
+      "ja": "uv_fs_copyfile"
+    },
+    {
+      "index": 725,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 726,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 727,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 728,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 729,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 730,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 731,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 732,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 733,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 734,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 735,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 736,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 737,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 738,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 739,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 740,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 741,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 742,
+      "en": "new_path",
+      "ja": "new_path"
+    },
+    {
+      "index": 743,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 744,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 745,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 746,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 747,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 748,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 749,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 750,
+      "en": "Copies a file from ",
+      "ja": "次のパス、"
+    },
+    {
+      "index": 751,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 752,
+      "en": " to ",
+      "ja": "から"
+    },
+    {
+      "index": 753,
+      "en": "new_path",
+      "ja": "new_path"
+    },
+    {
+      "index": 754,
+      "en": ". Supported ",
+      "ja": "へファイルをコピーします。サポートする"
+    },
+    {
+      "index": 755,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 756,
+      "en": " are described below.",
+      "ja": "は次のとおりです。"
+    },
+    {
+      "index": 757,
+      "en": "UV_FS_COPYFILE_EXCL",
+      "ja": "UV_FS_COPYFILE_EXCL"
+    },
+    {
+      "index": 758,
+      "en": ": If present, ",
+      "ja": ": 指定すると、"
+    },
+    {
+      "index": 759,
+      "en": "uv_fs_copyfile()",
+      "ja": "uv_fs_copyfile()"
+    },
+    {
+      "index": 760,
+      "en": " will fail with\n",
+      "ja": "は、宛先パスがすでに存在する場合、"
+    },
+    {
+      "index": 761,
+      "en": "UV_EEXIST",
+      "ja": "UV_EEXIST"
+    },
+    {
+      "index": 762,
+      "en": " if the destination path already exists. The default behavior\nis to overwrite the destination if it exists.",
+      "ja": "で失敗します。デフォルトでは、存在する宛先を上書きします。"
+    },
+    {
+      "index": 763,
+      "en": "UV_FS_COPYFILE_FICLONE",
+      "ja": "UV_FS_COPYFILE_FICLONE"
+    },
+    {
+      "index": 764,
+      "en": ": If present, ",
+      "ja": ": 指定すると、"
+    },
+    {
+      "index": 765,
+      "en": "uv_fs_copyfile()",
+      "ja": "uv_fs_copyfile()"
+    },
+    {
+      "index": 766,
+      "en": " will attempt to\ncreate a copy-on-write reflink. If the underlying platform does not\nsupport copy-on-write, or an error occurs while attempting to use\ncopy-on-write, a fallback copy mechanism based on\n",
+      "ja": "はコピーオンライトのreflinkの作成を試みます。基盤となるプラットフォームがコピーオンライトをサポートしていない場合や、その使用中にエラーが起きた場合は、"
+    },
+    {
+      "index": 767,
+      "en": " is used.",
+      "ja": "を使うコピー方式へフォールバックします。"
+    },
+    {
+      "index": 768,
+      "en": "UV_FS_COPYFILE_FICLONE_FORCE",
+      "ja": "UV_FS_COPYFILE_FICLONE_FORCE"
+    },
+    {
+      "index": 769,
+      "en": ": If present, ",
+      "ja": ": 指定すると、"
+    },
+    {
+      "index": 770,
+      "en": "uv_fs_copyfile()",
+      "ja": "uv_fs_copyfile()"
+    },
+    {
+      "index": 771,
+      "en": " will\nattempt to create a copy-on-write reflink. If the underlying platform does\nnot support copy-on-write, or an error occurs while attempting to use\ncopy-on-write, then an error is returned.",
+      "ja": "はコピーオンライトのreflinkの作成を試みます。基盤となるプラットフォームがコピーオンライトをサポートしていない場合や、その使用中にエラーが起きた場合は、エラーを返します。"
+    },
+    {
+      "index": 772,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 773,
+      "en": "If the destination path is created, but an error occurs while copying\nthe data, then the destination path is removed. There is a brief window\nof time between closing and removing the file where another process\ncould access the file.",
+      "ja": "宛先パスを作成した後、データのコピー中にエラーが起きると、宛先パスを削除します。ファイルを閉じてから削除するまでの短い間に、別のプロセスがファイルへアクセスする場合があります。"
+    },
+    {
+      "index": 774,
+      "en": "New in version 1.14.0.",
+      "ja": "バージョン1.14.0で追加。"
+    },
+    {
+      "index": 775,
+      "en": "Changed in version 1.20.0: ",
+      "ja": "バージョン1.20.0での変更: "
+    },
+    {
+      "index": 776,
+      "en": "UV_FS_COPYFILE_FICLONE",
+      "ja": "UV_FS_COPYFILE_FICLONE"
+    },
+    {
+      "index": 777,
+      "en": " and\n",
+      "ja": "と"
+    },
+    {
+      "index": 778,
+      "en": "UV_FS_COPYFILE_FICLONE_FORCE",
+      "ja": "UV_FS_COPYFILE_FICLONE_FORCE"
+    },
+    {
+      "index": 779,
+      "en": " are supported.",
+      "ja": "をサポートしました。"
+    },
+    {
+      "index": 780,
+      "en": "Changed in version 1.33.0: ",
+      "ja": "バージョン1.33.0での変更: "
+    },
+    {
+      "index": 781,
+      "en": "If an error occurs while using\n",
+      "ja": "次のフラグ、"
+    },
+    {
+      "index": 782,
+      "en": "UV_FS_COPYFILE_FICLONE_FORCE",
+      "ja": "UV_FS_COPYFILE_FICLONE_FORCE"
+    },
+    {
+      "index": 783,
+      "en": ", that error is returned. Previously,\nall errors were mapped to ",
+      "ja": "の使用中にエラーが起きると、そのエラーを返します。以前は、すべてのエラーを"
+    },
+    {
+      "index": 784,
+      "en": "UV_ENOTSUP",
+      "ja": "UV_ENOTSUP"
+    },
+    {
+      "index": 785,
+      "en": ".",
+      "ja": "へ対応付けていました。"
+    },
+    {
+      "index": 786,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 787,
+      "en": "uv_fs_sendfile",
+      "ja": "uv_fs_sendfile"
+    },
+    {
+      "index": 788,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 789,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 790,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 791,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 792,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 793,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 794,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 795,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 796,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 797,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 798,
+      "en": "out_fd",
+      "ja": "out_fd"
+    },
+    {
+      "index": 799,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 800,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 801,
+      "en": "in_fd",
+      "ja": "in_fd"
+    },
+    {
+      "index": 802,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 803,
+      "en": "int64_t",
+      "ja": "int64_t"
+    },
+    {
+      "index": 804,
+      "en": "in_offset",
+      "ja": "in_offset"
+    },
+    {
+      "index": 805,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 806,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 807,
+      "en": "length",
+      "ja": "length"
+    },
+    {
+      "index": 808,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 809,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 810,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 811,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 812,
+      "en": "Limited equivalent to ",
+      "ja": "次の関数と同等ですが、機能には制限があります: "
+    },
+    {
+      "index": 813,
+      "en": "sendfile(2)",
+      "ja": "sendfile(2)"
+    },
+    {
+      "index": 814,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 815,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 816,
+      "en": "uv_fs_access",
+      "ja": "uv_fs_access"
+    },
+    {
+      "index": 817,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 818,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 819,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 820,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 821,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 822,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 823,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 824,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 825,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 826,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 827,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 828,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 829,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 830,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 831,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 832,
+      "en": "mode",
+      "ja": "mode"
+    },
+    {
+      "index": 833,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 834,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 835,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 836,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 837,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 838,
+      "en": "access(2)",
+      "ja": "access(2)"
+    },
+    {
+      "index": 839,
+      "en": " on Unix. Windows uses ",
+      "ja": "とUnix上で同等です。Windowsでは"
+    },
+    {
+      "index": 840,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 841,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 842,
+      "en": "uv_fs_chmod",
+      "ja": "uv_fs_chmod"
+    },
+    {
+      "index": 843,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 844,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 845,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 846,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 847,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 848,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 849,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 850,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 851,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 852,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 853,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 854,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 855,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 856,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 857,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 858,
+      "en": "mode",
+      "ja": "mode"
+    },
+    {
+      "index": 859,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 860,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 861,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 862,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 863,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 864,
+      "en": "uv_fs_fchmod",
+      "ja": "uv_fs_fchmod"
+    },
+    {
+      "index": 865,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 866,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 867,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 868,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 869,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 870,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 871,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 872,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 873,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 874,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 875,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 876,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 877,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 878,
+      "en": "mode",
+      "ja": "mode"
+    },
+    {
+      "index": 879,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 880,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 881,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 882,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 883,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 884,
+      "en": "chmod(2)",
+      "ja": "chmod(2)"
+    },
+    {
+      "index": 885,
+      "en": " and ",
+      "ja": "および"
+    },
+    {
+      "index": 886,
+      "en": "fchmod(2)",
+      "ja": "fchmod(2)"
+    },
+    {
+      "index": 887,
+      "en": " respectively.",
+      "ja": "と、それぞれ同等です。"
+    },
+    {
+      "index": 888,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 889,
+      "en": "uv_fs_utime",
+      "ja": "uv_fs_utime"
+    },
+    {
+      "index": 890,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 891,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 892,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 893,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 894,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 895,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 896,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 897,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 898,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 899,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 900,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 901,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 902,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 903,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 904,
+      "en": "double",
+      "ja": "double"
+    },
+    {
+      "index": 905,
+      "en": "atime",
+      "ja": "atime"
+    },
+    {
+      "index": 906,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 907,
+      "en": "double",
+      "ja": "double"
+    },
+    {
+      "index": 908,
+      "en": "mtime",
+      "ja": "mtime"
+    },
+    {
+      "index": 909,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 910,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 911,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 912,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 913,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 914,
+      "en": "uv_fs_futime",
+      "ja": "uv_fs_futime"
+    },
+    {
+      "index": 915,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 916,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 917,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 918,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 919,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 920,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 921,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 922,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 923,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 924,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 925,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 926,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 927,
+      "en": "double",
+      "ja": "double"
+    },
+    {
+      "index": 928,
+      "en": "atime",
+      "ja": "atime"
+    },
+    {
+      "index": 929,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 930,
+      "en": "double",
+      "ja": "double"
+    },
+    {
+      "index": 931,
+      "en": "mtime",
+      "ja": "mtime"
+    },
+    {
+      "index": 932,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 933,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 934,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 935,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 936,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 937,
+      "en": "uv_fs_lutime",
+      "ja": "uv_fs_lutime"
+    },
+    {
+      "index": 938,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 939,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 940,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 941,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 942,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 943,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 944,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 945,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 946,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 947,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 948,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 949,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 950,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 951,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 952,
+      "en": "double",
+      "ja": "double"
+    },
+    {
+      "index": 953,
+      "en": "atime",
+      "ja": "atime"
+    },
+    {
+      "index": 954,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 955,
+      "en": "double",
+      "ja": "double"
+    },
+    {
+      "index": 956,
+      "en": "mtime",
+      "ja": "mtime"
+    },
+    {
+      "index": 957,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 958,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 959,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 960,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 961,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 962,
+      "en": "utime(2)",
+      "ja": "utime(2)"
+    },
+    {
+      "index": 963,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 964,
+      "en": "futimes(3)",
+      "ja": "futimes(3)"
+    },
+    {
+      "index": 965,
+      "en": " and ",
+      "ja": "および"
+    },
+    {
+      "index": 966,
+      "en": "lutimes(3)",
+      "ja": "lutimes(3)"
+    },
+    {
+      "index": 967,
+      "en": " respectively.",
+      "ja": "と、それぞれ同等です。"
+    },
+    {
+      "index": 968,
+      "en": "Passing ",
+      "ja": "次の値、"
+    },
+    {
+      "index": 969,
+      "en": "UV_FS_UTIME_NOW",
+      "ja": "UV_FS_UTIME_NOW"
+    },
+    {
+      "index": 970,
+      "en": " as the atime or mtime sets the timestamp to the\ncurrent time.",
+      "ja": "をatimeまたはmtimeに渡すと、タイムスタンプを現在時刻に設定します。"
+    },
+    {
+      "index": 971,
+      "en": "Passing ",
+      "ja": "次の値、"
+    },
+    {
+      "index": 972,
+      "en": "UV_FS_UTIME_OMIT",
+      "ja": "UV_FS_UTIME_OMIT"
+    },
+    {
+      "index": 973,
+      "en": " as the atime or mtime leaves the timestamp\nuntouched.",
+      "ja": "をatimeまたはmtimeに渡すと、タイムスタンプを変更しません。"
+    },
+    {
+      "index": 974,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 975,
+      "en": "z/OS: ",
+      "ja": "z/OS: "
+    },
+    {
+      "index": 976,
+      "en": "uv_fs_lutime()",
+      "ja": "uv_fs_lutime()"
+    },
+    {
+      "index": 977,
+      "en": " is not implemented for z/OS. It can still be called but will return\n",
+      "ja": "はz/OSには実装していません。呼び出すことはできますが、"
+    },
+    {
+      "index": 978,
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "index": 979,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 980,
+      "en": "AIX: ",
+      "ja": "AIX: "
+    },
+    {
+      "index": 981,
+      "en": "uv_fs_futime()",
+      "ja": "uv_fs_futime()"
+    },
+    {
+      "index": 982,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 983,
+      "en": "uv_fs_lutime()",
+      "ja": "uv_fs_lutime()"
+    },
+    {
+      "index": 984,
+      "en": " functions only work for AIX 7.1 and newer.\nThey can still be called on older versions but will return ",
+      "ja": "はAIX 7.1以降だけで動作します。それ以前でも呼び出せますが、"
+    },
+    {
+      "index": 985,
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "index": 986,
+      "en": "Changed in version 1.10.0: ",
+      "ja": "バージョン1.10.0での変更: "
+    },
+    {
+      "index": 987,
+      "en": "sub-second precission is supported on Windows",
+      "ja": "Windowsで秒未満の精度をサポートしました。"
+    },
+    {
+      "index": 988,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 989,
+      "en": "uv_fs_link",
+      "ja": "uv_fs_link"
+    },
+    {
+      "index": 990,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 991,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 992,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 993,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 994,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 995,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 996,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 997,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 998,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 999,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1000,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1001,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1002,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 1003,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1004,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1005,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1006,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1007,
+      "en": "new_path",
+      "ja": "new_path"
+    },
+    {
+      "index": 1008,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1009,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 1010,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 1011,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1012,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 1013,
+      "en": "link(2)",
+      "ja": "link(2)"
+    },
+    {
+      "index": 1014,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1015,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1016,
+      "en": "uv_fs_symlink",
+      "ja": "uv_fs_symlink"
+    },
+    {
+      "index": 1017,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1018,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 1019,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1020,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1021,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1022,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1023,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1024,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1025,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1026,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1027,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1028,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1029,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 1030,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1031,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1032,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1033,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1034,
+      "en": "new_path",
+      "ja": "new_path"
+    },
+    {
+      "index": 1035,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1036,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1037,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 1038,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1039,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 1040,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 1041,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1042,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 1043,
+      "en": "symlink(2)",
+      "ja": "symlink(2)"
+    },
+    {
+      "index": 1044,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1045,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1046,
+      "en": "On Windows the ",
+      "ja": "Windowsでは、"
+    },
+    {
+      "index": 1047,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 1048,
+      "en": " parameter can be specified to control how the symlink will\nbe created:",
+      "ja": "パラメーターで、シンボリックリンクの作成方法を制御できます:"
+    },
+    {
+      "index": 1049,
+      "en": ": indicates that ",
+      "ja": ": "
+    },
+    {
+      "index": 1050,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 1051,
+      "en": " points to a directory.",
+      "ja": "がディレクトリーを指すことを示します。"
+    },
+    {
+      "index": 1052,
+      "en": ": request that the symlink is created\nusing junction points.",
+      "ja": ": ジャンクションポイントを使ったシンボリックリンクの作成を要求します。"
+    },
+    {
+      "index": 1053,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1054,
+      "en": "uv_fs_readlink",
+      "ja": "uv_fs_readlink"
+    },
+    {
+      "index": 1055,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1056,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 1057,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1058,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1059,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1060,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1061,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1062,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1063,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1064,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1065,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1066,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1067,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 1068,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1069,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 1070,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 1071,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1072,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 1073,
+      "en": "readlink(2)",
+      "ja": "readlink(2)"
+    },
+    {
+      "index": 1074,
+      "en": ".\nThe resulting string is stored in ",
+      "ja": "と同等です。結果の文字列を"
+    },
+    {
+      "index": 1075,
+      "en": "req->ptr",
+      "ja": "req->ptr"
+    },
+    {
+      "index": 1076,
+      "en": ".",
+      "ja": "に格納します。"
+    },
+    {
+      "index": 1077,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1078,
+      "en": "uv_fs_realpath",
+      "ja": "uv_fs_realpath"
+    },
+    {
+      "index": 1079,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1080,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 1081,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1082,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1083,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1084,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1085,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1086,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1087,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1088,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1089,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1090,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1091,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 1092,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1093,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 1094,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 1095,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1096,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 1097,
+      "en": "realpath(3)",
+      "ja": "realpath(3)"
+    },
+    {
+      "index": 1098,
+      "en": " on Unix. Windows uses ",
+      "ja": "とUnix上で同等です。Windowsでは"
+    },
+    {
+      "index": 1099,
+      "en": "GetFinalPathNameByHandleW",
+      "ja": "GetFinalPathNameByHandleW"
+    },
+    {
+      "index": 1100,
+      "en": ".\nThe resulting string is stored in ",
+      "ja": "を使います。結果の文字列を"
+    },
+    {
+      "index": 1101,
+      "en": "req->ptr",
+      "ja": "req->ptr"
+    },
+    {
+      "index": 1102,
+      "en": ".",
+      "ja": "に格納します。"
+    },
+    {
+      "index": 1103,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 1104,
+      "en": "This function has certain platform-specific caveats that were discovered when used in Node.",
+      "ja": "この関数には、Nodeで使った際に見つかった、プラットフォーム固有の注意事項があります。"
+    },
+    {
+      "index": 1105,
+      "en": "macOS and other BSDs: this function will fail with UV_ELOOP if more than 32 symlinks are\nfound while resolving the given path.  This limit is hardcoded and cannot be sidestepped.",
+      "ja": "macOSおよびその他のBSD: 指定したパスの解決中に32個を超えるシンボリックリンクが見つかると、UV_ELOOPで失敗します。この上限は固定で、回避できません。"
+    },
+    {
+      "index": 1106,
+      "en": "Windows: while this function works in the common case, there are a number of corner cases\nwhere it doesn’t:",
+      "ja": "Windows: 一般的な場合には動作しますが、次のような例外的な状況では動作しません:"
+    },
+    {
+      "index": 1107,
+      "en": "Paths in ramdisk volumes created by tools which sidestep the Volume Manager (such as ImDisk)\ncannot be resolved.",
+      "ja": "ボリュームマネージャーを迂回するツール（ImDiskなど）が作成したRAMディスクボリューム内のパスは解決できません。"
+    },
+    {
+      "index": 1108,
+      "en": "Inconsistent casing when using drive letters.",
+      "ja": "ドライブ文字の大文字・小文字の扱いが一貫していません。"
+    },
+    {
+      "index": 1109,
+      "en": "Resolved path bypasses subst’d drives.",
+      "ja": "解決したパスは、substで割り当てたドライブを迂回します。"
+    },
+    {
+      "index": 1110,
+      "en": "While this function can still be used, it’s not recommended if scenarios such as the\nabove need to be supported.",
+      "ja": "この関数は引き続き使えますが、上記のような状況をサポートする必要がある場合は推奨しません。"
+    },
+    {
+      "index": 1111,
+      "en": "The background story and some more details on these issues can be checked\n",
+      "ja": "これらの問題の背景や詳細は、"
+    },
+    {
+      "index": 1112,
+      "en": "here",
+      "ja": "こちら"
+    },
+    {
+      "index": 1113,
+      "en": ".",
+      "ja": "で確認できます。"
+    },
+    {
+      "index": 1114,
+      "en": "New in version 1.8.0.",
+      "ja": "バージョン1.8.0で追加。"
+    },
+    {
+      "index": 1115,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1116,
+      "en": "uv_fs_chown",
+      "ja": "uv_fs_chown"
+    },
+    {
+      "index": 1117,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1118,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 1119,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1120,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1121,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1122,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1123,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1124,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1125,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1126,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1127,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1128,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1129,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 1130,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1131,
+      "en": "uv_uid_t",
+      "ja": "uv_uid_t"
+    },
+    {
+      "index": 1132,
+      "en": "uid",
+      "ja": "uid"
+    },
+    {
+      "index": 1133,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1134,
+      "en": "uv_gid_t",
+      "ja": "uv_gid_t"
+    },
+    {
+      "index": 1135,
+      "en": "gid",
+      "ja": "gid"
+    },
+    {
+      "index": 1136,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1137,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 1138,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 1139,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1140,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1141,
+      "en": "uv_fs_fchown",
+      "ja": "uv_fs_fchown"
+    },
+    {
+      "index": 1142,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1143,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 1144,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1145,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1146,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1147,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1148,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1149,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1150,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1151,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 1152,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 1153,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1154,
+      "en": "uv_uid_t",
+      "ja": "uv_uid_t"
+    },
+    {
+      "index": 1155,
+      "en": "uid",
+      "ja": "uid"
+    },
+    {
+      "index": 1156,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1157,
+      "en": "uv_gid_t",
+      "ja": "uv_gid_t"
+    },
+    {
+      "index": 1158,
+      "en": "gid",
+      "ja": "gid"
+    },
+    {
+      "index": 1159,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1160,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 1161,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 1162,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1163,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1164,
+      "en": "uv_fs_lchown",
+      "ja": "uv_fs_lchown"
+    },
+    {
+      "index": 1165,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1166,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 1167,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1168,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1169,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1170,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1171,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1172,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1173,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1174,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1175,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1176,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1177,
+      "en": "path",
+      "ja": "path"
+    },
+    {
+      "index": 1178,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1179,
+      "en": "uv_uid_t",
+      "ja": "uv_uid_t"
+    },
+    {
+      "index": 1180,
+      "en": "uid",
+      "ja": "uid"
+    },
+    {
+      "index": 1181,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1182,
+      "en": "uv_gid_t",
+      "ja": "uv_gid_t"
+    },
+    {
+      "index": 1183,
+      "en": "gid",
+      "ja": "gid"
+    },
+    {
+      "index": 1184,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1185,
+      "en": "uv_fs_cb",
+      "ja": "uv_fs_cb"
+    },
+    {
+      "index": 1186,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 1187,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1188,
+      "en": "Equivalent to ",
+      "ja": "次の関数と同等です: "
+    },
+    {
+      "index": 1189,
+      "en": "chown(2)",
+      "ja": "chown(2)"
+    },
+    {
+      "index": 1190,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1191,
+      "en": "fchown(2)",
+      "ja": "fchown(2)"
+    },
+    {
+      "index": 1192,
+      "en": " and ",
+      "ja": "および"
+    },
+    {
+      "index": 1193,
+      "en": "lchown(2)",
+      "ja": "lchown(2)"
+    },
+    {
+      "index": 1194,
+      "en": " respectively.",
+      "ja": "と、それぞれ同等です。"
+    },
+    {
+      "index": 1195,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1196,
+      "en": "These functions are not implemented on Windows.",
+      "ja": "これらの関数はWindowsには実装していません。"
+    },
+    {
+      "index": 1197,
+      "en": "Changed in version 1.21.0: ",
+      "ja": "バージョン1.21.0での変更: "
+    },
+    {
+      "index": 1198,
+      "en": "implemented uv_fs_lchown",
+      "ja": "uv_fs_lchownを実装しました。"
+    },
+    {
+      "index": 1199,
+      "en": "uv_fs_type",
+      "ja": "uv_fs_type"
+    },
+    {
+      "index": 1200,
+      "en": "uv_fs_get_type",
+      "ja": "uv_fs_get_type"
+    },
+    {
+      "index": 1201,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1202,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1203,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1204,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1205,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1206,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1207,
+      "en": "Returns ",
+      "ja": "次の値を返します: "
+    },
+    {
+      "index": 1208,
+      "en": "req->fs_type",
+      "ja": "req->fs_type"
+    },
+    {
+      "index": 1209,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1210,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 1211,
+      "en": "ssize_t",
+      "ja": "ssize_t"
+    },
+    {
+      "index": 1212,
+      "en": "uv_fs_get_result",
+      "ja": "uv_fs_get_result"
+    },
+    {
+      "index": 1213,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1214,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1215,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1216,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1217,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1218,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1219,
+      "en": "Returns ",
+      "ja": "次の値を返します: "
+    },
+    {
+      "index": 1220,
+      "en": "req->result",
+      "ja": "req->result"
+    },
+    {
+      "index": 1221,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1222,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 1223,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1224,
+      "en": "uv_fs_get_system_error",
+      "ja": "uv_fs_get_system_error"
+    },
+    {
+      "index": 1225,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1226,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1227,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1228,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1229,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1230,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1231,
+      "en": "Returns the platform specific error code - ",
+      "ja": "プラットフォーム固有のエラーコードを返します。Windowsでは"
+    },
+    {
+      "index": 1232,
+      "en": "GetLastError()",
+      "ja": "GetLastError()"
+    },
+    {
+      "index": 1233,
+      "en": " value on Windows\nand ",
+      "ja": "の値、その他のプラットフォームでは"
+    },
+    {
+      "index": 1234,
+      "en": "-(req->result)",
+      "ja": "-(req->result)"
+    },
+    {
+      "index": 1235,
+      "en": " on other platforms.",
+      "ja": "です。"
+    },
+    {
+      "index": 1236,
+      "en": "New in version 1.38.0.",
+      "ja": "バージョン1.38.0で追加。"
+    },
+    {
+      "index": 1237,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 1238,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1239,
+      "en": "uv_fs_get_ptr",
+      "ja": "uv_fs_get_ptr"
+    },
+    {
+      "index": 1240,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1241,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1242,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1243,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1244,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1245,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1246,
+      "en": "Returns ",
+      "ja": "次の値を返します: "
+    },
+    {
+      "index": 1247,
+      "en": "req->ptr",
+      "ja": "req->ptr"
+    },
+    {
+      "index": 1248,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1249,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 1250,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1251,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1252,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1253,
+      "en": "uv_fs_get_path",
+      "ja": "uv_fs_get_path"
+    },
+    {
+      "index": 1254,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1255,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1256,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1257,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1258,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1259,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1260,
+      "en": "Returns ",
+      "ja": "次の値を返します: "
+    },
+    {
+      "index": 1261,
+      "en": "req->path",
+      "ja": "req->path"
+    },
+    {
+      "index": 1262,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1263,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 1264,
+      "en": "uv_stat_t",
+      "ja": "uv_stat_t"
+    },
+    {
+      "index": 1265,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1266,
+      "en": "uv_fs_get_statbuf",
+      "ja": "uv_fs_get_statbuf"
+    },
+    {
+      "index": 1267,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1268,
+      "en": "uv_fs_t",
+      "ja": "uv_fs_t"
+    },
+    {
+      "index": 1269,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1270,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1271,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1272,
+      "en": "Returns ",
+      "ja": "次の値を返します: "
+    },
+    {
+      "index": 1273,
+      "en": "&req->statbuf",
+      "ja": "&req->statbuf"
+    },
+    {
+      "index": 1274,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1275,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 1276,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 1277,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 1278,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    },
+    {
+      "index": 1279,
+      "en": "Helper functions",
+      "ja": "補助関数"
+    },
+    {
+      "index": 1280,
+      "en": "uv_os_fd_t",
+      "ja": "uv_os_fd_t"
+    },
+    {
+      "index": 1281,
+      "en": "uv_get_osfhandle",
+      "ja": "uv_get_osfhandle"
+    },
+    {
+      "index": 1282,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1283,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1284,
+      "en": "fd",
+      "ja": "fd"
+    },
+    {
+      "index": 1285,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1286,
+      "en": "For a file descriptor in the C runtime, get the OS-dependent handle.\nOn UNIX, returns the ",
+      "ja": "Cランタイムのファイルディスクリプターから、OS固有のハンドルを取得します。Unixでは、"
+    },
+    {
+      "index": 1287,
+      "en": " intact. On Windows, this calls ",
+      "ja": "をそのまま返します。Windowsでは、"
+    },
+    {
+      "index": 1288,
+      "en": "_get_osfhandle",
+      "ja": "_get_osfhandle"
+    },
+    {
+      "index": 1289,
+      "en": ".\nNote that the return value is still owned by the C runtime,\nany attempts to close it or to use it after closing the fd may lead to malfunction.",
+      "ja": "を呼び出します。返す値の所有権は引き続きCランタイムにあり、その値を閉じようとしたり、fdを閉じた後に使ったりすると、不具合につながる場合があります。"
+    },
+    {
+      "index": 1290,
+      "en": "New in version 1.12.0.",
+      "ja": "バージョン1.12.0で追加。"
+    },
+    {
+      "index": 1291,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1292,
+      "en": "uv_open_osfhandle",
+      "ja": "uv_open_osfhandle"
+    },
+    {
+      "index": 1293,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1294,
+      "en": "uv_os_fd_t",
+      "ja": "uv_os_fd_t"
+    },
+    {
+      "index": 1295,
+      "en": "os_fd",
+      "ja": "os_fd"
+    },
+    {
+      "index": 1296,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1297,
+      "en": "For a OS-dependent handle, get the file descriptor in the C runtime.\nOn UNIX, returns the ",
+      "ja": "OS固有のハンドルから、Cランタイムのファイルディスクリプターを取得します。Unixでは、"
+    },
+    {
+      "index": 1298,
+      "en": " intact. On Windows, this calls ",
+      "ja": "をそのまま返します。Windowsでは、"
+    },
+    {
+      "index": 1299,
+      "en": "_open_osfhandle",
+      "ja": "_open_osfhandle"
+    },
+    {
+      "index": 1300,
+      "en": ".\nNote that this consumes the argument, any attempts to close it or to use it\nafter closing the return value may lead to malfunction.",
+      "ja": "を呼び出します。この処理は引数を消費します。その引数を閉じようとしたり、返したファイルディスクリプターを閉じた後に使ったりすると、不具合につながる場合があります。"
+    },
+    {
+      "index": 1301,
+      "en": "New in version 1.23.0.",
+      "ja": "バージョン1.23.0で追加。"
+    },
+    {
+      "index": 1302,
+      "en": "File open constants",
+      "ja": "ファイルを開くための定数"
+    },
+    {
+      "index": 1303,
+      "en": "UV_FS_O_APPEND",
+      "ja": "UV_FS_O_APPEND"
+    },
+    {
+      "index": 1304,
+      "en": "The file is opened in append mode. Before each write, the file offset is\npositioned at the end of the file.",
+      "ja": "追記モードでファイルを開きます。書き込みのたびに、ファイルオフセットをファイル末尾へ移動します。"
+    },
+    {
+      "index": 1305,
+      "en": "UV_FS_O_CREAT",
+      "ja": "UV_FS_O_CREAT"
+    },
+    {
+      "index": 1306,
+      "en": "The file is created if it does not already exist.",
+      "ja": "ファイルが存在しなければ作成します。"
+    },
+    {
+      "index": 1307,
+      "en": "UV_FS_O_DIRECT",
+      "ja": "UV_FS_O_DIRECT"
+    },
+    {
+      "index": 1308,
+      "en": "File I/O is done directly to and from user-space buffers, which must be\naligned. Buffer size and address should be a multiple of the physical sector\nsize of the block device.",
+      "ja": "ユーザー空間のバッファとの間でファイルI/Oを直接行います。バッファはアラインメントを合わせる必要があります。バッファのサイズとアドレスは、ブロックデバイスの物理セクターサイズの倍数にしてください。"
+    },
+    {
+      "index": 1309,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1310,
+      "en": "UV_FS_O_DIRECT",
+      "ja": "UV_FS_O_DIRECT"
+    },
+    {
+      "index": 1311,
+      "en": " is supported on Linux, and on Windows via\n",
+      "ja": "はLinuxでサポートし、Windowsでは"
+    },
+    {
+      "index": 1312,
+      "en": "FILE_FLAG_NO_BUFFERING",
+      "ja": "FILE_FLAG_NO_BUFFERING"
+    },
+    {
+      "index": 1313,
+      "en": ".\n",
+      "ja": "を介してサポートします。"
+    },
+    {
+      "index": 1314,
+      "en": "UV_FS_O_DIRECT",
+      "ja": "UV_FS_O_DIRECT"
+    },
+    {
+      "index": 1315,
+      "en": " is not supported on macOS.",
+      "ja": "はmacOSではサポートしていません。"
+    },
+    {
+      "index": 1316,
+      "en": "UV_FS_O_DIRECTORY",
+      "ja": "UV_FS_O_DIRECTORY"
+    },
+    {
+      "index": 1317,
+      "en": "If the path is not a directory, fail the open.",
+      "ja": "パスがディレクトリーでなければ、オープンに失敗します。"
+    },
+    {
+      "index": 1318,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1319,
+      "en": "UV_FS_O_DIRECTORY",
+      "ja": "UV_FS_O_DIRECTORY"
+    },
+    {
+      "index": 1320,
+      "en": " is not supported on Windows.",
+      "ja": "はWindowsではサポートしていません。"
+    },
+    {
+      "index": 1321,
+      "en": "UV_FS_O_DSYNC",
+      "ja": "UV_FS_O_DSYNC"
+    },
+    {
+      "index": 1322,
+      "en": "The file is opened for synchronous I/O. Write operations will complete once\nall data and a minimum of metadata are flushed to disk.",
+      "ja": "同期I/O用にファイルを開きます。すべてのデータと最小限のメタデータをディスクへ書き出した時点で、書き込み操作を完了します。"
+    },
+    {
+      "index": 1323,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1324,
+      "en": "UV_FS_O_DSYNC",
+      "ja": "UV_FS_O_DSYNC"
+    },
+    {
+      "index": 1325,
+      "en": " is supported on Windows via\n",
+      "ja": "はWindowsで、"
+    },
+    {
+      "index": 1326,
+      "en": "FILE_FLAG_WRITE_THROUGH",
+      "ja": "FILE_FLAG_WRITE_THROUGH"
+    },
+    {
+      "index": 1327,
+      "en": ".",
+      "ja": "を介してサポートします。"
+    },
+    {
+      "index": 1328,
+      "en": "UV_FS_O_EXCL",
+      "ja": "UV_FS_O_EXCL"
+    },
+    {
+      "index": 1329,
+      "en": "If the ",
+      "ja": "次のフラグ、"
+    },
+    {
+      "index": 1330,
+      "en": "O_CREAT",
+      "ja": "O_CREAT"
+    },
+    {
+      "index": 1331,
+      "en": " flag is set and the file already exists, fail the open.",
+      "ja": "を設定していてファイルがすでに存在する場合、オープンに失敗します。"
+    },
+    {
+      "index": 1332,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1333,
+      "en": "In general, the behavior of ",
+      "ja": "一般に、"
+    },
+    {
+      "index": 1334,
+      "en": "O_EXCL",
+      "ja": "O_EXCL"
+    },
+    {
+      "index": 1335,
+      "en": " is undefined if it is used without\n",
+      "ja": "を"
+    },
+    {
+      "index": 1336,
+      "en": "O_CREAT",
+      "ja": "O_CREAT"
+    },
+    {
+      "index": 1337,
+      "en": ". There is one exception: on Linux 2.6 and later, ",
+      "ja": "なしで使った場合の動作は未定義です。例外として、Linux 2.6以降では、パスがブロックデバイスを指している場合、"
+    },
+    {
+      "index": 1338,
+      "en": "O_EXCL",
+      "ja": "O_EXCL"
+    },
+    {
+      "index": 1339,
+      "en": " can\nbe used without ",
+      "ja": "を"
+    },
+    {
+      "index": 1340,
+      "en": "O_CREAT",
+      "ja": "O_CREAT"
+    },
+    {
+      "index": 1341,
+      "en": " if pathname refers to a block device. If the\nblock device is in use by the system (e.g., mounted), the open will fail\nwith the error ",
+      "ja": "なしで使えます。ブロックデバイスがシステムで使用中（マウント済みなど）なら、次のエラーでオープンに失敗します: "
+    },
+    {
+      "index": 1342,
+      "en": "EBUSY",
+      "ja": "EBUSY"
+    },
+    {
+      "index": 1343,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1344,
+      "en": "UV_FS_O_EXLOCK",
+      "ja": "UV_FS_O_EXLOCK"
+    },
+    {
+      "index": 1345,
+      "en": "Atomically obtain an exclusive lock.",
+      "ja": "排他的ロックをアトミックに取得します。"
+    },
+    {
+      "index": 1346,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1347,
+      "en": "UV_FS_O_EXLOCK",
+      "ja": "UV_FS_O_EXLOCK"
+    },
+    {
+      "index": 1348,
+      "en": " is only supported on macOS and Windows.",
+      "ja": "はmacOSとWindowsだけでサポートしています。"
+    },
+    {
+      "index": 1349,
+      "en": "Changed in version 1.17.0: ",
+      "ja": "バージョン1.17.0での変更: "
+    },
+    {
+      "index": 1350,
+      "en": "support is added for Windows.",
+      "ja": "Windowsのサポートを追加しました。"
+    },
+    {
+      "index": 1351,
+      "en": "UV_FS_O_FILEMAP",
+      "ja": "UV_FS_O_FILEMAP"
+    },
+    {
+      "index": 1352,
+      "en": "Use a memory file mapping to access the file. When using this flag, the\nfile cannot be open multiple times concurrently.",
+      "ja": "メモリーファイルマッピングを使ってファイルにアクセスします。このフラグを使う場合、同じファイルを同時に複数回開くことはできません。"
+    },
+    {
+      "index": 1353,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1354,
+      "en": "UV_FS_O_FILEMAP",
+      "ja": "UV_FS_O_FILEMAP"
+    },
+    {
+      "index": 1355,
+      "en": " is only supported on Windows.",
+      "ja": "はWindowsだけでサポートしています。"
+    },
+    {
+      "index": 1356,
+      "en": "UV_FS_O_NOATIME",
+      "ja": "UV_FS_O_NOATIME"
+    },
+    {
+      "index": 1357,
+      "en": "Do not update the file access time when the file is read.",
+      "ja": "ファイルを読み取る際、アクセス時刻を更新しません。"
+    },
+    {
+      "index": 1358,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1359,
+      "en": "UV_FS_O_NOATIME",
+      "ja": "UV_FS_O_NOATIME"
+    },
+    {
+      "index": 1360,
+      "en": " is not supported on Windows.",
+      "ja": "はWindowsではサポートしていません。"
+    },
+    {
+      "index": 1361,
+      "en": "UV_FS_O_NOCTTY",
+      "ja": "UV_FS_O_NOCTTY"
+    },
+    {
+      "index": 1362,
+      "en": "If the path identifies a terminal device, opening the path will not cause\nthat terminal to become the controlling terminal for the process (if the\nprocess does not already have one).",
+      "ja": "パスが端末デバイスを指している場合、そのパスを開いても、その端末がプロセスの制御端末になることはありません（プロセスに制御端末がまだない場合）。"
+    },
+    {
+      "index": 1363,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1364,
+      "en": "UV_FS_O_NOCTTY",
+      "ja": "UV_FS_O_NOCTTY"
+    },
+    {
+      "index": 1365,
+      "en": " is not supported on Windows.",
+      "ja": "はWindowsではサポートしていません。"
+    },
+    {
+      "index": 1366,
+      "en": "UV_FS_O_NOFOLLOW",
+      "ja": "UV_FS_O_NOFOLLOW"
+    },
+    {
+      "index": 1367,
+      "en": "If the path is a symbolic link, fail the open.",
+      "ja": "パスがシンボリックリンクなら、オープンに失敗します。"
+    },
+    {
+      "index": 1368,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1369,
+      "en": "UV_FS_O_NOFOLLOW",
+      "ja": "UV_FS_O_NOFOLLOW"
+    },
+    {
+      "index": 1370,
+      "en": " is not supported on Windows.",
+      "ja": "はWindowsではサポートしていません。"
+    },
+    {
+      "index": 1371,
+      "en": "UV_FS_O_NONBLOCK",
+      "ja": "UV_FS_O_NONBLOCK"
+    },
+    {
+      "index": 1372,
+      "en": "Open the file in nonblocking mode if possible.",
+      "ja": "可能なら、非ブロッキングモードでファイルを開きます。"
+    },
+    {
+      "index": 1373,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1374,
+      "en": "UV_FS_O_NONBLOCK",
+      "ja": "UV_FS_O_NONBLOCK"
+    },
+    {
+      "index": 1375,
+      "en": " is not supported on Windows.",
+      "ja": "はWindowsではサポートしていません。"
+    },
+    {
+      "index": 1376,
+      "en": "UV_FS_O_RANDOM",
+      "ja": "UV_FS_O_RANDOM"
+    },
+    {
+      "index": 1377,
+      "en": "Access is intended to be random. The system can use this as a hint to\noptimize file caching.",
+      "ja": "ランダムアクセスを想定しています。システムはこれを、ファイルキャッシュを最適化するためのヒントとして使えます。"
+    },
+    {
+      "index": 1378,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1379,
+      "en": "UV_FS_O_RANDOM",
+      "ja": "UV_FS_O_RANDOM"
+    },
+    {
+      "index": 1380,
+      "en": " is only supported on Windows via\n",
+      "ja": "はWindowsだけで、"
+    },
+    {
+      "index": 1381,
+      "en": "FILE_FLAG_RANDOM_ACCESS",
+      "ja": "FILE_FLAG_RANDOM_ACCESS"
+    },
+    {
+      "index": 1382,
+      "en": ".",
+      "ja": "を介してサポートしています。"
+    },
+    {
+      "index": 1383,
+      "en": "UV_FS_O_RDONLY",
+      "ja": "UV_FS_O_RDONLY"
+    },
+    {
+      "index": 1384,
+      "en": "Open the file for read-only access.",
+      "ja": "読み取り専用でファイルを開きます。"
+    },
+    {
+      "index": 1385,
+      "en": "UV_FS_O_RDWR",
+      "ja": "UV_FS_O_RDWR"
+    },
+    {
+      "index": 1386,
+      "en": "Open the file for read-write access.",
+      "ja": "読み書き用にファイルを開きます。"
+    },
+    {
+      "index": 1387,
+      "en": "UV_FS_O_SEQUENTIAL",
+      "ja": "UV_FS_O_SEQUENTIAL"
+    },
+    {
+      "index": 1388,
+      "en": "Access is intended to be sequential from beginning to end. The system can\nuse this as a hint to optimize file caching.",
+      "ja": "先頭から末尾へのシーケンシャルアクセスを想定しています。システムはこれを、ファイルキャッシュを最適化するためのヒントとして使えます。"
+    },
+    {
+      "index": 1389,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1390,
+      "en": "UV_FS_O_SEQUENTIAL",
+      "ja": "UV_FS_O_SEQUENTIAL"
+    },
+    {
+      "index": 1391,
+      "en": " is only supported on Windows via\n",
+      "ja": "はWindowsだけで、"
+    },
+    {
+      "index": 1392,
+      "en": "FILE_FLAG_SEQUENTIAL_SCAN",
+      "ja": "FILE_FLAG_SEQUENTIAL_SCAN"
+    },
+    {
+      "index": 1393,
+      "en": ".",
+      "ja": "を介してサポートしています。"
+    },
+    {
+      "index": 1394,
+      "en": "UV_FS_O_SHORT_LIVED",
+      "ja": "UV_FS_O_SHORT_LIVED"
+    },
+    {
+      "index": 1395,
+      "en": "The file is temporary and should not be flushed to disk if possible.",
+      "ja": "一時ファイルです。可能なら、ディスクへ書き出さないでください。"
+    },
+    {
+      "index": 1396,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1397,
+      "en": "UV_FS_O_SHORT_LIVED",
+      "ja": "UV_FS_O_SHORT_LIVED"
+    },
+    {
+      "index": 1398,
+      "en": " is only supported on Windows via\n",
+      "ja": "はWindowsだけで、"
+    },
+    {
+      "index": 1399,
+      "en": "FILE_ATTRIBUTE_TEMPORARY",
+      "ja": "FILE_ATTRIBUTE_TEMPORARY"
+    },
+    {
+      "index": 1400,
+      "en": ".",
+      "ja": "を介してサポートしています。"
+    },
+    {
+      "index": 1401,
+      "en": "UV_FS_O_SYMLINK",
+      "ja": "UV_FS_O_SYMLINK"
+    },
+    {
+      "index": 1402,
+      "en": "Open the symbolic link itself rather than the resource it points to.",
+      "ja": "リンク先のリソースではなく、シンボリックリンク自体を開きます。"
+    },
+    {
+      "index": 1403,
+      "en": "UV_FS_O_SYNC",
+      "ja": "UV_FS_O_SYNC"
+    },
+    {
+      "index": 1404,
+      "en": "The file is opened for synchronous I/O. Write operations will complete once\nall data and all metadata are flushed to disk.",
+      "ja": "同期I/O用にファイルを開きます。すべてのデータとすべてのメタデータをディスクへ書き出した時点で、書き込み操作を完了します。"
+    },
+    {
+      "index": 1405,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1406,
+      "en": "UV_FS_O_SYNC",
+      "ja": "UV_FS_O_SYNC"
+    },
+    {
+      "index": 1407,
+      "en": " is supported on Windows via\n",
+      "ja": "はWindowsで、"
+    },
+    {
+      "index": 1408,
+      "en": "FILE_FLAG_WRITE_THROUGH",
+      "ja": "FILE_FLAG_WRITE_THROUGH"
+    },
+    {
+      "index": 1409,
+      "en": ".",
+      "ja": "を介してサポートしています。"
+    },
+    {
+      "index": 1410,
+      "en": "UV_FS_O_TEMPORARY",
+      "ja": "UV_FS_O_TEMPORARY"
+    },
+    {
+      "index": 1411,
+      "en": "The file is temporary and should not be flushed to disk if possible.",
+      "ja": "一時ファイルです。可能なら、ディスクへ書き出さないでください。"
+    },
+    {
+      "index": 1412,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1413,
+      "en": "UV_FS_O_TEMPORARY",
+      "ja": "UV_FS_O_TEMPORARY"
+    },
+    {
+      "index": 1414,
+      "en": " is only supported on Windows via\n",
+      "ja": "はWindowsだけで、"
+    },
+    {
+      "index": 1415,
+      "en": "FILE_ATTRIBUTE_TEMPORARY",
+      "ja": "FILE_ATTRIBUTE_TEMPORARY"
+    },
+    {
+      "index": 1416,
+      "en": ".",
+      "ja": "を介してサポートしています。"
+    },
+    {
+      "index": 1417,
+      "en": "UV_FS_O_TRUNC",
+      "ja": "UV_FS_O_TRUNC"
+    },
+    {
+      "index": 1418,
+      "en": "If the file exists and is a regular file, and the file is opened\nsuccessfully for write access, its length shall be truncated to zero.",
+      "ja": "ファイルが存在して通常ファイルであり、書き込み用に正常に開いた場合、長さを0に切り詰めます。"
+    },
+    {
+      "index": 1419,
+      "en": "UV_FS_O_WRONLY",
+      "ja": "UV_FS_O_WRONLY"
+    },
+    {
+      "index": 1420,
+      "en": "Open the file for write-only access.",
+      "ja": "書き込み専用でファイルを開きます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 7,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

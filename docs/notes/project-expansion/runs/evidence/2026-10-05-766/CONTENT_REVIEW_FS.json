@@ -1,0 +1,145 @@
+{
+  "page": "reference/fs",
+  "status": "passed",
+  "at": "2026-10-04T23:38:58.330835+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/code/footer review after765 translation. Corrections reread before fresh build. Mechanical checks separate.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/fs.rst",
+      "sha256": "04ecb374338f08d18ecc3828c19da90f92ec9f7d987e204e051d0c05ca49578d"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/fs.md",
+      "sha256": "59013093f90d3d2018d2a08c4a24034cddd1b9b06d5bfb08305072ceaa47342c"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/fs.md",
+      "sha256": "142914bd87ebf021725522f2119290c2bf2799c17596222507c3fafcbcc53bd4"
+    }
+  ],
+  "coverage": {
+    "original": "all fs.rst including all notes,83 declarations,7 code blocks and22 open constants",
+    "canonical": "all current English article and footer",
+    "translation": "all current Japanese article and footer; all corrected paragraphs reread",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "full fixed RST / EN / JA / API / code / footer",
+      "result": "Entire fs.rst read in explicit nontruncated ranges1-239,240-520,521-end; full English and Japanese narratives separately read, all83 declarations separately read in each language. Seven structures/enums read in RST and exact preservation independently checked. Full frontmatter/footer read. All1421 mapped nodes covered, no unread ranges."
+    },
+    {
+      "scope": "semantics and platform/version conditions",
+      "result": "NULL sync/non-NULL async; threadpool/io_uring1.45 and1.49 opt-in; UTF-8 and Y2K38; result/ptr/statbuf; cleanup and opendir/readdir/closedir ordering; copy EXCL/FICLONE/FORCE and1.33 errors; time NOW/OMIT and AIX/zOS; realpath32 links/Windows caveats; OS-handle ownership; all22 open flags and sync/direct/platform constraints retained. Original malformed RST inline markup retained without inventing source corrections."
+    },
+    {
+      "scope": "translation corrections",
+      "result": "Removed duplicate equivalence wording in13 paragraphs and completed Windows GetFileAttributesW predicate. All corrected paragraphs reread; no source/signature/code/link/id/footer changes. Initial expected correction count12 assertion failed before mutation; inspected13 actual paragraphs. First predicate repair condition missed Japanese punctuation; correction output inspection caught this and explicit followup repaired before build/register."
+    },
+    {
+      "scope": "verification boundary",
+      "result": "Current88-page build, JA41 DOM/footer,1901 local links,84TOC,83declarations/7code exact passed. These are mechanical checks distinct from semantic review. Native/runtime/full-project gates pending."
+    }
+  ],
+  "corrections": [
+    {
+      "before": "次の関数と同等です: preadv(2)と同等です。offset引数が-1なら、現在のファイルオフセットを使い、更新します。",
+      "after": "preadv(2)と同等です。offset引数が-1なら、現在のファイルオフセットを使い、更新します。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: pwritev(2)と同等です。offset引数が-1なら、現在のファイルオフセットを使い、更新します。",
+      "after": "pwritev(2)と同等です。offset引数が-1なら、現在のファイルオフセットを使い、更新します。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: mkdtemp(3)と同等です。結果は、次のフィールドのヌル終端文字列として取得できます: req->path。",
+      "after": "mkdtemp(3)と同等です。結果は、次のフィールドのヌル終端文字列として取得できます: req->path。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: mkstemp(3)と同等です。作成したファイルのパスは、次のフィールドのヌル終端文字列として取得できます: req->path。ファイルディスクリプターは、次のフィールドの整数値として取得できます: req->result。",
+      "after": "mkstemp(3)と同等です。作成したファイルのパスは、次のフィールドのヌル終端文字列として取得できます: req->path。ファイルディスクリプターは、次のフィールドの整数値として取得できます: req->result。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: scandir(3)と同等ですが、APIは少し異なります。要求のコールバックを呼び出した後、ユーザーはuv_fs_scandir_next()を使い、entに次のディレクトリーエントリーのデータを格納できます。エントリーがなくなると、UV_EOFを返します。",
+      "after": "scandir(3)と同等ですが、APIは少し異なります。要求のコールバックを呼び出した後、ユーザーはuv_fs_scandir_next()を使い、entに次のディレクトリーエントリーのデータを格納できます。エントリーがなくなると、UV_EOFを返します。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: stat(2), fstat(2)およびlstat(2)と、それぞれ同等です。",
+      "after": "stat(2), fstat(2)およびlstat(2)と、それぞれ同等です。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: statfs(2)と同等です。成功時は、uv_statfs_tを確保し、req->ptr経由で返します。このメモリーは、uv_fs_req_cleanup()で解放します。",
+      "after": "statfs(2)と同等です。成功時は、uv_statfs_tを確保し、req->ptr経由で返します。このメモリーは、uv_fs_req_cleanup()で解放します。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: access(2)とUnix上で同等です。WindowsではGetFileAttributesW()。",
+      "after": "access(2)とUnix上で同等です。WindowsではGetFileAttributesW()を使います。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: chmod(2)およびfchmod(2)と、それぞれ同等です。",
+      "after": "chmod(2)およびfchmod(2)と、それぞれ同等です。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: utime(2), futimes(3)およびlutimes(3)と、それぞれ同等です。",
+      "after": "utime(2), futimes(3)およびlutimes(3)と、それぞれ同等です。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: readlink(2)と同等です。結果の文字列をreq->ptrに格納します。",
+      "after": "readlink(2)と同等です。結果の文字列をreq->ptrに格納します。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: realpath(3)とUnix上で同等です。WindowsではGetFinalPathNameByHandleWを使います。結果の文字列をreq->ptrに格納します。",
+      "after": "realpath(3)とUnix上で同等です。WindowsではGetFinalPathNameByHandleWを使います。結果の文字列をreq->ptrに格納します。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    },
+    {
+      "before": "次の関数と同等です: chown(2), fchown(2)およびlchown(2)と、それぞれ同等です。",
+      "after": "chown(2), fchown(2)およびlchown(2)と、それぞれ同等です。",
+      "reason": "Remove duplicated equivalence wording; complete Windows access-function predicate."
+    }
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-766/API_VERIFICATION.json",
+      "sha256": "b46361a0e5676c052e1d984b1da548e7958d62c266fb9b2e8fd2a52fb17b7036"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-766/RENDER_VERIFICATION.json",
+      "sha256": "517da4bc4854ea208af3694a7a4f95e042f2facc05af18e6f1c1da6f72528c0c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-766/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "0dc64f1deee8d5c04c01cf0d8bf65d0a2378f82c2b3cabb22a586bb60ef97d35"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-766/PREBUILD.log",
+      "sha256": "d1af666d44c254c3a9b0a3c03592886094591c39cfddef77380ef541908fe1c7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-766/BUILD.log",
+      "sha256": "6896d13799a0155aba8fba115372a8b6986ffc9d39031a4c6645d572fb93ae6d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-766/CORRECTIONS.json",
+      "sha256": "526df2f425202479fcf09626c3cdceb4be59897ea89f64b0b0fee3b6393c90a2"
+    }
+  ],
+  "limitations": [
+    "No sample compilation/runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

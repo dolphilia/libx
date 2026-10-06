@@ -1,0 +1,4489 @@
+{
+  "page": "reference/udp",
+  "at": "2026-10-04T23:19:03.004226+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/udp.rst",
+      "sha256": "09f01b976b6bfba11e09c663ced430e89af45c0c5daeb96f298f487c2de5bb0f"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/udp.md",
+      "sha256": "f556554cd448b503a38cda62df6acd453c3355d8cac223d5ccb61897c4b75126"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/udp.md",
+      "sha256": "d1a1e93e683df4fcb03d3b172520664659b99e8f7c06e11a43cf9fd7ad99ad09"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, 2 original code blocks, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": " — UDP handle",
+      "ja": " — UDPハンドル"
+    },
+    {
+      "index": 1,
+      "en": "UDP handles encapsulate UDP communication for both clients and servers.",
+      "ja": "UDPハンドルは、クライアントとサーバーの両方のUDP通信をカプセル化します。"
+    },
+    {
+      "index": 2,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 3,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 4,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 5,
+      "en": "UDP handle type.",
+      "ja": "UDPハンドルの型です。"
+    },
+    {
+      "index": 6,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 7,
+      "en": "uv_udp_send_t",
+      "ja": "uv_udp_send_t"
+    },
+    {
+      "index": 8,
+      "en": "UDP send request type.",
+      "ja": "UDP送信要求の型です。"
+    },
+    {
+      "index": 9,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 10,
+      "en": "uv_udp_flags",
+      "ja": "uv_udp_flags"
+    },
+    {
+      "index": 11,
+      "en": "Flags used in ",
+      "ja": "次の関数とコールバックで使うフラグです: "
+    },
+    {
+      "index": 12,
+      "en": " and ",
+      "ja": "および"
+    },
+    {
+      "index": 13,
+      "en": "..",
+      "ja": "。"
+    },
+    {
+      "index": 14,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 15,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 16,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 17,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 18,
+      "en": "uv_udp_send_cb",
+      "ja": "uv_udp_send_cb"
+    },
+    {
+      "index": 19,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 20,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 21,
+      "en": "uv_udp_send_t",
+      "ja": "uv_udp_send_t"
+    },
+    {
+      "index": 22,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 23,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 24,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 25,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 26,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 27,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 28,
+      "en": "Type definition for callback passed to ",
+      "ja": "次の関数へ渡すコールバックの型定義です: "
+    },
+    {
+      "index": 29,
+      "en": ", which is\ncalled after the data was sent.",
+      "ja": "。データの送信後に呼び出します。"
+    },
+    {
+      "index": 30,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 31,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 32,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 33,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 34,
+      "en": "uv_udp_recv_cb",
+      "ja": "uv_udp_recv_cb"
+    },
+    {
+      "index": 35,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 36,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 37,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 38,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 39,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 40,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 41,
+      "en": "ssize_t",
+      "ja": "ssize_t"
+    },
+    {
+      "index": 42,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 43,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 44,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 45,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 46,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 47,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 48,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 49,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 50,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 51,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 52,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 53,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 54,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 55,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 56,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 57,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 58,
+      "en": "Type definition for callback passed to ",
+      "ja": "次の関数へ渡すコールバックの型定義です: "
+    },
+    {
+      "index": 59,
+      "en": ", which\nis called when the endpoint receives data.",
+      "ja": "。エンドポイントがデータを受信したときに呼び出します。"
+    },
+    {
+      "index": 60,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 61,
+      "en": ": UDP handle",
+      "ja": ": UDPハンドル。"
+    },
+    {
+      "index": 62,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 63,
+      "en": ":  Number of bytes that have been received.\n0 if there is no more data to read. Note that 0 may also mean that an\nempty datagram was received (in this case ",
+      "ja": ": 受信したバイト数です。読み取るデータがなくなると0になります。0は空のデータグラムの受信を示す場合もあります（この場合、"
+    },
+    {
+      "index": 64,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 65,
+      "en": " is not NULL). < 0 if\na transmission error was detected; if using ",
+      "ja": "はNULLではありません）。伝送エラーを検出すると0未満になります。次の関数を使っている場合、"
+    },
+    {
+      "index": 66,
+      "en": "recvmmsg(2)",
+      "ja": "recvmmsg(2)"
+    },
+    {
+      "index": 67,
+      "en": " no more\nchunks will be received and the buffer can be freed safely.",
+      "ja": "、それ以上のチャンクは受信せず、バッファを安全に解放できます。"
+    },
+    {
+      "index": 68,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 69,
+      "en": ": ",
+      "ja": ": "
+    },
+    {
+      "index": 70,
+      "en": " with the received data.",
+      "ja": "型の受信データを格納したバッファです。"
+    },
+    {
+      "index": 71,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 72,
+      "en": ": ",
+      "ja": ": "
+    },
+    {
+      "index": 73,
+      "en": " containing the address of the sender.\nCan be NULL. Valid for the duration of the callback only.",
+      "ja": "型の、送信元アドレスを格納した構造体です。NULLの場合もあります。コールバックの実行中だけ有効です。"
+    },
+    {
+      "index": 74,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 75,
+      "en": ": One or more or’ed UV_UDP_* constants.",
+      "ja": ": 1つ以上のUV_UDP_*定数をORで組み合わせたものです。"
+    },
+    {
+      "index": 76,
+      "en": "The callee is responsible for freeing the buffer, libuv does not reuse it.\nThe buffer may be a null buffer (where ",
+      "ja": "バッファを解放する責任は呼び出された側にあり、libuvは再利用しません。エラー時には、次の条件を満たすヌルバッファの場合があります: "
+    },
+    {
+      "index": 77,
+      "en": "buf->base",
+      "ja": "buf->base"
+    },
+    {
+      "index": 78,
+      "en": " == NULL and ",
+      "ja": " == NULLかつ"
+    },
+    {
+      "index": 79,
+      "en": "buf->len",
+      "ja": "buf->len"
+    },
+    {
+      "index": 80,
+      "en": " == 0)\non error.",
+      "ja": " == 0。"
+    },
+    {
+      "index": 81,
+      "en": "When using ",
+      "ja": "次の関数を使う場合、"
+    },
+    {
+      "index": 82,
+      "en": "recvmmsg(2)",
+      "ja": "recvmmsg(2)"
+    },
+    {
+      "index": 83,
+      "en": ", chunks will have the ",
+      "ja": "、各チャンクには"
+    },
+    {
+      "index": 84,
+      "en": "UV_UDP_MMSG_CHUNK",
+      "ja": "UV_UDP_MMSG_CHUNK"
+    },
+    {
+      "index": 85,
+      "en": " flag set,\nthose must not be freed. If no errors occur, there will be a final callback with\n",
+      "ja": "フラグが設定されており、解放してはいけません。エラーがなければ、最後に次の条件のコールバックを呼び出します: "
+    },
+    {
+      "index": 86,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 87,
+      "en": " set to 0, ",
+      "ja": "は0、"
+    },
+    {
+      "index": 88,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 89,
+      "en": " set to NULL and the buffer pointing at the initially\nallocated data with the ",
+      "ja": "はNULL、バッファは最初に確保したデータを指し、"
+    },
+    {
+      "index": 90,
+      "en": "UV_UDP_MMSG_CHUNK",
+      "ja": "UV_UDP_MMSG_CHUNK"
+    },
+    {
+      "index": 91,
+      "en": " flag cleared and the ",
+      "ja": "フラグは解除され、"
+    },
+    {
+      "index": 92,
+      "en": "UV_UDP_MMSG_FREE",
+      "ja": "UV_UDP_MMSG_FREE"
+    },
+    {
+      "index": 93,
+      "en": "\nflag set. If a UDP socket error occurs, ",
+      "ja": "フラグが設定されます。UDPソケットエラーが起きると、"
+    },
+    {
+      "index": 94,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 95,
+      "en": " will be < 0. In either scenario,\nthe callee can now safely free the provided buffer.",
+      "ja": "は0未満になります。どちらの場合も、呼び出された側は渡されたバッファを安全に解放できます。"
+    },
+    {
+      "index": 96,
+      "en": "Changed in version 1.40.0: ",
+      "ja": "バージョン1.40.0での変更: "
+    },
+    {
+      "index": 97,
+      "en": "added the ",
+      "ja": "次のフラグを追加しました: "
+    },
+    {
+      "index": 98,
+      "en": "UV_UDP_MMSG_FREE",
+      "ja": "UV_UDP_MMSG_FREE"
+    },
+    {
+      "index": 99,
+      "en": " flag.",
+      "ja": "。"
+    },
+    {
+      "index": 100,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 101,
+      "en": "The receive callback will be called with ",
+      "ja": "受信コールバックは、読み取るデータがないときには"
+    },
+    {
+      "index": 102,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 103,
+      "en": " == 0 and ",
+      "ja": " == 0かつ"
+    },
+    {
+      "index": 104,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 105,
+      "en": " == NULL when there is\nnothing to read, and with ",
+      "ja": " == NULLで呼び出します。空のUDPパケットを受信したときには"
+    },
+    {
+      "index": 106,
+      "en": "nread",
+      "ja": "nread"
+    },
+    {
+      "index": 107,
+      "en": " == 0 and ",
+      "ja": " == 0かつ"
+    },
+    {
+      "index": 108,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 109,
+      "en": " != NULL when an empty UDP packet is\nreceived.",
+      "ja": " != NULLで呼び出します。"
+    },
+    {
+      "index": 110,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 111,
+      "en": "uv_membership",
+      "ja": "uv_membership"
+    },
+    {
+      "index": 112,
+      "en": "Membership type for a multicast address.",
+      "ja": "マルチキャストアドレスのメンバーシップの型です。"
+    },
+    {
+      "index": 113,
+      "en": "Public members",
+      "ja": "公開メンバー"
+    },
+    {
+      "index": 114,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 115,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 116,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 117,
+      "en": "send_queue_size",
+      "ja": "send_queue_size"
+    },
+    {
+      "index": 118,
+      "en": "Number of bytes queued for sending. This field strictly shows how much\ninformation is currently queued.",
+      "ja": "送信待ちキューに入っているバイト数です。このフィールドは、現在キューに入っている情報量だけを示します。"
+    },
+    {
+      "index": 119,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 120,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 121,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 122,
+      "en": "send_queue_count",
+      "ja": "send_queue_count"
+    },
+    {
+      "index": 123,
+      "en": "Number of send requests currently in the queue awaiting to be processed.",
+      "ja": "現在キューに入り、処理を待っている送信要求の数です。"
+    },
+    {
+      "index": 124,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 125,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 126,
+      "en": "uv_udp_send_t",
+      "ja": "uv_udp_send_t"
+    },
+    {
+      "index": 127,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 128,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 129,
+      "en": "UDP handle where this send request is taking place.",
+      "ja": "この送信要求を実行しているUDPハンドルです。"
+    },
+    {
+      "index": 130,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 131,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 132,
+      "en": " members also apply.",
+      "ja": "メンバーも適用されます。"
+    },
+    {
+      "index": 133,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 134,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 135,
+      "en": "uv_udp_init",
+      "ja": "uv_udp_init"
+    },
+    {
+      "index": 136,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 137,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 138,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 139,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 140,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 141,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 142,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 143,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 144,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 145,
+      "en": "Initialize a new UDP handle. The actual socket is created lazily.\nReturns 0 on success.",
+      "ja": "新しいUDPハンドルを初期化します。実際のソケットは必要になるまで作成しません。成功時は0を返します。"
+    },
+    {
+      "index": 146,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 147,
+      "en": "uv_udp_init_ex",
+      "ja": "uv_udp_init_ex"
+    },
+    {
+      "index": 148,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 149,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 150,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 151,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 152,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 153,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 154,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 155,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 156,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 157,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 158,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 159,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 160,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 161,
+      "en": "Initialize the handle with the specified flags. The lower 8 bits of the ",
+      "ja": "指定したフラグでハンドルを初期化します。次のパラメーター、"
+    },
+    {
+      "index": 162,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 163,
+      "en": "\nparameter are used as the socket domain. A socket will be created for the given domain.\nIf the specified domain is ",
+      "ja": "の下位8ビットをソケットドメインとして使い、そのドメインのソケットを作成します。指定したドメインが"
+    },
+    {
+      "index": 164,
+      "en": " no socket is created, just like ",
+      "ja": "なら、次の関数と同じく、ソケットは作成しません: "
+    },
+    {
+      "index": 165,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 166,
+      "en": "The remaining bits can be used to set one of these flags:",
+      "ja": "残りのビットには、次のフラグを設定できます:"
+    },
+    {
+      "index": 167,
+      "en": "UV_UDP_RECVMMSG",
+      "ja": "UV_UDP_RECVMMSG"
+    },
+    {
+      "index": 168,
+      "en": ": if set, and the platform supports it, ",
+      "ja": ": 設定していて、プラットフォームがサポートしていれば、"
+    },
+    {
+      "index": 169,
+      "en": "recvmmsg(2)",
+      "ja": "recvmmsg(2)"
+    },
+    {
+      "index": 170,
+      "en": " will\nbe used. The ",
+      "ja": "を使います。このハンドルの"
+    },
+    {
+      "index": 171,
+      "en": " for this handle should create\nbuffers that are multiples of 64 KiB.",
+      "ja": "は、64 KiBの倍数のバッファを作成してください。"
+    },
+    {
+      "index": 172,
+      "en": "New in version 1.7.0.",
+      "ja": "バージョン1.7.0で追加。"
+    },
+    {
+      "index": 173,
+      "en": "Changed in version 1.37.0: ",
+      "ja": "バージョン1.37.0での変更: "
+    },
+    {
+      "index": 174,
+      "en": "added the ",
+      "ja": "次のフラグを追加しました: "
+    },
+    {
+      "index": 175,
+      "en": "UV_UDP_RECVMMSG",
+      "ja": "UV_UDP_RECVMMSG"
+    },
+    {
+      "index": 176,
+      "en": " flag.",
+      "ja": "。"
+    },
+    {
+      "index": 177,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 178,
+      "en": "uv_udp_open_ex",
+      "ja": "uv_udp_open_ex"
+    },
+    {
+      "index": 179,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 180,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 181,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 182,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 183,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 184,
+      "en": "uv_os_sock_t",
+      "ja": "uv_os_sock_t"
+    },
+    {
+      "index": 185,
+      "en": "sock",
+      "ja": "sock"
+    },
+    {
+      "index": 186,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 187,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 188,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 189,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 190,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 191,
+      "en": "Opens an existing file descriptor or Windows SOCKET as a UDP handle.",
+      "ja": "既存のファイルディスクリプターまたはWindows SOCKETをUDPハンドルとして開きます。"
+    },
+    {
+      "index": 192,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 193,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 194,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 195,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 196,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 197,
+      "en": "sock",
+      "ja": "sock"
+    },
+    {
+      "index": 198,
+      "en": " – An existing socket to associate with the handle.",
+      "ja": " – ハンドルに関連付ける既存のソケットです。"
+    },
+    {
+      "index": 199,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 200,
+      "en": " – Flags that control socket behavior,\n",
+      "ja": " – ソケットの動作を制御するフラグです。"
+    },
+    {
+      "index": 201,
+      "en": ", and ",
+      "ja": "および"
+    },
+    {
+      "index": 202,
+      "en": " are supported.",
+      "ja": "をサポートしています。"
+    },
+    {
+      "index": 203,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 204,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 205,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 206,
+      "en": "New in version 1.52.0.",
+      "ja": "バージョン1.52.0で追加。"
+    },
+    {
+      "index": 207,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 208,
+      "en": "uv_udp_open",
+      "ja": "uv_udp_open"
+    },
+    {
+      "index": 209,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 210,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 211,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 212,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 213,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 214,
+      "en": "uv_os_sock_t",
+      "ja": "uv_os_sock_t"
+    },
+    {
+      "index": 215,
+      "en": "sock",
+      "ja": "sock"
+    },
+    {
+      "index": 216,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 217,
+      "en": "Opens an existing file descriptor or Windows SOCKET as a UDP handle.",
+      "ja": "既存のファイルディスクリプターまたはWindows SOCKETをUDPハンドルとして開きます。"
+    },
+    {
+      "index": 218,
+      "en": "Unix only:\nThe only requirement of the ",
+      "ja": "Unixだけ: "
+    },
+    {
+      "index": 219,
+      "en": "sock",
+      "ja": "sock"
+    },
+    {
+      "index": 220,
+      "en": " argument is that it follows the datagram\ncontract (works in unconnected mode, supports sendmsg()/recvmsg(), etc).\nIn other words, other datagram-type sockets like raw sockets or netlink\nsockets can also be passed to this function.",
+      "ja": "引数の唯一の要件は、データグラムの契約に従うことです（未接続モードで動作し、sendmsg()/recvmsg()をサポートするなど）。つまり、rawソケットやnetlinkソケットなど、ほかのデータグラム型ソケットも渡せます。"
+    },
+    {
+      "index": 221,
+      "en": "Changed in version 1.2.1: ",
+      "ja": "バージョン1.2.1での変更: "
+    },
+    {
+      "index": 222,
+      "en": "the file descriptor is set to non-blocking mode.",
+      "ja": "ファイルディスクリプターを非ブロッキングモードに設定するようになりました。"
+    },
+    {
+      "index": 223,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 224,
+      "en": "The passed file descriptor or SOCKET is not checked for its type, but\nit’s required that it represents a valid datagram socket.",
+      "ja": "渡されたファイルディスクリプターまたはSOCKETの型は検査しませんが、有効なデータグラムソケットを表す必要があります。"
+    },
+    {
+      "index": 225,
+      "en": "Internally sets the SO_REUSEADDR socket option unconditionally. This\nmeans the reuse flag is always enabled, regardless of user intent. For\nmore control use ",
+      "ja": "内部でSO_REUSEADDRソケットオプションを無条件に設定します。つまり、ユーザーの意図にかかわらず再利用フラグは常に有効です。より細かく制御するには、次の関数を使ってください: "
+    },
+    {
+      "index": 226,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 227,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 228,
+      "en": "uv_udp_bind",
+      "ja": "uv_udp_bind"
+    },
+    {
+      "index": 229,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 230,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 231,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 232,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 233,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 234,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 235,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 236,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 237,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 238,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 239,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 240,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 241,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 242,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 243,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 244,
+      "en": "Bind the UDP handle to an IP address and port.",
+      "ja": "UDPハンドルをIPアドレスとポートへバインドします。"
+    },
+    {
+      "index": 245,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 246,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 247,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 248,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 249,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 250,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 251,
+      "en": " – ",
+      "ja": " – "
+    },
+    {
+      "index": 252,
+      "en": "struct sockaddr_in",
+      "ja": "struct sockaddr_in"
+    },
+    {
+      "index": 253,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 254,
+      "en": "struct sockaddr_in6",
+      "ja": "struct sockaddr_in6"
+    },
+    {
+      "index": 255,
+      "en": "\nwith the address and port to bind to.",
+      "ja": "型の、バインド先アドレスとポートを格納した構造体です。"
+    },
+    {
+      "index": 256,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 257,
+      "en": " – Indicate how the socket will be bound,\n",
+      "ja": " – ソケットのバインド方法を指定します。"
+    },
+    {
+      "index": 258,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 259,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 260,
+      "en": ",\nand ",
+      "ja": "および"
+    },
+    {
+      "index": 261,
+      "en": " are supported.",
+      "ja": "をサポートしています。"
+    },
+    {
+      "index": 262,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 263,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 264,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 265,
+      "en": "Changed in version 1.49.0: ",
+      "ja": "バージョン1.49.0での変更: "
+    },
+    {
+      "index": 266,
+      "en": "added the ",
+      "ja": "次のフラグを追加しました: "
+    },
+    {
+      "index": 267,
+      "en": " flag.",
+      "ja": "。"
+    },
+    {
+      "index": 268,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 269,
+      "en": " flag is available only on Linux 3.9+, DragonFlyBSD 3.6+,\nFreeBSD 12.0+, Solaris 11.4, and AIX 7.2.5+ at the moment. On other platforms\nthis function will return an UV_ENOTSUP error.\nFor platforms where ",
+      "ja": "フラグは、現在、Linux 3.9以降、DragonFlyBSD 3.6以降、FreeBSD 12.0以降、Solaris 11.4、AIX 7.2.5以降だけで利用できます。それ以外ではUV_ENOTSUPエラーを返します。負荷分散機能があるプラットフォームでは、"
+    },
+    {
+      "index": 270,
+      "en": "SO_REUSEPORT`s have the capability of load balancing,\nspecifying both ``UV_UDP_REUSEADDR`",
+      "ja": "SO_REUSEPORT`sについて、flagsに``UV_UDP_REUSEADDR`"
+    },
+    {
+      "index": 271,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 272,
+      "en": " in flags is allowed\nand ",
+      "ja": "を同時に指定できます。この場合、"
+    },
+    {
+      "index": 273,
+      "en": "SO_REUSEPORT",
+      "ja": "SO_REUSEPORT"
+    },
+    {
+      "index": 274,
+      "en": " will always override the behavior of ",
+      "ja": "の動作が常に"
+    },
+    {
+      "index": 275,
+      "en": "SO_REUSEADDR",
+      "ja": "SO_REUSEADDR"
+    },
+    {
+      "index": 276,
+      "en": ".\nFor platforms where ",
+      "ja": "より優先されます。負荷分散機能がないプラットフォームでは、"
+    },
+    {
+      "index": 277,
+      "en": "SO_REUSEPORT`s don’t have the capability of load balancing,\nspecifying both ``UV_UDP_REUSEADDR`",
+      "ja": "SO_REUSEPORT`sについて、flagsに``UV_UDP_REUSEADDR`"
+    },
+    {
+      "index": 278,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 279,
+      "en": " in flags will fail,\nreturning an UV_ENOTSUP error.",
+      "ja": "を同時に指定すると、UV_ENOTSUPエラーで失敗します。"
+    },
+    {
+      "index": 280,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 281,
+      "en": "uv_udp_connect",
+      "ja": "uv_udp_connect"
+    },
+    {
+      "index": 282,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 283,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 284,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 285,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 286,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 287,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 288,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 289,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 290,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 291,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 292,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 293,
+      "en": "Associate the UDP handle to a remote address and port, so every\nmessage sent by this handle is automatically sent to that destination.\nCalling this function with a ",
+      "ja": "UDPハンドルをリモートアドレスとポートに関連付けます。このハンドルから送るすべてのメッセージは、その宛先へ自動的に送信されます。次の値、"
+    },
+    {
+      "index": 294,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 295,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 296,
+      "en": " disconnects the handle.\nTrying to call ",
+      "ja": "を指定して呼び出すと、ハンドルを切断します。すでに接続済みのハンドルで"
+    },
+    {
+      "index": 297,
+      "en": "uv_udp_connect()",
+      "ja": "uv_udp_connect()"
+    },
+    {
+      "index": 298,
+      "en": " on an already connected handle will result\nin an ",
+      "ja": "を呼び出すと、"
+    },
+    {
+      "index": 299,
+      "en": "UV_EISCONN",
+      "ja": "UV_EISCONN"
+    },
+    {
+      "index": 300,
+      "en": " error. Trying to disconnect a handle that is not\nconnected will return an ",
+      "ja": "エラーになります。未接続のハンドルを切断しようとすると、"
+    },
+    {
+      "index": 301,
+      "en": "UV_ENOTCONN",
+      "ja": "UV_ENOTCONN"
+    },
+    {
+      "index": 302,
+      "en": " error.",
+      "ja": "エラーを返します。"
+    },
+    {
+      "index": 303,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 304,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 305,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 306,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 307,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 308,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 309,
+      "en": " – ",
+      "ja": " – "
+    },
+    {
+      "index": 310,
+      "en": "struct sockaddr_in",
+      "ja": "struct sockaddr_in"
+    },
+    {
+      "index": 311,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 312,
+      "en": "struct sockaddr_in6",
+      "ja": "struct sockaddr_in6"
+    },
+    {
+      "index": 313,
+      "en": "\nwith the address and port to associate to.",
+      "ja": "型の、関連付けるアドレスとポートを格納した構造体です。"
+    },
+    {
+      "index": 314,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 315,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 316,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 317,
+      "en": "New in version 1.27.0.",
+      "ja": "バージョン1.27.0で追加。"
+    },
+    {
+      "index": 318,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 319,
+      "en": "uv_udp_getpeername",
+      "ja": "uv_udp_getpeername"
+    },
+    {
+      "index": 320,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 321,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 322,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 323,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 324,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 325,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 326,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 327,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 328,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 329,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 330,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 331,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 332,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 333,
+      "en": "namelen",
+      "ja": "namelen"
+    },
+    {
+      "index": 334,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 335,
+      "en": "Get the remote IP and port of the UDP handle on connected UDP handles.\nOn unconnected handles, it returns ",
+      "ja": "接続済みのUDPハンドルのリモートIPとポートを取得します。未接続の場合は、次のエラーを返します: "
+    },
+    {
+      "index": 336,
+      "en": "UV_ENOTCONN",
+      "ja": "UV_ENOTCONN"
+    },
+    {
+      "index": 337,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 338,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 339,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 340,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 341,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 342,
+      "en": " and bound.",
+      "ja": "で初期化し、バインドしておく必要があります。"
+    },
+    {
+      "index": 343,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 344,
+      "en": " – Pointer to the structure to be filled with the address data.\nIn order to support IPv4 and IPv6 ",
+      "ja": " – アドレスデータを格納する構造体へのポインターです。IPv4とIPv6をサポートするには、"
+    },
+    {
+      "index": 345,
+      "en": "struct sockaddr_storage",
+      "ja": "struct sockaddr_storage"
+    },
+    {
+      "index": 346,
+      "en": " should be\nused.",
+      "ja": "を使ってください。"
+    },
+    {
+      "index": 347,
+      "en": "namelen",
+      "ja": "namelen"
+    },
+    {
+      "index": 348,
+      "en": " – On input it indicates the data of the ",
+      "ja": " – 入力時には、次のフィールドのデータを示します: "
+    },
+    {
+      "index": 349,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 350,
+      "en": " field. On\noutput it indicates how much of it was filled.",
+      "ja": "。出力時には、そのうちどれだけ格納したかを示します。"
+    },
+    {
+      "index": 351,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 352,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 353,
+      "en": "0 on success, or an error code < 0 on failure",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 354,
+      "en": "New in version 1.27.0.",
+      "ja": "バージョン1.27.0で追加。"
+    },
+    {
+      "index": 355,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 356,
+      "en": "uv_udp_getsockname",
+      "ja": "uv_udp_getsockname"
+    },
+    {
+      "index": 357,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 358,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 359,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 360,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 361,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 362,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 363,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 364,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 365,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 366,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 367,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 368,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 369,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 370,
+      "en": "namelen",
+      "ja": "namelen"
+    },
+    {
+      "index": 371,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 372,
+      "en": "Get the local IP and port of the UDP handle.",
+      "ja": "UDPハンドルのローカルIPとポートを取得します。"
+    },
+    {
+      "index": 373,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 374,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 375,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 376,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 377,
+      "en": " and bound.",
+      "ja": "で初期化し、バインドしておく必要があります。"
+    },
+    {
+      "index": 378,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 379,
+      "en": " – Pointer to the structure to be filled with the address data.\nIn order to support IPv4 and IPv6 ",
+      "ja": " – アドレスデータを格納する構造体へのポインターです。IPv4とIPv6をサポートするには、"
+    },
+    {
+      "index": 380,
+      "en": "struct sockaddr_storage",
+      "ja": "struct sockaddr_storage"
+    },
+    {
+      "index": 381,
+      "en": " should be\nused.",
+      "ja": "を使ってください。"
+    },
+    {
+      "index": 382,
+      "en": "namelen",
+      "ja": "namelen"
+    },
+    {
+      "index": 383,
+      "en": " – On input it indicates the data of the ",
+      "ja": " – 入力時には、次のフィールドのデータを示します: "
+    },
+    {
+      "index": 384,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 385,
+      "en": " field. On\noutput it indicates how much of it was filled.",
+      "ja": "。出力時には、そのうちどれだけ格納したかを示します。"
+    },
+    {
+      "index": 386,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 387,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 388,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 389,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 390,
+      "en": "uv_udp_set_membership",
+      "ja": "uv_udp_set_membership"
+    },
+    {
+      "index": 391,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 392,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 393,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 394,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 395,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 396,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 397,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 398,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 399,
+      "en": "multicast_addr",
+      "ja": "multicast_addr"
+    },
+    {
+      "index": 400,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 401,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 402,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 403,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 404,
+      "en": "interface_addr",
+      "ja": "interface_addr"
+    },
+    {
+      "index": 405,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 406,
+      "en": "uv_membership",
+      "ja": "uv_membership"
+    },
+    {
+      "index": 407,
+      "en": "membership",
+      "ja": "membership"
+    },
+    {
+      "index": 408,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 409,
+      "en": "Set membership for a multicast address",
+      "ja": "マルチキャストアドレスのメンバーシップを設定します。"
+    },
+    {
+      "index": 410,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 411,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 412,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 413,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 414,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 415,
+      "en": "multicast_addr",
+      "ja": "multicast_addr"
+    },
+    {
+      "index": 416,
+      "en": " – Multicast address to set membership for.",
+      "ja": " – メンバーシップを設定するマルチキャストアドレスです。"
+    },
+    {
+      "index": 417,
+      "en": "interface_addr",
+      "ja": "interface_addr"
+    },
+    {
+      "index": 418,
+      "en": " – Interface address.",
+      "ja": " – インターフェイスのアドレスです。"
+    },
+    {
+      "index": 419,
+      "en": "membership",
+      "ja": "membership"
+    },
+    {
+      "index": 420,
+      "en": " – Should be ",
+      "ja": " – 次のいずれかを指定してください: "
+    },
+    {
+      "index": 421,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 422,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 423,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 424,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 425,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 426,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 427,
+      "en": "uv_udp_set_source_membership",
+      "ja": "uv_udp_set_source_membership"
+    },
+    {
+      "index": 428,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 429,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 430,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 431,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 432,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 433,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 434,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 435,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 436,
+      "en": "multicast_addr",
+      "ja": "multicast_addr"
+    },
+    {
+      "index": 437,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 438,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 439,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 440,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 441,
+      "en": "interface_addr",
+      "ja": "interface_addr"
+    },
+    {
+      "index": 442,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 443,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 444,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 445,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 446,
+      "en": "source_addr",
+      "ja": "source_addr"
+    },
+    {
+      "index": 447,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 448,
+      "en": "uv_membership",
+      "ja": "uv_membership"
+    },
+    {
+      "index": 449,
+      "en": "membership",
+      "ja": "membership"
+    },
+    {
+      "index": 450,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 451,
+      "en": "Set membership for a source-specific multicast group.",
+      "ja": "送信元を指定するマルチキャストグループのメンバーシップを設定します。"
+    },
+    {
+      "index": 452,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 453,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 454,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 455,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 456,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 457,
+      "en": "multicast_addr",
+      "ja": "multicast_addr"
+    },
+    {
+      "index": 458,
+      "en": " – Multicast address to set membership for.",
+      "ja": " – メンバーシップを設定するマルチキャストアドレスです。"
+    },
+    {
+      "index": 459,
+      "en": "interface_addr",
+      "ja": "interface_addr"
+    },
+    {
+      "index": 460,
+      "en": " – Interface address.",
+      "ja": " – インターフェイスのアドレスです。"
+    },
+    {
+      "index": 461,
+      "en": "source_addr",
+      "ja": "source_addr"
+    },
+    {
+      "index": 462,
+      "en": " – Source address.",
+      "ja": " – 送信元アドレスです。"
+    },
+    {
+      "index": 463,
+      "en": "membership",
+      "ja": "membership"
+    },
+    {
+      "index": 464,
+      "en": " – Should be ",
+      "ja": " – 次のいずれかを指定してください: "
+    },
+    {
+      "index": 465,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 466,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 467,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 468,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 469,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 470,
+      "en": "New in version 1.32.0.",
+      "ja": "バージョン1.32.0で追加。"
+    },
+    {
+      "index": 471,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 472,
+      "en": "uv_udp_set_multicast_loop",
+      "ja": "uv_udp_set_multicast_loop"
+    },
+    {
+      "index": 473,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 474,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 475,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 476,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 477,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 478,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 479,
+      "en": "on",
+      "ja": "on"
+    },
+    {
+      "index": 480,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 481,
+      "en": "Set IP multicast loop flag. Makes multicast packets loop back to\nlocal sockets.",
+      "ja": "IPマルチキャストのループフラグを設定します。マルチキャストパケットをローカルソケットへループバックさせます。"
+    },
+    {
+      "index": 482,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 483,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 484,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 485,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で、"
+    },
+    {
+      "index": 486,
+      "en": " as either ",
+      "ja": "を"
+    },
+    {
+      "index": 487,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 488,
+      "en": ", or have\nbeen bound to an address explicitly with ",
+      "ja": "として初期化するか、次の関数でアドレスへ明示的にバインドするか、"
+    },
+    {
+      "index": 489,
+      "en": ", or\nimplicitly with ",
+      "ja": "、次の関数で暗黙にバインドしておく必要があります: "
+    },
+    {
+      "index": 490,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 491,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 492,
+      "en": "on",
+      "ja": "on"
+    },
+    {
+      "index": 493,
+      "en": " – 1 for on, 0 for off.",
+      "ja": " – 有効にするには1、無効にするには0を指定します。"
+    },
+    {
+      "index": 494,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 495,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 496,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 497,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 498,
+      "en": "uv_udp_set_multicast_ttl",
+      "ja": "uv_udp_set_multicast_ttl"
+    },
+    {
+      "index": 499,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 500,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 501,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 502,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 503,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 504,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 505,
+      "en": "ttl",
+      "ja": "ttl"
+    },
+    {
+      "index": 506,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 507,
+      "en": "Set the multicast ttl.",
+      "ja": "マルチキャストのTTLを設定します。"
+    },
+    {
+      "index": 508,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 509,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 510,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 511,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で、"
+    },
+    {
+      "index": 512,
+      "en": " as either ",
+      "ja": "を"
+    },
+    {
+      "index": 513,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 514,
+      "en": ", or have\nbeen bound to an address explicitly with ",
+      "ja": "として初期化するか、次の関数でアドレスへ明示的にバインドするか、"
+    },
+    {
+      "index": 515,
+      "en": ", or\nimplicitly with ",
+      "ja": "、次の関数で暗黙にバインドしておく必要があります: "
+    },
+    {
+      "index": 516,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 517,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 518,
+      "en": "ttl",
+      "ja": "ttl"
+    },
+    {
+      "index": 519,
+      "en": " – 1 through 255.",
+      "ja": " – 1から255です。"
+    },
+    {
+      "index": 520,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 521,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 522,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 523,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 524,
+      "en": "uv_udp_set_multicast_interface",
+      "ja": "uv_udp_set_multicast_interface"
+    },
+    {
+      "index": 525,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 526,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 527,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 528,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 529,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 530,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 531,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 532,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 533,
+      "en": "interface_addr",
+      "ja": "interface_addr"
+    },
+    {
+      "index": 534,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 535,
+      "en": "Set the multicast interface to send or receive data on.",
+      "ja": "データを送受信するマルチキャストインターフェイスを設定します。"
+    },
+    {
+      "index": 536,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 537,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 538,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 539,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で、"
+    },
+    {
+      "index": 540,
+      "en": " as either ",
+      "ja": "を"
+    },
+    {
+      "index": 541,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 542,
+      "en": ", or have\nbeen bound to an address explicitly with ",
+      "ja": "として初期化するか、次の関数でアドレスへ明示的にバインドするか、"
+    },
+    {
+      "index": 543,
+      "en": ", or\nimplicitly with ",
+      "ja": "、次の関数で暗黙にバインドしておく必要があります: "
+    },
+    {
+      "index": 544,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 545,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 546,
+      "en": "interface_addr",
+      "ja": "interface_addr"
+    },
+    {
+      "index": 547,
+      "en": " – interface address.",
+      "ja": " – インターフェイスのアドレスです。"
+    },
+    {
+      "index": 548,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 549,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 550,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 551,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 552,
+      "en": "uv_udp_set_broadcast",
+      "ja": "uv_udp_set_broadcast"
+    },
+    {
+      "index": 553,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 554,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 555,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 556,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 557,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 558,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 559,
+      "en": "on",
+      "ja": "on"
+    },
+    {
+      "index": 560,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 561,
+      "en": "Set broadcast on or off.",
+      "ja": "ブロードキャストを有効または無効にします。"
+    },
+    {
+      "index": 562,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 563,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 564,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 565,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で、"
+    },
+    {
+      "index": 566,
+      "en": " as either ",
+      "ja": "を"
+    },
+    {
+      "index": 567,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 568,
+      "en": ", or have\nbeen bound to an address explicitly with ",
+      "ja": "として初期化するか、次の関数でアドレスへ明示的にバインドするか、"
+    },
+    {
+      "index": 569,
+      "en": ", or\nimplicitly with ",
+      "ja": "、次の関数で暗黙にバインドしておく必要があります: "
+    },
+    {
+      "index": 570,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 571,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 572,
+      "en": "on",
+      "ja": "on"
+    },
+    {
+      "index": 573,
+      "en": " – 1 for on, 0 for off.",
+      "ja": " – 有効にするには1、無効にするには0を指定します。"
+    },
+    {
+      "index": 574,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 575,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 576,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 577,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 578,
+      "en": "uv_udp_set_ttl",
+      "ja": "uv_udp_set_ttl"
+    },
+    {
+      "index": 579,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 580,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 581,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 582,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 583,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 584,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 585,
+      "en": "ttl",
+      "ja": "ttl"
+    },
+    {
+      "index": 586,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 587,
+      "en": "Set the time to live.",
+      "ja": "生存時間（TTL）を設定します。"
+    },
+    {
+      "index": 588,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 589,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 590,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 591,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で、"
+    },
+    {
+      "index": 592,
+      "en": " as either ",
+      "ja": "を"
+    },
+    {
+      "index": 593,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 594,
+      "en": ", or have\nbeen bound to an address explicitly with ",
+      "ja": "として初期化するか、次の関数でアドレスへ明示的にバインドするか、"
+    },
+    {
+      "index": 595,
+      "en": ", or\nimplicitly with ",
+      "ja": "、次の関数で暗黙にバインドしておく必要があります: "
+    },
+    {
+      "index": 596,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 597,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 598,
+      "en": "ttl",
+      "ja": "ttl"
+    },
+    {
+      "index": 599,
+      "en": " – 1 through 255.",
+      "ja": " – 1から255です。"
+    },
+    {
+      "index": 600,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 601,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 602,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 603,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 604,
+      "en": "uv_udp_send",
+      "ja": "uv_udp_send"
+    },
+    {
+      "index": 605,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 606,
+      "en": "uv_udp_send_t",
+      "ja": "uv_udp_send_t"
+    },
+    {
+      "index": 607,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 608,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 609,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 610,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 611,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 612,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 613,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 614,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 615,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 616,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 617,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 618,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 619,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 620,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 621,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 622,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 623,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 624,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 625,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 626,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 627,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 628,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 629,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 630,
+      "en": "uv_udp_send_cb",
+      "ja": "uv_udp_send_cb"
+    },
+    {
+      "index": 631,
+      "en": "send_cb",
+      "ja": "send_cb"
+    },
+    {
+      "index": 632,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 633,
+      "en": "Send data over the UDP socket. If the socket has not previously been bound\nwith ",
+      "ja": "UDPソケットでデータを送信します。ソケットを事前に次の関数でバインドしていなければ、"
+    },
+    {
+      "index": 634,
+      "en": " it will be bound to 0.0.0.0\n(the “all interfaces” IPv4 address) and a random port number.",
+      "ja": "、0.0.0.0（すべてのインターフェイスを表すIPv4アドレス）とランダムなポート番号へバインドします。"
+    },
+    {
+      "index": 635,
+      "en": "On Windows if the ",
+      "ja": "Windowsでは、"
+    },
+    {
+      "index": 636,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 637,
+      "en": " is initialized to point to an unspecified address\n(",
+      "ja": "が未指定アドレス（"
+    },
+    {
+      "index": 638,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 639,
+      "en": ") it will be changed to point to ",
+      "ja": "）を指すよう初期化されている場合、"
+    },
+    {
+      "index": 640,
+      "en": ".\nThis is done to match the behavior of Linux systems.",
+      "ja": "を指すよう変更します。これはLinuxの動作に合わせるためです。"
+    },
+    {
+      "index": 641,
+      "en": "For connected UDP handles, ",
+      "ja": "接続済みのUDPハンドルでは、"
+    },
+    {
+      "index": 642,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 643,
+      "en": " must be set to ",
+      "ja": "を"
+    },
+    {
+      "index": 644,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 645,
+      "en": ", otherwise it will\nreturn ",
+      "ja": "に設定してください。それ以外は"
+    },
+    {
+      "index": 646,
+      "en": "UV_EISCONN",
+      "ja": "UV_EISCONN"
+    },
+    {
+      "index": 647,
+      "en": " error.",
+      "ja": "エラーを返します。"
+    },
+    {
+      "index": 648,
+      "en": "For connectionless UDP handles, ",
+      "ja": "未接続のUDPハンドルでは、"
+    },
+    {
+      "index": 649,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 650,
+      "en": " cannot be ",
+      "ja": "を"
+    },
+    {
+      "index": 651,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 652,
+      "en": ", otherwise it will\nreturn ",
+      "ja": "にできません。そうすると"
+    },
+    {
+      "index": 653,
+      "en": "UV_EDESTADDRREQ",
+      "ja": "UV_EDESTADDRREQ"
+    },
+    {
+      "index": 654,
+      "en": " error.",
+      "ja": "エラーを返します。"
+    },
+    {
+      "index": 655,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 656,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 657,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 658,
+      "en": " – UDP request handle. Need not be initialized.",
+      "ja": " – UDP要求ハンドルです。初期化は不要です。"
+    },
+    {
+      "index": 659,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 660,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 661,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 662,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 663,
+      "en": " – List of buffers to send.",
+      "ja": " – 送信するバッファのリストです。"
+    },
+    {
+      "index": 664,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 665,
+      "en": " – Number of buffers in ",
+      "ja": " – 次のリスト内のバッファ数です: "
+    },
+    {
+      "index": 666,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 667,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 668,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 669,
+      "en": " – ",
+      "ja": " – "
+    },
+    {
+      "index": 670,
+      "en": "struct sockaddr_in",
+      "ja": "struct sockaddr_in"
+    },
+    {
+      "index": 671,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 672,
+      "en": "struct sockaddr_in6",
+      "ja": "struct sockaddr_in6"
+    },
+    {
+      "index": 673,
+      "en": " with the\naddress and port of the remote peer.",
+      "ja": "型の、リモートピアのアドレスとポートを格納した構造体です。"
+    },
+    {
+      "index": 674,
+      "en": "send_cb",
+      "ja": "send_cb"
+    },
+    {
+      "index": 675,
+      "en": " – Callback to invoke when the data has been sent out.",
+      "ja": " – データの送信後に呼び出すコールバックです。"
+    },
+    {
+      "index": 676,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 677,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 678,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 679,
+      "en": "Changed in version 1.19.0: ",
+      "ja": "バージョン1.19.0での変更: "
+    },
+    {
+      "index": 680,
+      "en": "added ",
+      "ja": "次のアドレス、"
+    },
+    {
+      "index": 681,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 682,
+      "en": " to ",
+      "ja": "を"
+    },
+    {
+      "index": 683,
+      "en": "\nmapping",
+      "ja": "へ対応付ける処理を追加しました。"
+    },
+    {
+      "index": 684,
+      "en": "Changed in version 1.27.0: ",
+      "ja": "バージョン1.27.0での変更: "
+    },
+    {
+      "index": 685,
+      "en": "added support for connected sockets",
+      "ja": "接続済みソケットのサポートを追加しました。"
+    },
+    {
+      "index": 686,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 687,
+      "en": "uv_udp_try_send",
+      "ja": "uv_udp_try_send"
+    },
+    {
+      "index": 688,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 689,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 690,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 691,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 692,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 693,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 694,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 695,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 696,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 697,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 698,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 699,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 700,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 701,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 702,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 703,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 704,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 705,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 706,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 707,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 708,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 709,
+      "en": "Same as ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 710,
+      "en": ", but won’t queue a send request if it can’t\nbe completed immediately.",
+      "ja": "と同じですが、即座に完了できない場合も送信要求をキューに入れません。"
+    },
+    {
+      "index": 711,
+      "en": "For connected UDP handles, ",
+      "ja": "接続済みのUDPハンドルでは、"
+    },
+    {
+      "index": 712,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 713,
+      "en": " must be set to ",
+      "ja": "を"
+    },
+    {
+      "index": 714,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 715,
+      "en": ", otherwise it will\nreturn ",
+      "ja": "に設定してください。それ以外は"
+    },
+    {
+      "index": 716,
+      "en": "UV_EISCONN",
+      "ja": "UV_EISCONN"
+    },
+    {
+      "index": 717,
+      "en": " error.",
+      "ja": "エラーを返します。"
+    },
+    {
+      "index": 718,
+      "en": "For connectionless UDP handles, ",
+      "ja": "未接続のUDPハンドルでは、"
+    },
+    {
+      "index": 719,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 720,
+      "en": " cannot be ",
+      "ja": "を"
+    },
+    {
+      "index": 721,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 722,
+      "en": ", otherwise it will\nreturn ",
+      "ja": "にできません。そうすると"
+    },
+    {
+      "index": 723,
+      "en": "UV_EDESTADDRREQ",
+      "ja": "UV_EDESTADDRREQ"
+    },
+    {
+      "index": 724,
+      "en": " error.",
+      "ja": "エラーを返します。"
+    },
+    {
+      "index": 725,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 726,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 727,
+      "en": ">= 0: number of bytes sent (it matches the given buffer size).\n< 0: negative error code (",
+      "ja": "0以上: 送信したバイト数（指定したバッファサイズと一致します）。0未満: 負のエラーコード（即座に送信できない場合は、"
+    },
+    {
+      "index": 728,
+      "en": " is returned when the message\ncan’t be sent immediately).",
+      "ja": "を返します）。"
+    },
+    {
+      "index": 729,
+      "en": "Changed in version 1.27.0: ",
+      "ja": "バージョン1.27.0での変更: "
+    },
+    {
+      "index": 730,
+      "en": "added support for connected sockets",
+      "ja": "接続済みソケットのサポートを追加しました。"
+    },
+    {
+      "index": 731,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 732,
+      "en": "uv_udp_try_send2",
+      "ja": "uv_udp_try_send2"
+    },
+    {
+      "index": 733,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 734,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 735,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 736,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 737,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 738,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 739,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 740,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 741,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 742,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 743,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 744,
+      "en": "bufs",
+      "ja": "bufs"
+    },
+    {
+      "index": 745,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 746,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 747,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 748,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 749,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 750,
+      "en": "nbufs",
+      "ja": "nbufs"
+    },
+    {
+      "index": 751,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 752,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 753,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 754,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 755,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 756,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 757,
+      "en": "addrs",
+      "ja": "addrs"
+    },
+    {
+      "index": 758,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 759,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 760,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 761,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 762,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 763,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 764,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 765,
+      "en": "Like ",
+      "ja": "次の関数、"
+    },
+    {
+      "index": 766,
+      "en": ", but can send multiple datagrams.\nLightweight abstraction around ",
+      "ja": "と同様ですが、複数のデータグラムを送信できます。次の関数を簡潔に抽象化しています: "
+    },
+    {
+      "index": 767,
+      "en": "sendmmsg(2)",
+      "ja": "sendmmsg(2)"
+    },
+    {
+      "index": 768,
+      "en": ", with a ",
+      "ja": "。この関数をサポートしないプラットフォームでは、"
+    },
+    {
+      "index": 769,
+      "en": "sendmsg(2)",
+      "ja": "sendmsg(2)"
+    },
+    {
+      "index": 770,
+      "en": "\nfallback loop for platforms that do not support the former. The handle must\nbe fully initialized; call c:func:",
+      "ja": "を使うループへフォールバックします。ハンドルは完全に初期化する必要があります。先にc:func:"
+    },
+    {
+      "index": 771,
+      "en": "uv_udp_bind",
+      "ja": "uv_udp_bind"
+    },
+    {
+      "index": 772,
+      "en": " first.",
+      "ja": "を呼び出してください。"
+    },
+    {
+      "index": 773,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 774,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 775,
+      "en": ">= 0: number of datagrams sent. Zero only if ",
+      "ja": "0以上: 送信したデータグラム数。0になるのは、"
+    },
+    {
+      "index": 776,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 777,
+      "en": " was zero.\n< 0: negative error code. Only if sending the first datagram fails,\notherwise returns a positive send count. ",
+      "ja": "が0だった場合だけです。0未満: 負のエラーコード。最初のデータグラムの送信に失敗した場合だけ負の値となり、それ以外は正の送信数を返します。即座に送信できないときは、"
+    },
+    {
+      "index": 778,
+      "en": " when datagrams\ncannot be sent right now; fall back to ",
+      "ja": "になります。次の関数へフォールバックしてください: "
+    },
+    {
+      "index": 779,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 780,
+      "en": "New in version 1.50.0.",
+      "ja": "バージョン1.50.0で追加。"
+    },
+    {
+      "index": 781,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 782,
+      "en": "uv_udp_recv_start",
+      "ja": "uv_udp_recv_start"
+    },
+    {
+      "index": 783,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 784,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 785,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 786,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 787,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 788,
+      "en": "uv_alloc_cb",
+      "ja": "uv_alloc_cb"
+    },
+    {
+      "index": 789,
+      "en": "alloc_cb",
+      "ja": "alloc_cb"
+    },
+    {
+      "index": 790,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 791,
+      "en": "uv_udp_recv_cb",
+      "ja": "uv_udp_recv_cb"
+    },
+    {
+      "index": 792,
+      "en": "recv_cb",
+      "ja": "recv_cb"
+    },
+    {
+      "index": 793,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 794,
+      "en": "Prepare for receiving data. If the socket has not previously been bound\nwith ",
+      "ja": "データの受信を準備します。ソケットを事前に次の関数でバインドしていなければ、"
+    },
+    {
+      "index": 795,
+      "en": " it is bound to 0.0.0.0 (the “all interfaces”\nIPv4 address) and a random port number.",
+      "ja": "、0.0.0.0（すべてのインターフェイスを表すIPv4アドレス）とランダムなポート番号へバインドします。"
+    },
+    {
+      "index": 796,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 797,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 798,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 799,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 800,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 801,
+      "en": "alloc_cb",
+      "ja": "alloc_cb"
+    },
+    {
+      "index": 802,
+      "en": " – Callback to invoke when temporary storage is needed.",
+      "ja": " – 一時記憶領域が必要なときに呼び出すコールバックです。"
+    },
+    {
+      "index": 803,
+      "en": "recv_cb",
+      "ja": "recv_cb"
+    },
+    {
+      "index": 804,
+      "en": " – Callback to invoke with received data.",
+      "ja": " – 受信したデータを渡して呼び出すコールバックです。"
+    },
+    {
+      "index": 805,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 806,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 807,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 808,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 809,
+      "en": "When using ",
+      "ja": "次の関数を使う場合、"
+    },
+    {
+      "index": 810,
+      "en": "recvmmsg(2)",
+      "ja": "recvmmsg(2)"
+    },
+    {
+      "index": 811,
+      "en": ", the number of messages received at a time is limited\nby the number of max size dgrams that will fit into the buffer allocated in ",
+      "ja": "、1回に受信するメッセージ数の上限は、"
+    },
+    {
+      "index": 812,
+      "en": "alloc_cb",
+      "ja": "alloc_cb"
+    },
+    {
+      "index": 813,
+      "en": ", and\n",
+      "ja": "が確保したバッファに収まる最大サイズのデータグラム数です。また、udp_recv用の"
+    },
+    {
+      "index": 814,
+      "en": "suggested_size",
+      "ja": "suggested_size"
+    },
+    {
+      "index": 815,
+      "en": " in ",
+      "ja": "は、"
+    },
+    {
+      "index": 816,
+      "en": "alloc_cb",
+      "ja": "alloc_cb"
+    },
+    {
+      "index": 817,
+      "en": " for udp_recv is always set to the size of 1 max size dgram.",
+      "ja": "で常に最大サイズのデータグラム1個分のサイズに設定されます。"
+    },
+    {
+      "index": 818,
+      "en": "Changed in version 1.35.0: ",
+      "ja": "バージョン1.35.0での変更: "
+    },
+    {
+      "index": 819,
+      "en": "added support for ",
+      "ja": "対応プラットフォームで"
+    },
+    {
+      "index": 820,
+      "en": "recvmmsg(2)",
+      "ja": "recvmmsg(2)"
+    },
+    {
+      "index": 821,
+      "en": " on supported platforms).\nThe ",
+      "ja": "のサポートを追加しました）。このハンドルの"
+    },
+    {
+      "index": 822,
+      "en": " for this handle should create\nbuffers that are multiples of 64 KiB.",
+      "ja": "は、64 KiBの倍数のバッファを作成してください。"
+    },
+    {
+      "index": 823,
+      "en": "Changed in version 1.37.0: ",
+      "ja": "バージョン1.37.0での変更: "
+    },
+    {
+      "index": 824,
+      "en": "recvmmsg(2)",
+      "ja": "recvmmsg(2)"
+    },
+    {
+      "index": 825,
+      "en": " support is no longer enabled implicitly,\nit must be explicitly requested by passing the ",
+      "ja": "のサポートは暗黙には有効にならなくなりました。次のフラグ、"
+    },
+    {
+      "index": 826,
+      "en": "UV_UDP_RECVMMSG",
+      "ja": "UV_UDP_RECVMMSG"
+    },
+    {
+      "index": 827,
+      "en": " flag to\n",
+      "ja": "を、次の関数へ渡して明示的に要求してください: "
+    },
+    {
+      "index": 828,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 829,
+      "en": "Changed in version 1.39.0: ",
+      "ja": "バージョン1.39.0での変更: "
+    },
+    {
+      "index": 830,
+      "en": " can be used in ",
+      "ja": "を"
+    },
+    {
+      "index": 831,
+      "en": "alloc_cb",
+      "ja": "alloc_cb"
+    },
+    {
+      "index": 832,
+      "en": " to\ndetermine if a buffer sized for use with ",
+      "ja": "内で使い、現在のハンドルとプラットフォームで"
+    },
+    {
+      "index": 833,
+      "en": "recvmmsg(2)",
+      "ja": "recvmmsg(2)"
+    },
+    {
+      "index": 834,
+      "en": " should be\nallocated for the current handle/platform.",
+      "ja": "向けサイズのバッファを確保すべきか判断できます。"
+    },
+    {
+      "index": 835,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 836,
+      "en": "uv_udp_using_recvmmsg",
+      "ja": "uv_udp_using_recvmmsg"
+    },
+    {
+      "index": 837,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 838,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 839,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 840,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 841,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 842,
+      "en": "Returns 1 if the UDP handle was created with the ",
+      "ja": "UDPハンドルを次のフラグ、"
+    },
+    {
+      "index": 843,
+      "en": "UV_UDP_RECVMMSG",
+      "ja": "UV_UDP_RECVMMSG"
+    },
+    {
+      "index": 844,
+      "en": " flag\nand the platform supports ",
+      "ja": "付きで作成し、プラットフォームが"
+    },
+    {
+      "index": 845,
+      "en": "recvmmsg(2)",
+      "ja": "recvmmsg(2)"
+    },
+    {
+      "index": 846,
+      "en": ", 0 otherwise.",
+      "ja": "をサポートしていれば1、それ以外は0を返します。"
+    },
+    {
+      "index": 847,
+      "en": "New in version 1.39.0.",
+      "ja": "バージョン1.39.0で追加。"
+    },
+    {
+      "index": 848,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 849,
+      "en": "uv_udp_recv_stop",
+      "ja": "uv_udp_recv_stop"
+    },
+    {
+      "index": 850,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 851,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 852,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 853,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 854,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 855,
+      "en": "Stop listening for incoming datagrams.",
+      "ja": "受信データグラムの監視を停止します。"
+    },
+    {
+      "index": 856,
+      "en": "Parameters",
+      "ja": "パラメーター"
+    },
+    {
+      "index": 857,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 858,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 859,
+      "en": " – UDP handle. Should have been initialized with\n",
+      "ja": " – UDPハンドルです。次の関数で初期化しておく必要があります: "
+    },
+    {
+      "index": 860,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 861,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 862,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 863,
+      "en": "0 on success, or an error code < 0 on failure.",
+      "ja": "成功時は0、失敗時は0未満のエラーコードを返します。"
+    },
+    {
+      "index": 864,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 865,
+      "en": "uv_udp_get_send_queue_size",
+      "ja": "uv_udp_get_send_queue_size"
+    },
+    {
+      "index": 866,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 867,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 868,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 869,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 870,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 871,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 872,
+      "en": "Returns ",
+      "ja": "次の値を返します: "
+    },
+    {
+      "index": 873,
+      "en": "handle->send_queue_size",
+      "ja": "handle->send_queue_size"
+    },
+    {
+      "index": 874,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 875,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 876,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 877,
+      "en": "uv_udp_get_send_queue_count",
+      "ja": "uv_udp_get_send_queue_count"
+    },
+    {
+      "index": 878,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 879,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 880,
+      "en": "uv_udp_t",
+      "ja": "uv_udp_t"
+    },
+    {
+      "index": 881,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 882,
+      "en": "handle",
+      "ja": "handle"
+    },
+    {
+      "index": 883,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 884,
+      "en": "Returns ",
+      "ja": "次の値を返します: "
+    },
+    {
+      "index": 885,
+      "en": "handle->send_queue_count",
+      "ja": "handle->send_queue_count"
+    },
+    {
+      "index": 886,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 887,
+      "en": "New in version 1.19.0.",
+      "ja": "バージョン1.19.0で追加。"
+    },
+    {
+      "index": 888,
+      "en": "See also",
+      "ja": "関連項目"
+    },
+    {
+      "index": 889,
+      "en": "The ",
+      "ja": "次の型の"
+    },
+    {
+      "index": 890,
+      "en": " API functions also apply.",
+      "ja": "API関数も適用されます。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 2,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}

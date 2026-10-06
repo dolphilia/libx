@@ -1,0 +1,8 @@
+from pathlib import Path
+from bs4 import BeautifulSoup,NavigableString
+import json,sys,hashlib
+r=Path('/Users/dolphilia/github/libx');p=r/'docs/notes/document-import/libuv/1.53.0';e=r/'docs/notes/project-expansion/runs/evidence/2026-10-05-762';f=p/'translation/ja/reference/udp.md';h,b=f.read_text().split('---\n',2)[1:];s=BeautifulSoup(b.replace('&#10;','\n'),'html.parser')
+for api in ['c.uv_udp_getpeername','c.uv_udp_getsockname']:
+ para=s.select_one('[id="'+api+'"]').find_next_sibling('dd').select_one('.field-list li p');strong=para.select_one('strong');assert strong.get_text()==' – UDPハンドルです。次の関数、';strong.string='handle';txt=strong.next_sibling;assert str(txt)==' – UDPハンドルです。次の関数で初期化しておく必要があります: ';txt.replace_with(' – UDPハンドルです。次の関数、');print(para.get_text())
+sys.path.insert(0,str(p));from html_preservation import serialize_article
+f.write_text('---\n'+h+'---\n\n'+serialize_article(s.select_one('article'),b)+'\n');Path('/private/tmp/libx-libuv-formal-689/apps/libuv/src/content/docs/v1-53-0/ja/reference/udp.md').write_bytes(f.read_bytes());j=json.loads((e/'CORRECTIONS.json').read_text());j['afterSha256']=hashlib.sha256(f.read_bytes()).hexdigest();j['initialRepairIssue']='Initial draft correction mistakenly replaced getpeername/getsockname handle label rather than following description; detected during corrected paragraph read before registration and repaired.';j['followupCorrection']={'restoredLabels':['getpeername.handle','getsockname.handle'],'descriptionOnly':True};(e/'CORRECTIONS.json').write_text(json.dumps(j,ensure_ascii=False,indent=2)+'\n');(e/'repair-field-labels.py').write_bytes(Path(__file__).read_bytes())

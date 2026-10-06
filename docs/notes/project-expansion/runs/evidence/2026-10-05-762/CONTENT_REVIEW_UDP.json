@@ -1,0 +1,84 @@
+{
+  "page": "reference/udp",
+  "status": "passed",
+  "at": "2026-10-04T23:24:26.037007+00:00",
+  "reviewer": "Codex configured gpt-6.1-sol; actual runtime identifier not exposed",
+  "localLLMUsed": false,
+  "process": "Separate full fixed-source/current English/current Japanese/API/footer reading after761 translation; 14 Japanese paragraphs/list items clarified; current corrected paragraphs reread. Mechanical checks distinct from semantic review.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/udp.rst",
+      "sha256": "09f01b976b6bfba11e09c663ced430e89af45c0c5daeb96f298f487c2de5bb0f"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/udp.md",
+      "sha256": "f556554cd448b503a38cda62df6acd453c3355d8cac223d5ccb61897c4b75126"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/udp.md",
+      "sha256": "b8181762db7f0e5af1ee1b019581faacace930c994545ee448df0d3362abb796"
+    }
+  ],
+  "coverage": {
+    "original": "all udp.rst including32 declarations/2 original enum blocks/send/recv/buffer ownership/flags/platform/multicast/version conditions/footer",
+    "canonical": "all current English article/footer",
+    "translation": "all current Japanese article/footer",
+    "unreadRanges": []
+  },
+  "findings": [
+    {
+      "scope": "full fixed RST / EN / JA / footer",
+      "result": "Entire udp.rst/current English/current Japanese/API/enum code/frontmatter/footer read separately after761 translation. Initial combined output truncated; complete narrative rerendered separately, RST tail and API signatures separately read. All891 mapped nodes/32 declarations/2 original enum blocks covered;14 Japanese paragraphs/list items clarified and reread; initial mistaken handle-label edits were detected before registration and labels restored with separate description correction and another build; no unread ranges."
+    },
+    {
+      "scope": "recv callback and buffer ownership",
+      "result": "nread bytes/0 no-data vs empty datagram addr nonNULL/negative transmission error, NULL sender address and callback-only lifetime retained. Callee frees buffer, no libuv reuse, null buffer on error. MMSG_CHUNK buffers must not be freed; final no-error callback0/NULL/initial buffer/CHUNK cleared/FREE set, negative error alternative allows free.1.40 FREE flag and exact enums retained."
+    },
+    {
+      "scope": "init/open/bind/connect/addresses",
+      "result": "Lazy init, lower8 domain bits/AF_UNSPEC no socket, explicit RECVMMSG64KiB buffers, open_ex flags, Unix datagram contract/raw/netlink/nonblocking and unconditional open SO_REUSEADDR retained. REUSEPORT supported OS/version list, other ENOTSUP, balancing override vs unsupported combination retained. Original RECVERR naming and malformed source markup kept without speculative source correction. Connect NULL disconnect and EISCONN/ENOTCONN, getpeer/getlocal prerequisites/storage/namelen wording retained."
+    },
+    {
+      "scope": "multicast and send APIs",
+      "result": "Membership/source membership all parameters, multicast loop/on-off/ttl1..255/interface/broadcast/general ttl and five alternative init/bind prerequisites retained and clarified. Send automatic0.0.0.0/randomport and Windows unspecified localhost mapping retained. Connected addrNULL vs unconnected nonNULL/error codes, request no-init/buffers/count/callback retained. try_send no queue/byte count vs try_send2 datagram count/zero only count0/negative only first fail/EAGAIN and fallback preserved."
+    },
+    {
+      "scope": "recv start/version labels/footer",
+      "result": "Buffer capacity max-datagram limit/suggested_size max one datagram,1.35 recvmmsg64KiB,1.37 explicit flag,1.39 detection helper and1/0 both-conditions retained. All version labels/queue accessors/inherited APIs retained. Generator three fallback-parser warnings/try_send2 original signature anchor note translated in footer; raw c:func source notation retained. Current762 rebuilt API/code/DOM/1633links/82TOC check separate from full content review; native/full-project content/integration/publication and supplementary video full review pending."
+    }
+  ],
+  "corrections": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-762/CORRECTIONS.json",
+      "sha256": "f6a748853cec404477345d2caac88fbbfa7ecf2e406fe2f32d81d2895316e21b"
+    }
+  ],
+  "supportingEvidence": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-762/API_VERIFICATION.json",
+      "sha256": "3b7fe980b68bfdd4abbaa8af081823664adf5ef429d44a8a80f72f25f23e9dec"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-762/RENDER_VERIFICATION.json",
+      "sha256": "bc1d005f2525ea3af769d7934ee6902d7e8a4ebc82959a9311ea9e68a30a8fd1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-762/HEADING_CODE_CONTEXT_VERIFICATION.json",
+      "sha256": "7ac38860bce3b7d180ea7c0b2ec76c39f726973699ff826c781c042996ca2f6d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-762/PREBUILD.log",
+      "sha256": "eb5561f3fb9be04001f32be848bef20d4dc7e4c82df90cbe47687866b9597038"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-05-762/BUILD_FIXED.log",
+      "sha256": "9a3b51ecfdd716e53eba730b229b0e4b4970626866b7eb556bc2319874d72044"
+    }
+  ],
+  "limitations": [
+    "No sample compilation or runtime experiments performed.",
+    "Final full-project native/check:content/integration/publication pending.",
+    "Full external supplementary video content review unperformed."
+  ],
+  "fullProjectComplete": false
+}

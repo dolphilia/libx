@@ -1,0 +1,7734 @@
+{
+  "page": "reference/misc",
+  "at": "2026-10-04T23:46:03.831837+00:00",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/sources/docs/src/misc.rst",
+      "sha256": "df0c9962d8cf18c500583e034a0b2dceb7b13ea1e446c0a6c37bed8fac3c63c3"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/canonical/en/reference/misc.md",
+      "sha256": "1f88feb083af743f028d98f7b74098176e489c833fad5a1889bb4d91d3ad0a9d"
+    },
+    {
+      "path": "docs/notes/document-import/libuv/1.53.0/translation/ja/reference/misc.md",
+      "sha256": "1efed2b2599f219df4f77a49eab1de166c8dfabb882bfb8dd2ba41fefb7c8826"
+    }
+  ],
+  "fullPageDraft": true,
+  "scope": "entire narrative, headings, API declarations, fifteen original code blocks, notes, footer",
+  "nodePairs": [
+    {
+      "index": 0,
+      "en": "Miscellaneous utilities",
+      "ja": "その他のユーティリティー"
+    },
+    {
+      "index": 1,
+      "en": "This section contains miscellaneous functions that don’t really belong in any\nother section.",
+      "ja": "この節では、ほかの節に分類しにくい各種関数を扱います。"
+    },
+    {
+      "index": 2,
+      "en": "Data types",
+      "ja": "データ型"
+    },
+    {
+      "index": 3,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 4,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 5,
+      "en": "Buffer data type.",
+      "ja": "バッファーのデータ型です。"
+    },
+    {
+      "index": 6,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 7,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 8,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 9,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 10,
+      "en": "base",
+      "ja": "base"
+    },
+    {
+      "index": 11,
+      "en": "Pointer to the base of the buffer.",
+      "ja": "バッファーの先頭を指すポインターです。"
+    },
+    {
+      "index": 12,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 13,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 14,
+      "en": ".",
+      "ja": "."
+    },
+    {
+      "index": 15,
+      "en": "len",
+      "ja": "len"
+    },
+    {
+      "index": 16,
+      "en": "Total bytes in the buffer.",
+      "ja": "バッファーの総バイト数です。"
+    },
+    {
+      "index": 17,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 18,
+      "en": "On Windows this field is ULONG.",
+      "ja": "Windowsでは、このフィールドはULONGです。"
+    },
+    {
+      "index": 19,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 20,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 21,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 22,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 23,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 24,
+      "en": "uv_malloc_func",
+      "ja": "uv_malloc_func"
+    },
+    {
+      "index": 25,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 26,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 27,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 28,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 29,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 30,
+      "en": "Replacement function for ",
+      "ja": "次の関数の代替関数です: "
+    },
+    {
+      "index": 31,
+      "en": "malloc(3)",
+      "ja": "malloc(3)"
+    },
+    {
+      "index": 32,
+      "en": ".\nSee ",
+      "ja": "。次の関数を参照してください: "
+    },
+    {
+      "index": 33,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 34,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 35,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 36,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 37,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 38,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 39,
+      "en": "uv_realloc_func",
+      "ja": "uv_realloc_func"
+    },
+    {
+      "index": 40,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 41,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 42,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 43,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 44,
+      "en": "ptr",
+      "ja": "ptr"
+    },
+    {
+      "index": 45,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 46,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 47,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 48,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 49,
+      "en": "Replacement function for ",
+      "ja": "次の関数の代替関数です: "
+    },
+    {
+      "index": 50,
+      "en": "realloc(3)",
+      "ja": "realloc(3)"
+    },
+    {
+      "index": 51,
+      "en": ".\nSee ",
+      "ja": "。次の関数を参照してください: "
+    },
+    {
+      "index": 52,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 53,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 54,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 55,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 56,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 57,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 58,
+      "en": "uv_calloc_func",
+      "ja": "uv_calloc_func"
+    },
+    {
+      "index": 59,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 60,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 61,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 62,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 63,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 64,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 65,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 66,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 67,
+      "en": "Replacement function for ",
+      "ja": "次の関数の代替関数です: "
+    },
+    {
+      "index": 68,
+      "en": "calloc(3)",
+      "ja": "calloc(3)"
+    },
+    {
+      "index": 69,
+      "en": ".\nSee ",
+      "ja": "。次の関数を参照してください: "
+    },
+    {
+      "index": 70,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 71,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 72,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 73,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 74,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 75,
+      "en": "uv_free_func",
+      "ja": "uv_free_func"
+    },
+    {
+      "index": 76,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 77,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 78,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 79,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 80,
+      "en": "ptr",
+      "ja": "ptr"
+    },
+    {
+      "index": 81,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 82,
+      "en": "Replacement function for ",
+      "ja": "次の関数の代替関数です: "
+    },
+    {
+      "index": 83,
+      "en": "free(3)",
+      "ja": "free(3)"
+    },
+    {
+      "index": 84,
+      "en": ".\nSee ",
+      "ja": "。次の関数を参照してください: "
+    },
+    {
+      "index": 85,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 86,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 87,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 88,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 89,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 90,
+      "en": "uv_random_cb",
+      "ja": "uv_random_cb"
+    },
+    {
+      "index": 91,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 92,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 93,
+      "en": "uv_random_t",
+      "ja": "uv_random_t"
+    },
+    {
+      "index": 94,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 95,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 96,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 97,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 98,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 99,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 100,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 101,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 102,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 103,
+      "en": ",",
+      "ja": ","
+    },
+    {
+      "index": 104,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 105,
+      "en": "buflen",
+      "ja": "buflen"
+    },
+    {
+      "index": 106,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 107,
+      "en": "Callback passed to ",
+      "ja": "次の関数へ渡すコールバックです: "
+    },
+    {
+      "index": 108,
+      "en": ". ",
+      "ja": "。"
+    },
+    {
+      "index": 109,
+      "en": "status",
+      "ja": "status"
+    },
+    {
+      "index": 110,
+      "en": " is non-zero in case of\nerror. The ",
+      "ja": "は、エラーの場合は0以外です。"
+    },
+    {
+      "index": 111,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 112,
+      "en": " pointer is the same pointer that was passed to\n",
+      "ja": "ポインターは、次の関数へ渡したものと同じです: "
+    },
+    {
+      "index": 113,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 114,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 115,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 116,
+      "en": "Cross platform representation of a file handle.",
+      "ja": "プラットフォーム間で使えるファイルハンドルの表現です。"
+    },
+    {
+      "index": 117,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 118,
+      "en": "uv_os_sock_t",
+      "ja": "uv_os_sock_t"
+    },
+    {
+      "index": 119,
+      "en": "Cross platform representation of a socket handle.",
+      "ja": "プラットフォーム間で使えるソケットハンドルの表現です。"
+    },
+    {
+      "index": 120,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 121,
+      "en": "uv_os_fd_t",
+      "ja": "uv_os_fd_t"
+    },
+    {
+      "index": 122,
+      "en": "Abstract representation of a file descriptor. On Unix systems this is a\n",
+      "ja": "ファイルディスクリプターの抽象表現です。Unixでは、"
+    },
+    {
+      "index": 123,
+      "en": "typedef",
+      "ja": "typedef"
+    },
+    {
+      "index": 124,
+      "en": " of ",
+      "ja": "によって定義した"
+    },
+    {
+      "index": 125,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 126,
+      "en": " and on Windows a ",
+      "ja": "であり、Windowsでは"
+    },
+    {
+      "index": 127,
+      "en": "HANDLE",
+      "ja": "HANDLE"
+    },
+    {
+      "index": 128,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 129,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 130,
+      "en": "uv_pid_t",
+      "ja": "uv_pid_t"
+    },
+    {
+      "index": 131,
+      "en": "Cross platform representation of a ",
+      "ja": "プラットフォーム間で使える"
+    },
+    {
+      "index": 132,
+      "en": "pid_t",
+      "ja": "pid_t"
+    },
+    {
+      "index": 133,
+      "en": ".",
+      "ja": "の表現です。"
+    },
+    {
+      "index": 134,
+      "en": "New in version 1.16.0.",
+      "ja": "バージョン1.16.0で追加。"
+    },
+    {
+      "index": 135,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 136,
+      "en": "uv_timeval_t",
+      "ja": "uv_timeval_t"
+    },
+    {
+      "index": 137,
+      "en": "Y2K38-unsafe data type for storing times with microsecond resolution.\nWill be replaced with ",
+      "ja": "マイクロ秒分解能の時刻を格納する、2038年問題に対応していないデータ型です。libuv v2.0では、"
+    },
+    {
+      "index": 138,
+      "en": " in libuv v2.0.",
+      "ja": "に置き換えます。"
+    },
+    {
+      "index": 139,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 140,
+      "en": "uv_timeval64_t",
+      "ja": "uv_timeval64_t"
+    },
+    {
+      "index": 141,
+      "en": "Y2K38-safe data type for storing times with microsecond resolution.",
+      "ja": "マイクロ秒分解能の時刻を格納する、2038年問題に対応したデータ型です。"
+    },
+    {
+      "index": 142,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 143,
+      "en": "uv_timespec64_t",
+      "ja": "uv_timespec64_t"
+    },
+    {
+      "index": 144,
+      "en": "Y2K38-safe data type for storing times with nanosecond resolution.",
+      "ja": "ナノ秒分解能の時刻を格納する、2038年問題に対応したデータ型です。"
+    },
+    {
+      "index": 145,
+      "en": "enum",
+      "ja": "enum"
+    },
+    {
+      "index": 146,
+      "en": "uv_clock_id",
+      "ja": "uv_clock_id"
+    },
+    {
+      "index": 147,
+      "en": "Clock source for ",
+      "ja": "次の関数のクロック源です: "
+    },
+    {
+      "index": 148,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 149,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 150,
+      "en": "uv_rusage_t",
+      "ja": "uv_rusage_t"
+    },
+    {
+      "index": 151,
+      "en": "Data type for resource usage results.",
+      "ja": "資源使用量の結果を格納するデータ型です。"
+    },
+    {
+      "index": 152,
+      "en": "Members marked with ",
+      "ja": "次の印を付けたメンバーは、"
+    },
+    {
+      "index": 153,
+      "en": "(X)",
+      "ja": "(X)"
+    },
+    {
+      "index": 154,
+      "en": " are unsupported on Windows.\nSee ",
+      "ja": "Windowsではサポートしていません。Unix系プラットフォームでサポートするフィールドについては、"
+    },
+    {
+      "index": 155,
+      "en": "getrusage(2)",
+      "ja": "getrusage(2)"
+    },
+    {
+      "index": 156,
+      "en": " for supported fields on UNIX-like platforms.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 157,
+      "en": "The maximum resident set size is reported in kilobytes, the unit most\nplatforms use natively.",
+      "ja": "最大常駐セットサイズは、多くのプラットフォームがそのまま使う単位であるキロバイトで報告します。"
+    },
+    {
+      "index": 158,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 159,
+      "en": "uv_cpu_info_t",
+      "ja": "uv_cpu_info_t"
+    },
+    {
+      "index": 160,
+      "en": "Data type for CPU information.",
+      "ja": "CPU情報のデータ型です。"
+    },
+    {
+      "index": 161,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 162,
+      "en": "uv_interface_address_t",
+      "ja": "uv_interface_address_t"
+    },
+    {
+      "index": 163,
+      "en": "Data type for interface addresses.",
+      "ja": "インターフェースアドレスのデータ型です。"
+    },
+    {
+      "index": 164,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 165,
+      "en": "uv_passwd_t",
+      "ja": "uv_passwd_t"
+    },
+    {
+      "index": 166,
+      "en": "Data type for password file information.",
+      "ja": "パスワードファイル情報のデータ型です。"
+    },
+    {
+      "index": 167,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 168,
+      "en": "uv_group_t",
+      "ja": "uv_group_t"
+    },
+    {
+      "index": 169,
+      "en": "Data type for group file information.",
+      "ja": "グループファイル情報のデータ型です。"
+    },
+    {
+      "index": 170,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 171,
+      "en": "uv_utsname_t",
+      "ja": "uv_utsname_t"
+    },
+    {
+      "index": 172,
+      "en": "Data type for operating system name and version information.",
+      "ja": "OSの名前とバージョン情報のデータ型です。"
+    },
+    {
+      "index": 173,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 174,
+      "en": "uv_env_item_t",
+      "ja": "uv_env_item_t"
+    },
+    {
+      "index": 175,
+      "en": "Data type for environment variable storage.",
+      "ja": "環境変数を格納するデータ型です。"
+    },
+    {
+      "index": 176,
+      "en": "type",
+      "ja": "type"
+    },
+    {
+      "index": 177,
+      "en": "uv_random_t",
+      "ja": "uv_random_t"
+    },
+    {
+      "index": 178,
+      "en": "Random data request type.",
+      "ja": "乱数データ要求の型です。"
+    },
+    {
+      "index": 179,
+      "en": "API",
+      "ja": "API"
+    },
+    {
+      "index": 180,
+      "en": "uv_handle_type",
+      "ja": "uv_handle_type"
+    },
+    {
+      "index": 181,
+      "en": "uv_guess_handle",
+      "ja": "uv_guess_handle"
+    },
+    {
+      "index": 182,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 183,
+      "en": "uv_file",
+      "ja": "uv_file"
+    },
+    {
+      "index": 184,
+      "en": "file",
+      "ja": "file"
+    },
+    {
+      "index": 185,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 186,
+      "en": "Used to detect what type of stream should be used with a given file\ndescriptor. Usually this will be used during initialization to guess the\ntype of the stdio streams.",
+      "ja": "指定したファイルディスクリプターに使うストリームの型を検出します。通常は、初期化中に標準入出力ストリームの型を推定するために使います。"
+    },
+    {
+      "index": 187,
+      "en": "For ",
+      "ja": "次の関数と同等の機能を得るには、"
+    },
+    {
+      "index": 188,
+      "en": "isatty(3)",
+      "ja": "isatty(3)"
+    },
+    {
+      "index": 189,
+      "en": " equivalent functionality use this function and test\nfor ",
+      "ja": "この関数を使い、次の値かどうかを調べます: "
+    },
+    {
+      "index": 190,
+      "en": "UV_TTY",
+      "ja": "UV_TTY"
+    },
+    {
+      "index": 191,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 192,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 193,
+      "en": "uv_replace_allocator",
+      "ja": "uv_replace_allocator"
+    },
+    {
+      "index": 194,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 195,
+      "en": "uv_malloc_func",
+      "ja": "uv_malloc_func"
+    },
+    {
+      "index": 196,
+      "en": "malloc_func",
+      "ja": "malloc_func"
+    },
+    {
+      "index": 197,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 198,
+      "en": "uv_realloc_func",
+      "ja": "uv_realloc_func"
+    },
+    {
+      "index": 199,
+      "en": "realloc_func",
+      "ja": "realloc_func"
+    },
+    {
+      "index": 200,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 201,
+      "en": "uv_calloc_func",
+      "ja": "uv_calloc_func"
+    },
+    {
+      "index": 202,
+      "en": "calloc_func",
+      "ja": "calloc_func"
+    },
+    {
+      "index": 203,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 204,
+      "en": "uv_free_func",
+      "ja": "uv_free_func"
+    },
+    {
+      "index": 205,
+      "en": "free_func",
+      "ja": "free_func"
+    },
+    {
+      "index": 206,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 207,
+      "en": "New in version 1.6.0.",
+      "ja": "バージョン1.6.0で追加。"
+    },
+    {
+      "index": 208,
+      "en": "Override the use of the standard library’s ",
+      "ja": "標準ライブラリーの次のメモリー割り当て関数の使用を置き換えます: "
+    },
+    {
+      "index": 209,
+      "en": "malloc(3)",
+      "ja": "malloc(3)"
+    },
+    {
+      "index": 210,
+      "en": ",\n",
+      "ja": "、"
+    },
+    {
+      "index": 211,
+      "en": "calloc(3)",
+      "ja": "calloc(3)"
+    },
+    {
+      "index": 212,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 213,
+      "en": "realloc(3)",
+      "ja": "realloc(3)"
+    },
+    {
+      "index": 214,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 215,
+      "en": "free(3)",
+      "ja": "free(3)"
+    },
+    {
+      "index": 216,
+      "en": ", memory allocation\nfunctions.",
+      "ja": "。"
+    },
+    {
+      "index": 217,
+      "en": "This function must be called before any other libuv function is called or\nafter all resources have been freed and thus libuv doesn’t reference\nany allocated memory chunk.",
+      "ja": "ほかのlibuv関数を呼び出す前、またはすべての資源を解放し、libuvが割り当て済みのメモリーを参照していない状態で呼び出す必要があります。"
+    },
+    {
+      "index": 218,
+      "en": "On success, it returns 0, if any of the function pointers is ",
+      "ja": "成功時は0を返します。いずれかの関数ポインターが"
+    },
+    {
+      "index": 219,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 220,
+      "en": " it\nreturns ",
+      "ja": "なら、"
+    },
+    {
+      "index": 221,
+      "en": "UV_EINVAL",
+      "ja": "UV_EINVAL"
+    },
+    {
+      "index": 222,
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "index": 223,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 224,
+      "en": "There is no protection against changing the allocator multiple\ntimes. If the user changes it they are responsible for making\nsure the allocator is changed while no memory was allocated with\nthe previous allocator, or that they are compatible.",
+      "ja": "アロケーターを何度も変更することに対する保護はありません。変更する場合、以前のアロケーターで割り当てたメモリーが残っていない時点で変更するか、両者に互換性があることを、ユーザーが保証する必要があります。"
+    },
+    {
+      "index": 225,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 226,
+      "en": "Allocator must be thread-safe.",
+      "ja": "アロケーターはスレッドセーフである必要があります。"
+    },
+    {
+      "index": 227,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 228,
+      "en": "uv_library_shutdown",
+      "ja": "uv_library_shutdown"
+    },
+    {
+      "index": 229,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 230,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 231,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 232,
+      "en": ";",
+      "ja": ";"
+    },
+    {
+      "index": 233,
+      "en": "New in version 1.38.0.",
+      "ja": "バージョン1.38.0で追加。"
+    },
+    {
+      "index": 234,
+      "en": "Release any global state that libuv is holding onto. Libuv will normally\ndo so automatically when it is unloaded but it can be instructed to perform\ncleanup manually.",
+      "ja": "libuvが保持しているグローバルな状態を解放します。通常はアンロード時に自動で解放しますが、手動で後始末するよう指示できます。"
+    },
+    {
+      "index": 235,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 236,
+      "en": "Only call ",
+      "ja": "次の関数は、"
+    },
+    {
+      "index": 237,
+      "en": " once.",
+      "ja": "1回だけ呼び出してください。"
+    },
+    {
+      "index": 238,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 239,
+      "en": "Don’t call ",
+      "ja": "次の関数を、"
+    },
+    {
+      "index": 240,
+      "en": " when there are\nstill event loops or I/O requests active.",
+      "ja": "イベントループやI/O要求がまだ動作中のときに呼び出さないでください。"
+    },
+    {
+      "index": 241,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 242,
+      "en": "Don’t call libuv functions after calling\n",
+      "ja": "次の関数を呼び出した後は、"
+    },
+    {
+      "index": 243,
+      "en": ".",
+      "ja": "libuvの関数を呼び出さないでください。"
+    },
+    {
+      "index": 244,
+      "en": "uv_buf_t",
+      "ja": "uv_buf_t"
+    },
+    {
+      "index": 245,
+      "en": "uv_buf_init",
+      "ja": "uv_buf_init"
+    },
+    {
+      "index": 246,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 247,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 248,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 249,
+      "en": "base",
+      "ja": "base"
+    },
+    {
+      "index": 250,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 251,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 252,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 253,
+      "en": "len",
+      "ja": "len"
+    },
+    {
+      "index": 254,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 255,
+      "en": "Constructor for ",
+      "ja": "次の型のコンストラクターです: "
+    },
+    {
+      "index": 256,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 257,
+      "en": "Due to platform differences the user cannot rely on the ordering of the\n",
+      "ja": "プラットフォーム間の違いがあるため、uv_buf_t構造体の"
+    },
+    {
+      "index": 258,
+      "en": "base",
+      "ja": "base"
+    },
+    {
+      "index": 259,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 260,
+      "en": "len",
+      "ja": "len"
+    },
+    {
+      "index": 261,
+      "en": " members of the uv_buf_t struct. The user is responsible for\nfreeing ",
+      "ja": "メンバーの順序に依存できません。uv_buf_tを使い終えた後の"
+    },
+    {
+      "index": 262,
+      "en": "base",
+      "ja": "base"
+    },
+    {
+      "index": 263,
+      "en": " after the uv_buf_t is done. Return struct passed by value.",
+      "ja": "の解放は、ユーザーの責任です。返す構造体は値渡しです。"
+    },
+    {
+      "index": 264,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 265,
+      "en": "It is discouraged to set ",
+      "ja": "次の値、"
+    },
+    {
+      "index": 266,
+      "en": "len",
+      "ja": "len"
+    },
+    {
+      "index": 267,
+      "en": " to a large value as that may\nresult in spurious failures.  Specifically, Windows may fail on\nwrites larger than about 511 MB, and various Unicies may fail\non I/O larger than about 2 GB (0x7ffff000 bytes). Instead it is\ngenerally better to split the data into multiple ",
+      "ja": "を大きくすることは推奨しません。不必要な失敗につながる可能性があります。具体的には、Windowsでは約511 MBを超える書き込み、各種Unixでは約2 GB（0x7ffff000バイト）を超えるI/Oに失敗することがあります。通常は、データを複数の"
+    },
+    {
+      "index": 268,
+      "en": "uv_write",
+      "ja": "uv_write"
+    },
+    {
+      "index": 269,
+      "en": "\ncalls (attach the ",
+      "ja": "呼び出しへ分割する方が適切です（"
+    },
+    {
+      "index": 270,
+      "en": "write_cb",
+      "ja": "write_cb"
+    },
+    {
+      "index": 271,
+      "en": " to the last one).",
+      "ja": "を最後の呼び出しに付けます）。"
+    },
+    {
+      "index": 272,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 273,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 274,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 275,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 276,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 277,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 278,
+      "en": "argc",
+      "ja": "argc"
+    },
+    {
+      "index": 279,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 280,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 281,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 282,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 283,
+      "en": "argv",
+      "ja": "argv"
+    },
+    {
+      "index": 284,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 285,
+      "en": "Store the program arguments. Required for getting / setting the process title\nor the executable path. Libuv may take ownership of the memory that ",
+      "ja": "プログラムの引数を保存します。プロセスタイトルの取得・設定や実行ファイルのパス取得に必要です。libuvは、"
+    },
+    {
+      "index": 286,
+      "en": "argv",
+      "ja": "argv"
+    },
+    {
+      "index": 287,
+      "en": "\npoints to. This function should be called exactly once, at program start-up.",
+      "ja": "が指すメモリーの所有権を取得する場合があります。プログラム起動時に、ちょうど1回呼び出してください。"
+    },
+    {
+      "index": 288,
+      "en": "Example:",
+      "ja": "例:"
+    },
+    {
+      "index": 289,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 290,
+      "en": "uv_get_process_title",
+      "ja": "uv_get_process_title"
+    },
+    {
+      "index": 291,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 292,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 293,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 294,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 295,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 296,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 297,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 298,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 299,
+      "en": "Gets the title of the current process. You ",
+      "ja": "現在のプロセスのタイトルを取得します。UnixとAIXでは、この関数より前に"
+    },
+    {
+      "index": 300,
+      "en": "must",
+      "ja": "必ず"
+    },
+    {
+      "index": 301,
+      "en": " call ",
+      "ja": "次の関数を呼び出してください: "
+    },
+    {
+      "index": 302,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 303,
+      "en": "\nbefore calling this function on Unix and AIX systems. If ",
+      "ja": "。必要なシステムで"
+    },
+    {
+      "index": 304,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 305,
+      "en": "\nhas not been called on systems that require it, then ",
+      "ja": "を呼び出していない場合は、"
+    },
+    {
+      "index": 306,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 307,
+      "en": " is\nreturned. If ",
+      "ja": "を返します。"
+    },
+    {
+      "index": 308,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 309,
+      "en": " is ",
+      "ja": "が"
+    },
+    {
+      "index": 310,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 311,
+      "en": " or ",
+      "ja": "、または"
+    },
+    {
+      "index": 312,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 313,
+      "en": " is zero, ",
+      "ja": "が0なら、"
+    },
+    {
+      "index": 314,
+      "en": "UV_EINVAL",
+      "ja": "UV_EINVAL"
+    },
+    {
+      "index": 315,
+      "en": " is returned.\nIf ",
+      "ja": "を返します。"
+    },
+    {
+      "index": 316,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 317,
+      "en": " cannot accommodate the process title and terminating ",
+      "ja": "にプロセスタイトルと終端の"
+    },
+    {
+      "index": 318,
+      "en": "nul",
+      "ja": "nul"
+    },
+    {
+      "index": 319,
+      "en": "\ncharacter, the function returns ",
+      "ja": "文字が収まらない場合は、"
+    },
+    {
+      "index": 320,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 321,
+      "en": ".",
+      "ja": "を返します。"
+    },
+    {
+      "index": 322,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 323,
+      "en": "On BSD systems, ",
+      "ja": "BSDでは、初期のプロセスタイトルを取得するために"
+    },
+    {
+      "index": 324,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 325,
+      "en": " is needed for getting the initial process\ntitle. The process title returned will be an empty string until either\n",
+      "ja": "が必要です。"
+    },
+    {
+      "index": 326,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 327,
+      "en": " or ",
+      "ja": "または"
+    },
+    {
+      "index": 328,
+      "en": "uv_set_process_title",
+      "ja": "uv_set_process_title"
+    },
+    {
+      "index": 329,
+      "en": " is called.",
+      "ja": "を呼び出すまでは、返すプロセスタイトルは空文字列です。"
+    },
+    {
+      "index": 330,
+      "en": "Changed in version 1.18.1: ",
+      "ja": "バージョン1.18.1での変更: "
+    },
+    {
+      "index": 331,
+      "en": "now thread-safe on all supported platforms.",
+      "ja": "サポートするすべてのプラットフォームでスレッドセーフになりました。"
+    },
+    {
+      "index": 332,
+      "en": "Changed in version 1.39.0: ",
+      "ja": "バージョン1.39.0での変更: "
+    },
+    {
+      "index": 333,
+      "en": "now returns an error if ",
+      "ja": "次の関数が必要であるにもかかわらず、"
+    },
+    {
+      "index": 334,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 335,
+      "en": " is needed\nbut hasn’t been called.",
+      "ja": "を呼び出していない場合、エラーを返すようになりました。"
+    },
+    {
+      "index": 336,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 337,
+      "en": "uv_set_process_title",
+      "ja": "uv_set_process_title"
+    },
+    {
+      "index": 338,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 339,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 340,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 341,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 342,
+      "en": "title",
+      "ja": "title"
+    },
+    {
+      "index": 343,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 344,
+      "en": "Sets the current process title. You ",
+      "ja": "現在のプロセスタイトルを設定します。UnixとAIXでは、この関数より前に"
+    },
+    {
+      "index": 345,
+      "en": "must",
+      "ja": "必ず"
+    },
+    {
+      "index": 346,
+      "en": " call ",
+      "ja": "次の関数を呼び出してください: "
+    },
+    {
+      "index": 347,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 348,
+      "en": " before\ncalling this function on Unix and AIX systems. If ",
+      "ja": "。必要なシステムで"
+    },
+    {
+      "index": 349,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 350,
+      "en": " has not\nbeen called on systems that require it, then ",
+      "ja": "を呼び出していない場合は、"
+    },
+    {
+      "index": 351,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 352,
+      "en": " is returned. On\nplatforms with a fixed size buffer for the process title the contents of\n",
+      "ja": "を返します。プロセスタイトル用に固定サイズのバッファーを使うプラットフォームでは、"
+    },
+    {
+      "index": 353,
+      "en": "title",
+      "ja": "title"
+    },
+    {
+      "index": 354,
+      "en": " will be copied to the buffer and truncated if larger than the\navailable space. Other platforms will return ",
+      "ja": "の内容をバッファーへコピーし、空き容量を超える場合は切り詰めます。ほかのプラットフォームでは、次のエラーを返します: "
+    },
+    {
+      "index": 355,
+      "en": "UV_ENOMEM",
+      "ja": "UV_ENOMEM"
+    },
+    {
+      "index": 356,
+      "en": " if they cannot\nallocate enough space to duplicate the contents of ",
+      "ja": "。これは、"
+    },
+    {
+      "index": 357,
+      "en": "title",
+      "ja": "title"
+    },
+    {
+      "index": 358,
+      "en": ".",
+      "ja": "の内容を複製する十分な領域を確保できない場合です。"
+    },
+    {
+      "index": 359,
+      "en": "Changed in version 1.18.1: ",
+      "ja": "バージョン1.18.1での変更: "
+    },
+    {
+      "index": 360,
+      "en": "now thread-safe on all supported platforms.",
+      "ja": "サポートするすべてのプラットフォームでスレッドセーフになりました。"
+    },
+    {
+      "index": 361,
+      "en": "Changed in version 1.39.0: ",
+      "ja": "バージョン1.39.0での変更: "
+    },
+    {
+      "index": 362,
+      "en": "now returns an error if ",
+      "ja": "次の関数が必要であるにもかかわらず、"
+    },
+    {
+      "index": 363,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 364,
+      "en": " is needed\nbut hasn’t been called.",
+      "ja": "を呼び出していない場合、エラーを返すようになりました。"
+    },
+    {
+      "index": 365,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 366,
+      "en": "uv_resident_set_memory",
+      "ja": "uv_resident_set_memory"
+    },
+    {
+      "index": 367,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 368,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 369,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 370,
+      "en": "rss",
+      "ja": "rss"
+    },
+    {
+      "index": 371,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 372,
+      "en": "Gets the resident set size (RSS) for the current process.",
+      "ja": "現在のプロセスの常駐セットサイズ（RSS）を取得します。"
+    },
+    {
+      "index": 373,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 374,
+      "en": "uv_uptime",
+      "ja": "uv_uptime"
+    },
+    {
+      "index": 375,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 376,
+      "en": "double",
+      "ja": "double"
+    },
+    {
+      "index": 377,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 378,
+      "en": "uptime",
+      "ja": "uptime"
+    },
+    {
+      "index": 379,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 380,
+      "en": "Gets the current system uptime. Depending on the system full or fractional seconds are returned.",
+      "ja": "現在のシステムの稼働時間を取得します。システムによって、整数秒または小数を含む秒数を返します。"
+    },
+    {
+      "index": 381,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 382,
+      "en": "uv_getrusage",
+      "ja": "uv_getrusage"
+    },
+    {
+      "index": 383,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 384,
+      "en": "uv_rusage_t",
+      "ja": "uv_rusage_t"
+    },
+    {
+      "index": 385,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 386,
+      "en": "rusage",
+      "ja": "rusage"
+    },
+    {
+      "index": 387,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 388,
+      "en": "Gets the resource usage measures for the current process.",
+      "ja": "現在のプロセスの資源使用量を取得します。"
+    },
+    {
+      "index": 389,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 390,
+      "en": "On Windows not all fields are set, the unsupported fields are filled with zeroes.\nSee ",
+      "ja": "Windowsでは、すべてのフィールドを設定するわけではありません。サポートしていないフィールドには0を設定します。詳細は、"
+    },
+    {
+      "index": 391,
+      "en": " for more details.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 392,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 393,
+      "en": "uv_getrusage_thread",
+      "ja": "uv_getrusage_thread"
+    },
+    {
+      "index": 394,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 395,
+      "en": "uv_rusage_t",
+      "ja": "uv_rusage_t"
+    },
+    {
+      "index": 396,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 397,
+      "en": "rusage",
+      "ja": "rusage"
+    },
+    {
+      "index": 398,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 399,
+      "en": "Gets the resource usage measures for the calling thread.",
+      "ja": "呼び出し元スレッドの資源使用量を取得します。"
+    },
+    {
+      "index": 400,
+      "en": "New in version 1.50.0.",
+      "ja": "バージョン1.50.0で追加。"
+    },
+    {
+      "index": 401,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 402,
+      "en": "Not supported on all platforms. May return ",
+      "ja": "すべてのプラットフォームでサポートしているわけではなく、"
+    },
+    {
+      "index": 403,
+      "en": "UV_ENOTSUP",
+      "ja": "UV_ENOTSUP"
+    },
+    {
+      "index": 404,
+      "en": ".\nOn macOS and Windows not all fields are set, the unsupported fields are filled with zeroes.\nSee ",
+      "ja": "を返す場合があります。macOSとWindowsでは、すべてのフィールドを設定するわけではありません。サポートしていないフィールドには0を設定します。詳細は、"
+    },
+    {
+      "index": 405,
+      "en": " for more details.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 406,
+      "en": "uv_pid_t",
+      "ja": "uv_pid_t"
+    },
+    {
+      "index": 407,
+      "en": "uv_os_getpid",
+      "ja": "uv_os_getpid"
+    },
+    {
+      "index": 408,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 409,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 410,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 411,
+      "en": "Returns the current process ID.",
+      "ja": "現在のプロセスIDを返します。"
+    },
+    {
+      "index": 412,
+      "en": "New in version 1.18.0.",
+      "ja": "バージョン1.18.0で追加。"
+    },
+    {
+      "index": 413,
+      "en": "uv_pid_t",
+      "ja": "uv_pid_t"
+    },
+    {
+      "index": 414,
+      "en": "uv_os_getppid",
+      "ja": "uv_os_getppid"
+    },
+    {
+      "index": 415,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 416,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 417,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 418,
+      "en": "Returns the parent process ID.",
+      "ja": "親プロセスのIDを返します。"
+    },
+    {
+      "index": 419,
+      "en": "New in version 1.16.0.",
+      "ja": "バージョン1.16.0で追加。"
+    },
+    {
+      "index": 420,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 421,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 422,
+      "en": "uv_available_parallelism",
+      "ja": "uv_available_parallelism"
+    },
+    {
+      "index": 423,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 424,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 425,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 426,
+      "en": "Returns an estimate of the default amount of parallelism a program should\nuse. Always returns a non-zero value.",
+      "ja": "プログラムがデフォルトで使うべき並列度の推定値を返します。常に0以外の値を返します。"
+    },
+    {
+      "index": 427,
+      "en": "On Linux, inspects the calling thread’s CPU affinity mask to determine if\nit has been pinned to specific CPUs.",
+      "ja": "Linuxでは、呼び出し元スレッドのCPUアフィニティーマスクを調べ、特定のCPUに固定されているかどうかを判断します。"
+    },
+    {
+      "index": 428,
+      "en": "On Windows, the available parallelism may be underreported on systems with\nmore than 64 logical CPUs.",
+      "ja": "Windowsでは、論理CPUが64個を超えるシステムで、利用可能な並列度を実際より小さく報告する場合があります。"
+    },
+    {
+      "index": 429,
+      "en": "On other platforms, reports the number of CPUs that the operating system\nconsiders to be online.",
+      "ja": "ほかのプラットフォームでは、OSがオンラインと見なすCPU数を報告します。"
+    },
+    {
+      "index": 430,
+      "en": "New in version 1.44.0.",
+      "ja": "バージョン1.44.0で追加。"
+    },
+    {
+      "index": 431,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 432,
+      "en": "uv_cpu_info",
+      "ja": "uv_cpu_info"
+    },
+    {
+      "index": 433,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 434,
+      "en": "uv_cpu_info_t",
+      "ja": "uv_cpu_info_t"
+    },
+    {
+      "index": 435,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 436,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 437,
+      "en": "cpu_infos",
+      "ja": "cpu_infos"
+    },
+    {
+      "index": 438,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 439,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 440,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 441,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 442,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 443,
+      "en": "Gets information about the CPUs on the system. The ",
+      "ja": "システムのCPU情報を取得します。"
+    },
+    {
+      "index": 444,
+      "en": "cpu_infos",
+      "ja": "cpu_infos"
+    },
+    {
+      "index": 445,
+      "en": " array will\nhave ",
+      "ja": "配列には"
+    },
+    {
+      "index": 446,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 447,
+      "en": " elements and needs to be freed with ",
+      "ja": "個の要素があり、次の関数で解放する必要があります: "
+    },
+    {
+      "index": 448,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 449,
+      "en": "Use ",
+      "ja": "スレッドや子プロセスに利用できるCPU数を知りたい場合は、次の関数を使ってください: "
+    },
+    {
+      "index": 450,
+      "en": " if you need to know how many CPUs\nare available for threads or child processes.",
+      "ja": "。"
+    },
+    {
+      "index": 451,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 452,
+      "en": "uv_free_cpu_info",
+      "ja": "uv_free_cpu_info"
+    },
+    {
+      "index": 453,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 454,
+      "en": "uv_cpu_info_t",
+      "ja": "uv_cpu_info_t"
+    },
+    {
+      "index": 455,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 456,
+      "en": "cpu_infos",
+      "ja": "cpu_infos"
+    },
+    {
+      "index": 457,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 458,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 459,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 460,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 461,
+      "en": "Frees the ",
+      "ja": "次の配列、"
+    },
+    {
+      "index": 462,
+      "en": "cpu_infos",
+      "ja": "cpu_infos"
+    },
+    {
+      "index": 463,
+      "en": " array previously allocated with ",
+      "ja": "を解放します。これは、次の関数で確保したものです: "
+    },
+    {
+      "index": 464,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 465,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 466,
+      "en": "uv_cpumask_size",
+      "ja": "uv_cpumask_size"
+    },
+    {
+      "index": 467,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 468,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 469,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 470,
+      "en": "Returns the maximum size of the mask used for process/thread affinities,\nor ",
+      "ja": "プロセス・スレッドのアフィニティーに使うマスクの最大サイズを返します。現在のプラットフォームがアフィニティーをサポートしていない場合は、"
+    },
+    {
+      "index": 471,
+      "en": "UV_ENOTSUP",
+      "ja": "UV_ENOTSUP"
+    },
+    {
+      "index": 472,
+      "en": " if affinities are not supported on the current platform.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 473,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    },
+    {
+      "index": 474,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 475,
+      "en": "uv_interface_addresses",
+      "ja": "uv_interface_addresses"
+    },
+    {
+      "index": 476,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 477,
+      "en": "uv_interface_address_t",
+      "ja": "uv_interface_address_t"
+    },
+    {
+      "index": 478,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 479,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 480,
+      "en": "addresses",
+      "ja": "addresses"
+    },
+    {
+      "index": 481,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 482,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 483,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 484,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 485,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 486,
+      "en": "Gets address information about the network interfaces on the system. An\narray of ",
+      "ja": "システムのネットワークインターフェースのアドレス情報を取得します。"
+    },
+    {
+      "index": 487,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 488,
+      "en": " elements is allocated and returned in ",
+      "ja": "個の要素を持つ配列を確保し、"
+    },
+    {
+      "index": 489,
+      "en": "addresses",
+      "ja": "addresses"
+    },
+    {
+      "index": 490,
+      "en": ". It must\nbe freed by the user, calling ",
+      "ja": "で返します。ユーザーが次の関数を呼び出して解放する必要があります: "
+    },
+    {
+      "index": 491,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 492,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 493,
+      "en": "uv_free_interface_addresses",
+      "ja": "uv_free_interface_addresses"
+    },
+    {
+      "index": 494,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 495,
+      "en": "uv_interface_address_t",
+      "ja": "uv_interface_address_t"
+    },
+    {
+      "index": 496,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 497,
+      "en": "addresses",
+      "ja": "addresses"
+    },
+    {
+      "index": 498,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 499,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 500,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 501,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 502,
+      "en": "Free an array of ",
+      "ja": "次の型の配列を解放します: "
+    },
+    {
+      "index": 503,
+      "en": " which was returned by\n",
+      "ja": "。これは、次の関数が返したものです: "
+    },
+    {
+      "index": 504,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 505,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 506,
+      "en": "uv_loadavg",
+      "ja": "uv_loadavg"
+    },
+    {
+      "index": 507,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 508,
+      "en": "double",
+      "ja": "double"
+    },
+    {
+      "index": 509,
+      "en": "avg",
+      "ja": "avg"
+    },
+    {
+      "index": 510,
+      "en": "[",
+      "ja": "["
+    },
+    {
+      "index": 511,
+      "en": "3",
+      "ja": "3"
+    },
+    {
+      "index": 512,
+      "en": "]",
+      "ja": "]"
+    },
+    {
+      "index": 513,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 514,
+      "en": "Gets the load average. See: ",
+      "ja": "負荷平均を取得します。次を参照してください: "
+    },
+    {
+      "index": 515,
+      "en": "https://en.wikipedia.org/wiki/Load_(computing)",
+      "ja": "https://en.wikipedia.org/wiki/Load_(computing)"
+    },
+    {
+      "index": 516,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 517,
+      "en": "Returns [0,0,0] on Windows (i.e., it’s not implemented).",
+      "ja": "Windowsでは[0,0,0]を返します（実装していないため）。"
+    },
+    {
+      "index": 518,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 519,
+      "en": "uv_ip4_addr",
+      "ja": "uv_ip4_addr"
+    },
+    {
+      "index": 520,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 521,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 522,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 523,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 524,
+      "en": "ip",
+      "ja": "ip"
+    },
+    {
+      "index": 525,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 526,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 527,
+      "en": "port",
+      "ja": "port"
+    },
+    {
+      "index": 528,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 529,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 530,
+      "en": "sockaddr_in",
+      "ja": "sockaddr_in"
+    },
+    {
+      "index": 531,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 532,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 533,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 534,
+      "en": "Convert a string containing an IPv4 addresses to a binary structure.",
+      "ja": "IPv4アドレスを含む文字列をバイナリー構造体へ変換します。"
+    },
+    {
+      "index": 535,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 536,
+      "en": "uv_ip6_addr",
+      "ja": "uv_ip6_addr"
+    },
+    {
+      "index": 537,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 538,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 539,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 540,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 541,
+      "en": "ip",
+      "ja": "ip"
+    },
+    {
+      "index": 542,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 543,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 544,
+      "en": "port",
+      "ja": "port"
+    },
+    {
+      "index": 545,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 546,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 547,
+      "en": "sockaddr_in6",
+      "ja": "sockaddr_in6"
+    },
+    {
+      "index": 548,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 549,
+      "en": "addr",
+      "ja": "addr"
+    },
+    {
+      "index": 550,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 551,
+      "en": "Convert a string containing an IPv6 addresses to a binary structure.",
+      "ja": "IPv6アドレスを含む文字列をバイナリー構造体へ変換します。"
+    },
+    {
+      "index": 552,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 553,
+      "en": "uv_ip4_name",
+      "ja": "uv_ip4_name"
+    },
+    {
+      "index": 554,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 555,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 556,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 557,
+      "en": "sockaddr_in",
+      "ja": "sockaddr_in"
+    },
+    {
+      "index": 558,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 559,
+      "en": "src",
+      "ja": "src"
+    },
+    {
+      "index": 560,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 561,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 562,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 563,
+      "en": "dst",
+      "ja": "dst"
+    },
+    {
+      "index": 564,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 565,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 566,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 567,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 568,
+      "en": "Convert a binary structure containing an IPv4 address to a string.",
+      "ja": "IPv4アドレスを含むバイナリー構造体を文字列へ変換します。"
+    },
+    {
+      "index": 569,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 570,
+      "en": "uv_ip6_name",
+      "ja": "uv_ip6_name"
+    },
+    {
+      "index": 571,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 572,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 573,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 574,
+      "en": "sockaddr_in6",
+      "ja": "sockaddr_in6"
+    },
+    {
+      "index": 575,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 576,
+      "en": "src",
+      "ja": "src"
+    },
+    {
+      "index": 577,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 578,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 579,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 580,
+      "en": "dst",
+      "ja": "dst"
+    },
+    {
+      "index": 581,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 582,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 583,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 584,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 585,
+      "en": "Convert a binary structure containing an IPv6 address to a string.",
+      "ja": "IPv6アドレスを含むバイナリー構造体を文字列へ変換します。"
+    },
+    {
+      "index": 586,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 587,
+      "en": "uv_ip_name",
+      "ja": "uv_ip_name"
+    },
+    {
+      "index": 588,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 589,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 590,
+      "en": "struct",
+      "ja": "struct"
+    },
+    {
+      "index": 591,
+      "en": "sockaddr",
+      "ja": "sockaddr"
+    },
+    {
+      "index": 592,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 593,
+      "en": "src",
+      "ja": "src"
+    },
+    {
+      "index": 594,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 595,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 596,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 597,
+      "en": "dst",
+      "ja": "dst"
+    },
+    {
+      "index": 598,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 599,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 600,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 601,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 602,
+      "en": "Convert a binary structure containing an IPv4 address or an IPv6 address to a string.",
+      "ja": "IPv4またはIPv6アドレスを含むバイナリー構造体を文字列へ変換します。"
+    },
+    {
+      "index": 603,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 604,
+      "en": "uv_inet_ntop",
+      "ja": "uv_inet_ntop"
+    },
+    {
+      "index": 605,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 606,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 607,
+      "en": "af",
+      "ja": "af"
+    },
+    {
+      "index": 608,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 609,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 610,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 611,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 612,
+      "en": "src",
+      "ja": "src"
+    },
+    {
+      "index": 613,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 614,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 615,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 616,
+      "en": "dst",
+      "ja": "dst"
+    },
+    {
+      "index": 617,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 618,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 619,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 620,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 621,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 622,
+      "en": "uv_inet_pton",
+      "ja": "uv_inet_pton"
+    },
+    {
+      "index": 623,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 624,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 625,
+      "en": "af",
+      "ja": "af"
+    },
+    {
+      "index": 626,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 627,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 628,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 629,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 630,
+      "en": "src",
+      "ja": "src"
+    },
+    {
+      "index": 631,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 632,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 633,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 634,
+      "en": "dst",
+      "ja": "dst"
+    },
+    {
+      "index": 635,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 636,
+      "en": "Cross-platform IPv6-capable implementation of ",
+      "ja": "プラットフォーム間で使える、IPv6対応の次の関数の実装です: "
+    },
+    {
+      "index": 637,
+      "en": "inet_ntop(3)",
+      "ja": "inet_ntop(3)"
+    },
+    {
+      "index": 638,
+      "en": "\nand ",
+      "ja": "および"
+    },
+    {
+      "index": 639,
+      "en": "inet_pton(3)",
+      "ja": "inet_pton(3)"
+    },
+    {
+      "index": 640,
+      "en": ". On success they return 0. In case of error\nthe target ",
+      "ja": "。成功時は0を返します。エラー時は、対象の"
+    },
+    {
+      "index": 641,
+      "en": "dst",
+      "ja": "dst"
+    },
+    {
+      "index": 642,
+      "en": " pointer is unmodified.",
+      "ja": "ポインターは変更しません。"
+    },
+    {
+      "index": 643,
+      "en": "UV_IF_NAMESIZE",
+      "ja": "UV_IF_NAMESIZE"
+    },
+    {
+      "index": 644,
+      "en": "Maximum IPv6 interface identifier name length.  Defined as\n",
+      "ja": "IPv6インターフェース識別子の名前の最大長です。Unixでは"
+    },
+    {
+      "index": 645,
+      "en": "IFNAMSIZ",
+      "ja": "IFNAMSIZ"
+    },
+    {
+      "index": 646,
+      "en": " on Unix and ",
+      "ja": "、LinuxとWindowsでは"
+    },
+    {
+      "index": 647,
+      "en": "IF_NAMESIZE",
+      "ja": "IF_NAMESIZE"
+    },
+    {
+      "index": 648,
+      "en": " on Linux and Windows.",
+      "ja": "として定義しています。"
+    },
+    {
+      "index": 649,
+      "en": "New in version 1.16.0.",
+      "ja": "バージョン1.16.0で追加。"
+    },
+    {
+      "index": 650,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 651,
+      "en": "uv_if_indextoname",
+      "ja": "uv_if_indextoname"
+    },
+    {
+      "index": 652,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 653,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 654,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 655,
+      "en": "ifindex",
+      "ja": "ifindex"
+    },
+    {
+      "index": 656,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 657,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 658,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 659,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 660,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 661,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 662,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 663,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 664,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 665,
+      "en": "IPv6-capable implementation of ",
+      "ja": "IPv6に対応した次の関数の実装です: "
+    },
+    {
+      "index": 666,
+      "en": "if_indextoname(3)",
+      "ja": "if_indextoname(3)"
+    },
+    {
+      "index": 667,
+      "en": ". When called,\n",
+      "ja": "。呼び出し時、"
+    },
+    {
+      "index": 668,
+      "en": "*size",
+      "ja": "*size"
+    },
+    {
+      "index": 669,
+      "en": " indicates the length of the ",
+      "ja": "は、結果の格納先となる"
+    },
+    {
+      "index": 670,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 671,
+      "en": ", which is used to store the\nresult.\nOn success, zero is returned, ",
+      "ja": "の長さを示します。成功時は0を返し、"
+    },
+    {
+      "index": 672,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 673,
+      "en": " contains the interface name, and\n",
+      "ja": "にインターフェース名を格納します。"
+    },
+    {
+      "index": 674,
+      "en": "*size",
+      "ja": "*size"
+    },
+    {
+      "index": 675,
+      "en": " represents the string length of the ",
+      "ja": "は、"
+    },
+    {
+      "index": 676,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 677,
+      "en": ", excluding the NUL\nterminator byte from ",
+      "ja": "の文字列長を示し、終端NULバイトを"
+    },
+    {
+      "index": 678,
+      "en": "*size",
+      "ja": "*size"
+    },
+    {
+      "index": 679,
+      "en": ". On error, a negative result is\nreturned. If ",
+      "ja": "に含めません。エラー時は負の値を返します。"
+    },
+    {
+      "index": 680,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 681,
+      "en": " is not large enough to hold the result,\n",
+      "ja": "に結果が収まらない場合は、"
+    },
+    {
+      "index": 682,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 683,
+      "en": " is returned, and ",
+      "ja": "を返し、"
+    },
+    {
+      "index": 684,
+      "en": "*size",
+      "ja": "*size"
+    },
+    {
+      "index": 685,
+      "en": " represents the necessary size in\nbytes, including the NUL terminator byte into the ",
+      "ja": "は、終端NULバイトを含めた必要なバイト数を示します（"
+    },
+    {
+      "index": 686,
+      "en": "*size",
+      "ja": "*size"
+    },
+    {
+      "index": 687,
+      "en": ".",
+      "ja": "に含めます）。"
+    },
+    {
+      "index": 688,
+      "en": "On Unix, the returned interface name can be used directly as an\ninterface identifier in scoped IPv6 addresses, e.g.\n",
+      "ja": "Unixでは、返したインターフェース名を、スコープ付きIPv6アドレスの識別子として直接使えます。例: "
+    },
+    {
+      "index": 689,
+      "en": "fe80::abc:def1:2345%en0",
+      "ja": "fe80::abc:def1:2345%en0"
+    },
+    {
+      "index": 690,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 691,
+      "en": "On Windows, the returned interface cannot be used as an interface\nidentifier, as Windows uses numerical interface identifiers, e.g.\n",
+      "ja": "Windowsでは数値のインターフェース識別子を使うため、返したインターフェース名を識別子としては使えません。例: "
+    },
+    {
+      "index": 692,
+      "en": "fe80::abc:def1:2345%5",
+      "ja": "fe80::abc:def1:2345%5"
+    },
+    {
+      "index": 693,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 694,
+      "en": "To get an interface identifier in a cross-platform compatible way,\nuse ",
+      "ja": "プラットフォーム間で互換性のある方法で識別子を取得するには、"
+    },
+    {
+      "index": 695,
+      "en": "uv_if_indextoiid()",
+      "ja": "uv_if_indextoiid()"
+    },
+    {
+      "index": 696,
+      "en": ".",
+      "ja": "を使います。"
+    },
+    {
+      "index": 697,
+      "en": "Example:",
+      "ja": "例:"
+    },
+    {
+      "index": 698,
+      "en": "New in version 1.16.0.",
+      "ja": "バージョン1.16.0で追加。"
+    },
+    {
+      "index": 699,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 700,
+      "en": "uv_if_indextoiid",
+      "ja": "uv_if_indextoiid"
+    },
+    {
+      "index": 701,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 702,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 703,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 704,
+      "en": "ifindex",
+      "ja": "ifindex"
+    },
+    {
+      "index": 705,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 706,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 707,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 708,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 709,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 710,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 711,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 712,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 713,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 714,
+      "en": "Retrieves a network interface identifier suitable for use in an IPv6 scoped\naddress. On Windows, returns the numeric ",
+      "ja": "IPv6のスコープ付きアドレスで使えるネットワークインターフェース識別子を取得します。Windowsでは、数値の"
+    },
+    {
+      "index": 715,
+      "en": "ifindex",
+      "ja": "ifindex"
+    },
+    {
+      "index": 716,
+      "en": " as a string. On all other\nplatforms, ",
+      "ja": "を文字列として返します。ほかのすべてのプラットフォームでは、"
+    },
+    {
+      "index": 717,
+      "en": "uv_if_indextoname()",
+      "ja": "uv_if_indextoname()"
+    },
+    {
+      "index": 718,
+      "en": " is called. The result is written to\n",
+      "ja": "を呼び出します。結果は"
+    },
+    {
+      "index": 719,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 720,
+      "en": ", with ",
+      "ja": "に書き込み、"
+    },
+    {
+      "index": 721,
+      "en": "*size",
+      "ja": "*size"
+    },
+    {
+      "index": 722,
+      "en": " indicating the length of ",
+      "ja": "は"
+    },
+    {
+      "index": 723,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 724,
+      "en": ". If ",
+      "ja": "の長さを示します。"
+    },
+    {
+      "index": 725,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 726,
+      "en": " is not\nlarge enough to hold the result, then ",
+      "ja": "に結果が収まらない場合は、"
+    },
+    {
+      "index": 727,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 728,
+      "en": " is returned, and ",
+      "ja": "を返し、"
+    },
+    {
+      "index": 729,
+      "en": "*size",
+      "ja": "*size"
+    },
+    {
+      "index": 730,
+      "en": "\nrepresents the size, including the NUL byte, required to hold the\nresult.",
+      "ja": "は、結果の格納に必要なサイズを、終端NULバイト込みで示します。"
+    },
+    {
+      "index": 731,
+      "en": "See ",
+      "ja": "詳細は、"
+    },
+    {
+      "index": 732,
+      "en": "uv_if_indextoname",
+      "ja": "uv_if_indextoname"
+    },
+    {
+      "index": 733,
+      "en": " for further details.",
+      "ja": "を参照してください。"
+    },
+    {
+      "index": 734,
+      "en": "New in version 1.16.0.",
+      "ja": "バージョン1.16.0で追加。"
+    },
+    {
+      "index": 735,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 736,
+      "en": "uv_exepath",
+      "ja": "uv_exepath"
+    },
+    {
+      "index": 737,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 738,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 739,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 740,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 741,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 742,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 743,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 744,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 745,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 746,
+      "en": "Gets the executable path. You ",
+      "ja": "実行ファイルのパスを取得します。この関数より前に"
+    },
+    {
+      "index": 747,
+      "en": "must",
+      "ja": "必ず"
+    },
+    {
+      "index": 748,
+      "en": " call ",
+      "ja": "次の関数を呼び出してください: "
+    },
+    {
+      "index": 749,
+      "en": "uv_setup_args",
+      "ja": "uv_setup_args"
+    },
+    {
+      "index": 750,
+      "en": " before calling\nthis function.",
+      "ja": "。"
+    },
+    {
+      "index": 751,
+      "en": "Be careful in setuid executables. On some platforms the executable path\nis an arbitrary string that is controlled by the user. On other platforms\nenvironment variables are consulted that may be under control of the user.",
+      "ja": "setuid実行ファイルでは注意してください。一部のプラットフォームでは、実行ファイルのパスはユーザーが制御する任意の文字列です。ほかのプラットフォームでは、ユーザーが制御できる可能性のある環境変数を参照します。"
+    },
+    {
+      "index": 752,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 753,
+      "en": "uv_cwd",
+      "ja": "uv_cwd"
+    },
+    {
+      "index": 754,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 755,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 756,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 757,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 758,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 759,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 760,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 761,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 762,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 763,
+      "en": "Gets the current working directory, and stores it in ",
+      "ja": "現在の作業ディレクトリーを取得し、"
+    },
+    {
+      "index": 764,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 765,
+      "en": ". If the\ncurrent working directory is too large to fit in ",
+      "ja": "に格納します。現在の作業ディレクトリーが"
+    },
+    {
+      "index": 766,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 767,
+      "en": ", this function\nreturns ",
+      "ja": "に収まらない場合は、"
+    },
+    {
+      "index": 768,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 769,
+      "en": ", and sets ",
+      "ja": "を返し、"
+    },
+    {
+      "index": 770,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 771,
+      "en": " to the required length, including the\nnull terminator.",
+      "ja": "に、終端NULを含む必要な長さを設定します。"
+    },
+    {
+      "index": 772,
+      "en": "Changed in version 1.1.0: ",
+      "ja": "バージョン1.1.0での変更: "
+    },
+    {
+      "index": 773,
+      "en": "On Unix the path no longer ends in a slash.",
+      "ja": "Unixでは、パスの末尾にスラッシュが付かなくなりました。"
+    },
+    {
+      "index": 774,
+      "en": "Changed in version 1.9.0: ",
+      "ja": "バージョン1.9.0での変更: "
+    },
+    {
+      "index": 775,
+      "en": "the returned length includes the terminating null\nbyte on ",
+      "ja": "次のエラーの場合、返す長さに終端NULバイトを含めるようになりました: "
+    },
+    {
+      "index": 776,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 777,
+      "en": ", and the buffer is null terminated\non success.",
+      "ja": "。成功時はバッファーをヌル終端します。"
+    },
+    {
+      "index": 778,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 779,
+      "en": "uv_chdir",
+      "ja": "uv_chdir"
+    },
+    {
+      "index": 780,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 781,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 782,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 783,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 784,
+      "en": "dir",
+      "ja": "dir"
+    },
+    {
+      "index": 785,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 786,
+      "en": "Changes the current working directory.",
+      "ja": "現在の作業ディレクトリーを変更します。"
+    },
+    {
+      "index": 787,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 788,
+      "en": "uv_os_homedir",
+      "ja": "uv_os_homedir"
+    },
+    {
+      "index": 789,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 790,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 791,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 792,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 793,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 794,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 795,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 796,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 797,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 798,
+      "en": "Gets the current user’s home directory. On Windows, ",
+      "ja": "現在のユーザーのホームディレクトリーを取得します。Windowsでは、"
+    },
+    {
+      "index": 799,
+      "en": "uv_os_homedir()",
+      "ja": "uv_os_homedir()"
+    },
+    {
+      "index": 800,
+      "en": " first\nchecks the ",
+      "ja": "はまず環境変数"
+    },
+    {
+      "index": 801,
+      "en": "USERPROFILE",
+      "ja": "USERPROFILE"
+    },
+    {
+      "index": 802,
+      "en": " environment variable using\n",
+      "ja": "を、"
+    },
+    {
+      "index": 803,
+      "en": "GetEnvironmentVariableW()",
+      "ja": "GetEnvironmentVariableW()"
+    },
+    {
+      "index": 804,
+      "en": ". If ",
+      "ja": "で調べます。"
+    },
+    {
+      "index": 805,
+      "en": "USERPROFILE",
+      "ja": "USERPROFILE"
+    },
+    {
+      "index": 806,
+      "en": " is not set,\n",
+      "ja": "を設定していない場合は、"
+    },
+    {
+      "index": 807,
+      "en": "GetUserProfileDirectoryW()",
+      "ja": "GetUserProfileDirectoryW()"
+    },
+    {
+      "index": 808,
+      "en": " is called. On all other operating systems,\n",
+      "ja": "を呼び出します。ほかのすべてのOSでは、"
+    },
+    {
+      "index": 809,
+      "en": "uv_os_homedir()",
+      "ja": "uv_os_homedir()"
+    },
+    {
+      "index": 810,
+      "en": " first checks the ",
+      "ja": "はまず環境変数"
+    },
+    {
+      "index": 811,
+      "en": "HOME",
+      "ja": "HOME"
+    },
+    {
+      "index": 812,
+      "en": " environment variable using\n",
+      "ja": "を、"
+    },
+    {
+      "index": 813,
+      "en": "getenv(3)",
+      "ja": "getenv(3)"
+    },
+    {
+      "index": 814,
+      "en": ". If ",
+      "ja": "で調べます。"
+    },
+    {
+      "index": 815,
+      "en": "HOME",
+      "ja": "HOME"
+    },
+    {
+      "index": 816,
+      "en": " is not set, ",
+      "ja": "を設定していない場合は、"
+    },
+    {
+      "index": 817,
+      "en": "getpwuid_r(3)",
+      "ja": "getpwuid_r(3)"
+    },
+    {
+      "index": 818,
+      "en": " is called. The\nuser’s home directory is stored in ",
+      "ja": "を呼び出します。ユーザーのホームディレクトリーは"
+    },
+    {
+      "index": 819,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 820,
+      "en": ". When ",
+      "ja": "に格納します。"
+    },
+    {
+      "index": 821,
+      "en": "uv_os_homedir()",
+      "ja": "uv_os_homedir()"
+    },
+    {
+      "index": 822,
+      "en": " is\ncalled, ",
+      "ja": "の呼び出し時、"
+    },
+    {
+      "index": 823,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 824,
+      "en": " indicates the maximum size of ",
+      "ja": "は"
+    },
+    {
+      "index": 825,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 826,
+      "en": ". On success ",
+      "ja": "の最大サイズを示します。成功時は、"
+    },
+    {
+      "index": 827,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 828,
+      "en": " is set\nto the string length of ",
+      "ja": "に"
+    },
+    {
+      "index": 829,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 830,
+      "en": ". On ",
+      "ja": "の文字列長を設定します。"
+    },
+    {
+      "index": 831,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 832,
+      "en": " failure ",
+      "ja": "による失敗時は、"
+    },
+    {
+      "index": 833,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 834,
+      "en": " is set to the\nrequired length for ",
+      "ja": "に"
+    },
+    {
+      "index": 835,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 836,
+      "en": ", including the null byte.",
+      "ja": "の必要な長さをNULバイト込みで設定します。"
+    },
+    {
+      "index": 837,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 838,
+      "en": "uv_os_homedir()",
+      "ja": "uv_os_homedir()"
+    },
+    {
+      "index": 839,
+      "en": " is not thread safe.",
+      "ja": "はスレッドセーフではありません。"
+    },
+    {
+      "index": 840,
+      "en": "New in version 1.6.0.",
+      "ja": "バージョン1.6.0で追加。"
+    },
+    {
+      "index": 841,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 842,
+      "en": "uv_os_tmpdir",
+      "ja": "uv_os_tmpdir"
+    },
+    {
+      "index": 843,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 844,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 845,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 846,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 847,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 848,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 849,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 850,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 851,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 852,
+      "en": "Gets the temp directory. On Windows, ",
+      "ja": "一時ディレクトリーを取得します。Windowsでは、"
+    },
+    {
+      "index": 853,
+      "en": "uv_os_tmpdir()",
+      "ja": "uv_os_tmpdir()"
+    },
+    {
+      "index": 854,
+      "en": " uses ",
+      "ja": "は"
+    },
+    {
+      "index": 855,
+      "en": "GetTempPathW()",
+      "ja": "GetTempPathW()"
+    },
+    {
+      "index": 856,
+      "en": ".\nOn all other operating systems, ",
+      "ja": "を使います。ほかのすべてのOSでは、"
+    },
+    {
+      "index": 857,
+      "en": "uv_os_tmpdir()",
+      "ja": "uv_os_tmpdir()"
+    },
+    {
+      "index": 858,
+      "en": " uses the first environment\nvariable found in the ordered list ",
+      "ja": "は、環境変数を次の順序で調べ、最初に見つかったものを使います: "
+    },
+    {
+      "index": 859,
+      "en": "TMPDIR",
+      "ja": "TMPDIR"
+    },
+    {
+      "index": 860,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 861,
+      "en": "TMP",
+      "ja": "TMP"
+    },
+    {
+      "index": 862,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 863,
+      "en": "TEMP",
+      "ja": "TEMP"
+    },
+    {
+      "index": 864,
+      "en": ", and ",
+      "ja": "、"
+    },
+    {
+      "index": 865,
+      "en": "TEMPDIR",
+      "ja": "TEMPDIR"
+    },
+    {
+      "index": 866,
+      "en": ".\nIf none of these are found, the path ",
+      "ja": "。どれも見つからない場合は、"
+    },
+    {
+      "index": 867,
+      "en": "“/tmp”",
+      "ja": "“/tmp”"
+    },
+    {
+      "index": 868,
+      "en": " is used, or, on Android,\n",
+      "ja": "、Androidでは"
+    },
+    {
+      "index": 869,
+      "en": "“/data/local/tmp”",
+      "ja": "“/data/local/tmp”"
+    },
+    {
+      "index": 870,
+      "en": " is used. The temp directory is stored in ",
+      "ja": "を使います。一時ディレクトリーは"
+    },
+    {
+      "index": 871,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 872,
+      "en": ". When\n",
+      "ja": "に格納します。"
+    },
+    {
+      "index": 873,
+      "en": "uv_os_tmpdir()",
+      "ja": "uv_os_tmpdir()"
+    },
+    {
+      "index": 874,
+      "en": " is called, ",
+      "ja": "の呼び出し時、"
+    },
+    {
+      "index": 875,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 876,
+      "en": " indicates the maximum size of ",
+      "ja": "は"
+    },
+    {
+      "index": 877,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 878,
+      "en": ".\nOn success ",
+      "ja": "の最大サイズを示します。成功時は、"
+    },
+    {
+      "index": 879,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 880,
+      "en": " is set to the string length of ",
+      "ja": "に"
+    },
+    {
+      "index": 881,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 882,
+      "en": " (which does not\ninclude the terminating null). On ",
+      "ja": "の文字列長を設定します（終端NULは含めません）。"
+    },
+    {
+      "index": 883,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 884,
+      "en": " failure ",
+      "ja": "による失敗時は、"
+    },
+    {
+      "index": 885,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 886,
+      "en": " is set to the\nrequired length for ",
+      "ja": "に"
+    },
+    {
+      "index": 887,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 888,
+      "en": ", including the null byte.",
+      "ja": "の必要な長さをNULバイト込みで設定します。"
+    },
+    {
+      "index": 889,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 890,
+      "en": "uv_os_tmpdir()",
+      "ja": "uv_os_tmpdir()"
+    },
+    {
+      "index": 891,
+      "en": " is not thread safe.",
+      "ja": "はスレッドセーフではありません。"
+    },
+    {
+      "index": 892,
+      "en": "New in version 1.9.0.",
+      "ja": "バージョン1.9.0で追加。"
+    },
+    {
+      "index": 893,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 894,
+      "en": "uv_os_get_passwd",
+      "ja": "uv_os_get_passwd"
+    },
+    {
+      "index": 895,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 896,
+      "en": "uv_passwd_t",
+      "ja": "uv_passwd_t"
+    },
+    {
+      "index": 897,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 898,
+      "en": "pwd",
+      "ja": "pwd"
+    },
+    {
+      "index": 899,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 900,
+      "en": "Gets a subset of the password file entry for the current effective uid (not\nthe real uid). The populated data includes the username, euid, gid, shell,\nand home directory. On non-Windows systems, all data comes from\n",
+      "ja": "現在の実効uid（実uidではありません）のパスワードファイルエントリーの一部を取得します。取得するデータは、ユーザー名、euid、gid、シェル、ホームディレクトリーです。Windows以外では、すべてのデータを"
+    },
+    {
+      "index": 901,
+      "en": "getpwuid_r(3)",
+      "ja": "getpwuid_r(3)"
+    },
+    {
+      "index": 902,
+      "en": ". On Windows, uid and gid are set to -1 and have no\nmeaning, and shell is ",
+      "ja": "から取得します。Windowsではuidとgidに-1を設定し、意味を持ちません。シェルは"
+    },
+    {
+      "index": 903,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 904,
+      "en": ". After successfully calling this function, the\nmemory allocated to ",
+      "ja": "です。この関数の成功後、"
+    },
+    {
+      "index": 905,
+      "en": "pwd",
+      "ja": "pwd"
+    },
+    {
+      "index": 906,
+      "en": " needs to be freed with\n",
+      "ja": "に確保したメモリーを、次の関数で解放する必要があります: "
+    },
+    {
+      "index": 907,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 908,
+      "en": "New in version 1.9.0.",
+      "ja": "バージョン1.9.0で追加。"
+    },
+    {
+      "index": 909,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 910,
+      "en": "uv_os_get_passwd2",
+      "ja": "uv_os_get_passwd2"
+    },
+    {
+      "index": 911,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 912,
+      "en": "uv_passwd_t",
+      "ja": "uv_passwd_t"
+    },
+    {
+      "index": 913,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 914,
+      "en": "pwd",
+      "ja": "pwd"
+    },
+    {
+      "index": 915,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 916,
+      "en": "uv_uid_t",
+      "ja": "uv_uid_t"
+    },
+    {
+      "index": 917,
+      "en": "uid",
+      "ja": "uid"
+    },
+    {
+      "index": 918,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 919,
+      "en": "Gets a subset of the password file entry for the provided uid.\nThe populated data includes the username, euid, gid, shell,\nand home directory. On non-Windows systems, all data comes from\n",
+      "ja": "指定したuidのパスワードファイルエントリーの一部を取得します。取得するデータは、ユーザー名、euid、gid、シェル、ホームディレクトリーです。Windows以外では、すべてのデータを"
+    },
+    {
+      "index": 920,
+      "en": "getpwuid_r(3)",
+      "ja": "getpwuid_r(3)"
+    },
+    {
+      "index": 921,
+      "en": ". On Windows, uid and gid are set to -1 and have no\nmeaning, and shell is ",
+      "ja": "から取得します。Windowsではuidとgidに-1を設定し、意味を持ちません。シェルは"
+    },
+    {
+      "index": 922,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 923,
+      "en": ". After successfully calling this function, the\nmemory allocated to ",
+      "ja": "です。この関数の成功後、"
+    },
+    {
+      "index": 924,
+      "en": "pwd",
+      "ja": "pwd"
+    },
+    {
+      "index": 925,
+      "en": " needs to be freed with\n",
+      "ja": "に確保したメモリーを、次の関数で解放する必要があります: "
+    },
+    {
+      "index": 926,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 927,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    },
+    {
+      "index": 928,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 929,
+      "en": "uv_os_get_group",
+      "ja": "uv_os_get_group"
+    },
+    {
+      "index": 930,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 931,
+      "en": "uv_group_t",
+      "ja": "uv_group_t"
+    },
+    {
+      "index": 932,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 933,
+      "en": "group",
+      "ja": "group"
+    },
+    {
+      "index": 934,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 935,
+      "en": "uv_uid_t",
+      "ja": "uv_uid_t"
+    },
+    {
+      "index": 936,
+      "en": "gid",
+      "ja": "gid"
+    },
+    {
+      "index": 937,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 938,
+      "en": "Gets a subset of the group file entry for the provided uid.\nThe populated data includes the group name, gid, and members. On non-Windows\nsystems, all data comes from ",
+      "ja": "指定したuidのグループファイルエントリーの一部を取得します。取得するデータは、グループ名、gid、メンバーです。Windows以外では、すべてのデータを"
+    },
+    {
+      "index": 939,
+      "en": "getgrgid_r(3)",
+      "ja": "getgrgid_r(3)"
+    },
+    {
+      "index": 940,
+      "en": ". On Windows, uid and gid\nare set to -1 and have no meaning. After successfully calling this function,\nthe memory allocated to ",
+      "ja": "から取得します。Windowsではuidとgidに-1を設定し、意味を持ちません。この関数の成功後、"
+    },
+    {
+      "index": 941,
+      "en": "group",
+      "ja": "group"
+    },
+    {
+      "index": 942,
+      "en": " needs to be freed with\n",
+      "ja": "に確保したメモリーを、次の関数で解放する必要があります: "
+    },
+    {
+      "index": 943,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 944,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    },
+    {
+      "index": 945,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 946,
+      "en": "uv_os_free_group",
+      "ja": "uv_os_free_group"
+    },
+    {
+      "index": 947,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 948,
+      "en": "uv_passwd_t",
+      "ja": "uv_passwd_t"
+    },
+    {
+      "index": 949,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 950,
+      "en": "pwd",
+      "ja": "pwd"
+    },
+    {
+      "index": 951,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 952,
+      "en": "Frees the memory previously allocated with ",
+      "ja": "次の関数で確保したメモリーを解放します: "
+    },
+    {
+      "index": 953,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 954,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    },
+    {
+      "index": 955,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 956,
+      "en": "uv_os_free_passwd",
+      "ja": "uv_os_free_passwd"
+    },
+    {
+      "index": 957,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 958,
+      "en": "uv_passwd_t",
+      "ja": "uv_passwd_t"
+    },
+    {
+      "index": 959,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 960,
+      "en": "pwd",
+      "ja": "pwd"
+    },
+    {
+      "index": 961,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 962,
+      "en": "Frees the ",
+      "ja": "次のメモリー、"
+    },
+    {
+      "index": 963,
+      "en": "pwd",
+      "ja": "pwd"
+    },
+    {
+      "index": 964,
+      "en": " memory previously allocated with ",
+      "ja": "を解放します。これは、次の関数で確保したものです: "
+    },
+    {
+      "index": 965,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 966,
+      "en": "New in version 1.9.0.",
+      "ja": "バージョン1.9.0で追加。"
+    },
+    {
+      "index": 967,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 968,
+      "en": "uv_get_free_memory",
+      "ja": "uv_get_free_memory"
+    },
+    {
+      "index": 969,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 970,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 971,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 972,
+      "en": "Gets the amount of free memory available in the system, as reported by\nthe kernel (in bytes). Returns 0 when unknown.",
+      "ja": "カーネルが報告する、システムで利用できる空きメモリーの量をバイト単位で取得します。不明の場合は0を返します。"
+    },
+    {
+      "index": 973,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 974,
+      "en": "uv_get_total_memory",
+      "ja": "uv_get_total_memory"
+    },
+    {
+      "index": 975,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 976,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 977,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 978,
+      "en": "Gets the total amount of physical memory in the system (in bytes).\nReturns 0 when unknown.",
+      "ja": "システムの物理メモリーの総量をバイト単位で取得します。不明の場合は0を返します。"
+    },
+    {
+      "index": 979,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 980,
+      "en": "uv_get_constrained_memory",
+      "ja": "uv_get_constrained_memory"
+    },
+    {
+      "index": 981,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 982,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 983,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 984,
+      "en": "Gets the total amount of memory available to the process (in bytes) based on\nlimits imposed by the OS. If there is no such constraint, or the constraint\nis unknown, ",
+      "ja": "OSが課す制限に基づき、プロセスが利用できるメモリーの総量をバイト単位で取得します。制限がない場合や不明な場合は、"
+    },
+    {
+      "index": 985,
+      "en": "0",
+      "ja": "0"
+    },
+    {
+      "index": 986,
+      "en": " is returned. If there is a constraining mechanism, but there\nis no constraint set, ",
+      "ja": "を返します。制限の仕組みがあるものの、制限を設定していない場合は、"
+    },
+    {
+      "index": 987,
+      "en": "UINT64_MAX",
+      "ja": "UINT64_MAX"
+    },
+    {
+      "index": 988,
+      "en": " is returned. Note that it is not unusual\nfor this value to be less than or greater than ",
+      "ja": "を返します。この値が、次の関数の値より小さい場合や大きい場合も珍しくありません: "
+    },
+    {
+      "index": 989,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 990,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 991,
+      "en": "This function currently only returns a non-zero value on Linux, based\non cgroups if it is present, and on z/OS based on RLIMIT_MEMLIMIT.",
+      "ja": "現在、この関数が0以外を返すのは、cgroupsがある場合にそれを参照するLinuxと、RLIMIT_MEMLIMITを参照するz/OSだけです。"
+    },
+    {
+      "index": 992,
+      "en": "New in version 1.29.0.",
+      "ja": "バージョン1.29.0で追加。"
+    },
+    {
+      "index": 993,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 994,
+      "en": "uv_get_available_memory",
+      "ja": "uv_get_available_memory"
+    },
+    {
+      "index": 995,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 996,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 997,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 998,
+      "en": "Gets the amount of free memory that is still available to the process (in bytes).\nThis differs from ",
+      "ja": "プロセスがまだ利用できる空きメモリーの量をバイト単位で取得します。次の関数とは異なり、"
+    },
+    {
+      "index": 999,
+      "en": " in that it takes into account any\nlimits imposed by the OS. If there is no such constraint, or the constraint\nis unknown, the amount returned will be identical to ",
+      "ja": "OSが課す制限を考慮します。制限がない場合や不明な場合は、次の関数と同じ量を返します: "
+    },
+    {
+      "index": 1000,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1001,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1002,
+      "en": "This function currently only returns a value that is different from\nwhat ",
+      "ja": "現在、この関数が次の関数と異なる値を返すのは、"
+    },
+    {
+      "index": 1003,
+      "en": " reports on Linux, based\non cgroups if it is present.",
+      "ja": "cgroupsがある場合にそれを参照するLinuxだけです。"
+    },
+    {
+      "index": 1004,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    },
+    {
+      "index": 1005,
+      "en": "uint64_t",
+      "ja": "uint64_t"
+    },
+    {
+      "index": 1006,
+      "en": "uv_hrtime",
+      "ja": "uv_hrtime"
+    },
+    {
+      "index": 1007,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1008,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 1009,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1010,
+      "en": "Returns the current high-resolution timestamp. This is expressed in\nnanoseconds. It is relative to an arbitrary time in the past. It is not\nrelated to the time of day and therefore not subject to clock drift. The\nprimary use is for measuring performance between intervals.",
+      "ja": "現在の高分解能タイムスタンプをナノ秒単位で返します。過去の任意の時点からの相対値です。時刻とは関係がないため、時計のドリフトの影響を受けません。主な用途は、区間の性能測定です。"
+    },
+    {
+      "index": 1011,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1012,
+      "en": "Not every platform can support nanosecond resolution; however, this value will always\nbe in nanoseconds.",
+      "ja": "すべてのプラットフォームがナノ秒分解能をサポートするわけではありませんが、この値の単位は常にナノ秒です。"
+    },
+    {
+      "index": 1013,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1014,
+      "en": "uv_clock_gettime",
+      "ja": "uv_clock_gettime"
+    },
+    {
+      "index": 1015,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1016,
+      "en": "uv_clock_id",
+      "ja": "uv_clock_id"
+    },
+    {
+      "index": 1017,
+      "en": "clock_id",
+      "ja": "clock_id"
+    },
+    {
+      "index": 1018,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1019,
+      "en": "uv_timespec64_t",
+      "ja": "uv_timespec64_t"
+    },
+    {
+      "index": 1020,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1021,
+      "en": "ts",
+      "ja": "ts"
+    },
+    {
+      "index": 1022,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1023,
+      "en": "Obtain the current system time from a high-resolution real-time or monotonic\nclock source.",
+      "ja": "高分解能の実時間または単調クロック源から、現在のシステム時刻を取得します。"
+    },
+    {
+      "index": 1024,
+      "en": "The real-time clock counts from the UNIX epoch (1970-01-01) and is subject\nto time adjustments; it can jump back in time.",
+      "ja": "実時間クロックはUNIXエポック（1970-01-01）から数え、時刻調整の影響を受けるため、過去へ戻ることがあります。"
+    },
+    {
+      "index": 1025,
+      "en": "The monotonic clock counts from an arbitrary point in the past and never\njumps back in time.",
+      "ja": "単調クロックは過去の任意の時点から数え、過去へ戻ることはありません。"
+    },
+    {
+      "index": 1026,
+      "en": "New in version 1.45.0.",
+      "ja": "バージョン1.45.0で追加。"
+    },
+    {
+      "index": 1027,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 1028,
+      "en": "uv_print_all_handles",
+      "ja": "uv_print_all_handles"
+    },
+    {
+      "index": 1029,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1030,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 1031,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1032,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1033,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1034,
+      "en": "FILE",
+      "ja": "FILE"
+    },
+    {
+      "index": 1035,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1036,
+      "en": "stream",
+      "ja": "stream"
+    },
+    {
+      "index": 1037,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1038,
+      "en": "Prints all handles associated with the given ",
+      "ja": "指定した"
+    },
+    {
+      "index": 1039,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1040,
+      "en": " to the given ",
+      "ja": "に関連するすべてのハンドルを、指定した"
+    },
+    {
+      "index": 1041,
+      "en": "stream",
+      "ja": "stream"
+    },
+    {
+      "index": 1042,
+      "en": ".",
+      "ja": "へ出力します。"
+    },
+    {
+      "index": 1043,
+      "en": "Example:",
+      "ja": "例:"
+    },
+    {
+      "index": 1044,
+      "en": "The format is ",
+      "ja": "形式は、"
+    },
+    {
+      "index": 1045,
+      "en": "[flags] handle-type handle-address",
+      "ja": "[flags] handle-type handle-address"
+    },
+    {
+      "index": 1046,
+      "en": ". For ",
+      "ja": "です。"
+    },
+    {
+      "index": 1047,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 1048,
+      "en": ":",
+      "ja": "の意味は次のとおりです: "
+    },
+    {
+      "index": 1049,
+      "en": "R",
+      "ja": "R"
+    },
+    {
+      "index": 1050,
+      "en": " is printed for a handle that is referenced",
+      "ja": "は、参照されているハンドルに表示します。"
+    },
+    {
+      "index": 1051,
+      "en": "A",
+      "ja": "A"
+    },
+    {
+      "index": 1052,
+      "en": " is printed for a handle that is active",
+      "ja": "は、アクティブなハンドルに表示します。"
+    },
+    {
+      "index": 1053,
+      "en": "I",
+      "ja": "I"
+    },
+    {
+      "index": 1054,
+      "en": " is printed for a handle that is internal",
+      "ja": "は、内部ハンドルに表示します。"
+    },
+    {
+      "index": 1055,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 1056,
+      "en": "This function is meant for ad hoc debugging, there is no API/ABI\nstability guarantees.",
+      "ja": "この関数は、その場限りのデバッグ用であり、API・ABIの安定性は保証していません。"
+    },
+    {
+      "index": 1057,
+      "en": "New in version 1.8.0.",
+      "ja": "バージョン1.8.0で追加。"
+    },
+    {
+      "index": 1058,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 1059,
+      "en": "uv_print_active_handles",
+      "ja": "uv_print_active_handles"
+    },
+    {
+      "index": 1060,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1061,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 1062,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1063,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1064,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1065,
+      "en": "FILE",
+      "ja": "FILE"
+    },
+    {
+      "index": 1066,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1067,
+      "en": "stream",
+      "ja": "stream"
+    },
+    {
+      "index": 1068,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1069,
+      "en": "This is the same as ",
+      "ja": "次の関数と同じですが、"
+    },
+    {
+      "index": 1070,
+      "en": " except only active handles\nare printed.",
+      "ja": "アクティブなハンドルだけを出力します。"
+    },
+    {
+      "index": 1071,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 1072,
+      "en": "This function is meant for ad hoc debugging, there is no API/ABI\nstability guarantees.",
+      "ja": "この関数は、その場限りのデバッグ用であり、API・ABIの安定性は保証していません。"
+    },
+    {
+      "index": 1073,
+      "en": "New in version 1.8.0.",
+      "ja": "バージョン1.8.0で追加。"
+    },
+    {
+      "index": 1074,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1075,
+      "en": "uv_os_environ",
+      "ja": "uv_os_environ"
+    },
+    {
+      "index": 1076,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1077,
+      "en": "uv_env_item_t",
+      "ja": "uv_env_item_t"
+    },
+    {
+      "index": 1078,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1079,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1080,
+      "en": "envitems",
+      "ja": "envitems"
+    },
+    {
+      "index": 1081,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1082,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1083,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1084,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 1085,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1086,
+      "en": "Retrieves all environment variables. This function will allocate memory\nwhich must be freed by calling ",
+      "ja": "すべての環境変数を取得します。メモリーを確保するため、次の関数を呼び出して解放する必要があります: "
+    },
+    {
+      "index": 1087,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1088,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 1089,
+      "en": "This function is not thread safe.",
+      "ja": "この関数はスレッドセーフではありません。"
+    },
+    {
+      "index": 1090,
+      "en": "New in version 1.31.0.",
+      "ja": "バージョン1.31.0で追加。"
+    },
+    {
+      "index": 1091,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 1092,
+      "en": "uv_os_free_environ",
+      "ja": "uv_os_free_environ"
+    },
+    {
+      "index": 1093,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1094,
+      "en": "uv_env_item_t",
+      "ja": "uv_env_item_t"
+    },
+    {
+      "index": 1095,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1096,
+      "en": "envitems",
+      "ja": "envitems"
+    },
+    {
+      "index": 1097,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1098,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1099,
+      "en": "count",
+      "ja": "count"
+    },
+    {
+      "index": 1100,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1101,
+      "en": ";",
+      "ja": ";"
+    },
+    {
+      "index": 1102,
+      "en": "Frees the memory allocated for the environment variables by\n",
+      "ja": "次の関数が環境変数用に確保したメモリーを解放します: "
+    },
+    {
+      "index": 1103,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1104,
+      "en": "New in version 1.31.0.",
+      "ja": "バージョン1.31.0で追加。"
+    },
+    {
+      "index": 1105,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1106,
+      "en": "uv_os_getenv",
+      "ja": "uv_os_getenv"
+    },
+    {
+      "index": 1107,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1108,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1109,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1110,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1111,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 1112,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1113,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1114,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1115,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1116,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1117,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 1118,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1119,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 1120,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1121,
+      "en": "Retrieves the environment variable specified by ",
+      "ja": "次の名前で指定した環境変数を取得します: "
+    },
+    {
+      "index": 1122,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 1123,
+      "en": ", copies its value\ninto ",
+      "ja": "。値を"
+    },
+    {
+      "index": 1124,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1125,
+      "en": ", and sets ",
+      "ja": "へコピーし、"
+    },
+    {
+      "index": 1126,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 1127,
+      "en": " to the string length of the value. When\ncalling this function, ",
+      "ja": "に値の文字列長を設定します。呼び出し時は、"
+    },
+    {
+      "index": 1128,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 1129,
+      "en": " must be set to the amount of storage available\nin ",
+      "ja": "に"
+    },
+    {
+      "index": 1130,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1131,
+      "en": ", including the null terminator. If the environment variable\nexceeds the storage available in ",
+      "ja": "で利用できる領域の大きさを終端NUL込みで設定してください。環境変数が"
+    },
+    {
+      "index": 1132,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1133,
+      "en": ", ",
+      "ja": "に収まらない場合は、"
+    },
+    {
+      "index": 1134,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 1135,
+      "en": " is returned, and\n",
+      "ja": "を返し、"
+    },
+    {
+      "index": 1136,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 1137,
+      "en": " is set to the amount of storage required to hold the value. If no\nmatching environment variable exists, ",
+      "ja": "に値の格納に必要な領域の大きさを設定します。一致する環境変数がない場合は、"
+    },
+    {
+      "index": 1138,
+      "en": "UV_ENOENT",
+      "ja": "UV_ENOENT"
+    },
+    {
+      "index": 1139,
+      "en": " is returned.",
+      "ja": "を返します。"
+    },
+    {
+      "index": 1140,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 1141,
+      "en": "This function is not thread safe.",
+      "ja": "この関数はスレッドセーフではありません。"
+    },
+    {
+      "index": 1142,
+      "en": "New in version 1.12.0.",
+      "ja": "バージョン1.12.0で追加。"
+    },
+    {
+      "index": 1143,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1144,
+      "en": "uv_os_setenv",
+      "ja": "uv_os_setenv"
+    },
+    {
+      "index": 1145,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1146,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1147,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1148,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1149,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 1150,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1151,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1152,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1153,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1154,
+      "en": "value",
+      "ja": "value"
+    },
+    {
+      "index": 1155,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1156,
+      "en": "Creates or updates the environment variable specified by ",
+      "ja": "次の名前で指定した環境変数を作成または更新します: "
+    },
+    {
+      "index": 1157,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 1158,
+      "en": " with\n",
+      "ja": "。設定する値は、"
+    },
+    {
+      "index": 1159,
+      "en": "value",
+      "ja": "value"
+    },
+    {
+      "index": 1160,
+      "en": ".",
+      "ja": "です。"
+    },
+    {
+      "index": 1161,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 1162,
+      "en": "This function is not thread safe.",
+      "ja": "この関数はスレッドセーフではありません。"
+    },
+    {
+      "index": 1163,
+      "en": "New in version 1.12.0.",
+      "ja": "バージョン1.12.0で追加。"
+    },
+    {
+      "index": 1164,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1165,
+      "en": "uv_os_unsetenv",
+      "ja": "uv_os_unsetenv"
+    },
+    {
+      "index": 1166,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1167,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1168,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1169,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1170,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 1171,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1172,
+      "en": "Deletes the environment variable specified by ",
+      "ja": "次の名前で指定した環境変数を削除します: "
+    },
+    {
+      "index": 1173,
+      "en": "name",
+      "ja": "name"
+    },
+    {
+      "index": 1174,
+      "en": ". If no such environment\nvariable exists, this function returns successfully.",
+      "ja": "。該当する環境変数がなければ、成功として戻ります。"
+    },
+    {
+      "index": 1175,
+      "en": "Warning",
+      "ja": "警告"
+    },
+    {
+      "index": 1176,
+      "en": "This function is not thread safe.",
+      "ja": "この関数はスレッドセーフではありません。"
+    },
+    {
+      "index": 1177,
+      "en": "New in version 1.12.0.",
+      "ja": "バージョン1.12.0で追加。"
+    },
+    {
+      "index": 1178,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1179,
+      "en": "uv_os_gethostname",
+      "ja": "uv_os_gethostname"
+    },
+    {
+      "index": 1180,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1181,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1182,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1183,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1184,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1185,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 1186,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1187,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 1188,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1189,
+      "en": "Returns the hostname as a null-terminated string in ",
+      "ja": "ホスト名をヌル終端文字列として"
+    },
+    {
+      "index": 1190,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1191,
+      "en": ", and sets\n",
+      "ja": "へ返し、"
+    },
+    {
+      "index": 1192,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 1193,
+      "en": " to the string length of the hostname. When calling this function,\n",
+      "ja": "にホスト名の文字列長を設定します。呼び出し時は、"
+    },
+    {
+      "index": 1194,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 1195,
+      "en": " must be set to the amount of storage available in ",
+      "ja": "に"
+    },
+    {
+      "index": 1196,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1197,
+      "en": ", including\nthe null terminator. If the hostname exceeds the storage available in\n",
+      "ja": "で利用できる領域の大きさを終端NUL込みで設定してください。ホスト名が"
+    },
+    {
+      "index": 1198,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1199,
+      "en": ", ",
+      "ja": "に収まらない場合は、"
+    },
+    {
+      "index": 1200,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 1201,
+      "en": " is returned, and ",
+      "ja": "を返し、"
+    },
+    {
+      "index": 1202,
+      "en": "size",
+      "ja": "size"
+    },
+    {
+      "index": 1203,
+      "en": " is set to the amount of\nstorage required to hold the value.",
+      "ja": "に値の格納に必要な領域の大きさを設定します。"
+    },
+    {
+      "index": 1204,
+      "en": "New in version 1.12.0.",
+      "ja": "バージョン1.12.0で追加。"
+    },
+    {
+      "index": 1205,
+      "en": "Changed in version 1.26.0: ",
+      "ja": "バージョン1.26.0での変更: "
+    },
+    {
+      "index": 1206,
+      "en": "UV_MAXHOSTNAMESIZE",
+      "ja": "UV_MAXHOSTNAMESIZE"
+    },
+    {
+      "index": 1207,
+      "en": " is available and represents\nthe maximum ",
+      "ja": "が利用可能になりました。これは、"
+    },
+    {
+      "index": 1208,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1209,
+      "en": " size required to store a\nhostname and terminating ",
+      "ja": "にホスト名と終端の"
+    },
+    {
+      "index": 1210,
+      "en": "nul",
+      "ja": "nul"
+    },
+    {
+      "index": 1211,
+      "en": " character.",
+      "ja": "文字を格納するために必要な最大サイズを示します。"
+    },
+    {
+      "index": 1212,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1213,
+      "en": "uv_os_getpriority",
+      "ja": "uv_os_getpriority"
+    },
+    {
+      "index": 1214,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1215,
+      "en": "uv_pid_t",
+      "ja": "uv_pid_t"
+    },
+    {
+      "index": 1216,
+      "en": "pid",
+      "ja": "pid"
+    },
+    {
+      "index": 1217,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1218,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1219,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1220,
+      "en": "priority",
+      "ja": "priority"
+    },
+    {
+      "index": 1221,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1222,
+      "en": "Retrieves the scheduling priority of the process specified by ",
+      "ja": "次のIDで指定したプロセスのスケジューリング優先度を取得します: "
+    },
+    {
+      "index": 1223,
+      "en": "pid",
+      "ja": "pid"
+    },
+    {
+      "index": 1224,
+      "en": ". The\nreturned value of ",
+      "ja": "。返す"
+    },
+    {
+      "index": 1225,
+      "en": "priority",
+      "ja": "priority"
+    },
+    {
+      "index": 1226,
+      "en": " is between -20 (high priority) and 19 (low\npriority).",
+      "ja": "の値は、-20（高優先度）から19（低優先度）です。"
+    },
+    {
+      "index": 1227,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1228,
+      "en": "On Windows, the returned priority will equal one of the ",
+      "ja": "Windowsでは、返す優先度は"
+    },
+    {
+      "index": 1229,
+      "en": "UV_PRIORITY",
+      "ja": "UV_PRIORITY"
+    },
+    {
+      "index": 1230,
+      "en": "\nconstants.",
+      "ja": "定数のいずれかと一致します。"
+    },
+    {
+      "index": 1231,
+      "en": "New in version 1.23.0.",
+      "ja": "バージョン1.23.0で追加。"
+    },
+    {
+      "index": 1232,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1233,
+      "en": "uv_os_setpriority",
+      "ja": "uv_os_setpriority"
+    },
+    {
+      "index": 1234,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1235,
+      "en": "uv_pid_t",
+      "ja": "uv_pid_t"
+    },
+    {
+      "index": 1236,
+      "en": "pid",
+      "ja": "pid"
+    },
+    {
+      "index": 1237,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1238,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1239,
+      "en": "priority",
+      "ja": "priority"
+    },
+    {
+      "index": 1240,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1241,
+      "en": "Sets the scheduling priority of the process specified by ",
+      "ja": "次のIDで指定したプロセスのスケジューリング優先度を設定します: "
+    },
+    {
+      "index": 1242,
+      "en": "pid",
+      "ja": "pid"
+    },
+    {
+      "index": 1243,
+      "en": ". The\n",
+      "ja": "。"
+    },
+    {
+      "index": 1244,
+      "en": "priority",
+      "ja": "priority"
+    },
+    {
+      "index": 1245,
+      "en": " value range is between -20 (high priority) and 19 (low priority).\nThe constants ",
+      "ja": "の範囲は、-20（高優先度）から19（低優先度）です。便宜上、次の定数も用意しています: "
+    },
+    {
+      "index": 1246,
+      "en": "UV_PRIORITY_LOW",
+      "ja": "UV_PRIORITY_LOW"
+    },
+    {
+      "index": 1247,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 1248,
+      "en": "UV_PRIORITY_BELOW_NORMAL",
+      "ja": "UV_PRIORITY_BELOW_NORMAL"
+    },
+    {
+      "index": 1249,
+      "en": ",\n",
+      "ja": "、"
+    },
+    {
+      "index": 1250,
+      "en": "UV_PRIORITY_NORMAL",
+      "ja": "UV_PRIORITY_NORMAL"
+    },
+    {
+      "index": 1251,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 1252,
+      "en": "UV_PRIORITY_ABOVE_NORMAL",
+      "ja": "UV_PRIORITY_ABOVE_NORMAL"
+    },
+    {
+      "index": 1253,
+      "en": ", ",
+      "ja": "、"
+    },
+    {
+      "index": 1254,
+      "en": "UV_PRIORITY_HIGH",
+      "ja": "UV_PRIORITY_HIGH"
+    },
+    {
+      "index": 1255,
+      "en": ", and\n",
+      "ja": "、"
+    },
+    {
+      "index": 1256,
+      "en": "UV_PRIORITY_HIGHEST",
+      "ja": "UV_PRIORITY_HIGHEST"
+    },
+    {
+      "index": 1257,
+      "en": " are also provided for convenience.",
+      "ja": "。"
+    },
+    {
+      "index": 1258,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1259,
+      "en": "On Windows, this function utilizes ",
+      "ja": "Windowsでは、"
+    },
+    {
+      "index": 1260,
+      "en": "SetPriorityClass()",
+      "ja": "SetPriorityClass()"
+    },
+    {
+      "index": 1261,
+      "en": ". The ",
+      "ja": "を使います。"
+    },
+    {
+      "index": 1262,
+      "en": "priority",
+      "ja": "priority"
+    },
+    {
+      "index": 1263,
+      "en": "\nargument is mapped to a Windows priority class. When retrieving the\nprocess priority, the result will equal one of the ",
+      "ja": "引数はWindowsの優先度クラスへ対応付けます。プロセスの優先度を取得すると、結果は"
+    },
+    {
+      "index": 1264,
+      "en": "UV_PRIORITY",
+      "ja": "UV_PRIORITY"
+    },
+    {
+      "index": 1265,
+      "en": "\nconstants, and not necessarily the exact value of ",
+      "ja": "定数のいずれかと一致し、設定した"
+    },
+    {
+      "index": 1266,
+      "en": "priority",
+      "ja": "priority"
+    },
+    {
+      "index": 1267,
+      "en": ".",
+      "ja": "の値と厳密に一致するとは限りません。"
+    },
+    {
+      "index": 1268,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1269,
+      "en": "On Windows, setting ",
+      "ja": "Windowsでは、"
+    },
+    {
+      "index": 1270,
+      "en": "PRIORITY_HIGHEST",
+      "ja": "PRIORITY_HIGHEST"
+    },
+    {
+      "index": 1271,
+      "en": " will only work for elevated user,\nfor others it will be silently reduced to ",
+      "ja": "の設定は昇格したユーザーだけに有効です。ほかのユーザーでは、通知せず"
+    },
+    {
+      "index": 1272,
+      "en": "PRIORITY_HIGH",
+      "ja": "PRIORITY_HIGH"
+    },
+    {
+      "index": 1273,
+      "en": ".",
+      "ja": "へ引き下げます。"
+    },
+    {
+      "index": 1274,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1275,
+      "en": "On IBM i PASE, the highest process priority is -10. The constant\n",
+      "ja": "IBM i PASEでは、プロセスの最高優先度は-10です。"
+    },
+    {
+      "index": 1276,
+      "en": "UV_PRIORITY_HIGHEST",
+      "ja": "UV_PRIORITY_HIGHEST"
+    },
+    {
+      "index": 1277,
+      "en": " is -10, ",
+      "ja": "は-10、"
+    },
+    {
+      "index": 1278,
+      "en": "UV_PRIORITY_HIGH",
+      "ja": "UV_PRIORITY_HIGH"
+    },
+    {
+      "index": 1279,
+      "en": " is -7,\n",
+      "ja": "は-7、"
+    },
+    {
+      "index": 1280,
+      "en": "UV_PRIORITY_ABOVE_NORMAL",
+      "ja": "UV_PRIORITY_ABOVE_NORMAL"
+    },
+    {
+      "index": 1281,
+      "en": " is -4, ",
+      "ja": "は-4、"
+    },
+    {
+      "index": 1282,
+      "en": "UV_PRIORITY_NORMAL",
+      "ja": "UV_PRIORITY_NORMAL"
+    },
+    {
+      "index": 1283,
+      "en": " is 0,\n",
+      "ja": "は0、"
+    },
+    {
+      "index": 1284,
+      "en": "UV_PRIORITY_BELOW_NORMAL",
+      "ja": "UV_PRIORITY_BELOW_NORMAL"
+    },
+    {
+      "index": 1285,
+      "en": " is 15 and ",
+      "ja": "は15、"
+    },
+    {
+      "index": 1286,
+      "en": "UV_PRIORITY_LOW",
+      "ja": "UV_PRIORITY_LOW"
+    },
+    {
+      "index": 1287,
+      "en": " is 39.",
+      "ja": "は39です。"
+    },
+    {
+      "index": 1288,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1289,
+      "en": "On IBM i PASE, you are not allowed to change your priority unless you\nhave the *JOBCTL special authority (even to lower it).",
+      "ja": "IBM i PASEでは、*JOBCTL特殊権限がなければ、優先度を変更できません（引き下げる場合も同じです）。"
+    },
+    {
+      "index": 1290,
+      "en": "New in version 1.23.0.",
+      "ja": "バージョン1.23.0で追加。"
+    },
+    {
+      "index": 1291,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1292,
+      "en": "uv_os_uname",
+      "ja": "uv_os_uname"
+    },
+    {
+      "index": 1293,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1294,
+      "en": "uv_utsname_t",
+      "ja": "uv_utsname_t"
+    },
+    {
+      "index": 1295,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1296,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1297,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1298,
+      "en": "Retrieves system information in ",
+      "ja": "システム情報を"
+    },
+    {
+      "index": 1299,
+      "en": "buffer",
+      "ja": "buffer"
+    },
+    {
+      "index": 1300,
+      "en": ". The populated data includes the\noperating system name, release, version, and machine. On non-Windows\nsystems, ",
+      "ja": "へ取得します。取得するデータは、OSの名前、リリース、バージョン、マシンです。Windows以外では、"
+    },
+    {
+      "index": 1301,
+      "en": "uv_os_uname()",
+      "ja": "uv_os_uname()"
+    },
+    {
+      "index": 1302,
+      "en": " is a thin wrapper around ",
+      "ja": "は"
+    },
+    {
+      "index": 1303,
+      "en": "uname(2)",
+      "ja": "uname(2)"
+    },
+    {
+      "index": 1304,
+      "en": ". Returns\nzero on success, and a non-zero error value otherwise.",
+      "ja": "の薄いラッパーです。成功時は0、それ以外では0以外のエラー値を返します。"
+    },
+    {
+      "index": 1305,
+      "en": "New in version 1.25.0.",
+      "ja": "バージョン1.25.0で追加。"
+    },
+    {
+      "index": 1306,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1307,
+      "en": "uv_gettimeofday",
+      "ja": "uv_gettimeofday"
+    },
+    {
+      "index": 1308,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1309,
+      "en": "uv_timeval64_t",
+      "ja": "uv_timeval64_t"
+    },
+    {
+      "index": 1310,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1311,
+      "en": "tv",
+      "ja": "tv"
+    },
+    {
+      "index": 1312,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1313,
+      "en": "Cross-platform implementation of ",
+      "ja": "プラットフォーム間で使える次の関数の実装です: "
+    },
+    {
+      "index": 1314,
+      "en": "gettimeofday(2)",
+      "ja": "gettimeofday(2)"
+    },
+    {
+      "index": 1315,
+      "en": ". The timezone\nargument to ",
+      "ja": "。次の関数のタイムゾーン引数は、"
+    },
+    {
+      "index": 1316,
+      "en": "gettimeofday()",
+      "ja": "gettimeofday()"
+    },
+    {
+      "index": 1317,
+      "en": " is not supported, as it is considered obsolete.",
+      "ja": "廃止されたものと見なすため、サポートしていません。"
+    },
+    {
+      "index": 1318,
+      "en": "New in version 1.28.0.",
+      "ja": "バージョン1.28.0で追加。"
+    },
+    {
+      "index": 1319,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1320,
+      "en": "uv_random",
+      "ja": "uv_random"
+    },
+    {
+      "index": 1321,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1322,
+      "en": "uv_loop_t",
+      "ja": "uv_loop_t"
+    },
+    {
+      "index": 1323,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1324,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1325,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1326,
+      "en": "uv_random_t",
+      "ja": "uv_random_t"
+    },
+    {
+      "index": 1327,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1328,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1329,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1330,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 1331,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1332,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 1333,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1334,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 1335,
+      "en": "buflen",
+      "ja": "buflen"
+    },
+    {
+      "index": 1336,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1337,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 1338,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1339,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 1340,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1341,
+      "en": "uv_random_cb",
+      "ja": "uv_random_cb"
+    },
+    {
+      "index": 1342,
+      "en": "cb",
+      "ja": "cb"
+    },
+    {
+      "index": 1343,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1344,
+      "en": "Fill ",
+      "ja": "システムのCSPRNGから取得した、暗号学的に強い乱数バイトで、"
+    },
+    {
+      "index": 1345,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 1346,
+      "en": " with exactly ",
+      "ja": "をちょうど"
+    },
+    {
+      "index": 1347,
+      "en": "buflen",
+      "ja": "buflen"
+    },
+    {
+      "index": 1348,
+      "en": " cryptographically strong random bytes\nacquired from the system CSPRNG. ",
+      "ja": "バイト埋めます。"
+    },
+    {
+      "index": 1349,
+      "en": "flags",
+      "ja": "flags"
+    },
+    {
+      "index": 1350,
+      "en": " is reserved for future extension\nand must currently be 0.",
+      "ja": "は将来の拡張用に予約しており、現在は0である必要があります。"
+    },
+    {
+      "index": 1351,
+      "en": "Short reads are not possible. When less than ",
+      "ja": "短い読み取りはありません。利用できる乱数バイトが"
+    },
+    {
+      "index": 1352,
+      "en": "buflen",
+      "ja": "buflen"
+    },
+    {
+      "index": 1353,
+      "en": " random bytes are\navailable, a non-zero error value is returned or passed to the callback.",
+      "ja": "未満なら、0以外のエラー値を返すか、コールバックへ渡します。"
+    },
+    {
+      "index": 1354,
+      "en": "The synchronous version may block indefinitely when not enough entropy\nis available. The asynchronous version may not ever finish when the system\nis low on entropy.",
+      "ja": "同期版は、エントロピーが不足すると無期限にブロックする場合があります。非同期版も、システムのエントロピーが少ない場合、完了しない可能性があります。"
+    },
+    {
+      "index": 1355,
+      "en": "Sources of entropy:",
+      "ja": "エントロピー源:"
+    },
+    {
+      "index": 1356,
+      "en": "Windows: ",
+      "ja": "Windows: "
+    },
+    {
+      "index": 1357,
+      "en": "RtlGenRandom <https://docs.microsoft.com/en-us/windows/desktop/api/ntsecapi/nf-ntsecapi-rtlgenrandom>_",
+      "ja": "RtlGenRandom <https://docs.microsoft.com/en-us/windows/desktop/api/ntsecapi/nf-ntsecapi-rtlgenrandom>_"
+    },
+    {
+      "index": 1358,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1359,
+      "en": "Linux, Android: ",
+      "ja": "Linux、Android: "
+    },
+    {
+      "index": 1360,
+      "en": "getrandom(2)",
+      "ja": "getrandom(2)"
+    },
+    {
+      "index": 1361,
+      "en": " if available, or ",
+      "ja": "が利用できる場合はそれを使います。それ以外は、"
+    },
+    {
+      "index": 1362,
+      "en": "urandom(4)",
+      "ja": "urandom(4)"
+    },
+    {
+      "index": 1363,
+      "en": "\nafter reading from ",
+      "ja": "（先に"
+    },
+    {
+      "index": 1364,
+      "en": "/dev/random",
+      "ja": "/dev/random"
+    },
+    {
+      "index": 1365,
+      "en": " once, or the ",
+      "ja": "を1回読み取ります）、または"
+    },
+    {
+      "index": 1366,
+      "en": "KERN_RANDOM",
+      "ja": "KERN_RANDOM"
+    },
+    {
+      "index": 1367,
+      "en": "sysctl(2)",
+      "ja": "sysctl(2)"
+    },
+    {
+      "index": 1368,
+      "en": ".",
+      "ja": "を使います。"
+    },
+    {
+      "index": 1369,
+      "en": "FreeBSD: ",
+      "ja": "FreeBSD: "
+    },
+    {
+      "index": 1370,
+      "en": "getrandom(2) <https://www.freebsd.org/cgi/man.cgi?query=getrandom&sektion=2>_",
+      "ja": "getrandom(2) <https://www.freebsd.org/cgi/man.cgi?query=getrandom&sektion=2>_"
+    },
+    {
+      "index": 1371,
+      "en": ",\nor ",
+      "ja": "、または"
+    },
+    {
+      "index": 1372,
+      "en": "/dev/urandom",
+      "ja": "/dev/urandom"
+    },
+    {
+      "index": 1373,
+      "en": " after reading from ",
+      "ja": "（先に"
+    },
+    {
+      "index": 1374,
+      "en": "/dev/random",
+      "ja": "/dev/random"
+    },
+    {
+      "index": 1375,
+      "en": " once.",
+      "ja": "を1回読み取ります）。"
+    },
+    {
+      "index": 1376,
+      "en": "NetBSD: ",
+      "ja": "NetBSD: "
+    },
+    {
+      "index": 1377,
+      "en": "KERN_ARND",
+      "ja": "KERN_ARND"
+    },
+    {
+      "index": 1378,
+      "en": "sysctl(7) <https://man.netbsd.org/sysctl.7>_",
+      "ja": "sysctl(7) <https://man.netbsd.org/sysctl.7>_"
+    },
+    {
+      "index": 1379,
+      "en": "macOS, OpenBSD: ",
+      "ja": "macOS、OpenBSD: "
+    },
+    {
+      "index": 1380,
+      "en": "getentropy(2) <https://man.openbsd.org/getentropy.2>_",
+      "ja": "getentropy(2) <https://man.openbsd.org/getentropy.2>_"
+    },
+    {
+      "index": 1381,
+      "en": "\nif available, or ",
+      "ja": "が利用できる場合はそれを使います。それ以外は、"
+    },
+    {
+      "index": 1382,
+      "en": "/dev/urandom",
+      "ja": "/dev/urandom"
+    },
+    {
+      "index": 1383,
+      "en": " after reading from ",
+      "ja": "（先に"
+    },
+    {
+      "index": 1384,
+      "en": "/dev/random",
+      "ja": "/dev/random"
+    },
+    {
+      "index": 1385,
+      "en": " once.",
+      "ja": "を1回読み取ります）。"
+    },
+    {
+      "index": 1386,
+      "en": "AIX: ",
+      "ja": "AIX: "
+    },
+    {
+      "index": 1387,
+      "en": "/dev/random",
+      "ja": "/dev/random"
+    },
+    {
+      "index": 1388,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1389,
+      "en": "IBM i: ",
+      "ja": "IBM i: "
+    },
+    {
+      "index": 1390,
+      "en": "/dev/urandom",
+      "ja": "/dev/urandom"
+    },
+    {
+      "index": 1391,
+      "en": ".",
+      "ja": "。"
+    },
+    {
+      "index": 1392,
+      "en": "Other UNIX: ",
+      "ja": "その他のUnix: "
+    },
+    {
+      "index": 1393,
+      "en": "/dev/urandom",
+      "ja": "/dev/urandom"
+    },
+    {
+      "index": 1394,
+      "en": " after reading from ",
+      "ja": "（先に"
+    },
+    {
+      "index": 1395,
+      "en": "/dev/random",
+      "ja": "/dev/random"
+    },
+    {
+      "index": 1396,
+      "en": " once.",
+      "ja": "を1回読み取ります）。"
+    },
+    {
+      "index": 1397,
+      "en": "Returns",
+      "ja": "戻り値"
+    },
+    {
+      "index": 1398,
+      "en": ":",
+      "ja": ":"
+    },
+    {
+      "index": 1399,
+      "en": "0 on success, or an error code < 0 on failure. The contents of\n",
+      "ja": "成功時は0、失敗時は0未満のエラーコードです。エラー後の"
+    },
+    {
+      "index": 1400,
+      "en": "buf",
+      "ja": "buf"
+    },
+    {
+      "index": 1401,
+      "en": " is undefined after an error.",
+      "ja": "の内容は未定義です。"
+    },
+    {
+      "index": 1402,
+      "en": "Note",
+      "ja": "注記"
+    },
+    {
+      "index": 1403,
+      "en": "When using the synchronous version, both ",
+      "ja": "同期版では、"
+    },
+    {
+      "index": 1404,
+      "en": "loop",
+      "ja": "loop"
+    },
+    {
+      "index": 1405,
+      "en": " and ",
+      "ja": "と"
+    },
+    {
+      "index": 1406,
+      "en": "req",
+      "ja": "req"
+    },
+    {
+      "index": 1407,
+      "en": " parameters\nare not used and can be set to ",
+      "ja": "パラメーターは使わず、"
+    },
+    {
+      "index": 1408,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 1409,
+      "en": ".",
+      "ja": "を指定できます。"
+    },
+    {
+      "index": 1410,
+      "en": "New in version 1.33.0.",
+      "ja": "バージョン1.33.0で追加。"
+    },
+    {
+      "index": 1411,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 1412,
+      "en": "uv_sleep",
+      "ja": "uv_sleep"
+    },
+    {
+      "index": 1413,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1414,
+      "en": "unsigned",
+      "ja": "unsigned"
+    },
+    {
+      "index": 1415,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1416,
+      "en": "msec",
+      "ja": "msec"
+    },
+    {
+      "index": 1417,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1418,
+      "en": "Causes the calling thread to sleep for ",
+      "ja": "呼び出し元スレッドを、"
+    },
+    {
+      "index": 1419,
+      "en": "msec",
+      "ja": "msec"
+    },
+    {
+      "index": 1420,
+      "en": " milliseconds.",
+      "ja": "ミリ秒スリープさせます。"
+    },
+    {
+      "index": 1421,
+      "en": "New in version 1.34.0.",
+      "ja": "バージョン1.34.0で追加。"
+    },
+    {
+      "index": 1422,
+      "en": "String manipulation functions",
+      "ja": "文字列操作関数"
+    },
+    {
+      "index": 1423,
+      "en": "These string utilities are needed internally for dealing with Windows, and are\nexported to allow clients to work uniformly with this data when the libuv API\nis not complete.",
+      "ja": "これらの文字列ユーティリティーは、Windowsを扱うために内部で必要となるものです。libuv APIが完全でない部分でも、クライアントがこのデータを一様に扱えるよう、公開しています。"
+    },
+    {
+      "index": 1424,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 1425,
+      "en": "uv_utf16_length_as_wtf8",
+      "ja": "uv_utf16_length_as_wtf8"
+    },
+    {
+      "index": 1426,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1427,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1428,
+      "en": "uint16_t",
+      "ja": "uint16_t"
+    },
+    {
+      "index": 1429,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1430,
+      "en": "utf16",
+      "ja": "utf16"
+    },
+    {
+      "index": 1431,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1432,
+      "en": "ssize_t",
+      "ja": "ssize_t"
+    },
+    {
+      "index": 1433,
+      "en": "utf16_len",
+      "ja": "utf16_len"
+    },
+    {
+      "index": 1434,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1435,
+      "en": "Get the length of a UTF-16 (or UCS-2) ",
+      "ja": "UTF-16（またはUCS-2）の"
+    },
+    {
+      "index": 1436,
+      "en": "utf16",
+      "ja": "utf16"
+    },
+    {
+      "index": 1437,
+      "en": " value after converting it to\nWTF-8. If ",
+      "ja": "値をWTF-8へ変換した後の長さを取得します。"
+    },
+    {
+      "index": 1438,
+      "en": "utf16",
+      "ja": "utf16"
+    },
+    {
+      "index": 1439,
+      "en": " is NUL terminated, ",
+      "ja": "がNUL終端なら、"
+    },
+    {
+      "index": 1440,
+      "en": "utf16_len",
+      "ja": "utf16_len"
+    },
+    {
+      "index": 1441,
+      "en": " can be set to -1,\notherwise it must be specified.",
+      "ja": "に-1を指定できます。それ以外は長さの指定が必要です。"
+    },
+    {
+      "index": 1442,
+      "en": "New in version 1.47.0.",
+      "ja": "バージョン1.47.0で追加。"
+    },
+    {
+      "index": 1443,
+      "en": "int",
+      "ja": "int"
+    },
+    {
+      "index": 1444,
+      "en": "uv_utf16_to_wtf8",
+      "ja": "uv_utf16_to_wtf8"
+    },
+    {
+      "index": 1445,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1446,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1447,
+      "en": "uint16_t",
+      "ja": "uint16_t"
+    },
+    {
+      "index": 1448,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1449,
+      "en": "utf16",
+      "ja": "utf16"
+    },
+    {
+      "index": 1450,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1451,
+      "en": "ssize_t",
+      "ja": "ssize_t"
+    },
+    {
+      "index": 1452,
+      "en": "utf16_len",
+      "ja": "utf16_len"
+    },
+    {
+      "index": 1453,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1454,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1455,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1456,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1457,
+      "en": "wtf8_ptr",
+      "ja": "wtf8_ptr"
+    },
+    {
+      "index": 1458,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1459,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 1460,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1461,
+      "en": "wtf8_len_ptr",
+      "ja": "wtf8_len_ptr"
+    },
+    {
+      "index": 1462,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1463,
+      "en": "Convert UTF-16 (or UCS-2) data in ",
+      "ja": "次の値に格納したUTF-16（またはUCS-2）データ、"
+    },
+    {
+      "index": 1464,
+      "en": "utf16",
+      "ja": "utf16"
+    },
+    {
+      "index": 1465,
+      "en": " to WTF-8 data in ",
+      "ja": "を、"
+    },
+    {
+      "index": 1466,
+      "en": "*wtf8_ptr",
+      "ja": "*wtf8_ptr"
+    },
+    {
+      "index": 1467,
+      "en": ". The\n",
+      "ja": "のWTF-8データへ変換します。"
+    },
+    {
+      "index": 1468,
+      "en": "utf16_len",
+      "ja": "utf16_len"
+    },
+    {
+      "index": 1469,
+      "en": " count (in characters) gives the length of ",
+      "ja": "は、"
+    },
+    {
+      "index": 1470,
+      "en": "utf16",
+      "ja": "utf16"
+    },
+    {
+      "index": 1471,
+      "en": ". If ",
+      "ja": "の長さを文字数で示します。"
+    },
+    {
+      "index": 1472,
+      "en": "utf16",
+      "ja": "utf16"
+    },
+    {
+      "index": 1473,
+      "en": "\nis NUL terminated, ",
+      "ja": "がNUL終端なら、"
+    },
+    {
+      "index": 1474,
+      "en": "utf16_len",
+      "ja": "utf16_len"
+    },
+    {
+      "index": 1475,
+      "en": " can be set to -1, otherwise it must be\nspecified. If ",
+      "ja": "に-1を指定できます。それ以外は長さの指定が必要です。"
+    },
+    {
+      "index": 1476,
+      "en": "wtf8_ptr",
+      "ja": "wtf8_ptr"
+    },
+    {
+      "index": 1477,
+      "en": " is ",
+      "ja": "が"
+    },
+    {
+      "index": 1478,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 1479,
+      "en": ", no result will be computed, but the\nlength (equal to ",
+      "ja": "なら結果を計算しませんが、長さ（"
+    },
+    {
+      "index": 1480,
+      "en": "uv_utf16_length_as_wtf8",
+      "ja": "uv_utf16_length_as_wtf8"
+    },
+    {
+      "index": 1481,
+      "en": ") will be stored in ",
+      "ja": "と同じ）を"
+    },
+    {
+      "index": 1482,
+      "en": "wtf8_len_ptr",
+      "ja": "wtf8_len_ptr"
+    },
+    {
+      "index": 1483,
+      "en": ".\nIf ",
+      "ja": "に格納します。"
+    },
+    {
+      "index": 1484,
+      "en": "*wtf8_ptr",
+      "ja": "*wtf8_ptr"
+    },
+    {
+      "index": 1485,
+      "en": " is ",
+      "ja": "が"
+    },
+    {
+      "index": 1486,
+      "en": "NULL",
+      "ja": "NULL"
+    },
+    {
+      "index": 1487,
+      "en": ", space for the conversion will be allocated and\nreturned in ",
+      "ja": "なら変換用の領域を確保し、"
+    },
+    {
+      "index": 1488,
+      "en": "wtf8_ptr",
+      "ja": "wtf8_ptr"
+    },
+    {
+      "index": 1489,
+      "en": " and the length will be returned in ",
+      "ja": "で返します。長さは"
+    },
+    {
+      "index": 1490,
+      "en": "wtf8_len_ptr",
+      "ja": "wtf8_len_ptr"
+    },
+    {
+      "index": 1491,
+      "en": ".\nOtherwise, the length of ",
+      "ja": "で返します。それ以外は、"
+    },
+    {
+      "index": 1492,
+      "en": "*wtf8_ptr",
+      "ja": "*wtf8_ptr"
+    },
+    {
+      "index": 1493,
+      "en": " must be passed in ",
+      "ja": "の長さを"
+    },
+    {
+      "index": 1494,
+      "en": "wtf8_len_ptr",
+      "ja": "wtf8_len_ptr"
+    },
+    {
+      "index": 1495,
+      "en": ". The\n",
+      "ja": "で渡してください。"
+    },
+    {
+      "index": 1496,
+      "en": "wtf8_ptr",
+      "ja": "wtf8_ptr"
+    },
+    {
+      "index": 1497,
+      "en": " must contain an extra space for an extra NUL after the result.\nIf the result is truncated, ",
+      "ja": "には、結果の後ろのNUL用に余分な領域が必要です。結果を切り詰めた場合は、"
+    },
+    {
+      "index": 1498,
+      "en": "UV_ENOBUFS",
+      "ja": "UV_ENOBUFS"
+    },
+    {
+      "index": 1499,
+      "en": " will be returned and\n",
+      "ja": "を返し、"
+    },
+    {
+      "index": 1500,
+      "en": "wtf8_len_ptr",
+      "ja": "wtf8_len_ptr"
+    },
+    {
+      "index": 1501,
+      "en": " will be the length of the required ",
+      "ja": "は、結果全体を格納するために必要な"
+    },
+    {
+      "index": 1502,
+      "en": "wtf8_ptr",
+      "ja": "wtf8_ptr"
+    },
+    {
+      "index": 1503,
+      "en": " to contain the\nwhole result.",
+      "ja": "の長さを示します。"
+    },
+    {
+      "index": 1504,
+      "en": "New in version 1.47.0.",
+      "ja": "バージョン1.47.0で追加。"
+    },
+    {
+      "index": 1505,
+      "en": "ssize_t",
+      "ja": "ssize_t"
+    },
+    {
+      "index": 1506,
+      "en": "uv_wtf8_length_as_utf16",
+      "ja": "uv_wtf8_length_as_utf16"
+    },
+    {
+      "index": 1507,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1508,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1509,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1510,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1511,
+      "en": "wtf8",
+      "ja": "wtf8"
+    },
+    {
+      "index": 1512,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1513,
+      "en": "Get the length in characters of a NUL-terminated WTF-8 ",
+      "ja": "NUL終端されたWTF-8の"
+    },
+    {
+      "index": 1514,
+      "en": "wtf8",
+      "ja": "wtf8"
+    },
+    {
+      "index": 1515,
+      "en": " value\nafter converting it to UTF-16 (or UCS-2), including NUL terminator.",
+      "ja": "値をUTF-16（またはUCS-2）へ変換した後の長さを、終端NULを含めた文字数で取得します。"
+    },
+    {
+      "index": 1516,
+      "en": "New in version 1.47.0.",
+      "ja": "バージョン1.47.0で追加。"
+    },
+    {
+      "index": 1517,
+      "en": "void",
+      "ja": "void"
+    },
+    {
+      "index": 1518,
+      "en": "uv_wtf8_to_utf16",
+      "ja": "uv_wtf8_to_utf16"
+    },
+    {
+      "index": 1519,
+      "en": "(",
+      "ja": "("
+    },
+    {
+      "index": 1520,
+      "en": "const",
+      "ja": "const"
+    },
+    {
+      "index": 1521,
+      "en": "char",
+      "ja": "char"
+    },
+    {
+      "index": 1522,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1523,
+      "en": "utf8",
+      "ja": "utf8"
+    },
+    {
+      "index": 1524,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1525,
+      "en": "uint16_t",
+      "ja": "uint16_t"
+    },
+    {
+      "index": 1526,
+      "en": "*",
+      "ja": "*"
+    },
+    {
+      "index": 1527,
+      "en": "utf16",
+      "ja": "utf16"
+    },
+    {
+      "index": 1528,
+      "en": ", ",
+      "ja": ", "
+    },
+    {
+      "index": 1529,
+      "en": "size_t",
+      "ja": "size_t"
+    },
+    {
+      "index": 1530,
+      "en": "utf16_len",
+      "ja": "utf16_len"
+    },
+    {
+      "index": 1531,
+      "en": ")",
+      "ja": ")"
+    },
+    {
+      "index": 1532,
+      "en": "Convert NUL-terminated WTF-8 data in ",
+      "ja": "次の値に格納したNUL終端のWTF-8データ、"
+    },
+    {
+      "index": 1533,
+      "en": "wtf8",
+      "ja": "wtf8"
+    },
+    {
+      "index": 1534,
+      "en": " to UTF-16 (or UCS-2) data\nin ",
+      "ja": "を、"
+    },
+    {
+      "index": 1535,
+      "en": "utf16",
+      "ja": "utf16"
+    },
+    {
+      "index": 1536,
+      "en": ". The ",
+      "ja": "のUTF-16（またはUCS-2）データへ変換します。"
+    },
+    {
+      "index": 1537,
+      "en": "utf16_len",
+      "ja": "utf16_len"
+    },
+    {
+      "index": 1538,
+      "en": " count (in characters) must include space\nfor the NUL terminator.",
+      "ja": "は文字数であり、終端NULの領域を含める必要があります。"
+    },
+    {
+      "index": 1539,
+      "en": "New in version 1.47.0.",
+      "ja": "バージョン1.47.0で追加。"
+    }
+  ],
+  "alignment": {
+    "allNarrativeNodesMapped": true,
+    "preBlocksExact": 15,
+    "idsAndLinksExact": true
+  },
+  "separateContentReview": "pending",
+  "projectTranslationComplete": false,
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "runtime": null,
+    "localLLMUsed": false
+  }
+}
