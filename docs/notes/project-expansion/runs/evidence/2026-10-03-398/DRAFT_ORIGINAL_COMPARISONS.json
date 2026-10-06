@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-03T07:40:50.888Z",
+  "pages": [
+    {
+      "at": "2026-10-03T07:40:50.888Z",
+      "status": "draft-original-compared",
+      "page": "Thread-Safety.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Thread-Safety.md",
+        "sha256": "3d201c5694b50e0e73400531cc7145e9ce3290bbfa406b36a2e2d7f34e03acad"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/24-thread-safety.md",
+        "sha256": "3fd6d5053a7cb34e1428572027b6411286a66fb2a42db7fad36c1286acd26c0a"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-398/translation-drafts/24-thread-safety.md",
+        "sha256": "b0053b365f8e3e1005190886599983ec624e3fa00192990c0cbe71729973efa6"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "set_error_handler/sinksの同一loggerへの並行呼び出し禁止、vector変更禁止、mt/stを問わない適用範囲を保持。",
+        "mt/st factoryとsinkのthreadsafe区別、2個の原文コードと全APIを保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 2,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:40:50.888Z",
+      "status": "draft-original-compared",
+      "page": "Logger-registry.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Logger-registry.md",
+        "sha256": "ee3bce045fcd74fd092d50d21d1ba79fcb53dec6a5c213e456d0f3b0f491204c"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/15-logger-registry.md",
+        "sha256": "a18a208e6be37825d5435c3e748b74968ed5f0ab65a2fcd0e6a88ede3e3e0627"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-398/translation-drafts/15-logger-registry.md",
+        "sha256": "991d4cf23d0b0cbe857ba9a64d2a7c18cddf1141cddf0b9568362c44cc3448eb"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "プロセス単位global registry、引渡し不要のアクセス、未発見時の空sharedptrとif(l)確認を保持。",
+        "factory自動登録と手動register、名前衝突のspdlog_exを保持。",
+        "drop後に他sharedptrがない場合のみclose/resources解放する条件を保持。原文drop_allのセミコロン欠落と非実行可能な説明用断片も改変せず保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 3,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    }
+  ]
+}

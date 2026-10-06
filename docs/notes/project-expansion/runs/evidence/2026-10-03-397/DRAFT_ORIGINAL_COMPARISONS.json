@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-03T07:39:23.893Z",
+  "pages": [
+    {
+      "at": "2026-10-03T07:39:23.893Z",
+      "status": "draft-original-compared",
+      "page": "Flush-policy.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Flush-policy.md",
+        "sha256": "2a3b8cc2b86a1a6a5688903544ea0bb30c289ef61013cbb1a1d280ef5b648c69"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/10-flush-policy.md",
+        "sha256": "f73ea05926dfebb007d15870ba09c1a6275b44beccd863626bb29e0924ddbb4e"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-397/translation-drafts/10-flush-policy.md",
+        "sha256": "7e3a7c34b7ee6608165ddaebcc5033f578c2c53b7c6879b95080547f9d6fbf94"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "libcの性能目的、手動flushが各sinkを呼ぶことを保持。",
+        "非同期flushは要求をenqueueして即座に戻る。旧版との差、通常破棄時の自動処理、abort/_exit前にshutdownする条件を全訳。独立した固定Wikiの記述で、現行動作検証ではない。",
+        "最小重大度err以上、登録済み全loggerを5秒間隔で単一workerがflushする例を保持。別threadなのでthreadsafe限定を保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 2,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:39:23.893Z",
+      "status": "draft-original-compared",
+      "page": "Creating-loggers.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Creating-loggers.md",
+        "sha256": "ffe58404fee5d1f5cb90a5738016aae1d828b73bec81e41c4c5a5861fd38bb62"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/05-creating-loggers.md",
+        "sha256": "deb8b55613c00aa910d98b7f0b3d7c3c7ad7cd51802fd7b03a7a2347f10e0f8a"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-397/translation-drafts/05-creating-loggers.md",
+        "sha256": "a0aab9bc7d8db280c57596cc59ed5f9c5e0b2c4b848d14867d5802442e580d1f"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "sink vectorとログレベル条件、mt/stの同時アクセス制限とロックなし性能の可能性を保持。",
+        "factory登録/get共有ポインター、mutexコストとhotpathでの保存、手動logger非自動登録/registerを全文照合。",
+        "非同期poolの事前割当・64bit約256bytes・init設定・blockとoverrun_oldest条件を保持。",
+        "手動生成ではglobal状態未設定、initialize_logger要求を保持。複数sinkと同一ファイルのsink共有必須を保持。",
+        "英語原文の自己リンクを日本語見出しfragmentへ変更。実際のrendered IDとリンク到達は今後の機械検査で確認。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 8,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    }
+  ]
+}

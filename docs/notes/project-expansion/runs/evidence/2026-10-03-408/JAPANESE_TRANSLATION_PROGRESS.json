@@ -1,0 +1,918 @@
+{
+  "at": "2026-10-03T08:04:28.668Z",
+  "totalPages": 27,
+  "draftOriginalComparedPages": 27,
+  "separateContentReviewedPages": 0,
+  "pages": [
+    {
+      "at": "2026-10-03T07:29:29.415Z",
+      "status": "draft-original-compared",
+      "page": "Default-logger.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Default-logger.md",
+        "sha256": "eb56a2bfbb54a847b359b6431279a23d3b861972e8ef3925d4adcba977d50dee"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/07-default-logger.md",
+        "sha256": "b8c1875dc458cbed8b8d1b18949a21a0493f233118f7f9069e5d9e466a57495b"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-395/translation-drafts/07-default-logger.md",
+        "sha256": "4c8f35dcbb6131473eee297eef660224e94a68ed66d1275cec69ae24e6e627c9"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer, not an excerpt",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "利便性のためのdefault global logger、stdout/color/multithreadedの全条件を保持。",
+        "info/debugなどの直接呼出し。inline列挙のetcを「など」へ訳しAPI文字列は保持。",
+        "任意の別logger(shared_ptr)への置換。fenced2行コードは全文一致。",
+        "非公式変更・独立Wiki日/commitとsoftware1.17非同版・原notice全文・注釈softwareMIT判断を全訳。"
+      ],
+      "mechanical": "Fenced C++ block exact; mentioned API/shared_ptr/sourceSHA/fixedcommits/footer retained",
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA license target not yet generated, sidebar and language-specific AST/link mapping need completion before final build"
+    },
+    {
+      "at": "2026-10-03T07:36:43.302Z",
+      "status": "draft-original-compared",
+      "page": "Asynchronous-logging.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Asynchronous-logging.md",
+        "sha256": "caf4f7529aaa6ac0540fdd5e2750ab5fec1256435abb68afa1968c39873f7e17"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/03-asynchronous-logging.md",
+        "sha256": "d0345dc26c298711c309d8865ff447970f085280c23fc2dbbed168979896d7f7"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-396/translation-drafts/03-asynchronous-logging.md",
+        "sha256": "6b343912a2526224ea32bacf04bc46deb388ab0a686621daee7c1907001f3fb4"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer, not an excerpt",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "五つの構築方法とasync.hの必須条件を全文照合。9個のコードブロックはコメント・空白も原文保持。",
+        "キュー満杯時のデフォルトblockと最古メッセージの破棄・置換、weak_ptr対象tpの寿命を保持。",
+        "8192/1の共有pool、64bit約256bytesの事前割当、initによる旧pool利用logger停止と事前初期化の推奨を保持。",
+        "独立queue/pool、各thread作成後・破棄前のcallback、複数workerで取り出し後に順序変更し得る条件を保持。",
+        "Windowsの原文shutdown要求は独立した日付付きWikiの記述として保持。現行runtime動作の検証とは称さない。",
+        "非公式訳・独立Wiki固定版・softwareMIT運用判断と原copyrightを保持。"
+      ],
+      "mechanical": "Nine fenced C++ blocks exact; mentioned API/shared_ptr/sourceSHA/fixedcommits/footer retained",
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA license target not yet generated, sidebar and language-specific AST/link mapping need completion before final build"
+    },
+    {
+      "at": "2026-10-03T07:39:23.893Z",
+      "status": "draft-original-compared",
+      "page": "Flush-policy.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Flush-policy.md",
+        "sha256": "2a3b8cc2b86a1a6a5688903544ea0bb30c289ef61013cbb1a1d280ef5b648c69"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/10-flush-policy.md",
+        "sha256": "f73ea05926dfebb007d15870ba09c1a6275b44beccd863626bb29e0924ddbb4e"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-397/translation-drafts/10-flush-policy.md",
+        "sha256": "7e3a7c34b7ee6608165ddaebcc5033f578c2c53b7c6879b95080547f9d6fbf94"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "libcの性能目的、手動flushが各sinkを呼ぶことを保持。",
+        "非同期flushは要求をenqueueして即座に戻る。旧版との差、通常破棄時の自動処理、abort/_exit前にshutdownする条件を全訳。独立した固定Wikiの記述で、現行動作検証ではない。",
+        "最小重大度err以上、登録済み全loggerを5秒間隔で単一workerがflushする例を保持。別threadなのでthreadsafe限定を保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 2,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:39:23.893Z",
+      "status": "draft-original-compared",
+      "page": "Creating-loggers.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Creating-loggers.md",
+        "sha256": "ffe58404fee5d1f5cb90a5738016aae1d828b73bec81e41c4c5a5861fd38bb62"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/05-creating-loggers.md",
+        "sha256": "deb8b55613c00aa910d98b7f0b3d7c3c7ad7cd51802fd7b03a7a2347f10e0f8a"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-397/translation-drafts/05-creating-loggers.md",
+        "sha256": "a0aab9bc7d8db280c57596cc59ed5f9c5e0b2c4b848d14867d5802442e580d1f"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "sink vectorとログレベル条件、mt/stの同時アクセス制限とロックなし性能の可能性を保持。",
+        "factory登録/get共有ポインター、mutexコストとhotpathでの保存、手動logger非自動登録/registerを全文照合。",
+        "非同期poolの事前割当・64bit約256bytes・init設定・blockとoverrun_oldest条件を保持。",
+        "手動生成ではglobal状態未設定、initialize_logger要求を保持。複数sinkと同一ファイルのsink共有必須を保持。",
+        "英語原文の自己リンクを日本語見出しfragmentへ変更。実際のrendered IDとリンク到達は今後の機械検査で確認。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 8,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:40:50.888Z",
+      "status": "draft-original-compared",
+      "page": "Thread-Safety.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Thread-Safety.md",
+        "sha256": "3d201c5694b50e0e73400531cc7145e9ce3290bbfa406b36a2e2d7f34e03acad"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/24-thread-safety.md",
+        "sha256": "3fd6d5053a7cb34e1428572027b6411286a66fb2a42db7fad36c1286acd26c0a"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-398/translation-drafts/24-thread-safety.md",
+        "sha256": "b0053b365f8e3e1005190886599983ec624e3fa00192990c0cbe71729973efa6"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "set_error_handler/sinksの同一loggerへの並行呼び出し禁止、vector変更禁止、mt/stを問わない適用範囲を保持。",
+        "mt/st factoryとsinkのthreadsafe区別、2個の原文コードと全APIを保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 2,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:40:50.888Z",
+      "status": "draft-original-compared",
+      "page": "Logger-registry.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Logger-registry.md",
+        "sha256": "ee3bce045fcd74fd092d50d21d1ba79fcb53dec6a5c213e456d0f3b0f491204c"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/15-logger-registry.md",
+        "sha256": "a18a208e6be37825d5435c3e748b74968ed5f0ab65a2fcd0e6a88ede3e3e0627"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-398/translation-drafts/15-logger-registry.md",
+        "sha256": "991d4cf23d0b0cbe857ba9a64d2a7c18cddf1141cddf0b9568362c44cc3448eb"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "プロセス単位global registry、引渡し不要のアクセス、未発見時の空sharedptrとif(l)確認を保持。",
+        "factory自動登録と手動register、名前衝突のspdlog_exを保持。",
+        "drop後に他sharedptrがない場合のみclose/resources解放する条件を保持。原文drop_allのセミコロン欠落と非実行可能な説明用断片も改変せず保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 3,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:43:37.252Z",
+      "status": "draft-original-compared",
+      "page": "Custom-formatting.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Custom-formatting.md",
+        "sha256": "7355e130376d1ee5df09eb36bdda36655248e1fd749ca30c07c5219b536fd142"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/06-custom-formatting.md",
+        "sha256": "5f7a5b0588f1d320a069ec50415b56148044e3434d2e58383deb2b4aee03a279"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-399/translation-drafts/06-custom-formatting.md",
+        "sha256": "65dba62bbeb1e4bed5ee3f4b9dd3c5deec7b7b69c1c5670a374b15d50948045d"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "set_patternとformatterの二つの方法、全登録済み/個別logger/個別sink適用、内部コンパイル効率を全文照合。",
+        "パターン表42行の意味、単位・範囲・色範囲一回限定・source macro条件を訳した。指定子・例は全て原文一致。",
+        "配置表3行と切詰め表3行の例/結果を原文保持。最大64と関数名!!を保持。",
+        "custom_flag_formatter継承とclone/format、deepcopyのsink毎state/race理由と組込上書きを保持。",
+        "source_locのACTIVE_LEVELと全6macro、trace/debug欠落時compiler flagの条件付き助言とsource-noteの非網羅性を全訳。",
+        "行頭inline triplebacktickを誤ってfenceと見なすhelperの不備を保存前に発見・修正。正しい行単位fence抽出で9ブロック再生成・全文再照合。以前の6頁も正しい抽出で再照合。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 9,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:46:36.914Z",
+      "status": "draft-original-compared",
+      "page": "Error-handling.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Error-handling.md",
+        "sha256": "1357f3d73272b2d9665d106d5aa1dc5991308a19f3156f05492b3245898a3f5b"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/08-error-handling.md",
+        "sha256": "930510a5c10b6ea3a6bedce3530e7dfea8fa093ffd2fb0dd1c386a4f8766e0d5"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-400/translation-drafts/08-error-handling.md",
+        "sha256": "627f74260b27d85715a830760d61982dac4e2a221121293b65ba5b80a49681d0"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "ログ時例外非送出と構築時送出可能性を区別。既定stderr/毎logger毎分1message、global/個別handler変更を全訳。",
+        "個別handlerがruntime_errorをthrowする原文例も保持。3コード全文一致。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 3,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:46:36.914Z",
+      "status": "draft-original-compared",
+      "page": "FAQ.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/FAQ.md",
+        "sha256": "01d50982fbc9dd49f285ec67a2147bc5155979979c69f8da96093b7f74e7fc87"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/09-faq.md",
+        "sha256": "d47f63b47a59b55863fb2da91662051677f4d112d59355d0ee9dce607f8651a6"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-400/translation-drafts/09-faq.md",
+        "sha256": "931ba48e0efeb9c9332b058e2ca081af7435eafbcbcc0f7dc1eb24a6eb9e4c7e"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "全14問の見出しと説明を原文照合。BUFSIZ、compile時とruntimelevel区別、外部fmtCMakeの両変数、引数なしformatcheck制限を保持。",
+        "Windowsmain/DllMainとstatic生成/共有libunload前shutdownの条件、色rangeとsource macro条件を保持。",
+        "min/maxの全3回避法、stderrへの名前衝突回避、offで強制出力時flush非起動、GCC標準lib不一致可能性とABI確認を保持。",
+        "コード7個原文一致、curly quotesの原文inline例を保持。未実行・日付固定の記述であり現在runtime検証とはしない。相対discussionリンクは言語別renderer整備時に実URL化検証。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 7,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:46:36.914Z",
+      "status": "draft-original-compared",
+      "page": "Home.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Home.md",
+        "sha256": "5b13ef04a1d6e97b1c08e02b86410a56e1230147d731dd9efaa35720c52dcba9"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/11-home.md",
+        "sha256": "1c7d6166d3a1816cbed953788e49166fb9a0f39767633f3318cd1dc2ac3ba2fa"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-400/translation-drafts/11-home.md",
+        "sha256": "608b16246602057cdb6885bce9bc6c14531c84b2b2fe3b668aed265123082a28"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "導入・結びと全22個の文書リンクの順序/targetを保持し表示名のみ翻訳。リンク変換後JA対象到達は最終機械検査待ち。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 0,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:48:36.356Z",
+      "status": "draft-original-compared",
+      "page": "Sinks.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Sinks.md",
+        "sha256": "945236df89324369620ff488bcc19bef85b356ea55a4bafa2614ea7dba4caef8"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/23-sinks.md",
+        "sha256": "12049ad858fbaa07dcd83a6eebaee64232056d7e8eb09f2e4e77f8350466b604"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-401/translation-drafts/23-sinks.md",
+        "sha256": "57193a2b07627881a7a22606e1b8d129548c9d885605bd0fd278cfc58dc0e948"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "単一targetとsink毎formatter、vector/level条件、mt/st同時アクセス制限、部分一覧とv1.5フォルダー作成注記を保持。",
+        "rotatingのsize/filecount設定、dailyの時刻とtimestamp、起動時は旧fileを削除せずruntimeのみrotation/deletionの条件を保持。",
+        "全sink種別の説明、dup_filter同一/期間条件、ringbufferの取得とQt例/原画像URLを保持。",
+        "base_sink継承とlock、protected実装、作成後vector追加はmutexなし/非threadsafeを全訳。",
+        "20コード・出力ブロックは空白/コメントも原文一致。simple_file_sink_st旧名をsource-noteで注記し保持。ostreaminclude末尾space、dup出力Skipped3と3Hello呼出しの原文不整合、ringbuffer同名変数再宣言を黙って修正せず保持。コード実行は未検証。",
+        "imageは元のURL/別途記録済み注釈softwareMIT運用判断を保持。日本語表示とリンク到達検証は今後実施。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 20,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:50:30.087Z",
+      "status": "draft-original-compared",
+      "page": "QuickStart.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/QuickStart.md",
+        "sha256": "c431355d7af40d984c3b9906ddbf7558cb4855662c3eaed3274c2c1fdd27d051"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/20-quickstart.md",
+        "sha256": "a1a30744f8cddb1584166d046e76cd975c950abf6439f030b56b083d975ab60b"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-402/translation-drafts/20-quickstart.md",
+        "sha256": "7b25dd8b3ab18fa0fe89b7638895f69e5e6afee5a39580c357098cd8d405c720"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "fmtのPython類似APIとinclude what you need、全7section見出し/説明を保持。",
+        "同じsinkを共有するcategoryとsink毎format/level、compile時ACTIVE_LEVEL定義前提とruntime set_level必要性を保持。",
+        "コード10個は空白/コメント含め原文一致。VisualStudio drop_all要求、pool初期化の生成前条件、fmtv10 formatter継承条件を含むコメントも意味を確認し保持。",
+        "最終例のnamespace-scope friend/privatecode不整合source-noteを翻訳し、コンパイル成功とはしない。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 10,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion",
+      "correction": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-403/PRIOR_EVIDENCE_CORRECTION.json",
+        "sha256": "e9e6370c305258c33cb51441b08f1a0bb8c74285cea4b47452bb9547b38b9374"
+      }
+    },
+    {
+      "at": "2026-10-03T07:50:30.087Z",
+      "status": "draft-original-compared",
+      "page": "How-to-use-spdlog-in-DLLs.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/How-to-use-spdlog-in-DLLs.md",
+        "sha256": "43913283a0225b0b2c2e7092cd5eb56b64cde472cfe68c36adb48b00f7080640"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/12-how-to-use-spdlog-in-dlls.md",
+        "sha256": "7bd9dfd1c00270df829a38e9de8425ab0ee6ce2f768bebae2b9fb49613d06dbc"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-402/translation-drafts/12-how-to-use-spdlog-in-dlls.md",
+        "sha256": "89d1d2f82be340001267f3272de74c2f00c173c90cf67c69f0fba3c57a50c457"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "共有libとmainのregistry非共有によりset_levelがDLLloggerに影響しないという日付付き原文の問題/両registry登録の回避法を全訳。",
+        "2コードを原文保持。未コンパイル・doc/code由来という原注記、symbol export省略・libload省略断片と登録前後の挙動コメントを確認。現行全構成でのruntime実証とはしない。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 2,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:52:05.434Z",
+      "status": "draft-original-compared",
+      "page": "CMake.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/CMake.md",
+        "sha256": "74e4d8c650094155e121451378fa39dbc9527958f2ac0d4dccfa5e9913675668"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/04-cmake.md",
+        "sha256": "65cb5bbd52b5b1f398e2aa41abc03577f3f703b07c3b1abe4bb1ec1d8e9673d8"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-403/translation-drafts/04-cmake.md",
+        "sha256": "66a9ba40d8893d37ea9385e261c51ebb3334b16b47b31345e0f044b797ac7b08"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "CMake版確認/生成/OSgenerator/toolchain/examples/buildtest/installとfind_packageを全訳。",
+        "Android3.7動作報告はcommunity寄稿という条件、旧CMake対象という固定Wiki記述を保持。全14コードを原文保持し実行済みと称さない。",
+        "静的ExternalProject_Addのv1.9.2・compile/toolchain/install/shared設定と依存/include指定、共有libでsubdir前PIC trueを保持。",
+        "source-noteのWiki3.0と固定software最小3.10/policy3.21を翻訳。policyをruntime上限と誤解させない。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 14,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:54:21.662Z",
+      "status": "draft-original-compared",
+      "page": "Tweaking.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Tweaking.md",
+        "sha256": "4d8865c5fe27e03b41f17c0ce0ecae3d16b3383aad486b511513e853b4d052bb"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/25-tweaking.md",
+        "sha256": "319225296c1a7acff552099ca8c3e0db5193f0483b4da71cb5fadf8af36b106c"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-404/translation-drafts/25-tweaking.md",
+        "sha256": "5878befecb14df01715ee30f6529ce07b6c2e42c6a3cc682c4a5809eb909ca02"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "tweakme編集の性能/機能とLinux coarse例を全訳。原コードのコメントも別の日本語本文として全訳し14macroの条件・警告・例を保持。",
+        "CLOCK_COARSE精度/HZ、NO_THREAD_ID未定義、NO_TLSfork、NO_ATOMIC_LEVELS同時変更禁止、WCHAR/EOL/外部fmt-I/UTF8/FD/levelnames/shortnames/default/active/functionを保持。",
+        "NO_THREAD_IDの固定softwareゼロとの差をsource-noteで翻訳しdatedWiki条件を保持。コード1ブロック原文一致。HTML誤解釈を避けfmtincludeとfunction名をinlinecodeに整形。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 1,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:54:21.662Z",
+      "status": "draft-original-compared",
+      "page": "Preventing-child-processes-from-inheriting-open-log-files.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Preventing-child-processes-from-inheriting-open-log-files.md",
+        "sha256": "d72af8fcad7860d625a77f8df16282afa87d7fa7adc25fc7e6f1f5bf5e60d6c6"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/18-preventing-child-processes-from-inheriting-open-log-files.md",
+        "sha256": "5010f890508bce3b1d9e07e70844af8030f34c635854d2f8e15b574d5ed47605"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-404/translation-drafts/18-preventing-child-processes-from-inheriting-open-log-files.md",
+        "sha256": "aeeaa25dbc168241dae82479e7e8c61e5f61d522b0370306cedfa6afd93f4fc4"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "tweakmeのPREVENT_CHILD_FDコメント解除と子へのlogFD継承防止を全訳。コード1全文一致。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 1,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:54:21.662Z",
+      "status": "draft-original-compared",
+      "page": "Preventing-undefined-thread-ids-in-child-processes.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Preventing-undefined-thread-ids-in-child-processes.md",
+        "sha256": "ecaf833b4deb534067c70721119491c65e0eba2674d2fad794d9edfc70f3b16e"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/19-preventing-undefined-thread-ids-in-child-processes.md",
+        "sha256": "b281ee1527e5828f8446519e8ecce410c1d45ae79f511db3aabd2ba11f2e5874"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-404/translation-drafts/19-preventing-undefined-thread-ids-in-child-processes.md",
+        "sha256": "974c88d2cad50664d70bd8ea2793e398fb9bfcf3625d23503b99957ae9ebf54f"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "threadlocalID保存の数micro節約とfork時DISABLE_TID_CACHING必須条件、childlog未定義防止を全訳。コード1全文一致。別頁NO_TLSの記述を合成置換せず独立したdated原文として保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 1,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:56:27.903Z",
+      "status": "draft-original-compared",
+      "page": "Setting-up-JSON-logging-with-spdlog.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Setting-up-JSON-logging-with-spdlog.md",
+        "sha256": "e255a28eb890a544519f4aa9c75ffd93ac1ebf5f952d7c0433d8a2342c8f978d"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/22-setting-up-json-logging-with-spdlog.md",
+        "sha256": "74be9ff4e5484bdd6ab2b68abdf06d3542ec24a728d287da0998a391873f4574"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-405/translation-drafts/22-setting-up-json-logging-with-spdlog.md",
+        "sha256": "d41f5cb65f99339bcf28fbef97954a39e44c87860df9a36797ce19e9dcdec8e2"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "一人称の利用例としてhuman/machine readable紹介、通常log/一行出力、利用者がJSON妥当性を保証する責任を全訳。",
+        "JSON libのstdstringとplain text、配列終端/drop/別threadID、info無効時に高severityで初期/終了処理する条件を保持。",
+        "5コード・JSON出力block原文一致。nested set_pattern/curly quotes/escapeのsource-noteを日本語化しコンパイル成功や安全serializationと称さない。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 5,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:56:27.903Z",
+      "status": "draft-original-compared",
+      "page": "Note-for-adding-sinks-on-the-fly.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Note-for-adding-sinks-on-the-fly.md",
+        "sha256": "d2b87f7fdb6e34ae9542dbb57a1da40a7f6f07f22749f4419e3e70a2b1c59dad"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/17-note-for-adding-sinks-on-the-fly.md",
+        "sha256": "15615e1cef242684a6215a8f621d08e23f5f9e5b3297c980f80f9ac7e870d987"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-405/translation-drafts/17-note-for-adding-sinks-on-the-fly.md",
+        "sha256": "8b8c0859b91420dbed486568c8882cbb7c96182fd4acada6c2984e6736a8083e"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "原logを維持したjson/MQTT再処理のcallback追加の動機、autoがvectorコピーになり本体が変わらない説明を全訳。",
+        "auto&またはcommon.h sink_ptrだがvector参照必須という原文説明とcopyconstructor、結び/issue3014を保持。2コード原文一致、後者不完全断片もそのまま。sink_ptr型説明の原文曖昧さを合格な実装例と推測せず別内容レビューへ残す。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 2,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:59:03.818Z",
+      "status": "draft-original-compared",
+      "page": "Integrating-into-Eclipse-IDE.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Integrating-into-Eclipse-IDE.md",
+        "sha256": "643339b22d8e1a5b7464db1126348fdd869f870d4d30d76face16fd1768f2bc8"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/13-integrating-into-eclipse-ide.md",
+        "sha256": "ad255ce88d1e5539cdf441c7563660b855b0fd27a49a216fc6ad9483febb9b6a"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/13-integrating-into-eclipse-ide.md",
+        "sha256": "fbd6f96aad602af8a9b7e9e666fe3148f988c80bdabd54ef708981923e7ecf21"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "導入、gitclone、ThirdParty/libs親folder推奨、5手順とUIメニュー/大小文字・includeパス/Indexerを全訳。現行Eclipse実機検証とは称さない。原文C/C+の表記を保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 0,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:59:03.818Z",
+      "status": "draft-original-compared",
+      "page": "Makefile-Only.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Makefile-Only.md",
+        "sha256": "4f003451c8a1771b8a6a765658db07c54abfe4ebcaa55ea58c25ce5b1fc210cd"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/16-makefile-only.md",
+        "sha256": "5e26283090e8734d238b93f61627dbe43a61190a050305f871cab201823ee766"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/16-makefile-only.md",
+        "sha256": "914947b7061ad6c7e8d29457b5627d136739f1639d6b3318099e5840816f120a"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "Makefile利用説明とLDFLAGSリンク/COMPILED_LIB定義・include、2コードを保持。原文言語ラベルも保持し最終Shiki対応確認待ち。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 2,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:59:03.818Z",
+      "status": "draft-original-compared",
+      "page": "Reference-documentation-using-Doxygen.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Reference-documentation-using-Doxygen.md",
+        "sha256": "c9ac02a42bbf646f0718f720097416248be2acc1693c82b68d45f7735d0c0011"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/21-reference-documentation-using-doxygen.md",
+        "sha256": "760fd14147a2f6df9b0f1217a7dacfe548c614fb05a867dd1146747a3e61b9da"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/21-reference-documentation-using-doxygen.md",
+        "sha256": "a650b91b7df09849d638ace141e8072d1ce26fe75a953c27cb292853b418fd22"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "関数signature等確認の外部Doxygenリファレンス案内を全文翻訳。元URL保持。外部本文の取得・canonical化・翻訳・reviewをしたとはしない。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 0,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:59:03.818Z",
+      "status": "draft-original-compared",
+      "page": "Language-bindings.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Language-bindings.md",
+        "sha256": "f68151eac59f6d90167965a46c0ca676bf916f66a03e0c60e3ba962146c2ed0c"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/14-language-bindings.md",
+        "sha256": "5a76a7b6c338e52ccfad1e197c9a8512676fe6e1fce2a378d965ece32115f9a6"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/14-language-bindings.md",
+        "sha256": "2ad44c246d7e2c84ac8066d5046b7086593bac3e439ca2960895f560d5f5fc3f"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "1000bytes未満、PythonstandardFileLogger比async4%/sync7%の原文条件・数値を保持。Libx測定や現在pip版実証とは称さない。",
+        "pip install/原repo/全8機能とstringformat未対応を全訳・保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 0,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:59:03.818Z",
+      "status": "draft-original-compared",
+      "page": "Windows-unicode-filenames.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/Windows-unicode-filenames.md",
+        "sha256": "4515b41ba4dbbc627ab5f188755fd3b53e514f551683ff2ecd2f419975faea67"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/26-windows-unicode-filenames.md",
+        "sha256": "43b20029894e8a0e12958fe019bc146480a50085040527578eeb740dafa7445d"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/26-windows-unicode-filenames.md",
+        "sha256": "7ad5cb7d4822b65992310590724589e260dbd421c7ad6246ae3e51c71bed6e91"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "WindowsUnicodefilename、tweakmeWCHARコメント解除とSPDLOG_FILENAME_T/Lの使用条件を保持。2コード全文一致。spd alias未宣言source-noteを全訳し補完せず保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 2,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T07:59:03.818Z",
+      "status": "draft-original-compared",
+      "page": "3.-Custom-formatting).md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/wiki/3.-Custom-formatting).md",
+        "sha256": "28a2626f35720858ceeb86503d215795c6b598550a6c0a1269fa6c056bd6f40c"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/02-3-custom-formatting.md",
+        "sha256": "d52a529404a4b47999b9b194bcf705e4153904b252069ef393846d517d01a4ec"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-406/translation-drafts/02-3-custom-formatting.md",
+        "sha256": "94a799c1232198d2536397394e48ca8bb8fd4d08d484b5b4f5964ef818409734"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "未リンクの1行pattern fragment全文原文一致。版注記/非公式訳・license判断を日本語化。spdlogformat動作例と推測せずoriginalfragment注記を保持。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 0,
+        "fixedSourceSHACommitsAndCopyrightRetained": true
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T08:02:30.045Z",
+      "status": "draft-original-compared",
+      "page": "README.md",
+      "source": {
+        "path": "docs/notes/document-import/spdlog/v1-17-0/sources/README.md",
+        "sha256": "d6ea8fd52d4e3194edf0b1cead3f55e9cd75130a192d52e9cd9aae87c1aa5254"
+      },
+      "canonical": {
+        "path": "apps/spdlog/src/content/docs/v1-17-0/en/01-guide/01-readme.md",
+        "sha256": "35ec17e72c0c1592f854c144a27bd0f3fa20a0460d58f6e287e51e337e1ce97a"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-407/translation-drafts/01-readme.md",
+        "sha256": "cbf842077b8b143703d27b4b06524ef33b5181c2deb164df80e7cf015255cae9"
+      },
+      "coverage": "Whole source/canonical body and provenance/original footer",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "ガイド全文の導入/全platform/全13package導入例/全機能/全使用例/benchmarks/文書案内を全文翻訳・照合。UI除外は英語canonical固定392/394と同じscope。",
+        "code/comment主要条件も説明に日本語化：compile時とruntimelevel区別、定期flushは全logger_mt、asyncpool事前設定、binhex5flag、eventhandlers、Qt500line、MDC threadlocalで非同期非対応と%&を保持。",
+        "28code/output blockはCRLFからLFのみ統一し全文一致。benchmarksの同期/非同期100万回・10thread/8192slots/block-overrunの全数値を原文保持、Libx測定とはしない。",
+        "原sicのsemicolon欠落/sharedptrドットを保持しコンパイル成功とは称さない。出典SHA/commit/originalnotice linkと非公式訳注記を全訳。READMEはWikiではないためwikiMITfallback/独立Wiki日付/footerを誤適用しない。",
+        "自己fragment3個を訳文見出しに合わせた。原相対sourcefileリンクを保持。実際rendered fragmentとJA内部リンク変換は最終機械検査待ち。"
+      ],
+      "mechanical": {
+        "fencedBlocksExact": 28,
+        "fixedSourceSHAAndSoftwareCommitRetained": true,
+        "codeNormalization": "CRLF-to-LF only"
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending; JA links/AST/license/sidebar and rendered fragments need completion"
+    },
+    {
+      "at": "2026-10-03T08:04:28.668Z",
+      "status": "draft-original-compared",
+      "page": "Sources and original license notices",
+      "canonical": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-393/canonical/en/02-reference/01-license.md",
+        "sha256": "ad19f9ae88938489379bc790bd27bc66097bf85e09f035f5b01d62122968b55a"
+      },
+      "translation": {
+        "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-408/translation-drafts/01-license.md",
+        "sha256": "8c6473dbc9efada78a96890e2f8ef534ad56f093a8bb9c6fd78abf5d449885bf"
+      },
+      "coverage": "Whole explanatory prose and three full original notices",
+      "model": {
+        "configured": "gpt-6.1-sol",
+        "runtime": null
+      },
+      "localLLMUsed": false,
+      "comparisons": [
+        "software/Wikiの独立固定commit・Wiki非tagmanual・非公式表示/訳を全訳。",
+        "Wiki専用license不明時の注釈softwareMIT運用判断を新たな許諾と混同しない説明を保持。第三者日本語記事非再用とfmt例外はcompiledobjectのみ/documenttext非適用を保持。",
+        "MIT許諾/通知履行/無保証/責任制限・fmt任意例外全文・Wikicopyrightを原文preのまま正確保持。法的文言を日本語訳で置き換えない。"
+      ],
+      "mechanical": {
+        "originalNoticeBlocksExact": 3
+      },
+      "separateJapaneseContentReview": "pending",
+      "fullProjectChecks": "pending"
+    }
+  ],
+  "remainingPages": 0,
+  "next": "Fix JA language-specific renderer/AST/link fragments, then independently review whole27 Japanese pages and final checks."
+}
