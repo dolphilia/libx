@@ -1,0 +1,11 @@
+import fs from 'node:fs';import {execFileSync} from 'node:child_process';import assert from 'node:assert/strict';import {api} from './github-api.mjs';
+const ev=new URL('.',import.meta.url),branch='codex/import-gnu-findutils-20261006',sha=execFileSync('git',['rev-parse','HEAD'],{cwd:'/private/tmp/libx-gnu-findutils-formal-917',encoding:'utf8'}).trim();
+const requested=process.argv[2],command=requested==='preview-repaired'?'preview':requested,dispatchName=requested==='preview-repaired'?'DISPATCH_PREVIEW_REPAIRED.json':'DISPATCH_'+command.toUpperCase()+'.json';
+if(['preview','production'].includes(command)){
+ const body={ref:branch,inputs:{deploy_target:command,preview_branch:'gnu-findutils-20261006',...(command==='production'?{expected_production_commit:'4e47452c3a52607144926346f6b94628304e298f'}:{})}};
+ const r=await api('/actions/workflows/cloudflare-pages-deploy.yml/dispatches',body);fs.writeFileSync(new URL(dispatchName,ev),JSON.stringify({at:new Date().toISOString(),sha,body,result:r},null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(r));
+}else{
+ const raw=await api('/actions/runs?per_page=10'),runs=[];
+ const known=[];const resultFile=new URL('PREVIEW_RESULT.json',ev);if(fs.existsSync(resultFile))known.push(JSON.parse(fs.readFileSync(resultFile)).productionRun);const candidates=[...raw.workflow_runs,...await Promise.all(known.map(id=>api('/actions/runs/'+id)))];for(const x of [...new Map(candidates.filter(r=>r.head_sha===sha&&r.head_branch===branch).map(r=>[r.id,r])).values()]){assert.equal(x.head_sha,sha);const jobs=await api('/actions/runs/'+x.id+'/jobs?per_page=100');runs.push({id:x.id,sha:x.head_sha,status:x.status,conclusion:x.conclusion,url:x.html_url,attempt:x.run_attempt,jobs:jobs.jobs.map(j=>({id:j.id,name:j.name,status:j.status,conclusion:j.conclusion,steps:j.steps.map(s=>({name:s.name,status:s.status,conclusion:s.conclusion}))}))});}
+ fs.writeFileSync(new URL('CI_STATUS.json',ev),JSON.stringify({at:new Date().toISOString(),runs},null,2)+'\n');console.log(JSON.stringify(runs.map(x=>({id:x.id,status:x.status,conclusion:x.conclusion,jobs:x.jobs.map(j=>({name:j.name,status:j.status,conclusion:j.conclusion,current:j.steps.find(s=>s.status==='in_progress')?.name}))}))));
+}
