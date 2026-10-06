@@ -1,0 +1,14 @@
+/* プロジェクトテンプレート共通スタイル */
+@import '@docs/theme/css/starlight-overrides.css';
+
+/* 上流の生HTML表はMarkdownの表ラッパーを通らないため、ここで横スクロールする。 */
+:where(.article-content, .sl-markdown-content) .tableblock {
+  max-inline-size: 100%;
+  overflow-x: auto;
+}
+
+:where(.article-content, .sl-markdown-content) .tableblock code {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
