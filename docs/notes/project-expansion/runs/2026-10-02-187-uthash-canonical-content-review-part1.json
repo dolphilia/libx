@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-187-uthash-canonical-content-review-part1",
+  "cycle": 187,
+  "startedAt": "2026-10-02T10:42:59.237Z",
+  "endedAt": "2026-10-02T10:44:26.864Z",
+  "result": "partial",
+  "phase": "canonical",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "未省略の全source/canonical読み取り",
+    "別内容review4/8",
+    "原コード構文問題のcc syntax-only照合",
+    "全source/generatedのprivate SHA一致",
+    "CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a84dfe30f710868892561f83db860901fa5219b546b4f9b3ebd7f569be30641f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-187/SOURCE_CANONICAL_REVIEW.json",
+      "sha256": "3d4a501c385de05f504d7e877814eec84f4d83356f0c437911dd2fd859af8bdb"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-187/PROVENANCE_NOTES.json",
+      "sha256": "1e904c71eefb1bce40f72f8c75fb945cdb3b8c48f485bc1fcd3b45e41fc1e839"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-187/ORIGINAL_SAMPLE_DIAGNOSTICS.json",
+      "sha256": "4832f949e2cb8daff327635197d7b27204408e75cfc7b621a5a10d59a7666575"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "67adcbb5ce698cd6e923de1dcbf9d8e4d78fc8104489496b83cee66c777336f7"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "58466699fe439f83e06db7f6227d20d2adcb7bac3fe5bd47502bc206d8a7c7d1"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "utstack/utstring/utringbuffer/license原文→定本の全ページ内容review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-187/SOURCE_CANONICAL_REVIEW.json",
+          "sha256": "3d4a501c385de05f504d7e877814eec84f4d83356f0c437911dd2fd859af8bdb"
+        }
+      ]
+    },
+    {
+      "name": "原サンプル2構文問題を確認し原コードを保持・表示注記を記録",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-187/ORIGINAL_SAMPLE_DIAGNOSTICS.json",
+          "sha256": "4832f949e2cb8daff327635197d7b27204408e75cfc7b621a5a10d59a7666575"
+        },
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-187/PROVENANCE_NOTES.json",
+          "sha256": "1e904c71eefb1bce40f72f8c75fb945cdb3b8c48f485bc1fcd3b45e41fc1e839"
+        }
+      ]
+    },
+    {
+      "name": "残4定本review/JA訳/正式app・注記表示",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-187/SOURCE_CANONICAL_REVIEW.json",
+          "sha256": "3d4a501c385de05f504d7e877814eec84f4d83356f0c437911dd2fd859af8bdb"
+        },
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-187/PROVENANCE_NOTES.json",
+          "sha256": "1e904c71eefb1bce40f72f8c75fb945cdb3b8c48f485bc1fcd3b45e41fc1e839"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前回186は正式生成と機械検査・台帳変更を伴うprogress。今回も新規作成を優先。",
+    "機械検査と別に4ページの全文内容保全を確認。",
+    "上流原文の不具合を無断修正せず別の出典注記へ記録。全8reviewや翻訳が完了したとはしない。"
+  ],
+  "unresolved": [
+    "残4定本全文review",
+    "JA全8翻訳/別review未実施",
+    "正式app/原ID検索/元情報・注記可視化/ビルド・表示・公開未実施"
+  ],
+  "nextAction": "SOURCE_CANONICAL_REVIEW187の残4ページ（userguide/utlist/utarray/ChangeLog）を全文照合し、節別の全範囲・SHA・判断を追加する。source由来のutstack/utstring構文問題はPROVENANCE_NOTES187をアプリ出典注記へ組み込み原コードは保持。全8定本review後、正式app/原ID検索と逐次JA翻訳へ進む。",
+  "resumeCondition": "source9/generated17/正式importerおよびreview187のSHA一致。定本全文review4/8のみ合格、JA0/8・注記表示未実施。残4定本reviewから再開する。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-166-pugixml-responsive-display-progress",
+  "cycle": 166,
+  "startedAt": "2026-10-02T08:51:20.256Z",
+  "endedAt": "2026-10-02T08:52:11.538Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "CUA全24文書desktop/mobile DOM・画像/出典検査",
+    "CUA選択箇所スクリーンショット目視",
+    "pugixml専用CSS編集",
+    "pnpm --filter apps-pugixml build",
+    "pnpm --filter apps-pugixml check:content"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "ddf552f2a5856d4ee7f8f3d422061bc64238f5228c08a687ec1642eb25c906b2"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/review/2026-10-02-163/REVIEW_MANIFEST.json",
+      "sha256": "a6d44793c65b2238c7e91c37de071a1d2272cd986432dfa39951a68c0cca3c9b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-166/RESPONSIVE_DISPLAY_PROGRESS.json",
+      "sha256": "bcf5b9eb30bd81b749b169868ed4d599a613339db8b7fe25b9037e45ad26b69b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-166/global.css",
+      "sha256": "60f94c346677e084bf39887a56196f667c35b56119f6327d7ab46c4e71ea1d16"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-166/build.txt",
+      "sha256": "e97c6b11811ca7fbcdb4f2423a9593c407921eb03c8f8eb769f751703bf69863"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-166/content.txt",
+      "sha256": "4abc949d4d6c96f2559454fba32318c8cb0bb18ffb4af1cbac810b92596a7097"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6f1ce3d4c9dafdd722a38b7a528aaa3cbe9eb64452af806d295de17eb811207c"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "c345706ae1711df3c29bf697048208134659f20f3f2e60704ae5e18c43b6e0b2"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全24英日文書DOM/モバイル幅/画像/出典",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-166/RESPONSIVE_DISPLAY_PROGRESS.json",
+          "sha256": "bcf5b9eb30bd81b749b169868ed4d599a613339db8b7fe25b9037e45ad26b69b"
+        }
+      ]
+    },
+    {
+      "name": "再ビルド・内容検査",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-166/RESPONSIVE_DISPLAY_PROGRESS.json",
+          "sha256": "bcf5b9eb30bd81b749b169868ed4d599a613339db8b7fe25b9037e45ad26b69b"
+        }
+      ]
+    },
+    {
+      "name": "全体表示操作・統合回帰・公開前検証",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-166/RESPONSIVE_DISPLAY_PROGRESS.json",
+          "sha256": "bcf5b9eb30bd81b749b169868ed4d599a613339db8b7fe25b9037e45ad26b69b"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "DOM検査を全箇所目視と混同しない。",
+    "モバイルはみ出しを本文に触れず専用CSSで修正。",
+    "初回出典プローブの誤りを保持して正しいrole/nameで再検査。"
+  ],
+  "unresolved": [
+    "全ページの代表箇所の目視/キーボード操作",
+    "入口/カテゴリ/404/版選択/前後移動",
+    "共有検索変更を含む最新統合回帰",
+    "公開前証拠再検証"
+  ],
+  "nextAction": "新規優先。第166で全24英日文書のデスクトップDOM/画像とモバイルDOM/画像/出典を確認。DOM比較表のモバイルはみ出しをpugixml専用CSSで修正し全24ページ再検査はみ出し0。注記の縦配置を目視確認。29ページビルドと全英日内容検査合格。次に代表箇所の目視とキーボード、入口/カテゴリ/404/版/前後移動、共有検索変更を含む最新統合回帰と公開前証拠再検証を完了し正規登録後に公開する。",
+  "resumeCondition": "第163レビューSHAと隔離CSS/検索修正を保持。Astro session59721とtab10を生存確認し残りUIへ。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

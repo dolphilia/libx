@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-172-pugixml-root-integration-and-verification",
+  "cycle": 172,
+  "startedAt": "2026-10-02T09:26:21.105Z",
+  "endedAt": "2026-10-02T09:27:29.224Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "保護付き限定root統合",
+    "現行全文レビュー/固定入力/検査証拠SHA再照合",
+    "root HTML anchor runtime",
+    "台帳CAS/検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "97e06e18543c46ac418b20623e8eb5a82db836e111369fccf2c7bbf35bcd5958"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/review/2026-10-02-163/REVIEW_MANIFEST.json",
+      "sha256": "a6d44793c65b2238c7e91c37de071a1d2272cd986432dfa39951a68c0cca3c9b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-172/VERIFICATION_GATE.json",
+      "sha256": "46c19c819316581fd196b87ebfb44ee0df58ec6b6a451f80b91f58bb3149a72d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-172/LIMITED_INTEGRATION.json",
+      "sha256": "9cca952ef8ea75ae3c166720fe97a2afeafe5de27745604e83d0a974fd7571bd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-172/toml-baseline/pnpm-lock.yaml",
+      "sha256": "1ab53fb5c7caf8fef9936ae68c942207d5096f7a1e24f767722c26da318f9434"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-172/toml-baseline/sites/landing/src/config/projects.config.jsonc",
+      "sha256": "cd2b54bed74c391c2c8b2dd371ccc5ca097dbad907a639b05e3816e1dd308cab"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "66b64368b913ecce6988012fcffb8bb45c2bebffb3818c370e94ee7f4a7a9933"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "e785156d98c655512c796e9b422cf68d699830d3baa58046a2c3796ae0afcb17"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "root実24本文/90app/保護13184/必須検査証拠/台帳",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-172/VERIFICATION_GATE.json",
+          "sha256": "46c19c819316581fd196b87ebfb44ee0df58ec6b6a451f80b91f58bb3149a72d"
+        }
+      ]
+    },
+    {
+      "name": "外部Production最新基点/全CI品質/公開/配信",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-172/VERIFICATION_GATE.json",
+          "sha256": "46c19c819316581fd196b87ebfb44ee0df58ec6b6a451f80b91f58bb3149a72d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "新規優先方針を維持しpugixmlを正規verified/公開待ちへ進めた。",
+    "公開待ちの登録は公開完了を意味しない。継続承認で次の公開工程へ進める。",
+    "TOMLの設定2参照は追記を除去すると当時SHAに一致することを実証して immutable snapshotへ移動。旧公開の検証を新基点に置き換えない。",
+    "rootの全buildや依存再インストールは行わず、検証済み隔離appとroot実ファイルの完全一致を確認。"
+  ],
+  "unresolved": [
+    "最新外部Production基点と全公開CI品質",
+    "Preview/Production公開・artifact/配信一致確認"
+  ],
+  "nextAction": "新規優先。第172でroot限定統合90ファイル、実本文24SHA一致、既存13184ファイルの保護を確認。必須6検査・全文別工程レビューの現行証拠を照合してverified/正規公開待ち登録。継続承認により追加承認なしで、隔離候補の全CI品質と最新Production照合・expected_production_commit guard・Preview/Production公開と配信検証へ進む。",
+  "resumeCondition": "共有rootに全レビュー済み本文が統合済み。隔離workspaceとpreview96496を保持し、公開前のCI品質・最新Production基点を確認。公開されるまでpublishedとしない。",
+  "counts": {
+    "verified": 7,
+    "published": 6,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-229-fmt-table-header-repair",
+  "cycle": 229,
+  "startedAt": "2026-10-02T15:26:18.227Z",
+  "endedAt": "2026-10-02T15:28:37.222Z",
+  "result": "partial",
+  "phase": "canonical-repair",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Source table th/td preservation",
+    "Regression failure before fix",
+    "Pandoc3.8.3 atomic regeneration",
+    "Astro5.7.12 scoped build",
+    "All4article preservation plus table-cell roles",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "14465579d7c70f56c1301c77cebc031a6e37e013c1da247e4f9d1c47d2e731f1"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6863914a164a22e685b78b1ce154368285f5e5fdc9bfcdcbccdd1f7af77bc0e6"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/SOURCE_LOCK.json",
+      "sha256": "9a0894df23b555b809e7905de9f1d4e0ecdd6ff2020105b8f665ae8d3f57695a"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/REPAIR_MAP.json",
+      "sha256": "05e343bfd9ba58f21f021b6e5469afa70d8561ea6b8ac9ae111a4abdccb22e4d"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/APP_BUILD.log",
+      "sha256": "815320dfb6ca90d8825b9fb5abe805c63a3b0924c904b2d040eb0b63675fdc65"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/CANONICAL_MACHINE.log",
+      "sha256": "702e776a6acf256f97cd982589673da7b1969db6547b4dbbf00717a251046f13"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/GENERATION.json.before",
+      "sha256": "a5fbcd34b3ee28eb82dc01c5ec8859fa2a2d5a8a806dded8796e3415fa33587d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/IMPORTER.md.before",
+      "sha256": "3296666f7983196ac83ab1cbf4c6438f990dec9dea4040b030404d205b32a279"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/PAGE_PROGRESS.json.before",
+      "sha256": "28f4d2bc8567f13f03fdb1c03ad3fcd1cb0037b44c22c9c0b068f3a040db0f2e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/REGEN_APPLY.log",
+      "sha256": "b9e13def9f788ff34af37d9d73477f7116150747bec358948845a7b79c0aa4b7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/REPAIR_VERIFIED.json",
+      "sha256": "6feb7aadae197e17843979ae91761451ba8d8de5bf01df2767c869770b25082e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/STRUCTURE_REGRESSION_BEFORE.log",
+      "sha256": "a711c3a5702b0c0e3bb280503b716795ed89c7f9f9d043fe5a1069197a3ccd11"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/checker.before.mjs",
+      "sha256": "4e050b3c64c09d0b9d5893b49b9ff22b72680b933f925b5386d0ce80d9fd2b70"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/importer.before.mjs",
+      "sha256": "26bcd9c5bcd0df0cae8dfa0843e8245a3ae76b6cd634f3a68fded16ddf1aa2be"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/syntax.before.md",
+      "sha256": "86e9c60cc0e7075117ac4f26e092971f3ca6a1bf6ac466e61805a7e7466834da"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/generated/canonical/01-docs/04-syntax.md",
+      "sha256": "ec727c48fdd36473f5029ae5cb02380edd042fceb49c6eb1ccc3824ac3bbe890"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/generated/GENERATION.json",
+      "sha256": "22dc6c1c4be970abf18b675a589ec0d50da27eec622f682447609c6fe47a3225"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "e4d4ab1724341b624f7b77449c3cb099980626ee8a79a13d1b578734dd53f9d8"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/IMPORTER.md",
+      "sha256": "3bf4422181c5013645d2385f12bc456b466dcc36bfe4fabe8ed14bfa179e4111"
+    },
+    {
+      "path": "scripts/importers/import-fmt-12.2.0.mjs",
+      "sha256": "5232022cb1d6a935aaf5a9e86a5cf51a5e4fe532894b87c12fc1595113154970"
+    },
+    {
+      "path": "scripts/importers/check-fmt-canonical.mjs",
+      "sha256": "b2f970b8c1fba5acdef0e1a6eeb428a95d8526339e0256f56c5e94eb3e17cb1b"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "504e1dcdddd23e991420877d6ef2c951f25e86376d27f6f79da31a71504e075c"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "a9b5d4fafdf6e09f8636f0fed6ed13f7333656aa82bf0ea6de6921c79f811a7c"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Original table header defect reproduced",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/STRUCTURE_REGRESSION_BEFORE.log",
+          "sha256": "a711c3a5702b0c0e3bb280503b716795ed89c7f9f9d043fe5a1069197a3ccd11"
+        }
+      ]
+    },
+    {
+      "name": "Table roles and all4article source preservation afterrepair",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/CANONICAL_MACHINE.log",
+          "sha256": "702e776a6acf256f97cd982589673da7b1969db6547b4dbbf00717a251046f13"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/REPAIR_VERIFIED.json",
+          "sha256": "6feb7aadae197e17843979ae91761451ba8d8de5bf01df2767c869770b25082e"
+        }
+      ]
+    },
+    {
+      "name": "Scoped build13routes",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-229/APP_BUILD.log",
+          "sha256": "815320dfb6ca90d8825b9fb5abe805c63a3b0924c904b2d040eb0b63675fdc65"
+        }
+      ]
+    },
+    {
+      "name": "Fullproject semantic/JA/finalQA",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "全10表を原HTML保全しth/tdの降格を拒否",
+    "定本変更は構文のみ、他4ENと3JA本文SHA不変",
+    "全文意味レビューと機械検査の合格を分離"
+  ],
+  "unresolved": [
+    "EN API/Syntax全文内容レビュー",
+    "JA残り2ページ",
+    "CI公式Pandoc固定",
+    "最終英日検証/公開"
+  ],
+  "nextAction": "fmt固定原文と生成API説明、修正済み構文定本を全範囲で内容レビューし、JA残りAPI/Syntax2ページを翻訳・別工程全文照合。CI公式Pandoc3.8.3固定と最終英日機械/表示検証を完了し、正規公開待ちから公開へ進む。",
+  "resumeCondition": "229:表見出し2セルの変換不具合を修復しth/td行構造検査を追加、全4英語本文/174pre/10表/138ID保全と13routeビルド合格。EN意味3/5とJA3/5のSHA不変、API/Syntax意味/訳/CI/最終QAは未完了。原入力固定/private作業場所/rootAwesome-user隔離を維持。",
+  "counts": {
+    "verified": 8,
+    "published": 8,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

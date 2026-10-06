@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-185-uthash-source-locked",
+  "cycle": 185,
+  "startedAt": "2026-10-02T10:35:11.467Z",
+  "endedAt": "2026-10-02T10:35:12.560Z",
+  "result": "complete",
+  "phase": "acquisition",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "9正式source固定SHA",
+    "全8CONTENT_MAP/元titleauthorversion保存",
+    "SOURCE_LOCK/原archive参照",
+    "隔離checkout同一入力mirror",
+    "CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f76c63a16407094140febad2993b403d4fd3137ebd29de3763dff83e01f76e3b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/SOURCE_LOCK.json",
+      "sha256": "d4827108cdfa7a9427d13ceded201d97dfc4a4de0d4a9b45b62002526899f2df"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/CONTENT_MAP.json",
+      "sha256": "3a5ae7e9ba3683ef2a7967d50c75d57e4b464689b1d4768b817f95f6b06628ad"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-185/SOURCE_LOCKED.json",
+      "sha256": "73e2800948c773ce1740b68ff2304a69745c0f33ec26e26d6dd8742a69e9ff9d"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/LICENSE",
+      "sha256": "40f48f89e1d0095bf1c5fb4d00affd74959c3ff77463b672cf7fac547d1d6465"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/ChangeLog.txt",
+      "sha256": "360017add81441bb5082271051c416db2487c0685157369c1882d96c93783af4"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/rss.png",
+      "sha256": "8ee173565b2e771fecf3b471a79bdf072aaa1bd9dc27582cfda2b2a322beeba8"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/userguide.txt",
+      "sha256": "a605a5bef028b76274ef34a22ed4dbfaa2057a1f79b08b1b8e074115eebbd2a0"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utarray.txt",
+      "sha256": "6be9687077a20936e0c990ca7a278f8c1e771d91953aaa6ed6b0300f8bb89165"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utlist.txt",
+      "sha256": "a0b2acd6bcadddb3953262262c658d6cfe88e28cfa62e60c5ccc6c92107ad0bf"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utringbuffer.txt",
+      "sha256": "257d2beae67f6f1b9ea8a147e40044bea83460fc3c7e53d2c606f0f28cb1f300"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utstack.txt",
+      "sha256": "8aebe8d41ba87342ab6213cd6c1db3aa1e755ba40633acce3a9cd0f6be39baf3"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utstring.txt",
+      "sha256": "d34aec031f89ab604890a3effe2da341ef31a0059423edca67313790723fd6ba"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a61addcf3340a8a6d69092f2e5d0297ad2b37b211f474a998f5a68c6507d2532"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "d69943f6c6dd7f16c7f28e4321acbcb2488c9b8141730d49675b242d060f75c9"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "source9/SOURCE_LOCK/map全8とprivate SHA一致",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-185/SOURCE_LOCKED.json",
+          "sha256": "73e2800948c773ce1740b68ff2304a69745c0f33ec26e26d6dd8742a69e9ff9d"
+        }
+      ]
+    },
+    {
+      "name": "正式定本生成/全文内容レビュー/日本語訳",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-185/SOURCE_LOCKED.json",
+          "sha256": "73e2800948c773ce1740b68ff2304a69745c0f33ec26e26d6dd8742a69e9ff9d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全7本文と原BSD通知/RSSを正式入力へ固定。",
+    "既存訳再利用なし。歴史的PDF404は元所在地と別注記で扱う。",
+    "source-locked完了のみ記録、canonical-ready/verifiedとしない。",
+    "実行日時検査で未来の固定startedAtを検出し、証拠ディレクトリの実作成時刻へ補正。SOURCE_LOCKと台帳状態は変更なし。"
+  ],
+  "unresolved": [
+    "正式変換器/定本/再生成試験未実施",
+    "全文翻訳と別内容review/機械表示/公開は未完了"
+  ],
+  "nextAction": "専用workspaceに正式AsciiDoc→Pandoc変換器/sourceIDremark/search対応を実装し、SOURCE_LOCKを入力に全8EN定本を生成。2回再生成の同一SHA、失敗時保全、全7原本文/100code/19table/181ID/RSS参照を検査してから翻訳へ。",
+  "resumeCondition": "rootとprivateのsource9/SOURCE_LOCK/CONTENT_MAP SHA一致。source-lockedから正式importerと全EN定本を作成。候補trialの変換合格を正式全文review/翻訳/verifiedとしない。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

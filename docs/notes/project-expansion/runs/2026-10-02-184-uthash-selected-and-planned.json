@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-184-uthash-selected-and-planned",
+  "cycle": 184,
+  "startedAt": "2026-10-02T10:30:00.000Z",
+  "endedAt": "2026-10-02T10:34:03.626Z",
+  "result": "complete",
+  "phase": "selection",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "日本語検索cache/確認限界記録",
+    "全262原SHA/境界補正",
+    "5項目採点74",
+    "別証拠確認パス",
+    "cloned clean Production a60隔離workspace",
+    "CASeligible/selected/planned"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "719e3d04019d0e14034da44ca4a937d1ae4a5f50851b72085591f1eb089b2e25"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "5d3e4ec6ff17d9a5fd249a814f98be46e6263416a5f2952d938247d58ffbb5a9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/BOUNDARY_RECONCILED.json",
+      "sha256": "13ed7838789c4fbe83d128cb0e60d442b40156093daf3459fff7ba9c813f5616"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/JAPANESE_RESEARCH_LIMITS.json",
+      "sha256": "08db50dcc333e8a08d2a4367a9b6281af3ebef12812631ca3fe3aa4b9671e02c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/SCORING.json",
+      "sha256": "e927f1563d96cc24625f376a27145420267dae2e40e89ea334c78dd279d0d7c6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/CANDIDATE_DRAFT.json",
+      "sha256": "41b5ffca0649c65488ed816a158bd622147bc33462c6320e110d38edccb25911"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/SEPARATE_SELECTION_REVIEW.json",
+      "sha256": "d51ad2ddc743b92b0e502420e7a9235dd6a877829c86b5bddcb873b65cdab01d"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "ef86f358d303e8def89c07fc359337f1e0d977d08798fc5fcbe54daba064cabf"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f76c63a16407094140febad2993b403d4fd3137ebd29de3763dff83e01f76e3b"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "71cf674434410599dd7b8edb9a0c0e19183a52e7fc36016b980affd7b5c23475"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "uthash"
+  ],
+  "newOperationIds": [
+    "uthash:v2-4-0:ccc0cc7fce0aa7b227cb6ee5bbb47a6bdd3cd9f281c4031bfad013654ed66fc4"
+  ],
+  "checks": [
+    {
+      "name": "全必須条件と5項目74点・別証拠照合",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/SEPARATE_SELECTION_REVIEW.json",
+          "sha256": "d51ad2ddc743b92b0e502420e7a9235dd6a877829c86b5bddcb873b65cdab01d"
+        }
+      ]
+    },
+    {
+      "name": "cloned clean published a60隔離場所・新規上限",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/SEPARATE_SELECTION_REVIEW.json",
+          "sha256": "d51ad2ddc743b92b0e502420e7a9235dd6a877829c86b5bddcb873b65cdab01d"
+        }
+      ]
+    },
+    {
+      "name": "正式source-lock/定本/翻訳/別全文review",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-184/SEPARATE_SELECTION_REVIEW.json",
+          "sha256": "d51ad2ddc743b92b0e502420e7a9235dd6a877829c86b5bddcb873b65cdab01d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "旧日本語ありを尊重して追加価値3/5。未取得を欠落/低品質加点しない。",
+    "古いboundaryの権利未確定文言を修正し、rootBSD全文/RSSと全7本文を明確化。",
+    "74点/全6pass/別確認を経て枠内新規1件uthashをselected/planned。trialのみでcanonical-ready/verifiedにしない。"
+  ],
+  "unresolved": [
+    "旧日本語全範囲現行状態は未取得・不確実性を保存",
+    "正式定本/翻訳/全文レビュー/最終検証は未完了"
+  ],
+  "nextAction": "隔離workspaceでsource-lock/content-map/importerを作り、全8EN定本の再生成・保全検査後、日本語全文翻訳と別工程全文レビューへ。",
+  "resumeCondition": "SelectionSHAを保ち、workspace clean a60b990からsource lock/正式importer/EN定本作成。trial完成を正式本文レビューとしない。Root apps/uthash未作成、未公開。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

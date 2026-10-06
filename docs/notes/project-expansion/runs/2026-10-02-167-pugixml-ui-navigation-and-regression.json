@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-167-pugixml-ui-navigation-and-regression",
+  "cycle": 167,
+  "startedAt": "2026-10-02T08:55:01.943Z",
+  "endedAt": "2026-10-02T08:57:16.807Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "CUA入口/版/検索/目次/前後/画像/404/サイドバーとキーボード検証",
+    "pnpm test:runtime sandbox/承認再実行",
+    "git diff --check"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6f1ce3d4c9dafdd722a38b7a528aaa3cbe9eb64452af806d295de17eb811207c"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/review/2026-10-02-163/REVIEW_MANIFEST.json",
+      "sha256": "a6d44793c65b2238c7e91c37de071a1d2272cd986432dfa39951a68c0cca3c9b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-167/UI_NAVIGATION_AND_REGRESSION.json",
+      "sha256": "cfb5076a52f089b1c71983cdb647bd264ec7d6e99805a2d756c8652431c1d76f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-167/PRIVATE_INPUT_HASHES.json",
+      "sha256": "15c45a8708e06bff47a16f7cad92ac1430759fa301b50cc80cc6621420c4c383"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-167/runtime-sandbox.txt",
+      "sha256": "e41448bacb8ed3471d9095e2297279080319fe273d3e6998cd3fedb2a289dca7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-167/runtime-approved.txt",
+      "sha256": "fc620a012a4996843e9bc0c58346e588153adad73035f00ed7c9180b569be8c4"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "24644b8baf403719db57bc233d85a4214cdca51eadadc3ef6cb7a771944a35c0"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "c54f270a094307f180bec0a87579b61858c14a9646b3b8bd1de8386264820594"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "ローカル表示操作とキーボード",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-167/UI_NAVIGATION_AND_REGRESSION.json",
+          "sha256": "cfb5076a52f089b1c71983cdb647bd264ec7d6e99805a2d756c8652431c1d76f"
+        }
+      ]
+    },
+    {
+      "name": "runtime223件と差分整合性",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-167/UI_NAVIGATION_AND_REGRESSION.json",
+          "sha256": "cfb5076a52f089b1c71983cdb647bd264ec7d6e99805a2d756c8652431c1d76f"
+        }
+      ]
+    },
+    {
+      "name": "最新統合/公開前検証",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-167/UI_NAVIGATION_AND_REGRESSION.json",
+          "sha256": "cfb5076a52f089b1c71983cdb647bd264ec7d6e99805a2d756c8652431c1d76f"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "初回runtimeの権限失敗ログを保持し、承認後の同じテスト全件結果を別保存。",
+    "長いスクロールの最終到達を確認し、途中観測を不具合と決めつけない。",
+    "隔離UI検証を統合後の表示検証に代用せず統合ゲートを残す。"
+  ],
+  "unresolved": [
+    "最新共有状態/公開済みcommitとの比較・統合",
+    "統合選択的ビルド、check:links、check:integrityと統合プレビュー再確認",
+    "公開前現行本文/レビュー/機械検査証拠再検証と正規公開待ち登録・公開"
+  ],
+  "nextAction": "新規優先。第167で入口、単一版の表示、検索/サイドバーのキーボード操作、前後移動、desktop/mobileの長い目次、図版/ライセンス/404を確認。目次の暫定不具合はスクロール完了前の観測で、最終位置到達確認により訂正。runtime223件合格。次に最新共有状態と公開済みcommitを比較・保護し統合し、選択的統合ビルド/check:links/check:integrity/統合プレビューを検証。公開前証拠再照合、正規公開待ち登録後に公開。",
+  "resumeCondition": "隔離レビュー/CSS/検索修正のハッシュが有効。rootのAwesome/user差分と最新公開commitを確認して安全に統合を開始。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

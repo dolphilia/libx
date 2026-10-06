@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-262-ninja-formal-english-build",
+  "cycle": 262,
+  "startedAt": "2026-10-02T18:59:00.000Z",
+  "endedAt": "2026-10-02T19:01:22.230Z",
+  "result": "partial",
+  "phase": "ninja-formal-en-build",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Formal isolated Astro app",
+    "Fresh pnpm build",
+    "Full rendered preservation validator",
+    "LedgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "db3fe8591544bbb97deec7d5863a6bbcd540ee2d364c0832840ed56f3a5bf9b3"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "f7594cb9394d415cd179cdae91df7554e4de43e7837764ec6f603f40c206e344"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-262/APP_STYLES.css",
+      "sha256": "ef450a33da3fec05d4aa181534d0f689a2f5242143777083f232730894bab72d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-262/ASTRO_CONFIG.mjs",
+      "sha256": "d0be1ea485893e242d66d2bed165a1277cc2897cbb994da45f092825af66ed5e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-262/BUILD.log",
+      "sha256": "9c2ecf26da03ef3c070e61552738f4865971c78ed9b5128e045c92a8c9180b44"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-262/BUILT_PRESERVATION.json",
+      "sha256": "0c0e1922c5b12fc0bb528a97faf99e2b63e4c9700927f96c656e8b6fc79b5845"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-262/HEADING_PLUGIN.mjs",
+      "sha256": "759a813bccb604f84bfe3e9e4878e4def4618ea8bdcb5259b5c517bbb2b258e9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-262/PROJECT_CONFIG.json",
+      "sha256": "9fcb7b6c93d2147285e0ca7856a342c0781449781f4c4919e179b43ff0bf5eae"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0480900d18e9dc19bd820f1b304820131bee563a697c63251d842a9a6149cf0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "2466bffd22ce27a916c8ba0f09fb0995f52ef9b27a634b72caaf32d014236479"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Formal EN six-route build and complete rendered preservation",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-262/BUILD.log",
+          "sha256": "9c2ecf26da03ef3c070e61552738f4865971c78ed9b5128e045c92a8c9180b44"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-262/BUILT_PRESERVATION.json",
+          "sha256": "0c0e1922c5b12fc0bb528a97faf99e2b63e4c9700927f96c656e8b6fc79b5845"
+        }
+      ]
+    },
+    {
+      "name": "All EN/JA content reviews, JA and complete release validation",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "新規Ninjaの正式アプリ準備を優先し、公開済み通常巡回は低優先で保留。",
+    "日本語文書の完成前は対応言語をenのみとし、テンプレートMIT表記を固定根拠/注釈付きApache-2.0に置換。",
+    "rootユーザー/Awesome/shared変更には触れず、formal私有workspaceのみbuild。",
+    "機械検査と全文内容レビューを分離。ENのみbuildを全ENJA検証済みとは登録しない。"
+  ],
+  "unresolved": [
+    "全2EN内容レビュー",
+    "全2JA翻訳/別工程全文レビュー",
+    "全ENJA機械検査/UI/copy/CI/Pages公開"
+  ],
+  "nextAction": "専用ninja-import-20261003の正式2ENページを固定sourceと全文内容レビューし、全41節31codeを保つ全2JA翻訳へ進む。原COPYING全文はJAページでも改変せず掲載。翻訳後の全2JA別工程レビュー→4記事の構造/links/整合/build/browser/copy→統合CI/Pages公開。",
+  "resumeCondition": "262: 通常テンプレート2仮ページのみ除去、正式2EN定本とライセンスasset、アプリ専用headingplugin/CSS/注釈付きApache-2.0設定を配線。1.13.2固定、supported enのみ、fresh依存で6routes build成功。全本文/31code/2表/33links/41IDs/41節の両TOC/全文COPYING/可視注釈/asset検査合格。JAや全文内容レビュー、UI/copy、統合releaseは未完了。rootapps/ninjaなし、private appのみ。",
+  "counts": {
+    "verified": 9,
+    "published": 9,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 4,
+    "eligible": 0
+  }
+}

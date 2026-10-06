@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-215-mobile-navigation",
+  "cycle": 215,
+  "startedAt": "2026-10-02T12:30:00.000Z",
+  "endedAt": "2026-10-02T12:37:51.222Z",
+  "result": "partial",
+  "phase": "verification",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "previousCycleClassification": "progress: 214表示修正/40snapshot/全16HTML/共有検索CAS適用保存。",
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "fb5314aa3b9c2005c98f08590f56b16030399f98689819d50defaecf1550fa42"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-215/DISPLAY_PARTIAL.json",
+      "sha256": "e71e89bf1966b00551c1330a72d6b0cd76c2d7d08ad7b986dd74f0ec2b71b6df"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "c4ce1406631948ac16e84562b6d4c66c4a6ae1f1bf33edd9a961c9e3c35c0336"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "a7f147133c5bb19c13d87c12f9b8eda7fe2e80a8b5abcb5b7e65edcadca37820"
+    }
+  ],
+  "tools": [
+    "cua native Chrome guest pointer/keyboard/AX/Console readonly/screenshot",
+    "ledger CAS/SHA"
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "mobile API横操作/コード幅/英日版404前後出典",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-215/DISPLAY_PARTIAL.json",
+          "sha256": "e71e89bf1966b00551c1330a72d6b0cd76c2d7d08ad7b986dd74f0ec2b71b6df"
+        }
+      ]
+    },
+    {
+      "name": "残表示/統合/公開",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-215/DISPLAY_PARTIAL.json",
+          "sha256": "e71e89bf1966b00551c1330a72d6b0cd76c2d7d08ad7b986dd74f0ec2b71b6df"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "表の横スクロール領域と実横操作を別証拠で検証。",
+    "固定版は一つなので他版移動は対象外。",
+    "JA404英語表示の既存制約を保持。",
+    "Device overrideを解除、ユーザープロファイルへ変更なし。"
+  ],
+  "unresolved": [
+    "RSS/長いコードの実横操作/表示監査",
+    "root限定統合/全Production候補build/公開"
+  ],
+  "nextAction": "390px表の実横キー操作、最大147行コード幅、mobile英日/版/404帰還/通常前後/出典合格を保存済み。次はRSS画像と長いコードの実横操作など残表示を確認してdisplay監査を完了し、snapshot214/review210を照合してrootへ限定統合。最新共有差分・landing/lock・clean全Production候補buildを検証して正規公開待ち登録/Pages公開へ進む。",
+  "resumeCondition": "review210/SHAとsnapshot214有効。ChromeGuestはtask通常ページ、device override解除済み。IAB19handoff、Astro preview4390継続。RSS/コード横操作など残表示と限定統合は未実施。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

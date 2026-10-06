@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-168-pugixml-integration-preparation",
+  "cycle": 168,
+  "startedAt": "2026-10-02T08:59:09.480Z",
+  "endedAt": "2026-10-02T09:02:20.411Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "root/旧隔離/公開c7a6b97差分比較",
+    "公開基点から隔離cloneと限定コピー",
+    "pnpm install offline/承認取得",
+    "pnpm --filter apps-pugixml check:content",
+    "pnpm check:links",
+    "pnpm check:integrity",
+    "pnpm build:selective --projects=pugixml,landing --local",
+    "git diff --check"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "24644b8baf403719db57bc233d85a4214cdca51eadadc3ef6cb7a771944a35c0"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/review/2026-10-02-163/REVIEW_MANIFEST.json",
+      "sha256": "a6d44793c65b2238c7e91c37de071a1d2272cd986432dfa39951a68c0cca3c9b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/INTEGRATION_PROGRESS.json",
+      "sha256": "c3e1b589be412ecb09bf824cc9ab8edd10b79252bdc3c78fcfe56c2fd51ce88d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/installOffline.txt",
+      "sha256": "410c6c6764d95b4837d27b28b460cea67a9d6244b931a953475bce7f84b7129a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/installRestricted.txt",
+      "sha256": "d1760b719601b8f9cf45b4a4a89580d96045a874f8e341de5e64d54017e9a6e9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/installApproved.txt",
+      "sha256": "2d99bcbb1445db8317323c9de327c2daceab6061f46d21f68a6a1265f5522e4e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/content.txt",
+      "sha256": "899d87d1121efbec898d293058d1fb005668209f5f7e24d73ad3d953e2a1be0c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/links.txt",
+      "sha256": "f15842344b0e402ca9c28f636edecc9c962fd4572c37b9412d4e224c71062018"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/integrity.txt",
+      "sha256": "f6ca005f6f0996cbde5693acee94793b5a7c20ce7bddf17b299b81c5ee71d3e2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/build.txt",
+      "sha256": "dd7e572d4c504f9819931cbdc53e02a928314c0323b05f5436df1d7b51275a51"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4d2fd68de203a61722542fe8ffed4de68be6b55d4cbbd5561f595a2dd863f9cf"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "fb90560cb1493ba0f92bd9e8655fa4b50f6ce80cd213186af66452ba1bba4061"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "レビューSHA/内容/全体整合性/選択的統合ビルド",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/INTEGRATION_PROGRESS.json",
+          "sha256": "c3e1b589be412ecb09bf824cc9ab8edd10b79252bdc3c78fcfe56c2fd51ce88d"
+        }
+      ]
+    },
+    {
+      "name": "全体Markdownリンク",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/links.txt",
+          "sha256": "f15842344b0e402ca9c28f636edecc9c962fd4572c37b9412d4e224c71062018"
+        }
+      ]
+    },
+    {
+      "name": "現在Production/公開範囲/統合表示・回帰/公開前検証",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-168/INTEGRATION_PROGRESS.json",
+          "sha256": "c3e1b589be412ecb09bf824cc9ab8edd10b79252bdc3c78fcfe56c2fd51ce88d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "旧隔離HEAD37f77d3からそのまま公開せず、記録済みTOML/Lua公開c7a6b97を基点に用意。",
+    "共有rootのAwesome/userファイルに書き込まず、保護3ファイルSHAを再照合。",
+    "失敗した全体リンク検査をアプリ内容検査で代用しない。"
+  ],
+  "unresolved": [
+    "HTMLアンカーと途中翻訳記録を含む全体リンク検査の失敗",
+    "保護共有3ファイルの公開範囲整理",
+    "現在外部Production基点と統合表示/回帰/公開前証拠照合"
+  ],
+  "nextAction": "新規優先。第168で記録済み公開c7a6b97を基点に新統合workspaceへ移しレビュー全24SHA一致、内容/全体整合性とpugixml+landing選択的統合ビルド合格。check:linksはHTMLアンカー非認識と途中翻訳保存記録で失敗。次にリンク検査のHTML id/name対応と配信対象/作業記録の範囲を適切に整理し根拠付き再検査。保護した共有3ファイルの公開範囲、最新外部Production基点照合、統合表示/旧文書回帰/公開前SHA検証を完了して正規公開待ち登録後に公開する。",
+  "resumeCondition": "新workspaceと旧workspaceを保持。台帳workspaceは新統合環境。公開/verifiedはまだ禁止ゲート未達。リンク失敗の切り分けと公開範囲整理から再開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

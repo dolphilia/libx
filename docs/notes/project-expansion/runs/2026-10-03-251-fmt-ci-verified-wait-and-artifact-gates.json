@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-251-fmt-ci-verified-wait-and-artifact-gates",
+  "cycle": 251,
+  "startedAt": "2026-10-02T17:46:00.000Z",
+  "endedAt": "2026-10-02T17:50:38.520Z",
+  "result": "partial",
+  "phase": "preview-ci-wait",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "GitHubAPI same runpoll",
+    "readonly release/plan check",
+    "CIgate preparation",
+    "node --check",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "150cf54d016301391a65bc28b4a4f81fe9d7a0e119eaefe5e832a1ffe5d645f9"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-251/CI_STATUS_1790963264317.json",
+      "sha256": "562cb2699319be5c0854055c90d4ea4987ccd5e358347d745a70cd12ba728213"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-251/CI_STATUS_1790963335574.json",
+      "sha256": "96d19bb1465c08babd755f2ef78610cfb22a6ca3c6b2b1c37c7096293b4aeaac"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-251/CI_STATUS_1790963396105.json",
+      "sha256": "8d3ffbd57fea22e9080a6a494370859ad88472c5ebc655350d099efd8f166d1e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-251/WAIT_AND_PREPARATION.json",
+      "sha256": "8a726c2dba7e364cf288c8a3fe0b6c2c78142a13cd3ee75ea7c93aaa61347bbf"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-251/check-ci-fmt.mjs",
+      "sha256": "7a84e51ffd5a52dbf2312d957144a89304c1cd2fc145f9d7dc13afab9a929168"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-251/check-existing-ci.mjs",
+      "sha256": "2a58854b9232aec81c94552fae312469e84261c17c2788bbb9887b4ba2c5837c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-251/read-ci-artifact.mjs",
+      "sha256": "2a0871733d6cac295898bdda083943ff10ba97c3ca669014890103b4101e40ec"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e59a6ad584f326f6c39367130d998d505fa55cda6f508e0a8a160e0ac2e49a31"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "75813a66ccf9041015456acf6e0e4e1bff943a04598e88c34084ba2ffcea3240"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "confirmedliveCIwait and syntax-only preparation",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-251/WAIT_AND_PREPARATION.json",
+          "sha256": "8a726c2dba7e364cf288c8a3fe0b6c2c78142a13cd3ee75ea7c93aaa61347bbf"
+        }
+      ]
+    },
+    {
+      "name": "CIartifact/Preview/Production",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "前turnprogress。今turnは確認済みliveCIのverifiedwait、重複起動を行わない。",
+    "最終commitのartifact/HTTP/UI未確認を合格にしない。",
+    "新規公開を優先、公開済み通常巡回は実施せず確認日時を作らない。"
+  ],
+  "unresolved": [
+    "最終run順番待ちとCI品質結果",
+    "CIarchive/currentall5scope/既存article保全/Preview/Production実配信未確認"
+  ],
+  "nextAction": "Poll finalPagesPreview run37042768588 SHA5dda902a7dc5a4c8e71540da8b565e2c5a40f225; precedingrun37042456120 stilllive. No redispatch/restart onwait. Onsuccess run251/read-ci-artifact.mjs todownload archive, unzip to /private/tmp/libx-fmt-preview-artifact-251 (freshdirectory), run251/check-ci-fmt.mjs /private/tmp/libx-fmt-preview-artifact-251 and check-existing-ci.mjs. Verify allCIfile HTTPdelivery and actualPreview UI thenProduction expected_commit81dfad9. Preparedgate nottestedagainstCIyet; failure mustbeinvestigated, never countedpassed.",
+  "resumeCondition": "251:finalPreview待機・先行CI統合build中をGitHubAPIで確認。全scopeCIartifact/SHA/currentreview/all15fmtHTML/2assets/2359existingarticle検査手順を保存、構文検査のみ合格。現設定gpt-6-astraでruntime不明、ローカルLLM不使用。先行と最終のrun/commitを区別しCI/配信未確認は完了扱いしない。",
+  "counts": {
+    "verified": 9,
+    "published": 8,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

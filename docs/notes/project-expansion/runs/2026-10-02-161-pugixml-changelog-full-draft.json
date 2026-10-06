@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-161-pugixml-changelog-full-draft",
+  "cycle": 161,
+  "startedAt": "2026-10-02T08:37:20.488Z",
+  "endedAt": "2026-10-02T08:38:06.743Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "固定原text301–429と定本1061–1531行の実読・翻訳",
+    "固定再生成・コード/ID/URL/HTML保全検査"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/canonical/03-reference/01-changelog.md",
+      "sha256": "27e4084e1ba16fbc964e23d5f73a6e7d17104e18e119454793c77cf1e2196049"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/source-fragments/03-reference/01-changelog.html",
+      "sha256": "1c933c95bba45ed55f36ea795b4220247e6d208b8f538ecdd74469fdf9ba11c2"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6b52d5f6b9a1950bd34f3a8d8dfc57c586d3a50a43eda1695e93d9f4764f5b3c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/translation-draft/2026-10-02-157/ja/03-reference/01-changelog.md",
+      "sha256": "e10c269dce9a50166e62bf5db67fa1d1846d87c1554469b57a9d5703cdd629d2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-161/TRANSLATION_MAP.json",
+      "sha256": "d107cf23bfc97183a09227c48238bb924f50b1c9e471a38121ec491d82474e41"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-161/MECHANICAL.json",
+      "sha256": "a36127b0c78e03fb41bdc749f3753d62b23630dd11a7f371d7821f7dffecd132"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-161/PREPARATION.json",
+      "sha256": "b16d7193a4075f07f0e5a9f3ec709f9ea138dfdb431a59388d808159f4db2e0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-161/BEFORE_CHANGELOG_PARTIAL.md",
+      "sha256": "f60b73c6dac6d8a026e9acde544e5238de77d34c089e789b4674bc2ddf6850ed"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "45b0e85d70dc7cc2d6b82ed5cb42c97cda0510802aef378716a8ebf1535dedc9"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "489ba243c928a5ef53899e7d854fa75e72c712a3128771322295ae8d5933803c"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "全文初稿1531行とコード/ID/URL/HTML保全",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-161/MECHANICAL.json",
+          "sha256": "a36127b0c78e03fb41bdc749f3753d62b23630dd11a7f371d7821f7dffecd132"
+        }
+      ]
+    },
+    {
+      "name": "変更履歴別工程全文内容レビュー",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "name": "全JA対象リンク/UI/表示・統合",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "先行1–1060行を保持し、v0.9〜v0.1の120翻訳単位を追加。全1531行/408単位の初稿を完成。",
+    "当時のAPI名/削除予定/例外フラグ名/軸の修正条件/数値変換の旧結果と新結果を保持。",
+    "全文初稿完成と全文内容レビューを分け、全体検証未実施として記録。"
+  ],
+  "unresolved": [
+    "変更履歴全文内容レビュー未実施。v1.5原文のコピー性能表記の曖昧さを照合する。",
+    "全体表示/統合/全JAリンク未検証。"
+  ],
+  "nextAction": "新規優先。全文初稿12/12・別工程全文レビュー11/12。第161で変更履歴全1531行/408翻訳単位の初稿を保存。固定原資料/定本/訳文を別工程で全文レビューし、v1.5コピー性能の原文cross-document/inter-documentの曖昧さや旧API名を確認する。その後全JAリンク/UI/表示/統合を検証し正規公開待ち登録後に公開する。",
+  "resumeCondition": "固定原資料/定本/全文初稿のSHA有効。変更履歴の別工程全文レビューから続行。全検証と正規登録後に公開。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

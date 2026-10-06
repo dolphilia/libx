@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-247-fmt-final-local-ui-and-repository-gates",
+  "cycle": 247,
+  "startedAt": "2026-10-02T17:08:59.612Z",
+  "endedAt": "2026-10-02T17:09:50.989Z",
+  "result": "partial",
+  "phase": "final-display-and-repository-verification",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "CUAnativekeyboard/UI/read-onlyDOM",
+    "Privatepnpmqualitychecks",
+    "Dedicatedpnpmstoreinstall",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/app-support/global.css",
+      "sha256": "7c16dddbdaadff6e02102dfeb887ba673034f8530055ef5794c5bbd7552e5710"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/REVIEW_MANIFEST.json",
+      "sha256": "5c01f9b05d19ad4b1b0bff99766884c4e3ad8a1a57ba1570977db37c5120f4e0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-246/RENDERED.log",
+      "sha256": "ec7bbae611a515a3745f5ab4fb521f36559981bb08a8492d4cfe2bf7e4ab9b1a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/DISPLAY_REVIEW.json",
+      "sha256": "446c476c6facc7a03f92102eef3977351e7949992ebc9c2c0c10a9ab02c6937b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/FORMAT.log",
+      "sha256": "788f78693d015427a0ff93f6db64ae0ec67f857e4caf1542241c51350cd0d168"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/INSTALL.log",
+      "sha256": "54a82c45b207a706c2fcb7bcf145ee44ed9e9cf661177b164cf39a17429998d7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/LINT.log",
+      "sha256": "9b066ae0e69aae714c5493dc5f840737fdb235b1b689e2ea6a4528629342eb1c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/TYPECHECK.log",
+      "sha256": "d53e6a4cb41f2ef1215ffe87f05085902ea3465f0c9ddb6d26e427a8235a4ec2"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a6f104624273e1524450d82ce1492ff23f9efe885f684324cf5f33fb3616d098"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "608f8920ce552dfbe44dbe1ac038b9970cb323c597dbdb649f217284b0821943"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/NETWORK_INSTALL.log",
+      "sha256": "6911fb4f29790e77c907819d861c7385b13b6891670a227539f89db0d98a121d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Representativeall5localbrowserUI",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/DISPLAY_REVIEW.json",
+          "sha256": "446c476c6facc7a03f92102eef3977351e7949992ebc9c2c0c10a9ab02c6937b"
+        }
+      ]
+    },
+    {
+      "name": "Fullrepo lint",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/LINT.log",
+          "sha256": "9b066ae0e69aae714c5493dc5f840737fdb235b1b689e2ea6a4528629342eb1c"
+        }
+      ]
+    },
+    {
+      "name": "Fullrepo typecheck",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/TYPECHECK.log",
+          "sha256": "d53e6a4cb41f2ef1215ffe87f05085902ea3465f0c9ddb6d26e427a8235a4ec2"
+        }
+      ]
+    },
+    {
+      "name": "Fullrepo format",
+      "status": "failed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/FORMAT.log",
+          "sha256": "788f78693d015427a0ff93f6db64ae0ec67f857e4caf1542241c51350cd0d168"
+        }
+      ]
+    },
+    {
+      "name": "Dedicateddependencyinstall",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-247/NETWORK_INSTALL.log",
+          "sha256": "6911fb4f29790e77c907819d861c7385b13b6891670a227539f89db0d98a121d"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全体検査の失敗をfmt本文検証と区別しverifiedに進めない",
+    "別作業依存へのsymlinkを解除し専用storeで独立install",
+    "上流原資料/取得HTML/固定証拠は整形で変更せず検査対象を区別する"
+  ],
+  "unresolved": [
+    "任意dependencybuildscripts警告/新workspaceロック差分の点検",
+    "vendorlint/固定証拠format範囲調整と新app/scripts整形",
+    "全repoチェック/統合build/CI/Pages公開"
+  ],
+  "nextAction": "隔離fmt全repo検査を修復: 専用store installはexit0で完了済み。新workspaceロック差分と任意依存buildscripts警告を点検。上流sourceをlint除外、固定取得/生成/レビュー証拠をformat除外してSHA保全。appと正規scriptsだけ整形・新SHA記録後、型/lint/format/tests/links/integrity/content・統合build・CI・Pages公開へ。",
+  "resumeCondition": "247:全5代表英日desktop/mobile/keyboard/検索/404/出典UI合格。全repo初回lintは固定vendorJSglobals、typecheckはsymlink依存解決、formatは上流HTML/証拠と新app/script未整形で失敗。shared依存は触らずprivate symlinkのみ解除。offlineinstallはstore不足で失敗、専用store network install4020はexit0で完了、32.3s。任意buildscripts警告は未評価。本文review/currentCSS/UI証拠保持、verifiedへは進めない。",
+  "counts": {
+    "verified": 8,
+    "published": 8,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

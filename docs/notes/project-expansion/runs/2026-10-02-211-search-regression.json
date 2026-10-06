@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-211-search-regression",
+  "cycle": 211,
+  "startedAt": "2026-10-02T11:52:23.496Z",
+  "endedAt": "2026-10-02T11:57:38.015Z",
+  "result": "partial",
+  "phase": "verification",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "previousCycleClassification": "progress: 英日全8本文reviewとcontent gate/buildを保存、実表示で検索dialog残留を発見。",
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "c312107a8e5f7b8ec9870f5fd53216502c6ed727fc433cf4793659aa70a15b19"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/SEARCH_REGRESSION.json",
+      "sha256": "f61e23efa1f82a779fd095dc86bec11157e12fdeb12cea4ff29c71ff441bf160"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/SEARCH_UNIT.log",
+      "sha256": "d0ba3b6b6e2ab013d20fe5f2bbba004e1d5e62521b92ca410928591ea6cb6aa7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/BUILD.log",
+      "sha256": "04a62539d48679de9485a28e95b26d5e679ebc8a567acdbdce4037997e8b61d7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/search-client.before.ts",
+      "sha256": "e8bc5a0a29f6572ad90857e2598889e904720d592d86eed66c49c42ede78fb35"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/search-client.after.ts",
+      "sha256": "1e908c9f5e3f3e693157b2b0da0f77c94949515b35655b813d6e95ee90c94abc"
+    },
+    {
+      "path": "packages/ui/src/scripts/search-client.ts",
+      "sha256": "1e908c9f5e3f3e693157b2b0da0f77c94949515b35655b813d6e95ee90c94abc"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0dcf2c7d0e4c2bc91efaccdcff0291027025f510ec9a0b1f27305abec521c371"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "b547cef1b8aba1faed6b004baac2cf467c9e5409e1397655c66f72f371c22cb1"
+    }
+  ],
+  "tools": [
+    "TypeScript",
+    "Node test6",
+    "Astro2app build",
+    "ESLint",
+    "cua browser pointer/keyboard/DOM/screenshot",
+    "CAS"
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "共有検索修正と2app回帰",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/SEARCH_REGRESSION.json",
+          "sha256": "f61e23efa1f82a779fd095dc86bec11157e12fdeb12cea4ff29c71ff441bf160"
+        }
+      ]
+    },
+    {
+      "name": "全表示/mobile/integrity/統合build",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-211/SEARCH_REGRESSION.json",
+          "sha256": "f61e23efa1f82a779fd095dc86bec11157e12fdeb12cea4ff29c71ff441bf160"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "新規uthash公開前の確認済み不具合として共有検索を修正。",
+    "公開済みpugixmlは共有修正に必要なローカル回帰のみ。通常巡回は行わない。",
+    "viewport指定と実測の不一致を合格扱いにしない。"
+  ],
+  "unresolved": [
+    "英日desktop各UI/mobile実寸確認",
+    "root app限定統合/integrity/統合build/公開"
+  ],
+  "nextAction": "共有検索修正のpointer/Enter/同一別ページ/Escとpugixml回帰合格を保持。次は実寸390x844が反映されるbrowser環境で英日mobileを確認し、desktop表/コード/出典/版/カテゴリ/sidebar/nav/404を完了する。check-builtを新規evidence先へ実行し、root appの限定統合・integrity・隔離統合build後、正規の公開待ちとして統合Pagesへ公開する。",
+  "resumeCondition": "review210/source/EN/JA SHA一致。検索修正root/private適用済み。モバイルは実寸反映を確認するまで未合格。private preview4390/4391とtab16/17は観測後に再使用。root apps不在、公開除外維持。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

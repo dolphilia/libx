@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-188-uthash-canonical-content-review-part2",
+  "cycle": 188,
+  "startedAt": "2026-10-02T10:46:02.400Z",
+  "endedAt": "2026-10-02T10:46:04.261Z",
+  "result": "partial",
+  "phase": "canonical",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "utlist/utarray/ChangeLog全source+canonical未省略読み取り",
+    "別内容review7/8の範囲検査",
+    "root/private全入力・生成SHA照合",
+    "3原文外注記を統合記録",
+    "CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "67adcbb5ce698cd6e923de1dcbf9d8e4d78fc8104489496b83cee66c777336f7"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-187/SOURCE_CANONICAL_REVIEW.json",
+      "sha256": "3d4a501c385de05f504d7e877814eec84f4d83356f0c437911dd2fd859af8bdb"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-188/SOURCE_CANONICAL_REVIEW.json",
+      "sha256": "a759c3ab4bee3e9ebe94ee650047254b509499a6a70cf0767f9f3b1314f153d7"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-188/PROVENANCE_NOTES.json",
+      "sha256": "ed7f41c309a08bc2a4a008a8813044ffbc0c730a9aeedfb31cff9218105daee4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-188/REVIEW_CHECKPOINT.json",
+      "sha256": "e8308e89cd25576a6184aecc93f514193ad9a14be5ed2f57c5a4adf51eb8adc7"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "04c805dca51851924aa2d0280fce6c2e4d7136cc548a4b48fb921549acd8763c"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "e8057ea3ed2daa713e064ad7bab2658a5e55ba343a1119ee5334938b1bf60218"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "utlist/utarray/全ChangeLogの全文内容review",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-188/SOURCE_CANONICAL_REVIEW.json",
+          "sha256": "a759c3ab4bee3e9ebe94ee650047254b509499a6a70cf0767f9f3b1314f153d7"
+        }
+      ]
+    },
+    {
+      "name": "187全4レビューのSHA/全範囲維持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-188/SOURCE_CANONICAL_REVIEW.json",
+          "sha256": "a759c3ab4bee3e9ebe94ee650047254b509499a6a70cf0767f9f3b1314f153d7"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-188/REVIEW_CHECKPOINT.json",
+          "sha256": "e8308e89cd25576a6184aecc93f514193ad9a14be5ed2f57c5a4adf51eb8adc7"
+        }
+      ]
+    },
+    {
+      "name": "User Guide全文内容review/JA翻訳・app・表示",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-188/SOURCE_CANONICAL_REVIEW.json",
+          "sha256": "a759c3ab4bee3e9ebe94ee650047254b509499a6a70cf0767f9f3b1314f153d7"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-188/REVIEW_CHECKPOINT.json",
+          "sha256": "e8308e89cd25576a6184aecc93f514193ad9a14be5ed2f57c5a4adf51eb8adc7"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "新規作成を優先し3ページの定本全文照合を追加。",
+    "原文を補正・要約せずAPI表・否定・例外・全歴史・ネストを保持。",
+    "残1ページ未確認のためsource-lockedを維持し、翻訳レビューと区別して記録。"
+  ],
+  "unresolved": [
+    "User Guide全文定本review",
+    "JA全8翻訳/別review",
+    "正式app/原ID検索/元情報・3注記可視化/ビルド・表示・公開"
+  ],
+  "nextAction": "残りUser Guide（source1912行/定本3638行）を節単位で全文照合し、全範囲とSHA/指摘を記録する。7ページの本文変更なしレビューは187/188を継承。全8定本review完了後、正式app/source-ID検索/3件の出典注記表示を作成し、JAを1ページずつ翻訳・別レビューする。",
+  "resumeCondition": "source9/生成17/正式importer/review187・188のSHA一致。定本review7/8、JA0/8。未確認User Guideの全節照合から再開し、未レビューをcanonical-ready/verified扱いしない。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-200-uthash-userguide-find-delete",
+  "cycle": 200,
+  "startedAt": "2026-10-02T11:25:25.044Z",
+  "endedAt": "2026-10-02T11:26:05.707Z",
+  "result": "partial",
+  "phase": "translation",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "previousCycleClassification": "progress: 構造体・キー・追加・置換の全節翻訳/別レビュー/機械検査を保存し1-704へ。",
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e318f089e17788ebc8cda60484ba3465ed4aeed1e0cb7c3015b6d61bd4192218"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/userguide.txt",
+      "sha256": "a605a5bef028b76274ef34a22ed4dbfaa2057a1f79b08b1b8e074115eebbd2a0"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/01-userguide.md",
+      "sha256": "be80ec531839cc87cc7e8a38968d08b4757f91a9313afb56a626290cbdc7fe27"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-199/USERGUIDE_SEGMENTS.json",
+      "sha256": "e3471f583481072e5034fb6285888a9513744f8402e6c9c344d6feb6beef36ea"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/translation-segments/ja/01-userguide/003-find-delete-count.md",
+      "sha256": "b10bdce62d1ddae63b09f93bb2e127d563f4c61f415b20aa79e69ce31e96e379"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-200/USERGUIDE_SEGMENTS.json",
+      "sha256": "a5242ed99d685d273fc4051bf32ab92a37ff84165b55e3fc43a6e263cb10d266"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-200/FIND_DELETE_COUNT_MECHANICAL.json",
+      "sha256": "4882a2105cf8e07fdc29a0d395643cb363557f63db7436a824b4458f8068d8f9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-200/SEGMENT_MAP.json",
+      "sha256": "9b7617e0037a5d00e2b82ecc7018dc0f8a0a7b48d1b712009dfe190f97bfd769"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-200/check-find-200.mjs",
+      "sha256": "b8559fb1dc32abedcbf53f0617520698b8fecc2eb06cd3dcbc109dfca80cc4a2"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "716c2faa597d4a3bba60a0d524699836441d1c5a8a2b37d039d500d24544201b"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "9981d950fb63b7e8e90d45caff114655d5d6153ef8a96179eedf292c6269ef43"
+    }
+  ],
+  "tools": [
+    "Codexセグメント全文翻訳/別内容レビュー",
+    "Astro processor5code/22inline/7ID/1注意表",
+    "CAS"
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "検索・削除・要素数取得の全節別レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-200/USERGUIDE_SEGMENTS.json",
+          "sha256": "a5242ed99d685d273fc4051bf32ab92a37ff84165b55e3fc43a6e263cb10d266"
+        }
+      ]
+    },
+    {
+      "name": "コード/ID/26説明見出し注意セル/数値/構造",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-200/FIND_DELETE_COUNT_MECHANICAL.json",
+          "sha256": "4882a2105cf8e07fdc29a0d395643cb363557f63db7436a824b4458f8068d8f9"
+        }
+      ]
+    },
+    {
+      "name": "UserGuide全体/最終JA build/表示/公開",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-200/USERGUIDE_SEGMENTS.json",
+          "sha256": "a5242ed99d685d273fc4051bf32ab92a37ff84165b55e3fc43a6e263cb10d266"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "検索キーのポインター要件/メモリー解放責任/空テーブル0を保持、コードは原文不変。"
+  ],
+  "unresolved": [
+    "UserGuide931-3638全文翻訳・別レビュー",
+    "全JA機械/build/表示/統合公開"
+  ],
+  "nextAction": "UserGuide定本1-930/source1-409の翻訳・別reviewを保持。次はEN931/source410から反復・ソートなどハッシュ操作の残節を翻訳・別レビュー。全3638行完了後に正式全JA配置/機械/build/表示/統合公開へ。",
+  "resumeCondition": "review197全7ページとreview200全3セグメントのSHA一致を確認。UserGuide未翻訳範囲931-3638。ENのみprivate app/root apps不在で公開除外維持。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

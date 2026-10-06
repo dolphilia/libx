@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-246-fmt-keyboard-license-mobile-table-fix",
+  "cycle": 246,
+  "startedAt": "2026-10-02T16:59:41.157Z",
+  "endedAt": "2026-10-02T16:59:42.662Z",
+  "result": "partial",
+  "phase": "browser-display-verification",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "CUAnativekeyboard/UI/readonlyDOM",
+    "Astro15routebuild",
+    "All5bilingualrenderedchecker",
+    "localhostMITHTTPbytecomparison",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f090287a715306e34f5ab7256fc12a519d381bd71666682630bebdf01cdf3461"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/IMPORTER.md",
+      "sha256": "7c1def95c9a9031e011b267a2e16ed30c8cc5cdf2d77e250f12873522c6a614a"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/REVIEW_MANIFEST.json",
+      "sha256": "5c01f9b05d19ad4b1b0bff99766884c4e3ad8a1a57ba1570977db37c5120f4e0"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-246/BROWSER_FIX_RECHECK.json",
+      "sha256": "31068abe2b837083b7bab31a90059dd1610675f609df09d7551e830187dccd79"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-246/BUILD.log",
+      "sha256": "88a2e28f9720fecaa539d65c69cbac9d8cfff646583a2cd9334df52710a101ac"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-246/RENDERED.log",
+      "sha256": "ec7bbae611a515a3745f5ab4fb521f36559981bb08a8492d4cfe2bf7e4ab9b1a"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/app-support/global.css",
+      "sha256": "7c16dddbdaadff6e02102dfeb887ba673034f8530055ef5794c5bbd7552e5710"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/IMPORTER.md",
+      "sha256": "e0a685bb36251b94d237b8bc712f73ad315a40bae8da0a397a15b9c511e1f73e"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "c2cb0a491aed95abdd1b5069901747ef574f2662765c927e0a33d66447768ab2"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "f3b56038b08397b505d61e00596b772ffd803082bd84cb26bf25ce93c82fa315"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "15routebuild",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-246/BUILD.log",
+          "sha256": "88a2e28f9720fecaa539d65c69cbac9d8cfff646583a2cd9334df52710a101ac"
+        }
+      ]
+    },
+    {
+      "name": "All5English/Japanese renderedchecks afterCSS change",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-246/RENDERED.log",
+          "sha256": "ec7bbae611a515a3745f5ab4fb521f36559981bb08a8492d4cfe2bf7e4ab9b1a"
+        }
+      ]
+    },
+    {
+      "name": "Selected browserviews andnativekeyboard",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-246/BROWSER_FIX_RECHECK.json",
+          "sha256": "31068abe2b837083b7bab31a90059dd1610675f609df09d7551e830187dccd79"
+        }
+      ]
+    },
+    {
+      "name": "FinalUI/integration/CI/publication",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "共有themeでなくfmt専用CSSで型記号を保持",
+    "UIで未確認のTXT表示とHTTP配信バイト検証を区別",
+    "新規fmt作成公開を優先"
+  ],
+  "unresolved": [
+    "IAB blocks direct .txt navigation with ERR_BLOCKED_BY_CLIENT. ReadonlylocalhostHTTP fetched MITnotice and cmp matched fixed source/LICENSE (exit0); no browserrenderedtxt claim.",
+    "Language menu preserves page but drops hash, observedpreviouscycle; common behavior retained.",
+    "Remaining final UI: mobileAPI longdeclaration keyboard/horizontal-scroll, mobile404, search/navigation spotchecks atnewCSSSHA.",
+    "Fullrepo checks/limitedintegration/CI/Pagespublication pending."
+  ],
+  "nextAction": "fmt最終UIでmobileAPI長宣言のキーボード横スクロール、mobile404、検索/導線をcurrentCSSで確認。隔離候補を最新公開ベースと照合し、全repo検査・統合build・CI実行・Pages公開へ進む。",
+  "resumeCondition": "246:mobile構文目次nativeTab/Return正常、性能図/英日MITコピー/版/sidebar/404/日時構文表確認。型記号分断をfmt専用CSSで修正し15routebuild・全5英日machine合格。全文レビューSHA保持。最終UI/全repo/統合/CI/公開は未完。",
+  "counts": {
+    "verified": 8,
+    "published": 8,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

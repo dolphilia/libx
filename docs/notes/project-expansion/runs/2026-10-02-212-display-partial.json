@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-212-display-partial",
+  "cycle": 212,
+  "startedAt": "2026-10-02T12:00:04.809Z",
+  "endedAt": "2026-10-02T12:00:59.150Z",
+  "result": "partial",
+  "phase": "verification",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "previousCycleClassification": "progress: 共有検索修正をroot/privateへ適用し2app回帰とunit6/typecheck/build/lintを保存。",
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0dcf2c7d0e4c2bc91efaccdcff0291027025f510ec9a0b1f27305abec521c371"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-212/DISPLAY_PARTIAL.json",
+      "sha256": "db7fa18428d817e8687066ea196be73df353bfe6328692aac961fa00562a0dc4"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-212/BUILT_HTML.json",
+      "sha256": "5937d5d94d1223da156b1e1e88cd439e6b6dd8995ed8663e6c95ee745fee3071"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-212/check-built-212.mjs",
+      "sha256": "53bb7a920b56aec0bbead42416603c658fcfa89c32923bf9671f7d484c9b81de"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "cd340a03c68eec34a3360c9e8f650a5c603787bd8214dd2898feb85c84386721"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "2f840245b5e37b929cb426e158e106da3f1475594e00d5b950c1318573e05eff"
+    }
+  ],
+  "tools": [
+    "cua pointer/keyboard/AX/DOM/screenshot",
+    "Astro生成HTML全16比較",
+    "live session確認",
+    "CAS"
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "共有修正後の生成HTML/検索/参照/注記",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-212/BUILT_HTML.json",
+          "sha256": "5937d5d94d1223da156b1e1e88cd439e6b6dd8995ed8663e6c95ee745fee3071"
+        }
+      ]
+    },
+    {
+      "name": "全browser表示",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-212/DISPLAY_PARTIAL.json",
+          "sha256": "db7fa18428d817e8687066ea196be73df353bfe6328692aac961fa00562a0dc4"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "新規タブでも390pxが反映されないことを実測。",
+    "699px license表示は別寸法の証拠として限定記録。",
+    "公開済みの通常巡回は行わずuthashの検証を優先。"
+  ],
+  "unresolved": [
+    "表示検証残項目/mobile実寸",
+    "root app限定統合/integrity/統合build/公開"
+  ],
+  "nextAction": "検索修正後の英日16HTML/検索346/参照/通知保持の再検査合格とdesktop JAマクロ/出典・699px ENJAlicense/版/カテゴリ表示を保持。次は英語API表・難しいページコード/コピー/sidebar/nav/404残項目を確認し、390px実寸を反映できる文書化されたbrowser操作でmobileを検証。root app限定統合/integrity/隔離統合build後に正規公開待ちとして統合Pagesへ公開。",
+  "resumeCondition": "review210全8SHA保持、212生成HTML全16passed。mobile390pxはviewport指定後の実測1280pxで未合格。preview session20916/3891は今回ライブ確認済み。tab16/18/19は観測して使用。root app不在、配信除外維持。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

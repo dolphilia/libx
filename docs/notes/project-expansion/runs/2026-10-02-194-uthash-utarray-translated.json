@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-194-uthash-utarray-translated",
+  "cycle": 194,
+  "startedAt": "2026-10-02T11:07:34.844Z",
+  "endedAt": "2026-10-02T11:08:19.077Z",
+  "result": "partial",
+  "phase": "translation",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex全文翻訳",
+    "別工程全文内容review",
+    "Astro Markdown実processor",
+    "code11厳密一致/table24/heading17/参照対応検査",
+    "CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6145961255663c1f0c09ab3657b6aa11ec529dec1162d3548445ae03de8bcde1"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/utarray.txt",
+      "sha256": "6be9687077a20936e0c990ca7a278f8c1e771d91953aaa6ed6b0300f8bb89165"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/03-utarray.md",
+      "sha256": "ee9e82cde7372a7b0da4d858d27654bc3f31dcc7257a39fd973e3f6cf0e7a64f"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-193/TRANSLATION_REVIEW.json",
+      "sha256": "630cf4ee246426a5fb3205927c208308bdb28f41593fd514d8c078ba33011209"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/03-utarray.md",
+      "sha256": "75a60d31e52c25602912aaa426d04274325c20f442502c1e402c6bb9f44858a5"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-194/TRANSLATION_REVIEW.json",
+      "sha256": "88db73c630e39395ecb2e1b3f273de114a4bff9ba08904a78f110a39c751f00c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-194/UTARRAY_MECHANICAL.json",
+      "sha256": "659504141e709715f4334d7215945eb52a1111debfbfa8cd1ffc688a42a1b320"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-194/check-translation-194.mjs",
+      "sha256": "586019ea31a1effb5b1076d20e96f4be95f6a7752aa4d41cf8b6f2d42603aac2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-194/MODEL_OBSERVATION.json",
+      "sha256": "5b184c54e1339e128d5fd94b91a1195418425dfdaf388bfdd5b217db950899e1"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "238c50b4546f29ad787f039da3115e3de8b214b9f5ed27c5792d93a03c22ec52"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "3bc6a4ae7ddd20b85f8fa9d34afe5c83850a1dd639aadfee2190634612b5311c"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "utarray全文別工程内容review・既存3ページ保持",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-194/TRANSLATION_REVIEW.json",
+          "sha256": "88db73c630e39395ecb2e1b3f273de114a4bff9ba08904a78f110a39c751f00c"
+        }
+      ]
+    },
+    {
+      "name": "utarrayページ構造/11code/24API/17heading/内部operations ID",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-194/UTARRAY_MECHANICAL.json",
+          "sha256": "659504141e709715f4334d7215945eb52a1111debfbfa8cd1ffc688a42a1b320"
+        }
+      ]
+    },
+    {
+      "name": "全8JA/内部target/正式build/表示/公開",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-194/TRANSLATION_REVIEW.json",
+          "sha256": "88db73c630e39395ecb2e1b3f273de114a4bff9ba08904a78f110a39c751f00c"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "193progressを再確認し未完了新規翻訳優先。",
+    "全6注意の条件/例外と全24API表を保持。",
+    "reserve増分/sort比較関数/ポインター失効とOOM条件を保持。"
+  ],
+  "unresolved": [
+    "残4全文翻訳と別review",
+    "JAlicense参照先と最終全体検査",
+    "正式表示検証/統合・公開"
+  ],
+  "nextAction": "utstack/utstring/utringbuffer/utarrayのJA4/8全文review済み稿を保持。次はutlist固定原文・EN定本からJA全文翻訳/原文照合/別reviewを保存。残4を順次完了し、全8JAを正式appへ配置しjaを有効化、最終check:content/ENJA build/表示/統合・公開へ。",
+  "resumeCondition": "累積review194の全4ページsource/EN/JA SHAと専用draftを照合。4/8翻訳・別review/ページ機械検査合格、残4/JA内部target/正式表示未完。未検証root app不在/公開対象除外を保持。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-197-uthash-changelog-translated",
+  "cycle": 197,
+  "startedAt": "2026-10-02T11:15:48.650Z",
+  "endedAt": "2026-10-02T11:19:45.998Z",
+  "result": "partial",
+  "phase": "translation",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Codex別工程全文AI内容レビュー",
+    "143項目対訳/26見出し/64inline code/Astro実processor",
+    "CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "deed3ef0bf709f51b32baf1245c6baabf46a9216d504122cbdd536a786a0aa4b"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/ChangeLog.txt",
+      "sha256": "360017add81441bb5082271051c416db2487c0685157369c1882d96c93783af4"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/07-changelog.md",
+      "sha256": "105489ef8b5ebbe0c7584a50c1866046a9fd91c7003768898120314d454ce42c"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-196/TRANSLATION_REVIEW.json",
+      "sha256": "f909918f96c141cf3d8d57427aa34732463ac575c3443dd2dfb75fd81f1e982d"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/07-changelog.md",
+      "sha256": "71e877b4bb41a4d2e294618f1565a42959b7a81a1dfd2e1f34647f68761db23c"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-197/TRANSLATION_REVIEW.json",
+      "sha256": "a5934f2e02ce981f929a4f503992cf31615059e6726fd7dccec54f56eeefe231"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-197/CHANGELOG_MECHANICAL.json",
+      "sha256": "fba41432718163aaef652a078b1b11cf0dfbe9e57e7d37065667c10df0d94661"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-197/MODEL_OBSERVATION.json",
+      "sha256": "b3a6547918240a8052c654086e94463eb98b1bf973151848ef0427326d4b151b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-197/BULLET_MAP.json",
+      "sha256": "5c5dcb0775a651a65b43a343b61f77c192d4ab4f212ec8cfab44b4a84533d2ba"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-197/check-changelog-197.mjs",
+      "sha256": "586ee29975261fb4ed675b7172cb56b0d96a72a972baf44fed5932d279743495"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "0a65bd21d13405540a2ea24bc29f68a4bbf6a9b00da0ff40142c1a710e8751d7"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "bd375f01bfe7920423f3145d6cf4948d0a684d2dc7dec7efdd43a837a855473e"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "ChangeLog全143項目/26版の全文別レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-197/TRANSLATION_REVIEW.json",
+          "sha256": "a5934f2e02ce981f929a4f503992cf31615059e6726fd7dccec54f56eeefe231"
+        }
+      ]
+    },
+    {
+      "name": "現行Astro構造/表/コード/日付/識別子/リンク",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-197/CHANGELOG_MECHANICAL.json",
+          "sha256": "fba41432718163aaef652a078b1b11cf0dfbe9e57e7d37065667c10df0d94661"
+        }
+      ]
+    },
+    {
+      "name": "全8JA/最終content gate/build/表示/公開",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-197/TRANSLATION_REVIEW.json",
+          "sha256": "a5934f2e02ce981f929a4f503992cf31615059e6726fd7dccec54f56eeefe231"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "前回no-progressを確認、未登録初稿の内容レビューと機械検査を完成。",
+    "checker初回は注意セルの改行、次はexpansion-favoringをコンパイラーフラグと誤検出。検査対象を修正して最終合格、本文条件を緩和していない。"
+  ],
+  "unresolved": [
+    "UserGuide全節翻訳/全文別レビュー",
+    "最終機械/表示/統合公開"
+  ],
+  "nextAction": "JA7/8全文レビュー済みを保持し、残るUserGuide全節を翻訳・別工程内容レビュー。全8JAを専用appへ配置しja有効化、check:content/全体リンク/build/英日表示/注記/統合・公開の各ゲートを実施。",
+  "resumeCondition": "累積review197の全7source/EN/JA SHAを照合。UserGuide未翻訳、全8最終検証/JA実表示未完。専用appconfigは196config.after同SHA、root apps/uthash不在で未検証公開除外を維持。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-169-pugixml-html-anchor-link-check",
+  "cycle": 169,
+  "startedAt": "2026-10-02T09:04:31.175Z",
+  "endedAt": "2026-10-02T09:06:20.653Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "parse5によるMarkdown内HTMLアンカー検査修正",
+    "HTMLアンカー/case/コード/偽アンカーfixture",
+    "pnpm check:links",
+    "pnpm test:unit",
+    "pnpm test:runtime",
+    "git diff --check"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4d2fd68de203a61722542fe8ffed4de68be6b55d4cbbd5561f595a2dd863f9cf"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/review/2026-10-02-163/REVIEW_MANIFEST.json",
+      "sha256": "a6d44793c65b2238c7e91c37de071a1d2272cd986432dfa39951a68c0cca3c9b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/HTML_ANCHOR_LINK_CHECK.json",
+      "sha256": "a3026747f7b7063dcd2324ef0080fdcd85863dc33b3f61c96accb3c3b1e352f0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/links.txt",
+      "sha256": "e3eff7580b4005030aa4fde657016f38055425fa132259f5f5498023068afec2"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/anchorTest.txt",
+      "sha256": "3ea6960b25deb44ae0d04001b39a7694f33782a907464d9a5423ee31a3d7fc22"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/unit.txt",
+      "sha256": "7cb131d538966fb4b4ec401c2cc6f86f0206866f9c88da0a6f88cc4addd54083"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/runtime.txt",
+      "sha256": "e3c1f8424639753fda623313420e76e9dab125f5b55c85f0ce5e8ead2c0ebb51"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/check-markdown-links.js",
+      "sha256": "239fd967545c1c83a4355067d9ee8270d4a73f74b19e87dcaaa541db64577148"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/markdown-links.test.js",
+      "sha256": "032baef86161503aa06820570f071a81117b0b2799bcf3658dab508d9404d0d6"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a1be58b5968f47cf95e2c22362cda0dd068e50952d18a08150a9007ca378e66c"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "f054e5b04133c98008a3bf8d07e5dcba4c326be4ba167d9f2bad17fe0fad4ba5"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "共通Markdownリンク177件/アンカーfixture",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/HTML_ANCHOR_LINK_CHECK.json",
+          "sha256": "a3026747f7b7063dcd2324ef0080fdcd85863dc33b3f61c96accb3c3b1e352f0"
+        }
+      ]
+    },
+    {
+      "name": "unit28/runtime230件",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/HTML_ANCHOR_LINK_CHECK.json",
+          "sha256": "a3026747f7b7063dcd2324ef0080fdcd85863dc33b3f61c96accb3c3b1e352f0"
+        }
+      ]
+    },
+    {
+      "name": "公開範囲/現在Production/統合表示・旧文書回帰/公開前検証",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-169/HTML_ANCHOR_LINK_CHECK.json",
+          "sha256": "a3026747f7b7063dcd2324ef0080fdcd85863dc33b3f61c96accb3c3b1e352f0"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "保存途中翻訳を除外して合格にせず検査のHTMLアンカー認識を補った。",
+    "実アンカーのcaseとコード中の偽アンカーを検査して不正な参照を通さない。",
+    "共有rootの保護3ファイルSHA一致を確認し無変更を保持。"
+  ],
+  "unresolved": [
+    "共有3ファイルの必要な依存変更と無関係変更の公開範囲整理",
+    "現在の外部Production基点照合",
+    "統合後の表示/既存文書回帰",
+    "公開前証拠再検証・正規公開待ち登録・公開"
+  ],
+  "nextAction": "新規優先。第169で共通リンク検査へraw HTML id/name対応とcase保持を追加。除外なしでREADME/docs全177件合格、単体28/runtime230件合格。第168の途中翻訳未完成参照の可能性は否定され、保存記録を保持。次に保護した共有3ファイルの必要依存/無関係変更の公開範囲を整理し、最新外部Production照合・統合表示/既存文書回帰・公開前レビューSHAと検査証拠再検証を完了して正規公開待ち登録後に公開。",
+  "resumeCondition": "新統合workspaceの共有リンク検査修正を保持。本文レビューのSHAは不変。公開範囲と最新本番基点、統合後回帰/表示を確認して次段階へ。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

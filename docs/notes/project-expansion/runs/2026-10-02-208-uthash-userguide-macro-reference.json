@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-208-uthash-userguide-macro-reference",
+  "cycle": 208,
+  "startedAt": "2026-10-02T11:42:05.673Z",
+  "endedAt": "2026-10-02T11:42:46.409Z",
+  "result": "partial",
+  "phase": "translation",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "previousCycleClassification": "progress: フック/デバッグ/スレッド安全性翻訳・別レビュー・8コード機械検査を保存し1-3353へ。",
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "943795e0fd5b2694c91762d4b2f15333a13b03af76566c9b11308ff90751dadf"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/userguide.txt",
+      "sha256": "a605a5bef028b76274ef34a22ed4dbfaa2057a1f79b08b1b8e074115eebbd2a0"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/01-userguide.md",
+      "sha256": "be80ec531839cc87cc7e8a38968d08b4757f91a9313afb56a626290cbdc7fe27"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-207/USERGUIDE_SEGMENTS.json",
+      "sha256": "dd1632680ab36f2dc2a1738fecc14e174536184308e89328b7524f989a7c4853"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/translation-segments/ja/01-userguide/011-macro-reference.md",
+      "sha256": "a9b55c02a86b3176978f7f42f92283d7a3b1c65386e840135c07dd8a93058659"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-208/USERGUIDE_SEGMENTS.json",
+      "sha256": "dbcbc7ecd7bd40a2489ee20c0cb4e60edb6c47b5b30c77df2e7ac40026a5e74e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-208/MACRO_REFERENCE_MECHANICAL.json",
+      "sha256": "34bfaa0bbc305eef382967ad1fa887b52731f60741159e4ba5e9a0d2862e3ab8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-208/SEGMENT_MAP.json",
+      "sha256": "2f3cf86c48806aba9af1addf832911a25c5d13098110e6b51936f67e94af1479"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-208/check-macro-208.mjs",
+      "sha256": "dd40bd37850907e72ebcb8449d984950dcf2750db283241fbc8e18a524502ce7"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "31b1ad39e15cdf4697ff275f6d0eb4dba6ac46cc8455a702a038738ae8828b0b"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "7b73dc63e7a3e38a4f7014e0878a5540547d07a7036904ff399d073a57c53c36"
+    }
+  ],
+  "tools": [
+    "Codexセグメント全文翻訳/別内容レビュー",
+    "Astro processor34signature/98inline/4ID/3table",
+    "CAS"
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "マクロリファレンス全節別レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-208/USERGUIDE_SEGMENTS.json",
+          "sha256": "dbcbc7ecd7bd40a2489ee20c0cb4e60edb6c47b5b30c77df2e7ac40026a5e74e"
+        }
+      ]
+    },
+    {
+      "name": "34署名/10引数/ID/29翻訳変更/表構造",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-208/MACRO_REFERENCE_MECHANICAL.json",
+          "sha256": "34bfaa0bbc305eef382967ad1fa887b52731f60741159e4ba5e9a0d2862e3ab8"
+        }
+      ]
+    },
+    {
+      "name": "UserGuide全体/最終JA build/表示/公開",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-208/USERGUIDE_SEGMENTS.json",
+          "sha256": "dbcbc7ecd7bd40a2489ee20c0cb4e60edb6c47b5b30c77df2e7ac40026a5e74e"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "全34マクロと10引数の方向・条件・参照先を保持。全文結合監査を省略せずページ完了へ進める。"
+  ],
+  "unresolved": [
+    "UserGuide全文結合監査",
+    "ソート関数名注記の設定/表示",
+    "全JA機械/build/表示/統合公開"
+  ],
+  "nextAction": "UserGuide全3638行の11セグメント翻訳・別レビューを保持。次は全文JA結合とcoverage/参照/コード/構造の全体機械監査。ソート関数名注記を適用し、全8JA正式配置・build・表示・統合公開へ。",
+  "resumeCondition": "review197全7ページとreview208全11セグメントのSHA一致を確認。未翻訳範囲なし、UserGuide全文結合監査未完。ENのみprivate app/root apps不在で公開除外維持。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

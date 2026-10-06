@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-237-fmt-api-translation-segments-60-139",
+  "cycle": 237,
+  "startedAt": "2026-10-02T16:09:46.746Z",
+  "endedAt": "2026-10-02T16:14:31.012Z",
+  "result": "partial",
+  "phase": "translation",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "CodexJapanese80segment sequential translation",
+    "Separate bilingual/readability review",
+    "Fixedsource/unchanged prior60segment verification",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d4f28c96b2c78ee6e993befd17a10a061f721b5fe42c30f2823141093ebd7a9f"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6863914a164a22e685b78b1ce154368285f5e5fdc9bfcdcbccdd1f7af77bc0e6"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "548c12edbb2f5514fdf6f75df161f98b47a34fa0de3e762e6c6003c6907ac94a"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/generated/canonical/01-docs/03-api.md",
+      "sha256": "af885832ee4d4f203a1869d1fb650103a372096b85fe104dadc9c60c2df4aa2f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-237/DRAFT.before.json",
+      "sha256": "959f8852d03bcaf24a1676357e55cb81c39231cda1840cb499eece3f372c2a56"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-237/DRAFT.before.json",
+      "sha256": "959f8852d03bcaf24a1676357e55cb81c39231cda1840cb499eece3f372c2a56"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-237/PARTIAL_SEGMENT_CONTENT_REVIEW.json",
+      "sha256": "c2f37832b7b045d1f83ff3a3c71f74f0ea7c29951c1919cf0497da7b1788caa5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-237/SEGMENT_MACHINE.json",
+      "sha256": "14b4a08ad361aefd6089eab8c6ecf18c6e14865484e8b0aff54b610ecd5ba58f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-237/api-draft.mjs",
+      "sha256": "fe17284b3d99a28ab46dab7a6eb1bd08ae0f3a9ca19ab03417d9a443e9a3363b"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/translation-drafts/ja/03-api-segments.json",
+      "sha256": "00b60d266f1ac37abb1a3d5f87faeace03b43d227d025795292925998649fedd"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "0d56cd5517ef2571c9e5ebbb4fc3f716bd37056c5ddc2d650aa17ab064658ae1"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "573ee71a5e7b1201490681ab60068f0234ed2cd5706e600bb82bfece63f3e8f9"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "53b0b88487e7448fa2a034a05af22fc98feecec4a238ff420bd39dceee720268"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Partial140segment draft source mapping",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-237/SEGMENT_MACHINE.json",
+          "sha256": "14b4a08ad361aefd6089eab8c6ecf18c6e14865484e8b0aff54b610ecd5ba58f"
+        }
+      ]
+    },
+    {
+      "name": "New80segment independent contentreview",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-237/PARTIAL_SEGMENT_CONTENT_REVIEW.json",
+          "sha256": "c2f37832b7b045d1f83ff3a3c71f74f0ea7c29951c1919cf0497da7b1788caa5"
+        }
+      ]
+    },
+    {
+      "name": "APIfulltranslation/bilingual/structure/QA",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "原稿を部分保存し配信対象へ入れない",
+    "全286区分の下書きとコード/リンク/宣言/全文確認は別ゲート",
+    "ユーザーの新規優先方針に従いfmt作成を継続"
+  ],
+  "unresolved": [
+    "残146区分の日本語翻訳",
+    "API本文組立/全文別工程レビューと機械検査",
+    "CI公式Pandoc固定",
+    "最終英日表示検証/公開"
+  ],
+  "nextAction": "fmt API日本語draftのsegment140（Ranges API）から285までを続ける。全286の翻訳後、原コード/84宣言/105ID/リンク/編集注を保持して本文へ組み立て、全文別工程レビュー。CI公式Pandoc固定・最終英日QA・限定公開へ。",
+  "resumeCondition": "237:API日本語draftを0〜139/286へ進め、新規80区分を原文照合と日本語単独で別工程レビュー。初回60の内容と定本SHAは不変。引数生存期間/POD未初期化/errno不保持/allocator出力のみ/古いC++checks条件を保全。全JA本文は未生成、コード保全/全文レビュー/表示は未実施。EN5/5・JA完成4/5維持。",
+  "counts": {
+    "verified": 8,
+    "published": 8,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

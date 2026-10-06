@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-255-fmt-preview-ui-verified-production-started",
+  "cycle": 255,
+  "startedAt": "2026-10-02T18:08:00.000Z",
+  "endedAt": "2026-10-02T18:19:21.295Z",
+  "result": "partial",
+  "phase": "preview-ui-passed-production-ci",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "CUA actualPreviewUI controls/screenshots/readOnlyDOM",
+    "ledgerPreview CAS",
+    "CleanReleaseGit/currentreviewevidencecheck",
+    "SecureGitHubProductiondispatch andpoll",
+    "Production expectedcommit guard"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "91fc0502c62b1a6a45d8959b60a1d3416efa88267bed3ffc9b3c4c6bb8280535"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-255/PREVIEW_UI.json",
+      "sha256": "11f72d7055a3b1b237cc14cf9d22b9a68b75610218c74b6da0a84594499436f6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-254/CI_FMT_VERIFICATION.json",
+      "sha256": "8a2d036c85a364618fde323dce492c020e4b78ecfd598286cf8efc3a21167880"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-254/PREVIEW_HTTP_ALL.json",
+      "sha256": "145888716d54c69c1b7c9f00d68d845827a5981700fee70a31b993b6c83eb5b3"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-255/PREVIEW_UI.json",
+      "sha256": "11f72d7055a3b1b237cc14cf9d22b9a68b75610218c74b6da0a84594499436f6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-255/PRODUCTION_CI_1790965074231.json",
+      "sha256": "74fccdea1a4e881a24b45389d0cc2f517c9834e925fe3f7796107df65d382a3f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-255/PRODUCTION_CI_1790965153409.json",
+      "sha256": "69cda6d7aca46aa5b62ee02d5b086b4f5d0b0e8bdc498ea72736d9a6991bb8cd"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-255/PRODUCTION_DISPATCH_INTENT.json",
+      "sha256": "15e3cdec76814b25710dd6e2049b8dd81a8dbb7103f329e8bffba2af84bd5d01"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-255/PRODUCTION_DISPATCH_RESPONSE.json",
+      "sha256": "f6e2484dec37c0bd38b33c11571f8aa30ad100b5fc8b30a54aa40a2e87ab4a83"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-255/production-workflow.mjs",
+      "sha256": "09b8b7424232fe1a8b476488417dc04c94c76099e63984a5010d8ded1ab08cb1"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "982fcfaf68868a56e72ef56c1d247aaea0d4756298a0257149e9dc7deeee9fe9"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "f434b89db6376317abdc9ef33a90a3ead7f20941e690123540641f880ffc6ab2"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "ActualPreview UI plus allscope254 evidence",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-255/PREVIEW_UI.json",
+          "sha256": "11f72d7055a3b1b237cc14cf9d22b9a68b75610218c74b6da0a84594499436f6"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-254/CI_FMT_VERIFICATION.json",
+          "sha256": "8a2d036c85a364618fde323dce492c020e4b78ecfd598286cf8efc3a21167880"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-254/PREVIEW_HTTP_ALL.json",
+          "sha256": "145888716d54c69c1b7c9f00d68d845827a5981700fee70a31b993b6c83eb5b3"
+        }
+      ]
+    },
+    {
+      "name": "Production CI/CAS/artifact/delivery",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "Previousturnprogress: CI/artifact/allfileHTTP verified. Currentturnprogress: actualPreviewUI andProductiondispatch; no new/repeatedtranslation or localLLM.",
+    "Preview欄をpreview-verifiedへ更新して承認済みProduction起動、公開前CAS/rollback保存を維持。",
+    "Otherfmtversions nonexistent; currentversionselection onlytested and explicitlyrecorded. Screenshots observedtooloutput, no savedimage claimed.",
+    "Production起動は公開完了と扱わず件数published8維持。"
+  ],
+  "unresolved": [
+    "ProductionCI guard/success/artifact/rollback/delivery/postpublishUI"
+  ],
+  "nextAction": "Production workflow run37046474839 SHA5dda902a7dc5a4c8e71540da8b565e2c5a40f225 をpoll。Previewrun37042768588とは区別。Quality/CAS81dfad9/production部署status成功後、verified-deployment artifact/rollbackbeforeを取得照合しProduction全配信と主要URL/言語版/出典/404を検証。確認が揃ってからpublished。Intent既存のため未知/timeoutでredispatchしない。",
+  "resumeCondition": "255:Actual固定Preview desktop/mobile390/最大API/文法table/目次/JAsearch keyboard/1093charMITcopy/現版12.2.0/ENJA言語/404復帰/ENJAlandingcard 合格。public欄preview-verified、ProductionworkflowHTTP204起動済み、currentGitHubproduction81dfad9を照合。実CloudflareはworkflowCASで保護。まだProduction未検証・未公開扱い。Source/content/reviewSHA不変、Ninja/user/Awesomeを含めない。",
+  "counts": {
+    "verified": 9,
+    "published": 8,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

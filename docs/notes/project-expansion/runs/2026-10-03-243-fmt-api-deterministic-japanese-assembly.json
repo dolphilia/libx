@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-243-fmt-api-deterministic-japanese-assembly",
+  "cycle": 243,
+  "startedAt": "2026-10-02T16:37:11.761Z",
+  "endedAt": "2026-10-02T16:38:55.997Z",
+  "result": "partial",
+  "phase": "deterministic-translation-assembly",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Frozen derivedassemblyinput/provenance",
+    "Permanentreadonly Japaneseassembly",
+    "Byteidentical existingtargets comparison",
+    "Inputtamper rejection/restoration proof",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e738fb4de647fb30ba233a1446cc41df299b7e1f146d37cf47a4b0d556600ff0"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/generated/GENERATION.json",
+      "sha256": "a96d075ce31d7d7e8fd6adda74b1e3a1933e20a5cbcf454828698c1c28a95eae"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/REVIEW_MANIFEST.json",
+      "sha256": "5c01f9b05d19ad4b1b0bff99766884c4e3ad8a1a57ba1570977db37c5120f4e0"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-243/API_ASSEMBLY_CHECK.log",
+      "sha256": "eeaeaa62b9707ff3e6921e962e08451b6b90a415c1309d7236b8444791836e48"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-243/API_ASSEMBLY_RECHECK.log",
+      "sha256": "eeaeaa62b9707ff3e6921e962e08451b6b90a415c1309d7236b8444791836e48"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-243/READONLY_TAMPER_PROOF.json",
+      "sha256": "ab0229bdf6fe4061f471888cc63582daab370e4571b76cb543516238fb39a920"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-243/TAMPER_REJECTION.log",
+      "sha256": "1308777c095d56d9dc877c272d05359a2d21a8ce687f3835ed55829db966ef67"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-243/assembly-input.mjs",
+      "sha256": "4f38f62b2b3316be54fa0d89ca8a4f1186daf42e655bd02e4a54407edac87652"
+    },
+    {
+      "path": "scripts/importers/check-fmt-api-assembly.mjs",
+      "sha256": "aebbf606ba35d42d0c73ed91d88833df4ad3bbc5399d3a81bf288c195848b736"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/generated/API_ASSEMBLY_SOURCE.html",
+      "sha256": "bd68ecd36d1815237794a278ad8ed8ce5c5f970bb5d74b214a49b1b663b352f0"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/generated/API_ASSEMBLY_INPUTS.json",
+      "sha256": "ff08e8a62aebef68d6b4e4bc8d6fdd9928ca1cfea955713bf0c06a1bf9342618"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/generated/GENERATION.json",
+      "sha256": "e8bd58637abec433f93976336ae9216f07391e43a173cc3e39d8f7ddadb9f3ec"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/IMPORTER.md",
+      "sha256": "bd9147ab4a300dc5c47f159dbe3abb8f6f9f18ac1cc0c537910ba421c8934098"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "dd01be1a2bf950705c6b417fdc09b2ce1dbc8f3e56cb7a894a8649b653088302"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "d2d3049485dca917ad5857f58e68cb42b5ed6b6cb8e52556ab4adcd27af7c267"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "API Japanese deterministicassembly matches bothsavedtargets",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-243/API_ASSEMBLY_CHECK.log",
+          "sha256": "eeaeaa62b9707ff3e6921e962e08451b6b90a415c1309d7236b8444791836e48"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-243/API_ASSEMBLY_RECHECK.log",
+          "sha256": "eeaeaa62b9707ff3e6921e962e08451b6b90a415c1309d7236b8444791836e48"
+        }
+      ]
+    },
+    {
+      "name": "Tamperedinput rejected without targetwrites; restoredinput passes",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-243/READONLY_TAMPER_PROOF.json",
+          "sha256": "ab0229bdf6fe4061f471888cc63582daab370e4571b76cb543516238fb39a920"
+        }
+      ]
+    },
+    {
+      "name": "Fullproject finalverification/UI/publication",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "元公式入力を保全した固定中間入力から保存済み訳を組み立て再翻訳しない",
+    "既存全文レビュー済み本文を変えず再生成一致を実証",
+    "APIの成功を全5組の検査へ拡大解釈しない"
+  ],
+  "unresolved": [
+    "全5英日組の機械検査",
+    "CI公式Pandoc固定",
+    "表示QA/限定統合/公開"
+  ],
+  "nextAction": "fmt英日5組の全体読み取り専用検査（再生成/構造/内部参照/ライセンス）とCI公式Pandoc固定を整え、全体機械検査・表示QA・限定統合から公開へ。API日本語再生成は恒久checkで現行本文一致済み。",
+  "resumeCondition": "243:固定中間入力と保存済み286訳区分からAPI日本語を恒久readonlycheckで再生成しnotes/app両方バイト一致。コード空白文字参照/親li2ラベル/編集注を含む。改変draftのSHA拒否・本文不変・復元後再一致を実証。本文SHA不変のため第241全文レビュー/描画検査は維持、全体最終検査/CI/ブラウザー/公開未実施。",
+  "counts": {
+    "verified": 8,
+    "published": 8,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

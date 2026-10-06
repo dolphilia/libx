@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-176-pugixml-pinned-pandoc-and-new-preview",
+  "cycle": 176,
+  "startedAt": "2026-10-02T09:47:00.000Z",
+  "endedAt": "2026-10-02T09:51:43.784Z",
+  "result": "partial",
+  "phase": "publication",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "公式Pandoc ZIP/SHA/実binary検査",
+    "importer runtime5 meaningful regeneration/preservation",
+    "YAML/bash/差分検査",
+    "workflow単独commit/push",
+    "新commit Preview単回dispatch",
+    "台帳CAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d72c02eabba8686957b3c520ee32b45ba286dbcc348ae8c0bf0b830a33652b26"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/review/2026-10-02-163/REVIEW_MANIFEST.json",
+      "sha256": "a6d44793c65b2238c7e91c37de071a1d2272cd986432dfa39951a68c0cca3c9b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-175/CI_DIAGNOSIS_AND_FIX_PROGRESS.json",
+      "sha256": "ce6736b1e1c760f276653841d87603af93c41e8e8df55d791cbe1dda213e08fc"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-176/PINNED_PANDOC_AND_NEW_PREVIEW.json",
+      "sha256": "09085b47a95707b5a408e30c6a257bd95a82f188750b9b4092c2e41af22ca008"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-176/RELEASE_COMMIT.json",
+      "sha256": "9893d750c181a9027c307a1a9492c24d4f47137d10c65b6153ad3ff6a99388f5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-176/importer-tests.txt",
+      "sha256": "7bd879dd5514898ca511a613976c4cec26fd9eca68879af7417e460f6ac58ab6"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-176/pandoc-setup.sh",
+      "sha256": "b149acfca4cc9347d11e8fe0ce5587072ebaedb0fa813027e9cf78a0454e32d7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-176/DISPATCH_INTENT.json",
+      "sha256": "f34d322fb848fbeaa48f3a2ee85f99c1ffcde1df123e599412b37f85784ca15d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-176/DISPATCH_RESPONSE.json",
+      "sha256": "9614792026c05a2d437fb47b630f75cec80a377058cf91fc86877813c3b29ce7"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-176/DISPATCH_RUNS.json",
+      "sha256": "100e5dd3d079b27ec20bd5ddf79f7e6baaf8460cf51a9e7392267a97602f4c38"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "7f542f8c15df835f19fca26591f3a2d1c0fdf77564035e1cca0b50e8c94d5865"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "66e992c3504b70a7a422bebb8dd8103f720f4c15baebba578941b4e9b448602d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "公式Pandoc固定バイナリと再生成保全5検査/CI構文/限定commit",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-176/PINNED_PANDOC_AND_NEW_PREVIEW.json",
+          "sha256": "09085b47a95707b5a408e30c6a257bd95a82f188750b9b4092c2e41af22ca008"
+        }
+      ]
+    },
+    {
+      "name": "新Preview CI/成果物/外部配信/Production guardと公開",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-176/PINNED_PANDOC_AND_NEW_PREVIEW.json",
+          "sha256": "09085b47a95707b5a408e30c6a257bd95a82f188750b9b4092c2e41af22ca008"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "CI依存不足を公式固定3.8.3へ修正し、失敗した再生成をskipせず実binaryで5検査確認。",
+    "本文や原資料・翻訳を変更せず、workflow1ファイルだけ追補。全品質は新コミットCIで再確認。",
+    "旧失敗runを再起動せず、新commitだけ1回Preview起動。"
+  ],
+  "unresolved": [
+    "新Preview36992125939 queued/進行待ち",
+    "CI成功後のartifact/実配信/UI未確認",
+    "Production基点guard/公開/実配信未実施"
+  ],
+  "nextAction": "新Preview run36992125939を監視。success後artifact digest/manifest全SHA、Preview配信/UIを確認。verified Preview後、同一commitでProduction CIを単回起動しc7a6b97 expected基点guard/配信全SHA/経路/UIを確認。",
+  "resumeCondition": "旧Preview36990750769は失敗terminalで再実行しない。新しいa60b990のPreview36992125939を再利用して監視、二重dispatchしない。CI setupのみ追補で本文SHAと旧2319保全証拠を保持。外部配置未検証、Production未公開。",
+  "counts": {
+    "verified": 7,
+    "published": 6,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

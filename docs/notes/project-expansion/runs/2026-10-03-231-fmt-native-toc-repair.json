@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-231-fmt-native-toc-repair",
+  "cycle": 231,
+  "startedAt": "2026-10-02T15:41:38.920Z",
+  "endedAt": "2026-10-02T15:44:39.999Z",
+  "result": "partial",
+  "phase": "display-repair",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Per-app rehype explicitheadingpromotion",
+    "NativeTOC DOM/IDs/labels verification",
+    "All4JA exact code/pre/href/ID verification",
+    "All4EN preservation",
+    "Scoped14route build",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "2919e53adc4f7211e01daf8dcd781773239688b273c4a5de7a577c0d96824d77"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6863914a164a22e685b78b1ce154368285f5e5fdc9bfcdcbccdd1f7af77bc0e6"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "0e1bf32befebe0b8e297424e2dd2ea6085345f558d83ba2cc4796d339111954f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/APP_BUILD.log",
+      "sha256": "73ea21cecf74bfd89f041ec76e02f84fc1c8b629670da0c05e05920b6d535214"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/CANONICAL_MACHINE.log",
+      "sha256": "51100e1fc1878af25286df49d2ec087359505760b182827442086efb137a18a1"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/REPAIR_REVIEW.json",
+      "sha256": "65ffd22494dd72d30baf87244d723d4d59c962bd83db4ff8680b4129a7a9f962"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/TOC_REPAIR_VERIFIED.json",
+      "sha256": "1130045d21b8c4078f9b2e17a014979884a3269ab58b9fae05d346f232c9b214"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/VERIFIER_INITIAL_FAILURE.log",
+      "sha256": "c07375768f8f3f268eb36c0f2248156d13f25be6a08e04436020cc0eb698798f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/VERIFY_TOC.mjs",
+      "sha256": "b2ef872b1c76b7b064693c9e7c36a54c6fbdc0f1a40e5d47249765682030368f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/astro.config.after.mjs",
+      "sha256": "1314aa2a034b58d04281ad662e4bc74073b6bb45e71bedd592c264dc325e3bfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/astro.config.before.mjs",
+      "sha256": "749841577959ca133d718c0311600af995917e644d75abb58877fae0f7a94c2d"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/app-support/astro.config.mjs",
+      "sha256": "1314aa2a034b58d04281ad662e4bc74073b6bb45e71bedd592c264dc325e3bfa"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/app-support/rehype-explicit-headings.mjs",
+      "sha256": "8a96da90e36e61d294c218874be0e655cf66c6f398166bdf7eec751c2effc469"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "9c0e4bcbeefd9fc60f984af864d5bc91ba9a16f5c4ab832db4fb458bf3b77a40"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "9288d8a0321b89c752444f3f34b9553011534c6906f952c5d06accf3a1717fc1"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "cdc344d7052f8e15ffcf215bf2601252c79352010060cfb34a5a590211ec120a"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "JA nativeTOC and4page source preservation",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/TOC_REPAIR_VERIFIED.json",
+          "sha256": "1130045d21b8c4078f9b2e17a014979884a3269ab58b9fae05d346f232c9b214"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/REPAIR_REVIEW.json",
+          "sha256": "65ffd22494dd72d30baf87244d723d4d59c962bd83db4ff8680b4129a7a9f962"
+        }
+      ]
+    },
+    {
+      "name": "EN fullarticle preservation and appbuild",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/CANONICAL_MACHINE.log",
+          "sha256": "51100e1fc1878af25286df49d2ec087359505760b182827442086efb137a18a1"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-231/APP_BUILD.log",
+          "sha256": "73ea21cecf74bfd89f041ec76e02f84fc1c8b629670da0c05e05920b6d535214"
+        }
+      ]
+    },
+    {
+      "name": "Wholeproject finalbrowser/CI/API content",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "HTML見出しをアプリ内だけでAstro収集前に構造化",
+    "JA本文SHAとEN原文保全を維持",
+    "目次DOM合格とブラウザー最終操作合格は区別"
+  ],
+  "unresolved": [
+    "API英語全文意味レビュー/日本語翻訳/別工程レビュー",
+    "CI公式Pandoc固定",
+    "目次操作を含む全体英日表示QA/統合/公開"
+  ],
+  "nextAction": "fmt API固定生成説明と原文/12ヘッダーから全61要求API+23メンバーの意味レビューを完了し、最後のJA API1ページを翻訳・別工程レビュー。公式Pandoc3.8.3のCI固定、目次操作を含む全英日機械/ブラウザー検証、統合回帰を経て正規公開待ちから公開へ。",
+  "resumeCondition": "231:JAの明示HTML見出しをfmt内のrehypeで昇格しGetStarted15/Syntax12のネイティブ目次を復元、4JAコード/参照/ID、全4ENと14routeビルド合格。EN意味4/5・JA4/5本文SHA維持。API意味/訳、CI、全体表示操作QAは未完了。privateappと保存app-supportから再開。",
+  "counts": {
+    "verified": 8,
+    "published": 8,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

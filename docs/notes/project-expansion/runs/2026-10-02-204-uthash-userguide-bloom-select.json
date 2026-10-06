@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-204-uthash-userguide-bloom-select",
+  "cycle": 204,
+  "startedAt": "2026-10-02T11:33:08.905Z",
+  "endedAt": "2026-10-02T11:33:51.742Z",
+  "result": "partial",
+  "phase": "translation",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "previousCycleClassification": "progress: 複合キー・多段・複数ハッシュとソート挿入の全文翻訳/別レビュー/機械検査を保存し1-2224へ。",
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "c8cd4e922d50988778544618a554b5adf411886943b7b95800d314aa33347043"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/userguide.txt",
+      "sha256": "a605a5bef028b76274ef34a22ed4dbfaa2057a1f79b08b1b8e074115eebbd2a0"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/01-userguide.md",
+      "sha256": "be80ec531839cc87cc7e8a38968d08b4757f91a9313afb56a626290cbdc7fe27"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-203/USERGUIDE_SEGMENTS.json",
+      "sha256": "45a005d8e14317216366b25e2ca2e3296ae48db8ac0ef255d13d61a2a7db5c6f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/translation-segments/ja/01-userguide/007-bloom-select.md",
+      "sha256": "c0b799c66df928def38e05aa4db606a3f5b9401bea8e700afd5ea95c190aa9e8"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-204/USERGUIDE_SEGMENTS.json",
+      "sha256": "383f7ba492a942c2f7ee16855337c51ad47c4ccfe8a0cb39cf498eda77e5339f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-204/BLOOM_SELECT_MECHANICAL.json",
+      "sha256": "9abe0370b0cb699124c3942f5902e8f1f4a1e4ee8321404342b6cf0b74940ef8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-204/SEGMENT_MAP.json",
+      "sha256": "51bee77e68252694edd4eb7e4f092f2d6f499a103fe9d8be65c7d11cb0589ef8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-204/check-bloom-select-204.mjs",
+      "sha256": "1649b6ec258e9def32153de189151a02a8cd776a101a65a2561f2e5455a96ce3"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "6374082086e4b479751f65565ee80a5d3b880553f48267112451b0802443b749"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "81fc7a46dd9a799d077c3cc72c52a4b2e92fda28a1b3f2bc87b37a6696c0904a"
+    }
+  ],
+  "tools": [
+    "Codexセグメント全文翻訳/別内容レビュー",
+    "Astro processor5code/14inline/2ID/12表セル",
+    "CAS"
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Bloomフィルター・選択操作全節の別レビュー",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-204/USERGUIDE_SEGMENTS.json",
+          "sha256": "383f7ba492a942c2f7ee16855337c51ad47c4ccfe8a0cb39cf498eda77e5339f"
+        }
+      ]
+    },
+    {
+      "name": "コード/ID/18翻訳変更/サイズ表12セル/数値/構造",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-204/BLOOM_SELECT_MECHANICAL.json",
+          "sha256": "9abe0370b0cb699124c3942f5902e8f1f4a1e4ee8321404342b6cf0b74940ef8"
+        }
+      ]
+    },
+    {
+      "name": "UserGuide全体/最終JA build/表示/公開",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-204/USERGUIDE_SEGMENTS.json",
+          "sha256": "383f7ba492a942c2f7ee16855337c51ad47c4ccfe8a0cb39cf498eda77e5339f"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "検索結果不変/削除時注意/選択元不変と元宛先同一禁止を保持。全コードと表数値不変。"
+  ],
+  "unresolved": [
+    "UserGuide2392-3638全文翻訳・別レビュー",
+    "ソート関数名注記の設定/表示",
+    "全JA機械/build/表示/統合公開"
+  ],
+  "nextAction": "UserGuide定本1-2391/source1-1285の翻訳・別reviewを保持。次はEN2392/source1286からキー比較関数・ハッシュ関数などの残節を翻訳・別レビュー。全3638行完了後に正式全JA配置/機械/build/表示/統合公開へ。",
+  "resumeCondition": "review197全7ページとreview200全3セグメントのSHA一致を確認。UserGuide未翻訳範囲2392-3638。ENのみprivate app/root apps不在で公開除外維持。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

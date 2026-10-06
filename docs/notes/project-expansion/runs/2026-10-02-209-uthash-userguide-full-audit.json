@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-209-uthash-userguide-full-audit",
+  "cycle": 209,
+  "startedAt": "2026-10-02T11:43:15.170Z",
+  "endedAt": "2026-10-02T11:44:13.884Z",
+  "result": "partial",
+  "phase": "content-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "previousCycleClassification": "progress: マクロリファレンス全34署名/10引数の翻訳・別レビュー・3表機械検査で全3638行のセグメント確認完了。",
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "31b1ad39e15cdf4697ff275f6d0eb4dba6ac46cc8455a702a038738ae8828b0b"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/source/doc/userguide.txt",
+      "sha256": "a605a5bef028b76274ef34a22ed4dbfaa2057a1f79b08b1b8e074115eebbd2a0"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/canonical/01-guides/01-userguide.md",
+      "sha256": "be80ec531839cc87cc7e8a38968d08b4757f91a9313afb56a626290cbdc7fe27"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-208/USERGUIDE_SEGMENTS.json",
+      "sha256": "dbcbc7ecd7bd40a2489ee20c0cb4e60edb6c47b5b30c77df2e7ac40026a5e74e"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-197/TRANSLATION_REVIEW.json",
+      "sha256": "a5934f2e02ce981f929a4f503992cf31615059e6726fd7dccec54f56eeefe231"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/translation-draft/ja/01-guides/01-userguide.md",
+      "sha256": "2aff8bd35314620f2ca0d3df59465dab968a483f79199e23d64055675968f7de"
+    },
+    {
+      "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-209/TRANSLATION_REVIEW.json",
+      "sha256": "b4d11ccbe9c3f52be9de479909d6d0c33c1b6cd4c28146e007a3c6b3fcb19ff9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-209/COVERAGE_AUDIT.json",
+      "sha256": "c55675157a70d44f8418021000d09d8404e0e6eb414a8861e20e0a2da147ced8"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-209/USERGUIDE_FULL_MECHANICAL.json",
+      "sha256": "17f20ea1c1b522850f91867ac489d402a392d920cf0d276b3959c7cf86edc2d0"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-209/check-userguide-full-209.mjs",
+      "sha256": "7a14f463527f04b092857a4a8f055aaebaabc5f05c6d13b7fda4773f45922625"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e14ebc113b3a476157bc6285a5b7b536560a63c7e2dbca60fcbf193eb6e417f1"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "26cab7393827c243e30fb2a1bf464e3d052655095b17a1f6410146193003ab5b"
+    }
+  ],
+  "tools": [
+    "Codex既存別工程review全coverage監査",
+    "Astro全文processor",
+    "CAS"
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "UserGuide全coverage/結合byte同一/全8内容レビュー証拠",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-209/TRANSLATION_REVIEW.json",
+          "sha256": "b4d11ccbe9c3f52be9de479909d6d0c33c1b6cd4c28146e007a3c6b3fcb19ff9"
+        },
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-209/COVERAGE_AUDIT.json",
+          "sha256": "c55675157a70d44f8418021000d09d8404e0e6eb414a8861e20e0a2da147ced8"
+        }
+      ]
+    },
+    {
+      "name": "全文63コード/75見出しID/78ID一意/14内部参照/23リンク/11表",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-209/USERGUIDE_FULL_MECHANICAL.json",
+          "sha256": "17f20ea1c1b522850f91867ac489d402a392d920cf0d276b3959c7cf86edc2d0"
+        }
+      ]
+    },
+    {
+      "name": "全8content gate/JA build/表示/公開",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/document-import/uthash/v2-4-0/review/2026-10-02-209/TRANSLATION_REVIEW.json",
+          "sha256": "b4d11ccbe9c3f52be9de479909d6d0c33c1b6cd4c28146e007a3c6b3fcb19ff9"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "内部リンク4つは英語から日本語の同一対象へ対応していることと実JAファイル存在を照合。",
+    "インライン説明within→内部のみ既存第202根拠に沿って認め、全コードは原文同一。"
+  ],
+  "unresolved": [
+    "ソート関数名注記の設定/表示",
+    "正式全JA配置/全8content gate/build/表示/統合公開"
+  ],
+  "nextAction": "全8JAの全文翻訳・別内容レビュー証拠を保持。次はprivate apps/uthashに全JA正式配置しsupportedLanguagesをen/jaへ。UserGuideソート関数名注記を適用。全8content checkerを実装・機械検査・build・英日ブラウザー表示・統合公開へ。",
+  "resumeCondition": "review209の全8source/EN/JA SHA一致。JA正式app配置・全8gate/build/表示未完。root apps/uthash不在、配信除外維持。",
+  "counts": {
+    "verified": 7,
+    "published": 7,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 6,
+    "eligible": 0
+  }
+}

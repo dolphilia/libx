@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-242-fmt-review-manifest-permanent-api-check",
+  "cycle": 242,
+  "startedAt": "2026-10-02T16:34:15.173Z",
+  "endedAt": "2026-10-02T16:35:43.818Z",
+  "result": "partial",
+  "phase": "content-review-evidence-audit",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "All5currentSHA/contentreview evidence audit",
+    "Fullcoverage reviewmanifest",
+    "Readonly permanentAPItranslation check",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "063d368af44fb15d6c8e1fc08a156644224947f5d8f04db5e46a5ec64e516680"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "667592e0fe9925910f07f97ba00aff8a558db89c2fe3b1f2e5302ad5f0f6f78a"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/generated/GENERATION.json",
+      "sha256": "a96d075ce31d7d7e8fd6adda74b1e3a1933e20a5cbcf454828698c1c28a95eae"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-242/API_PERMANENT_CHECK.log",
+      "sha256": "a8d6dc45614be129d65d87c72415ef5d23d3c72229b8261e8e9a8f1c112ea189"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-242/REVIEW_AUDIT.json",
+      "sha256": "70219e50e1827502db256c8636cceac738b194d7db22fd9e7c56c6de03fe9e2e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-242/review-manifest.mjs",
+      "sha256": "24926c2a7be6164ba1a5957caa6fce842924ab61cc5ed368642ef5591b8e1dcf"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/REVIEW_MANIFEST.json",
+      "sha256": "5c01f9b05d19ad4b1b0bff99766884c4e3ad8a1a57ba1570977db37c5120f4e0"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/IMPORTER.md",
+      "sha256": "7ed8c0087f28cf21f8edd54090eeeb8d65cc8aa79fc979b3c62e33db172d2cf9"
+    },
+    {
+      "path": "scripts/importers/check-fmt-api-translation.mjs",
+      "sha256": "9bf11c7d95e4f219c984b70edcd0e8a9ca67c84b50c7ed90249d141d3c059d42"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "e738fb4de647fb30ba233a1446cc41df299b7e1f146d37cf47a4b0d556600ff0"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "2c116fd8f15da535a3c7a91204834fdc3af015cd1bcff460a6099456e865fdf9"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Current all5page independent review evidence andcoverage",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-242/REVIEW_AUDIT.json",
+          "sha256": "70219e50e1827502db256c8636cceac738b194d7db22fd9e7c56c6de03fe9e2e"
+        }
+      ]
+    },
+    {
+      "name": "Permanent readonly builtJapanese API preservation",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-242/API_PERMANENT_CHECK.log",
+          "sha256": "a8d6dc45614be129d65d87c72415ef5d23d3c72229b8261e8e9a8f1c112ea189"
+        }
+      ]
+    },
+    {
+      "name": "Fullproject finalverification/UI/publication",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "レビューの現行SHA/範囲を集約しcontent-reviewedへ進める",
+    "原MDだけではAPI展開84説明を証明しないため追加証拠を保持",
+    "API検査を全体検証へ流用しない"
+  ],
+  "unresolved": [
+    "API組立手順恒久化/再生成一致",
+    "全5英日組の機械検査",
+    "CI公式Pandoc固定",
+    "表示QA/限定統合/公開"
+  ],
+  "nextAction": "fmt API組立手順の134pre空白文字参照保全と親liラベル訳を恒久化して再生成一致を確認。API以外も含む英日5組の読み取り専用検査とCI公式Pandoc固定を整え、全体機械/表示QAから限定統合・公開へ。",
+  "resumeCondition": "242:全5ページの原文・定本・訳文現行SHAと全文coverage、別工程レビュー証拠をREVIEW_MANIFESTへ集約しcontent-reviewed。展開84APIの別証拠を併記。恒久readonly日本語API検査を保存・隔離実行合格。全体verified/ブラウザー/CI/統合/公開は未実施。",
+  "counts": {
+    "verified": 8,
+    "published": 8,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

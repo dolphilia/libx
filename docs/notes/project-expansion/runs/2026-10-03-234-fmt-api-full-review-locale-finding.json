@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-234-fmt-api-full-review-locale-finding",
+  "cycle": 234,
+  "startedAt": "2026-10-02T15:54:56.129Z",
+  "endedAt": "2026-10-02T15:58:40.655Z",
+  "result": "partial",
+  "phase": "content-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "Full84APIdecl+description/134pre reading",
+    "Fixedheader macrocondition comparison",
+    "C++11 static_assert forlevel1/2",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "4e67df0def3d8727930d8c3d9184030a581e241d5fa51b7713c47e4dd5b2478f"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "6863914a164a22e685b78b1ce154368285f5e5fdc9bfcdcbccdd1f7af77bc0e6"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "ea4cbbfd3a79b82bcc903cb0c8c3efe2d8b1fce57513134f1c9e2c3d8923640e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/API_FULL_CONTENT_REVIEW.json",
+      "sha256": "afb72783fba366107256ada390f94b96ce6a5832b836aaccce956ffce93f297e"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/API_RENDERED_TEXT.txt",
+      "sha256": "568c2249d683bc98e4d5bb39475a2a420aca76736fec4ebf9fc5638cdaa7bf3f"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/LOCALE_DISCREPANCY.json",
+      "sha256": "d13048a2c13636b8f8e0c2bb69512ed0a5ee45acbb73a78c43bdf5c585e2c96c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/LOCALE_LEVEL1_CHECK.log",
+      "sha256": "bb004e0651e75b8725881998df41dc89b07779a1f71e8087f4a803e2944a1762"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/LOCALE_LEVEL1_VERIFIED.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/LOCALE_LEVEL2_VERIFIED.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/locale-check.cpp",
+      "sha256": "f7980d1644f715c7c9219cc203b32c1130a698f8f8d01c384240fd32f6263c4a"
+    },
+    {
+      "path": "docs/notes/document-import/fmt/v12-2-0/PAGE_PROGRESS.json",
+      "sha256": "d73ab7cdf1ed4ec8aaec566f723539d6bcec0e2484826be9eb799fbef3e7f8f6"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "8a9f7bd5e69ed0f9e0b23662332fff7c010d7dbd39f7fa85d4eb3e6dfe43aa34"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "35c77f0827943b48a815982bbab15552309b4103121d541569d48646bbfdd13b"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Full API semantic source review completed with open editorialfinding",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/API_FULL_CONTENT_REVIEW.json",
+          "sha256": "afb72783fba366107256ada390f94b96ce6a5832b836aaccce956ffce93f297e"
+        }
+      ]
+    },
+    {
+      "name": "Fixedheader localelevel1/2 default staticverification",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/LOCALE_DISCREPANCY.json",
+          "sha256": "d13048a2c13636b8f8e0c2bb69512ed0a5ee45acbb73a78c43bdf5c585e2c96c"
+        }
+      ]
+    },
+    {
+      "name": "API JA/fullproject finalQA",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "API全内容を読んだことと不整合解決済みの合格を区別",
+    "原文を保ちながら固定header根拠付き注釈を追加する",
+    "環境別compiler初回失敗は成功証拠とせず保存"
+  ],
+  "unresolved": [
+    "Locale原文不整合の英日編集注",
+    "API日本語全文翻訳/別工程レビュー",
+    "CI公式Pandoc固定",
+    "最終英日表示検証/公開"
+  ],
+  "nextAction": "fmt APIのロケール最適化level1の原文不整合を固定base.h890-892とlevel1/2静的検査根拠付きで英日編集注として追加。原文は保持し機械検査の注釈除外を明示SHA/構造で限定。その後API最後のJA全文翻訳・別工程レビュー、CI公式Pandoc固定と最終英日QAから公開へ。",
+  "resumeCondition": "234:API原説明全文と修復済み全84宣言/説明/134preを3chunk全文内容確認。FMT_OPTIMIZE_SIZE1のlocale説明不整合を発見し、固定headerと/usr/bin/clang++静的検査でlevel1→1/level2→0を実証。API意味合格は編集注未実施につき保留。EN他4/JA4は維持、ローカルLLM/公開なし。",
+  "counts": {
+    "verified": 8,
+    "published": 8,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}

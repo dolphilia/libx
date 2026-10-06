@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-02-164-pugixml-build-and-display-progress",
+  "cycle": 164,
+  "startedAt": "2026-10-02T08:43:01.483Z",
+  "endedAt": "2026-10-02T08:47:12.314Z",
+  "result": "partial",
+  "phase": "4",
+  "model": {
+    "configured": "gpt-6.1-sol",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "pnpm build:sidebar-selective --projects=pugixml",
+    "pnpm --filter apps-pugixml build",
+    "Astro preview / CUA AX・スクリーンショット"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "c817334c94fd5a258d89bbe2b16575efe641646afae89428c9bcf2db0611e971"
+    },
+    {
+      "path": "docs/notes/document-import/pugixml/v1-16/review/2026-10-02-163/REVIEW_MANIFEST.json",
+      "sha256": "a6d44793c65b2238c7e91c37de071a1d2272cd986432dfa39951a68c0cca3c9b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-164/BUILD_AND_DISPLAY_PROGRESS.json",
+      "sha256": "b02c96d32b9c0b4f9665e1da9c28e3dc80392e9dcffcbf5bc9f3921a75e3d061"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-164/build.txt",
+      "sha256": "f3389733ae699d8084c4e3a701b3ca43b6f16a282463c21f3f0f8455aebc6130"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-164/sidebar.txt",
+      "sha256": "5bb8e94991e10ede90f0186ccdc563711aeb74526e5493d9fed3e454ab2c8e3d"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "d92ab50d0cdd50d09e9fe8e834bcedab758f5ba8562728a44c1bcb104ff3fbca"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "fa2005df2375579150c2f3f2cae02c398f8cf6c80eb1bb976ed4111ba1790f1d"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "選択的サイドバーと単体ビルド",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-164/BUILD_AND_DISPLAY_PROGRESS.json",
+          "sha256": "b02c96d32b9c0b4f9665e1da9c28e3dc80392e9dcffcbf5bc9f3921a75e3d061"
+        }
+      ]
+    },
+    {
+      "name": "全体表示操作と統合回帰",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-02-164/BUILD_AND_DISPLAY_PROGRESS.json",
+          "sha256": "b02c96d32b9c0b4f9665e1da9c28e3dc80392e9dcffcbf5bc9f3921a75e3d061"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    "新規作成・公開優先方針を維持。公開済み定期再確認へ切り替えない。",
+    "Awesome/user変更保護のため隔離チェックアウトだけでビルド。",
+    "1ページ部分目視を全体表示合格として扱わない。"
+  ],
+  "unresolved": [
+    "全ページUI/モバイルと統合回帰、公開前再検証が未完了。"
+  ],
+  "nextAction": "新規優先。12ページ全文レビュー・英日機械検査・選択的サイドバー/検索生成・アプリ単体29ページビルド合格。XPathのデスクトップ表示を部分確認。ローカルプレビュー127.0.0.1:4323（session59721）で全24英日ページ、表/コード、検索/コピー/言語切替、モバイルの表示操作を検証する。続いて統合回帰と公開前証拠再検証を完了し、正規公開待ち登録後に公開する。",
+  "resumeCondition": "第163全文レビューと隔離コピーのSHAが有効。プレビュー生存確認後に全体表示操作検証へ。サーバー終了時は同じ隔離場所で再起動。",
+  "counts": {
+    "verified": 6,
+    "published": 6,
+    "awaitingRelease": 0,
+    "active": 1,
+    "activeNew": 1,
+    "deferred": 0,
+    "candidateHolds": 7,
+    "eligible": 0
+  }
+}

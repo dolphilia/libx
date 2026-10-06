@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "2026-10-03-253-fmt-final-ci-running-and-ninja-preservation",
+  "cycle": 253,
+  "startedAt": "2026-10-02T17:54:00.000Z",
+  "endedAt": "2026-10-02T17:57:57.375Z",
+  "result": "partial",
+  "phase": "preview-ci-and-candidate-investigation",
+  "model": {
+    "configured": "gpt-6-astra",
+    "configurationEvidence": "/Users/dolphilia/.codex/config.toml:1",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "tools": [
+    "GitHubAPI same runpoll",
+    "readonly release/plan check",
+    "CIgate preparation",
+    "node --check",
+    "ledgerCAS"
+  ],
+  "inputs": [
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "a9b362ab544a09560d1ab2b20c6723503fa2c7a560230cb450d3cb2977b57071"
+    },
+    {
+      "path": "docs/notes/project-expansion/POLICY.json",
+      "sha256": "1900708b9efaf1c04069fa4972008bf5b00bb4fcb9dbc73cbd0c606909d26cfa"
+    },
+    {
+      "path": "docs/notes/project-expansion/CANDIDATES.json",
+      "sha256": "e79355fb3eda0b4284adea098fcb68dcadadb6511e6d09f57e0133819f0b2029"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/CI_STATUS_1790963666817.json",
+      "sha256": "9dd95677cf969792dd5806e3ad90f97b199e30ffedf9feda47d5916daa37ef73"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/CI_STATUS_1790963773647.json",
+      "sha256": "b9739b0dd3f4e8b70f3538322d81f8b465ddebf41e7e19807eda3327617dcf4b"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/NINJA_DOCBOOK_METRICS.json",
+      "sha256": "54a41365220f7217247ee950a543511f5bf246294383d9029d3f1a8cd7903b73"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/NINJA_HTML_TEXT.txt",
+      "sha256": "f204d4564de940322604d25027bd9dc69ef1fdffcf2fc2e0ef99058dfc6bc9d5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/NINJA_INITIAL_PRESERVATION.json",
+      "sha256": "57ab11f823ec73b74f8f968cf2b5c02e5c560599ab4c24fde0d487ebdf471924"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/NINJA_RESOLVED_PRESERVATION.json",
+      "sha256": "4d99182c1edc3f182ede13561b98f34b820627785fdfc8ac52fb7a342096683d"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/NINJA_TEXT_DIFFERENCES.json",
+      "sha256": "6b9dbf66068e45e9cb729724855bbd4478b55d3adaa3d232d93271b435bfcd0a"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/NINJA_XML_TEXT.txt",
+      "sha256": "3b71f9b87530e3191e92094da6196f56bac302e29b974a5c018c73cef37261b5"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/WAIT_AND_PREPARATION.json",
+      "sha256": "49e24005be6b9d0172e481deeb229ef02e172ee94192fc1e48692e4f20e876f9"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/check-ninja-initial.mjs",
+      "sha256": "4868e183a79a2f5f5367c0b5a5a3da2fefdfb42edd5b939afddbe5a8894ca81c"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/check-ninja-resolved.mjs",
+      "sha256": "121cd02c1af679eb824a38cd1bd22d59a18db1a2a7f86a54b62e10b675938b7c"
+    },
+    {
+      "path": "docs/notes/project-expansion/OPERATIONS.json",
+      "sha256": "f9a9ceaf90a727b4f3a57eab015cc1f2e2b3c4950b476a759bbad5318788816d"
+    },
+    {
+      "path": "docs/notes/project-expansion/REPORT.md",
+      "sha256": "997aef5f26a7a5fe9aa8e83518914042627c874c335ccdacf8e33a2c33ba48d7"
+    }
+  ],
+  "discoveryIds": [],
+  "detailIds": [
+    "ninja"
+  ],
+  "newOperationIds": [],
+  "checks": [
+    {
+      "name": "Ninja dual-backend machine preservation only",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/NINJA_RESOLVED_PRESERVATION.json",
+          "sha256": "4d99182c1edc3f182ede13561b98f34b820627785fdfc8ac52fb7a342096683d"
+        }
+      ]
+    },
+    {
+      "name": "confirmedliveCIwait and syntax-only preparation",
+      "status": "passed",
+      "evidence": [
+        {
+          "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-253/WAIT_AND_PREPARATION.json",
+          "sha256": "49e24005be6b9d0172e481deeb229ef02e172ee94192fc1e48692e4f20e876f9"
+        }
+      ]
+    },
+    {
+      "name": "CIartifact/Preview/Production",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "decisions": [
+    "前turnprogress。今turnは確認済みliveCIのverifiedwait、重複起動を行わない。",
+    "最終commitのartifact/HTTP/UI未確認を合格にしない。",
+    "新規公開を優先、公開済み通常巡回は実施せず確認日時を作らない。",
+    "CI待機中の独立作業としてNinja1件を詳細再調査、権利は注釈付き本体licenseの履行設計で合格、conversion/workloadはunknown維持。採用0件。"
+  ],
+  "unresolved": [
+    "最終run順番待ちとCI品質結果",
+    "CIarchive/currentall5scope/既存article保全/Preview/Production実配信未確認",
+    "Ninja公式XSLT/fulltext/Astro表示/工数/日本語状況・採点未完了"
+  ],
+  "nextAction": "Poll finalPagesPreview run37042768588 SHA5dda902a7dc5a4c8e71540da8b565e2c5a40f225; precedingrun37042456120 Preview success; final run nowlive. No redispatch/restart onwait. Onsuccess runs/evidence/2026-10-03-251/read-ci-artifact.mjs todownload archive, unzip to /private/tmp/libx-fmt-preview-artifact-251 (freshdirectory), runs/evidence/2026-10-03-251/check-ci-fmt.mjs /private/tmp/libx-fmt-preview-artifact-251 and check-existing-ci.mjs. Verify allCIfile HTTPdelivery and actualPreview UI thenProduction expected_commit81dfad9. Preparedgate nottestedagainstCIyet; failure mustbeinvestigated, never countedpassed.",
+  "resumeCondition": "251:finalPreview CI実行中・先行Preview配置成功をGitHubAPIで確認。全scopeCIartifact/SHA/currentreview/all15fmtHTML/2assets/2359existingarticle検査手順を保存、構文検査のみ合格。現設定gpt-6-astraでruntime不明、ローカルLLM不使用。先行Preview成功と最終未完了のrun/commitを区別しCI/配信未確認は完了扱いしない。",
+  "counts": {
+    "verified": 9,
+    "published": 8,
+    "awaitingRelease": 1,
+    "active": 0,
+    "activeNew": 0,
+    "deferred": 0,
+    "candidateHolds": 5,
+    "eligible": 0
+  }
+}
