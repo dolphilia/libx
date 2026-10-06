@@ -1,0 +1,1756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<book lang="en">
+<bookinfo>
+    <title>The Ninja build system</title>
+    <author>
+        <firstname>v1.13.2,</firstname>
+        <othername>Nov</othername>
+        <surname>2025</surname>
+    </author>
+    <authorinitials>VN2</authorinitials>
+</bookinfo>
+<chapter id="_introduction">
+<title>Introduction</title>
+<simpara>Ninja is yet another build system.  It takes as input the
+interdependencies of files (typically source code and output
+executables) and orchestrates building them, <emphasis>quickly</emphasis>.</simpara>
+<simpara>Ninja joins a sea of other build systems.  Its distinguishing goal is
+to be fast.  It is born from
+<ulink url="http://neugierig.org/software/chromium/notes/2011/02/ninja.html">my
+work on the Chromium browser project</ulink>, which has over 30,000 source
+files and whose other build systems (including one built from custom
+non-recursive Makefiles) would take ten seconds to start building
+after changing one file.  Ninja is under a second.</simpara>
+<section id="_philosophical_overview">
+<title>Philosophical overview</title>
+<simpara>Where other build systems are high-level languages, Ninja aims to be
+an assembler.</simpara>
+<simpara>Build systems get slow when they need to make decisions.  When you are
+in an edit-compile cycle you want it to be as fast as possible&#8201;&#8212;&#8201;you
+want the build system to do the minimum work necessary to figure out
+what needs to be built immediately.</simpara>
+<simpara>Ninja contains the barest functionality necessary to describe
+arbitrary dependency graphs.  Its lack of syntax makes it impossible
+to express complex decisions.</simpara>
+<simpara>Instead, Ninja is intended to be used with a separate program
+generating its input files.  The generator program (like the
+<literal>./configure</literal> found in autotools projects) can analyze system
+dependencies and make as many decisions as possible up front so that
+incremental builds stay fast.  Going beyond autotools, even build-time
+decisions like "which compiler flags should I use?"  or "should I
+build a debug or release-mode binary?"  belong in the <literal>.ninja</literal> file
+generator.</simpara>
+</section>
+<section id="_design_goals">
+<title>Design goals</title>
+<simpara>Here are the design goals of Ninja:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+very fast (i.e., instant) incremental builds, even for very large
+  projects.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+very little policy about how code is built.  Different projects and
+  higher-level build systems have different opinions about how code
+  should be built; for example, should built objects live alongside
+  the sources or should all build output go into a separate directory?
+  Is there a "package" rule that builds a distributable package of
+  the project?  Sidestep these decisions by trying to allow either to
+  be implemented, rather than choosing, even if that results in
+  more verbosity.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+get dependencies correct, and in particular situations that are
+  difficult to get right with Makefiles (e.g. outputs need an implicit
+  dependency on the command line used to generate them; to build C
+  source code you need to use gcc&#8217;s <literal>-M</literal> flags for header
+  dependencies).
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+when convenience and speed are in conflict, prefer speed.
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Some explicit <emphasis>non-goals</emphasis>:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+convenient syntax for writing build files by hand.  <emphasis>You should
+  generate your ninja files using another program</emphasis>.  This is how we
+  can sidestep many policy decisions.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+built-in rules. <emphasis>Out of the box, Ninja has no rules for
+  e.g. compiling C code.</emphasis>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+build-time customization of the build. <emphasis>Options belong in
+  the program that generates the ninja files</emphasis>.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+build-time decision-making ability such as conditionals or search
+  paths. <emphasis>Making decisions is slow.</emphasis>
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>To restate, Ninja is faster than other build systems because it is
+painfully simple.  You must tell Ninja exactly what to do when you
+create your project&#8217;s <literal>.ninja</literal> files.</simpara>
+</section>
+<section id="_comparison_to_make">
+<title>Comparison to Make</title>
+<simpara>Ninja is closest in spirit and functionality to Make, relying on
+simple dependencies between file timestamps.</simpara>
+<simpara>But fundamentally, make has a lot of <emphasis>features</emphasis>: suffix rules,
+functions, built-in rules that e.g. search for RCS files when building
+source.  Make&#8217;s language was designed to be written by humans.  Many
+projects find make alone adequate for their build problems.</simpara>
+<simpara>In contrast, Ninja has almost no features; just those necessary to get
+builds correct while punting most complexity to generation of the
+ninja input files.  Ninja by itself is unlikely to be useful for most
+projects.</simpara>
+<simpara>Here are some of the features Ninja adds to Make.  (These sorts of
+features can often be implemented using more complicated Makefiles,
+but they are not part of make itself.)</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Ninja has special support for discovering extra dependencies at build
+  time, making it easy to get <link linkend="ref_headers">header dependencies</link>
+  correct for C/C++ code.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+A build edge may have multiple outputs.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Outputs implicitly depend on the command line that was used to generate
+  them, which means that changing e.g. compilation flags will cause
+  the outputs to rebuild.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Output directories are always implicitly created before running the
+  command that relies on them.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Rules can provide shorter descriptions of the command being run, so
+  you can print e.g. <literal>CC foo.o</literal> instead of a long command line while
+  building.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Builds are always run in parallel, based by default on the number of
+  CPUs your system has.  Underspecified build dependencies will result
+  in incorrect builds.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Command output is always buffered.  This means commands running in
+  parallel don&#8217;t interleave their output, and when a command fails we
+  can print its failure output next to the full command line that
+  produced the failure.
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</chapter>
+<chapter id="_using_ninja_for_your_project">
+<title>Using Ninja for your project</title>
+<simpara>Ninja currently works on Unix-like systems and Windows. It&#8217;s seen the
+most testing on Linux (and has the best performance there) but it runs
+fine on Mac OS X and FreeBSD.</simpara>
+<simpara>If your project is small, Ninja&#8217;s speed impact is likely unnoticeable.
+(However, even for small projects it sometimes turns out that Ninja&#8217;s
+limited syntax forces simpler build rules that result in faster
+builds.)  Another way to say this is that if you&#8217;re happy with the
+edit-compile cycle time of your project already then Ninja won&#8217;t help.</simpara>
+<simpara>There are many other build systems that are more user-friendly or
+featureful than Ninja itself.  For some recommendations: the Ninja
+author found <ulink url="http://gittup.org/tup/">the tup build system</ulink> influential
+in Ninja&#8217;s design, and thinks <ulink url="https://github.com/apenwarr/redo">redo</ulink>'s
+design is quite clever.</simpara>
+<simpara>Ninja&#8217;s benefit comes from using it in conjunction with a smarter
+meta-build system.</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<ulink url="https://gn.googlesource.com/gn/">gn</ulink>
+</term>
+<listitem>
+<simpara>
+The meta-build system used to
+generate build files for Google Chrome and related projects (v8,
+node.js), as well as Google Fuchsia.  gn can generate Ninja files for
+all platforms supported by Chrome.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="https://cmake.org/">CMake</ulink>
+</term>
+<listitem>
+<simpara>
+A widely used meta-build system that
+can generate Ninja files on Linux as of CMake version 2.8.8.  Newer versions
+of CMake support generating Ninja files on Windows and Mac OS X too.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<ulink url="https://github.com/ninja-build/ninja/wiki/List-of-generators-producing-ninja-build-files">others</ulink>
+</term>
+<listitem>
+<simpara>
+Ninja ought to fit perfectly into other meta-build software
+like <ulink url="https://premake.github.io/">premake</ulink>.  If you do this work,
+please let us know!
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<section id="_running_ninja">
+<title>Running Ninja</title>
+<simpara>Run <literal>ninja</literal>.  By default, it looks for a file named <literal>build.ninja</literal> in
+the current directory and builds all out-of-date targets.  You can
+specify which targets (files) to build as command line arguments.</simpara>
+<simpara>There is also a special syntax <literal>target^</literal> for specifying a target
+as the first output of some rule containing the source you put in
+the command line, if one exists. For example, if you specify target as
+<literal>foo.c^</literal> then <literal>foo.o</literal> will get built (assuming you have those targets
+in your build files).</simpara>
+<simpara><literal>ninja -h</literal> prints help output.  Many of Ninja&#8217;s flags intentionally
+match those of Make; e.g <literal>ninja -C build -j 20</literal> changes into the
+<literal>build</literal> directory and runs 20 build commands in parallel.  (Note that
+Ninja defaults to running commands in parallel anyway, so typically
+you don&#8217;t need to pass <literal>-j</literal>.)</simpara>
+</section>
+<section id="_gnu_jobserver_support">
+<title>GNU Jobserver support</title>
+<simpara>Since version 1.13., Ninja builds can follow the
+<ulink url="https://https://www.gnu.org/software/make/manual/html_node/Job-Slots.html">GNU Make jobserver</ulink>
+client protocol. This is useful when Ninja is invoked as part of a larger
+build system controlled by a top-level GNU Make instance, or any other
+jobserver pool implementation, as it allows better coordination between
+concurrent build tasks.</simpara>
+<simpara>This feature is automatically enabled under the following conditions:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Dry-run (i.e. <literal>-n</literal> or <literal>--dry-run</literal>) is not enabled.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+No explicit job count (e.g. <literal>-j&lt;COUNT&gt;</literal>) is passed on the command
+  line.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+The <literal>MAKEFLAGS</literal> environment variable is defined and describes a valid
+  jobserver mode using <literal>--jobserver-auth=SEMAPHORE_NAME</literal> on Windows, or
+  <literal>--jobserver-auth=fifo:PATH</literal> on Posix.
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>In this case, Ninja will use the jobserver pool of job slots to control
+parallelism, instead of its default parallel implementation.</simpara>
+<simpara>Note that load-average limitations (i.e. when using <literal>-l&lt;count&gt;</literal>)
+are still being enforced in this mode.</simpara>
+<important><simpara>On Posix, only the FIFO-based version of the protocol, which is
+implemented by GNU Make 4.4 and higher, is supported. Ninja will detect
+when a pipe-based jobserver is being used (i.e. when <literal>MAKEFLAGS</literal> contains
+<literal>--jobserver-auth=&lt;read&gt;,&lt;write&gt;</literal>) and will print a warning, but will
+otherwise ignore it.</simpara></important>
+</section>
+<section id="_environment_variables">
+<title>Environment variables</title>
+<simpara>Ninja supports two environment variables to control its behavior:
+<literal>NINJA_STATUS</literal>, the progress status printed before the rule being run.</simpara>
+<simpara>Several placeholders are available:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<literal>%s</literal>
+</term>
+<listitem>
+<simpara>
+The number of started edges.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%t</literal>
+</term>
+<listitem>
+<simpara>
+The total number of edges that must be run to complete the build.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%p</literal>
+</term>
+<listitem>
+<simpara>
+The percentage of finished edges.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%r</literal>
+</term>
+<listitem>
+<simpara>
+The number of currently running edges.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%u</literal>
+</term>
+<listitem>
+<simpara>
+The number of remaining edges to start.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%f</literal>
+</term>
+<listitem>
+<simpara>
+The number of finished edges.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%o</literal>
+</term>
+<listitem>
+<simpara>
+Overall rate of finished edges per second
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%c</literal>
+</term>
+<listitem>
+<simpara>
+Current rate of finished edges per second (average over builds
+specified by <literal>-j</literal> or its default)
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%e</literal>
+</term>
+<listitem>
+<simpara>
+Elapsed time in seconds. <emphasis>(Available since Ninja 1.2.)</emphasis>
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%E</literal>
+</term>
+<listitem>
+<simpara>
+Remaining time (ETA) in seconds. <emphasis>(Available since Ninja 1.12.)</emphasis>
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%w</literal>
+</term>
+<listitem>
+<simpara>
+Elapsed time in [h:]mm:ss format. <emphasis>(Available since Ninja 1.12.)</emphasis>
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%W</literal>
+</term>
+<listitem>
+<simpara>
+Remaining time (ETA) in [h:]mm:ss format. <emphasis>(Available since Ninja 1.12.)</emphasis>
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%P</literal>
+</term>
+<listitem>
+<simpara>
+The percentage (in ppp% format) of time elapsed out of predicted total runtime. <emphasis>(Available since Ninja 1.12.)</emphasis>
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>%%</literal>
+</term>
+<listitem>
+<simpara>
+A plain <literal>%</literal> character.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>The default progress status is <literal>"[%f/%t] "</literal> (note the trailing space
+to separate from the build rule). Another example of possible progress status
+could be <literal>"[%u/%r/%f] "</literal>.</simpara>
+<simpara>If <literal>MAKEFLAGS</literal> is defined in the environment, if may alter how
+Ninja dispatches parallel build commands. See the GNU Jobserver support
+section for details.</simpara>
+</section>
+<section id="_extra_tools">
+<title>Extra tools</title>
+<simpara>The <literal>-t</literal> flag on the Ninja command line runs some tools that we have
+found useful during Ninja&#8217;s development.  The current tools are:</simpara>
+<informaltable tabstyle="horizontal" frame="none" colsep="0" rowsep="0"><tgroup cols="2"><colspec colwidth="15*"/><colspec colwidth="85*"/><tbody valign="top">
+<row>
+<entry>
+<simpara>
+<literal>query</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+dump the inputs and outputs of a given target.
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>browse</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+browse the dependency graph in a web browser.  Clicking a
+file focuses the view on that file, showing inputs and outputs.  This
+feature requires a Python installation. By default, port 8000 is used
+and a web browser will be opened. This can be changed as follows:
+</simpara>
+<screen>ninja -t browse --port=8000 --no-browser mytarget</screen>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>graph</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+output a file in the syntax used by <literal>graphviz</literal>, an automatic
+graph layout tool.  Use it like:
+</simpara>
+<screen>ninja -t graph mytarget | dot -Tpng -ograph.png</screen>
+<simpara>In the Ninja source tree, <literal>ninja graph.png</literal>
+generates an image for Ninja itself.  If no target is given generate a
+graph for all root targets.</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>targets</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+output a list of targets either by rule or by depth.  If used
+like <literal>ninja -t targets rule <emphasis>name</emphasis></literal> it prints the list of targets
+using the given rule to be built.  If no rule is given, it prints the source
+files (the leaves of the graph).  If used like
+<literal>ninja -t targets depth <emphasis>digit</emphasis></literal> it
+prints the list of targets in a depth-first manner starting by the root
+targets (the ones with no outputs). Indentation is used to mark dependencies.
+If the depth is zero it prints all targets. If no arguments are provided
+<literal>ninja -t targets depth 1</literal> is assumed. In this mode targets may be listed
+several times. If used like this <literal>ninja -t targets all</literal> it
+prints all the targets available without indentation and it is faster
+than the <emphasis>depth</emphasis> mode.
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>commands</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+given a list of targets, print a list of commands which, if
+executed in order, may be used to rebuild those targets, assuming that all
+output files are out of date.
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>inputs</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+given a list of targets, print a list of all inputs used to
+rebuild those targets.
+<emphasis>Available since Ninja 1.11.</emphasis>
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>multi-inputs</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+print one or more sets of inputs required to build targets.
+Each line will consist of a target, a delimiter, an input and a terminator character.
+The list produced by the tool can be helpful if one would like to know which targets
+that are affected by a certain input.
+</simpara>
+<simpara>The output will be a series of lines with the following elements:</simpara>
+<screen>&lt;target&gt; &lt;delimiter&gt; &lt;input&gt; &lt;terminator&gt;</screen>
+<simpara>The default <literal>&lt;delimiter&gt;</literal> is a single TAB character.
+The delimiter can be modified to any string using the <literal>--delimiter</literal> argument.</simpara>
+<simpara>The default <literal>&lt;terminator&gt;</literal> is a line terminator (i.e. <literal>\n</literal> on Posix and <literal>\r\n</literal> on Windows).
+The terminator can be changed to <literal>\0</literal> by using the <literal>--print0</literal> argument.</simpara>
+<screen></screen>
+<simpara>Example usage of the <literal>multi-inputs</literal> tool:</simpara>
+<screen>ninja -t multi-inputs target1 target2 target3</screen>
+<simpara>Example of produced output from the <literal>multi-inputs</literal> tool:</simpara>
+<screen>target1 file1.c
+target2 file1.c
+target2 file2.c
+target3 file1.c
+target3 file2.c
+target3 file3.c</screen>
+<simpara><emphasis>Note that a given input may appear for several targets if it is used by more
+than one targets.</emphasis>
+<emphasis>Available since Ninja 1.13.</emphasis></simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>clean</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+remove built files. By default, it removes all built files
+except for those created by the generator.  Adding the <literal>-g</literal> flag also
+removes built files created by the generator (see <link linkend="ref_rule">the rule reference for the <literal>generator</literal> attribute</link>).  Additional arguments are
+targets, which removes the given targets and recursively all files
+built for them.
+</simpara>
+<simpara>If used like <literal>ninja -t clean -r <emphasis>rules</emphasis></literal> it removes all files built using
+the given rules.</simpara>
+<simpara>Files created but not referenced in the graph are not removed. This
+tool takes in account the <literal>-v</literal> and the <literal>-n</literal> options (note that <literal>-n</literal>
+implies <literal>-v</literal>).</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>cleandead</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+remove files produced by previous builds that are no longer in the
+build file. <emphasis>Available since Ninja 1.10.</emphasis>
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>compdb</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+given a list of rules, each of which is expected to be a
+C family language compiler rule whose first input is the name of the
+source file, prints on standard output a compilation database in the
+<ulink url="http://clang.llvm.org/docs/JSONCompilationDatabase.html">JSON format</ulink> expected
+by the Clang tooling interface.
+<emphasis>Available since Ninja 1.2.</emphasis>
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>compdb-targets</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+like <literal>compdb</literal>, but takes a list of targets instead of rules,
+and expects at least one target. The resulting compilation database contains
+all commands required to build the indicated targets, and <emphasis>only</emphasis> those
+commands.
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>deps</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+show all dependencies stored in the <literal>.ninja_deps</literal> file. When given a
+target, show just the target&#8217;s dependencies. <emphasis>Available since Ninja 1.4.</emphasis>
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>missingdeps</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+given a list of targets, look for targets that depend on
+a generated file, but do not have a properly (possibly transitive) dependency
+on the generator.  Such targets may cause build flakiness on clean builds.
+</simpara>
+<simpara>The broken targets can be found assuming deps log / depfile dependency
+information is correct.  Any target that depends on a generated file (output
+of a generator-target) implicitly, but does not have an explicit or order-only
+dependency path to the generator-target, is considered broken.</simpara>
+<simpara>The tool&#8217;s findings can be verified by trying to build the listed targets in
+a clean outdir without building any other targets.  The build should fail for
+each of them with a missing include error or equivalent pointing to the
+generated file.
+<emphasis>Available since Ninja 1.11.</emphasis></simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>recompact</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+recompact the <literal>.ninja_deps</literal> file. <emphasis>Available since Ninja 1.4.</emphasis>
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>restat</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+updates all recorded file modification timestamps in the <literal>.ninja_log</literal>
+file. <emphasis>Available since Ninja 1.10.</emphasis>
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>rules</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+output the list of all rules. It can be used to know which rule name
+to pass to <literal>ninja -t targets rule <emphasis>name</emphasis></literal> or <literal>ninja -t compdb</literal>. Adding the <literal>-d</literal>
+flag also prints the description of the rules.
+</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>msvc</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+Available on Windows hosts only.
+Helper tool to invoke the <literal>cl.exe</literal> compiler with a pre-defined set of
+environment variables, as in:
+</simpara>
+<screen>ninja -t msvc -e ENVFILE -- cl.exe &lt;arguments&gt;</screen>
+<simpara>Where <literal>ENVFILE</literal> is a binary file that contains an environment block suitable
+for CreateProcessA() on Windows (i.e. a series of zero-terminated strings that
+look like NAME=VALUE, followed by an extra zero terminator). Note that this uses
+the local codepage encoding.</simpara>
+<simpara>This tool also supports a deprecated way of parsing the compiler&#8217;s output when
+the <literal>/showIncludes</literal> flag is used, and generating a GCC-compatible depfile from it:</simpara>
+<screen>ninja -t msvc -o DEPFILE [-p STRING] -- cl.exe /showIncludes &lt;arguments&gt;</screen>
+<simpara>When using this option, <literal>-p STRING</literal> can be used to pass the localized line prefix
+that <literal>cl.exe</literal> uses to output dependency information. For English-speaking regions
+this is <literal>"Note: including file: "</literal> without the double quotes, but will be different
+for other regions.</simpara>
+<simpara>Note that Ninja supports this natively now, with the use of <literal>deps = msvc</literal> and
+<literal>msvc_deps_prefix</literal> in Ninja files. Native support also avoids launching an extra
+tool process each time the compiler must be called, which can speed up builds
+noticeably on Windows.</simpara>
+</entry>
+</row>
+<row>
+<entry>
+<simpara>
+<literal>wincodepage</literal>
+</simpara>
+</entry>
+<entry>
+<simpara>
+Available on Windows hosts (<emphasis>since Ninja 1.11</emphasis>).
+Prints the Windows code page whose encoding is expected in the build file.
+The output has the form:
+</simpara>
+<screen>Build file encoding: &lt;codepage&gt;</screen>
+<simpara>Additional lines may be added in future versions of Ninja.</simpara>
+<simpara>The <literal>&lt;codepage&gt;</literal> is one of:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<literal>UTF-8</literal>
+</term>
+<listitem>
+<simpara>
+Encode as UTF-8.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>ANSI</literal>
+</term>
+<listitem>
+<simpara>
+Encode to the system-wide ANSI code page.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</entry>
+</row>
+</tbody></tgroup></informaltable>
+</section>
+</chapter>
+<chapter id="_writing_your_own_ninja_files">
+<title>Writing your own Ninja files</title>
+<simpara>The remainder of this manual is only useful if you are constructing
+Ninja files yourself: for example, if you&#8217;re writing a meta-build
+system or supporting a new language.</simpara>
+<section id="_conceptual_overview">
+<title>Conceptual overview</title>
+<simpara>Ninja evaluates a graph of dependencies between files, and runs
+whichever commands are necessary to make your build target up to date
+as determined by file modification times.  If you are familiar with
+Make, Ninja is very similar.</simpara>
+<simpara>A build file (default name: <literal>build.ninja</literal>) provides a list of <emphasis>rules</emphasis>&#8201;&#8212;&#8201;short names for longer commands, like how to run the compiler&#8201;&#8212;&#8201;along with a list of <emphasis>build</emphasis> statements saying how to build files
+using the rules&#8201;&#8212;&#8201;which rule to apply to which inputs to produce
+which outputs.</simpara>
+<simpara>Conceptually, <literal>build</literal> statements describe the dependency graph of your
+project, while <literal>rule</literal> statements describe how to generate the files
+along a given edge of the graph.</simpara>
+</section>
+<section id="_syntax_example">
+<title>Syntax example</title>
+<simpara>Here&#8217;s a basic <literal>.ninja</literal> file that demonstrates most of the syntax.
+It will be used as an example for the following sections.</simpara>
+<screen>cflags = -Wall
+
+rule cc
+  command = gcc $cflags -c $in -o $out
+
+build foo.o: cc foo.c</screen>
+</section>
+<section id="_variables">
+<title>Variables</title>
+<simpara>Despite the non-goal of being convenient to write by hand, to keep
+build files readable (debuggable), Ninja supports declaring shorter
+reusable names for strings.  A declaration like the following</simpara>
+<screen>cflags = -g</screen>
+<simpara>can be used on the right side of an equals sign, dereferencing it with
+a dollar sign, like this:</simpara>
+<screen>rule cc
+  command = gcc $cflags -c $in -o $out</screen>
+<simpara>Variables can also be referenced using curly braces like <literal>${in}</literal>.</simpara>
+<simpara>Variables might better be called "bindings", in that a given variable
+cannot be changed, only shadowed.  There is more on how shadowing works
+later in this document.</simpara>
+</section>
+<section id="_rules">
+<title>Rules</title>
+<simpara>Rules declare a short name for a command line.  They begin with a line
+consisting of the <literal>rule</literal> keyword and a name for the rule.  Then
+follows an indented set of <literal>variable = value</literal> lines.</simpara>
+<simpara>The basic example above declares a new rule named <literal>cc</literal>, along with the
+command to run.  In the context of a rule, the <literal>command</literal> variable
+defines the command to run, <literal>$in</literal> expands to the list of
+input files (<literal>foo.c</literal>), and <literal>$out</literal> to the output files (<literal>foo.o</literal>) for the
+command.  A full list of special variables is provided in
+<link linkend="ref_rule">the reference</link>.</simpara>
+</section>
+<section id="_build_statements">
+<title>Build statements</title>
+<simpara>Build statements declare a relationship between input and output
+files.  They begin with the <literal>build</literal> keyword, and have the format
+<literal>build <emphasis>outputs</emphasis>: <emphasis>rulename</emphasis> <emphasis>inputs</emphasis></literal>.  Such a declaration says that
+all of the output files are derived from the input files.  When the
+output files are missing or when the inputs change, Ninja will run the
+rule to regenerate the outputs.</simpara>
+<simpara>The basic example above describes how to build <literal>foo.o</literal>, using the <literal>cc</literal>
+rule.</simpara>
+<simpara>In the scope of a <literal>build</literal> block (including in the evaluation of its
+associated <literal>rule</literal>), the variable <literal>$in</literal> is the list of inputs and the
+variable <literal>$out</literal> is the list of outputs.</simpara>
+<simpara>A build statement may be followed by an indented set of <literal>key = value</literal>
+pairs, much like a rule.  These variables will shadow any variables
+when evaluating the variables in the command.  For example:</simpara>
+<screen>cflags = -Wall -Werror
+rule cc
+  command = gcc $cflags -c $in -o $out
+
+# If left unspecified, builds get the outer $cflags.
+build foo.o: cc foo.c
+
+# But you can shadow variables like cflags for a particular build.
+build special.o: cc special.c
+  cflags = -Wall
+
+# The variable was only shadowed for the scope of special.o;
+# Subsequent build lines get the outer (original) cflags.
+build bar.o: cc bar.c</screen>
+<simpara>For more discussion of how scoping works, consult <link linkend="ref_scope">the reference</link>.</simpara>
+<simpara>If you need more complicated information passed from the build
+statement to the rule (for example, if the rule needs "the file
+extension of the first input"), pass that through as an extra
+variable, like how <literal>cflags</literal> is passed above.</simpara>
+<simpara>If the top-level Ninja file is specified as an output of any build
+statement and it is out of date, Ninja will rebuild and reload it
+before building the targets requested by the user.</simpara>
+</section>
+<section id="_generating_ninja_files_from_code">
+<title>Generating Ninja files from code</title>
+<simpara><literal>misc/ninja_syntax.py</literal> in the Ninja distribution is a tiny Python
+module to facilitate generating Ninja files.  It allows you to make
+Python calls like <literal>ninja.rule(name='foo', command='bar',
+depfile='$out.d')</literal> and it will generate the appropriate syntax.  Feel
+free to just inline it into your project&#8217;s build system if it&#8217;s
+useful.</simpara>
+</section>
+</chapter>
+<chapter id="_more_details">
+<title>More details</title>
+<section id="_the_literal_phony_literal_rule">
+<title>The <literal>phony</literal> rule</title>
+<simpara>The special rule name <literal>phony</literal> can be used to create aliases for other
+targets.  For example:</simpara>
+<screen>build foo: phony some/file/in/a/faraway/subdir/foo</screen>
+<simpara>This makes <literal>ninja foo</literal> build the longer path.  Semantically, the
+<literal>phony</literal> rule is equivalent to a plain rule where the <literal>command</literal> does
+nothing, but phony rules are handled specially in that they aren&#8217;t
+printed when run, logged (see below), nor do they contribute to the
+command count printed as part of the build process.</simpara>
+<simpara>When a <literal>phony</literal> target is used as an input to another build rule, the
+other build rule will, semantically, consider the inputs of the
+<literal>phony</literal> rule as its own. Therefore, <literal>phony</literal> rules can be used to group
+inputs, e.g. header files.</simpara>
+<simpara><literal>phony</literal> can also be used to create dummy targets for files which
+may not exist at build time.  If a phony build statement is written
+without any dependencies, the target will be considered out of date if
+it does not exist.  Without a phony build statement, Ninja will report
+an error if the file does not exist and is required by the build.</simpara>
+<simpara>To create a rule that never rebuilds, use a build rule without any input:</simpara>
+<screen>rule touch
+  command = touch $out
+build file_that_always_exists.dummy: touch
+build dummy_target_to_follow_a_pattern: phony file_that_always_exists.dummy</screen>
+</section>
+<section id="_default_target_statements">
+<title>Default target statements</title>
+<simpara>By default, if no targets are specified on the command line, Ninja
+will build every output that is not named as an input elsewhere.
+You can override this behavior using a default target statement.
+A default target statement causes Ninja to build only a given subset
+of output files if none are specified on the command line.</simpara>
+<simpara>Default target statements begin with the <literal>default</literal> keyword, and have
+the format <literal>default <emphasis>targets</emphasis></literal>.  A default target statement must appear
+after the build statement that declares the target as an output file.
+They are cumulative, so multiple statements may be used to extend
+the list of default targets.  For example:</simpara>
+<screen>default foo bar
+default baz</screen>
+<simpara>This causes Ninja to build the <literal>foo</literal>, <literal>bar</literal> and <literal>baz</literal> targets by
+default.</simpara>
+</section>
+<section id="ref_log">
+<title>The Ninja log</title>
+<simpara>For each built file, Ninja keeps a log of the command used to build
+it.  Using this log Ninja can know when an existing output was built
+with a different command line than the build files specify (i.e., the
+command line changed) and knows to rebuild the file.</simpara>
+<simpara>The log file is kept in the build root in a file called <literal>.ninja_log</literal>.
+If you provide a variable named <literal>builddir</literal> in the outermost scope,
+<literal>.ninja_log</literal> will be kept in that directory instead.</simpara>
+</section>
+<section id="ref_versioning">
+<title>Version compatibility</title>
+<simpara><emphasis>Available since Ninja 1.2.</emphasis></simpara>
+<simpara>Ninja version labels follow the standard major.minor.patch format,
+where the major version is increased on backwards-incompatible
+syntax/behavioral changes and the minor version is increased on new
+behaviors.  Your <literal>build.ninja</literal> may declare a variable named
+<literal>ninja_required_version</literal> that asserts the minimum Ninja version
+required to use the generated file.  For example,</simpara>
+<screen>ninja_required_version = 1.1</screen>
+<simpara>declares that the build file relies on some feature that was
+introduced in Ninja 1.1 (perhaps the <literal>pool</literal> syntax), and that
+Ninja 1.1 or greater must be used to build.  Unlike other Ninja
+variables, this version requirement is checked immediately when
+the variable is encountered in parsing, so it&#8217;s best to put it
+at the top of the build file.</simpara>
+<simpara>Ninja always warns if the major versions of Ninja and the
+<literal>ninja_required_version</literal> don&#8217;t match; a major version change hasn&#8217;t
+come up yet so it&#8217;s difficult to predict what behavior might be
+required.</simpara>
+</section>
+<section id="ref_headers">
+<title>C/C++ header dependencies</title>
+<simpara>To get C/C++ header dependencies (or any other build dependency that
+works in a similar way) correct Ninja has some extra functionality.</simpara>
+<simpara>The problem with headers is that the full list of files that a given
+source file depends on can only be discovered by the compiler:
+different preprocessor defines and include paths cause different files
+to be used.  Some compilers can emit this information while building,
+and Ninja can use that to get its dependencies perfect.</simpara>
+<simpara>Consider: if the file has never been compiled, it must be built anyway,
+generating the header dependencies as a side effect.  If any file is
+later modified (even in a way that changes which headers it depends
+on) the modification will cause a rebuild as well, keeping the
+dependencies up to date.</simpara>
+<simpara>When loading these special dependencies, Ninja implicitly adds extra
+build edges such that it is not an error if the listed dependency is
+missing.  This allows you to delete a header file and rebuild without
+the build aborting due to a missing input.</simpara>
+<section id="_depfile">
+<title>depfile</title>
+<simpara><literal>gcc</literal> (and other compilers like <literal>clang</literal>) support emitting dependency
+information in the syntax of a Makefile.  (Any command that can write
+dependencies in this form can be used, not just <literal>gcc</literal>.)</simpara>
+<simpara>To bring this information into Ninja requires cooperation.  On the
+Ninja side, the <literal>depfile</literal> attribute on the <literal>build</literal> must point to a
+path where this data is written.  (Ninja only supports the limited
+subset of the Makefile syntax emitted by compilers.)  Then the command
+must know to write dependencies into the <literal>depfile</literal> path.
+Use it like in the following example:</simpara>
+<screen>rule cc
+  depfile = $out.d
+  command = gcc -MD -MF $out.d [other gcc flags here]</screen>
+<simpara>The <literal>-MD</literal> flag to <literal>gcc</literal> tells it to output header dependencies, and
+the <literal>-MF</literal> flag tells it where to write them.</simpara>
+</section>
+<section id="_deps">
+<title>deps</title>
+<simpara><emphasis>(Available since Ninja 1.3.)</emphasis></simpara>
+<simpara>It turns out that for large projects (and particularly on Windows,
+where the file system is slow) loading these dependency files on
+startup is slow.</simpara>
+<simpara>Ninja 1.3 can instead process dependencies just after they&#8217;re generated
+and save a compacted form of the same information in a Ninja-internal
+database.</simpara>
+<simpara>Ninja supports this processing in two forms.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+<literal>deps = gcc</literal> specifies that the tool outputs <literal>gcc</literal>-style dependencies
+   in the form of Makefiles.  Adding this to the above example will
+   cause Ninja to process the <literal>depfile</literal> immediately after the
+   compilation finishes, then delete the <literal>.d</literal> file (which is only used
+   as a temporary).
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>deps = msvc</literal> specifies that the tool outputs header dependencies
+   in the form produced by the Visual Studio compiler&#8217;s
+   <ulink url="http://msdn.microsoft.com/en-us/library/hdkef6tk(v=vs.90).aspx"><literal>/showIncludes</literal>
+   flag</ulink>.  Briefly, this means the tool outputs specially-formatted lines
+   to its stdout.  Ninja then filters these lines from the displayed
+   output.  No <literal>depfile</literal> attribute is necessary, but the localized string
+   in front of the header file path should be globally defined. For instance,
+   <literal>msvc_deps_prefix = Note: including file:</literal>
+   for an English Visual Studio (the default).
+</simpara>
+<screen>msvc_deps_prefix = Note: including file:
+rule cc
+  deps = msvc
+  command = cl /showIncludes -c $in /Fo$out</screen>
+</listitem>
+</orderedlist>
+<simpara>If the include directory directives are using absolute paths, your depfile
+may result in a mixture of relative and absolute paths. Paths used by other
+build rules need to match exactly. Therefore, it is recommended to use
+relative paths in these cases.</simpara>
+</section>
+</section>
+<section id="ref_pool">
+<title>Pools</title>
+<simpara><emphasis>Available since Ninja 1.1.</emphasis></simpara>
+<simpara>Pools allow you to allocate one or more rules or edges a finite number
+of concurrent jobs which is more tightly restricted than the default
+parallelism.</simpara>
+<simpara>This can be useful, for example, to restrict a particular expensive rule
+(like link steps for huge executables), or to restrict particular build
+statements which you know perform poorly when run concurrently.</simpara>
+<simpara>Each pool has a <literal>depth</literal> variable which is specified in the build file.
+The pool is then referred to with the <literal>pool</literal> variable on either a rule
+or a build statement.</simpara>
+<simpara>No matter what pools you specify, ninja will never run more concurrent jobs
+than the default parallelism, or the number of jobs specified on the command
+line (with <literal>-j</literal>).</simpara>
+<screen># No more than 4 links at a time.
+pool link_pool
+  depth = 4
+
+# No more than 1 heavy object at a time.
+pool heavy_object_pool
+  depth = 1
+
+rule link
+  ...
+  pool = link_pool
+
+rule cc
+  ...
+
+# The link_pool is used here. Only 4 links will run concurrently.
+build foo.exe: link input.obj
+
+# A build statement can be exempted from its rule's pool by setting an
+# empty pool. This effectively puts the build statement back into the default
+# pool, which has infinite depth.
+build other.exe: link input.obj
+  pool =
+
+# A build statement can specify a pool directly.
+# Only one of these builds will run at a time.
+build heavy_object1.obj: cc heavy_obj1.cc
+  pool = heavy_object_pool
+build heavy_object2.obj: cc heavy_obj2.cc
+  pool = heavy_object_pool</screen>
+<section id="_the_literal_console_literal_pool">
+<title>The <literal>console</literal> pool</title>
+<simpara><emphasis>Available since Ninja 1.5.</emphasis></simpara>
+<simpara>There exists a pre-defined pool named <literal>console</literal> with a depth of 1. It has
+the special property that any task in the pool has direct access to the
+standard input, output and error streams provided to Ninja, which are
+normally connected to the user&#8217;s console (hence the name) but could be
+redirected. This can be useful for interactive tasks or long-running tasks
+which produce status updates on the console (such as test suites).</simpara>
+<simpara>While a task in the <literal>console</literal> pool is running, Ninja&#8217;s regular output (such
+as progress status and output from concurrent tasks) is buffered until
+it completes.</simpara>
+</section>
+</section>
+</chapter>
+<chapter id="ref_ninja_file">
+<title>Ninja file reference</title>
+<simpara>A file is a series of declarations.  A declaration can be one of:</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+A rule declaration, which begins with <literal>rule <emphasis>rulename</emphasis></literal>, and
+   then has a series of indented lines defining variables.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+A build edge, which looks like <literal>build <emphasis>output1</emphasis> <emphasis>output2</emphasis>:
+   <emphasis>rulename</emphasis> <emphasis>input1</emphasis> <emphasis>input2</emphasis></literal>.<?asciidoc-br?>
+   Implicit dependencies may be tacked on the end with <literal>|
+   <emphasis>dependency1</emphasis> <emphasis>dependency2</emphasis></literal>.<?asciidoc-br?>
+   Order-only dependencies may be tacked on the end with <literal>||
+   <emphasis>dependency1</emphasis> <emphasis>dependency2</emphasis></literal>.  (See <link linkend="ref_dependencies">the reference on    dependency types</link>.)
+   Validations may be tacked on the end with <literal>|@ <emphasis>validation1</emphasis> <emphasis>validation2</emphasis></literal>.
+   (See <link linkend="validations">the reference on validations</link>.)
+</simpara>
+<simpara>Implicit outputs <emphasis>(available since Ninja 1.7)</emphasis> may be added before
+the <literal>:</literal> with <literal>| <emphasis>output1</emphasis> <emphasis>output2</emphasis></literal> and do not appear in <literal>$out</literal>.
+(See <link linkend="ref_outputs">the reference on output types</link>.)</simpara>
+</listitem>
+<listitem>
+<simpara>
+Variable declarations, which look like <literal><emphasis>variable</emphasis> = <emphasis>value</emphasis></literal>.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Default target statements, which look like <literal>default <emphasis>target1</emphasis> <emphasis>target2</emphasis></literal>.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+References to more files, which look like <literal>subninja <emphasis>path</emphasis></literal> or
+   <literal>include <emphasis>path</emphasis></literal>.  The difference between these is explained below
+   <link linkend="ref_scope">in the discussion about scoping</link>.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+A pool declaration, which looks like <literal>pool <emphasis>poolname</emphasis></literal>. Pools are explained
+   <link linkend="ref_pool">in the section on pools</link>.
+</simpara>
+</listitem>
+</orderedlist>
+<section id="ref_lexer">
+<title>Lexical syntax</title>
+<simpara>Ninja is mostly encoding agnostic, as long as the bytes Ninja cares
+about (like slashes in paths) are ASCII.  This means e.g. UTF-8 or
+ISO-8859-1 input files ought to work.</simpara>
+<simpara>Comments begin with <literal>#</literal> and extend to the end of the line.</simpara>
+<simpara>Newlines are significant.  Statements like <literal>build foo bar</literal> are a set
+of space-separated tokens that end at the newline.  Newlines and
+spaces within a token must be escaped.</simpara>
+<simpara>There is only one escape character, <literal>$</literal>, and it has the following
+behaviors:</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<literal>$</literal> followed by a newline
+</term>
+<listitem>
+<simpara>
+escape the newline (continue the current line
+across a line break).
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>$</literal> followed by text
+</term>
+<listitem>
+<simpara>
+a variable reference.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>${varname}</literal>
+</term>
+<listitem>
+<simpara>
+alternate syntax for <literal>$varname</literal>.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>$</literal> followed by space
+</term>
+<listitem>
+<simpara>
+a space.  (This is only necessary in lists of
+paths, where a space would otherwise separate filenames.  See below.)
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>$:</literal> 
+</term>
+<listitem>
+<simpara>
+a colon.  (This is only necessary in <literal>build</literal> lines, where a colon
+would otherwise terminate the list of outputs.)
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>$$</literal>
+</term>
+<listitem>
+<simpara>
+a literal <literal>$</literal>.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>A <literal>build</literal> or <literal>default</literal> statement is first parsed as a space-separated
+list of filenames and then each name is expanded.  This means that
+spaces within a variable will result in spaces in the expanded
+filename.</simpara>
+<screen>spaced = foo bar
+build $spaced/baz other$ file: ...
+# The above build line has two outputs: "foo bar/baz" and "other file".</screen>
+<simpara>In a <literal>name = value</literal> statement, whitespace at the beginning of a value
+is always stripped.  Whitespace at the beginning of a line after a
+line continuation is also stripped.</simpara>
+<screen>two_words_with_one_space = foo $
+    bar
+one_word_with_no_space = foo$
+    bar</screen>
+<simpara>Other whitespace is only significant if it&#8217;s at the beginning of a
+line.  If a line is indented more than the previous one, it&#8217;s
+considered part of its parent&#8217;s scope; if it is indented less than the
+previous one, it closes the previous scope.</simpara>
+</section>
+<section id="ref_toplevel">
+<title>Top-level variables</title>
+<simpara>Two variables are significant when declared in the outermost file scope.</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<literal>builddir</literal>
+</term>
+<listitem>
+<simpara>
+a directory for some Ninja output files.  See <link linkend="ref_log">the   discussion of the build log</link>.  (You can also store other build output
+  in this directory.)
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>ninja_required_version</literal>
+</term>
+<listitem>
+<simpara>
+the minimum version of Ninja required to process
+  the build correctly.  See <link linkend="ref_versioning">the discussion of versioning</link>.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section id="ref_rule">
+<title>Rule variables</title>
+<simpara>A <literal>rule</literal> block contains a list of <literal>key = value</literal> declarations that
+affect the processing of the rule.  Here is a full list of special
+keys.</simpara>
+<variablelist>
+<varlistentry>
+<term>
+<literal>command</literal> (<emphasis>required</emphasis>)
+</term>
+<listitem>
+<simpara>
+the command line to run.  Each <literal>rule</literal> may
+  have only one <literal>command</literal> declaration. See <link linkend="ref_rule_command">the next   section</link> for more details on quoting and executing multiple commands.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>depfile</literal>
+</term>
+<listitem>
+<simpara>
+path to an optional <literal>Makefile</literal> that contains extra
+  <emphasis>implicit dependencies</emphasis> (see <link linkend="ref_dependencies">the reference on   dependency types</link>).  This is explicitly to support C/C++ header
+  dependencies; see <link linkend="ref_headers">the full discussion</link>.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>deps</literal>
+</term>
+<listitem>
+<simpara>
+<emphasis>(Available since Ninja 1.3.)</emphasis> if present, must be one of
+  <literal>gcc</literal> or <literal>msvc</literal> to specify special dependency processing.  See
+   <link linkend="ref_headers">the full discussion</link>.  The generated database is
+   stored as <literal>.ninja_deps</literal> in the <literal>builddir</literal>, see <link linkend="ref_toplevel">the    discussion of <literal>builddir</literal></link>.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>msvc_deps_prefix</literal>
+</term>
+<listitem>
+<simpara>
+<emphasis>(Available since Ninja 1.5.)</emphasis> defines the string
+  which should be stripped from msvc&#8217;s /showIncludes output. Only
+  needed when <literal>deps = msvc</literal> and no English Visual Studio version is used.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>description</literal>
+</term>
+<listitem>
+<simpara>
+a short description of the command, used to pretty-print
+  the command as it&#8217;s running.  The <literal>-v</literal> flag controls whether to print
+  the full command or its description; if a command fails, the full command
+  line will always be printed before the command&#8217;s output.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>dyndep</literal>
+</term>
+<listitem>
+<simpara>
+<emphasis>(Available since Ninja 1.10.)</emphasis> Used only on build statements.
+  If present, must name one of the build statement inputs.  Dynamically
+  discovered dependency information will be loaded from the file.
+  See the <link linkend="ref_dyndep">dynamic dependencies</link> section for details.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>generator</literal>
+</term>
+<listitem>
+<simpara>
+if present, specifies that this rule is used to
+  re-invoke the generator program.  Files built using <literal>generator</literal>
+  rules are treated specially in two ways: firstly, they will not be
+  rebuilt if the command line changes; and secondly, they are not
+  cleaned by default.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>in</literal>
+</term>
+<listitem>
+<simpara>
+the space-separated list of files provided as inputs to the build line
+  referencing this <literal>rule</literal>, shell-quoted if it appears in commands.  (<literal>$in</literal> is
+  provided solely for convenience; if you need some subset or variant of this
+  list of files, just construct a new variable with that list and use
+  that instead.)
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>in_newline</literal>
+</term>
+<listitem>
+<simpara>
+the same as <literal>$in</literal> except that multiple inputs are
+  separated by newlines rather than spaces.  (For use with
+  <literal>$rspfile_content</literal>; this works around a bug in the MSVC linker where
+  it uses a fixed-size buffer for processing input.)
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>out</literal>
+</term>
+<listitem>
+<simpara>
+the space-separated list of files provided as outputs to the build line
+  referencing this <literal>rule</literal>, shell-quoted if it appears in commands.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>restat</literal>
+</term>
+<listitem>
+<simpara>
+if present, causes Ninja to re-stat the command&#8217;s outputs
+  after execution of the command.  Each output whose modification time
+  the command did not change will be treated as though it had never
+  needed to be built.  This may cause the output&#8217;s reverse
+  dependencies to be removed from the list of pending build actions.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>rspfile</literal>, <literal>rspfile_content</literal>
+</term>
+<listitem>
+<simpara>
+if present (both), Ninja will use a
+  response file for the given command, i.e. write the selected string
+  (<literal>rspfile_content</literal>) to the given file (<literal>rspfile</literal>) before calling the
+  command and delete the file after successful execution of the
+  command.
+</simpara>
+<simpara>This is particularly useful on Windows OS, where the maximal length of
+a command line is limited and response files must be used instead.</simpara>
+<simpara>Use it like in the following example:</simpara>
+<screen>rule link
+  command = link.exe /OUT$out [usual link flags here] @$out.rsp
+  rspfile = $out.rsp
+  rspfile_content = $in
+
+build myapp.exe: link a.obj b.obj [possibly many other .obj files]</screen>
+</listitem>
+</varlistentry>
+</variablelist>
+<section id="ref_rule_command">
+<title>Interpretation of the <literal>command</literal> variable</title>
+<simpara>Fundamentally, command lines behave differently on Unixes and Windows.</simpara>
+<simpara>On Unixes, commands are arrays of arguments.  The Ninja <literal>command</literal>
+variable is passed directly to <literal>sh -c</literal>, which is then responsible for
+interpreting that string into an argv array.  Therefore, the quoting
+rules are those of the shell, and you can use all the normal shell
+operators, like <literal>&amp;&amp;</literal> to chain multiple commands, or <literal>VAR=value cmd</literal> to
+set environment variables.</simpara>
+<simpara>On Windows, commands are strings, so Ninja passes the <literal>command</literal> string
+directly to <literal>CreateProcess</literal>.  (In the common case of simply executing
+a compiler this means there is less overhead.)  Consequently, the
+quoting rules are determined by the called program, which on Windows
+are usually provided by the C library.  If you need shell
+interpretation of the command (such as the use of <literal>&amp;&amp;</literal> to chain
+multiple commands), make the command execute the Windows shell by
+prefixing the command with <literal>cmd /c</literal>. Ninja may error with "invalid parameter"
+which usually indicates that the command line length has been exceeded.</simpara>
+</section>
+</section>
+<section id="ref_outputs">
+<title>Build outputs</title>
+<simpara>There are two types of build outputs which are subtly different.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+<emphasis>Explicit outputs</emphasis>, as listed in a build line.  These are
+   available as the <literal>$out</literal> variable in the rule.
+</simpara>
+<simpara>This is the standard form of output to be used for e.g. the
+object file of a compile command.</simpara>
+</listitem>
+<listitem>
+<simpara>
+<emphasis>Implicit outputs</emphasis>, as listed in a build line with the syntax <literal>|
+   <emphasis>out1</emphasis> <emphasis>out2</emphasis></literal> before the <literal>:</literal> of a build line <emphasis>(available since
+   Ninja 1.7)</emphasis>.  The semantics are identical to explicit outputs,
+  the only difference is that implicit outputs don&#8217;t show up in the
+  <literal>$out</literal> variable.
+</simpara>
+<simpara>This is for expressing outputs that don&#8217;t show up on the
+command line of the command.</simpara>
+</listitem>
+</orderedlist>
+</section>
+<section id="ref_dependencies">
+<title>Build dependencies</title>
+<simpara>There are three types of build dependencies which are subtly different.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+<emphasis>Explicit dependencies</emphasis>, as listed in a build line.  These are
+   available as the <literal>$in</literal> variable in the rule.  Changes in these files
+   cause the output to be rebuilt; if these files are missing and
+   Ninja doesn&#8217;t know how to build them, the build is aborted.
+</simpara>
+<simpara>This is the standard form of dependency to be used e.g. for the
+source file of a compile command.</simpara>
+</listitem>
+<listitem>
+<simpara>
+<emphasis>Implicit dependencies</emphasis>, either as picked up from
+   a <literal>depfile</literal> attribute on a rule or from the syntax <literal>| <emphasis>dep1</emphasis>
+   <emphasis>dep2</emphasis></literal> on the end of a build line.  The semantics are identical to
+   explicit dependencies, the only difference is that implicit dependencies
+   don&#8217;t show up in the <literal>$in</literal> variable.
+</simpara>
+<simpara>This is for expressing dependencies that don&#8217;t show up on the
+command line of the command; for example, for a rule that runs a
+script that reads a hardcoded file, the hardcoded file should
+be an implicit dependency, as changes to the file should cause
+the output to rebuild, even though it doesn&#8217;t show up in the arguments.</simpara>
+<simpara>Note that dependencies as loaded through depfiles have slightly different
+semantics, as described in the <link linkend="ref_rule">rule reference</link>.</simpara>
+</listitem>
+<listitem>
+<simpara>
+<emphasis>Order-only dependencies</emphasis>, expressed with the syntax <literal>|| <emphasis>dep1</emphasis>
+   <emphasis>dep2</emphasis></literal> on the end of a build line.  When these are out of date, the
+   output is not rebuilt until they are built, but changes in order-only
+   dependencies alone do not cause the output to be rebuilt.
+</simpara>
+<simpara>Order-only dependencies can be useful for bootstrapping dependencies
+that are only discovered during build time: for example, to generate a
+header file before starting a subsequent compilation step.  (Once the
+header is used in compilation, a generated dependency file will then
+express the implicit dependency.)</simpara>
+</listitem>
+</orderedlist>
+<simpara>File paths are compared as is, which means that an absolute path and a
+relative path, pointing to the same file, are considered different by Ninja.</simpara>
+</section>
+<section id="validations">
+<title>Validations</title>
+<simpara><emphasis>Available since Ninja 1.11.</emphasis></simpara>
+<simpara>Validations listed on the build line cause the specified files to be
+added to the top level of the build graph (as if they were specified
+on the Ninja command line) whenever the build line is a transitive
+dependency of one of the targets specified on the command line or a
+default target.</simpara>
+<simpara>Validations are added to the build graph regardless of whether the output
+files of the build statement are dirty are not, and the dirty state of
+the build statement that outputs the file being used as a validation
+has no effect on the dirty state of the build statement that requested it.</simpara>
+<simpara>A build edge can list another build edge as a validation even if the second
+edge depends on the first.</simpara>
+<simpara>Validations are designed to handle rules that perform error checking but
+don&#8217;t produce any artifacts needed by the build, for example, static
+analysis tools.  Marking the static analysis rule as an implicit input
+of the main build rule of the source files or of the rules that depend
+on the main build rule would slow down the critical path of the build,
+but using a validation would allow the build to proceed in parallel with
+the static analysis rule once the main build rule is complete.</simpara>
+</section>
+<section id="_variable_expansion">
+<title>Variable expansion</title>
+<simpara>Variables are expanded in paths (in a <literal>build</literal> or <literal>default</literal> statement)
+and on the right side of a <literal>name = value</literal> statement.</simpara>
+<simpara>When a <literal>name = value</literal> statement is evaluated, its right-hand side is
+expanded immediately (according to the below scoping rules), and
+from then on <literal>$name</literal> expands to the static string as the result of the
+expansion.  It is never the case that you&#8217;ll need to "double-escape" a
+value to prevent it from getting expanded twice.</simpara>
+<simpara>All variables are expanded immediately as they&#8217;re encountered in parsing,
+with one important exception: variables in <literal>rule</literal> blocks are expanded
+when the rule is <emphasis>used</emphasis>, not when it is declared.  In the following
+example, the <literal>demo</literal> rule prints "this is a demo of bar".</simpara>
+<screen>rule demo
+  command = echo "this is a demo of $foo"
+
+build out: demo
+  foo = bar</screen>
+</section>
+<section id="ref_scope">
+<title>Evaluation and scoping</title>
+<simpara>Top-level variable declarations are scoped to the file they occur in.</simpara>
+<simpara>Rule declarations are also scoped to the file they occur in.
+<emphasis>(Available since Ninja 1.6)</emphasis></simpara>
+<simpara>The <literal>subninja</literal> keyword, used to include another <literal>.ninja</literal> file,
+introduces a new scope.  The included <literal>subninja</literal> file may use the
+variables and rules from the parent file, and shadow their values for the file&#8217;s
+scope, but it won&#8217;t affect values of the variables in the parent.</simpara>
+<simpara>To include another <literal>.ninja</literal> file in the current scope, much like a C
+<literal>#include</literal> statement, use <literal>include</literal> instead of <literal>subninja</literal>.</simpara>
+<simpara>Variable declarations indented in a <literal>build</literal> block are scoped to the
+<literal>build</literal> block.  The full lookup order for a variable expanded in a
+<literal>build</literal> block (or the <literal>rule</literal> is uses) is:</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+Special built-in variables (<literal>$in</literal>, <literal>$out</literal>).
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Build-level variables from the <literal>build</literal> block.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Rule-level variables from the <literal>rule</literal> block (i.e. <literal>$command</literal>).
+   (Note from the above discussion on expansion that these are
+   expanded "late", and may make use of in-scope bindings like <literal>$in</literal>.)
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+File-level variables from the file that the <literal>build</literal> line was in.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Variables from the file that included that file using the
+   <literal>subninja</literal> keyword.
+</simpara>
+</listitem>
+</orderedlist>
+</section>
+</chapter>
+<chapter id="ref_dyndep">
+<title>Dynamic Dependencies</title>
+<simpara><emphasis>Available since Ninja 1.10.</emphasis></simpara>
+<simpara>Some use cases require implicit dependency information to be dynamically
+discovered from source file content <emphasis>during the build</emphasis> in order to build
+correctly on the first run (e.g. Fortran module dependencies).  This is
+unlike <link linkend="ref_headers">header dependencies</link> which are only needed on the
+second run and later to rebuild correctly.  A build statement may have a
+<literal>dyndep</literal> binding naming one of its inputs to specify that dynamic
+dependency information must be loaded from the file.  For example:</simpara>
+<screen>build out: ... || foo
+  dyndep = foo
+build foo: ...</screen>
+<simpara>This specifies that file <literal>foo</literal> is a dyndep file.  Since it is an input,
+the build statement for <literal>out</literal> can never be executed before <literal>foo</literal> is built.
+As soon as <literal>foo</literal> is finished Ninja will read it to load dynamically
+discovered dependency information for <literal>out</literal>.  This may include additional
+implicit inputs and/or outputs.  Ninja will update the build graph
+accordingly and the build will proceed as if the information was known
+originally.</simpara>
+<section id="_dyndep_file_reference">
+<title>Dyndep file reference</title>
+<simpara>Files specified by <literal>dyndep</literal> bindings use the same <link linkend="ref_lexer">lexical syntax</link>
+as <link linkend="ref_ninja_file">ninja build files</link> and have the following layout.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+A version number in the form <literal>&lt;major&gt;[.&lt;minor&gt;][&lt;suffix&gt;]</literal>:
+</simpara>
+<screen>ninja_dyndep_version = 1</screen>
+<simpara>Currently the version number must always be <literal>1</literal> or <literal>1.0</literal> but may have
+an arbitrary suffix.</simpara>
+</listitem>
+<listitem>
+<simpara>
+One or more build statements of the form:
+</simpara>
+<screen>build out | imp-outs... : dyndep | imp-ins...</screen>
+<simpara>Every statement must specify exactly one explicit output and must use
+the rule name <literal>dyndep</literal>.  The <literal>| imp-outs...</literal> and <literal>| imp-ins...</literal> portions
+are optional.</simpara>
+</listitem>
+<listitem>
+<simpara>
+An optional <literal>restat</literal> <link linkend="ref_rule">variable binding</link> on each build statement.
+</simpara>
+</listitem>
+</orderedlist>
+<simpara>The build statements in a dyndep file must have a one-to-one correspondence
+to build statements in the <link linkend="ref_ninja_file">ninja build file</link> that name the
+dyndep file in a <literal>dyndep</literal> binding.  No dyndep build statement may be omitted
+and no extra build statements may be specified.</simpara>
+</section>
+<section id="_dyndep_examples">
+<title>Dyndep Examples</title>
+<section id="_fortran_modules">
+<title>Fortran Modules</title>
+<simpara>Consider a Fortran source file <literal>foo.f90</literal> that provides a module
+<literal>foo.mod</literal> (an implicit output of compilation) and another source file
+<literal>bar.f90</literal> that uses the module (an implicit input of compilation).  This
+implicit dependency must be discovered before we compile either source
+in order to ensure that <literal>bar.f90</literal> never compiles before <literal>foo.f90</literal>, and
+that <literal>bar.f90</literal> recompiles when <literal>foo.mod</literal> changes.  We can achieve this
+as follows:</simpara>
+<screen>rule f95
+  command = f95 -o $out -c $in
+rule fscan
+  command = fscan -o $out $in
+
+build foobar.dd: fscan foo.f90 bar.f90
+
+build foo.o: f95 foo.f90 || foobar.dd
+  dyndep = foobar.dd
+build bar.o: f95 bar.f90 || foobar.dd
+  dyndep = foobar.dd</screen>
+<simpara>In this example the order-only dependencies ensure that <literal>foobar.dd</literal> is
+generated before either source compiles.  The hypothetical <literal>fscan</literal> tool
+scans the source files, assumes each will be compiled to a <literal>.o</literal> of the
+same name, and writes <literal>foobar.dd</literal> with content such as:</simpara>
+<screen>ninja_dyndep_version = 1
+build foo.o | foo.mod: dyndep
+build bar.o: dyndep |  foo.mod</screen>
+<simpara>Ninja will load this file to add <literal>foo.mod</literal> as an implicit output of
+<literal>foo.o</literal> and implicit input of <literal>bar.o</literal>.  This ensures that the Fortran
+sources are always compiled in the proper order and recompiled when
+needed.</simpara>
+</section>
+<section id="_tarball_extraction">
+<title>Tarball Extraction</title>
+<simpara>Consider a tarball <literal>foo.tar</literal> that we want to extract.  The extraction time
+can be recorded with a <literal>foo.tar.stamp</literal> file so that extraction repeats if
+the tarball changes, but we also would like to re-extract if any of the
+outputs is missing.  However, the list of outputs depends on the content
+of the tarball and cannot be spelled out explicitly in the ninja build file.
+We can achieve this as follows:</simpara>
+<screen>rule untar
+  command = tar xf $in &amp;&amp; touch $out
+rule scantar
+  command = scantar --stamp=$stamp --dd=$out $in
+build foo.tar.dd: scantar foo.tar
+  stamp = foo.tar.stamp
+build foo.tar.stamp: untar foo.tar || foo.tar.dd
+  dyndep = foo.tar.dd</screen>
+<simpara>In this example the order-only dependency ensures that <literal>foo.tar.dd</literal> is
+built before the tarball extracts.  The hypothetical <literal>scantar</literal> tool
+will read the tarball (e.g. via <literal>tar tf</literal>) and write <literal>foo.tar.dd</literal> with
+content such as:</simpara>
+<screen>ninja_dyndep_version = 1
+build foo.tar.stamp | file1.txt file2.txt : dyndep
+  restat = 1</screen>
+<simpara>Ninja will load this file to add <literal>file1.txt</literal> and <literal>file2.txt</literal> as implicit
+outputs of <literal>foo.tar.stamp</literal>, and to mark the build statement for <literal>restat</literal>.
+On future builds, if any implicit output is missing the tarball will be
+extracted again.  The <literal>restat</literal> binding tells Ninja to tolerate the fact
+that the implicit outputs may not have modification times newer than
+the tarball itself (avoiding re-extraction on every build).</simpara>
+</section>
+</section>
+</chapter>
+</book>

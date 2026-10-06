@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-02T18:02:27.381Z",
+  "status": "failed",
+  "scope": "Ninja English conversion trial full builtarticle vs HTML5: body/code/links/IDs/nativeTOC. Not rawsource content review, translation, browser UI, fresh dependency install, adoption or publication.",
+  "checks": [
+    {
+      "name": "wholebody",
+      "status": "passed"
+    },
+    {
+      "name": "31orderedcodeblocks",
+      "status": "failed",
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  [\n    'ninja -t browse --port=8000 --no-browser mytarget',\n    'ninja -t graph mytarget | dot -Tpng -ograph.png',\n    '<target> <delimiter> <input> <terminator>',\n    '',\n...\n      'rule cc\\n' +\n+     'command = gcc $cflags -c $in -o $out\\n' +\n-     '  command = gcc $cflags -c $in -o $out\\n' +\n      '\\n' +\n      'build foo.o: cc foo.c',\n    'cflags = -g',\n+   'rule cc\\ncommand = gcc $cflags -c $in -o $out',\n-   'rule cc\\n  command = gcc $cflags -c $in -o $out',\n    'cflags = -Wall -Werror\\n' +\n      'rule cc\\n' +\n+     'command = gcc $cflags -c $in -o $out\\n' +\n-     '  command = gcc $cflags -c $in -o $out\\n'"
+    },
+    {
+      "name": "orderedlinks",
+      "status": "passed"
+    },
+    {
+      "name": "explicitsourceIDs",
+      "status": "passed"
+    },
+    {
+      "name": "nativeTOC2allheadings",
+      "status": "failed",
+      "error": "Expected values to be strictly equal:\n\n0 !== 2\n"
+    }
+  ],
+  "headings": 41,
+  "codes": 31,
+  "builtRoutes": 6
+}

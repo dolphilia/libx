@@ -1,0 +1,2167 @@
+   APIリファレンス
+
+{fmt}ライブラリのAPIは、次の構成要素からなります。
+
+
+fmt/base.h：C++20のコンパイル時チェックと最小限の依存関係を備えた、char/UTF-8向けの主要な書式設定関数を提供する基本API
+
+fmt/format.h：fmt::formatなどの書式設定関数とロケールサポート
+
+fmt/ranges.h：範囲とタプルの書式設定
+
+fmt/chrono.h：日付と時刻の書式設定
+
+fmt/std.h：標準ライブラリ型のフォーマッター
+
+fmt/compile.h：書式文字列のコンパイル
+
+fmt/color.h：端末の色とテキストスタイル
+
+fmt/os.h：システムAPI
+
+fmt/ostream.h：std::ostreamのサポート
+
+fmt/args.h：動的な引数リスト
+
+fmt/printf.h：安全なprintf
+
+fmt/xchar.h：任意で利用できるwchar_tサポート
+
+
+ライブラリが提供するすべての関数と型はfmt名前空間に置かれ、マクロにはFMT_接頭辞が付きます。
+
+C++モジュールAPI
+
+C++モジュールAPIを使う場合、上に挙げたヘッダーをインクルードする必要はありません。代わりにimport fmt;文を使えます。以下で説明するその他の機能はすべて同じです。
+
+基本API
+
+fmt/base.hは、C++20のコンパイル時チェックを備えたchar/UTF-8向けの主要な書式設定関数を提供する基本APIを定義します。コンパイル時間を短くするため、インクルードする依存ヘッダーを最小限に抑えています。このヘッダーの利点が得られるのは、{fmt}を既定のライブラリ形式で使う場合だけで、ヘッダーのみのモードではありません。また、次の型に対するformatterの特殊化も提供します。
+
+
+int, long long
+
+unsigned, unsigned long long
+
+float, double, long double
+
+bool
+
+char
+
+const char*, fmt::string_view
+
+const void*
+
+
+次の関数は、Pythonのstr.formatに似た書式文字列の構文を使います。fmtとargsを引数として受け取ります。
+
+fmtは、通常のテキストと、波括弧{}で囲まれた置換フィールドを含む書式文字列です。結果の文字列では、フィールドが書式設定された引数に置き換わります。fmt::format_stringは、文字列リテラルまたはconstexpr文字列から暗黙に構築できる書式文字列で、C++20ではコンパイル時に検査されます。実行時の書式文字列を渡すには、fmt::runtimeで包みます。
+
+argsは、書式設定するオブジェクトを表す引数リストです。
+
+別途指定されていない限り、入出力エラーはstd::system_error例外として報告されます。
+
+
+
+
+```
+template <typename... T>
+void print(format_string<T...> fmt, T&&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、出力をstdoutに書き込みます。
+
+例：
+
+```
+fmt::print("The answer is {}.", 42);
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename... T>
+void print(FILE* f, format_string<T...> fmt, T&&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、出力をファイルfに書き込みます。
+
+例：
+
+```
+fmt::print(stderr, "Don't {}!", "panic");
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename... T>
+void println(format_string<T...> fmt, T&&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、出力をstdoutに書き込んでから改行を出力します。
+
+        
+
+
+
+
+
+
+```
+template <typename... T>
+void println(FILE* f, format_string<T...> fmt, T&&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、出力をファイルfに書き込んでから改行を出力します。
+
+        
+
+
+
+
+
+
+```
+template <typename OutputIt, typename... T>
+remove_cvref_t<OutputIt> format_to(OutputIt&& out, format_string<T...> fmt, T&&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、結果を出力イテレーターoutに書き込み、出力範囲の終端の次を指すイテレーターを返します。format_toは終端のヌル文字を追加しません。
+
+例：
+
+```
+auto out = std::vector<char>();
+fmt::format_to(std::back_inserter(out), "{}", 42);
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename OutputIt, typename... T>
+format_to_n_result<OutputIt> format_to_n(OutputIt out, size_t n, format_string<T...> fmt, T&&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、結果のうち最大n文字を出力イテレーターoutに書き込みます。切り詰める前の出力全体のサイズと、出力範囲の終端の次を指すイテレーターを返します。format_to_nは終端のヌル文字を追加しません。
+
+        
+
+
+
+
+
+
+```
+template <typename OutputIt>
+struct format_to_n_result;
+```
+
+
+
+
+
+```
+OutputIt out;
+```
+
+
+出力範囲の終端の次を指すイテレーター。
+
+        
+
+
+
+
+
+```
+size_t size;
+```
+
+
+切り詰める前の出力全体のサイズ。
+
+        
+
+
+
+
+
+
+
+
+
+
+```
+template <typename... T>
+size_t formatted_size(format_string<T...> fmt, T&&... args);
+```
+
+
+
+format(fmt, args...)の出力に含まれる文字数を返します。
+
+        
+
+
+
+
+
+ユーザー定義型の書式設定
+
+{fmt}ライブラリは、多くの標準C++型に対するフォーマッターを提供します。std::vectorなどの標準コンテナーを含む範囲とタプルについてはfmt/ranges.h、日付と時刻の書式設定についてはfmt/chrono.h、その他の標準ライブラリ型についてはfmt/std.hを参照してください。
+
+ユーザー定義型を書式設定可能にする方法は2つあります。format_as関数を提供する方法と、formatter構造体テンプレートを特殊化する方法です。void型以外を指すポインター型の書式設定は意図的に禁止されており、どちらの拡張APIを使っても書式設定可能にはできません。
+
+型を別の型として、同じ書式指定子で書式設定可能にしたい場合は、format_asを使います。format_as関数は、その型のオブジェクトを受け取り、書式設定可能な型のオブジェクトを返すようにします。この関数は、対象の型と同じ名前空間に定義するようにします。
+
+例（実行）：
+
+
+```
+#include <fmt/format.h>
+
+namespace kevin_namespacy {
+
+enum class film {
+  house_of_cards, american_beauty, se7en = 7
+};
+
+auto format_as(film f) { return fmt::underlying(f); }
+
+}
+
+int main() {
+  fmt::print("{}\n", kevin_namespacy::film::se7en); // Output: 7
+}
+```
+
+特殊化を使う方法はより複雑ですが、解析と書式設定を完全に制御できます。この方法を使うには、対象の型についてformatter構造体テンプレートを特殊化し、parseメソッドとformatメソッドを実装します。
+
+フォーマッターの定義では、継承またはコンポジションによって既存のフォーマッターを再利用する方法が推奨されます。こうすると、標準の書式指定子を自分で実装せずにサポートできます。例：
+
+
+```
+// color.h:
+#include <fmt/base.h>
+
+enum class color {red, green, blue};
+
+template <> struct fmt::formatter<color>: formatter<string_view> {
+  // parse is inherited from formatter<string_view>.
+
+  auto format(color c, format_context& ctx) const
+    -> format_context::iterator;
+};
+
+```
+
+
+```
+// color.cc:
+#include "color.h"
+#include <fmt/format.h>
+
+auto fmt::formatter<color>::format(color c, format_context& ctx) const
+    -> format_context::iterator {
+  string_view name = "unknown";
+  switch (c) {
+  case color::red:   name = "red"; break;
+  case color::green: name = "green"; break;
+  case color::blue:  name = "blue"; break;
+  }
+  return formatter<string_view>::format(name, ctx);
+}
+
+```
+
+formatter<string_view>::formatはfmt/format.hに定義されているため、このヘッダーをソースファイルにインクルードする必要があります。parseはformatter<string_view>から継承されるので、文字列の書式指定をすべて認識します。たとえば、
+
+
+```
+fmt::format("{:>10}", color::blue)
+
+```
+
+は"      blue"を返します。
+
+一般に、フォーマッターは次の形を取ります。
+
+
+```
+template <> struct fmt::formatter<T> {
+  // Parses format specifiers and stores them in the formatter.
+  //
+  // [ctx.begin(), ctx.end()) is a, possibly empty, character range that
+  // contains a part of the format string starting from the format
+  // specifications to be parsed, e.g. in
+  //
+  //   fmt::format("{:f} continued", ...);
+  //
+  // the range will contain "f} continued". The formatter should parse
+  // specifiers until '}' or the end of the range. In this example the
+  // formatter should parse the 'f' specifier and return an iterator
+  // pointing to '}'.
+  constexpr auto parse(format_parse_context& ctx)
+    -> format_parse_context::iterator;
+
+  // Formats value using the parsed format specification stored in this
+  // formatter and writes the output to ctx.out().
+  auto format(const T& value, format_context& ctx) const
+    -> format_context::iterator;
+};
+```
+
+少なくとも、オブジェクト全体に適用され、標準フォーマッターと同じ意味を持つfill、align、widthをサポートすることが推奨されます。
+
+クラス階層に対するフォーマッターも記述できます。
+
+
+```
+// demo.h:
+#include <type_traits>
+#include <fmt/format.h>
+
+struct A {
+  virtual ~A() {}
+  virtual std::string name() const { return "A"; }
+};
+
+struct B : A {
+  virtual std::string name() const { return "B"; }
+};
+
+template <typename T>
+struct fmt::formatter<T, std::enable_if_t<std::is_base_of_v<A, T>, char>> :
+    fmt::formatter<std::string> {
+  auto format(const A& a, format_context& ctx) const {
+    return formatter<std::string>::format(a.name(), ctx);
+  }
+};
+
+```
+
+
+```
+// demo.cc:
+#include "demo.h"
+#include <fmt/format.h>
+
+int main() {
+  B b;
+  A& a = b;
+  fmt::print("{}", a); // Output: B
+}
+
+```
+
+formatterの特殊化とformat_asのオーバーロードを両方提供することは禁止されています。
+
+
+
+
+```
+template <typename Char>
+using basic_format_parse_context = parse_context<Char>;
+```
+
+
+
+
+
+
+
+
+
+
+```
+class context;
+```
+
+
+
+
+
+```
+constexpr context(iterator out, format_args args, locale_ref loc);
+```
+
+
+contextオブジェクトを構築します。引数への参照がオブジェクトに保存されるため、引数の生存期間が適切であることを確認してください。
+
+        
+
+
+
+
+
+
+
+
+
+
+```
+using format_context = context;
+```
+
+
+
+
+
+
+
+コンパイル時チェック
+
+C++20のconstevalをサポートするコンパイラーでは、書式文字列のコンパイル時チェックが既定で有効です。古いコンパイラーでは、代わりにfmt/format.hで定義されたFMT_STRINGマクロを使えます。
+
+Pythonのstr.formatや通常の関数と同様に、使われない引数を渡すこともできます。
+
+テンプレートによるコードの肥大化を避けながら、fmt::format_stringを使って独自の関数でコンパイル時チェックを有効にする例は、「型消去」を参照してください。
+
+
+
+
+```
+template <typename... T>
+struct fstring;
+```
+
+
+
+コンパイル時の書式文字列。公開APIでは、型推論を防ぐためにformat_stringを使います。
+
+    
+
+
+
+
+
+
+```
+template <typename... T>
+using format_string = typename fstring<T...>::t;
+```
+
+
+
+
+
+
+
+
+
+
+```
+runtime_format_string<> runtime(string_view s);
+```
+
+
+
+実行時の書式文字列を作成します。
+
+例：
+
+```
+// Check format string at runtime instead of compile-time.
+fmt::print(fmt::runtime("{:d}"), "I am not a number");
+ 
+```
+
+
+        
+
+
+
+型消去
+
+コンパイル時チェックを備え、バイナリーサイズを小さく抑えた独自の書式設定関数を作成できます。例（実行）：
+
+
+```
+#include <fmt/format.h>
+
+void vlog(const char* file, int line,
+          fmt::string_view fmt, fmt::format_args args) {
+  fmt::print("{}: {}: {}", file, line, fmt::vformat(fmt, args));
+}
+
+template <typename... T>
+void log(const char* file, int line,
+         fmt::format_string<T...> fmt, T&&... args) {
+  vlog(file, line, fmt, fmt::make_format_args(args...));
+}
+
+#define MY_LOG(fmt, ...) log(__FILE__, __LINE__, fmt, __VA_ARGS__)
+
+MY_LOG("invalid squishiness: {}", 42);
+
+```
+
+vlogは引数の型をパラメーター化していないため、すべてをパラメーター化した版と比べて、コンパイル時間が短くなり、バイナリーのコードサイズも小さくなります。
+
+
+
+
+```
+template <typename Context, typename... T, int NUM_ARGS, int NUM_NAMED_ARGS, ullong DESC>
+detail::format_arg_store<Context, NUM_ARGS, NUM_NAMED_ARGS, DESC> make_format_args(T&... args);
+```
+
+
+
+引数への参照を保存し、format_argsへ暗黙に変換できるオブジェクトを構築します。Contextは省略でき、その場合はcontextが既定値になります。生存期間についてはargを参照してください。
+
+        
+
+
+
+
+
+
+```
+template <typename Context>
+class basic_format_args;
+```
+
+
+
+書式設定引数の集合を参照するビュー。生存期間の問題を避けるため、vformatなどの型消去を使う関数で、パラメーター型としてだけ使うようにします。
+
+```
+void vlog(fmt::string_view fmt, fmt::format_args args);  // OK
+fmt::format_args args = fmt::make_format_args();  // Dangling reference
+ 
+```
+
+
+    
+
+```
+constexpr basic_format_args(const store<NUM_ARGS, NUM_NAMED_ARGS, DESC>& s);
+```
+
+
+format_arg_storeからbasic_format_argsオブジェクトを構築します。
+
+        
+
+
+
+
+
+```
+constexpr basic_format_args(const format_arg* args, int count, bool has_named);
+```
+
+
+動的な引数リストからbasic_format_argsオブジェクトを構築します。
+
+        
+
+
+
+
+
+```
+format_arg get(int id);
+```
+
+
+指定されたidの引数を返します。
+
+        
+
+
+
+
+
+
+
+
+
+
+```
+using format_args = basic_format_args<context>;
+```
+
+
+
+
+
+
+
+
+
+
+```
+template <typename Context>
+class basic_format_arg;
+```
+
+
+
+
+
+```
+decltype(vis(0)) visit(Visitor&& vis);
+```
+
+
+引数の型に応じて適切なvisitメソッドへ処理を振り分け、引数を訪問します。たとえば、引数の型がdoubleの場合は、double型の値を渡してvis(value)を呼び出します。
+
+        
+
+
+
+
+
+
+
+名前付き引数
+
+
+
+
+```
+template <typename T>
+named_arg<T> arg(const char* name, const T& arg);
+```
+
+
+
+書式設定関数で使う名前付き引数を返します。書式設定関数の呼び出しの中だけで使うようにします。
+
+例：
+
+```
+fmt::print("The answer is {answer}.", fmt::arg("answer", 42));
+
+```
+
+
+fmt::argで渡した名前付き引数はコンパイル時チェックでサポートされませんが、十分に新しいコンパイラーでは、"answer"_a=42はコンパイル時に検査されます。operator""_a()を参照してください。
+
+        
+
+
+
+互換性
+
+
+
+
+```
+template <typename Char>
+class basic_string_view;
+```
+
+
+
+C++17より前の環境向けに、APIの一部を提供するstd::basic_string_viewの実装です。std::basic_string_viewが利用できる場合でも、公開APIではfmt::basic_string_viewを使います。これは、ライブラリとクライアントコードを異なる-stdオプションでコンパイルした場合の問題を防ぐためです。ただし、そのようなコンパイル方法は推奨されません。
+
+    
+
+
+
+
+
+
+```
+using string_view = basic_string_view<char>;
+```
+
+
+
+
+
+
+
+書式設定API
+
+fmt/format.hは、追加の書式設定関数とロケールサポートを提供する、完全な書式設定APIを定義します。
+
+
+
+
+
+
+```
+template <typename... T>
+std::string format(format_string<T...> fmt, T&&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、結果を文字列として返します。
+
+例：
+
+```
+#include <fmt/format.h>
+std::string message = fmt::format("The answer is {}.", 42);
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+std::string vformat(string_view fmt, format_args args);
+```
+
+
+
+
+
+
+
+
+
+
+```
+template <detail::fixed_string S>
+auto operator""_a();
+```
+
+
+
+fmt::argに相当するユーザー定義リテラルで、コンパイル時チェックを備えています。
+
+例：
+
+```
+using namespace fmt::literals;
+fmt::print("The answer is {answer}.", "answer"_a=42);
+ 
+```
+
+
+        
+
+
+
+ユーティリティー
+
+
+
+
+```
+template <typename T>
+const void* ptr(T p);
+```
+
+
+
+ポインターを書式設定するために、pをconst void*に変換します。
+
+例：
+
+```
+auto s = fmt::format("{}", fmt::ptr(p));
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename Enum>
+underlying_t<Enum> underlying(Enum e);
+```
+
+
+
+eを基底型に変換します。
+
+例：
+
+```
+enum class color { red, green, blue };
+auto s = fmt::format("{}", fmt::underlying(color::red));  // s == "0"
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename T>
+std::string to_string(const T& value);
+```
+
+
+
+
+
+
+
+
+
+
+```
+template <typename T>
+group_digits_view<T> group_digits(T value);
+```
+
+
+
+ロケールに依存しない3桁ごとの区切り文字として','を使い、整数値を書式設定するビューを返します。
+
+例：
+
+```
+fmt::print("{}", fmt::group_digits(12345));
+// Output: "12,345"
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename T>
+class detail::buffer;
+```
+
+
+
+必要に応じて拡張できる、連続したメモリーバッファーです。内部クラスなので、直接は使わず、memory_bufferを通してだけ使うようにします。
+
+    
+
+```
+size_t size();
+```
+
+
+このバッファーのサイズを返します。
+
+        
+
+
+
+
+
+```
+size_t capacity();
+```
+
+
+このバッファーの容量を返します。
+
+        
+
+
+
+
+
+```
+T * data();
+```
+
+
+バッファーデータへのポインターを返します。データはヌル終端されていません。
+
+        
+
+
+
+
+
+```
+void clear();
+```
+
+
+このバッファーをクリアします。
+
+        
+
+
+
+
+
+```
+void append(const U* begin, const U* end);
+```
+
+
+バッファーの末尾にデータを追加します。
+
+        
+
+
+
+
+
+
+
+
+
+
+```
+template <typename T, size_t SIZE, typename Allocator>
+class basic_memory_buffer;
+```
+
+
+
+自明にコピー／構築できる型のための、動的に拡張するメモリーバッファーです。最初のSIZE個の要素は、オブジェクト自体の内部に保存されます。通常は、char向けの別名memory_bufferを通して使います。
+
+例：
+
+```
+auto out = fmt::memory_buffer();
+fmt::format_to(std::back_inserter(out), "The answer is {}.", 42);
+
+```
+
+
+これにより、outに"The answer is 42."が追加されます。バッファーの内容は、to_string(out)でstd::stringに変換できます。
+
+    
+
+```
+basic_memory_buffer(basic_memory_buffer&& other);
+```
+
+
+別のオブジェクトの内容をムーブして、basic_memory_bufferオブジェクトを構築します。
+
+        
+
+
+
+
+
+```
+basic_memory_buffer & operator=(basic_memory_buffer&& other);
+```
+
+
+もう一方のbasic_memory_bufferオブジェクトの内容を、このオブジェクトへムーブします。
+
+        
+
+
+
+
+
+```
+void resize(size_t count);
+```
+
+
+バッファーのサイズを変更し、count個の要素を含むようにします。TがPOD型の場合、新しい要素は初期化されないことがあります。
+
+        
+
+
+
+
+
+```
+void reserve(size_t new_capacity);
+```
+
+
+バッファーの容量をnew_capacityまで増やします。
+
+        
+
+
+
+
+
+
+
+システムエラー
+
+{fmt}は利用者にエラーを伝えるためにerrnoを使いませんが、errnoを設定するシステム関数を呼び出すことがあります。ライブラリ関数がerrnoの値を保持するとは想定しないようにしてください。
+
+
+
+
+```
+template <typename... T>
+std::system_error system_error(int error_code, format_string<T...> fmt, T&&... args);
+```
+
+
+
+fmt::format(fmt, args...)で書式設定したメッセージを使って、std::system_errorを構築します。error_codeは、errnoが表すようなシステムエラーコードです。
+
+例：
+
+```
+// This throws std::system_error with the description
+//   cannot open file 'madeup': No such file or directory
+// or similar (system message may vary).
+const char* filename = "madeup";
+FILE* file = fopen(filename, "r");
+if (!file)
+  throw fmt::system_error(errno, "cannot open file '{}'", filename);
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+void format_system_error(detail::buffer<char>& out, int error_code, const char* message);
+```
+
+
+
+ファイルを開く際のエラーなど、オペレーティングシステムや言語ランタイムが返したエラーのメッセージを書式設定し、outに書き込みます。書式はstd::system_error(ec, message)と同じで、ここでecはstd::error_code(error_code, std::generic_category())です。この書式は実装定義ですが、通常は次のようになります。
+
+```
+<message>: <system-message>
+
+```
+
+
+ここで、<message>は渡したメッセージ、<system-message>はエラーコードに対応するシステムメッセージです。error_codeは、errnoが表すようなシステムエラーコードです。
+
+        
+
+
+
+カスタムアロケーター
+
+{fmt}ライブラリは、カスタムの動的メモリーアロケーターをサポートします。fmt::basic_memory_bufferのテンプレート引数として、カスタムアロケーターのクラスを指定できます。
+
+
+```
+using custom_memory_buffer = 
+  fmt::basic_memory_buffer<char, fmt::inline_buffer_size, custom_allocator>;
+```
+
+カスタムアロケーターを使う書式設定関数を記述することもできます。
+
+
+```
+using custom_string =
+  std::basic_string<char, std::char_traits<char>, custom_allocator>;
+
+auto vformat(custom_allocator alloc, fmt::string_view fmt,
+             fmt::format_args args) -> custom_string {
+  auto buf = custom_memory_buffer(alloc);
+  fmt::vformat_to(std::back_inserter(buf), fmt, args);
+  return custom_string(buf.data(), buf.size(), alloc);
+}
+
+template <typename ...Args>
+auto format(custom_allocator alloc, fmt::string_view fmt,
+            const Args& ... args) -> custom_string {
+  return vformat(alloc, fmt, fmt::make_format_args(args...));
+}
+```
+
+このアロケーターが使われるのは、出力コンテナーだけです。書式設定関数は通常、組み込み型と文字列型に対してメモリーを割り当てません。ただし、既定以外の浮動小数点書式では、場合によってsprintfにフォールバックする例外があります。
+
+ロケール
+
+すべての書式設定は、既定ではロケールに依存しません。ロケールに応じた数値の区切り文字を挿入するには、'L'書式指定子を使います。
+
+
+```
+#include <fmt/format.h>
+#include <locale>
+
+std::locale::global(std::locale("en_US.UTF-8"));
+auto s = fmt::format("{:L}", 1000000);  // s == "1,000,000"
+```
+
+fmt/format.hは、std::localeをパラメーターとして受け取る、次の書式設定関数のオーバーロードを提供します。コストの高い<locale>のインクルードを避けるため、ロケールの型はテンプレートパラメーターになっています。
+
+
+
+
+```
+template <typename... T>
+std::string format(locale_ref loc, format_string<T...> fmt, T&&... args);
+```
+
+
+
+
+
+
+
+
+
+
+```
+template <typename OutputIt, typename... T>
+OutputIt format_to(OutputIt out, locale_ref loc, format_string<T...> fmt, T&&... args);
+```
+
+
+
+
+
+
+
+
+
+
+```
+template <typename... T>
+size_t formatted_size(locale_ref loc, format_string<T...> fmt, T&&... args);
+```
+
+
+
+
+
+
+
+
+
+従来のコンパイル時チェック
+
+FMT_STRINGは、古いコンパイラーでコンパイル時チェックを有効にします。C++14以降が必要で、C++11では何も行いません。
+
+
+
+
+```
+FMT_STRING(s)
+```
+
+
+
+文字列リテラルsから、従来方式のコンパイル時書式文字列を構築します。
+
+例：
+
+```
+// A compile-time error because 'd' is an invalid specifier for strings.
+std::string s = fmt::format(FMT_STRING("{:d}"), "foo");
+ 
+```
+
+
+        
+
+
+
+従来のコンパイル時チェックの使用を強制するには、プリプロセッサー変数FMT_ENFORCE_COMPILE_STRINGを定義します。これを設定すると、FMT_STRINGを受け取る関数に通常の文字列を渡した場合、コンパイルが失敗します。
+
+
+
+範囲とタプルの書式設定
+
+fmt/ranges.hは、範囲とタプルの書式設定をサポートします。
+
+
+```
+#include <fmt/ranges.h>
+
+fmt::print("{}", std::tuple<char, int>{'a', 42});
+// Output: ('a', 42)
+```
+
+fmt::joinを使うと、任意の区切り文字でタプルの要素を区切れます。
+
+
+```
+#include <fmt/ranges.h>
+
+auto t = std::tuple<int, char>{1, 'a'};
+fmt::print("{}", fmt::join(t, ", "));
+// Output: 1, a
+```
+
+
+
+
+```
+template <typename Range>
+join_view<decltype(detail::range_begin(r)), decltype(detail::range_end(r))> join(Range&& r, string_view sep);
+```
+
+
+
+rangeの要素をsepで区切って書式設定するビューを返します。
+
+例：
+
+```
+auto v = std::vector<int>{1, 2, 3};
+fmt::print("{}", fmt::join(v, ", "));
+// Output: 1, 2, 3
+
+```
+
+
+fmt::joinは、渡された書式指定子を範囲の要素に適用します。
+
+```
+fmt::print("{:02}", fmt::join(v, ", "));
+// Output: 01, 02, 03
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename It, typename Sentinel>
+join_view<It, Sentinel> join(It begin, Sentinel end, string_view sep);
+```
+
+
+
+イテレーター範囲[begin, end)の要素をsepで区切って書式設定するビューを返します。
+
+        
+
+
+
+
+
+
+```
+template <typename T>
+join_view<const T*, const T*> join(std::initializer_list<T> list, string_view sep);
+```
+
+
+
+std::initializer_listの要素をsepで区切って書式設定するオブジェクトを返します。
+
+例：
+
+```
+fmt::print("{}", fmt::join({1, 2, 3}, ", "));
+// Output: "1, 2, 3"
+ 
+```
+
+
+        
+
+
+
+
+
+日付と時刻の書式設定
+
+fmt/chrono.hは、次の型のフォーマッターを提供します。
+
+
+std::chrono::duration
+
+std::chrono::time_point
+
+std::tm
+
+
+書式の構文は、「Chronoの書式指定」で説明しています。
+
+例：
+
+
+```
+#include <fmt/chrono.h>
+
+int main() {
+  auto now = std::chrono::system_clock::now();
+
+  fmt::print("The date is {:%Y-%m-%d}.\n", now);
+  // Output: The date is 2020-11-07.
+  // (with 2020-11-07 replaced by the current date)
+
+  using namespace std::literals::chrono_literals;
+
+  fmt::print("Default format: {} {}\n", 42s, 100ms);
+  // Output: Default format: 42s 100ms
+
+  fmt::print("strftime-like format: {:%H:%M:%S}\n", 3h + 15min + 30s);
+  // Output: strftime-like format: 03:15:30
+}
+```
+
+
+
+
+```
+std::tm gmtime(std::time_t time);
+```
+
+
+
+エポックからの経過時間を表すstd::time_tの値を、協定世界時（UTC）で表した暦時刻に変換します。std::gmtimeとは異なり、この関数はほとんどのプラットフォームでスレッドセーフです。
+
+        
+
+
+
+
+
+標準ライブラリ型の書式設定
+
+fmt/std.hは、次の型のフォーマッターを提供します。
+
+
+std::atomic
+
+std::atomic_flag
+
+std::bitset
+
+std::error_code
+
+std::exception
+
+std::filesystem::path
+
+std::monostate
+
+std::optional
+
+std::source_location
+
+std::thread::id
+
+std::variant
+
+
+
+
+
+```
+template <typename T, typename Deleter>
+const void* ptr(const std::unique_ptr<T, Deleter>& p);
+```
+
+
+
+
+
+
+
+
+
+
+```
+template <typename T>
+const void* ptr(const std::shared_ptr<T>& p);
+```
+
+
+
+
+
+
+
+バリアント
+
+std::variantを書式設定できるのは、すべての選択肢の型が書式設定可能な場合だけです。また、ライブラリー機能__cpp_lib_variantが必要です。
+
+例：
+
+
+```
+#include <fmt/std.h>
+
+fmt::print("{}", std::variant<char, float>('x'));
+// Output: variant('x')
+
+fmt::print("{}", std::variant<std::monostate, char>());
+// Output: variant(monostate)
+```
+
+ビットフィールドとパックされた構造体
+
+ビットフィールドや、__attribute__((packed))を適用した構造体のフィールドを書式設定するには、キャストまたは単項+によって、基底型または互換性のある型に変換する必要があります（godbolt）。
+
+
+```
+struct smol {
+  int bit : 1;
+};
+
+auto s = smol();
+fmt::print("{}", +s.bit);
+
+```
+
+これは、C++の「完全」転送に関する既知の制限です。
+
+
+
+コンパイル時のサポート
+
+fmt/compile.hは、書式文字列のコンパイルと、コンパイル時（constexpr）の書式設定を提供します。これらはFMT_COMPILEマクロ、またはfmt::literals名前空間で定義されたユーザー定義リテラル_cfで有効になります。FMT_COMPILEまたは_cfを付けた書式文字列は、コンパイル時に解析・検査され、効率的な書式設定コードへ変換されます。組み込み型と文字列型の引数に加え、formatterの特殊化で、書式設定コンテキストの型をテンプレートパラメーターとして受け取るformatメソッドを持つユーザー定義型もサポートします。例（実行）：
+
+
+```
+struct point {
+  double x;
+  double y;
+};
+
+template <> struct fmt::formatter<point> {
+  constexpr auto parse(format_parse_context& ctx) { return ctx.begin(); }
+
+  template <typename FormatContext>
+  auto format(const point& p, FormatContext& ctx) const {
+    return format_to(ctx.out(), "({}, {})"_cf, p.x, p.y);
+  }
+};
+
+using namespace fmt::literals;
+std::string s = fmt::format("{}"_cf, point(4, 2));
+```
+
+書式文字列のコンパイルでは、既定のAPIより多くのバイナリーコードが生成されることがあります。書式設定が性能のボトルネックになっている箇所でのみ、使用が推奨されます。
+
+同じAPIは、constexpr関数やconsteval関数などでのコンパイル時の書式設定もサポートします。さらに、必要なサイズと厳密に一致する文字列へコンパイル時に書式設定できる、実験的なFMT_STATIC_FORMATもあります。コンパイル時の書式設定は、constexprのformatメソッドを持つ、組み込みおよびユーザー定義のフォーマッターで利用できます。例：
+
+
+```
+template <> struct fmt::formatter<point> {
+  constexpr auto parse(format_parse_context& ctx) { return ctx.begin(); }
+
+  template <typename FormatContext>
+  constexpr auto format(const point& p, FormatContext& ctx) const {
+    return format_to(ctx.out(), "({}, {})"_cf, p.x, p.y);
+  }
+};
+
+constexpr auto s = FMT_STATIC_FORMAT("{}", point(4, 2));
+const char* cstr = s.c_str(); // Points the static string "(4, 2)".
+```
+
+
+
+
+```
+template <detail::fixed_string Str>
+auto operator""_cf();
+```
+
+
+
+
+
+
+
+
+
+
+```
+FMT_COMPILE(s)
+```
+
+
+
+文字列リテラルsを、コンパイル時に解析され、効率的な書式設定コードへ変換される書式文字列に変換します。コンパイラーによるC++17のconstexpr ifのサポートが必要です。
+
+例：
+
+```
+// Converts 42 into std::string using the most efficient method and no
+// runtime format string processing.
+std::string s = fmt::format(FMT_COMPILE("{}"), 42);
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+FMT_STATIC_FORMAT(fmt_str, ...)
+```
+
+
+
+書式文字列fmt_strに従って引数を書式設定し、必要なサイズと厳密に一致する文字列をコンパイル時に生成します。書式文字列と引数は、どちらもコンパイル時の式でなければなりません。
+
+結果の文字列には、c_str()でC文字列として、またはstr()でfmt::string_viewとしてアクセスできます。
+
+例：
+
+```
+// Produces the static string "42" at compile time.
+static constexpr auto result = FMT_STATIC_FORMAT("{}", 42);
+const char* s = result.c_str();
+ 
+```
+
+
+        
+
+
+
+
+
+端末の色とテキストスタイル
+
+fmt/color.hは、端末の色とテキストスタイルを指定した出力をサポートします。
+
+
+
+
+```
+template <typename... T>
+void print(text_style ts, format_string<T...> fmt, T&&... args);
+```
+
+
+
+文字列を書式設定し、ANSIエスケープシーケンスでテキストの書式を指定してstdoutに出力します。
+
+例：
+
+```
+fmt::print(fmt::emphasis::bold | fg(fmt::color::red),
+           "Elapsed time: {0:.2f} seconds", 1.23);
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+text_style fg(detail::color_type foreground);
+```
+
+
+
+前景色（文字色）からテキストスタイルを作成します。
+
+        
+
+
+
+
+
+
+```
+text_style bg(detail::color_type background);
+```
+
+
+
+背景色からテキストスタイルを作成します。
+
+        
+
+
+
+
+
+
+```
+template <typename T>
+detail::styled_arg<remove_cvref_t<T>> styled(const T& value, text_style ts);
+```
+
+
+
+ANSIエスケープシーケンスを使って書式設定される引数を返します。書式設定関数で使用します。
+
+例：
+
+```
+fmt::print("Elapsed time: {0:.2f} seconds",
+           fmt::styled(1.23, fmt::fg(fmt::color::green) |
+                             fmt::bg(fmt::color::blue)));
+ 
+```
+
+
+        
+
+
+
+
+
+システムAPI
+
+
+
+
+```
+class ostream;
+```
+
+
+
+単一のスレッドから書き込むための、高速なバッファー付き出力ストリームです。外部で同期せずに複数のスレッドから書き込むと、データ競合が生じることがあります。
+
+    
+
+```
+void print(format_string<T...> fmt, T&&... args);
+```
+
+
+fmtの指定に従ってargsを書式設定し、出力をファイルに書き込みます。
+
+        
+
+
+
+
+
+
+
+
+
+
+```
+template <typename... T>
+ostream output_file(cstring_view path, T... params);
+```
+
+
+
+書き込み用にファイルを開きます。paramsで渡せるパラメーターは次のとおりです。
+
+
+
+<integer>：openに渡すフラグ（既定はfile::WRONLY | file::CREATE | file::TRUNC）
+
+
+buffer_size=<integer>：出力バッファーのサイズ
+
+
+
+
+
+例：
+
+```
+auto out = fmt::output_file("guide.txt");
+out.print("Don't {}", "Panic");
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename... T>
+std::system_error windows_error(int error_code, string_view message, const T&... args);
+```
+
+
+
+次の形式の説明を持つstd::system_errorオブジェクトを構築します。
+
+```
+<message>: <system-message>
+
+```
+
+
+ここで、<message>は書式設定されたメッセージ、<system-message>はエラーコードに対応するシステムメッセージです。error_codeは、GetLastErrorが返すようなWindowsのエラーコードです。error_codeが-1などの有効でないエラーコードの場合、システムメッセージは"error -1"のようになります。
+
+例：
+
+```
+// This throws a system_error with the description
+//   cannot open file 'foo': The system cannot find the file specified.
+// or similar (system message may vary) if the file doesn't exist.
+const char *filename = "foo";
+LPOFSTRUCT of = LPOFSTRUCT();
+HFILE file = OpenFile(filename, &of, OF_READ);
+if (file == HFILE_ERROR) {
+  throw fmt::windows_error(GetLastError(),
+                           "cannot open file '{}'", filename);
+}
+ 
+```
+
+
+        
+
+
+
+
+
+std::ostreamのサポート
+
+fmt/ostream.hは、挿入演算子（operator<<）をオーバーロードしたユーザー定義型の書式設定など、std::ostreamのサポートを提供します。std::ostreamを通して型を書式設定可能にするには、ostream_formatterから継承したformatterの特殊化を提供するようにします。
+
+
+```
+#include <fmt/ostream.h>
+
+struct date {
+  int year, month, day;
+
+  friend std::ostream& operator<<(std::ostream& os, const date& d) {
+    return os << d.year << '-' << d.month << '-' << d.day;
+  }
+};
+
+template <> struct fmt::formatter<date> : ostream_formatter {};
+
+std::string s = fmt::format("The date is {}", date{2012, 12, 9});
+// s == "The date is 2012-12-9"
+```
+
+
+
+
+```
+template <typename T>
+detail::streamed_view<T> streamed(const T& value);
+```
+
+
+
+ostreamのoperator<<を通してvalueを書式設定するビューを返します。
+
+例：
+
+```
+fmt::print("Current thread id: {}\n",
+           fmt::streamed(std::this_thread::get_id()));
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename... T>
+void print(std::ostream& os, format_string<T...> fmt, T&&... args);
+```
+
+
+
+書式設定したデータをストリームosに出力します。
+
+例：
+
+```
+fmt::print(cerr, "Don't {}!", "panic");
+ 
+```
+
+
+        
+
+
+
+
+
+動的な引数リスト
+
+ヘッダーfmt/args.hは、書式設定引数のリストを動的に構築できる、ビルダーのようなAPIであるdynamic_format_arg_storeを提供します。
+
+
+
+
+```
+template <typename Context>
+class dynamic_format_arg_store;
+```
+
+
+
+保存領域を備えた、動的な書式設定引数のリストです。
+
+fmt::vformatなどの型消去を使う書式設定関数へ渡すために、fmt::basic_format_argsへ暗黙に変換できます。
+
+    
+
+```
+void push_back(const T& arg);
+```
+
+
+後で書式設定関数へ渡すため、動的ストアに引数を追加します。
+
+カスタム型と文字列型はストアへコピーされ、必要に応じてメモリーが動的に割り当てられます。ただし、文字列ビューはこの対象に含まれません。
+
+例：
+
+```
+fmt::dynamic_format_arg_store<fmt::format_context> store;
+store.push_back(42);
+store.push_back("abc");
+store.push_back(1.5f);
+std::string result = fmt::vformat("{} and {} and {}", store);
+ 
+```
+
+
+        
+
+
+
+
+
+```
+void push_back(std::reference_wrapper<T> arg);
+```
+
+
+後で書式設定関数へ渡すため、動的ストアに引数への参照を追加します。
+
+例：
+
+```
+fmt::dynamic_format_arg_store<fmt::format_context> store;
+char band[] = "Rolling Stones";
+store.push_back(std::cref(band));
+band[9] = 'c'; // Changing str affects the output.
+std::string result = fmt::vformat("{}", store);
+// result == "Rolling Scones"
+ 
+```
+
+
+        
+
+
+
+
+
+```
+void push_back(const named_arg<T, char_type>& arg);
+```
+
+
+後で書式設定関数へ渡すため、動的ストアに名前付き引数を追加します。引数のコピーを避けるためにstd::reference_wrapperを使えます。名前は常にストアへコピーされます。
+
+        
+
+
+
+
+
+```
+void clear();
+```
+
+
+ストアからすべての要素を消去します。
+
+        
+
+
+
+
+
+```
+void reserve(size_t new_cap, size_t new_cap_named);
+```
+
+
+new_cap_named個の名前付き引数を含む、少なくともnew_cap個の引数を保存できる領域を予約します。
+
+        
+
+
+
+
+
+```
+size_t size();
+```
+
+
+ストア内の要素数を返します。
+
+        
+
+
+
+
+
+
+
+
+
+安全なprintf
+
+ヘッダーfmt/printf.hは、printfに似た書式設定機能を提供します。次の関数は、位置指定引数のPOSIX拡張を含むprintfの書式文字列構文を使います。対応する標準関数とは異なり、fmtの関数は型安全で、引数の型が書式指定に合わない場合は例外を送出します。
+
+
+
+
+```
+template <typename... T>
+int printf(string_view fmt, const T&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、出力をstdoutに書き込みます。
+
+例：
+
+fmt::printf("Elapsed time: %.2f seconds", 1.23); 
+
+        
+
+
+
+
+
+
+```
+template <typename... T>
+int fprintf(std::FILE* f, string_view fmt, const T&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、出力をfに書き込みます。
+
+例：
+
+```
+fmt::fprintf(stderr, "Don't %s!", "panic");
+ 
+```
+
+
+        
+
+
+
+
+
+
+```
+template <typename... T>
+std::string sprintf(string_view fmt, const T&... args);
+```
+
+
+
+fmtの指定に従ってargsを書式設定し、結果を文字列として返します。
+
+例：
+
+```
+std::string message = fmt::sprintf("The answer is %d", 42);
+ 
+```
+
+
+        
+
+
+
+
+
+ワイド文字列
+
+任意で利用するヘッダーfmt/xchar.hは、wchar_tや特殊な文字型のサポートを提供します。
+
+
+
+
+```
+using wstring_view = basic_string_view<wchar_t>;
+```
+
+
+
+
+
+
+
+
+
+
+```
+using wformat_context = buffered_context<wchar_t>;
+```
+
+
+
+
+
+
+
+
+
+
+```
+template <typename T>
+std::wstring to_wstring(const T& value);
+```
+
+
+
+型Tの既定の書式を使って、valueをstd::wstringに変換します。
+
+        
+
+
+
+C++20のstd::formatとの互換性
+
+{fmt}は、次の相違点を除き、C++20の書式設定ライブラリーのほぼすべてを実装しています。
+
+
+標準ライブラリーの実装との衝突を避けるため、名前はstdではなくfmt名前空間に定義されます。
+
+
+幅の計算では、書記素クラスターへの分割を使いません。これは別のブランチでは実装されていますが、まだ統合されていません。
+
+
+{fmt}の既定の浮動小数点表現は、JavaやPythonなどの他の言語と同様に、ラウンドトリップを保証できる最小の精度を使います。std::formatは現在、std::to_charsに基づいて規定されています。std::to_charsは、指数の冗長な桁と符号を無視して、文字数を最小にしようとするため、必要以上の十進桁を出力することがあります。
+
+
+
+設定オプション
+
+{fmt}は、機能の有効・無効の切り替えやバイナリーサイズの最適化のために、CMakeオプションとプリプロセッサーマクロによる設定を提供します。たとえば、CMakeの設定時に-DFMT_OS=OFFを指定すると、fmt/os.hで定義されたOS固有のAPIを無効にできます。
+
+CMakeオプション
+
+
+FMT_OS：OFFに設定すると、OS固有のAPI（fmt/os.h）を無効にします。
+
+FMT_UNICODE：OFFに設定すると、Windows/MSVCでUnicodeサポートを無効にします。他のプラットフォームでは、Unicodeサポートは常に有効です。
+
+
+マクロ
+
+
+FMT_HEADER_ONLY：定義すると、ヘッダーのみのモードを有効にします。CMakeターゲットfmt::fmt-header-onlyを使う代わりの方法です。既定：未定義。
+
+
+FMT_USE_EXCEPTIONS：0に設定すると、例外の使用を無効にします。既定：1（-fno-exceptionsでコンパイルした場合は0）。
+
+
+FMT_USE_LOCALE：0に設定すると、ロケールサポートを無効にします。既定：1（FMT_OPTIMIZE_SIZE > 1の場合は0）。
+
+
+FMT_CUSTOM_ASSERT_FAIL：1に設定すると、利用者が独自のfmt::assert_fail関数を提供できるようになります。この関数はアサーションの失敗時に呼ばれ、例外が無効の場合は実行時エラーでも呼ばれます。既定：0。
+
+
+FMT_BUILTIN_TYPES：0に設定すると、int以外の算術型と文字列型の組み込み処理を無効にします。これにより、呼び出しごとのオーバーヘッドと引き換えにライブラリーのサイズが小さくなります。既定：1。
+
+
+FMT_OPTIMIZE_SIZE：バイナリーサイズの最適化を制御します。
+
+
+0 - 無効（既定）
+
+1 - ロケールサポートを無効にし、いくつかの最適化を適用します
+
+2 - 一部のUnicode機能と名前付き引数を無効にし、より積極的な最適化を適用します
+
+
+
+
+fmt 12.2.0に対する編集注。 上の原文リストには、FMT_OPTIMIZE_SIZE=1でロケールサポートが無効になるとあります。一方、固定版のヘッダーでは、FMT_USE_LOCALEが明示的に定義されていない場合、(FMT_OPTIMIZE_SIZE <= 1)として定義されます。そのため、既定ではレベル1で有効、レベル2で無効です。FMT_USE_LOCALEを明示的に設定した場合は、その設定が優先されます。上には原文の記述を保持しています。
+
+バイナリーサイズの最適化
+
+一部の機能を制限して{fmt}のバイナリーサイズをできる限り小さくするには、次の設定を使えます。
+
+
+CMakeオプション：
+
+FMT_OS=OFF
+
+
+
+マクロ：
+
+FMT_BUILTIN_TYPES=0
+
+FMT_OPTIMIZE_SIZE=2
+
+
+
+     

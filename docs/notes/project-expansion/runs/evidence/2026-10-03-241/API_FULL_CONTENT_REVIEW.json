@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "method": "ai-content-review",
+  "model": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "runtimeStatus": "not-exposed-by-tools",
+    "localLLMUsed": false
+  },
+  "reviewedAt": "2026-10-02T16:32:24.798Z",
+  "canonical": {
+    "path": "docs/notes/document-import/fmt/v12-2-0/generated/canonical/01-docs/03-api.md",
+    "sha256": "af885832ee4d4f203a1869d1fb650103a372096b85fe104dadc9c60c2df4aa2f"
+  },
+  "translation": {
+    "path": "docs/notes/document-import/fmt/v12-2-0/translations/ja/01-docs/03-api.md",
+    "sha256": "370afd129cba0342e262f7f5ae2ca7285ae4f95e9e823afc03af6ed6497f82d6"
+  },
+  "sourceSegments": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-236/API_TRANSLATION_SEGMENTS.json",
+    "sha256": "13c8aadb8a29bac7b90341af8743e1647647a75e2dca453422a7d64527c83b1c"
+  },
+  "previousOriginalFullReview": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-234/API_FULL_CONTENT_REVIEW.json",
+    "sha256": "afb72783fba366107256ada390f94b96ce6a5832b836aaccce956ffce93f297e"
+  },
+  "readEvidence": {
+    "japaneseFullText": {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-240/API_JA_RENDERED_TEXT.txt",
+      "sha256": "c1ab331917e73d887f1ef85a779f2e1d0a26468fae3006c18b8437901824069b"
+    },
+    "readChunks": [
+      {
+        "start": 0,
+        "endExclusive": 11000
+      },
+      {
+        "start": 11000,
+        "endExclusive": 22000
+      },
+      {
+        "start": 22000,
+        "endExclusive": 28612
+      }
+    ],
+    "sourceRead": "All286original prose/headings/list/type/empty segments reread sequentially as0-139 and140-285 nontruncated outputs. All134code and84declarations read with actual JA complete rendered text; exactmachinecomparison to currentfixedEN proves common unchanged strings.",
+    "currentDifference": "After fullJA read only two nested listlabels changed. Exact before/currentdiff asserted; correctedtwo labels independently reread in finalactualMD and builtmachine."
+  },
+  "coverage": {
+    "all286Segments": true,
+    "additionalNestedParentLabels": 2,
+    "codeBlocks": 134,
+    "decls": 84,
+    "headings": 30,
+    "editorialNote": "Full approvedJapanese note reread and checked against fixed-header-conditioned default; original contradiction retained."
+  },
+  "bilingualReview": "All conditions, negations, qualifiers, defaults, examples, identifiers, namedarguments, lifetime/reference semantics and error/allocator/locale contracts compared to original. No remaining semantic issue found in accepted scope.",
+  "japaneseOnlyReview": "Complete28612character Japanese rendered text read in3consecutive nontruncated chunks including allcode. Found two untranslated parentlist labels, corrected and reread. API/type/code/comments retained intentionally. Linked headinglabels and adjacentcode context read; no unresolved readability issue.",
+  "findings": [
+    {
+      "source": "CMake options:",
+      "before": "CMake options:",
+      "after": "CMakeオプション：",
+      "reason": "Nested parentli prefix was excluded by segmentextractor; fullpage review detected it."
+    },
+    {
+      "source": "Macros:",
+      "before": "Macros:",
+      "after": "マクロ：",
+      "reason": "Same extractiongap. Added explicitbuilt checks for both parentlabels."
+    }
+  ],
+  "sourceStandardStatements": "Compatibility wording is a translation of fixed12.2.0 upstream, not independently asserted current C++standard advice.",
+  "machine": {
+    "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-241/API_TRANSLATION_MACHINE.json",
+    "sha256": "fa464986b348603d6d193509ebd7d396da4dc1ad2d019c2dc0214b6864310e5c"
+  },
+  "humanReview": false,
+  "unresolved": [],
+  "projectFinalVerification": "pending",
+  "browserUI": "pending"
+}
