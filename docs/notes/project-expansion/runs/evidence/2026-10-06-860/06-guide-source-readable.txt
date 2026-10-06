@@ -1,0 +1,66 @@
+1 [h1] SDS internals and advanced usage
+
+2 [p] At the very beginning of this documentation it was explained how SDS strings
+are allocated, however the prefix stored before the pointer returned to the
+user was classified as an <em>header</em> without further details. For an advanced
+usage it is better to dig more into the internals of SDS and show the
+structure implementing it:
+
+3 [p] As you can see, the structure may resemble the one of a conventional string
+library, however the ⟦CODE0⟧ field of the structure is different since it is
+not a pointer but an array without any length declared, so ⟦CODE1⟧ actually
+points at the first byte just after the ⟦CODE2⟧ integer. So in order to create
+an SDS string we just allocate a piece of memory that is as large as the
+⟦CODE3⟧ structure plus the length of our string, plus an additional byte
+for the mandatory null term that every SDS string has.
+
+4 [p] The ⟦CODE0⟧ field of the structure is quite obvious, and is the current length
+of the SDS string, always computed every time the string is modified via
+SDS function calls. The ⟦CODE1⟧ field instead represents the amount of free
+memory in the current allocation that can be used to store more characters.
+
+5 [p] So the actual SDS layout is this one:
+
+6 [p] You may wonder why there is some free space at the end of the string, it
+looks like a waste. Actually after a new SDS string is created, there is no
+free space at the end at all: the allocation will be as small as possible to
+just hold the header, string, and null term. However other access patterns
+will create extra free space at the end, like in the following program:
+
+7 [p] Since SDS tries to be efficient it can't afford to reallocate the string every
+time new data is appended, since this would be very inefficient, so it uses
+the <strong>preallocation of some free space</strong> every time you enlarge the string.
+
+8 [p] The preallocation algorithm used is the following: every time the string
+is reallocated in order to hold more bytes, the actual allocation size performed
+is two times the minimum required. So for instance if the string currently
+is holding 30 bytes, and we concatenate 2 more bytes, instead of allocating 32
+bytes in total SDS will allocate 64 bytes.
+
+9 [p] However there is an hard limit to the allocation it can perform ahead, and is
+defined by ⟦CODE0⟧. SDS will never allocate more than 1MB of
+additional space (by default, you can change this default).
+
+10 [h2] Shrinking strings
+
+11 [p] Sometimes there are class of programs that require to use very little memory.
+After strings concatenations, trimming, ranges, the string may end having
+a non trivial amount of additional space at the end.
+
+12 [p] It is possible to resize a string back to its minimal size in order to hold
+the current content by using the function ⟦CODE0⟧.
+
+13 [p] There is also a function that can be used in order to get the size of the
+total allocation for a given string, and is called ⟦CODE0⟧.
+
+14 [p] NOTE: SDS Low level API use cammelCase in order to warn you that you are playing with the fire.
+
+15 [h2] Manual modifications of SDS strings
+
+16 [p] Sometimes you may want to hack with an SDS string manually, without using
+SDS functions. In the following example we implicitly change the length
+of the string, however we want the logical length to reflect the null terminated
+C string.
+
+17 [p] The function ⟦CODE0⟧ does just that, updating the internal length
+information for the specified string to the length obtained via ⟦CODE1⟧.

@@ -1,0 +1,22 @@
+1 [h2] Formatting strings
+
+2 [p] There is a special string concatenation function that accepts a ⟦CODE0⟧ alike
+format specifier and cats the formatted string to the specified string.
+
+3 [p] Example:
+
+4 [p] Often you need to create SDS string directly from ⟦CODE0⟧ format specifiers.
+Because ⟦CODE1⟧ is actually a function that concatenates strings all
+you need is to concatenate your string to an empty string:
+
+5 [p] You can use ⟦CODE0⟧ in order to convert numbers into SDS strings:
+
+6 [p] However this is slow and we have a special function to make it efficient.
+
+7 [h2] Fast number to string operations
+
+8 [p] Creating an SDS string from an integer may be a common operation in certain
+kind of programs, and while you may do this with ⟦CODE0⟧ the performance
+hit is big, so SDS provides a specialized function.
+
+9 [p] Use it like this:

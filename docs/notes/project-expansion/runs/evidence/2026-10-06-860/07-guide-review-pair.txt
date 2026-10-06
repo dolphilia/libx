@@ -1,0 +1,80 @@
+1 [h2]
+EN: Sharing SDS strings
+JA: SDS文字列の共有
+
+2 [p]
+EN: If you are writing a program in which it is advantageous to share the same
+SDS string across different data structures, it is absolutely advised to
+encapsulate SDS strings into structures that remember the number of references
+of the string, with functions to increment and decrement the number of references.
+JA: 異なるデータ構造の間で同じSDS文字列を共有すると有利なプログラムでは、文字列の参照数を記録する構造体へSDS文字列を格納し、参照数を増減する関数を用意することを強く勧めます。
+
+3 [p]
+EN: This approach is a memory management technique called <em>reference counting</em> and
+in the context of SDS has two advantages:
+JA: これは<em>参照カウント</em>と呼ばれるメモリー管理手法で、SDSでは次の2つの利点があります。
+
+4 [li]
+EN: It is less likely that you'll create memory leaks or bugs due to non freeing SDS strings or freeing already freed strings.
+JA: SDS文字列を解放し忘れたり、解放済みの文字列を再び解放したりすることによる、メモリーリークやバグが起きにくくなります。
+
+5 [li]
+EN: You'll not need to update every reference to an SDS string when you modify it (since the new SDS string may point to a different memory location).
+JA: SDS文字列を変更したとき、新しい文字列が別のメモリー位置を指す場合でも、すべての参照を更新する必要がなくなります。
+
+6 [p]
+EN: While this is definitely a very common programming technique I'll outline
+the basic ideas here. You create a structure like that:
+JA: これは非常によく使われるプログラミング手法ですが、ここでは基本的な考え方を説明します。次のような構造体を作ります。
+
+7 [p]
+EN: When new strings are created, the structure is allocated and returned with
+⟦CODE0⟧ set to 1. The you have two functions to change the reference count
+of the shared string:
+JA: 新しい文字列を作成するときは、構造体を確保し、⟦CODE0⟧を1に設定して返します。そして、共有文字列の参照カウントを変更する2つの関数を用意します。
+
+8 [li]
+EN: ⟦CODE0⟧ will simply increment ⟦CODE1⟧ of 1 in the structure. It will be called every time you add a reference to the string on some new data structure, variable, or whatever.
+JA: ⟦CODE0⟧は、構造体内の⟦CODE1⟧を1増やすだけです。新しいデータ構造や変数などへ文字列の参照を追加するたびに呼び出します。
+
+9 [li]
+EN: ⟦CODE0⟧ is used when you remove a reference. This function is however special since when the ⟦CODE1⟧ drops to zero, it automatically frees the SDS string, and the ⟦CODE2⟧ structure as well.
+JA: ⟦CODE0⟧は参照を削除するときに使います。この関数には特別な動作もあり、⟦CODE1⟧が0になると、SDS文字列と⟦CODE2⟧構造体を自動的に解放します。
+
+10 [h2]
+EN: Interactions with heap checkers
+JA: ヒープ検査ツールとの関係
+
+11 [p]
+EN: Because SDS returns pointers into the middle of memory chunks allocated with
+⟦CODE0⟧, heap checkers may have issues, however:
+JA: SDSは、⟦CODE0⟧で確保したメモリー領域の途中を指すポインターを返すため、ヒープ検査ツールで問題になる可能性があります。ただし、次の点に留意してください。
+
+12 [li]
+EN: The popular Valgrind program will detect SDS strings are <em>possibly lost</em> memory and never as <em>definitely lost</em>, so it is easy to tell if there is a leak or not. I used Valgrind with Redis for years and every real leak was consistently detected as "definitely lost".
+JA: よく使われるValgrindは、SDS文字列を<em>possibly lost（失われた可能性がある）</em>メモリーと判定し、<em>definitely lost（確実に失われた）</em>とは判定しません。そのため、リークの有無を見分けやすくなります。私はRedisでValgrindを何年も使ってきましたが、実際のリークはすべて一貫して「definitely lost」と検出されました。
+
+13 [li]
+EN: OSX instrumentation tools don't detect SDS strings as leaks but are able to correctly handle pointers pointing to the middle of memory chunks.
+JA: OSXの計測ツールは、SDS文字列をリークとは判定せず、メモリー領域の途中を指すポインターを正しく扱えます。
+
+14 [h2]
+EN: Zero copy append from syscalls
+JA: システムコールからのゼロコピー追加
+
+15 [p]
+EN: At this point you should have all the tools to dig more inside the SDS
+library by reading the source code, however there is an interesting pattern
+you can mount using the low level API exported, that is used inside Redis
+in order to improve performances of the networking code.
+JA: ここまでで、ソースコードを読んでSDSライブラリーの内部をさらに調べるための道具はそろいました。ただし、公開されている低水準APIを使った興味深いパターンがあります。Redisでは、ネットワーク処理の性能を高めるために使っています。
+
+16 [p]
+EN: Using ⟦CODE0⟧ and ⟦CODE1⟧ it is possible to mount the
+following schema, to cat bytes coming from the kernel to the end of an
+sds string without copying into an intermediate buffer:
+JA: ⟦CODE0⟧と⟦CODE1⟧を使うと、次の方式を組み立てられます。カーネルから来るバイトを中間バッファーへコピーせず、SDS文字列の末尾へ追加します。
+
+17 [p]
+EN: ⟦CODE0⟧ is documented inside the source code of ⟦CODE1⟧.
+JA: ⟦CODE0⟧の説明は、⟦CODE1⟧のソースコード内にあります。

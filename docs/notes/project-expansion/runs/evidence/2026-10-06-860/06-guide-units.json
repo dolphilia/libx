@@ -1,0 +1,177 @@
+{
+  "page": "01-guide/06-guide.md",
+  "titleEN": "Internals and direct editing",
+  "titleJA": "内部構造と直接編集",
+  "sourceCanonicalSHA256": "4af73712448d3efd5bb8969ad4f743c39bf22dbb0f13ca10e395928d83afb304",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "SDS internals and advanced usage",
+      "originalInnerHTML": "SDS internals and advanced usage",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "At the very beginning of this documentation it was explained how SDS strings\nare allocated, however the prefix stored before the pointer returned to the\nuser was classified as an <em>header</em> without further details. For an advanced\nusage it is better to dig more into the internals of SDS and show the\nstructure implementing it:",
+      "originalInnerHTML": "At the very beginning of this documentation it was explained how SDS strings\nare allocated, however the prefix stored before the pointer returned to the\nuser was classified as an <em>header</em> without further details. For an advanced\nusage it is better to dig more into the internals of SDS and show the\nstructure implementing it:",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "As you can see, the structure may resemble the one of a conventional string\nlibrary, however the ⟦CODE0⟧ field of the structure is different since it is\nnot a pointer but an array without any length declared, so ⟦CODE1⟧ actually\npoints at the first byte just after the ⟦CODE2⟧ integer. So in order to create\nan SDS string we just allocate a piece of memory that is as large as the\n⟦CODE3⟧ structure plus the length of our string, plus an additional byte\nfor the mandatory null term that every SDS string has.",
+      "originalInnerHTML": "As you can see, the structure may resemble the one of a conventional string\nlibrary, however the <code>buf</code> field of the structure is different since it is\nnot a pointer but an array without any length declared, so <code>buf</code> actually\npoints at the first byte just after the <code>free</code> integer. So in order to create\nan SDS string we just allocate a piece of memory that is as large as the\n<code>sdshdr</code> structure plus the length of our string, plus an additional byte\nfor the mandatory null term that every SDS string has.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>buf</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>buf</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>free</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>sdshdr</code>"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ field of the structure is quite obvious, and is the current length\nof the SDS string, always computed every time the string is modified via\nSDS function calls. The ⟦CODE1⟧ field instead represents the amount of free\nmemory in the current allocation that can be used to store more characters.",
+      "originalInnerHTML": "The <code>len</code> field of the structure is quite obvious, and is the current length\nof the SDS string, always computed every time the string is modified via\nSDS function calls. The <code>free</code> field instead represents the amount of free\nmemory in the current allocation that can be used to store more characters.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>len</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>free</code>"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "So the actual SDS layout is this one:",
+      "originalInnerHTML": "So the actual SDS layout is this one:",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "You may wonder why there is some free space at the end of the string, it\nlooks like a waste. Actually after a new SDS string is created, there is no\nfree space at the end at all: the allocation will be as small as possible to\njust hold the header, string, and null term. However other access patterns\nwill create extra free space at the end, like in the following program:",
+      "originalInnerHTML": "You may wonder why there is some free space at the end of the string, it\nlooks like a waste. Actually after a new SDS string is created, there is no\nfree space at the end at all: the allocation will be as small as possible to\njust hold the header, string, and null term. However other access patterns\nwill create extra free space at the end, like in the following program:",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "Since SDS tries to be efficient it can't afford to reallocate the string every\ntime new data is appended, since this would be very inefficient, so it uses\nthe <strong>preallocation of some free space</strong> every time you enlarge the string.",
+      "originalInnerHTML": "Since SDS tries to be efficient it can't afford to reallocate the string every\ntime new data is appended, since this would be very inefficient, so it uses\nthe <strong>preallocation of some free space</strong> every time you enlarge the string.",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "The preallocation algorithm used is the following: every time the string\nis reallocated in order to hold more bytes, the actual allocation size performed\nis two times the minimum required. So for instance if the string currently\nis holding 30 bytes, and we concatenate 2 more bytes, instead of allocating 32\nbytes in total SDS will allocate 64 bytes.",
+      "originalInnerHTML": "The preallocation algorithm used is the following: every time the string\nis reallocated in order to hold more bytes, the actual allocation size performed\nis two times the minimum required. So for instance if the string currently\nis holding 30 bytes, and we concatenate 2 more bytes, instead of allocating 32\nbytes in total SDS will allocate 64 bytes.",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "However there is an hard limit to the allocation it can perform ahead, and is\ndefined by ⟦CODE0⟧. SDS will never allocate more than 1MB of\nadditional space (by default, you can change this default).",
+      "originalInnerHTML": "However there is an hard limit to the allocation it can perform ahead, and is\ndefined by <code>SDS_MAX_PREALLOC</code>. SDS will never allocate more than 1MB of\nadditional space (by default, you can change this default).",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>SDS_MAX_PREALLOC</code>"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "tag": "h2",
+      "sourceHTML": "Shrinking strings",
+      "originalInnerHTML": "Shrinking strings",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "Sometimes there are class of programs that require to use very little memory.\nAfter strings concatenations, trimming, ranges, the string may end having\na non trivial amount of additional space at the end.",
+      "originalInnerHTML": "Sometimes there are class of programs that require to use very little memory.\nAfter strings concatenations, trimming, ranges, the string may end having\na non trivial amount of additional space at the end.",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "It is possible to resize a string back to its minimal size in order to hold\nthe current content by using the function ⟦CODE0⟧.",
+      "originalInnerHTML": "It is possible to resize a string back to its minimal size in order to hold\nthe current content by using the function <code>sdsRemoveFreeSpace</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsRemoveFreeSpace</code>"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "There is also a function that can be used in order to get the size of the\ntotal allocation for a given string, and is called ⟦CODE0⟧.",
+      "originalInnerHTML": "There is also a function that can be used in order to get the size of the\ntotal allocation for a given string, and is called <code>sdsAllocSize</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsAllocSize</code>"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "NOTE: SDS Low level API use cammelCase in order to warn you that you are playing with the fire.",
+      "originalInnerHTML": "NOTE: SDS Low level API use cammelCase in order to warn you that you are playing with the fire.",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "h2",
+      "sourceHTML": "Manual modifications of SDS strings",
+      "originalInnerHTML": "Manual modifications of SDS strings",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "Sometimes you may want to hack with an SDS string manually, without using\nSDS functions. In the following example we implicitly change the length\nof the string, however we want the logical length to reflect the null terminated\nC string.",
+      "originalInnerHTML": "Sometimes you may want to hack with an SDS string manually, without using\nSDS functions. In the following example we implicitly change the length\nof the string, however we want the logical length to reflect the null terminated\nC string.",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "The function ⟦CODE0⟧ does just that, updating the internal length\ninformation for the specified string to the length obtained via ⟦CODE1⟧.",
+      "originalInnerHTML": "The function <code>sdsupdatelen</code> does just that, updating the internal length\ninformation for the specified string to the length obtained via <code>strlen</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsupdatelen</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>strlen</code>"
+        }
+      ]
+    }
+  ]
+}

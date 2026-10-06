@@ -1,0 +1,83 @@
+1 [h1] Simple Dynamic Strings
+
+2 [p] <strong>Notes about verison 2</strong>: this is an updated version of SDS in an attempt
+to finally unify Redis, Disque, Hiredis, and the stand alone SDS versions.
+This version is <strong>NOT* binary compatible</strong> with SDS verison 1, but the API
+is 99% compatible so switching to the new lib should be trivial.
+
+3 [p] Note that this version of SDS may be a slower with certain workloads, but
+uses less memory compared to V1 since header size is dynamic and depends to
+the string to alloc.
+
+4 [p] Moreover it includes a few more API functions, notably ⟦CODE0⟧ which
+is a faster version of ⟦CODE1⟧ that can be used for the simpler
+cases in order to avoid the libc ⟦CODE2⟧ family functions performance
+penalty.
+
+5 [h1] How SDS stirngs work
+
+6 [p] SDS is a string library for C designed to augment the limited libc string
+handling functionalities by adding heap allocated strings that are:
+
+7 [li] Simpler to use.
+
+8 [li] Binary safe.
+
+9 [li] Computationally more efficient.
+
+10 [li] But yet... Compatible with normal C string functions.
+
+11 [p] This is achieved using an alternative design in which instead of using a C
+structure to represent a string, we use a binary prefix that is stored
+before the actual pointer to the string that is returned by SDS to the user.
+
+12 [p] Because of meta data stored before the actual returned pointer as a prefix,
+and because of every SDS string implicitly adding a null term at the end of
+the string regardless of the actual content of the string, SDS strings work
+well together with C strings and the user is free to use them interchangeably
+with real-only functions that access the string in read-only.
+
+13 [p] SDS was a C string I developed in the past for my everyday C programming needs,
+later it was moved into Redis where it is used extensively and where it was
+modified in order to be suitable for high performance operations. Now it was
+extracted from Redis and forked as a stand alone project.
+
+14 [p] Because of its many years life inside Redis, SDS provides both higher level
+functions for easy strings manipulation in C, but also a set of low level
+functions that make it possible to write high performance code without paying
+a penalty for using an higher level string library.
+
+15 [h1] Advantages and disadvantages of SDS
+
+16 [p] Normally dynamic string libraries for C are implemented using a structure
+that defines the string. The structure has a pointer field that is managed
+by the string function, so it looks like this:
+
+17 [p] SDS strings are already mentioned don't follow this schema, and are instead
+a single allocation with a prefix that lives <em>before</em> the address actually
+returned for the string.
+
+18 [p] There are advantages and disadvantages with this approach over the traditional
+approach:
+
+19 [p] <strong>Disadvantage #1</strong>: many functions return the new string as value, since sometimes SDS requires to create a new string with more space, so the most SDS API calls look like this:
+
+20 [p] As you can see ⟦CODE0⟧ is used as input for ⟦CODE1⟧ but is also set to the value
+returned by the SDS API call, since we are not sure if the call modified the
+SDS string we passed or allocated a new one. Not remembering to assign back
+the return value of ⟦CODE2⟧ or similar functions to the variable holding
+the SDS string will result in a bug.
+
+21 [p] <strong>Disadvantage #2</strong>: if an SDS string is shared in different places in your program you have to modify all the references when you modify the string. However most of the times when you need to share SDS strings it is much better to encapsulate them into structures with a ⟦CODE0⟧ otherwise it is too easy to incur into memory leaks.
+
+22 [p] <strong>Advantage #1</strong>: you can pass SDS strings to functions designed for C functions without accessing a struct member or calling a function, like this:
+
+23 [p] In most other libraries this will be something like:
+
+24 [p] Or:
+
+25 [p] <strong>Advantage #2</strong>: accessing individual chars is straightforward. C is a low level language so this is an important operation in many programs. With SDS strings accessing individual chars is very natural:
+
+26 [p] With other libraries your best chance is to assign ⟦CODE0⟧ (or call the function to get the string pointer) to a ⟦CODE1⟧ pointer and work with this. However since the other libraries may reallocate the buffer implicitly every time you call a function that may modify the string you have to get a reference to the buffer again.
+
+27 [p] <strong>Advantage #3</strong>: single allocation has better cache locality. Usually when you access a string created by a string library using a structure, you have two different allocations for the structure representing the string, and the actual buffer holding the string. Over the time the buffer is reallocated, and it is likely that it ends in a totally different part of memory compared to the structure itself. Since modern programs performances are often dominated by cache misses, SDS may perform better in many workloads.

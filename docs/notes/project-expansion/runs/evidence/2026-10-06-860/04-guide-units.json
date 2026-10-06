@@ -1,0 +1,365 @@
+{
+  "page": "01-guide/04-guide.md",
+  "titleEN": "Trimming, ranges, copying and quoting",
+  "titleJA": "切り詰め・範囲・コピー・引用",
+  "sourceCanonicalSHA256": "461d29a4f38f32c84c4bcc74d00cda79894f5cf2f32a26f1d159390298992d55",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h2",
+      "sourceHTML": "Trimming strings and getting ranges",
+      "originalInnerHTML": "Trimming strings and getting ranges",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "String trimming is a common operation where a set of characters are\nremoved from the left and the right of the string. Another useful operation\nregarding strings is the ability to just take a range out of a larger\nstring.",
+      "originalInnerHTML": "String trimming is a common operation where a set of characters are\nremoved from the left and the right of the string. Another useful operation\nregarding strings is the ability to just take a range out of a larger\nstring.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "SDS provides both the operations with the ⟦CODE0⟧ and ⟦CODE1⟧ functions.\nHowever note that both functions work differently than most functions modifying\nSDS strings since the return value is null: basically those functions always\ndestructively modify the passed SDS string, never allocating a new one, because\nboth trimming and ranges will never need more room: the operations can only\nremove characters from the original strings.",
+      "originalInnerHTML": "SDS provides both the operations with the <code>sdstrim</code> and <code>sdsrange</code> functions.\nHowever note that both functions work differently than most functions modifying\nSDS strings since the return value is null: basically those functions always\ndestructively modify the passed SDS string, never allocating a new one, because\nboth trimming and ranges will never need more room: the operations can only\nremove characters from the original strings.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdstrim</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdsrange</code>"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "Because of this behavior, both functions are fast and don't involve reallocation.",
+      "originalInnerHTML": "Because of this behavior, both functions are fast and don't involve reallocation.",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "This is an example of string trimming where newlines and spaces are removed\nfrom an SDS strings:",
+      "originalInnerHTML": "This is an example of string trimming where newlines and spaces are removed\nfrom an SDS strings:",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "Basically ⟦CODE0⟧ takes the SDS string to trim as first argument, and a\nnull terminated set of characters to remove from left and right of the string.\nThe characters are removed as long as they are not interrupted by a character\nthat is not in the list of characters to trim: this is why the space between\n⟦CODE1⟧ and ⟦CODE2⟧ was preserved in the above example.",
+      "originalInnerHTML": "Basically <code>sdstrim</code> takes the SDS string to trim as first argument, and a\nnull terminated set of characters to remove from left and right of the string.\nThe characters are removed as long as they are not interrupted by a character\nthat is not in the list of characters to trim: this is why the space between\n<code>\"my\"</code> and <code>\"string\"</code> was preserved in the above example.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdstrim</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>\"my\"</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>\"string\"</code>"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "Taking ranges is similar, but instead to take a set of characters, it takes\nto indexes, representing the start and the end as specified by zero-based\nindexes inside the string, to obtain the range that will be retained.",
+      "originalInnerHTML": "Taking ranges is similar, but instead to take a set of characters, it takes\nto indexes, representing the start and the end as specified by zero-based\nindexes inside the string, to obtain the range that will be retained.",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "Indexes can be negative to specify a position starting from the end of the\nstring, so that ⟦CODE0⟧ means the last character, ⟦CODE1⟧ the penultimate, and so forth:",
+      "originalInnerHTML": "Indexes can be negative to specify a position starting from the end of the\nstring, so that <code>-1</code> means the last character, <code>-2</code> the penultimate, and so forth:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>-1</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>-2</code>"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "⟦CODE0⟧ is very useful when implementing networking servers processing\na protocol or sending messages. For example the following code is used\nimplementing the write handler of the Redis Cluster message bus between\nnodes:",
+      "originalInnerHTML": "<code>sdsrange</code> is very useful when implementing networking servers processing\na protocol or sending messages. For example the following code is used\nimplementing the write handler of the Redis Cluster message bus between\nnodes:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsrange</code>"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "Every time the socket of the node we want to send the message to is writable\nwe attempt to write as much bytes as possible, and we use ⟦CODE0⟧ in order\nto remove from the buffer what was already sent.",
+      "originalInnerHTML": "Every time the socket of the node we want to send the message to is writable\nwe attempt to write as much bytes as possible, and we use <code>sdsrange</code> in order\nto remove from the buffer what was already sent.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsrange</code>"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "The function to queue new messages to send to some node in the cluster will\nsimply use ⟦CODE0⟧ in order to put more data in the send buffer.",
+      "originalInnerHTML": "The function to queue new messages to send to some node in the cluster will\nsimply use <code>sdscatlen</code> in order to put more data in the send buffer.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdscatlen</code>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "Note that the Redis Cluster bus implements a binary protocol, but since SDS\nis binary safe this is not a problem, so the goal of SDS is not just to provide\nan high level string API for the C programmer but also dynamically allocated\nbuffers that are easy to manage.",
+      "originalInnerHTML": "Note that the Redis Cluster bus implements a binary protocol, but since SDS\nis binary safe this is not a problem, so the goal of SDS is not just to provide\nan high level string API for the C programmer but also dynamically allocated\nbuffers that are easy to manage.",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "h2",
+      "sourceHTML": "String copying",
+      "originalInnerHTML": "String copying",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "The most dangerous and infamus function of the standard C library is probably\n⟦CODE0⟧, so perhaps it is funny how in the context of better designed dynamic\nstring libraries the concept of copying strings is almost irrelevant. Usually\nwhat you do is to create strings with the content you want, or concatenating\nmore content as needed.",
+      "originalInnerHTML": "The most dangerous and infamus function of the standard C library is probably\n<code>strcpy</code>, so perhaps it is funny how in the context of better designed dynamic\nstring libraries the concept of copying strings is almost irrelevant. Usually\nwhat you do is to create strings with the content you want, or concatenating\nmore content as needed.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>strcpy</code>"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "However SDS features a string copy function that is useful in performance\ncritical code sections, however I guess its practical usefulness is limited\nas the function never managed to get called in the context of the 50k\nlines of code composing the Redis code base.",
+      "originalInnerHTML": "However SDS features a string copy function that is useful in performance\ncritical code sections, however I guess its practical usefulness is limited\nas the function never managed to get called in the context of the 50k\nlines of code composing the Redis code base.",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "The string copy function of SDS is called ⟦CODE0⟧ and works like that:",
+      "originalInnerHTML": "The string copy function of SDS is called <code>sdscpylen</code> and works like that:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdscpylen</code>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "As you can see the function receives as input the SDS string ⟦CODE0⟧, but also\nreturns an SDS string. This is common to many SDS functions that modify the\nstring: this way the returned SDS string may be the original one modified\nor a newly allocated one (for example if there was not enough room in the\nold SDS string).",
+      "originalInnerHTML": "As you can see the function receives as input the SDS string <code>s</code>, but also\nreturns an SDS string. This is common to many SDS functions that modify the\nstring: this way the returned SDS string may be the original one modified\nor a newly allocated one (for example if there was not enough room in the\nold SDS string).",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>s</code>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ will simply replace what was in the old SDS string with the\nnew data you pass using the pointer and length argument. There is a similar\nfunction called ⟦CODE1⟧ that does not need a length but expects a null\nterminated string instead.",
+      "originalInnerHTML": "The <code>sdscpylen</code> will simply replace what was in the old SDS string with the\nnew data you pass using the pointer and length argument. There is a similar\nfunction called <code>sdscpy</code> that does not need a length but expects a null\nterminated string instead.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdscpylen</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdscpy</code>"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "You may wonder why it makes sense to have a string copy function in the\nSDS library, since you can simply create a new SDS string from scratch\nwith the new value instead of copying the value in an existing SDS string.\nThe reason is efficiency: ⟦CODE0⟧ will always allocate a new string\nwhile ⟦CODE1⟧ will try to reuse the existing string if there is enough\nroom to old the new content specified by the user, and will allocate a new\none only if needed.",
+      "originalInnerHTML": "You may wonder why it makes sense to have a string copy function in the\nSDS library, since you can simply create a new SDS string from scratch\nwith the new value instead of copying the value in an existing SDS string.\nThe reason is efficiency: <code>sdsnewlen</code> will always allocate a new string\nwhile <code>sdscpylen</code> will try to reuse the existing string if there is enough\nroom to old the new content specified by the user, and will allocate a new\none only if needed.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsnewlen</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdscpylen</code>"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "tag": "h2",
+      "sourceHTML": "Quoting strings",
+      "originalInnerHTML": "Quoting strings",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "In order to provide consistent output to the program user, or for debugging\npurposes, it is often important to turn a string that may contain binary\ndata or special characters into a quoted string. Here for quoted string\nwe mean the common format for String literals in programming source code.\nHowever today this format is also part of the well known serialization formats\nlike JSON and CSV, so it definitely escaped the simple gaol of representing\nliterals strings in the source code of programs.",
+      "originalInnerHTML": "In order to provide consistent output to the program user, or for debugging\npurposes, it is often important to turn a string that may contain binary\ndata or special characters into a quoted string. Here for quoted string\nwe mean the common format for String literals in programming source code.\nHowever today this format is also part of the well known serialization formats\nlike JSON and CSV, so it definitely escaped the simple gaol of representing\nliterals strings in the source code of programs.",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "An example of quoted string literal is the following:",
+      "originalInnerHTML": "An example of quoted string literal is the following:",
+      "protected": []
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "The first byte is a zero byte while the last byte is a newline, so there are\ntwo non alphanumerical characters inside the string.",
+      "originalInnerHTML": "The first byte is a zero byte while the last byte is a newline, so there are\ntwo non alphanumerical characters inside the string.",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "SDS uses a concatenation function for this goal, that concatenates to an\nexisting string the quoted string representation of the input string.",
+      "originalInnerHTML": "SDS uses a concatenation function for this goal, that concatenates to an\nexisting string the quoted string representation of the input string.",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ (where ⟦CODE1⟧ means <em>representation</em>) follows the usualy\nSDS string function rules accepting a char pointer and a length, so you can\nuse it with SDS strings, normal C strings by using strlen() as ⟦CODE2⟧ argument,\nor binary data. The following is an example usage:",
+      "originalInnerHTML": "The <code>scscatrepr</code> (where <code>repr</code> means <em>representation</em>) follows the usualy\nSDS string function rules accepting a char pointer and a length, so you can\nuse it with SDS strings, normal C strings by using strlen() as <code>len</code> argument,\nor binary data. The following is an example usage:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>scscatrepr</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>repr</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>len</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "This is the rules ⟦CODE0⟧ uses for conversion:",
+      "originalInnerHTML": "This is the rules <code>sdscatrepr</code> uses for conversion:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdscatrepr</code>"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "tag": "li",
+      "sourceHTML": "⟦CODE0⟧ and ⟦CODE1⟧ are quoted with a backslash.",
+      "originalInnerHTML": "<code>\\</code> and <code>\"</code> are quoted with a backslash.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>\\</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>\"</code>"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "tag": "li",
+      "sourceHTML": "It quotes special characters ⟦CODE0⟧, ⟦CODE1⟧, ⟦CODE2⟧, ⟦CODE3⟧ and ⟦CODE4⟧.",
+      "originalInnerHTML": "It quotes special characters <code>'\\n'</code>, <code>'\\r'</code>, <code>'\\t'</code>, <code>'\\a'</code> and <code>'\\b'</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>'\\n'</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>'\\r'</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>'\\t'</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>'\\a'</code>"
+        },
+        {
+          "token": "⟦CODE4⟧",
+          "html": "<code>'\\b'</code>"
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "tag": "li",
+      "sourceHTML": "All the other non printable characters not passing the ⟦CODE0⟧ test are quoted in ⟦CODE1⟧ form, that is: backslash followed by ⟦CODE2⟧ followed by two digit hex number representing the character byte value.",
+      "originalInnerHTML": "All the other non printable characters not passing the <code>isprint</code> test are quoted in <code>\\x..</code> form, that is: backslash followed by <code>x</code> followed by two digit hex number representing the character byte value.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>isprint</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>\\x..</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>x</code>"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "tag": "li",
+      "sourceHTML": "The function always adds initial and final double quotes characters.",
+      "originalInnerHTML": "The function always adds initial and final double quotes characters.",
+      "protected": []
+    },
+    {
+      "id": "31",
+      "tag": "p",
+      "sourceHTML": "There is an SDS function that is able to perform the reverse conversion and is\ndocumented in the <em>Tokenization</em> paragraph below.",
+      "originalInnerHTML": "There is an SDS function that is able to perform the reverse conversion and is\ndocumented in the <em>Tokenization</em> paragraph below.",
+      "protected": []
+    }
+  ]
+}

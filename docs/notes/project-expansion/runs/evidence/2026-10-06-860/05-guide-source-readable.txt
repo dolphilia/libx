@@ -1,0 +1,82 @@
+1 [h2] Tokenization
+
+2 [p] Tokenization is the process of splitting a larger string into smaller strings.
+In this specific case, the split is performed specifying another string that
+acts as separator. For example in the following string there are two substrings
+that are separated by the ⟦CODE0⟧ separator:
+
+3 [p] A more common separator that consists of a single character is the comma:
+
+4 [p] In many progrems it is useful to process a line in order to obtain the sub
+strings it is composed of, so SDS provides a function that returns an
+array of SDS strings given a string and a separator.
+
+5 [p] As usually the function can work with both SDS strings or normal C strings.
+The first two arguments ⟦CODE0⟧ and ⟦CODE1⟧ specify the string to tokenize, and the
+other two arguments ⟦CODE2⟧ and ⟦CODE3⟧ the separator to use during the
+tokenization. The final argument ⟦CODE4⟧ is a pointer to an integer that will
+be set to the number of tokens (sub strings) returned.
+
+6 [p] The return value is a heap allocated array of SDS strings.
+
+7 [p] The returned array is heap allocated, and the single elements of the array
+are normal SDS strings. You can free everything calling ⟦CODE0⟧
+as in the example. Alternativey you are free to release the array yourself
+using the ⟦CODE1⟧ function and use and/or free the individual SDS strings
+as usually.
+
+8 [p] A valid approach is to set the array elements you reused in some way to
+⟦CODE0⟧, and use ⟦CODE1⟧ to free all the rest.
+
+9 [h2] Command line oriented tokenization
+
+10 [p] Splitting by a separator is a useful operation, but usually it is not enough
+to perform one of the most common tasks involving some non trivial string
+manipulation, that is, implementing a <strong>Command Line Interface</strong> for a program.
+
+11 [p] This is why SDS also provides an additional function that allows you to split
+arguments provided by the user via the keyboard in an interactive manner, or
+via a file, network, or any other mean, into tokens.
+
+12 [p] The ⟦CODE0⟧ function returns an array of SDS strings exactly like
+⟦CODE1⟧. The function to free the result is also identical, and is
+⟦CODE2⟧. The difference is in the way the tokenization is performed.
+
+13 [p] For example if the input is the following line:
+
+14 [p] The function will return the following tokens:
+
+15 [li] "call"
+
+16 [li] "Sabrina"
+
+17 [li] "and"
+
+18 [li] "Mark Smith\n"
+
+19 [p] Basically different tokens need to be separated by one or more spaces, and
+every single token can also be a quoted string in the same format that
+⟦CODE0⟧ is able to emit.
+
+20 [h2] String joining
+
+21 [p] There are two functions doing the reverse of tokenization by joining strings
+into a single one.
+
+22 [p] The two functions take as input an array of strings of length ⟦CODE0⟧ and
+a separator and its length, and produce as output an SDS string consisting
+of all the specified strings separated by the specified separator.
+
+23 [p] The difference between ⟦CODE0⟧ and ⟦CODE1⟧ is that the former accept
+C null terminated strings as input while the latter requires all the strings
+in the array to be SDS strings. However because of this only ⟦CODE2⟧ is
+able to deal with binary data.
+
+24 [h2] Error handling
+
+25 [p] All the SDS functions that return an SDS pointer may also return ⟦CODE0⟧ on
+out of memory, this is basically the only check you need to perform.
+
+26 [p] However many modern C programs handle out of memory simply aborting the program
+so you may want to do this as well by wrapping ⟦CODE0⟧ and other related
+memory allocation calls directly.

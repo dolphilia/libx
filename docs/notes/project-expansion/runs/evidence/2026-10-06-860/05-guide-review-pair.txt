@@ -1,0 +1,134 @@
+1 [h2]
+EN: Tokenization
+JA: トークン化
+
+2 [p]
+EN: Tokenization is the process of splitting a larger string into smaller strings.
+In this specific case, the split is performed specifying another string that
+acts as separator. For example in the following string there are two substrings
+that are separated by the ⟦CODE0⟧ separator:
+JA: トークン化とは、長い文字列を短い文字列へ分割する処理です。ここでは、区切りとして働く別の文字列を指定して分割します。たとえば、次の文字列には、⟦CODE0⟧という区切りで分けられた2つの部分文字列があります。
+
+3 [p]
+EN: A more common separator that consists of a single character is the comma:
+JA: 1文字からなる、より一般的な区切りはコンマです。
+
+4 [p]
+EN: In many progrems it is useful to process a line in order to obtain the sub
+strings it is composed of, so SDS provides a function that returns an
+array of SDS strings given a string and a separator.
+JA: 多くのプログラムでは、1行を処理して、その構成要素である部分文字列を取り出すと便利です。そのため、SDSには、文字列と区切りを渡すとSDS文字列の配列を返す関数があります。
+
+5 [p]
+EN: As usually the function can work with both SDS strings or normal C strings.
+The first two arguments ⟦CODE0⟧ and ⟦CODE1⟧ specify the string to tokenize, and the
+other two arguments ⟦CODE2⟧ and ⟦CODE3⟧ the separator to use during the
+tokenization. The final argument ⟦CODE4⟧ is a pointer to an integer that will
+be set to the number of tokens (sub strings) returned.
+JA: 通常どおり、この関数はSDS文字列と通常のC文字列の両方を扱えます。最初の2引数⟦CODE0⟧と⟦CODE1⟧はトークン化する文字列を指定し、次の2引数⟦CODE2⟧と⟦CODE3⟧はトークン化に使う区切りを指定します。最後の引数⟦CODE4⟧は整数へのポインターで、返されたトークン（部分文字列）の数が設定されます。
+
+6 [p]
+EN: The return value is a heap allocated array of SDS strings.
+JA: 戻り値は、ヒープ上に確保されたSDS文字列の配列です。
+
+7 [p]
+EN: The returned array is heap allocated, and the single elements of the array
+are normal SDS strings. You can free everything calling ⟦CODE0⟧
+as in the example. Alternativey you are free to release the array yourself
+using the ⟦CODE1⟧ function and use and/or free the individual SDS strings
+as usually.
+JA: 返される配列はヒープ上に確保され、各要素は通常のSDS文字列です。例のように⟦CODE0⟧を呼ぶと、すべてを解放できます。また、⟦CODE1⟧関数で配列だけを自分で解放し、個々のSDS文字列は通常どおり使ったり、解放したりしてもかまいません。
+
+8 [p]
+EN: A valid approach is to set the array elements you reused in some way to
+⟦CODE0⟧, and use ⟦CODE1⟧ to free all the rest.
+JA: 何らかの形で再利用した配列要素を⟦CODE0⟧に設定し、⟦CODE1⟧で残りをすべて解放する方法も有効です。
+
+9 [h2]
+EN: Command line oriented tokenization
+JA: コマンドライン向けのトークン化
+
+10 [p]
+EN: Splitting by a separator is a useful operation, but usually it is not enough
+to perform one of the most common tasks involving some non trivial string
+manipulation, that is, implementing a <strong>Command Line Interface</strong> for a program.
+JA: 区切りによる分割は便利ですが、多少複雑な文字列操作を要する典型的な作業である、プログラムの<strong>コマンドラインインターフェース</strong>の実装には、通常それだけでは足りません。
+
+11 [p]
+EN: This is why SDS also provides an additional function that allows you to split
+arguments provided by the user via the keyboard in an interactive manner, or
+via a file, network, or any other mean, into tokens.
+JA: そのため、SDSには、利用者がキーボードで対話的に入力した引数や、ファイル、ネットワークなどから渡した引数を、トークンへ分割する追加の関数もあります。
+
+12 [p]
+EN: The ⟦CODE0⟧ function returns an array of SDS strings exactly like
+⟦CODE1⟧. The function to free the result is also identical, and is
+⟦CODE2⟧. The difference is in the way the tokenization is performed.
+JA: ⟦CODE0⟧関数は、⟦CODE1⟧と同じくSDS文字列の配列を返します。結果を解放する関数も同じ⟦CODE2⟧です。違いは、トークン化の方法にあります。
+
+13 [p]
+EN: For example if the input is the following line:
+JA: たとえば、入力が次の行だった場合：
+
+14 [p]
+EN: The function will return the following tokens:
+JA: 関数は次のトークンを返します。
+
+15 [li]
+EN: "call"
+JA: "call"
+
+16 [li]
+EN: "Sabrina"
+JA: "Sabrina"
+
+17 [li]
+EN: "and"
+JA: "and"
+
+18 [li]
+EN: "Mark Smith\n"
+JA: "Mark Smith\n"
+
+19 [p]
+EN: Basically different tokens need to be separated by one or more spaces, and
+every single token can also be a quoted string in the same format that
+⟦CODE0⟧ is able to emit.
+JA: 基本的に、トークン同士は1つ以上の空白で区切る必要があります。また、各トークンには、⟦CODE0⟧が出力できるものと同じ形式の引用表現の文字列も使えます。
+
+20 [h2]
+EN: String joining
+JA: 文字列の結合
+
+21 [p]
+EN: There are two functions doing the reverse of tokenization by joining strings
+into a single one.
+JA: トークン化の逆に、複数の文字列を1つへ結合する関数が2つあります。
+
+22 [p]
+EN: The two functions take as input an array of strings of length ⟦CODE0⟧ and
+a separator and its length, and produce as output an SDS string consisting
+of all the specified strings separated by the specified separator.
+JA: 両関数は、要素数⟦CODE0⟧の文字列配列と、区切りおよびその長さを入力として受け取ります。そして、指定したすべての文字列を、指定した区切りでつないだSDS文字列を出力します。
+
+23 [p]
+EN: The difference between ⟦CODE0⟧ and ⟦CODE1⟧ is that the former accept
+C null terminated strings as input while the latter requires all the strings
+in the array to be SDS strings. However because of this only ⟦CODE2⟧ is
+able to deal with binary data.
+JA: ⟦CODE0⟧と⟦CODE1⟧の違いは、前者がNUL終端されたC文字列を入力として受け取るのに対し、後者は配列内のすべての文字列がSDS文字列であることを要求する点です。このため、バイナリーデータを扱えるのは⟦CODE2⟧だけです。
+
+24 [h2]
+EN: Error handling
+JA: エラー処理
+
+25 [p]
+EN: All the SDS functions that return an SDS pointer may also return ⟦CODE0⟧ on
+out of memory, this is basically the only check you need to perform.
+JA: SDSポインターを返す関数はすべて、メモリー不足の場合に⟦CODE0⟧を返す可能性もあります。基本的には、これだけを確認すれば十分です。
+
+26 [p]
+EN: However many modern C programs handle out of memory simply aborting the program
+so you may want to do this as well by wrapping ⟦CODE0⟧ and other related
+memory allocation calls directly.
+JA: ただし、現代のCプログラムの多くは、メモリー不足になると単にプログラムを中止します。同じ方法を取りたい場合は、⟦CODE0⟧など、関連するメモリー確保の呼び出しを直接ラップするとよいでしょう。

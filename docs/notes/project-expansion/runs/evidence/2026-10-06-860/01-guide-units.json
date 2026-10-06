@@ -1,0 +1,237 @@
+{
+  "page": "01-guide/01-guide.md",
+  "titleEN": "Overview and design",
+  "titleJA": "概要と設計",
+  "sourceCanonicalSHA256": "ffa423a3e18848f49ad83cb05c65d09ddcabb867694e88f26c8a1307e1eecd21",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "Simple Dynamic Strings",
+      "originalInnerHTML": "Simple Dynamic Strings",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "<strong>Notes about verison 2</strong>: this is an updated version of SDS in an attempt\nto finally unify Redis, Disque, Hiredis, and the stand alone SDS versions.\nThis version is <strong>NOT* binary compatible</strong> with SDS verison 1, but the API\nis 99% compatible so switching to the new lib should be trivial.",
+      "originalInnerHTML": "<strong>Notes about verison 2</strong>: this is an updated version of SDS in an attempt\nto finally unify Redis, Disque, Hiredis, and the stand alone SDS versions.\nThis version is <strong>NOT* binary compatible</strong> with SDS verison 1, but the API\nis 99% compatible so switching to the new lib should be trivial.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "Note that this version of SDS may be a slower with certain workloads, but\nuses less memory compared to V1 since header size is dynamic and depends to\nthe string to alloc.",
+      "originalInnerHTML": "Note that this version of SDS may be a slower with certain workloads, but\nuses less memory compared to V1 since header size is dynamic and depends to\nthe string to alloc.",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "Moreover it includes a few more API functions, notably ⟦CODE0⟧ which\nis a faster version of ⟦CODE1⟧ that can be used for the simpler\ncases in order to avoid the libc ⟦CODE2⟧ family functions performance\npenalty.",
+      "originalInnerHTML": "Moreover it includes a few more API functions, notably <code>sdscatfmt</code> which\nis a faster version of <code>sdscatprintf</code> that can be used for the simpler\ncases in order to avoid the libc <code>printf</code> family functions performance\npenalty.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdscatfmt</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdscatprintf</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>printf</code>"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "tag": "h1",
+      "sourceHTML": "How SDS stirngs work",
+      "originalInnerHTML": "How SDS stirngs work",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "SDS is a string library for C designed to augment the limited libc string\nhandling functionalities by adding heap allocated strings that are:",
+      "originalInnerHTML": "SDS is a string library for C designed to augment the limited libc string\nhandling functionalities by adding heap allocated strings that are:",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "li",
+      "sourceHTML": "Simpler to use.",
+      "originalInnerHTML": "Simpler to use.",
+      "protected": []
+    },
+    {
+      "id": "8",
+      "tag": "li",
+      "sourceHTML": "Binary safe.",
+      "originalInnerHTML": "Binary safe.",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "li",
+      "sourceHTML": "Computationally more efficient.",
+      "originalInnerHTML": "Computationally more efficient.",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "li",
+      "sourceHTML": "But yet... Compatible with normal C string functions.",
+      "originalInnerHTML": "But yet... Compatible with normal C string functions.",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "This is achieved using an alternative design in which instead of using a C\nstructure to represent a string, we use a binary prefix that is stored\nbefore the actual pointer to the string that is returned by SDS to the user.",
+      "originalInnerHTML": "This is achieved using an alternative design in which instead of using a C\nstructure to represent a string, we use a binary prefix that is stored\nbefore the actual pointer to the string that is returned by SDS to the user.",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "Because of meta data stored before the actual returned pointer as a prefix,\nand because of every SDS string implicitly adding a null term at the end of\nthe string regardless of the actual content of the string, SDS strings work\nwell together with C strings and the user is free to use them interchangeably\nwith real-only functions that access the string in read-only.",
+      "originalInnerHTML": "Because of meta data stored before the actual returned pointer as a prefix,\nand because of every SDS string implicitly adding a null term at the end of\nthe string regardless of the actual content of the string, SDS strings work\nwell together with C strings and the user is free to use them interchangeably\nwith real-only functions that access the string in read-only.",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "SDS was a C string I developed in the past for my everyday C programming needs,\nlater it was moved into Redis where it is used extensively and where it was\nmodified in order to be suitable for high performance operations. Now it was\nextracted from Redis and forked as a stand alone project.",
+      "originalInnerHTML": "SDS was a C string I developed in the past for my everyday C programming needs,\nlater it was moved into Redis where it is used extensively and where it was\nmodified in order to be suitable for high performance operations. Now it was\nextracted from Redis and forked as a stand alone project.",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "Because of its many years life inside Redis, SDS provides both higher level\nfunctions for easy strings manipulation in C, but also a set of low level\nfunctions that make it possible to write high performance code without paying\na penalty for using an higher level string library.",
+      "originalInnerHTML": "Because of its many years life inside Redis, SDS provides both higher level\nfunctions for easy strings manipulation in C, but also a set of low level\nfunctions that make it possible to write high performance code without paying\na penalty for using an higher level string library.",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "h1",
+      "sourceHTML": "Advantages and disadvantages of SDS",
+      "originalInnerHTML": "Advantages and disadvantages of SDS",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "Normally dynamic string libraries for C are implemented using a structure\nthat defines the string. The structure has a pointer field that is managed\nby the string function, so it looks like this:",
+      "originalInnerHTML": "Normally dynamic string libraries for C are implemented using a structure\nthat defines the string. The structure has a pointer field that is managed\nby the string function, so it looks like this:",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "SDS strings are already mentioned don't follow this schema, and are instead\na single allocation with a prefix that lives <em>before</em> the address actually\nreturned for the string.",
+      "originalInnerHTML": "SDS strings are already mentioned don't follow this schema, and are instead\na single allocation with a prefix that lives <em>before</em> the address actually\nreturned for the string.",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "p",
+      "sourceHTML": "There are advantages and disadvantages with this approach over the traditional\napproach:",
+      "originalInnerHTML": "There are advantages and disadvantages with this approach over the traditional\napproach:",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "<strong>Disadvantage #1</strong>: many functions return the new string as value, since sometimes SDS requires to create a new string with more space, so the most SDS API calls look like this:",
+      "originalInnerHTML": "<strong>Disadvantage #1</strong>: many functions return the new string as value, since sometimes SDS requires to create a new string with more space, so the most SDS API calls look like this:",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "As you can see ⟦CODE0⟧ is used as input for ⟦CODE1⟧ but is also set to the value\nreturned by the SDS API call, since we are not sure if the call modified the\nSDS string we passed or allocated a new one. Not remembering to assign back\nthe return value of ⟦CODE2⟧ or similar functions to the variable holding\nthe SDS string will result in a bug.",
+      "originalInnerHTML": "As you can see <code>s</code> is used as input for <code>sdscat</code> but is also set to the value\nreturned by the SDS API call, since we are not sure if the call modified the\nSDS string we passed or allocated a new one. Not remembering to assign back\nthe return value of <code>sdscat</code> or similar functions to the variable holding\nthe SDS string will result in a bug.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>s</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdscat</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>sdscat</code>"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "<strong>Disadvantage #2</strong>: if an SDS string is shared in different places in your program you have to modify all the references when you modify the string. However most of the times when you need to share SDS strings it is much better to encapsulate them into structures with a ⟦CODE0⟧ otherwise it is too easy to incur into memory leaks.",
+      "originalInnerHTML": "<strong>Disadvantage #2</strong>: if an SDS string is shared in different places in your program you have to modify all the references when you modify the string. However most of the times when you need to share SDS strings it is much better to encapsulate them into structures with a <code>reference count</code> otherwise it is too easy to incur into memory leaks.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>reference count</code>"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "<strong>Advantage #1</strong>: you can pass SDS strings to functions designed for C functions without accessing a struct member or calling a function, like this:",
+      "originalInnerHTML": "<strong>Advantage #1</strong>: you can pass SDS strings to functions designed for C functions without accessing a struct member or calling a function, like this:",
+      "protected": []
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "In most other libraries this will be something like:",
+      "originalInnerHTML": "In most other libraries this will be something like:",
+      "protected": []
+    },
+    {
+      "id": "24",
+      "tag": "p",
+      "sourceHTML": "Or:",
+      "originalInnerHTML": "Or:",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "<strong>Advantage #2</strong>: accessing individual chars is straightforward. C is a low level language so this is an important operation in many programs. With SDS strings accessing individual chars is very natural:",
+      "originalInnerHTML": "<strong>Advantage #2</strong>: accessing individual chars is straightforward. C is a low level language so this is an important operation in many programs. With SDS strings accessing individual chars is very natural:",
+      "protected": []
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "With other libraries your best chance is to assign ⟦CODE0⟧ (or call the function to get the string pointer) to a ⟦CODE1⟧ pointer and work with this. However since the other libraries may reallocate the buffer implicitly every time you call a function that may modify the string you have to get a reference to the buffer again.",
+      "originalInnerHTML": "With other libraries your best chance is to assign <code>string-&gt;buf</code> (or call the function to get the string pointer) to a <code>char</code> pointer and work with this. However since the other libraries may reallocate the buffer implicitly every time you call a function that may modify the string you have to get a reference to the buffer again.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>string-&gt;buf</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>char</code>"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "<strong>Advantage #3</strong>: single allocation has better cache locality. Usually when you access a string created by a string library using a structure, you have two different allocations for the structure representing the string, and the actual buffer holding the string. Over the time the buffer is reallocated, and it is likely that it ends in a totally different part of memory compared to the structure itself. Since modern programs performances are often dominated by cache misses, SDS may perform better in many workloads.",
+      "originalInnerHTML": "<strong>Advantage #3</strong>: single allocation has better cache locality. Usually when you access a string created by a string library using a structure, you have two different allocations for the structure representing the string, and the actual buffer holding the string. Over the time the buffer is reallocated, and it is likely that it ends in a totally different part of memory compared to the structure itself. Since modern programs performances are often dominated by cache misses, SDS may perform better in many workloads.",
+      "protected": []
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+1 [h1]
+EN: Simple Dynamic Strings
+JA: Simple Dynamic Strings
+
+2 [p]
+EN: <strong>Notes about verison 2</strong>: this is an updated version of SDS in an attempt
+to finally unify Redis, Disque, Hiredis, and the stand alone SDS versions.
+This version is <strong>NOT* binary compatible</strong> with SDS verison 1, but the API
+is 99% compatible so switching to the new lib should be trivial.
+JA: <strong>バージョン2について</strong>：これは、Redis、Disque、Hiredis、単独配布版にあるSDSを最終的に統一するための更新版です。SDSバージョン1との<strong>バイナリー互換性はありません</strong>が、APIは99%互換なので、新しいライブラリーへの切り替えは容易なはずです。
+
+3 [p]
+EN: Note that this version of SDS may be a slower with certain workloads, but
+uses less memory compared to V1 since header size is dynamic and depends to
+the string to alloc.
+JA: この版のSDSは、処理内容によっては遅くなる場合があります。ただし、ヘッダーのサイズが可変で、確保する文字列に応じて決まるため、V1よりメモリー使用量が少なくなります。
+
+4 [p]
+EN: Moreover it includes a few more API functions, notably ⟦CODE0⟧ which
+is a faster version of ⟦CODE1⟧ that can be used for the simpler
+cases in order to avoid the libc ⟦CODE2⟧ family functions performance
+penalty.
+JA: さらに、API関数もいくつか追加されています。特に⟦CODE0⟧は⟦CODE1⟧の高速版で、単純なケースに使うことで、libcの⟦CODE2⟧系関数による性能上の負担を避けられます。
+
+5 [h1]
+EN: How SDS stirngs work
+JA: SDS文字列の仕組み
+
+6 [p]
+EN: SDS is a string library for C designed to augment the limited libc string
+handling functionalities by adding heap allocated strings that are:
+JA: SDSは、libcの限られた文字列処理機能を補うためのC言語用文字列ライブラリーです。ヒープ上に確保した文字列に、次の性質を持たせます。
+
+7 [li]
+EN: Simpler to use.
+JA: 使い方が簡単。
+
+8 [li]
+EN: Binary safe.
+JA: バイナリーセーフ。
+
+9 [li]
+EN: Computationally more efficient.
+JA: 計算効率が高い。
+
+10 [li]
+EN: But yet... Compatible with normal C string functions.
+JA: それでいて、通常のC文字列関数と互換性がある。
+
+11 [p]
+EN: This is achieved using an alternative design in which instead of using a C
+structure to represent a string, we use a binary prefix that is stored
+before the actual pointer to the string that is returned by SDS to the user.
+JA: これを実現するため、文字列をCの構造体で表す代わりに、SDSが利用者へ返す文字列ポインターの直前にバイナリーの接頭部を格納する、別の設計を採用しています。
+
+12 [p]
+EN: Because of meta data stored before the actual returned pointer as a prefix,
+and because of every SDS string implicitly adding a null term at the end of
+the string regardless of the actual content of the string, SDS strings work
+well together with C strings and the user is free to use them interchangeably
+with real-only functions that access the string in read-only.
+JA: 返すポインターの直前の接頭部にメタデータを格納し、実際の内容にかかわらず、すべてのSDS文字列の末尾に暗黙にNUL終端を追加します。そのため、SDS文字列はC文字列と組み合わせやすく、文字列を読み取るだけの関数では、両者を自由に置き換えて使えます。
+
+13 [p]
+EN: SDS was a C string I developed in the past for my everyday C programming needs,
+later it was moved into Redis where it is used extensively and where it was
+modified in order to be suitable for high performance operations. Now it was
+extracted from Redis and forked as a stand alone project.
+JA: SDSは、私が日々のCプログラミングのために以前開発したC文字列ライブラリーです。その後Redisへ移され、広く使われるようになり、高性能な処理に適するよう変更されました。今回Redisから切り出し、独立したプロジェクトとしてフォークしました。
+
+14 [p]
+EN: Because of its many years life inside Redis, SDS provides both higher level
+functions for easy strings manipulation in C, but also a set of low level
+functions that make it possible to write high performance code without paying
+a penalty for using an higher level string library.
+JA: Redis内で長年使われてきたため、SDSにはCで文字列を簡単に操作するための高水準の関数と、高水準の文字列ライブラリーを使う負担をかけずに高性能なコードを書くための低水準の関数群の両方があります。
+
+15 [h1]
+EN: Advantages and disadvantages of SDS
+JA: SDSの長所と短所
+
+16 [p]
+EN: Normally dynamic string libraries for C are implemented using a structure
+that defines the string. The structure has a pointer field that is managed
+by the string function, so it looks like this:
+JA: C言語用の動的文字列ライブラリーは、通常、文字列を定義する構造体で実装されます。この構造体には、文字列関数が管理するポインターフィールドがあり、次のようになります。
+
+17 [p]
+EN: SDS strings are already mentioned don't follow this schema, and are instead
+a single allocation with a prefix that lives <em>before</em> the address actually
+returned for the string.
+JA: 前述のとおり、SDS文字列はこの方式を使いません。代わりに一度のメモリー確保で構成され、文字列として実際に返すアドレスの<em>前</em>に接頭部を置きます。
+
+18 [p]
+EN: There are advantages and disadvantages with this approach over the traditional
+approach:
+JA: この方式には、従来の方式に比べて長所と短所があります。
+
+19 [p]
+EN: <strong>Disadvantage #1</strong>: many functions return the new string as value, since sometimes SDS requires to create a new string with more space, so the most SDS API calls look like this:
+JA: <strong>短所1</strong>：SDSでは、ときに容量を増やした新しい文字列を作る必要があるため、多くの関数が新しい文字列を戻り値として返します。そのため、大半のSDS API呼び出しは次の形になります。
+
+20 [p]
+EN: As you can see ⟦CODE0⟧ is used as input for ⟦CODE1⟧ but is also set to the value
+returned by the SDS API call, since we are not sure if the call modified the
+SDS string we passed or allocated a new one. Not remembering to assign back
+the return value of ⟦CODE2⟧ or similar functions to the variable holding
+the SDS string will result in a bug.
+JA: このように、⟦CODE0⟧は⟦CODE1⟧への入力であると同時に、SDS API呼び出しの戻り値を代入する先でもあります。呼び出しが渡したSDS文字列を変更したのか、新しい文字列を確保したのかが分からないためです。⟦CODE2⟧などの戻り値を、SDS文字列を保持する変数へ代入し直すのを忘れると、バグになります。
+
+21 [p]
+EN: <strong>Disadvantage #2</strong>: if an SDS string is shared in different places in your program you have to modify all the references when you modify the string. However most of the times when you need to share SDS strings it is much better to encapsulate them into structures with a ⟦CODE0⟧ otherwise it is too easy to incur into memory leaks.
+JA: <strong>短所2</strong>：プログラム内の複数の場所でSDS文字列を共有している場合、文字列を変更するときには、すべての参照を更新する必要があります。ただし、SDS文字列の共有が必要な場合には、たいてい⟦CODE0⟧を持つ構造体へ格納するほうが適切です。そうしないと、メモリーリークが起きやすくなります。
+
+22 [p]
+EN: <strong>Advantage #1</strong>: you can pass SDS strings to functions designed for C functions without accessing a struct member or calling a function, like this:
+JA: <strong>長所1</strong>：構造体のメンバーにアクセスしたり、関数を呼んだりせずに、C文字列用の関数へSDS文字列を直接渡せます。次のように使います。
+
+23 [p]
+EN: In most other libraries this will be something like:
+JA: ほかの大半のライブラリーでは、次のような形になります。
+
+24 [p]
+EN: Or:
+JA: または、次の形です。
+
+25 [p]
+EN: <strong>Advantage #2</strong>: accessing individual chars is straightforward. C is a low level language so this is an important operation in many programs. With SDS strings accessing individual chars is very natural:
+JA: <strong>長所2</strong>：個々の文字へのアクセスが簡単です。Cは低水準の言語なので、多くのプログラムでこれは重要な操作です。SDS文字列では、個々の文字にとても自然にアクセスできます。
+
+26 [p]
+EN: With other libraries your best chance is to assign ⟦CODE0⟧ (or call the function to get the string pointer) to a ⟦CODE1⟧ pointer and work with this. However since the other libraries may reallocate the buffer implicitly every time you call a function that may modify the string you have to get a reference to the buffer again.
+JA: ほかのライブラリーでは、⟦CODE0⟧を⟦CODE1⟧ポインターへ代入するか、文字列ポインターを取得する関数を呼び、そのポインターで処理するのが最善でしょう。ただし、そうしたライブラリーは、文字列を変更し得る関数を呼ぶたびに、暗黙にバッファーを再確保する可能性があります。そのため、バッファーへの参照を取り直す必要があります。
+
+27 [p]
+EN: <strong>Advantage #3</strong>: single allocation has better cache locality. Usually when you access a string created by a string library using a structure, you have two different allocations for the structure representing the string, and the actual buffer holding the string. Over the time the buffer is reallocated, and it is likely that it ends in a totally different part of memory compared to the structure itself. Since modern programs performances are often dominated by cache misses, SDS may perform better in many workloads.
+JA: <strong>長所3</strong>：一度のメモリー確保により、キャッシュ局所性が良くなります。構造体を使う文字列ライブラリーでは、通常、文字列を表す構造体と、実際の文字列を保持するバッファーを別々に確保します。時間がたつにつれてバッファーが再確保され、構造体とはまったく異なるメモリー領域へ移る可能性があります。現代のプログラムの性能はキャッシュミスに左右されることが多いため、SDSは多くの処理で、より良い性能を発揮する可能性があります。

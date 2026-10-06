@@ -1,0 +1,40 @@
+1 [h2]
+EN: Formatting strings
+JA: 文字列の書式化
+
+2 [p]
+EN: There is a special string concatenation function that accepts a ⟦CODE0⟧ alike
+format specifier and cats the formatted string to the specified string.
+JA: ⟦CODE0⟧に似た書式指定子を受け取り、書式化した文字列を指定の文字列へ連結する専用の関数があります。
+
+3 [p]
+EN: Example:
+JA: 例：
+
+4 [p]
+EN: Often you need to create SDS string directly from ⟦CODE0⟧ format specifiers.
+Because ⟦CODE1⟧ is actually a function that concatenates strings all
+you need is to concatenate your string to an empty string:
+JA: ⟦CODE0⟧の書式指定子から、SDS文字列を直接作成したいこともよくあります。⟦CODE1⟧は実際には文字列を連結する関数なので、空文字列へ連結するだけで作成できます。
+
+5 [p]
+EN: You can use ⟦CODE0⟧ in order to convert numbers into SDS strings:
+JA: ⟦CODE0⟧を使って、数値をSDS文字列へ変換できます。
+
+6 [p]
+EN: However this is slow and we have a special function to make it efficient.
+JA: ただし、この方法は遅いため、効率良く処理するための専用関数を用意しています。
+
+7 [h2]
+EN: Fast number to string operations
+JA: 数値から文字列への高速変換
+
+8 [p]
+EN: Creating an SDS string from an integer may be a common operation in certain
+kind of programs, and while you may do this with ⟦CODE0⟧ the performance
+hit is big, so SDS provides a specialized function.
+JA: プログラムによっては、整数からSDS文字列を作ることがよくあります。⟦CODE0⟧でもできますが、性能上の負担が大きいため、SDSには専用関数があります。
+
+9 [p]
+EN: Use it like this:
+JA: 次のように使います。

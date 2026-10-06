@@ -1,0 +1,177 @@
+{
+  "page": "01-guide/07-guide.md",
+  "titleEN": "Sharing, heap checks and zero copy",
+  "titleJA": "参照共有・ヒープ検査・ゼロコピー",
+  "sourceCanonicalSHA256": "82e46fc8919fe31eedff4fe3854c3f08bb4a05bd49e8f19b1ce78a2170768321",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h2",
+      "sourceHTML": "Sharing SDS strings",
+      "originalInnerHTML": "Sharing SDS strings",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "If you are writing a program in which it is advantageous to share the same\nSDS string across different data structures, it is absolutely advised to\nencapsulate SDS strings into structures that remember the number of references\nof the string, with functions to increment and decrement the number of references.",
+      "originalInnerHTML": "If you are writing a program in which it is advantageous to share the same\nSDS string across different data structures, it is absolutely advised to\nencapsulate SDS strings into structures that remember the number of references\nof the string, with functions to increment and decrement the number of references.",
+      "protected": []
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "This approach is a memory management technique called <em>reference counting</em> and\nin the context of SDS has two advantages:",
+      "originalInnerHTML": "This approach is a memory management technique called <em>reference counting</em> and\nin the context of SDS has two advantages:",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "li",
+      "sourceHTML": "It is less likely that you'll create memory leaks or bugs due to non freeing SDS strings or freeing already freed strings.",
+      "originalInnerHTML": "It is less likely that you'll create memory leaks or bugs due to non freeing SDS strings or freeing already freed strings.",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "li",
+      "sourceHTML": "You'll not need to update every reference to an SDS string when you modify it (since the new SDS string may point to a different memory location).",
+      "originalInnerHTML": "You'll not need to update every reference to an SDS string when you modify it (since the new SDS string may point to a different memory location).",
+      "protected": []
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "While this is definitely a very common programming technique I'll outline\nthe basic ideas here. You create a structure like that:",
+      "originalInnerHTML": "While this is definitely a very common programming technique I'll outline\nthe basic ideas here. You create a structure like that:",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "When new strings are created, the structure is allocated and returned with\n⟦CODE0⟧ set to 1. The you have two functions to change the reference count\nof the shared string:",
+      "originalInnerHTML": "When new strings are created, the structure is allocated and returned with\n<code>refcount</code> set to 1. The you have two functions to change the reference count\nof the shared string:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>refcount</code>"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "tag": "li",
+      "sourceHTML": "⟦CODE0⟧ will simply increment ⟦CODE1⟧ of 1 in the structure. It will be called every time you add a reference to the string on some new data structure, variable, or whatever.",
+      "originalInnerHTML": "<code>incrementStringRefCount</code> will simply increment <code>refcount</code> of 1 in the structure. It will be called every time you add a reference to the string on some new data structure, variable, or whatever.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>incrementStringRefCount</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>refcount</code>"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "tag": "li",
+      "sourceHTML": "⟦CODE0⟧ is used when you remove a reference. This function is however special since when the ⟦CODE1⟧ drops to zero, it automatically frees the SDS string, and the ⟦CODE2⟧ structure as well.",
+      "originalInnerHTML": "<code>decrementStringRefCount</code> is used when you remove a reference. This function is however special since when the <code>refcount</code> drops to zero, it automatically frees the SDS string, and the <code>mySharedString</code> structure as well.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>decrementStringRefCount</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>refcount</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>mySharedString</code>"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "tag": "h2",
+      "sourceHTML": "Interactions with heap checkers",
+      "originalInnerHTML": "Interactions with heap checkers",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "Because SDS returns pointers into the middle of memory chunks allocated with\n⟦CODE0⟧, heap checkers may have issues, however:",
+      "originalInnerHTML": "Because SDS returns pointers into the middle of memory chunks allocated with\n<code>malloc</code>, heap checkers may have issues, however:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>malloc</code>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "tag": "li",
+      "sourceHTML": "The popular Valgrind program will detect SDS strings are <em>possibly lost</em> memory and never as <em>definitely lost</em>, so it is easy to tell if there is a leak or not. I used Valgrind with Redis for years and every real leak was consistently detected as \"definitely lost\".",
+      "originalInnerHTML": "The popular Valgrind program will detect SDS strings are <em>possibly lost</em> memory and never as <em>definitely lost</em>, so it is easy to tell if there is a leak or not. I used Valgrind with Redis for years and every real leak was consistently detected as \"definitely lost\".",
+      "protected": []
+    },
+    {
+      "id": "13",
+      "tag": "li",
+      "sourceHTML": "OSX instrumentation tools don't detect SDS strings as leaks but are able to correctly handle pointers pointing to the middle of memory chunks.",
+      "originalInnerHTML": "OSX instrumentation tools don't detect SDS strings as leaks but are able to correctly handle pointers pointing to the middle of memory chunks.",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "h2",
+      "sourceHTML": "Zero copy append from syscalls",
+      "originalInnerHTML": "Zero copy append from syscalls",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "p",
+      "sourceHTML": "At this point you should have all the tools to dig more inside the SDS\nlibrary by reading the source code, however there is an interesting pattern\nyou can mount using the low level API exported, that is used inside Redis\nin order to improve performances of the networking code.",
+      "originalInnerHTML": "At this point you should have all the tools to dig more inside the SDS\nlibrary by reading the source code, however there is an interesting pattern\nyou can mount using the low level API exported, that is used inside Redis\nin order to improve performances of the networking code.",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "Using ⟦CODE0⟧ and ⟦CODE1⟧ it is possible to mount the\nfollowing schema, to cat bytes coming from the kernel to the end of an\nsds string without copying into an intermediate buffer:",
+      "originalInnerHTML": "Using <code>sdsIncrLen()</code> and <code>sdsMakeRoomFor()</code> it is possible to mount the\nfollowing schema, to cat bytes coming from the kernel to the end of an\nsds string without copying into an intermediate buffer:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsIncrLen()</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdsMakeRoomFor()</code>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "tag": "p",
+      "sourceHTML": "⟦CODE0⟧ is documented inside the source code of ⟦CODE1⟧.",
+      "originalInnerHTML": "<code>sdsIncrLen</code> is documented inside the source code of <code>sds.c</code>.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsIncrLen</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sds.c</code>"
+        }
+      ]
+    }
+  ]
+}

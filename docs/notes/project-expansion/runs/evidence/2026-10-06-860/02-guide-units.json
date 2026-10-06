@@ -1,0 +1,378 @@
+{
+  "page": "01-guide/02-guide.md",
+  "titleEN": "Basic string operations",
+  "titleJA": "基本操作",
+  "sourceCanonicalSHA256": "545f21ca66475fbf110477b325cd00512898c0c3ecdac10058e726d91930e997",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h1",
+      "sourceHTML": "SDS basics",
+      "originalInnerHTML": "SDS basics",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "The type of SDS strings is just the char pointer ⟦CODE0⟧. However SDS defines\nan ⟦CODE1⟧ type as alias of ⟦CODE2⟧ in its header file: you should use the\n⟦CODE3⟧ type in order to make sure you remember that a given variable in your\nprogram holds an SDS string and not a C string, however this is not mandatory.",
+      "originalInnerHTML": "The type of SDS strings is just the char pointer <code>char *</code>. However SDS defines\nan <code>sds</code> type as alias of <code>char *</code> in its header file: you should use the\n<code>sds</code> type in order to make sure you remember that a given variable in your\nprogram holds an SDS string and not a C string, however this is not mandatory.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>char *</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sds</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>char *</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>sds</code>"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "This is the simplest SDS program you can write that does something:",
+      "originalInnerHTML": "This is the simplest SDS program you can write that does something:",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "The above small program already shows a few important things about SDS:",
+      "originalInnerHTML": "The above small program already shows a few important things about SDS:",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "li",
+      "sourceHTML": "SDS strings are created, and heap allocated, via the ⟦CODE0⟧ function, or other similar functions that we'll see in a moment.",
+      "originalInnerHTML": "SDS strings are created, and heap allocated, via the <code>sdsnew()</code> function, or other similar functions that we'll see in a moment.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsnew()</code>"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "tag": "li",
+      "sourceHTML": "SDS strings can be passed to ⟦CODE0⟧ like any other C string.",
+      "originalInnerHTML": "SDS strings can be passed to <code>printf()</code> like any other C string.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>printf()</code>"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "tag": "li",
+      "sourceHTML": "SDS strings require to be freed with ⟦CODE0⟧, since they are heap allocated.",
+      "originalInnerHTML": "SDS strings require to be freed with <code>sdsfree()</code>, since they are heap allocated.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsfree()</code>"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "tag": "h2",
+      "sourceHTML": "Creating SDS strings",
+      "originalInnerHTML": "Creating SDS strings",
+      "protected": []
+    },
+    {
+      "id": "9",
+      "tag": "p",
+      "sourceHTML": "There are many ways to create SDS strings:",
+      "originalInnerHTML": "There are many ways to create SDS strings:",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "li",
+      "sourceHTML": "The ⟦CODE0⟧ function creates an SDS string starting from a C null terminated string. We already saw how it works in the above example.",
+      "originalInnerHTML": "The <code>sdsnew</code> function creates an SDS string starting from a C null terminated string. We already saw how it works in the above example.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsnew</code>"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "tag": "li",
+      "sourceHTML": "The ⟦CODE1⟧ function is similar to ⟦CODE2⟧ but instead of creating the string assuming that the input string is null terminated, it gets an additional length parameter. This way you can create a string using binary data:⟦PRE0⟧\n",
+      "originalInnerHTML": "The <code>sdsnewlen</code> function is similar to <code>sdsnew</code> but instead of creating the string assuming that the input string is null terminated, it gets an additional length parameter. This way you can create a string using binary data:<pre><code>char buf[3];\nsds mystring;\n\nbuf[0] = 'A';\nbuf[1] = 'B';\nbuf[2] = 'C';\nmystring = sdsnewlen(buf,3);\nprintf(\"%s of len %d\\n\", mystring, (int) sdslen(mystring));\n\noutput&gt; ABC of len 3\n</code></pre>\n",
+      "protected": [
+        {
+          "token": "⟦PRE0⟧",
+          "html": "<pre><code>char buf[3];\nsds mystring;\n\nbuf[0] = 'A';\nbuf[1] = 'B';\nbuf[2] = 'C';\nmystring = sdsnewlen(buf,3);\nprintf(\"%s of len %d\\n\", mystring, (int) sdslen(mystring));\n\noutput&gt; ABC of len 3\n</code></pre>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdsnewlen</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>sdsnew</code>"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "Note: ⟦CODE0⟧ return value is casted to ⟦CODE1⟧ because it returns a ⟦CODE2⟧\ntype. You can use the right ⟦CODE3⟧ specifier instead of casting.",
+      "originalInnerHTML": "Note: <code>sdslen</code> return value is casted to <code>int</code> because it returns a <code>size_t</code>\ntype. You can use the right <code>printf</code> specifier instead of casting.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdslen</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>int</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>size_t</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>printf</code>"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "tag": "li",
+      "sourceHTML": "\n<p>The ⟦CODE1⟧ function creates an empty zero-length string:</p>\n⟦PRE0⟧\n",
+      "originalInnerHTML": "\n<p>The <code>sdsempty()</code> function creates an empty zero-length string:</p>\n<pre><code>sds mystring = sdsempty();\nprintf(\"%d\\n\", (int) sdslen(mystring));\n\noutput&gt; 0\n</code></pre>\n",
+      "protected": [
+        {
+          "token": "⟦PRE0⟧",
+          "html": "<pre><code>sds mystring = sdsempty();\nprintf(\"%d\\n\", (int) sdslen(mystring));\n\noutput&gt; 0\n</code></pre>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdsempty()</code>"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "tag": "li",
+      "sourceHTML": "\n<p>The ⟦CODE1⟧ function duplicates an already existing SDS string:</p>\n⟦PRE0⟧\n",
+      "originalInnerHTML": "\n<p>The <code>sdsdup()</code> function duplicates an already existing SDS string:</p>\n<pre><code>sds s1, s2;\n\ns1 = sdsnew(\"Hello\");\ns2 = sdsdup(s1);\nprintf(\"%s %s\\n\", s1, s2);\n\noutput&gt; Hello Hello\n</code></pre>\n",
+      "protected": [
+        {
+          "token": "⟦PRE0⟧",
+          "html": "<pre><code>sds s1, s2;\n\ns1 = sdsnew(\"Hello\");\ns2 = sdsdup(s1);\nprintf(\"%s %s\\n\", s1, s2);\n\noutput&gt; Hello Hello\n</code></pre>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdsdup()</code>"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "tag": "h2",
+      "sourceHTML": "Obtaining the string length",
+      "originalInnerHTML": "Obtaining the string length",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "p",
+      "sourceHTML": "In the examples above we already used the ⟦CODE0⟧ function in order to get\nthe length of the string. This function works like ⟦CODE1⟧ of the libc\nexcept that:",
+      "originalInnerHTML": "In the examples above we already used the <code>sdslen</code> function in order to get\nthe length of the string. This function works like <code>strlen</code> of the libc\nexcept that:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdslen</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>strlen</code>"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "tag": "li",
+      "sourceHTML": "It runs in constant time since the length is stored in the prefix of SDS strings, so calling ⟦CODE0⟧ is not expensive even when called with very large strings.",
+      "originalInnerHTML": "It runs in constant time since the length is stored in the prefix of SDS strings, so calling <code>sdslen</code> is not expensive even when called with very large strings.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdslen</code>"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "tag": "li",
+      "sourceHTML": "The function is binary safe like any other SDS string function, so the length is the true length of the string regardless of the content, there is no problem if the string includes null term characters in the middle.",
+      "originalInnerHTML": "The function is binary safe like any other SDS string function, so the length is the true length of the string regardless of the content, there is no problem if the string includes null term characters in the middle.",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "As an example of the binary safeness of SDS strings, we can run the following\ncode:",
+      "originalInnerHTML": "As an example of the binary safeness of SDS strings, we can run the following\ncode:",
+      "protected": []
+    },
+    {
+      "id": "20",
+      "tag": "p",
+      "sourceHTML": "Note that SDS strings are always null terminated at the end, so even in that\ncase ⟦CODE0⟧ will be a null term, however printing the string with ⟦CODE1⟧\nwould result in just ⟦CODE2⟧ to be printed since libc will treat the SDS string\nlike a normal C string.",
+      "originalInnerHTML": "Note that SDS strings are always null terminated at the end, so even in that\ncase <code>s[4]</code> will be a null term, however printing the string with <code>printf</code>\nwould result in just <code>\"A\"</code> to be printed since libc will treat the SDS string\nlike a normal C string.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>s[4]</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>printf</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>\"A\"</code>"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "tag": "h2",
+      "sourceHTML": "Destroying strings",
+      "originalInnerHTML": "Destroying strings",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "The destroy an SDS string there is just to call ⟦CODE0⟧ with the string\npointer. However note that empty strings created with ⟦CODE1⟧ need to be\ndestroyed as well otherwise they'll result into a memory leak.",
+      "originalInnerHTML": "The destroy an SDS string there is just to call <code>sdsfree</code> with the string\npointer. However note that empty strings created with <code>sdsempty</code> need to be\ndestroyed as well otherwise they'll result into a memory leak.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsfree</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdsempty</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "The function ⟦CODE0⟧ does not perform any operation if instead of an SDS\nstring pointer, ⟦CODE1⟧ is passed, so you don't need to check for ⟦CODE2⟧ explicitly before calling it:",
+      "originalInnerHTML": "The function <code>sdsfree</code> does not perform any operation if instead of an SDS\nstring pointer, <code>NULL</code> is passed, so you don't need to check for <code>NULL</code> explicitly before calling it:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsfree</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>NULL</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>NULL</code>"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "tag": "h2",
+      "sourceHTML": "Concatenating strings",
+      "originalInnerHTML": "Concatenating strings",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "Concatenating strings to other strings is likely the operation you will end\nusing the most with a dynamic C string library. SDS provides different\nfunctions to concatenate strings to existing strings.",
+      "originalInnerHTML": "Concatenating strings to other strings is likely the operation you will end\nusing the most with a dynamic C string library. SDS provides different\nfunctions to concatenate strings to existing strings.",
+      "protected": []
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "The main string concatenation functions are ⟦CODE0⟧ and ⟦CODE1⟧ that are\nidentical, the only difference being that ⟦CODE2⟧ does not have an explicit\nlength argument since it expects a null terminated string.",
+      "originalInnerHTML": "The main string concatenation functions are <code>sdscatlen</code> and <code>sdscat</code> that are\nidentical, the only difference being that <code>sdscat</code> does not have an explicit\nlength argument since it expects a null terminated string.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdscatlen</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdscat</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>sdscat</code>"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "tag": "p",
+      "sourceHTML": "Sometimes you want to cat an SDS string to another SDS string, so you don't\nneed to specify the length, but at the same time the string does not need to\nbe null terminated but can contain any binary data. For this there is a\nspecial function:",
+      "originalInnerHTML": "Sometimes you want to cat an SDS string to another SDS string, so you don't\nneed to specify the length, but at the same time the string does not need to\nbe null terminated but can contain any binary data. For this there is a\nspecial function:",
+      "protected": []
+    },
+    {
+      "id": "28",
+      "tag": "p",
+      "sourceHTML": "Usage is straightforward:",
+      "originalInnerHTML": "Usage is straightforward:",
+      "protected": []
+    },
+    {
+      "id": "29",
+      "tag": "p",
+      "sourceHTML": "Sometimes you don't want to append any special data to the string, but you want\nto make sure that there are at least a given number of bytes composing the\nwhole string.",
+      "originalInnerHTML": "Sometimes you don't want to append any special data to the string, but you want\nto make sure that there are at least a given number of bytes composing the\nwhole string.",
+      "protected": []
+    },
+    {
+      "id": "30",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ function will do nothing if the current string length is\nalready ⟦CODE1⟧ bytes, otherwise it will enlarge the string to ⟦CODE2⟧ just padding\nit with zero bytes.",
+      "originalInnerHTML": "The <code>sdsgrowzero</code> function will do nothing if the current string length is\nalready <code>len</code> bytes, otherwise it will enlarge the string to <code>len</code> just padding\nit with zero bytes.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsgrowzero</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>len</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>len</code>"
+        }
+      ]
+    }
+  ]
+}

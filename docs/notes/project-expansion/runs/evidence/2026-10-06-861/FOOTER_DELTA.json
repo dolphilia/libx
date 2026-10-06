@@ -1,0 +1,191 @@
+{
+  "status": "passed-body-unchanged",
+  "at": "2026-10-05T20:08:13.998859+00:00",
+  "changes": "Confirmed guide8 EN/JA scope, English references4 review exclusion, individual notices/sourceoffer links. Seven old source annotation groups unchanged.",
+  "contextBefore": [
+    {
+      "kind": "source",
+      "html": "<p>SDS 2.0.0; fixed commit f74b9b785b63c6d8ea312d7e7864df5267149c85. Unofficial Libx static edition. README guide8 units will be translated; API comments and headers remain original English. <a href=\"/docs/sds/notices/LICENSE.txt\">Original README BSD2 licence</a>; code/header BSD3 notices retained separately.</p><p>版メニューの日付は固定コミットのUTC日（2015年7月25日）で、リリース告知日ではありません。原READMEの位置参照は分割前の単一ガイドを指します。<a href=\"/docs/sds/v2-0-0/en/02-reference/01-api-comments/\">英語APIコメント</a>と<a href=\"/docs/sds/v2-0-0/en/02-reference/02-public-header/\">公開ヘッダー原文</a>を参照できます。</p>"
+    },
+    {
+      "kind": "editorial",
+      "html": "<h1 id=\"sds-200\">SDS 2.0.0 原文に関する編集注記</h1>\n<p>Libxの運用方針に基づく固定原資料の編集注記です。原文・コード例は保持しており、ソフトウェアのコード例は実行検証していません。</p>\n<ul>\n<li><strong>内部構造</strong>: READMEのInternalsにある<code>struct sdshdr { int len; int free; char buf[]; }</code>は、固定版のヘッダーで宣言された<code>sdshdr5/8/16/32/64</code>とは異なります。固定版の構造体、flags、len、allocについては<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h#L42-L75\">固定sds.hの42–75行</a>の原典付録を参照してください。READMEの構造図と説明は原文として保持します。</li>\n<li><strong>結合API</strong>: READMEの<code>sdsjoin</code>宣言と例は4引数です。<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h#L250-L251\">固定sds.hの250–251行</a>では<code>sdsjoin</code>は3引数、<code>sdsjoinsds</code>は4引数です。二つのAPIを区別してください。</li>\n<li><strong>トリミング</strong>: READMEは<code>sdstrim</code>を<code>void</code>として掲載していますが、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h#L237\">固定宣言237行</a>は<code>sds</code>戻り値です。<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c#L668-L695\">固定実装668–695行</a>は再確保せず受け取った<code>s</code>を返します。この関数の原コメントには参照置換の説明があり、入力例<code>HelloWorld</code>に対して出力<code>Hello World</code>と記されています。これらも原文のまま区別して掲載します。</li>\n<li><strong>分割APIコメント</strong>: <a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c#L778-L806\">固定sds.cの778–806行</a>の<code>sdssplitlen</code>コメントは空文字列の場合もNULLと説明しますが、実装はtokensの割り当てに成功した空入力なら<code>*count = 0</code>でtokensを返します。またコメントにある<code>sdssplit()</code>は固定公開ヘッダーに宣言されていません。<code>sdssplitlen()</code>と同じ公開APIが存在すると推測しないでください。</li>\n<li><strong>組み込みと割当設定</strong>: READMEは<code>sds.c</code>と<code>sds.h</code>のコピーを案内しています。<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c#L38\">固定sds.cの38行</a>は<code>sdsalloc.h</code>をインクルードしており、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sdsalloc.h\">そのヘッダー全体</a>を原典付録に含めます。</li>\n<li><strong>例の静的な不備</strong>: 固定READMEには<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L305\">305行の引用符不一致</a>、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L416-L429\">416–429行のprintf引数欠落</a>、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L542-L548\">542–548行のs1宣言とsの使用の混在</a>、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L812-L814\">812–814行のsize_t値に対する%d指定</a>があります。コード例は原文を保持し、そのまま実行できる検証済みプログラムとは扱いません。</li>\n<li><strong>条件の区別</strong>: READMEは原LICENSEのBSD 2-Clauseを明示参照します。一方、採録する<code>sds.c</code>コメント、<code>sds.h</code>、<code>sdsalloc.h</code>には個別のBSD 3-Clause通知があります。各原通知を全文保持し、Redisの名称や貢献者名による推薦・宣伝についての追加条項も省略しません。READMEの条件で個別条件を上書きしません。</li>\n</ul>\n<p>全注釈は固定コミット<code>f74b9b785b63c6d8ea312d7e7864df5267149c85</code>の原文との相違を示すものです。現在のmaster、未実行のソフトウェア挙動、存在未確認のAPIへ一般化しません。</p>"
+    }
+  ],
+  "contextAfter": [
+    {
+      "kind": "source",
+      "html": "<p>SDS 2.0.0; fixed commit f74b9b785b63c6d8ea312d7e7864df5267149c85. Unofficial Libx static edition. The complete README guide is available as8 English and unofficial Japanese units; API comments and headers remain original English, untranslated and outside the full meaning review scope. <a href=\"/docs/sds/notices/LICENSE.txt\">Original README BSD2 licence</a>; code/header BSD3 notices retained separately.</p><p>版メニューの日付は固定コミットのUTC日（2015年7月25日）で、リリース告知日ではありません。原READMEの位置参照は分割前の単一ガイドを指します。<a href=\"/docs/sds/v2-0-0/en/02-reference/01-api-comments/\">英語APIコメント</a>と<a href=\"/docs/sds/v2-0-0/en/02-reference/02-public-header/\">公開ヘッダー原文</a>を参照できます。</p><p>本文は固定版の原文と非公式日本語訳です。原著の記述・例の不備は注記と原典で補い、現在の技術的正しさや例の実行結果を保証しません。コード内コメントは原文を保持しています。<a href=\"/docs/sds/notices/sds.c-notice.txt\">sds.c原通知</a>、<a href=\"/docs/sds/notices/sds.h.txt\">sds.h原通知</a>、<a href=\"/docs/sds/notices/sdsalloc.h.txt\">sdsalloc.h原通知</a>を参照してください。</p>"
+    },
+    {
+      "kind": "editorial",
+      "html": "<h1 id=\"sds-200\">SDS 2.0.0 原文に関する編集注記</h1>\n<p>Libxの運用方針に基づく固定原資料の編集注記です。原文・コード例は保持しており、ソフトウェアのコード例は実行検証していません。</p>\n<ul>\n<li><strong>内部構造</strong>: READMEのInternalsにある<code>struct sdshdr { int len; int free; char buf[]; }</code>は、固定版のヘッダーで宣言された<code>sdshdr5/8/16/32/64</code>とは異なります。固定版の構造体、flags、len、allocについては<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h#L42-L75\">固定sds.hの42–75行</a>の原典付録を参照してください。READMEの構造図と説明は原文として保持します。</li>\n<li><strong>結合API</strong>: READMEの<code>sdsjoin</code>宣言と例は4引数です。<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h#L250-L251\">固定sds.hの250–251行</a>では<code>sdsjoin</code>は3引数、<code>sdsjoinsds</code>は4引数です。二つのAPIを区別してください。</li>\n<li><strong>トリミング</strong>: READMEは<code>sdstrim</code>を<code>void</code>として掲載していますが、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.h#L237\">固定宣言237行</a>は<code>sds</code>戻り値です。<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c#L668-L695\">固定実装668–695行</a>は再確保せず受け取った<code>s</code>を返します。この関数の原コメントには参照置換の説明があり、入力例<code>HelloWorld</code>に対して出力<code>Hello World</code>と記されています。これらも原文のまま区別して掲載します。</li>\n<li><strong>分割APIコメント</strong>: <a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c#L778-L806\">固定sds.cの778–806行</a>の<code>sdssplitlen</code>コメントは空文字列の場合もNULLと説明しますが、実装はtokensの割り当てに成功した空入力なら<code>*count = 0</code>でtokensを返します。またコメントにある<code>sdssplit()</code>は固定公開ヘッダーに宣言されていません。<code>sdssplitlen()</code>と同じ公開APIが存在すると推測しないでください。</li>\n<li><strong>組み込みと割当設定</strong>: READMEは<code>sds.c</code>と<code>sds.h</code>のコピーを案内しています。<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sds.c#L38\">固定sds.cの38行</a>は<code>sdsalloc.h</code>をインクルードしており、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/sdsalloc.h\">そのヘッダー全体</a>を原典付録に含めます。</li>\n<li><strong>例の静的な不備</strong>: 固定READMEには<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L305\">305行の引用符不一致</a>、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L416-L429\">416–429行のprintf引数欠落</a>、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L542-L548\">542–548行のs1宣言とsの使用の混在</a>、<a href=\"https://github.com/antirez/sds/blob/f74b9b785b63c6d8ea312d7e7864df5267149c85/README.md#L812-L814\">812–814行のsize_t値に対する%d指定</a>があります。コード例は原文を保持し、そのまま実行できる検証済みプログラムとは扱いません。</li>\n<li><strong>条件の区別</strong>: READMEは原LICENSEのBSD 2-Clauseを明示参照します。一方、採録する<code>sds.c</code>コメント、<code>sds.h</code>、<code>sdsalloc.h</code>には個別のBSD 3-Clause通知があります。各原通知を全文保持し、Redisの名称や貢献者名による推薦・宣伝についての追加条項も省略しません。READMEの条件で個別条件を上書きしません。</li>\n</ul>\n<p>全注釈は固定コミット<code>f74b9b785b63c6d8ea312d7e7864df5267149c85</code>の原文との相違を示すものです。現在のmaster、未実行のソフトウェア挙動、存在未確認のAPIへ一般化しません。</p>"
+    },
+    {
+      "kind": "source",
+      "html": "<p><a href=\"/docs/sds/source/v2-0-0/source.zip\">Libx編集用ソース一式（ZIP） / Editable Libx source</a>：固定版9ファイル、英語12ページ・日本語8章の編集原稿、再生成入力、原通知と再構築手順を含みます。各ファイルの原条件を参照してください。</p>"
+    }
+  ],
+  "rows": [
+    {
+      "language": "en",
+      "id": "01-guide/01-guide.md",
+      "beforeSha256": "ffa423a3e18848f49ad83cb05c65d09ddcabb867694e88f26c8a1307e1eecd21",
+      "afterSha256": "3618b7394b42936f68259786ec295567d962758eccd63435dbf4c5298ee62e7d",
+      "bodySHA256": "8a6be0e9ebfcb0cc46cf1af5dd741eec4a988cd593c93426e6d0ac2dc042ebc8",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "01-guide/02-guide.md",
+      "beforeSha256": "545f21ca66475fbf110477b325cd00512898c0c3ecdac10058e726d91930e997",
+      "afterSha256": "a9142c8c46d73454b588dacec97f1903198c68013258f5f29950f520fe8b244f",
+      "bodySHA256": "ab62059085ace963e4b0aac62676073420bc99a8c6f8b6a55c2ee215b48b2997",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "01-guide/03-guide.md",
+      "beforeSha256": "5052852e09d93d63d13010c1f9f0da56b87a21f66da58a9a7920cf3f91a76b15",
+      "afterSha256": "f3c4d2377d0b58a4877b1f6f27ed85ef269a0d9ab4bd6b555437f693f537f67c",
+      "bodySHA256": "f857fe24b0c37a2484c17c79b16f04b9a60eceebce59d2f6e1a0900c2223ccb4",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "01-guide/04-guide.md",
+      "beforeSha256": "461d29a4f38f32c84c4bcc74d00cda79894f5cf2f32a26f1d159390298992d55",
+      "afterSha256": "b0794f08de63966c324da4f96d5a631036c26eff1a3f671c7f67e011fe067ce6",
+      "bodySHA256": "dca39de375a954004cd1b4376758db186fbee0cb135871221aa9b7ead210ce53",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "01-guide/05-guide.md",
+      "beforeSha256": "343198f3c5dd6f400271f4fedebadc70403cf9e676b008ebd15b18e9ab0715d7",
+      "afterSha256": "f57731d8b40ac61175b16c6d03f1a4ac98f4e118e8529c5eb85850d2537ca80f",
+      "bodySHA256": "3a07f7320a6f254ff6ec4378ebc6720ffc6aa7ad5497bfd975f98c9d684c2473",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "01-guide/06-guide.md",
+      "beforeSha256": "4af73712448d3efd5bb8969ad4f743c39bf22dbb0f13ca10e395928d83afb304",
+      "afterSha256": "61615e1a34824acd9d8b9b0e22ec5c4da70c4cf0f1c01f3ed0369463b486f40b",
+      "bodySHA256": "316ca97d75ac244235747b2b8769fe85394985e8ed9f0d17d5b7afbd33ae9915",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "01-guide/07-guide.md",
+      "beforeSha256": "82e46fc8919fe31eedff4fe3854c3f08bb4a05bd49e8f19b1ce78a2170768321",
+      "afterSha256": "48a84d0984f2708838caafa011d308a915ef2d85b8a91b955f31456ae5dcd735",
+      "bodySHA256": "f69a2125582d13b0cd50cae1a620bc7f93178e16d81383e885ceba4c2f9f88cd",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "01-guide/08-guide.md",
+      "beforeSha256": "7c8972dc33060cede7cf83c21549b939f8bb0b28362020cb65bdef2ceb74981f",
+      "afterSha256": "93ce143d81dfd1d97e5314f865f449c30422a3e22a7862e99940f45390573ebe",
+      "bodySHA256": "6c069115115d6c2651271d20c29597037bc8ce87e33bb04f305cfcaffd99fc74",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "02-reference/01-api-comments.md",
+      "beforeSha256": "8a61cd4de63b5fd19d2f5d04ace3bffd2dc8cfa07d07b477c90ce73dd47c10fe",
+      "afterSha256": "051b056a3bd94b79717db228c57dbc18da6433dbbb34675243872ddf0e92c43b",
+      "bodySHA256": "b6f95b48053bc4be7b83c2aeb288348330a68e940b8554a33f209e82e0bd4e91",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "02-reference/02-public-header.md",
+      "beforeSha256": "7f9fa662760fdc58c09cf966fcee3f87a715c8803541d3369845dddb4d10d039",
+      "afterSha256": "de7836223628997985861b0f994c1967649dad49940bd7cc7ad6798039da37d1",
+      "bodySHA256": "b565b88812ed27d7bf8dd095e95e9dddc7b453fcfb6cb25b0d4cb225dfdeb23c",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "02-reference/03-allocator-header.md",
+      "beforeSha256": "2c7f1aaa43c6a6f8274b17f35df81729335da74330c36bd4c8abcee7c4c6725c",
+      "afterSha256": "8900878268c1ac7173e41bcedef166e075d5b0e088612a53ea0a34ec807f43bf",
+      "bodySHA256": "84b14d5211cca80ca6260853074a4fc85613384e2d390b43f807c9c83b6f6ef8",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "en",
+      "id": "02-reference/04-license.md",
+      "beforeSha256": "bbe9d1f00e02ef0f48e1791c526db82317c19bd1e3cf2cf3c65b743eff346364",
+      "afterSha256": "e57c51be9ca93dd134d4785ade5581b1971137001a8c032f12b3f54a239b509d",
+      "bodySHA256": "dae5ff3110f6553c2054e391d79c48388ac2cf3d205fbc8123154a15ca0e4427",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "ja",
+      "id": "01-guide/01-guide.md",
+      "beforeSha256": "eedce3093d7cccd73e145f4cec5199bacfbad1174576710660511a2610a85c21",
+      "afterSha256": "a65b99c142aed559fb12b0ccbfab874268900a55d13608db34264d7726dbad06",
+      "bodySHA256": "112bc3c0de1aac4fe3cf9b1d859035cdd0100f1ebe489f7ad967075c00a0cf8a",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "ja",
+      "id": "01-guide/02-guide.md",
+      "beforeSha256": "520292887629116b24298a5c23bf435a0260ccbf0c04735f1aa5a7c2838327cd",
+      "afterSha256": "173f27abfe4d1add5b08173b3b39c5c88ded4b6662cdb1086094d0918d13c566",
+      "bodySHA256": "9299741f7a6f1284263b5092cfa8d6db2bbf906a72a07952e0b355e7dc708902",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "ja",
+      "id": "01-guide/03-guide.md",
+      "beforeSha256": "1168d7409fb838a71813421020deca05b9836701f82f8808840709231b5840fb",
+      "afterSha256": "7264aaf7db9a6e91e48053daa987fff1bf5f847c9193079ea131b03f78a3f9c1",
+      "bodySHA256": "55ca5631b09fe1fc94b7892ab967574b7eb3a38fd4d1f25d51d12c95de2e6b2f",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "ja",
+      "id": "01-guide/04-guide.md",
+      "beforeSha256": "9be641ec0a63f4e0c4d098bfe1b251c2bd657c3bdb0c16822572aa12ba4fc0c5",
+      "afterSha256": "f0972d1925ce53a72707a27364e95917b05adc762df27ae72b1f5f7ae0bde8e2",
+      "bodySHA256": "e7ac14932ed1476973fea7355682c3285cfe2f371adf368454c3771843445051",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "ja",
+      "id": "01-guide/05-guide.md",
+      "beforeSha256": "09791cdfcd341e22ca5e4d705b739c58b390a99a37fb3341b5a12019a9dd6b4e",
+      "afterSha256": "bd31369fb502896be1bd00788a56494ea2befcb900b3f29e131e86491ec8c1fe",
+      "bodySHA256": "eeb5fde99293df423a158baaf062a7c5b08c353475788126938b07264952a0a2",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "ja",
+      "id": "01-guide/06-guide.md",
+      "beforeSha256": "5f350816c4928aa95609f994a82c658bc95601734bc0e322d2b77fbaf3d15af8",
+      "afterSha256": "99f35a60b450e902c5d865261fc5a06f3314fe9b7c74d58e6fa01ff2cb245b28",
+      "bodySHA256": "01244981d220e987ee9d3d51a0b451e0a8963a454f7ef28e7a99b77e109f92d4",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "ja",
+      "id": "01-guide/07-guide.md",
+      "beforeSha256": "914f7c065ed8b6c0c7c9468e0a52d720e140a487f0e5db4c5ec610a21d33a4b9",
+      "afterSha256": "c793e044ecc57744f6ed49cd0da60051b092484bb4d4d7827684d07947cae0e9",
+      "bodySHA256": "519133ae5d69e99f9f37b1715df79f16d957be103fa74e04e55513436278be2d",
+      "bodyUnchanged": true
+    },
+    {
+      "language": "ja",
+      "id": "01-guide/08-guide.md",
+      "beforeSha256": "12079ca3b13338e96f37c0578908e6227f8ca755d3e0fc156e070048d68573c1",
+      "afterSha256": "cc95b94e8ef08b2375b72543164d20dd83553374083466497c353e37cdc443e4",
+      "bodySHA256": "5b63a503d621d10ecbf5a53e99a193f998845e2f518f5acee614454312c9a135",
+      "bodyUnchanged": true
+    }
+  ]
+}

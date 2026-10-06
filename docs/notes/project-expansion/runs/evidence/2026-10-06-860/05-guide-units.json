@@ -1,0 +1,280 @@
+{
+  "page": "01-guide/05-guide.md",
+  "titleEN": "Splitting, joining and errors",
+  "titleJA": "分割・結合・エラー処理",
+  "sourceCanonicalSHA256": "343198f3c5dd6f400271f4fedebadc70403cf9e676b008ebd15b18e9ab0715d7",
+  "units": [
+    {
+      "id": "1",
+      "tag": "h2",
+      "sourceHTML": "Tokenization",
+      "originalInnerHTML": "Tokenization",
+      "protected": []
+    },
+    {
+      "id": "2",
+      "tag": "p",
+      "sourceHTML": "Tokenization is the process of splitting a larger string into smaller strings.\nIn this specific case, the split is performed specifying another string that\nacts as separator. For example in the following string there are two substrings\nthat are separated by the ⟦CODE0⟧ separator:",
+      "originalInnerHTML": "Tokenization is the process of splitting a larger string into smaller strings.\nIn this specific case, the split is performed specifying another string that\nacts as separator. For example in the following string there are two substrings\nthat are separated by the <code>|-|</code> separator:",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>|-|</code>"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "tag": "p",
+      "sourceHTML": "A more common separator that consists of a single character is the comma:",
+      "originalInnerHTML": "A more common separator that consists of a single character is the comma:",
+      "protected": []
+    },
+    {
+      "id": "4",
+      "tag": "p",
+      "sourceHTML": "In many progrems it is useful to process a line in order to obtain the sub\nstrings it is composed of, so SDS provides a function that returns an\narray of SDS strings given a string and a separator.",
+      "originalInnerHTML": "In many progrems it is useful to process a line in order to obtain the sub\nstrings it is composed of, so SDS provides a function that returns an\narray of SDS strings given a string and a separator.",
+      "protected": []
+    },
+    {
+      "id": "5",
+      "tag": "p",
+      "sourceHTML": "As usually the function can work with both SDS strings or normal C strings.\nThe first two arguments ⟦CODE0⟧ and ⟦CODE1⟧ specify the string to tokenize, and the\nother two arguments ⟦CODE2⟧ and ⟦CODE3⟧ the separator to use during the\ntokenization. The final argument ⟦CODE4⟧ is a pointer to an integer that will\nbe set to the number of tokens (sub strings) returned.",
+      "originalInnerHTML": "As usually the function can work with both SDS strings or normal C strings.\nThe first two arguments <code>s</code> and <code>len</code> specify the string to tokenize, and the\nother two arguments <code>sep</code> and <code>seplen</code> the separator to use during the\ntokenization. The final argument <code>count</code> is a pointer to an integer that will\nbe set to the number of tokens (sub strings) returned.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>s</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>len</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>sep</code>"
+        },
+        {
+          "token": "⟦CODE3⟧",
+          "html": "<code>seplen</code>"
+        },
+        {
+          "token": "⟦CODE4⟧",
+          "html": "<code>count</code>"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "tag": "p",
+      "sourceHTML": "The return value is a heap allocated array of SDS strings.",
+      "originalInnerHTML": "The return value is a heap allocated array of SDS strings.",
+      "protected": []
+    },
+    {
+      "id": "7",
+      "tag": "p",
+      "sourceHTML": "The returned array is heap allocated, and the single elements of the array\nare normal SDS strings. You can free everything calling ⟦CODE0⟧\nas in the example. Alternativey you are free to release the array yourself\nusing the ⟦CODE1⟧ function and use and/or free the individual SDS strings\nas usually.",
+      "originalInnerHTML": "The returned array is heap allocated, and the single elements of the array\nare normal SDS strings. You can free everything calling <code>sdsfreesplitres</code>\nas in the example. Alternativey you are free to release the array yourself\nusing the <code>free</code> function and use and/or free the individual SDS strings\nas usually.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsfreesplitres</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>free</code>"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "tag": "p",
+      "sourceHTML": "A valid approach is to set the array elements you reused in some way to\n⟦CODE0⟧, and use ⟦CODE1⟧ to free all the rest.",
+      "originalInnerHTML": "A valid approach is to set the array elements you reused in some way to\n<code>NULL</code>, and use <code>sdsfreesplitres</code> to free all the rest.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>NULL</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdsfreesplitres</code>"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "tag": "h2",
+      "sourceHTML": "Command line oriented tokenization",
+      "originalInnerHTML": "Command line oriented tokenization",
+      "protected": []
+    },
+    {
+      "id": "10",
+      "tag": "p",
+      "sourceHTML": "Splitting by a separator is a useful operation, but usually it is not enough\nto perform one of the most common tasks involving some non trivial string\nmanipulation, that is, implementing a <strong>Command Line Interface</strong> for a program.",
+      "originalInnerHTML": "Splitting by a separator is a useful operation, but usually it is not enough\nto perform one of the most common tasks involving some non trivial string\nmanipulation, that is, implementing a <strong>Command Line Interface</strong> for a program.",
+      "protected": []
+    },
+    {
+      "id": "11",
+      "tag": "p",
+      "sourceHTML": "This is why SDS also provides an additional function that allows you to split\narguments provided by the user via the keyboard in an interactive manner, or\nvia a file, network, or any other mean, into tokens.",
+      "originalInnerHTML": "This is why SDS also provides an additional function that allows you to split\narguments provided by the user via the keyboard in an interactive manner, or\nvia a file, network, or any other mean, into tokens.",
+      "protected": []
+    },
+    {
+      "id": "12",
+      "tag": "p",
+      "sourceHTML": "The ⟦CODE0⟧ function returns an array of SDS strings exactly like\n⟦CODE1⟧. The function to free the result is also identical, and is\n⟦CODE2⟧. The difference is in the way the tokenization is performed.",
+      "originalInnerHTML": "The <code>sdssplitargs</code> function returns an array of SDS strings exactly like\n<code>sdssplitlen</code>. The function to free the result is also identical, and is\n<code>sdsfreesplitres</code>. The difference is in the way the tokenization is performed.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdssplitargs</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdssplitlen</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>sdsfreesplitres</code>"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "tag": "p",
+      "sourceHTML": "For example if the input is the following line:",
+      "originalInnerHTML": "For example if the input is the following line:",
+      "protected": []
+    },
+    {
+      "id": "14",
+      "tag": "p",
+      "sourceHTML": "The function will return the following tokens:",
+      "originalInnerHTML": "The function will return the following tokens:",
+      "protected": []
+    },
+    {
+      "id": "15",
+      "tag": "li",
+      "sourceHTML": "\"call\"",
+      "originalInnerHTML": "\"call\"",
+      "protected": []
+    },
+    {
+      "id": "16",
+      "tag": "li",
+      "sourceHTML": "\"Sabrina\"",
+      "originalInnerHTML": "\"Sabrina\"",
+      "protected": []
+    },
+    {
+      "id": "17",
+      "tag": "li",
+      "sourceHTML": "\"and\"",
+      "originalInnerHTML": "\"and\"",
+      "protected": []
+    },
+    {
+      "id": "18",
+      "tag": "li",
+      "sourceHTML": "\"Mark Smith\\n\"",
+      "originalInnerHTML": "\"Mark Smith\\n\"",
+      "protected": []
+    },
+    {
+      "id": "19",
+      "tag": "p",
+      "sourceHTML": "Basically different tokens need to be separated by one or more spaces, and\nevery single token can also be a quoted string in the same format that\n⟦CODE0⟧ is able to emit.",
+      "originalInnerHTML": "Basically different tokens need to be separated by one or more spaces, and\nevery single token can also be a quoted string in the same format that\n<code>sdscatrepr</code> is able to emit.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdscatrepr</code>"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "tag": "h2",
+      "sourceHTML": "String joining",
+      "originalInnerHTML": "String joining",
+      "protected": []
+    },
+    {
+      "id": "21",
+      "tag": "p",
+      "sourceHTML": "There are two functions doing the reverse of tokenization by joining strings\ninto a single one.",
+      "originalInnerHTML": "There are two functions doing the reverse of tokenization by joining strings\ninto a single one.",
+      "protected": []
+    },
+    {
+      "id": "22",
+      "tag": "p",
+      "sourceHTML": "The two functions take as input an array of strings of length ⟦CODE0⟧ and\na separator and its length, and produce as output an SDS string consisting\nof all the specified strings separated by the specified separator.",
+      "originalInnerHTML": "The two functions take as input an array of strings of length <code>argc</code> and\na separator and its length, and produce as output an SDS string consisting\nof all the specified strings separated by the specified separator.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>argc</code>"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "tag": "p",
+      "sourceHTML": "The difference between ⟦CODE0⟧ and ⟦CODE1⟧ is that the former accept\nC null terminated strings as input while the latter requires all the strings\nin the array to be SDS strings. However because of this only ⟦CODE2⟧ is\nable to deal with binary data.",
+      "originalInnerHTML": "The difference between <code>sdsjoin</code> and <code>sdsjoinsds</code> is that the former accept\nC null terminated strings as input while the latter requires all the strings\nin the array to be SDS strings. However because of this only <code>sdsjoinsds</code> is\nable to deal with binary data.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>sdsjoin</code>"
+        },
+        {
+          "token": "⟦CODE1⟧",
+          "html": "<code>sdsjoinsds</code>"
+        },
+        {
+          "token": "⟦CODE2⟧",
+          "html": "<code>sdsjoinsds</code>"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "tag": "h2",
+      "sourceHTML": "Error handling",
+      "originalInnerHTML": "Error handling",
+      "protected": []
+    },
+    {
+      "id": "25",
+      "tag": "p",
+      "sourceHTML": "All the SDS functions that return an SDS pointer may also return ⟦CODE0⟧ on\nout of memory, this is basically the only check you need to perform.",
+      "originalInnerHTML": "All the SDS functions that return an SDS pointer may also return <code>NULL</code> on\nout of memory, this is basically the only check you need to perform.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>NULL</code>"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "tag": "p",
+      "sourceHTML": "However many modern C programs handle out of memory simply aborting the program\nso you may want to do this as well by wrapping ⟦CODE0⟧ and other related\nmemory allocation calls directly.",
+      "originalInnerHTML": "However many modern C programs handle out of memory simply aborting the program\nso you may want to do this as well by wrapping <code>malloc</code> and other related\nmemory allocation calls directly.",
+      "protected": [
+        {
+          "token": "⟦CODE0⟧",
+          "html": "<code>malloc</code>"
+        }
+      ]
+    }
+  ]
+}

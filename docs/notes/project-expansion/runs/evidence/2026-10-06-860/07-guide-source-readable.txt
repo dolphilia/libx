@@ -1,0 +1,46 @@
+1 [h2] Sharing SDS strings
+
+2 [p] If you are writing a program in which it is advantageous to share the same
+SDS string across different data structures, it is absolutely advised to
+encapsulate SDS strings into structures that remember the number of references
+of the string, with functions to increment and decrement the number of references.
+
+3 [p] This approach is a memory management technique called <em>reference counting</em> and
+in the context of SDS has two advantages:
+
+4 [li] It is less likely that you'll create memory leaks or bugs due to non freeing SDS strings or freeing already freed strings.
+
+5 [li] You'll not need to update every reference to an SDS string when you modify it (since the new SDS string may point to a different memory location).
+
+6 [p] While this is definitely a very common programming technique I'll outline
+the basic ideas here. You create a structure like that:
+
+7 [p] When new strings are created, the structure is allocated and returned with
+⟦CODE0⟧ set to 1. The you have two functions to change the reference count
+of the shared string:
+
+8 [li] ⟦CODE0⟧ will simply increment ⟦CODE1⟧ of 1 in the structure. It will be called every time you add a reference to the string on some new data structure, variable, or whatever.
+
+9 [li] ⟦CODE0⟧ is used when you remove a reference. This function is however special since when the ⟦CODE1⟧ drops to zero, it automatically frees the SDS string, and the ⟦CODE2⟧ structure as well.
+
+10 [h2] Interactions with heap checkers
+
+11 [p] Because SDS returns pointers into the middle of memory chunks allocated with
+⟦CODE0⟧, heap checkers may have issues, however:
+
+12 [li] The popular Valgrind program will detect SDS strings are <em>possibly lost</em> memory and never as <em>definitely lost</em>, so it is easy to tell if there is a leak or not. I used Valgrind with Redis for years and every real leak was consistently detected as "definitely lost".
+
+13 [li] OSX instrumentation tools don't detect SDS strings as leaks but are able to correctly handle pointers pointing to the middle of memory chunks.
+
+14 [h2] Zero copy append from syscalls
+
+15 [p] At this point you should have all the tools to dig more inside the SDS
+library by reading the source code, however there is an interesting pattern
+you can mount using the low level API exported, that is used inside Redis
+in order to improve performances of the networking code.
+
+16 [p] Using ⟦CODE0⟧ and ⟦CODE1⟧ it is possible to mount the
+following schema, to cat bytes coming from the kernel to the end of an
+sds string without copying into an intermediate buffer:
+
+17 [p] ⟦CODE0⟧ is documented inside the source code of ⟦CODE1⟧.

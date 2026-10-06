@@ -1,0 +1,90 @@
+1 [h1] SDS basics
+
+2 [p] The type of SDS strings is just the char pointer ⟦CODE0⟧. However SDS defines
+an ⟦CODE1⟧ type as alias of ⟦CODE2⟧ in its header file: you should use the
+⟦CODE3⟧ type in order to make sure you remember that a given variable in your
+program holds an SDS string and not a C string, however this is not mandatory.
+
+3 [p] This is the simplest SDS program you can write that does something:
+
+4 [p] The above small program already shows a few important things about SDS:
+
+5 [li] SDS strings are created, and heap allocated, via the ⟦CODE0⟧ function, or other similar functions that we'll see in a moment.
+
+6 [li] SDS strings can be passed to ⟦CODE0⟧ like any other C string.
+
+7 [li] SDS strings require to be freed with ⟦CODE0⟧, since they are heap allocated.
+
+8 [h2] Creating SDS strings
+
+9 [p] There are many ways to create SDS strings:
+
+10 [li] The ⟦CODE0⟧ function creates an SDS string starting from a C null terminated string. We already saw how it works in the above example.
+
+11 [li] The ⟦CODE1⟧ function is similar to ⟦CODE2⟧ but instead of creating the string assuming that the input string is null terminated, it gets an additional length parameter. This way you can create a string using binary data:⟦PRE0⟧
+
+
+12 [p] Note: ⟦CODE0⟧ return value is casted to ⟦CODE1⟧ because it returns a ⟦CODE2⟧
+type. You can use the right ⟦CODE3⟧ specifier instead of casting.
+
+13 [li] 
+<p>The ⟦CODE1⟧ function creates an empty zero-length string:</p>
+⟦PRE0⟧
+
+
+14 [li] 
+<p>The ⟦CODE1⟧ function duplicates an already existing SDS string:</p>
+⟦PRE0⟧
+
+
+15 [h2] Obtaining the string length
+
+16 [p] In the examples above we already used the ⟦CODE0⟧ function in order to get
+the length of the string. This function works like ⟦CODE1⟧ of the libc
+except that:
+
+17 [li] It runs in constant time since the length is stored in the prefix of SDS strings, so calling ⟦CODE0⟧ is not expensive even when called with very large strings.
+
+18 [li] The function is binary safe like any other SDS string function, so the length is the true length of the string regardless of the content, there is no problem if the string includes null term characters in the middle.
+
+19 [p] As an example of the binary safeness of SDS strings, we can run the following
+code:
+
+20 [p] Note that SDS strings are always null terminated at the end, so even in that
+case ⟦CODE0⟧ will be a null term, however printing the string with ⟦CODE1⟧
+would result in just ⟦CODE2⟧ to be printed since libc will treat the SDS string
+like a normal C string.
+
+21 [h2] Destroying strings
+
+22 [p] The destroy an SDS string there is just to call ⟦CODE0⟧ with the string
+pointer. However note that empty strings created with ⟦CODE1⟧ need to be
+destroyed as well otherwise they'll result into a memory leak.
+
+23 [p] The function ⟦CODE0⟧ does not perform any operation if instead of an SDS
+string pointer, ⟦CODE1⟧ is passed, so you don't need to check for ⟦CODE2⟧ explicitly before calling it:
+
+24 [h2] Concatenating strings
+
+25 [p] Concatenating strings to other strings is likely the operation you will end
+using the most with a dynamic C string library. SDS provides different
+functions to concatenate strings to existing strings.
+
+26 [p] The main string concatenation functions are ⟦CODE0⟧ and ⟦CODE1⟧ that are
+identical, the only difference being that ⟦CODE2⟧ does not have an explicit
+length argument since it expects a null terminated string.
+
+27 [p] Sometimes you want to cat an SDS string to another SDS string, so you don't
+need to specify the length, but at the same time the string does not need to
+be null terminated but can contain any binary data. For this there is a
+special function:
+
+28 [p] Usage is straightforward:
+
+29 [p] Sometimes you don't want to append any special data to the string, but you want
+to make sure that there are at least a given number of bytes composing the
+whole string.
+
+30 [p] The ⟦CODE0⟧ function will do nothing if the current string length is
+already ⟦CODE1⟧ bytes, otherwise it will enlarge the string to ⟦CODE2⟧ just padding
+it with zero bytes.
