@@ -1,0 +1,1069 @@
+<div class="sect1">
+
+<p><span id="xpath"></span></p>
+<h2
+id="8-xpath"><a href="#xpath" class="anchor"></a><a href="#xpath" class="link">8.
+XPath</a></h2>
+<div class="sectionbody">
+
+<div class="paragraph">
+
+<p>If the task at hand is to select a subset of document nodes that
+match some criteria, it is possible to code a function using the
+existing traversal functionality for any practical criteria. However,
+often either a data-driven approach is desirable, in case the criteria
+are not predefined and come from a file, or it is inconvenient to use
+traversal interfaces and a higher-level DSL is required. There is a
+standard language for XML processing, XPath, that can be useful for
+these cases. pugixml implements an almost complete subset of XPath 1.0.
+Because of differences in document object model and some performance
+implications, there are minor violations of the official specifications,
+which can be found in <a href="#xpath.w3c">Conformance to W3C
+specification</a>. The rest of this section describes the interface for
+XPath functionality. Please note that if you wish to learn to use XPath
+language, you have to look for other tutorials or manuals; for example,
+you can read <a
+href="https://www.w3schools.com/xml/xpath_intro.asp">W3Schools XPath
+tutorial</a> or <a href="https://www.w3.org/TR/xpath-10/">the XPath 1.0
+specification</a>.</p>
+</div>
+
+<div class="sect2">
+
+<p><span id="xpath.types"></span></p>
+<h3
+id="81-xpath-types"><a href="#xpath.types" class="anchor"></a><a href="#xpath.types" class="link">8.1.
+XPath types</a></h3>
+<div class="paragraph">
+
+<p><span id="xpath_value_type"></span><span id="xpath_type_number"></span><span id="xpath_type_string"></span><span id="xpath_type_boolean"></span><span id="xpath_type_node_set"></span><span id="xpath_type_none"></span>
+Each XPath expression can have one of the following types: boolean,
+number, string or node set. Boolean type corresponds to
+<code>bool</code> type, number type corresponds to <code>double</code>
+type, string type corresponds to either <code>std::string</code> or
+<code>std::wstring</code>, depending on whether <a
+href="#dom.unicode">wide character interface is enabled</a>, and node
+set corresponds to <a href="#xpath_node_set">xpath_node_set</a> type.
+There is an enumeration, <code>xpath_value_type</code>, which can take
+the values <code>xpath_type_boolean</code>,
+<code>xpath_type_number</code>, <code>xpath_type_string</code> or
+<code>xpath_type_node_set</code>, accordingly.</p>
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_node"></span><span id="xpath_node::node"></span><span id="xpath_node::attribute"></span><span id="xpath_node::parent"></span>
+Because an XPath node can be either a node or an attribute, there is a
+special type, <code>xpath_node</code>, which is a discriminated union of
+these types. A value of this type contains two node handles, one of
+<code>xml_node</code> type, and another one of
+<code>xml_attribute</code> type; at most one of them can be non-null.
+The accessors to get these handles are available:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>xml_node xpath_node::node() const;
+xml_attribute xpath_node::attribute() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>XPath nodes can be null, in which case both accessors return null
+handles.</p>
+</div>
+
+<div class="paragraph">
+
+<p>Note that as per XPath specification, each XPath node has a parent,
+which can be retrieved via this function:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>xml_node xpath_node::parent() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p><code>parent</code> function returns the node’s parent if the XPath
+node corresponds to <code>xml_node</code> handle (equivalent to
+<code>node().parent()</code>), or the node to which the attribute
+belongs to, if the XPath node corresponds to <code>xml_attribute</code>
+handle. For null nodes, <code>parent</code> returns null handle.</p>
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_node::unspecified_bool_type"></span><span id="xpath_node::comparison"></span>
+Like node and attribute handles, XPath node handles can be implicitly
+cast to boolean-like object to check if it is a null node, and also can
+be compared for equality with each other.</p>
+</div>
+
+<div id="xpath_node::ctor" class="paragraph">
+
+<p>You can also create XPath nodes with one of the three constructors:
+the default constructor, the constructor that takes node argument, and
+the constructor that takes attribute and node arguments (in which case
+the attribute must belong to the attribute list of the node). The
+constructor from <code>xml_node</code> is implicit, so you can usually
+pass <code>xml_node</code> to functions that expect
+<code>xpath_node</code>. Apart from that you usually don’t need to
+create your own XPath node objects, since they are returned to you via
+selection functions.</p>
+</div>
+
+<div id="xpath_node_set" class="paragraph">
+
+<p>XPath expressions operate not on single nodes, but instead on node
+sets. A node set is a collection of nodes, which can be optionally
+ordered in either a forward document order or a reverse one. Document
+order is defined in XPath specification; an XPath node is before another
+node in document order if it appears before it in XML representation of
+the corresponding document.</p>
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_node_set::const_iterator"></span><span id="xpath_node_set::begin"></span><span id="xpath_node_set::end"></span>
+Node sets are represented by <code>xpath_node_set</code> object, which
+has an interface that resembles one of sequential random-access
+containers. It has an iterator type along with usual begin/past-the-end
+iterator accessors:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>typedef const xpath_node* xpath_node_set::const_iterator;
+const_iterator xpath_node_set::begin() const;
+const_iterator xpath_node_set::end() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_node_set::index"></span><span id="xpath_node_set::size"></span><span id="xpath_node_set::empty"></span>
+And it also can be iterated via indices, just like
+<code>std::vector</code>:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>const xpath_node&amp; xpath_node_set::operator[](size_t index) const;
+size_t xpath_node_set::size() const;
+bool xpath_node_set::empty() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>All of the above operations have the same semantics as that of
+<code>std::vector</code>: the iterators are random-access, all of the
+above operations are constant time, and accessing the element at index
+that is greater or equal than the set size results in undefined
+behavior. You can use both iterator-based and index-based access for
+iteration, however the iterator-based one can be faster.</p>
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_node_set::type"></span><span id="xpath_node_set::type_unsorted"></span><span id="xpath_node_set::type_sorted"></span><span id="xpath_node_set::type_sorted_reverse"></span><span id="xpath_node_set::sort"></span>
+The order of iteration depends on the order of nodes inside the set; the
+order can be queried via the following function:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>enum xpath_node_set::type_t {type_unsorted, type_sorted, type_sorted_reverse};
+type_t xpath_node_set::type() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p><code>type</code> function returns the current order of nodes;
+<code>type_sorted</code> means that the nodes are in forward document
+order, <code>type_sorted_reverse</code> means that the nodes are in
+reverse document order, and <code>type_unsorted</code> means that
+neither order is guaranteed (nodes can accidentally be in a sorted order
+even if <code>type()</code> returns <code>type_unsorted</code>). If you
+require a specific order of iteration, you can change it via
+<code>sort</code> function:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>void xpath_node_set::sort(bool reverse = false);</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Calling <code>sort</code> sorts the nodes in either forward or
+reverse document order, depending on the argument; after this call
+<code>type()</code> will return <code>type_sorted</code> or
+<code>type_sorted_reverse</code>.</p>
+</div>
+
+<div id="xpath_node_set::first" class="paragraph">
+
+<p>Often the actual iteration is not needed; instead, only the first
+element in document order is required. For this, a special accessor is
+provided:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>xpath_node xpath_node_set::first() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This function returns the first node in forward document order from
+the set, or null node if the set is empty. Note that while the result of
+the node does not depend on the order of nodes in the set (i.e. on the
+result of <code>type()</code>), the complexity does - if the set is
+sorted, the complexity is constant, otherwise it is linear in the number
+of elements or worse.</p>
+</div>
+
+<div id="xpath_node_set::ctor" class="paragraph">
+
+<p>While in the majority of cases the node set is returned by XPath
+functions, sometimes there is a need to manually construct a node set.
+For such cases, a constructor is provided which takes an iterator range
+(<code>const_iterator</code> is a typedef for
+<code>const xpath_node*</code>), and an optional type:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>xpath_node_set::xpath_node_set(const_iterator begin, const_iterator end, type_t type = type_unsorted);</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The constructor copies the specified range and sets the specified
+type. The objects in the range are not checked in any way; you’ll have
+to ensure that the range contains no duplicates, and that the objects
+are sorted according to the <code>type</code> parameter. Otherwise XPath
+operations with this set may produce unexpected results.</p>
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="xpath.select"></span></p>
+<h3
+id="82-selecting-nodes-via-xpath-expression"><a href="#xpath.select" class="anchor"></a><a href="#xpath.select" class="link">8.2.
+Selecting nodes via XPath expression</a></h3>
+<div class="paragraph">
+
+<p><span id="xml_node::select_node"></span><span id="xml_node::select_nodes"></span>
+If you want to select nodes that match some XPath expression, you can do
+it with the following functions:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>xpath_node xml_node::select_node(const char_t* query, xpath_variable_set* variables = 0) const;
+xpath_node_set xml_node::select_nodes(const char_t* query, xpath_variable_set* variables = 0) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p><code>select_nodes</code> function compiles the expression and then
+executes it with the node as a context node, and returns the resulting
+node set. <code>select_node</code> returns only the first node in
+document order from the result, and is equivalent to calling
+<code>select_nodes(query).first()</code>. If the XPath expression does
+not match anything, or the node handle is null,
+<code>select_nodes</code> returns an empty set, and
+<code>select_node</code> returns null XPath node.</p>
+</div>
+
+<div class="paragraph">
+
+<p>If exception handling is not disabled, both functions throw <a
+href="#xpath_exception">xpath_exception</a> if the query can not be
+compiled or if it returns a value with type other than node set; see <a
+href="#xpath.errors">Error handling</a> for details.</p>
+</div>
+
+<div class="paragraph">
+
+<p><span id="xml_node::select_node_precomp"></span><span id="xml_node::select_nodes_precomp"></span>
+While compiling expressions is fast, the compilation time can introduce
+a significant overhead if the same expression is used many times on
+small subtrees. If you’re doing many similar queries, consider compiling
+them into query objects (see <a href="#xpath.query">Using query
+objects</a> for further reference). Once you get a compiled query
+object, you can pass it to select functions instead of an expression
+string:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>xpath_node xml_node::select_node(const xpath_query&amp; query) const;
+xpath_node_set xml_node::select_nodes(const xpath_query&amp; query) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>If exception handling is not disabled, both functions throw <a
+href="#xpath_exception">xpath_exception</a> if the query returns a value
+with type other than node set.</p>
+</div>
+
+<div class="paragraph">
+
+<p>This is an example of selecting nodes using XPath expressions
+(<a href="samples/xpath_select.cpp" class="bare">samples/xpath_select.cpp</a>):</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>pugi::xpath_node_set tools = doc.select_nodes(&quot;/Profile/Tools/Tool[@AllowRemote=&#39;true&#39; and @DeriveCaptionFrom=&#39;lastparam&#39;]&quot;);
+
+std::cout &lt;&lt; &quot;Tools:\n&quot;;
+
+for (pugi::xpath_node_set::const_iterator it = tools.begin(); it != tools.end(); ++it)
+{
+    pugi::xpath_node node = *it;
+    std::cout &lt;&lt; node.node().attribute(&quot;Filename&quot;).value() &lt;&lt; &quot;\n&quot;;
+}
+
+pugi::xpath_node build_tool = doc.select_node(&quot;//Tool[contains(Description, &#39;build system&#39;)]&quot;);
+
+if (build_tool)
+    std::cout &lt;&lt; &quot;Build tool: &quot; &lt;&lt; build_tool.node().attribute(&quot;Filename&quot;).value() &lt;&lt; &quot;\n&quot;;</code></pre>
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="xpath.query"></span></p>
+<h3
+id="83-using-query-objects"><a href="#xpath.query" class="anchor"></a><a href="#xpath.query" class="link">8.3.
+Using query objects</a></h3>
+<div id="xpath_query" class="paragraph">
+
+<p>When you call <code>select_nodes</code> with an expression string as
+an argument, a query object is created behind the scenes. A query object
+represents a compiled XPath expression. Query objects can be needed in
+the following circumstances:</p>
+</div>
+
+<div class="ulist">
+
+<ul>
+<li><p>You can precompile expressions to query objects to save
+compilation time if it becomes an issue;</p></li>
+<li><p>You can use query objects to evaluate XPath expressions which
+result in booleans, numbers or strings;</p></li>
+<li><p>You can get the type of expression value via query
+object.</p></li>
+</ul>
+</div>
+
+<div class="paragraph">
+
+<p>Query objects correspond to <code>xpath_query</code> type. They are
+immutable and non-copyable: they are bound to the expression at creation
+time and can not be cloned. If you want to put query objects in a
+container, either allocate them on heap via <code>new</code> operator
+and store pointers to <code>xpath_query</code> in the container, or use
+a C11 compiler (query objects are movable in C11).</p>
+</div>
+
+<div id="xpath_query::ctor" class="paragraph">
+
+<p>You can create a query object with the constructor that takes XPath
+expression as an argument:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>explicit xpath_query::xpath_query(const char_t* query, xpath_variable_set* variables = 0);</code></pre>
+</div>
+
+</div>
+
+<div id="xpath_query::return_type" class="paragraph">
+
+<p>The expression is compiled and the compiled representation is stored
+in the new query object. If compilation fails, <a
+href="#xpath_exception">xpath_exception</a> is thrown if exception
+handling is not disabled (see <a href="#xpath.errors">Error handling</a>
+for details). After the query is created, you can query the type of the
+evaluation result using the following function:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>xpath_value_type xpath_query::return_type() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_query::evaluate_boolean"></span><span id="xpath_query::evaluate_number"></span><span id="xpath_query::evaluate_string"></span><span id="xpath_query::evaluate_node_set"></span><span id="xpath_query::evaluate_node"></span>
+You can evaluate the query using one of the following functions:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>bool xpath_query::evaluate_boolean(const xpath_node&amp; n) const;
+double xpath_query::evaluate_number(const xpath_node&amp; n) const;
+string_t xpath_query::evaluate_string(const xpath_node&amp; n) const;
+xpath_node_set xpath_query::evaluate_node_set(const xpath_node&amp; n) const;
+xpath_node xpath_query::evaluate_node(const xpath_node&amp; n) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>All functions take the context node as an argument, compute the
+expression and return the result, converted to the requested type.
+According to XPath specification, value of any type can be converted to
+boolean, number or string value, but no type other than node set can be
+converted to node set. Because of this, <code>evaluate_boolean</code>,
+<code>evaluate_number</code> and <code>evaluate_string</code> always
+return a result, but <code>evaluate_node_set</code> and
+<code>evaluate_node</code> result in an error if the return type is not
+node set (see <a href="#xpath.errors">Error handling</a>).</p>
+</div>
+
+<div class="admonitionblock note">
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content">Calling <code>node.select_nodes("query")</code> is equivalent to calling <code>xpath_query("query").evaluate_node_set(node)</code>. Calling <code>node.select_node("query")</code> is equivalent to calling <code>xpath_query("query").evaluate_node(node)</code>.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div id="xpath_query::evaluate_string_buffer" class="paragraph">
+
+<p>Note that <code>evaluate_string</code> function returns the STL
+string; as such, it’s not available in <a
+href="#PUGIXML_NO_STL">PUGIXML_NO_STL</a> mode and also usually
+allocates memory. There is another string evaluation function:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>size_t xpath_query::evaluate_string(char_t* buffer, size_t capacity, const xpath_node&amp; n) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>This function evaluates the string, and then writes the result to
+<code>buffer</code> (but at most <code>capacity</code> characters); then
+it returns the full size of the result in characters, including the
+terminating zero. If <code>capacity</code> is not 0, the resulting
+buffer is always zero-terminated. You can use this function as
+follows:</p>
+</div>
+
+<div class="ulist">
+
+<ul>
+<li><p>First call the function with <code>buffer = 0</code> and
+<code>capacity = 0</code>; then allocate the returned amount of
+characters, and call the function again, passing the allocated storage
+and the amount of characters;</p></li>
+<li><p>First call the function with small buffer and buffer capacity;
+then, if the result is larger than the capacity, the output has been
+trimmed, so allocate a larger buffer and call the function
+again.</p></li>
+</ul>
+</div>
+
+<div class="paragraph">
+
+<p>This is an example of using query objects
+(<a href="samples/xpath_query.cpp" class="bare">samples/xpath_query.cpp</a>):</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>// Select nodes via compiled query
+pugi::xpath_query query_remote_tools(&quot;/Profile/Tools/Tool[@AllowRemote=&#39;true&#39;]&quot;);
+
+pugi::xpath_node_set tools = query_remote_tools.evaluate_node_set(doc);
+std::cout &lt;&lt; &quot;Remote tool: &quot;;
+tools[2].node().print(std::cout);
+
+// Evaluate numbers via compiled query
+pugi::xpath_query query_timeouts(&quot;sum(//Tool/@Timeout)&quot;);
+std::cout &lt;&lt; query_timeouts.evaluate_number(doc) &lt;&lt; std::endl;
+
+// Evaluate strings via compiled query for different context nodes
+pugi::xpath_query query_name_valid(&quot;string-length(substring-before(@Filename, &#39;_&#39;)) &gt; 0 and @OutputFileMasks&quot;);
+pugi::xpath_query query_name(&quot;concat(substring-before(@Filename, &#39;_&#39;), &#39; produces &#39;, @OutputFileMasks)&quot;);
+
+for (pugi::xml_node tool = doc.first_element_by_path(&quot;Profile/Tools/Tool&quot;); tool; tool = tool.next_sibling())
+{
+    std::string s = query_name.evaluate_string(tool);
+
+    if (query_name_valid.evaluate_boolean(tool)) std::cout &lt;&lt; s &lt;&lt; std::endl;
+}</code></pre>
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="xpath.variables"></span></p>
+<h3
+id="84-using-variables"><a href="#xpath.variables" class="anchor"></a><a href="#xpath.variables" class="link">8.4.
+Using variables</a></h3>
+<div class="paragraph">
+
+<p>XPath queries may contain references to variables; this is useful if
+you want to use queries that depend on some dynamic parameter without
+manually preparing the complete query string, or if you want to reuse
+the same query object for similar queries.</p>
+</div>
+
+<div class="paragraph">
+
+<p>Variable references have the form <code>$name</code>; in order to use
+them, you have to provide a variable set, which includes all variables
+present in the query with correct types. This set is passed to
+<code>xpath_query</code> constructor or to
+<code>select_nodes</code>/<code>select_node</code> functions:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>explicit xpath_query::xpath_query(const char_t* query, xpath_variable_set* variables = 0);
+xpath_node xml_node::select_node(const char_t* query, xpath_variable_set* variables = 0) const;
+xpath_node_set xml_node::select_nodes(const char_t* query, xpath_variable_set* variables = 0) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>If you’re using query objects, you can change the variable values
+before <code>evaluate</code>/<code>select</code> calls to change the
+query behavior.</p>
+</div>
+
+<div class="admonitionblock note">
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content">The variable set pointer is stored in the query object, along with pointers to the variables it references; you have to ensure that the lifetime of the set exceeds that of the query object, and that the set is not assigned to or moved into while the query is live.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div id="xpath_variable_set" class="paragraph">
+
+<p>Variable sets correspond to <code>xpath_variable_set</code> type,
+which is essentially a variable container.</p>
+</div>
+
+<div id="xpath_variable_set::add" class="paragraph">
+
+<p>You can add new variables with the following function:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>xpath_variable* xpath_variable_set::add(const char_t* name, xpath_value_type type);</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The function tries to add a new variable with the specified name and
+type; if the variable with such name does not exist in the set, the
+function adds a new variable and returns the variable handle; if there
+is already a variable with the specified name, the function returns the
+variable handle if variable has the specified type. Otherwise the
+function returns null pointer; it also returns null pointer on
+allocation failure.</p>
+</div>
+
+<div class="paragraph">
+
+<p>New variables are assigned the default value which depends on the
+type: <code>0</code> for numbers, <code>false</code> for booleans, empty
+string for strings and empty set for node sets.</p>
+</div>
+
+<div id="xpath_variable_set::get" class="paragraph">
+
+<p>You can get the existing variables with the following functions:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>xpath_variable* xpath_variable_set::get(const char_t* name);
+const xpath_variable* xpath_variable_set::get(const char_t* name) const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The functions return the variable handle, or null pointer if the
+variable with the specified name is not found.</p>
+</div>
+
+<div id="xpath_variable_set::set" class="paragraph">
+
+<p>Additionally, there are the helper functions for setting the variable
+value by name; they try to add the variable with the corresponding type,
+if it does not exist, and to set the value. If the variable with the
+same name but with different type is already present, they return
+<code>false</code>; they also return <code>false</code> on allocation
+failure. Note that these functions do not perform any type
+conversions.</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>bool xpath_variable_set::set(const char_t* name, bool value);
+bool xpath_variable_set::set(const char_t* name, double value);
+bool xpath_variable_set::set(const char_t* name, const char_t* value);
+bool xpath_variable_set::set(const char_t* name, const xpath_node_set&amp; value);</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>The variable values are copied to the internal variable storage, so
+you can modify or destroy them after the functions return.</p>
+</div>
+
+<div id="xpath_variable" class="paragraph">
+
+<p>If setting variables by name is not efficient enough, or if you have
+to inspect variable information or get variable values, you can use
+variable handles. A variable corresponds to the
+<code>xpath_variable</code> type, and a variable handle is simply a
+pointer to <code>xpath_variable</code>.</p>
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_variable::type"></span><span id="xpath_variable::name"></span>
+In order to get variable information, you can use one of the following
+functions:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>const char_t* xpath_variable::name() const;
+xpath_value_type xpath_variable::type() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Note that each variable has a distinct type which is specified upon
+variable creation and can not be changed later.</p>
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_variable::get_boolean"></span><span id="xpath_variable::get_number"></span><span id="xpath_variable::get_string"></span><span id="xpath_variable::get_node_set"></span>
+In order to get variable value, you should use one of the following
+functions, depending on the variable type:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>bool xpath_variable::get_boolean() const;
+double xpath_variable::get_number() const;
+const char_t* xpath_variable::get_string() const;
+const xpath_node_set&amp; xpath_variable::get_node_set() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>These functions return the value of the variable. Note that no type
+conversions are performed; if the type mismatch occurs, a dummy value is
+returned (<code>false</code> for booleans, <code>NaN</code> for numbers,
+empty string for strings and empty set for node sets).</p>
+</div>
+
+<div id="xpath_variable::set" class="paragraph">
+
+<p>In order to set variable value, you should use one of the following
+functions, depending on the variable type:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>bool xpath_variable::set(bool value);
+bool xpath_variable::set(double value);
+bool xpath_variable::set(const char_t* value);
+bool xpath_variable::set(const xpath_node_set&amp; value);</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>These functions modify the variable value. Note that no type
+conversions are performed; if the type mismatch occurs, the functions
+return <code>false</code>; they also return <code>false</code> on
+allocation failure. The variable values are copied to the internal
+variable storage, so you can modify or destroy them after the functions
+return.</p>
+</div>
+
+<div class="paragraph">
+
+<p>This is an example of using variables in XPath queries
+(<a href="samples/xpath_variables.cpp" class="bare">samples/xpath_variables.cpp</a>):</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>// Select nodes via compiled query
+pugi::xpath_variable_set vars;
+vars.add(&quot;remote&quot;, pugi::xpath_type_boolean);
+
+pugi::xpath_query query_remote_tools(&quot;/Profile/Tools/Tool[@AllowRemote = string($remote)]&quot;, &amp;vars);
+
+vars.set(&quot;remote&quot;, true);
+pugi::xpath_node_set tools_remote = query_remote_tools.evaluate_node_set(doc);
+
+vars.set(&quot;remote&quot;, false);
+pugi::xpath_node_set tools_local = query_remote_tools.evaluate_node_set(doc);
+
+std::cout &lt;&lt; &quot;Remote tool: &quot;;
+tools_remote[2].node().print(std::cout);
+
+std::cout &lt;&lt; &quot;Local tool: &quot;;
+tools_local[0].node().print(std::cout);
+
+// You can pass the context directly to select_nodes/select_node
+pugi::xpath_node_set tools_local_imm = doc.select_nodes(&quot;/Profile/Tools/Tool[@AllowRemote = string($remote)]&quot;, &amp;vars);
+
+std::cout &lt;&lt; &quot;Local tool imm: &quot;;
+tools_local_imm[0].node().print(std::cout);</code></pre>
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="xpath.errors"></span></p>
+<h3
+id="85-error-handling"><a href="#xpath.errors" class="anchor"></a><a href="#xpath.errors" class="link">8.5.
+Error handling</a></h3>
+<div class="paragraph">
+
+<p>There are two different mechanisms for error handling in XPath
+implementation; the mechanism used depends on whether exception support
+is disabled (this is controlled with <a
+href="#PUGIXML_NO_EXCEPTIONS">PUGIXML_NO_EXCEPTIONS</a> define).</p>
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_exception"></span><span id="xpath_exception::result"></span><span id="xpath_exception::what"></span>
+By default, XPath functions throw <code>xpath_exception</code> object in
+case of errors; additionally, in the event any memory allocation fails,
+an <code>std::bad_alloc</code> exception is thrown. Also
+<code>xpath_exception</code> is thrown if the query is evaluated as a
+node set, but the return type is not node set. If the query constructor
+succeeds (i.e. no exception is thrown), the query object is valid.
+Otherwise you can get the error details via one of the following
+functions:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>virtual const char* xpath_exception::what() const noexcept;
+const xpath_parse_result&amp; xpath_exception::result() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p><span id="xpath_query::unspecified_bool_type"></span><span id="xpath_query::result"></span>
+If exceptions are disabled, then in the event of parsing failure the
+query is initialized to invalid state; you can test if the query object
+is valid by using it in a boolean expression:
+<code>if (query) { …​ }</code>. Additionally, you can get parsing result
+via the result() accessor:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>const xpath_parse_result&amp; xpath_query::result() const;</code></pre>
+</div>
+
+</div>
+
+<div class="paragraph">
+
+<p>Without exceptions, evaluating invalid query results in
+<code>false</code>, empty string, <code>NaN</code> or an empty node set,
+depending on the type; evaluating a query as a node set results in an
+empty node set if the return type is not node set.</p>
+</div>
+
+<div id="xpath_parse_result" class="paragraph">
+
+<p>The information about parsing result is returned via
+<code>xpath_parse_result</code> object. It contains parsing status and
+the offset of last successfully parsed character from the beginning of
+the source stream:</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>struct xpath_parse_result
+{
+    const char* error;
+    ptrdiff_t offset;
+
+    operator bool() const;
+    const char* description() const;
+};</code></pre>
+</div>
+
+</div>
+
+<div id="xpath_parse_result::error" class="paragraph">
+
+<p>Parsing result is represented as the error message; it is either a
+null pointer, in case there is no error, or the error message in the
+form of ASCII zero-terminated string.</p>
+</div>
+
+<div id="xpath_parse_result::description" class="paragraph">
+
+<p><code>description()</code> member function can be used to get the
+error message; it never returns the null pointer, so you can safely use
+<code>description()</code> even if query parsing succeeded. Note that
+<code>description()</code> returns a <code>char</code> string even in
+<code>PUGIXML_WCHAR_MODE</code>; you’ll have to call <a
+href="#as_wide">as_wide</a> to get the <code>wchar_t</code> string.</p>
+</div>
+
+<div id="xpath_parse_result::offset" class="paragraph">
+
+<p>In addition to the error message, parsing result has an
+<code>offset</code> member, which contains the offset of last
+successfully parsed character. This offset is in units of <a
+href="#char_t">pugi::char_t</a> (bytes for character mode, wide
+characters for wide character mode).</p>
+</div>
+
+<div id="xpath_parse_result::bool" class="paragraph">
+
+<p>Parsing result object can be implicitly converted to
+<code>bool</code> like this:
+<code>if (result) { …​ } else { …​ }</code>.</p>
+</div>
+
+<div class="paragraph">
+
+<p>This is an example of XPath error handling
+(<a href="samples/xpath_error.cpp" class="bare">samples/xpath_error.cpp</a>):</p>
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+<pre class="pygments"><code>// Exception is thrown for incorrect query syntax
+try
+{
+    doc.select_nodes(&quot;//nodes[#true()]&quot;);
+}
+catch (const pugi::xpath_exception&amp; e)
+{
+    std::cout &lt;&lt; &quot;Select failed: &quot; &lt;&lt; e.what() &lt;&lt; std::endl;
+}
+
+// Exception is thrown for incorrect query semantics
+try
+{
+    doc.select_nodes(&quot;(123)/next&quot;);
+}
+catch (const pugi::xpath_exception&amp; e)
+{
+    std::cout &lt;&lt; &quot;Select failed: &quot; &lt;&lt; e.what() &lt;&lt; std::endl;
+}
+
+// Exception is thrown for query with incorrect return type
+try
+{
+    doc.select_nodes(&quot;123&quot;);
+}
+catch (const pugi::xpath_exception&amp; e)
+{
+    std::cout &lt;&lt; &quot;Select failed: &quot; &lt;&lt; e.what() &lt;&lt; std::endl;
+}</code></pre>
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+<p><span id="xpath.w3c"></span></p>
+<h3
+id="86-conformance-to-w3c-specification"><a href="#xpath.w3c" class="anchor"></a><a href="#xpath.w3c" class="link">8.6.
+Conformance to W3C specification</a></h3>
+<div class="paragraph">
+
+<p>Because of the differences in document object models, performance
+considerations and implementation complexity, pugixml does not provide a
+fully conformant XPath 1.0 implementation. This is the current list of
+incompatibilities:</p>
+</div>
+
+<div class="ulist">
+
+<ul>
+<li><p>Consecutive text nodes sharing the same parent are not merged,
+i.e. in
+<code>&lt;node&gt;text1 &lt;![CDATA[data]]&gt; text2&lt;/node&gt;</code>
+node should have one text node child, but instead has three.</p></li>
+<li><p>Since the document type declaration is not used for parsing,
+<code>id()</code> function always returns an empty node set.</p></li>
+<li><p>Namespace nodes are not supported (affects
+<code>namespace::</code> axis).</p></li>
+<li><p>Name tests are performed on QNames in XML document instead of
+expanded names; for
+<code>&lt;foo xmlns:ns1='uri' xmlns:ns2='uri'&gt;&lt;ns1:child/&gt;&lt;ns2:child/&gt;&lt;/foo&gt;</code>,
+query <code>foo/ns1:*</code> will return only the first child, not both
+of them. Compliant XPath implementations can return both nodes if the
+user provides appropriate namespace declarations.</p></li>
+<li><p>String functions consider a character to be either a single
+<code>char</code> value or a single <code>wchar_t</code> value,
+depending on the library configuration; this means that some string
+functions are not fully Unicode-aware. This affects
+<code>substring()</code>, <code>string-length()</code> and
+<code>translate()</code> functions.</p></li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+</div>
