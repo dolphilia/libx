@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ninjaでビルドを高速化！その使い方を徹底解説 | 豆蔵デベロッパーサイト</title>
+    <meta name="description" content="はじめに#最近ビルドツールのMakeを触っていたのですが、「これって古くから使われているらしいけど他に何か新しいビルドツールで広まっているものあるのかな～？」と思ったので調べたところ、Ninjaというツールが良いぞという情報を得たので触ってみたことをまとめたいと思います。Ninjaの特徴#NinjaはMakeに比べて高速に動作することがウリのビルドシステムです...">
+    <meta name="author" content="kotaro-miura">
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="canonical" href="https://developer.mamezou-tech.com/blogs/2025/01/22/build_system_ninja/">
+
+    
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-38XP4WXMMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-38XP4WXMMY', {
+        'user_properties': {
+          branch: 'main',
+          lang: 'ja',
+          author: 'kotaro-miura',
+          translate: '',
+          tags: 'posts,2025年,Ninja,Make,graphviz',
+          date: 'Wed Jan 22 2025 00:00:00 GMT+0000 (Coordinated Universal Time)'
+        }
+      });
+      gtag('config', 'GTM-PLNMZ8R')
+    </script>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="manifest" href="/img/site.webmanifest">
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="preload" href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&amp;family=Mochiy+Pop+One&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="twitter:creator" content="@MamezouDev">
+    
+    <meta name="twitter:title" content="Ninjaでビルドを高速化！その使い方を徹底解説 | 豆蔵デベロッパーサイト">
+    <meta name="twitter:description" content="はじめに#最近ビルドツールのMakeを触っていたのですが、「これって古くから使われているらしいけど他に何か新しいビルドツールで広まっているものあるのかな～？」と思ったので調べたところ、Ninjaというツールが良いぞという情報を得たので触ってみたことをまとめたいと思います。Ninjaの特徴#NinjaはMakeに比べて高速に動作することがウリのビルドシステムです...">
+
+    <meta property="fb:app_id" content="625393465273959">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ninjaでビルドを高速化！その使い方を徹底解説 | 豆蔵デベロッパーサイト">
+    <meta property="og:description" content="はじめに#最近ビルドツールのMakeを触っていたのですが、「これって古くから使われているらしいけど他に何か新しいビルドツールで広まっているものあるのかな～？」と思ったので調べたところ、Ninjaというツールが良いぞという情報を得たので触ってみたことをまとめたいと思います。Ninjaの特徴#NinjaはMakeに比べて高速に動作することがウリのビルドシステムです...">
+    <meta property="og:url" content="https://developer.mamezou-tech.com/blogs/2025/01/22/build_system_ninja/">
+    
+    <meta property="og:image" content="https://developer.mamezou-tech.com/og/?title=Ninja%E3%81%A7%E3%83%93%E3%83%AB%E3%83%89%E3%82%92%E9%AB%98%E9%80%9F%E5%8C%96%EF%BC%81%E3%81%9D%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E5%BE%B9%E5%BA%95%E8%A7%A3%E8%AA%AC&amp;category=%E3%83%96%E3%83%AD%E3%82%B0">
+    <meta name="twitter:image" content="https://developer.mamezou-tech.com/og/?title=Ninja%E3%81%A7%E3%83%93%E3%83%AB%E3%83%89%E3%82%92%E9%AB%98%E9%80%9F%E5%8C%96%EF%BC%81%E3%81%9D%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E5%BE%B9%E5%BA%95%E8%A7%A3%E8%AA%AC&amp;category=%E3%83%96%E3%83%AD%E3%82%B0">
+    
+    <meta name="github" content="/posts/blogs/2025/0122_build_system_ninja">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for 豆蔵デベロッパーサイト" href="/feed/">
+    <link href="https://unpkg.com/photoswipe@5.4.2/dist/photoswipe.css" rel="stylesheet">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"></noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"></script>
+<script type="text/javascript">
+  algoliasearchNetlify({
+    appId: '2J1G3H8B2Y',
+    apiKey: '7087c426ad52b9e852ae9a3eac8adc80',
+    siteId: '585ee948-cb8f-4598-a37f-e6304bfee394',
+    branch: 'main',
+    selector: 'div#search',
+  });
+</script></head><body class="bg-white">
+  <div id="fb-root"></div>
+  <script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&amp;version=v18.0&amp;appId=625393465273959" nonce="Ytcn0KH2"></script>
+    <nav aria-labelledby="tdbc-siteid" class="tdbc-sitenav"><section class="top-nav"><div><a id="tdbc-siteid" class="text-mz" href="/"><img alt="logo" src="/img/logo/mz-tech-logo-icon.png">&nbsp;|&nbsp;豆蔵デベロッパーサイト</a></div><div style="display:flex;justify-content:flex-end"><div id="search" style="margin-right:1rem"></div><div><input id="menu-toggle" type="checkbox"><label class="menu-button-container" for="menu-toggle"><div class="menu-button"></div></label><ul class="menu"><li><a href="/iot/">IoT</a></li><li><a href="/analytics/">統計解析</a></li><li><a href="/dev-env/">開発環境</a></li><li><a href="/ml/">機械学習・生成AI</a></li><li><a href="/modeling/">モデリング</a></li><li><a href="/robotics/">ロボット</a></li><li><a href="/agile/">アジャイル開発</a></li><li><a href="/blogs/">ブログ</a></li><li><a href="/msa/">マイクロサービス</a></li><li><a href="/frontend/">フロントエンド</a></li><li><a href="/events/">イベント</a></li><li><a href="/container/">コンテナ</a></li><li><a href="/testing/">テスト</a></li><li><a href="/cicd/">CI/CD</a></li><li><a href="/oss/">OSS</a></li><li><a href="/learning/">学び</a></li></ul></div></div></section></nav>
+
+<main class="tdbc-container">
+  <div id="toc"></div>
+  <article class="post mr-auto ml-auto">
+    <header class="post__header">
+      <h1>Ninjaでビルドを高速化！その使い方を徹底解説</h1>
+      <div class="lang-switch__wrapper flex items-center text-sm space-x-2"><span class="text-gray-400">日本語</span><span class="text-gray-500">|</span><a class="hover:underline lang-switch__link-en" href="/en/blogs/2025/01/22/build_system_ninja/">English</a><span class="text-gray-500">|</span><a class="hover:underline lang-switch__link-zh" href="/zh-CN/blogs/2025/01/22/build_system_ninja/">中国语</a></div>
+      <a href="#header" id="back-to-top" class="hidden fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-blue-500 bg-opacity-50 text-white py-2 px-4 rounded-full shadow-md text-sm hover:bg-opacity-100 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 z-50 transition-opacity duration-300">
+        Back to Top
+      </a>
+
+      <div class="post__details">
+        <time datetime="2025-01-22">
+          2025-01-22
+        </time>
+        <span> | </span>
+        <span>11 min read</span>
+      </div>
+        <div style="float: left; margin-bottom: 0.5rem">
+        <span> Author: </span>
+          <a href="/authors/kotaro-miura/" title="kotaro-miura の記事一覧">kotaro-miura
+          <img width="40" height="40" style="margin-left: 0.2rem" alt="kotaro-miuraの画像" src="https://github.com/mz-MiuraKotaro.png?size=40"></a>
+        </div>
+      
+      <div class="clear-both md:clear-none md:float-right">
+        <div class="tdbc-social-plugins h-20 md:h-10">
+  <ul>
+    <li class="tdbc-twitter-follow">
+      <a href="https://twitter.com/MamezouDev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">
+        Follow @MamezouDev
+      </a>
+      <script async="" defer="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </li>
+    <li>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-via="MamezouDev" data-hashtags="豆蔵デベロッパー" data-show-count="false">
+        Tweet
+      </a>
+    </li>
+    <li class="tdbc-fb-recommend">
+      <div class="fb-like" data-href="https://developer.mamezou-tech.com/blogs/2025/01/22/build_system_ninja/" data-width="" data-layout="button_count" data-action="recommend" data-size="small" data-share="false">
+      </div>
+    </li>
+    <li>
+      <div class="fb-share-button" data-href="https://developer.mamezou-tech.com/blogs/2025/01/22/build_system_ninja/" data-layout="button" data-size="small">
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+          シェア
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
+
+      </div>
+    </header>
+    <div class="post__tags">
+      
+      
+      <a href="/tags/ninja/">#Ninja</a>
+      
+      
+      <a href="/tags/make/">#Make</a>
+      
+      
+      <a href="/tags/graphviz/">#graphviz</a>
+      
+    </div>
+    <main class="post__content">
+      <div class="section-header">
+<h1 id="はじめに" tabindex="-1">はじめに</h1>
+<a class="tdbc-anchor" href="#はじめに" aria-label="link to 'はじめに'">#</a></div>
+<p>最近ビルドツールのMakeを触っていたのですが、「これって古くから使われているらしいけど他に何か新しいビルドツールで広まっているものあるのかな～？」と思ったので調べたところ、<a href="https://github.com/ninja-build/ninja" target="_blank" rel="noopener noreferrer" class="new-tab-link">Ninja</a>というツールが良いぞという情報を得たので触ってみたことをまとめたいと思います。</p>
+<div class="section-header">
+<h1 id="ninjaの特徴" tabindex="-1">Ninjaの特徴</h1>
+<a class="tdbc-anchor" href="#ninjaの特徴" aria-label="link to 'Ninjaの特徴'">#</a></div>
+<p>NinjaはMakeに比べて高速に動作することがウリのビルドシステムです。</p>
+<p>Google Chromeのように約40,000ファイルのC++コードから単一の実行ファイルをコンパイルする大規模プロジェクトにおいて、そのビルドの高速化のために開発されました。<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>以下のような設計目的を掲げています。<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+<blockquote>
+<ul>
+<li>巨大なプロジェクトでもとても高速なインクリメンタルビルドができる</li>
+<li>コードのビルド方法に関するポリシーをほとんど持たない</li>
+<li>Makefileであれば正しく理解するのが難しい状況でも、正しく依存関係を把握できる</li>
+<li>利便性と速度が競合するときは、速度を優先する</li>
+</ul>
+</blockquote>
+<p>逆に以下の事項は明確な設計目的とはしていないとしています。</p>
+<blockquote>
+<ul>
+<li>手書きでビルドファイルを書くための便利な構文
+<ul>
+<li>Ninjaファイルは他のプログラムを使用して生成するべきです。（CMakeやMesonなどが対応しています(筆者追記)）</li>
+</ul>
+</li>
+<li>組み込みルール
+<ul>
+<li>MakeのようなCコードをコンパイルするための暗黙的ルールはNinjaにはありません。</li>
+</ul>
+</li>
+<li>ビルド時のカスタマイズ
+<ul>
+<li>コマンドオプションはNinjaファイルを生成するプログラムに含めるべきです。</li>
+</ul>
+</li>
+<li>ビルド時の条件分岐や検索パス
+<ul>
+<li>意思決定を行う処理は遅いので避けます。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>GitHub Starも伸びていて順調に広まっているように見受けられます。<br>
+<a href="https://star-history.com/#ninja-build/ninja&amp;Date" target="_blank" rel="noopener noreferrer" class="new-tab-link">Star History Chart</a></p>
+<p><a href="https://ninja-build.org/manual.html" target="_blank" rel="noopener noreferrer" class="new-tab-link">マニュアル</a>から詳細な仕様を確認できます。</p>
+<div class="section-header">
+<h1 id="使ってみる" tabindex="-1">使ってみる</h1>
+<a class="tdbc-anchor" href="#使ってみる" aria-label="link to '使ってみる'">#</a></div>
+<p>Ubuntuの場合、以下のコマンドでインストールします。</p>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-124" class="language-sh">$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> ninja-build
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-124" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<div class="section-header">
+<h1 id="ninjaコマンド" tabindex="-1">ninjaコマンド</h1>
+<a class="tdbc-anchor" href="#ninjaコマンド" aria-label="link to 'ninjaコマンド'">#</a></div>
+<p><code>ninja</code>というコマンドを用いてビルド実行します。</p>
+<p>以下の形式で実行します。</p>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-139" class="language-sh">ninja <span class="token punctuation">[</span>オプション<span class="token punctuation">]</span> <span class="token punctuation">[</span>ターゲット名<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-139" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<div class="section-header">
+<h1 id="設定ファイルbuildninja" tabindex="-1">設定ファイル(<code>build.ninja</code>)</h1>
+<a class="tdbc-anchor" href="#設定ファイルbuildninja" aria-label="link to '設定ファイル(build.ninja)'">#</a></div>
+<p>ninjaを実行すると、デフォルトではカレントディレクトリにある<code>build.ninja</code>というファイルから設定を読み取ります。</p>
+<p>ファイル名を指定して実行するときは<code>ninja -f ファイルパス</code> というオプションを指定します。</p>
+<p>では設定ファイルの書き方を見ていきましょう。</p>
+<p>基本的な形式は以下のようになります。</p>
+
+<div style="position: relative"><span class="code-filename">build.ninja</span>
+  <pre class="language-sh" tabindex="0"><code id="code-160" class="language-sh">rule ルール名
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> コマンド
+
+build ターゲット: ルール名 依存ファイル
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-160" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>大きく分けて、<code>rule</code>と<code>build</code>という2つの宣言文を用いて記述していくことになります。</p>
+<ul>
+<li><code>build</code>文では、ターゲット(作成したいファイル名)に対して、そのルール(作成方法)と依存ファイル(作成に必要なファイル)を対応付けます。<br>
+ターゲット、依存ファイルともに、複数のファイル名をスペース区切りで指定可能です。</li>
+<li><code>rule</code>文では、ファイル作成のために実行するコマンドを<code>command =</code>に続けて記述します。</li>
+</ul>
+<div class="section-header">
+<h2 id="サンプル" tabindex="-1">サンプル</h2>
+<a class="tdbc-anchor" href="#サンプル" aria-label="link to 'サンプル'">#</a></div>
+<p>以下に簡単な例を挙げます。</p>
+
+<div style="position: relative"><span class="code-filename">build.ninja</span>
+  <pre class="language-sh" tabindex="0"><code id="code-187" class="language-sh">rule r1
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP sample"</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+
+rule r2
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"TEST <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> $in<span class="token variable">`</span></span>"</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+
+build test.txt: r2 dep.txt
+build dep.txt: r1
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-187" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>上記の設定では、<code>dep.txt</code>というファイルのテキスト内容に<code>TEST </code>という文字列を先頭に追加したテキストを、<code>test.txt</code>に保存するための処理が書かれています。</p>
+<div class="section-header">
+<h3 id="サンプルの解説" tabindex="-1">サンプルの解説</h3>
+<a class="tdbc-anchor" href="#サンプルの解説" aria-label="link to 'サンプルの解説'">#</a></div>
+<ol>
+<li>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-201" class="language-sh"> build test.txt: r2 dep.txt
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-201" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<code>test.txt</code>というファイルを、<code>dep.txt</code>というファイルを用いてルール<code>r2</code>によって作成することを表します。<br>
+<code>dep.txt</code>が存在しない場合は、<code>dep.txt</code>がターゲットになっている<code>build</code>文を実行します。</li>
+<li>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-207" class="language-sh"> build dep.txt: r1
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-207" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<code>dep.txt</code>というファイルを、ルール<code>r1</code>によって作成することを表します。依存ファイルはありません。</li>
+<li>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-213" class="language-sh"> rule r1
+     <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP sample"</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-213" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+ルール<code>r1</code>では、<code>DEP sample</code>というテキストが書かれたファイルを作成するコマンドを実行します。<br>
+<code>$out</code>というのはNinjaの組み込みの変数として用意されていて、<code>build</code>文で指定した<strong>ターゲット名が</strong>展開されます。この例の場合は<code>dep.txt</code>となります。</li>
+<li>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-219" class="language-sh"> rule r2
+     <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"TEST <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> $in<span class="token variable">`</span></span>"</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-219" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+ルール<code>r2</code>では、入力ファイルの内容に<code>TEST</code>という文字列を追加したテキストが書かれたファイルを作成するコマンドを実行します。<br>
+<code>$in</code>というのもNinjaの組み込みの変数として用意されていて、<code>build</code>文で指定した<strong>依存ファイル名</strong>が展開されます。この例の場合は<code>dep.txt</code>です。</li>
+</ol>
+<div class="section-header">
+<h3 id="サンプルの実行結果" tabindex="-1">サンプルの実行結果</h3>
+<a class="tdbc-anchor" href="#サンプルの実行結果" aria-label="link to 'サンプルの実行結果'">#</a></div>
+<p>それではこの設定ファイルを使ってビルド実行してみましょう。Makeと同様、依存ファイルの変更有無によってターゲット生成の実行スキップされることが確認できます。</p>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-236" class="language-sh">$ ninja test.txt
+<span class="token punctuation">[</span><span class="token number">2</span>/2<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"TEST <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> dep.txt<span class="token variable">`</span></span>"</span> <span class="token operator">&gt;</span> test.txt
+
+<span class="token comment"># ファイル内容確認</span>
+$ <span class="token function">cat</span> dep.txt test.txt
+DEP sample
+TEST DEP sample
+
+<span class="token comment"># 何もせずに再実行しても更新は行われない。</span>
+$ ninja test.txt 
+ninja: no work to do. 
+
+<span class="token comment"># 依存ファイルの内容を変更する。</span>
+$ <span class="token builtin class-name">echo</span> <span class="token string">"DEP sample 1"</span> <span class="token operator">&gt;</span> dep.txt
+
+<span class="token comment"># 依存ファイルが更新されている場合はターゲットが再作成される。</span>
+$ ninja test.txt 
+<span class="token punctuation">[</span><span class="token number">1</span>/1<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"TEST <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> dep.txt<span class="token variable">`</span></span>"</span> <span class="token operator">&gt;</span> test.txt
+
+<span class="token comment"># ファイル内容確認</span>
+$ <span class="token function">cat</span> dep.txt test.txt 
+DEP sample <span class="token number">1</span>
+TEST DEP sample <span class="token number">1</span>
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-236" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>基本的な使い方は以上になります。とてもシンプルですね。</p>
+<div class="section-header">
+<h2 id="依存関係グラフ" tabindex="-1">依存関係グラフ</h2>
+<a class="tdbc-anchor" href="#依存関係グラフ" aria-label="link to '依存関係グラフ'">#</a></div>
+<p>Ninjaにはファイルの依存関係をネットワークグラフとして可視化するためのツールが用意されているのが面白いなと思ったので紹介します。</p>
+<p><code>ninja -t graph</code>というオプションを使うことで、ファイルの依存関係グラフを<a href="https://graphviz.org/" target="_blank" rel="noopener noreferrer" class="new-tab-link">graphviz</a>形式で出力してくれます。</p>
+<p>例えば最初に挙げたサンプルファイルのグラフを出力してみます。</p>
+<p>事前にgraphvizをインストールして、以下のように<code>dot</code>コマンドに渡すことで依存関係グラフの画像<code>graph.png</code>を出力してくれます。</p>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-260" class="language-sh">ninja <span class="token parameter variable">-t</span> graph <span class="token operator">|</span> dot <span class="token parameter variable">-Tpng</span> <span class="token parameter variable">-ograph.png</span>
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-260" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<div class="flash"><span class="flash-title"><!-- <%= octicon "info" %> --><svg class="octicon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg> Information</span><p>graphvizはUbuntuの場合は以下のコマンドでインストールできます。</p>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-265" class="language-sh"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> graphviz
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-265" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+</div>
+<p>以下のような画像が出力されます。<br>
+依存ファイルとターゲットが四角のノードに表されていて、ルールがそれらを結ぶエッジとして表されます。<br>
+依存ファイルがない場合はルールが丸いノードに表されて、ターゲットと結ばれています。</p>
+<p><a id="image-swipe-1343" class="image-swipe" href="/img/blogs/2025/0122_build_system_ninja/sample_graph.png" target="_blank" rel="noopener noreferrer"><img src="/img/blogs/2025/0122_build_system_ninja/sample_graph.png" alt="graph1"></a></p>
+<div class="section-header">
+<h1 id="その他の仕様まとめ" tabindex="-1">その他の仕様まとめ</h1>
+<a class="tdbc-anchor" href="#その他の仕様まとめ" aria-label="link to 'その他の仕様まとめ'">#</a></div>
+<p>他にも知っておくと便利な仕様がありますので確認していきましょう。</p>
+<div class="section-header">
+<h2 id="変数" tabindex="-1">変数</h2>
+<a class="tdbc-anchor" href="#変数" aria-label="link to '変数'">#</a></div>
+<p>設定ファイルのトップレベルで <code>変数名 = 文字列</code>という形式で変数を定義できます。<br>
+参照するときは<code>$変数名</code>と書きます。</p>
+
+<div style="position: relative"><span class="code-filename">サンプルファイル</span>
+  <pre class="language-sh" tabindex="0"><code id="code-295" class="language-sh">var <span class="token operator">=</span> 豆蔵
+
+rule r
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token variable">$var</span>
+
+build tag: r
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-295" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+
+<div style="position: relative"><span class="code-filename">実行結果</span>
+  <pre class="language-sh" tabindex="0"><code id="code-296" class="language-sh">$ ninja
+<span class="token punctuation">[</span><span class="token number">1</span>/1<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> 豆蔵
+豆蔵
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-296" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<div class="section-header">
+<h2 id="エスケープ" tabindex="-1">エスケープ</h2>
+<a class="tdbc-anchor" href="#エスケープ" aria-label="link to 'エスケープ'">#</a></div>
+<p>エスケープ文字は<code>$</code>です。ninja.buildファイルの中で意味を持つ文字（スペース,<code>:</code>,<code>$</code>自身,改行）を使いたいときは<code>$</code>に続けて書きます。</p>
+<p>例えば複数のコマンドを改行して書きたい場合は以下のように書くことができます。</p>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-311" class="language-sh">rule r4
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"r4 sample"</span> $
+    <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"r4-12 sample"</span>
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-311" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<div class="section-header">
+<h2 id="phony-rule" tabindex="-1">phony rule</h2>
+<a class="tdbc-anchor" href="#phony-rule" aria-label="link to 'phony rule'">#</a></div>
+<p><code>phony</code>という、組み込みで用意されているルールがあります。</p>
+<p>このルールはなにも実行しないルールです。何も実行しないですがターゲットに対して任意に依存性を追加するために利用できます。</p>
+<p>例えば以下のように<code>some/file.txt</code>というファイルにエイリアスとして<code>foo</code>を定義できます。</p>
+
+<div style="position: relative"><span class="code-filename">サンプルファイル</span>
+  <pre class="language-sh" tabindex="0"><code id="code-329" class="language-sh">rule r1
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token function">cat</span> <span class="token variable">$in</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+
+build some/file.txt: r1 dep.txt
+build foo: phony some/file.txt
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-329" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>実行時のターゲット名として<code>some/file.txt</code>ではなく<code>foo</code>と指定できます。</p>
+
+<div style="position: relative"><span class="code-filename">実行結果</span>
+  <pre class="language-sh" tabindex="0"><code id="code-333" class="language-sh">$ ninja foo
+<span class="token punctuation">[</span><span class="token number">1</span>/1<span class="token punctuation">]</span> <span class="token function">cat</span> dep.txt <span class="token operator">&gt;</span> some/file.txt
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-333" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>他にも複数のターゲットをまとめるグループ用ターゲットを作成することにも利用できます。</p>
+
+<div style="position: relative"><span class="code-filename">サンプルファイル</span>
+  <pre class="language-sh" tabindex="0"><code id="code-337" class="language-sh">rule r1
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"r1 sample"</span>
+rule r2
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"r2 sample"</span>
+rule r3
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"r3 sample"</span>
+
+build all: phony tag1 tag2 tag3
+build tag1: r1
+build tag2: r2
+build tag3: r3
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-337" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>依存関係グラフは以下になります。</p>
+<p><a id="image-swipe-7052" class="image-swipe" href="/img/blogs/2025/0122_build_system_ninja/phony_graph.png" target="_blank" rel="noopener noreferrer"><img src="/img/blogs/2025/0122_build_system_ninja/phony_graph.png" alt="phony"></a></p>
+
+<div style="position: relative"><span class="code-filename">実行結果</span>
+  <pre class="language-sh" tabindex="0"><code id="code-344" class="language-sh">$ ninja all
+<span class="token punctuation">[</span><span class="token number">1</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"r1 sample"</span>
+r1 sample
+<span class="token punctuation">[</span><span class="token number">2</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"r2 sample"</span>
+r2 sample
+<span class="token punctuation">[</span><span class="token number">3</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"r3 sample"</span>
+r3 sample
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-344" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<div class="section-header">
+<h2 id="暗黙的な依存性" tabindex="-1">暗黙的な依存性</h2>
+<a class="tdbc-anchor" href="#暗黙的な依存性" aria-label="link to '暗黙的な依存性'">#</a></div>
+<p>既に紹介しましたが、ルールに記述するコマンドの中で<code>$in</code>や<code>$out</code>という変数を利用できました。<br>
+それぞれ、<code>$in</code>は依存ファイルのリスト、<code>$out</code>はターゲットのリストに展開されます。<br>
+また、ファイル指定の中で、<code>|</code>に続けて書いたファイルはこれらの変数に展開されません。</p>
+<p>以下に、<code>|</code> を用いた設定ファイルの例を示します。</p>
+
+<div style="position: relative"><span class="code-filename">サンプルファイル</span>
+  <pre class="language-sh" tabindex="0"><code id="code-359" class="language-sh">rule r1
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP1 sample"</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+
+rule r2
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP2 sample"</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+
+rule r3
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"TEST <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> $in<span class="token variable">`</span></span>"</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+
+build test1.txt <span class="token operator">|</span> test2.txt: r3 dep1.txt <span class="token operator">|</span> dep2.txt
+build dep1.txt: r1
+build dep2.txt: r2
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-359" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>依存関係グラフは以下のようになります。</p>
+<p><a id="image-swipe-8293" class="image-swipe" href="/img/blogs/2025/0122_build_system_ninja/implicit_dep_graph.png" target="_blank" rel="noopener noreferrer"><img src="/img/blogs/2025/0122_build_system_ninja/implicit_dep_graph.png" alt="implicit_dep_graph.png"></a></p>
+
+<div style="position: relative"><span class="code-filename">実行結果</span>
+  <pre class="language-sh" tabindex="0"><code id="code-366" class="language-sh">$ ninja test1.txt <span class="token parameter variable">-v</span>
+<span class="token punctuation">[</span><span class="token number">1</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP1 sample"</span> <span class="token operator">&gt;</span> dep1.txt
+<span class="token punctuation">[</span><span class="token number">2</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP2 sample"</span> <span class="token operator">&gt;</span> dep2.txt
+<span class="token punctuation">[</span><span class="token number">3</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"TEST <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> dep1.txt<span class="token variable">`</span></span>"</span> <span class="token operator">&gt;</span> test1.txt
+
+$ <span class="token function">cat</span> dep1.txt dep2.txt test1.txt
+DEP1 sample
+DEP2 sample
+TEST DEP1 sample
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-366" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p><code>r3</code>実行時の <code>$in</code> には <code>dep1.txt</code>だけ、<code>$out</code> には <code>test1.txt</code> だけが展開されます。<br>
+一方で、<code>dep2.txt</code>は依存ファイルとしては認識されおり、<code>dep2.txt</code>の作成ルールの<code>r2</code>は実行されます。</p>
+<p>また、暗黙的ターゲットの<code>test2.txt</code>は、直接ビルドしようとしても作成されませんが依存ファイルの作成処理は実行されます。</p>
+
+<div style="position: relative"><span class="code-filename">実行結果</span>
+  <pre class="language-sh" tabindex="0"><code id="code-373" class="language-sh">$ ninja test2.txt <span class="token parameter variable">-v</span>
+<span class="token punctuation">[</span><span class="token number">1</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP1 sample"</span> <span class="token operator">&gt;</span> dep1.txt
+<span class="token punctuation">[</span><span class="token number">2</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP2 sample"</span> <span class="token operator">&gt;</span> dep2.txt
+<span class="token punctuation">[</span><span class="token number">3</span>/3<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"TEST <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> dep1.txt<span class="token variable">`</span></span>"</span> <span class="token operator">&gt;</span> test1.txt
+
+$ <span class="token function">cat</span> dep1.txt dep2.txt test1.txt
+DEP1 sample
+DEP2 sample
+TEST DEP1 sample
+
+$ <span class="token function">ls</span> test2.txt
+ls: cannot access <span class="token string">'test2.txt'</span><span class="token builtin class-name">:</span> No such <span class="token function">file</span> or directory
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-373" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<div class="section-header">
+<h2 id="order-only-dependency" tabindex="-1">Order-Only Dependency</h2>
+<a class="tdbc-anchor" href="#order-only-dependency" aria-label="link to 'Order-Only Dependency'">#</a></div>
+<p>依存ファイルの中で<code>||</code>に続けて指定したファイルは、その依存ファイルの最新化までは行うが、ターゲットを再ビルドをするかどうかの評価には考慮されないようになります。</p>
+<p>この性質を利用して、依存ファイルが最新であることは保証しつつ、不要なターゲットの再ビルドを減らすことができます。</p>
+<p>例えば次の例でOrder-Only Dependencyな依存ファイルとそうではない依存ファイルの場合の動作を比較してみましょう。</p>
+<p>以下の例では<code>test2.txt</code>を再ビルドするかどうかの評価に、<code>dep2.txt</code>が更新されたかどうかが考慮されません。</p>
+
+<div style="position: relative"><span class="code-filename">サンプルファイル</span>
+  <pre class="language-sh" tabindex="0"><code id="code-394" class="language-sh">rule dep
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP sample"</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+
+rule <span class="token builtin class-name">test</span>
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token function">cat</span> <span class="token variable">$in</span> <span class="token operator">&gt;</span> <span class="token variable">$out</span>
+
+build test1.txt: <span class="token builtin class-name">test</span> dep1.txt
+build test2.txt: <span class="token builtin class-name">test</span> <span class="token operator">||</span> dep2.txt
+build dep1.txt: dep
+build dep2.txt: dep
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-394" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>依存関係グラフは以下です。</p>
+<p><a id="image-swipe-2223" class="image-swipe" href="/img/blogs/2025/0122_build_system_ninja/order_only_graph.png" target="_blank" rel="noopener noreferrer"><img src="/img/blogs/2025/0122_build_system_ninja/order_only_graph.png" alt="order_only_graph.png"></a></p>
+
+<div style="position: relative"><span class="code-filename">実行結果</span>
+  <pre class="language-sh" tabindex="0"><code id="code-401" class="language-sh"><span class="token comment"># test1.txt, test2.txtは既に存在しているとします。</span>
+$ <span class="token function">touch</span> test1.txt
+$ <span class="token function">touch</span> test2.txt
+
+<span class="token comment"># test1.txtの再ビルド実行時、dep1.txtが最新化(ここでは新規作成)されたことに影響してtest1.txtの更新処理が実行されます。</span>
+$ ninja test1.txt <span class="token parameter variable">-v</span>
+<span class="token punctuation">[</span><span class="token number">1</span>/2<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP sample"</span> <span class="token operator">&gt;</span> dep1.txt
+<span class="token punctuation">[</span><span class="token number">2</span>/2<span class="token punctuation">]</span> <span class="token function">cat</span> dep1.txt <span class="token operator">&gt;</span> test1.txt
+
+<span class="token comment"># text2.txtの再ビルドの実行時、dep2.txtは最新化(ここでは新規作成)しましたが、test2.txtの更新処理は行われません。</span>
+$ ninja test2.txt <span class="token parameter variable">-v</span>
+<span class="token punctuation">[</span><span class="token number">1</span>/1<span class="token punctuation">]</span> <span class="token builtin class-name">echo</span> <span class="token string">"DEP sample"</span> <span class="token operator">&gt;</span> dep2.txt
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-401" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<div class="section-header">
+<h2 id="動的依存性dynamic-dependency" tabindex="-1">動的依存性(Dynamic Dependency)</h2>
+<a class="tdbc-anchor" href="#動的依存性dynamic-dependency" aria-label="link to '動的依存性(Dynamic Dependency)'">#</a></div>
+<p>次は、依存ファイルを動的に指定する機能を紹介します。</p>
+<p>ビルド処理の中で、 依存性を表すための<code>build</code>文の一覧のようなファイルを生成し、そのファイルを参照して依存関係を追加できます。</p>
+<p>例を<a href="https://ninja-build.org/manual.html#_tarball_extraction" target="_blank" rel="noopener noreferrer" class="new-tab-link">ドキュメント</a>から拝借しますが、以下の設定ではtarボールの展開処理をしています。<br>
+この設定では、tarボールが前回展開したときから更新があった場合に再展開します。<br>
+また、tarボールに更新がなかったとしても以前展開したはずのファイルがなんらかの理由で存在していない場合にも再展開します。</p>
+
+<div style="position: relative"><span class="code-filename">build.ninja</span>
+  <pre class="language-sh" tabindex="0"><code id="code-419" class="language-sh">rule untar
+  <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token function">tar</span> xf <span class="token variable">$in</span> <span class="token operator">&amp;&amp;</span> <span class="token function">touch</span> <span class="token variable">$out</span>
+rule scantar
+  <span class="token builtin class-name">command</span> <span class="token operator">=</span> scantar <span class="token parameter variable">--stamp</span><span class="token operator">=</span><span class="token variable">$stamp</span> <span class="token parameter variable">--dd</span><span class="token operator">=</span><span class="token variable">$out</span> <span class="token variable">$in</span>
+build foo.tar.dd: scantar foo.tar
+  stamp <span class="token operator">=</span> foo.tar.stamp
+build foo.tar.stamp: untar foo.tar <span class="token operator">||</span> foo.tar.dd
+  dyndep <span class="token operator">=</span> foo.tar.dd
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-419" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>少し複雑ですので、処理を追って説明していきます。</p>
+<p>まず最初に<code>ninja foo.tar.stamp</code>を実行することで次のbuild文が評価されます。</p>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-426" class="language-sh">build foo.tar.stamp: untar foo.tar <span class="token operator">||</span> foo.tar.dd
+  dyndep <span class="token operator">=</span> foo.tar.dd
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-426" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p><code>untar</code>が展開処理を実行するルールです。 展開実行と同時にタイムスタンプ記録用に<code>foo.tar.stamp</code>を作成します。<br>
+<code>dyndep =</code>というのが組み込みのキーワードなのですが、ここで指定されたファイル<code>foo.tar.dd</code>には指定の書式<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>で追加のターゲットや依存ファイルが記述されている想定です。この<code>foo.tar.dd</code>をtarボールの内容によって動的に生成します。<br>
+生成するためにここでは<code>foo.tar.dd</code>をOrder-Only Dependencyとして指定します。</p>
+<p>次に<code>foo.tar.dd</code>のビルド処理として以下のbuild文が評価されます。</p>
+
+<div style="position: relative">
+  <pre class="language-sh" tabindex="0"><code id="code-433" class="language-sh">build foo.tar.dd: scantar foo.tar
+  stamp <span class="token operator">=</span> foo.tar.stamp
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-433" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p><code>scantar</code>というコマンドはここでは仮想的に用意されていると仮定したコマンドです。このコマンドはtarボールを読込みその内容に応じて以下のようなファイルを生成するものとしています。(例えば<code>tar tf</code>の結果を加工する)</p>
+
+<div style="position: relative"><span class="code-filename">foo.tar.dd</span>
+  <pre class="language-sh" tabindex="0"><code id="code-437" class="language-sh">ninja_dyndep_version <span class="token operator">=</span> <span class="token number">1</span>
+build foo.tar.stamp <span class="token operator">|</span> file1.txt file2.txt <span class="token builtin class-name">:</span> dyndep
+  restat <span class="token operator">=</span> <span class="token number">1</span>
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-437" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p><code>file1.txt</code>,<code>file2.txt</code>がtarボールに含まれていたファイル名であり、それらを(暗黙的な)ターゲットファイルとして追加することを記述しています。</p>
+<p>このようにしてtarボールの内容によって動的に依存関係を指定できます。</p>
+<p>依存関係グラフは以下のようになります。（<code>file1.txt</code>,<code>file2.txt</code>を指すはずのターゲットノードがよくわからない数値になっていますね。バグでしょうか…）</p>
+<p><a id="image-swipe-7311" class="image-swipe" href="/img/blogs/2025/0122_build_system_ninja/dyndep.png" target="_blank" rel="noopener noreferrer"><img src="/img/blogs/2025/0122_build_system_ninja/dyndep.png" alt="dyndep"></a></p>
+<div class="section-header">
+<h2 id="並列実行" tabindex="-1">並列実行</h2>
+<a class="tdbc-anchor" href="#並列実行" aria-label="link to '並列実行'">#</a></div>
+<p>Ninjaではビルド実行をデフォルトで並列実行してくれます。</p>
+<p>ファイル生成も行わない簡単な例になりますが、以下のような設定ファイルで動作を確認してみます。</p>
+
+<div style="position: relative"><span class="code-filename">サンプルファイル</span>
+  <pre class="language-sh" tabindex="0"><code id="code-464" class="language-sh">rule r1
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token function">sleep</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"r1 <span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +%H:%M:%S<span class="token variable">`</span></span>"</span>
+rule r2
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token function">sleep</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"r2 <span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +%H:%M:%S<span class="token variable">`</span></span>"</span>
+rule r3
+    <span class="token builtin class-name">command</span> <span class="token operator">=</span> <span class="token function">sleep</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"r3 <span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +%H:%M:%S<span class="token variable">`</span></span>"</span>
+
+build tag: phony tag1 tag2 tag3
+build tag1: r1
+build tag2: r2
+build tag3: r3
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-464" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>ターゲット<code>tag</code>は3つの依存ファイル<code>tag1</code>、<code>tag2</code>、<code>tag3</code>に依存していて、<br>
+それぞれの依存ファイルのルール<code>r1</code>、<code>r2</code>、<code>r3</code>において、2秒待機して時刻を出力します。</p>
+
+<div style="position: relative"><span class="code-filename">実行結果</span>
+  <pre class="language-sh" tabindex="0"><code id="code-468" class="language-sh">$ ninja tag
+<span class="token punctuation">[</span><span class="token number">1</span>/3<span class="token punctuation">]</span> <span class="token function">sleep</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"r1 <span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +%H:%M:%S<span class="token variable">`</span></span>"</span>
+r1 <span class="token number">19</span>:49:04
+<span class="token punctuation">[</span><span class="token number">2</span>/3<span class="token punctuation">]</span> <span class="token function">sleep</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"r2 <span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +%H:%M:%S<span class="token variable">`</span></span>"</span>
+r2 <span class="token number">19</span>:49:04
+<span class="token punctuation">[</span><span class="token number">3</span>/3<span class="token punctuation">]</span> <span class="token function">sleep</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"r3 <span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +%H:%M:%S<span class="token variable">`</span></span>"</span>
+r3 <span class="token number">19</span>:49:04
+</code></pre>
+
+  <button class="code-copy " data-clipboard-target="#code-468" style="position: absolute; top: 7.5px; right: 6px; padding-top: 3px; cursor: pointer; outline: none; opacity: 0.8;" title="Copy">
+    <span style="display:inline-block;background:url(https://api.iconify.design/mdi/content-copy.svg) no-repeat center center / contain;width: 16px; height: 16px;" class=""></span>
+  </button>
+</div>
+<p>出力の時刻の秒数まで見ていただくと分かると思いますが、並列で実行されているため全て同時刻で出力されました。</p>
+<div class="section-header">
+<h1 id="ツールオプションについて" tabindex="-1">ツールオプションについて</h1>
+<a class="tdbc-anchor" href="#ツールオプションについて" aria-label="link to 'ツールオプションについて'">#</a></div>
+<p>上記で依存性グラフを画像出力するときにも使いましたが、ninjaコマンドには<code>-t</code>オプションで使える便利ツールが用意されています。</p>
+<ul>
+<li><code>browse</code>
+<ul>
+<li>依存関係グラフをブラウザで表示できる</li>
+<li><code>ninja -t browse --port=8000 --no-browser mytarget</code>(手元ではなぜか実行エラーになる💦)</li>
+</ul>
+</li>
+<li><code>graph</code>
+<ul>
+<li>graphviz形式の依存グラフを出力する</li>
+<li><code>ninja -t graph mytarget | dot -Tpng -ograph.png</code></li>
+<li><code>sudo apt install graphviz -y</code>でdotをインストール</li>
+</ul>
+</li>
+<li><code>targets</code>
+<ul>
+<li>ターゲット一覧出力</li>
+</ul>
+</li>
+<li><code>commands</code>
+<ul>
+<li>与えたターゲットのコマンド一覧出力</li>
+</ul>
+</li>
+<li><code>inputs</code>
+<ul>
+<li>与えたターゲットの入力ファイル一覧</li>
+</ul>
+</li>
+<li><code>clean</code>
+<ul>
+<li>成果物を削除する</li>
+</ul>
+</li>
+</ul>
+<div class="section-header">
+<h1 id="おわりに" tabindex="-1">おわりに</h1>
+<a class="tdbc-anchor" href="#おわりに" aria-label="link to 'おわりに'">#</a></div>
+<p>今回はビルドシステムツールのNinjaを触ってみた内容をまとめました。まだ他にも細かな仕様がありますので気になる方は<a href="https://ninja-build.org/manual.html" target="_blank" rel="noopener noreferrer" class="new-tab-link">マニュアル</a>をご覧ください。<br>
+設計目的にもあるように基本的にはNinjaの設定ファイルは手書きしないようなのですが、読み方や実行方法等が理解できて面白かったです。 特に依存関係グラフを出力できるのは便利でこれだけでも何かに使えそうだなと思いました。<br>
+Makefileと比べて依存関係の解決がとても高速であるということなので、何か機会があれば使ってみたいなと思いました。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://aosabook.org/en/posa/ninja.html" target="_blank" rel="noopener noreferrer" class="new-tab-link">Evan Martin. The Performance of Open Source Software Ninja</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="https://ninja-build.org/manual.html#_design_goals" target="_blank" rel="noopener noreferrer" class="new-tab-link">Design goals</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p><a href="https://ninja-build.org/manual.html#_dyndep_file_reference" target="_blank" rel="noopener noreferrer" class="new-tab-link">dydepファイル仕様</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+    </main>
+
+    <aside class="post__aside">
+      <div class="post__tags">
+        
+          
+          <a href="/tags/ninja/">#Ninja</a>
+        
+          
+          <a href="/tags/make/">#Make</a>
+        
+          
+          <a href="/tags/graphviz/">#graphviz</a>
+        
+      </div>
+
+      <nav class="post__pagination">
+
+            <a href="/blogs/2025/01/22/github-issues-sub-issue-progress/">
+              <span>←</span>
+              <span>GitHub Issues で Sub-issues による進捗状況把握ができます</span>
+            </a>
+
+          
+
+            <a href="/blogs/2025/01/22/perplexity-sonar-intro/">
+              <span>オンライン検索×AI：Perplexity新API Sonarの概要と基本的な使い方</span>
+              <span>→</span>
+            </a>
+
+          
+
+        
+      </nav>
+    </aside>
+    <script type="module">
+      import { render } from '/js/preact/og_preview.client.js';
+      const links = document.querySelectorAll('div.og-preview');
+      links.forEach(placeholder => {
+        const url = placeholder.getAttribute('data-og-url');
+        const container = document.createElement('div');
+        const parent = placeholder.parentElement;
+        if (parent) {
+          parent.replaceChild(container, placeholder);
+          render({url}, container);
+        }
+      });
+    </script>
+    <div style="margin-top:0">
+      <div id="recommendation-app"></div>
+      <script type="module">
+        import { render } from '/js/preact/recommendation.client.js';
+        render({tags : 'Ninja,Make,graphviz'}, document.getElementById("recommendation-app"));
+      </script>
+    </div>
+    <hr class="link-separator">
+    <fieldset class="border m-2 border-stone-200 rounded-xl p-2 hidden md:block max-w-full md:max-w-80ch page-ranking"><legend>豆蔵デベロッパーサイト - 先週のアクセスランキング</legend><ol class="m-0 pl-6"><li class="text-base"><a href="/blogs/2024/06/08/a5m2_settings/">【新人さん向け】A5:SQL Mk-2のおすすめ設定と使い方(2024-06-08)</a></li><li class="text-base"><a href="/blogs/2023/03/22/use-excalidraw/">手書き風ドローツール Excalidraw のススメ(2023-03-22)</a></li><li class="text-base"><a href="/blogs/2025/07/05/csharp_vscode/">VS Codeで始める！わかる＆できるC#開発環境の構築【2025年版マニュアル】(2025-07-05)</a></li><li class="text-base"><a href="/robotics/lerobot/lerobot_introduction/">最先端ロボ×AIで遊ぼう！LeRobotとSO-101でマルチモーダルAIを体験＆環境構築ガイド(2026-03-31)</a></li><li class="text-base"><a href="/blogs/2025/05/09/public-private-keys-story/">「暗号の扉を開く２つの鍵」～公開鍵と秘密鍵の仕組みと、インターネットを守る暗号技術の話(2025-05-09)</a></li><li class="text-base"><a href="/robotics/3dgs/3dgs-beginners-guide/">初心者も挑戦！3D Gaussian Splattingで作るリアル3Dモデリング入門(2026-02-13)</a></li><li class="text-base"><a href="/blogs/2025/06/13/moji-code2/">文字コード これだけは覚えておこう ～UTF-8編～(2025-06-13)</a></li><li class="text-base"><a href="/blogs/2026/04/20/aws_certified_generative_ai_developer/">AWS Generative AI Developer 合格とW全冠達成記(2026-04-20)</a></li><li class="text-base"><a href="/blogs/2023/12/11/umtp_l3_challenge/">UMTP認定 L1～L3まで受験したのでまとめます(2023-12-11)</a></li><li class="text-base"><a href="/blogs/2025/05/02/transcript-meeting-recordings-with-whisper/">Whisper を使って会議の音声データを文字起こししてみる(2025-05-02)</a></li></ol></fieldset>
+    <div style="margin-top:0"><div class="m-auto p-1"><div class="my-1"><p class="text-sm m-0 mb-1">豆蔵では共に高め合う仲間を募集しています！</p><a href="https://recruit.mamezo.tech/" target="_blank" rel="noreferrer noopener"><img class="w-auto inline" src="/img/logo/recruit.jpeg" alt="recruit" width="200" height="60"></a><p class="text-sm m-0 mb-1">具体的な採用情報は<a class="new-tab-link" href="https://hrmos.co/pages/mamezou-recruit/jobs" target="_blank" rel="noreferrer noopener">こちら</a>からご覧いただけます。</p></div></div></div>
+  </article><script>function showTooltip(o,e){o.trigger.className.includes("tooltipped")||(o.trigger.children[0].className="tooltipped tooltipped-s",o.trigger.children[0].ariaLabel=e)}window.addEventListener("load",()=>{var o=new ClipboardJS(".code-copy");o.on("success",o=>showTooltip(o,"Copied!")),o.on("error",o=>showTooltip(o,"Failed..."))});</script>
+<script async="" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+mermaid.initialize();
+</script>
+  
+  <script type="module">
+    import { render } from '/js/preact/toc.client.js';
+    render(document.getElementById("toc"), '/posts/blogs/2025/0122_build_system_ninja', "https://image.mamezou-tech.com", true);
+  </script>
+</main>
+
+    <footer class="tdbc-background--secondary">
+      <div class="tdbc-container tdbc-text-align-center">
+        <div class="tdbc-row text-white mr-auto ml-auto" style="line-height: 50px">
+          <p class="tdbc-mb-none">© 2026 MAMEZO Co.,Ltd.</p>
+          <div style="text-align:right">
+            <a href="https://mamezo.tech//">
+              <img alt="豆蔵" src="/img/logo/mz-logo-white.png">
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/js/site.js"></script>
+  
+
+<script>
+  window.addEventListener('load', () => {
+    const recruit = document.querySelector("a[href*='wwwrecruit']");
+    if (recruit) {
+      recruit.addEventListener('click', () => {
+        gtag('event', 'click_recruit');
+      });
+    }
+    document.querySelectorAll("a[href*='mamezou-recruit/jobs']").forEach(el => {
+      el.addEventListener('click', () => {
+        gtag('event', 'click_hamos');
+      });
+    });
+    const mz = document.querySelector("a[href*='www.mamezou.com']");
+    if (mz) {
+      mz.addEventListener('click', () => {
+        gtag('event', 'click_mz');
+      });
+    }
+    const g = document.querySelector("button.gsc-search-button");
+    if (g) {
+      g.addEventListener('click', () => {
+        gtag('event', 'click_google_search');
+      });
+    }
+    document.querySelectorAll("a.tdbc-card__title").forEach(el => {
+      el.addEventListener('click', () => {
+        gtag('event', 'click_lp', { title: el.text });
+      });
+    });
+    document.querySelectorAll(".top-nav li > a").forEach(el => {
+      el.addEventListener('click', () => {
+        gtag('event', 'click_lp_nav', { title: el.text });
+      });
+    });
+    document.querySelectorAll(".page-ranking a").forEach(el => {
+      el.addEventListener('click', () => {
+        gtag('event', 'click_ranking', {title: el.text});
+      });
+    });
+    const langs = [".lang-switch__link-ja", ".lang-switch__link-en", ".lang-switch__link-zh"]
+    langs.forEach(cl => {
+      const sw = document.querySelector(cl);
+      const lang = cl.slice(-2);
+      if (sw) {
+        sw.addEventListener('click', () => {
+          gtag('event', `click_switch_${lang}`);
+        });
+      }
+    })
+  });
+</script></body></html>

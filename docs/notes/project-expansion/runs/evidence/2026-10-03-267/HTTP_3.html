@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>gn - Git at Google</title><link rel="icon" href="/+static/favicon.ico" sizes="any"><link rel="icon" type="image/svg+xml" href="/+static/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/+static/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/+static/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/+static/apple-touch-icon.png"><link rel="stylesheet" type="text/css" href="/+static/base.css"><link rel="stylesheet" type="text/css" href="/+static/doc.css"><!-- default customHeadTagPart --><script nonce="6HG9g98K2zT7NFiXyiLRcw">// Copyright (C) 2026 Google Inc. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+(function() {
+  try {
+    let t = localStorage.getItem('gitiles-theme');
+    if (!t) {
+      const m = document.cookie.match(/(?:^|; )gitiles-theme=([^;]*)/);
+      if (m) {
+        t = decodeURIComponent(m[1]);
+      }
+    }
+    if (t === 'dark' || t === 'light') {
+      document.documentElement.setAttribute('data-theme', t);
+    }
+  } catch (e) {}
+})();
+</script></head><body class="Site"><header class="Site-header"><div class="Header"><style>
+  .Header-image--dark {
+    display: none;
+  }
+  html[data-theme="dark"] .Header-image--light {
+    display: none;
+  }
+  html[data-theme="dark"] .Header-image--dark {
+    display: inline-block;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .Header-image--light {
+      display: none;
+    }
+    :root:not([data-theme="light"]) .Header-image--dark {
+      display: inline-block;
+    }
+  }
+</style><a class="Header-image" href="/"><img class="Header-image--light" src="//www.gstatic.com/images/branding/lockups/2x/lockup_git_color_108x24dp.png" width="108" height="24" alt="Google Git"><img class="Header-image--dark" src="//www.gstatic.com/images/branding/lockups/2x/lockup_git_light_color_108x24dp.png" width="108" height="24" alt="Google Git"></a><div class="Header-menu"> <a class="Header-menuItem" href="https://accounts.google.com/AccountChooser?faa=1&amp;continue=https://gn.googlesource.com/login/gn/">Sign in</a> <button class="Header-menuItem Header-themeToggle" id="gitiles-theme-toggle" type="button" title="Toggle theme (Auto / Dark / Light)" aria-label="Toggle theme"><span class="Header-themeIcon" aria-hidden="true">&#9681;</span><span class="Header-themeLabel">Theme</span></button><script nonce="6HG9g98K2zT7NFiXyiLRcw">// Copyright (C) 2026 Google Inc. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+(function() {
+  function getTheme() {
+    try {
+      const t = localStorage.getItem('gitiles-theme');
+      if (t) {
+        return t;
+      }
+    } catch (e) {}
+    try {
+      const m = document.cookie.match(/(?:^|; )gitiles-theme=([^;]*)/);
+      if (m) {
+        return decodeURIComponent(m[1]);
+      }
+    } catch (e) {}
+    return 'auto';
+  }
+
+  function applyTheme(theme) {
+    if (theme === 'dark' || theme === 'light') {
+      document.documentElement.setAttribute('data-theme', theme);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+  }
+
+  function updateButton(btn, theme) {
+    const icon = btn.querySelector('.Header-themeIcon');
+    const label = btn.querySelector('.Header-themeLabel');
+    if (theme === 'dark') {
+      if (icon) {
+        icon.textContent = '\u263E';
+      }
+      if (label) {
+        label.textContent = 'Dark';
+      }
+      btn.title = 'Theme: Dark (click to switch to Light)';
+    } else if (theme === 'light') {
+      if (icon) {
+        icon.textContent = '\u2600';
+      }
+      if (label) {
+        label.textContent = 'Light';
+      }
+      btn.title = 'Theme: Light (click to switch to Auto)';
+    } else {
+      if (icon) {
+        icon.textContent = '\u25D1';
+      }
+      if (label) {
+        label.textContent = 'Auto';
+      }
+      btn.title = 'Theme: Auto (click to switch to Dark)';
+    }
+    btn.setAttribute('aria-label', btn.title);
+  }
+
+  function initToggle() {
+    const btn = document.getElementById('gitiles-theme-toggle');
+    if (!btn) {
+      return;
+    }
+    const current = getTheme();
+    updateButton(btn, current);
+    btn.onclick = function() {
+      const cur = getTheme();
+      const next = (cur === 'auto') ? 'dark' : ((cur === 'dark') ? 'light' : 'auto');
+      applyTheme(next);
+      try {
+        localStorage.setItem('gitiles-theme', next);
+      } catch (e) {}
+      try {
+        document.cookie = 'gitiles-theme=' + encodeURIComponent(next) + ';path=/;max-age=31536000;SameSite=Lax';
+      } catch (e) {}
+      updateButton(btn, next);
+    };
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initToggle);
+  } else {
+    initToggle();
+  }
+})();
+</script></div></div></header><div class="Site-content"><div class="Container "><div class="Breadcrumbs"><a class="Breadcrumbs-crumb" href="/?format=HTML">gn</a><span class="Breadcrumbs-sep">/</span><span class="Breadcrumbs-crumb">gn</span></div><div class="CloneRepo"><div class="CloneRepo-title">Clone this repo:</div><input id="clone-repo-input" type="text" class="u-monospace CloneRepo-command" readonly="readonly" value="git clone https://gn.googlesource.com/gn"></div><div class="RepoShortlog"><div class="RepoShortlog-refs"><div class="RefList RefList--responsive"><h3 class="RefList-title">Branches</h3><ul class="RefList-items"><li class="RefList-item"><a href="/gn/+/refs/heads/main">main</a></li><li class="RefList-item"><a href="/gn/+/refs/heads/infra/config">infra/config</a></li><li class="RefList-item"><a href="/gn/+/refs/heads/master">master</a></li><li class="RefList-item"><a href="/gn/+/refs/heads/starlark">starlark</a></li></ul></div><div class="RefList RefList--responsive"><h3 class="RefList-title">Tags</h3><ul class="RefList-items"><li class="RefList-item"><a href="/gn/+/refs/tags/initial-commit">initial-commit</a></li></ul></div></div><div class="RepoShortlog-log"><ol class="CommitLog"><li class="CommitLog-item CommitLog-item--oneline"><a class="u-sha1 u-monospace CommitLog-sha1" href="/gn/+/3fef1f00031be0d3505e5338ca671ea3752e6fd8">3fef1f0</a> <a href="/gn/+/3fef1f00031be0d3505e5338ca671ea3752e6fd8">Add include sorting configuration to .clang-format and reformat</a> <span class="CommitLog-author" title="tikuta@google.com">by Takuto Ikuta</span> <span class="CommitLog-time" title="Fri Oct 02 19:24:39 2026 +0900">· 9 hours ago</span> <a class="CommitLog-branchLabel" href="/gn/+/refs/heads/main">main</a> <a class="CommitLog-branchLabel" href="/gn/+/refs/heads/master">master</a></li><li class="CommitLog-item CommitLog-item--oneline"><a class="u-sha1 u-monospace CommitLog-sha1" href="/gn/+/c4019b9a52da77a9920237f73845d7bc1239def0">c4019b9</a> <a href="/gn/+/c4019b9a52da77a9920237f73845d7bc1239def0">Delayed generated_file() writes if they collect validations metadata</a> <span class="CommitLog-author" title="digit@google.com">by David &#39;Digit&#39; Turner</span> <span class="CommitLog-time" title="Wed Sep 30 16:06:08 2026 +0200">· 2 days ago</span></li><li class="CommitLog-item CommitLog-item--oneline"><a class="u-sha1 u-monospace CommitLog-sha1" href="/gn/+/9fe99e262126467c4cb2f44cf941767d29fb33d8">9fe99e2</a> <a href="/gn/+/9fe99e262126467c4cb2f44cf941767d29fb33d8">Stop forwarding private hard_deps on check_includes_strict targets</a> <span class="CommitLog-author" title="tikuta@google.com">by Takuto Ikuta</span> <span class="CommitLog-time" title="Fri Oct 02 12:20:35 2026 +0900">· 16 hours ago</span></li><li class="CommitLog-item CommitLog-item--oneline"><a class="u-sha1 u-monospace CommitLog-sha1" href="/gn/+/0e7d98e041b01eb5fed29a9a80482ed8ca9efe5b">0e7d98e</a> <a href="/gn/+/0e7d98e041b01eb5fed29a9a80482ed8ca9efe5b">Add `collect_validations_metadata` boolean flag to generated_file() targets.</a> <span class="CommitLog-author" title="digit@google.com">by David &#39;Digit&#39; Turner</span> <span class="CommitLog-time" title="Mon Sep 28 13:27:54 2026 +0200">· 4 days ago</span></li><li class="CommitLog-item CommitLog-item--oneline"><a class="u-sha1 u-monospace CommitLog-sha1" href="/gn/+/0c19d708dfdfb49ddd0d7136ab16718bc8447f20">0c19d70</a> <a href="/gn/+/0c19d708dfdfb49ddd0d7136ab16718bc8447f20">Add new experimental_collect_validations_metadata .gn variable</a> <span class="CommitLog-author" title="digit@google.com">by David &#39;Digit&#39; Turner</span> <span class="CommitLog-time" title="Mon Sep 28 13:07:27 2026 +0200">· 4 days ago</span></li></ol><nav class="LogNav"><a class="LogNav-next" href="/gn/+log">More &raquo;</a></nav><div class="doc RepoIndexDoc"><h1><a class="h" name="GN" href="#GN"><span></span></a><a class="h" name="gn" href="#gn"><span></span></a>GN</h1><p>GN is a meta-build system that generates build files for <a href="https://ninja-build.org">Ninja</a>.</p><p>Related resources:</p><ul><li>Documentation in <a href="https://gn.googlesource.com/gn/+/main/docs/">docs/</a>. In particular:<ul><li><a href="https://gn.googlesource.com/gn/+/main/docs/quick_start.md">GN quick start guide</a>.</li><li><a href="https://gn.googlesource.com/gn/+/main/docs/faq.md">Frequently asked questions</a></li><li><a href="https://gn.googlesource.com/gn/+/main/docs/reference.md">Reference</a> (all builtin help converted to a single file).</li></ul></li><li>An introductory <a href="https://docs.google.com/presentation/d/15Zwb53JcncHfEwHpnG_PoIbbzQ3GQi_cpujYwbpcbZo/edit?usp=sharing">presentation</a>.</li><li>The <a href="https://groups.google.com/a/chromium.org/forum/#!forum/gn-dev">mailing list</a>.</li><li>The <a href="https://gn.issues.chromium.org/issues?q=status:open">bug database</a>.</li></ul><h2><a class="h" name="What-GN-is-for" href="#What-GN-is-for"><span></span></a><a class="h" name="what-gn-is-for" href="#what-gn-is-for"><span></span></a>What GN is for</h2><p>GN is currently used as the build system for Chromium, Fuchsia, and related projects. Some strengths of GN are:</p><ul><li><p>It is designed for large projects and large teams. It scales efficiently to many thousands of build files and tens of thousands of source files.</p></li><li><p>It has a readable, clean syntax. Once a build is set-up, it is generally easy for people with no backround in GN to make basic edits to the build.</p></li><li><p>It is designed for multi-platform projects. It can cleanly express many complicated build variants across different platforms. A single build invocation can target multiple platforms.</p></li><li><p>It supports multiple parallel output directories, each with their own configuration. This allows a developer to maintain builds targeting debug, release, or different platforms in parallel without forced rebuilds when switching.</p></li><li><p>It has a focus on correctness. GN checks for the correct dependencies, inputs, and outputs to the extent possible, and has a number of tools to allow developers to ensure the build evolves as desired (for example, <code class="code">gn check</code>, <code class="code">testonly</code>, <code class="code">assert_no_deps</code>).</p></li><li><p>It has comprehensive build-in help available from the command-line.</p></li></ul><p>Although small projects successfully use GN, the focus on large projects has some disadvanages:</p><ul><li><p>GN has the goal of being minimally expressive. Although it can be quite flexible, a design goal is to direct members of a large team (who may not have much knowledge about the build) down an easy-to-understand, well-lit path. This isn&#39;t necessarily the correct trade-off for smaller projects.</p></li><li><p>The minimal build configuration is relatively heavyweight. There are several files required and the exact way all compilers and linkers are run must be specified in the configuration (see &ldquo;Examples&rdquo; below). There is no default compiler configuration.</p></li><li><p>It is not easily composable. GN is designed to compile a single large project with relatively uniform settings and rules. Projects like Chromium do bring together multiple repositories from multiple teams, but the projects must agree on some conventions in the build files to allow this to work.</p></li><li><p>GN is designed with the expectation that the developers building a project want to compile an identical configuration. So while builds can integrate with the user&lsquo;s environment like the CXX and CFLAGS variables if they want, this is not the default and most project&rsquo;s builds do not do this. The result is that many GN projects do not integrate well with other systems like ebuild.</p></li><li><p>There is no simple release scheme (see &ldquo;Versioning and distribution&rdquo; below). Projects are expected to manage the version of GN they require. Getting an appropriate GN binary can be a hurdle for new contributors to a project. Since GN is relatively uncommon, it can be more difficult to find information and examples.</p></li></ul><p>GN can generate Ninja build files for C, C++, Rust, Objective C, and Swift source on most popular platforms. Other languages can be compiled using the general &ldquo;action&rdquo; rules which are executed by Python or another scripting language (Google does this to compile Java and Go). But because this is not as clean, generally GN is only used when the bulk of the build is in one of the main built-in languages.</p><h2><a class="h" name="Getting-a-binary" href="#Getting-a-binary"><span></span></a><a class="h" name="getting-a-binary" href="#getting-a-binary"><span></span></a>Getting a binary</h2><p>You can download the latest version of GN binary for <a href="https://chrome-infra-packages.appspot.com/dl/gn/gn/linux-amd64/+/latest">Linux</a>, <a href="https://chrome-infra-packages.appspot.com/dl/gn/gn/mac-amd64/+/latest">macOS</a> and <a href="https://chrome-infra-packages.appspot.com/dl/gn/gn/windows-amd64/+/latest">Windows</a> from Google&#39;s build infrastructure (see &ldquo;Versioning and distribution&rdquo; below for how this is expected to work).</p><p>Alternatively, you can build GN from source with a C++23 compiler:</p><pre class="code">git clone https://gn.googlesource.com/gn
+cd gn
+python build/gen.py # --allow-warning if you want to build with warnings.
+ninja -C out
+# To run tests:
+out/gn_unittests
+</pre><p>On Windows, it is expected that <code class="code">cl.exe</code>, <code class="code">link.exe</code>, and <code class="code">lib.exe</code> can be found in <code class="code">PATH</code>, so you&#39;ll want to run from a Visual Studio command prompt, or similar.</p><p>On Linux, Mac and z/OS, the default compiler is <code class="code">clang++</code>, a recent version is expected to be found in <code class="code">PATH</code>. This can be overridden by setting the <code class="code">CC</code>, <code class="code">CXX</code>, and <code class="code">AR</code> environment variables.</p><p>On MSYS and MinGW, the default compiler is <code class="code">g++</code>, a recent version is expected to be found in <code class="code">PATH</code>. This can be overridden by setting the <code class="code">CC</code>, <code class="code">CXX</code>, <code class="code">LD</code> and <code class="code">AR</code> environment variables.</p><p>On z/OS, building GN requires <a href="https://github.com/ibmruntimes/zoslib">ZOSLIB</a> to be installed, as described at that URL. When building with <code class="code">build/gen.py</code>, use the option <code class="code">--zoslib-dir</code> to specify the path to <a href="https://github.com/ibmruntimes/zoslib">ZOSLIB</a>:</p><pre class="code">cd gn
+python build/gen.py --zoslib-dir /path/to/zoslib
+</pre><p>By default, if you don&#39;t specify <code class="code">--zoslib-dir</code>, <code class="code">gn/build/gen.py</code> expects to find <code class="code">zoslib</code> directory under <code class="code">gn/third_party/</code>.</p><h2><a class="h" name="Examples" href="#Examples"><span></span></a><a class="h" name="examples" href="#examples"><span></span></a>Examples</h2><p>There is a simple example in <a href="+/HEAD/examples/simple_build">examples/simple_build</a> directory that is a good place to get started with the minimal configuration.</p><p>To build and run the simple example with the default gcc compiler:</p><pre class="code">cd examples/simple_build
+../../out/gn gen -C out
+ninja -C out
+./out/hello
+</pre><p>For a maximal configuration see the Chromium setup:</p><ul><li><a href="https://cs.chromium.org/chromium/src/.gn">.gn</a></li><li><a href="https://cs.chromium.org/chromium/src/build/config/BUILDCONFIG.gn">BUILDCONFIG.gn</a></li><li><a href="https://cs.chromium.org/chromium/src/build/toolchain/">Toolchain setup</a></li><li><a href="https://cs.chromium.org/chromium/src/build/config/compiler/BUILD.gn">Compiler setup</a></li></ul><p>and the Fuchsia setup:</p><ul><li><a href="https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/.gn">.gn</a></li><li><a href="https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/build/config/BUILDCONFIG.gn">BUILDCONFIG.gn</a></li><li><a href="https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/build/toolchain/">Toolchain setup</a></li><li><a href="https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/build/config/BUILD.gn">Compiler setup</a></li></ul><h2><a class="h" name="Reporting-bugs" href="#Reporting-bugs"><span></span></a><a class="h" name="reporting-bugs" href="#reporting-bugs"><span></span></a>Reporting bugs</h2><p>If you find a bug, you can see if it is known or report it in the <a href="https://gn.g-issues.chromium.org/issues/new">bug database</a>.</p><h2><a class="h" name="Sending-patches" href="#Sending-patches"><span></span></a><a class="h" name="sending-patches" href="#sending-patches"><span></span></a>Sending patches</h2><p>GN uses <a href="https://www.gerritcodereview.com/">Gerrit</a> for code review hosted at <a href="https://gn-review.googlesource.com/">gn-review.googlesource.com</a>. The short version of how to patch is:</p><pre class="code">Register at https://gn-review.googlesource.com.
+
+... edit code ...
+ninja -C out &amp;&amp; out/gn_unittests
+</pre><p>Then, to upload a change for review:</p><pre class="code">git commit
+git push origin HEAD:refs/for/main
+</pre><p>The first time you do this you&#39;ll get an error from the server about a missing change-ID. Follow the directions in the error message to install the change-ID hook and run <code class="code">git commit --amend</code> to apply the hook to the current commit.</p><p>When revising a change, use:</p><pre class="code">git commit --amend
+git push origin HEAD:refs/for/main
+</pre><p>which will add the new changes to the existing code review, rather than creating a new one.</p><p>We ask that all contributors <a href="https://cla.developers.google.com/">sign Google&#39;s Contributor License Agreement</a> (either individual or corporate as appropriate, select &lsquo;any other Google project&rsquo;).</p><h2><a class="h" name="Community" href="#Community"><span></span></a><a class="h" name="community" href="#community"><span></span></a>Community</h2><p>You may ask questions and follow along with GN&lsquo;s development on Chromium&rsquo;s <a href="https://groups.google.com/a/chromium.org/forum/#!forum/gn-dev">gn-dev@</a> Google Group.</p><h2><a class="h" name="Versioning-and-distribution" href="#Versioning-and-distribution"><span></span></a><a class="h" name="versioning-and-distribution" href="#versioning-and-distribution"><span></span></a>Versioning and distribution</h2><p>Most open-source projects are designed to use the developer&lsquo;s computer&rsquo;s current toolchain such as compiler, linker, and build tool. But the large centrally controlled projects that GN is designed for typically want a more hermetic environment. They will ensure that developers are using a specific compatible toolchain that is versioned with the code.</p><p>As a result, GN expects that the project choose the appropriate version of GN that will work with each version of the project. There is no &ldquo;current stable version&rdquo; of GN that is expected to work for all projects.</p><p>As a result, the GN developers do not maintain any packages in any of the various packaging systems (Debian, RedHat, HomeBrew, etc.). Some of these systems to have GN packages, but they are maintained by third parties and you should use them at your own risk. Instead, we recommend you refer your checkout tooling to download binaries for a specific hash from <a href="https://chrome-infra-packages.appspot.com/p/gn/gn">Google&#39;s build infrastructure</a> or compile your own.</p><p>GN does not guarantee the backwards-compatibility of new versions and has no branches or versioning scheme beyond the sequence of commits to the main git branch (which is expected to be stable).</p><p>In practice, however, GN is very backwards-compatible. The core functionality has been stable for many years and there is enough GN code at Google alone to make non-backwards-compatible changes very difficult, even if they were desirable.</p><p>There have been discussions about adding a versioning scheme with some guarantees about backwards-compatibility, but nothing has yet been implemented.</p></div></div></div></div> <!-- Container --></div> <!-- Site-content --><footer class="Site-footer"><div class="Footer"><span class="Footer-poweredBy">Powered by <a href="https://gerrit.googlesource.com/gitiles/">Gitiles</a>| <a href="https://policies.google.com/privacy">Privacy</a>| <a href="https://policies.google.com/terms">Terms</a></span><span class="Footer-formats"><a class="u-monospace Footer-formatsItem" href="?format=TEXT">txt</a> <a class="u-monospace Footer-formatsItem" href="?format=JSON">json</a></span></div></footer></body></html><script nonce="6HG9g98K2zT7NFiXyiLRcw">{let f = document.getElementById("clone-repo-input"); f.onclick = () => {f.focus(); if (f.selectionStart === f.selectionEnd) {f.select();}};}</script>

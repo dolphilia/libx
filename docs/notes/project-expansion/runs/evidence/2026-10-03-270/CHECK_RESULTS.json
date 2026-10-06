@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "pipeline": {
+    "session": 72065,
+    "exitCode": 0,
+    "phases": [
+      "existing content checks",
+      "template build",
+      "all17selected integrated build",
+      "13smoke tests"
+    ]
+  },
+  "checker": {
+    "command": "pnpm --filter apps-ninja check:content",
+    "privateExitCode": 0,
+    "rootExitCode": 0,
+    "eslintCommand": "pnpm exec eslint apps/ninja/check-content.mjs",
+    "eslintExitCode": 0,
+    "prettierExitCode": 0
+  },
+  "ciConnection": {
+    "command": "pnpm check:content (recursive --if-present)",
+    "existingToolEnvironment": "UTHASH_ASCIIDOC pinned10.2.1",
+    "explicitOverride": "NINJA_ASCIIDOC",
+    "workflowModified": false
+  },
+  "limitations": [
+    "統合ビルドsuccessは既存全公開記事の回帰一致やbrowser/navigation/404検証を意味しない。",
+    "内容checkerは既存全文レビューのhash/coverageを監査し、新規内容レビューを実施したとは記録しない。",
+    "new package/checker追加差分は非配信コード。全体buildの既存app本文は未変更。",
+    "root変更はNinja checker/packageの2files限定、既存共有設定/Awesome未編集。"
+  ]
+}

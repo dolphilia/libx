@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-02T19:03:26.111Z",
+  "status": "passed",
+  "reviewer": {
+    "configured": "gpt-6-astra",
+    "runtime": null,
+    "localLLMUsed": false
+  },
+  "role": "full-English-content-review",
+  "scope": "Both formal English canonical pages. Full fixed source read in four ranges 1–240,241–530,531–950,951–1361; full COPYING definitions, sections2–9 and appendix. Canonical/rendered fidelity separately proved by 261/262 mechanical checks.",
+  "inputs": [
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/source/doc/manual.asciidoc",
+      "sha256": "0b7148678b1a4c7751acbb443d5cfec41ceacf3a7b2a0ad2d511407fbe056226"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/source/COPYING",
+      "sha256": "eb7e9ab9690124c5c9f42bdc81383d886a3dede26345b6ed15bbad7caf81f7ea"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/generated/canonical/01-docs/01-manual.md",
+      "sha256": "469cc055b0bdc4da0ada2d7a6f29955f3887157bae54835239b246f4cd502f9a"
+    },
+    {
+      "path": "docs/notes/document-import/ninja/v1-13-2/generated/canonical/02-license/01-license.md",
+      "sha256": "363031f1fb62bf5410882f036384cefc20c91e02c63cb13f76a02760215dce47"
+    },
+    {
+      "path": "docs/notes/project-expansion/runs/evidence/2026-10-03-262/BUILT_PRESERVATION.json",
+      "sha256": "0c0e1922c5b12fc0bb528a97faf99e2b63e4c9700927f96c656e8b6fc79b5845"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Introduction",
+      "status": "passed"
+    },
+    {
+      "heading": "Philosophical overview",
+      "status": "passed"
+    },
+    {
+      "heading": "Design goals",
+      "status": "passed"
+    },
+    {
+      "heading": "Comparison to Make",
+      "status": "passed"
+    },
+    {
+      "heading": "Using Ninja for your project",
+      "status": "passed"
+    },
+    {
+      "heading": "Running Ninja",
+      "status": "passed"
+    },
+    {
+      "heading": "GNU Jobserver support",
+      "status": "passed"
+    },
+    {
+      "heading": "Environment variables",
+      "status": "passed"
+    },
+    {
+      "heading": "Extra tools",
+      "status": "passed"
+    },
+    {
+      "heading": "Writing your own Ninja files",
+      "status": "passed"
+    },
+    {
+      "heading": "Conceptual overview",
+      "status": "passed"
+    },
+    {
+      "heading": "Syntax example",
+      "status": "passed"
+    },
+    {
+      "heading": "Variables",
+      "status": "passed"
+    },
+    {
+      "heading": "Rules",
+      "status": "passed"
+    },
+    {
+      "heading": "Build statements",
+      "status": "passed"
+    },
+    {
+      "heading": "Generating Ninja files from code",
+      "status": "passed"
+    },
+    {
+      "heading": "More details",
+      "status": "passed"
+    },
+    {
+      "heading": "The <span class=\"monospaced\">phony</span> rule",
+      "status": "passed"
+    },
+    {
+      "heading": "Default target statements",
+      "status": "passed"
+    },
+    {
+      "heading": "The Ninja log",
+      "status": "passed"
+    },
+    {
+      "heading": "Version compatibility",
+      "status": "passed"
+    },
+    {
+      "heading": "C/C++ header dependencies",
+      "status": "passed"
+    },
+    {
+      "heading": "depfile",
+      "status": "passed"
+    },
+    {
+      "heading": "deps",
+      "status": "passed"
+    },
+    {
+      "heading": "Pools",
+      "status": "passed"
+    },
+    {
+      "heading": "The <span class=\"monospaced\">console</span> pool",
+      "status": "passed"
+    },
+    {
+      "heading": "Ninja file reference",
+      "status": "passed"
+    },
+    {
+      "heading": "Lexical syntax",
+      "status": "passed"
+    },
+    {
+      "heading": "Top-level variables",
+      "status": "passed"
+    },
+    {
+      "heading": "Rule variables",
+      "status": "passed"
+    },
+    {
+      "heading": "Interpretation of the <span class=\"monospaced\">command</span> variable",
+      "status": "passed"
+    },
+    {
+      "heading": "Build outputs",
+      "status": "passed"
+    },
+    {
+      "heading": "Build dependencies",
+      "status": "passed"
+    },
+    {
+      "heading": "Validations",
+      "status": "passed"
+    },
+    {
+      "heading": "Variable expansion",
+      "status": "passed"
+    },
+    {
+      "heading": "Evaluation and scoping",
+      "status": "passed"
+    },
+    {
+      "heading": "Dynamic Dependencies",
+      "status": "passed"
+    },
+    {
+      "heading": "Dyndep file reference",
+      "status": "passed"
+    },
+    {
+      "heading": "Dyndep Examples",
+      "status": "passed"
+    },
+    {
+      "heading": "Fortran Modules",
+      "status": "passed"
+    },
+    {
+      "heading": "Tarball Extraction",
+      "status": "passed"
+    }
+  ],
+  "findings": [
+    {
+      "topic": "Jobserver",
+      "status": "passed",
+      "judgment": "1.13 support auto-enables only non-dryrun/no explicit -j/valid platform MAKEFLAGS. FIFO Posix Make4.4+, pipe warning ignored; -l remains enforced."
+    },
+    {
+      "topic": "Tools/code",
+      "status": "passed",
+      "judgment": "All tools query through wincodepage and 31 source code blocks retain command flags/default delimiters/terminators/version notes; intentionally empty pre retained."
+    },
+    {
+      "topic": "Semantics",
+      "status": "passed",
+      "judgment": "Build/rule/phony/default/log/version/headers/gcc-msvc/pools-console, explicit vs implicit outputs/dependencies vs order-only, validation scheduling and delayed rule expansion correctly preserved."
+    },
+    {
+      "topic": "Dyndep",
+      "status": "passed",
+      "judgment": "First-run vs second-run header discovery; exactly one explicit output/dyndep rule/optional restat/one-to-one statements; full Fortran and tarball examples and restat rationale preserved."
+    },
+    {
+      "topic": "Rights",
+      "status": "passed",
+      "judgment": "Original COPYING retained including January2010 and all clauses/appendix. Visible software-license fallback and unofficial modifications annotation confirmed by 262. Original license is not translated as an authoritative legal text."
+    }
+  ],
+  "translationDecisions": [
+    {
+      "source": "if may",
+      "meaning": "it may",
+      "action": "EN remains verbatim; JA renders MAKEFLAGS may alter dispatch."
+    },
+    {
+      "source": "dirty are not",
+      "meaning": "dirty or not",
+      "action": "EN remains verbatim; JA states regardless of dirty status."
+    },
+    {
+      "source": "the rule is uses",
+      "meaning": "the rule it uses",
+      "action": "EN remains verbatim; JA translates the associated rule."
+    }
+  ],
+  "limits": [
+    "Human review does not verify Ninja software behavior independently.",
+    "JA translation/review and release browser/copy functionality remain pending."
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "status": "passed",
+  "scope": "実機操作で確認した個別ケースのみ。全31例のクリック、検索、広い表、統合navigationは未確認。画像はtoolで目視し、保存画像とは主張しない。",
+  "preview": {
+    "root": "/private/tmp/libx-ninja-import-20261003",
+    "port": 4397,
+    "session": 45510
+  },
+  "checks": [
+    {
+      "name": "EN license copy",
+      "length": 11357,
+      "status": "passed"
+    },
+    {
+      "name": "Native EN to JA license switch",
+      "status": "passed"
+    },
+    {
+      "name": "JA manual seeded copy",
+      "block": 0,
+      "length": 49,
+      "label": "コピーしました",
+      "status": "passed"
+    },
+    {
+      "name": "JA manual seeded copy",
+      "block": 3,
+      "length": 0,
+      "label": "コピーしました",
+      "status": "passed"
+    },
+    {
+      "name": "JA manual seeded copy",
+      "block": 9,
+      "length": 85,
+      "label": "コピーしました",
+      "status": "passed"
+    },
+    {
+      "name": "JA manual seeded copy",
+      "block": 30,
+      "length": 88,
+      "label": "コピーしました",
+      "status": "passed"
+    },
+    {
+      "name": "JA license seeded copy",
+      "length": 11357,
+      "label": "コピーしました",
+      "status": "passed"
+    },
+    {
+      "name": "Desktop JA native TOC",
+      "hash": "#_syntax_example",
+      "headingTop": -0.03125,
+      "status": "passed"
+    },
+    {
+      "name": "Mobile JA native TOC",
+      "hash": "#_depfile",
+      "headingTop": -0.125,
+      "viewport": 390,
+      "pageWidth": 375,
+      "status": "passed"
+    },
+    {
+      "name": "Native JA to EN manual switch",
+      "url": "http://127.0.0.1:4397/docs/ninja/v1-13-2/en/01-docs/01-manual/",
+      "status": "passed"
+    },
+    {
+      "name": "EN manual seeded copy",
+      "block": 9,
+      "length": 85,
+      "label": "Copied",
+      "status": "passed"
+    },
+    {
+      "name": "Mobile EN no page overflow",
+      "viewport": 390,
+      "pageWidth": 375,
+      "copyControls": 31,
+      "status": "passed"
+    }
+  ],
+  "issues": [
+    {
+      "issue": "正式manualのraw pre31例にcopyUIが付かなかった",
+      "resolution": "Ninja専用pluginでpre/code HASTへ昇格し、共有themeの既存UIを利用。31literal完全一致検査合格。"
+    },
+    {
+      "issue": "plugin変更だけではAstro content cacheが再変換されなかった",
+      "resolution": "astro sync --force後に9routesをbuild、両manual31copycontrols確認。"
+    },
+    {
+      "issue": "mobileTOC summaryをPlaywright buttonで選択できなかった",
+      "resolution": "fresh nativeAX summaryで操作し、depfile節移動を確認。表示不具合とは判定しない。"
+    }
+  ],
+  "limitations": [
+    "JA license未seed初回確認をseeded再確認で補完",
+    "smooth scroll直後の未到達画面は合格証拠とせず、settled座標を確認",
+    "外部参照10件の到達とtopic identityのみ、第三者本文の全文レビューではない",
+    "viewport override reset済み"
+  ]
+}

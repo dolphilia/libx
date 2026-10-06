@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This file documents the GNU make utility, which determines
+automatically which pieces of a large program need to be recompiled,
+and issues the commands to recompile them.
+
+This is Edition 0.77, last updated 26 February 2023,
+of The GNU Make Manual, for GNU make version 4.4.1.
+
+Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995,
+1996, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2006, 2007,
+2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+2020, 2021, 2022, 2023 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled "GNU Free Documentation
+License."
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<title>Job Slots (GNU make)</title>
+
+<meta name="description" content="Job Slots (GNU make)">
+<meta name="keywords" content="Job Slots (GNU make)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Integrating-make.html" rel="up" title="Integrating make">
+<link href="Terminal-Output.html" rel="next" title="Terminal Output">
+<link href="Integrating-make.html" rel="prev" title="Integrating make">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://www.gnu.org/software/gnulib/manual.css">
+
+
+</head>
+
+<body lang="en">
+<div class="section" id="Job-Slots">
+<div class="header">
+<p>
+Next: <a href="Terminal-Output.html" accesskey="n" rel="next">Synchronized Terminal Output</a>, Previous: <a href="Integrating-make.html" accesskey="p" rel="prev">Integrating GNU <code>make</code></a>, Up: <a href="Integrating-make.html" accesskey="u" rel="up">Integrating GNU <code>make</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Sharing-Job-Slots-with-GNU-make"></span><h3 class="section">13.1 Sharing Job Slots with GNU <code>make</code></h3>
+<span id="index-job-slots_002c-sharing"></span>
+<span id="index-tools_002c-sharing-job-slots"></span>
+
+<p>GNU <code>make</code> has the ability to run multiple recipes in parallel
+(see <a href="Parallel.html">Parallel Execution</a>) and to cap the total number of
+parallel jobs even across recursive invocations of <code>make</code>
+(see <a href="Options_002fRecursion.html">Communicating Options to a
+Sub-<code>make</code></a>).  Tools that <code>make</code> invokes which are also able
+to run multiple operations in parallel, either using multiple threads
+or multiple processes, can be enhanced to participate in GNU
+<code>make</code>&rsquo;s job management facility to ensure that the total number
+of active threads/processes running on the system does not exceed the
+maximum number of slots provided to GNU <code>make</code>. 
+</p>
+<span id="index-jobserver"></span>
+<p>GNU <code>make</code> uses a method called the &ldquo;jobserver&rdquo; to control the
+number of active jobs across recursive invocations.  The actual
+implementation of the jobserver varies across different operating
+systems, but some fundamental aspects are always true.
+</p>
+<span id="index-_002d_002djobserver_002dauth"></span>
+<p>First, <code>make</code> will provide information necessary for accessing the
+jobserver through the environment to its children, in the <code>MAKEFLAGS</code>
+environment variable.  Tools which want to participate in the jobserver
+protocol will need to parse this environment variable and find the word
+starting with <code>--jobserver-auth=</code>.  The value of this option will
+describe how to communicate with the jobserver.  The interpretation of this
+value is described in the sections below.
+</p>
+<p>Be aware that the <code>MAKEFLAGS</code> variable may contain multiple instances of
+the <code>--jobserver-auth=</code> option.  Only the <em>last</em> instance is
+relevant.
+</p>
+<p>Second, every command <code>make</code> starts has one implicit job slot
+reserved for it before it starts.  Any tool which wants to participate
+in the jobserver protocol should assume it can always run one job
+without having to contact the jobserver at all.
+</p>
+<p>Finally, it&rsquo;s critical that tools that participate in the jobserver
+protocol return the exact number of slots they obtained from the
+jobserver back to the jobserver before they exit, even under error
+conditions.  Remember that the implicit job slot should <strong>not</strong>
+be returned to the jobserver!  Returning too few slots means that
+those slots will be lost for the rest of the build process; returning
+too many slots means that extra slots will be available.  The
+top-level <code>make</code> command will print an error message at the end
+of the build if it detects an incorrect number of slots available in
+the jobserver.
+</p>
+<p>As an example, suppose you are implementing a linker which provides
+for multithreaded operation.  You would like to enhance the linker so
+that if it is invoked by GNU <code>make</code> it can participate in the
+jobserver protocol to control how many threads are used during link.
+First you will need to modify the linker to determine if the
+<code>MAKEFLAGS</code> environment variable is set.  Next you will need to
+parse the value of that variable to determine if the jobserver is
+available, and how to access it.  If it is available then you can
+access it to obtain job slots controlling how much parallelism your
+tool can use.  Once done your tool must return those job slots back to
+the jobserver.
+</p>
+
+<ul class="section-toc">
+<li><a href="POSIX-Jobserver.html" accesskey="1">POSIX Jobserver Interaction</a></li>
+<li><a href="Windows-Jobserver.html" accesskey="2">Windows Jobserver Interaction</a></li>
+</ul>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Terminal-Output.html">Synchronized Terminal Output</a>, Previous: <a href="Integrating-make.html">Integrating GNU <code>make</code></a>, Up: <a href="Integrating-make.html">Integrating GNU <code>make</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

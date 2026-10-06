@@ -1,0 +1,36 @@
+{
+  "previousTurn": "progress",
+  "rootApp": "apps/ninja",
+  "syncedFiles": 28,
+  "privateRoot": "/private/tmp/libx-ninja-import-20261003",
+  "scopeException": {
+    "path": "docs/notes/document-import/ninja/v1-13-2/source/README.md",
+    "reason": "非公開の固定取得証拠。CONTRIBUTING.mdは上流repoの開発参照、採用manual/COPYING範囲外。元README bytes保持。公開定本と英日記事リンクは引き続き検査。"
+  },
+  "toolCorrection": {
+    "asciidoc": "/private/tmp/libx-uthash-trial-175-venv/bin/asciidoc",
+    "asciidocVersion": "10.2.1",
+    "pandoc": "/opt/homebrew/bin/pandoc",
+    "pandocVersion": "3.8.3"
+  },
+  "pipeline": {
+    "session": 72065,
+    "status": "running",
+    "command": "check:content && build:template && integrated build --confirm && test:smoke",
+    "completed": [
+      "check:content",
+      "build:template"
+    ],
+    "current": "integrated build",
+    "pending": [
+      "test:smoke"
+    ]
+  },
+  "limitations": [
+    "全体check初回のstdoutは一部truncated。保存済み再実行logsと各終了statusを証拠とする。",
+    "既存GLFW/Luaのarchive再現性検査は入力不在でskipを既存checkerが表示。Ninjaは固定入力再生成一致を別検査済み。",
+    "NinjaのCI check:content接続は未実装、専用checker追加と根拠照合が必要。",
+    "rootlock/共有landing/リンクchecker/Awesomeは未変更。shared設定変更は専用checkoutのみ。",
+    "公開/verified未完了"
+  ]
+}

@@ -1,0 +1,151 @@
+<html>
+<head>
+	<title>tup | Home</title>
+	<link rel="stylesheet" type="text/css" href="tup.css"/>
+</head>
+<body>
+
+<div id="header">
+  <img src="logo.png">
+  <!-- fork me on github logo? -->
+</div>
+<div id="content">
+  <ul id="menu">
+    <li class="menu-header">Site Map</li>
+    <li class="menu-item"><a href="index.html">Home</a></li>
+    <li class="menu-item"><a href="getting_started.html">Getting&nbsp;Started</a></li>
+    <li class="menu-item"><a href="examples.html">Examples</a></li>
+<ul class="submenu">
+  <li class="menu-item"><a href="ex_a_first_tupfile.html">A&nbsp;First&nbsp;Tupfile</a></li>
+  <li class="menu-item"><a href="ex_dependencies.html">Dependencies</a></li>
+  <li class="menu-item"><a href="ex_generated_header.html">Generated&nbsp;Header</a></li>
+  <li class="menu-item"><a href="ex_multiple_directories.html">Multiple&nbsp;Directories</a></li>
+  <li class="menu-item"><a href="ex_explicit_variants.html">Explicit&nbsp;Variants</a></li>
+</ul>
+    <li class="menu-item"><a href="manual.html">Manual</a></li>
+    <li class="menu-item"><a href="lua_parser.html">Lua&nbsp;Parser</a></li>
+<ul class="submenu">
+  <li class="menu-item"><a href="ex_lua_examples.html">Lua&nbsp;Examples</a></li>
+</ul>
+    <li class="menu-item"><a href="tips_and_tricks.html">Tips&nbsp;and&nbsp;Tricks</a></li>
+    <li class="menu-item"><a href="make_vs_tup.html">Make&nbsp;vs&nbsp;Tup</a></li>
+    <li class="menu-item"><a href="tup_vs_mordor.html">Tup&nbsp;vs&nbsp;Mordor</a></li>
+    <li class="menu-item"><a href="license.html">License</a></li>
+    <li class="menu-item"><a href="support.html">Support</a></li>
+    <li class="menu-item"><a href="donate.html">Donate</a></li>
+    <li class="menu-item"><iframe src="https://github.com/sponsors/gittup/button" title="Sponsor gittup" height="35" width="116" style="border: 0;"></iframe></li>
+    <li class="menu-header">Additional Info</li>
+    <li class="menu-item"><a href="build_system_rules_and_algorithms.pdf">Build System Rules<br>and Algorithms (PDF)</a></li>
+    <li class="menu-item"><a href="http://groups.google.com/group/tup-users">tup-users mailing list</a></li>
+  </ul>
+<h1>Home</h1>
+<h2>What is tup?</h2>
+<p>Tup is a file-based build system for Linux, OSX, and Windows. It inputs a list of file changes and a directed acyclic graph (DAG), then processes the DAG to execute the appropriate commands required to update dependent files. Updates are performed with very little overhead since tup implements powerful build algorithms to avoid doing unnecessary work. This means you can stay focused on your project rather than on your build system.</p>
+
+<h2>Get tup</h2>
+<h4>Git Repository</h4>
+<pre>
+<span class="prompt">$</span> git clone git://github.com/gittup/tup.git
+<span class="prompt">$</span> cd tup
+<span class="prompt">tup$</span> ./bootstrap.sh
+<span class="prompt">tup$</span> man ./tup.1
+</pre>
+
+<h4>Release tarballs</h4>
+<ul>
+  <li><a href="releases/">Signed release tarballs</a></li>
+</ul>
+
+<h4>Windows</h4>
+<ul>
+  <li><a href="win32/tup-latest.zip">Download latest version</a></li>
+  <li><a href="win32/">List of previous versions</a></li>
+</ul>
+
+<h4>Linux Ubuntu</h4>
+<p>If you don't want to install tup from the git tree, you can use the unofficial tup PPA repository that works for Debian-based distributions (e.g. Ubuntu 10.04+).</p>
+<pre>
+sudo apt-add-repository 'deb http://ppa.launchpad.net/anatol/tup/ubuntu precise main'
+sudo apt-get update
+sudo apt-get install tup
+</pre>
+
+<h4>macOS</h4>
+<p>Tup requires a FUSE implementation on macOS. <a href="https://github.com/macos-fuse-t/fuse-t">FUSE-T</a> is recommended &mdash; it runs entirely in user space (no kernel extension needed) and is API-compatible with macFUSE.</p>
+
+<p>Install FUSE-T and build dependencies:</p>
+<pre>
+brew tap macos-fuse-t/homebrew-cask
+brew install fuse-t
+brew install pkg-config pcre2 cmake
+</pre>
+
+<p>Build the patched libfuse (fixes an <a href="https://github.com/macos-fuse-t/libfuse/pull/11">unmount teardown issue</a> in FUSE-T):</p>
+<pre>
+git clone https://github.com/petemoore/libfuse.git --branch fix/recv-eof-on-unmount --depth 1
+cd libfuse &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make
+install_name_tool -id /usr/local/lib/libfuse-t.dylib lib/libfuse-t.dylib
+sudo cp lib/libfuse-t.dylib /usr/local/lib/libfuse-t.dylib
+sudo cp lib/libfuse-t.a /usr/local/lib/libfuse-t.a
+sudo mkdir -p /usr/local/include/fuse
+sudo ln -sf /Library/Frameworks/fuse_t.framework/Headers/* /usr/local/include/fuse/
+sudo mkdir -p /usr/local/lib/pkgconfig
+sudo tee /usr/local/lib/pkgconfig/fuse.pc &gt; /dev/null &lt;&lt; 'EOF'
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+Name: fuse
+Description: FUSE-T libfuse
+Version: 2.9.9
+Libs: -L${libdir} -lfuse-t -pthread
+Cflags: -I${includedir}/fuse -D_FILE_OFFSET_BITS=64
+EOF
+cd ../..
+</pre>
+
+<p>Build tup:</p>
+<pre>
+git clone https://github.com/gittup/tup.git
+cd tup
+./bootstrap.sh
+</pre>
+
+<p>Alternatively, if you already have <a href="https://macfuse.github.io/">macFUSE</a> installed (requires enabling the kernel extension in System Settings &gt; Privacy &amp; Security), tup will use it automatically without the patched libfuse steps above.</p>
+<p>If you use <a href="http://www.macports.org/">MacPorts</a>:</p>
+<pre>sudo port install tup</pre>
+
+<h2>Why tup?</h2>
+<p>You can use tup anywhere you would use another build system (like make, or any of its derivatives). One reason you would want to use tup is if you like to update things very quickly. For example, if you typically execute a build in a subdirectory because it takes too long to figure out what to do when you execute the build from the top, you might want to look into tup. Unfortunately, tup is so fast that your <a href="http://xkcd.com/303/">chair mounted jousting</a> might suffer. I apologize in advance if someone besmirches your honor and you are unable to properly defend yourself as a result.</p>
+
+<h2>Wha tup?</h2>
+<p>Nothing much, just writing some web pages. What's up with you?</p>
+
+<h2>Why is it so awesome?</h2>
+<ul>
+  <li>It is <a href="make_vs_tup.html">very fast</a>.</li>
+  <li>It will automatically clean-up old files.</li>
+  <li>It will detect if your build description isn't parallel-safe, and tell you.</li>
+</ul>
+<p>What this means is:</p>
+<ul>
+  <li>Your edit/compile/test cycle is quick, even if your project is large. You just run: <span class="cmd">tup</span></li>
+  <li>You don't have to outsmart your build system by starting it in a subdirectory to make it go faster. Anywhere in the tree: <span class="cmd">tup</span></li>
+  <li>Your version control lets you rename a file. Does your build system? <span class="cmd">tup</span></li>
+  <li>Fresh checkouts: gone.<br>'clean' builds: gone.<br>Worries: gone.<br>What remains: <span class="cmd">tup</span></li>
+</ul>
+
+<h2>How is it so awesome?</h2>
+<p>In a typical build system, the dependency arrows go down. Although this is the way they would naturally go due to gravity, it is unfortunately also where the enemy's gate is. This makes it very inefficient and unfriendly. In tup, the arrows go up. This is obviously true because it rhymes. See how the dependencies differ in make and tup:</p>
+<table border=0>
+   <tr>
+     <td><div class="img"><div class="desc">Make</div><img src="make_deps.png"></div></td>
+     <td><div class="img"><div class="desc">Tup</div><img src="tup_deps.png"></div></td>
+   </tr>
+</table>
+<p>See the difference? The arrows go up. This makes it very fast. In fact, in at least one case, tup is optimal. See the <a href="build_system_rules_and_algorithms.pdf">Build System Rules and Algorithms (PDF)</a> paper for more detailed information.</p>
+<div style="clear:both;"></div>
+</div>
+<div id="footer">&copy; 2008-2024 Mike Shal. All Rights Reserved.</div>
+</body>
+</html>
